@@ -1,0 +1,96 @@
+{
+  "ok": true,
+  "at": "2026-11-03T02:30:48.891847+00:00",
+  "base_head": "9604f786644de478b800b788acfe25c9facecc92",
+  "source_files": [
+    {
+      "file": "docs/videos/ai-slides-outline-review/video.json",
+      "changed_json_paths": [
+        "/thumbnail/data/headline",
+        "/thumbnail/data/layout",
+        "/thumbnail/data/sub"
+      ],
+      "all_other_content_exact": true
+    },
+    {
+      "file": "docs/videos/ai-slides-outline-review/i18n/en.json",
+      "changed_json_paths": [
+        "/source_hashes/thumbnail",
+        "/thumbnail/headline",
+        "/thumbnail/sub"
+      ],
+      "all_other_content_exact": true
+    },
+    {
+      "file": "docs/videos/ai-slides-outline-review/i18n/es.json",
+      "changed_json_paths": [
+        "/source_hashes/thumbnail",
+        "/thumbnail/headline",
+        "/thumbnail/sub",
+        "/thumbnail/tag"
+      ],
+      "all_other_content_exact": true
+    },
+    {
+      "file": "docs/videos/ai-slides-outline-review/i18n/id.json",
+      "changed_json_paths": [
+        "/source_hashes/thumbnail",
+        "/thumbnail/headline",
+        "/thumbnail/sub"
+      ],
+      "all_other_content_exact": true
+    },
+    {
+      "file": "docs/videos/ai-slides-outline-review/i18n/ja.json",
+      "changed_json_paths": [
+        "/source_hashes/thumbnail",
+        "/thumbnail/headline",
+        "/thumbnail/sub"
+      ],
+      "all_other_content_exact": true
+    },
+    {
+      "file": "docs/videos/ai-slides-outline-review/i18n/ko.json",
+      "changed_json_paths": [
+        "/source_hashes/thumbnail",
+        "/thumbnail/headline",
+        "/thumbnail/sub"
+      ],
+      "all_other_content_exact": true
+    },
+    {
+      "file": "docs/videos/ai-slides-outline-review/i18n/pt.json",
+      "changed_json_paths": [
+        "/source_hashes/thumbnail",
+        "/thumbnail/headline",
+        "/thumbnail/sub",
+        "/thumbnail/tag"
+      ],
+      "all_other_content_exact": true
+    },
+    {
+      "file": "docs/videos/ai-slides-outline-review/i18n/th.json",
+      "changed_json_paths": [
+        "/source_hashes/thumbnail",
+        "/thumbnail/headline",
+        "/thumbnail/sub"
+      ],
+      "all_other_content_exact": true
+    },
+    {
+      "file": "docs/videos/ai-slides-outline-review/i18n/vi.json",
+      "changed_json_paths": [
+        "/source_hashes/thumbnail",
+        "/thumbnail/headline",
+        "/thumbnail/sub"
+      ],
+      "all_other_content_exact": true
+    }
+  ],
+  "prior_scope_assertion": {
+    "tool": "f780ca",
+    "exit_code": 1,
+    "writes": 0,
+    "reason": "Read-only assertion omitted the normal i18n source_hashes/thumbnail update; actual diff contained only thumbnail data and thumbnail source binding. Preserved observed failure; exact revised comparison includes only that native binding and checks all other hashes/objects unchanged."
+  }
+}

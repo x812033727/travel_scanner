@@ -1,0 +1,121 @@
+{
+  "kind": "actual_required_checks_and_normal_task_handoff",
+  "at": "2026-11-03T02:42:38.566402+00:00",
+  "ok": true,
+  "actual_tools": {
+    "checks_start": "ec8f64",
+    "checks_session": 42692,
+    "checks_terminal": "564100",
+    "checks_exit": 0,
+    "normal_task_handoff_terminal": "9a0582",
+    "normal_task_handoff_exit": 0
+  },
+  "docs_videos": {
+    "exit_code": 0,
+    "tests": 241,
+    "pass": 241,
+    "fail": 0,
+    "skip": 0
+  },
+  "tasks": {
+    "exit_code": 0,
+    "files": 2298,
+    "existing_other_scope_warnings": 273,
+    "own_episode_warnings": 0
+  },
+  "git_diff_check": {
+    "exit_code": 0
+  },
+  "credential_pattern_scan_before_final_bookkeeping": {
+    "actual_tool": "3d5295",
+    "exit_code": 0,
+    "files": 62,
+    "findings": 0,
+    "report": {
+      "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/public-pattern-scan-before-commit.json",
+      "bytes": 14700,
+      "sha256": "75897f1e17d1e0880a78608a5a4ab5ba2635a00038d58c840b64d66f6b6b4ff4"
+    },
+    "limits": "Final handoff/validation bookkeeping is additional and will receive a separate final scan before commit."
+  },
+  "logs_and_actual_exits": [
+    {
+      "name": "docs-videos",
+      "command": [
+        "npm",
+        "run",
+        "test:docs-videos"
+      ],
+      "started_at": "2026-11-03T02:39:52.492488+00:00",
+      "completed_at": "2026-11-03T02:40:53.562427+00:00",
+      "exit_code": 0,
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/checks-final-nov3/docs-videos.stdout.log",
+        "bytes": 20269,
+        "sha256": "a45eb5a54d753ce2a60e97da5fc80d380a247d0c0ab554e6f74760bc7c722d8a"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/checks-final-nov3/docs-videos.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "tasks",
+      "command": [
+        "npm",
+        "run",
+        "check:tasks"
+      ],
+      "started_at": "2026-11-03T02:40:53.566653+00:00",
+      "completed_at": "2026-11-03T02:40:54.203931+00:00",
+      "exit_code": 0,
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/checks-final-nov3/tasks.stdout.log",
+        "bytes": 53563,
+        "sha256": "9c97f77716e11f7385b98afd0231350a35c47260c66e6b8e5b360bfeb48d5feb"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/checks-final-nov3/tasks.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "started_at": "2026-11-03T02:40:54.204685+00:00",
+      "completed_at": "2026-11-03T02:40:54.253463+00:00",
+      "exit_code": 0,
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/checks-final-nov3/diff.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/checks-final-nov3/diff.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "task": {
+    "id": "2026-10-25-ai-slides-outline-review-with-four",
+    "status": "blocked",
+    "owner": null,
+    "claimed_at": null,
+    "normal_release_and_status_exits": [
+      0,
+      0
+    ]
+  },
+  "foreign_checked_M4A": 0,
+  "actual_foreign_dub_CC": 0,
+  "whole_episode_done": false,
+  "no_new_native_QA_TTS_ASR_backend_replay": true,
+  "no_merge_deploy_YouTube": true
+}

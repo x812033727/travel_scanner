@@ -1,0 +1,266 @@
+{
+  "kind": "Slides_Nov3_independent_actual_backend_delivery_review",
+  "at": "2026-11-03T02:31:42.799960+00:00",
+  "reviewer": "/root/ai_look_backend_prep",
+  "verdict": "PASS_ACTUAL_RETAINED_RECEIPTS_AND_CURRENT_LOCAL_IDENTITIES",
+  "review_scope": "Read-only independent local audit. No auth, network, producer replay, Git, or canonical writes.",
+  "inputs": {
+    "profile": {
+      "name": "profile.json",
+      "bytes": 1444079,
+      "sha256": "f6ad1ed1bb802dd7355aa6ab172e94a56c10325d48a1d710681e1d2d8994ae5d"
+    },
+    "helper": {
+      "name": "runner-recovery-nov3.mjs",
+      "bytes": 39052,
+      "sha256": "1f0f88546f74a0a89d88e9007c8fcb6880dbd931317c4116afc6e21d0c91e6de"
+    },
+    "intent": {
+      "name": "intent.json",
+      "bytes": 314,
+      "sha256": "9e77831c42597ad8fc714ad6bed48f4b3b88b33adac4e8b32196d2d421ba27e6"
+    },
+    "completion": {
+      "name": "completion.json",
+      "bytes": 857,
+      "sha256": "16a148e94623717c241a54ff6c847aadec85c6888637432768cf45157dd0edf4"
+    },
+    "before": {
+      "name": "before.private.bin",
+      "bytes": 163066,
+      "sha256": "34a56054a62abf31a13e11ec0068df9a363cc8708b7a271e20c469f2ef8627b0"
+    },
+    "before_POST": {
+      "name": "before-post.private.bin",
+      "bytes": 163066,
+      "sha256": "34a56054a62abf31a13e11ec0068df9a363cc8708b7a271e20c469f2ef8627b0"
+    },
+    "after": {
+      "name": "after.private.bin",
+      "bytes": 210811,
+      "sha256": "3ee91997a22558169408e9397bd1374dd16db07bc2c3d4b8108c27bca09390eb"
+    },
+    "archive_subset_review": {
+      "name": "independent-delivery-archive-subset-nov3.json",
+      "bytes": 10081,
+      "sha256": "b2e25a36d2c56b8f96f1dba7eb18765e516851e975118c30c961cca220a97d08"
+    }
+  },
+  "project": {
+    "slug": "ai-slides-outline-review",
+    "old_review_id": "a0e0a6bc-aca6-4182-adf1-00fa8176937e",
+    "new_review_id": "af432542-47db-4649-9761-17c0f6ca2127",
+    "new_status": "pending",
+    "old_status": "superseded",
+    "new_content_sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d",
+    "new_files": 47,
+    "pending_count": 4,
+    "new_choices_all_null": true,
+    "before_and_immediate_prePOST_entire_baseline_equal": true,
+    "all_five_old_rows_unchanged_except_one_status": true,
+    "all_other_project_fields_unchanged_except_last_synced_at": true,
+    "ack_equals_actual_new_row": true,
+    "no_publish_approval_or_YouTube_change": true
+  },
+  "payload": {
+    "exact_outbound_equal_after": true,
+    "metadata9_exact_old_and_current": true,
+    "chapter_list_exact": true,
+    "current_QA_bound_main_and_actual_fresh_own_exit": true,
+    "current_QA_ok": true,
+    "current_QA_items": 11,
+    "old_true_QA_preserved": true,
+    "fresh_QA_policy_POST": 1,
+    "fresh_QA_public_link_GET": 7,
+    "unchecked_dub_refs": 0,
+    "foreign_checked_M4A": 0,
+    "old_program_M4A_and_report_historical_roles": true,
+    "stale_supplemental_proofs_absent_from_current_payload": true
+  },
+  "actual_network_receipts": {
+    "completion_counts": {
+      "auth_reads": 1,
+      "project_GET": 3,
+      "file_PUT": 29,
+      "review_POST": 1,
+      "file_GET": 13
+    },
+    "numbered_dispatch_response_pairs": 43,
+    "all_own_project_routes_only": true,
+    "file_parts": [
+      {
+        "role": "evidence_zh_tw_1080p_mp4",
+        "parts": 14,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "preview",
+        "parts": 4,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "contact_sheet",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "thumbnail",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_thumbnail_ai_en",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_thumbnail_ai_ja",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_thumbnail_ai_ko",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_thumbnail_ai_es",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_thumbnail_ai_pt",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_thumbnail_ai_id",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_thumbnail_ai_vi",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_thumbnail_ai_th",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      },
+      {
+        "role": "evidence_previous_candidate_archive",
+        "parts": 1,
+        "all_actual_ACK_responses_hash_bound": true
+      }
+    ],
+    "all_29_part_ACK_raw_JSON_hashes_match_response_receipts": true,
+    "one_POST_body_and_ACK_fullhash_bound": true,
+    "all_13_full_GET_status_bytes_hash_MIME_match_actual_profile_and_after_refs": true,
+    "readbacks": [
+      {
+        "role": "evidence_zh_tw_1080p_mp4",
+        "bytes": 58590145,
+        "sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d",
+        "content_type": "video/mp4"
+      },
+      {
+        "role": "preview",
+        "bytes": 15308385,
+        "sha256": "ff4d3971e101bb0f6809859cf17a552615c260d032cab4844209e155b96e94b7",
+        "content_type": "video/mp4"
+      },
+      {
+        "role": "contact_sheet",
+        "bytes": 2289402,
+        "sha256": "e4d1f114e09b451d9d60b86e7af047f1dd3eb69adb47bc45838f13595af75f05",
+        "content_type": "image/png"
+      },
+      {
+        "role": "thumbnail",
+        "bytes": 127183,
+        "sha256": "1182af9a366e3813f0a91cf368d8c3d75614b04fc3eae78c987e9e88b0996a25",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ai_en",
+        "bytes": 123451,
+        "sha256": "6ba698932d1a8a0a33b042a58db62af7f8c5fea0163782ab8bc487ec8a57c7c6",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ai_ja",
+        "bytes": 126248,
+        "sha256": "8f639114a677f3696dea2f7edb4612f05b28fe924c23e9d7087b55275baab9b0",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ai_ko",
+        "bytes": 119361,
+        "sha256": "5e142b33154223a13715f80f8beed908a7b4792363f6d5a022f3f069d35a7ff1",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ai_es",
+        "bytes": 129583,
+        "sha256": "ae72b378df1a7193da1eae8d5b8d439da7ed40623ba08ade2cc78f69f427e15b",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ai_pt",
+        "bytes": 130898,
+        "sha256": "8404fc40dce8aad1d496dbd2dbc5a2a12f401ba11a4bea3d4291f3b7c8518806",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ai_id",
+        "bytes": 127280,
+        "sha256": "cacfa4562cb5122f5c7a025c0780103d911be79d0774d7872e0a1046df3394e3",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ai_vi",
+        "bytes": 128730,
+        "sha256": "797624398cd676a83e8c3eaf897fcde2982e6ef13520f76b9c4803c68bf51f66",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_thumbnail_ai_th",
+        "bytes": 118786,
+        "sha256": "90784fd167de6adccd50f16fd008d68d5f3cab9dfb3cab2ac9c1beea6013ceea",
+        "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_previous_candidate_archive",
+        "bytes": 1522105,
+        "sha256": "ef46c7dacc359375181a7710aa76ce24b7358f67cb700e1f645d9b029faaa070",
+        "content_type": "application/json"
+      }
+    ],
+    "no_unknown_or_failed_retained_response": true
+  },
+  "archive": {
+    "strict_13_member_47_reference_5_old_review_reconstruction_independent_subset": true,
+    "subset_report_sha256": "b2e25a36d2c56b8f96f1dba7eb18765e516851e975118c30c961cca220a97d08",
+    "current_archive_matches_actual_full_GET_SHA_bytes_MIME": true,
+    "binary_readback_evidence_limit": "The executed helper hashed and validated response buffers in memory. Separate downloaded bodies were not retained. This audit binds retained dispatch/response receipts to fully hashed current local artifacts; it does not claim to reopen retained downloaded bodies.",
+    "old_individual_13_URLs_not_claimed_live": true
+  },
+  "protection": {
+    "all_four_global_hold_files_exact": true,
+    "current_and_historical_project_LEASE_absent": true,
+    "delivery_producer_PID_absent": true,
+    "auto_json_absent": true,
+    "native_own_lease_release_recorded": true,
+    "no_global_hold_released_or_reinterpreted": true
+  },
+  "runtime_evidence_limit": "Root separately reported actual tool 1c5fda/session4575 exit0. This reviewer did not poll or replay that session; local actual completion and released lease are independently checked.",
+  "reviewer_actions": {
+    "auth": 0,
+    "network": 0,
+    "native_or_producer_execution": 0,
+    "Git": 0,
+    "canonical_writes": 0,
+    "scratch_report_and_verifier_only": true
+  }
+}

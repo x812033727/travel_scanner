@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-11-03T02:02:34.120Z",
+  "pid": 70398,
+  "profile_sha256": "f0b1a8cd9b8681adaecb92093cf16dbfb7c23b3078d94f3defa5114fa62e5ff3",
+  "new_final_sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d",
+  "policy_request_sha256": "a5a92fa4f0da18e1a61af7abeb30fd5d5556807305fb5df14298d9e868e46947",
+  "limits": {
+    "native_qa_invocations": 1,
+    "actual_policy_HTTP_POST_max": 1,
+    "actual_Jev_success_max": 1,
+    "link_GET_per_initial_URL_max": 1,
+    "link_redirects": "normal-native-follow",
+    "network_retries": 0,
+    "review_POST": 0,
+    "project_PUT": 0,
+    "file_PUT": 0,
+    "approval_writes": 0,
+    "speech_TTS_ASR_dub_writes": 0
+  },
+  "pending_review": "a0e0a6bc-aca6-4182-adf1-00fa8176937e",
+  "current_pending_basis": "Root actual one normal Slides GET. QA does not query or mutate project/review state; Root must freshly reconcile before later delivery.",
+  "no_approval": true
+}

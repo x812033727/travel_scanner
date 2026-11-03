@@ -1,0 +1,40 @@
+{
+  "kind": "Root_actual_new_main_nine_seam_frames_visual_review",
+  "at": "2026-11-03T01:55:31.373579+00:00",
+  "main_sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d",
+  "ffmpeg_actual_exit": 0,
+  "ffprobe_frames": 18886,
+  "Root_viewed_actual_1920_contact": true,
+  "contact_sha256": "b12c433448c8170968b4db07cc7032af590c9eb30ea3dd0e3c830f11319bba49",
+  "frame_manifest_sha256": "220f5f6eb0ed4ac7353c596e962a1eddcee3d23c33219ff4ed0f443a25f68832",
+  "selected_frame_indices": [
+    0,
+    756,
+    757,
+    831,
+    906,
+    907,
+    18255,
+    18256,
+    18885
+  ],
+  "official_intro_interval_frames": [
+    757,
+    907
+  ],
+  "official_outro_interval_frames": [
+    18256,
+    18886
+  ],
+  "actual_branding_placement_correct": true,
+  "body_before_and_after_official_intro_preserved": true,
+  "findings": "Frame0 and907 are native start-of-card reveals with blank paper before text animation; this is preserved normal animation, not a blank PNG failure. Frame757officialintro,831midintro,906CCcuebrand,18256outrologo,18885endscreen allpresent. Body1end756 andbodylast18255 remainreadable. All114full-size still reviews are separate.",
+  "not_full_video_playback_or_new_audio_listening": true,
+  "audio_difference_report": {
+    "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/resume-20261103/native-recovery/audio-encode-comparison/comparison.json",
+    "sha256": "12f0ac29874e7aad41fe1f9ce4bdcf47545108b0b7a041c647e33d284857147b"
+  },
+  "current_118_raw_WAV_full_intended_ASR_acceptance_preserved_and_hash_bound": true,
+  "new_encoded_AAC_or_PCM_not_claimed_byteexact_to_old": true,
+  "server_approval": false
+}

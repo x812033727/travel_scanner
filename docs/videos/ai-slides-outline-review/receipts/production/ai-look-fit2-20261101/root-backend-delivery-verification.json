@@ -1,0 +1,226 @@
+{
+  "ok": true,
+  "observed_at": "2026-11-03T02:28:17.570271+00:00",
+  "scope": "Root independent local verification of actual completed network receipts; no additional request",
+  "actual_tool_terminal": {
+    "start_tool": "4949a2",
+    "session_id": 4575,
+    "wait_tool": "1c5fda",
+    "exit_code": 0,
+    "stdout": "actual helper ok/new pending ID",
+    "stderr_empty": true,
+    "process_exit_file": "helper does not emit one; tool terminal observed, not fabricated"
+  },
+  "new_review_id": "af432542-47db-4649-9761-17c0f6ca2127",
+  "old_review_id": "a0e0a6bc-aca6-4182-adf1-00fa8176937e",
+  "new_status": "pending",
+  "old_status": "superseded",
+  "new_main": {
+    "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/final.mp4",
+    "bytes": 58590145,
+    "sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d",
+    "role": "evidence_zh_tw_1080p_mp4",
+    "content_type": "video/mp4"
+  },
+  "new_preview": {
+    "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/review/preview-67bb7eef39559335.mp4",
+    "bytes": 15308385,
+    "sha256": "ff4d3971e101bb0f6809859cf17a552615c260d032cab4844209e155b96e94b7",
+    "role": "preview",
+    "content_type": "video/mp4"
+  },
+  "project_deep_comparison": {
+    "before_equals_dated_baseline": true,
+    "before_POST_equals_before": true,
+    "after_equals_exact_expected": true,
+    "allowed_changes": [
+      "last_synced_at",
+      "new pending review inserted",
+      "old current final status superseded"
+    ],
+    "old_other_reviews_and_all_choices_settings_unchanged": true,
+    "pending": 4,
+    "reviews_before": 5,
+    "reviews_after": 6
+  },
+  "outbound_exact": true,
+  "metadata9_and_chapters_unchanged": true,
+  "fresh_QA": {
+    "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/review/qa.json",
+    "bytes": 1981,
+    "sha256": "4d5072184fc8b53d03d244cb2fa58fda96a17054f6b6e5342609ac371658c69b",
+    "all_true": 11
+  },
+  "actual_dispatch_counts": {
+    "file_PUT": 29,
+    "review_POST": 1,
+    "file_GET": 13
+  },
+  "actual_context_counts": {
+    "auth_reads": 1,
+    "project_GET": 3,
+    "file_PUT": 29,
+    "review_POST": 1,
+    "file_GET": 13
+  },
+  "new_full_binary_readbacks": [
+    {
+      "role": "evidence_zh_tw_1080p_mp4",
+      "bytes": 58590145,
+      "sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d",
+      "content_type": "video/mp4"
+    },
+    {
+      "role": "preview",
+      "bytes": 15308385,
+      "sha256": "ff4d3971e101bb0f6809859cf17a552615c260d032cab4844209e155b96e94b7",
+      "content_type": "video/mp4"
+    },
+    {
+      "role": "contact_sheet",
+      "bytes": 2289402,
+      "sha256": "e4d1f114e09b451d9d60b86e7af047f1dd3eb69adb47bc45838f13595af75f05",
+      "content_type": "image/png"
+    },
+    {
+      "role": "thumbnail",
+      "bytes": 127183,
+      "sha256": "1182af9a366e3813f0a91cf368d8c3d75614b04fc3eae78c987e9e88b0996a25",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_thumbnail_ai_en",
+      "bytes": 123451,
+      "sha256": "6ba698932d1a8a0a33b042a58db62af7f8c5fea0163782ab8bc487ec8a57c7c6",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_thumbnail_ai_ja",
+      "bytes": 126248,
+      "sha256": "8f639114a677f3696dea2f7edb4612f05b28fe924c23e9d7087b55275baab9b0",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_thumbnail_ai_ko",
+      "bytes": 119361,
+      "sha256": "5e142b33154223a13715f80f8beed908a7b4792363f6d5a022f3f069d35a7ff1",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_thumbnail_ai_es",
+      "bytes": 129583,
+      "sha256": "ae72b378df1a7193da1eae8d5b8d439da7ed40623ba08ade2cc78f69f427e15b",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_thumbnail_ai_pt",
+      "bytes": 130898,
+      "sha256": "8404fc40dce8aad1d496dbd2dbc5a2a12f401ba11a4bea3d4291f3b7c8518806",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_thumbnail_ai_id",
+      "bytes": 127280,
+      "sha256": "cacfa4562cb5122f5c7a025c0780103d911be79d0774d7872e0a1046df3394e3",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_thumbnail_ai_vi",
+      "bytes": 128730,
+      "sha256": "797624398cd676a83e8c3eaf897fcde2982e6ef13520f76b9c4803c68bf51f66",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_thumbnail_ai_th",
+      "bytes": 118786,
+      "sha256": "90784fd167de6adccd50f16fd008d68d5f3cab9dfb3cab2ac9c1beea6013ceea",
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "evidence_previous_candidate_archive",
+      "bytes": 1522105,
+      "sha256": "ef46c7dacc359375181a7710aa76ce24b7358f67cb700e1f645d9b029faaa070",
+      "content_type": "application/json"
+    }
+  ],
+  "actual_part_acknowledgements_complete": true,
+  "new_unique_roles": 47,
+  "retained_old_refs": 34,
+  "archived_small_members_strictly_decoded": 13,
+  "prior_all47_manifest_exact": true,
+  "prior_all5_review_rows_exact": true,
+  "archive_readback_hash_equals_independently_strictly_decoded_local_archive": true,
+  "current_manual_review_and_hand_pushed": true,
+  "server_approval": false,
+  "unchecked_dub_attached": false,
+  "foreign_checked_M4A": 0,
+  "actual_dub_CC": 0,
+  "held4_unchanged_descriptors": [
+    {
+      "file": "/workspace/work/ai-tech-next/forty-asr-coordination.json",
+      "bytes": 1104,
+      "sha256": "342d7b1aafbf751f0eddc60531a7fb4c42a2a4be74f8a03da777c179e1b74c9d"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/series-tts-service-hold.json",
+      "bytes": 5127,
+      "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/.global-check-audio-slot/LEASE",
+      "bytes": 292,
+      "sha256": "18b629d2f1ab8243977bc0bb0ce5a0cfdaab6306c72e46fad75678e66dc85764"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/audio/speech-journal/dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7.json",
+      "bytes": 422,
+      "sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f"
+    }
+  ],
+  "own_project_lease_absent": true,
+  "own_actual_PID_absent": true,
+  "auto_json_absent": true,
+  "evidence_inputs": [
+    {
+      "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/backend/runs/67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d-83b0e70ea3d144bb/before.private.bin",
+      "bytes": 163066,
+      "sha256": "34a56054a62abf31a13e11ec0068df9a363cc8708b7a271e20c469f2ef8627b0"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/backend/runs/67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d-83b0e70ea3d144bb/before-post.private.bin",
+      "bytes": 163066,
+      "sha256": "34a56054a62abf31a13e11ec0068df9a363cc8708b7a271e20c469f2ef8627b0"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/backend/runs/67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d-83b0e70ea3d144bb/after.private.bin",
+      "bytes": 210811,
+      "sha256": "3ee91997a22558169408e9397bd1374dd16db07bc2c3d4b8108c27bca09390eb"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/backend/runs/67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d-83b0e70ea3d144bb/exact-outbound.private.json",
+      "bytes": 50876,
+      "sha256": "191c945ecc6c2af93bbb655d785764f078e792c704b551d2986233e909262085"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/backend/runs/67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d-83b0e70ea3d144bb/review-post-ack.private.json",
+      "bytes": 51050,
+      "sha256": "fc4756f2bafae7258ac7b3987ece17fe7bbe59c739a1dda12d1e5f3556a4c3c6"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/backend/runs/67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d-83b0e70ea3d144bb/completion.json",
+      "bytes": 857,
+      "sha256": "16a148e94623717c241a54ff6c847aadec85c6888637432768cf45157dd0edf4"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/backend/runs/67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d-83b0e70ea3d144bb/all-new-full-binary-readbacks.json",
+      "bytes": 2385,
+      "sha256": "78210d03a7b775831298eec02d27f7a9017021e9ba1381ae569908adab1ec7d4"
+    }
+  ],
+  "limits": [
+    "Retained old34 binary refs verified by metadata, not freshly downloaded in this delivery.",
+    "Old13 individual URLs may be pruned; exact bytes reconstructible in downloaded lossless archive.",
+    "No fresh TTS/ASR or full human listening; current AAC/PCM differ from old and old standalone zh M4A/report are historical.",
+    "No approval, language batch, merge, deploy or YouTube operation."
+  ]
+}

@@ -1,0 +1,499 @@
+{
+  "kind": "SLIDES_AI_look_thumbnail9_independent_actual_visual_peer_review",
+  "reviewed_at_utc": "2026-11-01T17:40:18.673099+00:00",
+  "overall": "PASS_PREVIEW_V2_WITH_BACKGROUND_CROP_NOTE",
+  "scope": "Independent view of existing local previews only. The only write is this scratch report; no canonical/work files, native renderer/QA, auth, network, paid service or formal review state was changed.",
+  "actually_viewed_all9_full_JPEGs": true,
+  "actually_viewed_actual320_grid": true,
+  "all9_foreground_hook_sub_legible_without_visible_clipping_or_mutual_overlap": true,
+  "visual_findings": [
+    "The subject is white, the hook is orange, and the white sub is readable against the dark lower gradient in each full-size image and 320px tile.",
+    "All nine series/tag bars are complete and readable. Their orange series text matches the intended accent visually; each HTML sets #ff8a1f. JPEG pixels are not treated as exact hexadecimal color proof.",
+    "JA/Korean characters and punctuation remain complete. Thai upper/lower marks and Vietnamese accents remain complete. Spanish opening/closing question marks and the shortened Indonesian Sumbernya? are visible and readable.",
+    "The original background auxiliary headings 作者初稿 and 四頁成品 are partly cropped at the top by the existing normal cover framing; this is a real visible crop, so the report does not claim that every background glyph is intact.",
+    "The two draft cards, arrow and four output-page cards still communicate outline to four-page output. The dark gradient and foreground text cover part of the lower background cards by design; those small card labels and chart data are contextual imagery, not the foreground reading target.",
+    "Every sub retains the original/self-made and not-product-UI boundary. The composition is not represented as a Notebook screen or product test."
+  ],
+  "crop_judgment": "The shared background heading crop does not obscure the foreground hook/sub or the visible outline-to-four-page transformation; no additional wording or image revision is required for this preview acceptance.",
+  "native_QA_evidence": {
+    "source": {
+      "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/result.json",
+      "bytes": 5378,
+      "sha256": "f2a1ee870fc23dd0c6422b403460f2ee61ecebe11f3027c5a3b9d125439e2dcf"
+    },
+    "fetchAttempts": 0,
+    "all9_checks_ok": true,
+    "all9_no_layout_problems": true,
+    "headline_estimate_px_at_320": {
+      "zh-TW": 33,
+      "en": 30,
+      "ja": 26,
+      "ko": 26,
+      "es": 29,
+      "pt": 25,
+      "id": 28,
+      "vi": 29,
+      "th": 33
+    },
+    "range_px": [
+      25,
+      33
+    ],
+    "minimum_threshold_unchanged": 24,
+    "method_limit": "These heights are estimates reported by the existing native QA. This review did not rerun a browser or independently measure glyph heights."
+  },
+  "v1_failures_preserved": {
+    "source": {
+      "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v1/result.json",
+      "bytes": 5436,
+      "sha256": "7654112cfb0ebee24960ac28a6c9c60f0d155ab890fba14284b8af88655c894f"
+    },
+    "es_prior_estimate_px": 21,
+    "id_prior_estimate_px": 22,
+    "not_rewritten_as_pass": true
+  },
+  "revised_v2_results": {
+    "es": {
+      "headline": "Slides IA **¿Fuentes?**",
+      "native_estimate_px": 29
+    },
+    "id": {
+      "headline": "Slide AI **Sumbernya?**",
+      "native_estimate_px": 28
+    }
+  },
+  "render_scope_boundary": "This PASS concerns only the actual preview-v2 thumbnail set. It is not full-video, audio, product-test, native PowerPoint, or final-review approval. Existing official v4 delivery is not claimed missing.",
+  "sources": [
+    {
+      "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/phone320-grid.png",
+      "bytes": 305171,
+      "sha256": "dd165ffc00f03045bfa15aa5b02575f692847b5d7457b7408cf05adf7177d7db"
+    },
+    {
+      "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/words.json",
+      "bytes": 1278,
+      "sha256": "15cc427f2bcc8668015d305b292d0f84f7f6e32ebb9aceedef61cfe4f4b9bd22"
+    },
+    {
+      "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/words-peer-review-v2.json",
+      "bytes": 7586,
+      "sha256": "b7867fd6812bebf738b8232a90f984da8cea108d82311ba15e71223bc4e54bf0"
+    }
+  ],
+  "reviews": {
+    "zh-TW": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 33,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/zh-TW.jpg",
+          "bytes": 127183,
+          "sha256": "1182af9a366e3813f0a91cf368d8c3d75614b04fc3eae78c987e9e88b0996a25"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/zh-TW-320.png",
+          "bytes": 47550,
+          "sha256": "02be2a8040cd39cb74566884efbc7ceb4389e2a4b33d40c2e45eda08d642c21b",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/zh-TW.html",
+          "bytes": 2077,
+          "sha256": "4eaba10062d1d7bceefc2623eda9e669eb2b3428eae29731028f051b9a55ebf9"
+        }
+      }
+    },
+    "en": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 30,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/en.jpg",
+          "bytes": 123451,
+          "sha256": "6ba698932d1a8a0a33b042a58db62af7f8c5fea0163782ab8bc487ec8a57c7c6"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/en-320.png",
+          "bytes": 47295,
+          "sha256": "35c84e591dac4815994accf25f9f8d69d0ba4f2220e7b7c9b066c7cf26b35f9b",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/en.html",
+          "bytes": 2066,
+          "sha256": "9e8c33dc1d09db95943abb207ddb7dab4c9a090309f9b5f7f36986ca27b89182"
+        }
+      }
+    },
+    "ja": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 26,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/ja.jpg",
+          "bytes": 126248,
+          "sha256": "8f639114a677f3696dea2f7edb4612f05b28fe924c23e9d7087b55275baab9b0"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/ja-320.png",
+          "bytes": 48725,
+          "sha256": "ba04722845cfdb7f0cc848b9c544b06c4227f5cf226c3941b87eb5b1afdef9af",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/ja.html",
+          "bytes": 2245,
+          "sha256": "0b7a2e089387266428cd5e2d1be1c426a4e26b988a76c725142557a1060218d6"
+        }
+      }
+    },
+    "ko": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 26,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/ko.jpg",
+          "bytes": 119361,
+          "sha256": "5e142b33154223a13715f80f8beed908a7b4792363f6d5a022f3f069d35a7ff1"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/ko-320.png",
+          "bytes": 45732,
+          "sha256": "afbf8e3ab6a5b34ed89ab3aff29bab116f4f3f94142530f975b6b7702cc48cd1",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/ko.html",
+          "bytes": 2239,
+          "sha256": "99eada715999b564317d9c677128734b335db6fc0d7f58e3dc03b4b249985f83"
+        }
+      }
+    },
+    "es": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 29,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/es.jpg",
+          "bytes": 129583,
+          "sha256": "ae72b378df1a7193da1eae8d5b8d439da7ed40623ba08ade2cc78f69f427e15b"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/es-320.png",
+          "bytes": 49478,
+          "sha256": "4551259da52302fbd41d478fe8bdfcf1a0ec61d4d7f3bbfff6dd3d37dc2b46bf",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/es.html",
+          "bytes": 2079,
+          "sha256": "16dc99cca49d01d5664d11a5ebab1a5012f4e74678d00560f589194fff4a870c"
+        }
+      }
+    },
+    "pt": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 25,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/pt.jpg",
+          "bytes": 130898,
+          "sha256": "8404fc40dce8aad1d496dbd2dbc5a2a12f401ba11a4bea3d4291f3b7c8518806"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/pt-320.png",
+          "bytes": 49523,
+          "sha256": "0168ccad652d43120959f253a252f089e52a3c8230960dd61afa1fba9f972ee6",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/pt.html",
+          "bytes": 2084,
+          "sha256": "66125be2a7abec0008163789b3f2e829e08c45dcaa2f900b6685d02a30d4593c"
+        }
+      }
+    },
+    "id": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 28,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/id.jpg",
+          "bytes": 127280,
+          "sha256": "cacfa4562cb5122f5c7a025c0780103d911be79d0774d7872e0a1046df3394e3"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/id-320.png",
+          "bytes": 48549,
+          "sha256": "44860b6800319588e630f3f7e2b119a97075b1dc0d09de069d5f47085c5883b7",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/id.html",
+          "bytes": 2070,
+          "sha256": "ff5e75c48d0710931cec38888f1c2f32a6f432f4b696d05e1bbc4be6dc201f04"
+        }
+      }
+    },
+    "vi": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 29,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/vi.jpg",
+          "bytes": 128730,
+          "sha256": "797624398cd676a83e8c3eaf897fcde2982e6ef13520f76b9c4803c68bf51f66"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/vi-320.png",
+          "bytes": 49087,
+          "sha256": "4a06e3bbdb26d93a66433bb57ccc14c2028e82ebd78aad682fe714ceb338c456",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/vi.html",
+          "bytes": 2091,
+          "sha256": "d38bcd84276640cdf777f19f3dc8dbc5f8b75eead90885418d1919100e371f27"
+        }
+      }
+    },
+    "th": {
+      "status": "PASS_PREVIEW_V2_VISUAL",
+      "actually_viewed": [
+        "1280x720 full JPEG",
+        "320x180 tile in phone320-grid.png"
+      ],
+      "foreground_text_observation": "Subject, highlighted hook, series/tag and sub are complete and readable; no visible clipping or mutual text overlap.",
+      "source_boundary_observation": "The visible sub identifies an original/self-made example and excludes product UI. The source question does not claim a Notebook test or AI-generated PPTX.",
+      "common_background_crop_note_applies": true,
+      "native_headline_estimate_px_at_320": 33,
+      "native_estimate_is_existing_QA_not_independent_pixel_measurement": true,
+      "checks": {
+        "actual_JPEG_hash_matches_native_result": true,
+        "actual_HTML_hash_matches_native_result": true,
+        "rendered_headline_DOM_matches_v2_words": true,
+        "rendered_sub_DOM_matches_v2_words": true,
+        "tag_present_in_series_label": true,
+        "source_asset_is_original_author_composition": true,
+        "series_and_hook_CSS_accent_ff8a1f": true,
+        "native_no_layout_problems": true,
+        "native_thumbnail_checks_ok": true,
+        "native_no_warnings": true,
+        "native_estimate_at_least_24px": true
+      },
+      "artifacts": {
+        "JPEG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/th.jpg",
+          "bytes": 118786,
+          "sha256": "90784fd167de6adccd50f16fd008d68d5f3cab9dfb3cab2ac9c1beea6013ceea"
+        },
+        "phone320_PNG": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/th-320.png",
+          "bytes": 45398,
+          "sha256": "da73e80b419a5ea4f87c8d3e4b2accbc3b730927e453066d858753f07b929be6",
+          "dimensions": [
+            320,
+            180
+          ]
+        },
+        "HTML": {
+          "path": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/preview-v2/th.html",
+          "bytes": 2313,
+          "sha256": "4fc48e13db12ddb9429e507d9df1de176b9bd24a68bbdbe5b90e5d5516b662ea"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "kind": "actual_full_body_decoded_PCM_comparison_NOT_new_ASR_or_full_listening",
+  "at": "2026-11-03T01:53:30.153564+00:00",
+  "sources": [
+    {
+      "source": "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/resume-20261103/before-interrupted-work/build/body.mp4",
+      "actual_exit": 0,
+      "args": [
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/resume-20261103/before-interrupted-work/build/body.mp4",
+        "-map",
+        "0:a:0",
+        "-ac",
+        "1",
+        "-ar",
+        "16000",
+        "-c:a",
+        "pcm_f32le",
+        "-f",
+        "f32le",
+        "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/resume-20261103/native-recovery/audio-encode-comparison/previous.f32le"
+      ],
+      "decoded_samples": 9656661,
+      "decoded_seconds": 603.5413125,
+      "decoded_file_sha256": "47e35da48722d09450b1ceefa65edd8b1a66b30f04d13f9459d16fe926f756ab"
+    },
+    {
+      "source": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/build/body.mp4",
+      "actual_exit": 0,
+      "args": [
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/build/body.mp4",
+        "-map",
+        "0:a:0",
+        "-ac",
+        "1",
+        "-ar",
+        "16000",
+        "-c:a",
+        "pcm_f32le",
+        "-f",
+        "f32le",
+        "/workspace/work/ai-tech-next/slides-ai-look-fit2-20261101/resume-20261103/native-recovery/audio-encode-comparison/current.f32le"
+      ],
+      "decoded_samples": 9656661,
+      "decoded_seconds": 603.5413125,
+      "decoded_file_sha256": "99178f033f93a3379020ee911a25fa1ff4f5c6c94c73cc85a0bbb66098c87ee3"
+    }
+  ],
+  "sample_rate": 16000,
+  "channels_for_comparison": 1,
+  "equal_sample_count": true,
+  "decoded_samples": 9656661,
+  "zero_lag_cosine_similarity": 0.9992616035033225,
+  "least_squares_current_gain_relative_to_previous": 1.0010996266958265,
+  "RMS_previous": 0.17810572383511436,
+  "RMS_current": 0.1784333281881476,
+  "RMS_difference": 0.00685855681733481,
+  "max_absolute_sample_difference": 0.38972919434309006,
+  "decoded_PCM_byteexact": false,
+  "no_new_pass_threshold_or_flag_clearing": true,
+  "scope": "Full decoded audio numerical comparison only. Original current118 WAV/full intended/ASR acceptance remains independently hashbound by protected original inspection; compressedAAC differences are not called byteexact or a new listeningcheck. Native quality and actual fresh QA remain separate."
+}
