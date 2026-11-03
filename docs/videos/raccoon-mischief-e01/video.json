@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "slug": "raccoon-mischief-e01",
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real raccoons with natural fur texture standing upright and wearing human clothes like a family, the same warm cozy living room every episode (beige sofa, wooden side table, floor lamp, patterned rug, front door), warm evening light, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "doudou",
+      "name": "豆豆",
+      "appearance": "a real young raccoon with the size of a small child, standing upright on its hind legs, natural black eye mask, wearing a bright yellow hoodie and a red bath towel tied around its neck as a superhero cape",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "mama",
+      "name": "浣熊媽媽",
+      "appearance": "a real adult raccoon standing upright on its hind legs, wearing a green knitted sweater and a pearl necklace, carrying a plastic shopping bag with a bunch of green onions sticking out",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "baba",
+      "name": "浣熊爸爸",
+      "appearance": "a real adult raccoon with a round belly standing upright on its hind legs, wearing a blue knitted vest over a white shirt and small reading glasses on its nose",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "quiet mischievous pizzicato tiptoe tune, suspense pause, then a soft deadpan comedy sting, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sfx": {
+    "set": "raccoon-comedy",
+    "cues": [
+      {
+        "scene": "s01-crash",
+        "sound": "shatter"
+      },
+      {
+        "scene": "s02-key",
+        "sound": "keys"
+      },
+      {
+        "scene": "s03-vase",
+        "sound": "crunch"
+      },
+      {
+        "scene": "s05-onions",
+        "sound": "sting"
+      }
+    ]
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "打破花瓶的小浣熊決定自己當花瓶 #闖禍小浣熊",
+    "description": "小浣熊豆豆闖禍了。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "闖禍小浣熊",
+      "浣熊",
+      "無厘頭",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "我是花瓶",
+      "tag": "闖禍小浣熊",
+      "shot": "s03-vase"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-crash",
+      "chapter": "闖禍",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of the cozy living room: a big blue ceramic vase lies smashed into pieces on the wooden floor next to the side table, flowers and water spilled everywhere; on the sofa the little raccoon in a yellow hoodie and red towel cape is frozen mid superhero take-off pose, one arm stretched forward",
+        "camera": "Medium shot, locked",
+        "motion": "the last shard of the vase spins twice on the floor and stops; the little raccoon does not move at all, not even blinking",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-key",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close-up of the little raccoon's face in the foreground, black eye mask, red cape at its neck; behind it, out of focus, the front door of the living room",
+        "camera": "Close-up, locked",
+        "motion": "the door handle in the background slowly turns; the little raccoon's eyes slowly slide from the door to the camera and its ears flatten back",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-vase",
+      "chapter": "我是花瓶",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the side table where the vase used to stand: the little raccoon stands on the table wrapped up to its neck in a blue tablecloth like a vase, both arms curved above its head into the vase's rim, three flower stems held in the corner of its mouth, a bit of red cape peeking out from under the cloth; the floor is clean and the rug in the middle has a big suspicious lump; the mother raccoon in a green sweater stands in the doorway with a bag of green onions",
+        "camera": "Medium shot, locked",
+        "motion": "the 'vase' raccoon's eyes slide sideways once and a single petal falls; the lump under the rug trembles a little",
+        "characters": [
+          "doudou",
+          "mama"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-lamp",
+      "chapter": "還有一個",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of the corner of the living room where the floor lamp used to stand: the father raccoon in a blue vest and reading glasses stands stiffly with a lamp shade on its head and its arms pressed to its sides, pretending to be the floor lamp, another lump in the rug at its feet; the mother raccoon in the foreground, seen from behind, looking at it",
+        "camera": "Wide shot, locked",
+        "motion": "the father raccoon's eyes under the lamp shade meet the mother's, hold for a beat, then slowly slide away",
+        "characters": [
+          "baba",
+          "mama"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-onions",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of the side table from the same angle: the little raccoon still stands wrapped in the blue tablecloth as a vase, and between the three flowers in the corner of its mouth there is now a bunch of green onions standing up; in the background the mother raccoon walks away toward the kitchen",
+        "camera": "Medium shot, locked",
+        "motion": "tears well up in the little raccoon's eyes but it stays perfectly still; the green onions sway slightly",
+        "characters": [
+          "doudou",
+          "mama"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}
