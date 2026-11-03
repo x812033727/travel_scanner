@@ -1,4 +1,161 @@
 {
+  "current_ZH_program_M4A_20261103": {
+    "documentation_updated_at": "2026-11-03T04:10:12.090186+00:00",
+    "observed_delivery_completed_at": "2026-11-03T03:58:00.832Z",
+    "stage": "current67bb_ZH_full_program_M4A_backend48_pending_foreign_checked_audio0of8",
+    "existing30progress_values_preserved_as_history": true,
+    "locale": "zh-TW",
+    "source": {
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/final.mp4",
+      "bytes": 58590145,
+      "sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d"
+    },
+    "source_review_id": "af432542-47db-4649-9761-17c0f6ca2127",
+    "output": {
+      "file": "/workspace/work/videos/_slides-current-zh-program-audio-20261103/ai-slides-outline-review/program.zh-TW.m4a",
+      "bytes": 17283566,
+      "sha256": "7df65621fc219d971bf191f466d245b795570320378dce9fe70d3815e9f689ad"
+    },
+    "content_type": "audio/mp4",
+    "role": "evidence_zh_tw_program_m4a",
+    "actual_local_component": {
+      "producer_completion": {
+        "path": "receipts/current-zh-program-m4a-20261103/producer-completion.json",
+        "bytes": 8202,
+        "sha256": "8759d29a16e3a8188eea83614ee84017830fa2dce385b44086613bdb4503342e"
+      },
+      "Root_actual_tool": {
+        "start": "88f960",
+        "session": 11747,
+        "terminal": "42ab90",
+        "exit": 0
+      },
+      "children_exit0": 6,
+      "only_remux_calls": 1,
+      "actual_mux_delta_ticks": 0,
+      "actual_changed_bytes": [],
+      "intermediate_final_bytes_exact": true,
+      "packet_count": 29511,
+      "ordered_packet_sha256": "4ee7b9f601a26e3431a4712d791d958d09f3d810b76ce0c7249e7226f5694ea5",
+      "all_packet_payloads_times_durations_flags_side_data_exact": true,
+      "source_stts_elst_stsz_mdhd_exact": true,
+      "PCM": {
+        "format": "f32le",
+        "sample_rate": 48000,
+        "channels": 2,
+        "bytes": 241745920,
+        "sample_frames": 30218240,
+        "sha256": "8340897c26016cdcc57d202ca879f2c7ab3d5c2c65dd9cd41728182ddf2512f2",
+        "exact_source_equality": true,
+        "full_decode_both_exit0_error_stderr_empty": true
+      },
+      "PCM_evidence_scope": "Real producer full streamed hash/byte counts; buffers not retained and reviewers did not newly decode.",
+      "audio_stream_seconds": 629.605,
+      "audio_container_seconds": 629.605,
+      "actual_meter": {
+        "integrated_LUFS": -14.1,
+        "LRA_LU": 4.2,
+        "true_peak_dBFS": -1.9,
+        "measurement_only_no_new_or_lowered_threshold": true
+      },
+      "original_E305_W2096_C3502_fullhash_protection_passed": true,
+      "own_project_leases_released": true
+    },
+    "current118_source_acceptance": {
+      "accepted_lines": 118,
+      "actual_raw_fullhash_audit_sha256": "49489aa07e0d5c20c9cad0bcd2997aa0b46c70dce50b90e15dbd22b9520596d4",
+      "wrapper_sha256": "5449e66b8483221919c6a372eab121f413b924533581f09af5ab926745936a36",
+      "full_intended_spoken_primary_second_transcript_clip_hash_and_cache_exact": true,
+      "current_a261_source_thumbnail_only_bridge_to_old296_explicit": true,
+      "new_ASR_or_listening": false
+    },
+    "backend": {
+      "mode": "same_pending_M4A_only",
+      "current_review_id": "af432542-47db-4649-9761-17c0f6ca2127",
+      "status": "pending",
+      "prior_refs": 47,
+      "current_refs": 48,
+      "new_artifacts": 1,
+      "new_role": {
+        "role": "evidence_zh_tw_program_m4a",
+        "sha256": "7df65621fc219d971bf191f466d245b795570320378dce9fe70d3815e9f689ad",
+        "size": 17283566,
+        "content_type": "audio/mp4"
+      },
+      "all_original47_refs_order_and_entire_payload_QA_metadata9_chapters_summary_unchanged": true,
+      "all_other_project_reviews_choices_settings_history_exact": true,
+      "actual_append_helper_counts": {
+        "auth_reads": 1,
+        "project_GET": 4,
+        "file_PUT": 5,
+        "review_POST": 1,
+        "file_GET": 1
+      },
+      "actual_POST_status": 201,
+      "full_new_M4A_GET_retained_and_bytes_SHA_size_MIME_equal": true,
+      "Root_peer_reopened_same_saved_response_no_second_network_GET": true,
+      "Root_actual_tool": {
+        "start": "a98a8c",
+        "session": 62666,
+        "terminal": "37e458",
+        "exit": 0
+      },
+      "helper_emitted_process_exit_file": false,
+      "native_lease_released": true,
+      "allowed_project_delta": [
+        "current row files47to48",
+        "last_synced_at"
+      ],
+      "authoritative_after_snapshot_descriptor": {
+        "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/backend/run-once/0011-response.private.bin",
+        "bytes": 210968,
+        "sha256": "2f08e303ad6619f425175781af57e8d0f4d69f054b253ed1da573211afdfe9fd"
+      },
+      "no_extra_TXT_manifest_or_archive_compaction": true,
+      "prior_wrong_dispatch_digest_rejected_before_auth_once_run_lease": {
+        "actual_exit": 1,
+        "auth_network": 0,
+        "dispatched_request_replay": false
+      }
+    },
+    "inherited_current_source_QA": {
+      "ok": true,
+      "passed": 11,
+      "total": 11,
+      "applies_to": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d",
+      "reexecuted_in_this_M4A_phase": false
+    },
+    "previous_c387_program_M4A_report_historical_roles_preserved": true,
+    "current67bb_vs_old_c387_AAC_PCM_difference_preserved": true,
+    "historical_narrative_false_stale_preserved": true,
+    "foreign_checked_M4A": 0,
+    "actual_foreign_dub_CC": 0,
+    "server_approval": false,
+    "whole_episode_complete": false,
+    "new_TTS_ASR_QA_Jev_calls": 0,
+    "new_full_human_listening": false,
+    "global_held4_and_unknown_billing_limits_preserved": true,
+    "task_handoff_and_required_checks": {
+      "at": "2026-11-03T05:19:31.591397+00:00",
+      "task_status": "blocked",
+      "owner": null,
+      "claimed_at": null,
+      "normal_release_and_blocked_status_subprocess_exits0": true,
+      "required_check_subprocess_exits0": true,
+      "docs_videos_pass": 241,
+      "docs_videos_fail": 0,
+      "task_files": 2298,
+      "existing_other_scope_warnings": 273,
+      "own_scope_warnings": 0,
+      "aggregate_tool_terminal_observed": false,
+      "captured_exits_and_log_hashes_verified_after_environment_reconnect": true,
+      "tests_not_reexecuted": true,
+      "receipt": "receipts/current-zh-program-m4a-20261103/required-checks.json"
+    },
+    "public_receipt_index": "receipts/current-zh-program-m4a-20261103/manifest.json",
+    "history_archive": "production-history/20261103-pre-current-zh-program-m4a-doc-update",
+    "merge_deploy_YouTube_or_other_project_global_settings": false
+  },
   "ai_look_fit2_20261101": {
     "documentation_updated_at": "2026-11-03T02:36:41.735721+00:00",
     "stage": "AI_look_FIT2_current1080p_preview_thumbnail9_backend47_pending_foreign_checked_audio0of8",

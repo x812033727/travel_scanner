@@ -1,0 +1,104 @@
+{
+  "kind": "actual_current_M4A_required_checks_and_normal_task_handoff",
+  "at": "2026-11-03T05:19:31.591397+00:00",
+  "ok": true,
+  "commands": [
+    {
+      "name": "docs-videos",
+      "command": [
+        "npm",
+        "run",
+        "test:docs-videos"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-03T04:13:53.283250+00:00",
+      "completed_at": "2026-11-03T04:14:57.499235+00:00",
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/checks-final/docs-videos.stdout.log",
+        "bytes": 20269,
+        "sha256": "7e40b02856c249b30e70dc4e9510e9d24bc5bc299837074bf8f5ca077b45e6f5"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/checks-final/docs-videos.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "tasks",
+      "command": [
+        "npm",
+        "run",
+        "check:tasks"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-03T04:14:57.501510+00:00",
+      "completed_at": "2026-11-03T04:14:58.179569+00:00",
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/checks-final/tasks.stdout.log",
+        "bytes": 53563,
+        "sha256": "35df2c5b0967d3235f09b7082da98ce49983ef11e93c1ccbd119b15f44ef2bfb"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/checks-final/tasks.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-03T04:14:58.180314+00:00",
+      "completed_at": "2026-11-03T04:14:58.224875+00:00",
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/checks-final/diff.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/checks-final/diff.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "docs_videos": {
+    "tests": 241,
+    "pass": 241,
+    "fail": 0,
+    "skip": 0
+  },
+  "tasks": {
+    "files": 2298,
+    "existing_other_scope_warnings": 273,
+    "own_scope_warnings": 0
+  },
+  "task_handoff": {
+    "normal_release_exit": 0,
+    "normal_status_blocked_exit": 0,
+    "status": "blocked",
+    "owner": null,
+    "claimed_at": null,
+    "actual_tool_terminal": "a447f2"
+  },
+  "tool_session_observation": {
+    "start_tool": "552d21",
+    "session_id": 53094,
+    "aggregate_tool_terminal_observed": false,
+    "reason": "Environment reconnected after genuine per-command subprocess exit records and checks.json had completed; original session was unavailable. All captured exits/log hashes were verified, tests were not rerun."
+  },
+  "reconnect_verification": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/checks-after-environment-reconnect.json",
+    "bytes": 768,
+    "sha256": "dd827fc6145033de0c85ddc363378a8125c78f260fc516df91684fdcaacba929"
+  },
+  "whole_episode_done": false,
+  "foreign_checked_M4A": 0,
+  "actual_foreign_dub_CC": 0,
+  "no_extra_producer_service_ASR_QA_request": true
+}

@@ -1,0 +1,69 @@
+{
+  "kind": "Root_independent_current67bb_M4A_actual_component_verification",
+  "ok": true,
+  "at": "2026-11-03T03:36:30.512880+00:00",
+  "source_main": {
+    "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/final.mp4",
+    "bytes": 58590145,
+    "sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d"
+  },
+  "audio": {
+    "file": "/workspace/work/videos/_slides-current-zh-program-audio-20261103/ai-slides-outline-review/program.zh-TW.m4a",
+    "bytes": 17283566,
+    "sha256": "7df65621fc219d971bf191f466d245b795570320378dce9fe70d3815e9f689ad"
+  },
+  "actual_manifest": {
+    "file": "/workspace/work/videos/_slides-current-zh-program-audio-20261103/ai-slides-outline-review/program-audio-manifest.json",
+    "bytes": 4867,
+    "sha256": "8d1ebe19587b1de3177999182b4f339d582a57dc84bfb821455659009b0482b3"
+  },
+  "actual_producer_completion": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/producer/run-once/completion.json",
+    "bytes": 8202,
+    "sha256": "8759d29a16e3a8188eea83614ee84017830fa2dce385b44086613bdb4503342e"
+  },
+  "root_producer_exit": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/ROOT-producer-exit.json",
+    "bytes": 1110,
+    "sha256": "2f32b0fed652a30f535f97e20974098ff4ca261b8ff3780bf92139d51d22cdaa"
+  },
+  "actual_current118_fullhash_audit": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/current-118-fullhash-audit.json",
+    "bytes": 91078,
+    "sha256": "49489aa07e0d5c20c9cad0bcd2997aa0b46c70dce50b90e15dbd22b9520596d4"
+  },
+  "packet_fields_all29511_exact": true,
+  "ordered_packet_sha256": "4ee7b9f601a26e3431a4712d791d958d09f3d810b76ce0c7249e7226f5694ea5",
+  "source_stts_stsz_elst_exact": true,
+  "source_mdhd_timescale_duration_exact": true,
+  "intermediate_and_final_complete_bytes_exact_no_patch": true,
+  "source_and_M4A_PCM_actual_stream_receipt_SHA_bytes_exact": true,
+  "PCM": {
+    "format": "f32le",
+    "sample_rate": 48000,
+    "channels": 2,
+    "bytes": 241745920,
+    "sample_frames": 30218240,
+    "sha256": "8340897c26016cdcc57d202ca879f2c7ab3d5c2c65dd9cd41728182ddf2512f2",
+    "exact_source_equality": true,
+    "full_decode_both_exit0_error_stderr_empty": true
+  },
+  "actual_meter": {
+    "integrated_LUFS": -14.1,
+    "LRA_LU": 4.2,
+    "true_peak_dBFS": -1.9,
+    "measurement_only_no_new_or_lowered_threshold": true
+  },
+  "native_children_exit0": 6,
+  "inherited_current118_accepted_records": true,
+  "held4_exact": true,
+  "new_ASR_or_listening": false,
+  "server_approval": false,
+  "whole_episode_complete": false,
+  "foreign_checked_M4A": 0,
+  "limits": [
+    "Root independently fullhashed current source/main and new M4A and reopened all retained packet/stdout/stderr receipts; no new decode or ASR/listening.",
+    "Full PCM bytes were hashed by the real producer pipes, not retained as files. Root verifies those genuine actual stream receipts; no claim to read stored PCM bytes.",
+    "Current source narration acceptance is inherited from fresh current118 raw hashes and original accepted transcripts; false/stale narrative review remains unchanged."
+  ]
+}

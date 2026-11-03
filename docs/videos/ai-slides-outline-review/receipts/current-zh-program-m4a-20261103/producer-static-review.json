@@ -1,0 +1,97 @@
+{
+  "kind": "independent_Slides_current67bb_ZH_AAC_producer_static_review",
+  "at": "2026-11-03T03:31:31.020528+00:00",
+  "reviewer": "/root/slides_m4a_static_peer",
+  "verdict": "STATIC_CLEAR_ROOT_SINGLE_CURRENT67BB_ORIGINAL_TIMING_EXACT_EXTRACTION_ONLY",
+  "helper": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/producer/extract.mjs",
+    "bytes": 22427,
+    "sha256": "40af2e3e8257d5453be70a7940badecb322f8270de1bb789d94c34156075d544"
+  },
+  "plan": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/producer/plan.json",
+    "bytes": 9331,
+    "sha256": "4549e17aa4f535ac7c84eabd3c05945a7391f7bb0778b370a07d409e416bc08d"
+  },
+  "original_reviewed_helper": {
+    "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/prep-producer/extract.mjs",
+    "bytes": 20166,
+    "sha256": "c23f34d086bbc9620dcccc3385c1a2b7fe15f415bf3aec1a2684a27260954369"
+  },
+  "original_static_review": {
+    "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/peer/producer-static-review.json",
+    "bytes": 2564,
+    "sha256": "1839eebae52709de7a9ffce18085667b9596a4c5d8240dada61aaebefa132bf4"
+  },
+  "currentness": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/inherited-source-record-review.json",
+    "bytes": 6250,
+    "sha256": "5449e66b8483221919c6a372eab121f413b924533581f09af5ab926745936a36"
+  },
+  "fresh118_fullhash_audit": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/current-118-fullhash-audit.json",
+    "bytes": 91078,
+    "sha256": "49489aa07e0d5c20c9cad0bcd2997aa0b46c70dce50b90e15dbd22b9520596d4"
+  },
+  "timing_packet_PCM_independent_subset": {
+    "file": "/workspace/work/ai-tech-next/slides-current-zh-m4a-20261103/producer-timing-static-subset-peer.json",
+    "bytes": 3052,
+    "sha256": "f9f97af70c3f244e0e83f8555a23a8146e26e241a2c48e6a500d6d9351afae4d"
+  },
+  "full_candidate_code_and_exact_plan_read": true,
+  "actual_local_static_verification": {
+    "tool": "315d85",
+    "exit_code": 0,
+    "syntax_check_exit": 0,
+    "fullhashed_nonmedia_plan_pins": 27,
+    "two_media_pins_actual_regular_size_and_frozen_fullhash_inventory_bound_without_rehash": true,
+    "current118_actual_audit_raw_hashes_equal_C_inventory": 118,
+    "inventory_counts": {
+      "E": 305,
+      "W": 2096,
+      "C": 3502
+    },
+    "dispatch_once_output_absent": true,
+    "own_current_and_historical_leases_absent": true
+  },
+  "current_source": {
+    "review_id": "af432542-47db-4649-9761-17c0f6ca2127",
+    "main_sha256": "67bb7eef3955933514c726968d9b76cd6c141260972661526874fc935f25de3d",
+    "timescale": 48000,
+    "mdhd_duration_ticks": 30222064,
+    "stts_runs": [
+      [
+        28390,
+        1024
+      ],
+      [
+        1,
+        4464
+      ],
+      [
+        1119,
+        1024
+      ],
+      [
+        1,
+        384
+      ]
+    ],
+    "samples": 29511,
+    "elst_movie_duration_ticks_at_1000": 629605,
+    "old_c387_629610_not_used": true
+  },
+  "admission": "Exact new currentness wrapper and actual118 proof; explicit old296-to-currenta261 thumbnail-only continuity and effective spoken forms; narration4a298 and currentQA4d507/67bb11of11 bound; original false narrative preserved. Fixed source67bb/af432, HEADf0d5, existing own in-progress claim, genuine Root dispatch helper/plan/currentness/peer/task descriptors and <=30min expiry required.",
+  "production": "Exactly one AAC streamcopy to retained intermediate. Only CURRENT-source-derived mdhd/last-stts uint32 words may restore known zero-or-plus-one mux tick in a new copy; last run affects one sample. Final stts/elst/stsz exact, all AAC packet payload hashes, PTS/DTS/durations/flags/side-data and stream fields exact; entire decoded PCM hashes/bytecount/samplecount must then equal current source. No tolerance or resample/reencode/speed/splice exception.",
+  "protection_and_failure": "Actual native leases for current/historical workdirs, no takeover; fixed permanent once/new isolated output; STOP/expiry checked during bounded children. Children genuine exit/signal/stderr/hash and failure retained. Full E/W/C file sets/bytes and held4 checked before/after, leases verified and released; no automatic retry.",
+  "network_and_approval": "Global fetch denial, FFmpeg file/pipe protocols only; no credentials/client imports, network, TTS, ASR, Jev, QA, reviewPush or approval operation. Usage/manifest are local; future backend may append only M4A as separately reviewed.",
+  "claims": "Current118 source acceptance and QA11 inherited without new ASR/listening or full-film approval; meter measurements only, no lowered/new thresholds. Foreign checkedM4A0of8 and wholefilm/languages/serverapproval false.",
+  "material_issues": [],
+  "actual_Root_execution_and_independent_output_verification_still_required": true,
+  "reviewer_actions": {
+    "producer_ffmpeg_ffprobe_decode_mediahash_network_auth": 0,
+    "Git_task_canonical_mutations": 0,
+    "only_small_pins_inventories_code_JSON_syntax_read_and_scratch_report": true
+  },
+  "scope_limit": "Static/late-plan clearance only, no actual M4A success or live backend change is claimed. The helper must fail closed on any runtime equality, protection, once, lease or expiry failure."
+}

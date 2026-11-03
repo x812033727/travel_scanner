@@ -1,0 +1,40 @@
+{
+  "kind": "actual_normal_current_M4A_task_handoff",
+  "ok": true,
+  "at": "2026-11-03T04:13:50.347931+00:00",
+  "task_id": "2026-10-25-ai-slides-outline-review-with-four",
+  "status": "blocked",
+  "owner": null,
+  "claimed_at": null,
+  "whole_episode_done": false,
+  "same_conversation_responsibility": true,
+  "results": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "tasks",
+        "--",
+        "release",
+        "2026-10-25-ai-slides-outline-review-with-four"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "tasks",
+        "--",
+        "status",
+        "2026-10-25-ai-slides-outline-review-with-four",
+        "blocked"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "task_after": {
+    "bytes": 19626,
+    "sha256": "8e7bc136a8ae369b4ec3b65819bf7b67ac454214e58e105db3eceec094474edd"
+  }
+}

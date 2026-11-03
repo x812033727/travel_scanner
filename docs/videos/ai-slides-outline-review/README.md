@@ -1,3 +1,13 @@
+# 當前67bb繁中完整節目M4A已交後台，48附件保持待審
+
+2026-11-03T03:58:00.832Z。當前1080p成片67bb的繁中完整節目M4A已交[Mokaair同片後台](https://mokaair.com/zh-TW/admin/videos?video=ai-slides-outline-review)並完整下載核對：17,283,566 bytes／SHA `7df65621fc219d971bf191f466d245b795570320378dce9fe70d3815e9f689ad`，音訊stream／container均629.605秒。與當前來源的29,511個AAC封包、時序／side-data及完整解碼PCM精確相符；實際mux delta0／changed bytes空，未修補metadata。舊c387的629.610秒M4A／report仍為歷史角色，當前67bb與舊c387的AAC／PCM差異並未被抹除。
+
+同一pending FINAL `af432542-47db-4649-9761-17c0f6ca2127` 只加一個M4A、47→48 refs，原47份參照順序及整payload／QA11／九語metadata／章節／summary／其他review與choices設定歷史皆保持。五parts ACK與一個fullGET的bytes／SHA／audio/mp4 MIME均真核；Root和peer重開已保存下載檔核對，沒有再發第二個網路下載。六個producer child與Root實際工具均exit0、兩project leases正常釋放。
+
+118當前WAV及完整intended／轉寫／快取綁定保持，沒有新TTS／ASR／完整人耳重聽；沿用當前主片QA11/11、未重跑，歷史敘事false／stale保留。八外語checked M4A／actual-dub CC仍各0/8，final與語言批次未核准，整集未done。本輪Root task交接及必要checks待實際結果補入。詳[本輪安全收據](receipts/current-zh-program-m4a-20261103/README.md)／[48附件摘要](receipts/current-zh-program-m4a-20261103/current-summary.json)。下方舊全文及原30個progress值留作歷史，當前以新增 `current_ZH_program_M4A_20261103` 為準。
+
+---
+
 # 九語AI縮圖與FIT2新版已交後台，fresh QA 11/11
 
 2026-11-03T02:36:41.735721+00:00。新1080p主片 `67bb7eef…`、720p預覽、contact sheet及九語AI縮圖已交[Mokaair同片後台](https://mokaair.com/zh-TW/admin/videos?video=ai-slides-outline-review)。新final `af432542-47db-4649-9761-17c0f6ca2127` pending，舊a0e正常superseded；47 refs＝34份舊live＋13新檔，新13由真正helper完整GET驗SHA／大小／MIME，Root與獨立peer核對同一批真收據，未再發獨立網路下載。13舊小檔的完整bytes、舊47清單及五份review row全部欄位保存在無損封存。
