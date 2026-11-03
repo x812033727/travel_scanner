@@ -108,6 +108,8 @@ from app.video_speech.admin_api import speech_router as video_speech_router
 from app.video_speech.align_api import align_router as video_speech_align_router
 from app.video_youtube.admin_api import connection_router as video_youtube_router
 from app.video_youtube.admin_api import publish_router as video_youtube_publish_router
+from app.video_youtube.admin_reports_api import admin_router as video_youtube_reports_admin_router
+from app.video_youtube.admin_reports_api import tool_router as video_youtube_reports_router
 
 
 def configure_logging() -> None:
@@ -220,6 +222,9 @@ app.include_router(runpod_admin_router, prefix="/api/v1")
 app.include_router(video_speech_align_router, prefix="/api/v1")
 app.include_router(video_reviews_router, prefix="/api/v1")
 app.include_router(admin_video_reviews_router, prefix="/api/v1")
+# Before the connection card's router, which shares its /admin/video-youtube prefix.
+app.include_router(video_youtube_reports_admin_router, prefix="/api/v1")
+app.include_router(video_youtube_reports_router, prefix="/api/v1")
 app.include_router(video_youtube_router, prefix="/api/v1")
 app.include_router(video_youtube_publish_router, prefix="/api/v1")
 # Registered before the automation routes, which share its /video/automation prefix.

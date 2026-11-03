@@ -217,7 +217,7 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
    片段不寫進 `metadata.json`，所以上架確認還在等站主時重送一次 `--publish`，就把片段補進同一筆
    審核；**已經核准**的那一份不會再收檔，工具會說片段沒送。YouTube 上傳、手動上傳包和後台頁面
    都不讀 `clip_` 檔。
-2. **worker 先取回來**：網站列給 worker 的影片裡，匯入的長片（核准的上架確認帶 `imported`）
+2. **worker 先取回來**：網站列給 worker 的影片裡，匯入的長片（核准的上架確認帶 `imported`），以及手動送上來的 Shorts（帶 `hand_pushed`，2026-11-02 起；worker 自己那幾條線做的 Shorts 本來就在 video_work）
    多一個 `review_package`（審核 id 與 `metadata.json` 的 sha256）。worker 每一輪在備份之前用
    影片工具權杖從審核區下載這一包（跟 `review-files` 同一條路由），逐檔比對 sha256 與大小，排成
    `package` 的樣子：`upload/final.mp4`、`upload/metadata.json`、`upload/thumbnail.<副檔名>`、
