@@ -21,6 +21,11 @@ EXPR = ("Facial expressions follow the action and lines described below, not the
         "the pictures fix the face, hair and costume only, never the mood.")
 SHOES = "Every person in the frame wears dark cloth shoes on both feet."
 scenes = {s["id"]: s for s in json.loads(video.read_text(encoding="utf-8"))["scenes"]}
+# "_replace": {old: new} applied to every prompt (longest first); "_add_all": one sentence put before
+# " The camera " in every shot whose prompt the replacements touched. e050: wine jars -> clay jars,
+# because "wine jar" painted modern bottles in the e042 inn and the owner asked to avoid them.
+REPL = extras.pop("_replace", {})
+ADD_ALL = extras.pop("_add_all", "")
 
 
 def header(n: int) -> str:
@@ -36,10 +41,16 @@ for manifest in sorted(st1.glob("ref-e*-part*.json")):
         sid, scene = job["id"], scenes[job["id"]]
         roles = [c for c in scene["data"].get("characters", []) if c in extras]
         wide = scene["data"].get("camera", "").lower().startswith("wide")
-        if not roles and not wide:
-            continue
         pfile = st1 / job["prompt_file"]
         text = pfile.read_text(encoding="utf-8")
+        touched = False
+        for old in sorted(REPL, key=len, reverse=True):
+            if old in text:
+                text = text.replace(old, REPL[old]); touched = True
+        if touched and ADD_ALL and ADD_ALL not in text and " The camera " in text:
+            text = text.replace(" The camera ", f" {ADD_ALL} The camera ", 1)
+        if not roles and not wide and not touched:
+            continue
         done = set(job.get("extras_patched", []))
         for role in roles:
             if role in done:
