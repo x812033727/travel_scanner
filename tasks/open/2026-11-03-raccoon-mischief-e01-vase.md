@@ -24,9 +24,10 @@ scope:
 ## Definition of done
 
 - [x] 系列規則 `docs/videos/raccoon-mischief/README.md`；EP1 `video.json`（lint 0 錯誤）、`brief.md`。
-- [ ] 站主看 EP1 分鏡、核准劇本。
-- [ ] 三隻浣熊的寫實設定圖（`sheet_prompt` 已寫成單張全身照，避免卡通三視圖，見《汪家夫妻》的經驗）。
-- [ ] Colab 首格與小樣、剪接、`shorts import`。
+- [x] 站主授權直接做完（2026-11-03）。
+- [x] 定裝照（`docs/videos/raccoon-mischief-e01/reference/`）。
+- [x] Colab 首格、H3 直式片段、剪接：成片 13.0 s、-14.8 LUFS（`<VIDEO_WORKDIR>/raccoon-mischief-e01/edit/final.mp4`）。
+- [ ] `shorts import`：等 `2026-11-03-shorts-import-zero-dialogue`。
 
 ## How to verify
 
@@ -37,3 +38,5 @@ node tools/video/cli.mjs lint --file docs/videos/raccoon-mischief-e01/video.json
 ## Notes
 
 - 音效組 `raccoon-comedy`：shatter、keys、crunch、sting，要有授權的檔案。
+- 首格：兩個角色加複雜動作會被畫錯（媽媽叼花、多一個真花瓶），改成一鏡一個角色才對；s05（青蔥）三次都沒畫出笑點，成片停在爸爸假裝落地燈。
+- s03 片段從第 1 秒起畫面前方晃進一扇門板，只用第一格做 3.2 s 的慢推。
