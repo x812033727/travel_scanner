@@ -25,7 +25,7 @@ scope:
 
 - [x] 系列規則、角色、6 集點子與 EP1〈準時下班〉分鏡（`docs/videos/shechu-hell/README.md`）。
 - [ ] 站主看過；EP2–EP6 寫成分鏡並盲評排序。
-- [ ] EP1 `video.json`、定裝照（阿金、喵總）、Colab 首格與片段、成片。
+- [x] EP1 `video.json`、定裝照（阿金、喵總）、Colab 首格與片段、成片 17.6 s、-13.5 LUFS（`<VIDEO_WORKDIR>/shechu-hell-e01/edit/final.mp4`）。
 
 ## How to verify
 
