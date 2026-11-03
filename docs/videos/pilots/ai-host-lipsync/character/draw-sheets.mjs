@@ -11,7 +11,7 @@ if (!token) throw new Error("no video tool token; pair first");
 const opts = { site, token };
 const SLUG = "ai-host-lipsync-pilot";
 
-const SHEET = "character design sheet of one original fictional person: front view head-and-shoulders portrait on the left, three-quarter view in the middle, full body standing on the right, side by side, the same person and outfit in all three, neutral relaxed pose, plain light grey seamless studio background, even soft studio lighting, no text, no logo";
+const SHEET = "character design sheet of one original fictional person, a costume fitting: front view head-and-shoulders portrait on the left, three-quarter view in the middle, full body standing on the right, side by side, the same person and outfit in all three, neutral relaxed pose, plain light grey seamless studio background, even soft studio lighting, no text, no logo";
 const STYLE = (process.env.ROUND === "3" ? "Lighting: flattering soft beauty lighting with a large softbox key light and gentle fill, subtle rim light separating hair from the background, magazine-quality fashion photo. " : "") + "Style: photorealistic photograph, natural skin texture with fine pores, realistic hair strands, 50mm lens, shallow depth of field, true-to-life colour, looks like a real person photographed for a costume fitting, an original face that is not a celebrity and not any real person";
 const NEGATIVE = "text, letters, watermark, logo, brand names, cartoon, anime, 3d render, plastic skin, airbrushed, heavy makeup, extra fingers, extra limbs, deformed hands, distorted face, different faces between views, celebrity likeness";
 
@@ -34,6 +34,14 @@ const HOSTS_BY_ROUND = {
     b: "Character: a strikingly handsome Taiwanese man about 28 years old who looks like the male lead of a Taiwanese idol drama; sharp V-shaped jawline, high cheekbones, straight high-bridged nose, deep warm eyes with thick dark brows, clean smooth skin, clean-shaven, charming boyish smile; salon-styled black hair with a soft comma-shaped fringe swept to one side, tapered sides; no glasses; tall slim athletic build, broad shoulders; olive green cotton overshirt open over a white t-shirt, slim beige chino trousers, brown suede desert boots, a plain matte black mirrorless camera with no logo, no lettering and no red dot on a black strap across the chest",
     c: "Character: a stunningly beautiful elegant East Asian woman about 28 years old who looks like the lead actress of a romantic drama; refined oval face, bright almond eyes with long lashes, high cheekbones, small straight nose, soft full lips, luminous flawless skin, warm radiant smile; glossy black hair in a sleek low ponytail with soft face-framing curtain strands; polished natural makeup with soft rose lips; small gold hoop earrings; tall slender model figure; light blue denim shirt with rolled sleeves tucked into beige wide-leg linen trousers, black leather loafers, natural canvas tote bag on her right shoulder in every view",
   },
+  // Round 4 (owner: her outfit more fashionable, his more stylish): same faces as the round-3
+  // sheets, passed as character references; two outfits each, one seed.
+  "4": {
+    "a-chic": "Character: the same young woman as in the reference image, keep exactly her face, eyes, nose, lips, skin, see-through bangs and long wavy chestnut hair, pearl stud earrings and sweet smile. New fashionable outfit, trendy Tokyo and Seoul street style: cropped cream cable-knit sweater, high-waisted pleated mini skirt in camel plaid, sheer black tights, chunky black leather loafers with white socks, small quilted black leather shoulder bag with a thin gold chain and no logo, slim gold bracelet",
+    "a-trench": "Character: the same young woman as in the reference image, keep exactly her face, eyes, nose, lips, skin, see-through bangs and long wavy chestnut hair, pearl stud earrings and sweet smile. New fashionable outfit, chic city travel style: oversized beige trench coat worn open with the belt hanging loose, fitted black ribbed turtleneck top, high-waisted wide-leg cream trousers, white leather minimalist sneakers, black structured mini top-handle bag with no logo, small gold hoop ear cuff",
+    "b-street": "Character: the same young man as in the reference image, keep exactly his face, eyes, brows, nose, jawline, skin, side-swept black hair and charming smile. New stylish outfit, clean modern Japanese street style: relaxed boxy charcoal chore jacket over a white heavyweight t-shirt, wide tapered black pleated trousers cropped at the ankle, white leather low-top sneakers, black canvas sling bag across the chest with no logo, plain matte black mirrorless camera with no logo in one hand, silver chain bracelet",
+    "b-smart": "Character: the same young man as in the reference image, keep exactly his face, eyes, brows, nose, jawline, skin, side-swept black hair and charming smile. New stylish outfit, smart casual travel style: tailored camel wool overcoat worn open, fine-knit black crewneck sweater, slim charcoal trousers, polished dark brown leather chelsea boots, slim black leather crossbody bag with no logo, simple silver wristwatch with a black strap and no lettering",
+  },
 };
 export const HOSTS = HOSTS_BY_ROUND[ROUND];
 
@@ -46,8 +54,14 @@ if (cmd === "status") {
   const ids = process.argv.slice(4).length ? process.argv.slice(4) : Object.keys(HOSTS);
   const seeds = (process.env.SEEDS ?? "1").split(",").map(Number);
   fs.mkdirSync(out, { recursive: true });
+  const REFS = { a: "host-a-r3-s2.png", b: "host-b-r3-s1.png" };
   for (const id of ids) for (const seed of seeds) {
-    const request = { slug: SLUG, purpose: "character_sheet", aspect: "16:9", prompt: `${SHEET}. ${HOSTS[id]}. ${STYLE}`, negative_prompt: NEGATIVE, seed, image_model: "gemini-3-pro-image", idempotency_key: `host-${id}-s${seed}-r${ROUND}` };
+    const references = [];
+    if (ROUND === "4") {
+      const { sha256 } = await client.putFile({ slug: SLUG, file: path.join(path.dirname(new URL(import.meta.url).pathname), REFS[id[0]]), ...opts });
+      references.push({ sha256, role: "character" });
+    }
+    const request = { references, slug: SLUG, purpose: "character_sheet", aspect: "16:9", prompt: `${SHEET}. ${HOSTS[id]}. ${STYLE}`, negative_prompt: NEGATIVE, seed, image_model: "gemini-3-pro-image", idempotency_key: `host-${id}-s${seed}-r${ROUND}` };
     try {
       const job = await client.runJob({ submit: client.submitImage, request, ...opts });
       console.log(id, seed, job.status, job.model, "usd", job.usd_estimate, job.error ? JSON.stringify(job.error) : "");
