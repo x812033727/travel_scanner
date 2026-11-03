@@ -218,6 +218,7 @@ shot("kid-why-stop", "Medium shot of a girl sitting on the windowsill with her k
      [k("那為什麼雷陣雨常常下一下就停？", "追問", "S:stop")])
 card("chief-engine", "big", {"kicker": "一場大雨", "text": "把自己的**引擎**關掉", "sub": "雷陣雨為什麼下一下就停"},
      [c("因為大雨，會把自己的引擎關掉。", "賣關子")])
+next(CAMS)  # this beat was a shot until 2026-11-03: keep the later shots on the camera moves their pictures were drawn with
 shot("rain-drags", "Wide cutaway illustration of heavy rain falling out of a storm cloud with big curved arrows of cool air pouring down alongside it and spreading out across the ground, a small farmhouse below, soft grey light", (),
      [c("雨落下來，會把周圍的空氣一起往下拖；雨在半路蒸發，又讓這團空氣更冷。")])
 shot("cold-gust", "Medium shot of a girl on a street corner with her hair and jacket blown sideways by a sudden cool gust, leaves flying past, a dark cloud behind her, soft grey light", KID,
