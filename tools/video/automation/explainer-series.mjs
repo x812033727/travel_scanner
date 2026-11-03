@@ -206,11 +206,16 @@ today,`,
   thumbnailGuide: `"thumbnail": {template: "thumb", data: {headline: at most 6
   characters in all, on one line or on two lines of at most 3 with \\n where a word ends (a
   Chinese character counts one; a number or a Latin word counts one, and at most two of those;
-  **one phrase** stressed), saying what the title does not, never the title's first 10
-  characters again; tag: the pillar's name, exactly one of 歷史懸案, 奇異現象, 預言, 外星與太空,
+  **one phrase** stressed), never the title's first 10 characters again: line 1 the name
+  everybody knows (周瑜, 諸葛亮, 信長, 華佗), line 2 **stressed**, the reversal with a question
+  mark (「周瑜\\n**早死了？**」); a headline that names nobody (「史書裡沒有他」「誰先上門？」) reads
+  as a riddle; tag: the pillar's name, exactly one of 歷史懸案, 奇異現象, 預言, 外星與太空,
   都市傳說 (for "beats.pillar" H, M, P, U, L in that order; choose by the topic when it names
-  none); sub: one short line, about 12 characters (the year or the document); shot: <the id of
-  the most striking shot: a person's expression before an object>}}. The series wears the
+  none); sub: one short line, about 12 characters, a hard fact neither the headline nor the
+  title says (a number, a year or the object: 「2000 打 25000」「史書只寫『巴丘病卒』」); shot:
+  <the id of a shot with ONE large expressive face, about a quarter to a third of the frame,
+  in the right 55% of it so the text column on the left covers neither eyes nor mouth; never an
+  empty scene, a crowd or an object alone> (YouTube review, 2026-11-03). The series wears the
   channel's thumbnail: no "pillar", no "layout", no "tone" and no "variants".`,
   titleGuide: `youtube.title is the file's question followed by 「｜奇聞檔案局」, written the way the
   history channels with hundreds of thousands of views write theirs (2026-10-25): the name

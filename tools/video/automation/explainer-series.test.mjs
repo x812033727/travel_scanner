@@ -117,7 +117,9 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // a new paid call beside that orphan. Hence the hard step before the deploy: no unfinished
 // one-off in a cute preset on the host (docs/videos/explainer-route/DESIGN.md 5.7 item 1).
 // The four 奇聞檔案局 texts that read the bible's 鉤子 or the writer's hook rules moved on 2026-10-19,
-// when the series took the brand stories' 45-second cadence, eight loops and its music bed.
+// when the series took the brand stories' 45-second cadence, eight loops and its music bed. The
+// two 奇聞檔案局 writers moved again on 2026-11-03 (thumbnailGuide: the famous name, then the
+// reversal; a sub the title does not say; one large face on the right).
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
   "writer:explainer-cartoon": [27161, "24625a430c23d15dc2428d2195c3947b5a18a59b51ab7b9e6e30bcd85b4264f5"],
@@ -125,10 +127,10 @@ const SERIES_TEXT_PINS = {
   "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
   "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
   "planner:bible-explainer-mystery": [9111, "ef9cf2ef25cf3cd54c445e33d25c80fb469d96e53d70044e93ca451d1b9a087b"],
-  "writer:explainer-mystery": [33923, "a2618084ebfc82667bfe58b049ea8943aaafcf1f9ca884b5709aa9d1866148af"],
+  "writer:explainer-mystery": [34356, "ba106653707e0ad02ed6a21ffaf298d878db7b74dbc5ddae6b7c2331110bd843"],
   "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
   "planner:discuss-mystery": [9740, "925081165290cf91c680835650ccdd14e8d6f9256b794ec799c628aaf06686cd"],
-  "writer:discuss-mystery": [32469, "7c1a0a0efde27ce5afddde770ea3dacc0983a2d0b01d5e1347b0956dde60e751"],
+  "writer:discuss-mystery": [32902, "d662ddccb243fecf2ce37cfddd395c37842182babd5a0550632a7edc89539ef9"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
