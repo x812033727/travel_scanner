@@ -251,6 +251,18 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
    要改某一句時，把那個資料夾抓回來，`node tools/video/import/recordings.mjs unpack <recordings 資料夾> <那集的工作資料夾>`
    就還原成原本的每一句檔，一個位元組都不差。
 
+5. **`review-push` 也帶完整層級**（2026-11-03，票 `2026-11-03-review-push-sends-the-full-backup`）：在別處做的影片
+   （工作資料夾沒有 `auto.json`）`review-push --gate publish` 除了上傳包，也送完整層級的其他檔
+   （[`full-tier.mjs`](../../tools/video/review/full-tier.mjs)）：每張分鏡圖 `kf_<名稱>`（一集奇聞檔案局約 230–320 張）、
+   `keyframes_manifest`、`full_narration`（narration.wav）、`full_timeline`（timeline.json）、`clips/` 的 `clip_<鏡>`，
+   以及照 `import` 的方式打包的逐句錄音（`recording_<語言>`、`recordings_manifest`，工作資料夾的 `audio/`、`audio-<語言>/`）。
+   網站把這些另外計數：`kf_` 最多 400 個、`clip_` 120 個、其他 24 個，都不占每關 48 個的上限；`kf_` 與 `clip_` 只收在
+   上架確認這一關（`apps/api/app/video_reviews/clips.py`）。名稱放不進角色（字母、數字、`-`、`_`，最多 37 個字）的檔不送，
+   原因寫在 payload 的 `full_tier.problems`。worker 取回時放回原位：`keyframes/<名稱>.<副檔名>`、`keyframes/manifest.json`、
+   `narration.wav`、`timeline.json`。一集三百多個檔，worker 每輪抓 40 個，約八、九輪抓完；抓完之前不備份。
+   worker 自己做的影片不送這些（檔案本來就在 video_work）。審核區只在備份完成後刪 mp4，這些圖與音檔目前會一直留在審核區
+   （一集約 180 MB），整支清除是 `2026-11-03-purge-a-video-from-the-host` 的事。
+
 只動自己放的東西：有 `auto.json` 的（worker 做的）和沒有 `review-package.json` 卻已經存在的
 資料夾（手動做的）一律不碰；換版後新的上架確認核准時，只替換上一包放的檔案，舊檔照第 4 步留在
 雲端 `_舊版/`。審核區已經刪掉的檔案（上 YouTube 7 天後的 mp4）記成取不到，其他照備份，網站列出
