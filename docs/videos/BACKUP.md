@@ -434,6 +434,22 @@ mp4 不會自己清，檔案區（預設 20 GB）要靠備份開著才會回收�
 
 ## 還原
 
-找到 `AI/備份/<系列>/<集>/backup.json`，按 `files` 清單下載，比對 sha256。
+**從主機還原（2026-11-03，票 `2026-11-03-restore-a-purged-video-from-drive`）**：上架、備份完整、語言做完之後主機會把影片整支清掉
+（〈跟 tidy 的關係〉）。之後要補語言、重做配音、從長片剪 Shorts，先在 video-worker 容器裡把它拉回來：
+
+```bash
+docker compose -f docker-compose.prod.yml exec -T video-worker node tools/video/cli.mjs restore --slug <slug> --dry-run
+docker compose -f docker-compose.prod.yml exec -T video-worker node tools/video/cli.mjs restore --slug <slug>
+```
+
+[`restore.mjs`](../../tools/video/automation/restore.mjs) 讀雲端那一集的 `backup.json`（雲端沒有就用主機留下的那份），
+`rclone copy` 到 `video_work/_restore-stage/<slug>/`（不含 `_舊版/`），逐檔比對 sha256 與大小，對得上的才放回原位
+（`workPathOf`，planFiles 的反向：上傳包回 `upload/`、`descriptions/<l>.txt` 回 `upload/description.<l>.txt`、`dub-lines/<l>/`
+回 `dubs/<l>/audio/`、`dubs/未進上傳包/` 回 `dubs/`、`captions/未進上傳包/` 回 `captions/`，其餘照原路徑）。worker 自己的影片也把
+`upload/final.mp4` 連回根目錄的 `final.mp4`。對不上的檔不放，列出來、結束碼非 0。完成後 `auto.json` 拿掉 `tidied_at`、寫上
+`restored_at`（手動資料夾寫在 `tidied.json`），tidy 保留 14 天（`RESTORE_HOLD_DAYS`）讓後續工作做完，之後照一般規則再清。
+雲端上的檔案不會被改動。目前要手動下這個指令：worker 遇到已清掉的影片時，新勾的語言仍會回報「工作檔已清」，不會自己還原。
+
+**手動還原**（不在主機上）：找到 `AI/備份/<系列>/<集>/backup.json`，按 `files` 清單下載，比對 sha256。
 要重新上架時，`final.mp4`、`captions/`、`descriptions/`、`dubs/` 就是一份完整的手動上傳包
 （對應 [MANUAL-UPLOAD.md](MANUAL-UPLOAD.md)）。

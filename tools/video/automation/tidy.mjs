@@ -52,6 +52,8 @@ const BACKUP_HOLD = "not in Google Drive yet";
 // and the tidy's own for a folder that has no auto.json. A few KB.
 export const PURGE_KEEP = new Set([STATE_FILE, "backup-state.json", "backup.json", "review-package.json", "tidied.json"]);
 const HAND_TIDIED = "tidied.json";
+// A video brought back from Drive for late work (restore.mjs) keeps its files this long first.
+export const RESTORE_HOLD_DAYS = 14;
 
 /**
  * What goes from a finished video's work directory, relative to it: the media the stages made,
@@ -235,7 +237,7 @@ function handVideos(base, fs) {
     } catch {
       tidied = null;
     }
-    videos.push({ slug: entry.name, workdir, hand: true, state: { slug: entry.name, status: "hand", tidied_at: tidied?.tidied_at ?? null } });
+    videos.push({ slug: entry.name, workdir, hand: true, state: { slug: entry.name, status: "hand", tidied_at: tidied?.tidied_at ?? null, restored_at: tidied?.restored_at ?? null } });
   }
   return videos;
 }
@@ -286,7 +288,7 @@ function backupHold(slug, backup) {
  * for the owner, or already tidied); { held } when it is finished but something still needs its
  * files; { problem } when it is finished but has no usable date; else { at, how }.
  */
-function judge(video, { states, listed, videos, repos, fs, backup }) {
+function judge(video, { states, listed, videos, repos, fs, backup, now = Date.now() }) {
   const { slug, workdir, state } = video;
   if (state.tidied_at) return null;
   // A folder without auto.json is the site's to describe, and only a purge clears it.
@@ -343,6 +345,10 @@ function judge(video, { states, listed, videos, repos, fs, backup }) {
         .map(([part]) => `${locale} ${part}`),
     );
     if (waiting.length) return { held: `${waiting.join(", ")} not uploaded or skipped yet` };
+    const restored = Date.parse(String(state.restored_at ?? ""));
+    if (Number.isFinite(restored) && now - restored < RESTORE_HOLD_DAYS * DAY_MS) {
+      return { held: `restored from Google Drive on ${day(restored)} for late work; kept ${RESTORE_HOLD_DAYS} days` };
+    }
     return { at: confirmed.length ? Math.max(...confirmed) : 0, how: "on YouTube and in Drive", purge: true };
   }
   if (!confirmed.length) return { problem: "on YouTube, but its upload confirmation has no date (no publish approval in approvals.json, none on the site)" };
@@ -615,7 +621,7 @@ export function tidyRound({ base: given, repos: named = [ROOT], site = null, bac
   const gone = new Set(round.deleted.map((outcome) => outcome.slug));
   for (const video of videos) {
     if (gone.has(video.slug)) continue;
-    const verdict = judge(video, { states, listed, videos, repos, fs, backup });
+    const verdict = judge(video, { states, listed, videos, repos, fs, backup, now: now.getTime() });
     if (!verdict) continue;
     if (verdict.held) round.held.push({ slug: video.slug, why: verdict.held });
     else if (verdict.problem) round.undated.push({ slug: video.slug, why: verdict.problem });
