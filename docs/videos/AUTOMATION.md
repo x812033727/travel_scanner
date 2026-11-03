@@ -282,6 +282,9 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 工作區（volume `video_work`）原本什麼都不刪，一支品牌故事就留下 1.3–2 GB（`STORY.md` §上限與成本）。工人每一輪做完手上的工作之後清一次（`tools/video/automation/tidy.mjs`）：
 
+> **2026-11-03 起已上 YouTube 的影片改走「整支離開主機」**：備份 `done`、語言做好或略過（配音要已上傳）三樣齊了就把整個工作資料夾刪掉，只留幾 KB 的紀錄，不等 7 天；備份關閉或系列不備份時一律不刪。細節見 [BACKUP.md](BACKUP.md) §跟 tidy 的關係。下面的 7 天規則現在只用在放棄的影片。
+
+
 - **哪些影片**：`auto.json` 說已經結束的——`status: done` 而且記下了 YouTube id，或站主放棄（`dropped`）——而且結束滿保留天數（預設 7 天，跟審核檔案區刪 mp4 的 `PREVIEW_RETENTION` 一樣）。
 - **從哪天算**：放棄的從 `dropped.at` 算。上了 YouTube 的，`auto.json` 沒有記日期（`recordVideoId` 只寫 `status` 與 `youtube_video_id`），所以照網站刪 mp4 的規則（`prune_published_previews`）：上架確認核准的時間（工作區 `approvals.json` 的 `publish` 項，與每輪影片清單的 `publish_approved_at`，取較晚的）和站主設的公開時間（`youtube_publish_at`），再取較晚的。沒有可用的日期就不清，那一輪印一行說明。
 - **先留著**：還在做、卡住、等站主的影片，不管多舊都不動。已上 YouTube 但語言還沒決定或還在做（影片清單的 `locales_decided_at`、`languages`）、還有任何審核在等站主決定（清單的 `pending`，退回一批語言審核時還要用到檔案）、開了合集的作品裡合集還沒上 YouTube 的集數（合集要接每一集的成片與字幕，縮圖取前三集的關鍵影格）、工作區裡有 `STOP` 檔的，也先留著。
