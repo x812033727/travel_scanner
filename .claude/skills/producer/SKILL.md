@@ -75,6 +75,12 @@ metadata:
 5. **包裝。** 標題寫情境不寫結局；封面是反轉前那一格最強的表情；雙語字幕（繁中＋英文）讓國外也看得懂；系列每集結尾留下一集的鉤子。
 6. **交製作。** 9:16 從漫劇成片用 `node tools/video/shorts/cli.mjs from-drama` 裁，外部成片用 `import`（`.agents/skills/youtube-video/references/shorts.md`）；2–4 分鐘的走漫劇長片（`.agents/skills/youtube-video/references/drama.md`）。
 
+## 評分：一支影片評四次
+
+開拍前評**企劃與稿子**、剪好後評**成片**、上架前評**包裝**（縮圖與標題）、公開 7／28 天後看**上架後的數據**；前一段沒過不進下一段。
+評分表、門檻與量法都在 `.agents/skills/producer/references/scorecards.md`。`qa` 的技術檢查只分過或不過，不代替這裡的內容評分；
+評分的代理不能是做那支片的那一個。
+
 ## 產出：製片單
 
 每次工作結束都交一份，放在對話裡或站主指定的檔案，不進 repo（數據屬於頻道）：
