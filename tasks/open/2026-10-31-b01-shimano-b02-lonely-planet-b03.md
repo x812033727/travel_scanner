@@ -80,3 +80,10 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
 - 2026-11-02 B01 八語配音完成（縮短約 10 句；en、vi、id 有語音念出「thought」的句子，重錄後沒了——之後的配音迴圈在刪逐句音檔前先自動重錄這種句子）。captions 九語、package 4/4、qa 10/11（只剩 yamaha.com 對 qa UA 回 403）。`review-push --gate publish` 與 `--gate languages` 已送出（pending），站主在 /admin/videos 決定。注意：`package` 對一般影片是複製 final.mp4 與配音進 upload/（約 450 MB），磁碟緊時要把它們改成硬連結（cmp 確認相同再 ln -f）。
   要站主在語言關卡特別聽：t002 的「2025 年」（ja 聽成 2023、ko 2015、vi 2020、重錄的 en 也聽成 2020——可能是聲音真的念含糊）、en t017 的 It's said、ja t013 山葉寅楠。B02 ja t004 的 1921（聽成 1920）、ko t121 的 2024（聽成 2004）。
 - 2026-11-02 B02 八語配音完成（縮短約 12 句，兩句異常慢的錄音改字重錄；en、pt、id、vi 各一句念出「thought」已重錄）。qa 11/11、package 4/4，`--gate publish` 與 `--gate languages` 已送出（pending）。B03 八語配音開始（en ja ko es 先跑）。
+- 2026-11-03 B03 八語完成（en ja ko es pt id vi th），captions 九語、package 4/4（上傳包複本已改回硬連結）、qa 10/11，
+  `review-push --gate publish` 與 `--gate languages` 已送審（pending）。es 縮短 t106、t107 以符時窗。
+  - qa 唯一沒過：links。NPR 那條 curl 重試 200（當時逾時）；`https://tonywheeler.com.au/about-tony` 在這個容器的 HTTPS 連線被對方重置，
+    請站主用瀏覽器確認。
+  - 站主試聽清單（B03）：ja t049「9月」聽成 10 月、ja t022「聖書」聽成「彗星」、ko t031「8810만」聽成 8110만、ko t037「수신료」聽成「10년」、
+    ko t089「공유 숙박」聽成「도쿄 숙박」；th t017、t024 Gemini 安全過濾拒絕轉寫，沒有機器聽寫結果。
+  - pt t102 漏出 thought，已自動重錄、重聽無漏字。th 第一次配音時磁碟寫滿導致聽寫中斷、逐句檔被清，整語重配一次（免費額度）。
