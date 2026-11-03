@@ -1,0 +1,17 @@
+{
+  "title": "Channel reports (YouTube Reporting API)",
+  "help": "The site downloads the channel's daily reports (views, engaged views, watch time, thumbnail impressions and click-through rate, traffic sources, audience and devices) and keeps them as YouTube wrote them; an AI paired with a video tool token reads them to see how the videos do and what to improve. They are deleted when the channel is unlinked.",
+  "scopeStep": "On the same screen also add this read-only scope, and enable the YouTube Reporting API under APIs & Services → Library, for the channel reports: {scope}",
+  "needsRelink": "The current grant does not include YouTube Analytics, so the channel reports cannot be read. Press “Link again” and tick “See YouTube Analytics reports for your YouTube content” on Google's consent screen.",
+  "notSynced": "No report has been downloaded yet.",
+  "syncedAt": "Last complete download: {time}",
+  "coverage": "{count} reports, {first} to {last} (Pacific time)",
+  "waiting": "{count} reports were just scheduled; YouTube usually posts the first one and the previous 30 days within a day or two.",
+  "sync": "Download reports now",
+  "syncing": "Downloading…",
+  "synced": "Downloaded {downloaded}, updated {replaced}.",
+  "partial": "Downloaded {downloaded}; more are waiting, press again.",
+  "notDue": "Already downloaded within twelve hours.",
+  "running": "Another download is in progress.",
+  "loadError": "The report status could not be read: {message}"
+}

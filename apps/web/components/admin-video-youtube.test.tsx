@@ -286,3 +286,37 @@ describe("the ready card and the list with a linked channel", () => {
     expect(await screen.findByRole("region", { name: "YouTube 頻道" })).toBeTruthy();
   });
 });
+
+describe("the channel reports line", () => {
+  const reports = {
+    linked: true, analytics_granted: true, synced_at: "2026-11-02T03:00:00Z", problem: null,
+    reports: [{ report_type_id: "channel_basic_a3", days: 30, first_day: "2026-10-03", last_day: "2026-11-01" }],
+    waiting_for_first_report: [{ report_type_id: "channel_reach_basic_a1" }],
+  };
+
+  it("asks for linking again when the grant does not read YouTube Analytics", async () => {
+    stub((url) => (url.endsWith("/admin/video-youtube/reports") ? reports : linked));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><YoutubeChannelCard /></AdminOperationsProvider>);
+    const line = await screen.findByLabelText("頻道報表（YouTube Reporting API）");
+    expect(line.textContent).toContain("目前的授權沒有包含 YouTube Analytics");
+    expect(within(line).queryByRole("button")).toBeNull();
+  });
+
+  it("shows how far the reports reach and fetches them now", async () => {
+    const granted = { ...linked, analytics_granted: true, scope: "https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/yt-analytics.readonly" };
+    const calls = stub((url, method) => {
+      if (url.endsWith("/admin/video-youtube/reports/sync") && method === "POST") return { status: "synced", downloaded: 4, replaced: 1, problem: null };
+      if (url.endsWith("/admin/video-youtube/reports")) return reports;
+      return granted;
+    });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><YoutubeChannelCard /></AdminOperationsProvider>);
+    const line = await screen.findByLabelText("頻道報表（YouTube Reporting API）");
+    await waitFor(() => expect(line.textContent).toContain("1 種報表，2026-10-03 到 2026-11-01"));
+    expect(line.textContent).toContain("1 種報表剛排程");
+    const card = screen.getByRole("region", { name: "YouTube 頻道" });
+    expect(card.textContent).toContain("https://www.googleapis.com/auth/yt-analytics.readonly");
+    fireEvent.click(within(line).getByRole("button", { name: "立即下載報表" }));
+    expect(await within(line).findByText("下載了 4 份、更新了 1 份。")).toBeTruthy();
+    expect(calls.filter((call) => call.url.endsWith("/admin/video-youtube/reports/sync")).map((call) => call.method)).toEqual(["POST"]);
+  });
+});

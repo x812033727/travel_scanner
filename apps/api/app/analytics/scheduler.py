@@ -34,6 +34,19 @@ def main() -> None:
                 failure_ttl=604_800,
                 retry=Retry(max=3, interval=[60, 300, 900]),
             )
+        # The YouTube channel reports (docs/videos/YOUTUBE-REPORTS.md): twice a day, so a report
+        # YouTube posts is kept well inside the 60 days it stays downloadable.
+        half = "am" if datetime.now(ZoneInfo("Asia/Taipei")).hour < 12 else "pm"
+        reports_job = f"video-youtube-reports-{day}-{half}"
+        if queue.fetch_job(reports_job) is None:
+            queue.enqueue(
+                "app.video_youtube.jobs.sync_reports",
+                job_id=reports_job,
+                job_timeout=1800,
+                result_ttl=86_400,
+                failure_ttl=604_800,
+                retry=Retry(max=2, interval=[300, 1800]),
+            )
         time.sleep(settings.analytics_scheduler_interval_seconds)
 
 
