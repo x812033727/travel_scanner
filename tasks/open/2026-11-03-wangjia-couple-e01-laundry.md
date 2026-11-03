@@ -12,6 +12,7 @@ branch:
 depends_on: []
 scope:
   - docs/videos/wangjia-couple-e01
+  - docs/videos/wangjia-couple
 ---
 
 # 汪家夫妻 EP1〈幫忙曬衣服〉15 秒零台詞短劇：分鏡、評分審核
