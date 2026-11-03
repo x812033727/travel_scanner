@@ -400,6 +400,43 @@ prompt("chief-how-high", "Medium shot of the chief stretching her arm high to ta
 prompt("cumulonimbus", "Low angle wide shot looking up at an enormous white cauliflower-shaped storm cloud with a flat grey base towering over a city skyline, one tiny airliner near its top, the only shapes are the buildings, the cloud and the airliner, soft afternoon light", ())
 prompt("chief-phone-call", "Medium close-up of the chief holding a phone to her ear and smiling, a plain bare wall behind her, soft daylight, " + CHIEFDESC)
 
+# scorecard round 2 (review/scorecard-2-storyboard.md): identity first in the prompt, no stray figures, no signs
+KIDF = "An eight-year-old girl with a short black bob, straight bangs and one small cowlick, in a navy raincoat jacket with a mustard-yellow hood: "
+CHIEFF = "A middle-aged woman with round black glasses, dark hair with one grey streak tied in a low ponytail, a yellow pencil behind her ear and a mustard-yellow cardigan: "
+R2 = {
+ "tower-greying": ("Low angle wide shot of one tall puffy cloud over apartment rooftops, its top bright white and its flat underside clearly dark grey, plain empty rooftops, soft light from the upper left", ()),
+ "kid-puzzled": (KIDF + "close-up, she frowns in thought standing in a bright doorway, soft daylight", KID),
+ "chief-window": (CHIEFF + "medium shot, she stands at an open window with her hands behind her back gazing up at a big white cloud, gentle afternoon light", CH),
+ "town-cloud-wide": (KIDF + "medium shot, she counts on her fingers with a puzzled face, a small toy elephant on the table in front of her, soft light", KID),
+ "kid-why-not-fall": (KIDF + "close-up, finger on her chin and eyebrows raised, looking up as if picturing something heavy overhead, a plain wall, soft light", KID),
+ "hot-street": ("Medium shot of a grown man with a moustache in a delivery helmet wiping sweat from his forehead beside his scooter on a hot street, heat shimmer rising from the asphalt, plain shop fronts, mild hazy daylight", ()),
+ "kid-vapour-guess": (KIDF + "medium close-up, she sits on a tall stool raising one hand high like asking a question in class, a plain background, soft light", KID),
+ "chief-explains-mist": (CHIEFF + "medium close-up, she holds a steaming mug and smiles knowingly, soft lamp light", CH),
+ "chief-expands": (CHIEFF + "medium shot, she squeezes one round red balloon between both hands at her desk, amused, warm lamp light", CH),
+ "kid-flat-bottoms": (KIDF + "medium shot, she lies on her back on a grassy riverbank pointing up and laughing at a row of puffy white clouds with flat bottoms, soft afternoon light", KID),
+ "cauliflower-grow": ("Low angle wide shot of a puffy white cloud bulging upward in round lumps like a cauliflower over an empty green hillside, the only shapes are the hill and the cloud, soft bright afternoon light", ()),
+ "chief-whiteboard": (CHIEFF + "medium close-up, she holds her two hands far apart as if holding a big invisible box and grins, a plain wall behind her, soft daylight", CH),
+ "chief-laugh": (CHIEFF + "medium close-up, she laughs with one hand on her belly at her desk, warm lamp light", CH),
+ "chief-second": (CHIEFF + "medium close-up, she holds up a glass jar full of tiny glittering water beads and looks at them kindly, a plain wall, soft daylight", CH),
+ "chief-falls-slowly": (CHIEFF + "head and shoulders, she watches one tiny droplet drifting down very slowly past her face, a gentle smile, a plain wall, warm lamp light", CH),
+ "kid-elevator": (KIDF + "medium shot, inside a bright glass elevator she points upward with a big grin as it rises, soft daylight", KID),
+ "chief-answer-one": (CHIEFF + "medium close-up, she gives a satisfied nod with her arms folded, a plain wall, soft daylight", CH),
+ "kid-million": (KIDF + "close-up, her mouth wide open in shock and her notebook slipping from her hands, under a shop arcade, soft overcast light", KID),
+ "collision": ("Extreme close-up illustration of one big round raindrop falling and swallowing two smaller droplets just below it inside a soft white cloud, the only shapes are the droplets", ()),
+ "chief-batch": (CHIEFF + "medium shot, she points at a raindrop streaking fast past the window, soft lamp light", CH),
+ "chief-how-high": (CHIEFF + "medium shot, she stretches her arm high to tap the top of a tall plain bookshelf, looking up at her hand, soft daylight", CH),
+ "small-clouds": (KIDF + "wide shot, she throws a paper plane on a park lawn under a sky dotted with many small flat white puffs of cloud, mild soft light", KID),
+ "cumulonimbus": ("Low angle wide shot of an enormous white storm cloud rising like a tall tower from a flat grey base high above a city skyline, one tiny airliner beside its top, plain buildings, soft afternoon light", ()),
+ "kid-noon-guess": (KIDF + "medium shot, she points confidently at a round wall clock whose two hands both point straight up, a smug smile, a plain wall, soft light", KID),
+ "sea-breeze": (KIDF + "medium shot, on a seaside promenade she holds her hood as a moist sea breeze blows in from the sea, low hills behind, soft hazy light", KID),
+ "grey-base": ("Low angle wide shot looking straight up at the thick dark-grey flat base of a huge cloud with bright white edges, the only shapes are the cloud and the sky", ()),
+ "sign-anvil": ("Wide shot from far away of a huge white storm cloud whose top has spread out into a wide flat shelf like an anvil, the whole cloud visible with blue sky around it, a low line of plain rooftops at the bottom of the frame, soft afternoon light", ()),
+ "chief-anvil": (CHIEFF + "medium close-up, she raises one flat hand above her head as if touching a ceiling, a knowing look, soft lamp light", CH),
+ "rain-stops": (KIDF + "wide shot, she steps out onto a wet balcony under a clear blue sky with sunshine and a few thin wisps of cloud, puddles on the floor, soft clearing light", KID),
+ "chief-stamp": (CHIEFF + "medium close-up, she closes a plain folder with both hands and smiles, warm lamp light", CH),
+}
+for sid, (text, chars) in R2.items(): prompt(sid, text, chars)
+
 # keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture
 import json as _json, os as _os
 _cams = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "cameras.json")))
