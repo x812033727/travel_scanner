@@ -1,0 +1,397 @@
+{
+ "schema_version": 1,
+ "created_on": "2026-11-03",
+ "integrator": "root",
+ "status": "INTEGRATED_TOPIC_LEVEL_NOT_PRODUCTION",
+ "production_ready": false,
+ "role_split": "四線作者與四位非作者覆核各自獨立；root只做整合、裁決落檔、事後近鄰重算及兩處文字收斂，未冒稱獨立審核。",
+ "lanes": [
+  {
+   "lane": "life",
+   "label": "動物與微生物",
+   "author": "wave51-life-author",
+   "reviewer": "wave51-life-reviewer",
+   "status": "PASS_TOPIC_LEVEL_ONLY",
+   "candidates": [
+    "L51-001",
+    "L51-002",
+    "L51-003",
+    "L51-004",
+    "L51-005"
+   ]
+  },
+  {
+   "lane": "physics",
+   "label": "熱板液滴與燭火",
+   "author": "wave51-physics-author",
+   "reviewer": "wave51-physics-reviewer",
+   "status": "PASS_TOPIC_LEVEL_ONLY",
+   "candidates": [
+    "P51-001",
+    "P51-002",
+    "P51-003",
+    "P51-004"
+   ]
+  },
+  {
+   "lane": "earth",
+   "label": "考古磁性與海天觀測",
+   "author": "wave51-earth-author",
+   "reviewer": "wave51-earth-reviewer",
+   "status": "PASS_TOPIC_LEVEL_ONLY",
+   "candidates": [
+    "S51-001",
+    "S51-002",
+    "S51-003",
+    "S51-004"
+   ]
+  },
+  {
+   "lane": "human",
+   "label": "廚房與身體感知",
+   "author": "wave51-human-author",
+   "reviewer": "wave51-human-reviewer",
+   "status": "PASS_TOPIC_LEVEL_ONLY",
+   "candidates": [
+    "H51-001",
+    "H51-002",
+    "H51-003",
+    "H51-004"
+   ]
+  }
+ ],
+ "input_files": [
+  {
+   "file": "batches/wave51-life.json",
+   "sha256": "ddcf4fa3f18bb5fbdee343f9b3e6798e68d95f33cce4136488f37a0b79f5ee51"
+  },
+  {
+   "file": "reviews/wave51-life-author.json",
+   "sha256": "430c1ccd437ada8f0db669e8a27832ab7bdc22a9c75133bda174073483c2bd24"
+  },
+  {
+   "file": "reviews/wave51-life-themes.json",
+   "sha256": "c54a12618fb40c2c49f6d357dc0b1cd0ee72ed566ee5553fbb3da4e0772208ea"
+  },
+  {
+   "file": "reviews/wave51-independent-reviews-life.json",
+   "sha256": "7f8bb948701026946aab10fb09a789fc2e32b8ede580a46fd252cf500be1a779"
+  },
+  {
+   "file": "batches/wave51-physics.json",
+   "sha256": "9b2fee6bd84aca1b142b7f6a65bd10be9ab6c35b93d59ed117c7917213d775f0"
+  },
+  {
+   "file": "reviews/wave51-physics-author.json",
+   "sha256": "103e081d7734b57a1528ddd4a0f903cc7cb8467437e9ba575cf11540bd39ad85"
+  },
+  {
+   "file": "reviews/wave51-physics-themes.json",
+   "sha256": "169bb03956b524416df65fa99f00900628a17c89babd504bef1c68c5beb12e1b"
+  },
+  {
+   "file": "reviews/wave51-independent-reviews-physics.json",
+   "sha256": "c3210f6182e333bfe15cebafa6aeaea1eee06bc99c14a133e4f1166a1201f0a1"
+  },
+  {
+   "file": "batches/wave51-earth.json",
+   "sha256": "ff4b2fd62966367bec349b05df452f600ed4917f209af5bfcccfbfcc359b88d6"
+  },
+  {
+   "file": "reviews/wave51-earth-author.json",
+   "sha256": "85e0e3831a74d1b8d7c025a5c56db53c1c4c0bf2234d914f6e63c662d90e1f19"
+  },
+  {
+   "file": "reviews/wave51-earth-themes.json",
+   "sha256": "86aa2aafb201284e03a63b50cea6ec0dbf8e23016d701909b03f5aee7e6883c3"
+  },
+  {
+   "file": "reviews/wave51-independent-reviews-earth.json",
+   "sha256": "8e92154a817b932102b4a84af127b82d03cf070c1bb531d6350af589d3914845"
+  },
+  {
+   "file": "batches/wave51-human.json",
+   "sha256": "4fc9ba4f8f3eb4e064c4868b483c8cad6159018e9e17e16e0edb2e3a75112535"
+  },
+  {
+   "file": "reviews/wave51-human-author.json",
+   "sha256": "a8efb14a21d65ea390868659e886ca2aae73d6bd1ccefc77031a4487d8179737"
+  },
+  {
+   "file": "reviews/wave51-human-themes.json",
+   "sha256": "3bbb11ec192461df451aab3edf4e8a743a695fa6b1fe40abe239e7f25b70205a"
+  },
+  {
+   "file": "reviews/wave51-independent-reviews-human.json",
+   "sha256": "864ab476dd3694ebf291976778ffb2c1a33be2de25b2d84ec0e296b576e39841"
+  }
+ ],
+ "merges": [
+  {
+   "duplicate_id": "L51-005",
+   "canonical_id": "L51-004",
+   "reason": "非語意重複，而是證據不足自立：發育同步相關、個體層級關聯不顯著或受發育期混淆、原圖未能目讀；年齡門檻主畫面本就出自L51-S004。降為L51-004年齡章節中約10秒的支持點，不計新核。"
+  }
+ ],
+ "excluded": [],
+ "dedup_written": {
+  "distinct_added": 137,
+  "skipped_already_recorded_or_merged": 3,
+  "not_added_pairs_kept_in_reviews_only": [
+   "P51-002~P22-NA010"
+  ],
+  "note": "舊未收方向不是原題紀錄，其相異判斷只留在覆核檔，不寫入dedup-decisions。"
+ },
+ "post_revision_semantic_recheck": {
+  "reason": "作者依覆核修文後題目與答案改變，root以最終草稿重算top-10；與覆核時top-5相比新出現10組，逐組讀完整問答與範圍後全判不同核。",
+  "first_file": ".cache/wave51-semantic-neighbours.json",
+  "final_file": ".cache/wave51-semantic-neighbours-final.json",
+  "final_sha256": "b5736bb740a4b3d53552b23e87ec2ee689c8e1a31c9a47f250b1456cc6dbdfd5",
+  "judge": "root（非獨立覆核）",
+  "pairs": [
+   {
+    "a": "H51-001",
+    "b": "D2053",
+    "reason": "D2053為巴氏殺菌板式熱交換讓熱奶預熱冷奶的能源回收；H51-001是起司與水加熱時蛋白聚團、以糊化澱粉提高結團溫度並縮小團塊，機制與答案不同。"
+   },
+   {
+    "a": "H51-001",
+    "b": "D2050",
+    "reason": "D2050比較奶粉製程先濃縮再噴乾的水負荷分工；H51-001問起司醬加熱聚團與澱粉濃度的相界，非乾燥製程。"
+   },
+   {
+    "a": "H51-002",
+    "b": "D2270",
+    "reason": "D2270是洗去澱粉後麵筋網絡更連續；H51-002以沸水/30°C交替讓蛋白與蛋黃處在不同溫區、蛋黃趨近平均溫度，熱傳時間尺度與食材均不同。"
+   },
+   {
+    "a": "H51-003",
+    "b": "LEG-S38",
+    "reason": "LEG-S38是薄荷醇開啟TRPM8冷受體造成涼感；H51-003是沒有濕度受器時，由水量、熱流與摩擦組合判斷濕，涼只讓同量水更像濕，不涉化學騙過受體。"
+   },
+   {
+    "a": "H51-004",
+    "b": "A5011",
+    "reason": "A5011是交叉伸展反射讓對側腿接手支撐；H51-004以綁手、夾手與同手同腳對照比較步行耗能與地面扭矩，答案是手臂反擺抵消扭轉。"
+   },
+   {
+    "a": "H51-004",
+    "b": "K18001",
+    "reason": "K18001是步行衝擊與自由端慣性讓鞋帶結突然鬆開；H51-004研究擺臂對耗能與身體扭轉，僅同屬走路情境。"
+   },
+   {
+    "a": "L51-001",
+    "b": "B2323",
+    "reason": "B2323是切葉蟻搭便車小工蟻防寄生蠅；L51-001是弓背蟻依傷口在股節或脛節決定截肢或舔舐，及截肢時機對存活的影響。"
+   },
+   {
+    "a": "P51-001",
+    "b": "X42-009",
+    "reason": "X42-009為坐在底板上的蒸發液滴，導熱與接觸角決定內部馬蘭哥尼循環方向；P51-001是萊頓弗羅斯特懸浮液滴，雜質成殼使蒸氣層變薄而觸板爆炸或縮小後被托起飛離。"
+   },
+   {
+    "a": "P51-001",
+    "b": "I12009",
+    "reason": "I12009為液滴併入液面後頸縮留下子滴的部分合併；P51-001是熱板上懸浮液滴最終爆炸或起飛的分歧，控制量為雜質成殼與尺寸。"
+   },
+   {
+    "a": "P51-002",
+    "b": "P51-001",
+    "reason": "兩題同為熱板懸浮液滴但不同研究：P51-002問對稱細脊上長水滴自發選向推進的蒸氣膜傾斜力，P51-001問液滴終局爆炸或起飛；控制量與答案不同，獨立覆核亦判兩核。"
+   }
+  ]
+ },
+ "root_text_edits": [
+  {
+   "file": "reviews/wave51-life-themes.json",
+   "before_sha256": "64abbb51885ce0d695b8a72b1cb096f54f5660471ff54bee13088e6b9bafacc8",
+   "after_sha256": "c54a12618fb40c2c49f6d357dc0b1cd0ee72ed566ee5553fbb3da4e0772208ea",
+   "change": "「約80倍以上」改「約80倍」，依覆核者讀原文~80-fold的非阻擋意見；秒數不變。"
+  },
+  {
+   "file": "batches/wave51-life.json",
+   "before_sha256": "ef58389eddab81894c0aed4351adf1783593409b8b81196d7a69a079c4f35cb3",
+   "after_sha256": "ddcf4fa3f18bb5fbdee343f9b3e6798e68d95f33cce4136488f37a0b79f5ee51",
+   "change": "L51-S004 summary同上改為「約80倍」。"
+  },
+  {
+   "file": "batches/wave51-human.json",
+   "after_sha256": "4fc9ba4f8f3eb4e064c4868b483c8cad6159018e9e17e16e0edb2e3a75112535",
+   "change": "覆核通過後作者依非阻擋意見收斂H51-003 payoff並把editorial秒數上限壓到覆核上限60/65/65/60；root讀回新payoff已加「單看水溫只解釋一小部分」限制。"
+  }
+ ],
+ "selection": {
+  "revision": "2026-11-03-pool-3558",
+  "added": [
+   "S51-001",
+   "S51-002",
+   "S51-003",
+   "S51-004",
+   "H51-001",
+   "H51-002",
+   "H51-003",
+   "H51-004",
+   "L51-001",
+   "L51-002",
+   "L51-003",
+   "L51-004",
+   "P51-001",
+   "P51-002",
+   "P51-003",
+   "P51-004"
+  ],
+  "count": 3558
+ },
+ "themes": [
+  {
+   "id": "G560",
+   "proposal_id": "W51L-T01",
+   "body_seconds": 68,
+   "candidate_ids": [
+    "L51-001"
+   ],
+   "title": "螞蟻替同伴截肢，為什麼只截大腿受傷的那隻？"
+  },
+  {
+   "id": "G561",
+   "proposal_id": "W51L-T02",
+   "body_seconds": 72,
+   "candidate_ids": [
+    "L51-002"
+   ],
+   "title": "噬菌體怎麼決定先撐破細菌，還是先躲起來？"
+  },
+  {
+   "id": "G562",
+   "proposal_id": "W51L-T03",
+   "body_seconds": 57,
+   "candidate_ids": [
+    "L51-003"
+   ],
+   "title": "一盤喇叭蟲越敲越不縮，是每隻都慢慢變遲鈍嗎？"
+  },
+  {
+   "id": "G563",
+   "proposal_id": "W51L-T04",
+   "body_seconds": 66,
+   "candidate_ids": [
+    "L51-004"
+   ],
+   "title": "大雨晃得比蛇咬還猛，樹蛙胚胎為什麼反而不急著孵？"
+  },
+  {
+   "id": "G564",
+   "proposal_id": "W51P-T01",
+   "body_seconds": 66,
+   "candidate_ids": [
+    "P51-001"
+   ],
+   "title": "熱板上的液滴，最後是炸開還是飛走？"
+  },
+  {
+   "id": "G565",
+   "proposal_id": "W51P-T02",
+   "body_seconds": 58,
+   "candidate_ids": [
+    "P51-002"
+   ],
+   "title": "對稱的溝紋，水滴怎麼還會一路往前衝？"
+  },
+  {
+   "id": "G566",
+   "proposal_id": "W51P-T03",
+   "body_seconds": 66,
+   "candidate_ids": [
+    "P51-003"
+   ],
+   "title": "香檳的氣泡為什麼排成一直線？"
+  },
+  {
+   "id": "G567",
+   "proposal_id": "W51P-T04",
+   "body_seconds": 66,
+   "candidate_ids": [
+    "P51-004"
+   ],
+   "title": "兩束燭火為什麼會一起跳？"
+  },
+  {
+   "id": "G568",
+   "proposal_id": "W51S-T01",
+   "body_seconds": 60,
+   "candidate_ids": [
+    "S51-001"
+   ],
+   "title": "兩座古城都燒成廢墟，是同一場戰火嗎？"
+  },
+  {
+   "id": "G569",
+   "proposal_id": "W51S-T02",
+   "body_seconds": 64,
+   "candidate_ids": [
+    "S51-002"
+   ],
+   "title": "古人一句「看到日全食」，怎麼量出地球轉慢了？"
+  },
+  {
+   "id": "G570",
+   "proposal_id": "W51S-T03",
+   "body_seconds": 64,
+   "candidate_ids": [
+    "S51-003"
+   ],
+   "title": "25.6公尺的怪浪，為什麼要兩組浪斜撞才做得出來？"
+  },
+  {
+   "id": "G571",
+   "proposal_id": "W51S-T04",
+   "body_seconds": 62,
+   "candidate_ids": [
+    "S51-004"
+   ],
+   "title": "船跡雲線少了一大半，是船變少了嗎？"
+  },
+  {
+   "id": "G572",
+   "proposal_id": "W51H-T01",
+   "body_seconds": 50,
+   "candidate_ids": [
+    "H51-001"
+   ],
+   "title": "起司醬結成一大團？澱粉的分界線"
+  },
+  {
+   "id": "G573",
+   "proposal_id": "W51H-T02",
+   "body_seconds": 58,
+   "candidate_ids": [
+    "H51-002"
+   ],
+   "title": "冷熱輪流泡，蛋黃只記得平均"
+  },
+  {
+   "id": "G574",
+   "proposal_id": "W51H-T03",
+   "body_seconds": 58,
+   "candidate_ids": [
+    "H51-003"
+   ],
+   "title": "手指怎麼「量」出濕？"
+  },
+  {
+   "id": "G575",
+   "proposal_id": "W51H-T04",
+   "body_seconds": 54,
+   "candidate_ids": [
+    "H51-004"
+   ],
+   "title": "甩手是免費的配重"
+  }
+ ],
+ "interest_screen": "作者初篩57個方向未收（重複、取不到全文、與讀到的證據矛盾、過度推論或同研究拆題）；覆核再把證據僅為發育同步相關的L51-005降為L51-004支持點。其餘16核心各有可見的控制或對照。",
+ "limits": [
+  "題級覆核，不是完整稿、逐主張稿審或製作核准。",
+  "root的10組事後近鄰判斷不是獨立覆核。",
+  "未做觀眾留存或試讀。"
+ ]
+}

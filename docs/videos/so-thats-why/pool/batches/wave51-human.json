@@ -1,0 +1,376 @@
+{
+  "batch_id": "wave51-human-20261103",
+  "created_on": "2026-11-03",
+  "scope": "日常身體與廚房：醬汁結團、週期煮蛋、濕感判讀、走路擺臂；每核有實際控制，不串名詞清單。",
+  "sources": [
+    {
+      "id": "H51-S001",
+      "title": "Phase behavior of Cacio e Pepe sauce",
+      "doi": "10.1063/5.0255841",
+      "publisher": "G. Bartolucci等 / Physics of Fluids（arXiv:2501.00536）",
+      "version": "arXiv v3（2025-04-29）作者版；正式刊為Physics of Fluids 2025，未讀期刊排版",
+      "url": "https://arxiv.org/abs/2501.00536v3",
+      "canonical_url": "https://doi.org/10.1063/5.0255841",
+      "retrieval_url": "https://arxiv.org/pdf/2501.00536v3",
+      "accessed_on": "2026-11-03",
+      "read_via": "arXiv PDF 200，pdftotext全文實讀；p3 Fig2原頁轉圖目讀。arXiv頁載正式刊DOI。",
+      "reading_scope": "Sec II–VII全文與補充S1–S2（設備、升溫流程、影像分割）；p3 Fig2相圖目讀，Fig3/Fig5依圖說與正文。",
+      "locator": "arXiv v3 pp2–8 Sec II–VII；補充S1–S2；p3 Fig2原頁目讀。",
+      "summary": "起司與水1:1、每5°C升溫取樣拍照量團塊；澱粉越多，結團出現溫度越高、團塊越小，低澱粉時出現整鍋一大團。",
+      "limitations": "單一產地Pecorino Romano DOP與玉米澱粉；每條升溫至少重複兩次，未給統計檢定。團塊以影像分割估大小。二元混合最小模型是定性擬合。2–3%澱粉建議來自作者品嚐，非盲測。預印本版本。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave51-human-cacio.pdf",
+        "sha256": "bb58a81ceade0d6a8e9fad052156ce88aa5898ed79d2adbafe15f3b047adb203",
+        "text_file": ".cache/wave51-human-cacio.txt",
+        "text_sha256": "17149e66b0ced3421a37d34b4a2dd135639fb26f526d7afc60e21eb6009d6cf2"
+      }
+    },
+    {
+      "id": "H51-S002",
+      "title": "Periodic cooking of eggs",
+      "doi": "10.1038/s44172-024-00334-w",
+      "publisher": "E. Di Lorenzo等 / Communications Engineering",
+      "version": "2025正式刊本（PMC11802719，CC BY-NC-ND）",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11802719/",
+      "canonical_url": "https://doi.org/10.1038/s44172-024-00334-w",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11802719/fullTextXML",
+      "accessed_on": "2026-11-03",
+      "read_via": "Europe PMC全文XML 200，轉文字實讀；Fig1、Fig4自出版社圖檔下載目讀。",
+      "reading_scope": "Results（模擬、FT-IR、感官、TPA）、Methods（四種煮法參數、傳導模型假設）與Conclusions；Fig1週期邊界與溫度剖面、Fig4切面照與感官雷達圖目讀。補充資料感官小組資訊依獨立審閱者自取紀錄補入。",
+      "locator": "Results: Cooking simulations / Quantitative descriptive analysis；Methods: Egg cooking methods；Fig1、Fig4。",
+      "summary": "沸水與30°C水每2分鐘交替8輪；模擬中蛋白溫度來回擺動，蛋黃穩在約67°C；實蛋蛋白凝固程度近溏心蛋，蛋黃感官與65°C低溫蛋無顯著差異。",
+      "limitations": "溫度剖面為傳導模型（忽略氣室與對流），未在蛋內實測溫度。補充資料（MOESM2）QDA節：8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋。Fig.4圖說蛋黃/蛋白差異列項自相矛盾，依正文與雷達圖。單一實驗室、一組週期參數。營養PCA結論屬探索性，不入題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave51-human-PMC11802719.xml",
+        "sha256": "903e31a825189ba2b016e2783baf907bb29cd87e931db2e53bd988d4158288ab",
+        "text_file": ".cache/wave51-human-PMC11802719.txt",
+        "text_sha256": "55ec9c0cc07e7489be0dbd150b2ac05bf8a888c115695682dae8f17b101350cb"
+      }
+    },
+    {
+      "id": "H51-S003",
+      "title": "Skin wetness detection thresholds and wetness magnitude estimations of the human index fingerpad and their modulation by moisture temperature",
+      "doi": "10.1152/jn.00538.2020",
+      "publisher": "C. Merrick, R. Rosati, D. Filingeri / Journal of Neurophysiology",
+      "version": "2021正式刊本（PMC8356767，CC BY 4.0）",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356767/",
+      "canonical_url": "https://doi.org/10.1152/jn.00538.2020",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8356767/fullTextXML",
+      "accessed_on": "2026-11-03",
+      "read_via": "Europe PMC全文XML 200轉文字實讀；Fig5經PMC instance圖檔下載目讀。",
+      "reading_scope": "Introduction、Methods（受試者、刺激、盲測、閾值擬合）、Results、Discussion；Fig5各溫度個人閾值目讀。",
+      "locator": "Results: Wetness Detection Thresholds / Magnitude Estimation；Fig5；Discussion首兩節。",
+      "summary": "8名女性隔屏以食指靜態按壓含生理食鹽水的尿布表層；濕感偵測閾值在25°C約18.7 mL、33°C約24.7 mL、37°C約27.0 mL；水量解釋約84%評分變異，溫度約3%。",
+      "limitations": "僅8名年輕女性、單一材料與靜態3–5秒按壓；P&G資助。閾值為吸水墊施加量，不是皮膚表面水量。「人無濕度受器」為作者引述現有認識，非本研究直接證明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave51-human-PMC8356767.xml",
+        "sha256": "3595004f5027b7f8058bcd85bdcd7df0c3a0b2af0787e0ecd86924f69327e733",
+        "text_file": ".cache/wave51-human-PMC8356767.txt",
+        "text_sha256": "2a6ee081dac43fc203613900828ed0b48b34efc9073337aa6d936fc27cb83985"
+      }
+    },
+    {
+      "id": "H51-S004",
+      "title": "The role of friction on skin wetness perception during dynamic interactions between the human index finger pad and materials of varying moisture content",
+      "doi": "10.1152/jn.00382.2021",
+      "publisher": "C. Merrick, R. Rosati, D. Filingeri / Journal of Neurophysiology",
+      "version": "2022正式刊本（PMC8897031，CC BY 4.0）",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897031/",
+      "canonical_url": "https://doi.org/10.1152/jn.00382.2021",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8897031/fullTextXML",
+      "accessed_on": "2026-11-03",
+      "read_via": "Europe PMC全文XML 200轉文字實讀；Fig4經PMC instance圖檔下載目讀。",
+      "reading_scope": "Methods（40人、21刺激、固定角度壓力速度）、Results（PLS迴歸、變異占比）、Discussion前段；Fig4 Qmax×摩擦×濕感曲面目讀。",
+      "locator": "Abstract；Results: PLS regression、Table 2敘述；Fig4；Discussion首三段。",
+      "summary": "40人以食指滑過21種含水量與摩擦不同的材料；PLS模型中材料最大熱傳速率Qmax（Alambeta儀器量得的材料性質）約占濕感變異22%、含水量約18%、摩擦係數約11%，三者皆與濕感正相關。",
+      "limitations": "相關性迴歸而非操弄單一因子；兩因子模型仍有35%變異未解釋。尿布表層與對照材料，室溫約25°C。與H51-S003同一實驗室與資助者，不算獨立重複。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave51-human-PMC8897031.xml",
+        "sha256": "37bb22eb8318a5e63373be3663d0cb482c6af5dd602dae5bf3d96daf2e0b0027",
+        "text_file": ".cache/wave51-human-PMC8897031.txt",
+        "text_sha256": "ef5ba73a9e67864ca868b6dd4a23e553ad746941e3cfa169cf7d4c7dfd065dd7"
+      }
+    },
+    {
+      "id": "H51-S005",
+      "title": "Dynamic arm swinging in human walking",
+      "doi": "10.1098/rspb.2009.0664",
+      "publisher": "S. H. Collins, P. G. Adamczyk, A. D. Kuo / Proceedings of the Royal Society B",
+      "version": "2009正式刊本（PMC2817299）",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2817299/",
+      "canonical_url": "https://doi.org/10.1098/rspb.2009.0664",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2817299/",
+      "accessed_on": "2026-11-03",
+      "read_via": "PMC文章頁HTML 200轉文字實讀（Europe PMC XML 500、出版社PDF 403）；Fig4、Fig5自PMC圖檔目讀。",
+      "reading_scope": "Abstract、Methods實驗部分（四種擺臂條件、受試者、代謝與力板量測）、Experimental results、Discussion前段；Fig4垂直地面扭矩與角動量、Fig5代謝率柱圖目讀。",
+      "locator": "Sec 2 human experiments；Sec 3 Experimental results；Sec 4 Discussion；Fig3–Fig5。",
+      "summary": "10人跑步機1.25 m/s：相較正常擺臂，綁手代謝率+7%、自主夾手+12%、同側順擺+26%；綁手時峰值垂直地面扭矩+63%，同側順擺比夾手再+83%；肩肘扭矩與功都很小；重心上下起伏無顯著差。",
+      "limitations": "10名健康成人（力學量7人）、單一速度；代謝與力學分在跑步機與地面測。擺臂好處以降低垂直扭矩解釋，屬相容機制，研究未逐一排除其他因素。被動行走模型為簡化模擬。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave51-human-armswing.html",
+        "sha256": "7a0c6ccad5812d86df378d8238ee2ef6c3ceb025a8f77cfc5768dcec2c228436",
+        "text_file": ".cache/wave51-human-armswing.txt",
+        "text_sha256": "a827575aa6cc77286575c58b5ecbdf8662fb667e6705d0e27d076a45963ce4ac"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H51-001",
+      "question": "羊奶起司拌熱水做醬，一加熱就結成一大團，加澱粉為什麼能救回來？",
+      "domain": "食物科學／乳製品醬汁的相分離",
+      "mechanism_key": "food.cheese_water_starch_aggregation_onset_shift",
+      "answer_target": "羊奶起司和水各半慢慢加熱，不加澱粉時約在65°C附近整鍋縮成一大團（作者稱莫札瑞拉相）。先糊化的澱粉加得越多，結團出現的溫度越高、團塊越小；澱粉約達起司重1%以上，這次就沒再出現整鍋一大團。一般煮麵水裡的澱粉偏稀，要濃縮或另加。",
+      "scope": "單一產地Pecorino Romano與玉米澱粉、起司比水1:1、每5°C緩升約40分鐘；每條升溫至少重複兩次，團塊大小由影像分割估算。採arXiv作者版。不推到所有起司醬或火鍋；2–3%建議為作者品嚐，非盲測。檸檬酸鈉穩定屬舊核F8004範圍。Fig.2澱粉%以水重計，因起司與水等重，數值等同以起司重計；1%以上不再整鍋聚團，但70°C以上仍有數毫米團塊，3–4%團塊才明顯變小。",
+      "source_ids": [
+        "H51-S001"
+      ],
+      "source_locator": "arXiv v3 Sec II–III、VI；補充S1–S2；p3 Fig2原頁目讀。",
+      "premise_status": "screened",
+      "notes": "主控制是澱粉濃度×溫度相圖；起司比例的臨界溫度與最小模型只作補充，不另拆核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "加熱不是唯一變數：同一溫度下，澱粉多寡決定起司蛋白是整鍋聚團還是散成小顆。",
+        "visual": "原創俯視培養皿格陣：橫軸澱粉%、縱軸溫度，左上一整塊灰團逐格變成細點；不翻拍原圖照片。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H51-002",
+      "question": "蛋白要高溫、蛋黃要低溫，不打開蛋殼怎麼一次煮好兩邊？",
+      "domain": "食物科學／烹調傳熱與蛋白凝固",
+      "mechanism_key": "food.egg_periodic_boundary_heating_core_averaging",
+      "answer_target": "把帶殼蛋每2分鐘在沸水和30°C水之間換一次，共8輪32分鐘。模型算出外層蛋白在約87–100°C與30–55°C間來回，熱傳到中心太慢、跟不上切換，模型算出幾輪之後蛋黃穩在約67°C，接近兩鍋水溫的平均。實蛋切開，蛋白凝固程度近溏心蛋；8名受訓評審比對，蛋黃感官與65°C一小時的低溫蛋沒有顯著差異。",
+      "scope": "溫度剖面來自傳導模型（忽略氣室、對流與水分移動），未在蛋內插溫度計。感官由8名受訓評審、每人每產品評兩次（補充資料）；Fig.4圖說將一串蛋白差異誤列於蛋黃，依正文與雷達圖採『蛋黃無顯著差』。補充資料的沙門氏菌安全為文獻熱致死曲線推算，非實測，不入題。單一實驗室、單一週期設定，蛋大小與起始溫度不同需重調；營養主張不入題。",
+      "source_ids": [
+        "H51-S002"
+      ],
+      "source_locator": "Results: Cooking simulations、Quantitative descriptive analysis；Methods: Egg cooking methods；Fig1、Fig4目讀。補充資料（MOESM2）QDA節：8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋（獨立審閱者自取並轉述）。",
+      "premise_status": "screened",
+      "notes": "與LEG-S30恆溫溫泉蛋不同：答案在時間變化邊界被中心平均掉，而非單一水溫介於兩凝固點之間。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外面來回燙冷，中心只「看到」平均溫度：用切換節奏替蛋分出兩個溫區。",
+        "visual": "原創蛋剖面同心圈，外圈紅藍閃爍、中心色塊穩定；並排四種煮法的原創切面示意，不翻拍原刊照片。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "H51-003",
+      "question": "皮膚沒有專門感覺「濕」的受器，手指怎麼知道摸到的是濕的？",
+      "domain": "感知／觸覺與溫度感覺整合",
+      "mechanism_key": "perception.skin_wetness_inferred_from_cooling_and_touch",
+      "answer_target": "濕感是用別的訊號拼出來的。8名受試者隔著遮屏、看不到刺激，用食指按壓吸水墊：水溫25°C時平均約18.7毫升就有一半機會判為濕，33°C要約24.7、37°C約27.0毫升。另一實驗40人滑過21種材料，材料從皮膚帶走熱的能力（儀器量的最大熱傳速率）解釋約兩成濕感差異，摩擦係數約一成。水量仍是主因（評分變異約84%，水溫只占約3%）；涼與易導熱只讓同量的水更像濕。",
+      "scope": "兩篇同一實驗室、尿布表層材料加生理食鹽水；閾值研究僅8名年輕女性、靜態按壓；滑動研究為迴歸相關，非單一因子操弄，仍有35%未解釋。「無濕度受器」為作者引述的現有認識。不推及全身部位或衣物評比。閾值僅25°C對33°C、37°C顯著，33對37無差；Qmax為材料性質、與含水量可能共變，PLS占比不等於各自獨立因果份額。",
+      "source_ids": [
+        "H51-S003",
+        "H51-S004"
+      ],
+      "source_locator": "S003 Results閾值節與Fig5目讀；S004 Results PLS與Fig4目讀、Discussion前三段。",
+      "premise_status": "screened",
+      "notes": "冷乾刺激也會被說成濕的原始神經阻斷研究未取得全文，只作NA；本題只用兩篇已讀研究的閾值與變異占比。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "手指把熱被帶走的涼感與摩擦觸感合起來判斷濕；水量仍是主因，單看水溫只解釋一小部分。",
+        "visual": "原創食指剖面與熱流箭頭；四個溫度的閾值點陣重畫為定性梯度；材料導熱（Qmax）與摩擦兩根長短條對照。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "H51-004",
+      "question": "走路甩手看起來多餘，為什麼把手綁住反而更耗力？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.walking_arm_swing_vertical_moment_offset",
+      "answer_target": "10人在跑步機上同速走四種方式：正常擺臂最省；手被繃帶綁在身側多耗約7%、自己夾住約12%，和同側腿一起擺的『同手同腳』約26%。肩肘出力在正常與同手同腳都很小，擺臂近乎被動；差別在手臂反向擺能抵消腿帶來的身體扭轉：綁手時腳底對地的峰值扭矩約多63%，同手同腳又比夾手多約83%，排序與耗能一致。重心上下起伏則各條件沒差。",
+      "scope": "10名健康成人、單一速度1.25 m/s；力學量僅7人地面行走。降低扭矩是與資料相容的解釋，未逐一排除其他因素；被動行走模型為簡化。不推到跑步、老年或疾病步態，也不作健身建議。",
+      "source_ids": [
+        "H51-S005"
+      ],
+      "source_locator": "Sec 2人體實驗、Sec 3 Experimental results、Sec 4前段；Fig4、Fig5目讀。",
+      "premise_status": "screened",
+      "notes": "同手同腳條件是關鍵反證：手一樣在擺、肩也不費力，耗能卻最高，排除「只要有動就好」與降低重心起伏兩種說法。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "甩手便宜，不甩反而貴：手臂是抵消腿扭轉的配重，同手同腳最糟。",
+        "visual": "原創俯視人形，腿與手的旋轉箭頭相反或同向；四色柱重畫代謝率排序；腳底扭轉小旋渦隨條件變大。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H51-NA001",
+      "question": "加檸檬酸鈉讓起司醬不結塊，另算一題？",
+      "existing_ids": [
+        "F8004"
+      ],
+      "source_ids": [
+        "H51-S001"
+      ],
+      "reason": "鈣螯合讓酪蛋白分散已收於加工乳酪題；本文只作澱粉對照，轉變較陡但同機制。",
+      "reentry_condition": "需有不同於鈣螯合的新控制。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA002",
+      "question": "起司比例決定醬汁的臨界溫度，可再開一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S001"
+      ],
+      "reason": "同一相圖的另一軸，最小模型為定性擬合，單拍會只剩公式。",
+      "reentry_condition": "需獨立實驗驗證臨界行為或分子量測。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA003",
+      "question": "黑胡椒粒會不會是起司結團的核心？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S001"
+      ],
+      "reason": "作者只列為未來方向，未測。",
+      "reentry_condition": "需有加減胡椒的對照資料。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA004",
+      "question": "週期煮蛋營養比較好？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S002"
+      ],
+      "reason": "補充資料示代謝體每組僅2–5顆蛋，PCA與質譜屬探索性比較，健康推論超過證據。",
+      "reentry_condition": "需預先設定指標、足夠樣本與重複。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA005",
+      "question": "溫泉蛋為什麼蛋黃凝固、蛋白還軟？",
+      "existing_ids": [
+        "LEG-S30"
+      ],
+      "source_ids": [],
+      "reason": "恆溫凝固點差已收；週期法只收其時間平均新控制。",
+      "reentry_condition": "不重收。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA006",
+      "question": "又冷又乾的東西貼皮膚，也會被說成濕的？",
+      "existing_ids": [
+        "X37-NA016"
+      ],
+      "source_ids": [],
+      "reason": "原始研究（J Neurophysiol 2014, 10.1152/jn.00120.2014）出版社PDF 403，典藏庫僅提交稿登錄頁，未讀全文。",
+      "reentry_condition": "取得全文並核對神經阻斷與冷乾刺激的資料。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA007",
+      "question": "摸起來越滑的布越覺得濕？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S004"
+      ],
+      "reason": "該研究摩擦與濕感反而正相關、只解釋約一成；作為H51-003的對照，不另開。",
+      "reentry_condition": "需操弄摩擦而固定熱傳的實驗。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA008",
+      "question": "男生和女生對濕的敏感度不同？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S004"
+      ],
+      "reason": "本研究無顯著差，題目薄且易流於刻板印象。",
+      "reentry_condition": "需有可見機制差異的資料。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA009",
+      "question": "擺手是為了讓身體少上下晃？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S005"
+      ],
+      "reason": "本研究重心上下起伏各條件無顯著差，前提不成立；收為H51-004內的反證。",
+      "reentry_condition": "不重收。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA010",
+      "question": "端著咖啡走路為什麼容易灑？",
+      "existing_ids": [
+        "D2212"
+      ],
+      "source_ids": [],
+      "reason": "Unpaywall查Phys Rev E 2012原文無開放版本，arXiv查無；未讀全文；且偏流體晃動，與D2212罐車晃動相鄰。",
+      "reentry_condition": "取得全文並證明不同於液體晃動舊核。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA011",
+      "question": "扳手指為什麼會喀一聲？",
+      "existing_ids": [
+        "LEG-S67"
+      ],
+      "source_ids": [],
+      "reason": "舊題已收關節腔氣泡。",
+      "reentry_condition": "要有改變答案的新影像對照。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA012",
+      "question": "泡水手指變皺是為了抓得更穩？",
+      "existing_ids": [
+        "LEG-S06"
+      ],
+      "source_ids": [],
+      "reason": "神經調控與抓握假說爭議已收。",
+      "reentry_condition": "需新的重複實驗改變結論。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA013",
+      "question": "爆米花為什麼會跳？",
+      "existing_ids": [
+        "LEG-S79",
+        "F15-NA01"
+      ],
+      "source_ids": [],
+      "reason": "已收，且多次退題。",
+      "reentry_condition": "不重收。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H51-NA014",
+      "question": "炒飯甩鍋為什麼米粒不飛回原處？",
+      "existing_ids": [
+        "F15004"
+      ],
+      "source_ids": [],
+      "reason": "甩鍋運動學已收。",
+      "reentry_condition": "不重收。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    }
+  ]
+}

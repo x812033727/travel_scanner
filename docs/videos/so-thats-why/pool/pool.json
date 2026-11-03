@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-03-pool-3542",
+  "revision": "2026-11-03-pool-3558",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3931,
-    "canonical_questions": 3771,
-    "eligible_candidates": 3601,
-    "selected_candidates": 3542,
-    "alias_records": 160,
+    "raw_records": 3948,
+    "canonical_questions": 3787,
+    "eligible_candidates": 3617,
+    "selected_candidates": 3558,
+    "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 4923,
-    "current_research_source_urls": 1967,
-    "selected_source_urls": 3141,
-    "new_suggestions_not_added": 2234,
+    "source_urls": 4941,
+    "current_research_source_urls": 1985,
+    "selected_source_urls": 3159,
+    "new_suggestions_not_added": 2291,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "0303cccdd47abb4c0385d58fba795c9350f4c99915bf839745fec096f63b1440"
+      "sha256": "89504987fc0e26c6d81050be0fdd7ee2694f60542ba2c48f42028d92c962d6c7"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -404,6 +404,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3528.json.gz",
       "sha256": "f9fad0a5abf08c5d5b64c5e301d6d18606fa627bfc6809fe407d32f04e459672"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3542.json",
+      "sha256": "d17577479a68088d65b46367ba44a705039c66e5933ed4c8f4e07b9aaa88e46d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3542.json.gz",
+      "sha256": "f9c5a46e3127b42187ebc41306f9a1e2df9c2166b2fff5e9f2d8dabd0e6b8025"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1826,6 +1834,22 @@
       "sha256": "56fdacc7a9914d6ac41326de0a6e256163d71cc38067b99ccc95face0dae772a"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json",
+      "sha256": "ff4b2fd62966367bec349b05df452f600ed4917f209af5bfcccfbfcc359b88d6"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave51-human.json",
+      "sha256": "4fc9ba4f8f3eb4e064c4868b483c8cad6159018e9e17e16e0edb2e3a75112535"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave51-life.json",
+      "sha256": "ddcf4fa3f18bb5fbdee343f9b3e6798e68d95f33cce4136488f37a0b79f5ee51"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json",
+      "sha256": "9b2fee6bd84aca1b142b7f6a65bd10be9ab6c35b93d59ed117c7917213d775f0"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave6-mechanisms.json",
       "sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2"
     },
@@ -1911,11 +1935,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "354342c6d578e89381182a497e6bc5cf7aa059f3e7fa9a8f33910f2e92938fc9"
+      "sha256": "1d502020cfc30793524ae35ff39c472ff31c97ff57ca4f8c95486abf462219a6"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "03ad346fbf3ea186128210a9de9ce495b3c9e726d21047f3c634dba577b078be"
+      "sha256": "457df4fb1b173a38829970dfcc7f5492a2fdeb2b81cbb0e35fc1dc1033389fea"
     }
   ],
   "sources": [
@@ -6348,6 +6372,49 @@
       ]
     },
     {
+      "id": "SRC-0c3a6d8d0a3ee101",
+      "url": "https://doi.org/10.1016/j.cub.2022.11.010",
+      "readings": [
+        {
+          "title": "Single-cell analysis of habituation in Stentor coeruleus",
+          "doi": "10.1016/j.cub.2022.11.010",
+          "publisher": "Current Biology (Cell Press)",
+          "version": "2023正式刊出33(2):241–251；本次讀PMC9877177 NIHPA作者稿全文（NCBI E-utilities XML）與PMC原圖",
+          "canonical_url": "https://doi.org/10.1016/j.cub.2022.11.010",
+          "retrieval_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=9877177&rettype=xml",
+          "accessed_on": "2026-11-03",
+          "read_via": "Europe PMC全文XML回500；改用NCBI E-utilities取PMC作者稿XML，圖檔由PMC文章頁所列cdn.ncbi.nlm.nih.gov圖址下載。",
+          "reading_scope": "作者稿Summary、Introduction、Results（單細胞追蹤、兩狀態模型、遺忘、高力、高頻）、Discussion與STAR Methods開頭；目讀Fig1（裝置與群體曲線）、Fig2（單細胞反應序列與步階檢定）、Fig3（兩狀態模型參數）。Fig4與補充圖只讀內文。",
+          "locator": "Results「Observation of single-cell response」「Two-state model」「Forgetting」；Figs1–3",
+          "summary": "群體裡會收縮的比例隨重複敲擊逐漸下降，但單一喇叭蟲多半是在某次之後一步從常收縮切到少收縮；各細胞切換時間隨機不同，平均起來才像緩降。",
+          "limitations": "單細胞追蹤樣本為高力22顆、低力44顆等；步階檢定不能完全排除漸進模型，作者以停留時間分布判定單步較合。停止刺激15分鐘約九成恢復反應，與模型內極小回復率不一致，作者推測有計時機制，未找出分子。只看收縮一種反應。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-life-stentor.xml",
+            "sha256": "13ccc650fbd1f0ad4c4842c0ad9dbabc8e44207f49930686874d56e6955816fe",
+            "text_file": ".cache/wave51-life-stentor.txt",
+            "text_sha256": "59f7eb9da76bf1def7f9ccb8e21bd00f4d674d020b05e0079ece720efb91d427",
+            "additional_files": [
+              {
+                "file": ".cache/wave51-life-stentor-fig1.jpg",
+                "sha256": "ced0ad5b420a602c6ac0e84e3a41cf3db258555319669a1d4c90b43d766be23d"
+              },
+              {
+                "file": ".cache/wave51-life-stentor-fig2.jpg",
+                "sha256": "f2c5e85ba72ca27aaf2c4dab0a45c143692a6d145ab7c16d8425eaf72f4f5674"
+              },
+              {
+                "file": ".cache/wave51-life-stentor-fig3.jpg",
+                "sha256": "3859a5681e6d9d6f8482d9da308403a9b9677ed0061dc600fb05d472cef0febf"
+              }
+            ]
+          },
+          "origin": "wave51-life-20261103",
+          "original_url": "https://doi.org/10.1016/j.cub.2022.11.010"
+        }
+      ]
+    },
+    {
       "id": "SRC-0c494de1aa675722",
       "url": "https://www.ic3.gov/PSA/2024/PSA241203",
       "readings": [
@@ -10746,6 +10813,35 @@
       ]
     },
     {
+      "id": "SRC-1722c43f2e8aca37",
+      "url": "https://doi.org/10.1101/634899",
+      "readings": [
+        {
+          "title": "How do red-eyed treefrog embryos sense motion in predator attacks? Assessing the role of vestibular mechanoreception",
+          "doi": "10.1101/634899",
+          "publisher": "bioRxiv（Cold Spring Harbor Laboratory）；後刊J Exp Biol 2019, doi:10.1242/jeb.206052",
+          "version": "bioRxiv預印本v1（2019-05-10）JATS全文XML；JEB正式版PDF指定UA回403，未讀",
+          "canonical_url": "https://doi.org/10.1101/634899",
+          "retrieval_url": "https://www.biorxiv.org/content/early/2019/05/10/634899.source.xml",
+          "accessed_on": "2026-11-03",
+          "read_via": "bioRxiv API定位JATS XML並取得全文；同站PDF與圖片多次429限流，JEB出版社PDF 403。",
+          "reading_scope": "預印本Abstract、Introduction、Methods（VOR旋轉測量、整塊振動回放、單卵搖動）、Results、Discussion全文與Figs1–9圖說。原圖因限流未目讀；本題畫面改依L51-S004 Fig2B目讀資料定性重繪年齡門檻。",
+          "locator": "Results I–III；Figs4–8圖說；Discussion「Ontogenetic congruence」「Mechanosensory-cued hatching before vestibular function」",
+          "summary": "胚胎在缺氧時已能孵化，卻要到前庭眼反射出現的發育期才會對振動回放與搖卵孵化；整塊回放中VOR低於約21度者沒有孵化，搖卵時VOR越大孵得越快。",
+          "limitations": "相關性證據：以VOR作前庭功能指標，未破壞內耳做因果測試。單卵搖動中有7隻無可測VOR仍孵化，作者指出側線或皮膚觸覺也可能參與。讀的是預印本，正式版數字若有更動未核。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-life-frogvor.xml",
+            "sha256": "8d5f67897dcaeb83d8a61ccd8ed4fd3e78c2505f0436c2da21f18c4a48c2366f",
+            "text_file": ".cache/wave51-life-frogvor.txt",
+            "text_sha256": "e3f1136d4f120c7705fef3bceb9f7361b6b0c002cc611a47941c6ce1684d26b5"
+          },
+          "origin": "wave51-life-20261103",
+          "original_url": "https://doi.org/10.1101/634899"
+        }
+      ]
+    },
+    {
       "id": "SRC-172de718c1b351e8",
       "url": "https://www.fueleconomy.gov/feg/noframes/50243.shtml",
       "readings": [
@@ -13802,6 +13898,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1371/journal.pone.0119470"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1ea177a2edb76369",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897031/",
+      "readings": [
+        {
+          "title": "The role of friction on skin wetness perception during dynamic interactions between the human index finger pad and materials of varying moisture content",
+          "doi": "10.1152/jn.00382.2021",
+          "publisher": "C. Merrick, R. Rosati, D. Filingeri / Journal of Neurophysiology",
+          "version": "2022正式刊本（PMC8897031，CC BY 4.0）",
+          "canonical_url": "https://doi.org/10.1152/jn.00382.2021",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8897031/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Europe PMC全文XML 200轉文字實讀；Fig4經PMC instance圖檔下載目讀。",
+          "reading_scope": "Methods（40人、21刺激、固定角度壓力速度）、Results（PLS迴歸、變異占比）、Discussion前段；Fig4 Qmax×摩擦×濕感曲面目讀。",
+          "locator": "Abstract；Results: PLS regression、Table 2敘述；Fig4；Discussion首三段。",
+          "summary": "40人以食指滑過21種含水量與摩擦不同的材料；PLS模型中材料最大熱傳速率Qmax（Alambeta儀器量得的材料性質）約占濕感變異22%、含水量約18%、摩擦係數約11%，三者皆與濕感正相關。",
+          "limitations": "相關性迴歸而非操弄單一因子；兩因子模型仍有35%變異未解釋。尿布表層與對照材料，室溫約25°C。與H51-S003同一實驗室與資助者，不算獨立重複。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-human-PMC8897031.xml",
+            "sha256": "37bb22eb8318a5e63373be3663d0cb482c6af5dd602dae5bf3d96daf2e0b0027",
+            "text_file": ".cache/wave51-human-PMC8897031.txt",
+            "text_sha256": "ef5ba73a9e67864ca868b6dd4a23e553ad746941e3cfa169cf7d4c7dfd065dd7"
+          },
+          "origin": "wave51-human-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897031/"
         }
       ]
     },
@@ -29190,6 +29315,35 @@
       ]
     },
     {
+      "id": "SRC-421cc85c2645b52e",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2817299/",
+      "readings": [
+        {
+          "title": "Dynamic arm swinging in human walking",
+          "doi": "10.1098/rspb.2009.0664",
+          "publisher": "S. H. Collins, P. G. Adamczyk, A. D. Kuo / Proceedings of the Royal Society B",
+          "version": "2009正式刊本（PMC2817299）",
+          "canonical_url": "https://doi.org/10.1098/rspb.2009.0664",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2817299/",
+          "accessed_on": "2026-11-03",
+          "read_via": "PMC文章頁HTML 200轉文字實讀（Europe PMC XML 500、出版社PDF 403）；Fig4、Fig5自PMC圖檔目讀。",
+          "reading_scope": "Abstract、Methods實驗部分（四種擺臂條件、受試者、代謝與力板量測）、Experimental results、Discussion前段；Fig4垂直地面扭矩與角動量、Fig5代謝率柱圖目讀。",
+          "locator": "Sec 2 human experiments；Sec 3 Experimental results；Sec 4 Discussion；Fig3–Fig5。",
+          "summary": "10人跑步機1.25 m/s：相較正常擺臂，綁手代謝率+7%、自主夾手+12%、同側順擺+26%；綁手時峰值垂直地面扭矩+63%，同側順擺比夾手再+83%；肩肘扭矩與功都很小；重心上下起伏無顯著差。",
+          "limitations": "10名健康成人（力學量7人）、單一速度；代謝與力學分在跑步機與地面測。擺臂好處以降低垂直扭矩解釋，屬相容機制，研究未逐一排除其他因素。被動行走模型為簡化模擬。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-human-armswing.html",
+            "sha256": "7a0c6ccad5812d86df378d8238ee2ef6c3ceb025a8f77cfc5768dcec2c228436",
+            "text_file": ".cache/wave51-human-armswing.txt",
+            "text_sha256": "a827575aa6cc77286575c58b5ecbdf8662fb667e6705d0e27d076a45963ce4ac"
+          },
+          "origin": "wave51-human-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2817299/"
+        }
+      ]
+    },
+    {
       "id": "SRC-4247a35d32d74eb0",
       "url": "https://merkmal-biz.jp/post/89008",
       "readings": [
@@ -30051,6 +30205,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://www.nist.gov/pml/time-and-frequency-division/what-time-it-faqs"
+        }
+      ]
+    },
+    {
+      "id": "SRC-44ec7a85926c0c93",
+      "url": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/laboratory-recreation-of-the-draupner-wave-and-the-role-of-breaking-in-crossing-seas/65EA3294DAFD97A50C8046140B45F759",
+      "readings": [
+        {
+          "title": "Laboratory recreation of the Draupner wave and the role of breaking in crossing seas",
+          "doi": "10.1017/jfm.2018.886",
+          "publisher": "M. L. McAllister、S. Draycott、T. A. A. Adcock、P. H. Taylor、T. S. van den Bremer / Journal of Fluid Mechanics",
+          "version": "2019 vol.860 pp.767–786正式刊本（CC BY）",
+          "canonical_url": "https://doi.org/10.1017/jfm.2018.886",
+          "retrieval_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/65EA3294DAFD97A50C8046140B45F759/S0022112018008868a.pdf/laboratory-recreation-of-the-draupner-wave-and-the-role-of-breaking-in-crossing-seas.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日以指定編輯UA自Cambridge Core取得原刊OA PDF，pdftotext逐段閱讀；PDF第8–9頁以pdftoppm算圖目讀。",
+          "reading_scope": "摘要；§1 Introduction；§2 Methods（2.1–2.3）；§3.1重建結果、表1–2、§3.2二階差頻波、§3.3 Wave breaking；§3.4與CK09比較、表3；§4 Conclusions；附錄A–B首段。Figs3/4（PDF pp774–775）目讀。",
+          "locator": "§2.1、§2.2；§3.1與表1–2；§3.2（set-up 0.27/0.26 m）；§3.3與Figs3–5；§4 Conclusions。",
+          "summary": "1:35圓形水池重建Draupner波形，只改兩組浪交會角：同向時捲碎先限制波峰，120度交會時改成向上噴流，可重現波峰與浪下平均水面抬升。",
+          "limitations": "兩組浪方向拆分是假設；野外紀錄為單一雷射可受飛沫影響；未模擬風與海流；噴流可能不按同比例縮放。作者明言對歷史實際方向分布無法完全確定。初次以錯誤DOI（jfm.2018.954）取得另一篇文章，已丟棄，經Crossref題名查得正確DOI後重取。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-earth-draupner.pdf",
+            "sha256": "05014cbfcebe4c4ee81292f3265788d214164e6c947a80497a3bb544074a337f",
+            "text_file": ".cache/wave51-earth-draupner.txt",
+            "text_sha256": "59e78b822be9b7b2eb443d4c50bad21cf6fd517b6f8abd823fe77e1efc212ce8"
+          },
+          "origin": "wave51-earth-20261103",
+          "original_url": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/laboratory-recreation-of-the-draupner-wave-and-the-role-of-breaking-in-crossing-seas/65EA3294DAFD97A50C8046140B45F759"
         }
       ]
     },
@@ -33718,6 +33901,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.khs.go.kr/cop/bbs/selectBoardArticle.do?nttId=89598&bbsId=BBSMSTR_1008&mn=NS_01_09_01"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4e9900fa2d73cf82",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356767/",
+      "readings": [
+        {
+          "title": "Skin wetness detection thresholds and wetness magnitude estimations of the human index fingerpad and their modulation by moisture temperature",
+          "doi": "10.1152/jn.00538.2020",
+          "publisher": "C. Merrick, R. Rosati, D. Filingeri / Journal of Neurophysiology",
+          "version": "2021正式刊本（PMC8356767，CC BY 4.0）",
+          "canonical_url": "https://doi.org/10.1152/jn.00538.2020",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8356767/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Europe PMC全文XML 200轉文字實讀；Fig5經PMC instance圖檔下載目讀。",
+          "reading_scope": "Introduction、Methods（受試者、刺激、盲測、閾值擬合）、Results、Discussion；Fig5各溫度個人閾值目讀。",
+          "locator": "Results: Wetness Detection Thresholds / Magnitude Estimation；Fig5；Discussion首兩節。",
+          "summary": "8名女性隔屏以食指靜態按壓含生理食鹽水的尿布表層；濕感偵測閾值在25°C約18.7 mL、33°C約24.7 mL、37°C約27.0 mL；水量解釋約84%評分變異，溫度約3%。",
+          "limitations": "僅8名年輕女性、單一材料與靜態3–5秒按壓；P&G資助。閾值為吸水墊施加量，不是皮膚表面水量。「人無濕度受器」為作者引述現有認識，非本研究直接證明。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-human-PMC8356767.xml",
+            "sha256": "3595004f5027b7f8058bcd85bdcd7df0c3a0b2af0787e0ecd86924f69327e733",
+            "text_file": ".cache/wave51-human-PMC8356767.txt",
+            "text_sha256": "2a6ee081dac43fc203613900828ed0b48b34efc9073337aa6d936fc27cb83985"
+          },
+          "origin": "wave51-human-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356767/"
         }
       ]
     },
@@ -37680,6 +37892,48 @@
       ]
     },
     {
+      "id": "SRC-59336e74653261dc",
+      "url": "https://doi.org/10.1038/s41598-020-78229-x",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-020-78229-x",
+          "doi": "10.1038/s41598-020-78229-x",
+          "arxiv": "2207.02019v1",
+          "retrieval_url": "https://arxiv.org/pdf/2207.02019v1",
+          "title": "Flickering candle flames and their collective behavior",
+          "publisher": "Gergely、Sándor、Paizs、Tötös、Néda；Scientific Reports 10, 21305 (2020)",
+          "version": "期刊2020；實讀arXiv 2207.02019v1（2022上傳，journal_ref指向同一Sci Rep論文）；未逐字比對期刊版。",
+          "accessed_on": "2026-11-03",
+          "read_via": "arXiv API核journal_ref/DOI；arXiv PDF（指定UA，200）；pdftotext全文；渲染p4、p9目讀Fig2–3、Fig9與Table2。",
+          "reading_scope": "PDF pp1–12：模型框架、實驗設備、頻率結果（Fig6–8、Table1）、集體行為（Fig9、Table2鹵素燈對照）、改良模型與耦合（式5–8、Fig10–11）、結論；未讀補充材料A–C與YouTube影片。",
+          "locator": "p4 Fig2–3；p5–8頻率與氧濃度；p9 Fig9與Table2鹵素燈對照；pp10–11式(8)氣流/氧耦合與Fig11；p11–12結論。",
+          "summary": "三根/六根蠟燭束的火焰約10–12赫茲閃動；兩束約3–4公分以內同相、更遠反相。以光譜相近、調變的鹵素燈取代一束，在2公分處未同步，質疑熱輻射耦合，改以溫度變化擾動氣流帶動氧氣的模型重現。",
+          "limitations": "氣流/氧耦合為模型假設、未量流場；鹵素燈對照僅一距離三頻率；同步參數z由影像像素序列計算，細節在補充材料未讀；帶數值擬合參數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-physics-candle.pdf",
+            "sha256": "f21b091e33b67894cbe468cfeace50d33d21e2db4ee857d3b926d23b68e2f0bb",
+            "text_file": ".cache/wave51-physics-candle.txt",
+            "text_sha256": "72ae87d1621509e0837bfabf160e1650193324f3f4d37d9685f74cabb248d73b"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave51-physics-candle-p-04.png",
+              "sha256": "c3441fde7b1d78dacc70c8eb5c0e97c619bf98e28ec8fffc56db9c326b5497fa",
+              "read_scope": "p4 Fig2束形配置與Fig3二值化影格：單束、同相、反相。"
+            },
+            {
+              "file": ".cache/wave51-physics-candle-p-09.png",
+              "sha256": "864163ae615bed8aff1f39f3cf358d6a82974c0ae7fbc0213f89088c9cceb1ec",
+              "read_scope": "p9 Table2鹵素燈z≈0.02–0.06與Fig9頻率/同步參數對距離，3–4公分間由正轉負。"
+            }
+          ],
+          "origin": "wave51-physics-20261103",
+          "original_url": "https://doi.org/10.1038/s41598-020-78229-x"
+        }
+      ]
+    },
+    {
       "id": "SRC-5941b295a7a93522",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC34450/",
       "readings": [
@@ -39282,6 +39536,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri331.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5d078a8828eddd90",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9636932/",
+      "readings": [
+        {
+          "title": "Reconstructing biblical military campaigns using geomagnetic field data",
+          "doi": "10.1073/pnas.2209117119",
+          "publisher": "Yoav Vaknin、Ron Shaar、Oded Lipschits、Erez Ben-Yosef等 / PNAS",
+          "version": "2022-10-24正式刊本；PMC9636932同文載體",
+          "canonical_url": "https://doi.org/10.1073/pnas.2209117119",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9636932/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日以指定編輯UA經Europe PMC REST取得原刊同文JATS全文XML，轉為本機文字逐段閱讀；圖片由PMC CDN取得並目讀。",
+          "reading_scope": "Significance、Results首段、Discussion全文（Gath／Beth-Shean／Batash段）、Materials and Methods（Archaeointensity、Archaeomagnetic Directions、Dating）；Fig1/3圖說，Fig1與Fig3目讀。",
+          "locator": "Results首段；Discussion第2–3段（Beth-Shean傾角差約4°）、第6段（Batash對Lachish II約3°）、末段（Hallstatt plateau）；Methods: Archaeomagnetic Directions（倒塌磚只作形成分析）；Fig1、Fig3。",
+          "summary": "燒毀的泥磚冷卻時記下當時地磁方向與強度；17處遺址20個燒毀層互相比對，可否定或支持不同破壞層同時發生，並在放射性碳平台期縮小年代。",
+          "limitations": "年代仍靠歷史錨點與放射性碳建立的參考曲線；磁性最擅長否定同時，不單獨指認發動者。補充資料SI未讀。原刊PNAS網頁未取；PMC文章頁有挑戰頁標記但CDN圖檔可取。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-earth-archaeomag.xml",
+            "sha256": "3aa466fe43eeee852b0a62e7f75c30853a28cc9f6feacd87dad4f70a66f5fa74",
+            "text_file": ".cache/wave51-earth-archaeomag.txt",
+            "text_sha256": "4ad9d80ada9b6ab4a727009022e3b8724dd60197755f892ee7469bbe70e7d99c"
+          },
+          "origin": "wave51-earth-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9636932/"
         }
       ]
     },
@@ -42651,6 +42934,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-032.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6595a0fe5eb711a4",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11802719/",
+      "readings": [
+        {
+          "title": "Periodic cooking of eggs",
+          "doi": "10.1038/s44172-024-00334-w",
+          "publisher": "E. Di Lorenzo等 / Communications Engineering",
+          "version": "2025正式刊本（PMC11802719，CC BY-NC-ND）",
+          "canonical_url": "https://doi.org/10.1038/s44172-024-00334-w",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11802719/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Europe PMC全文XML 200，轉文字實讀；Fig1、Fig4自出版社圖檔下載目讀。",
+          "reading_scope": "Results（模擬、FT-IR、感官、TPA）、Methods（四種煮法參數、傳導模型假設）與Conclusions；Fig1週期邊界與溫度剖面、Fig4切面照與感官雷達圖目讀。補充資料感官小組資訊依獨立審閱者自取紀錄補入。",
+          "locator": "Results: Cooking simulations / Quantitative descriptive analysis；Methods: Egg cooking methods；Fig1、Fig4。",
+          "summary": "沸水與30°C水每2分鐘交替8輪；模擬中蛋白溫度來回擺動，蛋黃穩在約67°C；實蛋蛋白凝固程度近溏心蛋，蛋黃感官與65°C低溫蛋無顯著差異。",
+          "limitations": "溫度剖面為傳導模型（忽略氣室與對流），未在蛋內實測溫度。補充資料（MOESM2）QDA節：8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋。Fig.4圖說蛋黃/蛋白差異列項自相矛盾，依正文與雷達圖。單一實驗室、一組週期參數。營養PCA結論屬探索性，不入題。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-human-PMC11802719.xml",
+            "sha256": "903e31a825189ba2b016e2783baf907bb29cd87e931db2e53bd988d4158288ab",
+            "text_file": ".cache/wave51-human-PMC11802719.txt",
+            "text_sha256": "55ec9c0cc07e7489be0dbd150b2ac05bf8a888c115695682dae8f17b101350cb"
+          },
+          "origin": "wave51-human-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11802719/"
         }
       ]
     },
@@ -50230,6 +50542,45 @@
       ]
     },
     {
+      "id": "SRC-780e1e6833149c9e",
+      "url": "https://doi.org/10.1016/j.cub.2024.06.021",
+      "readings": [
+        {
+          "title": "Wound-dependent leg amputations to combat infections in an ant society",
+          "doi": "10.1016/j.cub.2024.06.021",
+          "publisher": "Current Biology (Cell Press)",
+          "version": "2024-07-22正式版34:3273–3278，CC BY開放取用；Würzburg大學OPUS典藏同一出版社PDF（含STAR Methods，共10頁）",
+          "canonical_url": "https://doi.org/10.1016/j.cub.2024.06.021",
+          "retrieval_url": "https://opus.bibliothek.uni-wuerzburg.de/files/41636/1-s2.0-S0960982224008054-main.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Unpaywall定位；Cell.com全文頁指定UA回403，改由Würzburg OPUS取得有效出版社PDF。",
+          "reading_scope": "PDF pp1–10：Summary、Results and Discussion全文、Figs1–4圖說、STAR Methods（傷口照護、存活、細菌定量、micro-CT）。目讀p3 Figs1–2與p4 Fig3原頁；未讀線上補充Figs S1–S4、Tables S1–S2及影片。",
+          "locator": "pp3–5 Results與Figs1–4；p6–9 Method details（次群落組成、截肢時間、qPCR 35h）",
+          "summary": "佛州弓背蟻股節受傷常被同伴從轉節咬斷，脛節受傷則只得到較久的舔舐；人工截肢對股節感染傷有效，對脛節要在接菌當下才有效，作者以股節肌肉多、血淋巴流較慢解釋。",
+          "limitations": "實驗室群落、單一病原Pseudomonas aeruginosa與剪刀造成的人工傷口；肌肉與血淋巴通道面積是micro-CT截面，血淋巴流速沒有直接量。各時間點人工截肢結果在補充Fig S4，未讀，僅依主文敘述。作者說的「辨認傷口位置」是行為結果，未找出螞蟻用哪種線索。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-life-ant.pdf",
+            "sha256": "2e875efa656c36fb234af2a283b49725560402b97a042ba7e0f6384751193364",
+            "text_file": ".cache/wave51-life-ant.txt",
+            "text_sha256": "d79e9039a8914d7af5e2f5a5f07d561475bf234d7c92e8728a29c764de410690",
+            "additional_files": [
+              {
+                "file": ".cache/wave51-life-ant-p-03.png",
+                "sha256": "c50ae0b4024172097a769ebbb8663e9ad8e67d3bfc72ee4d1a193a50c826b625"
+              },
+              {
+                "file": ".cache/wave51-life-ant-p-04.png",
+                "sha256": "bb036a05f0c7a9d4261989132884ca6bf8beac509e2424ef4e69333f12bad7bc"
+              }
+            ]
+          },
+          "origin": "wave51-life-20261103",
+          "original_url": "https://doi.org/10.1016/j.cub.2024.06.021"
+        }
+      ]
+    },
+    {
       "id": "SRC-7820d5dba9dbbb46",
       "url": "https://openstax.org/books/organic-chemistry/pages/13-1-nuclear-magnetic-resonance-spectroscopy",
       "readings": [
@@ -57046,6 +57397,49 @@
       ]
     },
     {
+      "id": "SRC-8868e2336aabb3cf",
+      "url": "https://doi.org/10.1093/iob/obaf012",
+      "readings": [
+        {
+          "title": "The Role of Vibration Amplitude in the Escape-Hatching Response of Red-Eyed Treefrog Embryos",
+          "doi": "10.1093/iob/obaf012",
+          "publisher": "Integrative Organismal Biology (Oxford University Press)",
+          "version": "2025正式版7(1):obaf012，CC BY；Europe PMC/PMC11986817全文XML與原圖",
+          "canonical_url": "https://doi.org/10.1093/iob/obaf012",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11986817/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Europe PMC REST全文XML；原圖由同服務supplementaryFiles壓縮包取得。",
+          "reading_scope": "Synopsis、Introduction、Methods（野外錄振、合成與錄音回放、振幅包絡）、Results、Discussion全文；目讀Fig1（各干擾振幅分布）、Fig2（合成振動與4/5/6日齡反應）、Fig3（蛇與雨錄音放大回放）。未讀補充原始資料與Fig4圖面。",
+          "locator": "Results各節；Figs1–3；Discussion「Interactions between vibration amplitude…」與「Graded versus categorical…」",
+          "summary": "野外大雨在卵塊激起的振動峰值與RMS都可高於蛇咬，單看振幅分不出危險；把蛇與雨錄音調到相近振幅回放，胚胎對蛇振動的孵化隨振幅上升較陡。五日齡對合成振動的反應門檻比四日齡低約80倍。",
+          "limitations": "巴拿馬Gamboa族群與2004–2017多套回放裝置；蛇錄音只用Leptophis ahaetulla兩組，雨三組。振幅只是多個線索之一，時間型態與頻率的證據來自作者先前研究，本文未重測。回放引起的孵化低於活蛇攻擊；行為門檻不等於神經感覺極限。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-life-frogamp.xml",
+            "sha256": "1c429a5c07f298bd3b6429eaa89beb793ff826a6761c8cc0b936498930dea4d4",
+            "text_file": ".cache/wave51-life-frogamp.txt",
+            "text_sha256": "4dc8923c92baab34c3b349716de14e7f9678cf341e9118d8c225359a5f132a83",
+            "additional_files": [
+              {
+                "file": ".cache/wave51-life-frogamp-f1.jpg",
+                "sha256": "312130464b2385cecbdee83c4caa29caffc96fae61aa858ab676b1733098c6e2"
+              },
+              {
+                "file": ".cache/wave51-life-frogamp-f2.jpg",
+                "sha256": "3a173a545dbd8380f33592c4997b545aa3f0f9a90613997e0a69391e8183ffe8"
+              },
+              {
+                "file": ".cache/wave51-life-frogamp-f3.jpg",
+                "sha256": "0c38283a5524ce9cbd9ca77128102a680fe2b8bee55a717723a94ce43a35cb85"
+              }
+            ]
+          },
+          "origin": "wave51-life-20261103",
+          "original_url": "https://doi.org/10.1093/iob/obaf012"
+        }
+      ]
+    },
+    {
       "id": "SRC-887485e07a671d64",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10132989/fullTextXML",
       "readings": [
@@ -57718,6 +58112,52 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.consumerreports.org/printers/the-high-cost-of-wasted-printer-ink/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8ab4189fac8fc0b4",
+      "url": "https://doi.org/10.1126/sciadv.aav8081",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/sciadv.aav8081",
+          "doi": "10.1126/sciadv.aav8081",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6499590/fullTextXML",
+          "title": "Final fate of a Leidenfrost droplet: Explosion or takeoff",
+          "publisher": "Lyu、Mathai、Wang、Sobac、Colinet、Lohse、Sun；Science Advances 5, eaav8081 (2019)",
+          "version": "期刊2019-05-03 正式版（PMC6499590，CC BY-NC）；實讀Europe PMC全文XML，同一研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "Europe PMC REST全文XML（指定UA，200）；PMC文章頁取圖檔連結，cdn下載Fig1/2/4縮圖目讀。science.org PDF 403、Europe PMC PDF render 403。",
+          "reading_scope": "全文XML：Introduction、Results（Fig1–2）、Discussion（Fig3–4與式1–5）、Conclusion、Materials and Methods；未讀Supplementary影片與SM PDF。",
+          "locator": "Results Fig1B–E、Fig2A–D；Discussion式(1)、Fig3A–C、Fig4A–B；Methods實驗清潔與液滴產生。",
+          "summary": "大液滴在蒸發末期因雜質聚成表殼、蒸氣層變薄觸地而炸開；小液滴在殼形成前縮到約15微米即被蒸氣托離；加TiO2微粒得爆炸半徑比∝濃度1/3次方。",
+          "limitations": "石英熱板204–321°C、主要為乙醇；純液雜質量為推估（約2×10^-6）；蒸氣層厚度由潤滑模型計算非直接量測；觸地成因另可能含微粒沉降，作者留待研究。小液滴19–52微米為噴霧產生。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-physics-leidenfrost.xml",
+            "sha256": "7cce82f5ae94a5f902f7606c72581761bd970b4c7a092f590bf75904bef842c3",
+            "text_file": ".cache/wave51-physics-leidenfrost.txt",
+            "text_sha256": "073d434d0187d7b4be9cfbf4448c616877b042082794e8822ccc7ce4d4ef25b8"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave51-physics-leidenfrost-F1.jpg",
+              "sha256": "33801d8a3bf2563ae87ae1900cad61a515a06da60c9738e78332e321acb85006",
+              "read_scope": "原刊Fig1縮圖：裝置、小滴起飛側視與高度曲線、大滴爆炸側/底視與聲波尖峰。"
+            },
+            {
+              "file": ".cache/wave51-physics-leidenfrost-F2.jpg",
+              "sha256": "ef02d2cd7211bc8d6514e507bc9ffc530df3013bae6bd1dfa7f86d7d0858ca68",
+              "read_scope": "原刊Fig2縮圖：俯視爆炸前後、殼示意、殘骸殼照片、Re/Ri對ϕi的1/3斜率與溫度/初半徑插圖。"
+            },
+            {
+              "file": ".cache/wave51-physics-leidenfrost-F4.jpg",
+              "sha256": "cc74908bed49a68fe806df542666aeafe7553be6b4d823772c44e654c755d1eb",
+              "read_scope": "原刊Fig4縮圖：h/R對R的−3/2關係與臨界初半徑對雜質量預測；縮圖解析低，只核軸與趨勢。"
+            }
+          ],
+          "origin": "wave51-physics-20261103",
+          "original_url": "https://doi.org/10.1126/sciadv.aav8081"
         }
       ]
     },
@@ -61766,6 +62206,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://icatcare.org/articles/understanding-the-hunting-behaviour-of-cats"
+        }
+      ]
+    },
+    {
+      "id": "SRC-93dc1960f9e74b97",
+      "url": "https://arxiv.org/abs/2501.00536v3",
+      "readings": [
+        {
+          "title": "Phase behavior of Cacio e Pepe sauce",
+          "doi": "10.1063/5.0255841",
+          "publisher": "G. Bartolucci等 / Physics of Fluids（arXiv:2501.00536）",
+          "version": "arXiv v3（2025-04-29）作者版；正式刊為Physics of Fluids 2025，未讀期刊排版",
+          "canonical_url": "https://doi.org/10.1063/5.0255841",
+          "retrieval_url": "https://arxiv.org/pdf/2501.00536v3",
+          "accessed_on": "2026-11-03",
+          "read_via": "arXiv PDF 200，pdftotext全文實讀；p3 Fig2原頁轉圖目讀。arXiv頁載正式刊DOI。",
+          "reading_scope": "Sec II–VII全文與補充S1–S2（設備、升溫流程、影像分割）；p3 Fig2相圖目讀，Fig3/Fig5依圖說與正文。",
+          "locator": "arXiv v3 pp2–8 Sec II–VII；補充S1–S2；p3 Fig2原頁目讀。",
+          "summary": "起司與水1:1、每5°C升溫取樣拍照量團塊；澱粉越多，結團出現溫度越高、團塊越小，低澱粉時出現整鍋一大團。",
+          "limitations": "單一產地Pecorino Romano DOP與玉米澱粉；每條升溫至少重複兩次，未給統計檢定。團塊以影像分割估大小。二元混合最小模型是定性擬合。2–3%澱粉建議來自作者品嚐，非盲測。預印本版本。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-human-cacio.pdf",
+            "sha256": "bb58a81ceade0d6a8e9fad052156ce88aa5898ed79d2adbafe15f3b047adb203",
+            "text_file": ".cache/wave51-human-cacio.txt",
+            "text_sha256": "17149e66b0ced3421a37d34b4a2dd135639fb26f526d7afc60e21eb6009d6cf2"
+          },
+          "origin": "wave51-human-20261103",
+          "original_url": "https://arxiv.org/abs/2501.00536v3"
         }
       ]
     },
@@ -76556,6 +77025,74 @@
       ]
     },
     {
+      "id": "SRC-b84ac8f34a1cb27b",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5247521/",
+      "readings": [
+        {
+          "title": "Measurement of the Earth's rotation: 720 BC to AD 2015",
+          "doi": "10.1098/rspa.2016.0404",
+          "publisher": "F. R. Stephenson、L. V. Morrison、C. Y. Hohenkerk / Proceedings of the Royal Society A",
+          "version": "2016-12正式刊本；PMC5247521同文載體",
+          "canonical_url": "https://doi.org/10.1098/rspa.2016.0404",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5247521/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日以指定編輯UA經Europe PMC REST取得原刊同文JATS全文XML，轉為本機文字逐段閱讀；圖片由PMC CDN取得並目讀。",
+          "reading_scope": "摘要；§1 Introduction、Timescales and ΔT、Tidal friction；§2 Untimed observations（含1330 Zbraslav例）與Babylon未計時段；§3 Collected untimed results；§4 Parabolic fit；§5 Variations in lod、Long-term accelerations；Conclusion。Fig11與Fig18目讀。",
+          "locator": "§2 Untimed observations第1–4段；§3 Collected untimed results；§5 Variations in lod與Long-term accelerations；Conclusion；Fig11、Fig18。",
+          "summary": "日全食帶窄，載明地點的全食或大偏食紀錄可夾住古代地球轉角的累積時差ΔT；合併紀錄得日長平均每世紀增約1.78毫秒，小於潮汐摩擦預期約2.3毫秒。",
+          "limitations": "需信任現代月球軌道與潮汐加速度量測；只採日期與地點明確紀錄。非潮汐成分歸因冰後回彈與核幔耦合為作者推論；約1500年擺盪證據較少，作者自稱較不可靠。電子補充表S10–S14未讀。舊LEG-S21查核包曾列同DOI作潮汐來源，本批另用其日食約束部分。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-earth-rotation.xml",
+            "sha256": "543c1466ed45225a16eb4f5935dbb67658d37bfa25c7fab0d9db0cce99a715bd",
+            "text_file": ".cache/wave51-earth-rotation.txt",
+            "text_sha256": "fece5df396df59add6850b9af0c38fe902840cdcb1c4bd689af1561198e1a1b8"
+          },
+          "origin": "wave51-earth-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5247521/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b852fa699caaa84c",
+      "url": "https://doi.org/10.1038/nature21049",
+      "readings": [
+        {
+          "title": "Communication between viruses guides lysis-lysogeny decisions",
+          "doi": "10.1038/nature21049",
+          "publisher": "Nature",
+          "version": "2017正式刊出541:488–493；本次讀Europe PMC/PMC5378303作者接受稿（UKPMC Funders Author Manuscript）全文XML與原圖",
+          "canonical_url": "https://doi.org/10.1038/nature21049",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5378303/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Europe PMC REST全文XML；Europe PMC圖檔直連403，改用同服務supplementaryFiles壓縮包取得作者稿原圖。",
+          "reading_scope": "作者稿Introduction、Results、Discussion、Extended Data圖說與Extended Materials and Methods；目讀Fig2（胜肽濃度曲線、溶原比例、受體結合）與Fig3（胜肽累積時程）。未讀Supplementary Table 1全表，Fig1/4/5只讀圖說與內文。",
+          "locator": "Results「Conditioned media promote phi3T lysogeny」至「Mechanism of the arbitrium system」；Figs2–3；Discussion首兩段",
+          "summary": "phi3T感染後分泌的六胺基酸胜肽SAIRGA累積到夠高濃度時，新感染的噬菌體較常整合進宿主基因體；受體AimR與胜肽結合後由DNA結合二聚體變單體，關掉促裂解的aimX。",
+          "limitations": "限枯草桿菌與spBeta群噬菌體的實驗室培養。胜肽只提高溶原機率（加胜肽60分鐘約48%對18%），不是開關式全部改變；aimX作用方式未解明。「後代問祖先」與擴及真核病毒是作者Discussion推想。採作者接受稿，非出版社排版版。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-life-phage.xml",
+            "sha256": "6ad7876e854d88c3ae46564f4d67365261eff69043aad7bf6e963c5daa56223e",
+            "text_file": ".cache/wave51-life-phage.txt",
+            "text_sha256": "15d2dcdf4d93b9e0778815ad99b17f23273d7649bbfe9ee591848c9dc156126c",
+            "additional_files": [
+              {
+                "file": ".cache/wave51-life-phage-f2.jpg",
+                "sha256": "ee82e53c6eacd03bf5476ec23a230420526e3884236deee055eeee4c769c05bd"
+              },
+              {
+                "file": ".cache/wave51-life-phage-f3.jpg",
+                "sha256": "e3612e2f30834e8128156ba99330bc36b46bd95a3d618674b9941433d84beb71"
+              }
+            ]
+          },
+          "origin": "wave51-life-20261103",
+          "original_url": "https://doi.org/10.1038/nature21049"
+        }
+      ]
+    },
+    {
       "id": "SRC-b8553088ef844875",
       "url": "https://github.com/unicode-org/cldr/blob/main/common/annotations/zh_Hant.xml",
       "readings": [
@@ -81741,6 +82278,47 @@
           "access_notes": "未下載或沿用插圖；僅來源鏈結及原創簡述。",
           "origin": "wave6-plants-garden-20261101",
           "original_url": "https://propg.ifas.ufl.edu/05-cuttings/02-types/05-cuttingtypes-leaf.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c4695bf7d62b9f01",
+      "url": "https://doi.org/10.1126/sciadv.adt6677",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/sciadv.adt6677",
+          "doi": "10.1126/sciadv.adt6677",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12024653/fullTextXML",
+          "title": "Leidenfrost propulsion on symmetric textured surfaces via spontaneous symmetry breaking",
+          "publisher": "Shi、Ma、Hardt、Lv；Science Advances 11, eadt6677 (2025)",
+          "version": "期刊2025-04-25 正式版（PMC12024653）；實讀Europe PMC全文XML。",
+          "accessed_on": "2026-11-03",
+          "read_via": "Europe PMC REST全文XML（指定UA，200）；PMC頁取cdn圖檔，下載Fig1、Fig4目讀。",
+          "reading_scope": "Introduction、Results（自推進觀察、Fig1–2、振盪器模型Fig3、CFD Fig4、運動方程式、Fig5參數、Fig6環形）及Discussion段落；未讀SM圖S1–S13與影片。",
+          "locator": "Results Fig1B–C與平面對照（fig S4敘述）；Fig2A；Fig3B；Fig4A–B；Fig5與樣品2/5/6失效敘述；Discussion初始擾動句。",
+          "summary": "350°C左右對稱平行細脊上，長於約9毫米的水滴自發定向推進；平面熱板只亂漂。模型/CFD：液流使脊頂兩側蒸氣膜不等厚、界面傾斜，蒸氣壓力水平分量提供推力。",
+          "limitations": "蒸氣層約5–10微米為估算，界面傾斜Δh不可直接量測；振盪器驅動項為假設；方向選擇歸於初始擾動屬作者推測；限特定脊寬/週期/高度與8毫米寬軌道。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-physics-propulsion.xml",
+            "sha256": "d1b28e7bcd9e2d2b6942436289c53a48db5f96ed7e2bc0a3e41702eece13c423",
+            "text_file": ".cache/wave51-physics-propulsion.txt",
+            "text_sha256": "cba650608da3d50d19d1047750d345bf4c75b3daabc5db85fb52dfc50a7b0db8"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave51-physics-propulsion-F1.jpg",
+              "sha256": "585af3d35ca0410820c3ae738d2144886f5b31559e65877bf00630fff11ae70b",
+              "read_scope": "原刊Fig1：對稱脊示意、兩種軌道、直軌來回與環軌61.2秒時間疊影。"
+            },
+            {
+              "file": ".cache/wave51-physics-propulsion-F4.jpg",
+              "sha256": "81ca412e551e522996d887102054b38de6f0cddc2626f8bfc53252f8eeed1391",
+              "read_scope": "原刊Fig4：脊頂兩側蒸氣頸寬不同與壓力P傾角θ示意（模擬場），及淨力正負區圖。"
+            }
+          ],
+          "origin": "wave51-physics-20261103",
+          "original_url": "https://doi.org/10.1126/sciadv.adt6677"
         }
       ]
     },
@@ -97431,6 +98009,43 @@
       ]
     },
     {
+      "id": "SRC-e9bb854e7cf926ef",
+      "url": "https://arxiv.org/abs/2211.02253",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/physrevfluids.8.053601",
+          "doi": "10.1103/physrevfluids.8.053601",
+          "arxiv": "2211.02253v1",
+          "retrieval_url": "https://arxiv.org/pdf/2211.02253v1",
+          "title": "The presence of surfactants controls the stability of bubble chains in carbonated drinks",
+          "publisher": "Atasi、Ravisankar、Legendre、Zenit；arXiv 2022；Crossref對應Physical Review Fluids 8, 053601 (2023)",
+          "version": "實讀arXiv v1預印本（2022-11-04）；期刊版未讀，可能有修訂，數字以預印本為準。",
+          "accessed_on": "2026-11-03",
+          "read_via": "arXiv PDF（指定UA，200）；pdftotext全文；p11渲染目讀Fig2。Crossref查題名得期刊DOI。",
+          "reading_scope": "PDF pp1–20全文：Introduction、Methods（無因次數、飲料參數Table I、實驗Table II、數值方法）、Results（Fig1–3）、Discussion（Fig4–5、真飲料實驗）、Conclusions；未看補充影片。",
+          "locator": "pp10–11 Fig1–2與兩組實驗；pp12–13 Fig3模擬尾流；pp14–17 Discussion渦度門檻與式(13–14)；pp18–19 Fig5與真飲料毛細管實驗。",
+          "summary": "乾淨近球氣泡的尾流側向升力使氣泡鏈散開；加大變形或加界面活性劑使表面渦度超過門檻、升力反向而成直鏈。香檳/氣泡酒小泡直鏈、氣泡水散。",
+          "limitations": "模擬液為甘油水加SDS、不長大的氮氣泡；飲料La/Λ由文獻參數推估，啤酒蛋白以Langmuir近似屬粗估；真飲料實驗用拉細玻璃毛細管，非一般杯內成核點。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-physics-champagne.pdf",
+            "sha256": "b644f43956a566021a5450166b80e6d8f059132a50e38ca7736d8298b16b0b45",
+            "text_file": ".cache/wave51-physics-champagne.txt",
+            "text_sha256": "ff83bc24d773b8b60d1784d675cb8d3444e4d05b90486305c5a297d35bed4ef5"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave51-physics-champagne-p-11.png",
+              "sha256": "9dcbde82e3b96b30def156ac02a45996b456379d96ffce18d3ebcab816140572",
+              "read_scope": "p11 Fig2：(a)乾淨液加大氣泡由散到直；(b)近同大小加界面活性劑由散到直；多時刻疊影。"
+            }
+          ],
+          "origin": "wave51-physics-20261103",
+          "original_url": "https://arxiv.org/abs/2211.02253"
+        }
+      ]
+    },
+    {
       "id": "SRC-e9c4eca2a772e614",
       "url": "https://openstax.org/books/biology-2e/pages/31-3-nutritional-adaptations-of-plants",
       "readings": [
@@ -101222,6 +101837,35 @@
           },
           "origin": "wave11-landforms-20261101",
           "original_url": "https://www.nps.gov/articles/aps-v12-i2-c7.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f2e59b6f6c024f28",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9307247/",
+      "readings": [
+        {
+          "title": "Global reduction in ship-tracks from sulfur regulations for shipping fuel",
+          "doi": "10.1126/sciadv.abn7988",
+          "publisher": "Tianle Yuan、Hua Song、Lazaros Oreopoulos等 / Science Advances",
+          "version": "2022-07正式刊本；PMC9307247同文載體",
+          "canonical_url": "https://doi.org/10.1126/sciadv.abn7988",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9307247/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日以指定編輯UA經Europe PMC REST取得原刊同文JATS全文XML，轉為本機文字逐段閱讀；圖片由PMC CDN取得並目讀。",
+          "reading_scope": "摘要；Introduction；Results全文（全球分布、南桑威奇火山雲線、ECA 2015、2020全球標準、AIS航運量、Nd變化）；Discussion；Materials and Methods（偵測驗證、AIS軌跡驗證、強迫估算）。Fig2與Fig3目讀。",
+          "locator": "Results第4–6段（ECA近70%、2020主要航線降50%以上、AIS約1.4%）；Results第2段（南桑威奇火山）；Fig2、Fig3A–B。",
+          "summary": "深度學習在18年MODIS影像辨識船跡雲；2015管制區與2020全球燃油限硫後船跡密度大降，而航運量變化小，指出燃料含硫是主要驅動。",
+          "limitations": "偵測到的船跡只是排放影響雲的下限，背景雲狀況改變可見度；2020疫情有部分貢獻；輻射強迫數值建立在多項假設上，不採。補充資料未讀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave51-earth-shiptracks.xml",
+            "sha256": "01044778e9d7493e3f56f3835d851bd10f5abec57d0d6bd48079e11fb21d35f4",
+            "text_file": ".cache/wave51-earth-shiptracks.txt",
+            "text_sha256": "9a5d5ad8ff029e8bade588a4e9cff1dd8079218bbc153b80f90d5d515aa03fc6"
+          },
+          "origin": "wave51-earth-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9307247/"
         }
       ]
     },
@@ -259245,6 +259889,706 @@
       "production_ready": false
     },
     {
+      "id": "S51-001",
+      "question": "兩座古城都燒成廢墟，怎麼從泥磚看出是不是同一場戰火？",
+      "domain": "考古／年代與地球物理",
+      "mechanism_key": "archaeomagnetism.burnt_mudbrick_trm_negates_contemporaneity",
+      "answer_target": "泥磚被大火燒過再冷卻，會把當下的地磁方向和強度記下來；這段時期當地地磁變化快。研究從17處遺址、20個燒毀層取樣，只拿沒倒塌的牆磚量方向。Beth-Shean的傾角和公認約西元前830年被毀的Gath等層差約4度、信賴範圍不重疊，表示兩者不是同時被毀；強度定年再把Beth-Shean放到約西元前880年以前。Batash的強度貼近約西元前600年被毀的Ekron、不像586年的耶路撒冷，傾角也和586年的Lachish差約3度，因此較像約西元前600年那一波。",
+      "scope": "磁性比對最擅長否定「同時」；絕對年代仍靠歷史錨點與放射性碳建立的參考曲線，不能單靠磁性指認是哪位君王所為。倒塌的磚只用來判斷是否在原位冷卻。方向差只證不同時，先後與年代來自強度定年；Batash以強度為主、方向為輔。",
+      "source_locator": "Results首段；Discussion第2–3段（Beth-Shean傾角差約4°）、第6段（Batash對Lachish II約3°）、末段（Hallstatt plateau）；Methods: Archaeomagnetic Directions（倒塌磚只作形成分析）；Fig1、Fig3。",
+      "premise_status": "screened",
+      "notes": "年代仍靠歷史錨點與放射性碳建立的參考曲線；磁性最擅長否定同時，不單獨指認發動者。補充資料SI未讀。原刊PNAS網頁未取；PMC文章頁有挑戰頁標記但CDN圖檔可取。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "火把當天的磁場鎖進磚裡，兩層對不上就不會是同一場火。",
+        "visual": "原創示意磚牆冷卻時磁向被鎖住；再依Fig1重畫傾角時間軸，Gath群與Beth-Shean兩色加誤差棒，標出不重疊；不用戰爭重演畫面。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave51-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5d078a8828eddd90",
+          "origin": "wave51-earth-20261103",
+          "locator": "Results首段；Discussion第2–3段（Beth-Shean傾角差約4°）、第6段（Batash對Lachish II約3°）、末段（Hallstatt plateau）；Methods: Archaeomagnetic Directions（倒塌磚只作形成分析）；Fig1、Fig3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S51-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S51-002",
+      "question": "古人只寫下「這裡看到日全食」，怎麼能算出地球自轉變慢了多少？",
+      "domain": "天文觀測／地球自轉",
+      "mechanism_key": "earth_rotation.untimed_total_eclipse_site_bounds_delta_t",
+      "answer_target": "日全食帶很窄。若假設地球一直等速自轉，把月影投回古代，全食帶會落在別處；要讓紀錄地點落進帶內，地球累積轉角的差（ΔT）就被夾在一個範圍。只見一彎殘日的大偏食紀錄則排除讓當地全食的區間，例如1330年Zbraslav修道院編年史的描述只容ΔT小於900秒或大於1220秒。合併古今紀錄，日長平均每世紀增長約1.78毫秒，比單靠潮汐摩擦預期的約2.3毫秒少。",
+      "scope": "只採日期與地點都明確的紀錄。每世紀約1.78毫秒是計時與未計時紀錄合併擬合的平均，不是單靠未計時全食算出；並仰賴現代月球軌道量測。差額來自冰期後地殼回彈與地核地函耦合是作者推論；約1500年擺盪證據較弱，不採。",
+      "source_locator": "§2 Untimed observations第1–4段；§3 Collected untimed results；§5 Variations in lod與Long-term accelerations；Conclusion；Fig11、Fig18。",
+      "premise_status": "screened",
+      "notes": "需信任現代月球軌道與潮汐加速度量測；只採日期與地點明確紀錄。非潮汐成分歸因冰後回彈與核幔耦合為作者推論；約1500年擺盪證據較少，作者自稱較不可靠。電子補充表S10–S14未讀。舊LEG-S21查核包曾列同DOI作潮汐來源，本批另用其日食約束部分。 LEG-S21舊片稿（week12/S21.md原因4）已播出同篇1.8對2.3結論；本核新答案限於未計時全食／大偏食紀錄如何夾住ΔT的方法，結論數字只作收尾，不當新賣點。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一句「白天變黑」加上地點，就是夾住地球轉角的上下限。",
+        "visual": "原創地圖示意全食帶隨ΔT東西平移、古城一點只在某段落入帶內；接Fig11重畫紅色上下限豎線與擬合曲線；Fig18簡化成實測與潮汐兩條斜線。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave51-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b84ac8f34a1cb27b",
+          "origin": "wave51-earth-20261103",
+          "locator": "§2 Untimed observations第1–4段；§3 Collected untimed results；§5 Variations in lod與Long-term accelerations；Conclusion；Fig11、Fig18。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S51-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S51-003",
+      "question": "北海那道25.6公尺的怪浪，為什麼實驗裡得讓兩組浪斜著相撞才做得出來？",
+      "domain": "海洋／波浪",
+      "mechanism_key": "ocean.rogue_wave_crossing_angle_changes_breaking_limit",
+      "answer_target": "研究者在四周有168台造浪機的圓形水池，按1比35重建Draupner紀錄的波形，只改兩組浪的交會角。同向時浪在到頂前就向前捲倒，換算波峰最高只到約17公尺，低於實測18.5公尺；方向再分散也一樣。交會角加大後，水平運動在交會點互相抵銷，碎浪變成往上噴的水柱，不再先壓住高度，60度與120度的波峰都接近實測；但只有120度同時重現浪的陡度與浪下平均水面微微抬高（0.27對實測0.26公尺）。",
+      "scope": "縮尺水池；兩組浪的方向拆分是假設，野外紀錄來自單一雷射，風與海流未模擬。只說大角度交會能重現，不說每道怪浪都如此。作者結論為60–120度的大角度交會，不指定單一角度。",
+      "source_locator": "§2.1、§2.2；§3.1與表1–2；§3.2（set-up 0.27/0.26 m）；§3.3與Figs3–5；§4 Conclusions。",
+      "premise_status": "screened",
+      "notes": "兩組浪方向拆分是假設；野外紀錄為單一雷射可受飛沫影響；未模擬風與海流；噴流可能不按同比例縮放。作者明言對歷史實際方向分布無法完全確定。初次以錯誤DOI（jfm.2018.954）取得另一篇文章，已丟棄，經Crossref題名查得正確DOI後重取。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "浪從兩邊來，「先倒下」這個高度上限就被改掉了。",
+        "visual": "Fig3與Fig4照片序列以同間隔重繪：同向往前捲、120度往上噴；表1三種角度（0°、60°、120°）波峰長條對照實測線，另標只有120°陡度也對上；原圖僅核證。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave51-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-44ec7a85926c0c93",
+          "origin": "wave51-earth-20261103",
+          "locator": "§2.1、§2.2；§3.1與表1–2；§3.2（set-up 0.27/0.26 m）；§3.3與Figs3–5；§4 Conclusions。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S51-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S51-004",
+      "question": "衛星看到的船跡雲線少了一大半，是海上的船變少了嗎？",
+      "domain": "天氣／雲與氣膠",
+      "mechanism_key": "cloud.ship_tracks_fuel_sulfur_regulation_natural_experiment",
+      "answer_target": "研究用深度學習在2003–2020年MODIS影像中找船跡雲。2015年北美西岸排放管制區把燃油含硫上限降到0.1%，區內船跡密度降近七成，其中一部分是船改道繞到區外。真正排除「船變少」的是2020年：全球上限由3.5%降到0.5%，五條主要航線船跡密度降一半以上、創近20年新低；同年船舶追蹤資料只顯示全球航運量少約1.4%，疫情影響只持續幾個月，2021年前七個月船跡卻仍在低點，作者因此判斷主因是燃料含硫。",
+      "scope": "偵測到的雲線只是船排放影響雲的下限；熱帶或背景雲已污染時不易成線。2020疫情有部分貢獻。輻射強迫估算假設多，不入稿。",
+      "source_locator": "Results第4–6段（ECA近70%、2020主要航線降50%以上、AIS約1.4%）；Results第2段（南桑威奇火山）；Fig2、Fig3A–B。",
+      "premise_status": "screened",
+      "notes": "偵測到的船跡只是排放影響雲的下限，背景雲狀況改變可見度；2020疫情有部分貢獻；輻射強迫數值建立在多項假設上，不採。補充資料未讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "船照樣開，雲上的簽名卻淡了，指出寫字的是燃料裡的硫。",
+        "visual": "Fig2三張地圖重畫：平均航線、2015–19與2020負距平；Fig3B管制區長條在2015下降並標航線南移；角落一格南桑威奇群島：無船，火山二氧化硫形成的硫酸鹽氣膠畫出同樣雲線（旁證：同一種粒子能寫出同一種線），不作限硫因果證據。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave51-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-f2e59b6f6c024f28",
+          "origin": "wave51-earth-20261103",
+          "locator": "Results第4–6段（ECA近70%、2020主要航線降50%以上、AIS約1.4%）；Results第2段（南桑威奇火山）；Fig2、Fig3A–B。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S51-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H51-001",
+      "question": "羊奶起司拌熱水做醬，一加熱就結成一大團，加澱粉為什麼能救回來？",
+      "domain": "食物科學／乳製品醬汁的相分離",
+      "mechanism_key": "food.cheese_water_starch_aggregation_onset_shift",
+      "answer_target": "羊奶起司和水各半慢慢加熱，不加澱粉時約在65°C附近整鍋縮成一大團（作者稱莫札瑞拉相）。先糊化的澱粉加得越多，結團出現的溫度越高、團塊越小；澱粉約達起司重1%以上，這次就沒再出現整鍋一大團。一般煮麵水裡的澱粉偏稀，要濃縮或另加。",
+      "scope": "單一產地Pecorino Romano與玉米澱粉、起司比水1:1、每5°C緩升約40分鐘；每條升溫至少重複兩次，團塊大小由影像分割估算。採arXiv作者版。不推到所有起司醬或火鍋；2–3%建議為作者品嚐，非盲測。檸檬酸鈉穩定屬舊核F8004範圍。Fig.2澱粉%以水重計，因起司與水等重，數值等同以起司重計；1%以上不再整鍋聚團，但70°C以上仍有數毫米團塊，3–4%團塊才明顯變小。",
+      "source_locator": "arXiv v3 Sec II–III、VI；補充S1–S2；p3 Fig2原頁目讀。",
+      "premise_status": "screened",
+      "notes": "主控制是澱粉濃度×溫度相圖；起司比例的臨界溫度與最小模型只作補充，不另拆核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "加熱不是唯一變數：同一溫度下，澱粉多寡決定起司蛋白是整鍋聚團還是散成小顆。",
+        "visual": "原創俯視培養皿格陣：橫軸澱粉%、縱軸溫度，左上一整塊灰團逐格變成細點；不翻拍原圖照片。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave51-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-93dc1960f9e74b97",
+          "origin": "wave51-human-20261103",
+          "locator": "arXiv v3 Sec II–III、VI；補充S1–S2；p3 Fig2原頁目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H51-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H51-002",
+      "question": "蛋白要高溫、蛋黃要低溫，不打開蛋殼怎麼一次煮好兩邊？",
+      "domain": "食物科學／烹調傳熱與蛋白凝固",
+      "mechanism_key": "food.egg_periodic_boundary_heating_core_averaging",
+      "answer_target": "把帶殼蛋每2分鐘在沸水和30°C水之間換一次，共8輪32分鐘。模型算出外層蛋白在約87–100°C與30–55°C間來回，熱傳到中心太慢、跟不上切換，模型算出幾輪之後蛋黃穩在約67°C，接近兩鍋水溫的平均。實蛋切開，蛋白凝固程度近溏心蛋；8名受訓評審比對，蛋黃感官與65°C一小時的低溫蛋沒有顯著差異。",
+      "scope": "溫度剖面來自傳導模型（忽略氣室、對流與水分移動），未在蛋內插溫度計。感官由8名受訓評審、每人每產品評兩次（補充資料）；Fig.4圖說將一串蛋白差異誤列於蛋黃，依正文與雷達圖採『蛋黃無顯著差』。補充資料的沙門氏菌安全為文獻熱致死曲線推算，非實測，不入題。單一實驗室、單一週期設定，蛋大小與起始溫度不同需重調；營養主張不入題。",
+      "source_locator": "Results: Cooking simulations、Quantitative descriptive analysis；Methods: Egg cooking methods；Fig1、Fig4目讀。補充資料（MOESM2）QDA節：8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋（獨立審閱者自取並轉述）。",
+      "premise_status": "screened",
+      "notes": "與LEG-S30恆溫溫泉蛋不同：答案在時間變化邊界被中心平均掉，而非單一水溫介於兩凝固點之間。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外面來回燙冷，中心只「看到」平均溫度：用切換節奏替蛋分出兩個溫區。",
+        "visual": "原創蛋剖面同心圈，外圈紅藍閃爍、中心色塊穩定；並排四種煮法的原創切面示意，不翻拍原刊照片。",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave51-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6595a0fe5eb711a4",
+          "origin": "wave51-human-20261103",
+          "locator": "Results: Cooking simulations、Quantitative descriptive analysis；Methods: Egg cooking methods；Fig1、Fig4目讀。補充資料（MOESM2）QDA節：8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋（獨立審閱者自取並轉述）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H51-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H51-003",
+      "question": "皮膚沒有專門感覺「濕」的受器，手指怎麼知道摸到的是濕的？",
+      "domain": "感知／觸覺與溫度感覺整合",
+      "mechanism_key": "perception.skin_wetness_inferred_from_cooling_and_touch",
+      "answer_target": "濕感是用別的訊號拼出來的。8名受試者隔著遮屏、看不到刺激，用食指按壓吸水墊：水溫25°C時平均約18.7毫升就有一半機會判為濕，33°C要約24.7、37°C約27.0毫升。另一實驗40人滑過21種材料，材料從皮膚帶走熱的能力（儀器量的最大熱傳速率）解釋約兩成濕感差異，摩擦係數約一成。水量仍是主因（評分變異約84%，水溫只占約3%）；涼與易導熱只讓同量的水更像濕。",
+      "scope": "兩篇同一實驗室、尿布表層材料加生理食鹽水；閾值研究僅8名年輕女性、靜態按壓；滑動研究為迴歸相關，非單一因子操弄，仍有35%未解釋。「無濕度受器」為作者引述的現有認識。不推及全身部位或衣物評比。閾值僅25°C對33°C、37°C顯著，33對37無差；Qmax為材料性質、與含水量可能共變，PLS占比不等於各自獨立因果份額。",
+      "source_locator": "S003 Results閾值節與Fig5目讀；S004 Results PLS與Fig4目讀、Discussion前三段。",
+      "premise_status": "screened",
+      "notes": "冷乾刺激也會被說成濕的原始神經阻斷研究未取得全文，只作NA；本題只用兩篇已讀研究的閾值與變異占比。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "手指把熱被帶走的涼感與摩擦觸感合起來判斷濕；水量仍是主因，單看水溫只解釋一小部分。",
+        "visual": "原創食指剖面與熱流箭頭；四個溫度的閾值點陣重畫為定性梯度；材料導熱（Qmax）與摩擦兩根長短條對照。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave51-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e9900fa2d73cf82",
+          "origin": "wave51-human-20261103",
+          "locator": "S003 Results閾值節與Fig5目讀；S004 Results PLS與Fig4目讀、Discussion前三段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1ea177a2edb76369",
+          "origin": "wave51-human-20261103",
+          "locator": "S003 Results閾值節與Fig5目讀；S004 Results PLS與Fig4目讀、Discussion前三段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H51-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H51-004",
+      "question": "走路甩手看起來多餘，為什麼把手綁住反而更耗力？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.walking_arm_swing_vertical_moment_offset",
+      "answer_target": "10人在跑步機上同速走四種方式：正常擺臂最省；手被繃帶綁在身側多耗約7%、自己夾住約12%，和同側腿一起擺的『同手同腳』約26%。肩肘出力在正常與同手同腳都很小，擺臂近乎被動；差別在手臂反向擺能抵消腿帶來的身體扭轉：綁手時腳底對地的峰值扭矩約多63%，同手同腳又比夾手多約83%，排序與耗能一致。重心上下起伏則各條件沒差。",
+      "scope": "10名健康成人、單一速度1.25 m/s；力學量僅7人地面行走。降低扭矩是與資料相容的解釋，未逐一排除其他因素；被動行走模型為簡化。不推到跑步、老年或疾病步態，也不作健身建議。",
+      "source_locator": "Sec 2人體實驗、Sec 3 Experimental results、Sec 4前段；Fig4、Fig5目讀。",
+      "premise_status": "screened",
+      "notes": "同手同腳條件是關鍵反證：手一樣在擺、肩也不費力，耗能卻最高，排除「只要有動就好」與降低重心起伏兩種說法。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "甩手便宜，不甩反而貴：手臂是抵消腿扭轉的配重，同手同腳最糟。",
+        "visual": "原創俯視人形，腿與手的旋轉箭頭相反或同向；四色柱重畫代謝率排序；腳底扭轉小旋渦隨條件變大。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave51-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-421cc85c2645b52e",
+          "origin": "wave51-human-20261103",
+          "locator": "Sec 2人體實驗、Sec 3 Experimental results、Sec 4前段；Fig4、Fig5目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H51-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L51-001",
+      "question": "螞蟻會把受傷同伴的腿咬掉，為什麼傷在大腿就咬、傷在小腿卻不咬？",
+      "domain": "動物行為／群體照護與感染",
+      "mechanism_key": "animal.ant_wound_location_amputation_vs_care_hemolymph_spread",
+      "answer_target": "佛州弓背蟻股節傷在接回群落後多被同伴從腿根咬斷，脛節傷則只得到較久的舔舐，而送回巢中的脛節感染蟻存活與無菌組相近。人工截肢對照顯示：股節感染傷在一小時後截肢仍能把存活拉回接近無菌組，脛節截肢則與不處理的感染孤立組一樣差（作者補充資料指只有接菌當下截才有效）。作者以股節肌肉多、受傷後血淋巴流較慢、病菌擴散較慢解釋，截肢只在來得及時才有利。",
+      "scope": "限實驗室Camponotus floridanus與綠膿桿菌接種的剪傷；血淋巴流速未直接量，肌肉差異來自micro-CT截面。螞蟻對無菌與感染股節傷截肢率無顯著差，不代表能偵測病菌；不推及其他蟻種或人類醫療。各時間點截肢結果出自未讀的補充Fig S4，只作作者報告；股節中段肌肉截面積接近脛節的九倍（約8.7倍）。",
+      "source_locator": "PDF pp3–5 Figs1–4與Results；STAR Methods存活、qPCR與micro-CT",
+      "premise_status": "screened",
+      "notes": "與菌絲堵孔、樹木隔離傷區不同：此處是由同伴的行為依傷口位置選擇截肢或照護，並有人工截肢與時間點對照。其他蟻種用抗菌分泌物治傷只作對比，不另收。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一種「切掉」不是越快越好，而要看病菌往身體裡走得多快；螞蟻的選擇剛好對上這個時間差。",
+        "visual": "原創後腳剖面標出股節、脛節與轉節咬斷點；左右兩框同伴舔舐與啃咬的定性時間條。再用Fig3重畫四組存活曲線：股節人工截肢與無菌組靠攏、脛節截肢與感染孤立組重疊。不複製原插畫與影片。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-780e1e6833149c9e",
+          "origin": "wave51-life-20261103",
+          "locator": "PDF pp3–5 Figs1–4與Results；STAR Methods存活、qPCR與micro-CT",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L51-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L51-002",
+      "question": "噬菌體感染細菌時，怎麼知道該馬上把細菌撐破，還是先躲進細菌基因體？",
+      "domain": "微生物／病毒的群體訊號",
+      "mechanism_key": "virus.phage_arbitrium_peptide_lysogeny_threshold",
+      "answer_target": "spBeta群噬菌體phi3T每次感染都讓宿主分泌一段六胺基酸胜肽；先前感染越多，培養液裡這段胜肽越濃。新進入的噬菌體由寡肽轉運器把胜肽帶進細胞，與受體AimR結合，使原本促裂解的訊號關掉，整合進宿主的溶原比例提高。不同噬菌體各有自己的胜肽，彼此不通用。",
+      "scope": "限枯草桿菌與實驗室培養；胜肽只提高溶原機率，無胜肽也非全部裂解。aimX下游如何作用未解，且只有部分同類噬菌體帶此ORF。「新一代感知前代數量」與推及真核病毒屬作者推論。",
+      "source_locator": "作者稿Results各節、Figs2–3、Discussion",
+      "premise_status": "screened",
+      "notes": "舊L070只問細菌會否被病毒感染；V3017是細菌自身的群體感應。此題是病毒基因編碼的訊號改變自己的裂解／溶原選擇，有濃度梯度、缺轉運器與異種胜肽對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "病毒不是每次都照同一套路，它會用前面幾輪留下的化學「計數」決定要不要先潛伏。",
+        "visual": "先畫兩瓶菌液：新培養液與感染過再濾掉菌和病毒的培養液，後者菌液較少被撐破；接Fig2B定性濃度梯度與Fig2C溶原比例兩線，Fig3B胜肽在第三到四輪後才升高。受體以二聚體貼DNA、遇胜肽成單體的原創示意。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b852fa699caaa84c",
+          "origin": "wave51-life-20261103",
+          "locator": "作者稿Results各節、Figs2–3、Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L51-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L51-003",
+      "question": "一盤喇叭蟲被重複敲到越來越不縮，是每一隻都慢慢變遲鈍嗎？",
+      "domain": "單細胞行為與學習",
+      "mechanism_key": "cell.stentor_habituation_single_cell_step_switch_population_average",
+      "answer_target": "群體中會收縮的比例確實逐漸下降，但追蹤單顆細胞時，多數是在某次刺激後一步從常收縮切到少收縮，之後很少再切回。每顆細胞切換的時間隨機不同，平均起來才像平滑下降。較弱的敲擊切得較快；刺激更密時切換也更快，停下15分鐘多數又恢復反應。",
+      "scope": "限Stentor coeruleus收縮反應與作者自製敲擊裝置；高力22顆中18顆可判出單一步階，低力組部分細胞全程低反應、看不到步階。單步模型比漸進模型更合資料，但無法完全排除漸進；切換後的收縮機率因細胞而異。恢復反應的計時機制與分子基礎未明；不把單細胞習慣化說成有意識或等同動物神經學習。",
+      "source_locator": "作者稿Results、Figs1–3；Forgetting節與Fig4內文",
+      "premise_status": "screened",
+      "notes": "B2012是一般動物對無害聲音的習慣化與刺激特異性；此題問的是群體平均曲線背後單一細胞的變化型態，答案是隨機切換時間的平均，而非每個個體漸弱。黏菌記憶題為管路與黏液痕跡，機制不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "平均曲線平滑，不代表每一個個體都在平滑變化；拆開看，可能是一群在不同時間各自「跳一階」的細胞。",
+        "visual": "Fig1E/F前後縮與不縮畫面改為原創示意；Fig1G群體點落曲線。再拆成數條單細胞黑格序列（Fig2A重畫），每條在不同位置一階下降，最後疊加回平滑曲線。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0c3a6d8d0a3ee101",
+          "origin": "wave51-life-20261103",
+          "locator": "作者稿Results、Figs1–3；Forgetting節與Fig4內文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L51-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L51-004",
+      "question": "大雨把樹蛙卵塊晃得比蛇咬還猛，胚胎為什麼反而比較不急著孵出來？",
+      "domain": "動物感覺與發育中的決策",
+      "mechanism_key": "animal.treefrog_embryo_escape_hatching_amplitude_insufficient_pattern_integration",
+      "answer_target": "野外錄到的大雨振動峰值與平均強度常高於蛇咬，單看振幅分不出危險。把蛇與雨的錄音調到相近振幅放回卵塊，對蛇振動的孵化比例隨振幅升得較陡，對雨則一直偏低。胚胎把振幅和時間型態、頻率等其他特徵合起來判斷，緩緩增強的振動也引起較少孵化。",
+      "scope": "限巴拿馬紅眼樹蛙Agalychnis callidryas與作者回放裝置；蛇錄音兩組、雨三組。時間與頻率線索的分辨證據引自作者先前研究，本文只測振幅與包絡。回放孵化低於活蛇攻擊，不推論其他卵生動物。",
+      "source_locator": "Results各節；Figs1–3；Discussion振幅與其他特徵整合段",
+      "premise_status": "screened",
+      "notes": "與C2005訊號偵測假警報的一般門檻、B2012習慣化不同：此為卵中胚胎以同一感覺通道的多重特徵區分天敵與天氣，並有等振幅回放對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "危險不等於最大聲；能不能分辨來源，比對強度反應更要緊。",
+        "visual": "Fig1重畫為各來源振幅箱形示意，大雨最高；接Fig3B兩條蛇線與三條雨線在同一振幅軸上的定性分歧。開場以原創卵塊懸在水面上、雨滴與蛇頭兩框振動波形對照，不使用原照片。",
+        "seconds": [
+          40,
+          70
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-8868e2336aabb3cf",
+          "origin": "wave51-life-20261103",
+          "locator": "Results各節；Figs1–3；Discussion振幅與其他特徵整合段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1722c43f2e8aca37",
+          "origin": "wave51-life-20261103",
+          "locator": "L51-S005 Results I–III與Figs4–8圖說；L51-S004 Fig2B與Discussion年齡門檻段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8868e2336aabb3cf",
+          "origin": "wave51-life-20261103",
+          "locator": "L51-S005 Results I–III與Figs4–8圖說；L51-S004 Fig2B與Discussion年齡門檻段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ],
+      "selected": true,
+      "aliases": [
+        "L51-005"
+      ],
+      "question_variants": [
+        {
+          "id": "L51-005",
+          "question": "四天大的樹蛙胚胎已經能破卵，為什麼蛇來咬時常常還不逃？",
+          "answer_target": "（併入L51-004支持點）同齡胚胎遇缺氧已能孵化，但對振動的孵化要到前庭眼反射出現的發育期才開始；整塊回放中反射低於約21度者無孵化。兩者同步出現，作者據此推測內耳功能是起始限制之一，但未操弄內耳，個體層級關聯也受發育期混淆。",
+          "scope": "發育同步的相關證據，未破壞內耳；少數無可測反射的胚胎在搖卵時仍孵化，側線或觸覺可能參與。預印本與2025年回放研究使用不同裝置與年份，門檻倍數只能作定性連接；限紅眼樹蛙。"
+        }
+      ],
+      "provenance_ids": [
+        "L51-004",
+        "L51-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P51-001",
+      "question": "同一塊熱板上懸浮的液滴，為什麼大顆的最後「啪」一聲炸開，小顆的卻自己飄走？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "thermal.leidenfrost.contaminant_shell_contact_explosion_vs_small_drop_takeoff",
+      "answer_target": "液滴靠底下持續蒸發的蒸氣層懸浮。液體裡極微量雜質擴散得比蒸發慢得多，會隨液面後退堆在表面成殼，使蒸發變慢、蒸氣層變薄；薄到與顆粒同級（約1微米）時局部碰觸熱板，劇烈沸騰而炸開並發出聲響。殼在液滴縮到初始大小的一定比例時才足以觸發，所以起初越大，炸開時也越大；起初很小的液滴還沒到那一步，就先縮到約15微米，被蒸氣流托起飛離。刻意加入微粒後，爆炸時的半徑比隨初始濃度呈1/3次方增加，且在所測溫度與初始大小下幾乎不變。",
+      "scope": "石英熱板約204–321°C、乙醇為主，另觀察超純水、甲醇、丙酮等實驗室純度液體；小滴初始約19–52微米由噴霧產生，肉眼難見。蒸氣層厚度由模型計算；觸地是否另有微粒沉降作者未定。不推到家用鍋或油鍋安全。",
+      "source_locator": "S001 Results Fig1B–E、Fig2A–D；Discussion Fig3A–C、Fig4A–B；Methods。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。萊頓弗羅斯特懸浮本身只作開場前提，不另立題。 S001正文純乙醇Re/Ri≈0.25應為誤植，Fig2D純乙醇點約0.025（Re約50微米對Ri=1.9毫米）；片中若引比例用圖值或不引。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣浮在蒸氣墊上，結局由液滴裡幾乎看不見的雜質何時聚成殼決定。",
+        "visual": "原刊Fig1：小滴最低點後升起的側視序列，對大滴底視黑斑與聲波尖峰；Fig2殼示意與殘骸照片；原創時間軸：液滴縮小時「起飛半徑」與「爆炸半徑」哪條線先到。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave51-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-8ab4189fac8fc0b4",
+          "origin": "wave51-physics-20261103",
+          "locator": "S001 Results Fig1B–E、Fig2A–D；Discussion Fig3A–C、Fig4A–B；Methods。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P51-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P51-002",
+      "question": "熱板上的細溝左右完全對稱，為什麼長條水滴還會自己挑一個方向一路衝？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "thermal.leidenfrost.symmetric_ridges_vapor_neck_asymmetry_self_propulsion",
+      "answer_target": "過去要讓懸浮液滴定向前進，多半靠鋸齒等左右不對稱紋路。此研究在350°C、左右對稱的平行細脊上放長於約9毫米的水滴，水滴會加速並沿軌道持續繞行；同溫平面熱板上只亂漂，吹一下也很快停。作者以振盪器模型和流體模擬解釋：液體一旦朝某方向流，脊頂兩側蒸氣膜一厚一薄，氣液界面傾斜，托住液滴的蒸氣壓力就多出朝同方向的水平分量；每條脊都貢獻一點推力，因此長滴也推得動。",
+      "scope": "銑削脊寬約0.2毫米、週期1.6毫米、高1毫米等條件，限寬8毫米軌道，主要為水（亦示液氮、乙醇）。短於約9毫米、脊過寬、過矮或過高時不推進。界面傾斜由模型推得，實驗難直接量蒸氣層；方向由初始擾動選定是作者推測。不等同一般平底鍋。模擬顯示兩側蒸氣層差距太小時淨力可為負，「一厚一薄」須達一定差距才推得動。",
+      "source_locator": "S002 Results Fig1B–C、Fig2A、Fig3B、Fig4A–B、Fig5與失效樣品敘述；Discussion。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。與P51-001同為懸浮液滴，但問運動方向而非結局，不合併。 與P22-NA010不同：該退題問不對稱鋸齒的氣流機制且未讀正文；本題答案不依賴鋸齒，鋸齒只作一句背景、不回答棘輪機制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不必把方向刻進紋路；流動自己打破對稱後，對稱的地面也能持續推一邊。",
+        "visual": "原刊Fig1B/C時間疊影：直軌來回、環軌繞61.2秒；平面熱板推一下即停的對照；Fig4A脊頂左右蒸氣頸寬不同、壓力傾斜的示意（標明為模擬）。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave51-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-c4695bf7d62b9f01",
+          "origin": "wave51-physics-20261103",
+          "locator": "S002 Results Fig1B–C、Fig2A、Fig3B、Fig4A–B、Fig5與失效樣品敘述；Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P51-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P51-003",
+      "question": "香檳的氣泡排成一直線往上，為什麼氣泡水裡差不多大的氣泡卻散成一片？",
+      "domain": "流體與氣泡",
+      "mechanism_key": "fluids.bubble_chain.surfactant_surface_vorticity_wake_lift_reversal",
+      "answer_target": "同一點連續冒出的氣泡，後一顆處在前一顆的尾流裡。乾淨、近球形的氣泡尾流帶來側向升力，把後泡推離中線，鏈就散開。表面活性物質讓氣泡表面不易滑動，表面產生更多渦度，尾流旋渦排列改變、升力反向，後泡被留在線上。實驗在同一噴嘴逐步加入界面活性劑，鏈由散亂轉直；把氣泡做大變扁也能轉直，但飲料裡的氣泡太小，靠的是表面活性物質。",
+      "scope": "主要用甘油水模擬液與氮氣泡匹配無因次數，並以數值模擬兩泡；忽略氣泡邊升邊長大。真飲料以拉細玻璃毛細管產泡：香檳與氣泡酒小泡成直鏈、氣泡水不穩、啤酒依泡大小而異；飲料表面活性參數由文獻推估。實讀2022預印本，期刊版未讀。",
+      "source_locator": "S003 pp10–11 Fig1–2；pp12–13 Fig3；pp14–17 Discussion與Fig4；pp18–19 Fig5與真飲料實驗。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。不是I12-NA11/F17-NA005的「上升變慢」，而是鏈的側向穩定。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "直線不代表液體特別平靜；是被分子黏住的氣泡表面改了尾流，把後泡拉回線上。",
+        "visual": "原刊Fig2兩組並排：(a)同液只把氣泡變大、(b)同大小只加界面活性劑，各由散到直；Fig3模擬兩泡軌跡分離與否；原創尾流側推箭頭示意。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave51-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e9bb854e7cf926ef",
+          "origin": "wave51-physics-20261103",
+          "locator": "S003 pp10–11 Fig1–2；pp12–13 Fig3；pp14–17 Discussion與Fig4；pp18–19 Fig5與真飲料實驗。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P51-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P51-004",
+      "question": "兩束蠟燭靠近時火焰一起跳，拉開幾公分卻變成你高我低，牽動它們的是熱輻射嗎？",
+      "domain": "燃燒與振盪",
+      "mechanism_key": "combustion.candle_bundle_flicker_inphase_antiphase_radiation_excluded_flow_coupling",
+      "answer_target": "單根蠟燭在一般空氣中不太閃，綁成束後火焰會以每秒約10次上下閃動。兩束相距較近時同相，約3到4公分間突然轉成反相。舊模型以熱輻射耦合解釋；本研究把一束換成光譜相近、以相近頻率調變亮度的鹵素燈，放在2公分處，蠟燭沒有跟著同步，因而質疑單靠輻射耦合，提出以「一邊火焰溫度變化擾動氣流、改變另一邊氧氣供應」的模型重現同相到反相的轉換；這是候選機制之一。",
+      "scope": "直徑8毫米蠟燭的三根與六根三角束；以高速攝影像素計數與光敏元件量測。氣流/氧氣耦合是模型假設、未量流場；鹵素燈對照只在2公分、三種頻率。同研究另見束越大閃得越慢、單根在氧濃度高於70%時也會閃，列為補充。不作居家用火建議。近處同相、遠處反相的轉換前人已報導，本研究新增的是鹵素燈對照與氧耦合模型；模型含擬合參數並重標時間，文獻另有渦旋動力學解釋，耦合機制未定案。鹵素燈只有輻射、沒有火焰熱羽流，排除的是純輻射耦合，不是排除熱。",
+      "source_locator": "S004 p4 Fig2–3；p5–8頻率與氧濃度；p9 Fig9、Table2；pp10–11式(8)與Fig11。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。不收「火焰為何向上」舊題（LEG-S48）。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "單靠熱輻射的解釋被一盞會閃的燈挑戰；溫度擾動氣流、改變供氧是作者提出的候選機制。",
+        "visual": "原刊Fig3二值化影格：單束、同相、反相；Fig9同步參數隨距離由正跳負；Table2鹵素燈取代一束時同步參數近0的原創重繪。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave51-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-59336e74653261dc",
+          "origin": "wave51-physics-20261103",
+          "locator": "S004 p4 Fig2–3；p5–8頻率與氧濃度；p9 Fig9、Table2；pp10–11式(8)與Fig11。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P51-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -390043,6 +391387,579 @@
       ]
     },
     {
+      "id": "S51-001",
+      "question": "兩座古城都燒成廢墟，怎麼從泥磚看出是不是同一場戰火？",
+      "domain": "考古／年代與地球物理",
+      "mechanism_key": "archaeomagnetism.burnt_mudbrick_trm_negates_contemporaneity",
+      "answer_target": "泥磚被大火燒過再冷卻，會把當下的地磁方向和強度記下來；這段時期當地地磁變化快。研究從17處遺址、20個燒毀層取樣，只拿沒倒塌的牆磚量方向。Beth-Shean的傾角和公認約西元前830年被毀的Gath等層差約4度、信賴範圍不重疊，表示兩者不是同時被毀；強度定年再把Beth-Shean放到約西元前880年以前。Batash的強度貼近約西元前600年被毀的Ekron、不像586年的耶路撒冷，傾角也和586年的Lachish差約3度，因此較像約西元前600年那一波。",
+      "scope": "磁性比對最擅長否定「同時」；絕對年代仍靠歷史錨點與放射性碳建立的參考曲線，不能單靠磁性指認是哪位君王所為。倒塌的磚只用來判斷是否在原位冷卻。方向差只證不同時，先後與年代來自強度定年；Batash以強度為主、方向為輔。",
+      "source_locator": "Results首段；Discussion第2–3段（Beth-Shean傾角差約4°）、第6段（Batash對Lachish II約3°）、末段（Hallstatt plateau）；Methods: Archaeomagnetic Directions（倒塌磚只作形成分析）；Fig1、Fig3。",
+      "premise_status": "screened",
+      "notes": "年代仍靠歷史錨點與放射性碳建立的參考曲線；磁性最擅長否定同時，不單獨指認發動者。補充資料SI未讀。原刊PNAS網頁未取；PMC文章頁有挑戰頁標記但CDN圖檔可取。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "火把當天的磁場鎖進磚裡，兩層對不上就不會是同一場火。",
+        "visual": "原創示意磚牆冷卻時磁向被鎖住；再依Fig1重畫傾角時間軸，Gath群與Beth-Shean兩色加誤差棒，標出不重疊；不用戰爭重演畫面。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave51-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5d078a8828eddd90",
+          "origin": "wave51-earth-20261103",
+          "locator": "Results首段；Discussion第2–3段（Beth-Shean傾角差約4°）、第6段（Batash對Lachish II約3°）、末段（Hallstatt plateau）；Methods: Archaeomagnetic Directions（倒塌磚只作形成分析）；Fig1、Fig3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+      ]
+    },
+    {
+      "id": "S51-002",
+      "question": "古人只寫下「這裡看到日全食」，怎麼能算出地球自轉變慢了多少？",
+      "domain": "天文觀測／地球自轉",
+      "mechanism_key": "earth_rotation.untimed_total_eclipse_site_bounds_delta_t",
+      "answer_target": "日全食帶很窄。若假設地球一直等速自轉，把月影投回古代，全食帶會落在別處；要讓紀錄地點落進帶內，地球累積轉角的差（ΔT）就被夾在一個範圍。只見一彎殘日的大偏食紀錄則排除讓當地全食的區間，例如1330年Zbraslav修道院編年史的描述只容ΔT小於900秒或大於1220秒。合併古今紀錄，日長平均每世紀增長約1.78毫秒，比單靠潮汐摩擦預期的約2.3毫秒少。",
+      "scope": "只採日期與地點都明確的紀錄。每世紀約1.78毫秒是計時與未計時紀錄合併擬合的平均，不是單靠未計時全食算出；並仰賴現代月球軌道量測。差額來自冰期後地殼回彈與地核地函耦合是作者推論；約1500年擺盪證據較弱，不採。",
+      "source_locator": "§2 Untimed observations第1–4段；§3 Collected untimed results；§5 Variations in lod與Long-term accelerations；Conclusion；Fig11、Fig18。",
+      "premise_status": "screened",
+      "notes": "需信任現代月球軌道與潮汐加速度量測；只採日期與地點明確紀錄。非潮汐成分歸因冰後回彈與核幔耦合為作者推論；約1500年擺盪證據較少，作者自稱較不可靠。電子補充表S10–S14未讀。舊LEG-S21查核包曾列同DOI作潮汐來源，本批另用其日食約束部分。 LEG-S21舊片稿（week12/S21.md原因4）已播出同篇1.8對2.3結論；本核新答案限於未計時全食／大偏食紀錄如何夾住ΔT的方法，結論數字只作收尾，不當新賣點。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一句「白天變黑」加上地點，就是夾住地球轉角的上下限。",
+        "visual": "原創地圖示意全食帶隨ΔT東西平移、古城一點只在某段落入帶內；接Fig11重畫紅色上下限豎線與擬合曲線；Fig18簡化成實測與潮汐兩條斜線。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave51-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b84ac8f34a1cb27b",
+          "origin": "wave51-earth-20261103",
+          "locator": "§2 Untimed observations第1–4段；§3 Collected untimed results；§5 Variations in lod與Long-term accelerations；Conclusion；Fig11、Fig18。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+      ]
+    },
+    {
+      "id": "S51-003",
+      "question": "北海那道25.6公尺的怪浪，為什麼實驗裡得讓兩組浪斜著相撞才做得出來？",
+      "domain": "海洋／波浪",
+      "mechanism_key": "ocean.rogue_wave_crossing_angle_changes_breaking_limit",
+      "answer_target": "研究者在四周有168台造浪機的圓形水池，按1比35重建Draupner紀錄的波形，只改兩組浪的交會角。同向時浪在到頂前就向前捲倒，換算波峰最高只到約17公尺，低於實測18.5公尺；方向再分散也一樣。交會角加大後，水平運動在交會點互相抵銷，碎浪變成往上噴的水柱，不再先壓住高度，60度與120度的波峰都接近實測；但只有120度同時重現浪的陡度與浪下平均水面微微抬高（0.27對實測0.26公尺）。",
+      "scope": "縮尺水池；兩組浪的方向拆分是假設，野外紀錄來自單一雷射，風與海流未模擬。只說大角度交會能重現，不說每道怪浪都如此。作者結論為60–120度的大角度交會，不指定單一角度。",
+      "source_locator": "§2.1、§2.2；§3.1與表1–2；§3.2（set-up 0.27/0.26 m）；§3.3與Figs3–5；§4 Conclusions。",
+      "premise_status": "screened",
+      "notes": "兩組浪方向拆分是假設；野外紀錄為單一雷射可受飛沫影響；未模擬風與海流；噴流可能不按同比例縮放。作者明言對歷史實際方向分布無法完全確定。初次以錯誤DOI（jfm.2018.954）取得另一篇文章，已丟棄，經Crossref題名查得正確DOI後重取。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "浪從兩邊來，「先倒下」這個高度上限就被改掉了。",
+        "visual": "Fig3與Fig4照片序列以同間隔重繪：同向往前捲、120度往上噴；表1三種角度（0°、60°、120°）波峰長條對照實測線，另標只有120°陡度也對上；原圖僅核證。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave51-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-44ec7a85926c0c93",
+          "origin": "wave51-earth-20261103",
+          "locator": "§2.1、§2.2；§3.1與表1–2；§3.2（set-up 0.27/0.26 m）；§3.3與Figs3–5；§4 Conclusions。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+      ]
+    },
+    {
+      "id": "S51-004",
+      "question": "衛星看到的船跡雲線少了一大半，是海上的船變少了嗎？",
+      "domain": "天氣／雲與氣膠",
+      "mechanism_key": "cloud.ship_tracks_fuel_sulfur_regulation_natural_experiment",
+      "answer_target": "研究用深度學習在2003–2020年MODIS影像中找船跡雲。2015年北美西岸排放管制區把燃油含硫上限降到0.1%，區內船跡密度降近七成，其中一部分是船改道繞到區外。真正排除「船變少」的是2020年：全球上限由3.5%降到0.5%，五條主要航線船跡密度降一半以上、創近20年新低；同年船舶追蹤資料只顯示全球航運量少約1.4%，疫情影響只持續幾個月，2021年前七個月船跡卻仍在低點，作者因此判斷主因是燃料含硫。",
+      "scope": "偵測到的雲線只是船排放影響雲的下限；熱帶或背景雲已污染時不易成線。2020疫情有部分貢獻。輻射強迫估算假設多，不入稿。",
+      "source_locator": "Results第4–6段（ECA近70%、2020主要航線降50%以上、AIS約1.4%）；Results第2段（南桑威奇火山）；Fig2、Fig3A–B。",
+      "premise_status": "screened",
+      "notes": "偵測到的船跡只是排放影響雲的下限，背景雲狀況改變可見度；2020疫情有部分貢獻；輻射強迫數值建立在多項假設上，不採。補充資料未讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "船照樣開，雲上的簽名卻淡了，指出寫字的是燃料裡的硫。",
+        "visual": "Fig2三張地圖重畫：平均航線、2015–19與2020負距平；Fig3B管制區長條在2015下降並標航線南移；角落一格南桑威奇群島：無船，火山二氧化硫形成的硫酸鹽氣膠畫出同樣雲線（旁證：同一種粒子能寫出同一種線），不作限硫因果證據。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave51-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-f2e59b6f6c024f28",
+          "origin": "wave51-earth-20261103",
+          "locator": "Results第4–6段（ECA近70%、2020主要航線降50%以上、AIS約1.4%）；Results第2段（南桑威奇火山）；Fig2、Fig3A–B。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+      ]
+    },
+    {
+      "id": "H51-001",
+      "question": "羊奶起司拌熱水做醬，一加熱就結成一大團，加澱粉為什麼能救回來？",
+      "domain": "食物科學／乳製品醬汁的相分離",
+      "mechanism_key": "food.cheese_water_starch_aggregation_onset_shift",
+      "answer_target": "羊奶起司和水各半慢慢加熱，不加澱粉時約在65°C附近整鍋縮成一大團（作者稱莫札瑞拉相）。先糊化的澱粉加得越多，結團出現的溫度越高、團塊越小；澱粉約達起司重1%以上，這次就沒再出現整鍋一大團。一般煮麵水裡的澱粉偏稀，要濃縮或另加。",
+      "scope": "單一產地Pecorino Romano與玉米澱粉、起司比水1:1、每5°C緩升約40分鐘；每條升溫至少重複兩次，團塊大小由影像分割估算。採arXiv作者版。不推到所有起司醬或火鍋；2–3%建議為作者品嚐，非盲測。檸檬酸鈉穩定屬舊核F8004範圍。Fig.2澱粉%以水重計，因起司與水等重，數值等同以起司重計；1%以上不再整鍋聚團，但70°C以上仍有數毫米團塊，3–4%團塊才明顯變小。",
+      "source_locator": "arXiv v3 Sec II–III、VI；補充S1–S2；p3 Fig2原頁目讀。",
+      "premise_status": "screened",
+      "notes": "主控制是澱粉濃度×溫度相圖；起司比例的臨界溫度與最小模型只作補充，不另拆核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "加熱不是唯一變數：同一溫度下，澱粉多寡決定起司蛋白是整鍋聚團還是散成小顆。",
+        "visual": "原創俯視培養皿格陣：橫軸澱粉%、縱軸溫度，左上一整塊灰團逐格變成細點；不翻拍原圖照片。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave51-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-93dc1960f9e74b97",
+          "origin": "wave51-human-20261103",
+          "locator": "arXiv v3 Sec II–III、VI；補充S1–S2；p3 Fig2原頁目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+      ]
+    },
+    {
+      "id": "H51-002",
+      "question": "蛋白要高溫、蛋黃要低溫，不打開蛋殼怎麼一次煮好兩邊？",
+      "domain": "食物科學／烹調傳熱與蛋白凝固",
+      "mechanism_key": "food.egg_periodic_boundary_heating_core_averaging",
+      "answer_target": "把帶殼蛋每2分鐘在沸水和30°C水之間換一次，共8輪32分鐘。模型算出外層蛋白在約87–100°C與30–55°C間來回，熱傳到中心太慢、跟不上切換，模型算出幾輪之後蛋黃穩在約67°C，接近兩鍋水溫的平均。實蛋切開，蛋白凝固程度近溏心蛋；8名受訓評審比對，蛋黃感官與65°C一小時的低溫蛋沒有顯著差異。",
+      "scope": "溫度剖面來自傳導模型（忽略氣室、對流與水分移動），未在蛋內插溫度計。感官由8名受訓評審、每人每產品評兩次（補充資料）；Fig.4圖說將一串蛋白差異誤列於蛋黃，依正文與雷達圖採『蛋黃無顯著差』。補充資料的沙門氏菌安全為文獻熱致死曲線推算，非實測，不入題。單一實驗室、單一週期設定，蛋大小與起始溫度不同需重調；營養主張不入題。",
+      "source_locator": "Results: Cooking simulations、Quantitative descriptive analysis；Methods: Egg cooking methods；Fig1、Fig4目讀。補充資料（MOESM2）QDA節：8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋（獨立審閱者自取並轉述）。",
+      "premise_status": "screened",
+      "notes": "與LEG-S30恆溫溫泉蛋不同：答案在時間變化邊界被中心平均掉，而非單一水溫介於兩凝固點之間。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外面來回燙冷，中心只「看到」平均溫度：用切換節奏替蛋分出兩個溫區。",
+        "visual": "原創蛋剖面同心圈，外圈紅藍閃爍、中心色塊穩定；並排四種煮法的原創切面示意，不翻拍原刊照片。",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave51-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6595a0fe5eb711a4",
+          "origin": "wave51-human-20261103",
+          "locator": "Results: Cooking simulations、Quantitative descriptive analysis；Methods: Egg cooking methods；Fig1、Fig4目讀。補充資料（MOESM2）QDA節：8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋（獨立審閱者自取並轉述）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+      ]
+    },
+    {
+      "id": "H51-003",
+      "question": "皮膚沒有專門感覺「濕」的受器，手指怎麼知道摸到的是濕的？",
+      "domain": "感知／觸覺與溫度感覺整合",
+      "mechanism_key": "perception.skin_wetness_inferred_from_cooling_and_touch",
+      "answer_target": "濕感是用別的訊號拼出來的。8名受試者隔著遮屏、看不到刺激，用食指按壓吸水墊：水溫25°C時平均約18.7毫升就有一半機會判為濕，33°C要約24.7、37°C約27.0毫升。另一實驗40人滑過21種材料，材料從皮膚帶走熱的能力（儀器量的最大熱傳速率）解釋約兩成濕感差異，摩擦係數約一成。水量仍是主因（評分變異約84%，水溫只占約3%）；涼與易導熱只讓同量的水更像濕。",
+      "scope": "兩篇同一實驗室、尿布表層材料加生理食鹽水；閾值研究僅8名年輕女性、靜態按壓；滑動研究為迴歸相關，非單一因子操弄，仍有35%未解釋。「無濕度受器」為作者引述的現有認識。不推及全身部位或衣物評比。閾值僅25°C對33°C、37°C顯著，33對37無差；Qmax為材料性質、與含水量可能共變，PLS占比不等於各自獨立因果份額。",
+      "source_locator": "S003 Results閾值節與Fig5目讀；S004 Results PLS與Fig4目讀、Discussion前三段。",
+      "premise_status": "screened",
+      "notes": "冷乾刺激也會被說成濕的原始神經阻斷研究未取得全文，只作NA；本題只用兩篇已讀研究的閾值與變異占比。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "手指把熱被帶走的涼感與摩擦觸感合起來判斷濕；水量仍是主因，單看水溫只解釋一小部分。",
+        "visual": "原創食指剖面與熱流箭頭；四個溫度的閾值點陣重畫為定性梯度；材料導熱（Qmax）與摩擦兩根長短條對照。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave51-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e9900fa2d73cf82",
+          "origin": "wave51-human-20261103",
+          "locator": "S003 Results閾值節與Fig5目讀；S004 Results PLS與Fig4目讀、Discussion前三段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1ea177a2edb76369",
+          "origin": "wave51-human-20261103",
+          "locator": "S003 Results閾值節與Fig5目讀；S004 Results PLS與Fig4目讀、Discussion前三段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+      ]
+    },
+    {
+      "id": "H51-004",
+      "question": "走路甩手看起來多餘，為什麼把手綁住反而更耗力？",
+      "domain": "身體與運動／步行力學與能量",
+      "mechanism_key": "body.walking_arm_swing_vertical_moment_offset",
+      "answer_target": "10人在跑步機上同速走四種方式：正常擺臂最省；手被繃帶綁在身側多耗約7%、自己夾住約12%，和同側腿一起擺的『同手同腳』約26%。肩肘出力在正常與同手同腳都很小，擺臂近乎被動；差別在手臂反向擺能抵消腿帶來的身體扭轉：綁手時腳底對地的峰值扭矩約多63%，同手同腳又比夾手多約83%，排序與耗能一致。重心上下起伏則各條件沒差。",
+      "scope": "10名健康成人、單一速度1.25 m/s；力學量僅7人地面行走。降低扭矩是與資料相容的解釋，未逐一排除其他因素；被動行走模型為簡化。不推到跑步、老年或疾病步態，也不作健身建議。",
+      "source_locator": "Sec 2人體實驗、Sec 3 Experimental results、Sec 4前段；Fig4、Fig5目讀。",
+      "premise_status": "screened",
+      "notes": "同手同腳條件是關鍵反證：手一樣在擺、肩也不費力，耗能卻最高，排除「只要有動就好」與降低重心起伏兩種說法。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "甩手便宜，不甩反而貴：手臂是抵消腿扭轉的配重，同手同腳最糟。",
+        "visual": "原創俯視人形，腿與手的旋轉箭頭相反或同向；四色柱重畫代謝率排序；腳底扭轉小旋渦隨條件變大。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave51-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-421cc85c2645b52e",
+          "origin": "wave51-human-20261103",
+          "locator": "Sec 2人體實驗、Sec 3 Experimental results、Sec 4前段；Fig4、Fig5目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+      ]
+    },
+    {
+      "id": "L51-001",
+      "question": "螞蟻會把受傷同伴的腿咬掉，為什麼傷在大腿就咬、傷在小腿卻不咬？",
+      "domain": "動物行為／群體照護與感染",
+      "mechanism_key": "animal.ant_wound_location_amputation_vs_care_hemolymph_spread",
+      "answer_target": "佛州弓背蟻股節傷在接回群落後多被同伴從腿根咬斷，脛節傷則只得到較久的舔舐，而送回巢中的脛節感染蟻存活與無菌組相近。人工截肢對照顯示：股節感染傷在一小時後截肢仍能把存活拉回接近無菌組，脛節截肢則與不處理的感染孤立組一樣差（作者補充資料指只有接菌當下截才有效）。作者以股節肌肉多、受傷後血淋巴流較慢、病菌擴散較慢解釋，截肢只在來得及時才有利。",
+      "scope": "限實驗室Camponotus floridanus與綠膿桿菌接種的剪傷；血淋巴流速未直接量，肌肉差異來自micro-CT截面。螞蟻對無菌與感染股節傷截肢率無顯著差，不代表能偵測病菌；不推及其他蟻種或人類醫療。各時間點截肢結果出自未讀的補充Fig S4，只作作者報告；股節中段肌肉截面積接近脛節的九倍（約8.7倍）。",
+      "source_locator": "PDF pp3–5 Figs1–4與Results；STAR Methods存活、qPCR與micro-CT",
+      "premise_status": "screened",
+      "notes": "與菌絲堵孔、樹木隔離傷區不同：此處是由同伴的行為依傷口位置選擇截肢或照護，並有人工截肢與時間點對照。其他蟻種用抗菌分泌物治傷只作對比，不另收。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一種「切掉」不是越快越好，而要看病菌往身體裡走得多快；螞蟻的選擇剛好對上這個時間差。",
+        "visual": "原創後腳剖面標出股節、脛節與轉節咬斷點；左右兩框同伴舔舐與啃咬的定性時間條。再用Fig3重畫四組存活曲線：股節人工截肢與無菌組靠攏、脛節截肢與感染孤立組重疊。不複製原插畫與影片。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-780e1e6833149c9e",
+          "origin": "wave51-life-20261103",
+          "locator": "PDF pp3–5 Figs1–4與Results；STAR Methods存活、qPCR與micro-CT",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ]
+    },
+    {
+      "id": "L51-002",
+      "question": "噬菌體感染細菌時，怎麼知道該馬上把細菌撐破，還是先躲進細菌基因體？",
+      "domain": "微生物／病毒的群體訊號",
+      "mechanism_key": "virus.phage_arbitrium_peptide_lysogeny_threshold",
+      "answer_target": "spBeta群噬菌體phi3T每次感染都讓宿主分泌一段六胺基酸胜肽；先前感染越多，培養液裡這段胜肽越濃。新進入的噬菌體由寡肽轉運器把胜肽帶進細胞，與受體AimR結合，使原本促裂解的訊號關掉，整合進宿主的溶原比例提高。不同噬菌體各有自己的胜肽，彼此不通用。",
+      "scope": "限枯草桿菌與實驗室培養；胜肽只提高溶原機率，無胜肽也非全部裂解。aimX下游如何作用未解，且只有部分同類噬菌體帶此ORF。「新一代感知前代數量」與推及真核病毒屬作者推論。",
+      "source_locator": "作者稿Results各節、Figs2–3、Discussion",
+      "premise_status": "screened",
+      "notes": "舊L070只問細菌會否被病毒感染；V3017是細菌自身的群體感應。此題是病毒基因編碼的訊號改變自己的裂解／溶原選擇，有濃度梯度、缺轉運器與異種胜肽對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "病毒不是每次都照同一套路，它會用前面幾輪留下的化學「計數」決定要不要先潛伏。",
+        "visual": "先畫兩瓶菌液：新培養液與感染過再濾掉菌和病毒的培養液，後者菌液較少被撐破；接Fig2B定性濃度梯度與Fig2C溶原比例兩線，Fig3B胜肽在第三到四輪後才升高。受體以二聚體貼DNA、遇胜肽成單體的原創示意。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b852fa699caaa84c",
+          "origin": "wave51-life-20261103",
+          "locator": "作者稿Results各節、Figs2–3、Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ]
+    },
+    {
+      "id": "L51-003",
+      "question": "一盤喇叭蟲被重複敲到越來越不縮，是每一隻都慢慢變遲鈍嗎？",
+      "domain": "單細胞行為與學習",
+      "mechanism_key": "cell.stentor_habituation_single_cell_step_switch_population_average",
+      "answer_target": "群體中會收縮的比例確實逐漸下降，但追蹤單顆細胞時，多數是在某次刺激後一步從常收縮切到少收縮，之後很少再切回。每顆細胞切換的時間隨機不同，平均起來才像平滑下降。較弱的敲擊切得較快；刺激更密時切換也更快，停下15分鐘多數又恢復反應。",
+      "scope": "限Stentor coeruleus收縮反應與作者自製敲擊裝置；高力22顆中18顆可判出單一步階，低力組部分細胞全程低反應、看不到步階。單步模型比漸進模型更合資料，但無法完全排除漸進；切換後的收縮機率因細胞而異。恢復反應的計時機制與分子基礎未明；不把單細胞習慣化說成有意識或等同動物神經學習。",
+      "source_locator": "作者稿Results、Figs1–3；Forgetting節與Fig4內文",
+      "premise_status": "screened",
+      "notes": "B2012是一般動物對無害聲音的習慣化與刺激特異性；此題問的是群體平均曲線背後單一細胞的變化型態，答案是隨機切換時間的平均，而非每個個體漸弱。黏菌記憶題為管路與黏液痕跡，機制不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "平均曲線平滑，不代表每一個個體都在平滑變化；拆開看，可能是一群在不同時間各自「跳一階」的細胞。",
+        "visual": "Fig1E/F前後縮與不縮畫面改為原創示意；Fig1G群體點落曲線。再拆成數條單細胞黑格序列（Fig2A重畫），每條在不同位置一階下降，最後疊加回平滑曲線。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0c3a6d8d0a3ee101",
+          "origin": "wave51-life-20261103",
+          "locator": "作者稿Results、Figs1–3；Forgetting節與Fig4內文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ]
+    },
+    {
+      "id": "L51-004",
+      "question": "大雨把樹蛙卵塊晃得比蛇咬還猛，胚胎為什麼反而比較不急著孵出來？",
+      "domain": "動物感覺與發育中的決策",
+      "mechanism_key": "animal.treefrog_embryo_escape_hatching_amplitude_insufficient_pattern_integration",
+      "answer_target": "野外錄到的大雨振動峰值與平均強度常高於蛇咬，單看振幅分不出危險。把蛇與雨的錄音調到相近振幅放回卵塊，對蛇振動的孵化比例隨振幅升得較陡，對雨則一直偏低。胚胎把振幅和時間型態、頻率等其他特徵合起來判斷，緩緩增強的振動也引起較少孵化。",
+      "scope": "限巴拿馬紅眼樹蛙Agalychnis callidryas與作者回放裝置；蛇錄音兩組、雨三組。時間與頻率線索的分辨證據引自作者先前研究，本文只測振幅與包絡。回放孵化低於活蛇攻擊，不推論其他卵生動物。",
+      "source_locator": "Results各節；Figs1–3；Discussion振幅與其他特徵整合段",
+      "premise_status": "screened",
+      "notes": "與C2005訊號偵測假警報的一般門檻、B2012習慣化不同：此為卵中胚胎以同一感覺通道的多重特徵區分天敵與天氣，並有等振幅回放對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "危險不等於最大聲；能不能分辨來源，比對強度反應更要緊。",
+        "visual": "Fig1重畫為各來源振幅箱形示意，大雨最高；接Fig3B兩條蛇線與三條雨線在同一振幅軸上的定性分歧。開場以原創卵塊懸在水面上、雨滴與蛇頭兩框振動波形對照，不使用原照片。",
+        "seconds": [
+          40,
+          70
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-8868e2336aabb3cf",
+          "origin": "wave51-life-20261103",
+          "locator": "Results各節；Figs1–3；Discussion振幅與其他特徵整合段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ]
+    },
+    {
+      "id": "L51-005",
+      "question": "四天大的樹蛙胚胎已經能破卵，為什麼蛇來咬時常常還不逃？",
+      "domain": "動物感覺與發育中的決策",
+      "mechanism_key": "animal.treefrog_embryo_vestibular_onset_limits_vibration_hatching",
+      "answer_target": "（併入L51-004支持點）同齡胚胎遇缺氧已能孵化，但對振動的孵化要到前庭眼反射出現的發育期才開始；整塊回放中反射低於約21度者無孵化。兩者同步出現，作者據此推測內耳功能是起始限制之一，但未操弄內耳，個體層級關聯也受發育期混淆。",
+      "scope": "發育同步的相關證據，未破壞內耳；少數無可測反射的胚胎在搖卵時仍孵化，側線或觸覺可能參與。預印本與2025年回放研究使用不同裝置與年份，門檻倍數只能作定性連接；限紅眼樹蛙。",
+      "source_locator": "L51-S005 Results I–III與Figs4–8圖說；L51-S004 Fig2B與Discussion年齡門檻段",
+      "premise_status": "screened",
+      "notes": "A5021講成體前庭眼反射如何穩定視線；此處把它當發育中的功能指標，回答能力已在、感覺未到的時間差。原圖未目讀，畫面只用L51-S004已目讀資料。 非作者審閱建議併入L51-004作約10秒支持點，不自立成片；合併紀錄由root寫入dedup-decisions。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「能做到」和「感覺得到」是兩個不同時間到來的能力；逃生慢一步可能是感覺器還沒長好。",
+        "visual": "只作L51-004年齡章節的一句支持字卡：內耳平衡反射與振動孵化同步出現，標「相關證據」；不另畫因果箭頭。",
+        "seconds": [
+          8,
+          12
+        ]
+      },
+      "origin": "wave51-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-1722c43f2e8aca37",
+          "origin": "wave51-life-20261103",
+          "locator": "L51-S005 Results I–III與Figs4–8圖說；L51-S004 Fig2B與Discussion年齡門檻段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8868e2336aabb3cf",
+          "origin": "wave51-life-20261103",
+          "locator": "L51-S005 Results I–III與Figs4–8圖說；L51-S004 Fig2B與Discussion年齡門檻段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+      ]
+    },
+    {
+      "id": "P51-001",
+      "question": "同一塊熱板上懸浮的液滴，為什麼大顆的最後「啪」一聲炸開，小顆的卻自己飄走？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "thermal.leidenfrost.contaminant_shell_contact_explosion_vs_small_drop_takeoff",
+      "answer_target": "液滴靠底下持續蒸發的蒸氣層懸浮。液體裡極微量雜質擴散得比蒸發慢得多，會隨液面後退堆在表面成殼，使蒸發變慢、蒸氣層變薄；薄到與顆粒同級（約1微米）時局部碰觸熱板，劇烈沸騰而炸開並發出聲響。殼在液滴縮到初始大小的一定比例時才足以觸發，所以起初越大，炸開時也越大；起初很小的液滴還沒到那一步，就先縮到約15微米，被蒸氣流托起飛離。刻意加入微粒後，爆炸時的半徑比隨初始濃度呈1/3次方增加，且在所測溫度與初始大小下幾乎不變。",
+      "scope": "石英熱板約204–321°C、乙醇為主，另觀察超純水、甲醇、丙酮等實驗室純度液體；小滴初始約19–52微米由噴霧產生，肉眼難見。蒸氣層厚度由模型計算；觸地是否另有微粒沉降作者未定。不推到家用鍋或油鍋安全。",
+      "source_locator": "S001 Results Fig1B–E、Fig2A–D；Discussion Fig3A–C、Fig4A–B；Methods。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。萊頓弗羅斯特懸浮本身只作開場前提，不另立題。 S001正文純乙醇Re/Ri≈0.25應為誤植，Fig2D純乙醇點約0.025（Re約50微米對Ri=1.9毫米）；片中若引比例用圖值或不引。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣浮在蒸氣墊上，結局由液滴裡幾乎看不見的雜質何時聚成殼決定。",
+        "visual": "原刊Fig1：小滴最低點後升起的側視序列，對大滴底視黑斑與聲波尖峰；Fig2殼示意與殘骸照片；原創時間軸：液滴縮小時「起飛半徑」與「爆炸半徑」哪條線先到。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave51-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-8ab4189fac8fc0b4",
+          "origin": "wave51-physics-20261103",
+          "locator": "S001 Results Fig1B–E、Fig2A–D；Discussion Fig3A–C、Fig4A–B；Methods。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+      ]
+    },
+    {
+      "id": "P51-002",
+      "question": "熱板上的細溝左右完全對稱，為什麼長條水滴還會自己挑一個方向一路衝？",
+      "domain": "熱與流體界面",
+      "mechanism_key": "thermal.leidenfrost.symmetric_ridges_vapor_neck_asymmetry_self_propulsion",
+      "answer_target": "過去要讓懸浮液滴定向前進，多半靠鋸齒等左右不對稱紋路。此研究在350°C、左右對稱的平行細脊上放長於約9毫米的水滴，水滴會加速並沿軌道持續繞行；同溫平面熱板上只亂漂，吹一下也很快停。作者以振盪器模型和流體模擬解釋：液體一旦朝某方向流，脊頂兩側蒸氣膜一厚一薄，氣液界面傾斜，托住液滴的蒸氣壓力就多出朝同方向的水平分量；每條脊都貢獻一點推力，因此長滴也推得動。",
+      "scope": "銑削脊寬約0.2毫米、週期1.6毫米、高1毫米等條件，限寬8毫米軌道，主要為水（亦示液氮、乙醇）。短於約9毫米、脊過寬、過矮或過高時不推進。界面傾斜由模型推得，實驗難直接量蒸氣層；方向由初始擾動選定是作者推測。不等同一般平底鍋。模擬顯示兩側蒸氣層差距太小時淨力可為負，「一厚一薄」須達一定差距才推得動。",
+      "source_locator": "S002 Results Fig1B–C、Fig2A、Fig3B、Fig4A–B、Fig5與失效樣品敘述；Discussion。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。與P51-001同為懸浮液滴，但問運動方向而非結局，不合併。 與P22-NA010不同：該退題問不對稱鋸齒的氣流機制且未讀正文；本題答案不依賴鋸齒，鋸齒只作一句背景、不回答棘輪機制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不必把方向刻進紋路；流動自己打破對稱後，對稱的地面也能持續推一邊。",
+        "visual": "原刊Fig1B/C時間疊影：直軌來回、環軌繞61.2秒；平面熱板推一下即停的對照；Fig4A脊頂左右蒸氣頸寬不同、壓力傾斜的示意（標明為模擬）。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave51-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-c4695bf7d62b9f01",
+          "origin": "wave51-physics-20261103",
+          "locator": "S002 Results Fig1B–C、Fig2A、Fig3B、Fig4A–B、Fig5與失效樣品敘述；Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+      ]
+    },
+    {
+      "id": "P51-003",
+      "question": "香檳的氣泡排成一直線往上，為什麼氣泡水裡差不多大的氣泡卻散成一片？",
+      "domain": "流體與氣泡",
+      "mechanism_key": "fluids.bubble_chain.surfactant_surface_vorticity_wake_lift_reversal",
+      "answer_target": "同一點連續冒出的氣泡，後一顆處在前一顆的尾流裡。乾淨、近球形的氣泡尾流帶來側向升力，把後泡推離中線，鏈就散開。表面活性物質讓氣泡表面不易滑動，表面產生更多渦度，尾流旋渦排列改變、升力反向，後泡被留在線上。實驗在同一噴嘴逐步加入界面活性劑，鏈由散亂轉直；把氣泡做大變扁也能轉直，但飲料裡的氣泡太小，靠的是表面活性物質。",
+      "scope": "主要用甘油水模擬液與氮氣泡匹配無因次數，並以數值模擬兩泡；忽略氣泡邊升邊長大。真飲料以拉細玻璃毛細管產泡：香檳與氣泡酒小泡成直鏈、氣泡水不穩、啤酒依泡大小而異；飲料表面活性參數由文獻推估。實讀2022預印本，期刊版未讀。",
+      "source_locator": "S003 pp10–11 Fig1–2；pp12–13 Fig3；pp14–17 Discussion與Fig4；pp18–19 Fig5與真飲料實驗。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。不是I12-NA11/F17-NA005的「上升變慢」，而是鏈的側向穩定。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "直線不代表液體特別平靜；是被分子黏住的氣泡表面改了尾流，把後泡拉回線上。",
+        "visual": "原刊Fig2兩組並排：(a)同液只把氣泡變大、(b)同大小只加界面活性劑，各由散到直；Fig3模擬兩泡軌跡分離與否；原創尾流側推箭頭示意。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave51-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e9bb854e7cf926ef",
+          "origin": "wave51-physics-20261103",
+          "locator": "S003 pp10–11 Fig1–2；pp12–13 Fig3；pp14–17 Discussion與Fig4；pp18–19 Fig5與真飲料實驗。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+      ]
+    },
+    {
+      "id": "P51-004",
+      "question": "兩束蠟燭靠近時火焰一起跳，拉開幾公分卻變成你高我低，牽動它們的是熱輻射嗎？",
+      "domain": "燃燒與振盪",
+      "mechanism_key": "combustion.candle_bundle_flicker_inphase_antiphase_radiation_excluded_flow_coupling",
+      "answer_target": "單根蠟燭在一般空氣中不太閃，綁成束後火焰會以每秒約10次上下閃動。兩束相距較近時同相，約3到4公分間突然轉成反相。舊模型以熱輻射耦合解釋；本研究把一束換成光譜相近、以相近頻率調變亮度的鹵素燈，放在2公分處，蠟燭沒有跟著同步，因而質疑單靠輻射耦合，提出以「一邊火焰溫度變化擾動氣流、改變另一邊氧氣供應」的模型重現同相到反相的轉換；這是候選機制之一。",
+      "scope": "直徑8毫米蠟燭的三根與六根三角束；以高速攝影像素計數與光敏元件量測。氣流/氧氣耦合是模型假設、未量流場；鹵素燈對照只在2公分、三種頻率。同研究另見束越大閃得越慢、單根在氧濃度高於70%時也會閃，列為補充。不作居家用火建議。近處同相、遠處反相的轉換前人已報導，本研究新增的是鹵素燈對照與氧耦合模型；模型含擬合參數並重標時間，文獻另有渦旋動力學解釋，耦合機制未定案。鹵素燈只有輻射、沒有火焰熱羽流，排除的是純輻射耦合，不是排除熱。",
+      "source_locator": "S004 p4 Fig2–3；p5–8頻率與氧濃度；p9 Fig9、Table2；pp10–11式(8)與Fig11。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。不收「火焰為何向上」舊題（LEG-S48）。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "單靠熱輻射的解釋被一盞會閃的燈挑戰；溫度擾動氣流、改變供氧是作者提出的候選機制。",
+        "visual": "原刊Fig3二值化影格：單束、同相、反相；Fig9同步參數隨距離由正跳負；Table2鹵素燈取代一束時同步參數近0的原創重繪。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave51-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-59336e74653261dc",
+          "origin": "wave51-physics-20261103",
+          "locator": "S004 p4 Fig2–3；p5–8頻率與氧濃度；p9 Fig9、Table2；pp10–11式(8)與Fig11。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+      ]
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -401238,6 +403155,23 @@
       "P50-002": "P50-002",
       "P50-003": "P50-003",
       "P50-004": "P50-004",
+      "S51-001": "S51-001",
+      "S51-002": "S51-002",
+      "S51-003": "S51-003",
+      "S51-004": "S51-004",
+      "H51-001": "H51-001",
+      "H51-002": "H51-002",
+      "H51-003": "H51-003",
+      "H51-004": "H51-004",
+      "L51-001": "L51-001",
+      "L51-002": "L51-002",
+      "L51-003": "L51-003",
+      "L51-004": "L51-004",
+      "L51-005": "L51-004",
+      "P51-001": "P51-001",
+      "P51-002": "P51-002",
+      "P51-003": "P51-003",
+      "P51-004": "P51-004",
       "J6001": "J6001",
       "J6002": "J6002",
       "J6003": "J6003",
@@ -402418,6 +404352,12 @@
         "duplicate_id": "S47-001",
         "canonical_id": "G13003",
         "reason": "G13003已回答剪切重排建立可承載的摩擦接觸網絡，反向剪切可依原狀態改變或解除承力。S47-001油槽的壓密／交替方向控制是強研究變體，但其答案仍是有方向性的配置與剪切歷史，不能以流體介質換成油再算新核心；兩研究都不是所有狀態反向必解鎖。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "L51-005",
+        "canonical_id": "L51-004",
+        "reason": "非語意重複，而是證據不足自立：發育同步相關、個體層級關聯不顯著或受發育期混淆、原圖未能目讀；年齡門檻主畫面本就出自L51-S004。降為L51-004年齡章節中約10秒的支持點，不計新核。",
         "kind": "editorial_core_question"
       }
     ],
@@ -428789,6 +430729,691 @@
         "a": "H50-001",
         "b": "R30002",
         "reason": "海報前後排名/選擇分組揭示潛在偏好，與先記實際選擇後偷換交付結果的行為控制不同。"
+      },
+      {
+        "a": "L51-001",
+        "b": "A20002",
+        "reason": "A20002是竹節蟲兩種腳墊對拉力與負重的接觸分工，屬附著力學；本題是同伴依傷口位置選擇截肢或舔舐，並以人工截肢時間點檢驗病菌擴散，只共用「昆蟲腳」的詞面。"
+      },
+      {
+        "a": "L51-001",
+        "b": "B2138",
+        "reason": "B2138講附肢同源與分工的演化；本題不涉附肢起源，答案是股節/脛節傷的感染擴散速度差使截肢只在股節有利。"
+      },
+      {
+        "a": "L51-001",
+        "b": "A12002",
+        "reason": "A12002是群體搬運的機械耦合與碰牆後持續性；本題是對受傷個體的照護決策與存活、菌量對照，同為螞蟻但控制與答案無重疊。"
+      },
+      {
+        "a": "L51-001",
+        "b": "A27002",
+        "reason": "A27002是傷口朝向決定渦蟲再生頭或尾的分子極性；本題不涉再生，問截肢能否趕在血淋巴把病菌帶走之前，答案是傷位與擴散時間。"
+      },
+      {
+        "a": "L51-001",
+        "b": "A23003",
+        "reason": "A23003是若蟲後腿齒列機械同步起跳；本題是傷後感染與同伴截肢，除昆蟲後腿外無共用機制。"
+      },
+      {
+        "a": "L51-002",
+        "b": "U8016",
+        "reason": "U8016是第四型菌毛伸縮造成的細菌表面爬行；本題是噬菌體編碼胜肽累積後經AimR改變裂解/溶原比例，主體與機制都不同。"
+      },
+      {
+        "a": "L51-002",
+        "b": "L070",
+        "reason": "L070只確立「細菌會被噬菌體感染」這個前提；本題回答感染後如何依前代留下的胜肽濃度選擇潛伏，有濃度梯度、oppD缺失與異種胜肽對照，非同題。"
+      },
+      {
+        "a": "L51-002",
+        "b": "U8022",
+        "reason": "U8022是細菌內孢子的抗損傷構造；本題是病毒的生命週期選擇，枯草桿菌只是共同宿主。"
+      },
+      {
+        "a": "L51-002",
+        "b": "V3041",
+        "reason": "V3041是產物結合阻遏蛋白關掉色胺酸操縱組；兩者都有「配體改變DNA結合」，但本題的配體是病毒前代分泌的胜肽、受體在病毒基因體上、結果是溶原比例，答案不能互代。"
+      },
+      {
+        "a": "L51-002",
+        "b": "U8012",
+        "reason": "U8012是菌絲橋與液膜連通限制細菌擴散；與噬菌體胜肽訊號無共同控制。"
+      },
+      {
+        "a": "L51-003",
+        "b": "H3032",
+        "reason": "H3032是動力學/熱力學產物控制；只共用「隨時間比例改變」的抽象形狀，本題是單細胞反應機率的一步切換與群體平均。"
+      },
+      {
+        "a": "L51-003",
+        "b": "L43-001",
+        "reason": "L43-001是螢火蟲個體等待時間分散、群體觸發使間隔集中；兩題都談個體隨機性與群體分布，但L43-001是群體互動使分布變窄，本題是無互動的獨立細胞各自隨機切換、平均後變平滑，方向與機制相反。"
+      },
+      {
+        "a": "L51-003",
+        "b": "B15006",
+        "reason": "B15006是葉緣生長訊號鋪平使鋸齒消失的空間圖樣；與單細胞習慣化無共同變項。"
+      },
+      {
+        "a": "L51-003",
+        "b": "H3076",
+        "reason": "H3076是速率決定步驟使加料不加速；本題非化學動力學，答案是單細胞兩狀態切換時間的分布。"
+      },
+      {
+        "a": "L51-003",
+        "b": "R6017",
+        "reason": "R6017是捕蠅草兩次觸碰間隔使鈣訊號累積到閉合門檻（短期加總）；本題是重複刺激使反應下降（習慣化）且單細胞一步切換，方向相反、控制不同。"
+      },
+      {
+        "a": "L51-004",
+        "b": "A14002",
+        "reason": "A14002是山雀聽到蛇警報後啟動蛇形搜尋模板；本題是卵內胚胎以振動的非振幅特徵區分蛇與雨，感覺通道、主體與對照皆不同。"
+      },
+      {
+        "a": "L51-004",
+        "b": "B2163",
+        "reason": "B2163是直接發育省略蝌蚪期；本題是可提早孵化物種如何判斷何時逃出，不涉發育模式。"
+      },
+      {
+        "a": "L51-004",
+        "b": "X38-002",
+        "reason": "X38-002是雨滴撞蚊子的動量傳遞；本題的雨只是天敵以外的干擾振動來源，答案在胚胎的判斷而非碰撞力學。"
+      },
+      {
+        "a": "L51-004",
+        "b": "E9002",
+        "reason": "E9002是蒲公英冠毛遇濕收攏的材料膨潤；與胚胎振動辨識無共同機制。"
+      },
+      {
+        "a": "L51-005",
+        "b": "B2163",
+        "reason": "B2163是直接發育省去自由幼體期；L51-005問可孵化胚胎何時感覺得到卵被晃，答案是前庭功能發育時間，非發育模式。"
+      },
+      {
+        "a": "L51-005",
+        "b": "B2262",
+        "reason": "B2262是單倍體雄蜂的性別決定；除「卵/胚胎」詞面外無共同控制。"
+      },
+      {
+        "a": "L51-005",
+        "b": "B2185",
+        "reason": "B2185是有袋類胚胎暫停發育；L51-005不是發育暫停，而是感覺器上線時間限制逃生行為。"
+      },
+      {
+        "a": "L51-005",
+        "b": "B2167",
+        "reason": "B2167是卵殼氣體交換；L51-005的缺氧孵化只作「已有孵化能力」的對照，非答案。"
+      },
+      {
+        "a": "L51-001",
+        "b": "U8004",
+        "reason": "U8004是Woronin小體被動堵隔膜孔，屬細胞構造；本題是他者依傷位選截肢或舔舐，並有人工截肢時間點與菌量對照。"
+      },
+      {
+        "a": "L51-001",
+        "b": "R6018",
+        "reason": "R6018是樹木自身在傷區建立界線、不修復舊木；本題是群體成員的行為處置，關鍵變項是病菌沿血淋巴擴散的時間。"
+      },
+      {
+        "a": "L51-002",
+        "b": "V3017",
+        "reason": "V3017的訊號由細菌產生、改變細菌自身行為；本題的訊號基因與受體都在噬菌體上，改變的是病毒的裂解/溶原選擇，且有異種胜肽不通用對照。"
+      },
+      {
+        "a": "L51-003",
+        "b": "B2012",
+        "reason": "B2012答「習慣化存在且具刺激特異性」；本題答群體平滑曲線底下個體是隨機時間的一步切換，必須有單細胞追蹤與步階檢定才成立。"
+      },
+      {
+        "a": "L51-003",
+        "b": "U8009",
+        "reason": "U8009靠胞外黏液外部記號避開走過的路；本題無外部痕跡，是細胞內反應狀態切換。"
+      },
+      {
+        "a": "L51-003",
+        "b": "A22002",
+        "reason": "A22002是管徑階層的形態重分配；本題是對重複機械刺激的收縮機率改變。"
+      },
+      {
+        "a": "L51-004",
+        "b": "B2012",
+        "reason": "B2012是重複無害刺激後反應下降；本題在等振幅回放下首次刺激就對蛇與雨反應不同，答案是非振幅特徵整合，不靠重複。"
+      },
+      {
+        "a": "L51-004",
+        "b": "C2005",
+        "reason": "C2005是單一門檻的命中/誤報權衡；本題說明振幅單一維度無法分辨，胚胎要整合時間型態、頻率與包絡。"
+      },
+      {
+        "a": "L51-004",
+        "b": "Z7013",
+        "reason": "Z7013是發聲方干擾掠食者回聲定位；本題是獵物胚胎評估振動來源，方向與機制皆不同。"
+      },
+      {
+        "a": "L51-005",
+        "b": "A5021",
+        "reason": "A5021講成體VOR如何穩定視線；L51-005只把VOR當內耳功能指標。但L51-005本身因證據不足降為L51-004支持點，此配對不影響。"
+      },
+      {
+        "a": "P51-001",
+        "b": "X42-002",
+        "reason": "舊題是噴墨液絲尾端靠高分子彈性回縮與主滴會合；新題是懸浮液滴蒸發末期雜質殼導致觸地爆裂或縮到起飛半徑。只共享『液滴』字面，控制變因（高分子濃度vs微粒濃度）與答案完全不同。"
+      },
+      {
+        "a": "P51-001",
+        "b": "S49-002",
+        "reason": "舊題是過冷滴結冰放熱使周圍凝出小水珠、再被冰滴回收；新題無相變結冰、液滴不接觸固體，答案是雜質殼與蒸氣層厚度門檻。"
+      },
+      {
+        "a": "P51-001",
+        "b": "X40-002",
+        "reason": "舊題是水柱內小氣泡降低聲速使敲擊音變低；新題的『啪』聲只是觸地爆沸的結果，不解釋音高。答案無重疊。"
+      },
+      {
+        "a": "P51-001",
+        "b": "P210",
+        "reason": "舊題是密閉平衡下蒸發與凝結速率相等；新題是開放熱板上萊頓弗羅斯特蒸發的終局分歧，答案不涉平衡。"
+      },
+      {
+        "a": "P51-001",
+        "b": "X40-003",
+        "reason": "舊題是波紋管凹槽積液改變哨音；與液滴懸浮爆裂無共同機制，向量相似只來自液體/聲音字面。"
+      },
+      {
+        "a": "P51-002",
+        "b": "X38-005",
+        "reason": "舊題是葉尖凹凸轉折使接觸線縮小、水滴較快脫離；新題水滴不接觸固體，靠脊頂蒸氣頸不對稱的壓力水平分量持續推進。"
+      },
+      {
+        "a": "P51-002",
+        "b": "X42-009",
+        "reason": "舊題是蒸發液滴內Marangoni循環方向取決於導熱與接觸角；新題是整滴在對稱脊上定向平移，驅動力來自蒸氣層壓力，不是液面張力梯度。"
+      },
+      {
+        "a": "P51-002",
+        "b": "S49-002",
+        "reason": "舊題是結冰放熱造成周圍凝結暈環；新題是懸浮液滴自推進，無結冰與凝結。"
+      },
+      {
+        "a": "P51-002",
+        "b": "P45-008",
+        "reason": "舊題是旋轉部分裝水容器落地時水柱向上噴使反彈變低（動量交換）；新題是熱板上液滴持續水平推進，無關落地反彈。"
+      },
+      {
+        "a": "P51-002",
+        "b": "P45-005",
+        "reason": "舊題是先行球空腔回衝使後球撞擊峰值變大；新題無入水空腔，答案是蒸氣頸不對稱推力。"
+      },
+      {
+        "a": "P51-003",
+        "b": "I12011",
+        "reason": "舊題是二維泡沫中相鄰氣泡透過膜交換氣體使大泡長小泡縮；新題是液體中連續上升氣泡的尾流升力方向，答案與控制（界面活性劑/泡大小改尾流）皆不同。cosine 0.83只因『泡』字密集。"
+      },
+      {
+        "a": "P51-003",
+        "b": "P24005",
+        "reason": "舊題是花生表面附泡使整體跨越浮沉門檻循環；新題無固體載體，問同一成核點冒出的一串氣泡為何排直或散開，答案是表面渦度使升力反向。"
+      },
+      {
+        "a": "P51-003",
+        "b": "L49-004",
+        "reason": "舊題是敲擊使啤酒中泡團碎裂、界面增加而加速長大；新題是單一成核點氣泡鏈的側向穩定，啤酒只作限制，不談泡團成長。"
+      },
+      {
+        "a": "P51-003",
+        "b": "X40-002",
+        "reason": "舊題是氣泡降低水柱聲速；新題是氣泡間尾流交互與排列，答案無重疊。"
+      },
+      {
+        "a": "P51-003",
+        "b": "LEG-S70",
+        "reason": "舊題是表面張力使單一泡泡趨圓、三膜120度；新題是界面活性物使上升氣泡表面不滑動而改尾流升力方向，不談泡形最小面積。"
+      },
+      {
+        "a": "P51-004",
+        "b": "R38007",
+        "reason": "舊題是考古火把與油脂燈照明用途差異；新題是兩束燭火閃動的同相/反相耦合與輻射排除對照，只共享『火』字。"
+      },
+      {
+        "a": "P51-004",
+        "b": "S41-008",
+        "reason": "舊題是放電熔融模擬火山灰成珠的溫度區；與火焰振盪耦合無共同機制。"
+      },
+      {
+        "a": "P51-004",
+        "b": "LEG-S48",
+        "reason": "舊題答火焰向上是浮力與輸送；新題答成束火焰週期閃動及兩束如何互相牽動，並以鹵素燈排除輻射，控制與答案不同。浮力可作背景一句，不重述。"
+      },
+      {
+        "a": "P51-004",
+        "b": "E2066",
+        "reason": "舊題是冷燈絲電阻低造成開燈湧流；新題鹵素燈只是對照光源，不解釋燈絲電流。"
+      },
+      {
+        "a": "P51-004",
+        "b": "E2186",
+        "reason": "舊題是受激放射使雷射光同調；新題的『配合』是兩個火焰振盪器經氣流/氧耦合同步，物理機制完全不同。"
+      },
+      {
+        "a": "P51-001",
+        "b": "P24002",
+        "reason": "舊題能量來自凍結外殼向內長壓縮液核；新題無結冰，殼由蒸發濃縮雜質形成，觸發是蒸氣層變薄觸地。"
+      },
+      {
+        "a": "P51-001",
+        "b": "H3092",
+        "reason": "咖啡環需釘住的接觸線與外向補流；新題無接觸線，雜質均勻積在整個液面。"
+      },
+      {
+        "a": "P51-001",
+        "b": "P053",
+        "reason": "靜態潤濕競爭vs懸浮蒸發終局，答案無交集。"
+      },
+      {
+        "a": "P51-001",
+        "b": "I12013",
+        "reason": "舊題毛細儲能回推使撞擊滴提早離面；新題小滴起飛是半徑小到蒸氣流托力壓過重量（h/R∝R^-3/2），不是撞擊回彈。"
+      },
+      {
+        "a": "P51-002",
+        "b": "A19005",
+        "reason": "舊題靠接觸線遲滯與楔形開合的時間差；新題無接觸線、幾何對稱，方向由流動自發打破。"
+      },
+      {
+        "a": "P51-002",
+        "b": "D2126",
+        "reason": "機械棘輪的答案就是齒形不對稱；新題答案是不需幾何不對稱。"
+      },
+      {
+        "a": "P51-002",
+        "b": "P45-003",
+        "reason": "舊題半邊塗層預設了不對稱；新題表面完全對稱。"
+      },
+      {
+        "a": "P51-002",
+        "b": "F14005",
+        "reason": "軟壁變形產生法向潤滑升力減阻；新題是蒸氣壓力傾斜產生水平推力。"
+      },
+      {
+        "a": "P51-003",
+        "b": "I12005",
+        "reason": "舊題是膜被拉薄時張力梯度回流修補；新題是界面活性使氣泡表面不滑動而改變尾流升力方向。"
+      },
+      {
+        "a": "P51-003",
+        "b": "F17004",
+        "reason": "舊題振動中氣泡體積相位造成下沉；新題靜止液體中氣泡鏈側向穩定。"
+      },
+      {
+        "a": "P51-003",
+        "b": "P230",
+        "reason": "舊題答氣體為何逸出；新題答逸出的氣泡為何排直，不重答來源。"
+      },
+      {
+        "a": "P51-004",
+        "b": "P098",
+        "reason": "舊題答常溫也輻射；新題用實驗說輻射不足以耦合，且不重述輻射存在。"
+      },
+      {
+        "a": "P51-004",
+        "b": "E2099",
+        "reason": "單一電路鬆弛振盪vs兩火焰耦合的相位轉換。"
+      },
+      {
+        "a": "P51-004",
+        "b": "I8015",
+        "reason": "重試同步是相同起點造成的相關，沒有實體耦合；新題是兩個自激振盪器的物理耦合。"
+      },
+      {
+        "a": "P51-001",
+        "b": "P51-002",
+        "reason": "同為萊頓弗羅斯特液滴但不同研究：P51-001的控制是雜質/微粒濃度、答終局（爆或飛）；P51-002的控制是脊幾何與平板對照、答推力方向來源。答案互不涵蓋，是兩個核心。"
+      },
+      {
+        "a": "P51-003",
+        "b": "E11009",
+        "reason": "同是尾流使後者偏離，但沙丘是床形輸砂、氣泡鏈是界面活性改表面渦度使升力反向，控制與答案不同。"
+      },
+      {
+        "a": "S51-001",
+        "b": "R38012",
+        "reason": "R38012以黃鐵礦與受熱燧石推論有人帶來打火材料；S51-001以泥磚熱殘磁方向/強度比對兩破壞層是否同時，兩者只共用「火燒痕跡」字面。"
+      },
+      {
+        "a": "S51-001",
+        "b": "B2079",
+        "reason": "B2079為火燒後森林次生演替的起始條件，與考古磁同步無共同機制。"
+      },
+      {
+        "a": "S51-001",
+        "b": "S50-004",
+        "reason": "S50-004以取片疤與熱裂交切排加熱與加工先後（單件內順序）；S51-001以地磁記錄比較不同遺址燒毀層的時間，量測物理量不同。"
+      },
+      {
+        "a": "S51-001",
+        "b": "R31007",
+        "reason": "R31007為年輪火疤漏記連續火燒；S51-001為熱殘磁同步，答案與控制皆不同。"
+      },
+      {
+        "a": "S51-001",
+        "b": "R38007",
+        "reason": "R38007比較火把與油燈照明；與地磁記錄無關。"
+      },
+      {
+        "a": "S51-002",
+        "b": "N252",
+        "reason": "N252答全食/環食混合由地球曲面造成；S51-002把窄全食帶當量尺反推古代ΔT與日長變化，N252最多是前提，不含答案。"
+      },
+      {
+        "a": "S51-002",
+        "b": "X13004",
+        "reason": "X13004系外行星凌日時長約束偏心率；只共用「遮擋幾何推參數」的抽象相似，對象與答案不同。"
+      },
+      {
+        "a": "S51-002",
+        "b": "N113",
+        "reason": "N113以GPS重測量板塊運動；S51-002以古日食紀錄量地球自轉，量測對象不同。"
+      },
+      {
+        "a": "S51-002",
+        "b": "N251",
+        "reason": "N251只答全食帶為何窄（本影錐）；S51-002以窄帶為前提推ΔT上下限並得長期日長變化，舊核是新核的入口而非答案。"
+      },
+      {
+        "a": "S51-002",
+        "b": "N034",
+        "reason": "N034是太陽差異自轉；與地球自轉長期變化無共用答案。"
+      },
+      {
+        "a": "S51-003",
+        "b": "X39-005",
+        "reason": "X39-005為乾麵條端撞屈曲波長；只共用「波」字，與海浪碎浪無關。"
+      },
+      {
+        "a": "S51-003",
+        "b": "N189",
+        "reason": "N189為淺水折射使浪沿岸排列；S51-003為深水兩組浪交會改變碎浪型態與波峰上限。"
+      },
+      {
+        "a": "S51-003",
+        "b": "S44-002",
+        "reason": "S44-002為魚鰭擦泥的化石波狀痕；無共同機制。"
+      },
+      {
+        "a": "S51-003",
+        "b": "S45-007",
+        "reason": "S45-007為浪群暫歇時岩溝回流噴出；S51-003為交會浪上噴水柱，噴的成因與尺度不同。"
+      },
+      {
+        "a": "S51-003",
+        "b": "S45-003",
+        "reason": "S45-003為海灘尖角的自我組織與抑制；與單一極端浪形成無關。"
+      },
+      {
+        "a": "S51-004",
+        "b": "N255",
+        "reason": "N255只答「排放粒子成為凝結核所以出現雲線」（存在機制）；S51-004答「雲線為何大減」：以2015管制區與2020全球限硫兩次政策變動及AIS航運量（約-1.4%）、2021持續低點排除「船變少」。答案不同，舊核可作一句前提，不需併。"
+      },
+      {
+        "a": "S51-004",
+        "b": "LEG-A10",
+        "reason": "LEG-A10為海底光纜與衛星傳輸；只共用「海上」與「衛星」字面。"
+      },
+      {
+        "a": "S51-004",
+        "b": "S42-007",
+        "reason": "S42-007為火星直升機揚塵；無共用機制。"
+      },
+      {
+        "a": "S51-004",
+        "b": "O3065",
+        "reason": "O3065為Argo浮標壓縮性；無關。"
+      },
+      {
+        "a": "S51-004",
+        "b": "O3069",
+        "reason": "O3069為浮標通訊時間與擱淺；無關。"
+      },
+      {
+        "a": "S51-001",
+        "b": "N017",
+        "reason": "N017答火星無全球磁場仍有殘留磁化；S51-001用同一物理（熱殘磁）作時間比對，答案是「兩破壞層不同時」，不重複。"
+      },
+      {
+        "a": "S51-001",
+        "b": "N112",
+        "reason": "N112以磁極翻轉條帶算擴張速率（百萬年尺度）；S51-001為數十至數百年的地磁長期變化同步考古層，不涉翻轉。"
+      },
+      {
+        "a": "S51-001",
+        "b": "R31001",
+        "reason": "R31001以宇宙射線碳十四尖峰定單一砍伐年份；S51-001以熱殘磁比對多層是否同時，且論點在放射性碳平台期補位，控制不同。"
+      },
+      {
+        "a": "S51-001",
+        "b": "N132",
+        "reason": "N132為疊置與化石序列相對定年；S51-001以物理磁記錄否定同時性。"
+      },
+      {
+        "a": "S51-002",
+        "b": "LEG-S21",
+        "reason": "LEG-S21核心答案是月球潮汐鎖定與天平動；但其舊查核包week12/S21.md「原因4」已在片中講過「兩千多年古代日月食紀錄算出一天每百年變長約1.8毫秒、光算潮汐2.3毫秒」。因此1.78對2.3這個結論數字已播過；S51-002的新答案是「一條未計時的全食地點紀錄如何夾住ΔT、大偏食如何排除中段」的方法本身，S21未講。判distinct，但需把重疊寫進notes並在片案縮短結論拍。"
+      },
+      {
+        "a": "S51-002",
+        "b": "R8003",
+        "reason": "R8003為LEG-S21的來源更新列（canonical LEG-S21），答案限潮汐扭矩與天平動；同上判distinct。"
+      },
+      {
+        "a": "S51-003",
+        "b": "O3055",
+        "reason": "O3055以雷達測高回波前緣估顯著波高統計；S51-003為單一極端浪交會角與碎浪型態的水池實驗。"
+      },
+      {
+        "a": "S51-003",
+        "b": "N188",
+        "reason": "N188為風速、時間、風域決定風浪成長；S51-003不談風浪成長。"
+      },
+      {
+        "a": "S51-003",
+        "b": "S45-001",
+        "reason": "S45-001為風暴搬巨石反駁海嘯判定；S51-003為浪高本身如何超過同向碎浪上限。"
+      },
+      {
+        "a": "S51-004",
+        "b": "K6012",
+        "reason": "K6012為固定雲水下滴數增加使雲更亮（Twomey）；S51-004不量亮度，量雲線頻率對燃油政策的反應。"
+      },
+      {
+        "a": "S51-004",
+        "b": "N212",
+        "reason": "N212氣象海嘯，與雲線無關；作者僅記錄排除。"
+      },
+      {
+        "a": "H51-001",
+        "b": "D2058",
+        "reason": "舊題是製乳酪時把已凝的凝乳切小、加熱促乳清排出（離水收縮）；新題是成品羊奶起司與水再加熱時蛋白聚團，操弄的是糊化澱粉濃度。兩者答案與控制變數都不同，只共享『乳酪＋加熱』字面。"
+      },
+      {
+        "a": "H51-001",
+        "b": "LEG-S54",
+        "reason": "舊題是麵包澱粉在冷藏下回凝結晶變硬；新題澱粉作為抑制起司蛋白聚團的第三成分，量的是團塊大小與起始溫度，不涉回凝。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F4004",
+        "reason": "F4004（canonical F4003）談預糊化澱粉冷水增稠；新題雖用先糊化的澱粉，但答案不是增稠，而是改變蛋白相分離邊界。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F4002",
+        "reason": "舊題高糖抑制澱粉糊化使內餡不稠；新題澱粉已糊化，問題是它對起司蛋白聚團的影響，控制與結果不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "D2057",
+        "reason": "舊題是乳清蛋白預熱變性後與酪蛋白共沉澱以提高產率；新題是成品起司醬避免聚團，方向相反（要防團而非促團）。"
+      },
+      {
+        "a": "H51-002",
+        "b": "LEG-S30",
+        "reason": "最高相似對，已讀兩題完整問答範圍。LEG-S30：恆溫65–70°C長泡，靠蛋白與蛋黃凝固溫度差，結果是蛋黃成形、蛋白仍軟。H51-002：沸水與30°C水每2分鐘交替，靠熱擴散跟不上邊界變化使中心只見平均溫度，結果是蛋白完全凝固、蛋黃仍如低溫蛋。答案的機制（時間平均）與結果都不同；凝固溫度差只是共同前提，主題第一章不得重講溫泉蛋原理。"
+      },
+      {
+        "a": "H51-002",
+        "b": "S44-006",
+        "reason": "舊題是恐龍巢模型中上方熱源能否溫暖下層蛋，問的是巢體層間傳熱；新題是廚房週期邊界的中心溫度平均，對象與答案皆不同。"
+      },
+      {
+        "a": "H51-002",
+        "b": "H51-001",
+        "reason": "同批兩題皆為廚房溫控，但一是起司蛋白相分離被澱粉移位，一是蛋內傳熱的時間平均；無共同答案。"
+      },
+      {
+        "a": "H51-002",
+        "b": "LEG-S73",
+        "reason": "舊題蛋黃綠圈為硫化亞鐵顏色化學；新題為溫度分區，不涉顏色反應。"
+      },
+      {
+        "a": "H51-002",
+        "b": "L51-005",
+        "reason": "舊題樹蛙胚胎以前庭功能感知振動決定孵化；與煮蛋傳熱毫無共同機制，僅『蛋』字相似。"
+      },
+      {
+        "a": "H51-003",
+        "b": "X37-001",
+        "reason": "舊題量指紋溝水合如何趨同與摩擦的物理；新題問人如何判讀『濕』，操弄水溫與材料熱傳。舊題不含知覺判斷，新題不含角質水合時序。"
+      },
+      {
+        "a": "H51-003",
+        "b": "N240",
+        "reason": "舊題相對濕度與絕對水氣量的氣象定義；新題為皮膚觸感知覺，共享『濕』字而已。"
+      },
+      {
+        "a": "H51-003",
+        "b": "LEG-S06",
+        "reason": "舊題泡水手指起皺由交感神經血管收縮造成；新題是濕的知覺推論，兩者答案無重疊。"
+      },
+      {
+        "a": "H51-003",
+        "b": "P51-002",
+        "reason": "舊題熱板對稱細溝上萊頓弗羅斯特液滴自推進；新題為人體觸覺，僅共享『水與熱』。"
+      },
+      {
+        "a": "H51-003",
+        "b": "X36-005",
+        "reason": "舊題咖啡沖煮水溫與萃取濃度匹配後的盲評；新題皮膚濕感閾值，感官對象與控制都不同。"
+      },
+      {
+        "a": "H51-004",
+        "b": "P027",
+        "reason": "舊題轉椅收手的角動量守恆、轉速變快；新題步行中手臂反向擺抵消腿的垂直角動量並降低地面力矩與耗能。雖共用角動量概念，答案落點（代謝成本與四條件對照）不同，舊題不能回答新題。"
+      },
+      {
+        "a": "H51-004",
+        "b": "A5004",
+        "reason": "舊題肌肉運動單位依大小原則招募；新題全身力學與代謝，無共同機制。"
+      },
+      {
+        "a": "H51-004",
+        "b": "P026",
+        "reason": "舊題靜態翹翹板力矩平衡；新題動態步行垂直力矩與代謝，不同。"
+      },
+      {
+        "a": "H51-004",
+        "b": "P29003",
+        "reason": "舊題蜥腳類足跡與地基承載有限元素模型；新題人類步態，僅共享『腳與地面』。"
+      },
+      {
+        "a": "H51-004",
+        "b": "A5009",
+        "reason": "舊題伸展反射的交互抑制；新題擺臂近乎被動、與神經抑制迴路無關。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F8004",
+        "reason": "乳化鹽結鈣防出油與糊化澱粉移動蛋白聚團邊界，控制物不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F8003",
+        "reason": "脂肪相少水液橋聚團與水相蛋白受熱聚團不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F4003",
+        "reason": "澱粉增稠與澱粉抑制蛋白聚團的量測與答案不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "D2056",
+        "reason": "牛奶凝固路徑與成品起司再加熱聚團不同。"
+      },
+      {
+        "a": "H51-003",
+        "b": "LEG-S38",
+        "reason": "化學觸發冷受器與真實水溫、材料熱傳移動濕感判斷不同。"
+      },
+      {
+        "a": "H51-003",
+        "b": "A5028",
+        "reason": "機械受器感受野與無專屬受器的多訊號推論不同。"
+      },
+      {
+        "a": "H51-003",
+        "b": "B4031",
+        "reason": "冷氣除濕不足是空調控制問題，H51-003是皮膚知覺，答案不重疊。"
+      },
+      {
+        "a": "H51-004",
+        "b": "P006",
+        "reason": "前後向靜摩擦與繞垂直軸的地面力矩、代謝成本不同。"
+      },
+      {
+        "a": "H51-004",
+        "b": "X35-002",
+        "reason": "人群預判成行與單人手腿相位不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "D2053",
+        "reason": "D2053為巴氏殺菌板式熱交換讓熱奶預熱冷奶的能源回收；H51-001是起司與水加熱時蛋白聚團、以糊化澱粉提高結團溫度並縮小團塊，機制與答案不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "D2050",
+        "reason": "D2050比較奶粉製程先濃縮再噴乾的水負荷分工；H51-001問起司醬加熱聚團與澱粉濃度的相界，非乾燥製程。"
+      },
+      {
+        "a": "H51-002",
+        "b": "D2270",
+        "reason": "D2270是洗去澱粉後麵筋網絡更連續；H51-002以沸水/30°C交替讓蛋白與蛋黃處在不同溫區、蛋黃趨近平均溫度，熱傳時間尺度與食材均不同。"
+      },
+      {
+        "a": "H51-004",
+        "b": "A5011",
+        "reason": "A5011是交叉伸展反射讓對側腿接手支撐；H51-004以綁手、夾手與同手同腳對照比較步行耗能與地面扭矩，答案是手臂反擺抵消扭轉。"
+      },
+      {
+        "a": "H51-004",
+        "b": "K18001",
+        "reason": "K18001是步行衝擊與自由端慣性讓鞋帶結突然鬆開；H51-004研究擺臂對耗能與身體扭轉，僅同屬走路情境。"
+      },
+      {
+        "a": "L51-001",
+        "b": "B2323",
+        "reason": "B2323是切葉蟻搭便車小工蟻防寄生蠅；L51-001是弓背蟻依傷口在股節或脛節決定截肢或舔舐，及截肢時機對存活的影響。"
+      },
+      {
+        "a": "P51-001",
+        "b": "X42-009",
+        "reason": "X42-009為坐在底板上的蒸發液滴，導熱與接觸角決定內部馬蘭哥尼循環方向；P51-001是萊頓弗羅斯特懸浮液滴，雜質成殼使蒸氣層變薄而觸板爆炸或縮小後被托起飛離。"
+      },
+      {
+        "a": "P51-001",
+        "b": "I12009",
+        "reason": "I12009為液滴併入液面後頸縮留下子滴的部分合併；P51-001是熱板上懸浮液滴最終爆炸或起飛的分歧，控制量為雜質成殼與尺寸。"
       }
     ],
     "excluded": [
@@ -437089,10 +439714,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-03-pool-3542",
-    "target_count": 3542,
+    "revision": "2026-11-03-pool-3558",
+    "target_count": 3558,
     "reviewed_on": "2026-11-03",
-    "reason": "從3528續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3542續接；新題經非作者來源與條件覆核，證據不足者併入同研究核心，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -440635,7 +443260,23 @@
       "S50-003",
       "S50-004",
       "S50-005",
-      "H50-001"
+      "H50-001",
+      "S51-001",
+      "S51-002",
+      "S51-003",
+      "S51-004",
+      "H51-001",
+      "H51-002",
+      "H51-003",
+      "H51-004",
+      "L51-001",
+      "L51-002",
+      "L51-003",
+      "L51-004",
+      "P51-001",
+      "P51-002",
+      "P51-003",
+      "P51-004"
     ],
     "overflow": [
       {
@@ -465929,6 +468570,735 @@
       "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
       "origin": "wave50-physics-20261103",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "S51-NA001",
+      "question": "封城時地震儀變安靜，能看出人類活動嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Science原文403未讀到正文；且偏人類活動，留給human lane。",
+      "reentry_condition": "需取得原文正文與台站對照；不以摘要立核。",
+      "reading_status": "未讀正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA002",
+      "question": "手機基地台的微波訊號能畫雨量圖嗎？",
+      "existing_ids": [
+        "O3024",
+        "O3026",
+        "O3034"
+      ],
+      "source_ids": [],
+      "reason": "PMC頁為reCAPTCHA、Europe PMC全文500，未讀正文。微波鏈路衰減估雨與既有雷達核（O3024／O3026／O3034）機制不同，讀到正文後可重評。",
+      "reentry_condition": "需讀到原文方法與雨量站對照。",
+      "reading_status": "未讀正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA003",
+      "question": "維京人在北美砍樹的年份怎麼定？",
+      "existing_ids": [
+        "R31001"
+      ],
+      "source_ids": [],
+      "reason": "同一宇宙射線標記年輪定年已收。",
+      "reentry_condition": "需不同定年控制。",
+      "reading_status": "舊核全問答比較。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA004",
+      "question": "火山氣壓波會推出海嘯嗎？",
+      "existing_ids": [
+        "N212",
+        "S41-007"
+      ],
+      "source_ids": [],
+      "reason": "S41-NA001已退同題。",
+      "reentry_condition": "需新的已讀控制。",
+      "reading_status": "舊核全問答比較。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA005",
+      "question": "船跡變少，就能算出地球多暖了多少？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S004"
+      ],
+      "reason": "強迫值建立在等比例縮放與忽略雲量等假設上，作者自述範圍很寬。",
+      "reentry_condition": "需有直接觀測的輻射收支對照。",
+      "reading_status": "已讀指定正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA006",
+      "question": "地球自轉每1500年快慢擺一次？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S002"
+      ],
+      "reason": "作者自稱擺盪依賴少數觀測，較不可靠。",
+      "reentry_condition": "需另有獨立資料支持週期。",
+      "reading_status": "已讀指定正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA007",
+      "question": "地球自轉變慢不只靠潮汐，多出的部分是冰期回彈造成的嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S002"
+      ],
+      "reason": "本篇只以推論提出冰後回彈與核幔耦合，未分開量；併入S51-002限制。",
+      "reentry_condition": "需讀到能分離兩成因的研究。",
+      "reading_status": "已讀指定正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA008",
+      "question": "磁場強度一度超過今天兩倍，地核發生了什麼？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S001"
+      ],
+      "reason": "本篇只記錄地區異常與尖峰，未解釋地核機制。",
+      "reentry_condition": "需地核模型原研究。",
+      "reading_status": "已讀指定正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA009",
+      "question": "燒毀層磁性能證明聖經戰役記載都正確嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S001"
+      ],
+      "reason": "磁性比對只同步燒毀層，年代錨點本身依史料；不做史實真偽判決。",
+      "reentry_condition": "不重入。",
+      "reading_status": "已讀指定正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA010",
+      "question": "怪浪噴起的水柱會不會把船甲板打爛？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S003"
+      ],
+      "reason": "10–100倍重力加速度引自他文，噴流縮尺未定。",
+      "reentry_condition": "需讀原量測與實尺度載重研究。",
+      "reading_status": "已讀指定正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA011",
+      "question": "每一道怪浪都是兩股海浪交叉造成的嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S003"
+      ],
+      "reason": "作者明言Draupner方向分布無法完全確定，回推模式意見不一，更不能推及所有怪浪。",
+      "reentry_condition": "不重入。",
+      "reading_status": "已讀指定正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA012",
+      "question": "沒有船的南大洋，為什麼也有一條條船跡雲？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S004"
+      ],
+      "reason": "火山二氧化硫雲線只是同篇偵測驗證旁例，僅一段文字，併入S51-004畫面。",
+      "reentry_condition": "需讀到火山雲線專門研究。",
+      "reading_status": "已讀指定正文。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA013",
+      "question": "放射性碳在某些年代為什麼定不準？",
+      "existing_ids": [],
+      "source_ids": [
+        "S51-S001"
+      ],
+      "reason": "本篇只一句提到平台期；需讀校正曲線原研究，且與R29002老碳效應需對比。",
+      "reentry_condition": "讀IntCal相關原文後再評。",
+      "reading_status": "僅本篇引用一句。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "S51-NA014",
+      "question": "日全食為什麼只有一條窄帶看得到？",
+      "existing_ids": [
+        "N251",
+        "N252"
+      ],
+      "source_ids": [],
+      "reason": "本影窄帶已有舊核，S51-002只借用為前提。",
+      "reentry_condition": "不重入。",
+      "reading_status": "舊核全問答比較。有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者未採正文。",
+      "origin": "wave51-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-earth.json"
+    },
+    {
+      "id": "H51-NA001",
+      "question": "加檸檬酸鈉讓起司醬不結塊，另算一題？",
+      "existing_ids": [
+        "F8004"
+      ],
+      "source_ids": [
+        "H51-S001"
+      ],
+      "reason": "鈣螯合讓酪蛋白分散已收於加工乳酪題；本文只作澱粉對照，轉變較陡但同機制。",
+      "reentry_condition": "需有不同於鈣螯合的新控制。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA002",
+      "question": "起司比例決定醬汁的臨界溫度，可再開一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S001"
+      ],
+      "reason": "同一相圖的另一軸，最小模型為定性擬合，單拍會只剩公式。",
+      "reentry_condition": "需獨立實驗驗證臨界行為或分子量測。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA003",
+      "question": "黑胡椒粒會不會是起司結團的核心？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S001"
+      ],
+      "reason": "作者只列為未來方向，未測。",
+      "reentry_condition": "需有加減胡椒的對照資料。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA004",
+      "question": "週期煮蛋營養比較好？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S002"
+      ],
+      "reason": "補充資料示代謝體每組僅2–5顆蛋，PCA與質譜屬探索性比較，健康推論超過證據。",
+      "reentry_condition": "需預先設定指標、足夠樣本與重複。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA005",
+      "question": "溫泉蛋為什麼蛋黃凝固、蛋白還軟？",
+      "existing_ids": [
+        "LEG-S30"
+      ],
+      "source_ids": [],
+      "reason": "恆溫凝固點差已收；週期法只收其時間平均新控制。",
+      "reentry_condition": "不重收。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA006",
+      "question": "又冷又乾的東西貼皮膚，也會被說成濕的？",
+      "existing_ids": [
+        "X37-NA016"
+      ],
+      "source_ids": [],
+      "reason": "原始研究（J Neurophysiol 2014, 10.1152/jn.00120.2014）出版社PDF 403，典藏庫僅提交稿登錄頁，未讀全文。",
+      "reentry_condition": "取得全文並核對神經阻斷與冷乾刺激的資料。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA007",
+      "question": "摸起來越滑的布越覺得濕？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S004"
+      ],
+      "reason": "該研究摩擦與濕感反而正相關、只解釋約一成；作為H51-003的對照，不另開。",
+      "reentry_condition": "需操弄摩擦而固定熱傳的實驗。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA008",
+      "question": "男生和女生對濕的敏感度不同？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S004"
+      ],
+      "reason": "本研究無顯著差，題目薄且易流於刻板印象。",
+      "reentry_condition": "需有可見機制差異的資料。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA009",
+      "question": "擺手是為了讓身體少上下晃？",
+      "existing_ids": [],
+      "source_ids": [
+        "H51-S005"
+      ],
+      "reason": "本研究重心上下起伏各條件無顯著差，前提不成立；收為H51-004內的反證。",
+      "reentry_condition": "不重收。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA010",
+      "question": "端著咖啡走路為什麼容易灑？",
+      "existing_ids": [
+        "D2212"
+      ],
+      "source_ids": [],
+      "reason": "Unpaywall查Phys Rev E 2012原文無開放版本，arXiv查無；未讀全文；且偏流體晃動，與D2212罐車晃動相鄰。",
+      "reentry_condition": "取得全文並證明不同於液體晃動舊核。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA011",
+      "question": "扳手指為什麼會喀一聲？",
+      "existing_ids": [
+        "LEG-S67"
+      ],
+      "source_ids": [],
+      "reason": "舊題已收關節腔氣泡。",
+      "reentry_condition": "要有改變答案的新影像對照。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA012",
+      "question": "泡水手指變皺是為了抓得更穩？",
+      "existing_ids": [
+        "LEG-S06"
+      ],
+      "source_ids": [],
+      "reason": "神經調控與抓握假說爭議已收。",
+      "reentry_condition": "需新的重複實驗改變結論。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA013",
+      "question": "爆米花為什麼會跳？",
+      "existing_ids": [
+        "LEG-S79",
+        "F15-NA01"
+      ],
+      "source_ids": [],
+      "reason": "已收，且多次退題。",
+      "reentry_condition": "不重收。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "H51-NA014",
+      "question": "炒飯甩鍋為什麼米粒不飛回原處？",
+      "existing_ids": [
+        "F15004"
+      ],
+      "source_ids": [],
+      "reason": "甩鍋運動學已收。",
+      "reentry_condition": "不重收。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave51-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-human.json"
+    },
+    {
+      "id": "L51-NA001",
+      "question": "細菌沒有抗藥基因，為什麼仍有少數熬過抗生素？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "預定用Balaban 2004 Science單細胞微流道研究，Unpaywall無開放版本，未取得正文；不以摘要或教科書概述立題。",
+      "reentry_condition": "取得原文或等價開放全文，並能畫出同基因族群中休眠細胞先存在的直接對照。",
+      "reading_status": "NOT_RETRIEVED_ABSTRACT_ONLY",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA002",
+      "question": "單細胞喇叭蟲被刺激時，會照固定順序換逃避方式嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Dexter等2019 Current Biology行為層級研究：Cell.com與ScienceDirect指定UA皆403，Cambridge典藏多次429；只見摘要，不收。",
+      "reentry_condition": "讀到正文與影片判讀方法，且與L51-003的收縮習慣化屬不同控制時再提。",
+      "reading_status": "RETRIEVAL_BLOCKED",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA003",
+      "question": "螞蟻只要看到同伴受傷就會預防性截肢嗎？",
+      "existing_ids": [
+        "L51-001"
+      ],
+      "source_ids": [],
+      "reason": "2025年同團隊預印本（10.1101/2025.06.29.662171）bioRxiv 429未讀；就算成立也屬L51-001的延伸條件。",
+      "reentry_condition": "讀到正文且有與L51-001不同的傷型或時間控制，否則併入L51-001。",
+      "reading_status": "RETRIEVAL_BLOCKED",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA004",
+      "question": "其他螞蟻怎麼用胸側腺分泌物替傷口殺菌？",
+      "existing_ids": [
+        "L51-001"
+      ],
+      "source_ids": [],
+      "reason": "只在L51-001引文中出現，未讀Megaponera原研究；在本題只作對比背景。",
+      "reentry_condition": "讀到原研究且有獨立的抗菌化學對照時再評。",
+      "reading_status": "NOT_READ",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA005",
+      "question": "螞蟻分得出同伴的傷口有沒有感染嗎？",
+      "existing_ids": [
+        "L51-001"
+      ],
+      "source_ids": [],
+      "reason": "L51-001原文顯示無菌與感染股節傷截肢率無顯著差，前提不成立。",
+      "reentry_condition": "須有直接偵測病菌而改變照護的對照研究。",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA006",
+      "question": "所有病毒都會用化學訊號互相商量嗎？",
+      "existing_ids": [
+        "L51-002"
+      ],
+      "source_ids": [],
+      "reason": "原文只在枯草桿菌spBeta群噬菌體證實；推及其他病毒或真核病毒是Discussion推想。",
+      "reentry_condition": "須有其他病毒系統的原始實驗正文。",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA007",
+      "question": "不同噬菌體的訊號胜肽為什麼互不通用，能另立一題？",
+      "existing_ids": [
+        "L51-002"
+      ],
+      "source_ids": [],
+      "reason": "同篇GMPRGA/SAIRGA交叉對照是L51-002的專一性環節，不拆核。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA008",
+      "question": "喇叭蟲停下刺激後為什麼又會恢復反應？",
+      "existing_ids": [
+        "L51-003"
+      ],
+      "source_ids": [],
+      "reason": "同篇Forgetting實驗屬L51-003的一段；計時機制未明，不足以單獨撐45秒。",
+      "reentry_condition": "有找出計時分子或獨立操弄時再提。",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA009",
+      "question": "單細胞會預期下一次規律刺激而先縮嗎？",
+      "existing_ids": [
+        "L51-003"
+      ],
+      "source_ids": [],
+      "reason": "L51-003原文補充實驗停止刺激後無細胞在預期時點收縮，前提不成立。",
+      "reentry_condition": "須有支持單細胞預期的原始正文對照。",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA010",
+      "question": "樹蛙胚胎怎麼在幾秒內破卵而出？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "孵化腺酵素機制研究（JEB 2016）出版社PDF 403未讀；與振動判斷是不同機制。",
+      "reentry_condition": "讀到原文並有酵素釋放的可見對照時另評。",
+      "reading_status": "RETRIEVAL_BLOCKED",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA011",
+      "question": "樹蛙胚胎的側線也能感覺卵被搖嗎？",
+      "existing_ids": [
+        "L51-004",
+        "L51-005"
+      ],
+      "source_ids": [],
+      "reason": "Jung等2020多重機械感覺研究JEB 403、bioRxiv 429未讀；只能作L51-004（含併入的L51-005）限制。",
+      "reentry_condition": "讀到側線阻斷實驗正文後，視為L51-005的因果補強或另核。",
+      "reading_status": "RETRIEVAL_BLOCKED",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA012",
+      "question": "昆蟲在燈旁一直繞是想飛向燈嗎？",
+      "existing_ids": [
+        "Z7001"
+      ],
+      "source_ids": [],
+      "reason": "既有背光反應姿態核心，沒有新控制。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA013",
+      "question": "玻璃蛙睡著時紅血球藏到哪？",
+      "existing_ids": [
+        "L39-007"
+      ],
+      "source_ids": [],
+      "reason": "既有肝臟儲存紅血球核心。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "L51-NA014",
+      "question": "黏菌沒有腦怎麼記住食物位置？",
+      "existing_ids": [
+        "A22002",
+        "U8009"
+      ],
+      "source_ids": [],
+      "reason": "既有管徑階層記憶與黏液足跡兩核。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave51-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-life.json"
+    },
+    {
+      "id": "P51-NA001",
+      "question": "水滴落在很燙的鍋上，為什麼反而撐得比較久？",
+      "existing_ids": [
+        "P51-001"
+      ],
+      "source_ids": [],
+      "reason": "萊頓弗羅斯特蒸氣墊是教科書前提，只能撐開場數秒；併入P51-001作背景，不另立核心。",
+      "reentry_condition": "需有實讀原研究提供與P51-001不同的控制（如表面紋理改變懸浮門檻）才另審。",
+      "reading_status": "S001 Introduction已讀；未另找專論懸浮門檻的原研究。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA002",
+      "question": "熱板上的懸浮液滴會像輪子一樣自己滾起來嗎？",
+      "existing_ids": [
+        "P51-002"
+      ],
+      "source_ids": [],
+      "reason": "已讀Brandão與Schnitzer 2020（arXiv 2004.05610，PRFluids 5,091601）pp1–7，為二維理論模型；原始實驗Bouillant等2018未讀。平面自轉推進與P51-002對稱脊推進是不同前提，但本輪無實驗正文。",
+      "reentry_condition": "取得並讀Bouillant 2018實驗正文與圖，確認不與P51-002重答，再另審。",
+      "reading_status": "理論文正文pp1–7已讀，cache: .cache/wave51-physics-wheels.pdf；實驗原文未取。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA003",
+      "question": "懸浮液滴為什麼會原地像陀螺一樣轉？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC清單見PNAS 2023「standing Leidenfrost drop with Sufi whirling」標題，未讀正文。",
+      "reentry_condition": "讀全文並確認與P51-002的推進機制不同後再評。",
+      "reading_status": "僅見檢索清單標題，未讀摘要或正文。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA004",
+      "question": "兩顆懸浮液滴相撞，為什麼能混得特別快？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Sci Rep 2025標題僅見檢索清單，未讀；混合題與本批運動/結局問題無直接延續。",
+      "reentry_condition": "讀正文並有可視混合對照才另審。",
+      "reading_status": "僅見檢索清單標題。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA005",
+      "question": "加了界面活性劑的氣泡，為什麼升得比較慢？",
+      "existing_ids": [
+        "I12005"
+      ],
+      "source_ids": [],
+      "reason": "表面濃度梯度阻滯已退兩次；P51-003只取鏈的側向穩定，不復活上升速度題。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "F17-NA005",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA006",
+      "question": "啤酒的氣泡鏈到底直不直？",
+      "existing_ids": [
+        "P51-003"
+      ],
+      "source_ids": [],
+      "reason": "S003對啤酒蛋白質以Langmuir近似粗估，實測依泡大小而異；作P51-003限制，不另立題。",
+      "reentry_condition": "有實讀研究直接量啤酒蛋白界面與鏈穩定再評。",
+      "reading_status": "S003 pp5–6、pp18–19已讀。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA007",
+      "question": "香檳氣泡破掉時為什麼噴出細霧？",
+      "existing_ids": [
+        "I12010"
+      ],
+      "source_ids": [],
+      "reason": "膜滴碎裂途徑見I12010；香檳細霧的射流滴途徑未讀原研究，沿I12-NA13不收，不因飲料換名另立。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I12-NA13",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA008",
+      "question": "一群螢火蟲怎麼同時閃？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "生物同步屬生命組，且wave14-animal-signals已退（未編號列）；本批只收燭火物理耦合。",
+      "reentry_condition": "由生命組讀修訂後資料再評。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA009",
+      "question": "蠟燭綁得越多，火焰為什麼閃得越慢？",
+      "existing_ids": [
+        "P51-004"
+      ],
+      "source_ids": [],
+      "reason": "同一S004研究的頻率趨勢，解釋只在改寫的模型參數；作P51-004補充，不另計核心。",
+      "reentry_condition": "有獨立實驗量測火焰體積/供氧與頻率的因果控制才另審。",
+      "reading_status": "S004 pp5–7 Fig6已讀。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA010",
+      "question": "單根蠟燭在高氧氣裡為什麼也會閃？",
+      "existing_ids": [
+        "P51-004"
+      ],
+      "source_ids": [],
+      "reason": "同研究的氧濃度觀察，僅一種濃度門檻現象且>95%曾損壞設備；併入P51-004限制。",
+      "reentry_condition": "同上，需有獨立控制與安全可拍的對照。",
+      "reading_status": "S004 pp5–8 Fig7–8、Table1已讀。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA011",
+      "question": "把灑水器改成吸水，它會反著轉嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "先前兩次未讀全文、2026後續解釋有差；本輪未重試，不憑記憶復活。",
+      "reentry_condition": "同時讀2024原文與2026後續正文、能分清兩種解釋界線再評。",
+      "reading_status": "本輪未取。",
+      "prior_not_added_id": "P23-NA006",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA012",
+      "question": "水龍頭沖到水槽底的那圈水躍，是表面張力決定大小嗎？",
+      "existing_ids": [
+        "F10016"
+      ],
+      "source_ids": [],
+      "reason": "一般水躍已有；表面張力主導說曾受後續研究反駁，本輪未讀任一方正文。圓形水躍與F10016明渠水躍幾何不同，待讀原文再判。",
+      "reentry_condition": "讀雙方原文並有可拍的傾斜/換液控制再評。",
+      "reading_status": "本輪未取；只依舊庫比較。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA013",
+      "question": "兩滴食用色素為什麼會互相追？",
+      "existing_ids": [
+        "P22005"
+      ],
+      "source_ids": [],
+      "reason": "蒸氣耦合不對稱蒸發已收。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA014",
+      "question": "刺破的氣球為什麼有時裂成很多片？",
+      "existing_ids": [
+        "X39-006"
+      ],
+      "source_ids": [],
+      "reason": "張力門檻與裂紋分岔已收。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "P51-NA015",
+      "question": "呼拉圈為什麼要有腰身才轉得住？",
+      "existing_ids": [
+        "X41-009"
+      ],
+      "source_ids": [],
+      "reason": "支撐斜率與回復曲率已收。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave51-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
     },
     {
       "id": "J6-NA001",
