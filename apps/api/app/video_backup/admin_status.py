@@ -269,6 +269,8 @@ async def review_packages(
             content_sha256=confirmation.content_sha256,
             languages_review_id=str(languages.id) if languages is not None else None,
             languages_sha256=languages.content_sha256 if languages is not None else None,
+            files=len(confirmation.files or [])
+            + (len(languages.files or []) if languages is not None else 0),
         )
     return packages
 

@@ -262,6 +262,10 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
    `narration.wav`、`timeline.json`。一集三百多個檔，worker 每輪抓 40 個，約八、九輪抓完；抓完之前不備份。
    worker 自己做的影片不送這些（檔案本來就在 video_work）。審核區只在備份完成後刪 mp4，這些圖與音檔目前會一直留在審核區
    （一集約 180 MB），整支清除是 `2026-11-03-purge-a-video-from-the-host` 的事。
+   **已經核准的上架確認也收**（2026-11-03，B01、B02 在這之前就核准了）：同一份 `metadata.json` 再送一次時，網站把
+   其中只有備份讀的檔（`kf_`、`clip_`、`recording_`、`keyframes_manifest`、`full_narration`、`full_timeline`、
+   `recordings_manifest`）加進那筆已核准的審核，條件是其他檔與站主核准的一模一樣；核准、payload 都不動，不必重新核准。
+   網站給 worker 的 `review_package` 帶上兩筆審核的檔數（`files`），檔數變了 worker 就再抓一次。
 
 只動自己放的東西：有 `auto.json` 的（worker 做的）和沒有 `review-package.json` 卻已經存在的
 資料夾（手動做的）一律不碰；換版後新的上架確認核准時，只替換上一包放的檔案，舊檔照第 4 步留在

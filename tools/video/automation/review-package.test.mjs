@@ -167,6 +167,16 @@ test("a package pushed by hand comes with its newest approved language batch, wh
   const record = JSON.parse(readFileSync(path.join(dir, PACKAGE_RECORD), "utf8"));
   assert.equal(record.languages_review_id, first.id);
   assert.equal(await fetchReviewPackage({ base, video: video(first), client: site.client, now: NOW }), null, "fetched once");
+  // The site counts the files; the full tier joining an approved package fetches them.
+  const counted = (n) => videoOf(store, { review_package: { ...packageOf(store), languages_review_id: first.id, languages_sha256: first.content_sha256, files: n } });
+  assert.equal((await fetchReviewPackage({ base, video: counted(9), client: site.client, now: NOW })).complete, true, "a record without a count fetches once");
+  store.review.files.push({ role: "kf_ch1-open", content_type: "image/jpeg", sha256: sha("keyframe"), size: 8 });
+  store.bytes.set(sha("keyframe"), "keyframe");
+  assert.equal(await fetchReviewPackage({ base, video: counted(9), client: site.client, now: NOW }), null, "the same count: nothing to do");
+  const grown = await fetchReviewPackage({ base, video: counted(10), client: site.client, now: NOW });
+  assert.equal(grown.complete, true);
+  assert.equal(readFileSync(path.join(dir, "keyframes", "ch1-open.jpg"), "utf8"), "keyframe");
+  store.review.files.pop();
 
   // A newer batch: a new English dub, Japanese now ready; what the old batch alone placed goes.
   const second = batchOf("bbbbbbbb-2222-3333-4444-555555555555", [

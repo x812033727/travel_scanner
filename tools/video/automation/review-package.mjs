@@ -155,7 +155,10 @@ export async function fetchReviewPackage({ base, video, client, budget = DOWNLOA
   if (existsSync(path.join(workdir, "auto.json"))) return null;
   const record = readJson(path.join(workdir, PACKAGE_RECORD), null);
   if (existsSync(workdir) && !record) return null; // made here by hand: never written over
-  if (record?.complete && record.review_id === wanted.review_id && (record.languages_review_id ?? null) === (batch?.review_id ?? null)) return null;
+  // `files`: how many files the site's reviews name; files can join an approved package (the
+  // full backup tier sent after the owner approved it), and a changed count fetches again.
+  const listed = Number.isInteger(wanted.files) ? wanted.files : null;
+  if (record?.complete && record.review_id === wanted.review_id && (record.languages_review_id ?? null) === (batch?.review_id ?? null) && (listed === null || record.listed === listed)) return null;
   if (budget <= 0) return { line: `backup: ${video.slug}: its upload package waits for the next round`, downloads: 0, complete: false };
 
   const project = await client.project(video.slug);
@@ -243,7 +246,7 @@ export async function fetchReviewPackage({ base, video, client, budget = DOWNLOA
     if (typeof old === "string" && !kept.has(old)) removePlaced(workdir, old);
   }
   written = written.sort();
-  const done = { schema_version: 1, review_id: wanted.review_id, content_sha256: wanted.content_sha256, ...batchIds, complete: true, fetched_at: now.toISOString(), files: files.filter((entry) => !gone.includes(entry.path)), written, gone };
+  const done = { schema_version: 1, review_id: wanted.review_id, content_sha256: wanted.content_sha256, ...batchIds, ...(listed !== null ? { listed } : {}), complete: true, fetched_at: now.toISOString(), files: files.filter((entry) => !gone.includes(entry.path)), written, gone };
   atomicWrite(path.join(workdir, PACKAGE_RECORD), `${JSON.stringify(done, null, 2)}\n`);
   const clips = done.files.filter((entry) => entry.path.startsWith("clips/")).length;
   return {
