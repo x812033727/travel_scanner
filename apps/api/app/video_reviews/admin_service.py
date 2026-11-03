@@ -2974,6 +2974,16 @@ def _is_video(item: Any) -> bool:
     )
 
 
+def _backed_up(project: VideoProject) -> bool:
+    """Whether the worker reported every file of ``project`` copied to Drive and checked there
+    (docs/videos/BACKUP.md). Until then the review store's mp4 may be the host's only copy: a
+    video made off the host has no files in video_work until the worker fetches them from here
+    (tools/video/automation/review-package.mjs). Owner, 2026-11-03: nothing leaves the host
+    before Drive holds it."""
+    record = project.backup if isinstance(project.backup, dict) else {}
+    return record.get("state") == "done"
+
+
 async def _published_before(session: AsyncSession, cutoff: datetime) -> list[VideoProject]:
     """Videos on YouTube whose upload confirmation was approved on or before ``cutoff``."""
     confirmed = _confirmations()
@@ -2992,7 +3002,8 @@ async def prune_published_previews(
 
     The rule (HANDS-OFF.md §上傳包與「可以上架」): the video has a ``youtube_video_id``, its
     upload confirmation was approved at least PREVIEW_RETENTION ago and, when the owner set a
-    publish time, that time is also at least PREVIEW_RETENTION past. Only files that are
+    publish time, that time is also at least PREVIEW_RETENTION past, and the Drive backup
+    reported it done (``_backed_up``; with backups off nothing goes). Only files that are
     ``video/mp4`` or play the ``final`` role go; the thumbnail, captions and descriptions stay
     so the owner can still fetch them. Idempotent and cheap, so the list page calls it: a video
     whose mp4 is already gone costs one stat per file. Returns what was removed, by slug.
@@ -3002,6 +3013,8 @@ async def prune_published_previews(
     removed: dict[str, list[str]] = {}
     for project in await _published_before(session, cutoff):
         if project.youtube_publish_at is not None and project.youtube_publish_at > cutoff:
+            continue
+        if not _backed_up(project):
             continue
         reviews = await _reviews(session, project)
         videos = {

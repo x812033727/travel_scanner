@@ -176,12 +176,18 @@ class ExpectedParts(BaseModel):
 
 
 class ReviewPackage(BaseModel):
-    # The approved upload package of a video imported from another machine (`import --publish`,
-    # payload ``imported``): its files are in the review store, not in video_work, so the worker
-    # fetches them into <slug>/upload/ and <slug>/clips/ before the backup copies the folder
-    # (tools/video/automation/review-package.mjs).
+    # The approved upload package of a video made off the host: imported (`import --publish`,
+    # payload ``imported``) or sent by hand (`review-push` or `shorts/cli.mjs push` from a work
+    # directory the worker did not make, payload ``hand_pushed``). Its files are in the review
+    # store, not in video_work, so the worker fetches them into <slug>/upload/ and <slug>/clips/
+    # before the backup copies the folder (tools/video/automation/review-package.mjs).
     review_id: str
     content_sha256: str
+    # The newest approved language batch of the same video (`review-push --gate languages`): the
+    # dub tracks, captions, descriptions and per-language thumbnails approved after the upload
+    # confirmation, which the worker fetches into the same package. None without one.
+    languages_review_id: str | None = None
+    languages_sha256: str | None = None
 
 
 class WorkerVideo(BaseModel):

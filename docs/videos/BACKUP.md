@@ -10,7 +10,14 @@
 
 - 成片只存在 VPS。`video_work/<slug>/` 由 [`tidy.mjs`](../../tools/video/automation/tidy.mjs)
   在上傳 7 天後清掉 `final.mp4`、配音、clips、keyframes；審核區的 mp4 也由
-  `prune_published_previews` 在 7 天後刪除。YouTube 上的版本是轉碼過的，不能當原檔。
+  `prune_published_previews` 在 7 天後刪除（2026-11-03 起要等備份完成，見〈跟 tidy 的關係〉）。
+  YouTube 上的版本是轉碼過的，不能當原檔。
+
+站主 2026-11-03 定的三條規則（之前沒備份的不追；票 `2026-11-03-*` 六張）：
+1. 上架前，每支影片在 VPS 上都要有一份完整的檔案，不論在哪裡做的，除非站主放棄並刪除它。
+2. 站主刪除影片時，VPS 上那支的檔案整支刪掉。
+3. 上架後先備份到雲端硬碟、確認完整，才把 VPS 上那支整支刪掉：上架、備份核對完整、所有勾選的
+   語言都已核准或略過，三樣齊了才刪；之後要補做就從雲端還原。
 - 漫劇與動畫（偶的江湖等）的 clips 是付費買的，重拍要再花點數，而且不一定拍得回同一個畫面。
 - 加密的系統備份（[`2026-10-07-backup-google-drive-offsite`](../../tasks/open/2026-10-07-backup-google-drive-offsite.md)）
   是給災難還原用的，檔名也加密，站主在 G: 看不懂。影片備份要讓站主直接打開，所以是
@@ -196,7 +203,7 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
    送 10 筆「排入」或補送的回報。失敗的下一輪重試；連續失敗 3 次標記為 `failed`，寫入
    稽核紀錄，之後每 6 小時再試一次。工作根目錄的 `STOP` 檔也會停止備份。
 
-## 匯入的影片
+## 匯入的影片與手動推送的影片
 
 雲端 session 做的影片（例如第 31 集起在 Colab 做的種田娶妻打天下）用
 `node tools/video/cli.mjs import --from DIR` 送上站台：成片、字幕、配音、縮圖和 `metadata.json`
@@ -217,12 +224,20 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
    片段不寫進 `metadata.json`，所以上架確認還在等站主時重送一次 `--publish`，就把片段補進同一筆
    審核；**已經核准**的那一份不會再收檔，工具會說片段沒送。YouTube 上傳、手動上傳包和後台頁面
    都不讀 `clip_` 檔。
-2. **worker 先取回來**：網站列給 worker 的影片裡，匯入的長片（核准的上架確認帶 `imported`），以及手動送上來的 Shorts（帶 `hand_pushed`，2026-11-02 起；worker 自己那幾條線做的 Shorts 本來就在 video_work）
-   多一個 `review_package`（審核 id 與 `metadata.json` 的 sha256）。worker 每一輪在備份之前用
+2. **worker 先取回來**：網站列給 worker 的影片裡，匯入的長片（核准的上架確認帶 `imported`）、
+   手動送上來的 Shorts（帶 `hand_pushed`，2026-11-02 起），以及在別處做好、用 `review-push` 送上來的長片
+   （工作資料夾沒有 `auto.json` 時 `review-push` 每一關都帶 `hand_pushed`，2026-11-03 起：雲端 session 做的
+   奇聞檔案局在這之前都沒備份到）多一個 `review_package`（審核 id 與 `metadata.json` 的 sha256），
+   有核准的語言批次時再加上最新那一批（`languages_review_id`、`languages_sha256`）。worker 自己做的影片
+   兩個標記都沒有，檔案本來就在 video_work。worker 每一輪在備份之前用
    影片工具權杖從審核區下載這一包（跟 `review-files` 同一條路由），逐檔比對 sha256 與大小，排成
    `package` 的樣子：`upload/final.mp4`、`upload/metadata.json`、`upload/thumbnail.<副檔名>`、
    `upload/captions/<語言>.srt`、`upload/dubs/<語言>.<副檔名>`、從 `metadata.json` 寫出
-   `upload/description.<語言>.txt`，片段放 `clips/<鏡>.mp4`。紀錄寫在
+   `upload/description.<語言>.txt`，片段放 `clips/<鏡>.mp4`。語言批次（上架後才核准的配音、字幕、說明、
+   各語縮圖）接在上傳包後面排，同一個位置以批次的為準；檢查沒過、站主可以手動上傳的配音
+   （`dub_unchecked_<語言>`）放 `dubs/<語言>.<副檔名>`，完整層級照 `dubs/未進上傳包/` 備份。網站核准新的
+   一批時，下一輪只抓新的檔，上一批單獨放的檔從主機移走（雲端留著）。`review-push` 的字幕是
+   `text/plain`，一樣當 `.srt` 放。紀錄寫在
    `video_work/<slug>/review-package.json`；取到一半的不備份，下一輪接著取。每輪最多下載 40 個
    檔（審核區每個權杖每小時 600 個）。程式在
    [`review-package.mjs`](../../tools/video/automation/review-package.mjs)。
@@ -252,7 +267,11 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
 
 備份關閉時，或網站還沒有這些 API（回 404）時，tidy 照原本的方式運作。
 
-`prune_published_previews` 刪的是審核區的副本，原檔還在 `video_work`，所以這裡不用改。
+`prune_published_previews` 刪審核區的 mp4 也要等備份：2026-11-03 起，除了原本的「上架確認核准滿 7 天、
+有 YouTube ID、設了公開時間的話也過了 7 天」，還要網站上這支的備份紀錄是 `done`；備份關閉、還沒備份、
+`partial`、`failed` 都不刪。在別處做的影片，審核區的 mp4 在 worker 取回之前是主機上唯一的一份，
+以前核准後拖過 7 天才上架的片，一上架 mp4 就被刪，worker 只能記成取不到。代價是備份關著時審核區的
+mp4 不會自己清，檔案區（預設 20 GB）要靠備份開著才會回收。
 
 ## 主機設定
 
