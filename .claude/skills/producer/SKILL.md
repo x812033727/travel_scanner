@@ -1,6 +1,6 @@
 ---
 name: producer
-description: 製片：決定 Mokaair 頻道接下來做什麼、改什麼，再把製作交給既有的影片 skill。四種工作：趨勢掃描（最近很夯的議題、短片與影片，包括站主貼來的 Instagram、TikTok、YouTube 連結，拆成可以學的結構）、系列診斷（用站台的 YouTube 報表、Studio 宣傳數字與縮圖標題評分，判斷每個系列該加碼、改包裝、改內容還是停）、新主題（從需求證據、頻道定位與製作成本挑題，先做三支試片）、新影片（不一定有主題的單支創作，例如 15–30 秒的 AI 寵物短劇）。產出是一份有數字、有出處、有下一步的製片單，花錢與上架永遠等站主。要看最近什麼紅、分析某個系列為什麼沒人看、想新系列或新短劇、拆解別人的爆紅短片、或用後台數據決定下一批做什麼時，先讀這個 skill。Producer for the Mokaair channel — trend scans, series diagnosis from the site's YouTube reports, new themes and one-off videos such as AI pet micro-dramas, handing production to the existing video skills.
+description: 製片：決定 Mokaair 頻道接下來做什麼、改什麼，再把製作交給既有的影片 skill。四種工作：趨勢掃描（最近很夯的議題、短片與影片，包括站主貼來的 Instagram、TikTok、YouTube 連結，拆成可以學的結構）、系列診斷（用站台的 YouTube 報表、Studio 宣傳數字與縮圖標題評分，判斷每個系列該加碼、改包裝、改內容還是停）、新主題（從需求證據、頻道定位與製作成本挑題，先做三支試片）、新影片（不一定有主題的單支創作，例如 AI 寵物短劇，從十幾秒的單梗、55 秒的一集到角色固定的系列，像《汪汪社畜》）。產出是一份有數字、有出處、有下一步的製片單，花錢與上架永遠等站主。要看最近什麼紅、分析某個系列為什麼沒人看、想新系列或新短劇、拆解別人的爆紅短片、或用後台數據決定下一批做什麼時，先讀這個 skill。Producer for the Mokaair channel — trend scans, series diagnosis from the site's YouTube reports, new themes and one-off videos such as AI pet micro-dramas, handing production to the existing video skills.
 metadata:
   short-description: 製片：看趨勢、診斷系列、發展新主題與新短劇
 ---
@@ -65,13 +65,15 @@ metadata:
 
 ## §4 新影片（單支創作與短劇）
 
-短劇的格式、節拍與兩支參考片的拆解在 `.agents/skills/producer/references/micro-drama.md`。
+短劇的長度分級、公式、《汪汪社畜》與兩支參考片的拆解在 `.agents/skills/producer/references/micro-drama.md`。
 
-1. **一句話企劃。** 誰、在哪、想要什麼、哪裡出錯、最後一秒的反轉。說不成一句就還沒好。
-2. **選長度與比例。** 現有 Shorts 工具只收 25–55 秒（`tools/video/shorts/core.mjs` 的 `PROFILE`）；15 秒的短劇目前要嘛寫成兩個反轉的 25–30 秒，要嘛等工具開新的長度（另開票，見 `micro-drama.md`）。
-3. **分鏡與生成。** 一場戲 3–6 鏡，每鏡 2–5 秒；要付點數就照 `animation-preproduction` 先鎖分鏡、估價、等站主核准。
-4. **包裝。** 標題寫情境不寫結局；封面是反轉前那一格最強的表情；雙語字幕（繁中＋英文）讓國外也看得懂。
-5. **交製作。** 成片用 `node tools/video/shorts/cli.mjs import` 進 Shorts 流程（`.agents/skills/youtube-video/references/shorts.md`），之後照那邊的品管與上架。
+1. **一句話企劃。** 誰、在哪、想要什麼、哪裡出錯、最後的反轉。說不成一句就還沒好。
+2. **選長度級。** 單梗（10–20 秒）、雙反轉（25–35 秒）、一集短劇（45–55 秒）、長一點的一集（2–4 分鐘）或系列。站主沒指定就從 45–55 秒開始。
+   長度變長是加笑點（每 8–10 秒一個、一次比一次荒謬），不是把一個梗拉長。現有 Shorts 工具只收 25–55 秒（`tools/video/shorts/core.mjs` 的 `PROFILE`）。
+3. **笑點盲評。** 喜劇短劇送劇本關卡前，三位不同觀眾角色的評審只讀盲評包打分，沒過就換笑點、換評審重評（`micro-drama.md` 的〈範例一〉）。
+4. **分鏡與生成。** 要付點數就照 `animation-preproduction` 先鎖分鏡、做三鏡小樣、估價、等站主核准。
+5. **包裝。** 標題寫情境不寫結局；封面是反轉前那一格最強的表情；雙語字幕（繁中＋英文）讓國外也看得懂；系列每集結尾留下一集的鉤子。
+6. **交製作。** 9:16 從漫劇成片用 `node tools/video/shorts/cli.mjs from-drama` 裁，外部成片用 `import`（`.agents/skills/youtube-video/references/shorts.md`）；2–4 分鐘的走漫劇長片（`.agents/skills/youtube-video/references/drama.md`）。
 
 ## 產出：製片單
 
