@@ -1,13 +1,13 @@
 ---
 id: 2026-11-03-review-push-sends-the-full-backup
 title: review-push sends the full backup tier with the upload confirmation
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-backup-rules
 claimed_at: 2026-11-03T02:00:59Z
 created_at: 2026-11-03T00:57:06Z
-completed_at:
+completed_at: 2026-11-03T02:11:58Z
 branch: claude/video-backup-full-tier
 depends_on:
   - 2026-11-03-fetch-every-off-host-package-onto
@@ -69,4 +69,3 @@ scope:
 - 實測規模：curio-b01 320 張、curio-s31-v2 288 張、curio-b03 287 張分鏡（最長檔名 34 字），旁白 68 MB、逐句錄音 57 MB。
 - sync.mjs、sync.test.mjs 受時長審查綁定（docs/videos/long-form/review.json），要獨立審查更新雜湊。
 - 部署後要對 curio-b01、b02、b03（上架確認還在 pending）再送一次 `review-push --gate publish`，把完整層級補進同一筆審核。
-
