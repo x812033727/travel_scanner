@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "slug": "influencer-piglet-e01",
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, a real pig and a real capybara with natural skin and fur standing upright and wearing human clothes, everyday Taiwanese locations, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, deformed hooves, human faces, humans, text, watermark, logo, brand names",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "fenfen",
+      "name": "粉粉",
+      "appearance": "a real young pink pig standing upright on its hind legs like a person, wearing a white lace sundress, a wide straw sun hat with a long pink satin ribbon, and a pearl hair clip behind one ear, always posing with a dreamy three-quarter profile smile",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in a quiet back alley of a Taiwanese night market in the late afternoon, facing the camera, natural light. The only animal in the frame, shown once. Real skin and fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "capy",
+      "name": "水豚男友",
+      "appearance": "a real adult capybara standing upright on its hind legs like a person, wearing a green bucket hat and a plain grey T-shirt, a completely deadpan face, a power bank hanging from a cord around its neck",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in a quiet back alley of a Taiwanese night market in the late afternoon, facing the camera, natural light. The only animal in the frame, shown once. Real skin and fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "dreamy soft lo-fi beach pop with gentle synth pads that cuts off abruptly to silence, then a plodding tuba deadpan comedy beat, then the dreamy pad again, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sfx": {
+    "set": "piglet-comedy",
+    "cues": [
+      {
+        "scene": "s02-flash",
+        "sound": "shutter"
+      },
+      {
+        "scene": "s03-pullback",
+        "sound": "recordscratch"
+      },
+      {
+        "scene": "s05-photo",
+        "sound": "shutter"
+      },
+      {
+        "scene": "s06-again",
+        "sound": "crack"
+      }
+    ]
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "網美照的真相 #網美小豬",
+    "description": "每一張美照背後，都有一個面無表情的男友。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "網美小豬",
+      "網美",
+      "水豚",
+      "小豬",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "美照真相",
+      "tag": "網美小豬",
+      "shot": "s05-photo"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-sunset",
+      "chapter": "美照",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close-up of the pink pig in a white lace dress and straw hat with a pink ribbon, a dreamy three-quarter profile smile, backlit by a huge glowing orange setting sun behind her in soft focus; in the lower corner of the frame a black electric cable hangs down from the 'sun' and sways",
+        "camera": "Close-up, locked",
+        "motion": "the hat ribbon flutters in the breeze, the breeze stops for half a second and the ribbon drops limp, then the breeze returns and the ribbon flutters again; her smile does not move at all",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-flash",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium close-up of the pink pig holding her dreamy profile pose in the straw hat, lit warmly from one side",
+        "camera": "Medium close-up, locked",
+        "motion": "a camera flash fires once; her face stays frozen in the pose and only her eyes slowly slide toward the lower right of the frame, the corner of her mouth twitches once",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-pullback",
+      "chapter": "真相",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of a grubby back alley of a Taiwanese night market in the afternoon: the pink pig in her white dress and straw hat stands posing on an upside-down red plastic bucket; the 'sun' is an orange heat lamp hanging from a bamboo laundry pole with its cable trailing to the ground; behind her a big blue plastic tarp is being shaken into waves from the right edge of the frame; a puddle on the ground and a stray cat walking past the bucket",
+        "camera": "Wide shot, locked",
+        "motion": "the blue tarp ripples in waves as if someone off screen is shaking it; the stray cat walks slowly past the bucket; the pig holds her pose perfectly still",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-boyfriend",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the capybara boyfriend in a green bucket hat and grey T-shirt standing in the alley, completely deadpan, one front paw holding a phone high up in the air, one hind foot pinning down the corner of a blue tarp, a small electric fan strapped on top of his head pointing forward, its cable plugged into the power bank hanging from his neck",
+        "camera": "Medium shot, locked",
+        "motion": "he jiggles the tarp corner up and down with his foot in a steady rhythm; the fan on his head spins; a dry leaf falls onto his hat and he does not react at all",
+        "characters": [
+          "capy"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-photo",
+      "chapter": "成品",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Insert: the finished photo filling the vertical frame with a thin white photo border: the pink pig in a white lace dress and straw hat posing in a dreamy profile on a golden beach at sunset, picture perfect like a magazine cover, except that the big round glowing orange sun in the middle is clearly the round face of a capybara lit orange, looking straight out",
+        "camera": "Insert, locked",
+        "motion": "the photo holds still; the capybara face in the sun slowly blinks once",
+        "characters": [
+          "fenfen",
+          "capy"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-again",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Wide shot of the same back alley: the pink pig on the upside-down red bucket glaring off screen to the right, then taking her dreamy profile pose again",
+        "camera": "Wide shot, locked",
+        "motion": "she takes a deep breath and snaps back into the exact same dreamy profile pose; the bucket under her cracks and she sinks a few centimetres into it, her smile still frozen",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-sun",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Insert close-up of the round glowing orange heat lamp hanging from the bamboo pole against the alley wall",
+        "camera": "Insert close-up, locked",
+        "motion": "the capybara's deadpan face slowly rises from below into the glowing circle of the lamp, stops in the centre and blinks once",
+        "characters": [
+          "capy"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}
