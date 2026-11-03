@@ -392,6 +392,14 @@ for sid in KID_REDRAW: add(sid, KIDDESC)
 for sid in CHIEF_REDRAW: add(sid, CHIEFDESC)
 for sid in TEXT_REDRAW: add(sid, BLANK)
 
+# scorecard round 1, second try for the six still refused
+prompt("chief-whiteboard", "Medium close-up of the chief holding a marker beside a whiteboard with one big plain cube drawn on it, smiling at the viewer, soft daylight, " + CHIEFDESC)
+prompt("kid-calc", "Close-up of the girl's face with wide eyes and puffed cheeks, scratching her head with a pencil, a plain background, soft light, " + KIDDESC)
+prompt("updraft-section", "Wide shot of the girl in a field holding a kite string pulled tight straight upward while warm rising air lifts her kite high into the base of a growing puffy cloud, soft bright light, " + KIDDESC, KID)
+prompt("chief-how-high", "Medium shot of the chief stretching her arm high to tap the top of a tall plain bookshelf and looking up at her hand, soft daylight, " + CHIEFDESC)
+prompt("cumulonimbus", "Low angle wide shot looking up at an enormous white cauliflower-shaped storm cloud with a flat grey base towering over a city skyline, one tiny airliner near its top, the only shapes are the buildings, the cloud and the airliner, soft afternoon light", ())
+prompt("chief-phone-call", "Medium close-up of the chief holding a phone to her ear and smiling, a plain bare wall behind her, soft daylight, " + CHIEFDESC)
+
 # keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture
 import json as _json, os as _os
 _cams = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "cameras.json")))
