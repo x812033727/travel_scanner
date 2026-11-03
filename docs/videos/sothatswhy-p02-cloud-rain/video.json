@@ -48,6 +48,11 @@
   },
   "loops": [
     {
+      "setup": "p009",
+      "payoff": "p040",
+      "what": "那朵雲有幾頭大象重"
+    },
+    {
       "setup": "p007",
       "payoff": "p061",
       "what": "水比空氣重，雲為什麼沒有整團掉下來"
@@ -104,12 +109,12 @@
     },
     {
       "setup": "p113",
-      "payoff": "p117",
+      "payoff": "p119",
       "what": "怎麼看出今天的雲會不會下雨"
     },
     {
-      "setup": "p119",
-      "payoff": "p121",
+      "setup": "p121",
+      "payoff": "p123",
       "what": "雨滴是不是眼淚的形狀"
     }
   ],
@@ -117,8 +122,8 @@
     "category_id": 27,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "一朵雲裡有 500 公噸的水，為什麼不會掉下來？｜原來如此事務所",
-    "description": "夏天下午兩點還大太陽，三點就下大雨。抬頭看到的那朵雲，裡面真的有水，而且一朵普通的積雲就有大約五百公噸。水比空氣重，它為什麼能留在天上？又怎麼在一個小時以內，變成打在你身上的大雨？\n\n這一集，所長和小問從一朵雲裡的一滴水開始：水蒸氣和雲有什麼不同、雲滴為什麼掉得比蝸牛還慢、一滴雨為什麼要大約一百萬顆雲滴、雷陣雨為什麼偏偏在下午，又為什麼常常下一下就停。最後教你抬頭看三件事。\n\n本集插圖由 AI 生成。數字是常見情況的估算，實際的雲差異很大；每個數字的出處列在下方參考資料。\n\n資料截至 2026-11-03",
+    "title": "一朵雲裡約有 500 公噸的水，為什麼不會掉下來？｜原來如此事務所",
+    "description": "夏天下午兩點還大太陽，三點就下大雨。抬頭看到的那朵雲，裡面真的有水，而且一朵普通的積雲估計有大約五百公噸。水比空氣重，它為什麼能留在天上？又怎麼在一個小時以內，變成打在你身上的大雨？\n\n這一集，所長和小問從一朵雲裡的一滴水開始：水蒸氣和雲有什麼不同、雲滴為什麼掉得比蝸牛還慢、一滴雨為什麼要大約一百萬顆雲滴、雷陣雨為什麼偏偏在下午，又為什麼常常下一下就停。最後教你抬頭看三件事。\n\n本集插圖由 AI 生成。數字是常見情況的估算，實際的雲差異很大；每個數字的出處列在下方參考資料。\n\n資料截至 2026-11-03",
     "tags": [
       "午後雷陣雨",
       "雲",
@@ -133,17 +138,178 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "500 噸的水\n**浮在天上**",
+      "headline": "約 500 噸的水\n**浮在天上**",
       "sub": "為什麼不會掉下來？",
       "shot": "kid-elephants"
     }
   },
-  "sources": [],
+  "sources": [
+    {
+      "title": "USGS Water Science School: How Much Does a Cloud Weigh?",
+      "url": "https://www.usgs.gov/water-science-school/science/how-much-does-a-cloud-weigh",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "USGS Water Science School: Condensation and the Water Cycle",
+      "url": "https://www.usgs.gov/water-science-school/science/condensation-and-water-cycle",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "USGS Water Science School: Precipitation and the Water Cycle",
+      "url": "https://www.usgs.gov/water-science-school/science/precipitation-and-water-cycle",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "USGS Water Science School: Raindrops are Different Shapes",
+      "url": "https://www.usgs.gov/water-science-school/science/are-raindrops-shaped-teardrops",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NASA GPM: The Shape of a Raindrop",
+      "url": "https://gpm.nasa.gov/resources/students-and-educators/the-shape-of-a-raindrop",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA JetStream: Clouds",
+      "url": "https://www.noaa.gov/jetstream/clouds",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA JetStream: How Clouds Form",
+      "url": "https://www.noaa.gov/jetstream/clouds/how-clouds-form",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA JetStream: The Four Core Types of Clouds",
+      "url": "https://www.noaa.gov/jetstream/clouds/four-core-types-of-clouds",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA JetStream: Color of Clouds",
+      "url": "https://www.noaa.gov/jetstream/clouds/color-of-clouds",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA JetStream: Ingredients for a Thunderstorm",
+      "url": "https://www.noaa.gov/jetstream/thunderstorms/ingredients-for-thunderstorm",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA JetStream: Life Cycle of a Thunderstorm",
+      "url": "https://www.noaa.gov/jetstream/thunderstorms/life-cycle-of-thunderstorm",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA JetStream: Types of Thunderstorms",
+      "url": "https://www.noaa.gov/jetstream/tstrmtypes",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA Education: Cooking up a storm — atmospheric science in your kitchen",
+      "url": "https://www.noaa.gov/education/multimedia/video/cooking-up-storm-atmospheric-science-in-your-kitchen",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NOAA NSSL Severe Weather 101: Winter Weather Types",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/winter/types/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NWS Glossary: Dry Adiabatic Lapse Rate",
+      "url": "https://forecast.weather.gov/glossary.php?word=dry%20adiabatic%20lapse%20rate",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NWS Glossary: Lifting Condensation Level",
+      "url": "https://forecast.weather.gov/glossary.php?word=lifting%20condensation%20level",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NWS Glossary: Anvil",
+      "url": "https://forecast.weather.gov/glossary.php?word=ANVIL",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "LibreTexts Geosciences, Atmospheric Processes and Phenomena 7.2: Cloud Droplets",
+      "url": "https://geo.libretexts.org/Bookshelves/Meteorology_and_Climate_Science/Atmospheric_Processes_and_Phenomena/07%3A_Precipitation_Processes/7.02%3A_Cloud_Droplets",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "University of Washington ATMS 101, Lecture 21 overheads (drop sizes and fall speeds)",
+      "url": "https://atmos.uw.edu/academics/classes/2003Q2/101/lect21_overheads.pdf",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Penn State METEO 3: Single-Cell Thunderstorms",
+      "url": "https://courses.ems.psu.edu/meteo3/node/2024",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Penn State METEO 3: Stability, Clouds, and Precipitation",
+      "url": "https://courses.ems.psu.edu/meteo3/node/2231",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Penn State Meteorology 3: Temperature (daily cycle)",
+      "url": "https://www.meteo.psu.edu/wjs1/Meteo3/Html/temperature.htm",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "College of DuPage: Cloud Physics (collision-coalescence and Bergeron process)",
+      "url": "https://weather.cod.edu/sirvatka/cloudsrain.html",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "UCAR Center for Science Education: The Troposphere",
+      "url": "https://scied.ucar.edu/learning-zone/atmosphere/troposphere",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "UCAR Center for Science Education: Cumulus clouds",
+      "url": "https://scied.ucar.edu/image/cumulus-clouds",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "WMO International Cloud Atlas: Cumulus species",
+      "url": "https://cloudatlas.wmo.int/en/species-cumulus-cu.html",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NASA Earth Observatory: Fair-Weather Clouds, Sri Lanka",
+      "url": "https://science.nasa.gov/earth/earth-observatory/fair-weather-clouds-sri-lanka-81833/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "NASA Glenn Research Center: Earth Atmosphere Model",
+      "url": "https://www.grc.nasa.gov/www/k-12/airplane/atmosmet.html",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "US EPA: Particulate Matter (PM) Basics",
+      "url": "https://www.epa.gov/pm-pollution/particulate-matter-pm-basics",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "San Diego Zoo Wildlife Alliance Library: African Elephant fact sheet",
+      "url": "https://ielc.libguides.com/sdzg/factsheets/african_elephant/summary",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "中央氣象署 氣候服務入口網：夏季",
+      "url": "https://climate.cwa.gov.tw/SeasonalClimate?subpage=Summer",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "中央氣象署數位科普網：午後，雨會下在哪？",
+      "url": "https://edu.cwa.gov.tw/PopularScience/wt/wt_31.html",
+      "checked_on": "2026-11-03"
+    }
+  ],
   "assets": [],
   "scenes": [
     {
       "id": "balcony-call",
-      "chapter": "雲裡真的有水嗎",
+      "chapter": "陽台外那朵雲變灰了",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl on a small apartment balcony in the early afternoon, leaning on the railing and pointing up at the sky with wide excited eyes, laundry hanging beside her, soft daylight from above",
@@ -234,7 +400,7 @@
         {
           "id": "p005",
           "speaker": "chief",
-          "text": "有，而且很多。你抬頭看到的那一整片白色，裡面全是水。",
+          "text": "有，而且很多。你抬頭看到的那一整片白色，裡面有很多水。",
           "emotion": "肯定，語氣親切"
         }
       ]
@@ -297,8 +463,8 @@
         {
           "id": "p009",
           "speaker": "chief",
-          "text": "今天我們就從那朵雲裡的一滴水開始，看它怎麼留在天上，",
-          "emotion": "承諾句，穩"
+          "text": "先猜猜看：你家外面那朵雲，大概有幾頭大象那麼重？",
+          "emotion": "賣關子"
         }
       ]
     },
@@ -317,14 +483,14 @@
         {
           "id": "p010",
           "speaker": "chief",
-          "text": "又怎麼在一個小時以內，變成打在你身上的大雨。",
+          "text": "還有，它會不會變成打在你身上的雨？要多久？",
           "emotion": "最後幾個字放慢"
         }
       ]
     },
     {
       "id": "clear-morning",
-      "chapter": "晴天怎麼長出一朵雲",
+      "chapter": "早上一團熱空氣往上爬",
       "template": "shot",
       "data": {
         "prompt": "Wide shot of the same apartment balcony on a clear morning, a girl hanging a towel on the laundry line, the sky completely empty of clouds, soft early light from the left",
@@ -338,7 +504,7 @@
         {
           "id": "p011",
           "speaker": "chief",
-          "text": "先把時間倒回今天早上。天空很乾淨，一朵雲都沒有。",
+          "text": "這朵雲，今天早上還不存在。那時候天空很乾淨，一朵雲都沒有。",
           "emotion": "說故事的開頭"
         }
       ]
@@ -619,7 +785,7 @@
         {
           "id": "p026",
           "speaker": "chief",
-          "text": "冷到某個高度，空氣裝不下那麼多水氣，多出來的就會凝結。"
+          "text": "冷到某個高度，水氣就飽和了，多出來的就會凝結。"
         }
       ]
     },
@@ -771,7 +937,7 @@
     },
     {
       "id": "chief-whiteboard",
-      "chapter": "這麼重，為什麼還在天上",
+      "chapter": "五百公噸搭著電梯往上",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the chief drawing a big cube with a marker on a blank whiteboard, glancing back over his shoulder with a grin, soft daylight",
@@ -808,7 +974,7 @@
             "label": "整朵雲的水"
           }
         ],
-        "source": "UCAR／NCAR 估算方式"
+        "source": "USGS 水科學學校：一朵雲有多重"
       },
       "lines": [
         {
@@ -901,8 +1067,28 @@
         {
           "id": "p042",
           "speaker": "chief",
-          "text": "聽起來很嚇人對吧。不過先別急著跑，還有兩件事你不知道。",
+          "text": "聽起來很嚇人對吧。不過你先別急著跑。",
           "emotion": "笑著，然後收"
+        }
+      ]
+    },
+    {
+      "id": "kid-air-heavy",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl on the balcony weighing an empty paper bag in her raised hand with a doubtful frown, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p043",
+          "speaker": "kid",
+          "text": "等一下，空氣也有重量吧？",
+          "emotion": "突然想到"
         }
       ]
     },
@@ -916,9 +1102,9 @@
       },
       "lines": [
         {
-          "id": "p043",
+          "id": "p044",
           "speaker": "chief",
-          "text": "第一件：雲周圍那團空氣本身更重。同樣一立方公里的空氣，大約有一百萬公噸。",
+          "text": "有，而且更重。同樣一立方公里的空氣，大約有一百萬公噸。",
           "emotion": "數字放慢"
         }
       ]
@@ -928,7 +1114,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl holding a pinch of sugar between two fingers above a big glass jug of water and squinting at it, soft kitchen light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still",
         "characters": [
           "kid"
@@ -936,7 +1122,7 @@
       },
       "lines": [
         {
-          "id": "p044",
+          "id": "p045",
           "speaker": "kid",
           "text": "所以那些水，只是混在空氣裡面的一點點？",
           "emotion": "恍然大悟一半"
@@ -948,7 +1134,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the chief holding up two fingers with a serious but kind face, standing by the whiteboard with the cube drawing, soft daylight",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "chief"
@@ -956,9 +1142,9 @@
       },
       "lines": [
         {
-          "id": "p045",
+          "id": "p046",
           "speaker": "chief",
-          "text": "對。第二件更重要：這些水不是一大塊，而是分成非常非常多顆。"
+          "text": "對。而且這些水不是一大塊，是分成非常非常多顆。"
         }
       ]
     },
@@ -972,7 +1158,7 @@
       },
       "lines": [
         {
-          "id": "p046",
+          "id": "p047",
           "speaker": "chief",
           "text": "一顆普通的雲滴，直徑大約百分之二公釐，比一根頭髮還細好幾倍。",
           "emotion": "數字放慢"
@@ -984,7 +1170,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl holding up a single strand of her own hair and studying it closely, sitting at a desk, soft window light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still",
         "characters": [
           "kid"
@@ -992,7 +1178,7 @@
       },
       "lines": [
         {
-          "id": "p047",
+          "id": "p048",
           "speaker": "kid",
           "text": "那它太小了，所以就沒有重量了？",
           "emotion": "很有把握的錯猜"
@@ -1004,7 +1190,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief shaking his head gently and holding his thumb and finger very close together, warm lamp light",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "chief"
@@ -1012,7 +1198,7 @@
       },
       "lines": [
         {
-          "id": "p048",
+          "id": "p049",
           "speaker": "chief",
           "text": "有重量，它也真的一直在往下掉。只是掉得非常、非常慢。",
           "emotion": "否定但溫和"
@@ -1024,7 +1210,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl on a balcony letting go of a feather and a pebble at the same time from her two raised hands, the pebble already lower than the feather, soft daylight",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still",
         "characters": [
           "kid"
@@ -1032,12 +1218,12 @@
       },
       "lines": [
         {
-          "id": "p049",
+          "id": "p050",
           "speaker": "chief",
           "text": "你想想看，一顆石頭和一根羽毛一起放手，哪個先落地？"
         },
         {
-          "id": "p050",
+          "id": "p051",
           "speaker": "kid",
           "text": "石頭啊。",
           "emotion": "理所當然"
@@ -1049,7 +1235,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the chief holding a tiny paper scrap in his palm in front of a desk fan, the scrap lifting off his palm, playful look, soft light",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "chief"
@@ -1057,7 +1243,7 @@
       },
       "lines": [
         {
-          "id": "p051",
+          "id": "p052",
           "speaker": "chief",
           "text": "東西越小，空氣擋住它的力量相對就越大。小到像雲滴那樣，空氣幾乎把它托住了。"
         }
@@ -1080,11 +1266,11 @@
             "每秒約 6–7 公尺"
           ]
         },
-        "source": "AMS 氣象學詞彙：終端速度"
+        "source": "華盛頓大學大氣科學課程；夏威夷大學大氣教科書"
       },
       "lines": [
         {
-          "id": "p052",
+          "id": "p053",
           "speaker": "chief",
           "text": "一顆雲滴在不動的空氣裡，一秒大概只掉一公分左右。",
           "emotion": "數字放慢"
@@ -1096,7 +1282,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl crouching on a garden path watching a snail crawl along a ruler laid on the ground, chin in her hands, soft overcast light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still",
         "characters": [
           "kid"
@@ -1104,9 +1290,9 @@
       },
       "lines": [
         {
-          "id": "p053",
+          "id": "p054",
           "speaker": "kid",
-          "text": "一秒一公分？那跟蝸牛差不多吧。",
+          "text": "那跟蝸牛差不多吧！",
           "emotion": "好笑"
         }
       ]
@@ -1116,7 +1302,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the chief pointing at a big wall clock with a thoughtful face, his other hand holding a blank folder, soft daylight",
-        "camera": "drift",
+        "camera": "tilt up",
         "visual": "still",
         "characters": [
           "chief"
@@ -1124,7 +1310,7 @@
       },
       "lines": [
         {
-          "id": "p054",
+          "id": "p055",
           "speaker": "chief",
           "text": "差不多。照這個速度，從一公里高的雲底掉到地上，要超過一天。"
         }
@@ -1135,12 +1321,12 @@
       "template": "shot",
       "data": {
         "prompt": "Extreme close-up of one tiny water droplet drifting down through dry air and shrinking into nothing, a few faint wisps around it, soft bright background",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "p055",
+          "id": "p056",
           "speaker": "chief",
           "text": "而且它還沒掉到，半路就蒸發掉了。"
         }
@@ -1151,7 +1337,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl on the balcony with her hands on her hips glaring up at a cloud that hasn't moved, soft afternoon light",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "kid"
@@ -1159,7 +1345,7 @@
       },
       "lines": [
         {
-          "id": "p056",
+          "id": "p057",
           "speaker": "kid",
           "text": "可是雲一整個下午都在，它也沒有慢慢變矮啊。",
           "emotion": "抓到漏洞"
@@ -1171,7 +1357,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief raising one finger and smiling as if a clue just came back to him, standing by the window, soft light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still",
         "characters": [
           "chief"
@@ -1179,7 +1365,7 @@
       },
       "lines": [
         {
-          "id": "p057",
+          "id": "p058",
           "speaker": "chief",
           "text": "因為那朵雲裡面，空氣不是靜止的。還記得那些一直往上送的熱空氣嗎？"
         }
@@ -1190,12 +1376,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide cutaway illustration of a growing puffy cloud seen from the side, big curved arrows of rising air sweeping up through its middle, tiny droplets riding the arrows, a small town far below, soft bright light",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "p058",
+          "id": "p059",
           "speaker": "chief",
           "text": "在一朵正在長高的積雲裡，往上衝的空氣，一秒可以走好幾公尺。"
         }
@@ -1206,18 +1392,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl inside a bright glass elevator pointing upward with a big grin as it rises past the floors, soft daylight",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still",
         "characters": [
           "kid"
         ]
       },
       "lines": [
-        {
-          "id": "p059",
-          "speaker": "chief",
-          "text": "雲滴一秒往下掉一公分，空氣一秒往上推好幾公尺。"
-        },
         {
           "id": "p060",
           "speaker": "kid",
@@ -1231,7 +1412,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief giving a satisfied nod with his arms folded, standing beside the whiteboard cube, soft daylight",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "chief"
@@ -1251,7 +1432,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl holding her thumb and finger slightly apart in front of one eye and peering through the gap, sitting on a windowsill, soft light",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still",
         "characters": [
           "kid"
@@ -1272,7 +1453,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl's open palm stretched out from under an arcade, one fat raindrop splashing on it, wet street blurred behind, soft overcast light",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "kid"
@@ -1291,7 +1472,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl shrugging with a casual unimpressed face, leaning against an arcade pillar, rain falling behind her, soft overcast light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still",
         "characters": [
           "kid"
@@ -1333,7 +1514,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl with her mouth wide open and her notebook slipping from her hands, standing under the arcade, soft overcast light",
-        "camera": "drift",
+        "camera": "tilt up",
         "visual": "still",
         "characters": [
           "kid"
@@ -1343,7 +1524,7 @@
         {
           "id": "p067",
           "speaker": "kid",
-          "text": "一滴雨，要一百萬顆雲滴？！",
+          "text": "一滴雨要那麼多顆？！",
           "emotion": "大驚"
         },
         {
@@ -1358,7 +1539,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl pretending to squeeze an invisible ball between her palms with a cheeky grin, sitting on the office stool, soft light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still",
         "characters": [
           "kid"
@@ -1378,7 +1559,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief chuckling and shaking his head, holding a blank folder, warm lamp light",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "chief"
@@ -1397,7 +1578,7 @@
       "template": "shot",
       "data": {
         "prompt": "Extreme close-up illustration of one larger round water droplet falling and bumping into smaller droplets below it, the small ones merging into it, soft white cloud background",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -1413,7 +1594,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl in a snowy park pushing a growing snowball that is already as tall as her knees, puffing with effort, soft grey winter light",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "kid"
@@ -1454,7 +1635,7 @@
       "template": "shot",
       "data": {
         "prompt": "Low angle wide shot of the icy, frosty top of a very tall cloud high in a pale blue sky, a single airliner passing far to the side, soft cold light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1470,7 +1651,7 @@
       "template": "shot",
       "data": {
         "prompt": "Extreme close-up of tiny glittering ice crystals floating next to round liquid water droplets inside a cold cloud, a soft pale blue glow",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -1486,7 +1667,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl holding an ice cube up to her eye in disbelief, sitting at a desk, soft window light",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still",
         "characters": [
           "kid"
@@ -1506,7 +1687,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief nodding with raised eyebrows, holding a frosty glass, soft lamp light",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "chief"
@@ -1525,7 +1706,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide illustration of a big six-armed snowflake drifting down out of a cloud and turning into a round raindrop as it falls past a warm layer toward green hills, soft light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1541,7 +1722,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl under an umbrella looking up at summer rain with a curious smile, one hand stretched out to catch drops, soft overcast light",
-        "camera": "drift",
+        "camera": "tilt up",
         "visual": "still",
         "characters": [
           "kid"
@@ -1557,7 +1738,7 @@
         {
           "id": "p081",
           "speaker": "chief",
-          "text": "有可能。夏天長得很高的雷雨雲裡，兩條路常常都有。"
+          "text": "有可能。夏天長得很高的雷雨雲裡，兩條路都可能發生。"
         }
       ]
     },
@@ -1580,7 +1761,7 @@
             "長大落下，融化成雨"
           ]
         },
-        "source": "NOAA JetStream：降水的形成"
+        "source": "USGS 水科學學校：降水與水循環"
       },
       "lines": [
         {
@@ -1595,7 +1776,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl hugging a big fluffy cushion and pretending to drop it on the floor, sitting on a sofa, mischievous face, soft light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still",
         "characters": [
           "kid"
@@ -1615,7 +1796,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief raising one eyebrow and pointing out of the window, soft afternoon light",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "chief"
@@ -1640,7 +1821,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a grey rain curtain falling from under a big cloud onto distant fields, a girl in a rice-field path watching it from far away, the cloud itself still floating above, soft bright light where she stands",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still",
         "characters": [
           "kid"
@@ -1659,7 +1840,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the chief pouring water from a jug in a slow thin stream into a glass, a calm explaining face, soft lamp light",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "chief"
@@ -1669,7 +1850,7 @@
         {
           "id": "p087",
           "speaker": "chief",
-          "text": "兩公釐的雨滴，一秒可以落下六、七公尺，比雲滴快好幾百倍。"
+          "text": "這樣的雨滴，一秒可以落下六、七公尺，比雲滴快好幾百倍。"
         }
       ]
     },
@@ -1678,7 +1859,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a big cloud still floating over a town while a curtain of rain pours from its base, a girl with an umbrella on a bridge watching, soft grey light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still",
         "characters": [
           "kid"
@@ -1697,7 +1878,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl at a window pressing her forehead against the glass, looking at two clouds outside, one raining and one white, soft afternoon light",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "kid"
@@ -1720,11 +1901,11 @@
     },
     {
       "id": "chief-how-high",
-      "chapter": "為什麼偏偏是下午",
+      "chapter": "下午三點，熱空氣衝最高",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the chief stretching his arm high above his head to tap the top of a tall bookshelf, looking up, soft daylight",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still",
         "characters": [
           "chief"
@@ -1743,7 +1924,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a park lawn on a fine morning with small flat puffs of cloud dotted in the sky, a girl flying a paper plane, mild soft light",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "kid"
@@ -1753,7 +1934,7 @@
         {
           "id": "p092",
           "speaker": "chief",
-          "text": "天氣好時那種小小、扁扁的白雲，長不高，水滴還沒時間長大，就在邊緣蒸發掉了。"
+          "text": "天氣好時那種小小、扁扁的白雲，長不高，水滴還來不及長大，雲就散掉了。"
         }
       ]
     },
@@ -1762,14 +1943,14 @@
       "template": "shot",
       "data": {
         "prompt": "Low angle wide shot of an enormous storm cloud towering over a city skyline, its top spreading out far above, one tiny airliner flying near its upper part, soft afternoon light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "p093",
           "speaker": "chief",
-          "text": "會下大雨的，是一路往上衝的雲。它的雲頂可以超過十公里，跟飛機飛的高度差不多。"
+          "text": "會下大雨的，是一路往上衝的雲。它的雲頂可以超過十公里，跟客機飛的高度差不多，甚至更高。"
         }
       ]
     },
@@ -1778,7 +1959,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl tilting her head all the way back to look straight up, her hood falling off, soft afternoon light",
-        "camera": "drift",
+        "camera": "tilt up",
         "visual": "still",
         "characters": [
           "kid"
@@ -1788,7 +1969,7 @@
         {
           "id": "p094",
           "speaker": "kid",
-          "text": "十公里！那要很多熱空氣才推得上去吧。",
+          "text": "那麼高！那要很多熱空氣才推得上去吧。",
           "emotion": "讚嘆"
         },
         {
@@ -1803,7 +1984,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl confidently pointing at a wall clock showing twelve, standing by a wall clock, big smug smile, soft light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still",
         "characters": [
           "kid"
@@ -1823,7 +2004,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief wagging one finger with a gentle smile, sitting at his desk, warm lamp light",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "chief"
@@ -1843,7 +2024,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl standing on a step stool watching a frying pan on a gas stove, holding her hand above the pan to feel the heat, soft kitchen light",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still",
         "characters": [
           "kid"
@@ -1873,7 +2054,7 @@
           },
           {
             "title": "下午",
-            "detail": "雲長到最高，開始下大雨"
+            "detail": "雲長到最高，常常開始下雨"
           }
         ],
         "source": "中央氣象署：午後雷陣雨"
@@ -1891,7 +2072,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a coastline in the late morning, a moist breeze blowing in from the sea, a fisherman holding his cap on, low hills inland behind him, soft hazy light",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -1907,7 +2088,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of green mountain slopes with puffy clouds building up right on the ridges in the early afternoon, one hiker resting on a rock and looking up at them, mild soft light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -1923,7 +2104,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl on the balcony at three in the afternoon pointing at a darkening tall cloud and turning back toward the room, alarmed, soft grey light",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "kid"
@@ -1943,7 +2124,7 @@
       "template": "shot",
       "data": {
         "prompt": "Low angle wide shot looking up at the thick dark-grey base of a huge cloud with bright white edges where sunlight still hits its sides, one bird flying underneath",
-        "camera": "push in",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -1959,7 +2140,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl sitting on the windowsill with her knees up, watching rain outside slowly stop, puzzled, soft light",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "kid"
@@ -1979,7 +2160,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief turning off a small desk fan with one finger and raising his eyebrows meaningfully, warm lamp light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still",
         "characters": [
           "chief"
@@ -1999,7 +2180,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide cutaway illustration of heavy rain falling out of a storm cloud with big curved arrows of cool air pouring down alongside it and spreading out across the ground, a small farmhouse below, soft grey light",
-        "camera": "drift",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2015,7 +2196,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl on a street corner with her hair and jacket blown sideways by a sudden cool gust, leaves flying past, a dark cloud behind her, soft grey light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still",
         "characters": [
           "kid"
@@ -2034,7 +2215,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl closing her eyes and smiling as cool wind blows her hood, standing in front of an open window, soft grey light",
-        "camera": "pan right",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "kid"
@@ -2054,7 +2235,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of the chief at the whiteboard drawing a downward arrow cutting off an upward arrow, looking back at the viewer, soft daylight",
-        "camera": "push in",
+        "camera": "tilt down",
         "visual": "still",
         "characters": [
           "chief"
@@ -2073,14 +2254,14 @@
       "template": "big",
       "data": {
         "kicker": "一個單獨的雷雨胞",
-        "text": "常常 **約 1 小時**",
+        "text": "常常 **不到 1 小時**",
         "sub": "長大、下雨、散掉"
       },
       "lines": [
         {
           "id": "p110",
           "speaker": "chief",
-          "text": "一個單獨的雷雨雲，從長大、下雨到散掉，常常一個小時左右。",
+          "text": "還記得你問要多久嗎？一個單獨的雷雨雲，從長大、下雨到散掉，常常不到一個小時。",
           "emotion": "數字放慢"
         }
       ]
@@ -2090,7 +2271,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief holding up an open palm in a gentle 'wait' gesture, a sincere face, soft daylight",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "chief"
@@ -2109,7 +2290,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a hot clear afternoon over a beach town with not a single cloud in the sky, a girl eating a popsicle on a seawall, mild hazy light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still",
         "characters": [
           "kid"
@@ -2128,7 +2309,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a girl chewing on her pencil and looking at a sky full of clouds through the window, thoughtful, soft afternoon light",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "kid"
@@ -2144,30 +2325,11 @@
       ]
     },
     {
-      "id": "chief-forecast",
-      "chapter": "下次抬頭，看這三件事",
+      "id": "kid-top-bubbling",
+      "chapter": "頭頂平掉了，涼風來了",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of the chief holding a blank weather map and pointing to it, a friendly face, soft daylight",
-        "camera": "push in",
-        "visual": "still",
-        "characters": [
-          "chief"
-        ]
-      },
-      "lines": [
-        {
-          "id": "p114",
-          "speaker": "chief",
-          "text": "預報是氣象署的工作。不過有三件事，你自己抬頭就看得到。"
-        }
-      ]
-    },
-    {
-      "id": "sign-cauliflower",
-      "template": "shot",
-      "data": {
-        "prompt": "Low angle wide shot of a towering cloud with round bulging cauliflower lumps still pushing upward, one girl on a school playground shading her eyes to look at it, soft afternoon light",
+        "prompt": "Low angle medium shot of a girl on the balcony leaning over the railing and pointing at a towering cloud whose top is still bulging upward in round lumps, soft afternoon light",
         "camera": "pan left",
         "visual": "still",
         "characters": [
@@ -2176,9 +2338,29 @@
       },
       "lines": [
         {
+          "id": "p114",
+          "speaker": "kid",
+          "text": "所長！它的頭頂還在一直往上冒！",
+          "emotion": "實況轉播"
+        }
+      ]
+    },
+    {
+      "id": "chief-phone-call",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief holding a phone to his ear by the window and smiling, a blank weather map on the wall behind him, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
           "id": "p115",
           "speaker": "chief",
-          "text": "第一，看它的頭頂。如果像花椰菜一樣一直往上冒，裡面的空氣還在往上衝。"
+          "text": "還記得花椰菜嗎？那就是裡面的空氣還在往上衝。預報是氣象署的事，可是你現在自己就看得到。"
         }
       ]
     },
@@ -2186,15 +2368,35 @@
       "id": "sign-anvil",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a huge storm cloud whose flat top spreads out sideways like an anvil far above a plain, one lone tree below, soft afternoon light",
-        "camera": "pull out",
+        "prompt": "Wide shot of a huge storm cloud whose flat top spreads out sideways like an anvil far above apartment rooftops, one balcony with laundry in the foreground, soft afternoon light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "p116",
+          "speaker": "kid",
+          "text": "現在頭頂變平了，往旁邊攤開！",
+          "emotion": "驚訝"
+        }
+      ]
+    },
+    {
+      "id": "chief-anvil",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief raising his hand flat above his head as if touching a ceiling, a knowing look, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p117",
           "speaker": "chief",
-          "text": "第二，頭頂被壓平、往旁邊攤開，像一個鐵砧，代表它已經長到撞上一層很難再往上的高度。"
+          "text": "像一個鐵砧。它已經長到撞上一層很難再往上的高度。"
         }
       ]
     },
@@ -2203,26 +2405,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a girl on the balcony with laundry flapping wildly beside her in a sudden cool wind, her hands grabbing a towel, soft grey light",
-        "camera": "drift",
-        "visual": "still",
-        "characters": [
-          "kid"
-        ]
-      },
-      "lines": [
-        {
-          "id": "p117",
-          "speaker": "chief",
-          "text": "第三，突然吹來一陣涼風。那陣風常常就是雨帶下來的冷空氣，跑在雨的前面。"
-        }
-      ]
-    },
-    {
-      "id": "kid-memorise",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a girl counting on three fingers and then running toward the balcony door with a laundry basket, soft grey light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still",
         "characters": [
           "kid"
@@ -2232,17 +2415,37 @@
         {
           "id": "p118",
           "speaker": "kid",
-          "text": "花椰菜、平頭、涼風。我記住了！先收衣服！",
-          "emotion": "笑，加快"
+          "text": "啊，突然好涼！衣服都飛起來了！",
+          "emotion": "叫出來"
         }
       ]
     },
     {
-      "id": "arcade-rain",
+      "id": "chief-told-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a girl squatting under a shop arcade watching big raindrops splash on the pavement in front of her, chin on her knees, soft overcast light",
-        "camera": "pan right",
+        "prompt": "Medium close-up of the chief chuckling and pointing at the phone in his hand, warm lamp light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p119",
+          "speaker": "chief",
+          "text": "還記得那陣涼風嗎？冷空氣已經跑在雨的前面了。我一開始說什麼？",
+          "emotion": "得意"
+        }
+      ]
+    },
+    {
+      "id": "kid-laundry-run",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl running back inside from the balcony with a laundry basket piled high in her arms, the first raindrops hitting the railing behind her, soft grey light",
+        "camera": "tilt down",
         "visual": "still",
         "characters": [
           "kid"
@@ -2250,9 +2453,29 @@
       },
       "lines": [
         {
-          "id": "p119",
+          "id": "p120",
           "speaker": "kid",
-          "text": "對了，所長，雨滴是不是長得像眼淚那樣，尖尖的？",
+          "text": "收衣服！",
+          "emotion": "笑，加快"
+        }
+      ]
+    },
+    {
+      "id": "palm-big-drop",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl's open palm reaching out from under the balcony roof, a fat raindrop splashing on it, soft grey light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p121",
+          "speaker": "kid",
+          "text": "好大顆！雨滴是不是像眼淚那樣，尖尖的？",
           "emotion": "隨口一問"
         }
       ]
@@ -2262,7 +2485,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium close-up of the chief holding up a drawing of a teardrop on a blank card and shaking his head with a smile, soft lamp light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still",
         "characters": [
           "chief"
@@ -2270,9 +2493,9 @@
       },
       "lines": [
         {
-          "id": "p120",
+          "id": "p122",
           "speaker": "chief",
-          "text": "大家畫雨都這樣畫，可是真的雨滴不是。"
+          "text": "大家都這樣畫，可是不是。還記得空氣會擋住往下掉的東西嗎？雨滴掉得越快，空氣擋得越用力。"
         }
       ]
     },
@@ -2299,14 +2522,14 @@
       },
       "lines": [
         {
-          "id": "p121",
+          "id": "p123",
           "speaker": "chief",
-          "text": "小的雨滴幾乎是圓的。大一點的，往下掉時底部被空氣壓扁，像一個漢堡麵包。"
+          "text": "小的幾乎是圓的。大一點的，落下時底部被空氣壓扁，像漢堡麵包。"
         },
         {
-          "id": "p122",
+          "id": "p124",
           "speaker": "chief",
-          "text": "再大下去，就會被空氣扯開，碎成好幾顆。"
+          "text": "再大，就被扯開，碎成好幾顆。所以雨滴不會一直長下去。"
         }
       ]
     },
@@ -2314,45 +2537,8 @@
       "id": "kid-burger",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a girl holding a hamburger bun up next to her face and grinning, sitting at a small café table, soft daylight",
-        "camera": "tilt down",
-        "visual": "still",
-        "characters": [
-          "kid"
-        ]
-      },
-      "lines": [
-        {
-          "id": "p123",
-          "speaker": "kid",
-          "text": "漢堡麵包！",
-          "emotion": "大笑"
-        }
-      ]
-    },
-    {
-      "id": "splash-million",
-      "template": "shot",
-      "data": {
-        "prompt": "Extreme close-up of one raindrop splashing into a puddle on a pavement, tiny crown of water around it, soft overcast light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "p124",
-          "speaker": "chief",
-          "text": "下次你在騎樓下看雨，還記得那一百萬顆嗎？每一顆打在地上的，都是它們湊起來的。"
-        }
-      ]
-    },
-    {
-      "id": "kid-recap-1",
-      "chapter": "原來如此",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a girl standing at a big desk reading from her notebook like giving a report, serious little face, soft daylight",
-        "camera": "drift",
+        "prompt": "Close-up of a girl holding a hamburger bun up next to her face and grinning, sitting at a small kitchen table, soft daylight",
+        "camera": "push in",
         "visual": "still",
         "characters": [
           "kid"
@@ -2362,17 +2548,18 @@
         {
           "id": "p125",
           "speaker": "kid",
-          "text": "所以，雲有水，可是水碎成好多小小顆，空氣把它們托在天上。",
-          "emotion": "整理，像做報告"
+          "text": "所以打在我手上的，是一顆漢堡麵包！",
+          "emotion": "大笑"
         }
       ]
     },
     {
-      "id": "kid-recap-2",
+      "id": "rain-stops",
+      "chapter": "雨停了，衣服收好了",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a girl flipping to the next page of her notebook and pointing at it, standing at a big desk, soft daylight",
-        "camera": "push in",
+        "prompt": "Wide shot of the apartment balcony after rain, wet railing glistening, the big cloud thinning and breaking up in the sky, a girl stepping back outside with her notebook, soft clearing light",
+        "camera": "pan left",
         "visual": "still",
         "characters": [
           "kid"
@@ -2382,16 +2569,17 @@
         {
           "id": "p126",
           "speaker": "kid",
-          "text": "小水滴互相撞、慢慢長大，長到空氣托不住，才變成雨掉下來。"
+          "text": "衣服都收進來了，雨也停了。真的不到一個小時。",
+          "emotion": "有點不敢相信"
         }
       ]
     },
     {
-      "id": "chief-recap",
+      "id": "chief-stamp",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of the chief listening with a proud smile, holding a small rubber stamp in one hand, warm lamp light",
-        "camera": "pan left",
+        "prompt": "Medium close-up of the chief lifting a small red rubber stamp over a blank folder on his desk with a satisfied smile, warm lamp light",
+        "camera": "pull out",
         "visual": "still",
         "characters": [
           "chief"
@@ -2401,7 +2589,27 @@
         {
           "id": "p127",
           "speaker": "chief",
-          "text": "而夏天的下午，地面最熱，熱空氣衝得最高，雲才長得夠大，一口氣倒下來。"
+          "text": "就像剛剛說的，引擎關掉，雲就散了。打在你手上的每一顆，都是那一百萬顆湊起來的。"
+        }
+      ]
+    },
+    {
+      "id": "kid-notebook-done",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl closing her notebook with both hands and beaming, standing on the wet balcony, soft clearing light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p128",
+          "speaker": "kid",
+          "text": "還記得那些被托住的小水滴嗎？原來它們不是不會掉，是一直在等長大。",
+          "emotion": "自己想通"
         }
       ]
     },
@@ -2412,26 +2620,26 @@
         "title": "原來如此！",
         "cta": "訂閱原來如此事務所",
         "lines": [
-          "雲有水，但碎成一百萬分之一的小顆"
+          "雲有水，但碎成數不完的小水滴"
         ]
       },
       "lines": [
         {
-          "id": "p128",
+          "id": "p129",
           "speaker": "kid",
           "text": "原來如此！",
           "emotion": "開心大聲"
         },
         {
-          "id": "p129",
+          "id": "p130",
           "speaker": "chief",
           "text": "你家那邊的午後雷陣雨，通常幾點開始？留言告訴我們。",
           "emotion": "問句上揚，像聊天"
         },
         {
-          "id": "p130",
+          "id": "p131",
           "speaker": "chief",
-          "text": "我們每一集，都從生活裡一個為什麼找到答案。想一起找，就訂閱原來如此事務所。",
+          "text": "想一起把生活裡的為什麼找到底，就訂閱原來如此事務所。",
           "emotion": "誠懇"
         }
       ]
