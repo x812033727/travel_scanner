@@ -1,0 +1,153 @@
+{
+ "base": "wangjia-couple-e01",
+ "intros": {
+  "afu": "the photo of A-Fu, a real Pembroke Welsh Corgi in blue and white striped pyjamas: keep his face, fur and pyjamas, change the pose and place as described",
+  "zhenzhu": "the photo of Zhenzhu, a real red Shiba Inu in a pink floral dress: keep her face, fur and dress, change the pose and place as described"
+ },
+ "title": "凌晨三點打電動的老公，隔天被包成了嬰兒 #汪家夫妻",
+ "description": "老公凌晨三點打電動大叫。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "汪家夫妻",
+  "柯基",
+  "柴犬",
+  "夫妻日常",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "凌晨三點",
+ "thumb": "s05-crib",
+ "brief": "# 汪家夫妻 EP4〈凌晨三點打電動〉\n\n## 故事前提\n\n凌晨三點，阿福戴著大耳機在沙發上打電動大叫；走廊盡頭敷著白面膜的珍珠慢慢歪頭。隔天早上，阿福被包成嬰兒躺在嬰兒床、含著奶嘴，頭上的吊鈴是一支支迷你遊戲手把。當天晚上打電動大叫的換成珍珠，阿福在嬰兒床裡聽著，吊鈴上的一支手把慢慢轉過來對著他。\n\n## 角色\n\n- 阿福（afu）、珍珠（zhenzhu）：同系列定裝照。\n\n## 站主觀點\n\n零台詞；集數規劃盲評 79（`docs/videos/wangjia-couple/episodes.md` 的 EP2）。採納評審建議：開頭加一秒指針時鐘指三點（只有刻度、沒有數字）、s06 珍珠腳邊也散一地零食空袋、s07 吊鈴上的迷你手把轉過來對著他。\n\n## 格式\n\n- 9:16，約 16 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：凌晨三點打電動\n一行說明：指針指三點 → 打電動大叫 → 走廊面膜歪頭 → 耳朵貼平 → 被包成嬰兒、手把吊鈴 → 當晚換老婆打 → 吊鈴的手把轉向他。\n開場鉤子：一個只有刻度的時鐘，指針指著三點，藍光一閃一閃。\n",
+ "sfx_extra": {
+  "buttons": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=white:d=1.5:a=0.5",
+   "-af",
+   "tremolo=f=18:d=1,highpass=f=1500,volume=-6dB"
+  ],
+  "musicbox": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.2*sin(2*PI*1568*t)*exp(-5*mod(t,0.5))+0.15*sin(2*PI*2093*t)*exp(-5*mod(t+0.25,0.5))':d=3:s=48000"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-clock",
+   "chapter": "凌晨三點",
+   "camera": "Insert close-up, locked",
+   "chars": [],
+   "dur": 1.4,
+   "ff": "Insert close-up of a plain round wall clock with no numbers, only tick marks, its hour hand pointing at three and minute hand at the top, on a dark living room wall flickering with blue light from an off-screen TV.",
+   "clip": "The clock hands stay at three o'clock; blue TV light flickers across the wall and the clock face. The camera holds a static shot.",
+   "sfx": [
+    [
+     "buttons",
+     0.3,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s02-game",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot of a dark living room at night: A-Fu the Corgi himself sits cross-legged on a grey sofa in his striped pyjamas wearing big over-ear headphones, holding a plain game controller with no logos, his face lit by blue light from an off-screen TV, crumpled empty snack bags with no labels scattered at his feet, mouth wide open yelling.",
+   "clip": "The Corgi shown in <Picture 1> mashes the controller buttons frantically, his whole body swinging left and right with the game, mouth wide open in a yell. The camera holds a static shot.",
+   "sfx": [
+    [
+     "buttons",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s03-door",
+   "camera": "Wide shot, locked",
+   "chars": [
+    "zhenzhu"
+   ],
+   "dur": 2.0,
+   "ff": "Wide shot of a dark hallway at night: at the far end Zhenzhu the Shiba herself stands motionless in a bedroom doorway, a bathrobe over her pink floral dress, a plain white sheet face mask covering her face, her two eyes reflecting faint blue light.",
+   "clip": "The Shiba shown in <Picture 1> stands perfectly still in the dark doorway, then very slowly tilts her head to one side. The camera holds a static shot.",
+   "sfx": [
+    [
+     "tension",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s04-freeze",
+   "camera": "Close-up, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 2.0,
+   "ff": "Close-up of A-Fu the Corgi himself in big over-ear headphones, mouth still wide open, lit by blue TV light, thumbs on a plain game controller.",
+   "clip": "The Corgi shown in <Picture 1> stops pressing the buttons; his ears slowly flatten back one notch at a time; his eyes slowly slide toward the dark hallway at the left edge of the frame. His mouth stays open. The camera holds a static shot."
+  },
+  {
+   "id": "s05-crib",
+   "chapter": "隔天早上",
+   "camera": "Wide shot, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 3.0,
+   "ff": "Wide shot of a sunny bedroom in the morning: A-Fu the Corgi himself is swaddled tightly in a pink baby blanket up to his neck, only his head showing, lying inside a white wooden baby crib, a pacifier in his mouth; above the crib hangs a baby mobile made of tiny toy game controllers with no buttons or logos.",
+   "clip": "The Corgi shown in <Picture 1> lies still, swaddled in the crib; the mobile of tiny toy controllers slowly turns above him; he blinks twice and the pacifier bobs twice. The camera holds a static shot.",
+   "sfx": [
+    [
+     "musicbox",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s06-again",
+   "chapter": "當天晚上",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "zhenzhu"
+   ],
+   "dur": 2.6,
+   "ff": "Medium shot of the same dark living room sofa at night: Zhenzhu the Shiba herself sits cross-legged on the grey sofa in a bathrobe with a plain white sheet face mask, wearing big over-ear headphones, holding a plain game controller with no logos, lit by blue light from an off-screen TV, crumpled empty snack bags with no labels at her feet, mouth wide open yelling.",
+   "clip": "The Shiba shown in <Picture 1> mashes the controller buttons frantically, her whole body swinging left and right with the game, mouth wide open in a yell. The camera holds a static shot.",
+   "sfx": [
+    [
+     "buttons",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s07-mobile",
+   "camera": "Close-up, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 2.4,
+   "ff": "Close-up of A-Fu the Corgi himself swaddled in a pink baby blanket in a dark baby crib at night, a pacifier in his mouth, eyes wide open; one tiny toy game controller with no buttons or logos hangs from the mobile just above his face.",
+   "clip": "The Corgi shown in <Picture 1> lies awake listening; the tiny toy controller hanging above slowly turns to face him; he sucks the pacifier slowly twice. The camera holds a static shot.",
+   "sfx": [
+    [
+     "buttons",
+     0.0,
+     -14
+    ],
+    [
+     "musicbox",
+     0.8,
+     -8
+    ]
+   ]
+  }
+ ],
+ "slug": "wangjia-couple-e04"
+}

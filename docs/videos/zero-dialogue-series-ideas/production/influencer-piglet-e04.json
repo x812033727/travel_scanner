@@ -1,0 +1,151 @@
+{
+ "base": "influencer-piglet-e01",
+ "intros": {
+  "fenfen": "the photo of Fenfen, a real pink pig standing upright: keep her face and skin, change the pose and place as described",
+  "capy": "the photo of the capybara boyfriend, a real capybara in a green bucket hat and grey T-shirt: keep his face, fur, hat and shirt, change the pose and place as described"
+ },
+ "title": "櫻花雨美照的真相 #網美小豬",
+ "description": "每一張美照背後，都有一個面無表情的男友。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "網美小豬",
+  "網美",
+  "水豚",
+  "小豬",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "櫻花真相",
+ "thumb": "s04-boyfriend",
+ "brief": "# 網美小豬 EP4〈櫻花雨〉\n\n## 故事前提\n\n粉粉在滿天櫻花雨裡伸手接花瓣。拉遠：灰濛濛的機車停車場，櫻花樹是一棵枯樹纏滿粉紅衛生紙和塑膠袋，花瓣是碎紙；水豚男友站在梯子上，拿吹葉機往一箱粉紅碎紙裡吹，滿臉黏著碎紙。她重擺姿勢，一整箱碎紙從天而降，把她埋成一座粉紅小山。\n\n## 角色\n\n- 粉粉（fenfen）、水豚男友（capy）：同系列定裝照；粉粉穿系列招牌的白蕾絲洋裝、大草帽配粉紅緞帶、珍珠髮夾。\n\n## 站主觀點\n\n零台詞；系列公式：唯美 → 閃光一瞄 → 拉遠揭曉 → 男友 → 成品照破綻 → 重擺被整。EP4 題目由本批企劃，照系列公式。\n\n## 格式\n\n- 9:16，約 16 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：櫻花雨\n一行說明：櫻花雨接花瓣 → 閃光一瞄 → 停車場枯樹纏衛生紙 → 男友拿吹葉機吹碎紙 → 成品照櫻花叢裡有水豚臉 → 一整箱碎紙把她埋掉。\n開場鉤子：櫻花雨裡，有一片花瓣是方方正正的粉紅衛生紙。\n",
+ "sfx_extra": {
+  "blower": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=brown:d=2:a=0.4",
+   "-af",
+   "tremolo=f=30:d=0.6,highpass=f=200,afade=t=out:st=1.6:d=0.4"
+  ],
+  "thud": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.9*sin(2*PI*90*t)*exp(-12*t)':d=0.5:s=48000"
+  ],
+  "whoosh": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=pink:d=0.8:a=0.8",
+   "-af",
+   "bandpass=f=800:width_type=o:w=2,afade=t=in:d=0.4,afade=t=out:st=0.4:d=0.4,volume=4dB"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-sakura",
+   "chapter": "美照",
+   "camera": "Close-up, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.6,
+   "ff": "Close-up of Fenfen the pink pig herself in a white lace sundress, a wide straw sun hat with a long pink satin ribbon and a pearl hair clip, a dreamy three-quarter profile smile, pink cherry blossom petals drifting all around her in soft focus, a blooming cherry tree behind her; one falling petal near the corner is a torn square of pink tissue paper.",
+   "clip": "The pink pig shown in <Picture 1> smiles dreamily and reaches one hoof up to catch a falling petal; petals drift down around her and the square scrap of pink tissue flutters past in the corner. The camera holds a static shot."
+  },
+  {
+   "id": "s02-flash",
+   "camera": "Medium close-up, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.0,
+   "ff": "Medium close-up of Fenfen the pink pig herself in a white lace sundress and wide straw sun hat with a pink ribbon, frozen in a dreamy profile pose, pink petals drifting around her.",
+   "clip": "A bright camera flash fires once; the pink pig shown in <Picture 1> keeps her face frozen and only her eyes slowly slide to the lower right; one eyebrow twitches. The camera holds a static shot.",
+   "sfx": [
+    [
+     "shutter",
+     0.15
+    ]
+   ]
+  },
+  {
+   "id": "s03-lot",
+   "chapter": "真相",
+   "camera": "Wide shot, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 3.0,
+   "ff": "Wide shot of a plain concrete scooter parking lot behind an apartment block on a grey afternoon, rows of parked scooters with no logos: Fenfen the pink pig herself in her white lace sundress and straw hat poses under a bare dead tree whose branches are wrapped with pink toilet paper and pink plastic bags; shredded pink paper swirls around her, blown in from the left edge of the frame.",
+   "clip": "The pink pig shown in <Picture 1> holds her dreamy pose; shredded pink paper swirls around her; a long streamer of pink toilet paper unrolls from a branch and flaps in the wind. The camera holds a static shot.",
+   "sfx": [
+    [
+     "recordscratch",
+     0.0
+    ],
+    [
+     "blower",
+     0.3,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s04-boyfriend",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "capy"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot in the grey scooter parking lot of the capybara boyfriend himself standing on top of a stepladder, holding a leaf blower aimed into an open cardboard box full of shredded pink paper, pink paper bits stuck all over his face, fur and green bucket hat, a power bank hanging from his neck, completely deadpan.",
+   "clip": "The capybara shown in <Picture 1> holds the leaf blower into the box as pink shreds blast up and away; a pink paper bit lands on his nose; his whiskers twitch; his deadpan face does not change. The camera holds a static shot.",
+   "sfx": [
+    [
+     "blower",
+     0.0,
+     -4
+    ]
+   ]
+  },
+  {
+   "id": "s05-photo",
+   "chapter": "成品",
+   "camera": "Insert, slow push in",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.4,
+   "ff": "The finished photo filling the vertical frame with a thin white photo border: Fenfen the pink pig in a white lace sundress and straw hat under a dreamy blooming cherry tree in a shower of petals, picture perfect like a magazine cover; among the pink blossoms in the tree crown, a deadpan capybara face in a green bucket hat covered in pink petals peeks out.",
+   "clip": "The photo shown in <Picture 1> holds still; the capybara face among the blossoms slowly blinks once and a petal slides off his nose. The camera pushes in with small amplitude at slow speed.",
+   "sfx": [
+    [
+     "shutter",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s06-dump",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.8,
+   "in": 0.5,
+   "ff": "Medium shot in the grey scooter parking lot of Fenfen the pink pig herself in her white lace sundress and straw hat, taking her dreamy profile pose again under the bare tree wrapped in pink toilet paper.",
+   "clip": "The pink pig shown in <Picture 1> takes her dreamy pose; suddenly a huge mass of shredded pink paper dumps down on her from above the frame and buries her into a pink mound up to her snout; she stays frozen, smile unchanged. The camera holds a static shot.",
+   "sfx": [
+    [
+     "whoosh",
+     0.2
+    ],
+    [
+     "thud",
+     0.7
+    ]
+   ]
+  }
+ ],
+ "slug": "influencer-piglet-e04"
+}

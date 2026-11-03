@@ -1,0 +1,140 @@
+{
+ "base": "shechu-hell-e01",
+ "intros": {
+  "ajin": "the photo of A-Jin, a real Golden Retriever in a white office shirt with a crooked blue tie and a blank ID card: keep his face, fur, shirt, tie and card, change the pose and place as described",
+  "miaozong": "the photo of Boss Miao, a real chubby orange tabby cat in a grey suit with a gold tie: keep his face, fur and suit, change the pose and place as described"
+ },
+ "title": "午休回來，貓老闆睡在我的鍵盤上 #社畜地獄",
+ "description": "員工是狗，老闆是貓。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "社畜地獄",
+  "社畜",
+  "貓老闆",
+  "黃金獵犬",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "午休",
+ "thumb": "s04-keyboard",
+ "brief": "# 社畜地獄 EP5〈午休〉\n\n## 故事前提\n\n阿金的座位曬到一片暖暖的陽光，他伸個懶腰、抱著頸枕去午休。玻璃辦公室門邊，喵總的眼睛鎖定那片陽光。阿金回來，笑容垮下來：喵總四腳朝天睡在他的鍵盤上。阿金只好抱著筆電坐到印表機旁的冷角落，冷氣對著他吹。陽光慢慢移到他身上，他鬆了一口氣——辦公桌上，喵總睜開一隻眼，盯著那片陽光。\n\n## 角色\n\n- 阿金（ajin）、喵總（miaozong）：同系列定裝照。\n\n## 站主觀點\n\n零台詞；貓的天性：搶最暖的位置、坐鍵盤。\n\n## 格式\n\n- 9:16，約 17 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：午休\n一行說明：座位曬太陽、去午休 → 喵總盯上陽光 → 阿金回來笑容垮掉 → 老闆睡在鍵盤上 → 阿金縮在冷角落 → 陽光移過來 → 老闆睜開一隻眼。\n開場鉤子：黃金獵犬的座位被午後陽光曬得暖洋洋。\n",
+ "sfx_extra": {
+  "aircon": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=pink:d=2.5:a=0.4",
+   "-af",
+   "lowpass=f=1200,afade=t=in:d=0.3,afade=t=out:st=2.0:d=0.5,volume=-4dB"
+  ],
+  "typing": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=white:d=2:a=0.5",
+   "-af",
+   "tremolo=f=14:d=1,highpass=f=2000,volume=-4dB,afade=t=out:st=1.7:d=0.3"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-sun",
+   "chapter": "午休",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.6,
+   "ff": "Medium shot of A-Jin the Golden Retriever himself at his grey office desk bathed in a warm beam of afternoon sunlight from the window, in his white shirt and crooked tie, holding a neck pillow, the monitor turned away from the camera.",
+   "clip": "The Golden Retriever shown in <Picture 1> stretches happily in the warm sunbeam, tail wagging, tucks the neck pillow under his arm and walks out of frame to the left. The camera holds a static shot."
+  },
+  {
+   "id": "s02-sneak",
+   "camera": "Close-up, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 2.2,
+   "ff": "Close-up of Boss Miao the orange tabby cat himself peeking around the edge of his glass office door in his grey suit, eyes fixed on something bright off screen, warm light on his face.",
+   "clip": "The cat shown in <Picture 1> stares without blinking; his pupils narrow to slits; his whiskers twitch and he slowly slides out from behind the door. The camera holds a static shot.",
+   "sfx": [
+    [
+     "dun",
+     0.0,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s03-return",
+   "chapter": "回來",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.0,
+   "ff": "Medium shot of A-Jin the Golden Retriever himself walking back into the office holding a neck pillow, a refreshed smile.",
+   "clip": "The Golden Retriever shown in <Picture 1> walks in, stops dead, and stares down at his desk off screen; his smile drops and the neck pillow slips from his paw. The camera holds a static shot."
+  },
+  {
+   "id": "s04-keyboard",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 3.0,
+   "ff": "Medium shot of A-Jin's grey office desk in the warm sunbeam: Boss Miao the orange tabby cat himself is sprawled belly-up asleep across the keyboard in his grey suit, paws in the air, gold tie clip glinting, the monitor turned away from the camera.",
+   "clip": "The cat shown in <Picture 1> sleeps belly-up on the keyboard in the sunbeam; his belly rises and falls; one hind paw twitches and presses the keys. The camera holds a static shot.",
+   "sfx": [
+    [
+     "typing",
+     0.3,
+     -10
+    ]
+   ]
+  },
+  {
+   "id": "s05-corner",
+   "chapter": "角落",
+   "camera": "Wide shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.6,
+   "ff": "Wide shot of a dim cold office corner beside a grey printer: A-Jin the Golden Retriever himself sits on the floor with a laptop on his knees, its screen facing away, wearing the neck pillow, shivering under an air conditioner vent blowing down on him, his fur ruffled.",
+   "clip": "The Golden Retriever shown in <Picture 1> shivers and types slowly on the laptop as the cold air ruffles his fur; he sniffles and hunches his shoulders. The camera holds a static shot.",
+   "sfx": [
+    [
+     "aircon",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s06-warm",
+   "camera": "Close-up, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.2,
+   "ff": "Close-up of A-Jin the Golden Retriever himself sitting on the floor in the dim office corner wearing the neck pillow, a patch of warm sunlight creeping across the floor toward him.",
+   "clip": "The Golden Retriever shown in <Picture 1> watches the warm patch of sunlight slide slowly onto his face; he closes his eyes with a relieved smile. The camera holds a static shot."
+  },
+  {
+   "id": "s07-eye",
+   "camera": "Close-up, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 2.4,
+   "ff": "Close-up of Boss Miao the orange tabby cat himself lying belly-up asleep on a keyboard in his grey suit, now in shade.",
+   "clip": "The cat shown in <Picture 1> opens one eye, turns his head and stares fixedly toward the bright light off screen; his pupil narrows to a slit. The camera holds a static shot.",
+   "sfx": [
+    [
+     "dun",
+     1.2
+    ]
+   ]
+  }
+ ],
+ "slug": "shechu-hell-e05"
+}

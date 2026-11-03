@@ -1,0 +1,131 @@
+{
+ "base": "wangjia-couple-e01",
+ "intros": {
+  "afu": "the photo of A-Fu, a real Pembroke Welsh Corgi in blue and white striped pyjamas: keep his face, fur and pyjamas, change the pose and place as described",
+  "zhenzhu": "the photo of Zhenzhu, a real red Shiba Inu in a pink floral dress: keep her face, fur and dress, change the pose and place as described"
+ },
+ "title": "老婆說五分鐘就好，老公等到頭上築了鳥巢 #汪家夫妻",
+ "description": "老公在玄關催老婆出門。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "汪家夫妻",
+  "柯基",
+  "柴犬",
+  "夫妻日常",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "等妳出門",
+ "thumb": "s03-cobweb",
+ "brief": "# 汪家夫妻 EP3〈等妳出門〉\n\n## 故事前提\n\n阿福在玄關敲錶敲到錶面裂開、翻白眼嘆氣催珍珠出門；浴室門開一條縫，珍珠只畫好一隻眼，默默把門關上鎖起來。下一格阿福還站在原地，長出拖地的白鬍子、全身蜘蛛網、頭頂鳥巢裡三隻雛鳥，窗外在下雪。他吸一口氣想再嘆，雛鳥同時瞪他。最後浴室門終於打開，一隻粉紅拖鞋踏出來——停一拍，又縮回去。\n\n## 角色\n\n- 阿福（afu）、珍珠（zhenzhu）：同系列定裝照。這一集珍珠只有半張化好妝的臉與一隻腳入鏡。\n\n## 站主觀點\n\n零台詞；集數規劃盲評 85（`docs/videos/wangjia-couple/episodes.md` 的 EP7）。採納導演建議：把「拖鞋踏出又縮回」這個最強的時機放到最後（原本的 s04、s05 對調），不加鏡、不加角色。\n\n## 格式\n\n- 9:16，約 14 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：等妳出門\n一行說明：敲錶嘆氣 → 半邊眼妝、鎖門 → 等到白鬍子、蜘蛛網、鳥巢 → 想再嘆氣被雛鳥瞪 → 拖鞋踏出又縮回。\n開場鉤子：柯基敲手錶敲到錶面裂開。\n",
+ "sfx_extra": {
+  "lock": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.7*sin(2*PI*1500*t)*exp(-70*t)+0.5*sin(2*PI*900*(t-0.08))*exp(-70*(t-0.08))*gt(t,0.08)':d=0.3:s=48000"
+  ],
+  "tap": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.6*sin(2*PI*1800*t)*exp(-90*mod(t,0.22))*lt(t,0.66)':d=0.7:s=48000"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-tap",
+   "chapter": "催",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 3.0,
+   "ff": "Medium shot of a small apartment entryway by the front door: A-Fu the Corgi himself stands upright in a brown jacket over his striped pyjamas, sneakers on, plain car keys dangling from one paw, a plain wristwatch with no numbers on his other wrist, an impatient face.",
+   "clip": "The Corgi shown in <Picture 1> taps the glass of his wristwatch hard again and again until a crack appears on it, rolls his eyes toward the right edge of the frame and lets out a huge sigh, his round belly sinking. The camera holds a static shot.",
+   "sfx": [
+    [
+     "tap",
+     0.2
+    ],
+    [
+     "pop",
+     1.4,
+     -8
+    ]
+   ]
+  },
+  {
+   "id": "s02-door",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "zhenzhu"
+   ],
+   "dur": 2.4,
+   "ff": "Medium shot of a white bathroom door opened only a narrow crack: Zhenzhu the Shiba herself peeks out through the gap, heavy dramatic eye makeup on only her left eye, her right eye bare, a makeup brush in her paw, a blank stare.",
+   "clip": "The Shiba shown in <Picture 1> stares through the gap without blinking, then very slowly pulls her face back and closes the bathroom door; the door clicks shut. The camera holds a static shot.",
+   "sfx": [
+    [
+     "lock",
+     1.9
+    ]
+   ]
+  },
+  {
+   "id": "s03-cobweb",
+   "chapter": "很久以後",
+   "camera": "Wide shot, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 3.2,
+   "ff": "Wide shot of the same small entryway: A-Fu the Corgi himself still stands in the same spot in his brown jacket and striped pyjamas holding the car keys out, but he has grown a long white beard reaching the floor, his whole body draped with dusty cobwebs, a cobweb strung between the keys and his ear, and three small chicks in a bird's nest on top of his head; through the window behind him snow is falling.",
+   "clip": "The Corgi shown in <Picture 1> stands completely still; his long white beard sways slightly; the three chicks in the nest on his head open their beaks and chirp; snowflakes drift past the window. The camera holds a static shot.",
+   "sfx": [
+    [
+     "wind",
+     0.0,
+     -8
+    ],
+    [
+     "birds",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "s04-sigh",
+   "camera": "Close-up, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 2.4,
+   "ff": "Close-up of A-Fu the Corgi himself with a long white beard, cobwebs hanging from his big ears, three small chicks in a bird's nest on top of his head.",
+   "clip": "The Corgi shown in <Picture 1> slowly draws in a huge breath, cheeks puffing, about to sigh again; the three chicks in the nest above all turn their heads down and glare at him; he freezes and swallows the breath. His mouth stays closed. The camera holds a static shot.",
+   "sfx": [
+    [
+     "tension",
+     0.8
+    ]
+   ]
+  },
+  {
+   "id": "s05-slipper",
+   "chapter": "終於",
+   "camera": "Close shot at floor level, locked",
+   "chars": [],
+   "refs": [
+    "zhenzhu"
+   ],
+   "dur": 2.8,
+   "ff": "Close shot at floor level of a white bathroom door opening onto a hallway: a single Shiba hind paw in a fluffy pink slipper steps out onto the wooden floor; the hem of a pink floral dress at the top edge of the frame.",
+   "clip": "The paw in the pink slipper shown in <Picture 1> steps out onto the floor, pauses for one beat, then slowly pulls back inside, and the bathroom door gently swings shut. The camera holds a static shot.",
+   "sfx": [
+    [
+     "lock",
+     2.2
+    ]
+   ]
+  }
+ ],
+ "slug": "wangjia-couple-e03"
+}

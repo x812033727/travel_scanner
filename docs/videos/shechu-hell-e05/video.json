@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action office comedy, a real dog and a real cat with natural fur wearing office clothes and behaving like people, a small slightly shabby Taipei office with grey desks, monitors, a printer and fluorescent lights, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, readable text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "ajin",
+      "name": "阿金",
+      "appearance": "a real Golden Retriever dog standing upright on its hind legs like a person, wearing a white office shirt with a crooked blue necktie and a lanyard with a blank white ID card, tired dark circles under its eyes, an earnest good-natured face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in the middle of a small, slightly shabby Taipei office with desks, monitors and fluorescent lights, facing the camera. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "miaozong",
+      "name": "喵總",
+      "appearance": "a real chubby orange tabby cat sitting upright like a person, wearing a dark grey suit jacket with a gold tie clip, a completely expressionless face with half-closed eyes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in the middle of a small, slightly shabby Taipei office with desks, monitors and fluorescent lights, facing the camera. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "cheerful office ukulele tune that rises as if heading home, cuts to silence, then a slow sad lonely late-night piano, ending on a short ominous low note, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "shechu-hell-e05",
+  "sfx": {
+    "set": "shechu-comedy",
+    "cues": [
+      {
+        "scene": "s02-sneak",
+        "sound": "dun"
+      },
+      {
+        "scene": "s04-keyboard",
+        "sound": "typing"
+      },
+      {
+        "scene": "s05-corner",
+        "sound": "aircon"
+      },
+      {
+        "scene": "s07-eye",
+        "sound": "dun"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "午休回來，貓老闆睡在我的鍵盤上 #社畜地獄",
+    "description": "員工是狗，老闆是貓。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "社畜地獄",
+      "社畜",
+      "貓老闆",
+      "黃金獵犬",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "午休",
+      "tag": "社畜地獄",
+      "shot": "s04-keyboard"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-sun",
+      "chapter": "午休",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of A-Jin the Golden Retriever himself at his grey office desk bathed in a warm beam of afternoon sunlight from the window, in his white shirt and crooked tie, holding a neck pillow, the monitor turned away from the camera.",
+        "camera": "Medium shot, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> stretches happily in the warm sunbeam, tail wagging, tucks the neck pillow under his arm and walks out of frame to the left. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-sneak",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Boss Miao the orange tabby cat himself peeking around the edge of his glass office door in his grey suit, eyes fixed on something bright off screen, warm light on his face.",
+        "camera": "Close-up, locked",
+        "motion": "The cat shown in <Picture 1> stares without blinking; his pupils narrow to slits; his whiskers twitch and he slowly slides out from behind the door. The camera holds a static shot.",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-return",
+      "chapter": "回來",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of A-Jin the Golden Retriever himself walking back into the office holding a neck pillow, a refreshed smile.",
+        "camera": "Medium shot, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> walks in, stops dead, and stares down at his desk off screen; his smile drops and the neck pillow slips from his paw. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-keyboard",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of A-Jin's grey office desk in the warm sunbeam: Boss Miao the orange tabby cat himself is sprawled belly-up asleep across the keyboard in his grey suit, paws in the air, gold tie clip glinting, the monitor turned away from the camera.",
+        "camera": "Medium shot, locked",
+        "motion": "The cat shown in <Picture 1> sleeps belly-up on the keyboard in the sunbeam; his belly rises and falls; one hind paw twitches and presses the keys. The camera holds a static shot.",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-corner",
+      "chapter": "角落",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of a dim cold office corner beside a grey printer: A-Jin the Golden Retriever himself sits on the floor with a laptop on his knees, its screen facing away, wearing the neck pillow, shivering under an air conditioner vent blowing down on him, his fur ruffled.",
+        "camera": "Wide shot, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> shivers and types slowly on the laptop as the cold air ruffles his fur; he sniffles and hunches his shoulders. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-warm",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of A-Jin the Golden Retriever himself sitting on the floor in the dim office corner wearing the neck pillow, a patch of warm sunlight creeping across the floor toward him.",
+        "camera": "Close-up, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> watches the warm patch of sunlight slide slowly onto his face; he closes his eyes with a relieved smile. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-eye",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Boss Miao the orange tabby cat himself lying belly-up asleep on a keyboard in his grey suit, now in shade.",
+        "camera": "Close-up, locked",
+        "motion": "The cat shown in <Picture 1> opens one eye, turns his head and stares fixedly toward the bright light off screen; his pupil narrows to a slit. The camera holds a static shot.",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

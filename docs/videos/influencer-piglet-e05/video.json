@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, a real pig and a real capybara with natural skin and fur standing upright and wearing human clothes, everyday Taiwanese locations, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, deformed hooves, human faces, humans, text, watermark, logo, brand names",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "fenfen",
+      "name": "粉粉",
+      "appearance": "a real young pink pig standing upright on its hind legs like a person, wearing a white lace sundress, a wide straw sun hat with a long pink satin ribbon, and a pearl hair clip behind one ear, always posing with a dreamy three-quarter profile smile",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in a quiet back alley of a Taiwanese night market in the late afternoon, facing the camera, natural light. The only animal in the frame, shown once. Real skin and fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "capy",
+      "name": "水豚男友",
+      "appearance": "a real adult capybara standing upright on its hind legs like a person, wearing a green bucket hat and a plain grey T-shirt, a completely deadpan face, a power bank hanging from a cord around its neck",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in a quiet back alley of a Taiwanese night market in the late afternoon, facing the camera, natural light. The only animal in the frame, shown once. Real skin and fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "dreamy soft lo-fi beach pop with gentle synth pads that cuts off abruptly to silence, then a plodding tuba deadpan comedy beat, then the dreamy pad again, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "influencer-piglet-e05",
+  "sfx": {
+    "set": "piglet-comedy",
+    "cues": [
+      {
+        "scene": "s02-flash",
+        "sound": "shutter"
+      },
+      {
+        "scene": "s03-garage",
+        "sound": "recordscratch"
+      },
+      {
+        "scene": "s03-garage",
+        "sound": "hum"
+      },
+      {
+        "scene": "s04-boyfriend",
+        "sound": "hum"
+      },
+      {
+        "scene": "s05-photo",
+        "sound": "shutter"
+      },
+      {
+        "scene": "s06-tangle",
+        "sound": "whoosh"
+      },
+      {
+        "scene": "s06-tangle",
+        "sound": "powerdown"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "螢火蟲美照的真相 #網美小豬",
+    "description": "每一張美照背後，都有一個面無表情的男友。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "網美小豬",
+      "網美",
+      "水豚",
+      "小豬",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "螢火蟲",
+      "tag": "網美小豬",
+      "shot": "s04-boyfriend"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-fireflies",
+      "chapter": "美照",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close-up at night of Fenfen the pink pig herself in a white lace sundress, a wide straw sun hat with a long pink satin ribbon and a pearl hair clip, a dreamy three-quarter profile smile, dozens of tiny glowing fireflies floating around her in soft focus in a dark forest; one glowing firefly near the corner visibly hangs from a thin string.",
+        "camera": "Close-up, locked",
+        "motion": "The pink pig shown in <Picture 1> gazes dreamily at the glowing lights around her and slowly raises a hoof toward one; the light in the corner bobs up and down on its thin string. The camera holds a static shot.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-flash",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium close-up at night of Fenfen the pink pig herself in a white lace sundress and wide straw sun hat with a pink ribbon, frozen in a dreamy profile pose, tiny warm lights glowing around her.",
+        "camera": "Medium close-up, locked",
+        "motion": "A bright camera flash fires once; the pink pig shown in <Picture 1> keeps her face frozen and only her eyes slowly slide to the lower right; one eyebrow twitches. The camera holds a static shot.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-garage",
+      "chapter": "真相",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of a dim concrete underground parking garage at night with one flickering fluorescent tube, grey concrete pillars and an oil stain on the floor, no signs: Fenfen the pink pig herself in her white lace sundress and straw hat poses among three small potted plants; above her dangles a string of tiny warm fairy lights hanging from a long fishing line that reaches in from the top right of the frame.",
+        "camera": "Wide shot, locked",
+        "motion": "The pink pig shown in <Picture 1> holds her dreamy pose; the fairy lights dangle and swing slowly on the fishing line above her; the fluorescent tube flickers. The camera holds a static shot.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-boyfriend",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot in the dim underground parking garage of the capybara boyfriend himself standing on a stepladder, holding a long fishing rod out toward the left edge of the frame with both front paws, a thin cable running from the rod to the glowing power bank hanging around his neck, his deadpan face lit from below, three mosquitoes circling his head.",
+        "camera": "Medium shot, locked",
+        "motion": "The capybara shown in <Picture 1> holds the fishing rod steady and gently jiggles it so the line bobs; a mosquito lands on his nose; one ear flicks; his deadpan face does not change. The camera holds a static shot.",
+        "characters": [
+          "capy"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-photo",
+      "chapter": "成品",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "The finished photo filling the vertical frame with a thin white photo border: Fenfen the pink pig in a white lace sundress and straw hat in a magical night forest surrounded by glowing fireflies, picture perfect like a magazine cover; deep in the dark trees in the background, a deadpan capybara face in a green bucket hat glows, lit from below by a small light.",
+        "camera": "Insert, slow push in",
+        "motion": "The photo shown in <Picture 1> holds still; the glowing capybara face in the dark trees slowly blinks once. The camera pushes in with small amplitude at slow speed.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-tangle",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot in the dim underground parking garage of Fenfen the pink pig herself in her white lace sundress and straw hat, taking her dreamy profile pose again among the potted plants, tiny warm fairy lights dangling above her.",
+        "camera": "Medium shot, locked",
+        "motion": "The pink pig shown in <Picture 1> takes her dreamy pose; suddenly the whole string of fairy lights drops from above and tangles over her hat and shoulders; the lights die one by one; she holds the pose, smile unchanged, under the flickering fluorescent tube. The camera holds a static shot.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

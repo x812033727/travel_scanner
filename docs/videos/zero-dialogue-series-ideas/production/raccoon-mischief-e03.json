@@ -1,0 +1,148 @@
+{
+ "base": "raccoon-mischief-e01",
+ "intros": {
+  "doudou": "the photo of Doudou, a real young raccoon in a bright yellow hoodie with a red towel cape: keep his face, fur, hoodie and cape, change the pose and place as described",
+  "mama": "the photo of Mama raccoon, a real adult raccoon in a green knitted sweater with a pearl necklace: keep her face, fur, sweater and necklace, change the pose and place as described",
+  "baba": "the photo of Papa raccoon, a real adult raccoon with a round belly in a blue knitted vest over a white shirt with small reading glasses: keep his face, fur, vest, shirt and glasses, change the pose and place as described"
+ },
+ "title": "砸壞電視的小浣熊，只好自己當電視 #闖禍小浣熊",
+ "description": "小浣熊豆豆又闖禍了。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "闖禍小浣熊",
+  "浣熊",
+  "無厘頭",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "我是電視",
+ "thumb": "s05-anchor",
+ "brief": "# 闖禍小浣熊 EP3〈電視〉\n\n## 故事前提\n\n豆豆踢球砸壞電視，坐進空框裡當電視。爸爸拿起遙控器停了半拍才按——他知道。豆豆只好跟著換台：新聞主播、購物台推銷青蔥。最後一聲老電視關機音，豆豆在框裡躺平「關機」，地毯底下滾出那顆足球，停在爸爸的拖鞋前。\n\n## 角色\n\n- 豆豆（doudou）、浣熊媽媽（mama）、浣熊爸爸（baba）：同系列定裝照。爸爸只有拿遙控器的手與一隻拖鞋入鏡。\n\n## 站主觀點\n\n零台詞；集數規劃盲評 82（`docs/videos/raccoon-mischief/episodes.md` 的 EP2）。採納評審建議（都不加鏡、不加角色）：第三台改成更荒謬的購物台推銷青蔥、爸爸按遙控器前停半拍（他在整人）、關機後地毯下滾出足球停在爸爸拖鞋前。\n\n## 格式\n\n- 9:16，約 16 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：電視\n一行說明：裂螢幕、射門定格 → 鑰匙聲、慢看鏡頭 → 自己坐進空框當電視 → 爸爸停半拍按遙控器 → 新聞主播 → 購物台推銷青蔥 → 關機、足球滾到爸爸拖鞋前。\n開場鉤子：裂成蜘蛛網的電視冒著煙，小浣熊一腳還舉在射門姿勢。\n",
+ "sfx_extra": {
+  "beep": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.4*sin(2*PI*1000*t)':d=0.15:s=48000"
+  ],
+  "tvoff": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.35*sin(2*PI*(1500*t-400*t*t))*exp(-2.5*t)':d=1.2:s=48000"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-kick",
+   "chapter": "闖禍",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.6,
+   "ff": "Medium shot of the cozy living room: the TV on the wooden TV stand has its black screen cracked into a spiderweb, nothing displayed, a thin wisp of smoke rising from it; a football lies on the rug; Doudou the young raccoon himself in his yellow hoodie and red cape stands frozen in a follow-through kicking pose, one hind leg still raised in mid-air.",
+   "clip": "The young raccoon shown in <Picture 1> stays frozen mid-kick with one leg raised; the football rolls slowly across the rug and out of frame; smoke curls up from the cracked black screen. The camera holds a static shot.",
+   "sfx": [
+    [
+     "shatter",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s02-key",
+   "camera": "Close-up, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.0,
+   "ff": "Close-up of Doudou the young raccoon's face in the foreground, red cape at his neck; behind him, out of focus, the front door.",
+   "clip": "The young raccoon shown in <Picture 1> holds still; the door handle in the background slowly turns down; his eyes slide slowly from the door to the camera and his ears flatten back. His mouth stays closed. The camera holds a static shot.",
+   "sfx": [
+    [
+     "keys",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "s03-frame",
+   "chapter": "我是電視",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot of the wooden TV stand: the TV is now only an empty black frame and the screen is gone; Doudou the young raccoon himself sits cross-legged inside the empty TV frame in his yellow hoodie, frozen in a cartoon dance pose with both arms up, his red cape tucked behind him; in front of the TV stand a big lump bulges under the rug.",
+   "clip": "The young raccoon shown in <Picture 1> holds his dance pose perfectly still inside the empty TV frame with a forced bright smile; one raised arm trembles slightly. The camera holds a static shot."
+  },
+  {
+   "id": "s04-remote",
+   "camera": "Insert close-up, locked",
+   "chars": [],
+   "refs": [
+    "baba"
+   ],
+   "dur": 1.4,
+   "ff": "Insert close-up of the arm of a beige sofa: a raccoon paw in a blue knitted vest sleeve with a white shirt cuff holds a plain remote control with no labels, pointing it off screen.",
+   "clip": "The paw in the blue vest sleeve shown in <Picture 1> raises the remote, pauses for half a beat, then presses a button firmly. The camera holds a static shot.",
+   "sfx": [
+    [
+     "beep",
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "s05-anchor",
+   "chapter": "換台",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 1.8,
+   "in": 0.2,
+   "ff": "Medium shot of the same wooden TV stand: Doudou the young raccoon himself sits stiffly upright inside the empty TV frame like a serious news anchor, front paws folded neatly in front of him, a stern face, red cape tucked behind him; a big lump bulges under the rug in front.",
+   "clip": "The young raccoon shown in <Picture 1> sits perfectly upright with a stern anchor face; only his eyes slide sideways toward the off-screen sofa and back. The camera holds a static shot."
+  },
+  {
+   "id": "s06-onions",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.0,
+   "in": 0.2,
+   "ff": "Medium shot of the same wooden TV stand: Doudou the young raccoon himself sits inside the empty TV frame like a home shopping host, holding up a big bunch of green onions toward the camera with both paws, a huge stiff salesman smile, red cape tucked behind him.",
+   "clip": "The young raccoon shown in <Picture 1> presents the bunch of green onions to the camera and turns it left and right like a product, with a stiff forced smile; his eyebrows twitch. The camera holds a static shot.",
+   "sfx": [
+    [
+     "beep",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s07-off",
+   "chapter": "關機",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 3.0,
+   "ff": "Medium shot of the same wooden TV stand: Doudou the young raccoon himself sits inside the empty TV frame in his yellow hoodie; in front of the TV stand a big lump bulges under the rug; at the right edge of the frame a single raccoon hind paw in a brown slipper rests on the floor.",
+   "clip": "The young raccoon shown in <Picture 1> slowly leans back inside the frame, lies flat and closes his eyes as if switched off; a football rolls out from under the rug lump and stops against the slipper at the right edge. The camera holds a static shot.",
+   "sfx": [
+    [
+     "tvoff",
+     0.0
+    ],
+    [
+     "sting",
+     2.2
+    ]
+   ]
+  }
+ ],
+ "slug": "raccoon-mischief-e03"
+}

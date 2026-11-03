@@ -1,0 +1,121 @@
+{
+ "base": "raccoon-mischief-e01",
+ "intros": {
+  "doudou": "the photo of Doudou, a real young raccoon in a bright yellow hoodie with a red towel cape: keep his face, fur, hoodie and cape, change the pose and place as described",
+  "mama": "the photo of Mama raccoon, a real adult raccoon in a green knitted sweater with a pearl necklace: keep her face, fur, sweater and necklace, change the pose and place as described"
+ },
+ "title": "撞倒媽媽的盆栽，小浣熊只好自己當植物 #闖禍小浣熊",
+ "description": "小浣熊豆豆又闖禍了。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "闖禍小浣熊",
+  "浣熊",
+  "無厘頭",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "我是盆栽",
+ "thumb": "s05-wet",
+ "brief": "# 闖禍小浣熊 EP5〈盆栽〉\n\n## 故事前提\n\n豆豆撞倒媽媽綁著粉紅緞帶的寶貝龜背芋，盆子還在地上滾。他站進盆子裡、全身黏滿葉子當植物。媽媽的澆花壺先在地毯鼓包上滴了一滴——她知道——再面不改色地往他身上澆。豆豆濕透含淚，腳邊多了一整排青蔥。隔天早上，他頭頂長出一根青蔥。\n\n## 角色\n\n- 豆豆（doudou）、浣熊媽媽（mama）、浣熊爸爸（baba）：同系列定裝照。媽媽只有提澆花壺的手入鏡。\n\n## 站主觀點\n\n零台詞；集數規劃盲評 71（`docs/videos/raccoon-mischief/episodes.md` 的 EP4）。採納評審建議（都不加鏡、不加角色）：倒的是綁著粉紅緞帶的媽媽寶貝盆栽、倒下時還在滾；澆水前先在地毯鼓包上滴一滴，讓觀眾知道她知道；最後長出來的是一根青蔥。\n\n## 格式\n\n- 9:16，約 15 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：盆栽\n一行說明：寶貝盆栽倒地還在滾 → 門縫先探進青蔥、慢看鏡頭 → 自己站進盆子當植物 → 澆花壺先滴地毯鼓包再澆 → 濕透含淚、腳邊一排青蔥 → 隔天頭上長出青蔥。\n開場鉤子：綁粉紅緞帶的大盆栽倒在地上還在滾，小浣熊坐在土堆裡。\n",
+ "sfx_extra": {
+  "pour": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=pink:d=2:a=0.5",
+   "-af",
+   "lowpass=f=2500,highpass=f=300,afade=t=in:d=0.1,afade=t=out:st=1.5:d=0.5"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-pot",
+   "chapter": "闖禍",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot of a living room corner: a huge monstera plant twice as tall as Doudou lies toppled on its side, its big ceramic pot tied with a pink ribbon bow rolling on the floor, soil spilled everywhere; Doudou the young raccoon himself sits in the pile of soil in his yellow hoodie and red cape, a broken big leaf in his paw, soil and roots on his head, frozen.",
+   "clip": "The young raccoon shown in <Picture 1> stays frozen in the soil; the ceramic pot with the pink bow rolls slowly across the floor and wobbles to a stop; a clump of soil slides off his head. The camera holds a static shot.",
+   "sfx": [
+    [
+     "crunch",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s02-key",
+   "camera": "Close-up, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.0,
+   "ff": "Close-up of Doudou the young raccoon's face in the foreground with soil on his head, red cape at his neck; behind him, out of focus, the front door.",
+   "clip": "The young raccoon shown in <Picture 1> holds still; the front door in the background opens a crack and the green tips of a bunch of green onions poke in first; his eyes slide slowly to the camera and his ears flatten back. His mouth stays closed. The camera holds a static shot.",
+   "sfx": [
+    [
+     "keys",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "s03-plant",
+   "chapter": "我是盆栽",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 3.0,
+   "ff": "Medium shot of the same living room corner: the big ceramic pot with the pink ribbon bow stands upright again; Doudou the young raccoon himself stands inside the pot, soil up to his knees, both arms raised and spread wide, large monstera leaves stuck all over his yellow hoodie and the biggest leaf stuck on top of his head; in the middle of the rug a big lump bulges underneath.",
+   "clip": "The young raccoon shown in <Picture 1> stands perfectly still with arms raised; one leaf slowly slides down his arm and drops to the floor; his eyes follow it without moving his head. The camera holds a static shot."
+  },
+  {
+   "id": "s04-can",
+   "camera": "Insert close-up, locked",
+   "chars": [],
+   "refs": [
+    "mama"
+   ],
+   "dur": 1.6,
+   "ff": "Insert close-up at floor level: a big lump bulging under a patterned rug in the foreground; a raccoon paw in a green knitted sweater sleeve holds a metal watering can above it.",
+   "clip": "The paw in the green sweater sleeve shown in <Picture 1> tips the watering can so a single drop falls onto the rug lump, pauses, then calmly swings the spout away toward the corner off screen and tilts it. The camera holds a static shot.",
+   "sfx": [
+    [
+     "pour",
+     0.8
+    ]
+   ]
+  },
+  {
+   "id": "s05-wet",
+   "chapter": "澆水",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 3.0,
+   "ff": "Medium shot of the same corner: Doudou the young raccoon himself stands in the ceramic pot soaking wet from head to toe, dripping wet fur, monstera leaves plastered to his yellow hoodie, eyes teary but not moving; a neat row of fresh green onions is now planted in the soil around his feet.",
+   "clip": "The young raccoon shown in <Picture 1> stands still, dripping; water drops fall from his nose and leaves; his lower lip trembles; the green onions around his feet stand upright. The camera holds a static shot."
+  },
+  {
+   "id": "s06-sprout",
+   "chapter": "隔天早上",
+   "camera": "Close-up, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.8,
+   "ff": "Close-up of Doudou the young raccoon himself in morning sunlight still standing in the pot, leaves on his yellow hoodie, a single small green onion shoot growing on top of his head like a cartoon sprout.",
+   "clip": "The young raccoon shown in <Picture 1> stays still; the small green onion shoot on his head slowly grows a little taller; his eyes roll up to look at it, then slowly back to the camera. The camera holds a static shot.",
+   "sfx": [
+    [
+     "sting",
+     2.0
+    ]
+   ]
+  }
+ ],
+ "slug": "raccoon-mischief-e05"
+}

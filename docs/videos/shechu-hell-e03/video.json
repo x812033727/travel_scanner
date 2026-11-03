@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action office comedy, a real dog and a real cat with natural fur wearing office clothes and behaving like people, a small slightly shabby Taipei office with grey desks, monitors, a printer and fluorescent lights, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, readable text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "ajin",
+      "name": "阿金",
+      "appearance": "a real Golden Retriever dog standing upright on its hind legs like a person, wearing a white office shirt with a crooked blue necktie and a lanyard with a blank white ID card, tired dark circles under its eyes, an earnest good-natured face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in the middle of a small, slightly shabby Taipei office with desks, monitors and fluorescent lights, facing the camera. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "miaozong",
+      "name": "喵總",
+      "appearance": "a real chubby orange tabby cat sitting upright like a person, wearing a dark grey suit jacket with a gold tie clip, a completely expressionless face with half-closed eyes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in the middle of a small, slightly shabby Taipei office with desks, monitors and fluorescent lights, facing the camera. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "cheerful office ukulele tune that rises as if heading home, cuts to silence, then a slow sad lonely late-night piano, ending on a short ominous low note, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "shechu-hell-e03",
+  "sfx": {
+    "set": "shechu-comedy",
+    "cues": [
+      {
+        "scene": "s02-ears",
+        "sound": "bell"
+      },
+      {
+        "scene": "s03-work",
+        "sound": "typing"
+      },
+      {
+        "scene": "s04-toy",
+        "sound": "bell"
+      },
+      {
+        "scene": "s06-shadow",
+        "sound": "dun"
+      },
+      {
+        "scene": "s07-perch",
+        "sound": "thud"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "聽到鈴鐺聲，全辦公室瞬間彈起來工作 #社畜地獄",
+    "description": "員工是狗，老闆是貓。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "社畜地獄",
+      "社畜",
+      "貓老闆",
+      "黃金獵犬",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "主管巡視",
+      "tag": "社畜地獄",
+      "shot": "s07-perch"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-slack",
+      "chapter": "偷懶",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of a grey office desk in a small office cubicle: A-Jin the Golden Retriever himself leans far back in his office chair in his white shirt and crooked tie, hind paws up on the desk, a paper airplane in his paw, the monitor turned away from the camera.",
+        "camera": "Medium shot, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> lazily throws the paper airplane out of frame, yawns widely and stretches his arms behind his head. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-ears",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of A-Jin the Golden Retriever himself leaning back in his office chair with his paws behind his head, relaxed half-closed eyes.",
+        "camera": "Close-up, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> suddenly opens his eyes wide and his ears shoot straight up; he freezes. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-work",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of A-Jin the Golden Retriever himself sitting bolt upright at his grey desk, tie straightened, both paws on a keyboard, the monitor turned away from the camera, a frantic fake-focused face.",
+        "camera": "Medium shot, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> types furiously on the keyboard with a frantic serious face, his ID card swinging, eyes darting left and right. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-toy",
+      "chapter": "鈴鐺",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Insert at floor level of the grey office carpet aisle between desks: a small grey wind-up toy mouse wearing a tiny red collar with a golden bell rolls along the carpet, its wind-up key on its back.",
+        "camera": "Insert at floor level, locked",
+        "motion": "The wind-up toy mouse rolls slowly along the carpet across the frame, its key turning, the golden bell on its collar jingling. The camera holds a static shot.",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-relax",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of A-Jin the Golden Retriever himself at his grey desk, leaning back again in his office chair with his hind paws up on the desk and his front paws behind his head, a smug relieved grin.",
+        "camera": "Medium shot, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> lets out a long relieved breath and settles deeper into the chair with a smug grin, wiggling his hind paws on the desk. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-shadow",
+      "chapter": "巡視",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of A-Jin the Golden Retriever himself leaning back in his office chair with a smug grin, a large dark shadow beginning to fall across his face from above.",
+        "camera": "Close-up, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> keeps grinning as the shadow slowly covers his face; his grin freezes; his eyes slowly roll upward; his ears flatten. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-perch",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Low-angle medium shot of Boss Miao the orange tabby cat himself perched on top of a grey office cubicle partition in his grey suit, wearing a plain red collar with an empty ring and no bell, staring down at the camera with expressionless half-closed eyes; a stapler sits on the partition beside his paw.",
+        "camera": "Low-angle medium shot, locked",
+        "motion": "The cat shown in <Picture 1> stares down without blinking and slowly pushes the stapler off the edge of the partition with one paw; the stapler falls out of frame. The camera holds a static shot.",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+ "base": "influencer-piglet-e01",
+ "intros": {
+  "fenfen": "the photo of Fenfen, a real pink pig standing upright: keep her face and skin, change the pose and place as described",
+  "capy": "the photo of the capybara boyfriend, a real capybara in a green bucket hat and grey T-shirt: keep his face, fur, hat and shirt, change the pose and place as described"
+ },
+ "title": "仙境瀑布美照的真相 #網美小豬",
+ "description": "每一張美照背後，都有一個面無表情的男友。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "網美小豬",
+  "網美",
+  "水豚",
+  "小豬",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "瀑布真相",
+ "thumb": "s04-boyfriend",
+ "brief": "# 網美小豬 EP3〈仙境瀑布〉\n\n## 故事前提\n\n粉粉在霧氣繚繞的叢林瀑布前拍美照。拉遠：陰天的頂樓，瀑布是不鏽鋼水塔破洞噴出來的水，背景是一塊印著葉子的防水布；水豚男友站在梯子上，兩隻手各堵住水塔的另一個破洞，全身濕透。她重擺姿勢，男友的手一滑，兩道水柱把她從頭沖到腳。\n\n## 角色\n\n- 粉粉（fenfen）、水豚男友（capy）：同系列定裝照；粉粉穿系列招牌的白蕾絲洋裝、大草帽配粉紅緞帶、珍珠髮夾。\n\n## 站主觀點\n\n零台詞；系列公式：唯美 → 閃光一瞄 → 拉遠揭曉 → 男友 → 成品照破綻 → 重擺被整。EP3 題目照系列 README。\n\n## 格式\n\n- 9:16，約 16 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：仙境瀑布\n一行說明：叢林瀑布 → 閃光一瞄 → 頂樓水塔漏水 → 男友堵兩個破洞 → 成品照瀑布頂上有水豚臉 → 兩道水柱沖她一身。\n開場鉤子：唯美瀑布前，角落有一道水往旁邊噴。\n",
+ "sfx_extra": {
+  "pour": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=pink:d=2:a=0.5",
+   "-af",
+   "lowpass=f=2500,highpass=f=300,afade=t=in:d=0.1,afade=t=out:st=1.5:d=0.5"
+  ],
+  "splash": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=white:d=0.8:a=0.9",
+   "-af",
+   "lowpass=f=4000,afade=t=out:st=0.05:d=0.75,volume=3dB"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-falls",
+   "chapter": "美照",
+   "camera": "Close-up, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.6,
+   "ff": "Close-up of Fenfen the pink pig herself in a white lace sundress, a wide straw sun hat with a long pink satin ribbon and a pearl hair clip, a dreamy three-quarter profile smile, a misty jungle waterfall cascading behind her in soft focus with ferns and mist; in the corner a thin jet of water squirts out sideways.",
+   "clip": "The pink pig shown in <Picture 1> tilts her head dreamily and lifts one hoof to her hat brim; the waterfall cascades behind her; the thin jet of water in the corner sputters sideways. The camera holds a static shot."
+  },
+  {
+   "id": "s02-flash",
+   "camera": "Medium close-up, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.0,
+   "ff": "Medium close-up of Fenfen the pink pig herself in a white lace sundress and wide straw sun hat with a pink ribbon, frozen in a dreamy profile pose, mist and falling water behind her.",
+   "clip": "A bright camera flash fires once; the pink pig shown in <Picture 1> keeps her face frozen and only her eyes slowly slide to the lower right; one eyebrow twitches. The camera holds a static shot.",
+   "sfx": [
+    [
+     "shutter",
+     0.15
+    ]
+   ]
+  },
+  {
+   "id": "s03-roof",
+   "chapter": "真相",
+   "camera": "Wide shot, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 3.0,
+   "ff": "Wide shot of a shabby concrete rooftop in Taiwan under a grey sky: a big round stainless steel water tower stands on a rusty stand, and a thick stream of water gushes from a hole in its side like a waterfall; Fenfen the pink pig herself in her white lace sundress and straw hat poses under the stream holding a potted fern; a plastic tarp with a plain green leaf pattern is taped to the wall behind her.",
+   "clip": "The pink pig shown in <Picture 1> holds her dreamy pose beside the stream gushing from the leaking water tower, water splashing around her feet; the green tarp flaps in the wind. The camera holds a static shot.",
+   "sfx": [
+    [
+     "recordscratch",
+     0.0
+    ],
+    [
+     "pour",
+     0.3,
+     -4
+    ]
+   ]
+  },
+  {
+   "id": "s04-boyfriend",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "capy"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot on the same grey rooftop of the capybara boyfriend himself standing on a ladder against a stainless steel water tower, each front paw pressed flat over a hole in the tank, water spraying out around his paws and soaking his grey T-shirt, his green bucket hat dripping, a power bank hanging from his neck, completely deadpan.",
+   "clip": "The capybara shown in <Picture 1> keeps both paws pressed on the holes while water sprays out around them; water drips from his hat brim; he blinks once slowly and his deadpan face does not change. The camera holds a static shot.",
+   "sfx": [
+    [
+     "pour",
+     0.0,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s05-photo",
+   "chapter": "成品",
+   "camera": "Insert, slow push in",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.4,
+   "ff": "The finished photo filling the vertical frame with a thin white photo border: Fenfen the pink pig in a white lace sundress and straw hat in front of a magical misty jungle waterfall, picture perfect like a magazine cover; at the top of the waterfall, between the mossy rocks, a deadpan capybara face in a green bucket hat peeks out with water pouring over it.",
+   "clip": "The photo shown in <Picture 1> holds still; the capybara face at the top of the waterfall slowly blinks once as water pours over it. The camera pushes in with small amplitude at slow speed.",
+   "sfx": [
+    [
+     "shutter",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s06-splash",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.8,
+   "in": 0.5,
+   "ff": "Medium shot on the grey rooftop of Fenfen the pink pig herself in her white lace sundress and straw hat, taking her dreamy profile pose again beside the leaking water tower.",
+   "clip": "The pink pig shown in <Picture 1> takes her dreamy pose; suddenly two thick jets of water blast into her from the right side of the frame and drench her, flattening her straw hat; she stays frozen in the pose, smile unchanged, water dripping off her snout. The camera holds a static shot.",
+   "sfx": [
+    [
+     "splash",
+     0.3
+    ]
+   ]
+  }
+ ],
+ "slug": "influencer-piglet-e03"
+}

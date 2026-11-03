@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real dogs with natural fur texture standing upright on their hind legs and wearing human clothes like a married couple, small cozy Taipei apartment with a sunny balcony, light wood floor, warm natural daylight, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "afu",
+      "name": "阿福",
+      "appearance": "a real Pembroke Welsh Corgi dog standing upright on very short hind legs, chubby, red and white fur, big upright ears, wearing loose blue and white striped pyjamas, a lazy smug face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "zhenzhu",
+      "name": "珍珠",
+      "appearance": "a real red Shiba Inu dog standing upright on its hind legs, wearing a pink floral apron over a plain beige dress and four pink plastic hair curlers on top of its head, a calm sweet face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "light bouncy domestic sitcom tune, ukulele and pizzicato strings, stops abruptly for a tense beat then returns calm and sweet, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "wangjia-couple-e05",
+  "sfx": {
+    "set": "wangjia-comedy",
+    "cues": [
+      {
+        "scene": "s01-burrito",
+        "sound": "snore"
+      },
+      {
+        "scene": "s02-twitch",
+        "sound": "tension"
+      },
+      {
+        "scene": "s03-petbed",
+        "sound": "birds"
+      },
+      {
+        "scene": "s04-mega",
+        "sound": "pop"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "把棉被全捲走的老公，隔天只剩一條小毛巾 #汪家夫妻",
+    "description": "老公半夜把棉被全捲走。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "汪家夫妻",
+      "柯基",
+      "柴犬",
+      "夫妻日常",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "搶被子",
+      "tag": "汪家夫妻",
+      "shot": "s04-mega"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-burrito",
+      "chapter": "深夜",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Top-down wide shot of a double bed at night in a dim bedroom: A-Fu the Corgi himself is rolled up inside the entire duvet like a giant burrito, only his nose sticking out, asleep; the other half of the bed is bare sheet; at the bed edge a single Shiba paw is visible, shivering.",
+        "camera": "Top-down wide shot, locked",
+        "motion": "The Corgi shown in <Picture 1> snores inside the duvet roll, the roll rising and falling with each breath; the single Shiba paw at the bed edge shivers. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-twitch",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium close-up in a dark bedroom of Zhenzhu the Shiba herself sitting up in bed with no blanket, hugging herself and shivering, four pink plastic hair curlers on her head.",
+        "camera": "Medium close-up, locked",
+        "motion": "The Shiba shown in <Picture 1> shivers and lets out a small puff of white breath; one eyelid twitches twice; she slowly turns her head toward the right. The camera holds a static shot.",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-petbed",
+      "chapter": "早上",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of a sunny bedroom corner in the morning: A-Fu the Corgi himself sleeps curled up inside a round pet bed cushion on the floor in his striped pyjamas, covered only by a tiny pink hand towel, his short legs sticking out.",
+        "camera": "Wide shot, locked",
+        "motion": "The Corgi shown in <Picture 1> sleeps in the round pet bed; in his sleep he grabs at the air for a blanket and catches nothing; the tiny towel slips off his legs. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-mega",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Top-down wide shot of the same double bed in bright morning sun: Zhenzhu the Shiba herself is rolled up inside one gigantic roll that fills the whole bed, with visible layers of a duvet, a patterned living room rug, a bath mat and curtains; only her nose and one pink hair curler stick out; she sleeps blissfully; the window has no curtains and sunlight blazes in.",
+        "camera": "Top-down wide shot, locked",
+        "motion": "The Shiba shown in <Picture 1> sleeps blissfully inside the gigantic roll; the roll slowly rises and falls with her breath; dust floats in the bright sunlight. The camera holds a static shot.",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-towel",
+      "chapter": "補刀",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close-up of A-Fu the Corgi himself curled up in the round pet bed in his striped pyjamas, a tiny pink hand towel over him, one eye open, a bright beam of morning sunlight across his face.",
+        "camera": "Close-up, locked",
+        "motion": "The Corgi shown in <Picture 1> pulls the tiny pink towel up over his whole head and his short hind paws pop out uncovered; he tucks his paws in and his head pops out again into the sunlight; he freezes, squinting. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

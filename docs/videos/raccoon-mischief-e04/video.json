@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real raccoons with natural fur texture standing upright and wearing human clothes like a family, the same warm cozy living room every episode (beige sofa, wooden side table, floor lamp, patterned rug, front door), warm evening light, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "doudou",
+      "name": "豆豆",
+      "appearance": "a real young raccoon with the size of a small child, standing upright on its hind legs, natural black eye mask, wearing a bright yellow hoodie and a red bath towel tied around its neck as a superhero cape",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "mama",
+      "name": "浣熊媽媽",
+      "appearance": "a real adult raccoon standing upright on its hind legs, wearing a green knitted sweater and a pearl necklace, carrying a plastic shopping bag with a bunch of green onions sticking out",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "baba",
+      "name": "浣熊爸爸",
+      "appearance": "a real adult raccoon with a round belly standing upright on its hind legs, wearing a blue knitted vest over a white shirt and small reading glasses on its nose",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "quiet mischievous pizzicato tiptoe tune, suspense pause, then a soft deadpan comedy sting, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "raccoon-mischief-e04",
+  "sfx": {
+    "set": "raccoon-comedy",
+    "cues": [
+      {
+        "scene": "s01-swing",
+        "sound": "shatter"
+      },
+      {
+        "scene": "s01-swing",
+        "sound": "boing"
+      },
+      {
+        "scene": "s02-key",
+        "sound": "keys"
+      },
+      {
+        "scene": "s03-hands",
+        "sound": "tick"
+      },
+      {
+        "scene": "s04-watch",
+        "sound": "tick"
+      },
+      {
+        "scene": "s05-spin",
+        "sound": "ratchet"
+      },
+      {
+        "scene": "s06-cuckoo",
+        "sound": "cuckoo"
+      },
+      {
+        "scene": "s06-cuckoo",
+        "sound": "sting"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "盪壞掛鐘的小浣熊，自己變成時鐘 #闖禍小浣熊",
+    "description": "小浣熊豆豆又闖禍了。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "闖禍小浣熊",
+      "浣熊",
+      "無厘頭",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "我是時鐘",
+      "tag": "闖禍小浣熊",
+      "shot": "s03-hands"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-swing",
+      "chapter": "闖禍",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of a living room wall: on the floor a big wooden wall clock lies smashed open, a coiled spring popped out of it; above it Doudou the young raccoon himself in his yellow hoodie and red cape hangs from a single nail on the wall by one paw, clutching a broken brass pendulum in the other.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> dangles from the nail by one paw, swinging slightly, the broken pendulum in his other paw; below, the spring on the smashed clock wobbles back and forth. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-key",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Doudou the young raccoon's face in the foreground as he hangs by one paw from a nail on the wall, red cape at his neck; behind him, out of focus, the front door.",
+        "camera": "Close-up, locked",
+        "motion": "The young raccoon shown in <Picture 1> holds still, hanging; the door handle in the background slowly turns down; his eyes slide slowly from the door to the camera and his ears flatten back. His mouth stays closed. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-hands",
+      "chapter": "我是時鐘",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the living room wall where the clock used to hang: Doudou the young raccoon himself is the wall clock, pressed flat against the wall, his red towel cape spread into a round clock face behind him with twelve small dots and no numbers, his face at the centre, one arm pointing straight up and one arm pointing straight right like clock hands at three o'clock; below him a lump bulges under the rug with a spring poking out of its edge.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> stays pressed flat against the wall perfectly still, arms fixed like clock hands; his cheeks twitch in a steady ticking rhythm. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-watch",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Mama raccoon herself in her green sweater and pearl necklace looking down at a plain analog wristwatch on her wrist, with no numbers, its hands clearly at ten past eight.",
+        "camera": "Close-up, locked",
+        "motion": "The mother raccoon shown in <Picture 1> looks at her wristwatch, then slowly lifts her eyes to the wall off screen; her brow furrows. The camera holds a static shot.",
+        "characters": [
+          "mama"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-spin",
+      "chapter": "對時",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of the same wall: Doudou the young raccoon himself pressed flat against the wall as the clock, red cape spread into a round clock face behind him, one arm up and one arm right, a bead of sweat on his forehead.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> frantically sweeps his right arm around in a big circle like a spinning minute hand until it ends twisted awkwardly over his head; his eyes dart sideways; sweat drips. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-cuckoo",
+      "chapter": "咕咕",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close shot of a large wooden cuckoo clock box mounted high on the living room wall with its little door open: Papa raccoon himself pokes his head out of the cuckoo clock door, small reading glasses on his nose, a small broken wooden bird held at the corner of his mouth, a deadpan face.",
+        "camera": "Close shot, locked",
+        "motion": "The raccoon shown in <Picture 1> pops his head forward out of the little door twice in a stiff mechanical rhythm, the wooden bird bobbing at the corner of his mouth, then pulls back inside and the little door snaps shut. The camera holds a static shot.",
+        "characters": [
+          "baba"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

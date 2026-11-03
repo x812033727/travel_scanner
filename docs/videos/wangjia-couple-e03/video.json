@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real dogs with natural fur texture standing upright on their hind legs and wearing human clothes like a married couple, small cozy Taipei apartment with a sunny balcony, light wood floor, warm natural daylight, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "afu",
+      "name": "阿福",
+      "appearance": "a real Pembroke Welsh Corgi dog standing upright on very short hind legs, chubby, red and white fur, big upright ears, wearing loose blue and white striped pyjamas, a lazy smug face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "zhenzhu",
+      "name": "珍珠",
+      "appearance": "a real red Shiba Inu dog standing upright on its hind legs, wearing a pink floral apron over a plain beige dress and four pink plastic hair curlers on top of its head, a calm sweet face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "light bouncy domestic sitcom tune, ukulele and pizzicato strings, stops abruptly for a tense beat then returns calm and sweet, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "wangjia-couple-e03",
+  "sfx": {
+    "set": "wangjia-comedy",
+    "cues": [
+      {
+        "scene": "s01-tap",
+        "sound": "tap"
+      },
+      {
+        "scene": "s01-tap",
+        "sound": "pop"
+      },
+      {
+        "scene": "s02-door",
+        "sound": "lock"
+      },
+      {
+        "scene": "s03-cobweb",
+        "sound": "wind"
+      },
+      {
+        "scene": "s03-cobweb",
+        "sound": "birds"
+      },
+      {
+        "scene": "s04-sigh",
+        "sound": "tension"
+      },
+      {
+        "scene": "s05-slipper",
+        "sound": "lock"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "老婆說五分鐘就好，老公等到頭上築了鳥巢 #汪家夫妻",
+    "description": "老公在玄關催老婆出門。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "汪家夫妻",
+      "柯基",
+      "柴犬",
+      "夫妻日常",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "等妳出門",
+      "tag": "汪家夫妻",
+      "shot": "s03-cobweb"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-tap",
+      "chapter": "催",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of a small apartment entryway by the front door: A-Fu the Corgi himself stands upright in a brown jacket over his striped pyjamas, sneakers on, plain car keys dangling from one paw, a plain wristwatch with no numbers on his other wrist, an impatient face.",
+        "camera": "Medium shot, locked",
+        "motion": "The Corgi shown in <Picture 1> taps the glass of his wristwatch hard again and again until a crack appears on it, rolls his eyes toward the right edge of the frame and lets out a huge sigh, his round belly sinking. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-door",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of a white bathroom door opened only a narrow crack: Zhenzhu the Shiba herself peeks out through the gap, heavy dramatic eye makeup on only her left eye, her right eye bare, a makeup brush in her paw, a blank stare.",
+        "camera": "Medium shot, locked",
+        "motion": "The Shiba shown in <Picture 1> stares through the gap without blinking, then very slowly pulls her face back and closes the bathroom door; the door clicks shut. The camera holds a static shot.",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-cobweb",
+      "chapter": "很久以後",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of the same small entryway: A-Fu the Corgi himself still stands in the same spot in his brown jacket and striped pyjamas holding the car keys out, but he has grown a long white beard reaching the floor, his whole body draped with dusty cobwebs, a cobweb strung between the keys and his ear, and three small chicks in a bird's nest on top of his head; through the window behind him snow is falling.",
+        "camera": "Wide shot, locked",
+        "motion": "The Corgi shown in <Picture 1> stands completely still; his long white beard sways slightly; the three chicks in the nest on his head open their beaks and chirp; snowflakes drift past the window. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-sigh",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of A-Fu the Corgi himself with a long white beard, cobwebs hanging from his big ears, three small chicks in a bird's nest on top of his head.",
+        "camera": "Close-up, locked",
+        "motion": "The Corgi shown in <Picture 1> slowly draws in a huge breath, cheeks puffing, about to sigh again; the three chicks in the nest above all turn their heads down and glare at him; he freezes and swallows the breath. His mouth stays closed. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-slipper",
+      "chapter": "終於",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close shot at floor level of a white bathroom door opening onto a hallway: a single Shiba hind paw in a fluffy pink slipper steps out onto the wooden floor; the hem of a pink floral dress at the top edge of the frame.",
+        "camera": "Close shot at floor level, locked",
+        "motion": "The paw in the pink slipper shown in <Picture 1> steps out onto the floor, pauses for one beat, then slowly pulls back inside, and the bathroom door gently swings shut. The camera holds a static shot.",
+        "characters": []
+      },
+      "lines": []
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real dogs with natural fur texture standing upright on their hind legs and wearing human clothes like a married couple, small cozy Taipei apartment with a sunny balcony, light wood floor, warm natural daylight, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "afu",
+      "name": "阿福",
+      "appearance": "a real Pembroke Welsh Corgi dog standing upright on very short hind legs, chubby, red and white fur, big upright ears, wearing loose blue and white striped pyjamas, a lazy smug face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "zhenzhu",
+      "name": "珍珠",
+      "appearance": "a real red Shiba Inu dog standing upright on its hind legs, wearing a pink floral apron over a plain beige dress and four pink plastic hair curlers on top of its head, a calm sweet face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "light bouncy domestic sitcom tune, ukulele and pizzicato strings, stops abruptly for a tense beat then returns calm and sweet, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "wangjia-couple-e04",
+  "sfx": {
+    "set": "wangjia-comedy",
+    "cues": [
+      {
+        "scene": "s01-clock",
+        "sound": "buttons"
+      },
+      {
+        "scene": "s02-game",
+        "sound": "buttons"
+      },
+      {
+        "scene": "s03-door",
+        "sound": "tension"
+      },
+      {
+        "scene": "s05-crib",
+        "sound": "musicbox"
+      },
+      {
+        "scene": "s06-again",
+        "sound": "buttons"
+      },
+      {
+        "scene": "s07-mobile",
+        "sound": "buttons"
+      },
+      {
+        "scene": "s07-mobile",
+        "sound": "musicbox"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "凌晨三點打電動的老公，隔天被包成了嬰兒 #汪家夫妻",
+    "description": "老公凌晨三點打電動大叫。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "汪家夫妻",
+      "柯基",
+      "柴犬",
+      "夫妻日常",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "凌晨三點",
+      "tag": "汪家夫妻",
+      "shot": "s05-crib"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-clock",
+      "chapter": "凌晨三點",
+      "template": "shot",
+      "action_seconds": 1,
+      "data": {
+        "prompt": "Insert close-up of a plain round wall clock with no numbers, only tick marks, its hour hand pointing at three and minute hand at the top, on a dark living room wall flickering with blue light from an off-screen TV.",
+        "camera": "Insert close-up, locked",
+        "motion": "The clock hands stay at three o'clock; blue TV light flickers across the wall and the clock face. The camera holds a static shot.",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-game",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of a dark living room at night: A-Fu the Corgi himself sits cross-legged on a grey sofa in his striped pyjamas wearing big over-ear headphones, holding a plain game controller with no logos, his face lit by blue light from an off-screen TV, crumpled empty snack bags with no labels scattered at his feet, mouth wide open yelling.",
+        "camera": "Medium shot, locked",
+        "motion": "The Corgi shown in <Picture 1> mashes the controller buttons frantically, his whole body swinging left and right with the game, mouth wide open in a yell. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-door",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Wide shot of a dark hallway at night: at the far end Zhenzhu the Shiba herself stands motionless in a bedroom doorway, a bathrobe over her pink floral dress, a plain white sheet face mask covering her face, her two eyes reflecting faint blue light.",
+        "camera": "Wide shot, locked",
+        "motion": "The Shiba shown in <Picture 1> stands perfectly still in the dark doorway, then very slowly tilts her head to one side. The camera holds a static shot.",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-freeze",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of A-Fu the Corgi himself in big over-ear headphones, mouth still wide open, lit by blue TV light, thumbs on a plain game controller.",
+        "camera": "Close-up, locked",
+        "motion": "The Corgi shown in <Picture 1> stops pressing the buttons; his ears slowly flatten back one notch at a time; his eyes slowly slide toward the dark hallway at the left edge of the frame. His mouth stays open. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-crib",
+      "chapter": "隔天早上",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of a sunny bedroom in the morning: A-Fu the Corgi himself is swaddled tightly in a pink baby blanket up to his neck, only his head showing, lying inside a white wooden baby crib, a pacifier in his mouth; above the crib hangs a baby mobile made of tiny toy game controllers with no buttons or logos.",
+        "camera": "Wide shot, locked",
+        "motion": "The Corgi shown in <Picture 1> lies still, swaddled in the crib; the mobile of tiny toy controllers slowly turns above him; he blinks twice and the pacifier bobs twice. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-again",
+      "chapter": "當天晚上",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the same dark living room sofa at night: Zhenzhu the Shiba herself sits cross-legged on the grey sofa in a bathrobe with a plain white sheet face mask, wearing big over-ear headphones, holding a plain game controller with no logos, lit by blue light from an off-screen TV, crumpled empty snack bags with no labels at her feet, mouth wide open yelling.",
+        "camera": "Medium shot, locked",
+        "motion": "The Shiba shown in <Picture 1> mashes the controller buttons frantically, her whole body swinging left and right with the game, mouth wide open in a yell. The camera holds a static shot.",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-mobile",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of A-Fu the Corgi himself swaddled in a pink baby blanket in a dark baby crib at night, a pacifier in his mouth, eyes wide open; one tiny toy game controller with no buttons or logos hangs from the mobile just above his face.",
+        "camera": "Close-up, locked",
+        "motion": "The Corgi shown in <Picture 1> lies awake listening; the tiny toy controller hanging above slowly turns to face him; he sucks the pacifier slowly twice. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

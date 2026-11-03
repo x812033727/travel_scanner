@@ -1,0 +1,147 @@
+{
+ "base": "shechu-hell-e01",
+ "intros": {
+  "ajin": "the photo of A-Jin, a real Golden Retriever in a white office shirt with a crooked blue tie and a blank ID card: keep his face, fur, shirt, tie and card, change the pose and place as described",
+  "miaozong": "the photo of Boss Miao, a real chubby orange tabby cat in a grey suit with a gold tie: keep his face, fur and suit, change the pose and place as described"
+ },
+ "title": "聽到鈴鐺聲，全辦公室瞬間彈起來工作 #社畜地獄",
+ "description": "員工是狗，老闆是貓。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "社畜地獄",
+  "社畜",
+  "貓老闆",
+  "黃金獵犬",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "主管巡視",
+ "thumb": "s07-perch",
+ "brief": "# 社畜地獄 EP3〈主管巡視〉\n\n## 故事前提\n\n阿金腳翹在桌上射紙飛機偷懶；遠處傳來項圈鈴鐺聲，他耳朵一豎、彈起來瘋狂打字。鈴鐺聲的來源是一隻掛著鈴鐺的發條玩具老鼠，慢慢滾過走道。阿金鬆一口氣、腳又翹回桌上——一片陰影罩下來。隔板上方，項圈上沒有鈴鐺的喵總正低頭看著他，面無表情地把隔板上的釘書機推下去。\n\n## 角色\n\n- 阿金（ajin）、喵總（miaozong）：同系列定裝照。\n\n## 站主觀點\n\n零台詞；貓的天性：項圈鈴鐺（拿下鈴鐺，才能悄悄巡視）與把東西推下去。\n\n## 格式\n\n- 9:16，約 16 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：主管巡視\n一行說明：腳翹桌上射紙飛機 → 鈴鐺聲、耳朵一豎 → 瘋狂打字 → 鈴鐺在發條玩具老鼠上 → 腳又翹回去 → 陰影罩下來 → 隔板上沒鈴鐺的喵總推下釘書機。\n開場鉤子：上班時間，黃金獵犬腳翹在桌上射紙飛機。\n",
+ "sfx_extra": {
+  "bell": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.3*sin(2*PI*4200*t)*(0.6+0.4*sin(2*PI*14*t))*exp(-1.5*t)+0.2*sin(2*PI*5300*t)*(0.6+0.4*sin(2*PI*11*t))*exp(-1.5*t)':d=1.5:s=48000"
+  ],
+  "thud": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.9*sin(2*PI*90*t)*exp(-12*t)':d=0.5:s=48000"
+  ],
+  "typing": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=white:d=2:a=0.5",
+   "-af",
+   "tremolo=f=14:d=1,highpass=f=2000,volume=-4dB,afade=t=out:st=1.7:d=0.3"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-slack",
+   "chapter": "偷懶",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.6,
+   "ff": "Medium shot of a grey office desk in a small office cubicle: A-Jin the Golden Retriever himself leans far back in his office chair in his white shirt and crooked tie, hind paws up on the desk, a paper airplane in his paw, the monitor turned away from the camera.",
+   "clip": "The Golden Retriever shown in <Picture 1> lazily throws the paper airplane out of frame, yawns widely and stretches his arms behind his head. The camera holds a static shot."
+  },
+  {
+   "id": "s02-ears",
+   "camera": "Close-up, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 1.6,
+   "ff": "Close-up of A-Jin the Golden Retriever himself leaning back in his office chair with his paws behind his head, relaxed half-closed eyes.",
+   "clip": "The Golden Retriever shown in <Picture 1> suddenly opens his eyes wide and his ears shoot straight up; he freezes. The camera holds a static shot.",
+   "sfx": [
+    [
+     "bell",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s03-work",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.2,
+   "ff": "Medium shot of A-Jin the Golden Retriever himself sitting bolt upright at his grey desk, tie straightened, both paws on a keyboard, the monitor turned away from the camera, a frantic fake-focused face.",
+   "clip": "The Golden Retriever shown in <Picture 1> types furiously on the keyboard with a frantic serious face, his ID card swinging, eyes darting left and right. The camera holds a static shot.",
+   "sfx": [
+    [
+     "typing",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s04-toy",
+   "chapter": "鈴鐺",
+   "camera": "Insert at floor level, locked",
+   "chars": [],
+   "dur": 2.0,
+   "ff": "Insert at floor level of the grey office carpet aisle between desks: a small grey wind-up toy mouse wearing a tiny red collar with a golden bell rolls along the carpet, its wind-up key on its back.",
+   "clip": "The wind-up toy mouse rolls slowly along the carpet across the frame, its key turning, the golden bell on its collar jingling. The camera holds a static shot.",
+   "sfx": [
+    [
+     "bell",
+     0.0,
+     -4
+    ]
+   ]
+  },
+  {
+   "id": "s05-relax",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.4,
+   "ff": "Medium shot of A-Jin the Golden Retriever himself at his grey desk, leaning back again in his office chair with his hind paws up on the desk and his front paws behind his head, a smug relieved grin.",
+   "clip": "The Golden Retriever shown in <Picture 1> lets out a long relieved breath and settles deeper into the chair with a smug grin, wiggling his hind paws on the desk. The camera holds a static shot."
+  },
+  {
+   "id": "s06-shadow",
+   "chapter": "巡視",
+   "camera": "Close-up, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.2,
+   "ff": "Close-up of A-Jin the Golden Retriever himself leaning back in his office chair with a smug grin, a large dark shadow beginning to fall across his face from above.",
+   "clip": "The Golden Retriever shown in <Picture 1> keeps grinning as the shadow slowly covers his face; his grin freezes; his eyes slowly roll upward; his ears flatten. The camera holds a static shot.",
+   "sfx": [
+    [
+     "dun",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "s07-perch",
+   "camera": "Low-angle medium shot, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 3.0,
+   "ff": "Low-angle medium shot of Boss Miao the orange tabby cat himself perched on top of a grey office cubicle partition in his grey suit, wearing a plain red collar with an empty ring and no bell, staring down at the camera with expressionless half-closed eyes; a stapler sits on the partition beside his paw.",
+   "clip": "The cat shown in <Picture 1> stares down without blinking and slowly pushes the stapler off the edge of the partition with one paw; the stapler falls out of frame. The camera holds a static shot.",
+   "sfx": [
+    [
+     "thud",
+     2.0
+    ]
+   ]
+  }
+ ],
+ "slug": "shechu-hell-e03"
+}

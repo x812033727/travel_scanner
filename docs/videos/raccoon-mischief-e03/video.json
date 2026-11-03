@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real raccoons with natural fur texture standing upright and wearing human clothes like a family, the same warm cozy living room every episode (beige sofa, wooden side table, floor lamp, patterned rug, front door), warm evening light, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "doudou",
+      "name": "豆豆",
+      "appearance": "a real young raccoon with the size of a small child, standing upright on its hind legs, natural black eye mask, wearing a bright yellow hoodie and a red bath towel tied around its neck as a superhero cape",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "mama",
+      "name": "浣熊媽媽",
+      "appearance": "a real adult raccoon standing upright on its hind legs, wearing a green knitted sweater and a pearl necklace, carrying a plastic shopping bag with a bunch of green onions sticking out",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "baba",
+      "name": "浣熊爸爸",
+      "appearance": "a real adult raccoon with a round belly standing upright on its hind legs, wearing a blue knitted vest over a white shirt and small reading glasses on its nose",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "quiet mischievous pizzicato tiptoe tune, suspense pause, then a soft deadpan comedy sting, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "raccoon-mischief-e03",
+  "sfx": {
+    "set": "raccoon-comedy",
+    "cues": [
+      {
+        "scene": "s01-kick",
+        "sound": "shatter"
+      },
+      {
+        "scene": "s02-key",
+        "sound": "keys"
+      },
+      {
+        "scene": "s04-remote",
+        "sound": "beep"
+      },
+      {
+        "scene": "s06-onions",
+        "sound": "beep"
+      },
+      {
+        "scene": "s07-off",
+        "sound": "tvoff"
+      },
+      {
+        "scene": "s07-off",
+        "sound": "sting"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "砸壞電視的小浣熊，只好自己當電視 #闖禍小浣熊",
+    "description": "小浣熊豆豆又闖禍了。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "闖禍小浣熊",
+      "浣熊",
+      "無厘頭",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "我是電視",
+      "tag": "闖禍小浣熊",
+      "shot": "s05-anchor"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-kick",
+      "chapter": "闖禍",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the cozy living room: the TV on the wooden TV stand has its black screen cracked into a spiderweb, nothing displayed, a thin wisp of smoke rising from it; a football lies on the rug; Doudou the young raccoon himself in his yellow hoodie and red cape stands frozen in a follow-through kicking pose, one hind leg still raised in mid-air.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> stays frozen mid-kick with one leg raised; the football rolls slowly across the rug and out of frame; smoke curls up from the cracked black screen. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-key",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Doudou the young raccoon's face in the foreground, red cape at his neck; behind him, out of focus, the front door.",
+        "camera": "Close-up, locked",
+        "motion": "The young raccoon shown in <Picture 1> holds still; the door handle in the background slowly turns down; his eyes slide slowly from the door to the camera and his ears flatten back. His mouth stays closed. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-frame",
+      "chapter": "我是電視",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the wooden TV stand: the TV is now only an empty black frame and the screen is gone; Doudou the young raccoon himself sits cross-legged inside the empty TV frame in his yellow hoodie, frozen in a cartoon dance pose with both arms up, his red cape tucked behind him; in front of the TV stand a big lump bulges under the rug.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> holds his dance pose perfectly still inside the empty TV frame with a forced bright smile; one raised arm trembles slightly. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-remote",
+      "template": "shot",
+      "action_seconds": 1,
+      "data": {
+        "prompt": "Insert close-up of the arm of a beige sofa: a raccoon paw in a blue knitted vest sleeve with a white shirt cuff holds a plain remote control with no labels, pointing it off screen.",
+        "camera": "Insert close-up, locked",
+        "motion": "The paw in the blue vest sleeve shown in <Picture 1> raises the remote, pauses for half a beat, then presses a button firmly. The camera holds a static shot.",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-anchor",
+      "chapter": "換台",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of the same wooden TV stand: Doudou the young raccoon himself sits stiffly upright inside the empty TV frame like a serious news anchor, front paws folded neatly in front of him, a stern face, red cape tucked behind him; a big lump bulges under the rug in front.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> sits perfectly upright with a stern anchor face; only his eyes slide sideways toward the off-screen sofa and back. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-onions",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of the same wooden TV stand: Doudou the young raccoon himself sits inside the empty TV frame like a home shopping host, holding up a big bunch of green onions toward the camera with both paws, a huge stiff salesman smile, red cape tucked behind him.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> presents the bunch of green onions to the camera and turns it left and right like a product, with a stiff forced smile; his eyebrows twitch. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-off",
+      "chapter": "關機",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the same wooden TV stand: Doudou the young raccoon himself sits inside the empty TV frame in his yellow hoodie; in front of the TV stand a big lump bulges under the rug; at the right edge of the frame a single raccoon hind paw in a brown slipper rests on the floor.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> slowly leans back inside the frame, lies flat and closes his eyes as if switched off; a football rolls out from under the rug lump and stops against the slipper at the right edge. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

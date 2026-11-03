@@ -1,6 +1,6 @@
 ---
 id: 2026-11-03-zero-dialogue-ep2-batch
-title: 零台詞四系列第 2 集（新髮型、吊燈、雪國、年度簡報）：產線與成片
+title: 零台詞四系列第 2–5 集（共 16 集）：產線與成片
 status: in-progress
 priority: P2
 area: docs
@@ -16,6 +16,18 @@ scope:
   - docs/videos/influencer-piglet-e02
   - docs/videos/shechu-hell-e02
   - docs/videos/zero-dialogue-series-ideas/production
+  - docs/videos/wangjia-couple-e03
+  - docs/videos/wangjia-couple-e04
+  - docs/videos/wangjia-couple-e05
+  - docs/videos/raccoon-mischief-e03
+  - docs/videos/raccoon-mischief-e04
+  - docs/videos/raccoon-mischief-e05
+  - docs/videos/influencer-piglet-e03
+  - docs/videos/influencer-piglet-e04
+  - docs/videos/influencer-piglet-e05
+  - docs/videos/shechu-hell-e03
+  - docs/videos/shechu-hell-e04
+  - docs/videos/shechu-hell-e05
 ---
 
 # 零台詞四系列第 2 集（新髮型、吊燈、雪國、年度簡報）：產線與成片
@@ -27,6 +39,7 @@ scope:
 ## Definition of done
 
 - [x] 四集的 `video.json`、`brief.md`（lint 0 錯誤），由 `docs/videos/zero-dialogue-series-ideas/production/make_episode.py` 從各集 spec 產生。
+- [x] 第 3–5 集 12 份 spec（`production/gen_specs.py` 產生，每份 lint 0 錯誤）。站主 2026-11-03：每系列 5 集、共 20 集。
 - [ ] Colab 首格、H3 直式片段（`run_episode.sh`：一張一張跑、每張逾時強制重試）。
 - [ ] 剪接成片（`edit.py`）、站主看過。
 

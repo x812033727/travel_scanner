@@ -1,0 +1,127 @@
+{
+ "base": "shechu-hell-e01",
+ "intros": {
+  "ajin": "the photo of A-Jin, a real Golden Retriever in a white office shirt with a crooked blue tie and a blank ID card: keep his face, fur, shirt, tie and card, change the pose and place as described",
+  "miaozong": "the photo of Boss Miao, a real chubby orange tabby cat in a grey suit with a gold tie: keep his face, fur and suit, change the pose and place as described"
+ },
+ "title": "跟貓老闆談加薪，他只肯待在紙箱裡 #社畜地獄",
+ "description": "員工是狗，老闆是貓。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "社畜地獄",
+  "社畜",
+  "貓老闆",
+  "黃金獵犬",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "申請加薪",
+ "thumb": "s02-box",
+ "brief": "# 社畜地獄 EP4〈申請加薪〉\n\n## 故事前提\n\n阿金深呼吸、敲門要談加薪。喵總不坐大皮椅，整隻擠在辦公桌上一個小紙箱裡。阿金舉起畫著長條圖的報告、眼睛水汪汪；喵總慢慢沉進紙箱，只剩兩隻耳朵。隔天，阿金的椅子上放著一個綁紅色蝴蝶結的大紙箱——這就是他的「加薪」，他坐在裡面打電腦。最後，那個紙箱裡坐的換成了喵總。\n\n## 角色\n\n- 阿金（ajin）、喵總（miaozong）：同系列定裝照。\n\n## 站主觀點\n\n零台詞；貓的天性：紙箱（對貓來說紙箱就是最高獎賞，而且好紙箱一定會被老闆搶走）。\n\n## 格式\n\n- 9:16，約 15 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：申請加薪\n一行說明：敲門 → 老闆擠在紙箱裡 → 舉報告、水汪汪 → 老闆沉進紙箱 → 隔天的加薪是一個紙箱 → 紙箱被老闆搶走。\n開場鉤子：大皮椅空著，胖橘貓老闆擠在桌上的小紙箱裡。\n",
+ "sfx_extra": {
+  "knock": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.8*sin(2*PI*180*t)*exp(-40*mod(t,0.25))*lt(t,0.75)':d=0.8:s=48000"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-knock",
+   "chapter": "加薪",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.4,
+   "ff": "Medium shot of A-Jin the Golden Retriever himself standing in front of a glass office door in his white shirt and crooked tie, holding a plain folder against his chest, taking a deep nervous breath.",
+   "clip": "The Golden Retriever shown in <Picture 1> takes a deep breath, straightens his tie, and knocks on the glass door three times with one knuckle. The camera holds a static shot.",
+   "sfx": [
+    [
+     "knock",
+     1.2
+    ]
+   ]
+  },
+  {
+   "id": "s02-box",
+   "chapter": "紙箱",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot of a boss's office: Boss Miao the orange tabby cat himself is squeezed inside a small cardboard box sitting on top of his big wooden desk, his grey suit jacket bulging over the edges, only his head and shoulders sticking out; his big black leather chair stands empty behind him.",
+   "clip": "The cat shown in <Picture 1> stares at the camera from inside the cardboard box with half-closed eyes, then slowly blinks once. The camera holds a static shot.",
+   "sfx": [
+    [
+     "dun",
+     0.4,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s03-plead",
+   "camera": "Medium close-up, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.4,
+   "ff": "Medium close-up of A-Jin the Golden Retriever himself holding up a sheet of paper with a simple hand-drawn rising bar chart with no words or numbers, big hopeful puppy eyes.",
+   "clip": "The Golden Retriever shown in <Picture 1> holds up the bar chart, points eagerly at the tallest bar, and gives big pleading puppy eyes, tail wagging. The camera holds a static shot.",
+   "sfx": [
+    [
+     "paper",
+     0.0,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s04-sink",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 2.0,
+   "ff": "Medium shot of Boss Miao the orange tabby cat himself inside the small cardboard box on his big wooden desk, only his head sticking out, expressionless.",
+   "clip": "The cat shown in <Picture 1> slowly sinks down into the cardboard box until only his two ears stick out over the edge; the ears twitch once. The camera holds a static shot."
+  },
+  {
+   "id": "s05-gift",
+   "chapter": "隔天",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 3.0,
+   "ff": "Medium shot of A-Jin's grey office desk the next morning: A-Jin the Golden Retriever himself sits squeezed inside a big cardboard box placed on his office chair, a big red gift bow stuck on the front of the box, a laptop on his knees with its screen facing away, a confused but polite smile.",
+   "clip": "The Golden Retriever shown in <Picture 1> sits in the box and types on the laptop; he glances down at the red bow, then back up at the camera with a confused polite smile. The camera holds a static shot.",
+   "sfx": [
+    [
+     "paper",
+     0.0,
+     -4
+    ]
+   ]
+  },
+  {
+   "id": "s06-steal",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 2.6,
+   "ff": "Medium shot of the same grey office desk: Boss Miao the orange tabby cat himself sits inside the big cardboard box with the red gift bow on the office chair, completely relaxed, eyes half closed; at the edge of the frame a golden retriever paw holds a laptop.",
+   "clip": "The cat shown in <Picture 1> settles deeper into the box with a contented look, slowly closes his eyes and curls his tail over the edge. The camera holds a static shot.",
+   "sfx": [
+    [
+     "dun",
+     1.6
+    ]
+   ]
+  }
+ ],
+ "slug": "shechu-hell-e04"
+}

@@ -1,0 +1,158 @@
+{
+ "base": "raccoon-mischief-e01",
+ "intros": {
+  "doudou": "the photo of Doudou, a real young raccoon in a bright yellow hoodie with a red towel cape: keep his face, fur, hoodie and cape, change the pose and place as described",
+  "mama": "the photo of Mama raccoon, a real adult raccoon in a green knitted sweater with a pearl necklace: keep her face, fur, sweater and necklace, change the pose and place as described",
+  "baba": "the photo of Papa raccoon, a real adult raccoon with a round belly in a blue knitted vest over a white shirt with small reading glasses: keep his face, fur, vest, shirt and glasses, change the pose and place as described"
+ },
+ "title": "盪壞掛鐘的小浣熊，自己變成時鐘 #闖禍小浣熊",
+ "description": "小浣熊豆豆又闖禍了。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "闖禍小浣熊",
+  "浣熊",
+  "無厘頭",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "我是時鐘",
+ "thumb": "s03-hands",
+ "brief": "# 闖禍小浣熊 EP4〈時鐘〉\n\n## 故事前提\n\n豆豆吊在牆上的釘子上晃，腳下的大掛鐘摔碎、彈簧還在抖。他把自己貼在牆上當時鐘，兩隻手臂當指針指著三點。媽媽看看手錶——八點十分——再抬頭看牆，眉頭一皺；豆豆的「分針」手臂慌忙轉一大圈，轉到扭在頭上。頭頂的咕咕鐘小門打開，探出來咕咕叫的是戴老花眼鏡的爸爸。\n\n## 角色\n\n- 豆豆（doudou）、浣熊媽媽（mama）、浣熊爸爸（baba）：同系列定裝照。\n\n## 站主觀點\n\n零台詞；集數規劃盲評 76（`docs/videos/raccoon-mischief/episodes.md` 的 EP3）。採納評審建議（都不加鏡、不加角色）：媽媽的錶清楚是另一個時間（八點十分）；第三拍升級成分針手臂慌忙轉一大圈扭到頭上，不是只跳一格。\n\n## 格式\n\n- 9:16，約 15 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：時鐘\n一行說明：吊在釘子上、掛鐘碎在地上 → 鑰匙聲、慢看鏡頭 → 自己貼牆當時鐘 → 媽媽的錶是八點十分 → 手臂慌忙轉一圈 → 咕咕鐘探出爸爸。\n開場鉤子：碎掉的掛鐘彈出一根還在抖的彈簧，上方吊著一隻小浣熊。\n",
+ "sfx_extra": {
+  "boing": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.5*sin(2*PI*(220+80*sin(2*PI*9*t))*t)*exp(-3*t)':d=1.0:s=48000"
+  ],
+  "cuckoo": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.4*(sin(2*PI*700*t)*between(t,0,0.18)+sin(2*PI*560*t)*between(t,0.22,0.45)+sin(2*PI*700*t)*between(t,0.7,0.88)+sin(2*PI*560*t)*between(t,0.92,1.15))':d=1.3:s=48000"
+  ],
+  "ratchet": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.6*sin(2*PI*3000*t)*exp(-150*mod(t,0.08))':d=1.6:s=48000"
+  ],
+  "tick": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.6*sin(2*PI*3000*t)*exp(-150*mod(t,0.5))':d=2.5:s=48000"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-swing",
+   "chapter": "闖禍",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot of a living room wall: on the floor a big wooden wall clock lies smashed open, a coiled spring popped out of it; above it Doudou the young raccoon himself in his yellow hoodie and red cape hangs from a single nail on the wall by one paw, clutching a broken brass pendulum in the other.",
+   "clip": "The young raccoon shown in <Picture 1> dangles from the nail by one paw, swinging slightly, the broken pendulum in his other paw; below, the spring on the smashed clock wobbles back and forth. The camera holds a static shot.",
+   "sfx": [
+    [
+     "shatter",
+     0.0
+    ],
+    [
+     "boing",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "s02-key",
+   "camera": "Close-up, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.0,
+   "ff": "Close-up of Doudou the young raccoon's face in the foreground as he hangs by one paw from a nail on the wall, red cape at his neck; behind him, out of focus, the front door.",
+   "clip": "The young raccoon shown in <Picture 1> holds still, hanging; the door handle in the background slowly turns down; his eyes slide slowly from the door to the camera and his ears flatten back. His mouth stays closed. The camera holds a static shot.",
+   "sfx": [
+    [
+     "keys",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "s03-hands",
+   "chapter": "我是時鐘",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 3.0,
+   "ff": "Medium shot of the living room wall where the clock used to hang: Doudou the young raccoon himself is the wall clock, pressed flat against the wall, his red towel cape spread into a round clock face behind him with twelve small dots and no numbers, his face at the centre, one arm pointing straight up and one arm pointing straight right like clock hands at three o'clock; below him a lump bulges under the rug with a spring poking out of its edge.",
+   "clip": "The young raccoon shown in <Picture 1> stays pressed flat against the wall perfectly still, arms fixed like clock hands; his cheeks twitch in a steady ticking rhythm. The camera holds a static shot.",
+   "sfx": [
+    [
+     "tick",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s04-watch",
+   "camera": "Close-up, locked",
+   "chars": [
+    "mama"
+   ],
+   "dur": 2.0,
+   "ff": "Close-up of Mama raccoon herself in her green sweater and pearl necklace looking down at a plain analog wristwatch on her wrist, with no numbers, its hands clearly at ten past eight.",
+   "clip": "The mother raccoon shown in <Picture 1> looks at her wristwatch, then slowly lifts her eyes to the wall off screen; her brow furrows. The camera holds a static shot.",
+   "sfx": [
+    [
+     "tick",
+     0.0,
+     -8
+    ]
+   ]
+  },
+  {
+   "id": "s05-spin",
+   "chapter": "對時",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.4,
+   "ff": "Medium shot of the same wall: Doudou the young raccoon himself pressed flat against the wall as the clock, red cape spread into a round clock face behind him, one arm up and one arm right, a bead of sweat on his forehead.",
+   "clip": "The young raccoon shown in <Picture 1> frantically sweeps his right arm around in a big circle like a spinning minute hand until it ends twisted awkwardly over his head; his eyes dart sideways; sweat drips. The camera holds a static shot.",
+   "sfx": [
+    [
+     "ratchet",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s06-cuckoo",
+   "chapter": "咕咕",
+   "camera": "Close shot, locked",
+   "chars": [
+    "baba"
+   ],
+   "dur": 3.0,
+   "ff": "Close shot of a large wooden cuckoo clock box mounted high on the living room wall with its little door open: Papa raccoon himself pokes his head out of the cuckoo clock door, small reading glasses on his nose, a small broken wooden bird held at the corner of his mouth, a deadpan face.",
+   "clip": "The raccoon shown in <Picture 1> pops his head forward out of the little door twice in a stiff mechanical rhythm, the wooden bird bobbing at the corner of his mouth, then pulls back inside and the little door snaps shut. The camera holds a static shot.",
+   "sfx": [
+    [
+     "cuckoo",
+     0.2
+    ],
+    [
+     "sting",
+     2.3
+    ]
+   ]
+  }
+ ],
+ "slug": "raccoon-mischief-e04"
+}

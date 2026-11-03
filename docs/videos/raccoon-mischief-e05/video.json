@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real raccoons with natural fur texture standing upright and wearing human clothes like a family, the same warm cozy living room every episode (beige sofa, wooden side table, floor lamp, patterned rug, front door), warm evening light, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "doudou",
+      "name": "豆豆",
+      "appearance": "a real young raccoon with the size of a small child, standing upright on its hind legs, natural black eye mask, wearing a bright yellow hoodie and a red bath towel tied around its neck as a superhero cape",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "mama",
+      "name": "浣熊媽媽",
+      "appearance": "a real adult raccoon standing upright on its hind legs, wearing a green knitted sweater and a pearl necklace, carrying a plastic shopping bag with a bunch of green onions sticking out",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "baba",
+      "name": "浣熊爸爸",
+      "appearance": "a real adult raccoon with a round belly standing upright on its hind legs, wearing a blue knitted vest over a white shirt and small reading glasses on its nose",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "quiet mischievous pizzicato tiptoe tune, suspense pause, then a soft deadpan comedy sting, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "raccoon-mischief-e05",
+  "sfx": {
+    "set": "raccoon-comedy",
+    "cues": [
+      {
+        "scene": "s01-pot",
+        "sound": "crunch"
+      },
+      {
+        "scene": "s02-key",
+        "sound": "keys"
+      },
+      {
+        "scene": "s04-can",
+        "sound": "pour"
+      },
+      {
+        "scene": "s06-sprout",
+        "sound": "sting"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "撞倒媽媽的盆栽，小浣熊只好自己當植物 #闖禍小浣熊",
+    "description": "小浣熊豆豆又闖禍了。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "闖禍小浣熊",
+      "浣熊",
+      "無厘頭",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "我是盆栽",
+      "tag": "闖禍小浣熊",
+      "shot": "s05-wet"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-pot",
+      "chapter": "闖禍",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of a living room corner: a huge monstera plant twice as tall as Doudou lies toppled on its side, its big ceramic pot tied with a pink ribbon bow rolling on the floor, soil spilled everywhere; Doudou the young raccoon himself sits in the pile of soil in his yellow hoodie and red cape, a broken big leaf in his paw, soil and roots on his head, frozen.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> stays frozen in the soil; the ceramic pot with the pink bow rolls slowly across the floor and wobbles to a stop; a clump of soil slides off his head. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-key",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Doudou the young raccoon's face in the foreground with soil on his head, red cape at his neck; behind him, out of focus, the front door.",
+        "camera": "Close-up, locked",
+        "motion": "The young raccoon shown in <Picture 1> holds still; the front door in the background opens a crack and the green tips of a bunch of green onions poke in first; his eyes slide slowly to the camera and his ears flatten back. His mouth stays closed. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-plant",
+      "chapter": "我是盆栽",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the same living room corner: the big ceramic pot with the pink ribbon bow stands upright again; Doudou the young raccoon himself stands inside the pot, soil up to his knees, both arms raised and spread wide, large monstera leaves stuck all over his yellow hoodie and the biggest leaf stuck on top of his head; in the middle of the rug a big lump bulges underneath.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> stands perfectly still with arms raised; one leaf slowly slides down his arm and drops to the floor; his eyes follow it without moving his head. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-can",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Insert close-up at floor level: a big lump bulging under a patterned rug in the foreground; a raccoon paw in a green knitted sweater sleeve holds a metal watering can above it.",
+        "camera": "Insert close-up, locked",
+        "motion": "The paw in the green sweater sleeve shown in <Picture 1> tips the watering can so a single drop falls onto the rug lump, pauses, then calmly swings the spout away toward the corner off screen and tilts it. The camera holds a static shot.",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-wet",
+      "chapter": "澆水",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the same corner: Doudou the young raccoon himself stands in the ceramic pot soaking wet from head to toe, dripping wet fur, monstera leaves plastered to his yellow hoodie, eyes teary but not moving; a neat row of fresh green onions is now planted in the soil around his feet.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> stands still, dripping; water drops fall from his nose and leaves; his lower lip trembles; the green onions around his feet stand upright. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-sprout",
+      "chapter": "隔天早上",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close-up of Doudou the young raccoon himself in morning sunlight still standing in the pot, leaves on his yellow hoodie, a single small green onion shoot growing on top of his head like a cartoon sprout.",
+        "camera": "Close-up, locked",
+        "motion": "The young raccoon shown in <Picture 1> stays still; the small green onion shoot on his head slowly grows a little taller; his eyes roll up to look at it, then slowly back to the camera. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}
