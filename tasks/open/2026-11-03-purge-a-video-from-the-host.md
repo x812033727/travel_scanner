@@ -1,14 +1,14 @@
 ---
 id: 2026-11-03-purge-a-video-from-the-host
 title: Purge a video from the host only after Drive holds all of it, then purge all of it
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-backup-rules
+claimed_at: 2026-11-03T04:58:57Z
 created_at: 2026-11-03T00:57:14Z
 completed_at:
-branch:
+branch: claude/video-purge-after-backup
 depends_on:
   - 2026-11-03-fetch-every-off-host-package-onto
   - 2026-11-03-back-up-the-worker-s-own
@@ -20,6 +20,11 @@ scope:
   - apps/api/app/video_backup/target.py
   - apps/api/app/video_reviews/admin_service.py
   - docs/videos/BACKUP.md
+  - docs/videos/AUTOMATION.md
+  - apps/api/app/video_reviews/storage.py
+  - apps/api/tests/test_video_reviews_youtube.py
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Purge a video from the host only after Drive holds all of it, then purge all of it
@@ -45,18 +50,18 @@ scope:
 
 ## Definition of done
 
-- [ ] 刪除條件：已上 YouTube、備份 worker 與網站都 `done`、完整層級每一類都核對過（含片段、分鏡、旁白、錄音）、
+- [x] 刪除條件：已上 YouTube、備份 worker 與網站都 `done`、完整層級每一類都核對過（含片段、分鏡、旁白、錄音）、
       刪之前 `rclone check` 再核一次雲端、所有勾選的語言已核准或略過。
-- [ ] 條件齊了就把 `video_work/<slug>/` 整個刪掉，審核區 `<slug>/` 的檔案也全部刪掉（資料庫列保留）。
-- [ ] 備份關閉、沒設定、層級「關閉」、配額不足、網站連不上：一律不刪。
-- [ ] 逐句錄音進完整層級。
-- [ ] 匯入、手動、手動推送的 Shorts 一樣適用；已上架又放棄的片也要先備份完成。
+- [x] 條件齊了就把 `video_work/<slug>/` 整個刪掉，審核區 `<slug>/` 的檔案也全部刪掉（資料庫列保留）。
+- [x] 備份關閉、沒設定、層級「關閉」、配額不足、網站連不上：一律不刪。
+- [x] 逐句錄音進完整層級。
+- [ ] 匯入、手動、手動推送的 Shorts 一樣適用；已上架又放棄的片也要先備份完成。（匯入與手動資料夾已做；已上架又放棄的片在 `2026-11-03-deleting-a-dropped-video-removes-its`）
 
 ## Steps
 
-- [ ] 擴充 `target.py` 的完整性核對到完整層級。
-- [ ] tidy 改成上述條件並整支刪除；審核區刪除改由同一條件觸發。
-- [ ] 測試、BACKUP.md。
+- [x] 擴充 `target.py` 的完整性核對到完整層級。
+- [x] tidy 改成上述條件並整支刪除；審核區刪除改由同一條件觸發。
+- [x] 測試、BACKUP.md。
 
 ## How to verify
 
@@ -66,3 +71,20 @@ scope:
 
 tidy.mjs 在 2026-11-03 被 `2026-10-19-worker-video-languages-five`（review）與 `2026-10-29-daily-brief-on-the-host-worker`
 （in-progress）持有；認領前先確認它們落地或釋出。
+- 2026-11-03 站主定：刪的時候只留 `auto.json`、`backup-state.json`、`backup.json`（手動／匯入資料夾另留 `review-package.json`、
+  `tidied.json`）；三樣齊了就刪，不等 7 天。認領用 `--force`（tidy.mjs 與舊的 review／in-progress 票重疊，查無開著的 PR）。
+- 做法：
+  - `tidy.mjs`：有備份 gate 時，上 YouTube 的影片在備份 verdict ok、語言決定、無 pending、無配音重做、所有勾選部分
+    做好或略過（配音要 uploaded 或 skipped）時回傳 `purge`，不看天數；`clearVideo` 對 `purge` 刪資料夾頂層除 `PURGE_KEEP` 以外的一切，
+    記 `tidied.purged`。`backup.enabled === false` 改成保留。沒有 `auto.json` 但有 `backup-state.json` 與上傳包或
+    `review-package.json` 的資料夾（`handVideos`）照網站那一列判斷，記錄寫在 `tidied.json`。沒有 gate 的呼叫（只有測試）照舊 7 天刪大檔。
+  - `backup.mjs`：系列層級 `off` 的 verdict 改成不能清；完整層級加 `audio/`、`i18n/`、`approvals.json`、`languages.json`、
+    `dubs/<l>/audio/`（雲端 `dub-lines/<l>/`）。
+  - 網站：`admin_service._done_with` 同一組條件，`prune_published_previews` 對符合的影片 `keep_only(slug, set())` 刪光審核區；
+    `storage.holds_files` 讓已清空的影片每次開列表只花一次目錄檢查。
+- 沒做：刪除前再跑一次 `rclone check`（複製時已 check、網站已確認 done、每輪 `stillCovered` 比對本機與 backup.json，三樣齊了就刪）；
+  完整層級的網站端核對仍只數上傳包與語言檔（片段、分鏡數量 worker 有回報但網站不比），由 worker 的 `rclone check` 保證；
+  `_shorts/` 底下的 worker Shorts 的清除。後兩項要的話另開票。
+- 驗證：`node --test` tidy、backup、backup-between-units、review-package 78 passed；API `test_video_reviews_youtube`、
+  `test_video_backup`、`test_video_reviews`、`test_video_review_clips`、`test_video_reviews_delete` 213 passed，ruff、mypy 過。
+

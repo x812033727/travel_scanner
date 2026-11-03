@@ -2984,6 +2984,42 @@ def _backed_up(project: VideoProject) -> bool:
     return record.get("state") == "done"
 
 
+def _done_with(project: VideoProject, reviews: list[VideoReview]) -> bool:
+    """Whether nothing needs ``project``'s review files any more (owner, 2026-11-03,
+    docs/videos/BACKUP.md): on YouTube, its Drive backup done, its languages decided, no review
+    waiting for the owner, no dub asked for again, and every chosen language part made or
+    skipped, a dub uploaded in Studio or skipped. The files are in Drive from then on, and the
+    host's worker clears its own copy by the same rule (tools/video/automation/tidy.mjs)."""
+    if not project.youtube_video_id or not _backed_up(project):
+        return False
+    if project.locales_decided_at is None:
+        return False
+    if any(review.status == "pending" for review in reviews):
+        return False
+    retries = project.dub_retries if isinstance(project.dub_retries, dict) else {}
+    if any(
+        isinstance(entry, dict) and entry.get("status") in ("requested", "taken")
+        for entry in retries.values()
+    ):
+        return False
+    states = language_states(locale_choices(project), reviews, retries)
+    for parts in states.values():
+        for part, out in parts.items():
+            if out.state == "working" or (
+                part == "dub" and out.state not in ("uploaded", "skipped")
+            ):
+                return False
+    return True
+
+
+async def _on_youtube(session: AsyncSession) -> list[VideoProject]:
+    """Every video on YouTube."""
+    rows = await session.scalars(
+        select(VideoProject).where(VideoProject.youtube_video_id.is_not(None))
+    )
+    return list(rows)
+
+
 async def _published_before(session: AsyncSession, cutoff: datetime) -> list[VideoProject]:
     """Videos on YouTube whose upload confirmation was approved on or before ``cutoff``."""
     confirmed = _confirmations()
@@ -3011,6 +3047,14 @@ async def prune_published_previews(
     now = now or datetime.now(UTC)
     cutoff = now - PREVIEW_RETENTION
     removed: dict[str, list[str]] = {}
+    # A video done with (``_done_with``) loses every file here at once, not only its mp4.
+    for project in await _on_youtube(session):
+        if not _backed_up(project) or not store.holds_files(project.slug):
+            continue
+        if _done_with(project, await _reviews(session, project)):
+            gone = store.keep_only(project.slug, set())
+            if gone:
+                removed[project.slug] = gone
     for project in await _published_before(session, cutoff):
         if project.youtube_publish_at is not None and project.youtube_publish_at > cutoff:
             continue

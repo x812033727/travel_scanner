@@ -49,13 +49,20 @@ export const FAILED_RETRY_MS = 6 * 60 * 60 * 1000;
 export const REPORTS_PER_ROUND = 10;
 // The full tier's extra files, beside upload/ (docs/videos/BACKUP.md §每一層備份哪些檔).
 // recordings/ holds an imported episode's line recordings (review-package.mjs, 2026-11-01).
-export const FULL_DIRS = ["clips", "keyframes", "characters", "recordings"];
-export const FULL_FILES = ["timeline.json", "narration.wav"];
+// Since 2026-11-03 the host clears a video whole once Drive holds it (tidy.mjs purge), so the full
+// tier also keeps what a later dub retry, language or Short would need and that cannot be made
+// again for free: the narration's line takes (audio/), each dub's line takes (dubs/<locale>/audio/,
+// as dub-lines/<locale>/ in Drive), the translation worksheets (i18n/), and the owner's approvals
+// and language choice.
+export const FULL_DIRS = ["clips", "keyframes", "characters", "recordings", "audio", "i18n"];
+export const FULL_FILES = ["timeline.json", "narration.wav", "approvals.json", "languages.json"];
+export const DUB_LINES = "dub-lines";
 // The full tier also keeps, for each language the owner chose (languages.json), the dub track and
 // caption file the worker made but did not package (given up on, or not yet approved) and the
 // language's thumbnail. Unpackaged files go to their own folders, so the site never counts them
 // as packaged.
 export const UNPACKAGED_DUBS = "dubs/未進上傳包";
+const LOCALE_DIR = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?$/;
 export const UNPACKAGED_CAPTIONS = "captions/未進上傳包";
 const DUB_TRACK = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.(m4a|mp3|wav)$/;
 const LOCALE_THUMBNAIL = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.jpg$/;
@@ -184,6 +191,13 @@ export function planFiles(workdir, tier, fs = nodeFs) {
   if (tier === "full") {
     for (const dir of FULL_DIRS) for (const [source, relative] of walk(path.join(workdir, dir), fs)) planned.set(`${dir}/${relative}`, source);
     for (const name of FULL_FILES) if (isFile(path.join(workdir, name), fs)) planned.set(name, path.join(workdir, name));
+    let dubDirs = [];
+    try {
+      dubDirs = fs.readdirSync(path.join(workdir, "dubs"), { withFileTypes: true }).filter((entry) => entry.isDirectory() && LOCALE_DIR.test(entry.name)).map((entry) => entry.name);
+    } catch {
+      dubDirs = [];
+    }
+    for (const locale of dubDirs.sort()) for (const [source, relative] of walk(path.join(workdir, "dubs", locale, "audio"), fs)) planned.set(`${DUB_LINES}/${locale}/${relative}`, source);
     const chosen = chosenLocales(workdir, fs);
     const packaged = new Set([...planned.keys()].map((where) => where.match(/^dubs\/([^/]+)\.[A-Za-z0-9]+$/)?.[1]).filter(Boolean));
     for (const [source, locale] of localeFiles(path.join(workdir, "dubs"), DUB_TRACK, fs)) {
@@ -724,7 +738,9 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     // only its upload package, and is backed up all the same, as is an imported video's fetched one.
     if (!fs.existsSync(path.join(workdir, "auto.json")) && !isFile(path.join(workdir, UPLOAD, "final.mp4"), fs) && !packageFetched(workdir)) continue;
     if (video.tier === "off") {
-      verdicts.set(video.slug, { ok: true, why: "its series is set not to be backed up" });
+      // Owner, 2026-11-03: nothing leaves the host before Drive holds it, so a series set not to
+      // be backed up keeps its files on the host.
+      verdicts.set(video.slug, { ok: false, why: "its series is set not to be backed up, so the host keeps it" });
       continue;
     }
     let state = readBackupState(workdir);
