@@ -78,7 +78,8 @@ metadata:
 ## 評分：一支影片評四次
 
 開拍前評**企劃與稿子**、剪好後評**成片**、上架前評**包裝**（縮圖與標題）、公開 7／28 天後看**上架後的數據**；前一段沒過不進下一段。
-評分表、門檻與量法都在 `.agents/skills/producer/references/scorecards.md`。`qa` 的技術檢查只分過或不過，不代替這裡的內容評分；
+評分表、門檻與量法都在 `.agents/skills/producer/references/scorecards.md`；奇聞檔案局與原來如此事務所的節奏目標另在
+`.agents/skills/producer/references/pace-targets.md`（旁白插圖長片不套漫劇的鏡長）。`qa` 的技術檢查只分過或不過，不代替這裡的內容評分；
 評分的代理不能是做那支片的那一個。
 
 ## 產出：製片單
