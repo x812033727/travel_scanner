@@ -1,0 +1,1984 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "science_sources",
+  "reviewer": "pool_life_tech",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "head": "0c8f8712d6984e7c352c00182547255114d64ca7",
+    "selected": 3394,
+    "raw_records": 3779,
+    "not_added": 1875,
+    "themes": 464,
+    "snapshot": {
+      "file": "baselines/2026-11-03-3394.json.gz",
+      "sha256": "0ceb7a5a27dcf70d6594501d69d8ef724665d5bb464895c87fb0e592d123f5c6"
+    },
+    "pool_sha256": "4e55141e254c6b7e7bdf4edb700ea31a7a05506979fba53d04338adbd8c2029f"
+  },
+  "role_and_scope": "全九候選與來源定點讀查，十六項未收、作者逐對及共同45個有向近鄰；五個可剪企劃與獨立原文對照。",
+  "reviewed_candidate_ids": [
+    "S44-001",
+    "S44-002",
+    "S44-003",
+    "S44-004",
+    "S44-005",
+    "S44-006",
+    "S44-007",
+    "S44-008",
+    "S44-009"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave44-earth.json",
+      "sha256": "e59caeea546afd2b1b384c1c232507eadb5d9eb2839bb414156b366c7873b766"
+    },
+    {
+      "file": "reviews/wave44-earth-author.json",
+      "sha256": "334d4514264935a41ebfa1afdfd792c67c0e556e180c791b4e8a445d66096e9f"
+    },
+    {
+      "file": "reviews/wave44-earth-themes.json",
+      "sha256": "9a068a1ef90aaa4500a39afcfe92ce9d6e4e9c21ae1cd3688529db69e2e1efcf"
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "S44-S001",
+      "title": "Bird-Like Anatomy, Posture, and Behavior Revealed by an Early Jurassic Theropod Dinosaur Resting Trace",
+      "doi": "10.1371/journal.pone.0004591",
+      "url": "https://doi.org/10.1371/journal.pone.0004591",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文PDF及同文XML，SGDS.18.T1行跡、圖4–5、Discussion對手腕及印痕方向的比較。",
+      "cache": {
+        "file": ".cache/wave44-earth-handpdf.pdf",
+        "sha256": "a3214e8e4669d7ff25cf699c17ed30b6be24e72791d5b6aa2de5e1ec6aafaa33",
+        "text_file": ".cache/wave44-earth-handpdf.txt",
+        "text_sha256": "8c136f8f24e38708edd61dd85ba33ea0914037c4a4aa2bf72e81b9f91a88034c"
+      },
+      "findings": "特定斜坡有蹠印、身體後端和雙手指朝中線，前挪休息再無同樣手印。擺位支持掌面向內，化石不給關節全部角度。",
+      "limitations": "只限這段行跡及可辨擺位，不能以泥印還原所有關節角度或確定造跡種。"
+    },
+    {
+      "source_id": "S44-S002",
+      "title": "First Known Feeding Trace of the Eocene Bottom-Dwelling Fish Notogoneus osculus and Its Paleontological Significance",
+      "doi": "10.1371/journal.pone.0010420",
+      "url": "https://doi.org/10.1371/journal.pone.0010420",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "原刊PDF p.5圖3；同文XML Results／Identification of the Tracemaker and Its Behavior 及Discussion。",
+      "cache": {
+        "file": ".cache/wave44-earth-fishpdf.pdf",
+        "sha256": "5523ecaaa5b25c0568650e9359ad049a2a810e2359dc1d4359dab3387f7b8b8b",
+        "text_file": ".cache/wave44-earth-fishpdf.txt",
+        "text_sha256": "410c499f89847df502bec1f3f5f74f95e128afc42a5765635fe5edce94f8128d"
+      },
+      "findings": "把成對同相小波及單一大波各配給不同鰭，仍有重疊橢圓印，大小及相對位置適合下位口接觸湖底；未見食物被吞或原地保存造跡者。",
+      "limitations": "嘴印、鰭的對應與造跡者為比較所得；沒有保存和該組印痕連在一起的魚身。"
+    },
+    {
+      "source_id": "S44-S003",
+      "title": "First trace and body fossil evidence of a burrowing, denning dinosaur",
+      "doi": "10.1098/rspb.2006.0443",
+      "url": "https://doi.org/10.1098/rspb.2006.0443",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文Web L175–182，彎曲洞道、末室、大小骨件的水力差異及成人尺度。",
+      "cache": {
+        "file": ".cache/wave44-earth-burrow-web.txt",
+        "sha256": "99bb0c409e2372284ecfda71cf0faa84778ddd7b13f7d1a9bf5ea26a816cf881",
+        "text_file": ".cache/wave44-earth-burrow-web.txt",
+        "text_sha256": "99bb0c409e2372284ecfda71cf0faa84778ddd7b13f7d1a9bf5ea26a816cf881"
+      },
+      "findings": "曲折窄洞深處留著以水搬運特性不同的大小骨件，洞尺寸、成獸解剖同時支持使用並掘洞。不能從共處證明餵幼，也沒有絕對排除所有水力歷程。",
+      "limitations": "這是將多項證據合起來讓一般沖入的解釋較不可能，並未直接看到挖掘、照顧幼體或死亡過程。"
+    },
+    {
+      "source_id": "S44-S004",
+      "title": "Repeated mass strandings of Miocene marine mammals from Atacama Region of Chile point to sudden death at sea",
+      "doi": "10.1098/rspb.2013.3316",
+      "url": "https://doi.org/10.1098/rspb.2013.3316",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文Web L246–251骨骼連接、與水流方向及腹面朝上；L274–285重複聚集與有害藻華假說。",
+      "cache": {
+        "file": ".cache/wave44-earth-whale-web.txt",
+        "sha256": "6a8a20b0cc623f8e46c810bb0c146ea8a588d6c683c44586d4f59e852c3bc8c1",
+        "text_file": ".cache/wave44-earth-whale-web.txt",
+        "text_sha256": "6a8a20b0cc623f8e46c810bb0c146ea8a588d6c683c44586d4f59e852c3bc8c1"
+      },
+      "findings": "四層大致連接的鬚鯨骨架、腹朝上與跨流長軸支持死或瀕死之後漂到岸邊，食物毒素只在現代類比測得。",
+      "limitations": "藻毒是候選解釋，未從鯨身驗出當時毒素。四層不等於四個可精確定日的災害現場。"
+    },
+    {
+      "source_id": "S44-S005",
+      "title": "Eggshell Porosity Provides Insight on Evolution of Nesting in Dinosaurs",
+      "doi": "10.1371/journal.pone.0142829",
+      "url": "https://doi.org/10.1371/journal.pone.0142829",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "原刊PDF pp.8–14 判別分析、表5–6、圖3及方法差異；依蛋重比較殼孔隙。",
+      "cache": {
+        "file": ".cache/wave44-earth-egg.pdf",
+        "sha256": "5264eab69fb65233b6e54405f9e2a0e8dcffec203a3cced5908d83c16bb38945",
+        "text_file": ".cache/wave44-earth-egg.txt",
+        "text_sha256": "c05f3fe9fbb075a9c3941f63559f63bba676e05f6d9ad7172f345f877c6ba886"
+      },
+      "findings": "按蛋重標準化孔道，覆蓋巢的不同分布能提出古巢型假說。親緣校正的其中一版把已知覆蓋巢全錯分，須顯示決策區重疊並區分方法。",
+      "limitations": "現生已知覆蓋巢的20列，普通線性判別分對17列；按文中最佳λ的系統發育判別則20列都沒有分對（表6）。兩者在化石的預測較相近，不代表單一蛋殼能確定巢型。"
+    },
+    {
+      "source_id": "S44-S006",
+      "title": "The egg-thief architect: experimental oviraptorosaur nesting physiology, the possibility of adult-mediated incubation, and the feasibility of indirect contact incubation",
+      "doi": "10.1017/pab.2023.19",
+      "url": "https://doi.org/10.1017/pab.2023.19",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "出版版PDF p.1設定、pp.4–8三組現代模型與圖5、pp.9–11表2及限制。",
+      "cache": {
+        "file": ".cache/wave44-earth-thermal.pdf",
+        "sha256": "0b41c382f0f64e03fc12c4c7182b41e96ec3e3f29c67552c003f234eaebd795c",
+        "text_file": ".cache/wave44-earth-thermal.txt",
+        "text_sha256": "be9c724985ead57832a57be1588d13b051a250e097732a278f9369a7ff29fc40"
+      },
+      "findings": "固定上方熱源仍可透過沙升溫，另一開放巢配置用循環管模擬向內供熱；溫度曲線不同，不能拿配置差視為已排除幾何的單變項試驗。",
+      "limitations": "模型中各配置分開測，溫度高於環境不代表能成功孵化，更非化石保存成獸體溫或腿的位置。"
+    },
+    {
+      "source_id": "S44-S007",
+      "title": "Taphonomic experiments resolve controls on the preservation of melanosomes and keratinous tissues in feathers",
+      "doi": "10.1111/pala.12445",
+      "url": "https://doi.org/10.1111/pala.12445",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文Europe PMC XML，實驗流程圖與表1、Results中氧化次序、Figs2–6及Discussion的microbial mould替代解釋。",
+      "cache": {
+        "file": ".cache/wave44-earth-feather2.xml",
+        "sha256": "3fe9a0a116e6024523e928e452d52c3ef048bbdef545ac2a4c24f24885645df6",
+        "text_file": ".cache/wave44-earth-feather2.txt",
+        "text_sha256": "6b8520af3ddbb7424764af767668c80058964c7c577d5904def70896f3db03ef"
+      },
+      "findings": "未經腐敗的現生羽毛在氧化後也能出現空模，處理次序改變空模豐度，搭配液中黑色素標記可評估來源，不推算一身羽色。",
+      "limitations": "只檢驗指定羽毛與處理路徑，不意味任何橢圓孔都是黑色素體，無法從單一孔直接指定羽色。"
+    },
+    {
+      "source_id": "S44-S008",
+      "title": "Dietary palaeoecology of an Early Cretaceous armoured dinosaur (Ornithischia; Nodosauridae) based on floral analysis of stomach contents",
+      "doi": "10.1098/rsos.200305",
+      "url": "https://doi.org/10.1098/rsos.200305",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文XML Results／Plant fragments，Discussion表2與胃內容物判準，圖1、2、4及5圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-stomach.xml",
+        "sha256": "786c207bddfd1e028d072e63cb3752afc703876dc5b26a1a30ced8f9330f9060",
+        "text_file": ".cache/wave44-earth-stomach.txt",
+        "text_sha256": "1b65f9f5e6526e4056a4a66eeb40b671ce9c612fd13f3fd07e62be6251160c68"
+      },
+      "findings": "腹腔團塊邊界、裡外孢粉差別、胃石及囊內孢子四種證據針對灌入假說。最後一餐不能代表每季食譜。",
+      "limitations": "限一頭Borealopelta最後一次或短期攝食記錄，並未直接拍到吃食或計算牠一生的飲食比例。"
+    },
+    {
+      "source_id": "S44-S009",
+      "title": "Distinguishing Agromyzidae (Diptera) leaf mines in the fossil record: new taxa from the Paleogene of North America and Germany and their evolutionary implications",
+      "doi": "10.1666/09-163.1",
+      "url": "https://doi.org/10.1666/09-163.1",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "Smithsonian典藏原刊PDF，Web L725–728、873–889、1036–1043、1118–1128辨別標準；L1194–1212蒙大拿標本診斷及圖4.1–4.6；L1661–1666德國標本圖8.5–8.6圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-leaf-combined.txt",
+        "text_file": ".cache/wave44-earth-leaf-combined.txt",
+        "sha256": "b7b50060638cdb5d9561a3a52c038c2ef98f529c71b1237fee083d0dfa0e78d1",
+        "text_sha256": "b7b50060638cdb5d9561a3a52c038c2ef98f529c71b1237fee083d0dfa0e78d1"
+      },
+      "findings": "部分潛葉蠅側躺進食留下左右換側、斷續的流狀糞，對照兩件化石個案，比共通的末端彎線更能限縮類群；不以單點認現代種。",
+      "limitations": "可支持類群歸屬，間斷或交替不是每種潛葉蠅每段必有，也未直接看到古幼蟲。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "S44-S001",
+      "title": "Bird-Like Anatomy, Posture, and Behavior Revealed by an Early Jurassic Theropod Dinosaur Resting Trace",
+      "doi": "10.1371/journal.pone.0004591",
+      "url": "https://doi.org/10.1371/journal.pone.0004591",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文PDF及同文XML，SGDS.18.T1行跡、圖4–5、Discussion對手腕及印痕方向的比較。",
+      "cache": {
+        "file": ".cache/wave44-earth-handpdf.pdf",
+        "sha256": "a3214e8e4669d7ff25cf699c17ed30b6be24e72791d5b6aa2de5e1ec6aafaa33",
+        "text_file": ".cache/wave44-earth-handpdf.txt",
+        "text_sha256": "8c136f8f24e38708edd61dd85ba33ea0914037c4a4aa2bf72e81b9f91a88034c"
+      },
+      "findings": "特定斜坡有蹠印、身體後端和雙手指朝中線，前挪休息再無同樣手印。擺位支持掌面向內，化石不給關節全部角度。",
+      "limitations": "只限這段行跡及可辨擺位，不能以泥印還原所有關節角度或確定造跡種。"
+    },
+    {
+      "source_id": "S44-S002",
+      "title": "First Known Feeding Trace of the Eocene Bottom-Dwelling Fish Notogoneus osculus and Its Paleontological Significance",
+      "doi": "10.1371/journal.pone.0010420",
+      "url": "https://doi.org/10.1371/journal.pone.0010420",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "原刊PDF p.5圖3；同文XML Results／Identification of the Tracemaker and Its Behavior 及Discussion。",
+      "cache": {
+        "file": ".cache/wave44-earth-fishpdf.pdf",
+        "sha256": "5523ecaaa5b25c0568650e9359ad049a2a810e2359dc1d4359dab3387f7b8b8b",
+        "text_file": ".cache/wave44-earth-fishpdf.txt",
+        "text_sha256": "410c499f89847df502bec1f3f5f74f95e128afc42a5765635fe5edce94f8128d"
+      },
+      "findings": "把成對同相小波及單一大波各配給不同鰭，仍有重疊橢圓印，大小及相對位置適合下位口接觸湖底；未見食物被吞或原地保存造跡者。",
+      "limitations": "嘴印、鰭的對應與造跡者為比較所得；沒有保存和該組印痕連在一起的魚身。"
+    },
+    {
+      "source_id": "S44-S003",
+      "title": "First trace and body fossil evidence of a burrowing, denning dinosaur",
+      "doi": "10.1098/rspb.2006.0443",
+      "url": "https://doi.org/10.1098/rspb.2006.0443",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文Web L175–182，彎曲洞道、末室、大小骨件的水力差異及成人尺度。",
+      "cache": {
+        "file": ".cache/wave44-earth-burrow-web.txt",
+        "sha256": "99bb0c409e2372284ecfda71cf0faa84778ddd7b13f7d1a9bf5ea26a816cf881",
+        "text_file": ".cache/wave44-earth-burrow-web.txt",
+        "text_sha256": "99bb0c409e2372284ecfda71cf0faa84778ddd7b13f7d1a9bf5ea26a816cf881"
+      },
+      "findings": "曲折窄洞深處留著以水搬運特性不同的大小骨件，洞尺寸、成獸解剖同時支持使用並掘洞。不能從共處證明餵幼，也沒有絕對排除所有水力歷程。",
+      "limitations": "這是將多項證據合起來讓一般沖入的解釋較不可能，並未直接看到挖掘、照顧幼體或死亡過程。"
+    },
+    {
+      "source_id": "S44-S004",
+      "title": "Repeated mass strandings of Miocene marine mammals from Atacama Region of Chile point to sudden death at sea",
+      "doi": "10.1098/rspb.2013.3316",
+      "url": "https://doi.org/10.1098/rspb.2013.3316",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文Web L246–251骨骼連接、與水流方向及腹面朝上；L274–285重複聚集與有害藻華假說。",
+      "cache": {
+        "file": ".cache/wave44-earth-whale-web.txt",
+        "sha256": "6a8a20b0cc623f8e46c810bb0c146ea8a588d6c683c44586d4f59e852c3bc8c1",
+        "text_file": ".cache/wave44-earth-whale-web.txt",
+        "text_sha256": "6a8a20b0cc623f8e46c810bb0c146ea8a588d6c683c44586d4f59e852c3bc8c1"
+      },
+      "findings": "四層大致連接的鬚鯨骨架、腹朝上與跨流長軸支持死或瀕死之後漂到岸邊，食物毒素只在現代類比測得。",
+      "limitations": "藻毒是候選解釋，未從鯨身驗出當時毒素。四層不等於四個可精確定日的災害現場。"
+    },
+    {
+      "source_id": "S44-S005",
+      "title": "Eggshell Porosity Provides Insight on Evolution of Nesting in Dinosaurs",
+      "doi": "10.1371/journal.pone.0142829",
+      "url": "https://doi.org/10.1371/journal.pone.0142829",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "原刊PDF pp.8–14 判別分析、表5–6、圖3及方法差異；依蛋重比較殼孔隙。",
+      "cache": {
+        "file": ".cache/wave44-earth-egg.pdf",
+        "sha256": "5264eab69fb65233b6e54405f9e2a0e8dcffec203a3cced5908d83c16bb38945",
+        "text_file": ".cache/wave44-earth-egg.txt",
+        "text_sha256": "c05f3fe9fbb075a9c3941f63559f63bba676e05f6d9ad7172f345f877c6ba886"
+      },
+      "findings": "按蛋重標準化孔道，覆蓋巢的不同分布能提出古巢型假說。親緣校正的其中一版把已知覆蓋巢全錯分，須顯示決策區重疊並區分方法。",
+      "limitations": "現生已知覆蓋巢的20列，普通線性判別分對17列；按文中最佳λ的系統發育判別則20列都沒有分對（表6）。兩者在化石的預測較相近，不代表單一蛋殼能確定巢型。"
+    },
+    {
+      "source_id": "S44-S006",
+      "title": "The egg-thief architect: experimental oviraptorosaur nesting physiology, the possibility of adult-mediated incubation, and the feasibility of indirect contact incubation",
+      "doi": "10.1017/pab.2023.19",
+      "url": "https://doi.org/10.1017/pab.2023.19",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "出版版PDF p.1設定、pp.4–8三組現代模型與圖5、pp.9–11表2及限制。",
+      "cache": {
+        "file": ".cache/wave44-earth-thermal.pdf",
+        "sha256": "0b41c382f0f64e03fc12c4c7182b41e96ec3e3f29c67552c003f234eaebd795c",
+        "text_file": ".cache/wave44-earth-thermal.txt",
+        "text_sha256": "be9c724985ead57832a57be1588d13b051a250e097732a278f9369a7ff29fc40"
+      },
+      "findings": "固定上方熱源仍可透過沙升溫，另一開放巢配置用循環管模擬向內供熱；溫度曲線不同，不能拿配置差視為已排除幾何的單變項試驗。",
+      "limitations": "模型中各配置分開測，溫度高於環境不代表能成功孵化，更非化石保存成獸體溫或腿的位置。"
+    },
+    {
+      "source_id": "S44-S007",
+      "title": "Taphonomic experiments resolve controls on the preservation of melanosomes and keratinous tissues in feathers",
+      "doi": "10.1111/pala.12445",
+      "url": "https://doi.org/10.1111/pala.12445",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文Europe PMC XML，實驗流程圖與表1、Results中氧化次序、Figs2–6及Discussion的microbial mould替代解釋。",
+      "cache": {
+        "file": ".cache/wave44-earth-feather2.xml",
+        "sha256": "3fe9a0a116e6024523e928e452d52c3ef048bbdef545ac2a4c24f24885645df6",
+        "text_file": ".cache/wave44-earth-feather2.txt",
+        "text_sha256": "6b8520af3ddbb7424764af767668c80058964c7c577d5904def70896f3db03ef"
+      },
+      "findings": "未經腐敗的現生羽毛在氧化後也能出現空模，處理次序改變空模豐度，搭配液中黑色素標記可評估來源，不推算一身羽色。",
+      "limitations": "只檢驗指定羽毛與處理路徑，不意味任何橢圓孔都是黑色素體，無法從單一孔直接指定羽色。"
+    },
+    {
+      "source_id": "S44-S008",
+      "title": "Dietary palaeoecology of an Early Cretaceous armoured dinosaur (Ornithischia; Nodosauridae) based on floral analysis of stomach contents",
+      "doi": "10.1098/rsos.200305",
+      "url": "https://doi.org/10.1098/rsos.200305",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "正式論文XML Results／Plant fragments，Discussion表2與胃內容物判準，圖1、2、4及5圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-stomach.xml",
+        "sha256": "786c207bddfd1e028d072e63cb3752afc703876dc5b26a1a30ced8f9330f9060",
+        "text_file": ".cache/wave44-earth-stomach.txt",
+        "text_sha256": "1b65f9f5e6526e4056a4a66eeb40b671ce9c612fd13f3fd07e62be6251160c68"
+      },
+      "findings": "腹腔團塊邊界、裡外孢粉差別、胃石及囊內孢子四種證據針對灌入假說。最後一餐不能代表每季食譜。",
+      "limitations": "限一頭Borealopelta最後一次或短期攝食記錄，並未直接拍到吃食或計算牠一生的飲食比例。"
+    },
+    {
+      "source_id": "S44-S009",
+      "title": "Distinguishing Agromyzidae (Diptera) leaf mines in the fossil record: new taxa from the Paleogene of North America and Germany and their evolutionary implications",
+      "doi": "10.1666/09-163.1",
+      "url": "https://doi.org/10.1666/09-163.1",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "read_via": "獨立核對原作者留存的指定正式正文與SHA，本覆核沒有重新發HTTP。",
+      "reading_scope": "Smithsonian典藏原刊PDF，Web L725–728、873–889、1036–1043、1118–1128辨別標準；L1194–1212蒙大拿標本診斷及圖4.1–4.6；L1661–1666德國標本圖8.5–8.6圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-leaf-combined.txt",
+        "text_file": ".cache/wave44-earth-leaf-combined.txt",
+        "sha256": "b7b50060638cdb5d9561a3a52c038c2ef98f529c71b1237fee083d0dfa0e78d1",
+        "text_sha256": "b7b50060638cdb5d9561a3a52c038c2ef98f529c71b1237fee083d0dfa0e78d1"
+      },
+      "findings": "部分潛葉蠅側躺進食留下左右換側、斷續的流狀糞，對照兩件化石個案，比共通的末端彎線更能限縮類群；不以單點認現代種。",
+      "limitations": "可支持類群歸屬，間斷或交替不是每種潛葉蠅每段必有，也未直接看到古幼蟲。"
+    }
+  ],
+  "source_identity_review": "九項不同原研究。原刊及PDF/XML替代載體不重複計數；蛋殼校準與後來未受精鴯鶓蛋熱試驗問的問題與材料獨立。",
+  "source_reading_summary": "4份刊本PDF、2份原文XML及3份明示範圍的原研究Web定點返回。另讀S001/002同文XML供查段落，並目讀PDF圖。",
+  "source_fetch_limits": "未在本輪另下載作者採的9份原始載體。Web定點只讀實際返回的行；未取SI影片，未復現統計或做完整原圖授權。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave44-earth-figs.jpg",
+      "sha256": "9de8ac72c9dc4d3fc01c259147ea4a2d3aa3ad71f593f2770c246e4f20ce4621",
+      "scope": "S001 PDF p6 Fig5蹲痕；S002 p5 Fig3魚鰭與重疊嘴印；S005 p13 Fig3蛋重／孔隙分布；S006 p8 Fig5三個模型的蛋層與環境溫度。其餘為正文或圖說。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "S44-001",
+      "canonical_id": "S44-001",
+      "decision": "retain",
+      "reason": "左右手指印指向中線約束蹲伏時的掌向",
+      "scope_check": "特定斜坡有蹠印、身體後端和雙手指朝中線，前挪休息再無同樣手印。擺位支持掌面向內，化石不給關節全部角度。",
+      "source_ids": [
+        "S44-S001"
+      ],
+      "editorial_seconds": [
+        36,
+        84
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S44-002",
+      "canonical_id": "S44-002",
+      "decision": "retain",
+      "reason": "由配對鰭痕之外的橢圓接觸印推測底棲魚覓食",
+      "scope_check": "把成對同相小波及單一大波各配給不同鰭，仍有重疊橢圓印，大小及相對位置適合下位口接觸湖底；未見食物被吞或原地保存造跡者。",
+      "source_ids": [
+        "S44-S002"
+      ],
+      "editorial_seconds": [
+        34,
+        74
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S44-003",
+      "canonical_id": "S44-003",
+      "decision": "retain",
+      "reason": "用洞道尺度與骨件水力分選預測比較原地棲居和沖入",
+      "scope_check": "曲折窄洞深處留著以水搬運特性不同的大小骨件，洞尺寸、成獸解剖同時支持使用並掘洞。不能從共處證明餵幼，也沒有絕對排除所有水力歷程。",
+      "source_ids": [
+        "S44-S003"
+      ],
+      "editorial_seconds": [
+        34,
+        76
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S44-004",
+      "canonical_id": "S44-004",
+      "decision": "retain",
+      "reason": "以多層骨架完整度、上下朝向和古水流重建死後沖岸",
+      "scope_check": "四層大致連接的鬚鯨骨架、腹朝上與跨流長軸支持死或瀕死之後漂到岸邊，食物毒素只在現代類比測得。",
+      "source_ids": [
+        "S44-S004"
+      ],
+      "editorial_seconds": [
+        34,
+        79
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S44-005",
+      "canonical_id": "S44-005",
+      "decision": "retain",
+      "reason": "以已知巢型的蛋重與殼孔隙校準覆巢可能性",
+      "scope_check": "按蛋重標準化孔道，覆蓋巢的不同分布能提出古巢型假說。親緣校正的其中一版把已知覆蓋巢全錯分，須顯示決策區重疊並區分方法。",
+      "source_ids": [
+        "S44-S005"
+      ],
+      "editorial_seconds": [
+        31,
+        70
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S44-006",
+      "canonical_id": "S44-006",
+      "decision": "retain",
+      "reason": "用多層砂巢的上方及內部熱源檢驗間接暖蛋",
+      "scope_check": "固定上方熱源仍可透過沙升溫，另一開放巢配置用循環管模擬向內供熱；溫度曲線不同，不能拿配置差視為已排除幾何的單變項試驗。",
+      "source_ids": [
+        "S44-S006"
+      ],
+      "editorial_seconds": [
+        32,
+        73
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S44-007",
+      "canonical_id": "S44-007",
+      "decision": "retain",
+      "reason": "看氧化、腐敗與熱熟化次序是否形成黑色素體空模",
+      "scope_check": "未經腐敗的現生羽毛在氧化後也能出現空模，處理次序改變空模豐度，搭配液中黑色素標記可評估來源，不推算一身羽色。",
+      "source_ids": [
+        "S44-S007"
+      ],
+      "editorial_seconds": [
+        33,
+        72
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S44-008",
+      "canonical_id": "S44-008",
+      "decision": "retain",
+      "reason": "比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物",
+      "scope_check": "腹腔團塊邊界、裡外孢粉差別、胃石及囊內孢子四種證據針對灌入假說。最後一餐不能代表每季食譜。",
+      "source_ids": [
+        "S44-S008"
+      ],
+      "editorial_seconds": [
+        32,
+        75
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S44-009",
+      "canonical_id": "S44-009",
+      "decision": "retain",
+      "reason": "用礦道中流狀糞帶的左右交替推側臥取食的造跡類群",
+      "scope_check": "部分潛葉蠅側躺進食留下左右換側、斷續的流狀糞，對照兩件化石個案，比共通的末端彎線更能限縮類群；不以單點認現代種。",
+      "source_ids": [
+        "S44-S009"
+      ],
+      "editorial_seconds": [
+        30,
+        68
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "S44-001",
+      "b": "R34001",
+      "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；R34001解釋地表回填、深層顆粒支撐讓同一步見不同形狀。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.728071
+    },
+    {
+      "a": "S44-001",
+      "b": "P29003",
+      "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；P29003解釋載荷差加底質強度讓接地四足只留部分印。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.718243
+    },
+    {
+      "a": "S44-001",
+      "b": "P29002",
+      "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；P29002解釋進趾和出趾兩條路徑切過同一層。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.679215
+    },
+    {
+      "a": "S44-001",
+      "b": "P29001",
+      "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；P29001解釋抬腳後表層回塌、下層仍可見趾形。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.675304
+    },
+    {
+      "a": "S44-001",
+      "b": "R34007",
+      "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；R34007解釋翼龍後腳先著地及後續步序支持降落。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.67362
+    },
+    {
+      "a": "S44-002",
+      "b": "B2155",
+      "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；B2155解釋口腔與鰓蓋泵水維持水流。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.76739
+    },
+    {
+      "a": "S44-002",
+      "b": "R35003",
+      "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；R35003解釋岩砧擊打時左右殼破損不同。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.739521
+    },
+    {
+      "a": "S44-002",
+      "b": "N189",
+      "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；N189解釋水深不同使近岸波折射。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.732165
+    },
+    {
+      "a": "S44-002",
+      "b": "Z7006",
+      "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；Z7006解釋鬚形減少自身尾流的感測振動。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.727762
+    },
+    {
+      "a": "S44-002",
+      "b": "B2154",
+      "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；B2154解釋魚以側線感測水流。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.719091
+    },
+    {
+      "a": "S44-003",
+      "b": "B2147",
+      "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；B2147解釋骨片分散或融合改變身體支持。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667878
+    },
+    {
+      "a": "S44-003",
+      "b": "P29005",
+      "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；P29005解釋骨修復包住斷齒支持受傷時仍活著。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.645271
+    },
+    {
+      "a": "S44-003",
+      "b": "S44-005",
+      "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；S44-005解釋以已知巢型的蛋重與殼孔隙校準覆巢可能性。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.644304
+    },
+    {
+      "a": "S44-003",
+      "b": "B2077",
+      "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；B2077解釋珊瑚骨架堆積提供棲地。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.62875
+    },
+    {
+      "a": "S44-003",
+      "b": "S44-001",
+      "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；S44-001解釋左右手指印指向中線約束蹲伏時的掌向。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.613851
+    },
+    {
+      "a": "S44-004",
+      "b": "B2037",
+      "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；B2037解釋前肢同源骨骼保留於不同運動功能。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.706558
+    },
+    {
+      "a": "S44-004",
+      "b": "B2147",
+      "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；B2147解釋骨片分散或融合改變身體支持。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.635252
+    },
+    {
+      "a": "S44-004",
+      "b": "B2077",
+      "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；B2077解釋珊瑚骨架堆積提供棲地。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.602358
+    },
+    {
+      "a": "S44-004",
+      "b": "S44-002",
+      "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；S44-002解釋由配對鰭痕之外的橢圓接觸印推測底棲魚覓食。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.586649
+    },
+    {
+      "a": "S44-004",
+      "b": "B2297",
+      "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；B2297解釋海藻固定休息海獺的位置。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.579342
+    },
+    {
+      "a": "S44-005",
+      "b": "S44-006",
+      "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；S44-006解釋用多層砂巢的上方及內部熱源檢驗間接暖蛋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710983
+    },
+    {
+      "a": "S44-005",
+      "b": "B2291",
+      "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2291解釋托卵者仿卵外觀降低拒斥。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.707912
+    },
+    {
+      "a": "S44-005",
+      "b": "B2137",
+      "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2137解釋蛻皮外殼是特定水熊蟲的產卵位置。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.704653
+    },
+    {
+      "a": "S44-005",
+      "b": "B2292",
+      "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2292解釋幼鳥排卵移除育雛競爭者。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.694825
+    },
+    {
+      "a": "S44-005",
+      "b": "B2167",
+      "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2167解釋卵殼及膜兼顧氣體交換和保水。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.682512
+    },
+    {
+      "a": "S44-006",
+      "b": "B2062",
+      "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；B2062解釋溫度影響胚胎性別。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.742114
+    },
+    {
+      "a": "S44-006",
+      "b": "S44-005",
+      "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；S44-005解釋以已知巢型的蛋重與殼孔隙校準覆巢可能性。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710983
+    },
+    {
+      "a": "S44-006",
+      "b": "LEG-S30",
+      "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；LEG-S30解釋蛋黃與蛋白熱凝固條件不同。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.662373
+    },
+    {
+      "a": "S44-006",
+      "b": "B2137",
+      "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；B2137解釋蛻皮外殼是特定水熊蟲的產卵位置。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.655803
+    },
+    {
+      "a": "S44-006",
+      "b": "B2291",
+      "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；B2291解釋托卵者仿卵外觀降低拒斥。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.645413
+    },
+    {
+      "a": "S44-007",
+      "b": "B2178",
+      "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；B2178解釋羽毛型態以外還須功能證據判斷飛行。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.637803
+    },
+    {
+      "a": "S44-007",
+      "b": "L183",
+      "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；L183解釋菌絲如何組成菌絲體。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.621258
+    },
+    {
+      "a": "S44-007",
+      "b": "B2138",
+      "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；B2138解釋昆蟲附肢同源與分工。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.591028
+    },
+    {
+      "a": "S44-007",
+      "b": "S43-009",
+      "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；S43-009解釋顯微定位、元素圖及菌群資料鑑別白色硫絲構造。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.589503
+    },
+    {
+      "a": "S44-007",
+      "b": "B2172",
+      "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；B2172解釋羽小枝扣合修補羽片。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.58832
+    },
+    {
+      "a": "S44-008",
+      "b": "B2267",
+      "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；B2267解釋鳥肌胃機械磨食。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.639441
+    },
+    {
+      "a": "S44-008",
+      "b": "S44-005",
+      "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；S44-005解釋以已知巢型的蛋重與殼孔隙校準覆巢可能性。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.637648
+    },
+    {
+      "a": "S44-008",
+      "b": "L093",
+      "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；L093解釋葉片氣隙的交換功能。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.634563
+    },
+    {
+      "a": "S44-008",
+      "b": "B2122",
+      "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；B2122解釋外套腔呼吸空氣。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.618193
+    },
+    {
+      "a": "S44-008",
+      "b": "L40-006",
+      "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；L40-006解釋鳥有無被看見與過去經驗調節改藏決策。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.612594
+    },
+    {
+      "a": "S44-009",
+      "b": "B16003",
+      "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；B16003解釋工蟻跨層補入使筏邊變形。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710941
+    },
+    {
+      "a": "S44-009",
+      "b": "R32008",
+      "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；R32008解釋已走完的里程決定是否跟隨巢氣味。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.702353
+    },
+    {
+      "a": "S44-009",
+      "b": "B2271",
+      "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；B2271解釋昆蟲氣孔開閉平衡失水和換氣。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.685842
+    },
+    {
+      "a": "S44-009",
+      "b": "R32007",
+      "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；R32007解釋沙漠蟻從學得的氣味地標定位巢口。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.68549
+    },
+    {
+      "a": "S44-009",
+      "b": "A20001",
+      "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；A20001解釋足背與基底接觸清除粉塵。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.681444
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "S44-001",
+      "b": "R34007",
+      "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；R34007解釋翼龍後腳先著地及後續步序支持降落。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-001",
+      "b": "P29003",
+      "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；P29003解釋載荷差加底質強度讓接地四足只留部分印。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-001",
+      "b": "R34001",
+      "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；R34001解釋地表回填、深層顆粒支撐讓同一步見不同形狀。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-002",
+      "b": "P29004",
+      "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；P29004解釋菊石殼肋和拖溝接觸逐變推被動搬運。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-002",
+      "b": "R34006",
+      "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；R34006解釋拖架接地端數目與腳印位置形成不同溝紋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-002",
+      "b": "S44-001",
+      "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；S44-001解釋左右手指印指向中線約束蹲伏時的掌向。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-003",
+      "b": "P29005",
+      "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；P29005解釋骨修復包住斷齒支持受傷時仍活著。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-003",
+      "b": "S44-004",
+      "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；S44-004解釋以多層骨架完整度、上下朝向和古水流重建死後沖岸。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-003",
+      "b": "N132",
+      "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；N132解釋疊置及化石對應建立先後。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-004",
+      "b": "R34004",
+      "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；R34004解釋腳印重疊和先後支持人隨地懶活動。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-004",
+      "b": "P29004",
+      "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；P29004解釋菊石殼肋和拖溝接觸逐變推被動搬運。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-005",
+      "b": "B2167",
+      "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2167解釋卵殼及膜兼顧氣體交換和保水。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-005",
+      "b": "B2062",
+      "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2062解釋溫度影響胚胎性別。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-005",
+      "b": "S44-006",
+      "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；S44-006解釋用多層砂巢的上方及內部熱源檢驗間接暖蛋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-006",
+      "b": "E17002",
+      "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；E17002解釋石下冰因尺寸和熱收支改變相對高度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-006",
+      "b": "B2166",
+      "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；B2166解釋羊膜維持胚胎四周水環境。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-007",
+      "b": "B2178",
+      "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；B2178解釋羽毛型態以外還須功能證據判斷飛行。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-007",
+      "b": "R34001",
+      "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；R34001解釋地表回填、深層顆粒支撐讓同一步見不同形狀。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-008",
+      "b": "S44-003",
+      "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；S44-003解釋用洞道尺度與骨件水力分選預測比較原地棲居和沖入。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-008",
+      "b": "P29005",
+      "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；P29005解釋骨修復包住斷齒支持受傷時仍活著。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-009",
+      "b": "R31006",
+      "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；R31006解釋年輪組織的生長損失和非寄主對照推過去蟲害。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S44-009",
+      "b": "S44-002",
+      "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；S44-002解釋由配對鰭痕之外的橢圓接觸印推測底棲魚覓食。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "S44-001",
+        "b": "R34001",
+        "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；R34001解釋地表回填、深層顆粒支撐讓同一步見不同形狀。"
+      },
+      {
+        "a": "S44-001",
+        "b": "P29003",
+        "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；P29003解釋載荷差加底質強度讓接地四足只留部分印。"
+      },
+      {
+        "a": "S44-001",
+        "b": "P29002",
+        "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；P29002解釋進趾和出趾兩條路徑切過同一層。"
+      },
+      {
+        "a": "S44-001",
+        "b": "P29001",
+        "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；P29001解釋抬腳後表層回塌、下層仍可見趾形。"
+      },
+      {
+        "a": "S44-001",
+        "b": "R34007",
+        "reason": "S44-001看左右手指印指向中線約束蹲伏時的掌向；R34007解釋翼龍後腳先著地及後續步序支持降落。"
+      },
+      {
+        "a": "S44-002",
+        "b": "B2155",
+        "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；B2155解釋口腔與鰓蓋泵水維持水流。"
+      },
+      {
+        "a": "S44-002",
+        "b": "R35003",
+        "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；R35003解釋岩砧擊打時左右殼破損不同。"
+      },
+      {
+        "a": "S44-002",
+        "b": "N189",
+        "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；N189解釋水深不同使近岸波折射。"
+      },
+      {
+        "a": "S44-002",
+        "b": "Z7006",
+        "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；Z7006解釋鬚形減少自身尾流的感測振動。"
+      },
+      {
+        "a": "S44-002",
+        "b": "B2154",
+        "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；B2154解釋魚以側線感測水流。"
+      },
+      {
+        "a": "S44-003",
+        "b": "B2147",
+        "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；B2147解釋骨片分散或融合改變身體支持。"
+      },
+      {
+        "a": "S44-003",
+        "b": "P29005",
+        "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；P29005解釋骨修復包住斷齒支持受傷時仍活著。"
+      },
+      {
+        "a": "S44-003",
+        "b": "S44-005",
+        "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；S44-005解釋以已知巢型的蛋重與殼孔隙校準覆巢可能性。"
+      },
+      {
+        "a": "S44-003",
+        "b": "B2077",
+        "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；B2077解釋珊瑚骨架堆積提供棲地。"
+      },
+      {
+        "a": "S44-003",
+        "b": "S44-001",
+        "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；S44-001解釋左右手指印指向中線約束蹲伏時的掌向。"
+      },
+      {
+        "a": "S44-004",
+        "b": "B2037",
+        "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；B2037解釋前肢同源骨骼保留於不同運動功能。"
+      },
+      {
+        "a": "S44-004",
+        "b": "B2147",
+        "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；B2147解釋骨片分散或融合改變身體支持。"
+      },
+      {
+        "a": "S44-004",
+        "b": "B2077",
+        "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；B2077解釋珊瑚骨架堆積提供棲地。"
+      },
+      {
+        "a": "S44-004",
+        "b": "S44-002",
+        "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；S44-002解釋由配對鰭痕之外的橢圓接觸印推測底棲魚覓食。"
+      },
+      {
+        "a": "S44-004",
+        "b": "B2297",
+        "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；B2297解釋海藻固定休息海獺的位置。"
+      },
+      {
+        "a": "S44-005",
+        "b": "S44-006",
+        "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；S44-006解釋用多層砂巢的上方及內部熱源檢驗間接暖蛋。"
+      },
+      {
+        "a": "S44-005",
+        "b": "B2291",
+        "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2291解釋托卵者仿卵外觀降低拒斥。"
+      },
+      {
+        "a": "S44-005",
+        "b": "B2137",
+        "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2137解釋蛻皮外殼是特定水熊蟲的產卵位置。"
+      },
+      {
+        "a": "S44-005",
+        "b": "B2292",
+        "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2292解釋幼鳥排卵移除育雛競爭者。"
+      },
+      {
+        "a": "S44-005",
+        "b": "B2167",
+        "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2167解釋卵殼及膜兼顧氣體交換和保水。"
+      },
+      {
+        "a": "S44-006",
+        "b": "B2062",
+        "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；B2062解釋溫度影響胚胎性別。"
+      },
+      {
+        "a": "S44-006",
+        "b": "LEG-S30",
+        "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；LEG-S30解釋蛋黃與蛋白熱凝固條件不同。"
+      },
+      {
+        "a": "S44-006",
+        "b": "B2137",
+        "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；B2137解釋蛻皮外殼是特定水熊蟲的產卵位置。"
+      },
+      {
+        "a": "S44-006",
+        "b": "B2291",
+        "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；B2291解釋托卵者仿卵外觀降低拒斥。"
+      },
+      {
+        "a": "S44-007",
+        "b": "B2178",
+        "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；B2178解釋羽毛型態以外還須功能證據判斷飛行。"
+      },
+      {
+        "a": "S44-007",
+        "b": "L183",
+        "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；L183解釋菌絲如何組成菌絲體。"
+      },
+      {
+        "a": "S44-007",
+        "b": "B2138",
+        "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；B2138解釋昆蟲附肢同源與分工。"
+      },
+      {
+        "a": "S44-007",
+        "b": "S43-009",
+        "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；S43-009解釋顯微定位、元素圖及菌群資料鑑別白色硫絲構造。"
+      },
+      {
+        "a": "S44-007",
+        "b": "B2172",
+        "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；B2172解釋羽小枝扣合修補羽片。"
+      },
+      {
+        "a": "S44-008",
+        "b": "B2267",
+        "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；B2267解釋鳥肌胃機械磨食。"
+      },
+      {
+        "a": "S44-008",
+        "b": "S44-005",
+        "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；S44-005解釋以已知巢型的蛋重與殼孔隙校準覆巢可能性。"
+      },
+      {
+        "a": "S44-008",
+        "b": "L093",
+        "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；L093解釋葉片氣隙的交換功能。"
+      },
+      {
+        "a": "S44-008",
+        "b": "B2122",
+        "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；B2122解釋外套腔呼吸空氣。"
+      },
+      {
+        "a": "S44-008",
+        "b": "L40-006",
+        "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；L40-006解釋鳥有無被看見與過去經驗調節改藏決策。"
+      },
+      {
+        "a": "S44-009",
+        "b": "B16003",
+        "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；B16003解釋工蟻跨層補入使筏邊變形。"
+      },
+      {
+        "a": "S44-009",
+        "b": "R32008",
+        "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；R32008解釋已走完的里程決定是否跟隨巢氣味。"
+      },
+      {
+        "a": "S44-009",
+        "b": "B2271",
+        "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；B2271解釋昆蟲氣孔開閉平衡失水和換氣。"
+      },
+      {
+        "a": "S44-009",
+        "b": "R32007",
+        "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；R32007解釋沙漠蟻從學得的氣味地標定位巢口。"
+      },
+      {
+        "a": "S44-009",
+        "b": "A20001",
+        "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；A20001解釋足背與基底接觸清除粉塵。"
+      },
+      {
+        "a": "S44-002",
+        "b": "P29004",
+        "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；P29004解釋菊石殼肋和拖溝接觸逐變推被動搬運。"
+      },
+      {
+        "a": "S44-002",
+        "b": "R34006",
+        "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；R34006解釋拖架接地端數目與腳印位置形成不同溝紋。"
+      },
+      {
+        "a": "S44-002",
+        "b": "S44-001",
+        "reason": "S44-002看由配對鰭痕之外的橢圓接觸印推測底棲魚覓食；S44-001解釋左右手指印指向中線約束蹲伏時的掌向。"
+      },
+      {
+        "a": "S44-003",
+        "b": "S44-004",
+        "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；S44-004解釋以多層骨架完整度、上下朝向和古水流重建死後沖岸。"
+      },
+      {
+        "a": "S44-003",
+        "b": "N132",
+        "reason": "S44-003看用洞道尺度與骨件水力分選預測比較原地棲居和沖入；N132解釋疊置及化石對應建立先後。"
+      },
+      {
+        "a": "S44-004",
+        "b": "R34004",
+        "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；R34004解釋腳印重疊和先後支持人隨地懶活動。"
+      },
+      {
+        "a": "S44-004",
+        "b": "P29004",
+        "reason": "S44-004看以多層骨架完整度、上下朝向和古水流重建死後沖岸；P29004解釋菊石殼肋和拖溝接觸逐變推被動搬運。"
+      },
+      {
+        "a": "S44-005",
+        "b": "B2062",
+        "reason": "S44-005看以已知巢型的蛋重與殼孔隙校準覆巢可能性；B2062解釋溫度影響胚胎性別。"
+      },
+      {
+        "a": "S44-006",
+        "b": "E17002",
+        "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；E17002解釋石下冰因尺寸和熱收支改變相對高度。"
+      },
+      {
+        "a": "S44-006",
+        "b": "B2166",
+        "reason": "S44-006看用多層砂巢的上方及內部熱源檢驗間接暖蛋；B2166解釋羊膜維持胚胎四周水環境。"
+      },
+      {
+        "a": "S44-007",
+        "b": "R34001",
+        "reason": "S44-007看看氧化、腐敗與熱熟化次序是否形成黑色素體空模；R34001解釋地表回填、深層顆粒支撐讓同一步見不同形狀。"
+      },
+      {
+        "a": "S44-008",
+        "b": "S44-003",
+        "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；S44-003解釋用洞道尺度與骨件水力分選預測比較原地棲居和沖入。"
+      },
+      {
+        "a": "S44-008",
+        "b": "P29005",
+        "reason": "S44-008看比腹腔團塊邊界內外孢粉、胃石及孢子囊推胃內容物；P29005解釋骨修復包住斷齒支持受傷時仍活著。"
+      },
+      {
+        "a": "S44-009",
+        "b": "R31006",
+        "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；R31006解釋年輪組織的生長損失和非寄主對照推過去蟲害。"
+      },
+      {
+        "a": "S44-009",
+        "b": "S44-002",
+        "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；S44-002解釋由配對鰭痕之外的橢圓接觸印推測底棲魚覓食。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "S44-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P29004"
+      ],
+      "reason": "同一個搬運／被動拖殼案例已入庫。",
+      "reentry_condition": "要有不同搬運條件與可觀測預測。"
+    },
+    {
+      "id": "S44-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P29003"
+      ],
+      "reason": "舊題已比前後足負荷、底質與浮起的不同可能。",
+      "reentry_condition": "須有直接區分兩種姿勢的新控制。"
+    },
+    {
+      "id": "S44-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P29001",
+        "R34001"
+      ],
+      "reason": "不同深度的下跡與形狀變化原題已收。",
+      "reentry_condition": "不再以不同產地或腳趾數包裝同一機制。"
+    },
+    {
+      "id": "S44-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R34004"
+      ],
+      "reason": "重疊先後與成功狩獵界線已收。",
+      "reentry_condition": "須有獨立末端相遇或攝食痕跡。"
+    },
+    {
+      "id": "S44-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R34007"
+      ],
+      "reason": "翼龍落地序列已有專題；短缺段可能是保存問題。",
+      "reentry_condition": "要有新的離地力學及足跡對照。"
+    },
+    {
+      "id": "S44-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P29005"
+      ],
+      "reason": "牙卡在骨裡與癒合判生前受傷已有。",
+      "reentry_condition": "需新檢驗區分攝食階段，不能只改掠食者名稱。"
+    },
+    {
+      "id": "S44-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P29003"
+      ],
+      "reason": "水深、水流及爪端是否著底未受控制。本批僅查研究索引，未援作採題正文。",
+      "reentry_condition": "先有同地水動力與可檢驗的步進模型。"
+    },
+    {
+      "id": "S44-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S44-003"
+      ],
+      "reason": "合處一末室有支持棲居的價值，未直接保存餵食。",
+      "reentry_condition": "需可區分在場與實際供食的證據。"
+    },
+    {
+      "id": "S44-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S44-004"
+      ],
+      "reason": "死因是現代類比與沉積證據支持的推論，不能假裝做了毒素化驗。",
+      "reentry_condition": "要有可信、可定位的直接化學標記。"
+    },
+    {
+      "id": "S44-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S44-005"
+      ],
+      "reason": "研究比較蛋重與殼孔隙，非由尺寸單值反推埋深。",
+      "reentry_condition": "改提要有不同埋深的實測對照。"
+    },
+    {
+      "id": "S44-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S44-006"
+      ],
+      "reason": "找到巢徑比較，但此輪原刊正文重取受阻，未拿索引文字補作已讀；另篇熱模型不能直接推出體重分配。",
+      "reentry_condition": "取得原文巢形與體型限制後再評。"
+    },
+    {
+      "id": "S44-NA012",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S44-006"
+      ],
+      "reason": "模型使用未受精鴯鶓蛋，未測孵化時程。",
+      "reentry_condition": "需可比較胚胎發育資料。"
+    },
+    {
+      "id": "S44-NA013",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S44-007",
+        "B2178"
+      ],
+      "reason": "只保留受實驗控制的空模成因，不外推色盤或飛行能力。",
+      "reentry_condition": "需多處樣本、色素和結構色保存檢查。"
+    },
+    {
+      "id": "S44-NA014",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "B2052"
+      ],
+      "reason": "腐敗時診斷構造消失先後值得追，但這輪Nature全文取回登入頁，未用摘要另立答案。",
+      "reentry_condition": "需取得完整腐敗時序和構造分級再評。"
+    },
+    {
+      "id": "S44-NA015",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S44-008"
+      ],
+      "reason": "最後胃內容物不足以代表所有季節及個體。",
+      "reentry_condition": "需更多有內外對照的胃部樣本。"
+    },
+    {
+      "id": "S44-NA016",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S44-009"
+      ],
+      "reason": "路線本身判別力不足，同核心已保留糞跡與現生對照。",
+      "reentry_condition": "須有獨立造跡特徵。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W44S-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 71,
+      "chapter_seconds": [
+        26,
+        45
+      ],
+      "core_totals": {
+        "S44-001": 71
+      },
+      "core_caps": {
+        "S44-001": 84
+      },
+      "maximum_beat_seconds": 23,
+      "drop_if_read": "若圖上看不出哪一組是手指、何者為後足，不排此案。任刪一章只剩45或26秒。",
+      "editorial_result": "左右指痕排除前伸掌的示意，與下一次蹲下無手印構成可看懂的反查。",
+      "timing_result": "ROOT_SAMPLE_VOICE_PLUS_VISUAL_ALLOWANCE"
+    },
+    {
+      "id": "W44S-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 69,
+      "chapter_seconds": [
+        36,
+        33
+      ],
+      "core_totals": {
+        "S44-003": 36,
+        "S44-008": 33
+      },
+      "core_caps": {
+        "S44-003": 76,
+        "S44-008": 75
+      },
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "若只能說「出現在裡面」而拿不出岩層或物件對照就撤。兩章可改留36／33秒。",
+      "editorial_result": "兩份化石放在不同格，問共同追問：死亡後灌入能否解釋裡外混合或差別？用不同證據推原地使用或攝食。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W44S-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 68,
+      "chapter_seconds": [
+        33,
+        35
+      ],
+      "core_totals": {
+        "S44-005": 33,
+        "S44-006": 35
+      },
+      "core_caps": {
+        "S44-005": 70,
+        "S44-006": 73
+      },
+      "maximum_beat_seconds": 18,
+      "drop_if_read": "刪一章剩35或33秒，應另立單題。若無法把殼推估與現代加熱試驗區分就撤合題。",
+      "editorial_result": "控制蛋殼孔隙校準巢型與砂巢熱流模型分開；加入模型假說前必須標現生校準也會誤分。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W44S-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 57,
+      "chapter_seconds": [
+        28,
+        29
+      ],
+      "core_totals": {
+        "S44-002": 57
+      },
+      "core_caps": {
+        "S44-002": 74
+      },
+      "maximum_beat_seconds": 17,
+      "drop_if_read": "缺橢圓印與波形在同一板面的關係就撤案。任刪一章剩29或28秒。",
+      "editorial_result": "成對小紋、大波紋和餘下橢圓印逐層重繪，讓觀眾看鰭痕說不完的部分。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W44S-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 53,
+      "chapter_seconds": [
+        26,
+        27
+      ],
+      "core_totals": {
+        "S44-009": 53
+      },
+      "core_caps": {
+        "S44-009": 68
+      },
+      "maximum_beat_seconds": 17,
+      "drop_if_read": "細粒左右位置若做不清，撤案；任刪一章剩27或26秒。",
+      "editorial_result": "把礦道外形暫蓋後看糞帶換側，保留現生範圍與例外。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    }
+  ],
+  "corrections": {
+    "before_files": [
+      {
+        "file": "batches/wave44-earth.json",
+        "sha256": "7692363e187b9ecbe7f62b4b42a86a7f3bc5ce98d961f0b7f49203b1b9a774f1"
+      },
+      {
+        "file": "reviews/wave44-earth-themes.json",
+        "sha256": "f23c9957f7e38ecd14bdb31116c00a9462df2bf4b8d43c5fc971c026c7e2cfa5"
+      },
+      {
+        "file": "reviews/wave44-earth-author.json",
+        "sha256": "a42718440e4b98203db755d806ab87633eb073177f7df86b5805e4edb9af6389"
+      }
+    ],
+    "changes": [
+      "S44-003由排除縮成較不相符，維持水力選分、末室尺寸與掘土解剖的組合。",
+      "S44-005保留覆蓋巢哪一版分類器失敗的具體限制。",
+      "S44-S009補讀兩份古葉個案的圖說；一般特徵段不能取代實際個案。"
+    ],
+    "targeted_readback": "讀回當期三檔及定位文字，題級範圍成立。"
+  },
+  "first_retrieval": {
+    "neighbours": {
+      "file": ".cache/wave44-life-review-earth-first.json",
+      "sha256": "792fabd14d9e417a8b021e167d944de3da7aeda60be65df85758f22145875bd7"
+    },
+    "draft_sha256": "b08aba6a0b51d04de79a66799cb9466bc45b89e31c8733ebdd42893b452c0929"
+  },
+  "draft_sha256": "c289f71ce6bf07a924b5a8b308a36b6d286e8d9483cdd9d3f11fb5437ee9d5a8",
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "c289f71ce6bf07a924b5a8b308a36b6d286e8d9483cdd9d3f11fb5437ee9d5a8",
+    "neighbours": {
+      "file": ".cache/wave44-earth-neighbours.json",
+      "sha256": "cdf2ca00625bf70612d5453af41c97da7e1254fcc6e71a43bd08a467fe93e3c5"
+    },
+    "directed_pairs": 45,
+    "new_neighbours_after_revisions": {
+      "S44-001": [],
+      "S44-002": [],
+      "S44-003": [
+        "B2077",
+        "P29005",
+        "S44-001"
+      ],
+      "S44-004": [],
+      "S44-005": [],
+      "S44-006": [],
+      "S44-007": [],
+      "S44-008": [],
+      "S44-009": []
+    },
+    "post_peer_refresh": "45對及分數等同修訂後的前一版。"
+  },
+  "timing_probe": {
+    "file": ".cache/wave44-earth-read.json",
+    "sha256": "61311a9a1ed647c236a0fa7a122358483953451f10e4f1017bae6dcebc60357d",
+    "continuous_wav": {
+      "file": ".cache/wave44-earth-read-3.wav",
+      "sha256": "b3957eaa04d1ed7a2b95a8b1fcd8ef333f56332829c3b200d9a0a15e61a72226"
+    },
+    "read_seconds": 63.496,
+    "plan_seconds": 71,
+    "visual_allowance_seconds": 7.504,
+    "scope": "根代理離線完整樣讀，覆核者查WAV雜湊、時長與逐段文本，其餘四案紙上估時。"
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "非完成影片與逐字稿驗收。"
+  ],
+  "retrieval_revision_history": [
+    {
+      "receipt_sha256": "c704b1a06862dd8d7b69430f6f5fcdf776d8499b30464b3dbdc12312eb8dc799",
+      "draft_sha256": "5ac3089fd60d92cdc5ebbe331d4e52f2ca77e8557bbdfa5e4a1035de5d63dcfc",
+      "neighbours": {
+        "file": ".cache/wave44-earth-neighbours.json",
+        "sha256": "26678bcec6c321c98191286bf3df4dd855cf81644f638a621c37f871924e1e3b"
+      },
+      "update": "其他批次併入最後輸入。Earth 原題問答與三作者檔相同，45個有向配對及相似度逐列一致。"
+    }
+  ]
+}
