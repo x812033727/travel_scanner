@@ -1,13 +1,13 @@
 ---
 id: 2026-11-03-approved-upload-confirmations-take-the-full
 title: Approved upload confirmations take the full backup tier on a resend
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-backup-rules
 claimed_at: 2026-11-03T07:22:19Z
 created_at: 2026-11-03T07:22:18Z
-completed_at:
+completed_at: 2026-11-03T07:24:07Z
 branch: claude/video-backup-attach-approved
 depends_on: []
 scope:
