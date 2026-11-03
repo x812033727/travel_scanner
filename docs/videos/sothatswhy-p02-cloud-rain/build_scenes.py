@@ -271,6 +271,38 @@ shot("kid-notebook-done", "Close-up of a girl closing her notebook with both han
 card("outro", "outro", {"title": "原來如此！", "cta": "訂閱原來如此事務所", "lines": ["雲有水，但碎成數不完的小水滴"]},
      [k("原來如此！", "開心大聲"), c("你家那邊的午後雷陣雨，通常幾點開始？留言告訴我們。", "問句上揚，像聊天"), c("想一起把生活裡的為什麼找到底，就訂閱原來如此事務所。", "誠懇")])
 
+# ---------- 2026-11-03 rewrites after the first keyframe run (judge failed all three takes) ----------
+FIX = {
+ "chief-yes": ("Waist-up portrait of the chief nodding warmly and holding up a magnifying glass, bookshelves of blank folders behind her, soft afternoon light", CH),
+ "clear-morning": ("Wide shot of an apartment balcony on a clear blue morning, a girl standing on tiptoe pinning a striped towel onto a laundry line, her notebook tucked in her jacket pocket, an empty blue sky, soft early light", KID),
+ "chief-kettle": ("Waist-up shot of the chief in a small kitchenette pointing one finger at a steaming kettle on the stove beside her, a mug next to the kettle, soft lamp light", CH),
+ "mist-puff": ("Medium close-up of the chief bending down to look closely at a kettle spout, a white curl of mist floating a hand's width away from the spout and clear air right at the opening, soft kitchen light", CH),
+ "chief-expands": ("Waist-up shot of the chief at her desk pulling one red balloon wide between her two hands so it stretches, an amused face, warm lamp light", CH),
+ "chief-second": ("Waist-up shot of the chief holding up two fingers with a kind serious face, a whiteboard behind her, soft daylight", CH),
+ "kid-no-weight": ("Close-up of the girl pinching one long strand of her own black hair between her fingers and staring at it cross-eyed, her notebook put away, soft window light", KID),
+ "chief-falls-slowly": ("Head-and-shoulders close-up of the chief shaking her head gently and pinching her thumb and forefinger almost together in front of her face, warm lamp light", CH),
+ "droplet-vanish": ("Close-up of the girl blowing gently on one tiny water droplet resting on her fingertip, the droplet shrinking into a faint wisp, soft bright light", KID),
+ "palm-raindrop": ("Medium shot of the girl standing under a shop arcade with one open palm stretched out into the rain, a fat raindrop splashing on her palm, her notebook tucked under her other arm, soft overcast light", KID),
+ "kid-only-100": ("Medium shot of the girl shrugging with both palms turned up and an unimpressed face, leaning on an arcade pillar, her notebook in her jacket pocket, rain falling in the street behind her, soft overcast light", KID),
+ "kid-pinch": ("Medium shot of the girl sitting on a tall stool pressing her two empty palms together as if squeezing an invisible ball, a cheeky grin, her notebook lying on the stool beside her, soft light", KID),
+ "collision": ("Close-up of the girl looking through a big magnifying glass at water droplets on a window pane, one large droplet sliding down and swallowing the smaller ones below it, soft grey light", KID),
+ "kid-snowball": ("Wide shot of the girl in a snowy park leaning her whole body against a knee-high snowball and pushing it forward with both hands, puffing with effort, her notebook in her pocket, soft grey winter light", KID),
+ "supercooled": ("Close-up of the chief looking through a big magnifying glass at tiny glittering ice crystals and round water droplets floating together in a cold mist, a soft pale blue glow", CH),
+ "kid-not-frozen": ("Close-up of the girl holding an ice cube between two fingers right in front of one eye and squinting at it in disbelief, her notebook lying on the desk, soft window light", KID),
+ "chief-ice-wins": ("Head-and-shoulders close-up of the chief raising her eyebrows and nodding, holding a frosty glass up beside her face, soft lamp light", CH),
+ "snow-to-rain": ("Wide shot of the girl on a hillside looking up as one big six-armed snowflake drifts down from a cloud high above, and lower down a round raindrop falls toward her, soft light", KID),
+ "kid-not-every": ("Medium shot of the girl with her forehead and both hands pressed against a window pane, looking out at two clouds, one with rain under it and one plain white, her notebook on the sill, soft afternoon light", KID),
+ "small-clouds": ("Wide shot of a park lawn on a fine morning with small flat puffs of cloud dotted across the sky, the girl throwing a folded paper plane into the air with one arm, her notebook on the grass, mild soft light", KID),
+ "cumulonimbus": ("Low angle wide shot of an enormous storm cloud towering over a city skyline, its top spreading out far above, one tiny airliner near the very top of the cloud, a girl on a rooftop in the foreground tipping her head back to look up at it, soft afternoon light", KID),
+ "chief-engine": ("Waist-up shot of the chief pressing the switch of a small desk fan with one finger and raising her eyebrows meaningfully, warm lamp light", CH),
+ "kid-how-know": ("Head-and-shoulders close-up of the girl biting the end of a pencil and gazing at a cloudy sky through a window, thoughtful, soft afternoon light", KID),
+}
+for sc in S:
+    if sc["id"] in FIX:
+        sc["data"]["prompt"], chars = FIX[sc["id"]]
+        sc["data"]["characters"] = list(chars)
+assert all(any(sc["id"] == k for sc in S) for k in FIX)
+
 # ---------- assemble ----------
 scenes = []; loops_s = {}; loops_p = {}; n = 0
 for sc in S:
