@@ -12,16 +12,16 @@
     "style": "標準國語，咬字清楚，台北人平常說話的語調"
   },
   "look": {
-    "preset": "cinematic-3d",
-    "style": "cute stylized 3D animation, plush toy-like fur with soft subsurface light, rounded shapes, warm cozy small Taipei apartment living room with light wood floor, beige sofa and green plants, soft window daylight, pastel warm palette, shallow depth of field, main subject kept in the centre third of the frame",
-    "negative": "photorealistic, horror, gore, extra legs, extra tails, deformed paws, human faces, readable text, logos, watermark",
+    "preset": "custom",
+    "style": "photorealistic live-action pet video, real dog with natural fur texture, shot on a full-frame cinema camera with a 50mm lens, soft natural window daylight, small cozy Taipei apartment living room with light wood floor, beige sofa and green plants, warm natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, 3D render, plastic look, anime, extra legs, extra tails, deformed paws, human faces, readable text, logos, watermark",
     "candidates": 3
   },
   "characters": [
     {
       "id": "mochi",
       "name": "麻糬",
-      "appearance": "a red Shiba Inu dog in stylized 3D, plump round body, cream white cheeks, chest and paws, fluffy curled tail, big expressive dark eyes, small triangular ears, red collar with a small yellow bell, a tiny navy blue lanyard around the neck holding a blank white employee ID card on the chest",
+      "appearance": "a real red Shiba Inu dog, adult, healthy plump body, cream white cheeks, chest and paws, fluffy curled tail, big expressive dark eyes, small triangular ears, red collar with a small yellow bell, a tiny navy blue lanyard around the neck holding a blank white employee ID card on the chest",
       "voice": {
         "provider": "gemini",
         "name": "Algenib",
@@ -60,7 +60,7 @@
     }
   ],
   "music": {
-    "prompt": "deadpan office comedy underscore, pizzicato strings and soft marimba, light and quirky, turns into a melancholic slow piano for a sad beat then a heroic brass sting, no vocals",
+    "prompt": "deadpan office sitcom underscore, pizzicato strings, soft marimba and light brushed drums, quirky and dry, no vocals",
     "gain_db": -20,
     "duck_db": -10
   },
@@ -74,7 +74,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "公司引進AI，資深柴犬要被取代了 #汪汪社畜 EP1",
-    "description": "在這個家任職五年、負責清理地上食物的資深員工麻糬，今天迎來了一位不用吃飯的新同事。",
+    "description": "在這個家任職五年、負責清理地上食物的資深員工麻糬，今天迎來了一位不用吃飯的新同事。\n\n本片畫面、配音與配樂由 AI 生成。",
     "tags": [
       "汪汪社畜",
       "柴犬",
@@ -492,5 +492,54 @@
         }
       ]
     }
-  ]
+  ],
+  "sfx": {
+    "set": "wangwang-comedy",
+    "cues": [
+      {
+        "scene": "s02-boot",
+        "sound": "ding"
+      },
+      {
+        "scene": "s08-suck",
+        "sound": "whoosh"
+      },
+      {
+        "scene": "s10-strike",
+        "sound": "laugh"
+      },
+      {
+        "scene": "s11-ignore",
+        "sound": "boing"
+      },
+      {
+        "scene": "s13-praise",
+        "sound": "laugh"
+      },
+      {
+        "scene": "s14-shock",
+        "sound": "glass"
+      },
+      {
+        "scene": "s15-wall",
+        "sound": "wahwah"
+      },
+      {
+        "scene": "s17-stuck",
+        "sound": "beep"
+      },
+      {
+        "scene": "s18-rise",
+        "sound": "laugh"
+      },
+      {
+        "scene": "s19-walk",
+        "sound": "fanfare"
+      },
+      {
+        "scene": "s21-robodog",
+        "sound": "ding"
+      }
+    ]
+  }
 }

@@ -3,6 +3,7 @@
 - 格式：YouTube Shorts／Reels，9:16，約 55 秒（lint 估算；實際以配音後的 `timeline.json` 為準）。
 - 機器讀的版本：同目錄的 `video.json`（lint 0 錯誤）；故事前提與角色在 `brief.md`。
 - 21 鏡：片段 18、靜圖推鏡 3；AI 風險 A 13、B 5、C 0（`shot_plan.mjs --strict` 通過）。
+- 畫風：**寫實**，像真狗的寵物影片（真實毛髮、自然窗光、台北小公寓客廳）。
 - 麻糬所有台詞都是**內心話**，嘴不動。這是故意的：產線沒有對嘴，嘴閉著反而最穩。
 
 ## 分鏡
@@ -36,6 +37,27 @@
 ## 檢查沒過、刻意保留的一項
 
 - `lines.narrator`（旁白與內心話占 89%，目標 ≤ 35%）：這個系列的笑點就是狗的內心話，跟動作反差，所以照設計保留。
+
+## 音樂與音效
+
+- 配樂：AI 生成（Lyria），乾冷的職場情境喜劇底樂（撥弦、木琴、輕刷鼓），壓在配音下面。
+- 音效組 `wangwang-comedy`，放在工作目錄的 `_sfx/wangwang-comedy/`，要用有授權的音效檔：
+
+| 鏡 | 音效 | 用途 |
+|---|---|---|
+| s02-boot | ding | 機器人開機 |
+| s08-suck | whoosh | 餅乾屑被吸走 |
+| s10-strike | laugh | 「績效被吸走」的笑點 |
+| s11-ignore | boing | 機器人轉向閃人 |
+| s13-praise | laugh | 「連吵都不想吵」的笑點 |
+| s14-shock | glass | 心碎 |
+| s15-wall | wahwah | 失落 |
+| s17-stuck | beep | 機器人卡住 |
+| s18-rise | laugh | 機器人卡在雞腿上 |
+| s19-walk | fanfare | 資深員工登場 |
+| s21-robodog | ding | 機器狗開機 |
+
+最後一句「又來了新同事」之後的笑聲，等配音做完、知道確切的格數，再用 `frame` 補上。
 
 ## 製作路線：Colab H3 → Shorts
 
