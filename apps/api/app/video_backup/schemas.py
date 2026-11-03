@@ -227,3 +227,8 @@ class WorkerConfig(BaseModel):
     test: WorkerProbe | None
     # Every video with a YouTube id, oldest first.
     videos: list[WorkerVideo]
+    # Videos the owner deleted from /admin/videos lately (admin_deletion.delete_project, its audit
+    # rows) whose slug no video holds again: the worker removes their work folders whole (owner,
+    # 2026-11-03; tools/video/automation/tidy.mjs). The site cannot: the API mounts video_work
+    # read-only.
+    deleted: list[str] = Field(default_factory=list)

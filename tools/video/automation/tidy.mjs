@@ -52,6 +52,8 @@ const BACKUP_HOLD = "not in Google Drive yet";
 // and the tidy's own for a folder that has no auto.json. A few KB.
 export const PURGE_KEEP = new Set([STATE_FILE, "backup-state.json", "backup.json", "review-package.json", "tidied.json"]);
 const HAND_TIDIED = "tidied.json";
+// A video brought back from Drive for late work (restore.mjs) keeps its files this long first.
+export const RESTORE_HOLD_DAYS = 14;
 
 /**
  * What goes from a finished video's work directory, relative to it: the media the stages made,
@@ -235,7 +237,7 @@ function handVideos(base, fs) {
     } catch {
       tidied = null;
     }
-    videos.push({ slug: entry.name, workdir, hand: true, state: { slug: entry.name, status: "hand", tidied_at: tidied?.tidied_at ?? null } });
+    videos.push({ slug: entry.name, workdir, hand: true, state: { slug: entry.name, status: "hand", tidied_at: tidied?.tidied_at ?? null, restored_at: tidied?.restored_at ?? null } });
   }
   return videos;
 }
@@ -286,7 +288,7 @@ function backupHold(slug, backup) {
  * for the owner, or already tidied); { held } when it is finished but something still needs its
  * files; { problem } when it is finished but has no usable date; else { at, how }.
  */
-function judge(video, { states, listed, videos, repos, fs, backup }) {
+function judge(video, { states, listed, videos, repos, fs, backup, now = Date.now() }) {
   const { slug, workdir, state } = video;
   if (state.tidied_at) return null;
   // A folder without auto.json is the site's to describe, and only a purge clears it.
@@ -343,6 +345,10 @@ function judge(video, { states, listed, videos, repos, fs, backup }) {
         .map(([part]) => `${locale} ${part}`),
     );
     if (waiting.length) return { held: `${waiting.join(", ")} not uploaded or skipped yet` };
+    const restored = Date.parse(String(state.restored_at ?? ""));
+    if (Number.isFinite(restored) && now - restored < RESTORE_HOLD_DAYS * DAY_MS) {
+      return { held: `restored from Google Drive on ${day(restored)} for late work; kept ${RESTORE_HOLD_DAYS} days` };
+    }
     return { at: confirmed.length ? Math.max(...confirmed) : 0, how: "on YouTube and in Drive", purge: true };
   }
   if (!confirmed.length) return { problem: "on YouTube, but its upload confirmation has no date (no publish approval in approvals.json, none on the site)" };
@@ -546,6 +552,54 @@ function clearVideo(video, { base, repos, now, dryRun, fs }) {
 }
 
 /**
+ * Remove the work folders of a video the owner deleted on /admin/videos (owner, 2026-11-03: a
+ * deleted video goes from the host whole): <base>/<slug>/ and the worker's Shorts folder
+ * <base>/_shorts/<slug>/, each only where it is a real folder directly in its parent, never
+ * through a link, never the work base or a repository. The site lists the slugs (backup gate
+ * `deleted`) only while no video holds the slug again. Returns { slug, removed, failed, bytes }
+ * for each folder there was.
+ */
+function deleteFolders(slugs, { base, repos, dryRun, fs }) {
+  const outcomes = [];
+  if (baseProblem(base, repos)) return outcomes;
+  for (const slug of slugs) {
+    if (!SLUG.test(String(slug))) continue;
+    for (const parent of [base, path.join(base, "_shorts")]) {
+      const dir = path.join(parent, slug);
+      let stat;
+      try {
+        stat = fs.lstatSync(dir);
+      } catch {
+        continue;
+      }
+      const outcome = { slug, folder: slash(path.relative(base, dir)), dryRun, files: 0, bytes: 0, failed: [], refused: null };
+      if (!stat.isDirectory() || !samePath(realOr(dir, fs), dir) || !samePath(realOr(parent, fs), parent)) {
+        outcome.refused = `${dir} is not a real folder where it stands`;
+      } else if (repos.some((repo) => isInside(dir, repo) || isInside(repo, dir))) {
+        outcome.refused = `${dir} overlaps a repository`;
+      }
+      if (!outcome.refused) {
+        const job = newJob({ workdir: base, dryRun, fs });
+        removeTree(dir, job);
+        Object.assign(outcome, { files: job.files, bytes: job.bytes, failed: job.failed });
+      }
+      outcomes.push(outcome);
+    }
+  }
+  return outcomes;
+}
+
+/** The line for a deleted video's folder. */
+function deletedLine(outcome) {
+  if (outcome.refused) return `tidy: ${outcome.slug} was deleted on /admin/videos, but ${outcome.folder}/ is kept: ${outcome.refused}`;
+  const size = sizeText(outcome.bytes);
+  const failed = outcome.failed.length ? `; could not remove ${outcome.failed.length}: ${outcome.failed.slice(0, 3).map((entry) => `${entry.path} (${entry.error})`).join(", ")}` : "";
+  return outcome.dryRun
+    ? `tidy --dry-run: ${outcome.slug} was deleted on /admin/videos; ${outcome.folder}/ would go whole (${outcome.files} files, ${size})${failed}`
+    : `tidy: ${outcome.slug} was deleted on /admin/videos: removed ${outcome.folder}/ whole (${outcome.files} files, ${size})${failed}`;
+}
+
+/**
  * One round of the tidy: every finished video in the work base sorted into due, waiting, held
  * and undated, then the oldest due one cleared (or, with dryRun, what would go listed). `base`
  * is tidyBase's real path; `site` is the round's video list from the site (ProjectSummary[]),
@@ -561,9 +615,13 @@ export function tidyRound({ base: given, repos: named = [ROOT], site = null, bac
   const videos = [...workVideos(base, fs), ...handVideos(base, fs)];
   const states = videos.filter((video) => !video.hand).map((video) => video.state);
   const listed = Array.isArray(site) ? new Map(site.filter((video) => typeof video?.slug === "string").map((video) => [video.slug, video])) : null;
-  const round = { base, days, dryRun, due: [], waiting: [], held: [], undated: [], refused: [], cleared: null };
+  const round = { base, days, dryRun, due: [], waiting: [], held: [], undated: [], refused: [], cleared: null, deleted: [] };
+  // Deleted videos first: the owner's word, with no backup to wait for.
+  if (Array.isArray(backup?.deleted)) round.deleted = deleteFolders(backup.deleted, { base, repos, dryRun, fs });
+  const gone = new Set(round.deleted.map((outcome) => outcome.slug));
   for (const video of videos) {
-    const verdict = judge(video, { states, listed, videos, repos, fs, backup });
+    if (gone.has(video.slug)) continue;
+    const verdict = judge(video, { states, listed, videos, repos, fs, backup, now: now.getTime() });
     if (!verdict) continue;
     if (verdict.held) round.held.push({ slug: video.slug, why: verdict.held });
     else if (verdict.problem) round.undated.push({ slug: video.slug, why: verdict.problem });
@@ -622,6 +680,7 @@ export function clearedLine(outcome) {
  */
 export function roundLines(round, { verbose = false } = {}) {
   const lines = [];
+  for (const outcome of round.deleted ?? []) lines.push(deletedLine(outcome));
   for (const outcome of round.refused) lines.push(clearedLine(outcome));
   if (round.cleared) lines.push(clearedLine(round.cleared));
   if (round.undated.length) lines.push(`tidy: finished but kept, no usable date: ${round.undated.map((entry) => `${entry.slug} (${entry.why})`).join("; ")}`);

@@ -698,11 +698,15 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     }
     await answerTest(job, config, rclone);
   }
-  if (!config.enabled) return { lines, gate: { enabled: false } };
+  // The videos the owner deleted on /admin/videos: the tidy removes their folders whole, with
+  // backups on or off (owner, 2026-11-03).
+  const deleted = (Array.isArray(config.deleted) ? config.deleted : []).filter((slug) => typeof slug === "string" && SLUG.test(slug));
+  const withDeleted = (gate) => (deleted.length ? { ...gate, deleted } : gate);
+  if (!config.enabled) return { lines, gate: withDeleted({ enabled: false }) };
   if (config.remote_prefix === null || config.remote_prefix === undefined || rclone.problem) {
     const problem = rclone.problem ?? config.problem ?? "the site gave no folder to copy to";
     if (copy) lines.push(`backup: not copying: ${problem}; the tidy keeps every video on YouTube`);
-    return { lines, gate: { unknown: problem } };
+    return { lines, gate: withDeleted({ unknown: problem }) };
   }
   job.prefix = config.remote_prefix;
   const perRound = Number.parseInt(ctx.env[PER_ROUND_ENV] ?? "", 10);
@@ -774,7 +778,7 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     const next = await backUp(job, video, state);
     verdicts.set(video.slug, verdictOf(next));
   }
-  return { lines, gate: { enabled: true, verdicts } };
+  return { lines, gate: withDeleted({ enabled: true, verdicts }) };
 }
 
 /** Whether the tidy may clear a video, from its backup state. */

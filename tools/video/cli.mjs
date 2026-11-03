@@ -49,6 +49,7 @@ export const AREAS = {
   auto: ["automation", "2026-09-25-video-auto-orchestrator-one-command-that"],
   tidy: ["automation", "2026-09-28-video-story-tidy-finished"],
   restyle: ["automation", "2026-09-29-video-storytelling-prompts"],
+  restore: ["automation", "2026-11-03-restore-a-purged-video-from-drive"],
   // The drama format's media stages (docs/videos/DRAMA.md).
   look: ["media", "2026-09-26-video-drama-look-keyframes"],
   keyframes: ["media", "2026-09-26-video-drama-look-keyframes"],
@@ -105,6 +106,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   runpod-reap [--json]                             ask the site to stop RunPod pods that are idle, past the longest run or the monthly cap
   tidy [--dry-run] [--workdir D]                   clear the work files of the oldest video finished $VIDEO_TIDY_DAYS (7) days ago;
                                                    auto does this once a round, --dry-run only lists what would go
+  restore --slug S [--dry-run] [--workdir D]       bring a video the host cleared back from Google Drive (docs/videos/BACKUP.md §還原)
   restyle --slug S [--dry-run]                     retell a worker's video in the storytelling register (docs/videos/ILLUSTRATED.md);
                                                    --dry-run only measures the script
 

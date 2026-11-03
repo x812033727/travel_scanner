@@ -302,7 +302,11 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
 - **審核區同一條規則**：`prune_published_previews` 對符合上面三樣的影片把審核區裡這支的**所有**檔案刪掉（`_done_with`），
   不只 mp4，也不等 7 天；資料庫的審核紀錄保留。
 - 之後要補語言、重試配音、剪 Shorts：先從雲端還原（票 `2026-11-03-restore-a-purged-video-from-drive`）。
-- 放棄的影片照舊：放棄後 7 天刪大檔；刪除影片時的整支清除是 `2026-11-03-deleting-a-dropped-video-removes-its`。
+- 放棄的影片照舊：放棄後 7 天刪大檔。
+- **刪除影片（站主在 /admin/videos 放棄後再刪除）**：網站刪掉資料庫列、審核區與素材區；worker 每輪讀備份設定時多拿到
+  `deleted`（近 60 天刪除、而且這個 slug 沒有被新影片用回去的），tidy 把 `video_work/<slug>/` 與 `video_work/_shorts/<slug>/`
+  **整個**刪掉，不管備份開關、不等雲端（站主的規則：刪除就整支刪）。只刪工作根目錄底下真的資料夾，連結不跟、不刪工作根目錄或
+  repo。雲端硬碟上已備份的那份不動。從它剪出的 Shorts 是另外的影片，要各自刪除（票 `2026-11-03-deleting-a-dropped-video-removes-its`）。
 - `_shorts/` 底下 worker 自己做的 Shorts 還不在這條規則裡（tidy 跳過 `_` 開頭的資料夾），之後另開票。
 - 沒有傳備份狀態給 tidy 的呼叫（只有測試），或網站還沒有備份的 API（回 404，正式站不會）時照舊：上架 7 天後刪大檔。
 
@@ -430,6 +434,22 @@ mp4 不會自己清，檔案區（預設 20 GB）要靠備份開著才會回收�
 
 ## 還原
 
-找到 `AI/備份/<系列>/<集>/backup.json`，按 `files` 清單下載，比對 sha256。
+**從主機還原（2026-11-03，票 `2026-11-03-restore-a-purged-video-from-drive`）**：上架、備份完整、語言做完之後主機會把影片整支清掉
+（〈跟 tidy 的關係〉）。之後要補語言、重做配音、從長片剪 Shorts，先在 video-worker 容器裡把它拉回來：
+
+```bash
+docker compose -f docker-compose.prod.yml exec -T video-worker node tools/video/cli.mjs restore --slug <slug> --dry-run
+docker compose -f docker-compose.prod.yml exec -T video-worker node tools/video/cli.mjs restore --slug <slug>
+```
+
+[`restore.mjs`](../../tools/video/automation/restore.mjs) 讀雲端那一集的 `backup.json`（雲端沒有就用主機留下的那份），
+`rclone copy` 到 `video_work/_restore-stage/<slug>/`（不含 `_舊版/`），逐檔比對 sha256 與大小，對得上的才放回原位
+（`workPathOf`，planFiles 的反向：上傳包回 `upload/`、`descriptions/<l>.txt` 回 `upload/description.<l>.txt`、`dub-lines/<l>/`
+回 `dubs/<l>/audio/`、`dubs/未進上傳包/` 回 `dubs/`、`captions/未進上傳包/` 回 `captions/`，其餘照原路徑）。worker 自己的影片也把
+`upload/final.mp4` 連回根目錄的 `final.mp4`。對不上的檔不放，列出來、結束碼非 0。完成後 `auto.json` 拿掉 `tidied_at`、寫上
+`restored_at`（手動資料夾寫在 `tidied.json`），tidy 保留 14 天（`RESTORE_HOLD_DAYS`）讓後續工作做完，之後照一般規則再清。
+雲端上的檔案不會被改動。目前要手動下這個指令：worker 遇到已清掉的影片時，新勾的語言仍會回報「工作檔已清」，不會自己還原。
+
+**手動還原**（不在主機上）：找到 `AI/備份/<系列>/<集>/backup.json`，按 `files` 清單下載，比對 sha256。
 要重新上架時，`final.mp4`、`captions/`、`descriptions/`、`dubs/` 就是一份完整的手動上傳包
 （對應 [MANUAL-UPLOAD.md](MANUAL-UPLOAD.md)）。

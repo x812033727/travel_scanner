@@ -769,6 +769,35 @@ async def test_a_video_pushed_by_hand_names_its_package_and_its_newest_language_
     assert batch is not None and named.languages_sha256 == batch.content_sha256
 
 
+async def test_the_worker_hears_of_videos_the_owner_deleted_until_the_slug_is_taken_again(
+    site: Site,
+) -> None:
+    """Owner, 2026-11-03: a deleted video leaves the host whole. The API mounts video_work
+    read-only, so the worker is told which slugs to clear (tools/video/automation/tidy.mjs)."""
+    now = datetime.now(UTC)
+
+    async def deleted(slug: str, days: int) -> None:
+        async with site.factory() as session:
+            session.add(
+                AdminAuditLog(
+                    actor_user_id=site.owner.id,
+                    action="video_project_deleted",
+                    target=f"video_project:{uuid4()}",
+                    metadata_json={"slug": slug},
+                    created_at=now - timedelta(days=days),
+                )
+            )
+            await session.commit()
+
+    await deleted("curio-gone", 1)
+    await deleted("curio-again", 2)
+    await deleted("curio-long-ago", 90)
+    await site.add(project("curio-again", youtube_video_id=None))
+    async with site.factory() as session:
+        config = await status.worker_config(session)
+    assert config.deleted == ["curio-gone"], "a slug held again, or deleted long ago, is not named"
+
+
 # --- the routes ---------------------------------------------------------------------------------
 
 

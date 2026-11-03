@@ -273,6 +273,32 @@ async def review_packages(
     return packages
 
 
+# How far back the worker is told about deleted videos: far longer than a worker is ever away.
+DELETED_WINDOW = timedelta(days=60)
+
+
+async def deleted_slugs(session: AsyncSession, now: datetime | None = None) -> list[str]:
+    """The slugs of the videos the owner deleted within DELETED_WINDOW that no video holds
+    again (a deleted slug is free, and a later report may register it anew)."""
+    since = (now or _now()) - DELETED_WINDOW
+    rows = await session.scalars(
+        select(AdminAuditLog).where(
+            AdminAuditLog.action == "video_project_deleted", AdminAuditLog.created_at >= since
+        )
+    )
+    slugs = {
+        str(row.metadata_json.get("slug"))
+        for row in rows
+        if isinstance(row.metadata_json, dict) and isinstance(row.metadata_json.get("slug"), str)
+    }
+    if not slugs:
+        return []
+    taken = set(
+        await session.scalars(select(VideoProject.slug).where(VideoProject.slug.in_(slugs)))
+    )
+    return sorted(slugs - taken)
+
+
 async def worker_config(session: AsyncSession) -> WorkerConfig:
     row = await backup_settings.settings_row(session)
     config = backup_settings.config_of(row)
@@ -313,6 +339,7 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
         if pending and requested_at is not None
         else None,
         videos=videos,
+        deleted=await deleted_slugs(session),
     )
 
 
