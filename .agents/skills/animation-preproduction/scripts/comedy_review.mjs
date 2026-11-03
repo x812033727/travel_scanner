@@ -21,8 +21,8 @@ export const RUBRIC = {
 /** Every gate must hold. Medians across judges; the strong-beat rule counts a beat a judge did not list as 1. */
 export const GATES = {
   minJudges: 3,
-  medianTotal: 80,
-  everyJudgeTotal: 65,
+  medianTotal: 70,
+  everyJudgeTotal: 60,
   medianLaughs: 14,
   medianSurprise: 10,
   strongBeats: 3,

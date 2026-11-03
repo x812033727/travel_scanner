@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "slug": "wangjia-couple-e01",
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real dogs with natural fur texture standing upright on their hind legs and wearing human clothes like a married couple, small cozy Taipei apartment with a sunny balcony, light wood floor, warm natural daylight, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, 3D render, plastic look, anime, extra legs, extra tails, deformed paws, human faces, readable text, logos, watermark",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "afu",
+      "name": "阿福",
+      "appearance": "a real Pembroke Welsh Corgi dog standing upright on very short hind legs, chubby, red and white fur, big upright ears, wearing loose blue and white striped pyjamas, a lazy smug face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      }
+    },
+    {
+      "id": "zhenzhu",
+      "name": "珍珠",
+      "appearance": "a real red Shiba Inu dog standing upright on its hind legs, wearing a pink floral apron over a plain beige dress and four pink plastic hair curlers on top of its head, a calm sweet face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "light bouncy domestic sitcom tune, ukulele and pizzicato strings, stops abruptly for a tense beat then returns calm and sweet, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sfx": {
+    "set": "wangjia-comedy",
+    "cues": [
+      {
+        "scene": "s01-basket",
+        "sound": "splat"
+      },
+      {
+        "scene": "s04-see",
+        "sound": "pop"
+      },
+      {
+        "scene": "s05-turn",
+        "sound": "tension"
+      },
+      {
+        "scene": "s06-hung",
+        "sound": "wind"
+      },
+      {
+        "scene": "s07-street",
+        "sound": "birds"
+      }
+    ]
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "叫老公幫忙曬衣服的下場 #汪家夫妻",
+    "description": "柯基老公阿福被叫去曬衣服。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "汪家夫妻",
+      "柯基",
+      "柴犬",
+      "夫妻日常",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "老公被曬了",
+      "tag": "汪家夫妻",
+      "shot": "s06-hung"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-basket",
+      "chapter": "幫忙曬衣服",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of a cozy living room: the Corgi husband in striped pyjamas lies on its back on the sofa scrolling a phone; a plastic laundry basket full of dripping wet clothes is in mid-air, dropping straight onto its round belly; the Shiba wife in a floral apron and hair curlers stands beside the sofa",
+        "camera": "Medium shot, locked",
+        "motion": "the basket of wet clothes lands on the Corgi's belly with a thump and water splashes; the Shiba wife points firmly toward the balcony; the Corgi keeps scrolling the phone without looking up",
+        "characters": [
+          "afu",
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-dump",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of a small sunny balcony with an empty metal clothes drying rack; the Corgi husband in striped pyjamas stands holding the full laundry basket above the rack",
+        "camera": "Wide shot, locked",
+        "motion": "the Corgi tips the whole basket upside down so the wet clothes flop onto the rack in one messy heap, then drops the basket and waddles away out of frame",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-sofa",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium close-up of the Corgi husband lying back on the sofa with a phone above its face, a satisfied smug face",
+        "camera": "Medium close-up, locked",
+        "motion": "the Corgi stretches its short legs out and wiggles into the cushions contentedly",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-see",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot from behind: the Shiba wife in a floral apron with four pink hair curlers stands in the balcony doorway, looking at a messy heap of wet clothes dumped on the drying rack",
+        "camera": "Medium shot, locked",
+        "motion": "the four pink hair curlers pop off the Shiba's head one after another and bounce on the floor",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-turn",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of the Shiba wife's face over its shoulder, hair now loose and frizzy without curlers, a calm sweet expression with narrowed eyes, the balcony behind",
+        "camera": "Close-up, slow push in",
+        "motion": "the Shiba slowly turns its head toward the camera and its sweet smile tightens; its eyes do not blink",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-hung",
+      "chapter": "下場",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of the sunny balcony: every piece of laundry now hung neatly and evenly on the clothesline, and in the middle of the line the Corgi husband in striped pyjamas hangs by four wooden clothespins clipped to the shoulders and back of its pyjamas, short legs dangling in the air, a sock on its head, a deadpan face",
+        "camera": "Wide shot, locked",
+        "motion": "the Corgi sways gently in the breeze like the laundry around it, its short legs paddle slowly in the air once",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-street",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot from across the street of an old Taipei apartment block with many small balconies; on our balcony the Corgi husband hangs on the clothesline among the laundry, and on almost every other balcony another husband dog in pyjamas (a Pug, a Husky, a Dachshund, a Poodle) also hangs by clothespins among the laundry, all deadpan",
+        "camera": "Wide shot, slow pull out",
+        "motion": "all the hanging husband dogs sway gently together in the breeze like laundry; a small bird lands on the Corgi's head",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

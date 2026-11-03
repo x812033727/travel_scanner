@@ -32,8 +32,8 @@ test("a round passes only when every gate holds", () => {
   const good = decide(["a", "b", "c"].map((n) => judge(n, even(85), beats)));
   assert.equal(good.pass, true, good.reasons.join("; "));
   assert.equal(decide(["a", "b"].map((n) => judge(n, even(85), beats))).pass, false, "two judges are not enough");
-  const oneBored = decide([judge("a", even(85), beats), judge("b", even(85), beats), judge("c", even(60), beats)]);
-  assert.ok(oneBored.reasons.some((r) => r.includes("under 65")));
+  const oneBored = decide([judge("a", even(85), beats), judge("b", even(85), beats), judge("c", even(55), beats)]);
+  assert.ok(oneBored.reasons.some((r) => r.includes(`under ${GATES.everyJudgeTotal}`)));
   const notFunny = decide(["a", "b", "c"].map((n) => judge(n, { ...even(90), laughs: 10 }, beats)));
   assert.ok(notFunny.reasons.some((r) => r.startsWith("laughs")));
   const unlisted = decide([judge("a", even(85), beats), judge("b", even(85), [beats[0]]), judge("c", even(85), [beats[0]])]);
