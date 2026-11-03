@@ -12,6 +12,7 @@ branch:
 depends_on: []
 scope:
   - docs/videos/shechu-hell
+  - docs/videos/shechu-hell-e01
 ---
 
 # 社畜地獄（狗員工、貓老闆）零台詞系列：規則與集數企劃

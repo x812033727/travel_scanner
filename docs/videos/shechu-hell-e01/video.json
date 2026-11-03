@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "slug": "shechu-hell-e01",
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action office comedy, a real dog and a real cat with natural fur wearing office clothes and behaving like people, a small slightly shabby Taipei office with grey desks, monitors, a printer and fluorescent lights, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, readable text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "ajin",
+      "name": "阿金",
+      "appearance": "a real Golden Retriever dog standing upright on its hind legs like a person, wearing a white office shirt with a crooked blue necktie and a lanyard with a blank white ID card, tired dark circles under its eyes, an earnest good-natured face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in the middle of a small, slightly shabby Taipei office with desks, monitors and fluorescent lights, facing the camera. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "miaozong",
+      "name": "喵總",
+      "appearance": "a real chubby orange tabby cat sitting upright like a person, wearing a dark grey suit jacket with a gold tie clip, a completely expressionless face with half-closed eyes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in the middle of a small, slightly shabby Taipei office with desks, monitors and fluorescent lights, facing the camera. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "cheerful office ukulele tune that rises as if heading home, cuts to silence, then a slow sad lonely late-night piano, ending on a short ominous low note, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sfx": {
+    "set": "shechu-comedy",
+    "cues": [
+      {
+        "scene": "s01-clock",
+        "sound": "tick"
+      },
+      {
+        "scene": "s05-fall",
+        "sound": "paper"
+      },
+      {
+        "scene": "s06-night",
+        "sound": "crickets"
+      },
+      {
+        "scene": "s07-again",
+        "sound": "dun"
+      }
+    ]
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "六點整準時下班的下場 #社畜地獄",
+    "description": "員工是狗，老闆是貓。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "社畜地獄",
+      "社畜",
+      "貓老闆",
+      "黃金獵犬",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "準時下班？",
+      "tag": "社畜地獄",
+      "shot": "s03-push"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-clock",
+      "chapter": "六點整",
+      "template": "shot",
+      "action_seconds": 1,
+      "data": {
+        "prompt": "Insert close-up of a plain round white office wall clock with no numbers, only tick marks, its hands at one minute before six",
+        "camera": "Insert close-up, locked",
+        "motion": "the minute hand clicks forward to the top: exactly six o'clock",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-pack",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the Golden Retriever in a white shirt and crooked tie at his grey office desk, laptop open, a briefcase beside him, a hopeful smile",
+        "camera": "Medium shot, locked",
+        "motion": "he snaps the laptop shut, swings the briefcase strap onto his shoulder, flicks his tie over his shoulder and tiptoes toward the door at the right, tail wagging",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-push",
+      "chapter": "喵總",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the chubby orange tabby cat in a grey suit sitting on top of the Golden Retriever's grey desk facing the camera, one front paw resting on a neat stack of printed reports near the desk edge, expressionless half-closed eyes",
+        "camera": "Medium shot, locked",
+        "motion": "staring straight at the camera without blinking, the cat slowly, slowly pushes the stack of reports toward the edge of the desk with one paw",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-turn",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium close-up from behind of the Golden Retriever in a white shirt with a briefcase on his shoulder, standing in the office doorway with his paw on the door handle",
+        "camera": "Medium close-up, locked",
+        "motion": "he freezes, then slowly turns his head back over his shoulder; his ears droop",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-fall",
+      "template": "shot",
+      "action_seconds": 1,
+      "data": {
+        "prompt": "Insert of the edge of a grey office desk with a stack of printed reports tipping over the edge, pages starting to fan out in the air",
+        "camera": "Insert, locked",
+        "motion": "the stack of reports slides off the desk edge and the pages scatter through the air",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-night",
+      "chapter": "深夜",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of the same office late at night, windows completely black, all lights off except one desk lamp: the Golden Retriever sits alone at his desk with bloodshot tired eyes, sorting a big messy pile of scattered report pages back into order; far in the background on top of the warm office printer, the orange cat is curled up asleep like a ball",
+        "camera": "Wide shot, locked",
+        "motion": "the dog slowly lifts one page, squints, and lays it on the neat pile; the sleeping cat's tail twitches once",
+        "characters": [
+          "ajin",
+          "miaozong"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-again",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of the orange tabby cat in a grey suit lying on the printer, one eye opening",
+        "camera": "Close-up, locked",
+        "motion": "the cat opens one eye, slowly stretches one front paw out of frame toward the desk, and holds it there",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}
