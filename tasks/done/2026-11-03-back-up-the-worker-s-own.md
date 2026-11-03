@@ -1,14 +1,14 @@
 ---
 id: 2026-11-03-back-up-the-worker-s-own
 title: Back up the worker's own Shorts under video_work/_shorts
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-backup-rules
+claimed_at: 2026-11-03T02:32:35Z
 created_at: 2026-11-03T00:57:07Z
-completed_at:
-branch:
+completed_at: 2026-11-03T02:34:13Z
+branch: claude/video-backup-worker-shorts
 depends_on:
   - 2026-11-03-fetch-every-off-host-package-onto
 scope:
@@ -37,16 +37,24 @@ tidy 也跳過 `_` 開頭的名字，所以它們從沒備份過，也從沒清�
 
 ## Definition of done
 
-- [ ] 備份找得到 worker 做的 Shorts 的最新一版，照 Shorts 的上傳包（final、字幕、封面、titles.json）加完整層級備份。
-- [ ] 網站的備份狀態對它們正確顯示。
+- [x] 備份找得到 worker 做的 Shorts 的最新一版，照 Shorts 的上傳包（final、字幕、封面、titles.json）加完整層級備份。
+- [x] 網站的備份狀態對它們正確顯示。
 
 ## Steps
 
-- [ ] `backup.mjs` 依 slug 找 `_shorts/<slug>/` 的最新 build。
-- [ ] 測試、BACKUP.md。
+- [x] `backup.mjs` 依 slug 找 `_shorts/<slug>/` 的最新 build。
+- [x] 測試、BACKUP.md。
 
 ## How to verify
 
 `node --test tools/video/automation/backup.test.mjs`
 
 ## Notes
+- 2026-11-03 認領用 `--force`：backup.mjs 與舊的 review 狀態票重疊，查無開著的 PR。
+- 做法：`backup.mjs` 新增 `videoDir(base, slug, fs)`，`job.workdir` 改用它：`<base>/<slug>/` 不存在時讀
+  `_shorts/<slug>/lab.json` 的 `build`，必須在 `_shorts/<slug>/` 裡、有 `upload/final.mp4` 才用。備份紀錄寫在該 build 內，
+  新 build 會再備份一次。`admin_status.py` 不用改：worker 的 Shorts 沒有 `hand_pushed`，本來就不列 `review_package`。
+- 沒做：主機上用 `shorts build`／`from-drama` 手動做、放在 `<base>/<slug>/<build-ts>/` 的 Short（稽核第 11 點），
+  那種資料夾沒有 `upload/final.mp4` 在頂層，仍然不會備份；之後若有需要另開票。
+- 驗證：`node --test tools/video/automation/backup.test.mjs`（24 passed，新測試涵蓋選對 build、拒絕跑出 `_shorts/<slug>/` 外與
+  沒有成片的 build、不在工作根目錄多建資料夾）、tidy／review-package／backup-between-units 52 passed。

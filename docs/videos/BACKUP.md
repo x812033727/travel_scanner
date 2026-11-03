@@ -269,6 +269,17 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
 缺什麼。tidy 只清有 `auto.json` 的影片，所以這些資料夾不會被清，留在主機上（每集約成片加 300 MB
 片段）。
 
+## worker 自己做的 Shorts
+
+worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts.mjs`](../../tools/video/automation/shorts.mjs)）不在
+`video_work/<slug>/`，而在 `video_work/_shorts/<slug>/`：`lab.json` 記著目前那一版的 build 資料夾（`build`），每次重建都是旁邊的
+新資料夾。2026-11-03 之前備份只讀 `video_work/<slug>/`，這些 Shorts 從來沒備份過，網站一直顯示「還沒排入」。
+現在 `backup.mjs` 的 `videoDir` 在 `video_work/<slug>/` 不存在時改看 `_shorts/<slug>/lab.json` 的 `build`：那個資料夾必須在
+`_shorts/<slug>/` 裡面、而且有 `upload/final.mp4`，才拿它當這支 Short 的工作資料夾，照一般流程備份它的上傳包
+（`final.mp4`、`zh-TW.srt`、`cover.png`、`titles.json`）。`backup-state.json`、`backup.json` 也寫在那個 build 裡：重建出新的一版
+就是新的成片，會再備份一次，舊版照第 4 步留在雲端 `_舊版/`。tidy 跳過 `_` 開頭的資料夾，這些 Shorts 的清除由
+`2026-11-03-purge-a-video-from-the-host` 處理（票 `2026-11-03-back-up-the-worker-s-own`）。
+
 ## 跟 tidy 的關係
 
 [`tidy.mjs`](../../tools/video/automation/tidy.mjs) 對每支已上傳的影片多一道保留條件：

@@ -107,6 +107,34 @@ function isFile(file, fs) {
 
 const nodeFs = { copyFileSync, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync };
 
+// The worker's own Shorts (the lab and highlight lines) live under <work base>/_shorts/<slug>/, each
+// build a directory of its own beside lab.json, which names the current one in `build`
+// (tools/video/shorts/lab.mjs, cut.mjs, automation/shorts.mjs). Until 2026-11-03 the backup read only
+// <work base>/<slug>/, so none of them was ever backed up.
+export const SHORTS_DIR = "_shorts";
+const SHORT_STATE = "lab.json";
+
+/**
+ * Where a video's files are: <base>/<slug>/, or, for one of the worker's own Shorts that has no such
+ * folder, the build its lab.json names, when that build holds an upload package and lies inside
+ * <base>/_shorts/<slug>/. The backup's own records (backup-state.json, backup.json) are kept there
+ * too: a new build is a new cut, backed up again.
+ */
+export function videoDir(base, slug, fs = nodeFs) {
+  const own = path.join(base, slug);
+  if (fs.existsSync(own)) return own;
+  const home = path.join(base, SHORTS_DIR, slug);
+  let state = null;
+  try {
+    state = JSON.parse(fs.readFileSync(path.join(home, SHORT_STATE), "utf8"));
+  } catch {
+    return own;
+  }
+  const build = typeof state?.build === "string" ? path.resolve(home, state.build) : null;
+  if (!build || build === path.resolve(home) || !isInside(build, home)) return own;
+  return isFile(path.join(build, UPLOAD, "final.mp4"), fs) ? build : own;
+}
+
 /**
  * The owner's language choice in languages.json: the locales with a dub, with captions (a dub
  * brings its captions) and with any part (a language's thumbnail goes with any part, as package
@@ -639,7 +667,7 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     now: ctx.now(),
     remote: String(ctx.env[REMOTE_ENV] || DEFAULT_REMOTE),
     rclone: runner ?? (rclone.env ? rcloneRunner(rclone.env) : async () => ({ code: -1, stdout: "", stderr: rclone.problem })),
-    workdir: (slug) => path.join(base, slug),
+    workdir: (slug) => videoDir(base, slug, fs),
     prefix: null,
   };
   if (copy) {

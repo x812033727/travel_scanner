@@ -6,7 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { backupRound, contentsOf, drivePath, MANIFEST_FILE, planFiles, prefixUnder, STATE_FILE, verdictOf } from "./backup.mjs";
+import { backupRound, contentsOf, drivePath, MANIFEST_FILE, planFiles, prefixUnder, STATE_FILE, verdictOf, videoDir } from "./backup.mjs";
 import { tidyRound } from "./tidy.mjs";
 
 const NOW = new Date("2026-10-20T03:00:00Z");
@@ -294,6 +294,33 @@ test("a work directory made by hand, with no auto.json, is backed up from its up
   assert.ok(listing(path.join(box.drive, "奇聞檔案局", "free-vs-paid-ai-plans-2026")).includes("final.mp4"));
   assert.deepEqual(gate.verdicts.get("free-vs-paid-ai-plans-2026"), { ok: true, why: "in Drive" });
   assert.ok(!gate.verdicts.has("not-a-video") && !existsSync(path.join(box.work, "not-a-video", STATE_FILE)));
+});
+
+test("the worker's own Short is backed up from the build its lab.json names under _shorts", async () => {
+  const box = sandbox();
+  const home = path.join(box.work, "_shorts", "lab-short-7");
+  const old = path.join(home, "build-1-1000");
+  const current = path.join(home, "build-2-2000");
+  put(old, "upload/final.mp4", "an older cut");
+  for (const [name, content] of Object.entries({ "upload/final.mp4": "cut", "upload/zh-TW.srt": "字幕", "upload/cover.png": "png", "upload/titles.json": "{}", "frames/f.png": "never" })) put(current, name, content);
+  put(home, "lab.json", JSON.stringify({ slug: "lab-short-7", build: current }));
+  // A lab.json naming a folder outside its own, or a build without a cut, finds nothing.
+  put(path.join(box.work, "_shorts", "lab-short-8"), "lab.json", JSON.stringify({ build: box.work }));
+  put(path.join(box.work, "_shorts", "lab-short-9"), "lab.json", JSON.stringify({ build: "build-0" }));
+  put(path.join(box.work, "_shorts", "lab-short-9", "build-0"), "notes.txt");
+  assert.equal(videoDir(box.work, "lab-short-7"), current);
+  assert.equal(videoDir(box.work, "lab-short-8"), path.join(box.work, "lab-short-8"));
+  assert.equal(videoDir(box.work, "lab-short-9"), path.join(box.work, "lab-short-9"));
+  const short = (slug) => target(slug, { folder: `Shorts/lab/${slug}`, expected: { required: ["final.mp4"], descriptions: [], captions: [], dubs: [] } });
+  const site = fakeSite({ videos: [short("lab-short-7"), short("lab-short-8"), short("lab-short-9")] });
+  const { gate } = await backupRound(ctxFor(box), { client: site.client, rclone: fakeRclone(box.drive).run });
+  const episode = path.join(box.drive, "Shorts", "lab", "lab-short-7");
+  assert.deepEqual(listing(episode), ["backup.json", "cover.png", "final.mp4", "titles.json", "zh-TW.srt"]);
+  assert.equal(readFileSync(path.join(episode, "final.mp4"), "utf8"), "cut", "the build lab.json names, not an older one");
+  assert.deepEqual(gate.verdicts.get("lab-short-7"), { ok: true, why: "in Drive" });
+  assert.equal(stateOf(current).site_state, "done", "the record is kept with the build");
+  assert.ok(!gate.verdicts.has("lab-short-8") && !gate.verdicts.has("lab-short-9"));
+  assert.ok(!existsSync(path.join(box.work, "lab-short-7")), "no folder is made under the work base for it");
 });
 
 test("a file added after the backup queues it again, copies only that, and keeps the overwritten version", async () => {
