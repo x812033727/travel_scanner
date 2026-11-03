@@ -32,7 +32,7 @@
 - 排序本身是編輯判斷（YouTube 的「不真實內容」政策看的就是這個）：`brief.md` 的〈選題〉表每則寫排在這個位置的理由，主題寫為什麼是它。
 - **日期用播出當天**（站主 2026-11-02）：slug 是 `daily-ai-<播出日>`（11/3 播出的是 `daily-ai-20261103`，報的是 11/2 的新聞），縮圖日期由 `briefDate` 從 slug 解析、跟著變；不編集數。舊的 `daily-ai-20261101`（試跑）與主機工人做的幾集用的是新聞日，留著不改；主機的 `daily_briefs.py`（`slug_for(news_date)`）也是新聞日，重開主機工人前要先對齊這一點。
 - 標題：節目名＋日期＋主題，例如 `Tech Signal 11/3｜Nvidia's new chip, explained`（`youtube.title`，主題用英文關鍵字，必要時加中文）。說明欄開頭揭露：旁白為 AI 合成語音、配樂為 AI 生成、內容依官方來源整理。
-- 每天從 Signal of the Day 剪一支直式 Shorts（英文字卡，`tools/video/shorts`）導流。
+- 每天從 Signal of the Day 剪一支直式 Shorts（英文字卡，`tools/video/shorts`）導流。腳本放 `docs/videos/<slug>/short-1.json`（`line: "cut"`、`series` 與 `source.slug` 都是正片 slug、六拍各一景、25–55 秒；範例 `daily-ai-20261103`），`build --workdir /root/mokaair-work/shorts` → `check-audio`。精華的 `qa` 要正片已上 YouTube（evidence、metadata、links 三項看正片網址），還要 `verify.json` 與 en／ja／ko 字幕：正片上傳、站主按「已上傳」之後再補查核、`qa` → `package` → `push`。
 
 ## 一之一、聊天式的口吻（站主 2026-11-02，參考《Ai 科技每日報》那種像在聊日常生活的感覺）
 
