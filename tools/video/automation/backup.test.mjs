@@ -7,7 +7,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { backupRound, contentsOf, drivePath, MANIFEST_FILE, planFiles, prefixUnder, STATE_FILE, verdictOf, videoDir } from "./backup.mjs";
-import { clearedLine, tidyRound } from "./tidy.mjs";
+import { clearedLine, roundLines, tidyRound } from "./tidy.mjs";
 
 const NOW = new Date("2026-10-20T03:00:00Z");
 const later = (minutes) => new Date(NOW.getTime() + minutes * 60_000);
@@ -594,4 +594,33 @@ test("a folder made by hand or fetched from the review store is purged the same 
   assert.deepEqual(listing(dir), ["backup-state.json", "backup.json", "review-package.json", "tidied.json"]);
   assert.equal(JSON.parse(readFileSync(path.join(dir, "tidied.json"), "utf8")).tidied.purged, true);
   assert.equal(tidyRound({ base: box.work, repos, site, backup: inDrive, now: NOW, days: 7, dryRun: true }).cleared, null, "tidied once");
+});
+
+test("a video the owner deleted on /admin/videos leaves the host whole, its worker Short too, on any backup state", async () => {
+  const box = sandbox();
+  const dir = video(box.work, "curio-gone", { "keyframes/k.png": "png" });
+  const short = path.join(box.work, "_shorts", "curio-gone");
+  put(short, "build-1/upload/final.mp4", "short");
+  video(box.work, "curio-kept");
+  // A link named like a deleted video is never followed.
+  const outside = path.join(box.box, "outside");
+  put(outside, "keep.txt", "keep");
+  const { symlinkSync } = await import("node:fs");
+  symlinkSync(outside, path.join(box.work, "curio-link"));
+  const site = fakeSite({ enabled: false, videos: [] });
+  site.client.config = async () => ({ enabled: false, path: "AI/備份", lock_path: null, remote_prefix: null, problem: "備份尚未開啟", test: null, videos: [], deleted: ["curio-gone", "curio-link", "../etc", "never-here"] });
+  const { gate } = await backupRound(ctxFor(box), { client: site.client, rclone: fakeRclone(box.drive).run });
+  assert.deepEqual(gate, { enabled: false, deleted: ["curio-gone", "curio-link", "never-here"] }, "a slug the site's pattern refuses is dropped");
+  const repos = [path.join(box.box, "repo")];
+  const dry = tidyRound({ base: box.work, repos, site: [], backup: gate, now: NOW, days: 7, dryRun: true });
+  assert.ok(existsSync(dir) && existsSync(short), "a dry run removes nothing");
+  assert.equal(dry.deleted.length, 3);
+  const round = tidyRound({ base: box.work, repos, site: [], backup: gate, now: NOW, days: 7 });
+  assert.ok(!existsSync(dir) && !existsSync(short));
+  assert.ok(existsSync(path.join(box.work, "curio-kept")) && existsSync(path.join(outside, "keep.txt")));
+  const lines = roundLines(round);
+  assert.ok(lines.some((line) => /^tidy: curio-gone was deleted on \/admin\/videos: removed curio-gone\/ whole/.test(line)));
+  assert.ok(lines.some((line) => /^tidy: curio-gone was deleted on \/admin\/videos: removed _shorts\/curio-gone\/ whole/.test(line)));
+  assert.ok(lines.some((line) => /curio-link\/ is kept: .* not a real folder/.test(line)));
+  assert.deepEqual(tidyRound({ base: box.work, repos, site: [], backup: gate, now: NOW, days: 7 }).deleted.map((outcome) => outcome.slug), ["curio-link"], "nothing is left of it the next round");
 });
