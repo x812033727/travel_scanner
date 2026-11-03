@@ -46,4 +46,5 @@ test("the packet carries shots, lines and cues but nothing of the brief", () => 
     scenes: [{ id: "a", template: "shot", data: { prompt: "P", camera: "Close-up", motion: "M" }, lines: [{ text: "汪", speaker: "dog", emotion: "內心" }] }],
   });
   for (const part of ["## 1. a", "Close-up", "P", "M", "【麻糬】（內心）汪", "laugh"]) assert.ok(text.includes(part), part);
+  assert.ok(packet({ slug: "x", scenes: [] }, "擬人化無厘頭").includes("作品類型：擬人化無厘頭"), "the style note leads the packet");
 });

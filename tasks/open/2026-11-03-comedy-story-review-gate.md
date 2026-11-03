@@ -28,8 +28,8 @@ scope:
 
 - [x] 評分表、門檻、流程寫進 `animation-preproduction` skill（`references/comedy-review.md`，SKILL.md 兩份同步）。
 - [x] `comedy_review.mjs`：`packet` 產生盲評包、`score` 合分並以結束碼判定；`tools/comedy-review.test.mjs` 盯著評分表與文件一致、門檻、格式檢查。
-- [x] 第一次實際使用：汪汪社畜 EP1 跑了三輪（54 → 66 → 71），紀錄在 `docs/videos/wangwang-office-e01/comedy-review/`。
-- [ ] 站主決定 EP1 三輪沒過之後怎麼辦（接受、或授權第 4 輪）。
+- [x] 第一次實際使用：汪汪社畜 EP1 跑了六輪（54 → 66 → 71 → 75 → 73 → 73），紀錄在 `docs/videos/wangwang-office-e01/comedy-review/`。
+- [ ] 站主決定 EP1 停在 73 之後怎麼辦（接受、調門檻，或換題材）；門檻 80 可能高於 LLM 評審的天花板，要用真實數據校準。
 - [ ] 門檻用第一季的 YouTube 數據校準。
 
 ## How to verify

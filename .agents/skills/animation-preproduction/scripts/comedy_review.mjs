@@ -86,11 +86,13 @@ export function decide(judges) {
 }
 
 /** What a blind judge reads: the shots in order, their picture and action, lines and cues; no intent. */
-export function packet(doc) {
+export function packet(doc, style = null) {
   const names = Object.fromEntries((doc.characters ?? []).map((c) => [c.id, c.name]));
   const cues = new Map();
   for (const cue of doc.sfx?.cues ?? []) if (cue.scene) cues.set(cue.scene, [...(cues.get(cue.scene) ?? []), cue.sound]);
-  const out = [`# ${doc.youtube?.title ?? doc.slug}`, "", "每一鏡依序：畫面（英文是給繪圖模型的描述）、畫面裡發生的事、台詞、音效。", ""];
+  const out = [`# ${doc.youtube?.title ?? doc.slug}`, ""];
+  if (style) out.push(`作品類型：${style}`, "");
+  out.push("每一鏡依序：畫面（英文是給繪圖模型的描述）、畫面裡發生的事、台詞、音效。", "");
   (doc.scenes ?? []).forEach((scene, index) => {
     const data = scene.data ?? {};
     out.push(`## ${index + 1}. ${scene.id}`);
@@ -107,20 +109,22 @@ export function packet(doc) {
 
 function usage() {
   console.error(`usage:
-  node comedy_review.mjs packet <video.json> [--out packet.md]
+  node comedy_review.mjs packet <video.json> [--style "作品類型與允許的笑法"] [--out packet.md]
   node comedy_review.mjs score <video.json> <judge-a.json> <judge-b.json> <judge-c.json> ... [--out summary.json]`);
   return 2;
 }
 
 function main(argv) {
   const [command, file, ...rest] = argv;
-  const outAt = rest.indexOf("--out");
-  const out = outAt >= 0 ? rest[outAt + 1] : null;
-  const files = outAt >= 0 ? rest.filter((_, i) => i !== outAt && i !== outAt + 1) : rest;
+  const option = (name) => (rest.indexOf(name) >= 0 ? rest[rest.indexOf(name) + 1] : null);
+  const out = option("--out");
+  const style = option("--style");
+  const taken = new Set(["--out", "--style"].flatMap((name) => (rest.indexOf(name) >= 0 ? [rest.indexOf(name), rest.indexOf(name) + 1] : [])));
+  const files = rest.filter((_, i) => !taken.has(i));
   if (!file || !["packet", "score"].includes(command)) return usage();
   const doc = JSON.parse(readFileSync(file, "utf8"));
   if (command === "packet") {
-    const text = packet(doc);
+    const text = packet(doc, style);
     if (out) writeFileSync(out, text);
     else process.stdout.write(text);
     return 0;
