@@ -29,9 +29,9 @@ scope:
 
 ## Steps
 
-- [ ] 錄台詞、剪接表
-- [ ] 第一段（chain；魏管家 `weiguanjia` 由 `extras.json` 接定妝照）、審、重抽
-- [ ] 第二、三段、剪接、匯入
+- [x] 錄台詞、剪接表
+- [x] 第一段（chain；魏管家 `weiguanjia` 由 `extras.json` 接定妝照）、審、重抽
+- [x] 第二、三段、剪接（104.6 秒、無凍格）、匯入（2026-11-03）
 
 ## How to verify
 
