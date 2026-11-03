@@ -13,6 +13,7 @@ import { parseArgs } from "node:util";
 
 import { resolveWorkBase, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { backupRound } from "./backup.mjs";
+import { restoreVideo } from "./restore.mjs";
 import { AutomationError, automationClient } from "./client.mjs";
 import { Automation } from "./flow.mjs";
 import { shortsStep, ShortsWorker } from "./shorts.mjs";
@@ -136,6 +137,29 @@ async function tidy(args, ctx) {
   return EXIT.ok;
 }
 
+/** `restore --slug S [--dry-run] [--workdir D]`: a video the host cleared, back from Drive (restore.mjs). */
+async function restore(args, ctx) {
+  const { EXIT } = ctx;
+  const values = parseArgs({ args, options: { slug: { type: "string" }, "dry-run": { type: "boolean" }, workdir: { type: "string" } }, strict: true }).values;
+  if (!values.slug) {
+    ctx.stderr.write("restore needs --slug\n");
+    return EXIT.usage;
+  }
+  const where = tidyBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
+  if (where.refused || where.missing) {
+    ctx.stderr.write(`${where.refused ?? `${where.missing} does not exist`}; nothing is restored\n`);
+    return EXIT.usage;
+  }
+  try {
+    const { lines, ok } = await restoreVideo(ctx, { slug: values.slug, base: where.base, dryRun: Boolean(values["dry-run"]) });
+    for (const line of lines) ctx.stdout.write(`${line}\n`);
+    return ok ? EXIT.ok : EXIT.external;
+  } catch (error) {
+    ctx.stderr.write(`restore: ${error.message}\n`);
+    return EXIT.external;
+  }
+}
+
 /** `restyle --slug S [--dry-run]`: the narration retold in the storytelling register, or, dry, how far it keeps it now. */
 async function restyle(args, ctx) {
   const { EXIT } = ctx;
@@ -181,6 +205,7 @@ export function laneCount(env = {}) {
 export async function run(command, args, ctx) {
   if (command === "tidy") return tidy(args, ctx);
   if (command === "restyle") return restyle(args, ctx);
+  if (command === "restore") return restore(args, ctx);
   const { EXIT } = ctx;
   const values = parseArgs({ args, options: { once: { type: "boolean" } }, strict: true }).values;
   try {

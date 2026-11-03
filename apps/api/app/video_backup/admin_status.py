@@ -228,17 +228,18 @@ async def video_status(session: AsyncSession, slug: str) -> BackupView:
 async def review_packages(
     session: AsyncSession, projects: list[VideoProject]
 ) -> dict[Any, ReviewPackage]:
-    """Each imported long video's newest approved upload package, by project id.
+    """Each off-host video's newest approved upload package, by project id, with its newest
+    approved language batch.
 
-    `import --publish` (tools/video/import/import.mjs) sends a package made on another machine,
-    a cloud session's Colab drama for one: the host's video_work has none of its files, and the
-    backup copies only what video_work holds. The worker fetches these from the review store
-    first. So is a Short sent by hand (`shorts/cli.mjs push`, payload ``hand_pushed``):
-    種田娶妻打天下's 25 Shorts were made in a cloud session and their files never reached the
-    host (2026-11-02). A package the worker or review-push made, or a Short of the worker's own
-    lines, is left out: those are in video_work already. A work directory the worker did not
-    fill is never written over."""
-    shorts = {project.id for project in projects if project.shorts_line is not None}
+    A video made on another machine reaches the host only as reviews: `import --publish`
+    (tools/video/import/import.mjs, payload ``imported``), `review-push` from a work directory
+    the worker did not make (tools/video/review/sync.mjs, payload ``hand_pushed``: a cloud
+    session's 奇聞檔案局 episodes, 2026-11-03) and Shorts sent by hand (`shorts/cli.mjs push`,
+    ``hand_pushed``). The host's video_work has none of their files, and the backup copies only
+    what video_work holds, so the worker fetches these from the review store first; the owner
+    wants a whole copy of every video on the host before it goes up (2026-11-03). A package the
+    worker made has neither flag and is left out: its files are in video_work already. The
+    worker never writes over a work directory it did not fill (review-package.mjs)."""
     ids = [project.id for project in projects]
     if not ids:
         return {}
@@ -246,24 +247,58 @@ async def review_packages(
         select(VideoReview)
         .where(
             VideoReview.project_id.in_(ids),
-            VideoReview.gate == "publish",
+            VideoReview.gate.in_(("publish", "languages")),
             VideoReview.status == "approved",
         )
         .order_by(VideoReview.decided_at.desc(), VideoReview.created_at.desc())
     )
-    packages: dict[Any, ReviewPackage] = {}
-    seen: set[Any] = set()
+    newest: dict[tuple[Any, str], VideoReview] = {}
     for review in rows:
-        if review.project_id in seen:
+        newest.setdefault((review.project_id, review.gate), review)
+    packages: dict[Any, ReviewPackage] = {}
+    for project_id in ids:
+        confirmation = newest.get((project_id, "publish"))
+        if confirmation is None:
             continue
-        seen.add(review.project_id)
-        payload = review.payload if isinstance(review.payload, dict) else {}
-        sent_by_hand = review.project_id in shorts and payload.get("hand_pushed") is True
-        if payload.get("imported") is True or sent_by_hand:
-            packages[review.project_id] = ReviewPackage(
-                review_id=str(review.id), content_sha256=review.content_sha256
-            )
+        payload = confirmation.payload if isinstance(confirmation.payload, dict) else {}
+        if payload.get("imported") is not True and payload.get("hand_pushed") is not True:
+            continue
+        languages = newest.get((project_id, "languages"))
+        packages[project_id] = ReviewPackage(
+            review_id=str(confirmation.id),
+            content_sha256=confirmation.content_sha256,
+            languages_review_id=str(languages.id) if languages is not None else None,
+            languages_sha256=languages.content_sha256 if languages is not None else None,
+            files=len(confirmation.files or [])
+            + (len(languages.files or []) if languages is not None else 0),
+        )
     return packages
+
+
+# How far back the worker is told about deleted videos: far longer than a worker is ever away.
+DELETED_WINDOW = timedelta(days=60)
+
+
+async def deleted_slugs(session: AsyncSession, now: datetime | None = None) -> list[str]:
+    """The slugs of the videos the owner deleted within DELETED_WINDOW that no video holds
+    again (a deleted slug is free, and a later report may register it anew)."""
+    since = (now or _now()) - DELETED_WINDOW
+    rows = await session.scalars(
+        select(AdminAuditLog).where(
+            AdminAuditLog.action == "video_project_deleted", AdminAuditLog.created_at >= since
+        )
+    )
+    slugs = {
+        str(row.metadata_json.get("slug"))
+        for row in rows
+        if isinstance(row.metadata_json, dict) and isinstance(row.metadata_json.get("slug"), str)
+    }
+    if not slugs:
+        return []
+    taken = set(
+        await session.scalars(select(VideoProject.slug).where(VideoProject.slug.in_(slugs)))
+    )
+    return sorted(slugs - taken)
 
 
 async def worker_config(session: AsyncSession) -> WorkerConfig:
@@ -306,6 +341,7 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
         if pending and requested_at is not None
         else None,
         videos=videos,
+        deleted=await deleted_slugs(session),
     )
 
 

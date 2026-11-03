@@ -932,8 +932,15 @@ test("review-push --gate publish attaches every file of the package with the pac
     ["final", "video/mp4"],
     ["metadata", "application/json"],
     ["thumbnail", "image/jpeg"],
+    // Made off the host (no auto.json): the rest of the full tier rides with it (full-tier.mjs),
+    // the line recordings packed as import packs them.
+    ["full_narration", "audio/wav"],
+    ["full_timeline", "application/json"],
+    ["recordings_manifest", "application/json"],
+    ["recording_zh-TW", "audio/wav"],
   ]);
-  assert.equal(server.state.files.size, 7, "every file went up; UPLOAD.md did not");
+  assert.deepEqual(publish.payload.full_tier, { files: 4, problems: [] });
+  assert.equal(server.state.files.size, 11, "every file went up; UPLOAD.md did not");
   assert.equal(Buffer.concat(server.state.files.get(sha(bytes))).toString("utf8"), bytes);
 
   // The thumbnail gone: the check fails its files item and the summary says so; the owner decides.
@@ -943,6 +950,46 @@ test("review-push --gate publish attaches every file of the package with the pac
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], again.ctx), EXIT.ok, again.out.stderr);
   assert.equal(broken.state.reviews[0].summary, "上傳包 1 項沒過：files");
   assert.equal(broken.state.reviews[0].payload.package.ok, false);
+});
+
+test("review-push --gate publish from a work directory made off the host sends the rest of the full tier; the worker's own does not", async () => {
+  const box = sandbox();
+  publishPackage(box);
+  const keyframes = path.join(box.workdir, "keyframes");
+  mkdirSync(keyframes, { recursive: true });
+  writeFileSync(path.join(keyframes, "ch1-open.jpg"), "jpeg");
+  writeFileSync(path.join(keyframes, "ch1-map.png"), "png");
+  writeFileSync(path.join(keyframes, "manifest.json"), "{}\n");
+  writeFileSync(path.join(keyframes, "a name with spaces.jpg"), "skipped");
+  writeFileSync(path.join(keyframes, "notes.txt"), "not an image");
+  mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "clips", "s01-t1.mp4"), "clip");
+  writeFileSync(path.join(box.workdir, "narration.wav"), "wav");
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.ok, push.out.stderr);
+  const [publish] = server.state.reviews;
+  const extra = publish.files.filter((file) => !["captions_en", "captions_zh-TW", "description_en", "description_zh-TW", "final", "metadata", "thumbnail"].includes(file.role));
+  assert.deepEqual(extra.map((file) => [file.role, file.content_type]), [
+    ["keyframes_manifest", "application/json"],
+    ["kf_ch1-map", "image/png"],
+    ["kf_ch1-open", "image/jpeg"],
+    ["clip_s01-t1", "video/mp4"],
+    ["full_narration", "audio/wav"],
+    ["full_timeline", "application/json"],
+    ["recordings_manifest", "application/json"],
+    ["recording_zh-TW", "audio/wav"],
+  ]);
+  assert.equal(publish.payload.full_tier.files, 8);
+  assert.match(publish.payload.full_tier.problems[0], /a name with spaces\.jpg/);
+
+  // The worker's own work directory: its files are on the host already, so only the package goes.
+  writeFileSync(path.join(box.workdir, WORKER_STATE_FILE), "{}\n");
+  const own = site();
+  const again = context(box, own.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(own.state.reviews[0].files.length, 7);
+  assert.equal(own.state.reviews[0].payload.full_tier, undefined);
 });
 
 test("review-pull records an automatic publish approval as the package's approval and claims no YouTube upload", async () => {

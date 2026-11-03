@@ -212,3 +212,12 @@ export function visualHash(doc) {
   }
   return hash.digest("hex").slice(0, 16);
 }
+
+/**
+ * visualHash without the theme: what a drama's keyframes and clips are bound to. The paper look
+ * (docs/videos/PAPER.md) redraws the cards, not the generated pictures, so turning it on must not
+ * send every keyframe to be drawn (and paid for) again. Equal to visualHash for a video without a theme.
+ */
+export function pictureHash(doc) {
+  return visualHash(doc?.theme ? { ...doc, theme: undefined } : doc);
+}
