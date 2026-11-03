@@ -20,7 +20,7 @@
 
 ## Cold Open、Intro
 
-c1｜10 月 30 日國際社群 Bugzilla 通報 TWCA 核發的部分憑證序號亂數長度未達國際標準｜TWCA；MODA｜2026-11-03｜co-report, sd-found, sd-bugzilla
+c1｜10 月 30 日國際社群 Bugzilla 通報 TWCA 核發的部分憑證序號亂數長度未達國際標準｜TWCA；MODA｜2026-11-03｜co-report, sd-found, sd-bugzilla〔查核 1：Bugzilla 2087236 建立於 2026-10-29 19:31 UTC＝台灣 10/30；它點名的是 TWCA 的 CA 憑證，不是政府網站憑證，所以 gpfe 改「發出的部分憑證」、co-report 卡改「TWCA certificates flagged」、7o12 改「等等，憑證？」〕
 c2｜涉及 962 個政府機關、9,772 張網站憑證（數發部盤點）｜TWCA；MODA｜2026-11-03｜co-scale, sd-not-alone, sd-recap, sd-taiwan
 c3｜數發部籲請 11 月 6 日前完成更新；2026-11-06 是星期五、2026-11-03 是星期二（曆法）｜TWCA；MODA｜2026-11-03｜co-date, intro, intro-kai, sd-timeline
 c4｜「問題出在序號裡，少了一樣東西」＝序號的有效隨機亂數不足（揭曉在 sd-bits）｜MODA｜2026-11-03｜co-flaw
@@ -35,7 +35,7 @@ c8｜郵件舉例：建立網站、製作簡報、在網路上代為處理事務
 c9｜TechCrunch：Anthropic 已在 9 月把 Claude 的聊天與 Cowork 合到同一個畫面｜CHAT；TC1｜2026-11-03｜hl-chat-claude
 c10｜ChatGPT 與 Codex 從同一個 token 額度池扣；OpenAI 稱多數使用者不受影響，部分人可能更常等額度重置；起初只給部分使用者試用、蒐集意見後廣泛推出（單一媒體報導）｜CHAT；TC1｜2026-11-03｜hl-chat-quota
 c11｜據 The Verge（11/2），紐約時報與其他媒體對 Brave 瀏覽器的開發公司提告｜BRAVE；V1｜2026-11-03｜hl-brave
-c12｜指控：未經許可爬取新聞網站內容、把索引收費提供給 AI 公司、讓使用者繞過付費牆（皆原告指控）｜BRAVE；V1｜2026-11-03｜hl-brave-claims
+c12｜指控：未經許可爬取新聞網站內容、把索引收費提供給 AI 公司、讓使用者繞過付費牆（皆原告指控）｜BRAVE；V1｜2026-11-03｜hl-brave-claims〔查核 1：V1 11/2 更新後，點名五家 AI 公司、索引收費這份訴狀是 New York Daily News、Chicago Tribune、Orlando Sentinel 三家報紙自己提的，紐約時報另有一案；m29b 加「其中三家報紙的訴狀說」，卡片 source 改「3 papers' complaint」〕
 c13｜訴狀點名 Anthropic、Perplexity、Mistral、xAI、Cohere（卡片列五家，旁白唸兩家）｜BRAVE；V1｜2026-11-03｜hl-brave-named
 c14｜Brave 在瀏覽器中宣傳「Paywall blocker」功能；報導未說明它與指控的關係｜BRAVE；V1（"Brave also promotes "hundreds of top publishers" as being accessible through its "Paywall blocker" feature"）｜2026-11-03｜hl-brave-paywall
 c15｜報導未提及法院裁決；Brave 未立即回應置評。「目前不用動手」是節目建議｜BRAVE；V1｜2026-11-03｜hl-brave-status, wp-react
@@ -46,19 +46,19 @@ c19｜長時間執行或多次修改時，畫面細節與物件恆存性可能�
 c20｜Genie 4 的影片與音訊都含 SynthID 浮水印；Google 另有 SynthID Detector（以英語向全球擴大提供）｜GENIE；DM；G10｜2026-11-03｜hl-genie-mark
 c21｜Anthropic 11/2 推出 Messages API 的 message threads（訊息串）公開測試版，給打造 AI 代理的開發者｜MT1；MT2；CL；RN｜2026-11-03｜hl-threads
 c22｜過去每輪重送完整對話；開啟後對話保存在伺服器端，之後只送新訊息（Kai 的「對話越長，重送越多」依 CL「當對話達數十萬 token，重送全部內容會增加開始回應前的時間」）｜MT1；MT2；CL；RN｜2026-11-03｜hl-threads-how
-c23｜500k–1M token 的請求，TTFT 中位數下降約 35%（條件：多數 Claude Code 使用者預設啟用；旁白未唸條件，卡片 note 寫請求大小）；token 用量不變，適用標準費率；最後一次請求後 5 分鐘到期，之後需重送完整對話（自述）｜MT1；CL（"requests with 500k to 1M tokens see median TTFT drop by about 35%"）｜2026-11-03｜hl-threads-num
+c23｜500k–1M token 的請求，TTFT 中位數下降約 35%（條件：多數 Claude Code 使用者預設啟用；旁白未唸條件，卡片 note 寫請求大小）；token 用量不變，適用標準費率；最後一次請求後 5 分鐘到期，之後需重送完整對話（自述）｜MT1；CL（"requests with 500k to 1M tokens see median TTFT drop by about 35%"）｜2026-11-03｜hl-threads-num〔查核 1：tq4k 加「Anthropic 說」，數字是公司自述〕
 c24｜兩輪之間保存在記憶體、加密、不寫入磁碟（CL）；最後使用後最晚 1 小時內刪除（RN）｜MT1；MT2；CL；RN｜2026-11-03｜hl-threads-store
-c25｜Google Cloud 宣布 google-cloud-developer 外掛可從 Antigravity Marketplace 安裝｜AGY；GCB｜2026-11-03｜hl-agy
+c25｜Google Cloud 宣布 google-cloud-developer 外掛可從 Antigravity Marketplace 安裝｜AGY；GCB｜2026-11-03｜hl-agy〔查核 1：GCB 頁面與 datePublished 都是 2026-11-03，不是 11/2；lg3m 拿掉「昨天」，hl-agy kicker 改「Google Cloud blog」，hl-agy-what、hl-agy-install 的日期改 Nov 3, 2026〕
 c26｜三項好處：依官方文件回答、啟用計費 API 或修改基礎設施前要求同意、最小權限 IAM（Google 自述，非獨立測試）｜AGY；GCB｜2026-11-03｜hl-agy-what, hl-agy-claim
 c27｜安裝指令 `agy plugin install google-cloud-developer`（卡片原樣）；內建 Developer Knowledge MCP 伺服器預先授權，不需設 API 金鑰｜AGY；GCB｜2026-11-03｜hl-agy-install
 c28｜「頭幾次自己盯著它做了什麼」是節目建議｜—｜—｜hl-agy-claim
-c29｜Signal Number：OpenAI 將在喬治亞州 Effingham County 預定興建的資料中心試辦 Grid Protectors Program，極端天氣或緊急情況最多釋出 1,000 百萬瓦，約夠 70 萬戶的冷氣（The Verge 的換算）｜GRID；V2（"free up to 1,000 megawatts … enough to power air conditioners in around 700,000 homes"）｜2026-11-03｜hl-number, hl-number-what
+c29｜Signal Number：OpenAI 將在喬治亞州 Effingham County 預定興建的資料中心試辦 Grid Protectors Program，極端天氣或緊急情況最多釋出 1,000 百萬瓦，約夠 70 萬戶的冷氣（The Verge 的換算）｜GRID；V2（"free up to 1,000 megawatts … enough to power air conditioners in around 700,000 homes"）｜2026-11-03｜hl-number, hl-number-what〔查核 1：V2 原句是「the company promises to free up to 1,000 megawatts … enough to power air conditioners in around 700,000 homes」，沒說是 The Verge 自己換算；pb84 改「The Verge 報導說」〕
 c30｜宣布正值美國各地反對資料中心的聲浪擴大；報導沒有成效、時程或協議內容｜GRID；V2｜2026-11-03｜hl-number-what
 c31｜猶他州 Box Elder County 批准的資料中心預期用電超過該州 2025 年尖峰需求兩倍、居民抗議；田納西、佛羅里達等州立法防止能源成本轉嫁居民｜GRID；V2｜2026-11-03｜hl-number-ctx
 
 ## Signal of the Day
 
-c32｜TWCA 已於 11 月 1 日完成 9,772 張憑證重新產製，透過主動補發機制由系統以電子郵件寄給原申請機關承辦人（旁白「11 月初，信箱裡來了一封系統寄的信」是想像情境；新聞稿沒有寫寄信的確切日期，所以不說 11 月 1 日寄出）｜TWCA；MODA｜2026-11-03｜sd-inbox, sd-why-me, sd-worklist, sd-timeline, sd-back
+c32｜TWCA 已於 11 月 1 日完成 9,772 張憑證重新產製，透過主動補發機制由系統以電子郵件寄給原申請機關承辦人（旁白「11 月初，信箱裡來了一封系統寄的信」是想像情境；新聞稿沒有寫寄信的確切日期，所以不說 11 月 1 日寄出）｜TWCA；MODA｜2026-11-03｜sd-inbox, sd-why-me, sd-worklist, sd-timeline, sd-back〔查核 1：新聞稿沒寫寄信日期，sd-inbox kicker「Nov 1」改「Early November」、key 去掉 Nov 1；sd-timeline 第三列「Nov 1」改「Then」，標題「Five days, so far」改「From report to deadline」〕
 c33｜平均每個機關約 10 張（9,772 ÷ 962 ≈ 10.2，換算）｜MODA｜2026-11-03｜sd-not-alone
 c34｜TLS 憑證用於建立安全通訊；TLS 全名 Transport Layer Security（新聞稿寫法）；「通道的鎖」是節目的比喻｜TWCA；MODA｜2026-11-03｜sd-what, sd-tls, sd-what2
 c35｜國際標準要求序號含 64 bits 以上的密碼學安全亂數（「猜不到」「用專門方法產生、讓人推算不出來」是對「密碼學安全亂數」的白話說明）｜TWCA；MODA｜2026-11-03｜sd-serial, sd-random
@@ -79,7 +79,7 @@ c49｜「九千多張憑證要在一週內換掉」：11/1 重製到 11/6 期限
 
 ## What People Are Saying
 
-c50｜訴狀："Brave has never asked for the Publishers' permission to access their websites, much less to copy the material and provide it to users or other AI companies"（卡片只引前半句）｜BRAVE；V1｜2026-11-03｜wp-complaint
+c50｜訴狀："Brave has never asked for the Publishers' permission to access their websites, much less to copy the material and provide it to users or other AI companies"（卡片只引前半句）｜BRAVE；V1｜2026-11-03｜wp-complaint〔查核 1：這句出自三家報紙的訴狀；q8s1 改「先聽那三家報紙的訴狀」，卡片 source 改「3 papers' complaint · The Verge, Nov 2, 2026」〕
 c51｜紐約時報發言人 Graham James："Brave has flouted established copyright law and ignored repeated requests by The Times to stop its infringing conduct"（卡片引中段）｜BRAVE；V1｜2026-11-03｜wp-nyt
 c52｜Perplexity 首席傳播長 Jesse Dwyer："The New York Times is overpaying its attorneys and underpaying its journalists."（原文接著括號一句說訴狀有不實資訊，卡片與旁白未引）；Brave、Anthropic、Mistral、SpaceXSI、Cohere 未立即回應｜BRAVE；V1｜2026-11-03｜wp-perplexity, wp-react
 c53｜案件牽涉新聞內容能否未經同意被用於 AI｜BRAVE｜2026-11-03｜wp-question
@@ -92,17 +92,17 @@ c56｜巴西最大加密貨幣交易所 Mercado Bitcoin 11 月 2 日凌晨發現
 c57｜交易所稱沒有客戶損失、資料沒有外洩｜MB1；DC1｜2026-11-03｜ms-who
 c58｜Chainalysis 稱約 4,900 萬美元被盜、分布於 17 條區塊鏈（Chainalysis 說法，它自己參與應對）｜MB2；CH｜2026-11-03｜ms-who
 c59｜Hypernative 初步分析標記超過 4,000 萬美元可疑轉帳，交易所未確認｜MB1；DC1｜2026-11-03｜ms-who
-c60｜Chainalysis 稱協助凍結近 1,000 萬美元，其中 Tether 凍結逾 900 萬美元被盜 USDT；穩定幣由特定機構集中發行，發行方可凍結｜MB2；CH｜2026-11-03｜ms-freeze
+c60｜Chainalysis 稱協助凍結近 1,000 萬美元，其中 Tether 凍結逾 900 萬美元被盜 USDT；穩定幣由特定機構集中發行，發行方可凍結｜MB2；CH｜2026-11-03｜ms-freeze〔查核 1：Decrypt（DC1）引 Tether 執行長只說「逾 450 萬 USDT」；zkf5 改成兩個數字都講、各自掛名，ms-freeze 第二格加 note「Tether CEO: 4.5M+ USDT」〕
 c61｜凍結會讓代幣無法移動，但不會把資金歸還所有人（Decrypt）；「放在交易所的資產可能一夕之間領不出來」是節目從這次暫停提款得出的提醒｜MB1；DC1｜2026-11-03｜ms-not, ms-lesson
 c62｜Squarespace 發言人：裁減全球約 19% 員工、約 300 人；目的在簡化營運、聚焦優先事項、加快速度｜SQ；TC2；V3｜2026-11-03｜ms-sq, ms-sq-ai
 c63｜The Verge：受影響者獲 16 週基本薪資、醫療福利延續到 2027 年 5 月｜SQ；V3｜2026-11-03｜ms-sq-facts
 c64｜TechCrunch：AI 與 vibe coding 網站建置工具大幅改變產業；報導並未證明 AI 是裁員直接原因｜SQ；TC2｜2026-11-03｜ms-sq-ai, ms-sq-link
 c65｜據 TechCrunch，Trajectory 完成 4,500 萬美元 A 輪，Sequoia 領投，Nvidia 等參與｜TRAJ；TC3｜2026-11-03｜ms-traj
-c66｜後訓練平台：從開源模型出發，以使用回饋持續再訓練；共同創辦人稱律師、醫師等專家可近乎自動地自行改進模型；「更快、更便宜」是創辦人說法，無第三方評估｜TRAJ；TC3｜2026-11-03｜ms-traj-what
+c66｜後訓練平台：從開源模型出發，以使用回饋持續再訓練；共同創辦人稱律師、醫師等專家可近乎自動地自行改進模型；「更快、更便宜」是創辦人說法，無第三方評估｜TRAJ；TC3｜2026-11-03｜ms-traj-what〔查核 1：TC3 裡「faster and cheaper」是 TechCrunch 接在 Malde 說法後的一句，不是創辦人原話；h79x 改「會不會更快、更便宜，報導裡只有公司這邊的說法」〕
 
 ## Try This
 
-c67｜四步（停下來看清楚、不在跳過警告的頁面輸入密碼或身分證字號、確認網址、晚點再試或打機關電話）與「點網址列左邊的圖示看憑證發行者」都是節目建議，不是數發部的指示；旁白第一句就說明｜—（警示的可能性見 c45）｜—｜tt-open, tt-steps, tt-owner
+c67｜四步（停下來看清楚、不在跳過警告的頁面輸入密碼或身分證字號、確認網址、晚點再試或打機關電話）與「點網址列左邊的圖示看憑證發行者」都是節目建議，不是數發部的指示；旁白第一句就說明｜—（警示的可能性見 c45）｜—｜tt-open, tt-steps, tt-owner〔查核 1：bdwl 原句「在跳過警告的頁面上，不要輸入…」預設了觀眾會跳過警告；改「不要跳過警告，更不要在那種頁面輸入密碼、身分證字號」；ss4z「我公司的網站」改「公司的網站」，不替 Kai 編公司〕
 
 ## Noise of the Day
 
@@ -114,7 +114,7 @@ c71｜技術長 Bart Butler 11 月 1 日發表工程宣言："Your job is to hel
 ## Sola's Take、片尾
 
 c72｜「今天最重要的是 TWCA」「我不確定來不來得及」是節目的看法；依據 c3、c39｜—｜—｜tk-main, tk-unsure
-c75｜每則的完整整理在 Mokaair 文章，連結在說明欄（說明欄列 12 篇站上文章）｜各站上文章｜2026-11-03｜tk-site
+c75｜每則的完整整理在 Mokaair 文章，連結在說明欄（說明欄列 12 篇站上文章）｜各站上文章｜2026-11-03｜tk-site〔查核 1：原說明欄漏了 Trajectory 那篇（TRAJ），已補上，現列 13 篇〕
 c73｜片尾答案：沒換好的網站在 11/6 之後可能跳警告（c45）｜MODA｜2026-11-03｜outro
 
 ## 與企劃不同的地方
