@@ -216,7 +216,7 @@ shot("grey-base", "Low angle wide shot looking up at the thick dark-grey base of
      [c("對，它長得又高又厚，陽光透不過來，底部看起來就是灰的。", None, "P:grey")])
 shot("kid-why-stop", "Medium shot of a girl sitting on the windowsill with her knees up, watching rain outside slowly stop, puzzled, soft light", KID,
      [k("那為什麼雷陣雨常常下一下就停？", "追問", "S:stop")])
-shot("chief-engine", "Medium close-up of the chief turning off a small desk fan with one finger and raising her eyebrows meaningfully, warm lamp light", CH,
+card("chief-engine", "big", {"kicker": "一場大雨", "text": "把自己的**引擎**關掉", "sub": "雷陣雨為什麼下一下就停"},
      [c("因為大雨，會把自己的引擎關掉。", "賣關子")])
 shot("rain-drags", "Wide cutaway illustration of heavy rain falling out of a storm cloud with big curved arrows of cool air pouring down alongside it and spreading out across the ground, a small farmhouse below, soft grey light", (),
      [c("雨落下來，會把周圍的空氣一起往下拖；雨在半路蒸發，又讓這團空氣更冷。")])
@@ -294,7 +294,6 @@ FIX = {
  "kid-not-every": ("Medium shot of the girl with her forehead and both hands pressed against a window pane, looking out at two clouds, one with rain under it and one plain white, her notebook on the sill, soft afternoon light", KID),
  "small-clouds": ("Wide shot of a park lawn on a fine morning with small flat puffs of cloud dotted across the sky, the girl throwing a folded paper plane into the air with one arm, her notebook on the grass, mild soft light", KID),
  "cumulonimbus": ("Low angle wide shot of an enormous storm cloud towering over a city skyline, its top spreading out far above, one tiny airliner near the very top of the cloud, a girl on a rooftop in the foreground tipping her head back to look up at it, soft afternoon light", KID),
- "chief-engine": ("Waist-up shot of the chief pressing the switch of a small desk fan with one finger and raising her eyebrows meaningfully, warm lamp light", CH),
  "kid-how-know": ("Head-and-shoulders close-up of the girl biting the end of a pencil and gazing at a cloudy sky through a window, thoughtful, soft afternoon light", KID),
 }
 for sc in S:
@@ -313,7 +312,6 @@ FIX2 = {
  "palm-raindrop": ("Waist-up shot of the girl holding one open hand out in front of her with a big raindrop splashing right on her palm, her other hand in her pocket, rain falling behind her, soft overcast light", KID),
  "kid-not-every": ("Medium shot of the girl leaning on a windowsill with both empty hands flat against the glass, looking out at one rain cloud and one plain white cloud, soft afternoon light", KID),
  "cumulonimbus": ("Low angle wide shot of the girl on a rooftop with her hands in her pockets tipping her head far back to look up at an enormous storm cloud towering over the city, a tiny airliner near the very top of the cloud, soft afternoon light", KID),
- "chief-engine": ("Waist-up shot of the chief pressing the button of a small desk fan with one finger, eyebrows raised, a plain wall behind her, warm lamp light", CH),
  "kid-laundry-run": ("Medium shot of the girl hurrying indoors through a balcony door carrying a laundry basket full of towels in both arms, her notebook in her pocket, soft grey light", KID),
  "chief-stamp": ("Waist-up shot of the chief holding up a small red rubber stamp in one hand with a satisfied smile, a closed plain folder on the desk in front of her, warm lamp light", CH),
 }
