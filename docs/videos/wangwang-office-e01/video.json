@@ -1,0 +1,496 @@
+{
+  "schema_version": 1,
+  "slug": "wangwang-office-e01",
+  "format": "drama",
+  "target_minutes": [
+    0.5,
+    1
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "cinematic-3d",
+    "style": "cute stylized 3D animation, plush toy-like fur with soft subsurface light, rounded shapes, warm cozy small Taipei apartment living room with light wood floor, beige sofa and green plants, soft window daylight, pastel warm palette, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "photorealistic, horror, gore, extra legs, extra tails, deformed paws, human faces, readable text, logos, watermark",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "mochi",
+      "name": "麻糬",
+      "appearance": "a red Shiba Inu dog in stylized 3D, plump round body, cream white cheeks, chest and paws, fluffy curled tail, big expressive dark eyes, small triangular ears, red collar with a small yellow bell, a tiny navy blue lanyard around the neck holding a blank white employee ID card on the chest",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "厭世、面無表情的資深上班族男聲，低沉、慢半拍、句尾不上揚，標準國語，咬字清楚，台北人平常說話的語調"
+      }
+    },
+    {
+      "id": "robovac",
+      "name": "掃地機器人",
+      "appearance": "a round white robot vacuum about 35 cm wide and 9 cm tall, glossy white top, a thin LED light ring around the top edge that glows soft blue, a small black front bumper, two tiny black side brushes, no logos and no text",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      }
+    },
+    {
+      "id": "owner",
+      "name": "主人",
+      "appearance": "an adult person seen only from the waist down: light-wash blue jeans, grey fluffy house slippers, the hem of a sky blue hoodie; the face is never in frame",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "溫柔、寵溺的年輕女聲，語尾拉長，標準國語，咬字清楚，台北人平常說話的語調"
+      }
+    },
+    {
+      "id": "robodog",
+      "name": "機器狗",
+      "appearance": "a sleek white four-legged robot dog the size of a Shiba Inu, matte white rounded panels with thin grey seams, a black glossy visor face with two glowing blue oval eyes, no logos and no text",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "deadpan office comedy underscore, pizzicato strings and soft marimba, light and quirky, turns into a melancholic slow piano for a sad beat then a heroic brass sting, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "公司引進AI，資深柴犬要被取代了 #汪汪社畜 EP1",
+    "description": "在這個家任職五年、負責清理地上食物的資深員工麻糬，今天迎來了一位不用吃飯的新同事。",
+    "tags": [
+      "汪汪社畜",
+      "柴犬",
+      "掃地機器人",
+      "AI取代",
+      "社畜",
+      "AI漫劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "績效被吸走",
+      "tag": "汪汪社畜",
+      "shot": "s09-kpi"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-box",
+      "chapter": "新同事報到",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at floor level in a cozy living room: the Shiba Inu sits stiffly on the left of centre, ID card on its chest, staring with narrowed eyes at the corner of a large closed brown cardboard box out of focus in the right foreground",
+        "camera": "Medium close-up, locked, floor level",
+        "motion": "the Shiba Inu leans its head slightly toward the box and its ears twitch once while its eyes narrow",
+        "characters": [
+          "mochi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "a1x3",
+          "text": "公司今天來了新同事。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，嚴肅、警戒"
+        }
+      ]
+    },
+    {
+      "id": "s02-boot",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Insert close-up at floor level: the cardboard box flaps fall open and a round white robot vacuum sits inside, its LED ring still dark",
+        "camera": "Insert close-up, locked",
+        "motion": "the LED ring around the robot vacuum lights up blue in one sweep, as if it just woke up",
+        "characters": [
+          "robovac"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-nofood",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the Shiba Inu's face, eyes wide, head tilted slightly to one side, soft blue light reflected on its fur",
+        "camera": "Close-up, slow push in",
+        "motion": "the Shiba Inu slowly tilts its head further and blinks once in disbelief",
+        "characters": [
+          "mochi"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "b2k7",
+          "text": "聽說……它不用吃飯。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，震驚又不屑",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "s04-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the sunny living room: the white robot vacuum glides out across the light wood floor in the middle, the Shiba Inu sits on a round dog bed at the left watching it",
+        "camera": "Wide shot, locked",
+        "motion": "the robot vacuum drives smoothly across the floor from right to centre, the Shiba Inu's head turns to follow it",
+        "characters": [
+          "mochi",
+          "robovac"
+        ]
+      },
+      "lines": [
+        {
+          "id": "c5m1",
+          "text": "我負責清地上的食物，五年了。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，資深員工的驕傲"
+        }
+      ]
+    },
+    {
+      "id": "s06-crumb",
+      "template": "shot",
+      "action_seconds": 1,
+      "data": {
+        "prompt": "Insert close-up at floor level: a single golden cookie crumb in mid-air just above the light wood floor, sunlight catching it",
+        "camera": "Insert close-up, locked, floor level",
+        "motion": "the cookie crumb drops onto the floor and bounces once, then rests",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-dash",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium close-up of the Shiba Inu crouched low on the dog bed, ears back, eyes locked forward, ready to spring",
+        "camera": "Medium close-up, locked",
+        "motion": "the Shiba Inu springs off the dog bed and dashes forward out of frame to the right, ears flat, tail streaming",
+        "characters": [
+          "mochi"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s08-suck",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Low-angle insert at floor level: the white robot vacuum at the right edge of frame, the cookie crumb on the floor just in front of its bumper",
+        "camera": "Insert low angle, locked",
+        "motion": "the robot vacuum glides over the cookie crumb and the crumb disappears under it, its LED ring blinks blue once",
+        "characters": [
+          "robovac"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s09-kpi",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the Shiba Inu frozen mid-step with one front paw lifted, mouth slightly open, eyes huge and shocked, staring down at the empty floor",
+        "camera": "Close-up, locked",
+        "motion": "the Shiba Inu stays frozen, only its lower lip trembles and one ear slowly droops; its mouth stays closed the whole time, this is its inner voice",
+        "characters": [
+          "mochi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3w9",
+          "text": "它……把我的 績效 吸走了。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，崩潰但壓著"
+        }
+      ]
+    },
+    {
+      "id": "s10-strike",
+      "chapter": "罷工失敗",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the living room floor: the Shiba Inu lies flat on its belly across the middle of the floor like a roadblock, front paws stretched forward, determined face, the robot vacuum far on the right",
+        "camera": "Wide shot, locked",
+        "motion": "the Shiba Inu flattens itself a little more onto the floor and huffs, the robot vacuum starts driving toward it",
+        "characters": [
+          "mochi",
+          "robovac"
+        ]
+      },
+      "lines": [
+        {
+          "id": "f6r2",
+          "text": "罷工。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，堅定"
+        }
+      ]
+    },
+    {
+      "id": "s11-ignore",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Low-angle medium shot at floor level: the robot vacuum approaching from the right, a short gap of floor between it and the Shiba Inu's side lying on the left",
+        "camera": "Medium shot low angle, locked",
+        "motion": "the robot vacuum stops a few centimetres before the Shiba Inu, rotates in place and drives calmly away to the right",
+        "characters": [
+          "mochi",
+          "robovac"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s12-nofight",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the Shiba Inu still lying flat, chin on the floor, eyes sliding sideways to watch something leave, deadpan face",
+        "camera": "Close-up, slow push in",
+        "motion": "the Shiba Inu's eyes follow to the right, then it lets out a long sigh and its cheeks puff",
+        "characters": [
+          "mochi"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "g1t8",
+          "text": "……它連跟我吵都不想吵。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，受傷又尷尬"
+        }
+      ]
+    },
+    {
+      "id": "s13-praise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at floor level: the owner's legs in jeans and grey slippers standing right beside the white robot vacuum, sunny living room floor behind",
+        "camera": "Medium shot, locked, floor level",
+        "motion": "the owner steps in and stops next to the robot vacuum, its LED ring glows proudly blue",
+        "characters": [
+          "owner",
+          "robovac"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h4p5",
+          "text": "哇～好乖喔～",
+          "speaker": "owner",
+          "emotion": "寵溺、驚喜"
+        }
+      ]
+    },
+    {
+      "id": "s14-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the Shiba Inu sitting up, ears perked hopefully, tail mid-wag",
+        "camera": "Close-up, slow push in",
+        "motion": "the Shiba Inu's ears drop flat and its tail stops wagging as it realises the praise was not for it",
+        "characters": [
+          "mochi"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "i7c3",
+          "text": "……誇的是它？",
+          "speaker": "mochi",
+          "emotion": "內心獨白，心碎"
+        }
+      ]
+    },
+    {
+      "id": "s15-wall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the Shiba Inu sitting alone facing the corner of the room, back to camera, cool blue light and rain streaks on the window beside it, the rest of the room dim",
+        "camera": "Wide shot, slow push in",
+        "motion": "the Shiba Inu sits still facing the corner, rain streaks sliding down the window, its ears droop slowly",
+        "characters": [
+          "mochi"
+        ],
+        "transition": "dissolve"
+      },
+      "lines": [
+        {
+          "id": "j2v6",
+          "text": "我是不是……該轉職了。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，低落",
+          "pause_after_ms": 700
+        },
+        {
+          "id": "j9z5",
+          "text": "還是去當網紅狗好了。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，認真考慮"
+        }
+      ]
+    },
+    {
+      "id": "s16-drumstick",
+      "chapter": "資深員工",
+      "template": "shot",
+      "action_seconds": 1,
+      "data": {
+        "prompt": "Insert close-up at floor level: a whole golden fried chicken drumstick in mid-air just above the wood floor",
+        "camera": "Insert close-up, locked, floor level",
+        "motion": "the fried chicken drumstick lands on the floor with a small bounce and rolls to a stop",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s17-stuck",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot at floor level: the white robot vacuum driving toward the fried chicken drumstick lying on the floor in front of it",
+        "camera": "Medium shot, locked, floor level",
+        "motion": "the robot vacuum rams into the drumstick, gets stuck on top of it with its front lifted, wheels spinning, its LED ring blinking red",
+        "characters": [
+          "robovac"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s18-rise",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the Shiba Inu's back and head in the dim corner, one ear just perked up",
+        "camera": "Close-up, locked",
+        "motion": "the Shiba Inu slowly turns its head over its shoulder toward the camera, eyes sharp and calm; its mouth stays closed the whole time, this is its inner voice",
+        "characters": [
+          "mochi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "k5n1",
+          "text": "公司……還是需要我。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，冷靜、帥氣",
+          "pause_after_ms": 500
+        }
+      ]
+    },
+    {
+      "id": "s19-walk",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide low-angle shot: the Shiba Inu walking toward camera across the wood floor in warm golden light, the stuck robot vacuum blinking red with the drumstick in the foreground at the right",
+        "camera": "Wide shot low angle, locked",
+        "motion": "the Shiba Inu walks forward in slow motion with a confident heroic stride, tail high, light rays behind it",
+        "characters": [
+          "mochi",
+          "robovac"
+        ]
+      },
+      "lines": [
+        {
+          "id": "l8b4",
+          "text": "資深員工，無可取代。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，英雄登場",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "s20-doorbell",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the apartment front door half open, a new large brown cardboard box standing on the doormat, the owner's legs in jeans and slippers beside it",
+        "camera": "Medium shot, locked",
+        "motion": "the owner nudges the box inside with one slipper, the box wobbles",
+        "characters": [
+          "owner"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m3h7",
+          "text": "麻糬～又有包裹囉！",
+          "speaker": "owner",
+          "emotion": "開心、喊人"
+        }
+      ]
+    },
+    {
+      "id": "s21-robodog",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up at floor level: inside the opened cardboard box sits a sleek white robot dog, its black visor face still dark",
+        "camera": "Close-up, slow push in",
+        "motion": "two blue oval eyes light up on the robot dog's visor and its head lifts to look straight ahead",
+        "characters": [
+          "robodog"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s22-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the Shiba Inu frozen in the living room, completely deadpan, eyes half-lidded, the ID card hanging on its chest",
+        "camera": "Close-up, locked",
+        "motion": "the Shiba Inu stares without moving, then one eye twitches once; its mouth stays closed the whole time, this is its inner voice",
+        "characters": [
+          "mochi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "n6g2",
+          "text": "……公司，",
+          "speaker": "mochi",
+          "emotion": "內心獨白，愣住",
+          "pause_after_ms": 600
+        },
+        {
+          "id": "n8k1",
+          "text": "又來了新同事。",
+          "speaker": "mochi",
+          "emotion": "內心獨白，死心、面無表情"
+        }
+      ]
+    }
+  ]
+}
