@@ -120,3 +120,4 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - **慢機很常見，而且越來越多**（2026-11-02）：e045 第三段一台每支 830–900 秒（正常約 200），e046 第一段一台 845／1383 秒（正常約 120）；同一區 EU-RO-1 也常整個沒貨（409）。`production/colab/runs/_scripts/` 有 `st1-retry.sh`、`st23-retry.sh`（沒貨每 3 分鐘重試、被回收就接著做）和 `speed-guard.sh LOG 秒數 "樣式"`（第 2 支以後超過門檻就殺掉內層驅動，trap 停 pod，重試迴圈開新的一台）。整集交給它們跑，不用人盯。
 - **長開 pod 接力**（2026-11-02 起，站主把後台 pod 最長時數改 24、閒置回收改 60 分鐘）：`production/colab/runs/_scripts/chain.sh st23:46 st1:47 …` 在同一台 pod 上依序跑，每一步自己重試沒貨、自帶速度看門狗，跑完不停機（閒置 60 分鐘才回收），審完草稿的重抽也用同一台（`KEEP=1 retake-run.sh`）。審草稿和剪接時 GPU 跑別集，不必每段重開、也少碰 EU-RO-1 沒貨。
 - **八語配音一集一個代理，可以三集同時跑**（e045–e047，各約 20 分鐘，每集 US$0.10–0.25）：`dub.sh` 的鎖是每集一個，不同集不會互卡。但代理之間共用 scratchpad，同名的輔助腳本會互相覆蓋（e045 的代理跑到 e047 的 `mk.py`），每個代理要一開始就給它自己的資料夾。
+- **長開的 pod 也會壞**（e049，第 21 小時）：GPU 掉了，SeedVR2 先卡 3600 秒，之後每支都 `[Errno 6] No such device or address`。`speed-guard.sh` 現在連續三支 `ComfyUI failed`／`no result after` 就停 pod 換一台；之前只看慢，抓不到這種死法。
