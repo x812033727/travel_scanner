@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-03-pool-3514",
+  "revision": "2026-11-03-pool-3528",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3903,
-    "canonical_questions": 3743,
-    "eligible_candidates": 3573,
-    "selected_candidates": 3514,
+    "raw_records": 3917,
+    "canonical_questions": 3757,
+    "eligible_candidates": 3587,
+    "selected_candidates": 3528,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 4893,
-    "current_research_source_urls": 1937,
-    "selected_source_urls": 3112,
-    "new_suggestions_not_added": 2136,
+    "source_urls": 4909,
+    "current_research_source_urls": 1953,
+    "selected_source_urls": 3127,
+    "new_suggestions_not_added": 2182,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "9c792132624fe93e6b4bbf9f12c063b2994c4556b0057eabd26cb7df0ce1f5a4"
+      "sha256": "0a30d947f5b58ff4cbaaed13330cfd374a4405f55ab468947ae5c1c839ed6a6f"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -388,6 +388,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3501.json.gz",
       "sha256": "6aa9c462bceb5630aba79933638045a7fc7f4030e47858622140f06beda4f95f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3514.json",
+      "sha256": "67e10c5df3305e9a0491c3e0dcdacaada57fde01fd6f6c4bf7c7c4c46156a658"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3514.json.gz",
+      "sha256": "8ee3aa6d269cb43b4aef5d564a878eebb6ebd70334ebdcbe42957d8224829ee7"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1766,6 +1774,18 @@
       "sha256": "17ae7b2e2bf7c267b569dcf2ac95d4bb0f1fcea8ac687a6fbaece396e92648aa"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json",
+      "sha256": "9d3a172350cc4fe126a4422aa16fa9246e41c072b77a34ed544ad552902e811e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave49-life.json",
+      "sha256": "be894c812c2f7c770e313a8ea00d01d8003d93e65dcfc713d7306623ae81ce90"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json",
+      "sha256": "3976f127046a0a4ef724da145b966ddb3e480c0bb3a3f2a221b96bd0cf1aef8d"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave5-body-senses.json",
       "sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53"
     },
@@ -1867,11 +1887,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "896e1f4acd798897f2f5877eb91b46d067a497c7026b66fa3b6b59c06cc68b12"
+      "sha256": "4777c10d7fd445fbd651cb7a53da5abf6f116707f6814624a146facf3df41ecb"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "993c5634c49bd0a89f4fec1a29fd97895162921dbd7f061f180d14c92318ce77"
+      "sha256": "5950d104b3fe4e4fef8b01bacfccb6e2b802df53fff0fde1d33e4e8d1f0b6c2c"
     }
   ],
   "sources": [
@@ -2564,6 +2584,57 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37794583%20AND%20SRC:MED&resultType=core&format=json\\nhttps://pubmed.ncbi.nlm.nih.gov/37794583/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-02209fbc7ae70e19",
+      "url": "https://doi.org/10.1103/g94g-c6tt",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/g94g-c6tt",
+          "doi": "10.1103/g94g-c6tt",
+          "retrieval_url": "https://arxiv.org/pdf/2410.03940v2",
+          "title": "Pulling apart the mechanisms that lead to jammed knitted fabrics",
+          "publisher": "Gonzalez、Dimitriyev、Cachine、Matsumoto；Physical Review E 112,015504 (2025)",
+          "version": "實讀arXiv:2410.03940v2，2024-11-20；期刊2025-07-24，同研究。HTML渲染的2026日期不當新版出版日。",
+          "accessed_on": "2026-11-03",
+          "read_via": "web核arXiv版本/期刊metadata；指定UA PDF200，pypdf抽文；所列頁圖實際目讀。",
+          "reading_scope": "PDF pp2–5 §§II–IV、p7及pp10–11 §VII–VIII，pp14–15 S1–S2/FigS1；Fig2、6。",
+          "locator": "PDF pp2–5 §§II–IV、p7及pp10–11 §VII–VIII，pp14–15 S1–S2/FigS1；Fig2、6。",
+          "summary": "緊針織需先改變受限線圈形狀/接觸，才進入較軟的伸展區；無摩擦模型亦能出現此段。",
+          "limitations": "實測是壓克力平針布；機台stitch-size同時改線長和線徑。微觀/厚度先縮後增是模型，實驗未準確量厚度。接近轉變的五次重拉不全一致；不將摩擦排除於真布。未逐讀其他SI及數值碼。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-physics-knit.pdf",
+            "sha256": "7c6f68bb2990e119317b72ebc77c57be1fa2d3385dd7605814ce059183c16f02",
+            "text_file": ".cache/wave49-physics-knit.txt",
+            "text_sha256": "026b257961813007903fe646f1fe058ab62eaf14b0511e21e50bf0aaf97955fc"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave49-physics-knit-p3.png",
+              "sha256": "4a0b157526237fbf50ce9cfcf4d6f2e28f93da545d815f3f994e38129a94e3a4",
+              "read_scope": "Fig2a/b同樣本伸展前後；c/d實測、e/f模擬分開。"
+            },
+            {
+              "file": ".cache/wave49-physics-knit-p10.png",
+              "sha256": "f9f272a79fea4a9ddadc82e65db12ec74c34ad75a4256c9aa24b1aafab66c866",
+              "read_scope": "Fig6模擬接觸分區與g厚度先縮後增，非相機量得厚度。"
+            },
+            {
+              "file": ".cache/wave49-physics-knit-p14.png",
+              "sha256": "329cc1c70555f7a4a7866dc28c70acbbdcc7f28b3a6b4cbab3d589d79239af8b",
+              "read_scope": "S1實驗重拉與五分鐘休息程序，近轉變試次不一致限制。"
+            },
+            {
+              "file": ".cache/wave49-physics-knit-p15.png",
+              "sha256": "f1135e8dae64e151edee4dd6cde2f5ad215f5068ef1f30b99e7d6c462b83ca90",
+              "read_scope": "FigS1實測小應變區與全曲線；不可把後段再次硬化省成永遠越拉越軟。"
+            }
+          ],
+          "origin": "wave49-physics-20261103",
+          "original_url": "https://doi.org/10.1103/g94g-c6tt"
         }
       ]
     },
@@ -13693,6 +13764,45 @@
       ]
     },
     {
+      "id": "SRC-1ed605a9b51f768b",
+      "url": "https://doi.org/10.1063/5.0083696",
+      "readings": [
+        {
+          "title": "Swelling, softening, and elastocapillary adhesion of cooked pasta",
+          "doi": "10.1063/5.0083696",
+          "publisher": "AIP Publishing / Physics of Fluids",
+          "version": "2022-04-04正式版34,042105；NSF PAR保存8頁含封面PDF；arXiv2201.09621為同研究早稿",
+          "canonical_url": "https://doi.org/10.1063/5.0083696",
+          "retrieval_url": "https://par.nsf.gov/servlets/purl/10354233",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web定位原研究，指定UA取得NSF PAR有效正式PDF。",
+          "reading_scope": "PDF pp2–7主文，重點p3黏合模型與裝置、pp5–6力學與黏合長度對照；目讀p3 Figs1–2、p6 Fig4。未讀獨立SI。",
+          "locator": "PDF p3 Fig2；pp5–6 Eq5–6與Fig4",
+          "summary": "兩根上端固定的濕麵條，出水後可被液面作用拉合；彎曲阻力隨煮軟下降，接合起點能往固定端靠近，量到的不是表面膠量本身。",
+          "limitations": "限研究的2mm麵條、固定間距與受控排水；水表面張力被近似為各溫度固定值、潤濕半圓周是假設，模型prefactor由資料校合。不把實驗的stick length誤作已黏段長：它是固定端到接合點的自由長。鹽分與最佳口感延伸不作已普遍驗證的家庭判準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-life-pasta.pdf",
+            "sha256": "292dc34ea52bb3006a577261c2004169a53a0f558163c665c0092e8741cb2d08",
+            "text_file": ".cache/wave49-life-pasta.txt",
+            "text_sha256": "ff108ea1a249ab23b4592c6956eae6b5df8d58f4e9e6df10286daf99dd32c24d",
+            "additional_files": [
+              {
+                "file": ".cache/wave49-life-pasta-p3.png",
+                "sha256": "18cbb90ab47586b36c31763f7fe6ee3f4d1fb4a73c72161e576669d85246274a"
+              },
+              {
+                "file": ".cache/wave49-life-pasta-p6.png",
+                "sha256": "9d7d6351a2f20d1ee4d91314b9def8d87355710da8bb1f21d6dfb108ef1a2c70"
+              }
+            ]
+          },
+          "origin": "wave49-life",
+          "original_url": "https://doi.org/10.1063/5.0083696"
+        }
+      ]
+    },
+    {
       "id": "SRC-1ed9707b5bbc403d",
       "url": "https://www.scranton.edu/faculty/cannm/green-chemistry/english/polymermodule.shtml",
       "readings": [
@@ -18434,6 +18544,35 @@
       ]
     },
     {
+      "id": "SRC-2a0c3f00e0660efa",
+      "url": "https://arxiv.org/pdf/physics/0702098v2",
+      "readings": [
+        {
+          "title": "Controlling the direction and amount of a splash with textured surface",
+          "doi": "10.48550/arXiv.physics/0702098",
+          "publisher": "Lei Xu、Sidney R. Nagel / arXiv",
+          "version": "arXiv physics/0702098v2，2010-08-17；頁面未列期刊，PDF再編日期2018不作發表年份",
+          "canonical_url": "https://arxiv.org/pdf/physics/0702098v2",
+          "retrieval_url": "https://arxiv.org/pdf/physics/0702098v2",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日HTTP200取得有效原研究正文；核篇名／版本後讀指定段及圖版。",
+          "reading_scope": "PDF pp1–2全文及Figs1–2圖說；圖版未另目讀。",
+          "locator": "PDF pp1–2全文及Figs1–2圖說；圖版未另目讀。",
+          "summary": "微柱改變飛濺方向與量；高柱讓prompt部分也減少的機制仍未充分確定，只支援未收理由。",
+          "limitations": "只用於NA010，不將方向對稱／高度效應拆新題。未把預印本視為另一篇正式刊本或完整確定機制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-earth-texture.pdf",
+            "sha256": "c607d47c5c60656adbbf3a5e7468ffe1687986c4a5c1eba451a34eaf763f9432",
+            "text_file": ".cache/wave49-earth-texture.txt",
+            "text_sha256": "dcf142f188bc288e86787d0d878d0bf3beb5294a3974f94c1dfdeecdbed6500a"
+          },
+          "origin": "wave49-earth-20261103",
+          "original_url": "https://arxiv.org/pdf/physics/0702098v2"
+        }
+      ]
+    },
+    {
       "id": "SRC-2a2d69d544db4240",
       "url": "https://travel.watch.impress.co.jp/docs/news/1078822.html",
       "readings": [
@@ -21007,6 +21146,47 @@
       ]
     },
     {
+      "id": "SRC-2fe669357b57d273",
+      "url": "https://doi.org/10.1103/PhysRevLett.118.085501",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/PhysRevLett.118.085501",
+          "doi": "10.1103/PhysRevLett.118.085501",
+          "retrieval_url": "https://dash.harvard.edu/server/api/core/bitstreams/ed4cbe92-f3cd-440b-8389-f74c6a830122/content",
+          "title": "Nonmonotonic Aging and Memory Retention in Disordered Mechanical Systems",
+          "publisher": "Lahini、Gottesman、Amir、Rubinstein；Physical Review Letters 118,085501 (2017)",
+          "version": "Harvard DASH載作者稿，頁腳arXiv:1608.02429v3，2017-04-13；同2017期刊研究，PDF首頁為書庫封面。",
+          "accessed_on": "2026-11-03",
+          "read_via": "web曾成功原頁後重開timeout；指定UA PDF200，pypdf抽文並目讀兩圖頁。",
+          "reading_scope": "PDF pp2–5（稿頁1–4）：訓練Mylar、兩階段壓縮、Fig1/3/4與Eq1–4快慢模態解釋；不採參考文獻為另證。",
+          "locator": "PDF pp2–5（稿頁1–4）：訓練Mylar、兩階段壓縮、Fig1/3/4與Eq1–4快慢模態解釋；不採參考文獻為另證。",
+          "summary": "兩段載入使快慢鬆弛模態暫朝相反方向，能在固定間距出現力先回升再下降。",
+          "limitations": "Mylar先訓練，且部分放開仍壓縮；不是任意揉紙都有相同數值。快慢模態是現象模型，未逐條摺痕定位。模型到力曲線需比例修正，非無參數精確預言；泡棉只同文重現不再增題。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-physics-memory.pdf",
+            "sha256": "db6168de2d63a45c94c8965b7d709b8c82845f2fff22c121ac2dc6965c940834",
+            "text_file": ".cache/wave49-physics-memory.txt",
+            "text_sha256": "c361c8eec68e48b65c9a882ee7f17db53030e7a4f68c3be4adb068d970c85625"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave49-physics-memory-p3.png",
+              "sha256": "46caf1385d50bed8cd196513eb877083c52ee447d83d8e37f227ebee5fbee020",
+              "read_scope": "Fig1c Mylar部分卸載後非單調曲線；不同等候時間，非位移繼續變動。"
+            },
+            {
+              "file": ".cache/wave49-physics-memory-p4.png",
+              "sha256": "abaf4927072d359f99b02a50d48e06aaf4be11e7edb7a73f60202bd2e12a9cec",
+              "read_scope": "Fig3等候/峰值時間與Fig4快慢模態示意。原Fig4圖說快慢不等號與正文/圖軸相反，採正文及λ定義，不照抄該圖說。"
+            }
+          ],
+          "origin": "wave49-physics-20261103",
+          "original_url": "https://doi.org/10.1103/PhysRevLett.118.085501"
+        }
+      ]
+    },
+    {
       "id": "SRC-2fec0bdb2ee13467",
       "url": "https://openstax.org/books/college-physics-2e/pages/13-6-humidity-evaporation-and-boiling/nhttps://www.weather.gov/jkl/education",
       "readings": [
@@ -22239,6 +22419,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.weather.gov/media/zhu/ZHU_Training_Page/clouds/cloud_precipitation/cloud_precipitation.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3267b3a488dfccb8",
+      "url": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/enhanced-bubble-growth-near-an-advancing-solidification-front/92E92DD04CE805E778D854E808B35280",
+      "readings": [
+        {
+          "title": "Enhanced bubble growth near an advancing solidification front",
+          "doi": "10.1017/jfm.2024.777",
+          "publisher": "Jochem G. Meijer、Duarte Rocha、Annemarie M. Linnenbank、Christian Diddens、Detlef Lohse / Journal of Fluid Mechanics",
+          "version": "2024-10-02正式刊本996:A22",
+          "canonical_url": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/enhanced-bubble-growth-near-an-advancing-solidification-front/92E92DD04CE805E778D854E808B35280",
+          "retrieval_url": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/enhanced-bubble-growth-near-an-advancing-solidification-front/92E92DD04CE805E778D854E808B35280",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日HTTP200取得有效原研究正文；核篇名／版本後讀指定段及圖版。",
+          "reading_scope": "§2.1–2.2、§4.1–4.3、Figs4–5正文與原圖；§3只讀裝置／前緣基本觀測，不重算所有熱傳公式。",
+          "locator": "§2.1–2.2、§4.1–4.3、Figs4–5正文與原圖；§3只讀裝置／前緣基本觀測，不重算所有熱傳公式。",
+          "summary": "氣泡中心停在原處，結冰前緣帶著富氣區靠近；數值逐步加入濃度梯度及前緣移動，才更接近增強生長的實點。",
+          "limitations": "兩壓克力板間1mm水層；所分析泡中心近乎固定，推測被壁面釘住。氣體濃度／前緣控制的拆分是模擬，不是三杯直接量到的濃度照片；不由結果預測家用冰塊每個泡的形狀或生成時間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-earth-bubble.html",
+            "sha256": "dcb6f7bcc2c2fb7e061ae532836d5df6804b26e2f8fca77f8349816f3ccf71e0",
+            "text_file": ".cache/wave49-earth-bubble.txt",
+            "text_sha256": "3fa3bcbfe09fe78777f1cf1c7d1e8b33a32b5f026d5fec70ff65293d5d86161b"
+          },
+          "origin": "wave49-earth-20261103",
+          "original_url": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/enhanced-bubble-growth-near-an-advancing-solidification-front/92E92DD04CE805E778D854E808B35280"
         }
       ]
     },
@@ -29753,6 +29962,36 @@
       ]
     },
     {
+      "id": "SRC-44f7b34340dd9691",
+      "url": "https://pubs.rsc.org/en/content/articlehtml/2023/sm/d3sm00169e",
+      "readings": [
+        {
+          "title": "Tea film formation in artificial tap water",
+          "doi": "10.1039/D3SM00169E",
+          "publisher": "Royal Society of Chemistry / Soft Matter",
+          "version": "2023正式原研究；Europe PMC所收正式全文XML（PMC10411494）",
+          "canonical_url": "https://doi.org/10.1039/D3SM00169E",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10411494/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web定位原研究；刊方Web/指定UA皆403，PMC Web驗證頁；指定UA取得Europe PMC官方fullTextXML有效正文。",
+          "reading_scope": "XML正文PARA000–043（Introduction、Methods、Results、Discussion）與Figs1–11圖說；未目讀原圖版，未讀補充資料。",
+          "locator": "§2.1–2.4人工水/沖泡/界面流變，§2.7 Ellipsometry；Results膜強度與厚度（PARA020–024、033–034）",
+          "summary": "人工水離子組成改變時，紅茶膜的界面彈性差很多，橢偏量出的厚度卻相近；光看膜厚不足推回膜的力學。",
+          "limitations": "軟/中/硬人工水是同一配方稀釋，並非只改一種鈣離子。主沖泡兩次，檸檬酸/奶蛋白僅一次，後兩者不作獨立題。厚度由光學模型推得；密度/結構解釋未直接識別所有鍵結。只談液面膜，不把杯壁茶垢當同物。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-life-tea.xml",
+            "sha256": "d962df505871ce0188bec4a70454be989d10ca0d6300e699f661a7087ad3a9d2",
+            "text_file": ".cache/wave49-life-tea.txt",
+            "text_sha256": "ffa5939decfca369480eec8a0aa54f6951956dece92ff52ac577b4d4b8650a3b",
+            "additional_files": []
+          },
+          "origin": "wave49-life",
+          "original_url": "https://pubs.rsc.org/en/content/articlehtml/2023/sm/d3sm00169e"
+        }
+      ]
+    },
+    {
       "id": "SRC-45011518f7b27648",
       "url": "https://www.mplus.org.hk/en/collection/objects/alco-g-force-vacuum-cleaner-2016537/",
       "readings": [
@@ -31168,6 +31407,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.toysrus.com.tw/zh-tw/aboutus.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4996bee22a60e169",
+      "url": "https://www.nature.com/articles/s42005-022-00827-0",
+      "readings": [
+        {
+          "title": "Self-peeling of frozen water droplets upon impacting a cold surface",
+          "doi": "10.1038/s42005-022-00827-0",
+          "publisher": "Wen-Zhen Fang、Fangqi Zhu、Lailai Zhu、Wen-Quan Tao、Chun Yang / Communications Physics",
+          "version": "2022-03-10正式刊本5:51",
+          "canonical_url": "https://www.nature.com/articles/s42005-022-00827-0",
+          "retrieval_url": "https://www.nature.com/articles/s42005-022-00827-0?error=cookies_not_supported&code=8ec6dac2-9ede-451a-8e99-51d49807cd60",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日HTTP200取得有效原研究正文；核篇名／版本後讀指定段及圖版。",
+          "reading_scope": "Results: Freezing behaviors of impacting water droplets、Thermal-mechanical model、Peeling and bending behaviors；Discussion；Figs1–2原圖目讀。",
+          "locator": "Results: Freezing behaviors of impacting water droplets、Thermal-mechanical model、Peeling and bending behaviors；Discussion；Figs1–2原圖目讀。",
+          "summary": "同樣撞冷板，冰可裂而黏住，也可先翹起剝離；冷縮受約束的應力與附著強弱競爭，而非單靠結冰膨脹。",
+          "limitations": "氮氣控制防霜、拋光銅板不同潤濕處理；完全剝離後另吹氣才移除，不能畫成全程自飛。模型以水／冰界面能近似、板理論解釋；未驗任意已有霜面。原刊URL導向帶cookies參數但有效正文，不是驗證頁。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-earth-peel.html",
+            "sha256": "5d5d195714fefb7d5a846578a41d129e011798737526e07c62fd453b490deadc",
+            "text_file": ".cache/wave49-earth-peel.txt",
+            "text_sha256": "11a60625c2ce2197d8d6842e3179748a392d54c1c3d0753428a8cbf06d9496c1"
+          },
+          "origin": "wave49-earth-20261103",
+          "original_url": "https://www.nature.com/articles/s42005-022-00827-0"
         }
       ]
     },
@@ -36090,6 +36358,52 @@
       ]
     },
     {
+      "id": "SRC-55a652dce7186b74",
+      "url": "https://doi.org/10.1073/pnas.1514626113",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.1514626113",
+          "doi": "10.1073/pnas.1514626113",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4763768/",
+          "title": "Ribbon curling via stress relaxation in thin polymer films",
+          "publisher": "Prior、Moussou、Chakrabarti、Jensen、Juel；PNAS 113(7),1719–1724 (2016)",
+          "version": "2016-02-01 online；PMC同文HTML，非第二研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "先web查原刊；web重開曾captcha、EuropePMC XML500。指定UA取得有效PMC全文HTML200，逐段讀正文、下載目讀Fig1–3。",
+          "reading_scope": "Results: Experimental Results、Physical Interpretation；Discussion；Materials and Methods: Model Description；Fig1–3。",
+          "locator": "Results: Experimental Results、Physical Interpretation；Discussion；Materials and Methods: Model Description；Fig1–3。",
+          "summary": "外側先永久伸長促捲；高拉力離刀後內側再屈服，可抵銷捲曲。",
+          "limitations": "限PVC薄帶、所測刀口與速度。非所有刀口都在斷裂前出現下降支；模型忽略摩擦，屈服/鬆弛參數依刀口調整，不能說磨薄或摩擦加熱已被直接量測。未讀SI推導或影片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-physics-ribbon-html.html",
+            "sha256": "13f277666ef408f96e58be37baad2a7aa413c81a73efc2bdba29d03b990e5a9c",
+            "text_file": ".cache/wave49-physics-ribbon-html.txt",
+            "text_sha256": "2bba3ffff55a5aef8f48f05031d48ad8215bf2c18a4a61c7721d747008992fbd"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave49-physics-ribbon-f1.jpg",
+              "sha256": "bb7e859e163f457b78c4b46b1df948b0ec959b20d5ad0591c6a256a63f45529d",
+              "read_scope": "Fig1裝置/不同拉力下輪廓；捲曲在卸載後量。"
+            },
+            {
+              "file": ".cache/wave49-physics-ribbon-f2.jpg",
+              "sha256": "22e56ee18d5dc6475c0ea8dcb9227631e2bd9ad85f3dee3841d1d4601222b0c0",
+              "read_scope": "Fig2A點為實驗線為模型；尖刀與1mm刀口有下降支，2mm先斷；B固定載荷速度比較。"
+            },
+            {
+              "file": ".cache/wave49-physics-ribbon-f3.jpg",
+              "sha256": "276e45e4d52a0d6250a066214ff8833de4e96de329d4a224f6b249a033d9f114",
+              "read_scope": "Fig3理想化厚度塑性應變示意，不是實測剖面。"
+            }
+          ],
+          "origin": "wave49-physics-20261103",
+          "original_url": "https://doi.org/10.1073/pnas.1514626113"
+        }
+      ]
+    },
+    {
       "id": "SRC-55d8895534e995df",
       "url": "https://ethw.org/Microwave_Ovens",
       "readings": [
@@ -37524,6 +37838,45 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.iec.ch/world-plugs"
+        }
+      ]
+    },
+    {
+      "id": "SRC-59e42f3f9ee082d1",
+      "url": "https://doi.org/10.1103/PhysRevLett.130.114001",
+      "readings": [
+        {
+          "title": "Dynamics of Compression-Driven Gas-Liquid Displacement in a Capillary Tube",
+          "doi": "10.1103/PhysRevLett.130.114001",
+          "publisher": "American Physical Society / Physical Review Letters",
+          "version": "2023-03-13正式版130,114001；Oxford ORA公開PDF；arXiv2112.12898是同研究較早稿",
+          "canonical_url": "https://doi.org/10.1103/PhysRevLett.130.114001",
+          "retrieval_url": "https://ora.ox.ac.uk/objects/uuid%3Ac2365340-903a-4177-8334-2da35325e43b/files/r12579t19n",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web定位研究與作者庫；ORA Web讀取403，指定UA取得5頁有效正式PDF。",
+          "reading_scope": "PDF pp1–5主文/圖說；目讀p2 Figs1–2、p3 Fig3。未另讀Supplemental Material或重算模型。",
+          "locator": "PDF pp1–3實驗、Figs1–3及p5應用討論",
+          "summary": "固定壓縮速率也不保證固定出流；氣腔可先儲存壓縮，剩餘液柱變短又降低流阻，讓末段流速急升。",
+          "limitations": "實驗是矽油/玻璃細管與定速壓縮空氣，不是直接量番茄醬瓶。醬瓶是作者提出的應用；不把觸變、閥口、手擠等其他原因排除。簡化模型末端無限速度是近似失效，非實物讀值；採兩直徑前的量測界線。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-life-burst.pdf",
+            "sha256": "da60015bc8c32f21204c6971de60ba11f16547f2d09a4d69d79e09adb27b52f5",
+            "text_file": ".cache/wave49-life-burst.txt",
+            "text_sha256": "f73d260c496510cee8e9d5be1bac186b1b1db7ff27f343217cf253a4226fc796",
+            "additional_files": [
+              {
+                "file": ".cache/wave49-life-burst-p2.png",
+                "sha256": "2fbe23d501ca37074de12707813e03a6378d132e11a1c1675968950b8a9f941c"
+              },
+              {
+                "file": ".cache/wave49-life-burst-p3.png",
+                "sha256": "887cc78fe3ee9e2f7ac346095284778379492a06f8b66e5ea3e4826ce07b03bd"
+              }
+            ]
+          },
+          "origin": "wave49-life",
+          "original_url": "https://doi.org/10.1103/PhysRevLett.130.114001"
         }
       ]
     },
@@ -46550,6 +46903,45 @@
       ]
     },
     {
+      "id": "SRC-70ba94357958b268",
+      "url": "https://arxiv.org/abs/1403.2678",
+      "readings": [
+        {
+          "title": "Physics of beer tapping",
+          "doi": "10.1103/PhysRevLett.113.214501",
+          "publisher": "American Physical Society / Physical Review Letters",
+          "version": "2014原研究；實讀arXiv:1403.2678v3（2014-11-08）作者稿，含附錄方法，不稱逐字正式PDF",
+          "canonical_url": "https://doi.org/10.1103/PhysRevLett.113.214501",
+          "retrieval_url": "https://arxiv.org/pdf/1403.2678",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web核arXiv版本/DOI，指定UA取得7頁有效作者稿PDF。",
+          "reading_scope": "PDF pp1–4主文、p6 Experimental methods及p7附錄公式文字；目讀p2 Fig1與p3 Figs2–3，未看補充影片、未自行驗算公式。",
+          "locator": "PDF pp2–4 Figs1–3：聲波碎裂、擴散/耗竭、浮力段；p6方法",
+          "summary": "一擊先把已有氣泡碎成泡雲；先擴散長大、局部耗竭，再因上升和捲動補入溶解氣體而加快。雷射另生泡雲有相同後段，顯示不需持續敲擊。",
+          "limitations": "啤酒影像與去離子水中的水聽器壓力量測為不同條件，不合成同一次測量。碎泡數與百倍增長估計是模型上限；上升速度後期近定速，不能把泡團變大加快畫成一直加速上升。只作原創示意，不安排撞擊玻璃瓶操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-life-beer.pdf",
+            "sha256": "5ec5d088b7e014be8bf92e83957690a20ad9cdd46c3f0e0c15391d9dba1e867a",
+            "text_file": ".cache/wave49-life-beer.txt",
+            "text_sha256": "455b24879a9d242ad42c038f8681d5e4825beb13092fa94b172abd36218d61fb",
+            "additional_files": [
+              {
+                "file": ".cache/wave49-life-beer-p2.png",
+                "sha256": "fc13d6397e82d6969111418d57d62b044c201abb38a16196642bd6f7068eab5f"
+              },
+              {
+                "file": ".cache/wave49-life-beer-p3.png",
+                "sha256": "45a9bdb661019d877befd7367710d5b0af2cf8f7d9698e5bafc29088375c72fd"
+              }
+            ]
+          },
+          "origin": "wave49-life",
+          "original_url": "https://arxiv.org/abs/1403.2678"
+        }
+      ]
+    },
+    {
       "id": "SRC-70c194a1763f6378",
       "url": "https://ls-jp.fujifilm.com/astaliftbrand/about/history/",
       "readings": [
@@ -54035,6 +54427,35 @@
       ]
     },
     {
+      "id": "SRC-833f62697d0b2962",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879204/",
+      "readings": [
+        {
+          "title": "Unraveling the role of vaporization momentum in self-jumping dynamics of freezing supercooled droplets at reduced pressures",
+          "doi": "10.1038/s41467-024-45928-2",
+          "publisher": "Xiao Yan et al. / Nature Communications",
+          "version": "2024-02-21正式刊本15:1567；PMC同文HTML",
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879204/",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879204/",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日HTTP200取得有效原研究正文；核篇名／版本後讀指定段及圖版。",
+          "reading_scope": "Results由Figs1–3至Nucleation-mediated directional jumping／Fig4、Size-defined dynamics／Fig5；Figs2與4原圖目讀。",
+          "locator": "Results由Figs1–3至Nucleation-mediated directional jumping／Fig4、Size-defined dynamics／Fig5；Figs2與4原圖目讀。",
+          "summary": "在低壓超疏水面，起冰位置偏一邊的滴往另一邊起跳；放熱帶來不對稱蒸發動量的模型，比只靠底下增壓更能說明方向。",
+          "limitations": "約100Pa、特定中等滴徑與超疏水面；起冰位置與跳向的關聯是觀測，非研究者任意指定起冰位置的干預。蒸發反衝經基底作用重導向屬模型，上限估計不等於逐點量到力；不同大小可乾掉或由另機制懸浮。不提供真空／低溫自行操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-earth-jump.html",
+            "sha256": "9400b43776c404d3aa1f8a56fa286d5b7fc0f1aaebd041e1e7f4e08ca62dfc40",
+            "text_file": ".cache/wave49-earth-jump.txt",
+            "text_sha256": "2c044d6ade98f9f74cd02b70e6b27885af5787699b578586050341126c7fb1d4"
+          },
+          "origin": "wave49-earth-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879204/"
+        }
+      ]
+    },
+    {
       "id": "SRC-8343db9819cfc35f",
       "url": "https://doi.org/10.1371/journal.pone.0093247",
       "readings": [
@@ -55718,6 +56139,41 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://www.open.edu/openlearn/science-maths-technology/engineering-technology/manupedia/sand-casting"
+        }
+      ]
+    },
+    {
+      "id": "SRC-872deed8dadf7644",
+      "url": "https://discovery.ucl.ac.uk/id/eprint/1503401/",
+      "readings": [
+        {
+          "title": "How to Make the Perfect Pancake",
+          "doi": "",
+          "publisher": "Institute of Mathematics and its Applications / Mathematics TODAY",
+          "version": "2016年2月pp26–29正式刊出版本；UCL典藏VoR，非期刊式完整因果驗證報告",
+          "canonical_url": "https://discovery.ucl.ac.uk/id/eprint/1503401/",
+          "retrieval_url": "https://discovery.ucl.ac.uk/id/eprint/1503401/1/Eames%20et%20al%20How%20to%20Make%20the%20Perfect%20Pancake%20VoR.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web定位UCL原作者典藏；指定UA取得有效4頁PDF，非新聞轉述。",
+          "reading_scope": "PDF pp1–4原文；重點pp3–4§3 Kitchen study and pattern categorisation、§4Physical description；目讀PDF p3 Figs2–4，未另觀察原始影片。",
+          "locator": "PDF p3§3與Figs3–4；p4§4Physical description",
+          "summary": "改變麵糊配比與餅的幾何，底面可由坑紋變平滑又出現暗點；作者以蒸氣滯留、底面排出及穿過薄餅解釋這些花紋。",
+          "limitations": "廚房分類實驗，蒸氣路徑與接觸抬升是物理解釋，未直接量蒸氣流場/局部壓力。固定加熱檔不是已量得等鍋溫；奶量改變時蛋量亦依配方調整，最大攤開度另旋鍋，不能稱單變因黏度試驗。不上升為最佳食譜或褐變化學因果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-life-pancake.pdf",
+            "sha256": "d2971874e0e3ca56f67a4a188908d89ebc87b849758212a6289e416a15736910",
+            "text_file": ".cache/wave49-life-pancake.txt",
+            "text_sha256": "038799ecfc1f10b67e63a856fec28740a688aba799047f190c7f88b46c1fb3d4",
+            "additional_files": [
+              {
+                "file": ".cache/wave49-life-pancake-p3.png",
+                "sha256": "624b222adbc8559b043fa2b6d481040e13a2430d9e51b0acd3fe6494be7e87c4"
+              }
+            ]
+          },
+          "origin": "wave49-life",
+          "original_url": "https://discovery.ucl.ac.uk/id/eprint/1503401/"
         }
       ]
     },
@@ -86549,6 +87005,35 @@
       ]
     },
     {
+      "id": "SRC-d15a3b1238561cb4",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11984898/",
+      "readings": [
+        {
+          "title": "Condensate Halos in Condensation Frosting",
+          "doi": "10.1002/advs.202410657",
+          "publisher": "Songyuan Zhen et al. / Advanced Science",
+          "version": "2025正式刊本12:2410657；PMC同文HTML",
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11984898/",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11984898/",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日HTTP200取得有效原研究正文；核篇名／版本後讀指定段及圖版。",
+          "reading_scope": "§§2.1–2.5與Discussion，Figs1–5圖說；Fig2光學／熱像／模型三框目讀。",
+          "locator": "§§2.1–2.5與Discussion，Figs1–5圖說；Fig2光學／熱像／模型三框目讀。",
+          "summary": "結冰潛熱使滴溫回升並向外供汽，周圍凝出小滴；完全凍結後轉成水汽匯，小滴由內向外消失。",
+          "limitations": "主分析為Teflon塗層玻璃、常壓及受控濕度；未見暈環加速後續長時結霜。熱像與光學同時測量，水汽濃度箭頭為模型。Fig2圖說漏負號而正文為−14.5°C，本題不用該精確溫度；§2.3兩個範圍不等號印同號，不據此取外區門檻。未看補充影片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-earth-halo.html",
+            "sha256": "d0066a2747fd23570d51f5ccb497fe2fd6383750a0c8000e3954c00305486817",
+            "text_file": ".cache/wave49-earth-halo.txt",
+            "text_sha256": "5fbd2135df6d4fd45d7d19099c04b4ad55aac912a206c4910cfbdcca8a2ed331"
+          },
+          "origin": "wave49-earth-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11984898/"
+        }
+      ]
+    },
+    {
       "id": "SRC-d1765dcf7699875b",
       "url": "https://www.usgs.gov/water-science-school/science/infiltration-and-water-cycle",
       "readings": [
@@ -89204,6 +89689,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.inews24.com/view/1785742"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d7e33df6611c931f",
+      "url": "https://arxiv.org/pdf/physics/0608079v2",
+      "readings": [
+        {
+          "title": "Splashing of liquids: interplay of surface roughness with surrounding gas",
+          "doi": "10.1103/PhysRevE.76.066311",
+          "publisher": "Lei Xu、Loreto Barcos、Sidney R. Nagel / Physical Review E",
+          "version": "2007正式刊本對應arXiv physics/0608079v2，版本2007-12-17；PDF再編日期2021不當研究年份",
+          "canonical_url": "https://arxiv.org/pdf/physics/0608079v2",
+          "retrieval_url": "https://arxiv.org/pdf/physics/0608079v2",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日HTTP200取得有效原研究正文；核篇名／版本後讀指定段及圖版。",
+          "reading_scope": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。",
+          "locator": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。",
+          "summary": "低壓下光滑面不再濺，粗面仍可從接觸線早期噴滴；薄膜厚度相對粗糙度是作者提出的區分。",
+          "limitations": "乙醇、乾玻璃／砂紙、特定速度；低壓為氦氣環境，不能說只抽空氣而所有條件相同。粗糙度／膜厚門檻仍有未定參數；不是所有液體所有氣壓的一條通則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-earth-rough.pdf",
+            "sha256": "c27e0f5119d5e7ce1047f5a4806efe68ef30247cffbc776826a012d31ed18cff",
+            "text_file": ".cache/wave49-earth-rough.txt",
+            "text_sha256": "1919d55c6f7585a7970c51b29d11aaaf7585eacad5821162c4601f27c3425827"
+          },
+          "origin": "wave49-earth-20261103",
+          "original_url": "https://arxiv.org/pdf/physics/0608079v2"
         }
       ]
     },
@@ -95533,6 +96047,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.archives.gov/research/guide-fed-records/groups/040.html#40.7.8"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e7f2c40ffd74ddeb",
+      "url": "https://arxiv.org/pdf/physics/0501149v1",
+      "readings": [
+        {
+          "title": "Drop splashing on a dry smooth surface",
+          "doi": "10.1103/PhysRevLett.94.184505",
+          "publisher": "Lei Xu、Wendy W. Zhang、Sidney R. Nagel / Physical Review Letters",
+          "version": "2005正式論文對應arXiv physics/0501149v1，2005-01-28",
+          "canonical_url": "https://arxiv.org/pdf/physics/0501149v1",
+          "retrieval_url": "https://arxiv.org/pdf/physics/0501149v1",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日HTTP200取得有效原研究正文；核篇名／版本後讀指定段及圖版。",
+          "reading_scope": "PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+          "locator": "PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+          "summary": "固定滴徑及撞速的酒精滴，在光滑乾玻璃上的冠狀飛濺隨周圍氣壓降低而消失。",
+          "limitations": "實驗主要是三種醇，不寫成家中水滴完全相同。可壓縮氣體應力是當文模型，高速分支較相容，低速非單調部分未解；不宣稱2005模型已解釋一切濺水。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-earth-splash.pdf",
+            "sha256": "7cfc32524022abdefb7b79cc4399915cad1fd02a12985069e4f499f744f6a90a",
+            "text_file": ".cache/wave49-earth-splash.txt",
+            "text_sha256": "84f1179f7300fc69fcb1142e9400bf78d560a22fd11bc35287abd4348b1737d1"
+          },
+          "origin": "wave49-earth-20261103",
+          "original_url": "https://arxiv.org/pdf/physics/0501149v1"
         }
       ]
     },
@@ -104420,6 +104963,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4822150/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fc42ed72e1462ce8",
+      "url": "https://doi.org/10.1007/s10704-024-00828-w",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s10704-024-00828-w",
+          "doi": "10.1007/s10704-024-00828-w",
+          "retrieval_url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/2025-05/507.pdf",
+          "title": "Cyclic tearing of a woven fabric embedded in a soft matrix",
+          "publisher": "Jingyuan Tang、Fengkai Liu、Xi Chen、Zhigang Suo、Jingda Tang；International Journal of Fracture 249, article4 (2025)",
+          "version": "原刊2025-01-08；作者Harvard庫同文排版PDF，與Springer不是獨立研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "web.open作者庫PDF正文成功，指定UA403；Springer原刊頁只摘要/書目/圖連結可讀，PDF請求回HTML非有效PDF。快取是web工具指定正文回傳，不稱本機取得原PDF。 另循原刊公開圖連結以同UA取Fig3/10並目讀；不另算研究。",
+          "reading_scope": "作者庫PDF pp3–10 §§3–7，Fig3/4滑移和斷紗、Fig7拔出、Fig9–11閾值/橋接區；web行162–470快取。",
+          "locator": "作者庫PDF pp3–10 §§3–7，Fig3/4滑移和斷紗、Fig7拔出、Fig9–11閾值/橋接區；web行162–470快取。",
+          "summary": "強界面抑制紗滑移，較難起裂；也削弱應力分散，使持續斷紗擴裂門檻反降。",
+          "limitations": "限UHMWPE織布/TPU複材、所測預裂幾何及至30000次循環。強界面製程同時改處理與溶液，不當單一分子操弄。起裂與持續撕裂兩門檻合一核；Fig3/10已目讀；其餘原圖僅圖說。未看影片/原始數據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave49-physics-tearing-web.json",
+            "sha256": "ea850fe682bdf2b73c3e2b44479271b21ddcfacd8a7e31a1165728217017bb34",
+            "text_file": ".cache/wave49-physics-tearing-web.txt",
+            "text_sha256": "16ce70e8f35d4d8628aa1ce55002a9f119c715ce8cd1ded32c17472180be6b41"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave49-physics-tearing-f3.png",
+              "sha256": "ae62fcb0a29f546bd64d86f285bc9214be8c1091d7db661a17fb8a34533df6cf",
+              "read_scope": "原刊公開Fig3，60N循環的三角堆積區與裂口停住；小圖只看形態/曲線方向，不從縮圖讀精確數字。"
+            },
+            {
+              "file": ".cache/wave49-physics-tearing-f10.png",
+              "sha256": "6781e20fc36b6434b0d84983041b8000c806a5aa81fb23c1949418dd9175f19c",
+              "read_scope": "原刊公開Fig10，強界面使起裂閾值上升、持續擴裂閾值下降；精確值採正文。"
+            }
+          ],
+          "origin": "wave49-physics-20261103",
+          "original_url": "https://doi.org/10.1007/s10704-024-00828-w"
         }
       ]
     },
@@ -252602,6 +253186,600 @@
       "production_ready": false
     },
     {
+      "id": "S49-001",
+      "question": "把周圍氣壓降低，為什麼止住光滑面上的濺滴，卻止不住粗糙面？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "droplet.splash_pressure_roughness_two_paths",
+      "answer_target": "光滑乾玻璃上的酒精滴，降低同種周圍氣體的壓力可使冠狀飛濺消失；另一組低壓粗面試驗仍在前緣噴滴。作者以粗糙凸起擾動展開液膜解釋這條路，膜長厚後小粗糙組先停噴，大粗糙組仍持續。",
+      "scope": "分開2005光滑面空氣壓力試驗及2007低壓氦氣／粗糙度對照；不把兩篇當同一滴連拍，也不宣稱冠狀飛濺的微觀起始已完全解明。",
+      "source_locator": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。；PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+      "premise_status": "screened",
+      "notes": "乙醇、乾玻璃／砂紙、特定速度；低壓為氦氣環境，不能說只抽空氣而所有條件相同。粗糙度／膜厚門檻仍有未定參數；不是所有液體所有氣壓的一條通則。；實驗主要是三種醇，不寫成家中水滴完全相同。可壓縮氣體應力是當文模型，高速分支較相容，低速非單調部分未解；不宣稱2005模型已解釋一切濺水。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "氣壓能關掉一條路，不能保證把所有飛濺一起關掉。",
+        "visual": "二乘三格重畫Fig1：光滑／小粗糙／大粗糙各列低壓與常壓；早晚時刻對照前緣噴滴，不只呈現飛濺數量。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d7e33df6611c931f",
+          "origin": "wave49-earth-20261103",
+          "locator": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。；PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e7f2c40ffd74ddeb",
+          "origin": "wave49-earth-20261103",
+          "locator": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。；PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S49-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S49-002",
+      "question": "一顆水滴正在結冰，旁邊怎麼先冒出一圈小水珠，過一會又消失？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "frost.recalescence_halo_vapor_source_sink_reversal",
+      "answer_target": "同步熱像與光學圖顯示，過冷滴開始凍結時放熱升溫，周圍先凝出小滴。剩餘液水凍完後熱源消退，中心冰滴成為水汽匯，附近小滴再蒸發；作者以先向外供汽、後向內回收解釋暈環先長後退。",
+      "scope": "常壓受控濕度下的微滴與低導熱疏水面；消失不是小水珠被凍成看不見。後半借K6004水冰蒸氣壓差，但新增前半放熱造成供汽與全時序反轉；不拆消失另核。",
+      "source_locator": "§§2.1–2.5與Discussion，Figs1–5圖說；Fig2光學／熱像／模型三框目讀。",
+      "premise_status": "screened",
+      "notes": "主分析為Teflon塗層玻璃、常壓及受控濕度；未見暈環加速後續長時結霜。熱像與光學同時測量，水汽濃度箭頭為模型。Fig2圖說漏負號而正文為−14.5°C，本題不用該精確溫度；§2.3兩個範圍不等號印同號，不據此取外區門檻。未看補充影片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "結冰中的滴與已凍完的滴，對周圍水汽可扮演相反角色。",
+        "visual": "Fig2同時光學與熱像上下對齊，模型箭頭另框；先亮暖核心／小滴增加，再冷核心／由內向外小滴減少。",
+        "seconds": [
+          50,
+          90
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d15a3b1238561cb4",
+          "origin": "wave49-earth-20261103",
+          "locator": "§§2.1–2.5與Discussion，Figs1–5圖說；Fig2光學／熱像／模型三框目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S49-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S49-003",
+      "question": "同樣撞上冷板結成冰，為什麼一邊裂了還黏住，另一邊卻整片翹起？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.thermal_contraction_adhesion_selects_crack_or_peel",
+      "answer_target": "改變拋光冷板表面處理，水滴凍成薄盤後可裂而留在板上，也可翹曲剝離。冷卻收縮受到板面約束，產生熱應力；作者比較內聚與附著強弱，解釋裂冰或脫層兩種釋放路徑。",
+      "scope": "同尺寸／落高／低溫示例，比較兩種潤濕表面；模型不是結冰增體積把冰頂飛。完全剝離後的吹氣移走須另標，不把無裂視為未受力。",
+      "source_locator": "Results: Freezing behaviors of impacting water droplets、Thermal-mechanical model、Peeling and bending behaviors；Discussion；Figs1–2原圖目讀。",
+      "premise_status": "screened",
+      "notes": "氮氣控制防霜、拋光銅板不同潤濕處理；完全剝離後另吹氣才移除，不能畫成全程自飛。模型以水／冰界面能近似、板理論解釋；未驗任意已有霜面。原刊URL導向帶cookies參數但有效正文，不是驗證頁。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "表面抓得牢不只改難不難拿走，也會改冰用哪種方式釋放應力。",
+        "visual": "同落高冷板兩列側視／俯視照片；裂線仍貼板與翹邊分開，再分別標裂內部或脫界面，不用暖風吹融冰。",
+        "seconds": [
+          50,
+          95
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4996bee22a60e169",
+          "origin": "wave49-earth-20261103",
+          "locator": "Results: Freezing behaviors of impacting water droplets、Thermal-mechanical model、Peeling and bending behaviors；Discussion；Figs1–2原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S49-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S49-004",
+      "question": "冰還沒碰到那顆小氣泡，為什麼氣泡的長大已經偏離原來的速度？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.advancing_front_concentration_gradient_enhances_bubble_growth",
+      "answer_target": "窄隙水層中，泡中心幾乎不動，冰前緣逐漸靠近，生長曲線高於起初均勻環境擴散的預測。冰排出的溶解氣體形成濃度梯度；模擬加入這個梯度及其隨前緣靠近，增加泡附近的傳質，較能重現實測。",
+      "scope": "分析的是初期增長與被冰包住前的泡；不是泡被冰壓扁或熱膨脹。Fig5三種條件是數值拆分，Fig4才是原攝影與實點。",
+      "source_locator": "§2.1–2.2、§4.1–4.3、Figs4–5正文與原圖；§3只讀裝置／前緣基本觀測，不重算所有熱傳公式。",
+      "premise_status": "screened",
+      "notes": "兩壓克力板間1mm水層；所分析泡中心近乎固定，推測被壁面釘住。氣體濃度／前緣控制的拆分是模擬，不是三杯直接量到的濃度照片；不由結果預測家用冰塊每個泡的形狀或生成時間。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "界面尚未接觸，也能先改變附近物質供給；位置不動不代表環境不變。",
+        "visual": "原圖泡心固定／冰線上行，曲線標實點；下一框三模型由均勻、梯度、移動梯度依序加入，絕不把彩色濃度圖畫成相機拍到。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3267b3a488dfccb8",
+          "origin": "wave49-earth-20261103",
+          "locator": "§2.1–2.2、§4.1–4.3、Figs4–5正文與原圖；§3只讀裝置／前緣基本觀測，不重算所有熱傳公式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S49-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S49-005",
+      "question": "低壓裡正在結冰的水滴往哪邊跳，怎麼跟最先結冰的位置有關？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.low_pressure_freezing_asymmetric_vapor_momentum_direction",
+      "answer_target": "高速圖記錄起冰點與離面方向：上方偏右開始結冰的示例往左上離開。作者以放熱區向外蒸發帶來反作用、液態核心與基底互動重導向動量的模型解釋；改表面微結構後仍有相近方向關係，不只靠底部均勻增壓。",
+      "scope": "限定約100Pa及研究的滴徑、超疏水條件；起冰角與跳角是觀測關聯，未任意控制每次起冰點。離面時多數體積仍為液體，不稱整顆硬冰球噴射；與大滴蒸氣墊另機制分開。",
+      "source_locator": "Results由Figs1–3至Nucleation-mediated directional jumping／Fig4、Size-defined dynamics／Fig5；Figs2與4原圖目讀。",
+      "premise_status": "screened",
+      "notes": "約100Pa、特定中等滴徑與超疏水面；起冰位置與跳向的關聯是觀測，非研究者任意指定起冰位置的干預。蒸發反衝經基底作用重導向屬模型，上限估計不等於逐點量到力；不同大小可乾掉或由另機制懸浮。不提供真空／低溫自行操作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來同樣往上離開，偏向哪邊可幫忙區分兩個機制。",
+        "visual": "Fig4同時標起冰點與後續重心軌跡，測量點與蒸發動量假說箭頭分框；不畫整顆滴瞬間全凍。",
+        "seconds": [
+          40,
+          80
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-833f62697d0b2962",
+          "origin": "wave49-earth-20261103",
+          "locator": "Results由Figs1–3至Nucleation-mediated directional jumping／Fig4、Size-defined dynamics／Fig5；Figs2與4原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S49-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L49-001",
+      "question": "茶面那層會裂開的薄皮，變得更結實就一定更厚嗎？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "food.tea_surface_film_ionic_network_strength_thickness",
+      "answer_target": "同款紅茶用不同硬度的人工水沖泡，表面膜的彈性與抗變形表現差很多；一、兩小時後估得的膜厚卻各自相近。離子與茶成分形成的膜，其密度或結構可以改變，不能只用厚薄解釋強弱。",
+      "scope": "限所測紅茶、60°C沖泡與人工水配方；稀釋同時改多種離子。厚度為橢偏光學模型結果，密度/結構是與結果相符的解釋，非直接拍到分子網；不是茶垢、油膜或有無污染的判準。",
+      "source_locator": "XML§2.1–2.4、§2.7；PARA020–024、033–034；Figs1/3/4圖說",
+      "premise_status": "screened",
+      "notes": "全庫未找到茶面界面膜同核；不把同篇奶蛋白、酸、鹽微變因各拆題。原圖版尚未目讀，進稿需補核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似更有一層皮，不代表只是疊得更厚；換水可以改膜的力學而未改同時間膜厚。",
+        "visual": "兩個獨立紅茶杯示意標人工軟/硬水；先標輕微扭動讀值，再用同尺度厚度條顯示兩組近似。圖明標厚度由光學估算，不畫成已觀測的特定鈣鍵或油滴。",
+        "seconds": [
+          45,
+          90
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-44f7b34340dd9691",
+          "origin": "wave49-life",
+          "locator": "XML§2.1–2.4、§2.7；PARA020–024、033–034；Figs1/3/4圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L49-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L49-002",
+      "question": "同樣是煎餅，鍋面那一面為什麼有時像坑洞，有時平滑又帶暗點？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "food.pancake_vapour_escape_contact_pattern",
+      "answer_target": "研究把不同配比與攤開幾何的餅並排：較厚稠者出現坑紋，中間條件較平，較薄者又有暗點。作者解釋蒸氣能否困在底部、沿底面離開或穿過餅，會改變接觸與留下的花紋。",
+      "scope": "限2016廚房實驗的麵粉/奶/蛋配比和加熱方式；路徑是由圖樣提出的解釋，未直接量流場。配比、體積與幾何有多因素，不把三張照片當同餅依時變化或只改奶量的因果證明。",
+      "source_locator": "PDF p3§3 Figs3–4、p4§4Physical description",
+      "premise_status": "screened",
+      "notes": "與F4006定型後氣體逸出相關，新增是氣體出口與底面接觸造成的空間圖樣。僅保短素材，不以漂亮分類硬撐獨立片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "深淺斑不只是在問褐變反應，也可能留下餅和鍋如何接觸、蒸氣從哪走的線索。",
+        "visual": "三個不同條件的底面各自一框：坑紋/平滑/暗點。另列原創虛線蒸氣路徑，醒目標作者解釋；不把上表面島/環與底面三類混成同一面。",
+        "seconds": [
+          25,
+          55
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-872deed8dadf7644",
+          "origin": "wave49-life",
+          "locator": "PDF p3§3 Figs3–4、p4§4Physical description",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L49-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L49-003",
+      "question": "擠到最後突然噴一下，只能怪醬汁越擠越稀嗎？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "flow.compressed_gas_falling_liquid_resistance_burst",
+      "answer_target": "一管不需觸變解釋的矽油也能重現突噴：固定壓縮速率，較大初始氣腔先拖慢出流，末段卻急升。空氣先被壓縮；液柱排短後流阻降低，若氣腔仍有餘壓，便把剩餘液體更快推出。",
+      "scope": "原研究直接測的是定速注射器壓縮空氣、矽油細管，醬瓶是應用推論而非實測。固定管徑/初始液長改氣腔大小；完整模型含殘留液膜。實物不取簡化模型的無限出口速度，也不宣稱所有醬瓶都是同一原因。",
+      "source_locator": "PDF pp1–3 Figs1–3，p5結論的condiment bottle應用",
+      "premise_status": "screened",
+      "notes": "F8006是液體受力歷史造成觸變；P081只解釋可壓縮性。此題新增氣腔儲壓與排液造成流阻下降的耦合，不是把番茄醬再講一遍。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "手或機器推得穩，液體仍能忽慢忽快；必須看瓶內空氣與剩下那段流路一起變。",
+        "visual": "開場醬瓶只作生活問題圖，立即切標明矽油模型的透明管。相同節拍推活塞，並排小/大氣腔的界面位置、剩液長和壓力符號；最後固定同樣秒尺，不能用剪接速度假造突噴。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-59e42f3f9ee082d1",
+          "origin": "wave49-life",
+          "locator": "PDF pp1–3 Figs1–3，p5結論的condiment bottle應用",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L49-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L49-004",
+      "question": "只敲一下，啤酒裡的泡團為什麼還能越長越快？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "flow.beer_tap_fragmentation_diffusion_buoyant_gas_supply",
+      "answer_target": "短壓力波讓原有氣泡崩縮碎裂，新增的氣液界面先吸收溶解二氧化碳；附近氣體耗掉時增長放慢。泡團上浮捲動後又接觸新液體，補給加強使泡團更快長大；另用雷射生泡雲也出現後段，並非得一直敲。",
+      "scope": "限研究啤酒與原有/雷射生成泡的裝置。碎泡數是模型估計，不能說攝影直接數出百萬顆；泡團大小後段加快不等於上升速度一直增加。水聽器在去離子水另測，與啤酒影像分框。",
+      "source_locator": "作者稿PDF pp2–4 Figs1–3；p6方法",
+      "premise_status": "screened",
+      "notes": "LEG-S72是粗糙物成核，P311是聲致空穴；這裡串起已有泡碎裂後的供氣途徑改變與浮力回饋。不要按三階段另拆三核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "敲擊很快過去，後面的泡團仍能靠自己的運動取得新氣體；不是單純把原有氣泡震上來。",
+        "visual": "三格不同時間尺度：原泡→泡雲；周圍溶解氣體顏色淡掉；泡雲上升捲入深色新液體。兩條實測大小趨勢重繪為敲擊/雷射，另把高度趨勢和大小分開。禁止DIY敲瓶示範。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-70ba94357958b268",
+          "origin": "wave49-life",
+          "locator": "作者稿PDF pp2–4 Figs1–3；p6方法",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L49-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L49-005",
+      "question": "兩根濕麵條越煮越粗，出水後怎麼反而能貼得更靠近夾住的地方？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "food.pasta_capillary_contact_length_bending_softening",
+      "answer_target": "兩根上端隔開固定的麵條出水後，液面作用會把下段拉合，彎曲則抵抗靠攏。煮久雖變粗，材料軟化卻更強地降低抗彎；固定端到接合點的自由長縮短，接合向上延伸。實測與液面/彎曲能競爭模型對照。",
+      "scope": "限研究麵條、固定端間距與熱水浴排水法；不是在測盤中整坨麵的黏性，也不是洗掉澱粉的比較。模型採近似潤濕周長與同溫固定表面張力，prefactor有校合；不能單憑接合長判所有品牌最佳口感。",
+      "source_locator": "PDF p3 Fig2與黏合機制；pp5–6 Fig4及Eq5–6",
+      "premise_status": "screened",
+      "notes": "F4027是溶出澱粉的表面黏附；B16005亦有毛細與抗彎競爭但讀出是單絲滴內收線。此題兩桿接合前緣受沿時間變化的抗彎支配，請非作者嚴判是否足以另核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "越粗不一定越難被液面拉彎；材料變軟能壓過增粗，從接合的位置就看得到。",
+        "visual": "重繪固定頂端同間距兩麵條，不同煮時各自一框。量尺只量固定端到接合點的自由長，避免把短量尺說成黏住更少；液橋與抗彎箭頭標模型。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-1ed605a9b51f768b",
+          "origin": "wave49-life",
+          "locator": "PDF p3 Fig2與黏合機制；pp5–6 Fig4及Eq5–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L49-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P49-001",
+      "question": "把緞帶拉得更用力，為什麼反而捲得比較鬆？",
+      "domain": "薄片與纖維的受力歷史",
+      "mechanism_key": "sheets_fibres.ribbon.differential_plastic_yield_countercurl",
+      "answer_target": "外側先屈服並永久伸長，留下捲曲；較高拉力下離開刀口時，內側也可能再屈服，減少兩側永久伸長差，因此捲曲減弱。",
+      "scope": "限PVC帶在尖刀或1mm刀口的固定速率載荷比較；卸載後曲率，不是刀上彎度。速度效應不拆新核，較鈍刀可先斷而不見下降支。",
+      "source_locator": "S001 Results/Experimental Results Fig2A；Physical Interpretation Fig3A/B；Discussion。",
+      "premise_status": "screened",
+      "notes": "P24-NA012原因是缺正文控制；本輪補讀2016原刊的載荷曲線及厚度屈服模型後重新提出，舊退題不改。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拉力增加可以同時建立又抵銷變形，不是越用力越捲。",
+        "visual": "Fig2A尖刀或1mm的實測點搭配卸載後帶形；再畫Fig3模型外側/內側永久伸長，清楚標模型。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave49-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-55a652dce7186b74",
+          "origin": "wave49-physics-20261103",
+          "locator": "S001 Results/Experimental Results Fig2A；Physical Interpretation Fig3A/B；Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P49-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P49-002",
+      "question": "緊密針織布剛開始很難拉，為什麼拉開一些後反而比較軟？",
+      "domain": "薄片與纖維的受力歷史",
+      "mechanism_key": "sheets_fibres.knit.geometric_jamming_rearrangement_softening",
+      "answer_target": "緊線圈的彎曲與接觸約束使初始變形需先重排；模型顯示橫向拉伸先調整出平面形狀，另一方向則須克服接觸力，越過受限區後才進入較軟伸展。",
+      "scope": "只問低應變先硬後軟，不含大伸長後再硬化。實測機台設定改線長及線徑，微觀機制取無摩擦模型；不把模擬厚度當已量到。",
+      "source_locator": "S002 PDF pp4–5 §§II–IV、p7/10–11 §VII–VIII；S1 pp14–15 FigS1。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；未製作或實際試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看出能展開的線圈也可能先被自身幾何卡住。",
+        "visual": "實測FigS1小應變斜率與Fig2布形；另框畫Fig6模型厚度先縮再增，不冒充顯微量測。",
+        "seconds": [
+          35,
+          65
+        ]
+      },
+      "origin": "wave49-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-02209fbc7ae70e19",
+          "origin": "wave49-physics-20261103",
+          "locator": "S002 PDF pp4–5 §§II–IV、p7/10–11 §VII–VIII；S1 pp14–15 FigS1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P49-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P49-003",
+      "question": "揉皺薄膜已放鬆一點再固定，為什麼頂住夾板的力還會先變大？",
+      "domain": "薄片與纖維的受力歷史",
+      "mechanism_key": "sheets_fibres.crumple.two_step_waiting_memory_nonmonotonic_force",
+      "answer_target": "先壓住等候，再部分卸載，會讓不同快慢的內部鬆弛模式暫時朝相反方向變化；快模式先主導回升，稍後慢模式主導下降。不同等候時間改變峰值出現時間。",
+      "scope": "限訓練過Mylar、兩階段間距控制，放開後保持H3。模型說明多時尺度，不聲稱量出每條摺痕；與單純固定形變力下降、以及記錄最大壓縮的幾何翻轉不同。",
+      "source_locator": "S003 PDF pp3–5（稿頁2–4）兩段H1/H2/H3程序、Fig1c、Fig3a、Fig4及Eq1–4。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；未製作或實際試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一固定夾板間距曲線在峰前／峰後可有相同力，後續方向卻相反；不代表微觀形狀相同。",
+        "visual": "先畫間距階梯，再顯示固定H3的同一條非單調力曲線，標峰前／峰後等力兩時點；快慢箭頭另標現象模型。Fig1c各等待組各自正規化，不據此匹配不同組絕對力。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave49-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2fe669357b57d273",
+          "origin": "wave49-physics-20261103",
+          "locator": "S003 PDF pp3–5（稿頁2–4）兩段H1/H2/H3程序、Fig1c、Fig3a、Fig4及Eq1–4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P49-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P49-004",
+      "question": "布和軟膠黏得更牢，為什麼反覆撕扯時反而更容易一路撕開？",
+      "domain": "薄片與纖維的受力歷史",
+      "mechanism_key": "sheets_fibres.woven.interface_two_fatigue_thresholds_tradeoff",
+      "answer_target": "較強界面阻礙紗滑移，使起裂門檻升高；但滑移能沿紗分散裂尖應力，受限後更容易斷紗，因此持續擴裂門檻下降。中間區的紗滑後堆積橋接可使裂口停住。",
+      "scope": "限UHMWPE織布/TPU兩種製程比較，起裂與持續擴裂分開判；不是所有黏合劑越強越差，也不將三種載荷區各拆一題。",
+      "source_locator": "S004 PDF pp3–10 §§3–7，Fig3/4/7/9/10；p7–8強界面限制滑移與應力集中段。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；未製作或實際試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一改良可以推高起裂門檻，卻拉低阻止持續破壞的門檻。",
+        "visual": "兩個閾值標記朝相反方向；紗滑後橋接/斷紗並排機制圖，不把不同載荷試件拼成同一條時間線。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave49-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fc42ed72e1462ce8",
+          "origin": "wave49-physics-20261103",
+          "locator": "S004 PDF pp3–10 §§3–7，Fig3/4/7/9/10；p7–8強界面限制滑移與應力集中段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P49-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "A5001",
       "question": "肌肉纖維那麼粗，表面的訊號怎麼叫到裡面一起動？",
       "domain": "身體感官與動作",
@@ -383257,6 +384435,474 @@
       ]
     },
     {
+      "id": "S49-001",
+      "question": "把周圍氣壓降低，為什麼止住光滑面上的濺滴，卻止不住粗糙面？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "droplet.splash_pressure_roughness_two_paths",
+      "answer_target": "光滑乾玻璃上的酒精滴，降低同種周圍氣體的壓力可使冠狀飛濺消失；另一組低壓粗面試驗仍在前緣噴滴。作者以粗糙凸起擾動展開液膜解釋這條路，膜長厚後小粗糙組先停噴，大粗糙組仍持續。",
+      "scope": "分開2005光滑面空氣壓力試驗及2007低壓氦氣／粗糙度對照；不把兩篇當同一滴連拍，也不宣稱冠狀飛濺的微觀起始已完全解明。",
+      "source_locator": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。；PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+      "premise_status": "screened",
+      "notes": "乙醇、乾玻璃／砂紙、特定速度；低壓為氦氣環境，不能說只抽空氣而所有條件相同。粗糙度／膜厚門檻仍有未定參數；不是所有液體所有氣壓的一條通則。；實驗主要是三種醇，不寫成家中水滴完全相同。可壓縮氣體應力是當文模型，高速分支較相容，低速非單調部分未解；不宣稱2005模型已解釋一切濺水。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "氣壓能關掉一條路，不能保證把所有飛濺一起關掉。",
+        "visual": "二乘三格重畫Fig1：光滑／小粗糙／大粗糙各列低壓與常壓；早晚時刻對照前緣噴滴，不只呈現飛濺數量。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d7e33df6611c931f",
+          "origin": "wave49-earth-20261103",
+          "locator": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。；PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e7f2c40ffd74ddeb",
+          "origin": "wave49-earth-20261103",
+          "locator": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。；PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ]
+    },
+    {
+      "id": "S49-002",
+      "question": "一顆水滴正在結冰，旁邊怎麼先冒出一圈小水珠，過一會又消失？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "frost.recalescence_halo_vapor_source_sink_reversal",
+      "answer_target": "同步熱像與光學圖顯示，過冷滴開始凍結時放熱升溫，周圍先凝出小滴。剩餘液水凍完後熱源消退，中心冰滴成為水汽匯，附近小滴再蒸發；作者以先向外供汽、後向內回收解釋暈環先長後退。",
+      "scope": "常壓受控濕度下的微滴與低導熱疏水面；消失不是小水珠被凍成看不見。後半借K6004水冰蒸氣壓差，但新增前半放熱造成供汽與全時序反轉；不拆消失另核。",
+      "source_locator": "§§2.1–2.5與Discussion，Figs1–5圖說；Fig2光學／熱像／模型三框目讀。",
+      "premise_status": "screened",
+      "notes": "主分析為Teflon塗層玻璃、常壓及受控濕度；未見暈環加速後續長時結霜。熱像與光學同時測量，水汽濃度箭頭為模型。Fig2圖說漏負號而正文為−14.5°C，本題不用該精確溫度；§2.3兩個範圍不等號印同號，不據此取外區門檻。未看補充影片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "結冰中的滴與已凍完的滴，對周圍水汽可扮演相反角色。",
+        "visual": "Fig2同時光學與熱像上下對齊，模型箭頭另框；先亮暖核心／小滴增加，再冷核心／由內向外小滴減少。",
+        "seconds": [
+          50,
+          90
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d15a3b1238561cb4",
+          "origin": "wave49-earth-20261103",
+          "locator": "§§2.1–2.5與Discussion，Figs1–5圖說；Fig2光學／熱像／模型三框目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ]
+    },
+    {
+      "id": "S49-003",
+      "question": "同樣撞上冷板結成冰，為什麼一邊裂了還黏住，另一邊卻整片翹起？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.thermal_contraction_adhesion_selects_crack_or_peel",
+      "answer_target": "改變拋光冷板表面處理，水滴凍成薄盤後可裂而留在板上，也可翹曲剝離。冷卻收縮受到板面約束，產生熱應力；作者比較內聚與附著強弱，解釋裂冰或脫層兩種釋放路徑。",
+      "scope": "同尺寸／落高／低溫示例，比較兩種潤濕表面；模型不是結冰增體積把冰頂飛。完全剝離後的吹氣移走須另標，不把無裂視為未受力。",
+      "source_locator": "Results: Freezing behaviors of impacting water droplets、Thermal-mechanical model、Peeling and bending behaviors；Discussion；Figs1–2原圖目讀。",
+      "premise_status": "screened",
+      "notes": "氮氣控制防霜、拋光銅板不同潤濕處理；完全剝離後另吹氣才移除，不能畫成全程自飛。模型以水／冰界面能近似、板理論解釋；未驗任意已有霜面。原刊URL導向帶cookies參數但有效正文，不是驗證頁。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "表面抓得牢不只改難不難拿走，也會改冰用哪種方式釋放應力。",
+        "visual": "同落高冷板兩列側視／俯視照片；裂線仍貼板與翹邊分開，再分別標裂內部或脫界面，不用暖風吹融冰。",
+        "seconds": [
+          50,
+          95
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4996bee22a60e169",
+          "origin": "wave49-earth-20261103",
+          "locator": "Results: Freezing behaviors of impacting water droplets、Thermal-mechanical model、Peeling and bending behaviors；Discussion；Figs1–2原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ]
+    },
+    {
+      "id": "S49-004",
+      "question": "冰還沒碰到那顆小氣泡，為什麼氣泡的長大已經偏離原來的速度？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.advancing_front_concentration_gradient_enhances_bubble_growth",
+      "answer_target": "窄隙水層中，泡中心幾乎不動，冰前緣逐漸靠近，生長曲線高於起初均勻環境擴散的預測。冰排出的溶解氣體形成濃度梯度；模擬加入這個梯度及其隨前緣靠近，增加泡附近的傳質，較能重現實測。",
+      "scope": "分析的是初期增長與被冰包住前的泡；不是泡被冰壓扁或熱膨脹。Fig5三種條件是數值拆分，Fig4才是原攝影與實點。",
+      "source_locator": "§2.1–2.2、§4.1–4.3、Figs4–5正文與原圖；§3只讀裝置／前緣基本觀測，不重算所有熱傳公式。",
+      "premise_status": "screened",
+      "notes": "兩壓克力板間1mm水層；所分析泡中心近乎固定，推測被壁面釘住。氣體濃度／前緣控制的拆分是模擬，不是三杯直接量到的濃度照片；不由結果預測家用冰塊每個泡的形狀或生成時間。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "界面尚未接觸，也能先改變附近物質供給；位置不動不代表環境不變。",
+        "visual": "原圖泡心固定／冰線上行，曲線標實點；下一框三模型由均勻、梯度、移動梯度依序加入，絕不把彩色濃度圖畫成相機拍到。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3267b3a488dfccb8",
+          "origin": "wave49-earth-20261103",
+          "locator": "§2.1–2.2、§4.1–4.3、Figs4–5正文與原圖；§3只讀裝置／前緣基本觀測，不重算所有熱傳公式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ]
+    },
+    {
+      "id": "S49-005",
+      "question": "低壓裡正在結冰的水滴往哪邊跳，怎麼跟最先結冰的位置有關？",
+      "domain": "物理／水滴、結冰與表面",
+      "mechanism_key": "ice.low_pressure_freezing_asymmetric_vapor_momentum_direction",
+      "answer_target": "高速圖記錄起冰點與離面方向：上方偏右開始結冰的示例往左上離開。作者以放熱區向外蒸發帶來反作用、液態核心與基底互動重導向動量的模型解釋；改表面微結構後仍有相近方向關係，不只靠底部均勻增壓。",
+      "scope": "限定約100Pa及研究的滴徑、超疏水條件；起冰角與跳角是觀測關聯，未任意控制每次起冰點。離面時多數體積仍為液體，不稱整顆硬冰球噴射；與大滴蒸氣墊另機制分開。",
+      "source_locator": "Results由Figs1–3至Nucleation-mediated directional jumping／Fig4、Size-defined dynamics／Fig5；Figs2與4原圖目讀。",
+      "premise_status": "screened",
+      "notes": "約100Pa、特定中等滴徑與超疏水面；起冰位置與跳向的關聯是觀測，非研究者任意指定起冰位置的干預。蒸發反衝經基底作用重導向屬模型，上限估計不等於逐點量到力；不同大小可乾掉或由另機制懸浮。不提供真空／低溫自行操作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來同樣往上離開，偏向哪邊可幫忙區分兩個機制。",
+        "visual": "Fig4同時標起冰點與後續重心軌跡，測量點與蒸發動量假說箭頭分框；不畫整顆滴瞬間全凍。",
+        "seconds": [
+          40,
+          80
+        ]
+      },
+      "origin": "wave49-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-833f62697d0b2962",
+          "origin": "wave49-earth-20261103",
+          "locator": "Results由Figs1–3至Nucleation-mediated directional jumping／Fig4、Size-defined dynamics／Fig5；Figs2與4原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+      ]
+    },
+    {
+      "id": "L49-001",
+      "question": "茶面那層會裂開的薄皮，變得更結實就一定更厚嗎？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "food.tea_surface_film_ionic_network_strength_thickness",
+      "answer_target": "同款紅茶用不同硬度的人工水沖泡，表面膜的彈性與抗變形表現差很多；一、兩小時後估得的膜厚卻各自相近。離子與茶成分形成的膜，其密度或結構可以改變，不能只用厚薄解釋強弱。",
+      "scope": "限所測紅茶、60°C沖泡與人工水配方；稀釋同時改多種離子。厚度為橢偏光學模型結果，密度/結構是與結果相符的解釋，非直接拍到分子網；不是茶垢、油膜或有無污染的判準。",
+      "source_locator": "XML§2.1–2.4、§2.7；PARA020–024、033–034；Figs1/3/4圖說",
+      "premise_status": "screened",
+      "notes": "全庫未找到茶面界面膜同核；不把同篇奶蛋白、酸、鹽微變因各拆題。原圖版尚未目讀，進稿需補核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似更有一層皮，不代表只是疊得更厚；換水可以改膜的力學而未改同時間膜厚。",
+        "visual": "兩個獨立紅茶杯示意標人工軟/硬水；先標輕微扭動讀值，再用同尺度厚度條顯示兩組近似。圖明標厚度由光學估算，不畫成已觀測的特定鈣鍵或油滴。",
+        "seconds": [
+          45,
+          90
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-44f7b34340dd9691",
+          "origin": "wave49-life",
+          "locator": "XML§2.1–2.4、§2.7；PARA020–024、033–034；Figs1/3/4圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ]
+    },
+    {
+      "id": "L49-002",
+      "question": "同樣是煎餅，鍋面那一面為什麼有時像坑洞，有時平滑又帶暗點？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "food.pancake_vapour_escape_contact_pattern",
+      "answer_target": "研究把不同配比與攤開幾何的餅並排：較厚稠者出現坑紋，中間條件較平，較薄者又有暗點。作者解釋蒸氣能否困在底部、沿底面離開或穿過餅，會改變接觸與留下的花紋。",
+      "scope": "限2016廚房實驗的麵粉/奶/蛋配比和加熱方式；路徑是由圖樣提出的解釋，未直接量流場。配比、體積與幾何有多因素，不把三張照片當同餅依時變化或只改奶量的因果證明。",
+      "source_locator": "PDF p3§3 Figs3–4、p4§4Physical description",
+      "premise_status": "screened",
+      "notes": "與F4006定型後氣體逸出相關，新增是氣體出口與底面接觸造成的空間圖樣。僅保短素材，不以漂亮分類硬撐獨立片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "深淺斑不只是在問褐變反應，也可能留下餅和鍋如何接觸、蒸氣從哪走的線索。",
+        "visual": "三個不同條件的底面各自一框：坑紋/平滑/暗點。另列原創虛線蒸氣路徑，醒目標作者解釋；不把上表面島/環與底面三類混成同一面。",
+        "seconds": [
+          25,
+          55
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-872deed8dadf7644",
+          "origin": "wave49-life",
+          "locator": "PDF p3§3 Figs3–4、p4§4Physical description",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ]
+    },
+    {
+      "id": "L49-003",
+      "question": "擠到最後突然噴一下，只能怪醬汁越擠越稀嗎？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "flow.compressed_gas_falling_liquid_resistance_burst",
+      "answer_target": "一管不需觸變解釋的矽油也能重現突噴：固定壓縮速率，較大初始氣腔先拖慢出流，末段卻急升。空氣先被壓縮；液柱排短後流阻降低，若氣腔仍有餘壓，便把剩餘液體更快推出。",
+      "scope": "原研究直接測的是定速注射器壓縮空氣、矽油細管，醬瓶是應用推論而非實測。固定管徑/初始液長改氣腔大小；完整模型含殘留液膜。實物不取簡化模型的無限出口速度，也不宣稱所有醬瓶都是同一原因。",
+      "source_locator": "PDF pp1–3 Figs1–3，p5結論的condiment bottle應用",
+      "premise_status": "screened",
+      "notes": "F8006是液體受力歷史造成觸變；P081只解釋可壓縮性。此題新增氣腔儲壓與排液造成流阻下降的耦合，不是把番茄醬再講一遍。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "手或機器推得穩，液體仍能忽慢忽快；必須看瓶內空氣與剩下那段流路一起變。",
+        "visual": "開場醬瓶只作生活問題圖，立即切標明矽油模型的透明管。相同節拍推活塞，並排小/大氣腔的界面位置、剩液長和壓力符號；最後固定同樣秒尺，不能用剪接速度假造突噴。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-59e42f3f9ee082d1",
+          "origin": "wave49-life",
+          "locator": "PDF pp1–3 Figs1–3，p5結論的condiment bottle應用",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ]
+    },
+    {
+      "id": "L49-004",
+      "question": "只敲一下，啤酒裡的泡團為什麼還能越長越快？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "flow.beer_tap_fragmentation_diffusion_buoyant_gas_supply",
+      "answer_target": "短壓力波讓原有氣泡崩縮碎裂，新增的氣液界面先吸收溶解二氧化碳；附近氣體耗掉時增長放慢。泡團上浮捲動後又接觸新液體，補給加強使泡團更快長大；另用雷射生泡雲也出現後段，並非得一直敲。",
+      "scope": "限研究啤酒與原有/雷射生成泡的裝置。碎泡數是模型估計，不能說攝影直接數出百萬顆；泡團大小後段加快不等於上升速度一直增加。水聽器在去離子水另測，與啤酒影像分框。",
+      "source_locator": "作者稿PDF pp2–4 Figs1–3；p6方法",
+      "premise_status": "screened",
+      "notes": "LEG-S72是粗糙物成核，P311是聲致空穴；這裡串起已有泡碎裂後的供氣途徑改變與浮力回饋。不要按三階段另拆三核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "敲擊很快過去，後面的泡團仍能靠自己的運動取得新氣體；不是單純把原有氣泡震上來。",
+        "visual": "三格不同時間尺度：原泡→泡雲；周圍溶解氣體顏色淡掉；泡雲上升捲入深色新液體。兩條實測大小趨勢重繪為敲擊/雷射，另把高度趨勢和大小分開。禁止DIY敲瓶示範。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-70ba94357958b268",
+          "origin": "wave49-life",
+          "locator": "作者稿PDF pp2–4 Figs1–3；p6方法",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ]
+    },
+    {
+      "id": "L49-005",
+      "question": "兩根濕麵條越煮越粗，出水後怎麼反而能貼得更靠近夾住的地方？",
+      "domain": "食品與廚房的界面、流動和形變",
+      "mechanism_key": "food.pasta_capillary_contact_length_bending_softening",
+      "answer_target": "兩根上端隔開固定的麵條出水後，液面作用會把下段拉合，彎曲則抵抗靠攏。煮久雖變粗，材料軟化卻更強地降低抗彎；固定端到接合點的自由長縮短，接合向上延伸。實測與液面/彎曲能競爭模型對照。",
+      "scope": "限研究麵條、固定端間距與熱水浴排水法；不是在測盤中整坨麵的黏性，也不是洗掉澱粉的比較。模型採近似潤濕周長與同溫固定表面張力，prefactor有校合；不能單憑接合長判所有品牌最佳口感。",
+      "source_locator": "PDF p3 Fig2與黏合機制；pp5–6 Fig4及Eq5–6",
+      "premise_status": "screened",
+      "notes": "F4027是溶出澱粉的表面黏附；B16005亦有毛細與抗彎競爭但讀出是單絲滴內收線。此題兩桿接合前緣受沿時間變化的抗彎支配，請非作者嚴判是否足以另核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "越粗不一定越難被液面拉彎；材料變軟能壓過增粗，從接合的位置就看得到。",
+        "visual": "重繪固定頂端同間距兩麵條，不同煮時各自一框。量尺只量固定端到接合點的自由長，避免把短量尺說成黏住更少；液橋與抗彎箭頭標模型。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave49-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-1ed605a9b51f768b",
+          "origin": "wave49-life",
+          "locator": "PDF p3 Fig2與黏合機制；pp5–6 Fig4及Eq5–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+      ]
+    },
+    {
+      "id": "P49-001",
+      "question": "把緞帶拉得更用力，為什麼反而捲得比較鬆？",
+      "domain": "薄片與纖維的受力歷史",
+      "mechanism_key": "sheets_fibres.ribbon.differential_plastic_yield_countercurl",
+      "answer_target": "外側先屈服並永久伸長，留下捲曲；較高拉力下離開刀口時，內側也可能再屈服，減少兩側永久伸長差，因此捲曲減弱。",
+      "scope": "限PVC帶在尖刀或1mm刀口的固定速率載荷比較；卸載後曲率，不是刀上彎度。速度效應不拆新核，較鈍刀可先斷而不見下降支。",
+      "source_locator": "S001 Results/Experimental Results Fig2A；Physical Interpretation Fig3A/B；Discussion。",
+      "premise_status": "screened",
+      "notes": "P24-NA012原因是缺正文控制；本輪補讀2016原刊的載荷曲線及厚度屈服模型後重新提出，舊退題不改。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拉力增加可以同時建立又抵銷變形，不是越用力越捲。",
+        "visual": "Fig2A尖刀或1mm的實測點搭配卸載後帶形；再畫Fig3模型外側/內側永久伸長，清楚標模型。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave49-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-55a652dce7186b74",
+          "origin": "wave49-physics-20261103",
+          "locator": "S001 Results/Experimental Results Fig2A；Physical Interpretation Fig3A/B；Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+      ]
+    },
+    {
+      "id": "P49-002",
+      "question": "緊密針織布剛開始很難拉，為什麼拉開一些後反而比較軟？",
+      "domain": "薄片與纖維的受力歷史",
+      "mechanism_key": "sheets_fibres.knit.geometric_jamming_rearrangement_softening",
+      "answer_target": "緊線圈的彎曲與接觸約束使初始變形需先重排；模型顯示橫向拉伸先調整出平面形狀，另一方向則須克服接觸力，越過受限區後才進入較軟伸展。",
+      "scope": "只問低應變先硬後軟，不含大伸長後再硬化。實測機台設定改線長及線徑，微觀機制取無摩擦模型；不把模擬厚度當已量到。",
+      "source_locator": "S002 PDF pp4–5 §§II–IV、p7/10–11 §VII–VIII；S1 pp14–15 FigS1。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；未製作或實際試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看出能展開的線圈也可能先被自身幾何卡住。",
+        "visual": "實測FigS1小應變斜率與Fig2布形；另框畫Fig6模型厚度先縮再增，不冒充顯微量測。",
+        "seconds": [
+          35,
+          65
+        ]
+      },
+      "origin": "wave49-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-02209fbc7ae70e19",
+          "origin": "wave49-physics-20261103",
+          "locator": "S002 PDF pp4–5 §§II–IV、p7/10–11 §VII–VIII；S1 pp14–15 FigS1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+      ]
+    },
+    {
+      "id": "P49-003",
+      "question": "揉皺薄膜已放鬆一點再固定，為什麼頂住夾板的力還會先變大？",
+      "domain": "薄片與纖維的受力歷史",
+      "mechanism_key": "sheets_fibres.crumple.two_step_waiting_memory_nonmonotonic_force",
+      "answer_target": "先壓住等候，再部分卸載，會讓不同快慢的內部鬆弛模式暫時朝相反方向變化；快模式先主導回升，稍後慢模式主導下降。不同等候時間改變峰值出現時間。",
+      "scope": "限訓練過Mylar、兩階段間距控制，放開後保持H3。模型說明多時尺度，不聲稱量出每條摺痕；與單純固定形變力下降、以及記錄最大壓縮的幾何翻轉不同。",
+      "source_locator": "S003 PDF pp3–5（稿頁2–4）兩段H1/H2/H3程序、Fig1c、Fig3a、Fig4及Eq1–4。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；未製作或實際試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一固定夾板間距曲線在峰前／峰後可有相同力，後續方向卻相反；不代表微觀形狀相同。",
+        "visual": "先畫間距階梯，再顯示固定H3的同一條非單調力曲線，標峰前／峰後等力兩時點；快慢箭頭另標現象模型。Fig1c各等待組各自正規化，不據此匹配不同組絕對力。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave49-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2fe669357b57d273",
+          "origin": "wave49-physics-20261103",
+          "locator": "S003 PDF pp3–5（稿頁2–4）兩段H1/H2/H3程序、Fig1c、Fig3a、Fig4及Eq1–4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+      ]
+    },
+    {
+      "id": "P49-004",
+      "question": "布和軟膠黏得更牢，為什麼反覆撕扯時反而更容易一路撕開？",
+      "domain": "薄片與纖維的受力歷史",
+      "mechanism_key": "sheets_fibres.woven.interface_two_fatigue_thresholds_tradeoff",
+      "answer_target": "較強界面阻礙紗滑移，使起裂門檻升高；但滑移能沿紗分散裂尖應力，受限後更容易斷紗，因此持續擴裂門檻下降。中間區的紗滑後堆積橋接可使裂口停住。",
+      "scope": "限UHMWPE織布/TPU兩種製程比較，起裂與持續擴裂分開判；不是所有黏合劑越強越差，也不將三種載荷區各拆一題。",
+      "source_locator": "S004 PDF pp3–10 §§3–7，Fig3/4/7/9/10；p7–8強界面限制滑移與應力集中段。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；未製作或實際試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一改良可以推高起裂門檻，卻拉低阻止持續破壞的門檻。",
+        "visual": "兩個閾值標記朝相反方向；紗滑後橋接/斷紗並排機制圖，不把不同載荷試件拼成同一條時間線。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave49-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fc42ed72e1462ce8",
+          "origin": "wave49-physics-20261103",
+          "locator": "S004 PDF pp3–10 §§3–7，Fig3/4/7/9/10；p7–8強界面限制滑移與應力集中段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+      ]
+    },
+    {
       "id": "A5001",
       "question": "肌肉纖維那麼粗，表面的訊號怎麼叫到裡面一起動？",
       "domain": "身體感官與動作",
@@ -397880,6 +399526,20 @@
       "P48-002": "P48-002",
       "P48-003": "P48-003",
       "P48-004": "P48-004",
+      "S49-001": "S49-001",
+      "S49-002": "S49-002",
+      "S49-003": "S49-003",
+      "S49-004": "S49-004",
+      "S49-005": "S49-005",
+      "L49-001": "L49-001",
+      "L49-002": "L49-002",
+      "L49-003": "L49-003",
+      "L49-004": "L49-004",
+      "L49-005": "L49-005",
+      "P49-001": "P49-001",
+      "P49-002": "P49-002",
+      "P49-003": "P49-003",
+      "P49-004": "P49-004",
       "A5001": "A5001",
       "A5002": "A5002",
       "A5003": "A5003",
@@ -424501,6 +426161,549 @@
         "a": "S48-005",
         "b": "N234",
         "reason": "N234鹽再結晶壓力撐碎孔壁；S48-005是酸溶弱化、可能釋放細粒及兩套測法導流反轉，不能以鹽結晶解釋。"
+      },
+      {
+        "a": "L49-001",
+        "b": "F8004",
+        "reason": "鈣作用在加工乳酪中促蛋白分散；新比較液面膜的模量/厚度解耦，控制與讀出不同。"
+      },
+      {
+        "a": "L49-001",
+        "b": "H3092",
+        "reason": "乾燥顆粒被輸送至外緣，不是未乾茶液表面的膜結構與界面彈性。"
+      },
+      {
+        "a": "L49-001",
+        "b": "D2025",
+        "reason": "果膠網絡過收縮離水與茶膜同厚度的不同模量沒有相同因果鏈。"
+      },
+      {
+        "a": "L49-001",
+        "b": "P053",
+        "reason": "接觸角內聚/附著競爭不涵蓋液面膜在水配方改變後的厚度/模量分離。"
+      },
+      {
+        "a": "L49-002",
+        "b": "F4006",
+        "reason": "舊是泡孔定型後氣逸出而不再膨大；新是底部蒸氣路徑和鍋面接觸產生花紋，保留解釋層級短段。"
+      },
+      {
+        "a": "L49-002",
+        "b": "H3092",
+        "reason": "咖啡環邊緣輸運不是熱底面頂離/穿孔的花紋；不因都有蒸發就合。"
+      },
+      {
+        "a": "L49-002",
+        "b": "F4026",
+        "reason": "冷卻凝結吸油與受熱蒸氣路徑改接觸相反時序、不同結果。"
+      },
+      {
+        "a": "L49-003",
+        "b": "F8006",
+        "reason": "新試驗固定牛頓矽油材料，空氣儲壓配合液柱降阻；無需剪切破壞/重建材料結構。"
+      },
+      {
+        "a": "L49-003",
+        "b": "P081",
+        "reason": "可壓縮性只供背景；新增加流路縮短造成阻力與餘壓競爭，回答為何末端突然加速。"
+      },
+      {
+        "a": "L49-003",
+        "b": "D2177",
+        "reason": "起落架用油孔耗散降低回彈；新氣液置換的剩餘液長動態改變阻力，未談反覆振盪。"
+      },
+      {
+        "a": "L49-003",
+        "b": "Q9006",
+        "reason": "熱式噴墨新生蒸氣泡驅滴；新已有空氣被定速壓縮，無加熱氣化。"
+      },
+      {
+        "a": "L49-003",
+        "b": "F10011",
+        "reason": "出口後液柱盤繞是壓縮彎曲失穩；新是出口前儲壓與逐短液柱加速。"
+      },
+      {
+        "a": "L49-004",
+        "b": "LEG-S72",
+        "reason": "新除了起泡，獨立辨認碎泡後局部耗竭及浮升供氣維持，雷射對照；舊成核點答案未涵蓋後段。"
+      },
+      {
+        "a": "L49-004",
+        "b": "P230",
+        "reason": "開瓶分壓平衡變化不回答短衝擊後泡團擴散耗竭再浮升補給。"
+      },
+      {
+        "a": "L49-004",
+        "b": "P231",
+        "reason": "溫升降低溶解度不是操弄；新同溫液體中界面碎裂/搬運改變供氣率。"
+      },
+      {
+        "a": "L49-004",
+        "b": "P311",
+        "reason": "空穴崩潰只解釋起動，新加入多泡雲後段擴散與浮力/平流回饋。"
+      },
+      {
+        "a": "L49-004",
+        "b": "I12011",
+        "reason": "泡膜間氣體再分配與過飽和液體向運動泡雲的供氣不同。"
+      },
+      {
+        "a": "L49-005",
+        "b": "B16005",
+        "reason": "舊是滴內屈曲盤繞存長並維持張力；新有水合讓半徑與模量反向改變的實測，再解釋兩桿接合自由長隨煮時縮短。"
+      },
+      {
+        "a": "L49-005",
+        "b": "F4027",
+        "reason": "表面溶出澱粉黏附與固定兩桿毛細接合位置由抗彎改變決定不同；不把盤中黏性當此試驗。"
+      },
+      {
+        "a": "L49-005",
+        "b": "F15002",
+        "reason": "舊槽內外差異吸液產生自身彎曲；新無槽兩桿的增粗/軟化競爭影響外部液橋接合位置。"
+      },
+      {
+        "a": "L49-005",
+        "b": "H3025",
+        "reason": "塑化變軟是背景；新有與增粗相反的力學後果及接合自由長量測，不只重述材料變軟。"
+      },
+      {
+        "a": "L49-005",
+        "b": "A20003",
+        "reason": "油橋的外圍介質/基材潤濕控制法向拔離，與水合材料抗彎對兩桿接合點的改變不同。"
+      },
+      {
+        "a": "L49-001",
+        "b": "F10001",
+        "reason": "杯底二次流聚茶葉與液面膜的厚度/模量比較無共同機制。"
+      },
+      {
+        "a": "L49-001",
+        "b": "D2149",
+        "reason": "石膏模吸水堆積顆粒形成壁厚；茶膜是在同厚條件有不同模量。"
+      },
+      {
+        "a": "L49-001",
+        "b": "D2195",
+        "reason": "壓榨纖維使孔隙/吸水取捨，非離子配方的液面膜力學。"
+      },
+      {
+        "a": "L49-001",
+        "b": "D2196",
+        "reason": "層間空間決定存水容量，非表面膜模量與厚度解耦。"
+      },
+      {
+        "a": "L49-001",
+        "b": "I12014",
+        "reason": "乾燥顆粒殼受擠壓的排粒/皺曲途徑，不是未乾液面的茶膜生成及力學。"
+      },
+      {
+        "a": "L49-002",
+        "b": "F10015",
+        "reason": "傾斜沉降的輕液沿壁回流與熱底面氣體逃逸路徑不同。"
+      },
+      {
+        "a": "L49-002",
+        "b": "F4009",
+        "reason": "攪打脂肪預先容氣與受熱時底部蒸氣改接觸不同。"
+      },
+      {
+        "a": "L49-002",
+        "b": "R29003",
+        "reason": "焦屑孔洞作考古類型辨識，不是重建煎餅受熱底部花紋機制。"
+      },
+      {
+        "a": "L49-002",
+        "b": "F15002",
+        "reason": "溝槽差異吸液形成彎曲，與鍋底蒸氣頂離/穿過餅的解釋不同。"
+      },
+      {
+        "a": "L49-003",
+        "b": "Q9007",
+        "reason": "壓電噴腔共振隨泡尺寸改變與定速氣腔壓縮/逐短液柱降阻不同。"
+      },
+      {
+        "a": "L49-003",
+        "b": "D2214",
+        "reason": "剪切矽油傳遞扭矩不是氣體儲壓和剩餘流道阻力回饋。"
+      },
+      {
+        "a": "L49-003",
+        "b": "X40-002",
+        "reason": "氣泡改聲速/音高與宏觀空氣腔推液柱的非定常出流不同。"
+      },
+      {
+        "a": "L49-003",
+        "b": "F4026",
+        "reason": "孔內冷凝降低壓力吸油，與外加壓縮氣腔推出油的末端加速不同。"
+      },
+      {
+        "a": "L49-003",
+        "b": "X42-002",
+        "reason": "脫離噴嘴後液絲彈性回縮/合滴，不是管內壓力-阻力控制。"
+      },
+      {
+        "a": "L49-004",
+        "b": "P24005",
+        "reason": "附著氣泡讓花生反覆跨浮沉閾值，與自由泡雲碎裂-耗竭-浮升供氣的增長回饋不同。"
+      },
+      {
+        "a": "L49-004",
+        "b": "Q9007",
+        "reason": "噴腔泡的共振與致動失效不同於泡雲的界面和氣體補給。"
+      },
+      {
+        "a": "L49-004",
+        "b": "I12010",
+        "reason": "液面泡膜破裂成霧與液內氣泡崩縮後泡雲的持續增長不同。"
+      },
+      {
+        "a": "L49-004",
+        "b": "X40-002",
+        "reason": "氣泡對液柱聲速的作用不回答泡團耗竭後又加速長大。"
+      },
+      {
+        "a": "L49-005",
+        "b": "I12012",
+        "reason": "共有毛細/彎曲能背景；新題不是只改桿形，另量煮時增粗與軟化兩個相反效應，解釋接合自由長反而縮短。舊蒸發包覆答案未含這個材料演變控制。"
+      },
+      {
+        "a": "L49-005",
+        "b": "F14006",
+        "reason": "孔隙排水與滑動停留時間影響接觸區，非加熱水合的模量/半徑與液橋接合。"
+      },
+      {
+        "a": "L49-005",
+        "b": "X38-005",
+        "reason": "葉尖固定曲率調接觸線/滴頸而提早脫滴，非柔桿材料抗彎變化。"
+      },
+      {
+        "a": "L49-005",
+        "b": "H10002",
+        "reason": "洗液入口與界面/內聚破壞的抬離對照，與兩根麵條出水接合位置不同。"
+      },
+      {
+        "a": "P49-001",
+        "b": "X5004",
+        "reason": "固定刀口/速率下載荷升高後殘留曲率反降，模型含內外層先後屈服的補償；不同於熱膨脹差、線圈內力矩、彈性屈曲或一般固定形變鬆弛。速度對照是同核條件，不拆題。",
+        "author_reason_read": "舊是受約束線圈的內力矩；新是同質薄帶受刀口載入留下厚度方向塑性梯度及高載荷補償。"
+      },
+      {
+        "a": "P49-001",
+        "b": "P076",
+        "reason": "固定刀口/速率下載荷升高後殘留曲率反降，模型含內外層先後屈服的補償；不同於熱膨脹差、線圈內力矩、彈性屈曲或一般固定形變鬆弛。速度對照是同核條件，不拆題。",
+        "author_reason_read": "舊異材熱膨脹差；新同材塑性屈服、離刀再屈服，使載荷與殘留曲率可反向。"
+      },
+      {
+        "a": "P49-001",
+        "b": "F15002",
+        "reason": "固定刀口/速率下載荷升高後殘留曲率反降，模型含內外層先後屈服的補償；不同於熱膨脹差、線圈內力矩、彈性屈曲或一般固定形變鬆弛。速度對照是同核條件，不拆題。",
+        "author_reason_read": "舊暫態吸液膨潤差；新在不換液/不吸水的載荷程序中塑性應變補償。"
+      },
+      {
+        "a": "P49-001",
+        "b": "H3090",
+        "reason": "固定刀口/速率下載荷升高後殘留曲率反降，模型含內外層先後屈服的補償；不同於熱膨脹差、線圈內力矩、彈性屈曲或一般固定形變鬆弛。速度對照是同核條件，不拆題。",
+        "author_reason_read": "舊固定形變的力衰減；新移動帶厚度不同區屈服決定殘留曲率且有負載窗口。"
+      },
+      {
+        "a": "P49-001",
+        "b": "P26002",
+        "reason": "固定刀口/速率下載荷升高後殘留曲率反降，模型含內外層先後屈服的補償；不同於熱膨脹差、線圈內力矩、彈性屈曲或一般固定形變鬆弛。速度對照是同核條件，不拆題。",
+        "author_reason_read": "舊橡膠芯棒上的手性與加熱控制；新刀口外內層塑性伸長差，不是同一熱致捲曲。"
+      },
+      {
+        "a": "P49-002",
+        "b": "X5002",
+        "reason": "新增緊密線圈低應變先硬後軟；無摩擦模型的出平面重排/接觸力限制與舊鬆線圈可伸展、往返摩擦耗能不同。模型厚度非實測，先留segment合理。",
+        "author_reason_read": "舊限鬆針織展開及方向伸展；新密針織先硬後軟且可由無摩擦模型的受限重排產生，非再解釋線圈會展開。"
+      },
+      {
+        "a": "P49-002",
+        "b": "X5003",
+        "reason": "新增緊密線圈低應變先硬後軟；無摩擦模型的出平面重排/接觸力限制與舊鬆線圈可伸展、往返摩擦耗能不同。模型厚度非實測，先留segment合理。",
+        "author_reason_read": "舊往返摩擦耗能；新單向低應變軟化，模型不含摩擦也出現，沒有聲稱真布摩擦為零。"
+      },
+      {
+        "a": "P49-002",
+        "b": "X5004",
+        "reason": "新增緊密線圈低應變先硬後軟；無摩擦模型的出平面重排/接觸力限制與舊鬆線圈可伸展、往返摩擦耗能不同。模型厚度非實測，先留segment合理。",
+        "author_reason_read": "舊自由邊緣捲曲；新外載開始時幾何受限後重排的切線剛度變化。"
+      },
+      {
+        "a": "P49-002",
+        "b": "P44-001",
+        "reason": "新增緊密線圈低應變先硬後軟；無摩擦模型的出平面重排/接觸力限制與舊鬆線圈可伸展、往返摩擦耗能不同。模型厚度非實測，先留segment合理。",
+        "author_reason_read": "舊層間滑移增加整疊平均峰值/耗能；新連續線圈接觸及彎曲約束解除，不是多疊材料。"
+      },
+      {
+        "a": "P49-003",
+        "b": "K11013",
+        "reason": "等候後部分卸載、再固定間距仍有力先增後減，且峰時隨先前等候改變。這個控制超出一般單調黏彈鬆弛及記錄最大壓縮的凸凹翻轉；不以材料或記憶一詞判合。",
+        "author_reason_read": "舊超越歷史最大壓縮改寫幾何翻轉序列；新不超舊峰、部分卸載後定間距，峰時記錄等候多久，快慢模態模型解反向演化。"
+      },
+      {
+        "a": "P49-003",
+        "b": "H3090",
+        "reason": "等候後部分卸載、再固定間距仍有力先增後減，且峰時隨先前等候改變。這個控制超出一般單調黏彈鬆弛及記錄最大壓縮的凸凹翻轉；不以材料或記憶一詞判合。",
+        "author_reason_read": "舊一般固定形變應力衰減/黏彈延遲；新兩階段歷史下相反模態暫主導、力非單調，相同宏觀狀態未定後續方向。"
+      },
+      {
+        "a": "P49-003",
+        "b": "P49-001",
+        "reason": "等候後部分卸載、再固定間距仍有力先增後減，且峰時隨先前等候改變。這個控制超出一般單調黏彈鬆弛及記錄最大壓縮的凸凹翻轉；不以材料或記憶一詞判合。",
+        "author_reason_read": "都提時間但新三是等候歷史造成力方向反轉；新一是移動薄帶厚度塑性差及永久曲率，不合為泛鬆弛。"
+      },
+      {
+        "a": "P49-004",
+        "b": "H3063",
+        "reason": "同複材兩種界面使起裂與持續擴裂門檻往相反方向；裂後滑移/橋接的一般背景沿H3063，但新增可見控制是阻滑帶來兩門檻取捨，不能只重講纖維跨裂縫。",
+        "author_reason_read": "舊橋接/脫黏耗能且明記界面最佳化待補；新有同複材強弱界面使起裂與持續擴裂兩閾值反向，新增可判控制。"
+      },
+      {
+        "a": "P49-004",
+        "b": "H3060",
+        "reason": "同複材兩種界面使起裂與持續擴裂門檻往相反方向；裂後滑移/橋接的一般背景沿H3063，但新增可見控制是阻滑帶來兩門檻取捨，不能只重講纖維跨裂縫。",
+        "author_reason_read": "舊線彈性裂長/應力/韌性決定快速擴裂；新循環下紗滑、堵住、斷紗及界面取捨。"
+      },
+      {
+        "a": "P49-004",
+        "b": "D2198",
+        "reason": "同複材兩種界面使起裂與持續擴裂門檻往相反方向；裂後滑移/橋接的一般背景沿H3063，但新增可見控制是阻滑帶來兩門檻取捨，不能只重講纖維跨裂縫。",
+        "author_reason_read": "舊紙纖維自身或纖維間鍵破壞競爭；新織布複材循環閾值兩頭反向，靠紗滑移分散與斷紗中段。"
+      },
+      {
+        "a": "P49-004",
+        "b": "P005",
+        "reason": "同複材兩種界面使起裂與持續擴裂門檻往相反方向；裂後滑移/橋接的一般背景沿H3063，但新增可見控制是阻滑帶來兩門檻取捨，不能只重講纖維跨裂縫。",
+        "author_reason_read": "舊乾接觸最大靜摩擦/動摩擦；新不是啟滑單一門檻，而是滑後形成橋接區和持續斷紗的兩閾值取捨。"
+      },
+      {
+        "a": "P49-004",
+        "b": "P49-002",
+        "reason": "同複材兩種界面使起裂與持續擴裂門檻往相反方向；裂後滑移/橋接的一般背景沿H3063，但新增可見控制是阻滑帶來兩門檻取捨，不能只重講纖維跨裂縫。",
+        "author_reason_read": "同是紡織而不同拓撲與失效：針織先硬後軟對比織布裂後停裂；不以同題材合拍。"
+      },
+      {
+        "a": "P49-004",
+        "b": "D2183",
+        "decision": "distinct",
+        "reason": "舊膠帶是整面剪力與邊緣剝離的載荷路徑；新同一預裂織布幾何比較強弱界面的滑移/斷紗兩個循環門檻，不是只換剝離角度。"
+      },
+      {
+        "a": "S49-001",
+        "b": "X40-002",
+        "reason": "聲速由微泡可壓縮性改變，與乾面撞擊的冠狀液片／粗糙前緣噴滴不同。"
+      },
+      {
+        "a": "S49-001",
+        "b": "P22005",
+        "reason": "鄰滴水汽改成分與表面張力驅動平移；本題氣壓及粗糙度控制液片噴滴，無成分梯度。"
+      },
+      {
+        "a": "S49-001",
+        "b": "I12009",
+        "reason": "部分合併的界面波／排空競爭不同於乾固面上的液片離面及粗糙擾動。"
+      },
+      {
+        "a": "S49-001",
+        "b": "I12004",
+        "reason": "酒淚是蒸發造成的張力梯度上爬；本題撞擊展膜與兩種噴滴路徑，不靠成分梯度。"
+      },
+      {
+        "a": "S49-001",
+        "b": "B16005",
+        "reason": "滴內細絲毛細屈曲儲長不含撞擊展膜或氣壓選擇飛濺。"
+      },
+      {
+        "a": "S49-002",
+        "b": "P24001",
+        "reason": "尖帽由前緣形狀與凍結增體積決定；暈環是中心先供汽後吸汽的周圍微滴時序。"
+      },
+      {
+        "a": "S49-002",
+        "b": "S49-005",
+        "reason": "S49-002是常壓質量傳遞反轉；S49-005是低壓非對稱蒸發動量與跳向，控制與讀值不同。"
+      },
+      {
+        "a": "S49-002",
+        "b": "N167",
+        "reason": "N167分降水到地前後的相態；本題同一過冷滴放熱與凍完使周圍微滴先生後退。"
+      },
+      {
+        "a": "S49-002",
+        "b": "S46-004",
+        "reason": "封蓋冰孔內融由日射吸收及散熱差支持；本題是凍結放熱與局部水汽流向反轉。"
+      },
+      {
+        "a": "S49-002",
+        "b": "P090",
+        "reason": "凝結潛熱是背景，不能單獨回答中心先作水汽源、凍完再作匯的全時序。"
+      },
+      {
+        "a": "S49-003",
+        "b": "P24002",
+        "reason": "外殼壓縮液核的裂癒不同於薄冰盤受底板限制冷縮；本題還改表面附著使失效路徑分岔。"
+      },
+      {
+        "a": "S49-003",
+        "b": "N167",
+        "reason": "雨滴何時凍結決定撞地相態，不包含同樣已成薄冰後的裂開或脫界面選擇。"
+      },
+      {
+        "a": "S49-003",
+        "b": "S46-001",
+        "reason": "冰球接觸頸靠氣相輸運長大；本題冷縮熱應力裂冰／剝離，不是冰粒燒結。"
+      },
+      {
+        "a": "S49-003",
+        "b": "P24001",
+        "reason": "宏觀尖帽的前緣幾何與質量平衡不回答附著不同時冰裂而留或整盤翹起。"
+      },
+      {
+        "a": "S49-003",
+        "b": "D2042",
+        "reason": "刮桶壁主動移走冰層改混合與傳熱；本題未外加刮刀時熱應力自行裂或剝離。"
+      },
+      {
+        "a": "S49-004",
+        "b": "S46-007",
+        "reason": "S46-007泡逸出攪水加快融化；本題凍結中泡心固定、濃度梯度靠近而改傳質。"
+      },
+      {
+        "a": "S49-004",
+        "b": "P27001",
+        "reason": "溶質改潤濕及冰柱滴流路徑，不包含固定泡周圍移動濃度場的三層模型對照。"
+      },
+      {
+        "a": "S49-004",
+        "b": "K6004",
+        "reason": "K6004經氣相在冰水之間轉移水；本題是液相中溶解氣體向泡傳質與移動排氣前緣。"
+      },
+      {
+        "a": "S49-004",
+        "b": "P27002",
+        "reason": "管口供水與凍結維持細冰刺；本題尚未接觸前的氣體濃度場與泡生長，沒有管端幾何回饋。"
+      },
+      {
+        "a": "S49-004",
+        "b": "S46-006",
+        "reason": "淡水密度反常改融冰流向與形狀；本題成冰排氣改擴散供給，且泡位置近乎不動。"
+      },
+      {
+        "a": "S49-005",
+        "b": "S46-006",
+        "reason": "融冰浮力流向與尖端反轉不同於低壓凍結時非對稱蒸發動量／跳向。"
+      },
+      {
+        "a": "S49-005",
+        "b": "P24001",
+        "reason": "尖帽是末期前緣幾何與增體積；本題滴離面時仍多為液體，檢驗蒸發動量重導向。"
+      },
+      {
+        "a": "S49-005",
+        "b": "S46-004",
+        "reason": "內部冰孔融化的熱收支不含起冰位置與離面方向的關聯。"
+      },
+      {
+        "a": "S49-005",
+        "b": "N167",
+        "reason": "降水接觸前後相態不能回答靜置超疏水滴在低壓起冰後的定向離面。"
+      },
+      {
+        "a": "S49-001",
+        "b": "I12002",
+        "reason": "I12002是液體突破疏水紋理含氣狀態而黏住；本題乾玻璃／砂紙展膜噴滴，未使用該潤濕轉換作答案。"
+      },
+      {
+        "a": "S49-001",
+        "b": "I12008",
+        "reason": "I12008是濕層前薄氣膜排空相對回彈的時間窗；本題改氣壓分辨冠狀與粗糙前緣噴滴，不是彈離前是否接通。"
+      },
+      {
+        "a": "S49-001",
+        "b": "X38-006",
+        "reason": "X38-006看攜砂與滲走後殘留環／團；本題硬面粗糙擾動噴滴，不含可搬動顆粒床。"
+      },
+      {
+        "a": "S49-001",
+        "b": "F14008",
+        "reason": "F14008氣膜承載及人工指腹彈跳減摩，與氣壓參與液片飛濺的控制方向／觀察不同。"
+      },
+      {
+        "a": "S49-002",
+        "b": "K6004",
+        "reason": "K6004回答後半同溫冰水水汽轉移；本題新增放熱使中心先為源、凍完轉匯的同步時序，末段不另算一核。"
+      },
+      {
+        "a": "S49-002",
+        "b": "P210",
+        "reason": "P210定溫密閉宏觀平衡；本題局部開放、相變溫度瞬變造成空間質量交換方向反轉。"
+      },
+      {
+        "a": "S49-002",
+        "b": "K6003",
+        "reason": "K6003是雲滴持續凝結的熱質傳瓶頸；本題同一凍結事件周圍先增滴再退滴。"
+      },
+      {
+        "a": "S49-003",
+        "b": "D2183",
+        "reason": "D2183改外載方向和剝離路徑；本題同類熱載入下改界面，使冰裂或脫層，不由橫拉／掀角直接回答。"
+      },
+      {
+        "a": "S49-003",
+        "b": "X39-002",
+        "reason": "X39-002裂尖與剝離前緣耦合選等寬帶；本題以表面處理分裂內聚／整盤脫附，不含條帶選寬。"
+      },
+      {
+        "a": "S49-003",
+        "b": "P053",
+        "reason": "P053是液態滴靜態潤濕形狀；本題固化後冷縮受約束的失效，接觸角只表徵界面條件。"
+      },
+      {
+        "a": "S49-004",
+        "b": "N183",
+        "reason": "N183只有結冰排鹽；本題前緣未觸泡時，濃度梯度及其移動分別加入才重現非定速增長。"
+      },
+      {
+        "a": "S49-004",
+        "b": "R40006",
+        "reason": "R40006解凍後水柱負壓使泡擴大；本題成冰中富氣前緣靠近固定泡而增傳質，不含導水栓塞。"
+      },
+      {
+        "a": "S49-005",
+        "b": "P004",
+        "reason": "P004氣墊減阻；本題起冰角與跳角的反向關係區分非對稱蒸發動量與底部支承，不只氣墊。"
+      },
+      {
+        "a": "S49-005",
+        "b": "I12013",
+        "reason": "I12013撞擊後微柱儲存／釋放毛細能；本題先靜置再凍結，能量與角度控制不同。"
+      },
+      {
+        "a": "S49-005",
+        "b": "U8001",
+        "reason": "U8001合滴降低表面能並發射孢子；本題沒有兩滴合併，而以相變區域蒸發動量及液核互動解釋。"
+      },
+      {
+        "a": "S49-003",
+        "b": "D2198",
+        "reason": "D2198纖維本體／接合失效是弱點分類；本題同冷卻條件改界面，受約束冷縮及彎曲釋能造成裂而貼／剝離的可見分岔，非單換冰材料。"
+      },
+      {
+        "a": "S49-003",
+        "b": "H3060",
+        "reason": "H3060裂長、載荷、韌性的擴裂門檻是背景；本題比較熱應力下內聚裂和界面脫開兩個競爭路徑。"
+      },
+      {
+        "a": "S49-004",
+        "b": "N159",
+        "reason": "N159以凍結速度和排泡解透明度；本題追冰接觸前固定泡的生長曲線，需移動濃度梯度的控制分拆。"
+      },
+      {
+        "a": "S49-004",
+        "b": "L49-004",
+        "reason": "L49-004泡雲上升捲動補CO₂維持快速增長；本題固定泡旁冰前緣靠近，主分析是擴散濃度場，沒有泡雲浮力回饋。"
       }
     ],
     "excluded": [
@@ -432773,10 +434976,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-03-pool-3514",
-    "target_count": 3514,
+    "revision": "2026-11-03-pool-3528",
+    "target_count": 3528,
     "reviewed_on": "2026-11-03",
-    "reason": "從3501續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3514續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -436291,7 +438494,21 @@
       "S48-002",
       "S48-003",
       "S48-004",
-      "S48-005"
+      "S48-005",
+      "L49-001",
+      "L49-002",
+      "L49-003",
+      "L49-004",
+      "L49-005",
+      "P49-001",
+      "P49-002",
+      "P49-003",
+      "P49-004",
+      "S49-001",
+      "S49-002",
+      "S49-003",
+      "S49-004",
+      "S49-005"
     ],
     "overflow": [
       {
@@ -459718,6 +461935,569 @@
       "reentry_condition": "獨立於液面參數失穩的控制。",
       "origin": "wave48-physics-20261103",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "S49-NA001",
+      "question": "兩顆小水珠合併後跳離表面？",
+      "existing_ids": [
+        "U8001"
+      ],
+      "source_ids": [],
+      "reason": "合滴表面能發射已有；I12-NA08已退，不換成凝露再收。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA002",
+      "question": "水滴為何結冰後鼓成尖帽？",
+      "existing_ids": [
+        "P24001"
+      ],
+      "source_ids": [],
+      "reason": "凍結前緣與體積平衡已有。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA003",
+      "question": "水滴凍成外殼後爆開？",
+      "existing_ids": [
+        "P24002"
+      ],
+      "source_ids": [],
+      "reason": "內水受壓及反覆裂癒已有，不拆冰殼階段。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA004",
+      "question": "雨滴打土壤怎麼放出氣味？",
+      "existing_ids": [
+        "LEG-S56"
+      ],
+      "source_ids": [],
+      "reason": "雨滴氣溶膠已有，X38-NA003與S48-NA001已退。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA005",
+      "question": "水滴落在葉上再拋起別滴？",
+      "existing_ids": [
+        "X38-003"
+      ],
+      "source_ids": [],
+      "reason": "葉片運動與直接液片已有，不按植物換例。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA006",
+      "question": "過冷水碰冰就結冰？",
+      "existing_ids": [
+        "N167",
+        "K6024"
+      ],
+      "source_ids": [],
+      "reason": "一般過冷／接觸凍結不足新核心。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA007",
+      "question": "冰晶隔空讓水滴縮小？",
+      "existing_ids": [
+        "K6004"
+      ],
+      "source_ids": [
+        "S49-S003"
+      ],
+      "reason": "本輪暈環只收完整供汽→回收反轉，不將末段舊機制另核。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA008",
+      "question": "結霜冰橋的長短各收一題？",
+      "existing_ids": [
+        "K6004"
+      ],
+      "source_ids": [
+        "S49-S003"
+      ],
+      "reason": "同一水汽傳遞與接觸後凍結，尚無足夠另一主問題。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA009",
+      "question": "每一種低壓氣體和每個撞速各收止濺一題？",
+      "existing_ids": [
+        "S49-001"
+      ],
+      "source_ids": [
+        "S49-S001",
+        "S49-S002"
+      ],
+      "reason": "同核控制與邊界，不按參數拆。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA010",
+      "question": "微柱愈高為什麼愈不濺？",
+      "existing_ids": [],
+      "source_ids": [
+        "S49-S007"
+      ],
+      "reason": "已讀arXiv physics/0702098v2 pp1–2；文中仍稱高柱抑制prompt路徑原因不明，本輪不將猜測改完整答案。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "source_url": "https://arxiv.org/pdf/physics/0702098v2",
+      "reading_status": "有效UA PDF pp1–2正文已讀；非採用候選來源。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA011",
+      "question": "冰盤只要更不沾水就一定自己飛走？",
+      "existing_ids": [
+        "S49-003"
+      ],
+      "source_ids": [
+        "S49-S004"
+      ],
+      "reason": "未驗更高紋理疏水面，完全剝離後另吹氣才移走；不收普遍承諾。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA012",
+      "question": "小水滴都能在真空中凍著跳起？",
+      "existing_ids": [
+        "S49-005"
+      ],
+      "source_ids": [
+        "S49-S006"
+      ],
+      "reason": "小滴可先乾掉，大滴另有懸浮區，不能抹掉尺度／壓力界線。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA013",
+      "question": "冷水為什麼總比熱水慢凍？",
+      "existing_ids": [
+        "LEG-S49"
+      ],
+      "source_ids": [],
+      "reason": "姆潘巴泛問已有且不是固定通則。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA014",
+      "question": "冷板不見暈環表示完全沒有水汽轉移？",
+      "existing_ids": [
+        "S49-002"
+      ],
+      "source_ids": [
+        "S49-S003"
+      ],
+      "reason": "解析度、導熱及濕潤都影響可見性，不以未看見判零轉移。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA015",
+      "question": "窗霜像樹枝是另一個新雪花機制？",
+      "existing_ids": [
+        "N276"
+      ],
+      "source_ids": [],
+      "reason": "未取得另一可區分控制的指定原研究，僅換生長位置不收。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "S49-NA016",
+      "question": "粗糙面冠狀濺與prompt噴滴各算一題？",
+      "existing_ids": [
+        "S49-001"
+      ],
+      "source_ids": [
+        "S49-S001"
+      ],
+      "reason": "本輪用同一氣壓控制反差辨兩路，留一核不拆名詞。",
+      "reentry_condition": "須有能區分舊答案的新原始對照與正文，僅換物件／參數不足。",
+      "origin": "wave49-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-earth.json"
+    },
+    {
+      "id": "L49-NA001",
+      "question": "洋蔥切下去，為什麼會噴出小液滴？",
+      "existing_ids": [
+        "R39002"
+      ],
+      "source_ids": [],
+      "reason": "已收同一2025切洋蔥原研究，刀刃/速度變因不再拆核。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA002",
+      "question": "番茄醬剛搖完為什麼更好倒？",
+      "existing_ids": [
+        "F8006"
+      ],
+      "source_ids": [],
+      "reason": "受剪切結構破壞與恢復已收；新氣腔題不吞併這個不同流變機制。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA003",
+      "question": "麵糊加熱為什麼會變稠？",
+      "existing_ids": [
+        "F4003"
+      ],
+      "source_ids": [],
+      "reason": "澱粉吸水糊化已有，不把小麥改米粉重新計數。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA004",
+      "question": "米飯煮軟就一定更黏嗎？",
+      "existing_ids": [
+        "F4027"
+      ],
+      "source_ids": [],
+      "reason": "表面溶出澱粉與本體硬度的區別已有。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA005",
+      "question": "乾麵條扭一下為什麼比較不會斷成三段？",
+      "existing_ids": [
+        "F15001"
+      ],
+      "source_ids": [],
+      "reason": "彎曲波與扭轉釋放已收同原研究。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA006",
+      "question": "壓了紋的麵片為什麼下鍋會捲？",
+      "existing_ids": [
+        "F15002"
+      ],
+      "source_ids": [],
+      "reason": "差異吸液與接觸鎖形已有。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA007",
+      "question": "夾心餅乾扭開，奶油怎麼大多留在一邊？",
+      "existing_ids": [
+        "D2198"
+      ],
+      "source_ids": [],
+      "reason": "舊F15-NA19已指出界面/內聚破壞邊界；本輪只讀作者公開說明，原AIP正文403，未找到足以超越既有弱界面核心的完整控制，不收。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA008",
+      "question": "曼陀珠讓可樂噴出是不是化學反應？",
+      "existing_ids": [
+        "LEG-S72"
+      ],
+      "source_ids": [],
+      "reason": "粗糙面成核及氣體逸出已有，不以換糖果重收。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA009",
+      "question": "氣泡飲開瓶後怎麼慢慢沒氣？",
+      "existing_ids": [
+        "P230"
+      ],
+      "source_ids": [],
+      "reason": "分壓下降帶來非平衡逸出已收，不以啤酒代可樂另算。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA010",
+      "question": "冰淇淋放久為什麼會粗糙？",
+      "existing_ids": [
+        "D2045"
+      ],
+      "source_ids": [],
+      "reason": "穩定劑/未凍相與晶體成長已有，無另取新干預原文。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA011",
+      "question": "炸物離鍋冷卻後為什麼還會吸油？",
+      "existing_ids": [
+        "F4026"
+      ],
+      "source_ids": [],
+      "reason": "蒸氣冷凝/孔隙壓差既有，不把食材換名。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA012",
+      "question": "巧克力只混一點水怎麼結團？",
+      "existing_ids": [
+        "F8003"
+      ],
+      "source_ids": [],
+      "reason": "少水潤濕顆粒聚團已收，本輪不補不存在的液橋測量。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA013",
+      "question": "加工乳酪怎麼比較能平順融化？",
+      "existing_ids": [
+        "F8004"
+      ],
+      "source_ids": [],
+      "reason": "乳化鹽改鈣連結的核心已有。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA014",
+      "question": "蜂蜜結晶就是加了糖嗎？",
+      "existing_ids": [
+        "P232"
+      ],
+      "source_ids": [],
+      "reason": "P232已收過飽和與成核條件的背景；本輪未讀支持蜂蜜真偽判別的原始干預，不能單憑結晶判真偽。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA015",
+      "question": "茶加檸檬後皮變弱，是否值得另收一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "L49-S001"
+      ],
+      "reason": "本輪茶文酸添加只有一次試驗，且仍是同一界面膜的離子可用性條件；留來源限制，不拆核。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "L49-NA016",
+      "question": "同樣的濕麵條加鹽後，能否用黏合長度直接找最佳口感？",
+      "existing_ids": [],
+      "source_ids": [
+        "L49-S005"
+      ],
+      "reason": "同篇鹽/口感延伸有模型與普遍化限制，沒有獨立味覺驗證，不把時間/鹽量拆成新核。",
+      "reentry_condition": "需可實讀原研究正文且有既有答案未含的控制/因果；若僅同機制的食材、參數或畫面變體，併舊或留段落。",
+      "origin": "wave49-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-life.json"
+    },
+    {
+      "id": "P49-NA001",
+      "question": "兩本交錯電話簿為什麼難拉開？",
+      "existing_ids": [
+        "X5001"
+      ],
+      "reason": "本輪只剩軸向拉力變法向接觸並放大摩擦；尚無超出紗線自增壓核心的新控制。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "prior_not_added_id": "K18-NA001",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA002",
+      "question": "紙濕一面後為什麼彎曲？",
+      "existing_ids": [
+        "P076",
+        "F15002"
+      ],
+      "reason": "只剩厚度方向不等膨脹；已篩到濕紙研究題名，未另讀正文，不以材料名稱增核。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA003",
+      "question": "多疊幾張紙，彎起來為什麼更費力？",
+      "existing_ids": [
+        "P44-001"
+      ],
+      "reason": "層間摩擦及平均每片受力已在舊核；不再以紙牌替換書頁。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA004",
+      "question": "摺線拉住不動，力為什麼慢慢掉？",
+      "existing_ids": [
+        "H3090"
+      ],
+      "reason": "只有單調應力鬆弛仍回舊核；本批另提的是兩段歷史後反向演化。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "prior_not_added_id": "P44-NA018",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA005",
+      "question": "揉皺紙球為什麼慢慢變鬆？",
+      "existing_ids": [
+        "H3090",
+        "K11013"
+      ],
+      "reason": "單看慢漂移不足。新P49-003必須保留等候後部分卸載及反向峰。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "prior_not_added_id": "K11-NA11",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA006",
+      "question": "針織布為什麼比直線更能伸長？",
+      "existing_ids": [
+        "X5002"
+      ],
+      "reason": "線圈展開舊核；本批只保初始卡住到軟化的新受限機制。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA007",
+      "question": "不同針法各自為什麼有不同伸縮方向？",
+      "existing_ids": [
+        "X5002"
+      ],
+      "reason": "同一拓撲/線圈幾何解答，不逐針法拆。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "prior_not_added_id": "X5041",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA008",
+      "question": "針織布拉出收回的曲線為什麼不同？",
+      "existing_ids": [
+        "X5003"
+      ],
+      "reason": "接觸摩擦耗能已有；不借新研究題名重收。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA009",
+      "question": "鬆開的毛衣邊緣為什麼自捲？",
+      "existing_ids": [
+        "X5004"
+      ],
+      "reason": "內部線圈力矩已有；不和刮帶屈服混成新泛捲曲題。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA010",
+      "question": "纖維拉出裂縫為什麼能耗能？",
+      "existing_ids": [
+        "H3063"
+      ],
+      "reason": "橋接/脫黏核心已收；本批新題須保強界面對兩個疲勞門檻的相反效應。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA011",
+      "question": "裂痕越長為什麼可能一下斷開？",
+      "existing_ids": [
+        "H3060"
+      ],
+      "reason": "裂長/應力/韌性門檻已收，沒有本批新增控制。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA012",
+      "question": "針織布滑動時小跳變是不是一題？",
+      "existing_ids": [
+        "N116",
+        "P005",
+        "X5003"
+      ],
+      "reason": "舊X5049已記滑移雪崩近對；本輪未補足不同微觀因果，不重開。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "prior_not_added_id": "X5049",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA013",
+      "question": "剪刀剪紙、布、薄塑膠各算一個機制嗎？",
+      "existing_ids": [
+        "P041"
+      ],
+      "reason": "只篩到切割力模型研究；尚未讀能超出槓桿/斷裂的控制，未加入。",
+      "reentry_condition": "需有不同於舊答案的控制與直接正文支持。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
+    },
+    {
+      "id": "P49-NA014",
+      "question": "泡棉卸載後力先升再降，可否另收一題？",
+      "existing_ids": [],
+      "reason": "同P49-003同文、同兩段歷史及快慢鬆弛模型，只是另一材料重現。",
+      "reentry_condition": "有不同答案才另提，現在保為P49-003支持範圍。",
+      "origin": "wave49-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave49-physics.json"
     },
     {
       "id": "A5-NA01",
