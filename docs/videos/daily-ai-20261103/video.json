@@ -28,7 +28,7 @@
   },
   "subtitles": {
     "burn_in": false,
-    "speaker_prefix": true
+    "speaker_prefix": false
   },
   "music": {
     "prompt": "lo-fi electronic news bed, steady pulse, warm synth pads, no vocals, unobtrusive under speech"
@@ -337,10 +337,6 @@
           "id": "f00v",
           "text": "這裡是 Tech Signal 科技訊號，從一堆雜訊裡，挑出今天真正重要的訊號。",
           "emotion": "固定開場句，輕快不趕"
-        },
-        {
-          "id": "v99s",
-          "text": "我是 Sola。"
         }
       ]
     },
@@ -356,6 +352,10 @@
         "c3"
       ],
       "lines": [
+        {
+          "id": "v99s",
+          "text": "我是 Sola。"
+        },
         {
           "id": "pnuf",
           "speaker": "kai",
@@ -1239,7 +1239,19 @@
           "speaker": "kai",
           "text": "一千……百萬瓦？這到底是多少？",
           "emotion": "愣住，拉長"
-        },
+        }
+      ]
+    },
+    {
+      "id": "hl-number-ac",
+      "template": "big",
+      "data": {
+        "kicker": "The Verge's comparison",
+        "text": "~700,000 homes",
+        "sub": "running air conditioning · The Verge",
+        "key": "AC for ~700k homes"
+      },
+      "lines": [
         {
           "id": "pb84",
           "text": "The Verge 報導說，大約夠七十萬戶人家開冷氣。",
