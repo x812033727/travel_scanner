@@ -20,7 +20,12 @@ from pydantic import ValidationError
 from app.db import get_session
 from app.models import VideoToolToken
 from app.video_reviews import admin_api, admin_service
-from app.video_reviews.clips import MAX_CLIP_FILES, SubmittedReview
+from app.video_reviews.clips import (
+    MAX_BACKUP_FILES,
+    MAX_CLIP_FILES,
+    MAX_KEYFRAME_FILES,
+    SubmittedReview,
+)
 from app.video_reviews.schemas import MAX_REVIEW_FILES, ReviewOut
 from app.video_speech import admin_api as speech_api
 
@@ -55,7 +60,7 @@ def test_a_package_carries_its_clips_beside_its_own_48_files() -> None:
 
 
 def test_clips_never_make_room_for_more_package_files() -> None:
-    with pytest.raises(ValidationError, match="at most 48 files besides clips"):
+    with pytest.raises(ValidationError, match="at most 48 files besides the backup tier's"):
         _review("publish", [*_package(extra=1), _file("clip_s01-t1")])
 
 
@@ -65,6 +70,35 @@ def test_too_many_clips_or_a_clip_that_is_not_an_mp4_is_refused() -> None:
         _review("publish", clips)
     with pytest.raises(ValidationError, match="is an mp4"):
         _review("publish", [_file("clip_s01-t1", "image/png")])
+
+
+def test_a_package_pushed_by_hand_carries_the_rest_of_the_full_tier_beside_its_48() -> None:
+    """review-push from a cloud session (owner, 2026-11-03): keyframes, narration.wav,
+    timeline.json and the line recordings ride with the package so the host holds them all."""
+    keyframes = [_file(f"kf_ch1-{index:03d}", "image/jpeg") for index in range(MAX_KEYFRAME_FILES)]
+    backup = [
+        _file("keyframes_manifest", "application/json"),
+        _file("full_narration", "audio/wav"),
+        _file("full_timeline", "application/json"),
+        _file("recordings_manifest", "application/json"),
+        *[_file(f"recording_x{index}", "audio/wav") for index in range(MAX_BACKUP_FILES - 4)],
+    ]
+    review = _review("publish", [*_package(), *keyframes, *backup])
+    assert len(review.files) == MAX_REVIEW_FILES + MAX_KEYFRAME_FILES + MAX_BACKUP_FILES
+    with pytest.raises(ValidationError, match="at most 400 keyframes"):
+        _review("publish", [*keyframes, _file("kf_extra", "image/png")])
+    with pytest.raises(ValidationError, match="other backup-tier files"):
+        _review("publish", [*backup, _file("recording_y", "audio/wav")])
+    with pytest.raises(ValidationError, match="png or a jpeg"):
+        _review("publish", [_file("kf_ch1-001", "video/mp4")])
+    with pytest.raises(ValidationError, match="at most 48 files besides the backup tier's"):
+        _review("publish", [*_package(extra=1), *keyframes[:1]])
+
+
+@pytest.mark.parametrize("gate", ["final", "languages", "storyboard"])
+def test_only_the_publish_gate_takes_keyframes(gate: str) -> None:
+    with pytest.raises(ValidationError, match="only an upload package"):
+        _review(gate, [_file("preview"), _file("kf_ch1-001", "image/png")])
 
 
 @pytest.mark.parametrize("gate", ["final", "languages", "storyboard"])
