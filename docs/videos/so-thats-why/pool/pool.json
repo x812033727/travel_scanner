@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-03-pool-3528",
+  "revision": "2026-11-03-pool-3542",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3917,
-    "canonical_questions": 3757,
-    "eligible_candidates": 3587,
-    "selected_candidates": 3528,
+    "raw_records": 3931,
+    "canonical_questions": 3771,
+    "eligible_candidates": 3601,
+    "selected_candidates": 3542,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 4909,
-    "current_research_source_urls": 1953,
-    "selected_source_urls": 3127,
-    "new_suggestions_not_added": 2182,
+    "source_urls": 4923,
+    "current_research_source_urls": 1967,
+    "selected_source_urls": 3141,
+    "new_suggestions_not_added": 2234,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "0a30d947f5b58ff4cbaaed13330cfd374a4405f55ab468947ae5c1c839ed6a6f"
+      "sha256": "0303cccdd47abb4c0385d58fba795c9350f4c99915bf839745fec096f63b1440"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -396,6 +396,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3514.json.gz",
       "sha256": "8ee3aa6d269cb43b4aef5d564a878eebb6ebd70334ebdcbe42957d8224829ee7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3528.json",
+      "sha256": "610f9193df03faff06fce1bb386ee7c4f0b61d5b46b34f477dd7b0077d6b4d01"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3528.json.gz",
+      "sha256": "f9fad0a5abf08c5d5b64c5e301d6d18606fa627bfc6809fe407d32f04e459672"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1802,6 +1810,22 @@
       "sha256": "ca15bff6e62bbbe4a7377c0fc36f0ab2be68b20ab9dbd1a3f1cfdc94863895ab"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json",
+      "sha256": "b4ab478a7a9cfead3026b913eab57f8947a32b17220e40bbc70060c13a0f622b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave50-human.json",
+      "sha256": "4718f154ec93e6d04026fb443e145d2d89361080b3088ed57647c98d9284f444"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave50-life.json",
+      "sha256": "fb74a4aefa7683a46f2e4db5edf89c97a61368d5cb125b04e73210eeee5ab190"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json",
+      "sha256": "56fdacc7a9914d6ac41326de0a6e256163d71cc38067b99ccc95face0dae772a"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave6-mechanisms.json",
       "sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2"
     },
@@ -1887,11 +1911,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "4777c10d7fd445fbd651cb7a53da5abf6f116707f6814624a146facf3df41ecb"
+      "sha256": "354342c6d578e89381182a497e6bc5cf7aa059f3e7fa9a8f33910f2e92938fc9"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "5950d104b3fe4e4fef8b01bacfccb6e2b802df53fff0fde1d33e4e8d1f0b6c2c"
+      "sha256": "03ad346fbf3ea186128210a9de9ce495b3c9e726d21047f3c634dba577b078be"
     }
   ],
   "sources": [
@@ -4467,6 +4491,41 @@
       ]
     },
     {
+      "id": "SRC-069b58585698f801",
+      "url": "https://www.nature.com/articles/s41559-017-0231-6",
+      "readings": [
+        {
+          "title": "Induced defences in plants reduce herbivory by increasing cannibalism",
+          "doi": "10.1038/s41559-017-0231-6",
+          "publisher": "Nature Ecology & Evolution",
+          "version": "2017正式版1:1205–1207附原Supplementary Information；作者UW–Madison實驗室公開合併PDF，非新增重複研究",
+          "canonical_url": "https://doi.org/10.1038/s41559-017-0231-6",
+          "retrieval_url": "https://orrocklab.biology.wisc.edu/wp-content/uploads/sites/264/2019/08/orrock_et_al_NEE_2017_with_supplement.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web原刊/大學典藏定位；Gonzaga PDF403、搜尋索引舊實驗室域PDF404；從作者現行publications頁實際連結由指定UA取有效12頁PDF。",
+          "reading_scope": "PDF pp1–3完整主文/Methods；pp5–7補充方法、Supporting Results。目讀p2 Fig1a–d；未目讀SI FigsS1–S5，未重分析原始數據。",
+          "locator": "PDF pp1–3 Fig1a–d、Experiment1/2；pp5–7 SI計數假設與單隻進食/葉水分損失",
+          "summary": "誘發番茄防禦後，群養幼蟲較早互食；另給單隻已死同類的實驗顯示，轉食同類還能減少每隻吃葉量。",
+          "limitations": "容器限制逃離；群養消失數以互食推算，有直接觀察支持但非逐次錄影。單隻試驗提供已死同類，不是直接量殺同類意願。未分離哪個防禦化合物致效；SI p6有重複群養八隻段，單隻設計以主文pp2–3及SI結果p7為準。不推成野外必然或農藥建議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-life-cannibal.pdf",
+            "sha256": "ab9c150d88c845aed87ff86f92f59268c657c89be1396302365be36d784cf3ea",
+            "text_file": ".cache/wave50-life-cannibal.txt",
+            "text_sha256": "e62c0055a378867d3f9330877b2395f9aa6afab5f0523c4198814168e18dc4be",
+            "additional_files": [
+              {
+                "file": ".cache/wave50-life-cannibal-p2.png",
+                "sha256": "18a31a439f641c9d36ea36b3b535a3506c22d630fa6ef7480d920eb4720061a0"
+              }
+            ]
+          },
+          "origin": "wave50-life",
+          "original_url": "https://www.nature.com/articles/s41559-017-0231-6"
+        }
+      ]
+    },
+    {
       "id": "SRC-06ca981a6d798302",
       "url": "https://avmet.navcanada.ca/en/low-level-jet.aspx",
       "readings": [
@@ -5234,6 +5293,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1016/j.jaad.2005.11.1082"
+        }
+      ]
+    },
+    {
+      "id": "SRC-099de7a51bc4a21e",
+      "url": "https://doi.org/10.1364/OL.32.002309",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1364/OL.32.002309",
+          "doi": "10.1364/OL.32.002309",
+          "retrieval_url": "https://nano-cops.com/app/uploads/2018/06/Focusing_light_OptLett-3.pdf",
+          "title": "Focusing coherent light through opaque strongly scattering media",
+          "publisher": "Vellekoop、Mosk；Optics Letters 32(16),2309–2311 (2007)",
+          "version": "原刊2007-08-02線上、2007-08-15期；作者nano-cops庫刊本。早期arXiv cond-mat/0604253題名不同，本輪只核身分不採作另證。",
+          "accessed_on": "2026-11-03",
+          "read_via": "web讀作者團隊出版頁及原PDF連結，指定UA PDF200；全文指定段及兩頁原圖目讀。",
+          "reading_scope": "PDF pp1–3正文、Fig1–4與Table1；未讀其引文、影片或原始碼。",
+          "locator": "PDF pp1–3正文、Fig1–4與Table1；未讀其引文、影片或原始碼。",
+          "summary": "逐區改入射相位，以另一側目標亮度回饋，讓散射後的場在目標同相相加形成亮點。",
+          "limitations": "相干光、穩定散射樣本，需目標側偵測回饋。增亮是目標點相對原平均，不是總透光率增加千倍。Fig4飽和以有限散斑維持時間等解釋；未展示活組織即時控制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-physics-wavefront.pdf",
+            "sha256": "859e637865bc30132b72457d6789eb99d283c52a7e64b5f06489e44fb023778c",
+            "text_file": ".cache/wave50-physics-wavefront.txt",
+            "text_sha256": "2ffeac3a4fc7cfe19a2f5eed25ddd07502dd5acedfec482503e02a114a0a36dd"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave50-physics-wavefront-p2.png",
+              "sha256": "8ec941add3da98ffdda8d8d915fec3591d667bfe231fd89e09f91da38b930a1c",
+              "read_scope": "Fig2裝置與Fig3未整形/整形/五焦點，光強同對數色標；不是把層挖洞。"
+            },
+            {
+              "file": ".cache/wave50-physics-wavefront-p3.png",
+              "sha256": "ce0f82e5fc1fbbb68dcdf98d94924d0d5311179c47f6dbb21f98eef4b9e717be",
+              "read_scope": "Fig4控制區數/增亮的實測點與理想/修正線，Table1不同散射體不另增核。"
+            }
+          ],
+          "origin": "wave50-physics-20261103",
+          "original_url": "https://doi.org/10.1364/OL.32.002309"
         }
       ]
     },
@@ -26827,6 +26927,35 @@
       ]
     },
     {
+      "id": "SRC-3cb240fc08ed2c31",
+      "url": "https://arxiv.org/pdf/2309.15120v1",
+      "readings": [
+        {
+          "title": "Decorative coating or corrosion product? TEM and SEM Study on a Late Neolithic Axe to find origins of silver metal on the surface",
+          "doi": "10.48550/arXiv.2309.15120",
+          "publisher": "Khurram Saleem等 / arXiv",
+          "version": "arXiv:2309.15120v1，2023-08-21；本次身份頁未列正式期刊版本",
+          "canonical_url": "https://arxiv.org/pdf/2309.15120v1",
+          "retrieval_url": "https://arxiv.org/pdf/2309.15120",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日web查身份及正文路線；指定編輯UA取得有效原研究內容，實讀下列段落及圖。",
+          "reading_scope": "PDF pp3–5 §2.1與§3.1；pp7–11 §3.2、§3.3及Discussion；pp11–12 Conclusion。目讀p5 Fig2與p10 Fig8。",
+          "locator": "PDF pp3–5 §2.1與§3.1；pp7–11 §3.2、§3.3及Discussion；pp11–12 Conclusion。目讀p5 Fig2與p10 Fig8。",
+          "summary": "斧面銀顆粒混在多孔氧化銅層，另做合金腐蝕可使表面銀相對富集，無須先加銀鍍層。",
+          "limitations": "預印本、單件銅斧；人工腐蝕只支持路徑可行，不等於重播數千年。Methods配比95/5與Results94/6不一致，不採精確配比／倍率。Fig8前後尺度不同，不假裝同視野逐顆追蹤；不說排盡所有裝飾可能。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-earth-axe.pdf",
+            "sha256": "c0587e325f98c80fce4a113ec92ad95b87d57fcd1487a068b4d8b3a5e7793e6f",
+            "text_file": ".cache/wave50-earth-axe.txt",
+            "text_sha256": "10e9094f6dec69f1354d734b96e68172159973b454cd34c1ad70aed0e4e83893"
+          },
+          "origin": "wave50-earth-20261103",
+          "original_url": "https://arxiv.org/pdf/2309.15120v1"
+        }
+      ]
+    },
+    {
       "id": "SRC-3cc352284948132c",
       "url": "https://pubmed.ncbi.nlm.nih.gov/21604911/",
       "readings": [
@@ -32856,6 +32985,52 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4d4dcc1414e5045c",
+      "url": "https://doi.org/10.1145/2601097.2601119",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1145/2601097.2601119",
+          "doi": "10.1145/2601097.2601119",
+          "retrieval_url": "https://people.csail.mit.edu/billf/publications/VisualMic_SIGGRAPH2014.pdf",
+          "title": "The visual microphone: Passive recovery of sound from video",
+          "publisher": "Davis、Rubinstein、Wadhwa、Mysore、Durand、Freeman；ACM TOG 33(4),Article79 (2014)",
+          "version": "MIT機構庫標作者最終稿，2014-07；CSAIL作者PDF同文，不把2017回顧算第二研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "web核MIT機構庫DOI/作者最終稿；web PDF超工具大小上限，指定UA取得完整PDF200並抽文/目讀。",
+          "reading_scope": "PDF pp1–4 §§1–4.1、p7 §5.2、pp8–9 §§6–8；Fig4/5/8/9/10/11所列頁已目讀。未完整讀pp5–6人類辨識測試，未播放聲音/影片。",
+          "locator": "PDF pp1–4 §§1–4.1、p7 §5.2、pp8–9 §§6–8；Fig4/5/8/9/10/11所列頁已目讀。未完整讀pp5–6人類辨識測試，未播放聲音/影片。",
+          "summary": "微小表面振動改變影像局部相位；對齊並整合多個有紋理區域，可提取聲致振動訊號。",
+          "limitations": "受控播放/照明/高影格率為主，磚塊比輕物差；聲源與物體分桌避免直接傳振。逐行快門低幀率變體有缺樣和曝光平均限制，非所有影片都可還原清晰語句；此輪未核可聽性，先留段落。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-physics-visualmic.pdf",
+            "sha256": "3c389a1377622d9e022e34dd0307442521b1d61702cc7d3be3c0584296a2f4db",
+            "text_file": ".cache/wave50-physics-visualmic.txt",
+            "text_sha256": "3eabf1b60ec21fe4cd9e3a9f942081ac5123d943106db935eb73e5b468e8ca40"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave50-physics-visualmic-p4.png",
+              "sha256": "0c20d737f687243abe7f733fb7a9dfd62fc2df591b281710535d2245980d36df",
+              "read_scope": "Fig4隔振實驗與Fig5磚/水/紙板/袋/鋁箔掃頻譜；只核圖，不稱已聽錄音。"
+            },
+            {
+              "file": ".cache/wave50-physics-visualmic-p8.png",
+              "sha256": "eba80482b31b23f7f30fb0c3d123c0918aef7659d8f1d15eed1717fbd6ed3bd5",
+              "read_scope": "Fig8訊噪與位移表；Fig9逐行時間/缺樣示意。"
+            },
+            {
+              "file": ".cache/wave50-physics-visualmic-p9.png",
+              "sha256": "c346b12e07badee0a836ac7e502d3720720dc722e16004f6caaee44dbefa09d5",
+              "read_scope": "Fig10零曝光模擬與真相機分開；Fig11難懂語音仍可估音高，不等同語句恢復。"
+            }
+          ],
+          "origin": "wave50-physics-20261103",
+          "original_url": "https://doi.org/10.1145/2601097.2601119"
         }
       ]
     },
@@ -41600,6 +41775,52 @@
       ]
     },
     {
+      "id": "SRC-6303be3abf60fba8",
+      "url": "https://doi.org/10.1038/s41586-018-0868-6",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41586-018-0868-6",
+          "doi": "10.1038/s41586-018-0868-6",
+          "retrieval_url": "https://open.bu.edu/bitstreams/3e7f957b-ed40-45bb-8b8a-b8c09b3caa63/download",
+          "title": "Computational periscopy with an ordinary digital camera",
+          "publisher": "Saunders、Murray-Bruce、Goyal；Nature 565,472–475 (2019)",
+          "version": "期刊2019-01-23；實讀BU機構庫作者接受稿（檔名20181115-word），同一研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "web核期刊/BU身分；web開正文403/timeout，指定UA取得BU PDF200。原刊HTML僅摘要/圖連結；循其原圖URL取Fig1/3/4目讀。",
+          "reading_scope": "PDF pp2–6主文、pp8–9 Fig1–4圖說與p9設備/資料取得；未逐讀pp10–12數學方法、SI或影片。",
+          "locator": "PDF pp2–6主文、pp8–9 Fig1–4圖說與p9設備/資料取得；未逐讀pp10–12數學方法、SI或影片。",
+          "summary": "遮擋使牆上各點混入不同方向的光，半影因此可用來估計藏起來的圖樣。",
+          "limitations": "已知遮擋物形狀/尺寸並估其位置；監視器平面、白色漫反射板和正則化先驗。Fig4輸入平均20次曝光，不稱一次物理快門；不能恢復完全遮住或全處同樣可見的方向。圖為低解析近似，未自行跑演算法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-physics-periscope.pdf",
+            "sha256": "dd4d08bb39e1434c130539478d3b18f80ecc6b107603f42b2c7aabe5151fe08b",
+            "text_file": ".cache/wave50-physics-periscope.txt",
+            "text_sha256": "82008aa73f36bf0b73175ba8010a748de73ab1246d5e26e550179b0b33b07c4d"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave50-physics-periscope-f1.png",
+              "sha256": "805d266a7ded5b02a37f63e72162efeb353edb4d7ed15391cf4c27d20ff78710",
+              "read_scope": "原刊Fig1幾何示意：相機只看牆、已知形狀的遮擋物位置待估。"
+            },
+            {
+              "file": ".cache/wave50-physics-periscope-f3.png",
+              "sha256": "dc5b6b90e6123d5a40ab71a50ac07ea24c7f69503132f54e875031d784cdba87",
+              "read_scope": "原刊Fig3計算視野與最佳條件區，示意非實測照片。"
+            },
+            {
+              "file": ".cache/wave50-physics-periscope-f4.png",
+              "sha256": "95ef2cd36ed2057125b876bee13385caf9bbf68f78f25fbd9c6548278f9be878",
+              "read_scope": "原刊Fig4原圖/量測/三種重建並排；四列不同圖案，非同一場景時間序列。"
+            }
+          ],
+          "origin": "wave50-physics-20261103",
+          "original_url": "https://doi.org/10.1038/s41586-018-0868-6"
+        }
+      ]
+    },
+    {
       "id": "SRC-634628940a410c5a",
       "url": "https://www.wi-fi.org/news-events/newsroom/wi-fi-alliance-introduces-wi-fi-6",
       "readings": [
@@ -44557,6 +44778,52 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://gizmodo.com/the-guy-who-invented-those-annoying-password-rules-now-1797643987"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6b26409942beebd5",
+      "url": "https://doi.org/10.1038/nphoton.2014.189",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/nphoton.2014.189",
+          "doi": "10.1038/nphoton.2014.189",
+          "retrieval_url": "https://blog.espci.fr/pse1/files/2018/03/nphoton.2014.189.pdf",
+          "title": "Non-invasive single-shot imaging through scattering layers and around corners via speckle correlations",
+          "publisher": "Katz、Heidmann、Fink、Gigan；Nature Photonics 8,784–790 (2014)",
+          "version": "原刊2014-08-31；ESPCI同文刊本PDF。arXiv:1403.3316v1是同工作早稿，題名有real-time，不另算研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "web核原文與arXiv身分，PDF web.open timeout；指定UA PDF200，抽文並目讀所列頁圖。",
+          "reading_scope": "PDF pp1–6主文、Eq1–2、Methods與p7相位恢復尾段；Fig1/2/5實際目讀，未讀SI或影片。",
+          "locator": "PDF pp1–6主文、Eq1–2、Methods與p7相位恢復尾段；Fig1/2/5實際目讀，未讀SI或影片。",
+          "summary": "記憶角內的物點產生平移相關散斑；自相關保留物體點間距，再以相位恢復估圖。",
+          "limitations": "窄頻空間非相干照明、小視野/足夠散斑取樣與先驗。Fig1數值模型；Fig2蔥皮列平均10影格，不當單張例。手機另加小孔、通常RAW綠通道；複雜圖案低對比及迭代停滯可失敗，不保證任意彩色實景唯一重建。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-physics-speckle.pdf",
+            "sha256": "6904bed8fde1b4e66007862bdd05e930161ac422a6d80c015a51bf24c646f583",
+            "text_file": ".cache/wave50-physics-speckle.txt",
+            "text_sha256": "8d64fc2bc48c22b05abfa212b2f06654d9dc5bc8342b95778a62dfc4f99b1241"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave50-physics-speckle-p2.png",
+              "sha256": "d72423df076d0bceeea4677ca67637b2779af92cd03c903a82d56b43dc64c830",
+              "read_scope": "Fig1原理與數值示例，散斑/自相關/重建不混成同一張直接照片。"
+            },
+            {
+              "file": ".cache/wave50-physics-speckle-p3.png",
+              "sha256": "dc0ad84a2aa8d74c8ca79458f6e479dc14cb79519bb49321d8ccc788610992de",
+              "read_scope": "Fig2實測擴散片、雞胸、蔥皮；蔥皮10影格平均。"
+            },
+            {
+              "file": ".cache/wave50-physics-speckle-p6.png",
+              "sha256": "a046223cde5ff5c45ddff44432f1ed6bc2f6370e4a532198f92008851510cd6e",
+              "read_scope": "Fig5手機實測/重建/物件；文中另加小孔及RAW限制。"
+            }
+          ],
+          "origin": "wave50-physics-20261103",
+          "original_url": "https://doi.org/10.1038/nphoton.2014.189"
         }
       ]
     },
@@ -50525,6 +50792,41 @@
       ]
     },
     {
+      "id": "SRC-795a252767b53794",
+      "url": "https://doi.org/10.1038/nature01931",
+      "readings": [
+        {
+          "title": "Host sanctions and the legume–rhizobium mutualism",
+          "doi": "10.1038/nature01931",
+          "publisher": "Nature",
+          "version": "2003-09-04正式版425:78–81；UMass作者教學頁保存同文4頁PDF",
+          "canonical_url": "https://doi.org/10.1038/nature01931",
+          "retrieval_url": "https://people.umass.edu/lsadler/adlersite/kiers/HostSanctionsNature1.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web與指定UA皆取得有效原PDF；4頁載體首尾另含鄰文片段，不納入本題。",
+          "reading_scope": "PDF pp1–4本研究主文、Figs1–4圖說與三尺度Methods；目讀p2 Figs2–3。未重算氧測量模型或另讀引用文。",
+          "locator": "PDF pp2–3單根瘤菌數、氧關係與機制討論；p4 Single-nodule experiment/ Split-root experiment",
+          "summary": "局部停止固氮後，根瘤氧通透性與內部氧讀值下降，細菌增殖亦下降；不是整株平均斷供。",
+          "limitations": "同一菌株被近無氮氣處理，並非發現細菌意圖欺騙。氧濃度/通透性由豆血紅蛋白光學讀值計算；降低供氧是支持的可能機制，未直接操弄障壁救回菌數。限制在單菌株大豆根瘤，混合根瘤外推仍未解。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-life-nodule.pdf",
+            "sha256": "dfeca8d1d8b8299aa335a01684c23eb7a8f79082f542e0c776c0613d8447e103",
+            "text_file": ".cache/wave50-life-nodule.txt",
+            "text_sha256": "34ee50757024cda74084823d846e1f451a5ae509cebb80cd22b6ca25e672841e",
+            "additional_files": [
+              {
+                "file": ".cache/wave50-life-nodule-p2.png",
+                "sha256": "e1e475acaae10d9cf65640954cebdab39ee702fa630518ceadf617b074a56ba7"
+              }
+            ]
+          },
+          "origin": "wave50-life",
+          "original_url": "https://doi.org/10.1038/nature01931"
+        }
+      ]
+    },
+    {
       "id": "SRC-795fbe555f188022",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11006549/",
       "readings": [
@@ -53961,6 +54263,49 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ftc.gov.tw/internet/main/doc/docDetail.aspx?uid=171&docid=285&mid=171"
+        }
+      ]
+    },
+    {
+      "id": "SRC-81b880676139e82e",
+      "url": "https://academic.oup.com/plphys/article/158/4/2042/6109342",
+      "readings": [
+        {
+          "title": "Low Red/Far-Red Ratios Reduce Arabidopsis Resistance to Botrytis cinerea and Jasmonate Responses via a COI1-JAZ10-Dependent, Salicylic Acid-Independent Mechanism",
+          "doi": "10.1104/pp.112.193359",
+          "publisher": "American Society of Plant Biologists / Plant Physiology",
+          "version": "2012-02-27上線正式版158:2042–2052；OUP當期刊方正文",
+          "canonical_url": "https://doi.org/10.1104/pp.112.193359",
+          "retrieval_url": "https://oup.silverchair-cdn.com/article-minimal/6109342",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web原刊重導官方CDN正文；指定UA成功取得同頁有效HTML。PMC Web/UA為驗證頁，Europe PMC XML HTTP500，未把它們算正文。",
+          "reading_scope": "HTML BLOCK017–073（Introduction、Results、Discussion、Materials and Methods）；目讀原圖5、6、9，其他只讀圖說；未讀補充資料。",
+          "locator": "BLOCK026–029；035–058；061–067；Figs5/6/9",
+          "summary": "同PAR補遠紅光改變抗灰黴表現；形態與病害控制可分離，部分效果需要JAZ10。",
+          "limitations": "不把低紅/遠紅比等同實際光合作用碳收入已量相同。分配取捨是解釋，未量完整碳收支；2012文尚未釐清phyB接到JAZ10的每一步，不把後續文獻結果填入。感染為研究條件，不提供栽培治療建議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-life-shade-body.html",
+            "sha256": "da6ca12b739715d383d6deadeee3ef21c8d2377c222c2b0c212a80d2b271d919",
+            "text_file": ".cache/wave50-life-shade-body.txt",
+            "text_sha256": "f93268efee2bdfc0cbd2aba26715ab91b95286f5bbc8afa63e3fcfe3428c9915",
+            "additional_files": [
+              {
+                "file": ".cache/wave50-life-shade-f5.jpg",
+                "sha256": "d5e1ad2318dcd49092128a09885a0f01dfe5bf26c7299ee173e78f8dbebc7b4a"
+              },
+              {
+                "file": ".cache/wave50-life-shade-f6.jpg",
+                "sha256": "52295e72d1962565f46ece0ccbad036e6ac343044e6c191d266997aac34f8e4a"
+              },
+              {
+                "file": ".cache/wave50-life-shade-f9.jpg",
+                "sha256": "407521a3a8dac3b783d8a57711f5ef88631188c88a8397018efc444a4593ad74"
+              }
+            ]
+          },
+          "origin": "wave50-life",
+          "original_url": "https://academic.oup.com/plphys/article/158/4/2042/6109342"
         }
       ]
     },
@@ -67152,6 +67497,35 @@
       ]
     },
     {
+      "id": "SRC-a2621359900101a0",
+      "url": "https://link.springer.com/article/10.1007/s10816-020-09451-0",
+      "readings": [
+        {
+          "title": "Bronze Age Swordsmanship: New Insights from Experiments and Wear Analysis",
+          "doi": "10.1007/s10816-020-09451-0",
+          "publisher": "Raphael Hermann、Andrea Dolfini、Rachel J. Crellin、Quanyu Wang、Marion Uckelmann / Journal of Archaeological Method and Theory",
+          "version": "2020正式刊本",
+          "canonical_url": "https://link.springer.com/article/10.1007/s10816-020-09451-0",
+          "retrieval_url": "https://link.springer.com/article/10.1007/s10816-020-09451-0",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日web查身份及正文路線；指定編輯UA取得有效原研究內容，實讀下列段落及圖。",
+          "reading_scope": "Data Analysis、Diagnostic Combat Marks中flat parry段（本機P065–067、P099–108）、Figs17–20；Patterning的限制P110–119。目讀Figs17/19/20。",
+          "locator": "Data Analysis、Diagnostic Combat Marks中flat parry段（本機P065–067、P099–108）、Figs17–20；Patterning的限制P110–119。目讀Figs17/19/20。",
+          "summary": "青銅複製劍以劍身平面擋擊，會一起彎曲並留下斜刮痕，提供對出土組合痕跡的可行解釋。",
+          "limitations": "單次控制對打的材料／幾何／力道有限；古物也可能是刻意毀損，不能唯一還原交戰動作。未看補充影片或重演。UA回傳網址附cookie錯誤查詢但本文完整。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-earth-sword.html",
+            "sha256": "fdf77e52f6086188201d257c6bb05c2c1db65e14708246a37fd7dcaf7e3be2df",
+            "text_file": ".cache/wave50-earth-sword-paragraphs.txt",
+            "text_sha256": "ce4c1a6e9b8aea9b4b3d30ad56330417f07e096f5dd38ec16b3c855af890ee83"
+          },
+          "origin": "wave50-earth-20261103",
+          "original_url": "https://link.springer.com/article/10.1007/s10816-020-09451-0"
+        }
+      ]
+    },
+    {
       "id": "SRC-a2848d0d8734328b",
       "url": "https://propg.ifas.ufl.edu/04-seeds/02-technology/10-seedstesting-tetrazolium.html",
       "readings": [
@@ -67321,6 +67695,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://arxiv.org/abs/1706.08642"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a2fe51c822c645b4",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6731756/",
+      "readings": [
+        {
+          "title": "Birch tar production does not prove Neanderthal behavioral complexity",
+          "doi": "10.1073/pnas.1911137116",
+          "publisher": "Patrick Schmidt等 / PNAS",
+          "version": "2019正式刊本；PMC同文載體",
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6731756/",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6731756/?pdf=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日web查身份及正文路線；指定編輯UA取得有效原研究內容，實讀下列段落及圖。",
+          "reading_scope": "Results中三種燃燒位置對照、Fig1；Results的工具測試／GC–MS；Discussion前三段；Methods。Fig1當日目讀。",
+          "locator": "Results中三種燃燒位置對照、Fig1；Results的工具測試／GC–MS；Discussion前三段；Methods。Fig1當日目讀。",
+          "summary": "燃燒樺樹皮旁的傾斜石面可收集能用的焦油，打破必須先建密閉裝置的前提。",
+          "limitations": "無法判定局部缺氧或較慢氧化何者保住焦油；不由可重現推定古人實際製法或整體認知。補充影片未播放。原PMC UA首次為驗證頁、PNAS PDF及Europe PMC PDF 403、Europe PMC XML 500；最後PMC ?pdf=1回有效HTML而非PDF。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-earth-tar2019-route2.raw",
+            "sha256": "e2e9384d491742f44d7557b63e8a93ea94eaccb0f7c6a7b1d515f43e6a12f9b6",
+            "text_file": ".cache/wave50-earth-tar2019-valid.txt",
+            "text_sha256": "0a3b2673d16cfad517d38770868cd668a02a7afe5ccc75a4c1dd6a6d40a8bc8d"
+          },
+          "origin": "wave50-earth-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6731756/"
         }
       ]
     },
@@ -86940,6 +87343,35 @@
       ]
     },
     {
+      "id": "SRC-d14c9575163a3947",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10202989/",
+      "readings": [
+        {
+          "title": "Production method of the Königsaue birch tar documents cumulative culture in Neanderthals",
+          "doi": "10.1007/s12520-023-01789-2",
+          "publisher": "Patrick Schmidt等 / Archaeological and Anthropological Sciences",
+          "version": "2023-05-22正式刊本；PMC同文載體",
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10202989/",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10202989/",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日web查身份及正文路線；指定編輯UA取得有效原研究內容，實讀下列段落及圖。",
+          "reading_scope": "Methods: Experimental birch tar making；Results: Chemical analysis（本機P036–053）、Figs1–6圖說；Discussion。Fig1/3當日目讀。",
+          "locator": "Methods: Experimental birch tar making；Results: Chemical analysis（本機P036–053）、Figs1–6圖說；Discussion。Fig1/3當日目讀。",
+          "summary": "61個參照樣與兩件實物比較，木栓質相關光譜等線索較符合地下製法。",
+          "limitations": "只在五種參照技術內比較，沒有唯一重建爐形。石英可後污染、多環芳烴古代穩定性未定，不能單用其缺席判製法；不採累積文化的強結論。補充資料未另讀。Web開啟驗證頁，UA取得有效正文。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-earth-tar2023.html",
+            "sha256": "a6a4c67dbd88c9db6688d52aa9febe53eb7bc090ef9d2caa73c10c7f6fd1a92b",
+            "text_file": ".cache/wave50-earth-tar2023-paragraphs.txt",
+            "text_sha256": "dc927cf2c8570dbf51c314deabe0513c61349a5d17d415f1e1802d8b9fc0f752"
+          },
+          "origin": "wave50-earth-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10202989/"
+        }
+      ]
+    },
+    {
       "id": "SRC-d14da04ad73f9b77",
       "url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
       "readings": [
@@ -94363,6 +94795,35 @@
       ]
     },
     {
+      "id": "SRC-e38c327d915ffac6",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163874",
+      "readings": [
+        {
+          "title": "Early Evidence for the Extensive Heat Treatment of Silcrete in the Howiesons Poort at Klipdrift Shelter (Layer PBD, 65 ka), South Africa",
+          "doi": "10.1371/journal.pone.0163874",
+          "publisher": "Anne Delagnes、Patrick Schmidt等 / PLOS ONE",
+          "version": "2016-10-19正式刊本",
+          "canonical_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163874",
+          "retrieval_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163874",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日web查身份及正文路線；指定編輯UA取得有效原研究內容，實讀下列段落及圖。",
+          "reading_scope": "Methods: Experimental reference collection、Macroscopic identification的四項列表；Results: Chronology、Technological advantages（P093–096）；Figs2/5/7/8圖說，Fig2/7目讀。",
+          "locator": "Methods: Experimental reference collection、Macroscopic identification的四項列表；Results: Chronology、Technological advantages（P093–096）；Figs2/5/7/8圖說，Fig2/7目讀。",
+          "summary": "同類石材加熱前後敲出的斷面粗糙度不同，交切疤痕可排列加熱與後續取片的先後。",
+          "limitations": "先比對岩相相近的參照樣，不把所有亮石面視為加熱證據。未被後續疤切過的熱裂不能單獨分辨加工加熱與棄置後被燒；不由此決定唯一爐型或溫度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-earth-silcrete.html",
+            "sha256": "3a1a1511dffb044a2b0c94377406a90477fe8d4d6a603fe0bdfcc48cbdc2d01f",
+            "text_file": ".cache/wave50-earth-silcrete.txt",
+            "text_sha256": "553d82f34d03a4729a383afe459918c35725f6f7d5d5300377e1b5d9a62f3b82"
+          },
+          "origin": "wave50-earth-20261103",
+          "original_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163874"
+        }
+      ]
+    },
+    {
       "id": "SRC-e3b27f199a2c1fba",
       "url": "https://doi.org/10.1038/s41586-023-06203-4",
       "readings": [
@@ -95595,6 +96056,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.unicode.org/Public/UCD/latest/ucd/EmojiSources.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e6a373030d239b5e",
+      "url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Hall-et-al.-2010-Magic-at-the-Marketplace-Choice-Blindness-for-the-Taste-of-Jam-and-the-Smell-of-Tea.pdf",
+      "readings": [
+        {
+          "title": "Magic at the marketplace: Choice blindness for the taste of jam and the smell of tea",
+          "doi": "10.1016/j.cognition.2010.06.010",
+          "publisher": "Lars Hall等 / Cognition",
+          "version": "2010正式刊本；作者實驗室PDF含一頁封面，正文54–61頁",
+          "canonical_url": "https://doi.org/10.1016/j.cognition.2010.06.010",
+          "retrieval_url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Hall-et-al.-2010-Magic-at-the-Marketplace-Choice-Blindness-for-the-Taste-of-Jam-and-the-Smell-of-Tea.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "作者實驗室publication頁的公開PDF，200且PDF內容與書目核合；全文文字實讀並目讀兩圖。",
+          "reading_scope": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+          "locator": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+          "summary": "暗中換成原本沒選的樣品後，許多試次未被察覺；不同樣品配對的察覺程度不同。",
+          "limitations": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-human-choice.pdf",
+            "sha256": "21efddd4ee9c1686f95679e179adb5eac7c5863d74f80dece1aeb00d844f16cc",
+            "text_file": ".cache/wave50-human-choice.txt",
+            "text_sha256": "d1db3e95be9302875fe04351a5a682432c843f7a0cb784632f55632e76a6f3a1"
+          },
+          "origin": "wave50-human-20261103",
+          "original_url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Hall-et-al.-2010-Magic-at-the-Marketplace-Choice-Blindness-for-the-Taste-of-Jam-and-the-Smell-of-Tea.pdf"
         }
       ]
     },
@@ -102569,6 +103059,45 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nownews.com/news/6328168"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f6fc567107d7e0e5",
+      "url": "https://doi.org/10.1073/pnas.1116368109",
+      "readings": [
+        {
+          "title": "Arabidopsis synchronizes jasmonate-mediated defense with insect circadian behavior",
+          "doi": "10.1073/pnas.1116368109",
+          "publisher": "PNAS",
+          "version": "2012正式刊出109(12):4674–4677；UC Davis作者實驗室保存的4頁正式PDF",
+          "canonical_url": "https://doi.org/10.1073/pnas.1116368109",
+          "retrieval_url": "https://malooflab.ucdavis.edu/media/maloof-lab/filer_public/c0/7a/c07a09d0-81b0-420b-9299-43fc6ecf217f/pnas-2012-goodspeed-4674-7.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web定位原研究；PMC Web驗證頁未取正文，指定UA由UC Davis作者庫取得有效PDF。",
+          "reading_scope": "PDF pp1–4主文與方法；目讀p2 Figs1–2、p3 Figs3–4。未另讀SI圖/全文，正文所述常亮重複只作限制背景。",
+          "locator": "Results pp1–3 Figs1–4；p4 Plant Materials、T. ni Handling、Phytohormone Measurements",
+          "summary": "時鐘相位對齊時葉組織損失較少；時鐘或活性茉莉酸途徑缺陷會失去這項優勢。",
+          "limitations": "限擬南芥與所測Trichoplusia ni幼蟲的室內對照，不推所有昆蟲白天進食。時鐘與激素必要性有干預；具體防禦代謝物的每日變化仍是作者解釋，未逐個識別。Fig3圖說P符號不作數值主張。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave50-life-clock.pdf",
+            "sha256": "036bd5b124cae6e50cb92e58a3820b48e34a80362f14c428a2f028cc7c4169fe",
+            "text_file": ".cache/wave50-life-clock.txt",
+            "text_sha256": "f83d399c4a5d756e2f981242de5b1f6fd7e1969f55a72ed8a9a2e25d09086702",
+            "additional_files": [
+              {
+                "file": ".cache/wave50-life-clock-p2.png",
+                "sha256": "96a4c1ce2739ea10cc9bf27ccb893deed10f609f2d782eb38dea6c2a6240d399"
+              },
+              {
+                "file": ".cache/wave50-life-clock-p3.png",
+                "sha256": "340170f0d1176da56cc5d0d11bf4a3531b6627ae45610ba790f95c5f62e16822"
+              }
+            ]
+          },
+          "origin": "wave50-life",
+          "original_url": "https://doi.org/10.1073/pnas.1116368109"
         }
       ]
     },
@@ -258128,6 +258657,594 @@
       "production_ready": false
     },
     {
+      "id": "S50-001",
+      "question": "樺樹焦油一定要在密閉爐裡燒出來嗎？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.birch_tar_open_condensation_feasibility",
+      "answer_target": "實驗中，在石面上直接燒樹皮沒有得到可辨量焦油，改讓火焰靠近傾斜石面，便能刮下黏稠沉積；化學與工具使用測試支持它是能用的樺樹焦油。",
+      "scope": "這是開放燃燒位置的反例，不是所有樺木火都產膠，也不等於出土焦油都採此法。完整化學保留機制未定。",
+      "source_locator": "Results中三種燃燒位置對照、Fig1；Results的工具測試／GC–MS；Discussion前三段；Methods。Fig1當日目讀。",
+      "premise_status": "screened",
+      "notes": "無法判定局部缺氧或較慢氧化何者保住焦油；不由可重現推定古人實際製法或整體認知。補充影片未播放。原PMC UA首次為驗證頁、PNAS PDF及Europe PMC PDF 403、Europe PMC XML 500；最後PMC ?pdf=1回有效HTML而非PDF。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "黑色黏膠的存在，不能單獨證明曾有密閉製作裝置。",
+        "visual": "三個位置原創對照；由Fig1重畫火焰旁石面有沉積，再接黏柄檢驗的不同框。",
+        "seconds": [
+          40,
+          75
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2fe51c822c645b4",
+          "origin": "wave50-earth-20261103",
+          "locator": "Results中三種燃燒位置對照、Fig1；Results的工具測試／GC–MS；Discussion前三段；Methods。Fig1當日目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S50-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S50-002",
+      "question": "都做得出黑色焦油，怎麼再問出土的那兩塊比較像哪種製法？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.birch_tar_reference_fingerprint_transport",
+      "answer_target": "把五種製法得到的61份焦油作參照，兩件Königsaue實物都保有較強的木栓質相關訊號，與地下法參照較相近；上方冷凝的參照通常只有很弱訊號，作者以材料輸送路徑不同解釋。",
+      "scope": "兩件實物與所測參照；分子指紋縮小方法類型，不唯一指定爐形。污染與長期保存會改變部分訊號，尤其不把缺少煙灰相關分子當單一排除證據。",
+      "source_locator": "Methods: Experimental birch tar making；Results: Chemical analysis（本機P036–053）、Figs1–6圖說；Discussion。Fig1/3當日目讀。",
+      "premise_status": "screened",
+      "notes": "只在五種參照技術內比較，沒有唯一重建爐形。石英可後污染、多環芳烴古代穩定性未定，不能單用其缺席判製法；不採累積文化的強結論。補充資料未另讀。Web開啟驗證頁，UA取得有效正文。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "重做成功只能提供候選，還要讓實物的成分去篩候選。",
+        "visual": "Fig1先二分上方冷凝／地下滴取示意，再用Fig3原創簡化六欄光譜；不把曲線直接畫成目擊古代製法。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d14c9575163a3947",
+          "origin": "wave50-earth-20261103",
+          "locator": "Methods: Experimental birch tar making；Results: Chemical analysis（本機P036–053）、Figs1–6圖說；Discussion。Fig1/3當日目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S50-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S50-003",
+      "question": "彎掉的青銅劍，為什麼還要一起看劍身上的斜刮痕？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.bronze_flat_parry_paired_damage",
+      "answer_target": "複製劍以平面擋住來劍後，一起出現彎曲和斜向刮痕，與四件出土劍的組合特徵相近。把形變與接觸痕一起比較，比單說劍彎了更能檢驗可能的受力方式。",
+      "scope": "限這組青銅複製劍、動態平擋試驗與四件古物；支持可行受力路徑，不排除刻意毀損或不同力道／材料造成相近結果。",
+      "source_locator": "Data Analysis、Diagnostic Combat Marks中flat parry段（本機P065–067、P099–108）、Figs17–20；Patterning的限制P110–119。目讀Figs17/19/20。",
+      "premise_status": "screened",
+      "notes": "單次控制對打的材料／幾何／力道有限；古物也可能是刻意毀損，不能唯一還原交戰動作。未看補充影片或重演。UA回傳網址附cookie錯誤查詢但本文完整。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個凹痕可能多解，彼此相連的兩種損傷能多加一道約束。",
+        "visual": "分框重畫Figs17/19/20：試驗來劍方向、彎曲區、刮痕角度；再獨立框放古物對照，非戰鬥實錄。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2621359900101a0",
+          "origin": "wave50-earth-20261103",
+          "locator": "Data Analysis、Diagnostic Combat Marks中flat parry段（本機P065–067、P099–108）、Figs17–20；Patterning的限制P110–119。目讀Figs17/19/20。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S50-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S50-004",
+      "question": "石器被火燒過，怎麼知道它是在做工具時加熱，還是丟掉後才被燒？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.silcrete_heating_knapping_crosscut_sequence",
+      "answer_target": "先用岩相相近的現代石材比較加熱前後的取片疤，再看古物的粗糙舊面、較平滑新疤與熱裂如何交切。若後續取片切過熱裂面，便知道裂後還繼續加工，不能只把它當棄置後燒裂。",
+      "scope": "限Klipdrift PBD矽質岩及相匹配的參照；熱裂未被後疤切過時不具這種時序診斷力。表面光澤單獨不足以認定意圖。",
+      "source_locator": "Methods: Experimental reference collection、Macroscopic identification的四項列表；Results: Chronology、Technological advantages（P093–096）；Figs2/5/7/8圖說，Fig2/7目讀。",
+      "premise_status": "screened",
+      "notes": "先比對岩相相近的參照樣，不把所有亮石面視為加熱證據。未被後續疤切過的熱裂不能單獨分辨加工加熱與棄置後被燒；不由此決定唯一爐型或溫度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "加工留下的先後交切關係，比「看起來燒過」多回答一步。",
+        "visual": "Fig2三種岩材成對斷面分框；Fig7用兩色描舊熱裂面與切過它的新取片疤，先後箭頭標推定。",
+        "seconds": [
+          50,
+          90
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e38c327d915ffac6",
+          "origin": "wave50-earth-20261103",
+          "locator": "Methods: Experimental reference collection、Macroscopic identification的四項列表；Results: Chronology、Technological advantages（P093–096）；Figs2/5/7/8圖說，Fig2/7目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S50-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S50-005",
+      "question": "銅斧表面驗出較多銀，就一定是古人替它鍍銀嗎？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.copper_silver_corrosion_surface_enrichment",
+      "answer_target": "銅斧切面顯示銀顆粒散在多孔氧化層裡，並非只看到一層完整銀皮。另一個合金腐蝕試驗讓銅減少、表面銀相對增加，支持埋藏腐蝕也能留下銀富集的解釋。",
+      "scope": "單件斧與2023預印本對照；表面分布和人工試驗支持腐蝕路徑，不等於證實所有古銀表面皆天然形成。配比文字矛盾不採精確量；前後影像尺度不同。",
+      "source_locator": "PDF pp3–5 §2.1與§3.1；pp7–11 §3.2、§3.3及Discussion；pp11–12 Conclusion。目讀p5 Fig2與p10 Fig8。",
+      "premise_status": "screened",
+      "notes": "預印本、單件銅斧；人工腐蝕只支持路徑可行，不等於重播數千年。Methods配比95/5與Results94/6不一致，不採精確配比／倍率。Fig8前後尺度不同，不假裝同視野逐顆追蹤；不說排盡所有裝飾可能。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "表面多出一種金屬，也可能是另一種被帶走。",
+        "visual": "先用p5 Fig2重畫緻密核心／多孔表層；再分框示意合金試驗前後元素相對改變，保留各自尺度，不增造銀鍍層照片。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3cb240fc08ed2c31",
+          "origin": "wave50-earth-20261103",
+          "locator": "PDF pp3–5 §2.1與§3.1；pp7–11 §3.2、§3.3及Discussion；pp11–12 Conclusion。目讀p5 Fig2與p10 Fig8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S50-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H50-001",
+      "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+      "domain": "認知／選擇與結果核對",
+      "mechanism_key": "cognition.choice_outcome_swap_taste_smell",
+      "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+      "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。",
+      "source_locator": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+      "premise_status": "screened",
+      "notes": "果醬和茶同一操弄，合為一核。僅描述行為控制，不能宣稱唯一腦機制、永久改變偏好或受試者故意說謊。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "選擇本身與後來接到的結果，未必每次都被正確核對。",
+        "visual": "原創雙頭罐剖面與三步流程，再把Fig2最相似/最不相似配對重畫為定性對照；不複製受試者照片。",
+        "seconds": [
+          40,
+          80
+        ]
+      },
+      "origin": "wave50-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e6a373030d239b5e",
+          "origin": "wave50-human-20261103",
+          "locator": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H50-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L50-001",
+      "question": "都放進同樣的黑暗裡，為什麼有些植株還是被毛毛蟲吃得更多？",
+      "domain": "植物時間、防禦與局部資源控制",
+      "mechanism_key": "plant.clock_phase_herbivore_defense_jasmonate",
+      "answer_target": "先把植物作息與幼蟲對齊或錯開十二小時，再一起移入恆暗，葉損仍不同。植物時鐘帶動防禦激素的每日波動，使防禦時段能配上幼蟲的進食高峰；時鐘或活性茉莉酸途徑缺陷時，對齊的優勢消失。",
+      "scope": "限擬南芥與Trichoplusia ni；恆暗24小時後共同取食72小時，不是當場光亮讓蟲看清葉。激素在無蟲下仍有週期；具體代謝物及野外淨效益未全部直接測定。",
+      "source_locator": "PDF pp1–3 Results與Figs1–4；p4植物/幼蟲處理及激素量測",
+      "premise_status": "screened",
+      "notes": "日常鉤子為同樣環境卻有不同蟲損；不重收季節日長或澱粉夜間配給，也不把每個突變另拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂「現在燈一樣」不等於體內時間一樣；時段是否對上，也會改變防禦結果。",
+        "visual": "兩組植株獨立光暗時間條，錯開後都接到同一恆暗區；再比較剩餘葉面。第二框改成時鐘/激素缺陷組，畫對齊優勢消失；激素曲線與蟲食高峰是不同量測，標定性重繪。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave50-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-f6fc567107d7e0e5",
+          "origin": "wave50-life",
+          "locator": "PDF pp1–3 Results與Figs1–4；p4植物/幼蟲處理及激素量測",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L50-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L50-002",
+      "question": "沒有把照植物的光變暗，只改光的比例，為什麼葉片反而更容易出病斑？",
+      "domain": "植物時間、防禦與局部資源控制",
+      "mechanism_key": "plant.neighbor_light_immune_desensitization_uncoupled_elongation",
+      "answer_target": "補遠紅光而不減光合作用有效輻射，會降低擬南芥部分茉莉酸防禦反應並增加灰黴病徵。不能只怪植株拉長：不易伸長的突變體仍受影響，另一條光路造成伸長卻未同樣變易感；削弱JAZ10又減弱了遠紅光的易感效果。",
+      "scope": "限所測蓮座期植株、補光與感染條件；相同PAR不等於量得相同碳收支。JAZ10必要性與形態解耦有控制，phyB到JAZ10每個分子步驟及資源節省量未在本篇定案。",
+      "source_locator": "HTML BLOCK035–058；Figs5/6/9；BLOCK063補光、067病徵分級",
+      "premise_status": "screened",
+      "notes": "與L101用紅/遠紅比辨鄰株不同，此處辨別防禦下降是否必須由伸長或光量減少造成；數個基因控制合為一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣伸長的植株不一定同樣容易感染，光帶來的訊息可和照到多少光分開。",
+        "visual": "先兩盞同PAR示意，只一組加遠紅；以原資料分級重繪病斑比例。再用三個獨立框比較不伸長仍易感、伸長卻未更易感、JAZ10減弱組；不把不同實驗畫同株連續受處理。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave50-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-81b880676139e82e",
+          "origin": "wave50-life",
+          "locator": "HTML BLOCK035–058；Figs5/6/9；BLOCK063補光、067病徵分級",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L50-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L50-003",
+      "question": "同一株豆苗上，某個根瘤不再供氮，其他根瘤會跟著一起被減供嗎？",
+      "domain": "植物時間、防禦與局部資源控制",
+      "mechanism_key": "plant.nodule_local_sanctions_oxygen_permeability_fixation",
+      "answer_target": "同一菌株分別放在有氮氣或幾乎無氮氣、氧比例相同的環境，停止固氮的一側或單顆根瘤最後菌數較少。單根瘤的氧通透性與內部氧在兩天內下降，支持植物能局部調低供氧、限制不供氮根瘤的增殖，而非只能全株一律分配。",
+      "scope": "限大豆、單菌株根瘤與控制氣體試驗；外界供氧比例相同，內部氧由光譜及計算推得。降低供氧是支持的機制解釋，非直接操作供氧障壁救援；不是植物有懲罰意圖，也不從顏色直接判根瘤好壞。",
+      "source_locator": "PDF pp2–3 Figs2/3及氧機制討論；p4分根/單根瘤Methods",
+      "premise_status": "screened",
+      "notes": "L107是糖與氮的一般交換，R6020是低游離氧兼顧固氮/呼吸；本題新增交換已建立後，局部供氮表現與供氧調節的對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一株也可以讓兩個根瘤有不同後續，不只是把全株養分一刀切。",
+        "visual": "原創分根及單瘤兩框：氣體都有氧，只一邊幾乎沒氮。內部氧/通透性時間曲線接十天後菌數；氧障壁箭頭標可能機制，不能畫成量到糖輸送被完全關掉。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave50-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-795a252767b53794",
+          "origin": "wave50-life",
+          "locator": "PDF pp2–3 Figs2/3及氧機制討論；p4分根/單根瘤Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L50-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L50-004",
+      "question": "葉子變難吃之後，毛毛蟲改吃同類，為什麼能替植物少掉兩筆損失？",
+      "domain": "植物時間、防禦與局部資源控制",
+      "mechanism_key": "plant.induced_defense_herbivore_cannibalism_density_diet",
+      "answer_target": "誘發番茄防禦後，群養幼蟲較早互食，留在植株上的取食者變少。另一個單隻試驗在提供已死同類時，幼蟲也吃較少葉片；因此保住的葉子不只來自蟲數下降，還包括每隻把食物轉向同類。",
+      "scope": "限番茄、甜菜夜蛾與室內容器；以MeJA處理誘發，不等於自然鄰株傳訊已驗證。群養消失數為互食估計，另有直接觀察；單隻試驗為取食死同類，兩試驗不能合成同一隻的殺戮追蹤。不指定某種未分離化合物為唯一原因。",
+      "source_locator": "PDF pp1–3 Fig1a–d、兩個Experiments；pp5–7補充方法及結果",
+      "premise_status": "screened",
+      "notes": "不拆成蟲數與食量兩核；兩者是同一誘發防禦後食物轉換的機制鏈。不同於B2238引來外部天敵。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "少吃掉的葉子，可能同時來自取食者變少，以及留下來的每隻改了餐點。",
+        "visual": "第一框以八個簡單蟲圖示和剩餘葉面表示群養；第二框清空換成一隻幼蟲、有/無已死同類的四組葉片試驗。不呈現血腥互食，不把死同類畫成自己剛獵殺。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave50-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-069b58585698f801",
+          "origin": "wave50-life",
+          "locator": "PDF pp1–3 Fig1a–d、兩個Experiments；pp5–7補充方法及結果",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L50-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P50-001",
+      "question": "相機只拍白牆，為什麼多擋掉一些光，反而能算出轉角後的圖案？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.occluder.penumbra_directional_encoding",
+      "answer_target": "沒有遮擋時，不同位置發出的光在牆上混成相似分布；加入遮擋後，各位置有不同的半影邊界，牆上亮度便帶有方向差。估計遮擋位置並以幾何模型解混，可重建低解析圖樣。",
+      "scope": "限已知形狀/尺寸遮擋物、白漫反射板與指定隱藏螢幕平面；不是透過不透光牆。影像平均20曝光，不保證任意房間或任意未知遮擋。",
+      "source_locator": "S001 PDF pp2–6、Fig1/3/4圖說及p9資料取得。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "擋光可以增加可區分的線索，並非只讓照片更暗。",
+        "visual": "原創俯視幾何：兩個隱藏色點對同一牆的半影不同；再比Fig4量測與重建，真值只作核對，非輸入。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave50-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6303be3abf60fba8",
+          "origin": "wave50-physics-20261103",
+          "locator": "S001 PDF pp2–6、Fig1/3/4圖說及p9資料取得。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P50-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P50-002",
+      "question": "一張只剩亮砂粒的照片，為什麼仍可能算回磨砂片後的小圖案？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.speckle.memory_range_autocorrelation_recovery",
+      "answer_target": "在記憶角內，鄰近物點的散斑近似只是平移；它們相加的自相關可留下物點間距關係，再配合非負等先驗迭代估回圖案。不是把亮砂粒逐粒擦掉。",
+      "scope": "限窄頻空間非相干照明、受限視野/足夠取樣；小透明圖案實驗，不保證一般散射照片唯一重建。蔥皮例為10幀平均，與單張擴散片例分清。",
+      "source_locator": "S002 PDF pp1–3 Eq1–2/Fig1–2、pp6–7 Methods/phase retrieval。",
+      "premise_status": "screened",
+      "notes": "I15-NA13先前只有身分/導言；本輪補讀記憶效應、自相關/相位恢復及視野/演算法限制後重提，舊NA保留。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂雜亂亮點的相對位移仍可保有幾何資訊。",
+        "visual": "Fig1概念模型先用兩物點給出平移散斑，標自相關而非直接影像；切Fig2a–d真正擴散片實測與重建。",
+        "seconds": [
+          45,
+          95
+        ]
+      },
+      "origin": "wave50-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6b26409942beebd5",
+          "origin": "wave50-physics-20261103",
+          "locator": "S002 PDF pp1–3 Eq1–2/Fig1–2、pp6–7 Methods/phase retrieval。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P50-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P50-003",
+      "question": "不刮掉白色散射層，只改照進去的光，怎麼能在另一側聚出亮點？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.wavefront.target_feedback_phase_alignment",
+      "answer_target": "逐區掃入射相位，記下讓指定目標最亮的設定；合併後，各區經散射到目標的場更同相相加，形成亮點。這不要求先知道每條路徑，但樣本變動會讓已找好的設定失配。",
+      "scope": "限相干光、散射而非全吸收層、另一側CCD回饋與足夠穩定時間；不是單張被動拍照，也不是錄下完整波形再倒放。",
+      "source_locator": "S003 pp1–3逐區相位程序、Fig2/3、Eq1–2與Fig4有限持續時間。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "散射的路徑未必要去除，也能利用回饋逐步配合。",
+        "visual": "實測Fig3同色標散斑與亮點；另標模型的相位箭頭及目標回饋，不把1000倍局部亮度畫成1000倍總能量。",
+        "seconds": [
+          45,
+          95
+        ]
+      },
+      "origin": "wave50-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-099de7a51bc4a21e",
+          "origin": "wave50-physics-20261103",
+          "locator": "S003 pp1–3逐區相位程序、Fig2/3、Eq1–2與Fig4有限持續時間。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P50-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P50-004",
+      "question": "影片裡的零食袋看來沒動，為什麼仍能提取當時的聲音？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.motion.subpixel_phase_aggregation_sound",
+      "answer_target": "聲壓造成遠小於像素的表面振動，仍會改變有紋理區域的局部影像相位；先加權整合各尺度與方向內的局部訊號，再對齊不同尺度與方向的訊號後合併，減少雜訊及相互抵銷，提取聲致振動。逐行時間差可作同文的額外取樣變體。",
+      "scope": "受控播放且相機/物體隔振；硬重磚的恢復較差。逐行變體受曝光平均/幀間缺樣限制；本輪只核正文/譜圖，未聽恢復音訊，不承諾可懂語句。",
+      "source_locator": "S004 pp2–4相位整合/Fig4–5；pp8–9逐行缺樣/曝光限制。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "像素未跨格不代表影像沒有可量的位移。",
+        "visual": "原創放大紋理小位移；Fig5同掃頻的磚與袋譜分開；有聲對照未實聽前不做獨立片。",
+        "seconds": [
+          30,
+          55
+        ]
+      },
+      "origin": "wave50-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d4dcc1414e5045c",
+          "origin": "wave50-physics-20261103",
+          "locator": "S004 pp2–4相位整合/Fig4–5；pp8–9逐行缺樣/曝光限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P50-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -388464,6 +389581,468 @@
       ]
     },
     {
+      "id": "S50-001",
+      "question": "樺樹焦油一定要在密閉爐裡燒出來嗎？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.birch_tar_open_condensation_feasibility",
+      "answer_target": "實驗中，在石面上直接燒樹皮沒有得到可辨量焦油，改讓火焰靠近傾斜石面，便能刮下黏稠沉積；化學與工具使用測試支持它是能用的樺樹焦油。",
+      "scope": "這是開放燃燒位置的反例，不是所有樺木火都產膠，也不等於出土焦油都採此法。完整化學保留機制未定。",
+      "source_locator": "Results中三種燃燒位置對照、Fig1；Results的工具測試／GC–MS；Discussion前三段；Methods。Fig1當日目讀。",
+      "premise_status": "screened",
+      "notes": "無法判定局部缺氧或較慢氧化何者保住焦油；不由可重現推定古人實際製法或整體認知。補充影片未播放。原PMC UA首次為驗證頁、PNAS PDF及Europe PMC PDF 403、Europe PMC XML 500；最後PMC ?pdf=1回有效HTML而非PDF。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "黑色黏膠的存在，不能單獨證明曾有密閉製作裝置。",
+        "visual": "三個位置原創對照；由Fig1重畫火焰旁石面有沉積，再接黏柄檢驗的不同框。",
+        "seconds": [
+          40,
+          75
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2fe51c822c645b4",
+          "origin": "wave50-earth-20261103",
+          "locator": "Results中三種燃燒位置對照、Fig1；Results的工具測試／GC–MS；Discussion前三段；Methods。Fig1當日目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ]
+    },
+    {
+      "id": "S50-002",
+      "question": "都做得出黑色焦油，怎麼再問出土的那兩塊比較像哪種製法？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.birch_tar_reference_fingerprint_transport",
+      "answer_target": "把五種製法得到的61份焦油作參照，兩件Königsaue實物都保有較強的木栓質相關訊號，與地下法參照較相近；上方冷凝的參照通常只有很弱訊號，作者以材料輸送路徑不同解釋。",
+      "scope": "兩件實物與所測參照；分子指紋縮小方法類型，不唯一指定爐形。污染與長期保存會改變部分訊號，尤其不把缺少煙灰相關分子當單一排除證據。",
+      "source_locator": "Methods: Experimental birch tar making；Results: Chemical analysis（本機P036–053）、Figs1–6圖說；Discussion。Fig1/3當日目讀。",
+      "premise_status": "screened",
+      "notes": "只在五種參照技術內比較，沒有唯一重建爐形。石英可後污染、多環芳烴古代穩定性未定，不能單用其缺席判製法；不採累積文化的強結論。補充資料未另讀。Web開啟驗證頁，UA取得有效正文。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "重做成功只能提供候選，還要讓實物的成分去篩候選。",
+        "visual": "Fig1先二分上方冷凝／地下滴取示意，再用Fig3原創簡化六欄光譜；不把曲線直接畫成目擊古代製法。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d14c9575163a3947",
+          "origin": "wave50-earth-20261103",
+          "locator": "Methods: Experimental birch tar making；Results: Chemical analysis（本機P036–053）、Figs1–6圖說；Discussion。Fig1/3當日目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ]
+    },
+    {
+      "id": "S50-003",
+      "question": "彎掉的青銅劍，為什麼還要一起看劍身上的斜刮痕？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.bronze_flat_parry_paired_damage",
+      "answer_target": "複製劍以平面擋住來劍後，一起出現彎曲和斜向刮痕，與四件出土劍的組合特徵相近。把形變與接觸痕一起比較，比單說劍彎了更能檢驗可能的受力方式。",
+      "scope": "限這組青銅複製劍、動態平擋試驗與四件古物；支持可行受力路徑，不排除刻意毀損或不同力道／材料造成相近結果。",
+      "source_locator": "Data Analysis、Diagnostic Combat Marks中flat parry段（本機P065–067、P099–108）、Figs17–20；Patterning的限制P110–119。目讀Figs17/19/20。",
+      "premise_status": "screened",
+      "notes": "單次控制對打的材料／幾何／力道有限；古物也可能是刻意毀損，不能唯一還原交戰動作。未看補充影片或重演。UA回傳網址附cookie錯誤查詢但本文完整。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個凹痕可能多解，彼此相連的兩種損傷能多加一道約束。",
+        "visual": "分框重畫Figs17/19/20：試驗來劍方向、彎曲區、刮痕角度；再獨立框放古物對照，非戰鬥實錄。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2621359900101a0",
+          "origin": "wave50-earth-20261103",
+          "locator": "Data Analysis、Diagnostic Combat Marks中flat parry段（本機P065–067、P099–108）、Figs17–20；Patterning的限制P110–119。目讀Figs17/19/20。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ]
+    },
+    {
+      "id": "S50-004",
+      "question": "石器被火燒過，怎麼知道它是在做工具時加熱，還是丟掉後才被燒？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.silcrete_heating_knapping_crosscut_sequence",
+      "answer_target": "先用岩相相近的現代石材比較加熱前後的取片疤，再看古物的粗糙舊面、較平滑新疤與熱裂如何交切。若後續取片切過熱裂面，便知道裂後還繼續加工，不能只把它當棄置後燒裂。",
+      "scope": "限Klipdrift PBD矽質岩及相匹配的參照；熱裂未被後疤切過時不具這種時序診斷力。表面光澤單獨不足以認定意圖。",
+      "source_locator": "Methods: Experimental reference collection、Macroscopic identification的四項列表；Results: Chronology、Technological advantages（P093–096）；Figs2/5/7/8圖說，Fig2/7目讀。",
+      "premise_status": "screened",
+      "notes": "先比對岩相相近的參照樣，不把所有亮石面視為加熱證據。未被後續疤切過的熱裂不能單獨分辨加工加熱與棄置後被燒；不由此決定唯一爐型或溫度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "加工留下的先後交切關係，比「看起來燒過」多回答一步。",
+        "visual": "Fig2三種岩材成對斷面分框；Fig7用兩色描舊熱裂面與切過它的新取片疤，先後箭頭標推定。",
+        "seconds": [
+          50,
+          90
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e38c327d915ffac6",
+          "origin": "wave50-earth-20261103",
+          "locator": "Methods: Experimental reference collection、Macroscopic identification的四項列表；Results: Chronology、Technological advantages（P093–096）；Figs2/5/7/8圖說，Fig2/7目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ]
+    },
+    {
+      "id": "S50-005",
+      "question": "銅斧表面驗出較多銀，就一定是古人替它鍍銀嗎？",
+      "domain": "考古／痕跡、材料與實驗辨識",
+      "mechanism_key": "archaeology.copper_silver_corrosion_surface_enrichment",
+      "answer_target": "銅斧切面顯示銀顆粒散在多孔氧化層裡，並非只看到一層完整銀皮。另一個合金腐蝕試驗讓銅減少、表面銀相對增加，支持埋藏腐蝕也能留下銀富集的解釋。",
+      "scope": "單件斧與2023預印本對照；表面分布和人工試驗支持腐蝕路徑，不等於證實所有古銀表面皆天然形成。配比文字矛盾不採精確量；前後影像尺度不同。",
+      "source_locator": "PDF pp3–5 §2.1與§3.1；pp7–11 §3.2、§3.3及Discussion；pp11–12 Conclusion。目讀p5 Fig2與p10 Fig8。",
+      "premise_status": "screened",
+      "notes": "預印本、單件銅斧；人工腐蝕只支持路徑可行，不等於重播數千年。Methods配比95/5與Results94/6不一致，不採精確配比／倍率。Fig8前後尺度不同，不假裝同視野逐顆追蹤；不說排盡所有裝飾可能。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "表面多出一種金屬，也可能是另一種被帶走。",
+        "visual": "先用p5 Fig2重畫緻密核心／多孔表層；再分框示意合金試驗前後元素相對改變，保留各自尺度，不增造銀鍍層照片。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave50-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3cb240fc08ed2c31",
+          "origin": "wave50-earth-20261103",
+          "locator": "PDF pp3–5 §2.1與§3.1；pp7–11 §3.2、§3.3及Discussion；pp11–12 Conclusion。目讀p5 Fig2與p10 Fig8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+      ]
+    },
+    {
+      "id": "H50-001",
+      "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+      "domain": "認知／選擇與結果核對",
+      "mechanism_key": "cognition.choice_outcome_swap_taste_smell",
+      "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+      "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。",
+      "source_locator": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+      "premise_status": "screened",
+      "notes": "果醬和茶同一操弄，合為一核。僅描述行為控制，不能宣稱唯一腦機制、永久改變偏好或受試者故意說謊。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "選擇本身與後來接到的結果，未必每次都被正確核對。",
+        "visual": "原創雙頭罐剖面與三步流程，再把Fig2最相似/最不相似配對重畫為定性對照；不複製受試者照片。",
+        "seconds": [
+          40,
+          80
+        ]
+      },
+      "origin": "wave50-human-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e6a373030d239b5e",
+          "origin": "wave50-human-20261103",
+          "locator": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+      ]
+    },
+    {
+      "id": "L50-001",
+      "question": "都放進同樣的黑暗裡，為什麼有些植株還是被毛毛蟲吃得更多？",
+      "domain": "植物時間、防禦與局部資源控制",
+      "mechanism_key": "plant.clock_phase_herbivore_defense_jasmonate",
+      "answer_target": "先把植物作息與幼蟲對齊或錯開十二小時，再一起移入恆暗，葉損仍不同。植物時鐘帶動防禦激素的每日波動，使防禦時段能配上幼蟲的進食高峰；時鐘或活性茉莉酸途徑缺陷時，對齊的優勢消失。",
+      "scope": "限擬南芥與Trichoplusia ni；恆暗24小時後共同取食72小時，不是當場光亮讓蟲看清葉。激素在無蟲下仍有週期；具體代謝物及野外淨效益未全部直接測定。",
+      "source_locator": "PDF pp1–3 Results與Figs1–4；p4植物/幼蟲處理及激素量測",
+      "premise_status": "screened",
+      "notes": "日常鉤子為同樣環境卻有不同蟲損；不重收季節日長或澱粉夜間配給，也不把每個突變另拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂「現在燈一樣」不等於體內時間一樣；時段是否對上，也會改變防禦結果。",
+        "visual": "兩組植株獨立光暗時間條，錯開後都接到同一恆暗區；再比較剩餘葉面。第二框改成時鐘/激素缺陷組，畫對齊優勢消失；激素曲線與蟲食高峰是不同量測，標定性重繪。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave50-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-f6fc567107d7e0e5",
+          "origin": "wave50-life",
+          "locator": "PDF pp1–3 Results與Figs1–4；p4植物/幼蟲處理及激素量測",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+      ]
+    },
+    {
+      "id": "L50-002",
+      "question": "沒有把照植物的光變暗，只改光的比例，為什麼葉片反而更容易出病斑？",
+      "domain": "植物時間、防禦與局部資源控制",
+      "mechanism_key": "plant.neighbor_light_immune_desensitization_uncoupled_elongation",
+      "answer_target": "補遠紅光而不減光合作用有效輻射，會降低擬南芥部分茉莉酸防禦反應並增加灰黴病徵。不能只怪植株拉長：不易伸長的突變體仍受影響，另一條光路造成伸長卻未同樣變易感；削弱JAZ10又減弱了遠紅光的易感效果。",
+      "scope": "限所測蓮座期植株、補光與感染條件；相同PAR不等於量得相同碳收支。JAZ10必要性與形態解耦有控制，phyB到JAZ10每個分子步驟及資源節省量未在本篇定案。",
+      "source_locator": "HTML BLOCK035–058；Figs5/6/9；BLOCK063補光、067病徵分級",
+      "premise_status": "screened",
+      "notes": "與L101用紅/遠紅比辨鄰株不同，此處辨別防禦下降是否必須由伸長或光量減少造成；數個基因控制合為一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣伸長的植株不一定同樣容易感染，光帶來的訊息可和照到多少光分開。",
+        "visual": "先兩盞同PAR示意，只一組加遠紅；以原資料分級重繪病斑比例。再用三個獨立框比較不伸長仍易感、伸長卻未更易感、JAZ10減弱組；不把不同實驗畫同株連續受處理。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave50-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-81b880676139e82e",
+          "origin": "wave50-life",
+          "locator": "HTML BLOCK035–058；Figs5/6/9；BLOCK063補光、067病徵分級",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+      ]
+    },
+    {
+      "id": "L50-003",
+      "question": "同一株豆苗上，某個根瘤不再供氮，其他根瘤會跟著一起被減供嗎？",
+      "domain": "植物時間、防禦與局部資源控制",
+      "mechanism_key": "plant.nodule_local_sanctions_oxygen_permeability_fixation",
+      "answer_target": "同一菌株分別放在有氮氣或幾乎無氮氣、氧比例相同的環境，停止固氮的一側或單顆根瘤最後菌數較少。單根瘤的氧通透性與內部氧在兩天內下降，支持植物能局部調低供氧、限制不供氮根瘤的增殖，而非只能全株一律分配。",
+      "scope": "限大豆、單菌株根瘤與控制氣體試驗；外界供氧比例相同，內部氧由光譜及計算推得。降低供氧是支持的機制解釋，非直接操作供氧障壁救援；不是植物有懲罰意圖，也不從顏色直接判根瘤好壞。",
+      "source_locator": "PDF pp2–3 Figs2/3及氧機制討論；p4分根/單根瘤Methods",
+      "premise_status": "screened",
+      "notes": "L107是糖與氮的一般交換，R6020是低游離氧兼顧固氮/呼吸；本題新增交換已建立後，局部供氮表現與供氧調節的對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一株也可以讓兩個根瘤有不同後續，不只是把全株養分一刀切。",
+        "visual": "原創分根及單瘤兩框：氣體都有氧，只一邊幾乎沒氮。內部氧/通透性時間曲線接十天後菌數；氧障壁箭頭標可能機制，不能畫成量到糖輸送被完全關掉。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave50-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-795a252767b53794",
+          "origin": "wave50-life",
+          "locator": "PDF pp2–3 Figs2/3及氧機制討論；p4分根/單根瘤Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+      ]
+    },
+    {
+      "id": "L50-004",
+      "question": "葉子變難吃之後，毛毛蟲改吃同類，為什麼能替植物少掉兩筆損失？",
+      "domain": "植物時間、防禦與局部資源控制",
+      "mechanism_key": "plant.induced_defense_herbivore_cannibalism_density_diet",
+      "answer_target": "誘發番茄防禦後，群養幼蟲較早互食，留在植株上的取食者變少。另一個單隻試驗在提供已死同類時，幼蟲也吃較少葉片；因此保住的葉子不只來自蟲數下降，還包括每隻把食物轉向同類。",
+      "scope": "限番茄、甜菜夜蛾與室內容器；以MeJA處理誘發，不等於自然鄰株傳訊已驗證。群養消失數為互食估計，另有直接觀察；單隻試驗為取食死同類，兩試驗不能合成同一隻的殺戮追蹤。不指定某種未分離化合物為唯一原因。",
+      "source_locator": "PDF pp1–3 Fig1a–d、兩個Experiments；pp5–7補充方法及結果",
+      "premise_status": "screened",
+      "notes": "不拆成蟲數與食量兩核；兩者是同一誘發防禦後食物轉換的機制鏈。不同於B2238引來外部天敵。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "少吃掉的葉子，可能同時來自取食者變少，以及留下來的每隻改了餐點。",
+        "visual": "第一框以八個簡單蟲圖示和剩餘葉面表示群養；第二框清空換成一隻幼蟲、有/無已死同類的四組葉片試驗。不呈現血腥互食，不把死同類畫成自己剛獵殺。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave50-life",
+      "source_refs": [
+        {
+          "source_id": "SRC-069b58585698f801",
+          "origin": "wave50-life",
+          "locator": "PDF pp1–3 Fig1a–d、兩個Experiments；pp5–7補充方法及結果",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+      ]
+    },
+    {
+      "id": "P50-001",
+      "question": "相機只拍白牆，為什麼多擋掉一些光，反而能算出轉角後的圖案？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.occluder.penumbra_directional_encoding",
+      "answer_target": "沒有遮擋時，不同位置發出的光在牆上混成相似分布；加入遮擋後，各位置有不同的半影邊界，牆上亮度便帶有方向差。估計遮擋位置並以幾何模型解混，可重建低解析圖樣。",
+      "scope": "限已知形狀/尺寸遮擋物、白漫反射板與指定隱藏螢幕平面；不是透過不透光牆。影像平均20曝光，不保證任意房間或任意未知遮擋。",
+      "source_locator": "S001 PDF pp2–6、Fig1/3/4圖說及p9資料取得。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "擋光可以增加可區分的線索，並非只讓照片更暗。",
+        "visual": "原創俯視幾何：兩個隱藏色點對同一牆的半影不同；再比Fig4量測與重建，真值只作核對，非輸入。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave50-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6303be3abf60fba8",
+          "origin": "wave50-physics-20261103",
+          "locator": "S001 PDF pp2–6、Fig1/3/4圖說及p9資料取得。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+      ]
+    },
+    {
+      "id": "P50-002",
+      "question": "一張只剩亮砂粒的照片，為什麼仍可能算回磨砂片後的小圖案？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.speckle.memory_range_autocorrelation_recovery",
+      "answer_target": "在記憶角內，鄰近物點的散斑近似只是平移；它們相加的自相關可留下物點間距關係，再配合非負等先驗迭代估回圖案。不是把亮砂粒逐粒擦掉。",
+      "scope": "限窄頻空間非相干照明、受限視野/足夠取樣；小透明圖案實驗，不保證一般散射照片唯一重建。蔥皮例為10幀平均，與單張擴散片例分清。",
+      "source_locator": "S002 PDF pp1–3 Eq1–2/Fig1–2、pp6–7 Methods/phase retrieval。",
+      "premise_status": "screened",
+      "notes": "I15-NA13先前只有身分/導言；本輪補讀記憶效應、自相關/相位恢復及視野/演算法限制後重提，舊NA保留。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂雜亂亮點的相對位移仍可保有幾何資訊。",
+        "visual": "Fig1概念模型先用兩物點給出平移散斑，標自相關而非直接影像；切Fig2a–d真正擴散片實測與重建。",
+        "seconds": [
+          45,
+          95
+        ]
+      },
+      "origin": "wave50-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6b26409942beebd5",
+          "origin": "wave50-physics-20261103",
+          "locator": "S002 PDF pp1–3 Eq1–2/Fig1–2、pp6–7 Methods/phase retrieval。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+      ]
+    },
+    {
+      "id": "P50-003",
+      "question": "不刮掉白色散射層，只改照進去的光，怎麼能在另一側聚出亮點？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.wavefront.target_feedback_phase_alignment",
+      "answer_target": "逐區掃入射相位，記下讓指定目標最亮的設定；合併後，各區經散射到目標的場更同相相加，形成亮點。這不要求先知道每條路徑，但樣本變動會讓已找好的設定失配。",
+      "scope": "限相干光、散射而非全吸收層、另一側CCD回饋與足夠穩定時間；不是單張被動拍照，也不是錄下完整波形再倒放。",
+      "source_locator": "S003 pp1–3逐區相位程序、Fig2/3、Eq1–2與Fig4有限持續時間。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "散射的路徑未必要去除，也能利用回饋逐步配合。",
+        "visual": "實測Fig3同色標散斑與亮點；另標模型的相位箭頭及目標回饋，不把1000倍局部亮度畫成1000倍總能量。",
+        "seconds": [
+          45,
+          95
+        ]
+      },
+      "origin": "wave50-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-099de7a51bc4a21e",
+          "origin": "wave50-physics-20261103",
+          "locator": "S003 pp1–3逐區相位程序、Fig2/3、Eq1–2與Fig4有限持續時間。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+      ]
+    },
+    {
+      "id": "P50-004",
+      "question": "影片裡的零食袋看來沒動，為什麼仍能提取當時的聲音？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.motion.subpixel_phase_aggregation_sound",
+      "answer_target": "聲壓造成遠小於像素的表面振動，仍會改變有紋理區域的局部影像相位；先加權整合各尺度與方向內的局部訊號，再對齊不同尺度與方向的訊號後合併，減少雜訊及相互抵銷，提取聲致振動。逐行時間差可作同文的額外取樣變體。",
+      "scope": "受控播放且相機/物體隔振；硬重磚的恢復較差。逐行變體受曝光平均/幀間缺樣限制；本輪只核正文/譜圖，未聽恢復音訊，不承諾可懂語句。",
+      "source_locator": "S004 pp2–4相位整合/Fig4–5；pp8–9逐行缺樣/曝光限制。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "像素未跨格不代表影像沒有可量的位移。",
+        "visual": "原創放大紋理小位移；Fig5同掃頻的磚與袋譜分開；有聲對照未實聽前不做獨立片。",
+        "seconds": [
+          30,
+          55
+        ]
+      },
+      "origin": "wave50-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d4dcc1414e5045c",
+          "origin": "wave50-physics-20261103",
+          "locator": "S004 pp2–4相位整合/Fig4–5；pp8–9逐行缺樣/曝光限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+      ]
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -399645,6 +401224,20 @@
       "W5026": "W5026",
       "W5027": "W5027",
       "W5028": "W5028",
+      "S50-001": "S50-001",
+      "S50-002": "S50-002",
+      "S50-003": "S50-003",
+      "S50-004": "S50-004",
+      "S50-005": "S50-005",
+      "H50-001": "H50-001",
+      "L50-001": "L50-001",
+      "L50-002": "L50-002",
+      "L50-003": "L50-003",
+      "L50-004": "L50-004",
+      "P50-001": "P50-001",
+      "P50-002": "P50-002",
+      "P50-003": "P50-003",
+      "P50-004": "P50-004",
       "J6001": "J6001",
       "J6002": "J6002",
       "J6003": "J6003",
@@ -426704,6 +428297,498 @@
         "a": "S49-004",
         "b": "L49-004",
         "reason": "L49-004泡雲上升捲動補CO₂維持快速增長；本題固定泡旁冰前緣靠近，主分析是擴散濃度場，沒有泡雲浮力回饋。"
+      },
+      {
+        "a": "L50-001",
+        "b": "A27001",
+        "reason": "澱粉題依存量及剩餘夜長調速；此處相位錯開後在相同恆暗中比較葉損，並以時鐘/JA干預測防禦優勢，非再證有時鐘。"
+      },
+      {
+        "a": "L50-001",
+        "b": "L104",
+        "reason": "日長感季節與同日長下相對幼蟲相位的防禦結果不同。"
+      },
+      {
+        "a": "L50-001",
+        "b": "L191",
+        "reason": "機械/化學防禦分類不能預測錯相及時鐘失調後抗蟲優勢是否保留。"
+      },
+      {
+        "a": "L50-001",
+        "b": "R6006",
+        "reason": "長冷期FLC沉默維持與日內防禦節律不是同一儲存或控制過程。"
+      },
+      {
+        "a": "L50-002",
+        "b": "L101",
+        "reason": "辨識遮蔭光譜是背景；同PAR下易感與形態能雙向解耦，以及JAZ10干預，是新增控制中段。"
+      },
+      {
+        "a": "L50-002",
+        "b": "L105",
+        "reason": "光質與日長分開不包含伸長/病害相反控制，不按光色換用途另計，而保留此因果排除。"
+      },
+      {
+        "a": "L50-002",
+        "b": "V3007",
+        "reason": "一般胞內效應分流與本研究同類植株形態不能中介全部防禦變化的對照不同；亦未借泛題補未測分子鏈。"
+      },
+      {
+        "a": "L50-002",
+        "b": "L50-001",
+        "reason": "固定光量改光譜並拆形態/防禦，與撤外界明暗後相位對齊抗蟲不同。"
+      },
+      {
+        "a": "L50-003",
+        "b": "L107",
+        "reason": "互換糖氮的功能不等於交換後局部不固氮如何限制菌數；本題有同株不同局部的氣體控制。"
+      },
+      {
+        "a": "L50-003",
+        "b": "R6020",
+        "reason": "低游離氧保護固氮酵素是穩態需求；相同外界氧但停止固氮的一瘤內部氧/通透性降低，是表現依賴的局部調節。"
+      },
+      {
+        "a": "L50-003",
+        "b": "L106",
+        "reason": "氮氣須轉可用態的背景不能回答同株菌數分化與供氧先後。"
+      },
+      {
+        "a": "L50-003",
+        "b": "U8018",
+        "reason": "異形胞分工隔開產氧與固氮；根瘤題改既有局部功能後追供氧/菌數，不是換固氮物種。"
+      },
+      {
+        "a": "L50-004",
+        "b": "B2238",
+        "reason": "揮發物引來外部天敵與原食葉者轉食同類不同；單隻死同類控制額外分出每隻吃葉量。"
+      },
+      {
+        "a": "L50-004",
+        "b": "L191",
+        "reason": "一般化學防禦未包含食者數量與單隻改餐兩條減少葉損路徑。"
+      },
+      {
+        "a": "L50-004",
+        "b": "L47-003",
+        "reason": "快速閉葉影響停留與葉損，與防禦誘導後互食/固定活蟲數改食物不同。"
+      },
+      {
+        "a": "L50-004",
+        "b": "L50-001",
+        "reason": "同涉及防禦激素不構成同核心：一題調相位測抗蟲，另一題分開食者密度與替代食物。"
+      },
+      {
+        "a": "L50-001",
+        "b": "L47-006",
+        "reason": "按接觸頻率供花粉是輸出率控制，與植物/昆蟲日內相位防禦無同一中段。"
+      },
+      {
+        "a": "L50-001",
+        "b": "L112",
+        "reason": "雌雄成熟錯期避免自交與防禦激素相位干預不同。"
+      },
+      {
+        "a": "L50-001",
+        "b": "R41007",
+        "reason": "葉形回聲作搜尋標記，沒有內在時鐘或抗蟲相位控制。"
+      },
+      {
+        "a": "L50-001",
+        "b": "L114",
+        "reason": "雌雄花位置分隔不是恆暗下防禦時段的機制。"
+      },
+      {
+        "a": "L50-002",
+        "b": "L032",
+        "reason": "不同光合色素互補吸收與光譜訊號調整防禦不同；同PAR不宣稱碳收支相等。"
+      },
+      {
+        "a": "L50-002",
+        "b": "L102",
+        "reason": "光敏素可逆狀態影響萌發是背景路徑，未含伸長/抗病雙向不等價控制。"
+      },
+      {
+        "a": "L50-002",
+        "b": "H3084",
+        "reason": "發光團漂白/非輻射衰減與植物病害易感的訊號調節不是同核。"
+      },
+      {
+        "a": "L50-002",
+        "b": "L39-009",
+        "reason": "照明改反陰影偽裝的可見度；此處照明比例改植株反應且以突變/形態控制排除中介。"
+      },
+      {
+        "a": "L50-002",
+        "b": "L103",
+        "reason": "光作土表線索影響萌發與本題防禦/生長解耦不同。"
+      },
+      {
+        "a": "L50-003",
+        "b": "B2098",
+        "reason": "反硝化將氮回空氣與根瘤局部固氮停止後資源限制不同。"
+      },
+      {
+        "a": "L50-003",
+        "b": "V3090",
+        "reason": "缺氧真核保留胞器的其他功能，不解釋同株局部供氧及菌數變化。"
+      },
+      {
+        "a": "L50-004",
+        "b": "L44-002",
+        "reason": "腸道通過改種子氣味/真菌與存活，沒有食葉者互食或固定活蟲數替代食物控制。"
+      },
+      {
+        "a": "L50-004",
+        "b": "R6013",
+        "reason": "可移動養分再分配與食者數量/改餐造成葉損下降不同。"
+      },
+      {
+        "a": "L50-004",
+        "b": "E9011",
+        "reason": "未受精時助細胞繼續吸引花粉管，與食物轉換沒有相同因果鏈。"
+      },
+      {
+        "a": "L50-004",
+        "b": "L39-002",
+        "reason": "並排真枝改雛雞對擬枝蟲辨識；此處改防禦及死同類供應測吃葉量，不是視覺參照。"
+      },
+      {
+        "a": "P50-001",
+        "b": "P133",
+        "reason": "漫反射是背景；新控制增遮擋、比較位置相關半影，才讓逆問題可解。",
+        "author_reason_read": "舊回答直接反射方向混散；新問已知遮擋新增空間可見性差及反算，原漫反射限制仍成立。"
+      },
+      {
+        "a": "P50-001",
+        "b": "I15005",
+        "reason": "新用靜態遮擋形成方向相關半影；舊以快門時間開關改變運動模糊核，並用已知或可估運動反卷積。",
+        "author_reason_read": "舊是主動時間快門改運動模糊核；新是靜態遮擋形成方向依存半影，估位置再解混。"
+      },
+      {
+        "a": "P50-001",
+        "b": "I15007",
+        "reason": "已知形狀遮擋物固定、位置估計，與輪換已知遮罩編碼的主動測量不同。",
+        "author_reason_read": "舊單點偵測需輪換已知遮罩量多次總和；新以相機平行量牆的空間差、遮擋位置未知。兩者解混相關，交非作者嚴判新增控制。"
+      },
+      {
+        "a": "P50-001",
+        "b": "I15008",
+        "reason": "新以被動遮擋解混隱藏圖案；舊平移高頻照明，依直接/間接光切換程度分離路徑成分。",
+        "author_reason_read": "舊主動高頻照明分直接/全域路徑；新被動遮擋編碼未知圖案，不是照明分量分離。"
+      },
+      {
+        "a": "P50-001",
+        "b": "O7019",
+        "reason": "舊將折射率梯度造成的小偏角經焦點遮擋轉為明暗；新遮住不同隱藏場景方向，不依氣體密度梯度偏折。",
+        "author_reason_read": "舊遮擋把折射偏角轉亮度；新遮住不同場景方向，沒有密度梯度光偏折。"
+      },
+      {
+        "a": "P50-002",
+        "b": "O3004",
+        "reason": "舊抑制或平均斑點，新保留平移相關以恢復物點間距，觀測目標相反。",
+        "author_reason_read": "舊散斑生成/平均去噪；新利用記憶角內平移相關保存點間距，非擦除散斑。"
+      },
+      {
+        "a": "P50-002",
+        "b": "I15007",
+        "reason": "沒有輪換已知輸入圖樣；受限角度的未知散斑相關才是重建條件。",
+        "author_reason_read": "舊已知遮罩多次加權；新無已知隨機PSF，取自相關消去其影響再做相位恢復。"
+      },
+      {
+        "a": "P50-002",
+        "b": "I15005",
+        "reason": "舊時間快門編碼已知或可估運動模糊核；新散射核未知，靠記憶角內的平移相關估自相關，再補相位。",
+        "author_reason_read": "舊已知模糊核反卷積；新未知散射核但有平移相關/尖峰自相關條件，不套任意反模糊。"
+      },
+      {
+        "a": "P50-002",
+        "b": "O7015",
+        "reason": "舊線性成像各環節MTF相乘衰減細紋；新利用雜亂散射影像仍保留的二階關係恢復受限圖樣。",
+        "author_reason_read": "舊串接MTF對比損失；新問散射圖中保留的二階關係與受限恢復，不以相機更好重收。"
+      },
+      {
+        "a": "P50-003",
+        "b": "W16003",
+        "reason": "空間相位掃描以目標強度回饋，不錄波形倒序；原文亦明說不要求時間反演對稱。",
+        "author_reason_read": "舊記錄時域波形倒序重播；新只量目標強度掃空間相位，文中明說不要求時間反演對稱。仍同屬相干重聚，請非作者嚴判控制增量。"
+      },
+      {
+        "a": "P50-003",
+        "b": "W16004",
+        "reason": "回饋優化相干入射波前與回波倒序/散射孔徑的時間控制不同。",
+        "author_reason_read": "舊全槽時間邊界生成反向水波；新逐區目標回饋無時間邊界/整場倒轉。"
+      },
+      {
+        "a": "P50-003",
+        "b": "P153",
+        "reason": "干涉是背景，新有未知散射層、逐區尋優與樣本漂移使已得設定失配的控制。",
+        "author_reason_read": "干涉相長是基礎；新增在未知散射層後以局部目標回饋選相位，並有樣本穩定時間限制。"
+      },
+      {
+        "a": "P50-003",
+        "b": "O3004",
+        "reason": "新讓目標點相位合拍形成局部亮點；舊以平均降低散斑，不是同一操作。",
+        "author_reason_read": "舊討論散斑與平均；新有相位控制重排能量，非光滑去噪。"
+      },
+      {
+        "a": "P50-002",
+        "b": "P50-003",
+        "reason": "前者被動估圖且依散斑位移相關；後者主動相位尋優聚焦且需另一側回饋。",
+        "author_reason_read": "前者空間非相干物點強度相關來被動還原圖；後者相干入射場主動改相位聚一點，目標與所需接觸條件不同。"
+      },
+      {
+        "a": "P50-004",
+        "b": "P28001",
+        "reason": "舊掃靜態錄音溝槽；新影片量活物表面亞像素聲致運動。",
+        "author_reason_read": "舊讀靜態已刻錄槽紋；新聲壓使當下物體微振動，從時間影像的局部相位整合取訊號。"
+      },
+      {
+        "a": "P50-004",
+        "b": "O3047",
+        "reason": "逐行取樣在此只是一個變體；核心是局部影像相位擷取及尺度方向訊號對齊。",
+        "author_reason_read": "逐行時序原理已有，故不另拆低幀率變體；候選主核是紋理微位移/相位對齊提聲。"
+      },
+      {
+        "a": "P50-004",
+        "b": "P20006",
+        "reason": "舊短閃光只與部分列曝光窗重疊而形成亮帶；新要擷取物體聲致微振動，不將照明閃爍當待測聲音。",
+        "author_reason_read": "舊相同行曝光窗收不同光量；新提取表面聲致位移，亮帶時間不是待測訊號。"
+      },
+      {
+        "a": "P50-004",
+        "b": "O3013",
+        "reason": "雷達電磁相位量路徑差，與影像紋理局部相位估位移再恢復聲音，不是同一物理觀測。"
+      },
+      {
+        "a": "P50-001",
+        "b": "P20004",
+        "reason": "雙子孔徑對焦相位差與隱藏場景被幾何遮擋後的半影亮度反問題不同。"
+      },
+      {
+        "a": "S50-001",
+        "b": "R38010",
+        "reason": "R38010以DNA損傷及微生物組合辨口腔來源；S50-001操弄燃燒位置排除密閉必需，均為焦油但答案不同。"
+      },
+      {
+        "a": "S50-001",
+        "b": "R38009",
+        "reason": "R38009接合/握持兩個性能需求；S50-001是焦油生成的空間條件，未複述配方黏度。"
+      },
+      {
+        "a": "S50-002",
+        "b": "S50-001",
+        "reason": "S50-002需比較成分輸送路徑和實物參照，S50-001只提供另一可行生成法；可串同一追問但不能互代答案。"
+      },
+      {
+        "a": "S50-002",
+        "b": "R28004",
+        "reason": "R28004可見照明/近紅外發光加銅分布辨顏料；S50-002從同種焦油的成分保留差辨製法類型。"
+      },
+      {
+        "a": "S50-002",
+        "b": "R38010",
+        "reason": "R38010問生物殘留的歸屬；S50-002問熱轉化與輸送後的材料指紋，不共用污染排除作唯一答案。"
+      },
+      {
+        "a": "S50-003",
+        "b": "R35002",
+        "reason": "R35002打擊位置/重量分類既見用途；S50-003同一接觸同時留下整體塑性彎曲與斜刮痕，提供特定受力路徑。"
+      },
+      {
+        "a": "S50-003",
+        "b": "R38004",
+        "reason": "R38004反覆軟接觸的磨光/細紋分布；S50-003是擋擊時的彎曲與刮擦組合，不是材質換名。"
+      },
+      {
+        "a": "S50-003",
+        "b": "H3061",
+        "reason": "H3061裂尖塑性耗能對脆裂；S50-003不以金屬會彎作答案，而比較損傷組合與接觸方式。"
+      },
+      {
+        "a": "S50-003",
+        "b": "F14009",
+        "reason": "F14009軟毛髮使鋼刃崩裂的三條件；S50-003為青銅平擋彎曲/刮痕，沒有沿用異質裂紋起始。"
+      },
+      {
+        "a": "S50-004",
+        "b": "R38012",
+        "reason": "R38012火與罕見打火礦物的共現；S50-004加熱後取片切熱裂提供加工先後證據。"
+      },
+      {
+        "a": "S50-004",
+        "b": "R38008",
+        "reason": "R38008發紅空間分布反推火旁位置；S50-004以新疤切舊裂辨加工加熱時序。"
+      },
+      {
+        "a": "S50-004",
+        "b": "E7018",
+        "reason": "E7018沉積/侵蝕造成不整合缺時；S50-004需同岩相熱處理參照，並非地層缺口。"
+      },
+      {
+        "a": "S50-004",
+        "b": "H3051",
+        "reason": "H3051金屬再結晶軟化；S50-004是矽質岩新斷面與交切，並未把金屬退火搬來。"
+      },
+      {
+        "a": "S50-005",
+        "b": "P282",
+        "reason": "P282表層是否阻擋後續腐蝕；S50-005合金成分選擇性流失使表面銀相對富集。"
+      },
+      {
+        "a": "S50-005",
+        "b": "P285",
+        "reason": "P285顏色不能定鏽；S50-005已識別元素後仍要區分新增銀與銅流失的來源。"
+      },
+      {
+        "a": "S50-005",
+        "b": "H3041",
+        "reason": "H3041還原離子新增鍍金屬；S50-005沒有新增銀而以銅流失造成富集，是不同質量收支。"
+      },
+      {
+        "a": "S50-005",
+        "b": "H3043",
+        "reason": "H3043外接較活潑金屬保護主件；S50-005合金內選擇性腐蝕與殘留表面成分，無外接犧牲件。"
+      },
+      {
+        "a": "S50-001",
+        "b": "E9014",
+        "reason": "E9014為樹脂熱解黏封口且日照可達條件；本題從燃燒物捕集焦油，非熔開既有膠。"
+      },
+      {
+        "a": "S50-001",
+        "b": "S50-004",
+        "reason": "S50-001驗生成路徑的可行性；S50-004以疤面交切辨加熱/加工順序。"
+      },
+      {
+        "a": "S50-001",
+        "b": "R31007",
+        "reason": "R31007燃料前史造成樹火疤漏記；本題控制石面位置使焦油沉積，不是記錄漏失。"
+      },
+      {
+        "a": "S50-001",
+        "b": "R38008",
+        "reason": "R38008受熱紅斑位置推火旁擺放；本題生成黏合材料且驗功能。"
+      },
+      {
+        "a": "S50-001",
+        "b": "R38007",
+        "reason": "R38007光源方向/煙與移動可視性；本題燃燒產物在石面捕集。"
+      },
+      {
+        "a": "S50-002",
+        "b": "D2226",
+        "reason": "D2226油脂留存與循環油搬熱污染物；本題製法中化學成分輸送差形成考古指紋。"
+      },
+      {
+        "a": "S50-002",
+        "b": "D2173",
+        "reason": "D2173不均勻熱變形殘留翹曲；本題是熱產物組成非幾何變形。"
+      },
+      {
+        "a": "S50-002",
+        "b": "D2032",
+        "reason": "D2032分子排列影響油脂硬軟；本題特定成分進入焦油與製法關聯，沒有重講熔點。"
+      },
+      {
+        "a": "S50-002",
+        "b": "X34-002",
+        "reason": "X34-002同一咖啡特徵峰的正常基線與混合量辨摻假；本題比較五種熱製法對成分輸送/保留，不沿用單峰有無判摻。"
+      },
+      {
+        "a": "S50-002",
+        "b": "L49-002",
+        "reason": "L49-002蒸氣逃逸路徑解釋煎餅接觸紋；本題材料分子輸送留下成分指紋，沒有相同熱接觸答案。"
+      },
+      {
+        "a": "S50-003",
+        "b": "P49-001",
+        "reason": "P49-001兩側永久伸長差造成捲曲非單調；本題平擋留下彎曲加刮痕的受力反推。"
+      },
+      {
+        "a": "S50-003",
+        "b": "K11004",
+        "reason": "K11004理想彈性軸壓失穩；本題接觸擋擊的殘留塑性變形與表面擦痕。"
+      },
+      {
+        "a": "S50-003",
+        "b": "P49-002",
+        "reason": "P49-002線圈初始受限重排的先硬後軟；本題不是接觸網絡的拉伸曲線。"
+      },
+      {
+        "a": "S50-003",
+        "b": "P44-002",
+        "reason": "P44-002摺角轉動與板面彎曲競爭；本題為永久彎曲加接觸刮痕辨可能動作。"
+      },
+      {
+        "a": "S50-003",
+        "b": "K11002",
+        "reason": "K11002帶簧幾何方向改變彈性局部失穩；本題沒有採該截面變平/扭轉路徑。"
+      },
+      {
+        "a": "S50-004",
+        "b": "N233",
+        "reason": "N233熱循環與礦物差異形變致裂；本題如何區分裂後仍取片與棄置才受熱，需新疤交切。"
+      },
+      {
+        "a": "S50-004",
+        "b": "N131",
+        "reason": "N131固態礦物重組變質；本題新取片面的相對粗糙與加工先後，非變質岩生成。"
+      },
+      {
+        "a": "S50-004",
+        "b": "R38011",
+        "reason": "R38011工具敲擦黃鐵礦留下磨光與近平行細紋辨用途；本題加熱前後疤及交切辨工序。"
+      },
+      {
+        "a": "S50-004",
+        "b": "E7013",
+        "reason": "E7013減壓/加水改固相線而熔融；本題不以熔融生成岩石解釋熱處理痕。"
+      },
+      {
+        "a": "S50-005",
+        "b": "P284",
+        "reason": "P284塗層破口暴露而起腐蝕；本題不用破塗層起點，問銀富集是否等於鍍銀。"
+      },
+      {
+        "a": "S50-005",
+        "b": "H3061",
+        "reason": "H3061裂尖塑性形變vs脆裂；本題選擇性腐蝕與元素分布，沒有塑性耗能共核。"
+      },
+      {
+        "a": "H50-001",
+        "b": "R42010",
+        "reason": "舊操弄酒色觀察氣味形容詞；新先記偏好選擇再替換取到的樣本，並觀察察覺判準。"
+      },
+      {
+        "a": "H50-001",
+        "b": "P14006",
+        "reason": "閃塊打斷視覺場景比較與已選樣本交付不一致不同；不把所有漏察覺當同一機制。"
+      },
+      {
+        "a": "H50-001",
+        "b": "C2004",
+        "reason": "舊專心計數時漏看另物；新已經選定目標並再品嚐，操弄結果與先前選擇的對應。"
+      },
+      {
+        "a": "H50-001",
+        "b": "C2016",
+        "reason": "舊以事後提問改變回憶，新直接替換選擇後的樣本；不由本實驗唯一裁定記憶機制。"
+      },
+      {
+        "a": "H50-001",
+        "b": "C2017",
+        "reason": "舊內容/來源歸屬差別；新有記錄的選擇與被替換實物可以直接核對。"
+      },
+      {
+        "a": "H50-001",
+        "b": "R30003",
+        "reason": "舊新增劣勢選項改變選取比例；新原二選一完成後交付反向樣品。"
+      },
+      {
+        "a": "H50-001",
+        "b": "R30002",
+        "reason": "海報前後排名/選擇分組揭示潛在偏好，與先記實際選擇後偷換交付結果的行為控制不同。"
       }
     ],
     "excluded": [
@@ -431430,6 +433515,20 @@
         ]
       },
       {
+        "id": "S50-001~S50-002",
+        "a": "S50-001",
+        "b": "S50-002",
+        "question_score": 0.054,
+        "answer_score": 0.031,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "樺樹焦油一定要在密閉爐裡燒出來嗎？",
+          "都做得出黑色焦油，怎麼再問出土的那兩塊比較像哪種製法？"
+        ]
+      },
+      {
         "id": "A5005~A5006",
         "a": "A5005",
         "b": "A5006",
@@ -432841,6 +434940,20 @@
         "questions": [
           "剛看完說話的嘴形，螢幕關掉後，怎麼連純聲音也聽得不太一樣？",
           "一句話被咳嗽換掉一個音，為什麼連咳聲插在哪裡都可能指錯？"
+        ]
+      },
+      {
+        "id": "H50-001~R30001",
+        "a": "R30001",
+        "b": "H50-001",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "明明指了左邊那張臉，為什麼拿到右邊，還能解釋自己喜歡它哪裡？",
+          "剛選好的果醬被換成另一款，大家都能立刻發現嗎？"
         ]
       },
       {
@@ -434976,10 +437089,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-03-pool-3528",
-    "target_count": 3528,
+    "revision": "2026-11-03-pool-3542",
+    "target_count": 3542,
     "reviewed_on": "2026-11-03",
-    "reason": "從3514續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3528續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -438508,7 +440621,21 @@
       "S49-002",
       "S49-003",
       "S49-004",
-      "S49-005"
+      "S49-005",
+      "L50-001",
+      "L50-002",
+      "L50-003",
+      "L50-004",
+      "P50-001",
+      "P50-002",
+      "P50-003",
+      "P50-004",
+      "S50-001",
+      "S50-002",
+      "S50-003",
+      "S50-004",
+      "S50-005",
+      "H50-001"
     ],
     "overflow": [
       {
@@ -463122,6 +465249,686 @@
       "reason": "本輪讀到預塗層作濾材的功能，但未形成足夠與一般濾餅不同的觀眾追問；只有設施名詞不入候選。",
       "origin": "wave5-water-systems-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave5-water-systems.json"
+    },
+    {
+      "id": "S50-NA001",
+      "question": "鍋巴與陶壁怎麼記住不同餐？",
+      "existing_ids": [
+        "R29001"
+      ],
+      "source_ids": [],
+      "reason": "舊核已含同篇一年煮食換配方與三種時間窗。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA002",
+      "question": "赭石越多膠越不黏，怎麼還能當握柄？",
+      "existing_ids": [
+        "R38009"
+      ],
+      "source_ids": [],
+      "reason": "舊核已含同篇瀝青／赭石的接合與手持試驗。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA003",
+      "question": "火光能讓石牌動物像在動嗎？",
+      "existing_ids": [
+        "R38008"
+      ],
+      "source_ids": [],
+      "reason": "同篇plaquette加熱與VR已收。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA004",
+      "question": "四孔骨器能做繩，就證明只有這個用途嗎？",
+      "existing_ids": [
+        "R38001"
+      ],
+      "source_ids": [],
+      "reason": "舊核與R38-NA002已限定可行非唯一。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA005",
+      "question": "有孔陶片就一定是做乳酪嗎？",
+      "existing_ids": [
+        "R29005"
+      ],
+      "source_ids": [],
+      "reason": "R29-NA009與舊核已用乳脂縮小用途。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA006",
+      "question": "焦油DNA能說出最後一餐嗎？",
+      "existing_ids": [
+        "R38010"
+      ],
+      "source_ids": [],
+      "reason": "R38-NA012已記混合與時間不明。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA007",
+      "question": "骨片一排點是打穿皮革的墊板嗎？",
+      "existing_ids": [
+        "R38003"
+      ],
+      "source_ids": [],
+      "reason": "舊實驗痕跡與器具對照不重收。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA008",
+      "question": "光滑骨肋就是皮革加工器嗎？",
+      "existing_ids": [
+        "R38004"
+      ],
+      "source_ids": [],
+      "reason": "舊核已含磨痕方向與分布的限定比較。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA009",
+      "question": "青銅劍每種凹痕各做一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "S50-S003"
+      ],
+      "reason": "同篇控制有些只發生一次且多解；留在組合損傷主核，不拆分類清單。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA010",
+      "question": "能做出樺焦油就能測出尼安德塔人聰明程度？",
+      "existing_ids": [],
+      "source_ids": [
+        "S50-S001",
+        "S50-S002"
+      ],
+      "reason": "工藝重現與兩件成分不能單獨量整體認知或累積文化。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA011",
+      "question": "焦油少一個煙灰峰就能定製法？",
+      "existing_ids": [],
+      "source_ids": [
+        "S50-S002"
+      ],
+      "reason": "作者明說多環芳烴長期穩定性仍待研究。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA012",
+      "question": "燒裂的石頭一定是失敗品？",
+      "existing_ids": [],
+      "source_ids": [
+        "S50-S004"
+      ],
+      "reason": "後續加工交切已包含主核，不能另以相反題名拆核。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA013",
+      "question": "一張銀分布圖能還原四千年完整埋藏過程？",
+      "existing_ids": [],
+      "source_ids": [
+        "S50-S005"
+      ],
+      "reason": "人工溶液與單件微切片不足；不採原文未量到的完整地下演變。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA014",
+      "question": "古埃及石鑽一定用哪種磨粉？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只取得搜尋摘要／片段，未有完整變因與圖證，這輪不收。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "S50-NA015",
+      "question": "銀表面富集能直接校正出原合金比例？",
+      "existing_ids": [],
+      "source_ids": [
+        "S50-S005"
+      ],
+      "reason": "本篇文字配比有內部矛盾且表層已受改變，不給反算數值。",
+      "reentry_condition": "需有已讀原始控制能改變答案；同一圖或材料換例不重入。",
+      "reading_status": "有本批source_ids者已讀指定正文；舊核為全問答scope比較；無兩者者僅搜索方向未採正文。",
+      "origin": "wave50-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-earth.json"
+    },
+    {
+      "id": "H50-NA001",
+      "question": "果醬換樣與茶葉換樣各算一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "H50-S001"
+      ],
+      "reason": "相同操弄與答案，兩種感官只作主核補例，不拆筆。",
+      "reentry_condition": "要有不同控制改變答案，而非換商品。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave50-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+    },
+    {
+      "id": "H50-NA002",
+      "question": "漏察覺就證明人完全不知道自己喜歡什麼？",
+      "existing_ids": [],
+      "source_ids": [
+        "H50-S001"
+      ],
+      "reason": "從有限任務跳到所有偏好，超過證據。",
+      "reentry_condition": "需限定可檢驗命題與直接資料。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave50-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+    },
+    {
+      "id": "H50-NA003",
+      "question": "送禮會讓人一律更容易上當？",
+      "existing_ids": [],
+      "source_ids": [
+        "H50-S001"
+      ],
+      "reason": "贈品條件茶與果醬結果不同，社會回報與回溯標準仍有解釋空間；不另開薄片。",
+      "reentry_condition": "須有獨立控制區分動機與回報偏差。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave50-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+    },
+    {
+      "id": "H50-NA004",
+      "question": "耳機把剛說的字換掉，人會相信自己說了另一個字？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "取得2014原文PDF但尚未全文覆核；讀2015作者回應已見試次排除、時序窗與Stroop情境爭論，不能只用標題收核。",
+      "reentry_condition": "需原始Methods/全部分母及批評原文對讀，另核現有語音題。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave50-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+    },
+    {
+      "id": "H50-NA005",
+      "question": "問路時換了一個人，為什麼沒發現？",
+      "existing_ids": [
+        "P14006",
+        "C2004"
+      ],
+      "source_ids": [],
+      "reason": "原作者索引取回逾時，尚未讀有效原文；舊注意/變化盲題相近。",
+      "reentry_condition": "先取得原文，再證明不同於既有變化盲控制。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave50-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+    },
+    {
+      "id": "H50-NA006",
+      "question": "看過的照片，為什麼會記成更廣的景？",
+      "existing_ids": [
+        "C2016"
+      ],
+      "source_ids": [],
+      "reason": "PMC驗證頁與Europe PMC XML500，未完成正文與圖讀。",
+      "reentry_condition": "需有效原研究正文和場景邊界對照，不能以搜尋摘要入庫。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave50-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+    },
+    {
+      "id": "H50-NA007",
+      "question": "白酒染紅以後聞起來也像紅酒？",
+      "existing_ids": [
+        "R42010"
+      ],
+      "source_ids": [],
+      "reason": "已收顏色對氣味描述用詞的控制，這輪不改標題重收。",
+      "reentry_condition": "不同原研究對照產生新的答案才重入。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。",
+      "origin": "wave50-human-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-human.json"
+    },
+    {
+      "id": "L50-NA001",
+      "question": "植物沒有日曆，怎麼知道季節？",
+      "existing_ids": [
+        "L104"
+      ],
+      "source_ids": [],
+      "reason": "既有日長訊號核心，沒有新控制就不另計。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA002",
+      "question": "提早天黑時，澱粉為什麼能慢慢用？",
+      "existing_ids": [
+        "A27001"
+      ],
+      "source_ids": [],
+      "reason": "原庫已含提早入夜、存量與剩餘夜長模型，不能改稱植物會算時間再收。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA003",
+      "question": "回暖後還記得寒冬嗎？",
+      "existing_ids": [
+        "R6006"
+      ],
+      "source_ids": [],
+      "reason": "既有春化FLC染色質沉默，不用記憶新問法重算。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA004",
+      "question": "紅光之後再照遠紅光能改種子萌發嗎？",
+      "existing_ids": [
+        "L102"
+      ],
+      "source_ids": [],
+      "reason": "既有光敏素可逆狀態，不另找種子換例。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA005",
+      "question": "葉子反射的光讓植物知道鄰居來了嗎？",
+      "existing_ids": [
+        "L101"
+      ],
+      "source_ids": [],
+      "reason": "既有紅/遠紅比線索，本批只另考察防禦解耦，單獨鄰居感應不新計。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA006",
+      "question": "根瘤菌用氮換植物的糖嗎？",
+      "existing_ids": [
+        "L107"
+      ],
+      "source_ids": [
+        "L50-S003"
+      ],
+      "reason": "一般交換已收；新題僅保局部不固氮的後續控制，不拆交換兩邊。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA007",
+      "question": "根瘤供氧又要保護怕氧的固氮工具，怎麼兼顧？",
+      "existing_ids": [
+        "R6020"
+      ],
+      "source_ids": [
+        "L50-S003"
+      ],
+      "reason": "舊核已含豆血紅蛋白與低游離氧，不把本研究氧測量工具當另一核。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA008",
+      "question": "菌根多伸出去一些，能幫植物取養分嗎？",
+      "existing_ids": [
+        "L109",
+        "L110"
+      ],
+      "source_ids": [],
+      "reason": "既有根外/小孔隙取用，不稱所有菌根網都是互助。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA009",
+      "question": "植物被咬會叫來天敵嗎？",
+      "existing_ids": [
+        "B2238"
+      ],
+      "source_ids": [],
+      "reason": "既有受害揮發物/天敵線索；本批互食題不等於外部天敵招募。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA010",
+      "question": "含羞草閉葉會讓蟲少吃嗎？",
+      "existing_ids": [
+        "L47-003"
+      ],
+      "source_ids": [],
+      "reason": "已有不動葉及基因控制，不能以防禦主題再收。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA011",
+      "question": "捕蠅草怎麼記得前一次碰觸？",
+      "existing_ids": [
+        "R6017"
+      ],
+      "source_ids": [],
+      "reason": "已有鈣累積與衰減時間窗。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA012",
+      "question": "植物能不能在蟲咬後把花改到早上開？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已定位Kessler等2010 DOI10.1016/j.cub.2009.11.071；本輪只讀PubMed摘要，Cell原PDF403，未把摘要充原研究正文。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA013",
+      "question": "拔下來的菜也用時鐘防蟲，能否另立一核？",
+      "existing_ids": [],
+      "source_ids": [
+        "L50-S001"
+      ],
+      "reason": "本輪未取得並讀另一篇採後原文；即使時鐘相位仍影響防禦，也需先判是否只是L50-001材料變體。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA014",
+      "question": "植物能逼所有野外毛毛蟲互相吃光嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "L50-S004"
+      ],
+      "reason": "容器限制離開且只測一物種；未測自然族群與病毒傳播，不把Discussion的可能性寫成事實。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA015",
+      "question": "看到根瘤顏色較淡，就能知道它在偷懶嗎？",
+      "existing_ids": [
+        "R6020"
+      ],
+      "source_ids": [
+        "L50-S003"
+      ],
+      "reason": "顏色不是本研究對固氮/菌數的替代測量，也不賦予細菌意圖。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "L50-NA016",
+      "question": "少供氮的菌根真菌會被少給糖，能否拆另一個制裁核心？",
+      "existing_ids": [
+        "L107",
+        "L109"
+      ],
+      "source_ids": [],
+      "reason": "本輪未讀原研究，且與局部互利表現控制可能同核心；先不以換共生者增數。",
+      "reentry_condition": "須讀到有效原始正文、明確可見對照及既有答案未含的因果；若只換物種/名稱或參數，併舊或留變體。",
+      "origin": "wave50-life",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-life.json"
+    },
+    {
+      "id": "P50-NA001",
+      "question": "白牆為何不像鏡子照出人？",
+      "existing_ids": [
+        "P133"
+      ],
+      "source_ids": [],
+      "reason": "僅漫反射破壞直接方向對應，已有；P50-001須保半影編碼新控制。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA002",
+      "question": "亮暗散斑是怎麼形成的？",
+      "existing_ids": [
+        "O3004",
+        "P153"
+      ],
+      "source_ids": [],
+      "reason": "相干散射/干涉生成已有，不以雷射替雷達重收。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I15-NA12",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA003",
+      "question": "把散斑平滑掉是不是就能恢復圖案？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "source_ids": [],
+      "reason": "去噪/細部損失舊核；與本批利用相關性解圖不同。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "P26-NA004",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA004",
+      "question": "手機拍螢幕的大片波紋怎麼來？",
+      "existing_ids": [
+        "LEG-A50"
+      ],
+      "source_ids": [],
+      "reason": "格網取樣摩爾紋已有。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I15-NA10",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA005",
+      "question": "相機改曝光時序讓動態模糊更好救？",
+      "existing_ids": [
+        "I15005"
+      ],
+      "source_ids": [],
+      "reason": "已知編碼模糊核舊核，未另採新研究。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "P20-NA007",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA006",
+      "question": "用更少感光點和更多遮罩還原圖像？",
+      "existing_ids": [
+        "I15007"
+      ],
+      "source_ids": [],
+      "reason": "主動已知遮罩多次量測已有，單改遮罩形狀不另收。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA007",
+      "question": "拍完才換焦點，能從普通照片找回角度嗎？",
+      "existing_ids": [
+        "I15004"
+      ],
+      "source_ids": [],
+      "reason": "光場方向記錄及限制已有。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I15-NA17",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA008",
+      "question": "轉一下眼鏡，螢幕為什麼變黑？",
+      "existing_ids": [
+        "P159",
+        "P160",
+        "P161",
+        "P162"
+      ],
+      "source_ids": [],
+      "reason": "偏振方向選擇與角度透光已有。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "P20-NA003",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA009",
+      "question": "逐行掃描使移動影像變形，可換成袋子再計嗎？",
+      "existing_ids": [
+        "O3047",
+        "P20006"
+      ],
+      "source_ids": [],
+      "reason": "逐行時序本身已有；P50-004只保聲致微振動提取，逐行是同文變體不拆核。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I15-NA11",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA010",
+      "question": "用相機沿唱片凹槽找回聲音？",
+      "existing_ids": [
+        "P28001"
+      ],
+      "source_ids": [],
+      "reason": "靜態已刻錄幾何讀取舊核，與當下動態微振動不同。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA011",
+      "question": "把穿透擴散片換成白漆反射再加一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "P50-S002"
+      ],
+      "reason": "S002同記憶角/自相關恢復機制，白漆反射例留P50-002範圍，不計新核。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA012",
+      "question": "用蛋殼、花瓣分別聚光能各新增一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "P50-S003"
+      ],
+      "reason": "S003同相位回饋程序換樣本，不拆材料。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA013",
+      "question": "把聲音倒放的重聚直接改名成光學重聚？",
+      "existing_ids": [
+        "W16003"
+      ],
+      "source_ids": [],
+      "reason": "若只說路徑反向對齊即重複；P50-003須保目標強度回饋找相位、未記錄時域波形的差別。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "W16-NA12",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
+    },
+    {
+      "id": "P50-NA014",
+      "question": "手機每秒60幀還原更高頻聲音獨立算一題？",
+      "existing_ids": [
+        "O3047",
+        "P20006"
+      ],
+      "source_ids": [
+        "P50-S004"
+      ],
+      "reason": "S004逐行樣本/缺口/曝光是P50-004同文測量變體；本輪不拆取樣參數為另一核心。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "origin": "wave50-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave50-physics.json"
     },
     {
       "id": "J6-NA001",
