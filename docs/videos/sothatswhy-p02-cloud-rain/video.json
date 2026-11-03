@@ -1,0 +1,2440 @@
+{
+  "schema_version": 1,
+  "slug": "sothatswhy-p02-cloud-rain",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    10,
+    13
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-cartoon"
+  },
+  "characters": [
+    {
+      "id": "chief",
+      "name": "所長",
+      "appearance": "a friendly middle-aged office chief with round glasses, short neat dark hair with a little grey at the sides, a mustard-yellow cardigan over a white shirt, ink-navy trousers, a small red rubber stamp clipped to the cardigan pocket",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+      }
+    },
+    {
+      "id": "kid",
+      "name": "小問",
+      "appearance": "a curious eight-year-old girl with a short black bob haircut and a small cowlick on top, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, often carrying a small notebook",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, playful, a little bouncy, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "p007",
+      "payoff": "p061",
+      "what": "水比空氣重，雲為什麼沒有整團掉下來"
+    },
+    {
+      "setup": "p010",
+      "payoff": "p110",
+      "what": "怎麼在一個小時以內變成大雨"
+    },
+    {
+      "setup": "p002",
+      "payoff": "p103",
+      "what": "雲的底部為什麼變灰"
+    },
+    {
+      "setup": "p013",
+      "payoff": "p018",
+      "what": "雲是不是水蒸氣"
+    },
+    {
+      "setup": "p028",
+      "payoff": "p030",
+      "what": "天上有什麼讓水氣凝結上去"
+    },
+    {
+      "setup": "p034",
+      "payoff": "p039",
+      "what": "一朵雲總共有多少水"
+    },
+    {
+      "setup": "p062",
+      "payoff": "p086",
+      "what": "水滴要多大，空氣才托不住"
+    },
+    {
+      "setup": "p064",
+      "payoff": "p068",
+      "what": "一滴雨要多少雲滴"
+    },
+    {
+      "setup": "p083",
+      "payoff": "p088",
+      "what": "是不是整朵雲一起掉下來"
+    },
+    {
+      "setup": "p090",
+      "payoff": "p093",
+      "what": "為什麼不是每一朵雲都下雨"
+    },
+    {
+      "setup": "p104",
+      "payoff": "p109",
+      "what": "雷陣雨為什麼下一下就停"
+    },
+    {
+      "setup": "p113",
+      "payoff": "p117",
+      "what": "怎麼看出今天的雲會不會下雨"
+    },
+    {
+      "setup": "p119",
+      "payoff": "p121",
+      "what": "雨滴是不是眼淚的形狀"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一朵雲裡有 500 公噸的水，為什麼不會掉下來？｜原來如此事務所",
+    "description": "夏天下午兩點還大太陽，三點就下大雨。抬頭看到的那朵雲，裡面真的有水，而且一朵普通的積雲就有大約五百公噸。水比空氣重，它為什麼能留在天上？又怎麼在一個小時以內，變成打在你身上的大雨？\n\n這一集，所長和小問從一朵雲裡的一滴水開始：水蒸氣和雲有什麼不同、雲滴為什麼掉得比蝸牛還慢、一滴雨為什麼要大約一百萬顆雲滴、雷陣雨為什麼偏偏在下午，又為什麼常常下一下就停。最後教你抬頭看三件事。\n\n本集插圖由 AI 生成。數字是常見情況的估算，實際的雲差異很大；每個數字的出處列在下方參考資料。\n\n資料截至 2026-11-03",
+    "tags": [
+      "午後雷陣雨",
+      "雲",
+      "為什麼下雨",
+      "雨滴",
+      "積雲",
+      "科普",
+      "原來如此事務所"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "500 噸的水\n**浮在天上**",
+      "sub": "為什麼不會掉下來？",
+      "shot": "kid-elephants"
+    }
+  },
+  "sources": [],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "balcony-call",
+      "chapter": "雲裡真的有水嗎",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl on a small apartment balcony in the early afternoon, leaning on the railing and pointing up at the sky with wide excited eyes, laundry hanging beside her, soft daylight from above",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p001",
+          "speaker": "kid",
+          "text": "所長！所長！我家陽台外面那朵雲，一直往上長。",
+          "emotion": "興奮，跑進來報案的語氣"
+        }
+      ]
+    },
+    {
+      "id": "tower-greying",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle wide shot of one tall puffy cloud rising over apartment rooftops in the afternoon, its top bright white and its flat bottom turning grey, a single rooftop water tank in the corner, soft light from the upper left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p002",
+          "speaker": "kid",
+          "text": "剛剛還白白的，現在下面變成灰色了。",
+          "emotion": "疑惑"
+        }
+      ]
+    },
+    {
+      "id": "chief-folder",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a friendly office chief at a wooden desk by a window, looking up from an open blank folder with an amused smile, a window behind him, warm lamp light on the desk",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p003",
+          "speaker": "chief",
+          "text": "那你等一下可能要收衣服了。",
+          "emotion": "輕鬆，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "kid-puzzled",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl frowning in thought, holding a small blank notebook against her chest, standing in a bright doorway, soft daylight from the side",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p004",
+          "speaker": "kid",
+          "text": "可是我想不通。雲裡面，真的有水嗎？",
+          "emotion": "認真發問，句尾上揚"
+        }
+      ]
+    },
+    {
+      "id": "chief-yes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief holding up a magnifying glass and nodding warmly, bookshelves of blank folders behind him, soft afternoon light from a window",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p005",
+          "speaker": "chief",
+          "text": "有，而且很多。你抬頭看到的那一整片白色，裡面全是水。",
+          "emotion": "肯定，語氣親切"
+        }
+      ]
+    },
+    {
+      "id": "kid-why-not-fall",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl with her finger on her chin and eyebrows raised, looking up and to the side as if picturing something heavy overhead, a plain wall behind her, soft light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p006",
+          "speaker": "kid",
+          "text": "水不是比空氣重嗎？",
+          "emotion": "不服氣"
+        },
+        {
+          "id": "p007",
+          "speaker": "kid",
+          "text": "那它為什麼沒有整團掉下來？",
+          "emotion": "句尾上揚"
+        }
+      ]
+    },
+    {
+      "id": "chief-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief standing at an open window with his hands behind his back, gazing up at a big white cloud outside, gentle afternoon light on his face",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p008",
+          "speaker": "chief",
+          "text": "這個問題，你每年夏天其實都看過答案，只是沒有人跟你說。",
+          "emotion": "賣關子，放慢"
+        }
+      ]
+    },
+    {
+      "id": "town-cloud-wide",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small city in summer afternoon, one huge cloud tower rising behind the buildings, a single scooter rider stopped at a crossing and looking up at it, soft hazy light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p009",
+          "speaker": "chief",
+          "text": "今天我們就從那朵雲裡的一滴水開始，看它怎麼留在天上，",
+          "emotion": "承諾句，穩"
+        }
+      ]
+    },
+    {
+      "id": "drop-on-nose",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of one big raindrop landing on the tip of a girl's nose as she looks up, her eyes crossed comically, grey sky behind her",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p010",
+          "speaker": "chief",
+          "text": "又怎麼在一個小時以內，變成打在你身上的大雨。",
+          "emotion": "最後幾個字放慢"
+        }
+      ]
+    },
+    {
+      "id": "clear-morning",
+      "chapter": "晴天怎麼長出一朵雲",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the same apartment balcony on a clear morning, a girl hanging a towel on the laundry line, the sky completely empty of clouds, soft early light from the left",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p011",
+          "speaker": "chief",
+          "text": "先把時間倒回今天早上。天空很乾淨，一朵雲都沒有。",
+          "emotion": "說故事的開頭"
+        }
+      ]
+    },
+    {
+      "id": "hot-street",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a delivery rider in a helmet wiping sweat from his forehead beside his scooter on a hot city street, faint heat shimmer rising from the road, mild hazy daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p012",
+          "speaker": "chief",
+          "text": "太陽把地面曬熱，地面再把貼著它的那層空氣烤熱。"
+        }
+      ]
+    },
+    {
+      "id": "kid-vapour-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl sitting on a tall stool swinging her legs and raising one hand like asking a question in class, plain background, soft light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p013",
+          "speaker": "kid",
+          "text": "那雲是從哪裡跑出來的？是水蒸氣嗎？",
+          "emotion": "很有把握的猜"
+        }
+      ]
+    },
+    {
+      "id": "chief-kettle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief in a small kitchenette pointing at a steaming kettle on a stove, a mug waiting beside it, soft lamp light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p014",
+          "speaker": "chief",
+          "text": "很多人都這樣想。不過你先看這個。",
+          "emotion": "神秘一點"
+        }
+      ]
+    },
+    {
+      "id": "spout-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a kettle spout with a clear gap of empty air right at the opening and a white puff of mist starting a little further out, plain wall behind, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p015",
+          "speaker": "chief",
+          "text": "燒開水的時候，最靠近壺嘴的那一小段，其實是透明的。"
+        }
+      ]
+    },
+    {
+      "id": "mist-puff",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a white puff of mist curling in the air a hand's width away from a kettle spout, the air right at the spout clear, soft kitchen light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p016",
+          "speaker": "chief",
+          "text": "白色的霧，要離開壺嘴一點點才出現。"
+        }
+      ]
+    },
+    {
+      "id": "kid-not-vapour",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl leaning in with big surprised eyes and her mouth in a small O, looking at something just off frame, soft kitchen light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p017",
+          "speaker": "kid",
+          "text": "所以白白的那個，不是水蒸氣？",
+          "emotion": "驚訝"
+        }
+      ]
+    },
+    {
+      "id": "chief-explains-mist",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief holding a mug and smiling knowingly, a faint wisp of mist above the mug, soft lamp light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p018",
+          "speaker": "chief",
+          "text": "對。真正的水蒸氣是看不見的。白白的，是它冷下來，又變回的小水滴。"
+        }
+      ]
+    },
+    {
+      "id": "vapour-vs-cloud",
+      "template": "compare",
+      "data": {
+        "title": "白白的不是水蒸氣",
+        "left": {
+          "heading": "水蒸氣",
+          "points": [
+            "氣體",
+            "看不見"
+          ]
+        },
+        "right": {
+          "heading": "雲",
+          "points": [
+            "很小的水滴或冰晶",
+            "看得見"
+          ]
+        },
+        "source": "NOAA JetStream：雲的形成"
+      },
+      "lines": [
+        {
+          "id": "p019",
+          "speaker": "chief",
+          "text": "雲也是一樣。它是很多很小的水滴，有時候是小冰晶，不是一團氣。"
+        }
+      ]
+    },
+    {
+      "id": "kid-who-cools",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl looking up at an empty sky from a rooftop and spreading her empty hands with a puzzled shrug, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p020",
+          "speaker": "kid",
+          "text": "可是天上又沒有水壺，誰把它變冷的？",
+          "emotion": "抓到漏洞的語氣"
+        }
+      ]
+    },
+    {
+      "id": "warm-bubble",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunlit town rooftop at late morning, a large transparent shimmering bubble of warm air lifting off a hot rooftop into the sky, one pigeon on the ledge watching it, mild light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p021",
+          "speaker": "chief",
+          "text": "答案是往上爬。被曬熱的空氣比旁邊輕，會一團一團往上浮。"
+        }
+      ]
+    },
+    {
+      "id": "kid-balloon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl holding the string of a red balloon and watching it pull upward, standing in a small park, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p022",
+          "speaker": "kid",
+          "text": "就像熱氣球？",
+          "emotion": "好奇"
+        }
+      ]
+    },
+    {
+      "id": "mountain-hike",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hiker in a light jacket on a mountain trail zipping the jacket up to the chin with a shiver, a valley far below, overcast soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p023",
+          "speaker": "chief",
+          "text": "有點像。而且你應該有感覺過：爬山爬得越高，就越涼。"
+        }
+      ]
+    },
+    {
+      "id": "chief-expands",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief stretching a big rubber balloon between his hands at his desk as if showing it swell, an amused look, warm desk lamp",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p024",
+          "speaker": "chief",
+          "text": "空氣往上走，周圍的氣壓變小，它就膨脹；一膨脹，就會變冷。"
+        }
+      ]
+    },
+    {
+      "id": "lapse-rate",
+      "template": "big",
+      "data": {
+        "kicker": "往上爬的乾空氣",
+        "text": "每 1 公里 **冷約 10°C**",
+        "sub": "還沒有凝結的時候"
+      },
+      "lines": [
+        {
+          "id": "p025",
+          "speaker": "chief",
+          "text": "在還沒有凝結之前，往上爬的空氣，每升高一公里大約冷十度。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "condense-high",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rising pocket of warm air high above a town turning into the first wisps of white cloud, a single paraglider drifting nearby, soft bright light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p026",
+          "speaker": "chief",
+          "text": "冷到某個高度，空氣裝不下那麼多水氣，多出來的就會凝結。"
+        }
+      ]
+    },
+    {
+      "id": "iced-cup",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl's fingertip touching beads of water on the outside of a glass of iced tea on a café table, soft daylight from a window",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p027",
+          "speaker": "chief",
+          "text": "就像你夏天拿冰飲料，杯子外面會冒出水珠。"
+        }
+      ]
+    },
+    {
+      "id": "kid-what-to-cling",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl tilting her head and squinting with one eye closed, holding the cold glass up to the light, soft café light",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p028",
+          "speaker": "kid",
+          "text": "杯子外面有杯子給它黏，天上有什麼可以黏？",
+          "emotion": "反問，有點得意"
+        }
+      ]
+    },
+    {
+      "id": "chief-magnifier",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief peering through a large magnifying glass at a beam of window light full of tiny floating dust specks, delighted expression",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p029",
+          "speaker": "chief",
+          "text": "好問題。空氣裡有很多你看不到的小顆粒：灰塵、海鹽、煙。"
+        }
+      ]
+    },
+    {
+      "id": "nucleus-droplet",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up illustration of one tiny speck of sea salt floating in the air with a round water droplet forming around it, a few more specks and droplets drifting in the soft white background",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p030",
+          "speaker": "chief",
+          "text": "水氣就是在這些小顆粒上，凝結成一顆一顆小水滴。"
+        }
+      ]
+    },
+    {
+      "id": "flat-bases",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a row of puffy clouds over green rice fields, every cloud with the same flat bottom at the same height, a single farmer in a straw hat looking up from the field, soft overcast-bright light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p031",
+          "speaker": "chief",
+          "text": "所以你看積雲，底部常常是平的：那個高度，剛好是空氣冷到開始凝結的地方。"
+        }
+      ]
+    },
+    {
+      "id": "kid-flat-bottoms",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl lying on her back on a grassy riverbank pointing up at the sky and laughing, her notebook beside her, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p032",
+          "speaker": "kid",
+          "text": "真的耶，每一朵的屁股都一樣平！",
+          "emotion": "笑出來"
+        }
+      ]
+    },
+    {
+      "id": "cauliflower-grow",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle wide shot of a puffy cloud bulging upward in round lumps like a cauliflower over a hillside, one kite flying below it, soft bright afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p033",
+          "speaker": "chief",
+          "text": "只要下面一直有熱空氣送上來，這朵雲就會一直往上長，長得像一顆花椰菜。"
+        }
+      ]
+    },
+    {
+      "id": "kid-how-much",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl writing in her small notebook with her tongue poking out in concentration, sitting on the riverbank grass, soft light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p034",
+          "speaker": "kid",
+          "text": "那這一大朵，總共有多少水？",
+          "emotion": "認真，章尾停住"
+        }
+      ]
+    },
+    {
+      "id": "chief-whiteboard",
+      "chapter": "這麼重，為什麼還在天上",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief drawing a big cube with a marker on a blank whiteboard, glancing back over his shoulder with a grin, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p035",
+          "speaker": "chief",
+          "text": "我們來算一朵普通的積雲。假設它差不多是一個長寬高各一公里的大方塊。"
+        }
+      ]
+    },
+    {
+      "id": "cloud-weight",
+      "template": "stats",
+      "data": {
+        "title": "一朵積雲（估算）",
+        "stats": [
+          {
+            "value": "1 立方公里",
+            "label": "雲的大小"
+          },
+          {
+            "value": "約 0.5 公克",
+            "label": "每立方公尺的水"
+          },
+          {
+            "value": "約 500 公噸",
+            "label": "整朵雲的水"
+          }
+        ],
+        "source": "UCAR／NCAR 估算方式"
+      },
+      "lines": [
+        {
+          "id": "p036",
+          "speaker": "chief",
+          "text": "雲裡的水其實很稀，每一立方公尺，大概只有半公克。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "p037",
+          "speaker": "chief",
+          "text": "可是一立方公里，有十億個立方公尺。"
+        }
+      ]
+    },
+    {
+      "id": "kid-calc",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl staring wide-eyed at her notebook full of scribbled zeros, pencil frozen in her hand, plain background, soft light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p038",
+          "speaker": "kid",
+          "text": "十億個半公克……那是多少？",
+          "emotion": "算不出來"
+        },
+        {
+          "id": "p039",
+          "speaker": "chief",
+          "text": "大約五百公噸。",
+          "emotion": "停一拍再說"
+        }
+      ]
+    },
+    {
+      "id": "elephants",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long parade of elephants walking across a dry plain in a single line toward the horizon, one big cloud above them, soft hazy light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p040",
+          "speaker": "chief",
+          "text": "差不多是一百頭大象那麼重。"
+        }
+      ]
+    },
+    {
+      "id": "kid-elephants",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl hugging her head with both hands and looking up in mock panic, standing on the balcony, a big cloud overhead, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p041",
+          "speaker": "kid",
+          "text": "那麼多大象浮在我家上面？！",
+          "emotion": "誇張驚嚇，好笑"
+        }
+      ]
+    },
+    {
+      "id": "chief-laugh",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief laughing with one hand on his belly at his desk, a mug beside him, warm lamp light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p042",
+          "speaker": "chief",
+          "text": "聽起來很嚇人對吧。不過先別急著跑，還有兩件事你不知道。",
+          "emotion": "笑著，然後收"
+        }
+      ]
+    },
+    {
+      "id": "air-weight",
+      "template": "big",
+      "data": {
+        "kicker": "同一立方公里的空氣",
+        "text": "約 **100 萬公噸**",
+        "sub": "雲裡的水，只占約兩千分之一"
+      },
+      "lines": [
+        {
+          "id": "p043",
+          "speaker": "chief",
+          "text": "第一件：雲周圍那團空氣本身更重。同樣一立方公里的空氣，大約有一百萬公噸。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "kid-tiny-part",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl holding a pinch of sugar between two fingers above a big glass jug of water and squinting at it, soft kitchen light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p044",
+          "speaker": "kid",
+          "text": "所以那些水，只是混在空氣裡面的一點點？",
+          "emotion": "恍然大悟一半"
+        }
+      ]
+    },
+    {
+      "id": "chief-second",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief holding up two fingers with a serious but kind face, standing by the whiteboard with the cube drawing, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p045",
+          "speaker": "chief",
+          "text": "對。第二件更重要：這些水不是一大塊，而是分成非常非常多顆。"
+        }
+      ]
+    },
+    {
+      "id": "droplet-size",
+      "template": "big",
+      "data": {
+        "kicker": "一顆雲滴",
+        "text": "約 **0.02** 公釐",
+        "sub": "比一根頭髮還細好幾倍"
+      },
+      "lines": [
+        {
+          "id": "p046",
+          "speaker": "chief",
+          "text": "一顆普通的雲滴，直徑大約百分之二公釐，比一根頭髮還細好幾倍。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "kid-no-weight",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl holding up a single strand of her own hair and studying it closely, sitting at a desk, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p047",
+          "speaker": "kid",
+          "text": "那它太小了，所以就沒有重量了？",
+          "emotion": "很有把握的錯猜"
+        }
+      ]
+    },
+    {
+      "id": "chief-falls-slowly",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief shaking his head gently and holding his thumb and finger very close together, warm lamp light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p048",
+          "speaker": "chief",
+          "text": "有重量，它也真的一直在往下掉。只是掉得非常、非常慢。",
+          "emotion": "否定但溫和"
+        }
+      ]
+    },
+    {
+      "id": "feather-stone",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl on a balcony letting go of a feather and a pebble at the same time from her two raised hands, the pebble already lower than the feather, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p049",
+          "speaker": "chief",
+          "text": "你想想看，一顆石頭和一根羽毛一起放手，哪個先落地？"
+        },
+        {
+          "id": "p050",
+          "speaker": "kid",
+          "text": "石頭啊。",
+          "emotion": "理所當然"
+        }
+      ]
+    },
+    {
+      "id": "chief-air-holds",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief holding a tiny paper scrap in his palm in front of a desk fan, the scrap lifting off his palm, playful look, soft light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p051",
+          "speaker": "chief",
+          "text": "東西越小，空氣擋住它的力量相對就越大。小到像雲滴那樣，空氣幾乎把它托住了。"
+        }
+      ]
+    },
+    {
+      "id": "fall-speed",
+      "template": "compare",
+      "data": {
+        "title": "在不動的空氣裡，每秒掉多少",
+        "left": {
+          "heading": "雲滴 0.02 公釐",
+          "points": [
+            "每秒約 1 公分"
+          ]
+        },
+        "right": {
+          "heading": "雨滴 2 公釐",
+          "points": [
+            "每秒約 6–7 公尺"
+          ]
+        },
+        "source": "AMS 氣象學詞彙：終端速度"
+      },
+      "lines": [
+        {
+          "id": "p052",
+          "speaker": "chief",
+          "text": "一顆雲滴在不動的空氣裡，一秒大概只掉一公分左右。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "kid-snail",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl crouching on a garden path watching a snail crawl along a ruler laid on the ground, chin in her hands, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p053",
+          "speaker": "kid",
+          "text": "一秒一公分？那跟蝸牛差不多吧。",
+          "emotion": "好笑"
+        }
+      ]
+    },
+    {
+      "id": "chief-a-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief pointing at a big wall clock with a thoughtful face, his other hand holding a blank folder, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p054",
+          "speaker": "chief",
+          "text": "差不多。照這個速度，從一公里高的雲底掉到地上，要超過一天。"
+        }
+      ]
+    },
+    {
+      "id": "droplet-vanish",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of one tiny water droplet drifting down through dry air and shrinking into nothing, a few faint wisps around it, soft bright background",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p055",
+          "speaker": "chief",
+          "text": "而且它還沒掉到，半路就蒸發掉了。"
+        }
+      ]
+    },
+    {
+      "id": "kid-but-stays",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl on the balcony with her hands on her hips glaring up at a cloud that hasn't moved, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p056",
+          "speaker": "kid",
+          "text": "可是雲一整個下午都在，它也沒有慢慢變矮啊。",
+          "emotion": "抓到漏洞"
+        }
+      ]
+    },
+    {
+      "id": "chief-remember",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief raising one finger and smiling as if a clue just came back to him, standing by the window, soft light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p057",
+          "speaker": "chief",
+          "text": "因為那朵雲裡面，空氣不是靜止的。還記得那些一直往上送的熱空氣嗎？"
+        }
+      ]
+    },
+    {
+      "id": "updraft-section",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide cutaway illustration of a growing puffy cloud seen from the side, big curved arrows of rising air sweeping up through its middle, tiny droplets riding the arrows, a small town far below, soft bright light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p058",
+          "speaker": "chief",
+          "text": "在一朵正在長高的積雲裡，往上衝的空氣，一秒可以走好幾公尺。"
+        }
+      ]
+    },
+    {
+      "id": "kid-elevator",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl inside a bright glass elevator pointing upward with a big grin as it rises past the floors, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p059",
+          "speaker": "chief",
+          "text": "雲滴一秒往下掉一公分，空氣一秒往上推好幾公尺。"
+        },
+        {
+          "id": "p060",
+          "speaker": "kid",
+          "text": "那它根本是在搭電梯往上嘛！",
+          "emotion": "興奮"
+        }
+      ]
+    },
+    {
+      "id": "chief-answer-one",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief giving a satisfied nod with his arms folded, standing beside the whiteboard cube, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p061",
+          "speaker": "chief",
+          "text": "沒錯。雲有重量，但它的水碎成數不完的小顆，每一顆都輕到被空氣托住。",
+          "emotion": "解開第一個謎，語氣篤定"
+        }
+      ]
+    },
+    {
+      "id": "kid-how-big",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl holding her thumb and finger slightly apart in front of one eye and peering through the gap, sitting on a windowsill, soft light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p062",
+          "speaker": "kid",
+          "text": "那水滴要長到多大，空氣才托不住？",
+          "emotion": "章尾停住，句尾上揚"
+        }
+      ]
+    },
+    {
+      "id": "palm-raindrop",
+      "chapter": "一百萬顆，才夠一滴雨",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl's open palm stretched out from under an arcade, one fat raindrop splashing on it, wet street blurred behind, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p063",
+          "speaker": "chief",
+          "text": "你淋過的雨滴，常見的大約兩公釐，直徑是雲滴的一百倍。"
+        }
+      ]
+    },
+    {
+      "id": "kid-only-100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl shrugging with a casual unimpressed face, leaning against an arcade pillar, rain falling behind her, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p064",
+          "speaker": "kid",
+          "text": "才一百倍？那還好嘛。",
+          "emotion": "不以為意"
+        },
+        {
+          "id": "p065",
+          "speaker": "chief",
+          "text": "是直徑喔。體積是長、寬、高三個方向都要乘。"
+        }
+      ]
+    },
+    {
+      "id": "hundred-cubed",
+      "template": "big",
+      "data": {
+        "kicker": "直徑大 100 倍",
+        "text": "100 × 100 × 100",
+        "sub": "體積大 100 萬倍"
+      },
+      "lines": [
+        {
+          "id": "p066",
+          "speaker": "chief",
+          "text": "一百乘一百，再乘一百，等於一百萬。",
+          "emotion": "一字一頓"
+        }
+      ]
+    },
+    {
+      "id": "kid-million",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl with her mouth wide open and her notebook slipping from her hands, standing under the arcade, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p067",
+          "speaker": "kid",
+          "text": "一滴雨，要一百萬顆雲滴？！",
+          "emotion": "大驚"
+        },
+        {
+          "id": "p068",
+          "speaker": "chief",
+          "text": "大概是這個數量級。"
+        }
+      ]
+    },
+    {
+      "id": "kid-pinch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl pretending to squeeze an invisible ball between her palms with a cheeky grin, sitting on the office stool, soft light",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p069",
+          "speaker": "kid",
+          "text": "那它們怎麼湊在一起的？有人在雲裡把它們捏起來嗎？",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "chief-no-pinch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief chuckling and shaking his head, holding a blank folder, warm lamp light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p070",
+          "speaker": "chief",
+          "text": "沒有人捏，是它們自己撞在一起。"
+        }
+      ]
+    },
+    {
+      "id": "collision",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up illustration of one larger round water droplet falling and bumping into smaller droplets below it, the small ones merging into it, soft white cloud background",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p071",
+          "speaker": "chief",
+          "text": "雲裡的水滴大小不一樣。大一點的掉得比較快，就會追上、撞上下面比較小的。"
+        }
+      ]
+    },
+    {
+      "id": "kid-snowball",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl in a snowy park pushing a growing snowball that is already as tall as her knees, puffing with effort, soft grey winter light",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p072",
+          "speaker": "chief",
+          "text": "撞上去黏在一起，它就更大、掉得更快、撞到更多。"
+        },
+        {
+          "id": "p073",
+          "speaker": "kid",
+          "text": "像滾雪球！",
+          "emotion": "興奮"
+        }
+      ]
+    },
+    {
+      "id": "coalescence",
+      "template": "big",
+      "data": {
+        "kicker": "第一條路",
+        "text": "**碰撞合併**",
+        "sub": "大水滴追撞小水滴，越滾越大"
+      },
+      "lines": [
+        {
+          "id": "p074",
+          "speaker": "chief",
+          "text": "很像。這叫做碰撞合併。不過這只是其中一條路。"
+        }
+      ]
+    },
+    {
+      "id": "cold-top",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle wide shot of the icy, frosty top of a very tall cloud high in a pale blue sky, a single airliner passing far to the side, soft cold light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p075",
+          "speaker": "chief",
+          "text": "雲爬到夠高的地方，溫度會降到零度以下。那裡會有小冰晶，"
+        }
+      ]
+    },
+    {
+      "id": "supercooled",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of tiny glittering ice crystals floating next to round liquid water droplets inside a cold cloud, a soft pale blue glow",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p076",
+          "speaker": "chief",
+          "text": "也有冷到零度以下、卻還沒結冰的小水滴。"
+        }
+      ]
+    },
+    {
+      "id": "kid-not-frozen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl holding an ice cube up to her eye in disbelief, sitting at a desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p077",
+          "speaker": "kid",
+          "text": "零度以下還不結冰？",
+          "emotion": "不相信"
+        }
+      ]
+    },
+    {
+      "id": "chief-ice-wins",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief nodding with raised eyebrows, holding a frosty glass, soft lamp light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p078",
+          "speaker": "chief",
+          "text": "對，在雲裡很常見。而且在這種地方，冰晶比水滴更會搶水氣。"
+        }
+      ]
+    },
+    {
+      "id": "snow-to-rain",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide illustration of a big six-armed snowflake drifting down out of a cloud and turning into a round raindrop as it falls past a warm layer toward green hills, soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p079",
+          "speaker": "chief",
+          "text": "冰晶一邊長大一邊往下掉，掉到比較暖的低空，再融化成雨。"
+        }
+      ]
+    },
+    {
+      "id": "kid-was-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl under an umbrella looking up at summer rain with a curious smile, one hand stretched out to catch drops, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p080",
+          "speaker": "kid",
+          "text": "所以我淋到的雨，可能原本是雪？",
+          "emotion": "驚喜"
+        },
+        {
+          "id": "p081",
+          "speaker": "chief",
+          "text": "有可能。夏天長得很高的雷雨雲裡，兩條路常常都有。"
+        }
+      ]
+    },
+    {
+      "id": "two-routes",
+      "template": "compare",
+      "data": {
+        "title": "雨滴長大的兩條路",
+        "left": {
+          "heading": "碰撞合併",
+          "points": [
+            "大水滴追撞小水滴",
+            "不夠冷的雲也能下"
+          ]
+        },
+        "right": {
+          "heading": "冰晶",
+          "points": [
+            "雲頂冷到零度以下",
+            "長大落下，融化成雨"
+          ]
+        },
+        "source": "NOAA JetStream：降水的形成"
+      },
+      "lines": [
+        {
+          "id": "p082",
+          "speaker": "chief",
+          "text": "不管走哪一條，重點都一樣：水滴得先長到夠大。"
+        }
+      ]
+    },
+    {
+      "id": "kid-whole-cloud",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl hugging a big fluffy cushion and pretending to drop it on the floor, sitting on a sofa, mischievous face, soft light",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p083",
+          "speaker": "kid",
+          "text": "長大了，就會整朵雲一起掉下來嗎？",
+          "emotion": "很有把握的錯猜"
+        }
+      ]
+    },
+    {
+      "id": "chief-still-there",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief raising one eyebrow and pointing out of the window, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p084",
+          "speaker": "chief",
+          "text": "你看雲在下雨的時候，雲還在天上，對吧？"
+        },
+        {
+          "id": "p085",
+          "speaker": "kid",
+          "text": "……對耶。",
+          "emotion": "愣住"
+        }
+      ]
+    },
+    {
+      "id": "rain-shaft",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grey rain curtain falling from under a big cloud onto distant fields, a girl in a rice-field path watching it from far away, the cloud itself still floating above, soft bright light where she stands",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p086",
+          "speaker": "chief",
+          "text": "掉下來的，是一顆一顆已經長大的水滴。它們重到上升的空氣托不住，就從雲裡穿出來。"
+        }
+      ]
+    },
+    {
+      "id": "chief-batch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief pouring water from a jug in a slow thin stream into a glass, a calm explaining face, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p087",
+          "speaker": "chief",
+          "text": "兩公釐的雨滴，一秒可以落下六、七公尺，比雲滴快好幾百倍。"
+        }
+      ]
+    },
+    {
+      "id": "cloud-stays",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a big cloud still floating over a town while a curtain of rain pours from its base, a girl with an umbrella on a bridge watching, soft grey light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p088",
+          "speaker": "chief",
+          "text": "雲本身還在，只是裡面長大的那些，一批一批離開。"
+        }
+      ]
+    },
+    {
+      "id": "kid-not-every",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl at a window pressing her forehead against the glass, looking at two clouds outside, one raining and one white, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p089",
+          "speaker": "kid",
+          "text": "可是我家旁邊的雲，有的下雨，有的整天都不下。",
+          "emotion": "納悶"
+        },
+        {
+          "id": "p090",
+          "speaker": "kid",
+          "text": "為什麼不是每一朵都會下？",
+          "emotion": "章尾停住"
+        }
+      ]
+    },
+    {
+      "id": "chief-how-high",
+      "chapter": "為什麼偏偏是下午",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief stretching his arm high above his head to tap the top of a tall bookshelf, looking up, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p091",
+          "speaker": "chief",
+          "text": "這要回到一開始：雲能長多高、裡面的空氣往上衝得多用力。"
+        }
+      ]
+    },
+    {
+      "id": "small-clouds",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a park lawn on a fine morning with small flat puffs of cloud dotted in the sky, a girl flying a paper plane, mild soft light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p092",
+          "speaker": "chief",
+          "text": "天氣好時那種小小、扁扁的白雲，長不高，水滴還沒時間長大，就在邊緣蒸發掉了。"
+        }
+      ]
+    },
+    {
+      "id": "cumulonimbus",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle wide shot of an enormous storm cloud towering over a city skyline, its top spreading out far above, one tiny airliner flying near its upper part, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p093",
+          "speaker": "chief",
+          "text": "會下大雨的，是一路往上衝的雲。它的雲頂可以超過十公里，跟飛機飛的高度差不多。"
+        }
+      ]
+    },
+    {
+      "id": "kid-ten-km",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl tilting her head all the way back to look straight up, her hood falling off, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p094",
+          "speaker": "kid",
+          "text": "十公里！那要很多熱空氣才推得上去吧。",
+          "emotion": "讚嘆"
+        },
+        {
+          "id": "p095",
+          "speaker": "chief",
+          "text": "對。所以你猜，一天裡面，地面什麼時候最熱？"
+        }
+      ]
+    },
+    {
+      "id": "kid-noon-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl confidently pointing at a wall clock showing twelve, standing by a wall clock, big smug smile, soft light",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p096",
+          "speaker": "kid",
+          "text": "中午十二點！",
+          "emotion": "很有把握的錯猜"
+        }
+      ]
+    },
+    {
+      "id": "chief-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief wagging one finger with a gentle smile, sitting at his desk, warm lamp light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p097",
+          "speaker": "chief",
+          "text": "很多人都這樣猜。太陽最高是中午，可是地面和空氣最熱，通常要再晚一點。",
+          "emotion": "溫和地否定"
+        }
+      ]
+    },
+    {
+      "id": "pan-on-stove",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl standing on a step stool watching a frying pan on a gas stove, holding her hand above the pan to feel the heat, soft kitchen light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p098",
+          "speaker": "chief",
+          "text": "就像鍋子放上爐子，火一開，鍋子不會馬上最燙，要燒一段時間。"
+        }
+      ]
+    },
+    {
+      "id": "day-steps",
+      "template": "steps",
+      "data": {
+        "title": "一天裡的一朵對流雲",
+        "steps": [
+          {
+            "title": "早上",
+            "detail": "太陽開始曬地面"
+          },
+          {
+            "title": "中午",
+            "detail": "熱空氣一團一團往上送"
+          },
+          {
+            "title": "下午",
+            "detail": "雲長到最高，開始下大雨"
+          }
+        ],
+        "source": "中央氣象署：午後雷陣雨"
+      },
+      "lines": [
+        {
+          "id": "p099",
+          "speaker": "chief",
+          "text": "所以熱空氣往上送得最兇的時候，常常落在下午。"
+        }
+      ]
+    },
+    {
+      "id": "sea-breeze",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a coastline in the late morning, a moist breeze blowing in from the sea, a fisherman holding his cap on, low hills inland behind him, soft hazy light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p100",
+          "speaker": "chief",
+          "text": "台灣的夏天還多了兩個幫手：從海上吹進陸地的濕空氣，"
+        }
+      ]
+    },
+    {
+      "id": "mountain-clouds",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of green mountain slopes with puffy clouds building up right on the ridges in the early afternoon, one hiker resting on a rock and looking up at them, mild soft light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p101",
+          "speaker": "chief",
+          "text": "還有山。山坡把空氣往上抬，雲就特別容易在山邊長起來。"
+        }
+      ]
+    },
+    {
+      "id": "kid-three-pm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl on the balcony at three in the afternoon pointing at a darkening tall cloud and turning back toward the room, alarmed, soft grey light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p102",
+          "speaker": "kid",
+          "text": "所以下午三點，我家外面那朵雲就……變灰了！",
+          "emotion": "連起來了"
+        }
+      ]
+    },
+    {
+      "id": "grey-base",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle wide shot looking up at the thick dark-grey base of a huge cloud with bright white edges where sunlight still hits its sides, one bird flying underneath",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p103",
+          "speaker": "chief",
+          "text": "對，它長得又高又厚，陽光透不過來，底部看起來就是灰的。"
+        }
+      ]
+    },
+    {
+      "id": "kid-why-stop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl sitting on the windowsill with her knees up, watching rain outside slowly stop, puzzled, soft light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p104",
+          "speaker": "kid",
+          "text": "那為什麼雷陣雨常常下一下就停？",
+          "emotion": "追問"
+        }
+      ]
+    },
+    {
+      "id": "chief-engine",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief turning off a small desk fan with one finger and raising his eyebrows meaningfully, warm lamp light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p105",
+          "speaker": "chief",
+          "text": "因為大雨，會把自己的引擎關掉。",
+          "emotion": "賣關子"
+        }
+      ]
+    },
+    {
+      "id": "rain-drags",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide cutaway illustration of heavy rain falling out of a storm cloud with big curved arrows of cool air pouring down alongside it and spreading out across the ground, a small farmhouse below, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p106",
+          "speaker": "chief",
+          "text": "雨落下來，會把周圍的空氣一起往下拖；雨在半路蒸發，又讓這團空氣更冷。"
+        }
+      ]
+    },
+    {
+      "id": "cold-gust",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl on a street corner with her hair and jacket blown sideways by a sudden cool gust, leaves flying past, a dark cloud behind her, soft grey light",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p107",
+          "speaker": "chief",
+          "text": "你在雷雨前感覺到的那陣涼風，常常就是它衝到了地面。"
+        }
+      ]
+    },
+    {
+      "id": "kid-wind-knows",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl closing her eyes and smiling as cool wind blows her hood, standing in front of an open window, soft grey light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p108",
+          "speaker": "kid",
+          "text": "那陣風我知道！一吹就要下雨了。",
+          "emotion": "得意"
+        }
+      ]
+    },
+    {
+      "id": "chief-blocked",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief at the whiteboard drawing a downward arrow cutting off an upward arrow, looking back at the viewer, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p109",
+          "speaker": "chief",
+          "text": "冷空氣往下灌，就把下面往上送的熱空氣擋掉了。沒有熱空氣補進來，這朵雲就慢慢沒力。"
+        }
+      ]
+    },
+    {
+      "id": "hour",
+      "template": "big",
+      "data": {
+        "kicker": "一個單獨的雷雨胞",
+        "text": "常常 **約 1 小時**",
+        "sub": "長大、下雨、散掉"
+      },
+      "lines": [
+        {
+          "id": "p110",
+          "speaker": "chief",
+          "text": "一個單獨的雷雨雲，從長大、下雨到散掉，常常一個小時左右。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "chief-caveat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief holding up an open palm in a gentle 'wait' gesture, a sincere face, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p111",
+          "speaker": "chief",
+          "text": "不過要說清楚，不是每天下午都會這樣。"
+        }
+      ]
+    },
+    {
+      "id": "dry-afternoon",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hot clear afternoon over a beach town with not a single cloud in the sky, a girl eating a popsicle on a seawall, mild hazy light",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p112",
+          "speaker": "chief",
+          "text": "空氣夠不夠濕、上面夠不夠冷、風怎麼吹，只要一個條件不對，雲就長不起來。"
+        }
+      ]
+    },
+    {
+      "id": "kid-how-know",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl chewing on her pencil and looking at a sky full of clouds through the window, thoughtful, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p113",
+          "speaker": "kid",
+          "text": "那我要怎麼知道，今天的雲會不會下雨？",
+          "emotion": "章尾停住"
+        }
+      ]
+    },
+    {
+      "id": "chief-forecast",
+      "chapter": "下次抬頭，看這三件事",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the chief holding a blank weather map and pointing to it, a friendly face, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p114",
+          "speaker": "chief",
+          "text": "預報是氣象署的工作。不過有三件事，你自己抬頭就看得到。"
+        }
+      ]
+    },
+    {
+      "id": "sign-cauliflower",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle wide shot of a towering cloud with round bulging cauliflower lumps still pushing upward, one girl on a school playground shading her eyes to look at it, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p115",
+          "speaker": "chief",
+          "text": "第一，看它的頭頂。如果像花椰菜一樣一直往上冒，裡面的空氣還在往上衝。"
+        }
+      ]
+    },
+    {
+      "id": "sign-anvil",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a huge storm cloud whose flat top spreads out sideways like an anvil far above a plain, one lone tree below, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p116",
+          "speaker": "chief",
+          "text": "第二，頭頂被壓平、往旁邊攤開，像一個鐵砧，代表它已經長到撞上一層很難再往上的高度。"
+        }
+      ]
+    },
+    {
+      "id": "sign-gust",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl on the balcony with laundry flapping wildly beside her in a sudden cool wind, her hands grabbing a towel, soft grey light",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p117",
+          "speaker": "chief",
+          "text": "第三，突然吹來一陣涼風。那陣風常常就是雨帶下來的冷空氣，跑在雨的前面。"
+        }
+      ]
+    },
+    {
+      "id": "kid-memorise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl counting on three fingers and then running toward the balcony door with a laundry basket, soft grey light",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p118",
+          "speaker": "kid",
+          "text": "花椰菜、平頭、涼風。我記住了！先收衣服！",
+          "emotion": "笑，加快"
+        }
+      ]
+    },
+    {
+      "id": "arcade-rain",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl squatting under a shop arcade watching big raindrops splash on the pavement in front of her, chin on her knees, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p119",
+          "speaker": "kid",
+          "text": "對了，所長，雨滴是不是長得像眼淚那樣，尖尖的？",
+          "emotion": "隨口一問"
+        }
+      ]
+    },
+    {
+      "id": "chief-not-tear",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief holding up a drawing of a teardrop on a blank card and shaking his head with a smile, soft lamp light",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p120",
+          "speaker": "chief",
+          "text": "大家畫雨都這樣畫，可是真的雨滴不是。"
+        }
+      ]
+    },
+    {
+      "id": "drop-shapes",
+      "template": "steps",
+      "data": {
+        "title": "雨滴真正的樣子",
+        "steps": [
+          {
+            "title": "小雨滴",
+            "detail": "幾乎是圓的"
+          },
+          {
+            "title": "大一點",
+            "detail": "底部被空氣壓扁，像漢堡麵包"
+          },
+          {
+            "title": "再更大",
+            "detail": "被空氣扯開，碎成好幾顆"
+          }
+        ],
+        "source": "USGS 水科學學校；NASA GPM"
+      },
+      "lines": [
+        {
+          "id": "p121",
+          "speaker": "chief",
+          "text": "小的雨滴幾乎是圓的。大一點的，往下掉時底部被空氣壓扁，像一個漢堡麵包。"
+        },
+        {
+          "id": "p122",
+          "speaker": "chief",
+          "text": "再大下去，就會被空氣扯開，碎成好幾顆。"
+        }
+      ]
+    },
+    {
+      "id": "kid-burger",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl holding a hamburger bun up next to her face and grinning, sitting at a small café table, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p123",
+          "speaker": "kid",
+          "text": "漢堡麵包！",
+          "emotion": "大笑"
+        }
+      ]
+    },
+    {
+      "id": "splash-million",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of one raindrop splashing into a puddle on a pavement, tiny crown of water around it, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "p124",
+          "speaker": "chief",
+          "text": "下次你在騎樓下看雨，還記得那一百萬顆嗎？每一顆打在地上的，都是它們湊起來的。"
+        }
+      ]
+    },
+    {
+      "id": "kid-recap-1",
+      "chapter": "原來如此",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl standing at a big desk reading from her notebook like giving a report, serious little face, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p125",
+          "speaker": "kid",
+          "text": "所以，雲有水，可是水碎成好多小小顆，空氣把它們托在天上。",
+          "emotion": "整理，像做報告"
+        }
+      ]
+    },
+    {
+      "id": "kid-recap-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl flipping to the next page of her notebook and pointing at it, standing at a big desk, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p126",
+          "speaker": "kid",
+          "text": "小水滴互相撞、慢慢長大，長到空氣托不住，才變成雨掉下來。"
+        }
+      ]
+    },
+    {
+      "id": "chief-recap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of the chief listening with a proud smile, holding a small rubber stamp in one hand, warm lamp light",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "chief"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p127",
+          "speaker": "chief",
+          "text": "而夏天的下午，地面最熱，熱空氣衝得最高，雲才長得夠大，一口氣倒下來。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "原來如此！",
+        "cta": "訂閱原來如此事務所",
+        "lines": [
+          "雲有水，但碎成一百萬分之一的小顆"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p128",
+          "speaker": "kid",
+          "text": "原來如此！",
+          "emotion": "開心大聲"
+        },
+        {
+          "id": "p129",
+          "speaker": "chief",
+          "text": "你家那邊的午後雷陣雨，通常幾點開始？留言告訴我們。",
+          "emotion": "問句上揚，像聊天"
+        },
+        {
+          "id": "p130",
+          "speaker": "chief",
+          "text": "我們每一集，都從生活裡一個為什麼找到答案。想一起找，就訂閱原來如此事務所。",
+          "emotion": "誠懇"
+        }
+      ]
+    }
+  ]
+}

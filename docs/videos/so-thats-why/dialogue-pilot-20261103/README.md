@@ -7,6 +7,8 @@
 這份是**試做一集的企劃與開拍前鎖定清單**，還沒有付任何費用：沒有生圖、沒有旁白、沒有配樂。
 題目庫與 30 支候選在 PR #1971 的 `docs/videos/so-thats-why/refresh-20261101/`（`SPEC.md`、`EPISODES.md`），本試做沿用它的 P02。
 
+**站主 2026-11-03 回覆**：形式照本頁規劃（Tech Signal 的理解不用改）；畫風用原來如此自己的 `cute-cartoon`；角色設定（所長、八歲女孩小問）照提案；小問的聲音先試聽再選。站主原話：「沒關係擬規劃那樣OK／先用原來如此自己的 cute-cartoon（奶油紙底、色調明亮）／好／好，先這樣看看」。
+
 ## 1. 這次改了系列的哪些定案
 
 站主這次的指示推翻了兩條 2026-09-28 的系列定案（[`../README.md`](../README.md)「吉祥物：不用」「單一旁白，不做角色對白」）。
@@ -123,13 +125,16 @@ MiniMax `image-01` 讀得懂**一個**角色參考圖，讀不懂多人互動（
 
 | 步驟 | 花錢嗎 | 狀態 |
 | --- | --- | --- |
-| 1. 站主確認本頁 §1–§3 的形式（角色、分工、畫風 preset、Tech Signal 的理解） | 否 | **等站主** |
+| 1. 站主確認本頁 §1–§3 的形式（角色、分工、畫風 preset、Tech Signal 的理解） | 否 | 2026-11-03 確認 |
 | 2. 小問的聲音試聽（2–3 個候選） | < US$0.05 | 等 1 |
 | 3. 撰稿（§6）→ 另一個代理逐主張查核 → 盲評 `narrative` → `lint` 0 錯誤 → `script.md` 給站主看 | 模型 token | 可以先做 |
 | 4. 兩個角色的設定圖，每角色 3 張候選，站主選 | 約 US$0.1 | 等 1、3 |
 | 5. 旁白（兩個聲音）→ `check-audio` → 站主聽 | < US$1 | 等 3 |
 | 6. 整集插圖一次報價、一次授權（約 110–130 張 × US$0.0135，含重畫上限約 US$3）→ 分鏡給站主看 | 約 US$2–3 | 等 4 |
 | 7. 配樂 → 合成（`intro_at: "start"`、系列片頭）→ 品管 → 成片給站主看 | 約 US$0.15 | 等 6 |
+
+程式（2026-11-03）：`tools/video/core/drama.mjs` 原本對任何解說 preset 帶角色報 lint 錯誤。現在 `cute-cartoon` 可以帶角色（`DIALOGUE_EXPLAINER_PRESETS`、`isDialogueExplainer`），
+仍是解說：全靜圖、8 分鐘下限、解說卡片；有角色時片頭預設放最前面（`branding.mjs` 的 `narratedLong`），符合「開頭不用濃縮」。`cute-mystery` 與 `flat-explainer` 仍然只有旁白。
 
 路線：主機的可愛解說路線（`explainer-series.mjs`）固定 `characters: []`、只有旁白，**接不了兩個角色**；
 試做走本機漫劇格式（`format: "drama"`、`look: {"preset": "cute-cartoon"}`、`characters: [chief, kid]`、句子用 `speaker`），
