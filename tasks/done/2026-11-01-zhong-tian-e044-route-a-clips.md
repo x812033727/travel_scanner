@@ -1,13 +1,13 @@
 ---
 id: 2026-11-01-zhong-tian-e044-route-a-clips
 title: Zhong-tian e044: route A clips on RunPod, cut, import, dubs and publish package
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5.5-zt-e043
 claimed_at: 2026-11-01T21:06:29Z
 created_at: 2026-11-01T21:06:28Z
-completed_at:
+completed_at: 2026-11-03T05:13:03Z
 branch:
 depends_on: []
 scope:
@@ -24,8 +24,8 @@ scope:
 
 ## Definition of done
 
-- [ ] 43 鏡的 1080p 片段，紀錄在 `colab/runs/e044/`
-- [ ] 剪接、匯入成片、站主核准；八語、上架包核准
+- [x] 43 鏡的 1080p 片段，紀錄在 `colab/runs/e044/`
+- [x] 剪接、匯入成片、站主核准；八語、上架包核准（2026-11-03 上架包核准）
 
 ## Steps
 
