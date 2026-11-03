@@ -22,15 +22,15 @@ shot("balcony-call", "Medium shot of a girl on a small apartment balcony in the 
      [k("所長！所長！我家陽台外面那朵雲，一直往上長。", "興奮，跑進來報案的語氣")], chapter=CH0)
 shot("tower-greying", "Low angle wide shot of one tall puffy cloud rising over apartment rooftops in the afternoon, its top bright white and its flat bottom turning grey, a single rooftop water tank in the corner, soft light from the upper left", (),
      [k("剛剛還白白的，現在下面變成灰色了。", "疑惑", "S:grey")])
-shot("chief-folder", "Medium shot of a friendly office chief at a wooden desk by a window, looking up from an open blank folder with an amused smile, a window behind him, warm lamp light on the desk", CH,
+shot("chief-folder", "Medium shot of a friendly office chief at a wooden desk by a window, looking up from an open blank folder with an amused smile, a window behind her, warm lamp light on the desk", CH,
      [c("那你等一下可能要收衣服了。", "輕鬆，帶笑")])
 shot("kid-puzzled", "Close-up of a girl frowning in thought, holding a small blank notebook against her chest, standing in a bright doorway, soft daylight from the side", KID,
      [k("可是我想不通。雲裡面，真的有水嗎？", "認真發問，句尾上揚")])
-shot("chief-yes", "Medium close-up of the chief holding up a magnifying glass and nodding warmly, bookshelves of blank folders behind him, soft afternoon light from a window", CH,
+shot("chief-yes", "Medium close-up of the chief holding up a magnifying glass and nodding warmly, bookshelves of blank folders behind her, soft afternoon light from a window", CH,
      [c("有，而且很多。你抬頭看到的那一整片白色，裡面有很多水。", "肯定，語氣親切")])
 shot("kid-why-not-fall", "Close-up of a girl with her finger on her chin and eyebrows raised, looking up and to the side as if picturing something heavy overhead, a plain wall behind her, soft light", KID,
      [k("水不是比空氣重嗎？", "不服氣"), k("那它為什麼沒有整團掉下來？", "句尾上揚", "S:nofall")])
-shot("chief-window", "Medium shot of the chief standing at an open window with his hands behind his back, gazing up at a big white cloud outside, gentle afternoon light on his face", CH,
+shot("chief-window", "Medium shot of the chief standing at an open window with her hands behind her back, gazing up at a big white cloud outside, gentle afternoon light on her face", CH,
      [c("這個問題，你每年夏天其實都看過答案，只是沒有人跟你說。", "賣關子，放慢")])
 shot("town-cloud-wide", "Wide shot of a small city in summer afternoon, one huge cloud tower rising behind the buildings, a single scooter rider stopped at a crossing and looking up at it, soft hazy light", (),
      [c("先猜猜看：你家外面那朵雲，大概有幾頭大象那麼重？", "賣關子", "S:elephant")])
@@ -65,7 +65,7 @@ shot("kid-balloon", "Medium shot of a girl holding the string of a red balloon a
      [k("就像熱氣球？", "好奇")])
 shot("mountain-hike", "Medium shot of a hiker in a light jacket on a mountain trail zipping the jacket up to the chin with a shiver, a valley far below, overcast soft light", (),
      [c("有點像。而且你應該有感覺過：爬山爬得越高，就越涼。")])
-shot("chief-expands", "Medium shot of the chief stretching a big rubber balloon between his hands at his desk as if showing it swell, an amused look, warm desk lamp", CH,
+shot("chief-expands", "Medium shot of the chief stretching a big rubber balloon between her hands at her desk as if showing it swell, an amused look, warm desk lamp", CH,
      [c("空氣往上走，周圍的氣壓變小，它就膨脹；一膨脹，就會變冷。")])
 card("lapse-rate", "big", {"kicker": "往上爬的乾空氣", "text": "每 1 公里 **冷約 10°C**", "sub": "還沒有凝結的時候"},
      [c("在還沒有凝結之前，往上爬的空氣，每升高一公里大約冷十度。", "數字放慢")])
@@ -90,7 +90,7 @@ shot("kid-how-much", "Close-up of a girl writing in her small notebook with her 
 
 # ---------- 第二章 ----------
 CH2 = "五百公噸搭著電梯往上"
-shot("chief-whiteboard", "Medium shot of the chief drawing a big cube with a marker on a blank whiteboard, glancing back over his shoulder with a grin, soft daylight", CH,
+shot("chief-whiteboard", "Medium shot of the chief drawing a big cube with a marker on a blank whiteboard, glancing back over her shoulder with a grin, soft daylight", CH,
      [c("我們來算一朵普通的積雲。假設它差不多是一個長寬高各一公里的大方塊。")], chapter=CH2)
 card("cloud-weight", "stats", {"title": "一朵積雲（估算）", "stats": [{"value": "1 立方公里", "label": "雲的大小"}, {"value": "約 0.5 公克", "label": "每立方公尺的水"}, {"value": "約 500 公噸", "label": "整朵雲的水"}], "source": "USGS 水科學學校：一朵雲有多重"},
      [c("雲裡的水其實很稀，每一立方公尺，大概只有半公克。", "數字放慢", None), c("可是一立方公里，有十億個立方公尺。")])
@@ -100,7 +100,7 @@ shot("elephants", "Wide shot of a long parade of elephants walking across a dry 
      [c("差不多是一百頭大象那麼重。", None, "P:elephant")])
 shot("kid-elephants", "Medium shot of a girl hugging her head with both hands and looking up in mock panic, standing on the balcony, a big cloud overhead, soft afternoon light", KID,
      [k("那麼多大象浮在我家上面？！", "誇張驚嚇，好笑")])
-shot("chief-laugh", "Medium close-up of the chief laughing with one hand on his belly at his desk, a mug beside him, warm lamp light", CH,
+shot("chief-laugh", "Medium close-up of the chief laughing with one hand on her belly at her desk, a mug beside her, warm lamp light", CH,
      [c("聽起來很嚇人對吧。不過你先別急著跑。", "笑著，然後收")])
 shot("kid-air-heavy", "Medium shot of a girl on the balcony weighing an empty paper bag in her raised hand with a doubtful frown, soft afternoon light", KID,
      [k("等一下，空氣也有重量吧？", "突然想到")])
@@ -114,29 +114,29 @@ card("droplet-size", "big", {"kicker": "一顆雲滴", "text": "約 **0.02** 公
      [c("一顆普通的雲滴，直徑大約百分之二公釐，比一根頭髮還細好幾倍。", "數字放慢")])
 shot("kid-no-weight", "Medium shot of a girl holding up a single strand of her own hair and studying it closely, sitting at a desk, soft window light", KID,
      [k("那它太小了，所以就沒有重量了？", "很有把握的錯猜", None)])
-shot("chief-falls-slowly", "Medium close-up of the chief shaking his head gently and holding his thumb and finger very close together, warm lamp light", CH,
+shot("chief-falls-slowly", "Medium close-up of the chief shaking her head gently and holding her thumb and finger very close together, warm lamp light", CH,
      [c("有重量，它也真的一直在往下掉。只是掉得非常、非常慢。", "否定但溫和")])
 shot("feather-stone", "Medium shot of a girl on a balcony letting go of a feather and a pebble at the same time from her two raised hands, the pebble already lower than the feather, soft daylight", KID,
      [c("你想想看，一顆石頭和一根羽毛一起放手，哪個先落地？"), k("石頭啊。", "理所當然")])
-shot("chief-air-holds", "Medium shot of the chief holding a tiny paper scrap in his palm in front of a desk fan, the scrap lifting off his palm, playful look, soft light", CH,
+shot("chief-air-holds", "Medium shot of the chief holding a tiny paper scrap in her palm in front of a desk fan, the scrap lifting off her palm, playful look, soft light", CH,
      [c("東西越小，空氣擋住它的力量相對就越大。小到像雲滴那樣，空氣幾乎把它托住了。")])
 card("fall-speed", "compare", {"title": "在不動的空氣裡，每秒掉多少", "left": {"heading": "雲滴 0.02 公釐", "points": ["每秒約 1 公分"]}, "right": {"heading": "雨滴 2 公釐", "points": ["每秒約 6–7 公尺"]}, "source": "華盛頓大學大氣科學課程；夏威夷大學大氣教科書"},
      [c("一顆雲滴在不動的空氣裡，一秒大概只掉一公分左右。", "數字放慢")])
 shot("kid-snail", "Close-up of a girl crouching on a garden path watching a snail crawl along a ruler laid on the ground, chin in her hands, soft overcast light", KID,
      [k("那跟蝸牛差不多吧！", "好笑")])
-shot("chief-a-day", "Medium shot of the chief pointing at a big wall clock with a thoughtful face, his other hand holding a blank folder, soft daylight", CH,
+shot("chief-a-day", "Medium shot of the chief pointing at a big wall clock with a thoughtful face, her other hand holding a blank folder, soft daylight", CH,
      [c("差不多。照這個速度，從一公里高的雲底掉到地上，要超過一天。")])
 shot("droplet-vanish", "Extreme close-up of one tiny water droplet drifting down through dry air and shrinking into nothing, a few faint wisps around it, soft bright background", (),
      [c("而且它還沒掉到，半路就蒸發掉了。")])
 shot("kid-but-stays", "Medium shot of a girl on the balcony with her hands on her hips glaring up at a cloud that hasn't moved, soft afternoon light", KID,
      [k("可是雲一整個下午都在，它也沒有慢慢變矮啊。", "抓到漏洞")])
-shot("chief-remember", "Medium close-up of the chief raising one finger and smiling as if a clue just came back to him, standing by the window, soft light", CH,
+shot("chief-remember", "Medium close-up of the chief raising one finger and smiling as if a clue just came back to her, standing by the window, soft light", CH,
      [c("因為那朵雲裡面，空氣不是靜止的。還記得那些一直往上送的熱空氣嗎？")])
 shot("updraft-section", "Wide cutaway illustration of a growing puffy cloud seen from the side, big curved arrows of rising air sweeping up through its middle, tiny droplets riding the arrows, a small town far below, soft bright light", (),
      [c("在一朵正在長高的積雲裡，往上衝的空氣，一秒可以走好幾公尺。")])
 shot("kid-elevator", "Medium shot of a girl inside a bright glass elevator pointing upward with a big grin as it rises past the floors, soft daylight", KID,
      [k("那它根本是在搭電梯往上嘛！", "興奮")])
-shot("chief-answer-one", "Medium close-up of the chief giving a satisfied nod with his arms folded, standing beside the whiteboard cube, soft daylight", CH,
+shot("chief-answer-one", "Medium close-up of the chief giving a satisfied nod with her arms folded, standing beside the whiteboard cube, soft daylight", CH,
      [c("沒錯。雲有重量，但它的水碎成數不完的小顆，每一顆都輕到被空氣托住。", "解開第一個謎，語氣篤定", "P:nofall")])
 shot("kid-how-big", "Close-up of a girl holding her thumb and finger slightly apart in front of one eye and peering through the gap, sitting on a windowsill, soft light", KID,
      [k("那水滴要長到多大，空氣才托不住？", "章尾停住，句尾上揚", "S:howbig")])
@@ -153,7 +153,7 @@ shot("kid-million", "Close-up of a girl with her mouth wide open and her noteboo
      [k("一滴雨要那麼多顆？！", "大驚"), c("大概是這個數量級。", None, "P:million")])
 shot("kid-pinch", "Medium shot of a girl pretending to squeeze an invisible ball between her palms with a cheeky grin, sitting on the office stool, soft light", KID,
      [k("那它們怎麼湊在一起的？有人在雲裡把它們捏起來嗎？", "開玩笑")])
-shot("chief-no-pinch", "Medium close-up of the chief chuckling and shaking his head, holding a blank folder, warm lamp light", CH,
+shot("chief-no-pinch", "Medium close-up of the chief chuckling and shaking her head, holding a blank folder, warm lamp light", CH,
      [c("沒有人捏，是它們自己撞在一起。")])
 shot("collision", "Extreme close-up illustration of one larger round water droplet falling and bumping into smaller droplets below it, the small ones merging into it, soft white cloud background", (),
      [c("雲裡的水滴大小不一樣。大一點的掉得比較快，就會追上、撞上下面比較小的。")])
@@ -190,7 +190,7 @@ shot("kid-not-every", "Medium shot of a girl at a window pressing her forehead a
 
 # ---------- 第四章 ----------
 CH4 = "下午三點，熱空氣衝最高"
-shot("chief-how-high", "Medium shot of the chief stretching his arm high above his head to tap the top of a tall bookshelf, looking up, soft daylight", CH,
+shot("chief-how-high", "Medium shot of the chief stretching her arm high above her head to tap the top of a tall bookshelf, looking up, soft daylight", CH,
      [c("這要回到一開始：雲能長多高、裡面的空氣往上衝得多用力。")], chapter=CH4)
 shot("small-clouds", "Wide shot of a park lawn on a fine morning with small flat puffs of cloud dotted in the sky, a girl flying a paper plane, mild soft light", KID,
      [c("天氣好時那種小小、扁扁的白雲，長不高，水滴還來不及長大，雲就散掉了。")])
@@ -200,7 +200,7 @@ shot("kid-ten-km", "Close-up of a girl tilting her head all the way back to look
      [k("那麼高！那要很多熱空氣才推得上去吧。", "讚嘆"), c("對。所以你猜，一天裡面，地面什麼時候最熱？")])
 shot("kid-noon-guess", "Medium shot of a girl confidently pointing at a wall clock showing twelve, standing by a wall clock, big smug smile, soft light", KID,
      [k("中午十二點！", "很有把握的錯猜")])
-shot("chief-later", "Medium close-up of the chief wagging one finger with a gentle smile, sitting at his desk, warm lamp light", CH,
+shot("chief-later", "Medium close-up of the chief wagging one finger with a gentle smile, sitting at her desk, warm lamp light", CH,
      [c("很多人都這樣猜。太陽最高是中午，可是地面和空氣最熱，通常要再晚一點。", "溫和地否定")])
 shot("pan-on-stove", "Medium shot of a girl standing on a step stool watching a frying pan on a gas stove, holding her hand above the pan to feel the heat, soft kitchen light", KID,
      [c("就像鍋子放上爐子，火一開，鍋子不會馬上最燙，要燒一段時間。")])
@@ -216,7 +216,7 @@ shot("grey-base", "Low angle wide shot looking up at the thick dark-grey base of
      [c("對，它長得又高又厚，陽光透不過來，底部看起來就是灰的。", None, "P:grey")])
 shot("kid-why-stop", "Medium shot of a girl sitting on the windowsill with her knees up, watching rain outside slowly stop, puzzled, soft light", KID,
      [k("那為什麼雷陣雨常常下一下就停？", "追問", "S:stop")])
-shot("chief-engine", "Medium close-up of the chief turning off a small desk fan with one finger and raising his eyebrows meaningfully, warm lamp light", CH,
+shot("chief-engine", "Medium close-up of the chief turning off a small desk fan with one finger and raising her eyebrows meaningfully, warm lamp light", CH,
      [c("因為大雨，會把自己的引擎關掉。", "賣關子")])
 shot("rain-drags", "Wide cutaway illustration of heavy rain falling out of a storm cloud with big curved arrows of cool air pouring down alongside it and spreading out across the ground, a small farmhouse below, soft grey light", (),
      [c("雨落下來，會把周圍的空氣一起往下拖；雨在半路蒸發，又讓這團空氣更冷。")])
@@ -239,21 +239,21 @@ shot("kid-how-know", "Close-up of a girl chewing on her pencil and looking at a 
 CH5 = "頭頂平掉了，涼風來了"
 shot("kid-top-bubbling", "Low angle medium shot of a girl on the balcony leaning over the railing and pointing at a towering cloud whose top is still bulging upward in round lumps, soft afternoon light", KID,
      [k("所長！它的頭頂還在一直往上冒！", "實況轉播")], chapter=CH5)
-shot("chief-phone-call", "Medium close-up of the chief holding a phone to his ear by the window and smiling, a blank weather map on the wall behind him, soft daylight", CH,
+shot("chief-phone-call", "Medium close-up of the chief holding a phone to her ear by the window and smiling, a blank weather map on the wall behind her, soft daylight", CH,
      [c("還記得花椰菜嗎？那就是裡面的空氣還在往上衝。預報是氣象署的事，可是你現在自己就看得到。")])
 shot("sign-anvil", "Wide shot of a huge storm cloud whose flat top spreads out sideways like an anvil far above apartment rooftops, one balcony with laundry in the foreground, soft afternoon light", (),
      [k("現在頭頂變平了，往旁邊攤開！", "驚訝")])
-shot("chief-anvil", "Medium close-up of the chief raising his hand flat above his head as if touching a ceiling, a knowing look, soft lamp light", CH,
+shot("chief-anvil", "Medium close-up of the chief raising her hand flat above her head as if touching a ceiling, a knowing look, soft lamp light", CH,
      [c("像一個鐵砧。它已經長到撞上一層很難再往上的高度。")])
 shot("sign-gust", "Medium shot of a girl on the balcony with laundry flapping wildly beside her in a sudden cool wind, her hands grabbing a towel, soft grey light", KID,
      [k("啊，突然好涼！衣服都飛起來了！", "叫出來")])
-shot("chief-told-you", "Medium close-up of the chief chuckling and pointing at the phone in his hand, warm lamp light", CH,
+shot("chief-told-you", "Medium close-up of the chief chuckling and pointing at the phone in her hand, warm lamp light", CH,
      [c("還記得那陣涼風嗎？冷空氣已經跑在雨的前面了。我一開始說什麼？", "得意", "P:know")])
 shot("kid-laundry-run", "Medium shot of a girl running back inside from the balcony with a laundry basket piled high in her arms, the first raindrops hitting the railing behind her, soft grey light", KID,
      [k("收衣服！", "笑，加快")])
 shot("palm-big-drop", "Close-up of a girl's open palm reaching out from under the balcony roof, a fat raindrop splashing on it, soft grey light", KID,
      [k("好大顆！雨滴是不是像眼淚那樣，尖尖的？", "隨口一問", "S:shape")])
-shot("chief-not-tear", "Medium close-up of the chief holding up a drawing of a teardrop on a blank card and shaking his head with a smile, soft lamp light", CH,
+shot("chief-not-tear", "Medium close-up of the chief holding up a drawing of a teardrop on a blank card and shaking her head with a smile, soft lamp light", CH,
      [c("大家都這樣畫，可是不是。還記得空氣會擋住往下掉的東西嗎？雨滴掉得越快，空氣擋得越用力。")])
 card("drop-shapes", "steps", {"title": "雨滴真正的樣子", "steps": [{"title": "小雨滴", "detail": "幾乎是圓的"}, {"title": "大一點", "detail": "底部被空氣壓扁，像漢堡麵包"}, {"title": "再更大", "detail": "被空氣扯開，碎成好幾顆"}], "source": "USGS 水科學學校；NASA GPM"},
      [c("小的幾乎是圓的。大一點的，落下時底部被空氣壓扁，像漢堡麵包。", None, "P:shape"), c("再大，就被扯開，碎成好幾顆。所以雨滴不會一直長下去。")])
@@ -264,7 +264,7 @@ shot("kid-burger", "Close-up of a girl holding a hamburger bun up next to her fa
 CH6 = "雨停了，衣服收好了"
 shot("rain-stops", "Wide shot of the apartment balcony after rain, wet railing glistening, the big cloud thinning and breaking up in the sky, a girl stepping back outside with her notebook, soft clearing light", KID,
      [k("衣服都收進來了，雨也停了。真的不到一個小時。", "有點不敢相信")], chapter=CH6)
-shot("chief-stamp", "Medium close-up of the chief lifting a small red rubber stamp over a blank folder on his desk with a satisfied smile, warm lamp light", CH,
+shot("chief-stamp", "Medium close-up of the chief lifting a small red rubber stamp over a blank folder on her desk with a satisfied smile, warm lamp light", CH,
      [c("就像剛剛說的，引擎關掉，雲就散了。打在你手上的每一顆，都是那一百萬顆湊起來的。")])
 shot("kid-notebook-done", "Close-up of a girl closing her notebook with both hands and beaming, standing on the wet balcony, soft clearing light", KID,
      [k("還記得那些被托住的小水滴嗎？原來它們不是不會掉，是一直在等長大。", "自己想通")])
