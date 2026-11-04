@@ -92,7 +92,7 @@ shot("kid-how-much", "Close-up of a girl writing in her small notebook with her 
 CH2 = "五百公噸搭著電梯往上"
 shot("chief-whiteboard", "Medium shot of the chief drawing a big cube with a marker on a blank whiteboard, glancing back over her shoulder with a grin, soft daylight", CH,
      [c("我們來算一朵普通的積雲。假設它差不多是一個長寬高各一公里的大方塊。")], chapter=CH2)
-card("cloud-weight", "stats", {"title": "一朵積雲（估算）", "stats": [{"value": "1 立方公里", "label": "雲的大小"}, {"value": "約 0.5 公克", "label": "每立方公尺的水"}, {"value": "約 500 公噸", "label": "整朵雲的水"}], "source": "USGS 水科學學校：一朵雲有多重"},
+card("cloud-weight", "stats", {"title": "一朵積雲（估算）", "stats": [{"value": "1", "label": "立方公里大小的雲"}, {"value": "0.5 克", "label": "每立方公尺的水（約）"}, {"value": "500 噸", "label": "整朵雲的水（約）"}], "source": "USGS 水科學學校：一朵雲有多重"},
      [c("雲裡的水其實很稀，每一立方公尺，大概只有半公克。", "數字放慢", None), c("可是一立方公里，有十億個立方公尺。")])
 shot("kid-calc", "Close-up of a girl staring wide-eyed at her notebook full of scribbled zeros, pencil frozen in her hand, plain background, soft light", KID,
      [k("十億個半公克……那是多少？", "算不出來"), c("大約五百公噸。", "停一拍再說", "P:weight")])
@@ -256,7 +256,7 @@ shot("palm-big-drop", "Close-up of a girl's open palm reaching out from under th
      [k("好大顆！雨滴是不是像眼淚那樣，尖尖的？", "隨口一問", "S:shape")])
 shot("chief-not-tear", "Medium close-up of the chief holding up a drawing of a teardrop on a blank card and shaking her head with a smile, soft lamp light", CH,
      [c("大家都這樣畫，可是不是。還記得空氣會擋住往下掉的東西嗎？雨滴掉得越快，空氣擋得越用力。")])
-card("drop-shapes", "steps", {"title": "雨滴真正的樣子", "steps": [{"title": "小雨滴", "detail": "幾乎是圓的"}, {"title": "大一點", "detail": "底部被空氣壓扁，像漢堡麵包"}, {"title": "再更大", "detail": "被空氣扯開，碎成好幾顆"}], "source": "USGS 水科學學校；NASA GPM"},
+card("drop-shapes", "steps", {"title": "雨滴真正的樣子", "steps": [{"title": "小雨滴", "detail": "幾乎是圓的"}, {"title": "大一點", "detail": "底部壓扁，像漢堡"}, {"title": "再更大", "detail": "被空氣扯開，碎成好幾顆"}], "source": "USGS 水科學學校；NASA GPM"},
      [c("小的幾乎是圓的。大一點的，落下時底部被空氣壓扁，像漢堡麵包。", None, "P:shape"), c("再大，就被扯開，碎成好幾顆。所以雨滴不會一直長下去。")])
 shot("kid-burger", "Close-up of a girl holding a hamburger bun up next to her face and grinning, sitting at a small kitchen table, soft daylight", KID,
      [k("所以打在我手上的，是一顆漢堡麵包！", "大笑")])
@@ -478,6 +478,20 @@ prompt("iced-cup", "Close-up of a tall glass of iced tea on a wooden café table
 # sea-breeze failed two rewrites: the curio fallback, a card
 _i = next(n for n, sc in enumerate(S) if sc["id"] == "sea-breeze")
 S[_i] = dict(id="sea-breeze", chapter=S[_i]["chapter"], template="big", data={"kicker": "台灣的夏天", "text": "多了**兩個**幫手", "sub": "海上吹來的濕空氣，和山"}, lines=S[_i]["lines"])
+
+# final-cut check (review/scorecard-final.md): faces on clouds and an off-model thumbnail frame
+prompt("tower-greying", "Low angle wide shot over apartment rooftops of one tall puffy cumulus cloud whose flat underside has turned dark grey, the girl small in the lower right corner on a balcony pointing up at it, soft afternoon light, " + KIDDESC, KID)
+prompt("cauliflower-grow", "Wide shot of the girl flying a kite on a green hillside, behind her " + CLOUD + " bulging upward in round lumps, soft bright afternoon light, " + KIDDESC, KID)
+prompt("cumulonimbus", "Wide shot of the girl seen small in the lower left on a rooftop with her hands in her pockets, looking up at an enormous white cauliflower-shaped storm cloud with a flat grey base far above the city, one tiny airliner near its top, soft afternoon light, " + KIDDESC, KID)
+prompt("kid-elephants", "Close-up of a little girl's face, her short black bob with straight bangs framing her round cheeks, looking up in shock with her mouth wide open, filling the right half of the frame, a big grey-bottomed cloud overhead on the left, soft afternoon light, navy raincoat jacket with a mustard-yellow hood", KID)
+
+# "cauliflower" drew the vegetable; the grey-cloud shot grew a red mark
+prompt("cauliflower-grow", "Wide shot of the girl flying a kite on a green hillside, high in the sky behind her a puffy white cumulus cloud with round bumpy lumps piling upward, floating free in the sky, soft bright afternoon light, " + KIDDESC, KID)
+prompt("tower-greying", "Low angle wide shot over plain apartment rooftops of one tall puffy cumulus cloud whose flat underside has turned dark grey, the girl small in the lower right corner on a balcony looking up at it with her mouth open, soft afternoon light, " + KIDDESC, KID)
+
+# last try: no kite to hold; the kid indoors at a window, not on the railing
+prompt("cauliflower-grow", "Wide shot of the girl walking on a green hillside and looking up at a puffy white cumulus cloud with round bumpy lumps piling upward high in the sky, her notebook in her hand, soft bright afternoon light, " + KIDDESC, KID)
+prompt("tower-greying", "Medium shot of the girl inside an apartment pressing both hands on a closed window and looking out at one tall puffy cumulus cloud whose flat underside has turned dark grey, soft afternoon light, " + KIDDESC, KID)
 
 # keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture
 import json as _json, os as _os

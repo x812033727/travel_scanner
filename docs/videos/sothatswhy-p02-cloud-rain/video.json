@@ -44,7 +44,8 @@
     }
   ],
   "music": {
-    "prompt": "light, curious, playful, a little bouncy, no vocals",
+    "track": "sothatswhy-p02-bed.m4a",
+    "sha256": "54169439df49a00bc3ad993a148690be9f79d1dff8a4ea5143e64e583001b20c",
     "gain_db": -20,
     "duck_db": -10
   },
@@ -335,9 +336,12 @@
       "id": "tower-greying",
       "template": "shot",
       "data": {
-        "prompt": "Low angle wide shot of one tall puffy cloud over apartment rooftops, its top bright white and its flat underside clearly dark grey, plain empty rooftops, soft light from the upper left",
+        "prompt": "Medium shot of the girl inside an apartment pressing both hands on a closed window and looking out at one tall puffy cumulus cloud whose flat underside has turned dark grey, soft afternoon light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
         "camera": "pan left",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
       },
       "lines": [
         {
@@ -937,9 +941,12 @@
       "id": "cauliflower-grow",
       "template": "shot",
       "data": {
-        "prompt": "Low angle wide shot of one puffy white cumulus cloud shaped like a big cauliflower, wider at the bottom than at the top, high in a blue sky above a green hillside, the only shapes are the hill and the cloud, soft bright afternoon light",
+        "prompt": "Wide shot of the girl walking on a green hillside and looking up at a puffy white cumulus cloud with round bumpy lumps piling upward high in the sky, her notebook in her hand, soft bright afternoon light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
       },
       "lines": [
         {
@@ -999,16 +1006,16 @@
         "title": "一朵積雲（估算）",
         "stats": [
           {
-            "value": "1 立方公里",
-            "label": "雲的大小"
+            "value": "1",
+            "label": "立方公里大小的雲"
           },
           {
-            "value": "約 0.5 公克",
-            "label": "每立方公尺的水"
+            "value": "0.5 克",
+            "label": "每立方公尺的水（約）"
           },
           {
-            "value": "約 500 公噸",
-            "label": "整朵雲的水"
+            "value": "500 噸",
+            "label": "整朵雲的水（約）"
           }
         ],
         "source": "USGS 水科學學校：一朵雲有多重"
@@ -1078,7 +1085,7 @@
       "id": "kid-elephants",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of the girl's face looking up in shock with her mouth wide open, her face filling the right half of the frame, a big grey-bottomed puffy cloud overhead on the left, soft afternoon light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
+        "prompt": "Close-up of a little girl's face, her short black bob with straight bangs framing her round cheeks, looking up in shock with her mouth wide open, filling the right half of the frame, a big grey-bottomed cloud overhead on the left, soft afternoon light, navy raincoat jacket with a mustard-yellow hood",
         "camera": "tilt up",
         "visual": "still",
         "characters": [
@@ -2060,9 +2067,12 @@
       "id": "cumulonimbus",
       "template": "shot",
       "data": {
-        "prompt": "Low angle wide shot of an enormous puffy white storm cloud shaped like a giant cauliflower, wider at the bottom than at the top, with a flat grey base, high above a city skyline, one tiny airliner beside its top, plain buildings, soft afternoon light",
+        "prompt": "Wide shot of the girl seen small in the lower left on a rooftop with her hands in her pockets, looking up at an enormous white cauliflower-shaped storm cloud with a flat grey base far above the city, one tiny airliner near its top, soft afternoon light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "kid"
+        ]
       },
       "lines": [
         {
@@ -2693,7 +2703,7 @@
           },
           {
             "title": "大一點",
-            "detail": "底部被空氣壓扁，像漢堡麵包"
+            "detail": "底部壓扁，像漢堡"
           },
           {
             "title": "再更大",
