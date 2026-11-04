@@ -467,6 +467,14 @@ R3 = {
 }
 for sid, (text, chars) in R3.items(): prompt(sid, text, chars)
 
+# round 3 fallbacks: two shots that failed every rewrite become cards; the iced cup loses its person
+def to_card(sid, template, data):
+    _i = next(n for n, sc in enumerate(S) if sc["id"] == sid)
+    S[_i] = dict(id=sid, chapter=S[_i]["chapter"], template=template, data=data, lines=S[_i]["lines"])
+to_card("chief-explains-mist", "big", {"kicker": "壺嘴外的白霧", "text": "是**小水滴**", "sub": "真正的水蒸氣看不見"})
+to_card("collision", "big", {"kicker": "雲裡的水滴大小不一", "text": "大的**追上**小的", "sub": "掉得快的撞上掉得慢的"})
+prompt("iced-cup", "Close-up of a tall glass of iced tea on a wooden café table with many water beads on the outside of the glass, the only shapes are the glass and the table, soft daylight", ())
+
 # sea-breeze failed two rewrites: the curio fallback, a card
 _i = next(n for n, sc in enumerate(S) if sc["id"] == "sea-breeze")
 S[_i] = dict(id="sea-breeze", chapter=S[_i]["chapter"], template="big", data={"kicker": "台灣的夏天", "text": "多了**兩個**幫手", "sub": "海上吹來的濕空氣，和山"}, lines=S[_i]["lines"])
