@@ -447,6 +447,26 @@ R2B = {
 }
 for sid, text in R2B.items(): prompt(sid, text, KID)
 
+# scorecard round 3 (review/scorecard-3-storyboard.md): action first, look last; clouds wider at the bottom (not a mushroom)
+CLOUD = "one puffy white cumulus cloud shaped like a big cauliflower, wider at the bottom than at the top"
+R3 = {
+ "chief-expands": ("Medium shot of the chief at her desk squeezing one round red balloon between both hands, amused, warm lamp light, " + CHIEFDESC, CH),
+ "chief-later": ("Medium close-up of the chief sitting at her desk wagging one finger with a gentle smile, warm lamp light, " + CHIEFDESC, CH),
+ "nucleus-droplet": ("Extreme close-up of one tiny white salt crystal floating in the air with a clear round water droplet forming around it, a soft blank white background, the only shapes are the crystal and the droplet", ()),
+ "chief-no-pinch": ("Medium close-up of the chief chuckling and shaking her head while holding a plain folder, warm lamp light, " + CHIEFDESC, CH),
+ "chief-whiteboard": ("Medium shot of the chief patting a big plain cardboard box on her desk with one hand and grinning, soft daylight, " + CHIEFDESC, CH),
+ "chief-not-tear": ("Medium close-up of the chief shaking her head with a smile while holding up a small round blue ball between two fingers, warm lamp light, " + CHIEFDESC, CH),
+ "collision": ("Extreme close-up of clear round water droplets on a window pane, one big droplet sliding down and merging into a smaller droplet below it, a plain grey background, the only shapes are the water droplets", ()),
+ "cauliflower-grow": ("Low angle wide shot of " + CLOUD + ", high in a blue sky above a green hillside, the only shapes are the hill and the cloud, soft bright afternoon light", ()),
+ "iced-cup": ("Close-up of a tall glass of iced tea on a café table with many water beads on the outside of the glass, the girl's fingertip touching one bead, soft daylight", KID),
+ "chief-explains-mist": ("Medium close-up of the chief holding a steaming mug and smiling confidently, warm lamp light, " + CHIEFDESC, CH),
+ "cumulonimbus": ("Low angle wide shot of an enormous puffy white storm cloud shaped like a giant cauliflower, wider at the bottom than at the top, with a flat grey base, high above a city skyline, one tiny airliner beside its top, plain buildings, soft afternoon light", ()),
+ "kid-three-pm": ("Medium shot of the girl standing on the balcony at three in the afternoon pointing at " + CLOUD + " with a flat grey base, turning back toward the room with an alarmed face, soft grey light, " + KIDDESC, KID),
+ "kid-top-bubbling": ("Medium shot of the girl standing on the balcony floor facing the viewer and pointing up behind her at " + CLOUD + " whose top bulges in round lumps, an excited face, soft afternoon light, " + KIDDESC, KID),
+ "sign-anvil": ("Wide shot from far away of a huge white storm cloud whose top has spread out into a wide flat shelf like an anvil, the whole cloud visible with blue sky around it, a low line of plain rooftops at the bottom, clean empty corners, soft afternoon light", ()),
+}
+for sid, (text, chars) in R3.items(): prompt(sid, text, chars)
+
 # sea-breeze failed two rewrites: the curio fallback, a card
 _i = next(n for n, sc in enumerate(S) if sc["id"] == "sea-breeze")
 S[_i] = dict(id="sea-breeze", chapter=S[_i]["chapter"], template="big", data={"kicker": "台灣的夏天", "text": "多了**兩個**幫手", "sub": "海上吹來的濕空氣，和山"}, lines=S[_i]["lines"])
