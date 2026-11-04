@@ -1,0 +1,81 @@
+{
+  "task": "batch",
+  "status": "completed",
+  "session": "zt31b",
+  "gpu": "A100",
+  "jobs": [
+    {
+      "id": "s18_736p",
+      "title": "s18 1312x736",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/colab/restest/s18-736p.mp4",
+      "started_at": "2026-10-28T10:52:18Z",
+      "seed": 8275379415599067305,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-10-28T10:59:10Z",
+      "bytes": 1535160
+    },
+    {
+      "id": "s18_1088p",
+      "title": "s18 1920x1088",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/colab/restest/s18-1088p.mp4",
+      "started_at": "2026-10-28T10:59:10Z",
+      "seed": 8275379415599067305,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-10-28T11:12:14Z",
+      "bytes": 5166425
+    }
+  ],
+  "log_tail": [
+    "模型收到的完整 prompt：",
+    "overall_soundscape: N/A",
+    "non_diegetic_music: N/A",
+    "[colab] Executing cell 5/8 - b6cdbee0...",
+    "使用 CLI 上傳的首幀： /content/h3_s18_1088p_reference_1.img",
+    "提醒：原圖比例與輸出不同，首幀會被拉伸到影片畫布。",
+    "ComfyUI 首幀： /content/ComfyUI/input/h3_colab_first_frame.png (1312, 736)",
+    "[colab] Executing cell 6/8 - ab4ae3e0...",
+    "使用已啟動的 ComfyUI",
+    "節點檢查通過，ComfyUI 已啟動",
+    "[colab] Executing cell 7/8 - b4eb4d7d...",
+    "已提交推論： de152395-86e0-474f-b5b9-6582c9e86f50",
+    "[colab] Executing cell 8/8 - 93b17675...",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "完成： /content/ComfyUI/output/MiniMax_H3_s18_1088p_00001-audio.mp4 (4.9 MiB，含影片與音訊)",
+    "COLAB_CLI_OUTPUT_PATH: /content/h3_s18_1088p_output.mp4",
+    "[colab] Saving notebook with outputs to '/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/colab/restest/work_581f2772/s18_1088p/MiniMax_H3_Turbo_Colab_output.ipynb'...",
+    "[colab] Downloaded '/content/h3_s18_1088p_output.mp4' to '/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/colab/restest/s18-1088p.mp4'"
+  ],
+  "updated_at": "2026-10-28T11:12:14Z",
+  "current_job": "s18_1088p",
+  "session_status": "active",
+  "completed_count": 2,
+  "failed_count": 0,
+  "cancelled_count": 0,
+  "error": null,
+  "results": [
+    {
+      "id": "s18_736p",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/colab/restest/s18-736p.mp4",
+      "status": "completed"
+    },
+    {
+      "id": "s18_1088p",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/colab/restest/s18-1088p.mp4",
+      "status": "completed"
+    }
+  ]
+}

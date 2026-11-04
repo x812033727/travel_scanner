@@ -79,6 +79,13 @@ class ReviewStore:
         target = self._checked(slug, sha256)
         return target if target.is_file() else None
 
+    def holds_files(self, slug: str) -> bool:
+        """Whether the project has any finished file here at all."""
+        folder = self._project(slug)
+        return folder.is_dir() and any(
+            file.is_file() and valid_sha256(file.name) for file in folder.iterdir()
+        )
+
     def used_bytes(self) -> int:
         if not self.root.exists():
             return 0

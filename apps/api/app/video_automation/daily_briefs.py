@@ -12,6 +12,9 @@ the worker never started within two days is cancelled as stale instead of made: 
 news a week late is no brief.
 
 Nothing here asks for the owner: the switch on the settings tab is the owner's one decision.
+It is the brief's own: since 2026-11-01 the owner may switch the scheduled drafts (``enabled``)
+off and keep the briefs, and the worker then makes the briefs and leaves every other video where
+it stands (tools/video/automation/flow.mjs briefsOnly).
 The router turns ``RequestRefused`` into the API's problem response.
 """
 
@@ -185,7 +188,8 @@ async def next_request(
     session: AsyncSession, now: datetime | None = None
 ) -> DailyBriefRequestOut | None:
     """The oldest queued brief the worker should make, filing yesterday's first once the hour
-    has come; None while the automation or the brief is switched off.
+    has come; None while the brief is switched off. The scheduled drafts' switch (``enabled``)
+    is not read: the owner may turn the drafts off and keep the briefs (owner, 2026-11-01).
 
     Yesterday is the day before today in Asia/Taipei, whatever the server's clock zone. Before
     the hour nothing is filed, but a day filed earlier and not yet started is still handed out.
@@ -194,7 +198,7 @@ async def next_request(
     settings = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
-    if settings is None or not settings.enabled:
+    if settings is None:
         return None
     brief = daily_brief_values(settings)
     if not brief.daily_brief_enabled:

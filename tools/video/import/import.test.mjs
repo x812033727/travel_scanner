@@ -7,6 +7,7 @@ import { test } from "node:test";
 
 import { AREAS, EXIT, main } from "../cli.mjs";
 import { UsageError } from "../core/paths.mjs";
+import { wavFile } from "./recordings.mjs";
 import { chaptersFrom, clipFiles, finalReview, MAX_CLIPS, IMPORT_LOCALES, IMPORTED, importLanguages, importLong, importPublish, languageFileProblem, languageFiles, measureProblems, projectBody, publishFields, readMeta } from "./import.mjs";
 
 const DESCRIPTION = "一段說明。\n\n章節\n00:00 一張圖，三個問題\n00:48 畫面真，不代表故事真\n1:02:03 很長的一章\n\n資料來源\nS01｜NIST";
@@ -438,6 +439,40 @@ test("--publish carries <from>/clips as clip_<shot> files after the package, for
   await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, clips: path.join(colab, "nope"), client: other.client, probe: other.probe }), /--clips .*nope does not exist/);
 });
 
+test("--publish carries the clips' workdir line recordings as recording_<locale> wavs and a manifest metadata.json names", async (t) => {
+  const box = approved(t);
+  const work = path.join(path.dirname(box.from), "zhong-tian-qu-qi-e033-dh");
+  for (const dir of ["clips", "audio", "audio-en"]) mkdirSync(path.join(work, dir), { recursive: true });
+  writeFileSync(path.join(work, "clips", "s01-t1.mp4"), "colab clip");
+  const fmt = Buffer.from([1, 0, 1, 0, 0x80, 0xbb, 0, 0, 0, 0x77, 1, 0, 2, 0, 16, 0]);
+  writeFileSync(path.join(work, "audio", "a01.wav"), wavFile(fmt, Buffer.from([1, 2])));
+  writeFileSync(path.join(work, "audio-en", "a01.wav"), wavFile(fmt, Buffer.from([3, 4])));
+  const lines = [];
+  const result = await importPublish({ from: box.from, workdir: box.workdir, clips: path.join(work, "clips"), client: box.client, probe: box.probe, log: (line) => lines.push(line) });
+  assert.equal(result.clips, 1);
+  assert.equal(result.recordings, 3);
+  const review = box.calls.at(-1)[2];
+  assert.deepEqual(review.files.slice(-3).map((file) => [file.role, file.content_type]), [
+    ["recordings_manifest", "application/json"], ["recording_zh-TW", "audio/wav"], ["recording_en", "audio/wav"],
+  ]);
+  assert.equal(review.payload.recordings, 2);
+  const dir = path.join(box.workdir, META.slug, "review");
+  const metadata = JSON.parse(readFileSync(path.join(dir, readdirSync(dir).find((name) => name.startsWith("publish-import-"))), "utf8"));
+  assert.equal(metadata.recordings_sha256, review.files.at(-3).sha256, "the package names its recordings, so sending them later is a new review");
+  assert.ok(lines.includes(`${META.slug}: 2 locale(s) of line recordings sent with the package for the Drive backup`));
+
+  // The default <from>/clips layout: the recordings are <from>/audio*.
+  const local = approved(t);
+  for (const dir of ["clips", "audio"]) mkdirSync(path.join(local.from, dir), { recursive: true });
+  writeFileSync(path.join(local.from, "clips", "s01-t1.mp4"), "clip");
+  writeFileSync(path.join(local.from, "audio", "a01.wav"), wavFile(fmt, Buffer.from([5, 6])));
+  assert.equal((await importPublish({ from: local.from, workdir: local.workdir, client: local.client, probe: local.probe })).recordings, 2);
+
+  const other = approved(t);
+  await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, recordings: path.join(work, "nope"), client: other.client, probe: other.probe }), /--recordings .*nope does not exist/);
+  await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, recordings: path.join(work, "clips"), client: other.client, probe: other.probe }), /has no audio\/ or audio-<locale>\//);
+});
+
 test("--publish sends no clips into a package the site already approved without them", async (t) => {
   const box = approved(t);
   await importPublish({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
@@ -497,4 +532,33 @@ test("the command reads --languages", async () => {
   const code = await main(["import", "--languages"], { stderr: { write: (chunk) => { err += chunk; } }, stdout: { write: () => {} } });
   assert.equal(code, EXIT.usage);
   assert.match(err, /--languages then sends/);
+});
+
+test("--publish waits for the owner's languages and for the languages batch", async (t) => {
+  const none = imported(t, { status: "approved", locales: {} });
+  writeFileSync(path.join(none.from, "meta.json"), JSON.stringify({ ...META, category: "drama", category_id: 24 }));
+  await assert.rejects(importPublish({ from: none.from, workdir: none.workdir, client: none.client, probe: none.probe }), /has not chosen its languages/);
+  const early = imported(t, { status: "approved" });
+  writeFileSync(path.join(early.from, "meta.json"), JSON.stringify({ ...META, category: "drama", category_id: 24 }));
+  await assert.rejects(importPublish({ from: early.from, workdir: early.workdir, client: early.client, probe: early.probe }), /send the languages batch first/);
+  assert.ok(!early.calls.some(([kind]) => kind === "submit"), "nothing is sent");
+  const zhOnly = imported(t, { status: "approved", locales: {} });
+  zhOnly.known.locales_decided_at = "2026-11-01T00:00:00Z";
+  writeFileSync(path.join(zhOnly.from, "meta.json"), JSON.stringify({ ...META, category: "drama", category_id: 24 }));
+  assert.equal((await importPublish({ from: zhOnly.from, workdir: zhOnly.workdir, client: zhOnly.client, probe: zhOnly.probe })).status, "pending", "zh-TW alone needs no batch");
+});
+
+test("--languages --force repairs a package sent first, and the package sent again names the batch", async (t) => {
+  const box = imported(t, { status: "approved" });
+  box.known.reviews.push({ id: "p1", gate: "publish", subject: null, status: "approved", payload: {} });
+  const lines = [];
+  const sent = await importLanguages({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe, force: true, log: (line) => lines.push(line) });
+  assert.equal(sent.status, "pending");
+  assert.ok(lines.some((line) => /send --publish again/.test(line)));
+  box.known.reviews.push({ id: "l9", gate: "languages", subject: null, status: "approved", payload: {} });
+  writeFileSync(path.join(box.from, "meta.json"), JSON.stringify({ ...META, category: "drama", category_id: 24 }));
+  await importPublish({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
+  const dir = path.join(box.workdir, META.slug, "review");
+  const metadata = JSON.parse(readFileSync(path.join(dir, readdirSync(dir).find((name) => name.startsWith("publish-import-"))), "utf8"));
+  assert.equal(metadata.languages_review_id, "l9");
 });

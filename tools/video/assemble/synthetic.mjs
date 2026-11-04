@@ -15,7 +15,7 @@ import path from "node:path";
 import { clipsHash, illustrated, isShot, lookHash, mixHash, picturesHash, shotVisual } from "../core/drama.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { SFX_NAMES, sfxMeasureArgs, soundMeasurement } from "./sfx.mjs";
-import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
+import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, pictureHash, speechHash } from "../core/timeline.mjs";
 
 export const MUSIC_SECONDS = 20;
 // The second shot's clip is this much shorter than its lines, the third this much longer.
@@ -82,7 +82,7 @@ export function writeSyntheticKeyframes(doc, workdir, binary) {
     shots[scene.id] = { file, sha256: fileSha256(path.join(workdir, file)) };
   });
   // A drama's manifest is bound to the whole picture, illustrated slides' to the shots alone (docs/videos/ILLUSTRATED.md).
-  const manifest = { look_hash: lookHash(doc), ...(illustrated(doc) ? { pictures_hash: picturesHash(doc) } : { visual_hash: visualHash(doc) }), shots };
+  const manifest = { look_hash: lookHash(doc), ...(illustrated(doc) ? { pictures_hash: picturesHash(doc) } : { visual_hash: pictureHash(doc) }), shots };
   writeManifest(workdir, "keyframes", manifest);
   return manifest;
 }
@@ -164,7 +164,7 @@ export function writeSyntheticClips(doc, timeline, lexicon, workdir, binary) {
     order.push({ id: scene.id, sha256: shots[scene.id].sha256 });
     index += 1;
   }
-  const manifest = { speech_hash: speechHash(doc, lexicon), visual_hash: visualHash(doc), look_hash: lookHash(doc), clips_hash: clipsHash(order), shots };
+  const manifest = { speech_hash: speechHash(doc, lexicon), visual_hash: pictureHash(doc), look_hash: lookHash(doc), clips_hash: clipsHash(order), shots };
   writeManifest(workdir, "clips", manifest);
   return manifest;
 }

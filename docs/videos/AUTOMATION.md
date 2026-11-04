@@ -179,6 +179,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 **請求**：設定分頁「每日快報」開著時（`daily_brief_enabled`），到了台北時間 `daily_brief_hour`（預設 9），工人下一次問 `GET /api/v1/video/automation/daily-briefs/next`，伺服器就用前一天（`news_date`）已發布的文章開一筆請求（最多 12 則；少於 `daily_brief_min_stories` 記成跳過；排隊兩天沒人做就取消）。工人用請求自己的 slug `POST …/daily-briefs/{id}/start` 認領，上架確認後 `POST …/done`。工人經網站的 `/api/video/automation/daily-briefs/...` 轉送。
 
+**跟總開關各自獨立**（站主 2026-11-01）：「每日快報」不看「自動產生草稿」（`enabled`）。草稿關著、快報開著時，伺服器照樣開請求，工人只做快報（`flow.mjs` 的 `briefsOnly`、`scopedVideos`）：問當天的請求、推進 `daily-ai-` 影片的各階段與語言、處理它們的放棄與重試；其他影片停在原地，不排草稿、作品、站主的請求，也不回文件與劇本上的留言。兩個都關才整輪不做事（Shorts 與 Drive 備份照舊）。快報的配音重做也照這條規則放行（`admin_service.py` 的 `_automation_enabled`）。
+
 **工人怎麼排**（`flow.mjs` 的 `dailyStep`、`draftDaily`）：
 - 一輪只問一次，在第一條 lane 的雜務（放棄、重試）之後、所有影片與請求之前：這是固定時間的工作，影片多的日子也不會被擠到晚上。
 - 不看「等站主的草稿」上限（`room()`），也不寫 `last_draft_at`（`markDrafted()`）：快報不取代、也不推遲排程草稿。
@@ -279,6 +281,9 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 ## 清理工作區（2026-09-28 加）
 
 工作區（volume `video_work`）原本什麼都不刪，一支品牌故事就留下 1.3–2 GB（`STORY.md` §上限與成本）。工人每一輪做完手上的工作之後清一次（`tools/video/automation/tidy.mjs`）：
+
+> **2026-11-03 起已上 YouTube 的影片改走「整支離開主機」**：備份 `done`、語言做好或略過（配音要已上傳）三樣齊了就把整個工作資料夾刪掉，只留幾 KB 的紀錄，不等 7 天；備份關閉或系列不備份時一律不刪。細節見 [BACKUP.md](BACKUP.md) §跟 tidy 的關係。下面的 7 天規則現在只用在放棄的影片。
+
 
 - **哪些影片**：`auto.json` 說已經結束的——`status: done` 而且記下了 YouTube id，或站主放棄（`dropped`）——而且結束滿保留天數（預設 7 天，跟審核檔案區刪 mp4 的 `PREVIEW_RETENTION` 一樣）。
 - **從哪天算**：放棄的從 `dropped.at` 算。上了 YouTube 的，`auto.json` 沒有記日期（`recordVideoId` 只寫 `status` 與 `youtube_video_id`），所以照網站刪 mp4 的規則（`prune_published_previews`）：上架確認核准的時間（工作區 `approvals.json` 的 `publish` 項，與每輪影片清單的 `publish_approved_at`，取較晚的）和站主設的公開時間（`youtube_publish_at`），再取較晚的。沒有可用的日期就不清，那一輪印一行說明。

@@ -18,7 +18,7 @@ import { approvalState, sha256File } from "../core/approvals.mjs";
 import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, lookHash, picturesHash, resolveLook, shotCast } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
-import { visualHash } from "../core/timeline.mjs";
+import { pictureHash } from "../core/timeline.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { chosenSheets, fixClauses, keyframeRubric } from "./keyframes.mjs";
@@ -98,7 +98,7 @@ export async function importKeyframe(args, ctx) {
   const look = resolveLook(doc.look);
   const hash = lookHash(doc);
   const slides = illustrated(doc);
-  const binding = slides ? { pictures_hash: picturesHash(doc) } : { visual_hash: visualHash(doc) };
+  const binding = slides ? { pictures_hash: picturesHash(doc) } : { visual_hash: pictureHash(doc) };
   const bound = (manifest) => Boolean(manifest) && Object.entries(binding).every(([key, value]) => manifest[key] === value);
 
   // The look gate, as `keyframes` wants it: approved as it stands, a sheet chosen for every character.

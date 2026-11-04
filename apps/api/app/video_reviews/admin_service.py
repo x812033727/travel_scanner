@@ -87,6 +87,7 @@ from app.video_automation.settings import (
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews import admin_package_zip as package_zip
 from app.video_reviews import dub_retry
+from app.video_reviews.clips import backup_tier_role
 from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
     BROWSE_STATES,
@@ -1634,6 +1635,29 @@ def _supersede_short_reviews(
         older.updated_at = now
 
 
+def _attach_backup_tier(review: VideoReview, payload: ReviewIn, now: datetime) -> None:
+    """The same upload confirmation sent again after the owner approved it, now carrying the
+    rest of the full backup tier (tools/video/review/full-tier.mjs): those files join it, so the
+    host's worker fetches them for the Drive backup (owner, 2026-11-03: every video whole on the
+    host before it goes up). Only when everything else is the very files the owner approved, and
+    only files nothing but the backup reads (clips.backup_tier_role); the approval stands."""
+    def key(item: dict[str, Any]) -> tuple[str, str]:
+        return (str(item.get("role")), str(item.get("sha256")))
+
+    held = [item for item in review.files or [] if isinstance(item, dict)]
+    sent = [item.model_dump() for item in payload.files]
+    approved = {key(item) for item in held if not backup_tier_role(str(item.get("role")))}
+    if {key(item) for item in sent if not backup_tier_role(str(item["role"]))} != approved:
+        return
+    have = {str(item.get("role")) for item in held}
+    extra = [
+        item for item in sent if backup_tier_role(str(item["role"])) and item["role"] not in have
+    ]
+    if extra:
+        review.files = [*held, *extra]
+        review.updated_at = now
+
+
 async def submit_review(
     session: AsyncSession,
     store: ReviewStore,
@@ -1748,6 +1772,8 @@ async def submit_review(
             ),
         )
     if same is not None and same.status != "pending":
+        if same.status == "approved" and payload.gate == "publish":
+            _attach_backup_tier(same, payload, now)
         await session.commit()  # release the project lock on an idempotent resend
         return _review_out(same)
     if same is not None:
@@ -2382,13 +2408,18 @@ async def retry_project(session: AsyncSession, slug: str, user: User) -> Project
     return await project_view(session, slug)
 
 
-async def _automation_enabled(session: AsyncSession) -> bool:
-    """Whether the worker runs at all: the settings row exists and 「自動產生草稿」 is on.
-    While it is off the worker does nothing, so nothing should queue for it."""
+async def _automation_enabled(session: AsyncSession, slug: str | None = None) -> bool:
+    """Whether the worker moves this video: the settings row exists and 「自動產生草稿」 is on,
+    or ``slug`` is a daily brief and 「每天開一支新聞快報」 is on (the worker makes the briefs
+    with the drafts switched off: flow.mjs briefsOnly). Otherwise nothing should queue for it."""
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
-    return row is not None and bool(row.enabled)
+    if row is None:
+        return False
+    if row.enabled:
+        return True
+    return slug is not None and is_daily_brief(slug) and bool(row.daily_brief_enabled)
 
 
 def _caption_text(store: ReviewStore, slug: str, sha256: str) -> str | None:
@@ -2505,7 +2536,7 @@ async def request_dub_retry(
     )
     if code is not None:
         raise _dub_retry_blocked(code, seen.tidied_at)
-    if not await _automation_enabled(session):
+    if not await _automation_enabled(session, slug):
         raise AppError(
             409,
             "video_automation_disabled",
@@ -2645,6 +2676,24 @@ async def package_files_for_admin(
     project = await _project(session, slug)
     shown = [list(review.files or []) for review in await _reviews(session, project)]
     return package_zip.resolve_entries(store, slug, shown, entries)
+
+
+async def package_check_for_admin(
+    session: AsyncSession, store: ReviewStore, slug: str, entries: list[tuple[str, str]]
+) -> dict[str, Any]:
+    """Whether the zip of these entries can be made: the files it would miss and why, its size,
+    and the Drive folder that holds the video once the store has let its files go."""
+    project = await _project(session, slug)
+    shown = [list(review.files or []) for review in await _reviews(session, project)]
+    missing, size = package_zip.check_entries(store, slug, shown, entries)
+    record = project.backup if isinstance(project.backup, dict) else {}
+    folder = record.get("folder") if _backed_up(project) else None
+    return {
+        "ok": not missing,
+        "missing": missing,
+        "bytes": size,
+        "drive_folder": folder if isinstance(folder, str) and folder else None,
+    }
 
 
 # --- on YouTube: the owner's link, and what the store keeps afterwards ---------------------------
@@ -2969,6 +3018,84 @@ def _is_video(item: Any) -> bool:
     )
 
 
+def _backed_up(project: VideoProject) -> bool:
+    """Whether the worker reported every file of ``project`` copied to Drive and checked there
+    (docs/videos/BACKUP.md). Until then the review store's mp4 may be the host's only copy: a
+    video made off the host has no files in video_work until the worker fetches them from here
+    (tools/video/automation/review-package.mjs). Owner, 2026-11-03: nothing leaves the host
+    before Drive holds it."""
+    record = project.backup if isinstance(project.backup, dict) else {}
+    return record.get("state") == "done"
+
+
+def _done_with(project: VideoProject, reviews: list[VideoReview]) -> bool:
+    """Whether nothing needs ``project``'s review files any more (owner, 2026-11-03,
+    docs/videos/BACKUP.md): on YouTube, its Drive backup done, its languages decided, no review
+    waiting for the owner, no dub asked for again, and every chosen language part made or
+    skipped, a dub uploaded in Studio or skipped. The files are in Drive from then on, and the
+    host's worker clears its own copy by the same rule (tools/video/automation/tidy.mjs)."""
+    if not project.youtube_video_id or not _backed_up(project):
+        return False
+    if project.locales_decided_at is None:
+        return False
+    if any(review.status == "pending" for review in reviews):
+        return False
+    retries = project.dub_retries if isinstance(project.dub_retries, dict) else {}
+    if any(
+        isinstance(entry, dict) and entry.get("status") in ("requested", "taken")
+        for entry in retries.values()
+    ):
+        return False
+    states = language_states(locale_choices(project), reviews, retries)
+    for parts in states.values():
+        for part, out in parts.items():
+            if out.state == "working" or (
+                part == "dub" and out.state not in ("uploaded", "skipped")
+            ):
+                return False
+    return True
+
+
+def _moment(value: Any) -> datetime | None:
+    if isinstance(value, datetime):
+        moment = value
+    elif isinstance(value, str) and value:
+        try:
+            moment = datetime.fromisoformat(value)
+        except ValueError:
+            return None
+    else:
+        return None
+    return moment if moment.tzinfo is not None else moment.replace(tzinfo=UTC)
+
+
+def _done_since(project: VideoProject, reviews: list[VideoReview]) -> datetime | None:
+    """When ``project`` last changed on the way to ``_done_with``: the latest of its Drive backup
+    report, its languages decision, any review decision and the publish time the owner set; None
+    when the backup report carries no readable time, so the files stay.
+
+    Owner, 2026-11-04: approving the languages batch counts as the dubs being in Studio, but the
+    owner approves it before downloading the package to upload them, so wiping the store the
+    moment the three conditions met took the package away 20 minutes after the backup (票
+    2026-11-03-admin-upload-zip-fails-to-download). The store now waits PREVIEW_RETENTION past
+    this moment, the same week the mp4 rule gives."""
+    record = project.backup if isinstance(project.backup, dict) else {}
+    backup = _moment(record.get("checked_at") or record.get("reported_at") or record.get("at"))
+    if backup is None:
+        return None
+    values = [project.locales_decided_at, project.youtube_publish_at]
+    values += [review.decided_at for review in reviews]
+    return max([backup, *(m for value in values if (m := _moment(value)) is not None)])
+
+
+async def _on_youtube(session: AsyncSession) -> list[VideoProject]:
+    """Every video on YouTube."""
+    rows = await session.scalars(
+        select(VideoProject).where(VideoProject.youtube_video_id.is_not(None))
+    )
+    return list(rows)
+
+
 async def _published_before(session: AsyncSession, cutoff: datetime) -> list[VideoProject]:
     """Videos on YouTube whose upload confirmation was approved on or before ``cutoff``."""
     confirmed = _confirmations()
@@ -2987,7 +3114,8 @@ async def prune_published_previews(
 
     The rule (HANDS-OFF.md §上傳包與「可以上架」): the video has a ``youtube_video_id``, its
     upload confirmation was approved at least PREVIEW_RETENTION ago and, when the owner set a
-    publish time, that time is also at least PREVIEW_RETENTION past. Only files that are
+    publish time, that time is also at least PREVIEW_RETENTION past, and the Drive backup
+    reported it done (``_backed_up``; with backups off nothing goes). Only files that are
     ``video/mp4`` or play the ``final`` role go; the thumbnail, captions and descriptions stay
     so the owner can still fetch them. Idempotent and cheap, so the list page calls it: a video
     whose mp4 is already gone costs one stat per file. Returns what was removed, by slug.
@@ -2995,8 +3123,21 @@ async def prune_published_previews(
     now = now or datetime.now(UTC)
     cutoff = now - PREVIEW_RETENTION
     removed: dict[str, list[str]] = {}
+    # A video done with (``_done_with``) for PREVIEW_RETENTION loses every file here at once, not
+    # only its mp4.
+    for project in await _on_youtube(session):
+        if not _backed_up(project) or not store.holds_files(project.slug):
+            continue
+        reviews = await _reviews(session, project)
+        since = _done_since(project, reviews) if _done_with(project, reviews) else None
+        if since is not None and since <= cutoff:
+            gone = store.keep_only(project.slug, set())
+            if gone:
+                removed[project.slug] = gone
     for project in await _published_before(session, cutoff):
         if project.youtube_publish_at is not None and project.youtube_publish_at > cutoff:
+            continue
+        if not _backed_up(project):
             continue
         reviews = await _reviews(session, project)
         videos = {

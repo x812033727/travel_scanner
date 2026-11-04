@@ -2,7 +2,7 @@
 
 import { Copy, Download, ExternalLink, Hand } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { type ReactNode, useEffect, useState } from "react";
+import { type MouseEvent, type ReactNode, useEffect, useState } from "react";
 import { control, downloadUrl, fileFor, fileUrl, list, mp4Retired, type Project, record, type Review, type ReviewFile, text, useWhen, youtubeVideoId } from "@/components/admin-video-review-card";
 import { Button } from "@/components/community/ui";
 import { api } from "@/lib/api";
@@ -46,6 +46,47 @@ function DownloadFile({ slug, file, label, name }: { slug: string; file: ReviewF
   return <a href={fileUrl(slug, file)} download={name} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--line)] px-3 py-2 text-sm font-semibold hover:border-[var(--teal)]">
     <Download aria-hidden size={16} />{label}
   </a>;
+}
+
+type Missing = { name: string; reason: string };
+type ArchiveCheck = { ok: boolean; missing: Missing[]; drive_folder: string | null };
+
+// Asks the site whether the zip can be made before the browser starts it: a download that fails at
+// its first byte only shows the browser's "failed" (2026-11-04, daily-ai-20261103 after its files
+// left the review store). When the check itself cannot answer, the download goes ahead as before.
+function DownloadArchive({ slug, url, count }: { slug: string; url: string; count: number }) {
+  const t = useTranslations("admin.videoYoutube.manual");
+  const [checking, setChecking] = useState(false);
+  const [refused, setRefused] = useState<ArchiveCheck | null>(null);
+  async function start(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    if (checking) return;
+    setChecking(true);
+    setRefused(null);
+    let answer: ArchiveCheck | null = null;
+    try {
+      const response = await fetch(`${url}&check=1`, { cache: "no-store" });
+      const body: unknown = response.ok ? await response.json() : null;
+      if (body && typeof body === "object" && typeof (body as ArchiveCheck).ok === "boolean") answer = body as ArchiveCheck;
+    } catch {
+      answer = null;
+    }
+    setChecking(false);
+    if (answer && !answer.ok) {
+      setRefused({ ok: false, missing: list(answer.missing).filter((item): item is Missing => typeof record(item).name === "string").slice(0, 64), drive_folder: typeof answer.drive_folder === "string" ? answer.drive_folder : null });
+      return;
+    }
+    window.location.assign(url);
+  }
+  return <>
+    <div><a href={url} download={`${slug}-upload.zip`} onClick={start} aria-busy={checking} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white"><Download aria-hidden size={16} />{checking ? t("downloadAllChecking") : t("downloadAll", { count })}</a></div>
+    {refused && <div role="alert" className="grid gap-1 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
+      <p className="font-semibold">{t("downloadAllMissing", { count: refused.missing.length })}</p>
+      <ul className="list-disc pl-5">{refused.missing.map((item) => <li key={item.name}><span className="font-mono">{item.name}</span>{"："}{item.reason === "gone" ? t("downloadAllGone") : t("downloadAllNotShown")}</li>)}</ul>
+      {refused.drive_folder && <p>{t("downloadAllDrive", { folder: refused.drive_folder })}</p>}
+      <p>{t("downloadAllSingles")}</p>
+    </div>}
+  </>;
 }
 
 function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
@@ -100,7 +141,7 @@ function ManualGuide({ data, draft }: { data: Package; draft?: Draft }) {
   return <div className="grid min-w-0 gap-4">
     <p className="text-sm leading-6 text-[var(--muted)]">{t("intro")}</p>
     {archive.size > 0 && <div className="grid gap-2 rounded-xl border border-[var(--teal)] p-4">
-      <div><a href={archiveUrl} download={`${project.slug}-upload.zip`} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white"><Download aria-hidden size={16} />{t("downloadAll", { count: archive.size })}</a></div>
+      <DownloadArchive slug={project.slug} url={archiveUrl} count={archive.size} />
       <p className="text-sm leading-6 text-[var(--muted)]">{t("downloadAllHelp")}</p>
       {!id && !final && project.compilation && project.download_available && <p className="text-sm text-amber-900">{t("downloadAllNoVideo")}</p>}
     </div>}

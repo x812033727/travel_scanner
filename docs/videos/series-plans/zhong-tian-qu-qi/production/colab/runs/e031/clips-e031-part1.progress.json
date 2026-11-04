@@ -1,0 +1,97 @@
+{
+  "task": "batch",
+  "status": "completed",
+  "session": "zt31",
+  "gpu": "A100",
+  "jobs": [
+    {
+      "id": "s10",
+      "title": "zhong-tian-qu-qi-e031 s10",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s10-t1_mp4_s10.mp4",
+      "started_at": "2026-10-28T10:25:22Z",
+      "seed": 3109224644187445400,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-10-28T10:29:29Z",
+      "bytes": 1861721
+    },
+    {
+      "id": "s18",
+      "title": "zhong-tian-qu-qi-e031 s18",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s18-t1_mp4_s18.mp4",
+      "started_at": "2026-10-28T10:29:29Z",
+      "seed": 8275379415599067305,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-10-28T10:34:06Z",
+      "bytes": 1535154
+    },
+    {
+      "id": "s35",
+      "title": "zhong-tian-qu-qi-e031 s35",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s35-t1_mp4_s35.mp4",
+      "started_at": "2026-10-28T10:34:06Z",
+      "seed": 1135183890198166251,
+      "duration_seconds": 5.0,
+      "finished_at": "2026-10-28T10:36:43Z",
+      "bytes": 3908093
+    }
+  ],
+  "log_tail": [
+    "ComfyUI: /content/ComfyUI",
+    "[colab] Executing cell 2/8 - 198aec69...",
+    "diffusion_models minimax_h3_fl2va_pruned_int8_convrot.safetensors 19.53 GiB",
+    "text_encoders qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors 14.61 GiB",
+    "vae minimax_h3_video_vae_fp16.safetensors 4.85 GiB",
+    "vae minimax_h3_audio_vae_fp32.safetensors 0.56 GiB",
+    "loras minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors 1.82 GiB",
+    "[colab] Executing cell 3/8 - 87bb15cb...",
+    "模式：first_frame；要求長度：5.000 秒；排程：124 幀 / 5.167 秒（24 fps）",
+    "[colab] Executing cell 4/8 - 661a317f...",
+    "使用 CLI 上傳的完整 prompt： /content/h3_s35_prompt.txt",
+    "模型收到的完整 prompt：",
+    "overall_soundscape: N/A",
+    "non_diegetic_music: N/A",
+    "[colab] Executing cell 5/8 - 8c12b74a...",
+    "使用 CLI 上傳的首幀： /content/h3_s35_reference_1.img",
+    "ComfyUI 首幀： /content/ComfyUI/input/h3_colab_first_frame.png (1312, 736)",
+    "[colab] Executing cell 6/8 - 7000b885...",
+    "使用已啟動的 ComfyUI",
+    "節點檢查通過，ComfyUI 已啟動",
+    "[colab] Executing cell 7/8 - c44ad4f4...",
+    "已提交推論： 0b6ade5b-debc-4361-9932-08c409422be4",
+    "[colab] Executing cell 8/8 - 0fed900a...",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "完成： /content/ComfyUI/output/MiniMax_H3_s35_00001-audio.mp4 (3.7 MiB，含影片與音訊)",
+    "COLAB_CLI_OUTPUT_PATH: /content/h3_s35_output.mp4",
+    "[colab] Saving notebook with outputs to '/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/colab/work_0a1cb62f/s35/MiniMax_H3_Turbo_Colab_output.ipynb'...",
+    "[colab] Downloaded '/content/h3_s35_output.mp4' to '/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s35-t1_mp4_s35.mp4'"
+  ],
+  "updated_at": "2026-10-28T10:36:43Z",
+  "current_job": "s35",
+  "session_status": "active",
+  "completed_count": 3,
+  "failed_count": 0,
+  "cancelled_count": 0,
+  "error": null,
+  "results": [
+    {
+      "id": "s10",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s10-t1_mp4_s10.mp4",
+      "status": "completed"
+    },
+    {
+      "id": "s18",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s18-t1_mp4_s18.mp4",
+      "status": "completed"
+    },
+    {
+      "id": "s35",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s35-t1_mp4_s35.mp4",
+      "status": "completed"
+    }
+  ]
+}

@@ -235,6 +235,14 @@ export const explainerSeries = (doc) => (isExplainer(doc) ? EXPLAINER_IDENTITY[d
 /** A drama drawn in one of the cute explainer looks (CUTE_EXPLAINER_PRESETS). */
 export const isCuteExplainer = (doc) => isDrama(doc) && CUTE_EXPLAINER_PRESETS.includes(doc?.look?.preset);
 /**
+ * The explainer looks that may carry a cast: So That's Why's dialogue format, a host and a kid who
+ * asks the viewer's questions (owner, 2026-11-03; docs/videos/so-thats-why/dialogue-pilot-20261103/).
+ * Every other explainer is told by the narrator alone.
+ */
+export const DIALOGUE_EXPLAINER_PRESETS = Object.freeze(["cute-cartoon"]);
+/** An explainer whose lines are spoken by its cast: still pictures and the floor, but a drama's intro at the start. */
+export const isDialogueExplainer = (doc) => isExplainer(doc) && DIALOGUE_EXPLAINER_PRESETS.includes(doc.look.preset) && Array.isArray(doc.characters) && doc.characters.length > 0;
+/**
  * Whether the eight-minute floor (MIN_EPISODE_MINUTES) holds: slides, screencasts and the
  * explainer, never a drama episode, a brand story or a compilation.
  */
@@ -595,7 +603,7 @@ export function validateDrama(doc, errors, validateVoice) {
   if (!drama && doc.look !== undefined && !pictures) errors.push({ path: "look", message: `a slides video with no "${SHOT_TEMPLATE}" scenes has nothing to draw with a look` });
   const explainer = isExplainer(doc);
   const cards = explainer ? explainerCardTemplates(doc.look?.preset) : CARD_TEMPLATES;
-  if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${doc.look.preset}") has no characters: the narrator tells it` });
+  if (explainer && characterIds.size && !DIALOGUE_EXPLAINER_PRESETS.includes(doc.look.preset)) errors.push({ path: "characters", message: `an explainer (look preset "${doc.look.preset}") has no characters: the narrator tells it` });
   if (drama && doc.series !== undefined) {
     validateSeries(doc.series, errors, isLongAnime(doc));
     // An episode lists its cast by id, so lookHash changes only when the cast itself changes
