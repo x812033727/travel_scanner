@@ -1,0 +1,1641 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R33001",
+    "R33002",
+    "R33003",
+    "R33004",
+    "R33005",
+    "R33006",
+    "R33007",
+    "R33008"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave33-manuscript.json",
+      "sha256": "f92476f00b61d667787e1df24ffb0c6f379167da5c90238dbd8a9acf09ab810b"
+    },
+    {
+      "file": "reviews/wave33-manuscript-themes.json",
+      "sha256": "48bd910aab51c5860ae0ef4c517601e723b5131c702f2acef491cc5cab31650d"
+    },
+    {
+      "file": "reviews/wave33-manuscript-author.json",
+      "sha256": "4224561f3f4d867d2f0fa46fa733b961891c91db38a322627e4424663c1e3ba5"
+    }
+  ],
+  "role_and_scope": "非作者讀題、原件與圖說，逐篇區分原研究全文、團隊說明和摘要；檢視研究能回答什麼及題案節奏。",
+  "baseline": {
+    "head": "6d153f29a537427f36b55c96578b6291efc0cca3",
+    "selected": 3127,
+    "raw_records": 3502,
+    "not_added": 1396,
+    "themes": 314,
+    "pool_sha256": "f49ccb0ece6cd560c1ed86d0b6476a65ba3b8b5707c1e7ef43378095cf8780a3"
+  },
+  "candidate_review": [
+    {
+      "id": "R33001",
+      "canonical_id": "R33001",
+      "decision": "retain",
+      "reason": "沿單張紙在三維體素中追面，再映回墨跡；DB-2040與DB-1627確實是兩封不同信，幾何驗證與讀文分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "source_ids": [
+        "R33-S001",
+        "R33-S002"
+      ],
+      "editorial_seconds": [
+        55,
+        100
+      ]
+    },
+    {
+      "id": "R33002",
+      "canonical_id": "R33002",
+      "decision": "retain",
+      "reason": "含鐵墨殘跡的特徵元素訊號在部分遮畫下仍可辨，含鐵覆料造成干擾的實例限定可恢復範圍。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "source_ids": [
+        "R33-S003"
+      ],
+      "editorial_seconds": [
+        50,
+        85
+      ]
+    },
+    {
+      "id": "R33003",
+      "canonical_id": "R33003",
+      "decision": "retain",
+      "reason": "擦屑與直接取樣光譜的對照支持材料辨種，厚度分布重疊與同冊混料不支持只靠薄度判胎齡。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "source_ids": [
+        "R33-S004"
+      ],
+      "editorial_seconds": [
+        50,
+        90
+      ]
+    },
+    {
+      "id": "R33004",
+      "canonical_id": "R33004",
+      "decision": "retain",
+      "reason": "羊與牛組織排除同一完整皮張；不能只憑同物種認定同一皮張，也不能單憑異種排除一整卷可由數張皮組成。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "source_ids": [
+        "R33-S005",
+        "R33-S006"
+      ],
+      "editorial_seconds": [
+        50,
+        85
+      ]
+    },
+    {
+      "id": "R33005",
+      "canonical_id": "R33005",
+      "decision": "retain",
+      "reason": "含鐵赭石顆粒與較瀰散的鉛分布，以及部分黑墨也見鉛，是檢驗其助乾用途的不同量測；沒有直接量乾燥時程。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "source_ids": [
+        "R33-S007"
+      ],
+      "editorial_seconds": [
+        55,
+        90
+      ]
+    },
+    {
+      "id": "R33006",
+      "canonical_id": "R33006",
+      "decision": "retain",
+      "reason": "皮紙碳年代與墨線的晶型、粒子形態及覆寫位置各回答不同問題。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "source_ids": [
+        "R33-S008"
+      ],
+      "editorial_seconds": [
+        62,
+        105
+      ]
+    },
+    {
+      "id": "R33007",
+      "canonical_id": "R33007",
+      "decision": "retain",
+      "reason": "同頁基準容許比較原先色澤不同的頁，相對磨用與能否量到閱讀次數分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "source_ids": [
+        "R33-S009"
+      ],
+      "editorial_seconds": [
+        50,
+        90
+      ]
+    },
+    {
+      "id": "R33008",
+      "canonical_id": "R33008",
+      "decision": "retain",
+      "reason": "不同牙結石片中散布的礦粒，以元素、拉曼與參照縮小來源；由接觸推定職業仍有數種可能。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "source_ids": [
+        "R33-S010"
+      ],
+      "editorial_seconds": [
+        55,
+        95
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R33-S001",
+      "title": "Unlocking history through automated virtual unfolding of sealed documents imaged by X-ray microtomography",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "PDF pp2–6、p8低密度墨限制；p5分層／展平重建、p6 Fig6c/d已開DB-2040代表幾何對照。",
+      "locator": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-letter.pdf",
+        "sha256": "cc65ddb73ac1f1509e3306ca87f6dff678d564023a9fa8adf0950f120e73262f",
+        "text_file": ".cache/wave33-manuscript-letter.txt",
+        "text_sha256": "3fe59a578b4455199209ca8b31d15a43dda5bd23ccb0c3c3e09a2820e105866a"
+      }
+    },
+    {
+      "source_id": "R33-S002",
+      "title": "From damage to discovery via virtual unwrapping: Reading the scroll from En-Gedi",
+      "decision": "supports_comparison_only",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "XML P012–015、P021/24/27/32–33、P039、P044、P051/054。碳化卷軸分段、取面、展平；不在本波另計。",
+      "locator": "原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-engedi.xml",
+        "sha256": "ec8a08673c38804daf665efff9ac1a11d4b80faa45f9ff572c696e5b6e8b50b1",
+        "text_file": ".cache/wave33-manuscript-engedi.txt",
+        "text_sha256": "2fc88088ef57cfbb8976af08e12bb43239d2f1df49bc5e9e6402ed96c3a9b42c"
+      }
+    },
+    {
+      "source_id": "R33-S003",
+      "title": "Archimedes brought to light",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "研究者親述的Physics World pp39–42。p42頁鐵圖為On Floating Bodies，Fig2/另一頁示The Method覆畫；鐵干擾、鈣呈圖與未能恢復的範圍。",
+      "locator": "PDF頁1–4；鐵X光螢光圖的量測方式、頁4圖3兩組不同方向文字，以及部分覆畫以鐵成像的限制。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-arch.pdf",
+        "sha256": "17b8f4c0fb6f9ad6ed70f5566dc88ce090b199298933fcf2f8eafabb0c7c7bd2",
+        "text_file": ".cache/wave33-manuscript-arch.txt",
+        "text_sha256": "ac407f75b5a7a8bfefc05b606fbfa53eae5156e330333893589787d6ad19af4e"
+      }
+    },
+    {
+      "source_id": "R33-S004",
+      "title": "Animal origin of 13th-century uterine vellum revealed using noninvasive peptide fingerprinting",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "原文PDF pp1–5，兩方法肽譜比較、220葉/72冊的動物來源與厚度範圍；不把能辨種說成能辨胎齡。",
+      "locator": "PDF頁1–4，PVC擦屑取樣、Fig1與傳統取樣比較、Fig4物種與厚度。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-vellum.pdf",
+        "sha256": "39f7dc9df2be9f76bc9d0707681ff7e4867b46f9af72e0c8f0f9a749974e17ed",
+        "text_file": ".cache/wave33-manuscript-vellum.txt",
+        "text_sha256": "a69c63ae302edd45b94d109fd653afa5baea8007c9dcf896f9c88fc0ea79ed29"
+      }
+    },
+    {
+      "source_id": "R33-S005",
+      "title": "Illuminating Genetic Mysteries of the Dead Sea Scrolls",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "PubMed P003原研究摘要，說明耶利米殘卷材料比對有歸屬爭議；未獨立取得Cell付費全文。",
+      "locator": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-deadpub.html",
+        "sha256": "bb593cc10a06b801db446181d450ac061d7d2eb42cd4954a63b225424fc91c70",
+        "text_file": ".cache/wave33-manuscript-deadpub.txt",
+        "text_sha256": "ed71ad61c57655e6e6e8f49363898065c5fb655057f383649f9dd47e25bc6f29"
+      }
+    },
+    {
+      "source_id": "R33-S006",
+      "title": "Dead Sea Scrolls “puzzle” solved with DNA from ancient animal skins",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "團隊說明P015–027，採樣、防污染、羊與牛不匹配的具體例。這是上筆同研究的團隊報導。",
+      "locator": "P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-deadsea.html",
+        "sha256": "e7a5003936017249c5df8df91cf212db31a6e829cd9be0e5222924c2765a28df",
+        "text_file": ".cache/wave33-manuscript-deadsea.txt",
+        "text_sha256": "a282be868b601b2a49dc788ccefbbc0ba8402fc7fb7967a4cbf2b55a3260fb98"
+      }
+    },
+    {
+      "source_id": "R33-S007",
+      "title": "Insights into the composition of ancient Egyptian red and black inks on papyri achieved by synchrotron-based microanalyses",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "原刊XML P016–021、P027/030、P034–044、P059–062、P068–074。Fe在赭石顆粒，Pb有分散與沿纖維分布，助乾為詮釋。",
+      "locator": "開放全文XML P016–021、P027、P032–046、P058–074，Fig3–4圖說與原成分降解的替代解釋。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-lead.xml",
+        "sha256": "2b3a34fda20101137cea3007333325536973fe02d4298e78c69d6e41eb3aa7d1",
+        "text_file": ".cache/wave33-manuscript-lead.txt",
+        "text_sha256": "8502f29042be93e7feb96914d631a5ed1b01c2f60e3b4d1b1f7687dd89321fe7"
+      }
+    },
+    {
+      "source_id": "R33-S008",
+      "title": "Analysis unlocks secret of the Vinland Map — it’s a fake",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "館方研究說明P014/017/020/025–034。全幅分布、50件同時代碎片、晶型及微觀形態、背面改字。",
+      "locator": "P002–008、P019–035，全幅鈦元素、拉曼晶型、電子顯微鏡比較及背面改寫。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-map.html",
+        "sha256": "ea3655258fae1c01390ee26d6707ba4993450b5e6b52c0fc9cbe8b0149621022",
+        "text_file": ".cache/wave33-manuscript-map.txt",
+        "text_sha256": "a2f4c7f4f077329e95ec3b4a6a1201a60379717e66253df0e6ca3bc684a2c661"
+      }
+    },
+    {
+      "source_id": "R33-S009",
+      "title": "Dirty Books: Quantifying Patterns of Use in Medieval Manuscripts Using a Densitometer",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "PDF pp7–9海牙KB 74 G 35、Fig13–17；另看p24關於磨用飽和的限制。",
+      "locator": "PDF頁7–9，海牙KB 74 G 35案例，圖13–17，同頁較乾淨處的基準及章節間反射差。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-dirt.pdf",
+        "sha256": "f19dbfd78fb0c688e9f216e642138d373de4ce22176c65200b8dd92ce171a60c",
+        "text_file": ".cache/wave33-manuscript-dirt.txt",
+        "text_sha256": "25d7be456d8897af19c1a85d049327f7afe75e1127ff5865ec49caec3b4b431b"
+      }
+    },
+    {
+      "source_id": "R33-S010",
+      "title": "Medieval women’s early involvement in manuscript production suggested by lapis lazuli identification in dental calculus",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者當日快取原件及抽文的SHA，獨立讀指定段落；未重送HTTP。",
+      "reading_scope": "XML P011–026藍粒散布與酸不穩定的控制、元素和拉曼比對；P029–037等討論複數接觸途徑。",
+      "locator": "全文XML P009–025、P026–043及Fig2–4圖說，顆粒嵌入位置、能譜、拉曼及接觸顏料的多種途徑。",
+      "cache": {
+        "file": ".cache/wave33-manuscript-blue2.xml",
+        "sha256": "71960347d8b8446652e40a077152e0a30574a9e5f20b3f59dd1a624dcf0aa15b",
+        "text_file": ".cache/wave33-manuscript-blue2.txt",
+        "text_sha256": "a8cd4293fea77426e9ef2899a10192ed9d6a78ff9536b89e24c9d707d17db016"
+      }
+    }
+  ],
+  "visual_readings": [
+    {
+      "source_id": "R33-S001",
+      "file": ".cache/wave33-manuscript-letter-p5.png",
+      "sha256": "80953f6b011560d957726b901f760691c5540d13859bcbbe6bc951cb59a88ed5",
+      "read_via": "獨立目讀作者快取圖頁及圖說，核對物件和對照。"
+    },
+    {
+      "source_id": "R33-S001",
+      "file": ".cache/wave33-manuscript-letter-p6.png",
+      "sha256": "d116524d72b267865177cbaf00278068c1f76adf738ae954b10b0589e4850a9d",
+      "read_via": "獨立目讀作者快取圖頁及圖說，核對物件和對照。"
+    },
+    {
+      "source_id": "R33-S003",
+      "file": ".cache/wave33-manuscript-arch-p4.png",
+      "sha256": "e5e5a097275b183e3ad59cde4da5e5aff99122e1b51740915cf81e2bf9741866",
+      "read_via": "獨立目讀作者快取圖頁及圖說，核對物件和對照。"
+    },
+    {
+      "source_id": "R33-S004",
+      "file": ".cache/wave33-manuscript-vellum-p2.png",
+      "sha256": "7509deeb901d22b0edb4a927f536234f15558a3dfa0253a9d3b93aad9f61e68c",
+      "read_via": "獨立目讀作者快取圖頁及圖說，核對物件和對照。"
+    },
+    {
+      "source_id": "R33-S004",
+      "file": ".cache/wave33-manuscript-vellum-p4.png",
+      "sha256": "d673dea5a1397661aa6185da3d2c133940abb417c3f78826abccd7af34da321d",
+      "read_via": "獨立目讀作者快取圖頁及圖說，核對物件和對照。"
+    },
+    {
+      "source_id": "R33-S009",
+      "file": ".cache/wave33-manuscript-dirt-p7.png",
+      "sha256": "7af3a4b8db586a4c211ec00ff12196ad2696f3eae5e3fd0acff3df72c1cd802f",
+      "read_via": "獨立目讀作者快取圖頁及圖說，核對物件和對照。"
+    },
+    {
+      "source_id": "R33-S009",
+      "file": ".cache/wave33-manuscript-dirt-p8.png",
+      "sha256": "a93a965a3f36648c04317f23f55d466b15977b46c41355986dfc2c4aa20698b1",
+      "read_via": "獨立目讀作者快取圖頁及圖說，核對物件和對照。"
+    }
+  ],
+  "source_identity_review": "10筆來源為9項工作，其中死海古卷的一筆是原作摘要，另一筆是同案團隊報導。En-Gedi只作工法近例。圖屬原研究或團隊原報告，不視作二次獨立重現。",
+  "source_reading_summary": "7份原論文或研究者文章的指定正文，2份研究團隊／保存機構報導和1筆原研究摘要；7張PDF圖頁另目讀。",
+  "related_source_review": "R33-S002僅證En-Gedi曲面展平比較，不用來證明密封信件的個別實物。",
+  "source_fetch_limits": "DNA個案的詳細歸屬依團隊說明。其他未列原圖只核正文及圖說；本輪無重新拍攝或考古材料取樣。",
+  "author_near_pair_review": [
+    {
+      "a": "R33001",
+      "b": "R28003",
+      "decision": "distinct",
+      "reason": "現存板面與草稿粉點是位置配準；虛擬展信需在3D走完同一張紙。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33001",
+      "b": "R28002",
+      "decision": "distinct",
+      "reason": "固定繃架留下經緯偏轉，用來找布邊，與找出墨點位於哪一紙層不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33002",
+      "b": "R33001",
+      "decision": "distinct",
+      "reason": "逐點讀鐵元素濃度沒有將體積內的曲面展成一紙。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33002",
+      "b": "X5012",
+      "decision": "distinct",
+      "reason": "墨內酸鐵造成纖維斷裂，與留存的鐵被激發後成像不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33002",
+      "b": "R28004",
+      "decision": "distinct",
+      "reason": "埃及藍靠近紅外發光和銅辨料，阿基米德案利用殘墨空間分布辨文字。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33003",
+      "b": "R29006",
+      "decision": "distinct",
+      "reason": "比對擦屑中的膠原肽段判皮種，牙結石的乳蛋白陽性連回個人飲食，樣本形成與替代解釋均不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33004",
+      "b": "R33003",
+      "decision": "distinct",
+      "reason": "皮張物種可作薄度觀念的反例，DNA衝突則對原來的殘卷拼接提供否定證據。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33004",
+      "b": "R28001",
+      "decision": "distinct",
+      "reason": "畫布疏密順序吻合是正向同匹線索，古DNA為異種排除同張皮。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33005",
+      "b": "R28004",
+      "decision": "distinct",
+      "reason": "一案排查呈色來源，一案問已知元素是否以助乾成分存在，須看分布與化合物。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33005",
+      "b": "R33002",
+      "decision": "distinct",
+      "reason": "殘墨的空間輪廓讀字與添加物可能功能不共用同一結果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33006",
+      "b": "R33005",
+      "decision": "distinct",
+      "reason": "晶粒年代對照與化學角色推斷所需的條件不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33006",
+      "b": "R31001",
+      "decision": "distinct",
+      "reason": "樹輪對應已知碳峰求砍伐年，不由支撐材料年代判另加墨料。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33007",
+      "b": "X5023",
+      "decision": "distinct",
+      "reason": "介質粉化改外觀，並無同頁底色校準及篇章磨用分布。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33008",
+      "b": "R29006",
+      "decision": "distinct",
+      "reason": "牙石內乳清蛋白與無機礦粒的證據、參照及可識別的行為不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R33008",
+      "b": "R28004",
+      "decision": "distinct",
+      "reason": "兩題皆有藍料鑑識，前者需直接把口腔微粒與礦石／拉曼參照匹配才追問接觸途徑。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R33001",
+      "b": "R33006",
+      "decision": "distinct",
+      "reason": "分開皮紙年代與墨料年代，不展開密封信。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.709509
+    },
+    {
+      "a": "R33001",
+      "b": "R28003",
+      "decision": "distinct",
+      "reason": "根據粉點找轉稿位置，不重建折層。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.693912
+    },
+    {
+      "a": "R33001",
+      "b": "X5012",
+      "decision": "distinct",
+      "reason": "墨破壞紙纖維，未追蹤三維紙層。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.63897
+    },
+    {
+      "a": "R33001",
+      "b": "Q9004",
+      "decision": "distinct",
+      "reason": "靠筆壓打破膠囊顯色，不是分離重疊的舊墨。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.607101
+    },
+    {
+      "a": "R33001",
+      "b": "Q9002",
+      "decision": "distinct",
+      "reason": "側向散光改表觀灰階，不是把各面墨點展平。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.598482
+    },
+    {
+      "a": "R33002",
+      "b": "X5012",
+      "decision": "distinct",
+      "reason": "含鐵墨使纖維斷裂與殘墨螢光畫線不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.741515
+    },
+    {
+      "a": "R33002",
+      "b": "X5018",
+      "decision": "distinct",
+      "reason": "熱歷史改顯色劑結合，非在覆畫下尋找墨。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.657223
+    },
+    {
+      "a": "R33002",
+      "b": "X5017",
+      "decision": "distinct",
+      "reason": "感熱層顯色，並非從既有殘痕激發鐵螢光。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.64955
+    },
+    {
+      "a": "R33002",
+      "b": "Q9002",
+      "decision": "distinct",
+      "reason": "點增大是光在紙中的傳遞，非元素選擇影像。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.626975
+    },
+    {
+      "a": "R33002",
+      "b": "R33001",
+      "decision": "distinct",
+      "reason": "殘鐵元素圖穿過遮畫找文字；另案須先找出折在三維的紙層並展平。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.597783
+    },
+    {
+      "a": "R33003",
+      "b": "R33004",
+      "decision": "distinct",
+      "reason": "用DNA排除兩片同張皮與從橡皮擦屑鑑別超薄皮紙來源不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.607094
+    },
+    {
+      "a": "R33003",
+      "b": "B2113",
+      "decision": "distinct",
+      "reason": "海綿用鉤絲捕食，不涉及膠原肽質譜。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.546762
+    },
+    {
+      "a": "R33003",
+      "b": "D2256",
+      "decision": "distinct",
+      "reason": "黏粒變形穿篩，沒有皮種鑑別。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.51964
+    },
+    {
+      "a": "R33003",
+      "b": "D2184",
+      "decision": "distinct",
+      "reason": "接頭厚度影響強度，不涉及質譜參照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.500517
+    },
+    {
+      "a": "R33003",
+      "b": "D2084",
+      "decision": "distinct",
+      "reason": "膠帶黏著劑老化，不是擦屑取膠原指紋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.493581
+    },
+    {
+      "a": "R33004",
+      "b": "L057",
+      "decision": "distinct",
+      "reason": "互補鹼基模板不判殘皮物種是否相容。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.691651
+    },
+    {
+      "a": "R33004",
+      "b": "L044",
+      "decision": "distinct",
+      "reason": "細胞分裂與DNA複製輪數不能排除殘片接合。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.672625
+    },
+    {
+      "a": "R33004",
+      "b": "L054",
+      "decision": "distinct",
+      "reason": "新舊DNA鏈如何分配沒有皮張歸屬問題。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.660531
+    },
+    {
+      "a": "R33004",
+      "b": "V3018",
+      "decision": "distinct",
+      "reason": "複製機器的起點不等於辨識古DNA的物種。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.651945
+    },
+    {
+      "a": "R33004",
+      "b": "V3024",
+      "decision": "distinct",
+      "reason": "連接酶封閉骨架，不是對兩塊皮張作關聯推論。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.648022
+    },
+    {
+      "a": "R33005",
+      "b": "H3038",
+      "decision": "distinct",
+      "reason": "電池極板的氧化數不是墨料分布判準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.505616
+    },
+    {
+      "a": "R33005",
+      "b": "N013",
+      "decision": "distinct",
+      "reason": "行星反射和紅塵不能檢驗墨中鉛化合物功能。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.495132
+    },
+    {
+      "a": "R33005",
+      "b": "R33006",
+      "decision": "distinct",
+      "reason": "顏料晶型作年代線索，另一題看鉛在紅黑墨中分布與是否著色。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.490079
+    },
+    {
+      "a": "R33005",
+      "b": "P285",
+      "decision": "distinct",
+      "reason": "鏽色不唯一是一般物種鑑定界線，原題用顆粒和化合物空間分布判添加用途。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.480392
+    },
+    {
+      "a": "R33005",
+      "b": "N083",
+      "decision": "distinct",
+      "reason": "泉色有多種來源，不含鉛化合物的乾燥假說。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.477851
+    },
+    {
+      "a": "R33006",
+      "b": "R33001",
+      "decision": "distinct",
+      "reason": "辨不同紙層所載墨跡，不判墨的年代。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.709509
+    },
+    {
+      "a": "R33006",
+      "b": "R28003",
+      "decision": "distinct",
+      "reason": "粉點與草圖對準可推施工轉移，未提供墨粒工業年代。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.644082
+    },
+    {
+      "a": "R33006",
+      "b": "X5012",
+      "decision": "distinct",
+      "reason": "鐵膽墨損傷不是墨跡年代判別。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.618059
+    },
+    {
+      "a": "R33006",
+      "b": "D2256",
+      "decision": "distinct",
+      "reason": "回收紙膠的黏性與變形通篩，和墨中含鈦顏料的年代辨識無關。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.572925
+    },
+    {
+      "a": "R33006",
+      "b": "R33002",
+      "decision": "distinct",
+      "reason": "地圖藉晶型/粒子形態與工業顏料實物作年代約束，重寫本以殘留鐵分布找文字幾何。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.56644
+    },
+    {
+      "a": "R33007",
+      "b": "R28003",
+      "decision": "distinct",
+      "reason": "針孔粉點證明轉稿，非以同頁底色建立磨用基準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.551708
+    },
+    {
+      "a": "R33007",
+      "b": "I3025",
+      "decision": "distinct",
+      "reason": "索引頁搜尋是資料結構的鍵值範圍，與古書被手碰無涉。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.549907
+    },
+    {
+      "a": "R33007",
+      "b": "M2033",
+      "decision": "distinct",
+      "reason": "盒鬚端點規則不排除皮紙天然深淺。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.542667
+    },
+    {
+      "a": "R33007",
+      "b": "M2021",
+      "decision": "distinct",
+      "reason": "四分位距的散布與表面相對接觸痕無關。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.540515
+    },
+    {
+      "a": "R33007",
+      "b": "R33001",
+      "decision": "distinct",
+      "reason": "三維展平並不測頁面使用程度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.536492
+    },
+    {
+      "a": "R33008",
+      "b": "R28004",
+      "decision": "distinct",
+      "reason": "古畫辨埃及藍需銅和發光，牙石辨青金石成分後追到個人接觸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.551995
+    },
+    {
+      "a": "R33008",
+      "b": "R28005",
+      "decision": "distinct",
+      "reason": "顏料截面的褪色深度差與牙石粒子進入口腔的途徑不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.535098
+    },
+    {
+      "a": "R33008",
+      "b": "R28003",
+      "decision": "distinct",
+      "reason": "草圖粉點的對位不是牙石中累積的個人礦物接觸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.499305
+    },
+    {
+      "a": "R33008",
+      "b": "R29005",
+      "decision": "distinct",
+      "reason": "陶器吸收乳脂的器物用途與女性牙石的顏料接觸不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.489124
+    },
+    {
+      "a": "R33008",
+      "b": "R33006",
+      "decision": "distinct",
+      "reason": "墨中工業粒子可給年代界線，牙石的青金石不能指定書寫人或作品。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.470524
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R33001",
+        "b": "R33006",
+        "reason": "分開皮紙年代與墨料年代，不展開密封信。"
+      },
+      {
+        "a": "R33001",
+        "b": "R28003",
+        "reason": "根據粉點找轉稿位置，不重建折層。"
+      },
+      {
+        "a": "R33001",
+        "b": "X5012",
+        "reason": "墨破壞紙纖維，未追蹤三維紙層。"
+      },
+      {
+        "a": "R33001",
+        "b": "Q9004",
+        "reason": "靠筆壓打破膠囊顯色，不是分離重疊的舊墨。"
+      },
+      {
+        "a": "R33001",
+        "b": "Q9002",
+        "reason": "側向散光改表觀灰階，不是把各面墨點展平。"
+      },
+      {
+        "a": "R33002",
+        "b": "X5012",
+        "reason": "含鐵墨使纖維斷裂與殘墨螢光畫線不同。"
+      },
+      {
+        "a": "R33002",
+        "b": "X5018",
+        "reason": "熱歷史改顯色劑結合，非在覆畫下尋找墨。"
+      },
+      {
+        "a": "R33002",
+        "b": "X5017",
+        "reason": "感熱層顯色，並非從既有殘痕激發鐵螢光。"
+      },
+      {
+        "a": "R33002",
+        "b": "Q9002",
+        "reason": "點增大是光在紙中的傳遞，非元素選擇影像。"
+      },
+      {
+        "a": "R33002",
+        "b": "R33001",
+        "reason": "殘鐵元素圖穿過遮畫找文字；另案須先找出折在三維的紙層並展平。"
+      },
+      {
+        "a": "R33003",
+        "b": "R33004",
+        "reason": "用DNA排除兩片同張皮與從橡皮擦屑鑑別超薄皮紙來源不同。"
+      },
+      {
+        "a": "R33003",
+        "b": "B2113",
+        "reason": "海綿用鉤絲捕食，不涉及膠原肽質譜。"
+      },
+      {
+        "a": "R33003",
+        "b": "D2256",
+        "reason": "黏粒變形穿篩，沒有皮種鑑別。"
+      },
+      {
+        "a": "R33003",
+        "b": "D2184",
+        "reason": "接頭厚度影響強度，不涉及質譜參照。"
+      },
+      {
+        "a": "R33003",
+        "b": "D2084",
+        "reason": "膠帶黏著劑老化，不是擦屑取膠原指紋。"
+      },
+      {
+        "a": "R33004",
+        "b": "L057",
+        "reason": "互補鹼基模板不判殘皮物種是否相容。"
+      },
+      {
+        "a": "R33004",
+        "b": "L044",
+        "reason": "細胞分裂與DNA複製輪數不能排除殘片接合。"
+      },
+      {
+        "a": "R33004",
+        "b": "L054",
+        "reason": "新舊DNA鏈如何分配沒有皮張歸屬問題。"
+      },
+      {
+        "a": "R33004",
+        "b": "V3018",
+        "reason": "複製機器的起點不等於辨識古DNA的物種。"
+      },
+      {
+        "a": "R33004",
+        "b": "V3024",
+        "reason": "連接酶封閉骨架，不是對兩塊皮張作關聯推論。"
+      },
+      {
+        "a": "R33005",
+        "b": "H3038",
+        "reason": "電池極板的氧化數不是墨料分布判準。"
+      },
+      {
+        "a": "R33005",
+        "b": "N013",
+        "reason": "行星反射和紅塵不能檢驗墨中鉛化合物功能。"
+      },
+      {
+        "a": "R33005",
+        "b": "R33006",
+        "reason": "顏料晶型作年代線索，另一題看鉛在紅黑墨中分布與是否著色。"
+      },
+      {
+        "a": "R33005",
+        "b": "P285",
+        "reason": "鏽色不唯一是一般物種鑑定界線，原題用顆粒和化合物空間分布判添加用途。"
+      },
+      {
+        "a": "R33005",
+        "b": "N083",
+        "reason": "泉色有多種來源，不含鉛化合物的乾燥假說。"
+      },
+      {
+        "a": "R33006",
+        "b": "R28003",
+        "reason": "粉點與草圖對準可推施工轉移，未提供墨粒工業年代。"
+      },
+      {
+        "a": "R33006",
+        "b": "X5012",
+        "reason": "鐵膽墨損傷不是墨跡年代判別。"
+      },
+      {
+        "a": "R33006",
+        "b": "D2256",
+        "reason": "回收紙膠的黏性與變形通篩，和墨中含鈦顏料的年代辨識無關。"
+      },
+      {
+        "a": "R33006",
+        "b": "R33002",
+        "reason": "地圖藉晶型/粒子形態與工業顏料實物作年代約束，重寫本以殘留鐵分布找文字幾何。"
+      },
+      {
+        "a": "R33007",
+        "b": "R28003",
+        "reason": "針孔粉點證明轉稿，非以同頁底色建立磨用基準。"
+      },
+      {
+        "a": "R33007",
+        "b": "I3025",
+        "reason": "索引頁搜尋是資料結構的鍵值範圍，與古書被手碰無涉。"
+      },
+      {
+        "a": "R33007",
+        "b": "M2033",
+        "reason": "盒鬚端點規則不排除皮紙天然深淺。"
+      },
+      {
+        "a": "R33007",
+        "b": "M2021",
+        "reason": "四分位距的散布與表面相對接觸痕無關。"
+      },
+      {
+        "a": "R33007",
+        "b": "R33001",
+        "reason": "三維展平並不測頁面使用程度。"
+      },
+      {
+        "a": "R33008",
+        "b": "R28004",
+        "reason": "古畫辨埃及藍需銅和發光，牙石辨青金石成分後追到個人接觸。"
+      },
+      {
+        "a": "R33008",
+        "b": "R28005",
+        "reason": "顏料截面的褪色深度差與牙石粒子進入口腔的途徑不同。"
+      },
+      {
+        "a": "R33008",
+        "b": "R28003",
+        "reason": "草圖粉點的對位不是牙石中累積的個人礦物接觸。"
+      },
+      {
+        "a": "R33008",
+        "b": "R29005",
+        "reason": "陶器吸收乳脂的器物用途與女性牙石的顏料接觸不同。"
+      },
+      {
+        "a": "R33008",
+        "b": "R33006",
+        "reason": "墨中工業粒子可給年代界線，牙石的青金石不能指定書寫人或作品。"
+      },
+      {
+        "a": "R33001",
+        "b": "R28002",
+        "reason": "固定繃架留下經緯偏轉，用來找布邊，與找出墨點位於哪一紙層不同。"
+      },
+      {
+        "a": "R33002",
+        "b": "R28004",
+        "reason": "埃及藍靠近紅外發光和銅辨料，阿基米德案利用殘墨空間分布辨文字。"
+      },
+      {
+        "a": "R33003",
+        "b": "R29006",
+        "reason": "比對擦屑中的膠原肽段判皮種，牙結石的乳蛋白陽性連回個人飲食，樣本形成與替代解釋均不同。"
+      },
+      {
+        "a": "R33004",
+        "b": "R28001",
+        "reason": "畫布疏密順序吻合是正向同匹線索，古DNA為異種排除同張皮。"
+      },
+      {
+        "a": "R33005",
+        "b": "R28004",
+        "reason": "一案排查呈色來源，一案問已知元素是否以助乾成分存在，須看分布與化合物。"
+      },
+      {
+        "a": "R33005",
+        "b": "R33002",
+        "reason": "殘墨的空間輪廓讀字與添加物可能功能不共用同一結果。"
+      },
+      {
+        "a": "R33006",
+        "b": "R31001",
+        "reason": "樹輪對應已知碳峰求砍伐年，不由支撐材料年代判另加墨料。"
+      },
+      {
+        "a": "R33007",
+        "b": "X5023",
+        "reason": "介質粉化改外觀，並無同頁底色校準及篇章磨用分布。"
+      },
+      {
+        "a": "R33008",
+        "b": "R29006",
+        "reason": "牙石內乳清蛋白與無機礦粒的證據、參照及可識別的行為不同。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R33-NA001",
+      "decision": "agree_not_added",
+      "reason": "卷軸與封信共用同面分割、取墨、展平，僅換載體不另計。",
+      "existing_ids": [
+        "R33001"
+      ]
+    },
+    {
+      "id": "R33-NA002",
+      "decision": "agree_not_added",
+      "reason": "多種折法繼續沿用同一還原流程。",
+      "existing_ids": [
+        "R33001"
+      ]
+    },
+    {
+      "id": "R33-NA003",
+      "decision": "agree_not_added",
+      "reason": "覆畫下測到鐵不證作者。",
+      "existing_ids": [
+        "R33002"
+      ]
+    },
+    {
+      "id": "R33-NA004",
+      "decision": "agree_not_added",
+      "reason": "紙沿墨線裂開是舊核X5012。",
+      "existing_ids": [
+        "X5012"
+      ]
+    },
+    {
+      "id": "R33-NA005",
+      "decision": "agree_not_added",
+      "reason": "換不同動物作同一測試不必拆。",
+      "existing_ids": [
+        "R33003"
+      ]
+    },
+    {
+      "id": "R33-NA006",
+      "decision": "agree_not_added",
+      "reason": "物種訊號不是胎齡指標。",
+      "existing_ids": [
+        "R33003"
+      ]
+    },
+    {
+      "id": "R33-NA007",
+      "decision": "agree_not_added",
+      "reason": "同種仍可能不同個體或皮張。",
+      "existing_ids": [
+        "R33004"
+      ]
+    },
+    {
+      "id": "R33-NA008",
+      "decision": "agree_not_added",
+      "reason": "承寫材料無法還原缺字。",
+      "existing_ids": [
+        "R33004"
+      ]
+    },
+    {
+      "id": "R33-NA009",
+      "decision": "agree_not_added",
+      "reason": "單一元素不足判成鉛丹。",
+      "existing_ids": [
+        "R33005"
+      ]
+    },
+    {
+      "id": "R33-NA010",
+      "decision": "agree_not_added",
+      "reason": "沒有乾燥時間的現場實驗。",
+      "existing_ids": [
+        "R33005"
+      ]
+    },
+    {
+      "id": "R33-NA011",
+      "decision": "agree_not_added",
+      "reason": "鈦可天然出現，文蘭圖有額外晶型/形態與分布比較。",
+      "existing_ids": [
+        "R33006"
+      ]
+    },
+    {
+      "id": "R33-NA012",
+      "decision": "agree_not_added",
+      "reason": "背面改字不能識別某位造假者。",
+      "existing_ids": [
+        "R33006"
+      ]
+    },
+    {
+      "id": "R33-NA013",
+      "decision": "agree_not_added",
+      "reason": "暗度可能飽和，且無累計次數校準。",
+      "existing_ids": [
+        "R33007"
+      ]
+    },
+    {
+      "id": "R33-NA014",
+      "decision": "agree_not_added",
+      "reason": "將同樣基準改套另一篇章仍同核。",
+      "existing_ids": [
+        "R33007"
+      ]
+    },
+    {
+      "id": "R33-NA015",
+      "decision": "agree_not_added",
+      "reason": "牙石乳蛋白及個體飲食舊題確有涵蓋。",
+      "existing_ids": [
+        "R29006"
+      ]
+    },
+    {
+      "id": "R33-NA016",
+      "decision": "agree_not_added",
+      "reason": "接觸顏料不能鎖定某本作品。",
+      "existing_ids": [
+        "R33008"
+      ]
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W33R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 100,
+      "core_totals": {
+        "R33001": 56,
+        "R33002": 44
+      },
+      "chapter_seconds": [
+        56,
+        44
+      ],
+      "core_caps": {
+        "R33001": 100,
+        "R33002": 85
+      },
+      "maximum_beat_seconds": 26,
+      "drop_if_read": "若兩種掃描在畫面上都只剩一個發光按鈕，就拆段。信件需看見摺層，抄本需看見元素分布。",
+      "editorial_result": "封信與重寫本兩類不可見文字有不同障礙：摺層互蓋與覆畫遮住。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W33R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 86,
+      "core_totals": {
+        "R33003": 43,
+        "R33004": 43
+      },
+      "chapter_seconds": [
+        43,
+        43
+      ],
+      "core_caps": {
+        "R33003": 90,
+        "R33004": 85
+      },
+      "maximum_beat_seconds": 24,
+      "drop_if_read": "若觀眾把質譜和DNA當同一次測試，兩個物件、兩種方法必須分框；不列出全部動物名單。",
+      "editorial_result": "先用種別檢驗厚薄的觀念，再換研究以異種排除直接拼接；不默認一卷都是一頭動物。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W33R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 88,
+      "core_totals": {
+        "R33005": 43,
+        "R33006": 45
+      },
+      "chapter_seconds": [
+        43,
+        45
+      ],
+      "core_caps": {
+        "R33005": 90,
+        "R33006": 105
+      },
+      "maximum_beat_seconds": 25,
+      "drop_if_read": "若一口氣念出多個化學名，先剪名稱與無關配方，只留顏色、筆畫和年代對照。",
+      "editorial_result": "紅黑墨的屬性角色與地圖畫線年代需不同參照條件。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W33R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 57,
+      "core_totals": {
+        "R33007": 57
+      },
+      "chapter_seconds": [
+        34,
+        23
+      ],
+      "core_caps": {
+        "R33007": 90
+      },
+      "maximum_beat_seconds": 23,
+      "drop_if_read": "不增加冗長篇章導讀；拿掉重複測量的鏡頭，留下同頁對照與整本分布。",
+      "editorial_result": "用同頁底色校準後的數值、海牙手稿的篇章高低直接收尾。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W33R-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 63,
+      "core_totals": {
+        "R33008": 63
+      },
+      "chapter_seconds": [
+        42,
+        21
+      ],
+      "core_caps": {
+        "R33008": 95
+      },
+      "maximum_beat_seconds": 26,
+      "drop_if_read": "若故事需要杜撰一本她完成的手稿才好看，撤掉重建場景，用兩條可檢驗的接觸路徑結束。",
+      "editorial_result": "將可測量的礦物和推測的進入口腔途徑畫成不同線型後即收。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave33-manuscript.json",
+      "sha256": "d71dda5fe97b6b4bd10c1dc602911467c89bcf24a1cb4afbd72723f6c764a5dd"
+    },
+    {
+      "file": "reviews/wave33-manuscript-themes.json",
+      "sha256": "3b7b9818a5718a9e3e30545237f00d379ee8b599e20b60dff63f18a156002a0d"
+    },
+    {
+      "file": "reviews/wave33-manuscript-author.json",
+      "sha256": "0ab1a4a573c6fbcc8a07490a2f9ca7b6209d81c0c8845c6da92664d1830d17d0"
+    }
+  ],
+  "corrections": [
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "R33006及對應地圖章以中性名詞稱材料，依Yale書目避免未鑑定物種。"
+    },
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "T01改明寫封著的信紙，T05題名避免假定青金石只用於抄本。"
+    },
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "海牙案例實指篇章的相對磨用；T04與T05刪獨立重述，校準與接觸途徑保留。"
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "0a3bdafc56a05b45063f12ba851bb0cfb603bff6404509c3fd50937d4c437f76",
+    "neighbours": {
+      "file": ".cache/wave33-manuscript-neighbours-common-initial.json",
+      "sha256": "cfd341e76ad49381b6a8fc6cf5312112fda864b3a1b31f824aedf1208b6069a7"
+    },
+    "candidate_rows": 8,
+    "directed_pairs": 40
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "03b315322cc37ecaefa068f93f4f48270a0a40fab3fdf663fd1cbd0bd63ddd9b",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "03b315322cc37ecaefa068f93f4f48270a0a40fab3fdf663fd1cbd0bd63ddd9b"
+    },
+    "neighbours": {
+      "file": ".cache/wave33-manuscript-neighbours.json",
+      "sha256": "48e950d40b275dc378a4de5e0f32bbe9bd7cb399af1e667aa451b1449a03613a"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave33-draft.json",
+      "sha256": "2d7d23f28a2f1a39b5ab0f2f6f4a3a614e7f164e671b6ed4f2984e088b666652"
+    },
+    "candidate_rows_checked": 8,
+    "directed_pairs_checked": 40,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "direct_comparison_against_common_initial": true,
+    "changed_rows": [
+      {
+        "id": "R33001",
+        "new_neighbours": [],
+        "removed_neighbours": []
+      },
+      {
+        "id": "R33002",
+        "new_neighbours": [
+          "R33001"
+        ],
+        "removed_neighbours": [
+          "R33006"
+        ]
+      },
+      {
+        "id": "R33005",
+        "new_neighbours": [],
+        "removed_neighbours": []
+      },
+      {
+        "id": "R33006",
+        "new_neighbours": [
+          "D2256",
+          "R33002"
+        ],
+        "removed_neighbours": [
+          "D2136",
+          "D2138"
+        ]
+      },
+      {
+        "id": "R33007",
+        "new_neighbours": [],
+        "removed_neighbours": []
+      },
+      {
+        "id": "R33008",
+        "new_neighbours": [],
+        "removed_neighbours": []
+      }
+    ]
+  },
+  "remaining_blockers": [],
+  "limits": "題級證據與紙上分章覆核，未試讀、重現X光分析或製作媒體。"
+}

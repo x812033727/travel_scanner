@@ -1,0 +1,1912 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R36001",
+    "R36002",
+    "R36003",
+    "R36004",
+    "R36005",
+    "R36006",
+    "R36007",
+    "R36008",
+    "R36009",
+    "R36010"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave36-space.json",
+      "sha256": "1bc06c93714b84495345997e90e2a62b2382872d37af0fb8f81cd53e0801f378"
+    },
+    {
+      "file": "reviews/wave36-space-themes.json",
+      "sha256": "0308359d81b9d21352ba59b02f2d953992c744f12aed67aa4bb1f9caf5e00d08"
+    },
+    {
+      "file": "reviews/wave36-space-author.json",
+      "sha256": "6316c1cec7072a2e320ea6fc3af98a0d3351d00d67754bb3e06c650d9bca0170"
+    }
+  ],
+  "baseline": {
+    "raw": 3543,
+    "selected": 3166,
+    "not_added": 1485,
+    "themes": 340,
+    "head": "78a5f11d24720f7ee493b306a0f93d918d685f55"
+  },
+  "role_and_scope": "獨立主題層級覆核。真實接觸／近地成像、遙測、受約束重建與推論分開；不擴展到任務決策指引。",
+  "candidate_review": [
+    {
+      "id": "R36001",
+      "canonical_id": "R36001",
+      "decision": "retain",
+      "reason": "切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S001"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36002",
+      "canonical_id": "R36002",
+      "decision": "retain",
+      "reason": "用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S002"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36003",
+      "canonical_id": "R36003",
+      "decision": "retain",
+      "reason": "用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S003"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36004",
+      "canonical_id": "R36004",
+      "decision": "retain",
+      "reason": "二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S004"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36005",
+      "canonical_id": "R36005",
+      "decision": "retain",
+      "reason": "把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S005"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36006",
+      "canonical_id": "R36006",
+      "decision": "retain",
+      "reason": "由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S006"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36007",
+      "canonical_id": "R36007",
+      "decision": "retain",
+      "reason": "用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S007"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36008",
+      "canonical_id": "R36008",
+      "decision": "retain",
+      "reason": "故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S008"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36009",
+      "canonical_id": "R36009",
+      "decision": "retain",
+      "reason": "扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S009"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    },
+    {
+      "id": "R36010",
+      "canonical_id": "R36010",
+      "decision": "retain",
+      "reason": "反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R36-S010"
+      ],
+      "editorial_seconds": [
+        26,
+        88
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R36-S001",
+      "title": "Near-zero cohesion and loose packing of Bennu’s near subsurface revealed by spacecraft contact",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "原刊XML P006–008、P017–025、030/039，氣閥觸發、壓力採樣與加速度顯變有別；Fig2採0.605–0.705秒終點及入土5.95–6.91 cm。P024為鬆散床模型。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "XML P008–026、030及圖2：氮氣影響力訊號前的加速度、取樣頭入土深度和顆粒床模型。",
+      "cache": {
+        "file": ".cache/wave36-space-touch.xml",
+        "sha256": "2816437a9d96aa52f5c94c6cc77d4d8b15f97b81c682c2281286b51491e4cffc",
+        "text_file": ".cache/wave36-space-touch.txt",
+        "text_sha256": "0f77eb2c0be23f5c1173b086c318bbe66158af8feec309b034d385a952b2eec0"
+      }
+    },
+    {
+      "source_id": "R36-S002",
+      "title": "The Philae lander reveals low-strength primitive ice inside cometary boulders",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "出版PDF pp1–3、Methods伸桿資料段；圖2所列TD2c壓入冰質裂隙，四次接觸在近兩分鐘內。伸桿、姿態與事後形貌交叉比對。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "原刊PDF第1–4頁圖1、2，Methods第6–7頁；比對地形、壓痕、磁力計伸桿運動與姿態時間序列。",
+      "cache": {
+        "file": ".cache/wave36-space-philaemirror.pdf",
+        "sha256": "370f8278200f82c2a5412b90ea9d363fe987d0c027d2ff1bf192225728f7b474",
+        "text_file": ".cache/wave36-space-philaemirror.txt",
+        "text_sha256": "d8895a0e75f02020d11d585795700b5085969e722b45bba427997ad483610afa"
+      }
+    },
+    {
+      "source_id": "R36-S003",
+      "title": "The pristine interior of comet 67P revealed by the combined Aswan outburst and cliff collapse",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "Kent稿主文裂縫、7月10日塵羽、7月15日首見新亮壁，主文立體重建與崖腳碎塊增加；稿p16、17圖1/2額外目讀，區分2014裂縫與2015多日成像。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "Kent 典藏原研究稿頁2–4，圖1–3及Methods前後地形：崖頂舊裂縫、7月10日塵羽、五天後的新崖緣與碎塊。",
+      "cache": {
+        "file": ".cache/wave36-space-cliffmirror.pdf",
+        "sha256": "233fbea8547b1417c0331301bbf0e8a895d8f639631ccd01d796a4e0a7e8e622",
+        "text_file": ".cache/wave36-space-cliffmirror.txt",
+        "text_sha256": "77b9922b41dfba28e09144f18eb9fa172dd1c5d9ad9c6021d2af8920f5b7b94d"
+      }
+    },
+    {
+      "source_id": "R36-S004",
+      "title": "Initial Orbit Determination and Event Reconstruction From Estimation of Particle Trajectories About (101955) Bennu",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "原刊XML P021–031、P049，單粒兩時相為四方位約束六未知；共同源與表面形狀降低自由度。兩粒兩時相的被排除事件與三粒的條件不能混。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "XML P010–016、025–031、045–056：星像／顆粒關聯、兩次觀測的不足、表面共同起點及事件取捨。",
+      "cache": {
+        "file": ".cache/wave36-space-orbit.xml",
+        "sha256": "ff7d1a01f487b5f61386d6101c7f73ef7266989157c53af1576cc4dcefc6643b",
+        "text_file": ".cache/wave36-space-orbit.txt",
+        "text_sha256": "ddd84ea97e11dd1853641ef68904ddd1477e9489a35fc083b265f56a84e8b379"
+      }
+    },
+    {
+      "source_id": "R36-S005",
+      "title": "An artificial impact on the asteroid (162173) Ryugu formed a crater in the gravity-dominated regime",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "作者稿 pp2–4，M.B.約移3米而S.B.幾乎未動；p8–10 Figs1–3圖說，另看p9 DEM，分開坑緣與坑底尺寸。阻擋基岩以推論處理。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "Liverpool作者稿PDF第2–4頁、第8–10頁圖1–3：撞擊前後地形差、M.B.位移及S.B.附近坑緣。",
+      "cache": {
+        "file": ".cache/wave36-space-crateralt.pdf",
+        "sha256": "450fe7826374503b7dac22ad782c916113cc3f7b2170294c73bc912330dd505b",
+        "text_file": ".cache/wave36-space-crateralt.txt",
+        "text_sha256": "eaf4a3a1acb9c1bc8b1cbab4654f17ffc70849b0e47b51135823b6685db17e18"
+      }
+    },
+    {
+      "source_id": "R36-S006",
+      "title": "In situ evidence of thermally induced rock breakdown widespread on Bennu’s surface",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "出版PDF巨石形貌Results與Modeling exfoliation，pp3–6 Figs1、4及文字。法向拉應力與沿表面裂紋，是岩體尺度的預測；無同一裂片多年過程照片。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "原刊PDF頁2–6，圖1、3、4；剝片與母岩表面方向、不同尺度的溫度及應力模型。",
+      "cache": {
+        "file": ".cache/wave36-space-crack.pdf",
+        "sha256": "654a1d55cbe38a69f8129cadb47fe86f7936730b9e4f8f32282da5f18f88e561",
+        "text_file": ".cache/wave36-space-crack.txt",
+        "text_sha256": "0eb759659de2cc3cafc562ee5c00416083b9fdf0544dfd2f50915b7256c13eca"
+      }
+    },
+    {
+      "source_id": "R36-S007",
+      "title": "Highly porous nature of a primitive asteroid revealed by thermal imaging",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "JAXA研究團隊當時成果簡報pp8–14 Fig1–4，全球主地形仍可辨、熱慣性擬合及近距冷點剖面；冷點是局部例外。未逐頁覆核Nature正式論文全文。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "研究團隊JAXA原始成果簡報第8–14頁，圖2–4：不同地方時、巨石與周邊溫度對比、近距冷點；並核原作者論文摘要。",
+      "cache": {
+        "file": ".cache/wave36-space-thermal2alt.pdf",
+        "sha256": "237606ca26cad291edbd0873d82fb9bbd3ad65a02861bae628bc602c7eb21f3e",
+        "text_file": ".cache/wave36-space-thermal2alt.txt",
+        "text_sha256": "255a61edb40b67b70401972669d97b85333c346becaeb70b92d6741b6f521490"
+      }
+    },
+    {
+      "source_id": "R36-S008",
+      "title": "Successful kinetic impact into an asteroid for planetary defence",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "原刊PDF pp1–2 DRACO與SMART Nav、p2 Fig1四里程點；二體動力學與相機解析度限制，73分鐘發現與50分鐘轉向不同。末幅傳回畫面非完整。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "原刊PDF第1–2頁及圖1四個航程節點；DRACO影像、首次辨認小目標與開始朝小目標修正的區別。",
+      "cache": {
+        "file": ".cache/wave36-space-target.pdf",
+        "sha256": "70076581e558d8f478658ea69efdc815565b0d416adbdd41831b33592fbfd853",
+        "text_file": ".cache/wave36-space-target.txt",
+        "text_sha256": "192c46d6aa8ccf867665569873e4dff0230cbe7cd0d77bfc49c8b602d7a91796"
+      }
+    },
+    {
+      "source_id": "R36-S009",
+      "title": "Orbital period change of Dimorphos due to the DART kinetic impact",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "原刊XML P006–020、圖1–4圖說，Didymos自轉成分、互掩時刻與雷達相對位置；兩個方法共享光度資料，分別擬合得到一致的撞後週期。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "XML P006–021、031–046；光變的自轉成分、互掩互食時點、雷達時延都卜勒圖及兩種解算。",
+      "cache": {
+        "file": ".cache/wave36-space-period.xml",
+        "sha256": "6b6421f9f55e6724082ac5c3986c48f025c944e16968ddf2be1bf543e6987a3e",
+        "text_file": ".cache/wave36-space-period.txt",
+        "text_sha256": "c6a5dbb89474fb8b4b4382439a0e93b06655d5728449d4e049d7a53e7e7e6fa3"
+      }
+    },
+    {
+      "source_id": "R36-S010",
+      "title": "Momentum transfer from the DART mission kinetic impact on asteroid Dimorphos",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "作者稿 pp2–5動量方程及採用密度範圍，p12 Fig3密度與β關係。2.2–4.9是隨密度所得均值的範圍；含各密度誤差的全範圍另較寬。",
+      "read_via": "驗作者快取原件及抽文SHA，獨立讀列出段落/圖說；非本審閱者重新HTTP下載。",
+      "locator": "作者稿PDF第2–5、9–12頁，撞擊幾何、軌道速度變化、噴出物反衝及密度假設。",
+      "cache": {
+        "file": ".cache/wave36-space-kick.pdf",
+        "sha256": "0eeaf71d1cf37663ff0586759fb7c8d012f387512e2b7cac2485f8165c96c594",
+        "text_file": ".cache/wave36-space-kick.txt",
+        "text_sha256": "01ac01299e1a4d42fa8750bde36d7940892b8907c861e910db915a856ea63069"
+      }
+    }
+  ],
+  "source_identity_review": "10篇研究。R8–10同一DART撞擊的不同分析，不是三場獨立撞擊；論文、作者稿、研究團隊簡報載體不另增證據。",
+  "source_reading_summary": "核10組快取原件/抽文指定內容，其中9組為論文正文或作者原稿；龍宮熱圖核團隊簡報。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave36-space-panels.jpg",
+      "sha256": "decdfda44c872f30b9f0efd5b8945018307cd3adcb8d2de741c61cea7529ced8",
+      "read_scope": "目讀觸地Fig2、菲萊Fig2、R6岩面裂片照、熱圖模型比對、DART導航Fig1、雷達Fig2。此拼圖的Aswan及kick樣頁是文字，不據以聲稱目讀其照片。"
+    },
+    {
+      "file": ".cache/wave36-physics-peer-extra.jpg",
+      "sha256": "4b5a8d750044474e919b3380c41d973f8a60527256b43060df7b8b378a864440",
+      "read_scope": "獨立從核SHA原PDF渲染：Aswan稿圖1/2、龍宮坑Fig2地形、貝努Fig4應力模式、JAXA Fig4冷點、倍增Fig3密度關係。"
+    }
+  ],
+  "source_fetch_limits": "本次審閱使用凍結原件，未另做新HTTP或補充影片核查；未重算全任務導航及軌道。",
+  "author_near_pair_review": [
+    {
+      "a": "R36001",
+      "b": "P019",
+      "decision": "distinct",
+      "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理相同初末動量使總衝量相同，峰值可異。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36001",
+      "b": "R34001",
+      "decision": "distinct",
+      "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理活鳥趾路徑與腳下顆粒在不同深度保留的印痕。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36001",
+      "b": "R36002",
+      "decision": "distinct",
+      "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36002",
+      "b": "R34007",
+      "decision": "distinct",
+      "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理依翼龍全串足印的落肢次序解讀降落。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36003",
+      "b": "N047",
+      "decision": "distinct",
+      "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理受熱升華把塵埃帶成彗髮。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36003",
+      "b": "N051",
+      "decision": "distinct",
+      "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理主動撞開彗核露出內部供光譜量測。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36003",
+      "b": "R36004",
+      "decision": "distinct",
+      "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36004",
+      "b": "R008",
+      "decision": "distinct",
+      "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理工程遙測與科學資料的用途。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36005",
+      "b": "E11015",
+      "decision": "distinct",
+      "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理高速撞擊拋出通常讓坑形與撞體輪廓不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36005",
+      "b": "E11016",
+      "decision": "distinct",
+      "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理較大空穴的重力調整與中央隆起。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36006",
+      "b": "R36007",
+      "decision": "distinct",
+      "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36006",
+      "b": "N005",
+      "decision": "distinct",
+      "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理撞擊拋出物亮紋隨太空風化變暗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36007",
+      "b": "O3053",
+      "decision": "distinct",
+      "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理紅外放射率不同會影響同一溫度的亮度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36008",
+      "b": "R008",
+      "decision": "distinct",
+      "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理工程遙測與科學資料的用途。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36009",
+      "b": "X13003",
+      "decision": "distinct",
+      "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理近等深的兩次食造成半週期歧義，需拆奇偶比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36009",
+      "b": "R36010",
+      "decision": "distinct",
+      "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36010",
+      "b": "P020",
+      "decision": "distinct",
+      "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理反彈與停止之間的帶號速度改變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R36010",
+      "b": "P174",
+      "decision": "distinct",
+      "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理支承質量很大仍可帶走反衝動量。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R36001",
+      "b": "R34002",
+      "decision": "distinct",
+      "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理潮濕沉積中雷達反射差定位象印，其振幅不等於壓力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.684847
+    },
+    {
+      "a": "R36001",
+      "b": "N169",
+      "decision": "distinct",
+      "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理凝結可見漏斗並非實際接地風場邊緣。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.665784
+    },
+    {
+      "a": "R36001",
+      "b": "P21003",
+      "decision": "distinct",
+      "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理遠處剪切改變近靜止顆粒區的屈服反應，使玻璃珠槽內探針在特定亞臨界力下爬動。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.64282
+    },
+    {
+      "a": "R36001",
+      "b": "P21004",
+      "decision": "distinct",
+      "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理薄片在水中自由旋轉的瞬間抬升。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.637901
+    },
+    {
+      "a": "R36001",
+      "b": "P305",
+      "decision": "distinct",
+      "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理分子碰撞在小尺度的隨機起伏造成布朗運動。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.628978
+    },
+    {
+      "a": "R36002",
+      "b": "O3088",
+      "decision": "distinct",
+      "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理用成對衛星光束估橫向坡、修正跨次高程偏差。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.749891
+    },
+    {
+      "a": "R36002",
+      "b": "R36005",
+      "decision": "distinct",
+      "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.693229
+    },
+    {
+      "a": "R36002",
+      "b": "R36004",
+      "decision": "distinct",
+      "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.658115
+    },
+    {
+      "a": "R36002",
+      "b": "R36003",
+      "decision": "distinct",
+      "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.657012
+    },
+    {
+      "a": "R36002",
+      "b": "E17006",
+      "decision": "distinct",
+      "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理風驅薄冰推動濕泥上的石塊及不同步的位移。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.640034
+    },
+    {
+      "a": "R36003",
+      "b": "R36005",
+      "decision": "distinct",
+      "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.717305
+    },
+    {
+      "a": "R36003",
+      "b": "N051",
+      "decision": "distinct",
+      "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理主動撞開彗核露出內部供光譜量測。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.701012
+    },
+    {
+      "a": "R36003",
+      "b": "N052",
+      "decision": "distinct",
+      "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理進地球大氣的顆粒能否存活至地面。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.692813
+    },
+    {
+      "a": "R36003",
+      "b": "P31001",
+      "decision": "distinct",
+      "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理以火星地面震波及大氣訊號到時、來向引導航照搜尋新撞痕。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.683888
+    },
+    {
+      "a": "R36003",
+      "b": "N048",
+      "decision": "distinct",
+      "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理太陽風和光壓使彗尾指向不同方向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.669793
+    },
+    {
+      "a": "R36004",
+      "b": "O3042",
+      "decision": "distinct",
+      "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理窄光譜帶分辨寬帶顏色相同的材料。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.664126
+    },
+    {
+      "a": "R36004",
+      "b": "R36002",
+      "decision": "distinct",
+      "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.658115
+    },
+    {
+      "a": "R36004",
+      "b": "R36005",
+      "decision": "distinct",
+      "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.654245
+    },
+    {
+      "a": "R36004",
+      "b": "M2077",
+      "decision": "distinct",
+      "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理兩視角對同一靜止地形提供視差高度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.647816
+    },
+    {
+      "a": "R36004",
+      "b": "R36009",
+      "decision": "distinct",
+      "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.641699
+    },
+    {
+      "a": "R36005",
+      "b": "E11015",
+      "decision": "distinct",
+      "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理高速撞擊拋出通常讓坑形與撞體輪廓不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.731221
+    },
+    {
+      "a": "R36005",
+      "b": "R36003",
+      "decision": "distinct",
+      "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.717305
+    },
+    {
+      "a": "R36005",
+      "b": "E11004",
+      "decision": "distinct",
+      "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理沙紋遷移留下的交錯層理。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.704798
+    },
+    {
+      "a": "R36005",
+      "b": "E11016",
+      "decision": "distinct",
+      "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理較大空穴的重力調整與中央隆起。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.696923
+    },
+    {
+      "a": "R36005",
+      "b": "R36002",
+      "decision": "distinct",
+      "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.693229
+    },
+    {
+      "a": "R36006",
+      "b": "E17002",
+      "decision": "distinct",
+      "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理冰河上的石塊大小改變局部熱收支及冰面融速。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.821926
+    },
+    {
+      "a": "R36006",
+      "b": "N233",
+      "decision": "distinct",
+      "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理反覆冷熱造成不同礦物相對形變而使岩石開裂。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.797824
+    },
+    {
+      "a": "R36006",
+      "b": "R36007",
+      "decision": "distinct",
+      "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.778375
+    },
+    {
+      "a": "R36006",
+      "b": "E7013",
+      "decision": "distinct",
+      "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理減壓或加水改變岩石開始熔融的條件。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.756284
+    },
+    {
+      "a": "R36006",
+      "b": "N131",
+      "decision": "distinct",
+      "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理地下接觸熱使岩石礦物重組。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.743969
+    },
+    {
+      "a": "R36007",
+      "b": "R36006",
+      "decision": "distinct",
+      "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.778375
+    },
+    {
+      "a": "R36007",
+      "b": "E17002",
+      "decision": "distinct",
+      "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理冰河上的石塊大小改變局部熱收支及冰面融速。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.739298
+    },
+    {
+      "a": "R36007",
+      "b": "E7013",
+      "decision": "distinct",
+      "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理減壓或加水改變岩石開始熔融的條件。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.713651
+    },
+    {
+      "a": "R36007",
+      "b": "N131",
+      "decision": "distinct",
+      "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理地下接觸熱使岩石礦物重組。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.708375
+    },
+    {
+      "a": "R36007",
+      "b": "N138",
+      "decision": "distinct",
+      "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理火山碎屑與熱氣的高密度混合物流下坡。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.662275
+    },
+    {
+      "a": "R36008",
+      "b": "R36009",
+      "decision": "distinct",
+      "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.765214
+    },
+    {
+      "a": "R36008",
+      "b": "X2047",
+      "decision": "distinct",
+      "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理以已知觀測位置間距和視差測星距。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.699168
+    },
+    {
+      "a": "R36008",
+      "b": "N072",
+      "decision": "distinct",
+      "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理週期遮光與過境幾何以偵測系外行星。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.661448
+    },
+    {
+      "a": "R36008",
+      "b": "X2050",
+      "decision": "distinct",
+      "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理光譜徑向速度補天空投影速度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.655621
+    },
+    {
+      "a": "R36008",
+      "b": "X13004",
+      "decision": "distinct",
+      "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理用進出時間辨過境速度與擦邊幾何退化。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.650589
+    },
+    {
+      "a": "R36009",
+      "b": "R36008",
+      "decision": "distinct",
+      "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.765214
+    },
+    {
+      "a": "R36009",
+      "b": "X13004",
+      "decision": "distinct",
+      "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理用進出時間辨過境速度與擦邊幾何退化。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.751608
+    },
+    {
+      "a": "R36009",
+      "b": "X13010",
+      "decision": "distinct",
+      "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理相位曲線反演經度粗亮度分布。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.709221
+    },
+    {
+      "a": "R36009",
+      "b": "LEG-S43",
+      "decision": "distinct",
+      "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理大氣擾動和星體角大小造成閃爍差。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.683999
+    },
+    {
+      "a": "R36009",
+      "b": "X2058",
+      "decision": "distinct",
+      "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理引力透鏡的光行時差與質量模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.678849
+    },
+    {
+      "a": "R36010",
+      "b": "R36005",
+      "decision": "distinct",
+      "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.684314
+    },
+    {
+      "a": "R36010",
+      "b": "N055",
+      "decision": "distinct",
+      "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理大氣動壓超過材料強度導致碎裂。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.661968
+    },
+    {
+      "a": "R36010",
+      "b": "R36009",
+      "decision": "distinct",
+      "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.642393
+    },
+    {
+      "a": "R36010",
+      "b": "N160",
+      "decision": "distinct",
+      "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理冰雹的形狀與周圍氣流決定阻力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.632096
+    },
+    {
+      "a": "R36010",
+      "b": "R21004",
+      "decision": "distinct",
+      "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理參考方塊的相對位移驅動太空船微推力補償。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.631787
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R36001",
+        "b": "P019",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理相同初末動量使總衝量相同，峰值可異。"
+      },
+      {
+        "a": "R36001",
+        "b": "R34001",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理活鳥趾路徑與腳下顆粒在不同深度保留的印痕。"
+      },
+      {
+        "a": "R36001",
+        "b": "R36002",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸。"
+      },
+      {
+        "a": "R36002",
+        "b": "R34007",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理依翼龍全串足印的落肢次序解讀降落。"
+      },
+      {
+        "a": "R36003",
+        "b": "N047",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理受熱升華把塵埃帶成彗髮。"
+      },
+      {
+        "a": "R36003",
+        "b": "N051",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理主動撞開彗核露出內部供光譜量測。"
+      },
+      {
+        "a": "R36003",
+        "b": "R36004",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束。"
+      },
+      {
+        "a": "R36004",
+        "b": "R008",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理工程遙測與科學資料的用途。"
+      },
+      {
+        "a": "R36005",
+        "b": "E11015",
+        "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理高速撞擊拋出通常讓坑形與撞體輪廓不同。"
+      },
+      {
+        "a": "R36005",
+        "b": "E11016",
+        "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理較大空穴的重力調整與中央隆起。"
+      },
+      {
+        "a": "R36006",
+        "b": "R36007",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋。"
+      },
+      {
+        "a": "R36006",
+        "b": "N005",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理撞擊拋出物亮紋隨太空風化變暗。"
+      },
+      {
+        "a": "R36007",
+        "b": "O3053",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理紅外放射率不同會影響同一溫度的亮度。"
+      },
+      {
+        "a": "R36008",
+        "b": "R008",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理工程遙測與科學資料的用途。"
+      },
+      {
+        "a": "R36009",
+        "b": "X13003",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理近等深的兩次食造成半週期歧義，需拆奇偶比較。"
+      },
+      {
+        "a": "R36009",
+        "b": "R36010",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率。"
+      },
+      {
+        "a": "R36010",
+        "b": "P020",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理反彈與停止之間的帶號速度改變。"
+      },
+      {
+        "a": "R36010",
+        "b": "P174",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理支承質量很大仍可帶走反衝動量。"
+      },
+      {
+        "a": "R36001",
+        "b": "R34002",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理潮濕沉積中雷達反射差定位象印，其振幅不等於壓力。"
+      },
+      {
+        "a": "R36001",
+        "b": "N169",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理凝結可見漏斗並非實際接地風場邊緣。"
+      },
+      {
+        "a": "R36001",
+        "b": "P21003",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理遠處剪切改變近靜止顆粒區的屈服反應，使玻璃珠槽內探針在特定亞臨界力下爬動。"
+      },
+      {
+        "a": "R36001",
+        "b": "P21004",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理薄片在水中自由旋轉的瞬間抬升。"
+      },
+      {
+        "a": "R36001",
+        "b": "P305",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理分子碰撞在小尺度的隨機起伏造成布朗運動。"
+      },
+      {
+        "a": "R36002",
+        "b": "O3088",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理用成對衛星光束估橫向坡、修正跨次高程偏差。"
+      },
+      {
+        "a": "R36002",
+        "b": "R36005",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。"
+      },
+      {
+        "a": "R36002",
+        "b": "R36004",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束。"
+      },
+      {
+        "a": "R36002",
+        "b": "R36003",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落。"
+      },
+      {
+        "a": "R36002",
+        "b": "E17006",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理風驅薄冰推動濕泥上的石塊及不同步的位移。"
+      },
+      {
+        "a": "R36003",
+        "b": "R36005",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。"
+      },
+      {
+        "a": "R36003",
+        "b": "N052",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理進地球大氣的顆粒能否存活至地面。"
+      },
+      {
+        "a": "R36003",
+        "b": "P31001",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理以火星地面震波及大氣訊號到時、來向引導航照搜尋新撞痕。"
+      },
+      {
+        "a": "R36003",
+        "b": "N048",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理太陽風和光壓使彗尾指向不同方向。"
+      },
+      {
+        "a": "R36004",
+        "b": "O3042",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理窄光譜帶分辨寬帶顏色相同的材料。"
+      },
+      {
+        "a": "R36004",
+        "b": "R36005",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。"
+      },
+      {
+        "a": "R36004",
+        "b": "M2077",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理兩視角對同一靜止地形提供視差高度。"
+      },
+      {
+        "a": "R36004",
+        "b": "R36009",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期。"
+      },
+      {
+        "a": "R36005",
+        "b": "E11004",
+        "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理沙紋遷移留下的交錯層理。"
+      },
+      {
+        "a": "R36006",
+        "b": "E17002",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理冰河上的石塊大小改變局部熱收支及冰面融速。"
+      },
+      {
+        "a": "R36006",
+        "b": "N233",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理反覆冷熱造成不同礦物相對形變而使岩石開裂。"
+      },
+      {
+        "a": "R36006",
+        "b": "E7013",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理減壓或加水改變岩石開始熔融的條件。"
+      },
+      {
+        "a": "R36006",
+        "b": "N131",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理地下接觸熱使岩石礦物重組。"
+      },
+      {
+        "a": "R36007",
+        "b": "E17002",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理冰河上的石塊大小改變局部熱收支及冰面融速。"
+      },
+      {
+        "a": "R36007",
+        "b": "E7013",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理減壓或加水改變岩石開始熔融的條件。"
+      },
+      {
+        "a": "R36007",
+        "b": "N131",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理地下接觸熱使岩石礦物重組。"
+      },
+      {
+        "a": "R36007",
+        "b": "N138",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理火山碎屑與熱氣的高密度混合物流下坡。"
+      },
+      {
+        "a": "R36008",
+        "b": "R36009",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期。"
+      },
+      {
+        "a": "R36008",
+        "b": "X2047",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理以已知觀測位置間距和視差測星距。"
+      },
+      {
+        "a": "R36008",
+        "b": "N072",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理週期遮光與過境幾何以偵測系外行星。"
+      },
+      {
+        "a": "R36008",
+        "b": "X2050",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理光譜徑向速度補天空投影速度。"
+      },
+      {
+        "a": "R36008",
+        "b": "X13004",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理用進出時間辨過境速度與擦邊幾何退化。"
+      },
+      {
+        "a": "R36009",
+        "b": "X13004",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理用進出時間辨過境速度與擦邊幾何退化。"
+      },
+      {
+        "a": "R36009",
+        "b": "X13010",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理相位曲線反演經度粗亮度分布。"
+      },
+      {
+        "a": "R36009",
+        "b": "LEG-S43",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理大氣擾動和星體角大小造成閃爍差。"
+      },
+      {
+        "a": "R36009",
+        "b": "X2058",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理引力透鏡的光行時差與質量模型。"
+      },
+      {
+        "a": "R36010",
+        "b": "R36005",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。"
+      },
+      {
+        "a": "R36010",
+        "b": "N055",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理大氣動壓超過材料強度導致碎裂。"
+      },
+      {
+        "a": "R36010",
+        "b": "N160",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理冰雹的形狀與周圍氣流決定阻力。"
+      },
+      {
+        "a": "R36010",
+        "b": "R21004",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理參考方塊的相對位移驅動太空船微推力補償。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R36-NA001",
+      "decision": "agree_not_added",
+      "reason": "一處淺層不外推整顆。",
+      "existing_ids": [
+        "R36001"
+      ]
+    },
+    {
+      "id": "R36-NA002",
+      "decision": "agree_not_added",
+      "reason": "剔除氣體力污染。",
+      "existing_ids": [
+        "R36001"
+      ]
+    },
+    {
+      "id": "R36-NA003",
+      "decision": "agree_not_added",
+      "reason": "強度推算限接觸位置。",
+      "existing_ids": [
+        "R36002"
+      ]
+    },
+    {
+      "id": "R36-NA004",
+      "decision": "agree_not_added",
+      "reason": "事後圖像不是碰撞實錄。",
+      "existing_ids": [
+        "R36002"
+      ]
+    },
+    {
+      "id": "R36-NA005",
+      "decision": "agree_not_added",
+      "reason": "單次崩塌不能概括其他噴塵。",
+      "existing_ids": [
+        "R36003"
+      ]
+    },
+    {
+      "id": "R36-NA006",
+      "decision": "agree_not_added",
+      "reason": "亮面是既有證據之一。",
+      "existing_ids": [
+        "R36003"
+      ]
+    },
+    {
+      "id": "R36-NA007",
+      "decision": "agree_not_added",
+      "reason": "少量視線不足作唯一定位。",
+      "existing_ids": [
+        "R36004"
+      ]
+    },
+    {
+      "id": "R36-NA008",
+      "decision": "agree_not_added",
+      "reason": "圓坑通則已有素材。",
+      "existing_ids": [
+        "E11015"
+      ]
+    },
+    {
+      "id": "R36-NA009",
+      "decision": "agree_not_added",
+      "reason": "未識別具體噴出機制。",
+      "existing_ids": [
+        "R36006"
+      ]
+    },
+    {
+      "id": "R36-NA010",
+      "decision": "agree_not_added",
+      "reason": "熱慣性與孔隙關係並非唯一反演。",
+      "existing_ids": [
+        "R36007"
+      ]
+    },
+    {
+      "id": "R36-NA011",
+      "decision": "agree_not_added",
+      "reason": "觀測和控制切換是兩個事件。",
+      "existing_ids": [
+        "R36008"
+      ]
+    },
+    {
+      "id": "R36-NA012",
+      "decision": "agree_not_added",
+      "reason": "自轉與互掩時標不同。",
+      "existing_ids": [
+        "R36009"
+      ]
+    },
+    {
+      "id": "R36-NA013",
+      "decision": "agree_not_added",
+      "reason": "所估倍率取決質量與方向。",
+      "existing_ids": [
+        "R36010"
+      ]
+    },
+    {
+      "id": "R36-NA014",
+      "decision": "agree_not_added",
+      "reason": "同一次動量收支不逐石計數。",
+      "existing_ids": [
+        "R36010"
+      ]
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W36R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 81,
+      "core_totals": {
+        "R36001": 42,
+        "R36002": 39
+      },
+      "chapter_seconds": [
+        42,
+        39
+      ],
+      "core_caps": {
+        "R36001": 88,
+        "R36002": 88
+      },
+      "maximum_beat_seconds": 24,
+      "drop_if_read": "無法清楚畫出氣體反力開始影響的界線，就只談已見的入土深度。",
+      "editorial_result": "用貝努接觸阻力辨鬆密，再切換菲萊的碰痕配時，明標兩航天器及不同證據。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W36R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 80,
+      "core_totals": {
+        "R36003": 39,
+        "R36004": 41
+      },
+      "chapter_seconds": [
+        39,
+        41
+      ],
+      "core_caps": {
+        "R36003": 88,
+        "R36004": 88
+      },
+      "maximum_beat_seconds": 23,
+      "drop_if_read": "如果無法在圖上清楚區分表面來源區和天空視線方向，撤第二段，留下崖的前後對照。",
+      "editorial_result": "崩塌有地形缺口，飛出顆粒需從多條視方向逆推；只有兩張圖何時不夠是共同追問。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W36R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 42,
+      "core_totals": {
+        "R36005": 42
+      },
+      "chapter_seconds": [
+        11,
+        31
+      ],
+      "core_caps": {
+        "R36005": 88
+      },
+      "maximum_beat_seconds": 16,
+      "drop_if_read": "如果兩塊巨石的前後位置無法配準，不用示意動畫代替證據。",
+      "editorial_result": "坑緣缺失對上未動巨石，支持推定阻擋，不渲染確認地下結構。",
+      "timing_result": "PASS_LOCAL_TTS_SAMPLE_WITH_VIEWING_BUDGET"
+    },
+    {
+      "id": "W36R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 76,
+      "core_totals": {
+        "R36006": 39,
+        "R36007": 37
+      },
+      "chapter_seconds": [
+        39,
+        37
+      ],
+      "core_caps": {
+        "R36006": 88,
+        "R36007": 88
+      },
+      "maximum_beat_seconds": 22,
+      "drop_if_read": "熱圖和地形配不準就移除定位遊戲，另找帶座標的實例。",
+      "editorial_result": "從貝努局部剝片的伸縮應力，換到龍宮單日不同熱慣性；兩張圖檢驗不同結果。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W36R-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 98,
+      "core_totals": {
+        "R36008": 31,
+        "R36009": 38,
+        "R36010": 29
+      },
+      "chapter_seconds": [
+        31,
+        38,
+        29
+      ],
+      "core_caps": {
+        "R36008": 88,
+        "R36009": 88,
+        "R36010": 88
+      },
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "若無法辨明互掩訊號與自轉，先縮成導航短片；不以反覆播放撞擊動畫補秒。",
+      "editorial_result": "同次DART任務分依據：影像改向、地球時序、噴出物反衝。前述光變量測可供後段反演但質量仍是假定。",
+      "timing_result": "PASS_LOCAL_TTS_SAMPLE_WITH_VIEWING_BUDGET"
+    }
+  ],
+  "timing_probe": {
+    "samples": [
+      {
+        "episode": "W36R-T03",
+        "manifest": {
+          "file": ".cache/wave36-crater-read.json",
+          "sha256": "9e5211a8b1391b27f24d0d64ccabf675fa29622dcc35e1cd79aec7b8b4f1a458"
+        },
+        "sample": {
+          "file": ".cache/wave36-crater-read-3.wav",
+          "sha256": "31834023156a195fb100378e28ec8c35a95759fba871946067d72d923d2d56f7"
+        },
+        "combined_tts_seconds": 39.512,
+        "planned_seconds": 42,
+        "method": "讀完整樣稿、核原始WAV雜湊及幀數/取樣率；未播放，非真人配音。"
+      },
+      {
+        "episode": "W36R-T05",
+        "manifest": {
+          "file": ".cache/wave36-dart-read.json",
+          "sha256": "5f63a4b510c73e820dbcd98c718d84d6b5fa3a3fba21e1b64a4920315e13ba3d"
+        },
+        "sample": {
+          "file": ".cache/wave36-dart-read-3.wav",
+          "sha256": "ef9caa3959a26be0cd5bf5fdeed6e8280e98b480628b46d6d250d64cafb91969"
+        },
+        "combined_tts_seconds": 91.152,
+        "planned_seconds": 98,
+        "method": "讀完整樣稿、核原始WAV雜湊及幀數/取樣率；未播放，非真人配音。"
+      }
+    ],
+    "other_themes": "其餘3案只核紙上節拍與素材上限。"
+  },
+  "corrections": [
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "依更新後的最終稿確認氣體受力量測截止、巨石跨深度應力與白天相對冷點、DART預先計畫的主星導引與後段剪秒、兩份作者稿圖頁定位。 R1約6–7 cm取噴氣顯著改變曲線之前。T05先取主星是設計策略，末版98秒。S005圖1–3在p8–10，S010密度–倍率在p12。"
+    }
+  ],
+  "first_retrieval": {
+    "neighbours": {
+      "file": ".cache/wave36-physics-peer-initial-neighbours.json",
+      "sha256": "2171605bebdfc75e5a3dd5ceb7a537511cee140dd84186697e4b692a3dbc7e4b"
+    },
+    "draft_sha256": "2c8c33beacf2907d129cd20417538f8f526fe4cdd2d559cf6b96ae1669eb481f",
+    "directed_pairs": 50
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "aaa6a59ce1c66fcf3f207e2ea2ae2477ddc774ce02c5e5670dc092931179037e",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "aaa6a59ce1c66fcf3f207e2ea2ae2477ddc774ce02c5e5670dc092931179037e"
+    },
+    "neighbours": {
+      "file": ".cache/wave36-space-neighbours.json",
+      "sha256": "01a3ee9004bb5d587d14ae9c0d2b13e032e276f6ba7c65da2d830f26311b3958"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave36-draft.json",
+      "sha256": "ccc1817a62ea42573511822f596298faa33b981947fc50f483fda7d8d99a078e"
+    },
+    "candidate_rows_checked": 10,
+    "directed_pairs_checked": 50,
+    "author_near_pairs_checked": 18,
+    "batch_hash_matches_neighbours": true,
+    "added_directed_pairs": [
+      {
+        "a": "R36001",
+        "b": "P21003",
+        "decision": "distinct",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理遠處剪切改變近靜止顆粒區的屈服反應，使玻璃珠槽內探針在特定亞臨界力下爬動。",
+        "read_fields": [
+          "question",
+          "answer_target",
+          "scope"
+        ],
+        "cosine": 0.64282
+      },
+      {
+        "a": "R36001",
+        "b": "P305",
+        "decision": "distinct",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理分子碰撞在小尺度的隨機起伏造成布朗運動。",
+        "read_fields": [
+          "question",
+          "answer_target",
+          "scope"
+        ],
+        "cosine": 0.628978
+      },
+      {
+        "a": "R36005",
+        "b": "R36002",
+        "decision": "distinct",
+        "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸。",
+        "read_fields": [
+          "question",
+          "answer_target",
+          "scope"
+        ],
+        "cosine": 0.693229
+      },
+      {
+        "a": "R36006",
+        "b": "E7013",
+        "decision": "distinct",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理減壓或加水改變岩石開始熔融的條件。",
+        "read_fields": [
+          "question",
+          "answer_target",
+          "scope"
+        ],
+        "cosine": 0.756284
+      },
+      {
+        "a": "R36006",
+        "b": "N131",
+        "decision": "distinct",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理地下接觸熱使岩石礦物重組。",
+        "read_fields": [
+          "question",
+          "answer_target",
+          "scope"
+        ],
+        "cosine": 0.743969
+      },
+      {
+        "a": "R36007",
+        "b": "N138",
+        "decision": "distinct",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理火山碎屑與熱氣的高密度混合物流下坡。",
+        "read_fields": [
+          "question",
+          "answer_target",
+          "scope"
+        ],
+        "cosine": 0.662275
+      },
+      {
+        "a": "R36010",
+        "b": "N160",
+        "decision": "distinct",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理冰雹的形狀與周圍氣流決定阻力。",
+        "read_fields": [
+          "question",
+          "answer_target",
+          "scope"
+        ],
+        "cosine": 0.632096
+      }
+    ],
+    "changed_cohort_pairs_read": 7
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "通過限題目、來源與紙上規劃；影像授權、完整腳本及成片仍需製作時查核。"
+  ],
+  "additional_comparisons": [
+    {
+      "a": "R36006",
+      "b": "N233",
+      "decision": "distinct",
+      "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理反覆冷熱造成不同礦物相對形變而使岩石開裂。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ]
+}

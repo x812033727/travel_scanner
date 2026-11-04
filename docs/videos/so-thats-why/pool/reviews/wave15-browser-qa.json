@@ -1,0 +1,61 @@
+{
+  "tested_on": "2026-11-01T23:51:55.452Z",
+  "result": "PASS",
+  "selected": 2939,
+  "index_html_sha256": "186e0448ca04eb2d814431b57718bed21482d22b6695568f6353cfb4f2217a77",
+  "source_sample": {
+    "id": "B15001",
+    "urls": [
+      "https://doi.org/10.1016/j.cub.2013.06.034"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new plant mechanism question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave15-desktop.png",
+    "wave15-source-desktop.png",
+    "wave15-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "environment_retry": {
+    "first_attempt": "Default headless-shell executable was reported unavailable; browser assertions did not start",
+    "log": ".cache/wave15-browser-qa-missing-shell.log",
+    "log_sha256": "b07946c8f68321c60b6fab3900d64c093536dccd38358554e05371e2ebe07281",
+    "intermediate": "Full bundled Chromium later passed the existence probe but launch failed with spawn UNKNOWN. No UI acceptance claimed for failed attempts.",
+    "resolution": "Use already installed system Chrome with an isolated temporary profile; no browser installation, global changes or user profile access."
+  },
+  "visual_review": {
+    "reviewer": "root",
+    "observations": [
+      "Desktop 1440x1000: 2939 selected, 2485 source URLs, 172 themes and 138 aliases visible; search, filters and question cards are readable without overlap.",
+      "Expanded B15001 card: question, answer, 80-120 second segment estimate, scope and payoff visible. Visual idea and source links are below the screenshot crop; their presence and URL completeness are supported by DOM assertions, not a visual claim.",
+      "Mobile 390x844: heading wraps, four statistics form two rows, links and filters remain within viewport. This screenshot does not show the lower question cards; it is not a full-page visual audit."
+    ],
+    "screenshots": [
+      {
+        "file": ".cache/wave15-desktop.png",
+        "sha256": "0365023d6918deffa6975428ea90338f93a4c120defe3d6eef01509d1c25e88d"
+      },
+      {
+        "file": ".cache/wave15-source-desktop.png",
+        "sha256": "e66fcae76ce012b7007c9c2a06b47ad778509e68fd4fce55e8b1b018e5f5add6"
+      },
+      {
+        "file": ".cache/wave15-mobile.png",
+        "sha256": "4c90c80300c7cad24c9d4e00bf2ed218ee53050165099b572b15dae200ad55ba"
+      }
+    ]
+  }
+}

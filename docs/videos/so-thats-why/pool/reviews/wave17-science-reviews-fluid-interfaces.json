@@ -1,0 +1,809 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "science_sources",
+  "author": "pool_physics",
+  "role": "本代理未撰寫本批；依完整題/範圍/來源指定段與題案獨立覆核。",
+  "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "reviewed_candidate_ids": [
+    "F17001",
+    "F17002",
+    "F17003",
+    "F17004",
+    "F17005",
+    "F17006",
+    "F17007"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave17-fluid-interfaces.json",
+      "sha256": "2dc5eefd0b8422f11da3f7ec7db2bfa59ba32d4e1300e3b5f8733d415e3143b5"
+    },
+    {
+      "file": "reviews/wave17-fluid-interfaces-themes.json",
+      "sha256": "0a6f0b01a68340511385f9b27b828cb856e866d9df1dd237eb650ac430211f41"
+    },
+    {
+      "file": "reviews/wave17-fluid-interfaces-author.json",
+      "sha256": "29f41e124e338fc588d7e526bc928e68295f24ed1fca07d56d0e240bdd13e711"
+    }
+  ],
+  "original_reviewed_files": [
+    {
+      "file": "batches/wave17-fluid-interfaces.json",
+      "sha256": "cb096cc67316bfb62915b3a0b137e65e830c6a98a56c85f5755ff49b3c72e39b"
+    },
+    {
+      "file": "reviews/wave17-fluid-interfaces-themes.json",
+      "sha256": "7e46af37273e0874e6e9c3e04daf30a821c4681f030036fca70f2da57a5bd37a"
+    },
+    {
+      "file": "reviews/wave17-fluid-interfaces-author.json",
+      "sha256": "b1280219ac7adb63655fc02d9f69c80bb217ee3dea9d6dc92bb971c56cd5b799"
+    }
+  ],
+  "coverage": {
+    "candidates_all_fields": 7,
+    "not_added_all": 19,
+    "author_pairs_full_question_answer_scope": 21,
+    "top5_rows": 7,
+    "top5_pairs": 35,
+    "fresh_primary_sources": 6,
+    "visual_pdf_pages": 4,
+    "themes": 5
+  },
+  "source_readings": [
+    {
+      "source_id": "F17-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh UA HTML，lxml擷取正文；web同URL先遇recaptcha。",
+      "reading_scope": "Results 方向性壓損、Pressure drop/friction/diodicity across flow regimes、Flow visualization and early turbulence，及Discussion穩態機制；本機擷取paragraphs26/29–42/62–64。",
+      "limitations": "只採穩態比較，未讀影片或重算速度/耗散；原廠文章圖說可讀但本次未目讀Tesla圖像。HTML動態byte hash與作者不同，取得有效正文，不以同長度推斷byte相同。",
+      "cache": {
+        "source_id": "F17-S001",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+        "content_type": "text/html; charset=utf-8",
+        "file": ".cache/wave17-science-fluid-F17-S001.html",
+        "sha256": "47297894ed24a1219c5b93e19b97cfca9de9de01c3cacf9ec1a97f69ebba5cc3",
+        "bytes": 226781
+      },
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "F17-S002",
+      "url": "https://arxiv.org/pdf/2302.06010",
+      "accessed_on": "2026-11-02",
+      "read_via": "web PDF因27MB限制失敗；先獨立讀作者副本，後fresh UA取得同SHA確認。",
+      "reading_scope": "PDF p3 §II；pp10–13 §IV D/E與結論；p12 Fig8原頁目讀。",
+      "limitations": "arXiv v1指定段，RSC VOR本次未讀；不重演流變實驗/附錄推導，黏度與彈性不可畫成獨立單變量。",
+      "cache": {
+        "source_id": "F17-S002",
+        "url": "https://arxiv.org/pdf/2302.06010",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/2302.06010",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-science-fluid-F17-S002.pdf",
+        "sha256": "587578d8e1c679a97f012b0930f61fe6be0be2cff5ffec820add55d11a2aed31",
+        "bytes": 27507846
+      },
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "F17-S003",
+      "url": "https://arxiv.org/pdf/nlin/0104052",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh UA PDF，PyMuPDF文字擷取。",
+      "reading_scope": "PDF pp2–6低Re控制、純溶劑對照、鬆弛/頻譜及機制解釋；p9 Fig3–5圖說。",
+      "limitations": "圖像本次未目讀、影片未看、無重算頻譜；亮暗是反光紋路，不等於速度大小。",
+      "cache": {
+        "source_id": "F17-S003",
+        "url": "https://arxiv.org/pdf/nlin/0104052",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/nlin/0104052",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-science-fluid-F17-S003.pdf",
+        "sha256": "2fc29ca132e35e5d9cdbfbcb932f7a40edbceaf0ac0c986dbb0a395b4bcdf2d9",
+        "bytes": 443746
+      },
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "F17-S004",
+      "url": "https://arxiv.org/pdf/2003.04777",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh web PDF指定主文；fresh UA取得同SHA副本；p7圖像目讀。",
+      "reading_scope": "PDF pp3–4氣泡體積/有效重力相位平均；pp6–8液層與浮體穩定性，Fig3箭頭/勢能圖。",
+      "limitations": "未核SI全套推導/影片；未自行讀Nature更正，僅讀作者與root記錄它是參考文獻姓名更正。此範圍不能稱兩篇獨立研究。",
+      "cache": {
+        "source_id": "F17-S004",
+        "url": "https://arxiv.org/pdf/2003.04777",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/2003.04777",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-science-fluid-F17-S004.pdf",
+        "sha256": "3671480c10f1936579323b65c5ca0d8165e966462921deaa8bfd50cdd8992950",
+        "bytes": 1272735
+      },
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "F17-S005",
+      "url": "https://arxiv.org/pdf/0910.3306",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh web PDF開頭；先讀作者PDF pp2–3，後fresh UA同SHA確認；p2目讀。",
+      "reading_scope": "PDF pp2–3 Fig2各控制、Fig3 hydro-capillary模型及脫離條件。",
+      "limitations": "未讀p4電潤濕延伸/影片；限所試慣性流、未採表面處理操作。",
+      "cache": {
+        "source_id": "F17-S005",
+        "url": "https://arxiv.org/pdf/0910.3306",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/0910.3306",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-science-fluid-F17-S005.pdf",
+        "sha256": "00dac3eea0201738a50998445f20aaea304a6bfced8a8379cef62cdfc1ea366a",
+        "bytes": 1929351
+      },
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "F17-S006",
+      "url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh UA PDF，PyMuPDF指定文字與p3原頁目讀。",
+      "reading_scope": "PDF pp2–4液橋/錐角壓力模型、Fig3a–d和p4臨界角比較；p3同時確認Fig4是跨液系時序。",
+      "limitations": "未看影片或SI，沒有核高壓操作；不沿OCR錯誤時間單位。水/矽油移動滴與空氣中附著滴分框。",
+      "cache": {
+        "source_id": "F17-S006",
+        "url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-science-fluid-F17-S006.pdf",
+        "sha256": "aa45f441d81e2867a146fbe0bee44b41cc4851cabbb4074338318b9d37967667",
+        "bytes": 772032
+      },
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "source_failures": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+      "route": "web.open",
+      "result": "recaptcha；另UA取得有效正文"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2302.06010",
+      "route": "web.open",
+      "result": "27MB content too large；另UA取得有效PDF"
+    }
+  ],
+  "retrieval_readback": {
+    "phase": "first",
+    "draft_sha256": "986bbcaaa5a97bd95d77810438e5b890394023024844f5389105362cf534f893",
+    "file": ".cache/wave17-fluid-interfaces-neighbours.json",
+    "sha256": "bc9230c7c6ed4cf54daf014d8154d9bdfc1fa673126395d1a5d93dc2df4c43ec",
+    "limits": "建議近鄰非重複機率，全部35列問答/scope實讀，非全庫召回率。"
+  },
+  "candidate_rows": [
+    {
+      "id": "F17001",
+      "decision": "retain",
+      "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。",
+      "source_ids": [
+        "F17-S001"
+      ]
+    },
+    {
+      "id": "F17002",
+      "decision": "retain",
+      "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。",
+      "source_ids": [
+        "F17-S002"
+      ]
+    },
+    {
+      "id": "F17003",
+      "decision": "retain",
+      "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。",
+      "source_ids": [
+        "F17-S003"
+      ]
+    },
+    {
+      "id": "F17004",
+      "decision": "retain",
+      "reason": "氣泡可壓縮、體積與有效重力相位的平均力，與靜態不可壓縮P051或噴頭氣泡共振Q9007不同。本文低頻準靜態條件支持；不把受控氣泡結果套到剛體或把真實重力倒轉。",
+      "source_ids": [
+        "F17-S004"
+      ]
+    },
+    {
+      "id": "F17005",
+      "decision": "retain",
+      "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。",
+      "source_ids": [
+        "F17-S004"
+      ]
+    },
+    {
+      "id": "F17006",
+      "decision": "retain",
+      "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。",
+      "source_ids": [
+        "F17-S005"
+      ]
+    },
+    {
+      "id": "F17007",
+      "decision": "retain",
+      "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。",
+      "source_ids": [
+        "F17-S006"
+      ]
+    }
+  ],
+  "author_boundary_checks": [
+    {
+      "a": "F17001",
+      "b": "D2249",
+      "decision": "distinct",
+      "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+    },
+    {
+      "a": "F17001",
+      "b": "P072",
+      "decision": "distinct",
+      "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+    },
+    {
+      "a": "F17001",
+      "b": "F10009",
+      "decision": "distinct",
+      "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+    },
+    {
+      "a": "F17002",
+      "b": "P054",
+      "decision": "distinct",
+      "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+    },
+    {
+      "a": "F17002",
+      "b": "H3090",
+      "decision": "distinct",
+      "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+    },
+    {
+      "a": "F17002",
+      "b": "F8006",
+      "decision": "distinct",
+      "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+    },
+    {
+      "a": "F17003",
+      "b": "P072",
+      "decision": "distinct",
+      "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+    },
+    {
+      "a": "F17003",
+      "b": "H3090",
+      "decision": "distinct",
+      "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+    },
+    {
+      "a": "F17003",
+      "b": "F8006",
+      "decision": "distinct",
+      "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+    },
+    {
+      "a": "F17003",
+      "b": "F17002",
+      "decision": "distinct",
+      "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+    },
+    {
+      "a": "F17004",
+      "b": "P051",
+      "decision": "distinct",
+      "reason": "氣泡可壓縮、體積與有效重力相位的平均力，與靜態不可壓縮P051或噴頭氣泡共振Q9007不同。本文低頻準靜態條件支持；不把受控氣泡結果套到剛體或把真實重力倒轉。"
+    },
+    {
+      "a": "F17004",
+      "b": "Q9007",
+      "decision": "distinct",
+      "reason": "氣泡可壓縮、體積與有效重力相位的平均力，與靜態不可壓縮P051或噴頭氣泡共振Q9007不同。本文低頻準靜態條件支持；不把受控氣泡結果套到剛體或把真實重力倒轉。"
+    },
+    {
+      "a": "F17005",
+      "b": "P050",
+      "decision": "distinct",
+      "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+    },
+    {
+      "a": "F17005",
+      "b": "W16004",
+      "decision": "distinct",
+      "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+    },
+    {
+      "a": "F17005",
+      "b": "F17004",
+      "decision": "distinct",
+      "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+    },
+    {
+      "a": "F17006",
+      "b": "P053",
+      "decision": "distinct",
+      "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+    },
+    {
+      "a": "F17006",
+      "b": "P054",
+      "decision": "distinct",
+      "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+    },
+    {
+      "a": "F17006",
+      "b": "P062",
+      "decision": "distinct",
+      "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+    },
+    {
+      "a": "F17007",
+      "b": "I12008",
+      "decision": "distinct",
+      "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+    },
+    {
+      "a": "F17007",
+      "b": "I12009",
+      "decision": "distinct",
+      "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+    },
+    {
+      "a": "F17007",
+      "b": "Q9005",
+      "decision": "distinct",
+      "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+    }
+  ],
+  "top5_checks": [
+    {
+      "id": "F17001",
+      "compared_ids": [
+        "P072",
+        "D2245",
+        "P045",
+        "D2128",
+        "E2151"
+      ],
+      "decision": "all_distinct",
+      "reason": "P072最接近但少同流路反向/流況切換；D2245節流設計、P045體積匹配、D2128間歇傳動、E2151反電動勢不是此控制鏈。"
+    },
+    {
+      "id": "F17002",
+      "compared_ids": [
+        "P062",
+        "D2249",
+        "P046",
+        "J6020",
+        "D2135"
+      ],
+      "decision": "all_distinct",
+      "reason": "P062能量換壓、D2249閥片、P046靜壓方向、J6020卡扣幾何、D2135拖曳對抗壓力流，都不解剪切法向應力/慣性競爭液面。"
+    },
+    {
+      "id": "F17003",
+      "compared_ids": [
+        "H3016",
+        "F10013",
+        "P072",
+        "F14006",
+        "I12005"
+      ],
+      "decision": "all_distinct",
+      "reason": "H3016聚合觸發、F10013剪切擴散展寬、F14006孔彈排水、I12005表面張力回流不同；P072慣性流的條件也相反。"
+    },
+    {
+      "id": "F17004",
+      "compared_ids": [
+        "Q9007",
+        "I12011",
+        "B2299",
+        "LEG-S70",
+        "I12010"
+      ],
+      "decision": "all_distinct",
+      "reason": "Q9007共振噴頭不同於低頻平均力；I12011氣體交換、B2299空化崩潰、LEG-S70面積最小、I12010薄膜剪切碎裂均不同。"
+    },
+    {
+      "id": "F17005",
+      "compared_ids": [
+        "P050",
+        "F17002",
+        "I12003",
+        "P051",
+        "P049"
+      ],
+      "decision": "all_distinct",
+      "reason": "P050/P051只描述靜態平衡/固定體積；F17002法向應力、I12003界面水平吸引、P049改排水體積都沒有此動態穩定。"
+    },
+    {
+      "id": "F17006",
+      "compared_ids": [
+        "I12002",
+        "P054",
+        "I12009",
+        "I12001",
+        "I12007"
+      ],
+      "decision": "all_distinct",
+      "reason": "I12002紋理侵入、P054靜態彎月面、I12009合併、I12001釘扎、I12007黏性帶膜，與慣性流束離圓邊的控制不同。"
+    },
+    {
+      "id": "F17007",
+      "compared_ids": [
+        "I12009",
+        "F17006",
+        "B16005",
+        "E2179",
+        "P072"
+      ],
+      "decision": "all_distinct",
+      "reason": "I12009頸縮雖近但控制是波/排空；F17006固壁離邊、B16005細絲屈曲、E2179載子擴散、P072急彎混合皆不同。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "F17001",
+        "b": "D2249",
+        "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+      },
+      {
+        "a": "F17001",
+        "b": "P072",
+        "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+      },
+      {
+        "a": "F17001",
+        "b": "F10009",
+        "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+      },
+      {
+        "a": "F17002",
+        "b": "P054",
+        "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+      },
+      {
+        "a": "F17002",
+        "b": "H3090",
+        "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+      },
+      {
+        "a": "F17002",
+        "b": "F8006",
+        "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+      },
+      {
+        "a": "F17003",
+        "b": "P072",
+        "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+      },
+      {
+        "a": "F17003",
+        "b": "H3090",
+        "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+      },
+      {
+        "a": "F17003",
+        "b": "F8006",
+        "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+      },
+      {
+        "a": "F17003",
+        "b": "F17002",
+        "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+      },
+      {
+        "a": "F17004",
+        "b": "P051",
+        "reason": "氣泡可壓縮、體積與有效重力相位的平均力，與靜態不可壓縮P051或噴頭氣泡共振Q9007不同。本文低頻準靜態條件支持；不把受控氣泡結果套到剛體或把真實重力倒轉。"
+      },
+      {
+        "a": "F17004",
+        "b": "Q9007",
+        "reason": "氣泡可壓縮、體積與有效重力相位的平均力，與靜態不可壓縮P051或噴頭氣泡共振Q9007不同。本文低頻準靜態條件支持；不把受控氣泡結果套到剛體或把真實重力倒轉。"
+      },
+      {
+        "a": "F17005",
+        "b": "P050",
+        "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+      },
+      {
+        "a": "F17005",
+        "b": "W16004",
+        "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+      },
+      {
+        "a": "F17005",
+        "b": "F17004",
+        "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+      },
+      {
+        "a": "F17006",
+        "b": "P053",
+        "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+      },
+      {
+        "a": "F17006",
+        "b": "P054",
+        "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+      },
+      {
+        "a": "F17006",
+        "b": "P062",
+        "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+      },
+      {
+        "a": "F17007",
+        "b": "I12008",
+        "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+      },
+      {
+        "a": "F17007",
+        "b": "I12009",
+        "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+      },
+      {
+        "a": "F17007",
+        "b": "Q9005",
+        "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+      }
+    ]
+  },
+  "not_added_readback": {
+    "count": 19,
+    "conclusion": "已讀全部退題理由；不復活舊核。反向灑水器/走路液滴/擠出膨脹未讀足正文不採；Kaye effect之I12008僅相近方向，作者未當已證同核。未獨立嘗試那些退題失敗URL。"
+  },
+  "editorial_readback": {
+    "timings": [
+      {
+        "id": "W17F-T01",
+        "body_seconds": 100,
+        "chapters": [
+          55,
+          45
+        ],
+        "core_totals": {
+          "F17001": 100
+        },
+        "max_beat": 35,
+        "drop_if_read": true
+      },
+      {
+        "id": "W17F-T02",
+        "body_seconds": 105,
+        "chapters": [
+          55,
+          50
+        ],
+        "core_totals": {
+          "F17002": 105
+        },
+        "max_beat": 35,
+        "drop_if_read": true
+      },
+      {
+        "id": "W17F-T03",
+        "body_seconds": 110,
+        "chapters": [
+          60,
+          50
+        ],
+        "core_totals": {
+          "F17005": 110
+        },
+        "max_beat": 40,
+        "drop_if_read": true
+      },
+      {
+        "id": "W17F-T04",
+        "body_seconds": 90,
+        "chapters": [
+          55,
+          35
+        ],
+        "core_totals": {
+          "F17006": 90
+        },
+        "max_beat": 35,
+        "drop_if_read": true
+      },
+      {
+        "id": "W17F-T05",
+        "body_seconds": 105,
+        "chapters": [
+          55,
+          50
+        ],
+        "core_totals": {
+          "F17007": 105
+        },
+        "max_beat": 35,
+        "drop_if_read": true
+      }
+    ],
+    "segment_only": [
+      "F17003",
+      "F17004"
+    ],
+    "limits": "預算不是口頭試讀。兩個segment不強塞片，五案各有觀察與控制；已要求縮重述、不添機制補秒。",
+    "original_timings": [
+      {
+        "id": "W17F-T01",
+        "body_seconds": 100,
+        "chapters": [
+          55,
+          45
+        ],
+        "core_totals": {
+          "F17001": 100
+        },
+        "max_beat": 35,
+        "drop_if_read": true
+      },
+      {
+        "id": "W17F-T02",
+        "body_seconds": 105,
+        "chapters": [
+          55,
+          50
+        ],
+        "core_totals": {
+          "F17002": 105
+        },
+        "max_beat": 35,
+        "drop_if_read": true
+      },
+      {
+        "id": "W17F-T03",
+        "body_seconds": 110,
+        "chapters": [
+          60,
+          50
+        ],
+        "core_totals": {
+          "F17005": 110
+        },
+        "max_beat": 40,
+        "drop_if_read": true
+      },
+      {
+        "id": "W17F-T04",
+        "body_seconds": 90,
+        "chapters": [
+          55,
+          35
+        ],
+        "core_totals": {
+          "F17006": 90
+        },
+        "max_beat": 35,
+        "drop_if_read": true
+      },
+      {
+        "id": "W17F-T05",
+        "body_seconds": 105,
+        "chapters": [
+          55,
+          50
+        ],
+        "core_totals": {
+          "F17007": 105
+        },
+        "max_beat": 35,
+        "drop_if_read": true
+      }
+    ]
+  },
+  "findings_and_targeted_recheck": [
+    {
+      "id": "FLUID01",
+      "finding": "F17-S006/F17007錯把Fig4(a–b)寫成錐角模型；原頁模型為Fig3b、空氣附著滴角度控制為Fig3d。",
+      "required": "來源與候選定位改Fig3a–d及p4模型限制；不改機制。",
+      "status": "RESOLVED_TARGETED_READBACK"
+    },
+    {
+      "id": "FLUID02",
+      "finding": "五案末beat重述已講機制，限制也不需長時間宣讀。",
+      "required": "T01末20→10，T02末25→15，T03末25→10，T04末20→5，T05末25→15；總100/105/110/90/105，保留開場及5秒回扣。",
+      "status": "RESOLVED_TARGETED_READBACK"
+    }
+  ],
+  "limitations": [
+    "完整同批題級與短題案閱讀，不等於逐字稿核准。",
+    "沒有觀看補充影片、實驗復現、口頭試讀、製作或公開媒體。",
+    "指定預印本/作者公開稿與正式版不是獨立證據；未讀通的VOR不能說已逐字核。",
+    "本次未獨立閱讀Nature更正，沒有把作者取用範圍冒認為自己的實讀。"
+  ],
+  "targeted_recheck": {
+    "date": "2026-11-02",
+    "result": "PASS_CONTENT_AND_PAPER_TIMING_ONLY",
+    "candidate_delta": "只有S006.locator與F17007.source_locator；反向還原兩字串後parsed batch精確等於修前。",
+    "timing_delta": "五末beat刪重述，110/115/125/105/115→100/105/110/90/105；首段機制與控制不變，含開場回扣、章/target/range/drop同步。",
+    "mechanical_readback": [
+      "每章1core",
+      "beat<=45",
+      "全片同core累計<=素材cap",
+      "UTF8LF/rstrip",
+      "目讀新節拍與撤片條件"
+    ],
+    "no_new_claims": true
+  },
+  "final_retrieval_delta": {
+    "status": "PASS",
+    "read_on": "2026-11-02",
+    "first_draft_sha256": "986bbcaaa5a97bd95d77810438e5b890394023024844f5389105362cf534f893",
+    "final_draft_sha256": "97d5c4d6fbbcabbe6f6390f480cc7eb265b3b7d81df77bb9a713b1c038533e3c",
+    "files": [
+      {
+        "file": ".cache/first-draft-wave17.json",
+        "sha256": "986bbcaaa5a97bd95d77810438e5b890394023024844f5389105362cf534f893"
+      },
+      {
+        "file": ".cache/first-semantic-wave17-draft.json",
+        "sha256": "5c85a6da82ff986668aae258c0bdba9ed1ffcdaf6f4aaf128a2d0b9040e1a48d"
+      },
+      {
+        "file": ".cache/draft.json",
+        "sha256": "97d5c4d6fbbcabbe6f6390f480cc7eb265b3b7d81df77bb9a713b1c038533e3c"
+      },
+      {
+        "file": ".cache/semantic-wave17-draft.json",
+        "sha256": "7e7413f3dfd7c8f81a6ec8db3eaea1e98a0081baee37ed73a09069d832fe29b2"
+      },
+      {
+        "file": ".cache/wave17-fluid-interfaces-neighbours.json",
+        "sha256": "d6b13c83fc21420535a608ad44692becd43a74c774fc0f1ed10ee498c842affd"
+      },
+      {
+        "file": ".cache/wave17-fluid-interfaces-neighbour-delta.json",
+        "sha256": "8abab88be651b4aab5d9404e6971b35ef91c43f4ec70ab136ad9326c70ea90fc"
+      }
+    ],
+    "raw_changes": [
+      {
+        "id": "F17007",
+        "fields": [
+          "source_locator",
+          "source_refs"
+        ]
+      }
+    ],
+    "new_neighbours": 0,
+    "readback": "直接比較first/final全7 raw；只F17007定位變化。7組top5 IDs及各完整question/answer/scope與first同等，無新增近鄰；改後定位已由原刊p3目讀確認。ignored scratch不要求Git index存在。"
+  }
+}

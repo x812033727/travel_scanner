@@ -1,0 +1,752 @@
+{
+  "batch_id": "wave9-acoustics-20261101",
+  "created_on": "2026-11-01",
+  "scope": "聲音如何激發與耦合、非整數泛音、吹管邊界、麥克風及聲能量測；題級原創企劃，非演奏／維修／高音量操作或製片核准。",
+  "sources": [
+    {
+      "id": "D9-S001",
+      "url": "https://www.acs.psu.edu/drussell/Demos/Pluck-Fourier/Pluck-Fourier.html",
+      "title": "The Plucked Fixed-Fixed String",
+      "publisher": "Penn State / Daniel A. Russell",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "Standing Wave Mode Shapes；Initial Conditions for the Plucked String；Motion of a Specific Point on a Plucked String",
+      "locator": "Standing Wave Mode Shapes；Initial Conditions for the Plucked String；Motion of a Specific Point on a Plucked String",
+      "summary": "初始形狀分配模態振幅；撥弦位置可使部分模態不受激發。",
+      "version": "內容2020-08-07；HTML2025-08-13",
+      "limitations": "頁面CC BY-NC-ND；僅取事實、連結與原創摘要，不移用動畫或例題。理想弦不等於實琴完整輸出。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S002",
+      "url": "https://www.phys.unsw.edu.au/jw/harmonics.html",
+      "title": "How harmonic are 'harmonics'?",
+      "publisher": "UNSW Music Acoustics / Joe Wolfe",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "主文An experiment及Real strings段；加質量實驗、彎曲剛性與bowing mode locking段",
+      "locator": "主文An experiment及Real strings段；加質量實驗、彎曲剛性與bowing mode locking段",
+      "summary": "局部質量與彎曲剛性改變模態；持續非線性激發可鎖定近整數頻率。",
+      "version": "網頁未列修訂日期；讀取日2026-11-01",
+      "limitations": "穩定發聲的示意；不採頁內把有限時間頻率解析簡化成普遍精度上限的說法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S003",
+      "url": "https://www.speech.kth.se/music/5_lectures/introd/introd.html",
+      "title": "Five lectures on the Acoustics of the piano: Introduction",
+      "publisher": "KTH / Royal Swedish Academy of Music",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open讀Basics前段；後段web timeout，改以public urllib HTML正文讀Loudness與The imperfect soundboard",
+      "reading_scope": "Basics of piano acoustics: Pitch, partials and inharmonicity；Sound radiation and impedance mismatch；Loudness versus sustain；The imperfect soundboard",
+      "locator": "Basics of piano acoustics: Pitch, partials and inharmonicity；Sound radiation and impedance mismatch；Loudness versus sustain；The imperfect soundboard",
+      "summary": "琴槌非線性改變音色；音板耦合與前後聲壓相消限制聲輻射。",
+      "version": "1990講義；歷史版本",
+      "limitations": "僅採基礎物理模型；不採歷史市場預測、主觀品質排名或所有弦都不輻射的絕對化措辭。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S004",
+      "url": "https://www.speech.kth.se/music/5_lectures/weinreic/weinreic.html",
+      "title": "The coupled motion of piano strings: Loud and sustained",
+      "publisher": "KTH / Gabriel Weinreich",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "Loud and sustained",
+      "locator": "Loud and sustained",
+      "summary": "單次輸入的能量，較強耦合可換來較響但較短的初始聲音。",
+      "version": "1990講義",
+      "limitations": "只採被動能量傳遞，不把作者對所有樂器主導耗散的概括當普遍定律。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S005",
+      "url": "https://www.speech.kth.se/music/5_lectures/weinreic/strings.html",
+      "title": "The coupled motion of piano strings: Two or more strings",
+      "publisher": "KTH / Gabriel Weinreich",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "Two or more strings，Figs.3–6前後正文",
+      "locator": "Two or more strings，Figs.3–6前後正文",
+      "summary": "兩弦反對稱運動減少橋上合力；制止其中一弦可改變聲輻射與衰減。",
+      "version": "1990講義",
+      "limitations": "近同音耦合弦的特定實驗；不宣稱任意兩弦停一條必變響，不搬20dB作通用數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S006",
+      "url": "https://www.phys.unsw.edu.au/jw/fluteacoustics.html",
+      "title": "Flute acoustics: an introduction",
+      "publisher": "UNSW Music Acoustics / Joe Wolfe",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "The air jet vibrates；How the air jet and pipe work together；Register holes；Cross fingering；Cut-off frequencies",
+      "locator": "The air jet vibrates；How the air jet and pipe work together；Register holes；Cross fingering；Cut-off frequencies",
+      "summary": "噴流延遲維持振動；開孔可選擇模態，也有頻率相依的聲學負載。",
+      "version": "網頁未列修訂日期；讀取日2026-11-01",
+      "limitations": "教學近似；不採第85行小孔聲阻抗方向的疑似誤寫，不採吹口壓力數字或調性性格推測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S007",
+      "url": "https://phys.unsw.edu.au/jw/Helmholtz.html",
+      "title": "Helmholtz Resonance",
+      "publisher": "UNSW Music Acoustics / Joe Wolfe",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "開場質量／彈簧圖解；Analysing the Helmholtz resonance；Complications involving the effective length",
+      "locator": "開場質量／彈簧圖解；Analysing the Helmholtz resonance；Complications involving the effective length",
+      "summary": "小腔體內近均勻壓力與頸口空氣慣性形成集中式共振。",
+      "version": "網頁未列修訂日期；讀取日2026-11-01",
+      "limitations": "聲波波長須遠大於腔體；不把吉他柔性腔體當剛性瓶子的精確等價物。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S008",
+      "url": "https://www.bksv.com/de/knowledge/blog/sound/measuring-sound-intensity",
+      "title": "How Is Sound Intensity Measured?",
+      "publisher": "Brüel & Kjær",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "The Euler Equation；The Finite Difference Approximation；The Intensity Calculation；Directivity Characteristics",
+      "locator": "The Euler Equation；The Finite Difference Approximation；The Intensity Calculation；Directivity Characteristics",
+      "summary": "兩點聲壓梯度估粒子速度，與壓力相乘時間平均得到軸向聲強。",
+      "version": "網頁未列修訂日期；讀取日2026-11-01",
+      "limitations": "採原理，不採產品比較與未獨立核實的現行標準合規。垂直探頭軸為零的是分量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S009",
+      "url": "https://www.bksv.com/doc/br0476.pdf",
+      "title": "Sound Intensity — BR0476",
+      "publisher": "Brüel & Kjær",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開PDF文字指定頁；公式示意不作本輪量值計算",
+      "reading_scope": "印刷pp7–11 Active and Reactive Sound Fields至The Sound Intensity Probe；pp14–16閉曲面與背景；pp30–33測量限制",
+      "locator": "印刷pp7–11 Active and Reactive Sound Fields至The Sound Intensity Probe；pp14–16閉曲面與背景；pp30–33測量限制",
+      "summary": "聲壓不單獨決定淨能流；相位失配與有限間距限制聲強探頭。",
+      "version": "Revision September 1993",
+      "limitations": "舊版技術手冊，不當現行規範；不採「任何聲場無假設都可量」等宣傳式概括，保留穩態、吸收與量測限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S010",
+      "url": "https://community.sw.siemens.com/articles/en_US/Knowledge/Sound-Intensity",
+      "title": "Sound Intensity",
+      "publisher": "Siemens Simcenter technical knowledge",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "§2 How is Sound Intensity Measured?；§3 Spacer Length and Valid Frequency Range；§7 In-Situ Measurements",
+      "locator": "§2 How is Sound Intensity Measured?；§3 Spacer Length and Valid Frequency Range；§7 In-Situ Measurements",
+      "summary": "兩麥相位匹配、間距波長取捨，以及外部聲能穿越閉曲面的收支。",
+      "version": "網頁未列修訂日期；讀取日2026-11-01",
+      "limitations": "採工程原理，不採產品優劣。正文將pressure level直接相乘的含混措辭不沿用，計算量是瞬時聲壓。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S011",
+      "url": "https://www.dpamicrophones.com/mic-university/background-knowledge/proximity-effect-in-microphones-explained/",
+      "title": "Proximity effect in microphones explained",
+      "publisher": "DPA Microphones / Eddy Bøgh Brixen",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "The sound sources；Why proximity?；On-axis vs. off-axis；AMENDMENT - How was it measured?",
+      "locator": "The sound sources；Why proximity?；On-axis vs. off-axis；AMENDMENT - How was it measured?",
+      "summary": "近距離的前後壓力幅度差在低頻相對突出；效應依聲源幾何與方向。",
+      "version": "網頁未列修訂日期；讀取日2026-11-01",
+      "limitations": "不把1m當銳利物理邊界，不作購買推薦，不將單次指定樂器測量泛化所有琴。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S012",
+      "url": "https://www.dpamicrophones.com/mic-university/technology/microphone-technology-the-essentials/",
+      "title": "Microphone technology - the essentials",
+      "publisher": "DPA Microphones / Eddy Bøgh Brixen",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "Pressure microphones；Pressure gradient microphones；Combined pressure and pressure gradient microphones；The microphone in the sound field；Interference tube microphone",
+      "locator": "Pressure microphones；Pressure gradient microphones；Combined pressure and pressure gradient microphones；The microphone in the sound field；Interference tube microphone",
+      "summary": "前後聲路控制方向響應；感測器尺寸也會擾動高頻聲場。",
+      "version": "網頁未列修訂日期；讀取日2026-11-01",
+      "limitations": "採指定原理段，不採所有轉換器電路的簡化敘述；不把全指向視為全頻無方向差，也不採產品宣傳。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S013",
+      "url": "https://pure.tue.nl/ws/files/1503964/617406.pdf",
+      "title": "Shock waves in trombones",
+      "publisher": "Hirschberg, Gilbert, Msallam & Wijnands / JASA；TU Eindhoven repository",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 公開正文，指定段落實讀",
+      "reading_scope": "印刷pp1754–1757（PDF pp2–5），量測配置、simple-wave理論及Figs.1–3正文",
+      "locator": "印刷pp1754–1757（PDF pp2–5），量測配置、simple-wave理論及Figs.1–3正文",
+      "summary": "強壓縮波在管內逐漸陡化；沿管多點量測分開聲源與傳播變形。",
+      "version": "JASA99(3),1754–1758,1996；DOI10.1121/1.414698",
+      "limitations": "指定長號與強奏條件；不把所有銅管音色都歸於激波，不提供高音量或火花實驗操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D9-S014",
+      "url": "https://www.speech.kth.se/music/5_lectures/weinreic/mistuned.html",
+      "title": "The coupled motion of piano strings: Mistuned strings",
+      "publisher": "KTH / Gabriel Weinreich",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open公開正文",
+      "reading_scope": "Mistuned strings，單獨／耦合頻率區別及Fig.8前後正文",
+      "locator": "Mistuned strings，單獨／耦合頻率區別及Fig.8前後正文",
+      "summary": "橋接耦合能改變共同振動頻率，單弦差頻不必直接等於合奏拍頻。",
+      "version": "1990講義",
+      "limitations": "只作退題邊界研究；不採最後對調音師行為的未驗證假說。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "D9001",
+      "question": "同一條弦撥在中央或靠近兩端，為什麼音色會不同？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.pluck_position_modal_excitation",
+      "answer_target": "撥點決定初始形狀投影到各模態的比例；在某模態節點施加理想點撥，不激發該模態。",
+      "scope": "固定長度張力的理想撥弦；只改撥點，不把所有實琴輸出歸於此。",
+      "source_ids": [
+        "D9-S001"
+      ],
+      "source_locator": "Initial Conditions for the Plucked String，Fourier coefficients段",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可發出的頻率和實際被激發的頻率不同。",
+        "visual": "同一弦中央與三分之一處的三角初形，對照保留／缺少的模態；不複製來源動畫。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "D9002",
+      "question": "同一個鋼琴音裡，較高的頻率為什麼不一定剛好是最低頻率的整數倍？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.stiff_string_modal_inharmonicity",
+      "answer_target": "彎曲剛性對高階模態的影響更大，使頻率序列偏離理想柔弦的整數倍。",
+      "scope": "真弦剛性修正；不把所有泛音偏移等同走音，也不另拆纏線材料題。",
+      "source_ids": [
+        "D9-S002",
+        "D9-S003"
+      ],
+      "source_locator": "harmonics主文Real strings段；KTH Pitch, partials and inharmonicity",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理想整數刻度和實弦模態可以逐階岔開。",
+        "visual": "同長同基音校準後，柔弦與較硬弦的高階頻率點逐階比較。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "D9003",
+      "question": "在弦的正中央加一小塊質量，為什麼不是所有泛音一起等比例變低？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.localized_mass_mode_shape_selectivity",
+      "answer_target": "額外質量主要影響在該位置有運動的模態；節點在中央的模態改變較小。",
+      "scope": "局部小質量、仍受張力約束；與整條弦均勻加重分開。",
+      "source_ids": [
+        "D9-S002"
+      ],
+      "source_locator": "An experiment，加中央質量及奇偶模態段",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "位置決定哪個模態負擔額外慣性。",
+        "visual": "用相同中央標記疊奇數與偶數模態，對照中央是否移動。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "D9004",
+      "question": "同一條略不和諧的弦，拉弓時為什麼可能比撥弦更接近整齊的泛音列？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.bow_nonlinear_periodic_mode_locking",
+      "answer_target": "穩定的非線性黏滑週期把各成分鎖在共同週期，容許偏離各自自由模態頻率。",
+      "scope": "條件是能維持穩定週期的拉奏；不說任何拉弓都準，不另計黏滑如何產生聲音。",
+      "source_ids": [
+        "D9-S002"
+      ],
+      "source_locator": "末段Because the bow’s stick-slip action is periodic及mode locking",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "自由振動頻率與受持續週期鎖定的頻譜不是同一表。",
+        "visual": "同一條弦的自由模態點保留，疊上撥奏頻譜與穩定拉奏的整數刻度。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "D9005",
+      "question": "鋼琴重敲一個音，為什麼不是把輕敲的聲音整體放大而已？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.felt_hammer_nonlinear_contact_spectrum",
+      "answer_target": "琴槌毛氈越壓越難壓，較強敲擊改變脈衝形狀與高頻成分比例。",
+      "scope": "相同琴鍵與錄音條件；非單純提高重播增益，不提供琴槌整音操作。",
+      "source_ids": [
+        "D9-S003"
+      ],
+      "source_locator": "Pitch, partials and inharmonicity，nonlinear stiffness兩段",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "音量變大和激發波形變尖可分開比較。",
+        "visual": "把輕敲波形純放大與較強接觸的示意並排，先匹配基頻再看高次成分。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "D9006",
+      "question": "琴身把弦聲傳得更響，為什麼也可能讓聲音更快消失？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.passive_radiation_coupling_loudness_sustain_tradeoff",
+      "answer_target": "較強的弦—音板耦合更快移出單次激發的能量，初聲更響卻可衰減更快。",
+      "scope": "被動撥／擊弦，分開其他耗散；不稱琴身製造能量或所有琴都同一衰減常數。",
+      "source_ids": [
+        "D9-S004"
+      ],
+      "source_locator": "Loud and sustained，第1–4段",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同能量可以快一點或慢一點交給聲場。",
+        "visual": "同一初始能量條，弱／強橋接耦合分流到音板，並排聲音包絡。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "D9007",
+      "question": "兩條鋼琴弦一起振動時，停止其中一條，聲音怎麼反而可能變大？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.coupled_unison_antisymmetric_bridge_force",
+      "answer_target": "近同音弦的反向運動可抵消橋上作用力；止住一弦解除相消，使輻射暫增而餘振衰減加快。",
+      "scope": "特定反對稱耦合狀態，非所有和弦；不教用手觸碰實琴機構，採模型示意。",
+      "source_ids": [
+        "D9-S005"
+      ],
+      "source_locator": "Two or more strings，Figs.3–6及止住第二弦的正文",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "振得多不必然傳得響，還要看橋上合力。",
+        "visual": "兩弦上下反向箭頭在同一橋相消；撤去一弦箭頭後顯示橋力與聲包絡改變。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "D9008",
+      "question": "一大片板明明來回振動，為什麼低音還可能很弱？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.finite_baffle_front_back_acoustic_short_circuit",
+      "answer_target": "板兩側的壓縮與稀疏相反；低頻下空氣能繞邊交換，削弱向外輻射。",
+      "scope": "相對波長很小且前後相通的板；不宣稱任何封箱都改善所有頻率。",
+      "source_ids": [
+        "D9-S003"
+      ],
+      "source_locator": "The imperfect soundboard，首三段",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "增加振動面積也要避免前後兩側互相抵銷。",
+        "visual": "同一板開放／隔開前後的剖面，追蹤繞邊空氣與遠場壓力對照。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "D9009",
+      "question": "吹笛子的氣流一直往前，怎麼維持每秒來回好幾百次的聲音？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.flute_jet_convection_delay_feedback",
+      "answer_target": "管內聲振動擾動噴流；擾動行進到刃口後交替導流，延遲合適時補回振動能量。",
+      "scope": "限定噴流式笛管的穩定發聲；不把氣流擾動速度說成空氣聲速。",
+      "source_ids": [
+        "D9-S006"
+      ],
+      "source_locator": "The air jet vibrates；How the air jet and pipe work together",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "持續氣流變成週期供能靠有延遲的回授。",
+        "visual": "同一噴流上的擾動前往刃口，並排合相位與錯相位的導流時點。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "D9010",
+      "question": "笛子開一個孔，為什麼有時不是升一點，而是直接跳到另一個音域？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.register_vent_selective_mode_suppression",
+      "answer_target": "開孔讓該位置壓力接近外界；受影響的低模態減弱，原已有壓力節的高模態較能保留。",
+      "scope": "理想register-hole比較；不把任何開孔都當截短，不承諾任一指法都穩定發音。",
+      "source_ids": [
+        "D9-S006"
+      ],
+      "source_locator": "Register holes，C4/C5與壓力節例",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "開孔可以淘汰模式，不只改管子的有效長度。",
+        "visual": "同一管上疊兩種壓力分布，新增開口位置只破壞其中一種。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "D9011",
+      "question": "第一個開孔後面的孔，為什麼還可能改變笛聲？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.tonehole_inertance_frequency_dependent_termination",
+      "answer_target": "開孔空氣有慣性，尤其高頻不等同理想開口；聲波可延伸到下游，後孔狀態仍改變響應。",
+      "scope": "把交叉指法與高頻穿越開孔作同一核心；不沿用來源一處小孔阻抗方向的疑似筆誤。",
+      "source_ids": [
+        "D9-S006"
+      ],
+      "source_locator": "Cross fingering；Cut-off frequencies",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "第一開孔是頻率相依的邊界，並非真的鋸斷。",
+        "visual": "低／高頻在同一小孔的路徑；再只關下游一孔，比較有效波形範圍。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "D9012",
+      "question": "吹瓶口的低音，為什麼不能只拿瓶子的高度當一根短笛計算？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.helmholtz_lumped_neck_mass_cavity_compliance",
+      "answer_target": "波長遠大於瓶身時，腔內近同相壓縮；頸口空氣慣性配合腔內可壓縮性振動。",
+      "scope": "小振幅集中參數近似；長細管駐波另有壓力分布，不能只換尺寸套同一式。",
+      "source_ids": [
+        "D9-S007"
+      ],
+      "source_locator": "Analysing the Helmholtz resonance；Complications involving the effective length",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "形狀相似的空氣腔，不一定用同一種振動模型。",
+        "visual": "同高度兩腔保持頸口相同而改體積，與管內有節腹的壓力圖並排。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "D9013",
+      "question": "麥克風讀到很大的聲壓，就能知道聲能正往哪裡流嗎？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.pressure_gradient_particle_velocity_intensity_inference",
+      "answer_target": "聲壓不足以決定淨聲能流；兩點壓力梯度可估粒子速度，再與聲壓合算軸向聲強。",
+      "scope": "線性聲學、匹配雙麥與限定頻帶；駐波可有聲壓卻無淨流。探頭轉90度為零的是所量分量。",
+      "source_ids": [
+        "D9-S008",
+        "D9-S009"
+      ],
+      "source_locator": "The Euler Equation至The Intensity Calculation；BR0476印刷pp7–11",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。 E2165的相位／平均功率只作背景類比；本題新增核心是聲壓梯度→粒子速度→方向性聲強的量測推論，不另計「大聲但零淨流」一題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "要從大聲找到流向，得加上空氣運動與相位資訊。",
+        "visual": "行波與完全反射管聲壓相同尺度對照；放入雙麥推速度箭頭，再旋轉探頭。",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "D9014",
+      "question": "量聲能的兩支麥克風，為什麼不能永遠放得越近越好？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.intensity_probe_spacing_gradient_phase_error_tradeoff",
+      "answer_target": "小間距改善高頻梯度近似，卻縮小低頻真實相位差，使固定通道失配更顯著。",
+      "scope": "壓力—壓力探頭；依頻帶和聲場設計，不給通用最佳間距。",
+      "source_ids": [
+        "D9-S009",
+        "D9-S010"
+      ],
+      "source_locator": "BR0476印刷pp30–33；Siemens§2–3",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "近和遠各付不同誤差，沒有單向最佳。",
+        "visual": "長／短波同尺度畫兩個取樣點；疊相同小相位偏差，顯示其相對比例。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "D9015",
+      "question": "隔壁機器也在響，怎麼還可能量出這一台送出的聲功率？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.closed_surface_intensity_external_noise_balance",
+      "answer_target": "穩定外部聲能穿入再穿出閉曲面可收支抵消；內部聲源的淨向外通量留下。",
+      "scope": "完整包圍、穩態取樣、無額外內部吸收源等條件；不是單點自動去背景噪音。",
+      "source_ids": [
+        "D9-S009",
+        "D9-S010"
+      ],
+      "source_locator": "BR0476印刷pp14–16；Siemens§7 In-Situ Measurements",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能量帳可以按穿入穿出分，不能只比哪裡最響。",
+        "visual": "透明盒包住一聲源，另一聲源留盒外；各面箭頭帶正負，另畫漏測一面失敗。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "D9016",
+      "question": "靠近某些麥克風說話，為什麼只是移近就讓低音特別多？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.gradient_microphone_nearfield_amplitude_proximity",
+      "answer_target": "近聲源的前後距離差帶來額外壓力幅度差，在原本梯度較弱的低頻尤其顯著。",
+      "scope": "壓差型、指定入射角與聲源幾何；不把所有麥克風靠近都變低沉當通則。",
+      "source_ids": [
+        "D9-S011"
+      ],
+      "source_locator": "Why proximity?；On-axis vs. off-axis；The sound sources",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "人沒有改嗓音，感測方式也能改變低頻比例。",
+        "visual": "同一點聲源遠近兩位置，前後聲路相同但距離比不同；以理想壓力型作對照。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "D9017",
+      "question": "麥克風背後留了聲孔，為什麼反而能讓背面的聲音變小？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.cardioid_rear_path_delay_pressure_cancellation",
+      "answer_target": "後方聲路引入延遲，使來自背面的聲波在膜片兩側近同步到達而減少壓差。",
+      "scope": "被動聲學心形指向模型；不是主動降噪，也不是所有頻率完全拒收背面。",
+      "source_ids": [
+        "D9-S012"
+      ],
+      "source_locator": "Combined pressure and pressure gradient microphones，Figs.7–8",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "多開一條聲路可以削弱膜片兩側的差。",
+        "visual": "正面／背面各放同一脈衝；畫兩路到膜時間，先無延遲再有延遲。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "D9018",
+      "question": "長號吹得很響時，聲波為什麼會在管裡越走越尖？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.finite_amplitude_wave_steepening_in_brass_bore",
+      "answer_target": "較強壓縮部分因局部聲速與流動效應追上前緣，長管內逐漸陡化並增加高頻。",
+      "scope": "指定研究的強奏長號；初始上升速率與管長也重要，不等於高音都比低音傳得快。",
+      "source_ids": [
+        "D9-S013"
+      ],
+      "source_locator": "印刷pp1754–1757，simple wave propagation與Figs.1–3",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "音色可在傳播途中改變，不只在嘴唇出口決定。",
+        "visual": "同一波形沿管三點逐步變陡，另放線性小振幅對照；不使用高音量試驗。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "D9019",
+      "question": "標示全指向的麥克風，為什麼高音還可能因轉向而改變？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "acoustics.microphone_body_diffraction_pressure_buildup",
+      "answer_target": "波長接近感測器尺寸時，麥克風本體反射、繞射和遮蔽改變膜片附近聲壓。",
+      "scope": "有限尺寸壓力麥克風，區分入射聲場與插入感測器後的聲場；不作型號排名。",
+      "source_ids": [
+        "D9-S012"
+      ],
+      "source_locator": "Pressure microphones；The microphone in the sound field，Fig.9",
+      "premise_status": "screened",
+      "notes": "來源直接機制；日常問法與視覺為原創企劃，未實測或逐句核稿。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "量聲音的物體也會改動自己要量的局部聲場。",
+        "visual": "同一高／低頻波前先無感測器、再插入與旋轉；比較膜片位置的聲壓。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "D9-NA001",
+      "question": "長笛較長為什麼聲音較低？",
+      "source_ids": [
+        "D9-S006"
+      ],
+      "reason": "舊題已是氣柱長度與波長，不換樂器重算。",
+      "existing_id": "P119"
+    },
+    {
+      "id": "D9-NA002",
+      "question": "單簧管封一端為何和兩端開口管不同？",
+      "source_ids": [
+        "D9-S006"
+      ],
+      "reason": "基本邊界與奇偶模態已有，未另加足夠新機制。",
+      "existing_id": "P129"
+    },
+    {
+      "id": "D9-NA003",
+      "question": "同一個笛管為什麼能吹出好幾個音？",
+      "source_ids": [
+        "D9-S006"
+      ],
+      "reason": "多個允許駐波模態已有；本批僅保留噴流回授與開孔選擇的新條件。",
+      "existing_id": "P131"
+    },
+    {
+      "id": "D9-NA004",
+      "question": "沒有碰到的琴弦為什麼也振動？",
+      "source_ids": [
+        "D9-S005"
+      ],
+      "reason": "一般同感共振已有；D9007另問橋力相消與停止一弦反變響。",
+      "existing_id": "P114"
+    },
+    {
+      "id": "D9-NA005",
+      "question": "弓毛為什麼能拉出聲音？",
+      "source_ids": [
+        "D9-S002"
+      ],
+      "reason": "若只講黏住滑開即與既有黏滑聲核心相同；D9004只計頻率鎖定的新結果。",
+      "existing_id": "B2318"
+    },
+    {
+      "id": "D9-NA006",
+      "question": "為什麼鼓點需要短時間分析窗？",
+      "source_ids": [
+        "D9-S002"
+      ],
+      "reason": "時間與頻率定位取捨已有；不採UNSW有限窗就等同任何頻率估計精度上限的過度概括。",
+      "existing_id": "M5016"
+    },
+    {
+      "id": "D9-NA007",
+      "question": "琴身不插電為什麼能把聲音變大？",
+      "source_ids": [
+        "D9-S003",
+        "D9-S004"
+      ],
+      "reason": "只答傳遞／共振太薄，改用D9006固定初始能量的響度與延音對照。",
+      "existing_id": "D9006"
+    },
+    {
+      "id": "D9-NA008",
+      "question": "纏線為什麼能同時有重量又比較柔軟？",
+      "source_ids": [
+        "D9-S002",
+        "D9-S003"
+      ],
+      "reason": "有用的設計例子，但本批併入D9002剛性非整數泛音，不另算一核心。",
+      "existing_id": "D9002"
+    },
+    {
+      "id": "D9-NA009",
+      "question": "槍型麥克風為什麼能比較集中收音？",
+      "source_ids": [
+        "D9-S012"
+      ],
+      "reason": "來源可讀，但目前稿案只重述不同路徑的干涉相消，對普通觀眾增量不夠，保留日後與指向性比較。",
+      "existing_id": "P156"
+    },
+    {
+      "id": "D9-NA010",
+      "question": "在鼓皮上畫模態，能否直接知道鼓的主觀音高？",
+      "source_ids": [],
+      "reason": "目前只找到理想模態與題名，尚未讀足夠原研究以連接空氣負載、輻射與音高；不把非整數就完全沒音高當結論。"
+    },
+    {
+      "id": "D9-NA011",
+      "question": "雙膜片麥克風如何消除近講低音？",
+      "source_ids": [],
+      "reason": "Shure白皮書公開web讀取403，只有搜尋片段，未把產品機制當已核正文。"
+    },
+    {
+      "id": "D9-NA012",
+      "question": "兩個幾乎同音的鋼琴弦，分開量的頻率能否直接預測合奏拍頻？",
+      "source_ids": [
+        "D9-S014"
+      ],
+      "reason": "KTH Mistuned strings正文已讀，但與D9007同耦合系統再加鎖頻邊界過專門，本輪不另收；不採作者尚待驗證的調音師假說。",
+      "existing_id": "D9007"
+    }
+  ]
+}

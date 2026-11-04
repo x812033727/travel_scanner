@@ -1,0 +1,210 @@
+{
+  "review_id": "wave3-life-code-review-20261101",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "root",
+  "status": "CHANGES_REQUIRED",
+  "scope": "Independent review of the current diff for history/core/cli/render and complete new semantic.py; no source code or historical pool records changed.",
+  "reviewed_files": [
+    {
+      "path": "tools/video/so-thats-why/pool/semantic.py",
+      "sha256": "fec933f840c68e8985cfe5599c078f149f121ce3cf3de34792e7c51490b5cfc4"
+    },
+    {
+      "path": "tools/video/so-thats-why/pool/history.mjs",
+      "sha256": "b375a442eef6ecfdc58686232468f361b3d9361684d6afcdba16c3545ba1b06d"
+    },
+    {
+      "path": "tools/video/so-thats-why/pool/core.mjs",
+      "sha256": "371d59842cd9fbc88aeaa12bd988df06fe22c1180a899ec075ec966ceae661ac"
+    },
+    {
+      "path": "tools/video/so-thats-why/pool/cli.mjs",
+      "sha256": "23e6d98c1184dbc8f4605aa998ef271e1373e6c650dd98b0520a89705acae935"
+    },
+    {
+      "path": "tools/video/so-thats-why/pool/render.mjs",
+      "sha256": "8d7406ce6f172d2085650a9d7d654dab3059a608619a210c0e47a84fdda224db"
+    }
+  ],
+  "findings": [
+    {
+      "id": "CODE-L01",
+      "priority": "P2",
+      "file": "tools/video/so-thats-why/pool/history.mjs",
+      "lines": [
+        47,
+        53
+      ],
+      "related_file": "tools/video/so-thats-why/pool/core.mjs:144",
+      "title": "Missing checkpoint metadata silently removes the 2000-row protection",
+      "trigger": "checkpoint-2000.json is missing or renamed before rebuilding; the 1000 baseline remains present.",
+      "evidence": "The isolated fixture copied the real 2000 checkpoint, altered B2050.answer_target in memory, and confirmed rejection with metadata present. Renaming only the temporary metadata made validateCheckpoints return []; the remaining mandatory 1000 baseline also accepted the changed row. Actual repository snapshots were untouched.",
+      "impact": "A rebuild can bind the reduced input list and accept edits to rows introduced after the first 1000. readPool drift detection before rebuilding does not restore the missing history requirement.",
+      "required_change": "Read a required, nonempty checkpoint registry in both intake and validation. Require every declared metadata and snapshot file, validate its hash, and bind the registry to the input snapshot. Missing, renamed, empty, duplicate or malformed entries should fail.",
+      "requested_regression_tests": [
+        "Missing/renamed checkpoint-2000 metadata fails even when the 1000 baseline survives.",
+        "Missing/empty registry and missing/changed gzip fail.",
+        "A wave2 raw edit fails while valid, explicitly declared selected-core disposition remains allowed."
+      ],
+      "author_response": "Parent acknowledged and plans a required checkpoints.json registry; not yet fixed in these reviewed hashes."
+    },
+    {
+      "id": "CODE-L02",
+      "priority": "P2",
+      "file": "tools/video/so-thats-why/pool/core.mjs",
+      "lines": [
+        21,
+        26
+      ],
+      "related_file": "tools/video/so-thats-why/pool/core.mjs:131",
+      "title": "New candidates may omit the entire editorial block",
+      "trigger": "A new wave3 candidate omits editorial rather than supplying a malformed block.",
+      "evidence": "validateEditorial({id:\"V9999\"}) returned successfully. The caller does not distinguish new IDs from historical immutable rows. Bounds checks correctly rejected reversed, zero, over-600 and fractional seconds when a block existed.",
+      "impact": "The new payoff, visual and segment-time requirement can be skipped entirely, leaving new material unassessed for the requested film-length and boredom screening.",
+      "required_change": "Only exempt raw IDs present in the frozen 2000 checkpoint. Require editorial for other new candidates while retaining historical raw rows byte-for-byte.",
+      "requested_regression_tests": [
+        "Historical frozen raw IDs may retain missing editorial.",
+        "New ID without editorial fails.",
+        "New ID with valid role/payoff/visual and integer ordered second range passes.",
+        "Invalid or empty role/payoff/visual and invalid seconds fail."
+      ],
+      "author_response": "Parent acknowledged and plans to use checkpoint-2000 frozen raw IDs for the exception; not yet fixed in these reviewed hashes."
+    }
+  ],
+  "verified_behavior": [
+    {
+      "area": "Attention-mask pooling and L2",
+      "result": "PASS",
+      "evidence": "Actual pinned local ONNX model processed three new Chinese fixture questions in one padded batch. Independently indexing only nonpadding hidden states, taking their mean and normalizing agreed with semantic.py to max absolute error 2.9802322387695312e-08. No shared cache writes; no network calls.",
+      "limits": "Small correctness fixture, not a semantic-quality benchmark or full-pool rerun."
+    },
+    {
+      "area": "Pinned model and tokenizer",
+      "result": "PASS",
+      "evidence": "Both installed files matched the hardcoded SHA-256 values. prepare uses an immutable model revision, verifies a downloaded .part before replacement, and normal runs reverify model bytes before reading input.",
+      "limits": "Downloaded files were not fetched again; remote outage or interrupted HTTP streaming was not simulated."
+    },
+    {
+      "area": "Cache integrity and interrupted commit",
+      "result": "PASS",
+      "evidence": "Temporary cache roundtrip, namespace invalidation, changed matrix digest rejection, invalid dimension rejection, NaN rejection and nonunit norm rejection passed. Simulating interruption at metadata-temp replacement retained the previous metadata bytes and readable previous matrix.",
+      "limits": "One simulated commit boundary; not exhaustive process-kill/power-loss or concurrent-writer testing. New inference batches persist only at the final save, so an interruption can lose uncommitted work."
+    },
+    {
+      "area": "Input snapshot and neighbours",
+      "result": "PASS",
+      "evidence": "Three-row actual-model report hash matched exact input bytes. Top-k had the requested two other IDs and excluded self. The persisted 2293-row baseline report hash also matched current pool.json bytes.",
+      "limits": "Similarity remains advisory. No automatic merge or semantic probability claim."
+    },
+    {
+      "area": "Render and segment bounds",
+      "result": "STATIC_REVIEW_AND_BOUNDS_PASS",
+      "evidence": "New markdown and HTML clearly label estimates as untried segment duration rather than whole-film length. Browser text insertion uses textContent. Valid and invalid seconds fixtures exercised the new validator.",
+      "limits": "No browser rendering or listener review performed; presence enforcement is finding CODE-L02."
+    }
+  ],
+  "executed_tests": {
+    "cache_fixture": {
+      "roundtrip": "PASS",
+      "metadata_commit_interruption": "PASS",
+      "namespace_invalidation": "PASS",
+      "matrix_hash_mismatch": "REJECTED",
+      "wrong_dimension": "REJECTED",
+      "nan": "REJECTED",
+      "nonunit_norm": "REJECTED"
+    },
+    "actual_model_fixture": {
+      "rows": 3,
+      "seconds": 10.411,
+      "max_absolute_error": 2.9802322387695312e-08,
+      "shared_cache_written": false,
+      "network_called": false,
+      "input_hash": "PASS",
+      "topk_self_exclusion": "PASS"
+    },
+    "existing_node_tests": {
+      "command": "node --test --test-skip-pattern=\"checked-in second revision\" tools/video/so-thats-why/pool/pool.test.mjs",
+      "selected_tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "omitted": "checked-in second revision has 2000 distinct candidates without rewriting baseline records",
+      "reason": "This workspace is a pending wave3 draft with changed input packets and tools; the current built pool is intentionally still 2000."
+    },
+    "earlier_unfiltered_attempt": {
+      "tests": 11,
+      "passed": 10,
+      "failed": 1,
+      "error": "Pool drift: inputs, source packets or decisions changed; re-review and build",
+      "interpretation": "The attempted negative name filter did not exclude the persisted-snapshot test. Its drift failure is expected during this unbuilt draft, not evidence that the 2000 baseline was rewritten."
+    },
+    "missing_committed_coverage": "At the reviewed hashes pool.test.mjs has no regression tests for semantic.py cache/download/input behavior, validateCheckpoints or validateEditorial. The ad hoc fixtures above are independent review evidence, not committed tests."
+  },
+  "known_pair_baseline": {
+    "evidence": "docs/videos/so-thats-why/pool/reviews/wave3-semantic-baseline.json",
+    "input_sha256": "a0502f924ba7c3980a597a1ce8dee956f9c9eb63d33e232d9e276d4e11b94ba3",
+    "raw_records": 2293,
+    "known_pairs": 50,
+    "top_k": 10,
+    "semantic_retrieved": 29,
+    "lexical_retrieved": 11,
+    "union_retrieved": 31,
+    "independent_check": "Recounted pair membership from the persisted 2293 neighbour rows and lexical retrieval entries; totals match. Full-model 588.2 second runtime was read from the author report, not rerun by reviewer.",
+    "interpretation": "Previously chosen editorial positive pairs, not a random sample, full-pool duplicate recall, calibrated probability, or a basis for automatic elimination."
+  },
+  "limitations": [
+    "No production, paid API, model download or external content operation.",
+    "No 10000-row performance run, independent model-family comparison or new retrieval-quality benchmark.",
+    "Report output write_json is direct rather than atomic; an interrupted output write may leave a report that must be regenerated, but does not replace the old embedding metadata commit point.",
+    "Only the named code changes were reviewed; this is neither a source-claim audit nor a script/listener approval."
+  ],
+  "checkpoint_fixture_js": "import fs from 'node:fs'; import path from 'node:path'; import os from 'node:os'; import assert from 'node:assert/strict';\nimport {ROOT,DIR} from './tools/video/so-thats-why/pool/core.mjs';\nimport {readBaseline,validateBaseline,validateCheckpoints} from './tools/video/so-thats-why/pool/history.mjs';\nconst temp=fs.mkdtempSync(path.join(os.tmpdir(),'pool-checkpoint-review-'));\nassert.equal(fs.realpathSync(path.dirname(temp)),fs.realpathSync(os.tmpdir()));\ntry {\n  const dir=path.join(temp,DIR); fs.mkdirSync(path.join(dir,'baselines'),{recursive:true});\n  const meta=JSON.parse(fs.readFileSync(path.join(ROOT,DIR,'checkpoint-2000.json'),'utf8'));\n  fs.copyFileSync(path.join(ROOT,DIR,'checkpoint-2000.json'),path.join(dir,'checkpoint-2000.json'));\n  fs.copyFileSync(path.join(ROOT,DIR,meta.file),path.join(dir,meta.file));\n  const changed=structuredClone(readBaseline(ROOT,'checkpoint-2000.json').pool);\n  changed.raw_records.find(x=>x.id==='B2050').answer_target+=' CHANGED';\n  validateBaseline(readBaseline(),changed);\n  assert.throws(()=>validateCheckpoints(changed,temp),/Baseline raw records changed/);\n  fs.renameSync(path.join(dir,'checkpoint-2000.json'),path.join(dir,'checkpoint-2000.json.removed'));\n  assert.deepEqual(validateCheckpoints(changed,temp),[]); // Reproduces missing-file bypass at reviewed hashes.\n} finally { fs.rmSync(temp,{recursive:true,force:true}); }\n",
+  "next_action": "Author to implement both accepted fixes and regression tests; reviewer to append a hash-bound follow-up without erasing this original evidence.",
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "reviewer": "pool_life_tech",
+    "status": "BOTH_REPORTED_BLOCKERS_RESOLVED_AT_REVIEWED_HASHES",
+    "original_review_sha256": "7ae93ef3814a58d87d798aa51096481af3b3eb7a491a45d803a8b32586b36eab",
+    "code_sha256": {
+      "core.mjs": "6fe4bac7733a9b6844f533ddc8b764348be940890c837cc62b827274a8e60340",
+      "history.mjs": "b15852548b37cf6b83867313753dd208f0c201394ad9951a29415f68f16e8a8f",
+      "cli.mjs": "23e6d98c1184dbc8f4605aa998ef271e1373e6c650dd98b0520a89705acae935",
+      "semantic.py": "fec933f840c68e8985cfe5599c078f149f121ce3cf3de34792e7c51490b5cfc4",
+      "render.mjs": "8d7406ce6f172d2085650a9d7d654dab3059a608619a210c0e47a84fdda224db",
+      "pool.test.mjs": "cedfd2e40f08301e5a2977b18aad42eeb5bf27ca79c5578533666759dea5b23a",
+      "semantic_test.py": "9a83c5404344fb915f5340a84b19eaf093c74e8b73f66a32b4574ac17f2760d3"
+    },
+    "registry_sha256": "fddf1e242998a5e11a7a76502a55578d689750ee5178d2e177e60f02d26fdf3b",
+    "resolved_findings": [
+      {
+        "id": "CODE-L01",
+        "resolution": "checkpointFiles requires a nonempty unique safe-name registry; editorial_baseline must be in its list. Intake hashes the registry, every listed metadata and snapshot; validateCheckpoints iterates that required list.",
+        "independent_reproduction": "Original temporary-checkpoint fixture updated to include the registry: intact checkpoint passed; changed B2050 failed; renaming the temporary metadata now threw ENOENT rather than returning an empty list. Actual snapshots remained untouched."
+      },
+      {
+        "id": "CODE-L02",
+        "resolution": "Editorial required defaults true; intake derives the sole exception from raw IDs in the hash-verified frozen editorial baseline. Missing fields on a new ID now fail. Historical records retain their original fields.",
+        "independent_reproduction": "validateEditorial({id:\"V9999\"}) rejected. Live read-only intake accepted 2661 draft raw rows and its inputs bound checkpoints.json to exact current bytes."
+      }
+    ],
+    "tests": [
+      {
+        "command": "node --test --test-skip-pattern=\"current expansion preserves\" tools/video/so-thats-why/pool/pool.test.mjs",
+        "tests": 13,
+        "passed": 13,
+        "failed": 0,
+        "scope": "Includes immutable 1000/2000 checkpoint checks and the new required-registry/editorial regression fixtures."
+      },
+      {
+        "command": "python -X utf8 tools/video/so-thats-why/pool/semantic_test.py",
+        "tests": 2,
+        "passed": 2,
+        "failed": 0,
+        "scope": "Cache interruption, namespace change, corrupted bytes, dimensions, nonfinite values, normalization, duplicate keys and unsafe filename."
+      }
+    ],
+    "integration_gate_not_run": "The current-expansion readPool/build snapshot test remains for the author after central selection, dedup decisions and exports are rebuilt. It was intentionally omitted from this targeted fix review; no claim that full current-pool integration has passed.",
+    "remaining_limitations": "No new full-model run, remote-download interruption test, browser QA or all-repository test run. semantic.py/cli/render hashes are unchanged from original review.",
+    "unresolved_blockers_in_this_review": []
+  }
+}

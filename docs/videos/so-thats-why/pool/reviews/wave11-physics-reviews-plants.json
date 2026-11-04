@@ -1,0 +1,580 @@
+{
+  "review_id": "wave11-physics-reviews-plants",
+  "reviewer": "pool_physics",
+  "reviewed_on": "2026-11-01",
+  "status": "PASS_TOPIC_LEVEL_AND_EDITORIAL_TARGETED_RECHECK",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "B11001",
+    "B11002",
+    "B11003",
+    "B11004",
+    "B11005",
+    "B11006",
+    "B11007"
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave11-plants.json",
+      "sha256": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826"
+    },
+    {
+      "file": "reviews/wave11-plants-themes.json",
+      "sha256": "22d86db41b2ff76d5bef059b3ef69327fa8c75ea919d3e0983bd33d3e2f1bdfa"
+    },
+    {
+      "file": "reviews/wave11-plants-author.json",
+      "sha256": "f12731355bd4940f9bd5a253d83ae5041fedb820e3f37d4bd6dfab655169b2d9"
+    }
+  ],
+  "coverage": {
+    "candidate_full_rows": 7,
+    "author_boundary_pairs": 20,
+    "semantic_neighbours": 35,
+    "source_bodies_read_in_specified_scope": 9,
+    "sources_not_independently_read": 0,
+    "author_not_added_read": 18,
+    "independent_baseline_keyword_hits_read": 33,
+    "independent_baseline_not_added_hits_read": 4,
+    "limits": "逐讀本批7題、作者20對及全35建議近鄰，不宣稱逐筆人工讀完3201 raw；題級審閱不是逐句腳本核准。"
+  },
+  "baseline_keyword_search": {
+    "pool_sha256": "837667313fcc0a56b3642dd85e0810beda26f6b3a1dc6edfff48fb8c2038577c",
+    "raw_records": 3160,
+    "not_added": 497,
+    "pattern": "曲率|本體感覺|微管|紋孔|木質部|壓實|expansin|circumnut|ethylene|氣孔|乙烯|epiderm",
+    "method": "對question/answer_target/scope/mechanism_key搜尋後逐讀33命中；not_added全文4命中。"
+  },
+  "semantic_input": {
+    "file": ".cache/wave11-plants-neighbours.json",
+    "sha256": "c32ff3a647184882b402d9cb78d86fabd314c991375262e2f52dd6a1a96dccca",
+    "draft_sha256": "a13124af44169e02cf23ac644617d81a13b338153bff8fa0c2bb8e5199b2f8f2",
+    "raw_records": 3201,
+    "batch_sha256": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826",
+    "method": "每列完整讀五鄰居的question/answer_target/scope。cosine只導引閱讀，沒有按分數合併。"
+  },
+  "candidate_decisions": [
+    {
+      "id": "B11001",
+      "disposition": "retain",
+      "reason": "同樣壓實土但訊號不敏感株延伸較多，並有獨立逸散與缺氧控制；保留受控土柱/水稻與擬南芥限制。",
+      "source_ids": [
+        "B11-S001"
+      ]
+    },
+    {
+      "id": "B11002",
+      "disposition": "retain",
+      "reason": "活根快長與越障成果分離，二維機器根提供側向力/摩擦機制；不能把機器向量冒作活根測值。",
+      "source_ids": [
+        "B11-S002"
+      ]
+    },
+    {
+      "id": "B11003",
+      "disposition": "retain",
+      "reason": "相同尖端角度仍有不同整莖形狀，A/AC模型對照提供可見推進；是模型支持而非曲率受器已找到。",
+      "source_ids": [
+        "B11-S003",
+        "B11-S004"
+      ]
+    },
+    {
+      "id": "B11004",
+      "disposition": "retain",
+      "reason": "固定拉力下的酸化、失活與補回對照有機制厚度；保持幼嫩離體壁範圍。",
+      "source_ids": [
+        "B11-S005"
+      ]
+    },
+    {
+      "id": "B11005",
+      "disposition": "retain",
+      "reason": "微管重排對上應力方向與壁強化模型，有特定方向證據；須標觀察/推論並保留細胞差異。",
+      "source_ids": [
+        "B11-S006"
+      ]
+    },
+    {
+      "id": "B11006",
+      "disposition": "retain",
+      "reason": "多孔外圈與中央厚墊分工，進氣後壓差改變連通，足以區分單向閥與菌絲隔離。",
+      "source_ids": [
+        "B11-S007",
+        "B11-S008"
+      ]
+    },
+    {
+      "id": "B11007",
+      "disposition": "retain",
+      "reason": "反向暫態及人工葉控制值得留池；明列假說及排除3分鐘，未排入影片不需硬接紋孔故事。",
+      "source_ids": [
+        "B11-S009"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "B11001",
+        "b": "L003",
+        "reason": "根自身乙烯累積觸發伸長抑制，且不敏感株能打破反應；不是只改擴散方向。"
+      },
+      {
+        "a": "B11001",
+        "b": "LEG-S55",
+        "reason": "同一氣態訊號分子不等於同核心；本題是土孔隙限制逸散所誘發的根伸長反應，舊題是果實熟成。"
+      },
+      {
+        "a": "B11001",
+        "b": "N093",
+        "reason": "土通道改變水入滲與孔隙限制氣態生長訊號的因果方向及輸運物不同。"
+      },
+      {
+        "a": "B11002",
+        "b": "B2234",
+        "reason": "向地感知控制差速與環旋接觸障礙時改變切向力不同；保留機器根條件。"
+      },
+      {
+        "a": "B11002",
+        "b": "S10007",
+        "reason": "電魚擺動取得資訊的模型不等於根在障礙接觸中以側向力滑脫。"
+      },
+      {
+        "a": "B11002",
+        "b": "P007",
+        "reason": "靜摩擦上限是背景；新增持續環旋使接觸力方向改變、提高正面碰撞後通過機會。"
+      },
+      {
+        "a": "B11003",
+        "b": "B2234",
+        "reason": "朝重力方向校正不足以決定整莖穩態；新增角度與曲率回饋競爭的可比較模型。"
+      },
+      {
+        "a": "B11003",
+        "b": "S10012",
+        "reason": "線蟲前後段耦合傳遞彎曲與植物局部消除曲率、回到穩態的作用方向不同。"
+      },
+      {
+        "a": "B11003",
+        "b": "A5005",
+        "reason": "肌梭構造與器官級曲率回饋模型不是同一已知感測器；植物分子環節未明。"
+      },
+      {
+        "a": "B11004",
+        "b": "L095",
+        "reason": "壁抑制膨脹是背景，酸化/熱失活/補回蛋白在固定拉力下改變延伸，是新增可反證調控。"
+      },
+      {
+        "a": "B11004",
+        "b": "H3090",
+        "reason": "非單純把黏彈蠕變改叫植物；熱失活與蛋白補回的受控反應有新增因果。"
+      },
+      {
+        "a": "B11005",
+        "b": "B2237",
+        "reason": "長期刺激造成矮粗與改變受力方向後微管重排/有向壁強化模型不同。"
+      },
+      {
+        "a": "B11005",
+        "b": "R6011",
+        "reason": "收縮根細胞變短寬與外部應力方向驅動細胞骨架排列不同。"
+      },
+      {
+        "a": "B11005",
+        "b": "B11003",
+        "reason": "細胞骨架應力回饋與整莖姿態模型分屬不同證據；不能聲稱前者已證明後者感受器。"
+      },
+      {
+        "a": "B11006",
+        "b": "V3073",
+        "reason": "水柱中斷不含相鄰管胞連接處的通流/封堵結構切換。"
+      },
+      {
+        "a": "B11006",
+        "b": "D2249",
+        "reason": "不是預設單向通流的閥片；雙側充水時走多孔外圈，一側進氣後壓差使中央厚墊貼水側孔口，分工與觸發條件不同。"
+      },
+      {
+        "a": "B11006",
+        "b": "U8004",
+        "reason": "不是另名的主動受傷隔室堵孔；膜的多孔外圈正常通水、氣液界面壓差使中央墊偏移，是具體新增物理條件。"
+      },
+      {
+        "a": "B11007",
+        "b": "L090",
+        "reason": "一般保衛細胞控孔未涵蓋鄰近表皮先失壓可暫時反向開孔及測量假象控制。"
+      },
+      {
+        "a": "B11007",
+        "b": "L094",
+        "reason": "不是失壓就萎縮的同向例子，鄰居減少背壓使孔先變大才是增量。"
+      },
+      {
+        "a": "B11007",
+        "b": "N099",
+        "reason": "外部風/濕度蒸散梯度與內部細胞相互作用的非單調暫態不同。"
+      }
+    ]
+  },
+  "nearest_neighbour_readback": [
+    {
+      "id": "B11001",
+      "neighbour_ids": [
+        "D2019",
+        "L082",
+        "D2225",
+        "N239",
+        "B2234"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "五鄰居分別是土壤處理、根冠保護、裝配游隙、地陷與向地；不包含受限逸散的生長訊號。"
+    },
+    {
+      "id": "B11002",
+      "neighbour_ids": [
+        "K11001",
+        "P008",
+        "E11015",
+        "D2119",
+        "D2107"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "薄片抗彎、摩擦正向力、撞擊開挖、凸輪約束與木材收縮均不同；保留具體側向力越障條件。"
+    },
+    {
+      "id": "B11003",
+      "neighbour_ids": [
+        "K11001",
+        "D2224",
+        "D2115",
+        "D2127",
+        "K11002"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "薄片幾何與四項傳動/接觸近題不含生長驅動的局部曲率回饋；高相似分數不能替代機制判斷。"
+    },
+    {
+      "id": "B11004",
+      "neighbour_ids": [
+        "B11007",
+        "E9010",
+        "U8019",
+        "B11005",
+        "E9008"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "其他是膨壓暫態、雙層曲率翻轉、局部胞吐、方向強化及花粉折疊，均非固定拉力下蛋白控制壁鬆弛。"
+    },
+    {
+      "id": "B11005",
+      "neighbour_ids": [
+        "U8019",
+        "B11004",
+        "L017",
+        "B11007",
+        "U8006"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "胞吐/膜回收、壁鬆弛、氣孔背壓與鞭毛馬達換向，不包含莖頂應力方向與微管排列模型。"
+    },
+    {
+      "id": "B11006",
+      "neighbour_ids": [
+        "W5028",
+        "B2123",
+        "B4025",
+        "D2247",
+        "D2088"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "錯流減污、噴射推進、水封移失、減壓負回授與表面搭接，均不同於孔膜外圈通流/中心封氣分工。"
+    },
+    {
+      "id": "B11007",
+      "neighbour_ids": [
+        "L094",
+        "L079",
+        "L090",
+        "R6011",
+        "B11004"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "膨壓一般回復、皮孔、一般保衛細胞、收縮根與蛋白鬆壁不包含鄰居先失壓造成的反向暫態。"
+    }
+  ],
+  "not_added_assessment": "18筆作者退題仍在not_added，未再次送中央merge/excluded；既有水勢、膨壓、重力、氣栓與未完成機制皆無需復活。",
+  "source_reads": [
+    {
+      "id": "B11-S001",
+      "url": "https://dspace.library.uu.nl/bitstream/handle/1874/418726/science.abf3013.pdf?sequence=1",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S001.pdf",
+      "sha256": "1865af9303f2b822551835ec857d478d88504fda916af34453111b2214b70cd2",
+      "bytes": 1060152,
+      "source_id": "B11-S001",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "Repository PDF pp.2–4主文與Fig1–2圖說；p.5 Fig3圖說。",
+      "assessment": "同硬土的不敏感株、隔氣及缺氧標記、兩腔擴散提供各自對照；土含水量共同改變的限制已保留。",
+      "limitations": "未讀SI或影片，未重算影像與統計。"
+    },
+    {
+      "id": "B11-S002",
+      "url": "https://cropgeneticsinnovation.ucdavis.edu/sites/g/files/dgvnsk6996/files/inline-files/e2018940118.full_.pdf",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S002.pdf",
+      "sha256": "c70be2a11564d7769974401d49d16e92717032487815eb0a8519ac6d2db11789",
+      "bytes": 1559750,
+      "source_id": "B11-S002",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "PDF pp.1–2 HK1表型/伸長與環旋；pp.4–7固面、機器根、clay-particle test及Discussion；Fig4–6圖說。",
+      "assessment": "活根結果與二維機器模型必須分開；接觸角區間、切向力與摩擦提供超過一般向地性的新條件。",
+      "limitations": "沒有操作模型、看影片或逐基因鏈驗證；示意固定接觸角不是新增活體力測量。"
+    },
+    {
+      "id": "B11-S003",
+      "url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/51662483/prod11357304142078.PNAS_2012_Bastien_1214301109.pdf",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S003.pdf",
+      "sha256": "c3a187da990be1b5eea0330b9e21d23091d117cf04825653d62b45f49eea44fb",
+      "bytes": 3399895,
+      "source_id": "B11-S003",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "PDF pp.3–6（article2–5）：H1–H5、A/AC模型、Fig1/3與曲率/生長區限制、分子機制未明段；另目視PDF p.3 Fig1。",
+      "assessment": "只看角度的模型不能重現回穩；局部曲率回饋可消減振盪。原文仍有部分植株振盪預測失配。",
+      "limitations": "未重算方程或讀SI，不把模型等同已找到曲率受器。"
+    },
+    {
+      "id": "B11-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3995075/fullTextXML",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S004.xml",
+      "sha256": "0ef2ca0fa9ca948a7d2a81f96f1b4980a42593f78b46c4d73f6c5d004cc1dfd6",
+      "bytes": 127591,
+      "source_id": "B11-S004",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "Europe PMC XML：Experimental validation與Discussion-conclusion。",
+      "assessment": "伸長的被動方向漂移與曲率固定限制模型適用時間；也不能用本模型解釋所有振盪差異。",
+      "limitations": "未重算ACĖ方程，保留作B11003邊界而不拆新核心。"
+    },
+    {
+      "id": "B11-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2789103/fullTextXML",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S005.xml",
+      "sha256": "9e0fb6240eae526e63d5ffcbc199fc22052e89ad9bddd2569c31283821047e29",
+      "bytes": 22581,
+      "source_id": "B11-S005",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "Europe PMC XML：Protocol Parts2–4及Discussion，重點constant-force apparatus與First/Second Experiment。",
+      "assessment": "相同外加拉力，原生壁酸化、熱失活、補expansin的對照成立；是離體非活體試樣。",
+      "limitations": "未看方法影片或做實驗；不採操作教程、不畫成已定共價鍵水解。"
+    },
+    {
+      "id": "B11-S006",
+      "url": "https://www.phys.ens.psl.eu/~corson/pdf/hamant-08.pdf",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S006.pdf",
+      "sha256": "1ca600cbb43893cd0b5b48ebf2f753319dbb1a1ca0a4ed9ca8ed66d52832059d",
+      "bytes": 999901,
+      "source_id": "B11-S006",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "PDF pp.2–6 / printed1650–1654：Intro、模型、Cell ablation、Application of constraints、Concluding remarks；Fig1/3/4圖說；目視PDF p.6 Fig4。",
+      "assessment": "側夾後多數微管朝平行夾板方向排列，與最大張力方向模型相符，細胞間仍有噪音與差異；完整強化迴路屬模型。",
+      "limitations": "不說已知唯一分子感測器或全部細胞同步；不與B11003串成實證分子鏈，未讀SI或看影片。"
+    },
+    {
+      "id": "B11-S007",
+      "url": "https://sperry.biology.utah.edu/publications/Pittermann%20et%20al.%202005%20Science.pdf",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S007.pdf",
+      "sha256": "b8f80760e866d8e76fbae88a0852c4e1456bb45752d895e1820bbb270b8869fd",
+      "bytes": 90921,
+      "source_id": "B11-S007",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "單頁p1924正文與Fig1圖說，另渲染目視D–G通流/封氣示意。",
+      "assessment": "外圈正常導水、中央厚墊封堵的分工有直接圖文依據。",
+      "limitations": "不採跨物種倍數作一般常數或全部中央墊永不透氣的概括；未讀補充材料。"
+    },
+    {
+      "id": "B11-S008",
+      "url": "https://openresearch-repository.anu.edu.au/server/api/core/bitstreams/aaec784a-d0ce-4efb-9fbd-fe14bf091bb2/content",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S008.pdf",
+      "sha256": "5ba411494e4034e45f1e0840ad4cc6cdb556239ca662df22c94ef51b936a51a0",
+      "bytes": 1398496,
+      "source_id": "B11-S008",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "PDF pp.1–3 / printed1919–1921，尤p.2 when tracheids are water filled段及Fig1圖說。",
+      "assessment": "一側進氣後膜朝仍充水側偏移，厚墊貼孔；正常多孔通流與封氣壓差條件不同。",
+      "limitations": "只核所列正文背景，不代表核完15物種的全文結果及競爭失效假說。"
+    },
+    {
+      "id": "B11-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10875092/fullTextXML",
+      "method": "urllib HTTP with required editorial UA",
+      "status": 200,
+      "file": ".cache/wave11-physics-plants-review/B11-S009.xml",
+      "sha256": "fc218653ea4cf59326c52182d19ddf2367f3cdd6f5f3daeed6325fdfc6a6fee0",
+      "bytes": 168619,
+      "source_id": "B11-S009",
+      "read_via": "本代理當日以指定UA新HTTP取得；PDF以PyMuPDF文字層、XML以ElementTree解析指定正文。圖像閱讀另在reading_scope明列。",
+      "reading_scope": "Europe PMC XML：Gas exchange measurements、LI-6800 measurements on artificial leaves、兩個指定Results小節、Discussion前三分量段及Fig1–3/10圖說。",
+      "assessment": "人工固定孔控制顯示最初3分鐘有儀器假象；排除後仍有反向暫態。鄰居背壓解除/恢復與保衛細胞調節是作者提出的三分量模型。",
+      "limitations": "未審所有突變株與引用原研究；不聲稱模型已成定論，也不把首3分鐘尖峰當生理證據。"
+    }
+  ],
+  "failed_accesses_this_review": [],
+  "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "source_reading_limits": "9次當日HTTP皆200，所得副本SHA與作者各來源副本相同；閱讀範圍逐源明列，不等於讀完9篇全文/所有SI。沒有實驗、影片觀看、重算原統計或製作媒體。",
+  "required_corrections": [
+    {
+      "id": "PLANTS11-T01",
+      "artifact": "reviews/wave11-plants-themes.json",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "reason": "原題名主要由第二研究回答；兩章末各15秒純回扣/轉問過長。",
+      "accepted_change": "以根鑽不進土是否只是力氣不足為同一追問；明列力方向/接觸幾何與訊號，兩研究不混；章末各15→5，90+95=185秒，無新增補時。",
+      "verified": "已讀最終題名/core/connection，兩章尾段5秒；90+95=185，range與drop_if、作者秒表及before/after SHA一致；batch未變。"
+    }
+  ],
+  "remaining_limits": [
+    "T01兩研究需清楚重設試件，不能畫成同株連續實驗。",
+    "T02若原創形狀動畫無法分清角度與曲率，撤題案，不以術語補長。",
+    "T03只串調整伸長與方向兩種控制問題，不能畫成一條已證分子鏈。",
+    "T04封堵須向水側，且限定具torus-margo結構，不是全部樹的通用閥門。",
+    "B11007只能作三分量假說，不採儀器最初3分鐘。",
+    "所有秒數為紙上預算，未試讀/製圖/實拍；不保證觀眾理解或可直接製作。"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave11-plants.json",
+      "sha256": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826"
+    },
+    {
+      "file": "reviews/wave11-plants-themes.json",
+      "sha256": "c67612de4c246329b5f222ca8d7d99e8bff215226e95583a4531b5871cb0a4d3"
+    },
+    {
+      "file": "reviews/wave11-plants-author.json",
+      "sha256": "71d4af600bf967d1e3ebcc76076824cc12da3f12b28cccebe52f2cf699d9a2fa"
+    }
+  ],
+  "theme_reviews": [
+    {
+      "id": "W11B-T01",
+      "decision": "retain_revised",
+      "seconds": 185,
+      "chapters_seconds": [
+        90,
+        95
+      ],
+      "per_core_seconds": {
+        "B11001": 90,
+        "B11002": 95
+      },
+      "caps": {
+        "B11001": 110,
+        "B11002": 120
+      },
+      "story_assessment": "同一個根進不去的可見結果，依序拆開訊號反應與接觸方向；修後題名能同時涵蓋兩章。兩研究、活根與機器根均明確重設，不宣稱大小用力無關。",
+      "timing_assessment": "兩段純回扣由各15秒縮5秒；其餘用不同控制與接觸對照推進，沒有補回刪掉20秒。"
+    },
+    {
+      "id": "W11B-T02",
+      "decision": "retain",
+      "seconds": 125,
+      "chapters_seconds": [
+        60,
+        65
+      ],
+      "per_core_seconds": {
+        "B11003": 125
+      },
+      "caps": {
+        "B11003": 140
+      },
+      "story_assessment": "從尖端同向但形狀不同，到只看角度的模型失效，再到曲率回饋模型；兩章是不同理解階段。",
+      "timing_assessment": "同核心累計125秒低於140，最長40秒beat有角度與形狀對照；不是以章數拆名詞。"
+    },
+    {
+      "id": "W11B-T03",
+      "decision": "retain",
+      "seconds": 185,
+      "chapters_seconds": [
+        95,
+        90
+      ],
+      "per_core_seconds": {
+        "B11004": 95,
+        "B11005": 90
+      },
+      "caps": {
+        "B11004": 105,
+        "B11005": 110
+      },
+      "story_assessment": "固定拉力調整伸長，接著才問伸長方向如何受限；兩種壁控制問題可相接，但離體與活體研究不得偷接成分子鏈。",
+      "timing_assessment": "前章依次酸化、失活、補回；後章觀察重排對上推算主張力方向，再說各向異性。回扣均10秒，無需額外加長。"
+    },
+    {
+      "id": "W11B-T04",
+      "decision": "retain",
+      "seconds": 100,
+      "chapters_seconds": [
+        45,
+        55
+      ],
+      "per_core_seconds": {
+        "B11006": 100
+      },
+      "caps": {
+        "B11006": 110
+      },
+      "story_assessment": "始終跟同一紋孔剖面，正常通水走外圈，再一側進氣使厚墊貼水側；提供真正條件切換。",
+      "timing_assessment": "100秒單核累計低於110；開場15秒、兩狀態及10秒回扣均已計入，不另加水柱背景章。"
+    }
+  ],
+  "validation": {
+    "json_parses": true,
+    "utf8_lf": true,
+    "all_candidate_ids_present": true,
+    "source_ids_resolve": true,
+    "all_source_http_sha_match_author_copies": true,
+    "beat_sums_equal_chapters": true,
+    "chapter_sums_equal_body_seconds": true,
+    "target_minutes_equal_body_seconds": true,
+    "all_beats_at_most_45_seconds": true,
+    "per_core_per_theme_caps": "PASS",
+    "actual_read_aloud": false,
+    "production_ready": false
+  },
+  "final_input_check": {
+    "draft_sha256": "a13124af44169e02cf23ac644617d81a13b338153bff8fa0c2bb8e5199b2f8f2",
+    "batch_sha256": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826",
+    "result": "本批問答與來源保持作者鎖版，近鄰7列/35項仍適用；本次只改theme/author，不新增語意候選。",
+    "note": "若root另刷新共同draft，需附實際delta讀回；本收據不預先宣稱未發生的版本已核。"
+  },
+  "summary": {
+    "retained_candidates": 7,
+    "merges": 0,
+    "excluded": 0,
+    "themes": 4,
+    "theme_seconds": [
+      185,
+      125,
+      185,
+      100
+    ],
+    "remaining_required_corrections": 0,
+    "production_ready": false
+  }
+}

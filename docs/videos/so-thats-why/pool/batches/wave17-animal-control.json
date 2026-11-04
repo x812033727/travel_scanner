@@ -1,0 +1,519 @@
+{
+  "batch_id": "wave17-animal-control-20261102",
+  "created_on": "2026-11-02",
+  "scope": "動物感覺與主動控制：外部電脈衝、衝突回饋、起跳姿態、假動作、機會教學、條件落點規則；只收可見控制增量。題級篩選非完整稿核准。",
+  "sources": [
+    {
+      "id": "B17-S001",
+      "url": "https://doi.org/10.1038/s41586-024-07157-x",
+      "title": "Collective Sensing in Electric Fish",
+      "publisher": "Nature / Pedraja and Sawtell; NCBI PMC author manuscript",
+      "doi": "10.1038/s41586-024-07157-x",
+      "version": "Nature 628:139–144 (2024); PMC12062789 author manuscript available 2025-05-09",
+      "published_on": "2024-03-06",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.open PMC為CAPTCHA；同日指定UA urllib HTTP200取得真正PMC HTML，lxml抽取主文與圖說實讀，未以搜尋片段充正文。",
+      "reading_scope": "主文電場模型、神經記錄、模擬同伴放電的偵測/辨識實驗與Discussion（本機段落11–31）；Methods動物、模型及偵測/辨識條件定點。未看影片或重算資料。",
+      "locator": "Main text / Figs.1–4, especially physical explanation after Fig.1 and cons trials around Fig.4; Methods / Behavioral measurements of electrolocation range",
+      "summary": "把發射者移到物體附近，可改變訊號衰減路徑；外部脈衝開關與時間窗實驗支持魚能使用這份物體資訊。",
+      "limitations": "主文行為偵測用新奇放電反應作指標，辨識4魚、距離5魚；真實群體協調目的與時間窗生物解碼仍是假說。不把2025典藏日期當研究年。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12062789/",
+      "author_cache": {
+        "file": ".cache/wave17-life-electric2024.html",
+        "sha256": "96943392bf1d17ec96f7c296b291f04bd8ab0549d678782f4784e0906d3fb542",
+        "text_file": ".cache/wave17-life-electric2024.txt",
+        "text_sha256": "c1bd6cc98f660c2d59e286178ab56afbb5c9bddb98af3694b5fc32f078ab5086"
+      }
+    },
+    {
+      "id": "B17-S002",
+      "url": "https://doi.org/10.1073/pnas.1522419113",
+      "title": "Integration of parallel mechanosensory and visual pathways resolved through sensory conflict",
+      "publisher": "PNAS / Roth et al.; Georgia Tech author-hosted published PDF",
+      "doi": "10.1073/pnas.1522419113",
+      "version": "PNAS 113(45):12832–12837; PDF6頁主文加SI",
+      "published_on": "2016-10-24",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋/打開定位；指定UA urllib HTTP200取得正文載體，依指定頁/段實讀。",
+      "reading_scope": "PDF pp.1–6主文的兩部件花裝置、三種衝突條件、線性合成及新相位刺激檢驗；圖1–4圖說。未重算SI表格或看影片。",
+      "locator": "Results / Open-Loop Sensorimotor Gains; Mechanosensory and Visual Contributions Sum Linearly; Linear Summation Furnishes a Predictive Model, PDF pp.2–5",
+      "summary": "花面與花蜜管分開移動時，兩路回饋會拉扯；以各路反應預測新組合，支持此條件下近似線性相加。",
+      "limitations": "固定光照與側向追花，不是改變可靠度後重新加權；單獨移一部件仍保留另一部件的靜止訊號。完全移除一路的追蹤能力是模型外推，非本文實測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://sponberg.gatech.edu/wp-content/uploads/2015/10/Proceedings-of-the-National-Academy-of-Sciences-2016-Roth.pdf",
+      "author_cache": {
+        "file": ".cache/wave17-life-moth2016.pdf",
+        "sha256": "c5c54c939806b184f7d81e7df3d5e5c00a7c01eddf17bb5898ba138c5723f1f7",
+        "text_file": ".cache/wave17-life-moth2016.txt",
+        "text_sha256": "a80bed6fe4123e66f32b01d5c8839cd378cf4832543ac02c36190b4827c1abf0"
+      }
+    },
+    {
+      "id": "B17-S003",
+      "url": "https://doi.org/10.1016/j.cub.2008.07.094",
+      "title": "Visually Mediated Motor Planning in the Escape Response of Drosophila",
+      "publisher": "Current Biology / Card and Dickinson; Florida International University faculty-hosted published PDF",
+      "doi": "10.1016/j.cub.2008.07.094",
+      "version": "Current Biology 18:1300–1307",
+      "published_on": "2008-08-28",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋/打開定位；指定UA urllib HTTP200取得正文載體，依指定頁/段實讀。",
+      "reading_scope": "PDF pp.1–7：Results落盤、擋風/去翅控制、腿位與初始姿態分析、Fig.1–4圖說、Discussion未知路徑與Experimental Procedures。未看補充影片，未重算向量插值。",
+      "locator": "Results / Figs.1–3, PDF pp.1–5; Experimental Procedures p.7",
+      "summary": "逃跑初始方向與起跳前重心相對中腿的位置相連；同一威脅方向從不同起始姿態會引出不同幅度、甚至相反的挪腳。",
+      "limitations": "3日齡雌性果蠅、落盤平台；重心以頭腹中點近似。視覺足以引方向，不排除其他情境的機械感覺；預備動作的神經路徑未由本文定位。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://faculty.fiu.edu/~theobald/wp-content/uploads/2016/01/Card-and-Dickinson-2008-Visually-Mediated-Motor-Planning-in-the-Escape-Res.pdf",
+      "author_cache": {
+        "file": ".cache/wave17-life-fly2008.pdf",
+        "sha256": "c68e6aea0cf1426a7fec6b18e78dcfac4e7b004c85a437c9a578cfc115fa1790",
+        "text_file": ".cache/wave17-life-fly2008.txt",
+        "text_sha256": "6e834931ab32a65f29e6a174b3e030115eb7abce05a94582c649bab638029169"
+      }
+    },
+    {
+      "id": "B17-S004",
+      "url": "https://doi.org/10.1073/pnas.0905183106",
+      "title": "Tentacled snakes turn C-starts to their advantage and predict future prey behavior",
+      "publisher": "PNAS / Kenneth C. Catania; NCBI PMC",
+      "doi": "10.1073/pnas.0905183106",
+      "version": "PNAS 106(27):11183–11187; PMC2699377 published article",
+      "published_on": "2009-06-19",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.open PMC為CAPTCHA；指定UA urllib HTTP200取得文章HTML，lxml實讀主文及圖說。",
+      "reading_scope": "Introduction、Results及Discussion、Materials and Methods（本機段落12–27）；Figs.1–4圖說。未看SI影片，未另讀2010天生能力論文。",
+      "locator": "Results / Figs.1 and 3 hydrophone latency; Figs.2–4 strike offset and failed predictions; Materials and Methods",
+      "summary": "蛇身先擾水、蛇頭再出擊；水壓與時序支持魚被身體假動作觸發，J形位置讓逃離刺激反而接近蛇嘴。",
+      "limitations": "4蛇、淺水近2D水槽與指定魚朝向；不是每次捕獵成功，也沒有直接在這些魚記錄Mauthner神經。對未來位置的瞄準是運動證據，非證明心智推理或天生。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2699377/",
+      "author_cache": {
+        "file": ".cache/wave17-life-snake2009.html",
+        "sha256": "256be742958d3aa025fece707efe0a0ef16a09d523a86b7f63ce51f186544c48",
+        "text_file": ".cache/wave17-life-snake2009.txt",
+        "text_sha256": "f460e2e611c72a6e5569ac6bf3374d737d787956cef2f0c0db5ddcdf5c67750b"
+      }
+    },
+    {
+      "id": "B17-S005",
+      "url": "https://doi.org/10.1126/science.1128727",
+      "title": "Teaching in Wild Meerkats",
+      "publisher": "Science / Thornton and McAuliffe; coauthor-uploaded ResearchGate public full text",
+      "doi": "10.1126/science.1128727",
+      "version": "Science 313(5784):227–229; author-uploaded published-text extraction",
+      "published_on": "2006-07-14",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.open ResearchGate成功實讀合著者Katherine McAuliffe標記上傳的Public Full-text 1；指定UA抓RG為403，PDF連結404；CiteSeer路線轉Wayback非正文。不冒稱已下載原PDF。",
+      "reading_scope": "RG Public Full-text 1中印刷pp.227–229正文：叫聲交叉播放、成長觀察、同窩幼獸活/死蠍/蛋訓練比較及功能性教學界線（web行187–635）。未讀Science supporting online Methods/Tables S1–S5。",
+      "locator": "p.227–228 / playback of older versus younger pup calls (Fig.1D–E); p.228 training three littermates; p.229 functional explanation",
+      "summary": "播放不同年齡叫聲能改變獵物交付狀態；額外接觸活獵物的訓練對照支持提供練習機會，而非只把食物送到嘴邊。",
+      "limitations": "叫聲提供年齡線索，不證成人診斷每隻幼獸的知識或有教學意圖；訓練6窩4群，不外推所有社會哺乳類。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://www.researchgate.net/publication/6944406_Teaching_in_Wild_Meerkats",
+      "author_cache": {
+        "file": ".cache/wave17-life-meerkat-web-readback.json",
+        "sha256": "1c71e88683b75aabd9c2dd973f8b6dc4a69da795fc634bb18a444c8d7315ba3d",
+        "content_kind": "web tool readable extract and response metadata; not original PDF or complete site HTML"
+      }
+    },
+    {
+      "id": "B17-S006",
+      "url": "https://doi.org/10.7554/eLife.99634.3",
+      "title": "Learning and cognition in highspeed decision making",
+      "publisher": "eLife / Krause, Schulze and Schuster; NCBI PMC published article",
+      "doi": "10.7554/eLife.99634.3",
+      "version": "Version of Record 2025-06-25; eLife 13:RP99634; PMC metadata base DOI 10.7554/eLife.99634",
+      "published_on": "2025-06-25",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.open PMC為CAPTCHA；指定UA urllib HTTP200取得PMC正文；另web.open eLife核Version of Record及.3 DOI，不把2024/2025 preprint版本另算實驗。",
+      "reading_scope": "Results指定虛擬裝置控制、新偏折規則、隱藏偏折、泛化與形狀選規則（本機段落17、20–21、31、35、40、43–53）；Methods Animals/monitor/feeders/individual identity/analysis段67–74。未看影片或重跑原資料。",
+      "locator": "Results / Figs.3–7, especially Fig.6 different shape rules and Fig.7 shape available only at motion onset; Materials and methods / Animals and Data analysis",
+      "summary": "長期訓練後，同一初始運動可依物體形狀選不同預測落點；隱藏後段與移開餵食器的測試排除只追可見偏折或固定餵食位置。",
+      "limitations": "6成魚同群，分析每試次先反應者；雙規則個體分析為貢獻最多3魚。訓練歷時多週，快速是當次決策非快速學成；未解碼神經電路，不說魚懂物理公式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12194133/",
+      "author_cache": {
+        "file": ".cache/wave17-life-archer2025.html",
+        "sha256": "de30a574dd8268bb0188319460ae24afc541bcf29b8c6c27b69fae0ccb8138a7",
+        "text_file": ".cache/wave17-life-archer2025.txt",
+        "text_sha256": "ff31c2c6d015f2e9349ef223e9d3aa7d35aa6c0eace194fd77a7e4dc812db121"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "B17001",
+      "question": "別條電魚放電時，為什麼不只會干擾，還能幫牠發現更遠的物體？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "conspecific_pulse_electrolocation_path_geometry",
+      "answer_target": "物體附近的另一發射源改變電場探測路徑，接收魚可讀取物體對外來脈衝的調制；不是等同伴做出避讓再跟隨。",
+      "scope": "限Gnathonemus petersii離散短脈衝、指定相對位置；模型距離衰減與行為偵測分層，不能套連續波魚或宣稱群體刻意共享地圖。",
+      "source_ids": [
+        "B17-S001"
+      ],
+      "source_locator": "B17-S001 / physical explanation after Fig.1; Fig.3 mimics on/off and Fig.4 cons-only-information trials",
+      "premise_status": "screened",
+      "notes": "舊wave10同方向因未取得正文而退，本次實讀後重入。物體特性只在外部脈衝窗不同是辨識控制；不另拆成第二題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能分清收到同伴的電脈衝與跟隨同伴的動作，並預測改變發射位置會改變有利區域。",
+        "visual": "原創俯視圖並排自發路徑與近物體外部發射源；再畫自己脈衝時兩物體相同、外部脈衝時才不同的時間窗。",
+        "seconds": [
+          75,
+          135
+        ]
+      }
+    },
+    {
+      "id": "B17002",
+      "question": "明明看到花在左右晃，天蛾為什麼沒有完全跟著它晃？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "moth_conflicting_visual_proboscis_feedback_linear_sum",
+      "answer_target": "看得見的花面與口器碰到的花蜜管提供相互競爭的運動誤差；兩路在各頻率的相對強弱與相位關係，在所測衝突條件間近似不變，合成後能抵銷部分動作。",
+      "scope": "Manduca sexta側向人工花追蹤；靜止花蜜管仍提供回饋，不能說視覺單獨開啟。線性模型在特製刺激有新資料檢驗，但未指出唯一神經實作。",
+      "source_ids": [
+        "B17-S002"
+      ],
+      "source_locator": "B17-S002 / PDF pp.2–5, Figs.2–4 and Linear Summation Furnishes a Predictive Model",
+      "premise_status": "screened",
+      "notes": "與S10008的頭部高低頻分工、P14009的可靠度改權重不同。本題不另收完全隔離一路仍可追花，因該部分只是模型預測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂反應變小可能是兩個仍有效的訊號互相拉扯，並能辨別靜止線索與沒有線索。",
+        "visual": "兩部件假花原理圖；三種移動/靜止搭配，再用經模型校準的兩路波形示意部分頻率抵銷，標成概念重畫。",
+        "seconds": [
+          80,
+          125
+        ]
+      }
+    },
+    {
+      "id": "B17003",
+      "question": "果蠅還沒起跳，為什麼先把腳挪一下就能改變逃跑方向？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "fly_escape_preflight_posture_target_repositioning",
+      "answer_target": "先調整重心相對中腿接地位置，讓後續伸腿把身體推向遠離威脅的一側；同一威脅的預備挪腳依初始姿態改變，不是固定一套腿動作。",
+      "scope": "限3日齡雌果蠅落盤平台；去翅與擋風比較支持腿位/視覺足以定向，不宣稱所有起飛或完全排除翼力。重心為影像近似，預備神經路徑未直接確定。",
+      "source_ids": [
+        "B17-S003"
+      ],
+      "source_locator": "B17-S003 / Results Figs.1–3 PDF pp.1–5; Experimental Procedures p.7",
+      "premise_status": "screened",
+      "notes": "比S10006足部狀態影響跨障選擇多了推力前的幾何重設；不是P164靜態防翻倒。先留segment，未硬接其他逃跑動物百科。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能預測同樣從前方逼近，站姿不同時挪腳方向不必相同。",
+        "visual": "頂視與側視簡圖標中腿落點和估計重心；同一前方刺激、兩種初姿態收斂到可後跳的位置。",
+        "seconds": [
+          55,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B17004",
+      "question": "魚明明往遠離水動的方向逃，為什麼反而衝向蛇嘴？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "tentacled_snake_feint_spatially_decouples_alarm_and_jaws",
+      "answer_target": "J形埋伏使身體假動作與蛇嘴在魚的不同側；先發水動觸發逃離身體的快速彎身，蛇頭隨即攻向該路徑。",
+      "scope": "限原研究4條觸鬚蛇、淺水水槽與指定魚朝向；水壓/動作時序支持假動作觸發，沒有同步量得魚的特定神經。魚未按典型方向逃時蛇可失手。",
+      "source_ids": [
+        "B17-S004"
+      ],
+      "source_locator": "B17-S004 / Results Figs.1–4 and Materials and Methods",
+      "premise_status": "screened",
+      "notes": "與B2303以電刺激令隱藏獵物抽動再定位不同：此處把防禦轉向導進攻擊路徑。與B2320遮擋外推不同，掠食者先改變獵物將做的動作；不拆天生/後天起源題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能分開刺激來向與真正攻擊來向，知道一個通常有效的快速規則在哪種幾何會失效。",
+        "visual": "J形蛇的身體和嘴分色；先水壓事件再逃逸轉向；補不動/反向時蛇偏出目標的失敗例，不做血腥重建。",
+        "seconds": [
+          65,
+          120
+        ]
+      }
+    },
+    {
+      "id": "B17005",
+      "question": "幼狐獴還是同一批，只換叫聲播放，照顧者為什麼會改給活獵物？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "meerkat_pup_age_calls_adjust_prey_practice_opportunity",
+      "answer_target": "乞食叫聲的年齡線索調節交付獵物的處理程度；逐步提供可操作的活獵物，讓幼獸獲得單吃死獵物沒有的處理練習。",
+      "scope": "原研究交叉播放較老/較幼叫聲；額外練習比較為6窩4群的同窩幼獸。功能性教學不等於成人理解幼獸心智，不寫飼養或危險獵物操作建議。",
+      "source_ids": [
+        "B17-S005"
+      ],
+      "source_locator": "B17-S005 / pp.227–228 Fig.1D–E; p.228 littermate training; p.229 functional definition",
+      "premise_status": "screened",
+      "notes": "wave14未讀主文的退題在本輪取得合著者公開主文後重入。和A14005接觸等候同步不同：控制交付物的操作難度及練習機會。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能辨別只隨年齡同時改變的觀察，與換叫聲的控制；也看懂吃到相同食物不等於練到相同技能。",
+        "visual": "同批幼獸配兩種年齡叫聲的交叉設計；再以活且去刺、死獵物、等量蛋三條訓練支線，標研究設計而非觀眾操作。",
+        "seconds": [
+          80,
+          135
+        ]
+      }
+    },
+    {
+      "id": "B17006",
+      "question": "起步路線一樣，射水魚為什麼看到圓形和三角形卻轉向不同地方？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "archerfish_learned_object_conditioned_interception_rules",
+      "answer_target": "長期訓練把物體形狀與不同落點規則連結；當後段偏折不可見時，形狀仍能選擇初始運動映射成哪個預測落點，不必等看到轉彎才修正。",
+      "scope": "2025研究6成魚同群與螢幕虛擬目標，逐試次取先反應者；雙規則個體分析3魚。耗多週學習，不是一次學成；沒有神經電路直接證據或魚理解公式的證明。",
+      "source_ids": [
+        "B17-S006"
+      ],
+      "source_locator": "B17-S006 / Results Figs.4–7, especially Figs.6–7; Materials and methods / Animals, Data analysis",
+      "premise_status": "screened",
+      "notes": "B2015只有獎勵改變行為頻率；本題保留隱藏偏折、餵食器偏離與同一初始路線依形狀切換整套落點映射的控制。單講射水魚預測掉落位置不另收。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能區分動作做得快與規則學得快，並用後段不可見測試辨認先選規則和事後追著修正。",
+        "visual": "同一初始速度/方向/高度，圓與三角後段遮住；標兩套受訓目標落點，另畫偏開的餵食器，區分實際餵食點與推算目標。",
+        "seconds": [
+          95,
+          155
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "電魚遇到鄰居為什麼換放電頻率？",
+      "reason": "既有連續波避干擾調頻；不換成脈衝魚新算。",
+      "existing_ids": [
+        "Z7004"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "魚怎麼靠微弱電場找到看不見的獵物？",
+      "reason": "一般電感受器功能已收；沒有新的控制對照。",
+      "existing_ids": [
+        "B2153"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "魚怎麼把自己造成的感覺扣掉？",
+      "reason": "一般自生預測及配對學習皆有舊核心。",
+      "existing_ids": [
+        "LEG-S74",
+        "S10001",
+        "S10002"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "電魚能同時記住多種動作狀態的感覺預測嗎？",
+      "reason": "歷史因正文存取失敗而退；本輪未重開PMC10524831，不以別篇的討論補完整機制。",
+      "existing_ids": [],
+      "source_ids": [],
+      "source_urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10524831/"
+      ]
+    },
+    {
+      "question": "同伴放電讓電魚聽起來像聊天，因此必定在刻意合作？",
+      "reason": "社交目的與協調機制屬原文待驗假說，不把感覺增益寫成意圖。",
+      "existing_ids": [],
+      "source_ids": [
+        "B17-S001"
+      ],
+      "source_urls": []
+    },
+    {
+      "question": "電魚用同伴脈衝辨物，另算一個核心嗎？",
+      "reason": "時間窗辨識是B17001排除自發訊號的關鍵控制，留同題。",
+      "existing_ids": [
+        "B17001"
+      ],
+      "source_ids": [
+        "B17-S001"
+      ],
+      "source_urls": []
+    },
+    {
+      "question": "螳螂怎麼用兩眼看到距離？",
+      "reason": "移動目標立體視已收。",
+      "existing_ids": [
+        "Z7008"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "章魚為什麼不把自己的手臂全黏在一起？",
+      "reason": "皮膚化學抑制吸盤已有。",
+      "existing_ids": [
+        "Z7014"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "海豹鬍鬚為什麼不被自己游泳的水流蓋住？",
+      "reason": "形狀抑制自身渦振已有。",
+      "existing_ids": [
+        "Z7006"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "龍蝦揮觸角為什麼一快一慢？",
+      "reason": "穿流取樣與留樣已有。",
+      "existing_ids": [
+        "Z7005"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "天蛾穩頭為什麼需要觸角？",
+      "reason": "頻率分工/機械負載已有，不另計追花題的背景。",
+      "existing_ids": [
+        "S10008"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "暗處的天蛾為什麼還跟得上慢晃的花？",
+      "reason": "已讀作者研究室報告，但Science2015主文PDF403；相較本批已取得完整原研究的衝突控制，暫不另收延遲/感度題。",
+      "existing_ids": [],
+      "source_ids": [],
+      "source_urls": [
+        "https://sponberg.gatech.edu/2015/11/25/moths-slow-their-brains-to-track-flowers-in-low-light/",
+        "https://doi.org/10.1126/science.aaa3042"
+      ]
+    },
+    {
+      "question": "天蛾完全不用眼睛也能追花嗎？",
+      "reason": "本篇完全隔離一路的能力是模型外推，未直接做成實驗；不能改成已證動物能力。",
+      "existing_ids": [],
+      "source_ids": [
+        "B17-S002"
+      ],
+      "source_urls": []
+    },
+    {
+      "question": "把天蛾花面與花蜜管的五個頻率各拆一題？",
+      "reason": "是同一線性合成模型的檢驗條件，不能按頻率灌題。",
+      "existing_ids": [
+        "B17002"
+      ],
+      "source_ids": [
+        "B17-S002"
+      ],
+      "source_urls": []
+    },
+    {
+      "question": "果蠅躲威脅就是越快跳越好嗎？",
+      "reason": "本篇主題是起跳前定向，不提供速度最佳化因果；不另包成求生建議。",
+      "existing_ids": [],
+      "source_ids": [
+        "B17-S003"
+      ],
+      "source_urls": []
+    },
+    {
+      "question": "果蠅偏向左或右的挪腳各算一題嗎？",
+      "reason": "同一初始姿態與目標重心控制的方向條件，留B17003。",
+      "existing_ids": [
+        "B17003"
+      ],
+      "source_ids": [
+        "B17-S003"
+      ],
+      "source_urls": []
+    },
+    {
+      "question": "蟑螂為什麼手還沒碰到就先跑？",
+      "reason": "尾毛氣流感覺已有；不換另一昆蟲作一般逃跑感官百科。",
+      "existing_ids": [
+        "LEG-S60"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "觸鬚蛇出生就知道魚怎麼逃嗎？",
+      "reason": "找到2010原研究方向但本輪未實讀指定正文；2009作者明列學習/演化未決，不跨文腦補。",
+      "existing_ids": [],
+      "source_ids": [],
+      "source_urls": [
+        "https://doi.org/10.1371/journal.pone.0010953"
+      ]
+    },
+    {
+      "question": "蛇預先瞄偏與假動作是否各算一題？",
+      "reason": "本批以假動作引導的逃逸路徑為同一因果鏈，瞄偏與失手作邊界，不拆兩核。",
+      "existing_ids": [
+        "B17004"
+      ],
+      "source_ids": [
+        "B17-S004"
+      ],
+      "source_urls": []
+    },
+    {
+      "question": "狐獴練活獵物更快學會，另算學習新題嗎？",
+      "reason": "作B17005練習機會的後果控制，不把每個訓練組拆核。",
+      "existing_ids": [
+        "B17005"
+      ],
+      "source_ids": [
+        "B17-S005"
+      ],
+      "source_urls": []
+    },
+    {
+      "question": "射水魚如何調整水柱擊中遠處昆蟲？",
+      "reason": "嘴部開口時序與水柱聚集已有。",
+      "existing_ids": [
+        "B2326"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "射水魚看初始落下就知道該游哪裡？",
+      "reason": "只說運動外推會接近B2320；2006速度匹配原文又未取得，不收此泛問法；保留有規則重學/切換的B17006。",
+      "existing_ids": [
+        "B2320"
+      ],
+      "source_ids": [],
+      "source_urls": [
+        "https://doi.org/10.1242/jeb.01981"
+      ]
+    },
+    {
+      "question": "動物只要有獎勵就會多做同一動作？",
+      "reason": "正增強已有，不能用射水魚重新命名。",
+      "existing_ids": [
+        "B2015"
+      ],
+      "source_ids": [],
+      "source_urls": []
+    },
+    {
+      "question": "射水魚更換高度、速度、形狀各拆一題？",
+      "reason": "都是同一落點映射學習的泛化/選擇測試，留在B17006，不按參數拆。",
+      "existing_ids": [
+        "B17006"
+      ],
+      "source_ids": [
+        "B17-S006"
+      ],
+      "source_urls": []
+    }
+  ]
+}

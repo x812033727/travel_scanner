@@ -1,0 +1,2109 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "raw": 3779,
+    "selected": 3394,
+    "not_added": 1875,
+    "themes": 464,
+    "head": "0c8f8712d6984e7c352c00182547255114d64ca7"
+  },
+  "role_and_scope": "非觸覺組作者；題級證據、科學範圍、淘併與片長審核。",
+  "reviewed_candidate_ids": [
+    "R44001",
+    "R44002",
+    "R44003",
+    "R44004",
+    "R44005",
+    "R44006",
+    "R44007",
+    "R44008",
+    "R44009",
+    "R44010",
+    "R44011",
+    "R44012"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave44-touch.json",
+      "sha256": "3b94c04d9704ccd0b0c2a2215b72833f2340536cf59e7a7871ddb51480e2e0da"
+    },
+    {
+      "file": "reviews/wave44-touch-author.json",
+      "sha256": "1ec1120990925cbd005cef22fc1cdcf418241ce28678e5116b29144dbdda8508"
+    },
+    {
+      "file": "reviews/wave44-touch-themes.json",
+      "sha256": "0d98baa127a81fa4446d5a56f6a7b40284387e1cab722cad77f74f450d19bb62"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "R44001",
+      "decision": "merge",
+      "canonical_id": "A21002",
+      "reason": "同一預測與同一讀值解離，原始提力資料可作A21002證據變體，不再計數。",
+      "source_ids": [
+        "R44-S001"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44002",
+      "decision": "retain",
+      "canonical_id": "R44002",
+      "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S002"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44003",
+      "decision": "retain",
+      "canonical_id": "R44003",
+      "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S003",
+        "R44-S004"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44004",
+      "decision": "retain",
+      "canonical_id": "R44004",
+      "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S005"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44005",
+      "decision": "retain",
+      "canonical_id": "R44005",
+      "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S006"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44006",
+      "decision": "retain",
+      "canonical_id": "R44006",
+      "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S007"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44007",
+      "decision": "retain",
+      "canonical_id": "R44007",
+      "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S008"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44008",
+      "decision": "merge",
+      "canonical_id": "LEG-S74",
+      "reason": "同一自生接觸減弱與時空預測被擾亂的解釋；補原始評分給舊LEG-S74，維持歷史未選身分，不追認全部腦區推論。",
+      "source_ids": [
+        "R44-S009"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44009",
+      "decision": "retain",
+      "canonical_id": "R44009",
+      "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S010"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44010",
+      "decision": "retain",
+      "canonical_id": "R44010",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S011"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44011",
+      "decision": "retain",
+      "canonical_id": "R44011",
+      "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S012"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R44012",
+      "decision": "retain",
+      "canonical_id": "R44012",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；相鄰原題未提供這個對照。",
+      "source_ids": [
+        "R44-S013"
+      ],
+      "editorial_seconds": [
+        15,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R44-S001",
+      "read_scope": "作者留原作者摘要；我另以web.open/find取得RG上的同文原刊Methods印刷740–741之器材/試次段（網頁L620–660）：大小輕木盒以把手提，各以中央配重達相同重量。重複後指力預測與重量感未同步，不是實驗找到哪個腦區。",
+      "read_via": "核作者初篩摘要/圖名範圍，額外網路/存取限制見read_scope。",
+      "cache": {
+        "file": ".cache/wave44-touch-weight-abs.json",
+        "sha256": "7cfa896e336b7dfd89cc81fc9921393b6ae5146b355a1f775ebc54f241542670",
+        "text_file": ".cache/wave44-touch-weight-abs.txt",
+        "text_sha256": "5ca2639da04c6eaef55873b375a189c9f795e12ee5d6f1d4663c5b8330380520"
+      },
+      "peer_supplement_url": "https://www.researchgate.net/publication/12455507_Independence_of_perceptual_and_sensorimotor_predictions_in_the_size-weight_illusion",
+      "peer_read_limit": "原作者原研究全文網頁的指定Methods節；非新增第二份研究，不據此稱其餘全文都已核。"
+    },
+    {
+      "source_id": "R44-S002",
+      "read_scope": "原作者摘要限定相同顏色質地系列，訓練時體積與重量負相關；多日後用相似物塊檢查知覺反轉。動作調整較快，勿畫成一次拿起就改變所有物品的重量圖式。",
+      "read_via": "核作者初篩摘要/圖名範圍，額外網路/存取限制見read_scope。",
+      "cache": {
+        "file": ".cache/wave44-touch-reverse-abs.json",
+        "sha256": "debd53d085ed2ee6d6d77b4a9a8ff6372db15a2a7406d1c1c38ad2edb6bb0d23",
+        "text_file": ".cache/wave44-touch-reverse-abs.txt",
+        "text_sha256": "37c0fd22da7710b39f12b9764cbb5ffbd5db25e57294cbe94a4abdbb246c1d32"
+      }
+    },
+    {
+      "source_id": "R44-S003",
+      "read_scope": "原刊摘要與圖1、5–7標題；另讀勘誤對照初版首句印誤。只採手腕觸碰先後與間隔控制，外部空間重映射屬作者解釋，不主張量得獨一神經回路。",
+      "read_via": "核作者初篩摘要/圖名範圍，額外網路/存取限制見read_scope。",
+      "cache": {
+        "file": ".cache/wave44-touch-time.html",
+        "sha256": "ce6393797ea50769ba15c5332b82dbb81afbe193f57446baf215bdf734b09d82",
+        "text_file": ".cache/wave44-touch-time.txt",
+        "text_sha256": "9128774783f56eb9c2ed16795417e284ead5c7482ba16d74789014c609ba42af"
+      }
+    },
+    {
+      "source_id": "R44-S004",
+      "read_scope": "勘誤正文P006–007完整更正摘要，比對uncrossed約70 ms可答、交叉時較短間隔易顛倒。更正與S003一次研究，不另以第二研究背書。",
+      "read_via": "核作者當日原件與抽文，自行讀取指定正文/圖說。",
+      "cache": {
+        "file": ".cache/wave44-touch-err.html",
+        "sha256": "8c0713e078358b0a147f14559a71a4a0572c4e557157d4a85d30cee602122d61",
+        "text_file": ".cache/wave44-touch-err.txt",
+        "text_sha256": "502a5eff8b2aa23e164a903dcc8351a42d6a802ac04e97c6f18d00ddb8329b7d"
+      }
+    },
+    {
+      "source_id": "R44-S005",
+      "read_scope": "原作者完整摘要。關鍵是尖端在持棒手解剖側的同側/對側半空間，即左手對身體左半側；手當下所在位置及手/棒路線交叉數（0、1、3）不能代替此條件。期刊正文另開403，沒有自行讀到完整方法。",
+      "read_via": "核作者初篩摘要/圖名範圍，額外網路/存取限制見read_scope。",
+      "cache": {
+        "file": ".cache/wave44-touch-sticks-abs.json",
+        "sha256": "ce05ff92773c953e922373b3130f0e77df388f48daaf4bab81783b5afe0632c4",
+        "text_file": ".cache/wave44-touch-sticks-abs.txt",
+        "text_sha256": "b40dc8bd558d1c01f4dfd5f5a8aec5fdb98f4bdf2e47f061cd2fd5d8ccb859be"
+      }
+    },
+    {
+      "source_id": "R44-S006",
+      "read_scope": "原刊P012、P016–022、P026、028及P033–038、Figs2–3。鋁條與分離鋁小板兩組（只有部分受試者相同）；前兩個脈衝在同點、第三個在另一點；連續條件能把第二下回報在兩指間。並未測另一個真實中間敲點。",
+      "read_via": "核作者當日原件與抽文，自行讀取指定正文/圖說。",
+      "cache": {
+        "file": ".cache/wave44-touch-rabbit2.html",
+        "sha256": "43dc2d3f67722daa3e87e8934c4d47eddccb503767dcca93020c8bd6c4a62808",
+        "text_file": ".cache/wave44-touch-rabbit2.txt",
+        "text_sha256": "1f5583d0014024982c838528946f743ee6e6017f926c7e3a58d31fcc4f0abe2f"
+      }
+    },
+    {
+      "source_id": "R44-S007",
+      "read_scope": "原刊Exp1–3及Fig2，手部位置圖和外形模板兩種途徑：十地標對真實位置、長寬畸變與右/左手及轉手對照。目讀PDF第3頁Fig2A–F，模板選擇與地標位置重建不可互換。",
+      "read_via": "核作者當日原件與抽文，自行讀取指定正文/圖說。",
+      "cache": {
+        "file": ".cache/wave44-touch-map2.pdf",
+        "sha256": "a78e65c3304f665d42201dd81acf86a6a80b05cb1d9ab7bef37504ec4c3e6fec",
+        "text_file": ".cache/wave44-touch-map2.txt",
+        "text_sha256": "5490a643f7fb275ce66052a915a29d0aabffced732bea4ce3b6693ff2564c1fe"
+      }
+    },
+    {
+      "source_id": "R44-S008",
+      "read_scope": "原刊Exp1–3及Figs1–3：橫向/縱向的二點距離判斷、手背/手掌和旋轉條件。目讀PDF p3心理計量曲線與主觀等值點。未直接量受器感受野；神經編碼解釋須和知覺對照分開。",
+      "read_via": "核作者當日原件與抽文，自行讀取指定正文/圖說。",
+      "cache": {
+        "file": ".cache/wave44-touch-weber.pdf",
+        "sha256": "1d5e519bbd288f7b3f6349203730ac701582bd9b43e590db03903f63a2bdc5b5",
+        "text_file": ".cache/wave44-touch-weber.txt",
+        "text_sha256": "1803d2c876331d3a3d8766c729750b4f248c5ec82795c573805e36db0f891576"
+      }
+    },
+    {
+      "source_id": "R44-S009",
+      "read_scope": "原刊Results與Methods，PDF pp3–4、7及Figs2–4。自己帶動裝置時分別變換施觸延遲或空間軌跡偏角，比主觀癢感，而不是把移動速度變慢。目讀p4原圖3、4。",
+      "read_via": "核作者當日原件與抽文，自行讀取指定正文/圖說。",
+      "cache": {
+        "file": ".cache/wave44-touch-tickle.pdf",
+        "sha256": "f4fc08a88e08fc0cf5dd535b7dcb459e7ab43f8e7dfe5141aa68d44a060411d5",
+        "text_file": ".cache/wave44-touch-tickle.txt",
+        "text_sha256": "021d72ff3d8ef46b231316a017aec82e008521174469c466b16030ab97083515"
+      }
+    },
+    {
+      "source_id": "R44-S010",
+      "read_scope": "原刊XML P009–021、Methods的比較刺激與控制。主動右指帶動左指受碰，在附加延遲0/100ms前後的施力主觀等值點測衰減重配，所以上一題未實驗長期訓練的界線仍在。",
+      "read_via": "核作者當日原件與抽文，自行讀取指定正文/圖說。",
+      "cache": {
+        "file": ".cache/wave44-touch-delaypm.xml",
+        "sha256": "3b6e894b9e461afc2c840d7bd62dfcaa862a60798618c2c8b5ef6570a49fafbe",
+        "text_file": ".cache/wave44-touch-delaypm.txt",
+        "text_sha256": "d13f998ebe0c13ae4646179ce1be391dfc24534c070dfbaf9d3d738ac155d093"
+      }
+    },
+    {
+      "source_id": "R44-S011",
+      "read_scope": "完整單頁Science原刊。Fig1A同伴輪流匹配別人施的力而逐步加大；B是另批個人在有無搖桿控制下重現指尖力量，搖桿較準。不可混成同組人報復或把A圖一對的曲線當全體平均。",
+      "read_via": "核作者當日原件與抽文，自行讀取指定正文/圖說。",
+      "cache": {
+        "file": ".cache/wave44-touch-force.pdf",
+        "sha256": "b113da75b38939a4e052afea1a0cb43e0d51db7f6e53a858b2a4c856180ab969",
+        "text_file": ".cache/wave44-touch-force.txt",
+        "text_sha256": "5fe10596b40f158ec35635860be81bec6fbf094e8a185509e6c09a3c455dc776"
+      }
+    },
+    {
+      "source_id": "R44-S012",
+      "read_scope": "原刊P031、049–055、Experiment1/2方法。同步/非同步的問卷與頻繁測位置可解離；另有視覺單獨條件的兩種測量頻率均可有漂移，但Exp2沒有收各條件所有權正式問卷。",
+      "read_via": "核作者當日原件與抽文，自行讀取指定正文/圖說。",
+      "cache": {
+        "file": ".cache/wave44-touch-rubber.html",
+        "sha256": "352da0075e287f9a34ebaa3912643d3ef22343822edb0544e54f0d727f6d1257",
+        "text_file": ".cache/wave44-touch-rubber.txt",
+        "text_sha256": "d2d8263521b7b7dae8721dac2c16b058e56b345983e824b1e8e9bd255185ccab"
+      }
+    },
+    {
+      "source_id": "R44-S013",
+      "read_scope": "原刊摘要及Figures1–3標題，Extended Data公開圖說局部（被動與主動以及木/泡棉工具）。操弄/量到碰桿位置與振動；時間鎖定傳入放電為模型預測。與X37-008特別比較讀值：舊題首末端距離估計使中段變異較大，本題問碰點怎麼編入振動。",
+      "read_via": "核作者初篩摘要/圖名範圍，額外網路/存取限制見read_scope。",
+      "cache": {
+        "file": ".cache/wave44-touch-rod.html",
+        "sha256": "b33789a428c8b89dd3ab6292890032826c2fdf64266e297bfe9da13447bacd12",
+        "text_file": ".cache/wave44-touch-rod.txt",
+        "text_sha256": "000a08a30f552a053de9497062195bae9aa4b59e605f6b444c0cc6767c5d4842"
+      }
+    }
+  ],
+  "source_identity_review": "13來源條目包含1張同刊勘誤；12項實驗論文。R44001補另一項同機制研究；R44008舊核原已引用同文，不能當新重現。S003及S004屬同文更正。",
+  "source_reading_summary": "13來源原件及作者抽文逐列核SHA。7篇完整研究之指定正文、1勘誤主文，加S001原作者摘要外另讀公開催體方法段。S002/005限原作者摘要，S003/013限原刊摘要/圖名與可得圖說。S005全文另開403、S013原刊全文另開遇驗證頁，沒有將失敗當全文。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave44-physics-peer-touch-figs.jpg",
+      "sha256": "ebd1ebc2f991d78437dee507ec5c294fe4d4da891f0f492f47b1d8ad78589ea9",
+      "figures": [
+        "S007 PDF第3頁Fig2",
+        "S008 PDF第3頁Figs1–3",
+        "S009 PDF第4頁Figs3–4",
+        "S011單頁Fig1A–B"
+      ],
+      "scope": "從原刊PDF實際渲染圖頁目讀，確認哪張圖是位置、距離、癢感排行、雙人/個人力匹配；沒有逐個估效應值。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R44001",
+      "b": "A21002",
+      "decision": "merge",
+      "reason": "同一預測與同一讀值解離，原始提力資料可作A21002證據變體，不再計數。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44001",
+      "b": "A5007",
+      "decision": "distinct",
+      "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理肌腱張力受器因膠原張力壓擠末梢而放電。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44002",
+      "b": "A21002",
+      "decision": "distinct",
+      "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理等重不同大小物體反覆提起時指力校準，但主觀重量錯覺仍在。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44002",
+      "b": "R44001",
+      "decision": "distinct",
+      "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44003",
+      "b": "R22003",
+      "decision": "distinct",
+      "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理兩耳聲音的前後順序與前史改變聽覺位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44003",
+      "b": "R44004",
+      "decision": "distinct",
+      "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44004",
+      "b": "X37-008",
+      "decision": "distinct",
+      "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44005",
+      "b": "R44012",
+      "decision": "distinct",
+      "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44005",
+      "b": "R22005",
+      "decision": "distinct",
+      "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理首末音符因中間重複出現而誤歸時序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44006",
+      "b": "P14009",
+      "decision": "distinct",
+      "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理視觸覺衝突中依視覺精度調整物體高度估計。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44006",
+      "b": "R44007",
+      "decision": "distinct",
+      "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44007",
+      "b": "X37-003",
+      "decision": "distinct",
+      "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理滑動細砂紙產生的振動改善粗細辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44008",
+      "b": "LEG-S74",
+      "decision": "merge",
+      "reason": "同一自生接觸減弱與時空預測被擾亂的解釋；補原始評分給舊LEG-S74，維持歷史未選身分，不追認全部腦區推論。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44008",
+      "b": "R44009",
+      "decision": "distinct",
+      "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44009",
+      "b": "A21001",
+      "decision": "distinct",
+      "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理按鍵與閃光時間對齊經驗可改兩事件的先後次序判斷。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44010",
+      "b": "LEG-S74",
+      "decision": "distinct",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理自我造成的搔癢因可預測而被減弱；延遲/路徑擾動原研究為這個解釋既有依據。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44010",
+      "b": "A21002",
+      "decision": "distinct",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理等重不同大小物體反覆提起時指力校準，但主觀重量錯覺仍在。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44011",
+      "b": "P14009",
+      "decision": "distinct",
+      "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理視觸覺衝突中依視覺精度調整物體高度估計。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44012",
+      "b": "X37-005",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理以探棒/手指評砂紙材質粗糙度的振動功率與評分關係。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44012",
+      "b": "X37-008",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R44001",
+      "b": "A21002",
+      "decision": "merge",
+      "reason": "同一預測與同一讀值解離，原始提力資料可作A21002證據變體，不再計數。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.897437
+    },
+    {
+      "a": "R44001",
+      "b": "P036",
+      "decision": "distinct",
+      "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理兩支點到重心的位置改變分擔重力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.772416
+    },
+    {
+      "a": "R44001",
+      "b": "P103",
+      "decision": "distinct",
+      "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理彈簧常數與相同伸長量所需外力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.754543
+    },
+    {
+      "a": "R44001",
+      "b": "P026",
+      "decision": "distinct",
+      "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理不同重量以不同力臂平衡力矩。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.737239
+    },
+    {
+      "a": "R44001",
+      "b": "R44002",
+      "decision": "distinct",
+      "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.682158
+    },
+    {
+      "a": "R44002",
+      "b": "A21002",
+      "decision": "distinct",
+      "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理等重不同大小物體反覆提起時指力校準，但主觀重量錯覺仍在。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.72635
+    },
+    {
+      "a": "R44002",
+      "b": "R44001",
+      "decision": "distinct",
+      "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.682158
+    },
+    {
+      "a": "R44002",
+      "b": "P296",
+      "decision": "distinct",
+      "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理鋼絲的小應變與總伸長。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.604309
+    },
+    {
+      "a": "R44002",
+      "b": "P036",
+      "decision": "distinct",
+      "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理兩支點到重心的位置改變分擔重力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.592735
+    },
+    {
+      "a": "R44002",
+      "b": "P026",
+      "decision": "distinct",
+      "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理不同重量以不同力臂平衡力矩。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.592318
+    },
+    {
+      "a": "R44003",
+      "b": "R44007",
+      "decision": "distinct",
+      "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.793079
+    },
+    {
+      "a": "R44003",
+      "b": "R44005",
+      "decision": "distinct",
+      "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.739716
+    },
+    {
+      "a": "R44003",
+      "b": "R44004",
+      "decision": "distinct",
+      "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.731268
+    },
+    {
+      "a": "R44003",
+      "b": "R44011",
+      "decision": "distinct",
+      "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.687942
+    },
+    {
+      "a": "R44003",
+      "b": "R44006",
+      "decision": "distinct",
+      "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.684495
+    },
+    {
+      "a": "R44004",
+      "b": "R44005",
+      "decision": "distinct",
+      "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.756656
+    },
+    {
+      "a": "R44004",
+      "b": "D2127",
+      "decision": "distinct",
+      "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理單向離合的滾子楔緊與放開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.753625
+    },
+    {
+      "a": "R44004",
+      "b": "D2115",
+      "decision": "distinct",
+      "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理滑塊曲柄把活塞的直線往復轉成轉動。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.733103
+    },
+    {
+      "a": "R44004",
+      "b": "R44003",
+      "decision": "distinct",
+      "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.731268
+    },
+    {
+      "a": "R44004",
+      "b": "P44-004",
+      "decision": "distinct",
+      "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理折紙頂點翻態改壓縮模數。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.728591
+    },
+    {
+      "a": "R44005",
+      "b": "R44007",
+      "decision": "distinct",
+      "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.758504
+    },
+    {
+      "a": "R44005",
+      "b": "R44004",
+      "decision": "distinct",
+      "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.756656
+    },
+    {
+      "a": "R44005",
+      "b": "R44003",
+      "decision": "distinct",
+      "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.739716
+    },
+    {
+      "a": "R44005",
+      "b": "R44006",
+      "decision": "distinct",
+      "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.721331
+    },
+    {
+      "a": "R44005",
+      "b": "X37-008",
+      "decision": "distinct",
+      "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.707442
+    },
+    {
+      "a": "R44006",
+      "b": "R44011",
+      "decision": "distinct",
+      "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.819445
+    },
+    {
+      "a": "R44006",
+      "b": "R44007",
+      "decision": "distinct",
+      "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.736186
+    },
+    {
+      "a": "R44006",
+      "b": "R44005",
+      "decision": "distinct",
+      "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.721331
+    },
+    {
+      "a": "R44006",
+      "b": "X37-008",
+      "decision": "distinct",
+      "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.705922
+    },
+    {
+      "a": "R44006",
+      "b": "R44003",
+      "decision": "distinct",
+      "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.684495
+    },
+    {
+      "a": "R44007",
+      "b": "R44003",
+      "decision": "distinct",
+      "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.793079
+    },
+    {
+      "a": "R44007",
+      "b": "X37-008",
+      "decision": "distinct",
+      "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.765152
+    },
+    {
+      "a": "R44007",
+      "b": "R44005",
+      "decision": "distinct",
+      "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.758504
+    },
+    {
+      "a": "R44007",
+      "b": "R44009",
+      "decision": "distinct",
+      "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.753282
+    },
+    {
+      "a": "R44007",
+      "b": "R44011",
+      "decision": "distinct",
+      "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.738623
+    },
+    {
+      "a": "R44008",
+      "b": "R44009",
+      "decision": "distinct",
+      "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.81317
+    },
+    {
+      "a": "R44008",
+      "b": "R44011",
+      "decision": "distinct",
+      "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.738556
+    },
+    {
+      "a": "R44008",
+      "b": "R44007",
+      "decision": "distinct",
+      "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.697015
+    },
+    {
+      "a": "R44008",
+      "b": "R44006",
+      "decision": "distinct",
+      "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.665879
+    },
+    {
+      "a": "R44008",
+      "b": "LEG-S06",
+      "decision": "distinct",
+      "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理泡水後的交感血管收縮及指腹皺紋，非自動作後的癢感衰減。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.662287
+    },
+    {
+      "a": "R44009",
+      "b": "R44008",
+      "decision": "distinct",
+      "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.81317
+    },
+    {
+      "a": "R44009",
+      "b": "R44007",
+      "decision": "distinct",
+      "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.753282
+    },
+    {
+      "a": "R44009",
+      "b": "X37-006",
+      "decision": "distinct",
+      "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理壓軟材料時速度/持續時間改變皮膚接觸面增長及軟硬辨別。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.675067
+    },
+    {
+      "a": "R44009",
+      "b": "P021",
+      "decision": "distinct",
+      "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理力的時間積分改變動量。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.664593
+    },
+    {
+      "a": "R44009",
+      "b": "P018",
+      "decision": "distinct",
+      "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理延長接球時間降低平均力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.661354
+    },
+    {
+      "a": "R44010",
+      "b": "P172",
+      "decision": "distinct",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理互推引起的動量交換。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.756852
+    },
+    {
+      "a": "R44010",
+      "b": "P029",
+      "decision": "distinct",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理向內收手作功可增加轉動能。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.729938
+    },
+    {
+      "a": "R44010",
+      "b": "P008",
+      "decision": "distinct",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理正向力增強接觸面最大摩擦力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.716254
+    },
+    {
+      "a": "R44010",
+      "b": "D2182",
+      "decision": "distinct",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理螺紋與螺栓頭摩擦分去鎖緊扭矩。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.709427
+    },
+    {
+      "a": "R44010",
+      "b": "B11003",
+      "decision": "distinct",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理植物感重力彎曲與局部曲率的回饋競爭。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.708806
+    },
+    {
+      "a": "R44011",
+      "b": "R44006",
+      "decision": "distinct",
+      "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.819445
+    },
+    {
+      "a": "R44011",
+      "b": "R44007",
+      "decision": "distinct",
+      "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.738623
+    },
+    {
+      "a": "R44011",
+      "b": "R44008",
+      "decision": "distinct",
+      "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.738556
+    },
+    {
+      "a": "R44011",
+      "b": "R44012",
+      "decision": "distinct",
+      "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.717158
+    },
+    {
+      "a": "R44011",
+      "b": "R44005",
+      "decision": "distinct",
+      "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.707323
+    },
+    {
+      "a": "R44012",
+      "b": "R44011",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.717158
+    },
+    {
+      "a": "R44012",
+      "b": "X37-008",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.68984
+    },
+    {
+      "a": "R44012",
+      "b": "R44005",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.664099
+    },
+    {
+      "a": "R44012",
+      "b": "R44006",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.659789
+    },
+    {
+      "a": "R44012",
+      "b": "R44003",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.642968
+    }
+  ],
+  "additional_cross_wave_pairs": [
+    {
+      "a": "R44004",
+      "b": "R44003",
+      "decision": "distinct",
+      "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44009",
+      "b": "A21001",
+      "decision": "distinct",
+      "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理按鍵與閃光時間對齊經驗可改兩事件的先後次序判斷。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44010",
+      "b": "R44008",
+      "decision": "distinct",
+      "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44012",
+      "b": "X37-005",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理以探棒/手指評砂紙材質粗糙度的振動功率與評分關係。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R44012",
+      "b": "X37-008",
+      "decision": "distinct",
+      "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "R44001",
+        "canonical_id": "A21002",
+        "reason": "同一預測與同一讀值解離，原始提力資料可作A21002證據變體，不再計數。"
+      },
+      {
+        "duplicate_id": "R44008",
+        "canonical_id": "LEG-S74",
+        "reason": "同一自生接觸減弱與時空預測被擾亂的解釋；補原始評分給舊LEG-S74，維持歷史未選身分，不追認全部腦區推論。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R44001",
+        "b": "A5007",
+        "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理肌腱張力受器因膠原張力壓擠末梢而放電。"
+      },
+      {
+        "a": "R44002",
+        "b": "A21002",
+        "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理等重不同大小物體反覆提起時指力校準，但主觀重量錯覺仍在。"
+      },
+      {
+        "a": "R44002",
+        "b": "R44001",
+        "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在。"
+      },
+      {
+        "a": "R44003",
+        "b": "R22003",
+        "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理兩耳聲音的前後順序與前史改變聽覺位置。"
+      },
+      {
+        "a": "R44003",
+        "b": "R44004",
+        "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較。"
+      },
+      {
+        "a": "R44004",
+        "b": "X37-008",
+        "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。"
+      },
+      {
+        "a": "R44005",
+        "b": "R44012",
+        "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗。"
+      },
+      {
+        "a": "R44005",
+        "b": "R22005",
+        "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理首末音符因中間重複出現而誤歸時序。"
+      },
+      {
+        "a": "R44006",
+        "b": "P14009",
+        "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理視觸覺衝突中依視覺精度調整物體高度估計。"
+      },
+      {
+        "a": "R44006",
+        "b": "R44007",
+        "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。"
+      },
+      {
+        "a": "R44007",
+        "b": "X37-003",
+        "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理滑動細砂紙產生的振動改善粗細辨認。"
+      },
+      {
+        "a": "R44008",
+        "b": "R44009",
+        "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配。"
+      },
+      {
+        "a": "R44009",
+        "b": "A21001",
+        "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理按鍵與閃光時間對齊經驗可改兩事件的先後次序判斷。"
+      },
+      {
+        "a": "R44010",
+        "b": "LEG-S74",
+        "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理自我造成的搔癢因可預測而被減弱；延遲/路徑擾動原研究為這個解釋既有依據。"
+      },
+      {
+        "a": "R44010",
+        "b": "A21002",
+        "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理等重不同大小物體反覆提起時指力校準，但主觀重量錯覺仍在。"
+      },
+      {
+        "a": "R44011",
+        "b": "P14009",
+        "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理視觸覺衝突中依視覺精度調整物體高度估計。"
+      },
+      {
+        "a": "R44012",
+        "b": "X37-005",
+        "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理以探棒/手指評砂紙材質粗糙度的振動功率與評分關係。"
+      },
+      {
+        "a": "R44012",
+        "b": "X37-008",
+        "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。"
+      },
+      {
+        "a": "R44001",
+        "b": "P036",
+        "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理兩支點到重心的位置改變分擔重力。"
+      },
+      {
+        "a": "R44001",
+        "b": "P103",
+        "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理彈簧常數與相同伸長量所需外力。"
+      },
+      {
+        "a": "R44001",
+        "b": "P026",
+        "reason": "反覆提等重大/小盒後，手指出力趨近真實負荷而主觀小重的差仍在；比較題處理不同重量以不同力臂平衡力矩。"
+      },
+      {
+        "a": "R44002",
+        "b": "P296",
+        "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理鋼絲的小應變與總伸長。"
+      },
+      {
+        "a": "R44002",
+        "b": "P036",
+        "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理兩支點到重心的位置改變分擔重力。"
+      },
+      {
+        "a": "R44002",
+        "b": "P026",
+        "reason": "練習反常的大小重量關係達多日後，連相似物體的知覺偏向也可反轉；比較題處理不同重量以不同力臂平衡力矩。"
+      },
+      {
+        "a": "R44003",
+        "b": "R44007",
+        "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。"
+      },
+      {
+        "a": "R44003",
+        "b": "R44005",
+        "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。"
+      },
+      {
+        "a": "R44003",
+        "b": "R44011",
+        "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。"
+      },
+      {
+        "a": "R44003",
+        "b": "R44006",
+        "reason": "交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。"
+      },
+      {
+        "a": "R44004",
+        "b": "R44005",
+        "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。"
+      },
+      {
+        "a": "R44004",
+        "b": "D2127",
+        "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理單向離合的滾子楔緊與放開。"
+      },
+      {
+        "a": "R44004",
+        "b": "D2115",
+        "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理滑塊曲柄把活塞的直線往復轉成轉動。"
+      },
+      {
+        "a": "R44004",
+        "b": "P44-004",
+        "reason": "L形工具末端所處半空間相對手的解剖側，與路徑交叉次數拆開比較；比較題處理折紙頂點翻態改壓縮模數。"
+      },
+      {
+        "a": "R44005",
+        "b": "R44007",
+        "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。"
+      },
+      {
+        "a": "R44005",
+        "b": "R44006",
+        "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。"
+      },
+      {
+        "a": "R44005",
+        "b": "X37-008",
+        "reason": "只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。"
+      },
+      {
+        "a": "R44006",
+        "b": "R44011",
+        "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。"
+      },
+      {
+        "a": "R44006",
+        "b": "X37-008",
+        "reason": "遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。"
+      },
+      {
+        "a": "R44007",
+        "b": "X37-008",
+        "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理同一手持工具中段與端部定位變異，分量兩端標記與截斷的競爭模型。"
+      },
+      {
+        "a": "R44007",
+        "b": "R44009",
+        "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配。"
+      },
+      {
+        "a": "R44007",
+        "b": "R44011",
+        "reason": "相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。"
+      },
+      {
+        "a": "R44008",
+        "b": "R44011",
+        "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開。"
+      },
+      {
+        "a": "R44008",
+        "b": "R44007",
+        "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理相同兩點間隔沿手背橫向/縱向的主觀距離不同，轉動手或換手掌另驗。"
+      },
+      {
+        "a": "R44008",
+        "b": "R44006",
+        "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。"
+      },
+      {
+        "a": "R44008",
+        "b": "LEG-S06",
+        "reason": "主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變；比較題處理泡水後的交感血管收縮及指腹皺紋，非自動作後的癢感衰減。"
+      },
+      {
+        "a": "R44009",
+        "b": "X37-006",
+        "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理壓軟材料時速度/持續時間改變皮膚接觸面增長及軟硬辨別。"
+      },
+      {
+        "a": "R44009",
+        "b": "P021",
+        "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理力的時間積分改變動量。"
+      },
+      {
+        "a": "R44009",
+        "b": "P018",
+        "reason": "反覆接受固定額外延遲，動作當下與延遲時的力感衰減可被重新分配；比較題處理延長接球時間降低平均力。"
+      },
+      {
+        "a": "R44010",
+        "b": "P172",
+        "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理互推引起的動量交換。"
+      },
+      {
+        "a": "R44010",
+        "b": "P029",
+        "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理向內收手作功可增加轉動能。"
+      },
+      {
+        "a": "R44010",
+        "b": "P008",
+        "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理正向力增強接觸面最大摩擦力。"
+      },
+      {
+        "a": "R44010",
+        "b": "D2182",
+        "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理螺紋與螺栓頭摩擦分去鎖緊扭矩。"
+      },
+      {
+        "a": "R44010",
+        "b": "B11003",
+        "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理植物感重力彎曲與局部曲率的回饋競爭。"
+      },
+      {
+        "a": "R44011",
+        "b": "R44012",
+        "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗。"
+      },
+      {
+        "a": "R44011",
+        "b": "R44005",
+        "reason": "指位向假手漂移和手的歸屬感可分離，問卷和估計位置的時間/條件要分開；比較題處理只有兩個實際刺激點時，連續鋁條和各指獨立鋁片給出不同第二下知覺位置。"
+      },
+      {
+        "a": "R44012",
+        "b": "R44006",
+        "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理遮手後由十個指尖/指根位置重建的手形比實物扁寬，圖形範本選擇相對準。"
+      },
+      {
+        "a": "R44012",
+        "b": "R44003",
+        "reason": "碰點位置以木桿的模態振動組合在握處留下可辨線索，傳入神經訊號另以模型檢驗；比較題處理交叉雙手時依兩下碰觸的時間間隔，主觀先後可能暫時顛倒。"
+      },
+      {
+        "a": "R44010",
+        "b": "R44008",
+        "reason": "兩人回按造成逐輪力道加大，單人換手指直接或搖桿遠控後估計偏差不同；比較題處理主動刷掌裝置改動作與刺激的時間/軌跡關係，評到的癢感改變。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R44-NA001",
+      "decision": "agree_not_added",
+      "reason": "同重量握力校準而知覺仍偏差為A21002已有；R44001為補源變體。",
+      "existing_ids": [
+        "R44001"
+      ]
+    },
+    {
+      "id": "R44-NA002",
+      "decision": "agree_not_added",
+      "reason": "反轉需多日與特定系列，不能外推所有物體。",
+      "existing_ids": [
+        "R44002"
+      ]
+    },
+    {
+      "id": "R44-NA003",
+      "decision": "agree_not_added",
+      "reason": "次序題不是喪失左右概念。",
+      "existing_ids": [
+        "R44003"
+      ]
+    },
+    {
+      "id": "R44-NA004",
+      "decision": "agree_not_added",
+      "reason": "勘誤只訂正一字，不能作獨立複現。",
+      "existing_ids": [
+        "R44003"
+      ]
+    },
+    {
+      "id": "R44-NA005",
+      "decision": "agree_not_added",
+      "reason": "只數交叉次數會漏工具尖端所處半空間。",
+      "existing_ids": [
+        "R44004"
+      ]
+    },
+    {
+      "id": "R44-NA006",
+      "decision": "agree_not_added",
+      "reason": "中段為間隔縮短後的位置回報，沒有額外中間馬達。",
+      "existing_ids": [
+        "R44005"
+      ]
+    },
+    {
+      "id": "R44-NA007",
+      "decision": "agree_not_added",
+      "reason": "知覺地標圖會扭曲不等於解剖尺寸變了。",
+      "existing_ids": [
+        "R44006"
+      ]
+    },
+    {
+      "id": "R44-NA008",
+      "decision": "agree_not_added",
+      "reason": "距離異向性不等於量到神經數或所有皮膚相同。",
+      "existing_ids": [
+        "R44007"
+      ]
+    },
+    {
+      "id": "R44-NA009",
+      "decision": "agree_not_added",
+      "reason": "空間軌跡也可調主觀癢感。",
+      "existing_ids": [
+        "R44008"
+      ]
+    },
+    {
+      "id": "R44-NA010",
+      "decision": "agree_not_added",
+      "reason": "訓練影響特定時點，不支持普遍失去觸感。",
+      "existing_ids": [
+        "R44009"
+      ]
+    },
+    {
+      "id": "R44-NA011",
+      "decision": "agree_not_added",
+      "reason": "配對按力不量報復意圖。",
+      "existing_ids": [
+        "R44010"
+      ]
+    },
+    {
+      "id": "R44-NA012",
+      "decision": "agree_not_added",
+      "reason": "漂移和歸屬問卷不同，不能作百分比換算。",
+      "existing_ids": [
+        "R44011"
+      ]
+    },
+    {
+      "id": "R44-NA013",
+      "decision": "agree_not_added",
+      "reason": "模態振動在桿上；神經傳入反應並非木頭有神經。",
+      "existing_ids": [
+        "R44012"
+      ]
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W44R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 63,
+      "core_seconds": {
+        "R44001": 31,
+        "R44002": 32
+      },
+      "chapter_seconds": [
+        31,
+        32
+      ],
+      "beat_seconds": [
+        16,
+        15,
+        17,
+        15
+      ],
+      "reason": "短提舉出力修正和多日反規律練習後感覺反轉是兩研究；同重測試組與訓練組分框，原短期研究只合入A21002。",
+      "drop_if": "若觀眾無從區分訓練組與測試組，先修兩個托盤標籤，再留最後一次測試。"
+    },
+    {
+      "id": "W44R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 54,
+      "core_seconds": {
+        "R44003": 25,
+        "R44004": 29
+      },
+      "chapter_seconds": [
+        25,
+        29
+      ],
+      "beat_seconds": [
+        15,
+        10,
+        16,
+        13
+      ],
+      "reason": "先交叉手，後在另一次試驗以L形棒分開手的路線與尖端解剖半空間；時間間隔為必要讀圖維度。",
+      "drop_if": "若畫面沒能看出同一隻手連到哪個尖端，就只留兩種路線。"
+    },
+    {
+      "id": "W44R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 69,
+      "core_seconds": {
+        "R44005": 38,
+        "R44012": 31
+      },
+      "chapter_seconds": [
+        38,
+        31
+      ],
+      "beat_seconds": [
+        20,
+        18,
+        18,
+        13
+      ],
+      "reason": "實際敲點與回報位置不必一致，連續鋁條和分離鋁片提供必要控制；換木桿研究時標為另一組器材，真碰位置與振動模式另量，模型不是實測神經。",
+      "drop_if": "沒有實測振動圖或可核資料，就收在鋁條和兩片鋁板的差異。"
+    },
+    {
+      "id": "W44R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 56,
+      "core_seconds": {
+        "R44006": 27,
+        "R44007": 29
+      },
+      "chapter_seconds": [
+        27,
+        29
+      ],
+      "beat_seconds": [
+        16,
+        11,
+        16,
+        13
+      ],
+      "reason": "都可能估手較寬，但隱含手形地標圖與橫縱二點距離不是同一任務，不偷換成同一因果。",
+      "drop_if": "若兩場實驗圖示易讓人誤以為是在同一批人量同一機制，拿掉共用的人物標記。"
+    },
+    {
+      "id": "W44R-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 50,
+      "core_seconds": {
+        "R44009": 50
+      },
+      "chapter_seconds": [
+        25,
+        25
+      ],
+      "beat_seconds": [
+        15,
+        10,
+        18,
+        7
+      ],
+      "reason": "剪入延遲訓練而非歷史被暫緩的自我搔癢題；先交代立即/延遲兩測試時點，再顯示減弱轉移。",
+      "drop_if": "如果只剩「自己碰比較輕」一句，就回到固定延遲與兩個測試時點，不夠便留素材。"
+    }
+  ],
+  "timing_probe": [
+    {
+      "id": "W44R-T01",
+      "manifest": {
+        "file": ".cache/wave44-weight-read.json",
+        "sha256": "6a58de34a67f1965df9cb5baa34844c0ad08ac655d1c873f381eaff6932e0926"
+      },
+      "wave": {
+        "file": ".cache/wave44-weight-read-3.wav",
+        "sha256": "c5d579db58b5cd0415d0f771b3f250726817adddcd00bac9c231eea510587449"
+      },
+      "continuous_seconds": 55.371,
+      "scope": "重讀樣稿文字，核根作者合成旁白檔SHA及WAV標頭時長，未另作聽感試映。"
+    },
+    {
+      "id": "W44R-T03",
+      "manifest": {
+        "file": ".cache/wave44-rabbit-read.json",
+        "sha256": "ac175a2db142faac1c49b17734c5001ee3d1c4be16410bacf3f51be597b88ae4"
+      },
+      "wave": {
+        "file": ".cache/wave44-rabbit-read-3.wav",
+        "sha256": "f589ef7ce260735360bf83303c4e62d84134796966f6f37f4f1585ce306a3234"
+      },
+      "continuous_seconds": 61.519,
+      "scope": "重讀樣稿文字，核根作者合成旁白檔SHA及WAV標頭時長，未另作聽感試映。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "R44004/W44R-T02",
+      "readback": "端點的同側已清楚定為持工具手的解剖側與身體中線，不是交叉手移去後的現時物理位置。"
+    },
+    {
+      "id": "R44005/W44R-T03",
+      "readback": "實驗器材由木棒改成鋁條/小鋁板，兩實驗僅部分人重疊；後半另案才是木桿。"
+    },
+    {
+      "id": "R44008",
+      "readback": "題目採觸碰延遲，非降低刷速。僅併已暫緩的LEG-S74，沒有改舊核選入狀態。"
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "b08aba6a0b51d04de79a66799cb9466bc45b89e31c8733ebdd42893b452c0929",
+    "neighbours": {
+      "file": ".cache/wave44-physics-peer-touch-initial.json",
+      "sha256": "b61e98166199ed37a64fa7d2b9afce4e1662082898f067c6f900dc290d084dd2"
+    }
+  },
+  "final_input_check": {
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "c289f71ce6bf07a924b5a8b308a36b6d286e8d9483cdd9d3f11fb5437ee9d5a8"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave44-draft.json",
+      "sha256": "34f43148c95771c0188e458d679a9cd03507ab31fe6ccdb064ff604ef10cc19a"
+    },
+    "neighbours": {
+      "file": ".cache/wave44-touch-neighbours.json",
+      "sha256": "7abdca888e703125432fb2aadce846a5f33e4b865a760b42ae027c4725b7d479"
+    },
+    "bound_batch": {
+      "file": "batches/wave44-touch.json",
+      "sha256": "3b94c04d9704ccd0b0c2a2215b72833f2340536cf59e7a7871ddb51480e2e0da"
+    },
+    "directed_pairs": 60,
+    "changed_rows_and_new_neighbours": [
+      {
+        "id": "R44003",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R44004",
+        "added": [
+          "D2115",
+          "R44003"
+        ],
+        "removed": [
+          "X37-008",
+          "P21001"
+        ]
+      },
+      {
+        "id": "R44005",
+        "added": [
+          "X37-008"
+        ],
+        "removed": [
+          "R44011"
+        ]
+      },
+      {
+        "id": "R44006",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R44007",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R44008",
+        "added": [
+          "LEG-S06"
+        ],
+        "removed": [
+          "X37-006"
+        ]
+      },
+      {
+        "id": "R44009",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R44011",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R44012",
+        "added": [],
+        "removed": []
+      }
+    ]
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "題級判斷及兩案局部合成試讀；未作真人行為試驗、正式拍攝、圖權或成片驗收。"
+  ]
+}

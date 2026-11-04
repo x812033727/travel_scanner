@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "reviewer": "pool_physics (non-author)",
+  "reviewed_on": "2026-11-01",
+  "status": "PASS_AFTER_TARGETED_CORRECTIONS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "H10001",
+    "H10002",
+    "H10003",
+    "H10004",
+    "H10005",
+    "H10006"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave10-household.json",
+      "sha256": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9"
+    },
+    {
+      "file": "reviews/wave10-household-themes.json",
+      "sha256": "4fe65a4ca99e1b7f327ab282459c939424395bf875ed38de48e671e532ff190b"
+    },
+    {
+      "file": "reviews/wave10-household-author.json",
+      "sha256": "8afa2f86a759c5248e36cafbff7458e17e6f54089a41738f44bf9754e2f28217"
+    }
+  ],
+  "original_reviewed_files": [
+    {
+      "file": "batches/wave10-household.json",
+      "sha256": "2dcfa5eeaddf2428124ea3af23d18435952d055c62b1eafd92547e59a720cd76"
+    },
+    {
+      "file": "reviews/wave10-household-themes.json",
+      "sha256": "6b034518e614ec49a7595f8a57b1edf48d6ada4d1a9e4ea0871f784aa568d917"
+    },
+    {
+      "file": "reviews/wave10-household-author.json",
+      "sha256": "8898de903b8451a536dbfe35d9d48e1e411760b6de275c23c5e99314dffcb566"
+    }
+  ],
+  "coverage": {
+    "candidate_rows_full_read": 6,
+    "not_added_read": 19,
+    "author_near_pairs_read": 18,
+    "semantic_pairs_read": 30,
+    "source_records_independently_read": 8,
+    "sources_total": 9,
+    "sources_not_independently_read": [
+      "H10-S009 (僅用退題)"
+    ],
+    "old_full_pool_reverified": false
+  },
+  "semantic_input": {
+    "file": ".cache/wave10-household-neighbours.json",
+    "sha256": "aa75aee913dda35de4984ba292738383b11f4e478b2d8c713584a7711c26c9cc",
+    "draft_sha256": "a9e82d8775c1a03dad5928c79f8ccb961e8701ba4d84846094ae9495c991b000",
+    "raw_records": 3160,
+    "read_batch_sha256": "2dcfa5eeaddf2428124ea3af23d18435952d055c62b1eafd92547e59a720cd76",
+    "revision_delta": "鎖稿之後僅H10005 notes接受merge與題案/作者修訂，問題/答案/scope未變；已定點讀回。"
+  },
+  "per_candidate": [
+    {
+      "id": "H10001",
+      "disposition": "retain",
+      "canonical_id": "H10001",
+      "reason": "同一液態油滴的固體接觸區縮小與頸縮殘留，新增的是可見離面路徑，並非只重述兩親性。",
+      "neighbours_checked": [
+        "H10002",
+        "F4026",
+        "LEG-S53",
+        "P243",
+        "O3068"
+      ]
+    },
+    {
+      "id": "H10002",
+      "disposition": "retain",
+      "canonical_id": "H10002",
+      "reason": "固化油膜中的失效位置可用封邊及局部剪流區分；是原研究特定對照，不是任意材料剝離。",
+      "neighbours_checked": [
+        "B4004",
+        "H10001",
+        "W5028",
+        "F4026",
+        "F4020"
+      ]
+    },
+    {
+      "id": "H10003",
+      "disposition": "retain",
+      "canonical_id": "H10003",
+      "reason": "水分持續由外界傳入且反應前沿推進；不同於微量水觸發瞬間膠、缺氧開關或乾燥硬殼擋水外出。",
+      "neighbours_checked": [
+        "D2133",
+        "D2214",
+        "D2200",
+        "P053",
+        "H10004"
+      ]
+    },
+    {
+      "id": "H10004",
+      "disposition": "retain",
+      "canonical_id": "H10004",
+      "reason": "已變形乳膠粒子仍需鏈跨界形成連續性，與單一聚合物的Tg/塑化或一般相界面傳質不同。",
+      "neighbours_checked": [
+        "P053",
+        "D2200",
+        "P057",
+        "D2149",
+        "D2049"
+      ]
+    },
+    {
+      "id": "H10005",
+      "disposition": "merge",
+      "canonical_id": "L003",
+      "reason": "CCI直接案例仍只用濃度梯度與內庫補給；擦除表面是同原理的新邊界，未建立不同材料機制，併L003。",
+      "neighbours_checked": [
+        "D2133",
+        "D2131",
+        "D2049",
+        "D2150",
+        "N180"
+      ]
+    },
+    {
+      "id": "H10006",
+      "disposition": "retain",
+      "canonical_id": "H10006",
+      "reason": "不穩定玻璃溶出、吸水與鹼性液侵蝕網絡；不同於冷杯凝結、透明性或孔隙結晶壓力。",
+      "neighbours_checked": [
+        "D2149",
+        "H3024",
+        "D2153",
+        "H10002",
+        "P242"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "H10005",
+        "canonical_id": "L003",
+        "reason": "CCI直接案例仍只用濃度梯度與內庫補給；擦除表面是同原理的新邊界，未建立不同材料機制，併L003。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "H10001",
+        "b": "LEG-S53",
+        "reason": "同一液態油滴的固體接觸區縮小與頸縮殘留，新增的是可見離面路徑，並非只重述兩親性。"
+      },
+      {
+        "a": "H10001",
+        "b": "P054",
+        "reason": "同一液態油滴的固體接觸區縮小與頸縮殘留，新增的是可見離面路徑，並非只重述兩親性。"
+      },
+      {
+        "a": "H10002",
+        "b": "H10001",
+        "reason": "固化油膜中的失效位置可用封邊及局部剪流區分；是原研究特定對照，不是任意材料剝離。"
+      },
+      {
+        "a": "H10002",
+        "b": "D2105",
+        "reason": "固化油膜中的失效位置可用封邊及局部剪流區分；是原研究特定對照，不是任意材料剝離。"
+      },
+      {
+        "a": "H10002",
+        "b": "D2183",
+        "reason": "固化油膜中的失效位置可用封邊及局部剪流區分；是原研究特定對照，不是任意材料剝離。"
+      },
+      {
+        "a": "H10003",
+        "b": "H3016",
+        "reason": "水分持續由外界傳入且反應前沿推進；不同於微量水觸發瞬間膠、缺氧開關或乾燥硬殼擋水外出。"
+      },
+      {
+        "a": "H10003",
+        "b": "D2185",
+        "reason": "水分持續由外界傳入且反應前沿推進；不同於微量水觸發瞬間膠、缺氧開關或乾燥硬殼擋水外出。"
+      },
+      {
+        "a": "H10003",
+        "b": "H3027",
+        "reason": "水分持續由外界傳入且反應前沿推進；不同於微量水觸發瞬間膠、缺氧開關或乾燥硬殼擋水外出。"
+      },
+      {
+        "a": "H10004",
+        "b": "H3024",
+        "reason": "已變形乳膠粒子仍需鏈跨界形成連續性，與單一聚合物的Tg/塑化或一般相界面傳質不同。"
+      },
+      {
+        "a": "H10004",
+        "b": "H3025",
+        "reason": "已變形乳膠粒子仍需鏈跨界形成連續性，與單一聚合物的Tg/塑化或一般相界面傳質不同。"
+      },
+      {
+        "a": "H10004",
+        "b": "P249",
+        "reason": "已變形乳膠粒子仍需鏈跨界形成連續性，與單一聚合物的Tg/塑化或一般相界面傳質不同。"
+      },
+      {
+        "a": "H10005",
+        "b": "Q9008",
+        "reason": "材料表面沉積的梯度擴散（歸L003）不同於Q9008選擇蒸發與液態補流穩態，亦不同H3025鏈活動性塑化。"
+      },
+      {
+        "a": "H10005",
+        "b": "H3025",
+        "reason": "材料表面沉積的梯度擴散（歸L003）不同於Q9008選擇蒸發與液態補流穩態，亦不同H3025鏈活動性塑化。"
+      },
+      {
+        "a": "H10006",
+        "b": "LEG-S69",
+        "reason": "不穩定玻璃溶出、吸水與鹼性液侵蝕網絡；不同於冷杯凝結、透明性或孔隙結晶壓力。"
+      },
+      {
+        "a": "H10006",
+        "b": "LEG-S33",
+        "reason": "不穩定玻璃溶出、吸水與鹼性液侵蝕網絡；不同於冷杯凝結、透明性或孔隙結晶壓力。"
+      },
+      {
+        "a": "H10006",
+        "b": "N234",
+        "reason": "不穩定玻璃溶出、吸水與鹼性液侵蝕網絡；不同於冷杯凝結、透明性或孔隙結晶壓力。"
+      },
+      {
+        "a": "H10006",
+        "b": "P284",
+        "reason": "不穩定玻璃溶出、吸水與鹼性液侵蝕網絡；不同於冷杯凝結、透明性或孔隙結晶壓力。"
+      },
+      {
+        "a": "H10003",
+        "b": "D2200",
+        "reason": "前者外界水分供應化學固化前沿；後者表面乾燥硬殼妨礙內部水分外出，不只是方向換詞。"
+      },
+      {
+        "a": "H10004",
+        "b": "D2149",
+        "reason": "乳膠鏈跨粒子界面形成連續膜，不是吸水泥模沉積顆粒層。"
+      },
+      {
+        "a": "H10002",
+        "b": "W5028",
+        "reason": "已固化污層被弱化後侵蝕與入口判斷，不是持續錯流降低膜面顆粒堆積。"
+      }
+    ]
+  },
+  "source_readback": [
+    {
+      "source_id": "H10-S001",
+      "url": "https://bioresources.cnr.ncsu.edu/resources/detergency-mechanisms-and-cellulosic-surfaces-a-review/",
+      "read_via": "作者同日HTTP副本，核對SHA後獨立HTMLParser抽文；本次web開到文章但指定段續開/搜尋timeout",
+      "reading_scope": "Roll-up detachment、Snap-off detachment正文；後續Solubilization/Micellar transport只作邊界參照",
+      "cache_file": ".cache/wave10-household-sources/S001.html",
+      "cache_sha256": "649390bf14770c5acbfe50d31226810ab3fa9cea926c501c4eb32c8d5f9e47bf"
+    },
+    {
+      "source_id": "H10-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4639583/",
+      "read_via": "fresh web.open/find",
+      "reading_scope": "Results的LAS/TX-100、Silicon-Sealed Edges、CTAB（含封邊不影響及剪流對照）、Summary；圖說文字，未重算實驗數據"
+    },
+    {
+      "source_id": "H10-S003",
+      "url": "https://www.wacker.com/h/en-us/medias/7461-EN.pdf",
+      "read_via": "作者同日PDF副本，核對SHA後獨立pypdf文字層；web開到PDF但定位續讀timeout",
+      "reading_scope": "PDF/印刷p23 Skin Forming and Curing與Film Thickness；加速段只讀限制，不納操作",
+      "cache_file": ".cache/wave10-household-sources/S005.pdf",
+      "cache_sha256": "daea6f99def2c42d06c8f6ba44eaa54451f1e742bd5507f6883f73b5538965c9"
+    },
+    {
+      "source_id": "H10-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11533165/",
+      "read_via": "fresh Europe PMC fullTextXML HTTP200；本次PMC web為reCAPTCHA",
+      "reading_scope": "§3.3 Coalescence正文；§4.4 Experimental Evidence的表乾/持續演變段；未核原引用研究或自稱全篇讀完",
+      "cache_file": ".cache/wave10-flows-review-coating.xml",
+      "cache_sha256": "f569f129f469566b0ab2ff98d36657d97c5eb558f7e5508c373d8610f4dca179"
+    },
+    {
+      "source_id": "H10-S005",
+      "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/caring-plastics-rubbers.html",
+      "read_via": "作者同日HTTP副本，核對SHA後獨立HTMLParser抽文；web頁可開",
+      "reading_scope": "Exudation and deposition of additives on plastic surfaces / Figure12及Problem/Solution正文",
+      "cache_file": ".cache/wave10-household-sources/S008.html",
+      "cache_sha256": "2f66683f4e5ffdcc73d4a2bcfc971905bade1b367933d3d74d68eb3a4553476a"
+    },
+    {
+      "source_id": "H10-S006",
+      "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/ceramics-glass-preventive-conservation.html",
+      "read_via": "fresh web.open/find",
+      "reading_scope": "Glass / Water及Incorrect relative humidity正文與Figs17脈絡；sodium措辭過簡，不採成金屬鈉反應"
+    },
+    {
+      "source_id": "H10-S007",
+      "url": "https://blog.cmog.org/2012/osler-candelabrum-and-incipient-crizzling",
+      "read_via": "fresh web.open",
+      "reading_scope": "replacement shades成分差異、鹼溶出/吸水/網絡侵蝕、約每5年重現的該物件案例"
+    },
+    {
+      "source_id": "H10-S008",
+      "url": "https://libanswers.cmog.org/faq/144576",
+      "read_via": "fresh web.open",
+      "reading_scope": "Five stages of crizzling，重點Stage1/2的可移除薄層與不可移除裂紋差異"
+    }
+  ],
+  "independent_failures": [
+    {
+      "source_id": "H10-S001",
+      "route": "web指定段續開/find",
+      "result": "timeout；使用已核SHA作者HTTP副本獨立讀"
+    },
+    {
+      "source_id": "H10-S003",
+      "route": "web指定段續開/find",
+      "result": "timeout；使用已核SHA作者PDF副本獨立讀"
+    },
+    {
+      "source_id": "H10-S004",
+      "route": "PMC web",
+      "result": "reCAPTCHA；Europe PMC fullTextXML當期HTTP200成功"
+    }
+  ],
+  "theme_reviews": [
+    {
+      "id": "W10H-T01",
+      "seconds": 175,
+      "core_allocations": {
+        "H10001": 70,
+        "H10002": 105
+      },
+      "result": "PASS_TOPIC_PLAN_ONLY",
+      "reason": "限定材料切換明示；新增對照節拍保留，末端回顧已縮短；開場與回扣包含。"
+    },
+    {
+      "id": "W10H-T02",
+      "seconds": 155,
+      "core_allocations": {
+        "H10003": 80,
+        "H10004": 75
+      },
+      "result": "PASS_TOPIC_PLAN_ONLY",
+      "reason": "限定材料切換明示；新增對照節拍保留，末端回顧已縮短；開場與回扣包含。"
+    },
+    {
+      "id": "W10H-T03",
+      "result": "WITHDRAWN",
+      "previous_seconds": 160,
+      "reason": "H10005只是既有擴散核心變體，依作者撤片條件刪雙章案；H10006仍保留題池，未另核95秒單核片。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "HH01",
+      "status": "RESOLVED",
+      "change": "H10005作者notes/收據接受合併L003；中央另執行。"
+    },
+    {
+      "id": "HH02",
+      "status": "RESOLVED",
+      "change": "T01從205縮175=70+105，所有末端/刪章算術同步。"
+    },
+    {
+      "id": "HH03",
+      "status": "RESOLVED",
+      "change": "T02從175縮155=80+75，第二章回顧縮短、刪章剩80。"
+    },
+    {
+      "id": "HH04",
+      "status": "RESOLVED",
+      "change": "T03自有效episodes撤除，H10006候選保留。"
+    }
+  ],
+  "unresolved_required_corrections": [],
+  "limits": [
+    "題級來源與企劃覆核，沒有實拍、實驗重現、試讀或逐句劇本核准。",
+    "兩篇綜述的原引用實驗未另讀；製造商與博物館案例不能冒稱全部原始研究。",
+    "本輪未提供配方、施工時間、清潔或保存操作建議。"
+  ],
+  "final_input_checks": [
+    {
+      "checked_on": "2026-11-01",
+      "result": "PASS_UNCHANGED_QA_AND_NEIGHBOURS_TARGETED_METADATA_READBACK",
+      "draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+      "raw_records": 3160,
+      "neighbours_file": ".cache/wave10-household-neighbours.json",
+      "neighbours_sha256": "68eb218ec700ea054a8e8ba718cea82fe222243ce9f6e62159f5e7e55ee6f7fb",
+      "delta_file": ".cache/wave10-household-neighbour-delta.json",
+      "delta_sha256": "c0e11bff2ff9f9f0b8b9c74a15a625b57768d243c838547950fe89d8fe2f4845",
+      "current_batch_sha256": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9",
+      "candidate_rows": 6,
+      "top5_ids_match_reviewed": true,
+      "new_neighbour_ids": [],
+      "delta_rows_read": [],
+      "author_file_hashes_match_reviewed_files": true,
+      "limits": "保留最初semantic_input、來源實讀路線及早期SHA；本次僅版本差異讀回，不宣稱重新讀全部來源。"
+    },
+    {
+      "checked_on": "2026-11-01",
+      "result": "PASS_FINAL_INPUT_HASH_ONLY_DELTA",
+      "draft_sha256": "ebd81b1e36f410146eb4921c43ce4e3d2aded07b3fcdef2748d580de5c8eec16",
+      "previous_draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+      "raw_records": 3160,
+      "neighbours_file": ".cache/wave10-household-neighbours.json",
+      "neighbours_sha256": "9df077f00155bae4102b576cd1f678b8503a0e0d95e013b399f8c52214464f1f",
+      "proof": "將當期nearby唯一draft_sha256值回置c371版後，其完整UTF8位元組SHA與前次實讀nearby SHA相同；證明三份payload只有draft欄變動。",
+      "author_file_hashes_match_reviewed_files": true,
+      "candidate_question_answer_scope_and_neighbour_payload_changed": false,
+      "new_required_corrections": [],
+      "limits": "最後版本綁定，不覆寫早期實讀紀錄；未重開來源、未試讀或製作。"
+    }
+  ]
+}

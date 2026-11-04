@@ -1,0 +1,386 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "reviewer": "root",
+  "bound_files": [
+    {
+      "file": "batches/wave40-wood.json",
+      "sha256": "2db846f4d972e09fa5cbefe5f7835ce62273eefaafe75d17713d49671d19753e"
+    },
+    {
+      "file": "batches/wave40-life.json",
+      "sha256": "8e785b2970549bd6ad0eeded00d5cfa55d76b75a840fcc15b58960f1c699fc72"
+    },
+    {
+      "file": "batches/wave40-physics.json",
+      "sha256": "ad32b92d6ef7b18070edd297f993a090ba8288d01e8b7e2a3ff375e21afdf8a9"
+    },
+    {
+      "file": "batches/wave40-earth.json",
+      "sha256": "ed0f7ed09c7f38f7cf8dfe809e356e184f8e5ce5828d30eda2c1da4185c48f54"
+    },
+    {
+      "file": "reviews/wave40-physics-reviews-wood.json",
+      "sha256": "4e3c394962934ac4ed89224a13c78a2c1977a670c27347b63e21f1d3114f82f8"
+    },
+    {
+      "file": "reviews/wave40-earth-reviews-life.json",
+      "sha256": "0feda9e2dc4ca84621a92a829f7de77db8a3d453c5323595e96e575bae758e1f"
+    },
+    {
+      "file": "reviews/wave40-root-reviews-physics.json",
+      "sha256": "06d6251d2e7dc98bd001456354e643186dc5c0455aa8e4c968b5896e793c0683"
+    },
+    {
+      "file": "reviews/wave40-life-reviews-earth.json",
+      "sha256": "52de509ec34176e8d85cf029ed761f8d2c36959e65049e9669e9b70683ddf66d"
+    },
+    {
+      "file": "reviews/wave40-wood-author.json",
+      "sha256": "501b33a0346707aad197c55ecbe79eac8044f733a7d99d46a3eed81acb4e5ae9"
+    },
+    {
+      "file": "reviews/wave40-wood-themes.json",
+      "sha256": "4f3b792a098866d612c12504a2c1a4d9054cf69441a46cdd474876627068da5f"
+    },
+    {
+      "file": "reviews/wave40-life-themes.json",
+      "sha256": "3b262cd2e29a9b2f5a8aa9df85c4b30a7946f6948f12db28c1a58f3e2d586c35"
+    },
+    {
+      "file": "reviews/wave40-life-author.json",
+      "sha256": "81085a5fa2d0df2dcb60bfee6bf6e12709b529b20e229d4439622dfe6557caf8"
+    },
+    {
+      "file": "reviews/wave40-physics-themes.json",
+      "sha256": "074e2305449bde5b7d6815f36ad4e03011725be69881226a93b85f1a024d1536"
+    },
+    {
+      "file": "reviews/wave40-physics-author.json",
+      "sha256": "4dca7d87e5ca0d990ad577198ec1b67c76045c08a33dc622e9d3ddff35addd73"
+    },
+    {
+      "file": "reviews/wave40-earth-author.json",
+      "sha256": "eee80d997f893bbb7f877bb6aa06195aeabbb48bb17b17c84514a43eaedccf18"
+    },
+    {
+      "file": "reviews/wave40-earth-themes.json",
+      "sha256": "dc3b915fd799e2fa4e36d6c5761492782b25932e316bb69b504ffe5552ad1a51"
+    },
+    {
+      "file": "reviews/wave40-editorial-integration.json",
+      "sha256": "ca284d4d3855433ff3e8d355339dc87a222bc59f983d014f2e47bbe44c82068e"
+    },
+    {
+      "file": "reviews/wave40-timing.json",
+      "sha256": "7e821d1d761cc9b41d74d2aec6d4511f7a640dd22f54035be58d32e7d2f4946f"
+    }
+  ],
+  "source_identities": [
+    {
+      "local_id": "R40-S001",
+      "title": "Ultrasonic emissions reveal individual cavitation bubbles in water-stressed wood",
+      "doi": "10.1098/rsif.2014.0480",
+      "url": "https://doi.org/10.1098/rsif.2014.0480",
+      "retrieval_url": "https://liphy-annuaire.univ-grenoble-alpes.fr/pages_personnelles/philippe_marmottant/Home_files/Ponomarenko2014.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S002",
+      "title": "Direct X-Ray Microtomography Observation Confirms the Induction of Embolism upon Xylem Cutting under Tension",
+      "doi": "10.1104/pp.114.249706",
+      "url": "https://doi.org/10.1104/pp.114.249706",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4281005/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S003",
+      "title": "In Vivo Visualizations of Drought-Induced Embolism Spread in Vitis vinifera",
+      "doi": "10.1104/pp.112.212712",
+      "url": "https://doi.org/10.1104/pp.112.212712",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3613458/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S004",
+      "title": "Stomatal Closure, Basal Leaf Embolism, and Shedding Protect the Hydraulic Integrity of Grape Stems",
+      "doi": "10.1104/pp.16.01816",
+      "url": "https://doi.org/10.1104/pp.16.01816",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5462014/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S005",
+      "title": "The Dynamics of Embolism Repair in Xylem: In Vivo Visualizations Using High-Resolution Computed Tomography",
+      "doi": "10.1104/pp.110.162396",
+      "url": "https://doi.org/10.1104/pp.110.162396",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2971590/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S006",
+      "title": "Evidence for Hydraulic Vulnerability Segmentation and Lack of Xylem Refilling under Tension",
+      "doi": "10.1104/pp.16.01079",
+      "url": "https://doi.org/10.1104/pp.16.01079",
+      "retrieval_url": "https://sylvain-delzon.com/wp-content/uploads/2017/07/Charrier-et-al-2016-Plant-Phys.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S007",
+      "title": "Analysis of Freeze-Thaw Embolism in Conifers. The Interaction between Cavitation Pressure and Tracheid Size",
+      "doi": "10.1104/pp.105.067900",
+      "url": "https://doi.org/10.1104/pp.105.067900",
+      "retrieval_url": "https://sperry.biology.utah.edu/publications/PlantPhys06.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S008",
+      "title": "Maple Sap Uptake, Exudation, and Pressure Changes Correlated with Freezing Exotherms and Thawing Endotherms",
+      "doi": "10.1104/pp.73.2.277",
+      "url": "https://doi.org/10.1104/pp.73.2.277",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A16663208&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S009",
+      "title": "Experimental and computational comparison of freeze–thaw-induced pressure generation in red and sugar maple",
+      "doi": "10.1093/treephys/tpae006",
+      "url": "https://doi.org/10.1093/treephys/tpae006",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11448476/fullTextXML",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S010",
+      "title": "Stem radius changes and their relation to stored water in stems of young Norway spruce trees",
+      "doi": "10.1007/s004680000072",
+      "url": "https://doi.org/10.1007/s004680000072",
+      "retrieval_url": "https://link.springer.com/article/10.1007/s004680000072",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R40-S011",
+      "title": "Frost-induced reversible shrinkage of bark of mature subalpine conifers",
+      "doi": "10.1016/s0168-1923(00)00135-0",
+      "url": "https://doi.org/10.1016/S0168-1923(00)00135-0",
+      "retrieval_url": "https://www.natkon.ch/pdf_files/publikationsseite/zweifel_AFM_2000.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L40-S001",
+      "title": "Nine-spined sticklebacks exploit the most reliable source when public and private information conflict",
+      "doi": "10.1098/rspb.2004.2684",
+      "url": "https://doi.org/10.1098/rspb.2004.2684",
+      "retrieval_url": "https://lalandlab.wp.st-andrews.ac.uk/files/2015/08/vanBergen_PRS_2004.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L40-S002",
+      "title": "Uninformed Individuals Promote Democratic Consensus in Animal Groups",
+      "doi": "10.1126/science.1210280",
+      "url": "https://doi.org/10.1126/science.1210280",
+      "retrieval_url": "https://cdanfort.w3.uvm.edu/csc-reading-group/couzin-science-2011.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L40-S003",
+      "title": "Emergent Sensing of Complex Environments by Mobile Animal Groups",
+      "doi": "10.1126/science.1225883",
+      "url": "https://doi.org/10.1126/science.1225883",
+      "retrieval_url": "https://d-nb.info/1130587568/34",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L40-S004",
+      "title": "Experimentally induced innovations lead to persistent culture via conformity in wild birds",
+      "doi": "10.1038/nature13998",
+      "url": "https://doi.org/10.1038/nature13998",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4344839/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L40-S005",
+      "title": "Cumulative culture can emerge from collective intelligence in animal groups",
+      "doi": "10.1038/ncomms15049",
+      "url": "https://doi.org/10.1038/ncomms15049",
+      "retrieval_url": "https://ora.ox.ac.uk/objects/uuid%3A7649e8f4-5ed6-4114-a536-3261e020f6df/files/m8e7dbc2c0a06349ae96324c35267a3ad",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L40-S006",
+      "title": "Effects of experience and social context on prospective caching strategies by scrub jays",
+      "doi": "10.1038/35106560",
+      "url": "https://doi.org/10.1038/35106560",
+      "retrieval_url": "https://featheredape.com/wp-content/uploads/2014/06/emery-clayton-nature-2001.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L40-S007",
+      "title": "Image scoring and cooperation in a cleaner fish mutualism",
+      "doi": "10.1038/nature04755",
+      "url": "https://doi.org/10.1038/nature04755",
+      "retrieval_url": "https://science.umd.edu/faculty/wilkinson/BIOL608W/Bshary%26Grutter06.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L40-S008",
+      "title": "A Negative Feedback Signal That Is Triggered by Peril Curbs Honey Bee Recruitment",
+      "doi": "10.1016/j.cub.2009.12.060",
+      "url": "https://doi.org/10.1016/j.cub.2009.12.060",
+      "retrieval_url": "https://www-biology.ucsd.edu/labs/nieh/papers/NiehCurrBio2010.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S001",
+      "title": "Geometric control of topological dynamics in a singing saw",
+      "doi": "10.1073/pnas.2117241119",
+      "url": "https://doi.org/10.1073/pnas.2117241119",
+      "retrieval_url": "https://arxiv.org/pdf/2108.10875",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S002",
+      "title": "The hot chocolate effect",
+      "doi": "10.1119/1.13080",
+      "url": "https://doi.org/10.1119/1.13080",
+      "retrieval_url": "https://www.osti.gov/servlets/purl/1090455",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S003",
+      "title": "Mitigation of whistling in vertical corrugated pipes by liquid addition",
+      "doi": "10.1007/s00348-017-2391-1",
+      "url": "https://doi.org/10.1007/s00348-017-2391-1",
+      "retrieval_url": "https://d-nb.info/1143623193/34",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S004",
+      "title": "Singing-sand avalanches without dunes",
+      "doi": "10.1029/2012gl052540",
+      "url": "https://doi.org/10.1029/2012GL052540",
+      "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2012GL052540",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S005",
+      "title": "Tibetan singing bowls",
+      "doi": "10.1088/0951-7715/24/8/r01",
+      "url": "https://doi.org/10.1088/0951-7715/24/8/R01",
+      "retrieval_url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/TibetanBowls.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S006",
+      "title": "The evolution of air resonance power efficiency in the violin and its ancestors",
+      "doi": "10.1098/rspa.2014.0905",
+      "url": "https://doi.org/10.1098/rspa.2014.0905",
+      "retrieval_url": "https://acoustics.mit.edu/faculty/makris/Violin.20140905.full.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S007",
+      "title": "Vocal tract resonances and the sound of the Australian didjeridu (yidaki) I. Experiment",
+      "doi": "10.1121/1.2146089",
+      "url": "https://doi.org/10.1121/1.2146089",
+      "retrieval_url": "https://www.phys.unsw.edu.au/jw/reprints/Tarnopolskyetal.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S008",
+      "title": "Saxophonists tune vocal tract resonances in advanced performance techniques",
+      "doi": "10.1121/1.3514423",
+      "url": "https://doi.org/10.1121/1.3514423",
+      "retrieval_url": "https://www.phys.unsw.edu.au/jw/reprints/SaxJASA.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X40-S009",
+      "title": "The aeroacoustics of a steam kettle",
+      "doi": "10.1063/1.4821782",
+      "url": "https://doi.org/10.1063/1.4821782",
+      "retrieval_url": "https://www.researchgate.net/publication/259333660_The_aeroacoustics_of_a_steam_kettle",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S001",
+      "title": "The WAIS Divide deep ice core WD2014 chronology – Part 1: Methane synchronization (68–31 ka BP) and the gas age–ice age difference",
+      "doi": "10.5194/cp-11-153-2015",
+      "url": "https://doi.org/10.5194/cp-11-153-2015",
+      "retrieval_url": "https://cp.copernicus.org/articles/11/153/2015/cp-11-153-2015.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S002",
+      "title": "The SP19 chronology for the South Pole Ice Core – Part 2: gas chronology, Δage, and smoothing of atmospheric records",
+      "doi": "10.5194/cp-16-2431-2020",
+      "url": "https://doi.org/10.5194/cp-16-2431-2020",
+      "retrieval_url": "https://cp.copernicus.org/articles/16/2431/2020/cp-16-2431-2020.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S003",
+      "title": "Timing of abrupt climate change at the end of the Younger Dryas interval from thermally fractionated gases in polar ice",
+      "doi": "10.1038/34346",
+      "url": "https://doi.org/10.1038/34346",
+      "retrieval_url": "https://web.gps.caltech.edu/classes/ge140a/Stable_Isotope_W19/Readings_files/Severinghaus1998Nature.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S004",
+      "title": "Cryptotephra from the Icelandic Veiðivötn 1477 CE eruption in a Greenland ice core: confirming the dating of volcanic events in the 1450s CE and assessing the eruption’s climatic impact",
+      "doi": "10.5194/cp-17-565-2021",
+      "url": "https://doi.org/10.5194/cp-17-565-2021",
+      "retrieval_url": "https://cp.copernicus.org/articles/17/565/2021/cp-17-565-2021.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S005",
+      "title": "New insights into the ∼74 ka Toba eruption from sulfur isotopes of polar ice cores",
+      "doi": "10.5194/cp-17-2119-2021",
+      "url": "https://doi.org/10.5194/cp-17-2119-2021",
+      "retrieval_url": "https://cp.copernicus.org/articles/17/2119/2021/cp-17-2119-2021.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S006",
+      "title": "Pore fluid constraints on deep ocean temperature and salinity during the Last Glacial Maximum",
+      "doi": "10.1029/2000gl011597",
+      "url": "https://doi.org/10.1029/2000GL011597",
+      "retrieval_url": "https://web.gps.caltech.edu/~jess/GRL_Adkins_Final.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S007",
+      "title": "Evaluation of lipid biomarkers as proxies for sea ice and ocean temperatures along the Antarctic continental margin",
+      "doi": "10.5194/cp-17-2305-2021",
+      "url": "https://doi.org/10.5194/cp-17-2305-2021",
+      "retrieval_url": "https://cp.copernicus.org/articles/17/2305/2021/cp-17-2305-2021.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S008",
+      "title": "Radiometric 81Kr dating identifies 120,000-year-old ice at Taylor Glacier, Antarctica",
+      "doi": "10.1073/pnas.1320329111",
+      "url": "https://doi.org/10.1073/pnas.1320329111",
+      "retrieval_url": "https://arxiv.org/pdf/1403.6201",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S40-S009",
+      "title": "Towards modelling of corrugation ridges at ice-sheet grounding lines",
+      "doi": "10.5194/tc-17-2645-2023",
+      "url": "https://doi.org/10.5194/tc-17-2645-2023",
+      "retrieval_url": "https://tc.copernicus.org/articles/17/2645/2023/tc-17-2645-2023.pdf",
+      "existing_matches": []
+    }
+  ],
+  "source_identity_limits": "舊庫依網址、DOI與正規化英文篇名比對。相同書目不重算獨立研究；補查來源閱讀列在各組作者與非作者紀錄。其他作者稿與正式刊物的關係以各組來源紀錄為準。",
+  "independent_review": "樹木由pool_physics覆核，聲學由root覆核，動物與冰海兩組交叉覆核。",
+  "draft_input_sha256": "c27725591978624903bb505850c98a623fdf92fb73b1df54cddb78f6491d06c5",
+  "directed_semantic_top5_matches_final": {
+    "wood": 45,
+    "life": 40,
+    "physics": 45,
+    "earth": 45
+  },
+  "limits": "近鄰不是全庫去重召回率，來源書目不是素材數。"
+}

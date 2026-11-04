@@ -1,0 +1,118 @@
+{
+  "status": "EDITORIAL_REVISIONS_NOT_AUDIENCE_OR_FINAL_SCRIPT_TEST",
+  "reviewer": "root",
+  "initial_scope": "三組作者本輪第一版片案，非既有528組題案。初版僅作取捨比較，不等於核准。",
+  "initial_proposed_seconds": {
+    "W48L-T01": 125,
+    "W48L-T02": 75,
+    "W48L-T03": 80,
+    "W48P-T01": 70,
+    "W48P-T02": 75,
+    "W48P-T03": 92,
+    "W48S-T01": 75,
+    "W48S-T02": 100,
+    "W48S-T03": 70,
+    "W48S-T04": 75
+  },
+  "initial_receipts": [
+    {
+      "lane": "life",
+      "file": ".cache/wave48-initial-life-themes.json",
+      "sha256": "f7d7eaaba5ed01aa384c2eb4b0b0b15ae787ecb4d3dadb8bd71561d1749c0a68"
+    },
+    {
+      "lane": "physics",
+      "file": ".cache/wave48-initial-physics-themes.json",
+      "sha256": "de91504412f82833378e9a957a2761b714a2f5027470c2844a4f328d7b222878"
+    },
+    {
+      "lane": "earth",
+      "file": ".cache/wave48-initial-earth-themes.json",
+      "sha256": "4800a8e426016cd763dd85e26ae470e653dd463d21da02c5f0b7efbd7b5771ec"
+    }
+  ],
+  "initial_total_seconds": 837,
+  "accepted": [
+    {
+      "proposal": "W48L-T01",
+      "theme_id": "G529",
+      "title": "兩邊都聞到了，為什麼還會走錯方向？",
+      "seconds": 100
+    },
+    {
+      "proposal": "W48L-T02",
+      "theme_id": "G530",
+      "title": "跟著水漂的小魚，怎麼還知道往上游轉？",
+      "seconds": 75
+    },
+    {
+      "proposal": "W48L-T03",
+      "theme_id": "G531",
+      "title": "電鰻已衝出去，怎麼半路改追另一個目標？",
+      "seconds": 70
+    },
+    {
+      "proposal": "W48P-T01",
+      "theme_id": "G532",
+      "title": "拍手明明已經碰到，聲音怎麼晚一步？",
+      "seconds": 65
+    },
+    {
+      "proposal": "W48P-T03",
+      "theme_id": "G533",
+      "title": "推樂器更用力，聲音真的只是更大嗎？",
+      "seconds": 92
+    },
+    {
+      "proposal": "W48S-T01",
+      "theme_id": "G534",
+      "title": "砂岩泡水變細，拿掉上面的重量怎麼還繼續瘦？",
+      "seconds": 70
+    },
+    {
+      "proposal": "W48S-T02",
+      "theme_id": "G535",
+      "title": "浮石的孔都相通，為什麼還猜不到它多快吸水？",
+      "seconds": 92
+    },
+    {
+      "proposal": "W48S-T03",
+      "theme_id": "G536",
+      "title": "酸液流量沒減，多一股二氧化碳怎麼反而長不出長溶道？",
+      "seconds": 70
+    },
+    {
+      "proposal": "W48S-T04",
+      "theme_id": "G537",
+      "title": "岩縫明明溶寬了，為什麼注入途中反而更難通？",
+      "seconds": 75
+    }
+  ],
+  "accepted_total_seconds": 709,
+  "net_seconds_reduced": 128,
+  "decisions": [
+    "鼴鼠左右進氣交換與果蠅無風ON/OFF反應合為100秒；去25秒風向衝突支線，避免把主要ON條件的結果泛化到兩邊緣。共同追問仍是兩側訊號怎麼成為方向，不依物種各出一片。",
+    "浮石困氣與熱石吸水合為92秒，將CT辨識23秒收為15秒；第二研究增加初溫與熱移除限制，困氣後慢沉不另拆核心。兩套實驗與模型分框。",
+    "同鑼不同振型移頻接薄板單頻輸入生出新頻率，合為92秒；先比較頻率移動，再比較新增分量，不把兩種材料畫成同一場逐步加力。",
+    "班卓琴P48-002缺已核可聽起音對照，代表性手撥錄音也不是固定撥力的因果實驗；撤75秒獨立片案，保留30–55秒段落素材，待可用對照與採用方式核實後再組題。2019演示與2020理論修正不當兩次獨立重現。",
+    "電鰻按57.421秒完整樣讀，將80秒改70秒，章節24＋46秒；減開頭與收尾停留，保留無導體與移動碳片對照。",
+    "砂柱按59.154秒完整樣讀，將75秒改70秒，章節24＋46秒；保留受載／未載與分步減載的不同證據。",
+    "拍手按55.434秒完整樣讀，將70秒改65秒，三章25／22／18秒；接觸、首次噴流與後續噴流各自仍有看圖時間。",
+    "岩縫題保留前後測與注酸期間的相反方向，但同時標明平衡鹽水與不同流率測法。原文mL/h及mL/min不一致，不自行改數字或把較高流量當已確定的單因果證據。"
+  ],
+  "bound_files": [
+    {
+      "file": "reviews/wave48-life-themes.json",
+      "sha256": "a47d06fe8870bb8cc9ce15169e4ce00e3c237c6ceeb1a9e21809b70a150dda8f"
+    },
+    {
+      "file": "reviews/wave48-physics-themes.json",
+      "sha256": "178dba92511ad53e399927bf5931825ede377e12dd7b36a7febd5f685cff37e3"
+    },
+    {
+      "file": "reviews/wave48-earth-themes.json",
+      "sha256": "133f9fdf1c38f936400c3dfa3ef4647cacdd1ca3e373be3ce43f90f60b2277a0"
+    }
+  ],
+  "limits": "保留/合併/撤案是編輯裁決，不是觀眾留存測試；只有timing收據列的片案有離線合成聲線量時，其餘紙上估時。"
+}

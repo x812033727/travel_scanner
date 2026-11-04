@@ -1,0 +1,618 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "reviewer": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "P31001",
+    "P31002",
+    "P31003",
+    "P31004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave31-lander.json",
+      "sha256": "c39e28388a29d8fd01479438368bea69b71bdfbe1734a038bb51cbc51000cc0c"
+    },
+    {
+      "file": "reviews/wave31-lander-author.json",
+      "sha256": "cc82b01eaebc9892ec41bb364c76be1be0d7e03eeca9c9f202dff4a59b49eee7"
+    },
+    {
+      "file": "reviews/wave31-lander-themes.json",
+      "sha256": "589ac2d53bedeeab7c2cc0f8bad0a2c3e7842b769b6c2d68231c93a50bb65aae"
+    },
+    {
+      "file": ".cache/wave31-lander-neighbours.json",
+      "sha256": "480c15fe2ad155a47099c8ccdfcb219be6759211b18c2f8a2ac8d3eda1531ed4"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P31001",
+      "decision": "retain",
+      "reason": "分清三個訊號在先的正例與另篇大震負例，資料限制可見。"
+    },
+    {
+      "id": "P31002",
+      "decision": "retain",
+      "reason": "燈光開／關與暗處參照支撐候選機制，對微傾的表述保留可能性。"
+    },
+    {
+      "id": "P31003",
+      "decision": "retain",
+      "reason": "重複波形、日照時間和方位三者能構成推理；無法辨特定零件。"
+    },
+    {
+      "id": "P31004",
+      "decision": "retain",
+      "reason": "測到回光峰，溫差轉號是模型，量與解釋分開。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "P31-S001",
+      "url": "https://research-information.bris.ac.uk/files/329879244/36856_2_merged_1658502913.pdf",
+      "file": ".cache/wave31-lander-impact-web.txt",
+      "sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc",
+      "text_file": ".cache/wave31-lander-impact-web.txt",
+      "text_sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc",
+      "reading_scope": "Bristol接受稿指定網頁文字，稿行105–155及157–180。",
+      "finding": "稿行130–145說明誤差區與前後影像、三件事件皆有新撞擊跡。稿行149附近說明S0533a是例行成像先找到；同期壓力量測無法使用，聲波是由耦合地面運動辨認。",
+      "viewed_images": [],
+      "read_via": "閱讀網頁保存之作者稿指定段落，未檢圖。"
+    },
+    {
+      "source_id": "P31-S002",
+      "url": "https://eps.rutgers.edu/images/EPS_Publications/A_Tectonic_Origin_for_the_Largest_Marsquake_Observed_by_InSight.pdf",
+      "file": ".cache/wave31-lander-negative.pdf",
+      "sha256": "841ed38d6e25d930979913ba1d992e9f038712b175a7817f405793194f1f89ef",
+      "text_file": ".cache/wave31-lander-negative.txt",
+      "text_sha256": "47fcc611c3499df1e5be633e9af36702851f5e227cb3501fb1a59b976e148cac",
+      "reading_scope": "原刊PDF頁6–8，Fig3四幅地圖及中解析、高解析兩級搜尋；結論段。",
+      "finding": "此篇獨立處理S1222a。找不到一場預期規模撞擊所需的大爆散區是支持構造事件的理由。高解析影像覆蓋有限，未直接觀測地底破裂。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave31-lander-negative-p7.png",
+          "sha256": "d862a074b3b652d1701b804f754097d838418665f0d74d78d14dd7164aa3df23",
+          "read_scope": "Fig3a–d影像覆蓋與機率格，細長軌跡和底圖解析度有別。"
+        }
+      ],
+      "read_via": "重新核對原研究PDF與本列實際閱覽圖頁。"
+    },
+    {
+      "source_id": "P31-S003",
+      "url": "https://elib.dlr.de/136478/1/staehler-etal2020GL089099.pdf",
+      "file": ".cache/wave31-lander-transit.pdf",
+      "sha256": "a77b940d95721bcae612d4833db297f4098049fdbc3fd75e27347b6f05cd10bd",
+      "text_file": ".cache/wave31-lander-transit.txt",
+      "text_sha256": "8cd87161f2fda491e7490e2f54c5dac4caab19a8bc15121419f88d0227da5137",
+      "reading_scope": "原刊PDF頁6 Fig1六組不同量測，頁8 Fig2兩場事件對齊以及陸上燈光實驗，頁9–10熱彈性模型。",
+      "finding": "凌日對太陽電池、地溫和水平通道有不同到時。地面實驗比較隔熱而可見燈光的儀器與暗處參照；模型提出受照區與遮蔭區不同熱應變，沒有量到火星儀器腳下的變形。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave31-lander-transit-p6.png",
+          "sha256": "db634cebee8b9d7bfa14bb95426412ea4ae7e57b5d8885a44afc31c1018ea55d",
+          "read_scope": "Fig1太陽電池、地溫、風壓、地震儀分軌時間序列。"
+        },
+        {
+          "file": ".cache/wave31-lander-transit-p8.png",
+          "sha256": "c649312ae90fea60ccc1d7d41207c7b91621ea1d43c187cfacd904bfca312fe3",
+          "read_scope": "Fig2不同凌日資料與由地面燈光實驗推得的黑色曲線，非同地同時量。"
+        }
+      ],
+      "read_via": "重新核對原研究PDF與本列實際閱覽圖頁。"
+    },
+    {
+      "source_id": "P31-S004",
+      "url": "https://authors.library.caltech.edu/api/records/60dcb-gn218/files/JGR%20Planets%20-%202025%20-%20Tamama%20-%20Classifying%20Thermal%20Moonquakes%20Recorded%20in%20Apollo%2017%20Lunar%20Seismic%20Data%20Using.pdf/content",
+      "file": ".cache/wave31-lander-lunar.pdf",
+      "sha256": "d34f9a05e804b67e9e30ff53da6a80321060d59bb70c14ba434fc1752e4f4cba",
+      "text_file": ".cache/wave31-lander-lunar.txt",
+      "text_sha256": "19d46a08c41137c0657acd085f1cc7009d791abc4fc0503c2335c8d18e20ab01",
+      "reading_scope": "原刊PDF頁9–11 Fig5～7，重複族的時段、方位估計與LM事件的討論。",
+      "finding": "多個大族的到時差指向東方，清晨集中是另一條證據；方向不全精確正東，地面設備是候選來源之一。推論不能延伸成每個熱月震都來自某件零件。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave31-lander-lunar-p9.png",
+          "sha256": "8b41a5c37048b1d17c0c747c677936e509f9e69230885d50d61c46f2468c9971",
+          "read_scope": "Fig5重複與孤立族的日相分布及來向。"
+        },
+        {
+          "file": ".cache/wave31-lander-lunar-p10.png",
+          "sha256": "2e884c823a63cabacf5216bb7541a3c129966cf4fc8ff5d958d734b504be4d8a",
+          "read_scope": "Fig6大族的發生時段與方向分布、四條堆疊波形。"
+        },
+        {
+          "file": ".cache/wave31-lander-lunar-p11.png",
+          "sha256": "27b5d5d41fa9dba73d147bf93037f4bf12d02cef315e7543a99eba9ee6953fd0",
+          "read_scope": "Fig7候選LM事件的來向、峰度時間與日照時段。"
+        }
+      ],
+      "read_via": "重新核對原研究PDF與本列實際閱覽圖頁。"
+    },
+    {
+      "source_id": "P31-S005",
+      "url": "https://tmurphy.physics.ucsd.edu/papers/Icarus-231-183.pdf",
+      "file": ".cache/wave31-lander-laser.pdf",
+      "sha256": "1ee861ee122493ff5c2accfbf687433c1c65552a7af1ee3d4b5198038f35e410",
+      "text_file": ".cache/wave31-lander-laser.txt",
+      "text_sha256": "b2c6fcae10544be4921573d67590605fb8c47b7a19197f2370b86db570ec387c",
+      "reading_scope": "原刊pp186、190，Fig4假想溫差／回光變化，Fig9依各陣列日照時程對時，Fig11以紅外天空資料監測透明度。",
+      "finding": "觀測在進出影子時有兩次回強，全食末段的訊號很弱。角錐內外溫差近零使回光集中是模型解釋，不是筆者量到溫度或塵量。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave31-lander-laser-p4.png",
+          "sha256": "2d20c4ad7e6ee18e455e672b3c54c2b5ae2c187c0ed8b500096afb130d255ac9",
+          "read_scope": "Fig4為作者預測示意曲線，沒有實測角錐內部溫度。"
+        },
+        {
+          "file": ".cache/wave31-lander-laser-p8.png",
+          "sha256": "4f9590e9c091596a0807da982625e6293cb763dc00e42d1ece02f013ebd9c9d1",
+          "read_scope": "Fig9各陣列對齊受照時間的回光點，Fig11與天空透明度代理對照。"
+        }
+      ],
+      "read_via": "重新核對原研究PDF與本列實際閱覽圖頁。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P31001",
+      "b": "LEG-S28",
+      "decision": "distinct",
+      "reason": "地震預警用波速差搶先通知，本題以單站到時和來向反推撞擊搜尋區，還要由衛星回驗。"
+    },
+    {
+      "a": "P31001",
+      "b": "E11017",
+      "decision": "distinct",
+      "reason": "表面坑數估地層相對年齡與前後兩期照片將新坑配到已發生的訊號不同。"
+    },
+    {
+      "a": "P31001",
+      "b": "N119",
+      "decision": "distinct",
+      "reason": "地下破裂起點投影與從地震、大氣兩路訊號尋地表撞痕的資料不同。"
+    },
+    {
+      "a": "P31002",
+      "b": "N120",
+      "decision": "distinct",
+      "reason": "相對慣性質量測地動是儀器原理；凌日遮光和熱應變導致傾斜是假訊號的另一條路。"
+    },
+    {
+      "a": "P31002",
+      "b": "N248",
+      "decision": "distinct",
+      "reason": "日食週期問軌道交點，這裡用短促遮光去檢驗地面儀器的水平響應。"
+    },
+    {
+      "a": "P31002",
+      "b": "R006",
+      "decision": "distinct",
+      "reason": "望遠鏡結構熱變形使對焦失準，火星題問儀器微傾後重力如何落到水平通道。"
+    },
+    {
+      "a": "P31003",
+      "b": "P31002",
+      "decision": "distinct",
+      "reason": "火星可能是儀器被傾斜，月球重複震動靠陣列來向與發生時段定位附近設備。"
+    },
+    {
+      "a": "P31003",
+      "b": "N285",
+      "decision": "distinct",
+      "reason": "相同波走過軟硬地層後的振幅差異，並不回答多測點到時定位可能熱源。"
+    },
+    {
+      "a": "P31003",
+      "b": "N120",
+      "decision": "distinct",
+      "reason": "同為地震儀，機械原理與地震陣列如何辨認附近人工源的預測不同。"
+    },
+    {
+      "a": "P31004",
+      "b": "O7018",
+      "decision": "distinct",
+      "reason": "三面鏡的幾何返射方向與角錐內溫差使回波中心強弱改變不同。"
+    },
+    {
+      "a": "P31004",
+      "b": "R006",
+      "decision": "distinct",
+      "reason": "衛星構件熱形變導致相機指向偏離，不等於角錐內折射率不均造成出射波前改變。"
+    },
+    {
+      "a": "P31004",
+      "b": "O7019",
+      "decision": "distinct",
+      "reason": "紋影照片把氣體折射率梯度顯示成明暗，不含月食時角錐溫差與雷射回波的時間曲線。"
+    },
+    {
+      "a": "P31004",
+      "b": "P31002",
+      "decision": "distinct",
+      "reason": "共同的遮光只是條件，火星微傾量水平加速度，月面角錐量返照光子。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P31001",
+      "b": "P31002",
+      "decision": "distinct",
+      "reason": "氣壓擾動與地面波判撞址和遮光後重力投影判微傾是不同訊號來源。"
+    },
+    {
+      "a": "P31001",
+      "b": "E11019",
+      "decision": "distinct",
+      "reason": "乾冰滑塊以模擬刻出溝槽與末端坑，這裡需以不同日期影像確認當時新撞擊。"
+    },
+    {
+      "a": "P31001",
+      "b": "P31003",
+      "decision": "distinct",
+      "reason": "火星用一測站的波與軌道影像，月球用多探頭與日照週期辨認本地設備。"
+    },
+    {
+      "a": "P31001",
+      "b": "O3047",
+      "decision": "distinct",
+      "reason": "逐行掃描期間地球自轉使圖像傾斜，不能由此圈定撞坑位置。"
+    },
+    {
+      "a": "P31001",
+      "b": "O3052",
+      "decision": "distinct",
+      "reason": "軌道基線引起的雷達相位與光學前後照找深色新撞痕不同。"
+    },
+    {
+      "a": "P31002",
+      "b": "P31004",
+      "decision": "distinct",
+      "reason": "共同的遮光只是條件，火星微傾量水平加速度，月面角錐量返照光子。"
+    },
+    {
+      "a": "P31002",
+      "b": "P31001",
+      "decision": "distinct",
+      "reason": "光照改變使儀器表現出微傾，不是傳來撞擊波的到時特徵。"
+    },
+    {
+      "a": "P31002",
+      "b": "N005",
+      "decision": "distinct",
+      "reason": "長期太空風化影響水星坑紋亮度，沒有短促遮光導致感測器變化的對照。"
+    },
+    {
+      "a": "P31002",
+      "b": "E11018",
+      "decision": "distinct",
+      "reason": "乾冰底層的氣體刻蝕長期地形，不解釋地震儀水平通道在數秒遮光後的響應。"
+    },
+    {
+      "a": "P31002",
+      "b": "N013",
+      "decision": "distinct",
+      "reason": "遠觀火星因氧化鐵與塵埃呈紅色，不需要測站遮光或比較重力投影。"
+    },
+    {
+      "a": "P31003",
+      "b": "LEG-S21",
+      "decision": "distinct",
+      "reason": "月球自轉同步決定朝向地球的一面，月面日出和訊號來向判人工源另需震測陣列。"
+    },
+    {
+      "a": "P31003",
+      "b": "N250",
+      "decision": "distinct",
+      "reason": "幾何影錐決定全食／環食，無法定位登月艙遺留設備的月面振源。"
+    },
+    {
+      "a": "P31003",
+      "b": "R8003",
+      "decision": "distinct",
+      "reason": "這個同步自轉舊別名亦不解釋地震波時差估出的局部來向。"
+    },
+    {
+      "a": "P31003",
+      "b": "P31004",
+      "decision": "distinct",
+      "reason": "月震的波形和方位判人工設備，不同於月面角錐回光受溫差改變。"
+    },
+    {
+      "a": "P31003",
+      "b": "N281",
+      "decision": "distinct",
+      "reason": "冰暈和雲滴華是地球大氣光學，無月面感測器。"
+    },
+    {
+      "a": "P31004",
+      "b": "N250",
+      "decision": "distinct",
+      "reason": "這題在一次已知月食中對雷射回光的熱響應感興趣，不是太陽影錐決定的日食類型。"
+    },
+    {
+      "a": "P31004",
+      "b": "N074",
+      "decision": "distinct",
+      "reason": "微重力透鏡被前景天體放大和角錐波前改變，是兩種物理成因。"
+    },
+    {
+      "a": "P31004",
+      "b": "N281",
+      "decision": "distinct",
+      "reason": "月旁暈華由大氣晶體或水滴散射，接收器測量的是地球主動發射後來自月面的雷射。"
+    },
+    {
+      "a": "P31004",
+      "b": "X2015",
+      "decision": "distinct",
+      "reason": "脈衝星由光束掃過視線造成週期性亮起，光子數也會變，但角錐模型沒有自旋掃束。"
+    },
+    {
+      "a": "P31004",
+      "b": "K6017",
+      "decision": "distinct",
+      "reason": "光柱的虛像源自漂浮冰晶方向，並非月面固體內部的溫差與折射。"
+    }
+  ],
+  "not_added_review": [
+    {
+      "id": "P31-NA001",
+      "decision": "keep_not_added",
+      "reason": "多個坑是同一驗證方法的樣本。"
+    },
+    {
+      "id": "P31-NA002",
+      "decision": "keep_not_added",
+      "reason": "無同期壓力紀錄，不宣稱現場錄音。"
+    },
+    {
+      "id": "P31-NA003",
+      "decision": "keep_not_added",
+      "reason": "稿行149把第四例清楚標成先發現坑。"
+    },
+    {
+      "id": "P31-NA004",
+      "decision": "keep_not_added",
+      "reason": "陰性有資訊量是因為事件強度、成像覆蓋與可見大小已約束。"
+    },
+    {
+      "id": "P31-NA005",
+      "decision": "keep_not_added",
+      "reason": "坑形已有成因題，不混成單次撞址識別。"
+    },
+    {
+      "id": "P31-NA006",
+      "decision": "keep_not_added",
+      "reason": "預警另有舊題，通訊時間非核心。"
+    },
+    {
+      "id": "P31-NA007",
+      "decision": "keep_not_added",
+      "reason": "遮光後的延遲與地面燈光支持需先考慮傾斜。"
+    },
+    {
+      "id": "P31-NA008",
+      "decision": "keep_not_added",
+      "reason": "僅部分事件有清楚水平通道響應。"
+    },
+    {
+      "id": "P31-NA009",
+      "decision": "keep_not_added",
+      "reason": "磁場與供電等不在這次熱應變驗證所需推理。"
+    },
+    {
+      "id": "P31-NA010",
+      "decision": "keep_not_added",
+      "reason": "方位估計有散布且不能指出零件。"
+    },
+    {
+      "id": "P31-NA011",
+      "decision": "keep_not_added",
+      "reason": "波形分類也受路徑與訊噪比影響，不能給岩性。"
+    },
+    {
+      "id": "P31-NA012",
+      "decision": "keep_not_added",
+      "reason": "幾何返射已在O7018。"
+    },
+    {
+      "id": "P31-NA013",
+      "decision": "keep_not_added",
+      "reason": "由單一回光值不能解開月塵與氣象等未知量。"
+    },
+    {
+      "id": "P31-NA014",
+      "decision": "keep_not_added",
+      "reason": "全食末段回光轉弱可駁單調愈暗愈強。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W31P-T01",
+      "seconds": 77,
+      "decision": "retain_paper_plan",
+      "reason": "以一次有找到、一次覆蓋充分卻無預期大痕的事件組片；保留地圖的影像尺度。"
+    },
+    {
+      "id": "W31P-T02",
+      "seconds": 110,
+      "decision": "retain_paper_plan",
+      "reason": "利用相同的日照變化追問不同儀器量到的什麼，跨星球前重設量測條件。"
+    },
+    {
+      "id": "W31P-T03",
+      "seconds": 85,
+      "decision": "retain_paper_plan",
+      "reason": "雷射光從地球來這一步必要；中央光強的兩峰與陰影進出圖對齊後收束。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P31001",
+        "b": "LEG-S28",
+        "reason": "地震預警用波速差搶先通知，本題以單站到時和來向反推撞擊搜尋區，還要由衛星回驗。"
+      },
+      {
+        "a": "P31001",
+        "b": "E11017",
+        "reason": "表面坑數估地層相對年齡與前後兩期照片將新坑配到已發生的訊號不同。"
+      },
+      {
+        "a": "P31001",
+        "b": "N119",
+        "reason": "地下破裂起點投影與從地震、大氣兩路訊號尋地表撞痕的資料不同。"
+      },
+      {
+        "a": "P31002",
+        "b": "N120",
+        "reason": "相對慣性質量測地動是儀器原理；凌日遮光和熱應變導致傾斜是假訊號的另一條路。"
+      },
+      {
+        "a": "P31002",
+        "b": "N248",
+        "reason": "日食週期問軌道交點，這裡用短促遮光去檢驗地面儀器的水平響應。"
+      },
+      {
+        "a": "P31002",
+        "b": "R006",
+        "reason": "望遠鏡結構熱變形使對焦失準，火星題問儀器微傾後重力如何落到水平通道。"
+      },
+      {
+        "a": "P31003",
+        "b": "P31002",
+        "reason": "火星可能是儀器被傾斜，月球重複震動靠陣列來向與發生時段定位附近設備。"
+      },
+      {
+        "a": "P31003",
+        "b": "N285",
+        "reason": "相同波走過軟硬地層後的振幅差異，並不回答多測點到時定位可能熱源。"
+      },
+      {
+        "a": "P31003",
+        "b": "N120",
+        "reason": "同為地震儀，機械原理與地震陣列如何辨認附近人工源的預測不同。"
+      },
+      {
+        "a": "P31004",
+        "b": "O7018",
+        "reason": "三面鏡的幾何返射方向與角錐內溫差使回波中心強弱改變不同。"
+      },
+      {
+        "a": "P31004",
+        "b": "R006",
+        "reason": "衛星構件熱形變導致相機指向偏離，不等於角錐內折射率不均造成出射波前改變。"
+      },
+      {
+        "a": "P31004",
+        "b": "O7019",
+        "reason": "紋影照片把氣體折射率梯度顯示成明暗，不含月食時角錐溫差與雷射回波的時間曲線。"
+      },
+      {
+        "a": "P31002",
+        "b": "P31004",
+        "reason": "共同的遮光只是條件，火星微傾量水平加速度，月面角錐量返照光子。"
+      },
+      {
+        "a": "P31002",
+        "b": "P31001",
+        "reason": "光照改變使儀器表現出微傾，不是傳來撞擊波的到時特徵。"
+      },
+      {
+        "a": "P31001",
+        "b": "E11019",
+        "reason": "乾冰滑塊以模擬刻出溝槽與末端坑，這裡需以不同日期影像確認當時新撞擊。"
+      },
+      {
+        "a": "P31001",
+        "b": "P31003",
+        "reason": "火星用一測站的波與軌道影像，月球用多探頭與日照週期辨認本地設備。"
+      },
+      {
+        "a": "P31001",
+        "b": "O3047",
+        "reason": "逐行掃描期間地球自轉使圖像傾斜，不能由此圈定撞坑位置。"
+      },
+      {
+        "a": "P31001",
+        "b": "O3052",
+        "reason": "軌道基線引起的雷達相位與光學前後照找深色新撞痕不同。"
+      },
+      {
+        "a": "P31002",
+        "b": "N005",
+        "reason": "長期太空風化影響水星坑紋亮度，沒有短促遮光導致感測器變化的對照。"
+      },
+      {
+        "a": "P31002",
+        "b": "E11018",
+        "reason": "乾冰底層的氣體刻蝕長期地形，不解釋地震儀水平通道在數秒遮光後的響應。"
+      },
+      {
+        "a": "P31002",
+        "b": "N013",
+        "reason": "遠觀火星因氧化鐵與塵埃呈紅色，不需要測站遮光或比較重力投影。"
+      },
+      {
+        "a": "P31003",
+        "b": "LEG-S21",
+        "reason": "月球自轉同步決定朝向地球的一面，月面日出和訊號來向判人工源另需震測陣列。"
+      },
+      {
+        "a": "P31003",
+        "b": "N250",
+        "reason": "幾何影錐決定全食／環食，無法定位登月艙遺留設備的月面振源。"
+      },
+      {
+        "a": "P31003",
+        "b": "R8003",
+        "reason": "這個同步自轉舊別名亦不解釋地震波時差估出的局部來向。"
+      },
+      {
+        "a": "P31003",
+        "b": "P31004",
+        "reason": "月震的波形和方位判人工設備，不同於月面角錐回光受溫差改變。"
+      },
+      {
+        "a": "P31003",
+        "b": "N281",
+        "reason": "冰暈和雲滴華是地球大氣光學，無月面感測器。"
+      },
+      {
+        "a": "P31004",
+        "b": "N250",
+        "reason": "這題在一次已知月食中對雷射回光的熱響應感興趣，不是太陽影錐決定的日食類型。"
+      },
+      {
+        "a": "P31004",
+        "b": "N074",
+        "reason": "微重力透鏡被前景天體放大和角錐波前改變，是兩種物理成因。"
+      },
+      {
+        "a": "P31004",
+        "b": "N281",
+        "reason": "月旁暈華由大氣晶體或水滴散射，接收器測量的是地球主動發射後來自月面的雷射。"
+      },
+      {
+        "a": "P31004",
+        "b": "X2015",
+        "reason": "脈衝星由光束掃過視線造成週期性亮起，光子數也會變，但角錐模型沒有自旋掃束。"
+      },
+      {
+        "a": "P31004",
+        "b": "K6017",
+        "reason": "光柱的虛像源自漂浮冰晶方向，並非月面固體內部的溫差與折射。"
+      }
+    ]
+  },
+  "final_draft_sha256": "2e2dba998e2c99996c324b5490a6d45e94a2a2cd7c0d115ec94ab5fb86548c78",
+  "remaining_blockers": [],
+  "limits": "首篇核對接受稿指定文本，未閱其撞坑原圖；依文段可規劃原創原理示意。沒有實際配音或觀眾測試。"
+}

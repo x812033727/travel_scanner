@@ -1,0 +1,59 @@
+{
+  "status": "PASS_TWO_READER_SCOPED_OLD_PAIR_INTEGRATION",
+  "reviewed_on": "2026-11-02",
+  "reviewed_files": [
+    {
+      "file": "reviews/wave16-root-old-pairs.json",
+      "sha256": "110d462a27eb0839c296e068b6eb5710518e5a5eb0715032154361a72cebb6ac"
+    },
+    {
+      "file": "reviews/wave16-life-old-pairs.json",
+      "sha256": "47c049f42439193e8c60063e4813724d3f2bc7daf4a46d6d62ad035f9b3d3b99"
+    },
+    {
+      "file": "baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
+    }
+  ],
+  "reviewed_pair_count": 6,
+  "merges": [],
+  "distinct": [
+    {
+      "a": "E2115",
+      "b": "E2129",
+      "reason": "直線電流環場的方向對照，與繞成多匝後的場疊加及長徑比近似不同。後者必須保留內外場/中央區的幾何條件，並非只把導線換彎。"
+    },
+    {
+      "a": "E2002",
+      "b": "E2036",
+      "reason": "孤立中性導體只重新分配原有電子；電容的兩個隔離極板須由外部電路搬電荷。兩題都可能總電中性，但是否有外部電荷搬運是不同控制。"
+    },
+    {
+      "a": "E2082",
+      "b": "E2172",
+      "reason": "固定串聯電流下壓降正比電阻，不會導出經兩線圈觀測的平方匝比阻抗映射；新控制是一次/二次側的電壓與電流比同時改變。"
+    },
+    {
+      "a": "E2041",
+      "b": "E2082",
+      "reason": "電阻串聯約束相同電流，電容初始中性串聯約束相同電荷；V=IR與V=Q/C對元件值給相反分壓趨勢。是可比較的物理約束，不是換元件名重述比例。"
+    },
+    {
+      "a": "N086",
+      "b": "N230",
+      "reason": "孔隙水壓概念共享，但抽水使承載轉到沉積骨架而壓密，入滲則降低斜坡顆粒接觸的抗剪餘裕；水壓改變方向、變形模式與失穩條件不同。不能用一個地面變動案例互換。"
+    },
+    {
+      "a": "E2171",
+      "b": "E2229",
+      "reason": "理想變壓器以交變磁通與匝比/功率約束交換電壓電流；buck則用切換占空比及LC儲放能形成平均直流。兩者使用條件與控制自由度不同。"
+    }
+  ],
+  "excluded": [],
+  "decision": "Accept two-reader agreement: six distinct core pairs. No old core removed. Comparability within a video does not make their different causal constraints interchangeable.",
+  "role_disclosure": "Root is a non-author of the historical rows. pool_life_tech independently compared stored questions, answers and scope against the frozen baseline and performed the declared source rereads.",
+  "reading_scope": "Both compared all six complete stored pairs, 11 unique IDs. Root freshly read ten specified source portions; second reader freshly read four of those and explicitly did not claim to reopen the other six. Not a complete historical answer/source refresh.",
+  "sampling_limit": "Six highest-scoring selected pairs not already explicitly distinct in frozen wave15 top10; purposive, not random or full-pool recall. No manually added pair this wave.",
+  "remaining_blockers": [],
+  "production_ready": false
+}

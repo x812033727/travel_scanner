@@ -1,0 +1,841 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "pool_physics",
+  "production_ready": false,
+  "scope": "同樣沒有一般顏料或同一材料，改變光路、粒群與退色條件後為何換色；只保留原研究能分辨的控制。",
+  "baseline": {
+    "head": "437b78bfe5f05294c35c3feb2a2c80fd667d48c6",
+    "selected": 3483,
+    "raw_records": 3871,
+    "not_added": 2038,
+    "themes": 514,
+    "pool_sha256": "34b8cc264a3d98f670bc183fb94f5b3cc8d52cd33abea53d4e3df212161fd160"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave47-physics.json",
+      "sha256": "dcbd4b67d17a12d964993667eed1debd98dccd1aaa6a02fd713fd0449012b4ac"
+    },
+    {
+      "file": "reviews/wave47-physics-themes.json",
+      "sha256": "5f1add6df59bd952380ce0935a6e48eec6b3ebb553d12ca1b0ce25f48f384fa4"
+    }
+  ],
+  "counts": {
+    "candidates": 6,
+    "sources": 6,
+    "original_research": 6,
+    "not_added": 15,
+    "near_pairs": 21,
+    "themes": 4
+  },
+  "dedup_reading": {
+    "method": "全3871 raw/2038 NA先詞面掃描，274原題與82未收命中；定向讀19舊近對完整問答scope，另2本批近對。另專查奈米金/光致變色/反透異色的中英文專名，只有B4028一般玻璃角度題命中。未宣稱逐題精讀全庫或完成語意去重。",
+    "cache": ".cache/wave47-physics-oldscan.json",
+    "cache_sha256": "6a354a772fae8be325aa601b3924b03454fbe51395ddd032e426623e6ff495ca",
+    "semantic": "待root共同top5；作者不預稱已完成。"
+  },
+  "near_pairs": [
+    {
+      "a": "P47-001",
+      "b": "LEG-S81",
+      "proposed": "distinct",
+      "reason": "薄膜前後面兩反射已有；本題以凹曲多次TIR路徑及滴形處理控制，沒有膜厚前後表面。",
+      "a_snapshot": {
+        "id": "P47-001",
+        "question": "透明水滴凝在塑膠蓋上，為什麼有的區域會反射彩色，有的卻不會？",
+        "answer_target": "水滴的凹曲光學界面可讓光循不同路徑多次全反射，再向同方向離開並干涉；表面處理改變滴形與接觸角，會改掉可走的路徑。這不是只靠全反射就能生色。",
+        "scope": "限2019指定基底、凝結滴及照明幾何。以水滴處理區對照引入，再明標切到另製圓柱段驗模型；不說每片窗上的水都顯同樣彩色。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S81",
+        "question": "泡泡沒有顏料，彩虹色到底從哪裡來？",
+        "answer_target": "薄膜前後表面反射光的干涉，使不同厚度下的各色光被增強或削弱。",
+        "scope": "不是所有虹彩都由相同結構造成。；不能把黑色區域說成必定立即破裂。"
+      }
+    },
+    {
+      "a": "P47-001",
+      "b": "P141",
+      "proposed": "distinct",
+      "reason": "臨界角說明反射強，尚不能解釋不同波長/角度的彩帶；新增多路相位與形狀對照。",
+      "a_snapshot": {
+        "id": "P47-001",
+        "question": "透明水滴凝在塑膠蓋上，為什麼有的區域會反射彩色，有的卻不會？",
+        "answer_target": "水滴的凹曲光學界面可讓光循不同路徑多次全反射，再向同方向離開並干涉；表面處理改變滴形與接觸角，會改掉可走的路徑。這不是只靠全反射就能生色。",
+        "scope": "限2019指定基底、凝結滴及照明幾何。以水滴處理區對照引入，再明標切到另製圓柱段驗模型；不說每片窗上的水都顯同樣彩色。"
+      },
+      "b_snapshot": {
+        "id": "P141",
+        "question": "從水裡斜看水面，為什麼有時像看到一面鏡子？",
+        "answer_target": "由高折射率往低折射率且超過臨界角時，可無透射傳播光。",
+        "scope": "只做光路模型，不提出潛水示範"
+      }
+    },
+    {
+      "a": "P47-001",
+      "b": "P153",
+      "proposed": "distinct",
+      "reason": "雙縫是兩孔路差；本題的可見控制是凹曲介面可走的多次反射路徑，非只換縫寬。",
+      "a_snapshot": {
+        "id": "P47-001",
+        "question": "透明水滴凝在塑膠蓋上，為什麼有的區域會反射彩色，有的卻不會？",
+        "answer_target": "水滴的凹曲光學界面可讓光循不同路徑多次全反射，再向同方向離開並干涉；表面處理改變滴形與接觸角，會改掉可走的路徑。這不是只靠全反射就能生色。",
+        "scope": "限2019指定基底、凝結滴及照明幾何。以水滴處理區對照引入，再明標切到另製圓柱段驗模型；不說每片窗上的水都顯同樣彩色。"
+      },
+      "b_snapshot": {
+        "id": "P153",
+        "question": "光穿過兩條細縫，為什麼螢幕上不只出現兩條亮線？",
+        "answer_target": "兩路相干波到不同位置的路徑差改變疊加結果。",
+        "scope": "經相干照明的雙縫，不宣稱一般手電筒即可"
+      }
+    },
+    {
+      "a": "P47-002",
+      "b": "B2313",
+      "proposed": "distinct",
+      "reason": "舊晶格間距移峰；新題顯示只追粒間峰會漏單粒回散藍峰，推色結果不同。",
+      "a_snapshot": {
+        "id": "P47-002",
+        "question": "把微球做大、把反射峰推向紅色，這批粉塊為什麼反而偏紫？",
+        "answer_target": "粒間排列帶來的長波反射峰不是唯一成分。這批PMMA顆粒自身的回散共振又把藍光送回來，紅與藍的光譜成分同時存在，樣本便偏紫。",
+        "scope": "限2014三組PMMA樣本與散射模型，非所有無序材料不能紅；2019另一研究出現暗紅，須保留此界線。"
+      },
+      "b_snapshot": {
+        "id": "B2313",
+        "question": "豹紋變色龍換鮮豔顏色時，皮膚是怎麼改變反射光的？",
+        "answer_target": "虹彩細胞內鳥嘌呤奈米晶格間距改變，使選擇反射波段移動",
+        "scope": "限豹紋變色龍鮮豔色變，不宣稱任意背景都能複製"
+      }
+    },
+    {
+      "a": "P47-002",
+      "b": "P244",
+      "proposed": "distinct",
+      "reason": "舊外觀不能單獨量粒徑；新明確分解光譜中兩類共振，並有實測/模型比較。",
+      "a_snapshot": {
+        "id": "P47-002",
+        "question": "把微球做大、把反射峰推向紅色，這批粉塊為什麼反而偏紫？",
+        "answer_target": "粒間排列帶來的長波反射峰不是唯一成分。這批PMMA顆粒自身的回散共振又把藍光送回來，紅與藍的光譜成分同時存在，樣本便偏紫。",
+        "scope": "限2014三組PMMA樣本與散射模型，非所有無序材料不能紅；2019另一研究出現暗紅，須保留此界線。"
+      },
+      "b_snapshot": {
+        "id": "P244",
+        "question": "透明、半透明、混濁，能直接拿來當粒子大小尺嗎？",
+        "answer_target": "散射也受濃度、折射率差與波長影響，外觀不能單獨量粒徑。",
+        "scope": "來源概念延伸，定量前補光散射來源"
+      }
+    },
+    {
+      "a": "P47-003",
+      "b": "N274",
+      "proposed": "distinct",
+      "reason": "舊只講多界面多次散射白；新增吸收劑切長路徑、同粒徑不同碳黑的反向飽和度控制。",
+      "a_snapshot": {
+        "id": "P47-003",
+        "question": "彩色微球粉塊裡加一點黑，為什麼反而能讓顏色不那麼泛白？",
+        "answer_target": "少量廣波段吸收劑較容易削弱走很長路徑的多次散射，讓泛白背景下降；結構選擇的顏色相對明顯。受測三種碳黑濃度主要改飽和度，不是另造一個色峰。",
+        "scope": "限同r=174nm聚苯乙烯微球的三組對照；並非越黑越鮮豔。有效厚度是描述吸收截斷光路的近似，不等於樣本真變薄。"
+      },
+      "b_snapshot": {
+        "id": "N274",
+        "question": "冰看起來透明，為什麼積雪卻常是白色？",
+        "answer_target": "大量冰晶界面讓不同可見光多次散射，與透明整塊冰區別。",
+        "scope": "Quick Facts About Snow"
+      }
+    },
+    {
+      "a": "P47-003",
+      "b": "Q9003",
+      "proposed": "distinct",
+      "reason": "覆膜回返紙面增加跨墨區吸收；本題粉塊加入吸收劑抑長散射路徑，不是透明膜橫向跨區。",
+      "a_snapshot": {
+        "id": "P47-003",
+        "question": "彩色微球粉塊裡加一點黑，為什麼反而能讓顏色不那麼泛白？",
+        "answer_target": "少量廣波段吸收劑較容易削弱走很長路徑的多次散射，讓泛白背景下降；結構選擇的顏色相對明顯。受測三種碳黑濃度主要改飽和度，不是另造一個色峰。",
+        "scope": "限同r=174nm聚苯乙烯微球的三組對照；並非越黑越鮮豔。有效厚度是描述吸收截斷光路的近似，不等於樣本真變薄。"
+      },
+      "b_snapshot": {
+        "id": "Q9003",
+        "question": "已經印好的色塊，只覆上一層透明膜，為什麼顏色還會變深？",
+        "answer_target": "部分光在透明膜與空氣界面反射回紙面，跨到鄰近墨區而增加吸收；膜厚與圖案尺度影響跨區機會。",
+        "scope": "限透明、平滑且光學接觸良好的覆膜與半色調；均勻實色或大尺度圖案的增量可小，不泛稱覆膜都變深。"
+      }
+    },
+    {
+      "a": "P47-003",
+      "b": "P244",
+      "proposed": "distinct",
+      "reason": "不以濁度倒推粒徑，而在固定粒徑用吸收改泛白。",
+      "a_snapshot": {
+        "id": "P47-003",
+        "question": "彩色微球粉塊裡加一點黑，為什麼反而能讓顏色不那麼泛白？",
+        "answer_target": "少量廣波段吸收劑較容易削弱走很長路徑的多次散射，讓泛白背景下降；結構選擇的顏色相對明顯。受測三種碳黑濃度主要改飽和度，不是另造一個色峰。",
+        "scope": "限同r=174nm聚苯乙烯微球的三組對照；並非越黑越鮮豔。有效厚度是描述吸收截斷光路的近似，不等於樣本真變薄。"
+      },
+      "b_snapshot": {
+        "id": "P244",
+        "question": "透明、半透明、混濁，能直接拿來當粒子大小尺嗎？",
+        "answer_target": "散射也受濃度、折射率差與波長影響，外觀不能單獨量粒徑。",
+        "scope": "來源概念延伸，定量前補光散射來源"
+      }
+    },
+    {
+      "a": "P47-004",
+      "b": "P189",
+      "proposed": "distinct",
+      "reason": "一般金屬尺寸改色沒有指出形狀保留但聚集的耦合；本題TEM和光譜排除單粒形狀改變。",
+      "a_snapshot": {
+        "id": "P47-004",
+        "question": "一杯紅色奈米金加鹽變藍灰，金粒是換了形狀嗎？",
+        "answer_target": "鹽降低帶電粒子互相排斥的障礙，金粒聚在一起；形狀仍相近，但相近粒子的光學響應耦合使吸收帶移動，所以看到的溶液色改變。",
+        "scope": "限作者NaCl與檸檬酸穩定奈米金示範。吸收峰移向長波不等於肉眼看到更紅；不以色變證明所有粒子已融合。"
+      },
+      "b_snapshot": {
+        "id": "P189",
+        "question": "把金屬磨成粉末，為什麼顏色變了也不一定是化學反應？",
+        "answer_target": "顆粒尺寸與光學外觀可改變，化學變化須另查成分。",
+        "scope": "原創情境，粉塵不安排實作"
+      }
+    },
+    {
+      "a": "P47-004",
+      "b": "P241",
+      "proposed": "distinct",
+      "reason": "光路可見的Tyndall散射不回答NaCl後吸收帶移動。",
+      "a_snapshot": {
+        "id": "P47-004",
+        "question": "一杯紅色奈米金加鹽變藍灰，金粒是換了形狀嗎？",
+        "answer_target": "鹽降低帶電粒子互相排斥的障礙，金粒聚在一起；形狀仍相近，但相近粒子的光學響應耦合使吸收帶移動，所以看到的溶液色改變。",
+        "scope": "限作者NaCl與檸檬酸穩定奈米金示範。吸收峰移向長波不等於肉眼看到更紅；不以色變證明所有粒子已融合。"
+      },
+      "b_snapshot": {
+        "id": "P241",
+        "question": "一束光穿過混濁液體，為什麼比較容易看見光路？",
+        "answer_target": "分散粒子把部分光散射進側面視線，真正溶液常不明顯。",
+        "scope": "低功率光源示意，不用危險雷射"
+      }
+    },
+    {
+      "a": "P47-004",
+      "b": "P22003",
+      "proposed": "distinct",
+      "reason": "油析出微滴使乳白與再透明，是成分/相分離；此為金粒聚集及耦合。",
+      "a_snapshot": {
+        "id": "P47-004",
+        "question": "一杯紅色奈米金加鹽變藍灰，金粒是換了形狀嗎？",
+        "answer_target": "鹽降低帶電粒子互相排斥的障礙，金粒聚在一起；形狀仍相近，但相近粒子的光學響應耦合使吸收帶移動，所以看到的溶液色改變。",
+        "scope": "限作者NaCl與檸檬酸穩定奈米金示範。吸收峰移向長波不等於肉眼看到更紅；不以色變證明所有粒子已融合。"
+      },
+      "b_snapshot": {
+        "id": "P22003",
+        "question": "一滴透明混合液放著變乾，怎麼先變白，後來又透明了？",
+        "answer_target": "乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。",
+        "scope": "限水/乙醇/茴香油指定初始配比和疏水玻璃；透明—乳白—透明為同一分離歷程，只計一核。數值場屬模型，變化分鐘數非普遍定值。"
+      }
+    },
+    {
+      "a": "P47-005",
+      "b": "P189",
+      "proposed": "distinct",
+      "reason": "舊泛稱粉末尺寸改外觀；新不換材料，只改收反射或透射光路，對照去向。",
+      "a_snapshot": {
+        "id": "P47-005",
+        "question": "同一只金銀奈米塑膠杯，燈移到背後，為什麼看到的顏色就不同？",
+        "answer_target": "從前面照時，眼睛接收被散射回來的光；從背面照時，主要看穿過材料後剩下的光。奈米粒子的散射和吸收隨波長而異，使這兩路的光譜不同。",
+        "scope": "限2020金銀/PVA複材，固定光源種類比較兩側；不同銀粒的細分貢獻仍是作者解釋，不把仿品與古杯色譜說成完全相同。"
+      },
+      "b_snapshot": {
+        "id": "P189",
+        "question": "把金屬磨成粉末，為什麼顏色變了也不一定是化學反應？",
+        "answer_target": "顆粒尺寸與光學外觀可改變，化學變化須另查成分。",
+        "scope": "原創情境，粉塵不安排實作"
+      }
+    },
+    {
+      "a": "P47-005",
+      "b": "O7016",
+      "proposed": "distinct",
+      "reason": "配色失配換光源；主題固定光源而換照明/觀測側，另將白燈差異明退。",
+      "a_snapshot": {
+        "id": "P47-005",
+        "question": "同一只金銀奈米塑膠杯，燈移到背後，為什麼看到的顏色就不同？",
+        "answer_target": "從前面照時，眼睛接收被散射回來的光；從背面照時，主要看穿過材料後剩下的光。奈米粒子的散射和吸收隨波長而異，使這兩路的光譜不同。",
+        "scope": "限2020金銀/PVA複材，固定光源種類比較兩側；不同銀粒的細分貢獻仍是作者解釋，不把仿品與古杯色譜說成完全相同。"
+      },
+      "b_snapshot": {
+        "id": "O7016",
+        "question": "店裡看起來同色的兩塊布，為什麼回家就不配了？",
+        "answer_target": "不同反射光譜在一種照明下可產生相同三刺激值；改變入射光譜後，兩塊材料的配色可能分開。",
+        "scope": "限定非螢光樣品與照明變更，不混同色適應或單一布料褪色；布料是原創情境。"
+      }
+    },
+    {
+      "a": "P47-005",
+      "b": "E2247",
+      "proposed": "distinct",
+      "reason": "兩白燈光譜差只作限制，不計本核。",
+      "a_snapshot": {
+        "id": "P47-005",
+        "question": "同一只金銀奈米塑膠杯，燈移到背後，為什麼看到的顏色就不同？",
+        "answer_target": "從前面照時，眼睛接收被散射回來的光；從背面照時，主要看穿過材料後剩下的光。奈米粒子的散射和吸收隨波長而異，使這兩路的光譜不同。",
+        "scope": "限2020金銀/PVA複材，固定光源種類比較兩側；不同銀粒的細分貢獻仍是作者解釋，不把仿品與古杯色譜說成完全相同。"
+      },
+      "b_snapshot": {
+        "id": "E2247",
+        "question": "兩盞燈看起來同樣偏白，照物品的顏色為什麼還能不同？",
+        "answer_target": "色溫濃縮光色資訊，無法完整描述物體顯色所需光譜。",
+        "scope": "色彩保真與光色不同，不泛指特定品牌。"
+      }
+    },
+    {
+      "a": "P47-005",
+      "b": "B4028",
+      "proposed": "distinct",
+      "reason": "窗角度改得熱投影面積；這裡比較反射和透射的光譜配分，不問熱量或面積。",
+      "a_snapshot": {
+        "id": "P47-005",
+        "question": "同一只金銀奈米塑膠杯，燈移到背後，為什麼看到的顏色就不同？",
+        "answer_target": "從前面照時，眼睛接收被散射回來的光；從背面照時，主要看穿過材料後剩下的光。奈米粒子的散射和吸收隨波長而異，使這兩路的光譜不同。",
+        "scope": "限2020金銀/PVA複材，固定光源種類比較兩側；不同銀粒的細分貢獻仍是作者解釋，不把仿品與古杯色譜說成完全相同。"
+      },
+      "b_snapshot": {
+        "id": "B4028",
+        "question": "同一片窗，為什麼午後斜照的熱量不能只用正面測試值判斷？",
+        "answer_target": "太陽入射角改變玻璃反射/透射比例，也改變接受光束的有效投影面積，實際得熱隨位置時間而變。",
+        "scope": "不套澳洲朝向到臺灣；不引用單一55度臨界或把所有鍍膜角度效應視為一樣。與P138折射法線的目標不同。"
+      }
+    },
+    {
+      "a": "P47-006",
+      "b": "X5018",
+      "proposed": "distinct",
+      "reason": "可重寫卡熱歷程決定顯色劑結晶狀態；此是UV激發後溫度依存的退色曲線，未以結晶解釋。",
+      "a_snapshot": {
+        "id": "P47-006",
+        "question": "變色鏡片照過紫外光後，為什麼冷的那片回到透明更慢？",
+        "answer_target": "著色不是永久染色；光致變色材料可回到較無色狀態，而回復速率受溫度與材料環境影響。相同研究在冷暖條件量吸收隨時間的下降，冷條件退色較慢。",
+        "scope": "12片市售鏡片於6±2°C和21±2°C；配方未知，不替每片指定開環分子。一階擬合是方法近似；同方法的冷暖曲線才可比，不推人體使用成效。"
+      },
+      "b_snapshot": {
+        "id": "X5018",
+        "question": "有些可重寫卡片，同樣用熱，為什麼能寫字也能消字？",
+        "answer_target": "特定長鏈顯色劑與染料在不同熱歷程下結合或分離結晶，能固定有色或無色狀態。",
+        "scope": "只適用來源指定可重寫材料；不是所有收據可重寫，不列操作溫度或冷卻配方。"
+      }
+    },
+    {
+      "a": "P47-006",
+      "b": "B4023",
+      "proposed": "distinct",
+      "reason": "電壓驅動離子遷移；此無加電，關注照光後的熱回復速率。",
+      "a_snapshot": {
+        "id": "P47-006",
+        "question": "變色鏡片照過紫外光後，為什麼冷的那片回到透明更慢？",
+        "answer_target": "著色不是永久染色；光致變色材料可回到較無色狀態，而回復速率受溫度與材料環境影響。相同研究在冷暖條件量吸收隨時間的下降，冷條件退色較慢。",
+        "scope": "12片市售鏡片於6±2°C和21±2°C；配方未知，不替每片指定開環分子。一階擬合是方法近似；同方法的冷暖曲線才可比，不推人體使用成效。"
+      },
+      "b_snapshot": {
+        "id": "B4023",
+        "question": "有些玻璃不用拉窗簾，通一點電怎麼就能逐漸變深色？",
+        "answer_target": "電壓驅動離子穿過導離子層進出活性層，伴隨電荷狀態變化，改變光的透過；反向控制可恢復。",
+        "scope": "採2007研究的鋰離子電致變色堆疊；不把它說成LCD偏振旋轉，也不採當年效率/切換秒數為現況。"
+      }
+    },
+    {
+      "a": "P47-006",
+      "b": "H3084",
+      "proposed": "distinct",
+      "reason": "螢光淬熄/漂白控制的是發光，不是透光鏡片可逆著色的退色。",
+      "a_snapshot": {
+        "id": "P47-006",
+        "question": "變色鏡片照過紫外光後，為什麼冷的那片回到透明更慢？",
+        "answer_target": "著色不是永久染色；光致變色材料可回到較無色狀態，而回復速率受溫度與材料環境影響。相同研究在冷暖條件量吸收隨時間的下降，冷條件退色較慢。",
+        "scope": "12片市售鏡片於6±2°C和21±2°C；配方未知，不替每片指定開環分子。一階擬合是方法近似；同方法的冷暖曲線才可比，不推人體使用成效。"
+      },
+      "b_snapshot": {
+        "id": "H3084",
+        "question": "螢光越照越暗，就代表發光分子已經壞掉了嗎？",
+        "answer_target": "區分激發能以非輻射途徑消散與發光團不可逆化學改變，說明相同亮度下降不等同相同原因。",
+        "scope": "只作機制比較；復亮或補光不是單一診斷，漂白也不限定只能由氧引起。"
+      }
+    },
+    {
+      "a": "P47-006",
+      "b": "H3001",
+      "proposed": "distinct",
+      "reason": "構象平衡與互換速率的通則不含光致著色/冷暖鏡片測量；仍不將模型寫成每款分子機制已證。",
+      "a_snapshot": {
+        "id": "P47-006",
+        "question": "變色鏡片照過紫外光後，為什麼冷的那片回到透明更慢？",
+        "answer_target": "著色不是永久染色；光致變色材料可回到較無色狀態，而回復速率受溫度與材料環境影響。相同研究在冷暖條件量吸收隨時間的下降，冷條件退色較慢。",
+        "scope": "12片市售鏡片於6±2°C和21±2°C；配方未知，不替每片指定開環分子。一階擬合是方法近似；同方法的冷暖曲線才可比，不推人體使用成效。"
+      },
+      "b_snapshot": {
+        "id": "H3001",
+        "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
+        "answer_target": "固定條件下，構象相對能量及自由能差異影響平衡占比；構象間能障主要影響互換快慢，不可混為同一個原因。",
+        "scope": "定性比較構象的平衡偏好與互換速度，不引用固定比例；不把構象轉動等同需要斷鍵的構型翻轉。"
+      }
+    },
+    {
+      "a": "P47-002",
+      "b": "P47-003",
+      "proposed": "distinct",
+      "reason": "藍峰污染改色相與長路徑泛白改飽和度是不同控制；並有不同研究的分項與固定粒徑吸收對照。",
+      "a_snapshot": {
+        "id": "P47-002",
+        "question": "把微球做大、把反射峰推向紅色，這批粉塊為什麼反而偏紫？",
+        "answer_target": "粒間排列帶來的長波反射峰不是唯一成分。這批PMMA顆粒自身的回散共振又把藍光送回來，紅與藍的光譜成分同時存在，樣本便偏紫。",
+        "scope": "限2014三組PMMA樣本與散射模型，非所有無序材料不能紅；2019另一研究出現暗紅，須保留此界線。"
+      },
+      "b_snapshot": {
+        "id": "P47-003",
+        "question": "彩色微球粉塊裡加一點黑，為什麼反而能讓顏色不那麼泛白？",
+        "answer_target": "少量廣波段吸收劑較容易削弱走很長路徑的多次散射，讓泛白背景下降；結構選擇的顏色相對明顯。受測三種碳黑濃度主要改飽和度，不是另造一個色峰。",
+        "scope": "限同r=174nm聚苯乙烯微球的三組對照；並非越黑越鮮豔。有效厚度是描述吸收截斷光路的近似，不等於樣本真變薄。"
+      }
+    },
+    {
+      "a": "P47-004",
+      "b": "P47-005",
+      "proposed": "distinct",
+      "reason": "加鹽改粒間距/吸收共振，與同一複材改光路的反射透射顏色不同；不能只靠同為奈米金合併。",
+      "a_snapshot": {
+        "id": "P47-004",
+        "question": "一杯紅色奈米金加鹽變藍灰，金粒是換了形狀嗎？",
+        "answer_target": "鹽降低帶電粒子互相排斥的障礙，金粒聚在一起；形狀仍相近，但相近粒子的光學響應耦合使吸收帶移動，所以看到的溶液色改變。",
+        "scope": "限作者NaCl與檸檬酸穩定奈米金示範。吸收峰移向長波不等於肉眼看到更紅；不以色變證明所有粒子已融合。"
+      },
+      "b_snapshot": {
+        "id": "P47-005",
+        "question": "同一只金銀奈米塑膠杯，燈移到背後，為什麼看到的顏色就不同？",
+        "answer_target": "從前面照時，眼睛接收被散射回來的光；從背面照時，主要看穿過材料後剩下的光。奈米粒子的散射和吸收隨波長而異，使這兩路的光譜不同。",
+        "scope": "限2020金銀/PVA複材，固定光源種類比較兩側；不同銀粒的細分貢獻仍是作者解釋，不把仿品與古杯色譜說成完全相同。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P47-S001",
+      "doi": "10.1038/s41586-019-0946-4",
+      "canonical_url": "https://doi.org/10.1038/s41586-019-0946-4",
+      "actual_carrier": "https://bioinspiredoptics.mit.edu/wp-content/uploads/2020/09/Goodling-et-al.-2019-Colouration-by-total-internal-reflection-and-inter.pdf",
+      "version_relation": "MIT作者團隊公開的原刊排版PDF，與Nature同文，非第二研究。",
+      "existing_exact_doi_mentions": [],
+      "independent_research_count": 1
+    },
+    {
+      "source_id": "P47-S002",
+      "doi": "10.1103/PhysRevE.90.062302",
+      "canonical_url": "https://doi.org/10.1103/PhysRevE.90.062302",
+      "actual_carrier": "https://arxiv.org/pdf/1409.8575v2",
+      "version_relation": "arXiv:1409.8575v2（2014-11-14）作者稿；PDF首頁印Dated October 6, 2018，採arXiv版本及期刊2014身份，不另算2018研究。",
+      "existing_exact_doi_mentions": [],
+      "independent_research_count": 1
+    },
+    {
+      "source_id": "P47-S003",
+      "doi": "10.1002/adom.201900442",
+      "canonical_url": "https://doi.org/10.1002/adom.201900442",
+      "actual_carrier": "https://www.physik.uzh.ch/dam/jcr%3Add48db19-4eb4-4121-ab04-268699fb05d2/colouraom.pdf",
+      "version_relation": "UZH作者機構公開原刊PDF，前7頁原文，後頁為同文補充；本次不把兩者計為獨立研究。",
+      "existing_exact_doi_mentions": [],
+      "independent_research_count": 1
+    },
+    {
+      "source_id": "P47-S004",
+      "doi": "10.1007/s13404-013-0122-9",
+      "canonical_url": "https://doi.org/10.1007/s13404-013-0122-9",
+      "actual_carrier": "https://link.springer.com/article/10.1007/s13404-013-0122-9",
+      "version_relation": "Springer原刊HTML，2013-11-14 online，含作者自己的示範實驗/冷凍TEM；不是只讀教學轉述。",
+      "existing_exact_doi_mentions": [],
+      "independent_research_count": 1
+    },
+    {
+      "source_id": "P47-S005",
+      "doi": "10.3762/bjnano.11.2",
+      "canonical_url": "https://doi.org/10.3762/bjnano.11.2",
+      "actual_carrier": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6964654/fullTextXML",
+      "version_relation": "Europe PMC收錄期刊XML；與期刊網頁、ChemRxiv:9784406.v1為同一工作，非古杯原件的成分研究。",
+      "existing_exact_doi_mentions": [],
+      "independent_research_count": 1
+    },
+    {
+      "source_id": "P47-S006",
+      "doi": "10.1371/journal.pone.0234066",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0234066",
+      "actual_carrier": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7259785/fullTextXML",
+      "version_relation": "Europe PMC原刊XML與PLOS原刊PDF同文；12片鏡片、5家廠商，不是人體效果試驗。",
+      "existing_exact_doi_mentions": [],
+      "independent_research_count": 1
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P47-S001",
+      "scope": "PDF pp1–3（原刊523–525），水滴接觸角對照、單滴彩環、二維圓柱段的多路徑模型與Figs1–3。",
+      "cache": {
+        "file": ".cache/wave47-physics-tir.pdf",
+        "sha256": "fa6e4bc48f1dd3a48c003f4459e62320cf11986f1d40ca947d1ae42ca8a3c2f9",
+        "text_file": ".cache/wave47-physics-tir.txt",
+        "text_sha256": "bf6a33438d7a14b8a059672ba0b100fe3d2625d9713bfaa118b70115ec2c12ea"
+      },
+      "limitations": "只採受控照明下指定球冠/兩相滴；單靠全反射或普通水滴色散不足說明本實驗，不將不同模型裝置當同一顆滴。"
+    },
+    {
+      "source_id": "P47-S002",
+      "scope": "作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。",
+      "cache": {
+        "file": ".cache/wave47-physics-red.pdf",
+        "sha256": "a9d33c70a1744854012fe0f7fb15435695ec56269a7cd8425983266707be528d",
+        "text_file": ".cache/wave47-physics-red.txt",
+        "text_sha256": "bb4bbb396a288073fc6259f5ef02d001e8cb6e31f086bd8601faf27407685ebf"
+      },
+      "limitations": "只限該組樣本及模型；另讀2019 Schertel原研究，後者能得到暗紅，故不採所有無序結構都不能有紅色的強結論。"
+    },
+    {
+      "source_id": "P47-S003",
+      "scope": "原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+      "cache": {
+        "file": ".cache/wave47-physics-glass.pdf",
+        "sha256": "9afd2a40d2f4b35d9ccb473abaa95976850dd254d620d4efcf624c4fa99f468a",
+        "text_file": ".cache/wave47-physics-glass.txt",
+        "text_sha256": "2ad3b46901d1791344ae3c513f35e01af151a535b552c8985e52411a0760805c"
+      },
+      "limitations": "有效厚度是擬合近似，不是量到實體厚度變薄；高折射率粒子的大色域是模型，未當作全套實測。"
+    },
+    {
+      "source_id": "P47-S004",
+      "scope": "Experimental: Experiment 2及解說Experiment 2. Colour change of nanoparticles by aggregation with a salt；正文PARA049–055，Fig3a–d。",
+      "cache": {
+        "file": ".cache/wave47-physics-gold.html",
+        "sha256": "2a9863dc70ef147c45c445bc745de02108d1ec13832ba90f707bcb65d7804b44",
+        "text_file": ".cache/wave47-physics-gold.txt",
+        "text_sha256": "6146848ee8848161a259e21f5e81891417eb554c092e56e375ad73c5c5344732"
+      },
+      "limitations": "顆粒形狀在這個冷凍TEM對照中保留；不將所有加鹽變色液體歸於此，也不提供合成/化學操作教學。"
+    },
+    {
+      "source_id": "P47-S005",
+      "scope": "Results and Discussion（PARA008–021）、Experimental General（PARA029–033）、Fig3a–b；期刊web正文亦讀回。",
+      "cache": {
+        "file": ".cache/wave47-physics-cup.xml",
+        "sha256": "9b2e2e42a7cd46d1eef46953b356f9f1622e0707bc3cbee5df1e243743318493",
+        "text_file": ".cache/wave47-physics-cup.txt",
+        "text_sha256": "7af8b8832228be15206604d61f402a59c2678392ba064d3b5fa0131e0debcb58"
+      },
+      "limitations": "原文對不同銀粒尺寸的分工標為推測；不宣稱逐粒量到貢獻，也不以塑膠仿品證明古代配方或忽略光源光譜。"
+    },
+    {
+      "source_id": "P47-S006",
+      "scope": "Methods: Measurement procedures/Fading rate；Results Fig2及Table4；Discussion及測量限制（PARA019–029、066–090）。",
+      "cache": {
+        "file": ".cache/wave47-physics-lens.xml",
+        "sha256": "53cc887866245329a820b814992513b7b53bfff9bf1a3567f9bec8a6a4eab32a",
+        "text_file": ".cache/wave47-physics-lens.txt",
+        "text_sha256": "89b51d0b8103e6e9f385faf955891d6a8a394b3520df2ac528038b722865a7da"
+      },
+      "limitations": "配方未揭露，不能替每片指定分子；一階擬合為簡化，掃描時鏡片也在退色。不同半衰測法不可混成單一倍數，不採零下溫度外推。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "name": "tir",
+      "url": "https://bioinspiredoptics.mit.edu/wp-content/uploads/2020/09/Goodling-et-al.-2019-Colouration-by-total-internal-reflection-and-inter.pdf",
+      "status": 200,
+      "final_url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/1/1261/files/2020/09/Goodling-et-al.-2019-Colouration-by-total-internal-reflection-and-inter.pdf",
+      "content_type": "application/pdf",
+      "bytes": 6118757,
+      "file": "wave47-physics-tir.pdf",
+      "sha256": "fa6e4bc48f1dd3a48c003f4459e62320cf11986f1d40ca947d1ae42ca8a3c2f9",
+      "pages": 11,
+      "text_file": "wave47-physics-tir.txt",
+      "text_sha256": "bf6a33438d7a14b8a059672ba0b100fe3d2625d9713bfaa118b70115ec2c12ea",
+      "text_chars": 48401
+    },
+    {
+      "name": "red",
+      "url": "https://dash.harvard.edu/bitstreams/7312037d-6ff3-6bd4-e053-0100007fdf3b/download",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "name": "glass",
+      "url": "https://folia.unifr.ch/rerodoc/327005/files/aub_scp.pdf",
+      "error": "HTTP Error 404: NOT FOUND"
+    },
+    {
+      "name": "gold",
+      "url": "https://link.springer.com/article/10.1007/s13404-013-0122-9",
+      "status": 200,
+      "final_url": "https://link.springer.com/article/10.1007/s13404-013-0122-9?error=cookies_not_supported&code=34d256c5-81e1-4a37-a5bd-8dc8ccc39f50",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 348238,
+      "file": "wave47-physics-gold.html",
+      "sha256": "2a9863dc70ef147c45c445bc745de02108d1ec13832ba90f707bcb65d7804b44",
+      "text_file": "wave47-physics-gold.txt",
+      "text_sha256": "6146848ee8848161a259e21f5e81891417eb554c092e56e375ad73c5c5344732",
+      "text_chars": 39815
+    },
+    {
+      "name": "cup",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6964654/fullTextXML",
+      "status": 200,
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6964654/fullTextXML",
+      "content_type": "application/xml",
+      "bytes": 48992,
+      "file": "wave47-physics-cup.xml",
+      "sha256": "9b2e2e42a7cd46d1eef46953b356f9f1622e0707bc3cbee5df1e243743318493",
+      "text_file": "wave47-physics-cup.txt",
+      "text_sha256": "7af8b8832228be15206604d61f402a59c2678392ba064d3b5fa0131e0debcb58",
+      "text_chars": 24897
+    },
+    {
+      "name": "chol",
+      "url": "https://pubs.rsc.org/en/content/getauthorversionpdf/C3TC32055C",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "name": "lens",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7259785/fullTextXML",
+      "status": 200,
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7259785/fullTextXML",
+      "content_type": "application/xml",
+      "bytes": 183411,
+      "file": "wave47-physics-lens.xml",
+      "sha256": "53cc887866245329a820b814992513b7b53bfff9bf1a3567f9bec8a6a4eab32a",
+      "text_file": "wave47-physics-lens.txt",
+      "text_sha256": "89b51d0b8103e6e9f385faf955891d6a8a394b3520df2ac528038b722865a7da",
+      "text_chars": 74436
+    },
+    {
+      "id": "red",
+      "url": "https://arxiv.org/pdf/1409.8575v2",
+      "retrieval_url": "https://arxiv.org/pdf/1409.8575v2",
+      "status": 200,
+      "pages": 9,
+      "sha256": "a9d33c70a1744854012fe0f7fb15435695ec56269a7cd8425983266707be528d",
+      "text_sha256": "bb4bbb396a288073fc6259f5ef02d001e8cb6e31f086bd8601faf27407685ebf",
+      "bytes": 3254554
+    },
+    {
+      "id": "glass",
+      "url": "https://www.physik.uzh.ch/dam/jcr%3Add48db19-4eb4-4121-ab04-268699fb05d2/colouraom.pdf",
+      "retrieval_url": "https://www.physik.uzh.ch/dam/jcr%3Add48db19-4eb4-4121-ab04-268699fb05d2/colouraom.pdf",
+      "status": 200,
+      "pages": 13,
+      "sha256": "9afd2a40d2f4b35d9ccb473abaa95976850dd254d620d4efcf624c4fa99f468a",
+      "text_sha256": "2ad3b46901d1791344ae3c513f35e01af151a535b552c8985e52411a0760805c",
+      "bytes": 6044701
+    },
+    {
+      "id": "chol",
+      "url": "https://orbilu.uni.lu/bitstream/10993/20452/2/Noh_et_al.pdf",
+      "failure": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+    },
+    {
+      "id": "gold-fig3",
+      "url": "https://media.springernature.com/lw1200/springer-static/image/art%3A10.1007%2Fs13404-013-0122-9/MediaObjects/13404_2013_122_Fig3_HTML.gif",
+      "retrieval_url": "https://media.springernature.com/lw1200/springer-static/image/art%3A10.1007%2Fs13404-013-0122-9/MediaObjects/13404_2013_122_Fig3_HTML.gif",
+      "status": 200,
+      "file": ".cache/wave47-physics-gold-fig3.gif",
+      "sha256": "bd9e7ecbcbe84de9c4f91149118c5c2d44b4903d5b1853509bbed4b4aa148e78"
+    },
+    {
+      "id": "cup-full",
+      "url": "https://www.beilstein-journals.org/bjnano/content/pdf/2190-4286-11-2.pdf",
+      "failure": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1082)>"
+    },
+    {
+      "id": "lens-full",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0234066&type=printable",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0234066&type=printable",
+      "status": 200,
+      "file": ".cache/wave47-physics-lens-full.pdf",
+      "sha256": "c51b0bdbda3a43c34b429daa76eea73b9aed48e6fa03478f631243f1e491dd35"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "id": "chol",
+      "url": "https://orbilu.uni.lu/bitstream/10993/20452/2/Noh_et_al.pdf",
+      "failure": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+    },
+    {
+      "id": "cup-full",
+      "url": "https://www.beilstein-journals.org/bjnano/content/pdf/2190-4286-11-2.pdf",
+      "failure": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1082)>"
+    },
+    {
+      "id": "chol-web",
+      "url": "https://orbilu.uni.lu/bitstream/10993/20452/2/Noh_et_al.pdf",
+      "failure": "web.open timeout；未納入正文已讀來源。"
+    },
+    {
+      "id": "cup-pmc-web",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6964654/",
+      "failure": "web reCAPTCHA，改Europe PMC XML及期刊web正文。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "source_id": "P47-S001",
+      "file": ".cache/wave47-physics-tir-p2.png",
+      "sha256": "25393d5a4c9adc0001610b6e4a41523e3d8e408bc40edb8cef481eae7fdfd07a",
+      "read_scope": "p2 Fig1a–i，兩相滴與凝結水滴是不同試樣；親水處理區對照。"
+    },
+    {
+      "source_id": "P47-S001",
+      "file": ".cache/wave47-physics-tir-p3.png",
+      "sha256": "e8b9f4c0906173b8a32c1b6a1c35ac61f0046751071d22747eab91f27d47f412",
+      "read_scope": "p3 Figs2–3，半球屏幕與製作的圓柱段、模型路徑。"
+    },
+    {
+      "source_id": "P47-S002",
+      "file": ".cache/wave47-physics-red-p1.png",
+      "sha256": "9b90990312603eb607a482a264fb5c6592ae74260438a613bde1a3889d9c3b6f",
+      "read_scope": "p1 Fig1三種PMMA粒徑的照片與實測光譜。"
+    },
+    {
+      "source_id": "P47-S002",
+      "file": ".cache/wave47-physics-red-p5.png",
+      "sha256": "051c4435c7abcd4f51d5d7d61e9a20f400c8dbb51fd014eccbc56f4666a0a4d5",
+      "read_scope": "p5 Figs5–6實測/模型線及把粒子與結構貢獻分開的計算。"
+    },
+    {
+      "source_id": "P47-S003",
+      "file": ".cache/wave47-physics-glass-p3.png",
+      "sha256": "c1745bd8a9672c5d004cc0b2cdda37937fb6bc111818233505fd877ecf9e2157",
+      "read_scope": "p3 Fig2b同r=174nm，三種碳黑濃度；照片、由光譜換算色、模型色分列。"
+    },
+    {
+      "source_id": "P47-S004",
+      "file": ".cache/wave47-physics-gold-fig3.png",
+      "sha256": "c6ac2e10c85ed948dce933e9f2ba4f80a355d0df4d91847cf4e1d6e1a1b82515",
+      "read_scope": "Fig3a燒杯、b光譜、c/d加入NaCl前後cryo-TEM，形狀與聚集分清。"
+    },
+    {
+      "source_id": "P47-S005",
+      "file": ".cache/wave47-physics-cup-fig3.jpg",
+      "sha256": "182927beb6a8112f7e3898b666c2b6f8564bf87342f7dcc4f689a3f013857776",
+      "read_scope": "期刊Fig3a配比/厚度分組，b同90:10、600µm杯的反射及透射；不是同時換光源的單變量證明。"
+    },
+    {
+      "source_id": "P47-S006",
+      "file": ".cache/wave47-physics-lens-p9.png",
+      "sha256": "a0d1a770ae01ccf0f4be3cbbae3b2273f41770bd0860b1cdef11026373c27cd1",
+      "read_scope": "原刊p9 Fig2 NKT灰鏡，A/B掃描選峰、C/D固定波長兩種方法的冷暖曲線。"
+    }
+  ],
+  "reading_limits": [
+    "只對列明正文/圖作題級編輯，不稱逐參考文獻驗證。",
+    "水滴補充影片、奈米杯影片和古杯原物未觀看；可視畫格只限列明圖版。",
+    "2014紅色結論由2019原研究限縮；不把後者所有預測色域當實測。",
+    "鏡片配方未揭露，不指定分子，也不將外推零下或人體效益帶入候選。",
+    "奈米杯主文取XML與web；Fig3以Windows信任ROOT追加CA後正常TLS驗證取得，初次PDF憑證失敗留史。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W47P-T01",
+      "body_seconds": 70,
+      "per_core_seconds": {
+        "P47-001": 70
+      },
+      "passed": true
+    },
+    {
+      "id": "W47P-T02",
+      "body_seconds": 91,
+      "per_core_seconds": {
+        "P47-002": 47,
+        "P47-003": 44
+      },
+      "passed": true
+    },
+    {
+      "id": "W47P-T03",
+      "body_seconds": 94,
+      "per_core_seconds": {
+        "P47-004": 46,
+        "P47-005": 48
+      },
+      "passed": true
+    },
+    {
+      "id": "W47P-T04",
+      "body_seconds": 57,
+      "per_core_seconds": {
+        "P47-006": 57
+      },
+      "passed": true
+    }
+  ],
+  "sample": {
+    "file": ".cache/w47-sample-physics.json",
+    "sha256": "429941311c9f5a999482446121469d706b8131c7176dfa4fc0d1f6ed9285b3fd",
+    "theme_id": "W47P-T01",
+    "paragraphs": 3,
+    "characters_including_punctuation": 234,
+    "audio_generated_by_author": false
+  },
+  "validation": {
+    "json_utf8_lf": true,
+    "all_strings_rstripped": true,
+    "chapter_single_core": true,
+    "beats_at_most_45_seconds": true,
+    "per_core_budget": true,
+    "minutes_are_seconds_divided_by_60": true,
+    "source_cache_hashes_checked": true
+  },
+  "revision_history": [
+    {
+      "reason": "root非作者編輯：水滴案依樣讀重新分24/46秒，第一章只留凝結區對照；T02標題分清偏紫與泛白，不暗示加黑可救回另一研究的紅色。",
+      "removed_seconds": 2,
+      "before": [
+        {
+          "file": "batches/wave47-physics.json",
+          "sha256": "dcbd4b67d17a12d964993667eed1debd98dccd1aaa6a02fd713fd0449012b4ac"
+        },
+        {
+          "file": "reviews/wave47-physics-themes.json",
+          "sha256": "90601fc53942582fdd115129049d49007998e7f0b4edb75e9df59d65d41daf45"
+        },
+        {
+          "file": "reviews/wave47-physics-author.json",
+          "sha256": "5796b0d6554b34aebdef5dc82ae31e24682b16a940079f481354a21d25834269"
+        }
+      ],
+      "changes": [
+        "W47P-T01 72→70，章35/37→24/46",
+        "W47P-T02只改題名，91秒不變"
+      ]
+    },
+    {
+      "reason": "非作者science定點正文：PMMA原試驗亦含碳黑；鏡片冷暖起始吸收已可不同。主題分清材料/研究與正規化曲線，不改問答或秒數。",
+      "removed_seconds": 0,
+      "before": [
+        {
+          "file": "batches/wave47-physics.json",
+          "sha256": "dcbd4b67d17a12d964993667eed1debd98dccd1aaa6a02fd713fd0449012b4ac"
+        },
+        {
+          "file": "reviews/wave47-physics-themes.json",
+          "sha256": "7fc26ab460cbcc64d374e25e721c2deb780447f07d1496a0abe3cceda42a1867"
+        },
+        {
+          "file": "reviews/wave47-physics-author.json",
+          "sha256": "2aabe3f982054866eed803f98118be23359c774c0060bfb0670f419597700676"
+        }
+      ],
+      "changes": [
+        "T02 connection/轉章圖註明示前篇亦含碳黑",
+        "T04章名與Fig2C/D圖讀法收窄"
+      ]
+    }
+  ],
+  "unresolved": [
+    "等待另一作者全題/來源與共同top5覆核；4案未製作或真人試讀。"
+  ]
+}

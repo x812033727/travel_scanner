@@ -1,0 +1,1908 @@
+{
+  "batch": "wave2-legacy-20261101",
+  "reviewed_on": "2026-11-01",
+  "method": "五位非作者覆核者分批逐題：重開關鍵來源、抽查研究代理改卡的地方、判斷翻轉與片長是否誠實、檢查禁區與重複。打不開的頁不算數；剩下可讀來源少於兩個的降為 needs_check。",
+  "counts": {
+    "ADOPT": 68,
+    "ADOPT_WITH_CHANGES": 51,
+    "NEEDS_CHECK": 10,
+    "REJECT": 5,
+    "RECHECK_SCREENED": 1
+  },
+  "verdicts": [
+    {
+      "id": "F01",
+      "researched_as": "F01",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L1-S001 https://de.wikisource.org/wiki/Aschenputtel_(1812)；L1-S002 https://de.wikisource.org/wiki/Aschenputtel_(1819)",
+      "reopen_result": "兩頁都打開了。1812：母親說『種一棵小樹（Bäumlein）在我墳上』；母親遞刀時說的是『切掉一塊腳，痛一下沒關係，很快就好，你們有一個會當王后』；大姊切腳跟、二姊切腳趾；先是銀拖鞋、後來是金拖鞋；全文沒有啄眼；格林的註解說佩羅的 Cendrillon『不算他講得最好的故事』。1819：父親帶回榛樹枝（Haselbusch）；『把腳趾砍掉，當了王后就不用走路了』這句台詞；切腳的順序對調；鴿子在婚禮上啄瞎兩個姊姊。",
+      "changed_fields": [],
+      "reason": "研究代理改原卡的三處（小樹不是榛樹、金拖鞋、1812 年切腳的順序）全部屬實。翻轉很清楚：格林版越改越殘酷，跟一般以為的『越改越溫和』相反。這題是試播集，故事加上三本書的對照，8–11 分鐘撐得住。另外有一件要緊的事：README 的 F01 示範開場把『把腳趾切掉吧，當了王后你就不用走路了』放在 1812 年，這句其實是 1819 年第二版才有的，而且示範開場還寫了『玻璃鞋』。試播稿與 README 都要改（見 theme_notes）。"
+    },
+    {
+      "id": "F02",
+      "researched_as": "F02",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L1-S006 https://de.wikisource.org/wiki/Sneewittchen_(Schneewei%C3%9Fchen)_(1812)；L1-S009 1819 年第一卷前言",
+      "reopen_result": "1812 年版：皇后叫獵人把女兒的肺和肝（Lunge und Leber）帶回來，要加鹽煮來吃；僕人一拳打在她背上，毒蘋果從喉嚨掉出來，她就活了；結局是燒紅的鐵拖鞋。正文沒有繼母，『Stiefmutter』只出現在附錄的註解裡。1819 年版：『孩子一出生，皇后就死了；一年後國王另娶』；抬棺的人絆到樹叢。1819 年的前言原文是『這一版把每一個不適合兒童的說法都仔細刪掉了』。",
+      "changed_fields": [],
+      "reason": "核心前提和改寫都對得上原文，研究代理沒有把對的改成錯的。把『威廉負責修訂』移出主張的處理是對的。這題只撐得起 3–4 分鐘的一章，標成 chapter 是誠實的。"
+    },
+    {
+      "id": "F03",
+      "researched_as": "F03",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L1-S010 https://de.wikisource.org/wiki/Rapunzel_(1812)；L1-S011 Rapunzel_(1819)",
+      "reopen_result": "1812 年版：『我的小衣服變得好緊，穿不下了』；看守她的是仙女（Fee）；生下一男一女的雙胞胎；格林的註解寫 Schulz 1790 年的版本『講得太囉嗦，不過無疑來自口傳』，也提到《五日談》II,1。1819 年版：改成『她比年輕王子難拉上來』，加了一句『像夫妻一樣相愛』，看守的人改叫女巫（Zauberin），雙胞胎還留著。",
+      "changed_fields": [],
+      "reason": "前提成立。原卡寫的兩個年份（拉佛斯、巴吉雷）沒有讀到書目來源，研究代理把它們降成待查，這樣做是對的。懷孕的情節依 risk 欄只照原文一句帶過，沒有碰到禁區。這題份量是一章。"
+    },
+    {
+      "id": "F04",
+      "researched_as": "F04",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L1-S014 Hänsel_und_Gretel_(1812)；L1-S015 (1840)；L1-S016 (1843)",
+      "reopen_result": "1812 年版：『Mutter』出現 11 次，『Stiefmutter』0 次，也沒有『Theuerung』（饑荒）這個字。1840 年版第一次出現 Stiefmutter。1843 年版第一次寫『große Theuerung ins Land kam』（國內鬧大饑荒）。",
+      "changed_fields": [],
+      "reason": "研究代理逐版比對用字的結果我重做了一次，結果一致：繼母是 1840 年才出現的，饑荒是 1843 年才加的。翻轉清楚，份量是一章。"
+    },
+    {
+      "id": "F05",
+      "researched_as": "F05",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L1-S023 https://fr.wikisource.org/wiki/Histoires_ou_Contes_du_temps_pass%C3%A9_(1697)/Original/Le_petit_chaperon_rouge",
+      "reopen_result": "最後一句是『ce méchant loup se jetta sur le petit chaperon rouge, & la mangea』（這隻壞狼撲到小紅帽身上，把她吃了），接著是 MORALITÉ；教訓詩最後兩句是『ces loups doucereux, De tous les loups sont les plus dangereux』（這種甜言蜜語的狼，是所有狼裡最危險的）。",
+      "changed_fields": [],
+      "reason": "前提成立。原卡寫『學者多認為格林的獵人受蒂克影響』，研究代理沒有找到研究來源支持，把它降成事實陳述，判斷正確。蒂克劇本的部分讀的是 OCR，我沒有重開，那一句在稿子裡要對照掃描頁。份量是一章。"
+    },
+    {
+      "id": "F06",
+      "researched_as": "F06",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L1-S026 https://fr.wikisource.org/wiki/Histoires_ou_Contes_du_temps_pass%C3%A9_(1697)/Original/La_belle_au_bois_dormant；L1-S027 Dornröschen_(1812)",
+      "reopen_result": "佩羅原文：王子『跪在她身邊』，接著『魔法的期限到了，公主醒來』，沒有吻；兩個孩子叫 l'Aurore 和 le Jour；總管（Maistre d'Hostel）先後用小羊、小山羊、母鹿替換；最後太后要人把她們丟進裝滿癩蛤蟆和毒蛇的大缸。格林 1812 年版：王子『彎下身吻了她，她就在那一刻醒來』。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "核心翻轉成立：佩羅版沒有吻，吻是格林寫的。不過 answer_target 裡『要把孫女做成醬料吃掉』寫得不完整：原文是太后先後要吃孫女、孫子，最後連媳婦都要吃，而且要配同一種醬（la mesme sausse）。"
+    },
+    {
+      "id": "F07",
+      "researched_as": "F07",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L1-S018 Der_Froschkönig_(1812)；L1-S019 (1857)",
+      "reopen_result": "1812 年版：公主把青蛙『bratsch! an die Wand』（啪一聲摔向牆），全文找不到 küß（吻）；忠僕亨利的心上有三道鐵箍。1857 年版：仍然沒有吻，多了『nach ihres Vaters Willen』（依父親的意思）成為她的伴侶和丈夫。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提成立。answer_target 裡『讓兩人同睡變得合乎禮』是研究代理自己的詮釋，沒有來源，要拿掉或標成『可以這樣讀』。1823 年英譯改成『睡三夜』那一段我沒有重開，只靠 OCR 的摘要，寫稿前要對照掃描頁。"
+    },
+    {
+      "id": "F08",
+      "researched_as": "F08",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L1-S034 https://andersen.sdu.dk/vaerk/havfrue/；L1-S033 丹麥皇家圖書館校勘本 PDF",
+      "reopen_result": "安徒生中心的頁面寫：1837 年首刊；1992 年 7 月 22 日博物館失竊，被偷的有〈小美人魚〉的手稿，『失竊的東西至今沒有一件出現』。校勘本寫：朋友 Henriette Hanck 的信稱這篇為『Luftens Døtre』（空氣的女兒）；給英格曼的信說這是『我唯一感動了自己的作品』，並拿它跟福凱的《水妖》比較。",
+      "changed_fields": [],
+      "reason": "改卡與新增的部分都查證屬實。份量是一章。"
+    },
+    {
+      "id": "F09",
+      "researched_as": "F09",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L1-S037 https://tekster.kb.dk/text/adl-texts-hcaeventyr07val-shoot-idm139890599644352.pdf；L1-S036 andersen.sdu.dk/vaerk/kejserens/",
+      "reopen_result": "校勘本：出版不明原因延誤，安徒生在 3 月 25 日寫信給常替他看校樣的 Edvard Collin，請他把結尾改成今天的版本。安徒生中心：手稿影本上有兩個結尾，原本的結尾是『以後每次遊行都要穿這套』，全城都在談他的新衣。",
+      "changed_fields": [],
+      "reason": "改卡（原本的結尾、改結尾靠的是一封信）完全屬實。《盧卡諾伯爵》那段我沒有重開。份量是一章。"
+    },
+    {
+      "id": "F10",
+      "researched_as": "F10",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L1-S040 https://tekster.kb.dk/text/adl-texts-hcaeventyr07val-root",
+      "reopen_result": "校勘本寫：日記 1842 年 7 月 26 日『昨天開始寫 Svaneungen（小天鵝）』，1843 年 10 月 7 日『寫完 Svaneungen』，『到最後一刻才想到 Den grimme Ælling（醜小鴨）這個標題』；1869 年 7 月 21 日給布蘭戴斯的信說『醜小鴨是我自己人生的倒影（Afspeiling）』。",
+      "changed_fields": [],
+      "reason": "前提成立，安徒生本人的文字也讀到了，所以 T14 的刪段條件（沒有本人文字就縮成 60 秒）不必啟動。份量是一章。"
+    },
+    {
+      "id": "F11",
+      "researched_as": "F11",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L1-S044 1734 年《Round About Our Coal Fire》OCR（archive.org djvu.txt）；L1-S046 Gutenberg #7439；L1-S047 Folger",
+      "reopen_result": "Folger 的 3.4 有『Fie, foh, and fum, I smell the blood of a British man』。雅各斯的註寫：小冊子版本裡有一個仙女告訴傑克，巨人偷了他父親的財產，『目的是不讓故事變成鼓勵偷竊！……我把這個仙女刪了』。1734 年的 OCR 裡，傑克・斯普里金斯那一章（約第 65,900 到 76,900 字元）有這一段：『Fee-Fuw-Fum, I smell the Blood of an English-Man; Whether he be alive or dead, I'll grind his Bones to make my Bread』。L1-S044 摘要寫 1734 年版『也沒有 Fee-fi-fo-fum』，這句是錯的。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "reason": "前提與翻轉（父仇的理由先被補上，又被雅各斯刪掉）成立。有兩處要改。第一，來源摘要說錯了：1734 年版已經有巨人的整段台詞，連『磨碎骨頭做麵包』都有，這反而加強了原卡『這句比故事還老』的鉤子。第二，『我們熟悉的傑克就是他這一版』沒有來源。"
+    },
+    {
+      "id": "F12",
+      "researched_as": "F12",
+      "agent": "L1",
+      "reviewer": "RA",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L1-S030 Vizetelly 1902（archive.org bluebeardanacco00vizegoog_djvu.txt）",
+      "reopen_result": "書目與索引都在（索引有『Saint Nicolas de Bieuzy, chapel, 105』『Seven wives of Bluebeard』），但 archive.org 的 OCR 文字檔不完整：搜『1704』『Richer』『archivist』『no one knows』都沒有結果，所以我沒能重開壁畫考定為 1704 年、Richer 1823 年這兩個關鍵主張。佩羅原文（L1-S029）讀得到，但它不支持『原型』的部分。",
+      "changed_fields": [],
+      "reason": "研究代理自己標了 needs_check，我同意。翻轉靠的是一本 1902 年的舊書，我重開後也讀不到那幾頁；另一本 L1-S031 是替吉爾翻案的書。題目還牽涉一位殺害兒童的歷史人物，風險偏高。T13 的刪段條件已經寫了：沒有學術來源，就只講故事本身。"
+    },
+    {
+      "id": "F14",
+      "researched_as": "F14",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S003 https://bmcr.brynmawr.edu/?p=24885；L2-S001 Perseus《工作與時日》第 90 行起",
+      "reopen_result": "BMCR 2006.07.16 的書評寫『Erasmus’s well known mistake in writing that the vessel of evils was a pyxis, not a dolium — hence today’s notion of “opening a Pandora’s box”』（伊拉斯謨把裝禍害的容器寫成 pyxis 是眾所周知的錯，今天『打開潘朵拉的盒子』的說法就從這裡來），也提到 Musäus 認為伊拉斯謨把潘朵拉的罐子和普賽克的盒子混在一起。Perseus 的希臘原文是『πίθου μέγα πῶμ᾽ ἀφελοῦσα … μούνη δ᾽ αὐτόθι Ἐλπὶς … πίθου ὑπὸ χείλεσιν』（她掀開罐子的大蓋……只有 Elpis 留在罐口下）。",
+      "changed_fields": [],
+      "reason": "前提與改卡（伊拉斯謨是在《格言集》裡重述，不是翻譯赫西俄德）都對。有一處小提醒：『跟普賽克的盒子混同』是 Musäus 的看法，書評說它 intriguing（有意思），稿子裡寫『有學者認為』比寫『學界認為』穩。這題是站主定的試播集，故事加上 elpis 之爭，8–11 分鐘撐得住。"
+    },
+    {
+      "id": "F15",
+      "researched_as": "F15",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L2-S011 https://www.namuseum.gr/en/?p=12513；L2-S010 Perseus Pindar Pythian 12",
+      "reopen_result": "雅典國家考古博物館的頁面寫：古風時期的戈爾貢面具是大眼、張嘴、吐舌頭、露利牙，『從古典時期起……最後梅杜莎變成年輕迷人的女子，戈爾貢面具好看到嚇不了人』。品達〈皮提亞頌歌第 12 首〉（西元前 490 年）有『beautiful Medusa』，也寫了雅典娜模仿她們的哭聲作出笛曲。",
+      "changed_fields": [
+        "editorial_minutes",
+        "editorial_role",
+        "scope"
+      ],
+      "reason": "前提成立，『鬼臉變美女』加上文本一層一層加上去的設定，是真正的翻轉。不過 DEDUP 原本撤掉 F15 的題案，理由正是『鉤子是性侵情節』。研究代理已經把鉤子換掉，但觀眾一定會在留言把奧維德那一段拉出來。依『性侵情節當鉤子』的禁區，這題要站主確認後才排。品達同一首詩也寫了達那厄『被迫的婚床』，也要避開。片長方面，珀爾修斯的故事加上圖像史撐得到 8 分鐘，但上限 10 分鐘偏樂觀。"
+    },
+    {
+      "id": "F17",
+      "researched_as": "F17",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S019 https://www.theoi.com/Text/StatiusAchilleid1A.html；L2-S017 https://fhw.gr/chronos/03/en/gallery/cph38.html",
+      "reopen_result": "斯塔提烏斯 Mozley 譯本的正文是『if at thy birth I fortified thee with the stern waters of Styx – ay, would I had wholly!』（但願我把你整個浸透了），腳跟只出現在譯者注 36（『all except the left heel』，左腳跟除外）。希臘世界基金會的頁面寫：米科諾斯的 pithos 浮雕畫了希臘人從木馬下來，年代『Circa 670 BC』（約西元前 670 年）。",
+      "changed_fields": [],
+      "reason": "前提與兩處更正（木馬不是維吉爾發明的；斯塔提烏斯的正文沒有點名腳跟）都屬實。F18 併進來之後，素材夠撐 9–12 分鐘。"
+    },
+    {
+      "id": "F22",
+      "researched_as": "F22",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S023 https://www.gutenberg.org/ebooks/18947（Anderson 譯《Younger Edda》）",
+      "reopen_result": "序言把阿薩神的祖先接到特洛伊（Priamos、Hektor、Odin 從亞洲逃到北方）。導言寫『大約 1230 年』，又說〈女巫的預言〉『無疑早於北方改信基督教』，這是 1880 年的舊判斷。",
+      "changed_fields": [],
+      "reason": "前提成立：我們讀到的文本是基督徒時代整理的，特洛伊起源也確實寫在序言裡。研究代理把成書年代改成『13 世紀前半』、把〈女巫的預言〉的年代標成有爭議，處理得穩。單獨只撐得起 6–8 分鐘，標 chapter 是誠實的，在 T16 當主軸。"
+    },
+    {
+      "id": "F20",
+      "researched_as": "F20",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S023 Gutenberg #18947 第 33 節",
+      "reopen_result": "『His father is the giant Farbaute, but his mother’s name is Laufey』（他的父親是巨人法爾鮑提，母親叫勞菲），而且他『is numbered among the asas』（被算在阿薩神族裡）。",
+      "changed_fields": [],
+      "reason": "前提成立。漫威『養子』的年份拿掉了，處理得對。這題只有 2–3 分鐘，標成章節是誠實的。"
+    },
+    {
+      "id": "F21",
+      "researched_as": "F21",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S028 https://videnskab.dk/...thors-hammer-er-en-hammer/；L2-S023 Gutenberg #18947",
+      "reopen_result": "《埃達》原文是『it had one fault, which was, that the handle was rather short』（它只有一個缺點，握把有點短）。Videnskab.dk 寫：已知的錘形墜飾約 1,000 件；握把短、錘頭不對稱，讓懷疑派質疑它到底是不是鎚子；Købelev（洛蘭島）出土的這一枚是 10 世紀的，國家博物館的符文學者 Lisbeth Imer 讀出『這是一把鎚子』。Smithsonian（L2-S029）這次回 403，我沒能重開。",
+      "changed_fields": [],
+      "reason": "前提成立，可讀的機構來源（Videnskab、AIA 的 Archaeology 雜誌）加上原典，夠兩個。這題是 2–3 分鐘的一章。"
+    },
+    {
+      "id": "F23",
+      "researched_as": "F23",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S031 https://zh.wikisource.org/wiki/聊齋志異/第01卷",
+      "reopen_result": "原文是『鋪人皮于榻上，執彩筆而繪之；已而擲筆，舉皮如振衣狀，披于身』；異史氏曰『然愛人之色而漁之，妻亦將食人之唾而甘之矣』。",
+      "changed_fields": [],
+      "reason": "改卡（異史氏也在罵丈夫）屬實。份量是一章。"
+    },
+    {
+      "id": "F24",
+      "researched_as": "F24",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S033 https://zh.wikisource.org/wiki/聊齋志異/第02卷",
+      "reopen_result": "第一次回 429，重試後讀到。原文有『生平無二色』、燕生贈送的『破革囊』，以及『（女）舉一男。納妾後又各生一男』。",
+      "changed_fields": [],
+      "reason": "前提與補充（納妾、各生一男）都屬實。1960 年李翰祥版刪掉寧家那一段，只有一篇媒體影評支持，稿子裡講到這裡要保守。份量是一章。"
+    },
+    {
+      "id": "F25",
+      "researched_as": "F25",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L2-S034 https://www.gutenberg.org/ebooks/25559（魯迅《中國小說史略》）",
+      "reopen_result": "正文寫『至謂作者搜采异聞，乃設煙茗于門前……則不過委巷之談而已』；注 5 引了鄒弢《三借廬筆談》『相傳先生居鄉里……如是二十余寒暑，此書方告蕆』；注 6 引《小說舊聞鈔》『最為無稽，而世人偏艷傳之』。",
+      "changed_fields": [
+        "answer_target",
+        "question"
+      ],
+      "reason": "前提成立。不過鄒弢書的刊刻年份研究代理沒有查到，只知道他是光緒年間的人（光緒元年是 1875 年，蒲松齡死於 1715 年），所以只能說晚了『一百六十年以上』，『一百六十多年』太精確了。"
+    },
+    {
+      "id": "F27",
+      "researched_as": "F27",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S039 宮田尚〈“芳一ばなし”から「耳なし芳一のはなし」へ〉（ypir.lib.yamaguchi-u.ac.jp/bg/666/files/135969，掃描 PDF，轉成圖檔讀第 13–14 頁）",
+      "reopen_result": "第 13 頁：阿彌陀寺（現在的赤間神宮）境內的芳一堂，堂裡的木像是昭和三十二年（1957）立的。第 14 頁：八雲『誤った方向に導いた原話（『臥遊奇談』）』（把他帶錯方向的原話是《臥遊奇談》）；『琵琶法師のグループが自派の宣伝用に』（琵琶法師的團體拿來替自己的流派宣傳），這是作者的推測；漏寫耳朵歸咎於和尚的『無知と誤解』（無知與誤解）。",
+      "changed_fields": [],
+      "reason": "核心前提（典據是《臥遊奇談》；琵琶法師宣傳是推測）讀得到。1663、1677、1734 三個年份在後面幾頁，我沒有逐頁核對，研究代理已經標成只靠一個來源。赤間神宮是現存的祭祀場所，照 scope 的寫法處理就可以。份量是一章。"
+    },
+    {
+      "id": "F26",
+      "researched_as": "F26",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L2-S043 秋田魁新報專欄；L2-S038 Kwaidan 序言（Gutenberg #1210）",
+      "reopen_result": "我沒有另外重開；研究代理自己的紀錄寫明，『1930 年的傳說集刪掉八雲的名字』『雪女是八雲創作』這兩點只讀到報紙專欄的轉述，遠田勝的書與論文都沒有讀到。",
+      "changed_fields": [],
+      "reason": "同意研究代理標的 needs_check。題目的核心答案（雪女是聽來的還是寫出來的）靠的是一篇二手專欄。另一個可讀來源是青梅市的 PDF，它只支持『調布村就是今天的青梅』，不支持核心答案。"
+    },
+    {
+      "id": "F13",
+      "researched_as": "F13",
+      "agent": "L2",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L2-S044 https://fr.wikisource.org/wiki/Histoires_ou_Contes_du_temps_pass%C3%A9_(1697)/Original/Le_Maistre_Chat",
+      "reopen_result": "第一首教訓詩說，對年輕人來說，『L’industrie & le sçavoir faire, Vallent mieux que des biens acquis』（勤勉與本事，比繼承的財產值錢）。『Autre Moralité』（另一首教訓詩）說，磨坊主的兒子能贏得公主的心，『l’habit, la mine & la jeunesse』（衣服、相貌和年輕）並不是無關緊要的。",
+      "changed_fields": [],
+      "reason": "兩首教訓詩互相矛盾這一點屬實。斯特拉帕羅拉與巴西萊的部分我沒有重開，研究代理已經把巴西萊標成只靠一個來源。份量是一章；研究代理說這題可以改放進 T32，這個建議合理。"
+    },
+    {
+      "id": "G04",
+      "researched_as": "G04",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L3-S001 https://epsilon.ac.uk/view/faraday/letters/Faraday2691；L3-S002 https://patents.google.com/patent/US446054A/en",
+      "reopen_result": "法拉第的信寫於 1853 年 6 月 28 日，刊在《泰晤士報》1853 年 6 月 30 日第 8 版。信裡寫：『quasi involuntary muscular action』（近乎不自覺的肌肉動作）；『when the parties saw the index it remained very steady; when it was hidden … it wavered about』（參加的人看得見指針時，指針很穩；看不見時就晃來晃去）；Athenaeum 1853 年 7 月 2 日第 801–803 頁。專利 446,054 號：E. J. Bond 發明，讓與 Kennard 與 Maupin，名稱『TOY OR GAME』，1891 年 2 月 10 日核准，說明書寫『toys or games, which I designate as an Ouija or Egyptian luck-board』（玩具或遊戲，我稱之為 Ouija，或埃及幸運板），全文沒有靈魂之類的字。",
+      "changed_fields": [],
+      "reason": "前提與改卡都屬實。G20 併入之後，素材夠撐 8–10 分鐘。注意：專利說明書本身就寫了 Ouija 這個名字，可以當畫面。專利局示範的故事只來自 Smithsonian 引述 Murch，標成『後代的說法』是對的。T27 的開場句與『法拉第的機關』那一章要改（見 theme_notes）。"
+    },
+    {
+      "id": "G01",
+      "researched_as": "G01",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L3-S006 https://www.loc.gov/resource/sn83030214/1888-10-22/ed-1/?sp=7（New-York Tribune 1888-10-22）；L3-S007 https://psi-encyclopedia.spr.ac.uk/articles/fox-sisters/",
+      "reopen_result": "loc.gov 與 chroniclingamerica 的 OCR 頁回 403，頁面是 Cloudflare 的『Just a moment』機器驗證，我依守則沒有繞過，所以一手報導打不開。SPR 的 Psi Encyclopedia 讀得到：1888 年 10 月 21 日在紐約音樂廳（Academy of Music）宣讀聲明，凱蒂在台下；自白說兩人當年 8 歲與 5 歲，母親的陳述是 14 歲與約 12 歲；『Mr Splitfoot』是後來的版本加上的；1888 年自白之後又收回。",
+      "changed_fields": [],
+      "reason": "內容大致可信，翻轉也好。但照覆核規則，打不開的頁不算數，這題剩下的可讀來源只有一個，而且是心靈研究學會、立場偏向一方的百科條目，所以降為 NEEDS_CHECK。要轉成 ADOPT，需要補一個讀得到的一手或機構來源，例如：1888 年 10 月 22 日紐約各報的其他館藏影像、1889 年 11 月收回自白的報紙原文，或大學出版社書頁（如 Weisberg《Talking to the Dead》）。這題是站主定的試播集，補來源要優先。"
+    },
+    {
+      "id": "G03",
+      "researched_as": "G03",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L3-S008 https://www.gutenberg.org/files/66451/66451-0.txt；L3-S009 PBS；L3-S010／S011 loc.gov 1936 年報紙",
+      "reopen_result": "胡迪尼 1924 年的書寫：『after twenty-five years of ardent research … I have made compacts with fourteen different persons … but I have never received a word』（二十五年熱切的研究之後……我跟十四個人立過約定……但一個字都沒收到）；大西洋城、道爾夫婦那一場也讀到了。PBS 寫：電鈴箱的測試、1925 年 1 月在 Symphony Hall 揭穿、2 月委員會投票不給獎。1936 年那兩份 loc.gov 報紙被 Cloudflare 機器驗證擋住（403），我沒能重開。",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "前提（研究二十五年、十四個約定、瑪潔莉的測試）有兩個可讀來源支持，研究代理改原卡『花了十年』也改對了。但題目的翻轉（『十年』其實是貝絲辦忌日降靈會的年數，1936 年屋頂那場是最後一場）只靠 loc.gov，我打不開。題目可以選入，寫稿前要補一個讀得到的來源支持 1936 年那一段。"
+    },
+    {
+      "id": "G02",
+      "researched_as": "G02",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L3-S013 https://www.loc.gov/resource/sn83030214/1869-05-04/ed-1/?sp=2（New-York Daily Tribune 1869-05-04）；L3-S016 photographymuseum.com/mumler",
+      "reopen_result": "兩個都打不開：loc.gov 回 403，是 Cloudflare 的機器驗證；photographymuseum.com 回 406。讀得到的是白宮歷史協會（芒勒自述 1872 年、瑪麗·林肯用假名、戴黑紗、他把林肯的影像疊上去）和哈佛美術館（2010.88 號、標 1870s、波士頓）。",
+      "changed_fields": [],
+      "reason": "題目的核心翻轉是『法官 Dowling 以檢方沒證明手法為由，當庭釋放，不是陪審團判無罪』。這一點只有 loc.gov 的報紙支持，覆核時一個讀得到的來源都沒有。照片的部分有兩個機構來源，可是撐不起這題的問題。要選入，需要補一個讀得到的來源支持 1869 年預審的結果，例如紐約其他報紙、法院紀錄的研究，或大學出版社書頁。T10 的 G02 一章先標成待補。"
+    },
+    {
+      "id": "F34",
+      "researched_as": "F34",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L3-S017 https://www.gutenberg.org/cache/epub/6087/pg6087.txt；L3-S020 https://www.bars.ac.uk/blog/?p=2301",
+      "reopen_result": "波里道利 1819 年的前言寫：『In the London Journal, of March, 1732 … a certain Heyduke, named Arnold Paul』（1732 年 3 月的《倫敦雜誌》……一個名叫 Arnold Paul 的士兵），開棺時屍體『fresh … emitting at the mouth, nose, and ears, pure and florid blood』（新鮮……口鼻耳流出鮮紅的血），接著打樁、斬首、焚燒；前言也說吸血鬼吸了血會『fattened』（變胖）。BARS 的文章寫：Lord Ruthven 以拜倫為原型，是貴族，把吸血鬼『from the animalistic monster of the Slavic peasantry』（從斯拉夫農民傳說裡野獸般的怪物）變成能出入西方社交客廳的人物。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "question"
+      ],
+      "reason": "前提與 DEDUP 要求的改寫方向都成立，跟 M17 也已經分開。有三處要改。第一，題目本身把『開棺後滿臉是血』當鉤子，碰到『血腥或遺體』的禁區（L03 人體自燃就是因此轉 Shorts）。第二，民間吸血鬼『是看不懂屍體變化』這個解釋，只讀到 Barber 的出版社書頁，要標成 Barber 的說法。第三，民俗那一半只有 1819 年轉引 1732 年的二手中的二手，片長上限要保守。"
+    },
+    {
+      "id": "F31",
+      "researched_as": "F31",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L3-S021 Marzolph, Marvels & Tales 32.1 (2018) PDF",
+      "reopen_result": "論文寫：『None of Ḥannā Diyāb’s tales is known from Arabic manuscript tradition predating his performance. The Arabic manuscripts … for “Aladdin” and “Ali Baba” have been unmasked as mystifications produced at a later date, following and based on Galland’s text』（迪亞卜講的故事沒有一篇見於比他更早的阿拉伯文抄本；後來被當成〈阿拉丁〉〈阿里巴巴〉原本的阿拉伯文抄本，已被揭穿是照 Galland 的法文本事後做出來的）；〈阿拉丁〉是 Galland『received in writing』（收到的書面稿）；迪亞卜約在 1708 年底到巴黎。",
+      "changed_fields": [],
+      "reason": "前提與翻轉都屬實，素材也夠撐 8–11 分鐘，故事加上 1709 年日記與 1888 年抄本兩段。至於迪亞卜在不在世：他是 18 世紀的人，不牽涉在世人物。"
+    },
+    {
+      "id": "F33",
+      "researched_as": "F33",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L3-S025 Child《English and Scottish Popular Ballads》（Gutenberg #62474）；L3-S026 Nottingham",
+      "reopen_result": "Child 寫：『Anthony Munday, towards the end of the sixteenth century, made a play, full of his own inventions, in which Robert, Earl of Huntington, being outlawed …』（安東尼·芒戴在 16 世紀末寫了一齣滿是自己發明的劇，劇中亨廷頓伯爵羅伯特被放逐……）；又說羅賓漢『harms no husbandman or yeoman, and is friendly to poor men generally, imparting to them of what he takes from the rich』（不傷農夫和自耕農，對窮人友善，把從富人那裡拿來的分給他們）；最早的提及是《農夫皮爾斯》，約 1377 年。Nottingham 寫：傳說的來源『owe more to folklore and literature than historical record』（更屬於民俗與文學，而不是歷史紀錄）。",
+      "changed_fields": [],
+      "reason": "研究代理改卡的方向正確：『濟貧』早在《事蹟》就有，不能說是後來才加的，這一點值得記下。不過核心主張『貴族身分是 16 世紀末才加的』，目前只有 Child 一個來源直接支持；Nottingham 只支持『不是史實』。同意維持 needs_check。補 Munday 劇本書影或 TEAMS 的導言就可以轉成 ADOPT。"
+    },
+    {
+      "id": "F29",
+      "researched_as": "F29",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L3-S029 https://mtfuji-whc.jp/wp/wp-content/uploads/2024/06/66b147788c55fa3de13ffd9e51d6bc8f.pdf",
+      "reopen_result": "靜岡縣富士山世界遺產中心的專欄引了原文『士どもあまた具して山へのぼりけるよりなむ、その山を「ふじの山」とは名づけける』（因為帶著許多士兵上山，所以把那座山叫做『ふじの山』），並譯成『士に富む山』（士兵很多的山）；也引了『その煙、いまだ雲の中へ立ちのぼるとぞ』（那煙至今還升進雲裡）；故事裡沒有出現『富士山』這個專有名詞。",
+      "changed_fields": [],
+      "reason": "改卡（命名理由是士兵很多，『不死』只是讀者的雙關）屬實，翻轉很好。份量是一章。"
+    },
+    {
+      "id": "F30",
+      "researched_as": "F30",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L3-S032 https://zh.wikisource.org/wiki/日本書紀/卷第十四；L3-S034 kotobank 浦島太郎",
+      "reopen_result": "《日本書紀》二十二年秋七月條：『丹波國餘社郡管川人水江浦嶋子乘舟而釣。遂得大龜。便化爲女。…到蓬莱山』。Kotobank 的 Britannica 條目：御伽草子成書於室町時代，『浦島太郎が釣り上げた亀を放したのち』（浦島太郎把釣上來的烏龜放走之後）；『報恩譚を加え、「太郎」と称したのは本書が最初』（加上報恩情節、稱他『太郎』，從這本書開始）。",
+      "changed_fields": [],
+      "reason": "改卡（書紀寫的是『大龜』，五色龜出自風土記逸文；御伽草子是先釣到再放走）屬實。《萬葉集》裡沒有烏龜這一點只靠一個來源，研究代理已經標明。份量是一章。"
+    },
+    {
+      "id": "F28",
+      "researched_as": "F28",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L3-S036 東京都中央區文化財說明頁；L3-S035 kotobank 東海道四谷怪談",
+      "reopen_result": "中央區的頁面寫：田宮家的屋敷神，祭神有『田宮於岩命』，『婿養子の伊右衛門とともに家勢を再興したお岩の徳を称えた』（稱頌阿岩與入贅的伊右衛門一起重振家業的德行）；明治 12 年（1879）遷座；明治 33 年（1900）的《新撰東京名所圖會》記『俳優、芸妓の参詣夥多』（演員、藝妓前來參拜的很多）。Kotobank 寫：1825 年（文政 8 年）7 月在江戶中村座首演，排在《假名手本忠臣藏》之後，分兩天演完。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "reason": "前提與翻轉（劇本裡被毒害，神社說明裡卻是賢妻）屬實。不過『菩提寺的告示寫夫妻不和』只靠一篇雜誌文章，而這一段正是在拿兩個現存的宗教場所互相對照，要更小心。"
+    },
+    {
+      "id": "F37",
+      "researched_as": "F37",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L3-S038 https://zh.wikisource.org/wiki/剪燈新話/0；L3-S040 kotobank 牡丹灯籠",
+      "reopen_result": "自序的署名是『洪武十一年歲次戊午六月朔日，山陽瞿佑書於吳山大隱堂』。日本國語大辭典以《伽婢子》（1666）為『牡丹灯籠』一詞的初出用例；歌舞伎化是明治二十五年（1892）在歌舞伎座初演。日本大百科全書寫：1861–64 年創作、1884 年刊行速記本。",
+      "changed_fields": [],
+      "reason": "前提成立，改卡的補充（創作年和速記本出版年要分開）也對。份量是一章。"
+    },
+    {
+      "id": "F38",
+      "researched_as": "F38",
+      "agent": "L3",
+      "reviewer": "RA",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L3-S042 https://encykorea.aks.ac.kr/Article/E0048918；L3-S043 E0049349",
+      "reopen_result": "韓國學中央研究院的百科寫：漢文本是全東屹的 6 代孫全萬宅請朴仁壽在 1818 年（純祖 18 年）12 月 1 日寫的；取材自孝宗年間全東屹任鐵山府使時的『事實談』；同一條也寫了 8 代孫全基洛等人在 1865 年編《嘉齋事實錄》。人物條寫：1651 年武科及第；『억울하게 죽은 장화·홍련의 원한을 풀어주었다고 한다』（據說替冤死的薔花、紅蓮解了冤）。",
+      "changed_fields": [],
+      "reason": "前提與翻轉屬實。另外，1865 年《嘉齋事實錄》研究代理以為只靠 HeritageWiki，其實韓國學中央研究院的條目也寫了，可以換成這個來源。4–7 分鐘標成章節是誠實的，見 theme_notes 的併集建議。"
+    },
+    {
+      "id": "G05",
+      "researched_as": "G05",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L4-S002 https://winchestermysteryhouse.com/timeline/ ＋ L4-S003 https://www.saturdayeveningpost.com/2026/07/sarah-winchester-and-her-mystery-house/",
+      "reopen_result": "兩頁都打開（curl）。年表寫『Thirty-six years of construction ceases』、1890–1900 高峰、1906 地震後七層塔拆除、1923 開放；SEP 引她『dismissed all the workmen to take such rest as I might through the winter』（經 Haag 書轉引）、1898 年信『Safety demands…』、1885 年《紀事報》『The sound of the hammer is never hushed』與 1911《紐時》照抄。",
+      "changed_fields": [],
+      "reason": "前提成立，研究代理的修正（36 年非 38 年、曾停工、傳說在世時就有）都對得上原頁。片長 8–11 合理。補充：年表另有 1911-06-10《舊金山觀察家報》稱它為『House of Mystery』，是她在世時的另一筆，可替代年份可疑的 1885 報導。遣散工人的信仍是轉引，劇本前照 notes 找原件。"
+    },
+    {
+      "id": "G06",
+      "researched_as": "G06",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L4-S005 https://psi-encyclopedia.spr.ac.uk/articles/amityville-hoax/",
+      "reopen_result": "打開。1975-12-18 搬入、28 天、1977 年 5 月提告與反訴、『The Lutzes’ suit was thrown out in September 1979』與法官原話『to a large extent the book is a work of fiction, relying in a large part upon the suggestions of Mr. Weber』、1979 測謊、Weber 對 People 的『many bottles of wine』都在。Mental Floss（L4-S006）也打開：後來四任屋主、無怪事。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提成立。但 SPR 這頁本身有明顯錯誤（把命案寫成 1979 年、把書寫成 1979 年），所以只靠它的細節（年份、測謊）製作前要逐條找第二來源；頁面只寫『judge』，答案裡的『聯邦法官』沒有來源。禁區：1974 命案照 README 處理（不提受害者），scope 已寫。"
+    },
+    {
+      "id": "G07",
+      "researched_as": "G07",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L4-S007 https://psi-encyclopedia.spr.ac.uk/articles/enfield-poltergeist/",
+      "reopen_result": "打開。180 visits、錄音 over 180 hours、1977 年 12 月開始的聲音、1978 年 5 月 SPR 委員會與『good evidence…credible informants』、Anita Gregory 是 SPR 會員且書評認為女孩們在演、Melvin Harris 分析照片『spirited high-jinks』、女兒後來說作假『about two percent』都在。",
+      "changed_fields": [],
+      "reason": "前提與『同一學會兩種結論』的翻轉都成立；研究代理把原卡『另一批調查員』改成同一個 SPR 的 Gregory，改對了。當事人在世，scope 的不用名字、不畫本人要守住；『多數是女孩做的』一律寫成 Gregory 的主張。"
+    },
+    {
+      "id": "G08",
+      "researched_as": "G08",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L4-S009 https://psi-encyclopedia.spr.ac.uk/articles/borley-rectory",
+      "reopen_result": "打開。1929-06-12 首訪與《每日鏡報》、1937 年 Times 徵求 48 名觀察員且『no official log of events was kept』、1939-02-27 油燈翻倒、1944 拆除、1956 報告原句『deliberately distorted account…not now in doubt』、1969 Hastings 在 SPR Proceedings 為 Price 辯護都在。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提成立。小修：SPR 寫 1939 年火災是『badly damaged』，之後還在廢墟辦了 25 次守夜，1944 才拆，答案的『燒毀』要改成『嚴重燒毀』，否則跟『1944 拆除』矛盾。"
+    },
+    {
+      "id": "G09",
+      "researched_as": "G09",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L4-S012 https://www.dncr.nc.gov/blog/2016/12/20/bewitched-tennessee",
+      "reopen_result": "打開。『There are no contemporary sources for the legend. The earliest known mention was published in an 1886 history of Tennessee. The first full treatment was written in 1894 by…Ingram, supposedly based on…the diary of an adult son of Bell』、1820-12-20 死亡都在。",
+      "changed_fields": [],
+      "reason": "前提成立，州政府機構頁支持核心翻轉。Jackson 行蹤只靠 Skeptoid 與 WHE（研究代理已標），劇本照 scope 只說『沒有紀錄』。"
+    },
+    {
+      "id": "G10",
+      "researched_as": "G10",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L4-S016 https://gutenberg.org/cache/epub/64809/pg64809-images.html ＋ L4-S017 https://psi-encyclopedia.spr.ac.uk/articles/versailles-time-slip/",
+      "reopen_result": "兩頁都打開。書裡 1901-11-10 那段：Morison 說有位素描的女士，Lamont『declared that there was no one there』；兩份記述署『November, 1901』。SPR 頁：Salter 說兩份原始記述『were destroyed after having been copied for publication』、Jullian 1967 pp.140–41 的活人畫派對、Lambert 的 1774 說。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提與新翻轉都成立。要修一處：1911 年的書自己寫『These papers are still in existence』，『原稿被銷毀』是四十年後 SPR 的 Salter 說的，答案不能寫成直述事實。"
+    },
+    {
+      "id": "G11",
+      "researched_as": "G11",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L4-S021 https://drdavidclarke.co.uk/2012/03/29/ghost-ships-ahoy/ ＋ L4-S019 archive.org OCR",
+      "reopen_result": "兩頁都打開。Clarke：調閱 ADM 53/11664 日誌『no mention of the Flying Dutchman』，邊註只記 7 月 11 日 10:45 一名水兵墜桅；『ship’s log』說法出自 Haining 1974《Ghosts》。書 OCR：『strange feeling being in a different ship of the squadron』『in the flagship』、7 月 11 日 4 A.M.、『Thirteen persons altogether saw her…must remain unknown』與德文詩都在。",
+      "changed_fields": [],
+      "reason": "前提成立；『官方日誌沒記』只靠 Clarke 一人（研究代理已標，製作前最好向英國國家檔案館確認）。chapter 5–8 誠實。Clarke 原文寫了水兵姓名，劇本照 scope 不用。目前沒有題案收它，要找一集放。"
+    },
+    {
+      "id": "G15",
+      "researched_as": "G15",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L4-S024 https://research.sinica.edu.tw/lin-mei-rong-folklore-mosina-ghost-taiwan/",
+      "reopen_result": "打開。『魔神仔，與人類早期的叢林生活經驗有關』、樹上或洞穴發現被帶走的人、魔神仔跟人要衣服、魔神仔與鬼的分類、《魔神仔的人類學想像》林美容與李家愷（五南）、《紅衣小女孩》編劇簡士耕的話都在。",
+      "changed_fields": [],
+      "reason": "前提成立；研究代理把原卡的『迷途、失智、山區環境三種解釋』刪掉是對的，訪談頁確實沒有。chapter 5–8 誠實，可跟 L01 互為一章（DEDUP 已記）。近年山難個案與『雞腿』母題照 scope 處理；NOWnews（L4-S027）夾驅魔內容，只取母題。"
+    },
+    {
+      "id": "G18",
+      "researched_as": "G18",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L4-S028 https://isle-of-man.com/manxnotebook/fulltext/hc1936/ch2.htm",
+      "reopen_result": "打開。1931 年 9 月首見、『born on June 7th 1852, and came from Delhi』、香蕉與巧克力、毛樣由 Irving 太太找到、經 Price→Huxley→F. Martin Duncan、Duncan『never grew upon a mongoose…probably…from a longish-haired dog』都在。",
+      "changed_fields": [],
+      "reason": "前提成立；研究代理把『Price 帶回毛、化驗證明是牧羊犬』修成『家裡交出、專家說大概是狗毛』，改對了。T28 一章 180 秒合理。"
+    },
+    {
+      "id": "G21",
+      "researched_as": "G21",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L4-S032 https://www.aozora.gr.jp/cards/001566/files/52504_49667.html ＋ L4-S034 https://intojapanwaraku.com/rock/culture-rock/114764/",
+      "reopen_result": "兩頁都打開。青空文庫：獻詞『この書を外国に在る人々に呈す』、序『誠実なる人なり』『一字一句をも加減せず』『平地人を戦慄せしめよ』『年わずかに二十四五』、目錄到 119、初出 1910-06-14。和樂web：喜善日記『お化け話をして帰って』、350 部限定自費出版。",
+      "changed_fields": [
+        "answer_target",
+        "question"
+      ],
+      "reason": "書本身（自費、1910、119 話、序的話）有兩個以上來源；但標題的鉤子『日記只寫了一句』只有和樂web 一個雜誌來源（我另用搜尋找第二來源，結果全是同一篇），而 350 部也只有它。answer_target 結尾的『懸念』其實是『還沒讀研究』，不是真正的未解，要拿掉。8–11 分鐘靠說書段（座敷童子、神隱、山男）撐得起。"
+    },
+    {
+      "id": "G23",
+      "researched_as": "G23",
+      "agent": "L4",
+      "reviewer": "RB",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L4-S035 https://so06.tci-thaijo.org/index.php/husojournalpnru/article/download/245647/166409",
+      "reopen_result": "打開（pdftotext）。論文確實引了 พ.ศ. 2442（1899）《สยามประเภท》裡 ก.ศ.ร.กุหลาบ 的記述：รัชกาลที่ 3、อำแดงนาค 是區長 ขุนศรี 之女、丈夫 นายชุม、孩子怕父親再娶而裝鬼；而且 Kulap 說是聽某位親王講的。",
+      "changed_fields": [
+        "note"
+      ],
+      "reason": "標題整個建立在『最早的文字跟電影不同』這一點，而它只有這一篇泰國期刊論文（經 Anek 2000 年的書轉引）；L4-S036 只支持電影史、L4-S037 只支持流傳版本。我另搜到的英文頁（維基、部落格、fact-check 站）都同源於 Anek，沒有第二個可讀的機構或學術來源；Sarakadee 1999 專題打開是空頁。再加上主角是現存祠堂的信仰對象，『孩子裝鬼』這段一旦講錯傷害大。核心前提只有一個可讀來源，先留候補。"
+    },
+    {
+      "id": "H08",
+      "researched_as": "H08",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L5-S002 https://www.smithsonianmag.com/smart-news/mystery-somerton-man-finally-solved-180980540/ ＋ L5-S001 Abbott 的驗屍聽證錄文",
+      "reopen_result": "Smithsonian 用 WebFetch 打開（curl 回空頁）：2022-08-08，Abbott 與 Fitzpatrick 用面模上的頭髮、GEDmatch、約 4,000 人的家譜，Webb 1905 年生、『the state coroner has yet to confirm』、2021 年開棺另案檢驗。錄文：驗屍官 1949 年開庭說『probably caused by poison』『almost certainly was not accidental』，紙條在『fob pocket』之後才找到。",
+      "changed_fields": [],
+      "reason": "前提成立，研究代理改掉原卡『警方已公布鑑定』是對的。我另外搜尋 2024–2026 年有沒有官方確認，沒找到；撰稿當天要再查一次南澳警方或驗屍官的最新聲明，若已確認就改標題。"
+    },
+    {
+      "id": "H18",
+      "researched_as": "H18",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L5-S005 https://www.smithsonianmag.com/history/how-the-disappearance-of-flight-19-a-navy-squadron-lost-in-1945-fueled-the-legend-of-the-bermuda-triangle-180987759/ ＋ L5-S010 水路協會 PDF",
+      "reopen_result": "Smithsonian（WebFetch）：『something akin to a mental aberration』、1947 年在母親 Katherine 遊說下由更正委員會改成『reasons or causes unknown』、PBM『flying gas tanks』、『both my compasses are out』、Gaddis 1964 Argosy『was the first to popularize this term』。PDF：第五海洋丸遭難調查委員會判定 9 月 24 日 12:20 前後『右舷斜め下方向から爆発の直撃』、31 名殉職。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提成立。要修一處：Smithsonian 只說 Gaddis 1964 年的文章讓這個詞流行，沒說這個詞 1964 年才出現；答案的『要到 1964 年的雜誌才出現』改成『1964 年的雜誌讓它流行起來』。保費鉤子拿掉是對的。"
+    },
+    {
+      "id": "H19",
+      "researched_as": "H19",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L5-S014 https://lex.dk/Qaqortukulooq_kirkeruin ＋ L5-S012 Buffalo 摘要",
+      "reopen_result": "兩頁都打開。lex.dk（國家博物館 Arneborg 撰）：婚禮小節標題『Brylluppet i Hvalseyfjordens kirke 14. september 1408』，1409-04-19 神父在 Garðar 開證明信，新人是被吹離航線的冰島人、1410 才回去，『Sidste skriftlige livstegn』。Buffalo 摘要：『no substantial temperature changes…persistent drying trend』。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提成立。但婚禮日期對不上：lex.dk 寫 9 月 14 日，研究代理用 L5-S015 寫 9 月 16 日（L5-S015 只讀到摘要）。劇本只寫『1408 年 9 月』，或找到信件原文再定。另外最後一筆紀錄是 1409 年的信，題目寫『婚禮之後』沒問題。"
+    },
+    {
+      "id": "H20",
+      "researched_as": "H20",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L5-S016 https://www.yamagata-u.ac.jp/jp/information/press/20240924/ ＋ L5-S017 https://nasca.geoinformation.htw-dresden.de/Englisch/historie.htm",
+      "reopen_result": "兩頁都打開。山形大學：6 か月で 303 個、既知の具象地上絵 430 個がほぼ倍増、AI で発見率 16 倍、『2000年以上前に描かれ、1920年代に発見』。Reiche 協會年表：1926 Mejía Xesspe、Kosok『The greatest astronomical book of the world』、1946 Reiche，1969 Hawkins 統計否定天文說，但 80 年代 Aveni 與 Urton 認為『astronomy had played also a role』。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提成立。研究代理寫『後來的檢驗讓天文說站不住』太滿：它自己的來源寫 Hawkins 否定、Aveni 等人又認為天文有部分角色。另外製作年代其實有來源（山形大學新聞稿『2000 年以上前』），可用。"
+    },
+    {
+      "id": "H21",
+      "researched_as": "H21",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L5-S020 https://experts.arizona.edu/en/publications/the-walking-moai-hypothesis-archaeological-evidence-experimental- ＋ L5-S023 natureasia",
+      "reopen_result": "兩頁都打開。2025 摘要：962 座、62 座路邊摩艾、4.35 公噸複製品、18 人 40 分鐘 100 公尺、『51.6 % concentrate within 2 km of the Rano Raraku quarry』、承認有學者挑戰。Nature 新聞稿：15 位古代島民基因組沒有 17 世紀瓶頸，1860 年代秘魯奴隸掠奪。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提成立。小修：『多數離採石場兩公里內』實際是 51.6%，寫『約一半』。"
+    },
+    {
+      "id": "H22",
+      "researched_as": "H22",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L5-S024 https://pmc.ncbi.nlm.nih.gov/articles/PMC11324516/ ＋ L5-S025 the-past.com",
+      "reopen_result": "PMC 用 WebFetch 打開（curl 只拿到驗證頁）：4.9×1.0×0.5 m、6 t、『at least 750 km』、Orcadian Basin、鋯石／磷灰石／金紅石 U–Pb、藍石約 225 km、摘要主張『transported by sea』。the-past.com：1923 Thomas 的威爾斯說『went unchallenged for exactly a century』、奧克尼本島已被排除。",
+      "changed_fields": [
+        "editorial_minutes",
+        "scope"
+      ],
+      "reason": "前提成立。片長偏滿：素材只有一塊石頭的產地翻案（1923 說法、2024 礦物定年、奧克尼誤讀、海陸之爭），照每 30–45 秒一個新資訊算約 7–9 分鐘，標 8–10 偏樂觀。"
+    },
+    {
+      "id": "H23",
+      "researched_as": "H23",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L5-S026 https://zh.wikisource.org/wiki/天變邸抄 ＋ L5-S027 https://zh.wikisource.org/wiki/明史/卷29",
+      "reopen_result": "兩頁都打開。《天變邸抄》：『屋以數萬計，人以萬計』『衣服俱飄至西山，掛于樹梢』。《明史·五行二》：天啟六年五月戊申『王恭廠災，地中霹靂聲不絕，火藥自焚，煙塵障空，白晝晦冥』。",
+      "changed_fields": [],
+      "reason": "前提成立，兩份一手文本都對得上；研究代理刪掉『兩萬人』『皇宮工匠震落』是對的。1986 年會議與 2013 龍捲風說只有一個雜誌來源，scope 已標。"
+    },
+    {
+      "id": "H25",
+      "researched_as": "H25",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L5-S031 https://www.hallofmaat.com/wsog/fingerprints-of-the-gods-re-piri-reis-map/ ＋ L5-S030 https://muse.jhu.edu/book/21157 ＋ L5-S029",
+      "reopen_result": "都打開。Hall of Maat：SAC 第 8 偵察技術中隊 Ohlmeyer 中校 1960-07-06 回信、Princess Martha Coast of Queen Maud Land、1949 年震測剖面、Hapgood 1966 附錄、冰下地形不等於無冰海岸。MUSE：McIntosh『refutes the popular misinterpretation that Reis’s depictions of Antarctica are evidence…』、第二次航行。OSU：1929-10-09 Deissmann 在托普卡匹。",
+      "changed_fields": [],
+      "reason": "前提成立；Ohlmeyer 信只靠個人網頁轉述 Hapgood 書的附錄（研究代理已標）。T29 一章 3–5 分鐘誠實。"
+    },
+    {
+      "id": "H26",
+      "researched_as": "H26",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L5-S033 https://pmc.ncbi.nlm.nih.gov/articles/PMC7319949/ ＋ L5-S035 https://m.thepaper.cn/newsDetail_forward_1660436",
+      "reopen_result": "PMC（WebFetch）：Sci Rep 2020、常勇與李同 1983/1985、Jin 等 2008、2016 年光達、『order of 1 ton』、『add to the credibility』、『very large uncertainties』。澎湃：1997 年國務院《關於加強和改善文物工作的通知》『對大型帝王陵寢，暫不進行主動發掘』、明定陵教訓。新華社：彩繪『15 秒就開始變化，4 分鐘內』剝落。",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "前提成立。要補一個禁區：澎湃那篇寫明定陵帝后遺骨『在後來的運動中燒棄』，這是文革；README 的 S 軸不收文革等近代政治題，劇本講定陵只講出土文物保存失敗，不講遺骨被燒。"
+    },
+    {
+      "id": "H27",
+      "researched_as": "H27",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L5-S037 https://www.merton.ox.ac.uk/news/partial-remains-sandy-irvine-found-mount-everest",
+      "reopen_result": "打開。2024-10-11：『A boot, along with sock and foot were found below the north face of Everest. The sock has a name label…A C Irvine』、22 歲。搜尋 2025–2026 沒看到 DNA 確認的報導。",
+      "changed_fields": [
+        "question",
+        "scope"
+      ],
+      "reason": "前提成立。但題目把『遺體被找到』當鉤子（『一個 75 年後被找到、一個等到 2024 年』），跟禁區『血腥或遺體』太近；答案真正的懸念是那台沒找到的相機。改題把鉤子放在相機。另外不碰 1960、1975 年中國登山隊的說法（牽涉今日政治）。"
+    },
+    {
+      "id": "H28",
+      "researched_as": "H28",
+      "agent": "L5",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L5-S040 https://zousen-shiryoukan.jasnaoe.or.jp/wp/wp-content/uploads/column/2020S-OS3-1.pdf",
+      "reopen_result": "打開（pdftotext）。141.2×57.8 m 換算、『1957 年 5 月…宝船廠…長さ 11.07ｍ…舵軸』、2003–2004 年船塢『長さ 421ｍ，幅 41ｍ』、作者以舵軸比例推估都在。",
+      "changed_fields": [],
+      "reason": "前提成立；研究代理把『吵了六百年』改成近代爭論、把估計改成區間都對。1597 小說說只有摘要，scope 已標。"
+    },
+    {
+      "id": "S22",
+      "researched_as": "S22",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S001 https://pmc.ncbi.nlm.nih.gov/articles/PMC8770119/",
+      "reopen_result": "WebFetch 打開：83 個年輪、4 件木頭（第 4 件無 993 訊號）、『These sudden increases were caused by cosmic radiation events』、三件 waney edge 都是 AD 1021、一件『felling season in spring』、『the only secure calendar date for the presence of Europeans across the Atlantic before the voyages of Columbus』、與整體活動的關係『a matter for future research』。",
+      "changed_fields": [],
+      "reason": "前提成立，研究代理把『太陽風暴』改成宇宙射線事件、把砍樹年與抵達年分開都對。chapter 4–6；T09 的撤案條件（讀不到樹輪論文就撤）已解除。"
+    },
+    {
+      "id": "H37",
+      "researched_as": "H37",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S003 https://news.yale.edu/2021/09/01/analysis-unlocks-secret-vinland-map-its-fake ＋ L6-S005 Beinecke 目錄",
+      "reopen_result": "都打開。YaleNews：1973 McCrone 找到銳鈦礦、2018 碳十四 1400–1460、XRF 顯示鈦遍布線條、顆粒像『pigment that was commercially produced in Norway in 1923』、背面拉丁註記被現代墨水改寫、Clemens『no reasonable doubt』。目錄：McCrone 1974『probably forged after 1920』、1985 年 1 月戴維斯分校說鈦只是微量。",
+      "changed_fields": [],
+      "reason": "前提成立。三個來源都是耶魯自己的頁面，獨立性不足（研究代理已標），當 T09 的一章可以。"
+    },
+    {
+      "id": "H38",
+      "researched_as": "H38",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L6-S006 https://www.mnhs.org/mnopedia/search/index/thing/kensington-runestone",
+      "reopen_result": "打開。年表：1899 Curme 與 Breda 判假、1907 Holand、『1910 A study committee assembled by the Minnesota Historical Society…concludes that the inscription is genuine』、1948 史密森尼、1950 Moltke、1965 世博、2003 Wolter『more than 200 years old…highly contested』；另有『1976 An interview with Walter Gran…asserts that his father helped carve the runestone』。",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "前提與 1910 年翻轉都成立。研究代理漏了 MNopedia 自己年表裡的 1976 年 Gran 訪談（說父親參與雕刻），『發現者從未承認』仍對，但『誰刻的沒有線索』不完整。"
+    },
+    {
+      "id": "H29",
+      "researched_as": "H29",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S009 https://pubmed.ncbi.nlm.nih.gov/11313757/",
+      "reopen_result": "WebFetch 打開（curl 只拿到驗證頁）：Eur J Hum Genet 2001；1795 年 10 歲死於聖殿塔、先前 mtDNA 已排除 Naundorff、兩個實驗室獨立檢驗、『the consensus mtDNA sequence of the heart was identical to that of the maternal relatives of Louis XVII』。",
+      "changed_fields": [],
+      "reason": "前提成立；研究代理拿掉『三十幾個自稱者』、把『比利時與德國實驗室』改成『兩個實驗室』都對。片長 8–10 靠心臟的流轉撐得住。結構要跟已製作的 H06 安娜塔西亞拉開（見 theme_notes）。"
+    },
+    {
+      "id": "H30",
+      "researched_as": "H30",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S014 https://sammlung.kunstpalast.de/en/objects/details/1039016 ＋ L6-S013 https://academic.oup.com/book/36364/chapter/319903900",
+      "reopen_result": "Kunstpalast：『Around 1900…an employee of the morgue made a plaster cast』（照傳說講）。OUP 導論（WebFetch 讀後半頁）：『Legend has it…』、『The mask was certainly resculpted after the mould was taken』、『astonishing popularity during the 1920s and 1930s』。",
+      "changed_fields": [],
+      "reason": "前提成立；研究代理把原卡的 1880 年代與 1958 年改掉都對。學術書其實寫『certainly resculpted』，比研究代理的『很可能被修塑』更確定，可以照實講。chapter 5–7，目前沒有題案收它。"
+    },
+    {
+      "id": "H31",
+      "researched_as": "H31",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L6-S018 https://educdome.puy-de-dome.fr/fileadmin/ressources/fichiers/934-1656487290-ProjetEAC_BeteGevaudan.pdf",
+      "reopen_result": "打開（pdftotext）。1764-06-30 到 1767-06-19、『entre 80 et 124』、Antoine 1765 年 9 月在 Chazes 打死大狼送凡爾賽、國王不想再聽、1767-06-19 Chastel。賞金那段原文：『Jean Chastel et Jean Terrisse reçoivent 78 livres…Celui-ci, revendiquant la prime de 6 000 livres promise par Louis XV…obtient 1 500 livres…(Moriceau)』。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_role",
+        "payoff"
+      ],
+      "reason": "前提（國王的人宣布結案、攻擊又來）成立。但研究代理讀錯了賞金：檔案館文件說 78 里弗爾是 Chastel 和 Terrisse 兩人一起拿的，而 1,500 里弗爾是 Chastel 後來追討國王承諾的 6,000 里弗爾所得到的（史家 Moriceau 的研究；搜尋到的 Gazette 也說 Moriceau 找到 Chastel 拿到 1,500），不是 Antoine 的賞金。研究代理拿來當『翻轉』的『1,500 對 78』是把對的讀成錯的，要拿掉。"
+    },
+    {
+      "id": "H32",
+      "researched_as": "H32",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S022 https://www.shroud.com/nature.htm ＋ L6-S023 https://api.crossref.org/works/10.1111/arcm.12467",
+      "reopen_result": "都打開。Nature 1989 轉載：1988-04-21 取樣、三實驗室與三件對照、『AD 1260-1390, with at least 95% confidence』、表中裹屍布 χ² 6.4、顯著水準 5%、『conclusive evidence』。Crossref 摘要（Archaeometry 2019）：原始數據 2017 年依法公開、『homogeneity is lacking…procedure should be reconsidered』。",
+      "changed_fields": [],
+      "reason": "前提成立，研究代理補的『1989 年論文自己就寫了卡方 6.4』是對的。宗教聖物照 scope 只講檢驗史。"
+    },
+    {
+      "id": "H33",
+      "researched_as": "H33",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S026 Antiquaries Journal 摘要 ＋ L6-S025 https://collections.sal.org.uk/sal.02.003.117",
+      "reopen_result": "都打開。Antiquaries Journal（2025-11-17 線上）摘要：『there is no contemporaneous description of the Gallo-Roman dodecahedron』、Iamblichus 等文本。SAL 目錄：1739-06-28『George North exhibits twelve-sided bronze object [Roman dodecahedron] from Aston, Herts.』",
+      "changed_fields": [],
+      "reason": "前提成立，是真正的未結。chapter 5–7 誠實，目前沒有題案收它。"
+    },
+    {
+      "id": "H34",
+      "researched_as": "H34",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S030 De Baets PDF ＋ L6-S029 Antiquity 1974 editorial PDF",
+      "reopen_result": "都打開（pdftotext）。De Baets：1962 羅德西亞陣線後、1970 Summers 與 Garlake 離國、『a view shared by all professional archaeologists since 1914』、公務員若把遺址歸功於非洲人會丟工作、不准談碳十四、發放部長審過的導覽。Antiquity：Rhodesian Hansard 1969-09-04『no irrefutable evidence is available on the origins of the Ruins』、1970-09-04 新導覽『all theories…absolutely impartially』、1971 年出版。",
+      "changed_fields": [],
+      "reason": "前提成立，一手材料清楚。邊緣風險：這是 1960–70 年代白人少數政權的種族政治，scope 已寫不評論今天辛巴威的政治、不複述歧視字眼；我認為不算『兩群人今天還在爭』（學界早有定論），可收。"
+    },
+    {
+      "id": "H35",
+      "researched_as": "H35",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S034 PMC5108962（用 Europe PMC 的全文 API 讀）",
+      "reopen_result": "PMC 本站回瀏覽器驗證頁，沒有繞過，改讀 Europe PMC 的公開全文：『a single orang-utan specimen and at least two human specimens』『Two or perhaps three, possibly medieval, humans』『linking all specimens…to a single forger—Charles Dawson. Whether Dawson acted alone is uncertain』、紅毛猩猩很可能來自婆羅洲西南沙勞越。",
+      "changed_fields": [],
+      "reason": "前提成立，研究代理把『1953 年就知道是中世紀人骨』與『Dawson 一人所為』改成保守說法都對。"
+    },
+    {
+      "id": "H36",
+      "researched_as": "H36",
+      "agent": "L6",
+      "reviewer": "RB",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L6-S038 LOC（1870-02-17 轉載《芝加哥論壇報》2 月 2 日）＋ L6-S039 https://www.masshist.org/beehiveblog/2017/02/a-remarkable-deception-the-cardiff-giant-hoax/",
+      "reopen_result": "LOC 頁面 HTML 讀不到文字，改讀同一頁的 LOC 全文服務（ALTO）：『History of the Cardiff Giant…the Tribune of the 2d instant』『A model was necessary, so one of the men…Hull by name…stripped』。MHS：Newell 的『cousin, George Hull』、埋了快一年、25 分兩天後漲到 50 分、Barnum 出價。",
+      "changed_fields": [],
+      "reason": "前提成立。補一點：研究代理說 Hull 跟牧師辯論的起因只有 History.com，其實 MHS 也寫了（『reportedly…argued with a Methodist revivalist, Rev. Mr. Turk』），可以照『據說』講。"
+    },
+    {
+      "id": "L21",
+      "researched_as": "L21",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L7-S001 https://europepmc.org/article/PMC/PMC5740279（經 Europe PMC REST fullTextXML 重讀全文）",
+      "reopen_result": "打開了。Results (a)：『Except for one tooth sample collected from a stuffed exhibit at the Reinhold Messner Mountain Museum, which BLAST-matched dog … all other samples were identified as ursid bears』；Methods：『nine samples were provided to us by the Reinhold Messner Museum and the Icon Film Company』；喜馬拉雅棕熊與其他棕熊分支估計 658 ka BP（95% HPD 336–1258 ka）；論文明說 Sykes 2014 只靠 12S rRNA 一小段比對到古北極熊。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "hook"
+      ],
+      "reason": "前提成立，原卡改正抽查屬實：原卡說九件都是『毛髮』，查到是牙、骨、皮、毛、糞；狗牙出自梅斯納博物館標本。翻轉也真：2014 年用短片段 DNA 得出『未知熊』，2017 年用完整粒線體基因體推翻。6／1／1／1 的物種拆分只靠新聞稿（論文正文只說『除一顆狗牙外都是熊』），寫稿時拆分數字要標新聞稿出處。5–7 分鐘標 chapter 誠實，維持在 T31。禁區：梅斯納在世，只提博物館名與標本，不畫本人，已寫進 risk。"
+    },
+    {
+      "id": "L06",
+      "researched_as": "L06",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L7-S004 https://www.gutenberg.org/ebooks/12345（重讀 pg12345.txt）；L7-S005 https://www.gutenberg.org/ebooks/45705",
+      "reopen_result": "兩本都打開了。Lawson 1907 小說寫『the opening of the Wall Street hoodoo-day, Friday, the thirteenth of the month』，後文又有『Tradition says Friday the 13th is bear Saints’ day』。Edwards《The Life of Rossini》（Hurst and Blackett，1869）：『he regarded Friday as an unlucky day, and thirteen as an unlucky number, it is remarkable that on Friday, the 13th of November, he died』。研究代理的翻轉成立：小說自己就把這天當成既有的傳統。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "hook"
+      ],
+      "reason": "原卡說『最早證據指向 1907 年的小說』，研究代理改成『小說只是放大器，1869 年起已有前例』，我重開兩本書確認無誤，沒有把對的改錯。原卡標題『不到 120 年前』要改，研究代理也已改。1901、1905 年的報紙在 loc.gov，我這次沒有重開，但有兩本書已足夠支撐核心。單做 4–6 分鐘，留在 T11 跟 L14 一起；T11 的章節說法要改（見 theme_notes）。"
+    },
+    {
+      "id": "L23",
+      "researched_as": "L23",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L7-S009 https://doi.org/10.1163/156853007x217203（Crossref 摘要）；L7-S010 https://doi.org/10.1558/pome.v9i1.62（Crossref 摘要）；L7-S012 https://daily.jstor.org/fakelore-tower-ravens/",
+      "reopen_result": "都打開了。Sax 2007（Society & Animals）摘要：『no allusions to the Tower Ravens before the end of the nineteenth century』、『largely an invented tradition』、『originally brought in to dramatize the alleged site of executions』。Pomegranate 摘要：『the legend only dates from about the end of World War II』，鄧拉文伯爵的連結寫『appear to』。JSTOR Daily：『only enter the record around 1883』、『re-opening of the Tower in January of 1946』。",
+      "changed_fields": [
+        "editorial_minutes",
+        "editorial_role",
+        "hook",
+        "scope"
+      ],
+      "reason": "前提成立，有翻轉：查理二世的預言是最後才貼上去的起源。但所有證據都來自同一位作者，而且只讀到摘要。這不影響選入，寫稿前最好讀到 Sax 2010 的全文。原卡寫的『倫敦塔官網也承認』與現行飼養數量都已經拿掉，做法正確。5–7 分鐘，目前沒有排進題案；建議跟 L25 或 L06 這類『傳統比你以為的晚』的題排在一起（見 theme_notes）。"
+    },
+    {
+      "id": "L25",
+      "researched_as": "L25",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L7-S015 https://www.loc.gov/pictures/item/2012648493/（item JSON 與 tile.loc.gov 原圖）；L7-S013 https://mcldig6930.omeka.net/items/show/1565；L7-S014 Colgate eMuseum；L7-S017 公司歷史頁",
+      "reopen_result": "loc.gov 的 HTML 頁回 403，但 ?fo=json 讀得到著錄：『Illus. from Puck, v. 40, no. 1031, (1896 December 9), cover』、媒材『chromolithograph』、C.J. Taylor。原圖（tile.loc.gov）我親自看過：聖誕老人穿紅衣、白毛邊、黑腰帶，坐在綠色扶手椅上。Morris County 著錄：『Santaclaussville, N.P. (North Pole)』、『fur-suited Santa』；Colgate：1866-12-29、木刻（wood engraving）。公司頁說『prior to 1931』前形象多變，又說 Nast 把外套『from tan to the red』。",
+      "changed_fields": [],
+      "reason": "核心兩點都有可讀的館藏支撐：1866 年 Nast 版畫把家標在北極；1896 年 Puck 彩色封面已是紅衣白毛邊，比 1931 年的廣告早 35 年。研究代理不採用公司頁『Nast 畫成紅色』的說法，因為《哈潑週刊》原刊是黑白木刻。這樣處理是保守的，沒有把對的改錯。原卡『名冊在 1866 年那幅裡』拿掉、改用 1904 年封面的名單，也正確。4–6 分鐘，標 chapter 誠實。品牌風險已寫明：不畫商標與瓶型。"
+    },
+    {
+      "id": "L20",
+      "researched_as": "L20",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L7-S018 https://europepmc.org/article/PMC/PMC6880514（Bauer 2019 全文）；L7-S019 Gootenberg 2004（Crossref 摘要）；L7-S020 UNODC 1961 公約 PDF；L7-S022 Richmond Dispatch 1902-03-23 p.9（loc.gov JSON 與 tile.loc.gov OCR）",
+      "reopen_result": "都打開了。Bauer：Pemberton 仿 Vin Mariani 做 French Wine Coca、加可樂果；『the cocaine content of the drink which, reportedly, had been removed by 1903』；1935 年『Merchandise No. 5』出口爭議、1937 年翻案。Gootenberg 摘要：『Merchandise No. 5, a secret formula extract of Peruvian coca-leaf used in … Coca-Cola since the early twentieth century』，研究範圍 1915–65。公約第 27 條：可准許用古柯葉製造『不含任何生物鹼的調味劑』。1902 年 OCR：參議院一份提案名稱是『A bill to prevent the sale of absinthe, coca cola, or other beverages containing cocaine』。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "question"
+      ],
+      "reason": "前提成立，原卡錯的地方研究代理都改對了：『至少有政府文件證明今天仍向特許工廠購買』沒有可讀的一手來源，已改用 Gootenberg 與公約。但改寫後的 answer_target 仍然說了『到今天』，超出來源，要收窄。『1903 年前去除』只有一個可讀來源（轉引 Pendergrast），已寫成『據報』，保留。禁區：藥物只談配方史與法規；1899 年報紙的種族化說法不重述，scope 已寫。排程：DEDUP 註記原來如此事務所有 B03，製作前要錯開。"
+    },
+    {
+      "id": "L19",
+      "researched_as": "L19",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L7-S026 https://dailybruin.com/1997/03/30/community-briefs257/；L7-S027 https://lasvegassun.com/news/1996/apr/09/las-vegas-legends-lack-facts/",
+      "reopen_result": "都打開了。Daily Bruin 1997-03-30：流言『For more than a decade』，原版是紐奧良旅館的商務旅客，新版是派對上的大學生、靠電子郵件轉寄；全國腎臟基金會 3 月 5 日發聲明，主席 Wendy Brown 說『no evidence that such activity has ever occurred in the United States』，擔心嚇退捐贈者，並請自稱被摘腎的人出面。Las Vegas Sun 1996-04-09：西雅圖的人來電、另有芝加哥與東岸來電；Brunvand 說『This story first appeared in newspapers in the late winter of 1991, with the incident reportedly having occurred in New York』，1993 年寫進《The Baby Train》；驗屍官與警方說沒有符合的案件，故事『right down to the bathtub full of ice』每次都一樣。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role"
+      ],
+      "reason": "前提成立，原卡改正屬實：『全世界的警察都接過報案』查不到，讀到的是拉斯維加斯的驗屍官、救護車公司與警方；『沒有人出面』查不到一手。研究代理都拿掉了。但新寫的版本遷移順序跟我重讀的 Brunvand 說法不合，要收斂。醫療禁區：只講傳說與闢謠，不把醫療體系講成陰謀，scope 已寫。4–5 分鐘，在 T34 跟 L05 一起。"
+    },
+    {
+      "id": "L05",
+      "researched_as": "L05",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L7-S028 https://doi.org/10.17345/elop201671-83（重下載 revistes.urv.cat PDF 全文）",
+      "reopen_result": "打開了。第 4 節：『well studied since Richard K. Beardsley and Rosalie Hankey recorded it in 1942』；Folklore Archive 收有『40 versions of the legend collected between 2009 and 2016』，多在塔拉戈納省難行的山路彎道（Coll de Lilla 有 8 個版本）；採集者說常在電影裡看到這一幕；結論：新版本傾向悲劇結局，女孩從『警告司機、救了他』變成『帶來厄運』，作者認為是受電影影響。但作者也引 Bennett（1984）與 Campion-Vincent & Renard（2002），說少數舊版本本來就有『搭車鬼害司機出事』的子母題。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "question"
+      ],
+      "reason": "前提成立：跨文化、同一骨架、換在地零件，也有民俗學檔案的版本數字。原卡說『各地版本一模一樣』，研究代理改成『同一骨架』，正確。原卡要的台灣版本找不到可讀出處，已拿掉。靈異守則：只講版本史，不點名近年車禍地點，scope 已寫。4–5 分鐘，跟 L19 合成 T34。"
+    },
+    {
+      "id": "L24",
+      "researched_as": "L24",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L7-S031 https://www.ndl.go.jp/kaleido/entry/13/ 與 /13/1.html（第 1 章）",
+      "reopen_result": "打開了。はじめに：貞子的母親志津子與父親伊熊平八郎『のモデルとされる』是千里眼能力者與福來友吉。第 1 章『公開実験』：1910 年 9 月 14、15、17 日三場，第 2 場對記者；山川健次郎是『東京帝国大学元総長で物理学者』；第 1 場山川準備的鉛管裡沒有『盗丸射』，那是福來先前給她練習用的鉛管；第 2 場成功；第 3 場『道徳天』命中，『この実験の時点では、透視を全否定する学者はなく』；中村清二『時々開封した形跡…掏り換へたりする形跡』的批評，是福來 1913 年書中反駁的對象；1911 年 1 月 8 日山川在丸亀做實驗時乾板遺失，後來查出是藤教篤忘了放；1911 年 2 月出版《千里眼実験録》。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "scope"
+      ],
+      "reason": "前提成立，翻轉很好：第一次公開透視讀到的是練習用的鉛管。原卡錯的地方研究代理都改對了：原卡說『報紙天天報』沒有依據；原卡說『母親的原型』，NDL 寫的是『父母的原型』，而且只說『被認為是』。核心主要靠 NDL 一個來源，L7-S032 只支持福來、念寫與媒體熱潮，勉強達到兩個可讀來源。素材有兩位能力者、三場公開實驗、丸亀乾板事件、報紙轉向、福來離職、《リング》，8–10 分鐘撐得住，episode_core 合理。禁區：御船千鶴子 1911 年 1 月自殺（NDL 寫『謎の自殺』），依自傷禁區只說『過世』，risk 已寫；鈴木光司在世，不畫。"
+    },
+    {
+      "id": "L02",
+      "researched_as": "L02",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L7-S033 https://crd.ndl.go.jp/reference/detail?page=ref_view&id=1000247055；L7-S034 https://crd.ndl.go.jp/reference/detail?page=ref_view&id=1000034864",
+      "reopen_result": "都打開了。NDL 的回答只說『ご照会の記事が見つかりました』：1979 年 1 月 26 日朝刊 1 面『編集余記』，而且只查了 1 月 23–29 日這一週；沒有說這是『最早』，也沒有引專欄內容。岐阜縣圖書館：6 月 15 日夕刊〈岐阜で生まれた口裂け女 騒ぎやっと下火へ〉附想像圖（索引原本誤記為 16 日）；備註說謠言『1978年暮頃から翌年にかけて岐阜市内で話題になり、全国に広まった』，發源地有美濃加茂、八百津、岐阜市等說法。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "hook",
+        "question"
+      ],
+      "reason": "前提的骨架成立：1979 年 1 月有專欄、6 月同一家報紙宣告平息、1978–79 年擴散全國，都有機構來源。但研究代理把 NDL 的『找到這篇』升級成『最早』，hook 又替專欄寫了內容，兩處都要收回。原卡的『集體下校』沒有一手來源，研究代理已拿掉，正確。這題對日本觀眾不新奇，只有 4–6 分鐘，目前也沒有排進題案，當章節或 Shorts 候補。"
+    },
+    {
+      "id": "L01",
+      "researched_as": "L01",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L7-S036 https://research.sinica.edu.tw/lin-mei-rong-folklore-mosina-ghost-taiwan/；L7-S037 https://www.mirrormedia.mg/story/20170822insight001",
+      "reopen_result": "都打開了。鏡週刊：2015 年底上映、全台 8,500 萬；『很多人都看過1998年那支家庭錄影帶』，造型照錄影帶；電影『定調「魔神仔」是精怪類』；導演與編劇簡士耕做了田野調查。研之有物：編劇簡士耕說自己是上了林美容的課、讀了《魔神仔的人類學想像》才得到啟發；林美容本人在分類裡就把『紅衣小女孩』列為魔神仔的一種；一位民眾來電說紅衣小女孩最早出現在政大後山的憲兵營，同一通電話還講到日治時期的活體實驗與八百多人的名單。兩個來源都沒寫播出節目與日期。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "scope"
+      ],
+      "reason": "研究代理自己標了 needs_check，我同意。原卡的核心句『1998 年在電視節目播出』，播出的節目與年份仍然沒有一手紀錄（玫瑰之夜或神出鬼沒說法不一），只有拍攝年 1998 有兩個來源。可講的翻轉只剩軍營來電，它太弱又有風險，拿掉後剩 3–5 分鐘。依 DEDUP，只能當 G15 魔神仔的一章。在世當事人（拍攝者與家屬）不點名、不用原片畫面，risk 已寫。補到電視台或節目的播出紀錄再重審。"
+    },
+    {
+      "id": "L27",
+      "researched_as": "L27",
+      "agent": "L7",
+      "reviewer": "RC",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L7-S041 https://genedu.stust.edu.tw/Sysid/genedu/621GEP/GEP04/gep0437_03.pdf（第一次連線被重置，重試後讀到）；L7-S043 清大語言中心 PDF",
+      "reopen_result": "都打開了。王見川文：1956 年拱樂社台語片熱潮、愛哭昧主演；《自立晚報》民國 45 年 8 月 27 日〈林投姐來了〉；劇本取材自廖漢臣《林投姐》：李招娘、周阿司、光緒年間台南府城、汕頭；廖本結局是周阿司發瘋殺了全家，電影改成大火燒死全家；插曲十餘支，都是歌仔戲調。清大報告：以 1936 年李獻璋《臺灣民間文學集》的版本為文本，丈夫是衙役，滿期後抱著兒子偷回唐山，新衙役（義弟）幫她過海；也附 1979 年《自立晚報》的電影廣告。",
+      "changed_fields": [
+        "editorial_minutes",
+        "editorial_role",
+        "scope"
+      ],
+      "reason": "研究代理自己標了 needs_check，我同意。改寫後的題目（1936 年的衙役，到 1956 年變成周阿司）兩邊各只有一個來源：一篇大學通識電子報短文，一份學生課程報告，都不是同儕審查或一手文件。原卡的核心『清代文獻』與 1921 年《臺灣風俗誌》都沒有讀到。『清代奇案大半細節是 20 世紀才加的』這個翻轉，目前靠的是『沒找到清代文獻』。宮廟：林投姐祠不提，risk 已寫。要讀到李獻璋 1936 年原書或《臺灣風俗誌》才能選入；沒有排進題案。"
+    },
+    {
+      "id": "L28",
+      "researched_as": "L28",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L8-S001 https://journal.sciencemuseum.ac.uk/article/power-at-play-in-paranormal-history/；L8-S002 https://library.leeds.ac.uk/news/article/132/fooled-by-fairies",
+      "reopen_result": "都打開了。科學博物館期刊：前四張的仙子『hand-drawn by Elsie, then cut out and mounted on pins』，重複曝光『featured only in the production of the fifth image』；五張刊在 1920 年 12 月與 1921 年 3 月兩期 Strand，1922 年出書；柯南道爾在第一篇稱它『an epoch-making event』（1920, p 463）；Elsie 1983 年寫給 Crawley 的信現藏 NSMM；Frances 在身後出版的回憶錄說前四張是假的，但她真的見過仙子。Leeds 圖書館：1917 年 7 月第一張；1985 年 Elsie 說『Two village kids and a brilliant man like Conan Doyle—well, we could only keep quiet』。",
+      "changed_fields": [],
+      "reason": "前提成立，研究代理對原卡的改正都屬實：原卡說仙子是『從書上剪下來』，實際是 Elsie 照插畫手繪後剪下；1920 年只刊前兩張。『等 66 年』的原因，一半有 Elsie 本人 1985 年的話支撐，另一半（底片與照片的商業利益在 Gardner 和柯南道爾手上）期刊也寫到了。第五張是重複曝光，這是期刊作者的判斷，跟 Frances 的說法相反，研究代理標成『沒有定論』是對的。素材夠撐 8–10 分鐘；放在 T10 裡也夠一章。當事人過世未滿 70 年，不畫臉；照片著作權待查，risk 已寫。"
+    },
+    {
+      "id": "L29",
+      "researched_as": "L29",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L8-S004 https://sourcebooks.fordham.edu/basis/williamofnewburgh-one.asp；L8-S005 Keightley（Gutenberg #41006）；L8-S006 Amaltea 書評 PDF",
+      "reopen_result": "都打開了。William of Newburgh（Stevenson 英譯）：收割者抓到孩子；起初不吃東西，直到拿來豆子（先找莖裡的豆、找不到就哭）；男孩受洗後不久死去，女孩『married at Lynne』；自稱來自聖馬丁之地。Keightley 引 Ralph of Coggeshall：孩子被帶到 Wikes 的騎士 Richard de Calne 家。Amaltea 評 Clark 2024：萎黃病、佛萊明移民等解釋；孩子的說法『elicited through persistent interrogation』，可能是誘導式問話的產物。",
+      "changed_fields": [],
+      "reason": "前提成立：兩份中世紀記載細節不同，現代解釋沒有一個說得通全部。原卡改正屬實：原卡說兩份都是『12 世紀末』，查到 Ralph 較晚；原卡寫『吃不到肉導致的貧血』，研究代理改成萎黃病等假說，並且不點名提出者。6–8 分鐘標 chapter 誠實，但目前沒有排進題案，需要一個『中世紀記錄怎麼讀』的兄弟題。禁區：無。Ralph 對女孩的評語不講，已寫。"
+    },
+    {
+      "id": "L30",
+      "researched_as": "L30",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L8-S007 https://museumhameln.de/?p=1080；L8-S008 https://museumhameln.de/?p=1116",
+      "reopen_result": "都打開了。RF07：Marktkirche 的玻璃窗是『could be』最早的來源，1660 年消失；Augustin von Mörsperg 1592 年看過並請人摹下，是現存最早的圖像；但同一頁又說『In the late Middle Ages the legend had already been intertwined with the story of the betrayed pest controller』；約 1600 年起流行把傳說刻在房屋上，戶政所石刻約 1617 年。RF11：『In the 16th Century, the first written accounts of the lost children appear』；1565 年 Zimmern 伯爵編年史首次加入鼠患與賴帳。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role"
+      ],
+      "reason": "前提成立，翻轉清楚：最早的銘文與摹本裡沒有老鼠。原卡改正屬實：原卡說『牆上刻著』，實際是約 1600 年改建時刻上的；原卡說『1300 年前後的彩窗記載』，彩窗 1660 年已不存，年代只是推測。最早的文字來源兩邊說法衝突，要並陳，不能選一邊。上限 11 分鐘偏高，因為 1384 年的紀錄與 Lüneburg 手稿都只有一個來源，改成 8–10。目前沒有排進題案，可以單做。兒童失蹤只講紀錄，risk 已寫。"
+    },
+    {
+      "id": "L31",
+      "researched_as": "L31",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L8-S012 https://drdavidclarke.co.uk/urban-legendary/spring-heeled-jack/；L8-S011 Portsmouth 研究入口（Bell 2012 摘要）",
+      "reopen_result": "都打開了。Clarke：1837–38 年冬，《泰晤士報》把一串夜間攻擊歸給『Spring-heeled Jack』；Waterford 侯爵 1859 年騎馬意外過世後十年內，才被《Brewer's Handbook》等點名，Haining 1977 年把它當成事實寫進書；1860–1904 年的廉價小說把他寫成復仇反英雄，有角、有蝙蝠翅膀；後來的作者 Vyner 加上的『metallic-seeming helmet』『a lamp strapped to his chest』，在 19 世紀原報紙裡找不到。Bell 摘要：從口傳到報紙轟動，再到小說、戲劇，最後成了嚇小孩的床邊怪物。Clarke 頁面沒有提到市長或 Mansion House。",
+      "changed_fields": [
+        "editorial_minutes",
+        "editorial_role",
+        "question"
+      ],
+      "reason": "答案的核心成立：傳說靠報紙與小說活著；貴族惡作劇說是 Waterford 死後才出現，沒有證據；外星版的細節是 20 世紀加上去的。原卡改正屬實：原卡寫『警方紀錄』，查不到，已拿掉。問題出在題目與 hook 掛在最弱的來源上。5–7 分鐘，在 T30 裡是一章。Waterford 侯爵只講『被點名、沒有證據』，risk 已寫。"
+    },
+    {
+      "id": "L32",
+      "researched_as": "L32",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L8-S015 https://www.livescience.com/13356-el-chupacabra-mystery-solved.html；L8-S014 ScienceDaily 轉載 University of Michigan 新聞稿；L8-S016 UNM Press 書頁",
+      "reopen_result": "都打開了。Live Science：1995 年 3 月起出現被吸乾血的山羊；8 月第二週，報紙刊出目擊者的素描：雙足、4–5 呎、背上有刺；Radford 發現它很像 1995 年電影《Species》裡的混種生物，目擊者『had seen the movie in the weeks prior to making her description』；2004 年德州的屍體經 DNA 鑑定是罹患嚴重疥癬的郊狼，被攻擊的雞與山羊驗屍時血量正常。",
+      "changed_fields": [
+        "editorial_minutes",
+        "editorial_role",
+        "question"
+      ],
+      "reason": "前提成立，翻轉有兩層：素描像電影，後來的『卓柏卡布拉』又是另一種真的動物。原卡改正屬實：原卡說『目擊者承認』，實際是 Radford 問她，她說看過那部電影，不是她自己承認抄電影；原卡說『獸醫鑑定』，讀到的是 DNA 與驗屍。目擊者在世：不點名、不畫，scope 已寫。我重讀的頁面裡有目擊者全名，寫稿時不能用。目前沒有排進題案，建議併入 T31（見 theme_notes）。"
+    },
+    {
+      "id": "L33",
+      "researched_as": "L33",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L8-S019 https://archive.wvculture.org/History/notewv/mothman.html；L8-S018 https://wvencyclopedia.org/entries/1369；L8-S017 NTSB HAR-71-1 PDF（掃描檔，看了頁面圖）",
+      "reopen_result": "都打開了。州檔案館剪報清單：〈Couples See Man-Sized Bird...Creature...Something〉Point Pleasant Register 1966-11-16；〈Owl? Goose? Prank: Or Take Your Choice〉11-17；〈Birdman Could Be FHS Balloon〉11-18；〈Professor Says Moth-Man Could Be Large Crane〉與〈Would You Believe a Sandhill Crane?〉11-19。e-WV：一年 26 次目擊；有人說是迷途的沙丘鶴；Keel 把橋塌寫進 1975 年的《The Mothman Prophecies》，2002 年拍成電影。NTSB 報告前言（印刷頁 2）：裂縫在不拆開構件的情況下『may be entirely undetectable』。46 死的數字我這次沒有翻到那一頁。",
+      "changed_fields": [],
+      "reason": "前提成立：當年的剪報標題證明 1966 年報紙談的是鳥、氣球與惡作劇，跟橋沒有關係，是 1975 年那本書把兩件事接在一起。原卡改正屬實：原卡說『十幾人』，實際 26 次；原卡說『疲勞斷裂』，NTSB 是應力腐蝕加腐蝕疲勞；原卡的『尖峰時間』沒有依據。只有剪報標題、沒有內文，研究代理已註明。大量死亡：只講官方數字與原因，不畫；Cornstalk 詛咒涉及真實原住民人物之死，不講。scope 都寫了。5–7 分鐘，在 T30 裡是一章。"
+    },
+    {
+      "id": "L34",
+      "researched_as": "L34",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L8-S021 https://www.inquirer.com/news/new-jersey/jersey-devil-history-fake-news-norman-jeffries-20190123.html；L8-S020 Regal 2015 PDF",
+      "reopen_result": "都打開了。詢問報：1909 年 1 月 16 日起有雪地蹄印的報導；21 日頭版〈WHAT-IS-IT VISITS ALL SOUTH JERSEY〉；22 日第 2 版〈VAMPIRE MISSING…Cross Between a Kangaroo and Bat〉；23 日報導在 Fairmount Park『抓到』；24 日 Ninth and Arch 的 Dime Museum 登廣告展出；Jeffries『confessed to staging the stunt』，訃聞說那是『cleverly disguised kangaroo』。Regal：18 世紀的說法沒有文獻；1790 年的日記來歷可疑；最早的媒體提及是 1859 年 5 月 Mayer 在《Atlantic Monthly》的文章。",
+      "changed_fields": [],
+      "reason": "前提成立，翻轉有兩層：那一週的怪物有宣傳人員炒作，而『1735 年的民間故事』沒有 18 世紀文獻。原卡改正屬實：原卡說『上千人』與『學校工廠停工』，都沒有可靠來源，已拿掉；原卡說『塗了色的袋鼠』，訃聞寫的是『偽裝過的袋鼠』，研究代理照訃聞寫。Regal 說『Jersey Devil』這個名字 1909 年後才出現，跟 1909 年的原報不一致，研究代理已標出。8–10 分鐘的素材是夠的（曆書之爭、1859、1909 那一週、Jeffries）；放進 T30 則是一章。禁區：無。"
+    },
+    {
+      "id": "L38",
+      "researched_as": "L38",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L8-S023 https://api.parliament.uk/historic-hansard/commons/1998/feb/02/big-cats-norfolk；L8-S024 Tampa Bay Times 檔案（頁內 articleBody）；L8-S025 https://drdavidclarke.co.uk/2014/12/15/cats-out-of-the-bag/",
+      "reopen_result": "都打開了。Hansard 1998：調查結論是家畜被大型犬咬死，照片證據是家貓；部長說豹頭骨『from a leopard skin rug and had been planted』；1977 年以來有 16 隻大貓逃出，除了兩隻都在一天內抓回。AP 1995-07-20：兩位調查員花六個月看錄影、腳印與四頭家畜屍體；三個石膏模是兩隻貓、一隻狗。Clarke：ADAS 受農漁食品部委託，報告一開始就承認『never be possible to prove that such an animal… did not exist』；用一公尺標竿重拍照片，『野獸』肩高不到 30 公分；夜拍的眼睛是縱向細瞳；頁面附有報告的掃描頁（Crown Copyright）。",
+      "changed_fields": [
+        "editorial_minutes",
+        "editorial_role",
+        "premise_status"
+      ],
+      "reason": "前提成立，研究代理把原卡講反的地方改對了：『無法證明不存在』是報告開頭講的方法限制，不是結論；頭骨的鑑定機構與發現者沒有可靠來源，已拿掉。研究代理標 needs_check 的唯一理由是 T31 的撤案條件『報告原文讀不到就撤回』。這是題案層級的規則，不是前提不足，我改判可選入；T31 要不要保留，交站主依 theme_notes 決定。在地相信者不點名，risk 已寫。"
+    },
+    {
+      "id": "M22",
+      "researched_as": "M22",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L9-S001 https://www.iaea.org/sites/default/files/17304780204.pdf；另開 L9-S002 https://gwern.net/doc/science/chemistry/1976-cowan.pdf",
+      "reopen_result": "兩份都讀到。IAEA：0.7202% 對 0.7171%；Pierrelatte 的例行量測『主要是確認鈾是天然的，不是來自已經用過一部分 U-235 的廠』；1972 年 8 月初提出鏈式反應、9 月在法國科學院與 IAEA 大會宣布；約 18 億年；四個條件（濃度逾 3%、缺中子吸收物、有水當減速劑）；運轉『數十萬年』、熱傳推算『至少十萬年』。Cowan：H. Bouzigues、1972 年 5 月、約 700 噸礦缺 200 公斤 U-235、六個反應區；1953 年 Wetherill 與 Inghram 已算過『外推回二十億年前會更接近反應爐』，三年後 Kuroda 描述條件；宣布時『美國核科學家抱持懷疑』。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role"
+      ],
+      "reason": "核心前提由 IAEA 機構文件與 1976 年 Scientific American 掃描兩個來源支持。研究代理說原卡把發現者寫成『核燃料工廠』是錯的，這不成立：Cowan 自己就寫 nuclear-fuel-processing plant at Pierrelatte。不過改成『濃縮廠』也沒有錯，所以不必改回去。翻轉成立：這項檢查本來就是用來抓『用過的鈾』，加上 1953 年已有人預測過天然反應爐。故事有追查、懷疑、機制與預測四段，8 分鐘撐得起。禁區：沒有碰到。重複：原來如此事務所只有 X2021（宇宙早期核反應），不是同一題。"
+    },
+    {
+      "id": "P04",
+      "researched_as": "P04",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L9-S004 https://www.govinfo.gov/content/pkg/GOVPUB-Y1_3-PURL-LPS90964/pdf/GOVPUB-Y1_3-PURL-LPS90964.pdf",
+      "reopen_result": "讀到了。標題是〈Y2K Aftermath – Crisis Averted〉。內容包括：美國約 1000 億、聯邦約 85 億；委員會判斷『努力值得、花費必要』；『數百件問題，多數很快修正，沒有嚴重中斷』；嵌入式晶片的故障率從 2–3% 降到 .001%；國防部衛星情報系統的地面站故障列在附錄 II。報告說國際的低度中斷『有點出人意料（somewhat surprising）』，並列出四個可能因素；另一段說美國的人均花費高於義大利、西班牙、俄羅斯。報告第 3 頁把解散日誤印成 1999 年 2 月 29 日，研究代理也注意到了。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "scope"
+      ],
+      "reason": "前提成立，原卡的改正抽查也屬實。最要緊的是重複：DEDUP 只比了 LEG-A25 的 2038 主題，判『保留分開』。可是 A25 的查核檔與 Short 2〈千禧蟲沒爆：修好了還是被誇大？〉已經拿同一份參議院報告、同一個義大利對比，講同一個翻轉。長片的核心（2038 對千禧蟲）不同，所以不判重複，但要排在 A25 的 Short 2 之後，或兩邊錯開，開場不要用同一句。只有兩個來源而且都是政府文件，要補 A25 用過的 Quiggin 與 Thomas，才撐得起 8 分鐘又不偏一邊。"
+    },
+    {
+      "id": "M07",
+      "researched_as": "M07",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L9-S006 https://pmel.noaa.gov/acoustics/sounds/bloop.html；L9-S007 https://oceanservice.noaa.gov/facts/bloop.html",
+      "reopen_result": "兩頁都讀到。PMEL：1997 年夏天、與大冰山破裂的冰震一致、Scotia Sea 的聲譜很像、可在超過 5000 公里外偵測、方位推在 Bransfield 海峽到羅斯海或 Cape Adare、2008 年用冰震追蹤 A53a。NOS：為了聽海底火山、麥克風相距超過 3,219 公里、列出軍演、絞盤、大王烏賊等猜測、2005 年找到來源、『冰山從南極冰川破裂斷離』。兩頁都沒有『比藍鯨還大』。",
+      "changed_fields": [],
+      "reason": "研究代理對原卡的三處改正（拿掉藍鯨、5000 公里與 3219 公里分開、冰山不是冰架）全部屬實。2005 年只靠 NOS 一頁，劇本裡要標出處。當一章 2.5–3 分鐘是誠實的。重複：原來如此事務所沒有 Bloop。題案 T01 的章名要改，見 theme_notes。"
+    },
+    {
+      "id": "M08",
+      "researched_as": "M08",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L9-S010 https://arxiv.org/pdf/1810.11490v4；另開 L9-S009、S011、S012 的 arXiv 摘要",
+      "reopen_result": "讀到了。光壓試算要 0.3–0.9 mm 的薄片，確認無誤。但討論段不是『一句推想』：先寫若是光壓推動，它就是一種新的薄型星際物質，『可能是自然產生，或是人工的』；接著用一整段論證『人工光帆碎片』可以一次解釋光變、低熱輻射與無彗尾的加速，才寫 more exotic scenario（刻意送來的探測器）並給理由。摘要最後一句是『我們的結果適用於任何為星際旅行設計的輕型探測器』，主題標籤是 extraterrestrial intelligence。S009：約 230×35 m、約 6:1、除形狀外平凡。S011：所有觀測與自然起源一致。S012：至今沒有一個解釋能調和所有限制。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "reason": "研究代理說『外星只是一句』，這把作者自己的論證說小了。Loeb 在世，這樣講會變成替一位在世學者說他沒說過那麼多，反過來也誤導觀眾。前提（加速度是真正的謎，形狀是推測）成立，改寫後可以收。當一章 2.5–3.5 分鐘是誠實的。重複：原來如此事務所沒有斥候星。"
+    },
+    {
+      "id": "M03",
+      "researched_as": "M03",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L9-S013 http://www.bigear.org/Wow30th/wow30th.htm",
+      "reopen_result": "讀到了。訊號在 1977-08-15 約 23:16 EDT 進來；Ehman 幾天後（大概 8 月 19 日）才在家裡看列印紙；兩人是下班與週末來的志工。Ehman 原文：『The signal lasted about 72 seconds, because we had 6 data points … 6 times 12 = 72』，並更正 37 秒的誤讀。兩個饋源只看到一次，所以若訊號連續存在，不會超過約 2–2.5 分鐘。之後約 60 天同一條天空沒再看到，幾年後再掃也沒有。『訊號實際存在多久，仍是開放問題』。另開 S014（PHL 頁）：Ehman 2016 與 Dixon 2017 反駁彗星說、1986 年哈雷彗星沒訊號。S015：Paris 的期刊欄寫 Winter 2015。S016：冷氫雲假說，投稿 ApJ。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "reason": "研究代理把 Ehman 的說法講反了一半：72 秒是 Ehman 自己的數字，不是被他修正的流傳版本。其他的改正都屬實：49 年、8 月 19 日、彗星假說的年份、兩個饋源只看到一次。真正的懸念成立：只出現一次、兩個假說各有反駁。四個來源可讀，8–10 分鐘撐得起。在世人物的處理沒有問題。"
+    },
+    {
+      "id": "M04",
+      "researched_as": "M04",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L9-S017 https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0105948（manuscript 檔）；L9-S018 https://www.nps.gov/deva/planyourvisit/the-racetrack.htm",
+      "reopen_result": "兩份都讀到。PLOS：1948 年第一份報告；Sharp 算出要 33–45 m/s 的風；Sharp 與 Carey 的圍欄實驗被他們『解讀為冰不是推力』；2013-12-20 有超過 60 塊石頭移動；GPS 石最多移動 224 m；冰厚 3–6 mm、風 4–5 m/s、速度每分鐘 2–5 m。NPS：最重約 320 kg；頁面上還留著『半英寸雨、時速 50 英里以上的風』的舊說法；2006 年是上次疑似移動；沒有石頭的軌跡曾被懷疑是遊客偷石。",
+      "changed_fields": [],
+      "reason": "原卡的改正全部屬實：年份是 2013 年 12 月觀測、2014 年刊出，冰是在白天裂開的。翻轉很清楚：大家都在找夠大的力，答案卻很小。研究代理自己承認撐不到 8 分鐘，照實標成章 5–6.5 分鐘，誠實。目前沒有排進題案，留作章節候補。DEDUP 已判跟 E7005 分開，同意。"
+    },
+    {
+      "id": "M05",
+      "researched_as": "M05",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L9-S020 https://physicsworld.com/a/burning-soil-fuels-ball-lightning/；L9-S019 https://fisherp.mit.edu/wp-content/uploads/2020/04/PhysRevLett.112.035001.pdf",
+      "reopen_result": "兩份都讀到。PRL：2012 年夏天在青海、意外錄到、距離 0.9 km、發光 1.64 s、球狀閃電的特徵向來靠目擊者的描述。Physics World：直徑約 5 m、8.6 m/s、矽鐵鈣譜線、約 100 Hz 的起伏與附近 50 Hz 的高壓線、Jerby 說『很可能』但不能確定、Abrahamson 2000 年的土壤矽假說、球狀閃電『從沒被好好解釋』。",
+      "changed_fields": [],
+      "reason": "把『第一次拍到』改成『第一份光譜』屬實，拿掉沒有出處的『兩百年』也對。翻轉夠一章用，3–4 分鐘是誠實的。DEDUP 已判跟 M35、K6019 分開。目前沒有題案，留作章節候補。"
+    },
+    {
+      "id": "M20",
+      "researched_as": "M20",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L9-S021 https://aalto.fi/en/news/acoustics-researcher-finds-explanation-for-auroral-sounds；另開 L9-S022 會議論文 PDF",
+      "reopen_result": "兩份都讀到。新聞稿 2016-06-22 發布：2012 年證明聲源約 70 m；2013 年 3 月 17–18 日在 Fiskars、零下 20 度錄到數百聲，最響的 60 聲來自約 75 m；逆溫層蓋子與地磁風暴放電；只在無風時發生；『不排除其他機制』。會議論文：Størmer 測出的極光高度；1920 年代 Chant 向讀者徵求、Baker 描述 1884 或 1885 年的聲音；『錯覺』與『不可能』兩種舊看法；計畫二十多年；21 分鐘的延遲還沒有解釋。",
+      "changed_fields": [],
+      "reason": "研究代理對原卡的改正屬實：不是三支麥克風，是 2013 年錄音、發表在會議，不是十年。但三個來源都出自 Laine 本人或他的大學，不論『物理學家說不可能』這個流傳版本，還是 75 m 的答案，都沒有獨立來源。研究代理自己標 needs_check，我同意，維持候補。補上一份獨立來源就可以重提，例如 Silverman & Tuan 1973《Auroral audibility》，或其他學者對 Laine 假說的評論。"
+    },
+    {
+      "id": "M21",
+      "researched_as": "M21",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L9-S024 https://www.quakefinder.com/research/EQTdata/IWSE2005_EQL_revised.pdf；L9-S025 https://www.scientificamerican.com/article/mysterious-light-associated-earthquakes/",
+      "reopen_result": "兩份都讀到。Derr 等：Musya 1931 年依 1500 多份報告說『已不太能懷疑』，但『懷疑至少延續到 1960 年代末』，那時松代地震群期間有照片紀錄，柿岡地磁觀測所的 Yasui 研究了居民的素描與照片。SciAm：1727 年新英格蘭遛狗的案例（Ebel 轉述）、65 次地震中 56 次在裂谷、63 次在近乎垂直的斷層、Ebel 說『沒辦法對它做實驗』。另開 S026：SLH 寫『曾被當成喝了太多土酒的人的幻覺』。",
+      "changed_fields": [
+        "question",
+        "scope"
+      ],
+      "reason": "答案與改正都屬實：拿掉牙醫、拿掉 2023 年摩洛哥、補 1931 年。只是題目的『喝醉的幻覺好幾百年』把一個科普網站的玩笑話講成史實，要改。當一章 5–7 分鐘是誠實的。禁區的處理（不提近年災區、不講成預警方法）可以。"
+    },
+    {
+      "id": "P06",
+      "researched_as": "P06",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L9-S028 https://www.loc.gov/resource/sn85066387/1910-02-08/ed-1/?sp=1（透過 loc.gov JSON 取得 tile.loc.gov 的 OCR）；另開 L9-S030 https://www.sciencehistory.org/stories/magazine/the-comet-panic-of-1910-revisited/",
+      "reopen_result": "兩份都讀到。1910-02-08《San Francisco Call》頭版：〈COMET MAY KILL ALL EARTH LIFE SAYS SCIENTIST〉，Boston 2 月 7 日電、Yerkes 的電報說光譜有很明顯的氰譜帶；Flammarion 認為可能 snuff out all life；緊接著寫『多數天文學家不同意 Flammarion，因為彗尾稀薄到難以想像』。SHI：Flammarion 1909 年 11 月的文章開頭先說後果幾乎是零；《Times》的標題〈Comet's Poisonous Tail〉；彗星藥丸、彗星保險（洛杉磯，至少 50 人）、封門縫；洞穴畫的署名是『Recuerdos de Fernando Colón, Mayo 23, 1910』，查人口普查，畫者 15 歲。也讀到 Méndez 只是『推測』Fernando 等人躲進洞裡避氰氣。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "reason": "研究代理對原卡的改正（藥商、防毒面具、多數天文學家反對）都屬實，loc.gov 頭版這次也打得開。原題把『躲進山洞』當成事實放在標題，但來源只說是推測，而且署名的日期在地球穿過彗尾之後，所以改題。素材夠 8–9 分鐘。種族化報導與自殺的避開方式可以。"
+    },
+    {
+      "id": "P05",
+      "researched_as": "P05",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L9-S032 https://blog.oup.com/2007/10/christ/；L9-S033 https://christianhistoryinstitute.org/magazine/article/american-adventism-the-great-disappointment",
+      "reopen_result": "兩份都讀到。Howe：1844 年 10 月 22 日有兩萬五千到五萬人守夜；事前還債、辭職、關店、不收成、送錢；『升天袍是之後一年公眾嘲笑時的傳說之一』；最大的一支成為基督復臨安息日會。CHI：2300 日、Ussher 的公元前 457 年；1843 年 1 月宣布期限是 1843-03-21 到 1844-03-21；落空一個月後 Miller 認錯；一名追隨者推出『耽延』七個月十天，得出 10 月 22 日，Miller 最後才接受；信徒五萬以上。",
+      "changed_fields": [],
+      "reason": "原卡的改正全部屬實，翻轉也清楚：10 月 22 日是第二個日期，白袍是嘲笑時傳出來的。3–4 分鐘的章節誠實，正好是 T35 的前情。宗教的處理照信徒自述，可以。T35 的撤案條件只部分滿足，見 theme_notes。"
+    },
+    {
+      "id": "P01",
+      "researched_as": "P02",
+      "agent": "L9",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L9-S035 https://www.gutenberg.org/cache/epub/68907/pg68907.txt（X.72）；另開 S036 gendai.media、S037 daily.co.jp、S038 bunshun.jp",
+      "reopen_result": "都讀到了。1672 年版的 X.72 原文：『L'an mil neuf cent nonante neuf, sept mois, / Du Ciel viendra un grand Roy d'effrayeur …/ Avant apres, Mars Regner par bonheur』。英譯：『From Heaven a great terrible King … Mars shall Reign luckily』。註解說 Angoulesme 王指法蘭索瓦一世，『the rest is easie』。gendai：1973 年的書名副標、三個月後的廣告『戰後第 15 本百萬冊』、東寶花 5 億元拍電影、全 10 本累計超過 600 萬部、1981 年法國的密特朗與教宗事件。文春：1973 年 11 月發售、250 萬部、2020 年 6 月 16 日去世。Daily：標題『想向孩子們道歉』。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "reason": "前提與日本那段都成立。原卡 P01 寫『詩裡沒有年份』，研究代理指出 X.72 正好有年份，這個發現對。可是題目把『戰神幸運統治』當成譯者的特別讀法，其實是直譯，翻轉要放在註解。8–10 分鐘撐得起：有 1672 年的文本、1973 年的出版熱、法國與義大利的事後對號、1999 年、2019 年的道歉。"
+    },
+    {
+      "id": "M26",
+      "researched_as": "M26",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L10-S002 https://lagen.nu/sou/2001:85；另抽查 L10-S001 https://lagen.nu/sou/1995:135",
+      "reopen_result": "SOU 2001:85 §6.5.1 原文：參考調查 1999 年夏天收集資料，錄到的聲音『entydigt』是鯡魚或可能是黍鯡（sill eller möjligen skarpsill）群；魚可以解釋全部先前的典型聲音；Ubåtskommissionen 的 Fredga 與 Grimvall『i februari 2000』同意；另一段寫 1981–1994 年 54 次加上 1995 年 7 次，『sammanlagt 61 typljudskontakter』不再評為 (1)，改評 (4)(5)(6)。1998 年那句只說參考調查『提出建議』。SOU 1995:135 §8.2.2：典型聲音約 80 次，第一次在 1984 年 5 月；漁業局 1992 年替 MUSAC 做魚聲調查，表裡的鯡魚是 40，結論是『這些聲音跟典型聲音不像』。也讀到 1994-07-28 水貂那一段。",
+      "changed_fields": [],
+      "reason": "核心前提與研究代理的改正（1996 年找不到、1992 年鯡魚先被排除、1999／2000 年才定案、61 次）都能在兩份政府報告原文對上，沒有把對的改成錯的。小誤差：1998 年的參考調查只『提出建議』，降評的具體數字出自 2001 年報告，旁白寫『1998 年參考調查建議、2000 年確認降評』比較穩。翻轉是真的：同一種魚先被排除、後來才找回來。SOU 1995:135 還有一段研究代理沒用到的好素材：1992 年夏天水母特別多，1993 年漁業局也測了水母，同樣排除。加上這段，8–10 分鐘撐得住，標 episode_core 是誠實的。入侵國籍的爭議 scope 已經排除。"
+    },
+    {
+      "id": "M23",
+      "researched_as": "M23",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L10-S006 https://marineinfo.org/doc/publication/225404；L10-S008 Smithsonian",
+      "reopen_result": "Watkins 等 2004，Deep-Sea Research I 51(12):1889–1901 摘要：『noticed first in 1989, … tracked since 1992』，在北太平洋中部與東部追蹤 12 年；同一時間只有一個聲源，推論是單一鯨魚；『The species producing these calls is unknown』；路線跟藍鯨、長須鯨、座頭鯨的出現與移動『unrelated』。Smithsonian：Clark 說『all these whales can hear this guy… He's just odd』；Stafford 說至少部分是藍鯨；2010 年多個相距很遠的感測器錄到類似叫聲，是轉引 BBC 的 Baraniuk 與 Hildebrand 的話。",
+      "changed_fields": [],
+      "reason": "研究代理說原卡錯的兩處（1989 首次注意、1992 起追蹤；路線跟各鯨種無關、混種是後來的推測）都對。『最孤單』是報導加上去的，這個翻轉成立。2.5–4 分鐘，標 chapter，誠實。2010 那一段只有轉述，scope 已經要求講成『據報』。"
+    },
+    {
+      "id": "M27",
+      "researched_as": "M27",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L10-S010 https://www.history.com/articles/baghdad-battery；L10-S009 https://sino-platonic.org/complete/spp377_baghdad_battery.pdf；L10-S011 Language Log",
+      "reopen_result": "HISTORY：1936 年在 Khujut Rabu 出土；König（伊拉克國家博物館館長）提出原電池說；複製品量到 0.8–2 伏；Hafford 認為是『困住惡靈』的儀式罐，跟咒語碗一起埋在建築地基裡，鐵棒可能是釘子；Stone：『我不知道這一行有誰認為它是真的電池』；2003 年劫掠時『很多原件』失蹤，沒說這一件。SPP 377（2026 年 1 月，Bazes）摘要：說它的設計『很難想像有別的用途』，加上焊錫做出 1.4 伏以上。Language Log（2026-01-08，Bazes 的客座文）：說 Hafford 的儀式解釋『quite plausible』，但他的論點是儀式者也在用電化學。莎草紙捲是 Ctesiphon 出土的青銅管，不是同一種陶罐。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "reason": "1936／1938 的改正對。研究代理把 Bazes 寫成『自己也說儀式說可信』，會讓觀眾以為他讓步了；其實他的論文結論是『它就是電池』，只是接受儀式脈絡，這一句要改。改完之後懸念更真：2026 年還有人做實驗主張是電池，考古界看的是出土脈絡。2.5–4 分鐘，標 chapter，誠實，維持在 T29。"
+    },
+    {
+      "id": "M31",
+      "researched_as": "M31",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "REJECT",
+      "key_source_reopened": "L10-S012 https://www.oilgas.gov.tm/index.php/en/posts/news/3873/the-mysterious-gas-crater-has-its-own-real-story（第一次 503，重試 200 讀到）；L10-S013 National Geographic",
+      "reopen_result": "國營《Oil and Gas of Turkmenistan》2022-02-01：開頭寫總統 1 月 7 日在政府會議上『ordered to find a solution to extinguish the gas crater』（下令找辦法把火滅掉），故事用『According to reports, it began in 1971』，地質人員發現地下空洞、坍塌、鑽機掉下去、為免毒到人畜點火；沒有單位、日期或文件；直徑寫 60 公尺、深約 20 公尺；文末另一句才說『close it and use it for the benefit of the people』。NatGeo：Kourounis 轉述當地地質學者說可能 60 年代坍、80 年代才點火，地質部門『沒有那麼早的紀錄』。",
+      "changed_fields": [],
+      "reason": "研究代理有一處把對的改成錯的：原卡寫『2022 年政府說要把火滅掉』，國營報紙第一段就是總統下令『找辦法滅火』，研究代理的 notes 卻寫『讀到的是下令關閉、為人民利用，不是滅火』。另外，官方直徑寫 60 公尺，不是原卡的 70。前提本身（官方故事沒有單位、沒有文件；另一種年代只靠一位探險家轉述不具名的學者）只有一個轉折，2–3.5 分鐘，目前也沒有題案收它。研究代理自己也說適合做 Shorts，所以轉 Shorts。"
+    },
+    {
+      "id": "P08",
+      "researched_as": "P08",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L10-S014 https://archive.org/details/broadcasting15unse（讀 djvu 全文）；L10-S015 Slate",
+      "reopen_result": "Broadcasting 1938 合訂本原文：『C. E. Hooper Inc. … announced that only 2% of the homes it called in a nationwide routine check of 5,000 homes were listening to the Mercury program』；問題是『to what program are you listening?』；在聽的人都答『play』或『Orson Welles program』，沒人答『news broadcast』；同段列了 Mutual 約 300 通、WMCA 約 100 通、《紐約時報》近千通來電，以及 CBS 的聲明。Slate 2013 的對手節目、WEEI 等聯播台沒播、報紙廣告被廣播搶走、Cantril『約一百萬人受驚』與 AIPO 六週後的聽眾高出一倍，都對得上。",
+      "changed_fields": [],
+      "reason": "核心前提有一手刊物原文，研究代理改的『百萬人出自 1940 Cantril，不是隔天報紙』也對。另外它主動標出『2% 登在廣播業自己的刊物上』，這是誠實的。8–11 分鐘撐得住：開場用 F36 原著、廣播當晚、來電、Hooper、報紙動機、Cantril 的方法問題。Welles 不畫本人的處理也正確。"
+    },
+    {
+      "id": "P14",
+      "researched_as": "P14",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L10-S018 Paleofuture；另找到獨立轉錄 Straight Dope https://www.straightdope.com/mailbag/mdixon.html",
+      "reopen_result": "Paleofuture 引 1956-05-13 Parade：『won by a Democrat. But he will be assassinated or die in office 'though not necessarily in his first term.'』；外貌描述原文沒有，出自《紐約時報》訃聞的歸因；訃聞引 Current Biography 說她宣稱採訪者『不肯刊出』，Novak 指出其實刊出了；落空的預言有卡斯楚、1999 年戰爭、1980 年代女總統、1980 年代中期彗星撞地球。Straight Dope 獨立轉錄的這兩句字字相同。",
+      "changed_fields": [
+        "editorial_minutes",
+        "editorial_role",
+        "scope"
+      ],
+      "reason": "研究代理把原卡的『蘇聯先登月、1958 年大戰』刪掉是對的，原文轉錄裡沒有。不同意的是片長。Dixon 一案（原句、兩個退路、後加的外貌、訃聞的說法、四則落空、Paulos）大約 4 分鐘；《辛普森家庭》一案（約 800 集、編劇說『挑出來的』、聖母院假圖、伊波拉書名）不能用畫面，大約 3 分鐘。加起來 6–8 分鐘，撐不住 8–10 的 episode_core。建議改成 chapter，跟 P09（白鯨記與聖經密碼：統計方法的錯）組成『預言怎麼算命中』的題案。DEDUP 已判兩題答案不同，組在同一集不算重複。"
+    },
+    {
+      "id": "P21",
+      "researched_as": "P21",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L10-S023 https://csmonitor.com/1980/0924/092435.html",
+      "reopen_result": "CSM 1980-09-24 轉述 McKusick 與 Shinn 的 Nature 報告：比米尼之路『nothing more exotic than beachrock』；海水富含鈣，海灘岩長得很快，碎玻璃、瓶蓋等垃圾會被包進岩石裡；海灘岩會裂成表面平整的板塊，看起來像採石鋪的路；文中說有一個『vigorous cult』信 Cayce 的說法，認為比米尼是亞特蘭提斯的一部分。這篇沒有寫水深、1968 年的發現，也沒有『68 或 69』的預言原文。自己再搜 Cayce 讀數 958-3：只找到二手網站，年份有 1938 與 1940 兩說。",
+      "changed_fields": [
+        "question",
+        "scope"
+      ],
+      "reason": "研究代理刪掉原卡的半公里長、年代接近，補上海灘岩與浮沙裂開的機制，都對。問題是題目把瓶蓋寫成在路石裡找到，來源只說海灘岩會把垃圾包進去，要改。原卡的鉤子靠『預言剛好對上 1968』，現在沒有可靠來源，所以 T29 這一章的標題要跟著改（見 theme_notes）。"
+    },
+    {
+      "id": "P24",
+      "researched_as": "P24",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L10-S028 https://www.gutenberg.org/cache/epub/2707/pg2707.txt（Hdt. I.74）；L10-S030 https://iep.utm.edu/thales/",
+      "reopen_result": "Macaulay 譯本 I.74：打到第六年，交戰時『suddenly the day became night』；泰利斯事先向愛奧尼亞人預告，『laying down as a limit this very year』，原文沒有日期與方法；兩軍停戰，由 Syennesis 與 Labynetos 促成和議。IEP：『he could not have predicted the Eclipse by using the Saros or the Exeligmos cycles』；同一系列的下一次日食『visible to the west, just under one-third of the circumference of the earth』；約前 650 年亞述天文學家已經用六個月或五個月的間隔篩出可能有日食的月份（Steele）。",
+      "changed_fields": [],
+      "reason": "原卡容易讓人以為希羅多德寫了 585 年 5 月 28 日，研究代理的改正對；『人類第一次預言天象』站不住，改題也對。6–9 分鐘標 chapter，誠實。懷疑派的原著（Dicks、Neugebauer）沒讀到，IEP 作者偏向相信，scope 已經寫『不主張一定有或一定沒有』。"
+    },
+    {
+      "id": "P26",
+      "researched_as": "P26",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L10-S032 https://archive.org/details/notesqueries4111unse_0（djvu 全文）",
+      "reopen_result": "N&Q 4th S. xi 給讀者的回覆欄：『Mother Shipton's Prophecies (4th S. x. 450, 502; xi. 60). — Mr. Charles Hindley, of Brighton, in a letter has made a clean breast of having fabricated the Prophecy quoted at page 450 of our last volume, with some [ten?] others included in his reprint of a chap-book version, published in 1862.』OCR 有錯字，日期欄看得出是 1873 年 4 月 26 日那一期。",
+      "changed_fields": [],
+      "reason": "核心的自承有一手原文，研究代理補上的『1641 年小冊是最早的、內容只有沃爾西』『Head 1684』都有 Harrison 1881 的書支持（作者是唯靈論者，notes 已寫）。『電報』是後人解讀『思想繞地球』，這個改正也對。Vanga 一章只講『沒有文字、出處追不到』，911 與 2016 兩則還沒溯源，scope 已經寫明講之前要補，這個限制要帶進製作票。8–11 分鐘：希普頓這一半素材很多（1641、1684 蒸餾古卷、1862、1873、1879 Ham Hill、1881），撐得住 8 分鐘。"
+    },
+    {
+      "id": "P33",
+      "researched_as": "P33",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L10-S035 https://www.gutenberg.org/cache/epub/79588/pg79588.txt；L10-S036 ScienceDaily GSA 新聞稿；另搜 Etiope 2006 的書目（earth-prints.org handle 2122/2674）",
+      "reopen_result": "普魯塔克（Goodwin 修訂英譯）：地氣『not always of the same kind』；候諭的人等候的房間『sometimes… filled with such a fragrant odor… that no perfumes in the world can exceed it』，像從神殿的泉源升起。GSA 新聞稿：de Boer 找到另一條相交的斷層；泉水裡有乙烷、甲烷、乙烯；約一百年前法國考古學家『failed to find such features』。Etiope 等 2006，Geology 34(10):821–824：氣體是熱成因的甲烷、乙烷、CO2，不利於生成足夠的乙烯；風險較可能是室內 CO2 與甲烷造成缺氧。Live Science 的頁面這次只回標題。",
+      "changed_fields": [],
+      "reason": "研究代理把『女祭司吸甜氣』改回『候諭室的香氣』是對的，原文就是這樣。2001→2002→2006→2007→2008 的爭論鏈有書目與摘要可追，懸念是真的。8–10 分鐘撐得住。古希臘宗教今天沒有成規模的信眾，照史料講、不評價就夠。"
+    },
+    {
+      "id": "M25",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "REJECT",
+      "reason": "同意轉出。這題是科普機制題，又有大量死亡，本系列不畫人以後只剩機制，比較適合姊妹系列。轉過去時死亡人數與莫努恩湖的人數要另查（研究代理只在搜尋摘要看到）。"
+    },
+    {
+      "id": "M28",
+      "agent": "L10",
+      "reviewer": "RD",
+      "verdict": "REJECT",
+      "reason": "同意轉出。答案是鐵的氧化與冰下鹹水，撐不起本系列『流傳版本→紀錄→目前解釋』的三段。原卡的『封住一百多萬年』出自比 2017 年更早的研究，轉出時要另查。"
+    },
+    {
+      "id": "U06",
+      "researched_as": "U06",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "REJECT",
+      "key_source_reopened": "L11-S004 https://www.smithsonianmag.com/science-nature/what-is-on-voyagers-golden-record-73063839/（裸照被否決的主要來源）",
+      "reopen_result": "Smithsonian 回 403，打不開，依規定不繞過。改開其他的：S006 PopSci 讀到，寫『委員會原本想放一張裸體男女照，被迫改成沒有性器的剪影』，也寫了 Here Comes the Sun 的兩種說法；S002 NASA 讀到，有 55 種語言、Amoy (Min dialect) 的英譯、『許多說話者來自康乃爾與附近社區，沒有給講稿』；S003 JPL 讀到，有 Amoy 是中國東部數百萬人講的語言、116 張圖、約六個月；S001 NASA 1977 年新聞稿讀到，寫 60 種語言、115。PopSci 說委員會花了『將近一年』，跟 JPL 的『約六個月』衝突。",
+      "changed_fields": [],
+      "reason": "改正屬實：Amoy 不能說成台灣人、60 改成 55、原卡沒提到的裸照被拒。但這題只撐得起一章 3–4 分鐘。T05 的撤案條件已經成立：《Murmurs of Earth》讀不到；『沒能放進去的歌』只有說法不一；『2001 年麥田回信』找不到可靠來源。剩下 U06 與 U27 合起來只有 5–7 分鐘，所以照題案自己寫的條件轉出。裸照一事目前只靠兩篇轉述，其中一篇這次打不開。"
+    },
+    {
+      "id": "U27",
+      "researched_as": "U27",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "REJECT",
+      "key_source_reopened": "L11-S007 https://news.cornell.edu/node/282623；另開 L11-S008、L11-S009（National Geographic）",
+      "reopen_result": "三份都讀到。Cornell 1999：Campbell 說『純粹是象徵性的，表示我們做得到』；真正的目的是展示新雷達發射機；只發一次、約三分鐘；M13 在兩萬五千光年外；『訊號到時，星團已因銀河自轉移開』。National Geographic 2014（Drake 的女兒寫的）：1,679 = 23×73；先寄給 Sagan 試解，他漏了化學。但同一篇也引 Drake 說：『有人認為兩萬年後星團會移開、訊息會錯過，這不對；只移動一點點，只占發射波束寬度的一小部分。』",
+      "changed_fields": [],
+      "reason": "研究代理在 notes 裡寫『要加上訊號到時 M13 已移開，這才是為什麼寄不到的答案』，但它自己引的 S009 裡，設計者 Drake 明說這是誤解。這是把有爭議的說法寫成答案，要改成『康乃爾的新聞稿與設計者本人說法相反』。只有 2–3 分鐘，T05 撤回後沒有地方放，本質是科普（質數排版），所以轉出。"
+    },
+    {
+      "id": "U01",
+      "researched_as": "U01",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L11-S010 https://www.gao.gov/assets/nsiad-95-187.pdf（GAO）；L11-S011 https://www.gutenberg.org/cache/epub/63659/pg63659.txt（Case Closed）",
+      "reopen_result": "GAO 的 PDF 與產品頁對 curl 都回 403，依規定不繞過，沒讀到；GAO『只找到兩份 1947 年紀錄』與『行政紀錄被銷毀』這次沒有重新核對。Case Closed 讀到：1994 年報告認定是 MOGUL（用聲學感測器偵測蘇聯核試）；『從 1947 到 1970 年代末，羅斯威爾事件基本上沒人提』；屍體的說法到 1970 年代末才出現；許多年的空軍活動被『壓縮』成 1947 年 7 月的兩三天；外星人可能是擬人假人；醫院的屍體說法可能混合了 1956 年 KC-97 墜機（11 人死亡）與 1959 年的載人氣球事故。",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "前提成立，研究代理的改正屬實：Case Closed 的標題、時間壓縮、手寫的 BOGUS。可讀來源扣掉 GAO 還有 Case Closed（官方）、FBI 鏡像、Skeptoid，仍然有兩個以上。重複的風險在已製作的 U02：它已經講過羅斯威爾的基本答案，所以本集的翻轉要放在屍體與假文件。9–12 分鐘撐得起。"
+    },
+    {
+      "id": "U05",
+      "researched_as": "U05",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L11-S014 https://www.dni.gov/files/ODNI/documents/assessments/Prelimary-Assessment-UAP-20210625.pdf",
+      "reopen_result": "dni.gov 對 curl 回 403（2022 年報 S015 也一樣），依規定不繞過，沒讀到。改開其他的：S017 NASA 2023 讀到，GoFast 的高度約 13,000 英尺、時速約 40 英里，等於那個高度的典型風速，並註明沒算風、有不確定性；S016 Black Vault 讀到，有 2020-04-27 正式公開、2017 年 12 月流出、海軍 2019 年 9 月稱三段影片為 UAP。另外找到一篇沒在研究檔裡的二手報導：PopSci 2021-07-01，寫 ODNI 發布、144 件、只有 1 件是 large, deflating balloon、五類。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "reason": "核心（144 件只認出一顆洩氣氣球、資料不足、ODNI 不是國防部）有 PopSci 佐證，影片與 GoFast 兩章有 NASA 與 Black Vault，可讀來源仍有兩個以上，所以不降級。研究代理對原卡的改正屬實：ODNI、UAPTF 轉 AARO、提出 GoFast 計算的是 NASA 不是 AARO。8–11 分鐘撐得起。在世飛行員的處理可以。"
+    },
+    {
+      "id": "U03",
+      "researched_as": "U03",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L11-S019 https://files.ncas.org/condon/text/s3chap05.htm；另開 L11-S018 Haines（Black Vault 鏡像 PDF）",
+      "reopen_result": "兩份都讀到。Condon：華盛頓 1952 年 7 月 19–20 日與 26–27 日；國家機場、安德魯斯、Bolling 三處雷達的軌跡『大致互不相關』；目擊多半是閃爍的星或飛機，但『少數描述不足以辨認，可能是未知』。Borden 與 Vickers『在 1952 年 8 月 13–14 日夜裡』觀測到很像的雷達軌跡，跟著高空風移動、速度是風速兩倍，報告 1953 年發表。Haines：白宮要求說明，空軍很快提出溫度逆增，後來民航局的調查確認；CIA 因此成立研究小組，之後有 Robertson 小組。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "reason": "前提成立，原卡的日期與 Robertson 連結都屬實。研究代理寫錯兩處：觀測年份寫成隔年，懸念的方向也講反。改了之後當一章 3–4 分鐘可以。重複：原來如此事務所的 O3023（晴天的雷達強回波）是科普機制，核心不同。"
+    },
+    {
+      "id": "U23",
+      "researched_as": "U23",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L11-S021 https://archive.org/details/Vol1PlansAndEarlyOperations（_djvu.txt，pp. 283–286）",
+      "reopen_result": "讀到了。03:06 一顆帶紅色照明彈的氣球出現在聖塔莫尼卡上空，四個高砲連開火；高砲煙被探照燈照到，被當成飛機；1,440 發；沒有炸彈、沒有損失；損害來自激動（至少一人心臟衰竭）、燈火管制下的車禍與彈片；海軍說沒有敵機，Knox 2 月 25 日說是虛驚；陸軍的西部防衛司令部與第四航空軍起初都認為沒有飛機，聽證後改說一到五架；Stimson 提了兩種推測；《紐約時報》2 月 28 日的質問；戰後日方說沒派飛機；『氣象氣球可能引發最初的警報』，高砲部隊還因為打太慢的目標被批評浪費彈藥。",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "官方戰史把每一點都寫得很清楚，研究代理的改正（1983 是新印本、陸軍先判斷沒有飛機才改口、『可能』）全部屬實。T06 的撤案條件是『軍方報告或當年報紙讀不到』，並沒有觸發：讀到的是陸軍航空軍的官方戰史，裡面還引了西部防衛司令部的報告與當年三家報紙。4–5 分鐘的章節誠實。平民死亡只提一句，處理可以。"
+    },
+    {
+      "id": "U08",
+      "researched_as": "U08",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L11-S025 https://cdn.centerforinquiry.org/wp-content/uploads/sites/29/1986/10/22165321/p79.pdf；另開 L11-S026、L11-S024",
+      "reopen_result": "三份都讀到。Ridpath 1986：林務員 Thurkettle 說『是燈塔』，Orford Ness 在五英里外，方向正對；Halt 的備忘錄〈Unexplained Lights〉日期是 1981-01-13，裡面寫『27 Dec 80 約 0300』；兔子洞；事件其實是 12 月 26 日，那天凌晨三點前有一顆異常明亮的火流星。Clarke 與國家檔案館 2009 年的導覽 PDF 也打得開。",
+      "changed_fields": [],
+      "reason": "改正屬實：作者與職務、26 日對 27 日、燈塔說的提出者、公開的年份。翻轉清楚：寫錯一個日期，雷達就查錯了晚上。兩方證據都有，懸念也成立，因為 Halt 不接受燈塔說。README 點名它是 U 軸說書版的主角題，8–10 分鐘撐得起。在世軍人只引他們公開的說法，可以。"
+    },
+    {
+      "id": "U19",
+      "researched_as": "U19",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L11-S027 archive.org NewsUK1977UKEnglish：〈Nov 28 1977, The Times, #60172〉_djvu.txt；另開 L11-S028 Fortean Times 24 的 djvu.txt",
+      "reopen_result": "兩份都讀到。《泰晤士報》是 1977 年 11 月 28 日（星期一）出刊：Southern Television 週六晚間新聞被打斷，『昨天』仍不知道來源；IBA 說是英國第一次、『不知道怎麼上了空中』；自稱 Intergalactic Association，講了六分鐘多；收聽範圍北到 Reading，來自 Hannington 發射站（《泰晤士報》寫 Hampshire）。Fortean Times：Asteron／Intergalactic Mission 的轉錄；寫 Hannington, Wilts；每半小時插播澄清；IBA 與郵政局揚言追訴；《世界新聞報》與《每日郵報》寫成『Ashdown 銀河司令部的 Gillon』；《星期日泰晤士報》說找到一名學生。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "reason": "兩份當年刊物都打得開，前提與改名的翻轉成立。研究代理建議當一章或 Shorts，3–4 分鐘誠實，同意。目前沒有題案。不教劫持技術，可以。"
+    },
+    {
+      "id": "U21",
+      "researched_as": "U21",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L11-S029 https://documents2.theblackvault.com/documents/projectbluebook/projectbluebook-levellandufocase-november2-3-1957.pdf；另開 L11-S030 Condon s3chap04",
+      "reopen_result": "兩份都讀到，藍皮書鏡像的 OCR 很差，但關鍵段可讀：『五名目擊者』、2300 到 2400 時；天氣是 400 呎陰天、整段時間有毛毛雨或小雨、『目擊前剛有強烈雷雨』；結論是『可能是球狀閃電』，車輛熄火是分電盤突然受潮，『其中一例確定是分電盤故障』；同一檔案收了 Menzel 說『只在當地待了七小時』，以及民間刊物質疑球狀閃電的平均直徑只有 8 吋。Condon：萊弗蘭這類特別令人困惑的案子，車已不在，無法做磁性檢查。",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "研究代理因為 OCR 差而標 needs_check，我重開後核心句都讀得到，前提成立。翻轉（一天內下的結論、天氣與結論對不上、車已無從驗證）夠一章 4–6 分鐘。原本的地面接觸題案已撤回，目前沒有題案。跟 U18（藍皮書統計）、U40 的核心不同。"
+    },
+    {
+      "id": "U24",
+      "researched_as": "U24",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L11-S031 https://publicdomainreview.org/collections/celestial-phenomenon-over-nuremberg-april-14th-1561/；另開 L11-S032、L11-S033",
+      "reopen_result": "三份都讀到。PDR：Hans Glaser 的傳單、清晨四到五點、全文英譯（『這是什麼意思，只有神知道』、勸人悔改）；『可能是幻日（sundogs）？』，也提了另一個想法（煙火與火箭）；1958 年 Jung《Flying Saucers》；館藏是蘇黎世中央圖書館。HLS：Wick 從 1560 年到去世編了 24 冊對開本 Wickiana，他自己稱作 Wunderbücher。瑞士國家博物館：紐倫堡 1556-05-12 的日暈傳單，是冰晶造成的光環。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "reason": "研究代理把整題標成 needs_check，是因為找不到同儕審查的光學分析，但這題的核心不是光學，是『同一張圖被兩個時代各讀成什麼』，這有足夠的來源。改正屬實：Briefmaler、Wickiana、1958 年。3–4 分鐘的章節正好放進 T21。"
+    },
+    {
+      "id": "U25",
+      "researched_as": "U25",
+      "agent": "L11",
+      "reviewer": "RE",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L11-S034 https://www.archives.go.jp/exhibition/digital/hyoryu/contents/12.html；另開 L11-S035 nippon.com、L11-S036 秋田魁新報",
+      "reopen_result": "三份都讀到。國立公文書館：1698 年（元祿 11 年）5 月三河吉田浦，〈改正甘露草〉記『船首曝著男人的首級，船裡一名女子』；1803 年（享和 3 年）2 月 22 日常陸，〈弘賢随筆〉記船像香盒、長 3 間、上面是玻璃障子、底是鐵板、女子抱二尺見方的箱子、古老說是蠻國王女與私通男子的首級、怕上報花錢又推回海上、記號跟來浦賀的英國船一樣。nippon.com（公開日 2020-06-17，研究檔寫 07-23，要改）：田中嘉津夫起初的俄國捕鯨船假說找不到公文書；目前找到 11 種文書；伴家文書寫『常陸原舎り濱』，見於 1801 年伊能圖。秋田魁新報導言：1867 年小笠原為治抄寫的〈聞書覚及俳諧〉，專家說它『沒有奇談要素、淡淡記錄』。",
+      "changed_fields": [],
+      "reason": "改正屬實：記號是被比作英國船的，不是『沒人認得的文字』；田中沒有下『純屬故事』的結論。懸念真實：外國船難還是故事範本，兩邊都有證據。小修：秋田那份是 1867 年的抄本，nippon.com 的日期要改，都不影響判定。4–5 分鐘的章節正好放進 T21。首級只講不畫、星福寺照當地說法講，處理可以。"
+    },
+    {
+      "id": "U28",
+      "researched_as": "U28",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S001 https://arxiv.org/abs/1509.03622",
+      "reopen_result": "摘要：『aperiodic dips in flux of up to ~20%』；最符合資料的情境是『the passage of a family of exocomet or planetesimal fragments』；整段摘要沒有提外星或人造結構；頁面註明 Accepted for publication in MNRAS，DOI 10.1093/mnras/stw218。",
+      "changed_fields": [],
+      "reason": "原卡把 Boyajian 的發現論文跟 Wright 的 SETI 論文混成一篇，研究代理拆開是對的，翻轉就在這裡。2018 的結論『放軟』也正確。4–6 分鐘，標 chapter，跟 M08 合成 T03。"
+    },
+    {
+      "id": "U29",
+      "researched_as": "U29",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "L12-S006 https://pmc.ncbi.nlm.nih.gov/articles/PMC3691774（Quinn 等 2013）",
+      "reopen_result": "摘要：鳳凰號與 MSL 測到的過氯酸鹽『nonreactive under the conditions of the Viking biology experiments』；過氯酸鈣受 γ 射線照射分解成次氯酸鹽、被困住的 O2、ClO2；『can explain the results of the Viking biology experiments』。全文的保留只在 N-氯甘胺酸的生成量與作用範圍，沒有說這個解釋本身有爭議。",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "研究代理指出原卡把 2008 過氯酸鹽、2010 有機物燒掉、2013 次氯酸鹽三件事混成一句，這個拆法對，而且是這章最好的地方。但 scope 寫『論文自己承認有爭議』跟原文不符，要改。4–6 分鐘，chapter，跟 U41 合成 T04。"
+    },
+    {
+      "id": "U31",
+      "researched_as": "U31",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S010 https://nsarchive2.gwu.edu/NSAEBB/NSAEBB190/",
+      "reopen_result": "國家安全檔案館彙編頁：特別小組（Ruina 小組）報告日期 1980-05-23，結論是訊號『probably not the result of its having detected a nuclear detonation』，另一種解釋是流星體撞到 Vela 衛星；DIA 1980-06-26 的文件說流星體機率低於千億分之一；洛斯阿拉莫斯 Horak 寫『strong evidence』；桑迪亞 Mauth 寫『fully consistent』；NRL 的研究結論是『most probably… nuclear detonation』，而且『has never been declassified』。",
+      "changed_fields": [],
+      "reason": "原卡寫的『可能只是微隕石』，研究代理改成『可能不是核爆、傾向流星體』，口氣對；『2016 後的新落塵研究』改成 2018 年的再分析，也對。8–11 分鐘撐得住：衛星、雙閃光、CIA、Ruina 小組、四個機構的異議、綿羊碘-131、水聲、2018 論文、仍未解密。要提醒站主：題目問的是『誰做的沒有官方答案』，但不點名任何國家；嫌疑國的核武狀態今天仍是國際政治議題，留言區一定會點名。研究代理的 risk 寫法（標題、縮圖、旁白都不點名，不畫國旗，說明欄註明沒有官方結論）夠用，但上片前要站主點頭。"
+    },
+    {
+      "id": "U32",
+      "researched_as": "U32",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S015 https://theorkneynews.scot/2022/06/12/epsilon-bootis-clyde-tombaugh-black-knight-and-sts-88/",
+      "reopen_result": "Lunan 自述：1973 年的翻譯把來源定為牧夫座 ε 星，抵達時間『11,000 BC』（約一萬三千年前）；1974 年發現 1920 年代資料有錯而撤回，1976 年在一篇講長延遲回波的論文裡正式發表撤回；他說黑騎士這個名字『nothing to do with me』；1959／1961 的物體是 Discoverer 5 與 23 的回收艙，因為反推火箭方向錯，進了近極軌；STS-88 的東西是組裝太空站時丟掉的膠帶、保護蓋等碎片。",
+      "changed_fields": [],
+      "reason": "『一萬三千年』出自 Lunan 自己撤回的推算，這是原卡完全沒寫的翻轉，有當事人原話。隔熱毯一點只靠 Lead Stories 轉述 Ross，NASA 目錄只寫太空碎片，scope 已經寫明。5–7 分鐘，chapter。目前沒有題案收它，可以留給『網路傳說拆回原檔』類的題案。"
+    },
+    {
+      "id": "U34",
+      "researched_as": "U34",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S018 https://bportlibrary.org/hc/?p=12951",
+      "reopen_result": "布里奇波特公共圖書館：Bender 1952 年成立國際飛碟局，約 600 名會員；1953 年 10 月最後一期 Space Review 寫『We advise those engaged in saucer work to be very cautious』；《Bridgeport Herald》〈Mystery Visitors Halt Research〉，1953-11-29，記者 Lem M'Collum；Bender 在 1962 年的書裡說那篇報導『filled with errors and exaggerations』；Barker 1956 年的《They Knew Too Much About Flying Saucers》第一次用『Men In Black』；Bender 1962 年的《Flying Saucers and the Three Men》由倫敦 Neville Spearman 出版。",
+      "changed_fields": [],
+      "reason": "原卡把 1956 與 1962 的先後寫反，研究代理改正了；墨鏡沒有出處、刪掉，也對。翻轉清楚：黑衣人是一位編輯的停刊理由，被朋友的書改寫出來的。6–8 分鐘，chapter，目前沒有題案收它。若要撐成一集，研究代理列的待讀資料（Robertson 小組、Space Review 原刊）是對的方向。"
+    },
+    {
+      "id": "U36",
+      "researched_as": "U36",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "L12-S022 https://www.upi.com/Archives/1989/10/11/Soviet-UFO-experts-doubt-nocturnal-space-visit-reported-by-Tass/7209624081600/",
+      "reopen_result": "UPI 1989-10-11：寫稿的塔斯社記者 Lebedev 對 UPI 說他沒有親眼看到，消息來源是『10 youngsters ages 12 to 13』；塔斯社承認報導『may have been a bit too varnished』，特別是『生物定位法』那一段；當地飛碟學會的 Azhazh 對《消息報》說，把這些事連到外星智慧是錯的。",
+      "changed_fields": [],
+      "reason": "翻轉是真的，研究代理比原卡寫得清楚。但讀得到的全是當年的外電（UPI 兩則、Deseret）與 TIME 2014 年的回顧，沒有一手文件或機構來源；塔斯社原電訊、《消息報》、《公社報》都沒讀到。研究代理自己標了 needs_check。THEMES T22 寫明『讀不到塔斯社原電訊就刪』，照這條處理。片長 2–3 分鐘，本來就只夠一段。"
+    },
+    {
+      "id": "U37",
+      "researched_as": "U37",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S025 https://documents.theblackvault.com/documents/ufos/jal1628/733667-001-011.pdf（FAA 1987 公開資料的掃描）",
+      "reopen_result": "FAA 新聞稿：FAA 公開 1986-11-17 日航目擊的文件，『saying it was unable to confirm the event』；技術中心用同型設備判定第二個雷達目標『was not another aircraft but rather a split radar return from the JAL Boeing 747』；改派去攔截的聯合航空客機看到了日航，『but the pilots saw nothing else』；航程『over the polar cap from Iceland to Japan via Anchorage』；機長 1987-01-11 又報告一次；Steucke 說『The FAA is not in the UFO business』。機長陳述提到這趟是從冰島載法國葡萄酒到安克拉治。",
+      "changed_fields": [],
+      "reason": "原卡的『巴黎飛東京』『經由公開紀錄申請流出』，研究代理改成『冰島經安克拉治飛日本』『FAA 自己主動公開』，跟原件對得上；調職只有二手來源、拿掉，也對。8–10 分鐘：有逐字稿、雷達、機長陳述、軍方回波、第二次目擊、木星說，撐得住一集。"
+    },
+    {
+      "id": "U38",
+      "researched_as": "U38",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S028 https://www.gutenberg.org/ebooks/17346（Ruppelt 1956，讀 cache 全文）",
+      "reopen_result": "Ruppelt 原文：『Officially all of the sightings, except the UFO that was picked up on radar, are unknowns. Personally I thought that the professors' lights might have been some kind of birds reflecting the light from mercury-vapor street lights, but I was wrong.』接著說一位科學家架了整套儀器、花幾個月找到一種『very commonplace and easily explainable natural phenomenon』，而他『promised the man complete anonymity』。另有鴴鳥那段：獵場管理員說鴴鳥通常不成群飛。",
+      "changed_fields": [],
+      "reason": "原卡寫『空軍的結論是鳥』，這是錯的：那是 Ruppelt 的個人猜測，他自己收回了，官方列為不明。研究代理改對了，翻轉也更好（『有人知道、沒寫出來』）。4–7 分鐘，chapter，維持在 T22。藍皮書的拉伯克原卷要在製作票補讀。"
+    },
+    {
+      "id": "U39",
+      "researched_as": "U39",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S028 Ruppelt 1956（Gutenberg）；L12-S030 藍皮書 Mantell 卷沒有重開（93 頁 OCR）",
+      "reopen_result": "Ruppelt：記者會上的少校『had evidently conjured up 'they' and 'their later report'』來撐金星說；Hynek 為 1949 年那份措辭含糊的報告道歉；Hynek 算出金星當天『only six times as bright as the surrounding sky』，幾乎不可能看到，所以不認為是金星；塔台描述（降落傘、冰淇淋甜筒、圓的）都符合氣球；Skyhook 當年是高度機密，沒有人去查放飛紀錄。",
+      "changed_fields": [],
+      "reason": "金星、1949 含糊、1952 Skyhook 這條改判鏈，有 Ruppelt 的原書支持；『三架緊急升空』改成『四架途經、三架轉向』，『海軍氣球』只見於二手，研究代理的處理都對。『金屬的、巨大的』只有一個證人的版本，這是好懸念。說書版 9–12 分鐘，有分鐘級時間線，撐得住。死亡事件的 risk 寫得夠：不畫墜機現場、不用卷內的現場照片。"
+    },
+    {
+      "id": "U40",
+      "researched_as": "U40",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S032 https://documents2.theblackvault.com/documents/projectbluebook/ProjectBlueBook-Socorro-NewMexico-04-24-1964.pdf（下載 PDF 讀文字層）；L12-S034 Skeptoid #582",
+      "reopen_result": "藍皮書卷：他第一眼看到『one or two figures in coveralls』，『This is the only time he saw these figures』；只有降落點的淺凹痕（shallow depressions）；雷達沒有異常回波；土樣沒有高於正常的輻射；燒過的灌木驗不出推進劑；『Air Force conclusion: 'Unknown'. The AF is continuing its investigation and the case is still open.』Skeptoid：Zamora 2009 年過世；Colgate 在 Pauling 1968 年來信的底部手寫『I have good indication of student who engineered hoax. Student has left.』；『A candle in a balloon』是 2012 年電郵裡的話；從來沒有學生被點名。",
+      "changed_fields": [],
+      "reason": "原卡的『兩個穿白衣的小小身影』『四個壓痕』，研究代理改回卷內原文，對；空軍結論原文就是『Unknown』加『案子仍未結』，比原卡寫的更準。Colgate 附註的年份有 1965／1968 兩說，notes 已註明。說書版 9–12 分鐘撐得住。不點名任何學生的 risk 寫法正確。"
+    },
+    {
+      "id": "U41",
+      "researched_as": "U41",
+      "agent": "L12",
+      "reviewer": "RD",
+      "verdict": "ADOPT",
+      "key_source_reopened": "L12-S036 https://pubmed.ncbi.nlm.nih.gov/8688069/；L12-S038 ScienceDaily 2009",
+      "reopen_result": "McKay 等 1996 摘要：新鮮斷面有大量 PAHs、碳酸鹽小球；小球裡有單磁區磁鐵礦與硫化鐵；『Although inorganic formation is possible, formation… by biogenic processes could explain many of the observed features』；結尾是『could thus be fossil remains』。2009 年 JSC 新聞稿：Gibson 說『the biogenic hypothesis is stronger now than when we first proposed it 13 years ago』；反方認為磁鐵礦可以由實驗室加熱碳酸鹽做出來（新聞稿沒點名是誰）。",
+      "changed_fields": [],
+      "reason": "論文用的是『could』，研究代理寫成『可能』，對；『白宮草坪』沒有出處、刪掉，也對。總統聲明比期刊早九天，是一個可用的小翻轉。5–7 分鐘，chapter，跟 U29 合成 T04 剛好約 9–13 分鐘。"
+    },
+    {
+      "id": "N203",
+      "agent": "L8",
+      "reviewer": "RC",
+      "verdict": "RECHECK_SCREENED",
+      "key_source_reopened": "L8-S027 https://www.dhi.ac.uk/api/data/oldbailey_record_single?idkey=t18040111-79；L8-S028 https://www.digitalpanopticon.org/life?id=obpt18040111-79-defend810",
+      "reopen_result": "都打開了，陪審團與法官那段逐字確認：『The Jury retired for about three quarters of an hour, when they returned a verdict of Manslaughter. The Lord Chief Baron informed them, that according to law, he could not take that verdict… they must either find the prisoner guilty, or not guilty, generally, there being no circumstance in the case that could reduce it to manslaughter… the prerogative of shewing mercy lay in the Crown. The Jury immediately pronounced the prisoner GUILTY, Death, aged 29. First Middlesex Jury, before the Lord Chief Baron.』其他細節也對得上：Locke 說傳聞『for five weeks previous』；守夜人說居民驚恐『About six weeks or two months』，也追過一個甩掉白布就跑的人；Thomas Groom 在墓園被人從墓碑後掐住喉嚨；Mrs. Fulbrooke 自稱『related by marriage to the deceased』，勸他『put on your great coat』；死者是『A bricklayer』。Digital Panopticon：1804 年 2 月 2 日暫緩執行（Sentence respited），7 月 12 日『Remission of prison sentence』。"
+    }
+  ],
+  "rechecks": [
+    {
+      "id": "N106",
+      "verdict": "KEEP_NEEDS_CHECK",
+      "key_source_reopened": "L6-S041 https://www.publicsafety.gc.ca/lbrr/archives/rcmp-rrcmp-1931-eng.pdf",
+      "reopen_result": "重開 1931 年騎警年報（pdftotext）：Angikuni、Kelleher、Labelle 0 筆；『Sergeant J. Nelson, The Pas』出現在人口普查分工段落。研究代理的檢索結果可重現。",
+      "reason": "『1931 年騎警調查認定是捏造』仍只有後來的轉述（Colombo 1988、Whalen 1976 一系），L6-S042 也可能同源；年報沉默只能證明沒寫進年報，不能證明有或沒有那份調查。維持 needs_check、留候補。劇本若要用，只能寫『據後來的轉述』，可加『騎警當年的年度報告沒有提到這件事』（我只核對了 1931 年度，1930、1932 靠研究代理），不要把沉默講成證據。升級條件不變：LAC 的 RG18 檔號或 1931 年 1 月的加拿大報紙原文。"
+    },
+    {
+      "id": "N203",
+      "researcher_result": "screened",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "premise_status": "screened",
+      "key_source_reopened": "L8-S027 https://www.dhi.ac.uk/api/data/oldbailey_record_single?idkey=t18040111-79；L8-S028 https://www.digitalpanopticon.org/life?id=obpt18040111-79-defend810",
+      "reopen_result": "都打開了，陪審團與法官那段逐字確認：『The Jury retired for about three quarters of an hour, when they returned a verdict of Manslaughter. The Lord Chief Baron informed them, that according to law, he could not take that verdict… they must either find the prisoner guilty, or not guilty, generally, there being no circumstance in the case that could reduce it to manslaughter… the prerogative of shewing mercy lay in the Crown. The Jury immediately pronounced the prisoner GUILTY, Death, aged 29. First Middlesex Jury, before the Lord Chief Baron.』其他細節也對得上：Locke 說傳聞『for five weeks previous』；守夜人說居民驚恐『About six weeks or two months』，也追過一個甩掉白布就跑的人；Thomas Groom 在墓園被人從墓碑後掐住喉嚨；Mrs. Fulbrooke 自稱『related by marriage to the deceased』，勸他『put on your great coat』；死者是『A bricklayer』。Digital Panopticon：1804 年 2 月 2 日暫緩執行（Sentence respited），7 月 12 日『Remission of prison sentence』。",
+      "changes": {
+        "hook": "『一個稅務員在暗巷開了槍』：Smith 的職業在這兩個來源裡都沒有出現（我在全文找過 excise 等字，沒有）。要補可讀來源，否則改成『一個加入巡夜的年輕人』。死者是泥水匠（bricklayer），有一手紀錄。",
+        "answer_target": "傳聞多久，兩位證人說法不同（Locke：五週；守夜人：六週到兩個月），寫『一個多月』或兩說並陳。7 月 12 日那筆的著錄是『監禁刑期的減免』，所以只說『後來獲赦減刑』，不講具體刑度。"
+      },
+      "reason": "R2 降級的唯一理由，是老貝利紀錄打不開。現在 dhi.ac.uk 的同一筆紀錄讀到全文（oldbaileyonline.org 只回前端程式殼，研究代理沒有繞過），核心對話逐字成立。加上 Digital Panopticon，共兩個可讀來源，其中一份是一手庭審速記。可選入。翻轉清楚：陪審團想輕判，法官依法不准，最後由王室赦免。8–10 分鐘撐得住：巡夜、白布、墓園、勸換大衣、審判、赦免。禁區：1804 年的槍擊，不是近年命案；不畫中彈與遺體，risk 已寫。只要修 hook 的職業一處。"
+    },
+    {
+      "id": "N165",
+      "researcher_result": "drop",
+      "verdict": "REJECT",
+      "disposition": {
+        "disposition": "drop",
+        "reentry": "讀到 Holst 1993 年《PC Professional》原文，或用館藏紀錄證實這本雜誌與作者不存在，或讀到 Clausen 1954《Insect Fact and Folklore》第 24 頁，三者有一就以 Shorts 重提，主題是『闢謠的出處也要查』。",
+        "transfer_to": ""
+      },
+      "key_source_reopened": "L8-S026 https://www.snopes.com/fact-check/swallow-spiders/",
+      "reopen_result": "打開了。Snopes 現行頁仍然說：1993 年《PC Professional》專欄作家 Lisa Holst 為了示範網路假知識，自己編了一串『事實』，其中八隻蜘蛛那條取自 1954 年一本昆蟲民俗書；參考書目列 Holst, 'Reading Is Believing', PC Professional, 7 January 1993, p.71，以及 Clausen 1954 p.24。頁面上沒有任何『承認是玩笑』、更正或撤回的文字（我搜過 hoax、joke、correction、retract、fabricat）。",
+      "reason": "同意研究代理判 drop。題卡的翻轉『連 Snopes 給的出處也是編的，Snopes 後來承認』在 Snopes 原頁找不到，只剩 Mental Floss 一家的二手轉述。拿掉這一層以後，剩下『沒有紀錄、生理上不合理』，加上一個沒人讀到原文的出處，只有 3–5 分鐘，也沒有兄弟題可併。"
+    }
+  ],
+  "theme_notes": [
+    {
+      "theme": "README §F 軸與 G 軸（F01 試播稿）",
+      "note": "README 的 F01 示範開場有三處跟 1812 年初版不合：(1)『把腳趾切掉吧，當了王后你就不用走路了』這句台詞是 1819 年第二版才有的，1812 年母親說的是『痛一下沒關係，很快就好，你們有一個會當王后』；(2) 1812 年是金、銀拖鞋，不是『玻璃鞋』（玻璃鞋出自佩羅）；(3) 1812 年先切腳跟的是大姊。試播票 2026-10-26-curio-f-and-g-pilot-f01 的稿子要照 F01 的 legacy_update 改。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T12",
+      "note": "四題都可以選入。F07 那一章的『吻是後來的改編』沒有來源，要改成『格林德文版每一版都是摔牆；1823 年第一本英譯改成睡三夜』，不講吻是從哪裡來的。F02、F04 兩章都講『生母改成繼母』，但年份不同（1819 年、1840 年）；結檔可以接 1819 年前言『刪掉不適合兒童的說法』。四章研究估計 11–15 分鐘，加上開場與結檔會超過 13 分鐘，要照題案的秒數壓。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T13",
+      "note": "F12 是 NEEDS_CHECK，藍鬍子那一章照刪段條件只講故事本身，加上鑰匙、安妮姊姊與兩首教訓詩，不講吉爾·德·雷。F05 那一章要說清楚：獵人是後來加上去的（1800 年蒂克，1812 年格林），不是被刪掉的；所以結檔『被刪掉的都是什麼』要改成『被加上與被刪掉的都是什麼』。F06 那一章可以講『佩羅版沒有吻』，跟 T12 不重複。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T14",
+      "note": "三題都選入，題案成立。F09 的『送印前的那封信』查到了：1837 年 3 月 25 日寫給 Edvard Collin 的信，見丹麥皇家圖書館的校勘本。F10 有安徒生本人的文字（1869 年 7 月 21 日給布蘭戴斯的信），刪段條件不必啟動，可以保留 120 秒。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T16",
+      "note": "三題都選入。開場的『1220 年前後』沒有讀到來源，改成『13 世紀前半』。雷神之鎚那一章要補上 Købelev 符文墜飾（『這是一把鎚子』），不要只講蒼蠅；蒼蠅是不是洛基，原文只是暗示。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T17",
+      "note": "三題都選入。茶攤那一章的『過世一百多年後』改成『一百六十年以上』。茶攤的出處已經查到（鄒弢《三借廬筆談》，魯迅說是『委巷之談』），刪段條件不必啟動。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T18",
+      "note": "F26 是 NEEDS_CHECK，F27 選入。只剩芳一一章（3–5 分鐘）撐不起一集，題案要等 F26 補到遠田勝的原書或論文才能排。T18 的問題『故事是從誰那裡聽來的』，F27 給了一個很好的答案：八雲是讀《臥遊奇談》（1782），由妻子節讀給他聽，不是聽民間口傳。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T19",
+      "note": "F28、F37 選入。『四谷怪談：1825 年的劇本』那一章寫了『更早的四谷雜談』，研究沒有讀到，要拿掉，改講『劇本裡的阿岩』對照『神社說明裡重振家業的阿岩』。開場的『到今天還要去拜』只有雜誌支持，要寫成『習俗說』。兩章各 3–5 分鐘，下限加起來不到 8 分鐘，建議把 F38 薔花紅蓮傳（4–7 分鐘，同樣是『真案原型是誰說的』）併進來當第三章，題目改成『東亞三個怪談的原型，各是誰說的？』。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T20",
+      "note": "F29、F30 選入。竹取那一章原本是『五道難題』，五個求婚者這次沒有逐條核對，建議改成『富士山的名字：士兵很多，不是不死』，翻轉更強也已查證。浦島那一章補上《萬葉集》版沒有烏龜，這一點只靠一個來源。F29 原本的標題『世界最早的科幻小說』已經拿掉。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T27",
+      "note": "G04 選入，有兩處要改。(1) 開場『一塊板子拼出自己的名字，專利局官員要他們當場示範』：照 Smithsonian 引的後代說法，示範時板子拼出的是審查官的名字，『Ouija』這個名字是另一次問出來的；這段要標成『創辦人後代的說法』。(2)『法拉第的機關：他在桌面下藏的東西』不對：裝置是放在桌面上、手底下的幾層紙板，加一根看得見的指針槓桿，沒有藏在桌下的東西；而且他沒有指控任何人作假，信裡說參加的人是誠實的人。另外，專利說明書本身就寫了『Ouija or Egyptian luck-board』，可以當畫面。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T32",
+      "note": "兩題的研究都推翻了題案原本的論點『英雄的道德理由是後人補的』。F11：1734 年的傑克根本沒有偷東西；Tabart 版補上父仇，1890 年雅各斯又把它刪掉。F33：『濟貧』在 15 世紀的《事蹟》就有，後來才加上的是貴族身分（16 世紀末 Munday）。題案要改成『傑克與羅賓漢：英雄的身分與理由，是哪一版加上、哪一版拿掉的？』。F33 是 NEEDS_CHECK，補到第二個來源之前，這個題案不排；F13 穿長靴的貓（騙子主角）可以考慮放進來，當第三章。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T10",
+      "note": "G02 是 NEEDS_CHECK。1869 年那一章的核心『Dowling 法官以檢方沒證明手法為由，不送大陪審團、當庭釋放（不是無罪判決）』，目前只有 loc.gov 的報紙支持，覆核時被機器驗證擋住。補到可讀來源之前，這一章只能講照片本身（白宮歷史協會、哈佛館藏），照片年代要並列 1872 年與 1870 年代。",
+      "reviewer": "RA"
+    },
+    {
+      "theme": "T09",
+      "note": "三題都已 screened，撤案條件（讀不到樹輪論文）已解除。要改三處：(1) 第三章『語言學家看出的 19 世紀方言』沒有來源支持方言細節，改成『1899 年專家判假、1910 年州歷史學會判真、Williams 指出內容照抄《格陵蘭人薩迦》』；(2) 第五章標題『一次太陽風暴定出的年份』改成『一次宇宙射線事件定出的年份』，並說明 1021 是砍樹年不是抵達年；(3) DEDUP 裡 H37/H38 那列的『墨水與方言』改成『墨水 vs 敘事來源』。三題研究標的片長加起來 14–20 分鐘，照題案 11 分鐘要剪，石碑段壓到 120 秒以內。",
+      "reviewer": "RB"
+    },
+    {
+      "theme": "T23",
+      "note": "H18 已 screened（含 M01、L04）。第五章『失蹤率真的比較高嗎』的保險說法查不到原始來源，照刪段條件併進上一章，改用 NOAA 頁。第六章魔鬼海已有氣象廳與水路協會的一手紀錄，保留；『魔鬼海』一詞的起源只有 Skeptoid，講成『目前找到最早的是 1970 年代初的英文刊物』。第四章寫『1964 年的雜誌讓這個詞流行』，不寫『才出現』。",
+      "reviewer": "RB"
+    },
+    {
+      "theme": "T28",
+      "note": "G08、G18 都 screened；撤案條件（Price 與學會的關係只有二手轉述）已解除：SPR 自己的百科寫了 1956 年報告的結論與原句。但 1969 年 SPR 的 Proceedings 也刊了 Hastings 替 Price 辯護，所以『被自己的學會質疑』要補成『學會先質疑、後來又刊出辯護』，結檔不能只講一面。G18 的毛是 Price 轉給 Huxley、再交 Duncan 鑑定，不是 Price 自己帶回，開場『1935 年一撮毛』照這個寫。",
+      "reviewer": "RB"
+    },
+    {
+      "theme": "T29",
+      "note": "H25 screened，180 秒一章成立；『1960 年代被讀成南極』的起點是 1960 年空軍中校的回信、1966 年 Hapgood 出書，章節照這個寫，不說『軍方證實』。",
+      "reviewer": "RB"
+    },
+    {
+      "theme": "T08（不存在）",
+      "note": "DEDUP 說 H29 要跟 H15 排成題案 T08，但 THEMES.md 現在沒有 T08。H29 研究結果足以單獨成集（8–10 分鐘），但要避開已製作的 H06 安娜塔西亞結構：以心臟兩百年的流轉當骨幹，DNA 只當最後兩章。要不要補回 T08，請排程時決定。",
+      "reviewer": "RB"
+    },
+    {
+      "theme": "T30",
+      "note": "不在題案裡，但 H31 熱沃當野獸的答案（報紙一年刊近百篇、把狼害做成全歐怪獸）跟 T30『報紙怎麼造出一隻怪物』同一個新理解；核心答案不同（真有攻擊的狼害 vs 目擊傳說），不算重複。H31 單獨成集較好；若 T30 的 L31、L33、L34 查不到原報紙而要撤案，可考慮用 H31 補。",
+      "reviewer": "RB"
+    },
+    {
+      "theme": "T10",
+      "note": "L28 可選入，章節成立。改兩處：(1)『柯南道爾的文章』其實是兩篇（1920 年 12 月刊前兩張，1921 年 3 月刊後三張），1922 年才出書；(2)『她們仍堅持的一張』改成『Frances 一直堅持是真的第五張』，並說明博物館期刊認為第五張是重複曝光。只有 Frances 堅持，Elsie 1983 年的信說全部是她編的。G02、G19 不在我負責的範圍。",
+      "reviewer": "RC"
+    },
+    {
+      "theme": "T11",
+      "note": "撤案條件『1907 年小說查不到原書』已經解除：原書在 Gutenberg，我重讀確認。但『1907 年的一本小說：最早把星期五和十三綁在一起的文件』這一章的說法錯了。1869 年的羅西尼傳記已經把兩個迷信放在同一句；1901、1905 年報紙已經用合成說法；小說自己還說它是『傳統』。章名改成『1907 年的小說，自己說這是傳統』，新增理解改成『小說是放大器，不是起點；目前能追到 19 世紀後半』。聖殿騎士那章，查到的只有 1307 年 10 月 13 日逮捕這件事；這個連結何時開始流行沒有來源，建議縮到 60 秒。L06 只有 4–6 分鐘，加上 L14，片長仍落在 8–10 分鐘。",
+      "reviewer": "RC"
+    },
+    {
+      "theme": "T30",
+      "note": "三題都可選入（L31、L33、L34），但撤案條件『原報紙讀不到的少於兩案就撤回』按字面已經成立：只有 L34 讀到原報（1909-01-23 威明頓《Evening Journal》與詢問報的檔案）；L33 只有州檔案館的剪報標題清單，沒有內文；L31 的 1838 年報紙一篇都沒讀到。站主要二選一：補讀 1838 年《泰晤士報》或 1966 年《Point Pleasant Register》其中一份；或把條件改成『至少兩案有原報或檔案館剪報紀錄』，這樣 L33 的標題清單可以算。章節也要改：(1) 1909 那章的『學校停課』沒有可靠來源，刪掉，改成『報紙互相跟進、宣傳人員的袋鼠』；(2) 1838 那章的『市長的發言』只靠一篇無註腳的 Substack，改成『《泰晤士報》替它取名，小說替它加翅膀』；(3) 結檔『報導停了，怪物也就消失了』只適用 L34；L31 與 L33 後來都還在流傳（小說、1975 年的書、電影），要改寫成『每換一種媒體就換一次樣子』。片長：L31 5–7、L33 5–7、L34 8–10，撐 12 分鐘沒問題。",
+      "reviewer": "RC"
+    },
+    {
+      "theme": "T31",
+      "note": "L21 可選入；L38 我判可選入，但撤案條件『政府報告原文讀不到就撤回』在字面上還沒有滿足。不過，已經有三份可讀材料：下議院議事錄（一手，部長在國會講調查結果與頭骨的來歷）、1995 年 AP 電稿、研究者附上的報告掃描頁。建議站主把條件改成『有官方一手紀錄記載報告結論即可』，就保留 T31。章節要改：(1)『寺院的頭皮、博物館的毛』改成『寺院聖物上的皮、博物館標本上的牙』，狗牙出自梅斯納博物館的標本；(2)『與「無法證明不存在」』要說清楚，這是報告一開始就承認的方法限制，結論是『找不到大貓存在的證據』。另外建議加入 L32 當第三章：2004 年德州的卓柏卡布拉經 DNA 鑑定是疥癬郊狼，正好接上『證據送去驗』這條線。這樣 L21 5–7、L38 4–6、L32 6–8，片長更穩，也可以把 9:00 的估計拉到 10–11 分鐘。",
+      "reviewer": "RC"
+    },
+    {
+      "theme": "T33",
+      "note": "兩題都成立，『一個一半是真的，一個是假的』這個框架可以留。改兩處：(1)『今天還留著什麼』來源只到 1960 年代與 1961 年公約，章節要寫成『至少到 1960 年代還在用古柯葉萃取物，國際公約為此留了條款』，不能說『今天』；(2)『Nast 的週刊漫畫與 1930 年代的廣告』中間少了關鍵一環：1896 年《Puck》的彩色封面已是紅衣白毛邊，而 Nast 的週刊原刊是黑白木刻。紅衣不能算在 Nast 頭上。排程：L20 要跟原來如此事務所的 B03（可口可樂配方保險庫）錯開。",
+      "reviewer": "RC"
+    },
+    {
+      "theme": "T34",
+      "note": "兩題都可選入，但都要改。L05 4–5 加 L19 4–5，共 8–10 分鐘，剛好壓在 8:00 的下限，沒有餘裕。章節要改：(1)『搭便車的鬼：每個國家都有的版本』補上西班牙塔拉戈納 40 個版本，以及從警告變成凶兆的轉變，這是 L05 唯一有同儕審查支撐的翻轉；(2)『浴缸裡的冰塊：1990 年代的轉寄信，與警方為什麼找不到一件真案』，轉寄信是 1997 年的大學生版本，『警方』只讀到拉斯維加斯的警方、驗屍官與救護車公司，不能講成各國警方。Brunvand 說最早的報紙紀錄是 1991 年、地點紐約，而 Daily Bruin 說紐奧良版已流傳十多年，兩說並陳。",
+      "reviewer": "RC"
+    },
+    {
+      "theme": "G15（DEDUP 註記）",
+      "note": "L01 仍然是 NEEDS_CHECK，只能當 G15 的一章。研究代理新加的『軍營鬼故事』翻轉要拿掉：只有一通匿名來電，內容還牽涉日治時期活體實驗的說法。而且林美容自己的分類就把紅衣小女孩算成魔神仔，跟 G15 的論點一致，不構成翻轉。",
+      "reviewer": "RC"
+    },
+    {
+      "theme": "（未排題案）",
+      "note": "可選入但沒有題案的題：L24（8–10，可單做）、L30（8–10，可單做）、L29（6–8）、L23（5–7）、L02（4–6）、L32（建議併入 T31）。L23（倫敦塔烏鴉是 1880 年代才有紀錄）和 L06 都屬於『傳統比你以為的晚』，可以考慮跟 L06 或 L25 排一集，或另開題案；L29 要找一個『兩份中世紀紀錄怎麼讀』的兄弟題，L30 也可以當那一集的核心。",
+      "reviewer": "RC"
+    },
+    {
+      "theme": "T01",
+      "note": "M26 那一章『1996 年交給生物學家』是錯的，改成：1992 年漁業局先錄鯡魚、判定不像（1993 年連水母也排除）→1994 年水貂先破了另一種聲音→1999 年參考調查錄到鯡魚群→2000 年 2 月委員同意，61 次接觸降評。刪段條件『查不到瑞典官方承認的文件就刪』已經達成（SOU 2001:85），可以拿掉。M26 的素材多於 150 秒，建議放 180–210 秒，結檔縮成 60 秒。M23 那一章把『1989 年起每年錄到』改成『1989 年首次注意、1992 年起追蹤 12 年』，再加一句『最孤單是報導加的；康乃爾的 Clark 說別的鯨聽得見牠』。",
+      "reviewer": "RD"
+    },
+    {
+      "theme": "T03",
+      "note": "U28 那一章『論文自己列出的自然解釋，與媒體只記住的那一句』要改：那一句不在 Boyajian 的論文裡，出自 Wright 等人另一篇 SETI 論文與 The Atlantic 的訪談。結檔『兩篇論文的原句放在一起』正好可以用：Boyajian 摘要偏向彗星碎片，Wright 自己說外星是最後的選項。待補證據裡的『2018 斥候星加速度論文』跟 U28 無關，U28 用的是 2018 ApJL（arXiv 1801.00732）。",
+      "reviewer": "RD"
+    },
+    {
+      "theme": "T04",
+      "note": "『維京號：後來的過氯酸鹽』要拆成三件事：2008 年鳳凰號找到過氯酸鹽；2010 年 Navarro-González 講的是 GCMS 為什麼找不到有機物；2013 年 Quinn 等人的輻射分解成次氯酸鹽，才接得上 LR 的放氣。刪段條件『過氯酸鹽的論文讀不到就併進上一章』已經達成（PMC 全文讀得到）。『火星隕石：白宮草坪上的談話』要改名，例如『火星隕石：總統聲明比期刊早九天』；地點與聲明原文都沒有來源，只講 1996-08-07 發表聲明。『四項證據』改成論文的寫法：PAHs、碳酸鹽小球、磁鐵礦與硫化鐵，加上像細菌的形狀。結檔加 2009 年 JSC 仍主張生物說、2022 年非生物有機合成。",
+      "reviewer": "RD"
+    },
+    {
+      "theme": "T22",
+      "note": "U38 那一章『空軍說是鳥，學生的照片怎麼辦』要改：鳥是 Ruppelt 的個人猜測，他 1956 年說自己猜錯了，官方列為不明，而且他說有一位匿名科學家知道答案。四位教授，不是三位。U36 照這個題案自己寫的條件（讀不到塔斯社原電訊就刪）處理：本次覆核判 NEEDS_CHECK，先刪，或縮成 30–60 秒的插話（『寫稿記者說消息來源是十個孩子』）。剩 U15、U16、U38 三題，照撤案條件改成約 10 分鐘。",
+      "reviewer": "RD"
+    },
+    {
+      "theme": "T26",
+      "note": "『希普頓媽媽：16 世紀的女預言家』改成『最早的紀錄是 1641 年的小冊，只講沃爾西』；『1862 年：編輯承認是自己寫的』改成『1862 年 Hindley 的重印本加料、1873 年在 Notes and Queries 自承』，承認的是那首詩加上約十則；『汽車與電報』改成『無馬之車、思想繞地球』，電報是後人解讀。保加利亞那一章『那些預言最早出自哪則報導』目前答不出來：911 與 2016 兩則都還沒溯源，只能講『她沒有留下文字，危機時冒出的句子追不到出處』，不舉具體例子，除非製作前補到最早出處。研究代理估 8–11 分鐘，比題案寫的 8–9 寬，可以把題案範圍放到 8–10。",
+      "reviewer": "RD"
+    },
+    {
+      "theme": "T29",
+      "note": "『1968 年比米尼：預言與一排石頭』這一章靠預言撐鉤子，但 Cayce『68／69』的原文與 1968 年的發現者都沒有可靠來源（只有二手網站，年份還有 1938 與 1940 兩說）。讀不到 A.R.E. 的讀數原文，就改名為『比米尼：直線的石頭與包進瓶蓋的岩石』，不提預言對上 1968 年。『巴格達電池：倒進酸液就能發電？』的說明改成『1936 年出土、1938 年 König 的說法、0.8–2 伏的複製品、出土脈絡，以及 2026 年 Bazes 的 1.4 伏新實驗』，要講清楚 Bazes 主張它是電池，只是接受儀式脈絡。",
+      "reviewer": "RD"
+    },
+    {
+      "theme": "（無題案）",
+      "note": "P14 建議跟 P09（白鯨記與聖經密碼）組成『預言怎麼算命中』的新題案：Dixon（選擇性記憶）、辛普森家庭（分母很大）、聖經密碼（統計方法的錯），三個答案不同。P14 單獨只有 6–8 分鐘。U32、U34 都是 chapter，目前沒有題案收，可以留給『網路傳說的作者鏈』類題案。M31 轉 Shorts。",
+      "reviewer": "RD"
+    },
+    {
+      "theme": "T05",
+      "note": "同意撤回。題案自己的撤案條件已經觸發：《Murmurs of Earth》讀不到。另外，『沒能放進去的歌』只有說法不一（Ferris 否認）；『2001 年麥田裡的回信』找不到可讀的一手來源；剩下 U06（3–4 分鐘）加 U27（2–3 分鐘）只有 5–7 分鐘，撐不到 8 分鐘。照條件把 U06、U27 一起轉原來如此事務所。還有一點：U27 研究稿說『訊號到時 M13 已移開，這才是寄不到的答案』，跟它自己引的 Drake 訪談相反，轉出時要一併改。",
+      "reviewer": "RE"
+    },
+    {
+      "theme": "T06",
+      "note": "不同意撤回。撤案條件是『U23 的軍方報告或當年報紙讀不到』，並沒有觸發：研究代理讀到陸軍航空軍官方戰史第一卷 pp. 283–286，裡面引了西部防衛司令部的報告、Knox 與 Stimson 的說法，還有三家報紙的社論，我重開後逐點都對得上。片長：U23 約 4–5 分鐘、U03 約 3–4 分鐘，加上開場 60 秒、結檔 90 秒，正好是題案原本的 10 分鐘算法，不是灌水。建議把估計改成 9:30（範圍 8:30–10:30）。要改的地方：(1) 『可能無聊的地方』寫要用 1952 年 7 月 29 日空軍記者會推進，但記者會逐字稿沒讀到，改用民航局 Borden 與 Vickers 1952 年 8 月 13–14 日的重現觀測、加上 Condon 1969 年的重算來推進；(2) U23 的探照燈照片修圖只有兩篇部落格，列為刪段條件；(3) 結檔『目標是誰製造的』可以用兩案都有的同一句：高砲部隊被批評『打的目標慢到不可能是飛機』，Condon 也說雷達光點跟著高空風移動。",
+      "reviewer": "RE"
+    },
+    {
+      "theme": "T01",
+      "note": "M07 那一章的章名〈Bloop：比藍鯨還大的聲音〉要改：NOAA 兩頁都沒有藍鯨的比較。章內的『冰架』要改成『冰山破裂』。刪段條件『冰震的對照錄音找不到就縮成 90 秒』已經可以拿掉：PMEL 頁有冰震與冰山裂開的錄音和聲譜。用到的題這一行可以把 M07 改成入選。整集能不能成立，還要看 M23、M26（不在我的範圍）。",
+      "reviewer": "RE"
+    },
+    {
+      "theme": "T03",
+      "note": "題案的論點『論文裡一句保守的可能性被媒體放大』不適用 M08。Bialy 與 Loeb 2018 的討論段用一整段論證『外星光帆碎片』能解釋多項異常，再提出『更奇特』的刻意探測器，摘要也提到星際探測器。M08 那一章與結檔要改成『論文提出幾種可能，媒體只記住最奇特的那一種』，不能說論文只寫了一句。Loeb 在世，引用要完整。",
+      "reviewer": "RE"
+    },
+    {
+      "theme": "T21",
+      "note": "U24、U25 都可以排入，T21 不必縮短。撤案條件『虛舟的江戶隨筆讀不到』沒有觸發：國立公文書館的〈弘賢随筆〉圖版與解說打得開，還多了 1698 年三河的〈改正甘露草〉，可以當對照。要改的章節文字：(1) 1561 那章的『印刷匠』改成『寫字畫匠（Briefmaler）Hans Glaser』，『今天天文學家怎麼讀』改成『常見的解讀是日暈與幻日（沒有定論）』；(2) 1803 那章的『圓形船與文字』改成『圓形船與被比作英國船的記號』，『同一個故事有幾個版本』可以寫實數：田中找到 11 種，另有 2026 年秋田的抄本。",
+      "reviewer": "RE"
+    },
+    {
+      "theme": "T35",
+      "note": "P05 那章〈1844：大失望〉的『賣掉的田產』要改成 Howe 列的事：還債、辭職、關店、作物不收。也要加上關鍵翻轉：10 月 22 日是 1844 年 3 月 21 日落空後重算出來的第二個日期。撤案條件『1844 年的一手紀錄讀不到就縮成 90 秒』只部分滿足：讀到一份 1844 年 11 月 7 日的報紙轉載（升天袍笑話），但米勒派自己的刊物（Midnight Cry）與信徒的信都沒讀到。建議這章先排 150 秒，補到米勒派刊物再回到 180 秒。",
+      "reviewer": "RE"
+    },
+    {
+      "theme": "（無題案）P04",
+      "note": "P04 跟原來如此事務所 A25 的 Short 2〈千禧蟲沒爆：修好了還是被誇大？〉是同一個翻轉，同一份參議院報告、同一個義大利對比。DEDUP 當初只比了 A25 的 2038 主題。不判重複，但兩邊上架時要錯開，P04 也要補 A25 已查過的 Quiggin 2005 與 Thomas 2017，才講得平衡。",
+      "reviewer": "RE"
+    },
+    {
+      "theme": "（無題案）U01",
+      "note": "已製作的 U02 已經講過羅斯威爾的基本答案（新聞稿→氣球→1994 年 MOGUL）。U01 若單做，翻轉要放在 1978 年後才出現的屍體、時間被壓縮與 MJ-12，1947 年那段要縮短。",
+      "reviewer": "RE"
+    }
+  ]
+}

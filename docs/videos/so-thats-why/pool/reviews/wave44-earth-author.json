@@ -1,0 +1,792 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "science_sources",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "scope": "以岩面、葉片、巢型、胃內容物及保存實驗，分辨活體行為、死後搬運和成岩改造。",
+  "baseline": {
+    "head": "0c8f8712d6984e7c352c00182547255114d64ca7",
+    "selected": 3394,
+    "raw_records": 3779,
+    "not_added": 1875,
+    "themes": 464,
+    "snapshot": {
+      "file": "baselines/2026-11-03-3394.json.gz",
+      "sha256": "0ceb7a5a27dcf70d6594501d69d8ef724665d5bb464895c87fb0e592d123f5c6"
+    },
+    "pool_sha256": "4e55141e254c6b7e7bdf4edb700ea31a7a05506979fba53d04338adbd8c2029f"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave44-earth.json",
+      "sha256": "e59caeea546afd2b1b384c1c232507eadb5d9eb2839bb414156b366c7873b766"
+    },
+    {
+      "file": "reviews/wave44-earth-themes.json",
+      "sha256": "9a068a1ef90aaa4500a39afcfe92ce9d6e4e9c21ae1cd3688529db69e2e1efcf"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "not_added": 16,
+    "near_pairs": 22,
+    "themes": 5
+  },
+  "near_pairs": [
+    {
+      "a": "S44-001",
+      "b": "R34007",
+      "decision": "distinct",
+      "reason": "翼龍落地足跡次序與速度改變；這裡是蹲伏時手掌罕見著地，方向可反駁掌面朝下姿勢。",
+      "a_snapshot": {
+        "id": "S44-001",
+        "question": "走路只留下腳印，恐龍蹲下來時，怎麼露出了手掌朝哪邊？",
+        "answer_target": "猶他一段獸腳類行跡的坡面上，同時看到對稱的後腳、蹠部和身體後端印痕，支持曾蹲下休息。兩個後腳印前外側還各有手指印，指痕朝向中線，比起掌面朝下、指向前的傳統姿勢，更符合兩掌向內的重建。向前挪過後的下一個停頓處沒有再留下手印。",
+        "scope": "限SGDS.18.T1蹲伏前後的印痕。推的是留下這組印痕時的掌向，不是精測腕部活動角度或鑑定物種。"
+      },
+      "b_snapshot": {
+        "id": "R34007",
+        "question": "一串翼龍腳印從兩個並排的小坑開始，為什麼研究者想到的是降落？",
+        "answer_target": "開頭兩後腳並排，離開時趾端稍拖，極近處又有一對後腳落點，之後才有前肢印。末段才回到平常四肢步行的次序；足印由異常轉為常態支持降落解釋。",
+        "scope": "法國Crayssac一列翼龍足跡；空中姿態與觸地速度都無法從摘要量出。"
+      }
+    },
+    {
+      "a": "S44-001",
+      "b": "P29003",
+      "decision": "distinct",
+      "reason": "只有前足印是否需浮水，用前後肢承重差排解；本題確有蹠印、後足和成對手指痕，用方位判前肢姿態。",
+      "a_snapshot": {
+        "id": "S44-001",
+        "question": "走路只留下腳印，恐龍蹲下來時，怎麼露出了手掌朝哪邊？",
+        "answer_target": "猶他一段獸腳類行跡的坡面上，同時看到對稱的後腳、蹠部和身體後端印痕，支持曾蹲下休息。兩個後腳印前外側還各有手指印，指痕朝向中線，比起掌面朝下、指向前的傳統姿勢，更符合兩掌向內的重建。向前挪過後的下一個停頓處沒有再留下手印。",
+        "scope": "限SGDS.18.T1蹲伏前後的印痕。推的是留下這組印痕時的掌向，不是精測腕部活動角度或鑑定物種。"
+      },
+      "b_snapshot": {
+        "id": "P29003",
+        "question": "一串蜥腳類足跡只有前腳印，能斷定後腳浮在水裡嗎？",
+        "answer_target": "前後腳承擔的重量與接地面積可以不同。在一段基底強度範圍內，地面能撐住其中一種腳的載荷，另一種腳卻使它發生明顯破壞變形。四足著地於是也能只留下半套足印。換一組重心與足面積估值，優先留下的腳甚至可以互換。",
+        "scope": "限腕龍與梁龍重建參數的有限元素模型。地面承載取決於基底剪切強度、腳形與負荷，不能把腳壓直接等同於剪切強度的數值。並非某一條足跡的唯一解。"
+      }
+    },
+    {
+      "a": "S44-001",
+      "b": "R34001",
+      "decision": "distinct",
+      "reason": "泥層深度改變足形與沉積回塌是保存機制，這裡以同表面手印相對身體中線的方向檢驗姿勢。",
+      "a_snapshot": {
+        "id": "S44-001",
+        "question": "走路只留下腳印，恐龍蹲下來時，怎麼露出了手掌朝哪邊？",
+        "answer_target": "猶他一段獸腳類行跡的坡面上，同時看到對稱的後腳、蹠部和身體後端印痕，支持曾蹲下休息。兩個後腳印前外側還各有手指印，指痕朝向中線，比起掌面朝下、指向前的傳統姿勢，更符合兩掌向內的重建。向前挪過後的下一個停頓處沒有再留下手印。",
+        "scope": "限SGDS.18.T1蹲伏前後的印痕。推的是留下這組印痕時的掌向，不是精測腕部活動角度或鑑定物種。"
+      },
+      "b_snapshot": {
+        "id": "R34001",
+        "question": "表面只剩一團凹痕，往下剖一層，鳥的腳趾怎麼反而更清楚？",
+        "answer_target": "地表的鬆粒在腳抬起後滑落，把趾溝填糊；深處顆粒互相支撐。將活鳥腳趾的實測運動帶入模擬，同一步在不同深度留下不同輪廓。",
+        "scope": "走過乾罌粟籽的珍珠雞與對應模擬，不能把所有化石露出的面都當作原地表。"
+      }
+    },
+    {
+      "a": "S44-002",
+      "b": "P29004",
+      "decision": "distinct",
+      "reason": "菊石拖跡與末端殼體辨被動搬運；魚跡由波形加反覆橢圓印重建主動觸底，沒有末端殼與拖浮判讀。",
+      "a_snapshot": {
+        "id": "S44-002",
+        "question": "石板上幾道波浪線，是魚擦著底游過，還是牠還低頭吃了東西？",
+        "answer_target": "懷俄明化石湖的岩板同時留下振幅較大的單線、成對同相的小波線，研究者分別解釋為尾鰭和腹鰭擦泥。其間另外一串橢圓壓印彼此部分重疊，不像鰭尖單純連續拖行；其尺寸、位置與同層下位口魚的解剖對得上，支持牠一邊游一邊碰觸湖底覓食。",
+        "scope": "限FOBU-12718；Notogoneus為可能造跡者，不是魚化石停在這條痕的末端。沒有保存被吞下的食物。"
+      },
+      "b_snapshot": {
+        "id": "P29004",
+        "question": "一條八公尺多的痕跡停在菊石殼旁，怎麼看出它可能沒活著爬過去？",
+        "answer_target": "拖痕末端的脊溝間距和殼肋對上，接近停處時有更多肋接觸，走向也轉了。連同殼內缺下顎的觀察，研究者重建出殼在死後被搬運、輕觸泥底並側倒的過程。",
+        "scope": "限CosmoCaixa標本MCFO 0492。保留8.5公尺且起點缺失，沿途脊數不單調。水流拖曳為解釋，未直接量得流速，也不能完全排除緩坡作用。"
+      }
+    },
+    {
+      "a": "S44-002",
+      "b": "R34006",
+      "decision": "distinct",
+      "reason": "史前人和器具拖出平行溝是兩點連續接觸；此題波形相位定鰭，餘下的橢圓印與口器比較。",
+      "a_snapshot": {
+        "id": "S44-002",
+        "question": "石板上幾道波浪線，是魚擦著底游過，還是牠還低頭吃了東西？",
+        "answer_target": "懷俄明化石湖的岩板同時留下振幅較大的單線、成對同相的小波線，研究者分別解釋為尾鰭和腹鰭擦泥。其間另外一串橢圓壓印彼此部分重疊，不像鰭尖單純連續拖行；其尺寸、位置與同層下位口魚的解剖對得上，支持牠一邊游一邊碰觸湖底覓食。",
+        "scope": "限FOBU-12718；Notogoneus為可能造跡者，不是魚化石停在這條痕的末端。沒有保存被吞下的食物。"
+      },
+      "b_snapshot": {
+        "id": "R34006",
+        "question": "古人的腳印旁怎麼多出兩條平行溝，像有人拖著什麼走？",
+        "answer_target": "先看溝與腳印是否一起延伸，再比較現代泥地拖架試驗。兩個接地端可讓腳印落在雙溝之間，單一接地端則可能沿行進方向切過腳印。差別支持人拖桿具這種解釋。",
+        "scope": "白沙考古遺跡與英國泥灘的重現是不同現場。古桿、繩結及貨物都沒有在此找到。"
+      }
+    },
+    {
+      "a": "S44-002",
+      "b": "S44-001",
+      "decision": "distinct",
+      "reason": "都有接觸痕，但一題用對稱蹲伏判手掌朝向；另一題用鰭形波和間斷橢圓印來辨覓食。",
+      "a_snapshot": {
+        "id": "S44-002",
+        "question": "石板上幾道波浪線，是魚擦著底游過，還是牠還低頭吃了東西？",
+        "answer_target": "懷俄明化石湖的岩板同時留下振幅較大的單線、成對同相的小波線，研究者分別解釋為尾鰭和腹鰭擦泥。其間另外一串橢圓壓印彼此部分重疊，不像鰭尖單純連續拖行；其尺寸、位置與同層下位口魚的解剖對得上，支持牠一邊游一邊碰觸湖底覓食。",
+        "scope": "限FOBU-12718；Notogoneus為可能造跡者，不是魚化石停在這條痕的末端。沒有保存被吞下的食物。"
+      },
+      "b_snapshot": {
+        "id": "S44-001",
+        "question": "走路只留下腳印，恐龍蹲下來時，怎麼露出了手掌朝哪邊？",
+        "answer_target": "猶他一段獸腳類行跡的坡面上，同時看到對稱的後腳、蹠部和身體後端印痕，支持曾蹲下休息。兩個後腳印前外側還各有手指印，指痕朝向中線，比起掌面朝下、指向前的傳統姿勢，更符合兩掌向內的重建。向前挪過後的下一個停頓處沒有再留下手印。",
+        "scope": "限SGDS.18.T1蹲伏前後的印痕。推的是留下這組印痕時的掌向，不是精測腕部活動角度或鑑定物種。"
+      }
+    },
+    {
+      "a": "S44-003",
+      "b": "P29005",
+      "decision": "distinct",
+      "reason": "牙周骨癒合問動物受傷時是否活著，無法檢驗不同大小骨件能否一起被沖入洞室。",
+      "a_snapshot": {
+        "id": "S44-003",
+        "question": "洞道盡頭躺著大小恐龍的骨頭，哪些線索讓牠們更像住客，不像被水沖進去？",
+        "answer_target": "蒙大拿標本的彎曲通道通往擴大的末室，裡面有成體和兩隻幼體的骨骼。粗大的成年肢骨和脆小的幼體頭部骨件混在深處，不像水流按可搬運性挑進去的一堆散骨。再加上通道大小適合成體、骨骼有適合掘土的特徵，較支持這種恐龍使用並挖掘過洞穴。",
+        "scope": "限Blackleaf標本；這組證據不支持單純被水沖入，並非記錄到挖洞、餵幼或死亡的瞬間。"
+      },
+      "b_snapshot": {
+        "id": "P29005",
+        "question": "恐龍骨裡卡著別隻恐龍的牙，怎麼看出牠挨咬時還活著？",
+        "answer_target": "嵌入尾椎的齒冠可提供咬者的形態線索；包住齒冠一部分的新生骨則決定先後。牙已在傷口裡，受傷的鴨嘴龍類仍活到骨頭能夠修復。",
+        "scope": "限PBMNH.P.09.039兩節尾椎。研究用齒形及鋸齒與已知樣本比較後歸於T. rex。單獨咬痕、普通骨融合或缺少癒合都不能在其他個案作同樣判斷。"
+      }
+    },
+    {
+      "a": "S44-003",
+      "b": "S44-004",
+      "decision": "distinct",
+      "reason": "洞中選擇性搬運預測與穴徑／成體大小，和海岸鯨骨的多層朝向與完整度回答不同成因。",
+      "a_snapshot": {
+        "id": "S44-003",
+        "question": "洞道盡頭躺著大小恐龍的骨頭，哪些線索讓牠們更像住客，不像被水沖進去？",
+        "answer_target": "蒙大拿標本的彎曲通道通往擴大的末室，裡面有成體和兩隻幼體的骨骼。粗大的成年肢骨和脆小的幼體頭部骨件混在深處，不像水流按可搬運性挑進去的一堆散骨。再加上通道大小適合成體、骨骼有適合掘土的特徵，較支持這種恐龍使用並挖掘過洞穴。",
+        "scope": "限Blackleaf標本；這組證據不支持單純被水沖入，並非記錄到挖洞、餵幼或死亡的瞬間。"
+      },
+      "b_snapshot": {
+        "id": "S44-004",
+        "question": "沙漠裡一層又一層都是鯨骨，鯨群每次都是活著游到岸邊才死嗎？",
+        "answer_target": "智利Cerro Ballena有四個分開的含骨層。許多鬚鯨仍大致保持骨骼連接，身體多腹部朝上、長軸與當時水流方向近乎垂直，近旁也有其他海洋動物。這組重複配置較符合鯨已死或瀕死時被水集中沖至岸邊再埋藏，不能從擱淺的樣子直接斷定牠們活著集體上岸。",
+        "scope": "限定各層的鬚鯨統計；有害藻華是死因假說。沒有從這些骨架驗出當時藻毒。"
+      }
+    },
+    {
+      "a": "S44-003",
+      "b": "N132",
+      "decision": "distinct",
+      "reason": "地層先後不是利用洞室、骨件水力差異排除簡單灌入。",
+      "a_snapshot": {
+        "id": "S44-003",
+        "question": "洞道盡頭躺著大小恐龍的骨頭，哪些線索讓牠們更像住客，不像被水沖進去？",
+        "answer_target": "蒙大拿標本的彎曲通道通往擴大的末室，裡面有成體和兩隻幼體的骨骼。粗大的成年肢骨和脆小的幼體頭部骨件混在深處，不像水流按可搬運性挑進去的一堆散骨。再加上通道大小適合成體、骨骼有適合掘土的特徵，較支持這種恐龍使用並挖掘過洞穴。",
+        "scope": "限Blackleaf標本；這組證據不支持單純被水沖入，並非記錄到挖洞、餵幼或死亡的瞬間。"
+      },
+      "b_snapshot": {
+        "id": "N132",
+        "question": "還沒發明放射性定年時，人們怎麼排出地層的先後？",
+        "answer_target": "疊置、化石群序列與相對時間。",
+        "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages"
+      }
+    },
+    {
+      "a": "S44-004",
+      "b": "R34004",
+      "decision": "distinct",
+      "reason": "同路疊腳印的先後並非積屍區腹面朝上、骨件維持連結與重複岸漂的檢驗。",
+      "a_snapshot": {
+        "id": "S44-004",
+        "question": "沙漠裡一層又一層都是鯨骨，鯨群每次都是活著游到岸邊才死嗎？",
+        "answer_target": "智利Cerro Ballena有四個分開的含骨層。許多鬚鯨仍大致保持骨骼連接，身體多腹部朝上、長軸與當時水流方向近乎垂直，近旁也有其他海洋動物。這組重複配置較符合鯨已死或瀕死時被水集中沖至岸邊再埋藏，不能從擱淺的樣子直接斷定牠們活著集體上岸。",
+        "scope": "限定各層的鬚鯨統計；有害藻華是死因假說。沒有從這些骨架驗出當時藻毒。"
+      },
+      "b_snapshot": {
+        "id": "R34004",
+        "question": "人腳印一個個踩進巨型地懶的腳印，能追到故事的哪一步？",
+        "answer_target": "一串人印與地懶印長軸對齊，人的步距得配合較大的間隔；疊印的變形順序也支持人後踩。另一些痕組有轉向或環狀抓痕，支持可能曾有互動，但無法指證獵殺成功。",
+        "scope": "白沙這批疊印與鄰近痕組，仍可能曾沿既有足跡行走。"
+      }
+    },
+    {
+      "a": "S44-004",
+      "b": "P29004",
+      "decision": "distinct",
+      "reason": "一具殼與其連續拖跡估被動移動，這裡靠多具骨架的方向、連接與四個層位比較是否重複聚積。",
+      "a_snapshot": {
+        "id": "S44-004",
+        "question": "沙漠裡一層又一層都是鯨骨，鯨群每次都是活著游到岸邊才死嗎？",
+        "answer_target": "智利Cerro Ballena有四個分開的含骨層。許多鬚鯨仍大致保持骨骼連接，身體多腹部朝上、長軸與當時水流方向近乎垂直，近旁也有其他海洋動物。這組重複配置較符合鯨已死或瀕死時被水集中沖至岸邊再埋藏，不能從擱淺的樣子直接斷定牠們活著集體上岸。",
+        "scope": "限定各層的鬚鯨統計；有害藻華是死因假說。沒有從這些骨架驗出當時藻毒。"
+      },
+      "b_snapshot": {
+        "id": "P29004",
+        "question": "一條八公尺多的痕跡停在菊石殼旁，怎麼看出它可能沒活著爬過去？",
+        "answer_target": "拖痕末端的脊溝間距和殼肋對上，接近停處時有更多肋接觸，走向也轉了。連同殼內缺下顎的觀察，研究者重建出殼在死後被搬運、輕觸泥底並側倒的過程。",
+        "scope": "限CosmoCaixa標本MCFO 0492。保留8.5公尺且起點缺失，沿途脊數不單調。水流拖曳為解釋，未直接量得流速，也不能完全排除緩坡作用。"
+      }
+    },
+    {
+      "a": "S44-005",
+      "b": "B2167",
+      "decision": "distinct",
+      "reason": "既有題談蛋殼氣孔能讓氣體出入；這裡用已知巢型標定孔隙對蛋重關係，以推回未保存的巢材。",
+      "a_snapshot": {
+        "id": "S44-005",
+        "question": "巢材早就爛掉了，為什麼恐龍蛋殼上的氣孔還能提示蛋原本埋著還是露著？",
+        "answer_target": "現生鳥和鱷類的蛋可先知道巢是覆蓋或開放的。比較相近蛋重時，覆蓋巢的殼通常有較高孔隙，較能交換氣體，與濕潤覆蓋環境相容。把化石蛋的孔道幾何和估算蛋重放上同一組校準，才可推測偏近哪一種，不能只數某一小片蛋殼上有幾個孔。",
+        "scope": "現生已知覆蓋巢的20列，普通線性判別分對17列；按文中最佳λ的系統發育判別則20列都沒有分對（表6）。兩者在化石的預測較相近，不代表單一蛋殼能確定巢型。"
+      },
+      "b_snapshot": {
+        "id": "B2167",
+        "question": "卵殼把胚胎包起來，為什麼不會把呼吸也完全封死？",
+        "answer_target": "卵殼與胚外膜兼顧水分保存和氣體交換",
+        "scope": "羊膜卵；不同物種通透性需另查"
+      }
+    },
+    {
+      "a": "S44-005",
+      "b": "B2062",
+      "decision": "distinct",
+      "reason": "孵化溫度與性別，並非使孔隙與孵化環境相容的傳質條件。",
+      "a_snapshot": {
+        "id": "S44-005",
+        "question": "巢材早就爛掉了，為什麼恐龍蛋殼上的氣孔還能提示蛋原本埋著還是露著？",
+        "answer_target": "現生鳥和鱷類的蛋可先知道巢是覆蓋或開放的。比較相近蛋重時，覆蓋巢的殼通常有較高孔隙，較能交換氣體，與濕潤覆蓋環境相容。把化石蛋的孔道幾何和估算蛋重放上同一組校準，才可推測偏近哪一種，不能只數某一小片蛋殼上有幾個孔。",
+        "scope": "現生已知覆蓋巢的20列，普通線性判別分對17列；按文中最佳λ的系統發育判別則20列都沒有分對（表6）。兩者在化石的預測較相近，不代表單一蛋殼能確定巢型。"
+      },
+      "b_snapshot": {
+        "id": "B2062",
+        "question": "同樣的爬蟲類卵，為什麼孵化溫度可能影響雌雄比例？",
+        "answer_target": "某些物種的性別分化對胚胎發育溫度敏感。",
+        "scope": "來源鱷與龜例子，限具溫度依賴性別決定的物種。"
+      }
+    },
+    {
+      "a": "S44-005",
+      "b": "S44-006",
+      "decision": "distinct",
+      "reason": "孔道尺度推有無覆蓋，和用現代熱源仿巢檢驗覆沙後能否讓下層升溫，待測量和觀測資料不同。",
+      "a_snapshot": {
+        "id": "S44-005",
+        "question": "巢材早就爛掉了，為什麼恐龍蛋殼上的氣孔還能提示蛋原本埋著還是露著？",
+        "answer_target": "現生鳥和鱷類的蛋可先知道巢是覆蓋或開放的。比較相近蛋重時，覆蓋巢的殼通常有較高孔隙，較能交換氣體，與濕潤覆蓋環境相容。把化石蛋的孔道幾何和估算蛋重放上同一組校準，才可推測偏近哪一種，不能只數某一小片蛋殼上有幾個孔。",
+        "scope": "現生已知覆蓋巢的20列，普通線性判別分對17列；按文中最佳λ的系統發育判別則20列都沒有分對（表6）。兩者在化石的預測較相近，不代表單一蛋殼能確定巢型。"
+      },
+      "b_snapshot": {
+        "id": "S44-006",
+        "question": "蛋被沙隔開，上方仿造的恐龍身體還能把底下那層蛋暖起來嗎？",
+        "answer_target": "依竊蛋龍類巢形把未受精的鴯鶓蛋排成多層，以內部水浴加熱的模型模擬成獸熱源。蛋全埋、只從上方供熱時，蛋溫仍可高過周邊環境，但各層溫度不同；另一種開放巢配置把模擬後肢的熱源延伸入巢，層間溫度較接近。",
+        "scope": "現代熱學模型有不同巢體與熱源配置，並未用恐龍胚胎或測出孵化成功率。能傳熱不等於古動物必採某一姿勢。"
+      }
+    },
+    {
+      "a": "S44-006",
+      "b": "E17002",
+      "decision": "distinct",
+      "reason": "冰桌由石塊尺度改變冰面能量收支，與巢內熱源供給路徑及分層蛋溫對照不同。",
+      "a_snapshot": {
+        "id": "S44-006",
+        "question": "蛋被沙隔開，上方仿造的恐龍身體還能把底下那層蛋暖起來嗎？",
+        "answer_target": "依竊蛋龍類巢形把未受精的鴯鶓蛋排成多層，以內部水浴加熱的模型模擬成獸熱源。蛋全埋、只從上方供熱時，蛋溫仍可高過周邊環境，但各層溫度不同；另一種開放巢配置把模擬後肢的熱源延伸入巢，層間溫度較接近。",
+        "scope": "現代熱學模型有不同巢體與熱源配置，並未用恐龍胚胎或測出孵化成功率。能傳熱不等於古動物必採某一姿勢。"
+      },
+      "b_snapshot": {
+        "id": "E17002",
+        "question": "石頭放在冰河上，為什麼小塊可能陷下去，大塊卻留下冰腳？",
+        "answer_target": "小石塊可把較大外表面收到的熱集中傳入接觸區；較大岩石建立溫度梯度、表面較暖，改變淨長波與空氣熱交換，使傳到冰面的熱反而較少。",
+        "scope": "限溫帶冰河的觀測與準靜態熱收支模型；尺寸、形狀及天氣一起控制分界。冰腳變高是相對周圍融冰，石頭本身仍可下降；不是重物使冰向上生長。"
+      }
+    },
+    {
+      "a": "S44-006",
+      "b": "B2166",
+      "decision": "distinct",
+      "reason": "蛋膜的封閉水環境不能推出由成獸隔著砂巢能否間接加溫。",
+      "a_snapshot": {
+        "id": "S44-006",
+        "question": "蛋被沙隔開，上方仿造的恐龍身體還能把底下那層蛋暖起來嗎？",
+        "answer_target": "依竊蛋龍類巢形把未受精的鴯鶓蛋排成多層，以內部水浴加熱的模型模擬成獸熱源。蛋全埋、只從上方供熱時，蛋溫仍可高過周邊環境，但各層溫度不同；另一種開放巢配置把模擬後肢的熱源延伸入巢，層間溫度較接近。",
+        "scope": "現代熱學模型有不同巢體與熱源配置，並未用恐龍胚胎或測出孵化成功率。能傳熱不等於古動物必採某一姿勢。"
+      },
+      "b_snapshot": {
+        "id": "B2166",
+        "question": "陸地上的卵不泡在池塘裡，胚胎周圍的水從哪裡來？",
+        "answer_target": "羊膜包圍胚胎形成受保護的水環境",
+        "scope": "羊膜卵基本構造，不做孵蛋操作"
+      }
+    },
+    {
+      "a": "S44-007",
+      "b": "B2178",
+      "decision": "distinct",
+      "reason": "僅憑有羽毛無法定飛行；此題實驗是無腐敗組與不同氧化次序測量色素顆粒留下的幾何空模。",
+      "a_snapshot": {
+        "id": "S44-007",
+        "question": "羽毛化石裡的橢圓小空洞，一定是細菌爛掉後留下來的嗎？",
+        "answer_target": "研究者把現代羽毛分組處理。有些沒經腐敗的羽毛在氧化處理後，羽毛皮層內也出現橢圓空模，位置、形狀與黑色素體相符，實驗液還能找到黑色素化學標記。先氧化或先做熱熟化，形成並保留下來的模孔數也不同，不能僅憑一個孔就指定它是細菌。",
+        "scope": "受控處理的現代羽毛。不是每件化石的孔都具有同一來源，亦不能從一個空模換算原始羽色。"
+      },
+      "b_snapshot": {
+        "id": "B2178",
+        "question": "有羽毛的化石，為什麼還不足以證明那隻動物會飛？",
+        "answer_target": "羽毛型態、骨骼與功能證據需共同判讀",
+        "scope": "較早有羽恐龍與飛行羽比較，不預設單一起飛路線"
+      }
+    },
+    {
+      "a": "S44-007",
+      "b": "R34001",
+      "decision": "distinct",
+      "reason": "受到踩踏時泥層深淺產生不同印痕；羽毛內空模由原顆粒化學改變產生，並有原位位置與化學標記。",
+      "a_snapshot": {
+        "id": "S44-007",
+        "question": "羽毛化石裡的橢圓小空洞，一定是細菌爛掉後留下來的嗎？",
+        "answer_target": "研究者把現代羽毛分組處理。有些沒經腐敗的羽毛在氧化處理後，羽毛皮層內也出現橢圓空模，位置、形狀與黑色素體相符，實驗液還能找到黑色素化學標記。先氧化或先做熱熟化，形成並保留下來的模孔數也不同，不能僅憑一個孔就指定它是細菌。",
+        "scope": "受控處理的現代羽毛。不是每件化石的孔都具有同一來源，亦不能從一個空模換算原始羽色。"
+      },
+      "b_snapshot": {
+        "id": "R34001",
+        "question": "表面只剩一團凹痕，往下剖一層，鳥的腳趾怎麼反而更清楚？",
+        "answer_target": "地表的鬆粒在腳抬起後滑落，把趾溝填糊；深處顆粒互相支撐。將活鳥腳趾的實測運動帶入模擬，同一步在不同深度留下不同輪廓。",
+        "scope": "走過乾罌粟籽的珍珠雞與對應模擬，不能把所有化石露出的面都當作原地表。"
+      }
+    },
+    {
+      "a": "S44-008",
+      "b": "S44-003",
+      "decision": "distinct",
+      "reason": "這裡以團塊內外孢粉及完整孢囊檢驗胃內容物，與洞穴水力篩選、骨件混合與穴徑不一樣。",
+      "a_snapshot": {
+        "id": "S44-008",
+        "question": "恐龍肚子裡有一團葉屑，怎麼知道是牠最後吃的，不是埋下去才灌進來的？",
+        "answer_target": "北方盾龍腹腔有一團邊界清楚的物質，內外孢粉組合不同，團內還有集中在一起的胃石、破碎葉材和仍包著孢子的蕨類孢子囊。若只是四周泥沙填入，不容易同時解釋團塊邊界與裡外這些差別，較支持保存的胃內容物。",
+        "scope": "限TMP 2011.033.0001，一頭動物的一段近期飲食；不把最後一餐直接當全年食譜。"
+      },
+      "b_snapshot": {
+        "id": "S44-003",
+        "question": "洞道盡頭躺著大小恐龍的骨頭，哪些線索讓牠們更像住客，不像被水沖進去？",
+        "answer_target": "蒙大拿標本的彎曲通道通往擴大的末室，裡面有成體和兩隻幼體的骨骼。粗大的成年肢骨和脆小的幼體頭部骨件混在深處，不像水流按可搬運性挑進去的一堆散骨。再加上通道大小適合成體、骨骼有適合掘土的特徵，較支持這種恐龍使用並挖掘過洞穴。",
+        "scope": "限Blackleaf標本；這組證據不支持單純被水沖入，並非記錄到挖洞、餵幼或死亡的瞬間。"
+      }
+    },
+    {
+      "a": "S44-008",
+      "b": "P29005",
+      "decision": "distinct",
+      "reason": "獵物反應骨的證據不指示胃腔中一團葉屑是攝食還是沉積填入。",
+      "a_snapshot": {
+        "id": "S44-008",
+        "question": "恐龍肚子裡有一團葉屑，怎麼知道是牠最後吃的，不是埋下去才灌進來的？",
+        "answer_target": "北方盾龍腹腔有一團邊界清楚的物質，內外孢粉組合不同，團內還有集中在一起的胃石、破碎葉材和仍包著孢子的蕨類孢子囊。若只是四周泥沙填入，不容易同時解釋團塊邊界與裡外這些差別，較支持保存的胃內容物。",
+        "scope": "限TMP 2011.033.0001，一頭動物的一段近期飲食；不把最後一餐直接當全年食譜。"
+      },
+      "b_snapshot": {
+        "id": "P29005",
+        "question": "恐龍骨裡卡著別隻恐龍的牙，怎麼看出牠挨咬時還活著？",
+        "answer_target": "嵌入尾椎的齒冠可提供咬者的形態線索；包住齒冠一部分的新生骨則決定先後。牙已在傷口裡，受傷的鴨嘴龍類仍活到骨頭能夠修復。",
+        "scope": "限PBMNH.P.09.039兩節尾椎。研究用齒形及鋸齒與已知樣本比較後歸於T. rex。單獨咬痕、普通骨融合或缺少癒合都不能在其他個案作同樣判斷。"
+      }
+    },
+    {
+      "a": "S44-009",
+      "b": "R31006",
+      "decision": "distinct",
+      "reason": "樹幹的生長反應重建過往失葉，本題直接讀化石葉隧道內糞跡換側及糞形。",
+      "a_snapshot": {
+        "id": "S44-009",
+        "question": "古葉裡留下彎彎的隧道，裡頭的糞跡怎麼比隧道外形更能透露誰挖過？",
+        "answer_target": "不同昆蟲幼蟲都能留下彎曲葉礦。兩份古葉標本的隧道裡有不連續的流狀糞跡，位置可在兩側交替；這與部分現生潛葉蠅幼蟲側躺、換側取食時的痕跡吻合，能比單看路線蜿蜒更具體地支持造跡類群。",
+        "scope": "這種排列不在所有潛葉蠅、每一段葉礦都出現。分類是多特徵推斷，未由糞跡指定現代物種。 蒙大拿例糞道多居中、局部換側；德國例可見明顯交替排列。"
+      },
+      "b_snapshot": {
+        "id": "R31006",
+        "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+        "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+        "scope": "限瑞士阿爾卑斯高地的重建。極冷年也可能使非寄主出現低值，難以拆開同年的雙重影響；密度曲線不能換算蟲數。"
+      }
+    },
+    {
+      "a": "S44-009",
+      "b": "S44-002",
+      "decision": "distinct",
+      "reason": "魚鰭和口觸泥是身體的直接接觸形狀；葉礦由消化排泄物配置與側食幼蟲做類比，不用鰭波或口印。",
+      "a_snapshot": {
+        "id": "S44-009",
+        "question": "古葉裡留下彎彎的隧道，裡頭的糞跡怎麼比隧道外形更能透露誰挖過？",
+        "answer_target": "不同昆蟲幼蟲都能留下彎曲葉礦。兩份古葉標本的隧道裡有不連續的流狀糞跡，位置可在兩側交替；這與部分現生潛葉蠅幼蟲側躺、換側取食時的痕跡吻合，能比單看路線蜿蜒更具體地支持造跡類群。",
+        "scope": "這種排列不在所有潛葉蠅、每一段葉礦都出現。分類是多特徵推斷，未由糞跡指定現代物種。 蒙大拿例糞道多居中、局部換側；德國例可見明顯交替排列。"
+      },
+      "b_snapshot": {
+        "id": "S44-002",
+        "question": "石板上幾道波浪線，是魚擦著底游過，還是牠還低頭吃了東西？",
+        "answer_target": "懷俄明化石湖的岩板同時留下振幅較大的單線、成對同相的小波線，研究者分別解釋為尾鰭和腹鰭擦泥。其間另外一串橢圓壓印彼此部分重疊，不像鰭尖單純連續拖行；其尺寸、位置與同層下位口魚的解剖對得上，支持牠一邊游一邊碰觸湖底覓食。",
+        "scope": "限FOBU-12718；Notogoneus為可能造跡者，不是魚化石停在這條痕的末端。沒有保存被吞下的食物。"
+      }
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "method": "全3779原題及1875未收依足跡、生痕、埋藏、骨層、巢、蛋殼、色素、葉礦等查找，核閱P29/R34相關舊題、古人腳印和R31006等。",
+    "files": [
+      {
+        "file": ".cache/wave44-earth-scan.json",
+        "sha256": "ee0f46629c53d24699af7ba5a66b6c21570731ecc531d3d0cc3f461850e7b2f8"
+      },
+      {
+        "file": ".cache/wave44-earth-controls.json",
+        "sha256": "f6107e63b24b8d56efac930d12b3b69945b58f2d5477a49cf537fef178114607"
+      }
+    ]
+  },
+  "source_identity": [
+    {
+      "id": "S44-S001",
+      "doi": "10.1371/journal.pone.0004591",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0004591&type=printable",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    },
+    {
+      "id": "S44-S002",
+      "doi": "10.1371/journal.pone.0010420",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0010420&type=printable",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    },
+    {
+      "id": "S44-S003",
+      "doi": "10.1098/rspb.2006.0443",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2176205/",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    },
+    {
+      "id": "S44-S004",
+      "doi": "10.1098/rspb.2013.3316",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3953850/",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    },
+    {
+      "id": "S44-S005",
+      "doi": "10.1371/journal.pone.0142829",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0142829&type=printable",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    },
+    {
+      "id": "S44-S006",
+      "doi": "10.1017/pab.2023.19",
+      "retrieval_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/DD107A21B6F9250E2079B9F649C3AB35/S0094837323000192a.pdf/eggthief_architect_experimental_oviraptorosaur_nesting_physiology_the_possibility_of_adultmediated_incubation_and_the_feasibility_of_indirect_contact_incubation.pdf",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    },
+    {
+      "id": "S44-S007",
+      "doi": "10.1111/pala.12445",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6988486/fullTextXML",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    },
+    {
+      "id": "S44-S008",
+      "doi": "10.1098/rsos.200305",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7353971/fullTextXML",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    },
+    {
+      "id": "S44-S009",
+      "doi": "10.1666/09-163.1",
+      "retrieval_url": "https://repository.si.edu/server/api/core/bitstreams/a168b545-1b7a-459d-ba73-da79cd1dd672/content",
+      "version": "原研究正式發表版；典藏、刊方PDF或XML僅是同文載體。",
+      "old_exact_matches": [],
+      "relationship": "各刊XML、PDF和作者典藏都是同一篇研究。S005的現生孔隙校準與S006的砂巢實驗不同；引用前人化石形態不算模型實測古行為。"
+    }
+  ],
+  "source_readings": [
+    {
+      "id": "S44-S001",
+      "locator": "正式論文PDF及同文XML，SGDS.18.T1行跡、圖4–5、Discussion對手腕及印痕方向的比較。",
+      "read_via": "指定編輯UA獨立取原刊PDF或正式論文XML，讀取指定方法、結果及圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-handpdf.pdf",
+        "sha256": "a3214e8e4669d7ff25cf699c17ed30b6be24e72791d5b6aa2de5e1ec6aafaa33",
+        "text_file": ".cache/wave44-earth-handpdf.txt",
+        "text_sha256": "8c136f8f24e38708edd61dd85ba33ea0914037c4a4aa2bf72e81b9f91a88034c"
+      }
+    },
+    {
+      "id": "S44-S002",
+      "locator": "原刊PDF p.5圖3；同文XML Results／Identification of the Tracemaker and Its Behavior 及Discussion。",
+      "read_via": "指定編輯UA獨立取原刊PDF或正式論文XML，讀取指定方法、結果及圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-fishpdf.pdf",
+        "sha256": "5523ecaaa5b25c0568650e9359ad049a2a810e2359dc1d4359dab3387f7b8b8b",
+        "text_file": ".cache/wave44-earth-fishpdf.txt",
+        "text_sha256": "410c499f89847df502bec1f3f5f74f95e128afc42a5765635fe5edce94f8128d"
+      }
+    },
+    {
+      "id": "S44-S003",
+      "locator": "正式論文Web L175–182，彎曲洞道、末室、大小骨件的水力差異及成人尺度。",
+      "read_via": "指定編輯UA取PDF失敗或回非PDF；改以Web工具定點讀取原文並保留實際返回區段。",
+      "cache": {
+        "file": ".cache/wave44-earth-burrow-web.txt",
+        "sha256": "99bb0c409e2372284ecfda71cf0faa84778ddd7b13f7d1a9bf5ea26a816cf881",
+        "text_file": ".cache/wave44-earth-burrow-web.txt",
+        "text_sha256": "99bb0c409e2372284ecfda71cf0faa84778ddd7b13f7d1a9bf5ea26a816cf881"
+      }
+    },
+    {
+      "id": "S44-S004",
+      "locator": "正式論文Web L246–251骨骼連接、與水流方向及腹面朝上；L274–285重複聚集與有害藻華假說。",
+      "read_via": "指定編輯UA取PDF失敗或回非PDF；改以Web工具定點讀取原文並保留實際返回區段。",
+      "cache": {
+        "file": ".cache/wave44-earth-whale-web.txt",
+        "sha256": "6a8a20b0cc623f8e46c810bb0c146ea8a588d6c683c44586d4f59e852c3bc8c1",
+        "text_file": ".cache/wave44-earth-whale-web.txt",
+        "text_sha256": "6a8a20b0cc623f8e46c810bb0c146ea8a588d6c683c44586d4f59e852c3bc8c1"
+      }
+    },
+    {
+      "id": "S44-S005",
+      "locator": "原刊PDF pp.8–14 判別分析、表5–6、圖3及方法差異；依蛋重比較殼孔隙。",
+      "read_via": "指定編輯UA獨立取原刊PDF或正式論文XML，讀取指定方法、結果及圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-egg.pdf",
+        "sha256": "5264eab69fb65233b6e54405f9e2a0e8dcffec203a3cced5908d83c16bb38945",
+        "text_file": ".cache/wave44-earth-egg.txt",
+        "text_sha256": "c05f3fe9fbb075a9c3941f63559f63bba676e05f6d9ad7172f345f877c6ba886"
+      }
+    },
+    {
+      "id": "S44-S006",
+      "locator": "出版版PDF p.1設定、pp.4–8三組現代模型與圖5、pp.9–11表2及限制。",
+      "read_via": "指定編輯UA獨立取原刊PDF或正式論文XML，讀取指定方法、結果及圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-thermal.pdf",
+        "sha256": "0b41c382f0f64e03fc12c4c7182b41e96ec3e3f29c67552c003f234eaebd795c",
+        "text_file": ".cache/wave44-earth-thermal.txt",
+        "text_sha256": "be9c724985ead57832a57be1588d13b051a250e097732a278f9369a7ff29fc40"
+      }
+    },
+    {
+      "id": "S44-S007",
+      "locator": "正式論文Europe PMC XML，實驗流程圖與表1、Results中氧化次序、Figs2–6及Discussion的microbial mould替代解釋。",
+      "read_via": "指定編輯UA獨立取原刊PDF或正式論文XML，讀取指定方法、結果及圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-feather2.xml",
+        "sha256": "3fe9a0a116e6024523e928e452d52c3ef048bbdef545ac2a4c24f24885645df6",
+        "text_file": ".cache/wave44-earth-feather2.txt",
+        "text_sha256": "6b8520af3ddbb7424764af767668c80058964c7c577d5904def70896f3db03ef"
+      }
+    },
+    {
+      "id": "S44-S008",
+      "locator": "正式論文XML Results／Plant fragments，Discussion表2與胃內容物判準，圖1、2、4及5圖說。",
+      "read_via": "指定編輯UA獨立取原刊PDF或正式論文XML，讀取指定方法、結果及圖說。",
+      "cache": {
+        "file": ".cache/wave44-earth-stomach.xml",
+        "sha256": "786c207bddfd1e028d072e63cb3752afc703876dc5b26a1a30ced8f9330f9060",
+        "text_file": ".cache/wave44-earth-stomach.txt",
+        "text_sha256": "1b65f9f5e6526e4056a4a66eeb40b671ce9c612fd13f3fd07e62be6251160c68"
+      }
+    },
+    {
+      "id": "S44-S009",
+      "locator": "Smithsonian典藏原刊PDF，Web L725–728、873–889、1036–1043、1118–1128辨別標準；L1194–1212蒙大拿標本診斷及圖4.1–4.6；L1661–1666德國標本圖8.5–8.6圖說。",
+      "read_via": "指定編輯UA取PDF失敗或回非PDF；改以Web工具定點讀取原文並保留實際返回區段。",
+      "cache": {
+        "file": ".cache/wave44-earth-leaf-combined.txt",
+        "text_file": ".cache/wave44-earth-leaf-combined.txt",
+        "sha256": "b7b50060638cdb5d9561a3a52c038c2ef98f529c71b1237fee083d0dfa0e78d1",
+        "text_sha256": "b7b50060638cdb5d9561a3a52c038c2ef98f529c71b1237fee083d0dfa0e78d1"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave44-earth-fetch.json",
+      "sha256": "704f5cf95b9cd6fce12bcf87103d317965917d95e3c9cf9b0506e37e8bff9f1c"
+    },
+    {
+      "file": ".cache/wave44-earth-extra.json",
+      "sha256": "da4692f7ee180fa31f45a20994609a47c55ec69c4ccf073a2f7162754ae25c0d"
+    },
+    {
+      "file": ".cache/wave44-earth-pdfs.json",
+      "sha256": "fb554c023b1fd6e6999e7003b0ce61ef054e572f90754266ab59388fef3c9e94"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "name": "nest",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6012691/fullTextXML",
+      "error": "HTTP Error 500:",
+      "resolution": "有原文路徑者在所屬source記實際定位。未取得正文的2018承重蛋圈及脊索腐敗實驗不收，羽毛另讀Slater團隊有原文的控制研究。"
+    },
+    {
+      "name": "burrow",
+      "url": "https://www.bio-nica.info/biblioteca/varricchio2006dinoburrowing.pdf",
+      "error": "<urlopen error [WinError 10054] 遠端主機已強制關閉一個現存的連線。>",
+      "resolution": "有原文路徑者在所屬source記實際定位。未取得正文的2018承重蛋圈及脊索腐敗實驗不收，羽毛另讀Slater團隊有原文的控制研究。"
+    },
+    {
+      "name": "whale",
+      "url": "https://repositorio.uchile.cl/bitstream/2250/119857/1/Repeated-mass-strandings-of-Miocene-marine-mammals-from-Atacama-Region-of-Chile-point-to-sudden-death-at-sea.pdf",
+      "error": "StartTag: invalid element name, line 1, column 2 (<string>, line 1)",
+      "resolution": "有原文路徑者在所屬source記實際定位。未取得正文的2018承重蛋圈及脊索腐敗實驗不收，羽毛另讀Slater團隊有原文的控制研究。"
+    },
+    {
+      "name": "feather",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3645052/fullTextXML",
+      "error": "HTTP Error 500:",
+      "resolution": "有原文路徑者在所屬source記實際定位。未取得正文的2018承重蛋圈及脊索腐敗實驗不收，羽毛另讀Slater團隊有原文的控制研究。"
+    },
+    {
+      "name": "decay",
+      "url": "https://www.nature.com/articles/nature08745.pdf",
+      "error": "Specification mandates value for attribute crossorigin, line 51, column 65 (<string>, line 51)",
+      "resolution": "有原文路徑者在所屬source記實際定位。未取得正文的2018承重蛋圈及脊索腐敗實驗不收，羽毛另讀Slater團隊有原文的控制研究。"
+    },
+    {
+      "name": "leaf",
+      "url": "https://repository.si.edu/server/api/core/bitstreams/a168b545-1b7a-459d-ba73-da79cd1dd672/content",
+      "error": "HTTP Error 403: Forbidden",
+      "resolution": "有原文路徑者在所屬source記實際定位。未取得正文的2018承重蛋圈及脊索腐敗實驗不收，羽毛另讀Slater團隊有原文的控制研究。"
+    },
+    {
+      "name": "nest2",
+      "url": "https://royalsocietypublishing.org/doi/pdf/10.1098/rsbl.2018.0135",
+      "error": "HTTP Error 403: Forbidden",
+      "resolution": "有原文路徑者在所屬source記實際定位。未取得正文的2018承重蛋圈及脊索腐敗實驗不收，羽毛另讀Slater團隊有原文的控制研究。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave44-earth-figs.jpg",
+      "sha256": "9de8ac72c9dc4d3fc01c259147ea4a2d3aa3ad71f593f2770c246e4f20ce4621",
+      "scope": "另目讀獸腳類手印圖5、魚嘴印圖3、孔隙對蛋重圖3、模型溫度圖5。照片僅作研究，不納入對外製作。"
+    }
+  ],
+  "sample_artifact": {
+    "file": ".cache/w44-sample-earth.json",
+    "sha256": "c91b446e6b038e0660654c637f9eddd043fe43752c2d6a00c1cf0f3b741ee9b6"
+  },
+  "timing_checks": [
+    {
+      "id": "W44S-T01",
+      "body_seconds": 71,
+      "chapter_seconds": [
+        26,
+        45
+      ],
+      "core_seconds": {
+        "S44-001": 71
+      },
+      "max_beat_seconds": 23,
+      "status": "PAPER_BUDGET_AFTER_ROOT_OFFLINE_NARRATION",
+      "offline_narration_seconds": 63.496
+    },
+    {
+      "id": "W44S-T02",
+      "body_seconds": 69,
+      "chapter_seconds": [
+        36,
+        33
+      ],
+      "core_seconds": {
+        "S44-003": 36,
+        "S44-008": 33
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W44S-T03",
+      "body_seconds": 68,
+      "chapter_seconds": [
+        33,
+        35
+      ],
+      "core_seconds": {
+        "S44-005": 33,
+        "S44-006": 35
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W44S-T04",
+      "body_seconds": 57,
+      "chapter_seconds": [
+        28,
+        29
+      ],
+      "core_seconds": {
+        "S44-002": 57
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W44S-T05",
+      "body_seconds": 53,
+      "chapter_seconds": [
+        26,
+        27
+      ],
+      "core_seconds": {
+        "S44-009": 53
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "limits": [
+    "6篇有效下載原始研究XML或PDF，另3篇用Web指定正文擷取。未重跑足印投影、實際埋藏或熱模型。",
+    "S44-004、007仍是可研究素材，未塞入此五案。屍骨死因、洞主行為、魚種、巢內實際胚胎和古葉造跡者皆有推斷界線。"
+  ],
+  "revision_history": [
+    {
+      "before_files": [
+        {
+          "file": "batches/wave44-earth.json",
+          "sha256": "7692363e187b9ecbe7f62b4b42a86a7f3bc5ce98d961f0b7f49203b1b9a774f1"
+        },
+        {
+          "file": "reviews/wave44-earth-themes.json",
+          "sha256": "f23c9957f7e38ecd14bdb31116c00a9462df2bf4b8d43c5fc971c026c7e2cfa5"
+        },
+        {
+          "file": "reviews/wave44-earth-author.json",
+          "sha256": "a42718440e4b98203db755d806ab87633eb073177f7df86b5805e4edb9af6389"
+        }
+      ],
+      "after_batch_sha256": "e59caeea546afd2b1b384c1c232507eadb5d9eb2839bb414156b366c7873b766",
+      "after_themes_sha256": "9a068a1ef90aaa4500a39afcfe92ce9d6e4e9c21ae1cd3688529db69e2e1efcf",
+      "changes": [
+        "S44-003問句及兩處界線把排除改成較不支持水搬。",
+        "S44-005與T03補入原文表6現生覆蓋巢的普通與親緣判別法分對17/20、0/20。",
+        "S44-009補讀兩地標本正文與圖4／8個案分項，說明蒙大拿常居中、局部換側。沒有改樣讀與五案秒數。"
+      ]
+    }
+  ]
+}

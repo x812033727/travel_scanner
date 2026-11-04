@@ -1,0 +1,224 @@
+{
+  "status": "AUTHOR_REVISED_AWAITING_TARGETED_READBACK",
+  "created_on": "2026-11-01",
+  "batch_file": "docs/videos/so-thats-why/pool/batches/wave6-plants-garden.json",
+  "batch_sha256": "2a42fb26d9768836bf46238fab555ad833b8c00fcd489ec9d8a0f9f2e558e001",
+  "theme_file": "docs/videos/so-thats-why/pool/reviews/wave6-plants-themes.json",
+  "theme_sha256": "b03a8e9a7136a3622c31738181c89884ced93de8463c858251a3632eaa1a6a58",
+  "counts": {
+    "candidates": 16,
+    "sources": 32,
+    "not_added": 19,
+    "themes": 3
+  },
+  "baseline": {
+    "raw_records": 2895,
+    "selected": 2546,
+    "pool_sha256": "0ddfff1ba218f4bb81e5f54f2418ec9ac1e7a5866c2bcc8ef3bdd89837f4a918"
+  },
+  "scope": "作者題級來源篩選與紙上組片；非獨立覆核、劇本核准或觀眾試看。",
+  "readback_method": [
+    "對2895筆raw_records的question、answer_target、scope、mechanism_key做全文中英文關鍵字搜索；命中200筆廣義植物相關記錄，初次輸出截斷後分前後各100筆讀回，不宣稱逐題精讀全2895筆。",
+    "另以graft/chimera/triploid/vernalization/embolism/abscission/水勢/根瘤/休眠/色素/門檻等精確字搜尋，逐讀返回的既有目標與範圍；因此移除V3073與D2090同核心案例。",
+    "32個來源均有指定已讀段與方法；包含供退題保存的頁面。R6-S015、S022、S024僅讀原研究摘要，沒有聲稱全文。其餘含大學教材、研究機構對自身研究的報導及已讀原論文指定正文。",
+    "逐列自審初版21題後主動退R6010/R6015/R6016，再接受pool_physics鎖前來源預讀退R6012/R6021；最後16題，保留原ID和來源。未搬課後題、原圖或長段原文。"
+  ],
+  "duplicate_flags": [
+    {
+      "ids": [
+        "R6006",
+        "B2218",
+        "V3043",
+        "V3044"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "低溫歷史在回暖後維持的FLC沉默；不是種子休眠解除，也不只是一般染色質可接近性。"
+    },
+    {
+      "ids": [
+        "R6008",
+        "L080"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "既有為有限／無限生長，本題為FT/TFL1競爭FD的命運調節；如進稿只列分類則不保留。"
+    },
+    {
+      "ids": [
+        "R6009",
+        "L104"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "既有以光週期判季節；新題是葉片到莖頂的可移動蛋白訊號。"
+    },
+    {
+      "ids": [
+        "R6017",
+        "A5002"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "共有鈣訊號時間疊加，但新題把衰減和閉合決策門檻相連；舊題是同肌纖維張力疊加。非作者若認為核心不足，接受合併。"
+    },
+    {
+      "ids": [
+        "R6007",
+        "H3086"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "繡球是鋁與有機色素複合顯色；不是d軌域配位場分裂（Al3+不能照H3086動畫解釋）。"
+    },
+    {
+      "ids": [
+        "R6020",
+        "L107"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "根瘤糖／固定氮交換已收，新題專問低游離氧與呼吸供氧的矛盾。"
+    },
+    {
+      "ids": [
+        "R6013"
+      ],
+      "author_position": "single_core_with_variant",
+      "reason": "Ca在果實的案例留同題來源；不為葉/果器官不同另加一筆。"
+    },
+    {
+      "ids": [
+        "R6003",
+        "R6019"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "奇數套數造成配子分配困難，與無受精時果實生長訊號啟動不同；授粉刺激西瓜不另拆。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "ids": [
+        "R6-S004"
+      ],
+      "note": "不採LI層葉緣顯色的一般化；只用可有不同基因型細胞層及指定葉插案例。"
+    },
+    {
+      "ids": [
+        "R6-S008",
+        "R6-S009"
+      ],
+      "note": "穩定FLC沉默已有研究支持，但Polycomb寡聚化段明為假說，不納入目標。"
+    },
+    {
+      "ids": [
+        "R6-S010"
+      ],
+      "note": "只讀Introduction/Conclusion；機制限大葉繡球，不是土壤pH與萼片pH直接相等。"
+    },
+    {
+      "ids": [
+        "R6-S015",
+        "R6-S022",
+        "R6-S024"
+      ],
+      "note": "摘要來源三頁；組片／逐主張進稿仍須補全文相應結果或可靠完整正文。"
+    },
+    {
+      "ids": [
+        "R6-S017",
+        "R6-S018"
+      ],
+      "note": "只用植物內再分配與運輸的比較；不做缺素診斷，亦不採土壤磷逕流的過度簡化。"
+    },
+    {
+      "ids": [
+        "R6-S020"
+      ],
+      "note": "插穗極性缺足夠機制已退題；不採莖根生長素方向一律相同。"
+    },
+    {
+      "ids": [
+        "R6-S023"
+      ],
+      "note": "2006年舊版只用樹木隔離傷區機制，不用其傷口整理或填洞建議。"
+    },
+    {
+      "ids": [
+        "R6-S027"
+      ],
+      "note": "只用受控補水／胚根突出前階段；不採一律提高產量、延長壽命及任何浸泡配方。"
+    },
+    {
+      "ids": [
+        "R6-S028"
+      ],
+      "note": "盆栽例併D2090；不採只有整盆飽和後才發生重力流的絕對敘述。"
+    }
+  ],
+  "failed_access": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6100629/",
+      "result": "reCAPTCHA；MDPI同論文429，已改實讀Europe PMC官方XML指定正文，詳來源表。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6139683/",
+      "result": "reCAPTCHA；Europe PMC查詢503與XML500；僅採Duke所刊原研究摘要。"
+    },
+    {
+      "url": "https://open.lib.umn.edu/horticulture/chapter/4-2-plant-hormones/",
+      "result": "web初回頁首，後續web及urllib403，未列為已讀來源；改用已完整讀到的UF StageII/III。"
+    },
+    {
+      "url": "https://extension.wsu.edu/pnw-gardeners-handbook/chapter-23-pruning-woody-landscape-plants/",
+      "result": "403，未列來源；採Tennessee SP683已讀PDF段。"
+    },
+    {
+      "url": "https://pressbooks.lib.vt.edu/treesteward/chapter/4/",
+      "result": "web初回部分正文但未見目標CODIT完整段；後web/urllib403，未列來源。"
+    },
+    {
+      "url": "https://extension.psu.edu/understanding-the-spread-of-decay-in-trees",
+      "result": "403，未列來源。"
+    },
+    {
+      "url": "https://www.extension.msstate.edu/publications/understanding-pruning-and-injury-wounds-fruit-trees",
+      "result": "timeout，未列來源。"
+    },
+    {
+      "url": "https://www.science.org/doi/10.1126/science.adv5429",
+      "result": "403；2026 Penn報導讀過但本批不用其LFY/TFL1回饋，採2020原研究已讀競爭段。"
+    }
+  ],
+  "quantity_decision": "不硬湊35–50。初版21題再退3個僅現象／定位頁，另接受非作者鎖前預讀退2個功能重述題，最後交16題；19筆not_added包括14個原先退題與5個保留原ID的退題。",
+  "thin_topic_flags": [
+    {
+      "id": "R6014",
+      "reason": "具呼吸還原顯色原理；若成片只能說染紅就是活的，應暫緩，不保留70秒。"
+    },
+    {
+      "id": "R6019",
+      "reason": "雖摘要含訊號交互結果，實際題案仍需原文支撐可視覺化因果，不能只念激素名。"
+    }
+  ],
+  "verification": {
+    "json_parse": true,
+    "unique_candidate_ids": true,
+    "unique_mechanism_keys": true,
+    "source_links_resolve": true,
+    "utf8_lf": true,
+    "theme_timing": "185/225/170秒；逐章、逐beat、逐核心預算已本機核對。非實測。"
+  },
+  "remaining": "由pool_physics作獨立覆核後再由root決定中央選入；此作者收據不自批通過。來源抽樣覆核、逐句稿查核、原創圖像、旁白試讀和製作均未完成。",
+  "review_corrections": {
+    "review_file": "docs/videos/so-thats-why/pool/reviews/wave6-physics-reviews-plants.json",
+    "review_sha256": "b3717d4e85c054ee1f1a70f95808f40aa479ae1d78336fdc11e8ab2cdbdc88ed",
+    "theme_before_sha256": "80e4dc6df4b72d7f3a23bdec4d5dc4f02cf39673923c358380c16ea0858b8e86",
+    "changes": [
+      {
+        "id": "PLANTS01",
+        "change": "T01第二章改為生長素誘導需要GA的單向必要性；保留全文待補限制。"
+      },
+      {
+        "id": "PLANTS02",
+        "change": "T02第一、末章回顧各30→10秒；75+75+75=225，刪末章改150秒。"
+      }
+    ],
+    "batch_unchanged": true,
+    "status": "AWAITING_INDEPENDENT_TARGETED_READBACK"
+  }
+}

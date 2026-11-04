@@ -1,0 +1,820 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "pool_physics",
+  "production_ready": false,
+  "scope": "球場與水面上的接觸：動作相似，受力位置、接觸先後、可變形的部位或姿態卻可讓結果不同。",
+  "baseline": {
+    "head": "ad12e51f985a572a7b05b5d3f606b186e10f629d",
+    "selected": 3285,
+    "raw_records": 3666,
+    "not_added": 1691,
+    "pool_sha256": "3dfd8fd5bcdf200642310151769feacb5251ccb2085e4c2ca15c2d3ff394511c",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3285.json.gz",
+      "sha256": "c32e460947933ba33b93d83b67ea4ea4edd65d9bf8c6091b08e3566c6c2789db"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave41-physics.json",
+      "sha256": "7353336909bd6e7e80cde9ad7119a94d96f89912f1a9ab325395294d0ae46c97"
+    },
+    {
+      "file": "reviews/wave41-physics-themes.json",
+      "sha256": "883729253c0060c444edcc19d4c55338357ed485caa58ded0381ba355e9aaf56"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "original_research": 9,
+    "candidate_sources": 9,
+    "not_added_only_sources": 0,
+    "not_added": 18,
+    "near_pairs": 19,
+    "themes": 5
+  },
+  "dedup_reading": {
+    "method": "全3666raw與1691未收，以球具與摩擦/自旋/縫線/彈跳檢到24raw和22未收，另查水漂、凸縫位置、呼啦圈、母球、擊心及舊波30完整問答。P30-NA008僅把一般性落點預報退題；本輪改取不轉球的量測分離位置。",
+    "scan_files": [
+      {
+        "file": ".cache/wave41-physics-scan-raw_records.json",
+        "sha256": "17f052499623ea9b847c6e654f72d7e3a2a10cc4a7f66ba159f97b5d2fdb203e"
+      },
+      {
+        "file": ".cache/wave41-physics-scan-not_added.json",
+        "sha256": "45639a157f48757a077afce87c07354f85128fdc8f2457a8857a9dd485d66b1c"
+      }
+    ],
+    "common_semantic_status": "待root共同語意與獨立逐題核對。"
+  },
+  "near_pairs": [
+    {
+      "a": "X41-001",
+      "b": "P26003",
+      "proposed": "distinct",
+      "reason": "彈床透過共享底面在兩球間傳能；壁球是同球尚接觸牆就遇第二個接觸點，地面力矩消去原豎直運動。",
+      "a_snapshot": {
+        "id": "X41-001",
+        "question": "壁球明明打在牆腳，為什麼有時貼著地出去，一點也沒往上彈？",
+        "answer_target": "關鍵是第二個接觸發生時第一個是否還在。球先撞上牆，在牆上受壓並往下滾；若尚未結束這段滾動就碰地，地面給的反向力矩會阻止它繼續滾下去。牆面方向先存下的彈性能仍可把它橫向送出去。",
+        "scope": "限研究的球、牆地摩擦、來球角度與撞牆高度窗。離牆再落地、兩面同時接觸都不等同此種先後。"
+      },
+      "b_snapshot": {
+        "id": "P26003",
+        "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+        "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+        "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。"
+      }
+    },
+    {
+      "a": "X41-001",
+      "b": "P30004",
+      "proposed": "distinct",
+      "reason": "棒面抓球與切向變形可使旋轉超過剛體滾動預測，不是兩個垂直面的接觸時間重疊。",
+      "a_snapshot": {
+        "id": "X41-001",
+        "question": "壁球明明打在牆腳，為什麼有時貼著地出去，一點也沒往上彈？",
+        "answer_target": "關鍵是第二個接觸發生時第一個是否還在。球先撞上牆，在牆上受壓並往下滾；若尚未結束這段滾動就碰地，地面給的反向力矩會阻止它繼續滾下去。牆面方向先存下的彈性能仍可把它橫向送出去。",
+        "scope": "限研究的球、牆地摩擦、來球角度與撞牆高度窗。離牆再落地、兩面同時接觸都不等同此種先後。"
+      },
+      "b_snapshot": {
+        "id": "P30004",
+        "question": "斜打靜止的棒球，為什麼離棒後會比硬球沿棒面滾過的預測轉得更快？",
+        "answer_target": "若把接觸物當作剛體，從滑動到純滾動給出一條轉速基準。實測轉速可超過它；模型讓接觸區短暫抓住棒面，球體在切向拉歪並回復，離棒時的轉動便能超出純滾動情況。",
+        "scope": "揮棒撞靜止棒球與壘球的研究。由高速影像測出射，內部切向回復屬符合資料的模型；不同球種的差距不等於已隔離單一材質。"
+      }
+    },
+    {
+      "a": "X41-002",
+      "b": "P23003",
+      "proposed": "distinct",
+      "reason": "中間主軸無外力矩失穩與水面對圓盤施力矩、快速自轉使入水姿態穩定不同。",
+      "a_snapshot": {
+        "id": "X41-002",
+        "question": "一片圓盤斜著飛向水面，為什麼轉得夠快，盤面才容易撐住原來的角度？",
+        "answer_target": "水壓會改變圓盤的姿態；若自轉的時間尺度比短暫入水過程還短，角動量使盤面抵抗這段擾動，就能維持迎水的斜面。在固定發射速度與入水方向的測量裡，增加轉速後接觸時間縮短，最後趨於平臺。",
+        "scope": "限剛性鋁盤與受控流況，中等轉速也可能翻動後彈出，不能把轉快形容為必跳或給任意石片通用角。"
+      },
+      "b_snapshot": {
+        "id": "P23003",
+        "question": "同一個球拍換個方向轉，為什麼有一個方向特別容易翻面？",
+        "answer_target": "三個不同主慣量中，繞中間者旋轉時小偏差可被角速度分量的耦合放大；繞最大或最小者則有穩定的小擾動。翻的是物體座標方向，實驗室中的總角動量仍可保持不變。",
+        "scope": "無外力矩剛體理論/數值，不冒充新實驗。相同球拍不改質量分布；需初始擾動與不同主慣量，並非完美中間軸狀態無因翻轉，也非每一圈必精確180度。"
+      }
+    },
+    {
+      "a": "X41-002",
+      "b": "P30001",
+      "proposed": "distinct",
+      "reason": "羽球羽裙與球頭的重心差使物體轉回迎風，剛盤在水中則用自旋抵抗姿態改變。",
+      "a_snapshot": {
+        "id": "X41-002",
+        "question": "一片圓盤斜著飛向水面，為什麼轉得夠快，盤面才容易撐住原來的角度？",
+        "answer_target": "水壓會改變圓盤的姿態；若自轉的時間尺度比短暫入水過程還短，角動量使盤面抵抗這段擾動，就能維持迎水的斜面。在固定發射速度與入水方向的測量裡，增加轉速後接觸時間縮短，最後趨於平臺。",
+        "scope": "限剛性鋁盤與受控流況，中等轉速也可能翻動後彈出，不能把轉快形容為必跳或給任意石片通用角。"
+      },
+      "b_snapshot": {
+        "id": "P30001",
+        "question": "羽球被打回去時，為什麼球頭越過正前方，擺幾下才穩住？",
+        "answer_target": "球頭較重，羽裙的迎風面積較大。歪著飛時空氣阻力對重心產生回復力矩，球已經在轉，首次越過對準方向時不會立刻停下。擺動本身也受空氣阻力，後續振幅逐漸縮小。",
+        "scope": "限本研究擊拍高速影像及簡化模型。兩次擊拍的離拍速度與初始轉速皆有差別，不能單獨歸因其中之一。"
+      }
+    },
+    {
+      "a": "X41-003",
+      "b": "X41-002",
+      "proposed": "distinct",
+      "reason": "硬盤本來就扁，自旋減少傾角改變；軟球初無盤面，受水壓後產生接水面、面積及時變角度。",
+      "a_snapshot": {
+        "id": "X41-003",
+        "question": "球一開始明明是圓的，怎麼也能像扁石頭一樣在水面打水漂？",
+        "answer_target": "柔軟球受到水力時變扁，會形成暫時的斜面，與水接觸的面積也變大。水對這一面的作用有向上分量，因此有些硬球沒入的入水條件，軟球仍可跳出。",
+        "scope": "實驗改材料剪切模數，面積與動態角度不獨立；在極軟近似下才主要由面積受控。不能把姿態當起投時已給定。"
+      },
+      "b_snapshot": {
+        "id": "X41-002",
+        "question": "一片圓盤斜著飛向水面，為什麼轉得夠快，盤面才容易撐住原來的角度？",
+        "answer_target": "水壓會改變圓盤的姿態；若自轉的時間尺度比短暫入水過程還短，角動量使盤面抵抗這段擾動，就能維持迎水的斜面。在固定發射速度與入水方向的測量裡，增加轉速後接觸時間縮短，最後趨於平臺。",
+        "scope": "限剛性鋁盤與受控流況，中等轉速也可能翻動後彈出，不能把轉快形容為必跳或給任意石片通用角。"
+      }
+    },
+    {
+      "a": "X41-003",
+      "b": "I12008",
+      "proposed": "distinct",
+      "reason": "液滴因氣膜未排空可不合併；本題固體球不是靠兩個液面間的膜，而是彈性形變增加推水面。",
+      "a_snapshot": {
+        "id": "X41-003",
+        "question": "球一開始明明是圓的，怎麼也能像扁石頭一樣在水面打水漂？",
+        "answer_target": "柔軟球受到水力時變扁，會形成暫時的斜面，與水接觸的面積也變大。水對這一面的作用有向上分量，因此有些硬球沒入的入水條件，軟球仍可跳出。",
+        "scope": "實驗改材料剪切模數，面積與動態角度不獨立；在極軟近似下才主要由面積受控。不能把姿態當起投時已給定。"
+      },
+      "b_snapshot": {
+        "id": "I12008",
+        "question": "液滴碰到已經濕的表面，怎麼還可能像球一樣彈開？",
+        "answer_target": "液滴與濕層間的空氣需時間排走；若薄氣層撐過變形回彈，液滴尚未真正接通就能離開，排空破膜則會合併。",
+        "scope": "實驗為矽油滴撞高黏矽油薄層；氣層是未排走的空氣，不是高溫蒸氣，也不是外接打氣。"
+      }
+    },
+    {
+      "a": "X41-004",
+      "b": "P30004",
+      "proposed": "distinct",
+      "reason": "舊題測球的切向回彈後自旋超剛體基準；本題改桿頭巧克看偏心撞擊的初始出球角，滑得大反而自旋小。",
+      "a_snapshot": {
+        "id": "X41-004",
+        "question": "把球桿偏向母球一側擊出，為什麼沒擦巧克的那一下常更打偏，球卻轉得比較少？",
+        "answer_target": "桿頭未上巧克時比較容易沿球面滑，作用力更偏向球面法向；初始出球方向偏離桿軸較多，切向衝量較小。擦過巧克讓桿頭能抓住球、彈性形變，實測在可比的偏擊位置通常有較小出球偏角及較大自旋。",
+        "scope": "限較緩的受控偏擊與所測皮頭；有無滑動和接觸彈性分清，並非射出後的曲線球或母球碰庫後反彈。"
+      },
+      "b_snapshot": {
+        "id": "P30004",
+        "question": "斜打靜止的棒球，為什麼離棒後會比硬球沿棒面滾過的預測轉得更快？",
+        "answer_target": "若把接觸物當作剛體，從滑動到純滾動給出一條轉速基準。實測轉速可超過它；模型讓接觸區短暫抓住棒面，球體在切向拉歪並回復，離棒時的轉動便能超出純滾動情況。",
+        "scope": "揮棒撞靜止棒球與壘球的研究。由高速影像測出射，內部切向回復屬符合資料的模型；不同球種的差距不等於已隔離單一材質。"
+      }
+    },
+    {
+      "a": "X41-004",
+      "b": "P30003",
+      "proposed": "distinct",
+      "reason": "測手腕推力/拍的振動節點與母球起始偏角、桿尖抓滑不同。",
+      "a_snapshot": {
+        "id": "X41-004",
+        "question": "把球桿偏向母球一側擊出，為什麼沒擦巧克的那一下常更打偏，球卻轉得比較少？",
+        "answer_target": "桿頭未上巧克時比較容易沿球面滑，作用力更偏向球面法向；初始出球方向偏離桿軸較多，切向衝量較小。擦過巧克讓桿頭能抓住球、彈性形變，實測在可比的偏擊位置通常有較小出球偏角及較大自旋。",
+        "scope": "限較緩的受控偏擊與所測皮頭；有無滑動和接觸彈性分清，並非射出後的曲線球或母球碰庫後反彈。"
+      },
+      "b_snapshot": {
+        "id": "P30003",
+        "question": "打中網球拍上最不震的地方，手腕也最不會被推動嗎？",
+        "answer_target": "撞在主振動的節點，手上的振動分量很小，整支拍仍會平移和轉動。換到擊心附近，柄在手的不同位置施加的衝擊可部分抵消，前臂起始速度很小，局部壓力與少量振動仍能測到。",
+        "scope": "沿靜止球拍中軸正撞、單手握持，區分局部力和腕部所測的前臂初始速度。沒有測哪裡回球最快，也不把力抵消畫成手上各點都沒有受力。"
+      }
+    },
+    {
+      "a": "X41-005",
+      "b": "P30004",
+      "proposed": "distinct",
+      "reason": "通用抓住球的切向接觸是背景；操弄交點數、用鏡後高速攝影量可位移主線，是拍線自身的回移。",
+      "a_snapshot": {
+        "id": "X41-005",
+        "question": "同樣的球斜撞固定網球拍，為什麼少幾條橫線，球離拍時反而更會上旋？",
+        "answer_target": "橫線少、交點少的線床，慢放可看見主線橫移較多。研究者認為主線在球還接觸時彈回，能額外帶動球旋轉；受測固定拍框中，上旋隨橫線數減少而增加，離拍總速度未見顯著差異。",
+        "scope": "入射下旋、速度與角度可比；實測是線位移和離拍狀態，回移給球加轉是解釋。不能推出所有人實際揮拍的最佳穿線。"
+      },
+      "b_snapshot": {
+        "id": "P30004",
+        "question": "斜打靜止的棒球，為什麼離棒後會比硬球沿棒面滾過的預測轉得更快？",
+        "answer_target": "若把接觸物當作剛體，從滑動到純滾動給出一條轉速基準。實測轉速可超過它；模型讓接觸區短暫抓住棒面，球體在切向拉歪並回復，離棒時的轉動便能超出純滾動情況。",
+        "scope": "揮棒撞靜止棒球與壘球的研究。由高速影像測出射，內部切向回復屬符合資料的模型；不同球種的差距不等於已隔離單一材質。"
+      }
+    },
+    {
+      "a": "X41-005",
+      "b": "D9001",
+      "proposed": "distinct",
+      "reason": "撥弦位置決定泛音，不比較球碰上球拍時主線側移。",
+      "a_snapshot": {
+        "id": "X41-005",
+        "question": "同樣的球斜撞固定網球拍，為什麼少幾條橫線，球離拍時反而更會上旋？",
+        "answer_target": "橫線少、交點少的線床，慢放可看見主線橫移較多。研究者認為主線在球還接觸時彈回，能額外帶動球旋轉；受測固定拍框中，上旋隨橫線數減少而增加，離拍總速度未見顯著差異。",
+        "scope": "入射下旋、速度與角度可比；實測是線位移和離拍狀態，回移給球加轉是解釋。不能推出所有人實際揮拍的最佳穿線。"
+      },
+      "b_snapshot": {
+        "id": "D9001",
+        "question": "同一條弦撥在中央或靠近兩端，為什麼音色會不同？",
+        "answer_target": "撥點決定初始形狀投影到各模態的比例；在某模態節點施加理想點撥，不激發該模態。",
+        "scope": "固定長度張力的理想撥弦；只改撥點，不把所有實琴輸出歸於此。"
+      }
+    },
+    {
+      "a": "X41-006",
+      "b": "P30002",
+      "proposed": "distinct",
+      "reason": "足球近零自旋的尾流渦位置隨時間偏擺；固定棒球此題操弄縫的迎風角，辨分離被縫釘住或出現在縫後。",
+      "a_snapshot": {
+        "id": "X41-006",
+        "question": "棒球縫線凸起差不多，為什麼換個朝向，空氣有時越過它，有時就在那裡離開球面？",
+        "answer_target": "不轉棒球的流場量測顯示，縫線位在上游某些區域時能促進邊界層轉成紊流，分離不必就在縫上；若落在後方逆壓力梯度區，又可能像擾流片讓氣流提早離面。兩側縫線與流向的相對位置，因此會改變分離的不對稱。",
+        "scope": "只收固定朝向、不轉球的分離位置；不是用某條縫預測下一球落點。不同速率與縫高影響可觀察範圍，未實測單球完整投球軌跡。"
+      },
+      "b_snapshot": {
+        "id": "P30002",
+        "question": "足球幾乎不轉，怎麼還會在飛行途中忽然往旁邊飄？",
+        "answer_target": "即使球幾乎不旋轉，球後的尾流也能歪向不同方位。風洞球後的縱向渦位置會變，對應的橫向氣動力也會變；側力持續一段時間就足以把球推離原先的路線。",
+        "scope": "限所測球與特定速度範圍。自由落體和發球機試驗量軌跡，Type-A固定球在風洞另測力並拍尾流。不能由單一截圖預報每次偏移。"
+      }
+    },
+    {
+      "a": "X41-006",
+      "b": "P23005",
+      "proposed": "distinct",
+      "reason": "舊題倒旋使兩側進入不同轉捩狀態，升力可反向；本實驗球不轉，縫線隨位置可促轉捩也可直接成分離點。",
+      "a_snapshot": {
+        "id": "X41-006",
+        "question": "棒球縫線凸起差不多，為什麼換個朝向，空氣有時越過它，有時就在那裡離開球面？",
+        "answer_target": "不轉棒球的流場量測顯示，縫線位在上游某些區域時能促進邊界層轉成紊流，分離不必就在縫上；若落在後方逆壓力梯度區，又可能像擾流片讓氣流提早離面。兩側縫線與流向的相對位置，因此會改變分離的不對稱。",
+        "scope": "只收固定朝向、不轉球的分離位置；不是用某條縫預測下一球落點。不同速率與縫高影響可觀察範圍，未實測單球完整投球軌跡。"
+      },
+      "b_snapshot": {
+        "id": "P23005",
+        "question": "球仍朝同一方向倒旋，空氣為什麼有時反而把它往下壓？",
+        "answer_target": "受測高爾夫球接近邊界層轉捩區時，倒旋讓兩側相對氣流條件不同；一側保持層流、另一側先轉湍流的解釋改變分離位置，可令升力方向與通常倒旋相反。繼續改變流速或自旋條件又可回到正升力。",
+        "scope": "限三球型和測試範圍；負升力由飛行數據扣重力與初始垂速等推得，並非只看球往下掉。邊界層/分離點為採用文獻的解釋圖，不是本研究直接PIV量到；不以換球型宣稱單一凹坑因果。"
+      }
+    },
+    {
+      "a": "X41-007",
+      "b": "P30003",
+      "proposed": "distinct",
+      "reason": "節點與擊心判手腕感受；新題問棒壁儲能若趕及離棒前回傳，能否減少球自身耗損。",
+      "a_snapshot": {
+        "id": "X41-007",
+        "question": "中空球棒被球壓扁一點，為什麼有時比很硬的棒面更能把球送回去？",
+        "answer_target": "球若自己壓縮會耗掉部分能量。中空棒壁在碰撞中徑向變形，可以分擔這段壓縮；當棒壁的彈性回復趕在球離開之前，才有一部分儲能能交回球。模型的恢復係數因此並非隨棒變軟一路升高。",
+        "scope": "一支壘球棒不同擊點的實測與模型比較，模態參數掃描為模型；不等於任何鋁棒都比任何木棒能打遠。"
+      },
+      "b_snapshot": {
+        "id": "P30003",
+        "question": "打中網球拍上最不震的地方，手腕也最不會被推動嗎？",
+        "answer_target": "撞在主振動的節點，手上的振動分量很小，整支拍仍會平移和轉動。換到擊心附近，柄在手的不同位置施加的衝擊可部分抵消，前臂起始速度很小，局部壓力與少量振動仍能測到。",
+        "scope": "沿靜止球拍中軸正撞、單手握持，區分局部力和腕部所測的前臂初始速度。沒有測哪裡回球最快，也不把力抵消畫成手上各點都沒有受力。"
+      }
+    },
+    {
+      "a": "X41-007",
+      "b": "P26003",
+      "proposed": "distinct",
+      "reason": "兩顆球的撞擊時差交換能量，不同於單球和可變形空心棒的恢復時機。",
+      "a_snapshot": {
+        "id": "X41-007",
+        "question": "中空球棒被球壓扁一點，為什麼有時比很硬的棒面更能把球送回去？",
+        "answer_target": "球若自己壓縮會耗掉部分能量。中空棒壁在碰撞中徑向變形，可以分擔這段壓縮；當棒壁的彈性回復趕在球離開之前，才有一部分儲能能交回球。模型的恢復係數因此並非隨棒變軟一路升高。",
+        "scope": "一支壘球棒不同擊點的實測與模型比較，模態參數掃描為模型；不等於任何鋁棒都比任何木棒能打遠。"
+      },
+      "b_snapshot": {
+        "id": "P26003",
+        "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+        "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+        "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。"
+      }
+    },
+    {
+      "a": "X41-007",
+      "b": "X41-005",
+      "proposed": "distinct",
+      "reason": "拍線平面內回移對轉速，棒壁徑向變形對反彈能量，受控結構與終點不同。",
+      "a_snapshot": {
+        "id": "X41-007",
+        "question": "中空球棒被球壓扁一點，為什麼有時比很硬的棒面更能把球送回去？",
+        "answer_target": "球若自己壓縮會耗掉部分能量。中空棒壁在碰撞中徑向變形，可以分擔這段壓縮；當棒壁的彈性回復趕在球離開之前，才有一部分儲能能交回球。模型的恢復係數因此並非隨棒變軟一路升高。",
+        "scope": "一支壘球棒不同擊點的實測與模型比較，模態參數掃描為模型；不等於任何鋁棒都比任何木棒能打遠。"
+      },
+      "b_snapshot": {
+        "id": "X41-005",
+        "question": "同樣的球斜撞固定網球拍，為什麼少幾條橫線，球離拍時反而更會上旋？",
+        "answer_target": "橫線少、交點少的線床，慢放可看見主線橫移較多。研究者認為主線在球還接觸時彈回，能額外帶動球旋轉；受測固定拍框中，上旋隨橫線數減少而增加，離拍總速度未見顯著差異。",
+        "scope": "入射下旋、速度與角度可比；實測是線位移和離拍狀態，回移給球加轉是解釋。不能推出所有人實際揮拍的最佳穿線。"
+      }
+    },
+    {
+      "a": "X41-008",
+      "b": "K11006",
+      "proposed": "distinct",
+      "reason": "球殼外壓或指定體積決定屈曲後穩定，壁球慢壓則用小孔作內氣洩壓對照，分開殼與氣體的抗力。",
+      "a_snapshot": {
+        "id": "X41-008",
+        "question": "把壁球壓一點，內部的空氣好像沒幫忙；為什麼再壓深些，結果就不同？",
+        "answer_target": "同種藍點球在慢壓試驗中，完整與開小孔洩氣的球，初段需要的力相近。繼續壓縮，密封球的內氣可占體積變小、壓力上升，力曲線比洩氣球升得陡。能把橡膠殼本身的抵抗與內氣額外支撐區分開。",
+        "scope": "比的是藍點壁球慢速加載曲線。加熱和高速碰牆在同文另做，不能直接用慢壓力差換成飛行速度。"
+      },
+      "b_snapshot": {
+        "id": "K11006",
+        "question": "同樣把薄球殼壓凹，為什麼有時停在一個凹坑，有時卻一路塌下去？",
+        "answer_target": "固定外壓會持續推動後屈曲塌陷；固定體積改變時，凹陷後壓力下降，可停在穩定的局部凹坑。",
+        "scope": "來源彈性球殼、指定壓力或指定體積變化的模型；不把塑膠瓶永久凹陷、所有封閉容器都當同條件。"
+      }
+    },
+    {
+      "a": "X41-008",
+      "b": "X41-001",
+      "proposed": "distinct",
+      "reason": "角落球在兩面之間的時間窗決定是否貼地；此處沒有牆角，量同深度的負荷。",
+      "a_snapshot": {
+        "id": "X41-008",
+        "question": "把壁球壓一點，內部的空氣好像沒幫忙；為什麼再壓深些，結果就不同？",
+        "answer_target": "同種藍點球在慢壓試驗中，完整與開小孔洩氣的球，初段需要的力相近。繼續壓縮，密封球的內氣可占體積變小、壓力上升，力曲線比洩氣球升得陡。能把橡膠殼本身的抵抗與內氣額外支撐區分開。",
+        "scope": "比的是藍點壁球慢速加載曲線。加熱和高速碰牆在同文另做，不能直接用慢壓力差換成飛行速度。"
+      },
+      "b_snapshot": {
+        "id": "X41-001",
+        "question": "壁球明明打在牆腳，為什麼有時貼著地出去，一點也沒往上彈？",
+        "answer_target": "關鍵是第二個接觸發生時第一個是否還在。球先撞上牆，在牆上受壓並往下滾；若尚未結束這段滾動就碰地，地面給的反向力矩會阻止它繼續滾下去。牆面方向先存下的彈性能仍可把它橫向送出去。",
+        "scope": "限研究的球、牆地摩擦、來球角度與撞牆高度窗。離牆再落地、兩面同時接觸都不等同此種先後。"
+      }
+    },
+    {
+      "a": "X41-009",
+      "b": "K18004",
+      "proposed": "distinct",
+      "reason": "倒置陀螺接觸點滑動耗能下翻身；呼啦圈由主動橫向繞動的腰形給垂直恢復趨勢。",
+      "a_snapshot": {
+        "id": "X41-009",
+        "question": "機器繞圈的動作一樣，為什麼呼啦圈套在圓錐上會跑掉，換成有腰線的模型卻能回到固定高度？",
+        "answer_target": "斜面接觸力可以有向上分量，卻不保證圈偏高或偏低後能自己回來。控制相同橫向繞動時，直錐上的圈可能一路升或降；合適的凹腰讓斜率隨高度改變，偏離平衡後能產生帶回的趨勢。",
+        "scope": "只採機械剛性模型對照與其力學模型。真人能主動調整動作，不以腰型預測誰能玩呼啦圈。"
+      },
+      "b_snapshot": {
+        "id": "K18004",
+        "question": "翻身陀螺明明在耗能，重心為什麼還能爬高？",
+        "answer_target": "偏心陀螺與桌面滑動接觸產生力矩，重新分配旋轉與傾轉運動；旋轉能的一部分可轉成升高重心的勢能，同時摩擦仍讓總機械能下降。持續純滾動的對照模型沒有同樣翻轉路徑。",
+        "scope": "所讀研究為軸對稱偏心球的滑動摩擦理論及數值解，不是新玩具實驗。初始旋轉、慣量和幾何須滿足條件；接觸持續且模型未完整描述真實柄部撞擊。"
+      }
+    },
+    {
+      "a": "X41-009",
+      "b": "P23003",
+      "proposed": "distinct",
+      "reason": "球拍在空中不受外力矩的翻轉失穩，沒有持續受驅動接觸點。",
+      "a_snapshot": {
+        "id": "X41-009",
+        "question": "機器繞圈的動作一樣，為什麼呼啦圈套在圓錐上會跑掉，換成有腰線的模型卻能回到固定高度？",
+        "answer_target": "斜面接觸力可以有向上分量，卻不保證圈偏高或偏低後能自己回來。控制相同橫向繞動時，直錐上的圈可能一路升或降；合適的凹腰讓斜率隨高度改變，偏離平衡後能產生帶回的趨勢。",
+        "scope": "只採機械剛性模型對照與其力學模型。真人能主動調整動作，不以腰型預測誰能玩呼啦圈。"
+      },
+      "b_snapshot": {
+        "id": "P23003",
+        "question": "同一個球拍換個方向轉，為什麼有一個方向特別容易翻面？",
+        "answer_target": "三個不同主慣量中，繞中間者旋轉時小偏差可被角速度分量的耦合放大；繞最大或最小者則有穩定的小擾動。翻的是物體座標方向，實驗室中的總角動量仍可保持不變。",
+        "scope": "無外力矩剛體理論/數值，不冒充新實驗。相同球拍不改質量分布；需初始擾動與不同主慣量，並非完美中間軸狀態無因翻轉，也非每一圈必精確180度。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "X41-S001",
+      "doi": "10.1073/pnas.2505715122",
+      "primary_body_url": "https://arxiv.org/pdf/2503.03906",
+      "identity_relation": "arXiv:2503.03906v1，與同年PNAS正式版同項研究。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    },
+    {
+      "source_id": "X41-S002",
+      "doi": "10.1017/S0022112005006373",
+      "primary_body_url": "https://www.researchgate.net/publication/232022119_Skipping_stones",
+      "identity_relation": "同文作者公開的RG正文；里昂舊站PDF回首頁，另一鏡像逾時。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    },
+    {
+      "source_id": "X41-S003",
+      "doi": "10.1038/ncomms10551",
+      "primary_body_url": "https://www.nature.com/articles/ncomms10551.pdf",
+      "identity_relation": "原刊開放PDF。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    },
+    {
+      "source_id": "X41-S004",
+      "doi": "10.1119/1.2825392",
+      "primary_body_url": "https://www.physics.usyd.edu.au/~cross/PUBLICATIONS/39.%20squirt.pdf",
+      "identity_relation": "悉尼大學作者網站存放的刊版PDF。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    },
+    {
+      "source_id": "X41-S005",
+      "doi": "10.1007/s12283-013-0118-y",
+      "primary_body_url": "https://oxelosundstk.se/wp-content/uploads/2014/02/Effect-of-string-bed-pattern-on-ball-spin-generation-from-a-tennis-racket.pdf",
+      "identity_relation": "期刊排版PDF由球會公開轉存，標題、作者與刊版DOI匹配。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    },
+    {
+      "source_id": "X41-S006",
+      "doi": "10.1007/s00348-023-03751-3",
+      "primary_body_url": "https://assets-eu.researchsquare.com/files/rs-3016100/v1_covered_68ef049b-1e88-4f28-af6c-9a50c9cb2158.pdf?c=1690721553",
+      "identity_relation": "研究作者預印本DOI 10.21203/rs.3.rs-3016100/v1（2023），與2024原刊同文。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    },
+    {
+      "source_id": "X41-S007",
+      "doi": null,
+      "primary_body_url": "https://www.acs.psu.edu/drussell/bats/Papers/Nathan_Trampoline-ISEA2004.pdf",
+      "identity_relation": "作者在Penn State公開的原會議論文PDF，無已核刊物DOI。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    },
+    {
+      "source_id": "X41-S008",
+      "doi": "10.3311/PPme.18381",
+      "primary_body_url": "https://pp.bme.hu/me/article/download/18381/9200/107372",
+      "identity_relation": "原刊PDF，65(4) pp354–362。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    },
+    {
+      "source_id": "X41-S009",
+      "doi": "10.1073/pnas.2411588121",
+      "primary_body_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11725822/",
+      "identity_relation": "PMC原刊HTML及原Fig1。",
+      "old_exact_matches": [],
+      "count_policy": "刊版與原稿以同一研究計；同研究不同實驗不拆成新核心。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "X41-S001",
+      "scope": "作者稿PDF pp1–5，Fig1a–d三種軌跡、Fig2條件圖與機械模型。",
+      "locator": "作者稿PDF pp1–5，Fig1a–d三種軌跡、Fig2條件圖與機械模型。",
+      "cache": {
+        "file": ".cache/wave41-physics-nick.pdf",
+        "sha256": "2298a1ceffabc1854c60e0049b4a2fcde7cf4f96a5620859b054c01c1d14d2f2",
+        "text_file": ".cache/wave41-physics-nick.txt",
+        "text_sha256": "b1d26e2ffa5da4ffe1bab970f071cdaef2c61f1ce399e4c33e4fdf0750b52200"
+      },
+      "read_via": "指定UA取得原PDF或PMC原刊HTML；定點閱讀結果，目讀圖另列。"
+    },
+    {
+      "source_id": "X41-S002",
+      "scope": "§3.1、Fig6–8（web定點正文L324–605），轉速、盤面角與入水方向分開控制。",
+      "locator": "§3.1、Fig6–8（web定點正文L324–605），轉速、盤面角與入水方向分開控制。",
+      "cache": {
+        "file": ".cache/wave41-physics-rigid-body.txt",
+        "sha256": "07af4d91779971a961cb2a2f3b1a73317b7a0bcc8f64bb542fbfe39d16f049f5",
+        "text_file": ".cache/wave41-physics-rigid-body.txt",
+        "text_sha256": "07af4d91779971a961cb2a2f3b1a73317b7a0bcc8f64bb542fbfe39d16f049f5"
+      },
+      "read_via": "web.open同篇作者公開正文，定點回傳存檔；無原PDF。"
+    },
+    {
+      "source_id": "X41-S003",
+      "scope": "PDF pp2–6，Figs1–4，球體變形、變形波、濕潤面積及入水條件。",
+      "locator": "PDF pp2–6，Figs1–4，球體變形、變形波、濕潤面積及入水條件。",
+      "cache": {
+        "file": ".cache/wave41-physics-elasticpdf.pdf",
+        "sha256": "0430071798859b713bb360a0535391dae0c6fffc0265e106410295976808bba1",
+        "text_file": ".cache/wave41-physics-elasticpdf.txt",
+        "text_sha256": "b18e10719035d81eaf11d06fa41b5b2e161cfe64878567737a8b4613ce90e0a2"
+      },
+      "read_via": "指定UA取得原PDF或PMC原刊HTML；定點閱讀結果，目讀圖另列。"
+    },
+    {
+      "source_id": "X41-S004",
+      "scope": "原刊pp206–211，§III–VII、Figs3–5及12；偏擊、是否上巧克和接觸模型。",
+      "locator": "原刊pp206–211，§III–VII、Figs3–5及12；偏擊、是否上巧克和接觸模型。",
+      "cache": {
+        "file": ".cache/wave41-physics-cue.pdf",
+        "sha256": "bf36d126ae0985d398e277c5d6224e691c8f7e2be578c0fc34a44d3977550a5c",
+        "text_file": ".cache/wave41-physics-cue.txt",
+        "text_sha256": "7f16db253a8c10332695d13580fe4e17ea099cf30397de5aa2b2aea30e97bff4"
+      },
+      "read_via": "指定UA取得原PDF或PMC原刊HTML；定點閱讀結果，目讀圖另列。"
+    },
+    {
+      "source_id": "X41-S005",
+      "scope": "原刊pp181–188，特別pp184–187 Figs5–9；固定拍框、入射條件、線床與離拍旋轉。",
+      "locator": "原刊pp181–188，特別pp184–187 Figs5–9；固定拍框、入射條件、線床與離拍旋轉。",
+      "cache": {
+        "file": ".cache/wave41-physics-stringexp.pdf",
+        "sha256": "c1260823bba0223ea2eef96589a722baf257fa3dcca8b8b4aaf3bae81de50f70",
+        "text_file": ".cache/wave41-physics-stringexp.txt",
+        "text_sha256": "3455ad1760aac5429abb63f7c24eecc8423689fcafb511bd5bb94b9d1a05a5d6"
+      },
+      "read_via": "指定UA取得原PDF或PMC原刊HTML；定點閱讀結果，目讀圖另列。"
+    },
+    {
+      "source_id": "X41-S006",
+      "scope": "預印本PDF pp14–28，Figs6–11、13–14及Discussion；不轉棒球的縫線位置與兩側分離位置。",
+      "locator": "預印本PDF pp14–28，Figs6–11、13–14及Discussion；不轉棒球的縫線位置與兩側分離位置。",
+      "cache": {
+        "file": ".cache/wave41-physics-seamstudy.pdf",
+        "sha256": "b59eb52c608901872841a3736af208546a14703cf1c6c5be6134d728a5e6cf31",
+        "text_file": ".cache/wave41-physics-seamstudy.txt",
+        "text_sha256": "7f2f228938f30fd848913147d9e64d74d52fe0f8c6cf39efac58ad944eb3e5f0"
+      },
+      "read_via": "指定UA取得原PDF或PMC原刊HTML；定點閱讀結果，目讀圖另列。"
+    },
+    {
+      "source_id": "X41-S007",
+      "scope": "PDF pp2–6，恢復係數模型、Fig4中的棒體參數、Fig5某壘球棒實測與模型空間分布。",
+      "locator": "PDF pp2–6，恢復係數模型、Fig4中的棒體參數、Fig5某壘球棒實測與模型空間分布。",
+      "cache": {
+        "file": ".cache/wave41-physics-bat.pdf",
+        "sha256": "fb02b8a61c3b8919b9b28d516cd2ae6adf5cea0cc918f76e262619eb86fbfb84",
+        "text_file": ".cache/wave41-physics-bat.txt",
+        "text_sha256": "a0fd7ab867fdd60e7c7507a12ac67e7374d862de5655f6d3fede8e4c6bce70dd"
+      },
+      "read_via": "指定UA取得原PDF或PMC原刊HTML；定點閱讀結果，目讀圖另列。"
+    },
+    {
+      "source_id": "X41-S008",
+      "scope": "pp359–361，慢速壓縮及保持、Figs17–21，不漏氣藍點球vs鑽小孔球曲線；對照高速撞擊章。",
+      "locator": "pp359–361，慢速壓縮及保持、Figs17–21，不漏氣藍點球vs鑽小孔球曲線；對照高速撞擊章。",
+      "cache": {
+        "file": ".cache/wave41-physics-squashtemp.pdf",
+        "sha256": "1d834a2a13d3dc8f7de3d43d5097c63febedfcd1471dcb4fe55846aa9c17137e",
+        "text_file": ".cache/wave41-physics-squashtemp.txt",
+        "text_sha256": "f521c2e08b5606643f88171c7842a2913baacf14bbce2f24485b34f42db9d9fa"
+      },
+      "read_via": "指定UA取得原PDF或PMC原刊HTML；定點閱讀結果，目讀圖另列。"
+    },
+    {
+      "source_id": "X41-S009",
+      "scope": "Results垂直運動、三維模型與Figs1、7–8，固定橫向繞動的旋轉體與環。",
+      "locator": "Results垂直運動、三維模型與Figs1、7–8，固定橫向繞動的旋轉體與環。",
+      "cache": {
+        "file": ".cache/wave41-physics-hulapmc.html",
+        "sha256": "f66bfa5ba17568e63b532ae94b1ad2e8b391a7c64b6e5e13ef6b7097553978e3",
+        "text_file": ".cache/wave41-physics-hulapmc.txt",
+        "text_sha256": "526cb0945a8e5f9694138cb828e9c94dfc38553ea4fb6e59155d0926f2996a50"
+      },
+      "read_via": "指定UA取得原PDF或PMC原刊HTML；定點閱讀結果，目讀圖另列。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave41-physics-manifest.json",
+      "sha256": "b934375eea1aeb2c8bcd2195c1184ff283345456d3a54451df5ffab7ed604091"
+    },
+    {
+      "file": ".cache/wave41-physics-alt.json",
+      "sha256": "1b05027f233b794db095d5bea7fb45858cae90c39f3248b7fff07ab769802443"
+    },
+    {
+      "file": ".cache/wave41-physics-route3.json",
+      "sha256": "edc19df41a63971b72677d0818fddb35916bef0b3fc9af0c25115d10c82da801"
+    },
+    {
+      "file": ".cache/wave41-physics-identities.json",
+      "sha256": "493fc20975f4a0540d6e6f721e61eb5f8972ca89e9ce6139b9bc519a0f8afb71"
+    }
+  ],
+  "retrieval_failures": [
+    "JFM作者舊里昂PDF網址回研究所首頁；鏡像逾時，RG作者稿直抓403。web.open讀同文作者公開正文指定段，定點回傳可核，沒有把目錄/摘要當全文。",
+    "未能從USU或CORE取得2019旋轉棒球論文完整版；不收完整投球落點的預報。改讀另一工作2023靜止自轉條件的預印本及其2024原刊書目，專談無自旋球在來流中的分離位置。",
+    "試讀冰壺刮痕的兩種研究路線不一；第二項僅可讀摘要，未作權衡定論。協會保齡球報告、其他壁球球齡測量、球拍線實驗與壘球棒外的條件只供初篩，未列額外證據。",
+    "書目查詢JFM曾回429；另從劍橋期刊頁核10.1017/S0022112005006373，未以搜尋摘要支撐實驗。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "X41-S001",
+      "images": [
+        {
+          "file": ".cache/wave41-physics-nick-p3.png",
+          "sha256": "76571ab283d512f7f1aa60e0a86028ab8fc97a26bf62a73a7ace3367f07b726d",
+          "read_scope": "實際渲染或開原圖辨認試件、曲線與分組，未重新取點。"
+        }
+      ]
+    },
+    {
+      "source_id": "X41-S002",
+      "images": []
+    },
+    {
+      "source_id": "X41-S003",
+      "images": [
+        {
+          "file": ".cache/wave41-physics-elasticpdf-p3.png",
+          "sha256": "e72075568b4a24031d42b739a5729abba4519587e392d84996715b339d25d180",
+          "read_scope": "實際渲染或開原圖辨認試件、曲線與分組，未重新取點。"
+        }
+      ]
+    },
+    {
+      "source_id": "X41-S004",
+      "images": [
+        {
+          "file": ".cache/wave41-physics-cue-p3.png",
+          "sha256": "95805e3929fc7ed7910e68d2144bd267b11d824c0387549be1b3cae06a01fb06",
+          "read_scope": "實際渲染或開原圖辨認試件、曲線與分組，未重新取點。"
+        }
+      ]
+    },
+    {
+      "source_id": "X41-S005",
+      "images": [
+        {
+          "file": ".cache/wave41-physics-stringexp-p6.png",
+          "sha256": "415ac2e5aa49d3d0d4935e4718b30fa2a39626ad2090b76b7cdaf44519ee5680",
+          "read_scope": "實際渲染或開原圖辨認試件、曲線與分組，未重新取點。"
+        }
+      ]
+    },
+    {
+      "source_id": "X41-S006",
+      "images": [
+        {
+          "file": ".cache/wave41-physics-seamstudy-p20.png",
+          "sha256": "6eee5c819ce55e501bc3239345fd4ae8d5b87a07a0d159a1d03a8180ea288a74",
+          "read_scope": "實際渲染或開原圖辨認試件、曲線與分組，未重新取點。"
+        }
+      ]
+    },
+    {
+      "source_id": "X41-S007",
+      "images": [
+        {
+          "file": ".cache/wave41-physics-bat-p6.png",
+          "sha256": "9f6fe68cc53d977e9ca171ad476f0bd2fb895afcd6b3347a9c33eeae5a738d97",
+          "read_scope": "實際渲染或開原圖辨認試件、曲線與分組，未重新取點。"
+        }
+      ]
+    },
+    {
+      "source_id": "X41-S008",
+      "images": [
+        {
+          "file": ".cache/wave41-physics-squashtemp-p7.png",
+          "sha256": "26845eb4e01ec1babab770aaf3005427d114e8a295bc425cd886de3b225bac22",
+          "read_scope": "實際渲染或開原圖辨認試件、曲線與分組，未重新取點。"
+        }
+      ]
+    },
+    {
+      "source_id": "X41-S009",
+      "images": [
+        {
+          "file": ".cache/wave41-physics-hula-f1.jpg",
+          "sha256": "c5e9f72704e9f0db38faf99d0a012ab10f27371318a1666d5e36541f7350e91c",
+          "read_scope": "實際渲染或開原圖辨認試件、曲線與分組，未重新取點。"
+        }
+      ]
+    }
+  ],
+  "reading_limits": [
+    "7份有效PDF、1原刊PMC HTML及1web定點正文。7份PDF各1個相關圖頁，加1份PMC Fig1，8張圖實際開啟；未實播各項原始影片。",
+    "S005球會轉存的刊版PDF，S007研討會原文未核DOI，S006只以同文預印本和原刊一項計。",
+    "球縫與內氣抗力不另排一支片，留作研究段。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W41P-T01",
+      "body_seconds": 43,
+      "core_seconds": {
+        "X41-001": 43
+      },
+      "chapter_seconds": [
+        21,
+        22
+      ],
+      "max_beat_seconds": 16,
+      "status": "LOCAL_SYNTHETIC_READ_LENGTH_AND_FIGURE_BUDGET_CHECK",
+      "local_synthetic_probe": {
+        "manifest": {
+          "file": ".cache/wave41-nick-read.json",
+          "sha256": "1db964246ef33077ef3ebcb35f3e1fcf54a5c8d099b55cd2689507eaff8da39a"
+        },
+        "wave": {
+          "file": ".cache/wave41-nick-read-3.wav",
+          "sha256": "29ea57cd2d36f60de7cc08c4b6618db8775e1887502b625ccdd92d1f14e879c8"
+        },
+        "continuous_seconds": 35.188,
+        "scope": "核最終WAV標頭與文字，未作聽感/成片驗收。"
+      }
+    },
+    {
+      "id": "W41P-T02",
+      "body_seconds": 61,
+      "core_seconds": {
+        "X41-002": 30,
+        "X41-003": 31
+      },
+      "chapter_seconds": [
+        30,
+        31
+      ],
+      "max_beat_seconds": 16,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W41P-T03",
+      "body_seconds": 45,
+      "core_seconds": {
+        "X41-004": 45
+      },
+      "chapter_seconds": [
+        23,
+        22
+      ],
+      "max_beat_seconds": 14,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W41P-T04",
+      "body_seconds": 60,
+      "core_seconds": {
+        "X41-005": 31,
+        "X41-007": 29
+      },
+      "chapter_seconds": [
+        31,
+        29
+      ],
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W41P-T05",
+      "body_seconds": 47,
+      "core_seconds": {
+        "X41-009": 47
+      },
+      "chapter_seconds": [
+        23,
+        24
+      ],
+      "max_beat_seconds": 16,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "all_strings_rstrip": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待非作者查核及個別題案的試讀、實拍/圖權。"
+  ],
+  "revision_history": [
+    {
+      "before_files": [
+        {
+          "file": "batches/wave41-physics.json",
+          "sha256": "7353336909bd6e7e80cde9ad7119a94d96f89912f1a9ab325395294d0ae46c97"
+        },
+        {
+          "file": "reviews/wave41-physics-themes.json",
+          "sha256": "1982d7875e4bc37cdd6f9131b23664e964d8cdcab3c28ebaa0a1731ed279a0fc"
+        },
+        {
+          "file": "reviews/wave41-physics-author.json",
+          "sha256": "ba9563b270413d7023a70b87bd77bc64a811480efe3693923dc77823f0635cfd"
+        }
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave41-physics.json",
+          "sha256": "7353336909bd6e7e80cde9ad7119a94d96f89912f1a9ab325395294d0ae46c97"
+        },
+        {
+          "file": "reviews/wave41-physics-themes.json",
+          "sha256": "883729253c0060c444edcc19d4c55338357ed485caa58ded0381ba355e9aaf56"
+        }
+      ],
+      "reason": "依根代理縮句後樣讀剪去開頭重複預測和末句重述，仍有兩個接觸點的看圖時間。",
+      "removed_seconds": 5,
+      "before_seconds": 48,
+      "after_seconds": 43
+    }
+  ]
+}

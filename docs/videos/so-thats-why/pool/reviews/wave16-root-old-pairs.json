@@ -1,0 +1,124 @@
+{
+  "status": "ROOT_PROPOSALS_PENDING_SECOND_READER",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-02",
+  "selection": "Six highest-scoring selected pairs not already explicitly distinct in frozen wave15 top10; purposive, not random or full-pool recall. No manually added pair this wave.",
+  "reviewed_files": [
+    {
+      "file": "baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
+    }
+  ],
+  "retrieval_evidence": {
+    "file": ".cache/wave16-old-pair-discovery.json",
+    "sha256": "e65be9e332e5e790450be0a2f339852ef9ff42154dcdcf6ffde6198378f1d676",
+    "distribution": "ignored scratch"
+  },
+  "pairs": [
+    {
+      "a": "E2115",
+      "b": "E2129",
+      "cosine": 0.868808,
+      "proposed_decision": "distinct",
+      "reason": "E2115的直線電流局部環場與反向電流對照，E2129的多匝場疊加、長徑比及內外場對照不同；不能把直線環場當作長線圈軸向均勻場。可同片銜接但不是同核心改寫。"
+    },
+    {
+      "a": "E2002",
+      "b": "E2036",
+      "cosine": 0.868635,
+      "proposed_decision": "distinct",
+      "reason": "E2002是在孤立中性導體內由外場重新分布既有電荷，E2036由外部電路搬運兩極板間的電荷；保持整體中性不表示充電路徑相同。需要外電路與介質的不同條件，保留。"
+    },
+    {
+      "a": "E2082",
+      "b": "E2172",
+      "cosine": 0.86861,
+      "proposed_decision": "distinct",
+      "reason": "E2082固定串聯電流以各電阻分配壓降，E2172在理想變壓器兩側改變電壓和電流比，導出一次側所見阻值。前者不是匝比平方的負載映射。"
+    },
+    {
+      "a": "E2041",
+      "b": "E2082",
+      "cosine": 0.868424,
+      "proposed_decision": "distinct",
+      "reason": "E2041由初始未充電串聯電容的等電荷與V=Q/C給逆比例，E2082由串聯電阻的等電流與V=IR給正比例。雖都分壓，控制量、儲能與耗能的物理約束不同，能形成對照而非合併同核。"
+    },
+    {
+      "a": "N086",
+      "b": "N230",
+      "cosine": 0.868144,
+      "proposed_decision": "distinct",
+      "reason": "N086為抽水降低孔隙水支撐後沉積物壓密，N230為含水增加孔隙壓力降低坡體抗滑能力。加水與減水、垂向壓密與沿坡失穩是不同路徑，不能用同一句水把土撐開取代兩者。"
+    },
+    {
+      "a": "E2171",
+      "b": "E2229",
+      "cosine": 0.867949,
+      "proposed_decision": "distinct",
+      "reason": "E2171理想交流變壓器以匝比與功率守恆約束兩側電流，E2229則由主動切換占空比與LC的儲放能形成直流平均輸出。變壓器電壓電流互換不等同開關波形濾波機制。"
+    }
+  ],
+  "source_readings": [
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-2-conductors-insulators-and-charging-by-induction",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "Charging by Induction, returned lines42–45; isolated conductor remains neutral while electrons redistribute.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.ti.com/document-viewer/lit/html/slvafj5",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "Buck Converters, returned lines11–35; conduction energy path, duty ratio and LC continuous output. Component-selection thresholds not adopted.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "Ideal-transformer assumptions, equations15.20–15.22 and reflected-resistance derivation, returned lines35–77.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/12-6-solenoids-and-toroids",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "Solenoids, returned lines30–86; current-loop superposition and long-solenoid approximation. MRI paragraph not adopted.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "Resistors in Series, returned lines30–45; equal current and Ohm-law voltage shares.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "Opening description and Figure8.2, returned lines29–38; insulated plates connected by an external battery circuit.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.nps.gov/subjects/geohazards/landslide-hazards.htm",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "Opening and saturation trigger, returned lines21–25; slope gravity and increased pore pressure.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "Magnetic Fields Produced by Electrical Currents, returned lines29–37; straight-wire circular field and direction.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.usgs.gov/water-science-school/science/groundwater-decline-and-depletion",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "LAND SUBSIDENCE, returned lines73–75; water removal and material-dependent compaction, not every aquifer.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-2-capacitors-in-series-and-in-parallel",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical body; specified portions actually read",
+      "reading_scope": "The Series Combination of Capacitors, returned lines31–46; equal charge and inverse capacitance voltage shares.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "limits": "Read stored full question/answer/scope for all six pairs and ten specified source portions afresh. Topic boundary review, not complete source refresh, script approval or uniqueness proof. Root is not original author of these older rows."
+}

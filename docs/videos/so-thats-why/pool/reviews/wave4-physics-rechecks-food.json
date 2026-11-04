@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "pool_physics",
+  "status": "TARGETED_RECHECK_PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "original_review": {
+    "path": "reviews/wave4-physics-reviews-food.json",
+    "sha256": "4abda73aa4059fb2d250c0d69969a956d17e663c91c6a481d1fe4714688eddc5",
+    "preserved": true
+  },
+  "reviewed_revisions": {
+    "batch": {
+      "path": "batches/wave4-food-kitchen.json",
+      "sha256": "cc4a437a6b2b3c9b164ad1c92255c18be1e686404723756452ee70ac747b2b21"
+    },
+    "themes": {
+      "path": "reviews/wave4-food-themes.json",
+      "sha256": "6b2c5abfe8dbf5b3720634ffb3e8f8b83f46cb01dae42f62a97c0d17eeecc6ec"
+    },
+    "author": {
+      "path": "reviews/wave4-food-author.json",
+      "sha256": "6cf50dfb8c2c05db9c27359973a46373b3398ca78f8b320c950bf23f5aaea514"
+    }
+  },
+  "scope": "實讀修後F4003/4/9、F4017/18/19、F4020、F4-S014來源記錄、三個完整題組及作者修正收據；原29題全文與10來源抽查結果沿用原review，未冒稱本次重新查完29題或全部外站。未改作者檔或中央決策。",
+  "required_corrections_readback": [
+    {
+      "id": "FOOD-R01",
+      "result": "PASS",
+      "evidence": "F4-S014/F4017都定位Why not add sugar at the beginning?；F4018定位Why add vinegar?首段，明確不採後段酸中和蛋白的簡化機制。"
+    },
+    {
+      "id": "FOOD-R02",
+      "result": "PASS",
+      "evidence": "F4017 target明列蛋白接觸成鍵受阻及加熱時糖與水作用延緩逸出，notes限定教育來源簡化模型；沒有宣稱完整穩泡機制或配方建議。"
+    },
+    {
+      "id": "FOOD-R03",
+      "result": "SUPERSEDED_AND_RESOLVED",
+      "evidence": "根代理明確把short_explainer最少章數改2，其他類型維持4。原review以3章阻擋的部分已被此規則取代；修後自然3/3/2章且實質內容/秒數另核，沒有為形式加章。"
+    }
+  ],
+  "dedup_readback": {
+    "accepted_merges": [
+      {
+        "from": "F4004",
+        "into": "F4003"
+      },
+      {
+        "from": "F4018",
+        "into": "D2025"
+      },
+      {
+        "from": "F4020",
+        "into": "D2200"
+      }
+    ],
+    "held": [
+      "F4009",
+      "F4019"
+    ],
+    "result": "作者raw notes接受，所有原ID/來源可追，沒有刪除研究紀錄；中央整合由root負責，本收據不宣稱已完成中央套用。"
+  },
+  "theme_readback": [
+    {
+      "id": "W4F-T01",
+      "seconds": 210,
+      "chapters": 3,
+      "canonical_material_seconds": {
+        "F4012": 80,
+        "F4017": 80,
+        "D2025_via_F4018": 50
+      },
+      "result": "PASS_EDITORIAL_PROPOSAL",
+      "evidence": "80+80+50=210。回顧縮15秒；排水章以D2025為核心而明列F4018/F4-S014蛋白變體，不偷換果醬畫面，50秒未超變體70秒上限。",
+      "treatment_note": "糖章進到加熱期後，過打章須清楚回切至攪打階段的比較分支，避免畫成烤完才過度攪打；這是下一階段分鏡限制，不新增秒數。"
+    },
+    {
+      "id": "W4F-T02",
+      "seconds": 160,
+      "chapters": 3,
+      "canonical_material_seconds": {
+        "F4003_including_F4004": 95,
+        "F4002": 65
+      },
+      "result": "PASS_EDITORIAL_PROPOSAL",
+      "evidence": "65+30+65=160；同核心糊化及預糊化反例合95秒，符合F4003上限。乾燥製程的未支持細節已移除。"
+    },
+    {
+      "id": "W4F-T03",
+      "seconds": 150,
+      "chapters": 2,
+      "canonical_material_seconds": {
+        "F4005": 70,
+        "F4006": 80
+      },
+      "result": "PASS_EDITORIAL_PROPOSAL",
+      "evidence": "70+80=150；F4009已撤且不以其他題補時。雙酸時序與結構定型兩個追問相接，開場/結尾包含在章內。"
+    }
+  ],
+  "structural_checks": {
+    "unique_candidate_ids": true,
+    "raw_candidate_count": 29,
+    "source_count": 26,
+    "utf8_lf": true,
+    "chapter_sums_match_body_seconds": true,
+    "target_minutes_consistent": true,
+    "beat_sums_match_chapters": true,
+    "all_beats_at_most_45_seconds": true,
+    "short_explainer_chapters_at_least_2": true,
+    "retained_alias_budget_checked": true
+  },
+  "remaining_required_corrections": [],
+  "remaining_limits": [
+    "定點覆核不是劇本逐主張查核、食材實測或旁白試讀。",
+    "三片可作編輯企劃入口，仍需按各題組evidence_gaps核實示意及具體材料；本收據不核准製作或發布。",
+    "原review未成功重新取得F4-S021/F4-S018，F4-S025只重核摘要/前段；缺口沒有在本次被消除，也不影響誠實標記題級的決定。"
+  ]
+}

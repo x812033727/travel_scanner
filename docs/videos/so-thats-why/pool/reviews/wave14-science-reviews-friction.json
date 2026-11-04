@@ -1,0 +1,700 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "author": "pool_physics",
+  "role": "non_author_topic_source_and_editorial_review",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "reviewed_candidate_ids": [
+    "F14001",
+    "F14002",
+    "F14003",
+    "F14004",
+    "F14005",
+    "F14006",
+    "F14007",
+    "F14008",
+    "F14009"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave14-friction.json",
+      "sha256": "e597071b1f486cca9860fe1ffb8bd55d2ea38c452305c3ff14613777008023ab"
+    },
+    {
+      "file": "reviews/wave14-friction-themes.json",
+      "sha256": "6571127b334388a03cc2fb5501892e391fca036f7bc81a9b67276110216e3b56"
+    },
+    {
+      "file": "reviews/wave14-friction-author.json",
+      "sha256": "f3a9f638dce27bd85420092ccc06609e2608a9dfc215356fe8e0316e0eff3c3e"
+    }
+  ],
+  "coverage": {
+    "all_candidate_rows": 9,
+    "all_not_added_rows": 22,
+    "author_boundary_pairs": 23,
+    "retrieval_rows": 9,
+    "top5_comparisons": 45,
+    "all_themes": 4,
+    "sources_with_fresh_body_reading": 9,
+    "rendered_source_pages": 6,
+    "scope": "逐題問題/答案/範圍/定位/視覺/秒數、全部未收理由、作者近對、9×top5答與scope、四題案。不是全庫外部事實重查，未核准完整稿或製作。"
+  },
+  "source_readings": [
+    {
+      "source_id": "F14-S001",
+      "url": "https://jlupub.ub.uni-giessen.de/server/api/core/bitstreams/616d2c43-608e-48a6-b719-93ee3c972693/content",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "387d183430412fde73f9ab536f351a8bc61615fbf3d5597089ec9293dafb2a2f",
+      "matches_author_copy": true,
+      "reading_scope": "PDF pp.2–4 的實驗方法、摩擦峰/接觸剛性與溫度對照；p.6 結論和模型時間/成鍵限制。未讀p.5完整MD或所有附錄。",
+      "result": "靜摩擦峰含破壞過程；接觸剛性可揭示老化，但不能除以單鍵剛性直接數鍵。"
+    },
+    {
+      "source_id": "F14-S002",
+      "url": "https://arxiv.org/pdf/1405.4953",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "eb78247b0f1084e0cb66b43b293010a9b8ecf896af7fd44ad9385495f2af6a8b",
+      "matches_author_copy": true,
+      "reading_scope": "PDF pp.4–9 裝置、成核/傳播、標記追蹤與速度區分；p.22 Figs.5–6文字及渲染圖。未看補充影片或完整24頁。",
+      "result": "材料標記在波通過時位移，仍須分開球面成核與柱面傳播觀察，保留殘餘空隙。"
+    },
+    {
+      "source_id": "F14-S003",
+      "url": "https://arxiv.org/pdf/1104.3320",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "3ebbc7402b73073cd4ed4381ffabee3b0071f6cff3a1352c12216594fb7b6a9e",
+      "matches_author_copy": true,
+      "reading_scope": "PDF pp.2–4 自回縮、旋轉鎖定、探針彎曲與分子模型；p.9 Fig.2渲染圖。未看影片或全部HOPG模型後段。",
+      "result": "旋轉鎖定與探針彎曲支持阻力變化；晶格圖是模型解釋，不把外形邊緣當原子實測。"
+    },
+    {
+      "source_id": "F14-S004",
+      "url": "https://www.nature.com/articles/ncomms11816.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "cdfb1ed21a30b8a392087aa56a9cbac9ff5f94e22d6530323f99a32753473219",
+      "matches_author_copy": true,
+      "reading_scope": "PDF pp.2–5 Results、Analytical model、Transition與Discussion；p.4 Fig.3渲染圖，確認兩組勢能不同。未讀完整Methods/SI。",
+      "result": "原子模型把接點尺寸、黏著/強度與塑性或成屑競爭相連；不同材料勢能圖不作純大小實驗。"
+    },
+    {
+      "source_id": "F14-S005",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2016-12.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "39a4ce3d8501047466b212ecfad4cbc757bb1cee33783cf5736faaa6517917df",
+      "matches_author_copy": true,
+      "reading_scope": "PDF pp.1–3主文與Fig.1–3圖說；硬/軟壁對稱性、橢圓柱排除旋轉、非常軟時限制。未看SI/Movies；未另渲染此頁。",
+      "result": "壓力使軟壁不對稱變形可自生升力；小變形模型不解釋最軟端的全部非單調性。"
+    },
+    {
+      "source_id": "F14-S006",
+      "url": "https://arxiv.org/pdf/1807.07502",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "57216fff24a0cc6cf9c82511860e93fb501072b551fbba99ee7dfec52e68a449",
+      "matches_author_copy": true,
+      "reading_scope": "PDF pp.3、5、8–9 結果、外膜量級排除、Pe/孔隙壓力模型及限制；p.4接觸形狀/Figs.3–5渲染目讀。未讀完整推導/附錄。",
+      "result": "內部排水時間與接觸時間的比較有實驗與模型對照；外部水膜量級太小，最高速形狀及全部耗散未被完整解出。"
+    },
+    {
+      "source_id": "F14-S007",
+      "url": "https://arxiv.org/pdf/2011.10774",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "e1aad8eebf2376798f27877bc2e4904f383a66d8a45c615bfb9c71d448271d38",
+      "matches_author_copy": true,
+      "reading_scope": "PDF pp.6、8–9 §3.3、Fig.10圖說與結論，含初始粗糙度對照及質性解釋未能解完整收斂的限制。未重讀原子模型或全部附錄。",
+      "result": "平/粗表面演變方向有量測；移屑、黏回、填隙是正文的質性機制圖，完整共同終態原因仍未知。"
+    },
+    {
+      "source_id": "F14-S008",
+      "url": "https://mwiertlewski.github.io/pdf/pub/2017-RFF-MW-MP-EC-WHC.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "d8dddbbbabd7a2874defbbb861fc84a84562a94abaf5fae2f46cde7c7f8c6536",
+      "matches_author_copy": true,
+      "reading_scope": "web PDF pp.1–2 擠壓膜模型與承載分擔；fresh PDF pp.3–6 方法、結果、Figs.4–6、Discussion/Conclusion，p.5渲染目讀。未比對IEEE正式版或讀其引用的真人研究。",
+      "result": "固定振幅/窄負荷下低氣壓減摩較弱；電流是摩擦代理。p.4一處方向句矛盾不採，結果/圖支持較高摩擦對應較大電流；殘餘減摩不等於單獨證明彈跳。"
+    },
+    {
+      "source_id": "F14-S009",
+      "url": "https://fisherp.mit.edu/wp-content/uploads/2020/08/689.full_.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "Reviewer fresh HTTP GET with specified User-Agent; valid PDF independently extracted using pypdf; rendered pages listed separately.",
+      "http_status": 200,
+      "body_sha256": "391f6cfb68ec924bc89a1d697801d3163253686213943d1368971fa7aaa39c08",
+      "matches_author_copy": true,
+      "reading_scope": "PDF pp.1–5 主文、直向/傾斜切割、均質/異質模型、三條件結論；p.3 Fig.2渲染目讀。未看SI/影片；下載容器7頁而正文刊頁標1–6，沒有把尾頁當新增正文證據。",
+      "result": "直向/面外載荷與局部異質性/接觸位置比較支持三條件；乾式SEM與濕式中斷證據分開，不等於所有刀具通則。"
+    }
+  ],
+  "source_identity": "9個存取URL各綁一個研究工作。預印本/正式版/作者大學副本不是獨立證據；未由零exact匹配推稱全庫無同文。S008僅作者會議稿，不宣稱已讀IEEE定稿或其引用真人研究。",
+  "access_limits": {
+    "failed_routes": [
+      {
+        "url": "https://www.nature.com/articles/ncomms11816",
+        "read_via": "web.open",
+        "result": "500/cookie身份重導失敗；改指定UA PDF成功，內容SHA與作者相同。"
+      }
+    ],
+    "public_web_reads": [
+      "arXiv 1807.07502 身分/摘要/版本",
+      "arXiv 2011.10774 身分/摘要/版本",
+      "S008 PDF pp.1–2模型文字"
+    ],
+    "not_claimed": "未播放9研究補充影片、未復現實驗/數值、未通讀所有附錄或未取得的真人/PNAS/Delft研究；沒有把下載成功等同全文已讀。"
+  },
+  "visual_readings": [
+    {
+      "source_id": "F14-S002",
+      "pdf_page": 22,
+      "scope": "原PDF自行渲染後目讀圖與圖說；圖像未移入正式報告。"
+    },
+    {
+      "source_id": "F14-S003",
+      "pdf_page": 9,
+      "scope": "原PDF自行渲染後目讀圖與圖說；圖像未移入正式報告。"
+    },
+    {
+      "source_id": "F14-S004",
+      "pdf_page": 4,
+      "scope": "原PDF自行渲染後目讀圖與圖說；圖像未移入正式報告。"
+    },
+    {
+      "source_id": "F14-S006",
+      "pdf_page": 4,
+      "scope": "原PDF自行渲染後目讀圖與圖說；圖像未移入正式報告。"
+    },
+    {
+      "source_id": "F14-S008",
+      "pdf_page": 5,
+      "scope": "原PDF自行渲染後目讀圖與圖說；圖像未移入正式報告。"
+    },
+    {
+      "source_id": "F14-S009",
+      "pdf_page": 3,
+      "scope": "原PDF自行渲染後目讀圖與圖說；圖像未移入正式報告。"
+    }
+  ],
+  "rows": [
+    {
+      "id": "F14001",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "P247",
+        "P093",
+        "H3055",
+        "P092",
+        "P252"
+      ],
+      "finding": "新理解在觀測量混合成鍵/斷鍵。近鄰的活化能、傳熱和晶界蠕變皆未提供此量測對照；適合留段落，尚不單獨硬拉一片。",
+      "source_ids": [
+        "F14-S001"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    },
+    {
+      "id": "F14002",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "D2265",
+        "H3026",
+        "J6022",
+        "J6021",
+        "H3090"
+      ],
+      "finding": "局部傳播與材料位移相分離。橡膠鏈回復、密封圈擠出/扭轉及隔震承載均不相同；105秒用固定座標追標記才成立。",
+      "source_ids": [
+        "F14-S002"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    },
+    {
+      "id": "F14003",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "D2187",
+        "B11002",
+        "G13003",
+        "E2179",
+        "H3049"
+      ],
+      "finding": "同片旋轉、回縮驅動與阻力鎖定。模具倒扣、根探索、顆粒卡緊、PN接面及滑移系統方向不同。",
+      "source_ids": [
+        "F14-S003"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    },
+    {
+      "id": "F14004",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "F14007",
+        "K11004",
+        "I12014",
+        "K11009",
+        "K11005"
+      ],
+      "finding": "保留塑性抹平/碎屑形成的路徑競爭；非單純臨界裂長。屈曲、液態彈珠與摺片變形近鄰不回答黏著接點兩種磨耗結果。",
+      "source_ids": [
+        "F14-S004"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    },
+    {
+      "id": "F14005",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "P071",
+        "P062",
+        "E9001",
+        "F4026",
+        "J6009"
+      ],
+      "finding": "剛壁到軟壁改變流體壓力對稱性。不是Bernoulli、管壁流速、油炸冷卻吸油或種子阻力；與舊軸承有明確新增邊界。",
+      "source_ids": [
+        "F14-S005"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    },
+    {
+      "id": "F14006",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "I12012",
+        "I12002",
+        "I12001",
+        "I12006",
+        "F10013"
+      ],
+      "finding": "孔隙內排水與接觸停留時間有可見輪廓對照；非水滴釘扎/包覆/潤濕轉換、破膜回縮或Taylor色帶展寬。",
+      "source_ids": [
+        "F14-S006"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    },
+    {
+      "id": "F14007",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "F14004",
+        "I12014",
+        "E11001",
+        "D2184",
+        "K11004"
+      ],
+      "finding": "平/粗初態與第三體沉積後地形有對照。既有岩床工具/覆蓋效應、膠厚度與屈曲不同；保留質性解釋層次。",
+      "source_ids": [
+        "F14-S007"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    },
+    {
+      "id": "F14008",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "P062",
+        "J6009",
+        "B4010",
+        "I12002",
+        "K6001"
+      ],
+      "finding": "人工指腹降低氣壓且保振幅的控制可視；不是通用超音波、窗漏氣、液滴含氣狀態或曲率蒸氣壓。",
+      "source_ids": [
+        "F14-S008"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    },
+    {
+      "id": "F14009",
+      "decision": "retain_topic_level",
+      "top5_compared": [
+        "K11004",
+        "LEG-S25",
+        "K11011",
+        "F14004",
+        "J6009"
+      ],
+      "finding": "局部材料/載荷方向/接觸位置三條件，不是毛囊痛覺、薄片屈曲/皺紋或一般油膜。125秒可容納實驗/模型分層。",
+      "source_ids": [
+        "F14-S009"
+      ],
+      "scope_and_visual_status": "PASS_WITH_STATED_RESEARCH_LIMITS"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "F14001",
+        "b": "P005",
+        "reason": "一般靜/動摩擦係數區別不足以回答升溫同時促進形成與測量破壞、峰值反向的矛盾。"
+      },
+      {
+        "a": "F14001",
+        "b": "F8006",
+        "reason": "懸浮體觸變的結構重建不是乾矽氧接點成鍵與斷鍵；新題另比較兩個量測指標。"
+      },
+      {
+        "a": "F14001",
+        "b": "H3090",
+        "reason": "聚合物固定形變鬆弛與奈米接點化學老化/破壞是不同狀態變數。"
+      },
+      {
+        "a": "F14002",
+        "b": "N116",
+        "reason": "一般儲能釋放不能回答界面大部黏著時，局部脫離波如何運送位移；新題有材料標記對照。"
+      },
+      {
+        "a": "F14002",
+        "b": "P005",
+        "reason": "新題非用靜動摩擦係數差作答案，而是空間局部分區、脫離/再黏回。"
+      },
+      {
+        "a": "F14002",
+        "b": "K11002",
+        "reason": "帶簧局部失穩與黏著界面可傳播脫離波不同；界面標記控制帶來新可見判斷。"
+      },
+      {
+        "a": "F14003",
+        "b": "LEG-S87",
+        "reason": "碳同素結構比較沒有同一微片旋轉使晶格匹配/不匹配而鎖定的條件。"
+      },
+      {
+        "a": "F14003",
+        "b": "J6002",
+        "reason": "一般接點摩擦阻止歸位不含相對晶格轉角的可逆控制與回縮能量驅動。"
+      },
+      {
+        "a": "F14004",
+        "b": "H3060",
+        "reason": "H3060限線彈性裂長/載荷門檻；F14004加入黏著接點可先塑性抹平或形成游離磨屑的競爭，非將同一裂長改名。"
+      },
+      {
+        "a": "F14004",
+        "b": "D2189",
+        "reason": "切屑在刀面黏回不同於最初黏著接點如何塑性流動或斷裂產生磨屑。"
+      },
+      {
+        "a": "F14005",
+        "b": "J6009",
+        "reason": "J6009已有收斂間隙帶油；新題從原本前後對稱的剛壁比較軟壁受流體壓力變形而自生淨升力。"
+      },
+      {
+        "a": "F14005",
+        "b": "F14006",
+        "reason": "外部油膜與軟壁耦合，對比凝膠網絡內部排水時間/孔隙壓力；後者文中明估外膜升力量級不足。"
+      },
+      {
+        "a": "F14006",
+        "b": "H3090",
+        "reason": "凝膠該頻域內的孔隙水輸運與聚合物黏彈重排不同；不可由摩擦峰外形相近合併。"
+      },
+      {
+        "a": "F14006",
+        "b": "J6009",
+        "reason": "外膜帶入與孔隙內水遷移不同；接觸停留/排水時間及缺邊輪廓是新控制。"
+      },
+      {
+        "a": "F14007",
+        "b": "F14004",
+        "reason": "F14004問磨屑是否形成；F14007問既有磨屑再沉積、削峰/填隙如何使不同初態演化，不再重算最小磨屑尺度。"
+      },
+      {
+        "a": "F14007",
+        "b": "D2189",
+        "reason": "刀口積屑瘤不能回答平/粗初態的相反地形演化；新題保留第三體高度改寫，不只黏回。"
+      },
+      {
+        "a": "F14008",
+        "b": "P310",
+        "reason": "頻率分類不是固定振幅改氣壓的擠壓膜承載檢驗。"
+      },
+      {
+        "a": "F14008",
+        "b": "P311",
+        "reason": "液體空穴崩潰清洗與窄空隙空氣的平均承載不同。"
+      },
+      {
+        "a": "F14008",
+        "b": "J6009",
+        "reason": "法向快速擠壓的可壓空氣膜與切向帶油進楔隙的機制/控制不同。"
+      },
+      {
+        "a": "F14008",
+        "b": "F14005",
+        "reason": "超音波氣壓控制的擠壓膜與軟壁變形破對稱自生升力不同。"
+      },
+      {
+        "a": "F14009",
+        "b": "P041",
+        "reason": "平均面積/應力集中不足以解釋面外載荷、異質性與毛髮邊緣相對位置共同限制崩口。"
+      },
+      {
+        "a": "F14009",
+        "b": "H3060",
+        "reason": "新題有相同平均性質但局部均質/異質模型以及接觸位置比較，不是一般裂痕門檻換刀片。"
+      },
+      {
+        "a": "F14009",
+        "b": "F14004",
+        "reason": "刃口受混合載荷/局部異質性與兩黏著凸點塑性/成屑競爭不同。"
+      }
+    ]
+  },
+  "not_added_review": {
+    "ids": [
+      "F14-NA01",
+      "F14-NA02",
+      "F14-NA03",
+      "F14-NA04",
+      "F14-NA05",
+      "F14-NA06",
+      "F14-NA07",
+      "F14-NA08",
+      "F14-NA09",
+      "F14-NA10",
+      "F14-NA11",
+      "F14-NA12",
+      "F14-NA13",
+      "F14-NA14",
+      "F14-NA15",
+      "F14-NA16",
+      "F14-NA17",
+      "F14-NA18",
+      "F14-NA19",
+      "F14-NA20",
+      "F14-NA21",
+      "F14-NA22"
+    ],
+    "decision": "保留22項不收；既有係數/法向力/油膜/黏彈背景或同核細拆不復活；未取正文者不補成已知答案。",
+    "limits": "舊題答/scope比對，不宣稱對22項未採方向重新取得外部全文。"
+  },
+  "theme_reviews": [
+    {
+      "id": "W14F-T01",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "core_totals": [
+        {
+          "id": "F14003",
+          "adopted_seconds": 105,
+          "material_cap_seconds": 115
+        }
+      ],
+      "max_beat_seconds": 30
+    },
+    {
+      "id": "W14F-T02",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "core_totals": [
+        {
+          "id": "F14002",
+          "adopted_seconds": 105,
+          "material_cap_seconds": 115
+        }
+      ],
+      "max_beat_seconds": 30
+    },
+    {
+      "id": "W14F-T03",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "core_totals": [
+        {
+          "id": "F14008",
+          "adopted_seconds": 110,
+          "material_cap_seconds": 125
+        }
+      ],
+      "max_beat_seconds": 35
+    },
+    {
+      "id": "W14F-T04",
+      "body_seconds": 125,
+      "chapter_seconds": [
+        55,
+        70
+      ],
+      "core_totals": [
+        {
+          "id": "F14009",
+          "adopted_seconds": 125,
+          "material_cap_seconds": 140
+        }
+      ],
+      "max_beat_seconds": 35
+    }
+  ],
+  "editorial_judgment": {
+    "durations": [
+      105,
+      105,
+      110,
+      125
+    ],
+    "conclusion": "四案各一核心分兩步：觀察控制與機制解釋；新觀測/控制每20–35秒推進，包含7秒開場與5秒回扣。同核跨兩章累計一次，不因兩章算兩筆素材。",
+    "cut_conditions": "四案任刪一章剩50/55、50/55、50/60、55/70秒；失去原控制或解釋，均須撤原案/另提，不能保留原長度或添名詞補時。",
+    "writing_gates": [
+      "F14007進稿應將Fig10標為質性機制示意，不宣稱已直接量到每一步或解出共同終態。",
+      "F14008殘餘效果不單獨證明彈跳；目前題案寫不能排除及可能耦合可留。",
+      "F14009保持濕式中斷觀察/乾式SEM/均質與異質模型層次；不拿相對硬度排名取代三條件。"
+    ],
+    "not_read_aloud": true,
+    "not_script_approved": true
+  },
+  "targeted_corrections": [
+    {
+      "finding_id": "FRICTION_ROOT01",
+      "origin": "root的編輯問題，非本代理新增發現",
+      "before_files": [
+        {
+          "file": "batches/wave14-friction.json",
+          "sha256": "1249e65192ee760a1ccb7723467acb345518a196dc2ed2d2068663cdd90418f7"
+        },
+        {
+          "file": "reviews/wave14-friction-themes.json",
+          "sha256": "6eea783126a9d928852fa53df0d67364cb887584e2a53eae4f87d383af8a0189"
+        },
+        {
+          "file": "reviews/wave14-friction-author.json",
+          "sha256": "f9e004cfcad10e3824a8dcf409c67e00b0f2647ccc85fce8caefda49d6158430"
+        }
+      ],
+      "finding": "T04舊問句沒有磨過硬鋼可能讓人誤讀無磨耗。",
+      "resolution": "現問句僅問更硬鋼刃先有局部崩口；讀回與原文before appreciable wear相符，125秒/候選/來源未變。",
+      "status": "RESOLVED"
+    }
+  ],
+  "retrieval_readback": {
+    "first_draft_sha256": "63ae5eb0398eaf93df4c55da662c998b5297c37a45948a17d617358ede5c68c1",
+    "first_neighbour_file": ".cache/wave14-friction-neighbours.json",
+    "first_neighbour_sha256": "352b8d61391c109d180eb4d9152655e437ba42a7b4a26fe405d1ed052a3194d5",
+    "final_draft_sha256": "7d0a2c88e1320b8faf0e83740389483124dccdfd664e59beba66231cd1f37737",
+    "final_semantic_file": ".cache/semantic-wave14-draft.json",
+    "final_semantic_sha256": "046933ccff84a511d80d5436aa35a31c9d6501f64df76384073caa5e21d88e07",
+    "delta_file": ".cache/wave14-friction-neighbour-delta.json",
+    "delta_sha256": "85cf39993efe898123da53172da89fcd17397787f29e1a4ed2d65e70270b6e4b",
+    "independent_comparison": "本代理程式比較first-draft與final draft全部9 raw dict相等，首末semantic 9×top5 id/score相等；delta rows空。保留初讀檔的first draft標記，不冒稱其本身寫final hash。",
+    "changed_raw_records": 0,
+    "changed_top5_rows": 0
+  },
+  "local_validation": {
+    "performed": "自寫Python讀回JSON、三檔LF、三SHA、9raw首末比較、9×top5首末比較、4案章/beat總秒、beat<=45、range上限與四核心跨章cap。",
+    "result": "PASS",
+    "not_performed": "未跑全repo tests、Git index/CI、瀏覽器或媒體試讀。"
+  },
+  "format_delta": {
+    "reviewed_on": "2026-11-02",
+    "status": "PASS_FORMAT_ONLY",
+    "previous_review_sha256": "a864f8518dce430129d9ed6455a8055f4b49e83a33bb9c51a13abd0f337814c7",
+    "previous_reviewed_files": [
+      {
+        "file": "batches/wave14-friction.json",
+        "sha256": "1249e65192ee760a1ccb7723467acb345518a196dc2ed2d2068663cdd90418f7"
+      },
+      {
+        "file": "reviews/wave14-friction-themes.json",
+        "sha256": "6571127b334388a03cc2fb5501892e391fca036f7bc81a9b67276110216e3b56"
+      },
+      {
+        "file": "reviews/wave14-friction-author.json",
+        "sha256": "7e78ffaf2f769f0c203ec2ac41f08336be0ddb250b5e7547f7c46a73d26f8f18"
+      }
+    ],
+    "ignored_evidence_hashes": [
+      {
+        "file": ".cache/wave14-friction-before-whitespace.json",
+        "sha256": "1249e65192ee760a1ccb7723467acb345518a196dc2ed2d2068663cdd90418f7"
+      }
+    ],
+    "method": "獨立解析修前／修後batch，對全部9筆notes做rstrip後深比整份物件完全相等；僅8筆各刪1尾空白，F14007未變。另唯讀Git暫存中的舊author，驗其原SHA後確認作者只追加revision_history，未改其他欄位；這不是整體Git index終驗。",
+    "checked_candidate_count": 9,
+    "changed_notes": [
+      {
+        "id": "F14001",
+        "removed_trailing_characters": 1
+      },
+      {
+        "id": "F14002",
+        "removed_trailing_characters": 1
+      },
+      {
+        "id": "F14003",
+        "removed_trailing_characters": 1
+      },
+      {
+        "id": "F14004",
+        "removed_trailing_characters": 1
+      },
+      {
+        "id": "F14005",
+        "removed_trailing_characters": 1
+      },
+      {
+        "id": "F14006",
+        "removed_trailing_characters": 1
+      },
+      {
+        "id": "F14008",
+        "removed_trailing_characters": 1
+      },
+      {
+        "id": "F14009",
+        "removed_trailing_characters": 1
+      }
+    ],
+    "unchanged_scope": [
+      "question",
+      "answer_target",
+      "scope",
+      "source與reading定位／內容",
+      "所有其他candidate欄位",
+      "not_added",
+      "題案與全部秒數"
+    ],
+    "final_reviewed_files": [
+      {
+        "file": "batches/wave14-friction.json",
+        "sha256": "e597071b1f486cca9860fe1ffb8bd55d2ea38c452305c3ff14613777008023ab"
+      },
+      {
+        "file": "reviews/wave14-friction-themes.json",
+        "sha256": "6571127b334388a03cc2fb5501892e391fca036f7bc81a9b67276110216e3b56"
+      },
+      {
+        "file": "reviews/wave14-friction-author.json",
+        "sha256": "f3a9f638dce27bd85420092ccc06609e2608a9dfc215356fe8e0316e0eff3c3e"
+      }
+    ],
+    "retrieval_snapshot_limit": "先前retrieval_readback保留trim前snapshot與final draft SHA；此次只有notes尾空白，question／answer_target／scope及排序輸入均不變，未重做來源研究或近鄰內容審查。之後中央pool須重建並以最終整合收據綁新資料，不把舊snapshot冒稱重建後pool。",
+    "remaining_blockers": []
+  }
+}

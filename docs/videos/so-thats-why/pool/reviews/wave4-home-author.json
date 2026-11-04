@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCK_PENDING_INDEPENDENT_REVIEW",
+  "batch_path": "batches/wave4-home-buildings.json",
+  "theme_path": "reviews/wave4-home-themes.json",
+  "scope": "建築圍護、濕氣、室內光聲、通風、水路及特定建材失效；非建築設計、法規合規、醫療或危險DIY建議。",
+  "counts": {
+    "candidates": 34,
+    "sources_read": 28,
+    "source_records_used_only_for_not_added": 3,
+    "not_added": 24,
+    "theme_proposals": 2
+  },
+  "selection_method": "先以當期2661 raw庫的題名、目標及機制欄位搜尋本領域，再逐讀命中項與新候選作對照；沒有宣稱逐題重讀2661筆。研究先看來源能否解釋現象，再決定是否新增；39個成形候選自退5個薄/近重題，最終34題，沒有為60–90數量方向擴寫物件變體。",
+  "source_reading": "來源28筆均有實際正文或明列摘要的讀取範圍。B4-S023僅完整研究摘要，相關B4036已暫緩；B4-S022新聞與B4-S019水務頁同樣僅支援not_added。其他25筆支援入批候選。來源擷取段落與標題未必等於整篇讀完，逐source的read_via/reading_scope為準。",
+  "known_pairs": [
+    {
+      "ids": [
+        "B4001",
+        "B4003"
+      ],
+      "proposal": "distinct",
+      "reason": "漏氣與材料擴散的物理路徑比較，對照外側氣密但空腔內仍流動的邊界條件；若B4003成稿不能呈現內部路徑，題組刪該章。"
+    },
+    {
+      "ids": [
+        "B4002",
+        "P090",
+        "P209"
+      ],
+      "proposal": "distinct",
+      "reason": "結露本身是舊原理，新追問是固定總保溫量改位置造成結構板溫度改變；只留此組合條件，不重講所有露點題。"
+    },
+    {
+      "ids": [
+        "B4004",
+        "B4005"
+      ],
+      "proposal": "distinct",
+      "reason": "雙面限制乾燥出口與濕外飾面受日曬反向水汽驅動是不同條件，不依材料名稱拆題。"
+    },
+    {
+      "ids": [
+        "B4009",
+        "P096",
+        "P097"
+      ],
+      "proposal": "distinct",
+      "reason": "重點是低放射率薄箔需面對空氣空間，接觸組裝後不能移用空氣層熱阻；若只講輻射存在則併舊題。"
+    },
+    {
+      "ids": [
+        "B4016",
+        "D2079"
+      ],
+      "proposal": "review_boundary",
+      "reason": "D2079是排氣的補氣路徑；B4016專限機械負壓抵銷自然煙道浮力並反轉方向。可保留相反壓差競爭，若成稿只稱排氣需補氣則併D2079。"
+    },
+    {
+      "ids": [
+        "B4017",
+        "B4016",
+        "D2081"
+      ],
+      "proposal": "not_added",
+      "reason": "除霜停送風模式僅作氣壓失衡案例，不另計核心。"
+    },
+    {
+      "ids": [
+        "B4019",
+        "D2082"
+      ],
+      "proposal": "not_added",
+      "reason": "關門造成送回風路徑受限已有舊題。"
+    },
+    {
+      "ids": [
+        "B4029",
+        "B4015"
+      ],
+      "proposal": "not_added",
+      "reason": "窗簾邊緣是冷窗對流迴路的改善條件，不另計。"
+    },
+    {
+      "ids": [
+        "B4022",
+        "P114"
+      ],
+      "proposal": "review_boundary",
+      "reason": "P114一般共振耦合；B4022強調兩板—空氣的組裝系統與隔音數字不可直接加。若把所有耦合共振定為同一核心，可作建築例子。"
+    },
+    {
+      "ids": [
+        "B4021",
+        "B4022"
+      ],
+      "proposal": "distinct",
+      "reason": "板彎曲波與入射波投影波長匹配的巧合效應，與雙葉牆板間空氣耦合/腔內共振不等同；此批不主張已核實低頻質量—空氣—質量模型。"
+    },
+    {
+      "ids": [
+        "B4024",
+        "B4027"
+      ],
+      "proposal": "distinct",
+      "reason": "上方光棚改變光方向與分布；上下分區控制是根據視野/採光路徑分別調節透過，不能只把兩者都寫防眩光功能。"
+    },
+    {
+      "ids": [
+        "B4030",
+        "N258",
+        "P084"
+      ],
+      "proposal": "distinct",
+      "reason": "熱容量及晝夜儲放熱已有；新條件是表面熱阻限制一定時間內可用的儲熱量。"
+    },
+    {
+      "ids": [
+        "B4033",
+        "P075",
+        "D2249"
+      ],
+      "proposal": "not_added",
+      "reason": "約束膨脹加止回邊界的組合，暫不新增核心。"
+    },
+    {
+      "ids": [
+        "B4034",
+        "D2081"
+      ],
+      "proposal": "distinct",
+      "reason": "熱泵逆循環交換盤管角色與HRV交換送排風熱量不同；不以都叫熱交換器混為同題。"
+    },
+    {
+      "ids": [
+        "B4035",
+        "D2001",
+        "D2003"
+      ],
+      "proposal": "review_boundary",
+      "reason": "舊題是吸附表面及競爭容量；此題限定房間氣體濃度變化讓表面由淨匯變淨源的雙向暫態。若舊庫另有此完整暫態則併。"
+    },
+    {
+      "ids": [
+        "B4036",
+        "B4035"
+      ],
+      "proposal": "held_not_added",
+      "reason": "副產物觀察有官方支持，但精確化學反應路徑正文未讀到；不是與B4035同機制，existing_ids只標同室內空氣企劃的關聯。"
+    },
+    {
+      "ids": [
+        "B4037",
+        "H3093"
+      ],
+      "proposal": "distinct",
+      "reason": "黏土晶層間進水與聚合物網路吸水的材料結構不同，僅膨脹外觀相同。"
+    },
+    {
+      "ids": [
+        "B4038",
+        "N086"
+      ],
+      "proposal": "distinct",
+      "reason": "遇水使疏鬆膠結骨架失穩，與地下水抽降改變有效應力造成壓密方向/機制不同。"
+    }
+  ],
+  "author_changes_before_lock": [
+    "B4006濕敏膜僅讀到性能，已轉not_added而非虛構分子機制。",
+    "B4017/B4019/B4029/B4033/B4036保留原ID及來源定位到not_added，未改任何中央/舊題。",
+    "B4038刪未在指定段落展開的吸力支撐，收斂為弱膠結遇水失穩。",
+    "B4916移除誤列P270；弱酸稀釋不等同室內表面水膜氣體釋放。"
+  ],
+  "theme_budget_review": {
+    "themes": [
+      {
+        "id": "W4B-T01",
+        "seconds": 335,
+        "chapters": 5,
+        "condition": "若B4003無新對照，刪65秒為270秒/4章。"
+      },
+      {
+        "id": "W4B-T02",
+        "seconds": 345,
+        "chapters": 4,
+        "condition": "巧合效應示意不足則暫緩；可另提255秒/3章短解說，需另選版本及內容覆核、重核總秒數，不沿用345秒/4章主版。"
+      }
+    ],
+    "candidate_seconds": "每章分配均不超過所引用單題editorial上限，無重複使用同一題累積超限。",
+    "cadence": "實質推進以30–40秒安排，兩片最後回顧都縮15秒，不將回顧算新機制或加長素材。"
+  },
+  "limits": [
+    "本批是題級研究與編輯篩選，未逐主張查核、未拍示範、未計算/模擬建築性能。",
+    "來源中ASHRAE為2017教材、LBNL試驗為2007、CDC水封說明為1976/1979、FHWA混凝土機制頁為既有研究；只採穩定機制，不採舊價格、法規、推薦尺寸或效能數字。",
+    "LBNL辦公室、FHWA基礎設施、COMSOL管路算例延伸住家情境時，notes已明列原創情境推導，進稿須另核。",
+    "外部圖表未取得授權，也未把文字擷取當作已看過圖片；所有建議圖像是待製作機制示意。",
+    "空氣品質題只說物理分配機制，不推論個人健康結果或給污染物安全濃度。"
+  ],
+  "lock": {
+    "algorithm": "SHA-256",
+    "encoding": "UTF-8",
+    "newlines": "LF",
+    "batch_sha256": "9a7e51acb29c46e4e4eb1fa96250bcace8c38b3a99ee37ff74af6f29f5ba14ea",
+    "themes_sha256": "3f8e532e2fd269b9d79394a5d5033525ad933fe3cc9dd17a8ae9a2aa8a23bf14"
+  },
+  "post_review_corrections": {
+    "previous_lock": {
+      "batch": "1045bdf251dc9175d26b2643c6b169a93af4dc34cfcae2750e12ef88ce98ee90",
+      "themes": "4c012e0c4ef024565d6ead5ddc2f74c83f418af2b5939fd90ec82c081f2b43c6"
+    },
+    "changes": [
+      "B4022及B4-S010定位改Partitions。",
+      "B4022與聲音題組刪無足夠直接來源的低頻彈簧模型，收斂空氣耦合與腔內共振。",
+      "濕牆片最後回顧40秒降15秒，360→335秒；隔音片最後回顧30秒降15秒，360→345秒。",
+      "B4022 mechanism_key 同步收斂 air_coupling_and_cavity_resonance，避免中介資料帶回已刪模型。",
+      "依根更新short_explainer最低2章規則，T02刪段條件改為另選255秒3章版本需重新覆核，移除過時4章門檻；當期主版仍345秒4章。"
+    ],
+    "status": "AUTHOR_FIXED_AWAITING_TARGETED_RECHECK"
+  }
+}

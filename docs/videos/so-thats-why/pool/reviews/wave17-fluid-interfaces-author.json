@@ -1,0 +1,625 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCK_PENDING_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "7282403fd7343e3d97b38c36e086dbe60084fe4e",
+    "raw": 3326,
+    "selected": 2959,
+    "themes": 185,
+    "not_added": 835,
+    "pool_sha256": "a480858e3b05361efef0a96a1b0e7b82be27bcd002c13550a5d090d07a550b2e",
+    "checkpoint": "baselines/2026-11-02-2959.json.gz",
+    "checkpoint_sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave17-fluid-interfaces.json",
+      "sha256": "2dc5eefd0b8422f11da3f7ec7db2bfa59ba32d4e1300e3b5f8733d415e3143b5"
+    },
+    {
+      "file": "reviews/wave17-fluid-interfaces-themes.json",
+      "sha256": "0a6f0b01a68340511385f9b27b828cb856e866d9df1dd237eb650ac430211f41"
+    }
+  ],
+  "counts": {
+    "candidates": 7,
+    "sources": 6,
+    "research_works": 6,
+    "not_added": 19,
+    "themes": 5,
+    "near_pairs": 21
+  },
+  "scope": "原創題級研究與自然短解說企劃；兩個較專門題 F17003/04 先留 segment，不強接題案。",
+  "dedup_reading": {
+    "method": "對全部3326 raw問答/scope/key與835 not_added作流體關鍵詞檢索，得265 raw/50退題命中；初次長輸出中段截斷，另分批逐讀165筆非基礎類命中及相關P/legacy題，指定21近對完整讀回。不宣稱人工逐讀全3326題。",
+    "hits": ".cache/wave17-fluid-old-scan.json",
+    "comparison_rows": ".cache/wave17-fluid-author-comparisons.json",
+    "limits": "關鍵詞不代表語意召回率，尚待共同top5和非作者讀回。"
+  },
+  "near_pairs": [
+    {
+      "a": "F17001",
+      "b": "D2249",
+      "proposed": "distinct",
+      "reason": "舊題靠閥片關閉；新題無活動件，以流況控制的不對稱流場損失，反向仍可通。"
+    },
+    {
+      "a": "F17001",
+      "b": "P072",
+      "proposed": "distinct",
+      "reason": "舊題急彎橫流/亂流；新題同幾何交換流向、低 Re 差異消失，是方向性損失的控制組。"
+    },
+    {
+      "a": "F17001",
+      "b": "F10009",
+      "proposed": "distinct",
+      "reason": "舊題低 Re 流動逆轉；新題展示何時方向對稱失去及兩向壓損差，不是染料原路回放。"
+    },
+    {
+      "a": "F17002",
+      "b": "P054",
+      "proposed": "distinct",
+      "reason": "靜態毛細高度需先扣除；新題是旋轉法向應力對抗慣性，不是接觸角變動。"
+    },
+    {
+      "a": "F17002",
+      "b": "H3090",
+      "proposed": "distinct",
+      "reason": "舊題固定形變的應力鬆弛/蠕變；新題剪切產生法向作用與慣性競爭的自由面升降。"
+    },
+    {
+      "a": "F17002",
+      "b": "F8006",
+      "proposed": "distinct",
+      "reason": "觸變是暫時結構破壞恢復；新題不以等待時間重建結構作答案。"
+    },
+    {
+      "a": "F17003",
+      "b": "P072",
+      "proposed": "distinct",
+      "reason": "新題低慣性仍因彈性應力回饋變亂，不是足夠流速下慣性擾動。"
+    },
+    {
+      "a": "F17003",
+      "b": "H3090",
+      "proposed": "distinct",
+      "reason": "材料有鬆弛時間只是前提；新題需流場/應力耦合造成不穩定與多尺度變化。"
+    },
+    {
+      "a": "F17003",
+      "b": "F8006",
+      "proposed": "distinct",
+      "reason": "非單調整稠度/觸變歷史，新增低 Re 不規則流動的正回饋。"
+    },
+    {
+      "a": "F17003",
+      "b": "F17002",
+      "proposed": "distinct",
+      "reason": "法向應力可使定常液面改變；失穩回饋需解釋時間/空間不規則，不能由爬桿公式直接替答。"
+    },
+    {
+      "a": "F17004",
+      "b": "P051",
+      "proposed": "distinct",
+      "reason": "舊題固定體積剛體靜態浮力；新題氣泡可壓縮且體積與有效重力有相位關係。"
+    },
+    {
+      "a": "F17004",
+      "b": "Q9007",
+      "proposed": "distinct",
+      "reason": "舊題氣泡壓縮造成噴頭共振；新題非共振壓縮與振動時序乘積造成平均力方向改變。"
+    },
+    {
+      "a": "F17005",
+      "b": "P050",
+      "proposed": "distinct",
+      "reason": "力平衡不是位置穩定；新題下表面不穩平衡如何被持續振動穩定。"
+    },
+    {
+      "a": "F17005",
+      "b": "W16004",
+      "proposed": "distinct",
+      "reason": "舊題波的時間邊界造成反向分量；新題週期振動的浮體位置穩定，不用波前倒轉解釋。"
+    },
+    {
+      "a": "F17005",
+      "b": "F17004",
+      "proposed": "distinct",
+      "reason": "同研究但氣泡用可壓縮體積/相位平均力，倒浮剛船用動態穩定；保留兩答案供非作者裁定，不另算來源研究數。"
+    },
+    {
+      "a": "F17006",
+      "b": "P053",
+      "proposed": "distinct",
+      "reason": "靜態潤濕是前提，新題需圓邊彎流、貼附範圍與離邊控制，不只同一水滴換桌面。"
+    },
+    {
+      "a": "F17006",
+      "b": "P054",
+      "proposed": "distinct",
+      "reason": "彎月面在新題決定附著面積，仍需慣性流的脫離結果；不是重新問接觸角。"
+    },
+    {
+      "a": "F17006",
+      "b": "P062",
+      "proposed": "distinct",
+      "reason": "舊題無顯著損失的同流線能量；新題彎曲壓力場和固體潤濕耦合控制離邊，非縮管壓降。"
+    },
+    {
+      "a": "F17007",
+      "b": "I12008",
+      "proposed": "distinct",
+      "reason": "舊題氣膜延後接觸，新題已見液橋而後斷開，物理接觸條件相反。"
+    },
+    {
+      "a": "F17007",
+      "b": "I12009",
+      "proposed": "distinct",
+      "reason": "舊題部分融合由毛細波牽動頸縮；新題電場改錐角/液橋曲率並發生非合併反彈。"
+    },
+    {
+      "a": "F17007",
+      "b": "Q9005",
+      "proposed": "distinct",
+      "reason": "舊題長液柱擾動長大之 Rayleigh–Plateau；新題兩錐尖連接的局部曲率/壓力，不能只以同樣斷橋就合併。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "F17-S001",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "scope": "Results 的方向性壓損、Flow visualization and early turbulence，以及 Discussion；HTML 擷取段18–53、55–58、75–84。另目讀期刊 PDF 第4–5頁 Fig.3–4。",
+      "cache": {
+        "key": "tesla",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+        "date": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+        "content_type": "text/html; charset=utf-8",
+        "file": ".cache/wave17-fluid-tesla.html",
+        "bytes": 226781,
+        "sha256": "0cdaddba21015d4e9ee1d7ea7946364e7b1bcb1d440b214a8191406ee92dfe1a",
+        "text_chars": 55186
+      },
+      "additional_cache": [
+        {
+          "key": "tesla-pdf",
+          "url": "https://www.nature.com/articles/s41467-021-23009-y.pdf",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "final_url": "https://www.nature.com/articles/s41467-021-23009-y.pdf?error=cookies_not_supported&code=ee955711-b571-4a82-a828-b3a6d66e8ce1",
+          "content_type": "application/pdf",
+          "file": ".cache/wave17-fluid-tesla-pdf.pdf",
+          "bytes": 1484540,
+          "sha256": "41ab2eda41aaf2db17b5583dc3c63ad612da80601614ea2ec169210549af0a3a",
+          "pages": 11,
+          "text_chars": 63300
+        }
+      ]
+    },
+    {
+      "source_id": "F17-S002",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "scope": "PDF 第3頁 §II；第10–13頁 §IV D/E 及結論、Fig.6–8圖說。目讀第3頁 Fig.2、第12頁 Fig.8；未核附錄全套推導。",
+      "cache": {
+        "key": "rod",
+        "url": "https://arxiv.org/pdf/2302.06010",
+        "date": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/2302.06010",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-fluid-rod.pdf",
+        "bytes": 27507846,
+        "sha256": "587578d8e1c679a97f012b0930f61fe6be0be2cff5ffec820add55d11a2aed31",
+        "pages": 18,
+        "text_chars": 69042
+      },
+      "additional_cache": []
+    },
+    {
+      "source_id": "F17-S003",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "scope": "PDF 第2–6頁實驗、控制、流動譜與彈性應力推論；第9頁 Fig.3–5 圖說；目讀第12頁 Fig.3。未重算全部頻譜。",
+      "cache": {
+        "key": "elastic",
+        "url": "https://arxiv.org/pdf/nlin/0104052",
+        "date": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/nlin/0104052",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-fluid-elastic.pdf",
+        "bytes": 443746,
+        "sha256": "2fc29ca132e35e5d9cdbfbcb932f7a40edbceaf0ac0c986dbb0a395b4bcdf2d9",
+        "pages": 14,
+        "text_chars": 19660
+      },
+      "additional_cache": []
+    },
+    {
+      "source_id": "F17-S004",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "scope": "PDF 第2–8頁主文與 Fig.1–3 圖說；目讀第3頁 Fig.1、第7頁 Fig.3、第8頁正文。未讀 SI 第11–17頁推導。另讀正式更正一頁，僅 ref.4 姓名修正。",
+      "cache": {
+        "key": "float",
+        "url": "https://arxiv.org/pdf/2003.04777",
+        "date": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/2003.04777",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-fluid-float.pdf",
+        "bytes": 1272735,
+        "sha256": "3671480c10f1936579323b65c5ca0d8165e966462921deaa8bfd50cdd8992950",
+        "pages": 17,
+        "text_chars": 31261
+      },
+      "additional_cache": [
+        {
+          "key": "float-correction",
+          "url": "https://www.nature.com/articles/s41586-020-2789-4.pdf",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "final_url": "https://www.nature.com/articles/s41586-020-2789-4.pdf?error=cookies_not_supported&code=9fa6db22-2be1-48cc-bfac-e6058b96a080",
+          "content_type": "application/pdf",
+          "file": ".cache/wave17-fluid-float-correction.pdf",
+          "bytes": 589616,
+          "sha256": "0f69e698bf5b52ca0e26fc72b5cd10fc98d08ba848cfd6bb7a9a95c3578b7423",
+          "pages": 1,
+          "text_chars": 503
+        }
+      ]
+    },
+    {
+      "source_id": "F17-S005",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "scope": "PDF 第1–3頁正文、Fig.1–3 圖說，目讀第2頁 Fig.2 與第3頁 Fig.3；未讀第4頁電潤濕延伸或觀看影片。",
+      "cache": {
+        "key": "teapot",
+        "url": "https://arxiv.org/pdf/0910.3306",
+        "date": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/0910.3306",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-fluid-teapot.pdf",
+        "bytes": 1929351,
+        "sha256": "00dac3eea0201738a50998445f20aaea304a6bfced8a8379cef62cdfc1ea366a",
+        "pages": 4,
+        "text_chars": 20550
+      },
+      "additional_cache": []
+    },
+    {
+      "source_id": "F17-S006",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "scope": "PDF 第2–4頁接觸液橋、錐角/曲率模型及 Fig.2–4 圖說；目讀第3頁 Fig.3–4。第1頁擷取輸出部分截斷，未當完整逐頁讀完。",
+      "cache": {
+        "key": "charged",
+        "url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+        "date": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+        "content_type": "application/pdf",
+        "file": ".cache/wave17-fluid-charged.pdf",
+        "bytes": 772032,
+        "sha256": "aa45f441d81e2867a146fbe0bee44b41cc4851cabbb4074338318b9d37967667",
+        "pages": 4,
+        "text_chars": 23898
+      },
+      "additional_cache": []
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "F17-S001",
+      "doi": "10.1038/s41467-021-23009-y",
+      "read_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+      "related_urls": [
+        "https://www.nature.com/articles/s41467-021-23009-y",
+        "https://arxiv.org/abs/2103.17222"
+      ],
+      "relationship": "PMC、期刊 PDF、arXiv 是同一研究，實讀 PMC 正文和期刊 PDF 圖頁；未另讀 arXiv 全文。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+    },
+    {
+      "source_id": "F17-S002",
+      "doi": "10.1039/D3SM00181D",
+      "read_url": "https://arxiv.org/pdf/2302.06010",
+      "related_urls": [
+        "https://arxiv.org/abs/2302.06010",
+        "https://doi.org/10.1039/D3SM00181D"
+      ],
+      "relationship": "實讀 v1 預印本；RSC 正式正文 403，不能聲稱逐字與 VOR 一致。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+    },
+    {
+      "source_id": "F17-S003",
+      "doi": "10.1038/35011019",
+      "read_url": "https://arxiv.org/pdf/nlin/0104052",
+      "related_urls": [
+        "https://arxiv.org/abs/nlin/0104052",
+        "https://doi.org/10.1038/35011019"
+      ],
+      "relationship": "2001 arXiv 上傳與2000 Nature 同一研究，非兩個年代的獨立重現。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+    },
+    {
+      "source_id": "F17-S004",
+      "doi": "10.1038/s41586-020-2643-8",
+      "read_url": "https://arxiv.org/pdf/2003.04777",
+      "related_urls": [
+        "https://arxiv.org/abs/2003.04777",
+        "https://www.nature.com/articles/s41586-020-2643-8",
+        "https://www.nature.com/articles/s41586-020-2789-4.pdf"
+      ],
+      "relationship": "實讀 v1 主文；期刊版是同工作。另有效 PDF 讀更正，僅 ref.4 作者姓氏，非新增機制證據；兩候選共享同研究。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+    },
+    {
+      "source_id": "F17-S005",
+      "doi": "10.1103/PhysRevLett.104.084503",
+      "read_url": "https://arxiv.org/pdf/0910.3306",
+      "related_urls": [
+        "https://arxiv.org/abs/0910.3306",
+        "https://doi.org/10.1103/PhysRevLett.104.084503"
+      ],
+      "relationship": "2009 v1 與2010期刊版同工作，不分兩證據。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+    },
+    {
+      "source_id": "F17-S006",
+      "doi": "10.1038/nature08294",
+      "read_url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+      "related_urls": [
+        "https://www.nature.com/articles/nature08294"
+      ],
+      "relationship": "作者 UC Davis 庫內為2009原刊排版；路徑2015是上傳位置，非新版實驗。arXiv0910.3273是流體影像摘要，未拿來代替本篇全文。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "key": "sprinkler",
+      "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.132.044003/fulltext",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "HTTP Error 401: Unauthorized"
+    },
+    {
+      "key": "sprinkler2026",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13416679/",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13416679/fullTextXML",
+      "method": "UA HTTP",
+      "error": "HTTP500；命令退出1，未取得有效XML"
+    },
+    {
+      "url": "https://doi.org/10.1039/D3SM00181D",
+      "method": "web",
+      "error": "RSC指定正文403；以arXiv v1有效正文讀取，正式版未讀"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-021-23009-y",
+      "method": "web",
+      "error": "網頁認證轉向500；有效PMC HTML及期刊PDF已另取得"
+    },
+    {
+      "url": "https://doi.org/10.1073/pnas.2537479123",
+      "method": "web",
+      "error": "正文403；僅摘要/身分，候選未加入"
+    }
+  ],
+  "reading_limits": [
+    "六研究均實讀指定正文，不等於全篇/全部補充資料查核。",
+    "本批圖片目讀是靜態頁，沒有觀看補充影片、實驗、錄音試讀或媒體製作。",
+    "空心氣泡與倒浮剛體同研究，不以兩個來源ID假裝獨立證據；Nature更正僅參考文獻姓氏。",
+    "預印本主張限定於實讀版本，未宣稱與期刊VOR逐字相同。",
+    "反向灑水器的2026全文未取得，不把摘要或2024部分摘錄當正文，先退。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "F17-S001",
+      "pdf_pages": [
+        4,
+        5
+      ],
+      "route": "本機PyMuPDF渲染後view_image目讀；全文及圖像只.cache"
+    },
+    {
+      "source_id": "F17-S002",
+      "pdf_pages": [
+        3,
+        12
+      ],
+      "route": "本機PyMuPDF渲染後view_image目讀；全文及圖像只.cache"
+    },
+    {
+      "source_id": "F17-S003",
+      "pdf_pages": [
+        12
+      ],
+      "route": "本機PyMuPDF渲染後view_image目讀；全文及圖像只.cache"
+    },
+    {
+      "source_id": "F17-S004",
+      "pdf_pages": [
+        3,
+        7,
+        8
+      ],
+      "route": "本機PyMuPDF渲染後view_image目讀；全文及圖像只.cache"
+    },
+    {
+      "source_id": "F17-S005",
+      "pdf_pages": [
+        2,
+        3
+      ],
+      "route": "本機PyMuPDF渲染後view_image目讀；全文及圖像只.cache"
+    },
+    {
+      "source_id": "F17-S006",
+      "pdf_pages": [
+        3
+      ],
+      "route": "本機PyMuPDF渲染後view_image目讀；全文及圖像只.cache"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W17F-T01",
+      "seconds": 100,
+      "chapters": [
+        55,
+        45
+      ],
+      "core_id": "F17001",
+      "max_beat": 35
+    },
+    {
+      "id": "W17F-T02",
+      "seconds": 105,
+      "chapters": [
+        55,
+        50
+      ],
+      "core_id": "F17002",
+      "max_beat": 35
+    },
+    {
+      "id": "W17F-T03",
+      "seconds": 110,
+      "chapters": [
+        60,
+        50
+      ],
+      "core_id": "F17005",
+      "max_beat": 40
+    },
+    {
+      "id": "W17F-T04",
+      "seconds": 90,
+      "chapters": [
+        55,
+        35
+      ],
+      "core_id": "F17006",
+      "max_beat": 35
+    },
+    {
+      "id": "W17F-T05",
+      "seconds": 105,
+      "chapters": [
+        55,
+        50
+      ],
+      "core_id": "F17007",
+      "max_beat": 35
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_ONLY",
+    "checks": [
+      "Node24 validateEditorial7/isolated validateThemes5",
+      "每章一核心、beat<=45、總秒數/單核心累計cap/range上限",
+      "UTF8 LF、無BOM、全部字串尾空白與本機絕對路徑檢查"
+    ],
+    "read_aloud": false,
+    "media_produced": false
+  },
+  "unresolved": [
+    "待非作者判 F17001/P072、F17004/F17005 與 F17006/P053 的條件增量；作者建議distinct但非終裁。",
+    "共同top5尚未生成；不因研究名詞不同就認定必然新核。"
+  ],
+  "revision_history": [
+    {
+      "reviewer": "science_sources",
+      "date": "2026-11-02",
+      "before_files": [
+        {
+          "file": "batches/wave17-fluid-interfaces.json",
+          "sha256": "cb096cc67316bfb62915b3a0b137e65e830c6a98a56c85f5755ff49b3c72e39b"
+        },
+        {
+          "file": "reviews/wave17-fluid-interfaces-themes.json",
+          "sha256": "7e46af37273e0874e6e9c3e04daf30a821c4681f030036fca70f2da57a5bd37a"
+        },
+        {
+          "file": "reviews/wave17-fluid-interfaces-author.json",
+          "sha256": "b1280219ac7adb63655fc02d9f69c80bb217ee3dea9d6dc92bb971c56cd5b799"
+        }
+      ],
+      "changes": [
+        {
+          "id": "FLUID01",
+          "fields": [
+            "F17-S006.locator",
+            "F17007.source_locator"
+          ],
+          "reason": "原刊Fig.3b才是液橋幾何模型，Fig.3d是附著滴角度控制；Fig.4是其他液系例子，修正精確圖號，答案不變。"
+        },
+        {
+          "id": "FLUID02",
+          "themes": [
+            "W17F-T01",
+            "W17F-T02",
+            "W17F-T03",
+            "W17F-T04",
+            "W17F-T05"
+          ],
+          "before_seconds": [
+            110,
+            115,
+            125,
+            105,
+            115
+          ],
+          "after_seconds": [
+            100,
+            105,
+            110,
+            90,
+            105
+          ],
+          "reason": "刪末beat已講過的解釋和長限制宣讀；首次機制/控制不縮、不加新內容，target/range/drop/author同步。"
+        }
+      ],
+      "after_content_files": [
+        {
+          "file": "batches/wave17-fluid-interfaces.json",
+          "sha256": "2dc5eefd0b8422f11da3f7ec7db2bfa59ba32d4e1300e3b5f8733d415e3143b5"
+        },
+        {
+          "file": "reviews/wave17-fluid-interfaces-themes.json",
+          "sha256": "0a6f0b01a68340511385f9b27b828cb856e866d9df1dd237eb650ac430211f41"
+        }
+      ],
+      "status": "AUTHOR_CORRECTED_PENDING_TARGETED_RECHECK"
+    }
+  ]
+}

@@ -1,0 +1,666 @@
+{
+  "batch_id": "wave12-locomotion-20261101",
+  "created_on": "2026-11-01",
+  "scope": "動物合作搬運、纏結與解纏、受限接觸移動、流體互動；11個題級候選，實驗/模型/推論分開，不依物種或配額擴題。",
+  "sources": [
+    {
+      "id": "A12-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/",
+      "title": "Emergent oscillations assist obstacle negotiation during ant cooperative transport",
+      "publisher": "Gelblum et al.; PNAS",
+      "version": "2016; doi:10.1073/pnas.1611509113",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀Results上述兩小節正文及Fig.1–2圖說；web正文L112–151與當日UA HTML相對應。未讀其餘結果、SI或影片。",
+      "locator": "Results: Oscillatory Motion in the Vicinity of Obstacles; Microscopic Model Supports Emergent Oscillations; Fig.1–2",
+      "summary": "障礙限制使朝巢拉力與沿當下運動的持續拉力分離；繫繩對照與模型支持集體擺動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 Europe PMC fullTextXML 500後改讀PMC HTML；模型不要求螞蟻直接辨識障礙，不等於證明螞蟻完全沒有感覺或計畫。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/ants_obstacle_html.html",
+        "sha256": "d322d0e47c5f09dd708fe78c2c99cd6c9a9b40d0f08b57ab03f8334240d1dc83",
+        "text_path": ".cache/wave12-locomotion-sources/ants_obstacle_html.txt",
+        "text_sha256": "8ccb2da185d952a5dd11014a616e744e883e706fe7333c4b2253716947cdb46f"
+      },
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/"
+    },
+    {
+      "id": "A12-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11725855/",
+      "title": "Comparing cooperative geometric puzzle solving in ants versus humans",
+      "publisher": "Feinerman研究團隊等; PNAS",
+      "version": "2024-12-23 online / 2025 issue; doi:10.1073/pnas.2414274121",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀XML正文段003/007/015/019/022–026/029/044–045/055/059–061；含尺寸、群體滑牆、力耦合模型與單蟻composite限制。未讀全部人類比較。",
+      "locator": "Ant Solvers; Figs.2–3; Materials and Methods: Setup/Procedures for Experiments with Ants",
+      "summary": "大群體碰牆後仍保有方向持續性，能沿牆掃描；小群體容易停下換向。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 PMC web重開recaptcha；實讀Europe PMC fullTextXML鏡像，不稱讀通PMC頁。單蟻僅3個跨時段composite，不做螞蟻比人聰明的總排名。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/ants_puzzle.xml",
+        "sha256": "6f99dd39fcc4b9aa6e19bb8de0ee578a778149312d441386bffa8a1cce3ae335",
+        "text_path": ".cache/wave12-locomotion-sources/ants_puzzle.txt",
+        "text_sha256": "316dc5dbecebffec971307ba1c74e07a8e83fddd4c2d94c64fdcfa05f694ce9d"
+      },
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11725855/fullTextXML"
+    },
+    {
+      "id": "A12-S003",
+      "url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf",
+      "title": "Collective dynamics in entangled worm and robot blobs",
+      "publisher": "Ozkan-Aydin, Goldman and Bhamla; PNAS；Georgia Tech作者副本",
+      "version": "2021; doi:10.1073/pnas.2010542118；併讀A12-S004致謝更正",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀PDF pp.1、3–6正文與所列圖說；31頁合併檔的其餘正文/SI未讀。",
+      "locator": "PDF pp.3–6: Emergent Locomotion of Worm Blobs; Mechanism of Blob Locomotion; Collective Dynamics in Robophysical Blobs; Figs.3–6",
+      "summary": "溫度梯度下纏結團可共同移動；前端拉、後端活動與柔順連結提供可檢驗的物理解釋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 Europe PMC XML 500，改作者PDF。前拉後抬減摩是有觀察支持的可能機制，非完整神經或逐蟲力學證明；機器人使用光訊號，不是假扮動物溫度實驗。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/worms_blob_pdf.pdf",
+        "sha256": "4f6adf85e981065ec9fc81b9a6562a0317f430f4e97a4820b609490d7a952b4e",
+        "text_path": ".cache/wave12-locomotion-sources/worms_blob_pdf.txt",
+        "text_sha256": "ff9b078c43f78eb1f891b04c0e4ffde4755046faf0c686b362351d47537a97a8"
+      },
+      "retrieval_url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf"
+    },
+    {
+      "id": "A12-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8072251/",
+      "title": "Correction for Ozkan-Aydin et al., Collective dynamics in entangled worm and robot blobs",
+      "publisher": "PNAS correction",
+      "version": "2021-04-12; doi:10.1073/pnas.2103670118",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀更正短文全文（資助致謝增補）；未將頁面導覽當正文。",
+      "locator": "更正文：The authors note that the following statement should be added to the Acknowledgments",
+      "summary": "更正增加資助致謝，沒有修改本次採用的運動機制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "correction",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 web回傳recaptcha，UA直接HTML成功；此更正不是另一份獨立實驗。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/worms_correction.html",
+        "sha256": "c09d7c27fd32724673eaa5d7332abf4d51eaf509aaeca4d1d5a54418284b56a9",
+        "text_path": ".cache/wave12-locomotion-sources/worms_correction.txt",
+        "text_sha256": "788edc5caa044ea747c0b9e357286e5401a8f7e7b16aab1fca444a5e9dd97c0a"
+      },
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8072251/"
+    },
+    {
+      "id": "A12-S005",
+      "url": "https://math.mit.edu/~dunkel/Papers/2023PaEtAl_Science.pdf",
+      "title": "Ultrafast reversible self-assembly of living tangled matter",
+      "publisher": "Patil et al.; Science；MIT作者副本",
+      "version": "Science 380,392–398 (2023); doi:10.1126/science.ade7759",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀PDF pp.1–6指定正文與圖說；未讀補充方法、原始數據或播放影片。",
+      "locator": "PDF pp.2–4 Worm dynamics / Fig.3; pp.5–6 Mean-field theory / Fig.4 / Discussion",
+      "summary": "轉向速度與左右旋切換頻率的相對關係，能改變身體繞住鄰居或解開的結果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 Europe PMC XML 500，改MIT PDF。三維模擬以活動細絲近似蟲體；不宣稱已查明神經控制，也不把所有繩結畫成能自動解開。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/worms_tangle_pdf.pdf",
+        "sha256": "9b1c143e1419c6b5c25f6cbf2de0c9ee96c95d5a9783395b5f293e94c420e1c2",
+        "text_path": ".cache/wave12-locomotion-sources/worms_tangle_pdf.txt",
+        "text_sha256": "29f16e242d43194287c87434a9430373620f06366352b846fa62a63cdbb4a56a"
+      },
+      "retrieval_url": "https://math.mit.edu/~dunkel/Papers/2023PaEtAl_Science.pdf"
+    },
+    {
+      "id": "A12-S006",
+      "url": "https://arxiv.org/abs/2112.10615v2",
+      "title": "Cockroaches adjust body and appendages to traverse cluttered large obstacles",
+      "publisher": "Wang, Othayoth and Li; arXiv作者稿；相關正式期刊JEB",
+      "version": "arXiv:2112.10615v2, 2025-09-26修訂；相關doi:10.1242/jeb.243605 (2022)",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀作者稿PDF p.24、26–30；另讀arXiv版本頁。一般PDF與明指定v2再次取得的SHA相等。",
+      "locator": "作者稿PDF p.24 §3.5; pp.26–30 §§3.6–3.8 / 4.1–4.3; Fig.10",
+      "summary": "腿收攏會降低由頂開障礙轉成側滾的能障；點頭並未在同一模型中產生同等效果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 JHU正式排版PDF 403；本條只稱實讀arXiv v2，不冒稱逐字對照正式期刊。腿動作為觀察、能障改變為模型；點頭的感測功能仍是假說。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/roach_terrain_pdf.pdf",
+        "sha256": "6987af5d2c2edd0a63ca30c338f03f5d44107eee5b194ebe5eb0fe14d397fe00",
+        "text_path": ".cache/wave12-locomotion-sources/roach_terrain_pdf.txt",
+        "text_sha256": "ee4f9cca8ffb71b414578b217fb134aa9bd66c6ae5191d9fe3b5ad2b33129217"
+      },
+      "retrieval_url": "https://arxiv.org/pdf/2112.10615"
+    },
+    {
+      "id": "A12-S007",
+      "url": "https://polypedal.berkeley.edu/wp-content/uploads/117_Jayaram_CockroachesTraverseCrevicesCrawlRapidly_PNAS_2016.pdf",
+      "title": "Cockroaches traverse crevices, crawl rapidly in confined spaces, and inspire a soft, legged robot",
+      "publisher": "Jayaram and Full; PNAS；UC Berkeley作者副本",
+      "version": "2016; doi:10.1073/pnas.1514591113",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀PDF pp.3–5結果、模型開頭與圖說；未讀全部材料壓縮測試、SI或影片。",
+      "locator": "PDF pp.3–5: Confined-Space Crawling; Model of Body-Friction Legged Crawling; Figs.2–4",
+      "summary": "狹縫裡腳需要抓地而身體接觸產生拖曳；增加地面摩擦會同時改變兩者。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 實驗限美洲蟑螂與所測平板；腿力不是直接量測而為簡化模型，不推所有縫隙最佳粗糙度。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/roach_crevice_pdf.pdf",
+        "sha256": "fcbb1d8c080d92a105bed0fa97de40ba911aa52ae098aea0c86156596fe4f06e",
+        "text_path": ".cache/wave12-locomotion-sources/roach_crevice_pdf.txt",
+        "text_sha256": "b269edd5b3222267d16a77d93eedc430fd7ea482ea36c7bb48c44469990ed85d"
+      },
+      "retrieval_url": "https://polypedal.berkeley.edu/wp-content/uploads/117_Jayaram_CockroachesTraverseCrevicesCrawlRapidly_PNAS_2016.pdf"
+    },
+    {
+      "id": "A12-S008",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8315797/",
+      "title": "Propelling and perturbing appendages together facilitate strenuous ground self-righting",
+      "publisher": "Othayoth and Li; eLife",
+      "version": "2021; doi:10.7554/eLife.60233",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀XML正文029/032/038–039/128–132/144及相關圖說；未讀完整SI與影片。",
+      "locator": "Wing opening facilitates self-righting via rolling; Discussion; Figs.3/7; Materials and methods: Leg modification / Potential energy landscape modeling",
+      "summary": "翅先改變支撐幾何、降低側滾能障，腿擾動再協助跨過；兩種附肢有不同角色。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 PMC web recaptcha，改Europe PMC XML。只限研究的艱難對稱開翅條件；不聲稱開翅單獨永遠無法翻身。平均能量不等於每次試驗門檻，模型也不是完整動力學。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/roach_right.xml",
+        "sha256": "2d0afaedc3e9c937e0b916a575c81988d31b6420c93fe7443775a5dbd7d286c0",
+        "text_path": ".cache/wave12-locomotion-sources/roach_right.txt",
+        "text_sha256": "324d1d8df4688e8dbdb540a429ff081a58d859cffbcadd6ef8ab3a32c94ac868"
+      },
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8315797/fullTextXML"
+    },
+    {
+      "id": "A12-S009",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf",
+      "title": "Wave-riding and wave-passing by ducklings in formation swimming",
+      "publisher": "Yuan et al.; Journal of Fluid Mechanics",
+      "version": "2021; JFM 928 R2; doi:10.1017/jfm.2021.820",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀PDF pp.3–6模型假設、單一跟隨者結果與圖說；未讀後續整隊wave-passing推導。",
+      "locator": "PDF pp.3–6: assumptions (i)–(v); §3.1 A mother duck followed by a duckling; Figs.1–3",
+      "summary": "跟隨位置改變波峰波谷相對身體的位置，模型裡波阻可減少也可增加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 剛體橢球、固定速度、理想勢流及不計黏性變化的模型；不宣稱實測所有鴨子代謝省多少、完全不用划水或本次已核整隊結果。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/duck_wave_pdf.pdf",
+        "sha256": "fc085b212a928699647e9c85773862f24b966233c74c9299582dd42ebeb7bfe1",
+        "text_path": ".cache/wave12-locomotion-sources/duck_wave_pdf.txt",
+        "text_sha256": "f55ec3fef4d0679366c501ae3a1bbb110ffe8987fb70f8df52bee61b4ee5b4d0"
+      },
+      "retrieval_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf"
+    },
+    {
+      "id": "A12-S010",
+      "url": "https://www.nature.com/articles/s41467-020-19086-0",
+      "title": "Vortex phase matching as a strategy for schooling in robots and in fish",
+      "publisher": "Li et al.; Nature Communications",
+      "version": "2020;11:5408; doi:10.1038/s41467-020-19086-0",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀PDF pp.2–6正文與圖說；未讀餘下討論、方法或SI；未播放影片。",
+      "locator": "PDF pp.2–6: Experiments with robotic fish; A simple mechanistic explanation and testable predictions; Testing our predictions with real fish; Figs.1–3",
+      "summary": "尾流到達有時間差；跟隨者需隨前後距離調整擺尾相位，才能維持同類流體互動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 機器魚直接量用電功率，真魚量身體運動並估計效益；兩者不能互搬絕對省能數字。非所有魚群固定隊形或唯一感覺機制。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/fish_phase_pdf.pdf",
+        "sha256": "598ebbcaf595ade60e0e4861195bc5a4b2a263105aadd972ef6d6de1284360d0",
+        "text_path": ".cache/wave12-locomotion-sources/fish_phase_pdf.txt",
+        "text_sha256": "4b22895260051801d8c395031c310224f3726114be3bff11a6f6afa331ec24ef"
+      },
+      "retrieval_url": "https://www.nature.com/articles/s41467-020-19086-0.pdf"
+    },
+    {
+      "id": "A12-S011",
+      "url": "https://web.mit.edu/awinter/www/Documents/2012%20JEB%20Razor%20Clam%20final.full.pdf",
+      "title": "Localized fluidization burrowing mechanics of Ensis directus",
+      "publisher": "Winter, Deits and Hosoi; Journal of Experimental Biology；MIT作者副本",
+      "version": "2012;215:2072–2080; doi:10.1242/jeb.058172",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀PDF pp.4–5結果與土體失效/孔隙水機制及圖說；未讀其餘完整推導或復現PIV。",
+      "locator": "PDF pp.4–5: Results; Fluidization due to E. directus valve contraction; Figs.6–8",
+      "summary": "殼縮收降低側向應力，鄰土先失效，再吸入孔隙水並局部鬆化，形成下鑽窗口。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 透明替代顆粒與土力模型有條件；不把它等同直接從下方鼓氣，也不稱所有貝類都同樣鑽泥。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/clam_pdf.pdf",
+        "sha256": "375a570630f920f85b799430fcbf32b0ef2a81ffeda69b032daddaabd72efa8f",
+        "text_path": ".cache/wave12-locomotion-sources/clam_pdf.txt",
+        "text_sha256": "5c0b48c849e2c685a2123d846c2310d80b64dd5556a1debf9c73cd26917286e9"
+      },
+      "retrieval_url": "https://web.mit.edu/awinter/www/Documents/2012%20JEB%20Razor%20Clam%20final.full.pdf"
+    },
+    {
+      "id": "A12-S012",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3816424/",
+      "title": "Passive energy recapture in jellyfish contributes to propulsive advantage over other metazoans",
+      "publisher": "Gemmell et al.; PNAS",
+      "version": "2013; doi:10.1073/pnas.1306983110",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀HTML正文段023/026–027/031–032/035/048及對應圖說；不以全文已讀名義採其他代謝排名。",
+      "locator": "正文起語 Although low muscle mass / The mesogleal tissue / Our results show / To elucidate how thrust；Figs.2–4",
+      "summary": "傘體回復後的停止渦環在傘下建立正壓，能在傘體暫停時再推進。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 Europe PMC XML 500，改PMC HTML。流場推算壓力與CFD支持機制；不是無中生能、純慣性滑行或所有水母世界最省能。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/jellyfish_html.html",
+        "sha256": "ee93aac9f6c7da75cfd1be6fe7df58808d7e27e02714012dc305e8a2594e6aa0",
+        "text_path": ".cache/wave12-locomotion-sources/jellyfish_html.txt",
+        "text_sha256": "3cc67ed34ab85fdff713bc703f0a6f3a5ad2417a23cdc25420efc9e8de7ad117"
+      },
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3816424/"
+    },
+    {
+      "id": "A12-S013",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6805160/",
+      "title": "Experimental investigation of ant traffic under crowded conditions",
+      "publisher": "Poissonnier et al.; eLife",
+      "version": "2019; doi:10.7554/eLife.48945",
+      "accessed_on": "2026-11-01",
+      "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+      "reading_scope": "實讀XML正文014–019/027–028/051–052/060/065/069–070/072–075/078/081/084/086及部分圖說。",
+      "locator": "Results: Macroscopic traffic dynamics in ants / Individual behavior; Discussion",
+      "summary": "所測橋上人數增加時流量可維持平台；但具體局部調節機制仍未定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 只支援not_added；不用蟻群永不堵塞作新確定機制。費洛蒙加速為提出的解釋，未做本次因果干預。",
+      "author_cache": {
+        "path": ".cache/wave12-locomotion-sources/ants_traffic.xml",
+        "sha256": "2a176d4fe3908ac787b9914ac70ea54bdfd5d7a2afd704b62fff02db1f83aa22",
+        "text_path": ".cache/wave12-locomotion-sources/ants_traffic.txt",
+        "text_sha256": "3e131dfbe729d199d222b541c360ce6bc2d833816c6d8624787347e415560a37"
+      },
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6805160/fullTextXML"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "A12001",
+      "question": "一群螞蟻搬的食物被擋住，為什麼會左右擺，而不只是朝巢硬拉？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.ant_constraint_informed_tangential_persistence_oscillation",
+      "answer_target": "朝巢拉力與沿當下運動方向的集體持續性，在障礙約束下不再同向；兩者競爭可形成來回擺動。",
+      "scope": "限P. longicornis的障礙/繫繩實驗與力耦合模型；繫繩本身無出口，不能畫成擺久一定脫困。",
+      "source_ids": [
+        "A12-S001"
+      ],
+      "source_locator": "Results兩個所列小節；Figs.1–2",
+      "premise_status": "screened",
+      "notes": "Z7015已講新加入者帶路；這題必須保留外部約束產生新運動模式，不能再講一次誰領隊。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "左右擺未必是每隻螞蟻都改成左右走的指令。",
+        "visual": "俯視同一貨物自由走/繫繩拉緊兩格，以朝巢與切向箭頭分開，再換有邊緣的障礙。",
+        "seconds": [
+          60,
+          100
+        ]
+      }
+    },
+    {
+      "id": "A12002",
+      "question": "螞蟻搬同形狀的貨物過窄門，為什麼大隊碰牆後反而較能繼續找路？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.ant_group_size_wall_sliding_direction_memory",
+      "answer_target": "研究模型以貨物持續移動維持蟻間機械耦合，拉力與局部運動對齊又維持滑行；大隊碰牆後仍保有此迴圈，小隊速度掉下來則較難維持對齊，容易停下換向。",
+      "scope": "限尺寸縮放的T形貨物與窄門、特定蟻種；個體大小沒有同比放大；不以單蟻composite或受限人類組做智商排名。 拉力對齊與耦合迴圈是模型對觀測的解釋，不是直接量到每隻蟻的認知或全部施力。",
+      "source_ids": [
+        "A12-S002"
+      ],
+      "source_locator": "Ant Solvers正文；Figs.2–3；Methods單蟻composite限制",
+      "premise_status": "screened",
+      "notes": "與A12001同基礎力耦合但新條件是群體尺度與沿牆方向記憶；若覆核認只是同核心延伸，可合例並收短。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "暫時記住方向，可以藏在群體持續施力的狀態裡。",
+        "visual": "兩個按研究尺寸關係重設的迷宮，疊加碰牆後滑行/停下換向路徑；另以模型箭頭畫持續移動→局部拉力對齊→維持滑行的環，不畫每隻蟻腦中地圖。",
+        "seconds": [
+          65,
+          105
+        ]
+      }
+    },
+    {
+      "id": "A12003",
+      "question": "纏成一團的黑線蚓，怎麼還能整團往比較涼的地方移動？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.worm_blob_gradient_gait_differentiation_entangled_force",
+      "answer_target": "不同位置受不同溫度，前端拉動、後端活動與纏結連接可讓團塊產生方向性；觀察與機器人對照支持功能分化是可能機制。",
+      "scope": "限Lumbriculus variegatus、小團觀察與光控機器人；後端抬起降低摩擦仍為提出機制；大團不透明，不能聲稱每隻蟲角色已完全追蹤。",
+      "source_ids": [
+        "A12-S003",
+        "A12-S004"
+      ],
+      "source_locator": "PDF pp.3–6；Mechanism of Blob Locomotion與Fig.4；更正致謝短文",
+      "premise_status": "screened",
+      "notes": "不得敘事成全體永遠比單隻快；原文個體速度、到達比例與條件不同。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "纏住同伴也能傳力，整團不一定要像一隻巨大蠕蟲同步縮。",
+        "visual": "冷暖色帶上的蟲團，實線標已觀察拉動/抬起，虛線標減摩推論；另框機器人柔順連結對照。",
+        "seconds": [
+          65,
+          110
+        ]
+      }
+    },
+    {
+      "id": "A12004",
+      "question": "同一團黑線蚓能纏緊又迅速散開，為什麼不只是扭得更快？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.worm_alternating_helical_chirality_tangle_release",
+      "answer_target": "在相同示意速度與迴圈尺度下，較晚換旋向的路徑較能繞住鄰居，較早換向可避免建立相同連接；模型中的換向比例及迴圈相對鄰距共同控制纏結，速度本身也可能改變迴圈尺度。",
+      "scope": "限實測頭部軌跡、超音波結構及活動細絲模型；gamma=alpha/(2*pi*lambda)、R=v/(alpha*l)分別描述換向比例與迴圈相對鄰距。只有固定gamma、R與鄰距l，同比加快前進v、轉向alpha、換向lambda，才保持路徑形狀而壓縮時間；沒有一整圈的通用換向門檻。不宣稱神經解結算法或所有閉合繩結皆可解開。",
+      "source_ids": [
+        "A12-S005"
+      ],
+      "source_locator": "PDF pp.2–6；Worm dynamics / Mean-field theory；Figs.3–4",
+      "premise_status": "screened",
+      "notes": "與X5001被動捻紗摩擦鎖住不同，新增主動切換路徑解除纏結；不另拆成纏/解兩題。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "換向節奏與迴圈大小共同決定會不會纏住；快慢能與路徑分開比較，但必須控制幾何條件。",
+        "visual": "模型控制對照：同示意速度、同迴圈尺度與鄰距，較早/較晚換旋向形成不同連接，不畫一整圈固定分界；再以同比加快前進、轉向、換向示意同路徑縮時。",
+        "seconds": [
+          65,
+          105
+        ]
+      }
+    },
+    {
+      "id": "A12005",
+      "question": "蟑螂擠過一排硬草狀障礙時，為什麼要收腿側滾，不一直站穩往前頂？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.roach_beam_traversal_active_sprawl_mode_barrier",
+      "answer_target": "頂開梁與側滾進縫是不同路徑；收攏後腿會改變支撐幾何並降低轉換能障，維持穩定未必有利於通過。",
+      "scope": "限discoid cockroach和鉸接梁、arXiv v2指定模型；腿動作有觀察，能障是模型；點頭感測等功能仍是假說不作答案。",
+      "source_ids": [
+        "A12-S006"
+      ],
+      "source_locator": "PDF p.24 §§3.5；pp.26–30 §§3.7–3.8/4.3；Fig.10",
+      "premise_status": "screened",
+      "notes": "P164已有寬底穩定；本題新增有障礙時兩種可行路徑及主動改支撐的轉換；此邊界交非作者判斷。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "要穿過去，有時得先放棄最穩的姿勢。",
+        "visual": "正面/側面同時追寬腿頂梁與收腿滾進空隙；比較頭彎與收腿的模型結果，不能只畫細身體比較窄。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "A12006",
+      "question": "蟑螂在矮縫裡爬，為什麼地面越粗糙不一定越快？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.confined_crawling_foot_traction_body_drag_competition",
+      "answer_target": "低天花板使身體也摩擦地面與頂部；地面摩擦增加可助腳推進，也會增加身體拖曳，兩者競爭出現非單調速度。",
+      "scope": "限美洲蟑螂所測平板/高度/三種摩擦條件；不報所有材質的最佳值，也不把模型腿力當直接量測。",
+      "source_ids": [
+        "A12-S007"
+      ],
+      "source_locator": "PDF pp.3–5 Confined-Space Crawling；Figs.2–4",
+      "premise_status": "screened",
+      "notes": "不是P006走路摩擦方向或P008壓緊更難滑的單一改物件案例。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "腳想抓住的表面，也可能拖住身體。",
+        "visual": "固定縫高，分開腳接觸與腹背接觸箭頭，再畫低中高地面摩擦的方向性對照；無未核實數字。",
+        "seconds": [
+          55,
+          95
+        ]
+      }
+    },
+    {
+      "id": "A12007",
+      "question": "翻肚的蟑螂已經張開翅膀，為什麼亂踢腿仍可能幫它翻回來？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.roach_selfrighting_wing_barrier_leg_perturbation",
+      "answer_target": "所測對稱開翅雖降低前翻與側滾能障，前翻門檻仍高於所供前翻動能；側滾門檻卻降到腿擺動的側向擾動可跨範圍，使身體轉而側滾翻正。",
+      "scope": "限研究的艱難對稱開翅條件；前翻/側滾能量分解與逐次越障比較主要由簡化機器人及能量地景模型分析，動物加腿慣量的成功率與平均動能觀察另列。不是量到全部動物內部能量，也不宣稱翅膀單獨一律不能翻；其他腿、腹部與翅變形仍可能參與。",
+      "source_ids": [
+        "A12-S008"
+      ],
+      "source_locator": "Wing opening facilitates self-righting via rolling；Discussion；Fig.7",
+      "premise_status": "screened",
+      "notes": "與K11005一般降低能障不同，增量為前翻仍不可行而側滾可行的方向選擇，以及翅/腿所供動能與兩條路徑的對照。題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "幫不上前翻的開翅，仍能替另一個方向的側滾創造機會。",
+        "visual": "同一對稱開翅狀態並排前翻/側滾路徑與模型門檻：前翻動能仍不足、腿擺側向擾動可越過降低的側滾門檻；機器人逐次能量比較與動物加腿慣量成功率分框。",
+        "seconds": [
+          60,
+          100
+        ]
+      }
+    },
+    {
+      "id": "A12008",
+      "question": "小鴨跟在媽媽後面游，為什麼有些距離幫忙、有些反而添阻力？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.duck_following_wave_phase_pressure_drag_sign",
+      "answer_target": "相對位置改變波峰波谷落在胸腹哪裡，水壓的水平合力不同；理想模型中同樣跟隨可降低或增加波阻。",
+      "scope": "限單一跟隨者的剛體橢球勢流模型、同速與不計黏性差的假設；不證明小鴨選位動機、總代謝或所有編隊比例。",
+      "source_ids": [
+        "A12-S009"
+      ],
+      "source_locator": "PDF pp.3–6 assumptions及§3.1；Figs.1–3",
+      "premise_status": "screened",
+      "notes": "與B2013印痕跟隨原因不同；本題是條件性的水動力，不把兩者互相取代。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "跟著走不等於自動搭到便車，位置會改變水推你的方向。",
+        "visual": "同一母鴨同速、後方兩個相位位置的原創剖面，標波面與壓力箭頭；不畫未讀整隊省能結果。",
+        "seconds": [
+          60,
+          100
+        ]
+      }
+    },
+    {
+      "id": "A12009",
+      "question": "魚已跟在同伴後面，為什麼拉開一點距離還要改擺尾時機？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.fish_wake_travel_delay_tail_vortex_phase_matching",
+      "answer_target": "前魚渦流到達後魚有傳播時間；前後距離改變時，擺尾相位也須改變才能維持順著同一類誘導流的互動。",
+      "scope": "限機器魚配對流槽與金魚運動追蹤；機器魚功率直接量測，真魚效益是由運動估算；不聲稱只靠一種感覺或所有魚都如此。",
+      "source_ids": [
+        "A12-S010"
+      ],
+      "source_locator": "PDF pp.2–6 Results三小節；Figs.1–3",
+      "premise_status": "screened",
+      "notes": "P112已有推鞦韆相位；新增行進尾流造成的距離—時間配合，非固定振子共振例子。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "隊形不只是一張位置圖，還包括何時動。",
+        "visual": "兩魚距離改變，追單個渦流到達時間與尾部左右行程；機器魚能耗圖/真魚運動觀察分框。",
+        "seconds": [
+          65,
+          110
+        ]
+      }
+    },
+    {
+      "id": "A12010",
+      "question": "蟶子往泥沙裡鑽，為什麼縮一下殼反而能讓周圍更容易通過？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.razor_clam_contraction_stress_failure_porewater_fluidization",
+      "answer_target": "縮殼減少側向土應力，鄰土失效後孔隙水被拉入局部區域，使顆粒鬆化；動物可在土體塌回前下鑽。",
+      "scope": "限Ensis directus的透明替代顆粒PIV與土力模型；孔隙率含推算和遮蔽區外插，不當所有底質或貝類通則。",
+      "source_ids": [
+        "A12-S011"
+      ],
+      "source_locator": "PDF pp.4–5 Results / Fluidization due to E. directus valve contraction",
+      "premise_status": "screened",
+      "notes": "D2048/W5021是外加向上流；N280是強震水壓失效，本題要保留縮殼卸載與局部破壞面造成吸入水的條件鏈。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是只用更大力推沙，也能先改變身邊那圈沙的受力。",
+        "visual": "剖面依序標殼縮、土體失效區、孔隙水流入與下移窗口；外圍未失效土保留。",
+        "seconds": [
+          55,
+          100
+        ]
+      }
+    },
+    {
+      "id": "A12011",
+      "question": "水母的傘停下來了，為什麼速度還可能再增加一下？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.jellyfish_stopping_vortex_passive_energy_recapture",
+      "answer_target": "傘體回復把停止渦環帶到傘下，渦環誘導流建立正壓；因此暫停變形期間仍可有額外推進，不只是慣性滑行。",
+      "scope": "限Aurelia aurita指定流場量測/壓力推算與CFD；能量來自先前收縮與彈性回復，不報跨物種最省能排名。",
+      "source_ids": [
+        "A12-S012"
+      ],
+      "source_locator": "正文起語Our results show / To elucidate how thrust；Figs.2–4",
+      "premise_status": "screened",
+      "notes": "與B2123噴流反作用與E9001蒲公英分離渦環減速不同；新增循環中延後的壓力推進。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "身體停動，不代表周圍水流已停止作用。",
+        "visual": "收縮、回復、暫停三格；暫停格疊無後續推力的滑行示意與實測趨勢概念對照，不偽造曲線數據。",
+        "seconds": [
+          55,
+          100
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "剛加入搬運隊的螞蟻為什麼能領路？",
+      "existing_ids": [
+        "Z7015"
+      ],
+      "source_ids": [
+        "A12-S001",
+        "A12-S002"
+      ],
+      "reason": "既有短暫帶路/貨物傳力核心；只作新障礙題的必要背景，不重算。"
+    },
+    {
+      "question": "螞蟻越擠為什麼永遠不塞車？",
+      "existing_ids": [],
+      "source_ids": [
+        "A12-S013"
+      ],
+      "reason": "前提過強；原文只測特定密度與橋，且明說局部調節機制仍不明。流量平台與入橋觀察留研究，不新增確定因果題。"
+    },
+    {
+      "question": "大隊螞蟻是否比人類更聰明？",
+      "existing_ids": [],
+      "source_ids": [
+        "A12-S002"
+      ],
+      "reason": "不同溝通限制與單蟻composite程序不足支持通用智力排名；刪標題噱頭，只留搬物接觸幾何。"
+    },
+    {
+      "question": "蟲團靠縮成球減少失水，是否另開一題？",
+      "existing_ids": [
+        "B2250"
+      ],
+      "source_ids": [
+        "A12-S003"
+      ],
+      "reason": "這輪只取表面積/體積比例會是舊尺度原理換物種；不擴成未審的生存效果主線。"
+    },
+    {
+      "question": "黑線蚓纏起來與解開，要不要分成兩個核心？",
+      "existing_ids": [
+        "A12004"
+      ],
+      "source_ids": [
+        "A12-S005"
+      ],
+      "reason": "兩邊是同一轉向/換向比例的控制對照，合在一題才能看清機制。"
+    },
+    {
+      "question": "蟑螂點頭是不是就在測量障礙的硬度？",
+      "existing_ids": [],
+      "source_ids": [
+        "A12-S006"
+      ],
+      "reason": "所讀版本把感測用途列為推測；可說未支持點頭大幅降低能障，不把另一未證實解釋當答案。"
+    },
+    {
+      "question": "蟑螂怎麼靠氣流發現危險？",
+      "existing_ids": [
+        "LEG-S60"
+      ],
+      "source_ids": [],
+      "reason": "尾鬚感測與逃跑已有；不因本批也研究蟑螂重收。"
+    },
+    {
+      "question": "鴨隊第三隻以後是否都不用耗能？",
+      "existing_ids": [
+        "A12008"
+      ],
+      "source_ids": [
+        "A12-S009"
+      ],
+      "reason": "只讀單一跟隨者結果；波阻不等於全部阻力/代謝，未讀整隊部分不延伸。"
+    },
+    {
+      "question": "跟隨魚只要離前魚越近就越省力嗎？",
+      "existing_ids": [
+        "A12009"
+      ],
+      "source_ids": [
+        "A12-S010"
+      ],
+      "reason": "忽略擺尾相位與流況；當同一核心的失敗對照，不另收。"
+    },
+    {
+      "question": "水母是不是世界上最省能的動物？",
+      "existing_ids": [
+        "A12011"
+      ],
+      "source_ids": [
+        "A12-S012"
+      ],
+      "reason": "跨物種質量與代謝比較另有假設，本次聚焦停止渦環；不把排名當可成立的新機制。"
+    },
+    {
+      "question": "把粉末吹成像液體，為什麼容易搬動？",
+      "existing_ids": [
+        "D2048",
+        "W5021"
+      ],
+      "source_ids": [
+        "A12-S011"
+      ],
+      "reason": "通用流化已有，只有蟶子的縮殼卸載—局部失效—吸水條件鏈提新候選。"
+    },
+    {
+      "question": "動物翻身是不是只要重心越過支點？",
+      "existing_ids": [
+        "P163",
+        "P164"
+      ],
+      "source_ids": [
+        "A12-S008"
+      ],
+      "reason": "基本穩定性已有；新候選限定翅改能障與腿擾動共同作用。"
+    }
+  ]
+}

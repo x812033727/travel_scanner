@@ -1,0 +1,213 @@
+{
+  "reviewer": "science_sources",
+  "author_reviewed": "root",
+  "created_on": "2026-11-01",
+  "status": "TARGETED_CORRECTIONS_ACCEPTED_NOT_PRODUCTION_APPROVAL",
+  "supersedes": {
+    "file": "reviews/wave3-earth-reviews-information.json",
+    "sha256": "03bd7cbbb617315f56793bcbb266fcd2422df6651ce83da6aef8d34f24d8b25c",
+    "scope": "只關閉 necessary_fixes 與對三組主題收斂的要求；原審閱的抽查範圍、限制與合併／暫緩建議仍有效。"
+  },
+  "inputs": [
+    {
+      "file": "batches/wave3-information-systems.json",
+      "sha256": "12a15bca02a2ffa1d854863153e7237d608b03a7199b2d83abb4e7f765489b4e"
+    },
+    {
+      "file": "reviews/wave3-information-themes.json",
+      "sha256": "8fee5b616a0fac03670a61fb1a70ff388f6aa017278b461df5fe611726efff3f"
+    },
+    {
+      "file": "reviews/wave3-root-reviews-old-pairs.json",
+      "sha256": "ed56e3065d9fb8680a39f21823f850defb044973ed60a547f6480ae30166e3ce"
+    }
+  ],
+  "correction_readback": [
+    {
+      "id": "I3073",
+      "result": "ACCEPTED",
+      "checked": "題名改為令牌建立時間，與 Fernet 的 answer_target 及適用範圍一致；不再把建立與發送時間等同。"
+    },
+    {
+      "id": "I3015",
+      "result": "ACCEPTED",
+      "checked": "payoff 改為系統列識別碼與業務主鍵，visual 明確不以磁碟物理位置表示 ID。"
+    },
+    {
+      "id": "INFO-P1",
+      "result": "ACCEPTED_AS_SHORT_EXPLAINER",
+      "body_seconds": 355,
+      "range_minutes": [
+        5,
+        7
+      ],
+      "checked": "I3012 章節縮為 55 秒；章節和、target_minutes、候選 ID 清單相符，production_ready 為 false。"
+    },
+    {
+      "id": "INFO-P2",
+      "result": "ACCEPTED_AS_SHORT_EXPLAINER",
+      "body_seconds": 295,
+      "range_minutes": [
+        4,
+        6
+      ],
+      "checked": "已移出 I3046/I3047 幀數與動畫時間末章，I3043 為 55 秒；主線聚焦等待、排版、合成與互動。"
+    },
+    {
+      "id": "INFO-P3",
+      "result": "ACCEPTED_AS_SHORT_EXPLAINER",
+      "body_seconds": 435,
+      "range_minutes": [
+        6,
+        8
+      ],
+      "checked": "I3084 為 60 秒，I3087 為 55 秒；其餘章節和與 target_minutes 一致。7:15 預算不算已達 8 分鐘長片門檻。"
+    }
+  ],
+  "old_pair_review": {
+    "status": "NO_OVERMERGE_BLOCKER_FOUND_IN_THIS_COHORT",
+    "scope": "讀 root 的 12 組處置及 21 個相關原始候選 question、answer_target、scope、locator；包含 4 組合併、1 題暫緩、7 組保留不同。本次未重新讀外部來源，未改 raw 或中央決策。",
+    "raw_inputs": [
+      {
+        "file": "batches/life-tech.json",
+        "sha256": "7c873e0d63d22eb2d666df6fee0867a936ddb62ce7dbabc1369ebc83b59ad2ee"
+      },
+      {
+        "file": "batches/physics.json",
+        "sha256": "1e53dc0564f1ff627990013e7bb06fda8bd7546cd3f8fd1579e2203b142b437b"
+      },
+      {
+        "file": "batches/wave2-electricity.json",
+        "sha256": "17a3e40fa79d79ba908d38bb73b0c559e78d8a00212d3fb1a8d13755e70bfbcb"
+      },
+      {
+        "file": "batches/wave2-everyday-engineering.json",
+        "sha256": "98251c48402466941956fbea3da9ec6a17371201bceda56954a0f04dd17d77ef"
+      }
+    ],
+    "decisions": [
+      {
+        "ids": [
+          "L042",
+          "L041"
+        ],
+        "root_action": "MERGE",
+        "review": "ACCEPT",
+        "reason": "L042 的現有目標明定核分裂與胞質分裂不同步，是 L041 任務分離的結果例子。",
+        "condition": "合併後不要把所有多核細胞都歸因此路徑；細胞融合等成因不在這組已審目標。"
+      },
+      {
+        "ids": [
+          "L293",
+          "L291"
+        ],
+        "root_action": "MERGE",
+        "review": "ACCEPT",
+        "reason": "目前續租／重新確認的簡短目標仍是暫時配置的生命週期；沒有獨立展開另一個網路變更或重啟狀態機。",
+        "condition": "保留續租提問與原 locator，不把原資料刪除；未來若新增不同狀態機機制另審。"
+      },
+      {
+        "ids": [
+          "P150",
+          "P149"
+        ],
+        "root_action": "MERGE",
+        "review": "ACCEPT",
+        "reason": "理想平面鏡反射線反向延長的構圖同時給出虛像與等距；後退是同圖的移動對照。",
+        "condition": "必須保留平面鏡限制，不能外推所有曲面鏡。"
+      },
+      {
+        "ids": [
+          "E2106",
+          "E2105"
+        ],
+        "root_action": "MERGE",
+        "review": "ACCEPT",
+        "reason": "速度平行磁場是同一叉積方向關係的零分量特例，適合在橫向力核心中連續展示。",
+        "condition": "保持經典點電荷、純磁力項，不能說加入其他力後仍不偏轉。"
+      },
+      {
+        "ids": [
+          "L177"
+        ],
+        "root_action": "HOLD",
+        "review": "ACCEPT",
+        "reason": "answer_target 只有適宜氧條件，尚未回答題名的氧過少與過多兩側機制；暫緩是厚度與解釋缺口，不是假前提判定。"
+      },
+      {
+        "ids": [
+          "L201",
+          "L199"
+        ],
+        "root_action": "KEEP_DISTINCT",
+        "review": "ACCEPT_WITH_EDITORIAL_CONDITION",
+        "reason": "一題處理可路由範圍，一題處理重用位址的資源與管理取捨；條件軸不同。",
+        "condition": "L201 進稿要展示私有空間重用的收益與代價，不能只背『節省位址』一句；兩題都不是各自長片保證。"
+      },
+      {
+        "ids": [
+          "E2021",
+          "E2022"
+        ],
+        "root_action": "KEEP_DISTINCT",
+        "review": "ACCEPT",
+        "reason": "本體體電荷與表面切向電場是不同邊界判斷；共用靜電平衡背景不等於目標相同。"
+      },
+      {
+        "ids": [
+          "D2033",
+          "D2034"
+        ],
+        "root_action": "KEEP_DISTINCT",
+        "review": "AUTHOR_ADVISORY_NOT_INDEPENDENT_SOURCE_REVIEW",
+        "reason": "濃縮保留物與補水洗出可透溶質所比較的量不同，補水步驟需要新的質量平衡推進，因此支持保留。",
+        "independence_limit": "本 reviewer 是這兩題原作者；此項只審 root 的處置理由，不冒稱換人外部來源查核。"
+      },
+      {
+        "ids": [
+          "E2041",
+          "E2043"
+        ],
+        "root_action": "KEEP_DISTINCT",
+        "review": "ACCEPT",
+        "reason": "串聯等電荷與並聯等電壓是不同電路約束；條件改變導致要解的分配變數不同。",
+        "condition": "可同片比較，但不要把重講 Q=CV 當成第二章的新資訊。"
+      },
+      {
+        "ids": [
+          "L029",
+          "L176"
+        ],
+        "root_action": "KEEP_DISTINCT",
+        "review": "ACCEPT",
+        "reason": "能切換有氧代謝與僅耐受氧而不使用氧取得能量，不是同能力或同條件。"
+      },
+      {
+        "ids": [
+          "E2105",
+          "E2109"
+        ],
+        "root_action": "KEEP_DISTINCT",
+        "review": "ACCEPT_WITH_EDITORIAL_CONDITION",
+        "reason": "力方向是前提，動能是否改變還須加入功與位移的判斷；不是單純把速度方向改成零分量。",
+        "condition": "E2109 必須真正推進到作功與能量比較，若只再說一次垂直速度，應合併而非計第二核心。"
+      },
+      {
+        "ids": [
+          "E2004",
+          "E2021"
+        ],
+        "root_action": "KEEP_DISTINCT",
+        "review": "ACCEPT",
+        "reason": "載流子移動能力的材質比較，與平衡後何處可留淨電荷的分布問題不同。"
+      }
+    ]
+  },
+  "limits": [
+    "本次只做定向修正讀回，未重做前次 95 題全稿式審閱。",
+    "舊題對照為編輯與條件審查，未聲稱本次重讀 root 所列 4 個外站來源。",
+    "未核實中央合併是否已套用；本收據不自動變更中央決策。",
+    "未做完整稿盲讀、旁白實測、示範實驗或製作核准。"
+  ],
+  "overall": "本次指定的資訊必要修正已解；舊題 4 merge + 1 hold 未見過度合併的阻擋問題。候選可續編，長度仍以實際稿件與展示驗證。"
+}

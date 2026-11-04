@@ -1,0 +1,335 @@
+{
+  "batch_id": "wave22-sound-20261102",
+  "created_on": "2026-11-02",
+  "scope": "5個有控制對照的候選，其中音高來源記憶建議併舊核；雙耳偵測只作素材段，不為聲音分類硬湊長片。",
+  "sources": [
+    {
+      "id": "R22-S001",
+      "url": "https://deutsch.ucsd.edu/pdf/JASA-2011_129_2245-2252.pdf",
+      "canonical_url": "https://deutsch.ucsd.edu/pdf/JASA-2011_129_2245-2252.pdf",
+      "retrieval_url": "https://deutsch.ucsd.edu/pdf/JASA-2011_129_2245-2252.pdf",
+      "title": "Illusory transformation from speech to song",
+      "publisher": "Deutsch, Henthorn and Lapidis; JASA 129 (2011), 2245–2252",
+      "doi": "10.1121/1.3562174",
+      "accessed_on": "2026-11-02",
+      "version": "作者網站期刊PDF；Exp I三組各18人、均至少5年音樂訓練。",
+      "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+      "reading_scope": "PDF pp1–7正文；p3 Fig2目讀。未聽作者音訊，p8僅參考文獻未逐條查。",
+      "locator": "PDF pp1–7正文；p3 Fig2目讀。未聽作者音訊，p8僅參考文獻未逐條查。",
+      "summary": "相同語音反覆呈現提高唱歌評分；中間轉調或重排音節的對照，即使首尾相同，也不呈同等轉變。",
+      "limitations": "只採Exp I；Exp II重複組預選已聽出錯覺者，不能當未篩選普遍性證據。音高顯著性增加是作者解釋，未直接量測神經去抑制。不保證任一句話、任一觀眾。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave22-sound-song.pdf",
+        "sha256": "ee516ef7282d54ac5195d8e03ed7ab4a8a50c4d3e8fdcc4668b4e36353fc0348",
+        "text_file": ".cache/wave22-sound-song-text.json",
+        "text_sha256": "2148f62172f3ea02135ca10caf43ce341d9f5af48eb9c0cdae8a78a71c8a34eb"
+      }
+    },
+    {
+      "id": "R22-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3261052/",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3261052/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3261052/",
+      "title": "Phonemic restoration effect reversed in a reverberant room",
+      "publisher": "Srinivasan and Zahorik; JASA 131, EL28–EL34",
+      "doi": "10.1121/1.3665120",
+      "accessed_on": "2026-11-02",
+      "version": "PMC期刊全文；2011-12-13線上、2012-01卷期，12名正常聽力成人。",
+      "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+      "reading_scope": "抽文0–62正文、Fig1/2目讀；六音訊列只讀說明未播放。",
+      "locator": "抽文0–62正文、Fig1/2目讀；六音訊列只讀說明未播放。",
+      "summary": "語音缺口補噪音的辨識優勢，在先切斷聲源再加入混響時反轉；改成混響後再切斷的對照又恢復噪音優勢。",
+      "limitations": "T60=1.1秒模擬雙耳房間響應；先切斷的安靜缺口可被前文殘響填入，不是殘響普遍使語音更清楚。本文噪音兩處理順序差異不顯著，不能把反轉主要歸因噪音尾巴遮蔽。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave22-sound-restoration.html",
+        "sha256": "c0dacc6ccd37ef67c19a510e8bff4823ab68676d860dd55065084b7bda503493",
+        "text_file": ".cache/wave22-sound-restoration-text.json",
+        "text_sha256": "83ff2ea50c500ccb9b1b110db16d9d918b1814aeabee1e2dbb8126b32f7ccd05"
+      }
+    },
+    {
+      "id": "R22-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4153988/",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4153988/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4153988/",
+      "title": "The precedence effect and its buildup and breakdown in ferrets and humans",
+      "publisher": "Tolnai, Litovsky and King; JASA 135 (2014), 1406–1418",
+      "doi": "10.1121/1.4864486",
+      "accessed_on": "2026-11-02",
+      "version": "PMC全文；只採4名成人的定位實驗，動物結果不另算素材核。",
+      "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+      "reading_scope": "抽文0–51、56、78–83、85、90–91、100、102–105、107–108、110；Fig2/6目讀。未完整讀59–76動物結果。",
+      "locator": "抽文0–51、56、78–83、85、90–91、100、102–105、107–108、110；Fig2/6目讀。未完整讀59–76動物結果。",
+      "summary": "穩定先後延遲的前導序列，對照隨機延遲序列，能增強部分受試者對先到聲源的定位優勢；交換領先方向會削弱它。",
+      "limitations": "4人小樣本；3人顯示建立、4人顯示破壞。回答最顯著聲音方向，不是測是否聽到第二聲；個別選5–16ms區間，不給通用回聲消失門檻。房間適應模型是解釋，未量腦內地圖。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave22-sound-precedence.html",
+        "sha256": "e7d0992af7ac5c9062191434a45b07b7fc502e4713f27bd2803c1f192ee05112",
+        "text_file": ".cache/wave22-sound-precedence-text.json",
+        "text_sha256": "5110afc4d04ea68c73bd84a70979893ede996aae472f110627a31f6986c22fba"
+      }
+    },
+    {
+      "id": "R22-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3070997/",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3070997/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3070997/",
+      "title": "Effects of non-simultaneous masking on the binaural masking level difference",
+      "publisher": "Buss and Hall III; JASA 129 (2011), p907起",
+      "doi": "10.1121/1.3514528",
+      "accessed_on": "2026-11-02",
+      "version": "PMC全文；僅採Exp1與穩態遮蔽條件的對照，不泛化所有非同時遮蔽。",
+      "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+      "reading_scope": "抽文8、13–14、19、21、23–24、26、28–30、34–35、37、42、49、52、55、95、106–109；Fig2目讀。",
+      "locator": "抽文8、13–14、19、21、23–24、26、28–30、34–35、37、42、49、52、55、95、106–109；Fig2目讀。",
+      "summary": "兩耳接收相同噪音時，只反轉一耳目標純音相位可降低偵測閾值；聽覺可利用目標與背景不同的耳間關係。",
+      "limitations": "7名有經驗正常聽力成人、耳機、500Hz短音；定量改善只限該條件，不承諾任意耳機15dB。不是空氣中相消，也不是已證明單一腦內相消演算法；20dB低噪區不是靜音。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave22-sound-binaural.html",
+        "sha256": "c0bee7063131305c5f9474f4e2caee9385160f19d8b83a30ee5e86abde8d6548",
+        "text_file": ".cache/wave22-sound-binaural-text.json",
+        "text_sha256": "a8c177a0fbeea0133f796d221c7fdd9b0562183600f3d2bc2473972cf9297acd"
+      }
+    },
+    {
+      "id": "R22-S005",
+      "url": "https://deutsch.ucsd.edu/pdf/Nature-1970_226_p286.pdf",
+      "canonical_url": "https://deutsch.ucsd.edu/pdf/Nature-1970_226_p286.pdf",
+      "retrieval_url": "https://deutsch.ucsd.edu/pdf/Nature-1970_226_p286.pdf",
+      "title": "Dislocation of Tones in a Musical Sequence: a Memory Illusion",
+      "publisher": "Diana Deutsch; Nature 226 (1970), 286",
+      "doi": "",
+      "accessed_on": "2026-11-02",
+      "version": "作者網站重排3頁版本；原期刊p286，不冒稱3頁新研究。",
+      "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+      "reading_scope": "重排PDF pp1–3全文；p2 Fig1目讀。",
+      "locator": "重排PDF pp1–3全文；p2 Fig1目讀。",
+      "summary": "首尾不同音高時，把末音放在中間序列會增加誤認相同；作者解釋為記得出現過卻錯置出現位置。",
+      "limitations": "事前練習篩選至少80%正確者；本文未明列總人數，不把judgments當人數。位置歸屬是行為解釋；保留與一般來源記憶核心合併，不當全新核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave22-sound-pitch-memory.pdf",
+        "sha256": "378b8648a326cc9deac967f3dfe3624b1708f7070d6740970d79e54539724e30",
+        "text_file": ".cache/wave22-sound-pitch-memory-text.json",
+        "text_sha256": "44a9c13f5751949e5a5f95b107249adc815fe797f6ab0ffd5dd45f2295700281"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R22001",
+      "question": "同一句話沒換音檔，反覆聽怎麼越像在唱歌？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.exact_repetition_speech_to_song_pitch_salience",
+      "answer_target": "同一句語音完整反覆播放，可由說話轉為較像歌唱的知覺。中間若轉調或打亂音節，即使起點與終點用同一段錄音，轉變也減弱；關鍵不只是聽得更多，還有穩定音高與順序。音高顯著性重加權是作者提出的解釋。",
+      "scope": "限研究的英語短句與有音樂訓練樣本；不能說任何語句重播十次都變歌，也不以神經抑制已被證實解釋。",
+      "source_ids": [
+        "R22-S001"
+      ],
+      "source_locator": "Exp I Methods/Results及Fig2；Exp II僅作限制。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "音檔不變，前面怎麼重播會改變它被聽成什麼。",
+        "visual": "同一首尾音檔鎖圖示；中間分完整、轉調、換序三路，原創評分趨勢圖註非新實驗。",
+        "seconds": [
+          90,
+          130
+        ]
+      }
+    },
+    {
+      "id": "R22002",
+      "question": "斷掉的話補噪音有時更好懂，為什麼換個房間反而輸給安靜？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.phonemic_restoration_interruption_reverberation_order",
+      "answer_target": "無混響時，斷續語音的缺口填噪音可比留白更好辨識；若先切斷聲源再通過混響房間，前文殘響填入安靜缺口，結果反而是留白較好。把混響後的訊號再切斷，噪音優勢又出現，顯示處理順序改變了耳邊實際留下的線索。",
+      "scope": "12人、英語句、50%斷續、模擬T60=1.1秒；整體混響表現仍差於無混響。不是噪音永遠助聽、不是大腦重建原波形；不用噪音尾巴單因解釋反轉。",
+      "source_ids": [
+        "R22-S002"
+      ],
+      "source_locator": "Methods及Results；Fig1處理順序、Fig2辨識率；Discussion58–59。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "補噪音不是固定加分；要先看斷口在房間之前還是耳朵之前。",
+        "visual": "三路原創時間線：先切後混、先混後切、無混響；殘響尾用淡色，噪音用另一色，不用相同空白冒充三種訊號。",
+        "seconds": [
+          110,
+          160
+        ]
+      }
+    },
+    {
+      "id": "R22003",
+      "question": "兩聲的先後沒變，前面聽過什麼為什麼會改變你指向哪邊？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.precedence_buildup_stable_delay_history_breakdown",
+      "answer_target": "短延遲的兩聲常由先到聲主導定位；先聽一串固定延遲的聲對，對照隨機延遲前史，部分受試者更偏向先到方向。若目標對交換領先方向，這種優勢可被削弱，顯示定位還受剛建立的聲學規律影響。",
+      "scope": "只採4成人部分；固定與隨機前史的目標刺激相同，交換方向另為破壞條件。測最顯著聲音方向，不把定位優勢叫第二聲聽不見，也不宣稱所有人同一延遲邊界。",
+      "source_ids": [
+        "R22-S003"
+      ],
+      "source_locator": "Human methods；III B；Fig2/6；Discussion C。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同目標聲對，先前的延遲規律也能改變定位權重。",
+        "visual": "左右兩列聲點時間線；先固定、再隨機，保持目標不變；另標交換領先方向為不同目標控制。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "R22004",
+      "question": "音量沒加大，只把一耳的目標音反相，為什麼可能更容易聽到？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.binaural_target_masker_interaural_relation_detection",
+      "answer_target": "兩耳收到相同背景噪音時，若目標純音在一耳反相，目標與噪音的耳間關係不同，受試者能在較低目標聲級辨識它。改善的是遮蔽中的偵測條件，不是把外界噪音物理消掉。",
+      "scope": "限耳機分耳呈現的500Hz短音及本文Exp1；不承諾所有聲音/設備固定改善量，不把兩耳訊號畫成空氣中直接相消。",
+      "source_ids": [
+        "R22-S004"
+      ],
+      "source_locator": "Exp1方法/結果與Fig2穩態噪音對照；Discussion D。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雙耳不只比較音量；目標和噪音不同的耳間關係也能提供線索。",
+        "visual": "左右耳分開兩條波形，背景相同、目標反相；原創方向示意搭偵測閾值趨勢，不安排提高音量挑戰。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "R22005",
+      "question": "明明首尾音不同，中間重播末音怎麼更容易聽成相同？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "memory.pitch_familiarity_serial_source_dislocation",
+      "answer_target": "第一個音與最後測試音不同時，讓測試音先在中間出現，會增加誤答首尾相同。作者提出，聽者可能記得這個音出現過，卻把它歸到第一個位置；這是內容熟悉與出現位置分離的受控例子。",
+      "scope": "作者重排版本Fig1；選過練習表現的聽者，樣本總人數未明列。順序歸屬為解釋，不把所有記憶錯誤歸此。建議併C2017作音高時間來源變體，不另計核心。",
+      "source_ids": [
+        "R22-S005"
+      ],
+      "source_locator": "PDF pp1–3與Fig1條件1、4、7、8對照。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "認得這個音，不等於記得它剛才在哪裡出現。",
+        "visual": "A→四干擾音→B的彩色時間線；只換其中一格為B，對照錯答增加，保留原首尾不同。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "R22-NA001",
+      "question": "看嘴形就一定會聽見第三個音嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "延續P14-NA16/A21-NA011；本輪只定位Nature摘要，未補方法正文，不復活McGurk題。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。"
+    },
+    {
+      "id": "R22-NA002",
+      "question": "聽了十次，任何一句話都會變成歌嗎？",
+      "existing_ids": [
+        "R22001"
+      ],
+      "source_ids": [
+        "R22-S001"
+      ],
+      "reason": "過度泛化；研究有限刺激與受訓樣本，作同題界線，不另計。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。"
+    },
+    {
+      "id": "R22-NA003",
+      "question": "噪音能修好所有斷掉的話嗎？",
+      "existing_ids": [
+        "R22002"
+      ],
+      "source_ids": [
+        "R22-S002"
+      ],
+      "reason": "本文混響控制可反轉優勢，錯誤萬用前提退回同題。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。"
+    },
+    {
+      "id": "R22-NA004",
+      "question": "房間殘響把斷句補回來，是另一個新題嗎？",
+      "existing_ids": [
+        "R22002"
+      ],
+      "source_ids": [
+        "R22-S002"
+      ],
+      "reason": "斷續與混響順序是同一組必要對照，不拆成兩個核心。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。"
+    },
+    {
+      "id": "R22-NA005",
+      "question": "先聽固定聲對與改變左右先後，要拆兩支嗎？",
+      "existing_ids": [
+        "R22003"
+      ],
+      "source_ids": [
+        "R22-S003"
+      ],
+      "reason": "建立與破壞是同一規律依賴的控制鏈，合一題。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。"
+    },
+    {
+      "id": "R22-NA006",
+      "question": "把一耳反相，就等於降噪耳機嗎？",
+      "existing_ids": [
+        "R22004",
+        "LEG-S86"
+      ],
+      "source_ids": [
+        "R22-S004"
+      ],
+      "reason": "耳間偵測差異與耳內聲壓相消機制不同；錯前提只作同題界線，不計題。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。"
+    },
+    {
+      "id": "R22-NA007",
+      "question": "把500Hz換成其他頻率，每個頻率再算一題嗎？",
+      "existing_ids": [
+        "R22004"
+      ],
+      "source_ids": [
+        "R22-S004"
+      ],
+      "reason": "參數不是新核心，本輪未核跨頻率資料，不增數。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。"
+    },
+    {
+      "id": "R22-NA008",
+      "question": "中間第二格與第三格放同音，各自算記憶錯覺嗎？",
+      "existing_ids": [
+        "R22005",
+        "C2017"
+      ],
+      "source_ids": [
+        "R22-S005"
+      ],
+      "reason": "同一位置歸屬機制的條件，留同一來源與變體，不拆核。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。"
+    }
+  ]
+}

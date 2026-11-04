@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "author": "root",
+  "created_on": "2026-11-03",
+  "production_ready": false,
+  "baseline": {
+    "raw": 3599,
+    "selected": 3220,
+    "not_added": 1580,
+    "themes": 370,
+    "head": "b65b15e34f51ad119cf55c5fafe3290db5b1e531"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave39-food.json",
+      "sha256": "159e46538d6179c87bfd9c86864ee02309e5b6414f963daad9eff31b8b6dff96"
+    },
+    {
+      "file": "reviews/wave39-food-themes.json",
+      "sha256": "35078cc25f475097d66422817fd3f41d49acaf635d22bafd73aa2a55b87724a8"
+    }
+  ],
+  "near_pairs": [
+    {
+      "a": "R39001",
+      "b": "LEG-S03",
+      "reason": "切開後形成催淚因子要由合成酶接力，舊核心已是同一答案。",
+      "decision": "propose_merge",
+      "b_question": "洋蔥還沒吃，為什麼先把你弄哭？",
+      "b_target": "洋蔥把原料和酵素分開放，一刀切下去它們才碰在一起，兩個酵素接力做出會飄的 syn-丙硫醛-S-氧化物，飄進眼睛，神經一偵測到就叫淚腺放水。"
+    },
+    {
+      "a": "R39001",
+      "b": "F4013",
+      "reason": "拍蒜生成刺激性氣味，與洋蔥的特殊合成酶及催淚因子不同。",
+      "decision": "propose_distinct",
+      "b_question": "蒜頭拍碎後才突然變嗆，氣味是原本藏著，還是剛剛做出來的？",
+      "b_target": "組織破壞讓 alliinase 參與含硫前驅物轉換，經中間物形成 allicin，後續還可生成其他含硫物。"
+    },
+    {
+      "a": "R39002",
+      "b": "LEG-S03",
+      "reason": "舊題答案是酵素反應；新題的可見端點是組織如何先儲存變形、破裂時噴霧並拉出液絲。舊卡已列該試驗預印本。",
+      "decision": "propose_distinct",
+      "b_question": "洋蔥還沒吃，為什麼先把你弄哭？",
+      "b_target": "洋蔥把原料和酵素分開放，一刀切下去它們才碰在一起，兩個酵素接力做出會飄的 syn-丙硫醛-S-氧化物，飄進眼睛，神經一偵測到就叫淚腺放水。"
+    },
+    {
+      "a": "R39002",
+      "b": "X38-001",
+      "reason": "空氣中單滴鼓袋破碎與刀下組織受壓破裂產生噴滴不同。",
+      "decision": "propose_distinct",
+      "b_question": "空中只有一個大水滴，沒有碰到別滴，怎麼能碎出一群大小不一的小滴？",
+      "b_target": "在向上的氣流裡，大水滴先被壓扁，再像一個薄袋被撐起。袋膜破開時水多集中在起伏的厚邊；邊緣再裂成一串大小不一的小滴。這說明單滴也有不靠互撞的碎裂路徑。"
+    },
+    {
+      "a": "R39003",
+      "b": "F4013",
+      "reason": "同有含硫反應，但嗆味生成與純化前驅物、酵素加上胺基酸重建色素，產物與對照不同。",
+      "decision": "propose_distinct",
+      "b_question": "蒜頭拍碎後才突然變嗆，氣味是原本藏著，還是剛剛做出來的？",
+      "b_target": "組織破壞讓 alliinase 參與含硫前驅物轉換，經中間物形成 allicin，後續還可生成其他含硫物。"
+    },
+    {
+      "a": "R39003",
+      "b": "R39004",
+      "reason": "試管重建藍色的原料，和真蒜在打泥前如何累積或轉化前驅物不同。",
+      "decision": "propose_distinct",
+      "b_question": "同一批蒜打成泥，為什麼先怎麼存放，會影響之後有多綠？",
+      "b_target": "在試驗條件下，低溫貯藏過程中異蒜胺酸累積，製泥後更容易變綠。冷藏後再溫藏，前驅物減少，成泥後的變綠程度也降低。"
+    },
+    {
+      "a": "R39004",
+      "b": "D2030",
+      "reason": "蒜球貯藏改變色素前驅物、乳酸菌發酵形成奶油香氣，處理和產物不同。",
+      "decision": "propose_distinct",
+      "b_question": "發酵奶油沒加香料，特殊香氣從哪裡來？",
+      "b_target": "乳酸菌發酵產生酸與雙乙醯等風味物質。"
+    },
+    {
+      "a": "R39005",
+      "b": "F4013",
+      "reason": "蒜被拍碎時產生哪些物質與人體不同採樣位置後續量到哪種氣體不同。",
+      "decision": "propose_distinct",
+      "b_question": "蒜頭拍碎後才突然變嗆，氣味是原本藏著，還是剛剛做出來的？",
+      "b_target": "組織破壞讓 alliinase 參與含硫前驅物轉換，經中間物形成 allicin，後續還可生成其他含硫物。"
+    },
+    {
+      "a": "R39005",
+      "b": "R39006",
+      "reason": "長時間與採樣位置辨來源，和喝奶次序對短時口腔揮發物的干預不同。",
+      "decision": "propose_distinct",
+      "b_question": "一樣是牛奶，先和蒜混合再吃，跟吃完才喝，口中留下的一樣多嗎？",
+      "b_target": "先把牛奶和蒜混合再吃，比吃完才喝更能降低口腔中測到的蒜味揮發物；水分是主要因素；對試驗中兩種較疏水的分子，全脂比脫脂降得更多。"
+    },
+    {
+      "a": "R39006",
+      "b": "D2030",
+      "reason": "牛奶在蒜味試驗作混合介質；奶油發酵則量新形成的香味。",
+      "decision": "propose_distinct",
+      "b_question": "發酵奶油沒加香料，特殊香氣從哪裡來？",
+      "b_target": "乳酸菌發酵產生酸與雙乙醯等風味物質。"
+    }
+  ],
+  "proposed_aliases": {
+    "R39001": "LEG-S03"
+  },
+  "source_identity": [
+    {
+      "source_id": "R39-S001",
+      "doi": "10.1038/419685a"
+    },
+    {
+      "source_id": "R39-S002",
+      "doi": "10.1104/pp.108.123273"
+    },
+    {
+      "source_id": "R39-S003",
+      "doi": "10.1073/pnas.2512779122"
+    },
+    {
+      "source_id": "R39-S004",
+      "doi": "10.1021/jf051980f"
+    },
+    {
+      "source_id": "R39-S005",
+      "doi": "10.3136/fstr.18.187"
+    },
+    {
+      "source_id": "R39-S006",
+      "doi": "10.1152/ajpgi.1999.276.2.G425"
+    },
+    {
+      "source_id": "R39-S007",
+      "doi": "10.1111/j.1750-3841.2010.01715.x"
+    }
+  ],
+  "limits": "首兩篇沿用舊書目的PubMed連結，增加本次閱讀。第三篇有舊預印本及新聞連結，不能稱全新實驗。"
+}

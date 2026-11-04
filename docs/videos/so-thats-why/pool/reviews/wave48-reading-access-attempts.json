@@ -1,0 +1,23 @@
+{
+  "status": "ACCESS_ATTEMPTS_ONLY_NO_NEW_READING_OR_CORE",
+  "checked_on": "2026-11-03",
+  "reviewer": "root",
+  "attempts": [
+    {
+      "source_id": "R45-S005",
+      "doi": "10.1037/xlm0001340",
+      "url": "https://repository.eduhk.hk/en/publications/direction-specific-reading-experience-shapes-perceptual-span/",
+      "result": "Institutional record opened. It displays the abstract and bibliography; published-version link is labelled EdUHK Users only. No original full text retrieved in this pass."
+    },
+    {
+      "source_id": "R45-S011",
+      "doi": "10.1177/0956797618806296",
+      "author_record": "https://lpc.univ-amu.fr/fr/profile/mirault-jonathan.html",
+      "attempted_pdf_url": "https://hal.science/hal-01908942v1/document",
+      "result": "Author page points to HAL hal-01908942v1. Direct document request returned HTTP 404. HAL API title/identifier lookup returned the matching article with uri_s https://amu.hal.science/hal-01908942v1 but no fileMain_s. The SAGE article/issue pages exposed abstract and bibliographic metadata; no original article body retrieved in this pass.",
+      "metadata_query": "https://api.archives-ouvertes.fr/search/?q=halId_s%3Ahal-01908942&fl=halId_s%2Ctitle_s%2CfileMain_s%2Curi_s&wt=json"
+    }
+  ],
+  "unchanged_gaps": ["R45-S005", "R45-S006", "R45-S007", "R45-S011", "R45-S013"],
+  "effect": "No source reading, candidate claim, selected count or previous gap status changed. Search hits for related papers and a ResearchGate transcription were not promoted to verified original full-text evidence."
+}

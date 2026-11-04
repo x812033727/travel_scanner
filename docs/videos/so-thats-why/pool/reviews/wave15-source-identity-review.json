@@ -1,0 +1,343 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_SCOPE_REVIEW_NOT_FULL_FACT_CHECK",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-02",
+  "reviewed_files": [
+    {
+      "file": "batches/wave15-food-physics.json",
+      "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
+    },
+    {
+      "file": "batches/wave15-imaging.json",
+      "sha256": "05408177378982b02fdbcf246e4699949fc551710455918c376cc2007456e33c"
+    },
+    {
+      "file": "batches/wave15-plants.json",
+      "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+    },
+    {
+      "file": "reviews/wave15-plants-author.json",
+      "sha256": "80733ee05dc4ac192f5634afe0a37c3fb2448327f7d03de1e94bbff11ce24b3b"
+    },
+    {
+      "file": "reviews/wave15-imaging-author.json",
+      "sha256": "684553ff0d53ae1f29501aa8e44bf7b9b1b4ee5ff37e52d497a0a65eaf17d0ac"
+    },
+    {
+      "file": "reviews/wave15-food-physics-author.json",
+      "sha256": "1a80a6299ab432400f07c335cf191218fb8ad5a7902061327afb504729dcaa6a"
+    },
+    {
+      "file": "baselines/2026-11-02-2921.json.gz",
+      "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7"
+    }
+  ],
+  "new_source_rows": 20,
+  "raw_distinct_urls": 20,
+  "automated_comparison": {
+    "method": "All historical URL registry entries, research titles and DOI metadata, plus within-wave15 comparisons; exact advisory identity matching.",
+    "matched_instances": 0,
+    "script_sha256": "d4daceefd4b3204825aaac57d7389e599269d1c1154daf6416368b1d9be126f0",
+    "result_sha256": "68688fda9e1985e967093082f28444a57fe7735e5a980acc2982bb3095edc26d",
+    "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+  },
+  "match_decisions": [],
+  "root_manual_identity_checks": [
+    {
+      "url": "https://math.mit.edu/~dunkel/Data/spaghetti/2018HeEtAl_PNAS.pdf",
+      "accessed_on": "2026-11-02",
+      "method": "web.open returned primary coauthor-hosted PDF, six pages",
+      "read_scope": "First page title, authors, abstract and DOI; returned opening Results and Fig.1 caption. Not the entire paper or supplements.",
+      "doi": "10.1073/pnas.1802831115",
+      "identity_finding": "MIT Latest Articles PDF and the PNAS journal record share the same work. A separate PMC HTML open returned CAPTCHA; no HTML body read is claimed.",
+      "limits": "Metadata and specified introductory passage comparison, not a new independent full factual review or reproduction of the experiments."
+    },
+    {
+      "url": "https://hu.gatech.edu/wp-content/uploads/2020/08/Hu20-rice.pdf",
+      "accessed_on": "2026-11-02",
+      "method": "web.open returned primary author-hosted journal PDF, eleven pages",
+      "read_scope": "First page metadata and abstract, introduction, methods filming/video-analysis and start of modelling on second page. No thermal, historical or injury-statistic claims adopted.",
+      "doi": "10.1098/rsif.2019.0622",
+      "identity_finding": "Georgia Tech PDF is the 2020 Royal Society paper, not a second supporting study. Metadata gives received2019/accepted2020; folder date is not publication evidence. Separate PMC HTML open returned CAPTCHA.",
+      "limits": "Root did not read the complete results or supplements. Implausible temperature statements in the introduction are not used; topic scope must remain kinematic, not flavour or safety advice."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8099191/",
+      "accessed_on": "2026-11-02",
+      "method": "web search returned indexed primary-article metadata and text; subsequent direct web.open returned CAPTCHA",
+      "read_scope": "Returned title/DOI/date, abstract, introduction and groove geometry passages. No successful fresh HTML-body fetch claimed.",
+      "doi": "10.1126/sciadv.abf4098",
+      "identity_finding": "Morphing pasta and beyond, Science Advances7 eabf4098, 2021-05-05, PMC XML version1. CMU first-party reporting refers to this same study, not an independent experiment.",
+      "limits": "Author and non-author review receipts control actual fetched version and source coverage. Root indexed passage reading does not replace their direct-source check."
+    },
+    {
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-24.pdf",
+      "accessed_on": "2026-11-02",
+      "method": "web.open primary author-hosted combined PDF",
+      "read_scope": "PDF page4 title, authors, publication date and abstract; preceding commentary header and references",
+      "identity_finding": "Slicing Softly with Shear (2012), not Cutting and Slicing Weak Solids (2020). First3 PDF pages are a separate Viewpoint, DOI10.1103/Physics.5.139, and must not be mislabelled as primary experimental results.",
+      "limits": "Metadata and stated introductory sections only; not full independent factual review or permission to reuse source images.",
+      "doi": "10.1103/PhysRevLett.109.244301"
+    },
+    {
+      "url": "https://pure-oai.bham.ac.uk/ws/files/40254023/Dietrich_et_al_post_print.pdf",
+      "accessed_on": "2026-11-02",
+      "method": "Read author-fetched local text after root web.open timeout",
+      "read_scope": "Repository cover and next-page full author list",
+      "identity_finding": "Peer reviewed author version of Root hydrotropism is controlled via a cortex-specific growth mechanism. Cover abbreviated citation lists only Dietrich and Dyson; actual article has a much longer author list. Download date is not publication date.",
+      "limits": "Metadata and stated introductory sections only; not full independent factual review or permission to reuse source images.",
+      "doi": "10.1038/nplants.2017.57",
+      "local_reading_sha256": "511a5cd28a56d1caf275f96c77e4c79de40b2c0771300d1504176f07a580dc6c"
+    },
+    {
+      "url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+      "accessed_on": "2026-11-02",
+      "method": "Read author-fetched local text after root web.open rejected file size",
+      "read_scope": "First-page title, authors, abstract and opening Introduction",
+      "identity_finding": "Light Field Photography with a Hand-held Plenoptic Camera is Stanford technical report CTSR2005-02; this access is the report, not an independently accessed later journal article.",
+      "limits": "Metadata and stated introductory sections only; not full independent factual review or permission to reuse source images.",
+      "local_reading_sha256": "22a74a8626a2dbed53c86081c7d8fd54d4b7f490ec8bd73cae15be797ff9a833"
+    },
+    {
+      "url": "https://merl.com/publications/docs/TR2006-124.pdf",
+      "accessed_on": "2026-11-02",
+      "method": "Read author-fetched local text",
+      "read_scope": "MERL cover, abstract, author names and article first-page title",
+      "identity_finding": "Coded Exposure Photography: Motion Deblurring using Fluttered Shutter, July2006 TR2006-124; research-lab cover plus article are one work, not two evidence sources.",
+      "limits": "Metadata and stated introductory sections only; not full independent factual review or permission to reuse source images.",
+      "local_reading_sha256": "4da008d0092bcbcf9711c8330ce13c63c7d35d371e708931be4e51a4900b1e0d"
+    },
+    {
+      "url": "https://merl.com/publications/docs/TR2006-087.pdf",
+      "accessed_on": "2026-11-02",
+      "method": "Read author-fetched local text",
+      "read_scope": "MERL cover title, authors, abstract and journal copyright header",
+      "identity_finding": "Fast Separation of Direct and Global Components of a Scene using High Frequency Illumination, July2006 TR2006-087. Laboratory report and TOG article wrapper refer to one study.",
+      "limits": "Metadata and stated introductory sections only; not full independent factual review or permission to reuse source images.",
+      "local_reading_sha256": "2957d420806e52ac3d0ffc4c5493fdb65d7fbd37f8c24ce6cf2d83fe4ee8ef85"
+    }
+  ],
+  "authors_disclosed_relationships_read_by_root": [
+    {
+      "batch": "plants",
+      "author_disclosure": {
+        "counting_rule": "8筆URL讀取紀錄，其中7篇原研究、1篇同研究團隊報告僅供退題。不同URL/全文XML/作者PDF不是獨立證據份數。",
+        "historical_compare": "對基線pool.sources全部readings做exact URL、DOI字串和正規化標題比對；無命中不保證沒有未標DOI的同文，交root身份整併。",
+        "records": [
+          {
+            "source_id": "B15-S001",
+            "doi": "10.1016/j.cub.2013.06.034",
+            "canonical_url": "https://doi.org/10.1016/j.cub.2013.06.034",
+            "read_url": "https://eprints.whiterose.ac.uk/id/eprint/84375/1/1-s2.0-S0960982213007598-main.pdf",
+            "version": "Current Biology 23:1497–1504; published version in institutional repository",
+            "historical_identity_matches": [],
+            "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+          },
+          {
+            "source_id": "B15-S002",
+            "doi": "10.1038/nplants.2017.57",
+            "canonical_url": "https://www.nature.com/articles/nplants201757",
+            "read_url": "https://pure-oai.bham.ac.uk/ws/files/40254023/Dietrich_et_al_post_print.pdf",
+            "version": "Nature Plants 3:17057; repository peer-reviewed accepted manuscript, 69-page file including supplements",
+            "historical_identity_matches": [],
+            "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+          },
+          {
+            "source_id": "B15-S003",
+            "doi": "10.1073/pnas.1710709115",
+            "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5789911/",
+            "read_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5789911/fullTextXML",
+            "version": "PNAS 115(4):E822–E831; Europe PMC fullTextXML PMCID PMC5789911",
+            "historical_identity_matches": [],
+            "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+          },
+          {
+            "source_id": "B15-S004",
+            "doi": "10.1126/science.1223304",
+            "canonical_url": "https://doi.org/10.1126/science.1223304",
+            "read_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-18.pdf",
+            "version": "Science 337:1087–1091; coauthor-hosted published PDF with supporting material",
+            "historical_identity_matches": [],
+            "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+          },
+          {
+            "source_id": "B15-S005",
+            "doi": "10.1101/gad.1550707",
+            "canonical_url": "https://genesdev.cshlp.org/content/21/14/1720",
+            "read_url": "https://genesdev.cshlp.org/content/21/14/1720.full.pdf",
+            "version": "Genes & Development 21:1720–1725; publisher PDF",
+            "historical_identity_matches": [],
+            "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+          },
+          {
+            "source_id": "B15-S006",
+            "doi": "10.1073/pnas.1015162108",
+            "canonical_url": "https://doi.org/10.1073/pnas.1015162108",
+            "read_url": "https://algorithmicbotany.org/papers/leafmargin.pnas2011.pdf",
+            "version": "PNAS Early Edition author-hosted published layout, 6 pages; final citation 108(8):3424–3429",
+            "historical_identity_matches": [],
+            "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+          },
+          {
+            "source_id": "B15-S007",
+            "doi": "10.1073/pnas.1007808108",
+            "canonical_url": "https://doi.org/10.1073/pnas.1007808108",
+            "read_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2011-03.pdf",
+            "version": "PNAS 108(14):5516–5521; coauthor-hosted published PDF with SI",
+            "historical_identity_matches": [],
+            "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+          },
+          {
+            "source_id": "B15-S008",
+            "doi": "10.1126/science.aaf9793",
+            "canonical_url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+            "read_url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+            "version": "2016-08-04 institutional research report about 2016 Science study; not article full text",
+            "historical_identity_matches": [],
+            "relationship": "同一Atamian2016研究的UC Davis報告；原論文未成功讀取，本輪只掛退題。"
+          }
+        ],
+        "related_work": "Robbins2018在正文引用同團隊Bao2014，未獨立讀2014全文，未把其前例當第二次覆驗。Liang2011與Gerbode2012皆含Mahadevan，但為不同材料/問題的原研究，不宣稱獨立團隊重複。"
+      }
+    },
+    {
+      "batch": "imaging",
+      "author_disclosure": [
+        {
+          "source_id": "I15-S001",
+          "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/",
+          "identity": "PNAS 97(15),8206–8210 (2000-07-18); DOI 10.1073/pnas.97.15.8206",
+          "independent_studies": 1,
+          "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+          "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+          "old_exact_url_or_title_matches": []
+        },
+        {
+          "source_id": "I15-S002",
+          "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700296/",
+          "identity": "Nature Methods 3,793–795 (2006), DOI 10.1038/nmeth929；PMC作者稿公開於2009，與2006研究是同工作。",
+          "independent_studies": 1,
+          "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+          "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+          "old_exact_url_or_title_matches": []
+        },
+        {
+          "source_id": "I15-S003",
+          "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2397368/",
+          "identity": "Biophys J 94(12),4957–4970 (2008), DOI 10.1529/biophysj.107.120345",
+          "independent_studies": 1,
+          "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+          "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+          "old_exact_url_or_title_matches": []
+        },
+        {
+          "source_id": "I15-S004",
+          "adopted_url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+          "identity": "Stanford CSTR 2005-02 technical report, April 2005；本批未另採期刊版。",
+          "independent_studies": 1,
+          "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+          "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+          "old_exact_url_or_title_matches": []
+        },
+        {
+          "source_id": "I15-S005",
+          "adopted_url": "https://merl.com/publications/docs/TR2006-124.pdf",
+          "identity": "MERL TR2006-124；同文ACM TOG25(3),795–804,July2006。MERL落地頁與PDF同研究，不另計證據。",
+          "independent_studies": 1,
+          "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+          "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+          "old_exact_url_or_title_matches": []
+        },
+        {
+          "source_id": "I15-S006",
+          "adopted_url": "https://web.mit.edu/2.717/www/oct_fujimoto_91.pdf",
+          "identity": "Science254(5035),1178–1181,1991-11-22；DOI10.1126/science.1957169；MIT掃描副本與PubMed/期刊為同工作。",
+          "independent_studies": 1,
+          "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+          "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+          "old_exact_url_or_title_matches": []
+        },
+        {
+          "source_id": "I15-S007",
+          "adopted_url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content",
+          "identity": "IEEE Signal Processing Magazine25(2),83–91,March2008；PDF DOI10.1109/MSP.2007.914730。",
+          "independent_studies": 1,
+          "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+          "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+          "old_exact_url_or_title_matches": []
+        },
+        {
+          "source_id": "I15-S008",
+          "adopted_url": "https://merl.com/publications/docs/TR2006-087.pdf",
+          "identity": "MERL TR2006-087；同文ACM TOG25(3),935–944,July2006。落地頁與PDF為同研究。",
+          "independent_studies": 1,
+          "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+          "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+          "old_exact_url_or_title_matches": []
+        }
+      ]
+    },
+    {
+      "batch": "food-physics",
+      "author_disclosure": [
+        {
+          "source_id": "F15-S001",
+          "work_doi": "10.1073/pnas.1802831115",
+          "canonical_work_title": "Controlling fracture cascades through twisting and quenching",
+          "version": "2018正式論文PDF；115(35):8665–8670；DOI 10.1073/pnas.1802831115",
+          "old_pool_identity_hits": [],
+          "carrier": "正式論文的作者/PMC/XML/出版者載體屬同一工作，不按URL數量當獨立實驗；只收一筆source。",
+          "independence_limit": "exact DOI/URL/normalized title查全舊sources無命中不證明沒有其他副本；每題目前僅一項研究，不宣稱獨立重現。"
+        },
+        {
+          "source_id": "F15-S002",
+          "work_doi": "10.1126/sciadv.abf4098",
+          "canonical_work_title": "Morphing pasta and beyond",
+          "version": "2021-05-05正式研究；7:eabf4098；DOI 10.1126/sciadv.abf4098",
+          "old_pool_identity_hits": [],
+          "carrier": "正式論文的作者/PMC/XML/出版者載體屬同一工作，不按URL數量當獨立實驗；只收一筆source。",
+          "independence_limit": "exact DOI/URL/normalized title查全舊sources無命中不證明沒有其他副本；每題目前僅一項研究，不宣稱獨立重現。",
+          "same_work_copies": [
+            "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8099191/fullTextXML",
+            "https://morphingmatter.org/s/morphingpasta_scienceadvances.pdf"
+          ]
+        },
+        {
+          "source_id": "F15-S003",
+          "work_doi": "10.1103/PhysRevLett.109.244301",
+          "canonical_work_title": "Slicing Softly with Shear",
+          "version": "2012-12-10正式論文；109:244301；DOI 10.1103/PhysRevLett.109.244301",
+          "old_pool_identity_hits": [],
+          "carrier": "正式論文的作者/PMC/XML/出版者載體屬同一工作，不按URL數量當獨立實驗；只收一筆source。",
+          "independence_limit": "exact DOI/URL/normalized title查全舊sources無命中不證明沒有其他副本；每題目前僅一項研究，不宣稱獨立重現。",
+          "same_work_copies": [
+            "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.109.244301",
+            "https://dash.harvard.edu/bitstreams/0b9556e2-5653-47fa-b1d2-e88c78903be6/download"
+          ],
+          "carrier_note": "合訂p1–3另作者評論不算第二項實驗證據；採p4–7原研究。"
+        },
+        {
+          "source_id": "F15-S004",
+          "work_doi": "10.1098/rsif.2019.0622",
+          "canonical_work_title": "The physics of tossing fried rice",
+          "version": "2020-02-12正式論文；17:20190622；DOI 10.1098/rsif.2019.0622",
+          "old_pool_identity_hits": [],
+          "carrier": "正式論文的作者/PMC/XML/出版者載體屬同一工作，不按URL數量當獨立實驗；只收一筆source。",
+          "independence_limit": "exact DOI/URL/normalized title查全舊sources無命中不證明沒有其他副本；每題目前僅一項研究，不宣稱獨立重現。",
+          "same_work_copies": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC7061713/"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources_without_raw_candidate_references": [
+    {
+      "source_id": "B15-S008",
+      "url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "role": "Retained for not-added direction provenance; no raw candidate references this source."
+    }
+  ],
+  "count_policy": "Counts are distinct normalized URLs, not independent experiments or corroborating studies. Publisher pages, repositories, preprints and published versions can represent the same research. Reading provenance and exact accessed version remain separate.",
+  "limits": "Root checked the stated identities and author disclosures. This is not a full bibliography semantic-equivalence audit or a new independent full-text fact check. Candidate factual scope is controlled by the three non-author topic review receipts. No script, image rights, experimental replication or production approval."
+}

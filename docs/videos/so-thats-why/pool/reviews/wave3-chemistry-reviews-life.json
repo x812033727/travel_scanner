@@ -1,0 +1,1010 @@
+{
+  "review_id": "wave3-chemistry-reviews-life-20261101",
+  "reviewer": "pool_physics / chemistry author, independent of life author",
+  "reviewed_on": "2026-11-01",
+  "status": "RECOMMENDATIONS_FOR_CENTRAL_RECONCILIATION_NOT_SCRIPT_APPROVAL",
+  "reviewed_inputs": {
+    "batch_path": "docs/videos/so-thats-why/pool/batches/wave3-life-systems.json",
+    "batch_sha256": "43965f492252876ad843db4f4bf8a4a1ed5a63b452ca1d101600e1a21d8f03c6",
+    "themes_path": "docs/videos/so-thats-why/pool/reviews/wave3-life-themes.json",
+    "themes_sha256": "7ca37b9c140a3555cfa0b242bec404515e920f0f804cf9af4b248640210fd86e",
+    "baseline_pool_sha256": "a0502f924ba7c3980a597a1ce8dee956f9c9eb63d33e232d9e276d4e11b94ba3",
+    "semantic_helper_sha256": "4790c26af7a15debed81cb10760a597ddc1d782bc87707aabf961d51af5ac711"
+  },
+  "coverage": {
+    "candidate_editorial_records_read": 93,
+    "source_metadata_read": 28,
+    "distinct_external_source_pages_sampled": 14,
+    "theme_proposals_read": 3,
+    "scope": "逐題讀問法、目標、條件、定位、notes 與 editorial；以舊庫全文檢索、每題5個語意近鄰及相近原紀錄回讀做跨庫檢查。沒有聲稱把2293舊raw逐條重做來源查核。語意分數只作導航，不是合併依據。",
+    "not_claimed": [
+      "不是93題逐主張科學查核",
+      "未讀28個來源的全部正文",
+      "不是腳本/素材授權或影像正確性驗收",
+      "片長為段落預算，非配音或一般觀眾實測"
+    ]
+  },
+  "summary": {
+    "recommend_merges": 6,
+    "recommend_holds": 4,
+    "required_source_or_visual_fixes": 2,
+    "other_candidates_without_required_editorial_change": 81,
+    "theme_time_findings": "T02 兩章各超原素材上限20秒，縮415秒；T01保留465–510秒；T03先縮結尾，450–520秒。"
+  },
+  "merge_recommendations": [
+    {
+      "id": "V3008",
+      "canonical_id": "V3042",
+      "recommendation": "merge_preserve_question_variant",
+      "reason": "一般多訊號匯流未多給獨立機制；lac 的抑制解除與 CAP/cAMP 兩條具體控制足以承接原追問。保留一般問法作變體，不增加核心數。"
+    },
+    {
+      "id": "V3037",
+      "canonical_id": "V3036",
+      "recommendation": "merge_preserve_question_variant",
+      "reason": "暗反應命名的澄清仍以 ATP/NADPH 供應為完整答案，可作同題開場誤解，不另算一個核心。"
+    },
+    {
+      "id": "V3072",
+      "canonical_id": "V3070",
+      "recommendation": "merge_preserve_question_variant",
+      "reason": "器官由來源變為匯改變的是壓力流的供收條件，現目標未增加儲藏物動員的獨立機制。保留季節反轉畫面。"
+    },
+    {
+      "id": "V3079",
+      "canonical_id": "V3075",
+      "recommendation": "merge_preserve_question_variant",
+      "reason": "乾燥限制把既有外部消化—溶解—吸收流程換成缺水條件；目前未有水活性或酵素傳輸的獨立模型，納入外消化的限制段。"
+    },
+    {
+      "id": "V3082",
+      "canonical_id": "V3084",
+      "recommendation": "merge_preserve_question_variant",
+      "reason": "現切鏈題只到逐輪二碳單位，已被三酸甘油酯兩部分分流目標涵蓋；以完整分流題收留切鏈追問。日後若補 β 氧化各反應與能量耦合再評估分題。"
+    },
+    {
+      "id": "V3092",
+      "canonical_id": "LEG-S55",
+      "recommendation": "merge_preserve_question_variant",
+      "reason": "舊香蕉題已含乙烯啟動熟成。新題增加氣體擴散至鄰果的生活情境，現階段宜為熟成題的來源更清楚案例，不另把換果實/來源距離計為機制。舊題的其他百分比與低溫主張仍須各自查核。"
+    }
+  ],
+  "hold_recommendations": [
+    {
+      "id": "V3016",
+      "recommendation": "hold_thin_until_mechanism",
+      "reason": "現答案把交配訊號與停止分裂並列，未回答為何停及如何鎖住細胞週期；示意容易只演現象。",
+      "return_condition": "補交配訊號到細胞週期停滯的具體連接與可比較條件，否則作 V3005/V3009 的應用例子。"
+    },
+    {
+      "id": "V3039",
+      "recommendation": "hold_thin_until_mechanism",
+      "reason": "植物也需把糖供能是有用澄清，但現目標沒有超出一般細胞呼吸用途的機制，60–90 秒易靠常識重述撐長。",
+      "return_condition": "先作植物能量影片轉場；有特定光照/黑暗下路徑協調與來源再提獨立核心。"
+    },
+    {
+      "id": "V3063",
+      "recommendation": "hold_thin_until_mechanism",
+      "reason": "環路抽走中間物會改變存量，目前僅為物料收支描述，已明示回補反應待來源。",
+      "return_condition": "補分流與回補如何同時維持循環的機制及新對照，再申請入選。"
+    },
+    {
+      "id": "V3076",
+      "recommendation": "hold_thin_until_mechanism",
+      "reason": "有孔隔膜容許物質通過，目前只有單一構造事實，45–70 秒缺第二步推進。",
+      "return_condition": "可作 L183 菌絲構造的畫面；若補可關閉孔/受損隔離的特定機制才再立題。"
+    }
+  ],
+  "required_fixes": [
+    {
+      "id": "V3067",
+      "priority": "required_before_selection_or_narrow_target",
+      "field": [
+        "answer_target",
+        "editorial.visual",
+        "source_ids"
+      ],
+      "issue": "§7.4 支持質子流與旋轉機器促進 ATP，但未展開催化位點構象交替；目前 target/visual 比所列來源更深。",
+      "requested_change": "補已讀分子旋轉—催化構象的權威/原始來源；或把本題收斂到來源直接支持的旋轉耦合，不把未讀狀態變化當已支持細節。",
+      "distinct_from": "V3066 的跨膜梯度儲能與 V3067 的轉動耦合可保留不同核心。"
+    },
+    {
+      "id": "V3093",
+      "priority": "required_metadata_and_visual_fix",
+      "field": [
+        "source_ids",
+        "source_locator",
+        "editorial.visual"
+      ],
+      "issue": "USDA 摘要支持 GA—糊粉層—澱粉酶，未明載畫面中的胚芽為 GA 來源。",
+      "requested_change": "新增既有 V3-S025 的 Gibberellins 段引用；該段明載 seed embryos 合成 GA，視覺『胚芽訊號』改『胚的 GA 訊號』，保持穀類模型範圍。",
+      "readback_evidence": "獨立覆核已實讀 OpenStax §30.6 Gibberellins，2026-11-01。"
+    }
+  ],
+  "distinct_core_decisions": [
+    {
+      "ids": [
+        "V3007",
+        "L064"
+      ],
+      "decision": "keep_distinct_with_scope",
+      "reason": "舊題問同基因組如何形成不同細胞身分；新題在已具接收能力前提比較同一刺激的下游讀出。保持效應蛋白/路徑差異，勿整段重講分化。"
+    },
+    {
+      "ids": [
+        "V3043",
+        "V3044"
+      ],
+      "decision": "keep_distinct",
+      "reason": "核小體位置重排與乙醯化改變電荷的存取機制不同，§16.3 分別支持；可相鄰成章但不是換材料。"
+    },
+    {
+      "ids": [
+        "V3066",
+        "V3067"
+      ],
+      "decision": "keep_distinct_after_source_fix",
+      "reason": "能量先存於梯度與能量透過轉動耦合到合成是兩個因果步驟；詳見 V3067 來源修正。"
+    },
+    {
+      "ids": [
+        "V3048",
+        "V3049",
+        "L066"
+      ],
+      "decision": "keep_distinct_with_scope",
+      "reason": "泛稱轉錄後可調節的 L066 不能取代具體機制；末端保護與 UTR 結合蛋白改變壽命可分。V3049 勿只重述『壽命較長產量較多』，進稿須選具體可視對照。"
+    },
+    {
+      "ids": [
+        "V3073",
+        "D2168",
+        "D2238",
+        "L097"
+      ],
+      "decision": "keep_distinct_with_scope",
+      "reason": "張力下連續水柱形成栓塞的邊界條件不同於高點積氣或泵內進氣；也不是只重講蒸散拉水。"
+    },
+    {
+      "ids": [
+        "V3085",
+        "L032",
+        "H3085"
+      ],
+      "decision": "keep_distinct_with_scope",
+      "reason": "保留天線集光到反應中心電荷分離的交接，與多色素吸收範圍或 FRET 距離量測不同。不得把所有天線轉移一概改稱同一簡化 FRET 模型；若只剩能量近距離接力便併為例子。"
+    },
+    {
+      "ids": [
+        "V3088",
+        "V3091",
+        "B2038"
+      ],
+      "decision": "keep_distinct_with_scope",
+      "reason": "現今胞器依賴宿主與古菌/細菌來源造成基因親緣拼合的可觀測線索不同。第二題須保留多來源證據限制，避免只重講同一基因搬移動畫。"
+    },
+    {
+      "ids": [
+        "V3094",
+        "V3095",
+        "V3038"
+      ],
+      "decision": "keep_distinct",
+      "reason": "RuBisCO 氧化競爭、典型兩細胞 C4 空間濃縮與 CAM 時間分隔不同；可串問題與解法，但不可把 C4/CAM 當同一條固定流程。"
+    }
+  ],
+  "source_checks": [
+    {
+      "source_id": "V3-S002",
+      "url": "https://openstax.org/books/biology-2e/pages/9-2-propagation-of-the-signal",
+      "title": "Biology 2e §9.2 Propagation of the Signal",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Signaling Pathways; Phosphorylation; Second Messengers（已讀至 cAMP）",
+      "candidate_ids": [
+        "V3007",
+        "V3008",
+        "V3009",
+        "V3010",
+        "V3011",
+        "V3012"
+      ],
+      "observation": "支持訊號匯流、效應蛋白差異與訊使周轉的題級方向。",
+      "limits": "勿沿用磷酸化取代 hydroxyl 的字面表述；未核對所有下游分支。"
+    },
+    {
+      "source_id": "V3-S017",
+      "url": "https://openstax.org/books/biology-2e/pages/7-4-oxidative-phosphorylation",
+      "title": "Biology 2e §7.4 Oxidative Phosphorylation",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Electron Transport Chain; Chemiosmosis; ATP Yield",
+      "candidate_ids": [
+        "V3064",
+        "V3065",
+        "V3066",
+        "V3067",
+        "V3068"
+      ],
+      "observation": "讀到載體、梯度及旋轉耦合。",
+      "limits": "V3067 催化構象細節超過本節；未採正文中載體命名/電子計數與唯一通道等過度簡化。"
+    },
+    {
+      "source_id": "V3-S010",
+      "url": "https://openstax.org/books/biology-2e/pages/16-3-eukaryotic-epigenetic-gene-regulation",
+      "title": "Biology 2e §16.3 Eukaryotic Epigenetic Gene Regulation",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Epigenetic Control: Regulating Access to Genes; DNA Methylation（僅作界線）",
+      "candidate_ids": [
+        "V3043",
+        "V3044"
+      ],
+      "observation": "位置移動與乙醯化電荷兩種調節可區分。",
+      "limits": "不外推所有甲基化必然關閉或所有表觀狀態可跨世代遺傳。"
+    },
+    {
+      "source_id": "V3-S027",
+      "url": "https://www.ars.usda.gov/research/publications/publication/?seqNo115=71002",
+      "title": "Influences of the Starchy Endosperm of Alpha-Amylase Gene Expression",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Interpretive Summary; Technical Abstract",
+      "candidate_ids": [
+        "V3093"
+      ],
+      "observation": "GA、糊粉層與澱粉酶方向受摘要支持。",
+      "limits": "僅摘要，不是全文；胚來源畫面需另列 V3-S025。"
+    },
+    {
+      "source_id": "V3-S006",
+      "url": "https://openstax.org/books/biology-2e/pages/14-5-dna-replication-in-eukaryotes",
+      "title": "Biology 2e §14.5 DNA Replication in Eukaryotes",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Eukaryotic replication opening; Telomere Replication; Figure 14.16",
+      "candidate_ids": [
+        "V3025",
+        "V3026",
+        "V3027",
+        "V3028"
+      ],
+      "observation": "多起點、染色質與線性末端限制支持題級模型。",
+      "limits": "不要把原頁 RNase H/FEN1 混稱或圖替代文字的末端方向照搬；原核/真核模型要分開。"
+    },
+    {
+      "source_id": "V3-S019",
+      "url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
+      "title": "Biology 2e §24.1 Characteristics of Fungi",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Growth; Nutrition（含隔膜孔與捕食環段）",
+      "candidate_ids": [
+        "V3075",
+        "V3076",
+        "V3077"
+      ],
+      "observation": "外消化與接觸後膨脹捕食環可成對照；隔膜孔目前僅構造事實。",
+      "limits": "本次未逐段覆核所有有性生殖內容，V3078 不列為外站已核。"
+    },
+    {
+      "source_id": "V3-S004",
+      "url": "https://openstax.org/books/biology-2e/pages/9-4-signaling-in-single-celled-organisms",
+      "title": "Biology 2e §9.4 Signaling in Single-Celled Organisms",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Signaling in Yeast; Signaling in Bacteria",
+      "candidate_ids": [
+        "V3016",
+        "V3017"
+      ],
+      "observation": "酵母停止生長與細菌訊號濃度回饋可讀到。",
+      "limits": "未提供本題所需的酵母週期停滯連接機制；訊號濃度不可等同精確細胞計數。"
+    },
+    {
+      "source_id": "V3-S028",
+      "url": "https://www.c4phylomics.org/photosynthesis/photosynthesis",
+      "title": "What is C4 Photosynthesis?",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "What is C4 Photosynthesis? 兩個主文段落",
+      "candidate_ids": [
+        "V3094",
+        "V3095"
+      ],
+      "observation": "研究計畫頁支持典型兩細胞 C4 濃縮與光呼吸問題。",
+      "limits": "未讀所引研究全文，不把專案概述算作實驗重現或全部 C4 類型。"
+    },
+    {
+      "source_id": "V3-S024",
+      "url": "https://openstax.org/books/biology-2e/pages/23-1-eukaryotic-origins",
+      "title": "Biology 2e §23.1 Eukaryotic Origins",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Endosymbiotic Theory; Mitochondria（至 Monocercomonoides 例外段）",
+      "candidate_ids": [
+        "V3088",
+        "V3090",
+        "V3091"
+      ],
+      "observation": "基因搬移、宿主依賴與胞器功能縮減有題級支持。",
+      "limits": "未在本次抽查覆核後段二次內共生細節；不把 V3089 說成已外站逐項核過。"
+    },
+    {
+      "source_id": "V3-S012",
+      "url": "https://openstax.org/books/biology-2e/pages/16-5-eukaryotic-post-transcriptional-gene-regulation",
+      "title": "Biology 2e §16.5 Eukaryotic Post-transcriptional Gene Regulation",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Alternative RNA Splicing; Control of RNA Stability",
+      "candidate_ids": [
+        "V3047",
+        "V3048",
+        "V3049",
+        "V3050"
+      ],
+      "observation": "剪接、末端保護、UTR 結合及 miRNA/RISC 方向可讀到。",
+      "limits": "不採來源圖說對單條 mRNA 產物數的含混表述；特定分子與效率另核。"
+    },
+    {
+      "source_id": "V3-S018",
+      "url": "https://openstax.org/books/biology-2e/pages/30-5-transport-of-water-and-solutes-in-plants",
+      "title": "Biology 2e §30.5 Transport of Water and Solutes in Plants",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Movement of Water and Minerals in the Xylem; Transportation of Photosynthates in the Phloem; Translocation",
+      "candidate_ids": [
+        "V3070",
+        "V3072",
+        "V3073"
+      ],
+      "observation": "已讀水柱中斷與來源/匯、載糖吸水、壓力流。",
+      "limits": "只採相關段，不沿用其他段的水勢圖符號或重力數字。"
+    },
+    {
+      "source_id": "V3-S021",
+      "url": "https://openstax.org/books/biology-2e/pages/8-2-the-light-dependent-reactions-of-photosynthesis",
+      "title": "Biology 2e §8.2 The Light-Dependent Reactions of Photosynthesis",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "How Light-Dependent Reactions Work（天線至 PSII 水供電子段）",
+      "candidate_ids": [
+        "V3085",
+        "V3086",
+        "V3087"
+      ],
+      "observation": "明確區分激發能轉移與反應中心電子轉移。",
+      "limits": "不採每次激發的過度簡化原子/電子計數；本次並未做同位素實驗文獻查核。"
+    },
+    {
+      "source_id": "V3-S025",
+      "url": "https://openstax.org/books/biology-2e/pages/30-6-plant-sensory-systems-and-responses",
+      "title": "Biology 2e §30.6 Plant Sensory Systems and Responses",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "Gibberellins; Ethylene",
+      "candidate_ids": [
+        "V3092",
+        "V3093"
+      ],
+      "observation": "乙烯鄰果例子及胚合成 GA 可讀到，能補 V3093 引用。",
+      "limits": "V3093 現尚未列這個 source_id；胚芽字眼也應收斂成胚。"
+    },
+    {
+      "source_id": "V3-S026",
+      "url": "https://extension.umaine.edu/fruit/harvest-and-storage-of-tree-fruits/the-role-of-ethylene-in-fruit-ripening/",
+      "title": "The Role of Ethylene in Fruit Ripening",
+      "read_via": "web.run.open 實讀所列正文區段",
+      "locator": "The Role of Ethylene in Fruit Ripening 開頭三段與結尾控制概述",
+      "candidate_ids": [
+        "V3092"
+      ],
+      "observation": "果實對乙烯敏感性與時序的品種差異有支持。",
+      "limits": "不採藥劑/採收操作建議，不把所有水果概括為一樣。"
+    }
+  ],
+  "theme_reviews": [
+    {
+      "id": "V3-T01",
+      "authored_seconds": 510,
+      "checked_chapter_seconds": [
+        35,
+        65,
+        40,
+        135,
+        45,
+        45,
+        120,
+        25
+      ],
+      "chapter_budget_check": [
+        {
+          "chapter": 2,
+          "ids": [
+            "V3020"
+          ],
+          "seconds": 65,
+          "sum_candidate_upper": 95
+        },
+        {
+          "chapter": 3,
+          "ids": [
+            "V3019"
+          ],
+          "seconds": 40,
+          "sum_candidate_upper": 65
+        },
+        {
+          "chapter": 4,
+          "ids": [
+            "V3021",
+            "V3022"
+          ],
+          "seconds": 135,
+          "sum_candidate_upper": 210
+        },
+        {
+          "chapter": 5,
+          "ids": [
+            "V3023"
+          ],
+          "seconds": 45,
+          "sum_candidate_upper": 70
+        },
+        {
+          "chapter": 6,
+          "ids": [
+            "V3024"
+          ],
+          "seconds": 45,
+          "sum_candidate_upper": 65
+        },
+        {
+          "chapter": 7,
+          "ids": [
+            "V3027",
+            "V3028"
+          ],
+          "seconds": 120,
+          "sum_candidate_upper": 200
+        }
+      ],
+      "decision": "conditional_planning_keep",
+      "recommended_seconds": [
+        465,
+        510
+      ],
+      "reason": "方向限制→分段接續→末端邊界具有新追問；有材料的章節均未超單題合計上限。",
+      "required_before_script": [
+        "全程固定明示細胞模型；從細菌複製元件示例轉到真核端粒不能無標示接成同一細胞。",
+        "135 秒與120秒章各拆成至少3次可見的新問題/對照，勿一張圖配長旁白。",
+        "原頁有末端方向/酵素名錯誤線索，圖須重新以可靠來源逐標示核對。"
+      ],
+      "cut_rule": "環狀夾45秒屬可刪支線，先刪即可465秒；若因來源或圖解不足再縮短，不補其他酵素。"
+    },
+    {
+      "id": "V3-T02",
+      "authored_seconds": 580,
+      "checked_chapter_seconds": [
+        30,
+        100,
+        95,
+        85,
+        105,
+        120,
+        45
+      ],
+      "chapter_budget_check": [
+        {
+          "chapter": 2,
+          "ids": [
+            "V3002",
+            "V3003"
+          ],
+          "seconds": 100,
+          "sum_candidate_upper": 160
+        },
+        {
+          "chapter": 3,
+          "ids": [
+            "V3005"
+          ],
+          "seconds": 95,
+          "sum_candidate_upper": 105
+        },
+        {
+          "chapter": 4,
+          "ids": [
+            "V3009"
+          ],
+          "seconds": 85,
+          "sum_candidate_upper": 90
+        },
+        {
+          "chapter": 5,
+          "ids": [
+            "V3012"
+          ],
+          "seconds": 105,
+          "sum_candidate_upper": 85,
+          "excess_seconds": 20
+        },
+        {
+          "chapter": 6,
+          "ids": [
+            "V3011"
+          ],
+          "seconds": 120,
+          "sum_candidate_upper": 100,
+          "excess_seconds": 20
+        }
+      ],
+      "decision": "shorten_before_planning_selection",
+      "recommended_seconds": [
+        415,
+        415
+      ],
+      "revised_chapters_seconds": [
+        30,
+        100,
+        95,
+        85,
+        85,
+        20
+      ],
+      "revised_core_ids": [
+        "V3002",
+        "V3003",
+        "V3005",
+        "V3009",
+        "V3012"
+      ],
+      "reason": "cAMP 與鈣兩章各超原題上限20秒；鈣換另一個系統，現無足夠新增對照來支撐120秒。結尾45秒也容易重述。",
+      "required_before_script": [
+        "先補明確 Gs 至腺苷酸環化酶的來源，不能拼成所有 G 蛋白都走的路。",
+        "曲線需明示概念示意或給真實資料，不能偽裝測量；題名『準時』不暗示固定回復時鐘。"
+      ],
+      "cut_rule": "鈣120秒移出、cAMP105改85、結尾45改20，得到415秒=6:55；未來若有不同機制的回復曲線證據與清楚兩系統標示，鈣另加至多90秒成505秒=8:25，但這是候補條件而非當期時長。"
+    },
+    {
+      "id": "V3-T03",
+      "authored_seconds": 540,
+      "checked_chapter_seconds": [
+        30,
+        90,
+        75,
+        90,
+        75,
+        70,
+        70,
+        40
+      ],
+      "chapter_budget_check": [
+        {
+          "chapter": 2,
+          "ids": [
+            "V3086"
+          ],
+          "seconds": 90,
+          "sum_candidate_upper": 90
+        },
+        {
+          "chapter": 3,
+          "ids": [
+            "V3085"
+          ],
+          "seconds": 75,
+          "sum_candidate_upper": 95
+        },
+        {
+          "chapter": 4,
+          "ids": [
+            "V3087"
+          ],
+          "seconds": 90,
+          "sum_candidate_upper": 105
+        },
+        {
+          "chapter": 5,
+          "ids": [
+            "V3036"
+          ],
+          "seconds": 75,
+          "sum_candidate_upper": 85
+        },
+        {
+          "chapter": 6,
+          "ids": [
+            "V3034"
+          ],
+          "seconds": 70,
+          "sum_candidate_upper": 90
+        },
+        {
+          "chapter": 7,
+          "ids": [
+            "V3035"
+          ],
+          "seconds": 70,
+          "sum_candidate_upper": 95
+        }
+      ],
+      "decision": "conditional_planning_keep_with_shorter_close",
+      "recommended_seconds": [
+        450,
+        520
+      ],
+      "recommended_default_seconds": 520,
+      "reason": "追水中氧、電子/能量、碳三條路徑可持續修正同一誤解；各章在原素材上限內。結尾40秒應先壓20。",
+      "required_before_script": [
+        "75–90 秒章需2–3個實際推進，尤其能量轉移→電荷分離不能只重放亮點。",
+        "若使用同位素研究作證，須補已讀原始研究；現在僅可稱機制示意。",
+        "限制在題級模型，不背一整頁收支數字，不插 C4/CAM 或光譜分類。"
+      ],
+      "cut_rule": "先將結尾40縮20得520秒；碳再生70秒若只剩算術便再移出成450秒=7:30。"
+    }
+  ],
+  "candidate_dispositions": [
+    {
+      "id": "V3001",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3002",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3003",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3004",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3005",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3006",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3007",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3008",
+      "decision": "recommend_merge"
+    },
+    {
+      "id": "V3009",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3010",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3011",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3012",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3013",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3014",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3015",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3016",
+      "decision": "recommend_hold"
+    },
+    {
+      "id": "V3017",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3018",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3019",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3020",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3021",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3022",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3023",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3024",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3025",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3026",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3027",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3028",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3029",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3030",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3031",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3032",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3033",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3034",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3035",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3036",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3037",
+      "decision": "recommend_merge"
+    },
+    {
+      "id": "V3038",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3039",
+      "decision": "recommend_hold"
+    },
+    {
+      "id": "V3040",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3041",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3042",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3043",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3044",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3045",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3046",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3047",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3048",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3049",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3050",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3051",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3052",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3053",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3054",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3055",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3056",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3057",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3058",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3059",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3060",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3061",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3062",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3063",
+      "decision": "recommend_hold"
+    },
+    {
+      "id": "V3064",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3065",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3066",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3067",
+      "decision": "revise_before_selection"
+    },
+    {
+      "id": "V3068",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3070",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3072",
+      "decision": "recommend_merge"
+    },
+    {
+      "id": "V3073",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3074",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3075",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3076",
+      "decision": "recommend_hold"
+    },
+    {
+      "id": "V3077",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3078",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3079",
+      "decision": "recommend_merge"
+    },
+    {
+      "id": "V3080",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3081",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3082",
+      "decision": "recommend_merge"
+    },
+    {
+      "id": "V3083",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3084",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3085",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3086",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3087",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3088",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3089",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3090",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3091",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3092",
+      "decision": "recommend_merge"
+    },
+    {
+      "id": "V3093",
+      "decision": "revise_before_selection"
+    },
+    {
+      "id": "V3094",
+      "decision": "topic_editorial_screen_no_required_change"
+    },
+    {
+      "id": "V3095",
+      "decision": "topic_editorial_screen_no_required_change"
+    }
+  ],
+  "rights_note": "僅原創提問/短編輯判斷與連結，不複製教材圖、習題或長段正文；來源標題不代表商業素材使用權。",
+  "central_application": "本檔只記覆核建議，未改作者檔、dedup、selection、pool 或工具。作者補證與 root 最終判斷應追加 hash 讀回。"
+}

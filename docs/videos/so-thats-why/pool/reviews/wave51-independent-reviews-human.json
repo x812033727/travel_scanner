@@ -1,0 +1,962 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "wave51-human-author",
+  "reviewer": "wave51-human-reviewer",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "role_and_scope": "非作者獨立審閱：逐讀H51-001…004四候選、5個來源指定段落、7張作者快取圖、4×5語意近鄰、作者12組近對、14條未收與4個主題提案；另自取H51-S002補充資料（作者未讀）。只作題級與紙上編輯審查，不改batch、themes、pool、selection、dedup-decisions或.md。結論：四題皆保留，無合併、無排除；需修正若干答案／範圍措詞（主要是H51-003的Qmax描述與H51-002的感官小組資訊），主題三案建議小幅刪秒，無任何加秒。",
+  "reviewed_files": [
+    {
+      "file": "batches/wave51-human.json",
+      "sha256": "ceb52972b67bc3e19b36666bfdfbe03a25f636f5fd2d35325a7186704f956519",
+      "sha256_at_initial_review": "f8b50f3a26023fd48b2275cee4e2455fc23bad99edb2deed3bc9b07fd1fdad14"
+    },
+    {
+      "file": "reviews/wave51-human-author.json",
+      "sha256": "52e1f91b583eb35a2d3a1a310e098fbc85e7477d8b22d941a6490a633f2e1384",
+      "sha256_at_initial_review": "d3683a1ec1aa359185e97c12a6046e4fcd614e56178fc057b6199ca21cd8d133"
+    },
+    {
+      "file": "reviews/wave51-human-themes.json",
+      "sha256": "3bbb11ec192461df451aab3edf4e8a743a695fa6b1fe40abe239e7f25b70205a",
+      "sha256_at_initial_review": "8e89d6dac83b99b6d7d447d1ec56bb65b2e24002706933a6120e2a952eba0720"
+    },
+    {
+      "file": ".cache/wave51-human-neighbours.json",
+      "sha256": "535037cb29a3559aa84b128380821e6f9aea5930bb723dec2b0b1ea5ecd78e1a",
+      "sha256_at_initial_review": "535037cb29a3559aa84b128380821e6f9aea5930bb723dec2b0b1ea5ecd78e1a"
+    },
+    {
+      "file": ".cache/wave51-human-cacio.pdf",
+      "sha256": "bb58a81ceade0d6a8e9fad052156ce88aa5898ed79d2adbafe15f3b047adb203",
+      "sha256_at_initial_review": "bb58a81ceade0d6a8e9fad052156ce88aa5898ed79d2adbafe15f3b047adb203"
+    },
+    {
+      "file": ".cache/wave51-human-cacio.txt",
+      "sha256": "17149e66b0ced3421a37d34b4a2dd135639fb26f526d7afc60e21eb6009d6cf2",
+      "sha256_at_initial_review": "17149e66b0ced3421a37d34b4a2dd135639fb26f526d7afc60e21eb6009d6cf2"
+    },
+    {
+      "file": ".cache/wave51-human-PMC11802719.xml",
+      "sha256": "903e31a825189ba2b016e2783baf907bb29cd87e931db2e53bd988d4158288ab",
+      "sha256_at_initial_review": "903e31a825189ba2b016e2783baf907bb29cd87e931db2e53bd988d4158288ab"
+    },
+    {
+      "file": ".cache/wave51-human-PMC11802719.txt",
+      "sha256": "55ec9c0cc07e7489be0dbd150b2ac05bf8a888c115695682dae8f17b101350cb",
+      "sha256_at_initial_review": "55ec9c0cc07e7489be0dbd150b2ac05bf8a888c115695682dae8f17b101350cb"
+    },
+    {
+      "file": ".cache/wave51-human-PMC8356767.xml",
+      "sha256": "3595004f5027b7f8058bcd85bdcd7df0c3a0b2af0787e0ecd86924f69327e733",
+      "sha256_at_initial_review": "3595004f5027b7f8058bcd85bdcd7df0c3a0b2af0787e0ecd86924f69327e733"
+    },
+    {
+      "file": ".cache/wave51-human-PMC8356767.txt",
+      "sha256": "2a6ee081dac43fc203613900828ed0b48b34efc9073337aa6d936fc27cb83985",
+      "sha256_at_initial_review": "2a6ee081dac43fc203613900828ed0b48b34efc9073337aa6d936fc27cb83985"
+    },
+    {
+      "file": ".cache/wave51-human-PMC8897031.xml",
+      "sha256": "37bb22eb8318a5e63373be3663d0cb482c6af5dd602dae5bf3d96daf2e0b0027",
+      "sha256_at_initial_review": "37bb22eb8318a5e63373be3663d0cb482c6af5dd602dae5bf3d96daf2e0b0027"
+    },
+    {
+      "file": ".cache/wave51-human-PMC8897031.txt",
+      "sha256": "ef5ba73a9e67864ca868b6dd4a23e553ad746941e3cfa169cf7d4c7dfd065dd7",
+      "sha256_at_initial_review": "ef5ba73a9e67864ca868b6dd4a23e553ad746941e3cfa169cf7d4c7dfd065dd7"
+    },
+    {
+      "file": ".cache/wave51-human-armswing.html",
+      "sha256": "7a0c6ccad5812d86df378d8238ee2ef6c3ceb025a8f77cfc5768dcec2c228436",
+      "sha256_at_initial_review": "7a0c6ccad5812d86df378d8238ee2ef6c3ceb025a8f77cfc5768dcec2c228436"
+    },
+    {
+      "file": ".cache/wave51-human-armswing.txt",
+      "sha256": "a827575aa6cc77286575c58b5ecbdf8662fb667e6705d0e27d076a45963ce4ac",
+      "sha256_at_initial_review": "a827575aa6cc77286575c58b5ecbdf8662fb667e6705d0e27d076a45963ce4ac"
+    },
+    {
+      "file": ".cache/all-questions.tsv",
+      "sha256": "e0fb8fe48abb089e4a602c16a8030c0bcc5227aa4e706e8474ebadd99209920c",
+      "sha256_at_initial_review": "e0fb8fe48abb089e4a602c16a8030c0bcc5227aa4e706e8474ebadd99209920c"
+    },
+    {
+      "file": ".cache/not-added.tsv",
+      "sha256": "70aca7c6f8f1ca8a26ec03b67437d115dedee876fd23b78d4c1c5cea199b01d6",
+      "sha256_at_initial_review": "70aca7c6f8f1ca8a26ec03b67437d115dedee876fd23b78d4c1c5cea199b01d6"
+    },
+    {
+      "file": "pool.json",
+      "sha256": "f99e29d72c708a1c436f9cec3d9e504571b511f382abe15f36dd13737c8095fe",
+      "sha256_at_initial_review": "f99e29d72c708a1c436f9cec3d9e504571b511f382abe15f36dd13737c8095fe"
+    }
+  ],
+  "hash_verification": "作者author_cache與visual_reads所列14個快取檔sha256全數重算相符；batch與themes亦與作者written_files雜湊相符。",
+  "source_reads": [
+    {
+      "source_id": "H51-S001",
+      "file": ".cache/wave51-human-cacio.txt",
+      "read": "Abstract、Sec I末段（無澱粉約65°C成莫札瑞拉相、煮麵水與濃縮煮麵水對照）、Sec II全文、Sec III開頭、Sec V檸檬酸鈉、Sec VI科學食譜、Sec VII討論、補充S1流程第2–4步與「每條升溫至少重複兩次」句。",
+      "findings": "數值吻合：起司與澱粉水等重混合、每5°C取樣、約40分鐘自50升至95°C；澱粉低於起司重1%易出現整鍋大團；4%以上冷後變硬；2–3%建議來自作者品嚐與質地測試（非盲測）；作者明言單靠煮麵水澱粉不足。Fig.2橫軸標為『相對水』的澱粉百分比，因起司與水等重，與摘要『相對起司重』等值，非錯誤但腳本應擇一說法。黑胡椒只列為未來方向，H51-NA003理由屬實。"
+    },
+    {
+      "source_id": "H51-S002",
+      "file": ".cache/wave51-human-PMC11802719.txt",
+      "read": "Abstract、Introduction末段、Results（模擬、FT-IR、QDA、TPA）、Methods煮法參數與模型假設、Conclusions。",
+      "findings": "8週期×(2分鐘100°C＋2分鐘30°C)=32分鐘；蛋白在100–87°C與30–55°C間擺動、蛋黃見約67°C，約為兩水溫平均，皆吻合。模型忽略氣室、自然對流與水分移動。注意Fig.4圖說自相矛盾：先列『sous vide與periodic蛋黃』在光澤、白色度、柔軟、濕潤、融化性有差，句末又說兩者蛋黃無顯著差異；對照雷達圖，該串屬性只出現在b面板（蛋白），且正文第43段明言蛋黃無顯著差異，判斷為圖說把蛋白/蛋黃標籤寫錯，正文主張成立，但應在範圍註明。"
+    },
+    {
+      "source_id": "H51-S002-SI",
+      "file": "(審閱者自取) https://static-content.springer.com/esm/art%3A10.1038%2Fs44172-024-00334-w/MediaObjects/44172_2024_334_MOESM2_ESM.pdf",
+      "sha256": "000dd5eabb894c9d54dc3c8679818b7649c7d075bef47168c165b435ba1397f3",
+      "read": "補充資料QDA節、TPA節、代謝體樣本數、沙門氏菌熱致死估算節；另讀MOESM1同儕審查檔（sha256 f221cbaf38d25ddd4bfcc16c580514c4932b62afa03f84c458b9eb6e8d23d99f）相關問答。",
+      "findings": "作者未讀的缺口可補：感官為Adacta International執行、8名受訓評審、1–9分、每人每產品評兩次，於ISO 8589感官室依UNI EN ISO 13299。TPA為4重複。代謝體每組n=5、其中質譜每組n=2–3，屬小樣本探索，支持H51-NA004不收。食安為引用文獻熱致死曲線推算（蛋黃達67°C後需10分鐘），非實測菌數，不得入題作安全保證。同儕審查者亦指出FT-IR熟度指數僅與全熟蛋有顯著差。"
+    },
+    {
+      "source_id": "H51-S003",
+      "file": ".cache/wave51-human-PMC8356767.txt",
+      "read": "Introduction首兩段、Methods受試者、刺激、隔屏盲測、閾值擬合、Results閾值與量級估計、皮膚溫度節。",
+      "findings": "8名女性、依檢定力計算；閾值33°C 24.7±3.48、25°C 18.7±3.94、29°C 23.0±3.17、37°C 27.0±3.04 mL，F(3,21)=8.79；事後僅25對33（CI上界−0.016，貼近零）與25對37顯著。量級評分中水量占84.0%變異、溫度僅2.96%、交互0.31%。受試者是將手伸入L形遮屏、看不到裝置，不是『蒙眼』。『尚未發現濕度受器』為引言引述。"
+    },
+    {
+      "source_id": "H51-S004",
+      "file": ".cache/wave51-human-PMC8897031.txt",
+      "read": "Abstract、Methods（40人20男20女、21刺激、Alambeta熱分類儀與光學輪廓儀量材料性質、移動速度50±25 mm/s與壓力2.0±0.5 N）、Results PLS（二因子模型解釋65%、未解釋35%）、Discussion熱傳段。",
+      "findings": "Qmax約22%、含水量約18%、摩擦約11%，皆正相關；無性別差。關鍵更正：Qmax是以Alambeta儀器在材料上量得的最大熱傳速率，屬刺激物的材料性質，不是在受試者手指上量到的吸熱速率；作者在Discussion才推論材料約25°C、手指約33°C，熱由手指流向材料。候選answer_target寫『手指被吸熱的最快速率』應改。含水量與Qmax在材料間可能共變，PLS變異占比不能當獨立因果份額。"
+    },
+    {
+      "source_id": "H51-S005",
+      "file": ".cache/wave51-human-armswing.txt",
+      "read": "Abstract、Sec 2(c)實驗程序、Sec 3實驗結果全文、Sec 4討論前段與限制段。",
+      "findings": "10人（7男3女，23–47歲）跑步機1.25 m/s測代謝；7人地面力板測力學。代謝：Normal 3.09、Bound 3.31(+7%)、Held 3.45(+12%)、Anti-Normal 3.93(+26%) W/kg，相鄰皆顯著。峰值垂直地面力矩Normal 3.0→Bound 5.0 N·m(+63%)，Held 4.8→Anti-Normal 8.8 N·m(+83%)；重心垂直起伏無顯著差；肩肘力矩與功在Normal與Anti-Normal都低。綁手用彈性運動繃帶固定於身側。作者自述Held可能略高估、雙支撐期未納入垂直力矩分析。數值全部吻合。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "file": ".cache/wave51-human-cacio-p-03.png",
+      "sha256": "3c9c93f0beca74adec0d31a2d809febb9fd094ee67832dba1a90aafb2f883678",
+      "read": "Fig.2a格陣：0%澱粉60°C格為虛線框、65°C起整格黑塊（莫札瑞拉相）；0.5%約70°C起；1%以上無莫札瑞拉相，但70–95°C仍有紅框（約5–7 mm）團塊；3–4%多為藍框小團。與作者讀法一致。僅核證，不作素材。"
+    },
+    {
+      "file": ".cache/wave51-human-egg-fig1.png",
+      "sha256": "182d113c075fc2228144bedce216d94eea4fe3bc263528427059ca91f70d82dd",
+      "read": "Fig.1a方波100/30°C八週期；1b外緣溫度線在約300–373 K間大幅擺動，往中心收斂，蛋黃中心多數線落在約335–342 K（62–69°C），早期線較低，屬逐週期升溫後達穩態；1c蛋黃熟度呈階梯上升至1。答案『穩在約67°C』應註明為數輪後的模型穩態。"
+    },
+    {
+      "file": ".cache/wave51-human-egg-fig4.png",
+      "sha256": "fc662baadc5685c47782c7970ad6442659faaa0d25baca4a8e42c12e0e2da2a0",
+      "read": "切面照：週期蛋蛋白白而成形、蛋黃橙而濃稠；低溫蛋蛋白半透明。雷達b（蛋白）綠線在光澤、柔軟、濕潤、融化性明顯突出；雷達c（蛋黃）藍綠兩線幾乎重疊，支持『蛋黃無顯著差』，也證實圖說那串sous vide差異屬蛋白面板。"
+    },
+    {
+      "file": ".cache/wave51-human-wet2021-fig5.jpg",
+      "sha256": "8a8fa0832ca5fe809fc567ece00c11d90dfbe96f312c7174c49383e0d4bea3f8",
+      "read": "8人個別閾值隨水溫25→37°C上移，個體分散大（25°C約12.5–22 mL）；只標25對33、25對37兩組顯著。與作者讀法一致。"
+    },
+    {
+      "file": ".cache/wave51-human-wet2022-fig4.jpg",
+      "sha256": "556d73100df4bc66f4f3f519d59acfdc4d3b1fb8bed4bb7410629ea8c3bad5b8",
+      "read": "3D曲面沿Qmax（511–1258 W·m⁻²·K⁻¹）上升明顯，沿摩擦係數坡度較緩；為模型擬合曲面而非原始散點。"
+    },
+    {
+      "file": ".cache/wave51-human-armswing-fig4.jpg",
+      "sha256": "d6c248e4c8175c7fce4d26114ccaa39b0ed097e798e474317ce185b4443239cf",
+      "read": "b：峰值力矩Normal約3、Bound約5、Held約4.8、Anti-Normal約8.8 N·m；d：手臂角動量Normal為負、Anti-Normal為正、Bound/Held近零；『身體其餘』帶在各條件近乎不變。"
+    },
+    {
+      "file": ".cache/wave51-human-armswing-fig5.jpg",
+      "sha256": "41ef5a73e7c3ec9efaf958d97480a81a69f47c9d7cea1f4498dfcea1bd6f1e4a",
+      "read": "淨代謝率Normal<Bound<Held<Anti-Normal，三組相鄰比較皆標星號。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "H51-001",
+      "decision": "retain",
+      "reason": "有真正的操弄軸（澱粉濃度×溫度相圖），答案是『結團起始溫度隨澱粉上移、團塊變小、1%以上不再整鍋聚團』，不是單純食譜或乳化名詞課。數值與Fig.2目讀一致。與F8004（檸檬酸鹽結鈣）、D2058（凝乳切塊排乳清）的控制不同。趣味足：多數人遇過起司醬結塊，且相圖可直接畫。問題句『起司醬』泛稱略寬，建議點明是羊奶起司加水的醬（如起司胡椒麵），避免暗示切達類白醬或火鍋也適用。",
+      "scope_checked": true,
+      "editorial_cap_seconds": 60
+    },
+    {
+      "id": "H51-002",
+      "decision": "retain",
+      "reason": "控制是『時間交替的邊界溫度』被熱擴散在中心平均，這與LEG-S30恆溫落在兩凝固點之間不同，且結果相反（蛋白完全凝固、蛋黃仍滑）。作者擔心的感官人數已由審閱者讀補充資料補上（8名受訓評審、每人每產品兩次），足以支持『蛋黃與65°C低溫蛋無顯著差異』這個題級主張；蛋內溫度為模型值須在答案中明說。Fig.4圖說自相矛盾但正文與雷達圖一致，需在範圍註記。強度足以為核心。",
+      "scope_checked": true,
+      "editorial_cap_seconds": 65
+    },
+    {
+      "id": "H51-003",
+      "decision": "retain",
+      "reason": "『沒有濕度受器卻能感到濕』是好問題，兩個研究分別提供操弄（水溫移動閾值）與跨材料比較（Qmax、摩擦），合起來答案不薄。弱點：閾值研究n=8且只有25°C對33/37°C顯著，溫度只占量級評分約3%變異；滑動研究為相關。只要答案明說『溫度效應真實但小、水量仍是主因』就足夠誠實，可為核心，不宜再加強語氣。必修：Qmax是儀器量得的材料熱傳性質，不是手指上量到的吸熱速率；『蒙眼』應改為『隔屏看不到』。",
+      "scope_checked": true,
+      "editorial_cap_seconds": 65
+    },
+    {
+      "id": "H51-004",
+      "decision": "retain",
+      "reason": "四條件設計含關鍵反證（同手同腳：手照擺、肩不費力，耗能卻最高），把『有動就好』與『減少重心起伏』兩種說法排除，答案落在垂直力矩，屬可見控制。n=10、單一速度、力學7人是真實限制，但效果量大且各相鄰條件皆顯著，題級足夠。建議答案補上Held→Anti-Normal峰值力矩再增約83%，讓『力矩排序與耗能排序一致』成為證據鏈，而不是只列綁手+63%。『順拐』為大陸用語，台灣觀眾宜說『同手同腳』。",
+      "scope_checked": true,
+      "editorial_cap_seconds": 60
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "H51-001",
+      "b": "D2058",
+      "cosine": 0.783382,
+      "decision": "distinct",
+      "reason": "舊題是製乳酪時把已凝的凝乳切小、加熱促乳清排出（離水收縮）；新題是成品羊奶起司與水再加熱時蛋白聚團，操弄的是糊化澱粉濃度。兩者答案與控制變數都不同，只共享『乳酪＋加熱』字面。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-001",
+      "b": "LEG-S54",
+      "cosine": 0.739976,
+      "decision": "distinct",
+      "reason": "舊題是麵包澱粉在冷藏下回凝結晶變硬；新題澱粉作為抑制起司蛋白聚團的第三成分，量的是團塊大小與起始溫度，不涉回凝。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-001",
+      "b": "F4004",
+      "cosine": 0.728575,
+      "decision": "distinct",
+      "reason": "F4004（canonical F4003）談預糊化澱粉冷水增稠；新題雖用先糊化的澱粉，但答案不是增稠，而是改變蛋白相分離邊界。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-001",
+      "b": "F4002",
+      "cosine": 0.709746,
+      "decision": "distinct",
+      "reason": "舊題高糖抑制澱粉糊化使內餡不稠；新題澱粉已糊化，問題是它對起司蛋白聚團的影響，控制與結果不同。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-001",
+      "b": "D2057",
+      "cosine": 0.708357,
+      "decision": "distinct",
+      "reason": "舊題是乳清蛋白預熱變性後與酪蛋白共沉澱以提高產率；新題是成品起司醬避免聚團，方向相反（要防團而非促團）。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-002",
+      "b": "LEG-S30",
+      "cosine": 0.833009,
+      "decision": "distinct",
+      "reason": "最高相似對，已讀兩題完整問答範圍。LEG-S30：恆溫65–70°C長泡，靠蛋白與蛋黃凝固溫度差，結果是蛋黃成形、蛋白仍軟。H51-002：沸水與30°C水每2分鐘交替，靠熱擴散跟不上邊界變化使中心只見平均溫度，結果是蛋白完全凝固、蛋黃仍如低溫蛋。答案的機制（時間平均）與結果都不同；凝固溫度差只是共同前提，主題第一章不得重講溫泉蛋原理。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-002",
+      "b": "S44-006",
+      "cosine": 0.652181,
+      "decision": "distinct",
+      "reason": "舊題是恐龍巢模型中上方熱源能否溫暖下層蛋，問的是巢體層間傳熱；新題是廚房週期邊界的中心溫度平均，對象與答案皆不同。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-002",
+      "b": "H51-001",
+      "cosine": 0.60277,
+      "decision": "distinct",
+      "reason": "同批兩題皆為廚房溫控，但一是起司蛋白相分離被澱粉移位，一是蛋內傳熱的時間平均；無共同答案。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-002",
+      "b": "LEG-S73",
+      "cosine": 0.585861,
+      "decision": "distinct",
+      "reason": "舊題蛋黃綠圈為硫化亞鐵顏色化學；新題為溫度分區，不涉顏色反應。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-002",
+      "b": "L51-005",
+      "cosine": 0.554175,
+      "decision": "distinct",
+      "reason": "舊題樹蛙胚胎以前庭功能感知振動決定孵化；與煮蛋傳熱毫無共同機制，僅『蛋』字相似。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-003",
+      "b": "X37-001",
+      "cosine": 0.686811,
+      "decision": "distinct",
+      "reason": "舊題量指紋溝水合如何趨同與摩擦的物理；新題問人如何判讀『濕』，操弄水溫與材料熱傳。舊題不含知覺判斷，新題不含角質水合時序。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-003",
+      "b": "N240",
+      "cosine": 0.618471,
+      "decision": "distinct",
+      "reason": "舊題相對濕度與絕對水氣量的氣象定義；新題為皮膚觸感知覺，共享『濕』字而已。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-003",
+      "b": "LEG-S06",
+      "cosine": 0.598143,
+      "decision": "distinct",
+      "reason": "舊題泡水手指起皺由交感神經血管收縮造成；新題是濕的知覺推論，兩者答案無重疊。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-003",
+      "b": "P51-002",
+      "cosine": 0.585988,
+      "decision": "distinct",
+      "reason": "舊題熱板對稱細溝上萊頓弗羅斯特液滴自推進；新題為人體觸覺，僅共享『水與熱』。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-003",
+      "b": "X36-005",
+      "cosine": 0.580509,
+      "decision": "distinct",
+      "reason": "舊題咖啡沖煮水溫與萃取濃度匹配後的盲評；新題皮膚濕感閾值，感官對象與控制都不同。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-004",
+      "b": "P027",
+      "cosine": 0.670893,
+      "decision": "distinct",
+      "reason": "舊題轉椅收手的角動量守恆、轉速變快；新題步行中手臂反向擺抵消腿的垂直角動量並降低地面力矩與耗能。雖共用角動量概念，答案落點（代謝成本與四條件對照）不同，舊題不能回答新題。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-004",
+      "b": "A5004",
+      "cosine": 0.610861,
+      "decision": "distinct",
+      "reason": "舊題肌肉運動單位依大小原則招募；新題全身力學與代謝，無共同機制。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-004",
+      "b": "P026",
+      "cosine": 0.604377,
+      "decision": "distinct",
+      "reason": "舊題靜態翹翹板力矩平衡；新題動態步行垂直力矩與代謝，不同。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-004",
+      "b": "P29003",
+      "cosine": 0.603254,
+      "decision": "distinct",
+      "reason": "舊題蜥腳類足跡與地基承載有限元素模型；新題人類步態，僅共享『腳與地面』。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "H51-004",
+      "b": "A5009",
+      "cosine": 0.594402,
+      "decision": "distinct",
+      "reason": "舊題伸展反射的交互抑制；新題擺臂近乎被動、與神經抑制迴路無關。",
+      "full_question_answer_scope_read": true
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "H51-001",
+      "b": "F8004",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "F8004以乳化鹽結鈣使加工乳酪均勻融化（防出油）；H51-001無鹽、操弄糊化澱粉，量團塊大小與起始溫度。同篇論文的檸檬酸鈉節正好落在F8004範圍，作者已退為H51-NA001，處理正確。"
+    },
+    {
+      "a": "H51-001",
+      "b": "F8003",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "巧克力少水潤濕固體聚團是脂肪連續相中的液橋問題；起司醬是水相中蛋白受熱聚集，加的是澱粉不是水。"
+    },
+    {
+      "a": "H51-001",
+      "b": "F4003",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "F4003答案是澱粉糊化增稠；H51-001的澱粉作用量測為團塊大小而非黏度。腳本不得把澱粉作用說成『變稠所以不結塊』，否則會滑回F4003。"
+    },
+    {
+      "a": "H51-001",
+      "b": "D2056",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "D2056是酸或凝乳酶使牛奶凝固的路徑差；H51-001是成品起司再加熱聚團與防止。"
+    },
+    {
+      "a": "H51-002",
+      "b": "LEG-S30",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "見top5同對：時間交替邊界與中心平均是新控制，結果相反；但H51-002主題第一章『蛋白85°C／蛋黃65°C』是LEG-S30既有內容，應壓縮為一句前提。"
+    },
+    {
+      "a": "H51-002",
+      "b": "LEG-S73",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "顏色化學與溫度分區無共同答案。"
+    },
+    {
+      "a": "H51-003",
+      "b": "X37-001",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "見top5同對。"
+    },
+    {
+      "a": "H51-003",
+      "b": "LEG-S38",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "LEG-S38是化學物質觸發TRPM8冷受器；H51-003是真實水溫與材料熱傳如何移動濕感判斷，未用化學觸發，也未主張特定受器。"
+    },
+    {
+      "a": "H51-003",
+      "b": "A5028",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "A5028是機械受器深度與感受野大小；H51-003是無專屬受器時的多訊號推論。"
+    },
+    {
+      "a": "H51-003",
+      "b": "LEG-S06",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "見top5同對。"
+    },
+    {
+      "a": "H51-004",
+      "b": "P006",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "P006為前後向靜摩擦方向；H51-004是繞垂直軸的地面力矩與擺臂耗能。"
+    },
+    {
+      "a": "H51-004",
+      "b": "X35-002",
+      "author_decision": "propose_distinct",
+      "reviewer_decision": "agree_distinct",
+      "reason": "X35-002是人群相向預判成行；H51-004是單人步態手腿相位，無共同答案。"
+    }
+  ],
+  "extra_dedup_searches": [
+    {
+      "terms": [
+        "溫泉蛋",
+        "舒肥",
+        "低溫蛋",
+        "水煮蛋",
+        "蛋黃",
+        "週期",
+        "交替",
+        "冷熱",
+        "輪流"
+      ],
+      "files": [
+        ".cache/all-questions.tsv",
+        ".cache/not-added.tsv"
+      ],
+      "hits": "LEG-S30、LEG-S73；NA有wave4『水煮蛋難剝』『蛋黃乳化』。無週期煮法舊題；舒肥、低溫蛋零命中。",
+      "conclusion": "無漏網重複。"
+    },
+    {
+      "terms": [
+        "起司",
+        "乳酪",
+        "乳化",
+        "結塊",
+        "煮麵水",
+        "澱粉",
+        "cacio"
+      ],
+      "files": [
+        ".cache/all-questions.tsv",
+        ".cache/not-added.tsv"
+      ],
+      "hits": "F8004、D2056–D2059、F8003、F4002–F4004、LEG-S54；NA有wave15/wave49『加工乳酪平順融化』（已收鈣結合）、wave15『巧克力加水結塊』。煮麵水、cacio零命中。",
+      "conclusion": "澱粉防起司聚團無舊題；檸檬酸鈉方向已多次以F8004擋下，H51-NA001一致。"
+    },
+    {
+      "terms": [
+        "濕感/覺濕/摸濕等正則",
+        "wet",
+        "皮膚",
+        "觸覺",
+        "涼",
+        "汗",
+        "尿布"
+      ],
+      "files": [
+        ".cache/all-questions.tsv",
+        ".cache/not-added.tsv"
+      ],
+      "hits": "B4031（冷氣後濕黏感，答案為除濕不足，非皮膚知覺）、X37-001…008觸覺系列、LEG-S38；NA有X37-NA016『隔著一層布就一定能感到濕氣？』（因冷乾刺激與動靜條件分歧未收）。",
+      "conclusion": "無重複。X37-NA016是相鄰的舊退題方向，H51-003未用『隔布』或冷乾錯覺前提，不觸發；建議H51-NA006的existing_ids補上X37-NA016以留紀錄。"
+    },
+    {
+      "terms": [
+        "擺臂",
+        "甩手",
+        "擺手",
+        "同手同腳",
+        "順拐",
+        "走路",
+        "步態",
+        "手臂",
+        "擺動",
+        "扭轉",
+        "轉動慣量",
+        "配重"
+      ],
+      "files": [
+        ".cache/all-questions.tsv",
+        ".cache/not-added.tsv"
+      ],
+      "hits": "P006、P027、P028、P314、N045、X35-002等；擺臂、甩手、同手同腳零命中。",
+      "conclusion": "無擺臂舊題，H51-004為新核。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "H51-001",
+        "b": "D2058",
+        "reason": "舊題是製乳酪時把已凝的凝乳切小、加熱促乳清排出（離水收縮）；新題是成品羊奶起司與水再加熱時蛋白聚團，操弄的是糊化澱粉濃度。兩者答案與控制變數都不同，只共享『乳酪＋加熱』字面。"
+      },
+      {
+        "a": "H51-001",
+        "b": "LEG-S54",
+        "reason": "舊題是麵包澱粉在冷藏下回凝結晶變硬；新題澱粉作為抑制起司蛋白聚團的第三成分，量的是團塊大小與起始溫度，不涉回凝。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F4004",
+        "reason": "F4004（canonical F4003）談預糊化澱粉冷水增稠；新題雖用先糊化的澱粉，但答案不是增稠，而是改變蛋白相分離邊界。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F4002",
+        "reason": "舊題高糖抑制澱粉糊化使內餡不稠；新題澱粉已糊化，問題是它對起司蛋白聚團的影響，控制與結果不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "D2057",
+        "reason": "舊題是乳清蛋白預熱變性後與酪蛋白共沉澱以提高產率；新題是成品起司醬避免聚團，方向相反（要防團而非促團）。"
+      },
+      {
+        "a": "H51-002",
+        "b": "LEG-S30",
+        "reason": "最高相似對，已讀兩題完整問答範圍。LEG-S30：恆溫65–70°C長泡，靠蛋白與蛋黃凝固溫度差，結果是蛋黃成形、蛋白仍軟。H51-002：沸水與30°C水每2分鐘交替，靠熱擴散跟不上邊界變化使中心只見平均溫度，結果是蛋白完全凝固、蛋黃仍如低溫蛋。答案的機制（時間平均）與結果都不同；凝固溫度差只是共同前提，主題第一章不得重講溫泉蛋原理。"
+      },
+      {
+        "a": "H51-002",
+        "b": "S44-006",
+        "reason": "舊題是恐龍巢模型中上方熱源能否溫暖下層蛋，問的是巢體層間傳熱；新題是廚房週期邊界的中心溫度平均，對象與答案皆不同。"
+      },
+      {
+        "a": "H51-002",
+        "b": "H51-001",
+        "reason": "同批兩題皆為廚房溫控，但一是起司蛋白相分離被澱粉移位，一是蛋內傳熱的時間平均；無共同答案。"
+      },
+      {
+        "a": "H51-002",
+        "b": "LEG-S73",
+        "reason": "舊題蛋黃綠圈為硫化亞鐵顏色化學；新題為溫度分區，不涉顏色反應。"
+      },
+      {
+        "a": "H51-002",
+        "b": "L51-005",
+        "reason": "舊題樹蛙胚胎以前庭功能感知振動決定孵化；與煮蛋傳熱毫無共同機制，僅『蛋』字相似。"
+      },
+      {
+        "a": "H51-003",
+        "b": "X37-001",
+        "reason": "舊題量指紋溝水合如何趨同與摩擦的物理；新題問人如何判讀『濕』，操弄水溫與材料熱傳。舊題不含知覺判斷，新題不含角質水合時序。"
+      },
+      {
+        "a": "H51-003",
+        "b": "N240",
+        "reason": "舊題相對濕度與絕對水氣量的氣象定義；新題為皮膚觸感知覺，共享『濕』字而已。"
+      },
+      {
+        "a": "H51-003",
+        "b": "LEG-S06",
+        "reason": "舊題泡水手指起皺由交感神經血管收縮造成；新題是濕的知覺推論，兩者答案無重疊。"
+      },
+      {
+        "a": "H51-003",
+        "b": "P51-002",
+        "reason": "舊題熱板對稱細溝上萊頓弗羅斯特液滴自推進；新題為人體觸覺，僅共享『水與熱』。"
+      },
+      {
+        "a": "H51-003",
+        "b": "X36-005",
+        "reason": "舊題咖啡沖煮水溫與萃取濃度匹配後的盲評；新題皮膚濕感閾值，感官對象與控制都不同。"
+      },
+      {
+        "a": "H51-004",
+        "b": "P027",
+        "reason": "舊題轉椅收手的角動量守恆、轉速變快；新題步行中手臂反向擺抵消腿的垂直角動量並降低地面力矩與耗能。雖共用角動量概念，答案落點（代謝成本與四條件對照）不同，舊題不能回答新題。"
+      },
+      {
+        "a": "H51-004",
+        "b": "A5004",
+        "reason": "舊題肌肉運動單位依大小原則招募；新題全身力學與代謝，無共同機制。"
+      },
+      {
+        "a": "H51-004",
+        "b": "P026",
+        "reason": "舊題靜態翹翹板力矩平衡；新題動態步行垂直力矩與代謝，不同。"
+      },
+      {
+        "a": "H51-004",
+        "b": "P29003",
+        "reason": "舊題蜥腳類足跡與地基承載有限元素模型；新題人類步態，僅共享『腳與地面』。"
+      },
+      {
+        "a": "H51-004",
+        "b": "A5009",
+        "reason": "舊題伸展反射的交互抑制；新題擺臂近乎被動、與神經抑制迴路無關。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F8004",
+        "reason": "乳化鹽結鈣防出油與糊化澱粉移動蛋白聚團邊界，控制物不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F8003",
+        "reason": "脂肪相少水液橋聚團與水相蛋白受熱聚團不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "F4003",
+        "reason": "澱粉增稠與澱粉抑制蛋白聚團的量測與答案不同。"
+      },
+      {
+        "a": "H51-001",
+        "b": "D2056",
+        "reason": "牛奶凝固路徑與成品起司再加熱聚團不同。"
+      },
+      {
+        "a": "H51-002",
+        "b": "LEG-S73",
+        "reason": "硫化亞鐵顏色化學與溫度分區無共同答案。"
+      },
+      {
+        "a": "H51-003",
+        "b": "LEG-S38",
+        "reason": "化學觸發冷受器與真實水溫、材料熱傳移動濕感判斷不同。"
+      },
+      {
+        "a": "H51-003",
+        "b": "A5028",
+        "reason": "機械受器感受野與無專屬受器的多訊號推論不同。"
+      },
+      {
+        "a": "H51-003",
+        "b": "B4031",
+        "reason": "冷氣除濕不足是空調控制問題，H51-003是皮膚知覺，答案不重疊。"
+      },
+      {
+        "a": "H51-004",
+        "b": "P006",
+        "reason": "前後向靜摩擦與繞垂直軸的地面力矩、代謝成本不同。"
+      },
+      {
+        "a": "H51-004",
+        "b": "X35-002",
+        "reason": "人群預判成行與單人手腿相位不同。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "H51-NA001",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "F8004存在；本文Sec V亦說檸檬酸鈉透過螯合鈣作用，與F8004同機制。理由正確。"
+    },
+    {
+      "id": "H51-NA002",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "Fig.3起司比例軸與二元混合最小模型屬定性擬合，單拍會只剩公式，判斷合理。"
+    },
+    {
+      "id": "H51-NA003",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "原文Sec VII只列胡椒粒作聚集核為未來方向，未測。"
+    },
+    {
+      "id": "H51-NA004",
+      "decision": "confirm_with_text_fix",
+      "existing_ids_exist": true,
+      "note": "補充資料載代謝體每組n=5（部分分析n=2–3），並非『主文未載』就無樣本數；建議理由改為『補充資料示每組僅2–5顆蛋的探索性比較』。結論不變。"
+    },
+    {
+      "id": "H51-NA005",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "LEG-S30存在，恆溫凝固點差已收。"
+    },
+    {
+      "id": "H51-NA006",
+      "decision": "confirm_with_text_fix",
+      "existing_ids_exist": true,
+      "note": "未讀全文即不收，正確。建議existing_ids補X37-NA016（wave37『隔著一層布就一定能感到濕氣？』因冷乾刺激分歧未收），讓兩次退題可互查。"
+    },
+    {
+      "id": "H51-NA007",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "S004中摩擦與濕感正相關（越不滑越覺濕），問法前提相反；作H51-003對照即可。"
+    },
+    {
+      "id": "H51-NA008",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "S004摘要明載男女無差。"
+    },
+    {
+      "id": "H51-NA009",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "S005重心垂直起伏各條件無顯著差，前提不成立。"
+    },
+    {
+      "id": "H51-NA010",
+      "decision": "confirm_with_text_fix",
+      "existing_ids_exist": true,
+      "note": "未讀全文不收正確；理由引用D2212罐車晃動，建議existing_ids補D2212（已確認存在）。"
+    },
+    {
+      "id": "H51-NA011",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "LEG-S67存在，關節腔空穴已收。"
+    },
+    {
+      "id": "H51-NA012",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "LEG-S06存在，已含抓握假說爭議。"
+    },
+    {
+      "id": "H51-NA013",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "LEG-S79存在；F15-NA01在not-added.tsv與wave15-food-physics批次中可查到。"
+    },
+    {
+      "id": "H51-NA014",
+      "decision": "confirm",
+      "existing_ids_exist": true,
+      "note": "F15004存在，甩鍋米粒脫離條件已收。"
+    }
+  ],
+  "theme_review": [
+    {
+      "proposal_id": "W51H-T01",
+      "decision": "revise",
+      "author_seconds": 58,
+      "recommended_seconds": 50,
+      "sum_check": "12+10=22、20+16=36，總58與body_seconds相符。",
+      "reason": "第1章第2拍『用底光拍培養皿、量長軸』是方法說明，對觀眾不是新知，相圖格陣本身就能讓人看懂暗塊＝團塊；建議刪去此10秒拍，改為第1拍畫面字卡（不另計秒），或併入第2章第1拍時多2秒交代『每格是一勺醬的照片』。其餘三拍各有新資訊。限制句保留在第2章末但只用一句。不加任何秒數。"
+    },
+    {
+      "proposal_id": "W51H-T02",
+      "decision": "revise",
+      "author_seconds": 64,
+      "recommended_seconds": 58,
+      "sum_check": "14+14+16+20=64，相符。",
+      "reason": "第1章『蛋白85°C、蛋黃65°C、恆溫只能顧一邊』是LEG-S30已收的前提，14秒偏長，建議壓到8秒、只作一句鋪陳，不重講溫泉蛋原理。第3章20秒內含模型限制，限制句應改為『溫度是模型算的；感官由8名受訓評審比對』，以實際資訊取代『人數未載』，不增秒。第2章兩拍為核心，保留。"
+    },
+    {
+      "proposal_id": "W51H-T03",
+      "decision": "revise",
+      "author_seconds": 62,
+      "recommended_seconds": 58,
+      "sum_check": "10+18=28、20+14=34，總62相符。",
+      "reason": "第2章第2拍14秒中『限制：尿布材料、同一實驗室、相關非因果』是限制清單，建議收為一句並換成更有資訊量的『溫度只占評分約3%、水量占84%』，壓到10秒。第2章第1拍須把Qmax改述為『材料從手指帶走熱的能力（儀器量的材料性質）』，字數相近不增秒。兩章確為不同控制，不合併。"
+    },
+    {
+      "proposal_id": "W51H-T04",
+      "decision": "accept",
+      "author_seconds": 54,
+      "recommended_seconds": 54,
+      "sum_check": "18；16+20=36，總54相符。",
+      "reason": "三拍分別是耗能排名、順擺反證、力矩機制，無重述或片頭片尾。建議把『順拐』改為台灣用語『同手同腳』，並可在第2章第2拍以同秒數補『同手同腳時力矩又比夾手高約八成』取代較弱的『重心起伏沒差』或與之並列；不加秒。"
+    }
+  ],
+  "theme_combination_review": "四案各為單核短解說，題材（起司相圖、蛋內傳熱、濕感知覺、步態力學）之間沒有共同答案，合併只會變成名詞串；建議維持分開。無應整案刪除者；各案drop_if條件合理。紙上旁白估時（每秒約4–4.5字）與拍內字數相容，未見明顯塞字或灌水。",
+  "interest_review": [
+    {
+      "id": "H51-001",
+      "flag": "none",
+      "note": "日常失敗場景＋可畫的相圖，有反直覺點（是澱粉而非溫度決定能否救回）。"
+    },
+    {
+      "id": "H51-002",
+      "flag": "none",
+      "note": "『外面冷熱交替、中心只見平均』有強烈視覺反差。"
+    },
+    {
+      "id": "H51-003",
+      "flag": "watch",
+      "note": "效果量小（溫度約3%評分變異），若只講『冷會更像濕』容易平淡；必須保留閾值移動與材料熱傳兩個對照才不薄。"
+    },
+    {
+      "id": "H51-004",
+      "flag": "none",
+      "note": "同手同腳耗能最高是強反轉。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "H51-001",
+      "field": "question",
+      "problem": "『起司醬』泛稱，研究只測羊奶起司（Pecorino Romano）與水的醬，易被理解為所有起司醬。",
+      "suggested_text": "羊奶起司拌熱水做醬，一加熱就結成一大團，加澱粉為什麼能救回來？"
+    },
+    {
+      "id": "H51-001",
+      "field": "scope",
+      "problem": "未註明Fig.2澱粉百分比的基準；未說1%以上仍有中小團塊。",
+      "suggested_text": "（於現有scope後加）Fig.2澱粉%以水重計，因起司與水等重，數值等同以起司重計；1%以上不再整鍋聚團，但70°C以上仍有數毫米團塊，3–4%團塊才明顯變小。"
+    },
+    {
+      "id": "H51-002",
+      "field": "answer_target",
+      "problem": "『蛋黃就穩在約67°C』未說明是模型在數輪後的穩態，Fig.1b早期中心溫度較低。",
+      "suggested_text": "……熱傳到中心太慢、跟不上切換，模型算出幾輪之後蛋黃穩在約67°C，接近兩鍋水溫的平均。實蛋切開，蛋白凝固程度近溏心蛋；8名受訓評審比對，蛋黃感官與65°C一小時的低溫蛋沒有顯著差異。"
+    },
+    {
+      "id": "H51-002",
+      "field": "scope",
+      "problem": "『感官人數主文未載』可由補充資料補足；Fig.4圖說自相矛盾未註；食安推算不可外推。",
+      "suggested_text": "溫度剖面來自傳導模型（忽略氣室、對流與水分移動），未在蛋內插溫度計。感官由8名受訓評審、每人每產品評兩次（補充資料）；Fig.4圖說將一串蛋白差異誤列於蛋黃，依正文與雷達圖採『蛋黃無顯著差』。補充資料的沙門氏菌安全為文獻熱致死曲線推算，非實測，不入題。單一實驗室、單一週期設定，蛋大小與起始溫度不同需重調；營養主張不入題。"
+    },
+    {
+      "id": "H51-002",
+      "field": "source_locator / sources[H51-S002].limitations",
+      "problem": "仍寫『感官小組人數與蛋數主文未載，補充資料未讀』。",
+      "suggested_text": "補充資料（MOESM2）QDA節：8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋。"
+    },
+    {
+      "id": "H51-003",
+      "field": "answer_target",
+      "problem": "Qmax被寫成『手指被吸熱的最快速率』，實為Alambeta儀器量得的材料熱傳性質；『蒙眼』與實驗不符；未交代溫度效應小。",
+      "suggested_text": "濕感是用別的訊號拼出來的。8名受試者隔著遮屏、看不到刺激，用食指按壓吸水墊：水溫25°C時平均約18.7毫升就有一半機會判為濕，33°C要約24.7、37°C約27.0毫升。另一實驗40人滑過21種材料，材料從皮膚帶走熱的能力（儀器量的最大熱傳速率）解釋約兩成濕感差異，摩擦係數約一成。水量仍是主因（評分變異約84%，水溫只占約3%）；涼與易導熱只讓同量的水更像濕。"
+    },
+    {
+      "id": "H51-003",
+      "field": "scope",
+      "problem": "未記閾值研究中只有25°C對33°C、37°C顯著，且25對33信賴區間上界貼近零；未提Qmax與含水量可能共變。",
+      "suggested_text": "（於現有scope後加）閾值僅25°C對33°C、37°C顯著，33對37無差；Qmax為材料性質、與含水量可能共變，PLS占比不等於各自獨立因果份額。"
+    },
+    {
+      "id": "H51-004",
+      "field": "answer_target",
+      "problem": "『順拐』非台灣常用語；未交代Held→Anti-Normal力矩+83%，使力矩與耗能排序一致的證據鏈不完整。",
+      "suggested_text": "10人在跑步機上同速走四種方式：正常擺臂最省；手被繃帶綁在身側多耗約7%、自己夾住約12%，和同側腿一起擺的『同手同腳』約26%。肩肘出力在正常與同手同腳都很小，擺臂近乎被動；差別在手臂反向擺能抵消腿帶來的身體扭轉：綁手時腳底對地的峰值扭矩約多63%，同手同腳又比夾手多約83%，排序與耗能一致。重心上下起伏則各條件沒差。"
+    },
+    {
+      "id": "H51-NA004",
+      "field": "reason",
+      "problem": "樣本數其實在補充資料。",
+      "suggested_text": "補充資料示代謝體每組僅2–5顆蛋，PCA與質譜屬探索性比較，健康推論超過證據。"
+    },
+    {
+      "id": "H51-NA006",
+      "field": "existing_ids",
+      "problem": "未連結舊退題X37-NA016。",
+      "suggested_text": "[\"X37-NA016\"]"
+    },
+    {
+      "id": "H51-NA010",
+      "field": "existing_ids",
+      "problem": "理由提到D2212但existing_ids為空。",
+      "suggested_text": "[\"D2212\"]"
+    }
+  ],
+  "limits": [
+    "題級與紙上編輯審查，不是逐字稿、配音或發布核准；未做合成旁白或觀眾測試。",
+    "H51-001仍只讀arXiv v3作者版，未讀Physics of Fluids排版；審閱者以作者快取（雜湊相符）核對，未另行取新版。",
+    "H51-002補充資料由審閱者自取（MOESM2，sha256記於source_reads），只讀QDA、TPA、代謝體樣本數與食安節，未逐表核對雷達圖數值。",
+    "H51-003、H51-004以作者快取全文（雜湊相符）重讀，未另取出版社版本；H51-S005的補充資料未讀。",
+    "語意近鄰僅作為線索；額外關鍵詞grep只涵蓋all-questions.tsv與not-added.tsv，不證明全庫無漏。P51-002與L51-005為同波他線新題，尚未入tsv，僅依近鄰檔快照判斷。",
+    "原圖僅供核證，未授權作影片素材。"
+  ],
+  "revision_history": [
+    {
+      "on": "2026-11-03",
+      "kind": "readback_of_author_revision",
+      "review_file_before_sha256": "66da668039528658c9d9f9f2f299ceea1c6689ac81a028e3667d81a884807a5b",
+      "inputs": [
+        {
+          "file": "batches/wave51-human.json",
+          "before_sha256": "f8b50f3a26023fd48b2275cee4e2455fc23bad99edb2deed3bc9b07fd1fdad14",
+          "after_sha256": "ceb52972b67bc3e19b36666bfdfbe03a25f636f5fd2d35325a7186704f956519"
+        },
+        {
+          "file": "reviews/wave51-human-themes.json",
+          "before_sha256": "8e89d6dac83b99b6d7d447d1ec56bb65b2e24002706933a6120e2a952eba0720",
+          "after_sha256": "3bbb11ec192461df451aab3edf4e8a743a695fa6b1fe40abe239e7f25b70205a"
+        },
+        {
+          "file": "reviews/wave51-human-author.json",
+          "before_sha256": "d3683a1ec1aa359185e97c12a6046e4fcd614e56178fc057b6199ca21cd8d133",
+          "after_sha256": "52e1f91b583eb35a2d3a1a310e098fbc85e7477d8b22d941a6490a633f2e1384"
+        }
+      ],
+      "verified": [
+        "11條corrections全數落地：H51-001題目限定羊奶起司，scope含Fig.2澱粉%以水重計（等同起司重）與『1%以上70°C以上仍有數毫米團塊、3–4%才明顯變小』；H51-002答案含『模型幾輪之後』與8名受訓評審，scope含每人評兩次、Fig.4圖說矛盾、食安推算不入題；H51-003 Qmax改為儀器量的材料性質、蒙眼改隔屏、補84%對3%，scope補顯著配對與共變；H51-004改同手同腳並補+83%；NA004理由、NA006加X37-NA016、NA010加D2212。",
+        "作者未重讀補充資料而採用的感官小組資訊（8名受訓評審、1–9分、每產品評兩次；代謝體每組2–5顆蛋）與審閱者自取MOESM2原文一致，標示為轉述。",
+        "未見新增過度主張：S004、S005摘要同步修正且數值正確；主題core_question、evidence_gaps與beat文字未超出來源。",
+        "秒數：T01 12｜22+16=38，總50；T02 8｜14+16=30｜20，總58；T03 10+18=28｜20+10=30，總58；T04 18｜16+20=36，總54；皆與body_seconds及target_minutes相符，每拍≤45秒，皆在editorial_cap內。共刪18秒，無加秒。",
+        "候選ID仍為H51-001…004，not_added仍14條。"
+      ],
+      "non_blocking_notes": [
+        "H51-003 editorial.payoff『手指量不到水』是修辭性簡化，腳本宜改成『手指沒有直接量水的受器』，以免與『水量仍是主因』看似矛盾。",
+        "candidates.editorial.seconds仍為[40,75]／[45,80]，上限高於本審閱cap（60／65／65／60）；以本審閱cap為準，不影響題級通過。"
+      ]
+    }
+  ],
+  "final_input_check": {
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "batch_file": "batches/wave51-human.json",
+    "batch_sha256": "ceb52972b67bc3e19b36666bfdfbe03a25f636f5fd2d35325a7186704f956519",
+    "themes_file": "reviews/wave51-human-themes.json",
+    "themes_sha256": "3bbb11ec192461df451aab3edf4e8a743a695fa6b1fe40abe239e7f25b70205a",
+    "author_receipt_sha256": "52e1f91b583eb35a2d3a1a310e098fbc85e7477d8b22d941a6490a633f2e1384",
+    "candidate_ids_match": true,
+    "candidate_ids": [
+      "H51-001",
+      "H51-002",
+      "H51-003",
+      "H51-004"
+    ],
+    "body_seconds": {
+      "W51H-T01": 50,
+      "W51H-T02": 58,
+      "W51H-T03": 58,
+      "W51H-T04": 54
+    },
+    "beat_and_chapter_sums_ok": true,
+    "corrections_landed": "11/11",
+    "remaining_blockers": []
+  }
+}

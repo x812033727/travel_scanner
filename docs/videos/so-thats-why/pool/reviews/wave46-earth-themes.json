@@ -1,0 +1,327 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "rules": [
+    "每章單一核心；同核心跨章合計不超素材上限。",
+    "每拍不超45秒；開場回扣含在總額。",
+    "三個剩餘素材保留，不為片數合成冰雪百科。",
+    "首案root離線連讀後調成72秒；其餘紙上預算，未試讀。"
+  ],
+  "episodes": [
+    {
+      "id": "W46S-T01",
+      "title": "冰裡的空氣，怎麼反而幫忙融冰？",
+      "core_question": "氣泡可能隔熱，為什麼這次含氣泡冰反而退得快？",
+      "connection": "先看匹配水槽的冰面退縮，再看水流；由直接觀察走到有界線的熱傳解釋。",
+      "priority": 1,
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "candidate_ids": [
+        "S46-007"
+      ],
+      "target_minutes": 1.2,
+      "range_minutes": [
+        1.2,
+        1.2
+      ],
+      "body_seconds": 72,
+      "chapters": [
+        {
+          "title": "冰面退縮，不只比較顏色",
+          "candidate_ids": [
+            "S46-007"
+          ],
+          "seconds": 27,
+          "new_information": "開場並列透明冰與含氣冰的疑問；同幾何、初始鹽度與水溫；畫退縮前後的兩條線，說清只是兩次水槽試驗。",
+          "beats": [
+            {
+              "seconds": 12,
+              "new_information": "開場並列透明冰與含氣冰的疑問。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "同幾何、初始鹽度與水溫；畫退縮前後的兩條線，說清只是兩次水槽試驗。"
+            }
+          ]
+        },
+        {
+          "title": "氣泡改變的是冰旁的水",
+          "candidate_ids": [
+            "S46-007"
+          ],
+          "seconds": 45,
+          "new_information": "氣泡逸出上升，去除氣泡速度後的水流剖面仍較強；不是把泡速當水速；能量／熱通量模型支持換熱增強，爆裂瞬間並未完整解析；不稱氣泡發熱；回扣：冰旁怎樣流，也影響冰怎樣融。",
+          "beats": [
+            {
+              "seconds": 22,
+              "new_information": "氣泡逸出上升，去除氣泡速度後的水流剖面仍較強；不是把泡速當水速。"
+            },
+            {
+              "seconds": 18,
+              "new_information": "能量／熱通量模型支持換熱增強，爆裂瞬間並未完整解析；不稱氣泡發熱。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：冰旁怎樣流，也影響冰怎樣融。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "任一章缺圖或只能重述即撤此案；不改用未核的所有冰河倍率撐長。",
+      "evidence_gaps": "原圖重繪須保留水速與氣泡速不同；沒有本機重做或觀眾試看。",
+      "boredom_risk": "不能用重播慢鏡或術語分類延長；每拍都有指定條件或讀值推進。",
+      "timing_basis": "root完整三段離線SAPI連讀63.897秒；第一段23.549、後兩段40.347。章節27／45秒含約8.103秒看冰面退縮與水流示意；不是觀眾測試或正式配音。"
+    },
+    {
+      "id": "W46S-T02",
+      "title": "平地的積雪，為什麼也會一片接著一片塌？",
+      "core_question": "沒有下坡，塌陷如何傳到遠處？",
+      "connection": "用同一篇隔離雪柱的三案例分清塌陷傳播、雪板折斷與後續滑走，並明示案例材料不同。",
+      "priority": 2,
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "candidate_ids": [
+        "S46-003"
+      ],
+      "target_minutes": 1.2,
+      "range_minutes": [
+        1.2,
+        1.2
+      ],
+      "body_seconds": 72,
+      "chapters": [
+        {
+          "title": "沒有滑下去，標記仍依次下沉",
+          "candidate_ids": [
+            "S46-003"
+          ],
+          "seconds": 35,
+          "new_information": "開場固定平地與雪柱標記點，排除把畫面誤讀為整塊滑走；弱層裂口達臨界後，頂層彎曲與下方塌縮接續傳播；分開實測點與模型剖面。",
+          "beats": [
+            {
+              "seconds": 12,
+              "new_information": "開場固定平地與雪柱標記點，排除把畫面誤讀為整塊滑走。"
+            },
+            {
+              "seconds": 23,
+              "new_information": "弱層裂口達臨界後，頂層彎曲與下方塌縮接續傳播；分開實測點與模型剖面。"
+            }
+          ]
+        },
+        {
+          "title": "遠處也可能不動",
+          "candidate_ids": [
+            "S46-003"
+          ],
+          "seconds": 37,
+          "new_information": "另一較薄弱雪板折斷後，遠端點未動；不是所有塌陷必傳到底；斜坡案例還有後續滑動；材料及厚度不同，不當成只改坡度的對照；回扣傳播不等於滑動，不轉成現場安全判準。",
+          "beats": [
+            {
+              "seconds": 21,
+              "new_information": "另一較薄弱雪板折斷後，遠端點未動；不是所有塌陷必傳到底。"
+            },
+            {
+              "seconds": 11,
+              "new_information": "斜坡案例還有後續滑動；材料及厚度不同，不當成只改坡度的對照。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣傳播不等於滑動，不轉成現場安全判準。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若無法區分三案例及模型，撤案；任刪一章均不能沿用兩章企劃。",
+      "evidence_gaps": "只用原研究示意，不示範如何在野外觸發或測試雪崩。",
+      "boredom_risk": "不能用重播慢鏡或術語分類延長；每拍都有指定條件或讀值推進。",
+      "timing_basis": "含開場、轉場和回扣的紙上預算，未試讀；沒有因停頓而增加上限。"
+    },
+    {
+      "id": "W46S-T03",
+      "title": "同樣是冰，為什麼能融成方向相反的尖？",
+      "core_question": "換水溫後，尖端為何由朝下變成朝上？",
+      "connection": "先對照淡水不同溫度的實驗輪廓，再以模型說明密度反常和中間凹槽；不把糖柱舊題換材質重播。",
+      "priority": 3,
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "candidate_ids": [
+        "S46-006"
+      ],
+      "target_minutes": 1.0833333333333333,
+      "range_minutes": [
+        1.0833333333333333,
+        1.0833333333333333
+      ],
+      "body_seconds": 65,
+      "chapters": [
+        {
+          "title": "兩種水溫，兩種方向",
+          "candidate_ids": [
+            "S46-006"
+          ],
+          "seconds": 37,
+          "new_information": "開場並列4°C與8°C實驗輪廓，不把支架畫成同一端固定；淡水密度在約4°C最大；冷卻近冰水的淨浮沉作用改變，方向反轉影響表面退縮。",
+          "beats": [
+            {
+              "seconds": 13,
+              "new_information": "開場並列4°C與8°C實驗輪廓，不把支架畫成同一端固定。"
+            },
+            {
+              "seconds": 24,
+              "new_information": "淡水密度在約4°C最大；冷卻近冰水的淨浮沉作用改變，方向反轉影響表面退縮。"
+            }
+          ]
+        },
+        {
+          "title": "中間不一定只是較鈍的尖",
+          "candidate_ids": [
+            "S46-006"
+          ],
+          "seconds": 28,
+          "new_information": "加入5.6°C實驗凹槽，另框相場模型的相向流和渦列，標模型；只並列三個溫區的實驗冰形作視覺停點，不再次朗讀選形結論。",
+          "beats": [
+            {
+              "seconds": 23,
+              "new_information": "加入5.6°C實驗凹槽，另框相場模型的相向流和渦列，標模型。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "只並列三個溫區的實驗冰形作視覺停點，不再次朗讀選形結論。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "沒有分清實驗冰形與模型流線就撤案；若刪中間溫區必另提短版，不自動拉長兩端重述。",
+      "evidence_gaps": "原圖為排水後拍攝，不能表現成同步流速照片；未看補充影片。 圖註明示只限淡水槽；海水鹽度與自然亂流不在此控制實驗內。",
+      "boredom_risk": "不能用重播慢鏡或術語分類延長；每拍都有指定條件或讀值推進。",
+      "timing_basis": "含開場、轉場和回扣的紙上預算，未試讀；沒有因停頓而增加上限。"
+    },
+    {
+      "id": "W46S-T04",
+      "title": "下面孔比較大，水怎麼先卡在上面？",
+      "core_question": "雪的粗顆粒層，何以暫時成為進水門檻？",
+      "connection": "採D2090毛細阻斷核心的S46-008雪柱變體，沿原S46-S008研究及素材80秒上限安排65秒；不把地板案例移作本實驗。末端剖切靜圖與原創機制時序示意分框，不插入再凍冰層。",
+      "priority": 4,
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "candidate_ids": [
+        "S46-008"
+      ],
+      "target_minutes": 1.0833333333333333,
+      "range_minutes": [
+        1.0833333333333333,
+        1.0833333333333333
+      ],
+      "body_seconds": 65,
+      "chapters": [
+        {
+          "title": "染色水先橫著走",
+          "candidate_ids": [
+            "S46-008"
+          ],
+          "seconds": 32,
+          "new_information": "開場細上粗下剖面，標0°C及沒有新冰層；末端剖切靜圖顯示界面積水帶與局部指狀路徑；先積水再突破另畫成機制示意，不稱連續內部攝影。",
+          "beats": [
+            {
+              "seconds": 12,
+              "new_information": "開場細上粗下剖面，標0°C及沒有新冰層。"
+            },
+            {
+              "seconds": 20,
+              "new_information": "末端剖切靜圖顯示界面積水帶與局部指狀路徑；先積水再突破另畫成機制示意，不稱連續內部攝影。"
+            }
+          ]
+        },
+        {
+          "title": "大孔未進水，不等於排得快",
+          "candidate_ids": [
+            "S46-008"
+          ],
+          "seconds": 33,
+          "new_information": "細層持水吸力與粗層進水條件不匹配；積水改變局部含水狀態後才突破，這是機制解釋；三種粒徑組合積水程度不同，局部乾區仍可存在；不畫成整面同時開閘。",
+          "beats": [
+            {
+              "seconds": 22,
+              "new_information": "細層持水吸力與粗層進水條件不匹配；積水改變局部含水狀態後才突破，這是機制解釋。"
+            },
+            {
+              "seconds": 11,
+              "new_information": "三種粒徑組合積水程度不同，局部乾區仍可存在；不畫成整面同時開閘。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若只能畫一片不透水冰層，撤案；兩章任刪則重提短版，不能以洪水／雪崩推測補時。",
+      "evidence_gaps": "每組一樣本，未直接量每個孔壓力；不把示意壓力表當實驗儀器。",
+      "boredom_risk": "不能用重播慢鏡或術語分類延長；每拍都有指定條件或讀值推進。",
+      "timing_basis": "含開場、轉場和回扣的紙上預算，未試讀；沒有因停頓而增加上限。",
+      "variant_budget_ids": [
+        "S46-008"
+      ],
+      "canonical_mapping": {
+        "S46-008": "D2090"
+      }
+    },
+    {
+      "id": "W46S-T05",
+      "title": "加了泥，泥層怎麼反而變薄？",
+      "core_question": "冰塵孔加料後，為什麼不能把孔當成固定容器？",
+      "connection": "同篇兩地加料試驗分框：Svalbard Fig2比較孔徑與對照孔，Greenland Fig5追逐日泥厚；不拼成同一地點的一條連續實驗，另以壁面下切支持側向融化。",
+      "priority": 5,
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "candidate_ids": [
+        "S46-005"
+      ],
+      "target_minutes": 0.9166666666666666,
+      "range_minutes": [
+        0.9166666666666666,
+        0.9166666666666666
+      ],
+      "body_seconds": 55,
+      "chapters": [
+        {
+          "title": "泥增加，孔也變寬",
+          "candidate_ids": [
+            "S46-005"
+          ],
+          "seconds": 32,
+          "new_information": "開場加泥前後同尺度俯視，先問泥是否只會堆厚；分開Svalbard Fig2孔徑／對照孔和Greenland Fig5逐日泥厚，不畫成同一地點連續對照；追加料後孔擴、泥攤薄。",
+          "beats": [
+            {
+              "seconds": 12,
+              "new_information": "開場加泥前後同尺度俯視，先問泥是否只會堆厚。"
+            },
+            {
+              "seconds": 20,
+              "new_information": "分開Svalbard Fig2孔徑／對照孔和Greenland Fig5逐日泥厚，不畫成同一地點連續對照；追加料後孔擴、泥攤薄。"
+            }
+          ]
+        },
+        {
+          "title": "容器自己也在改形",
+          "candidate_ids": [
+            "S46-005"
+          ],
+          "seconds": 23,
+          "new_information": "側壁下切形狀支持熱往側壁傳遞，新增孔底面積供泥重分布；熱箭頭是解釋而非已量熱流。",
+          "beats": [
+            {
+              "seconds": 23,
+              "new_information": "側壁下切形狀支持熱往側壁傳遞，新增孔底面積供泥重分布；熱箭頭是解釋而非已量熱流。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若只有前後照片而無孔徑／泥厚及對照說明，撤案；任刪一章均重新評估，不獨立核准單章。",
+      "evidence_gaps": "兩地少量孔，側向熱流未直接量；禁止把實驗結果畫成普遍精確倍率。 圖註不將未量到的氣泡搬泥當第二主因。",
+      "boredom_risk": "不能用重播慢鏡或術語分類延長；每拍都有指定條件或讀值推進。",
+      "timing_basis": "含開場、轉場和回扣的紙上預算，未試讀；沒有因停頓而增加上限。"
+    }
+  ]
+}

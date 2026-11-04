@@ -21,6 +21,7 @@ import {
   spokenUnits,
   TAIL_MS,
   pictureHash,
+  picturesBound,
   visualHash,
 } from "./timeline.mjs";
 
@@ -241,4 +242,21 @@ test("pictureHash ignores the paper theme, so turning it on redraws no keyframe 
   picture.theme = "paper";
   picture.scenes[1].data.items[0] = "別的";
   assert.notEqual(pictureHash(picture), pictureHash(paper), "a changed picture still counts");
+});
+
+test("picturesBound keeps keyframes drawn under either card look, before and after pictureHash", () => {
+  const plain = fixture();
+  const paper = fixture();
+  paper.theme = "paper";
+  assert.ok(picturesBound(pictureHash(paper), paper), "a current manifest");
+  assert.ok(picturesBound(visualHash(paper), paper), "drawn on the paper look before keyframes stopped following the theme");
+  assert.ok(picturesBound(visualHash(plain), paper), "drawn on the dark look, then turned to paper");
+  assert.ok(picturesBound(visualHash(paper), plain), "drawn on paper, then taken off it");
+  const changed = fixture();
+  changed.theme = "paper";
+  changed.scenes[1].data.items[0] = "別的";
+  assert.equal(picturesBound(visualHash(paper), changed), false, "a changed picture is still stale");
+  assert.equal(picturesBound(pictureHash(paper), changed), false);
+  assert.equal(picturesBound(undefined, paper), false);
+  assert.equal(picturesBound("", paper), false);
 });

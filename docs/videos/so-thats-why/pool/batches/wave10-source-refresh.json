@@ -1,0 +1,141 @@
+{
+  "batch_id": "wave10-source-refresh-20261101",
+  "created_on": "2026-11-01",
+  "scope": "三個歷史資訊表示核心的有限範圍來源更新；全部併回原核心，不新增素材或題案。",
+  "sources": [
+    {
+      "id": "R10-S001",
+      "url": "https://www.unicode.org/faq/emoji_dingbats.html",
+      "title": "Emoji and Pictographs FAQ",
+      "publisher": "Unicode Consortium",
+      "version": "2026-11-01 accessed; living FAQ",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 官方/維護者正文指定段；非僅搜尋摘要",
+      "reading_scope": "顯示方式、設計控制及平台上線時程問答",
+      "locator": "顯示方式、設計控制及平台上線時程問答",
+      "summary": "Unicode與各平台的圖樣設計、實作支援是不同層次。",
+      "limitations": "未核所有裝置、所有字型或語意感受；不把標準支援說成所有平台同步。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R10-S002",
+      "url": "https://www.unicode.org/reports/tr51/tr51-31.html",
+      "title": "UTS #51: Unicode Emoji",
+      "publisher": "Unicode Consortium",
+      "version": "Version 18.0; Revision31; document date2026-08-28",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 官方/維護者正文指定段；非僅搜尋摘要",
+      "reading_scope": "Summary；§2開頭；§2.1名字；§2.2支援序列差異",
+      "locator": "Summary；§2開頭；§2.1名字；§2.2支援序列差異",
+      "summary": "標準定義字元/序列結構並給設計指引；平台呈現可異，仍應維持可互通的核心外形。",
+      "limitations": "只讀所列段，不稱完整規範審查；不用未實測品牌圖對照或圖片權利結論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R10-S003",
+      "url": "https://man7.org/linux/man-pages/man2/time.2.html",
+      "title": "time(2) — Linux manual page",
+      "publisher": "Linux man-pages project; rendered by man7.org",
+      "version": "Linux man-pages6.19; page2026-02-08; HTML2026-09-09",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 官方/維護者正文指定段；非僅搜尋摘要",
+      "reading_scope": "DESCRIPTION；ERRORS的EOVERFLOW；VERSIONS的閏秒及time_t寬度說明",
+      "locator": "DESCRIPTION；ERRORS的EOVERFLOW；VERSIONS的閏秒及time_t寬度說明",
+      "summary": "以Unix紀元計秒的表示，受time_t能表達範圍限制；64位核心不保證32位time_t可表示超界時刻。",
+      "limitations": "只核表示範圍；不宣稱所有呼叫都相同失敗、必然回1901，或完整遷移狀態。GNU兩種官方頁web逾時，未以搜尋摘要代替。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R10-S004",
+      "url": "https://physics.nist.gov/cuu/Units/binary.html",
+      "title": "Prefixes for binary multiples",
+      "publisher": "NIST",
+      "version": "頁內二進位前綴定義與例表；accessed2026-11-01",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 官方/維護者正文指定段；非僅搜尋摘要",
+      "reading_scope": "Prefixes表及Examples的GB/GiB對照",
+      "locator": "Prefixes表及Examples的GB/GiB對照",
+      "summary": "GB與GiB採不同倍數；同一個byte數用不同分母得到不同數值。",
+      "limitations": "不把頁末歷史廠商慣例當現行Windows/硬碟規格；未核格式化容量、保留區或舊訴訟。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R10001",
+      "question": "傳的是同一串Emoji字元，為什麼畫出來還能不同？",
+      "domain": "資訊表示",
+      "mechanism_key": "legacy.a20",
+      "answer_target": "Unicode規範字元與序列，顯示端用其支援的圖樣呈現；標準也有設計指引，因此不是規定每個像素，也不是完全不管外形。",
+      "scope": "限同一字元/序列的呈現層；貼圖檔不在此例，未測所有平台或情緒解讀。",
+      "source_ids": [
+        "R10-S001",
+        "R10-S002"
+      ],
+      "source_locator": "R10-S001：顯示方式、設計控制及平台上線時程問答；R10-S002：Summary；§2開頭；§2.1名字；§2.2支援序列差異",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-A20",
+      "notes": "必須併回舊核心，新增核心0。補的是本列限定答案與來源，不覆寫舊raw，不核准舊完整答案/全部附件。原答案較寬或過度概括處以本列限制為研究修訂線索；完整進稿仍待重寫與逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "Unicode規範字元與序列，顯示端用其支援的圖樣呈現；標準也有設計指引，因此不是規定每個像素，也不是完全不管外形。",
+        "visual": "先列同一字元序列，接兩張自製示意字形；不用實際品牌emoji圖冒充實測。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "R10002",
+      "question": "倒數2038問題，卡住的是時鐘，還是裝秒數的欄位？",
+      "domain": "資訊表示",
+      "mechanism_key": "legacy.a25",
+      "answer_target": "有號32位整數最多容納2147483647；用它存從1970年UTC紀元起的秒數，下一個秒數就超出上限。實際程式如何處理超界另受介面與實作影響。",
+      "scope": "限數學範圍與Linux manual指定介面；不執行C有號溢位，不把64位CPU等同所有時間欄位已遷移，未重核舊遷移年份。",
+      "source_ids": [
+        "R10-S003"
+      ],
+      "source_locator": "R10-S003：DESCRIPTION；ERRORS的EOVERFLOW；VERSIONS的閏秒及time_t寬度說明",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-A25",
+      "notes": "必須併回舊核心，新增核心0。補的是本列限定答案與來源，不覆寫舊raw，不核准舊完整答案/全部附件。原答案較寬或過度概括處以本列限制為研究修訂線索；完整進稿仍待重寫與逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有號32位整數最多容納2147483647；用它存從1970年UTC紀元起的秒數，下一個秒數就超出上限。實際程式如何處理超界另受介面與實作影響。",
+        "visual": "把秒數尺推到欄位上限，再換寬欄位；顯示超界而非固定倒跳動畫。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "R10003",
+      "question": "同樣一兆個byte，換個單位算怎麼就剩約931？",
+      "domain": "資訊表示",
+      "mechanism_key": "legacy.a35",
+      "answer_target": "GB以十億byte為單位，GiB以1073741824byte為單位；1000000000000byte換算成GiB約931.32，資料量沒有因換算減少。",
+      "scope": "只更新單位換算；實際顯示標籤、可用容量、格式化和歷史和解均不在本輪核准範圍。",
+      "source_ids": [
+        "R10-S004"
+      ],
+      "source_locator": "R10-S004：Prefixes表及Examples的GB/GiB對照",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-A35",
+      "notes": "必須併回舊核心，新增核心0。補的是本列限定答案與來源，不覆寫舊raw，不核准舊完整答案/全部附件。原答案較寬或過度概括處以本列限制為研究修訂線索；完整進稿仍待重寫與逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "GB以十億byte為單位，GiB以1073741824byte為單位；1000000000000byte換算成GiB約931.32，資料量沒有因換算減少。",
+        "visual": "固定同一條byte總量，僅換刻度；用GB/GiB明確標籤，不仿造未測作業系統截圖。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    }
+  ]
+}

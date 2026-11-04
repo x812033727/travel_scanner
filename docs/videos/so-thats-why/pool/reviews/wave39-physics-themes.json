@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "rules": "每章只引用一個核心，計入開場與轉回實驗的時間，未配音。",
+  "episodes": [
+    {
+      "id": "W39P-T01",
+      "title": "有些貼膜一撕就收尖，為什麼另一種塗層能自己剝成等寬的帶子？",
+      "core_question": "兩條裂縫都向前走，是什麼決定它們會靠近還是維持間距？",
+      "connection": "先觀察手拉成形的折脊，再換到無手拉的塗膜。只比較帶寬，兩個試驗分框。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "待非作者逐案覆核",
+      "candidate_ids": [
+        "X39-001",
+        "X39-002"
+      ],
+      "body_seconds": 73,
+      "target_minutes": 1.2166666666666666,
+      "range_minutes": [
+        1.2166666666666666,
+        1.2166666666666666
+      ],
+      "chapters": [
+        {
+          "title": "先疊三個大小不同的尖角",
+          "candidate_ids": [
+            "X39-001"
+          ],
+          "seconds": 36,
+          "new_information": "三個起始寬度不同的膜片都往前拉。把尖角對齊，兩側收進來的角度卻差不多。 換成側面看彎起的折脊。裂尖除了往前走，也能靠向彼此，讓儲著彎曲能的折脊縮短。",
+          "beats": [
+            {
+              "seconds": 16,
+              "new_information": "三個起始寬度不同的膜片都往前拉。把尖角對齊，兩側收進來的角度卻差不多。"
+            },
+            {
+              "seconds": 20,
+              "new_information": "換成側面看彎起的折脊。裂尖除了往前走，也能靠向彼此，讓儲著彎曲能的折脊縮短。"
+            }
+          ]
+        },
+        {
+          "title": "拿掉手，兩條線還能往前",
+          "candidate_ids": [
+            "X39-002"
+          ],
+          "seconds": 37,
+          "new_information": "換另一個試驗：製程留下內部拉應力的塗膜，兩條裂線和脫離底板的前緣一同前進。 在模型中，裂距太寬時向內修正，太窄時向外。最後把不同厚度的實測帶寬排在一起，與前一張一路收尖的膜清楚分開。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "換另一個試驗：製程留下內部拉應力的塗膜，兩條裂線和脫離底板的前緣一同前進。"
+            },
+            {
+              "seconds": 22,
+              "new_information": "在模型中，裂距太寬時向內修正，太窄時向外。最後把不同厚度的實測帶寬排在一起，與前一張一路收尖的膜清楚分開。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若畫不出自發剝離前緣與手拉折脊差別，撤73秒合案，各留36與37秒研究段。",
+      "evidence_gaps": "塗膜模型未實測每種起始間距，兩研究非同一種膠。",
+      "boredom_risk": "一個畫面一個可判別的差異；無新結果不延長。",
+      "timing_basis": "含開場、畫面切換與看圖時數的紙上預估，未試讀。"
+    },
+    {
+      "id": "W39P-T02",
+      "title": "工具走直線，為什麼薄片卻裂出一排波浪，有時還折出手風琴？",
+      "core_question": "究竟是同一條裂縫左右跑，還是中間尚有一片連著？",
+      "connection": "沿著同一個問題追蹤工具方向、裂線條數與留下的片舌。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "待非作者逐案覆核",
+      "candidate_ids": [
+        "X39-003"
+      ],
+      "body_seconds": 58,
+      "target_minutes": 0.9666666666666667,
+      "range_minutes": [
+        0.9666666666666667,
+        0.9666666666666667
+      ],
+      "chapters": [
+        {
+          "title": "先遮住工具軌跡，讓觀眾猜",
+          "candidate_ids": [
+            "X39-003"
+          ],
+          "seconds": 27,
+          "new_information": "把脆膜的波浪邊放大，請看哪條線是工具軌跡。揭開水平箭頭，鈍頭走直，左右擺的是單一裂線。 換看鋁箔的邊緣，標出中間還有一整片未被切碎的舌片。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "把脆膜的波浪邊放大，請看哪條線是工具軌跡。揭開水平箭頭，鈍頭走直，左右擺的是單一裂線。"
+            },
+            {
+              "seconds": 12,
+              "new_information": "換看鋁箔的邊緣，標出中間還有一整片未被切碎的舌片。"
+            }
+          ]
+        },
+        {
+          "title": "找第二個裂尖",
+          "candidate_ids": [
+            "X39-003"
+          ],
+          "seconds": 31,
+          "new_information": "在參數模擬裡，材料先塑性變形，舊裂尖不易轉回中央，另一側又有裂縫冒出。兩條裂線推起了中間的箔。 再看有底板支撐的實驗，舌片不能自由翻走，就在前面堆成一疊褶；同尺度分清實物與模擬。",
+          "beats": [
+            {
+              "seconds": 17,
+              "new_information": "在參數模擬裡，材料先塑性變形，舊裂尖不易轉回中央，另一側又有裂縫冒出。兩條裂線推起了中間的箔。"
+            },
+            {
+              "seconds": 14,
+              "new_information": "再看有底板支撐的實驗，舌片不能自由翻走，就在前面堆成一疊褶；同尺度分清實物與模擬。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若只能看到兩個終態、無法指出舌片和雙裂尖，撤58秒案。",
+      "evidence_gaps": "模型單變參數的結果與真材質是否完全相同應分開；不用刀具操作近景。",
+      "boredom_risk": "一個畫面一個可判別的差異；無新結果不延長。",
+      "timing_basis": "含開場、畫面切換與看圖時數的紙上預估，未試讀。"
+    },
+    {
+      "id": "W39P-T03",
+      "title": "沿著乾麵的長度撞下去，碎段的間距為什麼在撞斷前就看得見？",
+      "core_question": "先有一處斷口，還是先有多處彎曲？",
+      "connection": "追同一段端撞影格，然後用許多次端撞的碎段分布回答，不借用手折乾麵畫面。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "待非作者逐案覆核",
+      "candidate_ids": [
+        "X39-005"
+      ],
+      "body_seconds": 54,
+      "target_minutes": 0.9,
+      "range_minutes": [
+        0.9,
+        0.9
+      ],
+      "chapters": [
+        {
+          "title": "凍結第一個斷口之前",
+          "candidate_ids": [
+            "X39-005"
+          ],
+          "seconds": 26,
+          "new_information": "重物沿桿軸撞上乾麵。先在還連著的一格停住，沿麵描出不只一段的波峰、波谷。 壓力脈衝能讓某個尺度的側彎最快長大。將那段彎曲的間距標尺保留到下一格。",
+          "beats": [
+            {
+              "seconds": 14,
+              "new_information": "重物沿桿軸撞上乾麵。先在還連著的一格停住，沿麵描出不只一段的波峰、波谷。"
+            },
+            {
+              "seconds": 12,
+              "new_information": "壓力脈衝能讓某個尺度的側彎最快長大。將那段彎曲的間距標尺保留到下一格。"
+            }
+          ]
+        },
+        {
+          "title": "打開碎段統計",
+          "candidate_ids": [
+            "X39-005"
+          ],
+          "seconds": 28,
+          "new_information": "亮出曲率最大的部位，對照碎塊的轉動與後續分離。整批碎段的統計在約半個波長附近有峰。 圖上也能見到四分之一波長附近的峰及許多其他長度。靠群體分布找線索，不替單根碎塊定尺寸。",
+          "beats": [
+            {
+              "seconds": 18,
+              "new_information": "亮出曲率最大的部位，對照碎塊的轉動與後續分離。整批碎段的統計在約半個波長附近有峰。"
+            },
+            {
+              "seconds": 10,
+              "new_information": "圖上也能見到四分之一波長附近的峰及許多其他長度。靠群體分布找線索，不替單根碎塊定尺寸。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "缺少斷前影格或碎段分布，撤54秒案。",
+      "evidence_gaps": "換撞速展示用PTFE桿，不剪入同一根麵的前後。",
+      "boredom_risk": "一個畫面一個可判別的差異；無新結果不延長。",
+      "timing_basis": "含開場、畫面切換與看圖時數的紙上預估，未試讀。"
+    },
+    {
+      "id": "W39P-T04",
+      "title": "同一個刺點，怎麼能在鼓起的乳膠上留下整棵樹的裂線？",
+      "core_question": "全部裂線是同時從頂端出發的嗎？",
+      "connection": "用低張力開口和高張力初裂、分支的時間順序，配合末態Y形交點。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "待非作者逐案覆核",
+      "candidate_ids": [
+        "X39-006"
+      ],
+      "body_seconds": 53,
+      "target_minutes": 0.8833333333333333,
+      "range_minutes": [
+        0.8833333333333333,
+        0.8833333333333333
+      ],
+      "chapters": [
+        {
+          "title": "先看針尖，再看裂網",
+          "candidate_ids": [
+            "X39-006"
+          ],
+          "seconds": 26,
+          "new_information": "凍結頂端碰到刀尖的時刻，低張力一欄只出現少數裂線，膜隨即敞開。 較高張力那欄也從一個小區域起裂，可最後邊緣卻有許多碎條。",
+          "beats": [
+            {
+              "seconds": 14,
+              "new_information": "凍結頂端碰到刀尖的時刻，低張力一欄只出現少數裂線，膜隨即敞開。"
+            },
+            {
+              "seconds": 12,
+              "new_information": "較高張力那欄也從一個小區域起裂，可最後邊緣卻有許多碎條。"
+            }
+          ]
+        },
+        {
+          "title": "把時序倒走一次",
+          "candidate_ids": [
+            "X39-006"
+          ],
+          "seconds": 27,
+          "new_information": "沿著高速影格圈出一個前進的裂尖，看它一分為二。再從末態外圈往回追，許多Y字交會在離刺點一段距離的地方。 把「一次扎出全部」會有的放射線圖和真正分岔的位置並排。",
+          "beats": [
+            {
+              "seconds": 19,
+              "new_information": "沿著高速影格圈出一個前進的裂尖，看它一分為二。再從末態外圈往回追，許多Y字交會在離刺點一段距離的地方。"
+            },
+            {
+              "seconds": 8,
+              "new_information": "把「一次扎出全部」會有的放射線圖和真正分岔的位置並排。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "看不清離刺點一段距離才分支，撤53秒案。",
+      "evidence_gaps": "用原創裂徑圖或有權圖像，不以普通氣球聲音代替原實驗。",
+      "boredom_risk": "一個畫面一個可判別的差異；無新結果不延長。",
+      "timing_basis": "含開場、畫面切換與看圖時數的紙上預估，未試讀。"
+    },
+    {
+      "id": "W39P-T05",
+      "title": "把熟麵打個結慢慢拉，最先破的地方真的是結心嗎？",
+      "core_question": "看似最擠的位置，就是拉力與彎曲一起最傷的地方嗎？",
+      "connection": "先說明為何換低剛度試材，定位初裂；再讓模型回答入口與結心差在哪裡。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "待非作者逐案覆核",
+      "candidate_ids": [
+        "X39-008"
+      ],
+      "body_seconds": 55,
+      "target_minutes": 0.9166666666666666,
+      "range_minutes": [
+        0.9166666666666666,
+        0.9166666666666666
+      ],
+      "chapters": [
+        {
+          "title": "換掉拍不到斷點的材料",
+          "candidate_ids": [
+            "X39-008"
+          ],
+          "seconds": 25,
+          "new_information": "漁線相鄰兩格就從完整變斷開。研究者改用熟麵打結，讓一個裂口形成的過程能分成多格。 在單結及八字結的描述裡，標出靠近入口的急彎。最早的裂口在彎折的外側。",
+          "beats": [
+            {
+              "seconds": 12,
+              "new_information": "漁線相鄰兩格就從完整變斷開。研究者改用熟麵打結，讓一個裂口形成的過程能分成多格。"
+            },
+            {
+              "seconds": 13,
+              "new_information": "在單結及八字結的描述裡，標出靠近入口的急彎。最早的裂口在彎折的外側。"
+            }
+          ]
+        },
+        {
+          "title": "同時標兩種拉長",
+          "candidate_ids": [
+            "X39-008"
+          ],
+          "seconds": 30,
+          "new_information": "在入口畫端部拉力，再標外彎額外被拉長的一側。進入繩段接觸區後，摩擦可以重新分攤拉力。 另畫理想的無摩擦緊結：彎得最厲害的位置能落得更深。把這張模型和實際初裂位置並排。",
+          "beats": [
+            {
+              "seconds": 17,
+              "new_information": "在入口畫端部拉力，再標外彎額外被拉長的一側。進入繩段接觸區後，摩擦可以重新分攤拉力。"
+            },
+            {
+              "seconds": 13,
+              "new_information": "另畫理想的無摩擦緊結：彎得最厲害的位置能落得更深。把這張模型和實際初裂位置並排。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若無法區分熟麵的實測位置與無摩擦模型，撤55秒案。",
+      "evidence_gaps": "依原文Fig5–6說明規劃。未觀看影片，若要逐格重建先另查原片及使用權。",
+      "boredom_risk": "一個畫面一個可判別的差異；無新結果不延長。",
+      "timing_basis": "含開場、畫面切換與看圖時數的紙上預估，未試讀。"
+    }
+  ]
+}

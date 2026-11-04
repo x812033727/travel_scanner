@@ -1,0 +1,541 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "wave51-life-author",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "3f588e4565088b7a0ef82031be0a04b08e1fe353",
+    "selected": 3542,
+    "raw": 3931,
+    "not_added": 2234,
+    "themes": 559,
+    "pool_sha256": "f99e29d72c708a1c436f9cec3d9e504571b511f382abe15f36dd13737c8095fe"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave51-life.json",
+      "sha256": "ef58389eddab81894c0aed4351adf1783593409b8b81196d7a69a079c4f35cb3"
+    },
+    {
+      "file": "reviews/wave51-life-themes.json",
+      "sha256": "64abbb51885ce0d695b8a72b1cb096f54f5660471ff54bee13088e6b9bafacc8"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 5,
+    "candidate_supporting_publications": 5,
+    "not_added": 14,
+    "near_pairs": 14,
+    "themes": 4
+  },
+  "near_pairs": [
+    {
+      "a": "L51-001",
+      "b": "U8004",
+      "decision": "propose_distinct",
+      "reason": "舊題是真菌隔膜孔被Woronin小體被動堵住；新題是同伴依傷口位置選擇截肢或照護，並以人工截肢時間點檢驗病菌擴散速度。",
+      "a_snapshot": {
+        "question": "螞蟻會把受傷同伴的腿咬掉，為什麼傷在大腿就咬、傷在小腿卻不咬？",
+        "answer_target": "佛州弓背蟻股節傷在接回群落後多被同伴從腿根咬斷，脛節傷則只得到較久的舔舐，而送回巢中的脛節感染蟻存活與無菌組相近。人工截肢對照顯示：股節感染傷在一小時後截肢仍能把存活拉回接近無菌組，脛節截肢則與不處理的感染孤立組一樣差（作者補充資料指只有接菌當下截才有效）。作者以股節肌肉多、受傷後血淋巴流較慢、病菌擴散較慢解釋，截肢只在來得及時才有利。",
+        "scope": "限實驗室Camponotus floridanus與綠膿桿菌接種的剪傷；血淋巴流速未直接量，肌肉差異來自micro-CT截面。螞蟻對無菌與感染股節傷截肢率無顯著差，不代表能偵測病菌；不推及其他蟻種或人類醫療。各時間點截肢結果出自未讀的補充Fig S4，只作作者報告；股節中段肌肉截面積接近脛節的九倍（約8.7倍）。"
+      },
+      "b_snapshot": {
+        "question": "菌絲一節破了，為什麼整條不一定跟著漏光？",
+        "answer_target": "相通隔膜孔帶來漏失風險；Woronin小體迅速堵孔，把受傷隔室與鄰近活細胞隔離。",
+        "scope": "限具此小體的絲狀子囊菌，以文中Z. tritici觀測為例；只說堵孔作用，不指定唯一運送或收縮機制。"
+      }
+    },
+    {
+      "a": "L51-001",
+      "b": "R6018",
+      "decision": "propose_distinct",
+      "reason": "樹木在傷區建立化學與物理界線屬自身組織反應；新題是群體成員的行為決策與截肢效益對照。",
+      "a_snapshot": {
+        "question": "螞蟻會把受傷同伴的腿咬掉，為什麼傷在大腿就咬、傷在小腿卻不咬？",
+        "answer_target": "佛州弓背蟻股節傷在接回群落後多被同伴從腿根咬斷，脛節傷則只得到較久的舔舐，而送回巢中的脛節感染蟻存活與無菌組相近。人工截肢對照顯示：股節感染傷在一小時後截肢仍能把存活拉回接近無菌組，脛節截肢則與不處理的感染孤立組一樣差（作者補充資料指只有接菌當下截才有效）。作者以股節肌肉多、受傷後血淋巴流較慢、病菌擴散較慢解釋，截肢只在來得及時才有利。",
+        "scope": "限實驗室Camponotus floridanus與綠膿桿菌接種的剪傷；血淋巴流速未直接量，肌肉差異來自micro-CT截面。螞蟻對無菌與感染股節傷截肢率無顯著差，不代表能偵測病菌；不推及其他蟻種或人類醫療。各時間點截肢結果出自未讀的補充Fig S4，只作作者報告；股節中段肌肉截面積接近脛節的九倍（約8.7倍）。"
+      },
+      "b_snapshot": {
+        "question": "樹幹的舊傷被包進去後，裡面受傷的木頭也變回原樣了嗎？",
+        "answer_target": "樹木可在受傷區周邊建立化學與物理界線，並從傷口邊緣長出新組織，限制傷區而非把舊木全部修復。",
+        "scope": "機制模型不保證隔離成功，不提供修樹、填洞或樹木安全判斷。"
+      }
+    },
+    {
+      "a": "L51-001",
+      "b": "A27002",
+      "decision": "propose_distinct",
+      "reason": "渦蟲題是傷口朝向決定再生頭尾；新題不涉再生，問的是截肢能否趕在感染擴散前。",
+      "a_snapshot": {
+        "question": "螞蟻會把受傷同伴的腿咬掉，為什麼傷在大腿就咬、傷在小腿卻不咬？",
+        "answer_target": "佛州弓背蟻股節傷在接回群落後多被同伴從腿根咬斷，脛節傷則只得到較久的舔舐，而送回巢中的脛節感染蟻存活與無菌組相近。人工截肢對照顯示：股節感染傷在一小時後截肢仍能把存活拉回接近無菌組，脛節截肢則與不處理的感染孤立組一樣差（作者補充資料指只有接菌當下截才有效）。作者以股節肌肉多、受傷後血淋巴流較慢、病菌擴散較慢解釋，截肢只在來得及時才有利。",
+        "scope": "限實驗室Camponotus floridanus與綠膿桿菌接種的剪傷；血淋巴流速未直接量，肌肉差異來自micro-CT截面。螞蟻對無菌與感染股節傷截肢率無顯著差，不代表能偵測病菌；不推及其他蟻種或人類醫療。各時間點截肢結果出自未讀的補充Fig S4，只作作者報告；股節中段肌肉截面積接近脛節的九倍（約8.7倍）。"
+      },
+      "b_snapshot": {
+        "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+        "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+        "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。"
+      }
+    },
+    {
+      "a": "L51-002",
+      "b": "L070",
+      "decision": "propose_distinct",
+      "reason": "舊題只確認細菌會被噬菌體感染；新題是病毒編碼胜肽累積後改變裂解／溶原選擇，有濃度、轉運器與異種胜肽對照。",
+      "a_snapshot": {
+        "question": "噬菌體感染細菌時，怎麼知道該馬上把細菌撐破，還是先躲進細菌基因體？",
+        "answer_target": "spBeta群噬菌體phi3T每次感染都讓宿主分泌一段六胺基酸胜肽；先前感染越多，培養液裡這段胜肽越濃。新進入的噬菌體由寡肽轉運器把胜肽帶進細胞，與受體AimR結合，使原本促裂解的訊號關掉，整合進宿主的溶原比例提高。不同噬菌體各有自己的胜肽，彼此不通用。",
+        "scope": "限枯草桿菌與實驗室培養；胜肽只提高溶原機率，無胜肽也非全部裂解。aimX下游如何作用未解，且只有部分同類噬菌體帶此ORF。「新一代感知前代數量」與推及真核病毒屬作者推論。"
+      },
+      "b_snapshot": {
+        "question": "細菌自己也會被病毒感染嗎？",
+        "answer_target": "噬菌體與細菌宿主",
+        "scope": "病毒結構與發現史；不涉及診療、培養或消毒操作"
+      }
+    },
+    {
+      "a": "L51-002",
+      "b": "V3017",
+      "decision": "propose_distinct",
+      "reason": "舊題是細菌自身的自體誘導物群體感應；新題的訊號由噬菌體基因產生、受體在噬菌體上，結果是病毒生命週期選擇，不是細菌行為。",
+      "a_snapshot": {
+        "question": "噬菌體感染細菌時，怎麼知道該馬上把細菌撐破，還是先躲進細菌基因體？",
+        "answer_target": "spBeta群噬菌體phi3T每次感染都讓宿主分泌一段六胺基酸胜肽；先前感染越多，培養液裡這段胜肽越濃。新進入的噬菌體由寡肽轉運器把胜肽帶進細胞，與受體AimR結合，使原本促裂解的訊號關掉，整合進宿主的溶原比例提高。不同噬菌體各有自己的胜肽，彼此不通用。",
+        "scope": "限枯草桿菌與實驗室培養；胜肽只提高溶原機率，無胜肽也非全部裂解。aimX下游如何作用未解，且只有部分同類噬菌體帶此ORF。「新一代感知前代數量」與推及真核病毒屬作者推論。"
+      },
+      "b_snapshot": {
+        "question": "細菌沒有點名器，怎麼在鄰居夠多時一起改變行為？",
+        "answer_target": "自體誘導物累積與受體調節讓基因反應依群體及擴散條件改變",
+        "scope": "濃度不是純粹細胞數計；B2327–2330 未處理此調節核心"
+      }
+    },
+    {
+      "a": "L51-003",
+      "b": "B2012",
+      "decision": "propose_distinct",
+      "reason": "舊題是一般動物習慣化與刺激特異性；新題回答群體平滑下降背後，單一細胞是一步切換且時間隨機，屬不同層次的答案。",
+      "a_snapshot": {
+        "question": "一盤喇叭蟲被重複敲到越來越不縮，是每一隻都慢慢變遲鈍嗎？",
+        "answer_target": "群體中會收縮的比例確實逐漸下降，但追蹤單顆細胞時，多數是在某次刺激後一步從常收縮切到少收縮，之後很少再切回。每顆細胞切換的時間隨機不同，平均起來才像平滑下降。較弱的敲擊切得較快；刺激更密時切換也更快，停下15分鐘多數又恢復反應。",
+        "scope": "限Stentor coeruleus收縮反應與作者自製敲擊裝置；高力22顆中18顆可判出單一步階，低力組部分細胞全程低反應、看不到步階。單步模型比漸進模型更合資料，但無法完全排除漸進；切換後的收縮機率因細胞而異。恢復反應的計時機制與分子基礎未明；不把單細胞習慣化說成有意識或等同動物神經學習。"
+      },
+      "b_snapshot": {
+        "question": "動物反覆聽見沒有後果的聲音，為什麼可能越來越不理它？",
+        "answer_target": "對無害重複線索的反應下降，且可對刺激具有特異性。",
+        "scope": "來源草原犬鼠腳步聲例子，非聽力消失。"
+      }
+    },
+    {
+      "a": "L51-003",
+      "b": "U8009",
+      "decision": "propose_distinct",
+      "reason": "黏菌以胞外黏液痕跡避開走過的路，是外部記號；新題是細胞內部反應狀態的切換，無外部痕跡。",
+      "a_snapshot": {
+        "question": "一盤喇叭蟲被重複敲到越來越不縮，是每一隻都慢慢變遲鈍嗎？",
+        "answer_target": "群體中會收縮的比例確實逐漸下降，但追蹤單顆細胞時，多數是在某次刺激後一步從常收縮切到少收縮，之後很少再切回。每顆細胞切換的時間隨機不同，平均起來才像平滑下降。較弱的敲擊切得較快；刺激更密時切換也更快，停下15分鐘多數又恢復反應。",
+        "scope": "限Stentor coeruleus收縮反應與作者自製敲擊裝置；高力22顆中18顆可判出單一步階，低力組部分細胞全程低反應、看不到步階。單步模型比漸進模型更合資料，但無法完全排除漸進；切換後的收縮機率因細胞而異。恢復反應的計時機制與分子基礎未明；不把單細胞習慣化說成有意識或等同動物神經學習。"
+      },
+      "b_snapshot": {
+        "question": "沒有腦的黏菌，怎麼減少一直走回剛剛走過的路？",
+        "answer_target": "探索時留下胞外黏液，後續偏向未留痕區域；當背景全被黏液覆蓋，這個已探索/未探索差異變得難用。",
+        "scope": "限Physarum polycephalum所測覓食與U形障礙；黏液不是絕對禁區，無其他路可走時會通過，不宣稱人類式記憶或最短路保證。"
+      }
+    },
+    {
+      "a": "L51-003",
+      "b": "A22002",
+      "decision": "propose_distinct",
+      "reason": "黏菌管徑階層記憶是形態重分配；新題是單細胞對重複機械刺激的反應機率改變。",
+      "a_snapshot": {
+        "question": "一盤喇叭蟲被重複敲到越來越不縮，是每一隻都慢慢變遲鈍嗎？",
+        "answer_target": "群體中會收縮的比例確實逐漸下降，但追蹤單顆細胞時，多數是在某次刺激後一步從常收縮切到少收縮，之後很少再切回。每顆細胞切換的時間隨機不同，平均起來才像平滑下降。較弱的敲擊切得較快；刺激更密時切換也更快，停下15分鐘多數又恢復反應。",
+        "scope": "限Stentor coeruleus收縮反應與作者自製敲擊裝置；高力22顆中18顆可判出單一步階，低力組部分細胞全程低反應、看不到步階。單步模型比漸進模型更合資料，但無法完全排除漸進；切換後的收縮機率因細胞而異。恢復反應的計時機制與分子基礎未明；不把單細胞習慣化說成有意識或等同動物神經學習。"
+      },
+      "b_snapshot": {
+        "question": "食物吃完了，黏菌的管路怎麼還可能留著它原來的位置？",
+        "answer_target": "局部營養刺激後，近處管路擴大、其他部分收縮並形成持續的管徑階層；反應時間較符合沿流動路徑傳遞。作者以隨流運送的未知軟化因子改變管壁、加上體積約束解釋這種重分配；留下的粗管又改變後續傳輸路徑。",
+        "scope": "限Physarum polycephalum本文管網觀察與軟化模型。直接觀察是形態/流動/時間差；軟化因子身分與作用未直接證完，不能稱ATP記憶已確定。粗管是否保留取決於刺激的流動距離，並非所有粗管永遠強化；不等同人類回憶或保證最短路。"
+      }
+    },
+    {
+      "a": "L51-004",
+      "b": "B2012",
+      "decision": "propose_distinct",
+      "reason": "習慣化是對同一無害刺激逐漸不理；新題是在等振幅下區分兩種不同來源，第一次遇到就有差異，不靠重複。",
+      "a_snapshot": {
+        "question": "大雨把樹蛙卵塊晃得比蛇咬還猛，胚胎為什麼反而比較不急著孵出來？",
+        "answer_target": "野外錄到的大雨振動峰值與平均強度常高於蛇咬，單看振幅分不出危險。把蛇與雨的錄音調到相近振幅放回卵塊，對蛇振動的孵化比例隨振幅升得較陡，對雨則一直偏低。胚胎把振幅和時間型態、頻率等其他特徵合起來判斷，緩緩增強的振動也引起較少孵化。",
+        "scope": "限巴拿馬紅眼樹蛙Agalychnis callidryas與作者回放裝置；蛇錄音兩組、雨三組。時間與頻率線索的分辨證據引自作者先前研究，本文只測振幅與包絡。回放孵化低於活蛇攻擊，不推論其他卵生動物。"
+      },
+      "b_snapshot": {
+        "question": "動物反覆聽見沒有後果的聲音，為什麼可能越來越不理它？",
+        "answer_target": "對無害重複線索的反應下降，且可對刺激具有特異性。",
+        "scope": "來源草原犬鼠腳步聲例子，非聽力消失。"
+      }
+    },
+    {
+      "a": "L51-004",
+      "b": "C2005",
+      "decision": "propose_distinct",
+      "reason": "訊號偵測題講單一判定門檻與假警報權衡；新題的答案是用多重振動特徵分辨來源，振幅本身不足以分。",
+      "a_snapshot": {
+        "question": "大雨把樹蛙卵塊晃得比蛇咬還猛，胚胎為什麼反而比較不急著孵出來？",
+        "answer_target": "野外錄到的大雨振動峰值與平均強度常高於蛇咬，單看振幅分不出危險。把蛇與雨的錄音調到相近振幅放回卵塊，對蛇振動的孵化比例隨振幅升得較陡，對雨則一直偏低。胚胎把振幅和時間型態、頻率等其他特徵合起來判斷，緩緩增強的振動也引起較少孵化。",
+        "scope": "限巴拿馬紅眼樹蛙Agalychnis callidryas與作者回放裝置；蛇錄音兩組、雨三組。時間與頻率線索的分辨證據引自作者先前研究，本文只測振幅與包絡。回放孵化低於活蛇攻擊，不推論其他卵生動物。"
+      },
+      "b_snapshot": {
+        "question": "越怕錯過提示，為什麼也可能報出更多假警報？",
+        "answer_target": "分辨敏感度與判定門檻的權衡。",
+        "scope": "教材為入口，進稿補含命中/誤報的原研究。"
+      }
+    },
+    {
+      "a": "L51-004",
+      "b": "Z7013",
+      "decision": "propose_distinct",
+      "reason": "蛾聲干擾蝙蝠是發聲方影響掠食者；新題是被掠食的卵中胚胎評估振動來源，方向與機制皆不同。",
+      "a_snapshot": {
+        "question": "大雨把樹蛙卵塊晃得比蛇咬還猛，胚胎為什麼反而比較不急著孵出來？",
+        "answer_target": "野外錄到的大雨振動峰值與平均強度常高於蛇咬，單看振幅分不出危險。把蛇與雨的錄音調到相近振幅放回卵塊，對蛇振動的孵化比例隨振幅升得較陡，對雨則一直偏低。胚胎把振幅和時間型態、頻率等其他特徵合起來判斷，緩緩增強的振動也引起較少孵化。",
+        "scope": "限巴拿馬紅眼樹蛙Agalychnis callidryas與作者回放裝置；蛇錄音兩組、雨三組。時間與頻率線索的分辨證據引自作者先前研究，本文只測振幅與包絡。回放孵化低於活蛇攻擊，不推論其他卵生動物。"
+      },
+      "b_snapshot": {
+        "question": "蛾發出超音波讓蝙蝠撲空，怎麼知道不是單純把牠嚇到？",
+        "answer_target": "比較發聲／靜音與重複遭遇的捕捉結果，區分會習慣化的驚嚇、學到難吃的警告與持續的回聲定位干擾。",
+        "scope": "Bertholdia trigona 與 Eptesicus fuscus 受測互動；聲音干擾功能有證據，具體錯距／假回聲神經途徑未在本研究定論。"
+      }
+    },
+    {
+      "a": "L51-005",
+      "b": "A5021",
+      "decision": "propose_distinct",
+      "reason": "舊題講成體前庭眼反射如何補償頭動；新題把此反射當發育中內耳功能的指標，回答胚胎能孵卻不躲蛇的時間差。",
+      "a_snapshot": {
+        "question": "四天大的樹蛙胚胎已經能破卵，為什麼蛇來咬時常常還不逃？",
+        "answer_target": "（併入L51-004支持點）同齡胚胎遇缺氧已能孵化，但對振動的孵化要到前庭眼反射出現的發育期才開始；整塊回放中反射低於約21度者無孵化。兩者同步出現，作者據此推測內耳功能是起始限制之一，但未操弄內耳，個體層級關聯也受發育期混淆。",
+        "scope": "發育同步的相關證據，未破壞內耳；少數無可測反射的胚胎在搖卵時仍孵化，側線或觸覺可能參與。預印本與2025年回放研究使用不同裝置與年份，門檻倍數只能作定性連接；限紅眼樹蛙。"
+      },
+      "b_snapshot": {
+        "question": "頭向右轉，眼睛為什麼能立刻往左補回來？",
+        "answer_target": "前庭輸入經腦幹迴路驅動眼外肌，使眼球向頭動相反方向轉動，穩定視網膜影像。",
+        "scope": "VOR基本水平旋轉模型，可在黑暗運作；不採教材50度/秒上限，不當平衡診斷或訓練。"
+      }
+    },
+    {
+      "a": "L51-005",
+      "b": "B2163",
+      "decision": "propose_distinct",
+      "reason": "舊題是直接發育省略蝌蚪期；新題是可提早孵化物種在發育中何時能感覺危險。",
+      "a_snapshot": {
+        "question": "四天大的樹蛙胚胎已經能破卵，為什麼蛇來咬時常常還不逃？",
+        "answer_target": "（併入L51-004支持點）同齡胚胎遇缺氧已能孵化，但對振動的孵化要到前庭眼反射出現的發育期才開始；整塊回放中反射低於約21度者無孵化。兩者同步出現，作者據此推測內耳功能是起始限制之一，但未操弄內耳，個體層級關聯也受發育期混淆。",
+        "scope": "發育同步的相關證據，未破壞內耳；少數無可測反射的胚胎在搖卵時仍孵化，側線或觸覺可能參與。預印本與2025年回放研究使用不同裝置與年份，門檻倍數只能作定性連接；限紅眼樹蛙。"
+      },
+      "b_snapshot": {
+        "question": "有些蛙為什麼孵出來就像小青蛙，看不到自由游動的蝌蚪？",
+        "answer_target": "發育過程在卵內完成而省去自由生活幼體期",
+        "scope": "Eleutherodactylus 直接發育例子"
+      }
+    },
+    {
+      "a": "L51-005",
+      "b": "L51-004",
+      "decision": "propose_distinct",
+      "reason": "同批相鄰：L51-004是成熟胚胎如何分辨振動來源，L51-005是較早胚胎為何還沒有振動反應；不同控制與答案，題案中接成兩章。",
+      "a_snapshot": {
+        "question": "四天大的樹蛙胚胎已經能破卵，為什麼蛇來咬時常常還不逃？",
+        "answer_target": "（併入L51-004支持點）同齡胚胎遇缺氧已能孵化，但對振動的孵化要到前庭眼反射出現的發育期才開始；整塊回放中反射低於約21度者無孵化。兩者同步出現，作者據此推測內耳功能是起始限制之一，但未操弄內耳，個體層級關聯也受發育期混淆。",
+        "scope": "發育同步的相關證據，未破壞內耳；少數無可測反射的胚胎在搖卵時仍孵化，側線或觸覺可能參與。預印本與2025年回放研究使用不同裝置與年份，門檻倍數只能作定性連接；限紅眼樹蛙。"
+      },
+      "b_snapshot": {
+        "question": "大雨把樹蛙卵塊晃得比蛇咬還猛，胚胎為什麼反而比較不急著孵出來？",
+        "answer_target": "野外錄到的大雨振動峰值與平均強度常高於蛇咬，單看振幅分不出危險。把蛇與雨的錄音調到相近振幅放回卵塊，對蛇振動的孵化比例隨振幅升得較陡，對雨則一直偏低。胚胎把振幅和時間型態、頻率等其他特徵合起來判斷，緩緩增強的振動也引起較少孵化。",
+        "scope": "限巴拿馬紅眼樹蛙Agalychnis callidryas與作者回放裝置；蛇錄音兩組、雨三組。時間與頻率線索的分辨證據引自作者先前研究，本文只測振幅與包絡。回放孵化低於活蛇攻擊，不推論其他卵生動物。"
+      }
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "raw_cohort": 3931,
+    "not_added_cohort": 2233,
+    "method": "以中英關鍵詞grep .cache/all-questions.tsv與not-added.tsv（螞蟻/傷口/截肢、噬菌體/溶原/病毒、習慣化/單細胞/纖毛蟲、孵化/胚胎/振動/雨/蛇、前庭/內耳等）；再以正規式掃pool.json raw_records問題、答案與mechanism_key，讀命中近題完整問答scope；pool.json與各批次檔查5個DOI無重複。CLI FTS搜尋前八筆無更近題（其餘詞逾時）。",
+    "topics": [
+      "群體照護/傷口/截肢",
+      "病毒生命週期/群體感應",
+      "習慣化/單細胞/無腦學習",
+      "胚胎孵化/振動線索/天敵判斷",
+      "前庭發育"
+    ],
+    "limitations": "關鍵詞未命中不等於語意全新；共同top-k與非作者裁決待root。"
+  },
+  "source_identity": {
+    "policy": "5個來源紀錄對應5篇研究；URL數、鏡像與補充檔不等於獨立實驗數。",
+    "records": [
+      {
+        "source_id": "L51-S001",
+        "doi": "10.1016/j.cub.2024.06.021",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇原研究；出版社、典藏、PMC作者稿或預印本副本視為同一文，不另計獨立實驗。",
+        "cache_sha256": "2e875efa656c36fb234af2a283b49725560402b97a042ba7e0f6384751193364"
+      },
+      {
+        "source_id": "L51-S002",
+        "doi": "10.1038/nature21049",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇原研究；出版社、典藏、PMC作者稿或預印本副本視為同一文，不另計獨立實驗。",
+        "cache_sha256": "6ad7876e854d88c3ae46564f4d67365261eff69043aad7bf6e963c5daa56223e"
+      },
+      {
+        "source_id": "L51-S003",
+        "doi": "10.1016/j.cub.2022.11.010",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇原研究；出版社、典藏、PMC作者稿或預印本副本視為同一文，不另計獨立實驗。",
+        "cache_sha256": "13ccc650fbd1f0ad4c4842c0ad9dbabc8e44207f49930686874d56e6955816fe"
+      },
+      {
+        "source_id": "L51-S004",
+        "doi": "10.1093/iob/obaf012",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇原研究；出版社、典藏、PMC作者稿或預印本副本視為同一文，不另計獨立實驗。",
+        "cache_sha256": "1c429a5c07f298bd3b6429eaa89beb793ff826a6761c8cc0b936498930dea4d4"
+      },
+      {
+        "source_id": "L51-S005",
+        "doi": "10.1101/634899",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇原研究；出版社、典藏、PMC作者稿或預印本副本視為同一文，不另計獨立實驗。L51-S005另有JEB正式版10.1242/jeb.206052，同一研究，未讀正式版。",
+        "cache_sha256": "8d5f67897dcaeb83d8a61ccd8ed4fd3e78c2505f0436c2da21f18c4a48c2366f"
+      }
+    ]
+  },
+  "visual_reads": [
+    {
+      "source_id": "L51-S001",
+      "file": ".cache/wave51-life-ant-p-03.png",
+      "sha256": "c50ae0b4024172097a769ebbb8663e9ad8e67d3bfc72ee4d1a193a50c826b625",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S001",
+      "file": ".cache/wave51-life-ant-p-04.png",
+      "sha256": "bb036a05f0c7a9d4261989132884ca6bf8beac509e2424ef4e69333f12bad7bc",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S002",
+      "file": ".cache/wave51-life-phage-f2.jpg",
+      "sha256": "ee82e53c6eacd03bf5476ec23a230420526e3884236deee055eeee4c769c05bd",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S002",
+      "file": ".cache/wave51-life-phage-f3.jpg",
+      "sha256": "e3612e2f30834e8128156ba99330bc36b46bd95a3d618674b9941433d84beb71",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S003",
+      "file": ".cache/wave51-life-stentor-fig1.jpg",
+      "sha256": "ced0ad5b420a602c6ac0e84e3a41cf3db258555319669a1d4c90b43d766be23d",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S003",
+      "file": ".cache/wave51-life-stentor-fig2.jpg",
+      "sha256": "f2c5e85ba72ca27aaf2c4dab0a45c143692a6d145ab7c16d8425eaf72f4f5674",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S003",
+      "file": ".cache/wave51-life-stentor-fig3.jpg",
+      "sha256": "3859a5681e6d9d6f8482d9da308403a9b9677ed0061dc600fb05d472cef0febf",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S004",
+      "file": ".cache/wave51-life-frogamp-f1.jpg",
+      "sha256": "312130464b2385cecbdee83c4caa29caffc96fae61aa858ab676b1733098c6e2",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S004",
+      "file": ".cache/wave51-life-frogamp-f2.jpg",
+      "sha256": "3a173a545dbd8380f33592c4997b545aa3f0f9a90613997e0a69391e8183ffe8",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L51-S004",
+      "file": ".cache/wave51-life-frogamp-f3.jpg",
+      "sha256": "0c38283a5524ce9cbd9ca77128102a680fe2b8bee55a717723a94ce43a35cb85",
+      "scope": "實際以Read目讀該原頁或原圖；範圍見來源reading_scope，非全部補充圖或影片"
+    }
+  ],
+  "source_failures": [
+    {
+      "source": "L51-S001",
+      "route": "Cell.com全文頁403",
+      "resolution": "Würzburg OPUS出版社PDF"
+    },
+    {
+      "source": "L51-S002",
+      "route": "Europe PMC單圖直連403",
+      "resolution": "Europe PMC supplementaryFiles壓縮包內原圖"
+    },
+    {
+      "source": "L51-S003",
+      "route": "Europe PMC fullTextXML HTTP500",
+      "resolution": "NCBI E-utilities PMC XML；圖由PMC CDN"
+    },
+    {
+      "source": "L51-S005",
+      "route": "bioRxiv PDF/圖片429限流；JEB出版社PDF 403",
+      "resolution": "bioRxiv JATS全文XML讀全文；原圖未目讀，畫面改用L51-S004已讀圖"
+    },
+    {
+      "source": "L51-NA001",
+      "route": "Balaban 2004 Science無開放版本",
+      "resolution": "不收"
+    },
+    {
+      "source": "L51-NA002",
+      "route": "Dexter 2019 Curr Biol：Cell.com/ScienceDirect 403、Cambridge典藏429",
+      "resolution": "不收，未以摘要充全文"
+    },
+    {
+      "source": "L51-NA003",
+      "route": "bioRxiv 2025.06.29.662171 source XML 429",
+      "resolution": "不收"
+    },
+    {
+      "source": "L51-NA010",
+      "route": "JEB 2016 jeb.139519出版社PDF未取",
+      "resolution": "不收"
+    },
+    {
+      "source": "L51-NA011",
+      "route": "JEB 2020 jeb.236141 403；bioRxiv 429",
+      "resolution": "不收，列L51-005限制"
+    }
+  ],
+  "retrieval_ua": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "timing_checks": [
+    {
+      "proposal_id": "W51L-T01",
+      "body_seconds": 68,
+      "chapter_seconds": [
+        30,
+        38
+      ],
+      "per_core_seconds": {
+        "L51-001": 68
+      },
+      "per_core_caps": {
+        "L51-001": 75
+      },
+      "arithmetic": "PASS_AUTHOR_CHECK_ONLY",
+      "timing": "paper_budget_not_measured"
+    },
+    {
+      "proposal_id": "W51L-T02",
+      "body_seconds": 72,
+      "chapter_seconds": [
+        32,
+        40
+      ],
+      "per_core_seconds": {
+        "L51-002": 72
+      },
+      "per_core_caps": {
+        "L51-002": 80
+      },
+      "arithmetic": "PASS_AUTHOR_CHECK_ONLY",
+      "timing": "paper_budget_not_measured"
+    },
+    {
+      "proposal_id": "W51L-T03",
+      "body_seconds": 57,
+      "chapter_seconds": [
+        19,
+        38
+      ],
+      "per_core_seconds": {
+        "L51-003": 57
+      },
+      "per_core_caps": {
+        "L51-003": 65
+      },
+      "arithmetic": "PASS_AUTHOR_CHECK_ONLY",
+      "timing": "paper_budget_not_measured"
+    },
+    {
+      "proposal_id": "W51L-T04",
+      "body_seconds": 66,
+      "chapter_seconds": [
+        42,
+        24
+      ],
+      "per_core_seconds": {
+        "L51-004": 66
+      },
+      "per_core_caps": {
+        "L51-004": 70
+      },
+      "arithmetic": "PASS_AUTHOR_CHECK_ONLY",
+      "timing": "paper_budget_not_measured"
+    }
+  ],
+  "limits": [
+    "作者自查不是非作者PASS/完整稿核准。",
+    "5核足夠，未為數量把同篇GMPRGA專一性、遺忘或時間點截肢拆題。",
+    "全文只存在忽略版控的.cache；沒有醫療、抗生素使用或動物飼養建議。",
+    "pool.json、themes.json、selection.json、dedup-decisions.json與.md未改。",
+    "L51-005經非作者審閱降為L51-004約10秒支持點，不自立成片。"
+  ],
+  "revision_history": [
+    {
+      "reason": "依reviews/wave51-independent-reviews-life.json（NEEDS_CHANGES）corrections[]與theme_review[]修訂",
+      "reviewer_file": "reviews/wave51-independent-reviews-life.json",
+      "reviewer_file_sha256": "130fe41b1e51b6a72ea7938341898ca4b76d7106f5a48f132beee20e6bf73193",
+      "before_files": [
+        {
+          "file": "batches/wave51-life.json",
+          "sha256": "4a214c6838857de285c0374e26e956274b356a5cac8b8f24f8d08e8c44c1a381"
+        },
+        {
+          "file": "reviews/wave51-life-themes.json",
+          "sha256": "bb86df3ab1375ab1c8185370b55e93b8b3df15cb4807c04d309f83a362782846"
+        },
+        {
+          "file": "reviews/wave51-life-author.json",
+          "sha256": "d100db1ee6e21df798245f3e008597a7a9196ec67df4d8c6d403ad5976af3ac1"
+        }
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave51-life.json",
+          "sha256": "ef58389eddab81894c0aed4351adf1783593409b8b81196d7a69a079c4f35cb3"
+        },
+        {
+          "file": "reviews/wave51-life-themes.json",
+          "sha256": "64abbb51885ce0d695b8a72b1cb096f54f5660471ff54bee13088e6b9bafacc8"
+        }
+      ],
+      "changes": [
+        "L51-001 answer_target補「巢內舔舐使脛節感染蟻存活接近無菌組」；只接菌當下截肢有效改註作者補充資料報告；scope註Fig S4未讀與肌肉截面近九倍（8.7倍）；editorial上限90→75。",
+        "L51-002 editorial上限90→80，文字不變。",
+        "L51-003 scope改：高力18/22單步、低力部分細胞無步階、切換後機率因細胞而異；editorial上限80→65。",
+        "L51-005保留raw紀錄，answer_target改為併入L51-004支持點措辭（相關證據、受發育期混淆）；editorial改[8,12]；合併由root寫dedup-decisions。",
+        "L51-NA011 existing_ids改[L51-004, L51-005]。",
+        "W51L-T01 70→68（30/38）：拍2補舔舐有效，數字改字卡；拍3標補充資料；拍4「十倍」改「近九倍」，18→16。",
+        "W51L-T02 72不變。",
+        "W51L-T03 60→57（19/38）：拍1 10→7與曲線疊播；刪「所以不像單純累壞」推論；拍3避免說成都很少縮。",
+        "W51L-T04 84→66，改L51-004單核兩章（42/24）：拍3 15→11；第二章改Fig2B年齡門檻14秒＋內耳相關支持點10秒。"
+      ],
+      "removed_seconds": 23,
+      "added_seconds": 0
+    }
+  ],
+  "removed_seconds": 23
+}

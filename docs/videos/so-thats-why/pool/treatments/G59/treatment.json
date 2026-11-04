@@ -1,0 +1,173 @@
+{
+  "theme_id": "G59",
+  "revision": "wave6-treatment-1",
+  "author": "root",
+  "status": "REVIEWED_TREATMENT_WITH_ARITHMETIC_DEMO_NOT_SCRIPT_APPROVED",
+  "production_ready": false,
+  "title": "無損壓縮，為什麼敢先猜錯聲音？",
+  "promise": "看懂原值如何由預測與差值回來，以及左右聲道換成中間/差值時如何留住奇偶線索。",
+  "audience": "聽過無損音樂但不懂編碼的人；只需要整數加減。",
+  "core_ids": [
+    "M5004",
+    "M5009"
+  ],
+  "variant_budget_ids": [
+    "M5008"
+  ],
+  "previous_core_ids": [
+    "M5004",
+    "M5009",
+    "M5010"
+  ],
+  "removed_from_this_film": [
+    {
+      "id": "M5010",
+      "reason": "分塊成本轉向如何壓得更省，與本片追蹤如何精確還原不同；目前示範沒有碼長實測，刪60秒而不靠波形圖填滿。素材仍入選。"
+    }
+  ],
+  "duration": {
+    "previous_body_seconds": 200,
+    "body_budget_seconds": 140,
+    "working_range_seconds": [
+      110,
+      160
+    ],
+    "basis": "4個35秒具體推進節拍，包含開場與收束、不含固定品牌片頭片尾；不是口播實測。兩核心各70秒，M5004只取M5008音訊變體預算。",
+    "read_aloud": "NOT_PERFORMED",
+    "blind_audience_test": "NOT_PERFORMED",
+    "shorten_if": "第二節拍若正常/改錯對照已清楚，刪跳動案例15秒成125秒；若整數奇偶需超預算才講得清，停止進製作重寫，不插格式沿革或更多參數。"
+  },
+  "beats": [
+    {
+      "id": "b1",
+      "seconds": 35,
+      "core_id": "M5004",
+      "variant_id": "M5008",
+      "question": "每次都猜上一點，猜錯了還能回來嗎？",
+      "visual": "先顯示六點100/101/103/102/104/105；直接保存第一點，後五點只顯示猜值及差值。按還原以前讓觀眾算第二點。",
+      "new_information": "起點與同一預測規則都要知道；每一個不準的部分以精確差值保存。",
+      "transition": "若差值才是關鍵，改掉一格會怎樣？",
+      "claim_ids": [
+        "c1",
+        "c2",
+        "e1"
+      ],
+      "sample_line": "先存一百。下一點，我們就猜還是一百，但真正的數字是一百零一，所以多記一個加一。你看，猜錯沒有讓資料消失；原值和猜值之間的差，也一起留下了。"
+    },
+    {
+      "id": "b2",
+      "seconds": 35,
+      "core_id": "M5004",
+      "variant_id": "M5008",
+      "question": "真正不能丟掉的是哪一格？",
+      "visual": "先完成正常還原，再把第一個差值1改0；還原變100/100/102/101/103/104。換跳動案例一次，顯示較大差值也能復原。",
+      "new_information": "解碼用已還原前值繼續算；差值改壞會傳到後續。能還原與能省位元是不同檢查。",
+      "transition": "時間上的前後點可以改寫，那左右兩邊也能換寫法嗎？",
+      "claim_ids": [
+        "c1",
+        "c3",
+        "e1"
+      ],
+      "sample_line": "現在把這個加一改成零。第二點少了一，後面又拿這個錯誤值繼續猜，整串就跟著偏了。再換一段跳得很大的數字，差值雖然變大，還是能精確加回來；至於省不省空間，要留給後面的編碼算帳。"
+    },
+    {
+      "id": "b3",
+      "seconds": 35,
+      "core_id": "M5009",
+      "question": "左右不直接存左右，還剩下什麼線索？",
+      "visual": "從左6右2開始，顯示中間4、差4；先把中間乘2得到和8，再加減差分回6與2。左右兩條線仍分開，不畫成單聲道再猜成立體聲。",
+      "new_information": "保留平均資訊和左右差即可逆向解出兩邊；換表示不等於把左右混掉。",
+      "transition": "如果左右加起來是奇數，除以二剩下的半個怎麼辦？",
+      "claim_ids": [
+        "c4",
+        "e2"
+      ],
+      "sample_line": "左邊六，右邊二。我們換成中間值四，還有左右相差四。把中間值乘回二，就知道兩邊總和是八；再配合差值，六和二各自都回得來。只是接下來這一對，會多出半個。"
+    },
+    {
+      "id": "b4",
+      "seconds": 35,
+      "core_id": "M5009",
+      "question": "被取整省掉的一位，真的不見了嗎？",
+      "visual": "換左6右3，中間floor(9/2)=4、差3；先點忽略奇偶得5/2，再恢復奇偶得6/3。最後只回扣兩種保留線索，不加格式清單。",
+      "new_information": "和與差的奇偶相同，奇數差提示和要補1；負數和整數邊界由驗證紀錄支持，不在片中再講一遍。",
+      "transition": "收束，不接分塊最佳化支線。",
+      "claim_ids": [
+        "c4",
+        "e2"
+      ],
+      "sample_line": "六加三是九，除以二再向下取整，只留下四。直接乘回二卻只有八。線索在旁邊：左右差是奇數，左右和也一定是奇數，所以要補回一。這裡能完整還原，靠的是線索都有留下，而不是每次都剛好猜中。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "statement": "一階固定預測使用前一樣本，解碼將同規則預測值加回殘差。",
+      "source_url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+      "locator": "§9.2.5 Table20及解碼段",
+      "read_via": "2026-11-01 web.run官方正文定點讀",
+      "limit": "小樣只做數值步驟，不含位元流、Rice、CRC；不宣稱實際編碼器必選一階。"
+    },
+    {
+      "id": "c2",
+      "statement": "固定預測要先保存足夠起始樣本；一階需要第一點。",
+      "source_url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+      "locator": "§9.2.5 warm-up samples",
+      "read_via": "2026-11-01 web.run官方正文定點讀",
+      "limit": "展示一階，沒有拿省略起點的差值列冒稱可解碼。"
+    },
+    {
+      "id": "c3",
+      "statement": "預測差值仍需後續無損編碼；不適合的模型或資料不保證更省。",
+      "source_url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+      "locator": "§4.3–4.4，§9.2.7",
+      "read_via": "2026-11-01 web.run官方正文定點讀",
+      "limit": "本示意未量檔案大小，不拿數字個數、位數感覺或上一批單訊號大小當普遍壓縮率。"
+    },
+    {
+      "id": "c4",
+      "statement": "mid/side由和的右移及左右差形成，利用差值奇偶恢復和的最低位，再分回左右。",
+      "source_url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+      "locator": "§4.2 mid-side構造/逆變換及額外位元",
+      "read_via": "2026-11-01 web.run官方正文定點讀",
+      "limit": "整數範圍限示意及測試；差值會需要額外位元，平均不是唯一保存資訊。"
+    },
+    {
+      "id": "e1",
+      "statement": "兩組六點數字正常還原一致；把smooth第一個殘差1改0後後五點各少1。",
+      "evidence": "../../reviews/wave6-g59-demo.json",
+      "limit": "原創數值演算與UI，未播放音訊；不是檔案損壞/錯誤檢查碼的完整FLAC解碼行為。"
+    },
+    {
+      "id": "e2",
+      "statement": "示意的mid/side算術已對全部65536組8位元左右值、49組16位元邊界與4個指定向量檢查。",
+      "evidence": "../../reviews/wave6-g59-demo.json",
+      "limit": "算術範圍檢查，不是完整編碼器一致性、所有32位元輸入或音質測試。"
+    }
+  ],
+  "retention_review": {
+    "max_seconds_without_new_beat": 35,
+    "risk": "數字表若一直逐格念會像上課；每步只指一個改變，保留觀眾先猜再對照的空間。負值及邊界只在查核資料，不另外加章。",
+    "cut_rule": "一個演算只展示一次成功、一次反例；看懂便剪，不把測試次數或SHA念進影片。"
+  },
+  "adoption": {
+    "previous_materials": 3,
+    "adopted_materials": 2,
+    "moved_to_other_films": 1,
+    "new_pool_candidates": 0,
+    "full_script": false,
+    "paid_media_calls": 0,
+    "audience_acceptance": "NOT_TESTED",
+    "model_billing": "NO_VERIFIED_BILLING_RECEIPT"
+  },
+  "demo": {
+    "files": [
+      "demo.html",
+      "demo.js",
+      "verify-demo.mjs"
+    ],
+    "scope": "原創數值示意；非成片插畫，非FLAC檔案編碼器，不連網或播放音訊。",
+    "receipt": "../../reviews/wave6-g59-demo.json"
+  },
+  "handoff": "公式、起點、奇偶及140秒取捨已經非作者覆核，見reviews/wave6-g59-independent-review.json；下一步寫完整旁白及試讀。取整的半格/最低位不可說成一半資料丟失。treatment與樣例句不是完整稿、製作或發布核准。"
+}

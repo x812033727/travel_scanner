@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "root",
+  "reviewer": "pool_physics",
+  "status": "PASS_THEME_EDITORIAL_AND_SPECIFIED_SOURCE_READBACK_ONLY",
+  "production_ready": false,
+  "role_and_scope": "只審root本輪寫的新題案。pool_physics是P45-006原素材作者，不能把本收據當該素材的新非作者核准；其原候選查核沿用wave45 root收據。S45-004由science_sources撰寫。本輪沒有新增核心，也不修改既有497題案。",
+  "reviewed_candidate_ids": [
+    "P45-006",
+    "S45-004"
+  ],
+  "new_material_count": 0,
+  "reviewed_files": [
+    {
+      "file": "reviews/wave46-carry-themes.json",
+      "sha256": "00ad85930dc93cf07ffca8ec7705a23f73279a6cdc961b39ffa07c297b775f3a"
+    },
+    {
+      "file": "reviews/wave46-carry-author.json",
+      "sha256": "8baa31b40c4bdc789f275dc473e6b9d6254adc71bfa4a84821e3b7eec207a049"
+    },
+    {
+      "file": "batches/wave45-physics.json",
+      "sha256": "5ee6dfaeac4a2a1405117cf1cb39e0f4c41ddea5b25db3548c75db3d0244daa2"
+    },
+    {
+      "file": "batches/wave45-earth.json",
+      "sha256": "a749752d336d4dd52b9de7e5581cb8611501d561521ca279e65ae424e7c02dc4"
+    }
+  ],
+  "original_core_reviews": [
+    {
+      "file": "reviews/wave45-root-reviews-physics.json",
+      "sha256": "171fd9ea519efcb5a1593b075787bdecc33df0f71709bdbe75f1c6bf5ee80333"
+    },
+    {
+      "file": "reviews/wave45-root-reviews-earth.json",
+      "sha256": "10ed37c6fe90325adcc5cbbcfb496745d9072da021977b1de91fca8351b948a8"
+    }
+  ],
+  "accepted_theme_proposal_ids": [
+    "W46C-T01",
+    "W46C-T02"
+  ],
+  "deferred_theme_proposals": [],
+  "theme_review": [
+    {
+      "id": "W46C-T01",
+      "decision": "accept_new_theme_only",
+      "body_seconds": 69,
+      "chapter_seconds": [
+        24,
+        22,
+        23
+      ],
+      "core_seconds": {
+        "P45-006": 69
+      },
+      "core_caps": {
+        "P45-006": 69
+      },
+      "reason": "同頭形/落速、相近質量的剛接與彈性樣件，先找後段感測器再看延時峰值，最後用兩時程回答，不再混前端量力及不同頭形。",
+      "evidence_boundary": "沿用已獨立覆核核心；本輪只為root新題案作非作者覆核。物理作者pool_physics不能重簽為原素材的新獨立審查。",
+      "stop_condition_review": "若不能固定圖軸與速度配對，先重畫，不加不同頭形來撐長度。",
+      "budget_checks": "chapter sums, exact minutes, <=45 second beats and cumulative single-core cap PASS"
+    },
+    {
+      "id": "W46C-T02",
+      "decision": "accept_new_theme_only",
+      "body_seconds": 57,
+      "chapter_seconds": [
+        24,
+        25,
+        8
+      ],
+      "core_seconds": {
+        "S45-004": 57
+      },
+      "core_caps": {
+        "S45-004": 70
+      },
+      "reason": "固定同一海灣俯視，較迎浪端與遮蔽端可同退但幅度不同，先辨輪廓再談統計支持的路徑；結尾只看並排示意。",
+      "evidence_boundary": "原研究多年剖面和波浪統計，非追粒或逐浪因果實驗；讀到典藏序言及結論指定段，沒有宣稱逐字全文讀完。",
+      "stop_condition_review": "若觀眾無法從示意看出兩端可同退而轉角仍變，先改圖，不把段落延長。",
+      "budget_checks": "chapter sums, exact minutes, <=45 second beats and cumulative single-core cap PASS"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": []
+  },
+  "source_review": [
+    {
+      "source_id": "P45-S006",
+      "doi": "10.1017/jfm.2023.820",
+      "version": "arXiv:2304.08672v3, 2023-11-27，與JFM刊文同研究",
+      "read_via": "核SHA的wave45作者稿PDF/text獨立指定段讀回，非本輪新HTTP",
+      "raw_cache": {
+        "file": ".cache/wave45-physics-spring.pdf",
+        "sha256": "cceb37528fab68e8d8b9c9d95589c793a100e43787a1f5b0b741fbfa945331bc"
+      },
+      "text_cache": {
+        "file": ".cache/wave45-physics-spring.txt",
+        "sha256": "209bb0b37abd5c6975104d49b28e391db593cd4745fcbafa46a81a111e5f851d"
+      },
+      "read_scope": "pp3、6–8及11–14：圖1裝置/後段加速度計；圖2相同4m/s落速的近質量剛接與三剛度樣件、每組五試次平均；圖3模型與後段觀測及兩時程條件。",
+      "findings": "高剛度某些條件後段峰值較遲且較高；低剛度/較高速度可減峰，不能泛化任何彈簧都加劇。頭部水載荷、質心與後段加速度是不同量，晚期空腔塌陷不在本片解釋範圍。",
+      "image_read": "本輪目讀舊拼圖右上PDF p6 Fig2，其餘拼圖面板未納入本案。",
+      "unread": "未重驗原數據、程式、影片與全部補充材料。"
+    },
+    {
+      "source_id": "S45-S004",
+      "doi": "10.1029/2011JF001989",
+      "version": "JGR Earth Surface 116 F04033 (2011)，典藏頁為同研究載體",
+      "read_via": "核SHA典藏原刊p15單頁掃描及作者保留第一頁/結論web文字節錄，非本輪新HTTP",
+      "raw_cache": {
+        "file": ".cache/wave45-earth-rot.pdf",
+        "sha256": "e39d1dafef11639564451a897a86e3230bc732cb819702c7899771b071b11f73"
+      },
+      "text_cache": {
+        "file": ".cache/wave45-earth-rot-primary-lines.txt",
+        "sha256": "359d41b1b5ad1c6fb97776fbacbade079dfb70f4b889e3cb47da146b4da9bfdd"
+      },
+      "read_scope": "Introduction [2]–[4]的常見跨岸/沿岸交換與五測線背景；p15 [68]末段–[69]跨岸兩端差異、表觀轉動及次要沿岸成分。本輪另渲染目讀p15。",
+      "findings": "研究結論將主要變化連至兩端不同跨岸交換幅度；仍有真正沿岸傳輸。片中同退幾何是原創示意，不是某場實錄或追粒量測。",
+      "unread": "沒有讀完16頁全文或查原始統計資料；p15掃描不冒稱全刊PDF。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "file": ".cache/wave45-physics-read4.jpg",
+      "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+      "scope": "右上PDF p6 Fig2後段加速度圖，黑色剛接/不同剛度曲線及照片對時。"
+    },
+    {
+      "file": ".cache/wave46-physics-carry-rot-page.png",
+      "sha256": "4a27fef27b3d303f839e0708259dee62532ee1d8b2c8bfb81a9018feacbe9aaa",
+      "scope": "原刊p15正文目讀，不是海灣形變實測圖。"
+    }
+  ],
+  "timing_probe": {
+    "theme_id": "W46C-T01",
+    "sample_text": {
+      "file": ".cache/w46-sample-carry.json",
+      "sha256": "95ff0a3d489e240a917890bdb63e7c6e67caed8c2007bc62cfd9e6e098bb8364"
+    },
+    "root_read_record": {
+      "file": ".cache/wave46-carry-read.json",
+      "sha256": "75ce652808f9fe89ef2c2bf4c0fc451f0040e954b56e120f6f1cf51a37015332"
+    },
+    "wav_checks": [
+      {
+        "slot": 0,
+        "wav": {
+          "file": ".cache/wave46-carry-read-0.wav",
+          "sha256": "3ea4a59328aeb6877fad7be7b371694c0f00fd3983de6f4e06f116ffc89ac499"
+        },
+        "header_seconds": 21.624172335600907
+      },
+      {
+        "slot": 1,
+        "wav": {
+          "file": ".cache/wave46-carry-read-1.wav",
+          "sha256": "bd3e978246ea5f038a46d1ddf72773e03e3a53cb340d7006e7efd11aa930132e"
+        },
+        "header_seconds": 18.57655328798186
+      },
+      {
+        "slot": 2,
+        "wav": {
+          "file": ".cache/wave46-carry-read-2.wav",
+          "sha256": "68b58751b3afc1588d947a220f90d7f4fcc40a175795317f43d00d14c4b41c2d"
+        },
+        "header_seconds": 18.967120181405896
+      },
+      {
+        "slot": 3,
+        "wav": {
+          "file": ".cache/wave46-carry-read-3.wav",
+          "sha256": "f291b300eaf19306a0a234f49f17d3fe815348bc1872f7e723013a3434891dab"
+        },
+        "header_seconds": 59.168843537414965
+      }
+    ],
+    "narration_review": "三段逐句符合後段量測/前後段時序與條件限定；三片撓曲彈簧的硬體差異留題案圖註。",
+    "method_limit": "核SHA、逐字稿、WAV frames/rate；本reviewer未播放音檔、未重新合成。是根作者台灣華語SAPI樣讀，不是真人試讀。",
+    "remaining_visual_seconds": 9.831156462585035,
+    "other_theme_timing": "W46C-T02只有紙上57秒預算，未試讀。"
+  },
+  "revision_readback": [
+    {
+      "id": "CARRY46-01",
+      "result": "PASS",
+      "change": "T01章22/23/24重分24/22/23，總69不變；首段樣讀21.624秒有讀硬體圖空間。"
+    },
+    {
+      "id": "CARRY46-02",
+      "result": "PASS",
+      "change": "T02末17→8秒，66→57；僅並排圖，不重念前章結論。",
+      "removed_seconds": 9
+    }
+  ],
+  "remaining_blockers": [],
+  "limits": [
+    "不是原素材新增或重新計數審查。",
+    "兩個原案未被選入，本輪僅核root縮編版本；沒有自行變更中央題案。",
+    "未執行撞擊或沙粒追蹤試驗、未確認成片或媒體權利；production_ready=false。"
+  ]
+}

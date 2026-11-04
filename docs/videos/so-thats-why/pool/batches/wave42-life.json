@@ -1,0 +1,589 @@
+{
+  "batch_id": "wave42-life-20261103",
+  "created_on": "2026-11-03",
+  "scope": "動物如何估計回程距離、用時間設定方向、從位移與感覺操控區分地點資訊和羅盤。",
+  "sources": [
+    {
+      "id": "L42-S001",
+      "title": "The Ant Odometer: Stepping on Stilts and Stumps",
+      "doi": "10.1126/science.1126912",
+      "publisher": "Wittlinger、Wehner、Wolf，Science",
+      "version": "2006 原刊PDF，大學教學典藏複本。",
+      "url": "https://doi.org/10.1126/science.1126912",
+      "canonical_url": "https://doi.org/10.1126/science.1126912",
+      "retrieval_url": "https://www.staff.uni-mainz.de/cduch/Softskills_SS2013/3-4_Ants%20on%20Stilts%20Pedometers/12_ants%20on%20stilts_paper.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位原研究後用指定UA取得有效PDF，以PyMuPDF讀所列正文與圖說。",
+      "reading_scope": "PDF pp.2–4；Fig3A/B餵食處才改步幅與後來雙程腿長一致，正文步幅、速度與搜尋區定義。",
+      "locator": "PDF pp.2–4；Fig3A/B餵食處才改步幅與後來雙程腿長一致，正文步幅、速度與搜尋區定義。",
+      "summary": "一批沙漠蟻按平常步幅走到食物，再以較長或較短的步幅在平行通道回走。長步組找巢的位置偏遠，短步組偏近。等牠們用改過的腿走完整個來回，搜尋中心又接近原距離，符合用行走步幅資訊累積里程的解釋。",
+      "limitations": "限Cataglyphis fortis平直通道；圖3用每隻最初六個折返位置的中位值當搜尋中心。未證明蟻腦用整數數步，亦不排除其他情境用視覺估距。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-stilt.pdf",
+        "sha256": "4e108140c006d8a507aca0d98f16dbb40dcfe0f39d5a9bf92a51c36c88e8ba58",
+        "text_file": ".cache/wave42-life-stilt.txt",
+        "text_sha256": "5bc92343045e37d27b6031936eece1b54666dd217a348a1b04c16b992af28079"
+      }
+    },
+    {
+      "id": "L42-S002",
+      "title": "Distance estimation in the third dimension in desert ants",
+      "doi": "10.1007/s00359-002-0301-2",
+      "publisher": "Wohlgemuth、Ronacher、Wehner，Journal of Comparative Physiology A",
+      "version": "2002 原刊PDF，蘇黎世大學團隊典藏的web定點。",
+      "url": "https://doi.org/10.1007/s00359-002-0301-2",
+      "canonical_url": "https://doi.org/10.1007/s00359-002-0301-2",
+      "retrieval_url": "https://www.imls.uzh.ch/static/CMS_publications/wehner/literatur/pdf02/wehner20029.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "大學典藏PDF直取未取得，改讀web.open/find返回的原研究指定正文及圖說，保留所讀列號。",
+      "reading_scope": "PDF web L174–199與Fig2、L238–275非對稱坡和Fig3、L330–338及L419–428、L465–480討論水平投影與限制。",
+      "locator": "PDF web L174–199與Fig2、L238–275非對稱坡和Fig3、L330–338及L419–428、L465–480討論水平投影與限制。",
+      "summary": "把在起伏通道學會的距離放到平坦通道測，再做相反配置。螞蟻開始折返搜尋的位置，換算成沿地面的水平投影，比直接把所有上下坡的路長加起來更吻合。坡面不對稱的對照也不支持只把上坡計入。",
+      "limitations": "限受測沙漠蟻與裝置的水平/起伏通道；未由此找出量坡度的特定感受器，也不是保存精確三維地形圖。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-hills-web.txt",
+        "sha256": "392e185af6801334e0179bd3f3f53ca867966854359209a653364874a2fc75e2",
+        "text_file": ".cache/wave42-life-hills-web.txt",
+        "text_sha256": "392e185af6801334e0179bd3f3f53ca867966854359209a653364874a2fc75e2"
+      }
+    },
+    {
+      "id": "L42-S003",
+      "title": "Discordant timing between antennae disrupts sun compass orientation in migratory monarch butterflies",
+      "doi": "10.1038/ncomms1965",
+      "publisher": "Guerra等，Nature Communications",
+      "version": "2012 期刊PDF。",
+      "url": "https://doi.org/10.1038/ncomms1965",
+      "canonical_url": "https://doi.org/10.1038/ncomms1965",
+      "retrieval_url": "https://www.nature.com/articles/ncomms1965.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位原研究後用指定UA取得有效PDF，以PyMuPDF讀所列正文與圖說。",
+      "reading_scope": "PDF pp.2–5；Fig1單觸角、Fig2a–c單側遮光與移除遮光側，Fig3時鐘基因在明暗條件下的族群時序。",
+      "locator": "PDF pp.2–5；Fig1單觸角、Fig2a–c單側遮光與移除遮光側，Fig3時鐘基因在明暗條件下的族群時序。",
+      "summary": "單側觸角能正常接收明暗時，單觸角遷徙蝶仍可表現時間補償定向。兩根都在、一根遮光一根透光時，各隻仍能朝某方向穩定飛，群體飛向卻分散。再移除遮光那側，受測組重新集中往西南，支持兩側時間訊號會一起影響日照定向。",
+      "limitations": "限北美秋遷帝王斑蝶模擬器。遮光造成時鐘不同步，不是實驗已固定一個確切時差。飛向分散指組內不同個體，不代表每一隻曲折亂飛。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-antenna.pdf",
+        "sha256": "dc9637c8a45e41b3f49d733e7f0b3eae65040fb49be7ce8aa5d7c7ed4253f054",
+        "text_file": ".cache/wave42-life-antenna.txt",
+        "text_sha256": "67239f73b3e7ec6aa8c0dfbd4cf142f25622b8ca28b1f278bb7f4a51d1e7c086"
+      }
+    },
+    {
+      "id": "L42-S004",
+      "title": "Coldness Triggers Northward Flight in Remigrant Monarch Butterflies",
+      "doi": "10.1016/j.cub.2013.01.052",
+      "publisher": "Guerra與Reppert，Current Biology",
+      "version": "2013 原刊版，麻州大學作者研究室PDF。",
+      "url": "https://doi.org/10.1016/j.cub.2013.01.052",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2013.01.052",
+      "retrieval_url": "https://www.umassmed.edu/globalassets/reppert-lab/publications/currentbiologycold.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位原研究後用指定UA取得有效PDF，以PyMuPDF讀所列正文與圖說。",
+      "reading_scope": "PDF pp.2–4，Fig3B/C冷處理的增日照及固定日照組，Fig4溫暖條件不轉北及討論。",
+      "locator": "PDF pp.2–4，Fig3B/C冷處理的增日照及固定日照組，Fig4溫暖條件不轉北及討論。",
+      "summary": "把秋遷帝王斑蝶置於模擬越冬地的低溫週期，之後飛行測試的群體方向可轉向北。低溫但日長保持固定的組也會轉北；一直在較暖條件下養到相當晚，群體仍朝南。研究支持越冬冷歷程可改變偏好方向。",
+      "limitations": "限實驗所試溫度、光照與觀測時段。測群體定向，未追到每隻蝶完成整趟回遷，也未知最少需幾個冷日及神經切換位置。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-cold.pdf",
+        "sha256": "c42d298cb52178658aca9df3b3c8b8a6fe7d4c105478b4de2f8b4b585d37c820",
+        "text_file": ".cache/wave42-life-cold.txt",
+        "text_sha256": "b3b5a3e8489ae98b165e67d390d073a8d4f29234e2e708631be6690e9b66629a"
+      }
+    },
+    {
+      "id": "L42-S005",
+      "title": "Evidence for a navigational map stretching across the continental U.S. in a migratory songbird",
+      "doi": "10.1073/pnas.0704734104",
+      "publisher": "Thorup等，PNAS",
+      "version": "2007 原刊版，加州大學戴維斯分校典藏。",
+      "url": "https://doi.org/10.1073/pnas.0704734104",
+      "canonical_url": "https://doi.org/10.1073/pnas.0704734104",
+      "retrieval_url": "https://npb.ucdavis.edu/sites/g/files/dgvnsk581/files/files/person/thorup%20et%20al%20PNAS.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位原研究後用指定UA取得有效PDF，以PyMuPDF讀所列正文與圖說。",
+      "reading_scope": "PDF pp.2–4，Results、Fig1–3，位移後成幼鳥早期軌跡、捕獲地方向與越冬地方向比較。",
+      "locator": "PDF pp.2–4，Results、Fig1–3，位移後成幼鳥早期軌跡、捕獲地方向與越冬地方向比較。",
+      "summary": "從美國西部移到東岸的白冠帶鵐，無線電追蹤顯示成鳥取向偏西南偏西，與從釋放區轉向平常越冬區相符；幼鳥仍主要朝通常的南向遷徙方向。若兩組都只照同一個固定方位飛，就不會出現這種分化。",
+      "limitations": "限普林斯頓附近釋放後早期追蹤的族群；兩年齡組放飛點相距約七公里。並非一路追到冬棲地，更沒有查明牠靠哪一種感官定位。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-sparrow.pdf",
+        "sha256": "f4048b8dd747aebf8edbd9019f009478b32408ff549d54926f899646cf56c494",
+        "text_file": ".cache/wave42-life-sparrow.txt",
+        "text_sha256": "f6ce86dcf1ac5c21165eb7ebac84d107be9d67a970cd8a579a244ca42444961d"
+      }
+    },
+    {
+      "id": "L42-S006",
+      "title": "Magnetic map navigation in a migratory songbird requires trigeminal input",
+      "doi": "10.1038/s41598-018-30477-8",
+      "publisher": "Pakhomov等，Scientific Reports",
+      "version": "2018 期刊PDF。",
+      "url": "https://doi.org/10.1038/s41598-018-30477-8",
+      "canonical_url": "https://doi.org/10.1038/s41598-018-30477-8",
+      "retrieval_url": "https://www.nature.com/articles/s41598-018-30477-8.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位原研究後用指定UA取得有效PDF，以PyMuPDF讀所列正文與圖說。",
+      "reading_scope": "PDF pp.2–4，Fig1、Results/Discussion及手術/線圈方法。環境保持原地，兩組在磁位移前後的取向。",
+      "locator": "PDF pp.2–4，Fig1、Results/Discussion及手術/線圈方法。環境保持原地，兩組在磁位移前後的取向。",
+      "summary": "春季歐亞蘆葦鶯原先偏向東北。在同一地點用線圈改成東方地點的磁場，其他地方線索未搬動。保有三叉神經眼支輸入的假手術組，平均方向轉向西北；眼支輸入已中斷的一組則仍維持原先方向。這條輸入參與了依磁位置線索修正方向。",
+      "limitations": "限遷徙取向漏斗和這組地磁參數。仍有定向不等於已隔離測出純磁羅盤，也不指認某處解剖構造就是磁受器。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-nerve.pdf",
+        "sha256": "c3a0e2d478b7a7cf1fdb9009a3ab309f86e0a448cab9b743bf7066b8328230b1",
+        "text_file": ".cache/wave42-life-nerve.txt",
+        "text_sha256": "edad9d49c2764a8fb8ab134a9bdd8d7a32a99f227fcb9a9e892ca3b453589b45"
+      }
+    },
+    {
+      "id": "L42-S007",
+      "title": "Learned magnetic map cues and two mechanisms of magnetoreception in turtles",
+      "doi": "10.1038/s41586-024-08554-y",
+      "publisher": "Goforth等，Nature",
+      "version": "2025 Nature研究，由美國能源部OSTI保存的有行號作者稿，未稱刊版頁碼。",
+      "url": "https://doi.org/10.1038/s41586-024-08554-y",
+      "canonical_url": "https://doi.org/10.1038/s41586-024-08554-y",
+      "retrieval_url": "https://www.osti.gov/pages/servlets/purl/3004077",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位原研究後用指定UA取得有效PDF，以PyMuPDF讀所列正文與圖說。期刊HTML先取到的是預覽；有效正文來自OSTI同一研究作者稿。",
+      "reading_scope": "作者稿PDF pp.4–7辨認獎勵磁場，pp.11–13行231–279：緬因獎勵磁場中有無RF、另一批初孵龜在維德角磁場下的游向，Fig5。",
+      "locator": "作者稿PDF pp.4–7辨認獎勵磁場，pp.11–13行231–279：緬因獎勵磁場中有無RF、另一批初孵龜在維德角磁場下的游向，Fig5。",
+      "summary": "研究把特定地點的磁場與餵食配對，之後無食物也能用期待食物時的動作辨認反應。開啟射頻擾動，在受獎勵的磁場裡這個反應沒有可辨差異。另一場用初孵龜測需要辨認磁位置並定向的游泳，無擾動時有共同方向，有擾動時方向分散。兩項結果支持磁位置辨認與磁羅盤至少部分依賴不同機制。",
+      "limitations": "限幼赤蠵龜與所試頻帶。餵食辨認與游向是不同程序、不同龜群。後者同時需要地圖與羅盤，沒有直接分離出特定受器或測到野外餵食地返航。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-turtle-full.pdf",
+        "sha256": "e2b5d6c9eab80c6f40d4cfb867fa29cb61351d16977c4abf73e8e8b2e3b6fd28",
+        "text_file": ".cache/wave42-life-turtle-full.txt",
+        "text_sha256": "c168d74171c6d28368043fe0b90fb3cbbd8e1c157f25bcb81f0a7f768790f4a6"
+      }
+    },
+    {
+      "id": "L42-S008",
+      "title": "Evidence for Geomagnetic Imprinting and Magnetic Navigation in the Natal Homing of Sea Turtles",
+      "doi": "10.1016/j.cub.2014.12.035",
+      "publisher": "Brothers與Lohmann，Current Biology",
+      "version": "2015 原刊作者上傳文本，ResearchGate web定點閱讀。",
+      "url": "https://doi.org/10.1016/j.cub.2014.12.035",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2014.12.035",
+      "retrieval_url": "https://www.researchgate.net/publication/271534369_Evidence_for_Geomagnetic_Imprinting_and_Magnetic_Navigation_in_the_Natal_Homing_of_Sea_Turtles",
+      "accessed_on": "2026-11-03",
+      "read_via": "大學典藏PDF直取未取得，改讀web.open/find返回的原研究指定正文及圖說，保留所讀列號。",
+      "reading_scope": "原刊web L282–296、L350–377、Fig1–2圖說L493–539及L883–926；1993–2011年12郡巢密度與地磁模型。",
+      "locator": "原刊web L282–296、L350–377、Fig1–2圖說L493–539及L883–926；1993–2011年12郡巢密度與地磁模型。",
+      "summary": "如果雌龜回到記憶中磁特徵相近的海岸，兩條相鄰磁傾角等值線靠攏，原先散在兩者之間的目標區就會縮短。佛州東岸十九年逐郡資料中，等值線趨向聚攏的區段和時段，巢密度變化也傾向較高；分散時則相反。這是可檢查的族群分布預測。",
+      "limitations": "佛州十二個郡1993–2011，對照磁場模型與築巢記錄，沒有逐隻追蹤幼龜到成年。正反對照使用磁傾角等值線；原文所分析的磁強線沒有實際收斂的案例。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-nest-web.txt",
+        "sha256": "91666eb6cefcaf625e558398df8d077dd84fedcf65a76c01077e6e56ce4badc5",
+        "text_file": ".cache/wave42-life-nest-web.txt",
+        "text_sha256": "91666eb6cefcaf625e558398df8d077dd84fedcf65a76c01077e6e56ce4badc5"
+      }
+    },
+    {
+      "id": "L42-S009",
+      "title": "Homing Pigeons Only Navigate in Air with Intact Environmental Odours: A Test of the Olfactory Activation Hypothesis with GPS Data Loggers",
+      "doi": "10.1371/journal.pone.0022385",
+      "publisher": "Gagliardo等，PLOS ONE",
+      "version": "2011 PLOS期刊可列印PDF。",
+      "url": "https://doi.org/10.1371/journal.pone.0022385",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0022385",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0022385&type=printable",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位原研究後用指定UA取得有效PDF，以PyMuPDF讀所列正文與圖說。",
+      "reading_scope": "PDF pp.2–3三種空氣與放飛前處理，pp.6–10結果、Discussion與Fig7/8圖說，分地點/時間分析。",
+      "locator": "PDF pp.2–3三種空氣與放飛前處理，pp.6–10結果、Discussion與Fig7/8圖說，分地點/時間分析。",
+      "summary": "運送及放飛前，三組鴿分別接觸當地環境空氣、過濾空氣、或過濾空氣再加入多種人工提供的香味。放飛前暫時抑制嗅覺，聚焦最早一小時的GPS軌跡。任意香味未恢復像環境空氣組那樣的歸向，支持當地氣味帶有可用資訊。",
+      "limitations": "限兩個不熟悉釋放點與暫時嗅覺處理下的早期飛行。不同地點/指標不全同；未辨認所有氣體成分，也不足證實腦內有一張精確的座標地圖。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave42-life-pigeon.pdf",
+        "sha256": "e358b4b6652bb3f8f1c1041a8a886da0aaa33c2c2e833ecca7eb539dea785d2a",
+        "text_file": ".cache/wave42-life-pigeon.txt",
+        "text_sha256": "65798537b229ea28185ba2d6203b40e26772d04409361a3d62a5de4bc9535edf"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L42-001",
+      "question": "螞蟻去程走十公尺，回程步子突然變長，會在哪裡開始找家？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.stride_change_between_legs_misplaces_search_center",
+      "answer_target": "一批沙漠蟻按平常步幅走到食物，再以較長或較短的步幅在平行通道回走。長步組找巢的位置偏遠，短步組偏近。等牠們用改過的腿走完整個來回，搜尋中心又接近原距離，符合用行走步幅資訊累積里程的解釋。",
+      "scope": "限Cataglyphis fortis平直通道；圖3用每隻最初六個折返位置的中位值當搜尋中心。未證明蟻腦用整數數步，亦不排除其他情境用視覺估距。",
+      "source_ids": [
+        "L42-S001"
+      ],
+      "source_locator": "PDF pp.2–4；Fig3A/B餵食處才改步幅與後來雙程腿長一致，正文步幅、速度與搜尋區定義。",
+      "premise_status": "screened",
+      "notes": "B2329已收步幅改變造成有方向的歸程估距偏差。雙程腿長一致的控制及原研究作為該核心變體，不另計新核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用去程與回程步幅是否一致，預測偏遠或偏近。",
+        "visual": "在每隻螞蟻回程的最初六個折返處各點一下，以中位位置表示牠找家的中心，再比較兩程步幅是否一致。",
+        "seconds": [
+          35,
+          78
+        ]
+      }
+    },
+    {
+      "id": "L42-002",
+      "question": "走過九段小坡後找家，沙漠蟻記的是腳下走多遠，還是地圖上推進多少？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.horizontal_projection_of_sloped_segments_in_ant_odometry",
+      "answer_target": "把在起伏通道學會的距離放到平坦通道測，再做相反配置。螞蟻開始折返搜尋的位置，換算成沿地面的水平投影，比直接把所有上下坡的路長加起來更吻合。坡面不對稱的對照也不支持只把上坡計入。",
+      "scope": "限受測沙漠蟻與裝置的水平/起伏通道；未由此找出量坡度的特定感受器，也不是保存精確三維地形圖。",
+      "source_ids": [
+        "L42-S002"
+      ],
+      "source_locator": "PDF web L174–199與Fig2、L238–275非對稱坡和Fig3、L330–338及L419–428、L465–480討論水平投影與限制。",
+      "premise_status": "screened",
+      "notes": "研究所測效應及其可支持的推論在題文分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把繩子貼著坡面和攤在平面比較，兩種里程表給出不同的找巢位置。",
+        "visual": "同一張剖面同時標坡長與水平尺，另換平坡測試通道，揭開實際第一段折返搜尋位置。",
+        "seconds": [
+          35,
+          80
+        ]
+      }
+    },
+    {
+      "id": "L42-003",
+      "question": "帝王斑蝶少一根觸角還能朝同一方向飛，為什麼留著一根遮光的反而會亂？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.conflicting_antennal_clock_inputs_rescue_by_removing_discordant_one",
+      "answer_target": "單側觸角能正常接收明暗時，單觸角遷徙蝶仍可表現時間補償定向。兩根都在、一根遮光一根透光時，各隻仍能朝某方向穩定飛，群體飛向卻分散。再移除遮光那側，受測組重新集中往西南，支持兩側時間訊號會一起影響日照定向。",
+      "scope": "限北美秋遷帝王斑蝶模擬器。遮光造成時鐘不同步，不是實驗已固定一個確切時差。飛向分散指組內不同個體，不代表每一隻曲折亂飛。",
+      "source_ids": [
+        "L42-S003"
+      ],
+      "source_locator": "PDF pp.2–5；Fig1單觸角、Fig2a–c單側遮光與移除遮光側，Fig3時鐘基因在明暗條件下的族群時序。",
+      "premise_status": "screened",
+      "notes": "研究所測效應及其可支持的推論在題文分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣剩下一根能對時的觸角，額外的失同步輸入竟可使結果比單觸角更差。",
+        "visual": "每個箭頭代表一隻蝶的平均飛向；比較單側正常、兩側訊號衝突，以及除去干擾側。不描繪手術步驟。",
+        "seconds": [
+          36,
+          83
+        ]
+      }
+    },
+    {
+      "id": "L42-004",
+      "question": "帝王斑蝶去年還往南飛，什麼線索能讓牠改向北？光是日子過得久夠嗎？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.overwintering_cold_switches_seasonal_preferred_bearing",
+      "answer_target": "把秋遷帝王斑蝶置於模擬越冬地的低溫週期，之後飛行測試的群體方向可轉向北。低溫但日長保持固定的組也會轉北；一直在較暖條件下養到相當晚，群體仍朝南。研究支持越冬冷歷程可改變偏好方向。",
+      "scope": "限實驗所試溫度、光照與觀測時段。測群體定向，未追到每隻蝶完成整趟回遷，也未知最少需幾個冷日及神經切換位置。",
+      "source_ids": [
+        "L42-S004"
+      ],
+      "source_locator": "PDF pp.2–4，Fig3B/C冷處理的增日照及固定日照組，Fig4溫暖條件不轉北及討論。",
+      "premise_status": "screened",
+      "notes": "研究所測效應及其可支持的推論在題文分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分開「現在幾點的太陽在哪」和「季節到了要往哪飛」。",
+        "visual": "秋遷起點畫三個獨立飼養條件；只讓其中兩格有越冬冷歷程，再揭三組代表個體的飛向。",
+        "seconds": [
+          36,
+          85
+        ]
+      }
+    },
+    {
+      "id": "L42-005",
+      "question": "把遷徙中的鳥往東載到陌生地方，成鳥和第一次南飛的幼鳥會朝同一邊嗎？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.age_related_displacement_compensation_vs_juvenile_course",
+      "answer_target": "從美國西部移到東岸的白冠帶鵐，無線電追蹤顯示成鳥取向偏西南偏西，與從釋放區轉向平常越冬區相符；幼鳥仍主要朝通常的南向遷徙方向。若兩組都只照同一個固定方位飛，就不會出現這種分化。",
+      "scope": "限普林斯頓附近釋放後早期追蹤的族群；兩年齡組放飛點相距約七公里。並非一路追到冬棲地，更沒有查明牠靠哪一種感官定位。",
+      "source_ids": [
+        "L42-S005"
+      ],
+      "source_locator": "PDF pp.2–4，Results、Fig1–3，位移後成幼鳥早期軌跡、捕獲地方向與越冬地方向比較。",
+      "premise_status": "screened",
+      "notes": "研究所測效應及其可支持的推論在題文分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "故意從路線旁放飛後，用修正路線與維持原方向兩種預測讀懂短段航跡。",
+        "visual": "先保留西部捕獲地、東岸試驗點與可能冬棲區三種標記。把各組早期方向疊上，別畫假想的完程線。",
+        "seconds": [
+          36,
+          78
+        ]
+      }
+    },
+    {
+      "id": "L42-006",
+      "question": "遷徙鳥還站在原地，只把周圍磁場換成東方一千公里的樣子，牠會改向嗎？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.trigeminal_input_required_for_compensatory_virtual_magnetic_displacement",
+      "answer_target": "春季歐亞蘆葦鶯原先偏向東北。在同一地點用線圈改成東方地點的磁場，其他地方線索未搬動。保有三叉神經眼支輸入的假手術組，平均方向轉向西北；眼支輸入已中斷的一組則仍維持原先方向。這條輸入參與了依磁位置線索修正方向。",
+      "scope": "限遷徙取向漏斗和這組地磁參數。仍有定向不等於已隔離測出純磁羅盤，也不指認某處解剖構造就是磁受器。",
+      "source_ids": [
+        "L42-S006"
+      ],
+      "source_locator": "PDF pp.2–4，Fig1、Results/Discussion及手術/線圈方法。環境保持原地，兩組在磁位移前後的取向。",
+      "premise_status": "screened",
+      "notes": "研究所測效應及其可支持的推論在題文分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用假位移與對照組分開「能朝一個方向動」和「察覺位置改變而修正方向」。",
+        "visual": "鳥的位置不動，線圈圖上的磁條件更換；每個點是一隻鳥的平均取向，並排保留與阻斷輸入兩組。",
+        "seconds": [
+          38,
+          85
+        ]
+      }
+    },
+    {
+      "id": "L42-007",
+      "question": "海龜認得餵食地的磁場，和換到另一處磁場後選方向游，會同樣受到射頻干擾嗎？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.rf_dissociation_conditioned_magnetic_field_recognition_vs_combined_orientation",
+      "answer_target": "研究把特定地點的磁場與餵食配對，之後無食物也能用期待食物時的動作辨認反應。開啟射頻擾動，在受獎勵的磁場裡這個反應沒有可辨差異。另一場用初孵龜測需要辨認磁位置並定向的游泳，無擾動時有共同方向，有擾動時方向分散。兩項結果支持磁位置辨認與磁羅盤至少部分依賴不同機制。",
+      "scope": "限幼赤蠵龜與所試頻帶。餵食辨認與游向是不同程序、不同龜群。後者同時需要地圖與羅盤，沒有直接分離出特定受器或測到野外餵食地返航。",
+      "source_ids": [
+        "L42-S007"
+      ],
+      "source_locator": "作者稿PDF pp.4–7辨認獎勵磁場，pp.11–13行231–279：緬因獎勵磁場中有無RF、另一批初孵龜在維德角磁場下的游向，Fig5。",
+      "premise_status": "screened",
+      "notes": "研究所測效應及其可支持的推論在題文分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讓同一類外擾對兩種任務給出不同結果，辨認「場像哪裡」與「游向哪邊」的差別。",
+        "visual": "第一水槽無食物，畫獎勵磁場下的期待動作；切到另一組綁追蹤器的小龜，用有無射頻的游向點比較。",
+        "seconds": [
+          41,
+          92
+        ]
+      }
+    },
+    {
+      "id": "L42-008",
+      "question": "地磁標記在海岸上慢慢靠攏，海龜的巢會跟著在那一段變密嗎？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.secular_isoline_convergence_divergence_predicted_nest_density",
+      "answer_target": "如果雌龜回到記憶中磁特徵相近的海岸，兩條相鄰磁傾角等值線靠攏，原先散在兩者之間的目標區就會縮短。佛州東岸十九年逐郡資料中，等值線趨向聚攏的區段和時段，巢密度變化也傾向較高；分散時則相反。這是可檢查的族群分布預測。",
+      "scope": "佛州十二個郡1993–2011，對照磁場模型與築巢記錄，沒有逐隻追蹤幼龜到成年。正反對照使用磁傾角等值線；原文所分析的磁強線沒有實際收斂的案例。",
+      "source_ids": [
+        "L42-S008"
+      ],
+      "source_locator": "原刊web L282–296、L350–377、Fig1–2圖說L493–539及L883–926；1993–2011年12郡巢密度與地磁模型。",
+      "premise_status": "screened",
+      "notes": "研究所測效應及其可支持的推論在題文分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把一個不能直接看見的磁記憶假說，變成能與真實海岸巢分布比對的預測。",
+        "visual": "在固定長度海岸標兩年磁傾角線，再疊每公里巢數變化；示意的個體不用跨年連成實際追蹤。",
+        "seconds": [
+          36,
+          77
+        ]
+      }
+    },
+    {
+      "id": "L42-009",
+      "question": "放飛前聞到濃濃的香味就夠了嗎？信鴿需要的是氣味刺激，還是當地空氣？",
+      "domain": "動物導航與路線修正",
+      "mechanism_key": "navigation.natural_spatial_odor_vs_nonspecific_activation_in_pigeon_displacement",
+      "answer_target": "運送及放飛前，三組鴿分別接觸當地環境空氣、過濾空氣、或過濾空氣再加入多種人工提供的香味。放飛前暫時抑制嗅覺，聚焦最早一小時的GPS軌跡。任意香味未恢復像環境空氣組那樣的歸向，支持當地氣味帶有可用資訊。",
+      "scope": "限兩個不熟悉釋放點與暫時嗅覺處理下的早期飛行。不同地點/指標不全同；未辨認所有氣體成分，也不足證實腦內有一張精確的座標地圖。",
+      "source_ids": [
+        "L42-S009"
+      ],
+      "source_locator": "PDF pp.2–3三種空氣與放飛前處理，pp.6–10結果、Discussion與Fig7/8圖說，分地點/時間分析。",
+      "premise_status": "screened",
+      "notes": "研究所測效應及其可支持的推論在題文分開。作者建議作B2245的受控研究變體，交非作者裁定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用有香味但沒地方意義的一組，區分氣味只叫醒導航與提供當地資訊。",
+        "visual": "三條空氣管線只換內容物，遮住GPS先讓人猜人工香味能否救回；早期飛向與最終是否返家分開。",
+        "seconds": [
+          30,
+          65
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L42-NA001",
+      "question": "螞蟻倒著拖食物，怎麼要先放下轉頭看一眼？",
+      "existing_ids": [
+        "Z7007"
+      ],
+      "source_ids": [],
+      "reason": "倒走時轉向熟悉景觀，將前進方向轉存為天體參照，原題已收完整控制。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA002",
+      "question": "把直線通道再加長就能新收一次沙漠蟻里程表嗎？",
+      "existing_ids": [
+        "L42-001"
+      ],
+      "source_ids": [],
+      "reason": "只變長度，沒有改變步幅一致/不一致的判讀。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA003",
+      "question": "被其他螞蟻抬著走，沒踏步也能估距嗎？",
+      "existing_ids": [
+        "R32006"
+      ],
+      "source_ids": [],
+      "reason": "舊研究已用去/回程分開限制視流檢驗乘客里程。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA004",
+      "question": "走到巢門的氣味旁仍不停，能否直接算本輪一題？",
+      "existing_ids": [
+        "R32008"
+      ],
+      "source_ids": [],
+      "reason": "回程或搜尋中的狀態切換已收。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA005",
+      "question": "果蠅一聞到氣味就知道該向哪飛？",
+      "existing_ids": [
+        "Z7016"
+      ],
+      "source_ids": [],
+      "reason": "舊題以氣味與風向感覺的分開操控回答，且限步行果蠅。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA006",
+      "question": "蜜蜂的搖擺舞是不是純粹寫出公尺數？",
+      "existing_ids": [
+        "Z7011",
+        "B2286"
+      ],
+      "source_ids": [],
+      "reason": "視流改變舞長的受控對照與招募意義皆收。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA007",
+      "question": "鳥一般怎麼利用內在時間修正太陽方位？",
+      "existing_ids": [
+        "B2243"
+      ],
+      "source_ids": [],
+      "reason": "一般時間補償原理不再算新。蝶題限定兩觸角不同步及移除干擾的預測。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA008",
+      "question": "用星空找北，只要背熟最亮的一顆星嗎？",
+      "existing_ids": [
+        "B2244",
+        "R32001"
+      ],
+      "source_ids": [],
+      "reason": "星空轉軸與銀河寬帶已有兩個限定不同的核心。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA009",
+      "question": "同一隻蝶越冬一天就會反方向飛？",
+      "existing_ids": [
+        "L42-004"
+      ],
+      "source_ids": [],
+      "reason": "研究沒有給出每隻所需的最短日數。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA010",
+      "question": "為什麼所有鳥都有地圖又有羅盤？",
+      "existing_ids": [
+        "B2242"
+      ],
+      "source_ids": [],
+      "reason": "原理性分類已收，不能用新物種清單充數。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA011",
+      "question": "移放成鳥後，牠們是否全部飛到原來的過冬地？",
+      "existing_ids": [
+        "L42-005"
+      ],
+      "source_ids": [],
+      "reason": "追蹤的是離開釋放區的早期路徑，不是每隻的終點。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA012",
+      "question": "鳥喙裡哪一顆磁鐵在替鶯定位？",
+      "existing_ids": [
+        "L42-006"
+      ],
+      "source_ids": [],
+      "reason": "神經支路的必要性不定位受器材料；歷史退題已留相同疑義。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA013",
+      "question": "海龜能認得左右兩處磁場，就證明牠會算經緯度嗎？",
+      "existing_ids": [
+        "B2242",
+        "L42-007"
+      ],
+      "source_ids": [],
+      "reason": "分得出兩地磁標記，不能推出能獨立算出經緯度。本輪同緯不同經度文僅查到索引，未另收。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA014",
+      "question": "磁場一移，每隻海龜隔年都跟著移同樣遠嗎？",
+      "existing_ids": [
+        "L42-008"
+      ],
+      "source_ids": [],
+      "reason": "巢密度統計是多年區域結果，沒有母龜的個體對照。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA015",
+      "question": "任一隻海鳥聞到氣味都照同一張地圖飛？",
+      "existing_ids": [
+        "B2245",
+        "L42-009"
+      ],
+      "source_ids": [],
+      "reason": "管鼻海鳥與鴿釋放研究不保證所有物種或海域使用同樣的化學線索。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    },
+    {
+      "id": "L42-NA016",
+      "question": "一對鴿子換進新手就能把路記得更直，還能算海龜或蘆葦鶯的另一例嗎？",
+      "existing_ids": [
+        "L40-005"
+      ],
+      "source_ids": [],
+      "reason": "輪替傳承改路本身已收，沒有磁場或氣味操控。",
+      "reentry_condition": "若對應問題有不同的可觀察預測及可讀原研究，再作新的比較。"
+    }
+  ]
+}

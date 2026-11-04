@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T11:57:01.825Z",
+  "result": "PASS",
+  "selected": 3151,
+  "index_html_sha256": "d8dfa013e0e4e3e6259847af24bfd9e35ffe5fb23d04f57afe50341e31fbb567",
+  "source_sample": {
+    "id": "X34-001",
+    "urls": [
+      "https://link.springer.com/content/pdf/10.1051/apido:2008042.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave34-desktop.png",
+    "wave34-source-desktop.png",
+    "wave34-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "主欄3,151題，桌面與手機計數一致。桌面展開X34-001後見蜂蜜取樣範圍、畫面及研究連結；手機篩選器分行顯示。"
+}

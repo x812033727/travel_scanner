@@ -1,0 +1,872 @@
+{
+  "status": "KNOWN_EDITORIAL_PAIRS_NOT_RANDOM_RECALL_ESTIMATE",
+  "input_sha256": "a0502f924ba7c3980a597a1ce8dee956f9c9eb63d33e232d9e276d4e11b94ba3",
+  "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "2c4055b12046f11709e9df2c122e59ffbdc2f900",
+  "top_k": 10,
+  "known_positive_pairs": 50,
+  "semantic_retrieved": 29,
+  "semantic_missed": 21,
+  "lexical_retrieved": 11,
+  "union_retrieved": 31,
+  "pairs": [
+    {
+      "duplicate_id": "M2007",
+      "canonical_id": "M2005",
+      "reason": "兩題都用報告數字說明點估計不能取代不確定度；相同核心併為提問變體，不另加數。",
+      "raw_questions": [
+        "兩份報告都寫 10.0，為什麼還不能認定它們一樣準？",
+        "報告主動寫出不確定度，是承認量錯了嗎？"
+      ],
+      "retrieval": {
+        "id": "M2005~M2007",
+        "a": "M2005",
+        "b": "M2007",
+        "question_score": 0.059,
+        "answer_score": 0.182,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "報告主動寫出不確定度，是承認量錯了嗎？",
+          "兩份報告都寫 10.0，為什麼還不能認定它們一樣準？"
+        ]
+      },
+      "semantic_score": 0.72669
+    },
+    {
+      "duplicate_id": "M2062",
+      "canonical_id": "LEG-S12",
+      "reason": "季節小時的分割機制已在歷史 S12 答案內；原題轉標準發明故事的處置保留，不以較窄新標題復活。",
+      "raw_questions": [
+        "古人的一小時，為什麼夏天和冬天可能不一樣長？",
+        "為什麼一天是 24 小時、一小時是 60 分鐘？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.625186
+    },
+    {
+      "duplicate_id": "E2039",
+      "canonical_id": "E2038",
+      "reason": "捲繞只是增加有效板面積的幾何實作，與面積/間距決定電容量合成同一核心。",
+      "raw_questions": [
+        "小小圓筒電容裡，為什麼可能塞著很長的金屬薄片？",
+        "兩片金屬靠更近或重疊更多，為什麼會改變電容量？"
+      ],
+      "retrieval": {
+        "id": "E2038~E2039",
+        "a": "E2038",
+        "b": "E2039",
+        "question_score": 0.118,
+        "answer_score": 0.048,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩片金屬靠更近或重疊更多，為什麼會改變電容量？",
+          "小小圓筒電容裡，為什麼可能塞著很長的金屬薄片？"
+        ]
+      },
+      "semantic_score": 0.731579
+    },
+    {
+      "duplicate_id": "E2055",
+      "canonical_id": "E2048",
+      "reason": "接電與隔離下加入介質的固定 V/Q 比較合成同一條件問題。",
+      "raw_questions": [
+        "同樣加入介質，電容接著電源和斷開電源，為什麼結果不同？",
+        "已隔離的電容加進絕緣材料，電荷沒少，電壓怎麼會下降？"
+      ],
+      "retrieval": {
+        "id": "E2048~E2055",
+        "a": "E2048",
+        "b": "E2055",
+        "question_score": 0.051,
+        "answer_score": 0.083,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "已隔離的電容加進絕緣材料，電荷沒少，電壓怎麼會下降？",
+          "同樣加入介質，電容接著電源和斷開電源，為什麼結果不同？"
+        ]
+      },
+      "semantic_score": 0.8507
+    },
+    {
+      "duplicate_id": "E2033",
+      "canonical_id": "E2030",
+      "reason": "影印與雷射列印的曝光差異保留為靜電潛像成像題的變體，不另算一核心。",
+      "raw_questions": [
+        "雷射印表機的雷射，真的直接把黑字燒到紙上嗎？",
+        "影印機怎麼先做出一張看不見的電荷影像？"
+      ],
+      "retrieval": {
+        "id": "E2030~E2033",
+        "a": "E2030",
+        "b": "E2033",
+        "question_score": 0,
+        "answer_score": 0.087,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "影印機怎麼先做出一張看不見的電荷影像？",
+          "雷射印表機的雷射，真的直接把黑字燒到紙上嗎？"
+        ]
+      },
+      "semantic_score": 0.525304
+    },
+    {
+      "duplicate_id": "E2023",
+      "canonical_id": "E2021",
+      "reason": "內壁接觸後電荷到外表面是導體靜電平衡的追問，不重複計數。",
+      "raw_questions": [
+        "把電荷放進空心金屬球再接觸內壁，為什麼外面也會帶電？",
+        "加到金屬裡的多餘電荷，為什麼最後常跑到表面？"
+      ],
+      "retrieval": {
+        "id": "E2021~E2023",
+        "a": "E2021",
+        "b": "E2023",
+        "question_score": 0.111,
+        "answer_score": 0.133,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "加到金屬裡的多餘電荷，為什麼最後常跑到表面？",
+          "把電荷放進空心金屬球再接觸內壁，為什麼外面也會帶電？"
+        ]
+      },
+      "semantic_score": 0.860373
+    },
+    {
+      "duplicate_id": "E2042",
+      "canonical_id": "E2041",
+      "reason": "串聯電容的等效值與各顆分壓是同一電荷守恆機制的兩個結果，可保留為同段推進。",
+      "raw_questions": [
+        "多加一顆串聯電容，總電容量怎麼反而更小？",
+        "串聯電容明明帶一樣多電荷，為什麼承受的電壓不一定一樣？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.893877
+    },
+    {
+      "duplicate_id": "E2045",
+      "canonical_id": "E2047",
+      "reason": "充電過程所做功與電容儲能的平方關係屬同一能量核心。",
+      "raw_questions": [
+        "同一顆電容電壓加倍，儲能為什麼不只是加倍？",
+        "電容越充越滿，為什麼再搬同樣一點電荷要做更多功？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.811251
+    },
+    {
+      "duplicate_id": "E2060",
+      "canonical_id": "E2061",
+      "reason": "散射限制漂移與漂移速度條件比較相接，合為載流漂移的同一核心。",
+      "raw_questions": [
+        "有電流的導線裡，電子真的整齊地一路向前跑嗎？",
+        "電場一直推電子，為什麼電子不會在導線裡無限加速？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.837523
+    },
+    {
+      "duplicate_id": "E2072",
+      "canonical_id": "E2071",
+      "reason": "焦耳功率在固定電壓或固定電流下的比較須一起交代邊界，不各立核心。",
+      "raw_questions": [
+        "電流加倍，導線發熱為什麼可能不只加倍？",
+        "電阻越大到底越熱還是越不熱，為什麼兩種說法都有人講？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.794807
+    },
+    {
+      "duplicate_id": "E2079",
+      "canonical_id": "E2078",
+      "reason": "充電與放電時端電壓相對電動勢的符號差別，合入同一內阻模型。",
+      "raw_questions": [
+        "同一顆可充電電池，充電時端電壓為什麼可能高於它的電動勢？",
+        "電池空著量有電壓，接上負載後怎麼可能掉下來？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.771731
+    },
+    {
+      "duplicate_id": "E2116",
+      "canonical_id": "P024",
+      "reason": "馬達的反向受力在此提案仍僅解釋合力零但力偶不零，保留應用例子併回力偶核心。",
+      "raw_questions": [
+        "馬達兩邊受到相反的力，為什麼沒有互相抵消到完全不動？",
+        "兩股同樣大的反向力，為什麼能讓物體只轉不平移？"
+      ],
+      "retrieval": {
+        "id": "E2116~P024",
+        "a": "P024",
+        "b": "E2116",
+        "question_score": 0,
+        "answer_score": 0.176,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "兩股同樣大的反向力，為什麼能讓物體只轉不平移？",
+          "馬達兩邊受到相反的力，為什麼沒有互相抵消到完全不動？"
+        ]
+      },
+      "semantic_score": 0.91269
+    },
+    {
+      "duplicate_id": "X2002",
+      "canonical_id": "N287",
+      "reason": "橢圓星系只是氣體供應限制新星形成的具體分類，不另計同答案。",
+      "raw_questions": [
+        "有很多老恆星的橢圓星系，為什麼可能很少生新星？",
+        "有些星系滿是老星星，為什麼不繼續大量生出新星？"
+      ],
+      "retrieval": {
+        "id": "N287~X2002",
+        "a": "N287",
+        "b": "X2002",
+        "question_score": 0.118,
+        "answer_score": 0.188,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "有些星系滿是老星星，為什麼不繼續大量生出新星？",
+          "有很多老恆星的橢圓星系，為什麼可能很少生新星？"
+        ]
+      },
+      "semantic_score": 0.892348
+    },
+    {
+      "duplicate_id": "X2005",
+      "canonical_id": "N288",
+      "reason": "塵埃環與視線方向造成活動星系外觀差異，首批已有此核心。",
+      "raw_questions": [
+        "同樣有活躍核心，換個方向看為什麼像不同天體？",
+        "看起來很不一樣的活動星系，為什麼有時只是觀看角度不同？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.71684
+    },
+    {
+      "duplicate_id": "M2060",
+      "canonical_id": "M2004",
+      "reason": "長度標準的溫度條件是待測量定義與比較條件的一個例子，合併避免把每種量各拆新題。",
+      "raw_questions": [
+        "標準尺的長度，為什麼連測量溫度也要一起規定？",
+        "說要量「杯子的溫度」，為什麼還不算把問題說清楚？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.719377
+    },
+    {
+      "duplicate_id": "E2162",
+      "canonical_id": "E2161",
+      "reason": "電容交流電流與相位領先都由電壓變化率解釋，保留反直覺追問。",
+      "raw_questions": [
+        "電流比電壓早到最高點，難道電子能預知未來？",
+        "電容中間明明隔著絕緣層，交流電路為什麼還有電流？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.735886
+    },
+    {
+      "duplicate_id": "E2184",
+      "canonical_id": "E2183",
+      "reason": "頻率與強度的比較共同界定單光子能量與數量，不重複計入。",
+      "raw_questions": [
+        "光照更亮時，跑出來的電子是變快還是變多？",
+        "把不夠能量的光照得再亮，為什麼仍未必打得出電子？"
+      ],
+      "retrieval": {
+        "id": "E2183~E2184",
+        "a": "E2183",
+        "b": "E2184",
+        "question_score": 0.118,
+        "answer_score": 0.085,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把不夠能量的光照得再亮，為什麼仍未必打得出電子？",
+          "光照更亮時，跑出來的電子是變快還是變多？"
+        ]
+      },
+      "semantic_score": 0.757261
+    },
+    {
+      "duplicate_id": "E2199",
+      "canonical_id": "E2200",
+      "reason": "混疊形成與取樣前濾波的必要性合為問題及解法。",
+      "raw_questions": [
+        "錄到的低頻雜訊，為什麼可能原本是很高頻的干擾？",
+        "都已經有數位濾波器，為什麼進晶片前還要先濾波？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.611704
+    },
+    {
+      "duplicate_id": "E2147",
+      "canonical_id": "E2146",
+      "reason": "切槽減少環流路徑是對同一渦流機制的改善方案。",
+      "raw_questions": [
+        "同一塊金屬板，開幾道槽為什麼磁力煞車就弱了？",
+        "銅片不會被磁鐵黏住，穿過磁場邊界卻為什麼會被煞住？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.708171
+    },
+    {
+      "duplicate_id": "E2206",
+      "canonical_id": "E2205",
+      "reason": "碼階誤差可造成 ADC 缺碼或 DAC 非單調，合為跨方向比較；兩種結果與 DNL 門檻不能混同。",
+      "raw_questions": [
+        "輸入慢慢升高，儀表為什麼可能永遠跳過某個數字？",
+        "轉換器增加一格，為什麼可能倒退，或跳過某個數字？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.6152
+    },
+    {
+      "duplicate_id": "B2073",
+      "canonical_id": "L191",
+      "reason": "只給出一般機械與化學防禦分工，馬陸是新例子但沒有新的特異機制；併回既有核心，保留新來源。",
+      "raw_questions": [
+        "馬陸已經把身體蜷曲起來，為什麼還可能釋出難聞物質？",
+        "植物不能逃跑，除了長刺還有什麼防止被吃的方式？"
+      ],
+      "retrieval": {
+        "id": "B2073~L191",
+        "a": "L191",
+        "b": "B2073",
+        "question_score": 0,
+        "answer_score": 0.385,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "植物不能逃跑，除了長刺還有什麼防止被吃的方式？",
+          "馬陸已經把身體蜷曲起來，為什麼還可能釋出難聞物質？"
+        ]
+      },
+      "semantic_score": 0.584387
+    },
+    {
+      "duplicate_id": "C2029",
+      "canonical_id": "L326",
+      "reason": "暗處顏色與細節受限的視桿/視錐分工，首批已有相同答案。",
+      "raw_questions": [
+        "光線很暗時，為什麼顏色和細節常一起變難分？",
+        "很暗的地方還看得到輪廓，為什麼顏色卻難以分清？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.9073
+    },
+    {
+      "duplicate_id": "B2289",
+      "canonical_id": "C2032",
+      "reason": "現有 ADW 來源只支持雙耳定位有利於獵食，沒有獨立垂直定位生理機制；先作雙耳差異的動物例子。",
+      "raw_questions": [
+        "倉鴞兩邊耳朵位置不完全對稱，為什麼反而有利於抓獵物？",
+        "閉上眼睛，兩邊耳朵怎麼一起判斷聲音從哪邊來？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.654813
+    },
+    {
+      "duplicate_id": "X2047",
+      "canonical_id": "M2077",
+      "reason": "恆星與航空攝影均由視點改變造成的角位置差推距離，保留尺度和量測條件，不另算核心。",
+      "raw_questions": [
+        "不飛到星星旁邊，怎麼靠換個位置量出它有多遠？",
+        "兩張平面的空拍照，怎麼一起量出山的高低？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.592765
+    },
+    {
+      "duplicate_id": "D2005",
+      "canonical_id": "D2004",
+      "reason": "曝氣使揮發性成分從水移到空氣；逸出氣體後續處理是同一轉移機制的去向追問，合併保留。",
+      "raw_questions": [
+        "把污染物從水裡吹走，為什麼不代表污染就消失了？",
+        "水處理廠把水往下淋、把空氣往上吹，是要把什麼搬走？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.738241
+    },
+    {
+      "duplicate_id": "D2150",
+      "canonical_id": "D2149",
+      "reason": "同為石膏模吸水使陶瓷泥漿沉積成壁；停留時間增加層厚是同一機制的條件延伸，非固定線性規律。",
+      "raw_questions": [
+        "同一個陶瓷模具，為什麼等待時間會改變杯壁厚度？",
+        "陶瓷杯的中空杯壁，為什麼能從一模泥漿裡長出來？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.747418
+    },
+    {
+      "duplicate_id": "B2299",
+      "canonical_id": "P311",
+      "reason": "同一空穴形成與崩潰產生局部力的機制；螳螂蝦的直接力峰研究補成新例證，保留機械打擊與聲壓驅動的條件差異，不用換動物灌核心數。",
+      "raw_questions": [
+        "螳螂蝦敲中貝殼後，水裡的氣泡為什麼還會再造成一波力？",
+        "超音波清洗器裡的小空穴，跟把水燒開的氣泡有什麼不同？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.641248
+    },
+    {
+      "duplicate_id": "E2028",
+      "canonical_id": "E2027",
+      "reason": "等位移動的零功與電場垂直等位線，是同一靜電關係的能量與幾何敘述，合併保留條件。",
+      "raw_questions": [
+        "電壓地圖上同值的線，為什麼會和電場箭頭垂直？",
+        "沿同一條等電位線搬動電荷，為什麼電力不做淨功？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.774069
+    },
+    {
+      "duplicate_id": "E2213",
+      "canonical_id": "E2282",
+      "reason": "兩題目前都以電容漏電造成保持失準為核心，類比保持與數位刷新作條件對照，來源全部保留。",
+      "raw_questions": [
+        "用電容記住的類比數值，為什麼放久了會慢慢跑掉？",
+        "電腦明明沒改資料，DRAM 為什麼仍要不斷刷新？"
+      ],
+      "retrieval": null,
+      "semantic_score": 0.601965
+    },
+    {
+      "duplicate_id": "E2102",
+      "canonical_id": "E2101",
+      "reason": "漏電差分偵測與過載保護的區別作為同一機制的界線說明。",
+      "raw_questions": [
+        "有防過載的斷路器，為什麼還會有專門偵測漏電的裝置？",
+        "漏電保護器怎麼發現有一部分電流走了別條路？"
+      ],
+      "retrieval": {
+        "id": "E2101~E2102",
+        "a": "E2101",
+        "b": "E2102",
+        "question_score": 0.056,
+        "answer_score": 0.04,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "漏電保護器怎麼發現有一部分電流走了別條路？",
+          "有防過載的斷路器，為什麼還會有專門偵測漏電的裝置？"
+        ]
+      },
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2050",
+      "canonical_id": "E2048",
+      "reason": "介電常數是材料極化反應的量化，不把同一極化機制另算新核心。",
+      "raw_questions": [
+        "在電容裡換材料，為什麼不能只看它是不是絕緣體？",
+        "已隔離的電容加進絕緣材料，電荷沒少，電壓怎麼會下降？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2066",
+      "canonical_id": "E2064",
+      "reason": "燈絲變熱電阻改變是金屬電阻溫度依存的一個實例，保留生活追問不另計數。",
+      "raw_questions": [
+        "白熾燈剛打開時，電流為什麼可能比亮穩後大？",
+        "金屬加熱常更難導電，有些半導體卻相反，為什麼？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2130",
+      "canonical_id": "E2129",
+      "reason": "長線圈匝密度的條件比較不另算線圈磁場機制。",
+      "raw_questions": [
+        "電磁鐵只說繞了幾圈，為什麼還不夠判斷磁場強弱？",
+        "同樣一條電線，繞成長線圈為什麼能把磁場集中在裡面？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2121",
+      "canonical_id": "E2119",
+      "reason": "霍爾探頭為霍爾效應應用，作下一拍例子保留。",
+      "raw_questions": [
+        "磁場探頭沒有轉動的指針，怎麼把磁力變成數字？",
+        "電流明明往前走，導體兩側怎麼冒出橫向電壓？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2152",
+      "canonical_id": "E2151",
+      "reason": "馬達停轉是反電動勢消失的邊界，和轉動後電流改變合為一個核心。",
+      "raw_questions": [
+        "馬達明明卡住沒做功，為什麼仍可能燙壞？",
+        "馬達轉起來以後，為什麼反而會少吃一些電流？"
+      ],
+      "retrieval": {
+        "id": "E2151~E2152",
+        "a": "E2151",
+        "b": "E2152",
+        "question_score": 0.071,
+        "answer_score": 0.178,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "馬達轉起來以後，為什麼反而會少吃一些電流？",
+          "馬達明明卡住沒做功，為什麼仍可能燙壞？"
+        ]
+      },
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2166",
+      "canonical_id": "E2165",
+      "reason": "負瞬時功率為往返儲能的下一拍，與平均有功的區分一起呈現。",
+      "raw_questions": [
+        "電容顯示一段負功率，是不是在憑空發電？",
+        "電壓乘電流明明很大，為什麼交流設備實際消耗功率比較小？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2189",
+      "canonical_id": "E2190",
+      "reason": "門檻附近抖動與遲滯解法合為同一比較器切換問題。",
+      "raw_questions": [
+        "感測電壓只慢慢跨過界線，為什麼警報開關卻瘋狂跳？",
+        "控制器為什麼要用不同的開啟和關閉門檻？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2215",
+      "canonical_id": "E2214",
+      "reason": "虛短是負回授高增益條件下的結果，不另拆同一運作原理。",
+      "raw_questions": [
+        "兩個腳位沒有真的短路，電壓為什麼卻能幾乎一樣？",
+        "放大器把一部分輸出送回輸入，為什麼反而更容易控制？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2228",
+      "canonical_id": "E2227",
+      "reason": "共模抑制的頻率與阻抗限制作核心問題的條件，非另一核心。",
+      "raw_questions": [
+        "標示很高的抗干擾能力，為什麼換個頻率就沒那麼好了？",
+        "兩條訊號線都混進雜訊，怎麼還可能量到中間很小的差別？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2148",
+      "canonical_id": "E2146",
+      "reason": "磁力阻尼在靜止時消失是同一渦流拖曳的速度邊界。",
+      "raw_questions": [
+        "磁力阻尼讓精密天平快點停，為什麼不會一直把指針拉偏？",
+        "銅片不會被磁鐵黏住，穿過磁場邊界卻為什麼會被煞住？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "B2051",
+      "canonical_id": "B2050",
+      "reason": "強化隔離是雜交帶結果的一部分；同一適應度與基因流條件，作為既有核心延伸。",
+      "raw_questions": [
+        "雜交後代比較不容易留下下一代，為什麼可能反過來讓父母更會挑對象？",
+        "曾經分開的兩群動物再碰面，為什麼有時融合、有時越分越開？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "B2129",
+      "canonical_id": "B2120",
+      "reason": "目前只是石鱉足部與齒舌的並列，未有新的交互機制；附回既有齒舌題作全動物情境。",
+      "raw_questions": [
+        "石鱉趴在石頭上，怎麼同時牢牢抓住又刮到食物？",
+        "蝸牛沒有我們這樣的牙齒，怎麼把表面的食物刮下來？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "B2235",
+      "canonical_id": "B2234",
+      "reason": "根莖反向生長是重力感受、auxin 分布與組織反應的同一因果鏈，合併保留兩個條件。",
+      "raw_questions": [
+        "同樣受到重力影響，為什麼根往下彎、莖卻往上彎？",
+        "看不見光的種子埋在土裡，根怎麼仍能往下長？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "B2201",
+      "canonical_id": "B2059",
+      "reason": "廊道案例仍是遷移與繁殖造成基因流；目前沒有獨立的廊道設計效應機制。",
+      "raw_questions": [
+        "保護區之間的一條綠色通道，除了讓動物走過去還有什麼作用？",
+        "植物沒有走動，花粉怎麼仍能把兩處族群的基因連起來？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "X2051",
+      "canonical_id": "N073",
+      "reason": "均以特定波長吸收線辨認物質，新增恆星情境保留為變體。",
+      "raw_questions": [
+        "星光彩虹裡缺了幾條線，怎麼變成辨認材料的線索？",
+        "隔著那麼遠，怎麼知道行星大氣裡有什麼？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "X2057",
+      "canonical_id": "N068",
+      "reason": "原N068來源已包含星光偏折與微透鏡，質量推斷為延伸；保留天體測量案例和不同讀取範圍。",
+      "raw_questions": [
+        "單獨一顆白矮星沒有伴星，怎麼還能用光替它秤重？",
+        "沒有亮氣體陪著的黑洞，要怎麼被發現？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "D2130",
+      "canonical_id": "P042",
+      "reason": "同為壓力作用於面積產生總力；夾模需求保留作射出製程變體，非另一物理機制。",
+      "raw_questions": [
+        "小小塑膠殼，為什麼射出機卻需要那麼大的夾模力？",
+        "同樣的水壓，為什麼作用在大門板上的總推力更大？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "D2037",
+      "canonical_id": "P242",
+      "reason": "粒徑改變重力分層速度；脂滴向上與顆粒向下是條件差異，均質不等於脫脂保留作乳品變體。",
+      "raw_questions": [
+        "均質鮮奶不容易浮奶油，是脂肪被拿掉了嗎？",
+        "混濁的液體放久後一定會沉底嗎？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2029",
+      "canonical_id": "E2020",
+      "reason": "導體靜電平衡時內場為零與等電位，是同一不再驅動自由電荷的平衡機制。",
+      "raw_questions": [
+        "一大塊金屬形狀很不規則，靜止時不同位置仍能同電位嗎？",
+        "外面有電場，金屬內部的電場怎麼反而能是零？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    },
+    {
+      "duplicate_id": "E2097",
+      "canonical_id": "E2095",
+      "reason": "時間常數不是充滿時間，是同一RC指數趨近曲線的必要解釋。",
+      "raw_questions": [
+        "把 RC 的時間常數當成充飽時間，會錯在哪裡？",
+        "電容充電為什麼一開始快，越接近電源電壓越慢？"
+      ],
+      "retrieval": null,
+      "semantic_score": -1
+    }
+  ],
+  "limits": "50 pairs chosen by earlier manual editorial review; not a representative benchmark or duplicate probability. No thresholds tuned on this set. Advisory retrieval only.",
+  "known_distinct_pairs": [
+    {
+      "a": "L183",
+      "b": "N024",
+      "reason": "只有句型相似；菌絲結構與行星環顆粒是完全不同的研究對象和機制。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "P027",
+      "b": "P029",
+      "reason": "轉動慣量改變、收手做功的能量帳、角動量方向交換，研究目標不同；不可只看到角動量就整批判重。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.791284
+    },
+    {
+      "a": "P027",
+      "b": "P314",
+      "reason": "轉動慣量改變、收手做功的能量帳、角動量方向交換，研究目標不同；不可只看到角動量就整批判重。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.810689
+    },
+    {
+      "a": "P029",
+      "b": "P314",
+      "reason": "轉動慣量改變、收手做功的能量帳、角動量方向交換，研究目標不同；不可只看到角動量就整批判重。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "P053",
+      "b": "P055",
+      "reason": "表面濕潤接觸角與液柱毛細上升的重力平衡有不同待解差別。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "P100",
+      "b": "P294",
+      "reason": "線性回復、可恢復但非線性、剛性與破壞強度，不能直接互換。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.763057
+    },
+    {
+      "a": "P100",
+      "b": "P295",
+      "reason": "線性回復、可恢復但非線性、剛性與破壞強度，不能直接互換。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "P294",
+      "b": "P295",
+      "reason": "線性回復、可恢復但非線性、剛性與破壞強度，不能直接互換。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.679914
+    },
+    {
+      "a": "R001",
+      "b": "R003",
+      "reason": "跨站需求分別來自地球自轉幾何與局部天氣遮蔽，條件確實改變答案。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "R005",
+      "b": "P096",
+      "reason": "衛星熱設計同時限制外部熱輸入與內部熱排出；單純輻射無介質只是必要背景，不足回答工程配置。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "L006",
+      "b": "L001",
+      "reason": "L001 是通透性與隔離；L006 是膜內外兩面的組成不對稱，來源有明確段落，應保留。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.790992
+    },
+    {
+      "a": "L111",
+      "b": "L109",
+      "reason": "外生／內生菌根是接觸構造比較，與菌絲擴大資源接觸區不同。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.761506
+    },
+    {
+      "a": "L010",
+      "b": "L011",
+      "reason": "共運輸的耦合方式與能量直接／間接投入可保留不同研究方向；寫成影片仍宜相鄰而不硬拆集。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "L233",
+      "b": "L234",
+      "reason": "fragment 的定位用途與不隨 HTTP 請求傳送是不同操作層次。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.6653
+    },
+    {
+      "a": "L324",
+      "b": "P145",
+      "reason": "眼球調焦加入睫狀體與晶狀體的生理調節；不限於透鏡焦距原理。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "L275",
+      "b": "LEG-A65",
+      "reason": "DEFLATE 無損回指結構與圖片有損壓縮不是同一核心機制；僅按 legacy 題名判斷。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "L311",
+      "b": "LEG-A20",
+      "reason": "Unicode 等價碼點序列與跨平台 emoji 字形呈現不同；僅按 legacy 題名判斷。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.467095
+    },
+    {
+      "a": "N233",
+      "b": "N235",
+      "reason": "岩石熱脹冷縮與冰晶生長施力不同，保留不同條件機制。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.766014
+    },
+    {
+      "a": "N237",
+      "b": "N238",
+      "reason": "突然頂板失穩與鬆散顆粒逐步流失有不同失效模式，可同片對照。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.801523
+    },
+    {
+      "a": "N256",
+      "b": "N257",
+      "reason": "典型迎風凝結後下沉與無迎風降雨情境的焚風成因，條件改變時不能直接套同一解釋。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.755929
+    },
+    {
+      "a": "L099",
+      "b": "P055",
+      "reason": "乾燥種子的基質吸附與液柱毛細上升是不同的物質及力平衡問題。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "E2053",
+      "b": "N162",
+      "reason": "固體電容介質的承受上限與氣體放電通道形成分開；進稿須保持材料條件差異，不能都只寫電離。",
+      "semantic_retrieved": false,
+      "neighbour_cosine": -1
+    },
+    {
+      "a": "D2214",
+      "b": "P073",
+      "reason": "黏性耦合的差速扭矩回饋，與板間距改變速度梯度的條件不同；若稿件只重述黏滯定義仍應合片。",
+      "semantic_retrieved": true,
+      "neighbour_cosine": 0.683015
+    }
+  ],
+  "distinct_retrieved": 12
+}

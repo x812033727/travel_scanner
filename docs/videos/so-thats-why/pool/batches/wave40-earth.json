@@ -1,0 +1,633 @@
+{
+  "batch_id": "wave40-earth-20261103",
+  "created_on": "2026-11-03",
+  "scope": "從冰內氣體、火山沉降、海泥孔隙水與脂質、冰底接地痕跡，追查過去氣候及事件。以兩種可比較的觀測分開年齡、混合、來源與保存歧義。",
+  "sources": [
+    {
+      "id": "S40-S001",
+      "url": "https://doi.org/10.5194/cp-11-153-2015",
+      "doi": "10.5194/cp-11-153-2015",
+      "canonical_url": "https://doi.org/10.5194/cp-11-153-2015",
+      "retrieval_url": "https://cp.copernicus.org/articles/11/153/2015/cp-11-153-2015.pdf",
+      "title": "The WAIS Divide deep ice core WD2014 chronology – Part 1: Methane synchronization (68–31 ka BP) and the gas age–ice age difference",
+      "publisher": "Buizert等，Climate of the Past",
+      "version": "期刊網站正式PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "reading_scope": "PDF pp.2–3 §2與雪層氣齡差模型；p.9 §4.2步驟、p.10圖6與p.14定年表。",
+      "locator": "PDF pp.2–3 §2與雪層氣齡差模型；p.9 §4.2步驟、p.10圖6與p.14定年表。",
+      "summary": "先為深處氣體記錄的甲烷轉折定年，再按估出的冰氣年齡差將同一深度換成冰齡。",
+      "limitations": "深處氣齡差部分靠粒雪密實化模型並以氮同位素約束。跨記錄的事件對齊與誤差不能略去。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-age.pdf",
+        "sha256": "b7994d6bf28fbf3a360ebdc43180c8efbcfbb23e461e3c6dc98fd62a1257f21e",
+        "text_file": ".cache/wave40-earth-age.txt",
+        "text_sha256": "f61ea13047bcc79efb112c257edde5b5ac85e092c4151f12b635e94b36e1b8e8"
+      },
+      "viewed_images": []
+    },
+    {
+      "id": "S40-S002",
+      "url": "https://doi.org/10.5194/cp-16-2431-2020",
+      "doi": "10.5194/cp-16-2431-2020",
+      "canonical_url": "https://doi.org/10.5194/cp-16-2431-2020",
+      "retrieval_url": "https://cp.copernicus.org/articles/16/2431/2020/cp-16-2431-2020.pdf",
+      "title": "The SP19 chronology for the South Pole Ice Core – Part 2: gas chronology, Δage, and smoothing of atmospheric records",
+      "publisher": "Epifanio等，Climate of the Past",
+      "version": "期刊網站正式PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "reading_scope": "PDF pp.7–9 §3.2、表2及圖5；p.10圖6說明的氣齡分布比較。",
+      "locator": "PDF pp.7–9 §3.2、表2及圖5；p.10圖6說明的氣齡分布比較。",
+      "summary": "氣體經擴散與漸進封泡形成一段年齡分布，短促甲烷事件在南極點比在西南極冰分水嶺冰芯中更受平滑。",
+      "limitations": "西南極記錄被當作較高解析的參考，並非當時實測的大氣連續曲線。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-smooth.pdf",
+        "sha256": "90484424b37d6378b58791fe42b7df3b8bddfebab73655b48579ccc805ec5686",
+        "text_file": ".cache/wave40-earth-smooth.txt",
+        "text_sha256": "2e0d3f4d80f37929234918a09dbc12ff3db7563982d97deaa2e7fe8a7a1c1a11"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave40-earth-figures.jpg",
+          "sha256": "ec55d7baefaee805895c8693c8ab300a9cfc86f6c7c5714c1c2b0303937a6a73",
+          "read_scope": "圖5比較事件持續時間與兩芯振幅差"
+        }
+      ]
+    },
+    {
+      "id": "S40-S003",
+      "url": "https://doi.org/10.1038/34346",
+      "doi": "10.1038/34346",
+      "canonical_url": "https://doi.org/10.1038/34346",
+      "retrieval_url": "https://web.gps.caltech.edu/classes/ge140a/Stable_Isotope_W19/Readings_files/Severinghaus1998Nature.pdf",
+      "title": "Timing of abrupt climate change at the end of the Younger Dryas interval from thermally fractionated gases in polar ice",
+      "publisher": "Severinghaus等，Nature",
+      "version": "Caltech課程典藏1998 Nature原刊掃描文字，版權與研究身份同DOI；只保留web定點文字。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA直抓Caltech網址未通過TLS憑證驗證，改用web工具在同PDF定位查讀、保存工具回傳原文節選。",
+      "reading_scope": "原刊PDF Web L117–165、L194–209溫差分餾；L306–334對照同深度氮與氬、區別重力成分。",
+      "locator": "原刊PDF Web L117–165、L194–209溫差分餾；L306–334對照同深度氮與氬、區別重力成分。",
+      "summary": "地表突然變暖留下暫時溫度梯度，重的氮、氬同位素偏向冷端。兩氣體訊號按質量差換算後可檢驗單純重力沉降解釋。",
+      "limitations": "1998年格陵蘭GISP2特定轉折；本文稱幅度分解為初步估計，不能從單一氣泡讀出精確溫度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-nitrogen-web.txt",
+        "sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b",
+        "text_file": ".cache/wave40-earth-nitrogen-web.txt",
+        "text_sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b"
+      },
+      "viewed_images": []
+    },
+    {
+      "id": "S40-S004",
+      "url": "https://doi.org/10.5194/cp-17-565-2021",
+      "doi": "10.5194/cp-17-565-2021",
+      "canonical_url": "https://doi.org/10.5194/cp-17-565-2021",
+      "retrieval_url": "https://cp.copernicus.org/articles/17/565/2021/cp-17-565-2021.pdf",
+      "title": "Cryptotephra from the Icelandic Veiðivötn 1477 CE eruption in a Greenland ice core: confirming the dating of volcanic events in the 1450s CE and assessing the eruption’s climatic impact",
+      "publisher": "Abbott等，Climate of the Past",
+      "version": "期刊網站正式PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "reading_scope": "PDF pp.6–8玻璃粒微探針與QUB-1965結果，p.9圖4，p.14 §5.4解釋鎂等偏差。",
+      "locator": "PDF pp.6–8玻璃粒微探針與QUB-1965結果，p.9圖4，p.14 §5.4解釋鎂等偏差。",
+      "summary": "於格陵蘭冰芯硫峰附近分離微小玻璃粒，與已知噴發沉積物的元素組合及獨立年代比對，支持1477年Veiðivötn對應。",
+      "limitations": "並非每種氧化物完全吻合；部分玻璃成分有偏移。只採冰芯與玻璃分析，不引用樹輪溫度結論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-glass.pdf",
+        "sha256": "46077bbefdfa4a2559e51d82e1790efff8221846b53e4e0eb142a4a9efd8333e",
+        "text_file": ".cache/wave40-earth-glass.txt",
+        "text_sha256": "28af7e15479aa364ea2e0040ccce251840758b2984816329f013bbd29c80ba43"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave40-earth-figures.jpg",
+          "sha256": "ec55d7baefaee805895c8693c8ab300a9cfc86f6c7c5714c1c2b0303937a6a73",
+          "read_scope": "圖4玻璃碎片和已知噴發的成分散點群"
+        }
+      ]
+    },
+    {
+      "id": "S40-S005",
+      "url": "https://doi.org/10.5194/cp-17-2119-2021",
+      "doi": "10.5194/cp-17-2119-2021",
+      "canonical_url": "https://doi.org/10.5194/cp-17-2119-2021",
+      "retrieval_url": "https://cp.copernicus.org/articles/17/2119/2021/cp-17-2119-2021.pdf",
+      "title": "New insights into the ∼74 ka Toba eruption from sulfur isotopes of polar ice cores",
+      "publisher": "Crick等，Climate of the Past",
+      "version": "期刊網站正式PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "reading_scope": "PDF p.2分餾與紫外光機制；p.6圖3，pp.7–8 §4.1–4.2比較南極兩芯候選硫峰。",
+      "locator": "PDF p.2分餾與紫外光機制；p.6圖3，pp.7–8 §4.1–4.2比較南極兩芯候選硫峰。",
+      "summary": "高空短波紫外光能造成異常硫同位素組合；該訊號約束某些火山硫曾抵臭氧層附近或更高。多個候選峰皆有訊號。",
+      "limitations": "未據此鎖定唯一的多巴噴發年份、煙柱頂高度或地表降溫量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-sulfur.pdf",
+        "sha256": "5274299b55c39a88b191abbc3f6d2c5e39f0506c728fd5a019c93949186770b9",
+        "text_file": ".cache/wave40-earth-sulfur.txt",
+        "text_sha256": "60eb8793b30a05038ac07571f6662661abe5b054655f6281b87dded50a571df6"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave40-earth-figures.jpg",
+          "sha256": "ec55d7baefaee805895c8693c8ab300a9cfc86f6c7c5714c1c2b0303937a6a73",
+          "read_scope": "圖3兩座南極冰芯候選硫峰與同位素剖面"
+        }
+      ]
+    },
+    {
+      "id": "S40-S006",
+      "url": "https://doi.org/10.1029/2000GL011597",
+      "doi": "10.1029/2000GL011597",
+      "canonical_url": "https://doi.org/10.1029/2000GL011597",
+      "retrieval_url": "https://web.gps.caltech.edu/~jess/GRL_Adkins_Final.pdf",
+      "title": "Pore fluid constraints on deep ocean temperature and salinity during the Last Glacial Maximum",
+      "publisher": "Adkins、Schrag，Geophysical Research Letters",
+      "version": "作者Caltech網站稿件標2000年3月，期刊刊於2001年；以作者稿定位，未逐字比對正式版。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA直抓Caltech網址未通過TLS憑證驗證，改用web工具在同PDF定位查讀、保存工具回傳原文節選。",
+      "reading_scope": "作者網頁PDF的Web原文L27–44殼體二義、L112–159方法、L167–194剖面、L220–242擴散模型及L335–355扣除海水成分。",
+      "locator": "作者網頁PDF的Web原文L27–44殼體二義、L112–159方法、L167–194剖面、L220–242擴散模型及L335–355扣除海水成分。",
+      "summary": "海底泥孔隙水中的氧同位素隨深度的曲線，結合擴散模型能估古海水當時的組成。從底棲有孔蟲殼的總差值扣除海水貢獻，可約束深海冷暖。",
+      "limitations": "百慕達海隆殼體差值來自同類有孔蟲的不同岩芯；孔水剖面也經擴散。局部估值不能直代全球海溫。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-pores-web.txt",
+        "sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f",
+        "text_file": ".cache/wave40-earth-pores-web.txt",
+        "text_sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f"
+      },
+      "viewed_images": []
+    },
+    {
+      "id": "S40-S007",
+      "url": "https://doi.org/10.5194/cp-17-2305-2021",
+      "doi": "10.5194/cp-17-2305-2021",
+      "canonical_url": "https://doi.org/10.5194/cp-17-2305-2021",
+      "retrieval_url": "https://cp.copernicus.org/articles/17/2305/2021/cp-17-2305-2021.pdf",
+      "title": "Evaluation of lipid biomarkers as proxies for sea ice and ocean temperatures along the Antarctic continental margin",
+      "publisher": "Lamping等，Climate of the Past",
+      "version": "期刊網站正式PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "reading_scope": "PDF pp.8–9 §4.2、§4.3：海冰脂質IPSO25缺席的兩義，與開水藻類並比，Dronning Maud Land低訊號和衛星對照。",
+      "locator": "PDF pp.8–9 §4.2、§4.3：海冰脂質IPSO25缺席的兩義，與開水藻類並比，Dronning Maud Land低訊號和衛星對照。",
+      "summary": "海床沉積物中缺乏海冰藻脂質，可能是無海冰，也可能是冰太厚、透光太少。開水藻類指標與衛星現況提供額外對照。",
+      "limitations": "用南極大陸邊緣表層沉積物評估代用指標。兩組標誌都極低時單一指數可能失真，並非每份古泥都能定冰量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-algae.pdf",
+        "sha256": "cc2e7c006306f92ef503c2073619378a22bc19d9a0be229404366764411f2ccf",
+        "text_file": ".cache/wave40-earth-algae.txt",
+        "text_sha256": "20ff60f77396538ceb71a30129089b1ae43d513f284d0c71a14619cf4c916cd9"
+      },
+      "viewed_images": []
+    },
+    {
+      "id": "S40-S008",
+      "url": "https://doi.org/10.1073/pnas.1320329111",
+      "doi": "10.1073/pnas.1320329111",
+      "canonical_url": "https://doi.org/10.1073/pnas.1320329111",
+      "retrieval_url": "https://arxiv.org/pdf/1403.6201",
+      "title": "Radiometric 81Kr dating identifies 120,000-year-old ice at Taylor Glacier, Antarctica",
+      "publisher": "Buizert等，PNAS",
+      "version": "2014年arXiv:1403.6201作者稿，與PNAS正式研究同工作。",
+      "accessed_on": "2026-11-03",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "reading_scope": "作者稿PDF pp.4、6–8：近表採樣的問題、Kr樣品、85Kr偵測上限與Kr-1的39Ar異常。",
+      "locator": "作者稿PDF pp.4、6–8：近表採樣的問題、Kr樣品、85Kr偵測上限與Kr-1的39Ar異常。",
+      "summary": "長壽命氪可替困在冰裡的古空氣定年，另量短壽命的氪監測混入現代空氣的程度。該研究以現代樣本作對照並報偵測上限。",
+      "limitations": "測的是氣體封存。氪85未檢出只給混入上限，其中一份有氬39訊號，研究列替代解釋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-kr.pdf",
+        "sha256": "e761edbe0a4327093546cc5f7373ac4acdabe5d8fd8038fe7ee62f6b60351156",
+        "text_file": ".cache/wave40-earth-kr.txt",
+        "text_sha256": "cbd307814cb69aa158249141c09753d981f7e7374b546329b2c3fcb28e5f9756"
+      },
+      "viewed_images": []
+    },
+    {
+      "id": "S40-S009",
+      "url": "https://doi.org/10.5194/tc-17-2645-2023",
+      "doi": "10.5194/tc-17-2645-2023",
+      "canonical_url": "https://doi.org/10.5194/tc-17-2645-2023",
+      "retrieval_url": "https://tc.copernicus.org/articles/17/2645/2023/tc-17-2645-2023.pdf",
+      "title": "Towards modelling of corrugation ridges at ice-sheet grounding lines",
+      "publisher": "Hogan等，The Cryosphere",
+      "version": "期刊網站正式PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "reading_scope": "PDF pp.2–3接地線往返/覆寫條件，p.14 §3.3 Larsen Inlet雙潮模擬、p.15圖4a–c模型與實測海床剖面。",
+      "locator": "PDF pp.2–3接地線往返/覆寫條件，p.14 §3.3 Larsen Inlet雙潮模擬、p.15圖4a–c模型與實測海床剖面。",
+      "summary": "落潮使冰底觸床，漲潮又抬起。拉森灣兩次低潮幅度不同，模型中一次往海側移得更遠，可把前一道痕抹去。",
+      "limitations": "海底稜脊地形是實測，逐潮形成和消除是模型。稜距反推退縮需限定地形、潮差與保存機制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave40-earth-ridge.pdf",
+        "sha256": "a733cff2bb92a8d6bd487538135edc988273a06a9be9db8cc69b129e534f0f55",
+        "text_file": ".cache/wave40-earth-ridge.txt",
+        "text_sha256": "ab9ac17343ec340a8fdc27f118b10eb45310e31dc50f842492cd74aadbbf0539"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave40-earth-figures.jpg",
+          "sha256": "ec55d7baefaee805895c8693c8ab300a9cfc86f6c7c5714c1c2b0303937a6a73",
+          "read_scope": "圖4a,b為不同退縮率模擬；圖4c為實測海床剖面"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S40-001",
+      "question": "從同一截冰取出來的空氣，怎麼會比包住它的冰年輕？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.firn_open_pores_later_gas_closure_separate_age_scales",
+      "answer_target": "雪落下後逐漸被埋，可通氣的孔隙還能和上方大氣交換，直到較深處才封成氣泡。以深處冰芯裡的大氣甲烷轉折對年代，先得到氣體的年齡；要替旁邊的冰定年，還得加回當地估算的冰氣年齡差。",
+      "scope": "限西南極冰分水嶺深部定年。參照時標和冰氣差都有誤差，不能把各地、各時期都當成固定晚幾年。",
+      "source_ids": [
+        "S40-S001"
+      ],
+      "source_locator": "PDF pp.2–3 §2與雪層氣齡差模型；p.9 §4.2步驟、p.10圖6與p.14定年表。",
+      "premise_status": "screened",
+      "notes": "深處氣齡差部分靠粒雪密實化模型並以氮同位素約束。跨記錄的事件對齊與誤差不能略去。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一個深度可以放兩張出生證，日期各有測量依據。",
+        "visual": "一側標落雪層埋深，另一側畫氣體仍可進出的連通孔；在封閉位置替冰與氣各貼一個時間標籤。",
+        "seconds": [
+          28,
+          62
+        ]
+      }
+    },
+    {
+      "id": "S40-002",
+      "question": "同一次大氣甲烷變化，為什麼在一根冰芯很尖，在另一根卻矮而平？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.firn_gas_age_distribution_damps_short_transients",
+      "answer_target": "一截冰樣的許多孔隙不是同時封住，空氣又曾在雪層間擴散，因此裡面混有一段時間的空氣。比較南極點與西南極較高解析的甲烷記錄，持續較短的事件往往被攤得更平。移動時間軸只能調日期，不能把混在一起的峰重新拉高。",
+      "scope": "以SPC14與WD所測事件為例。參考芯也不是直接連續觀測，不能用一個固定倍數還原每座冰芯的尖峰。",
+      "source_ids": [
+        "S40-S002"
+      ],
+      "source_locator": "PDF pp.7–9 §3.2、表2及圖5；p.10圖6說明的氣齡分布比較。",
+      "premise_status": "screened",
+      "notes": "西南極記錄被當作較高解析的參考，並非當時實測的大氣連續曲線。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "訊號晚幾年和被攤成幾十年的變化是兩個不同問題。",
+        "visual": "讓兩個中心時間相同但寬窄不同的採樣窗掃過短脈衝及長平台，再對比兩站的原創示意曲線。",
+        "seconds": [
+          28,
+          65
+        ]
+      }
+    },
+    {
+      "id": "S40-003",
+      "question": "古空氣裡重氮同位素的比例升高，怎麼分辨是雪面回暖，還是重力造成的？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.nitrogen_argon_mass_scaled_pair_distinguishes_thermal_fractionation",
+      "answer_target": "雪面突然變暖時，深處暫時仍冷；較重的氣體同位素偏向冷端，趕在溫度均勻前留下短暫異常。重力也能讓重同位素偏在底部，但若只受重力影響，氮和氬按質量差換算的訊號應相近。這次兩者不等，支持有溫差貢獻。",
+      "scope": "限格陵蘭GISP2新仙女木期結束時的異常。作者還發現部分重力成分，沒有採精確回暖幅度或另判甲烷因果。",
+      "source_ids": [
+        "S40-S003"
+      ],
+      "source_locator": "原刊PDF Web L117–165、L194–209溫差分餾；L306–334對照同深度氮與氬、區別重力成分。",
+      "premise_status": "screened",
+      "notes": "1998年格陵蘭GISP2特定轉折；本文稱幅度分解為初步估計，不能從單一氣泡讀出精確溫度。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讓兩種氣體替同一個暖化假說出題，不能把所有重氮增加都當作升溫。",
+        "visual": "同一深度並排氮、氬已按質量差換算的柱子，把純重力預期畫成等高的虛線對照。",
+        "seconds": [
+          33,
+          66
+        ]
+      }
+    },
+    {
+      "id": "S40-004",
+      "question": "格陵蘭的冰裡找到幾粒看不見的火山玻璃，怎麼追到冰島那次噴發？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.cryptotephra_glass_major_element_population_identifies_eruption",
+      "answer_target": "硫含量出現尖峰能提示噴發，卻不會報出火山名字。研究者取出同一時段的玻璃碎粒，逐粒比較幾種元素的組合，再核對已知噴發沉積與年代。多種元素範圍和時間證據支持1477年冰島Veiðivötn噴發，個別元素仍有偏差。",
+      "scope": "限TUNU2013冰芯的已分析碎粒和可比較參照樣本。不同噴發可出自同火山系，也不以一粒或一個元素單獨定案。",
+      "source_ids": [
+        "S40-S004"
+      ],
+      "source_locator": "PDF pp.6–8玻璃粒微探針與QUB-1965結果，p.9圖4，p.14 §5.4解釋鎂等偏差。",
+      "premise_status": "screened",
+      "notes": "並非每種氧化物完全吻合；部分玻璃成分有偏移。只採冰芯與玻璃分析，不引用樹輪溫度結論。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "從「附近有噴發的線索」到「最符合哪次噴發」要補上物證與時間兩關。",
+        "visual": "畫出含硫峰的窄冰層、放大玻璃碎粒，拿多元素點群配對；保留鎂含量略偏離的點。",
+        "seconds": [
+          31,
+          69
+        ]
+      }
+    },
+    {
+      "id": "S40-005",
+      "question": "極地冰裡的一層硫酸鹽，怎麼留下火山氣體曾經飛得很高的線索？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.volcanic_sulfur_mif_uv_exposure_above_ozone",
+      "answer_target": "火山氣體進入臭氧層附近或更高處，會遇到不同的短波紫外光。光化學反應可留下偏離一般質量規律的硫同位素組合。比較南極冰芯一層內不同位置的硫酸鹽，若有這種異常，可推知至少部分火山硫曾到高空。",
+      "scope": "限多巴年代前後的候選硫峰及該研究的量測誤差。多個峰都含高空信號，不能由此直接報出唯一火山或煙柱高度。",
+      "source_ids": [
+        "S40-S005"
+      ],
+      "source_locator": "PDF p.2分餾與紫外光機制；p.6圖3，pp.7–8 §4.1–4.2比較南極兩芯候選硫峰。",
+      "premise_status": "screened",
+      "notes": "未據此鎖定唯一的多巴噴發年份、煙柱頂高度或地表降溫量。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "峰有多高是含量；同位素組合另問這批硫曾經過哪種光環境。",
+        "visual": "先固定硫峰大小，再用另一顏色畫同位素在峰前後的偏離；把高度畫為一個區域，不標成精確公尺數。",
+        "seconds": [
+          34,
+          67
+        ]
+      }
+    },
+    {
+      "id": "S40-006",
+      "question": "海底化石殼裡的重氧比例升高，怎麼知道當時的海水有沒有變冷？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.porewater_diffusion_constrains_foram_water_temperature_ambiguity",
+      "answer_target": "有孔蟲殼中重氧的比例同時受成殼水溫與海水本來的氧同位素比例影響。研究者另在不同深度擠出泥中的孔隙水，量出其同位素剖面，用擴散模型回推冰期海水的變化，再從殼體總差值中扣除這部分，估算當地深水降溫。",
+      "scope": "以百慕達海隆的孔水與殼體資料為限。比較的是重氧比例，不是殼的重量。殼資料來自不同岩芯，模型的邊界條件與擴散會影響估值。",
+      "source_ids": [
+        "S40-S006"
+      ],
+      "source_locator": "作者網頁PDF的Web原文L27–44殼體二義、L112–159方法、L167–194剖面、L220–242擴散模型及L335–355扣除海水成分。",
+      "premise_status": "screened",
+      "notes": "百慕達海隆殼體差值來自同類有孔蟲的不同岩芯；孔水剖面也經擴散。局部估值不能直代全球海溫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "殼像一支受海水成分干擾的溫度計，泥裡的水能替其中一個未知量提供限制。",
+        "visual": "將同一殼體訊號畫成「溫度＋當時海水」兩部分；獨立畫孔水取樣深度和擴散後的彎曲剖面。",
+        "seconds": [
+          34,
+          75
+        ]
+      }
+    },
+    {
+      "id": "S40-007",
+      "question": "海底泥裡找不到海冰藻的脂質，怎麼可能是沒海冰，也可能是冰太厚？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.sea_ice_and_open_water_lipids_resolve_absence_ambiguity",
+      "answer_target": "沒有海冰，冰藻缺生長場所；海冰太厚，底部光線太弱，冰藻留下的脂質也可能很少。研究再量開水浮游藻類的脂質，把「冰藻少但開水藻有產出」與「兩邊都很少」分開，並和南極大陸邊緣的衛星海冰資料比較。",
+      "scope": "此篇以現代表層沉積物檢驗代用指標。兩類分子都稀少時證據薄弱，不能直接用指數報冰蓋百分比。",
+      "source_ids": [
+        "S40-S007"
+      ],
+      "source_locator": "PDF pp.8–9 §4.2、§4.3：海冰脂質IPSO25缺席的兩義，與開水藻類並比，Dronning Maud Land低訊號和衛星對照。",
+      "premise_status": "screened",
+      "notes": "用南極大陸邊緣表層沉積物評估代用指標。兩組標誌都極低時單一指數可能失真，並非每份古泥都能定冰量。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一個「沒找到」，可以是沒有棲地，或棲地太暗。",
+        "visual": "左右兩幅水柱都給很低的冰藻訊號，再揭開水藻資料與獨立衛星圖；保留低於檢測的灰格。",
+        "seconds": [
+          30,
+          73
+        ]
+      }
+    },
+    {
+      "id": "S40-008",
+      "question": "拿十多萬年前的冰量空氣年齡，怎麼查是不是有今天的空氣從裂縫混進來？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.dual_krypton_recent_air_contamination_check",
+      "answer_target": "氪81緩慢衰變，可為封存很久的空氣估年；混入現代空氣時，古老樣本會看起來偏年輕。研究另測近代空氣帶有而古老空氣中應已幾乎衰盡的氪85，以現代對照估計混入量的上限。",
+      "scope": "限泰勒冰川樣本。氪85低於偵測值只提供上限，一份樣本另有氬39異常，不能保證每瓶氣體都毫無污染。",
+      "source_ids": [
+        "S40-S008"
+      ],
+      "source_locator": "作者稿PDF pp.4、6–8：近表採樣的問題、Kr樣品、85Kr偵測上限與Kr-1的39Ar異常。",
+      "premise_status": "screened",
+      "notes": "測的是氣體封存。氪85未檢出只給混入上限，其中一份有氬39訊號，研究列替代解釋。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "慢時鐘算年代，短時鐘負責抓新空氣混進來。",
+        "visual": "把現代空氣標本與古冰樣放在兩個讀值欄，氪85以「低於偵測限」呈現；另外留出異常氬樣。",
+        "seconds": [
+          28,
+          65
+        ]
+      }
+    },
+    {
+      "id": "S40-009",
+      "question": "海底一排排矮脊，看似潮汐刻的日曆，真的每次低潮都能留下來嗎？",
+      "domain": "冰芯、海底沉積與過去環境",
+      "mechanism_key": "archive.grounding_line_tidal_overprinting_breaks_ridge_clock",
+      "answer_target": "接地線是冰底從碰著海床轉為漂浮的位置，漲落潮會使它往返。拉森灣模型裡，一天兩次低潮高度不等，冰底有時能再往海側壓過前一道脊。於是多段時間只保存一道，若按每道脊必等於半天去算，就會高估這段冰的退縮速率。",
+      "scope": "限Larsen Inlet指定潮差、坡度、沉積機制與模擬退縮率。聲納量到的是地形剖面，覆寫是模型解釋，不能把每岸每一天都設成相同保留率。",
+      "source_ids": [
+        "S40-S009"
+      ],
+      "source_locator": "PDF pp.2–3接地線往返/覆寫條件，p.14 §3.3 Larsen Inlet雙潮模擬、p.15圖4a–c模型與實測海床剖面。",
+      "premise_status": "screened",
+      "notes": "海底稜脊地形是實測，逐潮形成和消除是模型。稜距反推退縮需限定地形、潮差與保存機制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "每次留下痕跡，與每道痕跡都保存到現在，是兩個條件。",
+        "visual": "用兩色標連續低潮的接地位置，讓後一次壓過舊脊；底下另畫實測剖面，把模擬過程標清楚。",
+        "seconds": [
+          34,
+          76
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "S40-NA001",
+      "question": "積雪變冰是不是只要壓緊就好？",
+      "existing_ids": [
+        "N213"
+      ],
+      "source_ids": [],
+      "reason": "粒雪壓實原理舊庫已有。",
+      "reentry_condition": "需提出與讀取古氣體有關的獨立觀測。"
+    },
+    {
+      "id": "S40-NA002",
+      "question": "同一層冰是不是越深必然越老？",
+      "existing_ids": [
+        "N132",
+        "E7018"
+      ],
+      "source_ids": [
+        "S40-S008"
+      ],
+      "reason": "一般地層疊置與缺失已收，冰流扭曲只當氪定年動機。",
+      "reentry_condition": "需定點測到褶皺或倒轉再獨立提題。"
+    },
+    {
+      "id": "S40-NA003",
+      "question": "只把原子換成氪81，半衰期能算年代嗎？",
+      "existing_ids": [
+        "N133"
+      ],
+      "source_ids": [
+        "S40-S008"
+      ],
+      "reason": "通用衰變定年已有，本批增量是不同壽命示蹤對污染量的限制。",
+      "reentry_condition": "如只有核種替換，不再提。"
+    },
+    {
+      "id": "S40-NA004",
+      "question": "一個氣泡裡的甲烷是否來自唯一某一年？",
+      "existing_ids": [
+        "S40-001",
+        "S40-002"
+      ],
+      "source_ids": [
+        "S40-S001",
+        "S40-S002"
+      ],
+      "reason": "公開記錄測多個封閉孔隙的樣本，不能把年齡分布硬指定到單泡單年。",
+      "reentry_condition": "先有逐泡封存年代證據。"
+    },
+    {
+      "id": "S40-NA005",
+      "question": "換算冰齡是否就是把每一根冰芯向後挪幾百年？",
+      "existing_ids": [
+        "S40-001"
+      ],
+      "source_ids": [
+        "S40-S001"
+      ],
+      "reason": "同一問題的錯誤固定常數假設。",
+      "reentry_condition": "重新提案要有新的觀測量與相應條件。"
+    },
+    {
+      "id": "S40-NA006",
+      "question": "兩根冰芯的峰不一樣高，是不是代表當時南極的甲烷局地驟升？",
+      "existing_ids": [
+        "S40-002"
+      ],
+      "source_ids": [
+        "S40-S002"
+      ],
+      "reason": "平滑程度已能產生差異，未排除取樣與封泡過程。",
+      "reentry_condition": "需要獨立可檢驗的當地源證據。"
+    },
+    {
+      "id": "S40-NA007",
+      "question": "每個硫峰是否都可直接命名為多巴火山？",
+      "existing_ids": [
+        "S40-004",
+        "S40-005"
+      ],
+      "source_ids": [
+        "S40-S004",
+        "S40-S005"
+      ],
+      "reason": "高空同位素訊號/濃度不是唯一源頭。",
+      "reentry_condition": "取得該層可匹配的碎片或其他來源證據。"
+    },
+    {
+      "id": "S40-NA008",
+      "question": "一粒玻璃的顏色能認出哪座火山嗎？",
+      "existing_ids": [
+        "N137",
+        "S40-004"
+      ],
+      "source_ids": [
+        "S40-S004"
+      ],
+      "reason": "定源研究讀的是多粒成分與時序；色澤不是唯一指紋。",
+      "reentry_condition": "需可區分噴發的化學、年齡與誤差。"
+    },
+    {
+      "id": "S40-NA009",
+      "question": "冰層重氮變多就能直讀任意年份精確溫度？",
+      "existing_ids": [
+        "S40-003"
+      ],
+      "source_ids": [
+        "S40-S003"
+      ],
+      "reason": "重力、溫差與演化歷程都會影響訊號。",
+      "reentry_condition": "先能把互相混雜的貢獻分開。"
+    },
+    {
+      "id": "S40-NA010",
+      "question": "用冰芯火山峰解釋所有同時變窄的樹輪？",
+      "existing_ids": [],
+      "source_ids": [
+        "S40-S004"
+      ],
+      "reason": "跨到樹輪另案，且同年代不等於已分離降溫成因。",
+      "reentry_condition": "由樹輪組檢驗獨立控制後再評。"
+    },
+    {
+      "id": "S40-NA011",
+      "question": "古海冰藻脂質濃度能直接換成精確海冰厚度？",
+      "existing_ids": [
+        "S40-007"
+      ],
+      "source_ids": [
+        "S40-S007"
+      ],
+      "reason": "海冰藻生長、開放水面生產及保存都影響指標。",
+      "reentry_condition": "要有能排除其他因素的區域標定。"
+    },
+    {
+      "id": "S40-NA012",
+      "question": "海床浮冰撞出的溝槽是不是又一種海溝？",
+      "existing_ids": [
+        "N111",
+        "E7003"
+      ],
+      "source_ids": [],
+      "reason": "僅外形聯想，沒有本批實讀的漂冰刮痕辨別。",
+      "reentry_condition": "要有刮痕與其他底床構造的觀測對照。"
+    },
+    {
+      "id": "S40-NA013",
+      "question": "用一粒海底角閃石的年齡直接定冰山融化的年份？",
+      "existing_ids": [
+        "N133"
+      ],
+      "source_ids": [],
+      "reason": "岩石母源的時鐘與冰運沉積年代不同；候選文僅檢索到摘要與索引，未採。",
+      "reentry_condition": "先補原研究正文、母源與沉積期如何分開。"
+    },
+    {
+      "id": "S40-NA014",
+      "question": "北大西洋碎屑百分比高一定是更多冰山崩解？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "百分比受有孔蟲等分母改變；目前只讀檢索摘要與綜述線索。",
+      "reentry_condition": "需定點閱讀原始通量和沉積率對照。"
+    },
+    {
+      "id": "S40-NA015",
+      "question": "兩次低潮少掉一次，就能把全球冰退速度一律砍半？",
+      "existing_ids": [
+        "S40-009"
+      ],
+      "source_ids": [
+        "S40-S009"
+      ],
+      "reason": "這是場址、潮差、再壓過的位置與設定速度共同造成的模型結果。",
+      "reentry_condition": "更換場址需先比較地形保存與潮汐。"
+    }
+  ]
+}

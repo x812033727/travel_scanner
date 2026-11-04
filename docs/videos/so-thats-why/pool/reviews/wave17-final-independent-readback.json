@@ -1,0 +1,1474 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "reviewer": "root; completed independent data scope by science_sources",
+  "status": "PASS_INDEPENDENT_DATA_WITH_ROOT_DOCS_TESTS_READBACK",
+  "remaining_blockers": [],
+  "production_ready": false,
+  "role_disclosure": "science_sources completed independent central data/editorial readback and the durable data receipt before reaching its usage limit. It did not read the final README/VALIDATION/SEMANTIC or completed test summaries. Root subsequently read those documents and logs and ran this adapted closure checker. The hashes are root-verified final bindings, not a claim that the late documents received independent review. Earth factual scope uses life non-author receipt; animal uses physics; fluid uses science. No new full-source or script approval.",
+  "actual_scope": [
+    "獨立Python直接比2959 gzip：3326舊raw、4278來源物件及全部readings、835未收多重集合完整保留；3186舊canonical物件全同，P131併P129的兩列另作限制欄位核對。",
+    "2959舊selected只P131合成P129變體，保留2958獨立列；舊185案全部深比不變。19新raw/20來源所有作者欄位與source refs/locator/origin、61新未收逐欄相符。",
+    "15 registry加初始1000共16快照：核descriptor/gzip SHA、metadata/count及缺少選入ID的宣告處置。只有2959快照做上述全raw深比，不宣稱16份全raw逐欄核對。",
+    "14新案與作者提案除中央id/priority/proposal_id外全部相同；重算28章、15組題案-核心累計、每beat與素材上限，閱讀刪章撤案條件。",
+    "核三份final非作者收據/作者SHA及final delta；來源身分與同文關係/失敗範圍、舊六對集中5distinct/1merge均對上。",
+    "Root讀最終README/VALIDATION/SEMANTIC、QA收據與測試log摘要，驗其SHA；此晚期文件/測試摘要核對不是science的獨立覆核。44測試及瀏覽器由root本輪既有執行，不為此再重跑。"
+  ],
+  "counts_readback": {
+    "raw_records": 3345,
+    "canonical_questions": 3206,
+    "eligible_candidates": 3036,
+    "selected_candidates": 2977,
+    "alias_records": 139,
+    "historical_records": 313,
+    "source_urls": 4298,
+    "current_research_source_urls": 1339,
+    "selected_source_urls": 2523,
+    "new_suggestions_not_added": 896,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0,
+    "themes": 199,
+    "selected_source_references": 4393,
+    "new_raw": 19,
+    "new_selected": 19,
+    "old_selected_merged": 1,
+    "net_selected_change": 18,
+    "new_sources": 20,
+    "first_in_pool_urls": 20,
+    "source_urls_supporting_candidates": 18,
+    "source_urls_only_not_added": 2,
+    "new_not_added": 61,
+    "new_themes": 14,
+    "remaining_to_10000": 7023
+  },
+  "baseline_readback": {
+    "file": "baselines/2026-11-02-2959.json.gz",
+    "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f",
+    "old_raw_deep_equal": 3326,
+    "old_canonical_deep_equal": 3186,
+    "old_selected_retained": 2958,
+    "old_sources_and_all_readings_deep_equal": 4278,
+    "old_not_added_multiset_retained": 835,
+    "old_alias_mappings_unchanged": 3325,
+    "old_themes_deep_equal": 185,
+    "P131_preserved_as_alias_and_variant": true,
+    "P129_changed_fields": [
+      "aliases",
+      "question_variants",
+      "provenance_ids"
+    ],
+    "P129_old_source_refs_unchanged_and_P131_source_preserved": true,
+    "checkpoints": [
+      {
+        "file": "baseline.json",
+        "snapshot_file": "baselines/2026-11-01-1000.json.gz",
+        "sha256": "6cf3b0f5a7e37546d3c53806b94376f68f2a5cf16b1510d5ca64ef06ee9ac7fd",
+        "selected_count": 1000,
+        "raw_count": 1224,
+        "declared_retired_ids": [
+          "L042",
+          "L177",
+          "L293",
+          "P131",
+          "P150"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2000.json",
+        "snapshot_file": "baselines/2026-11-01-2000.json.gz",
+        "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4",
+        "selected_count": 2000,
+        "raw_count": 2293,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "E2106",
+          "L042",
+          "L177",
+          "L293",
+          "P131",
+          "P150"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2328.json",
+        "snapshot_file": "baselines/2026-11-01-2328.json.gz",
+        "sha256": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba",
+        "selected_count": 2328,
+        "raw_count": 2661,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2449.json",
+        "snapshot_file": "baselines/2026-11-01-2449.json.gz",
+        "sha256": "e98b96cad65be24cdc59bfc1d9f60f311040a7987e04a7b008fab08778063bb2",
+        "selected_count": 2449,
+        "raw_count": 2790,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2546.json",
+        "snapshot_file": "baselines/2026-11-01-2546.json.gz",
+        "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4",
+        "selected_count": 2546,
+        "raw_count": 2895,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2609.json",
+        "snapshot_file": "baselines/2026-11-01-2609.json.gz",
+        "sha256": "06f9fdec324c8e0f6fabd22805eed413fbf5e3f109473e595ec1e2228ab150f1",
+        "selected_count": 2609,
+        "raw_count": 2959,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2667.json",
+        "snapshot_file": "baselines/2026-11-01-2667.json.gz",
+        "sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c",
+        "selected_count": 2667,
+        "raw_count": 3017,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2711.json",
+        "snapshot_file": "baselines/2026-11-01-2711.json.gz",
+        "sha256": "035074191cbf98fe87426589b6f746a90934e1087a65271e4cdd9b03784da217",
+        "selected_count": 2711,
+        "raw_count": 3069,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2757.json",
+        "snapshot_file": "baselines/2026-11-01-2757.json.gz",
+        "sha256": "92c8527689b44740352d8698bfe38be5e46b42c7a299878309501245c992ac0d",
+        "selected_count": 2757,
+        "raw_count": 3115,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2797.json",
+        "snapshot_file": "baselines/2026-11-01-2797.json.gz",
+        "sha256": "3fe88554de1e8947fcb8e3890302b5bd35d2848fdd43e7c779296e68f6969e2b",
+        "selected_count": 2797,
+        "raw_count": 3160,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2837.json",
+        "snapshot_file": "baselines/2026-11-01-2837.json.gz",
+        "sha256": "6c1a9c8c29d0b8bb540de430e6f98646ab48bcf07e89d1d7bf1e8cd21117c0fd",
+        "selected_count": 2837,
+        "raw_count": 3201,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2870.json",
+        "snapshot_file": "baselines/2026-11-01-2870.json.gz",
+        "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32",
+        "selected_count": 2870,
+        "raw_count": 3235,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2897.json",
+        "snapshot_file": "baselines/2026-11-01-2897.json.gz",
+        "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0",
+        "selected_count": 2897,
+        "raw_count": 3262,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2921.json",
+        "snapshot_file": "baselines/2026-11-02-2921.json.gz",
+        "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7",
+        "selected_count": 2921,
+        "raw_count": 3287,
+        "declared_retired_ids": [
+          "E2026",
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2939.json",
+        "snapshot_file": "baselines/2026-11-02-2939.json.gz",
+        "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222",
+        "selected_count": 2939,
+        "raw_count": 3306,
+        "declared_retired_ids": [
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2959.json",
+        "snapshot_file": "baselines/2026-11-02-2959.json.gz",
+        "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f",
+        "selected_count": 2959,
+        "raw_count": 3326,
+        "declared_retired_ids": [
+          "P131"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+      }
+    ],
+    "editorial_exception_baseline": "checkpoint-2000.json only",
+    "old_exclusion_array_unchanged": true
+  },
+  "dedup_readback": {
+    "new_proposal_merges": 0,
+    "new_holds": 0,
+    "old_merges": [
+      {
+        "duplicate_id": "P131",
+        "canonical_id": "P129"
+      }
+    ],
+    "new_distinct_pairs": 70,
+    "all_review_recommended_distinct_pairs_present": true,
+    "old_pairs": {
+      "distinct": [
+        {
+          "a": "D9014",
+          "b": "D9016",
+          "reason": "一題改探頭間距，衡量梯度近似與固定相位失配的相對誤差；另一題保持感測器、改近場聲源位置，產生真實前後幅度差。儀器偏差與聲場響應的控制變量不同。"
+        },
+        {
+          "a": "E2083",
+          "b": "E2169",
+          "reason": "並聯題固定電壓而新增路徑；輸電題固定功率而提高電壓，並比較線阻損耗。不能因都含電流/電壓而合併。"
+        },
+        {
+          "a": "E2002",
+          "b": "H3036",
+          "reason": "中性導體受外場時重新分布電子，對照的是化學活度不同的電極系統產生電位差；前者不需要兩室化學梯度，後者不能用靜電感應當完整答案。"
+        },
+        {
+          "a": "E2161",
+          "b": "E2255",
+          "reason": "交流電容回答電路兩側為何有充放電電流；類比開關題另有控制端到訊號端的寄生耦合及負載電容，解釋開關瞬間輸出步階。多出的路徑與負載條件改變解答，不只是換電容名稱。"
+        },
+        {
+          "a": "L138",
+          "b": "L143",
+          "reason": "吸氣的壓力驅動和最大呼氣後仍留氣的容量定義，回答不同問題；不能合成同一壓差機制。但 L143 現答案尚未解釋殘氣形成的力學，僅宜作容量比較短段，不是獨立影片厚度核准。"
+        }
+      ],
+      "merges": [
+        {
+          "duplicate_id": "P131",
+          "canonical_id": "P129",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。"
+        }
+      ],
+      "exclusions": 0,
+      "central_all_decisions_match": true,
+      "source_review_limit": "本次只核舊列/來源保留與收據綁定；先前root十一段/science五段指定閱讀範圍不擴張成全舊庫查核。"
+    },
+    "sampling_limit": "六對是最高分未列distinct的目的性舊題樣本，不是隨機品質估計。本輪新候選合併集合空，不計檢索命中率；舊P131合併不混入新候選分母。"
+  },
+  "review_binding_readback": {
+    "topic_receipts": [
+      {
+        "file": "reviews/wave17-physics-reviews-animal-control.json",
+        "sha256": "8c3c4d58b73a0818717a99dcadb778bb2f90ed92855ae0e3135ad515aae1914e",
+        "status": "PASS_TOPIC_LEVEL_ONLY",
+        "candidate_ids": [
+          "B17001",
+          "B17002",
+          "B17003",
+          "B17004",
+          "B17005",
+          "B17006"
+        ],
+        "all_final_author_bindings_match": true
+      },
+      {
+        "file": "reviews/wave17-science-reviews-fluid-interfaces.json",
+        "sha256": "16db638c6798677451864bd09a70d1c25e35a50ef802d4737853a6f7496390ea",
+        "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+        "candidate_ids": [
+          "F17001",
+          "F17002",
+          "F17003",
+          "F17004",
+          "F17005",
+          "F17006",
+          "F17007"
+        ],
+        "all_final_author_bindings_match": true
+      },
+      {
+        "file": "reviews/wave17-life-reviews-earth-patterns.json",
+        "sha256": "24ecfa68e38fb1ce6fb9b25fcdb844f4aef735b971331981ddf7c861a85bddeb",
+        "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+        "candidate_ids": [
+          "E17001",
+          "E17002",
+          "E17003",
+          "E17004",
+          "E17005",
+          "E17006"
+        ],
+        "all_final_author_bindings_match": true
+      }
+    ],
+    "final_common_draft_sha256": "97d5c4d6fbbcabbe6f6390f480cc7eb265b3b7d81df77bb9a713b1c038533e3c",
+    "final_delta_scope": "動物B17002/03 answer已定點修正，新增兩個近鄰已有判讀；流體F17007定位及衍生source_refs變更、全部top5不變；地表raw/top5全同，只有題案T02縮15秒。三收據保留修前/first及final閱讀。",
+    "all_required_final_bindings_match": true
+  },
+  "source_readback": {
+    "old_sources_and_readings_preserved": 4278,
+    "new_source_maps": [
+      {
+        "batch_source_id": "B17-S001",
+        "source_id": "SRC-f94c07154cf14378",
+        "url": "https://doi.org/10.1038/s41586-024-07157-x",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B17001"
+        ],
+        "theme_ids": [
+          "G186"
+        ]
+      },
+      {
+        "batch_source_id": "B17-S002",
+        "source_id": "SRC-f926cc74eabcb7bb",
+        "url": "https://doi.org/10.1073/pnas.1522419113",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B17002"
+        ],
+        "theme_ids": [
+          "G187"
+        ]
+      },
+      {
+        "batch_source_id": "B17-S003",
+        "source_id": "SRC-60d3844e7a66a77d",
+        "url": "https://doi.org/10.1016/j.cub.2008.07.094",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B17003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "batch_source_id": "B17-S004",
+        "source_id": "SRC-ad1ea8d837eb18fb",
+        "url": "https://doi.org/10.1073/pnas.0905183106",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B17004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "batch_source_id": "B17-S005",
+        "source_id": "SRC-f3b96db5a2b8e7af",
+        "url": "https://doi.org/10.1126/science.1128727",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B17005"
+        ],
+        "theme_ids": [
+          "G188"
+        ]
+      },
+      {
+        "batch_source_id": "B17-S006",
+        "source_id": "SRC-1047e72f7d885bde",
+        "url": "https://doi.org/10.7554/eLife.99634.3",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B17006"
+        ],
+        "theme_ids": [
+          "G189"
+        ]
+      },
+      {
+        "batch_source_id": "F17-S001",
+        "source_id": "SRC-7b2bb91bed897432",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "F17001"
+        ],
+        "theme_ids": [
+          "G190"
+        ]
+      },
+      {
+        "batch_source_id": "F17-S002",
+        "source_id": "SRC-dc650047e8729781",
+        "url": "https://arxiv.org/pdf/2302.06010",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "F17002"
+        ],
+        "theme_ids": [
+          "G191"
+        ]
+      },
+      {
+        "batch_source_id": "F17-S003",
+        "source_id": "SRC-11174ff433fcb818",
+        "url": "https://arxiv.org/pdf/nlin/0104052",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "F17003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "batch_source_id": "F17-S004",
+        "source_id": "SRC-221390b4c1baa3d7",
+        "url": "https://arxiv.org/pdf/2003.04777",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "F17005",
+          "F17004"
+        ],
+        "theme_ids": [
+          "G192"
+        ]
+      },
+      {
+        "batch_source_id": "F17-S005",
+        "source_id": "SRC-c677dece488e9962",
+        "url": "https://arxiv.org/pdf/0910.3306",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "F17006"
+        ],
+        "theme_ids": [
+          "G193"
+        ]
+      },
+      {
+        "batch_source_id": "F17-S006",
+        "source_id": "SRC-f82f085f098513d0",
+        "url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "F17007"
+        ],
+        "theme_ids": [
+          "G194"
+        ]
+      },
+      {
+        "batch_source_id": "E17-S001",
+        "source_id": "SRC-74b158d86cf3efb9",
+        "url": "https://arxiv.org/pdf/1902.03600",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "E17001"
+        ],
+        "theme_ids": [
+          "G195"
+        ]
+      },
+      {
+        "batch_source_id": "E17-S002",
+        "source_id": "SRC-32412a65352f92e2",
+        "url": "https://tc.copernicus.org/articles/16/2617/2022/tc-16-2617-2022.pdf",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "E17002"
+        ],
+        "theme_ids": [
+          "G196"
+        ]
+      },
+      {
+        "batch_source_id": "E17-S003",
+        "source_id": "SRC-b9a41ab4f71d0d29",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8501789/",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "E17003"
+        ],
+        "theme_ids": [
+          "G196"
+        ]
+      },
+      {
+        "batch_source_id": "E17-S004",
+        "source_id": "SRC-227c27fa9f3c975a",
+        "url": "https://arxiv.org/pdf/physics/0601184",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "E17004"
+        ],
+        "theme_ids": [
+          "G197"
+        ]
+      },
+      {
+        "batch_source_id": "E17-S005",
+        "source_id": "SRC-b670fe25a1a3827a",
+        "url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "E17005"
+        ],
+        "theme_ids": [
+          "G198"
+        ]
+      },
+      {
+        "batch_source_id": "E17-S006",
+        "source_id": "SRC-2ca1085c924c82b0",
+        "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0105948&type=printable",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "E17006"
+        ],
+        "theme_ids": [
+          "G199"
+        ]
+      },
+      {
+        "batch_source_id": "E17-S007",
+        "source_id": "SRC-d6ceaefb4b6fb675",
+        "url": "https://orbi.uliege.be/bitstream/2268/195696/1/PhysRevE.93.033112.pdf",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [],
+        "theme_ids": []
+      },
+      {
+        "batch_source_id": "E17-S008",
+        "source_id": "SRC-1321a55a62ea0dc1",
+        "url": "https://link.springer.com/article/10.1007/s10652-023-09912-6",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [],
+        "theme_ids": []
+      }
+    ],
+    "new_raw_maps": [
+      {
+        "id": "B17001",
+        "origin": "wave17-animal-control-20261102",
+        "source_ids": [
+          "SRC-f94c07154cf14378"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B17002",
+        "origin": "wave17-animal-control-20261102",
+        "source_ids": [
+          "SRC-f926cc74eabcb7bb"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B17003",
+        "origin": "wave17-animal-control-20261102",
+        "source_ids": [
+          "SRC-60d3844e7a66a77d"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B17004",
+        "origin": "wave17-animal-control-20261102",
+        "source_ids": [
+          "SRC-ad1ea8d837eb18fb"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B17005",
+        "origin": "wave17-animal-control-20261102",
+        "source_ids": [
+          "SRC-f3b96db5a2b8e7af"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B17006",
+        "origin": "wave17-animal-control-20261102",
+        "source_ids": [
+          "SRC-1047e72f7d885bde"
+        ],
+        "selected": true
+      },
+      {
+        "id": "F17001",
+        "origin": "wave17-fluid-interfaces-20261102",
+        "source_ids": [
+          "SRC-7b2bb91bed897432"
+        ],
+        "selected": true
+      },
+      {
+        "id": "F17002",
+        "origin": "wave17-fluid-interfaces-20261102",
+        "source_ids": [
+          "SRC-dc650047e8729781"
+        ],
+        "selected": true
+      },
+      {
+        "id": "F17003",
+        "origin": "wave17-fluid-interfaces-20261102",
+        "source_ids": [
+          "SRC-11174ff433fcb818"
+        ],
+        "selected": true
+      },
+      {
+        "id": "F17004",
+        "origin": "wave17-fluid-interfaces-20261102",
+        "source_ids": [
+          "SRC-221390b4c1baa3d7"
+        ],
+        "selected": true
+      },
+      {
+        "id": "F17005",
+        "origin": "wave17-fluid-interfaces-20261102",
+        "source_ids": [
+          "SRC-221390b4c1baa3d7"
+        ],
+        "selected": true
+      },
+      {
+        "id": "F17006",
+        "origin": "wave17-fluid-interfaces-20261102",
+        "source_ids": [
+          "SRC-c677dece488e9962"
+        ],
+        "selected": true
+      },
+      {
+        "id": "F17007",
+        "origin": "wave17-fluid-interfaces-20261102",
+        "source_ids": [
+          "SRC-f82f085f098513d0"
+        ],
+        "selected": true
+      },
+      {
+        "id": "E17001",
+        "origin": "wave17-earth-patterns-20261102",
+        "source_ids": [
+          "SRC-74b158d86cf3efb9"
+        ],
+        "selected": true
+      },
+      {
+        "id": "E17002",
+        "origin": "wave17-earth-patterns-20261102",
+        "source_ids": [
+          "SRC-32412a65352f92e2"
+        ],
+        "selected": true
+      },
+      {
+        "id": "E17003",
+        "origin": "wave17-earth-patterns-20261102",
+        "source_ids": [
+          "SRC-b9a41ab4f71d0d29"
+        ],
+        "selected": true
+      },
+      {
+        "id": "E17004",
+        "origin": "wave17-earth-patterns-20261102",
+        "source_ids": [
+          "SRC-227c27fa9f3c975a"
+        ],
+        "selected": true
+      },
+      {
+        "id": "E17005",
+        "origin": "wave17-earth-patterns-20261102",
+        "source_ids": [
+          "SRC-b670fe25a1a3827a"
+        ],
+        "selected": true
+      },
+      {
+        "id": "E17006",
+        "origin": "wave17-earth-patterns-20261102",
+        "source_ids": [
+          "SRC-2ca1085c924c82b0"
+        ],
+        "selected": true
+      }
+    ],
+    "new_not_added_all_fields_match": 61,
+    "source_identity": {
+      "rows": 20,
+      "first_urls": 20,
+      "all_author_disclosures_bound": true,
+      "root_metadata_failures_preserved": true,
+      "NA_only_source_ids": [
+        "E17-S007",
+        "E17-S008"
+      ],
+      "limits": "Root checked the stated identities and author disclosures. This is not a full bibliography semantic-equivalence audit or a new independent full-text fact check. Candidate factual scope is controlled by the three non-author topic review receipts. No script, image rights, experimental replication or production approval."
+    },
+    "limits": "20計不同URL，不是20個獨立重現。18URL供候選、E17-S007/008兩URL僅供未收方向追溯。預印本/正式版、PMC作者稿、作者庫及一頁更正的同文關係和讀取失敗保留；E17005僅讀2020-04-28 DRAFT，不能改稱已核正式版。此階段未重新開外站。"
+  },
+  "editorial_readback": {
+    "new_themes": [
+      {
+        "id": "G186",
+        "proposal_id": "W17B-T01",
+        "seconds": 130,
+        "chapter_seconds": [
+          60,
+          70
+        ],
+        "core_totals": {
+          "B17001": 130
+        },
+        "caps": {
+          "B17001": 135
+        },
+        "drop_if": "任一章刪除分別剩70或60秒，缺物理條件或來源辨別，撤此雙章案；若時間窗畫不清，不加電魚百科補時。"
+      },
+      {
+        "id": "G187",
+        "proposal_id": "W17B-T02",
+        "seconds": 120,
+        "chapter_seconds": [
+          55,
+          65
+        ],
+        "core_totals": {
+          "B17002": 120
+        },
+        "caps": {
+          "B17002": 125
+        },
+        "drop_if": "去任一章剩65或55秒，缺衝突條件或預測檢驗，撤雙章案；若只能做單純正負箭頭而無時延/強弱界線，暫不進稿。"
+      },
+      {
+        "id": "G188",
+        "proposal_id": "W17B-T03",
+        "seconds": 120,
+        "chapter_seconds": [
+          55,
+          65
+        ],
+        "core_totals": {
+          "B17005": 120
+        },
+        "caps": {
+          "B17005": 135
+        },
+        "drop_if": "若只剩成人餵幼獸畫面，撤案；去任一章剩65或55秒，分別缺線索原因或練習後果，撤雙章案。"
+      },
+      {
+        "id": "G189",
+        "proposal_id": "W17B-T04",
+        "seconds": 130,
+        "chapter_seconds": [
+          55,
+          75
+        ],
+        "core_totals": {
+          "B17006": 130
+        },
+        "caps": {
+          "B17006": 155
+        },
+        "drop_if": "刪任一章剩75或55秒，失去學習背景或雙規則辨別，撤雙章案；若形狀/軌跡/餵食位置三者畫不清，縮成素材段，不加其他射水能力。"
+      },
+      {
+        "id": "G190",
+        "proposal_id": "W17F-T01",
+        "seconds": 100,
+        "chapter_seconds": [
+          55,
+          45
+        ],
+        "core_totals": {
+          "F17001": 100
+        },
+        "caps": {
+          "F17001": 115
+        },
+        "drop_if": "任刪一章只剩45/55秒，失去本案的觀察/控制鏈，撤100秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+      },
+      {
+        "id": "G191",
+        "proposal_id": "W17F-T02",
+        "seconds": 105,
+        "chapter_seconds": [
+          55,
+          50
+        ],
+        "core_totals": {
+          "F17002": 105
+        },
+        "caps": {
+          "F17002": 120
+        },
+        "drop_if": "任刪一章只剩50/55秒，失去本案的觀察/控制鏈，撤105秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+      },
+      {
+        "id": "G192",
+        "proposal_id": "W17F-T03",
+        "seconds": 110,
+        "chapter_seconds": [
+          60,
+          50
+        ],
+        "core_totals": {
+          "F17005": 110
+        },
+        "caps": {
+          "F17005": 125
+        },
+        "drop_if": "任刪一章只剩50/60秒，失去本案的觀察/控制鏈，撤110秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+      },
+      {
+        "id": "G193",
+        "proposal_id": "W17F-T04",
+        "seconds": 90,
+        "chapter_seconds": [
+          55,
+          35
+        ],
+        "core_totals": {
+          "F17006": 90
+        },
+        "caps": {
+          "F17006": 110
+        },
+        "drop_if": "任刪一章只剩35/55秒，失去本案的觀察/控制鏈，撤90秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+      },
+      {
+        "id": "G194",
+        "proposal_id": "W17F-T05",
+        "seconds": 105,
+        "chapter_seconds": [
+          55,
+          50
+        ],
+        "core_totals": {
+          "F17007": 105
+        },
+        "caps": {
+          "F17007": 115
+        },
+        "drop_if": "任刪一章只剩50/55秒，失去本案的觀察/控制鏈，撤105秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+      },
+      {
+        "id": "G195",
+        "proposal_id": "W17E-T01",
+        "seconds": 120,
+        "chapter_seconds": [
+          60,
+          60
+        ],
+        "core_totals": {
+          "E17001": 120
+        },
+        "caps": {
+          "E17001": 130
+        },
+        "drop_if": "任刪一章只剩60秒且缺表面/地下因果連接，撤120秒案，不加入全球鹽湖名單。"
+      },
+      {
+        "id": "G196",
+        "proposal_id": "W17E-T02",
+        "seconds": 185,
+        "chapter_seconds": [
+          90,
+          95
+        ],
+        "core_totals": {
+          "E17002": 90,
+          "E17003": 95
+        },
+        "caps": {
+          "E17002": 110,
+          "E17003": 110
+        },
+        "drop_if": "若升華研究無法清楚區分自然/凍乾/模型，刪第二章後只剩90秒一章，撤本案並重新提兩章版本，不沿185秒補景觀。任刪首章也撤此對照案。"
+      },
+      {
+        "id": "G197",
+        "proposal_id": "W17E-T03",
+        "seconds": 115,
+        "chapter_seconds": [
+          65,
+          50
+        ],
+        "core_totals": {
+          "E17004": 115
+        },
+        "caps": {
+          "E17004": 120
+        },
+        "drop_if": "任刪一章即失去形成/後期轉換對照，撤115秒案；不靠極地景觀補時。"
+      },
+      {
+        "id": "G198",
+        "proposal_id": "W17E-T04",
+        "seconds": 110,
+        "chapter_seconds": [
+          65,
+          45
+        ],
+        "core_totals": {
+          "E17005": 110
+        },
+        "caps": {
+          "E17005": 115
+        },
+        "drop_if": "若無法呈現頂端下降與尖度增加，撤110秒案；任刪一章不補天然石林照片拉長。"
+      },
+      {
+        "id": "G199",
+        "proposal_id": "W17E-T05",
+        "seconds": 125,
+        "chapter_seconds": [
+          65,
+          60
+        ],
+        "core_totals": {
+          "E17006": 125
+        },
+        "caps": {
+          "E17006": 130
+        },
+        "drop_if": "任刪一章只剩65或60秒，撤125秒案，不加外星/超自然故事或未觀測巨石數據。"
+      }
+    ],
+    "arithmetic": {
+      "themes": 14,
+      "chapters": 28,
+      "theme_core_totals": 15,
+      "max_beat": 40
+    },
+    "old_themes_unchanged": 185,
+    "pool_only_segments": [
+      "B17003",
+      "B17004",
+      "F17003",
+      "F17004"
+    ],
+    "timing_limit": "14新案90–185秒，含開場/轉場/回扣的紙上正文，未試讀或製作；章內單核心，分章不重計素材cap。刪章遵各自drop_if撤案/重提，不能補回顧景觀沿用原長度。",
+    "targeted_limits": [
+      "G187按各頻率增益/相位解釋跨條件近似一致，不寫成常數增益；G188精確效果量須補讀SI。",
+      "G192只用剛體倒浮，不把F17004氣泡壓縮誤當同一船機制；G194模型/實驗角度差異及液橋證據範圍保留。",
+      "G196明示溫暖融冰與寒冷升華的研究重設，185秒修版已由life覆核；G198草稿/正式版限制保留，頂端也會退縮。"
+    ],
+    "approval_limit": "沒有本輪完整稿、試讀、小樣或觀眾留存測試；題級保留和紙上節拍不代表已製作或可直接發布。"
+  },
+  "artifact_integrity": {
+    "manifest_input_files": 318,
+    "manifest_rendered_file_hashes": 6,
+    "theme_definition_sha_match": true,
+    "embedded_selected_records": 2977,
+    "embedded_source_objects": 2523,
+    "embedded_theme_objects": 199,
+    "header_date": "2026-11-01 remains fixed initial-pool date; not current-data freshness evidence.",
+    "working_tree_only": true,
+    "actual_git_index_verification": "PENDING_ROOT_AFTER_THIS_RECEIPT",
+    "source_impact": "從source refs與theme candidate IDs獨立反查20個新URL，含2個NA-only與未成片素材；與root來源影響映射比對一致。SQLite零writes只核root既有收據，未自行重匯。"
+  },
+  "docs_readback": {
+    "reviewer": "root",
+    "independent_review": false,
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "result": "2977選入/3345raw/3206core/3036eligible/139alias/4298URL/1339research/2523selectedURL/4393refs/896未收/199題案一致；19新核心減1舊合併淨18，20URL/61未收/14案，剩7023。",
+    "source_and_approval_limits": "121歷史完整答案/附件仍待刷新；題級/完整稿/試讀/製作分開，沒有宣稱萬筆/十萬筆完成或授權使用原圖。",
+    "semantic_scope": "最終3345raw、0新向量/0新截斷/19.557秒為本機熱快取單次。新候選合併0組不計命中率，舊六對目的性樣本不是召回率；歷史截斷與平方規模限制保留。",
+    "header_date_limit": "index標頭2026-11-01為固定初建池日期，不當最新資料日期；當期2977數字已核。",
+    "git_tense": "Git實際blob/連結/衛生依後續分項收據，不預稱尚未執行的root終驗已通過。",
+    "local_markdown_links_checked": 75,
+    "local_link_scope": "僅README/VALIDATION/SEMANTIC全部本地連結存在；外站不重開，未冒稱root全輸出連結終驗。"
+  },
+  "browser_receipt_readback": {
+    "reviewer": "root",
+    "independent_review": false,
+    "file": "reviews/wave17-browser-qa.json",
+    "sha256": "17631eb310546e40e041bbc3ed1fe486e1657a8b9e21d528bff9541db9b0ffb3",
+    "result": "PASS",
+    "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+    "index_sha_matches": true,
+    "source_sample": {
+      "id": "B17001",
+      "urls": [
+        "https://doi.org/10.1038/s41586-024-07157-x"
+      ]
+    },
+    "screenshots_hashes_verified": 3,
+    "actual_scope": "science在中斷前已讀QA範圍；root本輪執行瀏覽器、驗三截圖SHA並實看桌面/展開B17001/手機三圖；完整visual/source URLs在截圖裁切下方，依DOM斷言，不冒稱來源URL於圖內可見。手機下半頁不在畫面，placeholder裁切已披露。",
+    "alias_and_negative_scope": "新增P131→P129及歷史N098/L042有別名斷言；本批無新增hold，未做新增負向列排除斷言。"
+  },
+  "validation_receipt_readback": {
+    "reviewer": "root",
+    "independent_review": false,
+    "file": "reviews/wave17-final-validation.json",
+    "whole_file_hash_bound": false,
+    "tests_subobject_sha256": "2a3381e5884c636c3707cdb582d4b46b7deb97411253366b9b1c14e50c3b7591",
+    "canonicalization": "json.dumps(tests, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')",
+    "tests": {
+      "node": {
+        "passed": 44,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 299545.0184,
+        "files": [
+          "tools/video/so-thats-why/pool/pool.test.mjs",
+          "tools/video/so-thats-why/catalog.test.mjs",
+          "tools/repo-hygiene.test.mjs",
+          "tools/json-duplicate-keys.test.mjs",
+          "tools/docs-videos-tests.test.mjs"
+        ],
+        "log_sha256": "a1487de0aeb85c3c102915c8b9d809ebaf3812bf02e5ef995942d2a597d65959"
+      },
+      "python": {
+        "passed": 2,
+        "failed": 0,
+        "file": "tools/video/so-thats-why/pool/semantic_test.py",
+        "log_sha256": "320611934bfa40c5106b8d49c2a57c4cd414d6705fb1b63bda9c2516470e76c2"
+      },
+      "checks": {
+        "pool": "PASS",
+        "series": "PASS",
+        "long_form_plans": 473,
+        "task_files": 2287,
+        "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+        "log_hashes": {
+          "pool": "7b91e3aca1a8fe953c4366fa85b977f6e4c5e8b1dd7a462b1c48a876994dd8ba",
+          "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+          "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+          "tasks": "e80be3a90657c380526830f69cc2eda95eb3c78c32e05a2d505c497913d9c6ef"
+        }
+      },
+      "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+    },
+    "actual_reading": "核六個log SHA與Node44/44零失敗取消略過、Python2 OK、pool/series PASS、473plans與2287tasks結尾；未自行重跑，既有任務警告保留。",
+    "index_and_performance_receipt": "first/second同SQLite snapshot、第二次UNCHANGED/0writes；當期資料單次測量，不是冷啟動或大規模壓測。",
+    "pending_root_scope": [
+      "實際Git index blob/hash終驗",
+      "最終本地連結與stage hygiene",
+      "task釋放及提交/推送"
+    ],
+    "scope_limit": "只綁tests物件，final-validation之後stage/closure欄位可增寫；未核完整API/web CI、旁白試讀或媒體。"
+  },
+  "hashes": [
+    {
+      "file": "DEDUP.md",
+      "sha256": "f772b4d40d7d4670f4be1d56d4bf049d4084c1511ef3cc52b6426ed4c33be1e0"
+    },
+    {
+      "file": "QUESTIONS.md",
+      "sha256": "c74ca6aafdf35641759f7885662322a75b10bb34aeb33fbe2bcd17f64c5ad1f7"
+    },
+    {
+      "file": "README.md",
+      "sha256": "831312463bed5f526a55cd1001891a6dec4635a1a312b7ecd5b86e5404eb368b"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "ecd7f9f0e6ca178827b34fc67d50ae58b0ab205b06ae2d276ac61860b2084d81"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "80fe47daee2e796de671a6546535ed797971c63ca80db71f8d9a5226b326146e"
+    },
+    {
+      "file": "THEMES.md",
+      "sha256": "3fdb8ab0268752960a5340b5d23f47c011bb8b374a1932973f8b539243e5fe88"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "8c259a96d1686da4b561a193e246abb9acf517c522689afab66d9ee15125eae5"
+    },
+    {
+      "file": "baseline.json",
+      "sha256": "b56e116000b84bbabf66eec091bddb4a2132784931f5146b9922832c5cd0b3e2"
+    },
+    {
+      "file": "baselines/2026-11-01-1000.json.gz",
+      "sha256": "6cf3b0f5a7e37546d3c53806b94376f68f2a5cf16b1510d5ca64ef06ee9ac7fd"
+    },
+    {
+      "file": "baselines/2026-11-01-2000.json.gz",
+      "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4"
+    },
+    {
+      "file": "baselines/2026-11-01-2328.json.gz",
+      "sha256": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba"
+    },
+    {
+      "file": "baselines/2026-11-01-2449.json.gz",
+      "sha256": "e98b96cad65be24cdc59bfc1d9f60f311040a7987e04a7b008fab08778063bb2"
+    },
+    {
+      "file": "baselines/2026-11-01-2546.json.gz",
+      "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4"
+    },
+    {
+      "file": "baselines/2026-11-01-2609.json.gz",
+      "sha256": "06f9fdec324c8e0f6fabd22805eed413fbf5e3f109473e595ec1e2228ab150f1"
+    },
+    {
+      "file": "baselines/2026-11-01-2667.json.gz",
+      "sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c"
+    },
+    {
+      "file": "baselines/2026-11-01-2711.json.gz",
+      "sha256": "035074191cbf98fe87426589b6f746a90934e1087a65271e4cdd9b03784da217"
+    },
+    {
+      "file": "baselines/2026-11-01-2757.json.gz",
+      "sha256": "92c8527689b44740352d8698bfe38be5e46b42c7a299878309501245c992ac0d"
+    },
+    {
+      "file": "baselines/2026-11-01-2797.json.gz",
+      "sha256": "3fe88554de1e8947fcb8e3890302b5bd35d2848fdd43e7c779296e68f6969e2b"
+    },
+    {
+      "file": "baselines/2026-11-01-2837.json.gz",
+      "sha256": "6c1a9c8c29d0b8bb540de430e6f98646ab48bcf07e89d1d7bf1e8cd21117c0fd"
+    },
+    {
+      "file": "baselines/2026-11-01-2870.json.gz",
+      "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32"
+    },
+    {
+      "file": "baselines/2026-11-01-2897.json.gz",
+      "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0"
+    },
+    {
+      "file": "baselines/2026-11-02-2921.json.gz",
+      "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7"
+    },
+    {
+      "file": "baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
+    },
+    {
+      "file": "baselines/2026-11-02-2959.json.gz",
+      "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f"
+    },
+    {
+      "file": "batches/wave17-animal-control.json",
+      "sha256": "27d990ea35007129137436487b5f3eea8a932245c61542fcb87311e68d700dd2"
+    },
+    {
+      "file": "batches/wave17-earth-patterns.json",
+      "sha256": "0c8c4295e7f49708b5f1c802a907cf4cf1b4a6adf4bd5d916205a5d221f6df5b"
+    },
+    {
+      "file": "batches/wave17-fluid-interfaces.json",
+      "sha256": "2dc5eefd0b8422f11da3f7ec7db2bfa59ba32d4e1300e3b5f8733d415e3143b5"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "sha256": "26d4627eca62057f6bf12eee75e0a80c6a489ceb5528dfee7620d67cf81570e0"
+    },
+    {
+      "file": "checkpoint-2328.json",
+      "sha256": "8958e75c55b81787fea922f8fd503020fb2125816a44990f76cb36b79d8d7fa4"
+    },
+    {
+      "file": "checkpoint-2449.json",
+      "sha256": "1130c79de09e209f0177ecee8190dc0016463a059f0aa3f3a4d48b029e27315b"
+    },
+    {
+      "file": "checkpoint-2546.json",
+      "sha256": "bec71d3e9107a2b2a491a38c20b92a4de4375631bb51b80332cbcdc19a412567"
+    },
+    {
+      "file": "checkpoint-2609.json",
+      "sha256": "089dcc4a14fbbddbed245bfe4800619e2558be18fbe340a5aa983b7d093be6df"
+    },
+    {
+      "file": "checkpoint-2667.json",
+      "sha256": "9d1ef51719bdbd35122dd872feac02fb9e97b2d3c659d5e02f735d27b71fa845"
+    },
+    {
+      "file": "checkpoint-2711.json",
+      "sha256": "cb4e75d0d23f96941f1676a4503b15cc2bc5a10999a59fef73a29ce28ba9590c"
+    },
+    {
+      "file": "checkpoint-2757.json",
+      "sha256": "0160df758e0b1ecfd54681bf1d6a520a6c6ea2305743dd43779a653247736154"
+    },
+    {
+      "file": "checkpoint-2797.json",
+      "sha256": "c7dd2b7722682a136a8d2f83617e61bf88b09b99dee0b6b013aaecfc8ec8da98"
+    },
+    {
+      "file": "checkpoint-2837.json",
+      "sha256": "09cbac4b41a2d58364e2f6a602d84129b857ae6b81561e5629205d2b3570f167"
+    },
+    {
+      "file": "checkpoint-2870.json",
+      "sha256": "1d515626d76f5a3daadf867043488e9412ab89e1361e809a258712717bb13ddf"
+    },
+    {
+      "file": "checkpoint-2897.json",
+      "sha256": "282dff335a098f2157e152fdf44095a9fb7e09453766ff2b1d43785a6872a25a"
+    },
+    {
+      "file": "checkpoint-2921.json",
+      "sha256": "51d5f4512cda1b2992b07734a0de4864587be07ed0a0ec67da0253097d16819f"
+    },
+    {
+      "file": "checkpoint-2939.json",
+      "sha256": "f7dd8d23d26a4a11b61c361fc24625d05fff97e593af222d61352f091d24ebfe"
+    },
+    {
+      "file": "checkpoint-2959.json",
+      "sha256": "66525738a493ffa3c2d315bf989d700b4a369a7384f80ffa6af853e8f6c5b996"
+    },
+    {
+      "file": "checkpoints.json",
+      "sha256": "1c892d1482465b789601d056d9168d1b16c44f204412d1f5b25c7d41617663fb"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "3d317922b5a4ad29766d0e1cd5bf4124c732229f19f931f9d9636bc6b6fc62f0"
+    },
+    {
+      "file": "index.html",
+      "sha256": "e9c560778b22c5e451d9196a0d543d9a2dcfd47d2abf28f7093131970779a2a7"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "c7bf6a8ba16b3b00696e5c4e2584c7dacbb23d6d48322c2b6dcd318138ffd318"
+    },
+    {
+      "file": "pool.json",
+      "sha256": "3d12e0be35af76f52a1510b37eab10a889c864de09854ce6d82dff324d542e58"
+    },
+    {
+      "file": "reviews/wave17-animal-control-author.json",
+      "sha256": "1f024d7e5286d23c5bdcba13bd69f64c62b9e267d8add848a2d8044177c23df0"
+    },
+    {
+      "file": "reviews/wave17-animal-control-themes.json",
+      "sha256": "22b585c69d45eaa927e43e601de3603b9115ede72b50a59dd6e3fadec45d5bad"
+    },
+    {
+      "file": "reviews/wave17-browser-qa.json",
+      "sha256": "17631eb310546e40e041bbc3ed1fe486e1657a8b9e21d528bff9541db9b0ffb3"
+    },
+    {
+      "file": "reviews/wave17-earth-patterns-author.json",
+      "sha256": "2eb3d3e5910a53c48951b636e362bccd1aa45a7524a1d6cfa4bc0290a3d6a3be"
+    },
+    {
+      "file": "reviews/wave17-earth-patterns-themes.json",
+      "sha256": "6a94fafe5e12d6bf50e0d9bfe8f8a6176c99688f549f24a3874eb6d81afb3d4c"
+    },
+    {
+      "file": "reviews/wave17-editorial-integration.json",
+      "sha256": "46f58dff38e40428fe8f25c6abe30f80ee2487310ec4a15c7779a2720279bdd0"
+    },
+    {
+      "file": "reviews/wave17-fluid-interfaces-author.json",
+      "sha256": "29f41e124e338fc588d7e526bc928e68295f24ed1fca07d56d0e240bdd13e711"
+    },
+    {
+      "file": "reviews/wave17-fluid-interfaces-themes.json",
+      "sha256": "0a6f0b01a68340511385f9b27b828cb856e866d9df1dd237eb650ac430211f41"
+    },
+    {
+      "file": "reviews/wave17-independent-data-readback.json",
+      "sha256": "93b3ffa988e0ed7e69936a409b16d7b013128b3281f3a9da40eb0afd1ab61dc6"
+    },
+    {
+      "file": "reviews/wave17-life-reviews-earth-patterns.json",
+      "sha256": "24ecfa68e38fb1ce6fb9b25fcdb844f4aef735b971331981ddf7c861a85bddeb"
+    },
+    {
+      "file": "reviews/wave17-old-pair-integration.json",
+      "sha256": "a4e85eaabd0015c8a17b652681dcda9c43f7fba2562b2fc26a83269be6f1508d"
+    },
+    {
+      "file": "reviews/wave17-physics-reviews-animal-control.json",
+      "sha256": "8c3c4d58b73a0818717a99dcadb778bb2f90ed92855ae0e3135ad515aae1914e"
+    },
+    {
+      "file": "reviews/wave17-root-old-pairs.json",
+      "sha256": "5550c576d6e4b03b87c6203e4ea33b41ea71fe2fe977b644ac9429c677af1a86"
+    },
+    {
+      "file": "reviews/wave17-science-old-pairs.json",
+      "sha256": "1295b4f7ad23cd16e150cb36d0a34fa925a6d1833176e517b186b65c9de3ef1a"
+    },
+    {
+      "file": "reviews/wave17-science-reviews-fluid-interfaces.json",
+      "sha256": "16db638c6798677451864bd09a70d1c25e35a50ef802d4737853a6f7496390ea"
+    },
+    {
+      "file": "reviews/wave17-source-identity-review.json",
+      "sha256": "46bd24775a10bc789e00dedd9461d4adf558d845021c0d41587b63db44f0cfb8"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "2a038655cfee0dd519ce6019d31cb99df38d6f3c4342283cf68824641145a270"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "36ed23d8cd4f080429c8f6a019172f10fbb28200090cf57a595c76f7d87f6811"
+    }
+  ],
+  "ignored_evidence_hashes": [
+    {
+      "file": ".cache/first-draft-wave17.json",
+      "sha256": "986bbcaaa5a97bd95d77810438e5b890394023024844f5389105362cf534f893"
+    },
+    {
+      "file": ".cache/semantic-wave17-draft.json",
+      "sha256": "7e7413f3dfd7c8f81a6ec8db3eaea1e98a0081baee37ed73a09069d832fe29b2"
+    },
+    {
+      "file": ".cache/wave17-animal-control-neighbour-delta.json",
+      "sha256": "498b9b2de57cda90e7afbc0d6a338b2e96aef02e04823b6f510b2c30918252bf"
+    },
+    {
+      "file": ".cache/wave17-desktop.png",
+      "sha256": "21e707fc06ef9f536358b1f56d258ac7e3a6d907f96a55c1baa1facba64c90f9"
+    },
+    {
+      "file": ".cache/wave17-earth-patterns-neighbour-delta.json",
+      "sha256": "d96c6635cca8acecd24aba9dcfe4b2c93d3b4f7a61615b9292d07fef87405533"
+    },
+    {
+      "file": ".cache/wave17-fluid-interfaces-neighbour-delta.json",
+      "sha256": "8abab88be651b4aab5d9404e6971b35ef91c43f4ec70ab136ad9326c70ea90fc"
+    },
+    {
+      "file": ".cache/wave17-long-form-check.log",
+      "sha256": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0"
+    },
+    {
+      "file": ".cache/wave17-mobile.png",
+      "sha256": "b74260a64ed6bd0fd99de71452bdbd9fa26f596bf5a211733c0da18e595b39b4"
+    },
+    {
+      "file": ".cache/wave17-node-tests.log",
+      "sha256": "a1487de0aeb85c3c102915c8b9d809ebaf3812bf02e5ef995942d2a597d65959"
+    },
+    {
+      "file": ".cache/wave17-old-pair-discovery.json",
+      "sha256": "5b8f650bcac6bb30bb281cd2b499348ae4bfd429f49a8ebf21d86d7edc32e237"
+    },
+    {
+      "file": ".cache/wave17-pool-check.log",
+      "sha256": "7b91e3aca1a8fe953c4366fa85b977f6e4c5e8b1dd7a462b1c48a876994dd8ba"
+    },
+    {
+      "file": ".cache/wave17-python-tests.log",
+      "sha256": "320611934bfa40c5106b8d49c2a57c4cd414d6705fb1b63bda9c2516470e76c2"
+    },
+    {
+      "file": ".cache/wave17-science-central-check.py",
+      "sha256": "8739fdaedf841eb189b0024f36c831950411bc25527513b528a658d213691c69"
+    },
+    {
+      "file": ".cache/wave17-science-central-data.json",
+      "sha256": "93b3ffa988e0ed7e69936a409b16d7b013128b3281f3a9da40eb0afd1ab61dc6"
+    },
+    {
+      "file": ".cache/wave17-series-check.log",
+      "sha256": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b"
+    },
+    {
+      "file": ".cache/wave17-source-desktop.png",
+      "sha256": "a80281dfce0987774387c6241ab8846b9ce457ddaa4d4837fe3b073bf1733291"
+    },
+    {
+      "file": ".cache/wave17-tasks-check.log",
+      "sha256": "e80be3a90657c380526830f69cc2eda95eb3c78c32e05a2d505c497913d9c6ef"
+    }
+  ],
+  "review_completion": {
+    "independent_data_receipt": {
+      "file": "reviews/wave17-independent-data-readback.json",
+      "sha256": "93b3ffa988e0ed7e69936a409b16d7b013128b3281f3a9da40eb0afd1ab61dc6",
+      "completed_by": "science_sources"
+    },
+    "independent_data_status": "PASS_COMPLETED_BEFORE_USAGE_LIMIT",
+    "late_docs_tests_review": {
+      "completed_by": "root",
+      "independent": false,
+      "reason": "Independent reviewer reached usage limit after data/editorial readback, before final documentation and test summaries were available."
+    },
+    "required_topic_cross_reviews": "All three final non-author candidate/source reviews completed before the interruption.",
+    "binding_scope": "Final stable-file hashes and tests subobject are verified by root. Independent scope is limited to the completed data receipt and prior topic reviews."
+  }
+}

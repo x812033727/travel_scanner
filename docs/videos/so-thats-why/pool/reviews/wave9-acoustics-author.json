@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_AWAITING_NONAUTHOR_REVIEW_TOPIC_LEVEL_ONLY",
+  "batch_id": "wave9-acoustics-20261101",
+  "counts": {
+    "candidates": 19,
+    "sources": 14,
+    "not_added": 12,
+    "theme_proposals": 4
+  },
+  "locked_artifacts": [
+    {
+      "path": "batches/wave9-acoustics.json",
+      "sha256": "bd184137dcf336337213a6769b6cc0235251eeacb58b2eb840a98ff860572a93"
+    },
+    {
+      "path": "reviews/wave9-acoustics-themes.json",
+      "sha256": "1b198453b5b9675063e9759d3dc1d2fa4f8ec4a4c196d4a993638ffd27239c5d"
+    }
+  ],
+  "baseline": {
+    "selected": 2711,
+    "raw": 3069,
+    "pool_sha256": "b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b"
+  },
+  "dedup_scope": {
+    "method": "全pool的question/answer_target/scope/mechanism_key關鍵詞搜尋171命中逐讀；另掃全舊batch共2756候選149命中，6筆不在第一次結果的raw／alias另外讀回；pool還含313legacy原題。401條not_added做關鍵詞搜尋。",
+    "not_claimed": "未逐字人工重讀3069條全部正文；未把語意相似分數當去重決定。",
+    "scratch": "忽略的.cache/wave9-acoustics-old-hits.json與wave9-acoustics-raw-hits.json"
+  },
+  "near_pairs": [
+    {
+      "a": "D9001",
+      "b": "P130",
+      "author_disposition": "propose_distinct",
+      "reason": "P130辨識既有節點；本題比較相同邊界下初始撥點如何決定模態激發係數。"
+    },
+    {
+      "a": "D9002",
+      "b": "P106",
+      "author_disposition": "propose_distinct",
+      "reason": "P106小幅單自由度振子頻率不隨振幅；此題高階彎曲修正使頻率比例不整齊。"
+    },
+    {
+      "a": "D9003",
+      "b": "D9002",
+      "author_disposition": "propose_distinct",
+      "reason": "均布彎曲剛性與局部質量的模態位置選擇不同；一個普遍偏高，一個按節點差別偏移。"
+    },
+    {
+      "a": "D9004",
+      "b": "B2318",
+      "author_disposition": "propose_distinct",
+      "reason": "已有黏滑產聲不重算；本題是非線性共同週期鎖住略不諧和的自由模態。"
+    },
+    {
+      "a": "D9005",
+      "b": "P294",
+      "author_disposition": "propose_distinct",
+      "reason": "非線性彈性是背景；新可見回報是琴槌接觸形狀改變，不能用等比例音量增益模擬。"
+    },
+    {
+      "a": "D9006",
+      "b": "P114",
+      "author_disposition": "propose_distinct",
+      "reason": "已有耦合帶動另一物體；此題固定一次能量，轉移率導致響度與延音相反改變。"
+    },
+    {
+      "a": "D9007",
+      "b": "P114",
+      "author_disposition": "propose_distinct",
+      "reason": "反對稱合力相消及止住一弦瞬間變響，與是否引發同感振動不同。"
+    },
+    {
+      "a": "D9007",
+      "b": "D9006",
+      "author_disposition": "propose_distinct",
+      "reason": "前者是共享琴橋的多弦合力相消；後者單弦改耦合強度，不拆同一條衰減公式。"
+    },
+    {
+      "a": "D9008",
+      "b": "LEG-S86",
+      "author_disposition": "propose_distinct",
+      "reason": "被動有限板前後輻射相消不同於感測／合成的主動降噪；可視化條件是波長對繞邊路徑。"
+    },
+    {
+      "a": "D9009",
+      "b": "E2216",
+      "author_disposition": "propose_distinct",
+      "reason": "都有回授相位條件，但本題需噴流的對流擾動與刃口交替導流，不再算電子回授失穩。"
+    },
+    {
+      "a": "D9010",
+      "b": "P129",
+      "author_disposition": "propose_distinct",
+      "reason": "不是開閉兩端的模式清單；局部通氣孔能選擇性破壞已有低模態。"
+    },
+    {
+      "a": "D9010",
+      "b": "D9001",
+      "author_disposition": "propose_distinct",
+      "reason": "前者改聲學邊界／損耗，後者邊界不變只改初始激發；作用階段不同。"
+    },
+    {
+      "a": "D9011",
+      "b": "P119",
+      "author_disposition": "propose_distinct",
+      "reason": "舊題scope只提開孔另影響長度；本題有空氣慣性導致頻率相依的下游穿透及交叉指法反例。"
+    },
+    {
+      "a": "D9012",
+      "b": "P106",
+      "author_disposition": "propose_distinct",
+      "reason": "同為質量彈簧背景，但核心在集中均壓腔體與分布駐波模型的適用條件，避免只用瓶高套笛管。"
+    },
+    {
+      "a": "D9013",
+      "b": "E2165",
+      "author_disposition": "propose_distinct",
+      "reason": "零淨流的相位比喻不重算；新增的是兩點壓力梯度推粒子速度並取得方向性聲強。"
+    },
+    {
+      "a": "D9013",
+      "b": "C2032",
+      "author_disposition": "propose_distinct",
+      "reason": "耳定位用跨耳到達線索推聲源方向；雙麥聲強估局部能量通量，在駐波／反應場也要區別。"
+    },
+    {
+      "a": "D9014",
+      "b": "D9013",
+      "author_disposition": "propose_distinct",
+      "reason": "估量機制與間距高頻有限差分／低頻相位失配的相反誤差條件不同。"
+    },
+    {
+      "a": "D9015",
+      "b": "P124",
+      "author_disposition": "propose_distinct",
+      "reason": "不是獨立聲音強度相加；封閉面的外部能量有方向正負，且需要完整表面與無吸收條件。"
+    },
+    {
+      "a": "D9016",
+      "b": "P123",
+      "author_disposition": "propose_distinct",
+      "reason": "距離擴散為背景；壓差式前後距離比帶來額外低頻響應，壓力式對照不出現同樣效應。"
+    },
+    {
+      "a": "D9017",
+      "b": "LEG-S86",
+      "author_disposition": "propose_distinct",
+      "reason": "後聲路被動延遲使膜片差壓小，與主動降噪生成反相聲不同。"
+    },
+    {
+      "a": "D9017",
+      "b": "D9016",
+      "author_disposition": "propose_distinct",
+      "reason": "方向延遲與近場幅度梯度是不同條件，不能用單一距離衰減解釋心形後拒收。"
+    },
+    {
+      "a": "D9018",
+      "b": "P116",
+      "author_disposition": "propose_distinct",
+      "reason": "小振幅線性近似不按音高改聲速；本題強壓縮波非線性陡化，不是高頻本身追上低頻。"
+    },
+    {
+      "a": "D9018",
+      "b": "D9005",
+      "author_disposition": "propose_distinct",
+      "reason": "一個是接觸激發波形非線性，一個是傳播途中形成陡波，來源位置不同。"
+    },
+    {
+      "a": "D9019",
+      "b": "P313",
+      "author_disposition": "propose_distinct",
+      "reason": "波長限制解析度不等於感測器自身尺寸擾動局部聲場；此題比較插入感測器前後及轉向。"
+    }
+  ],
+  "merges": [],
+  "excluded": [],
+  "reading": {
+    "registered_sources": 14,
+    "body_sections_read": 14,
+    "web_body_sources": 14,
+    "urllib_supplement": [
+      "D9-S003"
+    ],
+    "scope": "均實讀所列主文小節；不聲稱每頁所有連結、聲音或影片已播放。D9-S014僅支援退題研究。",
+    "failures": [
+      {
+        "url": "https://www.phys.unsw.edu.au/music/woodwind.html",
+        "result": "web timeout；無www別名僅顯示外殼，未採該頁作來源"
+      },
+      {
+        "url": "https://www.speech.kth.se/music/5_lectures/introd/introd.html",
+        "result": "web對後半重開timeout，public urllib成功補讀正文"
+      },
+      {
+        "url": "https://content-files.shure.com/KnowledgeBaseFiles/Dualdyne-White-Paper.pdf",
+        "result": "403；只有搜尋片段，不入來源或候選"
+      }
+    ],
+    "source_cautions": [
+      "UNSW有限窗頻率精度概括不沿用；穩定模式鎖定有條件。",
+      "笛管頁小孔阻抗方向有一處疑似誤寫；本題只依其餘一致的慣性與下游效應段。",
+      "B&K1993是歷史模型來源；現行標準、儀器範圍與產品比較不採。",
+      "DPA原理段不代表產品推薦；距離閾值不是銳利物理界線。",
+      "KTH主觀品質與調音師假說不採；多弦瞬間增響限文中條件。"
+    ],
+    "rights": "僅原創問法、短摘要和連結；PSU頁CC BY-NC-ND等不作圖影音素材授權。外站全文只在忽略cache供私人研究，不列入Git。"
+  },
+  "author_reductions": [
+    "19題足夠，不為25–35配額拆出更多樂器名。",
+    "纏線併剛性；聲孔各指法併同一頻率相依邊界；不同微小間距誤差放同一對照。",
+    "單弦雙偏振延音、耦合弦精細調音、鼓音高與產品雙膜片機制不另收。",
+    "非作者審閱刪T01毛氈非線性支線70秒，235→165；D9005留素材池，不另組片補時。"
+  ],
+  "not_added_summary": "12筆保留既有／本批核心回指或證據不足原因。",
+  "decision_boundary": "只初篩題目機制與可看見的回報；非獨立覆核、逐句腳本核准、實測、試讀、音訊或製片完成。",
+  "checks": {
+    "json_parse": "PASS",
+    "utf8_lf": "PASS",
+    "source_refs": "PASS",
+    "candidate_editorial": "PASS",
+    "theme_arithmetic": "PASS",
+    "theme_core_caps": "PASS",
+    "max_beat_seconds": 35,
+    "isolated_validateThemes": "PASS on revised themes; isolated in-memory selected batch only, Node v24.13.0; no central build"
+  },
+  "themes": [
+    {
+      "theme_id": "W9D-T01",
+      "seconds": 165,
+      "core_seconds": {
+        "D9006": 70,
+        "D9007": 95
+      },
+      "beat_max": 35,
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    },
+    {
+      "theme_id": "W9D-T02",
+      "seconds": 215,
+      "core_seconds": {
+        "D9002": 70,
+        "D9003": 65,
+        "D9004": 80
+      },
+      "beat_max": 30,
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    },
+    {
+      "theme_id": "W9D-T03",
+      "seconds": 225,
+      "core_seconds": {
+        "D9009": 80,
+        "D9010": 65,
+        "D9011": 80
+      },
+      "beat_max": 30,
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    },
+    {
+      "theme_id": "W9D-T04",
+      "seconds": 260,
+      "core_seconds": {
+        "D9013": 95,
+        "D9014": 80,
+        "D9015": 85
+      },
+      "beat_max": 35,
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    }
+  ],
+  "required_next": [
+    "非作者逐題與共同語意近鄰覆核",
+    "各題案的原創圖與安全音訊對照、完整逐句來源查核和試讀再決定製作"
+  ],
+  "production_ready": false,
+  "correction_history": [
+    {
+      "requested_by": "science_sources",
+      "adopted_by": "root",
+      "previous_artifacts": [
+        {
+          "path": "batches/wave9-acoustics.json",
+          "sha256": "bd184137dcf336337213a6769b6cc0235251eeacb58b2eb840a98ff860572a93"
+        },
+        {
+          "path": "reviews/wave9-acoustics-themes.json",
+          "sha256": "4ae1c8b0dd3afd9b1e84aae83fd1e126168a5862aeb8b13e23236ddcc489ce3f"
+        },
+        {
+          "path": "reviews/wave9-acoustics-author.json",
+          "sha256": "5caf70a5afa96fe692bc90ac48d071fd794fd402ed2a306b9ea7b13f0266818e"
+        }
+      ],
+      "changes": [
+        "T01移出D9005毛氈支線，候選/章節只留D9006與D9007，70+95=165秒。",
+        "第一章含開場，強弱耦合明列固定初始激發能量；止弦後不宣稱剩餘總能量增加。",
+        "core_question/connection/range/target/body/drop_if/evidence_gaps及作者章節預算同步。"
+      ],
+      "batch_content_changed": false,
+      "targeted_non_author_readback": "PENDING"
+    }
+  ]
+}

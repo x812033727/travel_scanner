@@ -1,0 +1,471 @@
+{
+  "batch_id": "wave10-household-20261101",
+  "created_on": "2026-11-01",
+  "scope": "家用清潔中的離面路徑，以及材料表乾、遷移與表面劣化；只作題級來源篩選，不是配方/施工/保存/醫療建議。六個候選，不為原目標硬拆。",
+  "sources": [
+    {
+      "id": "H10-S001",
+      "url": "https://bioresources.cnr.ncsu.edu/resources/detergency-mechanisms-and-cellulosic-surfaces-a-review/",
+      "title": "Detergency mechanisms and cellulosic surfaces: A review",
+      "publisher": "Hubbe, Szlek and Vera; North Carolina State University / BioResources",
+      "version": "2022; 17(4); doi:10.15376/biores.17.4.Hubbe",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 public urllib HTTP 200；HTML 解析後實讀指定段落",
+      "reading_scope": "Release Mechanisms for Solid-like Particles: Rolling release; Progressive adsorption and stabilization；Release Mechanisms for Liquid-like Soiling: Roll-up detachment; Snap-off detachment; Solubilization; Micellar transport",
+      "locator": "Release Mechanisms for Solid-like Particles: Rolling release; Progressive adsorption and stabilization；Release Mechanisms for Liquid-like Soiling: Roll-up detachment; Snap-off detachment; Solubilization; Micellar transport",
+      "summary": "油滴可因接觸狀態改變而縮小接觸區或頸縮離開；兩者與把油增溶並非同一個描述。",
+      "access_notes": "大學研究者的綜述，不當作自己觀測或原始實驗。未讀完整引用文獻；粒子滾脫部分僅作未加入判斷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "H10-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4639583/",
+      "title": "Using the Scanning Fluid Dynamic Gauging Device to Understand the Cleaning of Baked Lard Soiling Layers",
+      "publisher": "Akin Ali, Zayeed Alam, Glenn Ward, D. Ian Wilson; University of Cambridge / Procter & Gamble; Journal of Surfactants and Detergents",
+      "version": "2015-10-10; doi:10.1007/s11743-015-1737-z",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 Europe PMC fullTextXML HTTP 200，解析指定正文；XML endpoint: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4639583/fullTextXML",
+      "reading_scope": "Introduction: Autoxidation Fouling; Soil Removal by Surfactants；Results and Discussion / Cleaning Studies: Fairy Liquid; LAS; TX-100; CTAB; Silicon-Sealed Edges；Summary；Figures 1,8–12 文字說明",
+      "locator": "Introduction: Autoxidation Fouling; Soil Removal by Surfactants；Results and Discussion / Cleaning Studies: Fairy Liquid; LAS; TX-100; CTAB; Silicon-Sealed Edges；Summary；Figures 1,8–12 文字說明",
+      "summary": "烤硬豬油模型可由底界面整片抬離，也可由外表弱化後被水流侵蝕；封邊與改變局部剪應力提供區分路徑的證據。",
+      "access_notes": "實讀正文與圖說，未聲稱目視顯微原圖、重算量測或讀全篇方法。穿透方向是作者以對照支持的模型；不是直接看見每個分子。研究條件不是家庭清潔配方。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "H10-S003",
+      "url": "https://www.wacker.com/h/en-us/medias/7461-EN.pdf",
+      "title": "Room Temperature Vulcanizing (RTV) Silicones: Material and Processing Guidelines",
+      "publisher": "Wacker Chemie AG",
+      "version": "7461en / 10.24 reprint 7461e / 02.19",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 public urllib HTTP 200；pypdf 讀 PDF 封面及第23頁文字層",
+      "reading_scope": "Understanding RTV Silicones: Skin Forming and Curing; Film Thickness; Increasing Curing Speed；printed p.23 / PDF p.23",
+      "locator": "Understanding RTV Silicones: Skin Forming and Curing; Film Thickness; Increasing Curing Speed；printed p.23 / PDF p.23",
+      "summary": "單組分濕氣固化矽橡膠由表面開始反應，水分向內擴散限制固化前沿；表面結皮不能表示整塊完成。",
+      "access_notes": "製造商技術資料，限 RTV-1；不搬用建議厚度、濕度或加速操作。封面與本頁之外未完整讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "H10-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11533165/",
+      "title": "From Wet to Protective: Film Formation in Waterborne Coatings",
+      "publisher": "Arjmandi, Bi, Nielsen and Dam-Johansen; Technical University of Denmark / Hempel; ACS Applied Materials & Interfaces",
+      "version": "2024-10-21; doi:10.1021/acsami.4c09729",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 web open 先讀摘要與引言；再以 Europe PMC fullTextXML HTTP 200 讀指定正文；https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11533165/fullTextXML",
+      "reading_scope": "§3 Film Formation of WB Coatings；§3.1 Close-Packed Structure；§3.2 Deformation（不含子節3.2.1理論推導）；§3.3 Coalescence；§4.4 Experimental Evidence；§5.1 Key Role of Coalescing Agents",
+      "locator": "§3 Film Formation of WB Coatings；§3.1 Close-Packed Structure；§3.2 Deformation（不含子節3.2.1理論推導）；§3.3 Coalescence；§4.4 Experimental Evidence；§5.1 Key Role of Coalescing Agents",
+      "summary": "乳膠粒子先接觸、變形，再由鏈跨越粒子邊界而形成機械連續性；表乾與完成成膜不同。",
+      "access_notes": "大學研究者綜述；§4.4 轉述原研究不冒稱已讀那些原論文。後一次 PMC web open 出現 reCAPTCHA，實際正文由 Europe PMC XML 取得。各階段可在膜的不同區域同時發生，不畫成全膜整齊同步。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "H10-S005",
+      "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/caring-plastics-rubbers.html",
+      "title": "Caring for plastics and rubbers",
+      "publisher": "Julia Fenn and R. Scott Williams; Canadian Conservation Institute, Government of Canada",
+      "version": "頁面 metadata issued 2017-09-22; modified 2020-07-16",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 public urllib HTTP 200；HTML 解析後實讀正文",
+      "reading_scope": "Examples of preventive conservation practices / Isolating incompatible plastic components from the rest of the object / Exudation and deposition of additives on plastic surfaces，Figure 12 與緊接的 Problem/Solution；另讀 Relative humidity above 0%; Stage 5: clean; Degradation of CN and attack by degradation products",
+      "locator": "Examples of preventive conservation practices / Isolating incompatible plastic components from the rest of the object / Exudation and deposition of additives on plastic surfaces，Figure 12 與緊接的 Problem/Solution；另讀 Relative humidity above 0%; Stage 5: clean; Degradation of CN and attack by degradation products",
+      "summary": "PVC 玩偶的添加劑由內部移向表面；擦除表面沉積仍留下內外濃度差，因此可能再次出現。",
+      "access_notes": "只採來源的遷移與重現模型；不把未知黏污診斷為塑化劑，不提供溶劑清潔、保存處方或健康結論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "H10-S006",
+      "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/ceramics-glass-preventive-conservation.html",
+      "title": "Caring for ceramic and glass objects",
+      "publisher": "Canadian Conservation Institute, Government of Canada",
+      "version": "頁面 metadata issued 2017-11-20; modified 2018-12-14",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 public urllib HTTP 200；HTML 解析後實讀正文",
+      "reading_scope": "Causes of damage to glass / Water; Light and ultraviolet; Incorrect relative humidity，Figures 17a–b 文字說明",
+      "locator": "Causes of damage to glass / Water; Light and ultraviolet; Incorrect relative humidity，Figures 17a–b 文字說明",
+      "summary": "部分成分不穩定的玻璃會因水分作用而在表面累積鹼性物質；早期表層與後期網絡損傷不能混為同一種可洗掉的污垢。",
+      "access_notes": "本頁將 sodium 寫得過度簡化；不照搬成金屬鈉直接吸水，也不採通用 RH 門檻。機制措辭另用 Corning 保存人員的案例交叉限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "H10-S007",
+      "url": "https://blog.cmog.org/2012/osler-candelabrum-and-incipient-crizzling",
+      "title": "The Osler Candelabrum and incipient crizzling",
+      "publisher": "Astrid van Giffen, conservator; The Corning Museum of Glass",
+      "version": "2012-12-06",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 web open 正文成功，lines 18–29；另用指定 UA 的 urllib 快取請求回 HTTP 403，未取得該方法副本",
+      "reading_scope": "正文從 replacement shades 的成分差異，到 moisture leaches alkali / alkali solution breaks down silica network，再到約每5年表層重現的該物件案例",
+      "locator": "正文從 replacement shades 的成分差異，到 moisture leaches alkali / alkali solution breaks down silica network，再到約每5年表層重現的該物件案例",
+      "summary": "同一燭台的新舊燈罩因玻璃配方不同而有不同劣化；溶出的鹼性成分吸水，表面鹼性液又可破壞矽氧網絡。",
+      "access_notes": "博物館保存人員直接報告案例；5年僅此燈罩，不當一般玻璃時間常數。未讀文末其他連結，沒有把清洗案例改成觀眾操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "H10-S008",
+      "url": "https://libanswers.cmog.org/faq/144576",
+      "title": "What causes an oily film on glass objects?",
+      "publisher": "The Corning Museum of Glass / Rakow Research Library",
+      "version": "Last Updated: 2022-12-02",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 web open 正文成功，lines 15–68；指定 UA 的 public urllib HTTP 200 留副本",
+      "reading_scope": "THE FIVE STAGES OF CRIZZLING: Stage 1 Initial Stage; Stage 2 Incipient Crizzling; Stages 3–5",
+      "locator": "THE FIVE STAGES OF CRIZZLING: Stage 1 Initial Stage; Stage 2 Incipient Crizzling; Stages 3–5",
+      "summary": "早期鹼性表層移除後可變清，較後期的細裂紋則會留下洗不掉的霧度；兩者不是同一清潔結果。",
+      "access_notes": "未用開頭引言把家中所有霧玻璃都診斷為洗碗機損傷；未採固定濕度數字。未讀外連影片與書籍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "H10-S009",
+      "url": "https://plastics-rubber.basf.com/global/en/performance_polymers/products/basotect",
+      "title": "Basotect: versatile melamine resin foam",
+      "publisher": "BASF Performance Polymers",
+      "version": "未標頁面發布日期；2026-11-01 所見版本",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 public urllib HTTP 200；HTML 解析後實讀指定正文",
+      "reading_scope": "Basotect Offers You Many Advantages，薄肋空間網絡及清潔段；Basotect W",
+      "locator": "Basotect Offers You Many Advantages，薄肋空間網絡及清潔段；Basotect W",
+      "summary": "薄肋網絡可彎曲，該泡棉以輕微研磨方式清潔；目前資料尚不足以把它拆成新的深入材料機制。",
+      "access_notes": "只保留未加入方向的來源；製造商介紹不是獨立產品比較，不採效能或安全宣稱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H10001",
+      "question": "洗劑碰到油滴，為什麼有時整滴離開，有時還留下一部分油？",
+      "domain": "家用材料與清潔界面",
+      "mechanism_key": "detergent_oil_rollup_vs_necking_residual_contact",
+      "answer_target": "洗劑改變油、水與固體間的接觸狀態；油滴可縮小底部接觸區而整滴脫離，或在仍黏著底部時頸縮斷開，留下殘油。",
+      "scope": "限浸在水性洗劑中的液態油滴與適合的表面條件；接觸角、界面張力及外力共同影響路徑，不等於任意洗劑都能完整去油。",
+      "source_ids": [
+        "H10-S001",
+        "H10-S002"
+      ],
+      "source_locator": "H10-S001: Roll-up detachment; Snap-off detachment / Figures 27–28 文字；H10-S002: Soil Removal by Surfactants / Figure 1a–b",
+      "premise_status": "screened",
+      "notes": "兩來源直接描述的機制比較。LEG-S53 是親水/親油聚集與帶走油污；本題只看油仍貼在固體時的離面路徑與殘留。P054 的接觸角是前置概念，不能以換成油滴自動算新；請覆核新增的兩條離面路徑是否足夠。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見油滴被帶走，仍不等於它的整個底部都已離開表面。",
+        "visual": "固定同一塊固體，分屏畫底部接觸區縮小與頸部拉斷；用不同顏色標出原本的油量及殘留，圖為機制示意。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "H10002",
+      "question": "烤硬的油膜清洗時，為什麼有時整片鼓起，有時只在水流處逐步變薄？",
+      "domain": "家用材料與清潔界面",
+      "mechanism_key": "polymerized_lipid_soil_edge_ingress_vs_surface_erosion",
+      "answer_target": "研究中的兩種去除路徑分別是洗液由邊緣進入油膜與底材界面、削弱附著而抬離，以及從油膜外表弱化內聚、再由局部剪流侵蝕；封住邊緣會阻止前者，未阻止後者。",
+      "scope": "限原研究烤硬豬油薄層、指定界面活性劑及量測流場；不是所有烤焦物，也不把研究濃度、鹼度與溫度轉成清潔建議。入口路徑為作者對照支持的模型。",
+      "source_ids": [
+        "H10-S002"
+      ],
+      "source_locator": "H10-S002: LAS; TX-100; CTAB; Silicon-Sealed Edges; Summary / Figures 8–12 文字",
+      "premise_status": "screened",
+      "notes": "烤硬模型的原始實驗直接對照；保留作者對滲入方向的推論層級。D2105 是水破壞瀝青-粒料黏結，D2183 是外力的剪切/剝離載荷路徑；此題加入選擇性封入口與只在剪流位置侵蝕的可反駁條件。與 H10001 比較時必須先切換成固化油膜，不能畫成同一油滴的下一刻。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣去掉一層污物，失效位置可以在底部黏結，也可以在污層內部；阻擋入口可用來分辨。",
+        "visual": "三個實驗條件示意：未封邊整片鼓起、封邊後不再抬離、另一洗液在封邊下仍只於噴嘴剪流處侵蝕；分子箭頭標為模型。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "H10003",
+      "question": "矽利康表面已經結皮，裡面為什麼還可能沒有固化？",
+      "domain": "家用材料與清潔界面",
+      "mechanism_key": "rtv1_moisture_diffusion_limits_inward_cure_front",
+      "answer_target": "濕氣固化的單組分矽橡膠由外界水分引發交聯，先在外表形成皮層；反應要繼續向內推進仍須水分擴散，因此表層完成不能代表厚部完成。",
+      "scope": "限技術資料中的 RTV-1 濕氣固化系統；不套用雙組分加成固化，不提供可使用時間、施工厚度或加速操作。",
+      "source_ids": [
+        "H10-S003"
+      ],
+      "source_locator": "H10-S003: printed/PDF p.23, Skin Forming and Curing; Film Thickness",
+      "premise_status": "screened",
+      "notes": "製造商直接機制。H3016 只解釋表面水觸發瞬間膠聚合；這題是反應物由外界補給、固化前沿與有限暴露面的空間條件。D2185 缺氧固化的開關不同；H3027 是完成網絡後不能熔融的性質。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "表面摸乾是一個局部訊號，不能直接推斷整個剖面的反應狀態。",
+        "visual": "同一厚塊剖面，外表薄皮已成形而內部仍未完成；再只保留一面接觸空氣，畫水分必須走的路徑。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    },
+    {
+      "id": "H10004",
+      "question": "水性乳膠漆的水已經乾了，為什麼漆膜還不一定結實？",
+      "domain": "家用材料與清潔界面",
+      "mechanism_key": "latex_particle_boundary_interdiffusion_after_evaporation",
+      "answer_target": "水分離開使乳膠粒子靠攏與變形，但粒子接觸不等於邊界消失；鏈還須跨越粒子界面互相穿入，才形成更連續的機械結構。",
+      "scope": "限以乳膠分散粒子成膜的水性塗層；不是所有水性漆都只有物理成膜，也不指定統一等待時數。膜中不同區域可同時處於不同階段。",
+      "source_ids": [
+        "H10-S004"
+      ],
+      "source_locator": "H10-S004 §3, §3.1 Close-Packed Structure; §3.2 Deformation; §3.3 Coalescence; §4.4 Experimental Evidence",
+      "premise_status": "screened",
+      "notes": "大學綜述直接論述，§4.4 的原實驗未另讀，不稱自己驗證。H3024/H3025 的鏈段活動性是成膜條件；本題增量是原先分隔在不同粒子內的鏈跨界形成連續膜，不另拆一題成膜助劑。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "顆粒已擠在一起與鏈真正跨越接縫，是兩個不同的完成程度。",
+        "visual": "兩層放大：顆粒間水隙縮小；再以不同顏色鏈顯示已變形但邊界仍在，與跨界後連續的對照。不用透明度單獨宣告強度完成。",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "H10005",
+      "question": "有些塑膠表面的白霧擦掉了，為什麼過一陣子又出現？",
+      "domain": "家用材料與清潔界面",
+      "mechanism_key": "polymer_additive_bloom_surface_removal_restores_gradient",
+      "answer_target": "某些添加劑能由塑膠內部遷移並沉積於表面；擦掉外層只移走已到表面的部分，內部仍是供應庫，留下的濃度差可讓沉積再度形成。",
+      "scope": "直接案例為 CCI 的 PVC 玩偶金屬羧酸鹽析出；不是所有塑膠白化、黏污或刮痕，也不把該添加劑泛稱塑化劑，不提供溶劑處理建議。",
+      "source_ids": [
+        "H10-S005"
+      ],
+      "source_locator": "H10-S005: Exudation and deposition of additives on plastic surfaces / Figure 12, Problem and Solution",
+      "premise_status": "screened",
+      "notes": "官方保存案例直接機制。L003 是膜兩側的被動擴散方向；本題可能仍被視為該核心的材料變體，新增條件僅是表面移除後內部庫存持續補給。Q9008 是出口選擇蒸發與液態內補形成穩態，不以任何濃度梯度都自動獨立。請優先審薄題/合併，未保數量。 作者接受非作者覆核 H10005→L003：目前只有梯度與內庫補給，不足另計材料機制；原始題與來源保留供中央合併，不能列作新核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "表面清空沒有清空內部來源；再次出現不必先假設新的外來灰塵。",
+        "visual": "塑膠剖面內部標有添加劑，表面沉積擦去後重新標出內外差，再出現薄層；不給實際速度或時間刻度。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    },
+    {
+      "id": "H10006",
+      "question": "沒有沾到油，有些老玻璃怎麼會出現滑膩的薄層？",
+      "domain": "家用材料與清潔界面",
+      "mechanism_key": "unstable_glass_alkali_leaching_hygroscopic_surface_silica_attack",
+      "answer_target": "成分不穩定的玻璃受水分作用，鹼性成分溶出並在表面累積、吸引水分；表面鹼性液又能侵蝕玻璃網絡，所以早期可移除的薄層與後期留下的細裂紋有不同結果。",
+      "scope": "限來源中的不穩定玻璃、尤其歷史飾件；不把一般杯子水垢、霧氣、油污都診斷為玻璃病，不提供清潔或食品容器安全判斷。",
+      "source_ids": [
+        "H10-S006",
+        "H10-S007",
+        "H10-S008"
+      ],
+      "source_locator": "H10-S006 Incorrect relative humidity / Figures 17a–b；H10-S007 正文 replacement shades 及 moisture leaches alkali 至約每5年再清洗的案例；H10-S008 Stages 1–2 of Crizzling",
+      "premise_status": "screened",
+      "notes": "Corning 保存人員的成分對照與表面機制；CCI 只用受限描述，不沿用把 sodium 當金屬鈉的簡化說法。LEG-S69 是冷表面凝結；LEG-S33 是光吸收與均勻度；N234 是孔隙鹽晶壓力。本題把玻璃自己的溶出物與後續網絡損傷連起來。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似油膩的東西可能來自材料自己；洗掉表層與修復底下結構是不同問題。",
+        "visual": "先對照同燭台原燈罩與成分不同的替換罩，再畫鹼性成分到表面、吸水及網絡受損；最後對照初期薄層與細裂紋，不直接挪用博物館照片。",
+        "seconds": [
+          65,
+          105
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H10-NA001",
+      "question": "肥皂為什麼能把油包住沖走？",
+      "existing_ids": [
+        "LEG-S53"
+      ],
+      "source_ids": [
+        "H10-S001",
+        "H10-S002"
+      ],
+      "reason": "舊題已收兩親性與聚集帶走油污；不以更換清潔劑品牌重計。"
+    },
+    {
+      "id": "H10-NA002",
+      "question": "油滴斷開後留下的一圈油能否另算一題？",
+      "existing_ids": [
+        "H10001"
+      ],
+      "source_ids": [
+        "H10-S001",
+        "H10-S002"
+      ],
+      "reason": "頸縮殘留就是 H10001 與整滴離面的同一比較，不能再拆條件。"
+    },
+    {
+      "id": "H10-NA003",
+      "question": "烤硬的油為什麼不再像液態油？",
+      "existing_ids": [
+        "H3014",
+        "H3027"
+      ],
+      "source_ids": [
+        "H10-S002"
+      ],
+      "reason": "只以聚合把流體變網絡，容易重講舊長鏈/交聯核心；在 H10002 用作限制而非新題。"
+    },
+    {
+      "id": "H10-NA004",
+      "question": "封住油膜邊緣就洗不掉，能再做一題嗎？",
+      "existing_ids": [
+        "H10002"
+      ],
+      "source_ids": [
+        "H10-S002"
+      ],
+      "reason": "是 H10002 用來辨認入口的必要對照，不另計核心。"
+    },
+    {
+      "id": "H10-NA005",
+      "question": "水性漆加成膜助劑為什麼比較容易成膜？",
+      "existing_ids": [
+        "H3025"
+      ],
+      "source_ids": [
+        "H10-S004"
+      ],
+      "reason": "當前增量仍是降低玻璃轉移並增加鏈活動性，併作 H10004 的條件，不重算塑化機制。"
+    },
+    {
+      "id": "H10-NA006",
+      "question": "乳膠漆變透明就等於完全成膜了嗎？",
+      "existing_ids": [
+        "H10004"
+      ],
+      "source_ids": [
+        "H10-S004"
+      ],
+      "reason": "光散射與強度終點可用來限定 H10004，但不拆同一成膜歷程；目前也沒有獨立原研究支持另一核心。"
+    },
+    {
+      "id": "H10-NA007",
+      "question": "瞬間膠碰到濕氣為什麼會硬？",
+      "existing_ids": [
+        "H3016"
+      ],
+      "source_ids": [],
+      "reason": "舊 H3016 已收；本輪只研究 RTV-1 的反應物傳輸前沿。"
+    },
+    {
+      "id": "H10-NA008",
+      "question": "膠帶慢慢掀起，為什麼和整片橫拉不同？",
+      "existing_ids": [
+        "D2183"
+      ],
+      "source_ids": [],
+      "reason": "舊載荷路徑已有，未實讀可支持新空穴/拉絲機制的原研究。"
+    },
+    {
+      "id": "H10-NA009",
+      "question": "塑膠少了添加劑會不會變硬？",
+      "existing_ids": [
+        "H3025"
+      ],
+      "source_ids": [
+        "H10-S005"
+      ],
+      "reason": "塑化劑與鏈段活動性已有；而本輪 CCI 析出直接案例是金屬羧酸鹽，不把它硬改成塑化劑流失。"
+    },
+    {
+      "id": "H10-NA010",
+      "question": "潮濕時玻璃表面出水，乾燥時出霧能各算一題嗎？",
+      "existing_ids": [
+        "H10006"
+      ],
+      "source_ids": [
+        "H10-S006",
+        "H10-S007",
+        "H10-S008"
+      ],
+      "reason": "均屬 H10006 的成分不穩定、表面溶出與劣化歷程，只作同核心狀態比較。"
+    },
+    {
+      "id": "H10-NA011",
+      "question": "潮濕的玻璃外面出水珠一定是玻璃病嗎？",
+      "existing_ids": [
+        "LEG-S69"
+      ],
+      "source_ids": [
+        "H10-S006",
+        "H10-S008"
+      ],
+      "reason": "假前提；一般冷杯外壁已有凝結機制，不能僅憑外觀診斷。"
+    },
+    {
+      "id": "H10-NA012",
+      "question": "陶瓷表面鹽乾掉，為什麼可能剝落？",
+      "existing_ids": [
+        "N234"
+      ],
+      "source_ids": [],
+      "reason": "本輪只會重講孔隙鹽類再結晶壓力，改成陶瓷不重計。"
+    },
+    {
+      "id": "H10-NA013",
+      "question": "薄肋清潔泡棉很軟，為什麼還能擦掉污漬？",
+      "existing_ids": [],
+      "source_ids": [
+        "H10-S009"
+      ],
+      "reason": "製造商正文支持肋網絡可彎與研磨，但未充分連接局部接觸硬度、磨耗與基材差異；目前只有功能加結構描述，先不收。"
+    },
+    {
+      "id": "H10-NA014",
+      "question": "水流為什麼有時較容易帶走大顆粒？",
+      "existing_ids": [],
+      "source_ids": [
+        "H10-S001"
+      ],
+      "reason": "綜述已有力矩模型，但本輪未讀原接觸粗糙度/黏附尺度研究；若只講大顆粒槓桿較長太薄，延後。"
+    },
+    {
+      "id": "H10-NA015",
+      "question": "油性消泡劑為什麼能把泡泡弄破？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Sofia 大學 2014 PDF 的 urllib 連線逾時、web open timeout；另見搜尋片段不能當已讀，未收成候選。"
+    },
+    {
+      "id": "H10-NA016",
+      "question": "清潔劑中的酵素為什麼能切開蛋白污漬？",
+      "existing_ids": [
+        "L024"
+      ],
+      "source_ids": [],
+      "reason": "只講酵素催化與基質分解會是既有生化原理的清潔案例；未讀支持新的界面受限步驟之原研究。"
+    },
+    {
+      "id": "H10-NA017",
+      "question": "塑膠有酯鍵，為什麼會受水分解？",
+      "existing_ids": [
+        "H3030"
+      ],
+      "source_ids": [
+        "H10-S005"
+      ],
+      "reason": "主鏈酯鍵水解已有；未把室內陳化速度或酸催化回饋的未核範圍包進來。"
+    },
+    {
+      "id": "H10-NA018",
+      "question": "超音波清洗為什麼能把髒污打掉？",
+      "existing_ids": [
+        "P311"
+      ],
+      "source_ids": [],
+      "reason": "空化崩潰的舊核心已有，本輪不換清洗槽重計。"
+    },
+    {
+      "id": "H10-NA019",
+      "question": "包裝看似不漏，香味為什麼仍可能被塑膠吸走？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "歷史退題仍缺本輪實讀的原研究；沒有用找到的綜述搜尋片段復活。"
+    }
+  ]
+}

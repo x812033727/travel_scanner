@@ -1,0 +1,735 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "3624dcea5fa4e2b25457639311830b91e80a9670",
+    "selected": 2988,
+    "raw_records": 3356,
+    "themes": 208,
+    "not_added": 928,
+    "pool_sha256": "aaa936e8bc5d09f1ec0ba3ada65cb7c84b8c524ae13e0b58787881385c8a9cf0"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave20-life-motion.json",
+      "sha256": "60063eae4f9885c434dfe7427c8dc921f82255365617b1c4cb460f0c11dff1f0"
+    },
+    {
+      "file": "reviews/wave20-life-motion-themes.json",
+      "sha256": "4083fff64d14695ab16f8c8597344b11e032d3520ae95e7a640e8577962c9123"
+    }
+  ],
+  "counts": {
+    "candidates": 3,
+    "source_records": 8,
+    "research_articles": 8,
+    "candidate_support_articles": 6,
+    "na_only_articles": 2,
+    "not_added": 18,
+    "paper_themes": 3
+  },
+  "scope": "三個真正可追問的附著控制候選；不為8–12參考目標收進只有表現或摘要的方向。",
+  "dedup_reading": {
+    "search_population": "全3356 raw的question/answer_target/scope/mechanism_key與全928 not_added序列化內容檢索；不是逐句重讀整池。",
+    "keywords": "壁虎|黏附|附著|足墊|腳掌|攀爬|自清|自潔|清潔|黏灰|剛毛|氣泡|液橋|潤濕|接觸角|摩擦|夾角|油.*水|水.*油|接觸面積|剝離|peel|adhesi|capillar|gecko|wetting|friction",
+    "retrieval_cache": ".cache/wave20-life-fullscan.json",
+    "raw_search_hits": 167,
+    "na_search_hits": 50,
+    "manual_scope": "題名篩選167個raw命中、50個退題命中的問題/理由；本收據16組近對逐讀完整問題/答案/scope，另讀退題所列舊ID與前次運動方向。共同語意top5尚待root，不能宣稱最終去重完成。"
+  },
+  "near_pairs": [
+    {
+      "a": "A20001",
+      "b": "LEG-S59",
+      "proposed": "distinct",
+      "reason": "舊題止於剛毛接觸/角度脫離；新題引入污染第三者與兩接面競爭，快慢撤離可改變粒子去向。",
+      "a_snapshot": {
+        "id": "A20001",
+        "question": "腳底已黏滿灰，壁虎為什麼走過乾淨表面後又能抓牢？",
+        "answer_target": "灰粒同時接觸剛毛與地面時，分離後留在哪一側取決於兩個接面的作用；乾淨地面可接走部分灰粒。活體限制捲趾會減慢恢復；離體單剛毛實驗又顯示，較快法向撤離可使粒子—基材黏力相對增強，改變粒子留下的一側，故不能只靠靜態黏力比較解釋所有自清。",
+        "scope": "限所測壁虎、微球與乾淨光滑基材；不是洗去油污或所有自然塵土。三篇合一核心：2005接觸轉移、2012動作對照、2015速率控制。2012剛毛彈跳慣性為模型假說；2015為離體AFM，不把局部撤離速度叫奔跑速度，也不把黏力恢復比例當粒子移除比例。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S59",
+        "question": "壁虎沒有膠水，為什麼能倒掛天花板？",
+        "answer_target": "壁虎每隻腳上約有 50 萬根極細的剛毛，每根末端再分出上百個奈米級的小扁片，貼近牆面時靠凡得瓦力吸住；一根力量很小，加起來很可觀，空氣濕度也會幫一點忙。抬腳時改變角度，就能輕鬆剝離。",
+        "scope": "沿用 S59 題級條件，須讀原查核包的限制；從足部結構到接觸與脫離，避免說成吸盤。"
+      }
+    },
+    {
+      "a": "A20001",
+      "b": "D2183",
+      "proposed": "distinct",
+      "reason": "剪力/邊緣剝離載荷路徑本身不能決定污染粒子留哪一側；新控制為接面速率反應差。",
+      "a_snapshot": {
+        "id": "A20001",
+        "question": "腳底已黏滿灰，壁虎為什麼走過乾淨表面後又能抓牢？",
+        "answer_target": "灰粒同時接觸剛毛與地面時，分離後留在哪一側取決於兩個接面的作用；乾淨地面可接走部分灰粒。活體限制捲趾會減慢恢復；離體單剛毛實驗又顯示，較快法向撤離可使粒子—基材黏力相對增強，改變粒子留下的一側，故不能只靠靜態黏力比較解釋所有自清。",
+        "scope": "限所測壁虎、微球與乾淨光滑基材；不是洗去油污或所有自然塵土。三篇合一核心：2005接觸轉移、2012動作對照、2015速率控制。2012剛毛彈跳慣性為模型假說；2015為離體AFM，不把局部撤離速度叫奔跑速度，也不把黏力恢復比例當粒子移除比例。"
+      },
+      "b_snapshot": {
+        "id": "D2183",
+        "question": "同一條膠帶，為什麼橫著拉和掀起一角的難度差很多？",
+        "answer_target": "整個接面分擔剪力與邊緣逐步剝離的載荷路徑不同。",
+        "scope": "Adhesive bonding；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "A20001",
+      "b": "F14004",
+      "proposed": "distinct",
+      "reason": "舊是接點塑性/斷裂製造磨屑，新是既有外來粒子從剛毛轉移至地面，不是磨耗尺寸門檻。",
+      "a_snapshot": {
+        "id": "A20001",
+        "question": "腳底已黏滿灰，壁虎為什麼走過乾淨表面後又能抓牢？",
+        "answer_target": "灰粒同時接觸剛毛與地面時，分離後留在哪一側取決於兩個接面的作用；乾淨地面可接走部分灰粒。活體限制捲趾會減慢恢復；離體單剛毛實驗又顯示，較快法向撤離可使粒子—基材黏力相對增強，改變粒子留下的一側，故不能只靠靜態黏力比較解釋所有自清。",
+        "scope": "限所測壁虎、微球與乾淨光滑基材；不是洗去油污或所有自然塵土。三篇合一核心：2005接觸轉移、2012動作對照、2015速率控制。2012剛毛彈跳慣性為模型假說；2015為離體AFM，不把局部撤離速度叫奔跑速度，也不把黏力恢復比例當粒子移除比例。"
+      },
+      "b_snapshot": {
+        "id": "F14004",
+        "question": "兩個黏住的凸點互相滑過，為什麼有時抹平、有時掉下磨屑？",
+        "answer_target": "黏著接點可塑性抹平，也可斷裂成磨屑；模型中可釋放彈性能隨體積增長，形成新表面的代價隨面積增長，接點尺寸因此改變兩路徑競爭。",
+        "scope": "乾式黏著、相近硬度接點的原子模擬/能量模型；臨界尺度依材料/幾何/黏著而變，不提供通用磨粒尺寸。"
+      }
+    },
+    {
+      "a": "A20001",
+      "b": "H10002",
+      "proposed": "distinct",
+      "reason": "舊靠洗液由邊侵入或剪流侵蝕硬油膜，新是乾燥接觸轉移與脫離速率，沒有洗液/內聚侵蝕。",
+      "a_snapshot": {
+        "id": "A20001",
+        "question": "腳底已黏滿灰，壁虎為什麼走過乾淨表面後又能抓牢？",
+        "answer_target": "灰粒同時接觸剛毛與地面時，分離後留在哪一側取決於兩個接面的作用；乾淨地面可接走部分灰粒。活體限制捲趾會減慢恢復；離體單剛毛實驗又顯示，較快法向撤離可使粒子—基材黏力相對增強，改變粒子留下的一側，故不能只靠靜態黏力比較解釋所有自清。",
+        "scope": "限所測壁虎、微球與乾淨光滑基材；不是洗去油污或所有自然塵土。三篇合一核心：2005接觸轉移、2012動作對照、2015速率控制。2012剛毛彈跳慣性為模型假說；2015為離體AFM，不把局部撤離速度叫奔跑速度，也不把黏力恢復比例當粒子移除比例。"
+      },
+      "b_snapshot": {
+        "id": "H10002",
+        "question": "烤硬的油膜清洗時，為什麼有時整片鼓起，有時只在水流處逐步變薄？",
+        "answer_target": "研究中的兩種去除路徑分別是洗液由邊緣進入油膜與底材界面、削弱附著而抬離，以及從油膜外表弱化內聚、再由局部剪流侵蝕；封住邊緣會阻止前者，未阻止後者。",
+        "scope": "限原研究烤硬豬油薄層、指定界面活性劑及量測流場；不是所有烤焦物，也不把研究濃度、鹼度與溫度轉成清潔建議。入口路徑為作者對照支持的模型。"
+      }
+    },
+    {
+      "a": "A20002",
+      "b": "P008",
+      "proposed": "distinct",
+      "reason": "僅近端墊負重摩擦會重複；保留理由是同足末端墊剪力—拔離耦合及卸載可逆，形成兩種受力需求的分工。",
+      "a_snapshot": {
+        "id": "A20002",
+        "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+        "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+        "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。"
+      },
+      "b_snapshot": {
+        "id": "P008",
+        "question": "用力把兩塊板壓緊，為什麼更難把它們錯開？",
+        "answer_target": "接觸正向力增大可提高摩擦上限；接觸面積與材料變化另行控制。",
+        "scope": "相同接觸材質與表面"
+      }
+    },
+    {
+      "a": "A20002",
+      "b": "LEG-S59",
+      "proposed": "distinct",
+      "reason": "舊壁虎剛毛角度脫離未比較兩類足墊對法向負重/沿面拉的不同響應；不將相同附著名稱當新核。",
+      "a_snapshot": {
+        "id": "A20002",
+        "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+        "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+        "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S59",
+        "question": "壁虎沒有膠水，為什麼能倒掛天花板？",
+        "answer_target": "壁虎每隻腳上約有 50 萬根極細的剛毛，每根末端再分出上百個奈米級的小扁片，貼近牆面時靠凡得瓦力吸住；一根力量很小，加起來很可觀，空氣濕度也會幫一點忙。抬腳時改變角度，就能輕鬆剝離。",
+        "scope": "沿用 S59 題級條件，須讀原查核包的限制；從足部結構到接觸與脫離，避免說成吸盤。"
+      }
+    },
+    {
+      "a": "A20002",
+      "b": "D2183",
+      "proposed": "distinct",
+      "reason": "舊講同接面剪載/剝離路徑，新先施加可控沿面拉再量垂直拔離，卸拉可回低且兩墊的響應不同。",
+      "a_snapshot": {
+        "id": "A20002",
+        "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+        "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+        "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。"
+      },
+      "b_snapshot": {
+        "id": "D2183",
+        "question": "同一條膠帶，為什麼橫著拉和掀起一角的難度差很多？",
+        "answer_target": "整個接面分擔剪力與邊緣逐步剝離的載荷路徑不同。",
+        "scope": "Adhesive bonding；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "A20002",
+      "b": "A12006",
+      "proposed": "distinct",
+      "reason": "舊是腳推進與身體拖曳競爭造成速度非單調，新是單足墊的受力耦合及姿態配置。",
+      "a_snapshot": {
+        "id": "A20002",
+        "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+        "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+        "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。"
+      },
+      "b_snapshot": {
+        "id": "A12006",
+        "question": "蟑螂在矮縫裡爬，為什麼地面越粗糙不一定越快？",
+        "answer_target": "低天花板使身體也摩擦地面與頂部；地面摩擦增加可助腳推進，也會增加身體拖曳，兩者競爭出現非單調速度。",
+        "scope": "限美洲蟑螂所測平板/高度/三種摩擦條件；不報所有材質的最佳值，也不把模型腿力當直接量測。"
+      }
+    },
+    {
+      "a": "A20002",
+      "b": "F14006",
+      "proposed": "distinct",
+      "reason": "舊孔隙排水時間與滑速使凝膠接觸區改變；新末端墊投影面積無顯著變化，未借舊排水模型解釋。",
+      "a_snapshot": {
+        "id": "A20002",
+        "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+        "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+        "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。"
+      },
+      "b_snapshot": {
+        "id": "F14006",
+        "question": "水凝膠上的圓形接觸區，滑快後為什麼縮小還缺了一邊？",
+        "answer_target": "接點停留時間與凝膠排水時間競爭；快速通過時孔隙水壓前後不平衡、分擔法向負荷，改變接觸區大小與形狀，並伴隨摩擦峰後下降。",
+        "scope": "浸水的薄PDMA膜/玻璃球；外部水膜潤滑估計太小。模型未排除所有界面耗能，最高速形狀回升不在簡化模型內；不轉作關節醫療解說。"
+      }
+    },
+    {
+      "a": "A20003",
+      "b": "P053",
+      "proposed": "distinct",
+      "reason": "舊是一種液體與固體的靜態攤平；新是油橋跨兩固體、外圍介質置換與無氣泡控制對抗拔離的結果。若覆核只判為潤濕變體則接受合併。",
+      "a_snapshot": {
+        "id": "A20003",
+        "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+        "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+        "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。"
+      },
+      "b_snapshot": {
+        "id": "P053",
+        "question": "水滴在不同桌面上，為什麼有時攤平、有時鼓成一粒？",
+        "answer_target": "比較液體內聚與對固體附著的競爭，不能只以表面光滑程度解釋。",
+        "scope": "表面乾淨且液體相同"
+      }
+    },
+    {
+      "a": "A20003",
+      "b": "P054",
+      "proposed": "distinct",
+      "reason": "舊是杯壁彎月面形狀；新受限油橋傳力且比較空氣/水置換與泡消失，不只是畫一條接觸角。",
+      "a_snapshot": {
+        "id": "A20003",
+        "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+        "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+        "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。"
+      },
+      "b_snapshot": {
+        "id": "P054",
+        "question": "杯子邊緣的水面為什麼不是完全平的？",
+        "answer_target": "容器壁附著與液面張力決定彎月面與接觸角。",
+        "scope": "尺度小到界面效應可見"
+      }
+    },
+    {
+      "a": "A20003",
+      "b": "I12003",
+      "proposed": "distinct",
+      "reason": "舊是自由液面上浮物的側向互吸，新是兩固體間油橋的法向脫離，無漂浮或側向集合。",
+      "a_snapshot": {
+        "id": "A20003",
+        "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+        "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+        "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。"
+      },
+      "b_snapshot": {
+        "id": "I12003",
+        "question": "兩個漂浮小物還沒碰到，為什麼會慢慢靠在一起？",
+        "answer_target": "浮物改變周圍液面的高低；彼此靠近可降低液面與重力相關的總能量，同向變形常相吸，反向變形可相斥。",
+        "scope": "小浮物、靜水、界面變形主導的條件；先排除水流、磁力，不能只憑密度判所有組合。"
+      }
+    },
+    {
+      "a": "A20003",
+      "b": "H10001",
+      "proposed": "distinct",
+      "reason": "舊洗劑改變油滴貼底、縮頸與殘油；新沒有洗劑，油液橋在介質置換後支承抗拔離，失效條件不同。仍交覆核確認增量。",
+      "a_snapshot": {
+        "id": "A20003",
+        "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+        "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+        "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。"
+      },
+      "b_snapshot": {
+        "id": "H10001",
+        "question": "洗劑碰到油滴，為什麼有時整滴離開，有時還留下一部分油？",
+        "answer_target": "洗劑改變油、水與固體間的接觸狀態；油滴可縮小底部接觸區而整滴脫離，或在仍黏著底部時頸縮斷開，留下殘油。",
+        "scope": "限浸在水性洗劑中的液態油滴與適合的表面條件；接觸角、界面張力及外力共同影響路徑，不等於任意洗劑都能完整去油。"
+      }
+    },
+    {
+      "a": "A20003",
+      "b": "LEG-S53",
+      "proposed": "distinct",
+      "reason": "舊兩親分子/微胞去油，新無洗劑且油性分泌液提供連接；不能把泡消失當去油。",
+      "a_snapshot": {
+        "id": "A20003",
+        "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+        "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+        "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S53",
+        "question": "水沖不掉的油，肥皂為什麼一洗就走？",
+        "answer_target": "肥皂分子一頭親水、一頭親油。親油的尾巴鑽進油污，親水的頭朝外，把油包成一顆顆小球（微胞），水就能把它沖走。清水抓不住油，只沖得掉一部分；油不溶於水又比水輕，常浮在表面。",
+        "scope": "沿用 S53 題級條件，須讀原查核包的限制；同一油滴經界面、聚集與沖洗，兼談不等於所有病原被殺死。"
+      }
+    },
+    {
+      "a": "A20003",
+      "b": "E9007",
+      "proposed": "distinct",
+      "reason": "舊多醣黏液吸水展開及乾濕歷程，新是既有油性橋在外圍水中仍有力，無膨脹多醣錨固。",
+      "a_snapshot": {
+        "id": "A20003",
+        "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+        "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+        "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。"
+      },
+      "b_snapshot": {
+        "id": "E9007",
+        "question": "有些種子遇水長出黏液，為什麼反而比較不會被水沖走？",
+        "answer_target": "吸水展開的多醣黏液接觸基材，乾濕歷程形成附著；抵抗脫離的力可比種子自身重量更能解釋滯留。",
+        "scope": "限有黏液種子與研究基材/流況；濕乾測力基材不同，不用其數值倍數當純含水量效應。"
+      }
+    },
+    {
+      "a": "A20003",
+      "b": "B16005",
+      "proposed": "distinct",
+      "reason": "舊液滴把細絲拉彎盤存，新是兩固體間油橋在不同介質/表面條件下的拔離力，無絲屈曲儲長。",
+      "a_snapshot": {
+        "id": "A20003",
+        "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+        "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+        "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。"
+      },
+      "b_snapshot": {
+        "id": "B16005",
+        "question": "蛛絲放鬆後，為什麼多出來的長度不一定垂成鬆線？",
+        "answer_target": "液滴的毛細拉力可使極細絲在滴內屈曲盤繞，將多餘長度存入液滴，同時保留滴外張力；能否收線取決於毛細作用是否勝過細絲的抗彎門檻。",
+        "scope": "限所測Nephila edulis捕獲絲與合成微細線/液滴對照；不是所有蛛絲，也不是真的固液相變。粗線不能任意套用，極端鬆弛時也不維持同樣張力。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "A20-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC544316/",
+      "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。",
+      "reading_scope": "Materials and Methods；Results and Discussion的Experimental Support、Models of Self-Cleaning與粒子卡在間隙的限制。快取段11–15、22–24、27–28、32–33、37–39。未逐式重現模型。",
+      "locator": "Materials and Methods / Isolated Setal Array Force Measurements、Live Digit Force Measurements；Results and Discussion / Experimental Support for the Self-Cleaning Hypothesis、Models of Self-Cleaning。",
+      "cache": {
+        "file": ".cache/wave20-life-gecko2005.html",
+        "sha256": "5f9cf5ea6282304dd62c6f3101da202b7c44391bba2a95c7783258253dafebd8",
+        "text_file": ".cache/wave20-life-gecko2005.txt",
+        "text_sha256": "0b50eb92b9e22b0de3753ad597ca7742622fb9ddcf339df85186d1767ef53e4d"
+      }
+    },
+    {
+      "source_id": "A20-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479896/",
+      "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。",
+      "reading_scope": "§2；§3.1–3.2；§4.1/4.2的定性模型及§4.3；§5。快取段7–9、13–18、21、24、28、52–56、58；未逐式重現中段動態計算。",
+      "locator": "§2捲趾限制裝置；§3.1 Fig.2力恢復、§3.2粒子觀察；§4.2慣性甩離假說與§4.3。",
+      "cache": {
+        "file": ".cache/wave20-life-gecko2012.html",
+        "sha256": "8cb1a1902966c044811784c4a9d79f833de5f42dfcbd6594c9062cd010a07cbc",
+        "text_file": ".cache/wave20-life-gecko2012.txt",
+        "text_sha256": "59128e5a7ee1b92fa24a3093c5f28b63e95853de37deee9f9a962d3fc4ebe690"
+      }
+    },
+    {
+      "source_id": "A20-S003",
+      "url": "https://www.nature.com/articles/ncomms9949",
+      "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。 HTML明確按UTF-8重抽文字，未重下載；原圖Fig.2另目讀。",
+      "reading_scope": "Results的Dynamic effects、Dynamic self-cleaning；Modelling定性段；Discussion；Methods指定操作。快取段8–18、22–28、30–31；Fig.2原圖目讀。未讀SI全文或影片。",
+      "locator": "Results / Dynamic self-cleaning mechanism and manipulation of setae，Fig.2b–d；Modelling dynamic effects of spatulae setae and particles；Discussion首段比較2005；Methods。",
+      "cache": {
+        "file": ".cache/wave20-life-gecko2015.html",
+        "sha256": "9454fcbe40081105ae455393ae837bf71880c29237a7834e1285f8d15eef2f04",
+        "text_file": ".cache/wave20-life-gecko2015.txt",
+        "text_sha256": "c5030a9d31b19f6811a1f9986982ec57943290df9b1f337bd5e9952924b3ca99"
+      }
+    },
+    {
+      "source_id": "A20-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3859514/",
+      "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。",
+      "reading_scope": "Methods單足墊力測量與拉力控制；Results足墊使用、拉力/預壓/摩擦；Discussion兩種敏感性與分工。快取段13、20、30–58、59–66；Fig.4原圖目讀。未讀SI原始資料。",
+      "locator": "Materials and Methods / Single-pad force measurements、Adhesion measurements；Results / Use of attachment organs、Effect of pulling force and normal preload on adhesion、Effect of normal load on friction；Discussion。",
+      "cache": {
+        "file": ".cache/wave20-life-stick2013.html",
+        "sha256": "f1188cf5e9263ba08629042bb9c063a859a1bb31066821ec5baa33277d3569bc",
+        "text_file": ".cache/wave20-life-stick2013.txt",
+        "text_sha256": "f368bfe660314dca4ddf17cdb9e17aa6b898b9534027c946fd63d081a49bb71f"
+      }
+    },
+    {
+      "source_id": "A20-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3441071/",
+      "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。",
+      "reading_scope": "§2(a–c)方法；§3(a/b)氣泡觀察與牽引力；§3(c/d)仿體/潤濕解釋；§4。快取段11–13、16–17、24、27–28、34–36、39–41、49–50、54。",
+      "locator": "§3(a) Fig.4腳底接觸；§3(b) Fig.5/6親疏水比較；§3(c/d)氣泡仿體與邊界。",
+      "cache": {
+        "file": ".cache/wave20-life-beetle2012.html",
+        "sha256": "78dde83e62951eeadc1d4c3d22ca39afbba8496b013f943d3498970669765b75",
+        "text_file": ".cache/wave20-life-beetle2012.txt",
+        "text_sha256": "bd008875f5ff915c2a71d3190a6c2b687151fd5ba529ca8e5f2442b297778345"
+      }
+    },
+    {
+      "source_id": "A20-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML",
+      "read_via": "web搜尋/原頁定位；PMC web與指定UA初次HTML均為驗證頁（HTTP200但0正文），改以指定UA urllib讀Europe PMC官方fullTextXML，核article-id/DOI並抽取正文段落。",
+      "reading_scope": "MATERIALS AND METHODS段4–15；RESULTS實驗段16–21、Theory段22–39與40–50；DISCUSSION段51–55、58–59。未讀SI或影片；沒有採§Discussion延伸壁虎脂質層的推測。",
+      "locator": "MATERIALS AND METHODS / Adhesion test、Data analysis；RESULTS / Experimental results、Capillary bridge model、Adhesion of a hairy pad: effect of substrate；DISCUSSION首段與模型限制。",
+      "cache": {
+        "file": ".cache/wave20-life-ladybird2021.xml",
+        "sha256": "5840eb52495032d6487197c25ecc8bee2e7574fc8bc9796a62e4a24b0d4c306b",
+        "text_file": ".cache/wave20-life-ladybird2021.txt",
+        "text_sha256": "b8754acc4e30ee5061e00daffe6c2fddae5fe8fcaa7e792d22f77ac022b9b858"
+      }
+    },
+    {
+      "source_id": "A20-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3783468/fullTextXML",
+      "read_via": "web搜尋/原頁定位；PMC web與指定UA初次HTML均為驗證頁（HTTP200但0正文），改以指定UA urllib讀Europe PMC官方fullTextXML，核article-id/DOI並抽取正文段落。",
+      "reading_scope": "Results的濕度/粗糙度、乾燥平滑面接觸面積、單墊測力；Discussion相關機制限制。快取段27、29–33、35–36、41–43。僅作退題判斷，未閱全部SEM或SI。",
+      "locator": "Results / Effect of surface roughness and wetness、Contact area on a dry, smooth surface；Discussion / Adhesive strategies、Correlating force and contact area。",
+      "cache": {
+        "file": ".cache/wave20-life-frog2013.xml",
+        "sha256": "3c5594622106a1a9c60ce90ec730a3a355d5ddc88205a3df6a1092666050a966",
+        "text_file": ".cache/wave20-life-frog2013.txt",
+        "text_sha256": "5d3f410dba5722b9a133ba2c3ba3fa7ed1b6281af652f185db78e983cb404d7d"
+      }
+    },
+    {
+      "source_id": "A20-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4108337/fullTextXML",
+      "read_via": "web搜尋/原頁定位；PMC web與指定UA初次HTML均為驗證頁（HTTP200但0正文），改以指定UA urllib讀Europe PMC官方fullTextXML，核article-id/DOI並抽取正文段落。",
+      "reading_scope": "Results/Discussion的主動/被動恢復、玻璃與PMMA差別、排水假說。快取段13、15–16、18–19、21、24；僅作退題判斷。",
+      "locator": "Discussion：step recovery、passive recovery on glass/PMMA、perimeter drying與排水模型限制。",
+      "cache": {
+        "file": ".cache/wave20-life-geckodry2014.xml",
+        "sha256": "32bae4c5f124d6a9c2e70cd0592c4de7a03183e34cc51f2ecd126b096e84ed01",
+        "text_file": ".cache/wave20-life-geckodry2014.txt",
+        "text_sha256": "08584dbdde849f97f548683cdb3f817fb4e15bee8de73c83f4ebde3769487033"
+      }
+    }
+  ],
+  "source_identity": {
+    "count_policy": "8篇文獻記錄=6篇支持候選＋2篇支持退題；不是8次獨立replication。多載體/同篇多控制不增加來源數，三篇壁虎自清合一核心。",
+    "comparison": "對現存舊batches sources做exact normalized DOI/URL/title身份比對；URL命中或零命中都不是獨立性證明。",
+    "records": [
+      {
+        "source_id": "A20-S001",
+        "doi": "10.1073/pnas.0408304102",
+        "canonical_url": "https://doi.org/10.1073/pnas.0408304102",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC544316/",
+        "relationship": "原研究；PMC/Europe PMC或出版社HTML為同一文章載體，不按副本數增加獨立證據。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A20-S002",
+        "doi": "10.1098/rsif.2012.0108",
+        "canonical_url": "https://doi.org/10.1098/rsif.2012.0108",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479896/",
+        "relationship": "原研究；PMC/Europe PMC或出版社HTML為同一文章載體，不按副本數增加獨立證據。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A20-S003",
+        "doi": "10.1038/ncomms9949",
+        "canonical_url": "https://doi.org/10.1038/ncomms9949",
+        "retrieval_url": "https://www.nature.com/articles/ncomms9949",
+        "relationship": "原研究；PMC/Europe PMC或出版社HTML為同一文章載體，不按副本數增加獨立證據。 與S002共享作者且引用其活體恢復結果；本篇AFM為不同尺度控制，不是又一次獨立整隻動物重複實驗。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A20-S004",
+        "doi": "10.1371/journal.pone.0081943",
+        "canonical_url": "https://doi.org/10.1371/journal.pone.0081943",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3859514/",
+        "relationship": "原研究；PMC/Europe PMC或出版社HTML為同一文章載體，不按副本數增加獨立證據。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A20-S005",
+        "doi": "10.1098/rspb.2012.1297",
+        "canonical_url": "https://doi.org/10.1098/rspb.2012.1297",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3441071/",
+        "relationship": "原研究；PMC/Europe PMC或出版社HTML為同一文章載體，不按副本數增加獨立證據。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A20-S006",
+        "doi": "10.1242/jeb.242852",
+        "canonical_url": "https://doi.org/10.1242/jeb.242852",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML",
+        "relationship": "原研究；PMC/Europe PMC或出版社HTML為同一文章載體，不按副本數增加獨立證據。 與S005不同物種與法向/牽引測法，屬限制早期普遍解釋的後續研究，不當相同條件replication。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A20-S007",
+        "doi": "10.1371/journal.pone.0073810",
+        "canonical_url": "https://doi.org/10.1371/journal.pone.0073810",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3783468/fullTextXML",
+        "relationship": "原研究；PMC/Europe PMC或出版社HTML為同一文章載體，不按副本數增加獨立證據。 僅支持本批退題理由，不支持入選核心。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A20-S008",
+        "doi": "10.1371/journal.pone.0101885",
+        "canonical_url": "https://doi.org/10.1371/journal.pone.0101885",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4108337/fullTextXML",
+        "relationship": "原研究；PMC/Europe PMC或出版社HTML為同一文章載體，不按副本數增加獨立證據。 僅支持本批退題理由，不支持入選核心。",
+        "historical_exact_identity_matches": []
+      }
+    ]
+  },
+  "retrieval_failures": [
+    {
+      "source_id": "A20-S007",
+      "route": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3783468/",
+      "method": "指定UA urllib HTML",
+      "http_status": 200,
+      "result": "CAPTCHA/驗證頁；0正文，不當全文",
+      "failed_file": ".cache/wave20-life-frog2013.html",
+      "failed_file_sha256": "152812265cb7f11a6a5c710050ae2a1dbc65545c8d924111d6487b6a7dfb5334",
+      "recovery": {
+        "file": ".cache/wave20-life-frog2013.xml",
+        "sha256": "3c5594622106a1a9c60ce90ec730a3a355d5ddc88205a3df6a1092666050a966",
+        "text_file": ".cache/wave20-life-frog2013.txt",
+        "text_sha256": "5d3f410dba5722b9a133ba2c3ba3fa7ed1b6281af652f185db78e983cb404d7d"
+      },
+      "note": "初始抽取空文字後已由XML重抽同名txt；失敗證據只綁原HTML，不把現在的成功txt說成初次HTML正文。"
+    },
+    {
+      "source_id": "A20-S008",
+      "route": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4108337/",
+      "method": "指定UA urllib HTML",
+      "http_status": 200,
+      "result": "CAPTCHA/驗證頁；0正文，不當全文",
+      "failed_file": ".cache/wave20-life-geckodry2014.html",
+      "failed_file_sha256": "0f1a22cd3fec2886db1e118f7e1e39d0a5d8e8c097881e26f1b42a485744a30d",
+      "recovery": {
+        "file": ".cache/wave20-life-geckodry2014.xml",
+        "sha256": "32bae4c5f124d6a9c2e70cd0592c4de7a03183e34cc51f2ecd126b096e84ed01",
+        "text_file": ".cache/wave20-life-geckodry2014.txt",
+        "text_sha256": "08584dbdde849f97f548683cdb3f817fb4e15bee8de73c83f4ebde3769487033"
+      },
+      "note": "初始抽取空文字後已由XML重抽同名txt；失敗證據只綁原HTML，不把現在的成功txt說成初次HTML正文。"
+    },
+    {
+      "source_id": "A20-S006",
+      "route": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8545753/",
+      "method": "指定UA urllib HTML",
+      "http_status": 200,
+      "result": "CAPTCHA/驗證頁；0正文，不當全文",
+      "failed_file": ".cache/wave20-life-ladybird2021.html",
+      "failed_file_sha256": "145e4beda157a263102636a12631a60f4eae35684f25dc68c7d7c1d883868e17",
+      "recovery": {
+        "file": ".cache/wave20-life-ladybird2021.xml",
+        "sha256": "5840eb52495032d6487197c25ecc8bee2e7574fc8bc9796a62e4a24b0d4c306b",
+        "text_file": ".cache/wave20-life-ladybird2021.txt",
+        "text_sha256": "b8754acc4e30ee5061e00daffe6c2fddae5fe8fcaa7e792d22f77ac022b9b858"
+      },
+      "note": "初始抽取空文字後已由XML重抽同名txt；失敗證據只綁原HTML，不把現在的成功txt說成初次HTML正文。"
+    },
+    {
+      "source_id": "A20-S001",
+      "route": "web.open 原頁",
+      "result": "PMC CAPTCHA，未作此路線正文閱讀；成功UA HTML或XML另列"
+    },
+    {
+      "source_id": "A20-S002",
+      "route": "web.open 原頁",
+      "result": "PMC CAPTCHA，未作此路線正文閱讀；成功UA HTML或XML另列"
+    },
+    {
+      "source_id": "A20-S004",
+      "route": "web.open 原頁",
+      "result": "PMC CAPTCHA，未作此路線正文閱讀；成功UA HTML或XML另列"
+    },
+    {
+      "source_id": "A20-S005",
+      "route": "web.open 原頁",
+      "result": "PMC CAPTCHA，未作此路線正文閱讀；成功UA HTML或XML另列"
+    },
+    {
+      "source_id": "A20-S006",
+      "route": "web.open 原頁",
+      "result": "PMC CAPTCHA，未作此路線正文閱讀；成功UA HTML或XML另列"
+    },
+    {
+      "source_id": "A20-S007",
+      "route": "web.open 原頁",
+      "result": "PMC CAPTCHA，未作此路線正文閱讀；成功UA HTML或XML另列"
+    },
+    {
+      "source_id": "A20-S008",
+      "route": "web.open 原頁",
+      "result": "PMC CAPTCHA，未作此路線正文閱讀；成功UA HTML或XML另列"
+    },
+    {
+      "source_id": "A20-S003",
+      "route": "web.open https://www.nature.com/articles/ncomms9949",
+      "result": "500/identity重導失敗；指定UA HTML另取得正文"
+    }
+  ],
+  "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "reading_limits": [
+    "只讀各reading_scope指定正文，未逐式重現全部模型、未看SI影片、不宣稱逐主張稿核准。",
+    "2021瓢蟲油橋為有參數假定的定性模型；2012壁虎甩粒為模型，2015AFM動態反轉與活體需分層。",
+    "紙上原創圖示不是研究影片；未取得任何成片媒體。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "A20-S003",
+      "file": ".cache/wave20-life-gecko2015-fig2.jpg",
+      "sha256": "11cdeb4734c8ba924ab9d6001ac7908eba28e32c3260c3b5f7805c88130268a9",
+      "url": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fncomms9949/MediaObjects/41467_2015_Article_BFncomms9949_Fig2_HTML.jpg",
+      "scope": "Fig.2a–d捲趾示意、接面力隨法向速率、粒子去除概率；核局部撤離與剪速分軸"
+    },
+    {
+      "source_id": "A20-S004",
+      "file": ".cache/wave20-life-stick2013-fig4.jpg",
+      "sha256": "5410bee84c9e8a8cf67a2249e203a52b2486a5afc723e07dcd52789ade885466",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/7509/3859514/b571c1c8203b/pone.0081943.g004.jpg",
+      "scope": "Fig.4直立/倒掛接觸位置；直立末端仍有接觸，非互斥開關"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W20A-T01",
+      "seconds": 130,
+      "chapters": [
+        65,
+        65
+      ],
+      "same_core_totals": {
+        "A20001": 130
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W20A-T02",
+      "seconds": 110,
+      "chapters": [
+        50,
+        60
+      ],
+      "same_core_totals": {
+        "A20002": 110
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W20A-T03",
+      "seconds": 95,
+      "chapters": [
+        50,
+        45
+      ],
+      "same_core_totals": {
+        "A20003": 95
+      },
+      "paper_only": true
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "runtime": "Node v24.22.1",
+    "checks": [
+      "unique candidate/source/NA IDs and mechanism keys",
+      "source references and locators",
+      "validateEditorial and isolated validateThemes",
+      "chapter/beat sums; every beat <=45 seconds",
+      "same-core cumulative seconds <= editorial cap",
+      "range maximum <= body_seconds",
+      "UTF-8 LF/no BOM/all strings rstrip/no user absolute path"
+    ],
+    "limits": "本機結構/算術，不是非作者題級查核或成片試讀。"
+  },
+  "unresolved": [
+    "待非作者與共同top5；A20003對P053/H10001是否只是同核變體須嚴判，接受合併不保題數。",
+    "A20002末端墊微觀機制未定；若只能剩受力現象，允許暫緩或合例，不補未證解釋。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "trigger": "root編輯讀回：研究限制不充旁白時長",
+      "before_files": [
+        {
+          "file": "batches/wave20-life-motion.json",
+          "sha256": "a87d0dae38e9d91adb2ca45a835b7c8c95e3fb0508ec48e40792276b230d6323"
+        },
+        {
+          "file": "reviews/wave20-life-motion-themes.json",
+          "sha256": "f43cdab546fb87f96a7228bf6fd983221fe6653f39a3875d3394503351f7892a"
+        },
+        {
+          "file": "reviews/wave20-life-motion-author.json",
+          "sha256": "6b6c8b642b2147979454950eda2dd41560a3418cab0c07108eaf12b7db481066"
+        }
+      ],
+      "changes": [
+        {
+          "id": "LIFE20-01",
+          "detail": "W20A-T03第二章模型假設段20→5秒，總120→105；其餘假設留evidence_gaps/source/scope，未加新內容。"
+        }
+      ],
+      "after_batch_sha256": "a87d0dae38e9d91adb2ca45a835b7c8c95e3fb0508ec48e40792276b230d6323",
+      "after_themes_sha256": "e80d2b35d664f5ef741c2c36d6bc6c90685972a6c226b0ed0aeb8eefd1561bf5"
+    },
+    {
+      "date": "2026-11-02",
+      "trigger": "pool_physics非作者指定正文與節拍讀回",
+      "before_files": [
+        {
+          "file": "batches/wave20-life-motion.json",
+          "sha256": "a87d0dae38e9d91adb2ca45a835b7c8c95e3fb0508ec48e40792276b230d6323"
+        },
+        {
+          "file": "reviews/wave20-life-motion-themes.json",
+          "sha256": "e80d2b35d664f5ef741c2c36d6bc6c90685972a6c226b0ed0aeb8eefd1561bf5"
+        },
+        {
+          "file": "reviews/wave20-life-motion-author.json",
+          "sha256": "4bae1c3f7627d55f169556b7b38f5939bf8211b445552c24dec1809e8689c203"
+        }
+      ],
+      "changes": [
+        {
+          "id": "LIFE20-02",
+          "detail": "T01模型限制15→5、140→130；T02回扣10→5、115→110；T03方法/轉問15→5、105→95；不補內容。"
+        },
+        {
+          "id": "LIFE20-03",
+          "detail": "A20003 notes/visual及T03圖註六組不同個體（每組5隻、總30），不畫成同一足墊輪換六條件。問題/答案/來源不動。"
+        }
+      ],
+      "after_batch_sha256": "60063eae4f9885c434dfe7427c8dc921f82255365617b1c4cb460f0c11dff1f0",
+      "after_themes_sha256": "4083fff64d14695ab16f8c8597344b11e032d3520ae95e7a640e8577962c9123"
+    }
+  ]
+}

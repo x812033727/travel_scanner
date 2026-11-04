@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "status": "AUTHOR_REVISED_AFTER_INDEPENDENT_INITIAL_REVIEW",
+  "author": "pool_physics",
+  "batch": "batches/wave6-mechanisms.json",
+  "batch_sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2",
+  "themes": "reviews/wave6-mechanisms-themes.json",
+  "themes_sha256": "6fcc339153ff813f1987db1709c5da9d6eef89a63865d2017b0b32430e4de2c0",
+  "counts": {
+    "raw_candidates": 23,
+    "sources": 10,
+    "not_added": 18,
+    "author_expected_distinct_maximum": 23,
+    "independently_approved": 0,
+    "root_initial_review_expected_distinct": 22,
+    "root_initial_review_held": 1
+  },
+  "dedup_scope": {
+    "baseline_raw_count": 2895,
+    "method": "對pool.json raw_records的question/answer_target/scope/mechanism_key作關鍵詞檢索，讀命中欄位及指定近似舊題；不是逐讀全部2895題。",
+    "keywords": [
+      "螺絲/螺栓/螺紋/導程",
+      "齒輪/齒隙/死點/離合",
+      "軸承/預壓/游隙/滑移",
+      "flexure/kinematic/自由度/幾何約束",
+      "Abbe/阿貝/投影誤差/定位",
+      "卡扣/卡榫/彈簧",
+      "密封/橡膠圈/聚合物/鬆弛"
+    ],
+    "known_near_pairs": [
+      {
+        "a": "J6002",
+        "b": "P005",
+        "author_assessment": "來源支持定位耦合的多接點摩擦與彈性殘留，非只由靜摩擦轉動摩擦；仍需覆核是否只是新應用。"
+      },
+      {
+        "a": "J6004",
+        "b": "J6001",
+        "author_assessment": "剛體獨立約束與大量柔順接點的誤差吸收是不同構造條件；有連貫比較，但不能當多接點必較準。"
+      },
+      {
+        "a": "J6005",
+        "b": "D2180",
+        "author_assessment": "舊題停於預緊形成；新題追蹤施加外拉後夾件卸壓與螺栓受拉分攤，較像一個有用續章，裁定可合併。"
+      },
+      {
+        "a": "J6006",
+        "b": "P103",
+        "author_assessment": "已知剛性受幾何影響；此題保留的是方向柔順同時作導引/回復並移除滑動配合，若只剩薄片較軟則不保留。"
+      },
+      {
+        "a": "J6007",
+        "b": "D2114",
+        "author_assessment": "舊題為理想平行四邊形保持姿態；新題為彈性彎曲的寄生法向位移、俯仰及對稱抵消，不單講姿態保持。"
+      },
+      {
+        "a": "J6010",
+        "b": "D2247",
+        "author_assessment": "兩者都有壓力回饋，但舊減壓閥以膜片/設定彈簧改閥開度；靜壓軸承以出口間隙阻力直接改油腔壓力。"
+      },
+      {
+        "a": "J6012",
+        "b": "D2223",
+        "author_assessment": "低載下帶不動滾動體，與多點接觸幾何導致差動滑移不同。"
+      },
+      {
+        "a": "J6014",
+        "b": "J6003",
+        "author_assessment": "同涉及球面，但一個讓組件轉角順應，一個比較承載接觸和捕捉範圍；若只說球面可貼合則合例。"
+      },
+      {
+        "a": "J6015",
+        "b": "P033",
+        "author_assessment": "P033把摩擦效率列為另查；此題改變逆驅是否可行的條件，不只更換導程算省力。"
+      },
+      {
+        "a": "J6017",
+        "b": "P033",
+        "author_assessment": "同向兩段導程的相對抵消有不同構造與運動參考系；不是單段螺桿換數字。若只用一行相減不能成完整圖解，降為例。"
+      },
+      {
+        "a": "J6018",
+        "b": "D2125",
+        "author_assessment": "剛性行星輪公轉與柔輪週期變形移動嚙合區不同。"
+      },
+      {
+        "a": "J6019",
+        "b": "P100",
+        "author_assessment": "局部曲率轉換近似不變形成恒力，與全體形變增加的線性拉簧不同。"
+      },
+      {
+        "a": "J6019",
+        "b": "D2222",
+        "author_assessment": "D2222談固定力預壓的用途，未解釋預彎捲帶如何形成近恒力。"
+      },
+      {
+        "a": "J6021",
+        "b": "B4010",
+        "author_assessment": "舊窗密封為關閉時夾緊；此題以工作壓力自增接觸並比較間隙擠出，非換密封物件。"
+      },
+      {
+        "a": "J6022",
+        "b": "H3090",
+        "author_assessment": "環體不同區段滑/滾造成扭轉，不是固定形變的材料應力鬆弛。"
+      }
+    ]
+  },
+  "merges": [],
+  "excluded": [
+    {
+      "id": "J6016",
+      "reason": "根初審暫緩：目前僅實際幾何有誤→位移不準的一層描述，需更具體可比較的誤差生成/傳遞；raw與來源保留。"
+    }
+  ],
+  "distinct": [],
+  "source_cautions": [
+    {
+      "source_id": "J6-S001",
+      "note": "Hale正文為理想與實際約束的設計討論；六個接點必須獨立，有限接觸與柔順仍在。捕捉範圍只用圖6-5那一對配置。"
+    },
+    {
+      "source_id": "J6-S002",
+      "note": "不採製造/壓力設備步驟及彈性平均√N精度通則；只讀指定頁。"
+    },
+    {
+      "source_id": "J6-S003",
+      "note": "不採自行車發明史、固定精度/壽命倍率。靜壓章一處寫resistance proportional to gap cubed，與段內方向及串聯阻力模型含混；不搬該句，只採間隙縮小→阻力增大→油腔壓力上升。"
+    },
+    {
+      "source_id": "J6-S004",
+      "note": "製造商機制說明，不能當作本次比較測試或壽命保證。"
+    },
+    {
+      "source_id": "J6-S005",
+      "note": "差動螺桿採每轉軸向距離的導程定義，不將牙數/英寸倒數與導程直接混用；不採設計算例。"
+    },
+    {
+      "source_id": "J6-S006",
+      "note": "只用固定剛輪雙波配置；不採零誤差、效率或重量排名。"
+    },
+    {
+      "source_id": "J6-S007",
+      "note": "該頁coiled即儲能敘述容易和自然捲曲捲帶混淆，J6019不採。僅曲率變化小與工作行程近恒力；進稿若要能量圖須另補直接工程推導。"
+    },
+    {
+      "source_id": "J6-S008",
+      "note": "BASF署名原稿的外站PDF鏡像，不是當期BASF產品手冊；沒有把URL年份當出版年份，不複製圖表。"
+    },
+    {
+      "source_id": "J6-S009",
+      "note": "只採密封機制與損傷成因，不採壓力、尺寸選型、安裝或維修規程；實際故障可能多因素。"
+    },
+    {
+      "source_id": "J6-S010",
+      "note": "不採micrometer固定10倍較準說法；只採Abbe偏距與角偏差的幾何關係。"
+    }
+  ],
+  "access_failures": [
+    {
+      "url": "https://www.newport.com/t/manual-positioning-basics",
+      "result": "初開僅看到頁首導覽；後續find/open timeout，urllib 403。未列入來源，Abbe改由已實讀MIT Topic3正文支持。"
+    },
+    {
+      "url": "https://www.parker.com/content/dam/Parker-com/Literature/Praedifa/Catalogs/Catalog_O-Ring-Handbook_PTD5705-EN.pdf",
+      "result": "urllib 403；web PDF可讀指定正文段，因此採web讀法，不宣稱本機PDF下載成功。"
+    },
+    {
+      "url": "https://productdesignonline.com/wp-content/uploads/2019/08/Snap-Fit-Design-Manual.pdf",
+      "result": "urllib 403；web PDF可讀Part II/III，採web讀法。"
+    },
+    {
+      "url": "https://pergatory.mit.edu/2.007/resources/FUNdaMENTALs%20Book%20pdf/FUNdaMENTALs%20Topic%2010.PDF",
+      "result": "web初讀空白/後續不穩；ordinary HTTP可取得並用PyMuPDF讀指定頁。曾截斷的輸出未當完整已讀。"
+    }
+  ],
+  "theme_checks": [
+    {
+      "id": "W6J-T01",
+      "seconds": 230,
+      "chapters": 3,
+      "material_use_seconds": {
+        "J6001": 85,
+        "J6002": 65,
+        "J6004": 80
+      }
+    },
+    {
+      "id": "W6J-T02",
+      "seconds": 175,
+      "chapters": 2,
+      "material_use_seconds": {
+        "J6006": 75,
+        "J6007": 100
+      }
+    },
+    {
+      "id": "W6J-T03",
+      "seconds": 215,
+      "chapters": 2,
+      "material_use_seconds": {
+        "J6009": 105,
+        "J6010": 110
+      }
+    }
+  ],
+  "checks": {
+    "json_parse": "PASS",
+    "candidate_source_ids": "PASS",
+    "unique_ids": "PASS",
+    "utf8_lf": "PASS",
+    "chapter_and_beat_sums": "PASS",
+    "maximum_beat_seconds": 40,
+    "material_budget": "PASS; each cited core cumulative chapter seconds <= candidate editorial max",
+    "independent_review": "ROOT_INITIAL_REVIEW_RECEIVED; final reviewer receipt pending"
+  },
+  "unresolved": [
+    "根初審暫緩J6016；其餘22題近似對初判distinct，最終選入及覆核收據由root處理。",
+    "三組都是短解說企劃；無試讀、視覺驗收、實驗、逐句查核或製作核准。",
+    "J6019若進稿解釋儲能方向，須另找直接工程推導；目前未編能量敘述。"
+  ],
+  "revisions": [
+    {
+      "date": "2026-11-01",
+      "requested_by": "root independent reviewer",
+      "previous_themes_sha256": "ad374cdc313457fc93a4a0d345217de923e5975e93a6e73efe068e4523c937a0",
+      "previous_author_sha256": "5930c11e3e3556ccfe53a2587410f57baa4952c5b44d372fbfe3a61f20400c5e",
+      "changes": [
+        "W6J-T01移出J6003曲率捕捉支線，290→230秒；三章保留J6001/2/4，同步追問、連接、刪段重算與證據限制。",
+        "J6007/D2114及其餘近似對已由根初判distinct，不沿用待裁定企劃文字。",
+        "J6016由根初審暫緩：現有誤差描述偏薄；raw與來源保留，中央處置由root負責。"
+      ],
+      "batch_unchanged": true,
+      "themes_sha256": "6fcc339153ff813f1987db1709c5da9d6eef89a63865d2017b0b32430e4de2c0"
+    }
+  ]
+}

@@ -1,0 +1,656 @@
+{
+  "tested_on": "2026-11-01T14:57:32.386Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3235,
+    "canonical_questions": 3099,
+    "eligible_candidates": 2929,
+    "selected_candidates": 2870,
+    "alias_records": 136,
+    "historical_records": 313,
+    "source_urls": 4182,
+    "current_research_source_urls": 1223,
+    "selected_source_urls": 2412,
+    "new_suggestions_not_added": 597,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 135,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2837",
+    "carried": 2837,
+    "added": 33,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "352be0d3b7804faeff9154ad245dbb51a01e53e6bbc52a7ac0670c17095e14fb",
+    "writes": 6334,
+    "selected": 2870
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "352be0d3b7804faeff9154ad245dbb51a01e53e6bbc52a7ac0670c17095e14fb",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "A12005",
+      "resolved": "P164"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4278,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 4946.0355,
+    "index_ms": 2028.2599999999984,
+    "unchanged_index_ms": 207.04550000000017,
+    "searches": [
+      {
+        "query": "資料",
+        "returned": 30,
+        "milliseconds": 6.679400000000896
+      },
+      {
+        "query": "泡",
+        "returned": 30,
+        "milliseconds": 3.7424000000028173
+      },
+      {
+        "query": "動",
+        "returned": 30,
+        "milliseconds": 0.44130000000222935
+      }
+    ],
+    "rss_bytes": 392486912,
+    "sqlite_bytes": 47726592
+  },
+  "dedup_audit": {
+    "selection": "Every final wave12 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 1,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": [
+      {
+        "duplicate_id": "A12005",
+        "canonical_id": "P164",
+        "reason": "合併P164；原稿本身可作有趣草梁案例，但支撐縮小機制已收。",
+        "lexical": null,
+        "semantic": null
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "ab87e1b14505f40be0ae370c2c929662260ad8383aa6a539f07cce7e5ec5b6d8",
+    "records": 3235,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.49
+  },
+  "hashes": {
+    "pool.json": "ab87e1b14505f40be0ae370c2c929662260ad8383aa6a539f07cce7e5ec5b6d8",
+    "themes.json": "5dab73dadbd4a15363afc8b7696e096a0c92ee9dda9be6d2756328482b0fa962",
+    "manifest.json": "4deedc06714cfe00ec1805f7d67fb714ac8707607184a62b8389dab17653d957",
+    "index.html": "bb4126b9faa2246b7952275f639d61b2477a19c471ce624e084a254df02446c7",
+    "batches/wave12-digital.json": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70",
+    "batches/wave12-interfaces.json": "c671288b1f48af5e2264ad5a66bf810549bbb5a5b37f02145f846024b3c673e6",
+    "batches/wave12-locomotion.json": "ba380600fca6c8e61527610c69960c44c996d54c201be3b303e5117b7ef3ae2a"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3201,
+    "old_raw_changed": 0,
+    "old_selected_retained": 2837,
+    "old_themes_retained_unchanged": 122,
+    "changed_old_canonical_ids": [
+      "P164"
+    ],
+    "allowed_changes": "Only aliases, question variants, source refs and provenance from reviewed merges; old factual fields unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4153,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc6238.txt",
+        "source_id": "SRC-d61a32bcb9d0b760",
+        "candidate_ids": [
+          "D12001"
+        ],
+        "theme_ids": [
+          "G123"
+        ]
+      },
+      {
+        "url": "https://www.w3.org/TR/2026/REC-webauthn-3-20260825/",
+        "source_id": "SRC-d0f61b19db1d88f4",
+        "candidate_ids": [
+          "D12002",
+          "D12003"
+        ],
+        "theme_ids": [
+          "G124"
+        ]
+      },
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc7636.txt",
+        "source_id": "SRC-10bf36164b634660",
+        "candidate_ids": [
+          "D12004"
+        ],
+        "theme_ids": [
+          "G125"
+        ]
+      },
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc7009.txt",
+        "source_id": "SRC-8d9a4e5f1dc4454d",
+        "candidate_ids": [
+          "D12005"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc7208.txt",
+        "source_id": "SRC-f493942f6574eae0",
+        "candidate_ids": [
+          "D12006"
+        ],
+        "theme_ids": [
+          "G126"
+        ]
+      },
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc9989.txt",
+        "source_id": "SRC-33baaac1156c96df",
+        "candidate_ids": [
+          "D12007"
+        ],
+        "theme_ids": [
+          "G126"
+        ]
+      },
+      {
+        "url": "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf",
+        "source_id": "SRC-7f88fca17e22af89",
+        "candidate_ids": [
+          "D12008"
+        ],
+        "theme_ids": [
+          "G127"
+        ]
+      },
+      {
+        "url": "https://www.lip6.fr/Marc.Shapiro/papers/RR-8083.pdf",
+        "source_id": "SRC-fc1ca89f32d69061",
+        "candidate_ids": [
+          "D12009"
+        ],
+        "theme_ids": [
+          "G127"
+        ]
+      },
+      {
+        "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf",
+        "source_id": "SRC-eb479d55133c0069",
+        "candidate_ids": [
+          "I12001",
+          "I12002",
+          "I12003",
+          "I12004",
+          "I12005",
+          "I12006",
+          "I12007"
+        ],
+        "theme_ids": [
+          "G128",
+          "G130"
+        ]
+      },
+      {
+        "url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/PoF-Incline.pdf",
+        "source_id": "SRC-0f3d609600fc32d6",
+        "candidate_ids": [
+          "I12008"
+        ],
+        "theme_ids": [
+          "G129"
+        ]
+      },
+      {
+        "url": "https://www.math.ubc.ca/~jfeng/Publications/PDFs/06_PoF4.pdf",
+        "source_id": "SRC-62c44133f7c58afa",
+        "candidate_ids": [
+          "I12009"
+        ],
+        "theme_ids": [
+          "G129"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8740717/",
+        "source_id": "SRC-dd4bc98239152110",
+        "candidate_ids": [
+          "I12010"
+        ],
+        "theme_ids": [
+          "G130"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/2010.06664",
+        "source_id": "SRC-848446daea7f9c3d",
+        "candidate_ids": [
+          "I12011"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://blog.espci.fr/benoitroman/files/2018/04/Py07b.pdf",
+        "source_id": "SRC-be386fe09590c783",
+        "candidate_ids": [
+          "I12012"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/1406.3203",
+        "source_id": "SRC-d3172323ac6c89ae",
+        "candidate_ids": [
+          "I12013"
+        ],
+        "theme_ids": [
+          "G128"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/2102.06434",
+        "source_id": "SRC-4efa2b44907bee7c",
+        "candidate_ids": [
+          "I12014"
+        ],
+        "theme_ids": [
+          "G131"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/",
+        "source_id": "SRC-a1e08821a11517d3",
+        "candidate_ids": [
+          "A12001"
+        ],
+        "theme_ids": [
+          "G132"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11725855/",
+        "source_id": "SRC-f6a44e6d14eda5ba",
+        "candidate_ids": [
+          "A12002"
+        ],
+        "theme_ids": [
+          "G132"
+        ]
+      },
+      {
+        "url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf",
+        "source_id": "SRC-52c98621a2bc3805",
+        "candidate_ids": [
+          "A12003"
+        ],
+        "theme_ids": [
+          "G133"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8072251/",
+        "source_id": "SRC-8c780f421835a0fb",
+        "candidate_ids": [
+          "A12003"
+        ],
+        "theme_ids": [
+          "G133"
+        ]
+      },
+      {
+        "url": "https://math.mit.edu/~dunkel/Papers/2023PaEtAl_Science.pdf",
+        "source_id": "SRC-7642ea43d0e10a6b",
+        "candidate_ids": [
+          "A12004"
+        ],
+        "theme_ids": [
+          "G133"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/abs/2112.10615v2",
+        "source_id": "SRC-46da948bf0b947d3",
+        "candidate_ids": [
+          "P164"
+        ],
+        "theme_ids": [
+          "G08",
+          "G134"
+        ]
+      },
+      {
+        "url": "https://polypedal.berkeley.edu/wp-content/uploads/117_Jayaram_CockroachesTraverseCrevicesCrawlRapidly_PNAS_2016.pdf",
+        "source_id": "SRC-54eb5be7331cf37d",
+        "candidate_ids": [
+          "A12006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8315797/",
+        "source_id": "SRC-f8eb59a7bbe13118",
+        "candidate_ids": [
+          "A12007"
+        ],
+        "theme_ids": [
+          "G134"
+        ]
+      },
+      {
+        "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf",
+        "source_id": "SRC-aa61e866b1bc050f",
+        "candidate_ids": [
+          "A12008"
+        ],
+        "theme_ids": [
+          "G135"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/s41467-020-19086-0",
+        "source_id": "SRC-f180b2c5f5a02646",
+        "candidate_ids": [
+          "A12009"
+        ],
+        "theme_ids": [
+          "G135"
+        ]
+      },
+      {
+        "url": "https://web.mit.edu/awinter/www/Documents/2012%20JEB%20Razor%20Clam%20final.full.pdf",
+        "source_id": "SRC-cdd6c6d274134585",
+        "candidate_ids": [
+          "A12010"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3816424/",
+        "source_id": "SRC-9ecdc3712d2cdd63",
+        "candidate_ids": [
+          "A12011"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6805160/",
+        "source_id": "SRC-d38f91272e0fcb1d",
+        "candidate_ids": [],
+        "theme_ids": []
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc6238.txt",
+    "core": "D12001",
+    "theme": "G123",
+    "theme_ids": [
+      "G123"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 41,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 94222.0706,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "fb9bb5efb9ae40f5490d3ee3f6011ac1600a25216d5d88f2164674620bb1e3f8"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "62a70511782d4209fe1ea4ba8f16f59455665d04e6715e7d812c651441eea81a"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "39b1caecea27932b5a6c9f92515d4388312eb999523c122fcfe5edd927cc9892",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 293,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true,
+    "independently_bound_stable_blobs": 33,
+    "unique_blobs_checked": 316
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3031,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G123",
+        "core": "D12001",
+        "seconds": 115,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G124",
+        "core": "D12003",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G124",
+        "core": "D12002",
+        "seconds": 95,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G125",
+        "core": "D12004",
+        "seconds": 110,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G126",
+        "core": "D12006",
+        "seconds": 70,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G126",
+        "core": "D12007",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G127",
+        "core": "D12008",
+        "seconds": 95,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G127",
+        "core": "D12009",
+        "seconds": 95,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G128",
+        "core": "I12002",
+        "seconds": 60,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G128",
+        "core": "I12013",
+        "seconds": 95,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G129",
+        "core": "I12008",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G129",
+        "core": "I12009",
+        "seconds": 100,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G130",
+        "core": "I12006",
+        "seconds": 55,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G130",
+        "core": "I12010",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G131",
+        "core": "I12014",
+        "seconds": 115,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G132",
+        "core": "A12001",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G132",
+        "core": "A12002",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G133",
+        "core": "A12003",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G133",
+        "core": "A12004",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G134",
+        "core": "P164",
+        "seconds": 75,
+        "maximum": 95,
+        "variant_budget": "A12005"
+      },
+      {
+        "theme": "G134",
+        "core": "A12007",
+        "seconds": 75,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G135",
+        "core": "A12008",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G135",
+        "core": "A12009",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave12-final-independent-readback.json",
+    "sha256": "0eda306ddc488960fc30d06ce77a16675b9122ee0903aa01897fa5af80b846a9",
+    "status": "PASS_INDEPENDENT_CENTRAL_READBACK_TOPIC_LEVEL_ONLY",
+    "root_recomputed_bound_file_hashes": 33,
+    "all_required_data_docs_batches_and_reviews_bound": true,
+    "limits": "Data/editorial integration review; not a new independent full-source or production approval. Locomotion facts use non-author life receipt. Existing G108 narration and demos are unchanged and were not rerun."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 34,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "receipt_file": ".cache/wave12-staged-hygiene-before-receipt.json",
+    "receipt_sha256": "86e2eb97cd7185c8fd3476a6eb61a4df8e5201bb8721350420f52a2418a48f53",
+    "offences": 0,
+    "self_binding_limit": "This added field is outside the bound pre-field scan. Repeat the identical scanner after staging this receipt; final scan remains in ignored cache to avoid a self-hash cycle."
+  }
+}

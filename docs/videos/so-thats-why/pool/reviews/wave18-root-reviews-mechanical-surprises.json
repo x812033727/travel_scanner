@@ -1,0 +1,807 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "author": "pool_physics",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "K18001",
+    "K18002",
+    "K18003",
+    "K18004",
+    "K18005"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave18-mechanical-surprises.json",
+      "sha256": "5372f7220dcfc4bfed77850e88a7f9e9e83cb7e686824f0eaac986326b72b4f5"
+    },
+    {
+      "file": "reviews/wave18-mechanical-surprises-author.json",
+      "sha256": "30ce30134b9772b50af160afe7b28e162369666b81e6ce7fd806f2c8d66fabb6"
+    },
+    {
+      "file": "reviews/wave18-mechanical-surprises-themes.json",
+      "sha256": "5804b4e0b5547d9591743d8a087c8430fb04141a54f591a3b02053a53a944619"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave18-mechanical-surprises.json",
+      "sha256": "ae2d21779b2d34cc49dc3ceae6099e42a321f81aa3e367135342f5e848583b40"
+    },
+    {
+      "file": "reviews/wave18-mechanical-surprises-themes.json",
+      "sha256": "0e3c03bef91fc0dd16bb0b019b321cb8dd8e141fb3262e36e4a7b5b262dad0c5"
+    },
+    {
+      "file": "reviews/wave18-mechanical-surprises-author.json",
+      "sha256": "1cc0b88d780d57b4c3620b244f80ceb435506abc3a39d2ef9f747d30046cc7a2"
+    }
+  ],
+  "source_review": {
+    "reviewer": "root",
+    "reviewed_on": "2026-11-02",
+    "scope": "Non-author independently read original research text and selected figures; no experiments, videos, complete scripts or equation-by-equation mathematical proof audit.",
+    "readings": [
+      {
+        "topic": "shoelace",
+        "identity": "Daily-Diamond, Gregg and O'Reilly; 10.1098/rspa.2016.0770; 2017",
+        "url": "https://www.researchgate.net/publication/316101519_The_roles_of_impact_and_inertia_in_the_failure_of_a_shoelace_knot",
+        "method": "web-rendered research paper text, sections 3-6, printed pp.4-13; figure captions, not image inspection or supplementary video",
+        "checks": "衝擊與自由端／繩圈慣性配合是研究假說，端重與方向的控制支持其作用；側向未失敗組滑移不單調。結心變形未直接量到，強弱結扭轉原因未證明，材質與表面未測，不能轉成普遍防鬆配方。",
+        "access_limits": "PMC direct open returned browser check; eScholarship noSplash timeout, alternate PDF429, landing captcha, Royal Society403. No retries after429. Successful reading used the same original paper as reproduced on ResearchGate, not an independent replication."
+      },
+      {
+        "topic": "chain",
+        "identity": "Pantaleone, AJP85,414 (2017), DOI10.1119/1.4980071; arXiv1910.03125v1 uploaded2019-10-07",
+        "url": "https://arxiv.org/pdf/1910.03125",
+        "method": "Independently read author-downloaded PDF text pp.2-6,8; repository metadata read live via arXiv abstract page",
+        "cache_file": ".cache/wave18-mechanical-chain.pdf",
+        "sha256": "768bfca118e4e7aa4c8c72f9bd945960244c70aa1aaf0863a5c31a52e0807273",
+        "checks": "穩態模型以動量通量說明取鏈區額外向上反作用；模型對兩珠鏈較好，條鏈較差。不要把單一鏈節轉動模型說成所有取鏈情境的唯一原因，也不可說重力失效。"
+      },
+      {
+        "topic": "chain-control",
+        "identity": "Martins; arXiv1612.09319v1, 2016-12-20",
+        "url": "https://arxiv.org/pdf/1612.09319",
+        "method": "Independently read author-downloaded PDF text pp.2-6; root visually inspected p.3 Fig.3-4",
+        "cache_file": ".cache/wave18-mechanical-chain-critical.pdf",
+        "sha256": "364ef7c36809cee6c888a03e86f3627e8ebe38e9a23fa0d1131e42d956c45957",
+        "checks": "同落差下，盤繞和含扭折的放置方式有不同拱高；盤緣並非必要條件。扭折後回甩是這篇提出的解釋，不是所有鏈條已確證的通則。圖4圖說b/c有文字錯置，依正文與圖像辨讀。"
+      },
+      {
+        "topic": "slinky",
+        "identity": "Cross and Wheatland, Modeling a falling slinky; arXiv1208.4629v1, 2012-08-22; DOI10.1119/1.4750489",
+        "url": "https://arxiv.org/pdf/1208.4629",
+        "method": "Independently read author-downloaded PDF text pp.2-3,10-14 and visually inspected p.21 Fig.2; not video",
+        "cache_file": ".cache/wave18-mechanical-slinky.pdf",
+        "sha256": "2e61d12f7bf269ba43faeb67419af706a84024e6b8311605974492be49896d2d",
+        "checks": "限定先垂直靜止懸掛的張力彈簧：卸載／塌縮由上往下，底端暫未失去支撐，不是重力延遲。兩實物擬合為定性吻合；彈簧參數、綁起上圈和有限塌縮時間影響結果，不套固定懸停秒數到任意彈簧。"
+      },
+      {
+        "topic": "tippe",
+        "identity": "Rauch-Wojciechowski and Rutstam; SIGMA10(2014)017; DOI10.3842/SIGMA.2014.017; arXiv1306.2470v3",
+        "url": "https://arxiv.org/pdf/1306.2470",
+        "method": "Independently read author-downloaded PDF text pp.1-4; root visually inspected p.2 Fig.1; version metadata read live via arXiv",
+        "cache_file": ".cache/wave18-mechanical-tippe.pdf",
+        "sha256": "9073f07457e0bb6991c482825b5ff80f209f2f6b2c341bd0cd634ee288f328f5",
+        "checks": "模型含偏心質心、持續接觸、滑動摩擦與轉動條件；摩擦力矩容許旋轉能轉為位能且總機械能仍下降。不是所有陀螺快轉都會翻面，也不能把摩擦說成供應能量。"
+      },
+      {
+        "topic": "rattleback",
+        "identity": "Kondo and Nakanishi; DOI10.1103/PhysRevE.95.062207; arXiv1704.06717v2 submitted2017-06-11, PDF dated2017-06-13",
+        "url": "https://arxiv.org/pdf/1704.06717",
+        "method": "Independently read author-downloaded PDF pp.1-6,9-11; root visually inspected p.3 Fig.2; version metadata read live via arXiv",
+        "cache_file": ".cache/wave18-mechanical-rattleback.pdf",
+        "sha256": "1664e8d97c68da3af0a68071d8962cd12c8c29feec6f25d91af3ad59449d917c",
+        "checks": "慣性主軸和曲率主軸錯位，使搖擺和旋轉耦合；不可寫成角動量憑空反轉或單靠旋轉慣性。本文最小模型無滑動且無耗散，小振幅小轉速近似可反轉兩方向，高速有不反轉情形；不要宣稱一方向永遠穩定或任意轉速必反轉。"
+      }
+    ],
+    "source_identity_limit": "arXiv repository versions, journal identifiers and duplicate hosting pages identify works; URLs are not independent experimental confirmations. Cached PDFs came from this batch's author fetch with declared editorial User-Agent; root's contribution is independent reading, not a second HTTP fetch.",
+    "viewed_images": [
+      {
+        "file": ".cache/wave18-mechanical-chain-critical-p3.png",
+        "sha256": "4c4608632e649fa57d82bed28692a446419865bf1bbe4a19a7aed46f914f418e"
+      },
+      {
+        "file": ".cache/wave18-mechanical-slinky-p21.png",
+        "sha256": "5c684bbb8a3ce384828280ac11d6eafb1163068499afb9c24576209028aeb869"
+      },
+      {
+        "file": ".cache/wave18-mechanical-tippe-p2.png",
+        "sha256": "6e516cb48e1e60dfc0f5f74a7fa3469a5d8230c4ac58551fc9b32e149286c97b"
+      },
+      {
+        "file": ".cache/wave18-mechanical-rattleback-p3.png",
+        "sha256": "43971916c11e1a38bd27cc030d414d2f34500dd2cf03c85bd63563a049df94ae"
+      }
+    ]
+  },
+  "source_identity_review": {
+    "author_work_ids": [
+      "10.1098/rspa.2016.0770",
+      "10.1119/1.4980071",
+      "arXiv:1612.09319v1",
+      "10.1119/1.4750489",
+      "10.3842/SIGMA.2014.017",
+      "10.1103/PhysRevE.95.062207"
+    ],
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave18-mechanical-surprises.json",
+          "sha256": "5372f7220dcfc4bfed77850e88a7f9e9e83cb7e686824f0eaac986326b72b4f5"
+        }
+      ],
+      "new_source_rows": 6,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "conclusion": "六篇工作；鞋帶兩載體與期刊/arXiv副本不各算研究。精確舊URL/題名/DOI比對無命中，不能推成所有來源別名都無重複。"
+  },
+  "top5_review": [
+    {
+      "a": "K18001",
+      "b": "P006",
+      "cosine": 0.779904,
+      "decision": "distinct",
+      "reason": "P006限蹬地時鞋底靜摩擦方向；新題是結內滑移、端長和環長的循環回饋。"
+    },
+    {
+      "a": "K18001",
+      "b": "K18003",
+      "cosine": 0.735897,
+      "decision": "distinct",
+      "reason": "K18003是鬆手卸載的傳遞前緣；鞋帶需要反覆衝擊及端部擺動，不是同一失去支撐過程。"
+    },
+    {
+      "a": "K18001",
+      "b": "P002",
+      "cosine": 0.724275,
+      "decision": "distinct",
+      "reason": "P002是水平物體受摩擦減速的慣性誤解；新題有結構長度隨滑移改變的失效回饋。"
+    },
+    {
+      "a": "K18001",
+      "b": "D2126",
+      "cosine": 0.71938,
+      "decision": "distinct",
+      "reason": "D2126以齒形和棘爪限制逆向行程；鞋帶沒有單向齒輪，是接觸鬆動與慣性不平衡。"
+    },
+    {
+      "a": "K18001",
+      "b": "P005",
+      "cosine": 0.706609,
+      "decision": "distinct",
+      "reason": "P005比較起滑和持續滑動阻力；不足以解釋反覆衝擊之後自由端越拉越長的鞋帶回饋。"
+    },
+    {
+      "a": "K18002",
+      "b": "D2135",
+      "cosine": 0.788009,
+      "decision": "distinct",
+      "reason": "D2135的熔體拖曳與壓力逆流不涉及離散鏈從靜止堆進入運動的拾取動量帳。"
+    },
+    {
+      "a": "K18002",
+      "b": "P037",
+      "cosine": 0.78565,
+      "decision": "distinct",
+      "reason": "P037是靜態繩張力的分量；鏈條題的核心是持續通過控制區的質量與動量。"
+    },
+    {
+      "a": "K18002",
+      "b": "D2180",
+      "cosine": 0.769328,
+      "decision": "distinct",
+      "reason": "D2180是螺栓／夾件彈性預緊；本題由下落供能、取鏈接觸反作用形成流動弧線。"
+    },
+    {
+      "a": "K18002",
+      "b": "D2119",
+      "cosine": 0.768913,
+      "decision": "distinct",
+      "reason": "D2119用彈簧或槽保持凸輪跟隨；不是鏈堆拾取時的反作用與排列控制。"
+    },
+    {
+      "a": "K18002",
+      "b": "K11014",
+      "cosine": 0.766968,
+      "decision": "distinct",
+      "reason": "K11014是靜態預應力對小擾動剛性的影響；新題是穩態流動鏈的動量通量。"
+    },
+    {
+      "a": "K18003",
+      "b": "P163",
+      "cosine": 0.764384,
+      "decision": "distinct",
+      "reason": "P163是剛體受小擾動後是否回復；此題是可變形連續物體卸載訊息及接觸前緣尚未到達。"
+    },
+    {
+      "a": "K18003",
+      "b": "P002",
+      "cosine": 0.761184,
+      "decision": "distinct",
+      "reason": "P002為摩擦造成水平滑動減速；新題底端近似靜止、質心下落並存，有空間受力時序。"
+    },
+    {
+      "a": "K18003",
+      "b": "K11001",
+      "cosine": 0.748194,
+      "decision": "distinct",
+      "reason": "K11001薄片曲率與面內伸長決定支撐；不包含張力彈簧釋放後的有限塌縮前緣。"
+    },
+    {
+      "a": "K18003",
+      "b": "D2128",
+      "cosine": 0.74371,
+      "decision": "distinct",
+      "reason": "D2128靠銷槽和鎖定造成間歇運動；新題無鎖定機構，是尚未卸載的下段平衡。"
+    },
+    {
+      "a": "K18003",
+      "b": "D2181",
+      "cosine": 0.742395,
+      "decision": "distinct",
+      "reason": "D2181是反覆振動造成螺紋退轉；新題一次釋放引起的卸載波／接觸塌縮。"
+    },
+    {
+      "a": "K18004",
+      "b": "D2119",
+      "cosine": 0.816819,
+      "decision": "distinct",
+      "reason": "D2119靠約束保有凸輪接觸；新題需滑動摩擦力矩改變偏心自旋體姿態與能量分配。"
+    },
+    {
+      "a": "K18004",
+      "b": "J6015",
+      "cosine": 0.796377,
+      "decision": "distinct",
+      "reason": "J6015討論螺桿導程與摩擦自鎖；翻身陀螺是動態耗散下姿態轉換，不是逆驅門檻。"
+    },
+    {
+      "a": "K18004",
+      "b": "D2114",
+      "cosine": 0.78845,
+      "decision": "distinct",
+      "reason": "D2114是平行四邊形幾何保持方向；新題偏心轉體反而改變方向並抬升質心。"
+    },
+    {
+      "a": "K18004",
+      "b": "D2224",
+      "cosine": 0.779879,
+      "decision": "distinct",
+      "reason": "D2224為鬆配合套圈爬動；新題以摩擦力矩重新分配轉動能與重力位能。"
+    },
+    {
+      "a": "K18004",
+      "b": "P029",
+      "cosine": 0.768863,
+      "decision": "distinct",
+      "reason": "P029主動收手做內功提高旋轉能；新題被動摩擦耗散時把部分既有轉動能轉成位能。"
+    },
+    {
+      "a": "K18005",
+      "b": "K18004",
+      "cosine": 0.759489,
+      "decision": "distinct",
+      "reason": "K18004的滑動耗散力矩與質心抬升；反轉玩具無滑動無耗散最小模型已能有搖晃與自旋交換。"
+    },
+    {
+      "a": "K18005",
+      "b": "B11003",
+      "cosine": 0.714946,
+      "decision": "distinct",
+      "reason": "B11003是莖部生長的角度／曲率回饋；不是剛體曲率主軸和慣量主軸錯位產生接觸力矩。"
+    },
+    {
+      "a": "K18005",
+      "b": "P112",
+      "cosine": 0.713439,
+      "decision": "distinct",
+      "reason": "P112靠外部週期推動供能；反轉玩具從既有自旋轉移到搖晃，不需同相位外力持續供能。"
+    },
+    {
+      "a": "K18005",
+      "b": "P029",
+      "cosine": 0.708272,
+      "decision": "distinct",
+      "reason": "P029是主動收縮做功；反轉玩具形狀固定，靠搖晃耦合及桌面接觸力矩改變自旋。"
+    },
+    {
+      "a": "K18005",
+      "b": "D2224",
+      "cosine": 0.705593,
+      "decision": "distinct",
+      "reason": "D2224是軸承套圈的鬆配合爬動；本題曲率與慣量軸錯位導致自旋和兩種搖晃模式耦合。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "K18001",
+      "b": "D2181",
+      "decision": "distinct",
+      "reason": "鞋帶環/自由端長度滑移回饋與衝擊—擺動組合，不是螺紋夾持面退轉與預緊下降。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18001",
+      "b": "X5001",
+      "decision": "distinct",
+      "reason": "舊題拉力產生正向力並摩擦鎖住；新題循環衝擊鬆結、自由端慣性拉出與長度回饋。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18001",
+      "b": "D2183",
+      "decision": "distinct",
+      "reason": "舊題接面剪切/邊緣剝離路徑；新題無黏接面的繩結動態失效。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18001",
+      "b": "J6015",
+      "decision": "distinct",
+      "reason": "螺旋導程與摩擦決定逆驅靜態閾值，不能回答鞋帶一步步變長後突然失效。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18002",
+      "b": "G13008",
+      "decision": "distinct",
+      "reason": "舊題鏈堆壓縮形成纏結自約束；新題從靜止鏈堆拾取的動量通量和支承反力。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18002",
+      "b": "P102",
+      "decision": "distinct",
+      "reason": "鏈下降的重力能不是彈簧預存彈性；拾取處需要額外的動量帳。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18003",
+      "b": "P100",
+      "decision": "distinct",
+      "reason": "胡克定律是局部彈力前提，不能獨立回答空間塌縮前緣到達前的底端平衡。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18003",
+      "b": "P180",
+      "decision": "distinct",
+      "reason": "縱/橫波分類不等於有限塌縮、圈間接觸與局部平衡保留。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18003",
+      "b": "P106",
+      "decision": "distinct",
+      "reason": "新題非週期振子頻率，不以振幅/週期公式代換。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18003",
+      "b": "B2298",
+      "decision": "distinct",
+      "reason": "舊題儲能卡榫提高瞬時功率；新題鬆手後各位置受力改變的時間與質心並行。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18004",
+      "b": "P029",
+      "decision": "distinct",
+      "reason": "舊題主動收縮做內功增加轉動能；新題外部滑動力矩在耗能時轉移部分旋轉能至重力勢能。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18004",
+      "b": "P027",
+      "decision": "distinct",
+      "reason": "慣量縮小加速的角動量條件無法直接說明偏心體倒立。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18004",
+      "b": "P314",
+      "decision": "distinct",
+      "reason": "輪子角動量交換使椅轉向；新題需要接觸點耗散力矩、偏心重心上升及條件模型。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18004",
+      "b": "A12007",
+      "decision": "distinct",
+      "reason": "蟑螂由主動開翅/踢腿越過幾何能障；翻身陀螺由既有自旋與被動滑動力矩重分配能量。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18005",
+      "b": "P030",
+      "decision": "distinct",
+      "reason": "固定形狀無外扭力的理想持續旋轉不適用本題接觸力矩；新增搖晃—自旋耦合與軸錯位控制。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18005",
+      "b": "P028",
+      "decision": "distinct",
+      "reason": "一般慣量分布差異不能替代曲率與慣量主軸錯位的平均接觸力矩。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18005",
+      "b": "D2215",
+      "decision": "distinct",
+      "reason": "自行車轉向使傾倒受穩定；本題被動剛體兩種搖晃模式和自旋交換。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    },
+    {
+      "a": "K18005",
+      "b": "K18004",
+      "decision": "distinct",
+      "reason": "翻身陀螺需滑動耗散並提高重心；反轉玩具的無耗散無滑動模型已可由搖晃交換自旋，不能因都是玩具就合。",
+      "reviewer": "root",
+      "basis": "Read both question/answer/scope snapshots; reviewer agrees with the author comparison, not merely a similarity-score decision."
+    }
+  ],
+  "neighbour_delta": {
+    "batch": "wave18-mechanical-surprises.json",
+    "first_draft_sha256": "c39c1c9c12a55f2e037e482ee0579926bb39621e767fb839b0e0df74748083d0",
+    "final_draft_sha256": "6d9d0e8fd10e6516d3930d9cb3d7e80006572f00af9b90267d36ad508273b771",
+    "rows": [
+      {
+        "id": "K18003",
+        "changed_fields": [
+          "source_locator"
+        ],
+        "previous_top5": [
+          "P163",
+          "P002",
+          "K11001",
+          "D2128",
+          "D2181"
+        ],
+        "current_top5": [
+          "P163",
+          "P002",
+          "K11001",
+          "D2128",
+          "D2181"
+        ],
+        "new_neighbour_ids": []
+      }
+    ],
+    "scope": "Changes since first common reviewer retrieval; source/editorial/scope changes still require author-review binding, even if embedding text is unchanged."
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "K18001",
+        "b": "D2181",
+        "reason": "鞋帶環/自由端長度滑移回饋與衝擊—擺動組合，不是螺紋夾持面退轉與預緊下降。"
+      },
+      {
+        "a": "K18001",
+        "b": "X5001",
+        "reason": "舊題拉力產生正向力並摩擦鎖住；新題循環衝擊鬆結、自由端慣性拉出與長度回饋。"
+      },
+      {
+        "a": "K18001",
+        "b": "D2183",
+        "reason": "舊題接面剪切/邊緣剝離路徑；新題無黏接面的繩結動態失效。"
+      },
+      {
+        "a": "K18001",
+        "b": "J6015",
+        "reason": "螺旋導程與摩擦決定逆驅靜態閾值，不能回答鞋帶一步步變長後突然失效。"
+      },
+      {
+        "a": "K18002",
+        "b": "G13008",
+        "reason": "舊題鏈堆壓縮形成纏結自約束；新題從靜止鏈堆拾取的動量通量和支承反力。"
+      },
+      {
+        "a": "K18002",
+        "b": "P102",
+        "reason": "鏈下降的重力能不是彈簧預存彈性；拾取處需要額外的動量帳。"
+      },
+      {
+        "a": "K18003",
+        "b": "P100",
+        "reason": "胡克定律是局部彈力前提，不能獨立回答空間塌縮前緣到達前的底端平衡。"
+      },
+      {
+        "a": "K18003",
+        "b": "P180",
+        "reason": "縱/橫波分類不等於有限塌縮、圈間接觸與局部平衡保留。"
+      },
+      {
+        "a": "K18003",
+        "b": "P106",
+        "reason": "新題非週期振子頻率，不以振幅/週期公式代換。"
+      },
+      {
+        "a": "K18003",
+        "b": "B2298",
+        "reason": "舊題儲能卡榫提高瞬時功率；新題鬆手後各位置受力改變的時間與質心並行。"
+      },
+      {
+        "a": "K18004",
+        "b": "P029",
+        "reason": "P029主動收手做內功提高旋轉能；新題被動摩擦耗散時把部分既有轉動能轉成位能。"
+      },
+      {
+        "a": "K18004",
+        "b": "P027",
+        "reason": "慣量縮小加速的角動量條件無法直接說明偏心體倒立。"
+      },
+      {
+        "a": "K18004",
+        "b": "P314",
+        "reason": "輪子角動量交換使椅轉向；新題需要接觸點耗散力矩、偏心重心上升及條件模型。"
+      },
+      {
+        "a": "K18004",
+        "b": "A12007",
+        "reason": "蟑螂由主動開翅/踢腿越過幾何能障；翻身陀螺由既有自旋與被動滑動力矩重分配能量。"
+      },
+      {
+        "a": "K18005",
+        "b": "P030",
+        "reason": "固定形狀無外扭力的理想持續旋轉不適用本題接觸力矩；新增搖晃—自旋耦合與軸錯位控制。"
+      },
+      {
+        "a": "K18005",
+        "b": "P028",
+        "reason": "一般慣量分布差異不能替代曲率與慣量主軸錯位的平均接觸力矩。"
+      },
+      {
+        "a": "K18005",
+        "b": "D2215",
+        "reason": "自行車轉向使傾倒受穩定；本題被動剛體兩種搖晃模式和自旋交換。"
+      },
+      {
+        "a": "K18005",
+        "b": "K18004",
+        "reason": "K18004的滑動耗散力矩與質心抬升；反轉玩具無滑動無耗散最小模型已能有搖晃與自旋交換。"
+      },
+      {
+        "a": "K18001",
+        "b": "P006",
+        "reason": "P006限蹬地時鞋底靜摩擦方向；新題是結內滑移、端長和環長的循環回饋。"
+      },
+      {
+        "a": "K18001",
+        "b": "K18003",
+        "reason": "K18003是鬆手卸載的傳遞前緣；鞋帶需要反覆衝擊及端部擺動，不是同一失去支撐過程。"
+      },
+      {
+        "a": "K18001",
+        "b": "P002",
+        "reason": "P002是水平物體受摩擦減速的慣性誤解；新題有結構長度隨滑移改變的失效回饋。"
+      },
+      {
+        "a": "K18001",
+        "b": "D2126",
+        "reason": "D2126以齒形和棘爪限制逆向行程；鞋帶沒有單向齒輪，是接觸鬆動與慣性不平衡。"
+      },
+      {
+        "a": "K18001",
+        "b": "P005",
+        "reason": "P005比較起滑和持續滑動阻力；不足以解釋反覆衝擊之後自由端越拉越長的鞋帶回饋。"
+      },
+      {
+        "a": "K18002",
+        "b": "D2135",
+        "reason": "D2135的熔體拖曳與壓力逆流不涉及離散鏈從靜止堆進入運動的拾取動量帳。"
+      },
+      {
+        "a": "K18002",
+        "b": "P037",
+        "reason": "P037是靜態繩張力的分量；鏈條題的核心是持續通過控制區的質量與動量。"
+      },
+      {
+        "a": "K18002",
+        "b": "D2180",
+        "reason": "D2180是螺栓／夾件彈性預緊；本題由下落供能、取鏈接觸反作用形成流動弧線。"
+      },
+      {
+        "a": "K18002",
+        "b": "D2119",
+        "reason": "D2119用彈簧或槽保持凸輪跟隨；不是鏈堆拾取時的反作用與排列控制。"
+      },
+      {
+        "a": "K18002",
+        "b": "K11014",
+        "reason": "K11014是靜態預應力對小擾動剛性的影響；新題是穩態流動鏈的動量通量。"
+      },
+      {
+        "a": "K18003",
+        "b": "P163",
+        "reason": "P163是剛體受小擾動後是否回復；此題是可變形連續物體卸載訊息及接觸前緣尚未到達。"
+      },
+      {
+        "a": "K18003",
+        "b": "P002",
+        "reason": "P002為摩擦造成水平滑動減速；新題底端近似靜止、質心下落並存，有空間受力時序。"
+      },
+      {
+        "a": "K18003",
+        "b": "K11001",
+        "reason": "K11001薄片曲率與面內伸長決定支撐；不包含張力彈簧釋放後的有限塌縮前緣。"
+      },
+      {
+        "a": "K18003",
+        "b": "D2128",
+        "reason": "D2128靠銷槽和鎖定造成間歇運動；新題無鎖定機構，是尚未卸載的下段平衡。"
+      },
+      {
+        "a": "K18003",
+        "b": "D2181",
+        "reason": "D2181是反覆振動造成螺紋退轉；新題一次釋放引起的卸載波／接觸塌縮。"
+      },
+      {
+        "a": "K18004",
+        "b": "D2119",
+        "reason": "D2119靠約束保有凸輪接觸；新題需滑動摩擦力矩改變偏心自旋體姿態與能量分配。"
+      },
+      {
+        "a": "K18004",
+        "b": "J6015",
+        "reason": "J6015討論螺桿導程與摩擦自鎖；翻身陀螺是動態耗散下姿態轉換，不是逆驅門檻。"
+      },
+      {
+        "a": "K18004",
+        "b": "D2114",
+        "reason": "D2114是平行四邊形幾何保持方向；新題偏心轉體反而改變方向並抬升質心。"
+      },
+      {
+        "a": "K18004",
+        "b": "D2224",
+        "reason": "D2224為鬆配合套圈爬動；新題以摩擦力矩重新分配轉動能與重力位能。"
+      },
+      {
+        "a": "K18005",
+        "b": "B11003",
+        "reason": "B11003是莖部生長的角度／曲率回饋；不是剛體曲率主軸和慣量主軸錯位產生接觸力矩。"
+      },
+      {
+        "a": "K18005",
+        "b": "P112",
+        "reason": "P112靠外部週期推動供能；反轉玩具從既有自旋轉移到搖晃，不需同相位外力持續供能。"
+      },
+      {
+        "a": "K18005",
+        "b": "P029",
+        "reason": "P029是主動收縮做功；反轉玩具形狀固定，靠搖晃耦合及桌面接觸力矩改變自旋。"
+      },
+      {
+        "a": "K18005",
+        "b": "D2224",
+        "reason": "D2224是軸承套圈的鬆配合爬動；本題曲率與慣量軸錯位導致自旋和兩種搖晃模式耦合。"
+      }
+    ]
+  },
+  "not_added_review": {
+    "ids": [
+      "K18-NA001",
+      "K18-NA002",
+      "K18-NA003",
+      "K18-NA004",
+      "K18-NA005",
+      "K18-NA006",
+      "K18-NA007",
+      "K18-NA008",
+      "K18-NA009",
+      "K18-NA010",
+      "K18-NA011",
+      "K18-NA012",
+      "K18-NA013",
+      "K18-NA014"
+    ],
+    "count": 14,
+    "verdict": "AGREE",
+    "reason": "兩個歷史退題不復活；鞋帶控制、鏈排列、彈簧前緣、玩具參數作同題條件；強前提或一般角動量／螺絲舊題不另計。未收方向不算新增核心。"
+  },
+  "theme_review": [
+    {
+      "id": "W18K-T01",
+      "candidate_ids": [
+        "K18001"
+      ],
+      "body_seconds": 105,
+      "core_cumulative_seconds": {
+        "K18001": 105
+      },
+      "verdict": "KEEP_DRAFT_NOT_PRODUCTION",
+      "note": "兩章沿單一事件推進，正文包含開場與回扣；紙上秒數尚未試讀，刪掉核心對照就縮短或撤案。"
+    },
+    {
+      "id": "W18K-T02",
+      "candidate_ids": [
+        "K18002"
+      ],
+      "body_seconds": 110,
+      "core_cumulative_seconds": {
+        "K18002": 110
+      },
+      "verdict": "KEEP_DRAFT_NOT_PRODUCTION",
+      "note": "兩章沿單一事件推進，正文包含開場與回扣；紙上秒數尚未試讀，刪掉核心對照就縮短或撤案。"
+    },
+    {
+      "id": "W18K-T03",
+      "candidate_ids": [
+        "K18003"
+      ],
+      "body_seconds": 95,
+      "core_cumulative_seconds": {
+        "K18003": 95
+      },
+      "verdict": "KEEP_DRAFT_NOT_PRODUCTION",
+      "note": "兩章沿單一事件推進，正文包含開場與回扣；紙上秒數尚未試讀，刪掉核心對照就縮短或撤案。"
+    },
+    {
+      "id": "W18K-T04",
+      "candidate_ids": [
+        "K18004"
+      ],
+      "body_seconds": 95,
+      "core_cumulative_seconds": {
+        "K18004": 95
+      },
+      "verdict": "KEEP_DRAFT_NOT_PRODUCTION",
+      "note": "兩章沿單一事件推進，正文包含開場與回扣；紙上秒數尚未試讀，刪掉核心對照就縮短或撤案。"
+    },
+    {
+      "id": "W18K-T05",
+      "candidate_ids": [
+        "K18005"
+      ],
+      "body_seconds": 105,
+      "core_cumulative_seconds": {
+        "K18005": 105
+      },
+      "verdict": "KEEP_DRAFT_NOT_PRODUCTION",
+      "note": "兩章沿單一事件推進，正文包含開場與回扣；紙上秒數尚未試讀，刪掉核心對照就縮短或撤案。"
+    }
+  ],
+  "corrections": {
+    "factual_qualifications": 1,
+    "details": [
+      "反轉玩具耗散效應改為可能，不冒稱必然。",
+      "鏈條及彈簧小節/方程定位修正，未改因果答案。",
+      "鞋帶成功正文副本URL加入可追溯讀取方式。"
+    ],
+    "second_round_basis": "僅一項限定語義及來源定位修正；root針對修正讀回，沒有超過三項事實重寫。"
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "題級來源與編輯覆核，不是完整稿逐句核准、數學證明驗證或觀眾測試。",
+    "新-舊近似對和作者指定對逐讀；沒有本輪舊-舊抽樣、全庫手工全讀或漏合率估計。",
+    "兩旋轉玩具主要是理論模型；鏈條有模型分歧，若成稿無法清楚呈現就撤案。",
+    "root負責中央整合文件與檢查，不另聲稱第二位中央審閱。"
+  ]
+}

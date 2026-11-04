@@ -1,0 +1,769 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "science_sources",
+  "production_ready": false,
+  "scope": "使用海底剖面、分室生物試驗、原位釋泡及聲納檢驗深海熱泉、鹽池和冷泉的可見反差。",
+  "baseline": {
+    "head": "ececc28dee41d46596200a1ece906788aab5b257",
+    "selected": 3356,
+    "raw_records": 3740,
+    "not_added": 1812,
+    "themes": 444,
+    "snapshot": {
+      "file": "baselines/2026-11-03-3356.json.gz",
+      "sha256": "6057fc3a96018de31bb5e254e2b142aa7ca4c6c6074a92c006304c5d81abf64c"
+    },
+    "pool_sha256": "bb02f9bdf4e48b6164af2fceb67105eb9dfd01f2e3e9b527443562c54c9ccd7f"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave43-earth.json",
+      "sha256": "0e22465f34336994fc55ed6ec3ed4382ff3168e395ba1ad828f60f9495b6f2c1"
+    },
+    {
+      "file": "reviews/wave43-earth-themes.json",
+      "sha256": "b0b4269ee0df4e24ee05de32272177cce92ac38d0feec33fd1cff42be7399ba6"
+    }
+  ],
+  "counts": {
+    "candidates": 10,
+    "sources": 8,
+    "not_added": 15,
+    "near_pairs": 22,
+    "themes": 5
+  },
+  "near_pairs": [
+    {
+      "a": "S43-001",
+      "b": "N208",
+      "reason": "水柱壓力只說明深處條件；這裡要調和CO₂比海水輕仍成池、取芯即冒液滴與覆蓋層的證據。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-001",
+        "question": "比海水輕的液態二氧化碳，怎麼會留在海床下面成一池？",
+        "answer_target": "沖繩海槽的白色斑塊本來就有少量液滴滲出；取走沉積物岩芯後，孔口持續冒出液滴；密封樣本顯示主要是二氧化碳。在該深度它比海水輕，但海底低溫與高壓容許形成密度較高的固體水合物。研究者在沉積物下辨認出這樣的薄層，提出它可能封住下方液體，原有滲出口和新取芯孔都可讓液滴往上逸出。",
+        "scope": "限與那國海丘IV的壓力、溫度及局部剖面；實拍逸滴和密封取樣與整片封蓋的推論分開。"
+      },
+      "b_snapshot": {
+        "id": "N208",
+        "question": "往海裡下潛一點，為什麼壓力就增加得這麼快？",
+        "answer_target": "上方水柱重量與壓力隨深度增加。",
+        "scope": "How does pressure change with ocean depth?"
+      }
+    },
+    {
+      "a": "S43-001",
+      "b": "S42-009",
+      "reason": "火星岩下冰土界面因熱收支而低；海床底下是浮性液體被固體水合物局部封住。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-001",
+        "question": "比海水輕的液態二氧化碳，怎麼會留在海床下面成一池？",
+        "answer_target": "沖繩海槽的白色斑塊本來就有少量液滴滲出；取走沉積物岩芯後，孔口持續冒出液滴；密封樣本顯示主要是二氧化碳。在該深度它比海水輕，但海底低溫與高壓容許形成密度較高的固體水合物。研究者在沉積物下辨認出這樣的薄層，提出它可能封住下方液體，原有滲出口和新取芯孔都可讓液滴往上逸出。",
+        "scope": "限與那國海丘IV的壓力、溫度及局部剖面；實拍逸滴和密封取樣與整片封蓋的推論分開。"
+      },
+      "b_snapshot": {
+        "id": "S42-009",
+        "question": "把火星地上的石頭移開，原先蓋在下面的冰土界面怎麼反而低了一點？",
+        "answer_target": "鳳凰號移開石頭、挖原位置下方的土，所見冰土界面比旁邊略低。這與事前的熱模型預測相符：具有較大熱慣性的石頭可把熱傳給周圍土壤，改變淺部冰能穩定存在的位置；光憑遮陰不足以猜出冰面高低。",
+        "scope": "限Neverland溝槽該石塊及附近界面。量測是移石後的形狀，熱效應為相符解釋，不是直接看見冰層歷時下移。"
+      }
+    },
+    {
+      "a": "S43-001",
+      "b": "S43-002",
+      "reason": "液池蓋層主要限制逃逸通路；甲烷泡皮在已離底的顆粒表面減慢溶解，由氬與深淺兩對照檢驗。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-001",
+        "question": "比海水輕的液態二氧化碳，怎麼會留在海床下面成一池？",
+        "answer_target": "沖繩海槽的白色斑塊本來就有少量液滴滲出；取走沉積物岩芯後，孔口持續冒出液滴；密封樣本顯示主要是二氧化碳。在該深度它比海水輕，但海底低溫與高壓容許形成密度較高的固體水合物。研究者在沉積物下辨認出這樣的薄層，提出它可能封住下方液體，原有滲出口和新取芯孔都可讓液滴往上逸出。",
+        "scope": "限與那國海丘IV的壓力、溫度及局部剖面；實拍逸滴和密封取樣與整片封蓋的推論分開。"
+      },
+      "b_snapshot": {
+        "id": "S43-002",
+        "question": "都是往上浮的氣泡，為什麼深水裡的甲烷泡能比預想中撐得久？",
+        "answer_target": "遙控潛器分別放出甲烷泡與氬泡，邊上浮邊拍它們縮小的速度。在當地較淺處放出的兩種氣泡縮小趨勢相近；另在較深的甲烷水合物穩定區放泡，甲烷泡的縮小曲線可出現一個較慢的階段，氬沒有同樣轉變。研究者據此推斷氣水界面長出阻慢傳質的水合物皮。",
+        "scope": "蒙特雷灣海中釋泡試驗，有壓力與溫度範圍限制。結皮減慢溶解，不等於甲烷能一路浮到海面。"
+      }
+    },
+    {
+      "a": "S43-002",
+      "b": "P231",
+      "reason": "舊題是改水溫降低氣體平衡溶解度而析泡；新題測已存在氣泡的溶解速率改變且控制氣種。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-002",
+        "question": "都是往上浮的氣泡，為什麼深水裡的甲烷泡能比預想中撐得久？",
+        "answer_target": "遙控潛器分別放出甲烷泡與氬泡，邊上浮邊拍它們縮小的速度。在當地較淺處放出的兩種氣泡縮小趨勢相近；另在較深的甲烷水合物穩定區放泡，甲烷泡的縮小曲線可出現一個較慢的階段，氬沒有同樣轉變。研究者據此推斷氣水界面長出阻慢傳質的水合物皮。",
+        "scope": "蒙特雷灣海中釋泡試驗，有壓力與溫度範圍限制。結皮減慢溶解，不等於甲烷能一路浮到海面。"
+      },
+      "b_snapshot": {
+        "id": "P231",
+        "question": "冷水放暖後，杯壁為什麼可能冒出細小氣泡？",
+        "answer_target": "一些氣體的平衡溶解度隨溫度上升而降低，可釋出原本溶解氣體。",
+        "scope": "不把所有氣泡都解釋成沸騰"
+      }
+    },
+    {
+      "a": "S43-002",
+      "b": "S43-008",
+      "reason": "已釋出氣泡的表面傳質 vs 噴口管內結皮堵塞使新出口冒泡，須不同測量及結果。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-002",
+        "question": "都是往上浮的氣泡，為什麼深水裡的甲烷泡能比預想中撐得久？",
+        "answer_target": "遙控潛器分別放出甲烷泡與氬泡，邊上浮邊拍它們縮小的速度。在當地較淺處放出的兩種氣泡縮小趨勢相近；另在較深的甲烷水合物穩定區放泡，甲烷泡的縮小曲線可出現一個較慢的階段，氬沒有同樣轉變。研究者據此推斷氣水界面長出阻慢傳質的水合物皮。",
+        "scope": "蒙特雷灣海中釋泡試驗，有壓力與溫度範圍限制。結皮減慢溶解，不等於甲烷能一路浮到海面。"
+      },
+      "b_snapshot": {
+        "id": "S43-008",
+        "question": "海底那個孔突然不冒泡了，怎麼知道供氣沒有一起停？",
+        "answer_target": "研究者逐格看水合物管內的氣液界面，其中一處先停住，另一處也結出硬皮。上端出泡受阻後，靠管底出現另一個出口。原先盯的那一孔雖靜了，氣仍可改道逸出。",
+        "scope": "限研究圖13b中一次管狀噴口序列；不知道兩出口是否同流量，也不能由這個例子解釋整片海床所有間歇。"
+      }
+    },
+    {
+      "a": "S43-003",
+      "b": "N208",
+      "reason": "水深壓力公式本身不會給出海底可通氣裂縫的開閉或解釋高水位也冒泡；要看潮位相位對泡羽的統計。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-003",
+        "question": "退潮時海底甲烷常冒得更旺，為什麼不能拿潮汐表當冒泡時刻表？",
+        "answer_target": "在南水合物脊，把旋轉聲納記下的泡羽強弱與底壓排在同一時間軸，較低或下降的底壓時較常出現強峰。海面下降減輕上方負荷，可讓沉積物中的氣更易沿裂縫逸出；但漲潮、高水位也出現強峰，局部供氣與通道條件仍有影響。",
+        "scope": "聲納是泡羽強弱指標，不直接量碳排放量。觀測期內無明確地震觸發關係，不等於所有冷泉皆無地震效應。"
+      },
+      "b_snapshot": {
+        "id": "N208",
+        "question": "往海裡下潛一點，為什麼壓力就增加得這麼快？",
+        "answer_target": "上方水柱重量與壓力隨深度增加。",
+        "scope": "How does pressure change with ocean depth?"
+      }
+    },
+    {
+      "a": "S43-003",
+      "b": "S40-009",
+      "reason": "潮汐使冰底接地線覆寫泥脊，非退潮卸載讓孔隙氣易逃出。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-003",
+        "question": "退潮時海底甲烷常冒得更旺，為什麼不能拿潮汐表當冒泡時刻表？",
+        "answer_target": "在南水合物脊，把旋轉聲納記下的泡羽強弱與底壓排在同一時間軸，較低或下降的底壓時較常出現強峰。海面下降減輕上方負荷，可讓沉積物中的氣更易沿裂縫逸出；但漲潮、高水位也出現強峰，局部供氣與通道條件仍有影響。",
+        "scope": "聲納是泡羽強弱指標，不直接量碳排放量。觀測期內無明確地震觸發關係，不等於所有冷泉皆無地震效應。"
+      },
+      "b_snapshot": {
+        "id": "S40-009",
+        "question": "海底一排排矮脊，看似潮汐刻的日曆，真的每次低潮都能留下來嗎？",
+        "answer_target": "接地線是冰底從碰著海床轉為漂浮的位置，漲落潮會使它往返。拉森灣模型裡，一天兩次低潮高度不等，冰底有時能再往海側壓過前一道脊。於是多段時間只保存一道，若按每道脊必等於半天去算，就會高估這段冰的退縮速率。",
+        "scope": "限Larsen Inlet指定潮差、坡度、沉積機制與模擬退縮率。聲納量到的是地形剖面，覆寫是模型解釋，不能把每岸每一天都設成相同保留率。"
+      }
+    },
+    {
+      "a": "S43-003",
+      "b": "S43-008",
+      "reason": "長期聲納峰隨底壓變化，與一支噴口管局部結皮改道的逐格行為不同。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-003",
+        "question": "退潮時海底甲烷常冒得更旺，為什麼不能拿潮汐表當冒泡時刻表？",
+        "answer_target": "在南水合物脊，把旋轉聲納記下的泡羽強弱與底壓排在同一時間軸，較低或下降的底壓時較常出現強峰。海面下降減輕上方負荷，可讓沉積物中的氣更易沿裂縫逸出；但漲潮、高水位也出現強峰，局部供氣與通道條件仍有影響。",
+        "scope": "聲納是泡羽強弱指標，不直接量碳排放量。觀測期內無明確地震觸發關係，不等於所有冷泉皆無地震效應。"
+      },
+      "b_snapshot": {
+        "id": "S43-008",
+        "question": "海底那個孔突然不冒泡了，怎麼知道供氣沒有一起停？",
+        "answer_target": "研究者逐格看水合物管內的氣液界面，其中一處先停住，另一處也結出硬皮。上端出泡受阻後，靠管底出現另一個出口。原先盯的那一孔雖靜了，氣仍可改道逸出。",
+        "scope": "限研究圖13b中一次管狀噴口序列；不知道兩出口是否同流量，也不能由這個例子解釋整片海床所有間歇。"
+      }
+    },
+    {
+      "a": "S43-004",
+      "b": "B2089",
+      "reason": "池界的失能獵物可被上方蝦取食，並非共生菌將化學能帶入食物網。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-004",
+        "question": "海底的超鹹水池會讓小動物失去行動力，池面上怎麼反而有獵物可撿？",
+        "answer_target": "亞喀巴灣鹽水池的界面上下鹽度和溶氧急變。有些小動物進入鹽水後失去行動力，蝦可在界面上方活動。紅光攝影中，研究者看見蝦到離池邊很遠的池面上方，取走被鹽水制伏的小生物。",
+        "scope": "限NEOM池區，未作分別操控鹽度或氧的實驗；不宣稱蝦能在缺氧池底久居。"
+      },
+      "b_snapshot": {
+        "id": "B2089",
+        "question": "海底照不到陽光，熱泉旁的動物食物從哪裡開始？",
+        "answer_target": "化能自營微生物把化學能與無機碳轉入有機食物網。",
+        "scope": "熱泉生態系，非熱泉礦物沉澱 N195。"
+      }
+    },
+    {
+      "a": "S43-004",
+      "b": "S43-005",
+      "reason": "一題觀察池面與失能獵物位置；另一題比較不同取芯點，解釋沉積後有無大型動物翻攪。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-004",
+        "question": "海底的超鹹水池會讓小動物失去行動力，池面上怎麼反而有獵物可撿？",
+        "answer_target": "亞喀巴灣鹽水池的界面上下鹽度和溶氧急變。有些小動物進入鹽水後失去行動力，蝦可在界面上方活動。紅光攝影中，研究者看見蝦到離池邊很遠的池面上方，取走被鹽水制伏的小生物。",
+        "scope": "限NEOM池區，未作分別操控鹽度或氧的實驗；不宣稱蝦能在缺氧池底久居。"
+      },
+      "b_snapshot": {
+        "id": "S43-005",
+        "question": "只隔一個鹽水池邊，海底泥為什麼一邊保留了毫米薄層，另一邊卻像被翻過？",
+        "answer_target": "在NEOM池外和池裡取一列沉積物芯。外側可見底棲動物翻攪的痕跡，池下極低氧的環境限制大型底棲動物擾動，幾根池內岩芯因而還保有毫米級薄層。區別在沉積之後有沒有被翻攪，不必假定池外沒收到細顆粒。",
+        "scope": "限池外一根與池內四根的剖面；不能僅憑此認定每層的年代、事件來源及池內從無微生物活動。"
+      }
+    },
+    {
+      "a": "S43-005",
+      "b": "S40-009",
+      "reason": "泥芯的生物翻攪與先前冰底海脊的反覆接地覆寫皆影響保存，但可見機制、對照和測量不同。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-005",
+        "question": "只隔一個鹽水池邊，海底泥為什麼一邊保留了毫米薄層，另一邊卻像被翻過？",
+        "answer_target": "在NEOM池外和池裡取一列沉積物芯。外側可見底棲動物翻攪的痕跡，池下極低氧的環境限制大型底棲動物擾動，幾根池內岩芯因而還保有毫米級薄層。區別在沉積之後有沒有被翻攪，不必假定池外沒收到細顆粒。",
+        "scope": "限池外一根與池內四根的剖面；不能僅憑此認定每層的年代、事件來源及池內從無微生物活動。"
+      },
+      "b_snapshot": {
+        "id": "S40-009",
+        "question": "海底一排排矮脊，看似潮汐刻的日曆，真的每次低潮都能留下來嗎？",
+        "answer_target": "接地線是冰底從碰著海床轉為漂浮的位置，漲落潮會使它往返。拉森灣模型裡，一天兩次低潮高度不等，冰底有時能再往海側壓過前一道脊。於是多段時間只保存一道，若按每道脊必等於半天去算，就會高估這段冰的退縮速率。",
+        "scope": "限Larsen Inlet指定潮差、坡度、沉積機制與模擬退縮率。聲納量到的是地形剖面，覆寫是模型解釋，不能把每岸每一天都設成相同保留率。"
+      }
+    },
+    {
+      "a": "S43-005",
+      "b": "N132",
+      "reason": "疊置先後不回答同區池內外毫米層為何有無保存，這裡直接比較翻攪跡。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-005",
+        "question": "只隔一個鹽水池邊，海底泥為什麼一邊保留了毫米薄層，另一邊卻像被翻過？",
+        "answer_target": "在NEOM池外和池裡取一列沉積物芯。外側可見底棲動物翻攪的痕跡，池下極低氧的環境限制大型底棲動物擾動，幾根池內岩芯因而還保有毫米級薄層。區別在沉積之後有沒有被翻攪，不必假定池外沒收到細顆粒。",
+        "scope": "限池外一根與池內四根的剖面；不能僅憑此認定每層的年代、事件來源及池內從無微生物活動。"
+      },
+      "b_snapshot": {
+        "id": "N132",
+        "question": "還沒發明放射性定年時，人們怎麼排出地層的先後？",
+        "answer_target": "疊置、化石群序列與相對時間。",
+        "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages"
+      }
+    },
+    {
+      "a": "S43-006",
+      "b": "B2089",
+      "reason": "化能營養一般原理已收，但怎樣分頭取得常不在同一水層的硫／氧是可被分室及無硫組推翻的新增答案。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-006",
+        "question": "頭頂的水幾乎驗不到游離硫化物，冷泉管蟲從哪裡替共生菌補硫？",
+        "answer_target": "團隊用隔開的兩個水室分別包住管蟲前後端，鰓冠側是含氧海水，只讓像根的後端接觸含硫化物的缺氧水。染料幫忙檢查隔間漏不漏，後端供硫仍能提高體液中的硫化物，另一組呼吸試驗也見前端淨攝取無機碳。這讓牠在氧和硫分居兩處時仍能供應共生菌。",
+        "scope": "限從冷泉採回的Lamellibrachia及所測條件；不把含硫水遇氧先混入鰓冠當實驗條件，也不量化所有野外供應比例。"
+      },
+      "b_snapshot": {
+        "id": "B2089",
+        "question": "海底照不到陽光，熱泉旁的動物食物從哪裡開始？",
+        "answer_target": "化能自營微生物把化學能與無機碳轉入有機食物網。",
+        "scope": "熱泉生態系，非熱泉礦物沉澱 N195。"
+      }
+    },
+    {
+      "a": "S43-006",
+      "b": "U8017",
+      "reason": "兩微生物互耗產物的熱力學增益不同於宿主穿越兩區、把根部硫化物送給共生菌。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-006",
+        "question": "頭頂的水幾乎驗不到游離硫化物，冷泉管蟲從哪裡替共生菌補硫？",
+        "answer_target": "團隊用隔開的兩個水室分別包住管蟲前後端，鰓冠側是含氧海水，只讓像根的後端接觸含硫化物的缺氧水。染料幫忙檢查隔間漏不漏，後端供硫仍能提高體液中的硫化物，另一組呼吸試驗也見前端淨攝取無機碳。這讓牠在氧和硫分居兩處時仍能供應共生菌。",
+        "scope": "限從冷泉採回的Lamellibrachia及所測條件；不把含硫水遇氧先混入鰓冠當實驗條件，也不量化所有野外供應比例。"
+      },
+      "b_snapshot": {
+        "id": "U8017",
+        "question": "別的微生物把廢物吃掉，為什麼反而能讓原來那種菌繼續吃？",
+        "answer_target": "氫等反應產物若累積，會壓低原轉化的能量收益或速率；伙伴持續消耗它們，改變反應條件而形成共營。",
+        "scope": "限文中丁酸轉化/產甲烷群落；氫不是所有共營的唯一媒介，不把熱力學可行等同反應必然快速，也不提供消化槽操作。"
+      }
+    },
+    {
+      "a": "S43-007",
+      "b": "N195",
+      "reason": "舊題是出口混海水沉澱的黑色煙粒及煙囪。新題以反應後鐵錳比估源區溫度、比較實測出口溫度。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-007",
+        "question": "海底熱泉出口的溫度計讀了三百多度，為什麼團隊還說它在更深處曾經更熱？",
+        "answer_target": "東太平洋隆起YBW-Sentry出口實測約368°C。部分溶解金屬的相對含量受深處水岩反應溫度影響；團隊用流體鐵錳比值及經驗標定估出更高的源區最低溫，並以鹽度所反映的分相條件檢查上升途中冷卻的解釋。",
+        "scope": "取一個噴口的熱液樣本；化學溫度計依平衡、成分與岩性等假設，地下溫度為估算。"
+      },
+      "b_snapshot": {
+        "id": "N195",
+        "question": "海底黑煙囪真的在冒燃燒的煙嗎？",
+        "answer_target": "熱液混入冷海水後析出的礦物微粒。；析出的礦物也逐步堆出煙囪狀構造。",
+        "scope": "What is a hydrothermal vent?"
+      }
+    },
+    {
+      "a": "S43-007",
+      "b": "S40-006",
+      "reason": "海底殼的重氧與孔水分離海水成分／成殼溫度，與熱泉內部水岩反應的Fe/Mn溫度計、分相冷卻不同。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-007",
+        "question": "海底熱泉出口的溫度計讀了三百多度，為什麼團隊還說它在更深處曾經更熱？",
+        "answer_target": "東太平洋隆起YBW-Sentry出口實測約368°C。部分溶解金屬的相對含量受深處水岩反應溫度影響；團隊用流體鐵錳比值及經驗標定估出更高的源區最低溫，並以鹽度所反映的分相條件檢查上升途中冷卻的解釋。",
+        "scope": "取一個噴口的熱液樣本；化學溫度計依平衡、成分與岩性等假設，地下溫度為估算。"
+      },
+      "b_snapshot": {
+        "id": "S40-006",
+        "question": "海底化石殼裡的重氧比例升高，怎麼知道當時的海水有沒有變冷？",
+        "answer_target": "有孔蟲殼中重氧的比例同時受成殼水溫與海水本來的氧同位素比例影響。研究者另在不同深度擠出泥中的孔隙水，量出其同位素剖面，用擴散模型回推冰期海水的變化，再從殼體總差值中扣除這部分，估算當地深水降溫。",
+        "scope": "以百慕達海隆的孔水與殼體資料為限。比較的是重氧比例，不是殼的重量。殼資料來自不同岩芯，模型的邊界條件與擴散會影響估值。"
+      }
+    },
+    {
+      "a": "S43-008",
+      "b": "E7016",
+      "reason": "熔岩排空留隧道與甲烷管內氣水界面停止後改道不是同一成管或輸送機制。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-008",
+        "question": "海底那個孔突然不冒泡了，怎麼知道供氣沒有一起停？",
+        "answer_target": "研究者逐格看水合物管內的氣液界面，其中一處先停住，另一處也結出硬皮。上端出泡受阻後，靠管底出現另一個出口。原先盯的那一孔雖靜了，氣仍可改道逸出。",
+        "scope": "限研究圖13b中一次管狀噴口序列；不知道兩出口是否同流量，也不能由這個例子解釋整片海床所有間歇。"
+      },
+      "b_snapshot": {
+        "id": "E7016",
+        "question": "熔岩都變成石頭了，裡面怎麼留下長長的空隧道？",
+        "answer_target": "流動表面先固結成殼並減緩散熱，內部仍能輸送熔岩；供應停止或改道，內部排出而留下空管。",
+        "scope": "限來源玄武質熔岩管機制；不是每條流都成空管，不把空管當完全安全或可進入的訊號。"
+      }
+    },
+    {
+      "a": "S43-009",
+      "b": "N195",
+      "reason": "氧化硫細菌可能排出細絲及顯微定位證據，與金屬礦物熱液混海水後無機沉澱不同。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-009",
+        "question": "深海熱泉旁一顆顆光滑的白「蛋」，顯微鏡下怎麼變成了硫絲網？",
+        "answer_target": "研究者從瓜伊馬斯海盆取回蛋形結構，放大後看見交纏細絲。元素成像顯示細絲富硫、與附著其上的細胞分開，群落與細胞定位支持某些氧化硫化物的細菌可能產出這些絲。外形像卵，內部其實有另一種組織。",
+        "scope": "樣本與研究中的顯微及元素證據；Arcobacter是作者判斷的可能主要生產者，未逐粒培養證實外形如何成圓。"
+      },
+      "b_snapshot": {
+        "id": "N195",
+        "question": "海底黑煙囪真的在冒燃燒的煙嗎？",
+        "answer_target": "熱液混入冷海水後析出的礦物微粒。；析出的礦物也逐步堆出煙囪狀構造。",
+        "scope": "What is a hydrothermal vent?"
+      }
+    },
+    {
+      "a": "S43-009",
+      "b": "B2089",
+      "reason": "能量來源的抽象陳述不足以解釋白色纖維網的組成、與菌體相對位置及候選生產者。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-009",
+        "question": "深海熱泉旁一顆顆光滑的白「蛋」，顯微鏡下怎麼變成了硫絲網？",
+        "answer_target": "研究者從瓜伊馬斯海盆取回蛋形結構，放大後看見交纏細絲。元素成像顯示細絲富硫、與附著其上的細胞分開，群落與細胞定位支持某些氧化硫化物的細菌可能產出這些絲。外形像卵，內部其實有另一種組織。",
+        "scope": "樣本與研究中的顯微及元素證據；Arcobacter是作者判斷的可能主要生產者，未逐粒培養證實外形如何成圓。"
+      },
+      "b_snapshot": {
+        "id": "B2089",
+        "question": "海底照不到陽光，熱泉旁的動物食物從哪裡開始？",
+        "answer_target": "化能自營微生物把化學能與無機碳轉入有機食物網。",
+        "scope": "熱泉生態系，非熱泉礦物沉澱 N195。"
+      }
+    },
+    {
+      "a": "S43-010",
+      "b": "LEG-S32",
+      "reason": "海洋鹽收支長期平衡不區分一個水池高鹽的兩種來源，這裡有水同位素與離子比的不同預測。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-010",
+        "question": "海底鹽水池比周圍海水鹹得多，怎麼分辨是海水先蒸濃，還是海底的老鹽溶出來？",
+        "answer_target": "NEOM池的鹽水可以設想是海岸淺灘蒸濃的水往下滲，也可能是水溶解了地下鹽層。團隊按當地海水估算蒸發到該鹽度時重氧應明顯富集，實測同位素卻沒有相應升高。再比離子比例，結果較支持地下古蒸發鹽溶解供鹽。",
+        "scope": "限此池源頭的比較，並非說海底現場發生蒸發；高溫混合作用等其他鹽池歷史不可僅用一個數字歸類。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S32",
+        "question": "河水一直流進海裡，海水為什麼還是鹹？",
+        "answer_target": "雨水與岩石作用釋出溶解離子，由河流帶到海裡；海底熱泉等也交換溶解物。水蒸發後鹽留下，但生物利用、岩石反應與沉積過程也移除一些離子，不能推無限越來越鹹或精確固定平衡。海鹽不只有料理用食鹽，河水也不是完全無鹽；不給河水固定值、占比/ppm計算或以味道判飲用安全。",
+        "scope": "沿用 S32 題級條件，須讀原查核包的限制；從離子來源到水循環與移除機制，不說鹽只會永久累積。"
+      }
+    },
+    {
+      "a": "S43-010",
+      "b": "S40-006",
+      "reason": "水同位素同為工具，另題要拆殼體溫度與海水組成，這題區分蒸發水與溶解鹽。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-010",
+        "question": "海底鹽水池比周圍海水鹹得多，怎麼分辨是海水先蒸濃，還是海底的老鹽溶出來？",
+        "answer_target": "NEOM池的鹽水可以設想是海岸淺灘蒸濃的水往下滲，也可能是水溶解了地下鹽層。團隊按當地海水估算蒸發到該鹽度時重氧應明顯富集，實測同位素卻沒有相應升高。再比離子比例，結果較支持地下古蒸發鹽溶解供鹽。",
+        "scope": "限此池源頭的比較，並非說海底現場發生蒸發；高溫混合作用等其他鹽池歷史不可僅用一個數字歸類。"
+      },
+      "b_snapshot": {
+        "id": "S40-006",
+        "question": "海底化石殼裡的重氧比例升高，怎麼知道當時的海水有沒有變冷？",
+        "answer_target": "有孔蟲殼中重氧的比例同時受成殼水溫與海水本來的氧同位素比例影響。研究者另在不同深度擠出泥中的孔隙水，量出其同位素剖面，用擴散模型回推冰期海水的變化，再從殼體總差值中扣除這部分，估算當地深水降溫。",
+        "scope": "以百慕達海隆的孔水與殼體資料為限。比較的是重氧比例，不是殼的重量。殼資料來自不同岩芯，模型的邊界條件與擴散會影響估值。"
+      }
+    },
+    {
+      "a": "S43-010",
+      "b": "N185",
+      "reason": "水柱密度成層不足以鑑別形成濃鹽水的是蒸發或溶鹽。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S43-010",
+        "question": "海底鹽水池比周圍海水鹹得多，怎麼分辨是海水先蒸濃，還是海底的老鹽溶出來？",
+        "answer_target": "NEOM池的鹽水可以設想是海岸淺灘蒸濃的水往下滲，也可能是水溶解了地下鹽層。團隊按當地海水估算蒸發到該鹽度時重氧應明顯富集，實測同位素卻沒有相應升高。再比離子比例，結果較支持地下古蒸發鹽溶解供鹽。",
+        "scope": "限此池源頭的比較，並非說海底現場發生蒸發；高溫混合作用等其他鹽池歷史不可僅用一個數字歸類。"
+      },
+      "b_snapshot": {
+        "id": "N185",
+        "question": "有些河口上下都是混合水，有些卻分層，差在哪裡？",
+        "answer_target": "潮流攪拌與河流供水的相對強弱。",
+        "scope": "Classifying Estuaries: By Water Circulation"
+      }
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "method": "全3740原題與1812未收搜海底、熱泉、氣泡、甲烷、冷泉、硫、密度分層、沉積保存、氣體溶解、兩室、示蹤等，再逐一核對最相近的問答和界線。",
+    "files": [
+      {
+        "file": ".cache/wave43-earth-scan.json",
+        "sha256": "0b46e3f5acf72c7cf6a921a93d816b5eb74dbcb5cec61e0997e05f76b78da696"
+      },
+      {
+        "file": ".cache/wave43-earth-controls.json",
+        "sha256": "c158bc26183df332f13db306c70868bf0491cc0d2b05908e801c0b3b7bec21f2"
+      }
+    ]
+  },
+  "source_identity": [
+    {
+      "id": "S43-S001",
+      "doi": "10.1073/pnas.0606083103",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1599929/",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "old_exact_matches": [],
+      "relationship": "PMC、出版者及典藏版本只代表同一工作。S004同篇NEOM研究支援三個操作（界面觀察、池內外泥芯、水化學）。Fu研究引用Rehder的泡溶解工作；此處Fu只用天然噴口改道的圖13。"
+    },
+    {
+      "id": "S43-S002",
+      "doi": "10.1029/2001GL013966",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2001GL013966",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "old_exact_matches": [],
+      "relationship": "PMC、出版者及典藏版本只代表同一工作。S004同篇NEOM研究支援三個操作（界面觀察、池內外泥芯、水化學）。Fu研究引用Rehder的泡溶解工作；此處Fu只用天然噴口改道的圖13。"
+    },
+    {
+      "id": "S43-S003",
+      "doi": "10.1029/2021GC009894",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021GC009894",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "old_exact_matches": [],
+      "relationship": "PMC、出版者及典藏版本只代表同一工作。S004同篇NEOM研究支援三個操作（界面觀察、池內外泥芯、水化學）。Fu研究引用Rehder的泡溶解工作；此處Fu只用天然噴口改道的圖13。"
+    },
+    {
+      "id": "S43-S004",
+      "doi": "10.1038/s43247-022-00482-x",
+      "url": "https://www.nature.com/articles/s43247-022-00482-x.pdf",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "old_exact_matches": [],
+      "relationship": "PMC、出版者及典藏版本只代表同一工作。S004同篇NEOM研究支援三個操作（界面觀察、池內外泥芯、水化學）。Fu研究引用Rehder的泡溶解工作；此處Fu只用天然噴口改道的圖13。"
+    },
+    {
+      "id": "S43-S005",
+      "doi": "10.1073/pnas.231589498",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC60884/",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "old_exact_matches": [],
+      "relationship": "PMC、出版者及典藏版本只代表同一工作。S004同篇NEOM研究支援三個操作（界面觀察、池內外泥芯、水化學）。Fu研究引用Rehder的泡溶解工作；此處Fu只用天然噴口改道的圖13。"
+    },
+    {
+      "id": "S43-S006",
+      "doi": "10.1073/pnas.2205602119",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335268/fullTextXML",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "old_exact_matches": [],
+      "relationship": "PMC、出版者及典藏版本只代表同一工作。S004同篇NEOM研究支援三個操作（界面觀察、池內外泥芯、水化學）。Fu研究引用Rehder的泡溶解工作；此處Fu只用天然噴口改道的圖13。"
+    },
+    {
+      "id": "S43-S007",
+      "doi": "10.1029/2021JC017363",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021JC017363",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "old_exact_matches": [],
+      "relationship": "PMC、出版者及典藏版本只代表同一工作。S004同篇NEOM研究支援三個操作（界面觀察、池內外泥芯、水化學）。Fu研究引用Rehder的泡溶解工作；此處Fu只用天然噴口改道的圖13。"
+    },
+    {
+      "id": "S43-S008",
+      "doi": "10.1128/Spectrum.00955-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8557937/fullTextXML",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "old_exact_matches": [],
+      "relationship": "PMC、出版者及典藏版本只代表同一工作。S004同篇NEOM研究支援三個操作（界面觀察、池內外泥芯、水化學）。Fu研究引用Rehder的泡溶解工作；此處Fu只用天然噴口改道的圖13。"
+    }
+  ],
+  "source_readings": [
+    {
+      "id": "S43-S001",
+      "locator": "PMC正式論文Web L208–213、217–218、228–230。",
+      "read_via": "指定UA的PDF或全文API取檔未得正文；改以Web工具定點讀原論文並保留實際傳回的完整區段。",
+      "cache": {
+        "file": ".cache/wave43-earth-co2-web.txt",
+        "sha256": "36fc3da337654196bbf900f878c821941614f5f6beb420e007edd7c29c96d4b5",
+        "text_file": ".cache/wave43-earth-co2-web.txt",
+        "text_sha256": "36fc3da337654196bbf900f878c821941614f5f6beb420e007edd7c29c96d4b5"
+      }
+    },
+    {
+      "id": "S43-S002",
+      "locator": "刊方正式文 §§3.1–3.3，Web L140–172，圖2和蒙特雷氣泡／氬對照。",
+      "read_via": "指定UA的PDF或全文API取檔未得正文；改以Web工具定點讀原論文並保留實際傳回的完整區段。",
+      "cache": {
+        "file": ".cache/wave43-earth-methane-web.txt",
+        "sha256": "135a3dc6fc8bc945d86f2b8539ca191d8204d52e13af1b8db726806c06ac16f9",
+        "text_file": ".cache/wave43-earth-methane-web.txt",
+        "text_sha256": "135a3dc6fc8bc945d86f2b8539ca191d8204d52e13af1b8db726806c06ac16f9"
+      }
+    },
+    {
+      "id": "S43-S003",
+      "locator": "正式文Web L269–279聲納峰與底壓，L402–415退潮卸載與例外、孔隙壓力解釋。",
+      "read_via": "指定UA的PDF或全文API取檔未得正文；改以Web工具定點讀原論文並保留實際傳回的完整區段。",
+      "cache": {
+        "file": ".cache/wave43-earth-tide-web.txt",
+        "sha256": "cf117de3f1c63773099a1a86a70a399c397bd8d672743994749e1f96b2b72c86",
+        "text_file": ".cache/wave43-earth-tide-web.txt",
+        "text_sha256": "cf117de3f1c63773099a1a86a70a399c397bd8d672743994749e1f96b2b72c86"
+      }
+    },
+    {
+      "id": "S43-S004",
+      "locator": "正式PDF pp.3–4圖4、水源離子及氧同位素比較；pp.5–6圖7池內外推芯；pp.6–8 Pool-associated megafauna與圖9。",
+      "read_via": "指定編輯UA直接取正式PDF逐頁抽字讀所列範圍。",
+      "cache": {
+        "file": ".cache/wave43-earth-brine.pdf",
+        "sha256": "7a65288359880491418b006576ae8ecbfe74f2f243f6bc62bc8843c3012a9bfb",
+        "text_file": ".cache/wave43-earth-brine.txt",
+        "text_sha256": "ef42ed5d32b264a44df31b13210d33135ae7047c58c543fb9f6b8f22b26f84a7"
+      }
+    },
+    {
+      "id": "S43-S005",
+      "locator": "PMC正式論文Web L116–142現場取樣與雙室試驗，L205–222血樣／根部單側供硫與固碳解釋。",
+      "read_via": "指定UA的PDF或全文API取檔未得正文；改以Web工具定點讀原論文並保留實際傳回的完整區段。",
+      "cache": {
+        "file": ".cache/wave43-earth-root-combined.txt",
+        "sha256": "afdeec3231c3809171caef41a292e59ec234ec155889e2394374ccbc12128138",
+        "text_file": ".cache/wave43-earth-root-combined.txt",
+        "text_sha256": "afdeec3231c3809171caef41a292e59ec234ec155889e2394374ccbc12128138"
+      }
+    },
+    {
+      "id": "S43-S006",
+      "locator": "正式論文XML，Results and Discussion／Vent Fluid Compositions，Table 1、Fig2C，Materials and Methods樣品化學。",
+      "read_via": "指定編輯UA直接取Europe PMC的正式論文XML，讀所列正文及圖說。",
+      "cache": {
+        "file": ".cache/wave43-earth-phase.xml",
+        "sha256": "98005dee29a78b5d501ecfd3f782955137ce08e588cda289e5c54b1f2895e25f",
+        "text_file": ".cache/wave43-earth-phase.txt",
+        "text_sha256": "e7159c5e61237cc17b8a32505f5a30ceef9d157918c306a26e73e186eb5cb689"
+      }
+    },
+    {
+      "id": "S43-S007",
+      "locator": "正式文Web L353–372及圖13b，水合物管內液氣界面停住與出泡位置移動。",
+      "read_via": "指定UA的PDF或全文API取檔未得正文；改以Web工具定點讀原論文並保留實際傳回的完整區段。",
+      "cache": {
+        "file": ".cache/wave43-earth-hydrate-web.txt",
+        "sha256": "b7299b454e6be4d1f0e216aa148ffed0cc5335cd0281214a7c61fdac3b7216cb",
+        "text_file": ".cache/wave43-earth-hydrate-web.txt",
+        "text_sha256": "b7299b454e6be4d1f0e216aa148ffed0cc5335cd0281214a7c61fdac3b7216cb"
+      }
+    },
+    {
+      "id": "S43-S008",
+      "locator": "正式論文XML，Results中Microscopic observations、Elemental composition、Microbial community composition，圖3–6及Discussion。",
+      "read_via": "指定編輯UA直接取Europe PMC的正式論文XML，讀所列正文及圖說。",
+      "cache": {
+        "file": ".cache/wave43-earth-sulfur.xml",
+        "sha256": "0596f6d1470bfc90b9d671db2ad3c29a3a4e6256ae3c2ce931c9dd94d46c9846",
+        "text_file": ".cache/wave43-earth-sulfur.txt",
+        "text_sha256": "f819384b1447c3278eb37189cde9ee73f43d57127b2bf510c09d6e681a5b4292"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave43-earth-fetch.json",
+      "sha256": "ab20ef30f0d5013594fa25d636b2e63e7a5a9604733792a9aa760d0d02ed3885"
+    },
+    {
+      "file": ".cache/wave43-earth-extra.json",
+      "sha256": "f8e0ed12aa0b6edffd2d9a4c5b5feb4965a0ea403a0f47b8c95515af06a8dd20"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "name": "co2",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1599929/fullTextXML",
+      "error": "HTTP Error 500:",
+      "resolution": "有指定正文者走Web原文閱讀並在各source欄綁保留節錄；鐵與一般白色煙囪方向不收。"
+    },
+    {
+      "name": "root",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC60884/fullTextXML",
+      "error": "HTTP Error 500:",
+      "resolution": "有指定正文者走Web原文閱讀並在各source欄綁保留節錄；鐵與一般白色煙囪方向不收。"
+    },
+    {
+      "name": "iron",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4250120/fullTextXML",
+      "error": "HTTP Error 500:",
+      "resolution": "有指定正文者走Web原文閱讀並在各source欄綁保留節錄；鐵與一般白色煙囪方向不收。"
+    },
+    {
+      "name": "methane",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/pdfdirect/10.1029/2001GL013966",
+      "error": "HTTP Error 403: Forbidden",
+      "resolution": "有指定正文者走Web原文閱讀並在各source欄綁保留節錄；鐵與一般白色煙囪方向不收。"
+    },
+    {
+      "name": "tide",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/pdfdirect/10.1029/2021GC009894",
+      "error": "HTTP Error 403: Forbidden",
+      "resolution": "有指定正文者走Web原文閱讀並在各source欄綁保留節錄；鐵與一般白色煙囪方向不收。"
+    },
+    {
+      "name": "lost",
+      "url": "https://fire.biol.wwu.edu/cmoyer/zztemp_fire/biol508_W02/Kelley_01_lostcity.pdf",
+      "error": "HTTP Error 404: Not Found",
+      "resolution": "有指定正文者走Web原文閱讀並在各source欄綁保留節錄；鐵與一般白色煙囪方向不收。"
+    },
+    {
+      "name": "hydrate",
+      "url": "https://fileserver-az.core.ac.uk/download/483550921.pdf",
+      "error": "HTTP Error 400: Bad Request",
+      "resolution": "有指定正文者走Web原文閱讀並在各source欄綁保留節錄；鐵與一般白色煙囪方向不收。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave43-earth-figs.jpg",
+      "sha256": "2d2810e4df22b3177b61c1bfa06e6ea2e7ee518dabf6d1761a20f4c5b77fca75",
+      "scope": "另目讀NEOM PDF pp.4/6/8圖4、7、9；未播放補充影片，不假設有原圖授權。"
+    }
+  ],
+  "sample_artifact": {
+    "file": ".cache/w43-sample-earth.json",
+    "sha256": "8a8358e0f0d5b0fa6fd4777bcf0c9bd5f15c05d16aa61582bb9eef2153d24694"
+  },
+  "timing_checks": [
+    {
+      "id": "W43S-T01",
+      "body_seconds": 76,
+      "chapter_seconds": [
+        29,
+        47
+      ],
+      "core_seconds": {
+        "S43-001": 76
+      },
+      "max_beat_seconds": 24,
+      "status": "PAPER_BUDGET_AFTER_ROOT_OFFLINE_NARRATION",
+      "offline_narration_seconds": 68.768
+    },
+    {
+      "id": "W43S-T02",
+      "body_seconds": 67,
+      "chapter_seconds": [
+        36,
+        31
+      ],
+      "core_seconds": {
+        "S43-002": 36,
+        "S43-008": 31
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W43S-T03",
+      "body_seconds": 62,
+      "chapter_seconds": [
+        30,
+        32
+      ],
+      "core_seconds": {
+        "S43-004": 30,
+        "S43-005": 32
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W43S-T04",
+      "body_seconds": 62,
+      "chapter_seconds": [
+        29,
+        33
+      ],
+      "core_seconds": {
+        "S43-006": 62
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W43S-T05",
+      "body_seconds": 54,
+      "chapter_seconds": [
+        28,
+        26
+      ],
+      "core_seconds": {
+        "S43-010": 54
+      },
+      "max_beat_seconds": 16,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "limits": [
+    "8篇不同原始研究，不計編排章數為新研究。1份有效PDF、2份Europe PMC XML與5份可定位出版者／PMC正文的Web擷取；各來源列實際路線。",
+    "S43-003、007、009保留素材未塞入五案。根部供硫與試驗固碳分開，蓋液池與甲烷氣泡結皮也不混成同一次觀測。"
+  ],
+  "revision_history": [
+    {
+      "before_files": [
+        {
+          "file": "batches/wave43-earth.json",
+          "sha256": "b2a69f71ebc78698f86a7bb3f1bd2e5bfd2b6824e83b5bd0f59012b656e70956"
+        },
+        {
+          "file": "reviews/wave43-earth-themes.json",
+          "sha256": "05774c7d3a04726f85b910e52f66de09a773c17bb88e40d8f6e9a1d1c8e5a24a"
+        },
+        {
+          "file": "reviews/wave43-earth-author.json",
+          "sha256": "f8babbe850dc7327964eace54976594fe72db63b63661c156f8e007beccfd817"
+        }
+      ],
+      "after_batch_sha256": "0e22465f34336994fc55ed6ec3ed4382ff3168e395ba1ad828f60f9495b6f2c1",
+      "after_themes_sha256": "b0b4269ee0df4e24ee05de32272177cce92ac38d0feec33fd1cff42be7399ba6",
+      "changes": [
+        "S43-001及T01分出原白斑少量滲滴、新取芯孔持續逸滴；樣稿同步，初版三段讀時是修前版本。",
+        "S43-002及T02明確是不同深度各別釋泡再追隨，非一顆泡上浮到更深。",
+        "S43-006及T04限游離硫化物，海水不等於沒有硫元素。"
+      ]
+    }
+  ]
+}

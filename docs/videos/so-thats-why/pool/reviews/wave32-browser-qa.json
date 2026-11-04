@@ -1,0 +1,36 @@
+{
+  "tested_on": "2026-11-02T10:30:19.692Z",
+  "result": "PASS",
+  "selected": 3127,
+  "index_html_sha256": "55d6c8fa958acb1a124155f36e6bb9d8d16899e1f5fbb91004134e69e68926df",
+  "source_sample": {
+    "id": "R32001",
+    "urls": [
+      "https://web.mnstate.edu/wisenden/AnBeh13%20Paper%205%20Dacke%20et%20al%202013.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave32-desktop.png",
+    "wave32-source-desktop.png",
+    "wave32-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": [
+    "桌面顯示3127個入選、2700個已用來源頁、314組題案。手機統計分成兩列，搜尋和題案選單都在畫面寬度內。",
+    "桌面搜尋 R32001 只出現天象儀那一題，展開後能看到估時與研究範圍；來源網址另由DOM核對。"
+  ]
+}

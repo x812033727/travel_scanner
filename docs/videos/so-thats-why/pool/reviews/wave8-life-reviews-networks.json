@@ -1,0 +1,570 @@
+{
+  "review_id": "wave8-life-reviews-networks-20261101",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "/root/pool_life_tech",
+  "author": "/root/pool_physics",
+  "status": "PASS_TOPIC_LEVEL_WITH_CENTRAL_MERGE_RECOMMENDED",
+  "production_ready": false,
+  "batch_path": "batches/wave8-networks.json",
+  "batch_sha256": "eb70cf6acf12bb10ada4be4fc35af3b890713e286e5c1e095ff8054e3e2915ba",
+  "theme_path": "reviews/wave8-networks-themes.json",
+  "theme_sha256": "50b235a765412a6c7e4b10593223164896ce44928e8c1067680a8bce966d1682",
+  "author_receipt_path": "reviews/wave8-networks-author.json",
+  "author_receipt_sha256": "4af32fa53c3b72211dea07df7c8d02f71e43087b065040509eb2e956a98a6b5e",
+  "coverage": {
+    "candidate_rows_read": 17,
+    "fields": "全部question、answer_target、scope、sources/locator、notes、editorial payoff/visual/seconds；來源16列元資料及作者24近對全讀。",
+    "semantic_draft_sha256": "221130408075a050f99522e1be8d8aff10e9dd7e1b9cfc2c362420c447a73aa8",
+    "semantic_neighbours": 85,
+    "semantic_status": "最終3069 raw的17×5近鄰已讀回；相對原預備版85個ID集合未新增，無新增比對處置。分數不決定合併。",
+    "author_pairs": 24,
+    "extra_manual_search": "另查3017 raw日誌、寫時複製、共享後修改、重播、校驗、時鐘等關鍵詞；讀I3039完整目標範圍及editorial，發現語意top5未列的重複。不是3017筆逐列重審。",
+    "themes_read": 4,
+    "external_sources_spot_checked": 12,
+    "total_source_records": 16,
+    "supporting_candidate_sources": 14,
+    "whole_script_checked": false,
+    "render_or_trial_read": false,
+    "semantic_initial_draft_sha256": "11c66a611af861b4c1c4a9631cac1755562e203a78b3d2501ddff81c95b7233e",
+    "semantic_neighbours_sha256": "6331bfdf532489bc08bd33eae549ebd65ea719c0347350260c38c82489c72b42",
+    "semantic_raw_count": 3069
+  },
+  "merges": [
+    {
+      "into": "I3039",
+      "reason": "I3039 已明載先增加共指既有版本的參照、後續修改才產生新物件；當前reflink目標／視覺仍是先共享、改時分離，塊與Git物件的場景更換不足另計。",
+      "from": "I8013"
+    }
+  ],
+  "excluded": [],
+  "distinct": [
+    {
+      "a": "I8001",
+      "b": "I8002",
+      "reason": "估等待數值與辨識樣本歸屬不同；不以兩題都提往返時間合併。"
+    },
+    {
+      "a": "I8002",
+      "b": "L208",
+      "reason": "資料序號提供重排，不提供同資料第幾次傳送的時間歸屬。"
+    },
+    {
+      "a": "I8002",
+      "b": "L209",
+      "reason": "接收端去重與發送端計時樣本消歧不同。"
+    },
+    {
+      "a": "I8003",
+      "b": "I8001",
+      "reason": "有較後確認才判門檻與完全沉默先探測，新增證據條件，不只延長計時。"
+    },
+    {
+      "a": "I8004",
+      "b": "L221",
+      "reason": "路徑壅塞的回授窗口不是接收緩衝額度。"
+    },
+    {
+      "a": "I8006",
+      "b": "T4052",
+      "reason": "T4052 解釋變動形成積壓；I8006 用最低滯留時間辨認持續隊列並控制。"
+    },
+    {
+      "a": "I8007",
+      "b": "T4049",
+      "reason": "多個可替代櫃檯避免閒置，與一出口分流分配服務機會的限制不同。"
+    },
+    {
+      "a": "I8007",
+      "b": "I8006",
+      "reason": "延遲估計／丟棄回授與按流服務次序不能互代。"
+    },
+    {
+      "a": "I8008",
+      "b": "L220",
+      "reason": "跨串流獨立排序不能消除壓縮資料相依，條件有明確反例。"
+    },
+    {
+      "a": "I8010",
+      "b": "I3002",
+      "reason": "本機未持久與副本已持久但尚未重播是不同階段。"
+    },
+    {
+      "a": "I8010",
+      "b": "I3005",
+      "reason": "固定讀者快照與副本重播進度不同；新scope已保留舊快照例外。"
+    },
+    {
+      "a": "I8010",
+      "b": "I3017",
+      "reason": "每語句新快照不保證遠端已重播；非同一延遲機制。"
+    },
+    {
+      "a": "I8011",
+      "b": "I3001",
+      "reason": "I3001 回復舊頁；I8011 新增資料／校驗跨盤完成不原子的失配，會破壞冗餘可恢復的前提。"
+    },
+    {
+      "a": "I8012",
+      "b": "I8011",
+      "reason": "前者正常操作的額外讀成本，後者中斷的版本一致性，章節可順接但不相互解答。"
+    },
+    {
+      "a": "I8013",
+      "b": "I3033",
+      "reason": "I3033 只有內容共用，I8013 加改時分離；然而這個新增步驟已在 I3039，因此仍應合到 I3039。"
+    },
+    {
+      "a": "I8013",
+      "b": "I3067",
+      "reason": "淺複製保持可變內層別名與COW隔離有不同觀察；但隔離分離步驟已落在 I3039。"
+    },
+    {
+      "a": "I8014",
+      "b": "I3012",
+      "reason": "資料庫內空頁仍配置；稀疏檔的空洞保留位置但不需同量配置。"
+    },
+    {
+      "a": "I8015",
+      "b": "T4052",
+      "reason": "I8015 必須保留一致退避使相位延續；如此不同於單次隨機積壓；若只說分散到達就併T4052。"
+    },
+    {
+      "a": "I8015",
+      "b": "L301",
+      "reason": "L301 看重送副作用；I8015 看流量的時間相關，未保證請求總量減少。"
+    },
+    {
+      "a": "I8016",
+      "b": "LEG-A58",
+      "reason": "授時來源與往返估計的方向不對稱偏差不同。"
+    },
+    {
+      "a": "I8017",
+      "b": "M5012",
+      "reason": "M5012 是依賴次序（中央已歸I3036）；新題是跨時鐘域映射。"
+    },
+    {
+      "a": "I8018",
+      "b": "L205",
+      "reason": "來源分段規則不回答不可靠錯誤通知下如何探索可用大小。"
+    },
+    {
+      "a": "I8020",
+      "b": "I8015",
+      "reason": "乘法增加總次數與同步增加峰值時間相關不同，不能互相當答案。"
+    },
+    {
+      "a": "I8020",
+      "b": "I3019",
+      "reason": "重新做整交易的判斷依賴與多層獨立重試的乘法不同。"
+    },
+    {
+      "a": "I8011",
+      "b": "I3002",
+      "reason": "不是快取尚未持久；是多個已持久更新未原子完成，資料與校驗版本不一致。"
+    },
+    {
+      "a": "I8017",
+      "b": "M2072",
+      "reason": "同頻不同起點是前提差別；本題用成對時間戳把不同刻度與起點對到共享參考。"
+    }
+  ],
+  "dispositions": [
+    {
+      "id": "I8001",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8001",
+      "reason": "平均往返與波動餘裕分開，超時退避是等待控制；不重述資料排序或對時。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "I8002",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8002",
+      "reason": "同資料兩次傳送的確認歸屬不明，是計時的可識別性問題；已知位元組順序仍不能決定往返耗時。",
+      "editorial_seconds": [
+        75,
+        110
+      ]
+    },
+    {
+      "id": "I8003",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8003",
+      "reason": "較後確認與重排門檻提供遺失證據，完全沉默只觸發探測的證據分級；與估計等待值不同。",
+      "editorial_seconds": [
+        80,
+        115
+      ]
+    },
+    {
+      "id": "I8004",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8004",
+      "reason": "有增加／減少在途窗口的回授律；與接收緩衝流控和單純下載快慢不同。",
+      "editorial_seconds": [
+        70,
+        105
+      ]
+    },
+    {
+      "id": "I8006",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8006",
+      "reason": "近期最低滯留時間區分短突發與持續隊列，是指定觀察量與控制條件；不是重述隨機到達會排隊。",
+      "editorial_seconds": [
+        80,
+        115
+      ]
+    },
+    {
+      "id": "I8007",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8007",
+      "reason": "固定一出口按流隔離加位元組額度輪轉，可見的服務次序與包長條件均有增量。",
+      "editorial_seconds": [
+        75,
+        110
+      ]
+    },
+    {
+      "id": "I8008",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8008",
+      "reason": "傳輸獨立仍會被上層解碼表相依阻擋；不是否定 L220，也不等於一般多流存在。",
+      "editorial_seconds": [
+        75,
+        105
+      ]
+    },
+    {
+      "id": "I8010",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8010",
+      "reason": "副本日誌已持久化仍未重播是另一完成階段；本機未落盤及讀者舊快照各有不同失效條件。",
+      "editorial_seconds": [
+        85,
+        120
+      ]
+    },
+    {
+      "id": "I8011",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8011",
+      "reason": "保留核心是跨盤資料／校驗更新中斷，使本來可恢復缺盤的關係混入新舊版本；I3001是保存舊頁undo。日誌只是本題修復手段，不用日誌一詞當增量。",
+      "editorial_seconds": [
+        75,
+        110
+      ]
+    },
+    {
+      "id": "I8012",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8012",
+      "reason": "正常小範圍更新仍要取得舊內容才能更新校驗，與 I8011 中途斷電失配是不同可見代價。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "I8013",
+      "decision": "merge",
+      "canonical_id": "I3039",
+      "reason": "I3039 已明載先增加共指既有版本的參照、後續修改才產生新物件；當前reflink目標／視覺仍是先共享、改時分離，塊與Git物件的場景更換不足另計。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "I8014",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8014",
+      "reason": "未配置邏輯區間的讀零語意，不同於已配置資料庫空頁供重用或壓縮。",
+      "editorial_seconds": [
+        55,
+        85
+      ]
+    },
+    {
+      "id": "I8015",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8015",
+      "reason": "共同失敗起點及一致退避會把同相峰值一輪輪保留下來；隨機化破相關，增量是重試回授的相位延續，不只畫成群到達。",
+      "editorial_seconds": [
+        65,
+        100
+      ]
+    },
+    {
+      "id": "I8016",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8016",
+      "reason": "往返量不能分辨方向延遲，導致偏差被混入時差；不同於授時來源清單。",
+      "editorial_seconds": [
+        75,
+        105
+      ]
+    },
+    {
+      "id": "I8017",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8017",
+      "reason": "不同媒體單位／起點對到共同參考時點，與影片解碼相依排序或只分同頻同相不同。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "I8018",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8018",
+      "reason": "可識別的指定大小探測與成功確認，解決通知可能丟失下如何取得可通行大小的證據；不只是IPv6來源分段。",
+      "editorial_seconds": [
+        80,
+        110
+      ]
+    },
+    {
+      "id": "I8020",
+      "decision": "retain_topic_level",
+      "canonical_id": "I8020",
+      "reason": "巢狀重試使底層嘗試次數相乘，與重試時點同步及交易重做範圍不同。",
+      "editorial_seconds": [
+        60,
+        90
+      ]
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "NET01",
+      "severity": "dedup_and_theme_scope",
+      "candidate_ids": [
+        "I8013"
+      ],
+      "theme_ids": [
+        "W8I-T04"
+      ],
+      "finding": "先共指、修改才產生新物件已由I3039收錄；T04的80秒若直接換canonical，還超過舊核心60秒cap。",
+      "requested": "中央I8013→I3039並保留Btrfs原問法/來源；作者receipt記邊界。T04明確採I8013檔案變體，第一章縮60秒、第二章70秒，總130秒，連動beats/range/drop_if；不得讓讀者以為突然切去Git產品。",
+      "resolution": "RESOLVED_BY_TARGETED_READBACK"
+    },
+    {
+      "id": "NET02",
+      "severity": "editorial_padding",
+      "theme_ids": [
+        "W8I-T01"
+      ],
+      "finding": "第三章最後30秒主要回顧前述三個決定及轉圈不能判斷，沒有足夠新條件支持30秒。",
+      "requested": "末beat30→10秒，第三章100→80秒，總275→255秒；連動range和兩個刪章版本秒數。維持清楚TCP→QUIC切換，不添新縮寫補時。",
+      "resolution": "RESOLVED_BY_TARGETED_READBACK"
+    }
+  ],
+  "source_spot_checks": [
+    {
+      "source_id": "I8-S001",
+      "url": "https://www.rfc-editor.org/rfc/rfc6298.html",
+      "read_via": "public urllib fresh RFC .txt；本機定點實讀",
+      "reading_scope": "RFC6298 §2、§3、§5",
+      "result": "確認平滑／變動分量、Karn歧義限制、timestamp例外與逾時加倍。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S002",
+      "url": "https://www.rfc-editor.org/rfc/rfc9002.html",
+      "read_via": "public urllib fresh RFC .txt；本機定點實讀",
+      "reading_scope": "RFC9002 §4.2；§6.1–6.1.2；§6.2開頭與§6.2.4；§7.3.1–3",
+      "result": "PTO一般規則與無資料的替代策略分開；新舊傳送號及NewReno範圍相符。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S003",
+      "url": "https://www.rfc-editor.org/rfc/rfc8289.html",
+      "read_via": "public urllib fresh RFC .txt；本機定點實讀",
+      "reading_scope": "RFC8289 §3.1 Estimator、§4.1 Non-starvation",
+      "result": "最低sojourn與至少保留MTU的非飢餓條件均支持限定敘事。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S004",
+      "url": "https://www.rfc-editor.org/rfc/rfc8290.html",
+      "read_via": "public urllib fresh RFC .txt；本機定點實讀",
+      "reading_scope": "RFC8290 §3、§4與§4.1；未逐讀§4.2",
+      "result": "byte credits與雜湊分隊可支持簡化DRR對照；不當完整new/old優先演算法。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S006",
+      "url": "https://www.postgresql.org/docs/18/warm-standby.html",
+      "read_via": "web open/find 官方正文",
+      "reading_scope": "PostgreSQL18 §26.2.8、§26.2.8.1（約L149–166）",
+      "result": "remote_apply回覆以重播為界，不等於WAL一落盤就對查詢可見。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S007",
+      "url": "https://docs.kernel.org/driver-api/md/raid5-cache.html",
+      "read_via": "web open 官方正文",
+      "reading_scope": "RAID4/5/6 cache: write-through mode、write-back mode、The implementation",
+      "result": "資料與校驗先入日誌再進RAID，部分條帶需舊資料；新故障條件實質成立。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S008",
+      "url": "https://btrfs.readthedocs.io/en/latest/Reflink.html",
+      "read_via": "web open 官方正文",
+      "reading_scope": "Reflink 開頭兩段及 constraints",
+      "result": "支持共享後COW隔離，但支持前提不等於在素材庫具有新核心。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S009",
+      "url": "https://man7.org/linux/man-pages/man2/lseek.2.html",
+      "read_via": "web open 官方正文",
+      "reading_scope": "lseek DESCRIPTION、Seeking file data and holes（約L25–83）",
+      "result": "讀零與未配置條件成立；SEEK_HOLE回報並非完美實體地圖，作者已限制。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S010",
+      "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+      "read_via": "web open Amazon 原作者正文；重導 Builder Center",
+      "reading_scope": "Retries and backoff、Jitter（約L82–104）",
+      "result": "多層重試相乘及共同退避相關均直述；不採所有4xx不該重試的廣義說法。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S011",
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.html",
+      "read_via": "public urllib fresh RFC .txt；本機定點實讀",
+      "reading_scope": "RFC5905 §8 Figure15後四時間戳 offset/delay公式",
+      "result": "同往返可含不同方向延遲，公式沒有獨立測得兩個單向延遲。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S012",
+      "url": "https://www.ntp.org/reflib/exec/",
+      "read_via": "web open 官方正文",
+      "reading_scope": "NTP Protocol Design Issues首段至對稱假設、Precision and Accuracy末段（L37–54）",
+      "result": "明述以半往返估單向需統計對稱；舊效能、部署及認證數據不採。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    },
+    {
+      "source_id": "I8-S013",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550.html",
+      "read_via": "public urllib fresh RFC .txt；本機定點實讀",
+      "reading_scope": "RFC3550 §6.4.1 NTP timestamp / RTP timestamp兩欄",
+      "result": "同步參考時間下可對齊異種媒體；欄位解析度不等於實際精度。",
+      "limit": "僅列示正文，不是整份文件及所有errata逐主張查核；未執行網路、資料庫或磁碟實驗。"
+    }
+  ],
+  "sources_not_independently_read": [
+    {
+      "source_id": "I8-S005",
+      "reason": "只讀作者來源元資料及相應題級目標，未在此次覆核重新開外站正文。 非作者完整稿查核時需重開指定小節。"
+    },
+    {
+      "source_id": "I8-S014",
+      "reason": "只讀作者來源元資料及相應題級目標，未在此次覆核重新開外站正文。 非作者完整稿查核時需重開指定小節。"
+    },
+    {
+      "source_id": "I8-S015",
+      "reason": "只讀作者來源元資料及相應題級目標，未在此次覆核重新開外站正文。 此來源僅支持not_added。"
+    },
+    {
+      "source_id": "I8-S016",
+      "reason": "只讀作者來源元資料及相應題級目標，未在此次覆核重新開外站正文。 此來源僅支持not_added。"
+    }
+  ],
+  "source_access_failures": [],
+  "source_cautions": [
+    "RFC9002 §6.2.4有無新／舊資料可發時的替代策略；不得把PTO永不宣告遺失說成無例外。作者scope/evidence_gaps已保留。",
+    "FQ-CoDel原文另有new/old佇列優先；簡化DRR可用來解釋額度，不能聲稱圖是完整演算法或量測。",
+    "I8011要維持資料與校驗不同版本的可回算例子，若退成寫前先存日誌一句話，就失去本次distinct理由。",
+    "I8015要保留每輪同步峰值如何持續，不只借新場景重講T4052成群到達。"
+  ],
+  "theme_review": [
+    {
+      "id": "W8I-T01",
+      "status": "REVISE",
+      "seconds_before": 275,
+      "seconds_requested": 255,
+      "reason": "三個決策因果可接；TCP與QUIC需沿同圖明示切換。只縮尾端重述，不刪必要消歧義步驟。",
+      "status_at_initial_review": "REVISE",
+      "latest_status": "PASS_TOPIC_PROPOSAL_ONLY",
+      "revised_seconds": 255
+    },
+    {
+      "id": "W8I-T02",
+      "status": "PASS_TOPIC_PROPOSAL_ONLY",
+      "seconds": 185,
+      "reason": "最低延遲辨持續積壓→單出口服務順序，是相接但不同控制問題；已保留碰撞與非完整實作限制。",
+      "status_at_initial_review": "PASS_TOPIC_PROPOSAL_ONLY",
+      "latest_status": "PASS_TOPIC_PROPOSAL_ONLY"
+    },
+    {
+      "id": "W8I-T03",
+      "status": "PASS_TOPIC_PROPOSAL_ONLY",
+      "seconds": 165,
+      "reason": "正常小寫入先維持校驗，再在同一更新中停格檢查新舊失配，具可見推理；I8011保留並非為了保片長。",
+      "status_at_initial_review": "PASS_TOPIC_PROPOSAL_ONLY",
+      "latest_status": "PASS_TOPIC_PROPOSAL_ONLY"
+    },
+    {
+      "id": "W8I-T04",
+      "status": "REVISE_AFTER_MERGE",
+      "seconds_before": 150,
+      "seconds_requested": 130,
+      "reason": "共享後改時分離→空洞讀零，都在回答邏輯內容何時需要配置空間，可留雙章；必須明用檔案變體，不只映ID保留原長度。",
+      "status_at_initial_review": "REVISE_AFTER_MERGE",
+      "latest_status": "PASS_TOPIC_PROPOSAL_ONLY",
+      "revised_seconds": 130
+    }
+  ],
+  "checks_run": {
+    "json_and_source_refs": "PASS",
+    "chapter_sums": "PASS revised255/185/165/130",
+    "beat_max": "40 seconds in original",
+    "core_budget": "PASS revised: I3039=60 <= existing cap60; I8013 used only as scoped Btrfs variant, not second time allocation.",
+    "source_testing": "READ_ONLY; no runtime proof claimed"
+  },
+  "central_application_verified": false,
+  "conclusion": "建議16新核心、I8013併I3039並保留Btrfs變體。兩處企劃修正及最終3069 raw近鄰已綁hash讀回，無剩餘作者必改。中央套用未由本代理驗證。此為題級／企劃覆核，不是成稿、試讀或成片核准。",
+  "original_reviewed_artifacts": {
+    "batch_sha256": "149972de0eb786a5d00e128fd4f521f7f7566d760d4f50c64715b0809adfb3ae",
+    "theme_sha256": "3c43472dda66e8c44b4048631b4675a10f6dfcd37fa0da738d903806f9f43e62",
+    "author_sha256": "9448bdce6d94268d5b3367f0823bf0e4120d6fd81673eae65680a808214a9e9e",
+    "note": "本輪全讀和必改意見基於原版；作者在收據寫出前已按訊息修訂，頂層hash因此綁修訂版。原版證據和修訂讀回於此分開，不把原缺失說成修版仍存在。"
+  },
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "artifacts": {
+      "batch_sha256": "eb70cf6acf12bb10ada4be4fc35af3b890713e286e5c1e095ff8054e3e2915ba",
+      "theme_sha256": "50b235a765412a6c7e4b10593223164896ce44928e8c1067680a8bce966d1682",
+      "author_sha256": "4af32fa53c3b72211dea07df7c8d02f71e43087b065040509eb2e956a98a6b5e"
+    },
+    "readback": [
+      "I8013 notes接受I3039合併；raw問題與來源保留。",
+      "W8I-T04 canonical I3039及variant_ids I8013、variant_source_ids I8-S008明記；60+70=130，刪章版本60或70均重算。",
+      "W8I-T01末beat10秒，章80+95+80=255；刪第二章160、刪第三章175秒皆正確。",
+      "作者revisions保留原三hash，未修改中央。"
+    ],
+    "remaining_required_corrections": [],
+    "central_application_verified": false,
+    "latest_neighbour_compare": "最終221130...與先前11c66a...／20375...的17×5鄰居ID集合一致，沒有新食品／微生物近鄰要加入處置。",
+    "final_neighbour_binding": {
+      "draft_sha256": "221130408075a050f99522e1be8d8aff10e9dd7e1b9cfc2c362420c447a73aa8",
+      "neighbour_file_sha256": "6331bfdf532489bc08bd33eae549ebd65ea719c0347350260c38c82489c72b42",
+      "raw_count": 3069,
+      "source_metadata_only_final_change": true,
+      "review_sha256_before_final_binding": "499fef74909afe1c2798cb3ce8fe41c1605cd9603e7e52465dee654b2f956e00"
+    }
+  }
+}

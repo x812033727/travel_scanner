@@ -1,0 +1,145 @@
+{
+  "theme_id": "G108",
+  "revision": "wave11-treatment-1",
+  "author": "root",
+  "status": "TEXT_TREATMENT_NOT_PRODUCTION",
+  "production_ready": false,
+  "title": "每組都贏，總比率卻輸：差別藏在組別權重",
+  "promise": "用同一張虛構題數表，看清分組答對率與總體比率為何能反轉。",
+  "core_ids": [
+    "M10001"
+  ],
+  "duration": {
+    "previous_body_seconds": 110,
+    "body_budget_seconds": 80,
+    "read_aloud": "NOT_PERFORMED",
+    "basis": "259字僅書面粗估，四個圖解節拍共80秒。寫成全文後刪30秒重講與停留；講清楚即可再剪，不慢播補時。"
+  },
+  "beats": [
+    {
+      "id": "b1",
+      "core_id": "M10001",
+      "seconds": 15,
+      "claim_ids": [
+        "c1"
+      ],
+      "paragraphs": [
+        "看這兩組虛構的答題紀錄。簡單題，A答對九成，B八成；難題，A兩成，B一成。兩種難度都是A比較高，合起來，卻是B贏。是哪裡出了問題？"
+      ],
+      "visual": "先只露四個答對率，同難度橫向比較；右側合計結果先遮住。持續顯示虛構資料標籤。",
+      "question": "分組都較高，合計為何較低？",
+      "new_information": "分組都較高，合計為何較低？",
+      "spoken_characters": 54,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 12.0
+    },
+    {
+      "id": "b2",
+      "core_id": "M10001",
+      "seconds": 20,
+      "claim_ids": [
+        "c2"
+      ],
+      "paragraphs": [
+        "先把題數放回來。A只做十題簡單題，卻做了一百題難題；B剛好相反，多數是簡單題。兩組都是一百一十題，遇到的難度組成卻差很多。"
+      ],
+      "visual": "顯示各格分母10/100與100/10，色塊面積只表示題數；不把A/B換色，不讀所有表格格子。",
+      "question": "兩組各有多少簡單題與難題？",
+      "new_information": "兩組各有多少簡單題與難題？",
+      "spoken_characters": 54,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 12.0
+    },
+    {
+      "id": "b3",
+      "core_id": "M10001",
+      "seconds": 20,
+      "claim_ids": [
+        "c3"
+      ],
+      "paragraphs": [
+        "合計要把答對題數加起來，再除以總題數。A答對二十九題，B八十一題。A的紀錄被大量難題拉低，B則有大量簡單題。每格的答對率都沒翻轉，換的是它們在總體裡的分量。"
+      ],
+      "visual": "同一張表收成兩條110題的條形圖，答對數29/81按等尺度呈現。不得剪成同一批題目的前後測。",
+      "question": "百分比背後的權重怎麼進入總體？",
+      "new_information": "百分比背後的權重怎麼進入總體？",
+      "spoken_characters": 70,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 15.6
+    },
+    {
+      "id": "b4",
+      "core_id": "M10001",
+      "seconds": 25,
+      "claim_ids": [
+        "c4"
+      ],
+      "paragraphs": [
+        "現在讓兩組都用五十題簡單、六十題難，固定四個答對率重算，A就回到前面。但這是假設演算，沒有真的換試卷。看到整體排名，先問比較的組成是否相同；要判斷誰造成進步，光靠這張分組表也還不夠。"
+      ],
+      "visual": "用相同組成預設50/60，顯示重新計算57/110與46/110；畫面標「假設重算」，不演成真實改題後的實驗。最後只留下看組成及因果限制。",
+      "question": "相同組成會改變什麼，又不能證明什麼？",
+      "new_information": "相同組成會改變什麼，又不能證明什麼？",
+      "spoken_characters": 81,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 18.0
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "statement": "原創例中兩分組A比率均高於B，合計反向。",
+      "source_url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+      "locator": "Simpson’s Paradox節：分組與整體可能不同方向；具體數字不是來源資料",
+      "evidence": "reviews/wave11-g108-arithmetic.json",
+      "limit": "只展示可能性，不推估發生頻率。"
+    },
+    {
+      "id": "c2",
+      "statement": "原創兩組總題數同為110，難度組成分別10/100與100/10。",
+      "evidence": "reviews/wave11-g108-arithmetic.json",
+      "limit": "虛構紀錄，非真實學生或機器測試。"
+    },
+    {
+      "id": "c3",
+      "statement": "總比率按分母權重計算，初始合計29/110與81/110。",
+      "source_url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+      "locator": "Simpson’s Paradox節加權平均段",
+      "evidence": "reviews/wave11-g108-arithmetic.json",
+      "limit": "不是把兩個百分比等權相加除二。"
+    },
+    {
+      "id": "c4",
+      "statement": "固定四率並以同50/60組成重算後A57/110>B46/110；單純分組表不足以確定因果。",
+      "source_url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+      "locator": "Confounding節及Experiments and Observational Studies開頭",
+      "evidence": "reviews/wave11-g108-arithmetic.json",
+      "limit": "來源支持混雜限制；相同組成數字由本批原創計算，不稱實際介入結果或唯一正確權重。"
+    }
+  ],
+  "source_reading": {
+    "url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+    "read_via": "2026-11-01 web.open/find指定正文",
+    "reading_scope": "Confounding；Simpson’s Paradox；Experiments and Observational Studies開頭",
+    "limits": "未讀頁內影片，不採真實招生表數字或新聞案例；只用本批虛構數字。"
+  },
+  "retention_review": {
+    "max_seconds_without_new_beat": 25,
+    "risk": "大量逐格唸數字會變成算術課，分母與合計一次只揭露一層。",
+    "cut_rule": "不加入其他悖論、名人史或反覆計算；比較看懂就剪。"
+  },
+  "adoption": {
+    "previous_materials": 1,
+    "adopted_materials": 1,
+    "new_pool_candidates": 0,
+    "full_script": true,
+    "read_aloud": false,
+    "paid_media_calls": 0,
+    "audience_acceptance": "NOT_TESTED"
+  },
+  "demo": {
+    "files": [
+      "demo.html",
+      "demo.js"
+    ],
+    "scope": "可調題目組成的虛構數值小樣；不是實驗或影片。",
+    "receipt": "reviews/wave11-g108-demo.json"
+  },
+  "handoff": "完整旁白文字與互動算術小樣待非作者定點查核；實際試讀/理解測試及製作尚未完成。"
+}

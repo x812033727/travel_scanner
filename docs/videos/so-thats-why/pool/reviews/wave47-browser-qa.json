@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-03T03:11:38.707Z",
+  "result": "PASS",
+  "selected": 3501,
+  "index_html_sha256": "e881b89246a1d5aefa1f62417b051cc05337b77f70eba77c884396d6c7f73bee",
+  "source_sample": {
+    "id": "S47-002",
+    "urls": [
+      "https://doi.org/10.1029/2001WR000683"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "selected aliases resolve with source locator; unselected historical merge alias remains absent from selected-only dashboard",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow; mobile search field >=350px and keyword + ID search + source expansion pass",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave47-desktop.png",
+    "wave47-source-desktop.png",
+    "wave47-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "已逐張開啟當期桌面總覽、S47-002展開卡與390像素手機截圖。入選計數、片案與別名可讀，手機搜尋欄獨占一列且無水平溢出。來源網址由瀏覽器逐href斷言核實；未將未入鏡部分聲稱目讀。另由瀏覽器斷言R45006/R45011同時保留舊摘要與本批正文閱讀。"
+}

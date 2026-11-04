@@ -1,0 +1,46 @@
+{
+  "tested_on": "2026-11-01T14:57:50.343Z",
+  "result": "PASS",
+  "selected": 2870,
+  "index_html_sha256": "bb4126b9faa2246b7952275f639d61b2477a19c471ce624e084a254df02446c7",
+  "source_sample": {
+    "id": "D12001",
+    "urls": [
+      "https://www.rfc-editor.org/rfc/rfc6238.txt"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new daily digital mechanism question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave12-desktop.png",
+    "wave12-source-desktop.png",
+    "wave12-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "root_visual_notes": [
+    "1440px overview: 2870/2412/135/136 counters, filters and cards legible; no overlapping controls.",
+    "D12001 expanded card: question, limited answer, 90-125 second segment estimate and scope render clearly. Source links below screenshot crop are verified by DOM href assertions, not by this image.",
+    "390px mobile: title and paragraph wrap; counters in two columns and filters within viewport; no document horizontal overflow."
+  ],
+  "screenshot_hashes": [
+    {
+      "file": ".cache/wave12-desktop.png",
+      "sha256": "d3713b33ca62d522b0608b83de6772b484b6c7c2fc0036e3689176c0b6356c94"
+    },
+    {
+      "file": ".cache/wave12-source-desktop.png",
+      "sha256": "e7f05b79fa577d1b674d9f1eeb4eb563851bbd67458b2104c8aa86ff1e8c11cc"
+    },
+    {
+      "file": ".cache/wave12-mobile.png",
+      "sha256": "6242ab3335870a4eb34de3896c47019e373f00c96e52d96f9ec11b84ea77b40e"
+    }
+  ]
+}

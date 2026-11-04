@@ -1,0 +1,284 @@
+{
+  "reviewer": "root (not earth author)",
+  "reviewed_on": "2026-11-01",
+  "input": {
+    "file": "batches/wave3-earth-observation.json",
+    "sha256": "c782c4b0947e1c4e7ce19b148cce119b05f1423ce84f2a880fcda224a2a7c93f"
+  },
+  "coverage": {
+    "editorial_rows_read": 89,
+    "ids": [
+      "O3001",
+      "O3002",
+      "O3003",
+      "O3004",
+      "O3005",
+      "O3006",
+      "O3007",
+      "O3008",
+      "O3009",
+      "O3010",
+      "O3011",
+      "O3012",
+      "O3013",
+      "O3014",
+      "O3015",
+      "O3016",
+      "O3017",
+      "O3018",
+      "O3019",
+      "O3020",
+      "O3021",
+      "O3022",
+      "O3023",
+      "O3024",
+      "O3025",
+      "O3026",
+      "O3027",
+      "O3028",
+      "O3029",
+      "O3030",
+      "O3031",
+      "O3032",
+      "O3033",
+      "O3034",
+      "O3035",
+      "O3036",
+      "O3037",
+      "O3038",
+      "O3039",
+      "O3040",
+      "O3041",
+      "O3042",
+      "O3043",
+      "O3044",
+      "O3045",
+      "O3046",
+      "O3047",
+      "O3048",
+      "O3049",
+      "O3050",
+      "O3051",
+      "O3052",
+      "O3053",
+      "O3054",
+      "O3055",
+      "O3056",
+      "O3057",
+      "O3058",
+      "O3059",
+      "O3060",
+      "O3061",
+      "O3062",
+      "O3063",
+      "O3064",
+      "O3065",
+      "O3066",
+      "O3067",
+      "O3068",
+      "O3069",
+      "O3070",
+      "O3071",
+      "O3072",
+      "O3073",
+      "O3074",
+      "O3075",
+      "O3076",
+      "O3077",
+      "O3078",
+      "O3079",
+      "O3080",
+      "O3081",
+      "O3082",
+      "O3083",
+      "O3084",
+      "O3085",
+      "O3086",
+      "O3087",
+      "O3088",
+      "O3089"
+    ],
+    "method": "逐題閱讀問題、研究目標、適用條件、畫面及秒數；比對新舊核心及語意近鄰。外站僅風險抽查，不是89題完整答案逐主張查核。",
+    "semantic_input_sha256": "33a1ca5f9c7a022726305833d606a3f20115c451ff12445ee18086fe41e6569f"
+  },
+  "source_checks": [
+    {
+      "url": "https://www.noaa.gov/jetstream/vcp_max",
+      "access": "reviewer web body",
+      "scope": "VCP策略、range folding、Doppler dilemma正文",
+      "result": "O3031–33前提有支持；不沿用頁面特定模式數字作現行全設備規則。"
+    },
+    {
+      "url": "https://www.cosmic.ucar.edu/what-we-do/gnss-radio-occultation",
+      "access": "reviewer web body",
+      "scope": "GNSS路徑彎曲、延遲及剖面反演",
+      "result": "支持O3064；各大氣分量仍需其他約束。"
+    },
+    {
+      "url": "https://argo.ucsd.edu/data/data-faq/",
+      "access": "reviewer web body",
+      "scope": "R/D誤差、熱遲滯、取樣方式、螢光與葉綠素關係",
+      "result": "支持O3067/O3070/O3071及限制。"
+    },
+    {
+      "url": "https://grace.jpl.nasa.gov/data/get-data/monthly-mass-grids-land/",
+      "access": "reviewer web body",
+      "scope": "濾波、尺度因子、季節與趨勢差異、相鄰像元誤差",
+      "result": "支持O3081/O3082；需限球諧陸地產品。"
+    },
+    {
+      "url": "https://grace.jpl.nasa.gov/data/get-data/gia-trends/",
+      "access": "reviewer web body",
+      "scope": "GIA對地球重力及質量解釋的影響",
+      "result": "支持O3083；內部地球變化不等於現代水量。"
+    },
+    {
+      "url": "https://natural-resources.canada.ca/maps-tools-publications/satellite-elevation-air-photos/radar-polarimetry",
+      "access": "reviewer web403; independently read author re-fetched HTML copy, receipt wave3-earth-source-copy-receipt.json",
+      "scope": "polarization combinations, relative phase, scattering matrix/synthesis",
+      "result": "O3017已改為四個複數收發組合；O3019與E2203合併。"
+    },
+    {
+      "url": "https://argo.ucsd.edu/faq/",
+      "access": "reviewer webtimeout; independently read author re-fetched HTML copy",
+      "scope": "float bladder/compressibility and battery life",
+      "result": "支持O3065/O3066/O3068；不採用歷史任務進度數字。"
+    },
+    {
+      "url": "https://pubs.usgs.gov/publication/sir20245129/full",
+      "access": "reviewer web403; independently read author re-fetched HTML copy",
+      "scope": "abstract hysteresis, dynamic rating, equations17–20 celerity coefficient",
+      "result": "支持非定常水位流量關係及洪波與水速區別，正式推導dQ/dA進稿另核。"
+    },
+    {
+      "url": "https://pubs.usgs.gov/tm/3a22/pdf/tm3a22.pdf",
+      "access": "reviewer web403; independently read author re-fetched PDF copy",
+      "scope": "PDF22–24頁量測限制、底追蹤/旁瓣；59頁error velocity詞彙",
+      "result": "支持O3073/O3076/O3078；2013文件只作原理，型號與程序需重核。"
+    },
+    {
+      "url": "https://ntrs.nasa.gov/api/citations/20230010087/downloads/Martino_12512-17v2.pdf?attachment=true",
+      "access": "reviewer web first2pages then timeout; independently read re-fetched PDF pages8–11",
+      "scope": "6.1反射副峰；6.2死時間偏差；7視場截切",
+      "result": "O3085–87方向正確；保持強回波、斜坡及已證實光學副峰等範圍。"
+    }
+  ],
+  "merges": [
+    {
+      "duplicate_id": "O3046",
+      "canonical_id": "O3001",
+      "reason": "近遠端角度或斜距座標投影到地面尺規的幾何變化；保留光學掃描與雷達作同核心對照。"
+    },
+    {
+      "duplicate_id": "O3052",
+      "canonical_id": "O3014",
+      "reason": "跨軌基線使高程進入相位，求地形與扣除地形是同一機制的兩種用途。"
+    },
+    {
+      "duplicate_id": "O3045",
+      "canonical_id": "O3044",
+      "reason": "多探測元件響應需一致，條帶是該校準取捨的具體後果。"
+    },
+    {
+      "duplicate_id": "O3068",
+      "canonical_id": "P049",
+      "reason": "質量不變而排水體積增加的平均密度與浮力平衡；封閉油囊是可視化工程例子，保留為同核心。"
+    },
+    {
+      "duplicate_id": "O3019",
+      "canonical_id": "E2203",
+      "reason": "非同步通道把時間差帶入相位比較；偏振是既有多通道取樣問題的應用例，不另計核心。"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "O3069",
+      "reason": "目前只是減少浮面時間降低暴露，尚缺任務設計對照與可展開機制；暫緩，不單列為素材核心。"
+    }
+  ],
+  "distinct": [
+    {
+      "a": "O3018",
+      "b": "E2203",
+      "reason": "通道增益與串擾校準不同於有效取樣時刻不一致，不能只靠同步修正。"
+    },
+    {
+      "a": "O3022",
+      "b": "O3025",
+      "reason": "波束越過降水頂和能量在到達後方前衰減是不同觀測缺口。"
+    },
+    {
+      "a": "O3022",
+      "b": "O3024",
+      "reason": "站址提高同時減少遮蔽並犧牲谷地低層觀測，新增相反設計需求。"
+    },
+    {
+      "a": "O3010",
+      "b": "M2078",
+      "reason": "微波多層散射混合不同於可見光攝影被葉片遮住。"
+    },
+    {
+      "a": "O3014",
+      "b": "M2077",
+      "reason": "相位差及其模糊性不同於影像匹配視差；觀測量與成立條件不同。"
+    },
+    {
+      "a": "O3060",
+      "b": "P059",
+      "reason": "波形傳播速度不同於體積流率除以截面積，需淺水波近似而非僅換物件。"
+    },
+    {
+      "a": "O3060",
+      "b": "N102",
+      "reason": "局部洪波速度與粒子速度區別，不同於集水區面積控制匯流時間。"
+    },
+    {
+      "a": "O3065",
+      "b": "O3068",
+      "reason": "深度擾動的壓縮性穩定條件，不同於主動改變外體積取得正浮力。"
+    },
+    {
+      "a": "O3077",
+      "b": "P128",
+      "reason": "散射體是否跟隨水流的代表性，不同於沿視線速度分量。"
+    },
+    {
+      "a": "O3071",
+      "b": "V3087",
+      "reason": "葉綠素螢光代理量受生理調節，不同於兩個光系統先後提升電子能量；組稿不重複光反應背景。"
+    },
+    {
+      "a": "O3085",
+      "b": "M2089",
+      "reason": "儀器內部多次反射的假回波不同於真實不同高度目標。"
+    },
+    {
+      "a": "O3081",
+      "b": "O3063",
+      "reason": "空間平滑造成跨區洩漏不同於多水儲量成分的反演歧義。"
+    },
+    {
+      "a": "O3039",
+      "b": "O3047",
+      "reason": "側視與掃幅重疊造成再訪不同於逐行拍攝時地球旋轉造成歪斜。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "EARTH-P1",
+      "decision": "accept_with_cut",
+      "reason": "同一雨帶逐步辨識回波與雨量；495秒為預算，末章無清楚相位圖則縮成6–7分鐘。"
+    },
+    {
+      "id": "EARTH-P2",
+      "decision": "accept_with_condition",
+      "reason": "600秒有連續總帳追問；若球諧與mascon產品切換難懂，刪最後80秒，不混稱單一處理流程。"
+    },
+    {
+      "id": "EARTH-P3",
+      "decision": "accept_short_explainer",
+      "reason": "435秒可成立；沒有參考系動畫就改4–6分鐘。狀態集中統一EDITORIAL_THEME_NOT_SCRIPT，另標format=short_explainer。"
+    }
+  ],
+  "status": "EDITORIAL_REVIEW_NOT_FULL_SCRIPT_APPROVAL"
+}

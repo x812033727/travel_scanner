@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "reviewer": "pool_physics (non-author)",
+  "reviewed_on": "2026-11-01",
+  "status": "PASS_LIMITED_SOURCE_REFRESH_AND_DEDUP",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R10001",
+    "R10002",
+    "R10003"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave10-source-refresh.json",
+      "sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24"
+    },
+    {
+      "file": "reviews/wave10-representation-probe.json",
+      "sha256": "3894ee2a289400f19ea8a6e80c4d7569da1d684c3e936917ead1effe71ddf420"
+    },
+    {
+      "file": "reviews/wave10-source-refresh-author.json",
+      "sha256": "fac667c836c7b1a2f9f2a409dc36c55d64dbde3308e6bd00820a13c7e7df3172"
+    }
+  ],
+  "coverage": {
+    "candidates_read": 3,
+    "source_records_independently_read": 4,
+    "sources_total": 4,
+    "author_boundary_pairs_read": 6,
+    "semantic_pairs_read": 15,
+    "all_old_pool_claims_rechecked": false,
+    "new_cores": 0,
+    "new_themes": 0
+  },
+  "semantic_input": {
+    "file": ".cache/wave10-source-refresh-neighbours.json",
+    "sha256": "c56870361e9a134999ba9b9676cf4d741c7e00446f8e5ef2ce71bf398346a33f",
+    "draft_sha256": "a9e82d8775c1a03dad5928c79f8ccb961e8701ba4d84846094ae9495c991b000",
+    "raw_records": 3160,
+    "batch_sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24",
+    "limits": "逐讀3×5的問答與scope；分數只是檢索，不是自動合併。"
+  },
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "R10001",
+        "canonical_id": "LEG-A20",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      },
+      {
+        "duplicate_id": "R10002",
+        "canonical_id": "LEG-A25",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      },
+      {
+        "duplicate_id": "R10003",
+        "canonical_id": "LEG-A35",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R10001",
+        "b": "U4001",
+        "reason": "前者同一emoji編碼呈現的設計差異；後者字型缺字觸發逐字fallback。"
+      },
+      {
+        "a": "R10001",
+        "b": "U4012",
+        "reason": "前者一種編碼可多種字形；後者相似字形卻是不同書寫系統字元。"
+      },
+      {
+        "a": "R10002",
+        "b": "L262",
+        "reason": "表示範圍上限不同於UTC/偏移的文字表示。"
+      },
+      {
+        "a": "R10002",
+        "b": "I8016",
+        "reason": "欄位容納範圍不同於網路延遲造成的對時誤差。"
+      },
+      {
+        "a": "R10003",
+        "b": "LEG-A03",
+        "reason": "GiB/GB的分母差異，不是bit/byte八倍。"
+      },
+      {
+        "a": "R10003",
+        "b": "I3062",
+        "reason": "單位換算不同於二進位浮點無限展開與有限捨入。"
+      }
+    ]
+  },
+  "per_candidate": [
+    {
+      "id": "R10001",
+      "disposition": "merge",
+      "canonical_id": "LEG-A20",
+      "source_result": "Unicode FAQ 與 UTS51 指定段支持同字元/序列可有不同圖樣，也確有設計指引；比舊答完全不管外形更精確。",
+      "editorial_result": "40–65秒只是局部圖解預算，不新增片。",
+      "neighbours_checked": [
+        "LEG-A20",
+        "U4012",
+        "U4001",
+        "L314",
+        "L313"
+      ]
+    },
+    {
+      "id": "R10002",
+      "disposition": "merge",
+      "canonical_id": "LEG-A25",
+      "source_result": "有號32位數學範圍與 time(2) 表示界線可支持；manual有不同呼叫/ABI情況，不把超界動畫指定為一律回1901。",
+      "editorial_result": "40–65秒只表達欄位上限，不延伸全系統遷移。",
+      "neighbours_checked": [
+        "LEG-A25",
+        "M2070",
+        "L262",
+        "LEG-S12",
+        "I3065"
+      ]
+    },
+    {
+      "id": "R10003",
+      "disposition": "merge",
+      "canonical_id": "LEG-A35",
+      "source_result": "NIST 的 GB/GiB 倍數與重新換算相符，沒把歷史廠商敘述當現在系統實測。",
+      "editorial_result": "35–55秒固定byte量再換刻度即可；不需硬拉長。",
+      "neighbours_checked": [
+        "LEG-A03",
+        "LEG-A35",
+        "I3062",
+        "I8014",
+        "L319"
+      ]
+    }
+  ],
+  "source_readback": [
+    {
+      "source_id": "R10-S001",
+      "url": "https://www.unicode.org/faq/emoji_dingbats.html",
+      "route": "fresh web.open/find",
+      "scope": "How are emoji displayed?；Does the Unicode Consortium control the design of emoji?；How long after an emoji is standardized will it appear on my phone? 指定問答正文",
+      "supports": "編碼、設計與平台支援層次不同；未測任何裝置。"
+    },
+    {
+      "source_id": "R10-S002",
+      "url": "https://www.unicode.org/reports/tr51/tr51-31.html",
+      "route": "fresh web.open/find",
+      "scope": "Version18.0 Revision31；Summary、§2 Design Guidelines、§2.1 Names、§2.2 Display；未全讀規範",
+      "supports": "核心外形設計指引與支援序列差異，沒有每像素強制一致。"
+    },
+    {
+      "source_id": "R10-S003",
+      "url": "https://man7.org/linux/man-pages/man2/time.2.html",
+      "route": "fresh web.open",
+      "scope": "DESCRIPTION、ERRORS EOVERFLOW、VERSIONS及BUGS限制；6.19 / page2026-02-08",
+      "supports": "時間範圍上限，不核舊答案的遷移年份或所有呼叫失敗模式。"
+    },
+    {
+      "source_id": "R10-S004",
+      "url": "https://physics.nist.gov/cuu/Units/binary.html",
+      "route": "fresh web.open",
+      "scope": "Prefixes for binary multiples 表與 GB/GiB Examples",
+      "supports": "同byte量使用不同單位；未核格式化/OS顯示/訴訟。"
+    }
+  ],
+  "independent_read_failures": [],
+  "author_failures_not_replayed": "GNU兩頁失敗僅屬作者紀錄，本覆核未打開，不冒稱自己的失敗或讀過。",
+  "independent_recalculation": {
+    "method": "另以 Python arbitrary precision integers、datetime.timedelta重算，未操作OS時鐘或執行C溢位。",
+    "max_signed32": 2147483647,
+    "last_representable_utc": "2038-01-19T03:14:07+00:00",
+    "next_instant_utc": "2038-01-19T03:14:08+00:00",
+    "bytes": 1000000000000,
+    "GB": 1000,
+    "GiB": 931.3225746154785,
+    "matches_author_probe": true
+  },
+  "required_corrections": [],
+  "limits": [
+    "只核本次窄範圍答案與來源，舊raw完整答案、全部附件仍未全面刷新。",
+    "121筆歷史入選待全面重讀數不得因這3筆減為118。",
+    "沒有新增核心、沒有完整稿、試讀、影片或發布核准。"
+  ],
+  "final_input_checks": [
+    {
+      "checked_on": "2026-11-01",
+      "result": "PASS_UNCHANGED_QA_AND_NEIGHBOURS_TARGETED_METADATA_READBACK",
+      "draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+      "raw_records": 3160,
+      "neighbours_file": ".cache/wave10-source-refresh-neighbours.json",
+      "neighbours_sha256": "5796d11deff91e8862b67a3977bb70e05c0a2db1e859c6fe446147e5ad03652c",
+      "delta_file": ".cache/wave10-source-refresh-neighbour-delta.json",
+      "delta_sha256": "3e709a9cfcab07a40ccd14002b27e44dbbdec6faa50c56c07cb8fef369d82742",
+      "current_batch_sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24",
+      "candidate_rows": 3,
+      "top5_ids_match_reviewed": true,
+      "new_neighbour_ids": [],
+      "delta_rows_read": [],
+      "author_file_hashes_match_reviewed_files": true,
+      "limits": "保留最初semantic_input、來源實讀路線及早期SHA；本次僅版本差異讀回，不宣稱重新讀全部來源。"
+    },
+    {
+      "checked_on": "2026-11-01",
+      "result": "PASS_FINAL_INPUT_HASH_ONLY_DELTA",
+      "draft_sha256": "ebd81b1e36f410146eb4921c43ce4e3d2aded07b3fcdef2748d580de5c8eec16",
+      "previous_draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+      "raw_records": 3160,
+      "neighbours_file": ".cache/wave10-source-refresh-neighbours.json",
+      "neighbours_sha256": "d869d422f0ead76d439f22cd7d01dd5cb79e34d56304117745a1ada5a20728f1",
+      "proof": "將當期nearby唯一draft_sha256值回置c371版後，其完整UTF8位元組SHA與前次實讀nearby SHA相同；證明三份payload只有draft欄變動。",
+      "author_file_hashes_match_reviewed_files": true,
+      "candidate_question_answer_scope_and_neighbour_payload_changed": false,
+      "new_required_corrections": [],
+      "limits": "最後版本綁定，不覆寫早期實讀紀錄；未重開來源、未試讀或製作。"
+    }
+  ]
+}

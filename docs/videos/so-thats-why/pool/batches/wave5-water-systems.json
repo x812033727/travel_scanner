@@ -1,0 +1,847 @@
+{
+  "schema_version": 1,
+  "batch_id": "wave5-water-systems-20261101",
+  "created_on": "2026-11-01",
+  "scope": "城市供水、污水與水環境工程的來源支持選題；screened僅題級。依2790 raw機制檢索避重，不是飲水安全、設計操作或完整稿核准。",
+  "sources": [
+    {
+      "id": "W5-S001",
+      "url": "https://www.epa.gov/sites/default/files/2019-02/documents/nutrient-control-design-manual.pdf",
+      "title": "Nutrient Control Design Manual (EPA/600/R-10/100, 2010)",
+      "publisher": "US EPA / Cadmus Group",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find + urllib官方PDF副本以pypdf實讀列出的頁；非全369頁逐讀",
+      "reading_scope": "§4.1、4.2、4.4、4.5.4；§5.1、5.4.1、5.6.1；§6.2.1.1、6.8。PDF單頁序63、64、67、77、109、110、119、122、133、134、172及web對應段；歷史工程原理，不採現行規範/效率數字。 另補讀PDF第111頁§5.1步驟4含磷剩餘污泥排出。",
+      "locator": "§4.1、4.2、4.4、4.5.4；§5.1、5.4.1、5.6.1；§6.2.1.1、6.8。PDF單頁序63、64、67、77、109、110、119、122、133、134、172及web對應段；歷史工程原理，不採現行規範/效率數字。 另補讀PDF第111頁§5.1步驟4含磷剩餘污泥排出。",
+      "summary": "營養鹽去除受生物留存、能量儲存與處理順序影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S002",
+      "url": "https://www.epa.gov/system/files/documents/2022-10/sequencing-batch-reactors-factsheet.pdf",
+      "title": "Wastewater Technology Fact Sheet: Sequencing Batch Reactors (1999)",
+      "publisher": "US EPA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "Description；Description of a plant；Design Criteria Fill/React/Settle/Draw，尤其static fill selector段；不採歷史價格/廠商保證。",
+      "locator": "Description；Description of a plant；Design Criteria Fill/React/Settle/Draw，尤其static fill selector段；不採歷史價格/廠商保證。",
+      "summary": "同池依時序切換處理條件，進料模式也改變菌群競爭。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S003",
+      "url": "https://www.epa.gov/system/files/documents/2022-10/trickling-filters-factsheet.pdf",
+      "title": "Wastewater Technology Fact Sheet: Trickling Filters (2000)",
+      "publisher": "US EPA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "Description/Applicability；Design Criteria underdrain, recirculation, wetting及ventilation文字；不採廠型效率表。",
+      "locator": "Description/Applicability；Design Criteria underdrain, recirculation, wetting及ventilation文字；不採廠型效率表。",
+      "summary": "固定生物膜的氧傳入與濕潤分布有各自限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S004",
+      "url": "https://www.epa.gov/system/files/documents/2023-08/DS%20Toolbox%20Fact%20Sheets_Nitrification_508ed.pdf",
+      "title": "Protecting Distribution System Water Quality through Control of Nitrification",
+      "publisher": "US EPA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "開頭；Understand Nitrification Causes：兩步硝化、chloramine/free ammonia變化；不採具名法規或改善案例效益。",
+      "locator": "開頭；Understand Nitrification Causes：兩步硝化、chloramine/free ammonia變化；不採具名法規或改善案例效益。",
+      "summary": "氯胺衰減釋出的游離氨可參與配水管內硝化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S005",
+      "url": "https://www.epa.gov/system/files/documents/2021-12/ds-toolbox-fact-sheets_pressure-management.pdf",
+      "title": "Protecting Water Quality Through Distribution System Pressure Management (2021)",
+      "publisher": "US EPA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "Water Quality and Pressure Management；Pressure Monitoring；Preventative Measures，只採壓差/裂孔/交叉連接條件。",
+      "locator": "Water Quality and Pressure Management；Pressure Monitoring；Preventative Measures，只採壓差/裂孔/交叉連接條件。",
+      "summary": "壓力短暫下降可能把原本外漏的通路變成內入通路。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S006",
+      "url": "https://www.epa.gov/sites/default/files/2015-06/documents/uv.pdf",
+      "title": "Wastewater Technology Fact Sheet: Ultraviolet Disinfection (1999)",
+      "publisher": "US EPA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "Applicability三因素；Table2 TSS/UV absorption；Description燈距；O&M套管污損文字；不採消毒劑量/時間/效果保證。",
+      "locator": "Applicability三因素；Table2 TSS/UV absorption；Description燈距；O&M套管污損文字；不採消毒劑量/時間/效果保證。",
+      "summary": "水中遮蔽與通過光場的路徑影響實際照射。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S007",
+      "url": "https://www.tn.gov/content/dam/tn/environment/water/ftc/references/study-guides/ftc_study-307_coag-flocc.pdf",
+      "title": "Coagulation/Flocculation – Fleming Training Center study guide",
+      "publisher": "Tennessee Department of Environment and Conservation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "Section1：Nonsettleable Solids/Coagulation；Flocculation/tapered mixing；Sedimentation Surface Loading Rate與non-ideal settling（約正文6–13頁）；不採後附試劑操作。",
+      "locator": "Section1：Nonsettleable Solids/Coagulation；Flocculation/tapered mixing；Sedimentation Surface Loading Rate與non-ideal settling（約正文6–13頁）；不採後附試劑操作。",
+      "summary": "混凝、碰撞成長與沉降各有不同受限條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S008",
+      "url": "https://www.dwi.gov.uk/private-water-supplies/pws-installations/treatment-guide-2/physical-removal-of-contaminants/",
+      "title": "Physical removal of contaminants",
+      "publisher": "UK Drinking Water Inspectorate",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "Slow sand filters；Rapid gravity filters；Coagulation and flocculation；Sedimentation正文。",
+      "locator": "Slow sand filters；Rapid gravity filters；Coagulation and flocculation；Sedimentation正文。",
+      "summary": "慢砂生物層與快濾反沖不能視為同一種清潔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S009",
+      "url": "https://www.epa.gov/sites/default/files/2015-10/documents/sso_optimizing_enitre_doc.pdf",
+      "title": "Optimizing Operation, Maintenance, and Rehabilitation of Sanitary Sewer Collection Systems (2003)",
+      "publisher": "NEIWPCC；US EPA資助並寄存",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "§7.3 Hydrogen Sulfide Issues，PDF第82–83頁；讀正文產生、逸出、管壁轉酸、管冠腐蝕與I/I降低的條件。歷史工程教材，不採法規或操作指令。",
+      "locator": "§7.3 Hydrogen Sulfide Issues，PDF第82–83頁；讀正文產生、逸出、管壁轉酸、管冠腐蝕與I/I降低的條件。歷史工程教材，不採法規或操作指令。",
+      "summary": "水中產生的硫化氫可在管內氣相與濕壁間轉移，造成水面以上的腐蝕。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S010",
+      "url": "https://news.ncsu.edu/2011/04/wms-ducoste-soap/",
+      "title": "Researchers Find Fat Turns Into Soap In Sewers, Contributes To Overflows (2011)",
+      "publisher": "North Carolina State University",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "研究機構報導正文：FTIR鑑別、脂肪酸與鈣形成沉積的段落；另讀所附原研究摘要。未取得原論文全文，不採形成速率或鈣來源的後續推論。",
+      "locator": "研究機構報導正文：FTIR鑑別、脂肪酸與鈣形成沉積的段落；另讀所附原研究摘要。未取得原論文全文，不採形成速率或鈣來源的後續推論。",
+      "summary": "部分污水管硬油脂沉積物含鈣脂肪酸鹽，不能全部理解為油遇冷凝固。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S011",
+      "url": "https://dnr.wisconsin.gov/topic/labCert/BODPreTreatment.html",
+      "title": "BOD Sample Pre-Treatment",
+      "publisher": "Wisconsin Department of Natural Resources",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列正文/PDF文字；未據文字擷取宣稱看過圖像",
+      "reading_scope": "導言、Sample Pre-Treatment pH/Disinfection/Oxygen Levels、Determining Appropriate Dilutions；另讀取樣段作退題比較，不採配方、數值規範或執行流程。",
+      "locator": "導言、Sample Pre-Treatment pH/Disinfection/Oxygen Levels、Determining Appropriate Dilutions；另讀取樣段作退題比較，不採配方、數值規範或執行流程。",
+      "summary": "BOD依靠活微生物耗氧；失活、氧氣逸出或瓶內氧量不足會改變讀數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W5-S012",
+      "url": "https://www.epa.ie/publications/compliance--enforcement/drinking-water/advice--guidance/EPA-Water-Filtration-Manual.pdf",
+      "title": "Water Treatment Manual: Filtration (2020)",
+      "publisher": "Environmental Protection Agency, Ireland",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run嘗試PDF逾時；urllib成功下載官方PDF，pypdf實讀指定頁文字，非全160頁逐讀。忽略快取PDF SHA256 03b173365cc36c635b2d39f5add2ec65ce6c9bb93e310fb9a5b16e7f60576a49。",
+      "reading_scope": "§5.2.3（印刷41–42頁／PDF49–50頁）濾材分層；§8.2 hydraulic configuration（印刷102頁／PDF110頁）dead end與cross-flow。另讀PDF115–118頁完整性／清洗段、135頁預塗濾餅作退題篩選，未採操作數值。",
+      "locator": "§5.2.3（印刷41–42頁／PDF49–50頁）濾材分層；§8.2 hydraulic configuration（印刷102頁／PDF110頁）dead end與cross-flow。另讀PDF115–118頁完整性／清洗段、135頁預塗濾餅作退題篩選，未採操作數值。",
+      "summary": "濾材粒徑與密度配置可改變容污位置；沿膜流動能帶走部分截留物，與全部流量穿膜的路徑不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "W5001",
+      "question": "污水還有時間流過池子，處理氨的細菌為什麼卻可能先被沖走？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.nitrifier_growth_washout_sludge_age",
+      "answer_target": "硝化菌淨增殖趕不上固體流失時，菌量無法維持。",
+      "scope": "限活性污泥硝化與固體停留時間；不把水的停留時間等同菌的停留時間，不給最少天數。",
+      "source_ids": [
+        "W5-S001"
+      ],
+      "source_locator": "§4.5.4，PDF第77頁",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。與D2015維持菌量的回流用途相近，新增留存時間和淨生長的淘汰門檻；若成稿只說回流養菌則併舊題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把水留多久與菌留多久分開。",
+        "visual": "水滴快速通過、菌群增殖與污泥離開兩條時間線。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "W5002",
+      "question": "處理氨的池子明明在工作，為什麼可能自己把反應環境弄壞？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.nitrification_alkalinity_self_inhibition",
+      "answer_target": "硝化耗鹼可使pH下降，反過來抑制硝化。",
+      "scope": "限原水緩衝不足的反應回饋；不報通用pH門檻或投藥方案。",
+      "source_ids": [
+        "W5-S001"
+      ],
+      "source_locator": "§4.4及§6.8；web alkalinity段",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。P273/P274已談緩衝；新核心必須保留硝化自我抑制迴路，不重收緩衝定義。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解反應會改變自身所需條件。",
+        "visual": "同一池的氨下降、緩衝耗用與速率減慢示意，不當實測曲線。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "W5003",
+      "question": "污水處理到後半段，為什麼還把一股水送回前面？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.preanoxic_nitrate_recycle_carbon_routing",
+      "answer_target": "後段生成的硝酸鹽回到前段，利用尚存有機物反硝化。",
+      "scope": "限MLE前置缺氧流程；區別硝酸鹽混合液內回流與D2015沉澱污泥回流。",
+      "source_ids": [
+        "W5-S001"
+      ],
+      "source_locator": "§6.2.1.1，PDF第133–134頁",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。B2098已有反硝化本身；此題保留反應順序和回送配對，不只重講氮變氣。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "前後兩種反應需要的材料出現時間不同。",
+        "visual": "沿同一流程把硝酸鹽箭頭折返至尚有碳源的入口。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "W5004",
+      "question": "明明要把磷拿掉，污水廠為什麼先讓細菌把磷吐出來？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.phosphorus_release_carbon_storage_luxury_uptake",
+      "answer_target": "先以聚磷供能儲碳，後在有氧條件下攝入更多磷；最後以含磷剩餘污泥移出系統，才完成淨去磷。",
+      "scope": "限聚磷菌的生物除磷循環；不能把無氧等同所有營養鹽處理，不採2010菌種普遍性。",
+      "source_ids": [
+        "W5-S001"
+      ],
+      "source_locator": "§5.1，PDF第109–110頁；§5.1步驟4，PDF第111頁",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "局部濃度先升不必代表整段處理失敗。",
+        "visual": "同一菌體在兩區交換磷與儲存碳，再以含磷剩餘污泥排出；追蹤磷跨出系統邊界，不讓它憑空消失。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "W5005",
+      "question": "讓除磷細菌在池裡待更久，為什麼反而可能吐回更多磷？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.secondary_phosphorus_release_without_energy_storage",
+      "answer_target": "碳源用盡後維持生命的釋磷，未伴隨足夠儲碳可供再攝取。",
+      "scope": "限生物除磷的secondary release；不同於正常釋磷換取儲碳，非待越久必然變差。",
+      "source_ids": [
+        "W5-S001"
+      ],
+      "source_locator": "§5.6.1，PDF第122頁",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同釋磷觀察背後可能是不同能量狀態。",
+        "visual": "正常儲碳路徑與飢餓路徑並排，後續攝磷箭頭大小僅定性。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "W5006",
+      "question": "除磷池沒有打氣，從別處帶回的水為什麼仍會搶走細菌的食物？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.nitrate_carryover_competes_for_ebpr_carbon",
+      "answer_target": "回流水帶入硝酸鹽，讓其他代謝先消耗聚磷菌所需碳源。",
+      "scope": "限厭氧除磷區的硝酸鹽干擾；缺氧但有硝酸鹽不等同本題厭氧條件。",
+      "source_ids": [
+        "W5-S001"
+      ],
+      "source_locator": "§5.4.1，PDF第119頁",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。與W5003的正向回流配對不同；本題是跨功能區的碳源競爭。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "停曝氣不代表所有電子受體都消失。",
+        "visual": "不畫氧氣泡，改追蹤回流硝酸鹽如何消耗同一批可用碳。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "W5007",
+      "question": "磷不是要去掉嗎，為什麼太早去得太乾淨也會妨礙後面的處理？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.premature_phosphorus_removal_limits_nitrifier_growth",
+      "answer_target": "前段除磷過度可讓後續生物處理缺少生長養分。",
+      "scope": "限需微生物增殖的後段流程；不推污水應保留多少磷或提供投藥/排放建議。",
+      "source_ids": [
+        "W5-S001"
+      ],
+      "source_locator": "§6.8，PDF第172頁第2段",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。 作者與第一輪覆核暫列需補證／厚度再審；不得因premise_status=screened就選入或視為核准，題組不用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一成分在排放端是去除目標，在反應器內仍是資源。",
+        "visual": "順序相同但前段除磷強弱對照，後段菌體建材出現缺口。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "W5008",
+      "question": "一座池子怎麼先攪拌、再沉澱，卻不用讓兩件事互相打架？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.sequencing_batch_time_separates_incompatible_stages",
+      "answer_target": "SBR依時間切換反應與靜置，替代連續流的空間分池。",
+      "scope": "限傳統fill-and-draw SBR；不把連續進流ICEAS當完全相同，不宣稱一池能接住任意尖峰。",
+      "source_ids": [
+        "W5-S002"
+      ],
+      "source_locator": "Description；Fill/React/Settle/Draw",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一設備可用時序切開互相衝突的條件。",
+        "visual": "固定同一池，時鐘與攪拌/沉降/取水狀態依次改變。",
+        "seconds": [
+          70,
+          95
+        ]
+      }
+    },
+    {
+      "id": "W5009",
+      "question": "污水先累積一餐再攪勻，為什麼會影響最後的泥能不能沉下來？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.feast_selector_floc_formers_competition",
+      "answer_target": "進料造成的高食物菌量比可偏向成絮菌，改變污泥沉降。",
+      "scope": "限教材static-fill選擇條件；不是高負荷永遠好，菌相與原水仍需個案驗證。",
+      "source_ids": [
+        "W5-S002"
+      ],
+      "source_locator": "Design Criteria static fill / selector段",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。 作者與第一輪覆核暫列需補證／厚度再審；不得因premise_status=screened就選入或視為核准，題組不用。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "進料節奏能選擇不同群落，而不只是調總進水量。",
+        "visual": "同總量均勻餵食與集中進料，對照成絮/絲狀形態的定性分布。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "W5010",
+      "question": "水一直淋、空氣也進得去，濾床上的細菌膜為什麼裡外仍可能不同？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.trickling_biofilm_oxygen_penetration_gradient",
+      "answer_target": "膜增厚後耗氧與傳入限制讓深處缺氧。",
+      "scope": "限滴濾附著生物膜；不是整床同一氧狀態，不以膜厚給普遍運轉界線。",
+      "source_ids": [
+        "W5-S003"
+      ],
+      "source_locator": "Applicability：outer aerobic layer / oxygen cannot penetrate",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外部有氧不代表微小結構內部也有氧。",
+        "visual": "放大一片膜，以氧向內移動、沿途被消耗的剖面取代整池一色。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "W5011",
+      "question": "已處理過的水為什麼又拿去淋濾床，是不是白做工？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.trickling_filter_recycle_wetting_distribution",
+      "answer_target": "回流水維持濾材濕潤與沖洗分布，避免局部接觸不足。",
+      "scope": "限滴濾床液體回流；與活性污泥回流留菌不同，不給回流倍率。",
+      "source_ids": [
+        "W5-S003"
+      ],
+      "source_locator": "Design Criteria underdrain and recirculation段",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回流水可改變接觸分布，不只重複去污染。",
+        "visual": "保持原水入流相同，對照無回流與有回流的濾床覆水情況；清楚標出含回流的濾床總流量不同。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "W5012",
+      "question": "供水用了氯胺，為什麼管裡仍可能出現利用氨的微生物？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.chloramine_decay_ammonia_nitrification_feedback",
+      "answer_target": "氯胺衰減釋氨與硝化可交互促進水質變化。",
+      "scope": "限氯胺系統的條件性事件；不推氯胺一定失效，不以氣味判斷飲用安全。",
+      "source_ids": [
+        "W5-S004"
+      ],
+      "source_locator": "Understand Nitrification Causes及water quality progression",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "消毒殘留與微生物食物可能來自同一物質的不同狀態。",
+        "visual": "追蹤氯胺下降、游離氨先升後被利用及亞硝酸鹽的分段趨勢。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "W5013",
+      "question": "平常漏水的裂縫，為什麼停泵時反而可能把外面的水吸進去？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.pressure_transient_intrusion_path_reversal",
+      "answer_target": "壓差反轉時，既有裂孔可能由出水變成外水進入。",
+      "scope": "必須同時有外部水/污染來源、通路與不利壓差；不是每次停水都代表污染。",
+      "source_ids": [
+        "W5-S005"
+      ],
+      "source_locator": "Water Quality and Pressure Management；adequate vs low-pressure示意",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。B4032已有水錘生成；本題不重收水錘，只問通路方向與三個入侵前提。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一裂孔的流向由內外壓差決定。",
+        "visual": "固定裂縫，切換管內外水頭，箭頭反向；不模擬現場操作。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "W5014",
+      "question": "紫外線燈亮著，藏在小顆粒裡的微生物為什麼仍可能照不到？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.uv_particle_association_shielding",
+      "answer_target": "懸浮顆粒可吸光並遮住其中微生物。",
+      "scope": "限水處理UV光路；不給滅菌劑量或宣稱看起來清澈即可安全。",
+      "source_ids": [
+        "W5-S006"
+      ],
+      "source_locator": "Applicability wastewater characteristics；Table2 TSS",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "燈的輸出不等於目標真正收到的光。",
+        "visual": "同一光束照單獨微生物與顆粒內微生物，顯示遮蔽路徑。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "W5015",
+      "question": "兩滴水在燈旁待一樣久，為什麼收到的紫外線不一定一樣多？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.uv_reactor_spatial_fluence_trajectory",
+      "answer_target": "不同軌跡穿過不同強度光場，停留時間不能單獨代表照射。",
+      "scope": "限非均勻UV反應器的定性路徑；與D2167局部水齡不同，不假定所有光場均勻。",
+      "source_ids": [
+        "W5-S006"
+      ],
+      "source_locator": "Description lamp distance；Applicability hydraulic properties",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "除了多久，還要追蹤在哪裡經過。",
+        "visual": "兩條相同總時間、不同近燈距離與徑向混合的軌跡。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "W5017",
+      "question": "淨水廠先快攪、後慢攪，為什麼不能一路加速把水拌乾淨？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.floc_collision_growth_vs_shear_breakup",
+      "answer_target": "混合促進碰撞，但大絮體也更易被剪切打散。",
+      "scope": "限已失穩顆粒的成絮階段；快速分散藥劑與慢速長絮目的不同，不給轉速配方。",
+      "source_ids": [
+        "W5-S007"
+      ],
+      "source_locator": "Section1 Flocculation；tapered mixing",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "成長與破壞都會隨攪拌改變，速度不是單一優勢。",
+        "visual": "同一群絮體在低/適中/過強混合下的碰撞與破碎事件。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "W5018",
+      "question": "沉澱池容量一樣大，做得又深又窄就一定比較會沉嗎？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.clarifier_surface_loading_vs_volume",
+      "answer_target": "沉速與單位表面積流量共同限制理想沉降，容積不足以比較。",
+      "scope": "限理想離散顆粒模型作入口；真實絮凝沉降、密度流與污泥層需另核，不由容積直接保證性能。",
+      "source_ids": [
+        "W5-S007"
+      ],
+      "source_locator": "Section1 Sedimentation Surface Loading Rate",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。D2013已有放慢以沉降；新增固定容積改幾何的容量比較，圖中軌跡製作前需算核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "池子的平面面積與顆粒沉速也決定能否被帶走。",
+        "visual": "同流量同容積的深窄/淺寬模型，追蹤顆粒水平旅程與下沉。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "W5019",
+      "question": "水裡顆粒更多、總重量更重，為什麼整群反而可能沉得較慢？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.hindered_settling_interparticle_crowding",
+      "answer_target": "顆粒擁擠縮減相對流動空間，沉降互相干擾。",
+      "scope": "限高濃度懸浮群體的阻礙沉降；不套每種污泥或把總重當單粒重量。",
+      "source_ids": [
+        "W5-S007"
+      ],
+      "source_locator": "Section1 non-ideal settling：presence and concentration of other particles；Section1印刷13頁，工具擷取L355–357",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。 覆核補讀TDEC工具擷取L355–357後確認來源含濃度／自由通路的因果，撤回暫緩；保留段落，不為延長本輪題組而加用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一顆的沉速不能直接套到一整群。",
+        "visual": "同顆粒兩種濃度，標示顆粒與排開水的相對通路。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "W5020",
+      "question": "慢砂濾池清掉表面層，為什麼還要等它重新長出一層膜？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.slow_sand_cleaning_removes_active_biolayer",
+      "answer_target": "清理表面同時移走生物層，需重新建立處理功能。",
+      "scope": "限傳統向下流慢砂；不與快濾砂或向上流變體混同，不提可飲用判定。",
+      "source_ids": [
+        "W5-S008"
+      ],
+      "source_locator": "Slow sand filters：schmutzdecke與tandem cleaning",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。D2008已有生物處理；新條件是維護清除功能層造成恢復期，若只說細菌有益則併舊題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "乾淨表面與成熟處理層不是同一狀態。",
+        "visual": "同砂層清理前、剛刮除、重新成熟三格，標清不是家用實作。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "W5021",
+      "question": "砂濾池反沖洗時，為什麼要讓砂粒稍微浮鬆卻又不能整批沖走？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.backwash_bed_expansion_media_loss_tradeoff",
+      "answer_target": "向上水流鬆動濾床利於脫污，過強則流失濾材。",
+      "scope": "限快速重力濾床反沖；不給流速/閥門操作，與慢砂刮除生物層區分。",
+      "source_ids": [
+        "W5-S008"
+      ],
+      "source_locator": "Rapid gravity filters：bed expansion / media loss",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "清潔需要改變床層結構，也要保留濾材。",
+        "visual": "固定床、膨鬆床、砂被帶走的三種向上流狀態。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "W5022",
+      "question": "污水只流在管子底部，為什麼上方管壁也可能被腐蝕？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.sewer_sulfide_gas_wall_acid_corrosion",
+      "answer_target": "厭氧區生成的硫化氫逸入氣相，在濕管壁經微生物轉為硫酸，攻擊易受影響的材料。",
+      "scope": "限定教材所述硫化氫相關腐蝕路徑與易受影響材料；不把全部管材腐蝕歸成同一機制，不以氣味判斷現場安全。",
+      "source_ids": [
+        "W5-S009"
+      ],
+      "source_locator": "§7.3，PDF第82頁",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。不示範進入下水道、嗅聞或加藥。與D2016厭氧產氣不同，終點是管壁生成酸與腐蝕位置。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "腐蝕位置不必等於污水流經位置，中間還有氣相與管壁反應。",
+        "visual": "同一管道剖面標示水中、氣相、濕管冠的物質與反應路徑；材料差異只列限制。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "W5023",
+      "question": "下水道裡的硬油塊，只是油冷掉凝固了嗎？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.sewer_fatty_acid_calcium_salt_deposition",
+      "answer_target": "研究樣品與實驗指出，游離脂肪酸能與鈣形成難溶的脂肪酸鹽，產生不同於單純凝固的沉積。",
+      "scope": "限定研究辨認的含鈣脂肪酸鹽FOG沉積；不宣稱每個油塊皆此成分、所有鈣來自混凝土，或提供家庭疏通法。",
+      "source_ids": [
+        "W5-S010"
+      ],
+      "source_locator": "研究報導正文FTIR及游離脂肪酸與鈣反應段；原研究摘要僅作研究設計邊界",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外觀像油不代表只是同一種油換成固態；反應會改變物質。",
+        "visual": "分出『物理凝固』與『脂肪分解後形成鈣鹽』兩條路；研究鑑別只畫概念，不造測量光譜。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "W5024",
+      "question": "測水裡有多少東西會耗氧，為什麼消過毒的樣品可能反而讓結果失真？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.bod_bioassay_viability_false_low",
+      "answer_target": "BOD用微生物的耗氧活動作讀數；消毒劑或不適合的pH抑制微生物，不等於可分解物已消失。",
+      "scope": "限定BOD生物測試及未適當處理的樣品；不把BOD當全部污染、毒性或飲用安全指標，不教配藥操作。",
+      "source_ids": [
+        "W5-S011"
+      ],
+      "source_locator": "導言；Sample Pre-Treatment – pH、Disinfection",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。圖只示意可能偏差，不編造實測濃度；與W5007處理菌營養不足不同，此題辨認生物量測失效。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讀數低可能是測量用的生物失活，必須區分污染少和測量反應沒有正常發生。",
+        "visual": "相同待測物的概念瓶，對照活性正常與受抑制的菌；把待測物與耗氧曲線分開畫。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "W5025",
+      "question": "測試瓶裡的氧氣變少，就一定是微生物把它用掉了嗎？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.bod_supersaturated_oxygen_outgassing_bias",
+      "answer_target": "過飽和溶氧可在測試條件下逸出，這部分物理損失若被當成耗氧，會造成BOD偏高。",
+      "scope": "只談起始樣品過飽和造成的讀數偏差；氧氣飽和點依溫度與氣壓變，不給固定萬用值或自行試水流程。",
+      "source_ids": [
+        "W5-S011"
+      ],
+      "source_locator": "Sample Pre-Treatment — Oxygen Levels",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。與既有氣體溶解平衡不同，本題核心是耗氧測試的可辨識條件，不另擴寫一般氣泡科普。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的氧氣下降可以有生物消耗與物理逸出兩條原因。",
+        "visual": "兩個相同下降箭頭，分別追蹤氧氣進入微生物反應與移出水相；附飽和上限示意。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "W5026",
+      "question": "要測很會耗氧的污水，為什麼實驗室反而先把它稀釋？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.bod_finite_oxygen_budget_dilution",
+      "answer_target": "測試瓶可用溶氧有限；未稀釋樣品若提前耗盡氧，最後讀數會受氧量天花板限制，無法分辨更高的需求。",
+      "scope": "限定BOD測試的可用氧預算與稀釋設計；稀釋水及接種條件須由方法控制，不表示往河裡加水等於去除污染。",
+      "source_ids": [
+        "W5-S011"
+      ],
+      "source_locator": "Determining Appropriate Dilutions；Make sure there is enough oxygen",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "稀釋可讓量測留在可分辨區間；一樣歸零不代表原始需求相同。",
+        "visual": "兩個不同需求都把同一氧量格子用完，再用示意稀釋讓一瓶保留氧；不造標準或數據。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "W5027",
+      "question": "濾水要擋住細顆粒，為什麼有些濾床反而把較粗的材料放上面？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.dual_media_size_density_depth_capacity",
+      "answer_target": "較大而較輕的無煙煤在砂上方，先容納較大的絮體，減少細砂層迅速堵塞；粒徑與密度共同維持分層用途。",
+      "scope": "限定無煙煤／砂雙層濾床；不宣稱越粗越乾淨或所有濾床同配置，不套用來源歷史尺寸為DIY規格。",
+      "source_ids": [
+        "W5-S012"
+      ],
+      "source_locator": "§5.2.3，印刷41–42頁；PDF49–50頁",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。與D2010膜前處理不同，這題是同一顆粒濾床內的粒徑／密度配置及容污深度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "濾床不只是孔徑競賽，也要讓截留物分布在可容納的位置。",
+        "visual": "同批示意大小絮體進入單細砂與粗上細下的雙層剖面，比較堆積位置；不編造效率倍數。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "W5028",
+      "question": "水要穿過濾膜，為什麼有些系統卻先讓它沿著膜面流？",
+      "domain": "城市用水與污水工程",
+      "mechanism_key": "water.membrane_crossflow_retained_solute_transport",
+      "answer_target": "死端過濾讓截留顆粒在膜面累積；錯流把進水沿膜面帶過，以流動沖刷減少沉積並由濃縮支流帶走部分截留物。",
+      "scope": "限定教材所述顆粒沉積與兩種水力路徑；錯流不消除所有污損，不把旁流量或剪切越大說成越省能。",
+      "source_ids": [
+        "W5-S012"
+      ],
+      "source_locator": "§8.2 hydraulic configuration，印刷102頁；PDF110頁",
+      "premise_status": "screened",
+      "notes": "原創生活提問；來源僅支持所列機制方向。進稿逐主張、特定水質與示意另核；不提供飲水安全保證、配藥、改管或進入設施操作。與D2009濃水守恆、D2010上游前處理不同，新增持續流動方向對膜面沉積的控制；若進稿只剩濃水排出，併回D2009。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有穿膜的那股水可能正在搬走被攔下的東西，不能只看成沒做工。",
+        "visual": "對照箭頭全部正向進膜與沿膜分流；追蹤相同示意顆粒留在面上或被帶離。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "W5016",
+      "question": "加一點藥劑，為什麼混濁的小顆粒會抱團？",
+      "source_ids": [
+        "W5-S007"
+      ],
+      "source_locator": "Section1 Coagulation",
+      "existing_ids": [
+        "P242"
+      ],
+      "reason": "已讀到電荷穩定/失穩，但舊P242已涵蓋膠體穩定機制；本輪不以水處理換場景另算核心。可當W5017前情，進稿另核。"
+    },
+    {
+      "id": "W5-NA02",
+      "question": "水管沒有破洞，土壤裡的有機物也可能進去嗎？",
+      "source_urls": [
+        "https://www.epa.gov/sites/default/files/2015-09/documents/permeationandleaching.pdf"
+      ],
+      "source_locator": "§1.1，實讀三步分配／擴散；§3.2停滯",
+      "related_ids": [
+        "B4001",
+        "L003"
+      ],
+      "reason": "已有整股流動與穿材料擴散的區分。若只換水管，與B4001／L003同核心；本輪不以新場景占核心。"
+    },
+    {
+      "id": "W5-NA03",
+      "question": "逆滲透膜面為什麼累積更多鹽？",
+      "source_urls": [
+        "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-technical-guides/reverse-osmosis"
+      ],
+      "source_locator": "1980歷史ITG Operation段已讀",
+      "related_ids": [
+        "D2009",
+        "D2010"
+      ],
+      "reason": "來源把concentration polarization與fouling並稱，尚不足展開可逆濃度邊界層／滲透壓回饋；不能在只讀此段時另創完整機制。"
+    },
+    {
+      "id": "W5-NA04",
+      "question": "水質樣本吸進滴管就一定代表整瓶水嗎？",
+      "source_urls": [
+        "https://dnr.wisconsin.gov/topic/labCert/BODPreTreatment.html"
+      ],
+      "source_locator": "Measuring Out Samples正文已讀",
+      "related_ids": [],
+      "reason": "窄管排除顆粒與沉降使分樣偏差確有來源，但本輪只有取樣限制註記，尚未形成獨立連貫主線；不把每種取樣失誤拆成新核心。"
+    },
+    {
+      "id": "W5-NA05",
+      "question": "濾膜用空氣測試時，壓力下降就一定是破洞嗎？",
+      "source_ids": [
+        "W5-S012"
+      ],
+      "source_locator": "§8.4.4及glossary Air integrity test 已讀",
+      "related_ids": [
+        "D2035"
+      ],
+      "reason": "手冊說明完整性檢測用途，未在所讀段落展開濕孔毛細進氣與擴散背景；不足以回答題目的判別機制，不憑記憶補事實。"
+    },
+    {
+      "id": "W5-NA06",
+      "question": "過濾時為什麼還特意加一層粉末？",
+      "source_ids": [
+        "W5-S012"
+      ],
+      "source_locator": "§10.4 Pre-coat Filtration，PDF135頁已讀",
+      "related_ids": [],
+      "reason": "本輪讀到預塗層作濾材的功能，但未形成足夠與一般濾餅不同的觀眾追問；只有設施名詞不入候選。"
+    }
+  ]
+}

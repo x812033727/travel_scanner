@@ -1,0 +1,700 @@
+{
+  "review_id": "wave7-life-reviews-earth",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "status": "PASS_TOPIC_AND_EDITORIAL_PROPOSAL_ONLY",
+  "production_ready": false,
+  "batch_path": "docs\\videos\\so-thats-why\\pool\\batches\\wave7-earth.json",
+  "batch_sha256": "f12d11625ef5576eae4b81b923ddf317a2e94a248fbdf5c867422d56cbd08c5d",
+  "theme_path": "docs\\videos\\so-thats-why\\pool\\reviews\\wave7-earth-themes.json",
+  "theme_sha256": "dd9077a59a9eebfabc44d0583da6dfaee897172358d0a204d4179763ab482666",
+  "author_receipt_path": "docs\\videos\\so-thats-why\\pool\\reviews\\wave7-earth-author.json",
+  "author_receipt_sha256": "fb80c22048bbbee6116d9296afb850dcb3170113450be6b4ba68c1c6a41851c2",
+  "coverage": {
+    "candidate_rows_read": 22,
+    "candidate_fields": "逐列題名、answer_target、scope、notes、source_ids/locator、payoff/visual/seconds；不是完整旁白逐句查核。",
+    "source_metadata_rows_read": 21,
+    "external_source_bodies_read": 16,
+    "source_review_type": "風險抽樣，13個來源由web正文/官方PDF文字實讀，1個來源web部分後普通HTTP補讀，2個讀作者保存官方HTML/PDF；不是21篇全文重查。",
+    "author_boundary_groups_read": 17,
+    "baseline_raw_records": 2959,
+    "baseline_pool_sha256": "07a5ca7d6ad3aa5d0fdfe51d3315e663fd927a2e88cb7459a271ef5752c19b50",
+    "cross_pool_search": "對全raw四欄question/answer_target/scope/mechanism_key做專門地形/熔岩詞搜尋2筆及較廣水、冰、岩、侵蝕詞搜尋68筆；命中題名與答案全部讀。另讀作者17邊界舊題及110近鄰的目標/範圍。不是逐讀2959筆全部來源。",
+    "semantic_advisory": {
+      "path": "docs\\videos\\so-thats-why\\pool\\.cache\\wave7-earth-neighbours.json",
+      "file_sha256": "54e214cce1bbf2ab6f076101a22b9889584fa004ac151d7dc4e21da680c7abb3",
+      "draft_sha256": "023edd5385d84f0d4d7cd808f1ccb377965904ddd26715f5f098e440734b2413",
+      "candidate_rows": 22,
+      "top5_pairs": 110,
+      "usage": "110個鄰近問題/目標/範圍供查找；相似分數不當同核心結論或召回率。"
+    },
+    "themes_read": 3,
+    "script_blind_read": false,
+    "empirical_demonstration": false
+  },
+  "merges": [],
+  "excluded": [],
+  "distinct": [
+    {
+      "a": "E7001",
+      "b": "N233",
+      "reason": "冷卻前緣及柱方向不同於循環熱疲勞或鑄造尺寸補償；作者把D2191稱縮孔需更正，但distinct結論不變。"
+    },
+    {
+      "a": "E7001",
+      "b": "D2191",
+      "reason": "冷卻前緣及柱方向不同於循環熱疲勞或鑄造尺寸補償；作者把D2191稱縮孔需更正，但distinct結論不變。"
+    },
+    {
+      "a": "E7002",
+      "b": "N204",
+      "reason": "角部原地化學風化不同於搬運磨蝕或鹽/冰裂。"
+    },
+    {
+      "a": "E7002",
+      "b": "N234",
+      "reason": "角部原地化學風化不同於搬運磨蝕或鹽/冰裂。"
+    },
+    {
+      "a": "E7002",
+      "b": "N235",
+      "reason": "角部原地化學風化不同於搬運磨蝕或鹽/冰裂。"
+    },
+    {
+      "a": "E7003",
+      "b": "N214",
+      "reason": "攜岩屑磨削及拔取工具鏈，不是冰流動或靜態裂縫結冰。"
+    },
+    {
+      "a": "E7003",
+      "b": "N235",
+      "reason": "攜岩屑磨削及拔取工具鏈，不是冰流動或靜態裂縫結冰。"
+    },
+    {
+      "a": "E7005",
+      "b": "N215",
+      "reason": "新信息為固定末端供應並堆積岩屑形成脊；位置與流動分離只是共用前提，不能占滿本題。"
+    },
+    {
+      "a": "E7006",
+      "b": "N238",
+      "reason": "埋冰消失造成延遲體積缺口，非頂板失穩、一般凹地分類或冰核長大。"
+    },
+    {
+      "a": "E7006",
+      "b": "N239",
+      "reason": "埋冰消失造成延遲體積缺口，非頂板失穩、一般凹地分類或冰核長大。"
+    },
+    {
+      "a": "E7006",
+      "b": "N229",
+      "reason": "埋冰消失造成延遲體積缺口，非頂板失穩、一般凹地分類或冰核長大。"
+    },
+    {
+      "a": "E7007",
+      "b": "N236",
+      "reason": "岸線侵蝕/增生造成河曲移動，非泥沙輸送失衡分辮。"
+    },
+    {
+      "a": "E7008",
+      "b": "E7021",
+      "reason": "河床積高改相對水勢的觸發，與改道後雙流域水沙收支分開；後者不得再耗時重講前者。"
+    },
+    {
+      "a": "E7009",
+      "b": "E7012",
+      "reason": "耐蝕填谷與差異侵蝕造成倒置，並非再下切遺留舊平面或地層先後。"
+    },
+    {
+      "a": "E7009",
+      "b": "N132",
+      "reason": "耐蝕填谷與差異侵蝕造成倒置，並非再下切遺留舊平面或地層先後。"
+    },
+    {
+      "a": "E7010",
+      "b": "E7022",
+      "reason": "細塵加入抬石和流動先移走細粒是相反材料收支；表面粗粒外觀本身不足辨認。"
+    },
+    {
+      "a": "E7013",
+      "b": "P234",
+      "reason": "保留減壓跨固相線新核心；含水相平衡僅同題比較，不另計。"
+    },
+    {
+      "a": "E7014",
+      "b": "N125",
+      "reason": "選擇結晶且分離改殘液配比，非晶體大小或天體金屬/岩石分異。"
+    },
+    {
+      "a": "E7014",
+      "b": "N272",
+      "reason": "選擇結晶且分離改殘液配比，非晶體大小或天體金屬/岩石分異。"
+    },
+    {
+      "a": "E7015",
+      "b": "P233",
+      "reason": "氣體釋出以外還要交代黏度限制逃逸與壓力/爆發；只講溶解度就不成立。"
+    },
+    {
+      "a": "E7016",
+      "b": "N082",
+      "reason": "先凝皮保溫後排空的流動通道形成，非溶解或塌陷。"
+    },
+    {
+      "a": "E7016",
+      "b": "N238",
+      "reason": "先凝皮保溫後排空的流動通道形成，非溶解或塌陷。"
+    },
+    {
+      "a": "E7017",
+      "b": "P073",
+      "reason": "表殼變形/碎裂及搬運，並非僅流體速度梯度造成剪應力。"
+    },
+    {
+      "a": "E7018",
+      "b": "N132",
+      "reason": "缺失記錄的形成史不同於現存岩層相對排序。"
+    },
+    {
+      "a": "E7019",
+      "b": "N117",
+      "reason": "走滑彎折幾何產生局部壓伸，超過三類斷層名稱和相對位移。"
+    },
+    {
+      "a": "E7020",
+      "b": "N126",
+      "reason": "淬冷是前提，持續充填與破皮是新動態；不是排空留管。"
+    },
+    {
+      "a": "E7020",
+      "b": "E7016",
+      "reason": "淬冷是前提，持續充填與破皮是新動態；不是排空留管。"
+    }
+  ],
+  "dispositions": [
+    {
+      "id": "E7001",
+      "decision": "retain_topic_level",
+      "reason": "冷卻前緣決定裂面與柱方向，超過一般熱縮或反覆熱疲勞；須畫實體已凝固後的收縮，不畫液體直接分柱。",
+      "editorial_seconds": [
+        70,
+        100
+      ]
+    },
+    {
+      "id": "E7002",
+      "decision": "retain_topic_level",
+      "reason": "原地沿裂隙化學衰解、角部先失去，與搬運磨圓或冰鹽撐裂不同。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "E7003",
+      "decision": "retain_topic_level",
+      "reason": "拔取提供岩屑、移動冰攜其接觸磨削，是工具與搬運的鏈；不把冰流動原因重算一筆。",
+      "editorial_seconds": [
+        80,
+        110
+      ]
+    },
+    {
+      "id": "E7004",
+      "decision": "retain_topic_level",
+      "reason": "主支冰河切深不同，原先相接的是冰面而非岩床；可用退冰前後同剖面推理。",
+      "editorial_seconds": [
+        65,
+        90
+      ]
+    },
+    {
+      "id": "E7005",
+      "decision": "retain_topic_level",
+      "reason": "保留固定末端仍供應並留下碎屑而堆出脊的材料收支；N215只有冰前移與末端後退的區別。本題若退化成位置不等於流速應合回N215。",
+      "editorial_seconds": [
+        60,
+        85
+      ]
+    },
+    {
+      "id": "E7006",
+      "decision": "retain_topic_level",
+      "reason": "沉積物先埋冰、冰後來融失造成延遲凹陷，不是既有空洞頂板失穩；無須變成湖才成立。",
+      "editorial_seconds": [
+        55,
+        80
+      ]
+    },
+    {
+      "id": "E7007",
+      "decision": "retain_topic_level",
+      "reason": "外岸侵蝕與內岸增生搬動岸線，與水沿下游運動及辮狀分流不同。",
+      "editorial_seconds": [
+        75,
+        105
+      ]
+    },
+    {
+      "id": "E7008",
+      "decision": "retain_topic_level",
+      "reason": "河道積高改變與鄰地的相對勢差，提供改道觸發條件；E7021只接改道後兩流域的水沙收支。",
+      "editorial_seconds": [
+        80,
+        110
+      ]
+    },
+    {
+      "id": "E7009",
+      "decision": "retain_topic_level",
+      "reason": "耐蝕填谷物保留而周圍侵蝕較快，造成高低倒置；不是單純更老地層在下面或舊河面留下台階。",
+      "editorial_seconds": [
+        75,
+        105
+      ]
+    },
+    {
+      "id": "E7010",
+      "decision": "retain_topic_level",
+      "reason": "限定粗石母材下外來細塵增厚並托高石面，與去細留粗不同；不可把所有荒漠石面套同一形成史。",
+      "editorial_seconds": [
+        70,
+        100
+      ]
+    },
+    {
+      "id": "E7011",
+      "decision": "retain_topic_level",
+      "reason": "單粒迎風運移與背風崩落讓形狀前進，解釋整體沙丘與材料運動差別；不增加沙丘種類清單。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "E7012",
+      "decision": "retain_topic_level",
+      "reason": "側向拓寬的舊氾濫面被重新下切留高，時間序列與侵蝕基準是核心；不只命名河階。",
+      "editorial_seconds": [
+        75,
+        105
+      ]
+    },
+    {
+      "id": "E7013",
+      "decision": "retain_topic_level",
+      "reason": "主核是減壓跨固相線，含水只作控制條件重設的比較；不把P234相平衡例另算一題。",
+      "editorial_seconds": [
+        85,
+        120
+      ]
+    },
+    {
+      "id": "E7014",
+      "decision": "retain_topic_level",
+      "reason": "晶體選擇帶走元素並退出反應熔體，改殘餘配比；與N125晶粒大小及N272天體分異不同。定位需修EARTH01。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "E7015",
+      "decision": "retain_topic_level",
+      "reason": "脫氣是前提，新增黏度與氣泡逃逸/滯留耦合爆發；不能只重講P233氣體溶解度。",
+      "editorial_seconds": [
+        85,
+        120
+      ]
+    },
+    {
+      "id": "E7016",
+      "decision": "retain_topic_level",
+      "reason": "外殼保溫讓內部繼續流動，供給改變後排空留管；不是溶蝕或塌洞，也不等於熔岩憑空消失。",
+      "editorial_seconds": [
+        70,
+        100
+      ]
+    },
+    {
+      "id": "E7017",
+      "decision": "retain_topic_level",
+      "reason": "冷卻表皮能變形或被撕碎搬運的差別超過黏度名詞；同成分條件有助避免把形狀當岩漿種類。",
+      "editorial_seconds": [
+        75,
+        105
+      ]
+    },
+    {
+      "id": "E7018",
+      "decision": "retain_topic_level",
+      "reason": "中止淨沉積或侵蝕刪除造成記錄缺口，超過相對先後排序；不可說時間本身消失。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "E7019",
+      "decision": "retain_topic_level",
+      "reason": "局部斷層走向偏離區域位移向量，需壓縮或伸張容納；左右彎須與滑動方向配對。",
+      "editorial_seconds": [
+        80,
+        110
+      ]
+    },
+    {
+      "id": "E7020",
+      "decision": "retain_topic_level",
+      "reason": "急冷皮下持續充填、膨大、破皮成新枕，新增相對N126淬冷玻璃的後續動態；與排空管道方向不同。",
+      "editorial_seconds": [
+        70,
+        100
+      ]
+    },
+    {
+      "id": "E7021",
+      "decision": "retain_topic_level",
+      "reason": "改道後同時改變兩條河的水沙收支與輸送能力，與E7008觸發機制不同；來源區域結論保留條件，不作普遍方向保證。",
+      "editorial_seconds": [
+        65,
+        90
+      ]
+    },
+    {
+      "id": "E7022",
+      "decision": "retain_topic_level",
+      "reason": "去細留粗造成更難搬動的表層，後續較強水流仍能破壞；有回饋與邊界，50–75秒可留短段，不宜單獨拉片。",
+      "editorial_seconds": [
+        50,
+        75
+      ]
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "EARTH01",
+      "severity": "source_locator",
+      "paths": [
+        "docs\\videos\\so-thats-why\\pool\\batches\\wave7-earth.json"
+      ],
+      "candidate_ids": [
+        "E7014"
+      ],
+      "source_ids": [
+        "E7-S013"
+      ],
+      "finding": "E7014.source_locator與E7-S013.locator寫Figure3.13，但實際連結第二版正文分離結晶段為Figure3.3.6。",
+      "requested": "兩處圖號同步改為Figure3.3.6；保留fractional crystallization/crystal settling段定位，無需改機制、題案或秒數。"
+    },
+    {
+      "id": "EARTH02",
+      "severity": "comparison_traceability",
+      "paths": [
+        "docs\\videos\\so-thats-why\\pool\\reviews\\wave7-earth-author.json"
+      ],
+      "candidate_ids": [
+        "E7001"
+      ],
+      "finding": "author第一組boundary_pairs把D2191描述成鑄件縮孔；舊raw實際是鑄造模型預留凝固/冷卻收縮的尺寸補償。",
+      "requested": "將比較理由中的鑄件縮孔改為鑄造尺寸補償；distinct結論不變。"
+    }
+  ],
+  "source_spot_checks": [
+    {
+      "source_id": "E7-S001",
+      "url": "https://www.nps.gov/subjects/volcanoes/columnar-jointing.htm",
+      "read_via": "web.run open 正文",
+      "reading_scope": "Introduction；How Do They Form?；curved columns，L28–44、L56",
+      "finding": "柱軸相對冷卻面、凝固後收縮開裂支持；未沿用六角必然性。"
+    },
+    {
+      "source_id": "E7-S002",
+      "url": "https://pubs.usgs.gov/of/2004/1007/granite.html",
+      "read_via": "作者保存的官方HTML，以Python HTMLParser讀本文",
+      "reading_scope": "Granitic Rocks and Associated Landforms 首段與圖說",
+      "finding": "裂隙入水、化學衰解、角部先變與原地圓化直接支持。",
+      "local_read_file": "docs\\videos\\so-thats-why\\pool\\.cache\\wave7-earth-granite.html",
+      "local_sha256": "f3aa8b9c7232f8a2fad6dcad3c360bbacfa21edb91200dd67baa0447fddfcfbd"
+    },
+    {
+      "source_id": "E7-S003",
+      "url": "https://www.nps.gov/features/romo/feat0001/GlcBasics.html",
+      "read_via": "web.run open 正文",
+      "reading_scope": "Glaciers as Landscapers L119–126",
+      "finding": "拔取、含屑冰磨削、末端/側面沉積；未播放舊Flash或核現況。"
+    },
+    {
+      "source_id": "E7-S004",
+      "url": "https://www.nps.gov/glac/learn/nature/glacial-geology.htm",
+      "read_via": "web.run open 正文",
+      "reading_scope": "How Glaciers Move、Hanging Valleys、Moraines，L35、L42–50",
+      "finding": "主支切深及固定末端仍供岩屑；支持E7005對舊N215的增量。"
+    },
+    {
+      "source_id": "E7-S006",
+      "url": "https://www.nps.gov/articles/meandering-stream.htm",
+      "read_via": "web.run open 正文",
+      "reading_scope": "主文 L22–25",
+      "finding": "外岸侵蝕/內岸堆積與側向移動；不據簡圖宣稱所有彎道尺寸不變。"
+    },
+    {
+      "source_id": "E7-S007",
+      "url": "https://esurf.copernicus.org/articles/10/743/2022/",
+      "read_via": "web.run open 原論文正文",
+      "reading_scope": "§1 Introduction L239–257，尤其248–251",
+      "finding": "河道與堤岸堆高、鄰地勢差與改道門檻；未重跑模型或核其所有參數。"
+    },
+    {
+      "source_id": "E7-S009",
+      "url": "https://www.desertmuseum.org/books/nhsd_desert_soils.php?print=y",
+      "read_via": "web.run open 正文",
+      "reading_scope": "Soil Surfaces—Desert Pavements L62–83",
+      "finding": "不同母材的去細粒與風塵增厚模型分開；題目限定其中一路。"
+    },
+    {
+      "source_id": "E7-S011",
+      "url": "https://pubs.usgs.gov/sir/2010/5028/pdf/SIR10-5028.pdf",
+      "read_via": "作者保存的官方PDF，以PyMuPDF讀文字層",
+      "reading_scope": "印刷p6、p8–9＝PDF一基頁12、14–15",
+      "finding": "重下切遺留河階、Lane關係及襲奪後雙水系收支；未驗年代、全方法或圖形。",
+      "local_read_file": "docs\\videos\\so-thats-why\\pool\\.cache\\wave7-earth-terrace.pdf",
+      "local_sha256": "d04715aa75ceff0c92d6db93d1b3b39e0c30bdb8bcefa6eecdb979b44ccf4b31"
+    },
+    {
+      "source_id": "E7-S012",
+      "url": "https://opentextbc.ca/physicalgeology2ed/chapter/3-2-magma-and-magma-formation/",
+      "read_via": "web.run open 正文",
+      "reading_scope": "§3.2 Decompression Melting / Flux Melting，L349–360、377–379",
+      "finding": "壓力/含水量改開始熔融門檻；不採麵粉麩質類比或固定普遍溫度。"
+    },
+    {
+      "source_id": "E7-S013",
+      "url": "https://opentextbc.ca/physicalgeology2ed/chapter/3-3-crystallization-of-magma/",
+      "read_via": "web.run open 正文",
+      "reading_scope": "§3.3 L339–360、L386–400，核心L393–396 Figure3.3.6",
+      "finding": "選擇結晶及分離改殘液配比直接支持；原檔圖號錯為3.13。"
+    },
+    {
+      "source_id": "E7-S014",
+      "url": "https://opentextbc.ca/physicalgeology2ed/chapter/4-2-magma-composition-and-eruption-style/",
+      "read_via": "web.run open 正文",
+      "reading_scope": "§4.2 L338–347、355–357",
+      "finding": "減壓釋氣與黏度控制氣泡逃逸/滯留；非完整微觀碎裂模型。"
+    },
+    {
+      "source_id": "E7-S016",
+      "url": "https://www.nps.gov/articles/000/lava-flow-forms.htm",
+      "read_via": "web.run open 正文",
+      "reading_scope": "Introduction、Ropy、Slabby、Aa，L28–47、60–62、74–76、94–96",
+      "finding": "表皮可皺摺或破碎；避免用單一熔岩化學成分判表面形狀。"
+    },
+    {
+      "source_id": "E7-S017",
+      "url": "https://geology.utah.gov/map-pub/survey-notes/glad-you-asked/unconformity/",
+      "read_via": "web.run open 正文",
+      "reading_scope": "主文 L6、L10–22",
+      "finding": "停積、侵蝕、再沉積形成記錄間斷，與時間本身停止分開。"
+    },
+    {
+      "source_id": "E7-S018",
+      "url": "https://psgt.earth.lsa.umich.edu/chapter/14/wrench.html",
+      "read_via": "web.run部分正文；普通公開HTTP重取HTML + HTMLParser",
+      "reading_scope": "web Transpression and Transtension；公開HTML Restraining and Releasing Bends全文及Fig14.13文字說明",
+      "finding": "web兩次重開彎折段timeout；普通HTTP成功後實讀指定段，支援方向向量與局部壓伸。",
+      "local_read_file": "docs\\videos\\so-thats-why\\pool\\.cache\\wave7-life-review-wrench.html",
+      "local_sha256": "97f415e04b91ec97bdf9efcc0eb5f20d35602f9b83cfe8757bfa162f1b23ed4e"
+    },
+    {
+      "source_id": "E7-S020",
+      "url": "https://www.whoi.edu/ocean-learning-hub/ocean-topics/how-the-ocean-works/seafloor-below/volcanoes/lava-flows/",
+      "read_via": "web.run open 正文",
+      "reading_scope": "What types of lava flows are there underwater? / What are lava tubes? L213–226",
+      "finding": "急冷皮下充填、破皮生成新枕，以及保溫流動後排空；未沿用currently噴發敘述。"
+    },
+    {
+      "source_id": "E7-S021",
+      "url": "https://water.usgs.gov/fisp/docs/OFR20081217.pdf",
+      "read_via": "web.run open 官方PDF文字層",
+      "reading_scope": "印刷p5＝PDF一基頁11，L241–247",
+      "finding": "細粒被搬走形成粗粒護甲及更大流量仍可破壞；有機制回饋，非僅術語定義。"
+    }
+  ],
+  "source_access_failures": [
+    {
+      "id": "E7-S018",
+      "attempts": [
+        "web.open指定彎折段兩次timeout",
+        "普通公開URL urllib成功"
+      ],
+      "result": "最終已讀公開HTML指定正文；不把失敗當已讀，也沒有登入或憑證繞過。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "ids": [
+        "E7-S002",
+        "E7-S011"
+      ],
+      "note": "本次讀作者保存的官方頁/報告且鎖本地hash，未重新網路下載；正文是題級支持，不等於獨立核實其所有地區觀察。"
+    },
+    {
+      "ids": [
+        "E7-S003",
+        "E7-S004"
+      ],
+      "note": "歷史教育頁只取穩定機制；不沿用冰河現況或氣候年代。E7005需始終保留碎屑供給與沉積，不退化為N215。"
+    },
+    {
+      "ids": [
+        "E7-S007",
+        "E7-S011"
+      ],
+      "note": "原論文/報告只讀指定引言與機制段；未重算模型、年代或一般性門檻；E7021兩水系結果依供沙、流量、坡度共同變化。"
+    },
+    {
+      "ids": [
+        "E7-S012"
+      ],
+      "note": "章內麵粉/麩質加熱類比不列為查核通過；本題只使用壓力與含水量改固相線，不照搬課本比喻。"
+    },
+    {
+      "ids": [
+        "E7-S014"
+      ],
+      "note": "目前支持氣泡逃逸與受阻爆發；進稿若要畫具體熔體碎裂微觀過程，另需直接機制來源，不能憑本段補細節。"
+    },
+    {
+      "ids": [
+        "E7-S020"
+      ],
+      "note": "不把頁內所有水下熔岩都畫成枕狀；不同噴率/地形有其他形態；未核currently資訊或媒體版權。"
+    },
+    {
+      "ids": [
+        "E7-S021"
+      ],
+      "note": "護甲可被更強事件破壞；只保留短段，不推工程防洪效能。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W7E-T01",
+      "verdict": "pass_editorial_proposal_only",
+      "body_seconds": 240,
+      "per_core_seconds": {
+        "E7003": 95,
+        "E7004": 80,
+        "E7006": 65
+      },
+      "max_beat_gap_seconds": 45,
+      "drop_one_chapter_seconds": [
+        145,
+        160,
+        175
+      ],
+      "finding": "磨削工具→主支谷底差→切換退冰平原的埋冰凹陷，每章多一種可判別形成史；已明說不是同地必經三階段。不要加入冰磧名稱巡禮。",
+      "timing_is_measurement": false
+    },
+    {
+      "id": "W7E-T02",
+      "verdict": "pass_editorial_proposal_only",
+      "body_seconds": 275,
+      "per_core_seconds": {
+        "E7007": 90,
+        "E7008": 95,
+        "E7012": 90
+      },
+      "max_beat_gap_seconds": 40,
+      "drop_one_chapter_seconds": [
+        185,
+        180,
+        185
+      ],
+      "finding": "固定座標逐次辨認側移、改道和切低，三種控制條件不同；章內須保留積高及重新下切，不把它們說成同一河必經順序。",
+      "timing_is_measurement": false
+    },
+    {
+      "id": "W7E-T03",
+      "verdict": "pass_editorial_proposal_only",
+      "body_seconds": 260,
+      "per_core_seconds": {
+        "E7017": 90,
+        "E7016": 85,
+        "E7020": 85
+      },
+      "max_beat_gap_seconds": 35,
+      "drop_one_chapter_seconds": [
+        170,
+        175,
+        175
+      ],
+      "finding": "同一外殼/內液關係，先比表皮變形再排空，最後明示水下新條件繼續充填；共同問題成立，不需加爆炸或岩石清單。",
+      "timing_is_measurement": false
+    }
+  ],
+  "checks_run": {
+    "candidate_id_unique": true,
+    "mechanism_key_unique": true,
+    "source_links_resolve": true,
+    "lf_only": true,
+    "timing": "章節總秒數、每核心上限、beat間隔<=45秒與九個刪章餘時均通過；是紙上預算。"
+  },
+  "central_application_verified": false,
+  "conclusion": "22筆題級保留，merges/excluded均空；三企劃240/275/260秒可保留。EARTH01/02兩處定位已依followup修正並定向讀回，無剩餘必改。沒有完整劇本、素材授權、旁白試讀、小樣或製作核准。",
+  "sources_not_independently_read": [
+    {
+      "source_id": "E7-S005",
+      "url": "https://www.nps.gov/places/000/potholes-turnout.htm",
+      "status": "NOT_INDEPENDENTLY_REOPENED",
+      "limit": "只讀作者來源元資料與候選指向；本輪未獨立讀此來源正文，不將作者實讀等同覆核者實讀。"
+    },
+    {
+      "source_id": "E7-S008",
+      "url": "https://www.nps.gov/articles/000/volcanic-inverted-topography.htm",
+      "status": "NOT_INDEPENDENTLY_REOPENED",
+      "limit": "只讀作者來源元資料與候選指向；本輪未獨立讀此來源正文，不將作者實讀等同覆核者實讀。"
+    },
+    {
+      "source_id": "E7-S010",
+      "url": "https://pubs.usgs.gov/gip/deserts/eolian/",
+      "status": "NOT_INDEPENDENTLY_REOPENED",
+      "limit": "只讀作者來源元資料與候選指向；本輪未獨立讀此來源正文，不將作者實讀等同覆核者實讀。"
+    },
+    {
+      "source_id": "E7-S015",
+      "url": "https://www.nps.gov/subjects/volcanoes/basaltic-lava-flows.htm",
+      "status": "NOT_INDEPENDENTLY_REOPENED",
+      "limit": "只讀作者來源元資料與候選指向；本輪未獨立讀此來源正文，不將作者實讀等同覆核者實讀。"
+    },
+    {
+      "source_id": "E7-S019",
+      "url": "https://www.nps.gov/articles/000/pillow-basalts.htm",
+      "status": "NOT_INDEPENDENTLY_REOPENED",
+      "limit": "只讀作者來源元資料與候選指向；本輪未獨立讀此來源正文，不將作者實讀等同覆核者實讀。"
+    }
+  ],
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "status": "PASS_TARGETED_READBACK",
+    "sha256": {
+      "batches/wave7-earth.json": "94a61a554df789eff70234a8713f1f5bb98d4d81b0ba21fd58070b28fcd5b299",
+      "reviews/wave7-earth-themes.json": "dd9077a59a9eebfabc44d0583da6dfaee897172358d0a204d4179763ab482666",
+      "reviews/wave7-earth-author.json": "4ff5ba7bf895cf7e7cf425daad2381514c453c2a1ed25975e73628a9b7b7ff55"
+    },
+    "resolved": [
+      "EARTH01",
+      "EARTH02"
+    ],
+    "readback": [
+      "E7-S013.locator與E7014.source_locator皆改Figure3.3.6，符合已讀第二版L393–396。",
+      "author第一組D2191改為鑄造尺寸補償，與舊raw目標一致。",
+      "將修正字串回復後序列化，batch SHA回到原f12d1162…；author移除correction_history/lock_revision並回復原hash及字串後SHA回到原fb80c220…，證明其他內容未變。",
+      "themes SHA保持dd9077a5…，240/275/260秒和原企劃不變。"
+    ],
+    "original_review_findings_preserved": true,
+    "remaining_required_corrections": [],
+    "limits": "只定向核兩處定位與hash界線；未擴查其他來源，非完整旁白逐主張查核、試讀或製作核准。"
+  }
+}

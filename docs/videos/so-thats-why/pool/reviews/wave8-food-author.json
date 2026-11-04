@@ -1,0 +1,192 @@
+{
+  "status": "AUTHOR_LOCKED_PENDING_INDEPENDENT_REVIEW",
+  "created_on": "2026-11-01",
+  "batch_file": "batches/wave8-food.json",
+  "batch_sha256": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389",
+  "theme_file": "reviews/wave8-food-themes.json",
+  "theme_sha256": "78abdaa4fa64d10f1ba74cc2c798df67dbed4e716c050a02f66086c83acf15a3",
+  "counts": {
+    "candidates": 7,
+    "sources": 13,
+    "not_added": 10,
+    "themes": 3
+  },
+  "baseline": {
+    "pool_file": "pool.json",
+    "pool_sha256": "cb4501bbb3cabeb2d0ff4d004fdb19c61ecf1ac2f7bcc31da42063c38f43ffc9",
+    "raw_records": 3017,
+    "selected": 2667,
+    "task_reported_head": "5db394184"
+  },
+  "scope": "只寫 wave8-food 三檔及 ignored wave8-food cache；不改中央、不付費、不製作或發布。",
+  "readback_method": "對3017 raw 的 question/answer_target/scope/mechanism_key 作食物、膠體、蛋白、晶體與流變全文關鍵詞檢索。廣義232命中輸出曾截斷，不宣稱全232逐列讀；另讀32/23/23/46次精確命中（有重疊）及18筆指定舊核心完整 target/scope，並讀同輪 microbes/network 題目與目標作碰撞檢查。不是3017筆逐列人工覆核。",
+  "duplicate_flags": [
+    {
+      "candidate_id": "F8001",
+      "compare_ids": [
+        "D2163",
+        "W5017"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "配比固定下接觸潤滑／卡住門檻，不只剪切解聚。"
+    },
+    {
+      "candidate_id": "F8002",
+      "compare_ids": [
+        "D2029",
+        "F4011"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "不同熔化範圍用來選擇晶種，不只冷卻史或晶核數量。"
+    },
+    {
+      "candidate_id": "F8003",
+      "compare_ids": [
+        "F8001",
+        "D2028"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "少水潤濕結團；不能只有聚團結果而沒有足夠中間機制，請特別判薄題。"
+    },
+    {
+      "candidate_id": "F8004",
+      "compare_ids": [
+        "D2056",
+        "D2039"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "先結合鈣改變酪蛋白分散能力，非原本凝乳或單純新增界面。"
+    },
+    {
+      "candidate_id": "F8005",
+      "compare_ids": [
+        "L025",
+        "L026",
+        "L029",
+        "L175",
+        "U8018"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "Nox 在特定乳菌組合改變溶氧與酸化，區別再生 NAD+、呼吸定義、解毒泛稱及異形胞保護固氮。"
+    },
+    {
+      "candidate_id": "F8006",
+      "compare_ids": [
+        "P070",
+        "P073",
+        "W5017"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "時間歷程及結構回復，非固定黏度或單次絮體破裂。"
+    },
+    {
+      "candidate_id": "F8007",
+      "compare_ids": [
+        "H3027",
+        "F4012"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "可逆水合／疏水聚集熱凝膠，不是共價網絡或蛋白界面泡沫。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "source_ids": [
+        "F8-S003"
+      ],
+      "limit": "教育模型支持潤濕聚團，原 JCE 全文未讀；不把原文件簡化的 emulsion 說法複製到巧克力起始狀態。此題可能需非作者暫緩。"
+    },
+    {
+      "source_ids": [
+        "F8-S001"
+      ],
+      "limit": "精煉模型用 crumb／葵花油；摩擦卡住是研究解釋，不能把全部微觀細節當直接拍到。"
+    },
+    {
+      "source_ids": [
+        "F8-S005"
+      ],
+      "limit": "Nox 缺失對照不是 Pfl 單一路徑的直接驗證；限定菌株。"
+    },
+    {
+      "source_ids": [
+        "F8-S007",
+        "F8-S008"
+      ],
+      "limit": "機制來源是 DSC 解釋；USP 只有公開 Description，非付費專論全讀。"
+    },
+    {
+      "source_ids": [
+        "F8-S009",
+        "F8-S010",
+        "F8-S011",
+        "F8-S012",
+        "F8-S013"
+      ],
+      "limit": "僅支援退題／延後紀錄；不計候選支持來源。S012 只摘要，S013 只摘要引言，不宣稱全文。"
+    }
+  ],
+  "failed_access": [
+    {
+      "url": "https://books.lib.uoguelph.ca/cheesemakingtechnologyebook/chapter/8-7-processed-cheese/",
+      "record": "搜尋有段落，但 web 與 urllib 均403；未用作已讀來源，改讀 INFLIBNET 教材。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12472656/",
+      "record": "web 與 public urllib 均為 reCAPTCHA；未讀正文，Camembert 遷移題延後。"
+    },
+    {
+      "url": "https://legacy.ibp.ucla.edu/research/rowat/Publications_files/Rowat.JCE.2011.pdf",
+      "record": "UCLA 作者出版列表已讀到此連結；public urllib 404，未取得原文。"
+    },
+    {
+      "url": "https://eaglepubs.erau.edu/introductiontoaerospaceflightvehicles/chapter/fundamental-properties-of-fluids/",
+      "record": "web 403，未用搜尋片段補作流變來源。"
+    }
+  ],
+  "quantity_decision": "只收7題。原約25–35不是配額；常見食品核心已被舊庫涵蓋，1個紅氧方向留 F8008 在 not_added 延後，沒有把同物理機制換食材或把摘要推成食品效果。",
+  "thin_topic_flags": [
+    {
+      "id": "F8003",
+      "risk": "教育來源的潤濕聚團可能仍太概括；請 root 對是否保留／合併／暫緩獨立判斷。",
+      "reentry_or_drop": "若無法用具體受控反差說明中間作用，退題並撤回T01雙核心案，不拿大量加水相轉變另補數。"
+    },
+    {
+      "id": "F8006",
+      "risk": "可逆結構是流變模型，不知道每品牌的確切分子網絡。",
+      "reentry_or_drop": "若稿只定義觸變、沒有低高低變形及回復時間對照，就退回素材或縮短。"
+    }
+  ],
+  "timing_checks": {
+    "theme_seconds": [
+      140,
+      105,
+      105
+    ],
+    "chapter_seconds_match": true,
+    "beats_at_most_45": true,
+    "all_core_allocations_within_max": true,
+    "note": "T02/T03各一核心自然拆成兩個因果步驟，分別累計105秒，沒有以章數多算素材或硬湊2分鐘。"
+  },
+  "review_request": "請 root 非作者逐題覆核、對舊庫與語意近鄰查重，特別 F8001/3、F8002/D2029、F8005/L025/26。screened 不是劇本、實驗或製作核准。",
+  "correction_history": [
+    {
+      "requested_by": "/root non-author review",
+      "review_scope": "F8003短段深度與觀眾用語；F8005題名前提收窄",
+      "before": {
+        "batches\\wave8-food.json": "5d473bb1618d9ff03ee6dcc138abf4882a0a9bc44cf98b472ccf3ed51293727a",
+        "reviews\\wave8-food-themes.json": "ac8b84c91607b71bf8de8513c715649a55b23ae0629b6f9ddc16925d8d4039df",
+        "reviews\\wave8-food-author.json": "16ee8cf7d99cfb66e48f460027727f389745fdac637e3782b9bc196e04c24e6b"
+      },
+      "changes": [
+        "F8003 editorial 45–80秒改20–40秒；T01第二章75→40秒，總175→140；刪旁白中的研究缺口後設句，缺口留evidence_gaps。",
+        "F8005題名收窄有些優格菌，移除必須先把氧耗完的暗示；特定株scope不變。",
+        "F8007 scope 刪熟蛋白皆共價／不可逆的暗示，改成不把加熱成膠一律當不可逆共價交聯。"
+      ],
+      "after_batch_sha256": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389",
+      "after_theme_sha256": "78abdaa4fa64d10f1ba74cc2c798df67dbed4e716c050a02f66086c83acf15a3",
+      "status": "PENDING_TARGETED_NONAUTHOR_READBACK",
+      "intermediate_batch_sha256": "9cff710ae26dba5b4018419aef4b93cb2deeb8119cffeeba6c002397c9660510"
+    }
+  ]
+}

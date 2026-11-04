@@ -1,0 +1,1440 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "reviewer": "science_sources",
+  "status": "PASS_INDEPENDENT_DATA_EDITORIAL_INTEGRATION_READBACK",
+  "remaining_blockers": [],
+  "production_ready": false,
+  "role_disclosure": "本代理是wave16-wave-sensing作者；其題級事實依pool_life_tech非作者收據，本次只核映射/版本/時間。材料題已另由本代理作非作者指定段覆核；此收據不把資料整合當第二次完整事實核准。生物建構與G09內容依pool_physics非作者收據。",
+  "actual_scope": [
+    "獨立Python腳本直接比較2939 gzip：3306舊raw、3168舊canonical完整物件（含2939 selected）、4258來源物件及全部readings、776未收多重集合、全部舊alias映射。",
+    "20新raw及20來源所有作者欄位、source refs/locator/origin、59新未收逐欄映射；13新案與作者案除中央id/priority/proposal_id外完整相同。",
+    "舊172案僅G09有內容修訂：171完整物件不變；G09除priority已審狀態外等於非作者綁定的185秒提案。",
+    "14 registry加初始1000共15快照：核descriptor/gzip SHA、metadata/count及選入缺項的宣告處置。只有2939快照作上述全raw深比，未冒稱15份全raw深比。",
+    "獨立重算13新案28章、16組題案-核心累計與beat；核全部3非作者final收據及final delta/作者SHA，舊6對集中distinct及來源身分閱讀限制。",
+    "讀最終三份說明文件、QA收據、測試log摘要並核其SHA；未重跑44套測試、瀏覽器或全庫外站。"
+  ],
+  "counts_readback": {
+    "raw_records": 3326,
+    "canonical_questions": 3188,
+    "eligible_candidates": 3018,
+    "selected_candidates": 2959,
+    "alias_records": 138,
+    "historical_records": 313,
+    "source_urls": 4278,
+    "current_research_source_urls": 1319,
+    "selected_source_urls": 2505,
+    "new_suggestions_not_added": 835,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0,
+    "themes": 185,
+    "selected_source_references": 4375,
+    "new_raw": 20,
+    "new_selected": 20,
+    "new_sources": 20,
+    "first_in_pool_urls": 20,
+    "new_not_added": 59,
+    "new_themes": 13,
+    "remaining_to_10000": 7041
+  },
+  "baseline_readback": {
+    "file": "baselines/2026-11-02-2939.json.gz",
+    "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222",
+    "old_raw_deep_equal": 3306,
+    "old_canonical_deep_equal": 3168,
+    "old_selected_retained": 2939,
+    "old_sources_and_all_readings_deep_equal": 4258,
+    "old_not_added_multiset_retained": 776,
+    "old_alias_mappings_unchanged": 3306,
+    "old_themes_deep_equal": 171,
+    "changed_themes": [
+      "G09"
+    ],
+    "checkpoints": [
+      {
+        "file": "baseline.json",
+        "snapshot_file": "baselines/2026-11-01-1000.json.gz",
+        "sha256": "6cf3b0f5a7e37546d3c53806b94376f68f2a5cf16b1510d5ca64ef06ee9ac7fd",
+        "selected_count": 1000,
+        "raw_count": 1224,
+        "declared_retired_ids": [
+          "L042",
+          "L177",
+          "L293",
+          "P150"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2000.json",
+        "snapshot_file": "baselines/2026-11-01-2000.json.gz",
+        "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4",
+        "selected_count": 2000,
+        "raw_count": 2293,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049",
+          "E2106",
+          "L042",
+          "L177",
+          "L293",
+          "P150"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2328.json",
+        "snapshot_file": "baselines/2026-11-01-2328.json.gz",
+        "sha256": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba",
+        "selected_count": 2328,
+        "raw_count": 2661,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2449.json",
+        "snapshot_file": "baselines/2026-11-01-2449.json.gz",
+        "sha256": "e98b96cad65be24cdc59bfc1d9f60f311040a7987e04a7b008fab08778063bb2",
+        "selected_count": 2449,
+        "raw_count": 2790,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2546.json",
+        "snapshot_file": "baselines/2026-11-01-2546.json.gz",
+        "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4",
+        "selected_count": 2546,
+        "raw_count": 2895,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2609.json",
+        "snapshot_file": "baselines/2026-11-01-2609.json.gz",
+        "sha256": "06f9fdec324c8e0f6fabd22805eed413fbf5e3f109473e595ec1e2228ab150f1",
+        "selected_count": 2609,
+        "raw_count": 2959,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2667.json",
+        "snapshot_file": "baselines/2026-11-01-2667.json.gz",
+        "sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c",
+        "selected_count": 2667,
+        "raw_count": 3017,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2711.json",
+        "snapshot_file": "baselines/2026-11-01-2711.json.gz",
+        "sha256": "035074191cbf98fe87426589b6f746a90934e1087a65271e4cdd9b03784da217",
+        "selected_count": 2711,
+        "raw_count": 3069,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2757.json",
+        "snapshot_file": "baselines/2026-11-01-2757.json.gz",
+        "sha256": "92c8527689b44740352d8698bfe38be5e46b42c7a299878309501245c992ac0d",
+        "selected_count": 2757,
+        "raw_count": 3115,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2797.json",
+        "snapshot_file": "baselines/2026-11-01-2797.json.gz",
+        "sha256": "3fe88554de1e8947fcb8e3890302b5bd35d2848fdd43e7c779296e68f6969e2b",
+        "selected_count": 2797,
+        "raw_count": 3160,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2837.json",
+        "snapshot_file": "baselines/2026-11-01-2837.json.gz",
+        "sha256": "6c1a9c8c29d0b8bb540de430e6f98646ab48bcf07e89d1d7bf1e8cd21117c0fd",
+        "selected_count": 2837,
+        "raw_count": 3201,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2870.json",
+        "snapshot_file": "baselines/2026-11-01-2870.json.gz",
+        "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32",
+        "selected_count": 2870,
+        "raw_count": 3235,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2897.json",
+        "snapshot_file": "baselines/2026-11-01-2897.json.gz",
+        "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0",
+        "selected_count": 2897,
+        "raw_count": 3262,
+        "declared_retired_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2921.json",
+        "snapshot_file": "baselines/2026-11-02-2921.json.gz",
+        "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7",
+        "selected_count": 2921,
+        "raw_count": 3287,
+        "declared_retired_ids": [
+          "E2026"
+        ],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      },
+      {
+        "file": "checkpoint-2939.json",
+        "snapshot_file": "baselines/2026-11-02-2939.json.gz",
+        "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222",
+        "selected_count": 2939,
+        "raw_count": 3306,
+        "declared_retired_ids": [],
+        "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2939快照外未全raw逐欄深比。"
+      }
+    ],
+    "editorial_exception_baseline": "checkpoint-2000.json only",
+    "old_merge_exclusion_arrays_unchanged": true
+  },
+  "dedup_readback": {
+    "new_merges": 0,
+    "new_holds": 0,
+    "old_merges": 0,
+    "new_distinct_pairs": 103,
+    "all_review_recommended_distinct_pairs_present": true,
+    "old_pairs": {
+      "pairs": [
+        {
+          "a": "E2115",
+          "b": "E2129",
+          "reason": "直線電流環場的方向對照，與繞成多匝後的場疊加及長徑比近似不同。後者必須保留內外場/中央區的幾何條件，並非只把導線換彎。"
+        },
+        {
+          "a": "E2002",
+          "b": "E2036",
+          "reason": "孤立中性導體只重新分配原有電子；電容的兩個隔離極板須由外部電路搬電荷。兩題都可能總電中性，但是否有外部電荷搬運是不同控制。"
+        },
+        {
+          "a": "E2082",
+          "b": "E2172",
+          "reason": "固定串聯電流下壓降正比電阻，不會導出經兩線圈觀測的平方匝比阻抗映射；新控制是一次/二次側的電壓與電流比同時改變。"
+        },
+        {
+          "a": "E2041",
+          "b": "E2082",
+          "reason": "電阻串聯約束相同電流，電容初始中性串聯約束相同電荷；V=IR與V=Q/C對元件值給相反分壓趨勢。是可比較的物理約束，不是換元件名重述比例。"
+        },
+        {
+          "a": "N086",
+          "b": "N230",
+          "reason": "孔隙水壓概念共享，但抽水使承載轉到沉積骨架而壓密，入滲則降低斜坡顆粒接觸的抗剪餘裕；水壓改變方向、變形模式與失穩條件不同。不能用一個地面變動案例互換。"
+        },
+        {
+          "a": "E2171",
+          "b": "E2229",
+          "reason": "理想變壓器以交變磁通與匝比/功率約束交換電壓電流；buck則用切換占空比及LC儲放能形成平均直流。兩者使用條件與控制自由度不同。"
+        }
+      ],
+      "central_all_distinct": true,
+      "merges": 0,
+      "exclusions": 0,
+      "source_review_limit": "本次讀收據及舊列整合，不重新開10個root/4個life外站，不能冒稱第三次全文查核。"
+    },
+    "sampling_limit": "六對為最高分未列distinct的目的性樣本，不是隨機品質估計；新增合併集合為空，不計命中率或宣稱全庫無重複。"
+  },
+  "review_binding_readback": {
+    "topic_receipts": [
+      {
+        "file": "reviews/wave16-physics-reviews-bio-structures.json",
+        "sha256": "1573c66eedf36d3e2f58094d039965849a962dbbd49e3cd62ff4392339bd1943",
+        "status": "PASS_TOPIC_LEVEL_ONLY",
+        "candidate_ids": [
+          "B16001",
+          "B16002",
+          "B16003",
+          "B16004",
+          "B16005",
+          "B16006",
+          "B16007"
+        ],
+        "all_final_author_bindings_match": true
+      },
+      {
+        "file": "reviews/wave16-science-reviews-materials.json",
+        "sha256": "a4142e8ae62e84c75bab7d745bdf2f2371d81dde92c4c48d8d76f923721e564c",
+        "status": "PASS_TOPIC_LEVEL_ONLY",
+        "candidate_ids": [
+          "M16001",
+          "M16002",
+          "M16003",
+          "M16004",
+          "M16005",
+          "M16006",
+          "M16007"
+        ],
+        "all_final_author_bindings_match": true
+      },
+      {
+        "file": "reviews/wave16-life-reviews-wave-sensing.json",
+        "sha256": "a42299ef3ff79a61f5df5903a592ab34b2608cf62327826f1b65cd8c41cd39a6",
+        "status": "PASS_TOPIC_LEVEL_ONLY",
+        "candidate_ids": [
+          "W16001",
+          "W16002",
+          "W16003",
+          "W16004",
+          "W16005",
+          "W16006"
+        ],
+        "all_final_author_bindings_match": true
+      }
+    ],
+    "final_common_draft_sha256": "c33c8ff9a599bf12a4c2da97f990070acffb33897e36c595c09ddd7789603325",
+    "final_delta_scope": "生物B16001展示模型層級、材料M16003 visual/M16005 question/M16007 scope三變；波動raw全同，題案末回顧縮10秒。各receipt保留初讀/修前與final輸入，材料新近鄰D2221亦已處置。",
+    "all_required_final_bindings_match": true
+  },
+  "source_readback": {
+    "old_sources_and_readings_preserved": 4258,
+    "new_source_maps": [
+      {
+        "batch_source_id": "B16-S001",
+        "source_id": "SRC-054ffa9af4213a99",
+        "url": "https://doi.org/10.1073/pnas.1512241112",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B16001"
+        ],
+        "theme_ids": [
+          "G173"
+        ]
+      },
+      {
+        "batch_source_id": "B16-S002",
+        "source_id": "SRC-7519d9522fcb62f9",
+        "url": "https://doi.org/10.1038/s41467-022-28773-z",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B16002"
+        ],
+        "theme_ids": [
+          "G173"
+        ]
+      },
+      {
+        "batch_source_id": "B16-S003",
+        "source_id": "SRC-1a50b0173c201450",
+        "url": "https://doi.org/10.1098/rsif.2021.0213",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B16003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "batch_source_id": "B16-S004",
+        "source_id": "SRC-1f1a9893d4781e71",
+        "url": "https://elifesciences.org/articles/86843",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B16004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "batch_source_id": "B16-S005",
+        "source_id": "SRC-c983adbcdf5cb0c8",
+        "url": "https://doi.org/10.1073/pnas.1602451113",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B16005"
+        ],
+        "theme_ids": [
+          "G174"
+        ]
+      },
+      {
+        "batch_source_id": "B16-S006",
+        "source_id": "SRC-395d71c97418e2e4",
+        "url": "https://doi.org/10.1038/nature10739",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B16006"
+        ],
+        "theme_ids": [
+          "G175"
+        ]
+      },
+      {
+        "batch_source_id": "B16-S007",
+        "source_id": "SRC-645d07eab9b9e4aa",
+        "url": "https://doi.org/10.1098/rsos.170475",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "B16007"
+        ],
+        "theme_ids": [
+          "G176"
+        ]
+      },
+      {
+        "batch_source_id": "M16-S001",
+        "source_id": "SRC-e5c7fe1400570bf7",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "M16001"
+        ],
+        "theme_ids": []
+      },
+      {
+        "batch_source_id": "M16-S002",
+        "source_id": "SRC-35bba200425c9a71",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "M16002"
+        ],
+        "theme_ids": [
+          "G177"
+        ]
+      },
+      {
+        "batch_source_id": "M16-S003",
+        "source_id": "SRC-4d50efb64e3752eb",
+        "url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "M16003"
+        ],
+        "theme_ids": [
+          "G178"
+        ]
+      },
+      {
+        "batch_source_id": "M16-S004",
+        "source_id": "SRC-04e4e5fd2402ae3e",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "M16004"
+        ],
+        "theme_ids": [
+          "G179"
+        ]
+      },
+      {
+        "batch_source_id": "M16-S005",
+        "source_id": "SRC-21d0db1e666b2258",
+        "url": "https://arxiv.org/pdf/1704.03305",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "M16005"
+        ],
+        "theme_ids": [
+          "G180"
+        ]
+      },
+      {
+        "batch_source_id": "M16-S006",
+        "source_id": "SRC-f95b568a6085aaa8",
+        "url": "https://arxiv.org/pdf/1905.09250",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "M16006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "batch_source_id": "M16-S007",
+        "source_id": "SRC-449864c74ecfc5f8",
+        "url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "M16007"
+        ],
+        "theme_ids": [
+          "G181"
+        ]
+      },
+      {
+        "batch_source_id": "W16-S001",
+        "source_id": "SRC-6805df5260304a91",
+        "url": "https://ece-classes.usc.edu/ee591/library/Hahn-SpinEchoes.pdf",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "W16001"
+        ],
+        "theme_ids": [
+          "G182"
+        ]
+      },
+      {
+        "batch_source_id": "W16-S002",
+        "source_id": "SRC-85a63574600326f9",
+        "url": "https://mriquestions.com/uploads/3/4/5/7/34572113/stejskal_and_tanner1965.pdf",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "W16002",
+          "W16001"
+        ],
+        "theme_ids": [
+          "G182"
+        ]
+      },
+      {
+        "batch_source_id": "W16-S003",
+        "source_id": "SRC-26516b47706816ef",
+        "url": "https://arxiv.org/pdf/1609.01539v1",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "W16003"
+        ],
+        "theme_ids": [
+          "G183"
+        ]
+      },
+      {
+        "batch_source_id": "W16-S004",
+        "source_id": "SRC-c86e731392f1be4b",
+        "url": "https://arxiv.org/pdf/1510.01277v1",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "W16004"
+        ],
+        "theme_ids": [
+          "G183"
+        ]
+      },
+      {
+        "batch_source_id": "W16-S005",
+        "source_id": "SRC-11c75d37c6117557",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4627579/",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "W16005"
+        ],
+        "theme_ids": [
+          "G184"
+        ]
+      },
+      {
+        "batch_source_id": "W16-S006",
+        "source_id": "SRC-c074cee26f248c95",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5579027/",
+        "all_reading_fields_preserved": true,
+        "candidate_ids": [
+          "W16006"
+        ],
+        "theme_ids": [
+          "G185"
+        ]
+      }
+    ],
+    "new_raw_maps": [
+      {
+        "id": "B16001",
+        "origin": "wave16-bio-structures-20261102",
+        "source_ids": [
+          "SRC-054ffa9af4213a99"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B16002",
+        "origin": "wave16-bio-structures-20261102",
+        "source_ids": [
+          "SRC-7519d9522fcb62f9"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B16003",
+        "origin": "wave16-bio-structures-20261102",
+        "source_ids": [
+          "SRC-1a50b0173c201450"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B16004",
+        "origin": "wave16-bio-structures-20261102",
+        "source_ids": [
+          "SRC-1f1a9893d4781e71"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B16005",
+        "origin": "wave16-bio-structures-20261102",
+        "source_ids": [
+          "SRC-c983adbcdf5cb0c8"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B16006",
+        "origin": "wave16-bio-structures-20261102",
+        "source_ids": [
+          "SRC-395d71c97418e2e4"
+        ],
+        "selected": true
+      },
+      {
+        "id": "B16007",
+        "origin": "wave16-bio-structures-20261102",
+        "source_ids": [
+          "SRC-645d07eab9b9e4aa"
+        ],
+        "selected": true
+      },
+      {
+        "id": "M16001",
+        "origin": "wave16-materials-20261102",
+        "source_ids": [
+          "SRC-e5c7fe1400570bf7"
+        ],
+        "selected": true
+      },
+      {
+        "id": "M16002",
+        "origin": "wave16-materials-20261102",
+        "source_ids": [
+          "SRC-35bba200425c9a71"
+        ],
+        "selected": true
+      },
+      {
+        "id": "M16003",
+        "origin": "wave16-materials-20261102",
+        "source_ids": [
+          "SRC-4d50efb64e3752eb"
+        ],
+        "selected": true
+      },
+      {
+        "id": "M16004",
+        "origin": "wave16-materials-20261102",
+        "source_ids": [
+          "SRC-04e4e5fd2402ae3e"
+        ],
+        "selected": true
+      },
+      {
+        "id": "M16005",
+        "origin": "wave16-materials-20261102",
+        "source_ids": [
+          "SRC-21d0db1e666b2258"
+        ],
+        "selected": true
+      },
+      {
+        "id": "M16006",
+        "origin": "wave16-materials-20261102",
+        "source_ids": [
+          "SRC-f95b568a6085aaa8"
+        ],
+        "selected": true
+      },
+      {
+        "id": "M16007",
+        "origin": "wave16-materials-20261102",
+        "source_ids": [
+          "SRC-449864c74ecfc5f8"
+        ],
+        "selected": true
+      },
+      {
+        "id": "W16001",
+        "origin": "wave16-wave-sensing-20261102",
+        "source_ids": [
+          "SRC-6805df5260304a91",
+          "SRC-85a63574600326f9"
+        ],
+        "selected": true
+      },
+      {
+        "id": "W16002",
+        "origin": "wave16-wave-sensing-20261102",
+        "source_ids": [
+          "SRC-85a63574600326f9"
+        ],
+        "selected": true
+      },
+      {
+        "id": "W16003",
+        "origin": "wave16-wave-sensing-20261102",
+        "source_ids": [
+          "SRC-26516b47706816ef"
+        ],
+        "selected": true
+      },
+      {
+        "id": "W16004",
+        "origin": "wave16-wave-sensing-20261102",
+        "source_ids": [
+          "SRC-c86e731392f1be4b"
+        ],
+        "selected": true
+      },
+      {
+        "id": "W16005",
+        "origin": "wave16-wave-sensing-20261102",
+        "source_ids": [
+          "SRC-11c75d37c6117557"
+        ],
+        "selected": true
+      },
+      {
+        "id": "W16006",
+        "origin": "wave16-wave-sensing-20261102",
+        "source_ids": [
+          "SRC-c074cee26f248c95"
+        ],
+        "selected": true
+      }
+    ],
+    "new_not_added_all_fields_match": 59,
+    "source_identity": {
+      "rows": 20,
+      "first_urls": 20,
+      "all_author_disclosures_bound": true,
+      "root_metadata_failures_preserved": true,
+      "limits": "Root checked the stated identities and author disclosures. This is not a full bibliography semantic-equivalence audit or a new independent full-text fact check. Candidate factual scope is controlled by the three non-author topic review receipts. No script, image rights, experimental replication or production approval."
+    },
+    "limits": "20是URL數，不是獨立重現數。PMC/XML、作者庫、預印本/正式版、教育副本等同文關係與讀取失敗保留。root Stejskal出版社身分端點未成功，不被改寫為成功；作者與life綁實讀原頁副本。G09 NASA閱讀留提案/獨立收據，沒有冒稱更新全庫來源readings。"
+  },
+  "editorial_readback": {
+    "new_themes": [
+      {
+        "id": "G173",
+        "proposal_id": "W16B-T01",
+        "seconds": 205,
+        "chapter_seconds": [
+          100,
+          105
+        ],
+        "core_totals": {
+          "B16001": 100,
+          "B16002": 105
+        },
+        "caps": {
+          "B16001": 110,
+          "B16002": 120
+        },
+        "drop_if": "刪第一章100秒後剩105秒，或刪第二章105秒後剩100秒，原兩反差題名失效，撤案或另寫單核短案再審；任一核被判與舊庫同核時先按變體範圍重審，不機械換ID。"
+      },
+      {
+        "id": "G174",
+        "proposal_id": "W16B-T02",
+        "seconds": 105,
+        "chapter_seconds": [
+          55,
+          50
+        ],
+        "core_totals": {
+          "B16005": 105
+        },
+        "caps": {
+          "B16005": 120
+        },
+        "drop_if": "若收線示意無法區分滴內/滴外，撤案；去第一章55秒剩50秒、去第二章50秒剩55秒，均缺原有反差的辨別證據，撤雙章案。"
+      },
+      {
+        "id": "G175",
+        "proposal_id": "W16B-T03",
+        "seconds": 110,
+        "chapter_seconds": [
+          50,
+          60
+        ],
+        "core_totals": {
+          "B16006": 110
+        },
+        "caps": {
+          "B16006": 120
+        },
+        "drop_if": "若不能以同網形比較材料，撤案；刪任一章剩50或60秒，失去材料控制或可見結果，撤雙章案。若覆核判與H3060同核，撤案而非補其他蛛網趣聞。"
+      },
+      {
+        "id": "G176",
+        "proposal_id": "W16B-T04",
+        "seconds": 110,
+        "chapter_seconds": [
+          50,
+          60
+        ],
+        "core_totals": {
+          "B16007": 110
+        },
+        "caps": {
+          "B16007": 115
+        },
+        "drop_if": "若閉環受力箭頭未驗清楚先撤案；刪第一章50秒剩60秒、刪第二章60秒剩50秒，均失去完整因果對照，撤雙章案，不補塔內下沉。"
+      },
+      {
+        "id": "G177",
+        "proposal_id": "W16M-T01",
+        "seconds": 125,
+        "chapter_seconds": [
+          60,
+          65
+        ],
+        "core_totals": {
+          "M16002": 125
+        },
+        "caps": {
+          "M16002": 130
+        },
+        "drop_if": "無法清楚畫出所述控制差異就撤125秒案。任刪一章只剩65/60秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+      },
+      {
+        "id": "G178",
+        "proposal_id": "W16M-T02",
+        "seconds": 115,
+        "chapter_seconds": [
+          60,
+          55
+        ],
+        "core_totals": {
+          "M16003": 115
+        },
+        "caps": {
+          "M16003": 135
+        },
+        "drop_if": "無法清楚畫出所述控制差異就撤115秒案。任刪一章只剩55/60秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+      },
+      {
+        "id": "G179",
+        "proposal_id": "W16M-T03",
+        "seconds": 115,
+        "chapter_seconds": [
+          55,
+          60
+        ],
+        "core_totals": {
+          "M16004": 115
+        },
+        "caps": {
+          "M16004": 120
+        },
+        "drop_if": "無法清楚畫出所述控制差異就撤115秒案。任刪一章只剩60/55秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+      },
+      {
+        "id": "G180",
+        "proposal_id": "W16M-T04",
+        "seconds": 120,
+        "chapter_seconds": [
+          60,
+          60
+        ],
+        "core_totals": {
+          "M16005": 120
+        },
+        "caps": {
+          "M16005": 125
+        },
+        "drop_if": "無法清楚畫出所述控制差異就撤120秒案。任刪一章只剩60/60秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+      },
+      {
+        "id": "G181",
+        "proposal_id": "W16M-T05",
+        "seconds": 105,
+        "chapter_seconds": [
+          55,
+          50
+        ],
+        "core_totals": {
+          "M16007": 105
+        },
+        "caps": {
+          "M16007": 120
+        },
+        "drop_if": "無法清楚畫出所述控制差異就撤105秒案。任刪一章只剩50/55秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+      },
+      {
+        "id": "G182",
+        "proposal_id": "W16W-T01",
+        "seconds": 180,
+        "chapter_seconds": [
+          90,
+          90
+        ],
+        "core_totals": {
+          "W16001": 90,
+          "W16002": 90
+        },
+        "caps": {
+          "W16001": 110,
+          "W16002": 110
+        },
+        "drop_if": "刪任一章只剩90秒且失去可恢復/不可恢復的對照，撤此180秒案，不加MRI用途或疾病解讀補時。"
+      },
+      {
+        "id": "G183",
+        "proposal_id": "W16W-T02",
+        "seconds": 195,
+        "chapter_seconds": [
+          50,
+          55,
+          55,
+          35
+        ],
+        "core_totals": {
+          "W16003": 105,
+          "W16004": 90
+        },
+        "caps": {
+          "W16003": 135,
+          "W16004": 130
+        },
+        "drop_if": "若水波分支無法呈現前行/反行同時存在或導數近似，刪整個水波分支並另提105秒聲學兩章版待覆核；不得沿195秒補轉場。若聲學分支刪任一章，須重新規劃，不自動批准餘章。"
+      },
+      {
+        "id": "G184",
+        "proposal_id": "W16W-T03",
+        "seconds": 115,
+        "chapter_seconds": [
+          55,
+          60
+        ],
+        "core_totals": {
+          "W16005": 115
+        },
+        "caps": {
+          "W16005": 135
+        },
+        "drop_if": "刪一章剩60或55秒均撤此115秒案；若回復力圖不能與聲壓圖區別，退回素材，不用三種陷阱清單填滿。"
+      },
+      {
+        "id": "G185",
+        "proposal_id": "W16W-T04",
+        "seconds": 120,
+        "chapter_seconds": [
+          65,
+          55
+        ],
+        "core_totals": {
+          "W16006": 120
+        },
+        "caps": {
+          "W16006": 140
+        },
+        "drop_if": "刪一章剩55或65秒均撤此120秒案；若沒有中央/偏軸的可見控制，只剩電阻公式，退回素材。"
+      }
+    ],
+    "arithmetic": {
+      "themes": 13,
+      "chapters": 28,
+      "theme_core_totals": 16,
+      "max_beat": 40
+    },
+    "G09": {
+      "seconds_before": 660,
+      "seconds_after": 185,
+      "chapter_seconds": [
+        50,
+        65,
+        70
+      ],
+      "N252_selected": true,
+      "historic_editorial_cap": "不存在editorial.seconds，不冒稱已通過素材cap；只核非作者逐章預算與算術。",
+      "matches_reviewed_proposal": true,
+      "central_priority": "第十六批縮編已經非作者覆核；待完整稿與試讀",
+      "content_matches_reviewed_proposal_except_priority": true,
+      "limits": "N248/N250/N251無editorial cap，沒有聲稱通過不存在的上限；本次只核已審50/65/70與合計185。移出N252仍selected，沒有退題。"
+    },
+    "pool_only_segments": [
+      "B16003",
+      "B16004",
+      "M16001",
+      "M16006"
+    ],
+    "readme_priorities": [
+      {
+        "id": "G173",
+        "seconds": 205,
+        "condition": "兩個研究明確重設；橋面積人力帳是模型。"
+      },
+      {
+        "id": "G179",
+        "seconds": 115,
+        "condition": "剖面原理圖，不做敲玻璃操作；只剩奇觀則撤案。"
+      },
+      {
+        "id": "G174",
+        "seconds": 105,
+        "condition": "滴內線圈與粗細抗彎對照可見；不清楚則撤片。"
+      }
+    ],
+    "priority_limit": "三個優先寫稿順序是root編輯判斷，非觀眾實測或製作核准。",
+    "timing_limit": "所有新案105–205秒含開場/回扣的紙上正文，不含品牌片頭片尾；未試讀。每章一核心，分章不重計素材cap；刪章依原drop_if撤案/重寫，不沿原長度補時。"
+  },
+  "artifact_integrity": {
+    "manifest_input_files": 313,
+    "manifest_rendered_file_hashes": 6,
+    "theme_definition_sha_match": true,
+    "embedded_selected_records": 2959,
+    "embedded_source_objects": 2505,
+    "embedded_theme_objects": 185,
+    "header_date": "2026-11-01 remains fixed initial-pool date; not current-data freshness evidence.",
+    "working_tree_only": true,
+    "actual_git_index_verification": "PENDING_ROOT_AFTER_THIS_RECEIPT",
+    "source_impact": "由source refs與theme candidate IDs獨立反查20個新URL；與root回報一致。SQLite零writes僅核root既有收據，未重新匯入。"
+  },
+  "docs_readback": {
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "result": "數字2959/3326/3188/3018/138/4278/1319/2505/4375/835/185及新增20/20URL/59未收/13案、剩7041一致。3優先案及4池內segment沒有新增事實或拉長時間。",
+    "source_and_approval_limits": "121歷史完整答案/附件仍待刷新；題級/完整稿/試讀/製作分開；沒有宣稱萬筆/十萬筆完成、零研究成本或原圖商用授權。",
+    "semantic_scope": "最終pool3326raw，0新向量/0新增截斷/3.223秒是熱快取單次；reviewer先前final draft 1新向量是修問句階段，兩者不混用。歷史截斷及平方規模限制仍明列。",
+    "resolved_wording": {
+      "finding": "VALIDATION初稿首句泛稱本批新增合併別名，與空集合QA不符。",
+      "resolution": "root將首句收為歷史N098/L042，保留無新增alias/hold、未執行對應斷言的明文；最終SHA167e4358已讀回。"
+    },
+    "header_date_limit": "index標頭2026-11-01仍為固定初建池日期；不能當最新資料日期，資料數字已核為本批。",
+    "git_tense": "README/VALIDATION把Git blob/連結/衛生交最終收據分項，未預稱root尚待執行的staged關卡通過。",
+    "local_markdown_links_checked": 71,
+    "local_link_scope": "僅README/VALIDATION/SEMANTIC全部本地連結存在；外站不重開，未冒稱root全輸出連結終驗。"
+  },
+  "browser_receipt_readback": {
+    "file": "reviews/wave16-browser-qa.json",
+    "sha256": "890e11b92a1e797628ff122fed0d3240fc6d21574dc25a314d9bd868afa0b0c4",
+    "result": "PASS",
+    "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+    "index_sha_matches": true,
+    "source_sample": {
+      "id": "B16001",
+      "urls": [
+        "https://doi.org/10.1073/pnas.1512241112"
+      ]
+    },
+    "screenshots_hashes_verified": 3,
+    "actual_scope": "本reviewer讀QA收據並驗三個截圖檔SHA，未自行重開瀏覽器或聲稱看過本批截圖；畫面目讀由root。B16001 payoff/visual/source URLs在截圖裁切下方，完整性依DOM斷言。手機只含上部，placeholder裁切已披露，非整頁視覺稽核。",
+    "empty_sets": "本批無新增alias/hold；只測歷史別名，沒有新增別名或負向排除斷言。"
+  },
+  "validation_receipt_readback": {
+    "file": "reviews/wave16-final-validation.json",
+    "whole_file_hash_bound": false,
+    "tests_subobject_sha256": "811203398ecc73532548f459bc347e0686383401c175b4d492873274d7241c8b",
+    "canonicalization": "json.dumps(tests, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')",
+    "tests": {
+      "node": {
+        "passed": 44,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 195797.5265,
+        "files": [
+          "tools/video/so-thats-why/pool/pool.test.mjs",
+          "tools/video/so-thats-why/catalog.test.mjs",
+          "tools/repo-hygiene.test.mjs",
+          "tools/json-duplicate-keys.test.mjs",
+          "tools/docs-videos-tests.test.mjs"
+        ],
+        "log_sha256": "4d455a0411c8b44b5b47ace8f6b8fcd5489172e501ad20dd872362c8901633e1"
+      },
+      "python": {
+        "passed": 2,
+        "failed": 0,
+        "file": "tools/video/so-thats-why/pool/semantic_test.py",
+        "log_sha256": "e671634419ab8f3fe90eb44ab6a06ae116936b1eb22124b2899f290fefda172d"
+      },
+      "checks": {
+        "pool": "PASS",
+        "series": "PASS",
+        "long_form_plans": 473,
+        "task_files": 2287,
+        "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+        "log_hashes": {
+          "pool": "5cb2824b0fb36fa640e824d9d451ed8446076d7de7c84ac91316cf81ffc3ec12",
+          "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+          "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+          "tasks": "34843f81da033a1f1723fcee7a47977f9a3b09f6ff7c10bca0558c59014b7a4f"
+        }
+      },
+      "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+    },
+    "actual_reading": "核6個log SHA及Node44 pass/0 fail/cancel/skip/todo/195797.5265ms、Python2 OK、pool/series PASS、473plans、2287tasks結尾。未自行重跑；保留無關任務警告。",
+    "index_and_performance_receipt": "first/second同SQLite snapshot，第二次UNCHANGED/0writes；當期資料單次測量，不是冷啟動或大規模壓測。",
+    "pending_root_scope": [
+      "實際Git index blob/hash終驗",
+      "最終本地連結與stage hygiene",
+      "task釋放、提交/推送流程"
+    ],
+    "scope_limit": "只核目前tests物件；final-validation之後stage/closure欄位可增寫，因此不綁整檔。未核完整API/web CI、旁白試讀、媒體或發布。"
+  },
+  "hashes": [
+    {
+      "file": "DEDUP.md",
+      "sha256": "e53ac64071b801f1c4702660425c288de4b84c255ea4b2f5d1bd8cbe13c95618"
+    },
+    {
+      "file": "QUESTIONS.md",
+      "sha256": "b26e7670f2203f223e1e658a4c9d863a05f264d467b6b96d18b94aec4bc62849"
+    },
+    {
+      "file": "README.md",
+      "sha256": "cdf78d733723e0540bf30c7bbf7c566984365622474ede403a08f6a48be55cff"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "c174fc161bbedbd997a5024aecb135719122880b4e2021eda379c1ab290e851b"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "4138031e1033e45989168ee38a0fb87b6a8b7d19a61e2c1c6ab4b3412a2ddea1"
+    },
+    {
+      "file": "THEMES.md",
+      "sha256": "313843e281915cca4638dc2aa125ef2b6513e136cbfc3b72882f629fab08765c"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "167e435827a672d71ed25cbd25587a86f225c1a8f35cb13a5d8d84fd3d00a605"
+    },
+    {
+      "file": "baseline.json",
+      "sha256": "b56e116000b84bbabf66eec091bddb4a2132784931f5146b9922832c5cd0b3e2"
+    },
+    {
+      "file": "baselines/2026-11-01-1000.json.gz",
+      "sha256": "6cf3b0f5a7e37546d3c53806b94376f68f2a5cf16b1510d5ca64ef06ee9ac7fd"
+    },
+    {
+      "file": "baselines/2026-11-01-2000.json.gz",
+      "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4"
+    },
+    {
+      "file": "baselines/2026-11-01-2328.json.gz",
+      "sha256": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba"
+    },
+    {
+      "file": "baselines/2026-11-01-2449.json.gz",
+      "sha256": "e98b96cad65be24cdc59bfc1d9f60f311040a7987e04a7b008fab08778063bb2"
+    },
+    {
+      "file": "baselines/2026-11-01-2546.json.gz",
+      "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4"
+    },
+    {
+      "file": "baselines/2026-11-01-2609.json.gz",
+      "sha256": "06f9fdec324c8e0f6fabd22805eed413fbf5e3f109473e595ec1e2228ab150f1"
+    },
+    {
+      "file": "baselines/2026-11-01-2667.json.gz",
+      "sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c"
+    },
+    {
+      "file": "baselines/2026-11-01-2711.json.gz",
+      "sha256": "035074191cbf98fe87426589b6f746a90934e1087a65271e4cdd9b03784da217"
+    },
+    {
+      "file": "baselines/2026-11-01-2757.json.gz",
+      "sha256": "92c8527689b44740352d8698bfe38be5e46b42c7a299878309501245c992ac0d"
+    },
+    {
+      "file": "baselines/2026-11-01-2797.json.gz",
+      "sha256": "3fe88554de1e8947fcb8e3890302b5bd35d2848fdd43e7c779296e68f6969e2b"
+    },
+    {
+      "file": "baselines/2026-11-01-2837.json.gz",
+      "sha256": "6c1a9c8c29d0b8bb540de430e6f98646ab48bcf07e89d1d7bf1e8cd21117c0fd"
+    },
+    {
+      "file": "baselines/2026-11-01-2870.json.gz",
+      "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32"
+    },
+    {
+      "file": "baselines/2026-11-01-2897.json.gz",
+      "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0"
+    },
+    {
+      "file": "baselines/2026-11-02-2921.json.gz",
+      "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7"
+    },
+    {
+      "file": "baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
+    },
+    {
+      "file": "batches/wave16-bio-structures.json",
+      "sha256": "a49620c48dc563918c93db75566a2311ef5fa760cd6a0ccb3191ef79d43032f9"
+    },
+    {
+      "file": "batches/wave16-materials.json",
+      "sha256": "f7b4fae84279bef8103aeb0fafbceb5a2d98220531d0abe888c51139ade664f8"
+    },
+    {
+      "file": "batches/wave16-wave-sensing.json",
+      "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "sha256": "26d4627eca62057f6bf12eee75e0a80c6a489ceb5528dfee7620d67cf81570e0"
+    },
+    {
+      "file": "checkpoint-2328.json",
+      "sha256": "8958e75c55b81787fea922f8fd503020fb2125816a44990f76cb36b79d8d7fa4"
+    },
+    {
+      "file": "checkpoint-2449.json",
+      "sha256": "1130c79de09e209f0177ecee8190dc0016463a059f0aa3f3a4d48b029e27315b"
+    },
+    {
+      "file": "checkpoint-2546.json",
+      "sha256": "bec71d3e9107a2b2a491a38c20b92a4de4375631bb51b80332cbcdc19a412567"
+    },
+    {
+      "file": "checkpoint-2609.json",
+      "sha256": "089dcc4a14fbbddbed245bfe4800619e2558be18fbe340a5aa983b7d093be6df"
+    },
+    {
+      "file": "checkpoint-2667.json",
+      "sha256": "9d1ef51719bdbd35122dd872feac02fb9e97b2d3c659d5e02f735d27b71fa845"
+    },
+    {
+      "file": "checkpoint-2711.json",
+      "sha256": "cb4e75d0d23f96941f1676a4503b15cc2bc5a10999a59fef73a29ce28ba9590c"
+    },
+    {
+      "file": "checkpoint-2757.json",
+      "sha256": "0160df758e0b1ecfd54681bf1d6a520a6c6ea2305743dd43779a653247736154"
+    },
+    {
+      "file": "checkpoint-2797.json",
+      "sha256": "c7dd2b7722682a136a8d2f83617e61bf88b09b99dee0b6b013aaecfc8ec8da98"
+    },
+    {
+      "file": "checkpoint-2837.json",
+      "sha256": "09cbac4b41a2d58364e2f6a602d84129b857ae6b81561e5629205d2b3570f167"
+    },
+    {
+      "file": "checkpoint-2870.json",
+      "sha256": "1d515626d76f5a3daadf867043488e9412ab89e1361e809a258712717bb13ddf"
+    },
+    {
+      "file": "checkpoint-2897.json",
+      "sha256": "282dff335a098f2157e152fdf44095a9fb7e09453766ff2b1d43785a6872a25a"
+    },
+    {
+      "file": "checkpoint-2921.json",
+      "sha256": "51d5f4512cda1b2992b07734a0de4864587be07ed0a0ec67da0253097d16819f"
+    },
+    {
+      "file": "checkpoint-2939.json",
+      "sha256": "f7dd8d23d26a4a11b61c361fc24625d05fff97e593af222d61352f091d24ebfe"
+    },
+    {
+      "file": "checkpoints.json",
+      "sha256": "0e409909086e871fe0b97cad292b6cd2c54376079704438320a259e30e82fcdd"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "925638f067c43730ea853486d24eef923d13cd8740039f6d9e021414c3c20cf6"
+    },
+    {
+      "file": "index.html",
+      "sha256": "2efb04c2a6effc2b04f55de067caaec1ee8a02a48678914f1c2ec939a756e5f7"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "9daf9de432e86516c7640fb5eac487c32d32a53cf4a6b929bb1807ff98d41719"
+    },
+    {
+      "file": "pool.json",
+      "sha256": "a480858e3b05361efef0a96a1b0e7b82be27bcd002c13550a5d090d07a550b2e"
+    },
+    {
+      "file": "reviews/wave16-bio-structures-author.json",
+      "sha256": "db8e9a0999bf6c4f55537f5bce973901183b120e65ea4ccb19e5a07333327844"
+    },
+    {
+      "file": "reviews/wave16-bio-structures-themes.json",
+      "sha256": "4c3cab184b55fcd087699223fbe498fd3c45f08ae7e4eac687aa2c1039a61c4f"
+    },
+    {
+      "file": "reviews/wave16-browser-qa.json",
+      "sha256": "890e11b92a1e797628ff122fed0d3240fc6d21574dc25a314d9bd868afa0b0c4"
+    },
+    {
+      "file": "reviews/wave16-editorial-integration.json",
+      "sha256": "2922e4fa89f12634d2da5e7099bbc83e891a490ae488bdec4110ec83fbc656b9"
+    },
+    {
+      "file": "reviews/wave16-g09-revision.json",
+      "sha256": "5205cd79c28f3db91f55299c041833b8f6e5d9277b3862d68821b1d37ecd99b0"
+    },
+    {
+      "file": "reviews/wave16-life-old-pairs.json",
+      "sha256": "47c049f42439193e8c60063e4813724d3f2bc7daf4a46d6d62ad035f9b3d3b99"
+    },
+    {
+      "file": "reviews/wave16-life-reviews-wave-sensing.json",
+      "sha256": "a42299ef3ff79a61f5df5903a592ab34b2608cf62327826f1b65cd8c41cd39a6"
+    },
+    {
+      "file": "reviews/wave16-materials-author.json",
+      "sha256": "d3a40414870e4c533276f7ddec2eb9f6933315d808d3b55c1cbba3430b3e43d5"
+    },
+    {
+      "file": "reviews/wave16-materials-themes.json",
+      "sha256": "940fef0a8c907f5105ded50b80b59891199863405972ab732610092c29a93901"
+    },
+    {
+      "file": "reviews/wave16-old-pair-integration.json",
+      "sha256": "48c6fec426945549e00e741dfa652b63c0e7606b31dc29ed1256c6330ab1bea8"
+    },
+    {
+      "file": "reviews/wave16-physics-reviews-bio-structures.json",
+      "sha256": "1573c66eedf36d3e2f58094d039965849a962dbbd49e3cd62ff4392339bd1943"
+    },
+    {
+      "file": "reviews/wave16-physics-reviews-g09.json",
+      "sha256": "d9ee66988b09108d338841d7e6b5ef4114b9668dcb04446c853f8fc5078e7273"
+    },
+    {
+      "file": "reviews/wave16-root-old-pairs.json",
+      "sha256": "110d462a27eb0839c296e068b6eb5710518e5a5eb0715032154361a72cebb6ac"
+    },
+    {
+      "file": "reviews/wave16-science-reviews-materials.json",
+      "sha256": "a4142e8ae62e84c75bab7d745bdf2f2371d81dde92c4c48d8d76f923721e564c"
+    },
+    {
+      "file": "reviews/wave16-source-identity-review.json",
+      "sha256": "d9a394c188759808cd36ca33d1f1666939cfdb9f3af75963cc51bc83a1b0bd95"
+    },
+    {
+      "file": "reviews/wave16-wave-sensing-author.json",
+      "sha256": "57e1584631a3cfc9e1aedf821d9421cef8502cd2fd3078f11103ba7d02038c48"
+    },
+    {
+      "file": "reviews/wave16-wave-sensing-themes.json",
+      "sha256": "3d5765f0f1e3364ff78b910322e8bc6056d8c76de0cde79c44805b747f37b073"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "1ac772829b274581b4e0efa4f31b50c71854c27e2404b92de65f9fbffe153da5"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "3cd40ffec4e324ffc207c6d39482c4a4fa18b6c3544e1b3dce0bcb75cf16148e"
+    }
+  ],
+  "ignored_evidence_hashes": [
+    {
+      "file": ".cache/first-draft-wave16.json",
+      "sha256": "3307fb47b277e2f8c6c59f4d2ca04d080a7f2d44f54be9a4ecb622f491c98693"
+    },
+    {
+      "file": ".cache/semantic-wave16-draft.json",
+      "sha256": "67076039f56c8c5863b01e203117fc113bcc1ba86decee02fbaa51a38229b204"
+    },
+    {
+      "file": ".cache/wave16-bio-structures-neighbour-delta.json",
+      "sha256": "69ae02be124475b34989adc8f8e0efc1dc42b3083ea9a6197be624c6eee4f783"
+    },
+    {
+      "file": ".cache/wave16-desktop.png",
+      "sha256": "317024927e5fc654e8a96cec2f38d4cc915a27b5e3eeb79f1eacad3cbd4b4d5b"
+    },
+    {
+      "file": ".cache/wave16-long-form-check.log",
+      "sha256": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6"
+    },
+    {
+      "file": ".cache/wave16-materials-neighbour-delta.json",
+      "sha256": "ecef760ea20fe9f5c8bfb4b28406b7901ed3716ffd95350e07d8fd40dcc5fff6"
+    },
+    {
+      "file": ".cache/wave16-mobile.png",
+      "sha256": "9afd689e74e0aec552a23495693b003922130ea60a671d4170a95fcf58ec8c6a"
+    },
+    {
+      "file": ".cache/wave16-node-tests.log",
+      "sha256": "4d455a0411c8b44b5b47ace8f6b8fcd5489172e501ad20dd872362c8901633e1"
+    },
+    {
+      "file": ".cache/wave16-old-pair-discovery.json",
+      "sha256": "e65be9e332e5e790450be0a2f339852ef9ff42154dcdcf6ffde6198378f1d676"
+    },
+    {
+      "file": ".cache/wave16-pool-check.log",
+      "sha256": "5cb2824b0fb36fa640e824d9d451ed8446076d7de7c84ac91316cf81ffc3ec12"
+    },
+    {
+      "file": ".cache/wave16-python-tests.log",
+      "sha256": "e671634419ab8f3fe90eb44ab6a06ae116936b1eb22124b2899f290fefda172d"
+    },
+    {
+      "file": ".cache/wave16-science-central-check.py",
+      "sha256": "d653af8c937703381481b84db475a52b652d09d9cbe1afca9d007ee86ed10ba6"
+    },
+    {
+      "file": ".cache/wave16-science-central-data.json",
+      "sha256": "de37e14859c65a104880ecd6d7bf85bd892f16c7348855f5def00b35a621db62"
+    },
+    {
+      "file": ".cache/wave16-series-check.log",
+      "sha256": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b"
+    },
+    {
+      "file": ".cache/wave16-source-desktop.png",
+      "sha256": "2925d08f19f9eb6bd9678d90b2fc31958a042c5c90ec69c3e439a9d1b5633f55"
+    },
+    {
+      "file": ".cache/wave16-tasks-check.log",
+      "sha256": "34843f81da033a1f1723fcee7a47977f9a3b09f6ff7c10bca0558c59014b7a4f"
+    },
+    {
+      "file": ".cache/wave16-wave-sensing-neighbour-delta.json",
+      "sha256": "1fb164c44e40b63350466b60c6238bcf5e7c6e0671ebbe4c88ef2d956da4644e"
+    }
+  ]
+}
