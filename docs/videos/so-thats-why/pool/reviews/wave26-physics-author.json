@@ -1,0 +1,478 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "f74658d43d1c87e5ac80c4c4a90a5dc227936699",
+    "selected": 3058,
+    "raw_records": 3431,
+    "not_added": 1185,
+    "pool_sha256": "a499bd7b2ffe1d5c5970adca0d3cd6737efd38f72fd0ccd76d59bcd6b505d2f4",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3058.json.gz",
+      "sha256": "116f615edda6c3a40e06f4704f336abd716075e18214ab8a3f6d3d234749c978"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave26-physics.json",
+      "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+    },
+    {
+      "file": "reviews/wave26-physics-themes.json",
+      "sha256": "da2225d59ea9cd50d2a6f2882bc772cbbfb415d80b66c036bbe55509f7184ec5"
+    }
+  ],
+  "counts": {
+    "candidates": 3,
+    "sources": 3,
+    "candidate_sources": 3,
+    "not_added_only_sources": 0,
+    "not_added": 13,
+    "near_pairs": 12,
+    "themes": 3
+  },
+  "scope": "旋轉磁矩懸浮、捲繞手性冷熱反號、共享彈性支承的接觸時差；三個受控對照，不擴成材料/物件百科。",
+  "dedup_reading": {
+    "method": "全3431raw/1185NA機械關鍵詞掃描，定向讀相關完整問答/scope，不冒稱人工逐條讀全庫。",
+    "scan_files": [
+      {
+        "file": ".cache/wave26-physics-oldscan.json",
+        "sha256": "d1e2391917fd791c8166ea91bf8acf4b606b56cc3ace53997868034190083e61"
+      },
+      {
+        "file": ".cache/wave26-physics-oldscan2.json",
+        "sha256": "ace5e228db776ed18d4e1aa1097911a5e7ec60dd5c4843a6d1b03b298c18e934"
+      },
+      {
+        "file": ".cache/wave26-physics-oldscan3.json",
+        "sha256": "e6f810cc1b5cb0874df266a30ce068d7616554434cfd54c8bd365f6472de3821"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P26001",
+      "b": "E2134",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊為靜態抗磁；新為永久磁矩受驅動取向與距離耦合，不是感應反向磁化。",
+      "a_snapshot": {
+        "id": "P26001",
+        "question": "兩塊磁鐵沒有接觸，為什麼轉動上面那塊，下面那塊就可能懸住？",
+        "answer_target": "轉動場帶動浮磁鐵同步進動，使磁矩維持靜態時不會停留的取向；模型中靠近時橫向排斥相對增強、離遠時吸引佔優，形成可回復的位置。恆定場分量與進入此狀態的阻尼條件都重要。",
+        "scope": "限2023旋轉永久磁鐵研究；磁矩進動不等於整球只繞一根軸自轉。此機制模型不是所有磁懸浮通則；重力仍存在並移動平衡位置，沒有憑空取消。"
+      },
+      "b_snapshot": {
+        "id": "E2134",
+        "question": "銅不會像鐵一樣被吸住，就代表完全不理磁場嗎？",
+        "answer_target": "抗磁材料產生微弱反向誘導磁矩，需區分導電渦電流。",
+        "scope": "靜態材料磁化，不談移動磁鐵煞車。"
+      }
+    },
+    {
+      "a": "P26001",
+      "b": "E2146",
+      "proposed": "distinct_pending_non_author",
+      "reason": "渦流阻尼可協助進入狀態，但新答案的回復力來自動態取向下的永久磁偶極；非單純煞車/耗熱。",
+      "a_snapshot": {
+        "id": "P26001",
+        "question": "兩塊磁鐵沒有接觸，為什麼轉動上面那塊，下面那塊就可能懸住？",
+        "answer_target": "轉動場帶動浮磁鐵同步進動，使磁矩維持靜態時不會停留的取向；模型中靠近時橫向排斥相對增強、離遠時吸引佔優，形成可回復的位置。恆定場分量與進入此狀態的阻尼條件都重要。",
+        "scope": "限2023旋轉永久磁鐵研究；磁矩進動不等於整球只繞一根軸自轉。此機制模型不是所有磁懸浮通則；重力仍存在並移動平衡位置，沒有憑空取消。"
+      },
+      "b_snapshot": {
+        "id": "E2146",
+        "question": "銅片不會被磁鐵黏住，穿過磁場邊界卻為什麼會被煞住？",
+        "answer_target": "磁通改變在塊材中激起環流，反作用把運動能轉成熱。",
+        "scope": "有限磁場邊界；不是均勻場中任何運動都煞車。"
+      }
+    },
+    {
+      "a": "P26001",
+      "b": "F17005",
+      "proposed": "distinct_pending_non_author",
+      "reason": "共用動態穩定背景；新有同步磁矩、恆定場及隨距離改變取向的吸引/排斥競爭，非只把倒浮物換磁鐵。",
+      "a_snapshot": {
+        "id": "P26001",
+        "question": "兩塊磁鐵沒有接觸，為什麼轉動上面那塊，下面那塊就可能懸住？",
+        "answer_target": "轉動場帶動浮磁鐵同步進動，使磁矩維持靜態時不會停留的取向；模型中靠近時橫向排斥相對增強、離遠時吸引佔優，形成可回復的位置。恆定場分量與進入此狀態的阻尼條件都重要。",
+        "scope": "限2023旋轉永久磁鐵研究；磁矩進動不等於整球只繞一根軸自轉。此機制模型不是所有磁懸浮通則；重力仍存在並移動平衡位置，沒有憑空取消。"
+      },
+      "b_snapshot": {
+        "id": "F17005",
+        "question": "小船能倒著浮在液體底面，難道浮力也倒過來了？",
+        "answer_target": "液體下表面的剛性浮體仍由向上浮力平衡重量，但靜態平衡原本不穩；垂直振動引入動態穩定，使偏離平衡後能被有效回復，而非把重力或浮力方向倒轉。",
+        "scope": "限研究中由受壓空氣層支承、垂直振動穩定的高黏度液體與浮體；區分維持液層和穩定浮體兩步。不把氣泡體積機制套到剛船，也非靜置液體倒浮。"
+      }
+    },
+    {
+      "a": "P26001",
+      "b": "W16005",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊由聲輻射梯度設陷阱；新須物體自身轉動及取向改寫力，非單純場強/梯度題。",
+      "a_snapshot": {
+        "id": "P26001",
+        "question": "兩塊磁鐵沒有接觸，為什麼轉動上面那塊，下面那塊就可能懸住？",
+        "answer_target": "轉動場帶動浮磁鐵同步進動，使磁矩維持靜態時不會停留的取向；模型中靠近時橫向排斥相對增強、離遠時吸引佔優，形成可回復的位置。恆定場分量與進入此狀態的阻尼條件都重要。",
+        "scope": "限2023旋轉永久磁鐵研究；磁矩進動不等於整球只繞一根軸自轉。此機制模型不是所有磁懸浮通則；重力仍存在並移動平衡位置，沒有憑空取消。"
+      },
+      "b_snapshot": {
+        "id": "W16005",
+        "question": "用聲波托住小球，為什麼不能只把聲音集中得更強？",
+        "answer_target": "強聲壓焦點與穩定陷阱不是同一目標；粒子偏離後的聲輻射力方向也必須能拉回。研究對小球模型同時設計低聲壓中心及各方向回復力，讓粒子能留在指定位置，而非只最大化焦點聲壓。",
+        "scope": "限文中的空氣、小球與陣列模型。低壓點不自動穩定，須看周圍壓力/速度梯度和粒子材料；不推成所有物體在聲壓節都可懸浮，也不等同超音波指腹的擠壓空氣膜。"
+      }
+    },
+    {
+      "a": "P26001",
+      "b": "K18004",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊以接觸摩擦力矩改變偏心陀螺姿態；新無桌面接觸並由旋轉外磁場持續驅動。",
+      "a_snapshot": {
+        "id": "P26001",
+        "question": "兩塊磁鐵沒有接觸，為什麼轉動上面那塊，下面那塊就可能懸住？",
+        "answer_target": "轉動場帶動浮磁鐵同步進動，使磁矩維持靜態時不會停留的取向；模型中靠近時橫向排斥相對增強、離遠時吸引佔優，形成可回復的位置。恆定場分量與進入此狀態的阻尼條件都重要。",
+        "scope": "限2023旋轉永久磁鐵研究；磁矩進動不等於整球只繞一根軸自轉。此機制模型不是所有磁懸浮通則；重力仍存在並移動平衡位置，沒有憑空取消。"
+      },
+      "b_snapshot": {
+        "id": "K18004",
+        "question": "翻身陀螺明明在耗能，重心為什麼還能爬高？",
+        "answer_target": "偏心陀螺與桌面滑動接觸產生力矩，重新分配旋轉與傾轉運動；旋轉能的一部分可轉成升高重心的勢能，同時摩擦仍讓總機械能下降。持續純滾動的對照模型沒有同樣翻轉路徑。",
+        "scope": "所讀研究為軸對稱偏心球的滑動摩擦理論及數值解，不是新玩具實驗。初始旋轉、慣量和幾何須滿足條件；接觸持續且模型未完整描述真實柄部撞擊。"
+      }
+    },
+    {
+      "a": "P26002",
+      "b": "H3026",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊解釋橡膠可回彈；新用內外扭向控制讓相同拉長發生相反熱響應。",
+      "a_snapshot": {
+        "id": "P26002",
+        "question": "同樣把橡膠線圈拉長，為什麼一個變熱、另一個反而變冷？",
+        "answer_target": "拉長線圈不只改長度，也改纖維扭轉；內扭與外圈同手性時增加扭轉，反手性時解扭，後者可把拉伸時的溫度反應反轉。",
+        "scope": "限天然橡膠同/異手性線圈、相同spring index的Fig1F；異手性橡膠保留芯棒，快速變形表面溫變。不是任意橡皮筋都拉伸降溫，也不把不同材料相變混為同一機制。"
+      },
+      "b_snapshot": {
+        "id": "H3026",
+        "question": "橡膠拉長後為什麼會縮回，卻不整條流走？",
+        "answer_target": "受拉使卷曲鏈趨向排列，少量交聯限制永久滑移，放鬆後回復較卷曲狀態。",
+        "scope": "分子鏈層級；熱力學熵彈性數值需補來源，不只重述 P294。"
+      }
+    },
+    {
+      "a": "P26002",
+      "b": "M16001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊NiTi加熱相態恢復；新只天然橡膠捲繞幾何改變內扭，不以NiTi相變解釋。",
+      "a_snapshot": {
+        "id": "P26002",
+        "question": "同樣把橡膠線圈拉長，為什麼一個變熱、另一個反而變冷？",
+        "answer_target": "拉長線圈不只改長度，也改纖維扭轉；內扭與外圈同手性時增加扭轉，反手性時解扭，後者可把拉伸時的溫度反應反轉。",
+        "scope": "限天然橡膠同/異手性線圈、相同spring index的Fig1F；異手性橡膠保留芯棒，快速變形表面溫變。不是任意橡皮筋都拉伸降溫，也不把不同材料相變混為同一機制。"
+      },
+      "b_snapshot": {
+        "id": "M16001",
+        "question": "合金線拉長後放手沒有縮回，為什麼加熱卻能把長度找回來？",
+        "answer_target": "在適用溫度下，拉伸使馬氏體變體重排而留下形變；加熱逆轉到奧氏體時可恢復先前長度，與不可回復的位錯滑移不同。",
+        "scope": "限所試NiTi微線的相態、負載及熱機械歷史；過度負載可留下殘餘形變，不把一般金屬熱膨脹當恢復機制。"
+      }
+    },
+    {
+      "a": "P26002",
+      "b": "P294",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊分線性/可恢復；新有相同伸長而熱反應反號的可測比較，非彈性定義。",
+      "a_snapshot": {
+        "id": "P26002",
+        "question": "同樣把橡膠線圈拉長，為什麼一個變熱、另一個反而變冷？",
+        "answer_target": "拉長線圈不只改長度，也改纖維扭轉；內扭與外圈同手性時增加扭轉，反手性時解扭，後者可把拉伸時的溫度反應反轉。",
+        "scope": "限天然橡膠同/異手性線圈、相同spring index的Fig1F；異手性橡膠保留芯棒，快速變形表面溫變。不是任意橡皮筋都拉伸降溫，也不把不同材料相變混為同一機制。"
+      },
+      "b_snapshot": {
+        "id": "P294",
+        "question": "放手後能恢復原狀的材料，受力和伸長一定成正比嗎？",
+        "answer_target": "彈性描述可恢復，線性描述力與形變比例，非線性區仍可能可恢復。",
+        "scope": "一般小變形到彈性極限的模型"
+      }
+    },
+    {
+      "a": "P26003",
+      "b": "P173",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊兩車動量交換；新兩球動量受床外力，需支承耦合和接觸重疊時序才能說明回彈分配。",
+      "a_snapshot": {
+        "id": "P26003",
+        "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+        "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+        "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。"
+      },
+      "b_snapshot": {
+        "id": "P173",
+        "question": "小車撞上另一台車後自己慢下來，動量是消失了嗎？",
+        "answer_target": "個別車的動量改變可由另一台車取得，須看系統總和。",
+        "scope": "短碰撞期間外衝量可忽略"
+      }
+    },
+    {
+      "a": "P26003",
+      "b": "P019",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊給定相同初末動量比較衝量時間；新末速度本身改變，來自另一球改支承斜率與功。",
+      "a_snapshot": {
+        "id": "P26003",
+        "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+        "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+        "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。"
+      },
+      "b_snapshot": {
+        "id": "P019",
+        "question": "同樣把球停下來，軟墊和硬板給球的衝量會不同嗎？",
+        "answer_target": "相同初末動量決定相同衝量，峰值與接觸時間卻可不同。",
+        "scope": "不反彈且初速一致"
+      }
+    },
+    {
+      "a": "P26003",
+      "b": "P112",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊外力周期匹配輸入能量；新被動兩體共享支承而重分能量，沒有外部周期推動。",
+      "a_snapshot": {
+        "id": "P26003",
+        "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+        "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+        "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。"
+      },
+      "b_snapshot": {
+        "id": "P112",
+        "question": "推鞦韆為什麼要抓節奏，不能只一直用力？",
+        "answer_target": "外力與振動相位配合可逐次輸入能量，亂推可能互相抵銷。",
+        "scope": "理想受迫振動示意"
+      }
+    },
+    {
+      "a": "P26003",
+      "b": "A12009",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊為前方渦流傳到後魚的相位控制；新兩球直接耦合共用床面，瞬時受力圖不同於流體尾流傳播。",
+      "a_snapshot": {
+        "id": "P26003",
+        "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+        "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+        "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。"
+      },
+      "b_snapshot": {
+        "id": "A12009",
+        "question": "魚已跟在同伴後面，為什麼拉開一點距離還要改擺尾時機？",
+        "answer_target": "前魚渦流到達後魚有傳播時間；前後距離改變時，擺尾相位也須改變才能維持順著同一類誘導流的互動。",
+        "scope": "限機器魚配對流槽與金魚運動追蹤；機器魚功率直接量測，真魚效益是由運動估算；不聲稱只靠一種感覺或所有魚都如此。"
+      }
+    }
+  ],
+  "prior_rejection_reentry": [
+    {
+      "prior_id": "P24-NA011",
+      "current": "P26-NA006",
+      "decision": "仍不收一般牛頓擺；本批P26003是共用床面非直碰，未聲稱已補牛頓擺接觸波來源。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P26-S001",
+      "read_via": "當日web核APS/DTU身份，web PDF timeout；指定UA urllib HTTP200有效PDF，PyMuPDF抽文及指定頁目讀。",
+      "scope": "PDF pp2–5 §§I–III A/B、pp8–15 §§III D、IV、V、VI；目讀PDF p5觀察圖及p13 Fig6。未看附片/SI或重跑模擬。",
+      "body_cache": {
+        "file": ".cache/wave26-physics-magnet.pdf",
+        "sha256": "6efa86a06df8d0050b5d2ace905cada9de043ca31bad8f0d8a6998ae95f8a89d",
+        "text_file": ".cache/wave26-physics-magnet.txt",
+        "text_sha256": "71df7ddf34c75057ff861495d8d553abb1c2ed5f4898de6cee6f8954dee9d16a"
+      }
+    },
+    {
+      "source_id": "P26-S002",
+      "read_via": "當日web核PubMed正式DOI/日期；NSF web與指定UA timeout；機構PDF指定UA HTTP200，抽文並目讀Fig1。",
+      "scope": "PDF pp1–3天然橡膠扭轉/釋放及Fig1；p5 Twistocaloric cooling by stretching heterochiral fibers；目讀p2 Fig1F。另讀p4–5聚乙烯/NiTi段以限制跨材料解釋，不採為新題。未讀SI/影片。",
+      "body_cache": {
+        "file": ".cache/wave26-physics-twist.pdf",
+        "sha256": "0e2ace224e5e9adfaaaeab4088da266099705ed3414b1efb1ce85ece58cdd8da",
+        "text_file": ".cache/wave26-physics-twist.txt",
+        "text_sha256": "4c3f6bdb6b50ee14b0487a97e99c968612524506c01bdfc94b863caa277ccab6"
+      }
+    },
+    {
+      "source_id": "P26-S003",
+      "read_via": "當日web讀PLOS正文；指定UA urllib HTTP200有效HTML及原圖；本機抽文，圖2/6目讀。",
+      "scope": "Results的A physical demonstration、A mathematical model、Passive dynamics、Maximizing energy transfer及Fig2/3/5/6圖說；Methods的Table-top demonstration；目讀Fig2及Fig6。未觀看影片、未重跑程式；長期博弈/混沌不採。",
+      "body_cache": {
+        "file": ".cache/wave26-physics-trampoline.html",
+        "sha256": "49aa84d226bdcfd20fb51c3ff5076df90353560333bf4a2ecd9151cc1e1bce45",
+        "text_file": ".cache/wave26-physics-trampoline.txt",
+        "text_sha256": "a7f7cdca7e533a6217e7ab5cd68c4507feb3a43880e0aae88f15f25249cb2b86"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P26-S001",
+      "doi": "10.1103/PhysRevApplied.20.044036",
+      "primary_body_url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+      "identity_relation": "2023-10-13正式版；DTU副本有1頁封面，PDF頁碼比印刷頁多1；arXiv2305.00812為同工作，不另算研究。",
+      "old_exact_doi_url_title_matches": [],
+      "independence": "單篇原研究；索引/機構副本不是第二份獨立證據。"
+    },
+    {
+      "source_id": "P26-S002",
+      "doi": "10.1126/science.aax6182",
+      "primary_body_url": "https://lab.semi.ac.cn/library/upload/files/2019/10/219314543.pdf",
+      "identity_relation": "2019-10-11正式版PDF，機構網站所存2019下載副本；NSF/PubMed是同篇的另載體/索引。",
+      "old_exact_doi_url_title_matches": [],
+      "independence": "單篇原研究；索引/機構副本不是第二份獨立證據。"
+    },
+    {
+      "source_id": "P26-S003",
+      "doi": "10.1371/journal.pone.0078645",
+      "primary_body_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645",
+      "identity_relation": "2013-11-13正式HTML；PMC3827250為同篇另載體，不另算研究。",
+      "old_exact_doi_url_title_matches": [],
+      "independence": "單篇原研究；索引/機構副本不是第二份獨立證據。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+      "route": "web.open",
+      "result": "timeout；後指定UA取得PDF200有效正文。"
+    },
+    {
+      "url": "https://par.nsf.gov/servlets/purl/10127970",
+      "route": "web.open及指定UA urllib",
+      "result": "timeout；改讀已發現的機構正式PDF副本，未把失敗頁算已讀。"
+    }
+  ],
+  "retrieval_receipt": {
+    "file": ".cache/wave26-physics-fetch.json",
+    "sha256": "2f4ee6b545c4d63e19da07cf33dd728eec39326c385add2f14c249ae4e4ae28b"
+  },
+  "reading_limits": [
+    "三份指定正文均讀；未看影片或SI、未重跑任何研究模型。",
+    "磁鐵模型有定性/定量差距，不能把阻尼說成全部升力。",
+    "橡膠反手性試件保留芯棒；NiTi/聚乙烯段閱讀只用來防止跨材料套用，未增核。",
+    "PLOS HTML數學式部分是圖片，未宣稱逐式核算；只採指定文字機制與圖示。",
+    "Cross雙球/Bristol/瓶翻研究只有搜尋所得定位或摘要/首段，沒有列候選支持源。",
+    "原創提問/短摘要與紙上圖解，不引用外站整圖進公開檔。"
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave26-physics-magnet-p5.png",
+      "sha256": "9d5d559ed3f5b74e0cb3931781bca991b9aa9f208dc241f51946c734cb3b5ac6",
+      "read_scope": "PDF5/印刷4：觀察圖與極向標記"
+    },
+    {
+      "file": ".cache/wave26-physics-magnet-p13.png",
+      "sha256": "a5e1d83ea2f86b2dad52b8a2a75c2df760fa1b104922c287efc5f56e226f5411",
+      "read_scope": "PDF13/印刷12：Fig6各動力狀態與力曲線"
+    },
+    {
+      "file": ".cache/wave26-physics-twist-p2.png",
+      "sha256": "6f4a584bfbad5d363d2c28c85aeafa4e120d1bf5e7da09f75810847b1bffdfa2",
+      "read_scope": "PDF2 Fig1F的同/異手性伸縮熱反號；同頁Fig1A–E僅背景"
+    },
+    {
+      "file": ".cache/wave26-physics-trampoline-fig2.png",
+      "sha256": "61495baf3b1887e77e46c5884f4332ce79937038598e4962b8793bbe22c7403c",
+      "read_scope": "兩球接觸與離床序列"
+    },
+    {
+      "file": ".cache/wave26-physics-trampoline-fig6.png",
+      "sha256": "4fa7677f2e8233b474bc18524083c1f6be1335cc9e26f12a00627eef810a149a",
+      "read_scope": "有無第二球的瞬時支承力對照"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W26P-T01",
+      "body_seconds": 105,
+      "core_seconds": {
+        "P26001": 105
+      },
+      "chapter_seconds": [
+        45,
+        60
+      ],
+      "max_beat_seconds": 35,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W26P-T02",
+      "body_seconds": 95,
+      "core_seconds": {
+        "P26002": 95
+      },
+      "chapter_seconds": [
+        45,
+        50
+      ],
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W26P-T03",
+      "body_seconds": 105,
+      "core_seconds": {
+        "P26003": 105
+      },
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "max_beat_seconds": 35,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "all_strings_rstrip": true,
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true,
+    "checks": "只核本包結構、時間與雜湊；無中央build/tests。"
+  },
+  "unresolved": [
+    "等待另一作者逐來源/去重/片長覆核及root共同top5；不把作者自審稱獨立通過。"
+  ],
+  "revision_history": [
+    {
+      "reason": "root非作者編輯：刪三案獨立5秒重述回扣，以及磁鐵章末5秒純追問；以最後可見對照收尾，不補新內容。",
+      "removed_seconds": 20,
+      "before_files": [
+        {
+          "file": "batches/wave26-physics.json",
+          "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+        },
+        {
+          "file": "reviews/wave26-physics-themes.json",
+          "sha256": "d5f23c11af4ab7383add459957f7d7015187afe139ba89a0e3753e68266bfbc7"
+        },
+        {
+          "file": "reviews/wave26-physics-author.json",
+          "sha256": "d9e2dee586dea958b0ee947cd1663b37a6e4d521317033393a700a0ddb94131a"
+        }
+      ],
+      "after_theme_sha256": "da2225d59ea9cd50d2a6f2882bc772cbbfb415d80b66c036bbe55509f7184ec5",
+      "candidate_content_changed": false,
+      "seconds_before": [
+        115,
+        100,
+        110
+      ],
+      "seconds_after": [
+        105,
+        95,
+        105
+      ]
+    }
+  ]
+}

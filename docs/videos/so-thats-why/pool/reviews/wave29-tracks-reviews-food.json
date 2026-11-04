@@ -1,0 +1,1368 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R29001",
+    "R29002",
+    "R29003",
+    "R29004",
+    "R29005",
+    "R29006"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave29-food.json",
+      "sha256": "86cb833b187af57a693faf86514c61a712de7b24889924e8104dfa63c41bff2f"
+    },
+    {
+      "file": "reviews/wave29-food-themes.json",
+      "sha256": "d01ed0e0ff6a13e2c4d794f322cdf7c22dae3659946c30d2ae1cb34d1ebf59f7"
+    },
+    {
+      "file": "reviews/wave29-food-author.json",
+      "sha256": "464b7d7731a6ded1b4bbdcfb625db359e0bdbc203ff8e737264a2ff9154e438e"
+    }
+  ],
+  "role_and_scope": "足跡作者獨立查讀食物組的來源範圍、問答差異與三個紙上片長。",
+  "baseline": {
+    "head": "d45e37fc4ff32672b9bb97b6d4e33621537b7a09",
+    "selected": 3083,
+    "raw_records": 3458,
+    "themes": 286,
+    "not_added": 1286,
+    "pool_sha256": "36c7cefc4dd174b3359461229840e5d411f878c64f1ecf36470eb19de4e702be"
+  },
+  "candidate_review": [
+    {
+      "id": "R29001",
+      "canonical_id": "R29001",
+      "decision": "retain",
+      "reason": "七口無釉鍋先固定食譜再換菜，同鍋三類位置的替換速度回答訊號涵蓋哪些餐次。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "source_ids": [
+        "R29-S001"
+      ]
+    },
+    {
+      "id": "R29002",
+      "canonical_id": "R29002",
+      "decision": "retain",
+      "reason": "同時代生物碳源可帶不同初始放射碳訊號，烹煮不會把偏差歸零；不同河流與食材的比較排除通用校正。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "source_ids": [
+        "R29-S002"
+      ]
+    },
+    {
+      "id": "R29003",
+      "canonical_id": "R29003",
+      "decision": "retain",
+      "reason": "需碎屑內的組織、微小孔隙與處理參照共同支持扁麵餅狀，保留了可辨的加工步驟及侷限。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        60,
+        95
+      ],
+      "source_ids": [
+        "R29-S003"
+      ]
+    },
+    {
+      "id": "R29004",
+      "canonical_id": "R29004",
+      "decision": "retain",
+      "reason": "同部位炭化糊粉層雙壁提供磨碎後的萌發證據，能和菌蝕、熱害等替代解釋對照，不能據此認定釀酒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "source_ids": [
+        "R29-S004"
+      ]
+    },
+    {
+      "id": "R29005",
+      "canonical_id": "R29005",
+      "decision": "retain",
+      "reason": "穿孔只限定可能的分離操作，同地不同器類與乳脂同位素支持乳品加工；有奶的無孔碗保留反例。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "source_ids": [
+        "R29-S005",
+        "R29-S006"
+      ]
+    },
+    {
+      "id": "R29006",
+      "canonical_id": "R29006",
+      "decision": "retain",
+      "reason": "使用牙結石中的乳清胜肽把器物加工推斷轉換到不同時地的個人資料，再加獨立實驗的萃取空白檢查證據強度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        75,
+        110
+      ],
+      "source_ids": [
+        "R29-S007",
+        "R29-S008"
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R29-S001",
+      "title": "Interpreting ancient food practices: stable isotope and molecular analyses of visible and absorbed residues from a year-long cooking experiment",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核SHA並讀作者當日取得的有效原件或其文字抽取，覆核者未重新HTTP取得。",
+      "reading_scope": "HTML P025、041–051、060–063、072、082、092、096；Fig2。",
+      "locator": "P025、P041–051、P059–063、P072、P082、P092、P096。Fig 2目讀。",
+      "cache": {
+        "file": ".cache/wave29-food-pots.html",
+        "sha256": "4193e77029baa93c8a7d084403e9954a92ee11189d7aba1d2773a62b7597c088",
+        "text_file": ".cache/wave29-food-pots.txt",
+        "text_sha256": "86e830968188fd5d6c7166ac8d21a225209641285d1041b9c09408d0c676e29b"
+      },
+      "result": "七口鍋長期煮同一食譜再切換。焦塊、薄焦層、吸收脂質有不同時間反應。",
+      "limitations": "陶壁也有新指標；不等於完全沒有近期訊號，更無逐日菜單。"
+    },
+    {
+      "source_id": "R29-S002",
+      "title": "The freshwater reservoir effect in radiocarbon dating",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核SHA並讀作者當日取得的有效原件或其文字抽取，覆核者未重新HTTP取得。",
+      "reading_scope": "P023–029、075–081、090–091、099–108；Fig3。",
+      "locator": "P023–029碳庫、P075–091現代河流樣本及Fig 3，P099–108出土鍋垢與共存地層不確定性。",
+      "cache": {
+        "file": ".cache/wave29-food-fresh.html",
+        "sha256": "092d83140714637096f0013faae45d86d1d449ef1e1a0c0cbfeb198bc6fa0ae4",
+        "text_file": ".cache/wave29-food-fresh.txt",
+        "text_sha256": "17a5c9ae8db640c03e0c10468a5bee6b781c3d7d498a52983df416280bea060b"
+      },
+      "result": "河中碳源、食物網和實測現代樣品的偏老差異支持問題；鍋垢實驗為文內引用研究。",
+      "limitations": "Fig3含不同年分與樣本，不能把它畫成同鍋魚料逐餐實驗；也不能只靠橫軸推校正值。"
+    },
+    {
+      "source_id": "R29-S003",
+      "title": "Archaeobotanical evidence reveals the origins of bread 14,400 years ago in northeastern Jordan",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核SHA並讀作者當日取得的有效原件或其文字抽取，覆核者未重新HTTP取得。",
+      "reading_scope": "出版PDF pp2–4內孔隙、穀物組織、澱粉與製程比較；p3 Fig3。",
+      "locator": "PDF頁2–4，24個麵餅狀碎屑的孔洞、磨碎植物組織、材料限制；p3 Fig 3A–C目讀。",
+      "cache": {
+        "file": ".cache/wave29-food-bread.pdf",
+        "sha256": "9b8cf5a715bfdbba0005171c2c434e191df461f6a9b787e418dc72df02d88460",
+        "text_file": ".cache/wave29-food-bread.txt",
+        "text_sha256": "4f17e02e7da7405eccc5213a718261f9cca4064c971231539219827311ea4f00"
+      },
+      "result": "24件樣本的結構是推斷基礎，炭化前是否先烤的參照是該文引用的先前實驗。",
+      "limitations": "未重讀該篇先前實驗或補充全文。孔隙數值不提供辨菜名的萬用門檻。"
+    },
+    {
+      "source_id": "R29-S004",
+      "title": "Mashes to Mashes, Crust to Crust. Presenting a novel microstructural marker for malting in the archaeological record",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核SHA並讀作者當日取得的有效原件或其文字抽取，覆核者未重新HTTP取得。",
+      "reading_scope": "P136–146、152、162、244–252、260–274；Fig15。",
+      "locator": "P136–146、P152、P162、P244–252、P260–274；目讀Fig15的糊粉層雙壁量測示例。",
+      "cache": {
+        "file": ".cache/wave29-food-malt.html",
+        "sha256": "74b51d75cb3f83b1d09c754aed1b9094e496b85027fffff318fe1f37d26312d0",
+        "text_file": ".cache/wave29-food-malt.txt",
+        "text_sha256": "0d643aa838951d11f810f717096d40234dca3401bbb289e3ce207f2b60e57876"
+      },
+      "result": "在穀粒相當部位量同類雙壁，發芽大麥經炭化後仍有變薄線索。另查菌蝕和受熱。",
+      "limitations": "測量從發芽第一天起，不能畫成每天差異都顯著；文內未證含酒精。"
+    },
+    {
+      "source_id": "R29-S005",
+      "title": "Chemical analysis of sieve vessels reveals first cheese making in Northern Europe in the 6th millennium BC",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核SHA並讀作者當日取得的有效原件或其文字抽取，覆核者未重新HTTP取得。",
+      "reading_scope": "Bristol研究團隊說明 P002–010。",
+      "locator": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。",
+      "cache": {
+        "file": ".cache/wave29-food-sieve-lab.html",
+        "sha256": "c07a49d8293d8f1ffd01472d1234adc2b010397578c711ed917a848854c66581",
+        "text_file": ".cache/wave29-food-sieve-lab.txt",
+        "text_sha256": "ef0c96035fdbfd7aaa30fc012b8994fd77ce70b70cec18d6b54c301741fb3b9c"
+      },
+      "result": "器形與乳脂同位素聯判，其他器皿分布限制對篩器用途的推斷。",
+      "limitations": "這是研究團隊公開說明，與S006同工作；別把穿孔本身當內容物鑑別。"
+    },
+    {
+      "source_id": "R29-S006",
+      "title": "Earliest evidence for cheese making in the sixth millennium BC in northern Europe",
+      "decision": "limited_abstract_and_figure_titles",
+      "read_via": "獨立核SHA並讀作者當日取得的有效原件或其文字抽取，覆核者未重新HTTP取得。",
+      "reading_scope": "Nature頁面 P020–022摘要與存取提示、P036–038三個圖標題。",
+      "locator": "出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+      "cache": {
+        "file": ".cache/wave29-food-sieve.html",
+        "sha256": "aa09a03fa63461ed8c298439a700d761c0a08f1f3d85d0b775cfddd12b1e8ef1",
+        "text_file": ".cache/wave29-food-sieve.txt",
+        "text_sha256": "d544f12d98e65f2f24f16b44b9aced5cb5e2fce27385469766404c2b9ffb993b"
+      },
+      "result": "正式摘要支持出土乳脂與篩器組合的論點，與Bristol材料核同一研究身分。",
+      "limitations": "付費內文未讀，沒用圖標題支持具體殘留對照。"
+    },
+    {
+      "source_id": "R29-S007",
+      "title": "Direct evidence of milk consumption from ancient human dental calculus",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核SHA並讀作者當日取得的有效原件或其文字抽取，覆核者未重新HTTP取得。",
+      "reading_scope": "P060–065、089–091結果與控制；Fig2。",
+      "locator": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。",
+      "cache": {
+        "file": ".cache/wave29-food-milk.html",
+        "sha256": "f363e677056eccb5d3d822d1da828b3fe1c2d8ab93106245459b9059cb5bf480",
+        "text_file": ".cache/wave29-food-milk.txt",
+        "text_sha256": "87ad5b8169a763648e158b34abc08e8802259e6a16386fe3e2834a88af7f234b"
+      },
+      "result": "部分牙結石的BLG序列對應乳製品，有機會細分攝入來源。查萃取空白及其他實驗對照的該蛋白。",
+      "limitations": "未檢出不能排除飲食接觸；圖2b彙整多樣本，不能當成一人的整個蛋白。"
+    },
+    {
+      "source_id": "R29-S008",
+      "title": "Assessing the degradation of ancient milk proteins through site-specific deamidation patterns",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核SHA並讀作者當日取得的有效原件或其文字抽取，覆核者未重新HTTP取得。",
+      "reading_scope": "P045–048、067–071、090–095、105–109；Fig3；另讀勘誤經費段。",
+      "locator": "P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+      "cache": {
+        "file": ".cache/wave29-food-deamid.html",
+        "sha256": "ce478aed1442372754ddd861acd91f46e93e640e3d67cf3c97d0e638cfe14b0d",
+        "text_file": ".cache/wave29-food-deamid.txt",
+        "text_sha256": "28121fe08509797c176e5b16ec4939c670ab2571f408a68ffc2077d512be2026"
+      },
+      "result": "現代實驗室污染測試中，萃取空白有5條酪蛋白胜肽和1條BLG。化學變化並非通用年代證據。",
+      "limitations": "此實驗與2014不同實驗室/樣本，不能把這個空白當成2014資料污染證明。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "source_id": "R29-S001",
+      "file": ".cache/wave29-food-pots-fig2.png",
+      "sha256": "4d7a7fad3917d77bf7eecce64b6d722f76f70649f7281037ef4dea308ba8996c",
+      "scope": "Fig2三種符號分示鍋內三類殘留在切換食譜後的位置。"
+    },
+    {
+      "source_id": "R29-S002",
+      "file": ".cache/wave29-food-fresh-fig3.png",
+      "sha256": "940688557bba850c688e00a3f398e38d2c775eeaa75b7bff048462e4261b90b9",
+      "scope": "Fig3不同符號及樣本的δ13C與放射碳年齡，不能畫成一張固定校正表。"
+    },
+    {
+      "source_id": "R29-S003",
+      "file": ".cache/wave29-food-bread-p3.png",
+      "sha256": "fc54247a6a4109a1ebfe3decfb1524f58fa8d6b3c388713196694c9e6efb76fc",
+      "scope": "Fig3 A、B、C為不同碎屑，分框保留比例尺。"
+    },
+    {
+      "source_id": "R29-S004",
+      "file": ".cache/wave29-food-malt-fig15.png",
+      "sha256": "1eb16c12b889e6f9f25829844bf46b6ec31ce3383f0c6ff14a5e568218829045",
+      "scope": "Fig15示範雙壁量測位置，不是萌芽天數時間序列。"
+    },
+    {
+      "source_id": "R29-S007",
+      "file": ".cache/wave29-food-milk-fig2.png",
+      "sha256": "6e610eb08718993ff84d0a36a502bccfb777a8e894244fa70c507305e4dd6a19",
+      "scope": "Fig2牙結石位置與合併蛋白序列覆蓋屬不同尺度。"
+    },
+    {
+      "source_id": "R29-S008",
+      "file": ".cache/wave29-food-deamid-fig3.png",
+      "sha256": "97821484fa2a27af60066f7ca677d29ec56d4fb392167a96eba9ff8d1ead08b5",
+      "scope": "Fig3辨酪蛋白及BLG樣本/空白條帶；桿內的殘基數字不可直接當作額外胜肽數量。"
+    }
+  ],
+  "source_identity_review": [
+    {
+      "source_id": "R29-S001",
+      "url": "https://www.nature.com/articles/s41598-020-70109-8",
+      "version": "2020，10.1038/s41598-020-70109-8",
+      "result": "以這份檔案的版本及讀取範圍計一次；附隨勘誤不增加研究數。"
+    },
+    {
+      "source_id": "R29-S002",
+      "url": "https://www.nature.com/articles/BMC2050-7445-1-24",
+      "version": "2013，10.1186/2050-7445-1-24",
+      "result": "以這份檔案的版本及讀取範圍計一次；附隨勘誤不增加研究數。"
+    },
+    {
+      "source_id": "R29-S003",
+      "url": "https://discovery.ucl.ac.uk/10052964/1/Arranz-Otaeguia_7925.full.pdf",
+      "version": "2018，10.1073/pnas.1801071115",
+      "result": "以這份檔案的版本及讀取範圍計一次；附隨勘誤不增加研究數。"
+    },
+    {
+      "source_id": "R29-S004",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231696",
+      "version": "2020，10.1371/journal.pone.0231696",
+      "result": "以這份檔案的版本及讀取範圍計一次；附隨勘誤不增加研究數。"
+    },
+    {
+      "source_id": "R29-S005",
+      "url": "https://www.bristol.ac.uk/news/2012/9008.html",
+      "version": "2012-12-12，與Salque等人Nature研究同一案例",
+      "result": "S005與S006同研究不同路徑。"
+    },
+    {
+      "source_id": "R29-S006",
+      "url": "https://www.nature.com/articles/nature11698",
+      "version": "2012 online／Nature 493 (2013)，10.1038/nature11698",
+      "result": "S005與S006同研究不同路徑。"
+    },
+    {
+      "source_id": "R29-S007",
+      "url": "https://www.nature.com/articles/srep07104",
+      "version": "2014，10.1038/srep07104",
+      "result": "以這份檔案的版本及讀取範圍計一次；附隨勘誤不增加研究數。"
+    },
+    {
+      "source_id": "R29-S008",
+      "url": "https://www.nature.com/articles/s41598-021-87125-x",
+      "version": "2021，10.1038/s41598-021-87125-x；另核2022作者更正，僅補Funding",
+      "result": "以這份檔案的版本及讀取範圍計一次；附隨勘誤不增加研究數。"
+    }
+  ],
+  "related_source_review": [
+    {
+      "source_id": "R29-S008",
+      "url": "https://www.nature.com/articles/s41598-022-06151-5",
+      "finding": "原刊補列研究經費，沒有更改本題採用的結果。",
+      "cache": {
+        "file": ".cache/wave29-food-correction.html",
+        "sha256": "1a444e437f10289587abbd5203d744eb2b6b105af13c5708e97d704e033ceda7",
+        "text_file": ".cache/wave29-food-correction.txt",
+        "text_sha256": "eca7405efe549261ba1bcd67657d83015f87d7d8ec322b537979fddad9233a45"
+      },
+      "reviewer_result": "讀到勘誤更正遺漏經費敘述，沒有改動Fig3或採用結果。"
+    }
+  ],
+  "source_reading_summary": {
+    "candidate_sources_read": 8,
+    "not_added_only_sources": 0,
+    "fresh_http_by_reviewer": 0,
+    "valid_author_caches_independently_read": 8,
+    "figures_or_pages_visually_read": 6,
+    "formal_article_bodies_read": 6,
+    "team_explanation_read": 1,
+    "abstract_and_titles_only": 1,
+    "underlying_studies": 7
+  },
+  "source_fetch_limits": "以有效副本核指定範圍；S006限公開摘要與圖標題。未宣稱獨立重抓、全論文逐句查核或核所有補充材料。",
+  "author_near_pair_review": [
+    {
+      "a": "R29001",
+      "b": "D2032",
+      "decision": "distinct",
+      "reason": "油脂在室溫的硬軟由相態決定；陶器題以換菜後不同層位的替換追溯時間。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29001",
+      "b": "H3070",
+      "decision": "distinct",
+      "reason": "核磁自旋性質與碳同位素沿餐次變化的觀測量不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29002",
+      "b": "N133",
+      "decision": "distinct",
+      "reason": "衰變時鐘不包含當代河生物取用年代不同的碳源。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29002",
+      "b": "N082",
+      "decision": "distinct",
+      "reason": "岩石溶解可提供背景；新答案要把老碳傳給生物及焦垢並作同年比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29002",
+      "b": "R29001",
+      "decision": "distinct",
+      "reason": "取樣位置混入舊餐不要求碳庫偏老；當天鍋垢也可能因食材的初始碳池顯老。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29003",
+      "b": "F4006",
+      "decision": "distinct",
+      "reason": "蛋糕定型後氣體擴張的受限條件，不是用組織及成形孔隙鑑識炭化碎屑。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29003",
+      "b": "D2270",
+      "decision": "distinct",
+      "reason": "洗去澱粉的麵筋力學不回答炭化後怎樣辨成形食物。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29004",
+      "b": "V3093",
+      "decision": "distinct",
+      "reason": "儲備動員是上游生理過程；炭化後雙壁的殘留變化和排除菌蝕才是新鑑別條件。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29004",
+      "b": "R29003",
+      "decision": "distinct",
+      "reason": "孔隙/組織判加工形態與同一糊粉層雙壁反映萌發，採樣單位、對照與推斷目標不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29005",
+      "b": "D2058",
+      "decision": "distinct",
+      "reason": "凝乳切小有助排液，不能從凝乳加工力學鑑定陶器接觸過乳脂。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29005",
+      "b": "D2056",
+      "decision": "distinct",
+      "reason": "凝乳形成的路徑不等於對器形及吸附脂質兩種證據作聯判。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29006",
+      "b": "R29005",
+      "decision": "distinct",
+      "reason": "容器有乳品是加工層次；牙結石中序列配對與萃取空白的檢查限在個人樣本。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R29006",
+      "b": "V3032",
+      "decision": "distinct",
+      "reason": "基因密碼的同義性與蛋白片段用作攝入/污染識別的證據不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R29001",
+      "b": "D2160",
+      "decision": "distinct",
+      "reason": "罐裝物內熱傳快慢不同於改食譜後基材保留化學記錄。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.556049
+    },
+    {
+      "a": "R29001",
+      "b": "M2056",
+      "decision": "distinct",
+      "reason": "分層統計找變異來源，不涉及油脂在器壁的長時間替換。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.543629
+    },
+    {
+      "a": "R29001",
+      "b": "F15004",
+      "decision": "distinct",
+      "reason": "鍋移動時顆粒運動的軌跡與陶壁吸附的訊號時間窗不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.52492
+    },
+    {
+      "a": "R29001",
+      "b": "D2163",
+      "decision": "distinct",
+      "reason": "巧克力流變沒有改食材後的殘留時間對照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.522189
+    },
+    {
+      "a": "R29001",
+      "b": "M2045",
+      "decision": "distinct",
+      "reason": "配方比例總量限制不會推得三處取樣的不同反應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.516529
+    },
+    {
+      "a": "R29002",
+      "b": "B2020",
+      "decision": "distinct",
+      "reason": "鮭魚繁殖分配不涉及採用河中老碳而顯老。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.610877
+    },
+    {
+      "a": "R29002",
+      "b": "N199",
+      "decision": "distinct",
+      "reason": "缺氧的生態過程不能說明放射碳初始值不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.590702
+    },
+    {
+      "a": "R29002",
+      "b": "W5005",
+      "decision": "distinct",
+      "reason": "除磷細菌營養條件下釋磷，與河流老碳的食物網傳遞不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.585908
+    },
+    {
+      "a": "R29002",
+      "b": "B2089",
+      "decision": "distinct",
+      "reason": "化能合成關注能量來源；新題是碳年代偏差及參照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.579941
+    },
+    {
+      "a": "R29002",
+      "b": "B2192",
+      "decision": "distinct",
+      "reason": "河壩改變水流棲地不涉及碳年代錯位。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.577779
+    },
+    {
+      "a": "R29003",
+      "b": "R29004",
+      "decision": "distinct",
+      "reason": "細胞壁變薄指向萌發，孔隙和碎穀組織指向成形後烘烤。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.629993
+    },
+    {
+      "a": "R29003",
+      "b": "R29005",
+      "decision": "distinct",
+      "reason": "陶篩穿孔配合乳脂殘留，沒有燒黑麵糰組織對照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.619195
+    },
+    {
+      "a": "R29003",
+      "b": "N239",
+      "decision": "distinct",
+      "reason": "地表洞穴成因與碎屑內部孔隙判製作步驟不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.599081
+    },
+    {
+      "a": "R29003",
+      "b": "L093",
+      "decision": "distinct",
+      "reason": "葉片氣隙用於氣體交換；焦屑孔隙是加工及炭化留下的線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.595655
+    },
+    {
+      "a": "R29003",
+      "b": "D2090",
+      "decision": "distinct",
+      "reason": "地板碎石斷毛細通道不是炭化食品的加工參照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.574394
+    },
+    {
+      "a": "R29004",
+      "b": "E9004",
+      "decision": "distinct",
+      "reason": "果莢組織釋放能量，沒有萌發酶分解造成的糊粉層雙壁改變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.638918
+    },
+    {
+      "a": "R29004",
+      "b": "R29003",
+      "decision": "distinct",
+      "reason": "判整塊食品加工與判磨碎穀物在磨粉前萌發，需要不同組織與實驗控制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.629993
+    },
+    {
+      "a": "R29004",
+      "b": "F4008",
+      "decision": "distinct",
+      "reason": "磨粉調質改變粉麩分離，不印證萌發餘留的雙壁厚薄。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.628571
+    },
+    {
+      "a": "R29004",
+      "b": "B2208",
+      "decision": "distinct",
+      "reason": "火後活植株如何再生不同於炭化遺存辨萌發。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.612529
+    },
+    {
+      "a": "R29004",
+      "b": "F14007",
+      "decision": "distinct",
+      "reason": "摩擦改變表面粗度不涉及雙壁的生物降解或解剖量測位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.603333
+    },
+    {
+      "a": "R29005",
+      "b": "D2149",
+      "decision": "distinct",
+      "reason": "泥漿模內成壁涉及水分抽取，不鑑別器物接觸過的成分。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667297
+    },
+    {
+      "a": "R29005",
+      "b": "R29003",
+      "decision": "distinct",
+      "reason": "焦屑的加工孔隙與古器形/乳脂共同指向的分離用途不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.619195
+    },
+    {
+      "a": "R29005",
+      "b": "F8001",
+      "decision": "distinct",
+      "reason": "精煉降低巧克力流動門檻，不能從器形推出殘留乳脂。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.587138
+    },
+    {
+      "a": "R29005",
+      "b": "A19004",
+      "decision": "distinct",
+      "reason": "蜜蜂口器與液面幾何不涉及古陶片殘留辨物。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.570443
+    },
+    {
+      "a": "R29005",
+      "b": "P240",
+      "decision": "distinct",
+      "reason": "膠體懸浮原理不會識別古代篩器的凝乳用途。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.566101
+    },
+    {
+      "a": "R29006",
+      "b": "D2033",
+      "decision": "distinct",
+      "reason": "用膜截留蛋白是食品加工；古蛋白序列與空白才判別個人樣本的乳品訊號。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.683302
+    },
+    {
+      "a": "R29006",
+      "b": "D2057",
+      "decision": "distinct",
+      "reason": "熱處理改乳清蛋白在凝乳中去向，不是蛋白有無可能受污染的鑑別。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.646936
+    },
+    {
+      "a": "R29006",
+      "b": "D2034",
+      "decision": "distinct",
+      "reason": "補水洗出小分子與牙結石中的胜肽來源判讀不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.642886
+    },
+    {
+      "a": "R29006",
+      "b": "D2056",
+      "decision": "distinct",
+      "reason": "兩種凝乳法的組成差異不證明哪個個人吃過乳品。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.62053
+    },
+    {
+      "a": "R29006",
+      "b": "D2038",
+      "decision": "distinct",
+      "reason": "兩段均質解聚脂滴，和樣本內的蛋白序列辨認屬不同機制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.605788
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R29001",
+        "b": "D2032",
+        "reason": "油脂在室溫的硬軟由相態決定；陶器題以換菜後不同層位的替換追溯時間。"
+      },
+      {
+        "a": "R29001",
+        "b": "H3070",
+        "reason": "核磁自旋性質與碳同位素沿餐次變化的觀測量不同。"
+      },
+      {
+        "a": "R29002",
+        "b": "N133",
+        "reason": "衰變時鐘不包含當代河生物取用年代不同的碳源。"
+      },
+      {
+        "a": "R29002",
+        "b": "N082",
+        "reason": "岩石溶解可提供背景；新答案要把老碳傳給生物及焦垢並作同年比較。"
+      },
+      {
+        "a": "R29002",
+        "b": "R29001",
+        "reason": "取樣位置混入舊餐不要求碳庫偏老；當天鍋垢也可能因食材的初始碳池顯老。"
+      },
+      {
+        "a": "R29003",
+        "b": "F4006",
+        "reason": "蛋糕定型後氣體擴張的受限條件，不是用組織及成形孔隙鑑識炭化碎屑。"
+      },
+      {
+        "a": "R29003",
+        "b": "D2270",
+        "reason": "洗去澱粉的麵筋力學不回答炭化後怎樣辨成形食物。"
+      },
+      {
+        "a": "R29004",
+        "b": "V3093",
+        "reason": "儲備動員是上游生理過程；炭化後雙壁的殘留變化和排除菌蝕才是新鑑別條件。"
+      },
+      {
+        "a": "R29004",
+        "b": "R29003",
+        "reason": "孔隙/組織判加工形態與同一糊粉層雙壁反映萌發，採樣單位、對照與推斷目標不同。"
+      },
+      {
+        "a": "R29005",
+        "b": "D2058",
+        "reason": "凝乳切小有助排液，不能從凝乳加工力學鑑定陶器接觸過乳脂。"
+      },
+      {
+        "a": "R29005",
+        "b": "D2056",
+        "reason": "凝乳形成的路徑不等於對器形及吸附脂質兩種證據作聯判。"
+      },
+      {
+        "a": "R29006",
+        "b": "R29005",
+        "reason": "容器有乳品是加工層次；牙結石中序列配對與萃取空白的檢查限在個人樣本。"
+      },
+      {
+        "a": "R29006",
+        "b": "V3032",
+        "reason": "基因密碼的同義性與蛋白片段用作攝入/污染識別的證據不同。"
+      },
+      {
+        "a": "R29001",
+        "b": "D2160",
+        "reason": "罐裝物內熱傳快慢不同於改食譜後基材保留化學記錄。"
+      },
+      {
+        "a": "R29001",
+        "b": "M2056",
+        "reason": "分層統計找變異來源，不涉及油脂在器壁的長時間替換。"
+      },
+      {
+        "a": "R29001",
+        "b": "F15004",
+        "reason": "鍋移動時顆粒運動的軌跡與陶壁吸附的訊號時間窗不同。"
+      },
+      {
+        "a": "R29001",
+        "b": "D2163",
+        "reason": "巧克力流變沒有改食材後的殘留時間對照。"
+      },
+      {
+        "a": "R29001",
+        "b": "M2045",
+        "reason": "配方比例總量限制不會推得三處取樣的不同反應。"
+      },
+      {
+        "a": "R29002",
+        "b": "B2020",
+        "reason": "鮭魚繁殖分配不涉及採用河中老碳而顯老。"
+      },
+      {
+        "a": "R29002",
+        "b": "N199",
+        "reason": "缺氧的生態過程不能說明放射碳初始值不同。"
+      },
+      {
+        "a": "R29002",
+        "b": "W5005",
+        "reason": "除磷細菌營養條件下釋磷，與河流老碳的食物網傳遞不同。"
+      },
+      {
+        "a": "R29002",
+        "b": "B2089",
+        "reason": "化能合成關注能量來源；新題是碳年代偏差及參照。"
+      },
+      {
+        "a": "R29002",
+        "b": "B2192",
+        "reason": "河壩改變水流棲地不涉及碳年代錯位。"
+      },
+      {
+        "a": "R29003",
+        "b": "R29005",
+        "reason": "陶篩穿孔配合乳脂殘留，沒有燒黑麵糰組織對照。"
+      },
+      {
+        "a": "R29003",
+        "b": "N239",
+        "reason": "地表洞穴成因與碎屑內部孔隙判製作步驟不同。"
+      },
+      {
+        "a": "R29003",
+        "b": "L093",
+        "reason": "葉片氣隙用於氣體交換；焦屑孔隙是加工及炭化留下的線索。"
+      },
+      {
+        "a": "R29003",
+        "b": "D2090",
+        "reason": "地板碎石斷毛細通道不是炭化食品的加工參照。"
+      },
+      {
+        "a": "R29004",
+        "b": "E9004",
+        "reason": "果莢組織釋放能量，沒有萌發酶分解造成的糊粉層雙壁改變。"
+      },
+      {
+        "a": "R29004",
+        "b": "F4008",
+        "reason": "磨粉調質改變粉麩分離，不印證萌發餘留的雙壁厚薄。"
+      },
+      {
+        "a": "R29004",
+        "b": "B2208",
+        "reason": "火後活植株如何再生不同於炭化遺存辨萌發。"
+      },
+      {
+        "a": "R29004",
+        "b": "F14007",
+        "reason": "摩擦改變表面粗度不涉及雙壁的生物降解或解剖量測位置。"
+      },
+      {
+        "a": "R29005",
+        "b": "D2149",
+        "reason": "泥漿模內成壁涉及水分抽取，不鑑別器物接觸過的成分。"
+      },
+      {
+        "a": "R29005",
+        "b": "F8001",
+        "reason": "精煉降低巧克力流動門檻，不能從器形推出殘留乳脂。"
+      },
+      {
+        "a": "R29005",
+        "b": "A19004",
+        "reason": "蜜蜂口器與液面幾何不涉及古陶片殘留辨物。"
+      },
+      {
+        "a": "R29005",
+        "b": "P240",
+        "reason": "膠體懸浮原理不會識別古代篩器的凝乳用途。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2033",
+        "reason": "用膜截留蛋白是食品加工；古蛋白序列與空白才判別個人樣本的乳品訊號。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2057",
+        "reason": "熱處理改乳清蛋白在凝乳中去向，不是蛋白有無可能受污染的鑑別。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2034",
+        "reason": "補水洗出小分子與牙結石中的胜肽來源判讀不同。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2056",
+        "reason": "兩種凝乳法的組成差異不證明哪個個人吃過乳品。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2038",
+        "reason": "兩段均質解聚脂滴，和樣本內的蛋白序列辨認屬不同機制。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R29-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29001"
+      ],
+      "reason": "同樣器壁分層換食譜，原核心即可容納。"
+    },
+    {
+      "id": "R29-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29001"
+      ],
+      "reason": "混合記錄不可排出每日菜序。"
+    },
+    {
+      "id": "R29-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29002"
+      ],
+      "reason": "欠缺同處同時參照，不能把地域差異折成固定年差。"
+    },
+    {
+      "id": "R29-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29002"
+      ],
+      "reason": "食材碳源年齡、用鍋事件、製陶日期須分開。"
+    },
+    {
+      "id": "R29-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29003"
+      ],
+      "reason": "一個孔不足辨菜名。"
+    },
+    {
+      "id": "R29-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29003"
+      ],
+      "reason": "留存件數不足以估日常食譜頻率。"
+    },
+    {
+      "id": "R29-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29004"
+      ],
+      "reason": "麥芽不直接證成發酵後的酒。"
+    },
+    {
+      "id": "R29-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "V3093"
+      ],
+      "reason": "活種子儲備動員已有舊核V3093。"
+    },
+    {
+      "id": "R29-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29005"
+      ],
+      "reason": "形狀不能單獨識別所篩物。"
+    },
+    {
+      "id": "R29-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "D2058"
+      ],
+      "reason": "切小凝乳的排液問題已有D2058。"
+    },
+    {
+      "id": "R29-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29006"
+      ],
+      "reason": "物種替換未改胜肽辨認與空白檢核邏輯。"
+    },
+    {
+      "id": "R29-NA012",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29006"
+      ],
+      "reason": "陰性還受蛋白組成與保存影響。"
+    },
+    {
+      "id": "R29-NA013",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R29006"
+      ],
+      "reason": "化學變化程度不能充當普適時計。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W29R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 100,
+      "chapter_seconds": [
+        50,
+        50
+      ],
+      "core_totals": {
+        "R29001": 50,
+        "R29002": 50
+      },
+      "core_caps": {
+        "R29001": 100,
+        "R29002": 100
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若把兩組實驗看成同鍋做過魚肉換菜，先拆成兩個獨立短段。無法畫出取樣層次就留作素材。",
+      "editorial_result": "分開換菜與淡水老碳兩組獨立研究，開場的第幾餐與下章的碳年份各有不同參照；收短轉場後即可成立。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W29R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 100,
+      "chapter_seconds": [
+        50,
+        50
+      ],
+      "core_totals": {
+        "R29003": 50,
+        "R29004": 50
+      },
+      "core_caps": {
+        "R29003": 95,
+        "R29004": 100
+      },
+      "maximum_beat_seconds": 35,
+      "drop_if_read": "若兩個個案被誤聽為同一塊古麵餅曾用麥芽，必須改成分立兩段。撤去解剖名詞後仍要能看出哪一步有證據。",
+      "editorial_result": "先辨出土碎片加工後的形態，再清空樣本、轉到磨粉前是否萌發。舊烤餅參照與24件考古材料分框。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W29R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 100,
+      "chapter_seconds": [
+        45,
+        55
+      ],
+      "core_totals": {
+        "R29005": 45,
+        "R29006": 55
+      },
+      "core_caps": {
+        "R29005": 100,
+        "R29006": 110
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若試讀變成蛋白名稱和實驗流程清單，先剪術語，只保留陶篩、牙結石與空白管三個有不同意義的畫面。",
+      "editorial_result": "陶篩加乳脂只能問加工，換不同時地的人體樣本再問個人；2014和2021兩個萃取空白分框。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave29-food.json",
+      "sha256": "90a40acff0920fef58593f3decf44ec29787437b6b04c25883fadb5e154cf559"
+    },
+    {
+      "file": "reviews/wave29-food-themes.json",
+      "sha256": "a1ca0f5827fe82abfd136cf4623f20cfc63649f0946055362e139e70e6573a1d"
+    },
+    {
+      "file": "reviews/wave29-food-author.json",
+      "sha256": "211e76b6362045ee4251a628c6d09134d511961b71e789d7a13dc9e069d105d4"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "FOOD01",
+      "status": "TARGETED_READBACK_PASS",
+      "result": "R29006 visual/T03均改萃取空白，另標不同時地的人體樣本。"
+    },
+    {
+      "id": "FOOD02",
+      "status": "TARGETED_READBACK_PASS",
+      "result": "R29003及T02將前人的烤餅孔隙參照與2018年考古樣本分框。"
+    },
+    {
+      "id": "FOOD03",
+      "status": "TARGETED_READBACK_PASS",
+      "result": "T01不再承諾確定哪一年。第一章尾段15→5，總100秒。T03兩問題結尾15→5，總100秒。T02原100秒。"
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "d0cf7ca84bc8b1bdd7f6e6c0b9cb3d5b12a95a33c9ef769b7ce30285fe334044",
+    "neighbours": {
+      "file": ".cache/wave29-tracks-food-before-wave29-food-neighbours.json",
+      "sha256": "52f5caf7b579a954559aed1d3e2ca72f659bd126ac74b14c91c6443f4e5a26b3"
+    },
+    "candidate_rows": 6,
+    "directed_pairs": 30
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "1929eb537a7beb2c63d68671b117e9be3a7d7fd475dd1398bf61d00c1d89bd1c",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "1929eb537a7beb2c63d68671b117e9be3a7d7fd475dd1398bf61d00c1d89bd1c"
+    },
+    "neighbours": {
+      "file": ".cache/wave29-food-neighbours.json",
+      "sha256": "8e8d0009a173ce88574c5566eb2eabe76c440e9be7eb146c073745fa2b06cfaa"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave29-draft.json",
+      "sha256": "ca7eba1471e4465591559af89610dd473172492e03cc93eaa40f331e42d61267"
+    },
+    "candidate_rows_checked": 6,
+    "directed_pairs_checked": 30,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "direct_comparison_against_common_initial": true,
+    "changed_rows": [],
+    "result": "6行及30個完整問答、範圍、順序和分數與初版rows相同。現版題案與批次另綁定。"
+  },
+  "remaining_blockers": [],
+  "limits": "選題與紙上篇幅通過。未試讀、未核完整劇本或製作。"
+}

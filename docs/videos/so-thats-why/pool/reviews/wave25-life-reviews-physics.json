@@ -1,0 +1,875 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "pool_physics",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "P25001",
+    "P25002",
+    "P25003",
+    "P25004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave25-physics.json",
+      "sha256": "8f09bae68eaac79b95fa149c66c596806ace896b7d182d89d02c9a3e6c0a2db5"
+    },
+    {
+      "file": "reviews/wave25-physics-themes.json",
+      "sha256": "7529cfa70bb8ed5b9987e2143b60e2fe4b7142206eba86e679e9a5a9eb80dbfd"
+    },
+    {
+      "file": "reviews/wave25-physics-author.json",
+      "sha256": "ae4e47203666a0c451a0db151e41321101301b810268c79772494f954554ac4f"
+    }
+  ],
+  "scope": "逐讀本批全部候選問題/答案/條件/視覺/預算、全部退題與作者近對及共同top5。原研究只核下列指定正文；不是全庫逐題查核、整篇逐式重現或逐句劇本批准。",
+  "counts": {
+    "candidates": 4,
+    "not_added": 14,
+    "author_near_pairs": 17,
+    "directed_top5_pairs": 20,
+    "themes": 3,
+    "candidate_supporting_sources_read": 5,
+    "na_only_source_partial_read": 1
+  },
+  "author_near_pair_review": [
+    {
+      "a": "P25001",
+      "b": "LEG-S13",
+      "decision": "distinct",
+      "reason": "導體尖端擊穿與含水介電共振近接不同；無皮橋/整顆及水凝膠控制支持新條件。"
+    },
+    {
+      "a": "P25001",
+      "b": "O3009",
+      "decision": "distinct",
+      "reason": "含水吸收影響穿透為背景，不能單獨解釋間距改變的中心熱點及空殼填水控制。"
+    },
+    {
+      "a": "P25001",
+      "b": "P112",
+      "decision": "distinct",
+      "reason": "鞦韆相位供能是一般受迫振動；相鄰介電體耦合場的空間重分布有獨立控制。"
+    },
+    {
+      "a": "P25001",
+      "b": "E2003",
+      "decision": "distinct",
+      "reason": "靜態極化梯度吸引不是振盪共振場能量集中。"
+    },
+    {
+      "a": "P25002",
+      "b": "I12014",
+      "decision": "distinct",
+      "reason": "I12014既有粉末殼受蒸發擠壓；P25002液中溶質持續結晶供腿底生長，紋理控制是否離面。"
+    },
+    {
+      "a": "P25002",
+      "b": "I12002",
+      "decision": "distinct",
+      "reason": "I12002撞擊壓力突破空氣口袋；P25002結晶侵入微紋理或受限接點長腿，改變答案的是相變與生長。"
+    },
+    {
+      "a": "P25002",
+      "b": "H3092",
+      "decision": "distinct",
+      "reason": "咖啡環補償流是局部鹽供給的背景；紋理限制/去潤濕/底端成長抬殼超過僅留環。"
+    },
+    {
+      "a": "P25002",
+      "b": "N234",
+      "decision": "distinct",
+      "reason": "孔隙結晶壓力撐裂石頭，與局部供液結晶管腿抬起自由殼體不同。"
+    },
+    {
+      "a": "P25002",
+      "b": "P232",
+      "decision": "distinct",
+      "reason": "成核是前提；接點幾何和晶體侵入控制是否離面，無法用過飽和代答。"
+    },
+    {
+      "a": "P25003",
+      "b": "H3041",
+      "decision": "distinct",
+      "reason": "H3041還原離子長出鍍層；P25003氧化界面改張力，非沉積厚度效應。"
+    },
+    {
+      "a": "P25003",
+      "b": "H3034",
+      "decision": "distinct",
+      "reason": "H3034分隔氧化還原以外電路供能；P25003氧化界面能控制形狀，非電池供電機制。"
+    },
+    {
+      "a": "P25003",
+      "b": "P054",
+      "decision": "distinct",
+      "reason": "P054靜態彎月面；P25003同液滴電位/氧化狀態切換與純電容對照。"
+    },
+    {
+      "a": "P25004",
+      "b": "G13003",
+      "decision": "distinct",
+      "reason": "乾顆粒剪切承載網絡是相關微觀背景；新題以底部力與自由落桿前緣時序分出增長附加質量階段。"
+    },
+    {
+      "a": "P25004",
+      "b": "F8001",
+      "decision": "distinct",
+      "reason": "精煉解團改卡住門檻與衝擊參與質量隨時間長大不同；不是換食品名稱。"
+    },
+    {
+      "a": "P25004",
+      "b": "P173",
+      "decision": "distinct",
+      "reason": "動量守恆是背景；持續納入新物料與深度只改後段峰提供額外可驗控制。"
+    },
+    {
+      "a": "P25004",
+      "b": "G13002",
+      "decision": "distinct",
+      "reason": "乾顆粒剪脹不等於此衝擊前緣；本題刻意保留後續壓密量上限，沒有把擠密當定論。"
+    },
+    {
+      "a": "P25004",
+      "b": "P070",
+      "decision": "distinct",
+      "reason": "密度/黏度定義不解釋早期峰與底部力不同時，需瞬態空間前緣與附加質量。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P25001",
+      "b": "D2158",
+      "cosine": 0.681696,
+      "decision": "distinct",
+      "reason": "D2158熱裝排氣改浮起；P25001含水介電體近接造成共振場熱點，非水果處理或浮力。"
+    },
+    {
+      "a": "P25001",
+      "b": "P223",
+      "cosine": 0.672392,
+      "decision": "distinct",
+      "reason": "P223溶解能量收支；P25001幾何改變微波場吸收分布，沒有溶解混合。"
+    },
+    {
+      "a": "P25001",
+      "b": "V3092",
+      "cosine": 0.65369,
+      "decision": "distinct",
+      "reason": "V3092乙烯擴散促熟；P25001相鄰含水體的電磁耦合，非果實訊號。"
+    },
+    {
+      "a": "P25001",
+      "b": "D2024",
+      "cosine": 0.642318,
+      "decision": "distinct",
+      "reason": "D2024果膠網絡增稠；P25001熱點由介電共振耦合，沒有濃縮或凝膠成形過程。"
+    },
+    {
+      "a": "P25001",
+      "b": "E9017",
+      "cosine": 0.641576,
+      "decision": "distinct",
+      "reason": "E9017局部進水裂紋擴展；P25001不靠破皮或裂口，為近接場分布。"
+    },
+    {
+      "a": "P25002",
+      "b": "I12014",
+      "cosine": 0.786012,
+      "decision": "distinct",
+      "reason": "I12014既有粉末殼受蒸發擠壓；P25002液中溶質持續結晶供腿底生長，紋理控制是否離面。"
+    },
+    {
+      "a": "P25002",
+      "b": "N234",
+      "cosine": 0.762626,
+      "decision": "distinct",
+      "reason": "孔隙結晶壓力撐裂石頭，與局部供液結晶管腿抬起自由殼體不同。"
+    },
+    {
+      "a": "P25002",
+      "b": "H3016",
+      "cosine": 0.757874,
+      "decision": "distinct",
+      "reason": "H3016水觸發單體聚合；P25002蒸發結晶與局部接點供液，沒有聚合固化。"
+    },
+    {
+      "a": "P25002",
+      "b": "P053",
+      "cosine": 0.754107,
+      "decision": "distinct",
+      "reason": "P053靜態液滴潤濕競爭不回答相近疏水角下晶體侵入或管腿成長兩結果。"
+    },
+    {
+      "a": "P25002",
+      "b": "H10003",
+      "cosine": 0.745531,
+      "decision": "distinct",
+      "reason": "H10003水分向內擴散推進交聯；P25002水分蒸發帶來鹽析出與接點幾何控制。"
+    },
+    {
+      "a": "P25003",
+      "b": "E2021",
+      "cosine": 0.779703,
+      "decision": "distinct",
+      "reason": "E2021靜電平衡表面電荷；P25003表面氧化生成/移除改界面能，單純電容不足。"
+    },
+    {
+      "a": "P25003",
+      "b": "E2023",
+      "cosine": 0.762064,
+      "decision": "distinct",
+      "reason": "E2023接觸後電荷重分布；P25003液滴界面化學切換與可逆張力回應。"
+    },
+    {
+      "a": "P25003",
+      "b": "E2002",
+      "cosine": 0.74975,
+      "decision": "distinct",
+      "reason": "E2002中性導體極化；P25003電化學氧化與電容對照，非單純電子重新分布。"
+    },
+    {
+      "a": "P25003",
+      "b": "F17007",
+      "cosine": 0.747983,
+      "decision": "distinct",
+      "reason": "F17007液滴錐角/液橋壓力導致分離；P25003單滴氧化界面能切換，沒有兩滴融合條件。"
+    },
+    {
+      "a": "P25003",
+      "b": "H3041",
+      "cosine": 0.746236,
+      "decision": "distinct",
+      "reason": "H3041還原離子長出鍍層；P25003氧化界面改張力，非沉積厚度效應。"
+    },
+    {
+      "a": "P25004",
+      "b": "P21005",
+      "cosine": 0.769878,
+      "decision": "distinct",
+      "reason": "P21005配重與流體力矩穩定滑翔；P25004增長附加質量及盆底受力時序。"
+    },
+    {
+      "a": "P25004",
+      "b": "K11013",
+      "cosine": 0.763516,
+      "decision": "distinct",
+      "reason": "K11013薄片翻轉門檻記最大壓縮史；P25004撞擊前緣帶動更多物料，無同類記憶讀取。"
+    },
+    {
+      "a": "P25004",
+      "b": "F8006",
+      "cosine": 0.7585,
+      "decision": "distinct",
+      "reason": "F8006先前變形破壞/恢復結構的觸變性；P25004瞬態前緣空間增長與早晚受力分期。"
+    },
+    {
+      "a": "P25004",
+      "b": "J6009",
+      "cosine": 0.754207,
+      "decision": "distinct",
+      "reason": "J6009收斂油膜動壓承載與剪切阻力；P25004未接底前的增長參與質量，不靠軸承間隙。"
+    },
+    {
+      "a": "P25004",
+      "b": "P062",
+      "cosine": 0.753097,
+      "decision": "distinct",
+      "reason": "P062穩態流線壓力功轉動能；P25004非穩態前緣納入質量與容器底部到達時序。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P25001",
+        "b": "LEG-S13",
+        "reason": "導體尖端擊穿與含水介電共振近接不同；無皮橋/整顆及水凝膠控制支持新條件。"
+      },
+      {
+        "a": "P25001",
+        "b": "O3009",
+        "reason": "含水吸收影響穿透為背景，不能單獨解釋間距改變的中心熱點及空殼填水控制。"
+      },
+      {
+        "a": "P25001",
+        "b": "P112",
+        "reason": "鞦韆相位供能是一般受迫振動；相鄰介電體耦合場的空間重分布有獨立控制。"
+      },
+      {
+        "a": "P25001",
+        "b": "E2003",
+        "reason": "靜態極化梯度吸引不是振盪共振場能量集中。"
+      },
+      {
+        "a": "P25002",
+        "b": "I12014",
+        "reason": "I12014既有粉末殼受蒸發擠壓；P25002液中溶質持續結晶供腿底生長，紋理控制是否離面。"
+      },
+      {
+        "a": "P25002",
+        "b": "I12002",
+        "reason": "I12002撞擊壓力突破空氣口袋；P25002結晶侵入微紋理或受限接點長腿，改變答案的是相變與生長。"
+      },
+      {
+        "a": "P25002",
+        "b": "H3092",
+        "reason": "咖啡環補償流是局部鹽供給的背景；紋理限制/去潤濕/底端成長抬殼超過僅留環。"
+      },
+      {
+        "a": "P25002",
+        "b": "N234",
+        "reason": "孔隙結晶壓力撐裂石頭，與局部供液結晶管腿抬起自由殼體不同。"
+      },
+      {
+        "a": "P25002",
+        "b": "P232",
+        "reason": "成核是前提；接點幾何和晶體侵入控制是否離面，無法用過飽和代答。"
+      },
+      {
+        "a": "P25003",
+        "b": "H3041",
+        "reason": "H3041還原離子長出鍍層；P25003氧化界面改張力，非沉積厚度效應。"
+      },
+      {
+        "a": "P25003",
+        "b": "H3034",
+        "reason": "H3034分隔氧化還原以外電路供能；P25003氧化界面能控制形狀，非電池供電機制。"
+      },
+      {
+        "a": "P25003",
+        "b": "P054",
+        "reason": "P054靜態彎月面；P25003同液滴電位/氧化狀態切換與純電容對照。"
+      },
+      {
+        "a": "P25004",
+        "b": "G13003",
+        "reason": "乾顆粒剪切承載網絡是相關微觀背景；新題以底部力與自由落桿前緣時序分出增長附加質量階段。"
+      },
+      {
+        "a": "P25004",
+        "b": "F8001",
+        "reason": "精煉解團改卡住門檻與衝擊參與質量隨時間長大不同；不是換食品名稱。"
+      },
+      {
+        "a": "P25004",
+        "b": "P173",
+        "reason": "動量守恆是背景；持續納入新物料與深度只改後段峰提供額外可驗控制。"
+      },
+      {
+        "a": "P25004",
+        "b": "G13002",
+        "reason": "乾顆粒剪脹不等於此衝擊前緣；本題刻意保留後續壓密量上限，沒有把擠密當定論。"
+      },
+      {
+        "a": "P25004",
+        "b": "P070",
+        "reason": "密度/黏度定義不解釋早期峰與底部力不同時，需瞬態空間前緣與附加質量。"
+      },
+      {
+        "a": "P25001",
+        "b": "D2158",
+        "reason": "D2158熱裝排氣改浮起；P25001含水介電體近接造成共振場熱點，非水果處理或浮力。"
+      },
+      {
+        "a": "P25001",
+        "b": "P223",
+        "reason": "P223溶解能量收支；P25001幾何改變微波場吸收分布，沒有溶解混合。"
+      },
+      {
+        "a": "P25001",
+        "b": "V3092",
+        "reason": "V3092乙烯擴散促熟；P25001相鄰含水體的電磁耦合，非果實訊號。"
+      },
+      {
+        "a": "P25001",
+        "b": "D2024",
+        "reason": "D2024果膠網絡增稠；P25001熱點由介電共振耦合，沒有濃縮或凝膠成形過程。"
+      },
+      {
+        "a": "P25001",
+        "b": "E9017",
+        "reason": "E9017局部進水裂紋擴展；P25001不靠破皮或裂口，為近接場分布。"
+      },
+      {
+        "a": "P25002",
+        "b": "H3016",
+        "reason": "H3016水觸發單體聚合；P25002蒸發結晶與局部接點供液，沒有聚合固化。"
+      },
+      {
+        "a": "P25002",
+        "b": "P053",
+        "reason": "P053靜態液滴潤濕競爭不回答相近疏水角下晶體侵入或管腿成長兩結果。"
+      },
+      {
+        "a": "P25002",
+        "b": "H10003",
+        "reason": "H10003水分向內擴散推進交聯；P25002水分蒸發帶來鹽析出與接點幾何控制。"
+      },
+      {
+        "a": "P25003",
+        "b": "E2021",
+        "reason": "E2021靜電平衡表面電荷；P25003表面氧化生成/移除改界面能，單純電容不足。"
+      },
+      {
+        "a": "P25003",
+        "b": "E2023",
+        "reason": "E2023接觸後電荷重分布；P25003液滴界面化學切換與可逆張力回應。"
+      },
+      {
+        "a": "P25003",
+        "b": "E2002",
+        "reason": "E2002中性導體極化；P25003電化學氧化與電容對照，非單純電子重新分布。"
+      },
+      {
+        "a": "P25003",
+        "b": "F17007",
+        "reason": "F17007液滴錐角/液橋壓力導致分離；P25003單滴氧化界面能切換，沒有兩滴融合條件。"
+      },
+      {
+        "a": "P25004",
+        "b": "P21005",
+        "reason": "P21005配重與流體力矩穩定滑翔；P25004增長附加質量及盆底受力時序。"
+      },
+      {
+        "a": "P25004",
+        "b": "K11013",
+        "reason": "K11013薄片翻轉門檻記最大壓縮史；P25004撞擊前緣帶動更多物料，無同類記憶讀取。"
+      },
+      {
+        "a": "P25004",
+        "b": "F8006",
+        "reason": "F8006先前變形破壞/恢復結構的觸變性；P25004瞬態前緣空間增長與早晚受力分期。"
+      },
+      {
+        "a": "P25004",
+        "b": "J6009",
+        "reason": "J6009收斂油膜動壓承載與剪切阻力；P25004未接底前的增長參與質量，不靠軸承間隙。"
+      },
+      {
+        "a": "P25004",
+        "b": "P062",
+        "reason": "P062穩態流線壓力功轉動能；P25004非穩態前緣納入質量與容器底部到達時序。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "P25-NA001",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "LEG-S13"
+      ],
+      "reason": "尖端場集中與空氣擊穿已有，不把金屬物件換名。"
+    },
+    {
+      "id": "P25-NA002",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "I12014"
+      ],
+      "reason": "已有蒸發後粒子擠壓、摩擦與殼回應。"
+    },
+    {
+      "id": "P25-NA003",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "F10015"
+      ],
+      "reason": "Boycott分離回流與沉降距離已有。"
+    },
+    {
+      "id": "P25-NA004",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "H3092"
+      ],
+      "reason": "釘住邊界的蒸發補償流已有。"
+    },
+    {
+      "id": "P25-NA005",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P232"
+      ],
+      "reason": "過飽和與成核已有，不能作長腿題的第二個核心。"
+    },
+    {
+      "id": "P25-NA006",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "F8001",
+        "G13003"
+      ],
+      "reason": "泛稱摩擦接觸卡住曾在F10-NA06退題；本輪不恢復這個泛題，只用新的底部時序/前緣控制提P25004。"
+    },
+    {
+      "id": "P25-NA007",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "LEG-S79"
+      ],
+      "reason": "既有水汽壓力與外殼破裂，不因食材常見重算。"
+    },
+    {
+      "id": "P25-NA008",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "F15001"
+      ],
+      "reason": "既有彎曲/扭轉波的原研究控制。"
+    },
+    {
+      "id": "P25-NA009",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "已讀指定正文，但本輪尚未形成能把估計場值、表面張力與支撐分量分清的短控制故事；不以奇觀或氫鍵鏈傳聞補答案。"
+    },
+    {
+      "id": "P25-NA010",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "這些控制都在判斷含水體積而非皮橋是否必要，合在P25001。"
+    },
+    {
+      "id": "P25-NA011",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "本輪都是供液/蒸發控制同一腿生長的條件變體，保留研究線索但不增加核心。"
+    },
+    {
+      "id": "P25-NA012",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "若僅沿用氧化/還原改界面能，是P25003應用；不同pH的固態皮不可無標示混入同循環。"
+    },
+    {
+      "id": "P25-NA013",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "G13002",
+        "G13003"
+      ],
+      "reason": "2012壓密模型受2016超音波密度上限限制；不採「一定靠壓密」前提，也不把後續修正拆成第二核。"
+    },
+    {
+      "id": "P25-NA014",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "H3060"
+      ],
+      "reason": "只完成方向/舊裂紋題檢索，未取得受控原研究正文；H3060僅一般裂紋背景，不聲稱同核心。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W25P-T01",
+      "seconds": 110,
+      "chapter_seconds": [
+        55,
+        55
+      ],
+      "same_core_totals": {
+        "P25001": 110
+      },
+      "decision": "retain_paper_theme_only",
+      "reason": "間距熱點→移除皮橋及空殼填水是遞進控制；110秒可留，熱像/FEM色階不得混用。"
+    },
+    {
+      "id": "W25P-T02",
+      "seconds": 105,
+      "chapter_seconds": [
+        60,
+        45
+      ],
+      "same_core_totals": {
+        "P25002": 105
+      },
+      "decision": "retain_paper_theme_only",
+      "reason": "疏水相近而結果不同→供液接點如何長腿，105秒可留；不讀表面處理名單填長。"
+    },
+    {
+      "id": "W25P-T03",
+      "seconds": 115,
+      "chapter_seconds": [
+        60,
+        55
+      ],
+      "same_core_totals": {
+        "P25004": 115
+      },
+      "decision": "retain_paper_theme_only",
+      "reason": "早期峰/底部力時序→增長參與質量，再到邊界後期；115秒可留，不將2016裝置拼成同次落桿。"
+    }
+  ],
+  "retrieval": {
+    "neighbours": {
+      "file": ".cache/wave25-physics-neighbours.json",
+      "sha256": "3609d0498d66edefd2b6b82f7e0c1a66788d0cdec40dc1505c2298fb69f7ca92"
+    },
+    "draft_sha256": "6af01e081fb3574cbec269e0476c1a5c83df782ba57ea321819b9f4a0d01ee69",
+    "note": "分數僅召回工具；全部有向近對均讀完整問答/範圍後判。",
+    "initial_common_neighbours": {
+      "file": ".cache/wave25-physics-neighbours-common-initial.json",
+      "sha256": "94eb82058c3523b30b4a6938e2238e64edb994c73645a3bce82bf83161a6e830"
+    },
+    "initial_common_draft_sha256": "60172b522bcb3c98e2c94188d30fb299a94c5a4281c7fbc53507e101bf34dc06"
+  },
+  "remaining_blockers": [],
+  "source_readings": [
+    {
+      "source_id": "P25-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6410810/",
+      "version": "2019-02-19線上正式發表，2019-03-05期刊期次；PMC為同篇載體。",
+      "read_via": "先核作者當日PDF/HTML與抽文SHA後獨立讀指定正文；不是本人fresh HTTP。",
+      "reading_scope": "正文PARA19,22–24,26,29,33,35–36,38–39,44,49,51,54,56,59,61；目讀Fig.3。未看SI圖/影片、未重跑FEM。",
+      "cache": {
+        "file": ".cache/wave25-physics-grapes2019.html",
+        "sha256": "218c3b03dddb07a64ce91516a2bf41808541c926d0e8a223d1f87246aeb0ab5d",
+        "text_file": ".cache/wave25-physics-grapes2019-text.json",
+        "text_sha256": "735e7e6417d15e3e49d8e106c2d455f78fac71e1e2efc9bb9497878adad9c714"
+      },
+      "finding": "含水介電共振及近接耦合支持熱點；整顆/水凝膠、空殼填水排除皮橋必要性。Fig3實測葡萄半球與FEM均勻水球分清；熱像是間接吸收分布而非電場照片。",
+      "limits": "限原研究水果/水凝膠幾何；熱像不是直接電場照相，FEM另框。Fig.3各圖色階不同，不按同色比較絕對值。放電出現具有門檻及隨機性；不提供微波放電操作。 未看SI/影片、未重跑模型。",
+      "visual_reads": [
+        {
+          "name": "grapes2019",
+          "figure": "fig03",
+          "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/25cd/6410810/4637af955558/pnas.1818350116fig03.jpg",
+          "file": ".cache/wave25-physics-grapes2019-fig03.jpg",
+          "sha256": "3d59f0cae894e41f852c04013902de4611c3d65931f1bdbc08a7dfd48acdd7ae",
+          "reading": "覆核者view_image實際目讀，非只圖說"
+        }
+      ],
+      "retrieval_failures": "原作者404/PMC驗證頁與有效UA正文路線保留author；本輪覆核未新下載，不把失敗頁當正文。"
+    },
+    {
+      "source_id": "P25-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8081363/",
+      "version": "2021-04-28正式論文；PMC及原刊為同研究。",
+      "read_via": "先核作者當日PDF/HTML與抽文SHA後獨立讀指定正文；不是本人fresh HTTP。",
+      "reading_scope": "PARA18,21,23–26,29,31–33,39,42,44–47,52–53,55–56,58,67,69；目讀Fig.1/4。未看影片或SI。",
+      "cache": {
+        "file": ".cache/wave25-physics-critter2021.html",
+        "sha256": "787d7eceb4b5641b876b2564283a7af24fc6f2e2c927742a6f7e1d9f66697940",
+        "text_file": ".cache/wave25-physics-critter2021-text.json",
+        "text_sha256": "2cb9878abf8d730533ab1c63c9fa9eb8c8e3f9151d3f9c9d1e2246907a582122"
+      },
+      "finding": "去潤濕後局部供液/蒸發、管腿底端新結晶抬殼；微紋理晶體侵入破壞不沾而奈米接點受限。這比一般成核或咖啡環多了可驗結果分支。",
+      "limits": "表面接觸角相近但不完全匹配；有些微米紋理仍被晶體侵入黏住。管腿模型含等直徑/傳輸假設，不宣稱所有疏水表面或鹽都會走路，也非蒸氣墊托起。 未看SI/影片、未重跑模型。",
+      "visual_reads": [
+        {
+          "name": "critter2021",
+          "figure": "F1",
+          "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/4f41/8081363/351129d2853e/abe6960-F1.jpg",
+          "file": ".cache/wave25-physics-critter2021-F1.jpg",
+          "sha256": "44e6186c56895513849d27c95f2b004e35a7263a3ff1c22f933f74c7d9fb0fe8",
+          "reading": "覆核者view_image實際目讀，非只圖說"
+        },
+        {
+          "name": "critter2021",
+          "figure": "F4",
+          "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/4f41/8081363/ef00eea2f9d0/abe6960-F4.jpg",
+          "file": ".cache/wave25-physics-critter2021-F4.jpg",
+          "sha256": "9929a95fd58d46651ba5c7ee403c7a288b8f17507856cf6d441c64dce860ae59",
+          "reading": "覆核者view_image實際目讀，非只圖說"
+        }
+      ],
+      "retrieval_failures": "原作者404/PMC驗證頁與有效UA正文路線保留author；本輪覆核未新下載，不把失敗頁當正文。"
+    },
+    {
+      "source_id": "P25-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4191764/",
+      "version": "2014-09-16線上正式發表，2014-09-30期次；PMC為同文載體。",
+      "read_via": "先核作者當日PDF/HTML與抽文SHA後獨立讀指定正文；不是本人fresh HTTP。",
+      "reading_scope": "PARA14–25,27,30,32–34,37,39,42,44,47,49；目讀Fig.1/2；未看SI/影片。",
+      "cache": {
+        "file": ".cache/wave25-physics-metal2014.html",
+        "sha256": "ca8407156513155c14f8aff9dbd0d17022ff70e272ede7e823e9e48904f7e4b1",
+        "text_file": ".cache/wave25-physics-metal2014-text.json",
+        "text_sha256": "856c9a0c5ca31c51be7b4c5879303c7215af8f29628f1a96707ce13b0410cbab"
+      },
+      "finding": "NaOH中氧化起始時界面張力下降而電容能未同步增加；Fig2可逆切換支持同條件回應。中性pH固態皮固定形狀未混進，近零仍是估算。",
+      "limits": "候選只採NaOH電解液中的EGaIn Fig.1/2；中性pH下固態氧化皮固定形狀是另一組條件。接近零表面張力為估計而非直接量到零；非所有金屬通則，不給電化學操作配方。 未看SI/影片、未重跑模型。",
+      "visual_reads": [
+        {
+          "name": "metal2014",
+          "figure": "fig01",
+          "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/8ec2/4191764/7bd0cdf9b547/pnas.1412227111fig01.jpg",
+          "file": ".cache/wave25-physics-metal2014-fig01.jpg",
+          "sha256": "fec02966873773bbf0bc263e87cc989ada57bf74c6daa5ba69d1ae557f8fc745",
+          "reading": "覆核者view_image實際目讀，非只圖說"
+        },
+        {
+          "name": "metal2014",
+          "figure": "fig02",
+          "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/8ec2/4191764/7cacc1ccdfe9/pnas.1412227111fig02.jpg",
+          "file": ".cache/wave25-physics-metal2014-fig02.jpg",
+          "sha256": "a62ca07224743c4127550a502ab6fbc40fbd5baab49e45683089d61eb3714e8a",
+          "reading": "覆核者view_image實際目讀，非只圖說"
+        }
+      ],
+      "retrieval_failures": "原作者404/PMC驗證頁與有效UA正文路線保留author；本輪覆核未新下載，不把失敗頁當正文。"
+    },
+    {
+      "source_id": "P25-S004",
+      "url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/suspensions/nature11187.pdf",
+      "version": "2012-07-11線上，2012-07-12期次；大學存放正式排版副本。",
+      "read_via": "先核作者當日PDF/HTML與抽文SHA後獨立讀指定正文；不是本人fresh HTTP。",
+      "reading_scope": "PDF pp1–3正文/圖說與p4 Eq.2初段；目讀p3 Fig.2。未完整讀p4後半/p5、SI或影片。",
+      "cache": {
+        "file": ".cache/wave25-physics-impact2012.pdf",
+        "sha256": "8dcffb919c62da3ae5cd6d3993d42f5b38df69efe9eef4fcc86cb1ba57c6e633",
+        "text_file": ".cache/wave25-physics-impact2012-text.json",
+        "text_sha256": "87db34579bc663e2430f98c296193619c65e1599a427c437eb04b1520cbbab76"
+      },
+      "finding": "2012 pp1–3及p4 Eq2開頭：底部時序和增長附加質量模型；X光小槽/受力大槽為不同量測。",
+      "limits": "不沿用本文一維壓密snowplough作微觀定論；2016超音波研究另限縮此解釋。X光小槽與受力大槽是不同實驗。模型未重算，不說任何配比或速度都會完全固化。 未看SI/影片、未重跑模型。",
+      "visual_reads": [
+        {
+          "name": "impact2012",
+          "page": 3,
+          "file": ".cache/wave25-physics-impact2012-p3.png",
+          "sha256": "c7dac178b3f83ce6f37d29b9c1d6ea327a5ffb5d475b0857b6219674e37ff088",
+          "reading": "覆核者view_image實際目讀，非只圖說"
+        }
+      ],
+      "retrieval_failures": "原作者404/PMC驗證頁與有效UA正文路線保留author；本輪覆核未新下載，不把失敗頁當正文。"
+    },
+    {
+      "source_id": "P25-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4961793/",
+      "version": "2016-07-20正式論文；PMC同篇載體，與2012是後續不同實驗，不是同文重存。",
+      "read_via": "先核作者當日PDF/HTML與抽文SHA後獨立讀指定正文；不是本人fresh HTTP。",
+      "reading_scope": "PARA10–15,18,23,25,27,29,31–34,36,41–43,45–49,51–55；目讀Fig.3；未讀完整方法推導/SI或影片。",
+      "cache": {
+        "file": ".cache/wave25-physics-impact2016.html",
+        "sha256": "3bf5174aadf62f3c9f6fcfb99261566ae08de1549527e17fc0c0b7ca74b78bb4",
+        "text_file": ".cache/wave25-physics-impact2016-text.json",
+        "text_sha256": "9d4406264121a1a69509891040cf654b90eccec60378a9713f057dbabc295ba4"
+      },
+      "finding": "2016指定段：固定速度撞頭、聲速對填充率的校準與噪聲上限；壓密不足達等向卡住門檻，剪切接觸網絡仍為支持性解釋。",
+      "limits": "固定速度撞頭與2012自由落桿不同；聲速/體積分率只有量測上限，非證明完全零變化。前緣未接底前的剛性細節仍未全定，不把模型當逐粒觀測。 未看SI/影片、未重跑模型。",
+      "visual_reads": [
+        {
+          "name": "impact2016",
+          "figure": "f3",
+          "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c9be/4961793/6b49067368b1/ncomms12243-f3.jpg",
+          "file": ".cache/wave25-physics-impact2016-f3.jpg",
+          "sha256": "8768185250b0bbe72bce7feeba56ea69b840bd3d358dd406756e42929135d87f",
+          "reading": "覆核者view_image實際目讀，非只圖說"
+        }
+      ],
+      "retrieval_failures": "原作者404/PMC驗證頁與有效UA正文路線保留author；本輪覆核未新下載，不把失敗頁當正文。"
+    },
+    {
+      "source_id": "P25-S006",
+      "url": "https://arxiv.org/pdf/1210.2913",
+      "version": "實讀arXiv:1210.2913v3（2013-03-11），對應PRE88,033019(2013)；PDF編排日期2018-08-02非新研究。",
+      "read_via": "先核作者當日PDF/HTML與抽文SHA後獨立讀指定正文；不是本人fresh HTTP。",
+      "reading_scope": "僅PDF頁1版本/導論與頁5結論/附錄開頭，支持維持NA；未讀頁2–4、頁6或正式終版，未目讀其圖。",
+      "cache": {
+        "file": ".cache/wave25-physics-bridge2013.pdf",
+        "sha256": "89c9959b749f371e4bd735bee1e37827bd1e32ba3ef7e6f60ea2eaf62a5d6f39",
+        "text_file": ".cache/wave25-physics-bridge2013-text.json",
+        "text_sha256": "44944b204930838ebf28ae829e4021942b9948355e8e80b597ba79ac35c3991e"
+      },
+      "finding": "頁首arXiv v3 2013-03-11與排版2018日期分清；正文結論採計算支撐分量，未直接量各力；不以摘要聲稱題級已核可入。",
+      "limits": "場值含模擬、非直接各分量力探針；本輪未讀完整理論分歧/正式終版，沒有成形可視控制題案。結論長度單位與前文不一致，任何數字均不採。 未看SI/影片、未重跑模型。",
+      "visual_reads": [],
+      "retrieval_failures": "原作者404/PMC驗證頁與有效UA正文路線保留author；本輪覆核未新下載，不把失敗頁當正文。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P25001",
+      "decision": "retain",
+      "reason": "含水介電共振及近接耦合支持熱點；整顆/水凝膠、空殼填水排除皮橋必要性。Fig3實測葡萄半球與FEM均勻水球分清；熱像是間接吸收分布而非電場照片。",
+      "scope_read": "限2019受控含水物體/幾何；熱像與電磁模擬分開，放電非每次必現。空心蛋殼加水控制來自正文描述，補圖未目讀。",
+      "editorial_cap": 125,
+      "editorial_decision": "theme_seed"
+    },
+    {
+      "id": "P25002",
+      "decision": "retain",
+      "reason": "去潤濕後局部供液/蒸發、管腿底端新結晶抬殼；微紋理晶體侵入破壞不沾而奈米接點受限。這比一般成核或咖啡環多了可驗結果分支。",
+      "scope_read": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。",
+      "editorial_cap": 135,
+      "editorial_decision": "theme_seed"
+    },
+    {
+      "id": "P25003",
+      "decision": "retain",
+      "reason": "NaOH中氧化起始時界面張力下降而電容能未同步增加；Fig2可逆切換支持同條件回應。中性pH固態皮固定形狀未混進，近零仍是估算。",
+      "scope_read": "只採EGaIn在NaOH電解液Fig.1/2條件；不混中性pH固態氧化皮的固定形狀實驗，不稱表面張力精確等於零。",
+      "editorial_cap": 85,
+      "editorial_decision": "segment"
+    },
+    {
+      "id": "P25004",
+      "decision": "retain",
+      "reason": "2012第一減速峰對深度較不敏感、後峰對底部力與深度移動；增長附加質量是模型。2016另一固定速度裝置限制壓密量，不是追蹤同一落桿或證零密度變化。",
+      "scope_read": "以2012落桿深度/底部力時序為直接控制；2016固定速度撞頭的超音波研究只用來限制微觀解釋，不把壓密當既定原因，亦不證明體積分率絕對零變化。",
+      "editorial_cap": 135,
+      "editorial_decision": "theme_seed"
+    }
+  ],
+  "source_identity_review": "5份候選支持研究中2012/2016為同團隊不同後續實驗；PMC與作者PDF為載體，不多算複驗。水橋v3只支援NA，未宣稱正式版全文已核。",
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave25-physics.json",
+      "sha256": "a40a227245b60b819d662bd7a0a2a0fd17d5b7fe917b8a3f5d2ca392fd972c88"
+    },
+    {
+      "file": "reviews/wave25-physics-themes.json",
+      "sha256": "c1086c94e8e5460a900ff3621d7f7859a17b39b7c17dffb4691772e5c88b3d73"
+    },
+    {
+      "file": "reviews/wave25-physics-author.json",
+      "sha256": "7538bcc00a9eeacf6b0ec8669d0c30a15ca994097677645b8a399ab7d5b834cd"
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "PHYSICS01",
+      "before": "P25001 visual/T01依Fig3卻說水凝膠距離熱像。",
+      "resolution": "已明列Fig3葡萄半球實測／FEM均勻水球；整顆及水凝膠另組對照。",
+      "status": "readback_pass"
+    },
+    {
+      "id": "PHYSICS02",
+      "before": "T02第二章再次完整並列兩結果25秒，T03末回扣10秒。",
+      "resolution": "依root剪15及5秒，T02 105秒、T03 115秒；正文限制保留圖註。",
+      "status": "readback_pass"
+    },
+    {
+      "id": "PHYSICS03",
+      "before": "P25004 visual將懸浮液深度寫成水深。",
+      "resolution": "精確改稱懸浮液深度，問答機制不變。",
+      "status": "readback_pass"
+    }
+  ],
+  "final_input_check": {
+    "status": "PASS_METADATA_AND_CONTENT_READBACK",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "6af01e081fb3574cbec269e0476c1a5c83df782ba57ea321819b9f4a0d01ee69"
+    },
+    "current_neighbours": {
+      "file": ".cache/wave25-physics-neighbours.json",
+      "sha256": "3609d0498d66edefd2b6b82f7e0c1a66788d0cdec40dc1505c2298fb69f7ca92"
+    },
+    "compared_with": {
+      "file": ".cache/wave25-physics-neighbours-common-initial.json",
+      "sha256": "94eb82058c3523b30b4a6938e2238e64edb994c73645a3bce82bf83161a6e830"
+    },
+    "directed_rows": 20,
+    "complete_rows_unchanged": true,
+    "scope": "核對完整rows的題名、鄰題問題/答案/範圍、cosine與順序；初共同輸入到最後輸入均同。作者visual/notes及題案修訂另逐欄讀回，不以近鄰相同免查。",
+    "remaining_blockers": []
+  }
+}

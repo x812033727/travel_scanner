@@ -1,0 +1,615 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave25-physics.json",
+      "sha256": "8f09bae68eaac79b95fa149c66c596806ace896b7d182d89d02c9a3e6c0a2db5"
+    },
+    {
+      "file": "reviews/wave25-physics-author.json",
+      "sha256": "ae4e47203666a0c451a0db151e41321101301b810268c79772494f954554ac4f"
+    },
+    {
+      "file": "reviews/wave25-physics-themes.json",
+      "sha256": "7529cfa70bb8ed5b9987e2143b60e2fe4b7142206eba86e679e9a5a9eb80dbfd"
+    },
+    {
+      "file": "reviews/wave25-life-reviews-physics.json",
+      "sha256": "a3eecf88dc84815198ad4af87c05c5c535b58d7693ada2471e638f74e2d278f3"
+    },
+    {
+      "file": "batches/wave25-life.json",
+      "sha256": "b1d1f9c076bfa071f5d954b007e622bf412ea08befb5b49506e63dd1989e4375"
+    },
+    {
+      "file": "reviews/wave25-life-author.json",
+      "sha256": "d89c26b29213012251b2dd7385f98d28a925f14f12e17e2f8e06f09c04475080"
+    },
+    {
+      "file": "reviews/wave25-life-themes.json",
+      "sha256": "45ec643367ae83602d1f63391e064692e73ec6543daa39f4c7c0d342f87b8043"
+    },
+    {
+      "file": "reviews/wave25-physics-reviews-life.json",
+      "sha256": "8a01e320a505a5874384b05545bfaccbe26cd345b7b9e723caeeebd132903252"
+    },
+    {
+      "file": "batches/wave25-tech.json",
+      "sha256": "b4190f5b25bc330e7ddd92da2e8a50f7b96bcc9c690d9c263f34d78a7e16ea59"
+    },
+    {
+      "file": "reviews/wave25-tech-author.json",
+      "sha256": "6780688e88f8ddd5f62547eceb494ed4459e2a8d34b8618e946a1cbaf0781086"
+    },
+    {
+      "file": "reviews/wave25-tech-themes.json",
+      "sha256": "fe757826930a727c2a99c706672773ff9a083ce49a4d37b54976bfce4031f3c9"
+    },
+    {
+      "file": "reviews/wave25-life-reviews-tech.json",
+      "sha256": "6ec5eaf824b08d62b14cfb1d65f054592a22a45ecaa1bd2ea999078c059bb80d"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave25-physics.json",
+      "author": "pool_physics",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 17,
+      "not_added_count": 14,
+      "theme_count": 3
+    },
+    {
+      "batch": "batches/wave25-life.json",
+      "author": "pool_life_tech",
+      "reviewer": "pool_physics",
+      "candidate_count": 3,
+      "top5_directed_pairs": 15,
+      "author_pairs": 18,
+      "not_added_count": 16,
+      "theme_count": 3
+    },
+    {
+      "batch": "batches/wave25-tech.json",
+      "author": "root",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 5,
+      "top5_directed_pairs": 25,
+      "author_pairs": 13,
+      "not_added_count": 12,
+      "theme_count": 3
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave25-life.json",
+          "sha256": "b1d1f9c076bfa071f5d954b007e622bf412ea08befb5b49506e63dd1989e4375"
+        },
+        {
+          "file": "batches/wave25-physics.json",
+          "sha256": "8f09bae68eaac79b95fa149c66c596806ace896b7d182d89d02c9a3e6c0a2db5"
+        },
+        {
+          "file": "batches/wave25-tech.json",
+          "sha256": "b4190f5b25bc330e7ddd92da2e8a50f7b96bcc9c690d9c263f34d78a7e16ea59"
+        }
+      ],
+      "new_source_rows": 16,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "3d03a206574cd0ef658358a0a8a1b16b1128bab6e5ae2ad5b70d9a341d00aa59",
+      "matched_rows_reviewed": 0,
+      "decisions": [],
+      "unresolved": [],
+      "notes": [
+        "本批16來源URL沒有精確URL/標準化題名/DOI命中。",
+        "兩篇狸藻研究為前作與沿用參數的後續模型；2012/2016懸浮液研究為不同裝置與後續限制，均不稱獨立重複實驗。",
+        "五份算法原論文的公開副本只算各一份研究，不能以典藏站數量計獨立證據。",
+        "精確匹配陰性不代表全庫書目語意唯一。"
+      ]
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave25-physics.json",
+      "source_rows": 6,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave25-life.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave25-tech.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "a499bd7b2ffe1d5c5970adca0d3cd6737efd38f72fd0ccd76d59bcd6b505d2f4",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "reviewer": "root",
+      "source_title": "Crystal critters: Self-ejection of crystals from heated, superhydrophobic surfaces",
+      "file": ".cache/wave25-physics-critter2021-text.json",
+      "sha256": "2cb9878abf8d730533ab1c63c9fa9eb8c8e3f9151d3f9c9d1e2246907a582122",
+      "reading_scope": "ROOT讀抽文para10–48；重點para18、23–26、31–34、39–47與Fig4目讀。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-physics-critter2021-F4.jpg",
+          "sha256": "9929a95fd58d46651ba5c7ee403c7a288b8f17507856cf6d441c64dce860ae59"
+        }
+      ],
+      "finding": "同為疏水表面，納米草出現退濕與管腿，而微柱/微孔及微柱加納米草未呈相同自抬升；限制不是單看接觸角，亦不是普通咖啡環換外形。",
+      "limits": "未讀後段模型推導/補件，不把nano都有效或任意鹽液會長腿說成通則。圖4縮圖可核各處置形態，不精讀座標數值。"
+    },
+    {
+      "reviewer": "root",
+      "source_title": "Ultra-fast underwater suction traps",
+      "file": ".cache/wave25-life-sources/trap2011-pdf.txt",
+      "sha256": "551546877cd8bb3347a3e568580030c01ba47d0575dcc9ff4f53fcccf2b92aa3",
+      "reading_scope": "ROOT讀PDF頁1–4完整抽文，頁4Fig4及正文目讀；頁5僅開頭片段，不稱全文讀。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-life-sources/trap2011-p4.png",
+          "sha256": "3c447be56f99c4fd3491f90155eb2621ccc1b72b61cb0524ca30888c135cc1e1"
+        }
+      ],
+      "finding": "慢排水先儲能，觸發後門曲率反轉先於開啟；門與腔體的分工可見。0.5ms指快開/吸入相位，非全循環。",
+      "limits": "p4未排除生理興奮步驟；此文模型支持屈曲但不能把觸發感測完全純機械當定論。未重算彈性模型。"
+    }
+  ],
+  "editorial_summary": "三組共12提案，11個新核心；A25003消化液留蟲併P22002伸長彈性，保留原始問法、來源及100秒生物變體題案。物理採含水雙體共振熱點、紋理限域析鹽抬升與撞擊前緣動量負荷；植物保雨滴衝擊附著與狸藻開門降壓促關門循環；資料組採可見的燈板/換票/洗牌對照。液態金屬界面切換與HLL估基數先留短段，不硬配影片。Bloom與Count-Min只因共享碰撞的單邊錯誤追問合成一案，其他不同追問分片；本輪未改舊254題案。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並對其他作者兩份來源作定點閱讀。tech由root撰寫、pool_life_tech非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 45,
+      "changes": [
+        {
+          "batch": "physics",
+          "reason": "root刪重述及非作者life指定Fig.3試件/模型界線讀回；不改候選問答。",
+          "before_files": [
+            {
+              "file": "batches/wave25-physics.json",
+              "sha256": "a40a227245b60b819d662bd7a0a2a0fd17d5b7fe917b8a3f5d2ca392fd972c88"
+            },
+            {
+              "file": "reviews/wave25-physics-themes.json",
+              "sha256": "c1086c94e8e5460a900ff3621d7f7859a17b39b7c17dffb4691772e5c88b3d73"
+            },
+            {
+              "file": "reviews/wave25-physics-author.json",
+              "sha256": "7538bcc00a9eeacf6b0ec8669d0c30a15ca994097677645b8a399ab7d5b834cd"
+            }
+          ],
+          "changes": [
+            "P25001 visual與T01 connection/beat明列葡萄半球熱像和水球模型；整顆/水凝膠另組。",
+            "T02第二章25→10秒，總120→105，避免往下長腿方向歧義。",
+            "T03末回扣10→5秒，總120→115；不補內容。"
+          ],
+          "removed_seconds": 20,
+          "after_batch_sha256": "974bcb58cc748db5a1eb672b1fc43ced6040a08a4b9e425137d8389ad4ffa163",
+          "after_themes_sha256": "7529cfa70bb8ed5b9987e2143b60e2fe4b7142206eba86e679e9a5a9eb80dbfd"
+        },
+        {
+          "batch": "life",
+          "reason": "root獨立指定正文讀回：高濕條件不是已證蓋底水膜；縮短單一停滴對照。",
+          "before_files": {
+            "batches\\wave25-life.json": "7a9f988c523e3b0c5c0255fa9197b338c568b77060e99a6b3554e36262f8d95a",
+            "reviews\\wave25-life-themes.json": "4cac8bebec7b78bc94dd16733aae91b180deca98beaa8aff2f8589168e22e8c9",
+            "reviews\\wave25-life-author.json": "d53503b8e35affb3cab9e02f6e9806661e2372883ef7acd58491302d235baf35"
+          },
+          "changes": [
+            "W25A-T01 connection與第一章明列停滴後高濕、瓶口仍濕滑；不畫蓋底水膜。",
+            "第一章中段30→20秒，總110→100秒，其餘章節與候選問答不變。"
+          ],
+          "removed_seconds": 10,
+          "after_batch_sha256": "7a9f988c523e3b0c5c0255fa9197b338c568b77060e99a6b3554e36262f8d95a",
+          "after_themes_sha256": "c56e7e2ee91a45f36e4551307754bc050cc3da2e8a0f873c0a48182cbe60994c"
+        },
+        {
+          "batch": "tech",
+          "reason": "依非作者pool_life_tech覆核，T01結尾15→5秒、T02限制回扣10→5秒；限制改短圖註，不另朗讀。",
+          "removed_seconds": 15,
+          "before_themes": [
+            {
+              "id": "W25R-T01",
+              "title": "記不全，卻知道自己會錯在哪邊",
+              "status": "EDITORIAL_THEME_NOT_SCRIPT",
+              "production_ready": false,
+              "priority": "作者題案，待非作者覆核",
+              "format": "short_explainer",
+              "core_question": "省掉完整名單後，哪一種答案還能保證？",
+              "connection": "位元誤中→改計次數→兩種單邊錯誤的可見對照。",
+              "candidate_ids": [
+                "R25001",
+                "R25004"
+              ],
+              "target_minutes": 2.4166666666666665,
+              "range_minutes": [
+                2.4166666666666665,
+                2.4166666666666665
+              ],
+              "body_seconds": 145,
+              "chapters": [
+                {
+                  "title": "燈亮不保證來過",
+                  "candidate_ids": [
+                    "R25001"
+                  ],
+                  "seconds": 75,
+                  "new_information": "A/B點燈後問C有沒有來，先留猜測。；揭露C三格由別人湊齊，對照D碰到空格能排除。；重查A/B都能通過；圖示共享位元不能任意清除，轉到次數問題。",
+                  "beats": [
+                    {
+                      "seconds": 20,
+                      "new_information": "A/B點燈後問C有沒有來，先留猜測。"
+                    },
+                    {
+                      "seconds": 30,
+                      "new_information": "揭露C三格由別人湊齊，對照D碰到空格能排除。"
+                    },
+                    {
+                      "seconds": 25,
+                      "new_information": "重查A/B都能通過；圖示共享位元不能任意清除，轉到次數問題。"
+                    }
+                  ]
+                },
+                {
+                  "title": "取最小，仍可能太大",
+                  "candidate_ids": [
+                    "R25004"
+                  ],
+                  "seconds": 70,
+                  "new_information": "A4/B3/C2投到兩列，計出A對應格7與6。；每格都含A真數加其他項，取6可少受污染，仍不是4。；並列可能有/至少真數的錯誤方向，撤掉精確名單與精確排行的承諾。",
+                  "beats": [
+                    {
+                      "seconds": 25,
+                      "new_information": "A4/B3/C2投到兩列，計出A對應格7與6。"
+                    },
+                    {
+                      "seconds": 30,
+                      "new_information": "每格都含A真數加其他項，取6可少受污染，仍不是4。"
+                    },
+                    {
+                      "seconds": 15,
+                      "new_information": "並列可能有/至少真數的錯誤方向，撤掉精確名單與精確排行的承諾。"
+                    }
+                  ]
+                }
+              ],
+              "drop_if": "若兩種錯誤方向在小樣中混淆，拆成75秒與70秒獨立短案重審；不接HLL或多列產品填長。",
+              "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+              "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+              "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+            },
+            {
+              "id": "W25R-T02",
+              "title": "越晚來越難抽中，最後卻一樣公平",
+              "status": "EDITORIAL_THEME_NOT_SCRIPT",
+              "production_ready": false,
+              "priority": "作者題案，待非作者覆核",
+              "format": "short_explainer",
+              "core_question": "只留一張票，怎麼不偏心？",
+              "connection": "固定50%反例→1/t替換→四票最後機率。",
+              "candidate_ids": [
+                "R25002"
+              ],
+              "target_minutes": 1.4166666666666667,
+              "range_minutes": [
+                1.4166666666666667,
+                1.4166666666666667
+              ],
+              "body_seconds": 85,
+              "chapters": [
+                {
+                  "title": "先試看似公平的50%",
+                  "candidate_ids": [
+                    "R25002"
+                  ],
+                  "seconds": 45,
+                  "new_information": "4張票依次到；每次一半換票，末票立即占1/2。；改成第t張以1/t替換；四票逐步顯示留下機率。",
+                  "beats": [
+                    {
+                      "seconds": 20,
+                      "new_information": "4張票依次到；每次一半換票，末票立即占1/2。"
+                    },
+                    {
+                      "seconds": 25,
+                      "new_information": "改成第t張以1/t替換；四票逐步顯示留下機率。"
+                    }
+                  ]
+                },
+                {
+                  "title": "先來者還要熬過後面的人",
+                  "candidate_ids": [
+                    "R25002"
+                  ],
+                  "seconds": 40,
+                  "new_information": "比較首票生存連乘與末票1/4，兩條路同到1/4；中間票同理。；標出同名重複票是多筆紀錄、看中就停不在保證內。",
+                  "beats": [
+                    {
+                      "seconds": 30,
+                      "new_information": "比較首票生存連乘與末票1/4，兩條路同到1/4；中間票同理。"
+                    },
+                    {
+                      "seconds": 10,
+                      "new_information": "標出同名重複票是多筆紀錄、看中就停不在保證內。"
+                    }
+                  ]
+                }
+              ],
+              "drop_if": "若連乘在畫面上仍看不懂，改45秒玩具短段並重寫結尾；不能加亂數史延長。",
+              "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+              "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+              "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+            },
+            {
+              "id": "W25R-T03",
+              "title": "兩份清單各抽一張，真的能比相似？",
+              "status": "EDITORIAL_THEME_NOT_SCRIPT",
+              "production_ready": false,
+              "priority": "作者題案，待非作者覆核",
+              "format": "short_explainer",
+              "core_question": "為什麼必須用同一副洗牌次序？",
+              "connection": "共同五張排列→首張是否屬交集→同序反例。",
+              "candidate_ids": [
+                "R25005"
+              ],
+              "target_minutes": 1.5,
+              "range_minutes": [
+                1.5,
+                1.5
+              ],
+              "body_seconds": 90,
+              "chapters": [
+                {
+                  "title": "五張牌，只認第一名",
+                  "candidate_ids": [
+                    "R25005"
+                  ],
+                  "seconds": 50,
+                  "new_information": "A三張、B四張，共有b/c；先看兩邊各留下誰。；共有次序的聯集第一名若b/c兩邊才相同，五種首張中占兩種。",
+                  "beats": [
+                    {
+                      "seconds": 20,
+                      "new_information": "A三張、B四張，共有b/c；先看兩邊各留下誰。"
+                    },
+                    {
+                      "seconds": 30,
+                      "new_information": "共有次序的聯集第一名若b/c兩邊才相同，五種首張中占兩種。"
+                    }
+                  ]
+                },
+                {
+                  "title": "一次命中還不能下結論",
+                  "candidate_ids": [
+                    "R25005"
+                  ],
+                  "seconds": 40,
+                  "new_information": "切換共享排列，累計相同比例；標示120排列枚舉48匹配為玩具算核。；改兩邊各洗各的會失去同一首張推導；文字切詞另決定集合，不是語意判決。",
+                  "beats": [
+                    {
+                      "seconds": 25,
+                      "new_information": "切換共享排列，累計相同比例；標示120排列枚舉48匹配為玩具算核。"
+                    },
+                    {
+                      "seconds": 15,
+                      "new_information": "改兩邊各洗各的會失去同一首張推導；文字切詞另決定集合，不是語意判決。"
+                    }
+                  ]
+                }
+              ],
+              "drop_if": "若共享排序與相似度連結無法由五牌看清，撤影片保留來源；不用大數據術語或案例名單填90秒。",
+              "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+              "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+              "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+            }
+          ],
+          "old_theme_seconds": [
+            145,
+            85,
+            90
+          ],
+          "new_theme_seconds": [
+            135,
+            80,
+            90
+          ],
+          "source_or_candidate_text_changed": false
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [
+      {
+        "duplicate_id": "A25003",
+        "canonical_id": "P22002",
+        "reason": "稀釋捕獲與De轉折提供有用生物對照，但答案仍為伸長建立彈性應力且在動作期間未鬆弛；P22002已有伸長彈性抵抗液絲縮斷，H3090已有時間依賴鬆弛/週期作用。沒有直接操控動作速度的新控制機制，因此保留生物來源與問法為P22002變體，不另增核心。"
+      }
+    ],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "P25-S001",
+        "file": ".cache/wave25-physics-grapes2019.html",
+        "sha256": "218c3b03dddb07a64ce91516a2bf41808541c926d0e8a223d1f87246aeb0ab5d",
+        "text_file": ".cache/wave25-physics-grapes2019-text.json",
+        "text_sha256": "735e7e6417d15e3e49d8e106c2d455f78fac71e1e2efc9bb9497878adad9c714"
+      },
+      {
+        "source_id": "P25-S002",
+        "file": ".cache/wave25-physics-critter2021.html",
+        "sha256": "787d7eceb4b5641b876b2564283a7af24fc6f2e2c927742a6f7e1d9f66697940",
+        "text_file": ".cache/wave25-physics-critter2021-text.json",
+        "text_sha256": "2cb9878abf8d730533ab1c63c9fa9eb8c8e3f9151d3f9c9d1e2246907a582122"
+      },
+      {
+        "source_id": "P25-S003",
+        "file": ".cache/wave25-physics-metal2014.html",
+        "sha256": "ca8407156513155c14f8aff9dbd0d17022ff70e272ede7e823e9e48904f7e4b1",
+        "text_file": ".cache/wave25-physics-metal2014-text.json",
+        "text_sha256": "856c9a0c5ca31c51be7b4c5879303c7215af8f29628f1a96707ce13b0410cbab"
+      },
+      {
+        "source_id": "P25-S004",
+        "file": ".cache/wave25-physics-impact2012.pdf",
+        "sha256": "8dcffb919c62da3ae5cd6d3993d42f5b38df69efe9eef4fcc86cb1ba57c6e633",
+        "text_file": ".cache/wave25-physics-impact2012-text.json",
+        "text_sha256": "87db34579bc663e2430f98c296193619c65e1599a427c437eb04b1520cbbab76"
+      },
+      {
+        "source_id": "P25-S005",
+        "file": ".cache/wave25-physics-impact2016.html",
+        "sha256": "3bf5174aadf62f3c9f6fcfb99261566ae08de1549527e17fc0c0b7ca74b78bb4",
+        "text_file": ".cache/wave25-physics-impact2016-text.json",
+        "text_sha256": "9d4406264121a1a69509891040cf654b90eccec60378a9713f057dbabc295ba4"
+      },
+      {
+        "source_id": "P25-S006",
+        "file": ".cache/wave25-physics-bridge2013.pdf",
+        "sha256": "89c9959b749f371e4bd735bee1e37827bd1e32ba3ef7e6f60ea2eaf62a5d6f39",
+        "text_file": ".cache/wave25-physics-bridge2013-text.json",
+        "text_sha256": "44944b204930838ebf28ae829e4021942b9948355e8e80b597ba79ac35c3991e"
+      },
+      {
+        "source_id": "A25-S001",
+        "file": ".cache/wave25-life-sources/lid2012.xml",
+        "sha256": "7c62111f47977f0b67ca1652c5662dfb02476f2f17d17473c7e0ebd38e18ac31",
+        "text_file": ".cache/wave25-life-sources/lid2012.txt",
+        "text_sha256": "b06fcbf713ac142519ec2dd794a3a3641999ad95f176ed756dcbe5854db1d43c"
+      },
+      {
+        "source_id": "A25-S002",
+        "file": ".cache/wave25-life-sources/lid2015author.pdf",
+        "sha256": "87ed25b07dd575820a5686a1902f920c2867556e970624d8cf2c4c22b7a2bfe8",
+        "text_file": ".cache/wave25-life-sources/lid2015author.txt",
+        "text_sha256": "f846e19060736fd2b5255ec6b80e31386bfd32844b1dbf13ff27254092ee0696"
+      },
+      {
+        "source_id": "A25-S003",
+        "file": ".cache/wave25-life-sources/trap2011.pdf",
+        "sha256": "714a591f1255071501b8a17a312785297ad98c92b8b5f3b4a7f334f687e1951f",
+        "text_file": ".cache/wave25-life-sources/trap2011-pdf.txt",
+        "text_sha256": "551546877cd8bb3347a3e568580030c01ba47d0575dcc9ff4f53fcccf2b92aa3"
+      },
+      {
+        "source_id": "A25-S004",
+        "file": ".cache/wave25-life-sources/trap2012author.pdf",
+        "sha256": "a2ef00ec671bba6a5af47e244942ad73028a204912868c9b8df17a7919ab2c79",
+        "text_file": ".cache/wave25-life-sources/trap2012author.txt",
+        "text_sha256": "0be35db4a45bdc55de25b3cc00e3117bd3c8da53a48a23d8ec8b33bbd080fbfc"
+      },
+      {
+        "source_id": "A25-S005",
+        "file": ".cache/wave25-life-sources/fluid2007.xml",
+        "sha256": "5b1cbc4ba8f829387ceb9d2a1277566042733146acf9a1dfe51e6f9768a14094",
+        "text_file": ".cache/wave25-life-sources/fluid2007.txt",
+        "text_sha256": "01eb89e6156e2df15add9d487377fbc6f5b05d477ac91ca7c67419dbb20d2607"
+      },
+      {
+        "source_id": "R25-S001",
+        "file": ".cache/wave25-tech-bloom.pdf",
+        "sha256": "62aab4b336dfda911ba456685bd83d83a4cb914dd9d4e11f0fd96b570f63062f",
+        "text_file": ".cache/wave25-tech-bloom-text.json",
+        "text_sha256": "9cb71e1f16e51da130cdddad4b2417e4e1422f0fc24763260c03f1a1cd47b9bb"
+      },
+      {
+        "source_id": "R25-S002",
+        "file": ".cache/wave25-tech-reservoir.pdf",
+        "sha256": "dba2241b478a46b49ec90cd95f85a8bc3cdf2c12b8c6de03134b99a754a5803b",
+        "text_file": ".cache/wave25-tech-reservoir-text.json",
+        "text_sha256": "5b759d6b34c987314ac25b90ff09f30ce750ef3593a7c148c588e4bb765271be"
+      },
+      {
+        "source_id": "R25-S003",
+        "file": ".cache/wave25-tech-hll.pdf",
+        "sha256": "60a708db2b8b771587c816be9bdb7e1f800bfc759f82a273afc76bc8417826e9",
+        "text_file": ".cache/wave25-tech-hll-text.json",
+        "text_sha256": "9eb12a29c79e00c74482e28390ab733f3835dcc92dcde618b50cd80bffcd1bc9"
+      },
+      {
+        "source_id": "R25-S004",
+        "file": ".cache/wave25-tech-countmin.pdf",
+        "sha256": "abc881cc07ecb2e5d5babc88b4e8f77bfc8cb29e3a245b9a4ed363bf5058d808",
+        "text_file": ".cache/wave25-tech-countmin-text.json",
+        "text_sha256": "e88add2c81380d56b0ec8e0d5e47a9fbcf003c8379a02e32849d8ec37fe0c9b9"
+      },
+      {
+        "source_id": "R25-S005",
+        "file": ".cache/wave25-tech-minhash.pdf",
+        "sha256": "da1227992d4a308f9f6f9f99893fd7b00c26e6cf757b1372f426074c101ef56b",
+        "text_file": ".cache/wave25-tech-minhash-text.json",
+        "text_sha256": "c24f18f18f4e56e38ff9447740ecd5c762377a62f579528d4d341d3e8dbc9386"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "physics",
+          "initial_draft": "60172b522bcb3c98e2c94188d30fb299a94c5a4281c7fbc53507e101bf34dc06",
+          "final_draft": "6af01e081fb3574cbec269e0476c1a5c83df782ba57ea321819b9f4a0d01ee69",
+          "directed_pairs": 20,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "life",
+          "initial_draft": "60172b522bcb3c98e2c94188d30fb299a94c5a4281c7fbc53507e101bf34dc06",
+          "final_draft": "6af01e081fb3574cbec269e0476c1a5c83df782ba57ea321819b9f4a0d01ee69",
+          "directed_pairs": 15,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "tech",
+          "initial_draft": "60172b522bcb3c98e2c94188d30fb299a94c5a4281c7fbc53507e101bf34dc06",
+          "final_draft": "6af01e081fb3574cbec269e0476c1a5c83df782ba57ea321819b9f4a0d01ee69",
+          "directed_pairs": 25,
+          "top5_or_text_changes": 0,
+          "changes": []
+        }
+      ],
+      "earlier_root_only_delta": [],
+      "known_merge_retrieval_audit": [
+        {
+          "duplicate_id": "A25003",
+          "canonical_id": "P22002",
+          "retrieved_in_available_top10": false,
+          "rank": null
+        }
+      ],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  }
+}

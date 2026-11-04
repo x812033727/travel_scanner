@@ -1,0 +1,929 @@
+{
+  "schema_version": "independent-topic-review-v1",
+  "created_on": "2026-11-01",
+  "reviewer": "pool_physics",
+  "author": "pool_life_tech",
+  "status": "PASS_TOPIC_AND_EDITORIAL_REVIEW_NOT_SCRIPT_APPROVAL",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "A14001",
+    "A14002",
+    "A14003",
+    "A14004",
+    "A14005",
+    "A14006"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave14-animal-signals.json",
+      "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
+    },
+    {
+      "file": "reviews/wave14-animal-signals-themes.json",
+      "sha256": "2e5c104b29ca60e2a3e2e8b7784c44de62240474c91432d1a6da1909370a2f2c"
+    },
+    {
+      "file": "reviews/wave14-animal-signals-author.json",
+      "sha256": "a0ef741721028bde043f4af2da9b5fd506ebee46706b332ba13d596c6697dfda"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave14-animal-signals.json",
+      "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
+    },
+    {
+      "file": "reviews/wave14-animal-signals-themes.json",
+      "sha256": "4bef45a258f4e726721cb59c98fec810ada207030cb76b769c8ea3bcbb4bf1a2"
+    },
+    {
+      "file": "reviews/wave14-animal-signals-author.json",
+      "sha256": "6df31f3694530881854bb9f7940ee0c132589e527bb7d2e1361f5b9bbec58f57"
+    }
+  ],
+  "baseline": {
+    "selected": 2897,
+    "raw_records": 3262,
+    "not_added": 646,
+    "parent_reported_head": "4b9f8cb7"
+  },
+  "review_counts": {
+    "candidate_full_records": 6,
+    "source_records": 9,
+    "sources_with_independent_specified_body_read": 9,
+    "fresh_ua_valid_body_files": 8,
+    "fresh_ua_failed_routes": 1,
+    "author_boundary_pairs": 16,
+    "semantic_directed_top5_comparisons": 30,
+    "not_added_editorial_records": 25,
+    "themes": 4
+  },
+  "review_scope": "逐讀6題問答/範圍/圖解預算、25退題說明、16作者邊界對及30條共同top5全文問答/範圍。來源9份均獨立讀指定正文，非逐句劇本核准、非全部補充材料查核、非動物實驗重現。未全庫逐頁重查舊來源，檢索不保證所有語意重複皆找到。",
+  "semantic_evidence": {
+    "draft_sha256": "63ae5eb0398eaf93df4c55da662c998b5297c37a45948a17d617358ede5c68c1",
+    "file": ".cache/wave14-animal-signals-neighbours.json",
+    "sha256": "4b0ce604045d5e090e8f36bc002efb349a2e55e8c794026c39af3ddb2a400be1",
+    "full_report_file": ".cache/first-semantic-wave14-draft.json",
+    "full_report_sha256": "65c140a458932ffb8493c0d47933516eb4ad38837ae0ed35102d32ccc82b4f04",
+    "role": "advisory retrieval; pair decisions use mechanisms and conditions, not cosine thresholds"
+  },
+  "candidate_dispositions": [
+    {
+      "id": "A14001",
+      "decision": "retain",
+      "reason": "各單元獨立效果、正常組合與倒序比較形成足夠的新增因果判斷；不拆成警戒/招募兩核心。",
+      "condition_or_limit": "順序實驗是組間設計，不畫成同一隻鳥每次依序接受全部條件；ABC整塊、D音節串，不能逐字翻譯。"
+    },
+    {
+      "id": "A14002",
+      "decision": "retain",
+      "reason": "叫聲類型與木棍運動樣式的交叉比較，超出一般警報功能；有可展示的排除泛緊張對照。",
+      "condition_or_limit": "和Z7002邊界較近，保留目標特徵選擇，搜尋模板僅行為解釋，無腦內蛇影像證據；現階段留池、不硬串片。"
+    },
+    {
+      "id": "A14003",
+      "decision": "retain",
+      "reason": "合成統一包絡但保留輪廓的控制可隔離身分線索；2013作同一核心的用途延伸。",
+      "condition_or_limit": "2006個體轉頭和2013群體匹配回答是不同實驗；後者未定位回應者，不可畫成已確認點名或全群靠近。"
+    },
+    {
+      "id": "A14004",
+      "decision": "retain",
+      "reason": "規律空檔和帶條件限制的不規律空檔，給出起始時機改變的具體對照。",
+      "condition_or_limit": "不規律序列仍有先前噪音與後續空檔不能相同的條件；不是預知完全隨機未來，也不保證整聲避開噪音。"
+    },
+    {
+      "id": "A14005",
+      "decision": "retain",
+      "reason": "間距變化時雙方加減速及接觸停止/恢復提供可見的閉環互動。",
+      "condition_or_limit": "替代觸碰只有Bristol團隊報告補充，不假稱已核原補充方法；較慢領路與較快跟隨尋食使用不同基準。"
+    },
+    {
+      "id": "A14006",
+      "decision": "retain",
+      "reason": "同一先前發聲者、不同訊息之後遇同一威脅，聯合發訊與朝聲源監看有可比較的資訊條件；不僅警報功能。",
+      "condition_or_limit": "是行為層資訊條件模型，唯一心智/神經機制未定；2024九隻不同設計非重現或推翻2017，保持segment，不擴成讀心長片。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "A14001",
+        "b": "B2006",
+        "reason": "訊號單元固定、只交換排列的接收對照，和互動對象缺少回應而停止求偶的行為序列不同。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2281",
+        "reason": "先拆單元再重排的組合判斷，增加了單純警報功能題沒有的否證條件。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2046",
+        "reason": "不是辨識某物種整體時間圖樣，而是先分離兩單元作用後測正常/倒序是否可組合。"
+      },
+      {
+        "a": "A14002",
+        "b": "Z7002",
+        "reason": "Z7002已有特定視覺增益，不能貶成全部視覺都增強；A14002須保留警報類型×運動樣式交叉控制與目標選擇這一步。若進稿只剩聲音使視覺反應變強，應回併舊核。"
+      },
+      {
+        "a": "A14002",
+        "b": "B2281",
+        "reason": "固定目標而換警報、固定警報而換運動方式的條件對照，超出警戒訊號有何用途。"
+      },
+      {
+        "a": "A14002",
+        "b": "C2005",
+        "reason": "未以命中/誤報推估敏感度或門檻，而是操作訊號內容與目標運動；不能改寫成緊張而誤報。"
+      },
+      {
+        "a": "A14003",
+        "b": "B2284",
+        "reason": "身分線索的存在不等於能去除原發聲者聲紋後仍以輪廓攜帶訊息；合成控制是新增可見反差。"
+      },
+      {
+        "a": "A14003",
+        "b": "LEG-S61",
+        "reason": "舊題氣味身分推論不包含把發訊者固有聲學特徵標準化的隔離對照。"
+      },
+      {
+        "a": "A14004",
+        "b": "Z7004",
+        "reason": "在有條件時間窗口內改呼叫起始時機，與改週期訊號頻率以減干擾不同。"
+      },
+      {
+        "a": "A14004",
+        "b": "Z7009",
+        "reason": "前者用噪音/空檔時間結構安排起始，後者補償運動造成的回聲頻移，控制量不同。"
+      },
+      {
+        "a": "A14005",
+        "b": "B2005",
+        "reason": "直接接觸、距離與雙方速度形成回饋；留下路徑化學標記不需要跟隨者即時控制領路者。"
+      },
+      {
+        "a": "A14005",
+        "b": "Z7015",
+        "reason": "兩個個體直接接觸調速和多個搬運者經同一貨物傳力轉向的耦合路徑不同。"
+      },
+      {
+        "a": "A14005",
+        "b": "B2247",
+        "reason": "本題有即時雙向步速控制，不以觀察同伴後學會行為序列的社會學習名稱代替。"
+      },
+      {
+        "a": "A14005",
+        "b": "B2316",
+        "reason": "局部兩隻距離/接觸調速，與不同巢址支持者停止訊號及招募的集體競爭不同。"
+      },
+      {
+        "a": "A14006",
+        "b": "B2281",
+        "reason": "不是再介紹警報有用，而是固定發聲者身份、改其先前訊息後，接收者後續發訊和監看如何改變。"
+      },
+      {
+        "a": "A14006",
+        "b": "S10001",
+        "reason": "命令配對的神經負像抵銷與前次同伴訊息調整社交發訊的行為模型不同；此批不宣稱已量到細胞迴路。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2033",
+        "reason": "跨代族群平均選擇和當次訊號排列解讀沒有同一因果。"
+      },
+      {
+        "a": "A14001",
+        "b": "A14002",
+        "reason": "同一物種並不等於同核心：組合順序對照與警報內容×運動特徵對照分別改不同訊息條件。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2008",
+        "reason": "誘導捕食者離巢的展示功能，非聲音單元排列的接收控制。"
+      },
+      {
+        "a": "A14001",
+        "b": "H3076",
+        "reason": "化學慢步驟限制速率，非訊號順序；語意檢索命中不足以合併。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2196",
+        "reason": "物種間季節高峰錯配，非兩個叫聲單元當次重排。"
+      },
+      {
+        "a": "A14002",
+        "b": "A14006",
+        "reason": "前者測接收者對視覺目標的選擇，後者測看到相同威脅後依先前同伴訊息發出訊號及監看；不合為一般警報。"
+      },
+      {
+        "a": "A14002",
+        "b": "Z7013",
+        "reason": "干擾捕捉系統且比較習慣化/警告，與訊息引導目標搜尋不同；均不得把行為功能推成唯一神經機制。"
+      },
+      {
+        "a": "A14002",
+        "b": "B2289",
+        "reason": "兩耳聲學差異的空間定位，不是警報內容啟動視覺目標選擇。"
+      },
+      {
+        "a": "A14002",
+        "b": "B2012",
+        "reason": "反覆無害刺激後反應下降，和控制訊號類型/運動相容性的當次選擇不同。"
+      },
+      {
+        "a": "A14003",
+        "b": "C2001",
+        "reason": "閾值附近偵測機率不是移除發聲者音色後的個體輪廓辨識。"
+      },
+      {
+        "a": "A14003",
+        "b": "B2006",
+        "reason": "互動應答序列不包含合成聲保留個體頻率輪廓的隔離控制。"
+      },
+      {
+        "a": "A14003",
+        "b": "B2012",
+        "reason": "重複刺激習慣化不回答標準化振幅後為何仍可辨熟悉輪廓。"
+      },
+      {
+        "a": "A14003",
+        "b": "D9019",
+        "reason": "有限尺寸感測器改聲場，與動物辨識可複製身份輪廓無共同機制。"
+      },
+      {
+        "a": "A14003",
+        "b": "B2014",
+        "reason": "一般刺激配對取得反應能力，不能替代聲紋與頻率輪廓的具體隔離實驗。"
+      },
+      {
+        "a": "A14004",
+        "b": "E2206",
+        "reason": "ADC碼寬缺失屬轉移特性，不是有噪音時調發訊起始。"
+      },
+      {
+        "a": "A14004",
+        "b": "LEG-S86",
+        "reason": "產生抵消聲波與避開噪音時間窗不同，亦非裝置換成動物。"
+      },
+      {
+        "a": "A14004",
+        "b": "C2001",
+        "reason": "偵測閾值機率和主動呼叫起始控制不同。"
+      },
+      {
+        "a": "A14004",
+        "b": "T4008",
+        "reason": "道路號誌相位重新同步不包含根據靜音長短條件調整發訊的行為策略。"
+      },
+      {
+        "a": "A14004",
+        "b": "E2217",
+        "reason": "放大器內部雜訊增益不涉及呼叫時間窗口選擇。"
+      },
+      {
+        "a": "A14005",
+        "b": "A12001",
+        "reason": "集體搬運的目標拉力/運動持續性在障礙下競爭，非兩隻領隨的觸碰與步速回饋。"
+      },
+      {
+        "a": "A14005",
+        "b": "A12002",
+        "reason": "大隊機械耦合維持滑行的模型，非領路者需等跟隨者接觸才繼續。"
+      },
+      {
+        "a": "A14005",
+        "b": "Z7007",
+        "reason": "熟悉景象與天體線索維持方向，不是對方控制步速的互動回饋。"
+      },
+      {
+        "a": "A14005",
+        "b": "B2317",
+        "reason": "化學抑制線索消退觸發屍體搬運，非路線帶領。"
+      },
+      {
+        "a": "A14006",
+        "b": "B2012",
+        "reason": "叫聲總量差本身不能排除習慣化；此題保留同身份兩類前置聲音及見蛇前後監看/訊號的聯合對照才成立。"
+      },
+      {
+        "a": "A14006",
+        "b": "B2006",
+        "reason": "即時求偶回應鏈不同於接收先前聲音、其後獨自見到威脅才調整發訊。"
+      },
+      {
+        "a": "A14006",
+        "b": "LEG-S62",
+        "reason": "外觀對吸血蠅降落的多假說，無共同機制。"
+      },
+      {
+        "a": "A14006",
+        "b": "A14004",
+        "reason": "依噪音時間線索安排起始，和依同伴既有訊息調發訊及監看不同。"
+      }
+    ]
+  },
+  "author_boundary_review": [
+    {
+      "a": "A14001",
+      "b": "B2006",
+      "decision": "distinct",
+      "reason": "訊號單元固定、只交換排列的接收對照，和互動對象缺少回應而停止求偶的行為序列不同。"
+    },
+    {
+      "a": "A14001",
+      "b": "B2281",
+      "decision": "distinct",
+      "reason": "先拆單元再重排的組合判斷，增加了單純警報功能題沒有的否證條件。"
+    },
+    {
+      "a": "A14001",
+      "b": "B2046",
+      "decision": "distinct",
+      "reason": "不是辨識某物種整體時間圖樣，而是先分離兩單元作用後測正常/倒序是否可組合。"
+    },
+    {
+      "a": "A14002",
+      "b": "Z7002",
+      "decision": "distinct",
+      "reason": "Z7002已有特定視覺增益，不能貶成全部視覺都增強；A14002須保留警報類型×運動樣式交叉控制與目標選擇這一步。若進稿只剩聲音使視覺反應變強，應回併舊核。"
+    },
+    {
+      "a": "A14002",
+      "b": "B2281",
+      "decision": "distinct",
+      "reason": "固定目標而換警報、固定警報而換運動方式的條件對照，超出警戒訊號有何用途。"
+    },
+    {
+      "a": "A14002",
+      "b": "C2005",
+      "decision": "distinct",
+      "reason": "未以命中/誤報推估敏感度或門檻，而是操作訊號內容與目標運動；不能改寫成緊張而誤報。"
+    },
+    {
+      "a": "A14003",
+      "b": "B2284",
+      "decision": "distinct",
+      "reason": "身分線索的存在不等於能去除原發聲者聲紋後仍以輪廓攜帶訊息；合成控制是新增可見反差。"
+    },
+    {
+      "a": "A14003",
+      "b": "LEG-S61",
+      "decision": "distinct",
+      "reason": "舊題氣味身分推論不包含把發訊者固有聲學特徵標準化的隔離對照。"
+    },
+    {
+      "a": "A14004",
+      "b": "Z7004",
+      "decision": "distinct",
+      "reason": "在有條件時間窗口內改呼叫起始時機，與改週期訊號頻率以減干擾不同。"
+    },
+    {
+      "a": "A14004",
+      "b": "Z7009",
+      "decision": "distinct",
+      "reason": "前者用噪音/空檔時間結構安排起始，後者補償運動造成的回聲頻移，控制量不同。"
+    },
+    {
+      "a": "A14005",
+      "b": "B2005",
+      "decision": "distinct",
+      "reason": "直接接觸、距離與雙方速度形成回饋；留下路徑化學標記不需要跟隨者即時控制領路者。"
+    },
+    {
+      "a": "A14005",
+      "b": "Z7015",
+      "decision": "distinct",
+      "reason": "兩個個體直接接觸調速和多個搬運者經同一貨物傳力轉向的耦合路徑不同。"
+    },
+    {
+      "a": "A14005",
+      "b": "B2247",
+      "decision": "distinct",
+      "reason": "本題有即時雙向步速控制，不以觀察同伴後學會行為序列的社會學習名稱代替。"
+    },
+    {
+      "a": "A14005",
+      "b": "B2316",
+      "decision": "distinct",
+      "reason": "局部兩隻距離/接觸調速，與不同巢址支持者停止訊號及招募的集體競爭不同。"
+    },
+    {
+      "a": "A14006",
+      "b": "B2281",
+      "decision": "distinct",
+      "reason": "不是再介紹警報有用，而是固定發聲者身份、改其先前訊息後，接收者後續發訊和監看如何改變。"
+    },
+    {
+      "a": "A14006",
+      "b": "S10001",
+      "decision": "distinct",
+      "reason": "命令配對的神經負像抵銷與前次同伴訊息調整社交發訊的行為模型不同；此批不宣稱已量到細胞迴路。"
+    }
+  ],
+  "semantic_neighbour_review": [
+    {
+      "id": "A14001",
+      "comparisons": [
+        {
+          "a": "A14001",
+          "b": "B2033",
+          "decision": "distinct",
+          "reason": "跨代族群平均選擇和當次訊號排列解讀沒有同一因果。"
+        },
+        {
+          "a": "A14001",
+          "b": "A14002",
+          "decision": "distinct",
+          "reason": "同一物種並不等於同核心：組合順序對照與警報內容×運動特徵對照分別改不同訊息條件。"
+        },
+        {
+          "a": "A14001",
+          "b": "B2008",
+          "decision": "distinct",
+          "reason": "誘導捕食者離巢的展示功能，非聲音單元排列的接收控制。"
+        },
+        {
+          "a": "A14001",
+          "b": "H3076",
+          "decision": "distinct",
+          "reason": "化學慢步驟限制速率，非訊號順序；語意檢索命中不足以合併。"
+        },
+        {
+          "a": "A14001",
+          "b": "B2196",
+          "decision": "distinct",
+          "reason": "物種間季節高峰錯配，非兩個叫聲單元當次重排。"
+        }
+      ]
+    },
+    {
+      "id": "A14002",
+      "comparisons": [
+        {
+          "a": "A14002",
+          "b": "A14006",
+          "decision": "distinct",
+          "reason": "前者測接收者對視覺目標的選擇，後者測看到相同威脅後依先前同伴訊息發出訊號及監看；不合為一般警報。"
+        },
+        {
+          "a": "A14002",
+          "b": "A14001",
+          "decision": "distinct",
+          "reason": "只交換聲音單元次序與聲音類型×物體運動交叉控制不同。"
+        },
+        {
+          "a": "A14002",
+          "b": "Z7013",
+          "decision": "distinct",
+          "reason": "干擾捕捉系統且比較習慣化/警告，與訊息引導目標搜尋不同；均不得把行為功能推成唯一神經機制。"
+        },
+        {
+          "a": "A14002",
+          "b": "B2289",
+          "decision": "distinct",
+          "reason": "兩耳聲學差異的空間定位，不是警報內容啟動視覺目標選擇。"
+        },
+        {
+          "a": "A14002",
+          "b": "B2012",
+          "decision": "distinct",
+          "reason": "反覆無害刺激後反應下降，和控制訊號類型/運動相容性的當次選擇不同。"
+        }
+      ]
+    },
+    {
+      "id": "A14003",
+      "comparisons": [
+        {
+          "a": "A14003",
+          "b": "C2001",
+          "decision": "distinct",
+          "reason": "閾值附近偵測機率不是移除發聲者音色後的個體輪廓辨識。"
+        },
+        {
+          "a": "A14003",
+          "b": "B2006",
+          "decision": "distinct",
+          "reason": "互動應答序列不包含合成聲保留個體頻率輪廓的隔離控制。"
+        },
+        {
+          "a": "A14003",
+          "b": "B2012",
+          "decision": "distinct",
+          "reason": "重複刺激習慣化不回答標準化振幅後為何仍可辨熟悉輪廓。"
+        },
+        {
+          "a": "A14003",
+          "b": "D9019",
+          "decision": "distinct",
+          "reason": "有限尺寸感測器改聲場，與動物辨識可複製身份輪廓無共同機制。"
+        },
+        {
+          "a": "A14003",
+          "b": "B2014",
+          "decision": "distinct",
+          "reason": "一般刺激配對取得反應能力，不能替代聲紋與頻率輪廓的具體隔離實驗。"
+        }
+      ]
+    },
+    {
+      "id": "A14004",
+      "comparisons": [
+        {
+          "a": "A14004",
+          "b": "E2206",
+          "decision": "distinct",
+          "reason": "ADC碼寬缺失屬轉移特性，不是有噪音時調發訊起始。"
+        },
+        {
+          "a": "A14004",
+          "b": "LEG-S86",
+          "decision": "distinct",
+          "reason": "產生抵消聲波與避開噪音時間窗不同，亦非裝置換成動物。"
+        },
+        {
+          "a": "A14004",
+          "b": "C2001",
+          "decision": "distinct",
+          "reason": "偵測閾值機率和主動呼叫起始控制不同。"
+        },
+        {
+          "a": "A14004",
+          "b": "T4008",
+          "decision": "distinct",
+          "reason": "道路號誌相位重新同步不包含根據靜音長短條件調整發訊的行為策略。"
+        },
+        {
+          "a": "A14004",
+          "b": "E2217",
+          "decision": "distinct",
+          "reason": "放大器內部雜訊增益不涉及呼叫時間窗口選擇。"
+        }
+      ]
+    },
+    {
+      "id": "A14005",
+      "comparisons": [
+        {
+          "a": "A14005",
+          "b": "A12001",
+          "decision": "distinct",
+          "reason": "集體搬運的目標拉力/運動持續性在障礙下競爭，非兩隻領隨的觸碰與步速回饋。"
+        },
+        {
+          "a": "A14005",
+          "b": "Z7015",
+          "decision": "distinct",
+          "reason": "共同貨物力耦合轉向與直接領隨接觸調速不同。"
+        },
+        {
+          "a": "A14005",
+          "b": "A12002",
+          "decision": "distinct",
+          "reason": "大隊機械耦合維持滑行的模型，非領路者需等跟隨者接觸才繼續。"
+        },
+        {
+          "a": "A14005",
+          "b": "Z7007",
+          "decision": "distinct",
+          "reason": "熟悉景象與天體線索維持方向，不是對方控制步速的互動回饋。"
+        },
+        {
+          "a": "A14005",
+          "b": "B2317",
+          "decision": "distinct",
+          "reason": "化學抑制線索消退觸發屍體搬運，非路線帶領。"
+        }
+      ]
+    },
+    {
+      "id": "A14006",
+      "comparisons": [
+        {
+          "a": "A14006",
+          "b": "A14002",
+          "decision": "distinct",
+          "reason": "特定視覺目標的接近選擇與發訊者依先前同伴訊息調整後續警報/監看不同。"
+        },
+        {
+          "a": "A14006",
+          "b": "B2012",
+          "decision": "distinct",
+          "reason": "叫聲總量差本身不能排除習慣化；此題保留同身份兩類前置聲音及見蛇前後監看/訊號的聯合對照才成立。"
+        },
+        {
+          "a": "A14006",
+          "b": "B2006",
+          "decision": "distinct",
+          "reason": "即時求偶回應鏈不同於接收先前聲音、其後獨自見到威脅才調整發訊。"
+        },
+        {
+          "a": "A14006",
+          "b": "LEG-S62",
+          "decision": "distinct",
+          "reason": "外觀對吸血蠅降落的多假說，無共同機制。"
+        },
+        {
+          "a": "A14006",
+          "b": "A14004",
+          "decision": "distinct",
+          "reason": "依噪音時間線索安排起始，和依同伴既有訊息調發訊及監看不同。"
+        }
+      ]
+    }
+  ],
+  "not_added_review": {
+    "count": 25,
+    "decision": "preserve_author_not_added_no_central_exclusion",
+    "notes": "退題未進本批raw，不能再以merge/excluded送中央。重述舊核、過度擬人化及只讀摘要/未完成資料核對的方向均保留退題。未獨立重新打開螢火蟲勘誤、螞蟻quorum或卷尾鳥等退題外源，不把作者讀取紀錄升格為本審全文查核。"
+  },
+  "source_readings": [
+    {
+      "source_id": "A14-S001",
+      "source_url": "https://www.nature.com/articles/ncomms10986",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4786783/fullTextXML",
+      "doi": "10.1038/ncomms10986",
+      "read_on": "2026-11-01",
+      "read_via": "fresh specified-UA Europe PMC XML; lxml paragraph extraction",
+      "reading_scope": "Introduction、Results Experiment 1–2、Discussion（抽取段0–30）；Methods Playback stimuli及兩實驗（37–48）。",
+      "limitations": "未讀全部general design/statistics/補充檔，未聽錄音、未重算統計。",
+      "result": "SPECIFIED_BODY_READ",
+      "fresh_cache": {
+        "file": ".cache/wave14-physics-animal-A14-S001.xml",
+        "sha256": "5551e97eda4234e7a52e0370507c74431387c2fe79f704107d84d9f7baac0128"
+      }
+    },
+    {
+      "source_id": "A14-S002",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5816198/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5816198/",
+      "doi": "10.1073/pnas.1718884115",
+      "read_on": "2026-11-01",
+      "read_via": "fresh specified-UA PMC HTML; lxml article text",
+      "reading_scope": "Results and Discussion（抽取段19–33）；Methods Experiment 2運動與播放條件（43–46）。",
+      "limitations": "未看補充影片，未實作行為實驗；僅行為證據，不直接觀測心像。",
+      "result": "SPECIFIED_BODY_READ",
+      "fresh_cache": {
+        "file": ".cache/wave14-physics-animal-A14-S002.html",
+        "sha256": "888fd7568963776430de60c783c57182fc060f76b4449506fc9ab98933f62ffe"
+      }
+    },
+    {
+      "source_id": "A14-S003",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1472465/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1472465/",
+      "doi": "10.1073/pnas.0509918103",
+      "read_on": "2026-11-01",
+      "read_via": "fresh specified-UA PMC HTML; lxml article text",
+      "reading_scope": "Results、Discussion、Materials and Methods（抽取段12–31），核合成振幅/頻率、14個體與親屬/熟悉非親屬對照。",
+      "limitations": "未取得/播放原始聲音、未重算模型；轉頭個體差異不能改成所有海豚皆成功。",
+      "result": "SPECIFIED_BODY_READ",
+      "fresh_cache": {
+        "file": ".cache/wave14-physics-animal-A14-S003.html",
+        "sha256": "0268677098d77a10c04c61d30d8a896cb4ee26958053d7a3d572d633a5425aff"
+      }
+    },
+    {
+      "source_id": "A14-S004",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3740840/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3740840/",
+      "doi": "10.1073/pnas.1304459110",
+      "read_on": "2026-11-01",
+      "read_via": "fresh specified-UA PMC HTML; lxml article text",
+      "reading_scope": "Results（抽取段13–32）與Discussion（38–43），核匹配回答、兩控制、無法定位回應者及總叫聲率/移動對照。",
+      "limitations": "未讀全部Methods/補充音檔；低自然模仿率支持原主回應仍是推論。",
+      "result": "SPECIFIED_BODY_READ",
+      "fresh_cache": {
+        "file": ".cache/wave14-physics-animal-A14-S004.html",
+        "sha256": "15443d814b971982ab0c8790e2015aaf88546acc659aea0a89595381109c6c49"
+      }
+    },
+    {
+      "source_id": "A14-S005",
+      "source_url": "https://doi.org/10.1242/jeb.056101",
+      "retrieval_url": "https://millerlab.ucsd.edu/files/2012/11/2011_RoyEtAl.pdf",
+      "doi": "10.1242/jeb.056101",
+      "read_on": "2026-11-01",
+      "read_via": "fresh specified-UA UCSD coauthor-lab PDF; PyMuPDF text",
+      "reading_scope": "PDF pp.4–5、9–10，即印刷3622–3623、3627–3628；aperiodic序列限制、Results onset/latency及Discussion。",
+      "limitations": "未讀全11頁、未逐表重算統計；標題/來源身份可核但不稱重新審全部方法。",
+      "result": "SPECIFIED_BODY_READ",
+      "fresh_cache": {
+        "file": ".cache/wave14-physics-animal-A14-S005.pdf",
+        "sha256": "9027a9a547f53e05ae29012f5004930e9122596e48834560d401ac9da4c0aa32"
+      }
+    },
+    {
+      "source_id": "A14-S006",
+      "source_url": "https://www.nature.com/articles/439153a",
+      "retrieval_url": "https://www.researchgate.net/publication/7364080_Teaching_in_tandem-running_ants",
+      "doi": "10.1038/439153a",
+      "read_on": "2026-11-01",
+      "read_via": "web.open ResearchGate public author-uploaded full text; separate specified-UA urllib request returned 403",
+      "reading_scope": "Nature p.153單頁主文與Fig.1圖說；觸角接觸、雙向距離/速度調整、成本與跟隨尋食效益。",
+      "limitations": "web頁面標Content uploaded by Nigel R Franks；無下載PDF、未讀Supplementary Methods/Movie。HTTP403不是本篇未讀，亦不是UA成功。",
+      "result": "SPECIFIED_BODY_READ",
+      "failed_route": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source_id": "A14-S007",
+      "source_url": "https://www.bristol.ac.uk/news/2006/879.html",
+      "retrieval_url": "https://www.bristol.ac.uk/news/2006/879.html",
+      "doi": "",
+      "read_on": "2026-11-01",
+      "read_via": "web.open first-party Bristol report main text; also fresh specified-UA HTML saved",
+      "reading_scope": "主文研究者說明、雙向速度回饋、移去跟隨者後以毛髮觸碰的報告段。",
+      "limitations": "第一方報導不是第二個獨立研究；該操作細節未以原補充方法確認。",
+      "result": "SPECIFIED_BODY_READ",
+      "fresh_cache": {
+        "file": ".cache/wave14-physics-animal-A14-S007.html",
+        "sha256": "06d010aec9f2b82fc726565700a2a202cff18e259076f3cc3bc4f25763ff4796"
+      }
+    },
+    {
+      "source_id": "A14-S008",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5687857/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5687857/fullTextXML",
+      "doi": "10.1126/sciadv.1701742",
+      "read_on": "2026-11-01",
+      "read_via": "fresh specified-UA Europe PMC XML; lxml paragraph extraction",
+      "reading_scope": "Experiment 2結果、Fig.4/Table2、Discussion替代解釋（抽取段23–49），Experiment2方法/預測（59–66）。",
+      "limitations": "未重算統計、未讀全部Exp1方法；21試次10隻，叫聲數差不能單獨排除喚醒/習慣化。",
+      "result": "SPECIFIED_BODY_READ",
+      "fresh_cache": {
+        "file": ".cache/wave14-physics-animal-A14-S008.xml",
+        "sha256": "156728cdd77dfbc8cba94a5c8e2490e4687b7724e9a91ee88c5e73affe5c8977"
+      }
+    },
+    {
+      "source_id": "A14-S009",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11627086/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11627086/fullTextXML",
+      "doi": "10.7717/peerj.18498",
+      "read_on": "2026-11-01",
+      "read_via": "fresh specified-UA Europe PMC XML; lxml paragraph extraction",
+      "reading_scope": "Individuals、Procedure、Coding、統計說明與Results、Discussion、Conclusions（抽取段11–43）。",
+      "limitations": "9隻非隨機分組、叫聲模型不顯著、凝視仍有喚醒與分組解釋；不同威脅/觀眾設計不當2017重現。",
+      "result": "SPECIFIED_BODY_READ",
+      "fresh_cache": {
+        "file": ".cache/wave14-physics-animal-A14-S009.xml",
+        "sha256": "d2f00e0b8e77a4f8c3638abbefef675ead88843c2c107343888d0c78b60978ec"
+      }
+    }
+  ],
+  "source_identity": {
+    "records": 9,
+    "underlying_studies": 8,
+    "same_work_pairs": [
+      {
+        "a": "A14-S006",
+        "b": "A14-S007",
+        "reason": "Nature論文與Bristol同研究第一方報告，非獨立重現。"
+      }
+    ],
+    "delivery_routes": "Europe PMC/PMC XML或HTML、作者實驗室PDF與ResearchGate作者上傳正文為同論文載體，不增加獨立研究數。",
+    "scope": "本審核對指定正文/論文DOI與方法界線；不取代root全庫URL/DOI身份合併。"
+  },
+  "theme_review": [
+    {
+      "id": "W14A-T01",
+      "decision": "retain_revised_budget",
+      "body_seconds": 125,
+      "chapter_seconds": [
+        60,
+        65
+      ],
+      "cumulative_core_seconds": {
+        "A14001": 125
+      },
+      "core_caps": {
+        "A14001": 125
+      },
+      "max_beat_seconds": 30,
+      "opening_recap_included": true,
+      "read_aloud": false,
+      "drop_if_checked": "若無法交代倒序控制的材料相同，撤案；刪第二章65秒只剩60秒叫聲分類，撤雙章案。刪第一章也失去對照定義，撤案。"
+    },
+    {
+      "id": "W14A-T02",
+      "decision": "retain_revised_budget",
+      "body_seconds": 140,
+      "chapter_seconds": [
+        70,
+        70
+      ],
+      "cumulative_core_seconds": {
+        "A14003": 140
+      },
+      "core_caps": {
+        "A14003": 150
+      },
+      "max_beat_seconds": 35,
+      "opening_recap_included": true,
+      "read_aloud": false,
+      "drop_if_checked": "若無法清楚標示兩次不同實驗與未定位回應者，刪第二章70秒，僅70秒第一章不足原雙章案，撤案或另改一個更短版本再審；不加海豚冷知識補時。"
+    },
+    {
+      "id": "W14A-T03",
+      "decision": "retain_revised_budget",
+      "body_seconds": 100,
+      "chapter_seconds": [
+        50,
+        50
+      ],
+      "cumulative_core_seconds": {
+        "A14005": 100
+      },
+      "core_caps": {
+        "A14005": 100
+      },
+      "max_beat_seconds": 30,
+      "opening_recap_included": true,
+      "read_aloud": false,
+      "drop_if_checked": "若替代觸碰只夠一句且無可用概念圖，刪20秒成80秒、第二章30秒；若刪整個第二章50秒，剩50秒，撤雙章案。"
+    },
+    {
+      "id": "W14A-T04",
+      "decision": "retain_revised_budget",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "cumulative_core_seconds": {
+        "A14004": 105
+      },
+      "core_caps": {
+        "A14004": 115
+      },
+      "max_beat_seconds": 30,
+      "opening_recap_included": true,
+      "read_aloud": false,
+      "drop_if_checked": "若不能顯示規律與混合窗的不同可用線索，撤案；刪第二章55秒只剩50秒功能說明，撤雙章案；不以回顧湊回105秒。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "ANIMAL14-01",
+      "target": "W14A-T02",
+      "issue": "第二章15秒只重設年份/群體，沒有新增對照。",
+      "correction": "15→5秒；章80→70，全片150→140；仍明示兩研究及回應者未定位。",
+      "targeted_readback": "PASS; progression, range, body, drop_if and author history agree"
+    },
+    {
+      "id": "ANIMAL14-02",
+      "target": "W14A-T04",
+      "issue": "第一章末15秒回顧規律空檔後才轉問混合窗，可縮短。",
+      "correction": "15→5秒；章60→50，全片115→105；沒有補入別的物種或機制。",
+      "targeted_readback": "PASS; progression, range, body, drop_if and author history agree"
+    }
+  ],
+  "required_corrections": [],
+  "remaining_blockers": [],
+  "validation": {
+    "node_version": "v24.13.0",
+    "isolated_validateEditorial": "PASS 6 records",
+    "isolated_validateThemes": "PASS 4 themes with candidates selected in memory only",
+    "beats_and_core_caps": "PASS independent Node arithmetic and Python readback",
+    "utf8_lf": "PASS three author artifacts",
+    "central_files_modified": false,
+    "read_aloud": false,
+    "media_created": false
+  },
+  "limits": [
+    "Source coverage denotes actual specified-body reading, not all-paper or all-claim approval.",
+    "紙上看得見的對照與節拍可成立；未製作曲線、音訊或動畫，沒有觀眾測試/實測留存。",
+    "A14002與A14006維持素材池segment，不因數量把牠們插入四個已連貫題案。",
+    "來源圖、影片、叫聲未取得再利用權；目前只有連結及原創提問/短摘要。"
+  ],
+  "final_input_check": {
+    "status": "PASS",
+    "first_draft_sha256": "63ae5eb0398eaf93df4c55da662c998b5297c37a45948a17d617358ede5c68c1",
+    "final_draft_sha256": "7d0a2c88e1320b8faf0e83740389483124dccdfd664e59beba66231cd1f37737",
+    "final_semantic_file": ".cache/semantic-wave14-draft.json",
+    "final_semantic_sha256": "046933ccff84a511d80d5436aa35a31c9d6501f64df76384073caa5e21d88e07",
+    "delta_file": ".cache/wave14-animal-signals-neighbour-delta.json",
+    "delta_sha256": "78d65adcbd80fe91c1ef23f5eff1e749260b9f8ae21b9228c18ec7360b6d4641",
+    "delta_rows": 0,
+    "comparison": "Independently compared all six cohort entries in first and final common top10 semantic reports: exact equality. Author batch and all three final reviewed_files hashes read back unchanged; initial top5 file remains bound to first draft and is retained, not relabeled final.",
+    "cohort_entries_equal": 6,
+    "reviewed_final_files": [
+      {
+        "file": "batches/wave14-animal-signals.json",
+        "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
+      },
+      {
+        "file": "reviews/wave14-animal-signals-themes.json",
+        "sha256": "2e5c104b29ca60e2a3e2e8b7784c44de62240474c91432d1a6da1909370a2f2c"
+      },
+      {
+        "file": "reviews/wave14-animal-signals-author.json",
+        "sha256": "a0ef741721028bde043f4af2da9b5fd506ebee46706b332ba13d596c6697dfda"
+      }
+    ]
+  }
+}

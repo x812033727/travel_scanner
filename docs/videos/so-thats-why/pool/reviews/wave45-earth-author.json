@@ -1,0 +1,746 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "science_sources",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "scope": "以風暴前後位置、跨岸剖面、潮溝水流及受控砂床／鹽沼試驗，分辨表面相似的輸運方式與時間尺度。",
+  "baseline": {
+    "head": "090b1324ac47ec0ef12c4db5ca32136a6537cbf8",
+    "selected": 3430,
+    "raw_records": 3817,
+    "not_added": 1939,
+    "themes": 484,
+    "snapshot": {
+      "file": "baselines/2026-11-03-3430.json.gz",
+      "sha256": "391ddf8f9a678ef93c7adc7de5f24d3fdfc55efdcf820bcec6ebdbafe71f49ae"
+    },
+    "pool_sha256": "3ecf8679435230ad7d90b909b114c94e49f999651b8132d5514ded27abae6efe"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave45-earth.json",
+      "sha256": "a749752d336d4dd52b9de7e5581cb8611501d561521ca279e65ae424e7c02dc4"
+    },
+    {
+      "file": "reviews/wave45-earth-themes.json",
+      "sha256": "8a2a1ff2f25e6e1a44290fb7ebb5ad14f69abae58055f81d05a7b714c3351647"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "not_added": 15,
+    "near_pairs": 21,
+    "themes": 5
+  },
+  "near_pairs": [
+    {
+      "a": "S45-001",
+      "b": "LEG-S83",
+      "a_snapshot": {
+        "id": "S45-001",
+        "question": "海岸上這麼重的石頭，非得海嘯才搬得動嗎？",
+        "answer_target": "在愛爾蘭西岸，研究者帶著早期照片回到相同視點，對齊不動的背景，比較風暴季前後的岩塊位置。其中一塊原已脫離岩壁的巨石往海側移約三公尺半；它的體積由照片重建，再按岩石密度估重約六百二十公噸。這個有風暴紀錄的反例讓單憑重量判定曾有海嘯的說法站不住腳。",
+        "scope": "冬季前後的位置不等於逐浪攝影，岩塊重量來自體積與密度。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S83",
+        "question": "海嘯外海不顯眼，靠岸怎麼突然變高？",
+        "answer_target": "海嘯從深水進入淺水，波速、波長與波高隨水深及地形改變。",
+        "scope": "不是每次海嘯都是一面巨型捲浪，也不是各岸同高。；不能把看不見波高推論成安全，不用死傷作噱頭。"
+      },
+      "decision": "distinct",
+      "reason": "既有題解波進淺海的波高；本題配對已知季節照片與岩塊質量估測，檢驗沉積物可否鑑別風暴。"
+    },
+    {
+      "a": "S45-001",
+      "b": "E7002",
+      "a_snapshot": {
+        "id": "S45-001",
+        "question": "海岸上這麼重的石頭，非得海嘯才搬得動嗎？",
+        "answer_target": "在愛爾蘭西岸，研究者帶著早期照片回到相同視點，對齊不動的背景，比較風暴季前後的岩塊位置。其中一塊原已脫離岩壁的巨石往海側移約三公尺半；它的體積由照片重建，再按岩石密度估重約六百二十公噸。這個有風暴紀錄的反例讓單憑重量判定曾有海嘯的說法站不住腳。",
+        "scope": "冬季前後的位置不等於逐浪攝影，岩塊重量來自體積與密度。"
+      },
+      "b_snapshot": {
+        "id": "E7002",
+        "question": "沒有在河裡滾過的巨石，為什麼也會圓圓的？",
+        "answer_target": "水沿交叉裂隙進入，岩塊角部較早化學衰解，留下較圓的未風化岩核；外層移除後露出。",
+        "scope": "限來源裂隙花崗質岩體的球狀風化；不是所有圓石同源，不以照片取代現地地質判讀。"
+      },
+      "decision": "distinct",
+      "reason": "化學風化使岩核圓化，不能檢驗巨石受搬運的位置與海嘯判別。"
+    },
+    {
+      "a": "S45-001",
+      "b": "N212",
+      "a_snapshot": {
+        "id": "S45-001",
+        "question": "海岸上這麼重的石頭，非得海嘯才搬得動嗎？",
+        "answer_target": "在愛爾蘭西岸，研究者帶著早期照片回到相同視點，對齊不動的背景，比較風暴季前後的岩塊位置。其中一塊原已脫離岩壁的巨石往海側移約三公尺半；它的體積由照片重建，再按岩石密度估重約六百二十公噸。這個有風暴紀錄的反例讓單憑重量判定曾有海嘯的說法站不住腳。",
+        "scope": "冬季前後的位置不等於逐浪攝影，岩塊重量來自體積與密度。"
+      },
+      "b_snapshot": {
+        "id": "N212",
+        "question": "沒有地震，為什麼也可能出現像小海嘯一樣的海水漲落？",
+        "answer_target": "快速天氣擾動激發傳播水波。",
+        "scope": "What is a seiche?"
+      },
+      "decision": "distinct",
+      "reason": "氣壓快速變化形成海面振盪不等於照片限制岩塊位移期間。"
+    },
+    {
+      "a": "S45-002",
+      "b": "E11001",
+      "a_snapshot": {
+        "id": "S45-002",
+        "question": "一場颶風有這麼大的浪，鹽沼邊緣多年來失掉的泥，會不會反而多半是平常的風浪帶走的？",
+        "answer_target": "把多處鹽沼邊緣的侵蝕率與入射波功率作對照，研究資料接近線性。再用這個關係配上美國八地的風浪歷史，把各級天氣的作用時間加總；猛烈事件雖強但短，常見中等條件估計造成的累積側蝕較大。",
+        "scope": "是八地約二十年推估的側緣風浪侵蝕，非逐浪量所有流失或評定風暴總災害。"
+      },
+      "b_snapshot": {
+        "id": "E11001",
+        "question": "砂礫越多，為什麼不一定把岩床磨得越快？",
+        "answer_target": "可動砂礫撞擊提供磨蝕工具，但覆蓋底床又減少裸露受撞面；兩者競爭使侵蝕不隨砂量一直增加，振盪流聚沙成床形又改變覆蓋效率。",
+        "scope": "限所讀振盪水槽、礫石及泡棉替代岩床實驗；河流只作機制背景，不套用統一最佳砂量或侵蝕率。"
+      },
+      "decision": "distinct",
+      "reason": "原題是磨料供給與覆蓋岩床競爭，本題是瞬間波功率乘不同海況出現時間的長期預算。"
+    },
+    {
+      "a": "S45-002",
+      "b": "S45-001",
+      "a_snapshot": {
+        "id": "S45-002",
+        "question": "一場颶風有這麼大的浪，鹽沼邊緣多年來失掉的泥，會不會反而多半是平常的風浪帶走的？",
+        "answer_target": "把多處鹽沼邊緣的侵蝕率與入射波功率作對照，研究資料接近線性。再用這個關係配上美國八地的風浪歷史，把各級天氣的作用時間加總；猛烈事件雖強但短，常見中等條件估計造成的累積側蝕較大。",
+        "scope": "是八地約二十年推估的側緣風浪侵蝕，非逐浪量所有流失或評定風暴總災害。"
+      },
+      "b_snapshot": {
+        "id": "S45-001",
+        "question": "海岸上這麼重的石頭，非得海嘯才搬得動嗎？",
+        "answer_target": "在愛爾蘭西岸，研究者帶著早期照片回到相同視點，對齊不動的背景，比較風暴季前後的岩塊位置。其中一塊原已脫離岩壁的巨石往海側移約三公尺半；它的體積由照片重建，再按岩石密度估重約六百二十公噸。這個有風暴紀錄的反例讓單憑重量判定曾有海嘯的說法站不住腳。",
+        "scope": "冬季前後的位置不等於逐浪攝影，岩塊重量來自體積與密度。"
+      },
+      "decision": "distinct",
+      "reason": "一次風暴季能搬大石與多年鹽沼側蝕中常見海況的貢獻是不同時間尺度及讀出。"
+    },
+    {
+      "a": "S45-003",
+      "b": "E11002",
+      "a_snapshot": {
+        "id": "S45-003",
+        "question": "沙灘被整平後，一排小尖角怎麼又長出來，卻沒一直越長越尖？",
+        "answer_target": "研究者追蹤風暴抹平或機具整平後的海灘，比較相鄰凸角與凹灣上浪前緣的時差和高低差。凹凸漸長時兩處水流不同步；兩處侵蝕速度的差異先加大、後來縮小，符合水流與地形先放大微小起伏、後來抑制繼續增高的解釋。",
+        "scope": "沒有從規則間距單獨證明成因，也未排除所有外部波動的影響。"
+      },
+      "b_snapshot": {
+        "id": "E11002",
+        "question": "河床沒有硬軟岩交界，瀑布也可能自己長出來嗎？",
+        "answer_target": "均質可侵蝕床的局部深池先積砂受保護，下游仍下切，使兩者間坡段變陡並形成離床水柱；外部條件固定也能產生地形階梯。",
+        "scope": "限2019水槽實驗及自然界可能性；不稱所有瀑布都如此，不把水躍等同瀑布或天然岩石與泡棉視為等比例。"
+      },
+      "decision": "distinct",
+      "reason": "深池護底與下游形成瀑布不同於浪緣滯後與凹灣凸角的差異侵蝕先放大後減弱。"
+    },
+    {
+      "a": "S45-003",
+      "b": "E11005",
+      "a_snapshot": {
+        "id": "S45-003",
+        "question": "沙灘被整平後，一排小尖角怎麼又長出來，卻沒一直越長越尖？",
+        "answer_target": "研究者追蹤風暴抹平或機具整平後的海灘，比較相鄰凸角與凹灣上浪前緣的時差和高低差。凹凸漸長時兩處水流不同步；兩處侵蝕速度的差異先加大、後來縮小，符合水流與地形先放大微小起伏、後來抑制繼續增高的解釋。",
+        "scope": "沒有從規則間距單獨證明成因，也未排除所有外部波動的影響。"
+      },
+      "b_snapshot": {
+        "id": "E11005",
+        "question": "河口自己堆出的沙洲，怎麼又把河水分成兩條路？",
+        "answer_target": "出河口的射流擴散減速而沉積；沙洲逐漸淺化後增加上游壅水並迫使流動繞側，降低頂部輸砂能力、促進加高與兩側通道。",
+        "scope": "限所讀河流主導、無強潮浪的模型與歷史圖像；不是所有分汊皆由此形成，不套用模型深度比例當普遍門檻。"
+      },
+      "decision": "distinct",
+      "reason": "河口射流沉積造成分汊不能解釋岸面凹灣及凸角的水前緣時差成長與穩定。"
+    },
+    {
+      "a": "S45-004",
+      "b": "N190",
+      "a_snapshot": {
+        "id": "S45-004",
+        "question": "整段海灣的岸線好像轉了一下，沙就一定從這頭搬去了另一頭嗎？",
+        "answer_target": "澳洲這處海灣北端較迎浪，南端較受遮蔽。長期測量的主要變化是兩端都和近岸海底交換砂，但北端進退幅度更大；兩端連成的岸線便像轉了一點。真正由沿岸搬砂造成的變化也有，不能從一張轉動的輪廓把兩者分開。",
+        "scope": "以多年海灘剖面和波浪作統計分解，非追蹤一粒沙全程，亦不否認真正的沿岸傳輸。"
+      },
+      "b_snapshot": {
+        "id": "N190",
+        "question": "沙灘上的沙，為什麼會沿著海岸慢慢搬家？",
+        "answer_target": "斜向入浪與沿岸流輸送沉積物。",
+        "scope": "Longshore Currents"
+      },
+      "decision": "distinct",
+      "reason": "斜浪可沿岸搬砂是舊答案；本題以兩端橫岸振幅不等產生轉角，排除把旋轉全算沿岸交換。"
+    },
+    {
+      "a": "S45-004",
+      "b": "E7007",
+      "a_snapshot": {
+        "id": "S45-004",
+        "question": "整段海灣的岸線好像轉了一下，沙就一定從這頭搬去了另一頭嗎？",
+        "answer_target": "澳洲這處海灣北端較迎浪，南端較受遮蔽。長期測量的主要變化是兩端都和近岸海底交換砂，但北端進退幅度更大；兩端連成的岸線便像轉了一點。真正由沿岸搬砂造成的變化也有，不能從一張轉動的輪廓把兩者分開。",
+        "scope": "以多年海灘剖面和波浪作統計分解，非追蹤一粒沙全程，亦不否認真正的沿岸傳輸。"
+      },
+      "b_snapshot": {
+        "id": "E7007",
+        "question": "河水一直往下流，河道為什麼還會慢慢往旁邊搬？",
+        "answer_target": "彎道外側較強侵蝕、內側沉積共同搬移河道邊界，河水下流和河曲側移不是同一方向的運動。",
+        "scope": "限可侵蝕河岸的曲流模型；工程固定岸、岩盤河與複雜三維流不按單一簡圖預測。"
+      },
+      "decision": "distinct",
+      "reason": "彎道內外岸差異造成河曲橫移，本題分解海灣迎浪兩端各自與外海的交換。"
+    },
+    {
+      "a": "S45-005",
+      "b": "E11006",
+      "a_snapshot": {
+        "id": "S45-005",
+        "question": "水面明明一直用同樣速度升，實驗裡的沙島怎麼有時突然往後退一大步？",
+        "answer_target": "在固定造波和固定相對升水速率的水槽，影像和地形掃描仍記到島的局部退速有快慢。浪沖過脊把砂送到背面後，島變寬，浪漸漸跨不過全寬，砂開始回填並堆出新的脊；往後又能越脊時，快速後退可再發生。",
+        "scope": "小比例水槽無植被且材料、供砂受限；不由天然堆積間隔直接報海面變速。"
+      },
+      "b_snapshot": {
+        "id": "E11006",
+        "question": "風暴把沙越過沙洲頂端，為什麼不只是把陸地沖走？",
+        "answer_target": "越浪把海側砂移到背側形成覆沙扇，可能增高或推動沙洲向陸側遷移；局部海側侵蝕與背側堆積可同時發生。",
+        "scope": "限障壁島越浪過程，不保證淨增陸地或長期存續；水量/砂供應及地形不同可導致破碎。"
+      },
+      "decision": "distinct",
+      "reason": "舊題越浪覆沙可推島向內；新增幅寬限制越浪行程、回填形成新脊和等速外力下的間歇退速，單次越浪不能預測快慢交替。"
+    },
+    {
+      "a": "S45-005",
+      "b": "E11007",
+      "a_snapshot": {
+        "id": "S45-005",
+        "question": "水面明明一直用同樣速度升，實驗裡的沙島怎麼有時突然往後退一大步？",
+        "answer_target": "在固定造波和固定相對升水速率的水槽，影像和地形掃描仍記到島的局部退速有快慢。浪沖過脊把砂送到背面後，島變寬，浪漸漸跨不過全寬，砂開始回填並堆出新的脊；往後又能越脊時，快速後退可再發生。",
+        "scope": "小比例水槽無植被且材料、供砂受限；不由天然堆積間隔直接報海面變速。"
+      },
+      "b_snapshot": {
+        "id": "E11007",
+        "question": "沙洲的風暴破口，為什麼有時會從潟湖這一側切出去？",
+        "answer_target": "風暴讓灣內積水並形成水面傾斜；風勢減弱或轉向後，回湧積水可越過低處沖出通道，通道又集中向外排水。",
+        "scope": "限NPS列出的灣側破口路徑，不採較常發生的比例或預測特定海岸；不主張所有破口皆從內側開始。"
+      },
+      "decision": "distinct",
+      "reason": "潟湖高水位向海沖出缺口是相反輸運方向，無沙島加寬、回填循環。"
+    },
+    {
+      "a": "S45-005",
+      "b": "E7008",
+      "a_snapshot": {
+        "id": "S45-005",
+        "question": "水面明明一直用同樣速度升，實驗裡的沙島怎麼有時突然往後退一大步？",
+        "answer_target": "在固定造波和固定相對升水速率的水槽，影像和地形掃描仍記到島的局部退速有快慢。浪沖過脊把砂送到背面後，島變寬，浪漸漸跨不過全寬，砂開始回填並堆出新的脊；往後又能越脊時，快速後退可再發生。",
+        "scope": "小比例水槽無植被且材料、供砂受限；不由天然堆積間隔直接報海面變速。"
+      },
+      "b_snapshot": {
+        "id": "E7008",
+        "question": "河床越堆越高，為什麼有時會整條河改走旁邊？",
+        "answer_target": "河床與天然堤積高增加相對附近低地的水勢；洪水逸出可侵蝕或重占較有坡降優勢的路徑，形成改道。",
+        "scope": "限積高河道與氾濫平原的avulsion機制；不是每次溢堤都永久改道，不用固定一個水深閾值或預報年份。"
+      },
+      "decision": "distinct",
+      "reason": "河床積高改走另一條低地河道，未涉及浪跨不過變寬沙島後脊恢復。"
+    },
+    {
+      "a": "S45-006",
+      "b": "N190",
+      "a_snapshot": {
+        "id": "S45-006",
+        "question": "近岸沙脊往岸邊移時，水往哪邊流得較快，和往哪邊加速得較急，給出的線索一樣嗎？",
+        "answer_target": "北卡近岸剖面同時記沙脊位置和靠近海床的往返水流。對照不同位置的統計，流速偏向哪一側的最強區不總在脊頂，往岸流速急增的非對稱加速度峰區卻較貼近移動的脊。當平均跨岸流弱、波浪造成的往復流仍不小時，陡浪前緣可能先揚起砂，再由向岸水流搬運。",
+        "scope": "45天一條跨岸測線。向岸案例的平均流弱，往復流仍有一定強度；浪與平均流都小時，即使標準化的加速度偏態大，也沒有明顯地形變化。攪起砂與輸砂時序為假設，未逐粒追蹤。"
+      },
+      "b_snapshot": {
+        "id": "N190",
+        "question": "沙灘上的沙，為什麼會沿著海岸慢慢搬家？",
+        "answer_target": "斜向入浪與沿岸流輸送沉積物。",
+        "scope": "Longshore Currents"
+      },
+      "decision": "distinct",
+      "reason": "沿岸流方向與受測剖面的加速度不對稱峰區、弱平均流下的向岸搬砂不同。"
+    },
+    {
+      "a": "S45-006",
+      "b": "P32004",
+      "a_snapshot": {
+        "id": "S45-006",
+        "question": "近岸沙脊往岸邊移時，水往哪邊流得較快，和往哪邊加速得較急，給出的線索一樣嗎？",
+        "answer_target": "北卡近岸剖面同時記沙脊位置和靠近海床的往返水流。對照不同位置的統計，流速偏向哪一側的最強區不總在脊頂，往岸流速急增的非對稱加速度峰區卻較貼近移動的脊。當平均跨岸流弱、波浪造成的往復流仍不小時，陡浪前緣可能先揚起砂，再由向岸水流搬運。",
+        "scope": "45天一條跨岸測線。向岸案例的平均流弱，往復流仍有一定強度；浪與平均流都小時，即使標準化的加速度偏態大，也沒有明顯地形變化。攪起砂與輸砂時序為假設，未逐粒追蹤。"
+      },
+      "b_snapshot": {
+        "id": "P32004",
+        "question": "泥沙流明明往下坡，海底的一道陡坡怎麼反而往上游退？",
+        "answer_target": "聲納把同一段床形前後疊在一起，沉積物往下坡輸送，同一陡坡面的位置卻往上游移；陡坡下游的緩面有淨堆積。事件中可見近底聲波衰減層在坡腳下游突然增厚，支持近底流在此出現水躍、侵蝕與堆積分處不同位置的解釋。",
+        "scope": "限Squamish三角洲7股流之一C在此測線可辨的遷移。最初約20秒受濃層遮蔽，其他事件未見可解析的同樣剖面變位；不能把衰減層表面當海床。"
+      },
+      "decision": "distinct",
+      "reason": "海底泥流地形受水躍向上游退，與波浪的向岸急加速和脊線隨動不同。"
+    },
+    {
+      "a": "S45-006",
+      "b": "S45-004",
+      "a_snapshot": {
+        "id": "S45-006",
+        "question": "近岸沙脊往岸邊移時，水往哪邊流得較快，和往哪邊加速得較急，給出的線索一樣嗎？",
+        "answer_target": "北卡近岸剖面同時記沙脊位置和靠近海床的往返水流。對照不同位置的統計，流速偏向哪一側的最強區不總在脊頂，往岸流速急增的非對稱加速度峰區卻較貼近移動的脊。當平均跨岸流弱、波浪造成的往復流仍不小時，陡浪前緣可能先揚起砂，再由向岸水流搬運。",
+        "scope": "45天一條跨岸測線。向岸案例的平均流弱，往復流仍有一定強度；浪與平均流都小時，即使標準化的加速度偏態大，也沒有明顯地形變化。攪起砂與輸砂時序為假設，未逐粒追蹤。"
+      },
+      "b_snapshot": {
+        "id": "S45-004",
+        "question": "整段海灣的岸線好像轉了一下，沙就一定從這頭搬去了另一頭嗎？",
+        "answer_target": "澳洲這處海灣北端較迎浪，南端較受遮蔽。長期測量的主要變化是兩端都和近岸海底交換砂，但北端進退幅度更大；兩端連成的岸線便像轉了一點。真正由沿岸搬砂造成的變化也有，不能從一張轉動的輪廓把兩者分開。",
+        "scope": "以多年海灘剖面和波浪作統計分解，非追蹤一粒沙全程，亦不否認真正的沿岸傳輸。"
+      },
+      "decision": "distinct",
+      "reason": "海灣統計分解比較兩端差異，另一研究用近底流速和脊位置估向岸搬砂條件。"
+    },
+    {
+      "a": "S45-007",
+      "b": "N191",
+      "a_snapshot": {
+        "id": "S45-007",
+        "question": "浪剛變小一會兒，為什麼礁石溝裡還能有一股水直衝外海？",
+        "answer_target": "在加州一處岩岸，一陣較大的浪把水送上岩台。當這組浪暫歇，較高的積水沿固定支溝匯向同一主溝，水頭差可使向海的流集中噴出。研究用泡沫影像、漂流器和固定流速觀測核對主溝的流向與脈動。",
+        "scope": "限Hopkins Marine Station固定岩溝，多種儀器並非全在同時同點工作，不給泳者預測建議。"
+      },
+      "b_snapshot": {
+        "id": "N191",
+        "question": "海浪一直往岸上來，為什麼沙灘前又會有一股水往外拉？",
+        "answer_target": "近岸水流透過局部缺口集中離岸。",
+        "scope": "Rip Currents"
+      },
+      "decision": "distinct",
+      "reason": "一般缺口聚集離岸流已有。新問題固定岩溝觀察成組浪的間歇：此前積在台上的水維持水頭，回流的時相與浪群的強弱可測。若只說從缺口向海則應歸舊題。"
+    },
+    {
+      "a": "S45-007",
+      "b": "E11007",
+      "a_snapshot": {
+        "id": "S45-007",
+        "question": "浪剛變小一會兒，為什麼礁石溝裡還能有一股水直衝外海？",
+        "answer_target": "在加州一處岩岸，一陣較大的浪把水送上岩台。當這組浪暫歇，較高的積水沿固定支溝匯向同一主溝，水頭差可使向海的流集中噴出。研究用泡沫影像、漂流器和固定流速觀測核對主溝的流向與脈動。",
+        "scope": "限Hopkins Marine Station固定岩溝，多種儀器並非全在同時同點工作，不給泳者預測建議。"
+      },
+      "b_snapshot": {
+        "id": "E11007",
+        "question": "沙洲的風暴破口，為什麼有時會從潟湖這一側切出去？",
+        "answer_target": "風暴讓灣內積水並形成水面傾斜；風勢減弱或轉向後，回湧積水可越過低處沖出通道，通道又集中向外排水。",
+        "scope": "限NPS列出的灣側破口路徑，不採較常發生的比例或預測特定海岸；不主張所有破口皆從內側開始。"
+      },
+      "decision": "distinct",
+      "reason": "風暴尺度的潟湖積水侵蝕造出沙洲新缺口；本題是固定支岩溝，不需侵蝕出新通道，跟浪組週期核對脈動。"
+    },
+    {
+      "a": "S45-008",
+      "b": "N231",
+      "a_snapshot": {
+        "id": "S45-008",
+        "question": "鹽沼裡最鬆的泥最好挖，為什麼蟹洞偏偏集中在還有一點草的邊帶？",
+        "answer_target": "研究把同種蟹放在三個泥炭狀態不同的地帶，看牠能否挖出並保住洞道。草根密的泥炭太硬，裸露軟泥卻難維持洞形；草地被啃到一半的邊帶成洞最多。取芯比較也顯示這個地帶較易受蝕，崩落岸塊附近常見較多、較大的洞。",
+        "scope": "洞道與崩塊數量是現場關聯，圍籠檢驗能否成洞，不是每一崩塊的成因實驗。"
+      },
+      "b_snapshot": {
+        "id": "N231",
+        "question": "河水只沖山腳，為什麼上面的整片山坡也可能垮掉？",
+        "answer_target": "坡腳侵蝕讓坡度與支撐條件改變。",
+        "scope": "Landslide Hazards"
+      },
+      "decision": "distinct",
+      "reason": "坡腳失支造成上方崩塌並不回答軟硬不同泥炭對造洞及維持洞壁的兩種約束。"
+    },
+    {
+      "a": "S45-008",
+      "b": "S44-003",
+      "a_snapshot": {
+        "id": "S45-008",
+        "question": "鹽沼裡最鬆的泥最好挖，為什麼蟹洞偏偏集中在還有一點草的邊帶？",
+        "answer_target": "研究把同種蟹放在三個泥炭狀態不同的地帶，看牠能否挖出並保住洞道。草根密的泥炭太硬，裸露軟泥卻難維持洞形；草地被啃到一半的邊帶成洞最多。取芯比較也顯示這個地帶較易受蝕，崩落岸塊附近常見較多、較大的洞。",
+        "scope": "洞道與崩塊數量是現場關聯，圍籠檢驗能否成洞，不是每一崩塊的成因實驗。"
+      },
+      "b_snapshot": {
+        "id": "S44-003",
+        "question": "洞道盡頭躺著大小恐龍的骨頭，哪些線索讓牠們更像住客，不像被水沖進去？",
+        "answer_target": "蒙大拿標本的彎曲通道通往擴大的末室，裡面有成體和兩隻幼體的骨骼。粗大的成年肢骨和脆小的幼體頭部骨件混在深處，不像水流按可搬運性挑進去的一堆散骨。再加上通道大小適合成體、骨骼有適合掘土的特徵，較支持這種恐龍使用並挖掘過洞穴。",
+        "scope": "限Blackleaf標本；這組證據不支持單純被水沖入，並非記錄到挖洞、餵幼或死亡的瞬間。"
+      },
+      "decision": "distinct",
+      "reason": "用化石室和骨骼推斷造穴者與圍籠逐區試驗成洞成功不同。"
+    },
+    {
+      "a": "S45-009",
+      "b": "E11001",
+      "a_snapshot": {
+        "id": "S45-009",
+        "question": "細砂上長了一層細菌，水一沖就比較不會把砂帶走嗎？",
+        "answer_target": "在水槽裡以相同細砂比較未接菌與不同培養日數的砂床。早期培養組在部分剪應力下反而有更多懸砂；成熟砂床表層及淺層顆粒被胞外物質黏在一起，即使達到可沖蝕的作用力，水裡的砂也較晚大量增加。要分開看施力大小、持續多久和膜的成熟度。",
+        "scope": "限枯草桿菌與選定細砂的水槽。早期較高含水、後期胞外聚合物黏結是作者解釋，不等同野外每片泥灘。"
+      },
+      "b_snapshot": {
+        "id": "E11001",
+        "question": "砂礫越多，為什麼不一定把岩床磨得越快？",
+        "answer_target": "可動砂礫撞擊提供磨蝕工具，但覆蓋底床又減少裸露受撞面；兩者競爭使侵蝕不隨砂量一直增加，振盪流聚沙成床形又改變覆蓋效率。",
+        "scope": "限所讀振盪水槽、礫石及泡棉替代岩床實驗；河流只作機制背景，不套用統一最佳砂量或侵蝕率。"
+      },
+      "decision": "distinct",
+      "reason": "石塊磨蝕及遮蓋岩床，與不同成熟度胞外物質延遲砂床起砂不同。"
+    },
+    {
+      "a": "S45-009",
+      "b": "S45-008",
+      "a_snapshot": {
+        "id": "S45-009",
+        "question": "細砂上長了一層細菌，水一沖就比較不會把砂帶走嗎？",
+        "answer_target": "在水槽裡以相同細砂比較未接菌與不同培養日數的砂床。早期培養組在部分剪應力下反而有更多懸砂；成熟砂床表層及淺層顆粒被胞外物質黏在一起，即使達到可沖蝕的作用力，水裡的砂也較晚大量增加。要分開看施力大小、持續多久和膜的成熟度。",
+        "scope": "限枯草桿菌與選定細砂的水槽。早期較高含水、後期胞外聚合物黏結是作者解釋，不等同野外每片泥灘。"
+      },
+      "b_snapshot": {
+        "id": "S45-008",
+        "question": "鹽沼裡最鬆的泥最好挖，為什麼蟹洞偏偏集中在還有一點草的邊帶？",
+        "answer_target": "研究把同種蟹放在三個泥炭狀態不同的地帶，看牠能否挖出並保住洞道。草根密的泥炭太硬，裸露軟泥卻難維持洞形；草地被啃到一半的邊帶成洞最多。取芯比較也顯示這個地帶較易受蝕，崩落岸塊附近常見較多、較大的洞。",
+        "scope": "洞道與崩塊數量是現場關聯，圍籠檢驗能否成洞，不是每一崩塊的成因實驗。"
+      },
+      "decision": "distinct",
+      "reason": "有草處硬度限制掘穴與細砂顆粒間黏結延遲出砂，不共享操作或讀出。"
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "method": "全3817原問答與1939未收掃描海岸、沿岸輸砂、岸線、沙脊、濕地、侵蝕、越浪、近岸流等字串與英文機制欄。逐題以受控條件、可觀測量比對。",
+    "matched_count": 31,
+    "files": [
+      {
+        "file": ".cache/wave45-earth-old-comparisons.json",
+        "sha256": "c101b5de54f7289fdc9a69573d7577d237caa1367e91499b236536e7fd5ec58a"
+      }
+    ]
+  },
+  "source_identity": [
+    {
+      "id": "S45-S001",
+      "doi": "10.1016/j.earscirev.2017.12.014",
+      "retrieval_url": "https://www.ancientportsantiques.com/wp-content/uploads/Documents/ETUDESarchivees/Tsunamis/Boulders-Cox2018.pdf",
+      "version": "2018刊本公開副本，附作者上傳頁。",
+      "old_exact_matches": [],
+      "relationship": "同一論文的網站、典藏、掃描或XML是同文不同載體。"
+    },
+    {
+      "id": "S45-S002",
+      "doi": "10.1073/pnas.1510095112",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4711831/",
+      "version": "2016刊本，2015線上發表。",
+      "old_exact_matches": [],
+      "relationship": "同一論文的網站、典藏、掃描或XML是同文不同載體。"
+    },
+    {
+      "id": "S45-S003",
+      "doi": "10.1029/2002JC001496",
+      "retrieval_url": "https://www.whoi.edu/science/AOPE/dept/Publications/082.pdf",
+      "version": "2003刊本，WHOI典藏PDF。",
+      "old_exact_matches": [],
+      "relationship": "正式刊本與作者／典藏副本、網頁定點是同一研究。有兩篇討論同一北卡研究設施，但分別使用岸面尖角水流時差與水下近底流及沙脊位置，沒有重複計為兩組獨立驗證。"
+    },
+    {
+      "id": "S45-S004",
+      "doi": "10.1029/2011JF001989",
+      "retrieval_url": "https://ihedelftrepository.contentdm.oclc.org/digital/api/collection/p21063coll3/id/1061/download",
+      "version": "2011刊本，IHE Delft逐頁典藏。",
+      "old_exact_matches": [],
+      "relationship": "同一論文的網站、典藏、掃描或XML是同文不同載體。"
+    },
+    {
+      "id": "S45-S005",
+      "doi": "10.1029/2021JF006086",
+      "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021JF006086",
+      "version": "2021正式原刊HTML。",
+      "old_exact_matches": [],
+      "relationship": "同一論文的網站、典藏、掃描或XML是同文不同載體。"
+    },
+    {
+      "id": "S45-S006",
+      "doi": "10.1029/2000JC000389",
+      "retrieval_url": "https://www.whoi.edu/science/AOPE/dept/Publications/067.pdf",
+      "version": "2001正式論文研究組典藏掃描PDF。",
+      "old_exact_matches": [],
+      "relationship": "正式刊本與作者／典藏副本、網頁定點是同一研究。有兩篇討論同一北卡研究設施，但分別使用岸面尖角水流時差與水下近底流及沙脊位置，沒有重複計為兩組獨立驗證。"
+    },
+    {
+      "id": "S45-S007",
+      "doi": "10.1029/2022JC019317",
+      "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022JC019317",
+      "version": "2023正式原刊HTML。",
+      "old_exact_matches": [],
+      "relationship": "同一論文的網站、典藏、掃描或XML是同文不同載體。"
+    },
+    {
+      "id": "S45-S008",
+      "doi": "10.1371/journal.pone.0093296",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3968132/fullTextXML",
+      "version": "2014正式原刊的同文XML。",
+      "old_exact_matches": [],
+      "relationship": "同一論文的網站、典藏、掃描或XML是同文不同載體。"
+    },
+    {
+      "id": "S45-S009",
+      "doi": "10.1002/2016WR020105",
+      "retrieval_url": "https://eprints.soton.ac.uk/408192/2/Chen_et_al_2017_Water_Resources_Research.pdf",
+      "version": "2017正式原刊HTML。",
+      "old_exact_matches": [],
+      "relationship": "同一論文的網站、典藏、掃描或XML是同文不同載體。"
+    }
+  ],
+  "source_readings": [
+    {
+      "id": "S45-S001",
+      "locator": "§§5.1–5.2、6.2、8與圖4，刊本pp.627–630、633–634，對齊照片、重建岩塊體積、267與293號的位置變化。",
+      "read_via": "以編輯UA取得刊本PDF副本，核篇名與DOI，定位所列原文。",
+      "cache": {
+        "file": ".cache/wave45-earth-boulder.pdf",
+        "sha256": "55963a6e2d3820426fd86cb7c928b4f4a12d95d3e971fe3f3c16ebe9c649933d",
+        "text_file": ".cache/wave45-earth-boulder.txt",
+        "text_sha256": "56928e5919cfd9a6645271713e48f032106eed92f2fe16c9f66470437077dd6d"
+      }
+    },
+    {
+      "id": "S45-S002",
+      "locator": "刊本Results圖2–3、Methods Meteorological Data／Wind Waves，Web正文L159、166–170、179、184–208。",
+      "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。Europe PMC核對PMCID後，XML回500。 補以指定UA重開正確PMC全文HTML，核方法及圖2–3。",
+      "cache": {
+        "file": ".cache/wave45-earth-marshfull.html",
+        "sha256": "958f725e7da5b74d2593bef442c4d5fa933111b9dd801879c8f2f1e67633cac3",
+        "text_file": ".cache/wave45-earth-marshfull.txt",
+        "text_sha256": "1a359a79c3c36b00ceda044add4455753858b1aaa30a30b6cd75e26c50fa17eb"
+      }
+    },
+    {
+      "id": "S45-S003",
+      "locator": "§§3–5、7–8，圖2–4、6、8，三次沙面受整理／風暴後的測量，水前緣時差與突角及凹灣相對高差。",
+      "read_via": "以編輯UA取得刊本PDF副本，核篇名與DOI，定位所列原文。",
+      "cache": {
+        "file": ".cache/wave45-earth-cusp.pdf",
+        "sha256": "eb3f144b2007086d94dffcf8164940a9c5a6d52e6bdead0aee61432766def4ce",
+        "text_file": ".cache/wave45-earth-cusp.txt",
+        "text_sha256": "4a6891942f849478f13d8bb68e76f75756189d63ffee412db576125573e71442"
+      }
+    },
+    {
+      "id": "S45-S004",
+      "locator": "刊本第一頁序言[1]–[4]及結論[68]末段–[70]，典藏兩頁Web讀回；結論頁L1–4。",
+      "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA另取得典藏單頁掃描PDF，另讀同典藏首末頁的Web文字。",
+      "cache": {
+        "file": ".cache/wave45-earth-rot.pdf",
+        "sha256": "e39d1dafef11639564451a897a86e3230bc732cb819702c7899771b071b11f73",
+        "text_file": ".cache/wave45-earth-rot-primary-lines.txt",
+        "text_sha256": "359d41b1b5ad1c6fb97776fbacbade079dfb70f4b889e3cb47da146b4da9bfdd"
+      }
+    },
+    {
+      "id": "S45-S005",
+      "locator": "Discussion圖12與§5 Conclusions，Web正文L301–312、334–346；侵蝕脊、填寬島、灘脊重建。",
+      "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA直開Wiley HTML回403。",
+      "cache": {
+        "file": ".cache/wave45-earth-ridge-primary-lines.txt",
+        "sha256": "9d821f41176f06937402bacb1c99808779359ecbe0eefc080a82d63b8d3d595a",
+        "text_file": ".cache/wave45-earth-ridge-primary-lines.txt",
+        "text_sha256": "9d821f41176f06937402bacb1c99808779359ecbe0eefc080a82d63b8d3d595a"
+      }
+    },
+    {
+      "id": "S45-S006",
+      "locator": "§§3–4，Figs1、3、4及Plate 1；Web版PDF定位L60–75、90–92，另讀近底流速與水深追蹤。",
+      "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA另取得掃描PDF，內嵌文字不可用。 另以指定UA取得有文字層的同篇刊本PDF，核上述資料及對照。",
+      "cache": {
+        "file": ".cache/wave45-earth-barfull.pdf",
+        "sha256": "5d382effa6c6898c999a36aa86e8239aeedac6ac3214e0d8c29f494641001dc9",
+        "text_file": ".cache/wave45-earth-barfull.txt",
+        "text_sha256": "98a32cdacf3bb479dfde5689e50cada787203356bc623a69973291a581a04963"
+      }
+    },
+    {
+      "id": "S45-S007",
+      "locator": "§3.1、§4.4–4.5，Web L238–240、256–260、419–421、458–467，漂流器、泡沫與流速壓力的分段紀錄。",
+      "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA直開Wiley HTML回403。",
+      "cache": {
+        "file": ".cache/wave45-earth-rip-primary-lines.txt",
+        "sha256": "69e8cf439b68f2e8d550b9e2da2ae0cbe178b5d7088e59058e0f3ec8daaae036",
+        "text_file": ".cache/wave45-earth-rip-primary-lines.txt",
+        "text_sha256": "69e8cf439b68f2e8d550b9e2da2ae0cbe178b5d7088e59058e0f3ec8daaae036"
+      }
+    },
+    {
+      "id": "S45-S008",
+      "locator": "Methods的三個區域與圍籠試驗，Results圖3A–D、圖4A–B及Discussion；另讀侵蝕泥芯移植比較。",
+      "read_via": "以編輯UA取得正式論文XML，核篇名與DOI，定位所列原文。",
+      "cache": {
+        "file": ".cache/wave45-earth-crab.xml",
+        "sha256": "5f0d8e267b50fc088643e8995ad074d1e9ff30133d9e954ebe16e7e9fd081494",
+        "text_file": ".cache/wave45-earth-crab.txt",
+        "text_sha256": "ffa0ea00347e6df3fa1568e84e768d1e737bd5166eb6296caa03d3e0c13ac30d"
+      }
+    },
+    {
+      "id": "S45-S009",
+      "locator": "Results and Discussion §3.3–3.4，圖5–6；Web L306–310、317–323、340–348，沖蝕剪應力及懸砂時間曲線。",
+      "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA直開Wiley HTML回403。 另以指定UA取得有文字層的同篇刊本PDF，核上述資料及對照。",
+      "cache": {
+        "file": ".cache/wave45-earth-biofull.pdf",
+        "sha256": "f3c70db5b3c6a9c3f1e455fc09e93ff134e16c4580ee45b76c3c0a6f42d509d9",
+        "text_file": ".cache/wave45-earth-biofull.txt",
+        "text_sha256": "d9f8767d63163cf500e294d68de9e1115a6da9522ed9a4308e86a6044e94aa7c"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave45-earth-fetch.json",
+      "sha256": "5658015d1a9c68ce5a574ffc64466f06e9ffa90fef8ed9b73f2aed532dc4ce97"
+    },
+    {
+      "file": ".cache/wave45-earth-extra.json",
+      "sha256": "c233db5b2b0403008b6df4b1b451b5612a038926a364458f96bb63a455c7acf8"
+    }
+  ],
+  "retrieval_failures": [
+    "Wiley直接請求S004、005、007、009回403。四篇改讀原刊或典藏正文指定Web行；S009另取得南安普頓大學的全文PDF。",
+    "S002初次PMC識別碼指向不相干的神經元研究，篇名核對後排除。以DOI確認正確PMCID為4711831，EBI XML回500，另從正確的PMC HTML與刊本定位成功。",
+    "S006初取PDF缺文字層，另讀相同論文的Web定位和WHOI具文字層的刊本；S004另有典藏首末頁。未將同文載體計作不同研究。",
+    "未獲得扁礫與圓礫RFID研究的完整分組正文，只留未收。"
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave45-earth-figures.jpg",
+      "sha256": "0385bf15de3a2613dd7262b1c201260dadbfb17977595def42f4b549e5a37b24",
+      "scope": "親看四頁：Cox p.630 Fig4兩個不同巨石；Coco PDF p.8 Figs6–7時差與高度／坡度；Elgar PDF p.2 Figs1–2流速及剖面；Chen PDF p.7 §3.3.1起蝕方法文字，該頁無研究圖。未看補充影片。"
+    }
+  ],
+  "sample_artifact": {
+    "file": ".cache/w45-sample-earth.json",
+    "sha256": "5ae8dfb761f35fedc7682de5e61bda34b6d8ef478c06adcbb8943ba4a6bda22f"
+  },
+  "timing_checks": [
+    {
+      "id": "W45S-T01",
+      "body_seconds": 73,
+      "chapter_seconds": [
+        36,
+        37
+      ],
+      "core_seconds": {
+        "S45-001": 73
+      },
+      "max_beat_seconds": 21,
+      "status": "PAPER_BUDGET_AFTER_ROOT_OFFLINE_NARRATION",
+      "offline_narration_seconds": 65.203
+    },
+    {
+      "id": "W45S-T02",
+      "body_seconds": 66,
+      "chapter_seconds": [
+        30,
+        36
+      ],
+      "core_seconds": {
+        "S45-003": 66
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W45S-T03",
+      "body_seconds": 68,
+      "chapter_seconds": [
+        32,
+        36
+      ],
+      "core_seconds": {
+        "S45-004": 32,
+        "S45-006": 36
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W45S-T04",
+      "body_seconds": 62,
+      "chapter_seconds": [
+        29,
+        33
+      ],
+      "core_seconds": {
+        "S45-005": 62
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W45S-T05",
+      "body_seconds": 60,
+      "chapter_seconds": [
+        31,
+        29
+      ],
+      "core_seconds": {
+        "S45-008": 60
+      },
+      "max_beat_seconds": 16,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "limits": [
+    "地下根系、風力長期預算、近岸岩溝回流限定各自研究。S45-002、007、009保留素材，不為塞滿影片而合併為清單。",
+    "只有W45S-T01有離線實讀；其他預算含開場與回扣，未製作影片。"
+  ],
+  "revision_history": [
+    {
+      "initial_batch": {
+        "file": ".cache/wave45-earth-first-batch.json",
+        "sha256": "f54b79930342247a7ab3c3c3adc8293b1c387740e2443ac979e4a3e43c71d360"
+      },
+      "final_batch": {
+        "file": "batches/wave45-earth.json",
+        "sha256": "d62bb5dce1bac52bc857b73108729cee425d1cd256e11864ddc63d9e357ea144"
+      },
+      "change": "三份同文另取得有效的指定UA刊本正文，更新S002、006、009讀法、取用URL及快取雜湊。候選問答、scope與秒數未改。"
+    },
+    {
+      "before_files": [
+        {
+          "file": "batches/wave45-earth.json",
+          "sha256": "d62bb5dce1bac52bc857b73108729cee425d1cd256e11864ddc63d9e357ea144"
+        },
+        {
+          "file": "reviews/wave45-earth-themes.json",
+          "sha256": "88ddb874f8702834630c0f9e059fea16570d9dc2de1d379226a88a2deb1d18a8"
+        },
+        {
+          "file": "reviews/wave45-earth-author.json",
+          "sha256": "e6739dc95b4bb49a451aeea541c22d637681b0ad5c8a20732d65448f609ca435"
+        }
+      ],
+      "changes": [
+        "S45-006問題對準速度偏態及加速度偏態；限定平均流弱但往復流仍足，引用刊本結論的弱浪對照。",
+        "W45S-T03涵蓋兩章的沿岸與跨岸交換追問，明分澳洲岸線與北卡水下脊，不把脊位置追蹤寫作砂粒示蹤，維持68秒。"
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave45-earth.json",
+          "sha256": "a749752d336d4dd52b9de7e5581cb8611501d561521ca279e65ae424e7c02dc4"
+        },
+        {
+          "file": "reviews/wave45-earth-themes.json",
+          "sha256": "8a2a1ff2f25e6e1a44290fb7ebb5ad14f69abae58055f81d05a7b714c3351647"
+        }
+      ]
+    }
+  ]
+}

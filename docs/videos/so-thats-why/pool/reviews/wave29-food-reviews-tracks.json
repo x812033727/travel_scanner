@@ -1,0 +1,655 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "reviewer": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "P29001",
+    "P29002",
+    "P29003",
+    "P29004",
+    "P29005"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave29-tracks.json",
+      "sha256": "1ada60d816f673a567b894753d1108fb49f07dcce654854b91e54a98b242e528"
+    },
+    {
+      "file": "reviews/wave29-tracks-author.json",
+      "sha256": "dcd3b58916db99ce144a73c5a2bc6a08e3373bc52d7d37529c349febf067c52c"
+    },
+    {
+      "file": "reviews/wave29-tracks-themes.json",
+      "sha256": "a994680df7f0983605f993575631dd025c8d525662612bbc4b9dbd14836c2a35"
+    },
+    {
+      "file": ".cache/wave29-tracks-neighbours.json",
+      "sha256": "27b5e8cd9da39dd235c90ec15a8d2bb822c2072d37f0895946995a95dfa1d061"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P29001",
+      "decision": "retain",
+      "reason": "半流質表面塌回與下層保留足形的條件清楚。"
+    },
+    {
+      "id": "P29002",
+      "decision": "retain",
+      "reason": "活鳥、化石兩組資料重新分框，可以檢驗穿透層解釋。"
+    },
+    {
+      "id": "P29003",
+      "decision": "retain",
+      "reason": "四足著地的模型反例支撐論點，不推該處的水深。"
+    },
+    {
+      "id": "P29004",
+      "decision": "retain",
+      "reason": "殼肋、脊溝及終止姿態支撐解釋，分清量到的形狀與外力推測。"
+    },
+    {
+      "id": "P29005",
+      "decision": "retain",
+      "reason": "新生骨包覆先嵌入的牙，足以說明受傷後仍存活。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "P29-S001",
+      "url": "https://s3.amazonaws.com/publicationslist.org/data/jesper.milan/ref-13/2006%20-%20Mil%C3%A0n%20_%20Bromley%20-%20PALAEO3.pdf",
+      "file": ".cache/wave29-tracks-emu.pdf",
+      "sha256": "9cdfca0b7a8c7a492ca5b879a6b1563d6f7475908a19b51c978c519282355036",
+      "text_file": ".cache/wave29-tracks-emu.txt",
+      "text_sha256": "fcdd756ecf24b36b54c1f7ca4048c752259a140feb7a6b424361c80f9491bbad",
+      "reading_scope": "§3.2.3–4、§4/5，尤其半流質試材在抬足後回填、3/4公分處的三趾；印刷260–261頁Fig 7–9目讀。",
+      "finding": "在實驗鴯鶓足壓模中，半流質材料的踩踏面塌回，較淺下伏層可比表面更清楚。呈現的剖面應分開爪真的切到的區域與向下傳遞的變形。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave29-tracks-emu-p8.png",
+          "sha256": "2c53abb45df761e599e4aa12c6186fd6164802a27c5fc81def651efe085eeef8"
+        },
+        {
+          "file": ".cache/wave29-tracks-emu-p9.png",
+          "sha256": "8075fa628ba623183f5eea41c14aeecf1dceaa32dee167b53be53780610bbd9b"
+        }
+      ],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    },
+    {
+      "source_id": "P29-S002",
+      "url": "https://researchonline.ljmu.ac.uk/id/eprint/13219/1/20200518_LoopingFootKinematics_MainText_Pre-Proofs.pdf",
+      "file": ".cache/wave29-tracks-loop.pdf",
+      "sha256": "1b6d9120eacd3ab8958a7c1fbf711252113a399ddfcb8431d60179fac6345e1f",
+      "text_file": ".cache/wave29-tracks-loop.txt",
+      "text_sha256": "0c1a835dad70719f6ebbb5c05a6412a9cf6158cf6d2a3b8ec14a76c9bd60fd49",
+      "reading_scope": "作者稿pp6–7、Table2、Figs1–2正文與圖說，目讀pp21–22兩圖。",
+      "finding": "珠雞側趾在拔足時向中趾合攏，三維路徑在同一層可留下不同的進、出位置。圖2c上下兩面是31/50同標本，底面鏡射顯示，不是兩個時間點。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave29-tracks-loop-p21.png",
+          "sha256": "12b735eaed37c0bf535b845d668f47c8c8174150f6e69b11d4403d61c86922fe"
+        },
+        {
+          "file": ".cache/wave29-tracks-loop-p22.png",
+          "sha256": "63097d633b916387dc2592e556c029d167166a46a9299875ad42097593689014"
+        }
+      ],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    },
+    {
+      "source_id": "P29-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030862/",
+      "file": ".cache/wave29-tracks-sauropod-web.txt",
+      "sha256": "25038cd5cb5c0c5eab877fdfed866b270d5eb0347cd61932bd18c7ea42edca99",
+      "reading_scope": "PMC回傳 L107–152，表1、Fig2圖說及模型討論。",
+      "finding": "依兩套重心和接地面積估值，兩類足的承載窗口可顛倒。固定模型參數改地面強度才能解釋有些四足步態只留前足印。單一化石現場不由此確診。",
+      "viewed_images": [],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    },
+    {
+      "source_id": "P29-S004",
+      "url": "https://researchonline.ljmu.ac.uk/id/eprint/6408/1/ammonite.pdf",
+      "file": ".cache/wave29-tracks-ammonite.pdf",
+      "sha256": "b4804ced6a0ad17106d79d3e1085bfb906768e1338586f0b255e8daf85a27507",
+      "text_file": ".cache/wave29-tracks-ammonite.txt",
+      "text_sha256": "cd41773612b29c5744565669d6b542b64d3b51117f3f771f4311a2918750f97b",
+      "reading_scope": "PDF印刷頁4–7描述、Table1及結論，目讀Fig3殼肋靠近痕跡終點。",
+      "finding": "保存段長8.5公尺而非完整行程。末端肋溝形狀對上殼肋並轉向，死後被帶動是標本解釋，流速與起點未知。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave29-tracks-ammonite-p5.png",
+          "sha256": "f8058e1f0ea038b0f422fdfae66fd44901db5cb36e6e4baaf17181d7b8f8f5d7"
+        }
+      ],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    },
+    {
+      "source_id": "P29-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3732924/",
+      "file": ".cache/wave29-tracks-bite-web.txt",
+      "sha256": "e5bc7009231af71d3b4ecbbd1285569e8f67a7deced7df6ce73f78a706fdf033",
+      "reading_scope": "PMC回傳Results及Discussion L122–155，CT、反應骨和牙形比較圖說。",
+      "finding": "包著牙齒的反應骨可決定生前受傷的先後，咬者的歸屬另依齒冠形態。不能由該件判族群獵殺比例或精確存活多久。",
+      "viewed_images": [],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P29001",
+      "b": "G13001",
+      "decision": "distinct",
+      "reason": "沙堆建造方式改變底壓分布。這裡要追壓入、上層回填後的輪廓保存。"
+    },
+    {
+      "a": "P29001",
+      "b": "G13006",
+      "decision": "distinct",
+      "reason": "乾玻璃珠床對鋼球的深度阻力不解釋回填與分層足形。"
+    },
+    {
+      "a": "P29001",
+      "b": "R28002",
+      "decision": "distinct",
+      "reason": "畫布由上底固化留住局部拉痕，這裡是下傳變形和踩踏面回流。"
+    },
+    {
+      "a": "P29002",
+      "b": "P29001",
+      "decision": "distinct",
+      "reason": "前題未接觸的下層變形，這題是足趾兩次真穿過同一深度。"
+    },
+    {
+      "a": "P29002",
+      "b": "S10006",
+      "decision": "distinct",
+      "reason": "小鼠越過障礙的運動控制不是腳趾離泥時的三維路徑。"
+    },
+    {
+      "a": "P29002",
+      "b": "B2329",
+      "decision": "distinct",
+      "reason": "步行訊息造成測距誤差不會在同層形成分開的進出痕。"
+    },
+    {
+      "a": "P29003",
+      "b": "P041",
+      "decision": "distinct",
+      "reason": "接觸面積只是前提，模型需前後肢分載和基底強度在兩門檻之間才能只留半套。"
+    },
+    {
+      "a": "P29003",
+      "b": "P043",
+      "decision": "distinct",
+      "reason": "量的單位及平均壓力不是骨架分載下如何選擇性留下足印的預測。"
+    },
+    {
+      "a": "P29003",
+      "b": "P29001",
+      "decision": "distinct",
+      "reason": "半流質塌陷是踩下後表面消失；選擇性留印是一組肢體未造成顯著印記。"
+    },
+    {
+      "a": "P29004",
+      "b": "E17006",
+      "decision": "distinct",
+      "reason": "冰片推石有現場觀察，這裡從殼肋與拖痕對位推死殼接觸。"
+    },
+    {
+      "a": "P29004",
+      "b": "P29002",
+      "decision": "distinct",
+      "reason": "活體珠雞足趾進出與死殼拖痕需要不同來源及姿態判據。"
+    },
+    {
+      "a": "P29005",
+      "b": "A27002",
+      "decision": "distinct",
+      "reason": "渦蟲局部訊號選頭尾，與反應骨必須在牙嵌入後才包覆它無關。"
+    },
+    {
+      "a": "P29005",
+      "b": "N135",
+      "decision": "distinct",
+      "reason": "地質穿切判先後不會產生必須仍存活才能生長的骨質。"
+    },
+    {
+      "a": "P29005",
+      "b": "P29004",
+      "decision": "distinct",
+      "reason": "殼可死後位移，而新骨需生前修復，各給出相反方向的時間約束。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P29001",
+      "b": "P29002",
+      "decision": "distinct",
+      "reason": "壓入造成底層變形和腳趾真穿過一層是不同成因。"
+    },
+    {
+      "a": "P29001",
+      "b": "K11004",
+      "decision": "distinct",
+      "reason": "細柱受壓屈曲和層狀濕材料足印下傳不同。"
+    },
+    {
+      "a": "P29001",
+      "b": "P29003",
+      "decision": "distinct",
+      "reason": "一題談有印後哪一層保留，一題談兩類腳是否跨過基底的留印門檻。"
+    },
+    {
+      "a": "P29001",
+      "b": "J6002",
+      "decision": "distinct",
+      "reason": "接點摩擦影響重複定位，並無半流體拔足後回填。"
+    },
+    {
+      "a": "P29001",
+      "b": "B2142",
+      "decision": "distinct",
+      "reason": "體節融合是構造本身，腳印層次是保存過程。"
+    },
+    {
+      "a": "P29002",
+      "b": "P29001",
+      "decision": "distinct",
+      "reason": "足部插入和拔出皆通過層面，與載荷不接觸亦傳至下層不同。"
+    },
+    {
+      "a": "P29002",
+      "b": "D2126",
+      "decision": "distinct",
+      "reason": "棘輪單向咬合不會造成同一活動足部的空間進出痕。"
+    },
+    {
+      "a": "P29002",
+      "b": "K18001",
+      "decision": "distinct",
+      "reason": "鞋帶由衝擊和慣性鬆脫，此處記錄趾部進退的路徑。"
+    },
+    {
+      "a": "P29002",
+      "b": "P29003",
+      "decision": "distinct",
+      "reason": "不同層切過腳趾與前後足分載選擇性留印不同。"
+    },
+    {
+      "a": "P29002",
+      "b": "A5011",
+      "decision": "distinct",
+      "reason": "交叉伸展反射決定對側伸腿，並非同腳側趾拔出時收攏。"
+    },
+    {
+      "a": "P29003",
+      "b": "P29001",
+      "decision": "distinct",
+      "reason": "看不到後足可能因承載未超門檻，不需先留痕再回填。"
+    },
+    {
+      "a": "P29003",
+      "b": "K11001",
+      "decision": "distinct",
+      "reason": "曲片靠曲率承重，非基底對不同足部的承載窗口。"
+    },
+    {
+      "a": "P29003",
+      "b": "P026",
+      "decision": "distinct",
+      "reason": "槓桿平衡是不同力臂關係，不能單獨決定基底變形。"
+    },
+    {
+      "a": "P29003",
+      "b": "P21005",
+      "decision": "distinct",
+      "reason": "滑翔配重涉及流體力矩，這裡是分載與足壓在地面留下的凹印。"
+    },
+    {
+      "a": "P29003",
+      "b": "A5011",
+      "decision": "distinct",
+      "reason": "轉移支撐的反射不同於四足都踩地卻未全留下足跡。"
+    },
+    {
+      "a": "P29004",
+      "b": "B15007",
+      "decision": "distinct",
+      "reason": "花瓣中肋與邊緣生長指向展開機制，與殼肋接觸泥面不同。"
+    },
+    {
+      "a": "P29004",
+      "b": "B2128",
+      "decision": "distinct",
+      "reason": "發育過程的扭轉不是成殼被搬運時姿態改變。"
+    },
+    {
+      "a": "P29004",
+      "b": "B2236",
+      "decision": "distinct",
+      "reason": "卷鬚接觸後以生長差纏繞，與被動拖殼不同。"
+    },
+    {
+      "a": "P29004",
+      "b": "K11005",
+      "decision": "distinct",
+      "reason": "薄殼屈曲的能障不產生拖痕與殼肋的對應。"
+    },
+    {
+      "a": "P29004",
+      "b": "R6011",
+      "decision": "distinct",
+      "reason": "球根主動組織收縮拉動，拖殼的動力解釋不同。"
+    },
+    {
+      "a": "P29005",
+      "b": "B2180",
+      "decision": "distinct",
+      "reason": "耳骨同源是演化比較，尾骨包嵌牙是個體受傷後的癒合。"
+    },
+    {
+      "a": "P29005",
+      "b": "B2151",
+      "decision": "distinct",
+      "reason": "盲鰻如何施力撕食不解答咬痕是否生前所受。"
+    },
+    {
+      "a": "P29005",
+      "b": "B2141",
+      "decision": "distinct",
+      "reason": "節肢顎足來源無法由反應骨判讀。"
+    },
+    {
+      "a": "P29005",
+      "b": "B2120",
+      "decision": "distinct",
+      "reason": "齒舌刮食是進食方式，不會提供傷口包牙的生長時序。"
+    },
+    {
+      "a": "P29005",
+      "b": "B2181",
+      "decision": "distinct",
+      "reason": "異型齒功能為取食分工，咬者身份和受傷時活著需要齒形以外的骨證。"
+    }
+  ],
+  "not_added_review": [
+    {
+      "id": "P29-NA001",
+      "decision": "keep_not_added",
+      "reason": "相同一步在不同深度可有多種形狀。"
+    },
+    {
+      "id": "P29-NA002",
+      "decision": "keep_not_added",
+      "reason": "半流質與較硬條件結果不同，不概括。"
+    },
+    {
+      "id": "P29-NA003",
+      "decision": "keep_not_added",
+      "reason": "下傳與穿透二者的分界已在兩主題呈現。"
+    },
+    {
+      "id": "P29-NA004",
+      "decision": "keep_not_added",
+      "reason": "深層只中趾到達併回珠雞題。"
+    },
+    {
+      "id": "P29-NA005",
+      "decision": "keep_not_added",
+      "reason": "分層不是連拍。"
+    },
+    {
+      "id": "P29-NA006",
+      "decision": "keep_not_added",
+      "reason": "單靠缺失的後腳印無法排除承載門檻。"
+    },
+    {
+      "id": "P29-NA007",
+      "decision": "keep_not_added",
+      "reason": "前後逆轉是模型對照，不另增核心。"
+    },
+    {
+      "id": "P29-NA008",
+      "decision": "keep_not_added",
+      "reason": "基本壓力已收。"
+    },
+    {
+      "id": "P29-NA009",
+      "decision": "keep_not_added",
+      "reason": "舊庫已有冰推石事件。"
+    },
+    {
+      "id": "P29-NA010",
+      "decision": "keep_not_added",
+      "reason": "相對地層不是實物精確年齡。"
+    },
+    {
+      "id": "P29-NA011",
+      "decision": "keep_not_added",
+      "reason": "沒有起始時刻或同步時鐘。"
+    },
+    {
+      "id": "P29-NA012",
+      "decision": "keep_not_added",
+      "reason": "只有齒痕不能推成功獵殺。"
+    },
+    {
+      "id": "P29-NA013",
+      "decision": "keep_not_added",
+      "reason": "單個體不給群體比例。"
+    },
+    {
+      "id": "P29-NA014",
+      "decision": "keep_not_added",
+      "reason": "未另核足跡速度公式，不重收。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W29P-T01",
+      "seconds": 130,
+      "decision": "retain_paper_plan",
+      "reason": "保留現代下傳與穿層兩種控制共130秒。"
+    },
+    {
+      "id": "W29P-T02",
+      "seconds": 70,
+      "decision": "retain_paper_plan",
+      "reason": "將未知水深留圖註，模型對照收在70秒。"
+    },
+    {
+      "id": "W29P-T03",
+      "seconds": 95,
+      "decision": "retain_paper_plan",
+      "reason": "保留殼痕與癒合骨的生前／死後證據，省去重述的外力圖說後95秒。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P29001",
+        "b": "G13001",
+        "reason": "沙堆建造方式改變底壓分布。這裡要追壓入、上層回填後的輪廓保存。"
+      },
+      {
+        "a": "P29001",
+        "b": "G13006",
+        "reason": "乾玻璃珠床對鋼球的深度阻力不解釋回填與分層足形。"
+      },
+      {
+        "a": "P29001",
+        "b": "R28002",
+        "reason": "畫布由上底固化留住局部拉痕，這裡是下傳變形和踩踏面回流。"
+      },
+      {
+        "a": "P29002",
+        "b": "P29001",
+        "reason": "足部插入和拔出皆通過層面，與載荷不接觸亦傳至下層不同。"
+      },
+      {
+        "a": "P29002",
+        "b": "S10006",
+        "reason": "小鼠越過障礙的運動控制不是腳趾離泥時的三維路徑。"
+      },
+      {
+        "a": "P29002",
+        "b": "B2329",
+        "reason": "步行訊息造成測距誤差不會在同層形成分開的進出痕。"
+      },
+      {
+        "a": "P29003",
+        "b": "P041",
+        "reason": "接觸面積只是前提，模型需前後肢分載和基底強度在兩門檻之間才能只留半套。"
+      },
+      {
+        "a": "P29003",
+        "b": "P043",
+        "reason": "量的單位及平均壓力不是骨架分載下如何選擇性留下足印的預測。"
+      },
+      {
+        "a": "P29003",
+        "b": "P29001",
+        "reason": "看不到後足可能因承載未超門檻，不需先留痕再回填。"
+      },
+      {
+        "a": "P29004",
+        "b": "E17006",
+        "reason": "冰片推石有現場觀察，這裡從殼肋與拖痕對位推死殼接觸。"
+      },
+      {
+        "a": "P29004",
+        "b": "P29002",
+        "reason": "活體珠雞足趾進出與死殼拖痕需要不同來源及姿態判據。"
+      },
+      {
+        "a": "P29005",
+        "b": "A27002",
+        "reason": "渦蟲局部訊號選頭尾，與反應骨必須在牙嵌入後才包覆它無關。"
+      },
+      {
+        "a": "P29005",
+        "b": "N135",
+        "reason": "地質穿切判先後不會產生必須仍存活才能生長的骨質。"
+      },
+      {
+        "a": "P29005",
+        "b": "P29004",
+        "reason": "殼可死後位移，而新骨需生前修復，各給出相反方向的時間約束。"
+      },
+      {
+        "a": "P29001",
+        "b": "K11004",
+        "reason": "細柱受壓屈曲和層狀濕材料足印下傳不同。"
+      },
+      {
+        "a": "P29001",
+        "b": "J6002",
+        "reason": "接點摩擦影響重複定位，並無半流體拔足後回填。"
+      },
+      {
+        "a": "P29001",
+        "b": "B2142",
+        "reason": "體節融合是構造本身，腳印層次是保存過程。"
+      },
+      {
+        "a": "P29002",
+        "b": "D2126",
+        "reason": "棘輪單向咬合不會造成同一活動足部的空間進出痕。"
+      },
+      {
+        "a": "P29002",
+        "b": "K18001",
+        "reason": "鞋帶由衝擊和慣性鬆脫，此處記錄趾部進退的路徑。"
+      },
+      {
+        "a": "P29002",
+        "b": "P29003",
+        "reason": "不同層切過腳趾與前後足分載選擇性留印不同。"
+      },
+      {
+        "a": "P29002",
+        "b": "A5011",
+        "reason": "交叉伸展反射決定對側伸腿，並非同腳側趾拔出時收攏。"
+      },
+      {
+        "a": "P29003",
+        "b": "K11001",
+        "reason": "曲片靠曲率承重，非基底對不同足部的承載窗口。"
+      },
+      {
+        "a": "P29003",
+        "b": "P026",
+        "reason": "槓桿平衡是不同力臂關係，不能單獨決定基底變形。"
+      },
+      {
+        "a": "P29003",
+        "b": "P21005",
+        "reason": "滑翔配重涉及流體力矩，這裡是分載與足壓在地面留下的凹印。"
+      },
+      {
+        "a": "P29003",
+        "b": "A5011",
+        "reason": "轉移支撐的反射不同於四足都踩地卻未全留下足跡。"
+      },
+      {
+        "a": "P29004",
+        "b": "B15007",
+        "reason": "花瓣中肋與邊緣生長指向展開機制，與殼肋接觸泥面不同。"
+      },
+      {
+        "a": "P29004",
+        "b": "B2128",
+        "reason": "發育過程的扭轉不是成殼被搬運時姿態改變。"
+      },
+      {
+        "a": "P29004",
+        "b": "B2236",
+        "reason": "卷鬚接觸後以生長差纏繞，與被動拖殼不同。"
+      },
+      {
+        "a": "P29004",
+        "b": "K11005",
+        "reason": "薄殼屈曲的能障不產生拖痕與殼肋的對應。"
+      },
+      {
+        "a": "P29004",
+        "b": "R6011",
+        "reason": "球根主動組織收縮拉動，拖殼的動力解釋不同。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2180",
+        "reason": "耳骨同源是演化比較，尾骨包嵌牙是個體受傷後的癒合。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2151",
+        "reason": "盲鰻如何施力撕食不解答咬痕是否生前所受。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2141",
+        "reason": "節肢顎足來源無法由反應骨判讀。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2120",
+        "reason": "齒舌刮食是進食方式，不會提供傷口包牙的生長時序。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2181",
+        "reason": "異型齒功能為取食分工，咬者身份和受傷時活著需要齒形以外的骨證。"
+      }
+    ]
+  },
+  "final_draft_sha256": "1929eb537a7beb2c63d68671b117e9be3a7d7fd475dd1398bf61d00c1d89bd1c",
+  "remaining_blockers": [],
+  "limits": "紙上題案，尚未試讀。兩篇PMC正文回傳讀圖說，沒有核原圖影像，進稿須核實標本畫面。"
+}

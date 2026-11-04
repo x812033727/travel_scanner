@@ -1,0 +1,2060 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "science_sources",
+  "reviewer": "pool_life_tech",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "role_and_scope": "逐題閱讀十個問答、適用範圍、來源定位、畫面／秒數；八份原研究定點，十五項未收，二十二個作者對及五十個共同檢索方向。",
+  "baseline": {
+    "head": "ececc28dee41d46596200a1ece906788aab5b257",
+    "selected": 3356,
+    "raw_records": 3740,
+    "not_added": 1812,
+    "themes": 444,
+    "snapshot": {
+      "file": "baselines/2026-11-03-3356.json.gz",
+      "sha256": "6057fc3a96018de31bb5e254e2b142aa7ca4c6c6074a92c006304c5d81abf64c"
+    },
+    "pool_sha256": "bb02f9bdf4e48b6164af2fceb67105eb9dfd01f2e3e9b527443562c54c9ccd7f"
+  },
+  "reviewed_candidate_ids": [
+    "S43-001",
+    "S43-002",
+    "S43-003",
+    "S43-004",
+    "S43-005",
+    "S43-006",
+    "S43-007",
+    "S43-008",
+    "S43-009",
+    "S43-010"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave43-earth.json",
+      "sha256": "0e22465f34336994fc55ed6ec3ed4382ff3168e395ba1ad828f60f9495b6f2c1"
+    },
+    {
+      "file": "reviews/wave43-earth-author.json",
+      "sha256": "d8cffab365a14ece104ad5cacc99c5fc8bb735dea9c60c5294e2caaf30d72429"
+    },
+    {
+      "file": "reviews/wave43-earth-themes.json",
+      "sha256": "b0b4269ee0df4e24ee05de32272177cce92ac38d0feec33fd1cff42be7399ba6"
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "S43-S001",
+      "title": "Microbial community in a sediment-hosted CO₂ lake of the southern Okinawa Trough hydrothermal system",
+      "doi": "10.1073/pnas.0606083103",
+      "url": "https://doi.org/10.1073/pnas.0606083103",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "PMC正式論文Web L208–213、217–218、228–230。",
+      "cache": {
+        "file": ".cache/wave43-earth-co2-web.txt",
+        "sha256": "36fc3da337654196bbf900f878c821941614f5f6beb420e007edd7c29c96d4b5",
+        "text_file": ".cache/wave43-earth-co2-web.txt",
+        "text_sha256": "36fc3da337654196bbf900f878c821941614f5f6beb420e007edd7c29c96d4b5"
+      },
+      "findings": "取芯前白斑已有液滴，取芯後是那個新孔連續出液。薄固體層的性質與取樣孔觀察支持一個可滲漏的蓋層解釋，全池壓封及範圍未量。",
+      "limitations": "所見分層與逸滴支持局部封蓋，沒有畫出整池連續蓋層或直接測得各處滲透性。"
+    },
+    {
+      "source_id": "S43-S002",
+      "title": "Enhanced lifetime of methane bubble streams within the deep ocean",
+      "doi": "10.1029/2001GL013966",
+      "url": "https://doi.org/10.1029/2001GL013966",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "刊方正式文 §§3.1–3.3，Web L140–172，圖2和蒙特雷氣泡／氬對照。",
+      "cache": {
+        "file": ".cache/wave43-earth-methane-web.txt",
+        "sha256": "135a3dc6fc8bc945d86f2b8539ca191d8204d52e13af1b8db726806c06ac16f9",
+        "text_file": ".cache/wave43-earth-methane-web.txt",
+        "text_sha256": "135a3dc6fc8bc945d86f2b8539ca191d8204d52e13af1b8db726806c06ac16f9"
+      },
+      "findings": "上追的是不同深度各別放出的泡，並有氣種對照。直徑曲線支持水合物皮減緩溶解，未追到出海面。",
+      "limitations": "形成水合物是研究解釋，並非每個天然氣泡皆受相同保護或可抵大氣。"
+    },
+    {
+      "source_id": "S43-S003",
+      "title": "Variability of Natural Methane Bubble Release at Southern Hydrate Ridge",
+      "doi": "10.1029/2021GC009894",
+      "url": "https://doi.org/10.1029/2021GC009894",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式文Web L269–279聲納峰與底壓，L402–415退潮卸載與例外、孔隙壓力解釋。",
+      "cache": {
+        "file": ".cache/wave43-earth-tide-web.txt",
+        "sha256": "cf117de3f1c63773099a1a86a70a399c397bd8d672743994749e1f96b2b72c86",
+        "text_file": ".cache/wave43-earth-tide-web.txt",
+        "text_sha256": "cf117de3f1c63773099a1a86a70a399c397bd8d672743994749e1f96b2b72c86"
+      },
+      "findings": "將氣泡聲納峰與海床壓力疊合，低壓／下降較常見但也有高潮峰。變化是統計關係，裂隙卸載是解釋。",
+      "limitations": "強弱由聲納泡羽訊號表徵，未將聲學值直接當甲烷質量；裂隙開度機制並非逐次拍到。"
+    },
+    {
+      "source_id": "S43-S004",
+      "title": "Discovery of the deep-sea NEOM Brine Pools in the Gulf of Aqaba, Red Sea",
+      "doi": "10.1038/s43247-022-00482-x",
+      "url": "https://doi.org/10.1038/s43247-022-00482-x",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式PDF pp.3–4圖4、水源離子及氧同位素比較；pp.5–6圖7池內外推芯；pp.6–8 Pool-associated megafauna與圖9。",
+      "cache": {
+        "file": ".cache/wave43-earth-brine.pdf",
+        "sha256": "7a65288359880491418b006576ae8ecbfe74f2f243f6bc62bc8843c3012a9bfb",
+        "text_file": ".cache/wave43-earth-brine.txt",
+        "text_sha256": "ef42ed5d32b264a44df31b13210d33135ae7047c58c543fb9f6b8f22b26f84a7"
+      },
+      "findings": "紅光下，蝦在池面上方撿取失能生物；鹽度與氧一併變，不能指定唯一致失能因子。 第一根芯取自池外，第二至五根取自界面之下。缺氧環境少大型翻泥動物，能保存已沉下的薄層，不承諾讀出特定事件。 現代海水蒸濃與溶解古鹽對水的重氧比例有不同預測，當地樣本和離子比支持後者。模型用本地的溼度／起始成分，並非所有鹽池成因。",
+      "limitations": "溶氧探頭精度不足以排除極微量氧。攝影不能定量分開缺氧和鹽度的致效，更不能把每層粗砂指定給某個已知事件。"
+    },
+    {
+      "source_id": "S43-S005",
+      "title": "A paradox resolved: Sulfide acquisition by roots of seep tubeworms sustains net chemoautotrophy",
+      "doi": "10.1073/pnas.231589498",
+      "url": "https://doi.org/10.1073/pnas.231589498",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "PMC正式論文Web L116–142現場取樣與雙室試驗，L205–222血樣／根部單側供硫與固碳解釋。",
+      "cache": {
+        "file": ".cache/wave43-earth-root-combined.txt",
+        "sha256": "afdeec3231c3809171caef41a292e59ec234ec155889e2394374ccbc12128138",
+        "text_file": ".cache/wave43-earth-root-combined.txt",
+        "text_sha256": "afdeec3231c3809171caef41a292e59ec234ec155889e2394374ccbc12128138"
+      },
+      "findings": "前端富氧、後端給或不給硫化物，染料與分室檢漏。量混合體液總硫化物，另以呼吸試驗見淨攝碳。野外兩端比例未確定。",
+      "limitations": "是採回管蟲的控制試驗，不能替所有野外個體算出後端和鰓冠各自貢獻。"
+    },
+    {
+      "source_id": "S43-S006",
+      "title": "Discovery of active off-axis hydrothermal vents at 9° 54′N East Pacific Rise",
+      "doi": "10.1073/pnas.2205602119",
+      "url": "https://doi.org/10.1073/pnas.2205602119",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式論文XML，Results and Discussion／Vent Fluid Compositions，Table 1、Fig2C，Materials and Methods樣品化學。",
+      "cache": {
+        "file": ".cache/wave43-earth-phase.xml",
+        "sha256": "98005dee29a78b5d501ecfd3f782955137ce08e588cda289e5c54b1f2895e25f",
+        "text_file": ".cache/wave43-earth-phase.txt",
+        "text_sha256": "e7159c5e61237cc17b8a32505f5a30ceef9d157918c306a26e73e186eb5cb689"
+      },
+      "findings": "出口實測368度；玄武岩熱液鐵錳地溫計推較高的最低源溫，氯、模型及相分離限制檢查源區條件，未把兩種資料都畫成井下測溫。",
+      "limitations": "金屬比溫度計與源區壓力依模型，不能把地下估值說成插入深處直接量到。"
+    },
+    {
+      "source_id": "S43-S007",
+      "title": "Hydrate Formation on Marine Seep Bubbles and the Implications for Water Column Methane Dissolution",
+      "doi": "10.1029/2021JC017363",
+      "url": "https://doi.org/10.1029/2021JC017363",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式文Web L353–372及圖13b，水合物管內液氣界面停住與出泡位置移動。",
+      "cache": {
+        "file": ".cache/wave43-earth-hydrate-web.txt",
+        "sha256": "b7299b454e6be4d1f0e216aa148ffed0cc5335cd0281214a7c61fdac3b7216cb",
+        "text_file": ".cache/wave43-earth-hydrate-web.txt",
+        "text_sha256": "b7299b454e6be4d1f0e216aa148ffed0cc5335cd0281214a7c61fdac3b7216cb"
+      },
+      "findings": "同一半透明天然管可從界面動停及近管底新泡辨明改道，限圖13b單一時序，無整區流量數據。",
+      "limitations": "特定噴口攝影序列；不聲稱同時量出兩個孔的體積通量完全相等。"
+    },
+    {
+      "source_id": "S43-S008",
+      "title": "Conspicuous Smooth and White Egg-Shaped Sulfur Structures on a Deep-Sea Hydrothermal Vent Formed by Sulfide-Oxidizing Bacteria",
+      "doi": "10.1128/Spectrum.00955-21",
+      "url": "https://doi.org/10.1128/Spectrum.00955-21",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式論文XML，Results中Microscopic observations、Elemental composition、Microbial community composition，圖3–6及Discussion。",
+      "cache": {
+        "file": ".cache/wave43-earth-sulfur.xml",
+        "sha256": "0596f6d1470bfc90b9d671db2ad3c29a3a4e6256ae3c2ce931c9dd94d46c9846",
+        "text_file": ".cache/wave43-earth-sulfur.txt",
+        "text_sha256": "f819384b1447c3278eb37189cde9ee73f43d57127b2bf510c09d6e681a5b4292"
+      },
+      "findings": "元素分佈確認胞外絲富硫低碳，菌株分子辨識及位置支持可能的製造者。這層證據超過只說外形或命名，先留素材，不承諾解釋圓形。",
+      "limitations": "候選Arcobacter的貢獻是作者推論；沒有直接拍到圓滑外形生長的全程，外形及白色不足以鑑定。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "S43-S001",
+      "title": "Microbial community in a sediment-hosted CO₂ lake of the southern Okinawa Trough hydrothermal system",
+      "doi": "10.1073/pnas.0606083103",
+      "url": "https://doi.org/10.1073/pnas.0606083103",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "PMC正式論文Web L208–213、217–218、228–230。",
+      "cache": {
+        "file": ".cache/wave43-earth-co2-web.txt",
+        "sha256": "36fc3da337654196bbf900f878c821941614f5f6beb420e007edd7c29c96d4b5",
+        "text_file": ".cache/wave43-earth-co2-web.txt",
+        "text_sha256": "36fc3da337654196bbf900f878c821941614f5f6beb420e007edd7c29c96d4b5"
+      },
+      "findings": "取芯前白斑已有液滴，取芯後是那個新孔連續出液。薄固體層的性質與取樣孔觀察支持一個可滲漏的蓋層解釋，全池壓封及範圍未量。",
+      "limitations": "所見分層與逸滴支持局部封蓋，沒有畫出整池連續蓋層或直接測得各處滲透性。"
+    },
+    {
+      "source_id": "S43-S002",
+      "title": "Enhanced lifetime of methane bubble streams within the deep ocean",
+      "doi": "10.1029/2001GL013966",
+      "url": "https://doi.org/10.1029/2001GL013966",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "刊方正式文 §§3.1–3.3，Web L140–172，圖2和蒙特雷氣泡／氬對照。",
+      "cache": {
+        "file": ".cache/wave43-earth-methane-web.txt",
+        "sha256": "135a3dc6fc8bc945d86f2b8539ca191d8204d52e13af1b8db726806c06ac16f9",
+        "text_file": ".cache/wave43-earth-methane-web.txt",
+        "text_sha256": "135a3dc6fc8bc945d86f2b8539ca191d8204d52e13af1b8db726806c06ac16f9"
+      },
+      "findings": "上追的是不同深度各別放出的泡，並有氣種對照。直徑曲線支持水合物皮減緩溶解，未追到出海面。",
+      "limitations": "形成水合物是研究解釋，並非每個天然氣泡皆受相同保護或可抵大氣。"
+    },
+    {
+      "source_id": "S43-S003",
+      "title": "Variability of Natural Methane Bubble Release at Southern Hydrate Ridge",
+      "doi": "10.1029/2021GC009894",
+      "url": "https://doi.org/10.1029/2021GC009894",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式文Web L269–279聲納峰與底壓，L402–415退潮卸載與例外、孔隙壓力解釋。",
+      "cache": {
+        "file": ".cache/wave43-earth-tide-web.txt",
+        "sha256": "cf117de3f1c63773099a1a86a70a399c397bd8d672743994749e1f96b2b72c86",
+        "text_file": ".cache/wave43-earth-tide-web.txt",
+        "text_sha256": "cf117de3f1c63773099a1a86a70a399c397bd8d672743994749e1f96b2b72c86"
+      },
+      "findings": "將氣泡聲納峰與海床壓力疊合，低壓／下降較常見但也有高潮峰。變化是統計關係，裂隙卸載是解釋。",
+      "limitations": "強弱由聲納泡羽訊號表徵，未將聲學值直接當甲烷質量；裂隙開度機制並非逐次拍到。"
+    },
+    {
+      "source_id": "S43-S004",
+      "title": "Discovery of the deep-sea NEOM Brine Pools in the Gulf of Aqaba, Red Sea",
+      "doi": "10.1038/s43247-022-00482-x",
+      "url": "https://doi.org/10.1038/s43247-022-00482-x",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式PDF pp.3–4圖4、水源離子及氧同位素比較；pp.5–6圖7池內外推芯；pp.6–8 Pool-associated megafauna與圖9。",
+      "cache": {
+        "file": ".cache/wave43-earth-brine.pdf",
+        "sha256": "7a65288359880491418b006576ae8ecbfe74f2f243f6bc62bc8843c3012a9bfb",
+        "text_file": ".cache/wave43-earth-brine.txt",
+        "text_sha256": "ef42ed5d32b264a44df31b13210d33135ae7047c58c543fb9f6b8f22b26f84a7"
+      },
+      "findings": "紅光下，蝦在池面上方撿取失能生物；鹽度與氧一併變，不能指定唯一致失能因子。 第一根芯取自池外，第二至五根取自界面之下。缺氧環境少大型翻泥動物，能保存已沉下的薄層，不承諾讀出特定事件。 現代海水蒸濃與溶解古鹽對水的重氧比例有不同預測，當地樣本和離子比支持後者。模型用本地的溼度／起始成分，並非所有鹽池成因。",
+      "limitations": "溶氧探頭精度不足以排除極微量氧。攝影不能定量分開缺氧和鹽度的致效，更不能把每層粗砂指定給某個已知事件。"
+    },
+    {
+      "source_id": "S43-S005",
+      "title": "A paradox resolved: Sulfide acquisition by roots of seep tubeworms sustains net chemoautotrophy",
+      "doi": "10.1073/pnas.231589498",
+      "url": "https://doi.org/10.1073/pnas.231589498",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "PMC正式論文Web L116–142現場取樣與雙室試驗，L205–222血樣／根部單側供硫與固碳解釋。",
+      "cache": {
+        "file": ".cache/wave43-earth-root-combined.txt",
+        "sha256": "afdeec3231c3809171caef41a292e59ec234ec155889e2394374ccbc12128138",
+        "text_file": ".cache/wave43-earth-root-combined.txt",
+        "text_sha256": "afdeec3231c3809171caef41a292e59ec234ec155889e2394374ccbc12128138"
+      },
+      "findings": "前端富氧、後端給或不給硫化物，染料與分室檢漏。量混合體液總硫化物，另以呼吸試驗見淨攝碳。野外兩端比例未確定。",
+      "limitations": "是採回管蟲的控制試驗，不能替所有野外個體算出後端和鰓冠各自貢獻。"
+    },
+    {
+      "source_id": "S43-S006",
+      "title": "Discovery of active off-axis hydrothermal vents at 9° 54′N East Pacific Rise",
+      "doi": "10.1073/pnas.2205602119",
+      "url": "https://doi.org/10.1073/pnas.2205602119",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式論文XML，Results and Discussion／Vent Fluid Compositions，Table 1、Fig2C，Materials and Methods樣品化學。",
+      "cache": {
+        "file": ".cache/wave43-earth-phase.xml",
+        "sha256": "98005dee29a78b5d501ecfd3f782955137ce08e588cda289e5c54b1f2895e25f",
+        "text_file": ".cache/wave43-earth-phase.txt",
+        "text_sha256": "e7159c5e61237cc17b8a32505f5a30ceef9d157918c306a26e73e186eb5cb689"
+      },
+      "findings": "出口實測368度；玄武岩熱液鐵錳地溫計推較高的最低源溫，氯、模型及相分離限制檢查源區條件，未把兩種資料都畫成井下測溫。",
+      "limitations": "金屬比溫度計與源區壓力依模型，不能把地下估值說成插入深處直接量到。"
+    },
+    {
+      "source_id": "S43-S007",
+      "title": "Hydrate Formation on Marine Seep Bubbles and the Implications for Water Column Methane Dissolution",
+      "doi": "10.1029/2021JC017363",
+      "url": "https://doi.org/10.1029/2021JC017363",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式文Web L353–372及圖13b，水合物管內液氣界面停住與出泡位置移動。",
+      "cache": {
+        "file": ".cache/wave43-earth-hydrate-web.txt",
+        "sha256": "b7299b454e6be4d1f0e216aa148ffed0cc5335cd0281214a7c61fdac3b7216cb",
+        "text_file": ".cache/wave43-earth-hydrate-web.txt",
+        "text_sha256": "b7299b454e6be4d1f0e216aa148ffed0cc5335cd0281214a7c61fdac3b7216cb"
+      },
+      "findings": "同一半透明天然管可從界面動停及近管底新泡辨明改道，限圖13b單一時序，無整區流量數據。",
+      "limitations": "特定噴口攝影序列；不聲稱同時量出兩個孔的體積通量完全相等。"
+    },
+    {
+      "source_id": "S43-S008",
+      "title": "Conspicuous Smooth and White Egg-Shaped Sulfur Structures on a Deep-Sea Hydrothermal Vent Formed by Sulfide-Oxidizing Bacteria",
+      "doi": "10.1128/Spectrum.00955-21",
+      "url": "https://doi.org/10.1128/Spectrum.00955-21",
+      "version": "研究團隊原文之正式發表版本，讀取載體與段落如下。",
+      "read_via": "核原作者保存的正式來源或節錄及 SHA，獨立閱讀下列正文。",
+      "reading_scope": "正式論文XML，Results中Microscopic observations、Elemental composition、Microbial community composition，圖3–6及Discussion。",
+      "cache": {
+        "file": ".cache/wave43-earth-sulfur.xml",
+        "sha256": "0596f6d1470bfc90b9d671db2ad3c29a3a4e6256ae3c2ce931c9dd94d46c9846",
+        "text_file": ".cache/wave43-earth-sulfur.txt",
+        "text_sha256": "f819384b1447c3278eb37189cde9ee73f43d57127b2bf510c09d6e681a5b4292"
+      },
+      "findings": "元素分佈確認胞外絲富硫低碳，菌株分子辨識及位置支持可能的製造者。這層證據超過只說外形或命名，先留素材，不承諾解釋圓形。",
+      "limitations": "候選Arcobacter的貢獻是作者推論；沒有直接拍到圓滑外形生長的全程，外形及白色不足以鑑定。"
+    }
+  ],
+  "source_identity_review": "NEOM 一份資料提供不同位置的棲位、取芯及地球化學檢驗，三題只計一來源，同文多種傳遞途徑也只計一次。",
+  "source_reading_summary": "八份指定正文的作者副本已按原 SHA 核讀。五份為刊方或 PMC 的 web 指定段，一份期刊 PDF、兩份期刊 XML。",
+  "source_fetch_limits": "覆核未再抓取全文；定點 web 节錄僅支持來源標出的行及圖說，不宣稱觀看潛器錄影或全部原圖。未收題另查讀其來源限制和理由，未獨立重讀未收方向所有來源。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave43-earth-figs.jpg",
+      "sha256": "2d2810e4df22b3177b61c1bfa06e6ea2e7ee518dabf6d1761a20f4c5b77fca75",
+      "scope": "已目讀 NEOM 正文 PDF p4圖4的溶氧／鹽度躍層，p6圖6、7的鹽源圖與五根取芯位置，p8圖9的蝦和池面。其餘已讀來源採定點正文、圖說。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "S43-001",
+      "canonical_id": "S43-001",
+      "decision": "retain",
+      "reason": "局部固體蓋層限制下方浮性液體逸出",
+      "scope_check": "取芯前白斑已有液滴，取芯後是那個新孔連續出液。薄固體層的性質與取樣孔觀察支持一個可滲漏的蓋層解釋，全池壓封及範圍未量。",
+      "source_ids": [
+        "S43-S001"
+      ],
+      "editorial_seconds": [
+        40,
+        88
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-002",
+      "canonical_id": "S43-002",
+      "decision": "retain",
+      "reason": "已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢",
+      "scope_check": "上追的是不同深度各別放出的泡，並有氣種對照。直徑曲線支持水合物皮減緩溶解，未追到出海面。",
+      "source_ids": [
+        "S43-S002"
+      ],
+      "editorial_seconds": [
+        36,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-003",
+      "canonical_id": "S43-003",
+      "decision": "retain",
+      "reason": "潮汐卸載與海床氣泡羽流強峰的時間關係及例外",
+      "scope_check": "將氣泡聲納峰與海床壓力疊合，低壓／下降較常見但也有高潮峰。變化是統計關係，裂隙卸載是解釋。",
+      "source_ids": [
+        "S43-S003"
+      ],
+      "editorial_seconds": [
+        32,
+        72
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-004",
+      "canonical_id": "S43-004",
+      "decision": "retain",
+      "reason": "鹽水池面失能獵物形成可利用的取食界面",
+      "scope_check": "紅光下，蝦在池面上方撿取失能生物；鹽度與氧一併變，不能指定唯一致失能因子。",
+      "source_ids": [
+        "S43-S004"
+      ],
+      "editorial_seconds": [
+        29,
+        67
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-005",
+      "canonical_id": "S43-005",
+      "decision": "retain",
+      "reason": "缺氧池下少大型動物翻攪使泥芯保存薄層",
+      "scope_check": "第一根芯取自池外，第二至五根取自界面之下。缺氧環境少大型翻泥動物，能保存已沉下的薄層，不承諾讀出特定事件。",
+      "source_ids": [
+        "S43-S004"
+      ],
+      "editorial_seconds": [
+        30,
+        72
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-006",
+      "canonical_id": "S43-006",
+      "decision": "retain",
+      "reason": "宿主兩端分取原料，後端吸收硫化物而能支持共生固碳",
+      "scope_check": "前端富氧、後端給或不給硫化物，染料與分室檢漏。量混合體液總硫化物，另以呼吸試驗見淨攝碳。野外兩端比例未確定。",
+      "source_ids": [
+        "S43-S005"
+      ],
+      "editorial_seconds": [
+        40,
+        87
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-007",
+      "canonical_id": "S43-007",
+      "decision": "retain",
+      "reason": "從出口流體的鐵錳比估計深處水岩反應溫度",
+      "scope_check": "出口實測368度；玄武岩熱液鐵錳地溫計推較高的最低源溫，氯、模型及相分離限制檢查源區條件，未把兩種資料都畫成井下測溫。",
+      "source_ids": [
+        "S43-S006"
+      ],
+      "editorial_seconds": [
+        34,
+        72
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-008",
+      "canonical_id": "S43-008",
+      "decision": "retain",
+      "reason": "管內兩氣液界面受阻而把上端出泡改到側下方",
+      "scope_check": "同一半透明天然管可從界面動停及近管底新泡辨明改道，限圖13b單一時序，無整區流量數據。",
+      "source_ids": [
+        "S43-S007"
+      ],
+      "editorial_seconds": [
+        28,
+        64
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-009",
+      "canonical_id": "S43-009",
+      "decision": "retain",
+      "reason": "以顯微、元素與細胞定位辨識胞外硫絲網的可能來源",
+      "scope_check": "元素分佈確認胞外絲富硫低碳，菌株分子辨識及位置支持可能的製造者。這層證據超過只說外形或命名，先留素材，不承諾解釋圓形。",
+      "source_ids": [
+        "S43-S008"
+      ],
+      "editorial_seconds": [
+        30,
+        67
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S43-010",
+      "canonical_id": "S43-010",
+      "decision": "retain",
+      "reason": "水氧同位素與離子比區分蒸濃入滲和溶解古鹽",
+      "scope_check": "現代海水蒸濃與溶解古鹽對水的重氧比例有不同預測，當地樣本和離子比支持後者。模型用本地的溼度／起始成分，並非所有鹽池成因。",
+      "source_ids": [
+        "S43-S004"
+      ],
+      "editorial_seconds": [
+        34,
+        70
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "S43-001",
+      "b": "S43-005",
+      "decision": "distinct",
+      "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；S43-005的控制問題是缺氧池下少大型動物翻攪使泥芯保存薄層。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.7596
+    },
+    {
+      "a": "S43-001",
+      "b": "N096",
+      "decision": "distinct",
+      "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；N096的控制問題是人工補注含水層的入滲條件。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.753605
+    },
+    {
+      "a": "S43-001",
+      "b": "S43-008",
+      "decision": "distinct",
+      "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；S43-008的控制問題是管內兩氣液界面受阻而把上端出泡改到側下方。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.737821
+    },
+    {
+      "a": "S43-001",
+      "b": "D2090",
+      "decision": "distinct",
+      "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；D2090的控制問題是碎石斷毛細與防潮膜擋水汽分工。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.736667
+    },
+    {
+      "a": "S43-001",
+      "b": "B4004",
+      "decision": "distinct",
+      "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；B4004的控制問題是空間兩側低透濕造成乾燥出口受阻。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.732883
+    },
+    {
+      "a": "S43-002",
+      "b": "X40-002",
+      "decision": "distinct",
+      "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；X40-002的控制問題是充氣液柱的可壓縮性改變共振音高。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.750698
+    },
+    {
+      "a": "S43-002",
+      "b": "F17004",
+      "decision": "distinct",
+      "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；F17004的控制問題是振動壓力與泡體積同相位作用使平均力向下。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.726766
+    },
+    {
+      "a": "S43-002",
+      "b": "P311",
+      "decision": "distinct",
+      "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；P311的控制問題是超音波低壓造穴與崩潰。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.714276
+    },
+    {
+      "a": "S43-002",
+      "b": "I12011",
+      "decision": "distinct",
+      "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；I12011的控制問題是壓差驅動相鄰泡跨膜交換，由面網幾何控制增減。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.712751
+    },
+    {
+      "a": "S43-002",
+      "b": "P067",
+      "decision": "distinct",
+      "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；P067的控制問題是水頭壓差驅動不同位置的小孔射流。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.701287
+    },
+    {
+      "a": "S43-003",
+      "b": "S40-009",
+      "decision": "distinct",
+      "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；S40-009的控制問題是冰底接地反覆覆寫沉積脊而漏刻潮數。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.711569
+    },
+    {
+      "a": "S43-003",
+      "b": "N191",
+      "decision": "distinct",
+      "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；N191的控制問題是近岸水流從沙洲缺口集中往外。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.70696
+    },
+    {
+      "a": "S43-003",
+      "b": "N244",
+      "decision": "distinct",
+      "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；N244的控制問題是熱膨脹造成水柱增高。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.690839
+    },
+    {
+      "a": "S43-003",
+      "b": "S43-002",
+      "decision": "distinct",
+      "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；S43-002的控制問題是已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667742
+    },
+    {
+      "a": "S43-003",
+      "b": "P32004",
+      "decision": "distinct",
+      "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；P32004的控制問題是深度不同處水躍、侵蝕及沉積使泥沙陡坡上溯。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.665723
+    },
+    {
+      "a": "S43-004",
+      "b": "N088",
+      "decision": "distinct",
+      "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；N088的控制問題是抽水改變水頭使鹽水入侵。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.743159
+    },
+    {
+      "a": "S43-004",
+      "b": "B2257",
+      "decision": "distinct",
+      "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；B2257的控制問題是魚跨滲透梯度調節鰓離子與飲水。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.734212
+    },
+    {
+      "a": "S43-004",
+      "b": "S43-005",
+      "decision": "distinct",
+      "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；S43-005的控制問題是缺氧池下少大型動物翻攪使泥芯保存薄層。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.734054
+    },
+    {
+      "a": "S43-004",
+      "b": "N184",
+      "decision": "distinct",
+      "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；N184的控制問題是流量與密度使鹹淡河口成層。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.730426
+    },
+    {
+      "a": "S43-004",
+      "b": "S43-010",
+      "decision": "distinct",
+      "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；S43-010的控制問題是水氧同位素與離子比區分蒸濃入滲和溶解古鹽。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.728478
+    },
+    {
+      "a": "S43-005",
+      "b": "E7022",
+      "decision": "distinct",
+      "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；E7022的控制問題是選擇性淘細留下粗顆粒護甲。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.762693
+    },
+    {
+      "a": "S43-005",
+      "b": "S43-001",
+      "decision": "distinct",
+      "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；S43-001的控制問題是局部固體蓋層限制下方浮性液體逸出。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.7596
+    },
+    {
+      "a": "S43-005",
+      "b": "E11002",
+      "decision": "distinct",
+      "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；E11002的控制問題是高低池底受保護程度不同導致侵蝕階梯。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.757583
+    },
+    {
+      "a": "S43-005",
+      "b": "D2193",
+      "decision": "distinct",
+      "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；D2193的控制問題是設背景井比對場址下游污染。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.752043
+    },
+    {
+      "a": "S43-005",
+      "b": "N096",
+      "decision": "distinct",
+      "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；N096的控制問題是人工補注含水層的入滲條件。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.745792
+    },
+    {
+      "a": "S43-006",
+      "b": "W5022",
+      "decision": "distinct",
+      "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；W5022的控制問題是管內H₂S進氣相後於濕壁氧化成酸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.771739
+    },
+    {
+      "a": "S43-006",
+      "b": "W5010",
+      "decision": "distinct",
+      "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；W5010的控制問題是擴散耗氧形成微生物膜內外氧差。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.716398
+    },
+    {
+      "a": "S43-006",
+      "b": "U8008",
+      "decision": "distinct",
+      "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；U8008的控制問題是絲狀電纜細菌跨層傳電子。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.694199
+    },
+    {
+      "a": "S43-006",
+      "b": "D2014",
+      "decision": "distinct",
+      "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；D2014的控制問題是曝氣供應處理污水有機物所需的氧。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.680228
+    },
+    {
+      "a": "S43-006",
+      "b": "D2016",
+      "decision": "distinct",
+      "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；D2016的控制問題是兩條處理線採用好氧與厭氧環境。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.677952
+    },
+    {
+      "a": "S43-007",
+      "b": "O3067",
+      "decision": "distinct",
+      "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；O3067的控制問題是感測器熱遲滯造成鹽度假峰。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.596477
+    },
+    {
+      "a": "S43-007",
+      "b": "S40-006",
+      "decision": "distinct",
+      "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；S40-006的控制問題是孔隙水同位素擴散模式把殼體水溫與水源訊號分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.582016
+    },
+    {
+      "a": "S43-007",
+      "b": "O3070",
+      "decision": "distinct",
+      "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；O3070的控制問題是分箱平均與單點測溫對水層的代表性。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.576241
+    },
+    {
+      "a": "S43-007",
+      "b": "N149",
+      "decision": "distinct",
+      "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；N149的控制問題是副熱帶下沉氣流形成乾燥高壓。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.567553
+    },
+    {
+      "a": "S43-007",
+      "b": "LEG-S77",
+      "decision": "distinct",
+      "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；LEG-S77的控制問題是觸碰時傳熱速率不同，造成同溫異感。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.561798
+    },
+    {
+      "a": "S43-008",
+      "b": "X40-003",
+      "decision": "distinct",
+      "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；X40-003的控制問題是凹槽填液改變氣流激音。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.772998
+    },
+    {
+      "a": "S43-008",
+      "b": "X42-004",
+      "decision": "distinct",
+      "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；X42-004的控制問題是橢球顆粒在界面結網抑制外流搬運。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.754808
+    },
+    {
+      "a": "S43-008",
+      "b": "W5013",
+      "decision": "distinct",
+      "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；W5013的控制問題是壓差反轉讓外水從既有裂孔進入。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.750406
+    },
+    {
+      "a": "S43-008",
+      "b": "D2233",
+      "decision": "distinct",
+      "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；D2233的控制問題是以無菌氣體與壓差保護暫存液面。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.746823
+    },
+    {
+      "a": "S43-008",
+      "b": "N169",
+      "decision": "distinct",
+      "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；N169的控制問題是可見凝結漏斗與實際接地渦流範圍不重合。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.740074
+    },
+    {
+      "a": "S43-009",
+      "b": "B2330",
+      "decision": "distinct",
+      "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；B2330的控制問題是從環境攝取發光共生菌。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.657222
+    },
+    {
+      "a": "S43-009",
+      "b": "S43-006",
+      "decision": "distinct",
+      "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；S43-006的控制問題是宿主兩端分取原料，後端吸收硫化物而能支持共生固碳。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.649437
+    },
+    {
+      "a": "S43-009",
+      "b": "B2137",
+      "decision": "distinct",
+      "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；B2137的控制問題是水熊蟲利用蛻殼作產卵位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.630638
+    },
+    {
+      "a": "S43-009",
+      "b": "V3076",
+      "decision": "distinct",
+      "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；V3076的控制問題是菌絲隔膜孔供小分子交換。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.621137
+    },
+    {
+      "a": "S43-009",
+      "b": "U8008",
+      "decision": "distinct",
+      "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；U8008的控制問題是絲狀電纜細菌跨層傳電子。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.619846
+    },
+    {
+      "a": "S43-010",
+      "b": "N088",
+      "decision": "distinct",
+      "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；N088的控制問題是抽水改變水頭使鹽水入侵。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.832889
+    },
+    {
+      "a": "S43-010",
+      "b": "LEG-S32",
+      "decision": "distinct",
+      "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；LEG-S32的控制問題是風化等供鹽與海洋鹽移除收支。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.805105
+    },
+    {
+      "a": "S43-010",
+      "b": "E17001",
+      "decision": "distinct",
+      "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；E17001的控制問題是蒸發與地下對流使鹽殼形成多邊形稜線。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.777725
+    },
+    {
+      "a": "S43-010",
+      "b": "N184",
+      "decision": "distinct",
+      "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；N184的控制問題是流量與密度使鹹淡河口成層。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.772975
+    },
+    {
+      "a": "S43-010",
+      "b": "N183",
+      "decision": "distinct",
+      "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；N183的控制問題是海水結冰排鹽到鄰水。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.758512
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "S43-001",
+      "b": "N208",
+      "decision": "distinct",
+      "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；N208的控制問題是水柱重量使深處壓力大。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-001",
+      "b": "S42-009",
+      "decision": "distinct",
+      "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；S42-009的控制問題是岩石熱慣性改變冰土界面深度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-001",
+      "b": "S43-002",
+      "decision": "distinct",
+      "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；S43-002的控制問題是已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-002",
+      "b": "P231",
+      "decision": "distinct",
+      "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；P231的控制問題是水升溫使溶解氣體的平衡濃度降低。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-002",
+      "b": "S43-008",
+      "decision": "distinct",
+      "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；S43-008的控制問題是管內兩氣液界面受阻而把上端出泡改到側下方。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-003",
+      "b": "N208",
+      "decision": "distinct",
+      "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；N208的控制問題是水柱重量使深處壓力大。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-003",
+      "b": "S40-009",
+      "decision": "distinct",
+      "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；S40-009的控制問題是冰底接地反覆覆寫沉積脊而漏刻潮數。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-003",
+      "b": "S43-008",
+      "decision": "distinct",
+      "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；S43-008的控制問題是管內兩氣液界面受阻而把上端出泡改到側下方。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-004",
+      "b": "B2089",
+      "decision": "distinct",
+      "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；B2089的控制問題是化能自營將無機碳變為食物網物質。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-004",
+      "b": "S43-005",
+      "decision": "distinct",
+      "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；S43-005的控制問題是缺氧池下少大型動物翻攪使泥芯保存薄層。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-005",
+      "b": "S40-009",
+      "decision": "distinct",
+      "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；S40-009的控制問題是冰底接地反覆覆寫沉積脊而漏刻潮數。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-005",
+      "b": "N132",
+      "decision": "distinct",
+      "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；N132的控制問題是以疊置與化石排列地層年代。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-006",
+      "b": "B2089",
+      "decision": "distinct",
+      "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；B2089的控制問題是化能自營將無機碳變為食物網物質。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-006",
+      "b": "U8017",
+      "decision": "distinct",
+      "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；U8017的控制問題是夥伴清除氫等產物，促進其他微生物代謝。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-007",
+      "b": "N195",
+      "decision": "distinct",
+      "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；N195的控制問題是熱液與海水混合析出煙囪微粒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-007",
+      "b": "S40-006",
+      "decision": "distinct",
+      "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；S40-006的控制問題是孔隙水同位素擴散模式把殼體水溫與水源訊號分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-008",
+      "b": "E7016",
+      "decision": "distinct",
+      "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；E7016的控制問題是熔岩表面固結後內部排空留管。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-009",
+      "b": "N195",
+      "decision": "distinct",
+      "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；N195的控制問題是熱液與海水混合析出煙囪微粒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-009",
+      "b": "B2089",
+      "decision": "distinct",
+      "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；B2089的控制問題是化能自營將無機碳變為食物網物質。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-010",
+      "b": "LEG-S32",
+      "decision": "distinct",
+      "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；LEG-S32的控制問題是風化等供鹽與海洋鹽移除收支。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-010",
+      "b": "S40-006",
+      "decision": "distinct",
+      "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；S40-006的控制問題是孔隙水同位素擴散模式把殼體水溫與水源訊號分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S43-010",
+      "b": "N185",
+      "decision": "distinct",
+      "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；N185的控制問題是河流供應與潮汐混合決定河口水層。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "S43-005",
+        "b": "S43-001",
+        "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；S43-001的控制問題是局部固體蓋層限制下方浮性液體逸出。"
+      },
+      {
+        "a": "S43-001",
+        "b": "N096",
+        "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；N096的控制問題是人工補注含水層的入滲條件。"
+      },
+      {
+        "a": "S43-001",
+        "b": "S43-008",
+        "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；S43-008的控制問題是管內兩氣液界面受阻而把上端出泡改到側下方。"
+      },
+      {
+        "a": "S43-001",
+        "b": "D2090",
+        "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；D2090的控制問題是碎石斷毛細與防潮膜擋水汽分工。"
+      },
+      {
+        "a": "S43-001",
+        "b": "B4004",
+        "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；B4004的控制問題是空間兩側低透濕造成乾燥出口受阻。"
+      },
+      {
+        "a": "S43-002",
+        "b": "X40-002",
+        "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；X40-002的控制問題是充氣液柱的可壓縮性改變共振音高。"
+      },
+      {
+        "a": "S43-002",
+        "b": "F17004",
+        "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；F17004的控制問題是振動壓力與泡體積同相位作用使平均力向下。"
+      },
+      {
+        "a": "S43-002",
+        "b": "P311",
+        "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；P311的控制問題是超音波低壓造穴與崩潰。"
+      },
+      {
+        "a": "S43-002",
+        "b": "I12011",
+        "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；I12011的控制問題是壓差驅動相鄰泡跨膜交換，由面網幾何控制增減。"
+      },
+      {
+        "a": "S43-002",
+        "b": "P067",
+        "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；P067的控制問題是水頭壓差驅動不同位置的小孔射流。"
+      },
+      {
+        "a": "S43-003",
+        "b": "S40-009",
+        "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；S40-009的控制問題是冰底接地反覆覆寫沉積脊而漏刻潮數。"
+      },
+      {
+        "a": "S43-003",
+        "b": "N191",
+        "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；N191的控制問題是近岸水流從沙洲缺口集中往外。"
+      },
+      {
+        "a": "S43-003",
+        "b": "N244",
+        "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；N244的控制問題是熱膨脹造成水柱增高。"
+      },
+      {
+        "a": "S43-003",
+        "b": "S43-002",
+        "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；S43-002的控制問題是已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢。"
+      },
+      {
+        "a": "S43-003",
+        "b": "P32004",
+        "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；P32004的控制問題是深度不同處水躍、侵蝕及沉積使泥沙陡坡上溯。"
+      },
+      {
+        "a": "S43-004",
+        "b": "N088",
+        "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；N088的控制問題是抽水改變水頭使鹽水入侵。"
+      },
+      {
+        "a": "S43-004",
+        "b": "B2257",
+        "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；B2257的控制問題是魚跨滲透梯度調節鰓離子與飲水。"
+      },
+      {
+        "a": "S43-004",
+        "b": "S43-005",
+        "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；S43-005的控制問題是缺氧池下少大型動物翻攪使泥芯保存薄層。"
+      },
+      {
+        "a": "S43-004",
+        "b": "N184",
+        "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；N184的控制問題是流量與密度使鹹淡河口成層。"
+      },
+      {
+        "a": "S43-004",
+        "b": "S43-010",
+        "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；S43-010的控制問題是水氧同位素與離子比區分蒸濃入滲和溶解古鹽。"
+      },
+      {
+        "a": "S43-005",
+        "b": "E7022",
+        "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；E7022的控制問題是選擇性淘細留下粗顆粒護甲。"
+      },
+      {
+        "a": "S43-005",
+        "b": "E11002",
+        "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；E11002的控制問題是高低池底受保護程度不同導致侵蝕階梯。"
+      },
+      {
+        "a": "S43-005",
+        "b": "D2193",
+        "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；D2193的控制問題是設背景井比對場址下游污染。"
+      },
+      {
+        "a": "S43-005",
+        "b": "N096",
+        "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；N096的控制問題是人工補注含水層的入滲條件。"
+      },
+      {
+        "a": "S43-006",
+        "b": "W5022",
+        "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；W5022的控制問題是管內H₂S進氣相後於濕壁氧化成酸。"
+      },
+      {
+        "a": "S43-006",
+        "b": "W5010",
+        "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；W5010的控制問題是擴散耗氧形成微生物膜內外氧差。"
+      },
+      {
+        "a": "S43-006",
+        "b": "U8008",
+        "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；U8008的控制問題是絲狀電纜細菌跨層傳電子。"
+      },
+      {
+        "a": "S43-006",
+        "b": "D2014",
+        "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；D2014的控制問題是曝氣供應處理污水有機物所需的氧。"
+      },
+      {
+        "a": "S43-006",
+        "b": "D2016",
+        "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；D2016的控制問題是兩條處理線採用好氧與厭氧環境。"
+      },
+      {
+        "a": "S43-007",
+        "b": "O3067",
+        "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；O3067的控制問題是感測器熱遲滯造成鹽度假峰。"
+      },
+      {
+        "a": "S43-007",
+        "b": "S40-006",
+        "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；S40-006的控制問題是孔隙水同位素擴散模式把殼體水溫與水源訊號分開。"
+      },
+      {
+        "a": "S43-007",
+        "b": "O3070",
+        "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；O3070的控制問題是分箱平均與單點測溫對水層的代表性。"
+      },
+      {
+        "a": "S43-007",
+        "b": "N149",
+        "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；N149的控制問題是副熱帶下沉氣流形成乾燥高壓。"
+      },
+      {
+        "a": "S43-007",
+        "b": "LEG-S77",
+        "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；LEG-S77的控制問題是觸碰時傳熱速率不同，造成同溫異感。"
+      },
+      {
+        "a": "S43-008",
+        "b": "X40-003",
+        "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；X40-003的控制問題是凹槽填液改變氣流激音。"
+      },
+      {
+        "a": "S43-008",
+        "b": "X42-004",
+        "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；X42-004的控制問題是橢球顆粒在界面結網抑制外流搬運。"
+      },
+      {
+        "a": "S43-008",
+        "b": "W5013",
+        "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；W5013的控制問題是壓差反轉讓外水從既有裂孔進入。"
+      },
+      {
+        "a": "S43-008",
+        "b": "D2233",
+        "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；D2233的控制問題是以無菌氣體與壓差保護暫存液面。"
+      },
+      {
+        "a": "S43-008",
+        "b": "N169",
+        "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；N169的控制問題是可見凝結漏斗與實際接地渦流範圍不重合。"
+      },
+      {
+        "a": "S43-009",
+        "b": "B2330",
+        "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；B2330的控制問題是從環境攝取發光共生菌。"
+      },
+      {
+        "a": "S43-009",
+        "b": "S43-006",
+        "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；S43-006的控制問題是宿主兩端分取原料，後端吸收硫化物而能支持共生固碳。"
+      },
+      {
+        "a": "S43-009",
+        "b": "B2137",
+        "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；B2137的控制問題是水熊蟲利用蛻殼作產卵位置。"
+      },
+      {
+        "a": "S43-009",
+        "b": "V3076",
+        "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；V3076的控制問題是菌絲隔膜孔供小分子交換。"
+      },
+      {
+        "a": "S43-009",
+        "b": "U8008",
+        "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；U8008的控制問題是絲狀電纜細菌跨層傳電子。"
+      },
+      {
+        "a": "S43-010",
+        "b": "N088",
+        "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；N088的控制問題是抽水改變水頭使鹽水入侵。"
+      },
+      {
+        "a": "S43-010",
+        "b": "LEG-S32",
+        "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；LEG-S32的控制問題是風化等供鹽與海洋鹽移除收支。"
+      },
+      {
+        "a": "S43-010",
+        "b": "E17001",
+        "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；E17001的控制問題是蒸發與地下對流使鹽殼形成多邊形稜線。"
+      },
+      {
+        "a": "S43-010",
+        "b": "N184",
+        "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；N184的控制問題是流量與密度使鹹淡河口成層。"
+      },
+      {
+        "a": "S43-010",
+        "b": "N183",
+        "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；N183的控制問題是海水結冰排鹽到鄰水。"
+      },
+      {
+        "a": "S43-001",
+        "b": "N208",
+        "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；N208的控制問題是水柱重量使深處壓力大。"
+      },
+      {
+        "a": "S43-001",
+        "b": "S42-009",
+        "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；S42-009的控制問題是岩石熱慣性改變冰土界面深度。"
+      },
+      {
+        "a": "S43-001",
+        "b": "S43-002",
+        "reason": "S43-001問局部固體蓋層限制下方浮性液體逸出；S43-002的控制問題是已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢。"
+      },
+      {
+        "a": "S43-002",
+        "b": "P231",
+        "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；P231的控制問題是水升溫使溶解氣體的平衡濃度降低。"
+      },
+      {
+        "a": "S43-002",
+        "b": "S43-008",
+        "reason": "S43-002問已釋出的甲烷泡在不同壓溫與氣種對照下縮徑變慢；S43-008的控制問題是管內兩氣液界面受阻而把上端出泡改到側下方。"
+      },
+      {
+        "a": "S43-003",
+        "b": "N208",
+        "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；N208的控制問題是水柱重量使深處壓力大。"
+      },
+      {
+        "a": "S43-003",
+        "b": "S43-008",
+        "reason": "S43-003問潮汐卸載與海床氣泡羽流強峰的時間關係及例外；S43-008的控制問題是管內兩氣液界面受阻而把上端出泡改到側下方。"
+      },
+      {
+        "a": "S43-004",
+        "b": "B2089",
+        "reason": "S43-004問鹽水池面失能獵物形成可利用的取食界面；B2089的控制問題是化能自營將無機碳變為食物網物質。"
+      },
+      {
+        "a": "S43-005",
+        "b": "S40-009",
+        "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；S40-009的控制問題是冰底接地反覆覆寫沉積脊而漏刻潮數。"
+      },
+      {
+        "a": "S43-005",
+        "b": "N132",
+        "reason": "S43-005問缺氧池下少大型動物翻攪使泥芯保存薄層；N132的控制問題是以疊置與化石排列地層年代。"
+      },
+      {
+        "a": "S43-006",
+        "b": "B2089",
+        "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；B2089的控制問題是化能自營將無機碳變為食物網物質。"
+      },
+      {
+        "a": "S43-006",
+        "b": "U8017",
+        "reason": "S43-006問宿主兩端分取原料，後端吸收硫化物而能支持共生固碳；U8017的控制問題是夥伴清除氫等產物，促進其他微生物代謝。"
+      },
+      {
+        "a": "S43-007",
+        "b": "N195",
+        "reason": "S43-007問從出口流體的鐵錳比估計深處水岩反應溫度；N195的控制問題是熱液與海水混合析出煙囪微粒。"
+      },
+      {
+        "a": "S43-008",
+        "b": "E7016",
+        "reason": "S43-008問管內兩氣液界面受阻而把上端出泡改到側下方；E7016的控制問題是熔岩表面固結後內部排空留管。"
+      },
+      {
+        "a": "S43-009",
+        "b": "N195",
+        "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；N195的控制問題是熱液與海水混合析出煙囪微粒。"
+      },
+      {
+        "a": "S43-009",
+        "b": "B2089",
+        "reason": "S43-009問以顯微、元素與細胞定位辨識胞外硫絲網的可能來源；B2089的控制問題是化能自營將無機碳變為食物網物質。"
+      },
+      {
+        "a": "S43-010",
+        "b": "S40-006",
+        "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；S40-006的控制問題是孔隙水同位素擴散模式把殼體水溫與水源訊號分開。"
+      },
+      {
+        "a": "S43-010",
+        "b": "N185",
+        "reason": "S43-010問水氧同位素與離子比區分蒸濃入滲和溶解古鹽；N185的控制問題是河流供應與潮汐混合決定河口水層。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "S43-NA001",
+      "decision": "agree_not_added",
+      "reason": "礦物微粒隨混合析出與逐步堆成煙囪已收。",
+      "existing_ids": [
+        "N195"
+      ],
+      "reentry_condition": "需要不同觀測與可區分的假說。"
+    },
+    {
+      "id": "S43-NA002",
+      "decision": "agree_not_added",
+      "reason": "既有未收已含煙囪生長；白色礦物替換不足以另收。",
+      "existing_ids": [
+        "N195"
+      ],
+      "reentry_condition": "要能說明新的源區、反應或可驗證的界面。"
+    },
+    {
+      "id": "S43-NA003",
+      "decision": "agree_not_added",
+      "reason": "化能自營已收，這次只留管蟲能從身體不同端取得所需原料的雙室試驗。",
+      "existing_ids": [
+        "B2089"
+      ],
+      "reentry_condition": "需空間分隔的對照。"
+    },
+    {
+      "id": "S43-NA004",
+      "decision": "agree_not_added",
+      "reason": "觀測無法把缺氧和高鹽單獨定因，也未追蹤所有動物的死亡。",
+      "existing_ids": [
+        "S43-004"
+      ],
+      "reentry_condition": "須有獨立條件與存活測量。"
+    },
+    {
+      "id": "S43-NA005",
+      "decision": "agree_not_added",
+      "reason": "密度分層僅是背景，沒有做成新題。",
+      "existing_ids": [
+        "N185"
+      ],
+      "reentry_condition": "須額外解釋鹽源或生物與沉積記錄的特定差異。"
+    },
+    {
+      "id": "S43-NA006",
+      "decision": "agree_not_added",
+      "reason": "風暴洪流、地震等沉積來源並非只靠一層泥唯一可辨。",
+      "existing_ids": [
+        "S43-005"
+      ],
+      "reentry_condition": "需確切年代及其他事件來源資料。"
+    },
+    {
+      "id": "S43-NA007",
+      "decision": "agree_not_added",
+      "reason": "減慢溶解除不去其餘水柱的傳質。",
+      "existing_ids": [
+        "S43-002"
+      ],
+      "reentry_condition": "需直接約束整段運移和海氣通量。"
+    },
+    {
+      "id": "S43-NA008",
+      "decision": "agree_not_added",
+      "reason": "聲納泡羽顯示機率與強度變動，不能作固定質量換算。",
+      "existing_ids": [
+        "S43-003"
+      ],
+      "reentry_condition": "須有定量通量和多站點校準。"
+    },
+    {
+      "id": "S43-NA009",
+      "decision": "agree_not_added",
+      "reason": "地震、泥沙堆積、潮汐強弱不可混同；舊退題已列。",
+      "existing_ids": [
+        "P32001",
+        "P32002"
+      ],
+      "reentry_condition": "需能分出先後及成因的對照。"
+    },
+    {
+      "id": "S43-NA010",
+      "decision": "agree_not_added",
+      "reason": "溫度、氣體種類、濃度與成核都重要；重述壓力定義不足。",
+      "existing_ids": [
+        "N208",
+        "S43-001",
+        "S43-002"
+      ],
+      "reentry_condition": "取得有相邊界或成核對照的新增現象。"
+    },
+    {
+      "id": "S43-NA011",
+      "decision": "agree_not_added",
+      "reason": "相似外觀不能證明在較大尺度連通。",
+      "existing_ids": [
+        "S43-008"
+      ],
+      "reentry_condition": "需追蹤同一管界面與出口或獨立示蹤。"
+    },
+    {
+      "id": "S43-NA012",
+      "decision": "agree_not_added",
+      "reason": "原研究索引談遠距離鐵－粒子交換；全文路線目前受限，且非濃度不變。",
+      "existing_ids": [
+        "S43-007"
+      ],
+      "reentry_condition": "先取得可獨立檢視的剖面數據與替代來源。"
+    },
+    {
+      "id": "S43-NA013",
+      "decision": "agree_not_added",
+      "reason": "讀到黑煙囪聲學原文，幾種聲源與共鳴皆可能，不夠作單值流量計。",
+      "existing_ids": [
+        "P129",
+        "D9012"
+      ],
+      "reentry_condition": "若能獨立量流並分離聲源幾何效應再提。"
+    },
+    {
+      "id": "S43-NA014",
+      "decision": "agree_not_added",
+      "reason": "形狀不能取代顯微結構、成分與細胞辨識。",
+      "existing_ids": [
+        "S43-009"
+      ],
+      "reentry_condition": "需該處樣本的獨立驗證。"
+    },
+    {
+      "id": "S43-NA015",
+      "decision": "agree_not_added",
+      "reason": "只確認局部現象，未量出整層厚度與面積。",
+      "existing_ids": [
+        "S43-001"
+      ],
+      "reentry_condition": "需完整地球物理及流體約束。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W43S-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 76,
+      "chapter_seconds": [
+        29,
+        47
+      ],
+      "core_totals": {
+        "S43-001": 76
+      },
+      "core_caps": {
+        "S43-001": 88
+      },
+      "maximum_beat_seconds": 24,
+      "drop_if_read": "若畫面未能分開液滴和固體層，或把整池剖面畫作實拍，撤案。刪一章剩47或29秒。",
+      "editorial_result": "自然白斑與新孔放在同一張前後圖，再引出固體與浮性液滴的不同性質，保留為可漏的蓋層。",
+      "timing_result": "ROOT_SAMPLE_VOICE_PLUS_VISUAL_ALLOWANCE"
+    },
+    {
+      "id": "W43S-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 67,
+      "chapter_seconds": [
+        36,
+        31
+      ],
+      "core_totals": {
+        "S43-002": 36,
+        "S43-008": 31
+      },
+      "core_caps": {
+        "S43-002": 80,
+        "S43-008": 64
+      },
+      "maximum_beat_seconds": 19,
+      "drop_if_read": "若沒有上浮直徑曲線或同框兩出口就拆回36與31秒單段。",
+      "editorial_result": "兩個明確分開的場景：界面結皮會改變上浮泡的溶解，也可改變天然管的出口位置。圖須標不同地方、不同試驗。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W43S-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 62,
+      "chapter_seconds": [
+        30,
+        32
+      ],
+      "core_totals": {
+        "S43-004": 30,
+        "S43-005": 32
+      },
+      "core_caps": {
+        "S43-004": 67,
+        "S43-005": 72
+      },
+      "maximum_beat_seconds": 17,
+      "drop_if_read": "若無法標示蝦在池面上方以及泥芯在池底，撤合題；兩章可分留30與32秒。",
+      "editorial_result": "同一界面上方的取食與下方的薄層都能回應看似矛盾的棲位，需標生物及取芯相對位置。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W43S-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 62,
+      "chapter_seconds": [
+        29,
+        33
+      ],
+      "core_totals": {
+        "S43-006": 62
+      },
+      "core_caps": {
+        "S43-006": 87
+      },
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "沒有密封分室或無硫對照就撤案。刪一章剩33或29秒，不再能檢驗後端能否供硫。",
+      "editorial_result": "分室、供料對照和體液／攝碳，順序能把一般化能共生問題轉為輸送問題。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W43S-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 54,
+      "chapter_seconds": [
+        28,
+        26
+      ],
+      "core_totals": {
+        "S43-010": 54
+      },
+      "core_caps": {
+        "S43-010": 70
+      },
+      "maximum_beat_seconds": 16,
+      "drop_if_read": "若只剩一張鹽度圖而無水同位素的預測與樣本，各剩26或28秒且應撤案。",
+      "editorial_result": "相等鹽度不能判來源，重氧的不同預測讓最後離子交叉比對有理由。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    }
+  ],
+  "corrections": {
+    "before_files": [
+      {
+        "file": "batches/wave43-earth.json",
+        "sha256": "b2a69f71ebc78698f86a7bb3f1bd2e5bfd2b6824e83b5bd0f59012b656e70956"
+      },
+      {
+        "file": "reviews/wave43-earth-themes.json",
+        "sha256": "05774c7d3a04726f85b910e52f66de09a773c17bb88e40d8f6e9a1d1c8e5a24a"
+      },
+      {
+        "file": "reviews/wave43-earth-author.json",
+        "sha256": "f8babbe850dc7327964eace54976594fe72db63b63661c156f8e007beccfd817"
+      }
+    ],
+    "changes": [
+      "S43-001及T01分出原白斑少量滲滴、新取芯孔持續逸滴；樣稿同步，初版三段讀時是修前版本。",
+      "S43-002及T02明確是不同深度各別釋泡再追隨，非一顆泡上浮到更深。",
+      "S43-006及T04限游離硫化物，海水不等於沒有硫元素。"
+    ],
+    "targeted_readback": "三個必要修正均已讀回題欄和相關章節。T01重讀過，T02標兩批獨立放泡，T04只稱游離硫化物。"
+  },
+  "first_retrieval": {
+    "neighbours": {
+      "file": ".cache/wave43-life-review-earth-snapshot.json",
+      "sha256": "b2a779f15a10f926402e1ce77d3b2f4e1e792de30ff3c4709a0f12175674551a"
+    },
+    "draft_sha256": "711f07fb93399b949c2fd8b51b4efc41deff24da45ba9f906abfdbccbcfe64fb"
+  },
+  "draft_sha256": "9eb717d8a04a7f1176bbfa46ecac8b2d042a4bcf70d72131c15d97eb24df7d81",
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "9eb717d8a04a7f1176bbfa46ecac8b2d042a4bcf70d72131c15d97eb24df7d81",
+    "neighbours": {
+      "file": ".cache/wave43-earth-neighbours.json",
+      "sha256": "39f86785778c9ed34f16cea032b514f42a2ed1d212516e4201cdabc6e5e49266"
+    },
+    "directed_pairs": 50,
+    "new_neighbours_after_revisions": {
+      "S43-001": [
+        "B4004",
+        "S43-008"
+      ],
+      "S43-002": [
+        "I12011",
+        "P311"
+      ],
+      "S43-003": [],
+      "S43-004": [],
+      "S43-005": [],
+      "S43-006": [
+        "D2016"
+      ],
+      "S43-007": [],
+      "S43-008": [],
+      "S43-009": [],
+      "S43-010": []
+    },
+    "readback": "逐一讀新納入的 S43-008、B4004、P311、I12011、D2016 答案與範圍，無同核心。"
+  },
+  "timing_probe": {
+    "file": ".cache/wave43-earth-read.json",
+    "sha256": "b48ab02d881cc57488ee63d3538a21ede763b83a43273ecf3875f4cd5dcd4581",
+    "continuous_wav": {
+      "file": ".cache/wave43-earth-read-3.wav",
+      "sha256": "9832b75950a619da8904ebe4bf56775042bd26a3c151b2aa9f9d61aa05949932"
+    },
+    "read_seconds": 68.768,
+    "plan_seconds": 76,
+    "visual_allowance_seconds": 7.232,
+    "scope": "根代理離線三段連讀，本審核核對文本、WAV雜湊與時長；另四案紙上估時。"
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "題級作者綁定與可剪性判斷，未作整片畫面或逐句稿驗收。"
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "root",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "bc47898aa60c073f76ba9f8a6602c3e5b92f1d60",
+    "selected": 2997,
+    "raw_records": 3366,
+    "themes": 215,
+    "not_added": 960,
+    "pool_sha256": "f378bcb5ce2666cbf213e8389672321fc4362939a80ea4f98a019fe5dbb9d08e"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave21-space.json",
+      "sha256": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b"
+    },
+    {
+      "file": "reviews/wave21-space-themes.json",
+      "sha256": "c33569dda162bd6e23d457e65b6c62558cac2ec599bca98c4b67528300b384b5"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 5,
+    "not_added": 8,
+    "near_pairs": 12,
+    "themes": 4
+  },
+  "dedup_reading": {
+    "method": "檢索既有raw/NA完整欄位；指定近對讀完整問答與範圍，未重讀全部3366題。",
+    "scan_file": ".cache/wave21-space-old-scan.json",
+    "scan_sha256": "41ff973ab69fcd81f7a0ff8d3a1c3452eaaf0b290e4af9aa8a6606b7725d2e4e",
+    "queries": [
+      "飛輪|反作用輪|動量輪|磁力矩|去飽和|推進劑|離子引擎|離子推進|星敏感|百葉|熱控",
+      "火箭|太空船|太空艇|衛星|陀螺|角動量|噴射|雙金屬",
+      "毛細|氣泡|濾膜|靜電|中和|排斥|反作用|回授|自由落體|失重"
+    ]
+  },
+  "near_pairs": [
+    {
+      "a": "R21001",
+      "b": "P030",
+      "decision": "propose_distinct",
+      "reason": "舊理想固定形狀題只分內外角動量交換；本題保留有限儲存逼限時，如何卸載而不丟指向的雙致動控制。若只講交換就合舊題。",
+      "a_snapshot": {
+        "question": "輪子還在轉，衛星為什麼不能一直靠它穩住方向？",
+        "answer_target": "反作用輪能把擾動帶來的角動量暫存起來；持續同向擾動會耗掉輪速餘裕。只在船內減速會把角動量還給船，需配合推力器或磁力矩器的外部力矩，才能卸載又維持指向。",
+        "scope": "限有限輪速下的持續擾動與卸載；不把速度飽和說成所有方向失去控制。磁力矩只在外部磁場允許的方向/環境有效，不承諾深空通用。"
+      },
+      "b_snapshot": {
+        "question": "外界沒有扭力時，正在轉的東西為什麼不會自己停？",
+        "answer_target": "速度衰減需有淨外力矩或系統內角動量交換。",
+        "scope": "物體形狀固定的理想模型"
+      }
+    },
+    {
+      "a": "R21001",
+      "b": "P314",
+      "decision": "propose_distinct",
+      "reason": "舊為轉椅扭轉輪子方向，本題為固定軸輪速容量與外部卸載；不是再演示船向反方向轉。",
+      "a_snapshot": {
+        "question": "輪子還在轉，衛星為什麼不能一直靠它穩住方向？",
+        "answer_target": "反作用輪能把擾動帶來的角動量暫存起來；持續同向擾動會耗掉輪速餘裕。只在船內減速會把角動量還給船，需配合推力器或磁力矩器的外部力矩，才能卸載又維持指向。",
+        "scope": "限有限輪速下的持續擾動與卸載；不把速度飽和說成所有方向失去控制。磁力矩只在外部磁場允許的方向/環境有效，不承諾深空通用。"
+      },
+      "b_snapshot": {
+        "question": "坐在轉椅上扭轉旋轉中的輪子，為什麼椅子會跟著轉？",
+        "answer_target": "輪子的角動量方向改變，透過反向力矩把角動量交換給人與椅。",
+        "scope": "來源直接記載的示範；與收手加速的轉動慣量機制不同。"
+      }
+    },
+    {
+      "a": "R21001",
+      "b": "P027",
+      "decision": "propose_distinct",
+      "reason": "舊為收手改轉動慣量，新為外擾持續累積/有限輪速容量，沒有改慣量。",
+      "a_snapshot": {
+        "question": "輪子還在轉，衛星為什麼不能一直靠它穩住方向？",
+        "answer_target": "反作用輪能把擾動帶來的角動量暫存起來；持續同向擾動會耗掉輪速餘裕。只在船內減速會把角動量還給船，需配合推力器或磁力矩器的外部力矩，才能卸載又維持指向。",
+        "scope": "限有限輪速下的持續擾動與卸載；不把速度飽和說成所有方向失去控制。磁力矩只在外部磁場允許的方向/環境有效，不承諾深空通用。"
+      },
+      "b_snapshot": {
+        "question": "坐轉椅收回張開的手臂，為什麼會轉得更快？",
+        "answer_target": "減少轉動慣量時，角動量守恆要求角速度增加。",
+        "scope": "低摩擦轉椅、不宣稱實測"
+      }
+    },
+    {
+      "a": "R21002",
+      "b": "P057",
+      "decision": "propose_distinct",
+      "reason": "舊紙巾孔隙毛細傳播沒有供液壓損與氣體突破門檻的競爭。",
+      "a_snapshot": {
+        "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+        "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+        "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。"
+      },
+      "b_snapshot": {
+        "question": "紙巾吸水和水滴黏在玻璃上，是同一件事嗎？",
+        "answer_target": "紙巾孔隙網路讓毛細作用傳播，附著只是機制的一部分。",
+        "scope": "不延伸生物纖維結構細節"
+      }
+    },
+    {
+      "a": "R21002",
+      "b": "I12002",
+      "decision": "propose_distinct",
+      "reason": "共用毛細入口門檻概念；新題必須保留細網同時提高供液流阻的設計權衡，若只有入口門檻則同核合併。",
+      "a_snapshot": {
+        "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+        "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+        "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。"
+      },
+      "b_snapshot": {
+        "question": "原本很會滾水珠的粗糙表面，為什麼一次撞擊後反而黏住水？",
+        "answer_target": "空氣口袋可把液滴托在紋理頂端；壓力跨過幾何門檻使液體侵入空隙，接觸狀態和回復路徑便改變。",
+        "scope": "限具有可維持含氣狀態的疏水紋理；壓力門檻隨形狀改變，不稱所有粗糙表面或所有撞擊必然失效。"
+      }
+    },
+    {
+      "a": "R21002",
+      "b": "W5028",
+      "decision": "propose_distinct",
+      "reason": "舊固體顆粒濾餅/錯流沖刷，新為已潤濕網的氣相突破與液相壓損，沒有顆粒堆積。",
+      "a_snapshot": {
+        "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+        "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+        "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。"
+      },
+      "b_snapshot": {
+        "question": "水要穿過濾膜，為什麼有些系統卻先讓它沿著膜面流？",
+        "answer_target": "死端過濾讓截留顆粒在膜面累積；錯流把進水沿膜面帶過，以流動沖刷減少沉積並由濃縮支流帶走部分截留物。",
+        "scope": "限定教材所述顆粒沉積與兩種水力路徑；錯流不消除所有污損，不把旁流量或剪切越大說成越省能。"
+      }
+    },
+    {
+      "a": "R21003",
+      "b": "E2006",
+      "decision": "propose_distinct",
+      "reason": "舊說導電體電荷是否能連外流失，新為持續正離子輸出導致自生電位與推進回吸，靠第二粒子路徑閉合電荷流。",
+      "a_snapshot": {
+        "question": "離子引擎已把帶電粒子噴出去，為什麼還要再噴電子？",
+        "answer_target": "正離子離開時若沒有對應電子排出，機體會累積負電，逐漸把正離子吸回。中和器供應電子讓排氣束總電荷接近平衡，避免這條回吸路徑抵銷推進並侵蝕機體。",
+        "scope": "限所讀有網格與獨立中和器的離子推進架構。整束近中性不是所有離子逐一復合；也不是中和會把已給粒子的動量取消。無精確失效時間或數值性能推論。"
+      },
+      "b_snapshot": {
+        "question": "金屬很會導電，是否就永遠無法保留靜電？",
+        "answer_target": "導電性使電荷重新分布；是否流失另由連外路徑與環境決定。",
+        "scope": "導體與環境絕緣；不沿用教材將導體概括成無法留電的說法"
+      }
+    },
+    {
+      "a": "R21003",
+      "b": "E2007",
+      "decision": "propose_distinct",
+      "reason": "舊距離平方力律不能獨自回答發射粒子後機體電位如何反過來阻礙發射；本題保留動態電荷帳。",
+      "a_snapshot": {
+        "question": "離子引擎已把帶電粒子噴出去，為什麼還要再噴電子？",
+        "answer_target": "正離子離開時若沒有對應電子排出，機體會累積負電，逐漸把正離子吸回。中和器供應電子讓排氣束總電荷接近平衡，避免這條回吸路徑抵銷推進並侵蝕機體。",
+        "scope": "限所讀有網格與獨立中和器的離子推進架構。整束近中性不是所有離子逐一復合；也不是中和會把已給粒子的動量取消。無精確失效時間或數值性能推論。"
+      },
+      "b_snapshot": {
+        "question": "兩個帶電小物體離遠一點，推拉力為什麼可能掉得很快？",
+        "answer_target": "點電荷靜電力依距離平方反比變化，不是距離增加多少就只減少多少。",
+        "scope": "物體尺寸遠小於間距；電荷量固定"
+      }
+    },
+    {
+      "a": "R21003",
+      "b": "E2021",
+      "decision": "propose_distinct",
+      "reason": "舊靜電平衡時表面分布不含持續帶電束輸出和中和控制。",
+      "a_snapshot": {
+        "question": "離子引擎已把帶電粒子噴出去，為什麼還要再噴電子？",
+        "answer_target": "正離子離開時若沒有對應電子排出，機體會累積負電，逐漸把正離子吸回。中和器供應電子讓排氣束總電荷接近平衡，避免這條回吸路徑抵銷推進並侵蝕機體。",
+        "scope": "限所讀有網格與獨立中和器的離子推進架構。整束近中性不是所有離子逐一復合；也不是中和會把已給粒子的動量取消。無精確失效時間或數值性能推論。"
+      },
+      "b_snapshot": {
+        "question": "加到金屬裡的多餘電荷，為什麼最後常跑到表面？",
+        "answer_target": "靜電平衡時導體本體內無淨體電荷，多餘電荷分布在邊界表面。",
+        "scope": "無內部帶電物的實心或空腔導體模型"
+      }
+    },
+    {
+      "a": "R21004",
+      "b": "O3062",
+      "decision": "propose_distinct",
+      "reason": "舊以加速度計資料校正測距，這裡主動推船追參考質量；量到後扣除與控制受力對象不同。",
+      "a_snapshot": {
+        "question": "要讓艙內方塊自由落下，為什麼反而得不停推太空船？",
+        "answer_target": "陽光等非重力擾動會推動外殼，讓外殼相對參考方塊偏移；感測器讀出這個偏移，微推力器調整船身追隨方塊，減少沿敏感方向直接拉住方塊的需要。",
+        "scope": "限LISA Pathfinder的拖曳補償概念與單一敏感方向；重力仍在，近自由落體不是絕對無力。兩質量/其他自由度另有控制，不畫成兩塊在所有方向完全不受作用。"
+      },
+      "b_snapshot": {
+        "question": "衛星軌道變了，怎麼分清是地下水變少，還是太陽把衛星推了一下？",
+        "answer_target": "高敏加速度計記錄阻力與輻射壓等非重力作用，配合測距分離重力訊號。",
+        "scope": "GRACE 類衛星的非重力加速度觀測；加速度計是分離流程的一環，不宣稱單獨能唯一解出地下水。"
+      }
+    },
+    {
+      "a": "R21004",
+      "b": "LEG-S80",
+      "decision": "propose_distinct",
+      "reason": "舊共同自由落體解釋漂浮，新把外殼非重力受擾與自由參考質量分開，靠推船減少直接推方塊。",
+      "a_snapshot": {
+        "question": "要讓艙內方塊自由落下，為什麼反而得不停推太空船？",
+        "answer_target": "陽光等非重力擾動會推動外殼，讓外殼相對參考方塊偏移；感測器讀出這個偏移，微推力器調整船身追隨方塊，減少沿敏感方向直接拉住方塊的需要。",
+        "scope": "限LISA Pathfinder的拖曳補償概念與單一敏感方向；重力仍在，近自由落體不是絕對無力。兩質量/其他自由度另有控制，不畫成兩塊在所有方向完全不受作用。"
+      },
+      "b_snapshot": {
+        "question": "太空人一直往下掉，為什麼沒撞上地球？",
+        "answer_target": "太空站與艙內物件共同自由落體，橫向運動與地球曲率形成繞地軌道。",
+        "scope": "微重力不等於引力場不存在。；不用來源舊太空梭數字代表所有軌道。"
+      }
+    },
+    {
+      "a": "R21004",
+      "b": "E2214",
+      "decision": "propose_distinct",
+      "reason": "共用回饋概念，但此題重點為選擇受控對象以隔離受測質量的非重力作用，不是放大增益設定。",
+      "a_snapshot": {
+        "question": "要讓艙內方塊自由落下，為什麼反而得不停推太空船？",
+        "answer_target": "陽光等非重力擾動會推動外殼，讓外殼相對參考方塊偏移；感測器讀出這個偏移，微推力器調整船身追隨方塊，減少沿敏感方向直接拉住方塊的需要。",
+        "scope": "限LISA Pathfinder的拖曳補償概念與單一敏感方向；重力仍在，近自由落體不是絕對無力。兩質量/其他自由度另有控制，不畫成兩塊在所有方向完全不受作用。"
+      },
+      "b_snapshot": {
+        "question": "放大器把一部分輸出送回輸入，為什麼反而更容易控制？",
+        "answer_target": "高開迴路增益配合負回授修正差值，閉迴路增益由網路設定。",
+        "scope": "線性且穩定、輸入輸出未超範圍。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "R21-S001",
+      "scope": "§5.2.2 Reaction Wheels、§5.2.3 Magnetic Torquers、§5.2.4 Thrusters；抽文73、79–90、96–97。",
+      "cache": {
+        "file": ".cache/wave21-space-gnc.html",
+        "sha256": "487fbe0087deb23467403bc14a9901d3382c95bb533cc0bd70660292ddda6b22",
+        "text_file": ".cache/wave21-space-gnc.txt",
+        "text_sha256": "ae0c2826a8174e03ddfa6234f85d47887a76bec95825132d8c0f4c98238a6140"
+      }
+    },
+    {
+      "source_id": "R21-S002",
+      "scope": "PDF p5 Introduction；p6硬體；pp8–10方法、結果/限制與Table1；p12結論；p7 Fig2/3及p10 Table1目讀。",
+      "cache": {
+        "file": ".cache/wave21-space-lad.pdf",
+        "sha256": "bf1fae9f19995f1a1e1a22d652793e954c9bc0009d572ec4b69c77ae5c843ee2",
+        "text_file": ".cache/wave21-space-lad.txt",
+        "text_sha256": "f470c7eb226c38b7b0a7d34a875d77dbda5a45146e6d0fe89218403e57353aa3"
+      }
+    },
+    {
+      "source_id": "R21-S003",
+      "scope": "PDF p1 How Does an Ion Thruster Work? 電離、網格與neutralizer三段；p2只核版本及歷史界線；p1版面目讀。",
+      "cache": {
+        "file": ".cache/wave21-space-ion.pdf",
+        "sha256": "946a8f706cbd4a759ef42047303607662d56d82d9617db7bd163bbebac0015c8",
+        "text_file": ".cache/wave21-space-ion.txt",
+        "text_sha256": "8354672b1e6112d69e45794f2cf84c9b217ba4e7e1ba5f666d17d5687d501be6"
+      }
+    },
+    {
+      "source_id": "R21-S004",
+      "scope": "抽文4–5、12–16、20：任務性質、慣性感測器—微推力器控制與兩質量；其餘概述閱讀不作性能宣稱。",
+      "cache": {
+        "file": ".cache/wave21-space-lisa.html",
+        "sha256": "411ca6a808b2edc18b41947a8612f4ce07a5424346c4c91bfea270bd22e2ae00",
+        "text_file": ".cache/wave21-space-lisa.txt",
+        "text_sha256": "a08f756d887784e6067b278f50bee4d3f1c5b855a0399c8d32f2a5cc1eb085f9"
+      }
+    },
+    {
+      "source_id": "R21-S005",
+      "scope": "抽文3–5釋放；7–12由靜電控制轉為敏感軸不施加靜電力、微推力器讓船跟隨方塊；14操作界線。",
+      "cache": {
+        "file": ".cache/wave21-space-lisa2016.html",
+        "sha256": "501ba5a9253182b90f1ed90d11000d42ac42e98a2f2d4a580426cac1d046b606",
+        "text_file": ".cache/wave21-space-lisa2016.txt",
+        "text_sha256": "db50228acca6b48b16b05b5396b6124e854d9835e9fb579fac0b6cfaba804ea9"
+      }
+    }
+  ],
+  "visual_readings": [
+    {
+      "file": ".cache/wave21-space-lad-p7.png",
+      "sha256": "10ddc62237d34f548cf88d4ada2e5fa31abe1716da9f9b0603057edf7bce7798"
+    },
+    {
+      "file": ".cache/wave21-space-lad-p10.png",
+      "sha256": "44acf325a1f2bcc914757b0f0f52f1ccd918909a096b3186643317b93e1c809e"
+    },
+    {
+      "file": ".cache/wave21-space-ion-p1.png",
+      "sha256": "4f39dedb687810cdbb16d65e22e8866a8c6e59a14d6e9bfac49c15bae6fc06ca"
+    }
+  ],
+  "source_identity_notes": [
+    "S004/S005同一任務的互補官方說明，不當兩次獨立實驗。",
+    "NASA2015 ion資料只採穩定機制，拒把舊current/future寫成今日狀態。"
+  ],
+  "limits": [
+    "四題均未非作者覆核，新增計數由root整合後才成立。",
+    "未模擬、試讀或製作；80–110秒短題案不直接當成正式長片。",
+    "R21001與P030/P314、R21002與I12002為高風險重複邊界，交非作者嚴判，可合併。"
+  ],
+  "prior_not_added_readback": {
+    "rows_read": 31,
+    "high_risk": "W5-NA05的濕膜完整性判別仍缺擴散/破孔分離證據，本輪不復活該問法；R21002只收液體獲取的門檻與供液壓損權衡。I12-NA04/P057已有單純毛細輸運的黏滯變慢，不以管長另收。",
+    "status": "READ_MATCHED_ROWS_NOT_ALL_960"
+  },
+  "revision_history": [
+    {
+      "reason": "非作者pool_physics提議去重述：T02刪15秒、T04刪10秒，維持主機制與條件，不補旁支。",
+      "prior_sha256": {
+        "batches/wave21-space.json": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b",
+        "reviews/wave21-space-themes.json": "032c3f49055c34c2aff68c3829bbe389291321acf2c0a93adc2fae0345377f7f",
+        "reviews/wave21-space-author.json": "287eab25592277d6c51469dabafb87446e9913d9f884025dcae6de927242c421"
+      },
+      "removed_seconds": 25,
+      "theme_seconds": {
+        "W21R-T01": 110,
+        "W21R-T02": 90,
+        "W21R-T03": 80,
+        "W21R-T04": 90
+      }
+    }
+  ]
+}

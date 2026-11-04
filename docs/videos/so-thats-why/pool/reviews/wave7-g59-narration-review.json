@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "author": "root",
+  "role": "INDEPENDENT_NARRATION_TEXT_SOURCE_AND_ARITHMETIC_REVIEW",
+  "status": "PASS_TEXT_DRAFT_REQUIRES_ACTUAL_READ_ALOUD_NOT_PRODUCTION_APPROVAL",
+  "theme_id": "G59",
+  "reviewed_files": [
+    {
+      "path": "treatments/G59/narration-draft.json",
+      "sha256": "70ff154bed6de44b0ab9eb344c9e9242e1e4adfeceef11a4b3519f46326ac923"
+    },
+    {
+      "path": "treatments/G59/treatment.json",
+      "sha256": "91ff5c96372b2f62052fad21af62cd420576b82b9644958c1aafa48ab08240c5"
+    },
+    {
+      "path": "treatments/G59/demo.js",
+      "sha256": "908a8143c3543966e0e764c59891334169c1c6af147d6bae9c0f1e98f0396c67"
+    },
+    {
+      "path": "reviews/wave6-g59-demo.json",
+      "sha256": "de578c0ccd5ecfe1f95e6a6964195f4df4abfd29401be0435f1e961a5f78dfd5"
+    },
+    {
+      "path": "reviews/wave6-g59-independent-review.json",
+      "sha256": "ec4d8ff539f51a28dc4abc4f2b464e5c3e79cfa54c7e2973136a7dfceafbffd0"
+    }
+  ],
+  "read_scope": [
+    "完整4節12段旁白、各段畫面指示、主張IDs、文字數、預算與限制逐項閱讀。",
+    "重開RFC官方HTML指定正文，而非僅沿用wave6來源核准。",
+    "讀demo.js中的序列與算術；核對兩份wave6既有收據及treatment引用hash，未重跑原測試或瀏覽器。",
+    "本輪另用Python獨立計算本文序列/兩個正數聲道例及負奇數邊界；只驗算術，不宣稱編碼音訊。"
+  ],
+  "source_review": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+      "publisher": "RFC Editor / IETF",
+      "version": "RFC9639, December 2024",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find官方HTML正文",
+      "reading_scope": "§2算術位移；§4.2–4.4（L298–332）mid/side、奇偶還原、預測與殘差編碼；§9.2.5 Table20及warm-up/逐點解碼（L809–839）。非全文逐條查核。",
+      "summary": "已知預測規則加精確殘差可重建取樣；平均取整的最低位可從左右差的奇偶恢復。可逆不等於必定省位元。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "paragraph_results": [
+    {
+      "beat": "b1",
+      "paragraphs": [
+        1,
+        2,
+        3
+      ],
+      "result": "SUPPORTED_WITH_EXAMPLE_SCOPE",
+      "source_locators": [
+        "§4.3",
+        "§9.2.5 Table20/order1及warm-up"
+      ],
+      "finding": "起點100、殘差1/2及前點預測相符；規則需解碼雙方知道，不表示把固定預測器公式逐次存入檔案。"
+    },
+    {
+      "beat": "b2",
+      "paragraphs": [
+        1,
+        2,
+        3
+      ],
+      "result": "SUPPORTED_AFTER_WORDING_CORRECTION",
+      "source_locators": [
+        "§4.4",
+        "§9.2.5"
+      ],
+      "finding": "只說可能較短；故意改殘差的反例限這一階六點模型，不冒稱FLAC損壞檔或所有預測器的錯誤傳播。"
+    },
+    {
+      "beat": "b3",
+      "paragraphs": [
+        1,
+        2,
+        3
+      ],
+      "result": "SUPPORTED_AFTER_NARRATIVE_BRIDGE_CORRECTION",
+      "source_locators": [
+        "§4.2"
+      ],
+      "finding": "新稿明說平均與左右差，並補相近聲道的動機；6/2的平均4、差4、和8及左右還原正確。右側算式由畫面承接。"
+    },
+    {
+      "beat": "b4",
+      "paragraphs": [
+        1,
+        2,
+        3
+      ],
+      "result": "SUPPORTED_WITH_STATED_INTEGER_RULE",
+      "source_locators": [
+        "§2",
+        "§4.2"
+      ],
+      "finding": "6/3的floor平均4及奇差3補回和9正確；整數和差同奇偶是一般恆等式。沒有聲稱丟掉一半音訊資料。"
+    }
+  ],
+  "arithmetic_execution": {
+    "method": "Python -X utf8 stdin，原創獨立計算；沒有呼叫或改寫作者demo測試檔。",
+    "original_sequence": [
+      100,
+      101,
+      103,
+      102,
+      104,
+      105
+    ],
+    "residuals": [
+      1,
+      2,
+      -1,
+      2,
+      1
+    ],
+    "first_residual_changed_to_zero_reconstruction": [
+      100,
+      100,
+      102,
+      101,
+      103,
+      104
+    ],
+    "offsets": [
+      0,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "stereo_pairs_checked": [
+      {
+        "left": 6,
+        "right": 2,
+        "mid": 4,
+        "side": 4,
+        "recovered": [
+          6,
+          2
+        ]
+      },
+      {
+        "left": 6,
+        "right": 3,
+        "mid": 4,
+        "side": 3,
+        "recovered": [
+          6,
+          3
+        ]
+      },
+      {
+        "left": -6,
+        "right": -3,
+        "mid": -5,
+        "side": -3,
+        "recovered": [
+          -6,
+          -3
+        ]
+      }
+    ],
+    "result": "PASS_FOR_LISTED_EXAMPLES_ONLY",
+    "not_run": [
+      "原作者65536/49/128/4組測試",
+      "wave6獨立oracle全組",
+      "FLAC bitstream/CRC/編碼位元長度",
+      "UI/音訊/人類試讀"
+    ]
+  },
+  "resolved_findings": [
+    {
+      "id": "G59N-01",
+      "location": "beats[b2].paragraphs[1]",
+      "initial": "第二點之後剩下五點可能被聽成另五點。",
+      "resolution": "明示從第二點起五點；六點序列只有第一點維持原值。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "G59N-02",
+      "location": "beats[b3].paragraphs",
+      "initial": "直接進平均/差代數，缺與壓縮目的的因果連接。",
+      "resolution": "補左右接近時差值可能好寫、明稱平均；右聲道重複口述移到畫面，未加長預算。",
+      "status": "RESOLVED"
+    }
+  ],
+  "duration_review": {
+    "body_budget_seconds": 130,
+    "beat_budgets_seconds": [
+      35,
+      30,
+      30,
+      35
+    ],
+    "characters_recounted": [
+      133,
+      118,
+      124,
+      131
+    ],
+    "total_characters": 506,
+    "core_totals_seconds": {
+      "M5004_via_M5008": 65,
+      "M5009": 65
+    },
+    "max_new_beat_gap_seconds": 35,
+    "assessment": "文字層面無靠重複例子補時；兩核心各65秒，低於前版treatment各70秒配置，也低於來源素材editorial各80秒上限。b3約27.6秒粗估僅留2.4秒看算式，是否能懂必須實際試讀/看圖後決定，不認定130秒已可演出。",
+    "read_aloud": "NOT_PERFORMED",
+    "blind_listen": "NOT_PERFORMED",
+    "recorded_audio": "NONE",
+    "required_next_gate": "實際試讀並記各段耗時和卡點；若數字/奇偶段太趕優先簡化畫面或句子，不硬加到長片。",
+    "previous_treatment_allocation_each_seconds": 70,
+    "source_editorial_cap_each_seconds": 80
+  },
+  "listener_assessment": {
+    "basis": "另一代理閱讀完整連續文字與視覺順序，未真人聽測；我曾審過原treatment，因此不稱完全無背景盲讀。",
+    "strength": "錯猜仍可還原→差值改錯會失真→平均似乎丟半格→奇偶追回，疑問逐層改變。",
+    "remaining_execution_risks": [
+      "完整旁白只示正數，負數不必硬塞，但任何後續負數動畫須保持floor規則。",
+      "平均與差仍是兩個儲存值；畫面不得變成單聲道或宣稱資料量減半。",
+      "文字數/4.5只是粗估；需確保觀眾看完算式再推進，不拿估算冒充試讀。"
+    ]
+  },
+  "hash_history": {
+    "initial_draft_sha256": "5f54edbe4f51c2395dc495f983441e3e464d2f42cb50d5cd40612d4e7a5b8208",
+    "author_corrected_sha256": "152b5be088224f8537df6e2e892d168aeb50c5da7d62e00885fd59b8f1fd9c2d",
+    "reviewed_final_sha256": "70ff154bed6de44b0ab9eb344c9e9242e1e4adfeceef11a4b3519f46326ac923",
+    "reviewer_mutation_authorized_by_root": "僅status與duration.next_gate；已比較其餘JSON內容完全相同。"
+  },
+  "unresolved_required_text_changes": [],
+  "production_ready": false,
+  "limits": [
+    "不核准配音、製作、上架；仍只是通過文字/來源/算術檢查的完整稿草稿。",
+    "原wave6 treatment/demo/收據未改；本輪沒有新付費媒體。",
+    "沒有全RFC或全來源再驗，沒有字幕/畫面/音訊成品驗收。"
+  ],
+  "correction_note": {
+    "previous_receipt_sha256": "f0d0b54b38029136330f38f636f7c3d7e27b6b1ac392ae20c8d8a78baef3adc5",
+    "finding": "前版把treatment每核心70秒配置誤稱editorial上限；實際M5008變體及M5009素材上限皆80秒。",
+    "correction": "拆成前版配置70與素材上限80，65秒分配的通過結論不變。",
+    "unchanged": "旁白稿、原treatment/demo、題組、130秒與文字查核結論皆未改。",
+    "authorized_by": "root於最終整合讀回授權此收據更正。"
+  }
+}

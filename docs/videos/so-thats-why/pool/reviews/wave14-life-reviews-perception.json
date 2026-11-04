@@ -1,0 +1,780 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "review_type": "independent_topic_source_dedup_and_editorial_review_not_script_approval",
+  "status": "PASS_TOPIC_LEVEL_ONLY_NOT_SCRIPT_OR_PRODUCTION",
+  "remaining_blockers": [],
+  "reviewed_candidate_ids": [
+    "P14001",
+    "P14002",
+    "P14003",
+    "P14004",
+    "P14005",
+    "P14006",
+    "P14007",
+    "P14008",
+    "P14009",
+    "P14010"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave14-perception.json",
+      "sha256": "de3b0612607512e3afe87676e3a93591d85d4989e0f400ee09532cc7c2e8d071"
+    },
+    {
+      "file": "reviews/wave14-perception-themes.json",
+      "sha256": "69f5bcf5cc502214585444ba35f7700a7b50db93a1f9fbc5b162dd440534588f"
+    },
+    {
+      "file": "reviews/wave14-perception-author.json",
+      "sha256": "cceadb39876e9bd6e0fba98de211f07e6002cc148d4554a98bdcc907373405b8"
+    }
+  ],
+  "original_reviewed_files": [
+    {
+      "file": "batches/wave14-perception.json",
+      "sha256": "37c5f5a75368570804f8a7accabfe639e4ee94d5300e57ac3ed3e3db5b83e2d6"
+    },
+    {
+      "file": "reviews/wave14-perception-themes.json",
+      "sha256": "5945fd8b0cb0fa362f716b6052ccf11c4b9c68714b4e24ac85552b02f7e7d815"
+    },
+    {
+      "file": "reviews/wave14-perception-author.json",
+      "sha256": "0e958d4a7834a60a0121c0a60b24869c5fa0cb9b44241a471592b7bf51666d06"
+    }
+  ],
+  "coverage": {
+    "candidate_rows_read": 10,
+    "not_added_read": 19,
+    "author_boundary_pairs_read": 21,
+    "additional_old_boundary_pairs_read": 1,
+    "retrieved_pairs_read": 50,
+    "source_records_read": 11,
+    "fresh_http_sources_with_targeted_body_read": 11,
+    "episodes_read": 4,
+    "limit": "逐題讀候選與條件、逐對讀答案/範圍；來源是指定正文定點審閱，非每篇每主張全核、統計重現、正式稿或製作許可。"
+  },
+  "retrieval": {
+    "file": ".cache/wave14-perception-neighbours.json",
+    "sha256": "7bc8709d5366baa34c5d288937c541cf3ccefa24c457a6f960b28ad778b16541",
+    "draft_sha256": "63ae5eb0398eaf93df4c55da662c998b5297c37a45948a17d617358ede5c68c1",
+    "retrieval_count": 50,
+    "role": "advisory_only_not_exhaustive_recall_or_merge_probability"
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P14001",
+        "b": "C2003",
+        "reason": "C2003是期待改解讀；新題以等距且框內/跨框控制注意優先，並限制方向/機率。"
+      },
+      {
+        "a": "P14001",
+        "b": "C2007",
+        "reason": "分成群是舊題；新題問已分群後提示到等距未提示位置的處理優勢，不把分組名稱本身算新機制。"
+      },
+      {
+        "a": "P14002",
+        "b": "C2003",
+        "reason": "共同有目標引導，但新題固定無關動態cue/改目標屬性並用foil兼容性區分注意轉移與決策延誤。"
+      },
+      {
+        "a": "P14002",
+        "b": "C2004",
+        "reason": "新題量已預期目標的提示/foil干擾，不是未察覺意外物件。"
+      },
+      {
+        "a": "P14003",
+        "b": "A5025",
+        "reason": "視網膜中心周圍對比舊核不能等同周邊字母辨識與偵測的間距尺度差異。"
+      },
+      {
+        "a": "P14003",
+        "b": "C2001",
+        "reason": "訊號機率偵測與識別被近鄰混淆是不同控制；不把一般閾值再算一題。"
+      },
+      {
+        "a": "P14004",
+        "b": "C2007",
+        "reason": "局部相同加外圍完整/拆散框，結果是局部游標閾值；不是只問點如何分群。"
+      },
+      {
+        "a": "P14003",
+        "b": "P14004",
+        "reason": "前者用偵測/辨識與尺度區分遮蔽；後者固定局部刺激而操弄遠端完整配置，挑戰只算局部池化。可同片相接，非同答案換物件。"
+      },
+      {
+        "a": "P14005",
+        "b": "A5015",
+        "reason": "舊題是掃視目標/修正運動；新題是掃視後外部空白與自主眨眼不等效的位置比較。"
+      },
+      {
+        "a": "P14005",
+        "b": "A5021",
+        "reason": "VOR眼球補償運動不同於中斷來源對知覺位移判別的影響。"
+      },
+      {
+        "a": "P14006",
+        "b": "C2004",
+        "reason": "有意找變化卻因同時非遮蓋transients漏檢，不是忙別任務而漏意外物件。"
+      },
+      {
+        "a": "P14006",
+        "b": "C2015",
+        "reason": "天天看未編細節是舊題；新題以改變發生時非遮蓋干擾vs無干擾控制瞬變定位。"
+      },
+      {
+        "a": "P14005",
+        "b": "P14006",
+        "reason": "外部blank在跨掃視比較能改善，非遮蓋同時flash在場景變化能惡化；任務/控制不同，不能都併成看不到。"
+      },
+      {
+        "a": "P14007",
+        "b": "C2018",
+        "reason": "一般前攝/倒攝干擾未含固定末項時刻以空白/追加目標反轉表現的條件。"
+      },
+      {
+        "a": "P14007",
+        "b": "C2020",
+        "reason": "不是把資訊分塊助記；是快速短目標序列注意投入的時間控制。"
+      },
+      {
+        "a": "P14008",
+        "b": "C2012",
+        "reason": "語意促發是辨識加速；重複盲視關乎需報兩次同類事件，並保留報告機制替代解釋。"
+      },
+      {
+        "a": "P14007",
+        "b": "P14008",
+        "reason": "時間連續性與重複/首項是否須報是不同操弄；共享token模型不等於相同前提及答案。"
+      },
+      {
+        "a": "P14009",
+        "b": "C2002",
+        "reason": "相對差異閾值不是跨感官衝突下由單通道雜訊預測權重。"
+      },
+      {
+        "a": "P14009",
+        "b": "S10009",
+        "reason": "蜜蜂風/視流天線機械與人類視觸估計權重不同；人類題有受控精度與衝突以及模型界線，非只換動物。"
+      },
+      {
+        "a": "P14010",
+        "b": "C2032",
+        "reason": "雙耳時間/音量定位不等於視聽線索是否有共同來源的非線性融合。"
+      },
+      {
+        "a": "P14009",
+        "b": "P14010",
+        "reason": "可靠度加權在同源小衝突模型內；新第二題增加分源假設及空間差距，能由融合轉向分離，條件改變答案。"
+      },
+      {
+        "a": "P14005",
+        "b": "S10003",
+        "reason": "自發眨眼與外部blank的跨掃視位移判別，和預期/實際頸部回饋匹配以抑制前庭神經元不同；都涉及自生訊號並不足以合併。"
+      }
+    ]
+  },
+  "dispositions": [
+    {
+      "id": "P14001",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "等距框內/跨框與預覽/方向控制有新條件；C2003只涵蓋目標期待，C2007只到視覺組織。保留264人平均小效應與方向差別，80秒可講對照而非做個人測驗。",
+      "retrieved_neighbour_ids": [
+        "P14005",
+        "J6023",
+        "O3018",
+        "Z7010",
+        "O3012"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14002",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "任務屬性決定無關cue是否引發foil干擾，前置foil控制可區分即時配置與決策延誤；超出C2003泛用top-down，但Exp2/3切換必須明標。90秒足以三步控制，不添模型術語。",
+      "retrieved_neighbour_ids": [
+        "P14006",
+        "P280",
+        "P14001",
+        "P14003",
+        "P14005"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14003",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "辨識/有無偵測與大小/偏心度的不同尺度，既非C2001機率閾值也非A5025視網膜側抑制；可見差異足夠一個80秒章。",
+      "retrieved_neighbour_ids": [
+        "P14001",
+        "C2012",
+        "C2013",
+        "P14006",
+        "P14002"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14004",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "保持中央刺激只改遠端完整配置能改善局部判別，和P14003單純近鄰/尺度及C2007分群現象不同；95秒需用完整/部分邊線反差，不成框數清單。",
+      "retrieved_neighbour_ids": [
+        "I3045",
+        "D2155",
+        "M2055",
+        "J6003",
+        "O7002"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14005",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "眨眼/外部blank及眨眼後延長blank改變跨掃視位移判別，非A5015運動修正、A5021 VOR或S10003頸部回饋匹配。4人限制保留，只留素材池不硬入案。",
+      "retrieved_neighbour_ids": [
+        "Z7010",
+        "A5015",
+        "P14001",
+        "P14006",
+        "J6023"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14006",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "找變化任務中加入不覆蓋變動位置的同時瞬變，排除單純遮蓋；不是C2004忙他事漏意外物或C2015習慣性未編碼。保留1998作者稿版本層次，留池。",
+      "retrieved_neighbour_ids": [
+        "O7002",
+        "P14002",
+        "P14005",
+        "P147",
+        "C2006"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14007",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "固定T2時刻/短呈現/後mask，空白與可報目標的時間控制會反轉後項表現，不是C2018泛記憶干擾或C2020組塊。95秒同時交代長串成本，沒有越多越好。",
+      "retrieved_neighbour_ids": [
+        "P14008",
+        "I3072",
+        "T4008",
+        "P14005",
+        "I8006"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14008",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "重複/不重複及首項報告相關性改變額外漏項，是類型與事件區分模型，非C2012語意促發或P14007時間重新投入；80秒保留報告要求替代解釋。",
+      "retrieved_neighbour_ids": [
+        "P14007",
+        "U4012",
+        "L275",
+        "D12008",
+        "I3011"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14009",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "單通道精度預測小衝突下跨感官權重與變異，不是C2002韋伯閾值或S10009天線多輸入反射。四人與模型假設保留，85秒可用兩把尺的散布。",
+      "retrieved_neighbour_ids": [
+        "P14010",
+        "Z7010",
+        "D9019",
+        "C2002",
+        "O7012"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    },
+    {
+      "id": "P14010",
+      "decision": "retain_topic_level",
+      "reviewed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.seconds"
+      ],
+      "reason": "空間差距讓視覺牽引減弱需容納同源不確定，超出P14009同源小衝突可靠度加權，也不是C2032雙耳定位。95秒的三模型定性比較可留，payoff需取消硬決定讀法。",
+      "retrieved_neighbour_ids": [
+        "D9014",
+        "P313",
+        "P14009",
+        "D9016",
+        "P116"
+      ],
+      "retrieval_readback": "五筆完整問題、答案、scope已逐讀；分數僅檢索線索。跨域文字相似項沒有相同控制條件/因果，不據分數合併。"
+    }
+  ],
+  "source_reading": [
+    {
+      "source_id": "P14-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2739629/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2739629/",
+      "title": "Object-based attention: Strength of object representation and attentional guidance",
+      "publisher": "Sarah Shomstein; Marlene Behrmann / Perception & Psychophysics",
+      "version": "2008正式研究之PMC作者稿",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "Experiment 1 Results/Previews 1000 and 200 ms/Discussion，PMC section S6–S10",
+      "finding": "長預覽條件物體優勢18 ms，短預覽約1 ms不顯著；機率優勢仍在。支持有條件的物體組織優先，不支持所有框/所有人均有固定效果。",
+      "cache_file": ".cache/wave14-life-perception-001.html",
+      "sha256": "25687ba59f15e1f7e6289a4e2c07261520a3ad31b53b73b06da1d8f464873a65",
+      "text_sha256": "1e950b66b5cfaf95b7014397813803c4cfd80cc43c71ac88e24f041e026576a2",
+      "same_bytes_as_author": false,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8887804/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8887804/fullTextXML",
+      "title": "Excess success in articles on object-based attention",
+      "publisher": "Gregory Francis; Evelina Thunell / Attention, Perception, & Psychophysics",
+      "version": "2022正式研究，PMC XML版本2",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "新招實驗 Participants Sec13、Results Sec17、Conclusions Sec19；另 web 讀 Introduction/TES 方法開頭",
+      "finding": "264人結果平均約14 ms，水平框32.6 ms、垂直框反向且不顯著；不是個人測驗，也未以TES判作者詐欺。",
+      "cache_file": ".cache/wave14-life-perception-002.xml",
+      "sha256": "2df577828655715c63ac8c8179efe045c999debe69f7bdcadbd66ae73fdce57a",
+      "text_sha256": "2c0b93acddea026279f25734bb396b7d08da78073075389b07f5226fd7a0b840",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S003",
+      "url": "https://link.springer.com/article/10.3758/BF03194470",
+      "retrieval_url": "https://link.springer.com/content/pdf/10.3758/BF03194470.pdf",
+      "title": "Contingent attentional capture or delayed allocation of attention?",
+      "publisher": "Roger W. Remington; Charles L. Folk; John P. McLean / Perception & Psychophysics",
+      "version": "2001正式出版PDF，63(2):298–307",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "PDF printed pp299、301、304–306；Exp1紅色提示方法、Exp2前置foil、Exp3 motion/motion與motion/color、Figure5圖說",
+      "finding": "Exp2紅cue任務將50 ms foil與cue同時呈現並遮蔽，支持即時配置；Exp3另以動態cue比較不同目標屬性/不同受試組。兩項控制不能畫成同一旋轉cue實驗。",
+      "cache_file": ".cache/wave14-life-perception-003.pdf",
+      "sha256": "b9b96d8275f9bd0c9e2d6438b6a592222e81c3cd6ae3c0e2f7c3e19eacc55045",
+      "text_sha256": "4d60b5e3b06c7e27fd6640a3c833467c88c57bd1d3d62a9475b314b136e0ef1a",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S004",
+      "url": "https://people.cas.sc.edu/palomare/About_me_files/Palomares_JOV_2004.pdf",
+      "retrieval_url": "https://people.cas.sc.edu/palomare/About_me_files/Palomares_JOV_2004.pdf",
+      "title": "Crowding is unlike ordinary masking: Distinguishing feature integration from detection",
+      "publisher": "Denis G. Pelli; Melanie Palomares; Najib J. Majaj / Journal of Vision",
+      "version": "2004正式出版PDF，作者大學頁副本",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "PDF printed p1141 §2.1/2.2與Table1；pp1150–1151 §3.7/Figures12–14圖說與正文",
+      "finding": "偵測同樣受遮蔽但較小；偵測臨界間距隨大小、辨識隨偏心度的不同尺度，超出一般閾值或視網膜中心周圍。七人為整篇總數，個別圖1–3人。",
+      "cache_file": ".cache/wave14-life-perception-004.pdf",
+      "sha256": "f787d81e83aae27b0d07d769ef29f1c87318fd6014e1d5f846a484a77a4c9870",
+      "text_sha256": "b8ebd12ab34d052526928eac2cab996b919e7e2c5ddbe34d6a2b84bb8fc2283f",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8444456/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8444456/fullTextXML",
+      "title": "Dissecting (un)crowding",
+      "publisher": "Oh-Hyeon Choung; Alban Bornet; Adrien Doerig; Michael H. Herzog / Journal of Vision",
+      "version": "2021正式研究，PMC XML版本1",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "XML Participants、Calibration session、Common pooled conditions、Results pooled/Experiment1/Experiment2（sec2-1、sec2-4-2/3、sec3-1/2/3）",
+      "finding": "47初招中9因不足crowding在校準後排除；28人合併條件。中央框固定時完整外框優於拆散邊線；三框/斜向不必同樣改善。未把分組模型當神經電路。",
+      "cache_file": ".cache/wave14-life-perception-005.xml",
+      "sha256": "b9dde1031c03c7d01e19c7d4811d07c31859038dc8d213d3d737eeff6392b68b",
+      "text_sha256": "f7a3acafb56c0e93e38f632dce95b2789d232a002c40ab3a2f374c3efe6ce0cc",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S006",
+      "url": "https://link.springer.com/article/10.3758/BF03194971",
+      "retrieval_url": "https://link.springer.com/content/pdf/10.3758/BF03194971.pdf",
+      "title": "Different effects of eyelid blinks and target blanking on saccadic suppression of displacement",
+      "publisher": "Heiner Deubel; Bruce Bridgeman; Werner X. Schneider / Perception & Psychophysics",
+      "version": "2004正式出版PDF，66(5):772–778",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "PDF printed pp773–776 Method/Procedure/Results/Discussion及Figure4圖說",
+      "finding": "四男性實驗室成員；外部blank與自主blink中斷視覺不等效，blink結束後仍blank才改善。視網膜外資訊屬推論，未測定來源神經路徑。",
+      "cache_file": ".cache/wave14-life-perception-006.pdf",
+      "sha256": "18fc91ff950f9258bc1efb28d6c540354f917c6d8d9ab807e7ad7b538ff48ced",
+      "text_sha256": "064922e10f488f1ba7b8af212723ab47e99791c005cbd2b5be0843045e94649a",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S007",
+      "url": "https://kevin-oregan.net/assets/Mudsplash/Nature_text/mudtext.html",
+      "retrieval_url": "https://kevin-oregan.net/assets/Mudsplash/Nature_text/mudtext.html",
+      "title": "Change blindness as a result of mudsplashes",
+      "publisher": "J. Kevin O’Regan; Ronald A. Rensink; James J. Clark / 作者研究頁",
+      "version": "作者1998-12-07修訂稿，頁首明載1999 Nature將刊修改版；非最終版逐字等同",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "1998-12-07 revised author manuscript HTML正文全段、Figure1圖說與第二實驗；未獨立取得1999正式全文",
+      "finding": "六塊非覆蓋高對比瞬變伴隨場景改變；10人資料與中央/邊緣興趣及第二個局部遮擋控制。可保留非遮蓋干擾對照，不外推事故率或宣稱所有未注意資訊不存。",
+      "cache_file": ".cache/wave14-life-perception-007.html",
+      "sha256": "17c13a2860cfb7d75dced55ec8b200296254cfd3ec884a41eec3712b4fe86d1b",
+      "text_sha256": "7462c4366a67d6836fde80781a74db688fe27e1606d7a6fdea60bc937d0d4b3a",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S008",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2632766/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2632766/",
+      "title": "Unmasking the attentional blink",
+      "publisher": "Mark R. Nieuwenstein; Mary C. Potter; Jan Theeuwes / Journal of Experimental Psychology: Human Perception and Performance",
+      "version": "2009正式論文之PMC作者稿",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "PMC HTML Exps1–4 Participants/Results（S7/10/13/16/17/20/23/26/29），Exp3/4 Design and procedure（S22/28）及Exp4 stimuli S27",
+      "finding": "空白也可產生blink；短暫T2與mask條件下加可報目標可改善，長連續串有成本。保留重啟注意為相容模型，不稱唯一已證開關。",
+      "cache_file": ".cache/wave14-life-perception-008.html",
+      "sha256": "30520e6f1feba0b1a215fe4c8ef74503f85cbdb05bacc65aeeedfe53e66ee8c9",
+      "text_sha256": "82349d3dffce6e97e997b79a601393af308026ab8b33d477d2e7bd1ca1e4b3df",
+      "same_bytes_as_author": false,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S009",
+      "url": "https://web.mit.edu/bcs/nklab/media/pdfs/KanwisherHPP91.pdf",
+      "retrieval_url": "https://web.mit.edu/bcs/nklab/media/pdfs/KanwisherHPP91.pdf",
+      "title": "Repetition blindness and illusory conjunctions: Errors in binding visual types with visual tokens",
+      "publisher": "Nancy Kanwisher / Journal of Experimental Psychology: Human Perception and Performance",
+      "version": "1991正式PDF，MIT作者實驗室副本",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "PDF printed pp406–407 Experiment1 methods/results/Table1；pp414–415 Experiment6 methods/results/Table6與Discussion",
+      "finding": "Exp1三組72人、固定位置沿用1990資料；Exp6 30人中白色非報告首項不產生同樣額外重複損失。保留注意/報告混淆，不泛化中文閱讀。",
+      "cache_file": ".cache/wave14-life-perception-009.pdf",
+      "sha256": "8f3c4c552c8b2d65faf0ba19dcd9e104e9368633c3a0e7968afe6f77b5ed8c39",
+      "text_sha256": "11c3b799dde42ab29c03ae1d881c6759962877353c001ff20580d97c0ed15030",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S010",
+      "url": "https://www.columbia.edu/cu/cns/resources/ErnstBanks.pdf",
+      "retrieval_url": "https://www.columbia.edu/cu/cns/resources/ErnstBanks.pdf",
+      "title": "Humans integrate visual and haptic information in a statistically optimal fashion",
+      "publisher": "Marc O. Ernst; Martin S. Banks / Nature",
+      "version": "2002正式PDF，大學教學副本；p1上半前篇尾文排除",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；PyMuPDF渲染PNG後獨立目讀",
+      "reading_scope": "新取PDF渲染目讀 printed pp430–433（PDF2–5）：eq2–7、Figures1–3、Methods/Procedure；排除相鄰論文",
+      "finding": "四成人、衝突≤11%、視覺深度雜訊變化使權重移向觸覺；模型降低變異而非保證無偏。只有行為/模型吻合，未量得腦內權重計算。",
+      "cache_file": ".cache/wave14-life-perception-010.pdf",
+      "sha256": "29b5405c47f681a8c35607774851c990ebfcc84cca3bac6d8cdf4023e4bcd470",
+      "text_sha256": "17c4b870478c1ee4d5dc5e1f1de1e557c8e0497a41934243d0a16f0ef95787f9",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    },
+    {
+      "source_id": "P14-S011",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1978520/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1978520/fullTextXML",
+      "title": "Causal Inference in Multisensory Perception",
+      "publisher": "Konrad P. Körding; Ulrik Beierholm; Wei Ji Ma; Steven Quartz; Joshua B. Tenenbaum; Ladan Shams / PLoS ONE",
+      "version": "2007正式研究，PMC XML版本1",
+      "accessed_on": "2026-11-01",
+      "read_via": "fresh UA urllib HTTP 200；保存原檔並核SHA；XML/HTML指定section或PyMuPDF指定頁抽字後實讀",
+      "reading_scope": "XML Experiment1 s2b/Figure2e、Discussion s3、Paradigm for Experiment1 s4a、Generative model s4b",
+      "finding": "20招募19分析、個人HRTF與同步短刺激。模型每次同時考慮同源/分源可能並折衷，不是先做全有全無來源決定；第二實驗舊資料再分析非新招獨立實驗。",
+      "cache_file": ".cache/wave14-life-perception-011.xml",
+      "sha256": "eb01698b1b548ef84fe3f864630b67f10cb3c2202e1bc22cb71934f6eeee16d4",
+      "text_sha256": "66faf39fd226578b1644c09e21604dab7f6cde92a346d2ac87608523a44556bb",
+      "same_bytes_as_author": true,
+      "coverage_limit": "定點正文/方法/結果與圖說審閱，非整篇逐句查核、未重跑原始資料/統計，也不批准示範或完整旁白。"
+    }
+  ],
+  "retrieval_failures_and_limits": [
+    {
+      "source_id": "P14-S005",
+      "method": "web.open PMC HTML",
+      "result": "CAPTCHA，未當作正文；另 fresh UA EuropePMC fullTextXML HTTP200實讀指定段。"
+    },
+    {
+      "source_id": "P14-S007",
+      "method": "web.open 作者頁",
+      "result": "工具無法開啟；另 fresh UA HTTP200實讀1998修訂稿，未讀正式1999全文。"
+    },
+    {
+      "source_id": "P14-S011",
+      "method": "web.open PMC HTML",
+      "result": "CAPTCHA，未當作正文；另 fresh UA EuropePMC fullTextXML HTTP200實讀指定段。"
+    },
+    {
+      "source_id": "P14-S010",
+      "method": "PDF抽字",
+      "result": "字型編碼使抽出文字不可靠；改用同一fresh PDF渲染pp430–433目讀，不把前後不同文章內容算進來源。"
+    }
+  ],
+  "source_identity_check": {
+    "fresh_file_count": 11,
+    "matched_author_bytes_count": 9,
+    "dynamic_html_differences": [
+      "P14-S001",
+      "P14-S008"
+    ],
+    "interpretation": "新HTTP取用是獨立閱讀路徑，不是新獨立實驗。2008/2022同領域各自實驗；1998修訂稿不冒充1999正式逐字版；1991固定位置資料沿用1990，2007 Exp2重分析，均不重算獨立證據。",
+    "original_data_not_reanalysed": true
+  },
+  "required_corrections": [
+    {
+      "id": "PERCEPTION01",
+      "severity": "required",
+      "targets": [
+        "P14002.scope",
+        "P14002.editorial.visual",
+        "W14P-T01.chapters[1].beats[2]"
+      ],
+      "finding": "前置foil對照來自Experiment2紅色提示/紅字任務；接在Experiment3動態提示之後不重設，容易畫成未做過的同一旋轉提示實驗。",
+      "requested_change": "明切Exp2紅色提示的獨立時間控制，保留Exp3不同組與刺激差異；q/answer可不變，170秒不增加。",
+      "evidence": "P14-S003 printed p301 Exp1 Procedure、p304 Exp2 Method、pp305–306 Exp3/Fig5。",
+      "status": "RESOLVED_BY_AUTHOR_AND_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "PERCEPTION02",
+      "severity": "required",
+      "targets": [
+        "P14010.editorial.payoff",
+        "W14P-T04.chapters[1].beats[2]"
+      ],
+      "finding": "先決定再融合可讀成全有全無硬選擇或串行腦內管線；原文理想觀察者模型每trial同時考慮同源與分源並折衷。",
+      "requested_change": "payoff與末回扣改為同源可能性與可靠度一起影響整合，非先硬決定；180秒不變。",
+      "evidence": "P14-S011 Experiment1: model does not simply decide...considers both possibilities；candidate answer本已正確說按可能性折衷。",
+      "status": "RESOLVED_BY_AUTHOR_AND_INDEPENDENT_READBACK"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W14P-T01",
+      "body_seconds": 170,
+      "core_seconds": {
+        "P14001": 80,
+        "P14002": 90
+      },
+      "max_information_interval_seconds": 30,
+      "decision": "retain_with_targeted_clarification",
+      "cut_decision": "未找到可直接刪掉的長段純回顧；每25–35秒更換控制/比較。原drop_if任刪章即撤此版可保留，不自動補時。",
+      "limitation": "紙上編輯及算術，不是實際試讀、觀眾留存或劇本盲讀。"
+    },
+    {
+      "id": "W14P-T02",
+      "body_seconds": 175,
+      "core_seconds": {
+        "P14003": 80,
+        "P14004": 95
+      },
+      "max_information_interval_seconds": 35,
+      "decision": "retain",
+      "cut_decision": "未找到可直接刪掉的長段純回顧；每25–35秒更換控制/比較。原drop_if任刪章即撤此版可保留，不自動補時。",
+      "limitation": "紙上編輯及算術，不是實際試讀、觀眾留存或劇本盲讀。"
+    },
+    {
+      "id": "W14P-T03",
+      "body_seconds": 175,
+      "core_seconds": {
+        "P14007": 95,
+        "P14008": 80
+      },
+      "max_information_interval_seconds": 35,
+      "decision": "retain",
+      "cut_decision": "未找到可直接刪掉的長段純回顧；每25–35秒更換控制/比較。原drop_if任刪章即撤此版可保留，不自動補時。",
+      "limitation": "紙上編輯及算術，不是實際試讀、觀眾留存或劇本盲讀。"
+    },
+    {
+      "id": "W14P-T04",
+      "body_seconds": 180,
+      "core_seconds": {
+        "P14009": 85,
+        "P14010": 95
+      },
+      "max_information_interval_seconds": 35,
+      "decision": "retain_with_targeted_clarification",
+      "cut_decision": "未找到可直接刪掉的長段純回顧；每25–35秒更換控制/比較。原drop_if任刪章即撤此版可保留，不自動補時。",
+      "limitation": "紙上編輯及算術，不是實際試讀、觀眾留存或劇本盲讀。"
+    }
+  ],
+  "not_added_review": "19未收方向逐列看過；本覆核不把未讀或薄題復活，不將候選不足視為必須補量。",
+  "validation": {
+    "utf8_lf": true,
+    "core_caps_and_body_ranges": "PASS_AUTHOR_PROPOSAL_ARITHMETIC",
+    "source_claim_scope": "TOPIC_LEVEL_ONLY",
+    "production_ready": false
+  },
+  "original_review_status": "CHANGES_REQUIRED",
+  "original_receipt_sha256": "55c6ebad4e501e49793a7d41b583048b6ca2896ff8884ece4161daca9b73f4c9",
+  "targeted_recheck": {
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "readback": "逐字讀回P14002 scope/visual與T01第2章60秒節拍、P14010 payoff與T04末節拍；兩處均符合指定原文，未改問題/答案或章節秒數。",
+    "resolved_ids": [
+      "PERCEPTION01",
+      "PERCEPTION02"
+    ],
+    "body_seconds": [
+      170,
+      175,
+      175,
+      180
+    ],
+    "author_before_hashes_preserved": true,
+    "core_caps_beats_range_lf": "PASS",
+    "reviewed_files": [
+      {
+        "file": "batches/wave14-perception.json",
+        "sha256": "de3b0612607512e3afe87676e3a93591d85d4989e0f400ee09532cc7c2e8d071"
+      },
+      {
+        "file": "reviews/wave14-perception-themes.json",
+        "sha256": "69f5bcf5cc502214585444ba35f7700a7b50db93a1f9fbc5b162dd440534588f"
+      },
+      {
+        "file": "reviews/wave14-perception-author.json",
+        "sha256": "cceadb39876e9bd6e0fba98de211f07e6002cc148d4554a98bdcc907373405b8"
+      }
+    ]
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "first_draft_file": ".cache/first-draft-wave14.json",
+    "first_draft_sha256": "63ae5eb0398eaf93df4c55da662c998b5297c37a45948a17d617358ede5c68c1",
+    "final_draft_file": ".cache/draft.json",
+    "final_draft_sha256": "7d0a2c88e1320b8faf0e83740389483124dccdfd664e59beba66231cd1f37737",
+    "raw_count": 3287,
+    "delta_file": ".cache/wave14-perception-neighbour-delta.json",
+    "delta_sha256": "b331896181ce7fd689ec29df3f0fe794dbb65ed1bc505b47d5d04fe06719ff3d",
+    "first_neighbours_file": ".cache/wave14-perception-neighbours.json",
+    "first_neighbours_sha256": "7bc8709d5366baa34c5d288937c541cf3ccefa24c457a6f960b28ad778b16541",
+    "semantic_file": ".cache/semantic-wave14-draft.json",
+    "semantic_sha256": "046933ccff84a511d80d5436aa35a31c9d6501f64df76384073caa5e21d88e07",
+    "readback": "首版neighbours檔保留63ae輸入，未冒稱已刷新；另由final semantic取各ID前5筆，再用final draft完整問題/答案/scope比較。全部10列top5 ID/順序不變；50對唯一欄位差為P14002 scope澄清，已定點讀回。候選所有question/answer_target不變。",
+    "new_neighbour_ids": [],
+    "new_embeddings_reported": 0,
+    "limits": "向量檢索非全庫召回率；保留作者近對與來源閱讀的獨立人工判斷。"
+  }
+}

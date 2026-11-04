@@ -1,0 +1,539 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave11-landforms-20261101",
+  "files": [
+    {
+      "path": "batches/wave11-landforms.json",
+      "sha256": "9c87d4ae72bd7128701b6a2a7107635338aef97d4ce6c41994b7022c2a068ecb"
+    },
+    {
+      "path": "reviews/wave11-landforms-themes.json",
+      "sha256": "aba397d5b3617a5950ddf6be1a3d0a17978001602f3c180d63449026217a599d"
+    }
+  ],
+  "encoding": "UTF-8 without BOM; LF; exact byte hashes",
+  "counts": {
+    "candidates": 19,
+    "sources": 16,
+    "not_added": 18,
+    "theme_proposals": 5,
+    "expected_new_cores_after_recommended_merge": 18
+  },
+  "candidate_ids": [
+    "E11001",
+    "E11002",
+    "E11003",
+    "E11004",
+    "E11005",
+    "E11006",
+    "E11007",
+    "E11008",
+    "E11009",
+    "E11010",
+    "E11011",
+    "E11012",
+    "E11013",
+    "E11014",
+    "E11015",
+    "E11016",
+    "E11017",
+    "E11018",
+    "E11019"
+  ],
+  "baseline": {
+    "head": "d6f5ff135",
+    "path": "pool.json",
+    "sha256": "837667313fcc0a56b3642dd85e0810beda26f6b3a1dc6edfff48fb8c2038577c",
+    "raw_records": 3160,
+    "selected": 2797,
+    "not_added": 497,
+    "method": "對全部raw及歷史not_added作中英文地形機制關鍵詞檢索，初搜161 raw/11退題匹配；逐讀相關題名/target/scope，另精準檢索黏土、裂紋、凍土、撞擊坑及指定近對。這是檢索篩查，不冒稱逐讀全3160題或已做最終語意top5。",
+    "initial_matched_raw_ids": [
+      "LEG-T11",
+      "LEG-A07",
+      "LEG-S32",
+      "LEG-T29",
+      "LEG-T44",
+      "LEG-T48",
+      "LEG-B63",
+      "LEG-S58",
+      "LEG-S82",
+      "LEG-S83",
+      "N004",
+      "N005",
+      "N006",
+      "N010",
+      "N013",
+      "N014",
+      "N015",
+      "N016",
+      "N017",
+      "N025",
+      "N041",
+      "N042",
+      "N043",
+      "N044",
+      "N045",
+      "N046",
+      "N052",
+      "N053",
+      "N054",
+      "N055",
+      "N056",
+      "N057",
+      "N058",
+      "N081",
+      "N086",
+      "N087",
+      "N097",
+      "N101",
+      "N102",
+      "N103",
+      "N104",
+      "N105",
+      "N106",
+      "N108",
+      "N111",
+      "N127",
+      "N128",
+      "N129",
+      "N134",
+      "N140",
+      "N141",
+      "N142",
+      "N149",
+      "N153",
+      "N176",
+      "N184",
+      "N185",
+      "N187",
+      "N189",
+      "N190",
+      "N204",
+      "N205",
+      "N206",
+      "N213",
+      "N214",
+      "N215",
+      "N216",
+      "N217",
+      "N218",
+      "N224",
+      "N225",
+      "N226",
+      "N227",
+      "N228",
+      "N229",
+      "N231",
+      "N232",
+      "N233",
+      "N234",
+      "N235",
+      "N236",
+      "N238",
+      "N245",
+      "N248",
+      "N251",
+      "N252",
+      "N280",
+      "N284",
+      "N285",
+      "P219",
+      "H10002",
+      "H10005",
+      "H10006",
+      "B2041",
+      "B2070",
+      "B2103",
+      "B2192",
+      "B2209",
+      "B2210",
+      "B2277",
+      "B2278",
+      "B2279",
+      "B2280",
+      "B2281",
+      "B2329",
+      "X2007",
+      "D2125",
+      "D2150",
+      "D2175",
+      "D2201",
+      "D2202",
+      "D2203",
+      "D2204",
+      "D2205",
+      "D2206",
+      "D2207",
+      "D2208",
+      "D2209",
+      "D2210",
+      "D2211",
+      "D2212",
+      "M2078",
+      "M2087",
+      "H3042",
+      "H3092",
+      "O3001",
+      "O3013",
+      "O3022",
+      "O3037",
+      "O3052",
+      "O3053",
+      "O3056",
+      "O3058",
+      "O3072",
+      "O3073",
+      "O3079",
+      "O3080",
+      "O3081",
+      "O3088",
+      "V3038",
+      "W5023",
+      "W5026",
+      "W5028",
+      "Z7011",
+      "E7002",
+      "E7003",
+      "E7004",
+      "E7005",
+      "E7006",
+      "E7007",
+      "E7008",
+      "E7009",
+      "E7010",
+      "E7011",
+      "E7012",
+      "E7018",
+      "E7021",
+      "E7022",
+      "U8008",
+      "R8003",
+      "E9016"
+    ],
+    "initial_matched_not_added_count": 11
+  },
+  "source_reading": {
+    "body_read_sources": 16,
+    "abstract_only_candidate_sources": 0,
+    "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "limits": "來源逐列列實讀正文範圍；13個採用來源以自訂UA取回，3個出版者正文/勘誤經web直接讀，web不能設定UA。沒有把政府研究報告說成原期刊全文。全文僅ignored cache，不入Git。",
+    "failed_routes": [
+      {
+        "url": "https://www.jpl.nasa.gov/news/marks-on-martian-dunes-may-be-tracks-of-dry-ice-sleds/",
+        "result": "urllib403；改NASA官方逐字稿成功。"
+      },
+      {
+        "url": "https://www.erdc.usace.army.mil/CRREL/Permafrost-Tunnel-Research-Facility/Patterned-Ground/",
+        "result": "urllib403；未採此頁作正文來源。"
+      },
+      {
+        "url": "https://irep.ntu.ac.uk/id/eprint/28373/1/5915_Goehring.pdf",
+        "result": "urllib403；2010論文未讀，改讀2013作者文中新增實驗與模型。"
+      },
+      {
+        "url": "https://www.lpi.usra.edu/publications/slidesets/craters/",
+        "result": "urllib403；未採此頁。"
+      },
+      {
+        "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2006JF000574",
+        "result": "urllib403，web直接返回已列正文成功。"
+      },
+      {
+        "url": "https://www.lpi.usra.edu/education/explore/shaping_the_planets/impact-cratering/",
+        "result": "urllib403，web直接返回已列正文成功。"
+      }
+    ]
+  },
+  "boundary_pairs": [
+    {
+      "ids": [
+        "E11001",
+        "E7022"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "工具/覆蓋競爭與選擇搬運形成粗化層不同；同礫石不等同同核。"
+    },
+    {
+      "ids": [
+        "E11002",
+        "F10016",
+        "E11001"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "新核是侵蝕床形+覆蓋演化，不是固定床水躍；1是磨蝕反向作用，2是空間回饋自行造落差。"
+    },
+    {
+      "ids": [
+        "E11003",
+        "N236",
+        "F10006"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "黏聚床起動與懸浮維持不同，非普通流量分選/空隙填充。"
+    },
+    {
+      "ids": [
+        "E11004",
+        "E7011",
+        "E7018"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "保留/截切的地層紀錄，不僅沙丘移動；若只講搬砂應作舊核變體。"
+    },
+    {
+      "ids": [
+        "E11005",
+        "E7008",
+        "N236"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "河口射流—沙洲淺化—繞流回饋，與已抬高河道改走低處不同。"
+    },
+    {
+      "ids": [
+        "E11006",
+        "N190",
+        "E11007"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "6是橫越沙洲的砂轉移，7是灣內儲水回湧切口；不是沿岸搬砂。"
+    },
+    {
+      "ids": [
+        "E11008",
+        "E7011"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "植被固定兩臂與中央移動的空間差，非沙丘名稱清單。"
+    },
+    {
+      "ids": [
+        "E11009",
+        "E11010",
+        "E7011"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "9水底尾流遠距互動；10風成碰撞質量交換；都非單丘搬砂，證據與物質追蹤限制必須分開。"
+    },
+    {
+      "ids": [
+        "E11011",
+        "N226",
+        "N235"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "反覆冬季收縮開裂/春季填冰保存，非冰透鏡或已裂縫中吸水凍脹。"
+    },
+    {
+      "ids": [
+        "E11012",
+        "E7006",
+        "E11011"
+      ],
+      "proposal": "accept_merge_after_independent_review",
+      "reason": "接受E11012→E7006：埋冰融失體積造成地面下降同核心，冰楔邊界下陷/高中心只是可保留的幾何變體；不因地點或冰體形狀另計。與E11011反覆收縮裂隙填冰形成仍不同。"
+    },
+    {
+      "ids": [
+        "E11013",
+        "N224",
+        "E7006",
+        "E11012"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "出口破開使湖排水的條件；不是籠統不透水或埋冰失容，12只談高程反轉。"
+    },
+    {
+      "ids": [
+        "E11014",
+        "E7001",
+        "D2093",
+        "LEG-S41"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "多輪次序改變與弱路徑記憶移動交點，不是冷卻方向、單次乾縮或六邊省料。"
+    },
+    {
+      "ids": [
+        "E11015",
+        "N055",
+        "E11016"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "15衝擊開挖非物體印模；16撞後重力改形，與大氣碎裂不同。"
+    },
+    {
+      "ids": [
+        "E11017",
+        "N134",
+        "E7018"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "坑的曝光/保存年代與物質年代不同，非碎屑礦物定年或層序缺口。"
+    },
+    {
+      "ids": [
+        "E11018",
+        "E11019",
+        "N016"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "兩個乾冰機制不同幾何：受困氣體噴發vs移動塊氣墊；不只是把液水河谷改名。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "E11012",
+        "canonical_id": "E7006",
+        "reason": "接受life非作者覆核：埋冰融失體積後地面下降同核心；冰楔邊界下陷造成高中心外觀保留變體與來源，不增新核心。"
+      }
+    ],
+    "excluded": [],
+    "distinct": []
+  },
+  "core_budget_checks": [
+    {
+      "theme_id": "W11E-T01",
+      "candidate_id": "E11001",
+      "seconds": 90,
+      "cap": 105
+    },
+    {
+      "theme_id": "W11E-T01",
+      "candidate_id": "E11002",
+      "seconds": 100,
+      "cap": 110
+    },
+    {
+      "theme_id": "W11E-T02",
+      "candidate_id": "E11009",
+      "seconds": 90,
+      "cap": 100
+    },
+    {
+      "theme_id": "W11E-T02",
+      "candidate_id": "E11010",
+      "seconds": 95,
+      "cap": 105
+    },
+    {
+      "theme_id": "W11E-T03",
+      "candidate_id": "E11011",
+      "seconds": 80,
+      "cap": 95
+    },
+    {
+      "theme_id": "W11E-T03",
+      "candidate_id": "E11012",
+      "seconds": 50,
+      "cap": 80,
+      "canonical_id_after_merge": "E7006",
+      "budget_variant_id": "E11012"
+    },
+    {
+      "theme_id": "W11E-T04",
+      "candidate_id": "E11006",
+      "seconds": 75,
+      "cap": 90
+    },
+    {
+      "theme_id": "W11E-T04",
+      "candidate_id": "E11007",
+      "seconds": 80,
+      "cap": 95
+    },
+    {
+      "theme_id": "W11E-T05",
+      "candidate_id": "E11018",
+      "seconds": 90,
+      "cap": 100
+    },
+    {
+      "theme_id": "W11E-T05",
+      "candidate_id": "E11019",
+      "seconds": 85,
+      "cap": 95
+    }
+  ],
+  "theme_seconds": [
+    {
+      "id": "W11E-T01",
+      "seconds": 190
+    },
+    {
+      "id": "W11E-T02",
+      "seconds": 185
+    },
+    {
+      "id": "W11E-T03",
+      "seconds": 130
+    },
+    {
+      "id": "W11E-T04",
+      "seconds": 155
+    },
+    {
+      "id": "W11E-T05",
+      "seconds": 175
+    }
+  ],
+  "self_checks": [
+    "19題ID唯一，來源引用有效；不補至25–40目標。",
+    "五雙核心案開場/回扣含總長，10個核心的累計<=cap，所有beat間隔<=45秒。",
+    "模型、實驗、圖像推論分開；火星乾冰只研究可成立假說，不作全部地貌已證答案。",
+    "未改中央、舊題、task、程式或tests；只寫自有三檔與ignored cache。"
+  ],
+  "open_review_questions": [
+    "E11004與E7011的地層保存增量是否足夠；若只重講遷移可合舊核。",
+    "已採非作者判斷：E11012合E7006保留冰楔變體；E11011仍獨立。T03 80+50=130秒，待修後定點讀回。",
+    "E11009水槽尾流因果仍有量測/裝置限制；不可為好看改成所有沙漠都排斥。",
+    "E11018/19僅官方研究者報告/逐字稿，進稿須補原期刊與更新研究或明確保持歸屬/歷史範圍。",
+    "E11017相對年代題是否過薄；若只能念坑多較老，退回研究註記。"
+  ],
+  "restrictions": [
+    "尚待life非作者逐題與來源風險覆核、root共同語意top5。",
+    "沒有完整稿、試讀、成片、原圖權利或付費製作核准。"
+  ],
+  "revision_history": [
+    {
+      "revision": "LAND01",
+      "trigger": "life獨立覆核/root接受E11012→E7006及T03縮時",
+      "before_files": [
+        {
+          "file": "batches/wave11-landforms.json",
+          "sha256": "9c87d4ae72bd7128701b6a2a7107635338aef97d4ce6c41994b7022c2a068ecb"
+        },
+        {
+          "file": "reviews/wave11-landforms-themes.json",
+          "sha256": "2259390d8692cda07086cfb28c1309e8623653f629fd8fb6f420fadecdc95a2a"
+        },
+        {
+          "file": "reviews/wave11-landforms-author.json",
+          "sha256": "0100580d54769ece0ec8bd864f9d0057046b71a509ba432d9a0b57c36de943fa"
+        }
+      ],
+      "changes": [
+        "batch保持原19提案及16來源，零變更。",
+        "E11012承接E7006埋冰融失下陷核心；保留冰楔位置變體。",
+        "T03第二章70→50秒（15重設+25高程對照+10回扣），總150→130，來源和cap仍用E11012；刪章即撤案。"
+      ],
+      "after_locked_files": [
+        {
+          "file": "batches/wave11-landforms.json",
+          "sha256": "9c87d4ae72bd7128701b6a2a7107635338aef97d4ce6c41994b7022c2a068ecb"
+        },
+        {
+          "file": "reviews/wave11-landforms-themes.json",
+          "sha256": "aba397d5b3617a5950ddf6be1a3d0a17978001602f3c180d63449026217a599d"
+        }
+      ],
+      "author_hash_note": "本author修後SHA由外部交接收據綁定，避免自我雜湊循環。"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "author": "root",
+  "status": "FINAL_TEXT_FOR_NONAUTHOR_BINDING",
+  "files": [
+    {
+      "file": "treatments/G79/treatment.json",
+      "sha256": "ec6f7e80ccaa7c5781178d6cb72a1151987fb361630614814179b68f308c58f6"
+    },
+    {
+      "file": "treatments/G79/narration-draft.json",
+      "sha256": "84e42a012238f352bcb681b0e2354b049a4e146ce80218848d28088a1e660ac6"
+    }
+  ],
+  "source_readback": [
+    {
+      "source_id": "F8-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6535019/",
+      "read_on": "2026-11-01",
+      "read_via": "本輪web open回captcha；web search提供正文片段；重讀前批保留的原出版全文文字，核SHA。Edinburgh作者PDF搜尋可找到，但本輪open403，未稱PDF已讀。",
+      "cache_body_file": "wave8-food-conching.txt",
+      "cache_body_sha256": "dd6b25ad98d310219ed269a46c09396cede6241e3d5b2131b43ec985d86b1ed8",
+      "scope": "Introduction; Conching Phenomenology; Conching Reduces Aggregate Size; Lecithin as a Lubricant; Summary and Conclusions; Materials and Methods。讀圖說，不重分析數據或直接讀取原圖。",
+      "disclosure": "Mars Chocolate參與並部分資助；2019原研究，非新近配方實測。"
+    },
+    {
+      "source_id": "F8-S003",
+      "url": "https://blog.susnano.wisc.edu/wp-content/uploads/sites/2179/2025/08/Chocolate-Experimentpdf.pdf",
+      "read_on": "2026-11-01",
+      "read_via": "本輪web open逾時；PyMuPDF重讀前批官方PDF的第8–9頁文字層，核SHA。",
+      "cache_body_file": "wave8-food-chocolate-demo.pdf",
+      "cache_body_sha256": "b5d0cf6ac7f91a854760fbc3b4a0b5aa48a486ea68ffe99559d180dd4318b793",
+      "scope": "第8頁所述少水後現象與第9頁Explanation第二點；同頁第一點及相反轉的過簡說法不用。未再讀其他10頁。",
+      "disclosure": "NSF Center for Sustainable Nanotechnology教育示例；不是原JCE全文或本人實驗。"
+    }
+  ],
+  "old_theme_seconds": 140,
+  "new_proposed_seconds": 85,
+  "spoken_characters": 279,
+  "core_counts_as_new": 0,
+  "central_theme_updated": false,
+  "review_requests": [
+    "片頭能否區分脂肪已液態與固體仍顆粒。",
+    "研究模型與家庭熔融巧克力不可混作同一組實驗。",
+    "等體積油只限原研究對照；微觀摩擦是研究者解釋。",
+    "少水只足定性30秒，不補未讀JCE接觸力或修復食譜。",
+    "若稿件重複或講不清，刪段/縮短，不補時。"
+  ],
+  "production_ready": false,
+  "author_revision": {
+    "previous_files": [
+      {
+        "file": "treatments/G79/treatment.json",
+        "sha256": "7ccafda33c7ca60f0fb7349e2c6ace66b8f54451683771f0c3a9d6230ac2dcf9"
+      },
+      {
+        "file": "treatments/G79/narration-draft.json",
+        "sha256": "5d8d044e055a9f7d03042d9ba8a3c5a1f432928c9534a533f8da6892df6e5877"
+      }
+    ],
+    "previous_proposed_seconds": 115,
+    "reason": "實際短稿僅273字；115秒無足夠新內容，刪重述後改85秒，不讓原題案140秒或素材估時下緣成為必填秒數。"
+  },
+  "reviewer_clarity_revision": {
+    "reviewer": "pool_physics",
+    "previous_files": [
+      {
+        "file": "treatments/G79/treatment.json",
+        "sha256": "4c2295a68e9f33eeb0017561f2dce178bc3142d7cbda601d2a44578584da392a"
+      },
+      {
+        "file": "treatments/G79/narration-draft.json",
+        "sha256": "75a80a6a2f7c05dc504f7ed28dd0fbc1851cf829ced0a3ab704b583537ad6717"
+      }
+    ],
+    "change": "採書面讀者建議：b3加「在這組對照中」，讓純聽者明確知道結論限於該實驗；沒有改來源或時間預算。更新草稿狀態，不宣稱已試讀或製作批准。"
+  }
+}

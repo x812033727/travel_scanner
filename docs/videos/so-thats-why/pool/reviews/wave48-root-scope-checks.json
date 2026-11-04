@@ -1,0 +1,34 @@
+{
+  "status": "PASS_TARGETED_SECOND_READING_OF_SCOPE_CORRECTION",
+  "reviewer": "root",
+  "author": "science_sources",
+  "source_id": "S48-S005",
+  "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+  "candidate_id": "S48-005",
+  "checked_on": "2026-11-03",
+  "access": "Root Web reopen returned a browser verification page. Root read the retained author HTML/text with matching SHA; this is not a fresh full-text fetch.",
+  "bound_files": [
+    {
+      "file": "batches/wave48-earth.json",
+      "sha256": "6122037def0dbebfceb0d7206dbeee8de27c186bf499b13facbf4a7f454bc36a"
+    },
+    {
+      "file": "reviews/wave48-earth-themes.json",
+      "sha256": "133f9fdf1c38f936400c3dfa3ef4647cacdd1ca3e373be3ce43f90f60b2277a0"
+    }
+  ],
+  "read_cache": {
+    "file": ".cache/wave48-earth-fracture.html",
+    "sha256": "73a5adce7db72149ad3231120a6f6394ab8b74d1bb1bda97cd469e351a9a0d18",
+    "text_file": ".cache/wave48-earth-fracture.txt",
+    "text_sha256": "30657bbd62c22cf77d0d49e872bd679a7556485f1519743caaab0bc318507e8c"
+  },
+  "locator": "Text extraction lines1213–1225 (Methods),1360–1366 (Results),1710–1715 (Discussion).",
+  "findings": [
+    "Methods gives pre/post test flow rates in mL/h, while Results and Discussion give the corresponding rates in mL/min. The unit mismatch is unresolved; no corrected numeric rate is inferred.",
+    "Pre/post conductivity measurements use equilibrated brine; the intervening injection uses acidized brine. Flow and liquid conditions differ, so the comparison is not a single-variable flow-rate intervention.",
+    "Discussion proposes higher flow may release trapped fines. The topic keeps this as the authors explanation with the unit caveat, while the main comparison says separate brine/flow-rate measurement protocols."
+  ],
+  "limits": "Targeted check of this scope correction, not a second full review of all13 topics, original figures, videos, or audience watchability.",
+  "production_ready": false
+}

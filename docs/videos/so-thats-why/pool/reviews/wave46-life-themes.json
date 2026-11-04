@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "rules": "短解說單一追問，至少兩章，每章一核心；同核心跨章累計不超來源素材上限。",
+  "episodes": [
+    {
+      "id": "W46L-T01",
+      "title": "翻正還不夠：小跳蟲怎麼落水不再彈起？",
+      "core_question": "先把腹面轉向水面，為什麼落地還需要另一個作用？",
+      "connection": "空中形狀控制接回水面接觸；兩階段分開解釋，不把水滴的配重當落地拉力。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L46-002",
+        "L46-003"
+      ],
+      "target_minutes": 1.1833333333333333,
+      "range_minutes": [
+        1.1833333333333333,
+        1.1833333333333333
+      ],
+      "body_seconds": 71,
+      "chapters": [
+        {
+          "title": "彎成U形，先把腹面轉回去",
+          "candidate_ids": [
+            "L46-002"
+          ],
+          "seconds": 25,
+          "beats": [
+            {
+              "seconds": 11,
+              "new_information": "先看倒著下落的活跳蟲彎身翻正；隨即換場到三種人造落體，標明不是同一動物。"
+            },
+            {
+              "seconds": 14,
+              "new_information": "並排U形加滴、U形無滴與平片，圈出形狀改變空氣作用和水滴降低重心的模型解釋。"
+            }
+          ],
+          "new_information": "先看倒著下落的活跳蟲彎身翻正；隨即換場到三種人造落體，標明不是同一動物。 並排U形加滴、U形無滴與平片，圈出形狀改變空氣作用和水滴降低重心的模型解釋。"
+        },
+        {
+          "title": "同樣落水，接觸哪一面會再彈？",
+          "candidate_ids": [
+            "L46-003"
+          ],
+          "seconds": 46,
+          "beats": [
+            {
+              "seconds": 22,
+              "new_information": "腹面先接水與背側先接水的實測片段各自重繪，停在第一次向上回升。"
+            },
+            {
+              "seconds": 24,
+              "new_information": "模型保留其餘水動力，只拿掉回升時的腹管黏附，仍會回彈；加回後才快速停止。"
+            }
+          ],
+          "new_information": "腹面先接水與背側先接水的實測片段各自重繪，停在第一次向上回升。 模型保留其餘水動力，只拿掉回升時的腹管黏附，仍會回彈；加回後才快速停止。"
+        }
+      ],
+      "drop_if": "若翻正的塑膠對照或落水模型不能與活體分框，撤整案；可另評只保25秒翻正或46秒落地，不沿用本案開頭結尾。",
+      "evidence_gaps": "乾腹管落乾固體不放入水面反事實。力的分項是模型，非逐力直接測量。",
+      "boredom_risk": "每拍交付新對照；來源限制置圖註，不用朗讀研究背景填秒。",
+      "timing_basis": "修後根代理三段完整離線連讀61.880秒：21.743／21.026／19.110。第1段映第一章25秒，第2+3段40.136秒映第二章46秒，71秒留9.120秒看圖。這不是觀眾測試、實拍成片或平台旁白核准。"
+    },
+    {
+      "id": "W46L-T02",
+      "title": "水黽的腳划得越快，起跳速度就越快嗎？",
+      "core_question": "腳加速下壓時，水面的支撐為什麼可能先中斷？",
+      "connection": "先在同形態模型對比腳速與水窩破裂，再把自然跳躍放回不同形態的邊界，區分模型預測與實際觀察。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L46-007"
+      ],
+      "target_minutes": 0.7333333333333333,
+      "range_minutes": [
+        0.7333333333333333,
+        0.7333333333333333
+      ],
+      "body_seconds": 44,
+      "chapters": [
+        {
+          "title": "腳加快，水窩先破了",
+          "candidate_ids": [
+            "L46-007"
+          ],
+          "seconds": 18,
+          "beats": [
+            {
+              "seconds": 18,
+              "new_information": "開場問腳速越快是否起跳越快；同形態模型的兩次下壓並排，較快那次先把水窩壓破。"
+            }
+          ],
+          "new_information": "開場問腳速越快是否起跳越快；同形態模型的兩次下壓並排，較快那次先把水窩壓破。"
+        },
+        {
+          "title": "破掉以後，划得快不一定起跳快",
+          "candidate_ids": [
+            "L46-007"
+          ],
+          "seconds": 26,
+          "beats": [
+            {
+              "seconds": 26,
+              "new_information": "對上破膜時點與支撐中斷、離水速度；自然跳躍點另置於不同形態的邊界，收回腳速要連同水面承受情況一起看。"
+            }
+          ],
+          "new_information": "對上破膜時點與支撐中斷、離水速度；自然跳躍點另置於不同形態的邊界，收回腳速要連同水面承受情況一起看。"
+        }
+      ],
+      "drop_if": "若無法呈現同形態模型的破膜時點及自然跳躍的獨立資料，撤案；不以一般水面張力介紹補時。",
+      "evidence_gaps": "水黽原圖尚待進畫面前核讀，現以正文與圖說規劃原創示意。自然跳躍不是強迫同一動物測試全部腳速。",
+      "boredom_risk": "每拍交付新對照；來源限制置圖註，不用朗讀研究背景填秒。",
+      "timing_basis": "紙上連續節奏，含開場、模型切換與結尾；未實測旁白。"
+    },
+    {
+      "id": "W46L-T03",
+      "title": "衝出邊緣的蟑螂，怎麼把往前跑變成翻到下面？",
+      "core_question": "是停下來再倒掛，還是原本的速度就參與翻轉？",
+      "connection": "去爪保留足墊的失敗，接帶入動能與從靜止擺的模型差異。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L46-004"
+      ],
+      "target_minutes": 1.1333333333333333,
+      "range_minutes": [
+        1.1333333333333333,
+        1.1333333333333333
+      ],
+      "body_seconds": 68,
+      "chapters": [
+        {
+          "title": "先看勾住邊緣的那隻腳",
+          "candidate_ids": [
+            "L46-004"
+          ],
+          "seconds": 33,
+          "beats": [
+            {
+              "seconds": 16,
+              "new_information": "正常衝到邊緣時後爪掛住，身體繞它轉到下方；不把身體消失剪成瞬間傳送。"
+            },
+            {
+              "seconds": 17,
+              "new_information": "去爪但保留足墊的同動物處理對照多數失敗，排除只畫一般足墊黏住的解釋。"
+            }
+          ],
+          "new_information": "正常衝到邊緣時後爪掛住，身體繞它轉到下方；不把身體消失剪成瞬間傳送。 去爪但保留足墊的同動物處理對照多數失敗，排除只畫一般足墊黏住的解釋。"
+        },
+        {
+          "title": "原來向前的速度沒有先歸零",
+          "candidate_ids": [
+            "L46-004"
+          ],
+          "seconds": 35,
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "同一起始位置的擺模型並排：從靜止下擺太慢，帶入進場動能更接近前半段軌跡。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "將模型疊回前半程後停住，後續主動拉身保留為另一階段；回到勾緣支點。"
+            }
+          ],
+          "new_information": "同一起始位置的擺模型並排：從靜止下擺太慢，帶入進場動能更接近前半段軌跡。 將模型疊回前半程後停住，後續主動拉身保留為另一階段；回到勾緣支點。"
+        }
+      ],
+      "drop_if": "若無去爪對照或無法區分帶入速度與靜止擺，撤案；刪任一章剩35或33秒須重設。",
+      "evidence_gaps": "擺模型不重現整段全部能量／神經控制；蟑螂與壁虎的坡面材質不同，本案只以蟑螂為主。",
+      "boredom_risk": "每拍交付新對照；來源限制置圖註，不用朗讀研究背景填秒。",
+      "timing_basis": "紙上連續節奏，含開場、模型切換與結尾；未實測旁白。"
+    },
+    {
+      "id": "W46L-T04",
+      "title": "飛蛇左右扭，不只是讓飛行路線變彎？",
+      "core_question": "身體已經有滑翔外形，保持不動會更穩嗎？",
+      "connection": "先看實測形變，再用同一初始條件的模型關掉擺動，分辨滑得動和滑得穩。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L46-006"
+      ],
+      "target_minutes": 1.1,
+      "range_minutes": [
+        1.1,
+        1.1
+      ],
+      "body_seconds": 66,
+      "chapters": [
+        {
+          "title": "把空中的身形一格格記下來",
+          "candidate_ids": [
+            "L46-006"
+          ],
+          "seconds": 30,
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "呈現蛇下滑時的三維身體波形，問固定這個形狀能不能照樣走完。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "軌跡先是實測；切換到模型後才凍結身體，不用活蛇僵住的假畫面。"
+            }
+          ],
+          "new_information": "呈現蛇下滑時的三維身體波形，問固定這個形狀能不能照樣走完。 軌跡先是實測；切換到模型後才凍結身體，不用活蛇僵住的假畫面。"
+        },
+        {
+          "title": "模型少了擺動，姿態也跟著變",
+          "candidate_ids": [
+            "L46-006"
+          ],
+          "seconds": 36,
+          "beats": [
+            {
+              "seconds": 24,
+              "new_information": "同起點模型中固定形狀逐漸翻滾或俯仰，有擺動可維持較長穩定路段；同時留一個未立即失穩例子。"
+            },
+            {
+              "seconds": 12,
+              "new_information": "用隨形狀變動的力矩方向回扣：扭身在維持滑翔姿態，不直接等同游泳向前推。"
+            }
+          ],
+          "new_information": "同起點模型中固定形狀逐漸翻滾或俯仰，有擺動可維持較長穩定路段；同時留一個未立即失穩例子。 用隨形狀變動的力矩方向回扣：扭身在維持滑翔姿態，不直接等同游泳向前推。"
+        }
+      ],
+      "drop_if": "若模型分框或相同初始條件無法交代，撤案；單留追蹤畫面不夠解釋，不能補旁白湊66秒。",
+      "evidence_gaps": "無活蛇停止擺動處理，長距離比較亦是模型；不推為所有蛇或所有姿態。",
+      "boredom_risk": "每拍交付新對照；來源限制置圖註，不用朗讀研究背景填秒。",
+      "timing_basis": "紙上連續節奏，含開場、模型切換與結尾；未實測旁白。"
+    },
+    {
+      "id": "W46L-T05",
+      "title": "壁虎能拍水跑，為什麼加了界面活性劑還會跑低、跑慢？",
+      "core_question": "腳已經拍進水裡，身體為什麼仍會受水面狀態影響？",
+      "connection": "先以拍水衝量估算提出支撐缺口，再看添加劑條件的頭高與速度，保留身體接觸和阻力耦合的解釋。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L46-005"
+      ],
+      "target_minutes": 0.75,
+      "range_minutes": [
+        0.75,
+        0.75
+      ],
+      "body_seconds": 45,
+      "chapters": [
+        {
+          "title": "拍水的腳，估算仍撐不完",
+          "candidate_ids": [
+            "L46-005"
+          ],
+          "seconds": 22,
+          "beats": [
+            {
+              "seconds": 22,
+              "new_information": "開場看壁虎拍水前行；接拍水衝量估算，腳的估算貢獻不足獨自撐起全身。"
+            }
+          ],
+          "new_information": "開場看壁虎拍水前行；接拍水衝量估算，腳的估算貢獻不足獨自撐起全身。"
+        },
+        {
+          "title": "改了水面，身體也低了",
+          "candidate_ids": [
+            "L46-005"
+          ],
+          "seconds": 23,
+          "beats": [
+            {
+              "seconds": 23,
+              "new_information": "並排添加劑與原水的頭高、前速；較低身體與界面支撐、阻力牽連，回到拍進水裡仍不是只有腳在作用。"
+            }
+          ],
+          "new_information": "並排添加劑與原水的頭高、前速；較低身體與界面支撐、阻力牽連，回到拍進水裡仍不是只有腳在作用。"
+        }
+      ],
+      "drop_if": "若無法分清拍水衝量估算與添加劑的實測頭高／速度，撤案；不填表面張力百科或固定支撐比例。",
+      "evidence_gaps": "添加劑同時影響界面支撐與身體浸水狀態，未逐項測出所有力的份額，不能畫固定百分比餅圖。",
+      "boredom_risk": "每拍交付新對照；來源限制置圖註，不用朗讀研究背景填秒。",
+      "timing_basis": "紙上連續節奏，含開場、模型切換與結尾；未實測旁白。"
+    }
+  ]
+}

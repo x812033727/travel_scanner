@@ -1,0 +1,650 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_DRAFT_PENDING_NONAUTHOR_REVIEW",
+  "author": "pool_physics",
+  "production_ready": false,
+  "scope": "僅wave48聲學作者四核心與三紙上短案；不簽自己的查核。",
+  "baseline": {
+    "head": "a881970f8417fb8a570ecdce317701a1cc361455",
+    "selected": 3501,
+    "raw_records": 3890,
+    "not_added": 2089,
+    "themes": 528,
+    "pool_sha256": "e0d86e1a59be313fa28b5d3471c07eb24dd7f1e2fac52c91c4e675ba7435c032"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave48-physics.json",
+      "sha256": "17ae7b2e2bf7c267b569dcf2ac95d4bb0f1fcea8ac687a6fbaece396e92648aa"
+    },
+    {
+      "file": "reviews/wave48-physics-themes.json",
+      "sha256": "178dba92511ad53e399927bf5931825ede377e12dd7b36a7febd5f685cff37e3"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 5,
+    "experimental_cases": 4,
+    "theoretical_followup": 1,
+    "not_added": 13,
+    "near_pairs": 18,
+    "themes": 2,
+    "deferred_themes": 1
+  },
+  "dedup_reading": {
+    "method": "全3890raw/2089NA詞面掃聲音/樂器/振型等153原題76未收命中；另搜內共振、張力調制、拍手、班卓、鑼、振幅頻率。近對逐讀完整問答scope；不宣稱逐題精讀全庫。",
+    "cache": ".cache/wave48-physics-oldscan.json",
+    "cache_sha256": "6ad686e1be1c095cc5889756ae06e578f7a05798a5742e7e3b4ded1e553c0f2e",
+    "semantic": "待root共同top5；作者未預稱去重完成。"
+  },
+  "near_pairs": [
+    {
+      "a": "P48-001",
+      "b": "D9012",
+      "reason": "舊核決定腔共鳴頻率；新核以接觸/壓升/初次及後續噴流的時序判別激發來源，不另計手形。",
+      "a_snapshot": {
+        "id": "P48-001",
+        "question": "拍手的兩塊軟模型已碰到，為什麼最明顯的那聲還晚一步？",
+        "answer_target": "接觸先把腔內空氣擠壓；出口初次噴流出現時才激發明顯的腔內聲振動。後續仍有噴流卻不再有同樣拍聲，因而不能把持續噴流噪音或固體碰撞本身當主聲源。",
+        "scope": "限2025模型手與所測姿態；壓力時序含管路延遲校正。新增是起音機制的時序判別，不另計手形改變Helmholtz頻率。"
+      },
+      "b_snapshot": {
+        "id": "D9012",
+        "question": "吹瓶口的低音，為什麼不能只拿瓶子的高度當一根短笛計算？",
+        "answer_target": "波長遠大於瓶身時，腔內近同相壓縮；頸口空氣慣性配合腔內可壓縮性振動。",
+        "scope": "小振幅集中參數近似；長細管駐波另有壓力分布，不能只換尺寸套同一式。"
+      }
+    },
+    {
+      "a": "P48-001",
+      "b": "D9005",
+      "reason": "舊為接觸材料硬化改力脈衝；本例主要聲脈衝晚於固體接觸，先加壓再噴氣啟動。",
+      "a_snapshot": {
+        "id": "P48-001",
+        "question": "拍手的兩塊軟模型已碰到，為什麼最明顯的那聲還晚一步？",
+        "answer_target": "接觸先把腔內空氣擠壓；出口初次噴流出現時才激發明顯的腔內聲振動。後續仍有噴流卻不再有同樣拍聲，因而不能把持續噴流噪音或固體碰撞本身當主聲源。",
+        "scope": "限2025模型手與所測姿態；壓力時序含管路延遲校正。新增是起音機制的時序判別，不另計手形改變Helmholtz頻率。"
+      },
+      "b_snapshot": {
+        "id": "D9005",
+        "question": "鋼琴重敲一個音，為什麼不是把輕敲的聲音整體放大而已？",
+        "answer_target": "琴槌毛氈越壓越難壓，較強敲擊改變脈衝形狀與高頻成分比例。",
+        "scope": "相同琴鍵與錄音條件；非單純提高重播增益，不提供琴槌整音操作。"
+      }
+    },
+    {
+      "a": "P48-001",
+      "b": "D9018",
+      "reason": "低Mach噴流起音與管中強波陡化不同；本篇未採shock解釋。",
+      "a_snapshot": {
+        "id": "P48-001",
+        "question": "拍手的兩塊軟模型已碰到，為什麼最明顯的那聲還晚一步？",
+        "answer_target": "接觸先把腔內空氣擠壓；出口初次噴流出現時才激發明顯的腔內聲振動。後續仍有噴流卻不再有同樣拍聲，因而不能把持續噴流噪音或固體碰撞本身當主聲源。",
+        "scope": "限2025模型手與所測姿態；壓力時序含管路延遲校正。新增是起音機制的時序判別，不另計手形改變Helmholtz頻率。"
+      },
+      "b_snapshot": {
+        "id": "D9018",
+        "question": "長號吹得很響時，聲波為什麼會在管裡越走越尖？",
+        "answer_target": "較強壓縮部分因局部聲速與流動效應追上前緣，長管內逐漸陡化並增加高頻。",
+        "scope": "指定研究的強奏長號；初始上升速率與管長也重要，不等於高音都比低音傳得快。"
+      }
+    },
+    {
+      "a": "P48-002",
+      "b": "D9006",
+      "reason": "舊為被動能量轉出速率；新是移動琴橋改弦長/張力的參數調制，早段額外頻率。",
+      "a_snapshot": {
+        "id": "P48-002",
+        "question": "班卓琴的弦不再折過琴橋，為什麼撥下去開頭那陣高頻會變少？",
+        "answer_target": "有折角時，琴橋小幅上下動就會一階改變弦長與張力；零角度的伸長從更高階開始。這提供早段附加頻率較弱的機制解釋；2020修正用參數振盪的和差頻，不把一般情況等同慢速FM。",
+        "scope": "2019同琴特殊琴橋0/13度演示，代表性錄音非等撥力實驗；原文高頻差最明顯在初0.2–0.3秒。2020是同作者理論修正，不是獨立重現或所有班卓音色的唯一證明。"
+      },
+      "b_snapshot": {
+        "id": "D9006",
+        "question": "琴身把弦聲傳得更響，為什麼也可能讓聲音更快消失？",
+        "answer_target": "較強的弦—音板耦合更快移出單次激發的能量，初聲更響卻可衰減更快。",
+        "scope": "被動撥／擊弦，分開其他耗散；不稱琴身製造能量或所有琴都同一衰減常數。"
+      }
+    },
+    {
+      "a": "P48-002",
+      "b": "D9002",
+      "reason": "舊為固定彎曲剛性令自由模態不諧；新是振動中張力被橋動調制，非只一列固定模態。",
+      "a_snapshot": {
+        "id": "P48-002",
+        "question": "班卓琴的弦不再折過琴橋，為什麼撥下去開頭那陣高頻會變少？",
+        "answer_target": "有折角時，琴橋小幅上下動就會一階改變弦長與張力；零角度的伸長從更高階開始。這提供早段附加頻率較弱的機制解釋；2020修正用參數振盪的和差頻，不把一般情況等同慢速FM。",
+        "scope": "2019同琴特殊琴橋0/13度演示，代表性錄音非等撥力實驗；原文高頻差最明顯在初0.2–0.3秒。2020是同作者理論修正，不是獨立重現或所有班卓音色的唯一證明。"
+      },
+      "b_snapshot": {
+        "id": "D9002",
+        "question": "同一個鋼琴音裡，較高的頻率為什麼不一定剛好是最低頻率的整數倍？",
+        "answer_target": "彎曲剛性對高階模態的影響更大，使頻率序列偏離理想柔弦的整數倍。",
+        "scope": "真弦剛性修正；不把所有泛音偏移等同走音，也不另拆纏線材料題。"
+      }
+    },
+    {
+      "a": "P48-002",
+      "b": "D9004",
+      "reason": "舊弓弦黏滑鎖週期；新未持續拉弓，是橋動張力調制和早段頻譜。",
+      "a_snapshot": {
+        "id": "P48-002",
+        "question": "班卓琴的弦不再折過琴橋，為什麼撥下去開頭那陣高頻會變少？",
+        "answer_target": "有折角時，琴橋小幅上下動就會一階改變弦長與張力；零角度的伸長從更高階開始。這提供早段附加頻率較弱的機制解釋；2020修正用參數振盪的和差頻，不把一般情況等同慢速FM。",
+        "scope": "2019同琴特殊琴橋0/13度演示，代表性錄音非等撥力實驗；原文高頻差最明顯在初0.2–0.3秒。2020是同作者理論修正，不是獨立重現或所有班卓音色的唯一證明。"
+      },
+      "b_snapshot": {
+        "id": "D9004",
+        "question": "同一條略不和諧的弦，拉弓時為什麼可能比撥弦更接近整齊的泛音列？",
+        "answer_target": "穩定的非線性黏滑週期把各成分鎖在共同週期，容許偏離各自自由模態頻率。",
+        "scope": "條件是能維持穩定週期的拉奏；不說任何拉弓都準，不另計黏滑如何產生聲音。"
+      }
+    },
+    {
+      "a": "P48-002",
+      "b": "X40-005",
+      "reason": "皆涉及參數效應，但缽的受迫液面失穩門檻/半頻，與弦橋幾何一階伸長和初段和差頻控制不同；請非作者嚴判。",
+      "a_snapshot": {
+        "id": "P48-002",
+        "question": "班卓琴的弦不再折過琴橋，為什麼撥下去開頭那陣高頻會變少？",
+        "answer_target": "有折角時，琴橋小幅上下動就會一階改變弦長與張力；零角度的伸長從更高階開始。這提供早段附加頻率較弱的機制解釋；2020修正用參數振盪的和差頻，不把一般情況等同慢速FM。",
+        "scope": "2019同琴特殊琴橋0/13度演示，代表性錄音非等撥力實驗；原文高頻差最明顯在初0.2–0.3秒。2020是同作者理論修正，不是獨立重現或所有班卓音色的唯一證明。"
+      },
+      "b_snapshot": {
+        "id": "X40-005",
+        "question": "一碗水跟著缽壁振動，為什麼加強振動後，水面的某排波反而每兩拍才起伏一次？",
+        "answer_target": "研究用喇叭在固定頻率激振缽壁。很弱時水面以驅動頻率出現向內行進的小波；振幅過第一道門檻，缽邊出現以半頻起伏的駐波。再加強才會有波破裂，拋出小滴。",
+        "scope": "量的是液面圖樣及碗壁加速度，非把聽見的基音降一個八度；激振頻率和振幅兩者不能混寫。"
+      }
+    },
+    {
+      "a": "P48-003",
+      "b": "D9018",
+      "reason": "舊是氣體傳播速度非線性形成尖波；新是固體振型內共振傳能，含低於驅動頻率的分量。",
+      "a_snapshot": {
+        "id": "P48-003",
+        "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+        "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+        "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。"
+      },
+      "b_snapshot": {
+        "id": "D9018",
+        "question": "長號吹得很響時，聲波為什麼會在管裡越走越尖？",
+        "answer_target": "較強壓縮部分因局部聲速與流動效應追上前緣，長管內逐漸陡化並增加高頻。",
+        "scope": "指定研究的強奏長號；初始上升速率與管長也重要，不等於高音都比低音傳得快。"
+      }
+    },
+    {
+      "a": "P48-003",
+      "b": "P114",
+      "reason": "舊線性近頻共鳴；新在一片板的非線性和頻/半頻關係交換，不需另一個同頻物體。",
+      "a_snapshot": {
+        "id": "P48-003",
+        "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+        "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+        "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。"
+      },
+      "b_snapshot": {
+        "id": "P114",
+        "question": "一個音響起，沒碰到的另一條弦為什麼也可能振動？",
+        "answer_target": "介質或結構把週期力傳給具有相近模態的物體。",
+        "scope": "樂器實例需補來源與授權畫面"
+      }
+    },
+    {
+      "a": "P48-003",
+      "b": "X40-005",
+      "reason": "舊缽液面參數半頻；新固體內共振兼有95+195=290及後續寬頻，不能僅用半頻照片主張新核。",
+      "a_snapshot": {
+        "id": "P48-003",
+        "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+        "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+        "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。"
+      },
+      "b_snapshot": {
+        "id": "X40-005",
+        "question": "一碗水跟著缽壁振動，為什麼加強振動後，水面的某排波反而每兩拍才起伏一次？",
+        "answer_target": "研究用喇叭在固定頻率激振缽壁。很弱時水面以驅動頻率出現向內行進的小波；振幅過第一道門檻，缽邊出現以半頻起伏的駐波。再加強才會有波破裂，拋出小滴。",
+        "scope": "量的是液面圖樣及碗壁加速度，非把聽見的基音降一個八度；激振頻率和振幅兩者不能混寫。"
+      }
+    },
+    {
+      "a": "P48-003",
+      "b": "P131",
+      "reason": "舊有多個允許駐波；新解釋固定單頻入力為何到門檻才把能量送往未直接驅動模態。",
+      "a_snapshot": {
+        "id": "P48-003",
+        "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+        "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+        "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。"
+      },
+      "b_snapshot": {
+        "id": "P131",
+        "question": "一根管子為什麼不只會發出一個音？",
+        "answer_target": "同一邊界可容納多個符合條件的駐波模式。",
+        "scope": "形狀固定、線性聲學"
+      }
+    },
+    {
+      "a": "P48-003",
+      "b": "P115",
+      "reason": "舊只一般限制無限增幅；新是明確頻譜分枝/寬頻轉換控制，不能只說非線性。",
+      "a_snapshot": {
+        "id": "P48-003",
+        "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+        "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+        "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。"
+      },
+      "b_snapshot": {
+        "id": "P115",
+        "question": "共振是不是代表振幅一定會無限增加？",
+        "answer_target": "真實系統的阻尼、非線性與能量輸入上限限制振幅。",
+        "scope": "需補讀阻尼段落再寫定量結論"
+      }
+    },
+    {
+      "a": "P48-004",
+      "b": "D9003",
+      "reason": "舊加局部質量選擇影響不同振型；新不加質量，改振幅而各振型移頻方向相反。",
+      "a_snapshot": {
+        "id": "P48-004",
+        "question": "同一面鑼加強振動，為什麼一個共振頻率往上，另一個卻往下？",
+        "answer_target": "不同振型用到不同區域的彎曲與曲率，非線性回復作用的平衡可不同。實測最低軸對稱振型向高頻移，另兩個向低頻移；簡化桿模型定性說明硬化與軟化的競爭。",
+        "scope": "限2001會議作者稿的中央諧波激振、三振型骨幹線。不是改變鑼材質或敲擊位置的實驗；曲率歸因未完成完整鑼的定量驗證，不聲稱小幅頻移都肉耳可辨。"
+      },
+      "b_snapshot": {
+        "id": "D9003",
+        "question": "在弦的正中央加一小塊質量，為什麼不是所有泛音一起等比例變低？",
+        "answer_target": "額外質量主要影響在該位置有運動的模態；節點在中央的模態改變較小。",
+        "scope": "局部小質量、仍受張力約束；與整條弦均勻加重分開。"
+      }
+    },
+    {
+      "a": "P48-004",
+      "b": "X40-001",
+      "reason": "舊靜態J/S形狀改局域及耗散；新同鑼固定幾何不同振型的振幅相關剛度。",
+      "a_snapshot": {
+        "id": "P48-004",
+        "question": "同一面鑼加強振動，為什麼一個共振頻率往上，另一個卻往下？",
+        "answer_target": "不同振型用到不同區域的彎曲與曲率，非線性回復作用的平衡可不同。實測最低軸對稱振型向高頻移，另兩個向低頻移；簡化桿模型定性說明硬化與軟化的競爭。",
+        "scope": "限2001會議作者稿的中央諧波激振、三振型骨幹線。不是改變鑼材質或敲擊位置的實驗；曲率歸因未完成完整鑼的定量驗證，不聲稱小幅頻移都肉耳可辨。"
+      },
+      "b_snapshot": {
+        "id": "X40-001",
+        "question": "同一片手鋸彎成 J 或 S，為什麼只有一種彎法能留下綿長的音？",
+        "answer_target": "S形多了一處彎向反轉的區域。研究的薄殼模型在這附近容許特定振型集中，較少振動傳到夾持處耗散；實物配置的衰減曲線也顯示S形的突出音能維持較久。",
+        "scope": "限研究夾持與振型；Fig1例圖J為敲擊、S為拉弓，不是同擊力雙盲比較。"
+      }
+    },
+    {
+      "a": "P48-004",
+      "b": "P115",
+      "reason": "一般共振振幅有界不等於解答同件各振型軟化/硬化相反。",
+      "a_snapshot": {
+        "id": "P48-004",
+        "question": "同一面鑼加強振動，為什麼一個共振頻率往上，另一個卻往下？",
+        "answer_target": "不同振型用到不同區域的彎曲與曲率，非線性回復作用的平衡可不同。實測最低軸對稱振型向高頻移，另兩個向低頻移；簡化桿模型定性說明硬化與軟化的競爭。",
+        "scope": "限2001會議作者稿的中央諧波激振、三振型骨幹線。不是改變鑼材質或敲擊位置的實驗；曲率歸因未完成完整鑼的定量驗證，不聲稱小幅頻移都肉耳可辨。"
+      },
+      "b_snapshot": {
+        "id": "P115",
+        "question": "共振是不是代表振幅一定會無限增加？",
+        "answer_target": "真實系統的阻尼、非線性與能量輸入上限限制振幅。",
+        "scope": "需補讀阻尼段落再寫定量結論"
+      }
+    },
+    {
+      "a": "P48-004",
+      "b": "P106",
+      "reason": "舊明限小振幅線性；新是大變形回復幾何且模式依賴的相反頻移，不作單純反例一句。",
+      "a_snapshot": {
+        "id": "P48-004",
+        "question": "同一面鑼加強振動，為什麼一個共振頻率往上，另一個卻往下？",
+        "answer_target": "不同振型用到不同區域的彎曲與曲率，非線性回復作用的平衡可不同。實測最低軸對稱振型向高頻移，另兩個向低頻移；簡化桿模型定性說明硬化與軟化的競爭。",
+        "scope": "限2001會議作者稿的中央諧波激振、三振型骨幹線。不是改變鑼材質或敲擊位置的實驗；曲率歸因未完成完整鑼的定量驗證，不聲稱小幅頻移都肉耳可辨。"
+      },
+      "b_snapshot": {
+        "id": "P106",
+        "question": "把彈簧振子拉得更遠才放手，為什麼不一定讓它每秒振更多次？",
+        "answer_target": "線性系統的週期由質量與剛性決定，振幅主要改變能量。",
+        "scope": "小振幅、低阻尼近似"
+      }
+    },
+    {
+      "a": "P48-003",
+      "b": "P48-004",
+      "reason": "新3是多模態交換生新頻及寬頻；新4是一模態內振幅相關頻率偏移，來源簡桿模型明說不能證跨模態交換。",
+      "a_snapshot": {
+        "id": "P48-003",
+        "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+        "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+        "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。"
+      },
+      "b_snapshot": {
+        "id": "P48-004",
+        "question": "同一面鑼加強振動，為什麼一個共振頻率往上，另一個卻往下？",
+        "answer_target": "不同振型用到不同區域的彎曲與曲率，非線性回復作用的平衡可不同。實測最低軸對稱振型向高頻移，另兩個向低頻移；簡化桿模型定性說明硬化與軟化的競爭。",
+        "scope": "限2001會議作者稿的中央諧波激振、三振型骨幹線。不是改變鑼材質或敲擊位置的實驗；曲率歸因未完成完整鑼的定量驗證，不聲稱小幅頻移都肉耳可辨。"
+      }
+    },
+    {
+      "a": "P48-002",
+      "b": "P48-003",
+      "reason": "弦橋折角引入張力參數調制，與薄板大變形內共振分枝不是同一控制；跨模態成分仍需peer再判。",
+      "a_snapshot": {
+        "id": "P48-002",
+        "question": "班卓琴的弦不再折過琴橋，為什麼撥下去開頭那陣高頻會變少？",
+        "answer_target": "有折角時，琴橋小幅上下動就會一階改變弦長與張力；零角度的伸長從更高階開始。這提供早段附加頻率較弱的機制解釋；2020修正用參數振盪的和差頻，不把一般情況等同慢速FM。",
+        "scope": "2019同琴特殊琴橋0/13度演示，代表性錄音非等撥力實驗；原文高頻差最明顯在初0.2–0.3秒。2020是同作者理論修正，不是獨立重現或所有班卓音色的唯一證明。"
+      },
+      "b_snapshot": {
+        "id": "P48-003",
+        "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+        "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+        "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P48-S001",
+      "title": "Revealing the sound, flow excitation, and collision dynamics of human handclaps",
+      "doi": "10.1103/PhysRevResearch.7.013259",
+      "canonical_url": "https://doi.org/10.1103/PhysRevResearch.7.013259",
+      "retrieval_url": "https://journals.aps.org/prresearch/pdf/10.1103/PhysRevResearch.7.013259",
+      "version": "APS 原刊 PDF，2025-03-11；同一論文，不將模型與真人當獨立研究。",
+      "same_work_policy": "PDF/摘要頁/DOI是同研究載體；P48-S003是對S002相關理論的同作者修正，不另計獨立實驗。",
+      "exact_old_matches": []
+    },
+    {
+      "source_id": "P48-S002",
+      "title": "Banjo Ring from Stretching String: A Zero Break Angle Demo",
+      "doi": null,
+      "canonical_url": "https://arxiv.org/abs/1903.03186",
+      "retrieval_url": "https://arxiv.org/pdf/1903.03186",
+      "version": "v1，2019-03-07；作者演示預印本，未當成盲測或獨立重複實驗。",
+      "same_work_policy": "PDF/摘要頁/DOI是同研究載體；P48-S003是對S002相關理論的同作者修正，不另計獨立實驗。",
+      "exact_old_matches": []
+    },
+    {
+      "source_id": "P48-S003",
+      "title": "Banjo Break Angle Tension Modulation as Parametric Oscillation",
+      "doi": null,
+      "canonical_url": "https://arxiv.org/abs/2001.05598",
+      "retrieval_url": "https://arxiv.org/pdf/2001.05598",
+      "version": "v1，2020-01-16提交，PDF署2020-01-09；同作者對相關機制的理論修正，非第二個聲學實驗。",
+      "same_work_policy": "PDF/摘要頁/DOI是同研究載體；P48-S003是對S002相關理論的同作者修正，不另計獨立實驗。",
+      "exact_old_matches": []
+    },
+    {
+      "source_id": "P48-S004",
+      "title": "Transition scenario to turbulence in thin vibrating plates",
+      "doi": "10.1016/j.jsv.2011.09.016",
+      "canonical_url": "https://doi.org/10.1016/j.jsv.2011.09.016",
+      "retrieval_url": "https://perso.ensta.fr/~touze/PDF/Batwoman/2012-JSV_TransiTurb.pdf",
+      "version": "作者站公開原刊 personal copy；2011-10-05上線、2012卷期，同文一份證據。",
+      "same_work_policy": "PDF/摘要頁/DOI是同研究載體；P48-S003是對S002相關理論的同作者修正，不另計獨立實驗。",
+      "exact_old_matches": []
+    },
+    {
+      "source_id": "P48-S005",
+      "title": "Nonlinear behavior of gongs through the dynamics of simple rods systems",
+      "doi": null,
+      "canonical_url": "https://perso.ensta.fr/~touze/PDF/isma01rods.pdf",
+      "retrieval_url": "https://perso.ensta.fr/~touze/PDF/isma01rods.pdf",
+      "version": "作者公開6頁稿；內文保留草稿引用占位，未確認最後會議排版或DOI，不能冒稱已核正式期刊版。",
+      "same_work_policy": "PDF/摘要頁/DOI是同研究載體；P48-S003是對S002相關理論的同作者修正，不另計獨立實驗。",
+      "exact_old_matches": []
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P48-S001",
+      "reading_scope": "PDF pp2–8，II A–B、III A–C；尤其 pp4–6 III B 與 Fig4 同步時序、Fig5 腔共鳴對照。",
+      "limitations": "只把主張限在所測姿態及模型；72 cm 管路的壓力量測已作2.1 ms校正。未看補充影片、不採衝擊波說法；後段材質耗散未完整讀。",
+      "author_cache": {
+        "file": ".cache/wave48-physics-clap.pdf",
+        "sha256": "a150a2d3fb308a0f2e1b08071b553b44b8cc62dd98b318315a0d21862d10c3ac",
+        "text_file": ".cache/wave48-physics-clap.txt",
+        "text_sha256": "3c82babdd46a7b34671f1d4fc235d7e80b2d0a5e7cd803a8f8ad1bc5a00bd955"
+      }
+    },
+    {
+      "source_id": "P48-S002",
+      "reading_scope": "PDF pp2–11，改製琴橋與0/13度對照、Figs2–7、末段動態剛度討論。",
+      "limitations": "非固定撥力儀器試驗；挑代表性單撥、其他弦未消音；零角度需特殊琴橋。未聽音訊。原文FM解釋須合看2020更正。",
+      "author_cache": {
+        "file": ".cache/wave48-physics-banjo.pdf",
+        "sha256": "e83deb83817b59e42d6b1d400e1da17b797c972d019ed87dd918494376f799e7",
+        "text_file": ".cache/wave48-physics-banjo.txt",
+        "text_sha256": "7f9f61fa3ad6880e3651a365aed941d4c12a8d2c155c8dfd5abf9587644d5907"
+      }
+    },
+    {
+      "source_id": "P48-S003",
+      "reading_scope": "PDF pp2–5，Background、最低階參數振盪推導及衰減討論。",
+      "limitations": "未完成真琴全部弦/橋模態耦合和；模型支持機制而非已單獨排除所有音色因素。附錄音訊連結未播放。",
+      "author_cache": {
+        "file": ".cache/wave48-physics-banjo-correction.pdf",
+        "sha256": "b24170db9070724a6234c75d08754b3d1a6778811b6f76978736dbad402380c0",
+        "text_file": ".cache/wave48-physics-banjo-correction.txt",
+        "text_sha256": "ad6ea2e4f84f6abd28361fca62d46e07491372a4b365e4100a1eed053fd41ae7"
+      }
+    },
+    {
+      "source_id": "P48-S004",
+      "reading_scope": "PDF pp2–5（原刊412–415）Introduction/實驗摘要/Fig1/模型起段，以及 PDF p22 Conclusion；未逐驗數值演算法與全部模擬圖。",
+      "limitations": "Fig1是自由邊界實驗；後續數值模型採簡支，不能冒充同邊界。50 Hz固定干擾不算新振型；原文允許直接進寬頻，不保證每片都三階段。",
+      "author_cache": {
+        "file": ".cache/wave48-physics-plate.pdf",
+        "sha256": "2984be468e958d628d3da93e5725346d497968dc2a60451ebf2d89071e485089",
+        "text_file": ".cache/wave48-physics-plate.txt",
+        "text_sha256": "b1d7d7aa266f5d6b5526eaf1e4bc59f15dcc522528b26c46771630fce6235c29"
+      }
+    },
+    {
+      "source_id": "P48-S005",
+      "reading_scope": "PDF pp4–6，§3.1–3.3、Figs2–3與Conclusion；抽文公式亂碼，另目讀兩圖頁。",
+      "limitations": "直接量的是中央諧波強迫的骨幹曲線，不是自由敲擊的盲聽音高；高階軟化的曲率歸因在文中仍為定性推論，單自由度模型不能證多模態能量交換。",
+      "author_cache": {
+        "file": ".cache/wave48-physics-gong-rods.pdf",
+        "sha256": "94d1e001410b19ca2f2b37f1e8952123fd08d2fa0bb618ee29602783eb96f59e",
+        "text_file": ".cache/wave48-physics-gong-rods.txt",
+        "text_sha256": "2ae71b5e36998ae15fab92be55feb154309edcd16ed817b0524fec6d144abe8b"
+      }
+    }
+  ],
+  "retrieval_receipts": {
+    "file": ".cache/wave48-physics-fetch1.json",
+    "sha256": "f78c6e88db394215063517b142e4dae788edb0bd55d7ec8f201536b99d179ec4",
+    "correction": "5 PDF HTTP200成功；首次文字擷取因本機pdftotext缺失而失敗，之後在本批ignored cache裝pypdf抽文成功。原manifest WinError2是抽文工具，不是HTTP失敗。"
+  },
+  "retrieval_failures": [
+    {
+      "url": "https://web.stanford.edu/~cantwell/AA284A_Course_Material/AA284A_Resources/ThermoAcoustics%20and%20the%20Rijke%20Tube%20Experiments%20Identification%20and%20Modeling.pdf",
+      "result": "初次web開頁首段可讀；UA憑證失敗；再web開逾時，未繞過驗證或稱讀完。"
+    },
+    {
+      "url": "https://sites.engineering.ucsb.edu/~bamieh/publications/pubs/eppbamast15_CSM.pdf",
+      "result": "HTTP404；me.ucsb同路徑亦404，未納候選。"
+    },
+    {
+      "url": "https://digitalcommons.mtu.edu/cgi/viewcontent.cgi?article=1128&context=etdr",
+      "result": "web/指定UA403；只讀入口摘要，不納候選。"
+    },
+    {
+      "url": "https://pubs.aip.org/asa/jasa/article-pdf/76/5/1336/11960081/1336_1_online.pdf",
+      "result": "web入口失敗；不以摘要補定音鼓控制。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "source_id": "P48-S001",
+      "images": [
+        {
+          "file": ".cache/wave48-physics-clap-p5.png",
+          "sha256": "bcd5a92fe6fc2a452d1764a65bd4597d8dcb1e2c5b23581e6f4c85842312d060",
+          "read_scope": "Fig4a–d，接觸/壓力/初次及後續噴流與聲脈衝對齊；三欄為不同模型幾何。"
+        },
+        {
+          "file": ".cache/wave48-physics-clap-p6.png",
+          "sha256": "c69b278188f34b0a6739f0afdbe71267308ad53d91c3b7ae482987083935d576",
+          "read_scope": "Fig5 實測點與模型峰分開；下文排除持續噴流噪音作主要拍聲。"
+        }
+      ]
+    },
+    {
+      "source_id": "P48-S002",
+      "images": [
+        {
+          "file": ".cache/wave48-physics-banjo-p4.png",
+          "sha256": "45db8f9bdb8b1e1b085be0a912523aa1d267331a58254f3a3e30af4961130fcd",
+          "read_scope": "Fig2，特殊琴橋與翻轉尾板的0/13度配置，非一般琴直接改角即可。"
+        },
+        {
+          "file": ".cache/wave48-physics-banjo-p9.png",
+          "sha256": "557f37b7b41fdd2cbc491b63659b24bdfad845f173ef6fc336c5817a926da0c3",
+          "read_scope": "Figs6–7，第4弦13度在前、0度在後；每段截取長度與截斷邊緣分清。"
+        }
+      ]
+    },
+    {
+      "source_id": "P48-S003",
+      "images": [
+        {
+          "file": ".cache/wave48-physics-banjo-correction-p2.png",
+          "sha256": "c74b3dbdb5be24b357084b94250b951b3d3b7cca4f4564cfbbd9448f25120cba",
+          "read_scope": "Fig1 折角示意及背景對舊FM說法的澄清起點。"
+        }
+      ]
+    },
+    {
+      "source_id": "P48-S004",
+      "images": [
+        {
+          "file": ".cache/wave48-physics-plate-p3.png",
+          "sha256": "dcf5506356426a5c8a167338b163d4958f07a00878a03167c315f26c88dbb3b8",
+          "read_scope": "Fig1a/b 151/290 Hz不同次激振；低頻新分量與後段寬頻是實測速度譜，不是音訊主觀評分。"
+        }
+      ]
+    },
+    {
+      "source_id": "P48-S005",
+      "images": [
+        {
+          "file": ".cache/wave48-physics-gong-rods-p4.png",
+          "sha256": "faf52b2ae6bf87b0cc3f184f02edf46ad854f0c01b270358d24ff9e6ccdaaf19",
+          "read_scope": "Fig2 理論厚度/曲率區域與模型骨幹線，非實測鑼。"
+        },
+        {
+          "file": ".cache/wave48-physics-gong-rods-p5.png",
+          "sha256": "394f97a92d9f256f1f8b2c297b9719300226efe7ec8287738138e9ab7bf2a4bc",
+          "read_scope": "Fig3 三個實測振型的正規化頻率/位移曲線；各圖水平軸比例不相同。"
+        }
+      ]
+    }
+  ],
+  "reading_limits": [
+    "5來源指定正文及8頁原圖實讀；非全篇推導逐式核算。",
+    "未播放任一原音訊、未讀補充影片；譜圖支持物理對照，不冒稱自己聽到差異。",
+    "2001作者稿有引用占位；2019/2020為arXiv預印本，版本/證據層級不升格。",
+    "圖是研究證據，未取得任何製作授權；正式稿圖像轉譯仍需核。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W48P-T01",
+      "seconds": 65,
+      "chapters": [
+        25,
+        22,
+        18
+      ],
+      "core_totals": {
+        "P48-001": 65
+      }
+    },
+    {
+      "id": "W48P-T03",
+      "seconds": 92,
+      "chapters": [
+        42,
+        50
+      ],
+      "core_totals": {
+        "P48-004": 42,
+        "P48-003": 50
+      }
+    }
+  ],
+  "sample": {
+    "file": ".cache/w48-sample-physics.json",
+    "sha256": "823dadd2861a5b1b80137a595bf807a4337fb74ad3a0d110433788530acdf369",
+    "theme_id": "W48P-T01",
+    "paragraphs": 3,
+    "characters_including_punctuation": 224,
+    "paragraph_to_chapter": [
+      1,
+      2,
+      3
+    ],
+    "audio_generated_by_author": false,
+    "timing_readback": {
+      "reader": "root local SAPI",
+      "paragraph_seconds": [
+        21.322,
+        18.67,
+        15.441
+      ],
+      "continuous_seconds": 55.434,
+      "chapter_budget_seconds": [
+        25,
+        22,
+        18
+      ],
+      "not_listener_test": true
+    }
+  },
+  "validation": {
+    "json_utf8_lf": true,
+    "valid_existing_ids": true,
+    "chapter_and_core_caps": true,
+    "beats_at_most_45": true,
+    "exact_minutes": true,
+    "manifest_current": true
+  },
+  "revision_history": [
+    {
+      "reason": "root集中編輯與science_sources來源定位讀回；撤未核聽班卓單片、拍手依SAPI收時，未將模擬鋼材指定到實驗。",
+      "before_files": [
+        {
+          "file": "batches/wave48-physics.json",
+          "sha256": "3dfbd2c6b5a1a019ab971614c63a160ae29cef504f3cfc5f1f7364a18e897e36"
+        },
+        {
+          "file": "reviews/wave48-physics-themes.json",
+          "sha256": "de91504412f82833378e9a957a2761b714a2f5027470c2844a4f328d7b222878"
+        },
+        {
+          "file": "reviews/wave48-physics-author.json",
+          "sha256": "47004f92decfa486ba6ec1f01b122a7acca9010d39b6a88fb4ce73eea1849b70"
+        }
+      ],
+      "changes": [
+        "P48-002降segment、30–55秒並記重入條件；原75秒片案移deferred保歷史。",
+        "W48P-T01 70→65秒，25/22/18；W48P-T03仍92秒。",
+        "P48-003題名薄鋼板→薄板，不將模擬材料指定到實測板；全部作者近對快照同步。"
+      ],
+      "removed_seconds": 5,
+      "retired_theme_seconds": 75,
+      "question_changed_ids": [
+        "P48-003"
+      ],
+      "answer_targets_changed": false
+    }
+  ],
+  "unresolved": [
+    "待root非作者逐題與共同top5，尤其拍手對D9012、薄板對X40-005，不以換物件硬留。"
+  ]
+}

@@ -1,0 +1,888 @@
+{
+  "batch_id": "wave7-earth-20261101",
+  "created_on": "2026-11-01",
+  "scope": "地質、地形、岩石與地表變化；原創題級研究候選，非完整答案或製作核准。",
+  "sources": [
+    {
+      "id": "E7-S001",
+      "url": "https://www.nps.gov/subjects/volcanoes/columnar-jointing.htm",
+      "title": "Columnar Jointing",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀Introduction與How Columnar Jointing Forms，L26–44；其餘景點列表不作本題證據。",
+      "locator": "How Columnar Jointing Forms",
+      "summary": "冷卻收縮裂縫向內延伸，柱方向對應主要冷卻面；常見多邊形但不全是六邊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "取用日可讀頁；未沿用時效性數字或操作規則。"
+    },
+    {
+      "id": "E7-S002",
+      "url": "https://pubs.usgs.gov/of/2004/1007/granite.html",
+      "title": "Our Dynamic Desert: Granitic Rocks and Associated Landforms",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "ordinary HTTP + Python HTMLParser；固定Mokaair-editorial User-Agent",
+      "reading_scope": "web開頁403；ordinary urllib成功取官方HTML，HTMLParser擷取並實讀主文首段及圖說。原HTML只留忽略cache。",
+      "locator": "Granitic Rocks and Associated Landforms 第一段",
+      "summary": "水沿裂隙改變岩塊表層，角部先衰解，原地也能留下圓形岩核。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "OFR2004-1007，頁尾更新2009-12-18；只採地質機制。"
+    },
+    {
+      "id": "E7-S003",
+      "url": "https://www.nps.gov/features/romo/feat0001/GlcBasics.html",
+      "title": "Glaciers of Rocky Mountain National Park: Glacier Basics",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀Glaciers as Landscapers L119–126；未播放Flash模組，早期冰河現況與氣候年代不沿用。",
+      "locator": "Glaciers as Landscapers",
+      "summary": "移動冰可拔取岩塊，再用嵌入的岩屑磨削岩床，留下刮痕。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "舊版教育頁，引用文獻最晚列2005；非2026冰河現況。"
+    },
+    {
+      "id": "E7-S004",
+      "url": "https://www.nps.gov/glac/learn/nature/glacial-geology.htm",
+      "title": "Glacial Geology",
+      "publisher": "National Park Service—Glacier National Park",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀How do glaciers move、U-shaped Valleys、Hanging Valleys、Moraines及Paternoster Lakes L33–53；不採面積門檻或全冰河現況。",
+      "locator": "Hanging Valleys；Moraines",
+      "summary": "支谷與主谷侵蝕深度不同可留懸谷；冰流末端停留仍能持續投下岩屑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2024-09-19更新。"
+    },
+    {
+      "id": "E7-S005",
+      "url": "https://www.nps.gov/places/000/potholes-turnout.htm",
+      "title": "Potholes Turnout",
+      "publisher": "National Park Service—Grand Teton National Park",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀解說主文與Name Origin L28–32；不採旅遊/生態延伸。",
+      "locator": "主文與Name Origin",
+      "summary": "沉積物包住退冰留下的冰塊，後續融去可留下鍋穴。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2024-04-05更新。"
+    },
+    {
+      "id": "E7-S006",
+      "url": "https://www.nps.gov/articles/meandering-stream.htm",
+      "title": "Fluvial Features—Meandering Stream",
+      "publisher": "National Park Service Geologic Resources Division",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀主文L22–25；未採圖作已授權素材。",
+      "locator": "主文：cut bank、point bar與側向遷移",
+      "summary": "外岸侵蝕和內岸堆積使河曲橫移；相鄰河彎貫通可留下舊彎。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2020-04-22更新。"
+    },
+    {
+      "id": "E7-S007",
+      "url": "https://esurf.copernicus.org/articles/10/743/2022/",
+      "title": "Linking levee-building processes with channel avulsion: geomorphic analysis for assessing avulsion frequency and channel reoccupation",
+      "publisher": "Han & Kim, Earth Surface Dynamics / EGU",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀Abstract與§1 Introduction L211–257、§2.1初段L263–290；本題僅採Introduction的積高與改道背景，不用模型量化結果，未核全文方法/重跑。",
+      "locator": "§1 Introduction，channel perching及superelevation段",
+      "summary": "河床及天然堤積高改變河道相對氾濫平原的水勢，可促進改道；閾值與時間仍受多條件控制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2022正式研究；doi:10.5194/esurf-10-743-2022。"
+    },
+    {
+      "id": "E7-S008",
+      "url": "https://www.nps.gov/articles/000/volcanic-inverted-topography.htm",
+      "title": "Volcanic Inverted Topography",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀Introduction L23–33；景點年份與高低推年代通則不採。",
+      "locator": "Introduction",
+      "summary": "填入低地的耐蝕火山岩保存下來，兩側先被侵蝕，能把昔日谷地變成高地。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2023-04-17更新。"
+    },
+    {
+      "id": "E7-S009",
+      "url": "https://www.desertmuseum.org/books/nhsd_desert_soils.php?print=y",
+      "title": "Desert Soils",
+      "publisher": "Arizona-Sonora Desert Museum",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀Soil Surfaces: Desert Pavements L62–83；Rock Varnish未作來源，不沿用文內last fifteen years為當期研究。",
+      "locator": "Soil Surfaces: Desert Pavements",
+      "summary": "粗粒母材上的鋪石地可因風塵累積在石片下而形成；不同初始母材也可能先經細粒移除。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "早期自然史教材；以指定粗粒母材條件使用。"
+    },
+    {
+      "id": "E7-S010",
+      "url": "https://pubs.usgs.gov/gip/deserts/eolian/",
+      "title": "Deserts: Geology and Resources—Eolian Processes",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "ordinary HTTP + Python HTMLParser；固定Mokaair-editorial User-Agent",
+      "reading_scope": "web403；ordinary HTTP成功，HTMLParser實讀Eolian transportation及Eolian deposition的saltation/creep/slipface段；未採粒徑、速度、比例及沙漠鋪石通則。",
+      "locator": "Eolian deposition：Wind-blown sand moves up…及Sand grains move up…",
+      "summary": "迎風側逐粒輸沙、背風側小崩落可搬移整個沙丘形狀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁尾1997-10-29；僅採穩定機制，不用當期沙漠統計。"
+    },
+    {
+      "id": "E7-S011",
+      "url": "https://pubs.usgs.gov/sir/2010/5028/pdf/SIR10-5028.pdf",
+      "title": "Processes of Terrace Formation on the Piedmont of the Santa Cruz River Valley",
+      "publisher": "USGS, Scientific Investigations Report 2010–5028",
+      "accessed_on": "2026-11-01",
+      "read_via": "ordinary HTTP + PyMuPDF文字定點閱讀；固定Mokaair-editorial User-Agent",
+      "reading_scope": "web403；ordinary HTTP取得官方PDF，以PyMuPDF實讀印刷p6、p8–9（PDF12、14–15）；僅採河階/襲奪的概念與研究區解釋，未重驗地層年代或完整方法。",
+      "locator": "p6 Terrace Classification and Formation；p8–9 stream piracy",
+      "summary": "河流重新下切會遺留舊氾濫面；襲奪使兩條水系的水量與輸沙條件重新分配。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2010研究報告；亞利桑那研究區推論不概括全部河階。"
+    },
+    {
+      "id": "E7-S012",
+      "url": "https://opentextbc.ca/physicalgeology2ed/chapter/3-2-magma-and-magma-formation/",
+      "title": "Physical Geology 2nd ed. §3.2 Magma and Magma Formation",
+      "publisher": "Steven Earle / BCcampus Open Education",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀正文L338–360及圖說/文字描述L376–379；不取練習題，不沿用全部熔體必富矽等概括或麵粉比喻。",
+      "locator": "Decompression Melting；Flux Melting",
+      "summary": "岩石是否熔融也取決於壓力及含水條件，因此不一定需要再升溫。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2019第二版大專開放教材。"
+    },
+    {
+      "id": "E7-S013",
+      "url": "https://opentextbc.ca/physicalgeology2ed/chapter/3-3-crystallization-of-magma/",
+      "title": "Physical Geology 2nd ed. §3.3 Crystallization of Magma",
+      "publisher": "Steven Earle / BCcampus Open Education",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀L339–355與L393–400：結晶次序、分離結晶及斑狀組織；只採早晶分離與殘餘熔體成分，練習未收。",
+      "locator": "fractional crystallization／crystal settling，Figure3.3.6",
+      "summary": "早形成晶體若與熔體分離，所帶走元素比例會改變剩餘熔體。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2019第二版；不把晶體一律沉底當通則。"
+    },
+    {
+      "id": "E7-S014",
+      "url": "https://opentextbc.ca/physicalgeology2ed/chapter/4-2-magma-composition-and-eruption-style/",
+      "title": "Physical Geology 2nd ed. §4.2 Magma Composition and Eruption Style",
+      "publisher": "Steven Earle / BCcampus Open Education",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀L338–347及355–357；採黏度、氣體逸出與破碎的耦合，不採飲料搖瓶練習或岩名即預報規則。",
+      "locator": "黏度、volatiles及explosive eruption正文",
+      "summary": "氣泡是否能逸出，會使相似的出氣過程走向平順流出或壓力累積與破碎。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2019第二版；來源有例外提醒，不能由單一成分預測噴發。"
+    },
+    {
+      "id": "E7-S015",
+      "url": "https://www.nps.gov/subjects/volcanoes/basaltic-lava-flows.htm",
+      "title": "Basaltic Lava Flows",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀Introduction與Sheet Flows/Channels/Tubes L27–76；只採管殼形成、保溫與排空，不用流速數字。",
+      "locator": "Lava Tubes",
+      "summary": "表面成殼可保留內部流動，供應停止或轉向後排空留下管洞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "取用日可讀頁；未沿用時效性數字或操作規則。"
+    },
+    {
+      "id": "E7-S016",
+      "url": "https://www.nps.gov/articles/000/lava-flow-forms.htm",
+      "title": "Lava Flow Forms",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀Introduction L28–47、Pahoehoe L51–53、Ropy L60–62、Slabby L74–76與Aa L94–96；不採圖像授權或形狀即成分的判定。",
+      "locator": "Introduction；Pāhoehoe；ʻAʻā",
+      "summary": "熔岩黏度和剪切條件影響表殼能否變形或破碎，同成分流體可留下不同外觀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "取用日可讀頁；未沿用時效性數字或操作規則。"
+    },
+    {
+      "id": "E7-S017",
+      "url": "https://geology.utah.gov/map-pub/survey-notes/glad-you-asked/unconformity/",
+      "title": "Glad You Asked: What is an Unconformity?",
+      "publisher": "Jim Davis / Utah Geological Survey",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀L6、10–22；僅採沉積中止/侵蝕/再沉積造成記錄缺口，不以例中年代泛化。",
+      "locator": "沉積—侵蝕或停積—再沉積段",
+      "summary": "相接岩層不表示連續記時；侵蝕或沒有淨沉積都能留下時間缺口。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "取用日可讀頁；未沿用時效性數字或操作規則。"
+    },
+    {
+      "id": "E7-S018",
+      "url": "https://psgt.earth.lsa.umich.edu/chapter/14/wrench.html",
+      "title": "Physical Structural Geology and Tectonics §14 Wrench Tectonics",
+      "publisher": "University of Michigan hosted structural-geology textbook",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀§Transpression and Transtension及§Restraining and Releasing Bends L89–123；不採地震預測或現行風險數字。",
+      "locator": "Restraining and Releasing Bends，Fig14.13",
+      "summary": "斷層走向相對區域位移方向改變，局部可相擠或拉開，形成抬升與沉降。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "取用日教材網頁；未見版次日期，僅採幾何機制。"
+    },
+    {
+      "id": "E7-S019",
+      "url": "https://www.nps.gov/articles/000/pillow-basalts.htm",
+      "title": "Pillow Basalts",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀Introduction L27–30、How Pillow Basalts Form L33–35；只採水下急冷外皮及持續充填。",
+      "locator": "How Pillow Basalts Form",
+      "summary": "水快速冷卻外表，但持續輸入熔岩能讓枕狀單元膨大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "取用日可讀頁；未沿用時效性數字或操作規則。"
+    },
+    {
+      "id": "E7-S020",
+      "url": "https://www.whoi.edu/ocean-learning-hub/ocean-topics/how-the-ocean-works/seafloor-below/volcanoes/lava-flows/",
+      "title": "Lava flows",
+      "publisher": "Woods Hole Oceanographic Institution",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open 定點正文",
+      "reading_scope": "實讀What types of lava flows are there underwater? L213–218及What are lava tubes? L222–226；不採頁內currently噴發敘述或圖像授權。",
+      "locator": "Pillow lava forms… L217；Lava tubes L224–225",
+      "summary": "熔岩可撐大急冷外皮，破皮後生新枕；另一條路是成管後流走排空。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "取用日可讀頁；未沿用時效性數字或操作規則。"
+    },
+    {
+      "id": "E7-S021",
+      "url": "https://water.usgs.gov/fisp/docs/OFR20081217.pdf",
+      "title": "Annotated Definitions of Selected Geomorphic Terms and Related Terms of Hydrology, Sedimentology, Soil Science and Ecology",
+      "publisher": "W.R. Osterkamp / USGS OFR2008–1217",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run PDF文字定點閱讀",
+      "reading_scope": "實讀Armoring條目，印刷p5（PDF11）L241–247；非全54頁逐句查核，鄰接法律與命名條目不採。",
+      "locator": "Armoring，印刷p5",
+      "summary": "細粒先被移走會留下較抗沖刷表層，但更大流量仍可能搬動它。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2008術語專報；僅題級簡化winnowing，不稱所有河床只有此成因。"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "E7001",
+      "question": "海邊一排排石柱，為什麼有些不朝上，還像彎過去？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.columnar_joints_follow_cooling_front",
+      "answer_target": "凝固後的收縮裂縫從冷卻面向內推進，柱軸大致垂直主要冷卻面；不必與重力垂直。",
+      "scope": "限柱狀節理的冷卻收縮模型；柱形不是單一晶體，非每根六邊；不從單張照片反算冷卻速率。",
+      "source_ids": [
+        "E7-S001"
+      ],
+      "source_locator": "How Columnar Jointing Forms，fracture propagation及perpendicular cooling surfaces",
+      "premise_status": "screened",
+      "notes": "N233為反覆熱循環損傷；本題保留冷卻前緣的空間取向及柱形生成，不拆六邊形另算題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "石柱方向可記錄散熱幾何，不是岩漿原來就站成柱子。",
+        "visual": "同一熔岩體改變頂底/側邊冷卻面，畫裂縫向內延伸與柱軸轉向。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "E7002",
+      "question": "沒有在河裡滾過的巨石，為什麼也會圓圓的？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.joint_bounded_spheroidal_weathering",
+      "answer_target": "水沿交叉裂隙進入，岩塊角部較早化學衰解，留下較圓的未風化岩核；外層移除後露出。",
+      "scope": "限來源裂隙花崗質岩體的球狀風化；不是所有圓石同源，不以照片取代現地地質判讀。",
+      "source_ids": [
+        "E7-S002"
+      ],
+      "source_locator": "Granitic Rocks and Associated Landforms 第一段",
+      "premise_status": "screened",
+      "notes": "不同於N233熱裂、N234鹽蝕、N235冰裂及N204砂粒搬運；角部反應細節若進分子動畫需補相應資料。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "圓不一定是滾磨出來，也可能在原地先被風化出輪廓。",
+        "visual": "把角形岩塊的裂隙及風化外殼剝開，對照河流磨圓，標明前者未搬動。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "E7003",
+      "question": "冰比岩石軟，冰河怎麼能在山谷上刻出刮痕？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.glacial_quarrying_and_debris_abrasion",
+      "answer_target": "冰拔取或帶走岩塊，嵌入移動冰底的岩屑再磨削岩床；磨削工具並不只是純冰。",
+      "scope": "限有底部接觸與可搬運岩屑的冰河侵蝕；不同冰溫/底床條件會改變侵蝕，不把所有冰河畫成同樣刮削。",
+      "source_ids": [
+        "E7-S003"
+      ],
+      "source_locator": "Glaciers as Landscapers L119–122",
+      "premise_status": "screened",
+      "notes": "拔取與磨蝕作同一核心內的工具來源及作用，不各列一題；區別N214冰怎麼流、N235靜態冰裂。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "會刮地的關鍵是冰帶著什麼，以及它如何接觸底床。",
+        "visual": "透明冰體帶著深色岩粒移過岩床，先拔取再磨出定向刮痕；不做實驗宣稱。",
+        "seconds": [
+          80,
+          110
+        ]
+      }
+    },
+    {
+      "id": "E7004",
+      "question": "兩條冰河以前接在一起，融掉後支谷為什麼會懸在半空？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.tributary_main_glacier_differential_incision",
+      "answer_target": "主谷大冰河與支谷小冰河侵蝕深度不同，冰退去後原相接的冰面不等於相同谷底高度。",
+      "scope": "限來源主谷/支谷差異侵蝕的懸谷模型；不把每座瀑布或山谷落差都判為冰河。",
+      "source_ids": [
+        "E7-S004"
+      ],
+      "source_locator": "Hanging Valleys L42–43",
+      "premise_status": "screened",
+      "notes": "與E7003工具機制互補，新增的是兩支冰河不同切深的幾何結果；不拆U谷/角峰名詞題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "曾經相連的是流動冰體，岩石谷底可以早已不在同一高度。",
+        "visual": "並列同一交會處有冰及退冰截面，保持支谷/主谷岩底差異，顯示落差如何露出。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "E7005",
+      "question": "冰河末端停在原地，前面的小石堆為什麼還會越堆越高？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.stationary_glacier_front_debris_flux_moraine",
+      "answer_target": "末端位置穩定不代表冰停止輸送；碎屑隨冰到達融失端，持續在近同一帶堆積成脊。",
+      "scope": "限末端近穩定且有碎屑供給的端冰磧情境；不以脊大小唯一反算停留年數或氣候。",
+      "source_ids": [
+        "E7-S004"
+      ],
+      "source_locator": "Moraines L48–50",
+      "premise_status": "screened",
+      "notes": "N215已解末端後退與冰流方向；本題研究同地點碎屑通量留下的沉積脊，若進稿僅重講位置/流速則合回N215。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "位置不動和材料不再通過，是兩回事。",
+        "visual": "固定末端線，讓標記岩粒隨冰移到融化處，累積成脊，再對照末端快速後退時分散堆積。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "E7006",
+      "question": "冰河早已離開，平原為什麼後來還會凹出一個池塘？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.buried_dead_ice_melt_kettle",
+      "answer_target": "脫離冰河的冰塊先被融水沉積物包埋，之後融去失去所占空間，地表留下凹地。",
+      "scope": "限冰水沉積平原的鍋穴形成；凹地未必積成永久池塘，不與侵蝕壺穴或喀斯特天坑混同。",
+      "source_ids": [
+        "E7-S005"
+      ],
+      "source_locator": "主文與Name Origin",
+      "premise_status": "screened",
+      "notes": "與N238空洞覆蓋層破壞、N229冰核長大相反條件不同；不延伸凍土工程判斷。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地面下降可能是埋藏冰消失的延遲結果，並非洞一直存在。",
+        "visual": "三格剖面：冰塊落地、沉積包住、冰融凹陷；標出時間差與可有可無的積水。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "E7007",
+      "question": "河水一直往下流，河道為什麼還會慢慢往旁邊搬？",
+      "domain": "地質與地形",
+      "mechanism_key": "geomorphology.meander_outer_erosion_inner_accretion",
+      "answer_target": "彎道外側較強侵蝕、內側沉積共同搬移河道邊界，河水下流和河曲側移不是同一方向的運動。",
+      "scope": "限可侵蝕河岸的曲流模型；工程固定岸、岩盤河與複雜三維流不按單一簡圖預測。",
+      "source_ids": [
+        "E7-S006"
+      ],
+      "source_locator": "主文L22–25",
+      "premise_status": "screened",
+      "notes": "N236為辮狀分流與輸沙失衡；本題河曲側移，不把cut bank/point bar/牛軛湖拆三題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水流方向與河道形狀變化方向可以不同。",
+        "visual": "固定座標疊三次河岸線，分別移除外岸與加上內岸；把牛軛湖留作同核末端結果。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "E7008",
+      "question": "河床越堆越高，為什麼有時會整條河改走旁邊？",
+      "domain": "地質與地形",
+      "mechanism_key": "geomorphology.aggradation_superelevation_avulsion",
+      "answer_target": "河床與天然堤積高增加相對附近低地的水勢；洪水逸出可侵蝕或重占較有坡降優勢的路徑，形成改道。",
+      "scope": "限積高河道與氾濫平原的avulsion機制；不是每次溢堤都永久改道，不用固定一個水深閾值或預報年份。",
+      "source_ids": [
+        "E7-S007"
+      ],
+      "source_locator": "§1 Introduction L248–257；洪泛沉積背景L239–245",
+      "premise_status": "screened",
+      "notes": "與N236局部辮狀分流及E7007側蝕遷移不同；只採已讀背景因果，模型頻率/再占河道的定量結果未採。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "河堤越高不只改變可裝多少水，也改變水若離開河道會往哪裡去。",
+        "visual": "剖面累積河床/天然堤，再接平面顯示洪水進入較低舊水道；不畫成單一必然預測。",
+        "seconds": [
+          80,
+          110
+        ]
+      }
+    },
+    {
+      "id": "E7009",
+      "question": "原本在山谷底的熔岩，為什麼現在反而站在山頂？",
+      "domain": "地質與地形",
+      "mechanism_key": "geomorphology.volcanic_fill_differential_erosion_inversion",
+      "answer_target": "熔岩填低谷後成為較耐蝕岩體，旁側岩石被削低較快，原低地相對留下成高地。",
+      "scope": "限耐蝕火山填谷與差異侵蝕的倒置地形；不能單靠高度排所有熔岩年代，也不說熔岩被整塊向上抬。",
+      "source_ids": [
+        "E7-S008"
+      ],
+      "source_locator": "Introduction L23–33",
+      "premise_status": "screened",
+      "notes": "與N043熔岩填盆地不同，關鍵是後來差異侵蝕顛倒地勢；不另按景點重出。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "現在的高低不一定保留形成當時的高低關係。",
+        "visual": "同一谷形填入熔岩後逐層削去較軟兩側，保留固定高度標線避免誤畫成岩體上升。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "E7010",
+      "question": "沙漠地面整齊鋪滿小石頭，一定是細沙全被吹走了嗎？",
+      "domain": "地質與地形",
+      "mechanism_key": "geomorphology.desert_pavement_dust_accretion_under_clasts",
+      "answer_target": "粗粒母材上的風塵可累積在表石下方，細粒土層增厚把石層與母材分開；並非一概由細粒流失形成。",
+      "scope": "限來源粗粒沖積扇/岩面母材模型；細粒母材也可先去細留粗，不將兩種條件互相否定。",
+      "source_ids": [
+        "E7-S009"
+      ],
+      "source_locator": "Soil Surfaces: Desert Pavements L70–83",
+      "premise_status": "screened",
+      "notes": "與N234鹽蝕、E7022水流去細留粗不同；沒有礦物/剖面資料不能只憑照片選成因。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣是滿地石頭，地下細土增加與被移除可能留下相似表面。",
+        "visual": "對比初始粗粒母材與混粒母材剖面，追蹤新增風塵，標出細土是外來的。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "E7011",
+      "question": "沙丘會慢慢搬家，是整座沙丘在地上滑嗎？",
+      "domain": "地質與地形",
+      "mechanism_key": "geomorphology.dune_migration_windward_transport_slipface_avalanche",
+      "answer_target": "沙粒沿迎風面跳移/滾移，到頂後在背風滑落面小崩落；顆粒循環搬運讓丘形順風移。",
+      "scope": "限具有迎風坡和滑落面的單向風沙丘簡圖；不涵蓋全部複雜風場、植被固定或複合沙丘。",
+      "source_ids": [
+        "E7-S010"
+      ],
+      "source_locator": "Eolian deposition，兩段沙丘搬移說明",
+      "premise_status": "screened",
+      "notes": "不另拆沙丘分類或沙粒跳躍為新題；與P182顆粒流動但個體仍固體不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會移動的是堆形，不代表每粒沙都跟著整座平移。",
+        "visual": "固定地面方格與兩顆標記沙，示意迎風搬上、背風落下及外形遷移。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "E7012",
+      "question": "河邊高高的平臺，為什麼能是以前的河床？",
+      "domain": "地質與地形",
+      "mechanism_key": "geomorphology.renewed_incision_abandons_floodplain_terrace",
+      "answer_target": "河流側向拓寬或堆積形成較平面後，恢復下切，把舊氾濫面留在新河道上方。",
+      "scope": "限河階的形成序列；可因基準面、水量/輸沙等條件改變，不將高度當唯一年代尺或必定地殼抬升。",
+      "source_ids": [
+        "E7-S011"
+      ],
+      "source_locator": "印刷p6 Terrace Classification and Formation；p8 incision與lateral cutting",
+      "premise_status": "screened",
+      "notes": "不同於N132地層相對排序與E7009耐蝕填谷倒置；不把strath/fill名詞各算核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "高臺可能是河流把自己切低後留下的舊位置。",
+        "visual": "同一比例剖面先拓寬再下切，固定舊面高程，對照填積型與薄礫層只作一次條件比較。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "E7013",
+      "question": "地下岩石沒有變得更熱，為什麼還可能熔出岩漿？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.melting_boundary_decompression_and_water_flux",
+      "answer_target": "上升減壓或水加入改變開始熔融的條件；岩石可在近同溫下跨越固相線，不需把整片地函先加熱成液體。",
+      "scope": "用減壓與含水固相線兩種明示比較，非同一岩塊必經步驟；不說水加入所有礦物必降熔點或減壓完全不降溫。",
+      "source_ids": [
+        "E7-S012"
+      ],
+      "source_locator": "Decompression Melting；Flux Melting及相圖描述",
+      "premise_status": "screened",
+      "notes": "P234是溶質改相變條件，故水助熔不另算一題；本題主核地函上升減壓，含水作不同路徑對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "是否熔化要比較當下條件與熔融門檻，不只看溫度。",
+        "visual": "先固定含水量改壓力，再重設同壓岩石比較含水條件；每次只改一條件。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "E7014",
+      "question": "岩漿還沒全凝固，先長出的晶體怎麼會改變剩下的岩漿？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.crystal_separation_changes_residual_melt_composition",
+      "answer_target": "早期晶體選擇含有某些元素，若沉降等分離過程使它離開反應熔體，剩餘熔體成分隨之改變。",
+      "scope": "限分離結晶而不是一切冷卻；黏度高或晶體未分離時不能直接套沉降分餾結論。",
+      "source_ids": [
+        "E7-S013"
+      ],
+      "source_locator": "fractional crystallization，Figure3.3.6與olivine settling段",
+      "premise_status": "screened",
+      "notes": "N125只問晶粒大小，N272是金屬/岩石的天體分異；本題須保留礦物選擇分配與移出，不能只講重的沉下去。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新晶體不是把岩漿等比例舀走，留下的配比也會變。",
+        "visual": "以色塊標不同元素，先形成指定組合晶體，再對照移走/留在熔體兩種條件。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "E7015",
+      "question": "岩漿都有氣體，為什麼有的流出來，有的卻炸成碎屑？",
+      "domain": "地質與地形",
+      "mechanism_key": "volcanology.gas_escape_vs_viscous_retention_fragmentation",
+      "answer_target": "壓力降低釋出氣體後，低黏度熔體較易讓氣逸出；黏滯熔體若留住膨脹氣體，可積壓並破碎。",
+      "scope": "限氣體逸出與熔體流動性的機制對照；水、晶體、供應與通道等也重要，不用岩石名字單獨預測危險。",
+      "source_ids": [
+        "E7-S014"
+      ],
+      "source_locator": "volatiles、viscosity及explosive eruption正文",
+      "premise_status": "screened",
+      "notes": "P233氣體分壓溶解只是前提；新增氣泡逸出受阻至破碎耦合，不另收一般減壓冒泡。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "產生氣泡與氣泡能否離開，是兩個不同問題。",
+        "visual": "相同示意氣體供應下比較易流動/難流動熔體的排氣通道，再標示實際條件並非全相同。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "E7016",
+      "question": "熔岩都變成石頭了，裡面怎麼留下長長的空隧道？",
+      "domain": "地質與地形",
+      "mechanism_key": "volcanology.crusted_lava_conduit_drains_to_tube",
+      "answer_target": "流動表面先固結成殼並減緩散熱，內部仍能輸送熔岩；供應停止或改道，內部排出而留下空管。",
+      "scope": "限來源玄武質熔岩管機制；不是每條流都成空管，不把空管當完全安全或可進入的訊號。",
+      "source_ids": [
+        "E7-S015",
+        "E7-S020"
+      ],
+      "source_locator": "NPS Lava Tubes；WHOI What are lava tubes? L224–225",
+      "premise_status": "screened",
+      "notes": "不同於N082溶蝕洞穴與N238覆蓋層塌洞；不作洞穴探勘建議。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "有固體外殼不代表裡面已停止流動，洞可以是流走後留下的。",
+        "visual": "剖面先成頂、內流、再排空；保留底坡及出口，避免畫成熔岩憑空消失。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "E7017",
+      "question": "同一條熔岩流，怎麼一段像繩子，一段像碎石堆？",
+      "domain": "地質與地形",
+      "mechanism_key": "volcanology.lava_surface_deformation_vs_shear_fragmentation",
+      "answer_target": "表殼的變形能力與流動剪切配合時可皺成繩紋；黏度增加/剪切使其不能順應時破成粗礫外殼。",
+      "scope": "限pahoehoe與aa流態對照；同成分可轉形，不稱任何皺紋或碎石都能判成分/溫度。",
+      "source_ids": [
+        "E7-S016"
+      ],
+      "source_locator": "Introduction；Ropy pāhoehoe；ʻAʻā",
+      "premise_status": "screened",
+      "notes": "與P073黏滯剪切概念不同，新增冷卻表殼破裂及碎屑再搬運；若進稿只換黏度名詞則縮回段落。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "表面形狀不只反映岩漿成分，也記錄外殼如何被下面的流動改造。",
+        "visual": "連續表皮受拖曳皺折與破碎翻滾兩格動畫，條件重設需標清，不假裝實測。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "E7018",
+      "question": "兩層岩石明明貼在一起，中間怎麼會少掉很長一段時間？",
+      "domain": "地質與地形",
+      "mechanism_key": "geology.unconformity_non_deposition_erosion_record_gap",
+      "answer_target": "沉積停下或舊層遭侵蝕後才再沉積，新舊層相貼但不含中間期間的岩石記錄。",
+      "scope": "限不整合的記錄缺口；不說時間本身消失，沒有定年不能只憑界面外觀量出缺多久。",
+      "source_ids": [
+        "E7-S017"
+      ],
+      "source_locator": "主文L10–22，deposition—erosion—deposition及hiatus",
+      "premise_status": "screened",
+      "notes": "不同於N132上下新舊關係；核心是記錄未保存，不拆四類名詞。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "岩層是有時寫下、有時被擦掉的記錄，不是永遠連續的時鐘。",
+        "visual": "一條時間軸保持連續，旁邊地層先增、停/削、再增；避免把所有接觸面標成不整合。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "E7019",
+      "question": "兩塊地明明在左右錯開，怎麼還能擠出山或拉出盆地？",
+      "domain": "地質與地形",
+      "mechanism_key": "tectonics.strike_slip_bend_local_shortening_extension",
+      "answer_target": "區域水平位移與彎曲斷層段不再平行，局部必須由擠壓或伸張分量容納，產生抬升/沉降。",
+      "scope": "限走滑斷層彎折幾何模型；左右彎意義必須連同滑動方向，不憑地圖彎向判地震風險。",
+      "source_ids": [
+        "E7-S018"
+      ],
+      "source_locator": "Restraining and Releasing Bends L112–119；Fig14.13",
+      "premise_status": "screened",
+      "notes": "N117為三種斷層分類；本題是區域走滑與局部壓伸的幾何轉換，兩彎向合一核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "斷層沿線方向一變，純水平的相對運動也可能留下垂直地形。",
+        "visual": "固定同一右移方向，只改彎向，標塊體相靠/分離，再接剖面山脊/盆地。",
+        "seconds": [
+          80,
+          110
+        ]
+      }
+    },
+    {
+      "id": "E7020",
+      "question": "海底熔岩碰到冷水，為什麼不是全凍住，反而長出一顆顆枕頭？",
+      "domain": "地質與地形",
+      "mechanism_key": "volcanology.subaqueous_quenched_skin_inflation_breakout",
+      "answer_target": "水先使外皮急冷，持續熔岩輸入撐大仍熱的內部，局部破皮後可形成新的枕狀單元。",
+      "scope": "限較低噴出率等有利枕狀流的水下情境；水下也能有片狀流，不說海底全部都是枕頭。",
+      "source_ids": [
+        "E7-S019",
+        "E7-S020"
+      ],
+      "source_locator": "NPS How Pillow Basalts Form；WHOI underwater lava L215–218",
+      "premise_status": "screened",
+      "notes": "N126急冷玻璃是外皮前提；保留持續充填/破皮生成新單元才是新增核心，與E7016排空機制不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷卻先改外面，內部輸入仍能決定新形狀與推進。",
+        "visual": "同一皮層與內部兩色，撐大、局部破口、再成皮；切換水下條件需明示。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "E7021",
+      "question": "一條小溪搶走別條河的水後，為什麼兩邊河谷都會改樣子？",
+      "domain": "地質與地形",
+      "mechanism_key": "geomorphology.stream_capture_redistributes_water_sediment_budget",
+      "answer_target": "襲奪重分集水區與流量；捕獲支流下切、失水河段搬運能力下降等反應可改變侵蝕/堆積，並非只改地圖上的線。",
+      "scope": "限SIR2010–5028研究區水系襲奪及其收支解釋；實際下切/堆積也受輸沙與坡度控制，不把每條被截河都畫成完全乾涸。",
+      "source_ids": [
+        "E7-S011"
+      ],
+      "source_locator": "印刷p8末段至p9前四段 stream piracy",
+      "premise_status": "screened",
+      "notes": "與E7008單一河床積高觸發avulsion不同，主核是捕獲後兩水系收支重組；來源部分capture也由avulsion完成，發生步驟不再占篇幅。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "改道不只搬走水，也改變舊河道與新河道能搬多少沉積物。",
+        "visual": "兩相鄰集水區前後對照，追水量/供沙箭頭，讓新舊兩邊分別回應，不畫成普遍時間表。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "E7022",
+      "question": "河床表面的石頭為什麼可能比下面粗，還擋住繼續沖刷？",
+      "domain": "地質與地形",
+      "mechanism_key": "geomorphology.selective_winnowing_forms_flow_conditional_armor",
+      "answer_target": "特定水流先移走表層細粒，留下較難搬動的粗粒覆蓋；條件變強仍可破壞這層保護。",
+      "scope": "限去細留粗形成護甲的簡化條件；天然粗化也有其他顆粒過程，不把護甲當永久不動或工程防洪保證。",
+      "source_ids": [
+        "E7-S021"
+      ],
+      "source_locator": "Armoring，印刷p5（PDF11）",
+      "premise_status": "screened",
+      "notes": "與E7010風塵加入抬起石層方向不同；來源為定義性專報，內容只夠短段，不獨立撐片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沖走材料能反過來讓剩下表面更難沖，但這個停止點取決於水流條件。",
+        "visual": "剖面標粗細混合層，先移細留粗，再提高示意水流搬走粗層，總量不得憑空增加。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "蜂窩狀岩壁是不是又一種新風化機制？",
+      "reason": "若只採鹽類結晶撐裂，就是既有鹽蝕的外觀變體，不另收。",
+      "existing_ids": [
+        "N234"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "每座冰河角峰與刃脊各做一題嗎？",
+      "reason": "目前只剩多側侵蝕的形狀分類，併入冰河景觀對照，不各占核心。",
+      "existing_ids": [],
+      "source_ids": [
+        "E7-S004"
+      ]
+    },
+    {
+      "question": "石頭冷卻越慢，晶體為什麼越大？",
+      "reason": "既有冷卻速率與晶體成長核心，岩石換名字不增加題數。",
+      "existing_ids": [
+        "N125"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "冰河後退是不是往山上流？",
+      "reason": "舊題完整覆蓋末端位置與冰流方向的區別。",
+      "existing_ids": [
+        "N215"
+      ],
+      "source_ids": [
+        "E7-S003",
+        "E7-S004"
+      ]
+    },
+    {
+      "question": "斑狀岩的大晶體和小晶體，是不是另做一題？",
+      "reason": "兩階段冷卻仍使用既有冷卻速率/晶體長大核心，作N125對照即可。",
+      "existing_ids": [
+        "N125"
+      ],
+      "source_ids": [
+        "E7-S013"
+      ]
+    },
+    {
+      "question": "水下每一種熔岩形狀各做一題？",
+      "reason": "目前只有形狀分類和噴出率差異，不拆pillows/lobate/sheet湊核心。",
+      "existing_ids": [],
+      "source_ids": [
+        "E7-S019",
+        "E7-S020"
+      ]
+    },
+    {
+      "question": "地層四種不整合能各做一題嗎？",
+      "reason": "是同一記錄缺口的辨識外觀，全部併在一個核心。",
+      "existing_ids": [],
+      "source_ids": [
+        "E7-S017"
+      ]
+    },
+    {
+      "question": "岩漿減壓冒泡另算一題？",
+      "reason": "溶氣條件已有P233；本批只保留出氣後能否逸出的耦合問題。",
+      "existing_ids": [
+        "P233"
+      ],
+      "source_ids": [
+        "E7-S014"
+      ]
+    },
+    {
+      "question": "河岸崖腳被挖空，為什麼會崩？",
+      "reason": "與既有坡腳支撐被移除同核，不能只換成河岸。",
+      "existing_ids": [
+        "N231"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "沙丘不同外形各自有名字嗎？",
+      "reason": "名稱列表不提供新的觀眾追問，先不收。",
+      "existing_ids": [],
+      "source_ids": [
+        "E7-S010"
+      ]
+    },
+    {
+      "question": "深色沙漠岩皮到底是怎麼長出的？",
+      "reason": "已讀頁明示形成仍不清楚；尚未補到足以支撐一條條件明確因果的原始研究，暫不列screened。",
+      "existing_ids": [],
+      "source_ids": [
+        "E7-S009"
+      ]
+    }
+  ]
+}

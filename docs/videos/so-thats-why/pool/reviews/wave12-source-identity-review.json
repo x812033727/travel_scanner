@@ -1,0 +1,64 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_SCOPE_REVIEW_NOT_FULL_FACT_CHECK",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-01",
+  "reviewed_files": [
+    {
+      "file": "batches/wave12-digital.json",
+      "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
+    },
+    {
+      "file": "batches/wave12-interfaces.json",
+      "sha256": "c671288b1f48af5e2264ad5a66bf810549bbb5a5b37f02145f846024b3c673e6"
+    },
+    {
+      "file": "batches/wave12-locomotion.json",
+      "sha256": "ba380600fca6c8e61527610c69960c44c996d54c201be3b303e5117b7ef3ae2a"
+    },
+    {
+      "file": "baselines/2026-11-01-2837.json.gz",
+      "sha256": "6c1a9c8c29d0b8bb540de430e6f98646ab48bcf07e89d1d7bf1e8cd21117c0fd"
+    }
+  ],
+  "new_url_rows": 29,
+  "automated_comparison": {
+    "method": "Normalized title, DOI-string and URL without fragment across historical research readings and within wave12. Advisory only.",
+    "matched_pairs": 0,
+    "script_sha256": "25f2c4b7a2baa0dd9d8a656190341078b1ec3a8a64d84174841f16d288a1cf92",
+    "result_sha256": "7aef08006378dac103567bc49fc9977f99fb06a063181baf2d4cba9bf7aef7d9",
+    "limits": "Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+  },
+  "manual_relationships": [
+    {
+      "new_source_id": "I12-S001",
+      "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf",
+      "related_old_url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/d77da8d5f1bb8b69a62682bc0dbc5845_MIT18_357F10_Lecture11.pdf",
+      "relationship": "Same MIT 18.357 Fall 2010 course; complete notes include Lecture 11. Two URLs are not independent corroboration.",
+      "verified": "Root read downloaded complete-note title page (John W. M. Bush; June 3, 2013), complete PDF page 41 beginning Fluid Jets, separate Lecture 11 page 1 and MIT course footer. Lecture 11 first page starts with the same Fluid Jets text.",
+      "new_reading_scope": "New source reading locations are sections 6, 8-10, 12.3 and 15-17, as located in the author record; old Q9005 uses Lecture 11. Root header comparison establishes document relationship, not rechecking all those factual claims.",
+      "disposition": "Retain the distinct document URL and its precise reading locations; count URL pages, never two independent courses or studies."
+    },
+    {
+      "source_ids": [
+        "A12-S003",
+        "A12-S004"
+      ],
+      "relationship": "Original worm-blob study plus correction acknowledgement. The correction is provenance, not an independent experiment or extra candidate."
+    },
+    {
+      "source_ids": [
+        "A12-S013"
+      ],
+      "relationship": "Retired ant-traffic direction source is retained for exclusion provenance, not counted as support for an admitted candidate."
+    },
+    {
+      "source_ids": [
+        "D12-S007",
+        "D12-S008"
+      ],
+      "relationship": "Related CRDT theory papers from the same research family. They support different counter/set constructions; two URLs do not establish two independent experimental replications."
+    }
+  ],
+  "count_policy": "Counts are distinct normalized source URLs in the pool. No claim that URL count equals independent papers, institutions, experiments or corroborating sources.",
+  "limits": "Root reviewed source identities and metadata plus the MIT header/content overlap. Candidate fact verification remains scoped to the three independent topic receipts. No independent full-bibliography semantic identity audit or full-script approval."
+}

@@ -1,0 +1,56 @@
+{
+  "tested_on": "2026-11-02T03:35:30.024Z",
+  "result": "PASS",
+  "selected": 3010,
+  "index_html_sha256": "e1f3fea1fbbd949aff3be8a38bb949079f5165ae09e09474ba08de92b4a9b175",
+  "source_sample": {
+    "id": "P21001",
+    "urls": [
+      "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/1/1261/files/2020/09/Patil-et-al.-2020-Topological-mechanics-of-knots-and-tangles.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave21-desktop.png",
+    "wave21-source-desktop.png",
+    "wave21-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_review": {
+    "reviewer": "root",
+    "method": "view_image rendered all three actual Chrome screenshots",
+    "screenshots": [
+      {
+        "file": ".cache/wave21-desktop.png",
+        "sha256": "9bc68f553f9b37af5e6d539cc7f186337a570e49a66e2c469c2baaafbd985a58"
+      },
+      {
+        "file": ".cache/wave21-source-desktop.png",
+        "sha256": "12b6322d91aec0a390c86d208404b2b2708640105cf577b35d44bedee0d53f50"
+      },
+      {
+        "file": ".cache/wave21-mobile.png",
+        "sha256": "ac436818480916c2f34043bb6093c083687978774b61960bcb3c3fde0609e04a"
+      }
+    ],
+    "observations": [
+      "Desktop shows 3010 selected, 2564 source URLs used, 226 themes and 140 aliases with readable cards.",
+      "Filtered P21001 details expand; question, answer, 80–115 second segment range and scope are legible. Source URLs are below this screenshot viewport and were checked by the DOM assertions, not claimed as visible in the crop.",
+      "Mobile title and navigation wrap; counts form two columns, theme selector moves to its own row. Search placeholder is clipped to its narrow field; controls remain usable and no horizontal overflow was detected."
+    ],
+    "limits": "Visual check of these viewports plus specified DOM actions, not every record or an external-source availability audit."
+  }
+}

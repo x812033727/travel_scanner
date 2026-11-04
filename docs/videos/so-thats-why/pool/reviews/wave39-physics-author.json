@@ -1,0 +1,787 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "pool_physics",
+  "production_ready": false,
+  "scope": "從裂縫的方向、分支及斷點判讀不同載入條件：黏膜、薄片、細桿、充氣乳膠、澱粉及熟麵結的受控實驗。",
+  "baseline": {
+    "head": "b65b15e",
+    "selected": 3220,
+    "raw_records": 3599,
+    "not_added": 1580,
+    "pool_sha256": "436f5473e5100bf9e21c661e6d4fb312da1c5d3eacd25a767f6cc6aa40949cca",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3220.json.gz",
+      "sha256": "29477021f2a34f474f064cbf578c1e8a467aa9368ceb2681cffb498c890e5699"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave39-physics.json",
+      "sha256": "5f65df913ab87e141f407eea0568f8fb84bd54576cc03af8b3d5e31e117f43c0"
+    },
+    {
+      "file": "reviews/wave39-physics-themes.json",
+      "sha256": "ef5d41b70d5aa7a00188415777a2e5f22bd41b6a06a7217f33a18cc7e3cf6d3b"
+    }
+  ],
+  "counts": {
+    "candidates": 8,
+    "sources": 8,
+    "original_research": 8,
+    "candidate_sources": 8,
+    "not_added_only_sources": 0,
+    "not_added": 17,
+    "near_pairs": 21,
+    "themes": 5
+  },
+  "dedup_reading": {
+    "method": "全3599原始及1580未收；詞面篩出64原始、28未收，再查柱節理相關全文發現E7001；手動比較起裂/走向/剝離/柱寬/滑脫和斷點。",
+    "scan_files": [
+      {
+        "file": ".cache/wave39-physics-scan-raw_records.json",
+        "sha256": "d433f5bb16ec1b3f910e7364745ba3d4c608384af88701d88554780325a9fbf3"
+      },
+      {
+        "file": ".cache/wave39-physics-scan-not_added.json",
+        "sha256": "f72d8ef713a769324fb2c3dcb19c7873adec06f8e28eff1473d042851bdbdb54"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "X39-001",
+      "b": "D2183",
+      "proposed": "distinct",
+      "reason": "舊題區分整片剪力和邊緣剝離；新題已在剝，問彎折區縮短如何使兩道邊裂傾斜及三個初始寬得同角。",
+      "a_snapshot": {
+        "id": "X39-001",
+        "question": "把貼膜的一角拉直，為什麼兩邊的裂線還是會越走越近，最後只撕下一個尖角？",
+        "answer_target": "已黏在平板上的膜被反折，兩個裂尖之間形成一條彎起的折脊。模型裡裂尖向前能放鬆彎曲，朝內又能縮短折脊。實驗只改起始缺口間距，同一種膜的三個尖端仍有近似相同的夾角。",
+        "scope": "研究用近彈性薄膜、平坦底板及指定拉法。膠帶沿邊剝離較容易是另一問題，本題實際比較兩條裂線的方向。"
+      },
+      "b_snapshot": {
+        "id": "D2183",
+        "question": "同一條膠帶，為什麼橫著拉和掀起一角的難度差很多？",
+        "answer_target": "整個接面分擔剪力與邊緣逐步剝離的載荷路徑不同。",
+        "scope": "Adhesive bonding；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "X39-001",
+      "b": "H3060",
+      "proposed": "distinct",
+      "reason": "達到擴裂門檻不能推出兩裂尖應朝哪邊走。",
+      "a_snapshot": {
+        "id": "X39-001",
+        "question": "把貼膜的一角拉直，為什麼兩邊的裂線還是會越走越近，最後只撕下一個尖角？",
+        "answer_target": "已黏在平板上的膜被反折，兩個裂尖之間形成一條彎起的折脊。模型裡裂尖向前能放鬆彎曲，朝內又能縮短折脊。實驗只改起始缺口間距，同一種膜的三個尖端仍有近似相同的夾角。",
+        "scope": "研究用近彈性薄膜、平坦底板及指定拉法。膠帶沿邊剝離較容易是另一問題，本題實際比較兩條裂線的方向。"
+      },
+      "b_snapshot": {
+        "id": "H3060",
+        "question": "裂痕多長會突然快速擴大，為什麼還要看拉力和材料？",
+        "answer_target": "在指定幾何及適用模型下，裂長與外加應力共同決定裂尖擴裂驅動；達到材料斷裂韌性對應的門檻，才可能發生快速擴裂。",
+        "scope": "聚焦線彈性斷裂模型的臨界裂長／載荷；應力集中沿用既有前提。幾何與材料適用條件不可省略，不由刮痕外觀判實物承載安全。"
+      }
+    },
+    {
+      "a": "X39-002",
+      "b": "X39-001",
+      "proposed": "distinct",
+      "reason": "同樣成帶：手拉黏膜的折脊縮短導致內收；內在受拉的薄層則剝離面與兩裂線共進，偏離穩定帶寬有反向修正。",
+      "a_snapshot": {
+        "id": "X39-002",
+        "question": "沒有手在撕，塗層上的兩道裂縫為什麼能自己往前走，還留下一條近乎等寬的帶子？",
+        "answer_target": "製程留在塗層內的拉應力可在一小條膜與底板分開時釋放；剝離前緣把兩側的裂尖連起來。在模型中太窄時裂線向外、太寬時向內，能走成近乎平行的兩邊，實驗帶寬隨膜厚改變。",
+        "scope": "限能自行脫層的薄膜與黏著範圍。寬度選擇與黏著是否允許裂線前進分開，不套到任意油漆的裂痕。"
+      },
+      "b_snapshot": {
+        "id": "X39-001",
+        "question": "把貼膜的一角拉直，為什麼兩邊的裂線還是會越走越近，最後只撕下一個尖角？",
+        "answer_target": "已黏在平板上的膜被反折，兩個裂尖之間形成一條彎起的折脊。模型裡裂尖向前能放鬆彎曲，朝內又能縮短折脊。實驗只改起始缺口間距，同一種膜的三個尖端仍有近似相同的夾角。",
+        "scope": "研究用近彈性薄膜、平坦底板及指定拉法。膠帶沿邊剝離較容易是另一問題，本題實際比較兩條裂線的方向。"
+      }
+    },
+    {
+      "a": "X39-002",
+      "b": "M16004",
+      "proposed": "distinct",
+      "reason": "一個是已受拉的塗層能否剝離成定寬，另一個是玻璃殼與核心殘應力容許自持碎裂波。",
+      "a_snapshot": {
+        "id": "X39-002",
+        "question": "沒有手在撕，塗層上的兩道裂縫為什麼能自己往前走，還留下一條近乎等寬的帶子？",
+        "answer_target": "製程留在塗層內的拉應力可在一小條膜與底板分開時釋放；剝離前緣把兩側的裂尖連起來。在模型中太窄時裂線向外、太寬時向內，能走成近乎平行的兩邊，實驗帶寬隨膜厚改變。",
+        "scope": "限能自行脫層的薄膜與黏著範圍。寬度選擇與黏著是否允許裂線前進分開，不套到任意油漆的裂痕。"
+      },
+      "b_snapshot": {
+        "id": "M16004",
+        "question": "玻璃滴的頭部很難壓碎，為什麼尾端一裂卻能連頭部一起碎掉？",
+        "answer_target": "冷卻留下壓縮外殼與受拉核心；表面小裂口受壓不易張開，尾端破裂接入核心後，內存彈性能推進自持續破裂波。",
+        "scope": "限Prince Rupert’s Drop的應力分布；不是尾端敲擊能量一路撞碎頭部。細部裂波速度機制尚未定論，不給敲擊或製作教程。"
+      }
+    },
+    {
+      "a": "X39-002",
+      "b": "Q9001",
+      "proposed": "distinct",
+      "reason": "壓痕層間滑移降低紙板後續彎曲剛性，並無選定帶寬。",
+      "a_snapshot": {
+        "id": "X39-002",
+        "question": "沒有手在撕，塗層上的兩道裂縫為什麼能自己往前走，還留下一條近乎等寬的帶子？",
+        "answer_target": "製程留在塗層內的拉應力可在一小條膜與底板分開時釋放；剝離前緣把兩側的裂尖連起來。在模型中太窄時裂線向外、太寬時向內，能走成近乎平行的兩邊，實驗帶寬隨膜厚改變。",
+        "scope": "限能自行脫層的薄膜與黏著範圍。寬度選擇與黏著是否允許裂線前進分開，不套到任意油漆的裂痕。"
+      },
+      "b_snapshot": {
+        "id": "Q9001",
+        "question": "有些多層紙板壓過折線後，為什麼反而更容易彎？",
+        "answer_target": "壓痕讓多層紙板發生層間滑移與分層，後續彎折的局部隆起和薄層變形降低轉折處的彎曲剛性。",
+        "scope": "限研究的多層塗佈紙板與壓痕方向；不是割穿外表，也不保證壓得越深越好，不泛稱所有紙盒都採相同製程。"
+      }
+    },
+    {
+      "a": "X39-003",
+      "b": "H3061",
+      "proposed": "distinct",
+      "reason": "塑變耗能是共用背景。新增可分辨的過程是鈍頭另一側另起第二道裂縫，分出可折成褶的舌片，而非只問脆或韌。",
+      "a_snapshot": {
+        "id": "X39-003",
+        "question": "鈍頭明明直直前進，為什麼有的薄片裂成波浪線，有的卻推出一條摺好的薄舌？",
+        "answer_target": "橫向推過脆片時，一條裂線能左右來回跨過工具的行進方向。材料會先永久變形時，模擬中原裂尖轉回中心的過程受阻，工具另一側能另起一裂；被兩道裂線夾出的片舌若受限在前方，會堆成一層層摺褶。",
+        "scope": "Fig1是不同材料的實物，Fig2才是材料參數模擬。薄舌也會翻走；Fig3的規則褶有特定支撐條件。"
+      },
+      "b_snapshot": {
+        "id": "H3061",
+        "question": "同樣有缺口，為什麼銅可能先彎很多，玻璃卻直接裂？",
+        "answer_target": "裂紋附近的塑性形變能吸收能量並改變局部狀態；脆性材料可在較少耗能下擴裂。",
+        "scope": "只作來源銅/玻璃對照，不把所有金屬或所有陶瓷一概分類。"
+      }
+    },
+    {
+      "a": "X39-003",
+      "b": "F15003",
+      "proposed": "distinct",
+      "reason": "線切時切向載荷讓材料較早起裂；新題問既有鈍工具已在前進後，為何是一條波線或雙線夾舌。",
+      "a_snapshot": {
+        "id": "X39-003",
+        "question": "鈍頭明明直直前進，為什麼有的薄片裂成波浪線，有的卻推出一條摺好的薄舌？",
+        "answer_target": "橫向推過脆片時，一條裂線能左右來回跨過工具的行進方向。材料會先永久變形時，模擬中原裂尖轉回中心的過程受阻，工具另一側能另起一裂；被兩道裂線夾出的片舌若受限在前方，會堆成一層層摺褶。",
+        "scope": "Fig1是不同材料的實物，Fig2才是材料參數模擬。薄舌也會翻走；Fig3的規則褶有特定支撐條件。"
+      },
+      "b_snapshot": {
+        "id": "F15003",
+        "question": "同一塊軟凝膠，直壓和邊拉邊切為什麼差這麼多？",
+        "answer_target": "在細線切agar的實驗中，純直壓要先造成較大整體變形；加入切向載荷能在表面建立局部拉應力，較早起裂。已切開後的持續切割，並未顯示相同優勢。",
+        "scope": "限所測agar凝膠與細線幾何；固定線徑及法向速度改切向運動。局部應力來自模型，力與變形來自實驗；不能泛化所有食物或當廚刀操作教學。"
+      }
+    },
+    {
+      "a": "X39-003",
+      "b": "Q9001",
+      "proposed": "distinct",
+      "reason": "已壓折線處較易彎不解釋無預定折痕下雙裂推舌成褶。",
+      "a_snapshot": {
+        "id": "X39-003",
+        "question": "鈍頭明明直直前進，為什麼有的薄片裂成波浪線，有的卻推出一條摺好的薄舌？",
+        "answer_target": "橫向推過脆片時，一條裂線能左右來回跨過工具的行進方向。材料會先永久變形時，模擬中原裂尖轉回中心的過程受阻，工具另一側能另起一裂；被兩道裂線夾出的片舌若受限在前方，會堆成一層層摺褶。",
+        "scope": "Fig1是不同材料的實物，Fig2才是材料參數模擬。薄舌也會翻走；Fig3的規則褶有特定支撐條件。"
+      },
+      "b_snapshot": {
+        "id": "Q9001",
+        "question": "有些多層紙板壓過折線後，為什麼反而更容易彎？",
+        "answer_target": "壓痕讓多層紙板發生層間滑移與分層，後續彎折的局部隆起和薄層變形降低轉折處的彎曲剛性。",
+        "scope": "限研究的多層塗佈紙板與壓痕方向；不是割穿外表，也不保證壓得越深越好，不泛稱所有紙盒都採相同製程。"
+      }
+    },
+    {
+      "a": "X39-004",
+      "b": "X39-001",
+      "proposed": "distinct",
+      "reason": "兩錯位缺口在受拉片內擦身後才轉彎，與反折膜從一開始有折脊向內拉不同。",
+      "a_snapshot": {
+        "id": "X39-004",
+        "question": "兩道裂縫一開始擦身而過，為什麼後來卻轉頭相遇，切出梭形的一片？",
+        "answer_target": "兩道錯位缺口在薄片受拉時先近乎平行。裂尖錯開越過後，它們中間受拉區的方向改變；幾何模型讓裂尖垂直於當地主要拉伸方向，能重現回彎路線。實測梭形碎片寬度跟起始錯位距離相近。",
+        "scope": "限兩側缺口、所測薄片與拉伸條件。梭形與應力影像提供證據，不由任意岩石碎片唯一還原載荷。"
+      },
+      "b_snapshot": {
+        "id": "X39-001",
+        "question": "把貼膜的一角拉直，為什麼兩邊的裂線還是會越走越近，最後只撕下一個尖角？",
+        "answer_target": "已黏在平板上的膜被反折，兩個裂尖之間形成一條彎起的折脊。模型裡裂尖向前能放鬆彎曲，朝內又能縮短折脊。實驗只改起始缺口間距，同一種膜的三個尖端仍有近似相同的夾角。",
+        "scope": "研究用近彈性薄膜、平坦底板及指定拉法。膠帶沿邊剝離較容易是另一問題，本題實際比較兩條裂線的方向。"
+      }
+    },
+    {
+      "a": "X39-004",
+      "b": "H3060",
+      "proposed": "distinct",
+      "reason": "不同於單一裂尖門檻，另有相錯時中間受力方向轉動與碎片形狀。",
+      "a_snapshot": {
+        "id": "X39-004",
+        "question": "兩道裂縫一開始擦身而過，為什麼後來卻轉頭相遇，切出梭形的一片？",
+        "answer_target": "兩道錯位缺口在薄片受拉時先近乎平行。裂尖錯開越過後，它們中間受拉區的方向改變；幾何模型讓裂尖垂直於當地主要拉伸方向，能重現回彎路線。實測梭形碎片寬度跟起始錯位距離相近。",
+        "scope": "限兩側缺口、所測薄片與拉伸條件。梭形與應力影像提供證據，不由任意岩石碎片唯一還原載荷。"
+      },
+      "b_snapshot": {
+        "id": "H3060",
+        "question": "裂痕多長會突然快速擴大，為什麼還要看拉力和材料？",
+        "answer_target": "在指定幾何及適用模型下，裂長與外加應力共同決定裂尖擴裂驅動；達到材料斷裂韌性對應的門檻，才可能發生快速擴裂。",
+        "scope": "聚焦線彈性斷裂模型的臨界裂長／載荷；應力集中沿用既有前提。幾何與材料適用條件不可省略，不由刮痕外觀判實物承載安全。"
+      }
+    },
+    {
+      "a": "X39-005",
+      "b": "F15001",
+      "proposed": "distinct",
+      "reason": "兩者都可見碎麵；舊方先側彎、斷一次才引發彎曲波，新方端撞造成多處屈曲先於碎裂。",
+      "a_snapshot": {
+        "id": "X39-005",
+        "question": "一根直立乾麵條被沿長度撞了一下，為什麼斷之前就排出好幾道波浪？",
+        "answer_target": "突然從端頭壓進來的衝擊，使某一段波長的側彎長得最快。高速影像先看到細桿起伏，接著彎得最急的地方較易折斷；所以碎段長度分布會帶有約半個屈曲波長的尺度，部分分布還出現四分之一波長附近的峰。",
+        "scope": "與先側彎斷一處再回彈不同。端撞還有其他碎段來源，換撞速的Fig2為PTFE桿，乾麵碎段另做統計。"
+      },
+      "b_snapshot": {
+        "id": "F15001",
+        "question": "乾麵條一折為什麼常斷成幾截，先扭轉又可能只剩兩截？",
+        "answer_target": "第一次斷裂放出的彎曲波會提高別處曲率，誘發後續斷裂；預扭轉讓首次破壞在較小曲率發生，快速釋放的扭轉應力又先於彎曲波增強，因而可抑制連續破裂。",
+        "scope": "限研究的乾spaghetti細桿及夾持條件；實驗與Kirchhoff細桿模型分開。不是扭轉讓麵條更強，也不承諾任意麵條、任意轉角必成兩段。"
+      }
+    },
+    {
+      "a": "X39-005",
+      "b": "K11006",
+      "proposed": "distinct",
+      "reason": "球殼壓凹後是否繼續失穩與邊界控制相關；此題軸向壓縮脈衝在直桿選出彎曲波長。",
+      "a_snapshot": {
+        "id": "X39-005",
+        "question": "一根直立乾麵條被沿長度撞了一下，為什麼斷之前就排出好幾道波浪？",
+        "answer_target": "突然從端頭壓進來的衝擊，使某一段波長的側彎長得最快。高速影像先看到細桿起伏，接著彎得最急的地方較易折斷；所以碎段長度分布會帶有約半個屈曲波長的尺度，部分分布還出現四分之一波長附近的峰。",
+        "scope": "與先側彎斷一處再回彈不同。端撞還有其他碎段來源，換撞速的Fig2為PTFE桿，乾麵碎段另做統計。"
+      },
+      "b_snapshot": {
+        "id": "K11006",
+        "question": "同樣把薄球殼壓凹，為什麼有時停在一個凹坑，有時卻一路塌下去？",
+        "answer_target": "固定外壓會持續推動後屈曲塌陷；固定體積改變時，凹陷後壓力下降，可停在穩定的局部凹坑。",
+        "scope": "來源彈性球殼、指定壓力或指定體積變化的模型；不把塑膠瓶永久凹陷、所有封閉容器都當同條件。"
+      }
+    },
+    {
+      "a": "X39-006",
+      "b": "M16004",
+      "proposed": "distinct",
+      "reason": "玻璃滴破壞是開口接入內部受拉區。乳膠以張力和高速攝影驗證初裂後連續分岔而非同時多處起裂。",
+      "a_snapshot": {
+        "id": "X39-006",
+        "question": "刺破同一種乳膠膜，為什麼有時只開一道口，有時卻出現一整樹的岔路？",
+        "answer_target": "張力較低，少數裂線直接把鼓起的膜剖開。張力較高，同一初裂向外跑時裂尖才接連一分為二；破後留下的Y形交點和高速影格都能分辨這一路徑與「針一次割出所有碎條」。",
+        "scope": "夾在圓框上充氣的乳膠膜、指定厚度與張力。不能從商售氣球的體積或壓力單獨算碎片數。"
+      },
+      "b_snapshot": {
+        "id": "M16004",
+        "question": "玻璃滴的頭部很難壓碎，為什麼尾端一裂卻能連頭部一起碎掉？",
+        "answer_target": "冷卻留下壓縮外殼與受拉核心；表面小裂口受壓不易張開，尾端破裂接入核心後，內存彈性能推進自持續破裂波。",
+        "scope": "限Prince Rupert’s Drop的應力分布；不是尾端敲擊能量一路撞碎頭部。細部裂波速度機制尚未定論，不給敲擊或製作教程。"
+      }
+    },
+    {
+      "a": "X39-006",
+      "b": "X38-001",
+      "proposed": "distinct",
+      "reason": "水滴液袋破裂後外緣捏斷；乳膠是固態膜的裂尖分支。",
+      "a_snapshot": {
+        "id": "X39-006",
+        "question": "刺破同一種乳膠膜，為什麼有時只開一道口，有時卻出現一整樹的岔路？",
+        "answer_target": "張力較低，少數裂線直接把鼓起的膜剖開。張力較高，同一初裂向外跑時裂尖才接連一分為二；破後留下的Y形交點和高速影格都能分辨這一路徑與「針一次割出所有碎條」。",
+        "scope": "夾在圓框上充氣的乳膠膜、指定厚度與張力。不能從商售氣球的體積或壓力單獨算碎片數。"
+      },
+      "b_snapshot": {
+        "id": "X38-001",
+        "question": "空中只有一個大水滴，沒有碰到別滴，怎麼能碎出一群大小不一的小滴？",
+        "answer_target": "在向上的氣流裡，大水滴先被壓扁，再像一個薄袋被撐起。袋膜破開時水多集中在起伏的厚邊；邊緣再裂成一串大小不一的小滴。這說明單滴也有不靠互撞的碎裂路徑。",
+        "scope": "限可形成袋狀破裂的大滴與逆向氣流試驗。天然雨量與滴徑分布還受碰合、碰碎等作用，不能從形狀相似決定每場雨的唯一主因。"
+      }
+    },
+    {
+      "a": "X39-006",
+      "b": "H3060",
+      "proposed": "distinct",
+      "reason": "門檻控制是否擴裂，與已前進的裂尖分支不同。",
+      "a_snapshot": {
+        "id": "X39-006",
+        "question": "刺破同一種乳膠膜，為什麼有時只開一道口，有時卻出現一整樹的岔路？",
+        "answer_target": "張力較低，少數裂線直接把鼓起的膜剖開。張力較高，同一初裂向外跑時裂尖才接連一分為二；破後留下的Y形交點和高速影格都能分辨這一路徑與「針一次割出所有碎條」。",
+        "scope": "夾在圓框上充氣的乳膠膜、指定厚度與張力。不能從商售氣球的體積或壓力單獨算碎片數。"
+      },
+      "b_snapshot": {
+        "id": "H3060",
+        "question": "裂痕多長會突然快速擴大，為什麼還要看拉力和材料？",
+        "answer_target": "在指定幾何及適用模型下，裂長與外加應力共同決定裂尖擴裂驅動；達到材料斷裂韌性對應的門檻，才可能發生快速擴裂。",
+        "scope": "聚焦線彈性斷裂模型的臨界裂長／載荷；應力集中沿用既有前提。幾何與材料適用條件不可省略，不由刮痕外觀判實物承載安全。"
+      }
+    },
+    {
+      "a": "X39-007",
+      "b": "E7001",
+      "proposed": "distinct",
+      "reason": "岩柱走向跟冷卻面，本題截面尺寸隨乾燥史及裂面合併改變，方向與尺度須各有證據。",
+      "a_snapshot": {
+        "id": "X39-007",
+        "question": "同樣乾到最後，為什麼澱粉糊裂出的柱子有時越往下越粗，有時卻不再變粗？",
+        "answer_target": "乾燥裂縫往材料內部推進時，有些裂面提早停止，相鄰的兩三根柱子併成一根。任由蒸發減慢時，平均柱寬可以繼續長；用回饋維持後期的蒸發速率，平均截面可達穩定值。先前怎麼開始乾，也會影響最後選中的尺度。",
+        "scope": "限澱粉糊及實驗乾燥程序。說的是平均面積的趨勢，個別柱仍可合併或分出；不能據一張玄武岩照片倒推唯一冷卻史。"
+      },
+      "b_snapshot": {
+        "id": "E7001",
+        "question": "海邊一排排石柱，為什麼有些不朝上，還像彎過去？",
+        "answer_target": "凝固後的收縮裂縫從冷卻面向內推進，柱軸大致垂直主要冷卻面；不必與重力垂直。",
+        "scope": "限柱狀節理的冷卻收縮模型；柱形不是單一晶體，非每根六邊；不從單張照片反算冷卻速率。"
+      }
+    },
+    {
+      "a": "X39-007",
+      "b": "E11014",
+      "proposed": "distinct",
+      "reason": "反覆濕乾造成同平面交角變化；本題一次乾燥隨深度的柱寬、乾燥前緣速度及裂面終止。",
+      "a_snapshot": {
+        "id": "X39-007",
+        "question": "同樣乾到最後，為什麼澱粉糊裂出的柱子有時越往下越粗，有時卻不再變粗？",
+        "answer_target": "乾燥裂縫往材料內部推進時，有些裂面提早停止，相鄰的兩三根柱子併成一根。任由蒸發減慢時，平均柱寬可以繼續長；用回饋維持後期的蒸發速率，平均截面可達穩定值。先前怎麼開始乾，也會影響最後選中的尺度。",
+        "scope": "限澱粉糊及實驗乾燥程序。說的是平均面積的趨勢，個別柱仍可合併或分出；不能據一張玄武岩照片倒推唯一冷卻史。"
+      },
+      "b_snapshot": {
+        "id": "E11014",
+        "question": "泥地反覆濕了又乾，裂縫交點為什麼會從T形慢慢變得像Y形？",
+        "answer_target": "舊裂痕留下不完全的弱化路徑，下一輪開裂順序可變，局部裂徑偏轉使交點移動；作者模型與泥層實驗呈現裂角逐漸較等分。",
+        "scope": "限所讀膨潤土薄層反覆濕乾實驗與局部模型；不是每個多邊形必變正六邊形，也不把最省周長當已證直接成因。"
+      }
+    },
+    {
+      "a": "X39-007",
+      "b": "D2093",
+      "proposed": "distinct",
+      "reason": "蒸發太快令混凝土初裂與裂網往深處推進時的平均尺度不同。",
+      "a_snapshot": {
+        "id": "X39-007",
+        "question": "同樣乾到最後，為什麼澱粉糊裂出的柱子有時越往下越粗，有時卻不再變粗？",
+        "answer_target": "乾燥裂縫往材料內部推進時，有些裂面提早停止，相鄰的兩三根柱子併成一根。任由蒸發減慢時，平均柱寬可以繼續長；用回饋維持後期的蒸發速率，平均截面可達穩定值。先前怎麼開始乾，也會影響最後選中的尺度。",
+        "scope": "限澱粉糊及實驗乾燥程序。說的是平均面積的趨勢，個別柱仍可合併或分出；不能據一張玄武岩照片倒推唯一冷卻史。"
+      },
+      "b_snapshot": {
+        "id": "D2093",
+        "question": "混凝土還沒完全硬，表面為什麼就可能出現裂紋？",
+        "answer_target": "早期蒸發太快造成塑性收縮，不必等到長期載重才裂。",
+        "scope": "Guide for Curing Portland Cement Concrete Pavements II, Chapter 2；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "X39-008",
+      "b": "P21001",
+      "proposed": "distinct",
+      "reason": "兩繩結受拉後是否滑脫與這次熟麵結的外彎處先破斷是不同測量。",
+      "a_snapshot": {
+        "id": "X39-008",
+        "question": "把一條熟麵打成結再拉，為什麼它容易斷在剛進結的急彎，而不一定斷在結心？",
+        "answer_target": "熟麵的慢速破裂讓研究者看見，初裂從入口附近急彎的外側橫穿。彎曲本來就拉長外側，入口又承受端部的拉力；作者提出，進入相互擠壓的區段後，摩擦會重新分攤這股拉力。只找理想結彎得最厲害的地方，未必就是實物最先斷的位置。",
+        "scope": "限熟麵單結與八字結的定位，以及理想化繩結形狀比較。漁線斷得太快，該攝影未直接定位漁線初裂點。"
+      },
+      "b_snapshot": {
+        "id": "P21001",
+        "question": "交叉次數一樣的兩個繩結，為什麼一拉卻有一個先滑開？",
+        "answer_target": "受拉滑動在交叉處產生自力矩；同向作用可讓結心滾動而鬆脫，相對作用可抑制滾開。交叉數之外還要看排列及受拉端，並非只數繞幾圈。",
+        "scope": "限原文雙繩彎結、模型與特定繩材拉脫比較；不同端部拉法/摩擦會改排名，不宣稱任意結皆由單一拓撲數決定。"
+      }
+    },
+    {
+      "a": "X39-008",
+      "b": "K18001",
+      "proposed": "distinct",
+      "reason": "步行衝擊加帶端擺動導致鬆結；熟麵兩端慢拉觀測入口斷面。",
+      "a_snapshot": {
+        "id": "X39-008",
+        "question": "把一條熟麵打成結再拉，為什麼它容易斷在剛進結的急彎，而不一定斷在結心？",
+        "answer_target": "熟麵的慢速破裂讓研究者看見，初裂從入口附近急彎的外側橫穿。彎曲本來就拉長外側，入口又承受端部的拉力；作者提出，進入相互擠壓的區段後，摩擦會重新分攤這股拉力。只找理想結彎得最厲害的地方，未必就是實物最先斷的位置。",
+        "scope": "限熟麵單結與八字結的定位，以及理想化繩結形狀比較。漁線斷得太快，該攝影未直接定位漁線初裂點。"
+      },
+      "b_snapshot": {
+        "id": "K18001",
+        "question": "鞋帶前面很多步都沒事，為什麼接著幾步就突然鬆光？",
+        "answer_target": "研究提出步行衝擊使結心鬆動，擺動自由端的慣性拉力逐步把繩帶拉出；自由端變長、環變短又放大不對稱拉動，形成快速失效回饋。受控衝擊與端部加重支持此方向，但結心的瞬時微觀變化仍未直接驗證。",
+        "scope": "限所試無蠟圓鞋帶與結、單一受試者觀察及受控擺錘；只踩踏或只擺腿的對照是初步觀察，不冒充大型人體試驗。不能由端重實驗推出所有情況單調或最佳綁法。"
+      }
+    },
+    {
+      "a": "X39-008",
+      "b": "F15001",
+      "proposed": "distinct",
+      "reason": "熟麵結入口拉伸加局部彎曲，與無結乾麵側彎、回彈波誘發多裂不同。",
+      "a_snapshot": {
+        "id": "X39-008",
+        "question": "把一條熟麵打成結再拉，為什麼它容易斷在剛進結的急彎，而不一定斷在結心？",
+        "answer_target": "熟麵的慢速破裂讓研究者看見，初裂從入口附近急彎的外側橫穿。彎曲本來就拉長外側，入口又承受端部的拉力；作者提出，進入相互擠壓的區段後，摩擦會重新分攤這股拉力。只找理想結彎得最厲害的地方，未必就是實物最先斷的位置。",
+        "scope": "限熟麵單結與八字結的定位，以及理想化繩結形狀比較。漁線斷得太快，該攝影未直接定位漁線初裂點。"
+      },
+      "b_snapshot": {
+        "id": "F15001",
+        "question": "乾麵條一折為什麼常斷成幾截，先扭轉又可能只剩兩截？",
+        "answer_target": "第一次斷裂放出的彎曲波會提高別處曲率，誘發後續斷裂；預扭轉讓首次破壞在較小曲率發生，快速釋放的扭轉應力又先於彎曲波增強，因而可抑制連續破裂。",
+        "scope": "限研究的乾spaghetti細桿及夾持條件；實驗與Kirchhoff細桿模型分開。不是扭轉讓麵條更強，也不承諾任意麵條、任意轉角必成兩段。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "X39-S001",
+      "doi": "10.1038/nmat2161",
+      "primary_body_url": "https://blog.espci.fr/benoitroman/files/2018/04/Hamm08.pdf",
+      "identity_relation": "ESPCI作者網頁上存放的Nature Materials提前上線排版PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同文原刊、預印本、作者轉存只算一研究。"
+    },
+    {
+      "source_id": "X39-S002",
+      "doi": "10.1103/PhysRevLett.113.085502",
+      "primary_body_url": "https://arxiv.org/pdf/1408.4831",
+      "identity_relation": "arXiv:1408.4831v1，與PRL同研究。",
+      "old_exact_matches": [],
+      "count_policy": "同文原刊、預印本、作者轉存只算一研究。"
+    },
+    {
+      "source_id": "X39-S003",
+      "doi": "10.1103/PhysRevLett.107.245502",
+      "primary_body_url": "https://arxiv.org/pdf/1108.3534",
+      "identity_relation": "實讀arXiv:1108.3534v3（2014修訂），同一篇2011研究。",
+      "old_exact_matches": [],
+      "count_policy": "同文原刊、預印本、作者轉存只算一研究。"
+    },
+    {
+      "source_id": "X39-S004",
+      "doi": "10.1103/PhysRevLett.105.125505",
+      "primary_body_url": "https://arxiv.org/pdf/1005.4622",
+      "identity_relation": "arXiv:1005.4622v1，與PRL同一次研究。",
+      "old_exact_matches": [],
+      "count_policy": "同文原刊、預印本、作者轉存只算一研究。"
+    },
+    {
+      "source_id": "X39-S005",
+      "doi": "10.1103/PhysRevLett.94.035503",
+      "primary_body_url": "https://arxiv.org/pdf/cond-mat/0410642",
+      "identity_relation": "arXiv:cond-mat/0410642v1（2004），與2005刊文同研究。",
+      "old_exact_matches": [],
+      "count_policy": "同文原刊、預印本、作者轉存只算一研究。"
+    },
+    {
+      "source_id": "X39-S006",
+      "doi": "10.1103/PhysRevLett.115.184301",
+      "primary_body_url": "https://www.phys.ens.psl.eu/~foldingslidingstretchinglab/papers/moulinetPRL2015.pdf",
+      "identity_relation": "ENS作者網站的正式期刊PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同文原刊、預印本、作者轉存只算一研究。"
+    },
+    {
+      "source_id": "X39-S007",
+      "doi": "10.1103/PhysRevE.74.036115",
+      "primary_body_url": "https://arxiv.org/pdf/cond-mat/0606221",
+      "identity_relation": "arXiv:cond-mat/0606221v3，同篇PRE作者稿。",
+      "old_exact_matches": [],
+      "count_policy": "同文原刊、預印本、作者轉存只算一研究。"
+    },
+    {
+      "source_id": "X39-S008",
+      "doi": "10.1088/1367-2630/3/1/310",
+      "primary_body_url": "https://www.researchgate.net/publication/37449796_Localization_of_breakage_points_in_knotted_strings",
+      "identity_relation": "同文作者公開的ResearchGate全文，對照IOP身份頁。",
+      "old_exact_matches": [],
+      "count_policy": "同文原刊、預印本、作者轉存只算一研究。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "X39-S001",
+      "scope": "PDF pp1–4，初始切口間距、裂徑與折脊能量，Figs1–3。",
+      "locator": "PDF pp1–4，初始切口間距、裂徑與折脊能量，Figs1–3。",
+      "cache": {
+        "file": ".cache/wave39-physics-taper.pdf",
+        "sha256": "8027e3f0a040e83ca8644b459e535931111b87abb5718dd37ad301cad0086464",
+        "text_file": ".cache/wave39-physics-taper.txt",
+        "text_sha256": "6766690840026d2a8ae9994832ab8fb5de83b5024f636f6baaa9c4f36b9ca388"
+      },
+      "read_via": "指定UA取得PDF，以PyMuPDF讀指定段及圖說，目讀圖頁另列。"
+    },
+    {
+      "source_id": "X39-S002",
+      "scope": "作者稿pp1–3，Figs1–3，並核p7補充的近似偏差。",
+      "locator": "作者稿pp1–3，Figs1–3，並核p7補充的近似偏差。",
+      "cache": {
+        "file": ".cache/wave39-physics-duo.pdf",
+        "sha256": "a95322e28b3b2f795fcdbcde7065ed98a989a5fcdef42bc83782d10a6facf0e0",
+        "text_file": ".cache/wave39-physics-duo.txt",
+        "text_sha256": "944c123ee973583e4583d6ac3b266277d7a1e187e3c62fd44b08504e29c94376"
+      },
+      "read_via": "指定UA取得PDF，以PyMuPDF讀指定段及圖說，目讀圖頁另列。"
+    },
+    {
+      "source_id": "X39-S003",
+      "scope": "作者稿pp1–4，Fig1三種實物、Fig2材料參數模擬、Fig3鋁箔與模擬。",
+      "locator": "作者稿pp1–4，Fig1三種實物、Fig2材料參數模擬、Fig3鋁箔與模擬。",
+      "cache": {
+        "file": ".cache/wave39-physics-tool.pdf",
+        "sha256": "12a232161b6d21b14c9f4eca426785c501cb2705eb685dc0e3d805a863755b95",
+        "text_file": ".cache/wave39-physics-tool.txt",
+        "text_sha256": "b11fcd9bf5dfe4be265e1b1cf45f466ae147e262bf8f1d25475cb0e6f47d4345"
+      },
+      "read_via": "指定UA取得PDF，以PyMuPDF讀指定段及圖說，目讀圖頁另列。"
+    },
+    {
+      "source_id": "X39-S004",
+      "scope": "作者稿pp1–4，Fig1試件與明膠應力光學影像、Figs2–4裂尖軌跡及幾何模型。",
+      "locator": "作者稿pp1–4，Fig1試件與明膠應力光學影像、Figs2–4裂尖軌跡及幾何模型。",
+      "cache": {
+        "file": ".cache/wave39-physics-lens.pdf",
+        "sha256": "faf35e0b4c2c1ffb539a0435cc7561ddb94ee466adbb9e80f06cf7715d77a970",
+        "text_file": ".cache/wave39-physics-lens.txt",
+        "text_sha256": "1e75ba7910044a6cf0b7a53e24e74264f696efbaa40d1576466b9c13776d40d3"
+      },
+      "read_via": "指定UA取得PDF，以PyMuPDF讀指定段及圖說，目讀圖頁另列。"
+    },
+    {
+      "source_id": "X39-S005",
+      "scope": "作者稿pp1–4，Fig1乾麵軸撞，Figs2–4撞速/材質與屈曲波長，Fig5乾麵碎段分布。",
+      "locator": "作者稿pp1–4，Fig1乾麵軸撞，Figs2–4撞速/材質與屈曲波長，Fig5乾麵碎段分布。",
+      "cache": {
+        "file": ".cache/wave39-physics-rod.pdf",
+        "sha256": "9005d76e61067efd1166e55193c615305a11addf272c3bf544abf36dff96b9c2",
+        "text_file": ".cache/wave39-physics-rod.txt",
+        "text_sha256": "7dab792846541d4e8d16ce34f533c741c4fd50a493293b5b00375d70b98e6182"
+      },
+      "read_via": "指定UA取得PDF，以PyMuPDF讀指定段及圖說，目讀圖頁另列。"
+    },
+    {
+      "source_id": "X39-S006",
+      "scope": "印刷184301-1至-4，Figs1–4，裂尖拓撲、薄膜張力與裂網前緣速度。",
+      "locator": "印刷184301-1至-4，Figs1–4，裂尖拓撲、薄膜張力與裂網前緣速度。",
+      "cache": {
+        "file": ".cache/wave39-physics-balloon.pdf",
+        "sha256": "533c0a924335f964cd02749456914cb2b5e630d14616be6d33755f5d1fcfb831",
+        "text_file": ".cache/wave39-physics-balloon.txt",
+        "text_sha256": "c400b49f0e66add475f0fdf19a88fabf1a81405a4580da9e236d85047e994eb3"
+      },
+      "read_via": "指定UA取得PDF，以PyMuPDF讀指定段及圖說，目讀圖頁另列。"
+    },
+    {
+      "source_id": "X39-S007",
+      "scope": "作者稿pp4–8，Figs3、5、8–11；pp10–12動態穩定與歷史依賴的討論。",
+      "locator": "作者稿pp4–8，Figs3、5、8–11；pp10–12動態穩定與歷史依賴的討論。",
+      "cache": {
+        "file": ".cache/wave39-physics-starch.pdf",
+        "sha256": "b505123b45f8db0149fc468356ab245f1e1e3f1767fa089a2d97a7f9eb0f20df",
+        "text_file": ".cache/wave39-physics-starch.txt",
+        "text_sha256": "ac6053007033f1ed008d1c69cd50d2e9182ff2c94a7bbe3f0d0a0d3a2307d082"
+      },
+      "read_via": "指定UA取得PDF，以PyMuPDF讀指定段及圖說，目讀圖頁另列。"
+    },
+    {
+      "source_id": "X39-S008",
+      "scope": "正文印刷10.7–10.12，Figs3–8說明，web回傳lines498–750可定位。",
+      "locator": "正文印刷10.7–10.12，Figs3–8說明，web回傳lines498–750可定位。",
+      "cache": {
+        "file": ".cache/wave39-physics-knot-web.txt",
+        "sha256": "192dbf4481986264a1c496b88cfc84ad6b153283e77d6061a328aba537777c8f",
+        "text_file": ".cache/wave39-physics-knot-web.txt",
+        "text_sha256": "192dbf4481986264a1c496b88cfc84ad6b153283e77d6061a328aba537777c8f"
+      },
+      "read_via": "IOP指定UA之PDF請求回傳驗證頁；改以web.open實讀作者公開之同篇正文指定段，存定點工具回傳，非整份PDF。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave39-physics-manifest.json",
+      "sha256": "6189f9ff086b2a4327beddfeb261c1eac768cedade7fbb88cccf562d529ad4f1"
+    },
+    {
+      "file": ".cache/wave39-physics-alt.json",
+      "sha256": "9fe825ee9bdc2b4daac70cbfd517036a5d16fa1a820d9b14105d756a85f04440"
+    }
+  ],
+  "retrieval_failures": [
+    "S007大學典藏PDF 403；改取與PRE同文的arXiv:cond-mat/0606221v3。",
+    "S008 IOP PDF指定UA收到驗證HTML，web開DOI也拒絕，改讀作者於ResearchGate公開正文之定點web回傳。",
+    "另取得早先的鈍頭薄片作者稿arXiv:cond-mat/0308594，未作第二個核心或額外證據。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "X39-S001",
+      "images": [
+        {
+          "file": ".cache/wave39-physics-taper-p2.png",
+          "sha256": "4f3c15e119c73294e92645664a953ff23ccd448dc049d04323c9f717f60b1f19",
+          "read_scope": "PDF 第2頁，核對圖形、組別及圖說；未量原始像素。"
+        }
+      ]
+    },
+    {
+      "source_id": "X39-S002",
+      "images": [
+        {
+          "file": ".cache/wave39-physics-duo-p2.png",
+          "sha256": "c8733f9e88cb80cfa66191a741e7d1f871a8c4299865104d77d1a8695a874fc5",
+          "read_scope": "PDF 第2頁，核對圖形、組別及圖說；未量原始像素。"
+        },
+        {
+          "file": ".cache/wave39-physics-duo-p3.png",
+          "sha256": "2bec39f6a069b0da827fd851016b3c89dc2ff81729b43521bc16678dfa06fd74",
+          "read_scope": "PDF 第3頁，核對圖形、組別及圖說；未量原始像素。"
+        }
+      ]
+    },
+    {
+      "source_id": "X39-S003",
+      "images": [
+        {
+          "file": ".cache/wave39-physics-tool-p2.png",
+          "sha256": "0c57f55a682a0fb870c4b1be7b76505e92358eeab2c4553712662a9e3ee6ca49",
+          "read_scope": "PDF 第2頁，核對圖形、組別及圖說；未量原始像素。"
+        }
+      ]
+    },
+    {
+      "source_id": "X39-S004",
+      "images": [
+        {
+          "file": ".cache/wave39-physics-lens-p2.png",
+          "sha256": "ae1ce914384d3610999ed8bcb55b53d6f3d58f84d4a5b3a0a0d56da020636a13",
+          "read_scope": "PDF 第2頁，核對圖形、組別及圖說；未量原始像素。"
+        },
+        {
+          "file": ".cache/wave39-physics-lens-p3.png",
+          "sha256": "5ede7cbc09a1de285b5e3fff1d3bc9609cad84f434c7f8c90bce22d32882fb7e",
+          "read_scope": "PDF 第3頁，核對圖形、組別及圖說；未量原始像素。"
+        }
+      ]
+    },
+    {
+      "source_id": "X39-S005",
+      "images": [
+        {
+          "file": ".cache/wave39-physics-rod-p1.png",
+          "sha256": "9fdc9f514b6437c5514cea535220eff012a2a15056967d9b2c0c2ee87dc4fb72",
+          "read_scope": "PDF 第1頁，核對圖形、組別及圖說；未量原始像素。"
+        }
+      ]
+    },
+    {
+      "source_id": "X39-S006",
+      "images": [
+        {
+          "file": ".cache/wave39-physics-balloon-p2.png",
+          "sha256": "adbcffb04d408766f3cb93875e338b54fb971bd5c8477a13250ae8b1f9d51465",
+          "read_scope": "PDF 第2頁，核對圖形、組別及圖說；未量原始像素。"
+        }
+      ]
+    },
+    {
+      "source_id": "X39-S007",
+      "images": [
+        {
+          "file": ".cache/wave39-physics-starch-p7.png",
+          "sha256": "042ec963dafa060db559bf06e1039e62a5484da5233ca04f46bcbab01de16bd9",
+          "read_scope": "PDF 第7頁，核對圖形、組別及圖說；未量原始像素。"
+        },
+        {
+          "file": ".cache/wave39-physics-starch-p8.png",
+          "sha256": "de5d07c0a098468836e77223b2621da2e6adfb205ace2cc3c0e7c90cb119237b",
+          "read_scope": "PDF 第8頁，核對圖形、組別及圖說；未量原始像素。"
+        }
+      ]
+    },
+    {
+      "source_id": "X39-S008",
+      "images": []
+    }
+  ],
+  "reading_limits": [
+    "共7份PDF的10個圖頁實際開圖，含版面、主要曲線及外觀核對，未自行取點、未看原影片；熟麵結依原文及圖說。",
+    "兩道錯位裂尖與澱粉柱寬保留段落，未為湊數排獨立影片。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W39P-T01",
+      "body_seconds": 73,
+      "chapter_seconds": [
+        36,
+        37
+      ],
+      "core_seconds": {
+        "X39-001": 36,
+        "X39-002": 37
+      },
+      "max_beat_seconds": 22,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39P-T02",
+      "body_seconds": 58,
+      "chapter_seconds": [
+        27,
+        31
+      ],
+      "core_seconds": {
+        "X39-003": 58
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39P-T03",
+      "body_seconds": 54,
+      "chapter_seconds": [
+        26,
+        28
+      ],
+      "core_seconds": {
+        "X39-005": 54
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39P-T04",
+      "body_seconds": 53,
+      "chapter_seconds": [
+        26,
+        27
+      ],
+      "core_seconds": {
+        "X39-006": 53
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39P-T05",
+      "body_seconds": 55,
+      "chapter_seconds": [
+        25,
+        30
+      ],
+      "core_seconds": {
+        "X39-008": 55
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "all_strings_rstrip": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待獨立題級覆核；影片未製作。"
+  ],
+  "revision_history": []
+}

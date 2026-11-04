@@ -1,0 +1,491 @@
+{
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave16-bio-structures-20261102",
+  "author": "pool_life_tech",
+  "created_on": "2026-11-02",
+  "candidate_count": 7,
+  "source_count": 7,
+  "not_added_count": 24,
+  "candidate_ids": [
+    "B16001",
+    "B16002",
+    "B16003",
+    "B16004",
+    "B16005",
+    "B16006",
+    "B16007"
+  ],
+  "authored_files": [
+    {
+      "file": "batches/wave16-bio-structures.json",
+      "sha256": "a49620c48dc563918c93db75566a2311ef5fa760cd6a0ccb3191ef79d43032f9"
+    },
+    {
+      "file": "reviews/wave16-bio-structures-themes.json",
+      "sha256": "4c3cab184b55fcd087699223fbe498fd3c45f08ae7e4eac687aa2c1039a61c4f"
+    }
+  ],
+  "baseline_scan": {
+    "pool_sha256": "7a3943a0460090156a797f370a6d0029b977f7fa854979760eec59f4e52dd705",
+    "raw_scanned": 3306,
+    "not_added_scanned": 776,
+    "method": "全3306 raw的question/answer_target/scope及776 not_added正則檢索；讀相關群體/築造題、下列21完整近對及相關退題。寬鬆機械regex另命中217列，未逐列人工覆審；不宣稱全池人工查核或完整語意召回。",
+    "cache": ".cache/wave16-bio-oldscan.json",
+    "cache_sha256": "8892730d406cdcc41df95566afe598a72cf510ab6562ac9af0f1bdd99ee91e3c",
+    "directions_explored": 31,
+    "limit": "root共同top5與非作者覆核尚待；同詞或向量分數不自動判合併。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "B16001",
+      "b": "Z7015",
+      "old_question": "一群螞蟻搬食物，為什麼剛加入的一隻反而能帶頭轉向？",
+      "old_answer_target": "新加入者帶入較新方向資訊；其拉力經共同貨物傳遞，其他搬運者的協調可放大短暫轉向，領路者因而不必固定。",
+      "old_scope": "Paratrechina longicornis 搬運研究；力耦合是符合觀察的模型，不能宣稱已排除所有化學訊號。",
+      "reason": "舊核是搬運導航中個體力的耦合；新核是路線縮短與被占用的運輸人力競爭。"
+    },
+    {
+      "a": "B16001",
+      "b": "A12001",
+      "old_question": "一群螞蟻搬的食物被擋住，為什麼會左右擺，而不只是朝巢硬拉？",
+      "old_answer_target": "朝巢拉力與沿當下運動方向的集體持續性，在障礙約束下不再同向；兩者競爭可形成來回擺動。",
+      "old_scope": "限P. longicornis的障礙/繫繩實驗與力耦合模型；繫繩本身無出口，不能畫成擺久一定脫困。",
+      "reason": "舊核外部約束下方向振盪；新核選橋位置的資源配置模型，無搬物彈性約束振盪。"
+    },
+    {
+      "a": "B16001",
+      "b": "A12002",
+      "old_question": "螞蟻搬同形狀的貨物過窄門，為什麼大隊碰牆後反而較能繼續找路？",
+      "old_answer_target": "研究模型以貨物持續移動維持蟻間機械耦合，拉力與局部運動對齊又維持滑行；大隊碰牆後仍保有此迴圈，小隊速度掉下來則較難維持對齊，容易停下換向。",
+      "old_scope": "限尺寸縮放的T形貨物與窄門、特定蟻種；個體大小沒有同比放大；不以單蟻composite或受限人類組做智商排名。 拉力對齊與耦合迴圈是模型對觀測的解釋，不是直接量到每隻蟻的認知或全部施力。",
+      "reason": "舊核群大小與運動持續性；新核更長橋占用更多個體的靜態成本。"
+    },
+    {
+      "a": "B16002",
+      "b": "E2190",
+      "old_question": "控制器為什麼要用不同的開啟和關閉門檻？",
+      "old_answer_target": "正回授建立遲滯帶，切換後需反向越過另一門檻才復原。",
+      "old_scope": "抑制小擾動有代價：判斷門檻改變。",
+      "reason": "舊核正回授造成固定兩個切換閾值；新核加入/離開率依人數偏差非線性變動，固定延遲模型被比較排除。"
+    },
+    {
+      "a": "B16002",
+      "b": "K11013",
+      "old_question": "揉皺再攤開的薄片，為什麼能對「先前最多壓到哪裡」留下不同反應？",
+      "old_answer_target": "局部凸凹區的翻轉門檻不同且會互相影響；超過先前最大壓縮會改寫集體狀態與力的跳變序列。",
+      "old_scope": "原研究揉後攤平Mylar的慢速循環與小於初次揉皺的載入；記憶是可量測的歷史依賴，不是認知或永久無漂移儲存。",
+      "reason": "舊核薄片彎摺單元的翻轉門檻及交互作用；新核可加入退出的個體數動態。"
+    },
+    {
+      "a": "B16002",
+      "b": "E2136",
+      "old_question": "同一塊鐵、同樣外加磁場，為什麼量出的磁性還能不同？",
+      "old_answer_target": "磁域重排具有歷史依賴，造成遲滯與剩磁。",
+      "old_scope": "不把所有鐵磁材料都說成強永久磁鐵。",
+      "reason": "舊核磁區與外場循環；不把同叫遲滯當同一機制，新題須保留具體增減員模型對照。"
+    },
+    {
+      "a": "B16003",
+      "b": "G13008",
+      "old_question": "單條串珠很軟，堆成一團後為什麼可能越壓越難變形？",
+      "old_answer_target": "鏈足夠長能迴繞鄰鏈時，集體壓縮可建立跨越整堆的纏結約束；作者提出自約束解釋明顯增硬及最終連接件失效。",
+      "old_scope": "限帶最大彎角限制的金屬串珠鏈；長度對照要按可成圈尺度看，非所有長纖維通用數字。self-confinement是所提機制，X-ray虛擬閉合判準不等於永久閉環繩結。",
+      "reason": "舊核鏈迴繞形成跨堆約束；新核兩種活動狀態之間交換並在不同位置退出/加入，非纏結增硬。"
+    },
+    {
+      "a": "B16003",
+      "b": "L011",
+      "old_question": "直接花 ATP 搬東西，和先存一個梯度再搬，有什麼不同？",
+      "old_answer_target": "直接供能與梯度間接供能",
+      "old_scope": "細胞跨膜運輸；不討論臨床電解質處置",
+      "reason": "舊核直接ATP與梯度間接供能；新核並不以一般能量來源解釋，而是材料兩層循環和邊界交換。"
+    },
+    {
+      "a": "B16004",
+      "b": "L003",
+      "old_question": "細胞膜兩側濃度不同時，能穿膜的中性小分子會往哪邊淨移動？",
+      "old_answer_target": "濃度梯度與中性溶質的淨擴散方向",
+      "old_scope": "限定可穿膜、不帶電的溶質被動擴散；相同溫度，忽略其他驅動力，不套用帶電離子的電化學梯度。",
+      "reason": "擴散是候選濕度場模型的一部分，但新題要辨別停留率與沉積機率及等高幾何控制，不單講濃度梯度。"
+    },
+    {
+      "a": "B16004",
+      "b": "B2005",
+      "old_question": "螞蟻留下的氣味，怎麼能讓沒看見食物的同伴也找到路？",
+      "old_answer_target": "化學訊號把食物路徑留給同種接收者。",
+      "old_scope": "具有路徑費洛蒙的社會性昆蟲，不推廣至所有螞蟻。",
+      "reason": "舊核費洛蒙路線；新核無預先標記濕土、到訪與放置不同的幾何/蒸發假說，不否認自然化學線索。"
+    },
+    {
+      "a": "B16004",
+      "b": "V3017",
+      "old_question": "細菌沒有點名器，怎麼在鄰居夠多時一起改變行為？",
+      "old_answer_target": "自體誘導物累積與受體調節讓基因反應依群體及擴散條件改變",
+      "old_scope": "濃度不是純粹細胞數計；B2327–2330 未處理此調節核心",
+      "reason": "舊核化學濃度閾值感知群密度；新核正控制個體分布以辨別放置位置的另一線索。"
+    },
+    {
+      "a": "B16005",
+      "b": "H3026",
+      "old_question": "橡膠拉長後為什麼會縮回，卻不整條流走？",
+      "old_answer_target": "受拉使卷曲鏈趨向排列，少量交聯限制永久滑移，放鬆後回復較卷曲狀態。",
+      "old_scope": "分子鏈層級；熱力學熵彈性數值需補來源，不只重述 P294。",
+      "reason": "舊核鏈構形熵及交聯回彈；新核長度移入液滴，抗彎與毛細力門檻，非材料自身回縮。"
+    },
+    {
+      "a": "B16005",
+      "b": "P055",
+      "old_question": "細管裡的水為什麼能爬過外面水面的高度？",
+      "old_answer_target": "界面作用提供向上分量並與液柱重量平衡。",
+      "old_scope": "需補讀毛細公式段後寫定量稿",
+      "reason": "舊核管內液柱高度；新核界面力使細絲屈曲並把長度存入滴內的耦合。"
+    },
+    {
+      "a": "B16005",
+      "b": "P057",
+      "old_question": "紙巾吸水和水滴黏在玻璃上，是同一件事嗎？",
+      "old_answer_target": "紙巾孔隙網路讓毛細作用傳播，附著只是機制的一部分。",
+      "old_scope": "不延伸生物纖維結構細節",
+      "reason": "舊核多孔吸液；本題不是液體在多孔體內前進，而是纖維進液滴。"
+    },
+    {
+      "a": "B16005",
+      "b": "K11005",
+      "old_question": "薄殼還沒到理想承載極限，為什麼小凹痕或額外輕推就可能讓它失穩？",
+      "old_answer_target": "凹痕或不均勻載入改變局部失穩路徑；即使低於當期失穩載荷，額外擾動仍可能跨過已降低的能障。",
+      "old_scope": "分清既有缺陷改變載荷門檻、額外擾動跨能障兩個角色；採薄球殼與薄圓筒指定模型，不報通用安全倍率。",
+      "reason": "舊核薄殼缺陷/有限擾動能障；新核細線抗彎與界面拉力及持續滴內收線。"
+    },
+    {
+      "a": "B16005",
+      "b": "B15004",
+      "old_question": "有些已捲好的瓜藤捲鬚，為什麼拉長時反而多捲幾圈？",
+      "old_answer_target": "抗彎比抗扭更強時，保持偏好曲率而調整螺距/半徑可增加軸向長度；左右手螺旋交接容許內部轉動，兩端固定仍可能增圈。",
+      "old_scope": "限抽離纖維帶、文中老化乾捲鬚及模型；新鮮年輕整條捲鬚不一定如此，高張力最後仍展開；彎扭剛性比是模型參數。",
+      "reason": "舊核已捲捲鬚固定兩端下增圈延長；新核液滴內屈曲儲長，沒有左右手螺旋交接機制。"
+    },
+    {
+      "a": "B16006",
+      "b": "H3060",
+      "old_question": "裂痕多長會突然快速擴大，為什麼還要看拉力和材料？",
+      "old_answer_target": "在指定幾何及適用模型下，裂長與外加應力共同決定裂尖擴裂驅動；達到材料斷裂韌性對應的門檻，才可能發生快速擴裂。",
+      "old_scope": "聚焦線彈性斷裂模型的臨界裂長／載荷；應力集中沿用既有前提。幾何與材料適用條件不可省略，不由刮痕外觀判實物承載安全。",
+      "reason": "舊核裂長/載荷達到韌性門檻；新核控制網形與材料曲線後的損壞區域分布，峰值較高卻破更多是不同預測。"
+    },
+    {
+      "a": "B16006",
+      "b": "H3091",
+      "old_question": "有些塑膠出現細微損傷後，為什麼裡面還能拉出承受力量的細絲？",
+      "old_answer_target": "玻璃態聚合物銀紋成長可將纏結鏈抽伸成纖維網絡，由鏈骨架傳遞張力，最終仍可脫纏或斷鏈失效。",
+      "old_scope": "限所引粗粒化模擬與機制線索；不把所有發白現象等同銀紋，也不宣稱損傷後更安全。",
+      "reason": "舊核玻璃態高分子銀紋拉出承力纖維；新核離散蛛網既有線的非線性分工，不是同一成纖過程。"
+    },
+    {
+      "a": "B16006",
+      "b": "G13008",
+      "old_question": "單條串珠很軟，堆成一團後為什麼可能越壓越難變形？",
+      "old_answer_target": "鏈足夠長能迴繞鄰鏈時，集體壓縮可建立跨越整堆的纏結約束；作者提出自約束解釋明顯增硬及最終連接件失效。",
+      "old_scope": "限帶最大彎角限制的金屬串珠鏈；長度對照要按可成圈尺度看，非所有長纖維通用數字。self-confinement是所提機制，X-ray虛擬閉合判準不等於永久閉環繩結。",
+      "reason": "舊核纏結壓縮增硬；新核單線拉伸曲線與網的局部破壞位置，未靠鏈群自約束。"
+    },
+    {
+      "a": "B16007",
+      "b": "P164",
+      "old_question": "底座做寬一點，為什麼通常比較不容易翻倒？",
+      "old_answer_target": "重心投影離開支撐範圍前的容許傾角增加。",
+      "old_scope": "重心高度與重量分布另控制",
+      "reason": "舊核重心投影/支撐多邊形；新核環向力加壓柱面與最後空位造成的層完成瓶頸。"
+    },
+    {
+      "a": "B16007",
+      "b": "D2257",
+      "old_question": "房子每根梁柱都很強，為什麼接頭仍可能是關鍵？",
+      "old_answer_target": "抗震力須經連續連接傳遞；構件強度不能代替梁柱至地基的連續路徑。",
+      "old_scope": "FEMA P-749 Earthquake-Resistant Design Concepts (September 2022)；限所列機制，不等於特定產品或現場效能。",
+      "reason": "舊核一般連續傳力路徑；新核開環/閉環對柱面壓力及填位等待的具體可測條件。"
+    }
+  ],
+  "within_batch_boundaries": [
+    {
+      "a": "B16001",
+      "b": "B16002",
+      "reason": "路線/占用人力取捨與動態間距循環/增減員非線性是不同控制；不另拆個體接觸線索。"
+    },
+    {
+      "a": "B16003",
+      "b": "B16007",
+      "reason": "筏材料兩層循環與塔閉環壓力/最後空位完成不同；塔內換班已退，避免換結構重講循環。"
+    },
+    {
+      "a": "B16005",
+      "b": "B16006",
+      "reason": "滴內長度儲存的界面/抗彎門檻與離散網非線性負荷/局部破壞不同，兩片不硬合成蛛絲百科。"
+    }
+  ],
+  "source_identity": {
+    "count_meaning": "7個來源記錄對應7篇研究/作者稿；URL數不代表獨立實驗數或獨立團隊複驗數。",
+    "matching": "比既有來源的normalized title、explicit DOI與exact URL；僅身分線索，未證明歷史沒有不同URL同文。",
+    "items": [
+      {
+        "id": "B16-S001",
+        "doi": "10.1073/pnas.1512241112",
+        "canonical_url": "https://doi.org/10.1073/pnas.1512241112",
+        "retrieval_url": "https://www.thekaolab.com/papers/Reid_PNAS_2015.pdf",
+        "version": "PNAS 112(49):15113–15118; 2015-12-08 issue",
+        "old_exact_identity_matches": [],
+        "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。 與2022活橋研究部分團隊/主題相關，裝置與控制問題不同；非獨立團隊重複驗證同一成本效益模型。"
+      },
+      {
+        "id": "B16-S002",
+        "doi": "10.1038/s41467-022-28773-z",
+        "canonical_url": "https://doi.org/10.1038/s41467-022-28773-z",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897433/",
+        "version": "Nature Communications 13:1160; PMC8897433",
+        "old_exact_identity_matches": [],
+        "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。"
+      },
+      {
+        "id": "B16-S003",
+        "doi": "10.1098/rsif.2021.0213",
+        "canonical_url": "https://doi.org/10.1098/rsif.2021.0213",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8241487/",
+        "version": "J. R. Soc. Interface 18:20210213; PMC8241487",
+        "old_exact_identity_matches": [],
+        "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。"
+      },
+      {
+        "id": "B16-S004",
+        "doi": "10.7554/eLife.86843.4",
+        "canonical_url": "https://elifesciences.org/articles/86843",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11006414/fullTextXML",
+        "version": "Version of Record; eLife 12:RP86843; base DOI 10.7554/eLife.86843",
+        "old_exact_identity_matches": [],
+        "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。 eLife v1/v2/v3 reviewed preprints與v4正式紀錄是修訂關係；本次採VoR同文XML。"
+      },
+      {
+        "id": "B16-S005",
+        "doi": "10.1073/pnas.1602451113",
+        "canonical_url": "https://doi.org/10.1073/pnas.1602451113",
+        "retrieval_url": "https://arxiv.org/pdf/1605.05293",
+        "version": "arXiv:1605.05293v2 (19 May 2016); related PNAS 113(22):6143–6147",
+        "old_exact_identity_matches": [],
+        "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。 arXiv v2頁明列正式PNAS DOI且註與arXiv:1501.00962文字重疊；不把版本當兩個實驗。PDF編排時戳2018不改v2身分。"
+      },
+      {
+        "id": "B16-S006",
+        "doi": "10.1038/nature10739",
+        "canonical_url": "https://doi.org/10.1038/nature10739",
+        "retrieval_url": "https://web.mit.edu/mbuehler/www/papers/Nature_2012_wc.pdf",
+        "version": "Nature 482:72–76; 2 February 2012 issue",
+        "old_exact_identity_matches": [],
+        "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。"
+      },
+      {
+        "id": "B16-S007",
+        "doi": "10.1098/rsos.170475",
+        "canonical_url": "https://doi.org/10.1098/rsos.170475",
+        "retrieval_url": "https://hu.gatech.edu/wp-content/uploads/2017/07/Hu17-tower.pdf",
+        "version": "R. Soc. Open Sci. 4:170475; 14-page published PDF",
+        "old_exact_identity_matches": [],
+        "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。 與火蟻筏領域有相同前期規則/文獻脈絡，不能算對2021兩層循環的一次獨立重現。"
+      }
+    ]
+  },
+  "source_reading": [
+    {
+      "id": "B16-S001",
+      "url": "https://doi.org/10.1073/pnas.1512241112",
+      "retrieval_url": "https://www.thekaolab.com/papers/Reid_PNAS_2015.pdf",
+      "read_via": "當日web搜尋及web.open作者實驗室PDF；指定UA urllib HTTP200取得同文PDF，PyMuPDF指定頁正文讀回。",
+      "reading_scope": "PDF pp.1–5（印刷15113–15117）的平台角度/交通量實驗、成本效益模型及Discussion局部行為解釋段。未完整重算補充模型或讀所有SI。",
+      "locator": "Results: bridge movement and geometry; cost–benefit model; Figs.1–4; Discussion local joining/leaving interpretation",
+      "sha256": "90d1994c4cc6d496dcdeb5a55846953cbf4c26df2c7b42e8fb6f7137a9c56107",
+      "limitations": "觀察支持定性折衷，不證群體找出全局最佳點；局部接觸與受力是討論中的候選線索，不是本研究已直接量得的完整個體規則。"
+    },
+    {
+      "id": "B16-S002",
+      "url": "https://doi.org/10.1038/s41467-022-28773-z",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897433/",
+      "read_via": "web.open PMC回驗證頁；指定UA urllib HTTP200取得真正文章HTML，lxml抽取Results and discussion指定正文與圖說實讀。",
+      "reading_scope": "Results and discussion三小節與Figs.1–7圖說（本機段落16–55）；含10次擴張/收縮、三種模型和個體線索。未完整重現SI或程式，未看影片。",
+      "locator": "Results and discussion / Field experiments: collective structures; Mechanistic models; Field experiments: individual cues",
+      "sha256": "558f6c365d1a5c6f36d39ec197fb595a57a4ed95368f679a7b612d1fc40b101b",
+      "limitations": "加入/離開率依人數偏離平衡量改變是機制模型；微小反覆間距擾動的穩定性是模擬，不是實地擾動實驗。張力感知未直接證實。"
+    },
+    {
+      "id": "B16-S003",
+      "url": "https://doi.org/10.1098/rsif.2021.0213",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8241487/",
+      "read_via": "當日web.open PMC正文成功；指定UA urllib HTTP200，lxml正文抽取後讀回方法與結果/討論。",
+      "reading_scope": "§2.1–2.6、§3.1 Treadmilling、§3.2 Instabilities及§4 Discussion；Fig.3–6圖說。未看補充影片或重算追蹤資料。",
+      "locator": "§2.4–2.5; §3.1 Treadmilling; Fig.4; §4 first paragraph",
+      "sha256": "d38835058a5d7a618f3ecf7e405db09d4805508bafe04b1063dd529c38084df7",
+      "limitations": "限有垂直固定桿的火蟻筏；桿高、季節和採集地效應未系統測試。突出方向的偏置模型不能證明唯一原因，亦未排除環境或費洛蒙線索。"
+    },
+    {
+      "id": "B16-S004",
+      "url": "https://elifesciences.org/articles/86843",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11006414/fullTextXML",
+      "read_via": "PMC web與UA HTML是CAPTCHA而非正文；指定UA從Europe PMC官方fullTextXML HTTP200取得同文XML，實讀body指定段；另web.open eLife核Version of Record及前段正文。",
+      "reading_scope": "Results與Discussion的採集/沉積/停留率、等高牆端、乾濕邊界、曲率/濕度模型、無白蟻鹽結晶對照；Methods指定Conditional probabilities及Saline solution experiments。未完整讀附錄推導或補充影片。",
+      "locator": "Results: collection versus deposition conditional probabilities, wall tips, soil/moist-sand boundary; Discussion; Materials and methods / Conditional probabilities; Saline solution experiments",
+      "sha256": "e46bfea345b4111b17d8abfc6505f849d9c0bf0ff5d8917e4c6554cb3b59216c",
+      "limitations": "多數試驗來自同一人工飼養群體的Coptotermes gestroi、持續濕潤早期築造；蒸發感知是支持的解釋，未定位神經感受器，不能說所有蟻丘不使用化學訊號。"
+    },
+    {
+      "id": "B16-S005",
+      "url": "https://doi.org/10.1073/pnas.1602451113",
+      "retrieval_url": "https://arxiv.org/pdf/1605.05293",
+      "read_via": "當日web搜尋及arXiv abstract核v2/DOI；指定UA urllib HTTP200取arXiv PDF，PyMuPDF pp.1–3及p.4指定能量式段讀回，PDF p.2渲染目讀Figs.1–3。Jussieu作者網址web timeout、UA主機名憑證不符，未繞過驗證。",
+      "reading_scope": "PDF pp.1–3主文、Figs.1–4圖說；p.4彎曲與界面能段僅指定節錄；目讀p.2圖。未完整讀p.4–5、SI或影片。",
+      "locator": "PDF pp.2–3; Figs.1–3; Fig.3 caption Spooling activation and p.3 local buckling threshold comparing capillary force with Euler buckling load",
+      "sha256": "b17802c058a5f6442c0d9b02725286e67d8c02b3ce32835d8c4b019d8f04d34d",
+      "limitations": "限所測Nephila edulis捕獲絲與微細合成纖維；不能說材料真的變成液體或所有蛛絲都如此。PDF排版時戳2018不另算新研究；v2不是本輪逐字核對的正式版。"
+    },
+    {
+      "id": "B16-S006",
+      "url": "https://doi.org/10.1038/nature10739",
+      "retrieval_url": "https://web.mit.edu/mbuehler/www/papers/Nature_2012_wc.pdf",
+      "read_via": "當日web搜尋定位原研究；MIT PDF web timeout，指定UA urllib HTTP200取得同文PDF。PyMuPDF指定主文頁讀回，PDF p.4渲染目讀Fig.2。",
+      "reading_scope": "PDF pp.2–5（印刷72–75）主文/Methods Summary及Figs.1–3圖說；PDF p.4圖2目讀。未完整讀線上Methods/SI、未重跑分子或蛛網模型。",
+      "locator": "Printed pp.73–75; Fig.2a–b; paragraphs beginning Although all web models performed similarly and The remarkable strength; Methods Summary",
+      "sha256": "cf4a12389cb42c11eec361d7117a8b3cc894c92ee34f51b6e37ceb0221af2976",
+      "limitations": "主要是離散網模型及定性戶外拉動對照；不將模型損壞比例當所有蛛網常數，也不把整體破壞韌性與保留未斷網比例混為一談。"
+    },
+    {
+      "id": "B16-S007",
+      "url": "https://doi.org/10.1098/rsos.170475",
+      "retrieval_url": "https://hu.gatech.edu/wp-content/uploads/2017/07/Hu17-tower.pdf",
+      "read_via": "當日web搜尋核原研究；PMC web回驗證頁，指定UA urllib HTTP200取得Georgia Tech作者PDF。PyMuPDF指定正文與圖說實讀，PDF p.10圖5渲染目讀。",
+      "reading_scope": "PDF p.5 §3.2模型、pp.9–12 §4.1末段、§4.2、§5.1；p.10 Fig.5目讀。未完整讀其他方法/補充影片。",
+      "locator": "§3.2 Tower growth rate; §4.2 Tower growth rate, PDF pp.10–11; Fig.5; §5.1",
+      "sha256": "8360684e112df73d44d373ba4b2ae3212e04d8426a509e1458200405397733d4",
+      "limitations": "閉環穩定性為觀察與受力模型支持的假說，不是直接逐隻量到所有環向力；時間模型假設空位獨立且近似無記憶，主要吻合到約14毫米柱徑，不能無限外推。"
+    }
+  ],
+  "retrieval_attempts": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11006414/",
+      "result": "web CAPTCHA；UA HTTP200實為JSRecaptchaChallengePageUi，不當已讀正文；改Europe PMC XML成功。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8346884/",
+      "result": "web及UA CAPTCHA；本輪未收蜂巢題。"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8346884/fullTextXML",
+      "result": "HTTP500；未取正文。"
+    },
+    {
+      "url": "https://www.pnas.org/doi/10.1073/pnas.2103605118",
+      "result": "web403；未取正文。"
+    },
+    {
+      "url": "https://pure.mpg.de/view/item_3345818",
+      "result": "web/UA403；未取正文。"
+    },
+    {
+      "url": "https://cei.ece.cornell.edu/research-2/honey-bees/",
+      "result": "web502；UA200作者介紹頁僅核文獻連結，不充當PNAS方法與結果。"
+    },
+    {
+      "url": "https://www.lmm.jussieu.fr/~neukirch/articles/2016_windlass1.pdf",
+      "result": "web timeout；UA SSL hostname mismatch；未繞過憑證，改arXiv v2。"
+    }
+  ],
+  "editorial_check": {
+    "episodes": [
+      {
+        "id": "W16B-T01",
+        "seconds": 205,
+        "core_seconds": {
+          "B16001": 100,
+          "B16002": 105
+        }
+      },
+      {
+        "id": "W16B-T02",
+        "seconds": 105,
+        "core_seconds": {
+          "B16005": 105
+        }
+      },
+      {
+        "id": "W16B-T03",
+        "seconds": 110,
+        "core_seconds": {
+          "B16006": 110
+        }
+      },
+      {
+        "id": "W16B-T04",
+        "seconds": 110,
+        "core_seconds": {
+          "B16007": 110
+        }
+      }
+    ],
+    "unassigned_candidates": [
+      "B16003",
+      "B16004"
+    ],
+    "unassigned_reason": "材料可以保留，尚未硬接到橋或蛛絲題案；不因題數多就拼百科。",
+    "timing_basis": "紙上正文預算，含開場、轉場、條件重設與回扣；未試讀、未製作，不是實測片長或留存測試。"
+  },
+  "review_requests": [
+    "B16002與E2190等遲滯舊核須按具體增減員非線性比較；若只剩歷史現象可合/退。",
+    "B16004沉積線索的蒸發模型是否足以題級保留；不可升格為唯一已證感受路徑。",
+    "B16005與既有毛細/屈曲、B16006與H3060裂紋門檻的控制差別。",
+    "B16007閉環壓力及填位等待是否形成一般觀眾可見新理解；不為7的數字保留薄題。"
+  ],
+  "production_status": "NO_SCRIPT_NO_MEDIA_NO_PAID_ACTION; 題級作者研究，尚未非作者核准。",
+  "local_validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "runtime": "v24.22.1",
+    "checks": [
+      "validateEditorial",
+      "validateThemes",
+      "single-core chapter",
+      "beat<=45",
+      "sum-by-core cap",
+      "range upper<=body",
+      "UTF8 LF no BOM",
+      "all string lines rstrip",
+      "source IDs and unique mechanism keys"
+    ],
+    "scope": "只驗格式、來源ID、LF/BOM/字串尾白、每beat/核心預算；不是科學正確性或片長實測。"
+  },
+  "revision_history": [
+    {
+      "reason": "非作者physics：B16001人力量為橋面積代理/模型；T02抗彎門檻後重述縮10秒。",
+      "before_files": [
+        {
+          "file": "batches/wave16-bio-structures.json",
+          "sha256": "653a66ab4130138264ad8b3d28501e14532d8efaed14a64ea212c36822adeb6e"
+        },
+        {
+          "file": "reviews/wave16-bio-structures-themes.json",
+          "sha256": "d269a4d4c349f8bf741a5de372843044430b1f18b2cf68ce63c9b533d3ac4ccb"
+        },
+        {
+          "file": "reviews/wave16-bio-structures-author.json",
+          "sha256": "951d50ffee76056f6933bea0e4ff4ecb61f6bda9f66bccdd8ddd8063994693e4"
+        }
+      ],
+      "changes": [
+        "B16001 notes/visual與T01人力帳明標模型；question/answer_target不動。",
+        "T02第二章60→50秒，全115→105，range/drop/core累計同步，不補內容。"
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave16-bio-structures.json",
+          "sha256": "a49620c48dc563918c93db75566a2311ef5fa760cd6a0ccb3191ef79d43032f9"
+        },
+        {
+          "file": "reviews/wave16-bio-structures-themes.json",
+          "sha256": "4c3cab184b55fcd087699223fbe498fd3c45f08ae7e4eac687aa2c1039a61c4f"
+        }
+      ]
+    }
+  ]
+}

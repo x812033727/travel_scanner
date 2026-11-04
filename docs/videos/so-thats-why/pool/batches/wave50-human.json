@@ -1,0 +1,133 @@
+{
+  "batch_id": "wave50-human-20261103",
+  "created_on": "2026-11-03",
+  "scope": "選擇後結果被換的行為實驗；單一新核，不把認知偏誤名詞串長片。",
+  "sources": [
+    {
+      "id": "H50-S001",
+      "title": "Magic at the marketplace: Choice blindness for the taste of jam and the smell of tea",
+      "doi": "10.1016/j.cognition.2010.06.010",
+      "publisher": "Lars Hall等 / Cognition",
+      "version": "2010正式刊本；作者實驗室PDF含一頁封面，正文54–61頁",
+      "url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Hall-et-al.-2010-Magic-at-the-Marketplace-Choice-Blindness-for-the-Taste-of-Jam-and-the-Smell-of-Tea.pdf",
+      "canonical_url": "https://doi.org/10.1016/j.cognition.2010.06.010",
+      "retrieval_url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Hall-et-al.-2010-Magic-at-the-Marketplace-Choice-Blindness-for-the-Taste-of-Jam-and-the-Smell-of-Tea.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "作者實驗室publication頁的公開PDF，200且PDF內容與書目核合；全文文字實讀並目讀兩圖。",
+      "reading_scope": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+      "locator": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+      "summary": "暗中換成原本沒選的樣品後，許多試次未被察覺；不同樣品配對的察覺程度不同。",
+      "limitations": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave50-human-choice.pdf",
+        "sha256": "21efddd4ee9c1686f95679e179adb5eac7c5863d74f80dece1aeb00d844f16cc",
+        "text_file": ".cache/wave50-human-choice.txt",
+        "text_sha256": "d1db3e95be9302875fe04351a5a682432c843f7a0cb784632f55632e76a6f3a1"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H50-001",
+      "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+      "domain": "認知／選擇與結果核對",
+      "mechanism_key": "cognition.choice_outcome_swap_taste_smell",
+      "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+      "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。",
+      "source_ids": [
+        "H50-S001"
+      ],
+      "source_locator": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+      "premise_status": "screened",
+      "notes": "果醬和茶同一操弄，合為一核。僅描述行為控制，不能宣稱唯一腦機制、永久改變偏好或受試者故意說謊。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "選擇本身與後來接到的結果，未必每次都被正確核對。",
+        "visual": "原創雙頭罐剖面與三步流程，再把Fig2最相似/最不相似配對重畫為定性對照；不複製受試者照片。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H50-NA001",
+      "question": "果醬換樣與茶葉換樣各算一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "H50-S001"
+      ],
+      "reason": "相同操弄與答案，兩種感官只作主核補例，不拆筆。",
+      "reentry_condition": "要有不同控制改變答案，而非換商品。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H50-NA002",
+      "question": "漏察覺就證明人完全不知道自己喜歡什麼？",
+      "existing_ids": [],
+      "source_ids": [
+        "H50-S001"
+      ],
+      "reason": "從有限任務跳到所有偏好，超過證據。",
+      "reentry_condition": "需限定可檢驗命題與直接資料。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H50-NA003",
+      "question": "送禮會讓人一律更容易上當？",
+      "existing_ids": [],
+      "source_ids": [
+        "H50-S001"
+      ],
+      "reason": "贈品條件茶與果醬結果不同，社會回報與回溯標準仍有解釋空間；不另開薄片。",
+      "reentry_condition": "須有獨立控制區分動機與回報偏差。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H50-NA004",
+      "question": "耳機把剛說的字換掉，人會相信自己說了另一個字？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "取得2014原文PDF但尚未全文覆核；讀2015作者回應已見試次排除、時序窗與Stroop情境爭論，不能只用標題收核。",
+      "reentry_condition": "需原始Methods/全部分母及批評原文對讀，另核現有語音題。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H50-NA005",
+      "question": "問路時換了一個人，為什麼沒發現？",
+      "existing_ids": [
+        "P14006",
+        "C2004"
+      ],
+      "source_ids": [],
+      "reason": "原作者索引取回逾時，尚未讀有效原文；舊注意/變化盲題相近。",
+      "reentry_condition": "先取得原文，再證明不同於既有變化盲控制。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H50-NA006",
+      "question": "看過的照片，為什麼會記成更廣的景？",
+      "existing_ids": [
+        "C2016"
+      ],
+      "source_ids": [],
+      "reason": "PMC驗證頁與Europe PMC XML500，未完成正文與圖讀。",
+      "reentry_condition": "需有效原研究正文和場景邊界對照，不能以搜尋摘要入庫。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    },
+    {
+      "id": "H50-NA007",
+      "question": "白酒染紅以後聞起來也像紅酒？",
+      "existing_ids": [
+        "R42010"
+      ],
+      "source_ids": [],
+      "reason": "已收顏色對氣味描述用詞的控制，這輪不改標題重收。",
+      "reentry_condition": "不同原研究對照產生新的答案才重入。",
+      "reading_status": "有source_ids者已讀本文；其他為舊題比較或所述有限讀證，不算已查原研究。"
+    }
+  ]
+}

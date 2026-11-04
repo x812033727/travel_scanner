@@ -1,0 +1,616 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave22-everyday-physics.json",
+      "sha256": "cdfdd157873ce4580263e66c88de90e429d3fb557eefc70e2bd556de7190bada"
+    },
+    {
+      "file": "reviews/wave22-everyday-physics-author.json",
+      "sha256": "09f0eac861e7f6c8da15705138f267a1b39ff407789631ce508edadab6b1087c"
+    },
+    {
+      "file": "reviews/wave22-everyday-physics-themes.json",
+      "sha256": "11f93bd2ad826c23c2f84b39e2184a65a98ed0d797a4402da5fc7a108ec6fe62"
+    },
+    {
+      "file": "reviews/wave22-life-reviews-everyday-physics.json",
+      "sha256": "6c7879960ada7cdc2ce04a560643836380b2e44593821121277f1087c75bdb58"
+    },
+    {
+      "file": "batches/wave22-life-controls.json",
+      "sha256": "d5af92f1b0b85f156a0412cd852f5a790a22f553075ef5682162887a3affd476"
+    },
+    {
+      "file": "reviews/wave22-life-controls-author.json",
+      "sha256": "88108016c136bf831c152fb2586d817057d7ad91766f1377ce054cfcf63fd24b"
+    },
+    {
+      "file": "reviews/wave22-life-controls-themes.json",
+      "sha256": "8796c36b4fc99f4cb230feb37bb654e1874ee41699cdf10125f498c3d0287bc7"
+    },
+    {
+      "file": "reviews/wave22-physics-reviews-life-controls.json",
+      "sha256": "fb40f95836f9d30a1db21473033c73b543b2fe644b455819440d16020f25eb80"
+    },
+    {
+      "file": "batches/wave22-sound.json",
+      "sha256": "59bcefcdc016715a1123b595b8f26ac358d17a79f48b078a0371a341b9e983e1"
+    },
+    {
+      "file": "reviews/wave22-sound-author.json",
+      "sha256": "93f92d93d3a816e030f9d4778613e2ed4a40cb9440afb4bd24df49afb6ca0d4b"
+    },
+    {
+      "file": "reviews/wave22-sound-themes.json",
+      "sha256": "bd79e7562d2042272e0a021ffd2310a092efc9b0ee0291ff081181da3a79fe46"
+    },
+    {
+      "file": "reviews/wave22-life-reviews-sound.json",
+      "sha256": "11fabaa490894f4c87b307ae1bb9f9614b26b8c420ea87e0bc816a2a3dd87075"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave22-everyday-physics.json",
+      "author": "pool_physics",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 5,
+      "top5_directed_pairs": 25,
+      "author_pairs": 21,
+      "not_added_count": 19,
+      "theme_count": 4
+    },
+    {
+      "batch": "batches/wave22-life-controls.json",
+      "author": "pool_life_tech",
+      "reviewer": "pool_physics",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 20,
+      "not_added_count": 22,
+      "theme_count": 3
+    },
+    {
+      "batch": "batches/wave22-sound.json",
+      "author": "root",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 5,
+      "top5_directed_pairs": 25,
+      "author_pairs": 13,
+      "not_added_count": 8,
+      "theme_count": 4
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave22-everyday-physics.json",
+          "sha256": "cdfdd157873ce4580263e66c88de90e429d3fb557eefc70e2bd556de7190bada"
+        },
+        {
+          "file": "batches/wave22-life-controls.json",
+          "sha256": "d5af92f1b0b85f156a0412cd852f5a790a22f553075ef5682162887a3affd476"
+        },
+        {
+          "file": "batches/wave22-sound.json",
+          "sha256": "59bcefcdc016715a1123b595b8f26ac358d17a79f48b078a0371a341b9e983e1"
+        }
+      ],
+      "new_source_rows": 16,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "443d9c9bdcd75d2954a10140bbd0c1f28f1ebf8ec0bc97394c2ea193cf2994da",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "decisions": [],
+      "notes": [
+        "16 new source rows compared to all historical URLs and nonlegacy research titles/DOI strings; zero exact match does not prove independent experiments.",
+        "Related2014/2016 flagellar studies and2015/2025 jellyfish studies are linked teams/designs, not independent replication counts; correction is attached provenance, not a17th source-row credit."
+      ]
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave22-everyday-physics.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave22-life-controls.json",
+      "source_rows": 6,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave22-sound.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "4e69c939a87907a55700e071009c9c2b494b6c81f8a64efd9e682201276da48c",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source": "Leaping shampoo glides on a lubricating air layer; 2013 author manuscript",
+      "file": ".cache/wave22-physics-kaye-pages.json",
+      "scope": "4頁主文與Fig1–5文字圖說；p2 Fig3目讀。未播放補充影片、未取補充文件或逐條讀引用研究。",
+      "finding": "觀察氣層破成細線/泡時出流失去供給；兩種約0.5微米厚度為估算，接觸面積不確定。作者明留非牛頓特性可能幫助形成/維持氣層，不能寫已證實完全無關。與I12008氣膜接通時間窗口高度重複，建議併變體，已通知非作者嚴判。",
+      "role": "root targeted non-author source reading",
+      "viewed_images": [
+        {
+          "file": ".cache/wave22-physics-kaye-p2.png",
+          "sha256": "d047b9d6ae8b7a6cfddeac5592556c1b256321e80b6d3ea57f32009341310138"
+        }
+      ],
+      "sha256": "25d99e37a267e547e8250424e50be895652130e13e9d8f424ab7eaa55a8ccc08"
+    },
+    {
+      "source": "Dynamics of Mouth Opening in Hydra; 2016 Biophysical Journal",
+      "file": ".cache/wave22-life-hydra2016-body.json",
+      "scope": "段17–22、26、28、31、34、42、47–54、85、87、89–91、93–95、97全文及Fig2/6圖說；無圖像/影片目讀。",
+      "finding": "細胞核移動但相對排列維持，形變擴大嘴口；不可寫完全不移動。成像多為取下頭部，55細胞/80核不當動物數；力數值為模型估算非直接力測。",
+      "role": "root targeted non-author source reading",
+      "sha256": "ea09bf34383c219b723533f44726582debb3279b7c328d05a7aed162b55dd26f"
+    }
+  ],
+  "editorial_summary": "本輪用流體、生命形變與聲音知覺的具體對照補素材。薄氣膜與音高來源記憶依相同答案合併舊核；同一研究的參數、前後控制或物種不拆數量。只夠解釋一個對照的題留短段，沒有共同追問就不串成長片。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並對其他作者兩份來源作定點閱讀。sound由root撰寫、pool_life_tech非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 65,
+      "changes": [
+        {
+          "batch": "everyday-physics",
+          "date": "2026-11-02",
+          "reviewer": "pool_life_tech",
+          "before_files": [
+            {
+              "file": "batches/wave22-everyday-physics.json",
+              "sha256": "abbde51e1a467f83e5d39002da1a74517ee6d12036ebdd4bbeb6a249711b5132"
+            },
+            {
+              "file": "reviews/wave22-everyday-physics-themes.json",
+              "sha256": "b3443eb635893fc33ba9bebb3eea1136ff36c814545f674698fc7b2af21fa173"
+            },
+            {
+              "file": "reviews/wave22-everyday-physics-author.json",
+              "sha256": "2ce7e42e80419f45879e26840f05a0133e0c5ede30c6e8ca793e89c746c06366"
+            }
+          ],
+          "changes": [
+            {
+              "id": "PHYSICS22-01",
+              "action": "接受P22001併I12008，保留原始提案與氣膜剪切/破膜新證據變體；中央去重由root落定，未刪候選。"
+            },
+            {
+              "id": "PHYSICS22-02",
+              "action": "W22P-T03第二章移除重回三框的門檻重述，15→10秒，只留角度/支撐移動窗口；100→95秒。",
+              "removed_seconds": 5
+            },
+            {
+              "id": "PHYSICS22-03",
+              "action": "P22-NA008問法由牛頓液收窄為有些聚合物液，與未完成擠出膨脹研究的退題理由一致；不新增核心。"
+            }
+          ],
+          "removed_seconds": 5,
+          "candidate_question_answer_scope_changed": false
+        },
+        {
+          "batch": "life-controls",
+          "reviewer": "pool_physics",
+          "before_files": [
+            {
+              "file": "batches/wave22-life-controls.json",
+              "sha256": "d5af92f1b0b85f156a0412cd852f5a790a22f553075ef5682162887a3affd476"
+            },
+            {
+              "file": "reviews/wave22-life-controls-themes.json",
+              "sha256": "7773477eb6ea6672ffee6c2da89bf62975d52f0d53fde1d7dcdc31279d671a68"
+            },
+            {
+              "file": "reviews/wave22-life-controls-author.json",
+              "sha256": "1e57609aff08ac58be43a8700282bd09a81dee7c2cd25745e003bfb645cb6afc"
+            }
+          ],
+          "changes": [
+            "T01胞內模型30→15秒，全155→140，不補內容；刪段重算125秒。",
+            "T02傷口閉合與重排時序澄清：重排可早已開始，閉合後仍可繼續。",
+            "q/answer/source與batch位元組不變；黏性棘輪仍僅模型，未升成直接力學量測。"
+          ],
+          "after_theme_sha256": "8796c36b4fc99f4cb230feb37bb654e1874ee41699cdf10125f498c3d0287bc7",
+          "removed_seconds": 15
+        },
+        {
+          "batch": "sound",
+          "reason": "非作者pool_life_tech要求目標音反相題名明確；刪除旁白中的研究限制/合核行政資訊，仍留metadata與畫面註記。",
+          "prior_sha256": {
+            "batches/wave22-sound.json": "e09acaa17b8c70421c36a2f9a2e3a955ca5d2adee64ca74b5a81ec33a804bb32",
+            "reviews/wave22-sound-themes.json": "68dc8a148e68d4c66019d5662ab1e0d8ca679902bf4815776dbb0a6859f6c201",
+            "reviews/wave22-sound-author.json": "dd7990c0d15eb1016214edd7dd0fa1a24672103d713604bfa58df02f796c8ec6"
+          },
+          "removed_seconds": 45,
+          "theme_changes": [
+            {
+              "id": "W22R-T01",
+              "before": 110,
+              "after": 100
+            },
+            {
+              "id": "W22R-T02",
+              "before": 130,
+              "after": 115
+            },
+            {
+              "id": "W22R-T03",
+              "before": 100,
+              "after": 90
+            },
+            {
+              "id": "W22R-T04",
+              "before": 90,
+              "after": 80
+            }
+          ],
+          "semantic_refresh_required": "R22004 question changed; root reruns draft and compares all current top5 before final nonauthor receipt."
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [
+      {
+        "duplicate_id": "P22001",
+        "canonical_id": "I12008",
+        "reason": "氣膜維持兩液分離、破膜改變接通結果仍為同核心。連續供流及剪切集中在氣層是值得保留的新證據變體，現未提出另一個可獨立回答的控制機制，併I12008。"
+      },
+      {
+        "duplicate_id": "R22005",
+        "canonical_id": "C2017",
+        "reason": "目前目標仍是內容熟悉卻錯置來源/時間位置；插入末音是可用的音高受控變體，沒有增加另一記憶機制，併C2017保留原研究。"
+      }
+    ],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "P22-S001",
+        "file": ".cache/wave22-physics-kaye.pdf",
+        "sha256": "ae9e9a8bb29eb23d34eaff8159672d39ec6a9532b1c6a50191517ea79c369f68",
+        "text_file": ".cache/wave22-physics-kaye-pages.json",
+        "text_sha256": "25d99e37a267e547e8250424e50be895652130e13e9d8f424ab7eaa55a8ccc08"
+      },
+      {
+        "source_id": "P22-S002",
+        "file": ".cache/wave22-physics-beads.pdf",
+        "sha256": "d4009bf9c55d38b6c6c8eaed093abe4eae66602c88019c0020c54c354f4d355f",
+        "text_file": ".cache/wave22-physics-beads-pages.json",
+        "text_sha256": "f49e16e91dce367f4e413cc7bda2dced5a2b9a79e5e9ade834c55a8f90497e6d"
+      },
+      {
+        "source_id": "P22-S003",
+        "file": ".cache/wave22-physics-ouzo.pdf",
+        "sha256": "535e91b742e9186a601a0e1bc0ae65cfd9db4d6604bdcd00ca0a4f4ef79a311a",
+        "text_file": ".cache/wave22-physics-ouzo-pages.json",
+        "text_sha256": "5007f82c9c2ad74da581fd3d8582b0fa5b1460c7f6ecb0b91021da96206788c3"
+      },
+      {
+        "source_id": "P22-S004",
+        "file": ".cache/wave22-physics-paper.pdf",
+        "sha256": "099da5e5a972fec0ae747b1d721bc7b5c0c09c86a99458eab868d93db2aea8a6",
+        "text_file": ".cache/wave22-physics-paper-pages.json",
+        "text_sha256": "e35bf31174628d8ddd9aaade1ca3d30136d684a10f48651b700e42ed0975a55c"
+      },
+      {
+        "source_id": "P22-S005",
+        "file": ".cache/wave22-physics-vapour.pdf",
+        "sha256": "289ed222735a821680452f12ce91cb76af7ce241a9f127ee3a99f086b0094a9a",
+        "text_file": ".cache/wave22-physics-vapour-pages.json",
+        "text_sha256": "16f204fd5b76802ca5369f946051e661a2b463343427d7322201f923b6ff3289"
+      },
+      {
+        "source_id": "A22-S001",
+        "file": ".cache/wave22-life-flagella2014.html",
+        "sha256": "532d1f018746e9a0cf0c48d72c54de5e20c584e5071f75656f48d5df57cbceb3",
+        "text_file": ".cache/wave22-life-flagella2014-body.json",
+        "text_sha256": "f5cd853689d7258d31d97a63a6ae2f027d81312d79ae28145ed2c745a4895309"
+      },
+      {
+        "source_id": "A22-S002",
+        "file": ".cache/wave22-life-basal2016.html",
+        "sha256": "c15f16c5daabfeaa60198e33505dd6874e033f9bbb6d5cab5f774c55b0ba6f42",
+        "text_file": ".cache/wave22-life-basal2016-body.json",
+        "text_sha256": "2c63b0b013affa5e11fd3c089f55398dee1ae3bc31898c89f9fc24f8ad843e57"
+      },
+      {
+        "source_id": "A22-S003",
+        "file": ".cache/wave22-life-slime2021.pdf",
+        "sha256": "1d3a504f89fa1c717287b65f0e4a63ce6161bdbcfb8507b84eddfefcfc89f8a2",
+        "text_file": ".cache/wave22-life-slime2021-body.json",
+        "text_sha256": "8708a0616b2d2aa8bc2ff49981274445575c8d6cb7e82d86d36757bbf192c806"
+      },
+      {
+        "source_id": "A22-S004",
+        "file": ".cache/wave22-life-jelly2015.html",
+        "sha256": "d5ef8883d25825ee848a9fe73977f52efe3e1c19bdc4179cb84cbff2c509a071",
+        "text_file": ".cache/wave22-life-jelly2015-body.json",
+        "text_sha256": "0ca4c01c32452f5417ddbd34f6011667c2be80a31825530ec37cc2e60611d92c"
+      },
+      {
+        "source_id": "A22-S005",
+        "file": ".cache/wave22-life-jelly2025.xml",
+        "sha256": "37673409e984e73879c22c092c7fc8a60b7a271344b58ed9a9ddcc8e85328c5f",
+        "text_file": ".cache/wave22-life-jelly2025-body.json",
+        "text_sha256": "3848fcf3448916260c7441a7c738a79fed5507c538aa675c65934a5c393c44bf"
+      },
+      {
+        "source_id": "A22-S005",
+        "file": ".cache/wave22-life-jelly2025-correction.html",
+        "sha256": "9fb47b30d7dae02c0ff2e480e8c4706e01aecec665335a1bc1c8379712a5e6f9",
+        "text_file": ".cache/wave22-life-jelly2025-correction-body.json",
+        "text_sha256": "e5ce9596862269db6536d94fb862636c612f1369a2784b2abada4e0921912875"
+      },
+      {
+        "source_id": "A22-S006",
+        "file": ".cache/wave22-life-hydra2016.html",
+        "sha256": "f5129d2878a6d879b0d96d822640f8e1c142b5d259fd236b3f259b4d577dd92c",
+        "text_file": ".cache/wave22-life-hydra2016-body.json",
+        "text_sha256": "ea09bf34383c219b723533f44726582debb3279b7c328d05a7aed162b55dd26f"
+      },
+      {
+        "source_id": "R22-S001",
+        "file": ".cache/wave22-sound-song.pdf",
+        "sha256": "ee516ef7282d54ac5195d8e03ed7ab4a8a50c4d3e8fdcc4668b4e36353fc0348",
+        "text_file": ".cache/wave22-sound-song-text.json",
+        "text_sha256": "2148f62172f3ea02135ca10caf43ce341d9f5af48eb9c0cdae8a78a71c8a34eb"
+      },
+      {
+        "source_id": "R22-S002",
+        "file": ".cache/wave22-sound-restoration.html",
+        "sha256": "c0dacc6ccd37ef67c19a510e8bff4823ab68676d860dd55065084b7bda503493",
+        "text_file": ".cache/wave22-sound-restoration-text.json",
+        "text_sha256": "83ff2ea50c500ccb9b1b110db16d9d918b1814aeabee1e2dbb8126b32f7ccd05"
+      },
+      {
+        "source_id": "R22-S003",
+        "file": ".cache/wave22-sound-precedence.html",
+        "sha256": "e7d0992af7ac5c9062191434a45b07b7fc502e4713f27bd2803c1f192ee05112",
+        "text_file": ".cache/wave22-sound-precedence-text.json",
+        "text_sha256": "5110afc4d04ea68c73bd84a70979893ede996aae472f110627a31f6986c22fba"
+      },
+      {
+        "source_id": "R22-S004",
+        "file": ".cache/wave22-sound-binaural.html",
+        "sha256": "c0bee7063131305c5f9474f4e2caee9385160f19d8b83a30ee5e86abde8d6548",
+        "text_file": ".cache/wave22-sound-binaural-text.json",
+        "text_sha256": "a8c177a0fbeea0133f796d221c7fdd9b0562183600f3d2bc2473972cf9297acd"
+      },
+      {
+        "source_id": "R22-S005",
+        "file": ".cache/wave22-sound-pitch-memory.pdf",
+        "sha256": "378b8648a326cc9deac967f3dfe3624b1708f7070d6740970d79e54539724e30",
+        "text_file": ".cache/wave22-sound-pitch-memory-text.json",
+        "text_sha256": "44a9c13f5751949e5a5f95b107249adc815fe797f6ab0ffd5dd45f2295700281"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "before_input_sha256": "c9aca3b4e463d15df190be8fc4d5709033f10e6d184a17ef1179926f6e74137c",
+      "after_input_sha256": "0e3f7b98a6cfd3e3f0f81e299c062125d9f1c2bb82ca24cc08b746ce6d37faf2",
+      "changes": [
+        {
+          "id": "R22002",
+          "before": [
+            {
+              "id": "B4020",
+              "cosine": 0.799338
+            },
+            {
+              "id": "LEG-S86",
+              "cosine": 0.77855
+            },
+            {
+              "id": "R22004",
+              "cosine": 0.772422
+            },
+            {
+              "id": "C2001",
+              "cosine": 0.750131
+            },
+            {
+              "id": "D9017",
+              "cosine": 0.739409
+            }
+          ],
+          "after": [
+            {
+              "id": "B4020",
+              "cosine": 0.799338
+            },
+            {
+              "id": "LEG-S86",
+              "cosine": 0.77855
+            },
+            {
+              "id": "R22004",
+              "cosine": 0.752144
+            },
+            {
+              "id": "C2001",
+              "cosine": 0.750131
+            },
+            {
+              "id": "D9017",
+              "cosine": 0.739409
+            }
+          ]
+        },
+        {
+          "id": "R22003",
+          "before": [
+            {
+              "id": "R22005",
+              "cosine": 0.775191
+            },
+            {
+              "id": "R22004",
+              "cosine": 0.722178
+            },
+            {
+              "id": "D9016",
+              "cosine": 0.718438
+            },
+            {
+              "id": "D9017",
+              "cosine": 0.715972
+            },
+            {
+              "id": "A14004",
+              "cosine": 0.712012
+            }
+          ],
+          "after": [
+            {
+              "id": "R22005",
+              "cosine": 0.775191
+            },
+            {
+              "id": "D9016",
+              "cosine": 0.718438
+            },
+            {
+              "id": "D9017",
+              "cosine": 0.715972
+            },
+            {
+              "id": "R22004",
+              "cosine": 0.712782
+            },
+            {
+              "id": "A14004",
+              "cosine": 0.712012
+            }
+          ]
+        },
+        {
+          "id": "R22004",
+          "before": [
+            {
+              "id": "LEG-S86",
+              "cosine": 0.839914
+            },
+            {
+              "id": "P116",
+              "cosine": 0.824371
+            },
+            {
+              "id": "C2001",
+              "cosine": 0.804609
+            },
+            {
+              "id": "B4020",
+              "cosine": 0.790797
+            },
+            {
+              "id": "P14010",
+              "cosine": 0.777273
+            }
+          ],
+          "after": [
+            {
+              "id": "P116",
+              "cosine": 0.800221
+            },
+            {
+              "id": "C2001",
+              "cosine": 0.796982
+            },
+            {
+              "id": "LEG-S86",
+              "cosine": 0.791459
+            },
+            {
+              "id": "P14010",
+              "cosine": 0.778383
+            },
+            {
+              "id": "B4020",
+              "cosine": 0.763247
+            }
+          ]
+        },
+        {
+          "id": "R22005",
+          "before": [
+            {
+              "id": "R22001",
+              "cosine": 0.790691
+            },
+            {
+              "id": "C2001",
+              "cosine": 0.775822
+            },
+            {
+              "id": "R22003",
+              "cosine": 0.775191
+            },
+            {
+              "id": "R22004",
+              "cosine": 0.71421
+            },
+            {
+              "id": "R22002",
+              "cosine": 0.707871
+            }
+          ],
+          "after": [
+            {
+              "id": "R22001",
+              "cosine": 0.790691
+            },
+            {
+              "id": "C2001",
+              "cosine": 0.775822
+            },
+            {
+              "id": "R22003",
+              "cosine": 0.775191
+            },
+            {
+              "id": "R22004",
+              "cosine": 0.70981
+            },
+            {
+              "id": "R22002",
+              "cosine": 0.707871
+            }
+          ]
+        }
+      ],
+      "last_metadata_refresh_input_sha256": "5dbbc912273a61c2ba489dc547b822b26dbc36b317dbd85b581c35aa56b4d69f",
+      "last_metadata_refresh_reason": "Physics NA008 wording and merge-acceptance notes changed; no question/answer embedding changed and no neighbours changed."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  }
+}

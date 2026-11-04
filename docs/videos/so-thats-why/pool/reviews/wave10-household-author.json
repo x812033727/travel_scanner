@@ -1,0 +1,243 @@
+{
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "created_on": "2026-11-01",
+  "batch_file": "batches/wave10-household.json",
+  "batch_sha256": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9",
+  "theme_file": "reviews/wave10-household-themes.json",
+  "theme_sha256": "4fe65a4ca99e1b7f327ab282459c939424395bf875ed38de48e671e532ff190b",
+  "counts": {
+    "candidates": 6,
+    "sources": 9,
+    "sources_supporting_candidates": 8,
+    "not_added": 19,
+    "themes": 2,
+    "raw_candidates": 6,
+    "expected_new_cores_after_accepted_merge": 5
+  },
+  "baseline": {
+    "pool_file": "pool.json",
+    "pool_sha256": "5d3c3ba007095f44cc50196de3270e1c9008c46d9347567efcd5735e6b537e69",
+    "raw_records": 3115,
+    "selected": 2757,
+    "not_added": 444
+  },
+  "scope": "家用清潔中的離面路徑，以及材料表乾、遷移與表面劣化；只作題級來源篩選，不是配方/施工/保存/醫療建議。六個候選，不為原目標硬拆。",
+  "readback_method": "對全庫 question/answer_target/scope/mechanism_key 與歷史not_added作文字檢索，再逐讀指定近對；尚未使用wave10共同語意近鄰。來源實讀限下表指定段，未做全篇逐主張核准。",
+  "duplicate_flags": [
+    {
+      "candidate_id": "H10001",
+      "compare_ids": [
+        "LEG-S53",
+        "P054"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "指定在固體上的離面路徑、頸縮殘留，不重述兩親性或一般接觸角。"
+    },
+    {
+      "candidate_id": "H10002",
+      "compare_ids": [
+        "H10001",
+        "D2105",
+        "D2183"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "固化油膜以封邊與局部剪流區分附著/內聚失效；不只把水進入黏界面換材料。"
+    },
+    {
+      "candidate_id": "H10003",
+      "compare_ids": [
+        "H3016",
+        "D2185",
+        "H3027"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "新條件是外界水分的擴散補給與移動固化前沿，不只是水觸發反應。"
+    },
+    {
+      "candidate_id": "H10004",
+      "compare_ids": [
+        "H3024",
+        "H3025",
+        "P249"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "粒子間鏈跨界連續性，不另算助劑塑化或一般跨相傳質。"
+    },
+    {
+      "candidate_id": "H10005",
+      "compare_ids": [
+        "L003",
+        "Q9008",
+        "H3025"
+      ],
+      "author_judgment": "ACCEPT_MERGE_TO_L003",
+      "reason": "非作者實讀 CCI 確認只有濃度梯度與內庫補給，未增加不同材料機制；接受 H10005→L003，不另計新核心。"
+    },
+    {
+      "candidate_id": "H10006",
+      "compare_ids": [
+        "LEG-S69",
+        "LEG-S33",
+        "N234",
+        "P284"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "玻璃自身鹼性成分溶出/吸水/網絡損傷，區別冷面凝結、光學透明、孔隙鹽壓與金屬電化學腐蝕。"
+    }
+  ],
+  "source_reading_limits": [
+    "9筆來源皆實讀指定正文或PDF文字層，1筆只用於未加入理由；8筆支援候選。",
+    "S002 是原研究，S001/S004 是大學研究者綜述；S003/S009 是製造商資料，S005/S006/S007/S008 是官方保存機構/博物館正文，不混稱全是原始論文。",
+    "S007 web 正文實讀成功但 urllib 403；其餘支持來源有本輪HTTP副本雜湊。",
+    "Sofia 消泡PDF urllib連線逾時與web timeout；PMC塗膜頁後一次web遇reCAPTCHA，改用實際成功的Europe PMC正文。沒有用搜尋摘要補缺失。"
+  ],
+  "source_readings": [
+    {
+      "source_id": "H10-S001",
+      "url": "https://bioresources.cnr.ncsu.edu/resources/detergency-mechanisms-and-cellulosic-surfaces-a-review/",
+      "read_via": "當日 public urllib HTTP 200；HTML 解析後實讀指定段落",
+      "reading_scope": "Release Mechanisms for Solid-like Particles: Rolling release; Progressive adsorption and stabilization；Release Mechanisms for Liquid-like Soiling: Roll-up detachment; Snap-off detachment; Solubilization; Micellar transport",
+      "cache_sha256": "649390bf14770c5acbfe50d31226810ab3fa9cea926c501c4eb32c8d5f9e47bf",
+      "cache_file": ".cache/wave10-household-sources/S001.html",
+      "http_status": 200,
+      "failure": null,
+      "limitations": "大學研究者的綜述，不當作自己觀測或原始實驗。未讀完整引用文獻；粒子滾脫部分僅作未加入判斷。"
+    },
+    {
+      "source_id": "H10-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4639583/",
+      "read_via": "當日 Europe PMC fullTextXML HTTP 200，解析指定正文；XML endpoint: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4639583/fullTextXML",
+      "reading_scope": "Introduction: Autoxidation Fouling; Soil Removal by Surfactants；Results and Discussion / Cleaning Studies: Fairy Liquid; LAS; TX-100; CTAB; Silicon-Sealed Edges；Summary；Figures 1,8–12 文字說明",
+      "cache_sha256": "ba0836506ff02e37438cd0ac7d8621fc47137c7c53704bb86aa4a59439a9047c",
+      "cache_file": ".cache/wave10-household-sources/S002.xml",
+      "http_status": 200,
+      "failure": null,
+      "limitations": "實讀正文與圖說，未聲稱目視顯微原圖、重算量測或讀全篇方法。穿透方向是作者以對照支持的模型；不是直接看見每個分子。研究條件不是家庭清潔配方。"
+    },
+    {
+      "source_id": "H10-S003",
+      "url": "https://www.wacker.com/h/en-us/medias/7461-EN.pdf",
+      "read_via": "當日 public urllib HTTP 200；pypdf 讀 PDF 封面及第23頁文字層",
+      "reading_scope": "Understanding RTV Silicones: Skin Forming and Curing; Film Thickness; Increasing Curing Speed；printed p.23 / PDF p.23",
+      "cache_sha256": "daea6f99def2c42d06c8f6ba44eaa54451f1e742bd5507f6883f73b5538965c9",
+      "cache_file": ".cache/wave10-household-sources/S005.pdf",
+      "http_status": 200,
+      "failure": null,
+      "limitations": "製造商技術資料，限 RTV-1；不搬用建議厚度、濕度或加速操作。封面與本頁之外未完整讀。"
+    },
+    {
+      "source_id": "H10-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11533165/",
+      "read_via": "當日 web open 先讀摘要與引言；再以 Europe PMC fullTextXML HTTP 200 讀指定正文；https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11533165/fullTextXML",
+      "reading_scope": "§3 Film Formation of WB Coatings；§3.1 Close-Packed Structure；§3.2 Deformation（不含子節3.2.1理論推導）；§3.3 Coalescence；§4.4 Experimental Evidence；§5.1 Key Role of Coalescing Agents",
+      "cache_sha256": "f569f129f469566b0ab2ff98d36657d97c5eb558f7e5508c373d8610f4dca179",
+      "cache_file": ".cache/wave10-household-sources/S007.xml",
+      "http_status": 200,
+      "failure": null,
+      "limitations": "大學研究者綜述；§4.4 轉述原研究不冒稱已讀那些原論文。後一次 PMC web open 出現 reCAPTCHA，實際正文由 Europe PMC XML 取得。各階段可在膜的不同區域同時發生，不畫成全膜整齊同步。"
+    },
+    {
+      "source_id": "H10-S005",
+      "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/caring-plastics-rubbers.html",
+      "read_via": "當日 public urllib HTTP 200；HTML 解析後實讀正文",
+      "reading_scope": "Examples of preventive conservation practices / Isolating incompatible plastic components from the rest of the object / Exudation and deposition of additives on plastic surfaces，Figure 12 與緊接的 Problem/Solution；另讀 Relative humidity above 0%; Stage 5: clean; Degradation of CN and attack by degradation products",
+      "cache_sha256": "2f66683f4e5ffdcc73d4a2bcfc971905bade1b367933d3d74d68eb3a4553476a",
+      "cache_file": ".cache/wave10-household-sources/S008.html",
+      "http_status": 200,
+      "failure": null,
+      "limitations": "只採來源的遷移與重現模型；不把未知黏污診斷為塑化劑，不提供溶劑清潔、保存處方或健康結論。"
+    },
+    {
+      "source_id": "H10-S006",
+      "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/ceramics-glass-preventive-conservation.html",
+      "read_via": "當日 public urllib HTTP 200；HTML 解析後實讀正文",
+      "reading_scope": "Causes of damage to glass / Water; Light and ultraviolet; Incorrect relative humidity，Figures 17a–b 文字說明",
+      "cache_sha256": "51506b80b310b43e1bfb9c33148d9f9c92d429b179cc682e479d5c7d7582a244",
+      "cache_file": ".cache/wave10-household-sources/S006.html",
+      "http_status": 200,
+      "failure": null,
+      "limitations": "本頁將 sodium 寫得過度簡化；不照搬成金屬鈉直接吸水，也不採通用 RH 門檻。機制措辭另用 Corning 保存人員的案例交叉限制。"
+    },
+    {
+      "source_id": "H10-S007",
+      "url": "https://blog.cmog.org/2012/osler-candelabrum-and-incipient-crizzling",
+      "read_via": "當日 web open 正文成功，lines 18–29；另用指定 UA 的 urllib 快取請求回 HTTP 403，未取得該方法副本",
+      "reading_scope": "正文從 replacement shades 的成分差異，到 moisture leaches alkali / alkali solution breaks down silica network，再到約每5年表層重現的該物件案例",
+      "cache_sha256": null,
+      "cache_file": null,
+      "http_status": null,
+      "failure": "HTTP Error 403: Forbidden",
+      "limitations": "博物館保存人員直接報告案例；5年僅此燈罩，不當一般玻璃時間常數。未讀文末其他連結，沒有把清洗案例改成觀眾操作。"
+    },
+    {
+      "source_id": "H10-S008",
+      "url": "https://libanswers.cmog.org/faq/144576",
+      "read_via": "當日 web open 正文成功，lines 15–68；指定 UA 的 public urllib HTTP 200 留副本",
+      "reading_scope": "THE FIVE STAGES OF CRIZZLING: Stage 1 Initial Stage; Stage 2 Incipient Crizzling; Stages 3–5",
+      "cache_sha256": "876beb7904077e331e069ede4eddf67bb8bc9cc6ecdf5f5be73cb59c91400230",
+      "cache_file": ".cache/wave10-household-sources/S010.html",
+      "http_status": 200,
+      "failure": null,
+      "limitations": "未用開頭引言把家中所有霧玻璃都診斷為洗碗機損傷；未採固定濕度數字。未讀外連影片與書籍。"
+    },
+    {
+      "source_id": "H10-S009",
+      "url": "https://plastics-rubber.basf.com/global/en/performance_polymers/products/basotect",
+      "read_via": "當日 public urllib HTTP 200；HTML 解析後實讀指定正文",
+      "reading_scope": "Basotect Offers You Many Advantages，薄肋空間網絡及清潔段；Basotect W",
+      "cache_sha256": "69fdd24d6a2afb0e5ed66846e5ed46ba177222dd70c4927bae58a81b5cb5b829",
+      "cache_file": ".cache/wave10-household-sources/S004.html",
+      "http_status": 200,
+      "failure": null,
+      "limitations": "只保留未加入方向的來源；製造商介紹不是獨立產品比較，不採效能或安全宣稱。"
+    }
+  ],
+  "requested_independent_focus": [
+    "H10005是否只為L003梯度擴散的案例；必要時合併/退題並撤T03，不為數字保留。",
+    "H10001是否超出LEG-S53/P054；H10002能否以封邊與剪流對照建立不同失效位置的增量。",
+    "H10003對H3016的反應物傳輸前沿、H10004對H3024/25的跨粒子鏈連續性，是否足以獨立。",
+    "T01液態油→固化膜，T02兩種不同塗料，T03玩偶→老玻璃都必須明確重設條件，不串成同物件必經流程。"
+  ],
+  "omitted_from_themes": [
+    {
+      "id": "H10005",
+      "reason": "接受併 L003；原 T03 雙章企劃撤回，不直接換核心 ID 硬保片長。"
+    },
+    {
+      "id": "H10006",
+      "reason": "保留獨立素材；T03 因另一核心合併而撤案，不加玻璃冷知識湊章。"
+    }
+  ],
+  "quality_boundary": "6筆原始題保留，作者接受H10005併L003，預期5個新核心。T03撤回；T01/T02刪去重複回顧，不以題數/片長為配額。",
+  "checks": {
+    "json_parse": "PASS",
+    "ids_and_keys": "PASS; 6 unique candidate IDs/keys, no baseline ID collision",
+    "source_links": "PASS; all candidate and not_added source IDs resolve within 9 sources",
+    "editorial_caps_and_beats": "PASS 修版175/155秒；同核心累計<=素材上限；beats全部<=45秒；Node24.22.1 isolated validateEditorial/validateThemes重跑PASS。",
+    "line_endings": "PASS; UTF-8 LF; no absolute local user path",
+    "isolated_repository_validators": "PASS; Node v24.22.1 validateEditorial and validateThemes with isolated selected cohort; central pool not assembled or changed",
+    "independent_review": "INITIAL_FINDINGS_ACCEPTED; awaiting final neighbours and targeted hash-bound readback"
+  },
+  "readiness": "TOPIC_SCREENING_ONLY; no script approval, no trial read, no production",
+  "correction_history": [
+    {
+      "date": "2026-11-01",
+      "basis": "非作者 pool_physics 的定點來源初審與 root 明示採納；正式共同近鄰與hash-bound review尚待完成。",
+      "before_sha256": {
+        "batches/wave10-household.json": "2dcfa5eeaddf2428124ea3af23d18435952d055c62b1eafd92547e59a720cd76",
+        "reviews/wave10-household-themes.json": "6b034518e614ec49a7595f8a57b1edf48d6ada4d1a9e4ea0871f784aa568d917",
+        "reviews/wave10-household-author.json": "8898de903b8451a536dbfe35d9d48e1e411760b6de275c23c5e99314dffcb566"
+      },
+      "changes": [
+        "H10005接受併L003，原始題與來源仍保留。",
+        "撤回W10H-T03原160秒雙章案，H10006留素材池。",
+        "W10H-T01由205縮175秒：70+105；W10H-T02由175縮155秒：80+75。",
+        "章內beats與drop_if同步重算；未改來源、答案核心或中央資料。"
+      ],
+      "after_sha256": {
+        "batches/wave10-household.json": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9",
+        "reviews/wave10-household-themes.json": "4fe65a4ca99e1b7f327ab282459c939424395bf875ed38de48e671e532ff190b"
+      }
+    }
+  ]
+}

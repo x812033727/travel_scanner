@@ -1,0 +1,501 @@
+{
+  "batch_id": "wave13-cell-transport-20261101",
+  "created_on": "2026-11-01",
+  "scope": "細胞內貨物運輸、定位與回收的控制條件；7個原創題級候選，不是完整生物學答案、實驗教學或製作核准。",
+  "sources": [
+    {
+      "id": "C13-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/",
+      "title": "The direction of transport through the nuclear pore can be inverted",
+      "publisher": "PNAS / University of California, Berkeley authors; NCBI PMC archive",
+      "doi": "10.1073/pnas.96.17.9622",
+      "version": "PNAS 96(17), 9622–9627; published article",
+      "published_on": "1999-08-17",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 web.open 實讀 PMC 正文；首次 open 與指定 UA 直接 HTTP 回 CAPTCHA，Europe PMC XML 失敗。成功正文是 web.open 回傳，沒有把本機 CAPTCHA 副本當原文。",
+      "reading_scope": "引言；In Vitro Transport Assays；RESULTS AND DISCUSSION 核輸送反轉、平衡/洗去與模型各節；Figures 2–7 captions。未重現實驗。",
+      "locator": "RESULTS AND DISCUSSION: The Directionality of CAS-Mediated Export of Importin α Can Be Inverted; Inversion of CRM1-Mediated NES Protein Export; A Model for the Translocation Reaction Through the NPC; Figs. 3–5, 7",
+      "summary": "將活化 Ran 放到核外，可讓兩類出口載體把貨物帶進核；進入與逆濃度累積仍是不同結果。",
+      "limitations": "通透化 HeLa 細胞與重組因子試驗；不將所有核輸送、mRNA、固定分子量門檻或每次穿孔需水解一個 GTP 畫成通則。正文的速率/體積推算未採用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "C13-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617890/",
+      "title": "Structural basis for pH-dependent retrieval of ER proteins from the Golgi by the KDEL receptor",
+      "publisher": "Science / Oxford and Zurich authors; NCBI PMC author-manuscript archive",
+      "doi": "10.1126/science.aaw2859",
+      "version": "Science 363(6431), 1103–1107; author manuscript in PMC, available 2025-07-08",
+      "published_on": "2019-03-08",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 web.open 實讀 PMC 作者稿正文與圖說；指定 UA HTTP 200 實為 CAPTCHA，Europe PMC XML 500，兩者均不記為正文閱讀。",
+      "reading_scope": "引言與完整主文至結論；Figs. 1–4 captions，尤其 pH 結合曲線、His12 網絡及配體/突變定位結果。未讀補充 PDF/影片。",
+      "locator": "Main text around Figs. 1A, 2D, 3A–C, 4; paragraphs beginning Binding of the KDEL signal sequence and Taken together",
+      "summary": "回收受體的酸鹼敏感結合使它在高基氏體抓住逸出的蛋白、回內質網後放手；結構與突變結果支持耦合模型。",
+      "limitations": "純化雞受體結構/結合與人受體細胞定位是不同實驗層次；His12 質子化參與模型，不能畫成已即時拍到質子進出。COPI/COPII 耦合部分為模型，不說所有內質網蛋白都有 KDEL。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "C13-S003",
+      "url": "https://elifesciences.org/articles/109462",
+      "title": "Kinesin-1 conformational dynamics are controlled by a cargo-sensitive TPR switch",
+      "publisher": "eLife / University of Bristol and collaborators",
+      "doi": "10.7554/eLife.109462.3",
+      "version": "Version of Record, version 3; eLife 14:RP109462",
+      "published_on": "2026-04-14",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載 eLife 官方 HTML，以 lxml/文字層讀指定正文；web.open 核版本。",
+      "reading_scope": "Introduction；Results 的 Cargo adaptor binding、Cargo-mediated dislocation、Opening the kinesin-1 complex 三節；Figs. 3–6 captions；Discussion 模型與界線。未逐式重算 HDX/AlphaFold。",
+      "locator": "Results: Cargo adaptor binding dislocates the TPR shoulder; Cargo-mediated dislocation of the shoulder enhances motor domain accessibility; Opening the kinesin-1 complex enhances its association with MAP7; Discussion / Fig. 6",
+      "summary": "工程化貨物接頭結合使自抑制馬達的肩部接點鬆開，增加馬達端可接近性；開啟構形也較能結合軌道協助蛋白。",
+      "limitations": "主要為工程化 KinTag/ElbowLock 與構形、結合測試，並非每種天然貨物的運送實錄；開啟只到活化起始步驟，不等於單靠貨物就完成持續運貨。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "sha256": "a2ed2506e13c945da5a648a14cfb4d84fbc0b58c31834b97058ee56907b6d9b8",
+        "text_sha256": "55260ee90a79c8b08b5e3a61cc8b20f5c6fc247c024561261325a40936fcae4c",
+        "file": ".cache/wave13-cell-kinesin-switch.html",
+        "text_file": ".cache/wave13-cell-kinesin-switch.txt"
+      }
+    },
+    {
+      "id": "C13-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5986196/",
+      "title": "Arrest of trans-SNARE zippering uncovers loosely and tightly docked intermediates in membrane fusion",
+      "publisher": "Journal of Biological Chemistry / American Society for Biochemistry and Molecular Biology",
+      "doi": "10.1074/jbc.RA118.003313",
+      "version": "JBC 293(22), 8645–8655; PMC version 1",
+      "published_on": "2018-04-17",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 web.open 只有部分首頁後回 CAPTCHA；改以指定 UA urllib HTTP 200 取得 Europe PMC 官方 fullTextXML，解析並實讀所列正文。",
+      "reading_scope": "Results 三節與 Discussion；Figs. 1、3–6 captions。未重新分析 FRET、FCCS 或 cryo-EM 數據。",
+      "locator": "Results: NSF disassembles trans-SNARE complexes arrested in an almost completely zippered configuration; Liposomes remain docked after trans complexes are disassembled; Discussion; Figs. 5–6",
+      "summary": "把膜間拉鍊組裝停在不同位置，會留下可拆開的鬆停靠或難拆開的緊停靠；貼緊本身仍不等於融合。",
+      "limitations": "重組神經元 SNARE 的脂質體模型；緊停靠後仍黏住的具體脂質作用在原文仍待解釋，不能擅寫成確定單一黏力，也不把試管時程套到活細胞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5986196/fullTextXML",
+      "author_cache": {
+        "sha256": "2844fd0c8334aff2e5d653a6b6ea1ae52b8de3515ffbc66f64c001a14bff3281",
+        "text_sha256": "210c490c35ffa070d4ca9a6e342e4d2fef5441449f047b2d581d1351ea9fcc54",
+        "file": ".cache/wave13-cell-snare-epmc.xml",
+        "text_file": ".cache/wave13-cell-snare-epmc.txt"
+      }
+    },
+    {
+      "id": "C13-S005",
+      "url": "https://doi.org/10.1083/jcb.109.4.1421",
+      "title": "Translocation arrest by reversible folding of a precursor protein imported into mitochondria. A means to quantitate translocation contact sites",
+      "publisher": "Journal of Cell Biology / Rockefeller University Press; LMU institutional repository copy",
+      "doi": "10.1083/jcb.109.4.1421",
+      "version": "JCB 109(4), 1421–1428; published PDF hosted by LMU",
+      "published_on": "1989-10-01",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載 LMU 合法機構公開 PDF，以 PyMuPDF 讀指定正文文字層。",
+      "reading_scope": "印刷 pp.1421–1424 / PDF pp.1–4（Introduction、Import of the Fusion Protein、Length of the Polypeptide Chain 與 Figs. 1–3）；p.1427 / PDF p.7 Discussion。未採精確接觸面積或通道總數。",
+      "locator": "Results: Import of the Fusion Protein into Isolated Mitochondria; Fig. 2; Length of the Polypeptide Chain Spanning Contact Sites; Discussion (printed pp.1422–1424,1427)",
+      "summary": "穩定折疊的尾端讓有定位前段的融合蛋白停在進口中途；解除穩定化後，同一中間體可繼續進入。",
+      "limitations": "離體粗糙脈孢菌粒線體與人工融合蛋白；不說所有胞器都要求同樣展開，不將1989尚未知的通道結構描述當現行結構圖，也不提供藥物使用建議。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://epub.ub.uni-muenchen.de/7531/1/Neupert_Walter_7531.pdf",
+      "author_cache": {
+        "sha256": "bd2d65b8799522303a7d42d1df9957b50b4f834ec48bd6cc54f084c2e9800efd",
+        "text_sha256": "5d43bab5748f493633eb6ca5a74589fbcbfa8ceb47549bc784624f29f8c3a023",
+        "file": ".cache/wave13-cell-mitochondria.pdf",
+        "text_file": ".cache/wave13-cell-mitochondria.txt"
+      }
+    },
+    {
+      "id": "C13-S006",
+      "url": "https://doi.org/10.1016/j.cell.2008.02.049",
+      "title": "SRP Keeps Polypeptides Translocation-Competent by Slowing Translation to Match Limiting ER-Targeting Sites",
+      "publisher": "Cell / Elsevier; University of Geneva author-deposited thesis containing the published paper",
+      "doi": "10.1016/j.cell.2008.02.049",
+      "version": "Cell 133(3), 440–451; published article embedded in Camille Mary 2009 thesis (UNIGE:5095)",
+      "published_on": "2008-05-02",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載 UNIGE 作者公開論文集 PDF，確認封面為2009學位論文，實讀其中所收2008 Cell 已刊論文；不是把整本論文當本研究的多份證據。",
+      "reading_scope": "PDF p.64 / printed p.440 Introduction；PDF pp.69–73 / printed pp.445–449：兩種救援對照、SR限制、Discussion與Figs.5–7。未讀整本172頁或逐項補充數據。",
+      "locator": "Slowing down Nascent Chain Elongation with Antibiotics Reverts the Translocation Defect Caused by Mutant Proteins; Cellular SR Levels Are Rate Limiting in Targeting; Discussion; Figs.5–7 (paper pp.445–449; repository PDF pp.69–73)",
+      "summary": "缺少延長減速功能時，蛋白接送會來不及；減慢延長或增加接收位置可改善缺陷，支持製造與接送時窗須匹配。",
+      "limitations": "限研究哺乳類細胞與SRP突變/救援條件；減速救援是相對轉運/分泌效率，不能說整體絕對蛋白產量增加。變長如何阻礙交接尚屬模型，不把所有細胞視為相同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://access.archive-ouverte.unige.ch/access/metadata/71dbacbd-f9a2-4c4c-8902-d25de8165b79/download",
+      "author_cache": {
+        "sha256": "405fc6763a404b4fb2df4ff7b863c925d35c85e1edba5c9a3066ea43f8daa1db",
+        "text_sha256": "2b8f46c98c1d7f4b39330f4f8ee995b6510933cff193cca4aee1bef0eec8259c",
+        "file": ".cache/wave13-cell-srp-unige.pdf",
+        "text_file": ".cache/wave13-cell-srp-unige.txt"
+      }
+    },
+    {
+      "id": "C13-S007",
+      "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000298",
+      "title": "PINK1 Is Selectively Stabilized on Impaired Mitochondria to Activate Parkin",
+      "publisher": "PLOS Biology / NIH and collaborating authors",
+      "doi": "10.1371/journal.pbio.1000298",
+      "version": "PLOS Biology 8(1):e1000298; published article",
+      "published_on": "2010-01-26",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載 PLOS 正式 HTML，以 lxml 讀 Results 指定正文。",
+      "reading_scope": "Results: 單細胞偏好積累、膜電位/切割與洗去、PINK1缺失/補回與Parkin募集；Fig.1–4相關正文。未讀影片或覆核所有疾病變異段。",
+      "locator": "PINK1 Accumulates Preferentially on Depolarized Mitochondria in a Single Cell; PINK1 Cleavage Is Inhibited by Loss of Membrane Potential; PINK1 Expression Is Required for Parkin Recruitment to Depolarized Mitochondria and Parkin-Induced Mitophagy; Figs.1–4",
+      "summary": "有膜電位時標記被持續處理移除，失去膜電位的粒線體卻留下PINK1並募集Parkin，使同一細胞能局部標記。",
+      "limitations": "細胞培養、去極化/基因操作；部分Parkin為外加表現，不外推整個人體或所有粒線體回收途徑。本文支持電位相關切割/穩定化，不補寫未讀後續的完整磷酸泛素迴路。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "sha256": "32622d0650e9e13733846182f32ad61f25046048bbebd247f2090377ff9d0a45",
+        "text_sha256": "8d11484c76873a758e5f361d9855bb56cf586ce1395c43f90460d378c187a78d",
+        "file": ".cache/wave13-cell-pink1.html",
+        "text_file": ".cache/wave13-cell-pink1.txt"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "C13001",
+      "question": "細胞核的「出口」，為什麼在實驗裡也能把貨物送進去？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "nuclear_export_reversal_by_ran_gtp_spatial_distribution",
+      "answer_target": "出口載體在Ran-GTP存在處較能和貨物組成複合體；將此條件放到核外，可讓複合體反向進核。方向來自兩側組裝與拆卸條件，而不是核孔內固定的單行箭頭。",
+      "scope": "限通透化HeLa與CAS/CRM1試驗；反向進入只到近似內外平衡，不等於逆濃度主動累積；不套所有RNA輸出或宣稱每次穿孔都要現場水解GTP。",
+      "source_ids": [
+        "C13-S001"
+      ],
+      "source_locator": "RESULTS AND DISCUSSION: The Directionality of CAS-Mediated Export of Importin α Can Be Inverted; Inversion of CRM1-Mediated NES Protein Export; A Model for the Translocation Reaction Through the NPC; Figs. 3–5, 7",
+      "premise_status": "screened",
+      "notes": "直接實驗反轉＋作者方向性模型；與L003貨物自身被動擴散、V3005單一GTP開關不同。1999速率/體積推算未採用。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能把「過得了門」與「在哪邊裝貨、卸貨而累積」分開。",
+        "visual": "同一核孔不換方向，先將組裝條件放核內，再在明標試管重建條件中放核外；用螢光貨物內外濃度條顯示只達平衡。",
+        "seconds": [
+          70,
+          115
+        ]
+      }
+    },
+    {
+      "id": "C13002",
+      "question": "本來該留在內質網的蛋白質溜出去，怎麼又被帶回來？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "kdel_ph_dependent_capture_release_er_retrieval",
+      "answer_target": "帶KDEL尾碼的逸出蛋白可被回收受體抓住；較酸環境支持抓取構形，回到較中性的內質網後親和力降低而釋放。結構與突變支持酸鹼感測和運送訊號暴露的耦合。",
+      "scope": "限KDEL回收系統；純化雞受體與人受體定位證據分開。His12質子化與COPI/COPII耦合以作者模型呈現，不把所有內質網蛋白或全部膜回收都畫成此機制。",
+      "source_ids": [
+        "C13-S002"
+      ],
+      "source_locator": "Main text around Figs. 1A, 2D, 3A–C, 4; paragraphs beginning Binding of the KDEL signal sequence and Taken together",
+      "premise_status": "screened",
+      "notes": "直接pH結合/定位對照＋結構推論；L017只到一般膜回收，這題新增同一受體跨站抓放條件。抓取與釋放不拆兩個核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道留在某處可以靠逸出後回收，而且受體必須在目的地放手才完成循環。",
+        "visual": "兩個標酸度的房間與同一尾碼貨物；不畫真實比例，以兩條不同pH結合曲線的原創示意配抓住/放開。",
+        "seconds": [
+          60,
+          105
+        ]
+      }
+    },
+    {
+      "id": "C13003",
+      "question": "運貨的蛋白質為什麼會先摺起來，貨物接上後才比較容易打開？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "kinesin_cargo_adaptor_dislocates_autoinhibitory_tpr_shoulder",
+      "answer_target": "kinesin-1的貨物接頭結合可使原先靠在桿部的TPR肩部鬆開，增加馬達端可接近性並促進開閉交換；開啟構形也較能結合MAP7，連起貨物接合與活化起始。",
+      "scope": "限2026工程化KinTag/ElbowLock及相關構形/結合研究；不說天然貨物一接上就保證持續運送，不把分子構形變化當實際運貨影片。",
+      "source_ids": [
+        "C13-S003"
+      ],
+      "source_locator": "Results: Cargo adaptor binding dislocates the TPR shoulder; Cargo-mediated dislocation of the shoulder enhances motor domain accessibility; Opening the kinesin-1 complex enhances its association with MAP7; Discussion / Fig. 6",
+      "premise_status": "screened",
+      "notes": "工程化對照與HDX/EM直接結果支持初始解除抑制模型；與L330肌凝蛋白ATP脫離、V3003跨膜受體傳訊不同。未收手拉手走路題以免摘要代全文。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "貨物可以參與解除馬達自抑制，而不只是被動掛上的重量。",
+        "visual": "摺起/較開啟兩態，不畫人形；加接頭與鎖住彎折區兩種條件對照，最後停在可結合軌道輔助蛋白。",
+        "seconds": [
+          45,
+          80
+        ]
+      }
+    },
+    {
+      "id": "C13004",
+      "question": "兩個膜囊泡已經貼緊，為什麼還不等於它們合成一個？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "snare_zippering_arrest_separates_docking_from_membrane_fusion",
+      "answer_target": "跨膜的SNARE逐步組裝可把兩膜拉近，但把組裝停在特定位置會留下停靠中間態而不融合；不同停靠階段對拆除連接的反應也不同。",
+      "scope": "限重組神經元SNARE與脂質體；鬆停靠可拆、緊停靠拆除SNARE後仍可能維持，後者精確黏附物理仍未確立；不把表面接近或FRET改變直接當內容物混合。",
+      "source_ids": [
+        "C13-S004"
+      ],
+      "source_locator": "Results: NSF disassembles trans-SNARE complexes arrested in an almost completely zippered configuration; Liposomes remain docked after trans complexes are disassembled; Discussion; Figs. 5–6",
+      "premise_status": "screened",
+      "notes": "直接突變/拆解對照；L014只說吞噬囊泡與溶體結合，未解釋停靠與融合可分離的控制條件。鬆/緊兩態留同一核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到囊泡靠攏，仍不能判定兩層膜已合併；必須追蹤融合這一步。",
+        "visual": "兩色小囊泡由遠到近；正常與組裝被截停的對照，不把原文未證實的微觀黏力畫成定論。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    },
+    {
+      "id": "C13005",
+      "question": "蛋白質已經伸進粒線體，為什麼後半段還會卡在外面？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "mitochondrial_import_reversible_folded_domain_arrest",
+      "answer_target": "定位前段能先伸進進口，但被穩定在折疊狀態的DHFR尾段不能接著通過，留下跨膜中間體；去掉穩定折疊的配體後，它可繼續進入。",
+      "scope": "限人工融合蛋白與離體粗糙脈孢菌粒線體；不說所有蛋白或所有胞器都同樣進口，不依此論文畫現行通道原子結構或提供用藥操作。",
+      "source_ids": [
+        "C13-S005"
+      ],
+      "source_locator": "Results: Import of the Fusion Protein into Isolated Mitochondria; Fig. 2; Length of the Polypeptide Chain Spanning Contact Sites; Discussion (printed pp.1422–1424,1427)",
+      "premise_status": "screened",
+      "notes": "直接加配體/移除後追蹤實驗。新增貨物折疊狀態門檻，不是L004一般載體構形或V3088核基因依賴的換題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "地址正確、前端已到站，仍不代表整條貨物已送入；同一中間體解除限制後能續行。",
+        "visual": "帶定位前段的線與折疊尾端，畫成半進半出；三格比較無穩定化、卡住、移除穩定化後續行。",
+        "seconds": [
+          55,
+          105
+        ]
+      }
+    },
+    {
+      "id": "C13006",
+      "question": "蛋白質做得更快，為什麼有時反而更難送進內質網？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "srp_elongation_delay_matches_limiting_er_receptor_targeting_window",
+      "answer_target": "接收位置有限時，新生蛋白鏈若持續太快延長，可能錯過可成功交接的時窗；SRP延緩延長，讓製造速度與接送等待匹配。減慢延長或增加SR受體的救援對照支持這個限制。",
+      "scope": "限研究哺乳類細胞的SRP延長抑制缺陷與救援；改善的是相對轉運/分泌效率，不保證絕對總產量增加。長鏈究竟怎麼阻礙交接仍未完全解明；不當藥物建議。",
+      "source_ids": [
+        "C13-S006"
+      ],
+      "source_locator": "Slowing down Nascent Chain Elongation with Antibiotics Reverts the Translocation Defect Caused by Mutant Proteins; Cellular SR Levels Are Rate Limiting in Targeting; Discussion; Figs.5–7 (paper pp.445–449; repository PDF pp.69–73)",
+      "premise_status": "screened",
+      "notes": "原研究兩種救援與作者時窗模型；區分L059多核糖體、V3051起始與V3049RNA存留。增加接收位置與減慢延長是同一核心的兩項驗證，不拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "製造速度不是唯一瓶頸；接收容量和貨物可交接的時間必須一起看。",
+        "visual": "同樣有限接收站，正常延長減速與失去減速兩列；再分開改成較慢延長或較多接收站，圖上明標效率不等於總產量。",
+        "seconds": [
+          75,
+          125
+        ]
+      }
+    },
+    {
+      "id": "C13007",
+      "question": "同一個細胞裡，回收標記怎麼只留在部分失去膜電位的粒線體上？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "mitochondrial_voltage_dependent_pink1_processing_local_damage_label",
+      "answer_target": "保持膜電位的粒線體上，PINK1持續被切割處理而不易積累；膜電位降低時此處理受阻，使PINK1局部留下並募集Parkin，將個別胞器狀態轉成可辨認的回收訊號。",
+      "scope": "限2010細胞培養去極化與基因操作模型，部分Parkin為外加表現；不說所有粒線體損傷都走這條路，也不推成疾病診斷/治療或完整磷酸泛素迴路。",
+      "source_ids": [
+        "C13-S007"
+      ],
+      "source_locator": "PINK1 Accumulates Preferentially on Depolarized Mitochondria in a Single Cell; PINK1 Cleavage Is Inhibited by Loss of Membrane Potential; PINK1 Expression Is Required for Parkin Recruitment to Depolarized Mitochondria and Parkin-Induced Mitophagy; Figs.1–4",
+      "premise_status": "screened",
+      "notes": "電位相關切割/洗去與PINK1缺失/補回直接支持。V3052是被標記蛋白的去路，這題問標記如何因單顆粒線體的狀態而留下；V3012一般訊號降解仍需列近對。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "局部訊號不一定靠現場突然多造，而能靠原本持續移除的步驟停止。",
+        "visual": "同一細胞多個粒線體，只有失去電位的一個停止清除標記；另做恢復條件後標記減少、缺PINK1無募集的分支。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "C13-NA01",
+      "question": "細胞把膜吞進去，外膜怎麼不會越來越少？",
+      "existing_ids": [
+        "L017"
+      ],
+      "source_ids": [],
+      "reason": "既有一般囊泡運輸/膜回收核心，不能換胞器名稱重計。"
+    },
+    {
+      "id": "C13-NA02",
+      "question": "細胞怎麼挑某種分子吞進去？",
+      "existing_ids": [
+        "L016"
+      ],
+      "source_ids": [],
+      "reason": "受體選擇性攝入已存在；單換配體或細胞種類不足。"
+    },
+    {
+      "id": "C13-NA03",
+      "question": "吞下的異物最後如何被分解？",
+      "existing_ids": [
+        "L014"
+      ],
+      "source_ids": [],
+      "reason": "吞噬囊泡與溶體相接的方向已有；未另收胞器功能名詞。"
+    },
+    {
+      "id": "C13-NA04",
+      "question": "蛋白質貼泛素後為什麼被拆掉？",
+      "existing_ids": [
+        "V3052"
+      ],
+      "source_ids": [],
+      "reason": "泛素/蛋白酶體既有核心；本批只保留標記局部留下的不同因果。"
+    },
+    {
+      "id": "C13-NA05",
+      "question": "GTP開關為什麼會自己關掉？",
+      "existing_ids": [
+        "V3005"
+      ],
+      "source_ids": [],
+      "reason": "與既有GTP水解關閉循環相同，不按Ran/Rab名稱拆。"
+    },
+    {
+      "id": "C13-NA06",
+      "question": "同一張RNA如何同時做出很多蛋白質？",
+      "existing_ids": [
+        "L059"
+      ],
+      "source_ids": [],
+      "reason": "多核糖體既有核心，SRP研究中的核糖體排隊只作模型背景。"
+    },
+    {
+      "id": "C13-NA07",
+      "question": "細胞怎麼知道蛋白質做到哪裡停止？",
+      "existing_ids": [
+        "L061"
+      ],
+      "source_ids": [],
+      "reason": "終止密碼子已有；暫停延長等接送不是翻譯終止。"
+    },
+    {
+      "id": "C13-NA08",
+      "question": "出口載體需要Ran，入口載體也需要Ran，能不能拆兩題？",
+      "existing_ids": [
+        "C13001"
+      ],
+      "source_ids": [
+        "C13-S001"
+      ],
+      "reason": "兩側組裝/拆卸是同一方向性循環，留同一核心。"
+    },
+    {
+      "id": "C13-NA09",
+      "question": "KDEL受體為什麼在回程放開貨物？",
+      "existing_ids": [
+        "C13002"
+      ],
+      "source_ids": [
+        "C13-S002"
+      ],
+      "reason": "與較酸處抓取共同構成同一pH依賴回收循環，不拆成第二核心。"
+    },
+    {
+      "id": "C13-NA10",
+      "question": "回收受體露出不同外側訊號，能不能另算一題？",
+      "existing_ids": [
+        "C13002"
+      ],
+      "source_ids": [
+        "C13-S002"
+      ],
+      "reason": "KDEL結構中的運送訊號暴露是同一回收模型的延伸；單獨只念COPI/COPII會偏術語。"
+    },
+    {
+      "id": "C13-NA11",
+      "question": "每種核孔都用固定60kDa門檻把分子擋在外面嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "C13-S001"
+      ],
+      "reason": "舊文背景的簡化門檻不當全稱；本輪沒有讀足形狀/時間依賴的直接研究，不收固定數字題。"
+    },
+    {
+      "id": "C13-NA12",
+      "question": "馬達蛋白怎麼兩個頭輪流踏步？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "找到Yildiz2004摘要，但Rockefeller副本404、ENS副本逾時，未取得可核的主文；FU Berlin連結實為講義。延後而非拿摘要冒充全文。"
+    },
+    {
+      "id": "C13-NA13",
+      "question": "貨物一接上，kinesin就一定全速運貨嗎？",
+      "existing_ids": [
+        "C13003"
+      ],
+      "source_ids": [
+        "C13-S003"
+      ],
+      "reason": "已讀研究主要支持活化起始與可接近性，不能把工程化接頭結合當完整天然運輸充分條件。"
+    },
+    {
+      "id": "C13-NA14",
+      "question": "囊泡鬆停靠和緊停靠可以各算一題嗎？",
+      "existing_ids": [
+        "C13004"
+      ],
+      "source_ids": [
+        "C13-S004"
+      ],
+      "reason": "兩態是同一組裝/拆除試驗的比較；精確緊黏物理仍未確立，不拆機制配額。"
+    },
+    {
+      "id": "C13-NA15",
+      "question": "去掉阻擋後，卡在進口的蛋白能不能繼續？",
+      "existing_ids": [
+        "C13005"
+      ],
+      "source_ids": [
+        "C13-S005"
+      ],
+      "reason": "同一折疊受阻題的可逆性驗證，不另收。"
+    },
+    {
+      "id": "C13-NA16",
+      "question": "讓蛋白質做慢一點與增加內質網接收站能不能各算一題？",
+      "existing_ids": [
+        "C13006"
+      ],
+      "source_ids": [
+        "C13-S006"
+      ],
+      "reason": "兩項救援共同檢驗同一製造/交接時窗，不拆成兩核心。"
+    },
+    {
+      "id": "C13-NA17",
+      "question": "受損粒線體被標記後如何完整包起來拆掉？",
+      "existing_ids": [
+        "C13007"
+      ],
+      "source_ids": [
+        "C13-S007"
+      ],
+      "reason": "本輪只讀到局部標記/募集與回收相關結果，完整自噬膜形成與閉合未讀，不能延伸成全程動畫。"
+    },
+    {
+      "id": "C13-NA18",
+      "question": "M6P、Rab與ESCRT各自怎麼幫貨物找路？",
+      "existing_ids": [
+        "L016",
+        "V3052"
+      ],
+      "source_ids": [],
+      "reason": "僅探索到部分摘要/失敗主文，且單換分選標記易與既有受體或泛素概念撞核；待實讀新的控制條件再判。"
+    },
+    {
+      "id": "C13-NA19",
+      "question": "過氧化體能讓已折好的蛋白質進去嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "未實讀其進口選擇機制與對照，本輪不以換胞器補足題數。"
+    }
+  ]
+}

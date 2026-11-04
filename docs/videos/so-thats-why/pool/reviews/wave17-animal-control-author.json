@@ -1,0 +1,500 @@
+{
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave17-animal-control-20261102",
+  "author": "pool_life_tech",
+  "created_on": "2026-11-02",
+  "candidate_count": 6,
+  "source_count": 6,
+  "not_added_count": 24,
+  "candidate_ids": [
+    "B17001",
+    "B17002",
+    "B17003",
+    "B17004",
+    "B17005",
+    "B17006"
+  ],
+  "authored_files": [
+    {
+      "file": "batches/wave17-animal-control.json",
+      "sha256": "27d990ea35007129137436487b5f3eea8a932245c61542fcb87311e68d700dd2"
+    },
+    {
+      "file": "reviews/wave17-animal-control-themes.json",
+      "sha256": "22b585c69d45eaa927e43e601de3603b9115ede72b50a59dd6e3fadec45d5bad"
+    }
+  ],
+  "baseline_scan": {
+    "pool_sha256": "a480858e3b05361efef0a96a1b0e7b82be27bcd002c13550a5d090d07a550b2e",
+    "raw_records": 3326,
+    "not_added": 835,
+    "method": "對全部raw完整question/answer_target/scope與全部not_added做關鍵詞/機制檢索；人工讀指定相關舊列完整三欄及31個NA命中。不宣稱3326列逐句重審。",
+    "retrieved_raw_match_count": 187,
+    "retrieved_not_added_match_count": 31,
+    "explicit_boundary_pair_count": 22,
+    "cache": ".cache/wave17-life-finalscan.json",
+    "baseline_file": "baselines/2026-11-02-2959.json.gz",
+    "baseline_sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f"
+  },
+  "boundary_pairs": [
+    {
+      "a": "B17001",
+      "b": "Z7004",
+      "old_question": "兩條電魚的放電頻率太接近，為什麼其中一條會改變節奏？",
+      "old_answer_target": "接近頻率的自發電訊號互相干擾，改變自身放電頻率可拉開差距，減少對電感測的干擾。",
+      "old_scope": "研究室所述南美刀魚；較低頻個體是否下調依物種而異，不畫成每一對魚都對稱分頻。",
+      "reason": "連續波調頻避免互擾，與離散外部脈衝的物體調制/發射幾何不同。"
+    },
+    {
+      "a": "B17001",
+      "b": "S10001",
+      "old_question": "同樣的電脈衝，為什麼跟放電指令配對後，神經反應會逐漸減弱？",
+      "old_answer_target": "命令與干擾定時配對使可塑性輸入形成時間特定的負像；非配對同脈衝不見同樣學習，且獵物式訊號的敏感度未被整體關掉。",
+      "old_scope": "限Gnathonemus petersii受控EOD模擬與神經/novelty-response測試；配對不是任何情境的充分條件，AP5也改變基礎命令反應，不能說單獨無副作用地阻斷負像。",
+      "reason": "命令配對學習負像與利用別個發射源的物體資訊不同；不重算一般自生取消。"
+    },
+    {
+      "a": "B17001",
+      "b": "S10002",
+      "old_question": "電魚突然加快放電，慢速時學會的自我干擾預測為什麼還能接上？",
+      "old_answer_target": "受測負像能從低速泛化到未訓練高速；模型由速率依賴輸入配合權重限制，避免把慢速脈衝簡單疊加造成錯誤預測。",
+      "old_scope": "限實驗低到高規則速率切換；granule輸入速率依賴有量測，synaptic regularization無直接體內證據；完整因果是模型解釋，不能當已確定細胞機制。",
+      "reason": "速率變化下負像泛化不是外來脈衝對物體的探測路徑。"
+    },
+    {
+      "a": "B17001",
+      "b": "B2153",
+      "old_question": "鯊魚怎麼發現看不見、卻帶著微弱電訊號的獵物？",
+      "old_answer_target": "電感受器偵測水中生物電場",
+      "old_scope": "不量化最遠距離或感度排行",
+      "reason": "舊核直接感受獵物生物電；新核主動源照到被動物體再到接收者，另有排除自身源的時間窗。"
+    },
+    {
+      "a": "B17002",
+      "b": "S10008",
+      "old_question": "天蛾想穩住頭，為什麼晃得快時不能只靠眼睛？",
+      "old_answer_target": "不同頻率下視覺與觸角機械回饋的重要性不同；觸角負載恢復可改善高頻頭部補償，感覺器的機械配置影響控制。",
+      "old_scope": "限Daphnis nerii繫留roll、所測光照與2/6Hz比較；不是兩通道完全互斥，也不把JO功能等同氣味或把結果套所有昆蟲。",
+      "reason": "舊核頭部穩定的視覺/觸角頻率分工；新核固定條件側向追花兩路衝突的動態合成與相消預測。"
+    },
+    {
+      "a": "B17002",
+      "b": "P14009",
+      "old_question": "眼睛與手摸到的高度不一致，畫面加雜訊為什麼會改變判斷？",
+      "old_answer_target": "小幅視觸衝突下，視覺深度雜訊增大時，合併高度判斷更靠向觸覺；單通道變異預測的可靠度權重與實測相近，並能解釋合併估計變異減小。",
+      "old_scope": "2002四名22–33歲右利手成人、虛擬觸覺裝置與隨機點立體圖，衝突不超11%。「最佳」僅模型條件中的變異，非永遠正確；未觀察腦內直接計算權重，不能直接外推兒童/其他物性/大衝突。",
+      "reason": "舊核雜訊改變可靠度後的權重；本題可靠度未改，改線索運動內容/相位，靜止仍有誤差回饋。"
+    },
+    {
+      "a": "B17002",
+      "b": "P14010",
+      "old_question": "聲音與亮點同時出現，分得越遠就一定把聲音拖得更偏嗎？",
+      "old_answer_target": "視聽空間差距增大時，聲音定位受視覺牽引不一定繼續變大；把同來源整合與分來源估計按可能性折衷的理想觀察者模型，比無條件融合更能描述這組非線性結果。",
+      "old_scope": "2007原實驗20名學生招募、19分析；個人HRTF、五個方位按鍵、短同步訊號。模型先驗與高斯雜訊是假設，沒有量測腦內貝氏運算。文中第二實驗是舊資料再分析，不另算獨立新招研究。",
+      "reason": "舊核共同來源推斷造成非線性融合；本題所測系統近似線性相加，沒有聲光共同來源模型。"
+    },
+    {
+      "a": "B17002",
+      "b": "A5016",
+      "old_question": "看著慢慢移動的球時，眼睛怎麼避免一直落在球後面？",
+      "old_answer_target": "視覺追蹤利用移動目標的方向與速度資訊，驅動較平順的眼球轉動來維持目標靠近中央視野。",
+      "old_scope": "限一般有視覺目標的平滑追蹤；不稱沒有目標就絕對不能追蹤，也不承諾任意高速皆能跟上。",
+      "reason": "眼球速度匹配是一般追蹤；新核兩個不同參照同時存在與可預測相消。"
+    },
+    {
+      "a": "B17003",
+      "b": "S10006",
+      "old_question": "同樣碰到前方障礙，老鼠為什麼有時跨大步、有時先縮步？",
+      "old_answer_target": "鬍鬚給出的障礙位置須與當下足部位置和身體速度整合，改變前足先落在障礙前或直接跨過的策略。",
+      "old_scope": "限頭固定跑輪小鼠、接觸時正在擺動的前足；運動學模型預測不是逐條神經電路已解碼，不概括自由活動時視覺無用。",
+      "reason": "跨障策略依障礙/足狀態選擇；新題具體改變推力發生前的腿-重心幾何，能解釋不同初姿態的反向校正。"
+    },
+    {
+      "a": "B17003",
+      "b": "P164",
+      "old_question": "底座做寬一點，為什麼通常比較不容易翻倒？",
+      "old_answer_target": "重心投影離開支撐範圍前的容許傾角增加。",
+      "old_scope": "重心高度與重量分布另控制",
+      "reason": "靜態防傾倒不是主動重設起跳方向；本題需威脅角度與初姿態交叉，不能只說重心。"
+    },
+    {
+      "a": "B17003",
+      "b": "LEG-S60",
+      "old_question": "你手才靠近，蟑螂為什麼就先跑了？",
+      "old_answer_target": "蟑螂尾端有一對尾毛，上面的感覺毛對空氣流動非常敏感；拖鞋揮下推動的氣流會先觸發神經，讓牠在極短時間內轉身逃跑。牠的逃跑方向也不固定，更難預測。",
+      "old_scope": "沿用 S60 題級條件，須讀原查核包的限制；從氣流感測到逃跑反應，避免快過所有動物的誇張比較。",
+      "reason": "舊題氣流感測與快速逃跑；新核起跳前幾何控制，視覺/擋風與去翅控制。"
+    },
+    {
+      "a": "B17004",
+      "b": "B2303",
+      "old_question": "看不到躲著的魚，電鰻怎麼先讓牠動一下再找到位置？",
+      "old_answer_target": "短放電誘發獵物抽動再由水動線索定位",
+      "old_scope": "與持續高頻制伏放電分工，不只是換標題",
+      "reason": "電鰻先激發隱藏獵物抽動以取得位置；蛇先把已在旁邊的魚導向可攻擊路徑，不以感測增益回答。"
+    },
+    {
+      "a": "B17004",
+      "b": "B2320",
+      "old_question": "獵物暫時躲到回聲遮蔽物後面，蝙蝠怎麼還能朝牠將出現的方向轉頭？",
+      "old_answer_target": "連續離散回聲中的運動資訊形成短期目標預測，與只追最後回聲的模型作比較",
+      "old_scope": "限棲架追蹤實驗，不說能預知任意獵物轉向",
+      "reason": "蝙蝠由既有運動推測遮擋後位置；蛇主動造成側向刺激讓防禦規則失效，包含未照預期動時的失手。"
+    },
+    {
+      "a": "B17004",
+      "b": "B2154",
+      "old_question": "魚怎麼察覺身旁的水正在被別的動物推動？",
+      "old_answer_target": "側線感受周圍水流與振動",
+      "old_scope": "不把側線外觀條紋當所有魚皆可見",
+      "reason": "側線功能只是必要背景；本題刺激來向與攻擊來向分離及時序控制才是核心。"
+    },
+    {
+      "a": "B17005",
+      "b": "A14005",
+      "old_question": "螞蟻帶路為什麼走走停停，落後的那隻還能控制節奏？",
+      "old_answer_target": "領路者等候跟隨者觸碰，兩者隨間距調整加減速；這個雙向回饋讓速度配合跟隨者，而非單向廣播路線。",
+      "old_scope": "限Temnothorax albipennis尋食串列；停步找地標屬作者解釋，功能性教學不證明人的意圖；替代觸碰細節只有團隊官方報告，未核原補充方法。",
+      "reason": "蟻串列等觸碰的節奏回饋，與年齡叫聲決定交付物難度/練習機會不同；不只以教學二字分類。"
+    },
+    {
+      "a": "B17005",
+      "b": "A14006",
+      "old_question": "同樣看到蛇模型，黑猩猩為什麼會因先前聽到的同伴叫聲而改變警報？",
+      "old_answer_target": "先前的休息或警戒叫聲提供同伴是否接觸威脅的線索；見蛇後訊號與朝聲源監看隨條件改變，不必有同伴當下動作才能調整。",
+      "old_scope": "限2017第二實驗10隻21試次，播放者身份跨條件固定；可談接收者相關訊息影響發訊，不斷言讀心或已知唯一內在認知機制。2024不同設計只列界線。",
+      "reason": "猩猩先前同伴警戒線索改發訊；新題年齡叫聲改交付物狀態並以經驗對照測後果，不用讀心說。"
+    },
+    {
+      "a": "B17005",
+      "b": "B2011",
+      "old_question": "幼鳥需要很多照顧時，兩隻親鳥一起留下有什麼好處？",
+      "old_answer_target": "雙親投入可改善育幼結果，構成配對維持的一種解釋。",
+      "old_scope": "male-assistance hypothesis；不等於所有配對都終身忠誠。",
+      "reason": "雙親投入的一般利益不能解釋固定幼獸換叫聲即改交付狀態。"
+    },
+    {
+      "a": "B17006",
+      "b": "B2326",
+      "old_question": "射水魚瞄準更遠的昆蟲時，為什麼不能只是吐出同樣一口水？",
+      "old_answer_target": "調整嘴部橫截面開合的時間過程，讓水流聚集到前端的時機配合碰撞距離",
+      "old_scope": "限研究射水魚；不用此摘要推論認知能力的演化原因",
+      "reason": "水柱時序整形是流體輸出；新題虛擬落點規則的學習與形狀選擇。"
+    },
+    {
+      "a": "B17006",
+      "b": "B2320",
+      "old_question": "獵物暫時躲到回聲遮蔽物後面，蝙蝠怎麼還能朝牠將出現的方向轉頭？",
+      "old_answer_target": "連續離散回聲中的運動資訊形成短期目標預測，與只追最後回聲的模型作比較",
+      "old_scope": "限棲架追蹤實驗，不說能預知任意獵物轉向",
+      "reason": "一般短期運動外推已收；此題必須保留重新學到非原本彈道規則及同運動按物體身份切換。"
+    },
+    {
+      "a": "B17006",
+      "b": "B2015",
+      "old_question": "動物偶然做出的動作，怎麼因後果而越做越多？",
+      "old_answer_target": "行為後果改變未來該行為發生的機率。",
+      "old_scope": "來源按桿取食例子；只講正增強，不混淆負增強與處罰。",
+      "reason": "獎勵改發生機率不足以回答同一初始路線的兩套落點映射；隱藏偏折/餵食器移位/同個體對照保留。"
+    },
+    {
+      "a": "B17006",
+      "b": "B2014",
+      "old_question": "原本無關食物的聲音，怎麼變成動物流口水的線索？",
+      "old_answer_target": "刺激配對可讓中性線索取得引發既有反應的能力。",
+      "old_scope": "古典制約概念；歷史聲音設備細節不依教材插圖斷言。",
+      "reason": "古典刺激取得既有反應與連續參數落點映射不同；若稿子只說形狀連食物就退回此舊核。"
+    },
+    {
+      "a": "B17006",
+      "b": "S10011",
+      "old_question": "竹節蟲改成倒退走，同一個受力訊號為什麼會改推另一組肌肉？",
+      "old_answer_target": "前進和後退時相同負載輸入可對前伸/後拉肌運動輸出換號，維持助長當時支撐期的功能；不是只把同一反射調強弱。",
+      "old_scope": "限Carausius morosus中/後腳受控負載與五腳行走條件；反射換號有證據，突觸前抑制或平行路徑改權重是候選機制，尚未由本文分辨。",
+      "reason": "前進/後退負載反射換號不同於新規則學習與形狀條件選擇；不能只把「條件改變反應」當同核。"
+    }
+  ],
+  "within_batch_boundaries": [
+    {
+      "a": "B17003",
+      "b": "B17004",
+      "reason": "果蠅在推力前重設自身姿態；蛇把觸發位置與真正攻擊位置分開利用獵物反射，非共同逃跑名詞拆題。"
+    },
+    {
+      "a": "B17004",
+      "b": "B17006",
+      "reason": "假動作誘導既有防禦反應，與受訓魚依物體形狀選新落點映射不同；兩者不硬合成預測動物合集。"
+    }
+  ],
+  "source_identity": {
+    "count_meaning": "6筆來源記錄對應6篇原研究；URL/載體數不是獨立實驗數或跨團隊複驗數。",
+    "matching": "比既有來源的normalized title、DOI文字與exact canonical/retrieval URL；不是完整書目學去重保證。",
+    "items": [
+      {
+        "id": "B17-S001",
+        "doi": "10.1038/s41586-024-07157-x",
+        "canonical_url": "https://doi.org/10.1038/s41586-024-07157-x",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12062789/",
+        "version": "Nature 628:139–144 (2024); PMC12062789 author manuscript available 2025-05-09",
+        "old_exact_identity_matches": [],
+        "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。 Nature2024正式研究、PMC2025收錄作者稿、PMC10515903預印本屬同研究譜系；未用預印本再算來源。與舊S10001/02同領域/部分團隊，但本題的外來物體資訊控制不同。"
+      },
+      {
+        "id": "B17-S002",
+        "doi": "10.1073/pnas.1522419113",
+        "canonical_url": "https://doi.org/10.1073/pnas.1522419113",
+        "retrieval_url": "https://sponberg.gatech.edu/wp-content/uploads/2015/10/Proceedings-of-the-National-Academy-of-Sciences-2016-Roth.pdf",
+        "version": "PNAS 113(45):12832–12837; PDF6頁主文加SI",
+        "old_exact_identity_matches": [],
+        "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。"
+      },
+      {
+        "id": "B17-S003",
+        "doi": "10.1016/j.cub.2008.07.094",
+        "canonical_url": "https://doi.org/10.1016/j.cub.2008.07.094",
+        "retrieval_url": "https://faculty.fiu.edu/~theobald/wp-content/uploads/2016/01/Card-and-Dickinson-2008-Visually-Mediated-Motor-Planning-in-the-Escape-Res.pdf",
+        "version": "Current Biology 18:1300–1307",
+        "old_exact_identity_matches": [],
+        "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。"
+      },
+      {
+        "id": "B17-S004",
+        "doi": "10.1073/pnas.0905183106",
+        "canonical_url": "https://doi.org/10.1073/pnas.0905183106",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2699377/",
+        "version": "PNAS 106(27):11183–11187; PMC2699377 published article",
+        "old_exact_identity_matches": [],
+        "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。"
+      },
+      {
+        "id": "B17-S005",
+        "doi": "10.1126/science.1128727",
+        "canonical_url": "https://doi.org/10.1126/science.1128727",
+        "retrieval_url": "https://www.researchgate.net/publication/6944406_Teaching_in_Wild_Meerkats",
+        "version": "Science 313(5784):227–229; author-uploaded published-text extraction",
+        "old_exact_identity_matches": [],
+        "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。 RG標合著者上傳的公開正文；不把CiteSeer失敗路線或論文資訊頁另算實讀來源。"
+      },
+      {
+        "id": "B17-S006",
+        "doi": "10.7554/eLife.99634.3",
+        "canonical_url": "https://doi.org/10.7554/eLife.99634.3",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12194133/",
+        "version": "Version of Record 2025-06-25; eLife 13:RP99634; PMC metadata base DOI 10.7554/eLife.99634",
+        "old_exact_identity_matches": [],
+        "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。 eLife.99634.3為2025-06-25 Version of Record；2024-11-05 v1、2025-05-29 v2為同研究先前版本，不算三次複驗。"
+      }
+    ]
+  },
+  "source_reading_summary": {
+    "primary_papers": 6,
+    "fresh_ua_body_success": 5,
+    "web_coauthor_fulltext_only": 1,
+    "not_read": "未看補充影片、未重算模型或原始資料；Meerkat未讀SI方法，不能稱全部主張已核。",
+    "specific_scopes": [
+      {
+        "source_id": "B17-S001",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12062789/",
+        "reading_scope": "主文電場模型、神經記錄、模擬同伴放電的偵測/辨識實驗與Discussion（本機段落11–31）；Methods動物、模型及偵測/辨識條件定點。未看影片或重算資料。",
+        "read_via": "web.open PMC為CAPTCHA；同日指定UA urllib HTTP200取得真正PMC HTML，lxml抽取主文與圖說實讀，未以搜尋片段充正文。"
+      },
+      {
+        "source_id": "B17-S002",
+        "url": "https://sponberg.gatech.edu/wp-content/uploads/2015/10/Proceedings-of-the-National-Academy-of-Sciences-2016-Roth.pdf",
+        "reading_scope": "PDF pp.1–6主文的兩部件花裝置、三種衝突條件、線性合成及新相位刺激檢驗；圖1–4圖說。未重算SI表格或看影片。",
+        "read_via": "當日web搜尋/打開定位；指定UA urllib HTTP200取得正文載體，依指定頁/段實讀。"
+      },
+      {
+        "source_id": "B17-S003",
+        "url": "https://faculty.fiu.edu/~theobald/wp-content/uploads/2016/01/Card-and-Dickinson-2008-Visually-Mediated-Motor-Planning-in-the-Escape-Res.pdf",
+        "reading_scope": "PDF pp.1–7：Results落盤、擋風/去翅控制、腿位與初始姿態分析、Fig.1–4圖說、Discussion未知路徑與Experimental Procedures。未看補充影片，未重算向量插值。",
+        "read_via": "當日web搜尋/打開定位；指定UA urllib HTTP200取得正文載體，依指定頁/段實讀。"
+      },
+      {
+        "source_id": "B17-S004",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2699377/",
+        "reading_scope": "Introduction、Results及Discussion、Materials and Methods（本機段落12–27）；Figs.1–4圖說。未看SI影片，未另讀2010天生能力論文。",
+        "read_via": "web.open PMC為CAPTCHA；指定UA urllib HTTP200取得文章HTML，lxml實讀主文及圖說。"
+      },
+      {
+        "source_id": "B17-S005",
+        "url": "https://www.researchgate.net/publication/6944406_Teaching_in_Wild_Meerkats",
+        "reading_scope": "RG Public Full-text 1中印刷pp.227–229正文：叫聲交叉播放、成長觀察、同窩幼獸活/死蠍/蛋訓練比較及功能性教學界線（web行187–635）。未讀Science supporting online Methods/Tables S1–S5。",
+        "read_via": "web.open ResearchGate成功實讀合著者Katherine McAuliffe標記上傳的Public Full-text 1；指定UA抓RG為403，PDF連結404；CiteSeer路線轉Wayback非正文。不冒稱已下載原PDF。"
+      },
+      {
+        "source_id": "B17-S006",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12194133/",
+        "reading_scope": "Results指定虛擬裝置控制、新偏折規則、隱藏偏折、泛化與形狀選規則（本機段落17、20–21、31、35、40、43–53）；Methods Animals/monitor/feeders/individual identity/analysis段67–74。未看影片或重跑原資料。",
+        "read_via": "web.open PMC為CAPTCHA；指定UA urllib HTTP200取得PMC正文；另web.open eLife核Version of Record及.3 DOI，不把2024/2025 preprint版本另算實驗。"
+      }
+    ]
+  },
+  "access_failures": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12062789/",
+      "method": "web.open",
+      "outcome": "CAPTCHA，未讀該回傳正文；另指定UA HTTP200真正HTML已獨立保存並讀取。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2699377/",
+      "method": "web.open",
+      "outcome": "CAPTCHA，未讀該回傳正文；另指定UA HTTP200真正HTML已獨立保存並讀取。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12194133/",
+      "method": "web.open",
+      "outcome": "CAPTCHA，未讀該回傳正文；另指定UA HTTP200真正HTML已獨立保存並讀取。"
+    },
+    {
+      "url": "https://www.researchgate.net/publication/6944406_Teaching_in_Wild_Meerkats",
+      "method": "specified-UA urllib",
+      "outcome": "403；web.open公開作者全文可讀，二者分開記錄。"
+    },
+    {
+      "url": "https://www.researchgate.net/publication/profile/Katherine-Mcauliffe/publication/6944406_Teaching_in_Wild_Meerkats/links/09e415111759dc6ab2000000/Teaching-in-Wild-Meerkats.pdf",
+      "method": "web.click",
+      "outcome": "404；未下載PDF。"
+    },
+    {
+      "url": "https://citeseerx.ist.psu.edu/document?doi=12b3849d6c2c9d045dec5d5926467300956d3f23&repid=rep1&type=pdf",
+      "method": "web.open / specified-UA urllib",
+      "outcome": "web403；UA轉Wayback HTML而非PDF正文，沒有列為有效正文。"
+    },
+    {
+      "url": "https://www.science.org/doi/pdf/10.1126/science.aaa3042",
+      "method": "specified-UA urllib",
+      "outcome": "403；作者實驗室報告實讀，但不收原論文未讀的獨立新題。"
+    },
+    {
+      "url": "https://journals.biologists.com/jeb/article-pdf/209/1/141/1323547/141.pdf",
+      "method": "specified-UA urllib",
+      "outcome": "403；不以摘要收2006速度匹配題。"
+    }
+  ],
+  "historical_reentry": [
+    {
+      "id": "B17001",
+      "prior_origin": "wave10-sensing-20261101",
+      "reason": "先前未取得正文，現在讀PMC作者稿的完整相關結果與方法控制。不是既有raw的文字變體。"
+    },
+    {
+      "id": "B17005",
+      "prior_origin": "wave14-animal-signals-20261101",
+      "reason": "先前只找到論文，現在讀合著者公開主文；SI未讀仍明標。"
+    }
+  ],
+  "theme_summary": [
+    {
+      "id": "W17B-T01",
+      "seconds": 130,
+      "candidate_ids": [
+        "B17001"
+      ],
+      "timing_basis": "紙上正文預算，開場/轉場/條件重設/回扣已含；未試讀、未製作、非實測片長或留存測試。"
+    },
+    {
+      "id": "W17B-T02",
+      "seconds": 120,
+      "candidate_ids": [
+        "B17002"
+      ],
+      "timing_basis": "紙上正文預算，開場/轉場/條件重設/回扣已含；未試讀、未製作、非實測片長或留存測試。"
+    },
+    {
+      "id": "W17B-T03",
+      "seconds": 120,
+      "candidate_ids": [
+        "B17005"
+      ],
+      "timing_basis": "紙上正文預算，開場/轉場/條件重設/回扣已含；未試讀、未製作、非實測片長或留存測試。"
+    },
+    {
+      "id": "W17B-T04",
+      "seconds": 130,
+      "candidate_ids": [
+        "B17006"
+      ],
+      "timing_basis": "紙上正文預算，開場/轉場/條件重設/回扣已含；未試讀、未製作、非實測片長或留存測試。"
+    }
+  ],
+  "left_in_pool_only": [
+    "B17003",
+    "B17004"
+  ],
+  "editorial_decisions": [
+    "6核已足，不追8–10。",
+    "4案各圍繞同一控制問題；果蠅與蛇先留素材，不硬拼逃跑百科。",
+    "所有圖為後續原創示意方向；本輪未製作圖像/影片或全文稿。"
+  ],
+  "review_requests": [
+    "B17003與S10006初姿態控制的邊界：需保留起跳前力學幾何，不只泛稱狀態影響動作。",
+    "B17002與P14009/S10008的邊界：固定可靠度的衝突合成，不是又一個加權平均題。",
+    "B17006與B2015/B2320的邊界：必須是規則重學與選擇，不收泛預測或正增強。",
+    "B17001/05重入需確認原文指定控制支持，不因以前退題就永遠不能重入。"
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "runtime": "Node v24.22.1",
+    "checks": [
+      "6 unique candidate IDs and mechanism keys; source joins and nonempty locators",
+      "validateEditorial and validateThemes passed",
+      "All 4 chapter/beat totals match; each beat <=45 seconds and one core per chapter; each core across chapters within cap; range upper <= body",
+      "UTF-8 LF without BOM; recursively trimmed strings; no user-local absolute paths"
+    ],
+    "independent_review": "NOT_YET_PERFORMED",
+    "approval_scope": "作者題級來源篩選與紙上規劃；不是可製作完整稿核准。"
+  },
+  "revision_history": [
+    {
+      "reviewer": "pool_physics",
+      "before_files": [
+        {
+          "file": "batches/wave17-animal-control.json",
+          "sha256": "aeed000132c670f3177df6e65480437f986feaf9e76fc7664496108e3d78e111"
+        },
+        {
+          "file": "reviews/wave17-animal-control-themes.json",
+          "sha256": "4e1d02b4caf1a4b85bbc3217c3573da819e01cdfd9532ed7677bb8a7d0cfe017"
+        },
+        {
+          "file": "reviews/wave17-animal-control-author.json",
+          "sha256": "bc6412085fd416bba561c062e57966fdf7aacea02b279d1d79f23210fbb0333c"
+        }
+      ],
+      "changes": [
+        {
+          "id": "ANIMAL01",
+          "candidate_id": "B17003",
+          "change": "將推出威脅方向明確改為推向遠離威脅的一側，避免方向歧義。"
+        },
+        {
+          "id": "ANIMAL02",
+          "candidate_id": "B17002",
+          "change": "明示增益/相位隨頻率而定，近似不變是跨本研究衝突條件，不是所有頻率共用常數。"
+        },
+        {
+          "id": "ANIMAL03",
+          "theme_id": "W17B-T03",
+          "change": "第一章末純追問10→5秒；55+65=120，range/drop/作者表同步。"
+        },
+        {
+          "id": "ANIMAL04",
+          "theme_id": "W17B-T04",
+          "change": "第一章訓練歷程35→25秒；55+75=130，不補內容，range/drop/作者表同步。"
+        }
+      ],
+      "after_content_files": [
+        {
+          "file": "batches/wave17-animal-control.json",
+          "sha256": "27d990ea35007129137436487b5f3eea8a932245c61542fcb87311e68d700dd2"
+        },
+        {
+          "file": "reviews/wave17-animal-control-themes.json",
+          "sha256": "22b585c69d45eaa927e43e601de3603b9115ede72b50a59dd6e3fadec45d5bad"
+        }
+      ],
+      "status": "AUTHOR_CORRECTED_PENDING_TARGETED_READBACK"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "/root/pool_physics",
+  "status": "AUTHOR_LOCKED_AWAITING_INDEPENDENT_REVIEW",
+  "batch_id": "wave7-optics-20261101",
+  "counts": {
+    "raw_candidates": 19,
+    "sources": 20,
+    "not_added": 9,
+    "provisional_expected_retained": 19,
+    "retention_note": "19只是作者候選，未經非作者裁定；不保數量。"
+  },
+  "locked_artifacts": [
+    {
+      "path": "docs/videos/so-thats-why/pool/batches/wave7-optics.json",
+      "sha256": "d956836ae3d50a418f5794e0265e44a1924389056430aafd5c483ec99a675021"
+    },
+    {
+      "path": "docs/videos/so-thats-why/pool/reviews/wave7-optics-themes.json",
+      "sha256": "d1094220599330d40b7e472c1aefc640c18d2763d4ea373b7683626fa207df09"
+    }
+  ],
+  "baseline": {
+    "raw_count": 2959,
+    "selected_count": 2609,
+    "head": "7def3cf",
+    "pool_sha256": "07a5ca7d6ad3aa5d0fdfe51d3315e663fd927a2e88cb7459a271ef5752c19b50"
+  },
+  "dedup_scope": {
+    "method": "對全部raw的question/answer_target/scope/mechanism_key做兩輪關鍵詞檢索；讀主命中217與追加163筆相關欄位，另抽取指定近義ID讀回。並非逐讀全部2959題或重新查核所有舊來源。",
+    "primary_keyword_hits": 217,
+    "additional_hits": 163,
+    "keyword_artifacts": [
+      ".cache/wave7-optics-old-hits.json",
+      ".cache/wave7-extra-old-hits.json"
+    ],
+    "semantic_neighbours_status": "作者鎖定時未有此batch的語意近鄰；待root產生後交非作者。"
+  },
+  "near_pairs": [
+    {
+      "a": "O7001",
+      "b": "O7003",
+      "author_reason": "同一片可組；前者控制物距/放大率，後者旋轉共軛清晰平面，不能互相代替。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7002",
+      "b": "O3046",
+      "author_reason": "舊題為掃描角投影到地面尺度，新題固定平面內的鏡頭畸變及校正/取樣限制；待非作者判。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7004",
+      "b": "O7005",
+      "author_reason": "正常相位顯影與相位環誤改低頻所致假影，有可比較的新因果；halo與shade-off已合一題。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7004",
+      "b": "P153",
+      "author_reason": "共用干涉基礎，但選擇處理背景/繞射成分以顯影透明物，非再講雙狹縫光程差。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7006",
+      "b": "O7019",
+      "author_reason": "都讀梯度；DIC比較相鄰光程並重合，紋影把折射方向變化經截光轉成亮暗，量測轉換不同。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7007",
+      "b": "P241",
+      "author_reason": "舊題為側面看散射；新題特定照明/接收角度排除直達背景的成像選擇，仍交覆核檢查厚度。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7008",
+      "b": "O7009",
+      "author_reason": "接收端孔徑拒斥與非線性激發集中分開；不能以同是光學切片就合併。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7009",
+      "b": "H3082",
+      "author_reason": "雙光子同時吸收、空間激發依光強平方與單光子激發後非輻射鬆弛的能量損失不同。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7010",
+      "b": "O7008",
+      "author_reason": "光片控制受照體積，共焦主要在接收端拒斥焦外訊號；同片比較但非同答案。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7011",
+      "b": "H3007",
+      "author_reason": "線性雙折射分量延遲加分析器，與自然旋光左右圓偏振相位差不同；不把兩者稱同一旋光。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7011",
+      "b": "P159",
+      "author_reason": "交叉偏光片只是設題；新答案包含夾入各向異性材料的相位延遲與波長依賴。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7012",
+      "b": "P152",
+      "author_reason": "同有球差；此題研究設計介質/成像深度失配的來源與深層誤讀，舊題球面/拋物面的理想幾何。可由非作者判是否夠獨立。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7014",
+      "b": "P152",
+      "author_reason": "波長相異的色散共焦，與同波長近軸/邊緣球差不同。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7015",
+      "b": "O3041",
+      "author_reason": "新題為串接成像環節的對比傳遞累積；舊題為次像元亮點偵測不等於形狀解析。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7016",
+      "b": "E2247",
+      "author_reason": "新題兩個材料的反射光譜在某照明下同色、換光失配；舊題光源同色溫但光譜/顯色不同。機制相連，請獨立判合併。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7016",
+      "b": "O3042",
+      "author_reason": "共同涉及光譜資訊被縮減；本題觀察同兩樣品在照明更換下配色失敗，舊題增加量測窄波段辨識岩石。請審是否只是逆向應用。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7017",
+      "b": "P133",
+      "author_reason": "新題為接收鏡面分量的量測幾何和讀值，舊題為粗糙面方向分散導致無清楚鏡像；不重拆粗糙度常識。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7018",
+      "b": "O3008",
+      "author_reason": "三面正交使任意三維方向分量返回，與淹水莖幹/水面雙重反射回波增強不同；兩面/三面反射的變體不另拆。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "O7019",
+      "b": "LEG-S85",
+      "author_reason": "折射率梯度是共同前提；新核心是截光把小偏折轉成可記錄強度，未另算熱空氣扭曲。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    }
+  ],
+  "reading": {
+    "sources_used": 20,
+    "source_type": "大學/機關教學與光學製造者技術正文；非產品宣傳；沒有只憑摘要入選的題。",
+    "scope": "各來源精確reading_scope/locator列於batch；只稱實讀指定段，不稱各網站全文或逐句劇本驗證。",
+    "failures": [
+      {
+        "url": "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/telecentric-design-topics/",
+        "result": "urllib HTTP403，改web.open讀正文成功"
+      },
+      {
+        "url": "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/distortion-and-the-telecentricity-specification/",
+        "result": "urllib HTTP403，改web.open讀正文成功"
+      },
+      {
+        "url": "https://www.microscopyu.com/techniques/dic/introduction-to-differential-interference-contrast",
+        "result": "推測網址HTTP500，不採；改FSU確實存在的正文頁"
+      },
+      {
+        "url": "https://micro.magnet.fsu.edu/primer/techniques/dic/dicintro.html",
+        "result": "urllib未取得可讀檔；web.open正文成功"
+      }
+    ],
+    "read_but_not_used": [
+      {
+        "url": "https://ilrs.gsfc.nasa.gov/docs/2012/degnan_retrotutorialppt_121105.pdf",
+        "scope": "web.open PDF前3頁文字，僅回射功能與類型；改採Edmund原作者文章的三面幾何段作題來源。"
+      }
+    ],
+    "source_cautions": "批次sources.limitations逐筆保留過強或簡化敘述的排除；不搬圖、表、習題或教材長文，rights為連結與原創摘要。"
+  },
+  "themes": [
+    {
+      "theme_id": "W7O-T01",
+      "total_seconds": 235,
+      "core_seconds": {
+        "O7001": 85,
+        "O7002": 85,
+        "O7003": 65
+      },
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    },
+    {
+      "theme_id": "W7O-T02",
+      "total_seconds": 250,
+      "core_seconds": {
+        "O7004": 90,
+        "O7005": 75,
+        "O7006": 85
+      },
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    },
+    {
+      "theme_id": "W7O-T03",
+      "total_seconds": 245,
+      "core_seconds": {
+        "O7008": 80,
+        "O7009": 90,
+        "O7010": 75
+      },
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    }
+  ],
+  "checks": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "source_id_references": true,
+    "ids_unique": true,
+    "all_candidates_have_editorial": true,
+    "timing_arithmetic": "PASS",
+    "production": "NOT_STARTED",
+    "paid_media": "NONE",
+    "script_fact_check": "NOT_DONE",
+    "trial_read": "NOT_DONE"
+  },
+  "not_added_summary": "球差/繞射/散斑指回舊核心；STED/SIM未讀到足夠新機制；散光來源混同彗差、場曲因果不足；稜鏡角度變體不另計。",
+  "required_next": "非作者逐題/近義/來源風險/片長覆核；如刪段須另核短版，不能自動沿用秒數。"
+}

@@ -1,0 +1,93 @@
+{
+  "reviewer": "root",
+  "scope": "從語意工具提示另抽12組舊題比較，非隨機，不代表全庫普查。逐對讀既有目標與條件，重讀下列4個來源正文。",
+  "source_checks": [
+    {
+      "url": "https://openstax.org/books/biology-2e/pages/10-2-the-cell-cycle",
+      "locator": "核分裂及胞質分裂段落",
+      "result": "多核是分離任務未同步的例子。"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2131.txt",
+      "locator": "2.2 lease allocation and extension",
+      "result": "租約續期是同一暫時配置生命週期。"
+    },
+    {
+      "url": "https://openstax.org/books/college-physics-2e/pages/25-7-image-formation-by-mirrors",
+      "locator": "平面鏡虛像及等距",
+      "result": "等距後退是同一反射反向延長構圖的結果。"
+    },
+    {
+      "url": "https://openstax.org/books/microbiology/pages/9-2-oxygen-requirements-for-microbial-growth",
+      "locator": "氧需求、活性氧與微需氧定義",
+      "result": "L177只重述適宜範圍，沒有新解釋。"
+    }
+  ],
+  "merges": [
+    {
+      "duplicate_id": "L042",
+      "canonical_id": "L041",
+      "reason": "核分裂與胞質分裂可分離，多核細胞是相同任務分離的後果例子。"
+    },
+    {
+      "duplicate_id": "L293",
+      "canonical_id": "L291",
+      "reason": "租約續期是暫時位址配置生命週期的一部分，與租約回收同一核心。"
+    },
+    {
+      "duplicate_id": "P150",
+      "canonical_id": "P149",
+      "reason": "平面鏡反射延長線的虛像構圖已決定物像等距，後退例子併入同一核心。"
+    },
+    {
+      "duplicate_id": "E2106",
+      "canonical_id": "E2105",
+      "reason": "平行磁場不偏轉是同一洛侖茲力速度方向關係的零分量特例，不另佔核心。"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "L177",
+      "reason": "目標只是重述微需氧生物的適宜氧條件，缺真正解釋氧過少與過多兩側限制的直接機制；先暫緩，原題來源保留。"
+    }
+  ],
+  "distinct": [
+    {
+      "a": "L201",
+      "b": "L199",
+      "reason": "私有範圍不可全球路由與採用私有命名的資源/管理取捨可形成新追問；同片不重複背景。"
+    },
+    {
+      "a": "E2021",
+      "b": "E2022",
+      "reason": "體內淨電荷與表面切向電場是不同邊界判斷。"
+    },
+    {
+      "a": "D2033",
+      "b": "D2034",
+      "reason": "膜選擇性濃縮與補水洗出可透溶質的質量平衡不同。"
+    },
+    {
+      "a": "E2041",
+      "b": "E2043",
+      "reason": "串聯固定Q與並聯固定V是不同邊界條件。"
+    },
+    {
+      "a": "L029",
+      "b": "L176",
+      "reason": "能切換有氧代謝與只耐受但不使用氧是不同能力。"
+    },
+    {
+      "a": "E2105",
+      "b": "E2109",
+      "reason": "力的方向與磁力不作功的能量判斷可分開推進。"
+    },
+    {
+      "a": "E2004",
+      "b": "E2021",
+      "reason": "載流子可移動性與移動到靜電平衡後的分布不同。"
+    }
+  ],
+  "status": "SCOPED_HISTORICAL_REVIEW_NOT_EXHAUSTIVE",
+  "raw_rewrites": 0
+}

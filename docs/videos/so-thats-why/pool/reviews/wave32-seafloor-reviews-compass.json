@@ -1,0 +1,1663 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R32001",
+    "R32002",
+    "R32003",
+    "R32004",
+    "R32005",
+    "R32006",
+    "R32007",
+    "R32008"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave32-compass.json",
+      "sha256": "d9c8041dc013c11b5ae022452d9d6dd3a37d9d85ebf7c533fd76fe5b5763fe3a"
+    },
+    {
+      "file": "reviews/wave32-compass-author.json",
+      "sha256": "d40ae33e8205b0a5aead67f58891743a4e1e239be80460c01b4daa74b56c0d0e"
+    },
+    {
+      "file": "reviews/wave32-compass-themes.json",
+      "sha256": "480dc08809bd7bbe20b949d1e794cf71290f79514b1894d7c9c2d2c2449b67fc"
+    }
+  ],
+  "role_and_scope": "海床組作者獨立覆核本批天空/風、溫度、視覺里程及巢口氣味的實驗對照、近題與節拍。",
+  "baseline": {
+    "head": "7b5281f16e55f14bbe874d9866e700acb8feb0e7",
+    "selected": 3115,
+    "raw_records": 3490,
+    "not_added": 1367,
+    "themes": 307,
+    "pool_sha256": "f4de461137fca5064ed0b89ff405175e5e70c240825c2695d6969410335f5fe3"
+  },
+  "candidate_review": [
+    {
+      "id": "R32001",
+      "canonical_id": "R32001",
+      "decision": "retain",
+      "reason": "全星空、只投銀河漫射帶、18亮星的投影對照，配合無月野外遮天路徑。離場時間和直行程度在兩場地分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "source_ids",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R32-S001"
+      ],
+      "editorial_seconds": [
+        54,
+        90
+      ]
+    },
+    {
+      "id": "R32002",
+      "canonical_id": "R32002",
+      "decision": "retain",
+      "reason": "個體仍可循人造景物走直，但多隻共同指向亮處會降低方位分散度；另有僅見亮夜空而不能見地標的情況。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "source_ids",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R32-S002",
+        "R32-S003"
+      ],
+      "editorial_seconds": [
+        45,
+        80
+      ]
+    },
+    {
+      "id": "R32003",
+      "canonical_id": "R32003",
+      "decision": "retain",
+      "reason": "鏡改太陽和轉動通道的操弄把定向改變同單純遇障區分；登球及通道內是否回頭分開計。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "source_ids",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R32-S004"
+      ],
+      "editorial_seconds": [
+        48,
+        85
+      ]
+    },
+    {
+      "id": "R32004",
+      "canonical_id": "R32004",
+      "decision": "retain",
+      "reason": "熱影像、足部隔熱及冷熱球操作改變登球頻率，給出相同爬球行為另一功能。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "source_ids",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R32-S005"
+      ],
+      "editorial_seconds": [
+        50,
+        90
+      ]
+    },
+    {
+      "id": "R32005",
+      "canonical_id": "R32005",
+      "decision": "retain",
+      "reason": "在不同太陽高度單獨翻轉太陽視方位或其風向，測偏好方向線索的改變，不推沿風走。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "source_ids",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R32-S006",
+        "R32-S007"
+      ],
+      "editorial_seconds": [
+        50,
+        85
+      ]
+    },
+    {
+      "id": "R32006",
+      "canonical_id": "R32006",
+      "decision": "retain",
+      "reason": "運去時沒有步行輸入、單獨回程還可走；哪一階段限制視流可檢驗兩個里程訊息是否直接互通。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "source_ids",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R32-S008",
+        "R32-S009"
+      ],
+      "editorial_seconds": [
+        55,
+        90
+      ]
+    },
+    {
+      "id": "R32007",
+      "canonical_id": "R32007",
+      "decision": "retain",
+      "reason": "只有熟悉環境氣味才集中空測道的折返位置，加入異味後部分保留。這是學到的位置線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "source_ids",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R32-S010"
+      ],
+      "editorial_seconds": [
+        46,
+        85
+      ]
+    },
+    {
+      "id": "R32008",
+      "canonical_id": "R32008",
+      "decision": "retain",
+      "reason": "相同十公尺、相同巢下風側，採食階段的向量與搜尋中累積的向量使進巢比例不同，回程/搜尋狀態不能只用向量大小表示。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "source_ids",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R32-S011"
+      ],
+      "editorial_seconds": [
+        52,
+        90
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R32-S001",
+      "title": "Dung Beetles Use the Milky Way for Orientation",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "原作者PDF pp1–3野外不透明/透明帽與無帽結果、Fig1 A/B/C；天文館不同受試者投影條件和Fig2。",
+      "locator": "PDF頁1–3；頁1結果段的透明帽對照、Fig1野外可見／遮住天空的行跡，Fig2天象儀五種投影條件及離場時間。",
+      "cache": {
+        "file": ".cache/wave32-compass-stars.pdf",
+        "sha256": "ffd41cead4561c1e70f04f5f2c25ccdfcce7439b4be7fa5ac3c68ab61bbe675e",
+        "text_file": ".cache/wave32-compass-stars.txt",
+        "text_sha256": "8af9e821027393530ada16b49cd087440f7b858344d0cb27f31e26c56e9edde5"
+      },
+      "result": "與完整星空比，漫射銀河組未見顯著時間差，18亮星組較慢。圖1路徑為可見/遮住天空，透明帽控制取結果文字。",
+      "limitations": "野外有軌跡，投影實驗以離場時間為主。不能證明所有昆蟲對星空有相同辨識能力。"
+    },
+    {
+      "source_id": "R32-S002",
+      "title": "Light pollution forces a change in dung beetle orientation behavior",
+      "decision": "author_abstract_with_companion_team_report",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "作者學術典藏P004摘要。",
+      "locator": "作者典藏P004摘要，暗空與城市場地的行為實驗及環境攝影。",
+      "cache": {
+        "file": ".cache/wave32-compass-lightpub.html",
+        "sha256": "882f951e505ce4f596c40e2b16e555456592c0a0e9a820b14787ff4a21b80e08",
+        "text_file": ".cache/wave32-compass-lightpub.txt",
+        "text_sha256": "2d2713d63006fb648d5d0d828c58fb98bf804234da2877b2caa157eceb6ca6d3"
+      },
+      "result": "城市與暗夜條件、環境攝影與由天空轉地面亮光的群體行為。",
+      "limitations": "此載體沒有閱讀正式全文或完整方法；同一試驗的具體條件另由S003研究團隊說明核。"
+    },
+    {
+      "source_id": "R32-S003",
+      "title": "Artificial light disrupts dung beetles’ sense of direction",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "研究團隊Lund大學說明P002–011，尤其P007屋頂/鄉間與P011直接燈光可見/僅見光害天空。",
+      "locator": "P002–009及P011，約翰尼斯堡屋頂與林波波鄉間、能看見地面亮處及只能看見受光污染天空的條件。",
+      "cache": {
+        "file": ".cache/wave32-compass-lights.html",
+        "sha256": "8fdf7a1f7503fe9ac57dad6c72488126a54b85087ca50d54788ca1110ffd7a53",
+        "text_file": ".cache/wave32-compass-lights.txt",
+        "text_sha256": "08003881a77b9df67ee6cae3fadb79d700bdee1228f523ae22c0b690cb4b863f"
+      },
+      "result": "行進方位集中與維持方向可同時發生；無地面亮物而只看光害夜空時，報告描述定向表現消失。",
+      "limitations": "不是S002獨立重現，兩地同時存在其他環境差別；不採其他物種推測。"
+    },
+    {
+      "source_id": "R32-S004",
+      "title": "The Dung Beetle Dance: An Orientation Behaviour?",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "PDF pp2–5 Experiments 2、4、5、6和Fig1。特讀遮真太陽+鏡像及180度後行進方向的通道限制。",
+      "locator": "PDF頁2–5實驗2及5–6；Fig1e–g改變外界方向線索後的爬球旋轉。",
+      "cache": {
+        "file": ".cache/wave32-compass-dance.pdf",
+        "sha256": "756158e154692d1ad895fea67ee784e01caa069c7fc46d50b174e6b7a1a84c7f",
+        "text_file": ".cache/wave32-compass-dance.txt",
+        "text_sha256": "b0048e0fdac9fbd897644df96bea1931fa0a4dc27a3f5e9c8ebb665b4ce371d2"
+      },
+      "result": "鏡像改向後32中19隻登球轉動，已登球的19中15隻在通道掉頭；分母要分開。",
+      "limitations": "只能從通道兩個方向中續行，不能從掉頭直接推精確自由方位或單次導航動機。"
+    },
+    {
+      "source_id": "R32-S005",
+      "title": "Dung beetles use their dung ball as a mobile thermal refuge",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "Lund典藏作者稿主文p4與圖p5，Fig1A–D、腳套與球溫的作用，附加方法中的溫度與操作段。",
+      "locator": "典藏PDF頁4–5，Fig1A–D；頁7–8隔熱前足與冷熱球對照。",
+      "cache": {
+        "file": ".cache/wave32-compass-shade2.pdf",
+        "sha256": "e6daca6b149ff8491254d5894e7392ae55f2f02551f95d8e9f334ede6869df7f",
+        "text_file": ".cache/wave32-compass-shade2.txt",
+        "text_sha256": "217c4aeaab311978af66dae5357b5e9635d9246c3633316b70df82ecbcf47382"
+      },
+      "result": "足溫在球上降得快，胸溫曲線不同；腳套和冷球使單位路長內登球次數下降。",
+      "limitations": "表面溫度與行為實測；不能倒推每次登球、全部身體內溫、或主觀舒適感。"
+    },
+    {
+      "source_id": "R32-S006",
+      "title": "Dung beetles use wind compass when the sun is high",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "Lund大學研究團隊說明P002–003，風扇轉向及遮掩/鏡改太陽的比較。",
+      "locator": "P002–003風扇轉向、鏡中太陽視方位與不同太陽高度。",
+      "cache": {
+        "file": ".cache/wave32-compass-windlab.html",
+        "sha256": "e92aab02f46a26127099d7b22dd929e0ae2130ece25066a9a8b82005d73e6ca8",
+        "text_file": ".cache/wave32-compass-windlab.txt",
+        "text_sha256": "ff48a94ccd0ce3f2f34c089c924f557197b0479c93037f22ac229ac75925ea45"
+      },
+      "result": "太陽較低與高時分別改風/改太陽，操弄牽動的平均方位不同。",
+      "limitations": "此第一方說明用於試驗流程，不把門檻敘述推成每隻個體在固定時刻開關。"
+    },
+    {
+      "source_id": "R32-S007",
+      "title": "Multimodal cue integration in the dung beetle compass",
+      "decision": "author_abstract_with_companion_team_report",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "NCBI結構化記錄P002–003作者摘要。覆核另嘗試web.open正式PMC入口，實際只有驗證頁。",
+      "locator": "NCBI結構化書目及P002–003作者摘要，同研究與前筆配對。",
+      "cache": {
+        "file": ".cache/wave32-compass-wind3.xml",
+        "sha256": "7545a8602ec2693f6158ff44b424ac746525c369a479f7c44d80b41d0c8ee1d3",
+        "text_file": ".cache/wave32-compass-wind3.txt",
+        "text_sha256": "d3d4e0cb3955384bae1e2482264978713209b5df56d7299a04920895551e561e"
+      },
+      "result": "摘要支持日行蜣螂隨太陽高度改採導向線索。",
+      "limitations": "沒有重讀正式出版正文或神經數據，行為不證明具體腦區。與S006同一研究。"
+    },
+    {
+      "source_id": "R32-S008",
+      "title": "Optic flow odometry operates independently of stride integration in carried ants",
+      "decision": "author_abstract_with_companion_team_report",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "PubMed原刊摘要P003。",
+      "locator": "P003作者摘要，被搬運者利用視流及視覺里程未轉入步幅里程。",
+      "cache": {
+        "file": ".cache/wave32-compass-carrypub.html",
+        "sha256": "c99b3fd13f7935cb8805b04c7cc0876fe9c405d7702e685ce2c0408f5dbf4605",
+        "text_file": ".cache/wave32-compass-carrypub.txt",
+        "text_sha256": "4fb459bd3ed5f820fbaf98ccd1940e85166fed6c616d38bbcfa78c4ec5baad52"
+      },
+      "result": "被搬運者沒有步行資訊，仍有視流距離線索，該試驗不支持它直接轉往步幅表徵。",
+      "limitations": "不是逐步量到腦內里程計；期刊摘要與德文說明同篇配對。"
+    },
+    {
+      "source_id": "R32-S009",
+      "title": "Wüstenameisen: Auch im „Sahara-Shuttle“ bestens orientiert",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "烏爾姆大學團隊德文P002–003，搬運十公尺與分開後平行測試通道、兩階段限視對照。",
+      "locator": "德文P002–003，10公尺運送、平行測試通道，以及運送時或分開後限制視覺的比較。",
+      "cache": {
+        "file": ".cache/wave32-compass-carry.html",
+        "sha256": "9c54115fc59ebcb4d3b65957eb835f67fdb4b9edbe4cb4e72ac4b9b9771b89be",
+        "text_file": ".cache/wave32-compass-carry.txt",
+        "text_sha256": "26d643c1cd6d39e9b73f3080a76d78826da28e3e7aea5f871bd23e94429fd673"
+      },
+      "result": "被搬運時可見與否、以及回程才限視的比較補足距離線索解釋。",
+      "limitations": "研究的測試通道和原巢分開，不能把距離搜尋反應畫成找到實際原巢。"
+    },
+    {
+      "source_id": "R32-S010",
+      "title": "Smells like home: Desert ants, Cataglyphis fortis, use olfactory landmarks to pinpoint the nest",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "Europe PMC有效全文XML抽文P006–020，訓練孔、測試氣味、Fig2–4圖說及六折返分析。",
+      "locator": "開放全文XML P009–018，Fig3–4圖說與測試通道內的折返位置。",
+      "cache": {
+        "file": ".cache/wave32-compass-odor.xml",
+        "sha256": "4edf7f358b3fbdcdff6d6790d8f4340edc201eac99638ab75f3d5198908e7b01",
+        "text_file": ".cache/wave32-compass-odor.txt",
+        "text_sha256": "ea8b1026814f9277a0c6fef16c4fb9633b35ad4179d1e234c02282b81fafee2c"
+      },
+      "result": "訓練氣味、非訓練氣味及溶劑的折返集中度不同，吲哚混入另外三種時仍能部分辨識。",
+      "limitations": "不把環境氣味地標當作蟻自行布置的路徑費洛蒙，混合試驗僅吲哚訓練組。圖說有讀，未目讀XML嵌圖。"
+    },
+    {
+      "source_id": "R32-S011",
+      "title": "Context-dependent influence of path integration on nest plume following in desert ants",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核作者當日有效來源快取雜湊並讀指定內容，非本覆核者成功新HTTP。",
+      "reading_scope": "有效全文XML P009–029，圖1–3圖說，兩種向量的形成過程、自巢/異巢與等待、熱暴露對照、研究限制。",
+      "locator": "開放全文XML P010–025，Fig1–3圖說；P026起之Discussion與研究限制。",
+      "cache": {
+        "file": ".cache/wave32-compass-newplume.xml",
+        "sha256": "3b94c79d9b9eeeed8f40736a2b6fc2c029cd854106faaa65afee4be72bf1d420",
+        "text_file": ".cache/wave32-compass-newplume.txt",
+        "text_sha256": "e46980976fa515cfb99029980675c8d1e4f50869d09dd2c0bf06138ae4ff86a8"
+      },
+      "result": "非零覓食返程與搜尋衍生的向量同長卻對真巢氣流反應不同；放走完覓食向量的一組可再作基準。",
+      "limitations": "接近異巢入口不等於真的進入或確辨巢身分。本文非所有向量長度的閾值研究，未目讀XML嵌圖。"
+    }
+  ],
+  "source_identity_review": [
+    {
+      "source_id": "R32-S001",
+      "url": "https://web.mnstate.edu/wisenden/AnBeh13%20Paper%205%20Dacke%20et%20al%202013.pdf",
+      "result": "刊文、典藏、抽文只計同一原作。"
+    },
+    {
+      "source_id": "R32-S002",
+      "url": "https://portal.research.lu.se/en/publications/light-pollution-forces-a-change-in-dung-beetle-orientation-behavi/",
+      "result": "與S003同一2021光害研究。"
+    },
+    {
+      "source_id": "R32-S003",
+      "url": "https://www.lunduniversity.lu.se/article/artificial-light-disrupts-dung-beetles-sense-direction",
+      "result": "同S002的研究團隊公開說明。"
+    },
+    {
+      "source_id": "R32-S004",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0030211&type=printable",
+      "result": "刊文、典藏、抽文只計同一原作。"
+    },
+    {
+      "source_id": "R32-S005",
+      "url": "https://lucris.lub.lu.se/ws/portalfiles/portal/2307625/3132016.pdf",
+      "result": "刊文、典藏、抽文只計同一原作。"
+    },
+    {
+      "source_id": "R32-S006",
+      "url": "https://www.lunduniversity.lu.se/article/dung-beetles-use-wind-compass-when-sun-high",
+      "result": "與S007同一2019風/太陽研究。"
+    },
+    {
+      "source_id": "R32-S007",
+      "url": "https://doi.org/10.1073/pnas.1904308116",
+      "result": "與S006相同研究的作者摘要。"
+    },
+    {
+      "source_id": "R32-S008",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27609893/",
+      "result": "與S009同一2016搬運螞蟻研究。"
+    },
+    {
+      "source_id": "R32-S009",
+      "url": "https://www.uni-ulm.de/en/university-news/news-details/?cHash=d5524db91100ec96e30287af2b9e5566&tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=22742",
+      "result": "同S008的德文研究團隊說明。"
+    },
+    {
+      "source_id": "R32-S010",
+      "url": "https://doi.org/10.1186/1742-9994-6-5",
+      "result": "刊文、典藏、抽文只計同一原作。"
+    },
+    {
+      "source_id": "R32-S011",
+      "url": "https://doi.org/10.1016/j.isci.2026.116523",
+      "result": "刊文、典藏、抽文只計同一原作。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "source_id": "R32-S001",
+      "file": ".cache/wave32-compass-stars-p2.png",
+      "sha256": "8ba5b291be39ba7aef04be5ed1017a6ccb36ed2941bd5a0a362bc14f2d9335fa",
+      "scope": "Fig1露天空、遮天兩組行跡及帽子。"
+    },
+    {
+      "source_id": "R32-S001",
+      "file": ".cache/wave32-compass-stars-p3.png",
+      "sha256": "793ab838712e970529ed1c2b69f264a523b6d63ea4d2f59a58ba1e7a215d1a78",
+      "scope": "Fig2野外與天文館分組，18亮星及銀河帶的離場時間。"
+    },
+    {
+      "source_id": "R32-S004",
+      "file": ".cache/wave32-compass-dance-p3.png",
+      "sha256": "cbac0c953c64a6f2b4c3cb3570f987cbc197de9c0f321249318c2a33e0be3ce3",
+      "scope": "Fig1a–g障礙、通道、鏡射下登球比例；下方實驗方法。"
+    },
+    {
+      "source_id": "R32-S005",
+      "file": ".cache/wave32-compass-shade2-p5.png",
+      "sha256": "55263df28cedb2e0b9be1259f926b13a10f0b31ec1b69603d52a3223f441fe4a",
+      "scope": "Fig1溫度時間曲線、前足隔熱與冷熱球的登球頻率。"
+    }
+  ],
+  "source_reading_summary": {
+    "candidate_sources_read": 11,
+    "not_added_only_sources": 0,
+    "fresh_successful_http_by_reviewer": 0,
+    "valid_author_caches_independently_read": 11,
+    "original_article_bodies": 5,
+    "author_abstract_only": 3,
+    "team_reports": 3,
+    "underlying_studies": 8,
+    "figures_or_pages_visually_read": 4
+  },
+  "related_source_review": [],
+  "source_fetch_limits": "有效原研究正文3份PDF、2份XML；其餘是三組配對的摘要和大學團隊說明。額外嘗試直接web.open風向研究的PMC入口只得驗證頁，未作正文。",
+  "author_near_pair_review": [
+    {
+      "a": "R32001",
+      "b": "N284",
+      "decision": "distinct",
+      "reason": "銀河形狀的天文原因不同於用銀河投影測甲蟲能否維持自選方位。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32001",
+      "b": "Z7007",
+      "decision": "distinct",
+      "reason": "倒拖負載的螞蟻重新對準熟悉景象，與夜行蜣螂廣域銀河帶是否足夠作羅盤不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32002",
+      "b": "R32001",
+      "decision": "distinct",
+      "reason": "城市效應要分個體仍可定向與整群集中在一個地標，不能用銀河帶的充分性單獨回答。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32003",
+      "b": "Z7007",
+      "decision": "distinct",
+      "reason": "倒退行蟻放下食物取得景象；蜣螂是在外部方向被切換後，檢驗何時爬球轉身。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32003",
+      "b": "R32001",
+      "decision": "distinct",
+      "reason": "改太陽或通道觸發定向行為，不是投星圖檢驗足夠的天空要素。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32004",
+      "b": "R32003",
+      "decision": "distinct",
+      "reason": "足溫與球溫可改登球行為，與改視方位引發的行為不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32004",
+      "b": "B2296",
+      "decision": "distinct",
+      "reason": "海獺理毛維持隔熱層，蜣螂以腳套/冷球控制測離開熱地表的作用。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32005",
+      "b": "S10009",
+      "decision": "distinct",
+      "reason": "蜂的觸角姿態反饋受風與視流，蜣螂則測太陽高度是否改採維持航向的參照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32005",
+      "b": "R32003",
+      "decision": "distinct",
+      "reason": "一題問是否觸發重新定向，另一題讓兩種線索衝突、測何種參照主導。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32006",
+      "b": "B2329",
+      "decision": "distinct",
+      "reason": "原步幅題測主動走時的誤估；乘客沒有步伐且測視覺里程是否可以換用。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32006",
+      "b": "Z7011",
+      "decision": "distinct",
+      "reason": "蜂的搖擺舞報距本身不含搬運/測試階段分開限制視流與不能跨路徑轉移。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32007",
+      "b": "B2005",
+      "decision": "distinct",
+      "reason": "社會性路徑標記不同於先前巢旁的普通環境氣味在另一條路重現。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32007",
+      "b": "B2245",
+      "decision": "distinct",
+      "reason": "海鳥的大範圍氣味差異沒有隔離熟悉單一氣味與混合背景下的學習辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32008",
+      "b": "R32007",
+      "decision": "distinct",
+      "reason": "巢門附近天然氣流、覓食向量的使用條件，不等於在巢旁學過的某個特定氣味。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R32008",
+      "b": "B2329",
+      "decision": "distinct",
+      "reason": "等長向量的來歷及重新定位如何改變進巢，舊步距實驗沒操弄這項條件。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R32001",
+      "b": "N072",
+      "decision": "distinct",
+      "reason": "恆星週期遮光檢行星，不是昆蟲用廣域亮帶保持航向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.799836
+    },
+    {
+      "a": "R32001",
+      "b": "X13001",
+      "decision": "distinct",
+      "reason": "背景食雙星稀釋訊號與星空投影排列控制不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.795776
+    },
+    {
+      "a": "R32001",
+      "b": "N062",
+      "decision": "distinct",
+      "reason": "恆星餘熱輻射無昆蟲方向反應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.77382
+    },
+    {
+      "a": "R32001",
+      "b": "X2029",
+      "decision": "distinct",
+      "reason": "造父週期定距不檢驗夜行動物靠哪一區天光。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.757273
+    },
+    {
+      "a": "R32001",
+      "b": "X13004",
+      "decision": "distinct",
+      "reason": "行星軌道速度影響凌日時長，未改動可用星空線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.736396
+    },
+    {
+      "a": "R32002",
+      "b": "R32003",
+      "decision": "distinct",
+      "reason": "改鏡像太陽引發轉向，不是多個個體集中跟地面亮物。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.701642
+    },
+    {
+      "a": "R32002",
+      "b": "Z7001",
+      "decision": "distinct",
+      "reason": "近燈飛行因背側光反應而打轉；在地上推球向地標直走的機制及群體後果不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.700995
+    },
+    {
+      "a": "R32002",
+      "b": "R32005",
+      "decision": "distinct",
+      "reason": "遇地面人造光後群體方位集中，與太陽高度改變風權重不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.658946
+    },
+    {
+      "a": "R32002",
+      "b": "B2244",
+      "decision": "distinct",
+      "reason": "鳥類星空旋轉中心作南北參照，沒有改變地面亮物可見性。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.612124
+    },
+    {
+      "a": "R32002",
+      "b": "K6017",
+      "decision": "distinct",
+      "reason": "冰晶反射形成光柱是物理光源外觀，非受光害昆蟲的群體行進。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.60787
+    },
+    {
+      "a": "R32003",
+      "b": "Z7001",
+      "decision": "distinct",
+      "reason": "背側趨亮控制飛行體態造成困繞，未操弄地面推球甲蟲是否上球重新定向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.835498
+    },
+    {
+      "a": "R32003",
+      "b": "R32005",
+      "decision": "distinct",
+      "reason": "這題檢驗驟改天空後的登球/掉頭；風向題檢驗過境高度及兩參照相衝。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.805968
+    },
+    {
+      "a": "R32003",
+      "b": "R32002",
+      "decision": "distinct",
+      "reason": "單個動物因方位突變而重定向，與城市指標使多隻趨同不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.701642
+    },
+    {
+      "a": "R32003",
+      "b": "R32004",
+      "decision": "distinct",
+      "reason": "相同登球表面動作但加熱與方向擾動的可見輸出不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.686395
+    },
+    {
+      "a": "R32003",
+      "b": "B17002",
+      "decision": "distinct",
+      "reason": "口器與視覺運動追蹤控制和陸地轉向後的登球不是同一回饋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.684435
+    },
+    {
+      "a": "R32004",
+      "b": "R32003",
+      "decision": "distinct",
+      "reason": "兩種實驗用不同操作解釋同一行為，熱影像/腳套未包含改向控制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.686395
+    },
+    {
+      "a": "R32004",
+      "b": "B2285",
+      "decision": "distinct",
+      "reason": "蜂群靠產熱保溫，此例靠離地與球作散熱處。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.661763
+    },
+    {
+      "a": "R32004",
+      "b": "R32005",
+      "decision": "distinct",
+      "reason": "風/太陽線索衝突不測腿的熱環境。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.652528
+    },
+    {
+      "a": "R32004",
+      "b": "B2173",
+      "decision": "distinct",
+      "reason": "羽絨保留空氣與熱沙上腳套和冷球處理不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.64449
+    },
+    {
+      "a": "R32004",
+      "b": "B2311",
+      "decision": "distinct",
+      "reason": "甲蟲噴液在體內腔室控制熱與化學反應，不是踩熱砂後散熱。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.621482
+    },
+    {
+      "a": "R32005",
+      "b": "R32003",
+      "decision": "distinct",
+      "reason": "外部方位突然改變可觸發校準，與何種高度採風或太陽參照有別。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.805968
+    },
+    {
+      "a": "R32005",
+      "b": "Z7001",
+      "decision": "distinct",
+      "reason": "近點光源誘發的傾轉，與故意將風及太陽線索相衝不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.765853
+    },
+    {
+      "a": "R32005",
+      "b": "B2243",
+      "decision": "distinct",
+      "reason": "鳥類日行時鐘補償太陽移動，這裡以高度測風/日兩線索選擇。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.704777
+    },
+    {
+      "a": "R32005",
+      "b": "LEG-S02",
+      "decision": "distinct",
+      "reason": "天空散射物理不是甲蟲依太陽投影或風決定方位。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.675495
+    },
+    {
+      "a": "R32005",
+      "b": "N279",
+      "decision": "distinct",
+      "reason": "高雲仍受照為幾何遮掩，無動物對風的行為比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.674187
+    },
+    {
+      "a": "R32006",
+      "b": "B2329",
+      "decision": "distinct",
+      "reason": "被動載運、兩階段限視檢驗視流和步幅可否互用，不是單改步幅。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.822377
+    },
+    {
+      "a": "R32006",
+      "b": "R32008",
+      "decision": "distinct",
+      "reason": "有無步行的距離量測與返程或搜尋階段是否願隨巢氣流不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.706538
+    },
+    {
+      "a": "R32006",
+      "b": "A14005",
+      "decision": "distinct",
+      "reason": "串列同伴觸碰是在調整速度，不是乘客在無腳步時記距離。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.687886
+    },
+    {
+      "a": "R32006",
+      "b": "Z7007",
+      "decision": "distinct",
+      "reason": "倒拖食物時看地景更新方位不同於視流提供距離及跨模態轉移。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.686705
+    },
+    {
+      "a": "R32006",
+      "b": "A12002",
+      "decision": "distinct",
+      "reason": "共同搬運的對齊/動力耦合不是被搬運乘客的估距。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.669679
+    },
+    {
+      "a": "R32007",
+      "b": "R32008",
+      "decision": "distinct",
+      "reason": "巢口天然氣流是否獲採用受向量階段制約，本題學成環境氣味位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.846808
+    },
+    {
+      "a": "R32007",
+      "b": "B2005",
+      "decision": "distinct",
+      "reason": "路徑費洛蒙傳食源位置給同伴，沒有在新通道測普通氣味記憶。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.835505
+    },
+    {
+      "a": "R32007",
+      "b": "B2280",
+      "decision": "distinct",
+      "reason": "河狸分泌物表達領地持有，不是學來的地點氣味。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.786367
+    },
+    {
+      "a": "R32007",
+      "b": "Z7016",
+      "decision": "distinct",
+      "reason": "果蠅聞味而逆風靠觸角定風向；此處熟悉氣味可將搜尋集中在測試道一點。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.703856
+    },
+    {
+      "a": "R32007",
+      "b": "B2245",
+      "decision": "distinct",
+      "reason": "海鳥用空間氣味差一般原理，未用熟悉/陌生/混合氣味折返位置控制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.640757
+    },
+    {
+      "a": "R32008",
+      "b": "R32007",
+      "decision": "distinct",
+      "reason": "學來的局部氣味不等於來源是巢逸出物且是否跟隨受當下任務狀態調節。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.846808
+    },
+    {
+      "a": "R32008",
+      "b": "B2005",
+      "decision": "distinct",
+      "reason": "領路費洛蒙與巢氣流和覓食/搜尋向量的交互不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.813404
+    },
+    {
+      "a": "R32008",
+      "b": "Z7007",
+      "decision": "distinct",
+      "reason": "先朝前看再保持倒行航向，與等長不同來歷向量決定是否進巢不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.767334
+    },
+    {
+      "a": "R32008",
+      "b": "A12001",
+      "decision": "distinct",
+      "reason": "群體搬運遇障礙左右擺來自力的競爭；此處測單隻蟻與巢氣流。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.753244
+    },
+    {
+      "a": "R32008",
+      "b": "Z7015",
+      "decision": "distinct",
+      "reason": "新加入蟻的力引導群移動，與個體是否採用巢的化學線索不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.753073
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R32001",
+        "b": "N284",
+        "reason": "銀河形狀的天文原因不同於用銀河投影測甲蟲能否維持自選方位。"
+      },
+      {
+        "a": "R32001",
+        "b": "Z7007",
+        "reason": "倒拖負載的螞蟻重新對準熟悉景象，與夜行蜣螂廣域銀河帶是否足夠作羅盤不同。"
+      },
+      {
+        "a": "R32002",
+        "b": "R32001",
+        "reason": "城市效應要分個體仍可定向與整群集中在一個地標，不能用銀河帶的充分性單獨回答。"
+      },
+      {
+        "a": "R32003",
+        "b": "Z7007",
+        "reason": "倒退行蟻放下食物取得景象；蜣螂是在外部方向被切換後，檢驗何時爬球轉身。"
+      },
+      {
+        "a": "R32003",
+        "b": "R32001",
+        "reason": "改太陽或通道觸發定向行為，不是投星圖檢驗足夠的天空要素。"
+      },
+      {
+        "a": "R32004",
+        "b": "R32003",
+        "reason": "足溫與球溫可改登球行為，與改視方位引發的行為不同。"
+      },
+      {
+        "a": "R32004",
+        "b": "B2296",
+        "reason": "海獺理毛維持隔熱層，蜣螂以腳套/冷球控制測離開熱地表的作用。"
+      },
+      {
+        "a": "R32005",
+        "b": "S10009",
+        "reason": "蜂的觸角姿態反饋受風與視流，蜣螂則測太陽高度是否改採維持航向的參照。"
+      },
+      {
+        "a": "R32005",
+        "b": "R32003",
+        "reason": "一題問是否觸發重新定向，另一題讓兩種線索衝突、測何種參照主導。"
+      },
+      {
+        "a": "R32006",
+        "b": "B2329",
+        "reason": "原步幅題測主動走時的誤估；乘客沒有步伐且測視覺里程是否可以換用。"
+      },
+      {
+        "a": "R32006",
+        "b": "Z7011",
+        "reason": "蜂的搖擺舞報距本身不含搬運/測試階段分開限制視流與不能跨路徑轉移。"
+      },
+      {
+        "a": "R32007",
+        "b": "B2005",
+        "reason": "社會性路徑標記不同於先前巢旁的普通環境氣味在另一條路重現。"
+      },
+      {
+        "a": "R32007",
+        "b": "B2245",
+        "reason": "海鳥的大範圍氣味差異沒有隔離熟悉單一氣味與混合背景下的學習辨認。"
+      },
+      {
+        "a": "R32008",
+        "b": "R32007",
+        "reason": "巢門附近天然氣流、覓食向量的使用條件，不等於在巢旁學過的某個特定氣味。"
+      },
+      {
+        "a": "R32008",
+        "b": "B2329",
+        "reason": "等長向量的來歷及重新定位如何改變進巢，舊步距實驗沒操弄這項條件。"
+      },
+      {
+        "a": "R32001",
+        "b": "N072",
+        "reason": "恆星週期遮光檢行星，不是昆蟲用廣域亮帶保持航向。"
+      },
+      {
+        "a": "R32001",
+        "b": "X13001",
+        "reason": "背景食雙星稀釋訊號與星空投影排列控制不同。"
+      },
+      {
+        "a": "R32001",
+        "b": "N062",
+        "reason": "恆星餘熱輻射無昆蟲方向反應。"
+      },
+      {
+        "a": "R32001",
+        "b": "X2029",
+        "reason": "造父週期定距不檢驗夜行動物靠哪一區天光。"
+      },
+      {
+        "a": "R32001",
+        "b": "X13004",
+        "reason": "行星軌道速度影響凌日時長，未改動可用星空線索。"
+      },
+      {
+        "a": "R32002",
+        "b": "R32003",
+        "reason": "改鏡像太陽引發轉向，不是多個個體集中跟地面亮物。"
+      },
+      {
+        "a": "R32002",
+        "b": "Z7001",
+        "reason": "近燈飛行因背側光反應而打轉；在地上推球向地標直走的機制及群體後果不同。"
+      },
+      {
+        "a": "R32002",
+        "b": "R32005",
+        "reason": "遇地面人造光後群體方位集中，與太陽高度改變風權重不同。"
+      },
+      {
+        "a": "R32002",
+        "b": "B2244",
+        "reason": "鳥類星空旋轉中心作南北參照，沒有改變地面亮物可見性。"
+      },
+      {
+        "a": "R32002",
+        "b": "K6017",
+        "reason": "冰晶反射形成光柱是物理光源外觀，非受光害昆蟲的群體行進。"
+      },
+      {
+        "a": "R32003",
+        "b": "Z7001",
+        "reason": "背側趨亮控制飛行體態造成困繞，未操弄地面推球甲蟲是否上球重新定向。"
+      },
+      {
+        "a": "R32003",
+        "b": "B17002",
+        "reason": "口器與視覺運動追蹤控制和陸地轉向後的登球不是同一回饋。"
+      },
+      {
+        "a": "R32004",
+        "b": "B2285",
+        "reason": "蜂群靠產熱保溫，此例靠離地與球作散熱處。"
+      },
+      {
+        "a": "R32004",
+        "b": "R32005",
+        "reason": "風/太陽線索衝突不測腿的熱環境。"
+      },
+      {
+        "a": "R32004",
+        "b": "B2173",
+        "reason": "羽絨保留空氣與熱沙上腳套和冷球處理不同。"
+      },
+      {
+        "a": "R32004",
+        "b": "B2311",
+        "reason": "甲蟲噴液在體內腔室控制熱與化學反應，不是踩熱砂後散熱。"
+      },
+      {
+        "a": "R32005",
+        "b": "Z7001",
+        "reason": "近點光源誘發的傾轉，與故意將風及太陽線索相衝不同。"
+      },
+      {
+        "a": "R32005",
+        "b": "B2243",
+        "reason": "鳥類日行時鐘補償太陽移動，這裡以高度測風/日兩線索選擇。"
+      },
+      {
+        "a": "R32005",
+        "b": "LEG-S02",
+        "reason": "天空散射物理不是甲蟲依太陽投影或風決定方位。"
+      },
+      {
+        "a": "R32005",
+        "b": "N279",
+        "reason": "高雲仍受照為幾何遮掩，無動物對風的行為比較。"
+      },
+      {
+        "a": "R32006",
+        "b": "R32008",
+        "reason": "有無步行的距離量測與返程或搜尋階段是否願隨巢氣流不同。"
+      },
+      {
+        "a": "R32006",
+        "b": "A14005",
+        "reason": "串列同伴觸碰是在調整速度，不是乘客在無腳步時記距離。"
+      },
+      {
+        "a": "R32006",
+        "b": "Z7007",
+        "reason": "倒拖食物時看地景更新方位不同於視流提供距離及跨模態轉移。"
+      },
+      {
+        "a": "R32006",
+        "b": "A12002",
+        "reason": "共同搬運的對齊/動力耦合不是被搬運乘客的估距。"
+      },
+      {
+        "a": "R32007",
+        "b": "B2280",
+        "reason": "河狸分泌物表達領地持有，不是學來的地點氣味。"
+      },
+      {
+        "a": "R32007",
+        "b": "Z7016",
+        "reason": "果蠅聞味而逆風靠觸角定風向；此處熟悉氣味可將搜尋集中在測試道一點。"
+      },
+      {
+        "a": "R32008",
+        "b": "B2005",
+        "reason": "領路費洛蒙與巢氣流和覓食/搜尋向量的交互不同。"
+      },
+      {
+        "a": "R32008",
+        "b": "Z7007",
+        "reason": "先朝前看再保持倒行航向，與等長不同來歷向量決定是否進巢不同。"
+      },
+      {
+        "a": "R32008",
+        "b": "A12001",
+        "reason": "群體搬運遇障礙左右擺來自力的競爭；此處測單隻蟻與巢氣流。"
+      },
+      {
+        "a": "R32008",
+        "b": "Z7015",
+        "reason": "新加入蟻的力引導群移動，與個體是否採用巢的化學線索不同。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R32-NA001",
+      "decision": "agree_not_added",
+      "reason": "只測離開中心及自選方位，無歸巢目的地。",
+      "existing_ids": [
+        "R32001"
+      ]
+    },
+    {
+      "id": "R32-NA002",
+      "decision": "agree_not_added",
+      "reason": "星系盤光帶幾何舊核已有。",
+      "existing_ids": [
+        "N284"
+      ]
+    },
+    {
+      "id": "R32-NA003",
+      "decision": "agree_not_added",
+      "reason": "沒隔離每盞燈及光譜的因果。",
+      "existing_ids": [
+        "R32002"
+      ]
+    },
+    {
+      "id": "R32-NA004",
+      "decision": "agree_not_added",
+      "reason": "只投幾顆最亮星表現較差，不能指名一顆領航星。",
+      "existing_ids": [
+        "R32001"
+      ]
+    },
+    {
+      "id": "R32-NA005",
+      "decision": "agree_not_added",
+      "reason": "觸發方式是同題的對照，不按每個障礙分拆。",
+      "existing_ids": [
+        "R32003"
+      ]
+    },
+    {
+      "id": "R32-NA006",
+      "decision": "agree_not_added",
+      "reason": "身體轉動不能讀出星座概念。",
+      "existing_ids": [
+        "R32003"
+      ]
+    },
+    {
+      "id": "R32-NA007",
+      "decision": "agree_not_added",
+      "reason": "胸部與前足變化不同，不支持永久冷卻。",
+      "existing_ids": [
+        "R32004"
+      ]
+    },
+    {
+      "id": "R32-NA008",
+      "decision": "agree_not_added",
+      "reason": "高低太陽操弄不等於只調整亮度。",
+      "existing_ids": [
+        "R32005"
+      ]
+    },
+    {
+      "id": "R32-NA009",
+      "decision": "agree_not_added",
+      "reason": "這些蜣螂要離開糞堆，不是順風回巢。",
+      "existing_ids": [
+        "R32005"
+      ]
+    },
+    {
+      "id": "R32-NA010",
+      "decision": "agree_not_added",
+      "reason": "步幅改變的距離誤估已收。",
+      "existing_ids": [
+        "B2329"
+      ]
+    },
+    {
+      "id": "R32-NA011",
+      "decision": "agree_not_added",
+      "reason": "蜂報距沒有乘客、兩階段限視和兩里程資訊是否能轉用。",
+      "existing_ids": [
+        "Z7011"
+      ]
+    },
+    {
+      "id": "R32-NA012",
+      "decision": "agree_not_added",
+      "reason": "四個訓練味及混合條件屬同核。",
+      "existing_ids": [
+        "R32007"
+      ]
+    },
+    {
+      "id": "R32-NA013",
+      "decision": "agree_not_added",
+      "reason": "環境氣味、巢氣流、同伴路徑費洛蒙須分開。",
+      "existing_ids": [
+        "B2005"
+      ]
+    },
+    {
+      "id": "R32-NA014",
+      "decision": "agree_not_added",
+      "reason": "接近異巢不等於以氣味精確識別巢身分。",
+      "existing_ids": [
+        "R32008"
+      ]
+    },
+    {
+      "id": "R32-NA015",
+      "decision": "agree_not_added",
+      "reason": "十公尺不是普適切換閾值。",
+      "existing_ids": [
+        "R32008"
+      ]
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W32R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 94,
+      "chapter_seconds": [
+        45,
+        49
+      ],
+      "core_totals": {
+        "R32001": 45,
+        "R32002": 49
+      },
+      "core_caps": {
+        "R32001": 90,
+        "R32002": 80
+      },
+      "maximum_beat_seconds": 29,
+      "drop_if_read": "若沒畫清楚單隻軌跡和群體方位是不同量，保留天文館一段，城市另講；不加其他夜行動物軼事。",
+      "editorial_result": "單個能保持方向、群體是否分散，是這支片的兩個不同輸出；只見光害天空或能見地面亮物提供關鍵對比。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W32R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 82,
+      "chapter_seconds": [
+        35,
+        47
+      ],
+      "core_totals": {
+        "R32003": 35,
+        "R32004": 47
+      },
+      "core_caps": {
+        "R32003": 85,
+        "R32004": 90
+      },
+      "maximum_beat_seconds": 25,
+      "drop_if_read": "保留一項方向對照與一項溫度對照即可；不要製造同一趟推球同時經歷兩場研究的情節。",
+      "editorial_result": "固定方向操弄及腿溫處理分場。觀察轉圈和掉頭、表面溫度與爬球頻率，不以一動作判唯一動機。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W32R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 59,
+      "chapter_seconds": [
+        36,
+        23
+      ],
+      "core_totals": {
+        "R32005": 59
+      },
+      "core_caps": {
+        "R32005": 85
+      },
+      "maximum_beat_seconds": 23,
+      "drop_if_read": "畫不清風向與推球方向的夾角，就不做順風動畫。揭曉兩種高度的比較後即收。",
+      "editorial_result": "只在兩種高度各比較受風或太陽轉向影響的程度。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W32R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 63,
+      "chapter_seconds": [
+        39,
+        24
+      ],
+      "core_totals": {
+        "R32006": 63
+      },
+      "core_caps": {
+        "R32006": 90
+      },
+      "maximum_beat_seconds": 24,
+      "drop_if_read": "只需說明被搬運及回程兩次比較，不重講舊題的步幅實驗，也不延伸為人類閉眼走路。",
+      "editorial_result": "去程/回程分清何時看不到視流；後者有步行能力也不能直接轉用去程視覺里程。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W32R-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 95,
+      "chapter_seconds": [
+        43,
+        52
+      ],
+      "core_totals": {
+        "R32007": 43,
+        "R32008": 52
+      },
+      "core_caps": {
+        "R32007": 85,
+        "R32008": 90
+      },
+      "maximum_beat_seconds": 29,
+      "drop_if_read": "如試讀後仍分不出巢旁學習氣味與巢逸出的氣流，分成兩短段；別用同一條費洛蒙線串成故事。",
+      "editorial_result": "訓練味移到另一測試道是地標，後段真巢下風處才比較兩組內部向量。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave32-compass.json",
+      "sha256": "d78c33e687891a4530204f267f6519936abcea51da5e0b493ce9c73f0ff159cc"
+    },
+    {
+      "file": "reviews/wave32-compass-author.json",
+      "sha256": "81e1326d6afbcccafa897fb1df806ae45bf8130c69f7a0fed0ac0f0b72e6644b"
+    },
+    {
+      "file": "reviews/wave32-compass-themes.json",
+      "sha256": "bfdc9a8afa371c73a0d4e43afdb0e2aff1255cfaf9778468f48d104fc904a060"
+    }
+  ],
+  "corrections": [
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "透明帽控制與Fig1遮天行跡分開，S003補原團隊P011可見地面亮物/只見光害天空。"
+    },
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "R32007視覺明確換到無巢口的測試通道；T04第二章清楚標示去程可見、回程限制視流且可邁步。"
+    },
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "T01 99→94與T02 90→82，共剪13秒。三案維持59/63/95。"
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "829aceb88d51ac94f61e24badcd4b09e7d3f4f86820053a44faad62737462902",
+    "neighbours": {
+      "file": ".cache/wave32-seafloor-before-wave32-compass-neighbours.json",
+      "sha256": "f16d061a485c8fb5bd5b368025724f249717bb808f6b1b0aac537fc08fe0f584"
+    },
+    "candidate_rows": 8,
+    "directed_pairs": 40
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "521076a796fb564314505ad49be085f6e1b588efcbf8f60b6e5c2b7528fff0ee",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "521076a796fb564314505ad49be085f6e1b588efcbf8f60b6e5c2b7528fff0ee"
+    },
+    "neighbours": {
+      "file": ".cache/wave32-compass-neighbours.json",
+      "sha256": "856a94f122ceeea96315e2b3f38dab22ef6d4c03ed103b4a2789d1ca0ed5f13a"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave32-draft.json",
+      "sha256": "9bce5c76bddccc2bbe937630b1242a39977947aab2d2061b307334e09a1de5ec"
+    },
+    "candidate_rows_checked": 8,
+    "directed_pairs_checked": 40,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "direct_comparison_against_common_initial": true,
+    "changed_rows": [],
+    "result": "按當期完整問題/答案/範圍覆核全部40對；每章及每核心預算按修版重算。"
+  },
+  "remaining_blockers": [],
+  "limits": "選題、證據可用範圍與未試讀的紙上節拍；未重現動物實驗、製作畫面或核准旁白。"
+}

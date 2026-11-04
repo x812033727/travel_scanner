@@ -1,0 +1,408 @@
+{
+  "tested_on": "2026-11-02T03:36:30.960Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3379,
+    "canonical_questions": 3239,
+    "eligible_candidates": 3069,
+    "selected_candidates": 3010,
+    "alias_records": 140,
+    "historical_records": 313,
+    "source_urls": 4341,
+    "current_research_source_urls": 1382,
+    "selected_source_urls": 2564,
+    "new_suggestions_not_added": 1005,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 226,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-2997",
+    "carried": 2997,
+    "added": 13,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "867a425f4af4e1c19b51c17a1b150ff256daa6d8c7a7e613770290fde874b7c5",
+    "writes": 6618,
+    "selected": 3010
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "867a425f4af4e1c19b51c17a1b150ff256daa6d8c7a7e613770290fde874b7c5",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4436,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 5029.737500000003,
+    "index_ms": 3644.553899999999,
+    "unchanged_index_ms": 487.462400000004,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 12,
+        "milliseconds": 19.032600000005914
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 3.112600000000384
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 5.735000000000582
+      }
+    ],
+    "rss_bytes": 410947584,
+    "sqlite_bytes": 49684480
+  },
+  "dedup_audit": {
+    "selection": "Every final wave21 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "db3c2209e84f44cc79fa32ed1f6459200512a9eea3f24ca941dff4dd2b98c534",
+    "records": 3379,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.27
+  },
+  "hashes": {
+    "pool.json": "db3c2209e84f44cc79fa32ed1f6459200512a9eea3f24ca941dff4dd2b98c534",
+    "themes.json": "01378a8cabed5c08bbc8ae23cb93681c1ed70a42504c38ee72efe9a3f961296e",
+    "manifest.json": "b94880bef6f191ec131524e41b0a743138154652d4476c7e765e79b77d088dba",
+    "index.html": "e1f3fea1fbbd949aff3be8a38bb949079f5165ae09e09474ba08de92b4a9b175",
+    "batches/wave21-everyday-physics.json": "d2553972eb1e59c8a006096adf68e5f701b55c6e0bdf387b6db3fa29fad5537f",
+    "batches/wave21-perception.json": "483db36c371abf2268c1c74c2a525f613b2c9fc72de8d579c377cd80fb131b07",
+    "batches/wave21-space.json": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3366,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 2997,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 215,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4326,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/1/1261/files/2020/09/Patil-et-al.-2020-Topological-mechanics-of-knots-and-tangles.pdf",
+        "source_id": "SRC-b841f99e52d37664",
+        "candidate_ids": [
+          "P21001"
+        ],
+        "theme_ids": [
+          "G216"
+        ]
+      },
+      {
+        "url": "https://des.physics.ucsd.edu/DSmithKnotting.pdf",
+        "source_id": "SRC-bfa947ec78832a38",
+        "candidate_ids": [
+          "P21002"
+        ],
+        "theme_ids": [
+          "G217"
+        ]
+      },
+      {
+        "url": "https://yoelforterre.wordpress.com/wp-content/uploads/2016/09/prlanki.pdf",
+        "source_id": "SRC-9c62fb11044fe2fd",
+        "candidate_ids": [
+          "P21003"
+        ],
+        "theme_ids": [
+          "G218"
+        ]
+      },
+      {
+        "url": "https://physics.dtu.dk/-/media/institutter/fysik/research/fluids/fluid/english/research/unsteady_aerodynamics/2005_andersen_pesavento_wang_1.pdf",
+        "source_id": "SRC-11bdc371ba0ff51a",
+        "candidate_ids": [
+          "P21004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D4983A693B836A364D19C95B4D5FFC3B/S0022112022000891a.pdf/centre-of-mass-location-flight-modes-stability-and-dynamic-modelling-of-gliders.pdf",
+        "source_id": "SRC-521cc88d56eb3090",
+        "candidate_ids": [
+          "P21005"
+        ],
+        "theme_ids": [
+          "G219"
+        ]
+      },
+      {
+        "url": "https://eagleman.com/papers/StetsonetalNeuron2006.pdf",
+        "source_id": "SRC-99e926cfdb259b0f",
+        "candidate_ids": [
+          "A21001"
+        ],
+        "theme_ids": [
+          "G220"
+        ]
+      },
+      {
+        "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009709",
+        "source_id": "SRC-ee5be9c86c475971",
+        "candidate_ids": [
+          "A21002"
+        ],
+        "theme_ids": [
+          "G221"
+        ]
+      },
+      {
+        "url": "https://www.bu.edu/cas-promotion/files/2012/11/PolettiRucci_JOV10.pdf",
+        "source_id": "SRC-cae696f75997e0f7",
+        "candidate_ids": [
+          "A21003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://eagleman.com/papers/EaglemanSejnowskiScience2000.pdf",
+        "source_id": "SRC-2faf530d31aec744",
+        "candidate_ids": [
+          "A21004"
+        ],
+        "theme_ids": [
+          "G222"
+        ]
+      },
+      {
+        "url": "https://eagleman.com/papers/EagleSejScience2.pdf",
+        "source_id": "SRC-7908893323669f99",
+        "candidate_ids": [
+          "A21004"
+        ],
+        "theme_ids": [
+          "G222"
+        ]
+      },
+      {
+        "url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+        "source_id": "SRC-d14da04ad73f9b77",
+        "candidate_ids": [
+          "R21001"
+        ],
+        "theme_ids": [
+          "G223"
+        ]
+      },
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf",
+        "source_id": "SRC-3b9ce4f360afbdca",
+        "candidate_ids": [
+          "R21002"
+        ],
+        "theme_ids": [
+          "G224"
+        ]
+      },
+      {
+        "url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf",
+        "source_id": "SRC-54d432f729dd5623",
+        "candidate_ids": [
+          "R21003"
+        ],
+        "theme_ids": [
+          "G225"
+        ]
+      },
+      {
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview",
+        "source_id": "SRC-374e0d16a68e8d73",
+        "candidate_ids": [
+          "R21004"
+        ],
+        "theme_ids": [
+          "G226"
+        ]
+      },
+      {
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder",
+        "source_id": "SRC-be47484a0a3febab",
+        "candidate_ids": [
+          "R21004"
+        ],
+        "theme_ids": [
+          "G226"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/1/1261/files/2020/09/Patil-et-al.-2020-Topological-mechanics-of-knots-and-tangles.pdf",
+    "core": "P21001",
+    "theme": "G216",
+    "theme_ids": [
+      "G216"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 183012.276,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "41d14cadfd10fad6f39202841ad6138ba3b6beaff8335368c68535cc0106ef11"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "351c517026d5e6388daf47787af597a12fff9889deb479cf76009cd132cb6f5c"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "e2d8fd8005e668b741e9047f5524049399587cd1095df4567c74f941cc064622",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "46f8d4d87a25de37c52fead1ee636c74bd2bcd23cd8699cbb12f9faa4eefdb7b"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "43a4dc5d4d9c1c0078caf26b5fdb2f550ce034c4448b8c210a7316a675600cd1",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 333,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 22,
+    "unique_blobs_checked": 356,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3372,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G216",
+        "core": "P21001",
+        "seconds": 110,
+        "maximum": 115
+      },
+      {
+        "theme": "G217",
+        "core": "P21002",
+        "seconds": 95,
+        "maximum": 110
+      },
+      {
+        "theme": "G218",
+        "core": "P21003",
+        "seconds": 100,
+        "maximum": 105
+      },
+      {
+        "theme": "G219",
+        "core": "P21005",
+        "seconds": 105,
+        "maximum": 120
+      },
+      {
+        "theme": "G220",
+        "core": "A21001",
+        "seconds": 100,
+        "maximum": 130
+      },
+      {
+        "theme": "G221",
+        "core": "A21002",
+        "seconds": 115,
+        "maximum": 130
+      },
+      {
+        "theme": "G222",
+        "core": "A21004",
+        "seconds": 95,
+        "maximum": 125
+      },
+      {
+        "theme": "G223",
+        "core": "R21001",
+        "seconds": 110,
+        "maximum": 135
+      },
+      {
+        "theme": "G224",
+        "core": "R21002",
+        "seconds": 90,
+        "maximum": 130
+      },
+      {
+        "theme": "G225",
+        "core": "R21003",
+        "seconds": 80,
+        "maximum": 100
+      },
+      {
+        "theme": "G226",
+        "core": "R21004",
+        "seconds": 90,
+        "maximum": 120
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 33,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "a7a94737a8c58fce239a7e3797fe9133e803eecbeba844af8cfa7141284fe435"
+  }
+}

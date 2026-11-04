@@ -1,0 +1,143 @@
+{
+  "status": "ROOT_EDITORIAL_PAIR_REVIEW_PENDING_SECOND_READER",
+  "selection_method": "Take 12 highest cosine pairs among selected canonical IDs, excluding existing explicit distinct pairs; nonrandom stress sample, not accuracy/false-positive estimate.",
+  "pool_sha256": "a2839318e7a628904e126309a5bd1ea9226c54f8fb9b557a289bc3233daeb633",
+  "semantic_report_sha256": "43fc9555603d9aad4eea4ee47f0cd5dfa7c025b7052ca5370ab06f4945f837e3",
+  "scope": "Compare question/answer_target/scope and existing source references. Not a fresh full-source factual audit. No threshold-driven merge.",
+  "pairs": [
+    {
+      "a": "E2080",
+      "b": "E2230",
+      "cosine": 0.9042,
+      "decision": "distinct",
+      "reason": "負載/來源內阻的功率分配，和電感開關轉換提升輸出電位，是不同的因果步驟。",
+      "questions": [
+        "把負載電阻一直減小，電池送到負載的功率就一定一直增加嗎？",
+        "電池電壓比較低，電路怎麼不用換電池就升到較高電壓？"
+      ]
+    },
+    {
+      "a": "E2058",
+      "b": "E2098",
+      "cosine": 0.897654,
+      "decision": "distinct",
+      "reason": "完整回路能否維持穩態電流，和先累積能量再快速釋放，不能用同一答案互換。",
+      "questions": [
+        "只接電池的一端，為什麼簡單小燈通常不能持續亮？",
+        "小電池慢慢存能量，怎麼讓閃光燈突然亮一下？"
+      ]
+    },
+    {
+      "a": "D2092",
+      "b": "D2094",
+      "cosine": 0.895368,
+      "decision": "distinct",
+      "reason": "外部養護供水與低水膠比內部耗水造成自乾燥有不同邊界條件；同為水化相關，不把相反觀察抹平。",
+      "questions": [
+        "混凝土不是要乾才硬，為什麼施工後還要保持濕潤？",
+        "混凝土包好不讓水蒸發，內部怎麼仍可能自己變乾？"
+      ]
+    },
+    {
+      "a": "E2024",
+      "b": "E2089",
+      "cosine": 0.894328,
+      "decision": "distinct",
+      "reason": "單顆電池可搬運電荷總量，和多顆電池連接拓撲的電動勢，是不同自變量。",
+      "questions": [
+        "標同樣電壓的兩顆電池，為什麼不一定能用一樣久？",
+        "相同電池排成一列和並排，為什麼不會得到相同的總電壓？"
+      ]
+    },
+    {
+      "a": "L130",
+      "b": "L132",
+      "cosine": 0.890514,
+      "decision": "distinct",
+      "reason": "前題問運氧細胞自身代謝配置，後題問血紅素提供攜氧能力；整合成同一影片可，但不是同一答案。",
+      "questions": [
+        "紅血球負責送氧，為什麼自己不設粒線體來大量用氧？",
+        "血液中的氧氣，為什麼不全都只靠溶在水裡運送？"
+      ]
+    },
+    {
+      "a": "E2043",
+      "b": "E2089",
+      "cosine": 0.889324,
+      "decision": "distinct",
+      "reason": "被動電容依共同電壓存電荷，和電壓源串並聯的端點關係不同；不能因為都有並聯便合併。",
+      "questions": [
+        "並聯電容兩端電壓一樣，為什麼每顆存的電荷仍可能不同？",
+        "相同電池排成一列和並排，為什麼不會得到相同的總電壓？"
+      ]
+    },
+    {
+      "a": "L154",
+      "b": "L156",
+      "cosine": 0.887006,
+      "decision": "distinct",
+      "reason": "一題是過濾時成分被攔下，一題是之後向管腔加入成分；方向與處理階段不同。",
+      "questions": [
+        "腎臟的濾網為什麼通常不讓血球一起掉進濾液？",
+        "已經過濾過一次，腎小管為什麼還要再把物質加入濾液？"
+      ]
+    },
+    {
+      "a": "E2040",
+      "b": "E2089",
+      "cosine": 0.886457,
+      "decision": "distinct",
+      "reason": "孤立中間導體的淨電荷守恆，和電池源電動勢的連接關係不同。",
+      "questions": [
+        "電容串成一排，中間沒有通往電池的線，電荷量為什麼仍能對上？",
+        "相同電池排成一列和並排，為什麼不會得到相同的總電壓？"
+      ]
+    },
+    {
+      "a": "E2169",
+      "b": "E2229",
+      "cosine": 0.886417,
+      "decision": "distinct",
+      "reason": "輸送線減少焦耳損失，和開關電源時間分配與濾波，是不同系統邊界與機制。",
+      "questions": [
+        "電力為什麼要先升高電壓送很遠，再降回來？",
+        "電源一直快速開開關關，為什麼輸出仍能是較低的直流電壓？"
+      ]
+    },
+    {
+      "a": "E2095",
+      "b": "E2229",
+      "cosine": 0.885031,
+      "decision": "distinct",
+      "reason": "固定直流源下電容充電電流逐減，和週期開關的供能/平滑不是相同時序。",
+      "questions": [
+        "電容充電為什麼一開始快，越接近電源電壓越慢？",
+        "電源一直快速開開關關，為什麼輸出仍能是較低的直流電壓？"
+      ]
+    },
+    {
+      "a": "L198",
+      "b": "L285",
+      "cosine": 0.881709,
+      "decision": "distinct",
+      "reason": "私有位址可在互不直接路由的網路重用，和對外共享位址的端口映射，是位址範圍與邊界轉換兩步；同片可合講但不重算同一答案。",
+      "questions": [
+        "我家和別人家的裝置，為什麼能用一模一樣的內網 IP？",
+        "一家好幾台裝置上網，外面為什麼可能只看到同一個 IP？"
+      ]
+    },
+    {
+      "a": "E2048",
+      "b": "E2049",
+      "cosine": 0.881495,
+      "decision": "distinct",
+      "reason": "固定自由電荷下極化改變電位差，和非均勻邊緣場造成插入方向的力，預測的觀察不同。若第二題成稿只重述電容量增加，再降為第一題案例。",
+      "questions": [
+        "已隔離的電容加進絕緣材料，電荷沒少，電壓怎麼會下降？",
+        "絕緣材料本身不帶淨電，為什麼仍可能被電容拉進去？"
+      ]
+    }
+  ],
+  "count": 12,
+  "production_ready": false
+}

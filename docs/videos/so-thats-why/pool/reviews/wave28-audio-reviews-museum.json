@@ -1,0 +1,1324 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R28001",
+    "R28002",
+    "R28003",
+    "R28004",
+    "R28005",
+    "R28006"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave28-museum.json",
+      "sha256": "698d4c37527b8241ba16c0b7c98f6e30ffe835bea32b30cd62d8b53b02b9e935"
+    },
+    {
+      "file": "reviews/wave28-museum-themes.json",
+      "sha256": "d3f0e27f526c518370d7ba102ebf06d977cc7b154acad7baadf3c2f61c06630c"
+    },
+    {
+      "file": "reviews/wave28-museum-author.json",
+      "sha256": "6fe5fb6e47dfd2a31090cefbc81de4dc3ad77a2dd2bd1fcf1552b4a6a38ff015"
+    }
+  ],
+  "role_and_scope": "非作者獨立核6候選、6來源、11退題、13人工近對、30有向檢索對與4個紙上題案。",
+  "baseline": {
+    "head": "624a79da921686f75d88c15e768fd45ab67cf59f",
+    "selected": 3073,
+    "raw_records": 3448,
+    "themes": 279,
+    "not_added": 1262,
+    "pool_sha256": "bafaaeeb9977c586a82dce108e592246e4292ad4026d765e429d33eabd8fb375"
+  },
+  "candidate_review": [
+    {
+      "id": "R28001",
+      "canonical_id": "R28001",
+      "decision": "retain",
+      "reason": "密度條帶次序比平均值多一個受控判別，並用分卷與不同底層作反例。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        75,
+        105
+      ],
+      "source_ids": [
+        "R28-S001"
+      ]
+    },
+    {
+      "id": "R28002",
+      "canonical_id": "R28002",
+      "decision": "retain",
+      "reason": "固定點受拉後線向有規律偏轉，加膠/底才留下痕跡。量線向與量經線密度可分開預測。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        65,
+        95
+      ],
+      "source_ids": [
+        "R28-S001"
+      ]
+    },
+    {
+      "id": "R28003",
+      "canonical_id": "R28003",
+      "decision": "retain",
+      "reason": "等大稿的孔、部分可對上的粉點、底稿及成畫按先後對照，能辨轉印與省去肩結的階段。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        75,
+        105
+      ],
+      "source_ids": [
+        "R28-S002",
+        "R28-S003"
+      ]
+    },
+    {
+      "id": "R28004",
+      "canonical_id": "R28004",
+      "decision": "retain",
+      "reason": "同一件文物內，眉眼與珠子都含銅而發光表現不同，足以縮小顏料身份。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        65,
+        95
+      ],
+      "source_ids": [
+        "R28-S004"
+      ]
+    },
+    {
+      "id": "R28005",
+      "canonical_id": "R28005",
+      "decision": "retain",
+      "reason": "截面保護區殘紫、元素分布與書信混合約束單一褪色組分的位置，未宣稱算出精確原色。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        75,
+        105
+      ],
+      "source_ids": [
+        "R28-S005"
+      ]
+    },
+    {
+      "id": "R28006",
+      "canonical_id": "R28006",
+      "decision": "retain",
+      "reason": "裁去不對稱面積可改主要人物相對畫框位置。早期摹本支持構圖見證，未修回失落原漆。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        60,
+        95
+      ],
+      "source_ids": [
+        "R28-S006"
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R28-S001",
+      "title": "Do Weave Matches Imply Canvas Roll Matches?",
+      "decision": "supports_bounded_topic",
+      "read_via": "非作者實讀並核SHA的作者當日有效副本，無本reviewer新HTTP。",
+      "reading_scope": "原作者2010 AIC公開本，核SHA後讀PDF pp1–6的引言、兩種圖、配對法、固定/上底工法、結論與Figs1–3。p7僅讀有關布卷與其他工法的說明。目讀PDF5、6頁的原圖。",
+      "locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+      "cache": {
+        "file": ".cache/wave28-museum-weavepaper.pdf",
+        "sha256": "582ff08d653f7b30df06ac27aa2431709e84b9d8ecc30cfd02b770d4f9e709ac",
+        "text_file": ".cache/wave28-museum-weavepaper.txt",
+        "text_sha256": "5cd3a494d680bbd480ea800b06f95664cc6846550e1c64e6cf0255efc9ea2900"
+      },
+      "result": "同均值只作預篩，還需沿線方向取密度剖面、旋轉/翻轉候選對位，查全圖帶紋。44幅組超過13m且底層不同支持同長匹不必同市售卷。原始扇形加折邊膠底位置可定位邊側，不能推經向間距。",
+      "limitations": "經向吻合不能單獨推出同一市售卷或同時畫成。圖2五幅圖僅按經向對齊，縱向排列不代表真正相鄰。所述上底流程有時代與業者範圍。"
+    },
+    {
+      "source_id": "R28-S002",
+      "title": "Saint Catherine of Alexandria",
+      "decision": "supports_bounded_topic",
+      "read_via": "非作者實讀並核SHA的作者當日有效副本，無本reviewer新HTTP。",
+      "reading_scope": "館藏2022目錄有效HTML抽文P060–068，另P135與P138，含Figs2–4圖說。未開原始紅外影像。",
+      "locator": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。",
+      "cache": {
+        "file": ".cache/wave28-museum-pounce.html",
+        "sha256": "8fca3120efc8adc5589ea1cc9d93500adf6bb1e52432bef84e885d36dab0da9a",
+        "text_file": ".cache/wave28-museum-pounce.txt",
+        "text_sha256": "4c2966bd21d4184161a78e4bd25c12e740450341842cb60f79baf94b3d93b4ec"
+      },
+      "result": "肩袖僅部分處能把粉點逐點對上。紙上打孔的線在板上底稿仍可見，另有徒手改線；下緣超出現紙稿但裁紙與後延畫法無法分辨。",
+      "limitations": "紅外圖上的點很難辨認，只在部分輪廓找得到，底部無法斷言草圖被裁還是後來延畫。未檢視可放大之原畫紅外影像。"
+    },
+    {
+      "source_id": "R28-S003",
+      "title": "Studying Raphael: drawings and cartoons",
+      "decision": "supports_bounded_topic",
+      "read_via": "非作者實讀並核SHA的作者當日有效副本，無本reviewer新HTTP。",
+      "reading_scope": "同館案例補充頁有效HTML P010–017，讀Using cartoons與The Saint Catherine cartoon。",
+      "locator": "Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+      "cache": {
+        "file": ".cache/wave28-museum-cartoon.html",
+        "sha256": "5677b45124f94c92329fc95a4dbc207c6ec7b8b4f61353c025acc921c1d0b4ab",
+        "text_file": ".cache/wave28-museum-cartoon.txt",
+        "text_sha256": "58b37baf0d2c51381f07b13d68cb6b391ded4f0a9d19d3cfa401fdc43d7623c4"
+      },
+      "result": "粉末穿孔和有色中介紙描線是兩條轉印路徑。肩結在紙稿打孔、入板上底稿、成畫省略，三物證層級可辨改動階段。",
+      "limitations": "與同館NG 168目錄為同一作品的補充說明，不計兩個獨立實驗。"
+    },
+    {
+      "source_id": "R28-S004",
+      "title": "Insights into the Materials and Technique of a Roman Egyptian Funerary Portrait Obtained from Elemental Mapping and Luminescence Imaging",
+      "decision": "supports_bounded_topic",
+      "read_via": "非作者實讀並核SHA的作者當日有效副本，無本reviewer新HTTP。",
+      "reading_scope": "館藏37-40／Getty Volume 2第14章。有效HTML P003–011與P014–020、P028–030，另核SHA目讀Fig14.1、14.2。銅圖14.3A只讀圖說及正文，未目讀銅圖。",
+      "locator": "HTML P003–011 方法及器材、P014–020 Egyptian Blue、Fig14.1/14.2目讀，Fig14.3A與14.4圖說。另讀P028–030判斷未收方向。",
+      "cache": {
+        "file": ".cache/wave28-museum-blue.html",
+        "sha256": "2919271bc332f27c140741c17a826e5d882735842db607f9a36d22973d1aceb3",
+        "text_file": ".cache/wave28-museum-blue.txt",
+        "text_sha256": "1cbb10179e93bc5aa79ff85e43dd7bca37629ef7ec47b3378ad60df73f4d322c"
+      },
+      "result": "本畫眉眼、鼻旁的近紅外發光與銅分布共同支持埃及藍。項鍊珠雖富銅卻採另一未定名顏料；放大表面可見少量藍粒，肉眼圖表示通常觀看條件。",
+      "limitations": "只限這幅蠟畫，發亮與銅圖需合看。項鍊含銅色料在該研究未定名。未從單張圖宣稱判明每粒顏料深度。"
+    },
+    {
+      "source_id": "R28-S005",
+      "title": "Ultra-Violet: New Light on Van Gogh’s Irises",
+      "decision": "supports_bounded_topic",
+      "read_via": "非作者實讀並核SHA的作者當日有效副本，無本reviewer新HTTP。",
+      "reading_scope": "2024展覽解說，核SHA後讀PDF pp3、5–10英文說明，目讀p8截面。",
+      "locator": "PDF頁3書信、頁6元素分布、頁7–8花瓣截面（頁8目讀）、頁9重建及頁10版本。",
+      "cache": {
+        "file": ".cache/wave28-museum-iris.pdf",
+        "sha256": "7be5c1f5a9c7e5390b7a128c40cf91e5f5d4a8bd1ef25bc2b134bb7bf6dc73a8",
+        "text_file": ".cache/wave28-museum-iris.txt",
+        "text_sha256": "8fad73b3e2ba6e08ce724a6050c768121e964ac62604b39664ecbb6ea79792f2"
+      },
+      "result": "信件記紫、花瓣現顯藍，單一截面表藍內紫與多處鈷/溴分布共同支持紅色成分褪去。用溴圖限定復色區，數位圖只近似，不能對所有花瓣給精確色值。",
+      "limitations": "截面只取自一處，數位重建的色相為估計值；溴作特定材料脈絡的線索，不能由元素圖直接讀取原本RGB。"
+    },
+    {
+      "source_id": "R28-S006",
+      "title": "For the first time in 300 years The Night Watch is complete again",
+      "decision": "supports_bounded_topic",
+      "read_via": "非作者實讀並核SHA的作者當日有效副本，無本reviewer新HTTP。",
+      "reading_scope": "2021-06-23館方計畫公告，核SHA後讀P003–020及P023–029尺寸段。未看館方影片或原作／摹本高解析圖。",
+      "locator": "館方 P003、P009–020，Differences、Art historical research、Trimmed、Artificial intelligence。",
+      "cache": {
+        "file": ".cache/wave28-museum-edge.html",
+        "sha256": "2e5ace4810c977135cbbd0ec53fc3adfff6b3a6babe32d9b9787ab246459e070",
+        "text_file": ".cache/wave28-museum-edge.txt",
+        "text_sha256": "9cb416d502b3e0ff0afb04cd56749f3acbe798ec3628d00a543c370af3ae14e2"
+      },
+      "result": "1715四邊裁切、左失最多；重建依歸屬Lundens的早期摹本，在原作周邊另加印板後人物再顯偏右。構圖位置可約束，畫家失落筆觸沒有尋回。",
+      "limitations": "所指2021年臨時展示。摹本作者是歸屬判斷；重建非尋回的原片，也沒證明遺失區的逐筆畫法。"
+    }
+  ],
+  "source_reading_summary": {
+    "candidate_sources_read": 6,
+    "not_added_only_sources": 0,
+    "fresh_http_by_reviewer": 0,
+    "valid_author_caches_independently_read": 6,
+    "figures_or_pages_visually_read": 5
+  },
+  "related_source_review": [],
+  "source_identity_review": [
+    {
+      "source_id": "R28-S001",
+      "result": "同篇原作者文本承擔兩個不同測量問題。"
+    },
+    {
+      "source_id": "R28-S002",
+      "result": "2022目錄與S003同一作品，不能當獨立實驗。"
+    },
+    {
+      "source_id": "R28-S003",
+      "result": "館方研究頁佐證相同轉稿個案的肩結。"
+    },
+    {
+      "source_id": "R28-S004",
+      "result": "第14章為同一館藏人像的發光及元素比較。"
+    },
+    {
+      "source_id": "R28-S005",
+      "result": "2024展覽說明為同一鳶尾花研究。"
+    },
+    {
+      "source_id": "R28-S006",
+      "result": "2021公告指當時臨時重建展示。"
+    }
+  ],
+  "source_fetch_limits": [
+    "獨立覆核用6份原始正文有效快取，非新HTTP。館藏目錄紅外原圖、銅分布圖原圖及夜巡影片均未目讀。"
+  ],
+  "visual_readings": [
+    {
+      "source_id": "R28-S001",
+      "file": ".cache/wave28-museum-weave-p5.png",
+      "sha256": "381ae311e161b63a415458b9999ad398ccd2ca2beb4bcf6dc18a78bb9171cbbb",
+      "route": "核SHA後獨立目讀"
+    },
+    {
+      "source_id": "R28-S001",
+      "file": ".cache/wave28-museum-weave-p6.png",
+      "sha256": "d90e54faf5eacd13821a5d42c843af9c5b57af4602c52289e145a0356c49b39b",
+      "route": "核SHA後獨立目讀"
+    },
+    {
+      "source_id": "R28-S004",
+      "file": ".cache/wave28-museum-fig-14-1.jpg",
+      "sha256": "b90b4244bf7f6fac126b40a9f62df7ee93c207889f5e2a2e7c3305f0be56a479",
+      "route": "核SHA後獨立目讀"
+    },
+    {
+      "source_id": "R28-S004",
+      "file": ".cache/wave28-museum-fig-14-2.jpg",
+      "sha256": "24ed5701745f34223c85f0736ff7d11f6ef211e459de5768e8aa6e8bc1ffad55",
+      "route": "核SHA後獨立目讀"
+    },
+    {
+      "source_id": "R28-S005",
+      "file": ".cache/wave28-museum-iris-p8.png",
+      "sha256": "e351b536185842be4a69d40f72353faa435efdf2042c9290ccda7611c54e0d7d",
+      "route": "核SHA後獨立目讀"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R28001",
+      "b": "X5008",
+      "decision": "distinct",
+      "reason": "舊答針對織線端可退出；新答以製造密度變異作布匹識別。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28001",
+      "b": "M2083",
+      "decision": "distinct",
+      "reason": "座標基準的統一與同一材料留下的空間偏差條帶不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28002",
+      "b": "R28001",
+      "decision": "distinct",
+      "reason": "線向被固定的局部變形回答邊的位置，線數序列回答是否同匹；兩種量各有獨立可見預測。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28002",
+      "b": "D2107",
+      "decision": "distinct",
+      "reason": "木板乾燥的收縮差與上膠封住的繃點偏轉不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28002",
+      "b": "X5002",
+      "decision": "distinct",
+      "reason": "針織圈伸展可恢復的幾何調整，不足解釋畫布脫架後的特定鉤點印跡。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28003",
+      "b": "Q9004",
+      "decision": "distinct",
+      "reason": "粉塵穿孔定位圖稿與壓力破微囊顯色的轉印路徑不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28004",
+      "b": "H3082",
+      "decision": "distinct",
+      "reason": "激發至放光的能量差為物理背景。本題額外利用含銅但缺同樣發光的區域排除誤認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28004",
+      "b": "O7016",
+      "decision": "distinct",
+      "reason": "同色異譜在改照明時呈色不同；新題測特徵發光和元素分布，判材料身份。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28005",
+      "b": "X5023",
+      "decision": "distinct",
+      "reason": "舊靠介質粉化改變外觀，新有特定混色組分褪去且深處仍紫的對照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28005",
+      "b": "X5015",
+      "decision": "distinct",
+      "reason": "磨掉表層露出未染紗與光敏紅色成分在表面褪去不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28005",
+      "b": "R23003",
+      "decision": "distinct",
+      "reason": "RGB標記重譯與實際顏料化學改變不同，後者另有截面與元素證據。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28006",
+      "b": "LEG-A36",
+      "decision": "distinct",
+      "reason": "外部摹本僅支持構圖估計；QR同碼內建冗餘可以解資料，證據來源不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28006",
+      "b": "R28005",
+      "decision": "distinct",
+      "reason": "裁去邊緣的構圖從另一件文物推知，仍存顏料的褪色由原物分層與分布約束。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R28001",
+      "b": "R23001",
+      "cosine": 0.717458,
+      "decision": "distinct",
+      "reason": "透明度合成的遮擋順序不涉及材料留下的密度條碼。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28001",
+      "b": "I3045",
+      "cosine": 0.691067,
+      "decision": "distinct",
+      "reason": "瀏覽器分層平衡記憶體/重畫成本，非材料來源比對。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28001",
+      "b": "K11007",
+      "cosine": 0.660375,
+      "decision": "distinct",
+      "reason": "三浦面片改幾何寬度，沒有同匹布的空間疏密資料。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28001",
+      "b": "P14004",
+      "cosine": 0.653242,
+      "decision": "distinct",
+      "reason": "視覺擁擠受外框分組影響，非比對實測的紗線密度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28001",
+      "b": "O3045",
+      "cosine": 0.649779,
+      "decision": "distinct",
+      "reason": "感測器造成假條帶；館藏比對的是從織物X光辨出的真實製造變異。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28002",
+      "b": "X5002",
+      "cosine": 0.683792,
+      "decision": "distinct",
+      "reason": "針織圈伸展可恢復的幾何調整，不足解釋畫布脫架後的特定鉤點印跡。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28002",
+      "b": "K11009",
+      "cosine": 0.66131,
+      "decision": "distinct",
+      "reason": "剪紙接點屈曲與成摺後可橫縮，不是受拉織布上底固定後定位來源的痕跡。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28002",
+      "b": "K11004",
+      "cosine": 0.658238,
+      "decision": "distinct",
+      "reason": "軸壓細構件的側向失穩不等同鉤點拉出紗線方向偏轉。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28002",
+      "b": "X5008",
+      "cosine": 0.654052,
+      "decision": "distinct",
+      "reason": "切邊散線是線端鬆脫，找不到上底時沿布邊週期性固定點。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28002",
+      "b": "K11011",
+      "cosine": 0.643588,
+      "decision": "distinct",
+      "reason": "夾端拘束橫縮引發膜內局部壓縮皺紋；畫布經線被鉤牽偏，再由尺寸膠和底層封存供事後定位。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28003",
+      "b": "X5012",
+      "cosine": 0.634489,
+      "decision": "distinct",
+      "reason": "鐵膽墨裂紙屬化學劣化，轉印粉點的位置是預備構圖留下的證據。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28003",
+      "b": "R28002",
+      "cosine": 0.634382,
+      "decision": "distinct",
+      "reason": "曾受拉的定位痕與針孔粉點轉印所記錄的操作不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28003",
+      "b": "Q9004",
+      "cosine": 0.627171,
+      "decision": "distinct",
+      "reason": "粉塵穿孔定位圖稿與壓力破微囊顯色的轉印路徑不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28003",
+      "b": "Q9002",
+      "cosine": 0.62474,
+      "decision": "distinct",
+      "reason": "紙內散射擴大表觀網點，不是把圖稿轉印到畫板。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28003",
+      "b": "R28006",
+      "cosine": 0.62281,
+      "decision": "distinct",
+      "reason": "轉稿疊合判上色前選擇，裁框重建則須外部摹本估計原作範圍。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28004",
+      "b": "O7004",
+      "cosine": 0.671068,
+      "decision": "distinct",
+      "reason": "相位差轉為明暗是光學對比機制；此處另測樣品受激放光作標記。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28004",
+      "b": "L326",
+      "cosine": 0.670054,
+      "decision": "distinct",
+      "reason": "暗處看色的視細胞分工與儀器測顏料發光無關。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28004",
+      "b": "N032",
+      "cosine": 0.65651,
+      "decision": "distinct",
+      "reason": "天文影像測色/對比調整與材料發光及銅的雙重定位不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28004",
+      "b": "R28005",
+      "cosine": 0.646881,
+      "decision": "distinct",
+      "reason": "人像的兩區響應可判材料不同；鳶尾在深淺層與元素圖辨出已褪組分。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28004",
+      "b": "A24003",
+      "cosine": 0.625844,
+      "decision": "distinct",
+      "reason": "魷魚由不同感光輸入調節自身發光。本題是顏料受光後的特徵波段與元素共定位，不含生物回饋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28005",
+      "b": "R28004",
+      "cosine": 0.646881,
+      "decision": "distinct",
+      "reason": "原料身份雙測與選擇性褪色後依深淺層反推原色，各有獨立控制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28005",
+      "b": "R6007",
+      "cosine": 0.62478,
+      "decision": "distinct",
+      "reason": "繡球以鋁、花青素和共色素結合而顯色；油畫裡原混合顏料中的光敏紅色成分褪去，分子條件與時間方向皆不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28005",
+      "b": "X5015",
+      "cosine": 0.614518,
+      "decision": "distinct",
+      "reason": "磨掉表層露出未染紗與光敏紅色成分在表面褪去不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28005",
+      "b": "N032",
+      "cosine": 0.613876,
+      "decision": "distinct",
+      "reason": "照片增強對比影響可見彩度，這裡是原物混合顏料中一成分光褪。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28005",
+      "b": "LEG-S02",
+      "cosine": 0.598978,
+      "decision": "distinct",
+      "reason": "天空夕陽因大氣散射光程改變。原作保護層內留紫及溴圖需實物顏料變化，並非光傳播路徑差。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28006",
+      "b": "R28003",
+      "cosine": 0.62281,
+      "decision": "distinct",
+      "reason": "舊草圖證原板改稿；早期摹本則是裁框之前另一件構圖見證物。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28006",
+      "b": "R28001",
+      "cosine": 0.555336,
+      "decision": "distinct",
+      "reason": "同匹布是X光製造痕關聯，非在畫框外補回場景的位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28006",
+      "b": "C2006",
+      "cosine": 0.525839,
+      "decision": "distinct",
+      "reason": "圖地歸屬的知覺轉換，不同於物理裁去面積改變人物相對位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28006",
+      "b": "O7002",
+      "cosine": 0.503794,
+      "decision": "distinct",
+      "reason": "校正鏡頭畸變由放大率改變像點；本案裁邊後像內人物的座標關係不動、框改變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R28006",
+      "b": "M2052",
+      "cosine": 0.48841,
+      "decision": "distinct",
+      "reason": "分布偏態命名看統計尾部，非取景裁切的畫面中心。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R28001",
+        "b": "X5008",
+        "reason": "舊答針對織線端可退出；新答以製造密度變異作布匹識別。"
+      },
+      {
+        "a": "R28001",
+        "b": "M2083",
+        "reason": "座標基準的統一與同一材料留下的空間偏差條帶不同。"
+      },
+      {
+        "a": "R28002",
+        "b": "R28001",
+        "reason": "線向被固定的局部變形回答邊的位置，線數序列回答是否同匹；兩種量各有獨立可見預測。"
+      },
+      {
+        "a": "R28002",
+        "b": "D2107",
+        "reason": "木板乾燥的收縮差與上膠封住的繃點偏轉不同。"
+      },
+      {
+        "a": "R28002",
+        "b": "X5002",
+        "reason": "針織圈伸展可恢復的幾何調整，不足解釋畫布脫架後的特定鉤點印跡。"
+      },
+      {
+        "a": "R28003",
+        "b": "Q9004",
+        "reason": "粉塵穿孔定位圖稿與壓力破微囊顯色的轉印路徑不同。"
+      },
+      {
+        "a": "R28004",
+        "b": "H3082",
+        "reason": "激發至放光的能量差為物理背景。本題額外利用含銅但缺同樣發光的區域排除誤認。"
+      },
+      {
+        "a": "R28004",
+        "b": "O7016",
+        "reason": "同色異譜在改照明時呈色不同；新題測特徵發光和元素分布，判材料身份。"
+      },
+      {
+        "a": "R28005",
+        "b": "X5023",
+        "reason": "舊靠介質粉化改變外觀，新有特定混色組分褪去且深處仍紫的對照。"
+      },
+      {
+        "a": "R28005",
+        "b": "X5015",
+        "reason": "磨掉表層露出未染紗與光敏紅色成分在表面褪去不同。"
+      },
+      {
+        "a": "R28005",
+        "b": "R23003",
+        "reason": "RGB標記重譯與實際顏料化學改變不同，後者另有截面與元素證據。"
+      },
+      {
+        "a": "R28006",
+        "b": "LEG-A36",
+        "reason": "外部摹本僅支持構圖估計；QR同碼內建冗餘可以解資料，證據來源不同。"
+      },
+      {
+        "a": "R28006",
+        "b": "R28005",
+        "reason": "裁去邊緣的構圖從另一件文物推知，仍存顏料的褪色由原物分層與分布約束。"
+      },
+      {
+        "a": "R28001",
+        "b": "R23001",
+        "reason": "透明度合成的遮擋順序不涉及材料留下的密度條碼。"
+      },
+      {
+        "a": "R28001",
+        "b": "I3045",
+        "reason": "瀏覽器分層平衡記憶體/重畫成本，非材料來源比對。"
+      },
+      {
+        "a": "R28001",
+        "b": "K11007",
+        "reason": "三浦面片改幾何寬度，沒有同匹布的空間疏密資料。"
+      },
+      {
+        "a": "R28001",
+        "b": "P14004",
+        "reason": "視覺擁擠受外框分組影響，非比對實測的紗線密度。"
+      },
+      {
+        "a": "R28001",
+        "b": "O3045",
+        "reason": "感測器造成假條帶；館藏比對的是從織物X光辨出的真實製造變異。"
+      },
+      {
+        "a": "R28002",
+        "b": "K11009",
+        "reason": "剪紙接點屈曲與成摺後可橫縮，不是受拉織布上底固定後定位來源的痕跡。"
+      },
+      {
+        "a": "R28002",
+        "b": "K11004",
+        "reason": "軸壓細構件的側向失穩不等同鉤點拉出紗線方向偏轉。"
+      },
+      {
+        "a": "R28002",
+        "b": "X5008",
+        "reason": "切邊散線是線端鬆脫，找不到上底時沿布邊週期性固定點。"
+      },
+      {
+        "a": "R28002",
+        "b": "K11011",
+        "reason": "夾端拘束橫縮引發膜內局部壓縮皺紋；畫布經線被鉤牽偏，再由尺寸膠和底層封存供事後定位。"
+      },
+      {
+        "a": "R28003",
+        "b": "X5012",
+        "reason": "鐵膽墨裂紙屬化學劣化，轉印粉點的位置是預備構圖留下的證據。"
+      },
+      {
+        "a": "R28003",
+        "b": "R28002",
+        "reason": "曾受拉的定位痕與針孔粉點轉印所記錄的操作不同。"
+      },
+      {
+        "a": "R28003",
+        "b": "Q9002",
+        "reason": "紙內散射擴大表觀網點，不是把圖稿轉印到畫板。"
+      },
+      {
+        "a": "R28003",
+        "b": "R28006",
+        "reason": "轉稿疊合判上色前選擇，裁框重建則須外部摹本估計原作範圍。"
+      },
+      {
+        "a": "R28004",
+        "b": "O7004",
+        "reason": "相位差轉為明暗是光學對比機制；此處另測樣品受激放光作標記。"
+      },
+      {
+        "a": "R28004",
+        "b": "L326",
+        "reason": "暗處看色的視細胞分工與儀器測顏料發光無關。"
+      },
+      {
+        "a": "R28004",
+        "b": "N032",
+        "reason": "天文影像測色/對比調整與材料發光及銅的雙重定位不同。"
+      },
+      {
+        "a": "R28004",
+        "b": "R28005",
+        "reason": "人像的兩區響應可判材料不同；鳶尾在深淺層與元素圖辨出已褪組分。"
+      },
+      {
+        "a": "R28004",
+        "b": "A24003",
+        "reason": "魷魚由不同感光輸入調節自身發光。本題是顏料受光後的特徵波段與元素共定位，不含生物回饋。"
+      },
+      {
+        "a": "R28005",
+        "b": "R28004",
+        "reason": "原料身份雙測與選擇性褪色後依深淺層反推原色，各有獨立控制。"
+      },
+      {
+        "a": "R28005",
+        "b": "R6007",
+        "reason": "繡球以鋁、花青素和共色素結合而顯色；油畫裡原混合顏料中的光敏紅色成分褪去，分子條件與時間方向皆不同。"
+      },
+      {
+        "a": "R28005",
+        "b": "N032",
+        "reason": "照片增強對比影響可見彩度，這裡是原物混合顏料中一成分光褪。"
+      },
+      {
+        "a": "R28005",
+        "b": "LEG-S02",
+        "reason": "天空夕陽因大氣散射光程改變。原作保護層內留紫及溴圖需實物顏料變化，並非光傳播路徑差。"
+      },
+      {
+        "a": "R28006",
+        "b": "R28003",
+        "reason": "舊草圖證原板改稿；早期摹本則是裁框之前另一件構圖見證物。"
+      },
+      {
+        "a": "R28006",
+        "b": "R28001",
+        "reason": "同匹布是X光製造痕關聯，非在畫框外補回場景的位置。"
+      },
+      {
+        "a": "R28006",
+        "b": "C2006",
+        "reason": "圖地歸屬的知覺轉換，不同於物理裁去面積改變人物相對位置。"
+      },
+      {
+        "a": "R28006",
+        "b": "O7002",
+        "reason": "校正鏡頭畸變由放大率改變像點；本案裁邊後像內人物的座標關係不動、框改變。"
+      },
+      {
+        "a": "R28006",
+        "b": "M2052",
+        "reason": "分布偏態命名看統計尾部，非取景裁切的畫面中心。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R28-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28001"
+      ],
+      "reason": "同材料密度剖面換一幅畫不能再計。"
+    },
+    {
+      "id": "R28-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28001"
+      ],
+      "reason": "有經向匹配只達長匹層級，推作畫年份缺資料。"
+    },
+    {
+      "id": "R28-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28002"
+      ],
+      "reason": "熱圖改配色不改所量密度或線向。"
+    },
+    {
+      "id": "R28-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28003"
+      ],
+      "reason": "兩袖是同一穿孔轉印法的重複例證。"
+    },
+    {
+      "id": "R28-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28003"
+      ],
+      "reason": "粉點及省略只能定位改稿階段，無作者分工對照。"
+    },
+    {
+      "id": "R28-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28004"
+      ],
+      "reason": "珠子含銅仍未指明化合物，保留未定。"
+    },
+    {
+      "id": "R28-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "O3025"
+      ],
+      "reason": "元素圖對深層的衰減限制已能以O3025類比，不以新載體重算。"
+    },
+    {
+      "id": "R28-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28005"
+      ],
+      "reason": "單點截面與元素圖不能給每朵花原始RGB。"
+    },
+    {
+      "id": "R28-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "X5023",
+        "R28005"
+      ],
+      "reason": "介質粉化和光敏混色成分退色各有條件，不作全作品泛化。"
+    },
+    {
+      "id": "R28-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28006"
+      ],
+      "reason": "三名人物同一裁框復原控制，不分人頭計数。"
+    },
+    {
+      "id": "R28-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R28006"
+      ],
+      "reason": "摹本支持布局，風格模型不會變成失去的原筆觸。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W28R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        70,
+        45
+      ],
+      "core_totals": {
+        "R28001": 70,
+        "R28002": 45
+      },
+      "core_caps": {
+        "R28001": 105,
+        "R28002": 95
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若只有普通布紋照片而畫不出密度與角度的差別，留第一題作短段，撤下整支對照片。",
+      "editorial_result": "一幅X光切換密度與角度，分辨同匹和靠邊兩個問題；四側與單側特徵的對照能定位前處理階段。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W28R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        45,
+        35
+      ],
+      "core_totals": {
+        "R28003": 80
+      },
+      "core_caps": {
+        "R28003": 105
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "點無法看清時只用原創三層示意。如連「進過底稿」和「只在紙上」都分不清，撤案。",
+      "editorial_result": "紙上有孔、板上有設計、成畫省去肩結足以成短案；可逐點對位只限指定肩袖輪廓。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W28R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 70,
+      "chapter_seconds": [
+        35,
+        35
+      ],
+      "core_totals": {
+        "R28004": 70
+      },
+      "core_caps": {
+        "R28004": 95
+      },
+      "maximum_beat_seconds": 25,
+      "drop_if_read": "若畫面只剩發光名詞，刪旁白改兩欄圖卡；缺一組對照就留素材。",
+      "editorial_result": "臉與珠子同含銅但發光不同，兩欄對照足以解釋為何要兩種觀察。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W28R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        60,
+        55
+      ],
+      "core_totals": {
+        "R28005": 60,
+        "R28006": 55
+      },
+      "core_caps": {
+        "R28005": 105,
+        "R28006": 95
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若只剩兩幅名畫生平，撤掉合片。測試時問觀眾哪個結論靠顏料、哪個靠摹本，答不出就各留一個短段。",
+      "editorial_result": "色彩估計取原物分層和元素，構圖估計需早期摹本。用同一個證據強弱問題串兩件作品。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave28-museum.json",
+      "sha256": "1dcbf9e19479b610d2a0245a72cab7cb645bd615ee9858bb13e00952220d1ba1"
+    },
+    {
+      "file": "reviews/wave28-museum-themes.json",
+      "sha256": "e0b9fbaee564a6f4a68b1a25d142167a3b874df410d266233184173b1e64ee46"
+    },
+    {
+      "file": "reviews/wave28-museum-author.json",
+      "sha256": "7bcec8e37b19e9bbc7f92a76afc72306cd24eab56d610539977c9d57c99d73de"
+    }
+  ],
+  "corrections": [
+    {
+      "reviewer": "pool_physics",
+      "before_files": [
+        {
+          "file": "batches/wave28-museum.json",
+          "sha256": "1dcbf9e19479b610d2a0245a72cab7cb645bd615ee9858bb13e00952220d1ba1"
+        },
+        {
+          "file": "reviews/wave28-museum-themes.json",
+          "sha256": "e0b9fbaee564a6f4a68b1a25d142167a3b874df410d266233184173b1e64ee46"
+        },
+        {
+          "file": "reviews/wave28-museum-author.json",
+          "sha256": "7bcec8e37b19e9bbc7f92a76afc72306cd24eab56d610539977c9d57c99d73de"
+        }
+      ],
+      "removed_seconds": 20,
+      "changes": [
+        "R28004限定眉眼顏色；R28005限定許多花瓣的今日色澤。",
+        "肩袖可辨粉點與肩結留下的底稿形狀分開圖解。",
+        "布邊定位125→115秒，最後一拍30→20。褪色與裁框重建125→115秒，最後一拍15→5。"
+      ]
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "e0e449b8437ceb5cb1300ca95b58f4e1cbfd038954992f60eeccc0c6dc451eb9",
+    "neighbours": {
+      "file": ".cache/wave28-museum-neighbours-common-initial.json",
+      "sha256": "902439e4cc3cc718669e5e06538913011ff1437d346796f2cc926317543e7d36"
+    },
+    "candidate_rows": 6,
+    "directed_pairs": 30
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "f1316e6031840d5ddae4813710cba4ed571b82f89d59b4a0ef8a8f72f701e649",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "f1316e6031840d5ddae4813710cba4ed571b82f89d59b4a0ef8a8f72f701e649"
+    },
+    "neighbours": {
+      "file": ".cache/wave28-museum-neighbours.json",
+      "sha256": "22927a50b5e75e82fb7b88369271f7e4deb4f8f8ea2d7fa72dc815478a4596b9"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave28-draft.json",
+      "sha256": "9a4a83186529276e18bd5ee4d02c55e8e1154e77cf8b34dd95c693c98e3b8cf4"
+    },
+    "candidate_rows_checked": 6,
+    "directed_pairs_checked": 30,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "direct_comparison_against_common_initial": true,
+    "changed_rows": [
+      {
+        "id": "R28004",
+        "new_neighbours": [
+          "A24003"
+        ],
+        "removed_neighbours": [
+          "P20005"
+        ]
+      },
+      {
+        "id": "R28005",
+        "new_neighbours": [
+          "LEG-S02",
+          "R6007"
+        ],
+        "removed_neighbours": [
+          "L036",
+          "P20005"
+        ]
+      }
+    ],
+    "result": "按當期語意順序、完整問答與scope逐對裁定。時碼另由最終題案逐章相加。"
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "題級主張與紙上估時。實際試讀、製作和完整腳本均待後續。",
+    "展覽複製或數位復色的筆觸/色值只是近似；館藏原始影像不附入公開題案。"
+  ]
+}

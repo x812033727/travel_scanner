@@ -1,0 +1,1073 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "wave51-physics-author",
+  "reviewer": "wave51-physics-reviewer",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "role_and_scope": "非作者獨立覆核：物理線wave51四候選（P51-001…004）、4篇原研究指定章節、7張原圖/頁、20組top5近鄰與17組作者近對、15則退題、4片案。只審題級與紙上片案，不改batch/theme/pool/selection/dedup-decisions，不產媒體。需改處均為文字層級（答案因果措辭、問法、scope補述、退題理由），不涉及合併或排除。",
+  "reviewed_files": [
+    {
+      "file": "batches/wave51-physics.json",
+      "sha256": "cdc281301e7a6ef5fdfa40d7e1461a814e4303dcb1cabcc6ebe7dd66e6a7b140"
+    },
+    {
+      "file": "reviews/wave51-physics-author.json",
+      "sha256": "30ff5b2f20d6e7d8654eb503cc40f2410d2cf0fc51a7ef3cb9f4545ef8f380c5"
+    },
+    {
+      "file": "reviews/wave51-physics-themes.json",
+      "sha256": "105aaef214aed47dab2d780aaad08913c262cbcb3f41fca2da4d438083d7dd84"
+    },
+    {
+      "file": ".cache/wave51-physics-neighbours.json",
+      "sha256": "f3c4530c13d579a6a1dd5faf1a569d3ae923379991892a293dd9a14d4e79d5d7"
+    },
+    {
+      "file": ".cache/draft.json",
+      "sha256": "bdc5fc6b0f9c076a1c64349b5a68659966694b3243f575ca084eb2f7669468de"
+    },
+    {
+      "file": ".cache/all-questions.tsv",
+      "sha256": "e0fb8fe48abb089e4a602c16a8030c0bcc5227aa4e706e8474ebadd99209920c"
+    },
+    {
+      "file": ".cache/not-added.tsv",
+      "sha256": "70aca7c6f8f1ca8a26ec03b67437d115dedee876fd23b78d4c1c5cea199b01d6"
+    },
+    {
+      "file": ".cache/wave51-physics-leidenfrost.xml",
+      "sha256": "7cce82f5ae94a5f902f7606c72581761bd970b4c7a092f590bf75904bef842c3"
+    },
+    {
+      "file": ".cache/wave51-physics-leidenfrost.txt",
+      "sha256": "073d434d0187d7b4be9cfbf4448c616877b042082794e8822ccc7ce4d4ef25b8"
+    },
+    {
+      "file": ".cache/wave51-physics-propulsion.xml",
+      "sha256": "d1b28e7bcd9e2d2b6942436289c53a48db5f96ed7e2bc0a3e41702eece13c423"
+    },
+    {
+      "file": ".cache/wave51-physics-propulsion.txt",
+      "sha256": "cba650608da3d50d19d1047750d345bf4c75b3daabc5db85fb52dfc50a7b0db8"
+    },
+    {
+      "file": ".cache/wave51-physics-champagne.pdf",
+      "sha256": "b644f43956a566021a5450166b80e6d8f059132a50e38ca7736d8298b16b0b45"
+    },
+    {
+      "file": ".cache/wave51-physics-champagne.txt",
+      "sha256": "ff83bc24d773b8b60d1784d675cb8d3444e4d05b90486305c5a297d35bed4ef5"
+    },
+    {
+      "file": ".cache/wave51-physics-candle.pdf",
+      "sha256": "f21b091e33b67894cbe468cfeace50d33d21e2db4ee857d3b926d23b68e2f0bb"
+    },
+    {
+      "file": ".cache/wave51-physics-candle.txt",
+      "sha256": "72ae87d1621509e0837bfabf160e1650193324f3f4d37d9685f74cabb248d73b"
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "P51-S001",
+      "doi": "10.1126/sciadv.aav8081",
+      "fresh_retrieval": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6499590/fullTextXML",
+        "status": 200,
+        "sha256": "7cce82f5ae94a5f902f7606c72581761bd970b4c7a092f590bf75904bef842c3",
+        "same_as_author_cache": true
+      },
+      "sections_read": "Abstract、Results（Fig1–2圖說與正文）、Discussion（τ_mix≫τ_dry、式1–5、Fig3、R_t≈15±1μm、R_ic≈0.6mm）、Conclusion（微粒沉降另議、多種純液）、Methods（清潔、噴霧19–52μm、TiO2半徑約1μm）。",
+      "findings": "答案主體正確：殼形成、h≈1μm觸地、R_t≈15μm、Re/Ri∝ϕi^1/3且與溫度/初半徑無關、204–321°C皆有原文。兩處需注意：(1)原文以「擴散時間遠大於蒸發時間」說明雜質必然積在界面，並非「大滴蒸發較久才來不及擴散」；大小決定結局是因Re/Ri為定值（爆炸半徑隨初半徑等比縮小），初始小的液滴在到爆炸半徑前先達R_t。(2)正文寫純乙醇Re/Ri≈0.25±0.002，但Fig2D「Pure ethanol」點約0.025，且1.9mm初半徑對應Re~50μm（≈0.026），正文0.25應為排版誤植；製作若引比例須用圖值約0.025，或乾脆不報。",
+      "version_note": "期刊正式版全文XML，非預印本。"
+    },
+    {
+      "source_id": "P51-S002",
+      "doi": "10.1126/sciadv.adt6677",
+      "fresh_retrieval": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12024653/fullTextXML",
+        "status": 200,
+        "sha256": "d1b28e7bcd9e2d2b6942436289c53a48db5f96ed7e2bc0a3e41702eece13c423",
+        "same_as_author_cache": true
+      },
+      "sections_read": "Introduction（鋸齒/梯度等不對稱表面前例）、Results（Track I/II、61.2秒、平板對照：亂漂且吹氣後迅速減速停止）、振盪器模型與CFD（Fig4曲面界面使法向應力貢獻驅動）、Fig5參數與樣品2/5/6失效、Discussion（<9mm不推進、方向由初始擾動選定為推測）、Methods（以剪力尺度排除黏滯拖曳）。",
+      "findings": "答案與scope數字皆有原文（350°C、W=8mm、b=0.2mm、λ=1.6mm、液氮25°C/乙醇150°C亦見）。Fig4B顯示Δh小時淨力可為負，『一厚一薄就推』在旁白須保留『差距夠大時』的條件。初始長度14–66mm，『長於約9毫米』是失效下限非典型長度。",
+      "version_note": "期刊正式版全文XML。"
+    },
+    {
+      "source_id": "P51-S003",
+      "doi": "10.1103/physrevfluids.8.053601",
+      "fresh_retrieval": {
+        "url": "https://arxiv.org/pdf/2211.02253v1",
+        "status": 200,
+        "sha256": "b644f43956a566021a5450166b80e6d8f059132a50e38ca7736d8298b16b0b45",
+        "same_as_author_cache": true
+      },
+      "journal_version_check": "arXiv API只有v1（2022-11-04），無journal_ref；Crossref確認PRFluids 8,053601（2023-05-03，題名去掉開頭The）；link.aps.org回403（Cloudflare），harvest.aps.org全文401 not authorized，Unpaywall為closed、無OA副本。期刊版不可達，維持預印本旗標，不能確認數字是否修訂。",
+      "sections_read": "pp1–3引言（乾淨球泡尾流側向升力使in-line不穩）、pp5–6 Table I飲料參數與啤酒蛋白推估、pp9–11 Fig1–2兩組控制、pp12–17 模擬與ω_max≈2.65U/R門檻、pp18–19 Fig5穩定圖與毛細管真飲料實驗、結論。",
+      "findings": "Fig1：乾淨模擬液流量2→10ml/min，泡距縮短越早散開；Fig2(a)只放大R（Bo 0.18→0.66）轉直、(b)近同大小加SDS（La 0→0.5）轉直，均與答案一致。真飲料：香檳、氣泡酒小泡直（氣泡酒一例Bo=0.13弱不穩）、氣泡水小泡全不穩、啤酒最小泡直其餘不穩。答案與scope支持。問法說『乾淨的水』，實際真飲料對照是氣泡水（Pellegrino）、模擬是乾淨甘油水，建議問法改『氣泡水』避免讀者以為用自來水對照。"
+    },
+    {
+      "source_id": "P51-S004",
+      "doi": "10.1038/s41598-020-78229-x",
+      "fresh_retrieval": {
+        "url": "https://arxiv.org/pdf/2207.02019v1",
+        "status": 200,
+        "sha256": "f21b091e33b67894cbe468cfeace50d33d21e2db4ee857d3b926d23b68e2f0bb",
+        "same_as_author_cache": true
+      },
+      "sections_read": "pp1–2引言（同相/反相同步為Kitahata等前人已報導；另有渦動力學解釋文獻13）、p3 Kitahata輻射耦合模型、p4實驗設備（8mm×7cm蠟燭、Fig2–3）、pp5–8頻率與氧濃度、p9 Table2與Fig9、pp10–11 式(8)氧耦合與擬合參數γ、時間重標τ=t×1.9、結論。",
+      "findings": "數字正確：3–4cm間z由正轉負、鹵素燈2cm三頻率z=0.02–0.06（σ由3次實驗）、單根>70%氧以11.54Hz閃、>95%氧損壞設備。兩點scope須補：(1)近同相、遠反相是重現前人結果，本研究新在鹵素燈排除對照與氧耦合模型，旁白不能說成本研究首次發現；(2)引言已列另一派渦動力學（vortex）解釋，氧耦合模型含擬合參數與時間重標，屬候選機制之一，不能說『答案是氣流帶氧』已定論。另鹵素燈只有輻射、沒有火焰本身的熱羽流，所以實驗排除的是『純輻射』，不是排除熱。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "file": ".cache/wave51-physics-leidenfrost-F1.jpg",
+      "sha256": "33801d8a3bf2563ae87ae1900cad61a515a06da60c9738e78332e321acb85006",
+      "reviewer_read": "目讀：A裝置（雙高速相機＋麥克風）；B小滴−4/0/3/7ms側視；D高度h於t_t前降到最低約50μm後回升；C大滴側/底視−0.6→0ms底視出現黑斑；E聲波在t_e單一尖峰。與作者描述一致；縮圖小，畫面需取原檔高解析。"
+    },
+    {
+      "file": ".cache/wave51-physics-leidenfrost-F2.jpg",
+      "sha256": "ef02d2cd7211bc8d6514e507bc9ffc530df3013bae6bd1dfa7f86d7d0858ca68",
+      "reviewer_read": "目讀：A俯視R→Re→0.1ms爆裂；B殼/核示意；C殘骸殼照片（比例尺100μm）；D Re/Ri對ϕi雙對數斜率1/3，『Pure ethanol』點落在約0.025（非正文寫的0.25）；兩插圖Re/Ri≈0.08與Ts、Ri無關。"
+    },
+    {
+      "file": ".cache/wave51-physics-leidenfrost-F4.jpg",
+      "sha256": "cc74908bed49a68fe806df542666aeafe7553be6b4d823772c44e654c755d1eb",
+      "reviewer_read": "僅核作者紀錄與SHA；本審閱以正文Fig4圖說核R_t≈15μm與R_ic≈0.6mm，未從縮圖讀數。"
+    },
+    {
+      "file": ".cache/wave51-physics-propulsion-F1.jpg",
+      "sha256": "585af3d35ca0410820c3ae738d2144886f5b31559e65877bf00630fff11ae70b",
+      "reviewer_read": "目讀：A對稱矩形脊示意與兩種軌道；B Track I Δt=0.4s 來回折返；C Track II 環軌t_s=0到t_e=61.2s順時針疊影，長條液滴逐漸變短。畫面辨識度高，是本批最直觀的現象圖。"
+    },
+    {
+      "file": ".cache/wave51-physics-propulsion-F4.jpg",
+      "sha256": "81ca412e551e522996d887102054b38de6f0cddc2626f8bfc53252f8eeed1391",
+      "reviewer_read": "目讀：A脊頂左右蒸氣頸(l_s1,h_l)/(l_s2,h_r)、u_x色階、壓力P偏角θ與F_drive；B淨力對Δh與l_s的正負區，小Δh時可為負。須標模擬。"
+    },
+    {
+      "file": ".cache/wave51-physics-champagne-p-11.png",
+      "sha256": "9dcbde82e3b96b30def156ac02a45996b456379d96ffce18d3ebcab816140572",
+      "reviewer_read": "目讀：Fig2(a)三柱由散到最右整齊一線（R增、La=0），(b)三柱由散到直（La 0/0.1/0.5，R近同）。對照清楚，可原創重繪。"
+    },
+    {
+      "file": ".cache/wave51-physics-candle-p-04.png",
+      "sha256": "c3441fde7b1d78dacc70c8eb5c0e97c619bf98e28ec8fffc56db9c326b5497fa",
+      "reviewer_read": "目讀：Fig2五種束形；Fig3二值化影格(a)單束、(b)同相、(c)反相（紅線分兩束）。"
+    },
+    {
+      "file": ".cache/wave51-physics-candle-p-09.png",
+      "sha256": "864163ae615bed8aff1f39f3cf358d6a82974c0ae7fbc0213f89088c9cceb1ec",
+      "reviewer_read": "目讀：Table2 z=0.05/0.06/0.02；Fig9b 2–3cm z≈0.6–0.8，4cm起轉負約−0.2至−0.65；Fig9a頻率約10–11.7Hz。可做『蠟燭2cm z≈0.7 對 鹵素燈2cm z≈0.05』的並列。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P51-001",
+      "decision": "retain",
+      "reason": "原文支持：雜質聚殼→蒸氣層薄至約1μm觸地爆裂、小滴先達R_t≈15μm起飛、加TiO2得Re/Ri∝ϕi^1/3。結局分歧有聲音、黑斑與起飛曲線三種實測證據，加微粒是真控制，題目有趣且不靠舊萊頓弗羅斯特懸浮題。須改answer_target因果措辭（見corrections），並避免引用正文0.25誤植。",
+      "scope_checked": "scope所列204–321°C、乙醇為主、多種純液、19–52μm噴霧、蒸氣層為模型值、微粒沉降未定皆與原文一致；『不推到家用鍋』保留。",
+      "editorial_cap_seconds": 70
+    },
+    {
+      "id": "P51-002",
+      "decision": "retain",
+      "reason": "原文支持對稱脊上>9mm水滴自推進、平板對照亂漂/吹後即停、Fig4脊頂蒸氣頸不等使壓力傾斜。與P51-001不同研究、不同控制（脊幾何/平板對照vs雜質濃度）、不同答案（推力方向來源vs終局），是兩個核心，不合併。視覺最強。",
+      "scope_checked": "脊寬/週期/高、8mm軌道、樣品2/5/6失效、界面傾斜不可直接量、方向來自初始擾動為推測，皆對得上；建議scope加『淨推力需蒸氣頸差夠大，小差值模型給負值』一句。",
+      "editorial_cap_seconds": 60
+    },
+    {
+      "id": "P51-003",
+      "decision": "retain",
+      "reason": "兩組單變因控制（只改大小、只加SDS）＋模擬渦度門檻＋真飲料毛細管實驗，證據鏈完整；與『加界面活性劑升得慢』舊退題答的是不同量（鏈側向穩定vs上升速度）。主題親民、畫面好。期刊版不可達，保留預印本旗標。問法『乾淨的水』建議改『氣泡水』。",
+      "scope_checked": "甘油水模擬液、不長大的氮氣泡、毛細管非杯內成核、啤酒蛋白Langmuir粗估、預印本版本，皆與原文一致。",
+      "editorial_cap_seconds": 68
+    },
+    {
+      "id": "P51-004",
+      "decision": "retain",
+      "reason": "鹵素燈取代一束的對照是本研究真正新增的控制，讓『是不是熱輻射』成為可回答的問題，不是空泛的同步大全。數字核對無誤。但須在scope註明同相/反相轉換為前人已見、氧耦合模型為候選機制之一（另有渦動力學解釋）、鹵素燈只排除純輻射。",
+      "scope_checked": "8mm蠟燭、三/六根三角束、2cm三頻率、氧耦合未量流場皆正確；缺『前人已報導』『另有渦動解釋』『擬合參數與時間重標』三點。",
+      "editorial_cap_seconds": 70
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P51-001",
+      "b": "X42-002",
+      "cosine": 0.792023,
+      "decision": "distinct",
+      "reason": "舊題是噴墨液絲尾端靠高分子彈性回縮與主滴會合；新題是懸浮液滴蒸發末期雜質殼導致觸地爆裂或縮到起飛半徑。只共享『液滴』字面，控制變因（高分子濃度vs微粒濃度）與答案完全不同。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-001",
+      "b": "S49-002",
+      "cosine": 0.776366,
+      "decision": "distinct",
+      "reason": "舊題是過冷滴結冰放熱使周圍凝出小水珠、再被冰滴回收；新題無相變結冰、液滴不接觸固體，答案是雜質殼與蒸氣層厚度門檻。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-001",
+      "b": "X40-002",
+      "cosine": 0.773069,
+      "decision": "distinct",
+      "reason": "舊題是水柱內小氣泡降低聲速使敲擊音變低；新題的『啪』聲只是觸地爆沸的結果，不解釋音高。答案無重疊。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-001",
+      "b": "P210",
+      "cosine": 0.767528,
+      "decision": "distinct",
+      "reason": "舊題是密閉平衡下蒸發與凝結速率相等；新題是開放熱板上萊頓弗羅斯特蒸發的終局分歧，答案不涉平衡。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-001",
+      "b": "X40-003",
+      "cosine": 0.76527,
+      "decision": "distinct",
+      "reason": "舊題是波紋管凹槽積液改變哨音；與液滴懸浮爆裂無共同機制，向量相似只來自液體/聲音字面。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "X38-005",
+      "cosine": 0.768394,
+      "decision": "distinct",
+      "reason": "舊題是葉尖凹凸轉折使接觸線縮小、水滴較快脫離；新題水滴不接觸固體，靠脊頂蒸氣頸不對稱的壓力水平分量持續推進。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "X42-009",
+      "cosine": 0.758062,
+      "decision": "distinct",
+      "reason": "舊題是蒸發液滴內Marangoni循環方向取決於導熱與接觸角；新題是整滴在對稱脊上定向平移，驅動力來自蒸氣層壓力，不是液面張力梯度。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "S49-002",
+      "cosine": 0.757929,
+      "decision": "distinct",
+      "reason": "舊題是結冰放熱造成周圍凝結暈環；新題是懸浮液滴自推進，無結冰與凝結。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "P45-008",
+      "cosine": 0.751162,
+      "decision": "distinct",
+      "reason": "舊題是旋轉部分裝水容器落地時水柱向上噴使反彈變低（動量交換）；新題是熱板上液滴持續水平推進，無關落地反彈。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "P45-005",
+      "cosine": 0.749417,
+      "decision": "distinct",
+      "reason": "舊題是先行球空腔回衝使後球撞擊峰值變大；新題無入水空腔，答案是蒸氣頸不對稱推力。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "I12011",
+      "cosine": 0.834241,
+      "decision": "distinct",
+      "reason": "舊題是二維泡沫中相鄰氣泡透過膜交換氣體使大泡長小泡縮；新題是液體中連續上升氣泡的尾流升力方向，答案與控制（界面活性劑/泡大小改尾流）皆不同。cosine 0.83只因『泡』字密集。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "P24005",
+      "cosine": 0.827555,
+      "decision": "distinct",
+      "reason": "舊題是花生表面附泡使整體跨越浮沉門檻循環；新題無固體載體，問同一成核點冒出的一串氣泡為何排直或散開，答案是表面渦度使升力反向。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "L49-004",
+      "cosine": 0.79711,
+      "decision": "distinct",
+      "reason": "舊題是敲擊使啤酒中泡團碎裂、界面增加而加速長大；新題是單一成核點氣泡鏈的側向穩定，啤酒只作限制，不談泡團成長。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "X40-002",
+      "cosine": 0.796969,
+      "decision": "distinct",
+      "reason": "舊題是氣泡降低水柱聲速；新題是氣泡間尾流交互與排列，答案無重疊。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "LEG-S70",
+      "cosine": 0.78719,
+      "decision": "distinct",
+      "reason": "舊題是表面張力使單一泡泡趨圓、三膜120度；新題是界面活性物使上升氣泡表面不滑動而改尾流升力方向，不談泡形最小面積。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "R38007",
+      "cosine": 0.721113,
+      "decision": "distinct",
+      "reason": "舊題是考古火把與油脂燈照明用途差異；新題是兩束燭火閃動的同相/反相耦合與輻射排除對照，只共享『火』字。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "S41-008",
+      "cosine": 0.633346,
+      "decision": "distinct",
+      "reason": "舊題是放電熔融模擬火山灰成珠的溫度區；與火焰振盪耦合無共同機制。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "LEG-S48",
+      "cosine": 0.62191,
+      "decision": "distinct",
+      "reason": "舊題答火焰向上是浮力與輸送；新題答成束火焰週期閃動及兩束如何互相牽動，並以鹵素燈排除輻射，控制與答案不同。浮力可作背景一句，不重述。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "E2066",
+      "cosine": 0.62132,
+      "decision": "distinct",
+      "reason": "舊題是冷燈絲電阻低造成開燈湧流；新題鹵素燈只是對照光源，不解釋燈絲電流。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "E2186",
+      "cosine": 0.6201,
+      "decision": "distinct",
+      "reason": "舊題是受激放射使雷射光同調；新題的『配合』是兩個火焰振盪器經氣流/氧耦合同步，物理機制完全不同。",
+      "full_question_answer_scope_read": true
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P51-001",
+      "b": "P24002",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：舊題能量來自凍結外殼向內長壓縮液核；新題無結冰，殼由蒸發濃縮雜質形成，觸發是蒸氣層變薄觸地。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-001",
+      "b": "H3092",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：咖啡環需釘住的接觸線與外向補流；新題無接觸線，雜質均勻積在整個液面。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-001",
+      "b": "P053",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：靜態潤濕競爭vs懸浮蒸發終局，答案無交集。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-001",
+      "b": "I12013",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：舊題毛細儲能回推使撞擊滴提早離面；新題小滴起飛是半徑小到蒸氣流托力壓過重量（h/R∝R^-3/2），不是撞擊回彈。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "A19005",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：舊題靠接觸線遲滯與楔形開合的時間差；新題無接觸線、幾何對稱，方向由流動自發打破。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "D2126",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：機械棘輪的答案就是齒形不對稱；新題答案是不需幾何不對稱。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "P45-003",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：舊題半邊塗層預設了不對稱；新題表面完全對稱。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-002",
+      "b": "F14005",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：軟壁變形產生法向潤滑升力減阻；新題是蒸氣壓力傾斜產生水平推力。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "I12005",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：舊題是膜被拉薄時張力梯度回流修補；新題是界面活性使氣泡表面不滑動而改變尾流升力方向。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "F17004",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：舊題振動中氣泡體積相位造成下沉；新題靜止液體中氣泡鏈側向穩定。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "P24005",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：見top5同對理由。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "L49-004",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：見top5同對理由。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-003",
+      "b": "P230",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：舊題答氣體為何逸出；新題答逸出的氣泡為何排直，不重答來源。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "LEG-S48",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：見top5同對理由。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "P098",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：舊題答常溫也輻射；新題用實驗說輻射不足以耦合，且不重述輻射存在。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "E2099",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：單一電路鬆弛振盪vs兩火焰耦合的相位轉換。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "P51-004",
+      "b": "I8015",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意distinct：重試同步是相同起點造成的相關，沒有實體耦合；新題是兩個自激振盪器的物理耦合。",
+      "full_question_answer_scope_read": true
+    }
+  ],
+  "extra_dedup_searches": [
+    {
+      "terms": "Leidenfrost、萊頓、弗羅斯特、蒸氣層、蒸氣墊、熱鍋、熱板",
+      "files": "all-questions.tsv、not-added.tsv",
+      "hits": "raw無萊頓弗羅斯特題；NA命中P22-NA010（熱板鋸齒讓液滴前進是哪種氣流，wave22未讀正文退題）。",
+      "judgement": "P51-002與P22-NA010相關但不同：舊退題問鋸齒（不對稱）棘輪的氣流機制，新題答案正是對稱表面不靠鋸齒；P51-002只把鋸齒當一句背景，不能順帶回答棘輪機制。作者近對漏列此NA，建議在P51-002 notes補記。"
+    },
+    {
+      "terms": "懸浮、爆開、炸開、液滴…跳/起飛",
+      "hits": "S49-005（低壓結冰滴依起冰點方向跳離）、S49-NA012（真空凍滴跳起尺度界線）、P25-NA007爆米花、S49-NA003凍殼爆開。",
+      "judgement": "皆為結冰或水汽壓力破殼；P51-001無相變結冰、爆裂由觸地爆沸觸發，distinct。"
+    },
+    {
+      "terms": "氣泡鏈、一串氣泡、香檳、氣泡酒、啤酒、氣泡水、汽水、界面活性、尾流",
+      "hits": "raw無氣泡鏈/香檳；R42003氣泡水刺舌（感官）、L49-004；NA有F17-NA005/I12-NA11（升得慢）、I12-NA13（泡破射流滴未讀）。尾流命中P30002足球、E11009沙丘尾流互斥等。",
+      "judgement": "無同核。E11009『上游床形尾流使下游沙丘推開』與P51-003同屬尾流交互但介質、對象、控制（界面活性劑）不同，distinct。"
+    },
+    {
+      "terms": "燭、蠟燭、火焰、閃爍、同步、反相、耦合、振盪、節拍器",
+      "hits": "LEG-S48、P187、E2099、Z7004電魚改頻、B2300電鰻同步、wave14/A22-NA021螢火蟲同步退題、A22-NA014鞭毛同相反相。",
+      "judgement": "無燭火同步舊題；A22-NA014『兩支鞭毛同相或反相不拆題』原則與本批一致——P51-004把同相、反相、輻射排除放在同一核心，沒有按相位名稱拆題。"
+    },
+    {
+      "terms": "DOI/arXiv：aav8081、adt6677、2211.02253、physrevfluids.8.053601、78229、2207.02019、Kitahata、2004.05610",
+      "files": "pool.json、batches/（排除wave51-physics）",
+      "hits": "0",
+      "judgement": "四來源未曾入庫。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P51-001",
+        "b": "X42-002",
+        "reason": "舊題是噴墨液絲尾端靠高分子彈性回縮與主滴會合；新題是懸浮液滴蒸發末期雜質殼導致觸地爆裂或縮到起飛半徑。只共享『液滴』字面，控制變因（高分子濃度vs微粒濃度）與答案完全不同。"
+      },
+      {
+        "a": "P51-001",
+        "b": "S49-002",
+        "reason": "舊題是過冷滴結冰放熱使周圍凝出小水珠、再被冰滴回收；新題無相變結冰、液滴不接觸固體，答案是雜質殼與蒸氣層厚度門檻。"
+      },
+      {
+        "a": "P51-001",
+        "b": "X40-002",
+        "reason": "舊題是水柱內小氣泡降低聲速使敲擊音變低；新題的『啪』聲只是觸地爆沸的結果，不解釋音高。答案無重疊。"
+      },
+      {
+        "a": "P51-001",
+        "b": "P210",
+        "reason": "舊題是密閉平衡下蒸發與凝結速率相等；新題是開放熱板上萊頓弗羅斯特蒸發的終局分歧，答案不涉平衡。"
+      },
+      {
+        "a": "P51-001",
+        "b": "X40-003",
+        "reason": "舊題是波紋管凹槽積液改變哨音；與液滴懸浮爆裂無共同機制，向量相似只來自液體/聲音字面。"
+      },
+      {
+        "a": "P51-002",
+        "b": "X38-005",
+        "reason": "舊題是葉尖凹凸轉折使接觸線縮小、水滴較快脫離；新題水滴不接觸固體，靠脊頂蒸氣頸不對稱的壓力水平分量持續推進。"
+      },
+      {
+        "a": "P51-002",
+        "b": "X42-009",
+        "reason": "舊題是蒸發液滴內Marangoni循環方向取決於導熱與接觸角；新題是整滴在對稱脊上定向平移，驅動力來自蒸氣層壓力，不是液面張力梯度。"
+      },
+      {
+        "a": "P51-002",
+        "b": "S49-002",
+        "reason": "舊題是結冰放熱造成周圍凝結暈環；新題是懸浮液滴自推進，無結冰與凝結。"
+      },
+      {
+        "a": "P51-002",
+        "b": "P45-008",
+        "reason": "舊題是旋轉部分裝水容器落地時水柱向上噴使反彈變低（動量交換）；新題是熱板上液滴持續水平推進，無關落地反彈。"
+      },
+      {
+        "a": "P51-002",
+        "b": "P45-005",
+        "reason": "舊題是先行球空腔回衝使後球撞擊峰值變大；新題無入水空腔，答案是蒸氣頸不對稱推力。"
+      },
+      {
+        "a": "P51-003",
+        "b": "I12011",
+        "reason": "舊題是二維泡沫中相鄰氣泡透過膜交換氣體使大泡長小泡縮；新題是液體中連續上升氣泡的尾流升力方向，答案與控制（界面活性劑/泡大小改尾流）皆不同。cosine 0.83只因『泡』字密集。"
+      },
+      {
+        "a": "P51-003",
+        "b": "P24005",
+        "reason": "舊題是花生表面附泡使整體跨越浮沉門檻循環；新題無固體載體，問同一成核點冒出的一串氣泡為何排直或散開，答案是表面渦度使升力反向。"
+      },
+      {
+        "a": "P51-003",
+        "b": "L49-004",
+        "reason": "舊題是敲擊使啤酒中泡團碎裂、界面增加而加速長大；新題是單一成核點氣泡鏈的側向穩定，啤酒只作限制，不談泡團成長。"
+      },
+      {
+        "a": "P51-003",
+        "b": "X40-002",
+        "reason": "舊題是氣泡降低水柱聲速；新題是氣泡間尾流交互與排列，答案無重疊。"
+      },
+      {
+        "a": "P51-003",
+        "b": "LEG-S70",
+        "reason": "舊題是表面張力使單一泡泡趨圓、三膜120度；新題是界面活性物使上升氣泡表面不滑動而改尾流升力方向，不談泡形最小面積。"
+      },
+      {
+        "a": "P51-004",
+        "b": "R38007",
+        "reason": "舊題是考古火把與油脂燈照明用途差異；新題是兩束燭火閃動的同相/反相耦合與輻射排除對照，只共享『火』字。"
+      },
+      {
+        "a": "P51-004",
+        "b": "S41-008",
+        "reason": "舊題是放電熔融模擬火山灰成珠的溫度區；與火焰振盪耦合無共同機制。"
+      },
+      {
+        "a": "P51-004",
+        "b": "LEG-S48",
+        "reason": "舊題答火焰向上是浮力與輸送；新題答成束火焰週期閃動及兩束如何互相牽動，並以鹵素燈排除輻射，控制與答案不同。浮力可作背景一句，不重述。"
+      },
+      {
+        "a": "P51-004",
+        "b": "E2066",
+        "reason": "舊題是冷燈絲電阻低造成開燈湧流；新題鹵素燈只是對照光源，不解釋燈絲電流。"
+      },
+      {
+        "a": "P51-004",
+        "b": "E2186",
+        "reason": "舊題是受激放射使雷射光同調；新題的『配合』是兩個火焰振盪器經氣流/氧耦合同步，物理機制完全不同。"
+      },
+      {
+        "a": "P51-001",
+        "b": "P24002",
+        "reason": "舊題能量來自凍結外殼向內長壓縮液核；新題無結冰，殼由蒸發濃縮雜質形成，觸發是蒸氣層變薄觸地。"
+      },
+      {
+        "a": "P51-001",
+        "b": "H3092",
+        "reason": "咖啡環需釘住的接觸線與外向補流；新題無接觸線，雜質均勻積在整個液面。"
+      },
+      {
+        "a": "P51-001",
+        "b": "P053",
+        "reason": "靜態潤濕競爭vs懸浮蒸發終局，答案無交集。"
+      },
+      {
+        "a": "P51-001",
+        "b": "I12013",
+        "reason": "舊題毛細儲能回推使撞擊滴提早離面；新題小滴起飛是半徑小到蒸氣流托力壓過重量（h/R∝R^-3/2），不是撞擊回彈。"
+      },
+      {
+        "a": "P51-002",
+        "b": "A19005",
+        "reason": "舊題靠接觸線遲滯與楔形開合的時間差；新題無接觸線、幾何對稱，方向由流動自發打破。"
+      },
+      {
+        "a": "P51-002",
+        "b": "D2126",
+        "reason": "機械棘輪的答案就是齒形不對稱；新題答案是不需幾何不對稱。"
+      },
+      {
+        "a": "P51-002",
+        "b": "P45-003",
+        "reason": "舊題半邊塗層預設了不對稱；新題表面完全對稱。"
+      },
+      {
+        "a": "P51-002",
+        "b": "F14005",
+        "reason": "軟壁變形產生法向潤滑升力減阻；新題是蒸氣壓力傾斜產生水平推力。"
+      },
+      {
+        "a": "P51-003",
+        "b": "I12005",
+        "reason": "舊題是膜被拉薄時張力梯度回流修補；新題是界面活性使氣泡表面不滑動而改變尾流升力方向。"
+      },
+      {
+        "a": "P51-003",
+        "b": "F17004",
+        "reason": "舊題振動中氣泡體積相位造成下沉；新題靜止液體中氣泡鏈側向穩定。"
+      },
+      {
+        "a": "P51-003",
+        "b": "P230",
+        "reason": "舊題答氣體為何逸出；新題答逸出的氣泡為何排直，不重答來源。"
+      },
+      {
+        "a": "P51-004",
+        "b": "P098",
+        "reason": "舊題答常溫也輻射；新題用實驗說輻射不足以耦合，且不重述輻射存在。"
+      },
+      {
+        "a": "P51-004",
+        "b": "E2099",
+        "reason": "單一電路鬆弛振盪vs兩火焰耦合的相位轉換。"
+      },
+      {
+        "a": "P51-004",
+        "b": "I8015",
+        "reason": "重試同步是相同起點造成的相關，沒有實體耦合；新題是兩個自激振盪器的物理耦合。"
+      },
+      {
+        "a": "P51-001",
+        "b": "P51-002",
+        "reason": "同為萊頓弗羅斯特液滴但不同研究：P51-001的控制是雜質/微粒濃度、答終局（爆或飛）；P51-002的控制是脊幾何與平板對照、答推力方向來源。答案互不涵蓋，是兩個核心。"
+      },
+      {
+        "a": "P51-002",
+        "b": "P22-NA010",
+        "reason": "舊退題問不對稱鋸齒棘輪的氣流；新題是對稱脊自發破缺，答案不依賴鋸齒，不復活舊退題。"
+      },
+      {
+        "a": "P51-003",
+        "b": "E11009",
+        "reason": "同是尾流使後者偏離，但沙丘是床形輸砂、氣泡鏈是界面活性改表面渦度使升力反向，控制與答案不同。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "P51-NA001",
+      "existing_ids": [
+        "P51-001"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "懸浮蒸氣墊是前提，只值開場一句；併為P51-001背景合理。"
+    },
+    {
+      "id": "P51-NA002",
+      "existing_ids": [
+        "P51-002"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "只讀二維理論、實驗原文未取，暫不收正確；重入條件清楚。"
+    },
+    {
+      "id": "P51-NA003",
+      "existing_ids": [],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "僅見標題未讀，不收合理。"
+    },
+    {
+      "id": "P51-NA004",
+      "existing_ids": [],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "僅見標題未讀，不收合理。"
+    },
+    {
+      "id": "P51-NA005",
+      "existing_ids": [
+        "I12005"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "I12-NA11與F17-NA005確已兩度把『升得慢』歸到I12005界面濃度變體；P51-003問側向穩定，不復活。"
+    },
+    {
+      "id": "P51-NA006",
+      "existing_ids": [
+        "P51-003"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "啤酒結果依泡大小而異且蛋白參數粗估，作限制正確。"
+    },
+    {
+      "id": "P51-NA007",
+      "existing_ids": [
+        "I12010"
+      ],
+      "existing_ids_exist": true,
+      "decision": "revise_reason",
+      "reason": "I12010答的是泡膜退縮剪切碎成『膜滴』受氣體密度影響；香檳表面細霧主要來自泡穴塌縮的『射流滴』，而射流滴另有I12-NA13（未讀射流聚焦原文而退）。理由『泡帽破裂與氣霧已有』過度宣稱已收，應改為『膜滴途徑見I12010；射流滴未讀原研究，沿I12-NA13不收』並把I12-NA13列為prior。不收結論不變。"
+    },
+    {
+      "id": "P51-NA008",
+      "existing_ids": [],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "wave14-animal-signals與A22-NA021確有螢火蟲同步退題；屬生命組。"
+    },
+    {
+      "id": "P51-NA009",
+      "existing_ids": [
+        "P51-004"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "Fig6頻率隨束數趨勢是同研究模型參數延伸，不另成核。"
+    },
+    {
+      "id": "P51-NA010",
+      "existing_ids": [
+        "P51-004"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": ">70%氧單根11.54Hz、>95%損壞設備有原文；無獨立控制且不宜示範。"
+    },
+    {
+      "id": "P51-NA011",
+      "existing_ids": [],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "P23-NA006存在；本輪未讀，不復活。"
+    },
+    {
+      "id": "P51-NA012",
+      "existing_ids": [
+        "F10016"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "F10016為開放水道水躍；水槽圓形水躍表面張力爭議雙方未讀，不收合理。理由可補『圓形水躍與F10016明渠水躍幾何不同，待讀原文再判』。"
+    },
+    {
+      "id": "P51-NA013",
+      "existing_ids": [
+        "P22005"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "P22005即蒸氣介導不對稱蒸發的液滴互追，食用色素版本是同核換材料。"
+    },
+    {
+      "id": "P51-NA014",
+      "existing_ids": [
+        "X39-006"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "X39-006張力決定單裂或分岔，同核。"
+    },
+    {
+      "id": "P51-NA015",
+      "existing_ids": [
+        "X41-009"
+      ],
+      "existing_ids_exist": true,
+      "decision": "confirm",
+      "reason": "X41-009凹腰斜率回復，同核。"
+    }
+  ],
+  "theme_review": [
+    {
+      "proposal_id": "W51P-T01",
+      "decision": "revise",
+      "original_body_seconds": 72,
+      "recommended_body_seconds": 66,
+      "recommended_chapter_seconds": [
+        22,
+        26,
+        18
+      ],
+      "recommended_beat_seconds": [
+        [
+          22
+        ],
+        [
+          26
+        ],
+        [
+          18
+        ]
+      ],
+      "reason": "三章各有新資訊（分歧現象、加微粒控制、門檻比較），加總72與字數÷4.25+看圖秒一致。但：章1『液滴靠蒸氣層懸浮』只能一句（≤4秒），減2秒；章3時間軸會重述章1兩結局，且『標註溫度範圍與乙醇限制』屬限制清單，應改為畫面字卡、不佔旁白秒數，減4秒。章2的1/3次方律對一分鐘解說偏技術，可只說『加越多微粒、越早炸』並以Fig2D斜線帶過，不另加秒；不得引用正文0.25（圖值約0.025）。不建議與T02合併：兩案各自完整，合併只會多出轉場而不增新資訊。"
+    },
+    {
+      "proposal_id": "W51P-T02",
+      "decision": "revise",
+      "original_body_seconds": 62,
+      "recommended_body_seconds": 58,
+      "recommended_chapter_seconds": [
+        28,
+        30
+      ],
+      "recommended_beat_seconds": [
+        [
+          28
+        ],
+        [
+          30
+        ]
+      ],
+      "reason": "兩章資訊不重複，平板對照是關鍵控制、須保留。章2列『短滴、寬脊不行、方向來源仍屬推測』偏限制清單：保留『短滴推不動』（直接呼應每條脊貢獻一點），寬脊與方向推測改字卡，減4秒。旁白須講『兩側差距夠大才推得動』，避免把Fig4B負力區抹掉。章1『過去靠鋸齒』限一句。"
+    },
+    {
+      "proposal_id": "W51P-T03",
+      "decision": "revise",
+      "original_body_seconds": 68,
+      "recommended_body_seconds": 66,
+      "recommended_chapter_seconds": [
+        22,
+        26,
+        18
+      ],
+      "recommended_beat_seconds": [
+        [
+          22
+        ],
+        [
+          26
+        ],
+        [
+          18
+        ]
+      ],
+      "reason": "三章各帶新對照（乾淨液散、兩種單變因轉直、真飲料），無重述。章3『標註飲料參數為推估、預印本版本』改字卡，減2秒；章3須說清真飲料是拉細玻璃毛細管產泡、不是杯中自然成核點。期刊版不可達，片中引用標預印本。"
+    },
+    {
+      "proposal_id": "W51P-T04",
+      "decision": "revise",
+      "original_body_seconds": 70,
+      "recommended_body_seconds": 66,
+      "recommended_chapter_seconds": [
+        16,
+        22,
+        28
+      ],
+      "recommended_beat_seconds": [
+        [
+          16
+        ],
+        [
+          22
+        ],
+        [
+          28
+        ]
+      ],
+      "reason": "章3鹵素燈對照是全片價值所在，維持28秒；但須改說『排除的是純輻射』並一句帶過『模型為候選解釋、另有渦旋派說法』。章1、章2各減2秒：章2同相→反相是重現前人結果，不需鋪陳為新發現，Fig3影格與Fig9曲線擇一為主畫面即可。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "P51-001",
+      "field": "answer_target",
+      "problem": "『起初較大的液滴要蒸發較久，裡面極微量雜質來不及擴散回內部』把尺寸效應歸因到蒸發時間長短；原文是擴散時間遠大於蒸發時間（任何大小都會積殼），結局由爆炸半徑與初半徑成定比、與固定起飛半徑≈15μm誰先到決定。",
+      "suggested_text": "液滴靠底下持續蒸發的蒸氣層懸浮。液體裡極微量雜質擴散得比蒸發慢得多，會隨液面後退堆在表面成殼，使蒸發變慢、蒸氣層變薄；薄到與顆粒同級（約1微米）時局部碰觸熱板，劇烈沸騰而炸開並發出聲響。殼在液滴縮到初始大小的一定比例時才足以觸發，所以起初越大，炸開時也越大；起初很小的液滴還沒到那一步，就先縮到約15微米，被蒸氣流托起飛離。刻意加入微粒後，爆炸時的半徑比隨初始濃度呈1/3次方增加，且在所測溫度與初始大小下幾乎不變。"
+    },
+    {
+      "id": "P51-001",
+      "field": "notes",
+      "problem": "原文正文『純乙醇Re/Ri≈0.25±0.002』與Fig2D圖值（約0.025）及Re~50μm/Ri=1.9mm矛盾，製作者可能誤引。",
+      "suggested_text": "追加：S001正文Re/Ri≈0.25應為誤植，Fig2D純乙醇點約0.025（Re~50μm對Ri=1.9mm）；片中若引比例用圖值或不引。"
+    },
+    {
+      "id": "P51-002",
+      "field": "scope",
+      "problem": "未提淨推力需蒸氣頸差夠大（Fig4B小Δh區為負）。",
+      "suggested_text": "於scope末加：模擬顯示兩側蒸氣層差距太小時淨力可為負，『一厚一薄』須達一定差距才推得動。"
+    },
+    {
+      "id": "P51-002",
+      "field": "notes",
+      "problem": "未對照wave22舊退題P22-NA010（鋸齒棘輪氣流）。",
+      "suggested_text": "追加：與P22-NA010不同——該退題問不對稱鋸齒的氣流機制且未讀正文；本題答案不依賴鋸齒，鋸齒只作一句背景、不回答棘輪機制。"
+    },
+    {
+      "id": "P51-003",
+      "field": "question",
+      "problem": "『乾淨的水』易被理解為自來水對照；原研究真飲料對照是氣泡水，乾淨液是甘油水模擬液。",
+      "suggested_text": "香檳的氣泡排成一直線往上，為什麼氣泡水裡差不多大的氣泡卻散成一片？"
+    },
+    {
+      "id": "P51-004",
+      "field": "scope",
+      "problem": "缺三項邊界：同相/反相轉換為前人已見、引言列有渦動力學另解、氧耦合模型含擬合參數與時間重標；鹵素燈只排除純輻射而非『熱』。",
+      "suggested_text": "於scope加：近同相、遠反相的轉換前人已報導，本研究新增的是鹵素燈對照與氧耦合模型；模型含擬合參數並重標時間，文獻另有渦旋動力學解釋，耦合機制未定案。鹵素燈只有輻射、沒有火焰熱羽流，排除的是純輻射耦合。"
+    },
+    {
+      "id": "P51-NA007",
+      "field": "reason",
+      "problem": "I12010只涵蓋膜滴途徑；香檳細霧主要為射流滴，另見I12-NA13未讀退題，『已有』過度宣稱。",
+      "suggested_text": "膜滴碎裂途徑見I12010；香檳細霧的射流滴途徑未讀原研究，沿I12-NA13不收，不因飲料換名另立。"
+    },
+    {
+      "id": "P51-004",
+      "field": "editorial.payoff",
+      "problem": "「傳熱的解釋被排除」「更可能走空氣與氧氣」超出原文：只排除純輻射，氧耦合為候選模型。",
+      "suggested_text": "單靠熱輻射的解釋被一盞會閃的燈挑戰；溫度擾動氣流、改變供氧是作者提出的候選機制。"
+    }
+  ],
+  "limits": [
+    "S003期刊版（PRFluids 8,053601）經link.aps.org 403、harvest 401、Unpaywall closed皆不可達，只能比對預印本；無法確認期刊版數字是否修訂，預印本旗標維持。",
+    "S004讀arXiv上傳版（journal_ref指向Sci Rep），未逐字比對期刊版；補充材料A–C（z的計算、氧耦合推導）未讀。",
+    "各研究補充影片與SM PDF未看；畫面判斷限正文圖與縮圖，S001圖為PMC約440px縮圖。",
+    "片長仍為紙上估時（字數÷4.25＋看圖秒），本審未合成或試讀旁白；建議秒數只是上限，不得為湊長度回加。",
+    "語意近鄰為建議性top5，本審另以關鍵詞與DOI搜尋補查，但無法保證涵蓋所有同義換句的舊題。"
+  ],
+  "revision_history": [
+    {
+      "readback_on": "2026-11-03",
+      "reviewer_file_before_sha256": "dcf91a0b8a845dcc85f8895526f11883d8bd3151babab78f96b0cea04539f9f6",
+      "reviewer_file_after_sha256": "self（本檔寫入後另算）",
+      "inputs": [
+        {
+          "file": "batches/wave51-physics.json",
+          "before_sha256": "cdc281301e7a6ef5fdfa40d7e1461a814e4303dcb1cabcc6ebe7dd66e6a7b140",
+          "after_sha256": "7113e0b3600d02a404ef960e164894d59888b2cc566b16fbba91672aa1320d1e"
+        },
+        {
+          "file": "reviews/wave51-physics-themes.json",
+          "before_sha256": "105aaef214aed47dab2d780aaad08913c262cbcb3f41fca2da4d438083d7dd84",
+          "after_sha256": "6af149e636e78c4db85212be625870e49ccccaba3dc57bc5cbfddd72553b175c"
+        },
+        {
+          "file": "reviews/wave51-physics-author.json",
+          "before_sha256": "30ff5b2f20d6e7d8654eb503cc40f2410d2cf0fc51a7ef3cb9f4545ef8f380c5",
+          "after_sha256": "4b2f3b57cee983adad25d48ad861eebce511616fbb7e1ee52c7181390007e7ce"
+        }
+      ],
+      "verified": [
+        "corrections[]七項全部逐字落地：P51-001 answer_target與notes（0.25誤植）、P51-002 scope（小差值負力）與notes（P22-NA010）、P51-003 question改「氣泡水」、P51-004 scope四項邊界、P51-NA007理由與prior I12-NA13。",
+        "P51-004 answer_target另改為「質疑單靠輻射耦合」「候選機制之一」，與原文相符，未新增過度宣稱。",
+        "P51-NA012新增「圓形水躍與F10016明渠水躍幾何不同，待讀原文再判」：屬實（F10016答案為開放水道超臨界轉亞臨界），且只延後判斷、不宣稱新結論，接受。",
+        "作者近對新增P51-002~P22-NA010 propose_distinct，與本審判斷一致；counts.near_pairs=18相符。",
+        "片案秒數：T01 66=[22,26,18]、T02 58=[28,30]、T03 66=[22,26,18]、T04 66=[16,22,28]；每章單beat等於章秒，章和等於body，均符合theme_review；target/range分鐘=body/60；字數÷4.25＋看圖秒（約3.4–4.1秒）仍合理；只刪不加。",
+        "限制清單已移至on_screen_captions，旁白new_information無限制清單；T01不引0.25；T02保留「差距夠大時」；T03註明毛細管非杯中成核；T04章2標「前人已見、本研究重現」、章3標「排除的是純輻射」與候選解釋。"
+      ],
+      "remaining": [
+        "P51-004 editorial.payoff仍寫「最像傳熱的解釋被一盞會閃的燈排除，耦合更可能走空氣與氧氣」：鹵素燈只排除純輻射、未排除熱羽流，且『更可能走氧氣』依賴含擬合參數的候選模型，與已修的scope/answer矛盾。建議改：「單靠熱輻射的解釋被一盞會閃的燈挑戰；溫度擾動氣流、改變供氧是作者提出的候選機制。」此為本審首輪漏列，非作者新引入。"
+      ]
+    },
+    {
+      "readback_on": "2026-11-03",
+      "reviewer_file_before_sha256": "93b03b97db2575eb047e2519a9293d491965ab7e47a19f66d3b24e10ea2f12da",
+      "reviewer_file_after_sha256": "self（本檔寫入後另算）",
+      "inputs": [
+        {
+          "file": "batches/wave51-physics.json",
+          "before_sha256": "7113e0b3600d02a404ef960e164894d59888b2cc566b16fbba91672aa1320d1e",
+          "after_sha256": "9b2fee6bd84aca1b142b7f6a65bd10be9ab6c35b93d59ed117c7917213d775f0"
+        },
+        {
+          "file": "reviews/wave51-physics-themes.json",
+          "before_sha256": "6af149e636e78c4db85212be625870e49ccccaba3dc57bc5cbfddd72553b175c",
+          "after_sha256": "169bb03956b524416df65fa99f00900628a17c89babd504bef1c68c5beb12e1b"
+        },
+        {
+          "file": "reviews/wave51-physics-author.json",
+          "before_sha256": "4b2f3b57cee983adad25d48ad861eebce511616fbb7e1ee52c7181390007e7ce",
+          "after_sha256": "103e081d7734b57a1528ddd4a0f903cc7cb8467437e9ba575cf11540bd39ad85"
+        }
+      ],
+      "verified": [
+        "P51-004 editorial.payoff逐字採用建議文字，與scope/answer一致。",
+        "T04 connection改為「再用鹵素燈檢驗單靠輻射的解釋」，比原「排除輻射」更準確，未新增宣稱；秒數未變。",
+        "四片案章秒和仍為66/58/66/66、beat等於章；candidate_ids與片案對應不變。",
+        "全文搜尋「排除／證明／定案／確定」：僅見「排除的是純輻射」「耦合機制未定案」「排除對照」等已受限措辭，無殘留過度宣稱。"
+      ],
+      "remaining": []
+    }
+  ],
+  "final_input_check": {
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "batch_sha256": "9b2fee6bd84aca1b142b7f6a65bd10be9ab6c35b93d59ed117c7917213d775f0",
+    "themes_sha256": "169bb03956b524416df65fa99f00900628a17c89babd504bef1c68c5beb12e1b",
+    "author_receipt_sha256": "103e081d7734b57a1528ddd4a0f903cc7cb8467437e9ba575cf11540bd39ad85",
+    "candidate_ids_match": true,
+    "candidate_ids": [
+      "P51-001",
+      "P51-002",
+      "P51-003",
+      "P51-004"
+    ],
+    "theme_candidate_ids_match": true,
+    "corrections_landed": "8/8",
+    "theme_seconds_match": true,
+    "remaining": []
+  }
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>同一張網頁，兩種等待｜G37 示範小樣</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#172b3a;background:#f4f1e9}body{max-width:1100px;margin:auto;padding:32px}h1{font-size:clamp(25px,4vw,42px);line-height:1.25}p{line-height:1.7}button{font:inherit;padding:10px 14px;border-radius:8px;border:1px solid #255761;background:#fff;cursor:pointer;margin:4px}button:disabled{opacity:.5}section{background:#fff;border:1px solid #cbd4d4;border-radius:16px;padding:24px;margin:20px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.card{background:#edf4f1;padding:16px;border-radius:12px}.card img{display:block;width:100%;height:auto}.card img:not([src]){visibility:hidden}output{display:block;white-space:pre-wrap;line-height:1.7;font-variant-numeric:tabular-nums}small{color:#425d65}#readout{min-height:4em}#status{min-height:1.7em}.tag{color:#216f67;font-weight:700;letter-spacing:.1em}@media(max-width:650px){body{padding:16px}.grid{grid-template-columns:1fr}section{padding:16px}}
+</style>
+<p class="tag">原來如此事務所 · 企劃展示小樣</p>
+<h1>畫面已經出現，<br>事情卻還沒做完。</h1>
+<p>先比較工作排在哪裡，再看圖片出現時有沒有預留位置。這是自製的條件對照，並非真實網站跑分。</p>
+<section>
+<h2>① 工作在前台，還是在另一條工作線？</h2>
+<p>按下後，在 50 毫秒時排一個「回報」工作。同時安排約 700 毫秒的教學用忙碌迴圈，觀察回報何時真正執行。</p>
+<button data-mode="idle">沒有額外工作</button><button data-mode="main">主執行緒忙碌</button><button data-mode="worker">Worker 忙碌</button>
+<p id="status" aria-live="polite">準備好了。</p><output id="readout" aria-live="polite">尚未執行。數值以此瀏覽器當次結果為準。</output>
+<small>這裡量的是排程回報延遲，不是人類點擊反應時間，也不是 INP。Worker 仍使用 CPU；此小樣沒有量測大量資料傳輸成本。</small>
+</section>
+<section>
+<h2>② 同一張圖晚到，文字會去哪裡？</h2>
+<button id="images">延後加入同一張圖</button>
+<div class="grid">
+<div class="card"><h3>沒有預留圖片高度</h3><img id="unreserved" alt=""><p id="moving">請盯著這一行文字的位置。</p></div>
+<div class="card"><h3>已預留圖片比例</h3><img id="reserved" width="640" height="240" alt=""><p id="steady">請盯著這一行文字的位置。</p></div>
+</div>
+<output id="image-result" aria-live="polite">尚未加入圖片。</output>
+<small>圖片在本機直接生成，延後設定來源；這裡隔離的是尺寸資訊出現的時機，不是網路速度。</small>
+</section>
+<script>
+const $=id=>document.getElementById(id);
+const busy=milliseconds=>{const end=performance.now()+milliseconds;while(performance.now()<end){/* explicitly simulated workload */}};
+const workerCode=`onmessage=e=>{const start=performance.now();postMessage({type:'started',at:performance.timeOrigin+start});const end=start+e.data;while(performance.now()<end){}postMessage({type:'done',at:performance.timeOrigin+performance.now(),work_elapsed_ms:performance.now()-start})}`;
+window.demoResults=[];
+window.runWork=async mode=>{
+  if(!['idle','main','worker'].includes(mode))throw Error('Unknown mode');
+  document.querySelectorAll('[data-mode]').forEach(b=>b.disabled=true);
+  $('status').textContent='已顯示畫面，準備安排工作…';
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  let worker,url,ready,finished,workerDone,workerStartedAt;
+  const events=[];
+  if(mode==='worker'){
+    url=URL.createObjectURL(new Blob([workerCode],{type:'text/javascript'}));worker=new Worker(url);
+    let finish;
+    finished=new Promise(resolve=>{finish=resolve;});
+    ready=new Promise((resolve,reject)=>{worker.onerror=reject;worker.onmessage=e=>{events.push(e.data.type);if(e.data.type==='started'){workerStartedAt=e.data.at;resolve();}if(e.data.type==='done'){workerDone={...e.data,received_at:performance.timeOrigin+performance.now()};finish();}};});
+    worker.postMessage(700);await ready;
+  }
+  const started=performance.now();
+  const result=await new Promise(resolve=>{
+    setTimeout(()=>{events.push('timer');resolve({mode,timer_requested_ms:50,timer_elapsed_ms:performance.now()-started,timer_callback_at:performance.timeOrigin+performance.now(),simulated_work_ms:mode==='idle'?0:700});},50);
+    if(mode==='main')busy(700);
+  });
+  $('status').textContent='已收到回報。';
+  $('readout').textContent=`希望約 50 毫秒後回報\n實際約 ${result.timer_elapsed_ms.toFixed(1)} 毫秒後執行`;
+  if(worker){await finished;worker.terminate();URL.revokeObjectURL(url);}
+  result.event_order=events;
+  result.worker_evidence=workerDone?{started_at:workerStartedAt,done_at:workerDone.at,work_elapsed_ms:workerDone.work_elapsed_ms,done_message_elapsed_ms:workerDone.received_at-(performance.timeOrigin+started),timer_before_done:result.timer_callback_at<workerDone.at}:null;
+  result.worker_note=mode==='worker'?'Timer and worker completion timestamps are recorded using each context performance.timeOrigin + performance.now(); done-message order is recorded separately. Not a task-completion benchmark.':null;
+  window.demoResults.push(result);
+  document.querySelectorAll('[data-mode]').forEach(b=>b.disabled=false);
+  return result;
+};
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>window.runWork(b.dataset.mode));
+window.runImages=async()=>{
+  const a=$('unreserved'),b=$('reserved');a.removeAttribute('src');b.removeAttribute('src');
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  const position=x=>x.getBoundingClientRect().y-x.parentElement.getBoundingClientRect().y;
+  const before=[$('moving'),$('steady')].map(position);
+  $('image-result').textContent='圖片還沒出現，先看兩行文字。';
+  await new Promise(r=>setTimeout(r,1200));
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="640" height="240"><rect width="640" height="240" fill="#9acabc"/><circle cx="320" cy="120" r="64" fill="#eeb96a"/></svg>';
+  const src='data:image/svg+xml,'+encodeURIComponent(svg);
+  a.src=src;b.src=src;await Promise.all([a.decode(),b.decode()]);
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  const after=[$('moving'),$('steady')].map(position);
+  const result={unreserved_delta_px:after[0]-before[0],reserved_delta_px:after[1]-before[1],viewport_width:innerWidth};
+  $('image-result').textContent=`卡片內文字位置：未預留移動 ${result.unreserved_delta_px.toFixed(1)} px；已預留移動 ${result.reserved_delta_px.toFixed(1)} px。`;
+  return result;
+};
+$('images').onclick=window.runImages;
+</script>
+</html>

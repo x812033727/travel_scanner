@@ -1,0 +1,295 @@
+{
+  "batch_id": "wave26-physics-20261102",
+  "created_on": "2026-11-02",
+  "scope": "旋轉磁矩懸浮、捲繞手性冷熱反號、共享彈性支承的接觸時差；三個受控對照，不擴成材料/物件百科。",
+  "sources": [
+    {
+      "id": "P26-S001",
+      "url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+      "title": "Magnetic levitation by rotation",
+      "publisher": "J. M. Hermansen et al.; Physical Review Applied20,044036",
+      "doi": "10.1103/PhysRevApplied.20.044036",
+      "accessed_on": "2026-11-02",
+      "version": "2023-10-13正式版；DTU副本有1頁封面，PDF頁碼比印刷頁多1；arXiv2305.00812為同工作，不另算研究。",
+      "canonical_url": "https://doi.org/10.1103/PhysRevApplied.20.044036",
+      "retrieval_url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+      "read_via": "當日web核APS/DTU身份，web PDF timeout；指定UA urllib HTTP200有效PDF，PyMuPDF抽文及指定頁目讀。",
+      "reading_scope": "PDF pp2–5 §§I–III A/B、pp8–15 §§III D、IV、V、VI；目讀PDF p5觀察圖及p13 Fig6。未看附片/SI或重跑模擬。",
+      "locator": "印刷pp3–4 §III A；pp8–9 §IV；pp10–13 §V A–D、Fig6；p14 §VI。",
+      "summary": "受驅動磁矩取向會改變，模型中距離改變可切換吸引與排斥而形成回復。",
+      "limitations": "固定位置掃描與自由運動模型分開；模型只能重現部分趨勢，阻尼形式/恆定場敏感。實驗移除鋁板後有限時，不能稱無限懸浮；渦流非獨立托力答案。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-physics-magnet.pdf",
+        "sha256": "6efa86a06df8d0050b5d2ace905cada9de043ca31bad8f0d8a6998ae95f8a89d",
+        "text_file": ".cache/wave26-physics-magnet.txt",
+        "text_sha256": "71df7ddf34c75057ff861495d8d553abb1c2ed5f4898de6cee6f8954dee9d16a"
+      }
+    },
+    {
+      "id": "P26-S002",
+      "url": "https://lab.semi.ac.cn/library/upload/files/2019/10/219314543.pdf",
+      "title": "Torsional refrigeration by twisted, coiled, and supercoiled fibers",
+      "publisher": "R. Wang et al.; Science366(6462),216–221",
+      "doi": "10.1126/science.aax6182",
+      "accessed_on": "2026-11-02",
+      "version": "2019-10-11正式版PDF，機構網站所存2019下載副本；NSF/PubMed是同篇的另載體/索引。",
+      "canonical_url": "https://doi.org/10.1126/science.aax6182",
+      "retrieval_url": "https://lab.semi.ac.cn/library/upload/files/2019/10/219314543.pdf",
+      "read_via": "當日web核PubMed正式DOI/日期；NSF web與指定UA timeout；機構PDF指定UA HTTP200，抽文並目讀Fig1。",
+      "reading_scope": "PDF pp1–3天然橡膠扭轉/釋放及Fig1；p5 Twistocaloric cooling by stretching heterochiral fibers；目讀p2 Fig1F。另讀p4–5聚乙烯/NiTi段以限制跨材料解釋，不採為新題。未讀SI/影片。",
+      "locator": "PDF p2 Fig1F及圖說；p5 Twistocaloric cooling by stretching heterochiral fibers；p1 Twisting/untwisting背景。",
+      "summary": "捲繞方向與纖維內扭轉相對關係，能讓拉長時加扭或解扭，切換冷熱符號。",
+      "limitations": "天然橡膠異手性線圈測量時保留芯棒防扭轉抵消；比較為相同spring index的指定試件。表面最大溫變不是整體平均或制冷效率。不可移用NiTi相變作橡膠答案。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-physics-twist.pdf",
+        "sha256": "0e2ace224e5e9adfaaaeab4088da266099705ed3414b1efb1ce85ece58cdd8da",
+        "text_file": ".cache/wave26-physics-twist.txt",
+        "text_sha256": "4c3f6bdb6b50ee14b0487a97e99c968612524506c01bdfc94b863caa277ccab6"
+      }
+    },
+    {
+      "id": "P26-S003",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645",
+      "title": "People Bouncing on Trampolines: Dramatic Energy Transfer, a Table-Top Demonstration, Complex Dynamics and a Zero Sum Game",
+      "publisher": "M. Srinivasan, Y. Wang, A. Sheets; PLOS ONE8(11),e78645",
+      "doi": "10.1371/journal.pone.0078645",
+      "accessed_on": "2026-11-02",
+      "version": "2013-11-13正式HTML；PMC3827250為同篇另載體，不另算研究。",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0078645",
+      "retrieval_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645",
+      "read_via": "當日web讀PLOS正文；指定UA urllib HTTP200有效HTML及原圖；本機抽文，圖2/6目讀。",
+      "reading_scope": "Results的A physical demonstration、A mathematical model、Passive dynamics、Maximizing energy transfer及Fig2/3/5/6圖說；Methods的Table-top demonstration；目讀Fig2及Fig6。未觀看影片、未重跑程式；長期博弈/混沌不採。",
+      "locator": "Results → A physical demonstration / A mathematical model / Maximizing energy transfer，Fig2、Fig3、Fig5a與Fig6；Methods → Table-top demonstration。",
+      "summary": "兩球接觸共同彈性支承的時間差，會改變彼此受力與取得的回彈能量。",
+      "limitations": "球實驗與無質量繃弦、小位移、無耗散模型分框；Fig6為瞬時啟發式對照非所有時序通用解。等能量對稱條件才採第二球增益，不給真人彈床操作建議或稱必能完整轉移。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-physics-trampoline.html",
+        "sha256": "49aa84d226bdcfd20fb51c3ff5076df90353560333bf4a2ecd9151cc1e1bce45",
+        "text_file": ".cache/wave26-physics-trampoline.txt",
+        "text_sha256": "a7f7cdca7e533a6217e7ab5cd68c4507feb3a43880e0aae88f15f25249cb2b86"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P26001",
+      "question": "兩塊磁鐵沒有接觸，為什麼轉動上面那塊，下面那塊就可能懸住？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "magnetism.driven_dipole_orientation_distance_restoring_equilibrium",
+      "answer_target": "轉動場帶動浮磁鐵同步進動，使磁矩維持靜態時不會停留的取向；模型中靠近時橫向排斥相對增強、離遠時吸引佔優，形成可回復的位置。恆定場分量與進入此狀態的阻尼條件都重要。",
+      "scope": "限2023旋轉永久磁鐵研究；磁矩進動不等於整球只繞一根軸自轉。此機制模型不是所有磁懸浮通則；重力仍存在並移動平衡位置，沒有憑空取消。",
+      "source_ids": [
+        "P26-S001"
+      ],
+      "source_locator": "印刷p4 §III A；pp8–9 §IV；pp11–13 §V B–D/Fig6。",
+      "premise_status": "screened",
+      "notes": "原研究觀察與模型並列；不提供高速磁鐵裝置操作。鋁板延長穩定與阻尼模型只是邊界，不另拆一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "磁力大小之外，物體來得及轉到哪個方向也會改變能否留住。",
+        "visual": "先按原觀察標磁極與同步進動，再切固定位置模型的近/遠取向及力箭頭；回復方向是模型，不畫成拍到的磁力線。",
+        "seconds": [
+          90,
+          125
+        ]
+      }
+    },
+    {
+      "id": "P26002",
+      "question": "同樣把橡膠線圈拉長，為什麼一個變熱、另一個反而變冷？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "materials.coil_chirality_stretch_twist_thermal_sign_reversal",
+      "answer_target": "拉長線圈不只改長度，也改纖維扭轉；內扭與外圈同手性時增加扭轉，反手性時解扭，後者可把拉伸時的溫度反應反轉。",
+      "scope": "限天然橡膠同/異手性線圈、相同spring index的Fig1F；異手性橡膠保留芯棒，快速變形表面溫變。不是任意橡皮筋都拉伸降溫，也不把不同材料相變混為同一機制。",
+      "source_ids": [
+        "P26-S002"
+      ],
+      "source_locator": "PDF p2 Fig1F；p5 Twistocaloric cooling by stretching heterochiral fibers。",
+      "premise_status": "screened",
+      "notes": "已讀正文/圖；畫兩個尺度的扭向而非把線圈左右鏡像當充分條件。無制冷效率或商用效益承諾。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外形拉長相同，內部卻可能加扭或解扭。",
+        "visual": "兩層標線分辨纖維自身扭向與大線圈方向；相同拉伸箭頭下，保留芯棒的異手性對照解扭並降溫，放鬆時符號再反轉。溫度條為定性示意。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "P26003",
+      "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "mechanics.shared_elastic_support_contact_timing_energy_redistribution",
+      "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+      "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。",
+      "source_ids": [
+        "P26-S003"
+      ],
+      "source_locator": "Results A physical demonstration、A mathematical model、Maximizing energy transfer；Fig2、Fig5a、Fig6；Methods Table-top demonstration。",
+      "premise_status": "screened",
+      "notes": "球與床的能量合計才有守恆；兩球本身動量不封閉，不能直接套二球碰撞公式。影片未看，只目讀圖序列。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "支承不是各彈各的；另一顆球能改寫這一顆拿回多少能量。",
+        "visual": "先看兩球接觸時序與最高點；固定先落球位置/上升方向，並排有無後落球時床面斜率與向上力，再標兩球離床後的能量帳。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P26-NA001",
+      "question": "水瓶拋起後為什麼會慢慢停止翻轉？",
+      "existing_ids": [
+        "P027",
+        "P028"
+      ],
+      "source_ids": [],
+      "reason": "已讀2018來源搜尋回傳的p733摘要/引言；水或球重分布增加慣量仍是舊核心。",
+      "reentry_condition": "須有超出質量重分布的新因果控制；目前只留生活例子。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA002",
+      "question": "揉過的紙為什麼記得先前壓過多深？",
+      "existing_ids": [
+        "K11013"
+      ],
+      "source_ids": [],
+      "reason": "舊題已有局部翻轉門檻與最大壓縮歷史，不換紙種。",
+      "reentry_condition": "另有非門檻歷史機制才重入。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA003",
+      "question": "快速震動為什麼能讓倒立擺站住？",
+      "existing_ids": [
+        "F17005"
+      ],
+      "source_ids": [],
+      "reason": "舊動態穩定核心已在倒浮剛體題；只是換成擺。",
+      "reentry_condition": "需要不同於週期驅動穩定的控制。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA004",
+      "question": "雷射照粗糙表面為什麼有亮暗斑點？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "source_ids": [],
+      "reason": "相干散斑干涉已有，不換相機或雷射。",
+      "reentry_condition": "須有新訊息取得機制而非再說干涉。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA005",
+      "question": "最上方小球為什麼被大球撞得很高？",
+      "existing_ids": [
+        "P173"
+      ],
+      "source_ids": [],
+      "reason": "只用兩次獨立碰撞與守恆的版本太薄；Cross/Bristol完整接觸研究本輪僅發現未讀。",
+      "reentry_condition": "另輪實讀有限接觸重疊/控制後再判，不採搜尋摘要補答案。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA006",
+      "question": "牛頓擺最後一顆為什麼飛出去？",
+      "existing_ids": [
+        "P173"
+      ],
+      "source_ids": [],
+      "reason": "已有P24-NA011退題；一般動量能量故事仍不足。",
+      "reentry_condition": "接觸波/耗散造成不同結果需原文與控制後才重入。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA007",
+      "question": "橡膠拉長為什麼會縮回？",
+      "existing_ids": [
+        "H3026"
+      ],
+      "source_ids": [],
+      "reason": "交聯與鏈排列已收。",
+      "reentry_condition": "冷熱反號另有本批P26002控制；不再拆普通回彈。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA008",
+      "question": "形狀記憶合金加熱為什麼變回原形？",
+      "existing_ids": [
+        "M16001"
+      ],
+      "source_ids": [
+        "P26-S002"
+      ],
+      "reason": "NiTi相態恢復已有；本輪讀扭冷文NiTi段不另拆相變題。",
+      "reentry_condition": "不同於原相態循環的因果控制才收。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA009",
+      "question": "磁鐵穿過銅管為什麼掉得很慢？",
+      "existing_ids": [
+        "E2146"
+      ],
+      "source_ids": [],
+      "reason": "渦流耗能與反作用已有，換銅管不增核心。",
+      "reentry_condition": "不同於磁通改變煞車的新作用才收。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA010",
+      "question": "磁鐵不吸銅，就代表銅完全不受磁場影響嗎？",
+      "existing_ids": [
+        "E2134"
+      ],
+      "source_ids": [],
+      "reason": "靜態抗磁已有，不以浮起畫面換名。",
+      "reentry_condition": "需不同微觀/動態條件控制。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA011",
+      "question": "小磁鐵為什麼需要更快的轉速才懸浮？",
+      "existing_ids": [],
+      "source_ids": [
+        "P26-S001"
+      ],
+      "reason": "同一旋轉磁矩機制的尺寸依賴，本批不拆成第二核心。",
+      "reentry_condition": "只有超出P26001的獨立控制答案才另立。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA012",
+      "question": "多扭幾圈是否就能做出更好的冰箱？",
+      "existing_ids": [],
+      "source_ids": [
+        "P26-S002"
+      ],
+      "reason": "材料冷卻幅度不等於整機效率/循環壽命；本輪未查完整工程條件。",
+      "reentry_condition": "需要實際全循環與能耗基準比較，現不作效益題。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    },
+    {
+      "id": "P26-NA013",
+      "question": "兩人在彈床上怎麼跳才能把對方能量拿走？",
+      "existing_ids": [],
+      "source_ids": [
+        "P26-S003"
+      ],
+      "reason": "不採真人操作或博弈策略，紙上模型後半非本題所需。",
+      "reentry_condition": "若另有安全、獨立的行為控制研究再評估；目前只用球體被動交換。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。"
+    }
+  ]
+}

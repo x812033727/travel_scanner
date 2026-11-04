@@ -1,0 +1,90 @@
+{
+  "status": "ROOT_PROPOSALS_PENDING_SECOND_READER",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-02",
+  "reviewed_files": [
+    {
+      "file": ".cache/wave15-old-pair-discovery.json",
+      "sha256": "d5f932332d12e96dc45f733a6a9639cfc47ddc93269c1f8b6049cc53e0889a7f"
+    },
+    {
+      "file": "baselines/2026-11-02-2921.json.gz",
+      "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7"
+    }
+  ],
+  "selection": "Six highest-scoring selected pairs without existing explicit distinct decisions from frozen wave14 top10, plus one manual followup found while reading their shared source. Not random and not a recall estimate.",
+  "pairs": [
+    {
+      "a": "E2024",
+      "b": "E2043",
+      "cosine": 0.875221,
+      "selection": "retrieved_top6",
+      "proposed_decision": "distinct",
+      "reason": "E2024比較同電壓下電池可搬運的總電荷；E2043則以共用兩節點與電容量決定理想電容的電荷分配。儲能裝置及約束不同，不把電池電量當電容的C。"
+    },
+    {
+      "a": "D2041",
+      "b": "D2043",
+      "cosine": 0.87352,
+      "selection": "retrieved_top6",
+      "proposed_decision": "distinct",
+      "reason": "D2041在冷凍前讓脂肪結晶、水合以改變之後打發；D2043在出機後繼續凍結更多水。物質過程、時點及可比結果不同，可接同片而非同核改名。"
+    },
+    {
+      "a": "E2026",
+      "b": "E2070",
+      "cosine": 0.872073,
+      "selection": "retrieved_top6",
+      "proposed_decision": "distinct",
+      "reason": "E2026比較電荷總量與總能量；E2070比較每秒電荷通量與每秒能量交換。雖由同一電位定義導出，時間尺度及測量量不同；可同片連接，不把功率與總能量混同。另查E2024/E2026是否只是同一總量比較。"
+    },
+    {
+      "a": "J6014",
+      "b": "X5004",
+      "cosine": 0.871839,
+      "selection": "retrieved_top6",
+      "proposed_decision": "distinct",
+      "reason": "J6014利用同球心幾何容許軸承組合傾斜、減少外加不對中負荷；X5004為織物無外載下內部線圈接觸與力矩決定自發曲率。外部配合與內部殘餘幾何約束不同。"
+    },
+    {
+      "a": "K6024",
+      "b": "N277",
+      "cosine": 0.871482,
+      "selection": "retrieved_top6",
+      "proposed_decision": "distinct",
+      "reason": "K6024對照雲內液滴碰併與先融雪的凍毛毛雨形成；N277是在下落途中液滴蒸發或冰晶昇華。形成液滴與消失於落地前為不同歷程。"
+    },
+    {
+      "a": "E7007",
+      "b": "E7008",
+      "cosine": 0.86932,
+      "selection": "retrieved_top6",
+      "proposed_decision": "distinct",
+      "reason": "E7007問曲流彎道外侵蝕內沉積造成側向遷移；E7008問積高河道於洪泛時換到另一條路。連續邊界搬移與新路徑改道的條件與觀測不同。"
+    },
+    {
+      "a": "E2024",
+      "b": "E2026",
+      "selection": "manual_followup_from_shared_source",
+      "proposed_decision": "merge",
+      "duplicate_id": "E2026",
+      "canonical_id": "E2024",
+      "reason": "兩題均固定電壓、改變可搬運的電荷總量，答案同為每單位電荷能量乘總電荷。E2024已用電池給出這個控制；E2026只有抽象改寫、未新增時間或電路限制。保留E2026原問答、條件及來源為E2024變體，不另計核心。"
+    }
+  ],
+  "source_readings": [
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/7-2-electric-potential-and-potential-difference",
+      "read_via": "2026-11-02 web.open returned primary textbook body",
+      "reading_scope": "Electric Potential and Potential Difference; lines34–60 definition and battery comparison. No copying of exercises or worked examples.",
+      "finding": "The source itself connects fixed voltage, differing total charge and battery energy; E2024 and E2026 repeat that same comparison."
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power",
+      "read_via": "2026-11-02 web.open returned primary textbook body",
+      "reading_scope": "Power in Electric Circuits lines30–62, especially energy-per-time derivation. No consumer cost or wiring advice adopted.",
+      "finding": "Current introduces charge per time and power is energy per time. This permits a separate rate question, with no claim that power and energy are interchangeable."
+    }
+  ],
+  "limits": "All seven pairs read as stored full question/answer/scope. Only the stated two sources freshly read; other topics not fact-checked afresh. Root is not original author of these historical batches. Pending second-reader comparison; central files unchanged."
+}

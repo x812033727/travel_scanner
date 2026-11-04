@@ -1,0 +1,573 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "pool_physics",
+  "status": "TARGETED_RECHECK_PASS_TOPIC_LEVEL_ONLY",
+  "reviewed": {
+    "batch_file": "docs/videos/so-thats-why/pool/batches/wave6-plants-garden.json",
+    "batch_sha256": "2a42fb26d9768836bf46238fab555ad833b8c00fcd489ec9d8a0f9f2e558e001",
+    "themes_file": "docs/videos/so-thats-why/pool/reviews/wave6-plants-themes.json",
+    "themes_sha256": "b03a8e9a7136a3622c31738181c89884ced93de8463c858251a3632eaa1a6a58",
+    "author_file": "docs/videos/so-thats-why/pool/reviews/wave6-plants-author.json",
+    "author_sha256": "38b54fcf698f7b973954c18158127ce5d3736c1d3dec0f7b800639889b81d886"
+  },
+  "scope": {
+    "initial_candidates_fully_read": 21,
+    "final_candidates_read": 16,
+    "source_metadata_read": 32,
+    "not_added_read": 19,
+    "external_sources_read": 16,
+    "external_sources_for_remaining_candidates": 14,
+    "remaining_candidates_covered_by_external_sampling": 14,
+    "not_sampled_candidate_ids": [
+      "R6004",
+      "R6005"
+    ],
+    "external_full_papers_verified": 0,
+    "summary": "逐題題名/研究目標/條件/視覺/預算及作者來源範圍編輯覆核；指定正文或摘要風險抽查，不是16題逐主張查核，也不是32來源全文核對。"
+  },
+  "retrieval": {
+    "draft_sha256": "4c63f77db8dd356edc86cce8cbea57b22d2ec7e1f995fc2ae3a74070d5f8dc6a",
+    "draft_raw_count": 2959,
+    "batch_sha256": "2a42fb26d9768836bf46238fab555ad833b8c00fcd489ec9d8a0f9f2e558e001",
+    "neighbours_sha256": "22207482ba56b97fbbe9df5a8b0103f47f6b35f9a0c44f43214130409de5b1d5",
+    "final_neighbour_rows": 16,
+    "final_neighbour_comparisons": 80,
+    "prior_read": "另曾讀初版21題/105近鄰；最後16題新版80對均重新比對答案與範圍，退題不當中央候選。",
+    "rule": "語意分數只提供查找線索，不當合併機率；另人工查H3086/A5002等模型未列的重要近似。"
+  },
+  "row_dispositions": [
+    {
+      "id": "R6001",
+      "disposition": "keep_topic_candidate",
+      "reason": "相容組織的接觸、橋接與新維管連續是跨傷口輸送機制，不是分生組織名稱表。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6002",
+      "disposition": "keep_topic_candidate",
+      "reason": "細胞層取樣改變多基因型排列，與有性後代等位基因重組、一般克隆不同。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6003",
+      "disposition": "keep_topic_candidate",
+      "reason": "區分製種上一代與三倍體下一代；奇數染色體套數造成配子形成障礙，保留花粉刺激在同核。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6004",
+      "disposition": "keep_topic_candidate",
+      "reason": "低蒸散時根部溶質驅動正壓，與葉端蒸散形成拉力的條件不同；本次未外站抽讀此PDF。",
+      "source_sampled": false,
+      "production_ready": false
+    },
+    {
+      "id": "R6005",
+      "disposition": "keep_topic_candidate",
+      "reason": "局部酵素改變離層連接並留下保護層，非色素變化或旱季落葉功能；本次未外站抽讀本頁。",
+      "source_sampled": false,
+      "production_ready": false
+    },
+    {
+      "id": "R6006",
+      "disposition": "keep_topic_candidate",
+      "reason": "冷期使FLC進入回暖後仍穩定的染色質狀態，具有歷史依賴，不只是冷天休眠或一般轉錄可接近性。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6007",
+      "disposition": "keep_topic_candidate",
+      "reason": "土壤鋁供應與有機色素複合物是兩段因果；不是直接酸鹼試紙，也不能套H3086的d軌域分裂。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6008",
+      "disposition": "keep_topic_candidate",
+      "reason": "共同FD位點的FT/TFL1競爭是芽命運調節，與長距離運送或有限生長分類不同。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6009",
+      "disposition": "keep_topic_candidate",
+      "reason": "已讀機構報導有FT蛋白追蹤與嫁接邏輯；保留葉片感測與莖頂執行分處，非重述光週期。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6011",
+      "disposition": "keep_topic_candidate",
+      "reason": "限定風信子摘要中的細胞徑向擴大/縱向縮短，器官縮短不等於細胞縮小；不得補成微管唯一因果。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6013",
+      "disposition": "keep_topic_candidate",
+      "reason": "可再分配資源被挪到新生部位，造成老/新組織不同缺口；保留N/Ca比較，果實Ca不另計。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6014",
+      "disposition": "keep_topic_candidate",
+      "reason": "呼吸相關酵素把試劑還原成顯色產物，提供代謝讀出，非只說染紅就是活；維持組織位置與出苗限制。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6017",
+      "disposition": "keep_topic_candidate",
+      "reason": "衰減狀態與第二次刺激跨越推測閉合門檻，可與肌纖維張力加總區分；只採相關門檻模型，非唯一閉合原因。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6018",
+      "disposition": "keep_topic_candidate",
+      "reason": "新組織由邊緣生成並隔開受傷舊木，說明外觀閉合不等於舊木修復；不採舊手冊傷口處理。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6019",
+      "disposition": "keep_topic_candidate",
+      "reason": "果實啟動可與受精拆開，摘要有GA缺乏條件限制生長素誘導的干預結果；不能擴成兩方向互相必要。",
+      "source_sampled": true,
+      "production_ready": false
+    },
+    {
+      "id": "R6020",
+      "disposition": "keep_topic_candidate",
+      "reason": "結合態氧的輸送兼顧呼吸與低游離氧，具體解開固氮/用氧矛盾，非一般根瘤互利分類。",
+      "source_sampled": true,
+      "production_ready": false
+    }
+  ],
+  "merges": [],
+  "excluded": [],
+  "distinct": [
+    {
+      "a": "R6001",
+      "b": "L077",
+      "reason": "分生組織分工與跨切口新維管連接不同。"
+    },
+    {
+      "a": "R6002",
+      "b": "L122",
+      "reason": "克隆不增加有性重組，與嵌合細胞層再生取樣不同。"
+    },
+    {
+      "a": "R6003",
+      "b": "L043",
+      "reason": "正常減數配子套數減半與奇數套數配對/分配障礙不同。"
+    },
+    {
+      "a": "R6003",
+      "b": "R6019",
+      "reason": "三倍體配子障礙與無受精時果實訊號啟動不同；不因同為無籽合併。"
+    },
+    {
+      "a": "R6004",
+      "b": "L097",
+      "reason": "根端正壓與葉端蒸散造成拉力有不同邊界條件。"
+    },
+    {
+      "a": "R6005",
+      "b": "LEG-S35",
+      "reason": "組織分離/封閉與色素顯露/合成不同。"
+    },
+    {
+      "a": "R6005",
+      "b": "R6018",
+      "reason": "預設離層的細胞連接弱化與傷後新生界線隔離不同。"
+    },
+    {
+      "a": "R6006",
+      "b": "B2218",
+      "reason": "開花抑制基因的持續沉默，不是種子生理休眠解除。"
+    },
+    {
+      "a": "R6006",
+      "b": "V3043",
+      "reason": "新題有環境歷史後穩定狀態與回暖比較，非只說染色質阻礙讀取。"
+    },
+    {
+      "a": "R6006",
+      "b": "V3044",
+      "reason": "不以乙醯基降低正電解釋本題FLC穩定沉默；機制不可互換。"
+    },
+    {
+      "a": "R6007",
+      "b": "H3086",
+      "reason": "鋁/有機色素/共色素複合顯色，不是d軌域晶場分裂；不可共用光譜模型。"
+    },
+    {
+      "a": "R6008",
+      "b": "L080",
+      "reason": "FT/TFL1競爭FD的局部命運調節，超過有限/無限生長分類。"
+    },
+    {
+      "a": "R6008",
+      "b": "R6009",
+      "reason": "到達部位的訊息傳送與到達後共同夥伴的競爭不同。"
+    },
+    {
+      "a": "R6009",
+      "b": "L104",
+      "reason": "日長偵測與FT蛋白從葉到莖頂的轉送不同。"
+    },
+    {
+      "a": "R6011",
+      "b": "L083",
+      "reason": "局部細胞沿長軸生長與收縮根細胞變寬變短不同。"
+    },
+    {
+      "a": "R6013",
+      "b": "V3070",
+      "reason": "元素能否被再分配的差異，不等於糖的壓力流機制。"
+    },
+    {
+      "a": "R6014",
+      "b": "L025",
+      "reason": "活組織代謝的還原顯色讀出與無氧再生NAD+不同。"
+    },
+    {
+      "a": "R6017",
+      "b": "A5002",
+      "reason": "同有時間加總，但本題以衰減狀態達閉合相關門檻；舊題為同批肌纖維張力大小。"
+    },
+    {
+      "a": "R6017",
+      "b": "V3011",
+      "reason": "鈣訊號對比/恢復基線與兩刺激間隔的門檻決策模型不同。"
+    },
+    {
+      "a": "R6017",
+      "b": "V3008",
+      "reason": "同一衰減訊號的時間加總，不是不同路徑的多條件匯流。"
+    },
+    {
+      "a": "R6018",
+      "b": "L078",
+      "reason": "傷後把舊受損區留在內部隔離，不是一般周皮保護。"
+    },
+    {
+      "a": "R6019",
+      "b": "L123",
+      "reason": "無受精果實生長與無融合生殖形成種子不同。"
+    },
+    {
+      "a": "R6020",
+      "b": "L107",
+      "reason": "根瘤糖/氮交換與氧結合緩衝以兼顧呼吸和固氮不同。"
+    }
+  ],
+  "author_withdrawals_before_lock": [
+    {
+      "id": "R6010",
+      "reason": "未成熟胚需再發育目前偏定義。",
+      "central_action": "NONE; retained in not_added only"
+    },
+    {
+      "id": "R6012",
+      "reason": "激素比例與器官結果之間缺因果中段。",
+      "central_action": "NONE; retained in not_added only"
+    },
+    {
+      "id": "R6015",
+      "reason": "近遠端極性保留但缺維持/再生因果。",
+      "central_action": "NONE; retained in not_added only"
+    },
+    {
+      "id": "R6016",
+      "reason": "根芽休眠條件差異尚欠獨立機制。",
+      "central_action": "NONE; retained in not_added only"
+    },
+    {
+      "id": "R6021",
+      "reason": "控水允許代謝但無露根的階段分離未解釋。",
+      "central_action": "NONE; retained in not_added only"
+    }
+  ],
+  "source_spot_checks": [
+    {
+      "source_id": "R6-S016",
+      "url": "https://propg.ifas.ufl.edu/09-tissue-culture/01-types/04-tctypes-micropropagation.html",
+      "read_via": "web HTML body",
+      "reading_scope": "Micropropagation Stage II lines72–79 and Stage III lines80–93",
+      "result": "僅比例與器官結果，缺命運中段；已協調作者鎖前退R6012，未當成中央excluded。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S019",
+      "url": "https://propg.ifas.ufl.edu/04-seeds/02-technology/10-seedstesting-tetrazolium.html",
+      "read_via": "web HTML body",
+      "reading_scope": "Tetrazolium正文lines6–13",
+      "result": "呼吸脫氫酶還原顯色支持R6014；不採操作濃度或固定判色法。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S027",
+      "url": "https://agritech.tnau.ac.in/seed_certification/seed%20treatments_seed%20preming.html",
+      "read_via": "web HTML body",
+      "reading_scope": "What is?及Methodology首段",
+      "result": "支持控水/未露根，但未解釋兩階段分離；作者鎖前退R6021。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S022",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33020606/",
+      "read_via": "web PubMed abstract",
+      "reading_scope": "Abstract lines255–259",
+      "result": "鈣衰減與第二次增量達putative threshold，原候選的相關/推測限制適當。",
+      "coverage": "abstract_only"
+    },
+    {
+      "source_id": "R6-S008",
+      "url": "https://jic.ac.uk/research-impact/epigenetic-switching/",
+      "read_via": "web HTML body",
+      "reading_scope": "Epigenetic switching lines13–25",
+      "result": "FLC穩定沉默、冷期局部作用與回暖後擴展有正文；寡聚化仍是假說。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24221559/",
+      "read_via": "web PubMed abstract",
+      "reading_scope": "Abstract lines233–238",
+      "result": "徑向/切向擴大與縱向縮短支持模型；不採微管方向的單因果概括。",
+      "coverage": "abstract_only"
+    },
+    {
+      "source_id": "R6-S010",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6100629/",
+      "read_via": "ordinary urllib HTTP + ElementTree讀Europe PMC fullTextXML",
+      "reading_scope": "Introduction及Conclusions",
+      "result": "藍色複合物與土壤鋁供應有正文；不是d–d吸收模型。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S005",
+      "url": "https://cucurbitbreeding.wordpress.ncsu.edu/watermelon-breeding/seedless-watermelon-breeding/",
+      "read_via": "web HTML body",
+      "reading_scope": "Seedless Variety Development前三段及empty seed coats段",
+      "result": "4x母株×2x父株→3x；三倍體配子障礙與二倍體花粉刺激；不採製種藥物或田間比例。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S012",
+      "url": "https://www.mpg.de/542432/pressemitteilung200704191",
+      "read_via": "web HTML body",
+      "reading_scope": "FT-GFP追蹤、嫁接及FD段lines120–127",
+      "result": "機構對自身研究的報導支持蛋白移動；明確辨識撤回的2005 mRNA敘述不採。",
+      "coverage": "institutional_research_report"
+    },
+    {
+      "source_id": "R6-S011",
+      "url": "https://www.nature.com/articles/s41467-020-18782-1",
+      "read_via": "ordinary urllib HTTP, HTML text extraction",
+      "reading_scope": "Results: FT competes TFL1 from FD bound at shared target loci, first paragraphs and conclusion",
+      "result": "FT占據增加時TFL1降低但FD占據不改變，支持共享FD位置的競爭；未讀全篇方法。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S002",
+      "url": "https://propg.ifas.ufl.edu/06-grafting/01-terms/04-graftingterms-graftunion.html",
+      "read_via": "web HTML body",
+      "reading_scope": "Graft Union四階段",
+      "result": "貼合、橋接、新木質部/韌皮部與完成維管連接支持R6001。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S003",
+      "url": "https://propg.ifas.ufl.edu/05-cuttings/02-types/05-cuttingtypes-leaf.html",
+      "read_via": "web HTML body",
+      "reading_scope": "Leaf Cuttings末段LII及三種植物例子lines29–38",
+      "result": "支持指定嵌合葉插顏色轉變；候選已避免將LII泛化到所有物種。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S024",
+      "url": "https://scholars.duke.edu/publication/1357559",
+      "read_via": "web HTML body, original paper abstract on author institution page",
+      "reading_scope": "Duke刊載摘要lines22–26",
+      "result": "支持生長素誘導需要活性GA；T01把此寫成互相依賴必須收斂。",
+      "coverage": "abstract_only"
+    },
+    {
+      "source_id": "R6-S026",
+      "url": "https://www.uky.edu/~dhild/22/lect22.html",
+      "read_via": "ordinary urllib HTTP HTML body; web timeout",
+      "reading_scope": "Nodule function: O2 is transported to sites of respiration by leghemoglobin段",
+      "result": "氧結合蛋白運送與維持低游離氧支持R6020；不是酵素，也非完全無氧。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S023",
+      "url": "https://trace.tennessee.edu/server/api/core/bitstreams/5eb63f4f-221a-4847-85e2-5290d3ea0f9d/content",
+      "read_via": "web PDF text",
+      "reading_scope": "SP683 PDF pp1–2 Compartmentalization and Barrier Zones",
+      "result": "新生組織覆蓋與隔離保留舊傷，支持R6018；未採操作建議或成功保證。",
+      "coverage": "selected_body"
+    },
+    {
+      "source_id": "R6-S017",
+      "url": "https://nrcca.cals.cornell.edu/nutrient/CA1/CA0104.php",
+      "read_via": "web HTML body",
+      "reading_scope": "PO4植物內移動性及最後一段N/P/K/Ca比較",
+      "result": "舊葉資源能否再挪用可解釋症狀先後位置；排除土壤逕流概括和施肥診斷。",
+      "coverage": "selected_body"
+    }
+  ],
+  "access_limitations": [
+    {
+      "url": "https://www.uky.edu/~dhild/22/lect22.html",
+      "result": "本次web open timeout；ordinary urllib成功取得並實讀leghemoglobin正文，不是假稱web成功。"
+    },
+    {
+      "source_ids": [
+        "R6-S015",
+        "R6-S022",
+        "R6-S024"
+      ],
+      "result": "只核摘要，保留作者進稿需補對應全文結果的限制。"
+    },
+    {
+      "source_id": "R6-S010",
+      "result": "本次直接讀Europe PMC公開XML Introduction/Conclusions，未另測PMC頁是否解除先前CAPTCHA。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "PLANTS01",
+      "severity": "required_scope",
+      "file": "reviews/wave6-plants-themes.json",
+      "theme_id": "W6R-T01",
+      "location": "chapter2 progression 40–85秒",
+      "finding": "生長素與GA的互相依賴暗示雙向必要性；已讀gib1結果只直接支持生長素誘導果實啟動需要活性GA。",
+      "requested": "改為單向條件：在有生長素訊號時對照正常GA與GA缺乏條件，不宣稱GA誘導也一律需要生長素。保留原85秒上限及全文補讀條件。",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "定點讀回作者修正版與來源支持範圍一致。"
+    },
+    {
+      "id": "PLANTS02",
+      "severity": "required_editorial",
+      "file": "reviews/wave6-plants-themes.json",
+      "theme_id": "W6R-T02",
+      "location": "chapter1 final30秒; chapter3 final30秒",
+      "finding": "各30秒尾段主要是非意識澄清/回顧，沒有足夠新增機制支持這段預算。",
+      "requested": "兩尾段各縮為10秒，三章75+75+75=225秒；同步target_minutes、range、drop_if刪第三章後150秒、作者收據。不要加新題補回265秒。",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "兩尾段已各縮20秒；三章225秒，刪末章150秒，作者收據同步。"
+    }
+  ],
+  "theme_reviews": [
+    {
+      "id": "W6R-T01",
+      "reviewed_seconds": 185,
+      "disposition": "ACCEPT_TOPIC_LEVEL_NOT_PRODUCTION_APPROVAL",
+      "material_use_seconds": {
+        "R6003": 100,
+        "R6019": 85
+      },
+      "assessment": "兩代製種與無受精結果的比較有共同追問；兩章不各寫成獨立百科。R6019全文缺口保留，尚非treatment核准。",
+      "final_seconds": 185
+    },
+    {
+      "id": "W6R-T02",
+      "reviewed_seconds": 265,
+      "recommended_seconds": 225,
+      "disposition": "ACCEPT_TOPIC_LEVEL_NOT_PRODUCTION_APPROVAL",
+      "material_use_seconds": {
+        "R6006": 95,
+        "R6009": 75,
+        "R6008": 95
+      },
+      "recommended_material_use_seconds": {
+        "R6006": 75,
+        "R6009": 75,
+        "R6008": 75
+      },
+      "assessment": "歷史/轉送/競爭三層連貫；不補FLC直接調FT分子箭頭。去掉延長回顧仍可完整。",
+      "final_seconds": 225
+    },
+    {
+      "id": "W6R-T03",
+      "reviewed_seconds": 170,
+      "disposition": "ACCEPT_TOPIC_LEVEL_NOT_PRODUCTION_APPROVAL",
+      "material_use_seconds": {
+        "R6018": 85,
+        "R6001": 85
+      },
+      "assessment": "新生組織隔離舊傷與橋接輸送構成可比關係；概念示意，不冒稱同一樹的受控試驗。",
+      "final_seconds": 170
+    }
+  ],
+  "mechanical_checks": {
+    "json_parse": "PASS",
+    "candidate_sources_resolve": "PASS",
+    "utf8_lf": "PASS",
+    "chapter_seconds_sums": "PASS",
+    "theme_minutes_seconds": "PASS",
+    "beat_seconds_max": 45,
+    "per_core_budget": "PASS for original proposals; shortened recommendation remains within max",
+    "targeted_final": "PASS: 185/225/170秒，逐beat/章節/核心max/UTF8 LF及author theme hash一致"
+  },
+  "remaining": [
+    "無本輪未解必改；中央選入由root決定。",
+    "R6019等摘要來源進treatment仍須補對應全文；未逐主張核稿、核圖或試讀，不等於製作核准。"
+  ],
+  "initial_reviewed": {
+    "batch_file": "docs/videos/so-thats-why/pool/batches/wave6-plants-garden.json",
+    "batch_sha256": "2a42fb26d9768836bf46238fab555ad833b8c00fcd489ec9d8a0f9f2e558e001",
+    "themes_file": "docs/videos/so-thats-why/pool/reviews/wave6-plants-themes.json",
+    "themes_sha256": "80e4dc6df4b72d7f3a23bdec4d5dc4f02cf39673923c358380c16ea0858b8e86",
+    "author_file": "docs/videos/so-thats-why/pool/reviews/wave6-plants-author.json",
+    "author_sha256": "7c4346349769bb7dfa6c845fa46bbda30a81db6b075e9efc47dbe4d8bded26da"
+  },
+  "targeted_recheck": {
+    "date": "2026-11-01",
+    "reviewer": "pool_physics",
+    "previous_review_sha256": "b3717d4e85c054ee1f1a70f95808f40aa479ae1d78336fdc11e8ab2cdbdc88ed",
+    "batch_unchanged": true,
+    "batch_sha256": "2a42fb26d9768836bf46238fab555ad833b8c00fcd489ec9d8a0f9f2e558e001",
+    "themes_sha256": "b03a8e9a7136a3622c31738181c89884ced93de8463c858251a3632eaa1a6a58",
+    "author_sha256": "38b54fcf698f7b973954c18158127ce5d3736c1d3dec0f7b800639889b81d886",
+    "checks": [
+      {
+        "id": "W6R-T01",
+        "seconds": 185,
+        "core_seconds": {
+          "R6003": 100,
+          "R6019": 85
+        }
+      },
+      {
+        "id": "W6R-T02",
+        "seconds": 225,
+        "core_seconds": {
+          "R6006": 75,
+          "R6009": 75,
+          "R6008": 75
+        }
+      },
+      {
+        "id": "W6R-T03",
+        "seconds": 170,
+        "core_seconds": {
+          "R6018": 85,
+          "R6001": 85
+        }
+      }
+    ],
+    "scope": "只覆核兩項題案修正及關聯秒數/引用/作者hash，未擴成新的全文或逐句稿查核。",
+    "result": "PASS; no outstanding required correction"
+  }
+}

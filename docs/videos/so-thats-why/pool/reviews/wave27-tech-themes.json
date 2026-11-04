@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "不同目標不硬串長片。",
+    "片長只是未試讀紙上預算。",
+    "每節拍推新資訊，限制儘量留畫面。"
+  ],
+  "episodes": [
+    {
+      "id": "W27R-T01",
+      "title": "不公平的硬幣，怎麼抽出公平結果",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "偏硬幣如何產生公平二選一？",
+      "connection": "偏向正面→四格中挑對稱兩格→失效條件。",
+      "candidate_ids": [
+        "R27001"
+      ],
+      "target_minutes": 1.3333333333333333,
+      "range_minutes": [
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "body_seconds": 80,
+      "chapters": [
+        {
+          "title": "沒有修硬幣，只改記分",
+          "candidate_ids": [
+            "R27001"
+          ],
+          "seconds": 50,
+          "new_information": "先給p=0.8，讓觀眾猜是否仍能公平。；四格0.64/0.16/0.16/0.04；丟同面，保留兩個0.16分別記0與1。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "先給p=0.8，讓觀眾猜是否仍能公平。"
+            },
+            {
+              "seconds": 35,
+              "new_information": "四格0.64/0.16/0.16/0.04；丟同面，保留兩個0.16分別記0與1。"
+            }
+          ]
+        },
+        {
+          "title": "公平來自哪些條件",
+          "candidate_ids": [
+            "R27001"
+          ],
+          "seconds": 30,
+          "new_information": "把兩次偏率改成0.8與0.2，兩異面變0.64與0.04，不再等大。；只留下拒收代價；固定偏率、獨立、不重疊及有限樣本條件留圖註。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "把兩次偏率改成0.8與0.2，兩異面變0.64與0.04，不再等大。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "只留下拒收代價；固定偏率、獨立、不重疊及有限樣本條件留圖註。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若四格條件機率說不清，刪數字以等面積路徑講；仍無法懂就留素材不排片，不加硬幣史。",
+      "evidence_gaps": "紙上節拍與枚舉算例，無完整稿、試讀、可播放示範或觀眾理解測試。",
+      "boredom_risk": "只保留能看見差異的卡片操作；公式與歷史若拖慢就刪。",
+      "timing_basis": "鉤子、轉場、限制已含；每拍不超45秒、跨章同核累計不超上限，實際試讀優先縮短。"
+    },
+    {
+      "id": "W27R-T02",
+      "title": "不是人人滿意，卻沒有人能一起換走",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "怎樣避免兩人都想改配彼此？",
+      "connection": "暫留與拒絕→連鎖換位→逐對查沒有一起反悔。",
+      "candidate_ids": [
+        "R27002"
+      ],
+      "target_minutes": 1.6666666666666667,
+      "range_minutes": [
+        1.6666666666666667,
+        1.6666666666666667
+      ],
+      "body_seconds": 100,
+      "chapters": [
+        {
+          "title": "先收下，也先別說死",
+          "candidate_ids": [
+            "R27002"
+          ],
+          "seconds": 55,
+          "new_information": "A/B同選X，C選Y；X暫留較喜歡的B，A被拒。；A轉向Y、Y留A拒C；C問X被拒，最後找Z，得到AY/BX/CZ。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "A/B同選X，C選Y；X暫留較喜歡的B，A被拒。"
+            },
+            {
+              "seconds": 35,
+              "new_information": "A轉向Y、Y留A拒C；C問X被拒，最後找Z，得到AY/BX/CZ。"
+            }
+          ]
+        },
+        {
+          "title": "穩定不等於滿分",
+          "candidate_ids": [
+            "R27002"
+          ],
+          "seconds": 45,
+          "new_information": "A想換X但X較愛B；C想換Y或X，兩邊都較愛現任；曾拒絕只會往更喜歡者換。；亮出A/C未拿第一志願仍無阻擋對；兩側固定完整嚴格順位留圖註。",
+          "beats": [
+            {
+              "seconds": 35,
+              "new_information": "A想換X但X較愛B；C想換Y或X，兩邊都較愛現任；曾拒絕只會往更喜歡者換。"
+            },
+            {
+              "seconds": 10,
+              "new_information": "亮出A/C未拿第一志願仍無阻擋對；兩側固定完整嚴格順位留圖註。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若六張排序卡讀不動，先用線色突出本輪比較、刪重複逐對播；不再加最優性定理、真實招生案例或戀愛建議湊長。",
+      "evidence_gaps": "紙上節拍與枚舉算例，無完整稿、試讀、可播放示範或觀眾理解測試。",
+      "boredom_risk": "只保留能看見差異的卡片操作；公式與歷史若拖慢就刪。",
+      "timing_basis": "鉤子、轉場、限制已含；每拍不超45秒、跨章同核累計不超上限，實際試讀優先縮短。"
+    }
+  ]
+}

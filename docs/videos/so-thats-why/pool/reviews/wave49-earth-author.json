@@ -1,0 +1,783 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "science_sources",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "scope": "水滴撞擊、結冰時的熱質傳與表面互動；原始可見對照，分清實拍／模型與環境條件。",
+  "baseline": {
+    "head": "a638b454dd377f2ea242b07a1c545555cc345a99",
+    "selected": 3514,
+    "raw_records": 3903,
+    "not_added": 2136,
+    "themes": 537,
+    "pool_sha256": "a3c8acc22ed8e029702d46d55219474489a6a6c923f054363d6e66719a411287"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave49-earth.json",
+      "sha256": "9d3a172350cc4fe126a4422aa16fa9246e41c072b77a34ed544ad552902e811e"
+    },
+    {
+      "file": "reviews/wave49-earth-themes.json",
+      "sha256": "d0935ebafbfc79efa7db2deab53af3e0b0f471061ab840315e0aad5812a38153"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 7,
+    "candidate_supporting_sources": 6,
+    "na_only_sources": 1,
+    "not_added": 16,
+    "near_pairs": 19,
+    "themes": 3,
+    "proposed_new_cores": 5,
+    "proposed_merges": 0
+  },
+  "near_pairs": [
+    {
+      "a": "S49-001",
+      "b": "I12002",
+      "a_snapshot": {
+        "id": "S49-001",
+        "question": "把周圍氣壓降低，為什麼止住光滑面上的濺滴，卻止不住粗糙面？",
+        "answer_target": "光滑乾玻璃上的酒精滴，降低同種周圍氣體的壓力可使冠狀飛濺消失；另一組低壓粗面試驗仍在前緣噴滴。作者以粗糙凸起擾動展開液膜解釋這條路，膜長厚後小粗糙組先停噴，大粗糙組仍持續。",
+        "scope": "分開2005光滑面空氣壓力試驗及2007低壓氦氣／粗糙度對照；不把兩篇當同一滴連拍，也不宣稱冠狀飛濺的微觀起始已完全解明。"
+      },
+      "b_snapshot": {
+        "id": "I12002",
+        "question": "原本很會滾水珠的粗糙表面，為什麼一次撞擊後反而黏住水？",
+        "answer_target": "空氣口袋可把液滴托在紋理頂端；壓力跨過幾何門檻使液體侵入空隙，接觸狀態和回復路徑便改變。",
+        "scope": "限具有可維持含氣狀態的疏水紋理；壓力門檻隨形狀改變，不稱所有粗糙表面或所有撞擊必然失效。"
+      },
+      "decision": "distinct",
+      "reason": "舊題是疏水孔隙被壓入後卡水；新題用低壓與粗糙度分離兩種噴滴，材料為潤濕玻璃／砂紙。"
+    },
+    {
+      "a": "S49-001",
+      "b": "I12008",
+      "a_snapshot": {
+        "id": "S49-001",
+        "question": "把周圍氣壓降低，為什麼止住光滑面上的濺滴，卻止不住粗糙面？",
+        "answer_target": "光滑乾玻璃上的酒精滴，降低同種周圍氣體的壓力可使冠狀飛濺消失；另一組低壓粗面試驗仍在前緣噴滴。作者以粗糙凸起擾動展開液膜解釋這條路，膜長厚後小粗糙組先停噴，大粗糙組仍持續。",
+        "scope": "分開2005光滑面空氣壓力試驗及2007低壓氦氣／粗糙度對照；不把兩篇當同一滴連拍，也不宣稱冠狀飛濺的微觀起始已完全解明。"
+      },
+      "b_snapshot": {
+        "id": "I12008",
+        "question": "液滴碰到已經濕的表面，怎麼還可能像球一樣彈開？",
+        "answer_target": "液滴與濕層間的空氣需時間排走；若薄氣層撐過變形回彈，液滴尚未真正接通就能離開，排空破膜則會合併。",
+        "scope": "實驗為矽油滴撞高黏矽油薄層；氣層是未排走的空氣，不是高溫蒸氣，也不是外接打氣。"
+      },
+      "decision": "distinct",
+      "reason": "舊題空氣層排空相對回彈時間決定液滴是否合併；新題展開前緣失穩與粗糙度，不是回彈。"
+    },
+    {
+      "a": "S49-001",
+      "b": "X38-006",
+      "a_snapshot": {
+        "id": "S49-001",
+        "question": "把周圍氣壓降低，為什麼止住光滑面上的濺滴，卻止不住粗糙面？",
+        "answer_target": "光滑乾玻璃上的酒精滴，降低同種周圍氣體的壓力可使冠狀飛濺消失；另一組低壓粗面試驗仍在前緣噴滴。作者以粗糙凸起擾動展開液膜解釋這條路，膜長厚後小粗糙組先停噴，大粗糙組仍持續。",
+        "scope": "分開2005光滑面空氣壓力試驗及2007低壓氦氣／粗糙度對照；不把兩篇當同一滴連拍，也不宣稱冠狀飛濺的微觀起始已完全解明。"
+      },
+      "b_snapshot": {
+        "id": "X38-006",
+        "question": "一滴水撞在乾砂上，水滲走後，坑中央怎麼有時是一圈、有時是一團？",
+        "answer_target": "水滴攤開又收回時把砂粒帶上；能量小時顆粒多在水團表面，水滲走後只剩環狀殘留。提高撞擊能量會攜入更多顆粒、逐漸填滿中心；更高時顆粒卡住，水膜來不及縮成完整球。",
+        "scope": "原研究的乾燥顆粒床與不同撞擊能量。此題看坑內的殘留物，不把它誤當外緣，更不由單圈推定古代大氣或撞體尺寸。"
+      },
+      "decision": "distinct",
+      "reason": "舊題滴內攜砂及滲水後殘留形狀；新題固體粗糙面直接噴滴，無顆粒床搬運。"
+    },
+    {
+      "a": "S49-001",
+      "b": "F14008",
+      "a_snapshot": {
+        "id": "S49-001",
+        "question": "把周圍氣壓降低，為什麼止住光滑面上的濺滴，卻止不住粗糙面？",
+        "answer_target": "光滑乾玻璃上的酒精滴，降低同種周圍氣體的壓力可使冠狀飛濺消失；另一組低壓粗面試驗仍在前緣噴滴。作者以粗糙凸起擾動展開液膜解釋這條路，膜長厚後小粗糙組先停噴，大粗糙組仍持續。",
+        "scope": "分開2005光滑面空氣壓力試驗及2007低壓氦氣／粗糙度對照；不把兩篇當同一滴連拍，也不宣稱冠狀飛濺的微觀起始已完全解明。"
+      },
+      "b_snapshot": {
+        "id": "F14008",
+        "question": "玻璃照樣超音波震動，空氣變少後為什麼沒那麼滑？",
+        "answer_target": "高速擠壓狹小空隙可讓空氣形成平均承載壓力，減少固體接觸負擔；在人工指腹實驗降低氣壓，減摩變弱但未消失，支持空氣膜與彈跳共同作用。",
+        "scope": "限定人工指腹、相同振幅與窄法向力範圍的對照；不把模型摩擦比例當實驗量，亦不稱完全懸空或空氣為唯一成因。"
+      },
+      "decision": "distinct",
+      "reason": "同有降氣壓控制，但舊是擠壓膜分攤指腹載荷，新是液片抬升與粗糙前緣噴滴。"
+    },
+    {
+      "a": "S49-002",
+      "b": "K6004",
+      "a_snapshot": {
+        "id": "S49-002",
+        "question": "一顆水滴正在結冰，旁邊怎麼先冒出一圈小水珠，過一會又消失？",
+        "answer_target": "同步熱像與光學圖顯示，過冷滴開始凍結時放熱升溫，周圍先凝出小滴。剩餘液水凍完後熱源消退，中心冰滴成為水汽匯，附近小滴再蒸發；作者以先向外供汽、後向內回收解釋暈環先長後退。",
+        "scope": "常壓受控濕度下的微滴與低導熱疏水面；消失不是小水珠被凍成看不見。後半借K6004水冰蒸氣壓差，但新增前半放熱造成供汽與全時序反轉；不拆消失另核。"
+      },
+      "b_snapshot": {
+        "id": "K6004",
+        "question": "冰晶沒碰到旁邊的水滴，為什麼也能讓自己變大、水滴變小？",
+        "answer_target": "同溫冰面平衡蒸氣壓低於液水；環境介於兩門檻時，冰凝華成長而液滴蒸發，經水汽完成轉移。",
+        "scope": "低於冰點且冰水共存、足夠水汽交換的混相雲；不是冰隔空吸力，也不是所有情況液滴必縮。"
+      },
+      "decision": "distinct",
+      "reason": "後半共用WBF轉移，不另計；新增是同步熱像所見凍結放熱使源→匯反轉及暈環先生後退，舊同溫冰水條件不能回答前半。"
+    },
+    {
+      "a": "S49-002",
+      "b": "P090",
+      "a_snapshot": {
+        "id": "S49-002",
+        "question": "一顆水滴正在結冰，旁邊怎麼先冒出一圈小水珠，過一會又消失？",
+        "answer_target": "同步熱像與光學圖顯示，過冷滴開始凍結時放熱升溫，周圍先凝出小滴。剩餘液水凍完後熱源消退，中心冰滴成為水汽匯，附近小滴再蒸發；作者以先向外供汽、後向內回收解釋暈環先長後退。",
+        "scope": "常壓受控濕度下的微滴與低導熱疏水面；消失不是小水珠被凍成看不見。後半借K6004水冰蒸氣壓差，但新增前半放熱造成供汽與全時序反轉；不拆消失另核。"
+      },
+      "b_snapshot": {
+        "id": "P090",
+        "question": "水蒸氣變回液體時，熱量跑到哪裡去了？",
+        "answer_target": "凝結時放出的潛熱須傳給周圍，和水蒸氣自身溫度分開。",
+        "scope": "不給蒸氣燙傷實作示範"
+      },
+      "decision": "distinct",
+      "reason": "舊只是凝結潛熱向外；新是凍結放熱／蒸發供汽與凍完的水汽轉向，不只換潛熱材料。"
+    },
+    {
+      "a": "S49-002",
+      "b": "P210",
+      "a_snapshot": {
+        "id": "S49-002",
+        "question": "一顆水滴正在結冰，旁邊怎麼先冒出一圈小水珠，過一會又消失？",
+        "answer_target": "同步熱像與光學圖顯示，過冷滴開始凍結時放熱升溫，周圍先凝出小滴。剩餘液水凍完後熱源消退，中心冰滴成為水汽匯，附近小滴再蒸發；作者以先向外供汽、後向內回收解釋暈環先長後退。",
+        "scope": "常壓受控濕度下的微滴與低導熱疏水面；消失不是小水珠被凍成看不見。後半借K6004水冰蒸氣壓差，但新增前半放熱造成供汽與全時序反轉；不拆消失另核。"
+      },
+      "b_snapshot": {
+        "id": "P210",
+        "question": "密封瓶裡的水沒有越放越少，表示它不再蒸發嗎？",
+        "answer_target": "蒸發與凝結可同時進行，平衡時速率相等使宏觀量不變。",
+        "scope": "液體仍存在、定溫密閉容器"
+      },
+      "decision": "distinct",
+      "reason": "舊定溫密閉動平衡；新開放局部溫度瞬變與空間供汽反轉。"
+    },
+    {
+      "a": "S49-002",
+      "b": "K6003",
+      "a_snapshot": {
+        "id": "S49-002",
+        "question": "一顆水滴正在結冰，旁邊怎麼先冒出一圈小水珠，過一會又消失？",
+        "answer_target": "同步熱像與光學圖顯示，過冷滴開始凍結時放熱升溫，周圍先凝出小滴。剩餘液水凍完後熱源消退，中心冰滴成為水汽匯，附近小滴再蒸發；作者以先向外供汽、後向內回收解釋暈環先長後退。",
+        "scope": "常壓受控濕度下的微滴與低導熱疏水面；消失不是小水珠被凍成看不見。後半借K6004水冰蒸氣壓差，但新增前半放熱造成供汽與全時序反轉；不拆消失另核。"
+      },
+      "b_snapshot": {
+        "id": "K6003",
+        "question": "雲滴已經長出來了，為什麼光靠吸水汽還是很難迅速變成雨滴？",
+        "answer_target": "水汽需擴散到滴面，凝結潛熱也需傳出；定環境近似下半徑成長率隨半徑增大而降低。",
+        "scope": "凝結成長理想模型，分清半徑成長速度與總質量增加；碰併與冰相成長只作其他路徑入口。"
+      },
+      "decision": "distinct",
+      "reason": "舊凝結生長的熱質傳瓶頸；新一個凍結事件使周圍先增滴再退滴。"
+    },
+    {
+      "a": "S49-003",
+      "b": "P24002",
+      "a_snapshot": {
+        "id": "S49-003",
+        "question": "同樣撞上冷板結成冰，為什麼一邊裂了還黏住，另一邊卻整片翹起？",
+        "answer_target": "改變拋光冷板表面處理，水滴凍成薄盤後可裂而留在板上，也可翹曲剝離。冷卻收縮受到板面約束，產生熱應力；作者比較內聚與附著強弱，解釋裂冰或脫層兩種釋放路徑。",
+        "scope": "同尺寸／落高／低溫示例，比較兩種潤濕表面；模型不是結冰增體積把冰頂飛。完全剝離後的吹氣移走須另標，不把無裂視為未受力。"
+      },
+      "b_snapshot": {
+        "id": "P24002",
+        "question": "水滴已經凍出外殼，為什麼還會裂了又合，最後突然碎開？",
+        "answer_target": "外殼繼續向內生長，把剩餘液水壓縮；開裂讓壓力快速釋放，後續凍結又能癒合裂口並重新升壓。裂開未必立即整滴分離，儲能還須足夠支付新表面的形成。",
+        "scope": "限毫米滴從外向內凍結的原研究；壓力和能量為模型解釋，裂癒/空穴/碎裂有高速影像。微滴不爆的估計不能當實測通用尺寸。"
+      },
+      "decision": "distinct",
+      "reason": "舊外殼向內凍結壓液核、裂癒；新盤狀冰冷縮受底板限制，附著選擇裂內聚或脫界面。"
+    },
+    {
+      "a": "S49-003",
+      "b": "D2183",
+      "a_snapshot": {
+        "id": "S49-003",
+        "question": "同樣撞上冷板結成冰，為什麼一邊裂了還黏住，另一邊卻整片翹起？",
+        "answer_target": "改變拋光冷板表面處理，水滴凍成薄盤後可裂而留在板上，也可翹曲剝離。冷卻收縮受到板面約束，產生熱應力；作者比較內聚與附著強弱，解釋裂冰或脫層兩種釋放路徑。",
+        "scope": "同尺寸／落高／低溫示例，比較兩種潤濕表面；模型不是結冰增體積把冰頂飛。完全剝離後的吹氣移走須另標，不把無裂視為未受力。"
+      },
+      "b_snapshot": {
+        "id": "D2183",
+        "question": "同一條膠帶，為什麼橫著拉和掀起一角的難度差很多？",
+        "answer_target": "整個接面分擔剪力與邊緣逐步剝離的載荷路徑不同。",
+        "scope": "Adhesive bonding；限所列機制，不等於特定產品或現場效能。"
+      },
+      "decision": "distinct",
+      "reason": "舊外加剝離／剪切載荷路徑；新自行冷縮應力與附著使裂、剝離分岔，無手拉。"
+    },
+    {
+      "a": "S49-003",
+      "b": "X39-002",
+      "a_snapshot": {
+        "id": "S49-003",
+        "question": "同樣撞上冷板結成冰，為什麼一邊裂了還黏住，另一邊卻整片翹起？",
+        "answer_target": "改變拋光冷板表面處理，水滴凍成薄盤後可裂而留在板上，也可翹曲剝離。冷卻收縮受到板面約束，產生熱應力；作者比較內聚與附著強弱，解釋裂冰或脫層兩種釋放路徑。",
+        "scope": "同尺寸／落高／低溫示例，比較兩種潤濕表面；模型不是結冰增體積把冰頂飛。完全剝離後的吹氣移走須另標，不把無裂視為未受力。"
+      },
+      "b_snapshot": {
+        "id": "X39-002",
+        "question": "沒有手在撕，塗層上的兩道裂縫為什麼能自己往前走，還留下一條近乎等寬的帶子？",
+        "answer_target": "製程留在塗層內的拉應力可在一小條膜與底板分開時釋放；剝離前緣把兩側的裂尖連起來。在模型中太窄時裂線向外、太寬時向內，能走成近乎平行的兩邊，實驗帶寬隨膜厚改變。",
+        "scope": "限能自行脫層的薄膜與黏著範圍。寬度選擇與黏著是否允許裂線前進分開，不套到任意油漆的裂痕。"
+      },
+      "decision": "distinct",
+      "reason": "舊薄膜兩裂線協同選等寬條帶；新比較冰裂黏住與整盤脫附的條件，不研究條帶選寬。"
+    },
+    {
+      "a": "S49-003",
+      "b": "P053",
+      "a_snapshot": {
+        "id": "S49-003",
+        "question": "同樣撞上冷板結成冰，為什麼一邊裂了還黏住，另一邊卻整片翹起？",
+        "answer_target": "改變拋光冷板表面處理，水滴凍成薄盤後可裂而留在板上，也可翹曲剝離。冷卻收縮受到板面約束，產生熱應力；作者比較內聚與附著強弱，解釋裂冰或脫層兩種釋放路徑。",
+        "scope": "同尺寸／落高／低溫示例，比較兩種潤濕表面；模型不是結冰增體積把冰頂飛。完全剝離後的吹氣移走須另標，不把無裂視為未受力。"
+      },
+      "b_snapshot": {
+        "id": "P053",
+        "question": "水滴在不同桌面上，為什麼有時攤平、有時鼓成一粒？",
+        "answer_target": "比較液體內聚與對固體附著的競爭，不能只以表面光滑程度解釋。",
+        "scope": "表面乾淨且液體相同"
+      },
+      "decision": "distinct",
+      "reason": "舊液態靜態潤濕形狀；新固化後熱應力失效路徑，接觸角僅實驗界面表徵。"
+    },
+    {
+      "a": "S49-004",
+      "b": "N183",
+      "a_snapshot": {
+        "id": "S49-004",
+        "question": "冰還沒碰到那顆小氣泡，為什麼氣泡的長大已經偏離原來的速度？",
+        "answer_target": "窄隙水層中，泡中心幾乎不動，冰前緣逐漸靠近，生長曲線高於起初均勻環境擴散的預測。冰排出的溶解氣體形成濃度梯度；模擬加入這個梯度及其隨前緣靠近，增加泡附近的傳質，較能重現實測。",
+        "scope": "分析的是初期增長與被冰包住前的泡；不是泡被冰壓扁或熱膨脹。Fig5三種條件是數值拆分，Fig4才是原攝影與實點。"
+      },
+      "b_snapshot": {
+        "id": "N183",
+        "question": "海水結成冰，旁邊還沒凍住的水為什麼反而更鹹？",
+        "answer_target": "結冰時鹽被排到周圍液態海水。",
+        "scope": "Thermohaline Circulation"
+      },
+      "decision": "distinct",
+      "reason": "舊只說結冰排鹽；新氣泡生長曲線和三階模型需前緣移動帶濃度梯度逼近，並非只換成排氣常識。"
+    },
+    {
+      "a": "S49-004",
+      "b": "R40006",
+      "a_snapshot": {
+        "id": "S49-004",
+        "question": "冰還沒碰到那顆小氣泡，為什麼氣泡的長大已經偏離原來的速度？",
+        "answer_target": "窄隙水層中，泡中心幾乎不動，冰前緣逐漸靠近，生長曲線高於起初均勻環境擴散的預測。冰排出的溶解氣體形成濃度梯度；模擬加入這個梯度及其隨前緣靠近，增加泡附近的傳質，較能重現實測。",
+        "scope": "分析的是初期增長與被冰包住前的泡；不是泡被冰壓扁或熱膨脹。Fig5三種條件是數值拆分，Fig4才是原攝影與實點。"
+      },
+      "b_snapshot": {
+        "id": "R40006",
+        "question": "樹枝都經歷一次冰凍再解凍，為什麼原先水拉得多緊，也會影響它還能不能送水？",
+        "answer_target": "解凍時，水柱的張力有利於氣泡擴大，界面張力則讓小氣泡趨於縮小。結合導水率與尺寸分布估算，水勢愈負，能發生凍融栓塞的臨界管胞直徑愈小。",
+        "scope": "臨界直徑由導水損失與管胞尺寸分布估算，並非逐管量到的固定分界。"
+      },
+      "decision": "distinct",
+      "reason": "舊凍融後負壓讓氣泡擴大；新凍結中接觸前濃度場改變傳質，沒有負壓導水栓塞問題。"
+    },
+    {
+      "a": "S49-004",
+      "b": "S46-007",
+      "a_snapshot": {
+        "id": "S49-004",
+        "question": "冰還沒碰到那顆小氣泡，為什麼氣泡的長大已經偏離原來的速度？",
+        "answer_target": "窄隙水層中，泡中心幾乎不動，冰前緣逐漸靠近，生長曲線高於起初均勻環境擴散的預測。冰排出的溶解氣體形成濃度梯度；模擬加入這個梯度及其隨前緣靠近，增加泡附近的傳質，較能重現實測。",
+        "scope": "分析的是初期增長與被冰包住前的泡；不是泡被冰壓扁或熱膨脹。Fig5三種條件是數值拆分，Fig4才是原攝影與實點。"
+      },
+      "b_snapshot": {
+        "id": "S46-007",
+        "question": "冰裡藏著空氣，為什麼反而可能融得更快？",
+        "answer_target": "相同幾何與初始鹽水條件下，含氣泡冰河冰比透明冰退縮快；逸出氣泡上升，伴隨更強的近壁流動與擾動。能量和熱傳模型把增加的流動與較快融化連起來，並不是氣泡自己在發熱。",
+        "scope": "透明冰與天然冰各一次水槽試驗，並非每種含氣冰的固定倍率。氣泡爆裂瞬間未被完整解析；所報能量分析剔除氣泡本身速度，未直接測全部熱通量。"
+      },
+      "decision": "distinct",
+      "reason": "舊冰融化釋氣泡攪水；新相反的成冰時泡心不動、富氣界面靠近。"
+    },
+    {
+      "a": "S49-005",
+      "b": "P004",
+      "a_snapshot": {
+        "id": "S49-005",
+        "question": "低壓裡正在結冰的水滴往哪邊跳，怎麼跟最先結冰的位置有關？",
+        "answer_target": "高速圖記錄起冰點與離面方向：上方偏右開始結冰的示例往左上離開。作者以放熱區向外蒸發帶來反作用、液態核心與基底互動重導向動量的模型解釋；改表面微結構後仍有相近方向關係，不只靠底部均勻增壓。",
+        "scope": "限定約100Pa及研究的滴徑、超疏水條件；起冰角與跳角是觀測關聯，未任意控制每次起冰點。離面時多數體積仍為液體，不稱整顆硬冰球噴射；與大滴蒸氣墊另機制分開。"
+      },
+      "b_snapshot": {
+        "id": "P004",
+        "question": "氣墊桌上的圓盤為什麼特別難停？",
+        "answer_target": "托起接觸面會減少使圓盤減速的阻力；比較小阻力與零阻力理想化。",
+        "scope": "只討論氣墊支承的物理效果"
+      },
+      "decision": "distinct",
+      "reason": "舊氣墊減阻；新起冰點與跳向相關，用來檢驗蒸發反衝而不是底部均勻氣壓的解釋。"
+    },
+    {
+      "a": "S49-005",
+      "b": "I12013",
+      "a_snapshot": {
+        "id": "S49-005",
+        "question": "低壓裡正在結冰的水滴往哪邊跳，怎麼跟最先結冰的位置有關？",
+        "answer_target": "高速圖記錄起冰點與離面方向：上方偏右開始結冰的示例往左上離開。作者以放熱區向外蒸發帶來反作用、液態核心與基底互動重導向動量的模型解釋；改表面微結構後仍有相近方向關係，不只靠底部均勻增壓。",
+        "scope": "限定約100Pa及研究的滴徑、超疏水條件；起冰角與跳角是觀測關聯，未任意控制每次起冰點。離面時多數體積仍為液體，不稱整顆硬冰球噴射；與大滴蒸氣墊另機制分開。"
+      },
+      "b_snapshot": {
+        "id": "I12013",
+        "question": "水滴還攤成薄餅，怎麼就能跳離表面，不必先縮回一顆球？",
+        "answer_target": "液體暫時進入疏水微柱間並儲存毛細能；回推出來的向上動量若夠大，且與橫向展開時間相配，就能提早抬起整滴。",
+        "scope": "特殊微柱表面上的水滴；需足夠能量與時機匹配，不把可逆滲入稱永久濕透，不把柱形或落速每改一次另算一題。"
+      },
+      "decision": "distinct",
+      "reason": "舊微柱毛細排空配橫向展開；新無落下撞擊且是相變非對稱蒸發動量，表面改變未抹掉方向關係。"
+    },
+    {
+      "a": "S49-005",
+      "b": "U8001",
+      "a_snapshot": {
+        "id": "S49-005",
+        "question": "低壓裡正在結冰的水滴往哪邊跳，怎麼跟最先結冰的位置有關？",
+        "answer_target": "高速圖記錄起冰點與離面方向：上方偏右開始結冰的示例往左上離開。作者以放熱區向外蒸發帶來反作用、液態核心與基底互動重導向動量的模型解釋；改表面微結構後仍有相近方向關係，不只靠底部均勻增壓。",
+        "scope": "限定約100Pa及研究的滴徑、超疏水條件；起冰角與跳角是觀測關聯，未任意控制每次起冰點。離面時多數體積仍為液體，不稱整顆硬冰球噴射；與大滴蒸氣墊另機制分開。"
+      },
+      "b_snapshot": {
+        "id": "U8001",
+        "question": "蘑菇沒有彈簧，孢子怎麼突然被射出去？",
+        "answer_target": "孢子表面兩滴水接觸合併，表面自由能減少帶動快速液體位移與孢子發射。",
+        "scope": "限具有Buller水滴機制的擔子菌；不套所有真菌，不把質心移動本身當能源。"
+      },
+      "decision": "distinct",
+      "reason": "舊兩滴合併降表面能發射；新單滴開始凍結的蒸發反衝模型，未合滴。"
+    },
+    {
+      "a": "S49-005",
+      "b": "S49-002",
+      "a_snapshot": {
+        "id": "S49-005",
+        "question": "低壓裡正在結冰的水滴往哪邊跳，怎麼跟最先結冰的位置有關？",
+        "answer_target": "高速圖記錄起冰點與離面方向：上方偏右開始結冰的示例往左上離開。作者以放熱區向外蒸發帶來反作用、液態核心與基底互動重導向動量的模型解釋；改表面微結構後仍有相近方向關係，不只靠底部均勻增壓。",
+        "scope": "限定約100Pa及研究的滴徑、超疏水條件；起冰角與跳角是觀測關聯，未任意控制每次起冰點。離面時多數體積仍為液體，不稱整顆硬冰球噴射；與大滴蒸氣墊另機制分開。"
+      },
+      "b_snapshot": {
+        "id": "S49-002",
+        "question": "一顆水滴正在結冰，旁邊怎麼先冒出一圈小水珠，過一會又消失？",
+        "answer_target": "同步熱像與光學圖顯示，過冷滴開始凍結時放熱升溫，周圍先凝出小滴。剩餘液水凍完後熱源消退，中心冰滴成為水汽匯，附近小滴再蒸發；作者以先向外供汽、後向內回收解釋暈環先長後退。",
+        "scope": "常壓受控濕度下的微滴與低導熱疏水面；消失不是小水珠被凍成看不見。後半借K6004水冰蒸氣壓差，但新增前半放熱造成供汽與全時序反轉；不拆消失另核。"
+      },
+      "decision": "distinct",
+      "reason": "共用凍結放熱前提，但新S005需低壓、起冰角度與跳向檢驗動量來源；S002是常壓周圍微滴質量轉移時序。不硬拼成片。"
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "raw_records_searched": 3903,
+    "not_added_searched": 2136,
+    "method": "全庫q/answer/scope及NA字詞檢索，113相關raw與64NA第一輪；另查濺／氣壓／裂紋／剝離／氣泡凍融並讀19完整對照，不冒稱3903逐外站重查。",
+    "cache_files": [
+      ".cache/wave49-earth-prior.json"
+    ],
+    "common_semantic_status": "等待root當期共同preview及非作者判讀。",
+    "reopened_not_added": [
+      {
+        "id": "I12-NA12",
+        "reason": "前次泛問止濺機制不夠；現收2007原研究低壓粗面與光滑面、早晚噴滴對照，撤回普遍止濺承諾。"
+      },
+      {
+        "id": "P22-NA009",
+        "reason": "先前只搜尋2005及後續摘要；本次取得2005/2007有效全文並限定兩路控制，不以新來源數量取代機制限制。"
+      }
+    ]
+  },
+  "source_identity": [
+    {
+      "id": "S49-S001",
+      "doi": "10.1103/PhysRevE.76.066311",
+      "version": "2007正式刊本對應arXiv physics/0608079v2，版本2007-12-17；PDF再編日期2021不當研究年份",
+      "canonical_url": "https://doi.org/10.1103/PhysRevE.76.066311",
+      "read_copy": "https://arxiv.org/pdf/physics/0608079v2",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "同篇arXiv／原刊／PMC載體不作獨立研究；S001與S002是不同年度控制研究但共用研究脈絡，S007只作退題依據。",
+      "limits": "未命中DOI或正規化題名不證明全庫無同文；圖可讀不自動取得商用授權。"
+    },
+    {
+      "id": "S49-S002",
+      "doi": "10.1103/PhysRevLett.94.184505",
+      "version": "2005正式論文對應arXiv physics/0501149v1，2005-01-28",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.94.184505",
+      "read_copy": "https://arxiv.org/pdf/physics/0501149v1",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "同篇arXiv／原刊／PMC載體不作獨立研究；S001與S002是不同年度控制研究但共用研究脈絡，S007只作退題依據。",
+      "limits": "未命中DOI或正規化題名不證明全庫無同文；圖可讀不自動取得商用授權。"
+    },
+    {
+      "id": "S49-S003",
+      "doi": "10.1002/advs.202410657",
+      "version": "2025正式刊本12:2410657；PMC同文HTML",
+      "canonical_url": "https://doi.org/10.1002/advs.202410657",
+      "read_copy": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11984898/",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "同篇arXiv／原刊／PMC載體不作獨立研究；S001與S002是不同年度控制研究但共用研究脈絡，S007只作退題依據。",
+      "limits": "未命中DOI或正規化題名不證明全庫無同文；圖可讀不自動取得商用授權。"
+    },
+    {
+      "id": "S49-S004",
+      "doi": "10.1038/s42005-022-00827-0",
+      "version": "2022-03-10正式刊本5:51",
+      "canonical_url": "https://doi.org/10.1038/s42005-022-00827-0",
+      "read_copy": "https://www.nature.com/articles/s42005-022-00827-0?error=cookies_not_supported&code=8ec6dac2-9ede-451a-8e99-51d49807cd60",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "同篇arXiv／原刊／PMC載體不作獨立研究；S001與S002是不同年度控制研究但共用研究脈絡，S007只作退題依據。",
+      "limits": "未命中DOI或正規化題名不證明全庫無同文；圖可讀不自動取得商用授權。"
+    },
+    {
+      "id": "S49-S005",
+      "doi": "10.1017/jfm.2024.777",
+      "version": "2024-10-02正式刊本996:A22",
+      "canonical_url": "https://doi.org/10.1017/jfm.2024.777",
+      "read_copy": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/enhanced-bubble-growth-near-an-advancing-solidification-front/92E92DD04CE805E778D854E808B35280",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "同篇arXiv／原刊／PMC載體不作獨立研究；S001與S002是不同年度控制研究但共用研究脈絡，S007只作退題依據。",
+      "limits": "未命中DOI或正規化題名不證明全庫無同文；圖可讀不自動取得商用授權。"
+    },
+    {
+      "id": "S49-S006",
+      "doi": "10.1038/s41467-024-45928-2",
+      "version": "2024-02-21正式刊本15:1567；PMC同文HTML",
+      "canonical_url": "https://doi.org/10.1038/s41467-024-45928-2",
+      "read_copy": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879204/",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "同篇arXiv／原刊／PMC載體不作獨立研究；S001與S002是不同年度控制研究但共用研究脈絡，S007只作退題依據。",
+      "limits": "未命中DOI或正規化題名不證明全庫無同文；圖可讀不自動取得商用授權。"
+    },
+    {
+      "id": "S49-S007",
+      "doi": "10.48550/arXiv.physics/0702098",
+      "version": "arXiv physics/0702098v2，2010-08-17；頁面未列期刊，PDF再編日期2018不作發表年份",
+      "canonical_url": "https://doi.org/10.48550/arXiv.physics/0702098",
+      "read_copy": "https://arxiv.org/pdf/physics/0702098v2",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "同篇arXiv／原刊／PMC載體不作獨立研究；S001與S002是不同年度控制研究但共用研究脈絡，S007只作退題依據。",
+      "limits": "未命中DOI或正規化題名不證明全庫無同文；圖可讀不自動取得商用授權。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "S49-S001",
+      "reading_scope": "PDF pp1–2 §I、Fig1及式1；pp3–5 §§II–IV讀控制與限制，p2 Fig1目讀。",
+      "limitations": "乙醇、乾玻璃／砂紙、特定速度；低壓為氦氣環境，不能說只抽空氣而所有條件相同。粗糙度／膜厚門檻仍有未定參數；不是所有液體所有氣壓的一條通則。",
+      "cache": {
+        "file": ".cache/wave49-earth-rough.pdf",
+        "sha256": "c27e0f5119d5e7ce1047f5a4806efe68ef30247cffbc776826a012d31ed18cff",
+        "text_file": ".cache/wave49-earth-rough.txt",
+        "text_sha256": "1919d55c6f7585a7970c51b29d11aaaf7585eacad5821162c4601f27c3425827"
+      }
+    },
+    {
+      "source_id": "S49-S002",
+      "reading_scope": "PDF pp2–9正文與Figs1–4圖說；p3 Fig1四個氣壓影像目讀。",
+      "limitations": "實驗主要是三種醇，不寫成家中水滴完全相同。可壓縮氣體應力是當文模型，高速分支較相容，低速非單調部分未解；不宣稱2005模型已解釋一切濺水。",
+      "cache": {
+        "file": ".cache/wave49-earth-splash.pdf",
+        "sha256": "7cfc32524022abdefb7b79cc4399915cad1fd02a12985069e4f499f744f6a90a",
+        "text_file": ".cache/wave49-earth-splash.txt",
+        "text_sha256": "84f1179f7300fc69fcb1142e9400bf78d560a22fd11bc35287abd4348b1737d1"
+      }
+    },
+    {
+      "source_id": "S49-S003",
+      "reading_scope": "§§2.1–2.5與Discussion，Figs1–5圖說；Fig2光學／熱像／模型三框目讀。",
+      "limitations": "主分析為Teflon塗層玻璃、常壓及受控濕度；未見暈環加速後續長時結霜。熱像與光學同時測量，水汽濃度箭頭為模型。Fig2圖說漏負號而正文為−14.5°C，本題不用該精確溫度；§2.3兩個範圍不等號印同號，不據此取外區門檻。未看補充影片。",
+      "cache": {
+        "file": ".cache/wave49-earth-halo.html",
+        "sha256": "d0066a2747fd23570d51f5ccb497fe2fd6383750a0c8000e3954c00305486817",
+        "text_file": ".cache/wave49-earth-halo.txt",
+        "text_sha256": "5fbd2135df6d4fd45d7d19099c04b4ad55aac912a206c4910cfbdcca8a2ed331"
+      }
+    },
+    {
+      "source_id": "S49-S004",
+      "reading_scope": "Results: Freezing behaviors of impacting water droplets、Thermal-mechanical model、Peeling and bending behaviors；Discussion；Figs1–2原圖目讀。",
+      "limitations": "氮氣控制防霜、拋光銅板不同潤濕處理；完全剝離後另吹氣才移除，不能畫成全程自飛。模型以水／冰界面能近似、板理論解釋；未驗任意已有霜面。原刊URL導向帶cookies參數但有效正文，不是驗證頁。",
+      "cache": {
+        "file": ".cache/wave49-earth-peel.html",
+        "sha256": "5d5d195714fefb7d5a846578a41d129e011798737526e07c62fd453b490deadc",
+        "text_file": ".cache/wave49-earth-peel.txt",
+        "text_sha256": "11a60625c2ce2197d8d6842e3179748a392d54c1c3d0753428a8cbf06d9496c1"
+      }
+    },
+    {
+      "source_id": "S49-S005",
+      "reading_scope": "§2.1–2.2、§4.1–4.3、Figs4–5正文與原圖；§3只讀裝置／前緣基本觀測，不重算所有熱傳公式。",
+      "limitations": "兩壓克力板間1mm水層；所分析泡中心近乎固定，推測被壁面釘住。氣體濃度／前緣控制的拆分是模擬，不是三杯直接量到的濃度照片；不由結果預測家用冰塊每個泡的形狀或生成時間。",
+      "cache": {
+        "file": ".cache/wave49-earth-bubble.html",
+        "sha256": "dcb6f7bcc2c2fb7e061ae532836d5df6804b26e2f8fca77f8349816f3ccf71e0",
+        "text_file": ".cache/wave49-earth-bubble.txt",
+        "text_sha256": "3fa3bcbfe09fe78777f1cf1c7d1e8b33a32b5f026d5fec70ff65293d5d86161b"
+      }
+    },
+    {
+      "source_id": "S49-S006",
+      "reading_scope": "Results由Figs1–3至Nucleation-mediated directional jumping／Fig4、Size-defined dynamics／Fig5；Figs2與4原圖目讀。",
+      "limitations": "約100Pa、特定中等滴徑與超疏水面；起冰位置與跳向的關聯是觀測，非研究者任意指定起冰位置的干預。蒸發反衝經基底作用重導向屬模型，上限估計不等於逐點量到力；不同大小可乾掉或由另機制懸浮。不提供真空／低溫自行操作。",
+      "cache": {
+        "file": ".cache/wave49-earth-jump.html",
+        "sha256": "9400b43776c404d3aa1f8a56fa286d5b7fc0f1aaebd041e1e7f4e08ca62dfc40",
+        "text_file": ".cache/wave49-earth-jump.txt",
+        "text_sha256": "2c044d6ade98f9f74cd02b70e6b27885af5787699b578586050341126c7fb1d4"
+      }
+    },
+    {
+      "source_id": "S49-S007",
+      "reading_scope": "PDF pp1–2全文及Figs1–2圖說；圖版未另目讀。",
+      "limitations": "只用於NA010，不將方向對稱／高度效應拆新題。未把預印本視為另一篇正式刊本或完整確定機制。",
+      "cache": {
+        "file": ".cache/wave49-earth-texture.pdf",
+        "sha256": "c607d47c5c60656adbbf3a5e7468ffe1687986c4a5c1eba451a34eaf763f9432",
+        "text_file": ".cache/wave49-earth-texture.txt",
+        "text_sha256": "dcf142f188bc288e86787d0d878d0bf3beb5294a3974f94c1dfdeecdbed6500a"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "source_id": "S49-S001",
+      "url": "https://arxiv.org/pdf/physics/0608079v2",
+      "result": "指定UA HTTP200有效原文，正文讀取限指定範圍",
+      "file": ".cache/wave49-earth-rough.pdf",
+      "sha256": "c27e0f5119d5e7ce1047f5a4806efe68ef30247cffbc776826a012d31ed18cff",
+      "text_file": ".cache/wave49-earth-rough.txt",
+      "text_sha256": "1919d55c6f7585a7970c51b29d11aaaf7585eacad5821162c4601f27c3425827"
+    },
+    {
+      "source_id": "S49-S002",
+      "url": "https://arxiv.org/pdf/physics/0501149v1",
+      "result": "指定UA HTTP200有效原文，正文讀取限指定範圍",
+      "file": ".cache/wave49-earth-splash.pdf",
+      "sha256": "7cfc32524022abdefb7b79cc4399915cad1fd02a12985069e4f499f744f6a90a",
+      "text_file": ".cache/wave49-earth-splash.txt",
+      "text_sha256": "84f1179f7300fc69fcb1142e9400bf78d560a22fd11bc35287abd4348b1737d1"
+    },
+    {
+      "source_id": "S49-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11984898/",
+      "result": "指定UA HTTP200有效原文，正文讀取限指定範圍",
+      "file": ".cache/wave49-earth-halo.html",
+      "sha256": "d0066a2747fd23570d51f5ccb497fe2fd6383750a0c8000e3954c00305486817",
+      "text_file": ".cache/wave49-earth-halo.txt",
+      "text_sha256": "5fbd2135df6d4fd45d7d19099c04b4ad55aac912a206c4910cfbdcca8a2ed331"
+    },
+    {
+      "source_id": "S49-S004",
+      "url": "https://www.nature.com/articles/s42005-022-00827-0?error=cookies_not_supported&code=8ec6dac2-9ede-451a-8e99-51d49807cd60",
+      "result": "指定UA HTTP200有效原文，正文讀取限指定範圍",
+      "file": ".cache/wave49-earth-peel.html",
+      "sha256": "5d5d195714fefb7d5a846578a41d129e011798737526e07c62fd453b490deadc",
+      "text_file": ".cache/wave49-earth-peel.txt",
+      "text_sha256": "11a60625c2ce2197d8d6842e3179748a392d54c1c3d0753428a8cbf06d9496c1"
+    },
+    {
+      "source_id": "S49-S005",
+      "url": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/enhanced-bubble-growth-near-an-advancing-solidification-front/92E92DD04CE805E778D854E808B35280",
+      "result": "指定UA HTTP200有效原文，正文讀取限指定範圍",
+      "file": ".cache/wave49-earth-bubble.html",
+      "sha256": "dcb6f7bcc2c2fb7e061ae532836d5df6804b26e2f8fca77f8349816f3ccf71e0",
+      "text_file": ".cache/wave49-earth-bubble.txt",
+      "text_sha256": "3fa3bcbfe09fe78777f1cf1c7d1e8b33a32b5f026d5fec70ff65293d5d86161b"
+    },
+    {
+      "source_id": "S49-S006",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879204/",
+      "result": "指定UA HTTP200有效原文，正文讀取限指定範圍",
+      "file": ".cache/wave49-earth-jump.html",
+      "sha256": "9400b43776c404d3aa1f8a56fa286d5b7fc0f1aaebd041e1e7f4e08ca62dfc40",
+      "text_file": ".cache/wave49-earth-jump.txt",
+      "text_sha256": "2c044d6ade98f9f74cd02b70e6b27885af5787699b578586050341126c7fb1d4"
+    },
+    {
+      "source_id": "S49-S007",
+      "url": "https://arxiv.org/pdf/physics/0702098v2",
+      "result": "指定UA HTTP200有效原文，正文讀取限指定範圍",
+      "file": ".cache/wave49-earth-texture.pdf",
+      "sha256": "c607d47c5c60656adbbf3a5e7468ffe1687986c4a5c1eba451a34eaf763f9432",
+      "text_file": ".cache/wave49-earth-texture.txt",
+      "text_sha256": "dcf142f188bc288e86787d0d878d0bf3beb5294a3974f94c1dfdeecdbed6500a"
+    }
+  ],
+  "retrieval_failures": [],
+  "visual_reads": [
+    {
+      "source_id": "S49-S003",
+      "file": ".cache/wave49-earth-halo-fig2.png",
+      "sha256": "4eda892ffe914a85998aebf01d76f92d32087b50783e3c79fc8ebfe646389b97",
+      "read": "Fig2光學／熱像對時，先升溫與新增微滴、凍完降溫後由內消退；下框為機制示意。"
+    },
+    {
+      "source_id": "S49-S004",
+      "file": ".cache/wave49-earth-peel-fig1.png",
+      "sha256": "b07a202d1a4dea74450738fdfd2cf2d3ec47c87bec058d28b0ebb97386c34b9a",
+      "read": "Fig1側視翹邊／仍貼板及俯視裂線；after blown另一步。"
+    },
+    {
+      "source_id": "S49-S004",
+      "file": ".cache/wave49-earth-peel-fig2.png",
+      "sha256": "e25cd63531413ec03b1b4ffbf58e29899519c230e515187d1cf4d116c3b03149",
+      "read": "Fig2界面角與過冷分區，完全／部分剝離及無剝離條件。"
+    },
+    {
+      "source_id": "S49-S005",
+      "file": ".cache/wave49-earth-bubble-fig4.png",
+      "sha256": "6ecfb0cc96704f5eb2d2017062f54371a0a5aee1bdb5b6ceff8858e08562d9a0",
+      "read": "Fig4泡心固定而冰前緣靠近，生長實點偏離初始虛線；不是膨脹泡推走前緣。"
+    },
+    {
+      "source_id": "S49-S005",
+      "file": ".cache/wave49-earth-bubble-fig5.png",
+      "sha256": "eebf523ae44a68060d332449dfeeb1b73b9414f3c18fe14b8fb745ccf55787d8",
+      "read": "Fig5實點vs三條模型線，右側三濃度場均模擬，色軸亦不同。"
+    },
+    {
+      "source_id": "S49-S006",
+      "file": ".cache/wave49-earth-jump-fig2.png",
+      "sha256": "ab3d7447c1e478bb94bd26c7b78552d68a135a844c2befe08ad94853ada8d9e1",
+      "read": "Fig2起冰前緣、形變、離面與熱像；仍有液體核心。"
+    },
+    {
+      "source_id": "S49-S006",
+      "file": ".cache/wave49-earth-jump-fig4.png",
+      "sha256": "40a62a66b0d1759d2eb05f813c84ea838e7a72f7f0641105cc40c331225497cb",
+      "read": "Fig4角度實點與起冰位置示例，方向關聯不冒稱任意控制起冰點。"
+    },
+    {
+      "source_id": "S49-S002",
+      "file": ".cache/wave49-earth-splash-p3.png",
+      "sha256": "e2585538265467a2a0bf868be30c1d8848c16e353597486bdf38faaa0f8f2e73",
+      "read": "2005 Fig1四氣壓的冠狀飛濺到平展，照片為酒精不是水。"
+    },
+    {
+      "source_id": "S49-S001",
+      "file": ".cache/wave49-earth-rough-p2.png",
+      "sha256": "45271d0b249ef5ddc65fa84799e4a692c7adc0f6a2aa7cd9fa0a5a915338ba6f",
+      "read": "2007 Fig1粗糙度／氣壓兩列與早晚時刻；小粗糙晚期少噴，大粗糙仍前緣噴滴。"
+    }
+  ],
+  "sample_artifact": {
+    "theme_id": "W49S-T01",
+    "file": ".cache/w49-sample-earth.json",
+    "sha256": "7088de7f70a9439823a291c70a023f7baadc6e82e8d5ea250d747c43387c67b6",
+    "characters": 249,
+    "status": "root已離線SAPI計時；作者只核文字與計時收據，未產音訊／未播放評聽。",
+    "sample_to_chapter_segments": [
+      [
+        0
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "budget_seconds": 70,
+    "read_receipt": ".cache/wave49-earth-read.json",
+    "read_receipt_sha256": "cc418d15a196cdbd209a7cd03f8de50c7869da3d7204025cc093b59a440acf13",
+    "paragraph_seconds": [
+      19.381,
+      21.815,
+      20.791
+    ],
+    "continuous_seconds": 61.989,
+    "chapter_seconds": [
+      24,
+      46
+    ]
+  },
+  "timing_checks": [
+    {
+      "id": "W49S-T01",
+      "body_seconds": 70,
+      "sum_chapters": 70,
+      "core_seconds": {
+        "S49-003": 70
+      },
+      "caps": {
+        "S49-003": 95
+      }
+    },
+    {
+      "id": "W49S-T02",
+      "body_seconds": 80,
+      "sum_chapters": 80,
+      "core_seconds": {
+        "S49-001": 80
+      },
+      "caps": {
+        "S49-001": 100
+      }
+    },
+    {
+      "id": "W49S-T03",
+      "body_seconds": 73,
+      "sum_chapters": 73,
+      "core_seconds": {
+        "S49-002": 73
+      },
+      "caps": {
+        "S49-002": 90
+      }
+    }
+  ],
+  "reserve_candidate_ids": [
+    "S49-004",
+    "S49-005"
+  ],
+  "limits": [
+    "作者題級與紙上片案，並非非作者PASS或完整稿批准。",
+    "7份指定正文與9張圖版已實讀；未播放任何補充影片，未重算整套公式。",
+    "自然環境入口使用原創示意，實驗首畫標酒精／氮氣／微滴／低壓等條件；不用真空或極冷示範教學。",
+    "S007只退題依據；其預印本版次及頁內再編時間分開。"
+  ],
+  "revision_history": [
+    {
+      "reason": "初批增補已讀NA專用S007並將S004與S005保留segment，不為片數硬拼。",
+      "before_batch_sha256": "03984fb081b086569601d577db28c456a4dcc321a54f590be93e906318c5667a",
+      "after_batch_sha256": "9d3a172350cc4fe126a4422aa16fa9246e41c072b77a34ed544ad552902e811e"
+    },
+    {
+      "reason": "root SAPI對齊T01段章並刪小過冷支線、將吹氣新對照放第二章；三案刪獨立重述收尾，不補內容。",
+      "before_files": [
+        {
+          "file": "batches/wave49-earth.json",
+          "sha256": "9d3a172350cc4fe126a4422aa16fa9246e41c072b77a34ed544ad552902e811e"
+        },
+        {
+          "file": "reviews/wave49-earth-themes.json",
+          "sha256": "0d1cb1b2a235cb2b6e8e51d212d26833ab56ddb2698b8bc3c7752fb9bbc46a71"
+        },
+        {
+          "file": "reviews/wave49-earth-author.json",
+          "sha256": "bdc9f7821c9ada090194cafeef2bf2a92c2f1d8af45b332b66986cbc5cd1429f"
+        }
+      ],
+      "before_seconds": [
+        75,
+        85,
+        78
+      ],
+      "after_seconds": [
+        70,
+        80,
+        73
+      ]
+    }
+  ],
+  "removed_seconds": 15
+}

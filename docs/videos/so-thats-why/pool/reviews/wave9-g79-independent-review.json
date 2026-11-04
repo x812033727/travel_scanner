@@ -1,0 +1,117 @@
+{
+  "reviewer": "pool_physics",
+  "created_on": "2026-11-01",
+  "status": "PASS_WRITTEN_DRAFT_REVIEW_ONLY",
+  "production_ready": false,
+  "reviewed_files": [
+    {
+      "file": "treatments/G79/treatment.json",
+      "sha256": "ec6f7e80ccaa7c5781178d6cb72a1151987fb361630614814179b68f308c58f6"
+    },
+    {
+      "file": "treatments/G79/narration-draft.json",
+      "sha256": "84e42a012238f352bcb681b0e2354b049a4e146ce80218848d28088a1e660ac6"
+    },
+    {
+      "file": "reviews/wave9-g79-author.json",
+      "sha256": "59e841ad8b7d4964943a597124a28b3cc9264a800f63563e6647d004936ac8cc"
+    }
+  ],
+  "reviewed_candidate_ids": [
+    "F8001",
+    "F8003"
+  ],
+  "review_method": "非作者先按 b1→b4 順讀旁白，再核 treatment、作者收據與來源指定段；先前已收到任務關注點，因此不稱未受提示的觀眾盲測。沒有朗讀、配音、實驗或成片觀看。",
+  "source_readbacks": [
+    {
+      "source_id": "F8-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6535019/",
+      "read_via": "本輪 web open/find 成功取得原出版正文；另核舊文字副本 SHA 後定點讀回。此路線與作者本輪 CAPTCHA 結果不同。",
+      "scope": "Introduction; Conching Phenomenology; Conching Reduces Aggregate Size and Increases φm; From Granules to Flowing Suspension; Lecithin as a Lubricant / Fig.7 caption; Summary and Conclusions; Materials and Methods。沒有重算原圖數據。",
+      "cache_file": "wave8-food-conching.txt",
+      "cache_sha256": "dd6b25ad98d310219ed269a46c09396cede6241e3d5b2131b43ec985d86b1ed8",
+      "key_check": "油對照按最大卵磷脂加入量對應體積；不是各劑量逐一匹配。混合物改用葵花油，並非直接加熱市售巧克力。",
+      "limit": "機理為原作者對流變結果的解釋；不是逐接觸點的直接攝影。Mars 部分資助。"
+    },
+    {
+      "source_id": "F8-S003",
+      "url": "https://blog.susnano.wisc.edu/wp-content/uploads/sites/2179/2025/08/Chocolate-Experimentpdf.pdf",
+      "read_via": "本輪 web open 只回 JavaScript 人機驗證頁，未得到新 PDF；核舊官方 PDF SHA 後以 PyMuPDF 讀第8–9頁文字層。",
+      "scope": "PDF p.8 Experiment 3 現象；p.9 Explanation 第二點。也看見其餘解釋，但未採乳液相反轉概括。沒有讀原 JCE 論文。",
+      "cache_file": "wave8-food-chocolate-demo.pdf",
+      "cache_sha256": "b5d0cf6ac7f91a854760fbc3b4a0b5aa48a486ea68ffe99559d180dd4318b793",
+      "key_check": "少水、潤濕、聚團與難攪的定性鏈有支持；不擴寫液橋力或修復配方。",
+      "limit": "教育示例，未獨立重現；未重用其授權圖片。"
+    }
+  ],
+  "claim_checks": [
+    {
+      "id": "c1",
+      "result": "PASS_WITH_STATED_SCOPE",
+      "reason": "固體顆粒與連續脂肪相已分開；開場是原創條件設定。"
+    },
+    {
+      "id": "c2",
+      "result": "PASS_WITH_STATED_SCOPE",
+      "reason": "crumb 與葵花油標籤正確；聚團拆解圖必須維持示意。"
+    },
+    {
+      "id": "c3",
+      "result": "PASS_WITH_STATED_SCOPE",
+      "reason": "原文對照支持；畫面保留最大加入量限定，新增「這組對照」已讀回。"
+    },
+    {
+      "id": "c4",
+      "result": "PASS_WITH_STATED_SCOPE",
+      "reason": "旁白歸於研究者解釋，沒有聲稱直接量得每個接觸力。"
+    },
+    {
+      "id": "c5",
+      "result": "PASS_QUALITATIVE_EDUCATIONAL_SCOPE",
+      "reason": "明說換回熔融巧克力與少量水，未外推所有加水量。"
+    }
+  ],
+  "story_review": {
+    "decision": "保留85秒書面草稿，進實際試讀時可更短。",
+    "causal_progression": [
+      "先分液相與顆粒",
+      "研究模型與機械處理",
+      "添加物對照及解釋",
+      "切回另一條件檢查觀眾預測"
+    ],
+    "model_switch": "b2 旁白＋標籤進入葵花油模型；b4 旁白＋新畫面明示熔融巧克力。不可沿用同一容器連續加水鏡頭。",
+    "boredom": "沒有史話或名詞清單補時。b2 最後預告句不是新事實，可在試讀時自然刪；不得用長停頓填85秒。",
+    "visual_dependency": "油對照的最大加入量限定、觀察與微觀示意分欄、兩種材料場景分開，是圖解必須落實的條件，尚未有圖可驗。"
+  },
+  "timing_check": {
+    "body_seconds": 85,
+    "beat_seconds": [
+      15,
+      20,
+      20,
+      30
+    ],
+    "core_seconds": {
+      "F8001": 55,
+      "F8003": 30
+    },
+    "spoken_characters": 279,
+    "rough_speech_seconds_at_4_5": 62,
+    "remaining_visual_budget_seconds": 23,
+    "opening_and_recap_included": true,
+    "read_aloud": "NOT_PERFORMED",
+    "assessment": "算術與書面資訊密度可接受；62秒是字數估算，不是已測語速或實際長度。低於原題材估時下緣不需補時。"
+  },
+  "revision_readback": {
+    "previous_treatment_sha256": "4c2295a68e9f33eeb0017561f2dce178bc3142d7cbda601d2a44578584da392a",
+    "previous_narration_sha256": "75a80a6a2f7c05dc504f7ed28dd0fbc1851cf829ced0a3ab704b583537ad6717",
+    "change": "採建議在b3加限定語；279字、85秒、兩核心55/30秒與新草稿狀態已逐欄讀回。",
+    "result": "PASS"
+  },
+  "required_corrections": [],
+  "limits": [
+    "沒有批准製作、匯入或發布。",
+    "兩來源均核指定正文範圍，但只有一個本輪新 HTTP 正文；另一個是核 SHA 副本。",
+    "沒有以審閱通過取代實際試讀、圖解驗收或觀眾理解測試。"
+  ]
+}
