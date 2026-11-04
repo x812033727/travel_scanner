@@ -113,7 +113,7 @@ shot("chief-second", "Medium shot of the chief holding up two fingers with a ser
 card("droplet-size", "big", {"kicker": "一顆雲滴", "text": "約 **0.02** 公釐", "sub": "比一根頭髮還細好幾倍"},
      [c("一顆普通的雲滴，直徑大約百分之二公釐，比一根頭髮還細好幾倍。", "數字放慢")])
 shot("kid-no-weight", "Medium shot of a girl holding up a single strand of her own hair and studying it closely, sitting at a desk, soft window light", KID,
-     [k("那它太小了，所以就沒有重量了？", "很有把握的錯猜", None)])
+     [k("那它太小了，所以就沒有重量了嗎？", "很有把握的錯猜", None)])
 shot("chief-falls-slowly", "Medium close-up of the chief shaking her head gently and holding her thumb and finger very close together, warm lamp light", CH,
      [c("有重量，它也真的一直在往下掉。只是掉得非常、非常慢。", "否定但溫和")])
 shot("feather-stone", "Medium shot of a girl on a balcony letting go of a feather and a pebble at the same time from her two raised hands, the pebble already lower than the feather, soft daylight", KID,
@@ -217,7 +217,7 @@ shot("grey-base", "Low angle wide shot looking up at the thick dark-grey base of
 shot("kid-why-stop", "Medium shot of a girl sitting on the windowsill with her knees up, watching rain outside slowly stop, puzzled, soft light", KID,
      [k("那為什麼雷陣雨常常下一下就停？", "追問", "S:stop")])
 card("chief-engine", "big", {"kicker": "一場大雨", "text": "把自己的**引擎**關掉", "sub": "雷陣雨為什麼下一下就停"},
-     [c("因為大雨，會把自己的引擎關掉。", "賣關子")])
+     [c("因為一場大雨，會把自己的引擎關掉。", "賣關子")])
 next(CAMS)  # this beat was a shot until 2026-11-03: keep the later shots on the camera moves their pictures were drawn with
 shot("rain-drags", "Wide cutaway illustration of heavy rain falling out of a storm cloud with big curved arrows of cool air pouring down alongside it and spreading out across the ground, a small farmhouse below, soft grey light", (),
      [c("雨落下來，會把周圍的空氣一起往下拖；雨在半路蒸發，又讓這團空氣更冷。")])
@@ -352,7 +352,7 @@ lines("chief-phone-call", c("還記得花椰菜嗎？那代表裡面的空氣還
 lines("chief-not-tear", c("大家都這樣畫，可是不是。"), c("雨滴掉得越快，空氣從下面擋得越用力。"))
 lines("rain-stops", k("衣服都收進來了，雨也停了。真的不到一個小時。", "有點不敢相信"), k("那朵雲跑去哪裡了？", "追問"))
 lines("chief-stamp", c("引擎關掉，雲就散了。"), c("打在你手上的每一顆，都是一百萬顆雲滴湊起來的。"))
-lines("kid-calc", k("十億個半公克……那是多少？", "算不出來"), c("就是開頭說的那五百公噸。", "停一拍再說", "P:weight"))
+lines("kid-calc", k("十億乘以半公克……那是多少？", "算不出來"), c("就是開頭說的那五百公噸。", "停一拍再說", "P:weight"))
 lines("kid-notebook-done", k("還記得那些小水滴嗎？它們不是不會掉，是在等長大！", "自己想通"))
 
 # opening order: the core question last (kid-why-not-fall after drop-on-nose)
