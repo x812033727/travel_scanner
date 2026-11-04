@@ -112,6 +112,10 @@ const TOP_KEYS = new Set([
   "category",
   "target_minutes",
   "voice",
+  // Slides-only, validated in drama.mjs: a second host with a voice of its own, and the
+  // narrator's display name for the captions' speaker prefix (docs/videos/DUBS.md §兩位主持人).
+  "cohost",
+  "host",
   "pronunciation_hints",
   "localization_plan",
   "youtube",

@@ -1,0 +1,1441 @@
+{
+  "schema_version": 1,
+  "slug": "daily-ai-20261101",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [
+    9,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像週末早上的新聞主播跟朋友補這幾天的事：每則開頭的日期與公司名乾脆清楚，數字前停半拍；「台灣」「你」那幾句放慢、靠近；「報導」「公司自己說」語氣保留；生物與武器那兩則壓低、不嚇人；「我的看法是」放慢放穩，承認不確定那句放輕；留言題輕輕上揚收。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "loops": [
+    {
+      "setup": "9cf8",
+      "payoff": "mu9u",
+      "what": "碰到上限也不會停的用量"
+    },
+    {
+      "setup": "iknv",
+      "payoff": "3m7v",
+      "what": "OpenAI 為什麼調降募資目標"
+    },
+    {
+      "setup": "ppmg",
+      "payoff": "kbib",
+      "what": "太空裡的 AI 晶片傳回了什麼"
+    },
+    {
+      "setup": "znn9",
+      "payoff": "qkvz",
+      "what": "AI 代理點餐，到底多少人用"
+    },
+    {
+      "setup": "befq",
+      "payoff": "nxwy",
+      "what": "一般人用不用得到 Rosalind"
+    }
+  ],
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "雲端 AI 帳單能設上限了，但有些不會停｜AI 科技快報 週末版",
+    "description": "本片旁白為 AI 合成語音，內容依各公司官方公告與報導整理。\n週末版：補上 10 月 30 日與 31 日的 AI 與科技新聞七則，每一則只回答：這對在台灣的你改變了什麼。\n\nMokaair 文章：\nhttps://mokaair.com/zh-TW/life/tech-news-google-cloud-spend-caps-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-openai-funding-target-20261031\nhttps://mokaair.com/zh-TW/life/ai-news-xai-naacp-lawsuit-20261031\nhttps://mokaair.com/zh-TW/life/tech-news-project-suncatcher-satellite-response-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-doordash-agent-orders-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-gpt-rosalind-6-system-card-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-pope-leo-lethal-autonomous-weapons-20261030\n\nOpenAI 募資目標與已籌金額是 TechCrunch 轉述《金融時報》《華爾街日報》的報導，OpenAI 尚未證實。Google 的「第一次在軌道上產生 AI 回應」、OpenAI 的評測與風險分級，都是各公司自己公布，還沒有第三方確認。xAI 案只是可以續審，法院並未判定違法。「我的看法」是站主的意見；本片不談股價，也不推薦任何服務。",
+    "tags": [
+      "AI 新聞",
+      "Google Cloud 支出上限",
+      "OpenAI 募資",
+      "xAI 資料中心",
+      "Project Suncatcher",
+      "DoorDash AI 代理",
+      "GPT-Rosalind-6",
+      "致命自主武器",
+      "AI 科技快報"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "ai",
+      "headline": "帳單**自動煞車**",
+      "sub": "OpenAI 傳降募資目標、太空 TPU 寫詩",
+      "asset": "docs/videos/daily-ai-20261101/lead.jpg"
+    }
+  },
+  "sources": [
+    {
+      "title": "Google Cloud Blog: spend caps now generally available",
+      "url": "https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Google Cloud documentation: Manage spend cap budgets",
+      "url": "https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "TechCrunch: OpenAI reportedly lowers funding target for new round",
+      "url": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "TechCrunch: Judge allows NAACP lawsuit over xAI data center pollution to move forward",
+      "url": "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Google: first response from the Project Suncatcher prototype satellite",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "TechCrunch: DoorDash has received only several hundred orders from AI agents",
+      "url": "https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "OpenAI Deployment Safety Hub: GPT-Rosalind-6 System Card Addendum",
+      "url": "https://deploymentsafety.openai.com/gpt-rosalind-6",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "The Verge: Pope Leo calls for the disarmament of AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1023188/pope-leo-disarm-ai",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/daily-ai-20261101/lead.jpg",
+      "source": "https://storage.googleapis.com/gweb-cloudblog-publish/images/Cost_Management.max-2500x2500.jpg (og:image of https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available/)",
+      "license": "Official announcement image of the product, quoted as the subject of a news commentary thumbnail with the source credited"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "Google Cloud 支出上限、OpenAI 募資、太空 TPU 寫俳句",
+      "template": "title",
+      "data": {
+        "tag": "AI 科技快報 週末版",
+        "title": "雲端 AI 帳單，\n**能踩煞車了**",
+        "subtitle": "Google Cloud 支出上限 · 2026-10-30",
+        "key": "預算用完，指定服務自動暫停"
+      },
+      "lines": [
+        {
+          "id": "ru7q",
+          "text": "10 月 30 日，Google Cloud 宣布支出上限正式推出：",
+          "emotion": "開場乾脆，日期和 Google Cloud 咬字清楚"
+        },
+        {
+          "id": "xatk",
+          "text": "預算用完，你指定的雲端服務就自動暫停。"
+        },
+        {
+          "id": "9cf8",
+          "text": "可是有些用量，碰到上限也不會停。",
+          "emotion": "放慢，停在答案前"
+        }
+      ]
+    },
+    {
+      "id": "open-oa",
+      "template": "big",
+      "data": {
+        "kicker": "10 月 31 日 · 據報導",
+        "text": "OpenAI 新一輪募資\n**目標傳出下調**",
+        "sub": "TechCrunch 引述多家媒體；OpenAI 未證實",
+        "key": "OpenAI 募資目標，傳出下調"
+      },
+      "lines": [
+        {
+          "id": "iknv",
+          "text": "同一個週末，多家媒體報導，OpenAI 把新一輪募資的目標往下調。",
+          "emotion": "語氣保留，數字前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "open-sat",
+      "template": "big",
+      "data": {
+        "kicker": "Google",
+        "text": "太空裡的 AI 晶片\n**傳回第一個回答**",
+        "sub": "Project Suncatcher · Google 2026-10-30",
+        "key": "太空裡的 AI 晶片，傳回第一個回答"
+      },
+      "lines": [
+        {
+          "id": "yk7k",
+          "text": "Google 送上太空的 AI 晶片，也傳回了第一個回答，",
+          "emotion": "輕快一點"
+        },
+        {
+          "id": "ppmg",
+          "text": "而那個回答，是一首詩。",
+          "emotion": "笑著收"
+        },
+        {
+          "id": "j8kb",
+          "text": "這是週末版，補上週五和週六的新聞。",
+          "emotion": "平實帶過"
+        }
+      ]
+    },
+    {
+      "id": "g-open",
+      "chapter": "Google Cloud 支出上限正式推出",
+      "template": "big",
+      "data": {
+        "kicker": "10 月 30 日 · Google Cloud",
+        "text": "預算用完\n**暫停用量，不刪資源**",
+        "sub": "Google Cloud Budgets 的支出上限，從預覽版轉正式版",
+        "key": "支出上限正式推出：暫停，不刪除"
+      },
+      "lines": [
+        {
+          "id": "rpf4",
+          "text": "這個煞車在 Google Cloud 的預算工具裡，從預覽版轉成了正式版。",
+          "emotion": "接開場，乾脆"
+        },
+        {
+          "id": "3gjh",
+          "text": "用量超過你設的預算，系統會暫停用量，但不會刪掉你的資源。",
+          "emotion": "「不會刪掉」清楚"
+        }
+      ]
+    },
+    {
+      "id": "g-three",
+      "template": "steps",
+      "data": {
+        "title": "正式版多了三件事",
+        "steps": [
+          {
+            "title": "支出上限 API",
+            "detail": "用程式設上限",
+            "icon": "terminal"
+          },
+          {
+            "title": "即時估算成本",
+            "detail": "幾分鐘內觸發",
+            "icon": "clock"
+          },
+          {
+            "title": "每月自動重置",
+            "detail": "下個月初恢復",
+            "icon": "arrow"
+          }
+        ],
+        "source": "Google Cloud 部落格 2026-10-30",
+        "keys": [
+          "正式版多了三件事",
+          "用 API 替新專案套上限",
+          "AI 服務：幾分鐘內觸發",
+          "每月自動重置，月初恢復"
+        ]
+      },
+      "lines": [
+        {
+          "id": "4uc7",
+          "text": "這次正式版，多了三件事。",
+          "emotion": "清單開頭，乾脆"
+        },
+        {
+          "id": "5vxr",
+          "text": "第一，可以用 API 寫程式設上限，開新的測試專案時直接套上。",
+          "reveal": 1
+        },
+        {
+          "id": "nqd4",
+          "text": "第二，AI 服務的上限，會用估算的即時成本，在用量發生後幾分鐘內就觸發。",
+          "reveal": 1
+        },
+        {
+          "id": "hew4",
+          "text": "第三，上限觸發之後，被擋下的服務到下個月初會自動恢復，不用再手動解除。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "g-except",
+      "template": "compare",
+      "data": {
+        "title": "碰到上限，哪些會停",
+        "left": {
+          "heading": "會暫停",
+          "icon": "lock",
+          "points": [
+            "隨用隨付的請求",
+            "承諾使用折扣涵蓋的請求"
+          ]
+        },
+        "right": {
+          "heading": "不會暫停",
+          "icon": "warning",
+          "points": [
+            "Provisioned Throughput",
+            "常駐的運算與儲存資源"
+          ]
+        },
+        "source": "Google Cloud 部落格 2026-10-30、支出上限說明文件",
+        "keys": [
+          "有些用量不會停",
+          "隨用隨付：碰到上限會暫停",
+          "預留容量、常駐資源：照常"
+        ]
+      },
+      "lines": [
+        {
+          "id": "n8n7",
+          "text": "開場說有些用量不會停，就在這裡。",
+          "emotion": "放慢，揭曉"
+        },
+        {
+          "id": "n5u4",
+          "text": "隨用隨付的請求，和承諾使用折扣涵蓋的請求，碰到上限都會暫停；",
+          "reveal": 1
+        },
+        {
+          "id": "mu9u",
+          "text": "但預留容量的請求照常執行，常駐的運算和儲存也照樣計費。",
+          "reveal": 1,
+          "emotion": "「照常」加重"
+        }
+      ]
+    },
+    {
+      "id": "g-do",
+      "template": "steps",
+      "data": {
+        "title": "今天就能做",
+        "steps": [
+          {
+            "title": "計費控制台",
+            "detail": "Budgets and Alerts",
+            "icon": "gear"
+          },
+          {
+            "title": "先設測試專案",
+            "detail": "低金額上限",
+            "icon": "folder"
+          },
+          {
+            "title": "確認通知對象",
+            "detail": "50%、80%、100%",
+            "icon": "person"
+          }
+        ],
+        "source": "Google Cloud 部落格 2026-10-30｜經銷商帳戶不適用（說明文件）",
+        "keys": [
+          "在台灣用 Google Cloud 的你",
+          "到計費控制台的預算頁面",
+          "先替測試專案設低上限",
+          "確認誰會收到通知"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ryzv",
+          "text": "在台灣用 Google Cloud 跑 AI 的你，帳戶不是經銷商開的，今天就能做。",
+          "emotion": "放慢，「你」靠近"
+        },
+        {
+          "id": "7nwk",
+          "text": "到 Google Cloud 計費控制台的預算頁面，設第一個支出上限。",
+          "reveal": 1
+        },
+        {
+          "id": "fayx",
+          "text": "Google 建議先從測試用的專案開始，設嚴格、金額低的上限。",
+          "reveal": 1
+        },
+        {
+          "id": "wrj5",
+          "text": "上限用到一定比例時，預設會通知計費管理員和專案擁有者，",
+          "reveal": 1
+        },
+        {
+          "id": "ez5s",
+          "text": "所以先確認，這兩個角色上有對的人。",
+          "emotion": "叮嚀，收穩"
+        }
+      ]
+    },
+    {
+      "id": "o-open",
+      "chapter": "OpenAI 傳把募資目標降到 200 億美元",
+      "template": "table",
+      "data": {
+        "title": "OpenAI 新一輪募資",
+        "columns": [
+          "項目",
+          "先前報導",
+          "最新報導"
+        ],
+        "rows": [
+          [
+            "募資目標",
+            "300 億美元",
+            "降到 200 億美元"
+          ],
+          [
+            "已籌得",
+            "未提及",
+            "110 億美元"
+          ],
+          [
+            "領投",
+            "未提及",
+            "阿聯投資人"
+          ]
+        ],
+        "source": "TechCrunch 2026-10-31｜引述 FT、WSJ",
+        "keys": [
+          "AI 公司的錢，也有人踩煞車",
+          "目標降到 200 億美元",
+          "已籌得 110 億美元",
+          "領投：阿聯的投資人"
+        ]
+      },
+      "lines": [
+        {
+          "id": "wtmi",
+          "text": "你的帳單有了煞車；AI 公司的錢，也開始有人踩煞車。",
+          "emotion": "轉場，平穩"
+        },
+        {
+          "id": "repi",
+          "text": "10 月 31 日，TechCrunch 引述金融時報報導，"
+        },
+        {
+          "id": "qm94",
+          "text": "OpenAI 把新一輪的募資目標，從原本傳的數字，降到 200 億美元。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "dt7g",
+          "text": "華爾街日報的後續報導說，目前已經籌到 110 億美元，",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "82ee",
+          "text": "金融時報則說，領投的會是一群阿拉伯聯合大公國的投資人。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "o-tepid",
+      "template": "quote",
+      "data": {
+        "kicker": "部分大型投資人的反應",
+        "quote": "…its fundraising efforts had met with a “tepid” response from some large investors.",
+        "translation": "部分大型投資人反應「冷淡」",
+        "source": "TechCrunch 2026-10-31｜引述《華爾街日報》",
+        "key": "部分大型投資人：反應冷淡"
+      },
+      "lines": [
+        {
+          "id": "ynw6",
+          "text": "華爾街日報也說，部分大型投資人的反應很冷淡。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "o-why",
+      "template": "big",
+      "data": {
+        "kicker": "為什麼不如預期",
+        "text": "華爾街對 AI 基礎建設\n**花大錢轉趨謹慎**",
+        "sub": "TechCrunch 的分析：部分是時機不好",
+        "key": "華爾街：對 AI 基建支出轉趨謹慎"
+      },
+      "lines": [
+        {
+          "id": "n94a",
+          "text": "為什麼？TechCrunch 認為，部分原因是時機不好：",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "3m7v",
+          "text": "華爾街投資人對 AI 基礎建設的大筆支出，越來越謹慎。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "o-you",
+      "template": "big",
+      "data": {
+        "kicker": "對在台灣的你",
+        "text": "是媒體報導\n**OpenAI 還沒回應**",
+        "sub": "TechCrunch 已詢問 OpenAI，報導中尚無回應",
+        "key": "是報導，OpenAI 還沒回應"
+      },
+      "lines": [
+        {
+          "id": "6ib9",
+          "text": "要分清楚，這些都是媒體報導，不是 OpenAI 的正式公告，",
+          "emotion": "語氣保留"
+        },
+        {
+          "id": "htgq",
+          "text": "TechCrunch 已經去問 OpenAI，報導裡還沒有回應。"
+        }
+      ]
+    },
+    {
+      "id": "o-you2",
+      "template": "big",
+      "data": {
+        "kicker": "對在台灣的你",
+        "text": "報導沒提\n**ChatGPT 會受影響**",
+        "sub": "要看 OpenAI 自己怎麼說、最後募到多少",
+        "key": "要看 OpenAI 自己怎麼說"
+      },
+      "lines": [
+        {
+          "id": "8c2e",
+          "text": "對在台灣用 ChatGPT 的你，報導沒有說這會影響產品或服務，",
+          "emotion": "放慢，「你」靠近"
+        },
+        {
+          "id": "b9ni",
+          "text": "要看的，是 OpenAI 自己怎麼說，和最後實際募到多少。",
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "x-open",
+      "chapter": "法官讓 NAACP 控告 xAI 資料中心案續審",
+      "template": "big",
+      "data": {
+        "kicker": "10 月 31 日 · TechCrunch",
+        "text": "xAI 撤案聲請\n**被駁回**",
+        "sub": "NAACP 指控 Colossus 資料中心沒有空氣許可",
+        "key": "xAI 撤案聲請被駁回"
+      },
+      "lines": [
+        {
+          "id": "rkut",
+          "text": "華爾街擔心 AI 基礎建設花太多錢；在地面上，資料中心的鄰居也有意見。",
+          "emotion": "轉場"
+        },
+        {
+          "id": "2hw3",
+          "text": "10 月 31 日，TechCrunch 報導，美國聯邦法官駁回了 xAI 的撤案聲請。"
+        }
+      ]
+    },
+    {
+      "id": "x-who",
+      "template": "big",
+      "data": {
+        "kicker": "原告",
+        "text": "告它的是\n**NAACP**",
+        "sub": "美國全國有色人種協進會",
+        "key": "原告是 NAACP"
+      },
+      "lines": [
+        {
+          "id": "zdhc",
+          "text": "告它的是 NAACP，也就是美國全國有色人種協進會。"
+        }
+      ]
+    },
+    {
+      "id": "x-claim",
+      "template": "big",
+      "data": {
+        "kicker": "NAACP 的指控",
+        "text": "沒有空氣許可\n**就運轉燃氣渦輪機**",
+        "sub": "孟菲斯 Colossus 資料中心｜仍是指控",
+        "key": "指控：沒有空氣許可"
+      },
+      "lines": [
+        {
+          "id": "m5dk",
+          "text": "指控是：xAI 沒有取得空氣許可，"
+        },
+        {
+          "id": "rpfx",
+          "text": "就在孟菲斯附近的 Colossus 資料中心，運轉供電用的燃氣渦輪機。"
+        }
+      ]
+    },
+    {
+      "id": "x-dispute",
+      "template": "compare",
+      "data": {
+        "title": "雙方的爭點",
+        "left": {
+          "heading": "xAI 的主張",
+          "icon": "person",
+          "points": [
+            "渦輪機是移動式，免許可",
+            "原告沒有資格提告"
+          ]
+        },
+        "right": {
+          "heading": "法官的裁定",
+          "icon": "document",
+          "points": [
+            "不屬於移動污染源",
+            "依清潔空氣法可以提告"
+          ]
+        },
+        "source": "TechCrunch 2026-10-31",
+        "keys": [
+          "xAI：渦輪機是移動式",
+          "法官：不算移動污染源，續審"
+        ]
+      },
+      "lines": [
+        {
+          "id": "74pv",
+          "text": "xAI 的說法是，這些渦輪機是移動式的，不需要許可，原告也沒資格告；",
+          "reveal": 1
+        },
+        {
+          "id": "32c6",
+          "text": "法官認為，它們不屬於移動污染源，原告也有資格提告。",
+          "reveal": 1,
+          "emotion": "「繼續審」清楚"
+        }
+      ]
+    },
+    {
+      "id": "x-not",
+      "template": "big",
+      "data": {
+        "kicker": "要分清楚",
+        "text": "可以續審\n**不等於判 xAI 違法**",
+        "sub": "原告指控至少 35 台渦輪機未取得許可；仍是指控",
+        "key": "續審，不等於判 xAI 違法"
+      },
+      "lines": [
+        {
+          "id": "3wrt",
+          "text": "要分清楚：這只代表案子可以繼續審，不是法院判 xAI 違法。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "x-bg",
+      "template": "bullets",
+      "data": {
+        "title": "官司背後的反彈",
+        "items": [
+          "紐約通過暫停新建資料中心"
+        ],
+        "source": "TechCrunch 2026-10-31",
+        "keys": [
+          "美國輿論轉向反對資料中心",
+          "紐約：暫停新建資料中心"
+        ]
+      },
+      "lines": [
+        {
+          "id": "hqkk",
+          "text": "這場官司，發生在美國輿論開始反對資料中心的時候："
+        },
+        {
+          "id": "4ah8",
+          "text": "紐約最近就通過，暫停新建資料中心。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "x-watch",
+      "template": "big",
+      "data": {
+        "kicker": "要觀察的",
+        "text": "台灣不用動手\n**看案子怎麼審**",
+        "sub": "TechCrunch 2026-10-31｜後續審理時程未公布",
+        "key": "看案子接下來怎麼審"
+      },
+      "lines": [
+        {
+          "id": "aiae",
+          "text": "這件事在台灣沒有要你動手的地方。",
+          "emotion": "平實"
+        },
+        {
+          "id": "4g52",
+          "text": "要觀察的，是這個案子接下來怎麼審。"
+        }
+      ]
+    },
+    {
+      "id": "s-open",
+      "chapter": "Google 太空衛星的 TPU 寫出第一首俳句",
+      "template": "stats",
+      "data": {
+        "title": "Project Suncatcher",
+        "stats": [
+          {
+            "value": "10/1",
+            "label": "原型衛星發射"
+          },
+          {
+            "value": "Gemma 4",
+            "label": "衛星上跑的開放模型"
+          }
+        ],
+        "source": "Google 部落格 2026-10-30",
+        "keys": [
+          "Google：把 AI 運算搬到太空",
+          "10 月 1 日發射原型衛星",
+          "晶片上跑 Gemma 4"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mbh9",
+          "text": "地上的資料中心有人反對；Google 在研究的，是把 AI 運算搬到太空。",
+          "emotion": "轉場，輕快"
+        },
+        {
+          "id": "9a8s",
+          "text": "10 月 30 日，Google 說收到了 Suncatcher 原型衛星的第一個回應。"
+        },
+        {
+          "id": "c563",
+          "text": "這顆衛星一個月前才發射，",
+          "reveal": 1
+        },
+        {
+          "id": "2z8e",
+          "text": "上面的 TPU 晶片，跑的是 Gemma 4 開放模型。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "s-poem",
+      "template": "quote",
+      "data": {
+        "kicker": "衛星傳回的俳句",
+        "quote": "Blue marble below / Data streams in silent grace / Starlight feeds my core.",
+        "translation": "下方是藍色彈珠／資料在靜默中優雅流動／星光滋養我的核心",
+        "source": "Google 部落格 2026-10-30",
+        "keys": [
+          "題目：寫一首太空俳句",
+          "經過挪威時，傳回這首詩"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m9gk",
+          "text": "地面站把題目傳上去，要它寫一首關於身在太空的俳句。"
+        },
+        {
+          "id": "asia",
+          "text": "衛星經過挪威的斯瓦巴時，",
+          "reveal": 1
+        },
+        {
+          "id": "wr7z",
+          "text": "傳回地面的這首詩，證明測試成功；"
+        },
+        {
+          "id": "kbib",
+          "text": "第一句是：下方是一顆藍色的彈珠。",
+          "emotion": "放輕，像唸詩"
+        }
+      ]
+    },
+    {
+      "id": "s-claim",
+      "template": "big",
+      "data": {
+        "kicker": "Google 說",
+        "text": "資料中心等級的 TPU\n**第一次在軌道上回答**",
+        "sub": "Google 自述，尚無第三方確認",
+        "key": "Google 說：軌道上第一次"
+      },
+      "lines": [
+        {
+          "id": "xgeq",
+          "text": "Google 說，這是資料中心等級的 TPU，在軌道上的第一次；"
+        },
+        {
+          "id": "mppu",
+          "text": "目前只有 Google 自己這樣說，還沒有第三方確認。",
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "s-next",
+      "template": "steps",
+      "data": {
+        "title": "接下來要測的",
+        "steps": [
+          {
+            "title": "耐熱",
+            "detail": "軌道上的熱壓力",
+            "icon": "lightning"
+          },
+          {
+            "title": "抗輻射",
+            "detail": "輻射下的表現",
+            "icon": "warning"
+          },
+          {
+            "title": "兩顆衛星互連",
+            "detail": "2027 年",
+            "icon": "globe"
+          }
+        ],
+        "source": "Google 部落格 2026-10-30",
+        "keys": [
+          "要測：耐不耐熱",
+          "要測：抗不抗輻射",
+          "2027 年：兩顆衛星互連"
+        ]
+      },
+      "lines": [
+        {
+          "id": "enr4",
+          "text": "接下來，要測晶片在軌道上耐不耐熱，",
+          "reveal": 1
+        },
+        {
+          "id": "yrr8",
+          "text": "受到輻射時，表現怎麼樣；",
+          "reveal": 1
+        },
+        {
+          "id": "9dz8",
+          "text": "下一個里程碑，是 2027 年讓兩顆衛星互相連線。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "s-you",
+      "template": "big",
+      "data": {
+        "kicker": "對在台灣的你",
+        "text": "早期的技術驗證\n**還不是服務**",
+        "sub": "Google 這篇公告沒有提到成本、規模或商用時程",
+        "key": "還不是服務：沒有成本與時程"
+      },
+      "lines": [
+        {
+          "id": "ns9z",
+          "text": "對你來說，這還只是早期的技術驗證，沒有可以用的服務。",
+          "emotion": "放慢，靠近"
+        },
+        {
+          "id": "4dzi",
+          "text": "這篇公告沒有提到成本、運算規模，也沒有商業服務的時間表。"
+        }
+      ]
+    },
+    {
+      "id": "d-ask",
+      "chapter": "DoorDash：AI 代理只帶來幾百筆訂單",
+      "template": "big",
+      "data": {
+        "kicker": "10 月 30 日 · DoorDash 財報會議",
+        "text": "AI 代理替人點餐\n**有多少單？**",
+        "sub": "TechCrunch 2026-10-30",
+        "key": "AI 代理點餐，有多少人用？"
+      },
+      "lines": [
+        {
+          "id": "rrmh",
+          "text": "AI 在太空寫詩；那在地上，替你點餐的 AI 代理呢？",
+          "emotion": "轉場，問句上揚"
+        },
+        {
+          "id": "5qw9",
+          "text": "10 月 30 日，TechCrunch 報導，美國外送平台 DoorDash 在財報會議上，"
+        }
+      ]
+    },
+    {
+      "id": "d-open",
+      "template": "quote",
+      "data": {
+        "kicker": "DoorDash 執行長 Tony Xu",
+        "quote": "…we’re seeing maybe several hundred orders in total from some of these third-party agents.",
+        "translation": "第三方 AI 代理，總共大概只帶來幾百筆訂單",
+        "source": "TechCrunch 2026-10-30｜第三季財報電話會議",
+        "keys": [
+          "分析師問：AI 代理下單多少",
+          "第三方代理：總共幾百筆"
+        ]
+      },
+      "lines": [
+        {
+          "id": "znn9",
+          "text": "被分析師問到，AI 代理替人下單到底有多少。"
+        },
+        {
+          "id": "yah9",
+          "text": "執行長的回答是：其他公司做的 AI 代理，"
+        },
+        {
+          "id": "qkvz",
+          "text": "總共大概只帶來幾百筆訂單。",
+          "emotion": "停半拍再說",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "d-scale",
+      "template": "stats",
+      "data": {
+        "title": "規模對比",
+        "stats": [
+          {
+            "value": "數百筆",
+            "label": "第三方 AI 代理的訂單，總計"
+          },
+          {
+            "value": "300 萬",
+            "label": "平均每天完成的外送（2025 年報告）"
+          }
+        ],
+        "source": "TechCrunch 2026-10-30",
+        "key": "總共幾百筆，對比每天 300 萬筆"
+      },
+      "lines": [
+        {
+          "id": "xanw",
+          "text": "對照一下，DoorDash 平均每天就完成 300 萬筆外送。",
+          "reveal": 2,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "e47s",
+          "text": "用戶主要還是打開 DoorDash 自己的 App 下單。"
+        }
+      ]
+    },
+    {
+      "id": "d-ceo",
+      "template": "big",
+      "data": {
+        "kicker": "執行長 Tony Xu 的態度",
+        "text": "不要逆勢\n**也不要幻想**",
+        "sub": "未來可能在 AI 代理裡放廣告（TechCrunch）",
+        "key": "不要逆勢，也不要幻想"
+      },
+      "lines": [
+        {
+          "id": "d52x",
+          "text": "執行長說，面對科技趨勢，不要逆勢，但也不要有幻想。",
+          "emotion": "引述的語氣"
+        },
+        {
+          "id": "972k",
+          "text": "公司想多了解 AI 代理怎麼被使用，未來也可能在這些代理裡放廣告。"
+        }
+      ]
+    },
+    {
+      "id": "d-own",
+      "template": "table",
+      "data": {
+        "title": "DoorDash 自家的代理",
+        "columns": [
+          "產品",
+          "推出"
+        ],
+        "rows": [
+          [
+            "Ask DoorDash 聊天機器人",
+            "6 月"
+          ],
+          [
+            "命令列代理",
+            "7 月"
+          ],
+          [
+            "文字下單代理",
+            "9 月"
+          ]
+        ],
+        "source": "TechCrunch 2026-10-30",
+        "key": "DoorDash 自己也在做代理"
+      },
+      "lines": [
+        {
+          "id": "84ih",
+          "text": "DoorDash 也有自家代理：聊天機器人、命令列工具、文字下單，今年陸續推出。",
+          "reveal": 3
+        }
+      ]
+    },
+    {
+      "id": "d-door",
+      "template": "compare",
+      "data": {
+        "title": "要不要讓 AI 代理進門",
+        "left": {
+          "heading": "Amazon",
+          "icon": "lock",
+          "points": [
+            "一直封鎖個人代理"
+          ]
+        },
+        "right": {
+          "heading": "Walmart",
+          "icon": "globe",
+          "points": [
+            "敞開大門搶生意"
+          ]
+        },
+        "source": "TechCrunch 2026-10-30",
+        "keys": [
+          "Amazon：封鎖個人代理",
+          "Walmart：敞開大門"
+        ]
+      },
+      "lines": [
+        {
+          "id": "8kh5",
+          "text": "網站也還在決定，要不要讓這些代理進門：Amazon 一直在封鎖，",
+          "reveal": 1
+        },
+        {
+          "id": "nek4",
+          "text": "Walmart 則敞開大門，想從對手那裡搶生意。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "d-you",
+      "template": "big",
+      "data": {
+        "kicker": "對在台灣的你",
+        "text": "AI 替你點餐\n**還非常少見**",
+        "sub": "依 DoorDash 財報電話會議的說法",
+        "key": "AI 代理點餐：還非常少見"
+      },
+      "lines": [
+        {
+          "id": "hr7t",
+          "text": "所以下次看到 AI 代理要接管購物和訂餐的說法，",
+          "emotion": "放慢，靠近"
+        },
+        {
+          "id": "5nbf",
+          "text": "記得這個實際的數字：至少在這家外送平台，用的人還非常少。"
+        }
+      ]
+    },
+    {
+      "id": "r-open",
+      "chapter": "OpenAI GPT-Rosalind-6 只給審核過的研究者",
+      "template": "big",
+      "data": {
+        "kicker": "10 月 30 日 · OpenAI",
+        "text": "生物研究模型\n**只給審核過的人**",
+        "sub": "GPT-Rosalind-6 系統卡補充文件",
+        "key": "生物研究模型，只給審核過的人"
+      },
+      "lines": [
+        {
+          "id": "befq",
+          "text": "AI 代理點餐還沒什麼人用；另一種 AI，是刻意不讓一般人用的。",
+          "emotion": "轉場，壓低一點"
+        },
+        {
+          "id": "5ijc",
+          "text": "10 月 30 日，OpenAI 公布 GPT-Rosalind-6 的系統卡補充文件，"
+        }
+      ]
+    },
+    {
+      "id": "r-what",
+      "template": "big",
+      "data": {
+        "kicker": "GPT-Rosalind-6",
+        "text": "生物學、藥物研發\n**專用模型**",
+        "sub": "只開放審核過的科學家、機構與政府夥伴",
+        "key": "給生物學與藥物研發用"
+      },
+      "lines": [
+        {
+          "id": "7c8s",
+          "text": "它是給生物學、藥物研發用的模型，"
+        },
+        {
+          "id": "nxwy",
+          "text": "只開放給審核過的科學家、研究機構、企業和政府夥伴。",
+          "emotion": "「審核過」清楚"
+        }
+      ]
+    },
+    {
+      "id": "r-same",
+      "template": "compare",
+      "data": {
+        "title": "和旗艦模型的差別",
+        "left": {
+          "heading": "GPT-6 Astra",
+          "icon": "gear",
+          "points": [
+            "OpenAI 旗艦推理模型",
+            "同一組權重"
+          ]
+        },
+        "right": {
+          "heading": "GPT-Rosalind-6",
+          "icon": "lock",
+          "points": [
+            "雙重用途生物問題拒答較少",
+            "只透過受信任存取",
+            "仍拒絕生物武器化"
+          ]
+        },
+        "source": "OpenAI 系統卡補充文件 2026-10-30",
+        "keys": [
+          "和 GPT-6 Astra 同一組權重",
+          "拒答較少，只給受信任的人"
+        ]
+      },
+      "lines": [
+        {
+          "id": "txcc",
+          "text": "它跟 OpenAI 的旗艦推理模型 GPT-6 Astra，用同一組權重。",
+          "reveal": 1,
+          "emotion": "「其實」亮起來"
+        },
+        {
+          "id": "aw47",
+          "text": "差別在於，遇到可能被濫用的生物問題，它拒答得比較少；",
+          "reveal": 1
+        },
+        {
+          "id": "sm2h",
+          "text": "但它仍然會拒絕生物武器化的請求。",
+          "emotion": "壓低，穩"
+        }
+      ]
+    },
+    {
+      "id": "r-risk",
+      "template": "stats",
+      "data": {
+        "title": "OpenAI 自己的風險分級",
+        "stats": [
+          {
+            "value": "高",
+            "label": "生物與化學，低於「關鍵」"
+          },
+          {
+            "value": "關鍵",
+            "label": "網路安全，沿用 GPT-6 Astra 評估"
+          }
+        ],
+        "source": "OpenAI 2026-10-30｜依其整備框架",
+        "keys": [
+          "OpenAI 自評：生物與化學「高」",
+          "網路安全：關鍵"
+        ]
+      },
+      "lines": [
+        {
+          "id": "gpc9",
+          "text": "依 OpenAI 自己的整備框架，生物與化學列為高能力，低於最高的關鍵等級；",
+          "reveal": 1
+        },
+        {
+          "id": "gt9b",
+          "text": "網路安全方面，沿用 Astra 的評估，列為關鍵。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r-not",
+      "template": "big",
+      "data": {
+        "kicker": "OpenAI 自己的數字也顯示",
+        "text": "不是每一項\n**都比母模型好**",
+        "sub": "OpenAI 自行公布；遵守警告測試 21.7% 對 Astra 18.9%",
+        "key": "不是每項都比母模型好"
+      },
+      "lines": [
+        {
+          "id": "rc22",
+          "text": "但這還不是全部：OpenAI 自己的數字也顯示，不是每一項安全測試都比母模型好。",
+          "emotion": "轉折，壓低"
+        },
+        {
+          "id": "9yyg",
+          "text": "在警告之後還繞過限制的那項測試裡，它的比率比 Astra 高。"
+        }
+      ]
+    },
+    {
+      "id": "r-you",
+      "template": "steps",
+      "data": {
+        "title": "研究機構要做到",
+        "steps": [
+          {
+            "title": "先通過審核",
+            "detail": "使命、用途、治理",
+            "icon": "checklist"
+          },
+          {
+            "title": "最小必要權限",
+            "detail": "只給有需要的人",
+            "icon": "lock"
+          },
+          {
+            "title": "輸出先人工審查",
+            "detail": "再用於實驗",
+            "icon": "search"
+          }
+        ],
+        "source": "OpenAI 系統卡補充文件 2026-10-30",
+        "keys": [
+          "研究機構：先通過審核",
+          "只給有需要的人用",
+          "輸出：先經人工審查"
+        ]
+      },
+      "lines": [
+        {
+          "id": "wtbk",
+          "text": "對在台灣、在研究機構的你，申請要先通過使命、用途和治理的審核；",
+          "reveal": 1,
+          "emotion": "放慢，靠近"
+        },
+        {
+          "id": "a2qf",
+          "text": "拿到之後，只能讓有正當需要的人用，權限給到最小；",
+          "reveal": 1
+        },
+        {
+          "id": "2u6m",
+          "text": "輸出要先經過合格的人審查，才能用在實驗或重大決策。",
+          "reveal": 1
+        },
+        {
+          "id": "vqed",
+          "text": "台灣的機構能不能申請，OpenAI 這份補充文件沒有寫。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "p-open",
+      "chapter": "教宗呼籲聯合國禁止致命自主武器",
+      "template": "quote",
+      "data": {
+        "kicker": "教宗良十四世 · 10 月 30 日",
+        "quote": "Machines are tools, not persons.",
+        "translation": "機器是工具，不是人。",
+        "source": "The Verge 2026-10-30",
+        "keys": [
+          "人要把關，拉到更高的層次",
+          "機器是工具，不是人"
+        ]
+      },
+      "lines": [
+        {
+          "id": "3gj2",
+          "text": "一家公司自己決定誰能用 AI；教宗要的，是各國一起立規矩。",
+          "emotion": "轉場，壓低"
+        },
+        {
+          "id": "k9r3",
+          "text": "10 月 30 日，The Verge 報導，教宗良十四世在週五的演說中說，"
+        },
+        {
+          "id": "3kcs",
+          "text": "AI 系統應該被解除武裝，機器是工具，不是人。",
+          "reveal": 1,
+          "emotion": "放慢，一字一字"
+        }
+      ]
+    },
+    {
+      "id": "p-ask",
+      "template": "bullets",
+      "data": {
+        "title": "教宗的呼籲",
+        "items": [
+          "聯合國會員國採取具體步驟",
+          "禁止致命自主武器",
+          "人命與武力：人類有效監督"
+        ],
+        "source": "The Verge 2026-10-30",
+        "keys": [
+          "呼籲聯合國會員國",
+          "禁止致命自主武器",
+          "人命與武力：由人類監督"
+        ]
+      },
+      "lines": [
+        {
+          "id": "59yh",
+          "text": "他呼籲聯合國會員國，下個月在日內瓦開會時，採取具體步驟，",
+          "reveal": 1
+        },
+        {
+          "id": "8mnv",
+          "text": "禁止致命自主武器，也就是沒有人直接操控、自己選擇並攻擊目標的武器。",
+          "reveal": 1
+        },
+        {
+          "id": "xjg9",
+          "text": "他也說，影響人命、自由和使用武力的決定，都必須受到人類有效的監督。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "p-bg",
+      "template": "big",
+      "data": {
+        "kicker": "不是第一次",
+        "text": "2024 年方濟各\n**也呼籲禁止**",
+        "sub": "「任何機器都不應選擇奪取人的生命」（The Verge）",
+        "key": "前任教宗也呼籲過禁止"
+      },
+      "lines": [
+        {
+          "id": "5ra9",
+          "text": "這不是教宗第一次這樣說：2024 年，上一任教宗也呼籲過，禁止自主武器。"
+        }
+      ]
+    },
+    {
+      "id": "p-watch",
+      "template": "big",
+      "data": {
+        "kicker": "要觀察的",
+        "text": "一項呼籲\n**沒有約束力**",
+        "sub": "日內瓦會議的議程與結果，報導沒有說明",
+        "key": "呼籲，沒有約束力"
+      },
+      "lines": [
+        {
+          "id": "umgf",
+          "text": "對在台灣的你，這是一項呼籲，報導沒有提到任何有約束力的決定。",
+          "emotion": "平實"
+        },
+        {
+          "id": "eur4",
+          "text": "要觀察的，是下個月日內瓦的會議上，會員國會不會真的採取步驟。",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "v-main",
+      "chapter": "我的看法：AI 的熱度碰上了上限",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "最重要的是\n**支出上限**",
+        "key": "最重要的：支出上限"
+      },
+      "lines": [
+        {
+          "id": "gkxc",
+          "text": "我的看法是，這個週末最重要的，是 Google Cloud 的支出上限。",
+          "emotion": "放慢放穩"
+        }
+      ]
+    },
+    {
+      "id": "v-why",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "AI 的熱度\n**碰上了上限**",
+        "sub": "錢、電、真實使用量",
+        "key": "AI 熱度碰上錢、電與使用量"
+      },
+      "lines": [
+        {
+          "id": "8yd2",
+          "text": "這幾則講的是同一件事：AI 的熱度，開始碰到錢、電和真實使用量的上限，"
+        },
+        {
+          "id": "kx9f",
+          "text": "而它是唯一一則，讓你今天就能替自己的錢設一道防線。",
+          "emotion": "「今天」靠近"
+        }
+      ]
+    },
+    {
+      "id": "v-unsure",
+      "template": "big",
+      "data": {
+        "kicker": "我不確定的",
+        "text": "OpenAI 募資的數字\n**還只是報導**",
+        "key": "募資數字，等 OpenAI 自己說"
+      },
+      "lines": [
+        {
+          "id": "m8v4",
+          "text": "我不確定的是，OpenAI 募資的數字還只是報導，最後是多少，要等它自己說。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "這對在台灣的你\n改變了什麼",
+        "lines": [
+          "你被 AI 或雲端帳單嚇過嗎？"
+        ],
+        "cta": "訂閱：每天十分鐘，只講跟你有關的那一段",
+        "key": "被帳單嚇過嗎？留言告訴我"
+      },
+      "lines": [
+        {
+          "id": "jb2n",
+          "text": "所以，今天能動手的，是帳單上限。",
+          "emotion": "收穩"
+        },
+        {
+          "id": "ntab",
+          "text": "訂閱，每天十分鐘，只講跟你有關的那一段。",
+          "emotion": "輕快"
+        },
+        {
+          "id": "en5b",
+          "text": "你被 AI 或雲端帳單嚇過嗎？留言告訴我。",
+          "emotion": "問句輕輕上揚收"
+        }
+      ]
+    }
+  ]
+}

@@ -83,7 +83,10 @@ em { font-style: normal; color: var(--orange); }
   display: flex; flex-direction: column;
 }
 .heading { font-size: 66px; font-weight: 800; line-height: 1.2; margin: 0 0 40px; max-height: 170px; text-wrap: balance; }
-.fit { overflow: hidden; }
+/* clip, not hidden, with room for the last line's descenders: a 1.08 line box is shorter than the
+   glyphs, and hidden cut the g, y and p off every big card's last line (daily-ai-20261103). fitText
+   measures scrollHeight the same either way, so a real extra line still shrinks the type. */
+.fit { overflow: clip; overflow-clip-margin: 0.25em; }
 [data-hidden] { visibility: hidden; }
 
 /* Entrances. The renderer freezes these at chosen times with the Web Animations API. */

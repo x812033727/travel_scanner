@@ -170,14 +170,20 @@ export function speechHash(doc, lexicon) {
   // original hash, so their timelines stay valid across this change.
   const drama = doc.format === "drama";
   if (drama) hash.update(JSON.stringify((doc.characters ?? []).map((character) => [character.id, character.voice])));
+  // A slides cohost's voice and who speaks each line (docs/videos/DUBS.md §兩位主持人); slides
+  // with one host hash as they always did. The cohost's name is the captions', not the audio's.
+  else if (doc.cohost !== undefined) hash.update(JSON.stringify(["cohost", doc.cohost?.id ?? null, doc.cohost?.voice ?? null]));
   const actions = (doc.scenes ?? []).filter((scene) => scene.action_seconds !== undefined);
   if (actions.length) hash.update(JSON.stringify(doc.scenes.map((scene) => [scene.id, scene.action_seconds ?? null])));
   for (const { scene, line, last } of eachLine(doc)) {
     const fields = [scene.id, line.id, spokenText(line), line.pause_after_ms ?? null, last];
     if (drama) fields.push(line.speaker ?? "narrator", line.emotion ?? null);
-    // A cue on a slides line changes its take (docs/videos/ILLUSTRATED.md §聲音表演); a line
-    // without one hashes as it always did, so no timeline from before the cues goes stale.
-    else if (line.emotion) fields.push(["emotion", line.emotion]);
+    else {
+      if (line.speaker !== undefined && line.speaker !== "narrator") fields.push(["speaker", line.speaker]);
+      // A cue on a slides line changes its take (docs/videos/ILLUSTRATED.md §聲音表演); a line
+      // without one hashes as it always did, so no timeline from before the cues goes stale.
+      if (line.emotion) fields.push(["emotion", line.emotion]);
+    }
     const hints = pronunciationHintsFor(doc, line);
     if (hints.length) fields.push(["pronunciation_hints", hints]);
     if (line.audio_ref !== undefined) fields.push(["audio_ref", line.audio_ref]);

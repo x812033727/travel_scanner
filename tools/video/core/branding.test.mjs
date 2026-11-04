@@ -203,6 +203,7 @@ test("only narrated long videos move the intro behind the condensation; casts, c
     assert.equal(defaultIntroAt(narrated), INTRO_AFTER_FIRST_CHAPTER);
   }
   assert.equal(narratedLong(cast, story), true, "a brand story is narrated even when its pictures have a cast");
+  assert.equal(defaultIntroAt({ slug: "daily-ai-20261103", format: "slides" }), INTRO_AT_START, "Tech Signal opens on the intro, with no condensation before it");
   for (const kept of [cast, { format: "drama", compilation: { episodes: ["a"] } }, { format: "slides", compilation: { episodes: ["a"] } }, { format: "shorts" }]) {
     assert.equal(defaultIntroAt(kept), INTRO_AT_START, JSON.stringify(kept));
   }

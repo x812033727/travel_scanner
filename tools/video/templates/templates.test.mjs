@@ -690,7 +690,7 @@ test("the AI look: the picture over the frame, the series' name and colour from 
 
   const thumb = { template: "thumb", data: { layout: "ai", headline: "Google 最強**先不給你**", sub: "最強的 Carbon，先給一部分網路防禦人員", tag: "不會出現" } };
   const brief = draw(thumb, { background: "https://video.local/repo/docs/videos/daily-ai-20261028/brief.jpg", subject: "asset", slug: "daily-ai-20261028", aiSeries: "brief" });
-  assert.match(brief, /<div class="ai-label"><b>AI 科技快報<\/b><i>｜<\/i>10\/28<\/div>/, "the name and the date, never the model's tag");
+  assert.match(brief, /<div class="ai-label"><b>Tech Signal 科技訊號<\/b><i>｜<\/i>10\/28<\/div>/, "the name and the date, never the model's tag");
   assert.match(brief, /--ai-accent:#ff8a1f/);
   assert.match(brief, /<h1 class="ai-h fit">Google 最強<em>先不給你<\/em><\/h1>/);
   assert.match(brief, /<div class="ai-sub fit">最強的 Carbon/);
@@ -698,7 +698,7 @@ test("the AI look: the picture over the frame, the series' name and colour from 
   assert.doesNotMatch(brief, /不會出現|MOKAAIR/);
 
   const es = draw(thumb, { slug: "daily-ai-20261028", aiSeries: "brief", locale: "es" });
-  assert.match(es, /<b>Resumen diario de IA<\/b><i>｜<\/i>28\/10/);
+  assert.match(es, /<b>Tech Signal<\/b><i>｜<\/i>28\/10/);
   assert.match(es, /<div class="ai-pic from-picture"><\/div>/, "no picture: the dark ground");
 
   const tutorial = draw({ template: "thumb", data: { layout: "ai", headline: "Hooks **收工前跑測試**", tag: "Claude Code" } }, { background: "https://video.local/work/captures/a.png", subject: "capture", slug: "claude-code-hooks-hands-on", aiSeries: "tutorial" });

@@ -32,6 +32,16 @@
 
 同一個 Gemini 聲音（`video.json` 的 `voice`，目前是 `Sulafat`）唸四種語言。Gemini TTS 自動判斷輸入語言，30 個內建聲音都能跨語言；只有 `style` 要換：zh-TW 的 style 寫著頻道的口音寫法「標準國語，咬字清楚，台北人平常說話的語調」（2026-10-03 起；舊的「台灣國語、台灣腔」送合成時會被換掉，見 [README.md](README.md) §頻道規格的「口音」列），其他語系各有一段預設 style（同樣的「輕鬆、跟朋友解釋、有起伏、中等偏快」，語言改掉）。這樣四條音軌聽起來是同一個人，是頻道聲音的延伸，不是另一個播報員。
 
+### 兩位主持人（投影片的 `cohost`，2026-11-02）
+
+投影片影片（`format: "slides"`，例如每日 Podcast《Tech Signal》`daily-ai-`）可以有第二位主持人：`video.json` 頂層寫 `"cohost": { "id": "kai", "name": "Kai", "voice": { "provider": "gemini", "name": "Puck", "style": "…" } }`，搭檔的句子寫 `"speaker": "kai"`；沒寫 `speaker`（或寫 `"narrator"`）的句子是旁白主持人的。`host: { "name": "Sola" }` 是旁白主持人的顯示名稱，只給字幕用。規則是**一位說話者一個聲音**：
+
+- 中文旁白：搭檔的句子用 `cohost.voice`，句子的 `emotion` 照樣併進它的 Gemini style；`voice.performance` 只屬於旁白主持人。換搭檔的聲音只重錄搭檔的句子（每句的片段鍵含聲音），`speechHash` 也含搭檔的 id 與聲音。
+- 配音：每位主持人用自己的聲音唸各語系，style 換成該語系的配音 style（`dubs/plan.mjs` 的 `dubVoice(doc, locale, style, speaker)` 與 `DUB_STYLES`）；`planRequests` 在說話者或聲音一換就切請求，所以一個請求不會混兩個聲音。兩個聲音都要是 Gemini（`dub` 對非 Gemini 的搭檔聲音結束碼 3）。音軌的 `timeline.json` 多記一個 `cohost_voice`。
+- 字幕：`"subtitles": { "speaker_prefix": true }` 時，CC 每句的第一個字幕前加「名字：」（中日文全形冒號，其他語系 `Name: `）；旁白主持人要寫 `host.name` 才會加。燒錄字幕沿用漫劇的【名字】。
+- `cohost`、`host` 只屬於投影片；漫劇的聲音是它的角色（`characters`），有角色說話的漫劇照舊不能配音（§已知限制）。`audio_ref` 仍只屬於漫劇。
+- lint 會提醒：搭檔沒有任何一句、搭檔和旁白同一個聲音、搭檔不是 Gemini 聲音、開了 `speaker_prefix` 卻沒寫 `host.name`。範例：`tools/video/core/fixtures/cohost/video.json`。
+
 發音字典（`docs/videos/lexicon.json`）只套用全是拉丁字母、數字與空格的別名（`API → A P I`、`NotebookLM → Notebook L M`）；含中文的別名（`p95 → P 九十五`）在其他語言裡不用，照原字唸。
 
 ### 稿子
@@ -174,7 +184,7 @@
 | Whisper 第二意見 | `tools/video/tts/whisper_second_opinion.py` 的 `LANGUAGES` 收這五種（large-v3 與正式站用的 medium 都有） |
 | 越文的聲調位置 | 新舊兩種寫法把聲調放在不同母音上（hoà／hòa、thuỷ／thủy），轉寫可能寫哪一種都有。`comparable(text, "vi")` 先把每個音節的聲調移到音節最後再比（`foldVietnameseTones`），所以位置不同算同一個字；聲調不同（má／mà）、少了聲調、母音符號（â、ă、ơ、ư）或 đ 不同仍然算不一樣，交給 Jev |
 | 泰文 | 泰文字之間沒有空格，轉寫會自己加；`comparable` 本來就拿掉空白，所以不用另外處理 |
-| 漫劇 | 有角色說話的漫劇照舊不能配音（五種也一樣，422 `video_locales_dub_not_for_drama`）；只有旁白的觀念解說與品牌故事照原本的規則 |
+| 漫劇 | 有角色說話的漫劇照舊不能配音（五種也一樣，422 `video_locales_dub_not_for_drama`）；只有旁白的觀念解說與品牌故事照原本的規則；原來如此的對話解說片（`cute-cartoon` 加角色）2026-11-04 起例外，見 §已知限制 |
 
 成本與額度都在票裡：五種全配一支 10 分鐘的影片約 41,000 字元（重錄最多 1.5 倍），Gemini TTS 約 US$0.68–1.01；真正的限制是每月字元上限 `video_speech_gemini_monthly_character_limit`（後台「Azure 語音（影片旁白）」卡片的欄位，蓋過主機 `.env` 的預設 300,000；八種全配一支約 62,000）。2026-10-29 查正式站已是 10,000,000（影片工具的 `/speech/status`），不用再調；別把它改小。
 
@@ -252,6 +262,7 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 - **只有旁白說話的漫劇可以配音，有角色說話的漫劇還不行（2026-10-13）。** `dub` 用旁白那一個聲音唸每一句（換成各語系的 style），所以角色有台詞的漫劇要每個角色一個外語聲音，這還沒做。旁白一個人講完的漫劇跟投影片影片是同一件事：`dub` 本來就把配樂與音效混在聲音底下（§塞回時間軸）。三層各自把關，彼此的註解互相指到：
   - **網站與語言面板的准入。** 觀念解說（`explainer`，講解系列的 `cute-mystery`、`cute-cartoon` 與 `flat-explainer` 畫風，腳本的 `characters` 一律是空的）依分類開放手動配音；品牌故事（`story`）可先勾選並儲存意向。後台的 `story_dub_preselectable` 只控制勾選，`dub_allowed` 只有在目前這版成片核准且完整品管證明正片不燒字幕、繁中 CC 可關閉時才為真；工人在接重做要求、翻譯或配音前都必須核對它，缺值時也停等。其他漫劇，包括沒有分類的，回 422 `video_locales_dub_not_for_drama`。自動產線做的講解漫劇到 2026-10-13 都不會自己寫分類（企劃狀態與 `video.json` 都沒有 `category`），站主要先在影片頁把它歸到「觀念解說」，配音那格才會打開（票 `2026-10-13-explainer-route-files-its-drama-under`）。伺服器 `DUBBABLE_DRAMA_CATEGORIES` 仍只含 `explainer`，品牌故事另查當前成片。
   - **`dub` 讀腳本，是最後一關。** 只要有一句的 `speaker` 不是 `narrator`，就拒絕，訊息寫哪一場的哪一句、誰說的；結束碼是 3（需要站主），跟「不是 Gemini 聲音」一樣，所以工人把那個語系記成跳過的配音（`dubs/<語系>/skipped.json`，`flow.mjs` 的 `giveUpDub`），影片照常往下走，不會卡住。站主把一部有角色說話的漫劇改成觀念解說分類，也只會得到一條跳過的配音。
+  - **原來如此的對話解說片例外（2026-11-04）。** `core/drama.mjs` 的 `isDialogueExplainer`（觀念解說、畫風在 `DIALOGUE_EXPLAINER_PRESETS`〔目前只有 `cute-cartoon`〕、`characters` 不空）可以配音：`dubs/plan.mjs` 的 `dubCharacterVoice` 讓每個說話角色沿用自己的 Gemini 聲音與人設，去掉頻道的台灣口音句，改成「只用該語系、不帶外國口音」，`dubs/cli.mjs` 的 `spokenByCharacter` 對這類片不再拒絕。其他有角色說話的漫劇照舊拒絕。第一支是 `sothatswhy-p02-cloud-rain` 的八語配音：第一輪約 57,000 計費字元；13 句放不進窗、要縮短譯文，`check-audio` 三輪修了約 50 句，多數是短句同音（日文「下／舌」、越南文「mây／mấy」），改成講出來不會混淆的說法比重錄有效。測試在 `dubs/cast.test.mjs`。
   - **品牌故事的新規格。** 品牌故事（`story`）的聲音只有旁白：角色只畫不說（`core/story.mjs` 不准別的說話者），`dub` 可接。站主 2026-10-15 決定新版故事不燒繁中字幕，改用可關閉的繁中 CC；2026-10-16 再決定可於成片前手動預選英／日／韓配音。已做成燒錄字幕的故事不會因這項程式變更而自動變成乾淨畫面；須重新合成正片並通過綁定正片雜湊的品管與成片審核，才製作外語。首次成片送審與核准保留預選；已核准乾淨成片換版時，舊版的配音選擇會撤回，站主可為新版本重新勾選。
   - **自動預設沒變。** 沒人管的品牌故事由伺服器依 `drama_caption_locales` 決定語言（標題說明與 CC，沒有配音），面板的「照預設勾選」也從不勾配音；只有站主自己勾才會做配音。
 - **跳過的配音只能在工作檔還在時再做。** 清理工作區之後成片與錄音都不在了，那一格會寫原因、沒有按鈕（§再做一次）。已接手的要求沒有撤回鈕、也沒有計時，只會以一筆批次或工人的拒絕結束。
