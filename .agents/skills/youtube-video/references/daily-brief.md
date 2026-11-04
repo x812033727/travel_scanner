@@ -56,6 +56,7 @@
 - **每個畫面狀態不超過 15 秒**：`big`、`quote`、`outro` 不能用 `reveal` 分段（lint 會過、`render` 會擋），太長就拆成兩張卡；片尾 `outro` 正好三句（答案、留言題、訂閱邀請）。
 - **大綱寫成工具讀得到的樣子**：`### 選項 A：標題`，下面接「一行說明：」與「開場鉤子：」兩行。
 - **Whisper 第二意見**：雲端工作階段沒有主機的 `VIDEO_SECOND_OPINION`，先 `python3 -m venv ~/whisper && ~/whisper/bin/pip install faster-whisper`，每次 `check-audio` 帶 `VIDEO_SECOND_OPINION="$HOME/whisper/bin/python tools/video/tts/whisper_second_opinion.py"`、`WHISPER_MODEL=medium`。少了它，Gemini 聽錯的每一句都會被標（第一集第一輪 57 句，大多是同音字）。
+- **收尾句「訊號收到。」八語都翻成「訊號收到」**（en Signal received.、ko 신호 수신.、es Señal recibida.、vi Đã nhận tín hiệu.…），不准翻成「明天見／下次見」（2026-11-04 ko、es、vi、th 四種都譯成了「再見」，違反片尾不提下一集）。翻譯代理的指示要寫明。
 - **`i18n-sheet` 不帶 `--locale` 只產 en、ja、ko 三張**（2026-11-03 西、葡、印尼、越、泰的表因此是舊的）：八語一律 `i18n-sheet --locale en,ja,ko,es,pt,id,vi,th`，`i18n-merge` 也照樣帶。
 - **日、韓翻譯每句瞄準 `max_chars` 的 85% 左右**：第一集日文 72 個視窗有 40 個要加速到最多 1.21×。
 - `dubs/<語系>/fit.json` 的 `over` 若是某句錄得特別長（印尼文一句 72 秒），是語音模型錄壞，`dub --redo` 那句就好，不要縮翻譯。
