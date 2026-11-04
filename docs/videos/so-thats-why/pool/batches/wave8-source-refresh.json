@@ -1,0 +1,265 @@
+{
+  "batch_id": "wave8-source-refresh-20261101",
+  "created_on": "2026-11-01",
+  "scope": "六個歷史核心的有限範圍來源重讀；所有列必須合併，新增核心為零。舊raw不覆寫。",
+  "sources": [
+    {
+      "id": "R8-S001",
+      "url": "https://openstax.org/books/biology-2e/pages/2-2-water",
+      "title": "2.2 Water — Biology 2e",
+      "publisher": "OpenStax / Rice University",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 正文與指定圖說實讀；非僅搜尋摘要",
+      "reading_scope": "Water’s States: Gas, Liquid, and Solid，晶體密度段及Fig.2.14圖說",
+      "locator": "Water’s States: Gas, Liquid, and Solid，晶體密度段及Fig.2.14圖說",
+      "summary": "普通冰的氫鍵結構使分子平均排列較疏，密度降低，故能浮在液態水上。",
+      "limitations": "只更新普通冰的結構→密度核心；不採其他液體都不會如此、細胞只有甘油才耐凍等概括，不核舊9%數值。USGS舊頁web逾時、urllib403，未算成功重讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R8-S002",
+      "url": "https://www.weather.gov/safety/lightning-science-thunder",
+      "title": "Understanding Lightning: Thunder",
+      "publisher": "NOAA / National Weather Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 正文與指定圖說實讀；非僅搜尋摘要",
+      "reading_scope": "正文雷聲產生、光聲抵達差異、五秒每英里粗估及避雷提醒",
+      "locator": "正文雷聲產生、光聲抵達差異、五秒每英里粗估及避雷提醒",
+      "summary": "閃電快速加熱空氣產生聲波；光先抵達，雷聲延後，延遲可粗估距離。",
+      "limitations": "只核定性傳播差異；舊343m/s、20°C與光速比未重核。聽到雷即進安全室內，不等數秒判斷是否安全。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R8-S003",
+      "url": "https://science.nasa.gov/moon/tidal-locking/",
+      "title": "Tidal Locking",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 正文與指定圖說實讀；非僅搜尋摘要",
+      "reading_scope": "正文以 Earth’s Moon rotates… 及 Tidal locking is common… 起語的段落；地月形變、滯後、耗散與同步",
+      "locator": "正文以 Earth’s Moon rotates… 及 Tidal locking is common… 起語的段落；地月形變、滯後、耗散與同步",
+      "summary": "潮汐形變、扭矩與耗散改變自轉，地月系統演化至月球自轉與公轉週期相同。",
+      "limitations": "只核地月系統機制，不外推所有衛星；不能把頁首only half直譯成完全沒有天平動。舊27.3日數值未重核。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R8-S004",
+      "url": "https://science.nasa.gov/moon/viewing-tips/",
+      "title": "Moon Viewing Tips",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 正文與指定圖說實讀；非僅搜尋摘要",
+      "reading_scope": "Eyeballing the Moon後望遠鏡觀察段：libration及59 percent",
+      "locator": "Eyeballing the Moon後望遠鏡觀察段：libration及59 percent",
+      "summary": "天平動讓邊緣地形隨時間交替露出，累計可見面積約59%。",
+      "limitations": "累計不同時日、條件的可見面積，不是單一瞬間看59%；不宣稱背面永遠沒有日照。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R8-S005",
+      "url": "https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-causes-rainbow",
+      "title": "What Causes a Rainbow?",
+      "publisher": "NOAA NESDIS / NASA Space Place",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 正文與指定圖說實讀；非僅搜尋摘要",
+      "reading_scope": "正文完整圓、觀察位置、水滴進出折射與內反射段",
+      "locator": "正文完整圓、觀察位置、水滴進出折射與內反射段",
+      "summary": "日光在水滴中折射及反射後進入觀察者；可見圓弧取決於位置與遮擋。",
+      "limitations": "只更新光路與可見圓弧，不核舊紫40°；不把色散歸因為單次反射，未使用圖像。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R8-S006",
+      "url": "https://www.weather.gov/fgz/Rainbow",
+      "title": "How Do Rainbows Form?",
+      "publisher": "NOAA / National Weather Service Flagstaff",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 正文與指定圖說實讀；非僅搜尋摘要",
+      "reading_scope": "What is a rainbow?、What makes the bow? 正文與光路圖說",
+      "locator": "What is a rainbow?、What makes the bow? 正文與光路圖說",
+      "summary": "主虹經一次內反射，觀察者背對太陽；地面常遮住下方圓弧。",
+      "limitations": "42°限主虹近似幾何；頁面sun>42無彩虹只適用平地視野，不能外推到飛機或下方水滴。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R8-S007",
+      "url": "https://www.nasa.gov/centers-and-facilities/glenn/what-is-microgravity/",
+      "title": "What is Microgravity?",
+      "publisher": "NASA Glenn Research Center",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 正文與指定圖說實讀；非僅搜尋摘要",
+      "reading_scope": "重力維持軌道段、蘋果／太空人／站體共同落下、Newton炮彈思考實驗段",
+      "locator": "重力維持軌道段、蘋果／太空人／站體共同落下、Newton炮彈思考實驗段",
+      "summary": "站體與內部物體共同受重力自由落下；足夠切向運動可形成繞地軌道。",
+      "limitations": "微重力不等於無重力；不採1g或1e-6g作所有軌道固定值，不採舊太空梭速度作通用值。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "R8-S008",
+      "url": "https://www.noaa.gov/jetstream/tsunamis/tsunami-propagation",
+      "title": "Tsunami Propagation",
+      "publisher": "NOAA JetStream",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 正文與指定圖說實讀；非僅搜尋摘要",
+      "reading_scope": "正文傳播速度隨深度、深海波長與近岸減速／變高段",
+      "locator": "正文傳播速度隨深度、深海波長與近岸減速／變高段",
+      "summary": "海嘯進入淺水時傳播減慢、波長縮短，波高及流速可增加。",
+      "limitations": "只更新水深→傳播核心；岸形局地效應與所有歷史個案未重核。不推每次海嘯皆呈巨型碎浪或用海面高度推安全。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R8001",
+      "question": "普通淡水結冰後，為什麼同樣質量反而占更大體積？",
+      "domain": "science",
+      "mechanism_key": "legacy.s07",
+      "answer_target": "普通冰的氫鍵晶體排列較疏，使同質量體積較大、密度較低而浮起。",
+      "scope": "只更新常壓普通冰的結構與密度機制，不重核原答案9%數值，不推所有高壓冰相。",
+      "source_ids": [
+        "R8-S001"
+      ],
+      "source_locator": "R8-S001：Water’s States: Gas, Liquid, and Solid，晶體密度段及Fig.2.14圖說",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-S07",
+      "notes": "來源更新修訂列；必須併回既有核心，不增加選入數。新閱讀只涵蓋本列範圍，未重讀全部歷史附件；未完成劇本查核或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "普通冰的氫鍵晶體排列較疏，使同質量體積較大、密度較低而浮起。",
+        "visual": "等量分子以液體與有空隙晶格並排；再放進水杯。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "R8002",
+      "question": "同一次閃電的亮光與雷聲，為什麼不是一起抵達？",
+      "domain": "science",
+      "mechanism_key": "legacy.s18",
+      "answer_target": "光比空氣中的聲音傳得快，因此同一次閃電的聲音通常後到。",
+      "scope": "一句核心太薄，仍只作雷雨母題一段；距離換算、聲速數值未本輪重核；不可數秒後才避雷。",
+      "source_ids": [
+        "R8-S002"
+      ],
+      "source_locator": "R8-S002：正文雷聲產生、光聲抵達差異、五秒每英里粗估及避雷提醒",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-S18",
+      "notes": "來源更新修訂列；必須併回既有核心，不增加選入數。新閱讀只涵蓋本列範圍，未重讀全部歷史附件；未完成劇本查核或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光比空氣中的聲音傳得快，因此同一次閃電的聲音通常後到。",
+        "visual": "同一事件沿兩條傳播線抵達觀察者；距離增加時聲音延後。",
+        "seconds": [
+          20,
+          35
+        ]
+      }
+    },
+    {
+      "id": "R8003",
+      "question": "月球有自轉，為什麼仍大致以同一面朝著地球？",
+      "domain": "science",
+      "mechanism_key": "legacy.s21",
+      "answer_target": "地月潮汐作用的扭矩及耗散促成同步自轉；天平動讓累計可見範圍大於一半。",
+      "scope": "與原題同核心；59%是不同時日累計，非瞬時；舊27.3日與背面日照句未在此來源對全量重核。",
+      "source_ids": [
+        "R8-S003",
+        "R8-S004"
+      ],
+      "source_locator": "R8-S003：正文以 Earth’s Moon rotates… 及 Tidal locking is common… 起語的段落；地月形變、滯後、耗散與同步；R8-S004：Eyeballing the Moon後望遠鏡觀察段：libration及59 percent",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-S21",
+      "notes": "來源更新修訂列；必須併回既有核心，不增加選入數。新閱讀只涵蓋本列範圍，未重讀全部歷史附件；未完成劇本查核或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地月潮汐作用的扭矩及耗散促成同步自轉；天平動讓累計可見範圍大於一半。",
+        "visual": "帶標記月球繞地球同時轉動，再以邊緣小幅露出顯示天平動。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "R8004",
+      "question": "地面常見的是彩虹圓弧，為什麼換觀察位置可能看到整個圓？",
+      "domain": "science",
+      "mechanism_key": "legacy.s23",
+      "answer_target": "光經水滴折射與內反射後，在特定觀察幾何形成圓；地面常遮住下方。",
+      "scope": "只更新主虹光路、幾何與遮擋；紫光40°未重核，不把彩虹當固定實體。",
+      "source_ids": [
+        "R8-S005",
+        "R8-S006"
+      ],
+      "source_locator": "R8-S005：正文完整圓、觀察位置、水滴進出折射與內反射段；R8-S006：What is a rainbow?、What makes the bow? 正文與光路圖說",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-S23",
+      "notes": "來源更新修訂列；必須併回既有核心，不增加選入數。新閱讀只涵蓋本列範圍，未重讀全部歷史附件；未完成劇本查核或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光經水滴折射與內反射後，在特定觀察幾何形成圓；地面常遮住下方。",
+        "visual": "觀察者、背後太陽、前方水滴與遮住下半部的地面；抬高觀察位置。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "R8005",
+      "question": "太空站和裡面的物體一起往下掉，為什麼看起來像在漂浮？",
+      "domain": "science",
+      "mechanism_key": "legacy.s80",
+      "answer_target": "站體與物體共同受重力自由落下，切向運動讓軌道持續繞地。",
+      "scope": "只更新共同自由落下與軌道原理；不宣稱零重力或任何軌道固定重力值。",
+      "source_ids": [
+        "R8-S007"
+      ],
+      "source_locator": "R8-S007：重力維持軌道段、蘋果／太空人／站體共同落下、Newton炮彈思考實驗段",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-S80",
+      "notes": "來源更新修訂列；必須併回既有核心，不增加選入數。新閱讀只涵蓋本列範圍，未重讀全部歷史附件；未完成劇本查核或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "站體與物體共同受重力自由落下，切向運動讓軌道持續繞地。",
+        "visual": "同一落下座標中的站體和蘋果，切到地球外部視角顯示彎曲軌道。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "R8006",
+      "question": "海嘯走進較淺的海水，為什麼波長和波高會跟著改變？",
+      "domain": "science",
+      "mechanism_key": "legacy.s83",
+      "answer_target": "水深降低使海嘯減速，波長縮短，波高及流速可增加。",
+      "scope": "只更新水深與傳播核心；未重核全部岸形與個案，不把所有海嘯畫成同一面碎浪牆。",
+      "source_ids": [
+        "R8-S008"
+      ],
+      "source_locator": "R8-S008：正文傳播速度隨深度、深海波長與近岸減速／變高段",
+      "premise_status": "screened",
+      "intake_kind": "source_refresh_no_new_core",
+      "refreshes_core_id": "LEG-S83",
+      "notes": "來源更新修訂列；必須併回既有核心，不增加選入數。新閱讀只涵蓋本列範圍，未重讀全部歷史附件；未完成劇本查核或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水深降低使海嘯減速，波長縮短，波高及流速可增加。",
+        "visual": "同一波列從深水到淺水，間距縮短；高度和地形條件分開標示。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    }
+  ]
+}

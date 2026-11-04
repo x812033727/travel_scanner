@@ -1,0 +1,227 @@
+{
+  "batch_id": "wave27-life-20261102",
+  "created_on": "2026-11-02",
+  "scope": "夜間存糧速率與傷口方向的可視控制比較；題級來源候選，非稿件/製作核准。",
+  "sources": [
+    {
+      "id": "A27-S001",
+      "url": "https://elifesciences.org/articles/669",
+      "title": "Arabidopsis plants perform arithmetic division to prevent starvation at night",
+      "publisher": "Scialdone et al.; eLife",
+      "doi": "10.7554/eLife.00669",
+      "canonical_url": "https://doi.org/10.7554/eLife.00669",
+      "retrieval_url": "https://elifesciences.org/articles/669",
+      "accessed_on": "2026-11-02",
+      "version": "2013-06-25 Version of Record, eLife 2:e00669; publisher HTML and original figure assets",
+      "read_via": "web.search/open定位；指定UA fresh HTTP200取得有效出版社HTML，html.parser抽文。圖1/3從該HTML實際asset URL下載並目讀。",
+      "reading_scope": "HTML PARA78–101/106：引言、Results的早晚入夜/低光存糧/時鐘突變與夜間補光控制、兩種化學動力學模型；PARA108–129後續突變體結果與Discussion讀回；PARA133–155植物培養、澱粉測量及模型假設。未重算模型/統計，未讀全部補充資料。圖1/3實際目讀。",
+      "locator": "Results Figure 1A–C、Figure 2模型段與Figure 3A–D；Materials and methods: Plant material, Measurement of starch, Quantification of the starch content and the expected time to dawn。",
+      "summary": "改變入夜時間、起始存糧或夜間補光後，消耗速率可調整；存量除以預期剩餘時間的動態模型可解釋主要對照。",
+      "limitations": "S/T分子及兩種化學實作是模型，未識別唯一真實計算路徑；PWD僅候選節點。不能把所有植物、任意長黑夜都說成不挨餓。夜間補光主要證速率重調，不把圖3畫成一定在24h耗盡；非常早入夜有重設窗口邊界。早夜部分資料與2010舊作有承接，非全部新獨立複驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave27-life-sources/starch2013.html",
+        "sha256": "f3f16186d5662e6e200e0f2b81bb5b996dd0cf94ebe7352fedf1cf973de22a31",
+        "text_file": ".cache/wave27-life-sources/starch2013.txt",
+        "text_sha256": "ffdcab3ed149e5b8cc3d3b7e2d7c15c0c10e237d5e7af823ce595f48e6afb4b5"
+      }
+    },
+    {
+      "id": "A27-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/",
+      "title": "Polarized activation of notum at wounds inhibits Wnt signaling to promote planarian head regeneration",
+      "publisher": "Petersen and Reddien; Science; NIH PMC author manuscript",
+      "doi": "10.1126/science.1202143",
+      "canonical_url": "https://doi.org/10.1126/science.1202143",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/",
+      "accessed_on": "2026-11-02",
+      "version": "Science 2011-05-13;332(6031):852–855; NIHMS361448 author manuscript available in PMC 2012-04-06, not a 2012 independent study",
+      "read_via": "web.open成功返回PMC正文，回傳原文存notum2011-web.txt；指定UA主文章HTTP200僅captcha，EuropePMC fullTextXML回500，PDF web路線只Preparing to download，皆不稱有效正文下載。Figure3頁另由指定UA取得有效HTML與原圖並目讀。",
+      "reading_scope": "web正文L79–120：傷口方向/保留頭尾極/相鄰反向傷口、notum RNAi及雙RNAi、Wnt回饋與結論；Fig1–3圖說讀。Fig3原圖目讀，Fig1網頁captcha未目讀，SI方法/影片未讀。",
+      "locator": "Main text: To test whether wound-site notum expression is specific to head amputation (Fig1F–I); notum inhibition and axial markers (Fig2); double-RNAi and proposed feedback pathway (Fig3A–C); final paragraph local tissue polarization。",
+      "summary": "局部傷口的朝向可偏置notum反應；抑制它會使部分前向傷口補出尾部，雙重干預支持其經Wnt抑制控制再生極性。",
+      "limitations": "2011研究定位局部方向與Wnt抑制關係，未找到完整最上游方向感測器，不能把直接/間接轉錄關係或特定酵素底物視為本研究已證。RNAi結果非所有個體全同；正文與Fig2A的樣本數113/133出入不採數字。SI未讀，無操作教學/醫療推論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave27-life-sources/notum2011-web.txt",
+        "sha256": "319f18bb84427dbcf2791976a9fc73e7ef6c645c542af8f09c59ca0cadf0c514"
+      },
+      "additional_cache": [
+        {
+          "file": ".cache/wave27-life-sources/notum2011-f3.html",
+          "sha256": "ed1882f0f06d3610901a0387479289dca9f13c8d41b084e03cd879d9541a7549"
+        },
+        {
+          "file": ".cache/wave27-life-sources/notum2011-fig3.jpg",
+          "sha256": "9302de35d851154c89b011d1a2ac9bcf738fbc0221e0569668fc6b3f48e9bf48"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "A27001",
+      "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+      "domain": "植物時間與存糧控制",
+      "mechanism_key": "life.starch_reserve_divided_by_expected_night_time_dynamic_rate",
+      "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+      "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。",
+      "source_ids": [
+        "A27-S001"
+      ],
+      "source_locator": "Results Fig1A–C/HTML PARA81–101；Fig3A–D/PARA106；Methods PARA133–155。",
+      "premise_status": "screened",
+      "notes": "提前入夜、改白天光強與夜間補光是同核心的不同控制，不拆成三筆；不把呼吸、萌發澱粉動員或季節感應重算。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能預測相同夜長下存糧較少時速率會下降，也能區分按時鐘預期分配與真正預知日出。",
+        "visual": "原創存糧條與預期天亮倒數並排；分框改入夜時間、起始存量、夜間光段，曲線用定性示意。圖3只畫補光後斜率增加，不假造24h歸零；S/T若出現須標模型。",
+        "seconds": [
+          95,
+          140
+        ]
+      }
+    },
+    {
+      "id": "A27002",
+      "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+      "domain": "再生方向與局部訊號控制",
+      "mechanism_key": "life.wound_orientation_polarized_notum_wnt_inhibition_regeneration",
+      "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+      "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。",
+      "source_ids": [
+        "A27-S002"
+      ],
+      "source_locator": "Main text L83–120；Fig1F–I傷口方向、Fig2頭尾標記、Fig3A–C雙RNAi與回饋模型。",
+      "premise_status": "screened",
+      "notes": "以同一傷口反應怎麼分岔為核心，notum/Wnt名稱只是來源定位；不是再生名詞百科，也不把Wnt回饋與頭尾案例另拆題。Fig1原圖未目讀，進稿須補圖形幾何核對。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能分清缺了頭才發出補頭命令，與局部傷口讀取既有方向；抑制抑制者也可能把再生方向改掉。",
+        "visual": "無血腥原創體軸箭頭，先保留頭部畫側邊局部傷口的兩側，再重設為軀幹片段對照；以頭尾符號及標記分開呈現control/notum抑制/雙抑制，圖註非每隻相同。",
+        "seconds": [
+          90,
+          135
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "A27-NA001",
+      "question": "沒有腦的黏菌怎麼避開自己剛走過的路？",
+      "existing_ids": [
+        "U8009"
+      ],
+      "reason": "既有答案已是胞外黏液路跡和未探索區域對照；本輪不換問法重收。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA002",
+      "question": "黏菌食物吃完後，管路怎麼還留著方向？",
+      "existing_ids": [
+        "A22002"
+      ],
+      "reason": "既有局部軟化/管徑階層與流體回饋已收，非本輪新機制。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA003",
+      "question": "根怎麼優先在接觸水的一側長分枝？",
+      "existing_ids": [
+        "B15003"
+      ],
+      "reason": "既有生長吸水/供水差形成內部水勢圖案已覆蓋；2014來源只定位，不當新增已讀全文。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA004",
+      "question": "植物沒有日曆怎麼知道季節變了？",
+      "existing_ids": [
+        "L104"
+      ],
+      "reason": "日夜長度季節訊號已收；本輪夜間存糧分配才有新控制量。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA005",
+      "question": "植物為什麼也要呼吸？",
+      "existing_ids": [
+        "V3039"
+      ],
+      "reason": "糖供ATP的背景已存在；不為新夜間題加一筆背景核心。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA006",
+      "question": "種子沒有葉，怎麼叫醒澱粉庫？",
+      "existing_ids": [
+        "V3093"
+      ],
+      "reason": "萌發GA/糊粉層酵素動員已收，不等於葉片夜間速率控制。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA007",
+      "question": "植物過完冬怎麼還記得冷過？",
+      "existing_ids": [
+        "R6006"
+      ],
+      "reason": "FLC染色質記憶已收，與每日預期夜長不同。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA008",
+      "question": "換成草類也能在夜間分配澱粉，算另一題嗎？",
+      "existing_ids": [],
+      "reason": "同文Brachypodium是同一存糧控制的物種延伸，不新增核心。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA009",
+      "question": "植物的S與T計算分子究竟是哪兩個？",
+      "existing_ids": [],
+      "reason": "2013兩者為模型假設，不能用未識別實體的命名當答案。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA010",
+      "question": "植物是不是不管多久不見光都不會餓？",
+      "existing_ids": [],
+      "reason": "超過預期夜長與極早入夜有邊界，研究不支持無限保證。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA011",
+      "question": "渦蟲每一個碎片都一定能長回完整身體嗎？",
+      "existing_ids": [],
+      "reason": "無條件保證超過本研究的片段與處理範圍，不採泛再生奇聞。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA012",
+      "question": "渦蟲長頭的最上游方向感測器就是notum嗎？",
+      "existing_ids": [],
+      "reason": "2011顯示局部不對稱與下游功能，仍提出其他過程確保方向；未讀後續研究不補推論。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA013",
+      "question": "幼水母少了腕為什麼仍能排整齊？",
+      "existing_ids": [
+        "A22003"
+      ],
+      "reason": "肌肉/黏彈重排現有組織已收，不能拿再生一詞合成新題。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    },
+    {
+      "id": "A27-NA014",
+      "question": "兩種細胞收到相同訊號為什麼結果不同？",
+      "existing_ids": [
+        "V3007"
+      ],
+      "reason": "一般接受方胞內差異已收；本輪只保傷口方向改變抑制回饋的控制，而非重述細胞不同。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。"
+    }
+  ]
+}

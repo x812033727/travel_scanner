@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "author": "root",
+  "status": "AUTHOR_LOCK_FOR_NONAUTHOR_REVIEW",
+  "counts": {
+    "raw": 7,
+    "sources": 4,
+    "new_themes": 3,
+    "not_added": 3
+  },
+  "locked_artifacts": [
+    {
+      "file": "batches/wave10-decisions.json",
+      "sha256": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854"
+    },
+    {
+      "file": "reviews/wave10-decisions-themes.json",
+      "sha256": "c1cf561709389bd88becdd326ecfcce9f59c5ce1c56bfef8a5674e45ffc10438"
+    },
+    {
+      "file": "reviews/wave10-decisions-probe.json",
+      "sha256": "d4650c7bdc9dbf9f92ed3a81de1f8578f23a5137ac70cf35adbe173004355840"
+    }
+  ],
+  "recommended_decisions": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "M10001",
+        "b": "M2025",
+        "reason": "分組權重造成比率反轉，增量不同於泛說相關不等於因果；仍保留因果限制。"
+      },
+      {
+        "a": "M10001",
+        "b": "M2015",
+        "reason": "反轉來自各組分母佔比，不需要極端值拉動平均。"
+      },
+      {
+        "a": "M10002",
+        "b": "M10003",
+        "reason": "前者多數關係不傳遞；後者固定Borda規則在撤項重算後翻轉，用同資料但不同可檢驗操作。"
+      },
+      {
+        "a": "M10007",
+        "b": "LEG-B62",
+        "reason": "數學上可增加進度的結果變少，不是接近目標後更想買的心理效應。"
+      },
+      {
+        "a": "M10007",
+        "b": "T4017",
+        "reason": "集齊的分階段等待，不是觀察時點偏向較長間隔的長度偏差。"
+      },
+      {
+        "a": "M10004",
+        "b": "I3062",
+        "reason": "整數名額按最大餘數重新分配，不是浮點近似誤差。"
+      }
+    ]
+  },
+  "coverage": {
+    "old_boundary_method": "搜尋舊raw與not_added的Simpson/辛普/投票/席次/生日/條件機率/蒙提/集齊；讀M2015/M2025/LEG-B62/T4017等近題。",
+    "source_reads": "四個第一方作者/大學/政府頁指定正文",
+    "semantic": "等待全批統一top5與非作者覆核"
+  },
+  "limits": [
+    "全部數字虛構，來源支撐規則，probe核對本批構造例。",
+    "未核全部舊pool的知識正確性。",
+    "未試讀、未生成影片。"
+  ],
+  "production_ready": false,
+  "schema_correction": "author role anchor改為既有schema的theme_seed，事實與秒數不變",
+  "non_author_findings_applied": {
+    "reviewer": "pool_physics",
+    "before_sha256": {
+      "wave10-decisions.json": "6a6c79ab4b3538b8abf8018fae67d43a88444c0f9fc18fa1c400bb409d2ca532",
+      "wave10-decisions-themes.json": "1ca092ab1733251722421a70b302b56fcd744625cb0cdb3d131bb8f0fbbd8ea2",
+      "wave10-decisions-author.json": "1ee1fc982c0a7d3271559abf7709d8411dcbaa9817e87ce0b3b37f7f047606a5"
+    },
+    "changes": [
+      "M10006刪配對事件互相相關，改事件可重疊且非互斥；本模型不同配對事件兩兩獨立但非共同獨立。",
+      "T01標題改總比率與組別權重，兩組總分母都是110。"
+    ],
+    "question_answer_semantic_text_changed": false
+  },
+  "source_locator_correction": {
+    "reviewer": "pool_physics",
+    "before_batch_sha256": "896eab6536d3d4088a792c889ba60e43e48fbf7ad95b7e3739c445ae57fb87de",
+    "changes": "MIT三題按題縮到實際支持章節；CMU兩題也按規則分開。來源整體reading_scope保留聯集。",
+    "semantic_question_answer_changed": false
+  },
+  "timing_revision": {
+    "reviewer": "pool_physics",
+    "before_theme_sha256": "13a61a39871ae925776177b321ccd82d9964b472422b2ab248e0f9102b45e4af",
+    "changes": [
+      "T02 180→150秒，兩章95/85→80/70，壓縮收環與回扣。",
+      "T03 105→95秒，末段限制與回扣20→10；T01保留110。"
+    ],
+    "limits": "旁白尚未寫，非實測速度；cap不因縮片調高。"
+  },
+  "chapter_schema_revision": {
+    "before_theme_sha256": "a799d2296481bf3e9695a5d0f12a1346ced43571b482bf381438eff5d6040872",
+    "reason": "既有short_explainer schema要求至少2章；T01原4beats原序拆60+50，T03拆55+40，無新增或改寫節拍、總秒數與素材不變。"
+  }
+}

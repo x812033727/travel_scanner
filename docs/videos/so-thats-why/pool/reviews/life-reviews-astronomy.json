@@ -1,0 +1,163 @@
+{
+  "review_id": "life-reviews-astronomy-wave2-20261101",
+  "reviewer": "pool_life_tech (independent of root author)",
+  "reviewed_on": "2026-11-01",
+  "status": "CANDIDATE_REVIEW_WITH_REQUIRED_MERGES_NOT_SCRIPT_APPROVAL",
+  "input": {
+    "path": "docs/videos/so-thats-why/pool/batches/wave2-astronomy.json",
+    "sha256": "5d32b05a35e7430a253ddab06d0771822bc3e20c536b0ec19118de5bc71572eb",
+    "candidate_count": 61,
+    "source_count": 17
+  },
+  "coverage": {
+    "candidate_reading": "逐題讀 X2001–X2061 的 question、answer_target、scope、source_ids 與 source_locator。",
+    "dedup_reading": "逐題對照 N001–N075、N287–N288；關鍵詞/答案比較全批次可能重疊題及 M2077。非宣稱整庫所有舊題逐主張重查。",
+    "source_check_method": "風險抽查；web.run open 可讀本文指定小節。",
+    "batch_sources_actually_read": 7,
+    "additional_baseline_sources_actually_read": 1,
+    "not_performed": [
+      "未逐一查核全部 61 題每個主張",
+      "未讀 17 頁全部來源",
+      "未讀原始論文全文或資料",
+      "未做劇本盲讀、成片驗收或素材授權驗收"
+    ]
+  },
+  "source_checks": [
+    {
+      "source_id": "X2-S006",
+      "url": "https://science.nasa.gov/universe/overview/",
+      "read_scope": "Big Bang and Nucleosynthesis; Recombination; Dark Ages; First Stars; Reionization",
+      "result": "確認題級散射/冷卻/電離方向；來源把 CMB 寫成原子新生光的簡化不得帶進稿，作者已排除。",
+      "read_via": "web.run open page body"
+    },
+    {
+      "source_id": "X2-S010",
+      "url": "https://science.nasa.gov/universe/telescopes-101/",
+      "read_scope": "Refracting telescopes; Reflecting telescopes; Finding gamma rays",
+      "result": "確認鏡面材料、掠入射、追跡及量能為不同設計約束；概覽不提供工程精度。",
+      "read_via": "web.run open page body"
+    },
+    {
+      "source_id": "X2-S011",
+      "url": "https://science.nasa.gov/universe/black-holes/anatomy/",
+      "read_scope": "Event Horizon; Accretion Disk; Event Horizon Shadow; Photon Sphere; Doppler Beaming; Particle Jets; Singularity",
+      "result": "支持題級影像/模型區分；來源聲音音量類比不能當相對論增亮的完整解釋。",
+      "read_via": "web.run open page body"
+    },
+    {
+      "source_id": "X2-S012",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Gaia/How_does_Gaia_study_the_Milky_Way",
+      "read_scope": "Parallax; Proper motion; Radial Velocity; Spectroscopy; Photometry",
+      "result": "確認視差、自行與徑向速度的不同推論；全體精度和線性自行的概括不能照抄。",
+      "read_via": "web.run open page body"
+    },
+    {
+      "source_id": "X2-S015",
+      "url": "https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-gravitational-lenses/",
+      "read_scope": "Gravitational Lensing Today: LAWD 37; Stein 2051 B; 0024+1654; Refsdal",
+      "result": "實讀位置偏移、多重像與延遲案例；不等於逐篇原觀測查核。",
+      "read_via": "web.run open page body"
+    },
+    {
+      "source_id": "X2-S016",
+      "url": "https://www.epfl.ch/labs/lastro/scientific-activities/cosmograil/",
+      "read_scope": "Welcome; About the project",
+      "result": "確認時間延遲需質量模型，且取樣與混合像測光是兩個限制；歷史數字不可標為最新。",
+      "read_via": "web.run open page body"
+    },
+    {
+      "source_id": "X2-S017",
+      "url": "https://esahubble.org/news/heic2602/",
+      "read_scope": "2026-01-21 release paragraphs 1–16",
+      "result": "確認藍掉隊星與環境關係為具體樣本推論；未讀其 Nature 論文全文，不核准普遍因果。",
+      "read_via": "web.run open page body"
+    },
+    {
+      "source_id": "nature:NS13",
+      "url": "https://science.nasa.gov/universe/black-holes/",
+      "read_scope": "Black Holes; Finding Black Holes; Essential Black Hole Facts",
+      "read_via": "web.run open page body",
+      "result": "N068 引用段僅一般星光彎折，未限定亮度訊號；不能用 X2057 白矮星的名稱與位置訊號宣稱原題排除該推論。"
+    }
+  ],
+  "required_actions": [
+    {
+      "action": "merge",
+      "from_id": "X2002",
+      "into_id": "N287",
+      "reason": "氣體供應不足與星形成的同一核心。"
+    },
+    {
+      "action": "merge",
+      "from_id": "X2005",
+      "into_id": "N288",
+      "reason": "活動核觀看角度與遮蔽的同一核心。"
+    },
+    {
+      "action": "merge",
+      "from_id": "X2047",
+      "into_id": "M2077",
+      "reason": "已知觀測基線加視差角的三角測距，天體與空拍是問題變體。"
+    },
+    {
+      "action": "merge",
+      "from_id": "X2051",
+      "into_id": "N073",
+      "reason": "特定波長吸收辨認成分；本次 target 未增加能與舊核心分開的線寬/電離推論。"
+    },
+    {
+      "action": "merge",
+      "from_id": "X2057",
+      "into_id": "N068",
+      "reason": "舊題已涵蓋不可見質量使背景星光偏折；位置偏移可併為更具體例子與來源。原 scope「首批亮度微透鏡」不符 N068 原範圍，應刪除。"
+    }
+  ],
+  "retain_distinctions": [
+    {
+      "ids": [
+        "X2039",
+        "X2040"
+      ],
+      "reason": "粒子追跡定向與能量沉積測能是不同測量，能同片接續。"
+    },
+    {
+      "ids": [
+        "X2048",
+        "X2049",
+        "X2050",
+        "N071"
+      ],
+      "reason": "週期與線性位移分離、角速度換實際速度、補徑向分量及週期徑向擾動找行星，問題限制不同；不以都用星光而合併。"
+    },
+    {
+      "ids": [
+        "X2041",
+        "X2042",
+        "X2043",
+        "X2044",
+        "N066"
+      ],
+      "reason": "發光物質、繞行成像、捕獲陰影、細環與相對論增亮不同；進稿必須區分可解析資料與模擬可見細節。"
+    },
+    {
+      "ids": [
+        "X2055",
+        "X2056",
+        "X2058"
+      ],
+      "reason": "多重像、到達時間差及由延遲推距離的質量模型退化，增加不同推論限制。"
+    }
+  ],
+  "editorial_limits": [
+    "X2003、X2004、X2012、X2028、X2031、X2046 主要是分類或知識邊界辨認；可作主線裡短段，不能各自以名詞介紹撐固定長片。",
+    "來源已聲明不明或僅模型的機制要保留不確定性，不能把官方概覽當逐主張核准。"
+  ],
+  "blockers_for_pool": "落實以上 5 組中央合併並修正 X2057 範圍備註；未見需全批退回。",
+  "production_ready": false,
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "input_sha256": "5d32b05a35e7430a253ddab06d0771822bc3e20c536b0ec19118de5bc71572eb",
+    "readback": "X2057 scope 已改為天體測量微透鏡案例並明示與 N068 合併；不再宣稱首批限亮度。中央合併由 root 執行，本覆核未改 selection。",
+    "status": "AUTHOR_SCOPE_FIX_RESOLVED_CENTRAL_MERGES_RETAINED"
+  }
+}

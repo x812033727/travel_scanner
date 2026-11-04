@@ -1,0 +1,545 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCK_PENDING_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "cfd7c5173bf2b0502b0fd24119a3c3cd179800a5",
+    "raw": 3306,
+    "selected": 2939,
+    "themes": 172,
+    "not_added": 776,
+    "pool_sha256": "7a3943a0460090156a797f370a6d0029b977f7fa854979760eec59f4e52dd705"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave16-materials.json",
+      "sha256": "f7b4fae84279bef8103aeb0fafbceb5a2d98220531d0abe888c51139ade664f8"
+    },
+    {
+      "file": "reviews/wave16-materials-themes.json",
+      "sha256": "940fef0a8c907f5105ded50b80b59891199863405972ab732610092c29a93901"
+    }
+  ],
+  "counts": {
+    "candidates": 7,
+    "sources": 7,
+    "not_added": 17,
+    "themes": 5,
+    "near_pairs": 19
+  },
+  "scope": "原創提問/限定機制研究及自然短解說規劃；不寫完整旁白，不製作媒體或實驗。",
+  "dedup_reading": {
+    "method": "對全3306 raw及776 not_added檢索問題/答案/scope/key與指定材料詞；逐讀相關命中和19指定近對，不宣稱人工逐讀全庫。首輪74raw/13退題命中已讀；另一次較寬75raw輸出截斷，未當完整覆核。",
+    "specific_hits": ".cache/wave16-materials-specific-hits.json",
+    "comparison_rows": ".cache/wave16-materials-old-comparisons.json",
+    "limits": "關鍵詞命中非語意召回率；等待共同top5和非作者覆核。"
+  },
+  "near_pairs": [
+    {
+      "a": "M16001",
+      "b": "H3048",
+      "proposed": "distinct",
+      "reason": "舊核是位錯逐步滑移；新核是變體重排後逆相變恢復，須明示可逆性與負載限制。"
+    },
+    {
+      "a": "M16001",
+      "b": "K11013",
+      "proposed": "distinct",
+      "reason": "舊核是揉皺薄片翻轉門檻的歷史依賴；新核是晶體相變/變體，不因名稱記憶相同合併。"
+    },
+    {
+      "a": "M16001",
+      "b": "P079",
+      "proposed": "distinct",
+      "reason": "舊核普通正膨脹平均間距；新核恢復形變的相變，可能加熱縮短。"
+    },
+    {
+      "a": "M16002",
+      "b": "H3026",
+      "proposed": "distinct",
+      "reason": "舊核永久交聯限制滑移並彈回；新增兩組暫時固定和依序解除，卸載時不直接回復。"
+    },
+    {
+      "a": "M16002",
+      "b": "H3090",
+      "proposed": "distinct",
+      "reason": "一般黏彈鬆弛不等於兩次可辨形狀回復；本題需第二域缺失控制。"
+    },
+    {
+      "a": "M16002",
+      "b": "M16001",
+      "proposed": "distinct",
+      "reason": "金屬相變與聚合物暫時固定開關不同；新題進一步問兩段回復，不按材料換名重算。"
+    },
+    {
+      "a": "M16002",
+      "b": "D2142",
+      "proposed": "distinct",
+      "reason": "舊核吹瓶取向/結晶改性能；本題定形/解鎖歷史，應變結晶只是限制，非另增核。"
+    },
+    {
+      "a": "M16003",
+      "b": "H3063",
+      "proposed": "distinct",
+      "reason": "橋接是共同部件；新條件是可逆離子解扣區和另一網絡協同擴大耗能範圍，立即重拉/恢復可驗。請非作者審是否仍過細。"
+    },
+    {
+      "a": "M16003",
+      "b": "H3061",
+      "proposed": "distinct",
+      "reason": "舊核金屬裂尖塑性；新核雙網絡解扣及橋接造成分散內部損傷，不泛稱耗能就算新。"
+    },
+    {
+      "a": "M16003",
+      "b": "H3093",
+      "proposed": "distinct",
+      "reason": "舊題交聯阻止溶解/膨潤；不回答有缺口時兩網絡力學協同。"
+    },
+    {
+      "a": "M16004",
+      "b": "D2252",
+      "proposed": "distinct",
+      "reason": "共用壓應力抑制張裂前提；新題核心另含同體受拉區的儲能與尾裂引發自持續破裂，需非作者判新增厚度。"
+    },
+    {
+      "a": "M16004",
+      "b": "H3060",
+      "proposed": "distinct",
+      "reason": "舊核外加負荷/裂長門檻；新題空間殘餘應力讓不同位置裂口結果相反及能量釋放。"
+    },
+    {
+      "a": "M16004",
+      "b": "F15001",
+      "proposed": "distinct",
+      "reason": "舊核細桿折斷後彎曲波再致裂；本題預存內部應力驅動，無需後續外部彎曲波。"
+    },
+    {
+      "a": "M16005",
+      "b": "K11014",
+      "proposed": "distinct",
+      "reason": "預應力變幾何剛性不等於交換力/位移端點非互易；本題線性化與對稱控制為必要增量。"
+    },
+    {
+      "a": "M16006",
+      "b": "P079",
+      "proposed": "distinct",
+      "reason": "舊scope明限一般正膨脹；本題局部鍵長上升而晶格尺下降的相反對照。"
+    },
+    {
+      "a": "M16007",
+      "b": "P218",
+      "proposed": "distinct",
+      "reason": "舊題空位存在仍是晶體；新題不同擴散通量使空位聚孔及殼層形成。"
+    },
+    {
+      "a": "M16007",
+      "b": "H3053",
+      "proposed": "distinct",
+      "reason": "舊核應力驅動重分配成蠕變；新題反應擴散速率不等導致空位超飽和/孔洞。"
+    },
+    {
+      "a": "M16007",
+      "b": "H3054",
+      "proposed": "distinct",
+      "reason": "舊題空位使位錯攀移；本題空位聚孔，終態與控制量不同。"
+    },
+    {
+      "a": "M16007",
+      "b": "D2133",
+      "proposed": "distinct",
+      "reason": "塑膠冷卻收縮缺補料與反應雙向通量不等是不同成孔原因。"
+    }
+  ],
+  "source_readings": [
+    {
+      "file": ".cache/wave16-materials-nitinol-xml.xml",
+      "sha256": "3349d6efb1d0bb379291f685497fe4993d587af8e38d9abca6fef5387929b37b"
+    },
+    {
+      "file": ".cache/wave16-materials-rupert-xml.xml",
+      "sha256": "9bbba5951928e9928b1d4c117efb74da361dbace598526ca8ebcc9692144941e"
+    },
+    {
+      "file": ".cache/wave16-materials-nonreciprocity.pdf",
+      "sha256": "2a616c5244bf6d9b6e896b2bbf285ed5b3649c36b91eff1457aaaf39ea041c25"
+    },
+    {
+      "file": ".cache/wave16-materials-negative-arxiv.pdf",
+      "sha256": "95e93831c621c83d9bdf74d1425331fffdcf5d85845fd92a7710aa2f40ac3eff"
+    },
+    {
+      "file": ".cache/wave16-materials-kirkendall.pdf",
+      "sha256": "d2dd20930ee7bc52a30aea4ad7b9d2d462a56e3829ddf307a9bc949d9ca53558"
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "M16-S001",
+      "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+      "identity": "Materials16(13),4820 (2023-07-04), DOI10.3390/ma16134820",
+      "independent_studies": 1,
+      "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+      "old_exact_url_or_title_matches": [],
+      "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+    },
+    {
+      "source_id": "M16-S002",
+      "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+      "identity": "PNAS103(48),18043–18047；online2006-11-20、issue2006-11-28；DOI10.1073/pnas.0608586103",
+      "independent_studies": 1,
+      "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+      "old_exact_url_or_title_matches": [],
+      "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+    },
+    {
+      "source_id": "M16-S003",
+      "adopted_url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+      "identity": "Nature489,133–136 (2012-09-06), DOI10.1038/nature11409；PMC3642868為同工作作者稿",
+      "independent_studies": 1,
+      "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+      "old_exact_url_or_title_matches": [],
+      "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+    },
+    {
+      "source_id": "M16-S004",
+      "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+      "identity": "PNAS119(31),e2202856119；online2022-07-21；DOI10.1073/pnas.2202856119",
+      "independent_studies": 1,
+      "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+      "old_exact_url_or_title_matches": [],
+      "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+    },
+    {
+      "source_id": "M16-S005",
+      "adopted_url": "https://arxiv.org/pdf/1704.03305",
+      "identity": "arXiv1704.03305v1 (2017-04-04)；關聯Nature542,461–464(2017), DOI10.1038/nature21044",
+      "independent_studies": 1,
+      "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+      "old_exact_url_or_title_matches": [],
+      "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。",
+      "metadata_correction": "初期進度訊息誤寫327–330；正式檔已按arXiv來源身分頁使用Nature542,461–464。錯誤訊息不是另一篇研究。"
+    },
+    {
+      "source_id": "M16-S006",
+      "adopted_url": "https://arxiv.org/pdf/1905.09250",
+      "identity": "arXiv1905.09250v4 (2020-07-24)；PhysRevB102,094105 (2020-09-16), DOI10.1103/PhysRevB.102.094105",
+      "independent_studies": 1,
+      "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+      "old_exact_url_or_title_matches": [],
+      "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+    },
+    {
+      "source_id": "M16-S007",
+      "adopted_url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+      "identity": "LBNL作者報告副本；同工作Science304(5671),711–714 (2004-04-30), DOI10.1126/science.1096566",
+      "independent_studies": 1,
+      "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+      "old_exact_url_or_title_matches": [],
+      "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "log": ".cache/wave16-materials-fetch.json",
+      "sha256": "2a884d28e0090b01f0e2fc0a750f616572654d25ff377b404f3616a0d95667bd",
+      "actual_results": [
+        {
+          "name": "nonreciprocity",
+          "url": "https://arxiv.org/pdf/1704.03305",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "final_url": "https://arxiv.org/pdf/1704.03305",
+          "sha256": "2a616c5244bf6d9b6e896b2bbf285ed5b3649c36b91eff1457aaaf39ea041c25",
+          "file": ".cache/wave16-materials-nonreciprocity.pdf",
+          "bytes": 6067414,
+          "pages": 30
+        },
+        {
+          "name": "hydrogel",
+          "url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "error": "HTTP Error 403: Forbidden"
+        },
+        {
+          "name": "triple-shape",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+          "sha256": "4b0a4de14e4e3ed13b9cb69a3bf8d87a55ad7485e781a015f53e9a4c1e4c64c6",
+          "file": ".cache/wave16-materials-triple-shape.html",
+          "bytes": 21474,
+          "contains_captcha": null,
+          "body_status": "NO_ARTICLE_BODY_CHALLENGE_HTML",
+          "validation_note": "HTML21KB沒有article/p標記或正文擷取；HTTP200不算取得正文。"
+        },
+        {
+          "name": "rupert",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+          "sha256": "ae67397acae321eff3d8250a2cd3b5de34808176942858902458d594c67755a9",
+          "file": ".cache/wave16-materials-rupert.html",
+          "bytes": 21475,
+          "contains_captcha": null,
+          "body_status": "NO_ARTICLE_BODY_CHALLENGE_HTML",
+          "validation_note": "HTML21KB沒有article/p標記或正文擷取；HTTP200不算取得正文。"
+        },
+        {
+          "name": "nitinol",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+          "sha256": "ba83ee68a789f5d5f24b7bc22a153d921c6b077567391e0c3ae2e7d33d04476d",
+          "file": ".cache/wave16-materials-nitinol.html",
+          "bytes": 21480,
+          "contains_captcha": null,
+          "body_status": "NO_ARTICLE_BODY_CHALLENGE_HTML",
+          "validation_note": "HTML21KB沒有article/p標記或正文擷取；HTTP200不算取得正文。"
+        },
+        {
+          "name": "negative-expansion",
+          "url": "https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/66542/Phillips%20Quantitative%20understanding%20of%202020%20Accepted.pdf?isAllowed=y&sequence=2",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "final_url": "https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/66542/Phillips%20Quantitative%20understanding%20of%202020%20Accepted.pdf?isAllowed=y&sequence=2",
+          "sha256": "339f9b5d19da14d1678a681d568b1fa95c82a3933c01343895719c1f7e43e85b",
+          "file": ".cache/wave16-materials-negative-expansion.pdf",
+          "bytes": 2663,
+          "pages": 1,
+          "body_status": "NOT_ARTICLE_PDF",
+          "validation_note": "只有1頁2663bytes、無正文；不作原文。"
+        },
+        {
+          "name": "kirkendall",
+          "url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "final_url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+          "sha256": "d2dd20930ee7bc52a30aea4ad7b9d2d462a56e3829ddf307a9bc949d9ca53558",
+          "file": ".cache/wave16-materials-kirkendall.pdf",
+          "bytes": 910502,
+          "pages": 18
+        }
+      ]
+    },
+    {
+      "log": ".cache/wave16-materials-fetch-fallback.json",
+      "sha256": "9e4ef8dbf545624beaa86eca43e984e2b09c76bc3ee638e008610407a9e25452",
+      "actual_results": [
+        {
+          "name": "triple-xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1838703/fullTextXML",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "error": "HTTP Error 500:"
+        },
+        {
+          "name": "hydrogel-xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3642868/fullTextXML",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "error": "HTTP Error 500:"
+        },
+        {
+          "name": "nitinol-xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10343269/fullTextXML",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "sha256": "3349d6efb1d0bb379291f685497fe4993d587af8e38d9abca6fef5387929b37b",
+          "bytes": 117970,
+          "file": ".cache/wave16-materials-nitinol-xml.xml",
+          "extracted_chars": 61931
+        },
+        {
+          "name": "rupert-xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9351460/fullTextXML",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "sha256": "9bbba5951928e9928b1d4c117efb74da361dbace598526ca8ebcc9692144941e",
+          "bytes": 119621,
+          "file": ".cache/wave16-materials-rupert-xml.xml",
+          "extracted_chars": 59504
+        },
+        {
+          "name": "negative-arxiv",
+          "url": "https://arxiv.org/pdf/1905.09250",
+          "date": "2026-11-02",
+          "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+          "status": 200,
+          "sha256": "95e93831c621c83d9bdf74d1425331fffdcf5d85845fd92a7710aa2f40ac3eff",
+          "bytes": 2748187,
+          "file": ".cache/wave16-materials-negative-arxiv.pdf",
+          "pages": 13,
+          "extracted_chars": 69070
+        }
+      ]
+    }
+  ],
+  "reading_limits": [
+    "S002/S003的有效正文是當日web讀取；UA驗證頁/403/500不是正文，未保存有效全文本機副本。",
+    "S001/S004採有效Europe PMC XML；PMC網頁直接UA回驗證頁。S006 QMUL空白單頁不可當正文。",
+    "S001/2/3/4讀圖說而未目讀原圖像；已目讀S005 PDF16–17、S006 PDF4、S007 PDF17。其餘已渲染未展示頁不冒稱目讀。",
+    "非逐句劇本核准；原研究模型、作者機制歸因、直接實驗觀察均於候選/來源限制中區分。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "M16-S005",
+      "pdf_pages": [
+        16,
+        17
+      ]
+    },
+    {
+      "source_id": "M16-S006",
+      "pdf_pages": [
+        4
+      ]
+    },
+    {
+      "source_id": "M16-S007",
+      "pdf_pages": [
+        17
+      ]
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W16M-T01",
+      "seconds": 125,
+      "chapters": [
+        60,
+        65
+      ],
+      "core_id": "M16002",
+      "max_beat": 40
+    },
+    {
+      "id": "W16M-T02",
+      "seconds": 115,
+      "chapters": [
+        60,
+        55
+      ],
+      "core_id": "M16003",
+      "max_beat": 40
+    },
+    {
+      "id": "W16M-T03",
+      "seconds": 115,
+      "chapters": [
+        55,
+        60
+      ],
+      "core_id": "M16004",
+      "max_beat": 35
+    },
+    {
+      "id": "W16M-T04",
+      "seconds": 120,
+      "chapters": [
+        60,
+        60
+      ],
+      "core_id": "M16005",
+      "max_beat": 40
+    },
+    {
+      "id": "W16M-T05",
+      "seconds": 105,
+      "chapters": [
+        55,
+        50
+      ],
+      "core_id": "M16007",
+      "max_beat": 35
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_ONLY",
+    "checks": [
+      "Node validateEditorial 7與隔離validateThemes 5通過",
+      "Python每章一核心、beats<=45、章與全片總和、單核心累計cap、range<=body",
+      "三檔UTF8 LF與全部字串rstrip一致"
+    ],
+    "read_aloud": false,
+    "media_produced": false
+  },
+  "unresolved": [
+    "等待非作者判M16003/H3063與M16004/D2252是否增量足夠。",
+    "S002/S003沒有有效UA本機全文副本；正式覆核須重新開有效web或取得第一方副本，不以驗證頁代讀。",
+    "需要共同top5、來源身份人工複核；不為數量續添未完成研究方向。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "requested_by": "science_sources independent review",
+      "before_files": [
+        {
+          "file": "batches/wave16-materials.json",
+          "sha256": "5bdf976ad67bebb170b7c19808d92b94fa6a572e952428e44199d27f4ae845ff"
+        },
+        {
+          "file": "reviews/wave16-materials-themes.json",
+          "sha256": "0f8b51ffc84e3f9bfb91d5b26325438668f659eb960f745dc3ac89e38401759f"
+        },
+        {
+          "file": "reviews/wave16-materials-author.json",
+          "sha256": "bdf1399c108782d523c1224110486fc19127c35cc43e352d8a62c4dbda82dc6d"
+        }
+      ],
+      "changes": [
+        {
+          "id": "M16003/W16M-T02",
+          "reason": "父網絡拉伸對照與缺口hybrid實驗分框；未註缺口的Fig3a不得冒充相同缺口三組。重拉對照35→25秒；全片125→115。"
+        },
+        {
+          "id": "M16007/W16M-T05",
+          "reason": "內向傳輸僅可能解釋而非直接量得；孔徑差也可能有空位湮滅/估計誤差。箭頭標機制模型。末段25→15，全115→105。"
+        },
+        {
+          "id": "M16005/W16M-T04",
+          "reason": "題名推改施力、節拍明示Fig1b是外拉，保留正負受力方向與全曲線比較。問題字串改，需root共同semantic重算；answer_target不變。"
+        }
+      ],
+      "source_readback": "依非作者指定圖說與先前實讀正文收窄，不聲稱本步新增HTTP或重讀全篇。"
+    },
+    {
+      "date": "2026-11-02",
+      "requested_by": "science_sources targeted recheck",
+      "before_files": [
+        {
+          "file": "reviews/wave16-materials-themes.json",
+          "sha256": "2169d380e46ae227f22dd966e6d2d4718707e1bcc406dc676c5713e5993a21ab"
+        },
+        {
+          "file": "reviews/wave16-materials-author.json",
+          "sha256": "6477faf83559ed88bc547940ad326fdb7bf9dbfbdfea617c0b697b3d88171e64"
+        }
+      ],
+      "changes": [
+        {
+          "id": "W16M-T02",
+          "field": "connection",
+          "before": "全片同一缺口拉伸，不轉成凝膠用途或配方；立即重拉驗證內部確實付出耗能代價。",
+          "after": "跟著同一雙網絡材料系統，分開缺口耐拉、父網絡拉伸及重拉歷史三組證據；用重拉對照追問耗能代價，不稱同一試件或同一缺口實驗。",
+          "reason": "同步三組證據分框，不用同一缺口綁定未標缺口的父網絡與重拉對照。"
+        }
+      ],
+      "unchanged": "batch、所有問答、來源與五案秒數不變。"
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "review_id": "physics-reviews-life-20261101",
+  "reviewer": "pool_physics",
+  "created_on": "2026-11-01",
+  "status": "INDEPENDENT_CANDIDATE_REVIEW_WITH_RECOMMENDATIONS",
+  "reviewed_file": "docs/videos/so-thats-why/pool/batches/life-tech.json",
+  "reviewed_sha256": "af260bc07d013ec95bc64f15129886d4643f11207a82f81fb3e1edc551c56eef",
+  "coverage": {
+    "candidate_count": 324,
+    "candidate_fields_read": [
+      "id",
+      "question",
+      "answer_target",
+      "scope",
+      "source_ids",
+      "source_locator"
+    ],
+    "candidate_semantic_read": "所有 324 題逐題語義及適用範圍閱讀；不等於逐主張事實查核。",
+    "source_metadata_count": 59,
+    "source_pages_spot_read": 10,
+    "supplemental_research_abstracts_read": 1,
+    "physics_comparison_count": 295,
+    "legacy_title_comparison_count": 313,
+    "legacy_limit": "比對 refresh-20261101/catalog.json 的 313 個題名；未重讀全部歷史逐字稿或重新查核其來源。",
+    "original_batch_modified": false,
+    "limitation": "外站只抽讀下列指定範圍；沒有逐一重讀全部 59 頁，沒有觀看成效、實驗、劇本查核或製作核准。"
+  },
+  "merges": [
+    {
+      "duplicate_id": "L019",
+      "canonical_id": "P250",
+      "reason": "酵素是催化劑例子；兩題皆問降低活化障礙是否改變起終態能量差，沒有新增獨立核心答案。合併後保留生物來源與酵素例子。"
+    },
+    {
+      "duplicate_id": "L024",
+      "canonical_id": "P251",
+      "reason": "兩題皆靠參與中間步驟後再生的催化循環回答；L024 目前目標未增加酵素失活或特定循環的獨立機制。"
+    },
+    {
+      "duplicate_id": "L135",
+      "canonical_id": "P074",
+      "reason": "兩題皆區分單點壓力與驅動流動的壓差；血液例子沒有增加脈動、血管調節或其他不同答案。"
+    },
+    {
+      "duplicate_id": "L018",
+      "canonical_id": "L013",
+      "reason": "L018 的偽足包圍顆粒，是 L013 膜包覆大物體的具體展開；現有目標沒有細胞骨架動力機制，適合併成同一素材的圖解步驟。"
+    },
+    {
+      "duplicate_id": "L110",
+      "canonical_id": "L109",
+      "reason": "兩題均靠細菌絲擴展根原先無法接觸的礦物資源區回答。小孔隙是菌根協助吸收的同一例證，適合保留成同一素材的尺度對照。"
+    },
+    {
+      "duplicate_id": "L155",
+      "canonical_id": "L152",
+      "reason": "兩題目前都以腎小管重吸收回答；L155 沒有細分水與葡萄糖的運輸機制，列不同回收物不足以形成另一核心問題。"
+    },
+    {
+      "duplicate_id": "L179",
+      "canonical_id": "L176",
+      "reason": "兩題核心同為耐受氧氣不等於利用氧氣代謝；把兼性厭氧與耐氧厭氧的比較留在同一素材即可。"
+    },
+    {
+      "duplicate_id": "L183",
+      "canonical_id": "L182",
+      "reason": "酵母單細胞與黴菌絲狀對比已需解釋菌絲／菌絲體；只再問毛狀團塊的名稱，沒有足夠獨立追問。合併時保留菌絲連成網絡的結構層次。"
+    },
+    {
+      "duplicate_id": "L232",
+      "canonical_id": "L231",
+      "reason": "特殊符號如何保持資料意義，是百分比轉義的用途；兩題均依位元組轉義回答，宜合為語法、解碼與保留字元的一筆素材。"
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "L151",
+      "decision": "HOLD_UNTIL_REFRAMED_AND_SOURCED",
+      "reason": "題目以器官名稱製造反差，但 answer_target 只有名稱與功能分工，沒有解釋主要吸收的結構機制；目前 locator 是器官功能表，不能同時承擔名稱由來與吸收表面積的解說。",
+      "reentry_condition": "另補精確來源後，以小腸褶皺／絨毛／微絨毛如何增加吸收面積重寫，並檢查同批是否已有相同機制。"
+    }
+  ],
+  "revisions": [
+    {
+      "id": "L259",
+      "decision": "CLARIFY_BEFORE_SELECTION",
+      "suggested_question": "同一鐘點因日光節約時間出現兩次，帶 TZID 的行事曆時間預設指哪一次？",
+      "suggested_answer_target": "RFC 5545 對重複當地時間採第一次出現的時刻；若要表達另一個時刻，需另查可用表示與產品行為。",
+      "reason": "來源 §3.3.5 FORM #3 明確定義 first occurrence，原問法容易讓觀眾以為 TZID 自身提供任選第一或第二次的旗標。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "source_id": "LT-B03",
+      "candidate_ids": [
+        "L013",
+        "L014",
+        "L017",
+        "L018"
+      ],
+      "severity": "SCRIPT_DETAIL_CAUTION",
+      "reason": "OpenStax §5.4 的吞噬段落把 clathrin 包被敘述得過度普遍。題目所問膜包圍、溶小體與膜回收仍可保留，但不可直接延伸成所有吞噬都必須靠 clathrin 的主張。",
+      "supplemental_url": "https://pubmed.ncbi.nlm.nih.gov/12424246/",
+      "supplemental_read_scope": "Tse et al., J Biol Chem 2003，PubMed Abstract；只有摘要，非全文。",
+      "supplemental_summary": "該細胞與顆粒實驗區分吞噬和其他胞吞所依賴的機制，足以反駁把 clathrin 一概視為吞噬必要條件；不可把單一模型反向概括成所有吞噬都不需要它。"
+    }
+  ],
+  "retained_distinct": [
+    {
+      "ids": [
+        "L006",
+        "L001"
+      ],
+      "reason": "L001 是通透性與隔離；L006 是膜內外兩面的組成不對稱，來源有明確段落，應保留。"
+    },
+    {
+      "ids": [
+        "L111",
+        "L109"
+      ],
+      "reason": "外生／內生菌根是接觸構造比較，與菌絲擴大資源接觸區不同。"
+    },
+    {
+      "ids": [
+        "L010",
+        "L011"
+      ],
+      "reason": "共運輸的耦合方式與能量直接／間接投入可保留不同研究方向；寫成影片仍宜相鄰而不硬拆集。"
+    },
+    {
+      "ids": [
+        "L233",
+        "L234"
+      ],
+      "reason": "fragment 的定位用途與不隨 HTTP 請求傳送是不同操作層次。"
+    },
+    {
+      "ids": [
+        "L324",
+        "P145"
+      ],
+      "reason": "眼球調焦加入睫狀體與晶狀體的生理調節；不限於透鏡焦距原理。"
+    },
+    {
+      "ids": [
+        "L275",
+        "legacy:A65"
+      ],
+      "reason": "DEFLATE 無損回指結構與圖片有損壓縮不是同一核心機制；僅按 legacy 題名判斷。"
+    },
+    {
+      "ids": [
+        "L311",
+        "legacy:A20"
+      ],
+      "reason": "Unicode 等價碼點序列與跨平台 emoji 字形呈現不同；僅按 legacy 題名判斷。"
+    }
+  ],
+  "external_spot_checks": [
+    {
+      "source_id": "LT-B01",
+      "url": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+      "read_via": "web.run.open 正文節錄",
+      "scope": "Selective Permeability、Diffusion；膜兩面配置、非極性／帶電物質、擴散段落",
+      "candidate_ids": [
+        "L001",
+        "L002",
+        "L003",
+        "L006"
+      ],
+      "outcome": "抽讀支持題目前提與研究方向；L006 的膜不對稱並非無來源推想。"
+    },
+    {
+      "source_id": "LT-B03",
+      "url": "https://openstax.org/books/biology-2e/pages/5-4-bulk-transport",
+      "read_via": "web.run.open 正文節錄",
+      "scope": "Endocytosis、Phagocytosis、Pinocytosis、Receptor-mediated Endocytosis、膜回收",
+      "candidate_ids": [
+        "L013",
+        "L014",
+        "L015",
+        "L016",
+        "L017",
+        "L018"
+      ],
+      "outcome": "支持題級方向；細節有上述 clathrin 概括風險，L018 建議合併。"
+    },
+    {
+      "source_id": "LT-B04",
+      "url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+      "read_via": "web.run.open 正文節錄",
+      "scope": "Enzymes and Activation Energy、Active Sites、Induced Fit and Enzyme Function",
+      "candidate_ids": [
+        "L019",
+        "L020",
+        "L021",
+        "L022",
+        "L023",
+        "L024"
+      ],
+      "outcome": "支持各原理；L019/L024 與物理化學批的催化題同核心。"
+    },
+    {
+      "source_id": "LT-B19",
+      "url": "https://openstax.org/books/biology-2e/pages/31-3-nutritional-adaptations-of-plants",
+      "read_via": "web.run.open 正文節錄",
+      "scope": "根瘤固氮及 Mycorrhizae，含 depleted zone、細孔與外生／內生菌根",
+      "candidate_ids": [
+        "L106",
+        "L107",
+        "L109",
+        "L110",
+        "L111"
+      ],
+      "outcome": "來源直接含相應機制；L109/L110 合併屬編輯去重，不是前提錯誤。"
+    },
+    {
+      "source_id": "LT-B31",
+      "url": "https://openstax.org/books/microbiology/pages/9-2-oxygen-requirements-for-microbial-growth",
+      "read_via": "web.run.open / find 正文節錄",
+      "scope": "Oxygen Requirements of Microorganisms、Detoxification of Reactive Oxygen Species",
+      "candidate_ids": [
+        "L175",
+        "L176",
+        "L177",
+        "L178",
+        "L179",
+        "L180"
+      ],
+      "outcome": "支持氧需求、耐氧與氧利用的區分；不將培養操作、疾病例子或濃度數值列為已核內容。"
+    },
+    {
+      "source_id": "LT-T05",
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.txt",
+      "read_via": "web.run.find 回傳實際正文",
+      "scope": "§5.2.1.4–5、§5.2.2.4–7、§6",
+      "candidate_ids": [
+        "L217"
+      ],
+      "outcome": "no-store 並非完整隱私保證有明確支持；不把其他快取題宣稱為此輪逐節覆核。"
+    },
+    {
+      "source_id": "LT-T12",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.txt",
+      "read_via": "web.run.open / find 正文節錄",
+      "scope": "§3.3.5 的 floating、UTC、TZID 三種格式及重複當地時刻規則",
+      "candidate_ids": [
+        "L257",
+        "L259"
+      ],
+      "outcome": "支持表示差異；L259 應明確寫第一次出現。"
+    },
+    {
+      "source_id": "LT-T13",
+      "url": "https://www.rfc-editor.org/rfc/rfc3339.txt",
+      "read_via": "web.run.open 正文節錄",
+      "scope": "§4.1–4.4、§5.1–5.2",
+      "candidate_ids": [
+        "L260",
+        "L261",
+        "L262",
+        "L263",
+        "L264"
+      ],
+      "outcome": "支持時間偏移、排序前提與 RFC 3339 版本內 -00:00 的特殊意思；不推論所有產品都同樣處理。"
+    },
+    {
+      "source_id": "LT-T23",
+      "url": "https://www.unicode.org/reports/tr15/tr15-58.html",
+      "read_via": "web.run.open 正文節錄",
+      "scope": "版本/正式狀態、§1.1、§1.2",
+      "candidate_ids": [
+        "L311",
+        "L313",
+        "L314",
+        "L315"
+      ],
+      "outcome": "18.0.0/revision 58 標記為已核准穩定文件；支持等價序列、相容差異與分解組合。"
+    },
+    {
+      "source_id": "LT-T24",
+      "url": "https://www.unicode.org/reports/tr29/tr29-49.html",
+      "read_via": "web.run.open 正文節錄",
+      "scope": "版本/正式狀態、§1 Introduction；未逐讀字素分割規則表",
+      "candidate_ids": [
+        "L320"
+      ],
+      "outcome": "18.0.0/revision 49 及句點語境歧義有直接支持；不把編輯器刪除鍵等產品行為當成已驗。"
+    }
+  ],
+  "code_review": {
+    "files_read": [
+      "tools/video/so-thats-why/pool/core.mjs",
+      "tools/video/so-thats-why/pool/store.mjs",
+      "tools/video/so-thats-why/pool/cli.mjs",
+      "tools/video/so-thats-why/pool/render.mjs",
+      "tools/video/so-thats-why/pool/pool.test.mjs"
+    ],
+    "files_modified": [],
+    "test_command": "node --test tools/video/so-thats-why/pool/pool.test.mjs",
+    "latest_test_result": {
+      "passed": 7,
+      "failed": 1,
+      "reason": "唯一失敗為尚未生成 pool/pool.json 的 ENOENT；須由 root build 後完整重跑，不是全套通過。"
+    },
+    "findings": [
+      {
+        "id": "CODE-01",
+        "priority": 2,
+        "file": "tools/video/so-thats-why/pool/core.mjs",
+        "status": "FIXED_BY_ROOT_AND_RETESTED",
+        "issue": "大量相同 mechanism_key 被熱門 posting cap 跳過，未進 required pair。",
+        "reproduction": "45 筆相同 same_mechanism、不同單字題名原先 required=0。",
+        "verification": "root 改為完整 mechanism group 先產生 pair；新增回歸重跑通過，共 990 對。answer-only 比對回歸亦通過。"
+      },
+      {
+        "id": "CODE-02",
+        "priority": 2,
+        "file": "tools/video/so-thats-why/pool/store.mjs",
+        "status": "FIXED_BY_ROOT_AND_RETESTED",
+        "issue": "移出當期索引的候選 lookup 仍返回歷史 body 的 selected=true。",
+        "verification": "新測試重匯入不含原候選後 indexed_active=false、selected=false；source revisions 保留兩版亦通過。"
+      },
+      {
+        "id": "CODE-03",
+        "priority": 2,
+        "file": "tools/video/so-thats-why/pool/render.mjs",
+        "status": "FIXED_BY_ROOT_AND_RETESTED",
+        "issue": "章節秒數可為負數，只要總和等於目標時間仍通過。",
+        "verification": "[-30,210,210,210]／10 分鐘原先可通過，現在 validateThemes 拒絕；另有正整數與有限正值檢查。"
+      },
+      {
+        "id": "CODE-04",
+        "priority": 2,
+        "file": "tools/video/so-thats-why/pool/render.mjs",
+        "lines": [
+          8,
+          9,
+          88
+        ],
+        "status": "OPEN_AT_REVIEW",
+        "issue": "來源呈現只取同 URL 第一個非 legacy reading，HTML 沒有顯示該題 source_refs[].locator；SOURCES.md 也只列第一筆 reading。",
+        "impact": "同一頁有不同小節／不同批次閱讀時，使用者看不到題目精確來源範圍，甚至看見別題的閱讀範圍；JSON 雖保存資料，但主要搜尋介面沒有履行來源小節可查。",
+        "suggested_fix": "HTML 按該題 source_refs 顯示 locator，來源 reading 按 origin 適當匹配或明確列所有閱讀範圍；SOURCES.md 列出全部 readings。"
+      }
+    ]
+  },
+  "final_scope": "以上是獨立審閱建議，合併、暫緩與改題由 root 落在集中處置檔；本檔未改寫原批次，也不核准任何影片製作。"
+}

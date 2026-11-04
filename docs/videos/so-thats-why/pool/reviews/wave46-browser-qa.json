@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-03T01:35:57.995Z",
+  "result": "PASS",
+  "selected": 3483,
+  "index_html_sha256": "afbde4738da70bbc5ddd21362db5b091c69d9e05b2ff9fa81f16f92d22edc211",
+  "source_sample": {
+    "id": "S46-001",
+    "urls": [
+      "https://doi.org/10.1021/acs.jpclett.5c00050"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "selected aliases resolve with source locator; unselected historical merge alias remains absent from selected-only dashboard",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow; mobile search field >=350px and keyword + ID search + source expansion pass",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave46-desktop.png",
+    "wave46-source-desktop.png",
+    "wave46-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "已逐張開啟當期桌面總覽、S46-001展開卡與390像素手機截圖。3483計數、514片案與159別名清楚可讀，手機搜尋欄獨占一列且無水平溢出。來源網址位於截圖下方，由瀏覽器逐href斷言核實；未將未入鏡部分聲稱目讀。"
+}

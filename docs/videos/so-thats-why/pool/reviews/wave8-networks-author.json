@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "/root/pool_physics",
+  "status": "AUTHOR_LOCKED_AWAITING_INDEPENDENT_REVIEW",
+  "batch_id": "wave8-networks-20261101",
+  "counts": {
+    "raw_candidates": 17,
+    "sources": 16,
+    "sources_supporting_current_candidates": 14,
+    "sources_only_for_not_added": 2,
+    "not_added": 13,
+    "provisional_expected_retained": 16,
+    "retention_note": "原始17題保留；接受非作者I8013→I3039合併建議，預期16新增核心，中央尚由root整合。"
+  },
+  "locked_artifacts": [
+    {
+      "path": "docs/videos/so-thats-why/pool/batches/wave8-networks.json",
+      "sha256": "eb70cf6acf12bb10ada4be4fc35af3b890713e286e5c1e095ff8054e3e2915ba"
+    },
+    {
+      "path": "docs/videos/so-thats-why/pool/reviews/wave8-networks-themes.json",
+      "sha256": "50b235a765412a6c7e4b10593223164896ce44928e8c1067680a8bce966d1682"
+    }
+  ],
+  "baseline": {
+    "head": "5db394184",
+    "raw_count": 3017,
+    "selected_count": 2667,
+    "themes": 78,
+    "pool_sha256": "cb4501bbb3cabeb2d0ff4d004fdb19c61ecf1ac2f7bcc31da42063c38f43ffc9"
+  },
+  "dedup_scope": {
+    "method": "對全部3017raw的question/answer_target/scope/mechanism_key檢索；主檢索272命中並非全逐筆精讀。另完整讀95筆I3001–I3095四欄、TCP/QUIC/HTTP/DNS/媒體特定命中及L198–L230相關範圍，最後集中讀19個重試／同步／共享等關鍵詞命中與11個指定舊ID完整欄位。未重新查核全部舊來源。",
+    "primary_keyword_hits": 272,
+    "all_I3_records_read": 95,
+    "final_focused_hits_read": 19,
+    "keyword_artifact": ".cache/wave8-networks-old-hits.json",
+    "semantic_neighbours_status": "作者鎖前未有最終batch語意近鄰；待root生成後供非作者比較，不用分數自動合併。"
+  },
+  "near_pairs": [
+    {
+      "a": "I8001",
+      "b": "I8002",
+      "author_reason": "等多久才反應的估計器，與重傳後哪次傳送被確認的樣本歧義不同；同片按先後相接，不重複算平均。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8002",
+      "b": "L208",
+      "author_reason": "舊題依序號重建資料順序；新題資料順序已知仍無法決定是哪次傳送耗時，需區分傳送與位元組順序。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8002",
+      "b": "L209",
+      "author_reason": "舊題刪重複資料；新題收到確認後的計時樣本歸屬，不以去重換物件。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8003",
+      "b": "I8001",
+      "author_reason": "RTO等待界線與QUIC較後封包確認／遺失門檻、PTO探測的證據角色不同；仍需非作者判是否切太細。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8004",
+      "b": "L221",
+      "author_reason": "接收緩衝流控限制與路徑擁塞控制不同；此題具體讀NewReno增加／縮窗，不只說下載變快慢。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8006",
+      "b": "T4052",
+      "author_reason": "舊題解釋到達變動與積壓；新題指定最低sojourn時間作辨認持續隊列的觀察量及回授條件。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8007",
+      "b": "T4049",
+      "author_reason": "舊題多個可互替服務台共隊避免閒置；新題固定單一出口按流隔離並以位元組額度輪轉，服務限制不同。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8007",
+      "b": "I8006",
+      "author_reason": "FQ隔離及DRR服務順序，與CoDel的持續延遲觀察／控制不同，非單一AQM更換名稱。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8008",
+      "b": "L220",
+      "author_reason": "QUIC獨立排序沒有取消QPACK欄位表相依；新答案只取上層引用未到達資料造成條件性等待。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8010",
+      "b": "I3002",
+      "author_reason": "舊題本機快取未持久；新題副本已持久存WAL但尚未重播查詢可見，是不同完成階段。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8010",
+      "b": "I3005",
+      "author_reason": "舊題讀者快照終點，新題副本重播進度；scope保留即使重播完成，舊快照仍可能看不到。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8010",
+      "b": "I3017",
+      "author_reason": "每語句快照變動與跨機重播進度分開，不把read-committed當所有副本讀到最新的保證。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8011",
+      "b": "I3001",
+      "author_reason": "都有日誌，近義風險最高之一：舊題保留被覆寫舊頁以undo，新題多盤資料與校驗新舊失配及持久更新；交非作者裁定是否足夠新核心。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8012",
+      "b": "I8011",
+      "author_reason": "正常部分條帶更新的額外讀取成本，與中斷後資料／校驗失配不同；同一條帶模型相接。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8013",
+      "b": "I3033",
+      "author_reason": "同有共享內容；Git不可變內容定址與可變檔案寫時分離不完全相同，請非作者判是否只是共享原理延伸。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8013",
+      "b": "I3067",
+      "author_reason": "淺複製共享可變內層會互相影響；reflink寫時分離提供內容隔離，範圍與觀察相反且有特定分離機制。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8014",
+      "b": "I3012",
+      "author_reason": "資料庫空頁仍在檔案內供重用；稀疏空洞是底層未配置且定義讀零，不把檔案內閒置等同未占空間。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8015",
+      "b": "T4052",
+      "author_reason": "一般波動積壓已退I8005；此題只取共同失敗起點加相同退避保持相位相關，jitter破同步。若只畫成群到達無相位延續，應併舊題。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8015",
+      "b": "L301",
+      "author_reason": "冪等性處理重送副作用；jitter處理同時重試的時間相關，不保證請求數下降。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8016",
+      "b": "LEG-A58",
+      "author_reason": "舊題自動授時來源；新題四時間戳仍無法分解去回不對稱的估計偏差。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8017",
+      "b": "M5012",
+      "author_reason": "舊題同影片解碼／呈現依賴排序；新題將不同媒體時鐘尺映到同步參考時鐘。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8018",
+      "b": "L205",
+      "author_reason": "IPv6來源分段規則與可用大小的端到端探測不同；沉默不被當作一次確診MTU。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8020",
+      "b": "I8015",
+      "author_reason": "一題多層重試乘法改變總次數，一題共同起點／退避改變時點相關；不互代。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8020",
+      "b": "I3019",
+      "author_reason": "重試整交易需重讀判斷，與巢狀服務各層重試放大底層嘗試次數不同。",
+      "disposition": "REQUEST_NONAUTHOR_CORE_COMPARISON"
+    },
+    {
+      "a": "I8013",
+      "b": "I3039",
+      "author_reason": "非作者發現既有延後分離核心，作者接受合併；其他I3033/I3067比較不再用來證明新計。",
+      "disposition": "ACCEPT_NONAUTHOR_MERGE"
+    }
+  ],
+  "reading": {
+    "sources_used_or_documented": 16,
+    "scope": "16個source紀錄均實際讀列示官方正文小節；14支持當前候選、2僅支持退題。不是逐讀整份RFC、所有errata或每個網站全文，不是劇本逐主張查核。",
+    "types": "IETF/RFC Editor、PostgreSQL、Linux kernel、Btrfs、Linux man-pages、NTP Project原始技術文件；Amazon及Samsung技術原文。未採產品宣傳及效能保證。",
+    "transport_notes": "RFC以官方.txt讀指定段、tracked URL給同份.html；HTML公網urllib加stdlib HTMLParser或web.open，方法逐source保留。HTTP抓取快取在忽略.cache，只是本輪閱讀輔助。",
+    "failures": [
+      {
+        "url": "https://btrfs.readthedocs.io/en/latest/Reflink.html",
+        "result": "urllib403；改web.open正文成功，才採用。"
+      },
+      {
+        "url": "https://www.micron.com/content/dam/micron/global/public/products/white-paper/ssd-performance-and-reliability.pdf",
+        "result": "推測文件URL無法取得，不採其內容或當作支持。"
+      }
+    ],
+    "read_but_not_used": [
+      {
+        "url": "https://semiconductor.samsung.com/resources/white-paper/Samsung_SSD_White_Paper.pdf",
+        "scope": "2013白皮書Wear Leveling約p18段及GC/OP相關段；只讀到均攤寫入，未能支持靜態冷資料搬移，I8028不加入。未採當期OS支援／性能說法。"
+      }
+    ],
+    "retrieved_not_read": [
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc7567.txt",
+        "result": "下載作備查但未讀正文，不計支持來源。"
+      }
+    ],
+    "source_cautions": "各source.limitations記版本與未讀範圍；NTP舊部署數、閏秒頻率、Autokey與Samsung推銷數字不採。僅連結、原創疑問與短研究摘要，不複製圖表／習題／長文。"
+  },
+  "author_reductions": [
+    {
+      "id": "I8005",
+      "existing_id": "T4052",
+      "reason": "落draft18題後讀回舊題完整條件，發現同平均成群到達核心及視覺相同，自退not_added；題組同步去掉pacing70秒。"
+    },
+    {
+      "id": "I8013",
+      "reason": "瞬間複製改為很快複製，保留條件與不承諾實測耗時的範圍。"
+    }
+  ],
+  "not_added_summary": "排序、去重、ABR、快取耐久、消費者pin WAL、打包表頭成本與一般突發積壓不重計；If-Match與SSD GC作既有核心例子；靜態磨耗搬移未讀到足夠機制，普遍永不丟資料前提剔除。逐筆保留原ID、現有ID與理由。",
+  "excluded": [],
+  "merges": [
+    {
+      "duplicate_id": "I8013",
+      "canonical_id": "I3039",
+      "reason": "原核心已含先共享、後續修改才新增物件；reflink的檔案層例子不足另計，保留來源及變體。"
+    }
+  ],
+  "decision_boundary": "作者只把未入raw的建議放not_added；本檔不代表中央merge或排除判決，不修改舊庫。",
+  "checks": {
+    "json_parse": true,
+    "utf8_lf_no_bom": true,
+    "ids_unique_and_disjoint_from_not_added": true,
+    "source_id_references": true,
+    "all_candidates_have_scope_locator_editorial": true,
+    "chapter_and_beat_arithmetic": "PASS",
+    "beats_max_seconds": 40,
+    "per_core_cumulative_cap": "PASS",
+    "validateThemes": "PASS revised isolated fixture with author candidates plus existing I3039; canonical core cap60 checked and variant I8013 explicitly named. Not central selection.",
+    "node_runtime": "v24.13.0",
+    "production": "NOT_STARTED",
+    "paid_media": "NONE",
+    "script_fact_check": "NOT_DONE",
+    "trial_read": "NOT_DONE"
+  },
+  "themes": [
+    {
+      "theme_id": "W8I-T01",
+      "total_seconds": 255,
+      "core_seconds": {
+        "I8001": 80,
+        "I8002": 95,
+        "I8003": 80
+      },
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    },
+    {
+      "theme_id": "W8I-T02",
+      "total_seconds": 185,
+      "core_seconds": {
+        "I8006": 90,
+        "I8007": 95
+      },
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    },
+    {
+      "theme_id": "W8I-T03",
+      "total_seconds": 165,
+      "core_seconds": {
+        "I8012": 75,
+        "I8011": 90
+      },
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    },
+    {
+      "theme_id": "W8I-T04",
+      "total_seconds": 130,
+      "core_seconds": {
+        "I3039": 60,
+        "I8014": 70
+      },
+      "status": "ARITHMETIC_PASS_NOT_TRIAL_READ"
+    }
+  ],
+  "required_next": "非作者逐題／近義／來源風險／片長覆核；需補製圖與試讀後才可成稿。任一核心被併入舊題時須重新核該素材範圍與時長，不能僅換ID保留整片秒數。",
+  "revisions": [
+    {
+      "reason": "Root授權接受life獨立覆核；I8013併I3039、T04明示Btrfs變體60+70=130秒，T01尾回顧30→10秒總255秒。",
+      "before_sha256": {
+        "batches/wave8-networks.json": "149972de0eb786a5d00e128fd4f521f7f7566d760d4f50c64715b0809adfb3ae",
+        "reviews/wave8-networks-themes.json": "3c43472dda66e8c44b4048631b4675a10f6dfcd37fa0da738d903806f9f43e62",
+        "reviews/wave8-networks-author.json": "9448bdce6d94268d5b3367f0823bf0e4120d6fd81673eae65680a808214a9e9e"
+      },
+      "after_artifact_sha256": {
+        "batches/wave8-networks.json": "eb70cf6acf12bb10ada4be4fc35af3b890713e286e5c1e095ff8054e3e2915ba",
+        "reviews/wave8-networks-themes.json": "50b235a765412a6c7e4b10593223164896ce44928e8c1067680a8bce966d1682"
+      },
+      "required_readback": "Non-author targeted recheck pending; source research and raw IDs unchanged."
+    }
+  ]
+}

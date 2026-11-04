@@ -1,0 +1,158 @@
+{
+  "review_id": "wave11-g108-independent-review",
+  "reviewer": "pool_physics",
+  "reviewed_on": "2026-11-01",
+  "status": "PASS_WRITTEN_TREATMENT_AND_SOURCE_SCOPE_ONLY",
+  "production_ready": false,
+  "reviewed_files": [
+    {
+      "file": "treatments/G108/treatment.json",
+      "sha256": "1dec044a49b00832cdf8e249905d75e482bda6eaa4d6fe05d082083e8b364be2"
+    },
+    {
+      "file": "treatments/G108/narration-draft.json",
+      "sha256": "1baa5f5b92ccc7d01e6c8f54d2644478da4417be73cd4860a506df01a1563fbb"
+    },
+    {
+      "file": "treatments/G108/demo.html",
+      "sha256": "0b53f41e52e93502cd408c90acb8ee351352eec8de803d0b3a58b60e61f139f4"
+    },
+    {
+      "file": "treatments/G108/demo.js",
+      "sha256": "b0bde7bcfcf26a1321d605dfbda959dce83c5bd7acf3a27016bd491ac0fe1096"
+    },
+    {
+      "file": "reviews/wave11-g108-theme.json",
+      "sha256": "9f9090954de4169014c677838173c06387d2385acc945aadc69c6f1149999e95"
+    },
+    {
+      "file": "reviews/wave11-g108-arithmetic.json",
+      "sha256": "0ca6e821c7e5bfc1909a6b1fd040c6cac00bbbcb41e568e68f06ba0641742487"
+    },
+    {
+      "file": "reviews/wave11-g108-demo.json",
+      "sha256": "d96aa5dddecab15b8a539760f8da029a720b73091e259c6f108e9e7995b3123d"
+    },
+    {
+      "file": "reviews/wave11-g108-author.json",
+      "sha256": "a15c65d7d63f89e6d752b22b2c606161a746f9f44c63d35928790b31a615eff1"
+    }
+  ],
+  "reviewed_candidate_ids": [
+    "M10001"
+  ],
+  "new_core_count": 0,
+  "scope": "非作者逐讀 treatment、四段完整旁白、題案、HTML/JS及作者算術/介面收據，獨立重讀來源指定正文並以有理數重算三預設。不是盲讀、實際試讀、觀眾測試或成片驗收。",
+  "source_reads": [
+    {
+      "url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+      "read_via": "當日 web.open 返回正文；非作者獨立閱讀",
+      "reading_scope": "Confounding（頁面文字約L22–33）；Simpson’s Paradox（L51–87）；Experiments and Observational Studies開頭（L89–96）。",
+      "support": "分組比率與總體加權可呈不同方向；權重由組別樣本數決定；控制共同組成只是所選比較，不能從觀察表直接推出因果。",
+      "limitations": "未讀頁內影片或互動習題；未使用原頁招生數字；未把本片原創答題表當來源實測資料。"
+    }
+  ],
+  "line_reviews": [
+    {
+      "beat": "b1",
+      "seconds": 15,
+      "decision": "retain",
+      "reason": "虛構標示在第一句；四個設定比率下組內A較高而總體B較高確實成立。先隱去題數構成可解的反差。"
+    },
+    {
+      "beat": "b2",
+      "seconds": 20,
+      "decision": "retain",
+      "reason": "把題數放回同一張表，10/100與100/10的反向組成是必要新增資訊；兩組總題數同為110。"
+    },
+    {
+      "beat": "b3",
+      "seconds": 20,
+      "decision": "retain",
+      "reason": "答對數先合計再除分母，29/110與81/110重算正確。固定四格比率而組成不同，不暗示同一群人的能力突然改變。"
+    },
+    {
+      "beat": "b4",
+      "seconds": 25,
+      "decision": "retain",
+      "reason": "固定四個設定率，兩邊同50/60重算為57/110與46/110；旁白明說沒有真的換試卷。末句因果限制可保留，不擴寫其他悖論或成效推論。"
+    }
+  ],
+  "independent_arithmetic": {
+    "method": "Python fractions.Fraction，另從HTML/JS靜態讀模型設定與呈現。未宣稱重新執行作者144組UI/算術測試。",
+    "cases": [
+      {
+        "preset": "reversal",
+        "a_easy": 10,
+        "b_easy": 100,
+        "a_correct": 29,
+        "b_correct": 81,
+        "denominator": 110
+      },
+      {
+        "preset": "matched",
+        "a_easy": 50,
+        "b_easy": 50,
+        "a_correct": 57,
+        "b_correct": 46,
+        "denominator": 110
+      },
+      {
+        "preset": "exchanged",
+        "a_easy": 100,
+        "b_easy": 10,
+        "a_correct": 92,
+        "b_correct": 18,
+        "denominator": 110
+      }
+    ],
+    "result": "PASS"
+  },
+  "visual_review": {
+    "method": "非作者讀HTML/JS及作者保存的兩張畫面；沒有重新啟動瀏覽器操作。",
+    "screenshots": [
+      {
+        "file": ".cache/wave11-g108-desktop.png",
+        "sha256": "45836e314e845cf45d008d9248f4962f0f3e40ea90b142351b3224d7e7331aa9",
+        "observation": "原始反轉表四格率與分母、合計條圖一致；同尺條圖並排。"
+      },
+      {
+        "file": ".cache/wave11-g108-mobile.png",
+        "sha256": "6e9623efcb2223c676b6bb5e08459986cbc1ae2eb51a2c14678a8cc32ffb0d18",
+        "observation": "共同組成預設57/110與46/110，窄版上下排列，虛構/假設重算標示可讀。"
+      }
+    ],
+    "limitations": "兩張靜態圖不能取代鍵盤、各預設與所有視窗的實際互動驗收；作者既有測試維持作者證據。"
+  },
+  "timing_review": {
+    "proposed_seconds": 80,
+    "chapters_seconds": [
+      35,
+      45
+    ],
+    "beat_seconds": [
+      15,
+      20,
+      20,
+      25
+    ],
+    "one_core_total_seconds": 80,
+    "core_cap": 110,
+    "spoken_characters": 259,
+    "decision": "accept_planning_budget",
+    "reason": "四次推進依序是反差、分母、加權計算、共同組成與推論界線。80秒仍容納讀表，不靠史話或停格補長；110秒縮80合理。文字估時不是配音實測。",
+    "drop_condition": "若實際旁白與換表在較短時間已清楚完成，繼續縮，不為滿80秒延長；若兩張表或假設重算被誤認為真實換卷實驗，重畫後再審。"
+  },
+  "required_corrections": [],
+  "remaining_limitations": [
+    "未實際試讀或合成音訊，80秒為預算。",
+    "沒有驗證觀眾能否追蹤所有分母；非盲評或觀眾接受度。",
+    "作者UI功能證據未由本代理全面重跑；本代理靜態檢查與兩圖讀回未發現阻擋。"
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": []
+  },
+  "conclusion": "可採這份80秒文字與原創數值小樣作下一步試讀基礎；沒有剩餘必改，並非製作或發布核准。"
+}

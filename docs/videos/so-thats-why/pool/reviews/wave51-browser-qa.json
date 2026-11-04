@@ -1,0 +1,32 @@
+{
+ "tested_on": "2026-11-03T06:53:10.822Z",
+ "result": "PASS",
+ "selected": 3558,
+ "index_html_sha256": "5b3b3541ae30bdd128c23fcc1ffe349c93b80a92532f2e9e7cef85f626b2698a",
+ "checks": [
+  "計數3558、16個新片案G560–G575篩選各對應1題",
+  "ID搜尋P51-001；L51-005導向L51-004",
+  "S51-002、H51-003、L51-002、P51-004展開後來源href逐一斷言",
+  "1440×1000桌面與390×844手機；手機無水平溢出、搜尋欄362px、關鍵字「樹蛙」命中",
+  "無頁面錯誤"
+ ],
+ "screenshots": [
+  {
+   "file": ".cache/wave51-desktop.png",
+   "sha256": "6709abc16ea5ca51835e76680303ebdc7e379fa8556eb57de6a343580ce835e4"
+  },
+  {
+   "file": ".cache/wave51-source-desktop.png",
+   "sha256": "b8617b742c57e45b3e1d295101ee6a8e658b704125797f3ce893c777533f958f"
+  },
+  {
+   "file": ".cache/wave51-mobile.png",
+   "sha256": "2cc4a5ffdc0002804a0e30c37f30d3b228e94a1a72d70a38ce0b4c8fe4d5c939"
+  }
+ ],
+ "visual_inspection": "root開啟S51-002展開卡桌面截圖與手機截圖目讀：計數、片案、來源可讀，手機無溢出。",
+ "browser": {
+  "engine": "Playwright Chromium（容器預裝）",
+  "mode": "headless"
+ }
+}

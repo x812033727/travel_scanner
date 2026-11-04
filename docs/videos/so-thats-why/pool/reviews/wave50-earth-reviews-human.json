@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+  "author": "/root",
+  "reviewer": "/root/science_sources",
+  "reviewed_candidate_ids": [
+    "H50-001"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave50-human.json",
+      "sha256": "4718f154ec93e6d04026fb443e145d2d89361080b3088ed57647c98d9284f444"
+    },
+    {
+      "file": "reviews/wave50-human-themes.json",
+      "sha256": "ee56feed3ad8a964e2744fec9a91ae33917db939ef867611f4fd4d8c45447886"
+    },
+    {
+      "file": "reviews/wave50-human-author.json",
+      "sha256": "0d9cf2c22aa711a97f8e4fa613fab07d36e5556719f80fd5eb1c941aa3ce0dc2"
+    }
+  ],
+  "accepted_theme_proposal_ids": [
+    "W50H-T01"
+  ],
+  "timing_checks": [
+    {
+      "id": "W50H-T01",
+      "body_seconds": 68,
+      "chapter_seconds": [
+        27,
+        41
+      ],
+      "core_totals": {
+        "H50-001": 68
+      },
+      "caps": {
+        "H50-001": 80
+      },
+      "beats_at_most_45": true,
+      "range_not_above_body": true
+    }
+  ],
+  "remaining_blockers": [],
+  "final_common_readback": {
+    "draft_file": ".cache/draft.json",
+    "draft_sha256": "45307969c3e2d3151bfaf71d9eeef016d33d52659e9ec4674879b679a936c3d3",
+    "raw_records": 3931,
+    "neighbours_file": ".cache/wave50-human-neighbours.json",
+    "neighbours_sha256": "72d24c17cf8c5d99504915e41b3c3e4e3bf1e57e69b2fc0cb09b869331ef7b13",
+    "candidate_fields_match_final_batch": true,
+    "author_written_files_match": true,
+    "rows": [
+      {
+        "id": "H50-001",
+        "neighbour_ids": [
+          "X34-002",
+          "R30002",
+          "H3020",
+          "R30003",
+          "M2051"
+        ],
+        "all_five_full_question_answer_scope_read": true
+      }
+    ],
+    "changed_rows": [
+      {
+        "id": "H50-001",
+        "change": "末版移出R30006、加入R30003，其餘重排；R30003原在作者近對，末版完整問答/範圍再讀。"
+      }
+    ]
+  },
+  "not_added_readback": {
+    "ids": [
+      "H50-NA001",
+      "H50-NA002",
+      "H50-NA003",
+      "H50-NA004",
+      "H50-NA005",
+      "H50-NA006",
+      "H50-NA007"
+    ],
+    "count": 7,
+    "scope": "逐條讀問法、理由、重入條件與來源閱讀限制；existing_ids可回到舊raw或歷史NA。不重開未採用來源，不使退題自動復活。"
+  },
+  "limits": [
+    "題級來源與紙上編輯覆核，不是完整逐字稿、製作或發布核准。",
+    "近鄰分數僅協助找候選，非重複率或全庫無漏題證明。",
+    "原圖只供查證；未以本收據授權商用原圖。",
+    "本審閱者未產生或播放音訊；計時只核root的樣稿文字、讀值檔及WAV雜湊/標頭，不稱真人或觀眾測試。"
+  ],
+  "scope": "非作者逐讀1候選、6作者近對、初末5有向top5、7未收與1片案；單一原研究PDF指定正文及2原圖目讀，未重查NA-only文獻。",
+  "candidate_review": [
+    {
+      "id": "H50-001",
+      "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+      "decision": "retain",
+      "reason": "先記偏好選擇再暗中替換交付內容，三種察覺判準及配對相似程度形成可見控制；不同於事前偏好排序或單純色彩期待。保留行為結果與條件，不指定唯一心理機制。",
+      "scope_kept": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。",
+      "source_ids": [
+        "H50-S001"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "H50-001",
+        "b": "R42010",
+        "reason": "舊操弄酒色觀察氣味形容詞；新先記偏好選擇再替換取到的樣本，並觀察察覺判準。"
+      },
+      {
+        "a": "H50-001",
+        "b": "P14006",
+        "reason": "閃塊打斷視覺場景比較與已選樣本交付不一致不同；不把所有漏察覺當同一機制。"
+      },
+      {
+        "a": "H50-001",
+        "b": "C2004",
+        "reason": "舊專心計數時漏看另物；新已經選定目標並再品嚐，操弄結果與先前選擇的對應。"
+      },
+      {
+        "a": "H50-001",
+        "b": "C2016",
+        "reason": "舊以事後提問改變回憶，新直接替換選擇後的樣本；不由本實驗唯一裁定記憶機制。"
+      },
+      {
+        "a": "H50-001",
+        "b": "C2017",
+        "reason": "舊內容/來源歸屬差別；新有記錄的選擇與被替換實物可以直接核對。"
+      },
+      {
+        "a": "H50-001",
+        "b": "R30003",
+        "reason": "舊新增劣勢選項改變選取比例；新原二選一完成後交付反向樣品。"
+      },
+      {
+        "a": "H50-001",
+        "b": "R30002",
+        "reason": "海報前後排名/選擇分組揭示潛在偏好，與先記實際選擇後偷換交付結果的行為控制不同。"
+      }
+    ]
+  },
+  "source_readings": [
+    {
+      "source_id": "H50-S001",
+      "url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Hall-et-al.-2010-Magic-at-the-Marketplace-Choice-Blindness-for-the-Taste-of-Jam-and-the-Smell-of-Tea.pdf",
+      "doi": "10.1016/j.cognition.2010.06.010",
+      "version": "2010正式刊本；作者實驗室PDF含一頁封面，正文54–61頁",
+      "read_via": "當日web.open成功回傳Lund作者實驗室final-published PDF；指定UA另取HTTP200有效PDF，位元組SHA與作者副本相同。",
+      "reading_scope": "PDF p1出版身份、p3圖1與前文情境、pp4–5 Methods、p6 Results、pp6–8 Discussion；未完整讀p2導言或p9參考文獻，未追讀引用研究。",
+      "author_cache_readback": {
+        "file": ".cache/wave50-human-choice.pdf",
+        "sha256": "21efddd4ee9c1686f95679e179adb5eac7c5863d74f80dece1aeb00d844f16cc",
+        "text_file": ".cache/wave50-human-choice.txt",
+        "text_sha256": "d1db3e95be9302875fe04351a5a682432c843f7a0cb784632f55632e76a6f3a1"
+      },
+      "fresh_retrieval": {
+        "returned_url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Hall-et-al.-2010-Magic-at-the-Marketplace-Choice-Blindness-for-the-Taste-of-Jam-and-the-Smell-of-Tea.pdf",
+        "http_status": 200,
+        "file": ".cache/wave50-earth-review-human.pdf",
+        "sha256": "21efddd4ee9c1686f95679e179adb5eac7c5863d74f80dece1aeb00d844f16cc",
+        "same_as_author_raw": true
+      },
+      "supported_controls": [
+        "180人參與，3錄音問題排除；兩試次各為果醬品嚐/茶葉嗅聞，一操弄一對照。",
+        "雙頭罐在第一次取樣後、討論評分時先翻面；最後選擇後重取樣才拿到未選款，不畫成選完才翻罐。",
+        "即時、回溯與感官變化三標準合計約三分之一；即時本身約14%，兩者不混稱。",
+        "最不相似配對對最相似配對較易察覺；不是每一配對皆有顯著階梯差。"
+      ],
+      "limits": "單一瑞典超市任務，未唯一區分特徵配對、命名、注意或記憶。未察覺不是沒有味覺或說謊；主觀易辨評分不是獨立盲辨測驗。茶贈品效果不能推成全部人因禮物更易受騙。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "file": ".cache/wave50-human-choice-page3.png",
+      "sha256": "b06a5f2842308d3a7e0e815ec79c5e8e70037fde7ae0e62b7d1e3716ae22a9ac",
+      "source_id": "H50-S001",
+      "read_scope": "Fig1 A–F雙頭罐取樣/翻轉/選擇/再取樣次序；兩罐各自翻面，非事後換標籤。"
+    },
+    {
+      "file": ".cache/wave50-human-choice-page6.png",
+      "sha256": "49ddae217146187a08388f62d7d890b60d67fb0ba9d6ebd8ed3ce64082176377",
+      "source_id": "H50-S001",
+      "read_scope": "Fig2三種察覺類別堆疊，三果醬/三茶配對與相似條件；整柱不可稱全是立刻指出。"
+    }
+  ],
+  "retrieval_failures": [],
+  "source_identity_readback": {
+    "relationship": "Lund實驗室公開PDF、期刊DOI與書目是同一2010正式研究；不是多份獨立佐證。",
+    "not_adopted_literature": "NA004聲音回聽2014/2015文獻未由本審閱者實讀，不計入來源覆核；其他未取得正文方向亦未復活。"
+  },
+  "theme_review": [
+    {
+      "id": "W50H-T01",
+      "title": "這是我選的果醬？翻轉罐子的實驗",
+      "decision": "accept",
+      "reason": "雙頭罐如何讓選擇與後續樣本分離→三種察覺定義→配對相似度控制；沒有泛化偏誤清單。27/41秒對應樣稿段0與段1+2。",
+      "drop_if_read": "若不能讓雙頭罐的方向與取樣位置一眼看懂，撤案；不用受試者尷尬反應拖長。",
+      "production_handoff": "圖應明示翻面發生於初嚐後討論評分時、最後選擇前；約三分之一要與三種判準同框，不能標成即時察覺率。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "HUMAN50-01",
+      "target": "H50-001 question",
+      "finding": "原問為什麼仍未發現容易承諾唯一心理機制，本文不能在多解釋間唯一裁決。",
+      "resolution": "最後題名改大家都能立刻發現嗎；答案與scope清楚保留三種判準合計與任務範圍。",
+      "status": "RESOLVED"
+    }
+  ],
+  "targeted_readback": {
+    "initial_batch_sha256": "c55cb243655a349e3399095428ed16bc41dc90ff821a3c1a020900d95ec16448",
+    "initial_themes_sha256": "978fbb147be1f020be478a6743f8ce04b436a648ae9fad9443a330efba3b96cb",
+    "readback": "最後問句/近對快照同步，正文機制不擴寫；75→68由實際連讀量時收短，27+41包含開場與比較，不以空白延長。",
+    "initial_author_sha_not_retained": true
+  },
+  "initial_retrieval_readback": {
+    "draft_sha256": "94ea6ce500c4804b2ee9f87ed037abeae1bb2a501dd8c9d31f5b223629131ed4",
+    "rows": [
+      {
+        "id": "H50-001",
+        "neighbour_ids": [
+          "R30002",
+          "X34-002",
+          "H3020",
+          "R30006",
+          "M2051"
+        ]
+      }
+    ],
+    "evidence_limit": "首輪完整內容已讀；沒有保留首輪近鄰檔SHA，不把後來複製的末版檔冒稱首輪證據。"
+  },
+  "retrieval_pair_readback": [
+    {
+      "a": "H50-001",
+      "b": "X34-002",
+      "decision": "distinct",
+      "reason": "化學量測咖啡真偽，不是人對已選樣本被換的察覺，屬語詞近鄰。",
+      "neighbour_scope_read": "限烘焙豆、文中30份阿拉比卡與特定測法。部分阿拉比卡的基線較高，且峰含兩種相關物；不能從未知樣品面積精確讀出通用摻量。"
+    },
+    {
+      "a": "H50-001",
+      "b": "R30002",
+      "decision": "distinct",
+      "reason": "海報前後排名/選擇分組揭示潛在偏好，與先記實際選擇後偷換交付結果的行為控制不同。",
+      "neighbour_scope_read": "限原研究美術複製畫的相對排名。比較的是關鍵那一次選擇前後；不能據此推論所有選擇都不影響喜好。"
+    },
+    {
+      "a": "H50-001",
+      "b": "H3020",
+      "decision": "distinct",
+      "reason": "共聚物反應性/組成機制，與偏好選擇結果核對無共用因果。",
+      "neighbour_scope_read": "不推算未提供的反應比數值。"
+    },
+    {
+      "a": "H50-001",
+      "b": "R30003",
+      "decision": "distinct",
+      "reason": "舊新增劣勢選項改變選取比例；新原二選一完成後交付反向樣品。",
+      "neighbour_scope_read": "限三選項、兩個可比較的屬性，用不同條件的選取比例判讀。表3並非每格都增加，照片或口味也可能讓人偏好看似較差的款式。"
+    },
+    {
+      "a": "H50-001",
+      "b": "M2051",
+      "decision": "distinct",
+      "reason": "實驗設計組合覆蓋，與換樣後察覺的特定實驗結果不同。",
+      "neighbour_scope_read": "不能用複製既有素材的組合計數冒充知識數。"
+    }
+  ],
+  "sample_readback": {
+    "theme_id": "W50H-T01",
+    "file": ".cache/w50-sample-human.json",
+    "sha256": "9f08352441ca1aaf478b5d855fba2aa7ce19ee64d427260c376b0d789cbdc95c",
+    "read_receipt": {
+      "file": ".cache/wave50-human-read.json",
+      "sha256": "8bf171e63ecba9d3790247c1aa6259f38edf3b5b25a0fce173c8d65c4ae509d7"
+    },
+    "reviewer_header_readback": {
+      "file": ".cache/wave50-earth-human-wav-readback.json",
+      "sha256": "c3f1d80c83f944d7c27316b9f5c612ff30cf254d7916f6212d885649387b78d9"
+    },
+    "paragraph_to_chapter": [
+      [
+        0
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "paragraph_seconds": [
+      21.2392743764,
+      18.4002721088,
+      17.1638548753
+    ],
+    "continuous_seconds": 56.8044444444,
+    "chapter_seconds": [
+      27,
+      41
+    ],
+    "sample_text_read": true,
+    "four_wav_hashes_and_headers_verified": true,
+    "reviewer_generated_or_played_audio": false
+  }
+}

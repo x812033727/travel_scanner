@@ -1,0 +1,613 @@
+{
+  "tested_on": "2026-11-01T16:04:17.847Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3287,
+    "canonical_questions": 3150,
+    "eligible_candidates": 2980,
+    "selected_candidates": 2921,
+    "alias_records": 137,
+    "historical_records": 313,
+    "source_urls": 4238,
+    "current_research_source_urls": 1279,
+    "selected_source_urls": 2466,
+    "new_suggestions_not_added": 712,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 159,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2897",
+    "carried": 2896,
+    "added": 25,
+    "changed_raw_ids": [],
+    "removed_ids": [
+      "E2049"
+    ]
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "b18e4aec49950cca7443c61d04cdf93b037dcc86d8acd7e4f4105cb1c7bdd7c8",
+    "writes": 6437,
+    "selected": 2921
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "b18e4aec49950cca7443c61d04cdf93b037dcc86d8acd7e4f4105cb1c7bdd7c8",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "E2049",
+      "resolved": "E2003"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4336,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 5259.7102,
+    "index_ms": 1999.5169000000005,
+    "unchanged_index_ms": 128.90830000000096,
+    "searches": [
+      {
+        "query": "訊號",
+        "returned": 30,
+        "milliseconds": 2.166000000001077
+      },
+      {
+        "query": "摩擦",
+        "returned": 30,
+        "milliseconds": 3.9707999999991443
+      },
+      {
+        "query": "視覺",
+        "returned": 14,
+        "milliseconds": 5.672500000000582
+      }
+    ],
+    "rss_bytes": 576696320,
+    "sqlite_bytes": 47849472
+  },
+  "dedup_audit": {
+    "selection": "Every final wave14 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "46736647ed691eecba8ad9c67c7b00c846e9511ce81b31d64fd08bafc7c31ee3",
+    "records": 3287,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.329
+  },
+  "hashes": {
+    "pool.json": "46736647ed691eecba8ad9c67c7b00c846e9511ce81b31d64fd08bafc7c31ee3",
+    "themes.json": "81192e8de4311ddc616443b8d420a76e79ce9c5f55b39fec7800ab51537c587c",
+    "manifest.json": "7fdb907f7645d30bbd5d43323f57b174d8b62d775985f69f41574cc83f36c732",
+    "index.html": "fa87ba9b91fff3796e9e5821d1f2ab7bbf1e16c331b91bb3e7f793012893c9ee",
+    "batches/wave14-animal-signals.json": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed",
+    "batches/wave14-friction.json": "e597071b1f486cca9860fe1ffb8bd55d2ea38c452305c3ff14613777008023ab",
+    "batches/wave14-perception.json": "de3b0612607512e3afe87676e3a93591d85d4989e0f400ee09532cc7c2e8d071"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3262,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 2896,
+    "old_selected_merged_into_retained": [
+      "E2049"
+    ],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 147,
+    "changed_old_canonical_ids": [
+      "E2003"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "old_pair_audit": {
+    "selection": "Six highest-scoring selected pairs not yet explicitly marked distinct in frozen wave13 top10; purposive retrieval sample, not precision or recall.",
+    "judged": 6,
+    "merges": [
+      {
+        "duplicate_id": "E2049",
+        "canonical_id": "E2003",
+        "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。"
+      }
+    ],
+    "review": {
+      "file": "reviews/wave14-old-pair-integration.json",
+      "sha256": "02a998c6833eeb84af041b21d2ec50cef432dce01c206368ed17e1e7c4212b8e"
+    }
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4209,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://www.nature.com/articles/ncomms10986",
+        "source_id": "SRC-1865d702f9e2c024",
+        "candidate_ids": [
+          "A14001"
+        ],
+        "theme_ids": [
+          "G148"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5816198/",
+        "source_id": "SRC-b0ea7256b773ca4f",
+        "candidate_ids": [
+          "A14002"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1472465/",
+        "source_id": "SRC-3feae8249c8d44d1",
+        "candidate_ids": [
+          "A14003"
+        ],
+        "theme_ids": [
+          "G149"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3740840/",
+        "source_id": "SRC-a3f44976dfd2dba3",
+        "candidate_ids": [
+          "A14003"
+        ],
+        "theme_ids": [
+          "G149"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1242/jeb.056101",
+        "source_id": "SRC-e9781cc29179563c",
+        "candidate_ids": [
+          "A14004"
+        ],
+        "theme_ids": [
+          "G151"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/439153a",
+        "source_id": "SRC-cee48911c1aada50",
+        "candidate_ids": [
+          "A14005"
+        ],
+        "theme_ids": [
+          "G150"
+        ]
+      },
+      {
+        "url": "https://www.bristol.ac.uk/news/2006/879.html",
+        "source_id": "SRC-6782732337803505",
+        "candidate_ids": [
+          "A14005"
+        ],
+        "theme_ids": [
+          "G150"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5687857/",
+        "source_id": "SRC-bf00d18abad4d95a",
+        "candidate_ids": [
+          "A14006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11627086/",
+        "source_id": "SRC-3673335e7595ad42",
+        "candidate_ids": [
+          "A14006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://jlupub.ub.uni-giessen.de/server/api/core/bitstreams/616d2c43-608e-48a6-b719-93ee3c972693/content",
+        "source_id": "SRC-328707ef63e67a81",
+        "candidate_ids": [
+          "F14001"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/1405.4953",
+        "source_id": "SRC-a1f81a545ebf37dc",
+        "candidate_ids": [
+          "F14002"
+        ],
+        "theme_ids": [
+          "G153"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1104.3320",
+        "source_id": "SRC-cb5d318be7bdb9e2",
+        "candidate_ids": [
+          "F14003"
+        ],
+        "theme_ids": [
+          "G152"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/ncomms11816.pdf",
+        "source_id": "SRC-211e4a1d0f798af3",
+        "candidate_ids": [
+          "F14004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2016-12.pdf",
+        "source_id": "SRC-1b35c46b34fd66fc",
+        "candidate_ids": [
+          "F14005"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/1807.07502",
+        "source_id": "SRC-a90483168ef0526e",
+        "candidate_ids": [
+          "F14006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/2011.10774",
+        "source_id": "SRC-78920268810138f2",
+        "candidate_ids": [
+          "F14007"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://mwiertlewski.github.io/pdf/pub/2017-RFF-MW-MP-EC-WHC.pdf",
+        "source_id": "SRC-932aa02a2f77ae1e",
+        "candidate_ids": [
+          "F14008"
+        ],
+        "theme_ids": [
+          "G154"
+        ]
+      },
+      {
+        "url": "https://fisherp.mit.edu/wp-content/uploads/2020/08/689.full_.pdf",
+        "source_id": "SRC-c0da0915b47fea58",
+        "candidate_ids": [
+          "F14009"
+        ],
+        "theme_ids": [
+          "G155"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2739629/",
+        "source_id": "SRC-b73ec3668a8d55ec",
+        "candidate_ids": [
+          "P14001"
+        ],
+        "theme_ids": [
+          "G156"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8887804/",
+        "source_id": "SRC-e9e5e4666b25f1b4",
+        "candidate_ids": [
+          "P14001"
+        ],
+        "theme_ids": [
+          "G156"
+        ]
+      },
+      {
+        "url": "https://link.springer.com/article/10.3758/BF03194470",
+        "source_id": "SRC-7a14a5460a75f810",
+        "candidate_ids": [
+          "P14002"
+        ],
+        "theme_ids": [
+          "G156"
+        ]
+      },
+      {
+        "url": "https://people.cas.sc.edu/palomare/About_me_files/Palomares_JOV_2004.pdf",
+        "source_id": "SRC-a40d1ec6c8d00ab6",
+        "candidate_ids": [
+          "P14003"
+        ],
+        "theme_ids": [
+          "G157"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8444456/",
+        "source_id": "SRC-c1681d0a70ed39ad",
+        "candidate_ids": [
+          "P14004"
+        ],
+        "theme_ids": [
+          "G157"
+        ]
+      },
+      {
+        "url": "https://link.springer.com/article/10.3758/BF03194971",
+        "source_id": "SRC-25c010a82dab8e42",
+        "candidate_ids": [
+          "P14005"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://kevin-oregan.net/assets/Mudsplash/Nature_text/mudtext.html",
+        "source_id": "SRC-3e6619d09023980b",
+        "candidate_ids": [
+          "P14006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2632766/",
+        "source_id": "SRC-0eebd55568e48d1e",
+        "candidate_ids": [
+          "P14007"
+        ],
+        "theme_ids": [
+          "G158"
+        ]
+      },
+      {
+        "url": "https://web.mit.edu/bcs/nklab/media/pdfs/KanwisherHPP91.pdf",
+        "source_id": "SRC-5e4df7b9888df5d5",
+        "candidate_ids": [
+          "P14008"
+        ],
+        "theme_ids": [
+          "G158"
+        ]
+      },
+      {
+        "url": "https://www.columbia.edu/cu/cns/resources/ErnstBanks.pdf",
+        "source_id": "SRC-f0de9c4847d7deda",
+        "candidate_ids": [
+          "P14009"
+        ],
+        "theme_ids": [
+          "G159"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1978520/",
+        "source_id": "SRC-c88adfc648e545c4",
+        "candidate_ids": [
+          "P14010"
+        ],
+        "theme_ids": [
+          "G159"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://www.nature.com/articles/ncomms10986",
+    "core": "A14001",
+    "theme": "G148",
+    "theme_ids": [
+      "G148"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 43,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 43611.0906,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "7504026de4a9e4efa7e68c2e9ee605b2b3a05360afcc994120db597a488a77d1"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "40cf0069fc61552e5dcb10f13ecf71a59e13e05d094ebea5e2bf7246e9bb0972"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "96d56962f2a8a786b0dece57e1f99acc6eb240dd07e6223ce3d586ae88ad89c6",
+        "series": "ee97a3c5c288e720363a06b0be4b78859301bfd9403ad37fa6f6d0dff15da04e",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "72bcce54806fc75eb2513e1866e0809333292a0f43ff2d8ee76c070ca3d35078"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "37a25e1c29d46c595764028506d1c56220fb5ca7b1a85017d1599b1281d4594b",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 303,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true,
+    "independently_bound_stable_blobs": 45,
+    "unique_blobs_checked": 329
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3122,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G148",
+        "core": "A14001",
+        "seconds": 125,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G149",
+        "core": "A14003",
+        "seconds": 140,
+        "maximum": 150,
+        "variant_budget": null
+      },
+      {
+        "theme": "G150",
+        "core": "A14005",
+        "seconds": 100,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G151",
+        "core": "A14004",
+        "seconds": 105,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G152",
+        "core": "F14003",
+        "seconds": 105,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G153",
+        "core": "F14002",
+        "seconds": 105,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G154",
+        "core": "F14008",
+        "seconds": 110,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G155",
+        "core": "F14009",
+        "seconds": 125,
+        "maximum": 140,
+        "variant_budget": null
+      },
+      {
+        "theme": "G156",
+        "core": "P14001",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G156",
+        "core": "P14002",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G157",
+        "core": "P14003",
+        "seconds": 80,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G157",
+        "core": "P14004",
+        "seconds": 95,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G158",
+        "core": "P14007",
+        "seconds": 95,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G158",
+        "core": "P14008",
+        "seconds": 80,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G159",
+        "core": "P14009",
+        "seconds": 85,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G159",
+        "core": "P14010",
+        "seconds": 95,
+        "maximum": 110,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave14-final-independent-readback.json",
+    "sha256": "5059a2bddfd45e8fdb0bf9d170a172f8c77dc4c15682e988731082bef0413aef",
+    "status": "PASS_INDEPENDENT_INTEGRATION_READBACK_NOT_SCRIPT_OR_PRODUCTION_APPROVAL",
+    "root_recomputed_bound_file_hashes": 45,
+    "all_required_data_docs_batches_and_reviews_bound": true,
+    "limits": "Data/editorial integration review; not a new independent full-source or production approval. Perception facts use non-author life receipt. Existing G108 narration and demos are unchanged and were not rerun."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 37,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "receipt_file": ".cache/wave14-staged-hygiene-before-receipt.json",
+    "receipt_sha256": "85a47a6876c3e0de97d65572d5af7f4629d226f16dfc28b46aa10d7a12281481",
+    "offences": 0,
+    "self_binding_limit": "This added field is outside the bound pre-field scan. Repeat the identical scanner after staging this receipt; final scan remains in ignored cache to avoid a self-hash cycle."
+  }
+}

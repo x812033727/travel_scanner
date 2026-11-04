@@ -1,0 +1,451 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NONAUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "d6f5ff135",
+    "pool_sha256": "837667313fcc0a56b3642dd85e0810beda26f6b3a1dc6edfff48fb8c2038577c",
+    "raw": 3160,
+    "selected": 2797,
+    "not_added": 497
+  },
+  "written_files": [
+    {
+      "file": "batches/wave11-structures.json",
+      "sha256": "e678a983305263e033f9ea1455f78a14dc59deac953c03a4d04c05dd38b2e23c"
+    },
+    {
+      "file": "reviews/wave11-structures-themes.json",
+      "sha256": "b65ae82c4640dea17e1e87d4564b759048f01614bb9f5ac25acc4570f5599a24"
+    }
+  ],
+  "counts": {
+    "raw_candidates": 15,
+    "sources": 13,
+    "not_added": 17,
+    "themes": 3,
+    "author_expected_retained": 15,
+    "new_core_guarantee": false
+  },
+  "scope": "幾何造成可見結構反差；題級企劃，非完整逐主張影片查核。15題是品質收斂結果，不以原方向25–40補數。",
+  "dedup_reading": {
+    "baseline_records": 3160,
+    "baseline_not_added": 497,
+    "method": "對全raw與not_added的問題／答案／範圍／mechanism_key做詞組檢索並讀相關命中全文；不是逐題重讀3160題或重開所有舊來源。初次廣搜120raw／13退題命中，後續窄詞及指定ID比較。",
+    "queries": [
+      "折紙|剪紙|薄殼|屈曲|剛性|剛度|彎曲|皺|摺|蜂巢|桁架|buckl|origami|kirigami|tensegr|auxet|snap.through|預應|雙穩|泊松|高斯|曲率",
+      "柱|細桿|拱|三角|剪切|自鎖|死點|彈性|負泊松|橫向",
+      "扭結|扭轉|張拉|繩索|螺旋|鏈甲|互鎖|Anglepoise|檯燈|預拉|彈簧.*平衡"
+    ],
+    "semantic_status": "尚未有本波共同top5，非作者覆核由root補給；不宣稱近鄰查核完成。",
+    "within_batch": "K11005合缺陷與擾動追問；不逐殼形、切口角、柱長、公式反算另計。"
+  },
+  "near_pairs": [
+    {
+      "a": "K11001",
+      "b": "P103",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "舊題是彈簧／幾何決定剛性；本題雙向曲率的伸長限制及沿程鬆開，需畫曲率而非只說變硬。"
+    },
+    {
+      "a": "K11002",
+      "b": "J6019",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "舊題恆力捲帶逐段展直；本題橫向弧面變平與方向相關的局部屈曲。"
+    },
+    {
+      "a": "K11002",
+      "b": "E9010",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "花藥是兩層差異應變驅動；此題外加彎矩、扭轉和截面局部化。"
+    },
+    {
+      "a": "K11003",
+      "b": "P163",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "泛論穩定性以外，成對帶簧展開釋能和反向翻折能量界線包含動能去向與殘留小振盪。"
+    },
+    {
+      "a": "K11003",
+      "b": "K11002",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "單帶形變路徑對比成對部署動態；若部署能障僅重述前題，接受併為應用段。"
+    },
+    {
+      "a": "K11004",
+      "b": "P163",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "軸壓經側移增加彎矩使細長柱失穩，與材料壓潰有具體反例。"
+    },
+    {
+      "a": "K11004",
+      "b": "F10011",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "彈性固體柱與持續輸入、耗散的黏性落流雖同稱屈曲，回復物理不同。"
+    },
+    {
+      "a": "K11005",
+      "b": "H3060",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "裂紋擴展與不破裂的局部幾何失穩不同。"
+    },
+    {
+      "a": "K11005",
+      "b": "E9010",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "兩層乾燥改變自然曲率，與既有缺陷／外擾對預載殼的影響不同；仍交非作者判增量。"
+    },
+    {
+      "a": "K11006",
+      "b": "K11005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "缺陷門檻／擾動能障已合入K11005；K11006只留外部載入控制的後屈曲壓力回授，不換形狀拆核。"
+    },
+    {
+      "a": "K11007",
+      "b": "X5002",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "針織線圈彎曲／滑移與固定面片相容鉸接不同；後者可見長寬同時展開。"
+    },
+    {
+      "a": "K11007",
+      "b": "D2114",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "平行四邊形平台保向與多單元摺動的平面橫向膨脹不同。"
+    },
+    {
+      "a": "K11008",
+      "b": "K11007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "原摺線剛性面片可展開，整體彎曲卻需額外面片變形模式；可能過細，明交覆核。"
+    },
+    {
+      "a": "K11009",
+      "b": "K11007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "剛性實面與可變形開放面限制不同；三階段畫不清就撤題案。"
+    },
+    {
+      "a": "K11009",
+      "b": "D2197",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "非纖維異向性，是切口連接失穩與孔洞幾何。"
+    },
+    {
+      "a": "K11010",
+      "b": "LEG-S06",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "神經／血管使手指皺，與硬膜軟底選出皺紋波長不是同答案。"
+    },
+    {
+      "a": "K11011",
+      "b": "K11010",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "受拉薄片如何出現橫向壓縮，與已受壓膜／基底如何選波長不同。"
+    },
+    {
+      "a": "K11012",
+      "b": "K11001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "共享伸長昂貴；圓環另加閉合周長及接觸限制，產生離環與尖點局部化；保留非作者合併權。"
+    },
+    {
+      "a": "K11012",
+      "b": "Q9001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "壓痕紙板分層滑移與未切未摺圓片的彈性幾何相容不同。"
+    },
+    {
+      "a": "K11013",
+      "b": "H3090",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "非時間鬆弛；最大壓縮改寫局部雙穩態與翻轉序列，來源另列慢漂移。"
+    },
+    {
+      "a": "K11013",
+      "b": "H3026",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "非化學交聯鎖形；皺摺幾何有可翻轉狀態與門檻交互作用。"
+    },
+    {
+      "a": "K11014",
+      "b": "J6001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "剛體接觸數不同於變形骨架的預應力幾何剛性。"
+    },
+    {
+      "a": "K11014",
+      "b": "D2252",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "預壓抵銷混凝土拉應力，不同於內力方向改變提供回復。"
+    },
+    {
+      "a": "K11015",
+      "b": "J6019",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "恆力捲帶逐段展直不同於彈簧連桿匹配重力位能。"
+    },
+    {
+      "a": "K11015",
+      "b": "P163",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "中性平衡是結果；本題要交代指定彈簧與連桿如何在不同高度交換位能。"
+    }
+  ],
+  "source_reading": [
+    {
+      "source_id": "K11-S001",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://arxiv.org/pdf/1907.09414",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–4，§1 Introduction、§2 A simple view of the buckling threshold，Figs.1–2",
+      "cache_file": ".cache/wave11-structures-curvature.pdf",
+      "cache_sha256": "49f5fa93034e42f6ab5dfb079a4887c3bbd193d3703b1363cbfb9d1b3d42b6a6",
+      "text_cache_file": ".cache/wave11-structures-curvature.txt",
+      "text_cache_sha256": "22546cd8d380d9b38db3964fc31c74da623e679a81304352ed8d04dbd7af7825"
+    },
+    {
+      "source_id": "K11-S002",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://www.its.caltech.edu/~sslab/PUBLICATIONS/Deployment%20of%20a%20rigid%20panel%20by%20tape-springs_1997.pdf",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "§1.2.1 printed pp.1–4 / PDF pp.8–11，Figs.1.2–1.3；§3.1–3.2 printed pp.34–40 / PDF pp.41–47，Figs.3.1–3.5",
+      "cache_file": ".cache/wave11-structures-tape.pdf",
+      "cache_sha256": "8ca0f3701d4ed6207434b2fe873dbf50dbc394b846c39d7d322e09123da762e3",
+      "text_cache_file": ".cache/wave11-structures-tape.txt",
+      "text_cache_sha256": "b3454926a6810074eabe0cf9c46feb89c80fa8bbc15179a337416cf44c7d1f5f"
+    },
+    {
+      "source_id": "K11-S003",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://ocw.mit.edu/courses/16-001-unified-engineering-materials-and-structures-fall-2021/mit16_001_f21_lec33lec34lec35.pdf",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.4–9、15–27、43–48；deformed equilibrium、simply-supported column、Failure of columns",
+      "cache_file": ".cache/wave11-structures-column.pdf",
+      "cache_sha256": "dcb06e278bf1815a5434609e5cd7b613e2afd0cd50935420a46c9eac0790618f",
+      "text_cache_file": ".cache/wave11-structures-column.txt",
+      "text_cache_sha256": "9c6ab8188aa248ee531bef16c7ab6390244d8fee575c48aacbb7f7b1785a0aa2"
+    },
+    {
+      "source_id": "K11-S004",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://ntrs.nasa.gov/api/citations/20120008838/downloads/20120008838.pdf",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF p.2 Introduction；pp.4–7，Fig.2–8與III.B Distributed loading imperfection",
+      "cache_file": ".cache/wave11-structures-nasa.pdf",
+      "cache_sha256": "86788e2ea220d96ae8055bf21cef693969ca8c764e1e88bffd080b0779e54d76",
+      "text_cache_file": ".cache/wave11-structures-nasa.txt",
+      "text_cache_sha256": "3b3641fb1a950bb08880b53bfef2717ca6c867e8310510240f1228eb43e613c0"
+    },
+    {
+      "source_id": "K11-S005",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://groups.seas.harvard.edu/hutchinson/papers/2018-1-Imperfections%26EnergyBarriers.pdf",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF p.1 Introduction；pp.6–9 / printed162–165，§4、§5.1–5.3與Figs.5–10",
+      "cache_file": ".cache/wave11-structures-shell.pdf",
+      "cache_sha256": "6011a265e9f9d627977c879e2f5bfa6b9740bb4fff7e092b94aba6fe163d822c",
+      "text_cache_file": ".cache/wave11-structures-shell.txt",
+      "text_cache_sha256": "1f5e7aa2de7918325752409c19dd3358cb317872472d16f981cea6af71e289c4"
+    },
+    {
+      "source_id": "K11-S006",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2013-09.pdf",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "主文PDF pp.1–3，Fig.1、Eqs.1–3、Fig.3與Eq.6；未把附錄全列為已讀",
+      "cache_file": ".cache/wave11-structures-miura.pdf",
+      "cache_sha256": "06868438b910f31ea85a3387acca3de45f74fa90da3b744ecc5f7aaebde8836c",
+      "text_cache_file": ".cache/wave11-structures-miura.txt",
+      "text_cache_sha256": "b1c26b5121255ab3add0ddf122b243557894763a5c89bf50906eb7ea6a9d2ef3"
+    },
+    {
+      "source_id": "K11-S007",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://arxiv.org/pdf/1702.06470",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "主文PDF pp.1–4，Figs.1–4，initial response、out-of-plane buckling、permanent folds及open faces段",
+      "cache_file": ".cache/wave11-structures-kirigami.pdf",
+      "cache_sha256": "6d6c735651e5e9f7c59dc69bdb91431ea8c50466b47796e302c98375f58d21b7",
+      "text_cache_file": ".cache/wave11-structures-kirigami.txt",
+      "text_cache_sha256": "7621e8d0cf569779229c61258c59f66f8593884afd43347e47f5d7f05f4fdb12"
+    },
+    {
+      "source_id": "K11-S008",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=902425",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–3 / printed349–351；§2 Wrinkling Mechanics and Measurements，Eqs.1–8與Fig.1",
+      "cache_file": ".cache/wave11-structures-wrinkles.pdf",
+      "cache_sha256": "013d6a88c7c2732ff6e63d39e27b217823bc9c5e99ef5a719007d783dfde7ae7",
+      "text_cache_file": ".cache/wave11-structures-wrinkles.txt",
+      "text_cache_sha256": "e6c9c499a7f57513116cf1047bb0964f73a418b346c41690822be21d5106c3fd"
+    },
+    {
+      "source_id": "K11-S009",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://arxiv.org/pdf/2012.13046",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–2，§I Introduction、Fig.1 Model A/B與壓縮區對照",
+      "cache_file": ".cache/wave11-structures-tension.pdf",
+      "cache_sha256": "9865998a7a34d50c92e2530e22b15e595d8271280ade265acaa1f939b5dd69d6",
+      "text_cache_file": ".cache/wave11-structures-tension.txt",
+      "text_cache_sha256": "e54e698309ccf767b6df73a1463efed9a05c7cfe67ac2c65c318c3ae5d512ce3"
+    },
+    {
+      "source_id": "K11-S010",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-05.pdf",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–3 / printed671–673，§1；pp.12–13 / printed682–683，§4 The puckered cone、4(a) Geometry、Fig.6",
+      "cache_file": ".cache/wave11-structures-crumple.pdf",
+      "cache_sha256": "2bd3ad82500e165b382bf4b8b9f0dc309751e3388b984f67ff7d4b63eb42612a",
+      "text_cache_file": ".cache/wave11-structures-crumple.txt",
+      "text_cache_sha256": "a72e5cbbbea70beea0ff22ef5b4521ac6d8192aa5bfb780c7bdffda4945f0f89"
+    },
+    {
+      "source_id": "K11-S011",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://arxiv.org/pdf/2109.05212v2",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–5 Results and Discussion：Global Response、Return Point Memory、Mesoscopic Excitations、Interactions Between Hysterons；Figs.1–4；模型開頭",
+      "cache_file": ".cache/wave11-structures-memory.pdf",
+      "cache_sha256": "22fee765dd9a0238e41fee0463edd79d4e8d49c80421dbe21cbcecc736b1d52c",
+      "text_cache_file": ".cache/wave11-structures-memory.txt",
+      "text_cache_sha256": "a7010ad7437aa9ca267d9fdf101da0e1cb03ab6c0bfc02367edbc23b160cb396"
+    },
+    {
+      "source_id": "K11-S012",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://www3.eng.cam.ac.uk/~sdg13/preprint/tensstiff.pdf",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–6 §1–3；pp.8、10–11 §5、Fig.6及§7，兩個指定骨架的剛性對照",
+      "cache_file": ".cache/wave11-structures-tensegrity.pdf",
+      "cache_sha256": "0b80414b6161eb8642cb39c1ff5f9ee2704d2a298e3aa99aa777eaba3883f56b",
+      "text_cache_file": ".cache/wave11-structures-tensegrity.txt",
+      "text_cache_sha256": "7fbd5d709ce6240f42929b80beca47a695f0c4aed233680c91e4d5dea1005fc9"
+    },
+    {
+      "source_id": "K11-S013",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://www3.eng.cam.ac.uk/~sdg/preprint/OnZeroStiffness.pdf",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–5，§1邊界與§2.2 Anglepoise Lamp",
+      "cache_file": ".cache/wave11-structures-zero.pdf",
+      "cache_sha256": "42f0cb179ff022af55892b8edc58f8f202a529c44af7eb2f48e2ec0864f2420d",
+      "text_cache_file": ".cache/wave11-structures-zero.txt",
+      "text_cache_sha256": "d5e18718718bd46ff1dbd6c0fdd466ca9c2fdec271cf0edb73c3953f567e8dec"
+    }
+  ],
+  "source_cautions": {
+    "primary_classification": "10份原研究／工程報告、1份MIT機構教材、2份機構作者綜述；種類逐source明列。",
+    "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "actual_failures": [
+      {
+        "url": "https://dash.harvard.edu/bitstreams/a4f2bf83-124d-4bb6-9a91-418ea1d9b5f7/download",
+        "result": "web與urllib均429，改讀作者arXiv"
+      },
+      {
+        "url": "https://personalpages.manchester.ac.uk/staff/finn.box/Publications/Taffetani_2018_epl19737-offprints.pdf",
+        "result": "web timeout／urllib TLS握手逾時，改讀arXiv長版"
+      },
+      {
+        "url": "https://www.nature.com/articles/srep24758",
+        "result": "web登入重導不可達，未採此文"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4846813/",
+        "result": "web驗證頁，未採此文"
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1217998110",
+        "result": "web403，未採此文；另讀Wei等不同原研究"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9282240/",
+        "result": "web先得摘要／導言，定點續讀遇驗證頁；採arXiv v2正文，未稱PMC全讀"
+      },
+      {
+        "url": "https://www-g.eng.cam.ac.uk/advancedstructures/publications.html",
+        "result": "web timeout／urllib拒絕連線；以www3.eng.cam.ac.uk作者頁找原PDF，列表不當機制來源"
+      }
+    ],
+    "reading_limits": "web工具供查找及部分頁讀回；採用正文均另以指定UA成功取得PDF並讀指定段。未看補充影片、未實測材料、未重算全篇公式；下載整份不等於全讀。",
+    "figures_visually_inspected": [
+      "S002 PDF p.10 Figs.1.2–1.3",
+      "S005 PDF p.6 Fig.5",
+      "S006 PDF p.1 Fig.1",
+      "S007 PDF p.1 Fig.1"
+    ],
+    "rights": "僅連結及原創短摘要／提問，不授權採用論文圖或影片。arXiv不等於任意商用授權。外站全文僅.cache。"
+  },
+  "theme_timing": [
+    {
+      "id": "W11K-T01",
+      "body_seconds": 165,
+      "chapters": 2,
+      "core_totals": {
+        "K11001": 75,
+        "K11002": 90
+      },
+      "cap_status": "PASS",
+      "max_beat_seconds": 35
+    },
+    {
+      "id": "W11K-T02",
+      "body_seconds": 165,
+      "chapters": 2,
+      "core_totals": {
+        "K11005": 90,
+        "K11006": 75
+      },
+      "cap_status": "PASS",
+      "max_beat_seconds": 35
+    },
+    {
+      "id": "W11K-T03",
+      "body_seconds": 165,
+      "chapters": 2,
+      "core_totals": {
+        "K11007": 75,
+        "K11009": 90
+      },
+      "cap_status": "PASS",
+      "max_beat_seconds": 35
+    }
+  ],
+  "validation": {
+    "json": "PASS",
+    "ids_unique": "PASS",
+    "sources_resolve": "PASS",
+    "theme_arithmetic": "PASS",
+    "beats_at_most_45_seconds": "PASS",
+    "per_core_caps": "PASS",
+    "utf8_lf": "PASS",
+    "scope_files_only": "PASS"
+  },
+  "open_editorial_questions": [
+    "K11003部署能障是否足以在K11002外保留；接受併為應用段。",
+    "K11008平面／非平面模式、K11012與K11001的共同幾何根源交非作者判是否過細。",
+    "三案需可見原創幾何對照；題級保留不代表已做出好看影片。",
+    "K11013幾何記憶留池，未硬湊成獨立長片。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-01",
+      "requested_by": "science_sources 非作者覆核，root採用",
+      "before_sha256": {
+        "batch": "e678a983305263e033f9ea1455f78a14dc59deac953c03a4d04c05dd38b2e23c",
+        "themes": "6ab8b255ca82d34888d4d102acc35e751e36688d58cb0a4b5cd21db1adf2952f",
+        "author": "a7b66ffb17d108e3c93de5e82eb5d0749feec9aec3379ebacd07338e290e6984"
+      },
+      "changes": [
+        "W11K-T02第一章末純轉場由20秒縮5秒；K11005 105→90秒，K11006維持75秒；整片180→165秒。",
+        "同步target/range/body/drop_if與作者累計時間；沒有新增內容，batch問答來源完全不變。"
+      ],
+      "after_themes_sha256": "b65ae82c4640dea17e1e87d4564b759048f01614bb9f5ac25acc4570f5599a24"
+    }
+  ]
+}

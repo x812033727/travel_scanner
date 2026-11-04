@@ -1,0 +1,445 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_SCOPE_REVIEW_NOT_FULL_FACT_CHECK",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-02",
+  "reviewed_files": [
+    {
+      "file": "batches/wave17-animal-control.json",
+      "sha256": "27d990ea35007129137436487b5f3eea8a932245c61542fcb87311e68d700dd2"
+    },
+    {
+      "file": "batches/wave17-earth-patterns.json",
+      "sha256": "0c8c4295e7f49708b5f1c802a907cf4cf1b4a6adf4bd5d916205a5d221f6df5b"
+    },
+    {
+      "file": "batches/wave17-fluid-interfaces.json",
+      "sha256": "2dc5eefd0b8422f11da3f7ec7db2bfa59ba32d4e1300e3b5f8733d415e3143b5"
+    },
+    {
+      "file": "reviews/wave17-animal-control-author.json",
+      "sha256": "1f024d7e5286d23c5bdcba13bd69f64c62b9e267d8add848a2d8044177c23df0"
+    },
+    {
+      "file": "reviews/wave17-fluid-interfaces-author.json",
+      "sha256": "29f41e124e338fc588d7e526bc928e68295f24ed1fca07d56d0e240bdd13e711"
+    },
+    {
+      "file": "reviews/wave17-earth-patterns-author.json",
+      "sha256": "2eb3d3e5910a53c48951b636e362bccd1aa45a7524a1d6cfa4bc0290a3d6a3be"
+    },
+    {
+      "file": "baselines/2026-11-02-2959.json.gz",
+      "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f"
+    }
+  ],
+  "new_source_rows": 20,
+  "raw_distinct_urls": 20,
+  "automated_comparison": {
+    "method": "All historical URL registry entries, research titles and DOI metadata, plus within-wave17 comparisons; exact advisory identity matching.",
+    "matched_instances": 0,
+    "script_sha256": "0825888750fbf882f5a84a492873612dc5b373beabe507463dea8b9bcd955d9a",
+    "result_sha256": "7a5bfcb153cfc16e4dac52c22522c8846897ecb99c7f1c8aea89d0ef28de509e",
+    "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+  },
+  "match_decisions": [],
+  "root_manual_identity_checks": [
+    {
+      "topic": "Floating under a levitating liquid",
+      "lookup_url": "https://arxiv.org/abs/2003.04777",
+      "doi": "10.48550/arXiv.2003.04777",
+      "observed_identity": "Apffel et al.; arXiv v1 submitted 2020-03-10. Metadata states 10 manuscript pages plus 7 supplement pages. Root read abstract/version metadata only; author and non-author receipt must control any body claims and correction scope.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Rod-climbing rheometry revisited",
+      "lookup_url": "https://arxiv.org/abs/2302.06010",
+      "doi": "10.48550/arXiv.2302.06010",
+      "observed_identity": "More et al.; arXiv v1 submitted 2023-02-12. Exact accessed preprint identity; no journal-publication relationship inferred from this page.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Elastic turbulence in a polymer solution flow",
+      "lookup_url": "https://arxiv.org/abs/nlin/0104052",
+      "doi": "10.1038/35011019",
+      "observed_identity": "Groisman and Steinberg; arXiv v1 submitted 2001-04-22 identifies Nature405,53(2000) and journal DOI. The later repository deposit is not a separate 2001 replication.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Beating the teapot effect",
+      "lookup_url": "https://arxiv.org/abs/0910.3306",
+      "doi": "10.1103/PhysRevLett.104.084503",
+      "observed_identity": "Duez et al.; arXiv v1 submitted 2009-10-17 links Physical Review Letters104,084503(2010). Preprint and journal are one work, not independent evidence.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Salt polygons and porous media convection",
+      "lookup_url": "https://arxiv.org/abs/1902.03600",
+      "doi": "10.1103/PhysRevX.13.011025",
+      "observed_identity": "Lasser et al.; v1 2019-02-10, accessed latest metadata v4 2022-12-04; links PhysRevX13,011025(2023). Date of first submission must not be described as the version actually read.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Controlled Irradiative Formation of Penitentes",
+      "lookup_url": "https://arxiv.org/abs/physics/0601184",
+      "doi": "10.1103/PhysRevLett.96.098502",
+      "observed_identity": "Bergeron, Berger and Betterton; arXiv v1 2006-01-24 links journal DOI and says accepted for PRL. Repository and final paper are not two experiments.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Formation of glacier tables caused by differential ice melting: field observation and modelling",
+      "lookup_url": "https://tc.copernicus.org/articles/16/2617/2022/",
+      "doi": "10.5194/tc-16-2617-2022",
+      "observed_identity": "Henot et al.; publisher date 2022-06-29, The Cryosphere16,2617–2628. HTML and linked PDF are formats of one final article. Root read identity and abstract, not whole body or supplemental file.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Collective Sensing in Electric Fish",
+      "lookup_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12062789/",
+      "doi": "10.1038/s41586-024-07157-x",
+      "observed_identity": "Pedraja and Sawtell; PMC labels author manuscript available2025-05-09, final edited Nature2024-03-06, volume628 pages139–144. PMC availability year is not experiment/publication year; author manuscript and publisher article are one research lineage.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Early turbulence and pulsatile flows enhance diodicity of Tesla’s macrofluidic valve",
+      "lookup_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+      "doi": "10.1038/s41467-021-23009-y",
+      "observed_identity": "Nguyen, Abouezzi and Ristroph; Nature Communications12,2884,2021-05-17. PMC final article and journal link are same study; abstract read, not root full-text review.",
+      "read_via": "2026-11-02 web.open official repository/publisher identity and abstract text",
+      "limit": "Source identity and exact version check only. Detailed factual scope and independent rereading are in the non-author batch review."
+    },
+    {
+      "topic": "Snake locomotion source access",
+      "lookup_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2699377/",
+      "read_via": "2026-11-02 web.open",
+      "outcome": "Returned reCAPTCHA, not article text",
+      "limit": "No root successful source-identity or factual read claimed from this fetch. Author cached read is separately declared."
+    },
+    {
+      "topic": "Rotation of melting ice disks due to melt fluid flow",
+      "lookup_url": "https://orbi.uliege.be/handle/2268/195696",
+      "doi": "10.1103/PhysRevE.93.033112",
+      "observed_identity": "Dorbolo et al.2016; university repository labels its linked PhysRevE.93.033112.pdf Publisher postprint. Repository copy is not an additional experiment beyond the APS publication.",
+      "read_via": "2026-11-02 web.open repository metadata",
+      "limit": "Identity check only, not fullPDF or natural-river generalization."
+    },
+    {
+      "topic": "Floating under a levitating liquid correction",
+      "lookup_url": "https://www.nature.com/articles/s41586-020-2789-4.pdf",
+      "doi": "10.1038/s41586-020-2789-4",
+      "observed_identity": "One-page Author Correction refers to original10.1038/s41586-020-2643-8. Corrects first author surname in reference4; it is not a second independent experiment or a new inverted-floating mechanism.",
+      "read_via": "Root freshly read the complete503-character extracted one-page correction text fetched by physics in this wave; original fetch details in .cache/wave17-fluid-fetch-extra.json. Root HTML lookup redirected unsuccessfully.",
+      "cache_text_sha256": "084ed4a97de9407f4868b26346fbec0a504d4b528875f6fe2fda79eefab821b7",
+      "limit": "Read text only; no rendered PDF image inspection claimed."
+    },
+    {
+      "topic": "Sublimation ice pedestal",
+      "lookup_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8501789/",
+      "read_via": "2026-11-02 root web.open",
+      "outcome": "reCAPTCHA",
+      "limit": "No successful root full-text or identity confirmation claimed from this lookup."
+    },
+    {
+      "topic": "Charged-drop publisher page",
+      "lookup_url": "https://www.nature.com/articles/nature08294",
+      "read_via": "2026-11-02 root web.open",
+      "outcome": "Inaccessible publisher authentication redirect",
+      "limit": "No successful root full-text or identity confirmation claimed from this lookup."
+    },
+    {
+      "topic": "Learning and cognition in highspeed decision making",
+      "lookup_url": "https://elifesciences.org/articles/99634",
+      "doi": "10.7554/eLife.99634.3",
+      "observed_identity": "Publisher labels Version of Record2025-06-25, reviewed preprintv2 2025-05-29 andv1 2024-11-05. One study with successive versions, not three replications.",
+      "read_via": "2026-11-02 root web.open official publication/version block",
+      "limit": "Identity and abstract only; factual controls are reviewed independently by physics."
+    },
+    {
+      "topic": "Ultra-sharp pinnacles sculpted by natural convective dissolution",
+      "lookup_url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf",
+      "observed_identity": "PDF first page explicitly DRAFT, compiled2020-04-28, by Huang/Tong/Shelley/Ristroph; six-page manuscript, journal DOI still a placeholder in this copy. Candidate must retain draft-version disclosure; cannot call this the final PNAS PDF.",
+      "read_via": "2026-11-02 root web.open first-page text and metadata",
+      "limit": "Not a comparison of draft to final published text; no figures independently viewed by root."
+    },
+    {
+      "topic": "Rod-climbing publisher identity lookup",
+      "lookup_url": "https://pubs.rsc.org/en/content/articlelanding/2023/sm/d3sm00181d",
+      "read_via": "2026-11-02 root web.open",
+      "outcome": "403 Forbidden",
+      "limit": "No root successful RSC body or publication metadata read from this request; arXiv version metadata was independently read."
+    }
+  ],
+  "authors_disclosed_relationships_read_by_root": [
+    {
+      "batch": "animal-control",
+      "author_disclosure": {
+        "count_meaning": "6筆來源記錄對應6篇原研究；URL/載體數不是獨立實驗數或跨團隊複驗數。",
+        "matching": "比既有來源的normalized title、DOI文字與exact canonical/retrieval URL；不是完整書目學去重保證。",
+        "items": [
+          {
+            "id": "B17-S001",
+            "doi": "10.1038/s41586-024-07157-x",
+            "canonical_url": "https://doi.org/10.1038/s41586-024-07157-x",
+            "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12062789/",
+            "version": "Nature 628:139–144 (2024); PMC12062789 author manuscript available 2025-05-09",
+            "old_exact_identity_matches": [],
+            "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。 Nature2024正式研究、PMC2025收錄作者稿、PMC10515903預印本屬同研究譜系；未用預印本再算來源。與舊S10001/02同領域/部分團隊，但本題的外來物體資訊控制不同。"
+          },
+          {
+            "id": "B17-S002",
+            "doi": "10.1073/pnas.1522419113",
+            "canonical_url": "https://doi.org/10.1073/pnas.1522419113",
+            "retrieval_url": "https://sponberg.gatech.edu/wp-content/uploads/2015/10/Proceedings-of-the-National-Academy-of-Sciences-2016-Roth.pdf",
+            "version": "PNAS 113(45):12832–12837; PDF6頁主文加SI",
+            "old_exact_identity_matches": [],
+            "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。"
+          },
+          {
+            "id": "B17-S003",
+            "doi": "10.1016/j.cub.2008.07.094",
+            "canonical_url": "https://doi.org/10.1016/j.cub.2008.07.094",
+            "retrieval_url": "https://faculty.fiu.edu/~theobald/wp-content/uploads/2016/01/Card-and-Dickinson-2008-Visually-Mediated-Motor-Planning-in-the-Escape-Res.pdf",
+            "version": "Current Biology 18:1300–1307",
+            "old_exact_identity_matches": [],
+            "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。"
+          },
+          {
+            "id": "B17-S004",
+            "doi": "10.1073/pnas.0905183106",
+            "canonical_url": "https://doi.org/10.1073/pnas.0905183106",
+            "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2699377/",
+            "version": "PNAS 106(27):11183–11187; PMC2699377 published article",
+            "old_exact_identity_matches": [],
+            "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。"
+          },
+          {
+            "id": "B17-S005",
+            "doi": "10.1126/science.1128727",
+            "canonical_url": "https://doi.org/10.1126/science.1128727",
+            "retrieval_url": "https://www.researchgate.net/publication/6944406_Teaching_in_Wild_Meerkats",
+            "version": "Science 313(5784):227–229; author-uploaded published-text extraction",
+            "old_exact_identity_matches": [],
+            "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。 RG標合著者上傳的公開正文；不把CiteSeer失敗路線或論文資訊頁另算實讀來源。"
+          },
+          {
+            "id": "B17-S006",
+            "doi": "10.7554/eLife.99634.3",
+            "canonical_url": "https://doi.org/10.7554/eLife.99634.3",
+            "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12194133/",
+            "version": "Version of Record 2025-06-25; eLife 13:RP99634; PMC metadata base DOI 10.7554/eLife.99634",
+            "old_exact_identity_matches": [],
+            "relationship": "DOI頁與實讀載體是同一篇研究，不當作兩個獨立證據。 eLife.99634.3為2025-06-25 Version of Record；2024-11-05 v1、2025-05-29 v2為同研究先前版本，不算三次複驗。"
+          }
+        ]
+      }
+    },
+    {
+      "batch": "fluid-interfaces",
+      "author_disclosure": [
+        {
+          "source_id": "F17-S001",
+          "doi": "10.1038/s41467-021-23009-y",
+          "read_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+          "related_urls": [
+            "https://www.nature.com/articles/s41467-021-23009-y",
+            "https://arxiv.org/abs/2103.17222"
+          ],
+          "relationship": "PMC、期刊 PDF、arXiv 是同一研究，實讀 PMC 正文和期刊 PDF 圖頁；未另讀 arXiv 全文。",
+          "old_exact_url_title_or_doi_matches": [],
+          "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+        },
+        {
+          "source_id": "F17-S002",
+          "doi": "10.1039/D3SM00181D",
+          "read_url": "https://arxiv.org/pdf/2302.06010",
+          "related_urls": [
+            "https://arxiv.org/abs/2302.06010",
+            "https://doi.org/10.1039/D3SM00181D"
+          ],
+          "relationship": "實讀 v1 預印本；RSC 正式正文 403，不能聲稱逐字與 VOR 一致。",
+          "old_exact_url_title_or_doi_matches": [],
+          "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+        },
+        {
+          "source_id": "F17-S003",
+          "doi": "10.1038/35011019",
+          "read_url": "https://arxiv.org/pdf/nlin/0104052",
+          "related_urls": [
+            "https://arxiv.org/abs/nlin/0104052",
+            "https://doi.org/10.1038/35011019"
+          ],
+          "relationship": "2001 arXiv 上傳與2000 Nature 同一研究，非兩個年代的獨立重現。",
+          "old_exact_url_title_or_doi_matches": [],
+          "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+        },
+        {
+          "source_id": "F17-S004",
+          "doi": "10.1038/s41586-020-2643-8",
+          "read_url": "https://arxiv.org/pdf/2003.04777",
+          "related_urls": [
+            "https://arxiv.org/abs/2003.04777",
+            "https://www.nature.com/articles/s41586-020-2643-8",
+            "https://www.nature.com/articles/s41586-020-2789-4.pdf"
+          ],
+          "relationship": "實讀 v1 主文；期刊版是同工作。另有效 PDF 讀更正，僅 ref.4 作者姓氏，非新增機制證據；兩候選共享同研究。",
+          "old_exact_url_title_or_doi_matches": [],
+          "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+        },
+        {
+          "source_id": "F17-S005",
+          "doi": "10.1103/PhysRevLett.104.084503",
+          "read_url": "https://arxiv.org/pdf/0910.3306",
+          "related_urls": [
+            "https://arxiv.org/abs/0910.3306",
+            "https://doi.org/10.1103/PhysRevLett.104.084503"
+          ],
+          "relationship": "2009 v1 與2010期刊版同工作，不分兩證據。",
+          "old_exact_url_title_or_doi_matches": [],
+          "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+        },
+        {
+          "source_id": "F17-S006",
+          "doi": "10.1038/nature08294",
+          "read_url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+          "related_urls": [
+            "https://www.nature.com/articles/nature08294"
+          ],
+          "relationship": "作者 UC Davis 庫內為2009原刊排版；路徑2015是上傳位置，非新版實驗。arXiv0910.3273是流體影像摘要，未拿來代替本篇全文。",
+          "old_exact_url_title_or_doi_matches": [],
+          "limits": "此自查只比精確URL/題名/DOI字串；其他別名與題目重複仍需root及非作者覆核。"
+        }
+      ]
+    },
+    {
+      "batch": "earth-patterns",
+      "author_disclosure": {
+        "records": [
+          {
+            "source_id": "E17-S001",
+            "work": "Salt polygons and porous media convection",
+            "version": "arXiv:1902.03600v4，2022-12-04；稿內編製日期2022-12-06；對應PRX 13,011025 (2023)，DOI 10.1103/PhysRevX.13.011025",
+            "relationship": "單一研究的指定載體；不同URL或正式版/作者稿不作獨立佐證。",
+            "old_pool_exact_url_matches": []
+          },
+          {
+            "source_id": "E17-S002",
+            "work": "Formation of glacier tables caused by differential ice melting: field observation and modelling",
+            "version": "正式版2022-06-29；16:2617–2628；DOI 10.5194/tc-16-2617-2022",
+            "relationship": "單一研究的指定載體；不同URL或正式版/作者稿不作獨立佐證。",
+            "old_pool_exact_url_matches": []
+          },
+          {
+            "source_id": "E17-S003",
+            "work": "Sublimation-driven morphogenesis of Zen stones on ice surfaces",
+            "version": "2021-09-30；118(40):e2109107118；DOI 10.1073/pnas.2109107118",
+            "relationship": "單一研究的指定載體；不同URL或正式版/作者稿不作獨立佐證。",
+            "old_pool_exact_url_matches": []
+          },
+          {
+            "source_id": "E17-S004",
+            "work": "Controlled Irradiative Formation of Penitentes",
+            "version": "arXiv:physics/0601184v1，2006-01-24；對應PRL 96,098502，DOI 10.1103/PhysRevLett.96.098502",
+            "relationship": "單一研究的指定載體；不同URL或正式版/作者稿不作獨立佐證。",
+            "old_pool_exact_url_matches": []
+          },
+          {
+            "source_id": "E17-S005",
+            "work": "Ultra-sharp pinnacles sculpted by natural convective dissolution",
+            "version": "2020-04-28作者稿，頁面標DRAFT；同工作後刊PNAS117:23339–23344，DOI 10.1073/pnas.2001524117；不是另篇重現",
+            "relationship": "單一研究的指定載體；不同URL或正式版/作者稿不作獨立佐證。",
+            "old_pool_exact_url_matches": []
+          },
+          {
+            "source_id": "E17-S006",
+            "work": "Sliding Rocks on Racetrack Playa, Death Valley National Park: First Observation of Rocks in Motion",
+            "version": "2014-08-27；9(8):e105948；DOI 10.1371/journal.pone.0105948",
+            "relationship": "單一研究的指定載體；不同URL或正式版/作者稿不作獨立佐證。",
+            "old_pool_exact_url_matches": []
+          },
+          {
+            "source_id": "E17-S007",
+            "work": "Rotation of melting ice disks due to melt fluid flow",
+            "version": "2016-03-14；PRE93,033112；DOI 10.1103/PhysRevE.93.033112",
+            "relationship": "單一研究的指定載體；不同URL或正式版/作者稿不作獨立佐證。僅支持未收方向。",
+            "old_pool_exact_url_matches": []
+          },
+          {
+            "source_id": "E17-S008",
+            "work": "On the rotation of melting ice disks",
+            "version": "正式版2023-02-18；23:465–488；DOI 10.1007/s10652-023-09912-6",
+            "relationship": "單一研究的指定載體；不同URL或正式版/作者稿不作獨立佐證。僅支持未收方向。",
+            "old_pool_exact_url_matches": []
+          }
+        ],
+        "relationships": [
+          {
+            "source_ids": [
+              "E17-S001"
+            ],
+            "same_work": [
+              "https://arxiv.org/abs/1902.03600v4",
+              "https://doi.org/10.1103/PhysRevX.13.011025"
+            ],
+            "note": "2019v1至2022v4與2023PRX為同一研究版本，不是三項獨立重現。"
+          },
+          {
+            "source_ids": [
+              "E17-S004"
+            ],
+            "same_work": [
+              "https://arxiv.org/abs/physics/0601184v1",
+              "https://doi.org/10.1103/PhysRevLett.96.098502"
+            ],
+            "note": "2006作者稿與PRL同工作。"
+          },
+          {
+            "source_ids": [
+              "E17-S005"
+            ],
+            "same_work": [
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC7519309/",
+              "https://doi.org/10.1073/pnas.2001524117"
+            ],
+            "note": "僅NYU2020-04-28 DRAFT正文取得；PMC/正式版失敗不冒稱讀通。"
+          },
+          {
+            "source_ids": [
+              "E17-S002",
+              "E17-S003"
+            ],
+            "note": "部分作者相同，但2022融冰冰桌與2021升華冰腳是不同條件/實驗研究；不用其中一篇當另一篇的獨立重現。"
+          },
+          {
+            "source_ids": [
+              "E17-S007",
+              "E17-S008"
+            ],
+            "note": "2016原提案與2023另組實驗是不同研究；兩者僅支持保留爭議、不收定論。"
+          }
+        ],
+        "limits": "精確URL比對不是完整同文偵測；來源身分仍交root獨立核。"
+      }
+    }
+  ],
+  "sources_without_raw_candidate_references": [
+    {
+      "source_id": "E17-S007",
+      "url": "https://orbi.uliege.be/bitstream/2268/195696/1/PhysRevE.93.033112.pdf",
+      "role": "Retained for not-added direction provenance; no raw candidate references this source."
+    },
+    {
+      "source_id": "E17-S008",
+      "url": "https://link.springer.com/article/10.1007/s10652-023-09912-6",
+      "role": "Retained for not-added direction provenance; no raw candidate references this source."
+    }
+  ],
+  "count_policy": "Counts are distinct normalized URLs, not independent experiments or corroborating studies. Publisher pages, repositories, preprints and published versions can represent the same research. Reading provenance and exact accessed version remain separate.",
+  "limits": "Root checked the stated identities and author disclosures. This is not a full bibliography semantic-equivalence audit or a new independent full-text fact check. Candidate factual scope is controlled by the three non-author topic review receipts. No script, image rights, experimental replication or production approval."
+}

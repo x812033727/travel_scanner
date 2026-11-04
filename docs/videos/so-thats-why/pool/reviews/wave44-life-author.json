@@ -1,0 +1,615 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "0c8f8712d6984e7c352c00182547255114d64ca7",
+    "selected": 3394,
+    "raw": 3779,
+    "not_added": 1875,
+    "themes": 464
+  },
+  "written_files": [
+    {
+      "file": "batches/wave44-life.json",
+      "sha256": "aaa513a6e5cea94bb30084efe02fd3d0b00242de221ff8a4674f54d7f96faaf1"
+    },
+    {
+      "file": "reviews/wave44-life-themes.json",
+      "sha256": "7edc17e751a13bdace158e52106a55bf5fe3422fb83f712638e799fe5938cb6f"
+    }
+  ],
+  "counts": {
+    "candidates": 8,
+    "sources": 8,
+    "not_added": 16,
+    "near_pairs": 22,
+    "themes": 5
+  },
+  "near_pairs": [
+    {
+      "a": "L44-001",
+      "b": "B2223",
+      "decision": "propose_distinct",
+      "reason": "第一藏點已被取回後的二次搬運及跨個體接力，與未被取回繼而生長不同。",
+      "a_snapshot": {
+        "question": "棕櫚種子被挖走，為什麼原來的藏食坑空了，種子反而可能走得更遠？",
+        "answer_target": "把無線電標籤接在種子上，第一個藏點空了仍能繼續追。許多種子被挖出後又埋到別處；能辨認個體的相機紀錄中，多數取種者是別隻刺豚鼠。反覆換手使一部分種子的最終位置離釋放點很遠。",
+        "scope": "巴拿馬巴羅科羅拉多島的一種棕櫚。藏點被挖與種子被吃是兩種結果。曲折路徑長不等於淨距離；未見再萌芽的種子不畫成長成樹。"
+      },
+      "b_snapshot": {
+        "question": "松鼠埋起來的食物，什麼情況下會變成一棵新樹？",
+        "answer_target": "未取回且仍可萌芽的藏食成為散播終點",
+        "scope": "散藏結果，不說松鼠故意種樹或一律忘記"
+      }
+    },
+    {
+      "a": "L44-001",
+      "b": "B2222",
+      "decision": "propose_distinct",
+      "reason": "藏食搬運的多次轉手沒有通過鳥腸。",
+      "a_snapshot": {
+        "question": "棕櫚種子被挖走，為什麼原來的藏食坑空了，種子反而可能走得更遠？",
+        "answer_target": "把無線電標籤接在種子上，第一個藏點空了仍能繼續追。許多種子被挖出後又埋到別處；能辨認個體的相機紀錄中，多數取種者是別隻刺豚鼠。反覆換手使一部分種子的最終位置離釋放點很遠。",
+        "scope": "巴拿馬巴羅科羅拉多島的一種棕櫚。藏點被挖與種子被吃是兩種結果。曲折路徑長不等於淨距離；未見再萌芽的種子不畫成長成樹。"
+      },
+      "b_snapshot": {
+        "question": "種子被動物吃掉，為什麼有時反而搬到更遠的地方？",
+        "answer_target": "未被消化的種子隨移動動物排出",
+        "scope": "限可存活種子；不宣稱所有吞食提高發芽率"
+      }
+    },
+    {
+      "a": "L44-001",
+      "b": "L40-004",
+      "decision": "propose_distinct",
+      "reason": "山雀推門習慣的在地傳遞與是否為藏點原主無關。",
+      "a_snapshot": {
+        "question": "棕櫚種子被挖走，為什麼原來的藏食坑空了，種子反而可能走得更遠？",
+        "answer_target": "把無線電標籤接在種子上，第一個藏點空了仍能繼續追。許多種子被挖出後又埋到別處；能辨認個體的相機紀錄中，多數取種者是別隻刺豚鼠。反覆換手使一部分種子的最終位置離釋放點很遠。",
+        "scope": "巴拿馬巴羅科羅拉多島的一種棕櫚。藏點被挖與種子被吃是兩種結果。曲折路徑長不等於淨距離；未見再萌芽的種子不畫成長成樹。"
+      },
+      "b_snapshot": {
+        "question": "同一扇門，左右推都有蟲吃，兩處的山雀怎麼各自習慣推不同邊？",
+        "answer_target": "野外食盒的門可往兩邊推，報酬相同。研究者先教部分地區的兩隻大山雀往一邊推，另一些地區教相反方向。之後新學會的鳥較常採用當地已常見的方向，兩種做法都出現過，地方偏好仍持續。",
+        "scope": "比較有示範與無訓練的地區，並記錄實際操作。常見是先前做法的出現頻率，不能宣稱鳥會逐隻點票；有些鳥試過兩邊，並非每隻都改成同一方向。"
+      }
+    },
+    {
+      "a": "L44-002",
+      "b": "B2222",
+      "decision": "propose_distinct",
+      "reason": "同樣位置比較消化前後的敵害與感染，並非只說動物移動有利。",
+      "a_snapshot": {
+        "question": "辣椒種子經過鳥的腸道，就算沒搬得更遠，落地後也可能比較能活嗎？",
+        "answer_target": "把野辣椒種子放在同種植株下或附近空地，稍遠處沒有得到免於被搬走的好處。另一項比較中，鳥排出的種子在最初幾天較不易被搬走；未經消化的種子會釋出能吸引食種螞蟻的揮發物。經鳥處理的種子後來真菌感染分數也較低，在擋住捕食者的野外試驗中有較高存活率。",
+        "scope": "玻利維亞兩地族群內的比較，距同種株約5公尺不等於長途散播。氣味是受到數據支持的解釋，未逐次記錄昆蟲吃掉每顆被搬走的種子，也未排除其他種皮變化。"
+      },
+      "b_snapshot": {
+        "question": "種子被動物吃掉，為什麼有時反而搬到更遠的地方？",
+        "answer_target": "未被消化的種子隨移動動物排出",
+        "scope": "限可存活種子；不宣稱所有吞食提高發芽率"
+      }
+    },
+    {
+      "a": "L44-002",
+      "b": "B2267",
+      "decision": "propose_distinct",
+      "reason": "鳥的肌胃磨料處理食物，沒有回答排出的種子對螞蟻及真菌狀態。",
+      "a_snapshot": {
+        "question": "辣椒種子經過鳥的腸道，就算沒搬得更遠，落地後也可能比較能活嗎？",
+        "answer_target": "把野辣椒種子放在同種植株下或附近空地，稍遠處沒有得到免於被搬走的好處。另一項比較中，鳥排出的種子在最初幾天較不易被搬走；未經消化的種子會釋出能吸引食種螞蟻的揮發物。經鳥處理的種子後來真菌感染分數也較低，在擋住捕食者的野外試驗中有較高存活率。",
+        "scope": "玻利維亞兩地族群內的比較，距同種株約5公尺不等於長途散播。氣味是受到數據支持的解釋，未逐次記錄昆蟲吃掉每顆被搬走的種子，也未排除其他種皮變化。"
+      },
+      "b_snapshot": {
+        "question": "鳥沒有牙齒，吞下的硬種子怎麼被磨碎？",
+        "answer_target": "肌胃機械研磨可配合吞入砂礫",
+        "scope": "限相關食性鳥類，不說所有鳥都吞石"
+      }
+    },
+    {
+      "a": "L44-002",
+      "b": "B2219",
+      "decision": "propose_distinct",
+      "reason": "結論不依靠破壞種皮以解除休眠。",
+      "a_snapshot": {
+        "question": "辣椒種子經過鳥的腸道，就算沒搬得更遠，落地後也可能比較能活嗎？",
+        "answer_target": "把野辣椒種子放在同種植株下或附近空地，稍遠處沒有得到免於被搬走的好處。另一項比較中，鳥排出的種子在最初幾天較不易被搬走；未經消化的種子會釋出能吸引食種螞蟻的揮發物。經鳥處理的種子後來真菌感染分數也較低，在擋住捕食者的野外試驗中有較高存活率。",
+        "scope": "玻利維亞兩地族群內的比較，距同種株約5公尺不等於長途散播。氣味是受到數據支持的解釋，未逐次記錄昆蟲吃掉每顆被搬走的種子，也未排除其他種皮變化。"
+      },
+      "b_snapshot": {
+        "question": "種皮太硬時，為什麼吸到水也不一定立刻發芽？",
+        "answer_target": "種皮的物理限制需解除才能啟動或完成萌芽",
+        "scope": "物理休眠類型；不提供化學處理操作"
+      }
+    },
+    {
+      "a": "L44-003",
+      "b": "B2223",
+      "decision": "propose_distinct",
+      "reason": "比較被移除與幼苗破土兩個結局，非只因藏食沒被取回。",
+      "a_snapshot": {
+        "question": "糞金龜替種子埋土，既然埋起來比較不易被找到，為什麼不一定越深越好？",
+        "answer_target": "糞金龜搬動帶種子的糞時，部分種子跟著進入地下。相對於放在地表，淺埋一或三公分的種子較少被移走；另以人工埋深比較，在受測的Mimusops中，淺埋一或三公分能長出土的遠多於十公分。淺埋能減少種子被移走，不能據此說埋到十公分更安全；那個深度在這項比較量的是能不能出苗。",
+        "scope": "烏干達Kibale研究，不同物種的出苗率不同。移除不是逐顆確認死亡；埋藏觀察、移除試驗與人工種植分開。 十公分只用於對照出苗；不以淺埋移除結果外推更深處。"
+      },
+      "b_snapshot": {
+        "question": "松鼠埋起來的食物，什麼情況下會變成一棵新樹？",
+        "answer_target": "未取回且仍可萌芽的藏食成為散播終點",
+        "scope": "散藏結果，不說松鼠故意種樹或一律忘記"
+      }
+    },
+    {
+      "a": "L44-003",
+      "b": "L103",
+      "decision": "propose_distinct",
+      "reason": "原題問光訊號，新題不以光作為深埋低出苗的單一解釋。",
+      "a_snapshot": {
+        "question": "糞金龜替種子埋土，既然埋起來比較不易被找到，為什麼不一定越深越好？",
+        "answer_target": "糞金龜搬動帶種子的糞時，部分種子跟著進入地下。相對於放在地表，淺埋一或三公分的種子較少被移走；另以人工埋深比較，在受測的Mimusops中，淺埋一或三公分能長出土的遠多於十公分。淺埋能減少種子被移走，不能據此說埋到十公分更安全；那個深度在這項比較量的是能不能出苗。",
+        "scope": "烏干達Kibale研究，不同物種的出苗率不同。移除不是逐顆確認死亡；埋藏觀察、移除試驗與人工種植分開。 十公分只用於對照出苗；不以淺埋移除結果外推更深處。"
+      },
+      "b_snapshot": {
+        "question": "有些小種子為什麼需要見光才比較容易萌發？",
+        "answer_target": "光訊號提供接近土表的線索",
+        "scope": "光敏素與特定光敏感植物；不推論所有種子相同"
+      }
+    },
+    {
+      "a": "L44-003",
+      "b": "E9006",
+      "decision": "propose_distinct",
+      "reason": "芒自己抓地鑽縫不能回答被糞金龜搬後埋深的兩個相反結果。",
+      "a_snapshot": {
+        "question": "糞金龜替種子埋土，既然埋起來比較不易被找到，為什麼不一定越深越好？",
+        "answer_target": "糞金龜搬動帶種子的糞時，部分種子跟著進入地下。相對於放在地表，淺埋一或三公分的種子較少被移走；另以人工埋深比較，在受測的Mimusops中，淺埋一或三公分能長出土的遠多於十公分。淺埋能減少種子被移走，不能據此說埋到十公分更安全；那個深度在這項比較量的是能不能出苗。",
+        "scope": "烏干達Kibale研究，不同物種的出苗率不同。移除不是逐顆確認死亡；埋藏觀察、移除試驗與人工種植分開。 十公分只用於對照出苗；不以淺埋移除結果外推更深處。"
+      },
+      "b_snapshot": {
+        "question": "落地的長芒種子，為什麼還能慢慢把自己鑽進縫裡？",
+        "answer_target": "濕度反覆變化使芒捲曲/展開產生扭轉與伸長；尖端與定向毛固定在地表縫隙，讓形變轉成入土移動。",
+        "scope": "限Erodium及對照Pelargonium；兩者芒微結構不同，土縫/摩擦條件影響結果，不保證平滑硬地也能鑽。"
+      }
+    },
+    {
+      "a": "L44-004",
+      "b": "E9001",
+      "decision": "propose_distinct",
+      "reason": "兩種果留在斑塊的相對機會與共同園差異，非冠毛阻力如何產生。",
+      "a_snapshot": {
+        "question": "同一株草能結會飛和不太會飛的果，都市行道樹下怎麼偏偏多了不太會飛的那種？",
+        "answer_target": "在模擬樹穴的黏板上，有冠毛果比留在近處的重果更容易離開小塊可生長的土地。研究者另將不同族群的後代種在同一溫室，來自都市零碎棲地的植株仍結出較高比例的不易散播果，符合落到硬鋪面損失較多、因而偏向留在原地的選擇。",
+        "scope": "法國蒙佩利耶Crepis sancta族群；不是單株見到柏油後即時改造。代數為模型估計，不作現場世代追蹤。黏板實驗不直接追所有落到水泥上的果。"
+      },
+      "b_snapshot": {
+        "question": "蒲公英的傘滿是空隙，為什麼仍能慢慢飄？",
+        "answer_target": "低尺度細毛周圍的黏性流彼此影響，限制穿流；合適孔隙率形成穩定分離渦環並增加阻力。",
+        "scope": "限普通蒲公英與研究流速/孔隙條件；不是孔越多越好，也不是渦環主動把種子吸上天。"
+      }
+    },
+    {
+      "a": "L44-004",
+      "b": "E9002",
+      "decision": "propose_distinct",
+      "reason": "濕度造成冠毛收攏與已隔離的小棲地選擇不同。",
+      "a_snapshot": {
+        "question": "同一株草能結會飛和不太會飛的果，都市行道樹下怎麼偏偏多了不太會飛的那種？",
+        "answer_target": "在模擬樹穴的黏板上，有冠毛果比留在近處的重果更容易離開小塊可生長的土地。研究者另將不同族群的後代種在同一溫室，來自都市零碎棲地的植株仍結出較高比例的不易散播果，符合落到硬鋪面損失較多、因而偏向留在原地的選擇。",
+        "scope": "法國蒙佩利耶Crepis sancta族群；不是單株見到柏油後即時改造。代數為模型估計，不作現場世代追蹤。黏板實驗不直接追所有落到水泥上的果。"
+      },
+      "b_snapshot": {
+        "question": "蒲公英遇濕會把傘收起來，難道不是更難飛嗎？",
+        "answer_target": "放射排列組織不等量膨潤使冠毛收攏；收攏既加快下降，也降低被風吹離母株的機率。",
+        "scope": "區分高濕與完全潤濕，限研究條件；遠距傳播收益屬模型，不能把等待說成主動預報天氣。"
+      }
+    },
+    {
+      "a": "L44-005",
+      "b": "B2229",
+      "decision": "propose_distinct",
+      "reason": "雨點能打出芽胞是背景；新題要求固定杯型、改撞點預測水片的左右不對稱及速度。",
+      "a_snapshot": {
+        "question": "水滴打進小果杯，正中靶心和打偏一點，哪一種水花會飛得更遠？",
+        "answer_target": "在人造錐杯上，居中的水滴攤成較對稱的水片；偏心落下時，水沿斜壁和杯緣往一側匯集，尖端射出較快的水滴。高速攝影和落點支持打偏可擴大濺射範圍。",
+        "scope": "量化主比較是水滴在固定模型杯中的飛行；另有杯中放Mazus種子的畫面。水花的最遠距離不代替全部真種子的落點。"
+      },
+      "b_snapshot": {
+        "question": "地錢上的小杯子，怎麼利用雨滴把後代送出去？",
+        "answer_target": "雨滴濺出芽胞並於附近長成配子體",
+        "scope": "無性芽胞，不誤稱受精種子或單細胞孢子"
+      }
+    },
+    {
+      "a": "L44-005",
+      "b": "X38-004",
+      "decision": "propose_distinct",
+      "reason": "空氣渦環可帶乾孢子；新題比較沿杯面的水片匯流形狀。",
+      "a_snapshot": {
+        "question": "水滴打進小果杯，正中靶心和打偏一點，哪一種水花會飛得更遠？",
+        "answer_target": "在人造錐杯上，居中的水滴攤成較對稱的水片；偏心落下時，水沿斜壁和杯緣往一側匯集，尖端射出較快的水滴。高速攝影和落點支持打偏可擴大濺射範圍。",
+        "scope": "量化主比較是水滴在固定模型杯中的飛行；另有杯中放Mazus種子的畫面。水花的最遠距離不代替全部真種子的落點。"
+      },
+      "b_snapshot": {
+        "question": "雨滴落在帶鏽斑的小麥葉，怎麼連沒沾水的孢子也會打著圈飛起來？",
+        "answer_target": "葉片運動或直接撞擊先讓一些孢子離開原位。水滴往外攤開時也推動旁邊空氣，形成脫離表面的空氣渦環；乾孢子的繞行軌跡非單純拋物線。另一組煙霧及替代微珠試次讓原看不見的空氣運動現形。",
+        "scope": "限感染小麥的試驗與人工表面對照。未測下游整片田的疾病量，不能把每一顆孢子說成都由同一種方式脫附。"
+      }
+    },
+    {
+      "a": "L44-006",
+      "b": "B2229",
+      "decision": "propose_distinct",
+      "reason": "乾濕五珠控制判斷預濕改變實際攜種率，單說濺出芽胞無法回答。",
+      "a_snapshot": {
+        "question": "第一滴雨沒把小果杯裡的種子全打出去，剩下的下一次會更難出去嗎？",
+        "answer_target": "用相同數量的疏水玻璃珠模擬種子，乾杯和先放了水的杯子各挨一次水滴。預濕杯把更多小珠送出，落點也較遠；高速圖像裡小珠較常個別隨水流離開。作者提出小珠有時浮在較高處，撞來的水更容易帶到它們。",
+        "scope": "固定模型杯、玻璃珠及大水滴。預濕處理模擬上次殘水，並非同一朵果杯所有種子連拍兩場；不能照抄空杯水花距離預測真實種子。"
+      },
+      "b_snapshot": {
+        "question": "地錢上的小杯子，怎麼利用雨滴把後代送出去？",
+        "answer_target": "雨滴濺出芽胞並於附近長成配子體",
+        "scope": "無性芽胞，不誤稱受精種子或單細胞孢子"
+      }
+    },
+    {
+      "a": "L44-006",
+      "b": "L44-005",
+      "decision": "propose_distinct",
+      "reason": "改變撞擊位置看液滴射流，與固定五珠改初始水量測顆粒出杯、落點不同。",
+      "a_snapshot": {
+        "question": "第一滴雨沒把小果杯裡的種子全打出去，剩下的下一次會更難出去嗎？",
+        "answer_target": "用相同數量的疏水玻璃珠模擬種子，乾杯和先放了水的杯子各挨一次水滴。預濕杯把更多小珠送出，落點也較遠；高速圖像裡小珠較常個別隨水流離開。作者提出小珠有時浮在較高處，撞來的水更容易帶到它們。",
+        "scope": "固定模型杯、玻璃珠及大水滴。預濕處理模擬上次殘水，並非同一朵果杯所有種子連拍兩場；不能照抄空杯水花距離預測真實種子。"
+      },
+      "b_snapshot": {
+        "question": "水滴打進小果杯，正中靶心和打偏一點，哪一種水花會飛得更遠？",
+        "answer_target": "在人造錐杯上，居中的水滴攤成較對稱的水片；偏心落下時，水沿斜壁和杯緣往一側匯集，尖端射出較快的水滴。高速攝影和落點支持打偏可擴大濺射範圍。",
+        "scope": "量化主比較是水滴在固定模型杯中的飛行；另有杯中放Mazus種子的畫面。水花的最遠距離不代替全部真種子的落點。"
+      }
+    },
+    {
+      "a": "L44-006",
+      "b": "E9007",
+      "decision": "propose_distinct",
+      "reason": "種子遇水分泌黏液固定原地，與濕杯移動玻璃珠不同。",
+      "a_snapshot": {
+        "question": "第一滴雨沒把小果杯裡的種子全打出去，剩下的下一次會更難出去嗎？",
+        "answer_target": "用相同數量的疏水玻璃珠模擬種子，乾杯和先放了水的杯子各挨一次水滴。預濕杯把更多小珠送出，落點也較遠；高速圖像裡小珠較常個別隨水流離開。作者提出小珠有時浮在較高處，撞來的水更容易帶到它們。",
+        "scope": "固定模型杯、玻璃珠及大水滴。預濕處理模擬上次殘水，並非同一朵果杯所有種子連拍兩場；不能照抄空杯水花距離預測真實種子。"
+      },
+      "b_snapshot": {
+        "question": "有些種子遇水長出黏液，為什麼反而比較不會被水沖走？",
+        "answer_target": "吸水展開的多醣黏液接觸基材，乾濕歷程形成附著；抵抗脫離的力可比種子自身重量更能解釋滯留。",
+        "scope": "限有黏液種子與研究基材/流況；濕乾測力基材不同，不用其數值倍數當純含水量效應。"
+      }
+    },
+    {
+      "a": "L44-007",
+      "b": "E9004",
+      "decision": "propose_distinct",
+      "reason": "濕果瓣捲回的儲能機制與乾殼中段夾種、原有連接斷後重裝失敗不同。",
+      "a_snapshot": {
+        "question": "金縷梅的果殼已張開，為什麼種子還能卡一會兒，最後才突然彈出去？",
+        "answer_target": "果殼乾燥時張口，內果皮中段卻逐漸夾緊種子。顯微剖面可見種子與果皮之間的組織連接；已射出的種子放回原殼，浸水合攏再乾燥，這次種子較鬆、沒有再射出。結合彈射時的裂聲與殼回縮，研究者提出原來的連接像一次性鎖扣，讓擠壓累積到釋放。",
+        "scope": "限Hamamelis mollis；斷裂門檻未量成通用值。果殼裂縫先出現，不直接等於發射；不把旋轉穩定的作用或旋向說成實驗已分離。 作者也未排除種子重裝後與原先的複雜三維形狀不再吻合，或裂聲另有來源。"
+      },
+      "b_snapshot": {
+        "question": "有些小果莢還濕著，為什麼一碰就把種子彈開？",
+        "answer_target": "滲透處理中，碎米薺果瓣細胞增壓可變厚卻沿長向縮短；成熟時的形狀與壁各向異性變化可在近似定膨壓下建立張力，不對稱木質化鉸鏈再容許果瓣快速捲曲。",
+        "scope": "限Cardamine hirsuta；增壓變厚縮短是滲透處理對照，成熟蓄力模型不需膨壓持續升高。不是所有爆裂果莢都靠此機制，也不說碰觸為唯一發射條件。"
+      }
+    },
+    {
+      "a": "L44-007",
+      "b": "E9010",
+      "decision": "propose_distinct",
+      "reason": "花藥壁翻轉與種殼重新裝填不能重射的組織接點不同。",
+      "a_snapshot": {
+        "question": "金縷梅的果殼已張開，為什麼種子還能卡一會兒，最後才突然彈出去？",
+        "answer_target": "果殼乾燥時張口，內果皮中段卻逐漸夾緊種子。顯微剖面可見種子與果皮之間的組織連接；已射出的種子放回原殼，浸水合攏再乾燥，這次種子較鬆、沒有再射出。結合彈射時的裂聲與殼回縮，研究者提出原來的連接像一次性鎖扣，讓擠壓累積到釋放。",
+        "scope": "限Hamamelis mollis；斷裂門檻未量成通用值。果殼裂縫先出現，不直接等於發射；不把旋轉穩定的作用或旋向說成實驗已分離。 作者也未排除種子重裝後與原先的複雜三維形狀不再吻合，或裂聲另有來源。"
+      },
+      "b_snapshot": {
+        "question": "花藥慢慢失水，為什麼包著花粉的壁會翻開？",
+        "answer_target": "表皮失水改變偏好曲率，內層次生增厚提供不同抗彎/拉伸阻力；受約束花藥壁可跨越幾何門檻翻開。",
+        "scope": "限百合/擬南芥相關模型與觀察；裂口形成前的發育不能省略，模型未預測開啟速度。"
+      }
+    },
+    {
+      "a": "L44-007",
+      "b": "E9005",
+      "decision": "propose_distinct",
+      "reason": "噴瓜的流體重分配改變發射姿態；金縷梅比較原始連接與重新裝入。",
+      "a_snapshot": {
+        "question": "金縷梅的果殼已張開，為什麼種子還能卡一會兒，最後才突然彈出去？",
+        "answer_target": "果殼乾燥時張口，內果皮中段卻逐漸夾緊種子。顯微剖面可見種子與果皮之間的組織連接；已射出的種子放回原殼，浸水合攏再乾燥，這次種子較鬆、沒有再射出。結合彈射時的裂聲與殼回縮，研究者提出原來的連接像一次性鎖扣，讓擠壓累積到釋放。",
+        "scope": "限Hamamelis mollis；斷裂門檻未量成通用值。果殼裂縫先出現，不直接等於發射；不把旋轉穩定的作用或旋向說成實驗已分離。 作者也未排除種子重裝後與原先的複雜三維形狀不再吻合，或裂聲另有來源。"
+      },
+      "b_snapshot": {
+        "question": "噴瓜發射種子前，為什麼果實反而縮小、改變出口方向？",
+        "answer_target": "果實縮小而莖膨大、總質量近似不變，支持液體重新分配使莖挺直的推論；發射角度與逐步下降的噴出速度共同影響落點。",
+        "scope": "限Ecballium elaterium研究；液體再分配為間接推論，莖壁微機制未驗。不是一般食用小黃瓜，也不給觸發/採集操作。"
+      }
+    },
+    {
+      "a": "L44-008",
+      "b": "B2213",
+      "decision": "propose_distinct",
+      "reason": "無蜜花的一般訊號與報酬失配不預測統一礦物表面加哪種脂肪酸會觸發搬離。",
+      "a_snapshot": {
+        "question": "一小粒礦物明明沒附著可吃的種子肉，螞蟻怎麼還會把它搬走？",
+        "answer_target": "研究者把不同的植物萃取物或單種脂肪酸放到相似的珍珠岩小粒上，讓同種林蟻選擇是否搬走。油酸處理的小粒比其他受測脂肪酸的小粒更常被搬走；有些沒有可摘取食物附屬體的真實散播單位也會被搬。搬運反應可以被表面化學線索引出，實際可得的報酬還要另看。",
+        "scope": "限Formica polyctena托盤移除試驗。純化物滴於礦粒，不稱有完整種子或所有螞蟻把種子當屍體；搬離托盤不證實送到適合發芽的地點。"
+      },
+      "b_snapshot": {
+        "question": "蘭花沒有花蜜，怎麼仍可能吸引昆蟲替它傳粉？",
+        "answer_target": "食物訊號與實際報酬不一致的欺騙授粉",
+        "scope": "食物欺騙型蘭花，不說所有蘭花都無蜜"
+      }
+    },
+    {
+      "a": "L44-008",
+      "b": "B2317",
+      "decision": "propose_distinct",
+      "reason": "活體抑制物消退才搬屍，測量的是消失的抑制；螞蟻搬礦物比較外加的正向搬運線索。",
+      "a_snapshot": {
+        "question": "一小粒礦物明明沒附著可吃的種子肉，螞蟻怎麼還會把它搬走？",
+        "answer_target": "研究者把不同的植物萃取物或單種脂肪酸放到相似的珍珠岩小粒上，讓同種林蟻選擇是否搬走。油酸處理的小粒比其他受測脂肪酸的小粒更常被搬走；有些沒有可摘取食物附屬體的真實散播單位也會被搬。搬運反應可以被表面化學線索引出，實際可得的報酬還要另看。",
+        "scope": "限Formica polyctena托盤移除試驗。純化物滴於礦粒，不稱有完整種子或所有螞蟻把種子當屍體；搬離托盤不證實送到適合發芽的地點。"
+      },
+      "b_snapshot": {
+        "question": "阿根廷蟻怎麼在同伴還沒明顯腐敗時，就把屍體搬走？",
+        "answer_target": "活體表面抑制搬運的化學訊號迅速消退，解除既有搬運反應的抑制",
+        "scope": "限阿根廷蟻，不把所有螞蟻死亡辨識都歸為同一分子"
+      }
+    },
+    {
+      "a": "L44-008",
+      "b": "L44-002",
+      "decision": "propose_distinct",
+      "reason": "礦物上的脂肪酸與種子被搬的正向觸發，沒有測消化或真菌存活。",
+      "a_snapshot": {
+        "question": "一小粒礦物明明沒附著可吃的種子肉，螞蟻怎麼還會把它搬走？",
+        "answer_target": "研究者把不同的植物萃取物或單種脂肪酸放到相似的珍珠岩小粒上，讓同種林蟻選擇是否搬走。油酸處理的小粒比其他受測脂肪酸的小粒更常被搬走；有些沒有可摘取食物附屬體的真實散播單位也會被搬。搬運反應可以被表面化學線索引出，實際可得的報酬還要另看。",
+        "scope": "限Formica polyctena托盤移除試驗。純化物滴於礦粒，不稱有完整種子或所有螞蟻把種子當屍體；搬離托盤不證實送到適合發芽的地點。"
+      },
+      "b_snapshot": {
+        "question": "辣椒種子經過鳥的腸道，就算沒搬得更遠，落地後也可能比較能活嗎？",
+        "answer_target": "把野辣椒種子放在同種植株下或附近空地，稍遠處沒有得到免於被搬走的好處。另一項比較中，鳥排出的種子在最初幾天較不易被搬走；未經消化的種子會釋出能吸引食種螞蟻的揮發物。經鳥處理的種子後來真菌感染分數也較低，在擋住捕食者的野外試驗中有較高存活率。",
+        "scope": "玻利維亞兩地族群內的比較，距同種株約5公尺不等於長途散播。氣味是受到數據支持的解釋，未逐次記錄昆蟲吃掉每顆被搬走的種子，也未排除其他種皮變化。"
+      }
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": "全3779原候選與1875既有未收題初篩，保存59與24候選對照；複讀所列近題的題文、答案及範圍。舊種子批未收的「螞蟻附屬體一定等於最好食物」本次由原刊惰性礦物、脂肪酸對照收窄。舊NA曾將L104當小種子光發芽，實讀原題應為L103。",
+  "source_identity": [
+    {
+      "source_id": "L44-S001",
+      "doi": "10.1073/pnas.1205184109",
+      "version": "2012 正式論文，Smithsonian 收錄的刊本 PDF。",
+      "retrieval_url": "https://repository.si.edu/bitstreams/73e6b016-6628-4258-9022-d57ba41a24b9/download",
+      "locator": "刊本 pp.12610–12612，典藏 PDF Web L147–172、175–219、230–253，圖1–3正文與圖說。",
+      "cache": {
+        "file": ".cache/wave44-life-agouti-web.txt",
+        "sha256": "4f8de3600435225717075faad0b903da1c865b216bb4ff1f1c652ec5d8d072eb",
+        "text_file": ".cache/wave44-life-agouti-web.txt",
+        "text_sha256": "4f8de3600435225717075faad0b903da1c865b216bb4ff1f1c652ec5d8d072eb"
+      }
+    },
+    {
+      "source_id": "L44-S002",
+      "doi": "10.1111/ele.12134",
+      "version": "2013 正式論文，Europe PMC 全文 XML。",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3806274/fullTextXML",
+      "locator": "Methods: Escape, Chemical camouflage, Pathogen removal；Results與Discussion，XML段17–27、29–47，圖1、2說明。",
+      "cache": {
+        "file": ".cache/wave44-life-chili.xml",
+        "sha256": "519c66e4d31a84dec1d93bbc976c784ad2508cbd90b8304fb60b3e27106a6cd2",
+        "text_file": ".cache/wave44-life-chili.txt",
+        "text_sha256": "0547a85f49c2eb7717fc784a35b30cac4c3092263b89ddb32a5bf76e0b593773"
+      }
+    },
+    {
+      "source_id": "L44-S003",
+      "doi": "10.1017/S0266467498000169",
+      "version": "1998 正式刊本文本 PDF 副本，刊頭及頁碼核身分。",
+      "retrieval_url": "https://static1.squarespace.com/static/579f7a82e3df28bd59b244eb/t/581249c39f7456092ce43740/1477593542255/Dung%2Bbeetles%2Bas%2Bsecondary%2Bseeds%2Bdispersers.pdf",
+      "locator": "pp.202–211，種子埋深、長／短期移除與人工植入深度試驗，尤pp.208–210/圖2。",
+      "cache": {
+        "file": ".cache/wave44-life-burial.pdf",
+        "sha256": "1488b89aecbf9345771604545e5d319c74b599ac70429a93ac6aa80a7c100543",
+        "text_file": ".cache/wave44-life-burial.txt",
+        "text_sha256": "109defb40e84826544b3b540fc558df636256f9d6487a15e9248bda8b5a835fb"
+      }
+    },
+    {
+      "source_id": "L44-S004",
+      "doi": "10.1073/pnas.0708446105",
+      "version": "2008 正式刊本，Montana State University課程收錄PDF。",
+      "retrieval_url": "https://www.montana.edu/kalinowski/teaching/documents-and-images/12C%20-%20CONGEN%20-%20READING%20-%20Rapid%20evolution%20of%20weed%20dispersal.pdf",
+      "locator": "pp.3796–3798，Results and Discussion及Methods的Cost of Dispersal、Population Differentiation，圖1。",
+      "cache": {
+        "file": ".cache/wave44-life-urban.pdf",
+        "sha256": "6f7c3a1edae107fce285f5d53fbf60bd1a93457691b289d48272356362fe7c52",
+        "text_file": ".cache/wave44-life-urban.txt",
+        "text_sha256": "39065d53a8f00c4d64d62869ba681f632fb807592a7d0633aa829fda985ce8ec"
+      }
+    },
+    {
+      "source_id": "L44-S005",
+      "doi": "10.1098/rsif.2012.0880",
+      "version": "2012線上，2013卷10，作者Georgia Tech刊本PDF，首張為封面。",
+      "retrieval_url": "https://hoogle.gatech.edu/Publications/Hu13-splashcup.pdf",
+      "locator": "PDF pp.3、5–10，圖1、3、6，§§2.6、3.1–3.4、4.1–4.4。",
+      "cache": {
+        "file": ".cache/wave44-life-splash13.pdf",
+        "sha256": "f5c13bedbcc059694cec885871fd45d06a032e7d4d002d2811465bfb1f0583d2",
+        "text_file": ".cache/wave44-life-splash13.txt",
+        "text_sha256": "42dfe096b7672143df5ed707e4693f7bcb6365cf0f7bb2c3f40b46a12488d38b"
+      }
+    },
+    {
+      "source_id": "L44-S006",
+      "doi": "10.1098/rsif.2024.0129",
+      "version": "2024 正式刊本的 PMC HTML。",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11463230/",
+      "locator": "Methods 杯形與5顆/10顆玻璃珠、預濕組，Results 圖2–7及Discussion「Dispersal from initially wet cups」，抽文段36–40、62–79、96–97。",
+      "cache": {
+        "file": ".cache/wave44-life-splash24.html",
+        "sha256": "58ba703a237ea7e3e1c8e333248d6ee49787d6cb75f1e80487f7767a31451a16",
+        "text_file": ".cache/wave44-life-splash24.txt",
+        "text_sha256": "fff06e89bf8229418a4cea7f2743947a6ee03e5f75294890599dd0212dd8a1fa"
+      }
+    },
+    {
+      "source_id": "L44-S007",
+      "doi": "10.1098/rsif.2019.0327",
+      "version": "2019正式刊本PDF的公開副本。",
+      "retrieval_url": "https://www.friendsofeloisebutler.org/pdfdocs/witchhazelseeddispersal.pdf",
+      "locator": "PDF pp.3–5、8–9，§3.3開果序列、§4.2鎖扣對照、圖2–4。",
+      "cache": {
+        "file": ".cache/wave44-life-witch.pdf",
+        "sha256": "bcc6c08834dd4df3bbb2c83aea7dfdbae3848201ca33fd5fd58e2c3201a601fa",
+        "text_file": ".cache/wave44-life-witch.txt",
+        "text_sha256": "ca55d75280eb16c6d2b0cdf56391e4aad8a332fc3f5a2ec980acf79a04b4230d"
+      }
+    },
+    {
+      "source_id": "L44-S008",
+      "doi": "10.1111/j.1365-2435.2009.01661.x",
+      "version": "2010卷24，刊方正式全文Web。",
+      "retrieval_url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.1365-2435.2009.01661.x",
+      "locator": "Methods中Preparation of seed dummies、Results中Removal of diaspores與fatty acids，Web L165–197、252–265、294–314。",
+      "cache": {
+        "file": ".cache/wave44-life-ant-web.txt",
+        "sha256": "aba10e5227a42c6bac1a7e978eb2f5fdab547f9e9fa7d17807b8d17cf2236ced",
+        "text_file": ".cache/wave44-life-ant-web.txt",
+        "text_sha256": "aba10e5227a42c6bac1a7e978eb2f5fdab547f9e9fa7d17807b8d17cf2236ced"
+      }
+    }
+  ],
+  "source_relationships": "8篇不同論文；雨滴兩篇在模型、杯角範圍與比較上有承接，不能報成對野外真種結果的兩次獨立複驗。機構典藏與原刊不重計。",
+  "visual_reads": [
+    {
+      "file": ".cache/wave44-life-figures.jpg",
+      "sha256": "0be8926db7dd28615885e2a7488c39a95c81987c7ac8c08cb6e98e96ca81e06c",
+      "scope": "拼頁獨立目讀城市PDF p2圖1及模型圖2、埋藏PDF p11圖2、金縷梅PDF p5圖3及早期過程、斜杯PDF p6圖3的水片對稱和落點。其餘以定點正文與圖說，未看SI影片。"
+    }
+  ],
+  "source_failures": [
+    "XML：splash13/24、urban、burial替選beetle、witch/pinch等回500；成功的替代路線逐條在來源。NCBI BioC返回未驗正文的HTML，未採。",
+    "Agouti兩條Smithsonian直抓403，PMC為驗證頁；只讀web實際打開典藏PDF所回正文。Wiley螞蟻論文直抓403，改web指定正文。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W44L-T01",
+      "body_seconds": 79,
+      "chapters": [
+        41,
+        38
+      ],
+      "core_totals": {
+        "L44-001": 79
+      },
+      "caps": {
+        "L44-001": 90
+      }
+    },
+    {
+      "id": "W44L-T02",
+      "body_seconds": 73,
+      "chapters": [
+        34,
+        39
+      ],
+      "core_totals": {
+        "L44-005": 34,
+        "L44-006": 39
+      },
+      "caps": {
+        "L44-005": 63,
+        "L44-006": 70
+      }
+    },
+    {
+      "id": "W44L-T03",
+      "body_seconds": 66,
+      "chapters": [
+        28,
+        38
+      ],
+      "core_totals": {
+        "L44-002": 66
+      },
+      "caps": {
+        "L44-002": 76
+      }
+    },
+    {
+      "id": "W44L-T04",
+      "body_seconds": 67,
+      "chapters": [
+        33,
+        34
+      ],
+      "core_totals": {
+        "L44-004": 67
+      },
+      "caps": {
+        "L44-004": 82
+      }
+    },
+    {
+      "id": "W44L-T05",
+      "body_seconds": 63,
+      "chapters": [
+        31,
+        32
+      ],
+      "core_totals": {
+        "L44-003": 63
+      },
+      "caps": {
+        "L44-003": 76
+      }
+    }
+  ],
+  "timing_probe": {
+    "file": ".cache/w44-sample-life.json",
+    "sha256": "e3914348109c1bb63da533152c8ed4eeab92991d2cefc66481488eb1f8a3ead0",
+    "episode": "W44L-T01",
+    "continuous_read_seconds": 70.901,
+    "plan_seconds": 79,
+    "visual_allowance_seconds": 8.099,
+    "scope": "根代理離線三段連讀；餘案是紙上估時。"
+  },
+  "revision_history": [
+    {
+      "before_files": [
+        {
+          "file": "batches/wave44-life.json",
+          "sha256": "0680823ce80e3a788bbc0e47712de96825fa8cc92c4d8c9fad32afb060d3203a"
+        },
+        {
+          "file": "reviews/wave44-life-themes.json",
+          "sha256": "3773ebeab6f7abe7d22623ab5bacb3aa32c3a3a81249e3cd7f9444b327e3b6fd"
+        },
+        {
+          "file": "reviews/wave44-life-author.json",
+          "sha256": "c7b0922f9da84842d514c52353ab2c6d6cd6a503ffaa146a459d87cf5604c024"
+        }
+      ],
+      "after_batch_sha256": "aaa513a6e5cea94bb30084efe02fd3d0b00242de221ff8a4674f54d7f96faaf1",
+      "after_themes_sha256": "7edc17e751a13bdace158e52106a55bf5fe3422fb83f712638e799fe5938cb6f",
+      "changes": [
+        "L44-003 及 T05 分開淺埋的移除比較與十公分只測出苗。",
+        "T03 末拍將室內真菌評分與另一批野外擋捕食者存活分為兩個試驗。",
+        "L44-007／S007 說明重裝難復原三維配合和裂聲其他來源都未排除，結構性鎖扣是作者解釋。"
+      ],
+      "removed_seconds": 0
+    }
+  ],
+  "limits": "獨立作者與下一位覆核者分開。資料為題級來源、紙上企劃及一支離線樣讀，未製作媒體。"
+}

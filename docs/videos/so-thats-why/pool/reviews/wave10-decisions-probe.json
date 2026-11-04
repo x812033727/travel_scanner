@@ -1,0 +1,92 @@
+{
+  "status": "PASS_EXACT_TOY_MODEL_ARITHMETIC",
+  "method": "Python standard library fractions.Fraction and exhaustive finite profiles; no random simulation or empirical sampling",
+  "simpson": {
+    "A": [
+      "9/10",
+      "1/5",
+      "29/110"
+    ],
+    "B": [
+      "4/5",
+      "1/10",
+      "81/110"
+    ]
+  },
+  "profile": [
+    [
+      "ABC",
+      5
+    ],
+    [
+      "BCA",
+      4
+    ],
+    [
+      "CAB",
+      2
+    ]
+  ],
+  "pairwise_wins_out_of_11": {
+    "AB": 7,
+    "BC": 9,
+    "CA": 6
+  },
+  "borda3": {
+    "A": 12,
+    "B": 13,
+    "C": 8
+  },
+  "borda_without_C": {
+    "A": 7,
+    "B": 4
+  },
+  "allocation4": {
+    "quotas": [
+      "20/9",
+      "4/3",
+      "4/9"
+    ],
+    "allocation": [
+      2,
+      1,
+      1
+    ]
+  },
+  "allocation5": {
+    "quotas": [
+      "25/9",
+      "5/3",
+      "5/9"
+    ],
+    "allocation": [
+      3,
+      2,
+      0
+    ]
+  },
+  "monty_fixed_initial_door1": [
+    {
+      "prize": 1,
+      "switch_wins": false
+    },
+    {
+      "prize": 2,
+      "switch_wins": true
+    },
+    {
+      "prize": 3,
+      "switch_wins": true
+    }
+  ],
+  "birthday23": {
+    "pairs": 253,
+    "at_least_one_match": 0.5072972343239854,
+    "any_of_22_matches_fixed_person": 0.058571325264343346
+  },
+  "coupon6": {
+    "total_expected": "147/10",
+    "last_expected": 6
+  },
+  "limits": "自設數字模型之計算；不是實驗、真實生日分布、商品機率或現行分配制度驗證。"
+}

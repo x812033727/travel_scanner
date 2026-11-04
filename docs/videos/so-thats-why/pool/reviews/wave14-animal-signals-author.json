@@ -1,0 +1,452 @@
+{
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave14-animal-signals-20261101",
+  "author": "pool_life_tech",
+  "created_on": "2026-11-01",
+  "candidate_count": 6,
+  "source_count": 9,
+  "not_added_count": 25,
+  "candidate_ids": [
+    "A14001",
+    "A14002",
+    "A14003",
+    "A14004",
+    "A14005",
+    "A14006"
+  ],
+  "authored_files": [
+    {
+      "file": "batches/wave14-animal-signals.json",
+      "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
+    },
+    {
+      "file": "reviews/wave14-animal-signals-themes.json",
+      "sha256": "2e5c104b29ca60e2a3e2e8b7784c44de62240474c91432d1a6da1909370a2f2c"
+    }
+  ],
+  "baseline_scan": {
+    "file": "pool.json",
+    "sha256": "1b07b2ca7a656dda15d51d70dab863f2c78b592bdaab8ca0d39010b8f3295c6b",
+    "raw_count": 3262,
+    "not_added_count": 646,
+    "queries": [
+      {
+        "query": "溝通|警報|求偶|模仿|群體|訊號|同步|舞蹈|鳴叫|費洛蒙|螢火|投票|領袖|招募|鳥歌|鯨歌|蟻|蜂|海豚",
+        "raw_hits": 205,
+        "not_added_hits": 24
+      },
+      {
+        "query": "語序|聲紋|海豚|名字|姓名|警報|呼叫|叫聲|跨感官|跨模態|意圖|心智|帶路|接觸.*回饋|空檔",
+        "raw_hits": 35,
+        "not_added_hits": 9
+      }
+    ],
+    "method_limits": "全庫文字掃描後逐讀相關近對；不聲稱逐條手讀3262題或全庫無漏，仍待共同語意近鄰與另一代理。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "A14001",
+      "b": "B2006",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "既有求偶互動序列；新核是接收同樣兩單元的正常/倒序解讀控制，不是整套行為先後。",
+      "compared_record": {
+        "id": "B2006",
+        "question": "有些動物求偶為什麼像對暗號，少一個回應就停下來？",
+        "answer_target": "相互銜接的展示與回應構成求偶辨識過程。",
+        "scope": "來源所述儀式化求偶序列，不當成每種動物的固定規則。"
+      }
+    },
+    {
+      "a": "A14001",
+      "b": "B2281",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核僅警報功能；新核比較兩個意義單元組合是否不分順序相加。",
+      "compared_record": {
+        "id": "B2281",
+        "question": "河狸忽然用尾巴拍水，這個大聲響是在傳什麼訊息？",
+        "answer_target": "水面拍擊向同伴傳遞警戒線索",
+        "scope": "限警報功能，不採年幼者警報必被忽略敘述"
+      }
+    },
+    {
+      "a": "A14001",
+      "b": "B2046",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核為物種閃光圖樣辨識，新核要用單元獨立功能與倒序對照判組合效果。",
+      "compared_record": {
+        "id": "B2046",
+        "question": "兩種螢火蟲同時發光，為什麼不一定把彼此當成伴侶？",
+        "answer_target": "求偶訊號時序差異可形成辨識障礙。",
+        "scope": "物種間閃光辨識，不泛化所有螢火蟲都靠同一種燈號。"
+      }
+    },
+    {
+      "a": "A14002",
+      "b": "Z7002",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核CO2提高特定視覺反應；新核以兩種叫聲×兩種運動樣式分離目標選擇與泛增益，不能縮成泛跨感官增益。",
+      "compared_record": {
+        "id": "Z7002",
+        "question": "同一個移動畫面，蚊子為什麼聞過二氧化碳後反應更強？",
+        "answer_target": "二氧化碳線索可提高受測蚊子對特定視覺刺激的反應，部分視覺區域活動也增強，形成跨感官的反應增益。",
+        "scope": "雌性埃及斑蚊、繫留視覺場與鈣成像研究；不把所有視覺刺激或自然尋人過程說成固定順序。"
+      }
+    },
+    {
+      "a": "A14002",
+      "b": "B2281",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核沒有訊號類型×目標外觀/運動的選擇性測試。",
+      "compared_record": {
+        "id": "B2281",
+        "question": "河狸忽然用尾巴拍水，這個大聲響是在傳什麼訊息？",
+        "answer_target": "水面拍擊向同伴傳遞警戒線索",
+        "scope": "限警報功能，不採年幼者警報必被忽略敘述"
+      }
+    },
+    {
+      "a": "A14002",
+      "b": "C2005",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "偵測門檻權衡並非特定警報選擇蛇樣目標的控制，仍需防止腳本退化成緊張而誤報。",
+      "compared_record": {
+        "id": "C2005",
+        "question": "越怕錯過提示，為什麼也可能報出更多假警報？",
+        "answer_target": "分辨敏感度與判定門檻的權衡。",
+        "scope": "教材為入口，進稿補含命中/誤報的原研究。"
+      }
+    },
+    {
+      "a": "A14003",
+      "b": "B2284",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核同巢氣味身分特徵；新核隔離可複製的學得輪廓與發聲者聲紋，不只是換到聲音辨個體。",
+      "compared_record": {
+        "id": "B2284",
+        "question": "守門蜂怎麼辨認回來的是自己人，還是別巢的蜜蜂？",
+        "answer_target": "蜂群化學特徵提供巢友辨識線索",
+        "scope": "不把氣味說成永不變動的唯一密碼"
+      }
+    },
+    {
+      "a": "A14003",
+      "b": "LEG-S61",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核犬分泌氣味差異的社交推論；新核有合成刺激控制，個體資訊不依賴原聲紋。",
+      "compared_record": {
+        "id": "LEG-S61",
+        "question": "為什麼狗見面要互聞屁股？",
+        "answer_target": "狗的肛門兩側有一對肛門囊，分泌物帶有脂肪酸等揮發性氣味，成分因個體、性別而異，一部分可能由囊內細菌產生。目前的解釋是狗藉此得知對方的身分、狀態，像交換名片；但這仍是推論，直接實驗證據有限。",
+        "scope": "沿用 S61 題級條件，須讀原查核包的限制；犬隻氣味溝通可短答，不擬人化成固定社交台詞。"
+      }
+    },
+    {
+      "a": "A14004",
+      "b": "Z7004",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "改發聲時點以配合有條件的靜音窗口，非改電放電頻率分離干擾。",
+      "compared_record": {
+        "id": "Z7004",
+        "question": "兩條電魚的放電頻率太接近，為什麼其中一條會改變節奏？",
+        "answer_target": "接近頻率的自發電訊號互相干擾，改變自身放電頻率可拉開差距，減少對電感測的干擾。",
+        "scope": "研究室所述南美刀魚；較低頻個體是否下調依物種而異，不畫成每一對魚都對稱分頻。"
+      }
+    },
+    {
+      "a": "A14004",
+      "b": "Z7009",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "不是回聲頻移補償，而是噪音時間結構改變呼叫起始。",
+      "compared_record": {
+        "id": "Z7009",
+        "question": "蝙蝠越飛越快，為什麼有些反而會把叫聲頻率降下來？",
+        "answer_target": "向前飛行提高前方反射回聲頻率；降低發出的恆頻成分，可讓回聲落在聽覺敏感的窄頻區。",
+        "scope": "特定高占空比 CF-FM 蝙蝠；論文研究 Hipposideros armiger，不能概括所有蝙蝠。"
+      }
+    },
+    {
+      "a": "A14005",
+      "b": "B2005",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "單向路徑化學標記和雙向接觸調速不同；本題不說所有螞蟻皆此帶路法。",
+      "compared_record": {
+        "id": "B2005",
+        "question": "螞蟻留下的氣味，怎麼能讓沒看見食物的同伴也找到路？",
+        "answer_target": "化學訊號把食物路徑留給同種接收者。",
+        "scope": "具有路徑費洛蒙的社會性昆蟲，不推廣至所有螞蟻。"
+      }
+    },
+    {
+      "a": "A14005",
+      "b": "Z7015",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "共同貨物的力耦合轉向，與領隨者直接接觸調步速不同。",
+      "compared_record": {
+        "id": "Z7015",
+        "question": "一群螞蟻搬食物，為什麼剛加入的一隻反而能帶頭轉向？",
+        "answer_target": "新加入者帶入較新方向資訊；其拉力經共同貨物傳遞，其他搬運者的協調可放大短暫轉向，領路者因而不必固定。",
+        "scope": "Paratrechina longicornis 搬運研究；力耦合是符合觀察的模型，不能宣稱已排除所有化學訊號。"
+      }
+    },
+    {
+      "a": "A14005",
+      "b": "B2247",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "觀察同伴解題不等雙向接觸回饋，不以教學名詞籠統重包裝。",
+      "compared_record": {
+        "id": "B2247",
+        "question": "熊蜂看過同伴解開兩步機關後，為什麼也可能學會沒有立即獎勵的第一步？",
+        "answer_target": "社會觀察協助習得延後獎勵的行為序列",
+        "scope": "2024 兩步箱實驗；不宣稱證明人類式累積文化"
+      }
+    },
+    {
+      "a": "A14005",
+      "b": "B2316",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "群體跨選項抑制，不是兩個個體的距離/接觸節奏回饋。",
+      "compared_record": {
+        "id": "B2316",
+        "question": "蜜蜂找新家意見分成兩派，怎麼避免一直僵持？",
+        "answer_target": "支持不同巢址的偵察蜂彼此發停止訊號，交叉抑制與招募競爭共同改變集體選擇",
+        "scope": "限尋巢情境；可靠性改善來自論文模型，不能稱所有蜂群必選最佳"
+      }
+    },
+    {
+      "a": "A14006",
+      "b": "B2281",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "新核不是警報功能，而是前次同伴資訊影響後來發訊及監看。",
+      "compared_record": {
+        "id": "B2281",
+        "question": "河狸忽然用尾巴拍水，這個大聲響是在傳什麼訊息？",
+        "answer_target": "水面拍擊向同伴傳遞警戒線索",
+        "scope": "限警報功能，不採年幼者警報必被忽略敘述"
+      }
+    },
+    {
+      "a": "A14006",
+      "b": "S10001",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "不是對配對自身命令建立神經抵銷；此為固定同伴身份、變先前訊息的社交行為條件，未測細胞機制。",
+      "compared_record": {
+        "id": "S10001",
+        "question": "同樣的電脈衝，為什麼跟放電指令配對後，神經反應會逐漸減弱？",
+        "answer_target": "命令與干擾定時配對使可塑性輸入形成時間特定的負像；非配對同脈衝不見同樣學習，且獵物式訊號的敏感度未被整體關掉。",
+        "scope": "限Gnathonemus petersii受控EOD模擬與神經/novelty-response測試；配對不是任何情境的充分條件，AP5也改變基礎命令反應，不能說單獨無副作用地阻斷負像。"
+      }
+    }
+  ],
+  "source_identity": {
+    "counting": "9個來源記錄，8篇原研究加1篇同一研究的第一方報告；URL/篇數均不等於獨立實驗或獨立重現數。",
+    "relations": [
+      {
+        "source_ids": [
+          "A14-S001",
+          "A14-S002"
+        ],
+        "relationship": "同一主作者與研究系統；2016順序播放和2018聲音×木棍運動為不同設計，2018沿用先前叫聲錄音，非全新獨立團隊。"
+      },
+      {
+        "source_ids": [
+          "A14-S003",
+          "A14-S004"
+        ],
+        "relationship": "2006與2013共享Janik，兩個地點/設計的研究；身份輪廓辨識與複製回答在本批只計同一核心，非互相獨立replication。"
+      },
+      {
+        "source_ids": [
+          "A14-S005"
+        ],
+        "relationship": "UCSD實驗室的出版PDF是同一DOI原研究副本，非新研究；PMC3192021僅發現未另讀/計源。"
+      },
+      {
+        "source_ids": [
+          "A14-S006",
+          "A14-S007"
+        ],
+        "relationship": "ResearchGate標作者Franks上傳的Nature單頁主文與Bristol團隊報告，同一2006研究；官方報告的觸碰干預細節不能標成已核原補充方法。"
+      },
+      {
+        "source_ids": [
+          "A14-S008",
+          "A14-S009"
+        ],
+        "relationship": "2017 Exp1重新分析先前觀察的非聲音行為，Exp2另為播放；只用Exp2主支撐。2024共享研究站與部分團隊、不同蜘蛛模型設計，非2017播放實驗獨立重現；其不顯著聲音結果與替代解釋限制泛化。"
+      }
+    ],
+    "historical_comparison": [
+      {
+        "source_id": "A14-S001",
+        "doi": "10.1038/ncomms10986",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      },
+      {
+        "source_id": "A14-S002",
+        "doi": "10.1073/pnas.1718884115",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      },
+      {
+        "source_id": "A14-S003",
+        "doi": "10.1073/pnas.0509918103",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      },
+      {
+        "source_id": "A14-S004",
+        "doi": "10.1073/pnas.1304459110",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      },
+      {
+        "source_id": "A14-S005",
+        "doi": "10.1242/jeb.056101",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      },
+      {
+        "source_id": "A14-S006",
+        "doi": "10.1038/439153a",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      },
+      {
+        "source_id": "A14-S007",
+        "doi": "",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      },
+      {
+        "source_id": "A14-S008",
+        "doi": "10.1126/sciadv.1701742",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      },
+      {
+        "source_id": "A14-S009",
+        "doi": "10.7717/peerj.18498",
+        "historical_exact_identity_ids": [],
+        "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+      }
+    ]
+  },
+  "source_reading": {
+    "method": "當日web查版本/可用正文；指定UA urllib抓取公開官方XML或HTML/作者實驗室PDF；只讀sources.reading_scope指定段。",
+    "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "source_cache_count": 8,
+    "web_only_sources": [
+      "A14-S006"
+    ],
+    "failures": [
+      {
+        "key": "snake",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5816198/fullTextXML",
+        "failure": "HTTP Error 500: "
+      },
+      {
+        "key": "dolphin-label",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3740840/fullTextXML",
+        "failure": "HTTP Error 500: "
+      },
+      {
+        "key": "dolphin-shape",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1472465/fullTextXML",
+        "failure": "HTTP Error 500: "
+      },
+      {
+        "key": "quorum",
+        "url": "https://academic.oup.com/beheco/article/16/2/488/297922",
+        "failure": "HTTP Error 403: Forbidden"
+      },
+      {
+        "key": "tandem-author",
+        "url": "https://www.researchgate.net/publication/7364080_Teaching_in_tandem-running_ants",
+        "failure": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "copyright": "不搬原文/圖表/叫聲/影片；外文全文僅忽略cache；所有可追蹤提問與摘要自寫。"
+  },
+  "editorial_check": {
+    "episodes": [
+      {
+        "id": "W14A-T01",
+        "body_seconds": 125,
+        "core_seconds": {
+          "A14001": 125
+        },
+        "max_beat_seconds": 30
+      },
+      {
+        "id": "W14A-T02",
+        "body_seconds": 140,
+        "core_seconds": {
+          "A14003": 140
+        },
+        "max_beat_seconds": 35
+      },
+      {
+        "id": "W14A-T03",
+        "body_seconds": 100,
+        "core_seconds": {
+          "A14005": 100
+        },
+        "max_beat_seconds": 30
+      },
+      {
+        "id": "W14A-T04",
+        "body_seconds": 105,
+        "core_seconds": {
+          "A14004": 105
+        },
+        "max_beat_seconds": 30
+      }
+    ],
+    "unassigned_candidates": [
+      "A14002",
+      "A14006"
+    ],
+    "reason": "有內容可留池，不因六題就串成六段百科；四案都是同一追問下改變控制條件。",
+    "status": "AUTHOR_ARITHMETIC_AND_STRUCTURE_ONLY_NOT_SCRIPT_OR_RETENTION_TEST"
+  },
+  "review_requests": [
+    "A14002相對Z7002是否選擇性新條件足夠，若最後只剩泛增益則合併。",
+    "A14006解釋層為社交訊息條件而非已定位的認知電路；若推理厚度不足可暫緩。",
+    "A14003未定位回應者限制要保留，A14005替代觸碰來源層次不能升格。",
+    "4個單核心雙章是否都有新對照而非格式拆章；可縮時不保片數。"
+  ],
+  "production_status": "題級候選與紙上企劃；未寫稿/未試讀/未製作，等待非作者與中央去重。",
+  "revision_history": [
+    {
+      "reason": "依非作者 pool_physics 的刪重述覆核；不改候選、來源或答案。",
+      "before_files": [
+        {
+          "file": "batches/wave14-animal-signals.json",
+          "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
+        },
+        {
+          "file": "reviews/wave14-animal-signals-themes.json",
+          "sha256": "4bef45a258f4e726721cb59c98fec810ada207030cb76b769c8ea3bcbb4bf1a2"
+        },
+        {
+          "file": "reviews/wave14-animal-signals-author.json",
+          "sha256": "6df31f3694530881854bb9f7940ee0c132589e527bb7d2e1361f5b9bbec58f57"
+        }
+      ],
+      "changes": [
+        {
+          "id": "W14A-T02",
+          "change": "第二章純模型重設15→5秒，80→70，全片150→140秒，時碼/range/drop同步。"
+        },
+        {
+          "id": "W14A-T04",
+          "change": "第一章末純回顧轉問15→5秒，60→50，全片115→105秒，時碼/range/drop同步。"
+        }
+      ],
+      "after_batch_sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed",
+      "after_themes_sha256": "2e5c104b29ca60e2a3e2e8b7784c44de62240474c91432d1a6da1909370a2f2c",
+      "status": "AUTHOR_CORRECTED_PENDING_TARGETED_READBACK"
+    }
+  ]
+}

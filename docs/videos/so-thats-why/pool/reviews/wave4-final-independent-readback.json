@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "status": "PASS_FINAL_INTEGRATION_READBACK_ONLY",
+  "production_ready": false,
+  "scope": "最後中央資料與既有作者/獨立覆核收據的唯讀整合核對。沒有重新查閱所有來源、重跑專案測試、重跑G37瀏覽器小樣、完整稿盲讀、旁白試讀或觀眾測試。",
+  "independence": "本代理是交通批作者及建築批獨立覆核者。本次交通僅核對root另行覆核收據、雜湊與中央採用結果，不以作者自己作新的事實通過。其他批依既存另一人覆核/修正追認鏈讀回。",
+  "method": [
+    "解析現行pool/themes/dedup/integration與2328封存快照，逐ID比較選入狀態及舊raw物件；這是資料讀回，不是執行repo測試套件。",
+    "逐項核對四批batch與作者鎖定、獨立review、最新followup/recheck的SHA-256；歷史review原hash保留，以明列修正追認hash為現行依據。",
+    "檢查48題組的canonical選入ID、章節引用、正整數秒數/總長/非核准狀態；10個新題組比對作者proposal的素材、章節秒數、範圍、刪段及證據缺口。",
+    "讀G37完整中央章節及treatment，對照已完成的獨立followup，核對三核心220秒、移出素材仍留池。",
+    "讀G39糖章與後續章的條件切換，對照食品recheck所列分鏡限制；不重新替糖/蛋白機制做來源核准。",
+    "唯讀本輪render.mjs和pool.test.mjs浮點修正diff；未執行測試。"
+  ],
+  "result": {
+    "counts": {
+      "raw_records": 2790,
+      "canonical_questions": 2673,
+      "eligible_candidates": 2508,
+      "selected_candidates": 2449,
+      "alias_records": 117,
+      "historical_records": 313,
+      "source_urls": 3799,
+      "current_research_source_urls": 831,
+      "selected_source_urls": 2054,
+      "new_suggestions_not_added": 223,
+      "high_similarity_pending": 0,
+      "approved_scripts": 0
+    },
+    "theme_count": 48,
+    "hash_bindings": [
+      {
+        "path": "batches/wave4-digital-text.json",
+        "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "batches/wave4-food-kitchen.json",
+        "sha256": "cc4a437a6b2b3c9b164ad1c92255c18be1e686404723756452ee70ac747b2b21",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "batches/wave4-home-buildings.json",
+        "sha256": "9a7e51acb29c46e4e4eb1fa96250bcace8c38b3a99ee37ff74af6f29f5ba14ea",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "batches/wave4-transport-cities.json",
+        "sha256": "386e8eca137aba5bd3adfa4264cff6ee4ac8256f493c5eef9c5bd39a12d95b88",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "reviews/wave4-physics-reviews-food.json",
+        "sha256": "4abda73aa4059fb2d250c0d69969a956d17e663c91c6a481d1fe4714688eddc5",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "reviews/wave4-science-reviews-home.json",
+        "sha256": "5dea45721f1516138713ec9fdf60768ddb1a236e24a8d27cb92596aa8b586812",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "reviews/wave4-root-reviews-transport.json",
+        "sha256": "2d15ce966454360e616b3498a08f11cb9640e0b05cf3d4a1a935ab2c77fa75c5",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "reviews/wave4-life-reviews-text.json",
+        "sha256": "cfad17b969a56bb06f12914bf45383b351de25c8fa865ca4d723ecaa2ee9e828",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "reviews/wave4-root-old-pairs.json",
+        "sha256": "ee71341556711d43b5e92df4181518713b3a2cb842734400a01796e98b21a17c",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "reviews/wave4-g37-independent-review.json",
+        "sha256": "eac4847c11ee3eadafe3a1e8995fcc0af4b4c7ad376cb2f9647c7cfbc41845e5",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "reviews/wave4-physics-rechecks-food.json",
+        "sha256": "a5fb530f51be5675100029d97043a0fac611660518e5a92be0318f8a27478f11",
+        "matches": true,
+        "context": "central integration"
+      },
+      {
+        "path": "batches/wave4-food-kitchen.json",
+        "sha256": "cc4a437a6b2b3c9b164ad1c92255c18be1e686404723756452ee70ac747b2b21",
+        "matches": true,
+        "context": "food targeted recheck"
+      },
+      {
+        "path": "reviews/wave4-food-themes.json",
+        "sha256": "6b2c5abfe8dbf5b3720634ffb3e8f8b83f46cb01dae42f62a97c0d17eeecc6ec",
+        "matches": true,
+        "context": "food targeted recheck"
+      },
+      {
+        "path": "reviews/wave4-food-author.json",
+        "sha256": "6cf50dfb8c2c05db9c27359973a46373b3398ca78f8b320c950bf23f5aaea514",
+        "matches": true,
+        "context": "food targeted recheck"
+      },
+      {
+        "path": "batches/wave4-home-buildings.json",
+        "sha256": "9a7e51acb29c46e4e4eb1fa96250bcace8c38b3a99ee37ff74af6f29f5ba14ea",
+        "matches": true,
+        "context": "home final independent review"
+      },
+      {
+        "path": "reviews/wave4-home-themes.json",
+        "sha256": "3f8e532e2fd269b9d79394a5d5033525ad933fe3cc9dd17a8ae9a2aa8a23bf14",
+        "matches": true,
+        "context": "home final independent review"
+      },
+      {
+        "path": "reviews/wave4-home-author.json",
+        "sha256": "3a694c5583b7e2f33049a3a5f519b1fe4f6fc423ebdafb44b96aa99aa0c0e18e",
+        "matches": true,
+        "context": "home final independent review"
+      },
+      {
+        "path": "batches/wave4-transport-cities.json",
+        "sha256": "386e8eca137aba5bd3adfa4264cff6ee4ac8256f493c5eef9c5bd39a12d95b88",
+        "matches": true,
+        "context": "transport independent review"
+      },
+      {
+        "path": "reviews/wave4-transport-themes.json",
+        "sha256": "722e8793ceffe45d89d7bdbc38bf71e65f4e5b01cd5ed929190155e4d14a56bb",
+        "matches": true,
+        "context": "transport independent review"
+      },
+      {
+        "path": "batches/wave4-digital-text.json",
+        "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc",
+        "matches": true,
+        "context": "text correction followup"
+      },
+      {
+        "path": "reviews/wave4-text-themes.json",
+        "sha256": "f10af39c08a3c4ac368be2091ca29c52591b169d64beaa97dd5628fa3dd5d755",
+        "matches": true,
+        "context": "text correction followup"
+      },
+      {
+        "path": "treatments/G37/treatment.json",
+        "sha256": "9533d53425889ed6c036c72c394eb27b999d96585665a13eb98b0a4ff03aaac4",
+        "matches": true,
+        "context": "G37 correction followup"
+      },
+      {
+        "path": "treatments/G37/demo.html",
+        "sha256": "b40819e8cd1f76ad209f3ff7e94a06dd37e592b46dd4c01c15e49a298fe3bf3c",
+        "matches": true,
+        "context": "G37 correction followup"
+      },
+      {
+        "path": "treatments/G37/verify-demo.mjs",
+        "sha256": "d8088a30255def58749616beb87608177cb974fd04338119e626eb0f83cf0cd3",
+        "matches": true,
+        "context": "G37 correction followup"
+      },
+      {
+        "path": "reviews/wave4-g37-demo.json",
+        "sha256": "4402df2ab71399d957850c33ac10165afb029ad534b8254fcaf06fdce9bcc127",
+        "matches": true,
+        "context": "G37 correction followup"
+      },
+      {
+        "path": "batches/wave4-food-kitchen.json",
+        "sha256": "cc4a437a6b2b3c9b164ad1c92255c18be1e686404723756452ee70ac747b2b21",
+        "matches": true,
+        "context": "reviews/wave4-food-author.json"
+      },
+      {
+        "path": "reviews/wave4-food-themes.json",
+        "sha256": "6b2c5abfe8dbf5b3720634ffb3e8f8b83f46cb01dae42f62a97c0d17eeecc6ec",
+        "matches": true,
+        "context": "reviews/wave4-food-author.json"
+      },
+      {
+        "path": "batches/wave4-digital-text.json",
+        "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc",
+        "matches": true,
+        "context": "reviews/wave4-text-author.json"
+      },
+      {
+        "path": "reviews/wave4-text-themes.json",
+        "sha256": "f10af39c08a3c4ac368be2091ca29c52591b169d64beaa97dd5628fa3dd5d755",
+        "matches": true,
+        "context": "reviews/wave4-text-author.json"
+      },
+      {
+        "path": "batches/wave4-transport-cities.json",
+        "sha256": "386e8eca137aba5bd3adfa4264cff6ee4ac8256f493c5eef9c5bd39a12d95b88",
+        "matches": true,
+        "context": "transport author"
+      },
+      {
+        "path": "reviews/wave4-transport-themes.json",
+        "sha256": "722e8793ceffe45d89d7bdbc38bf71e65f4e5b01cd5ed929190155e4d14a56bb",
+        "matches": true,
+        "context": "transport author"
+      },
+      {
+        "path": "batches/wave4-home-buildings.json",
+        "sha256": "9a7e51acb29c46e4e4eb1fa96250bcace8c38b3a99ee37ff74af6f29f5ba14ea",
+        "matches": true,
+        "context": "home author"
+      },
+      {
+        "path": "reviews/wave4-home-themes.json",
+        "sha256": "3f8e532e2fd269b9d79394a5d5033525ad933fe3cc9dd17a8ae9a2aa8a23bf14",
+        "matches": true,
+        "context": "home author"
+      }
+    ],
+    "failures": [],
+    "build_inputs": {
+      "checked": 249,
+      "mismatches": []
+    },
+    "baseline": {
+      "old_selected_count": 2328,
+      "old_selected_removed": [],
+      "old_raw_count": 2661,
+      "old_raw_changed_or_missing": [],
+      "new_raw_count": 129,
+      "new_selected_count": 121
+    },
+    "merges": [
+      {
+        "duplicate_id": "F4004",
+        "canonical_id": "F4003",
+        "raw_variant_sources_preserved": true,
+        "applied": true
+      },
+      {
+        "duplicate_id": "F4018",
+        "canonical_id": "D2025",
+        "raw_variant_sources_preserved": true,
+        "applied": true
+      },
+      {
+        "duplicate_id": "F4020",
+        "canonical_id": "D2200",
+        "raw_variant_sources_preserved": true,
+        "applied": true
+      },
+      {
+        "duplicate_id": "U4010",
+        "canonical_id": "L247",
+        "raw_variant_sources_preserved": true,
+        "applied": true
+      }
+    ],
+    "holds": [
+      {
+        "id": "F4009",
+        "eligible": false,
+        "selected": false,
+        "raw_preserved": true,
+        "applied": true
+      },
+      {
+        "id": "F4019",
+        "eligible": false,
+        "selected": false,
+        "raw_preserved": true,
+        "applied": true
+      },
+      {
+        "id": "T4019",
+        "eligible": false,
+        "selected": false,
+        "raw_preserved": true,
+        "applied": true
+      },
+      {
+        "id": "U4013",
+        "eligible": false,
+        "selected": false,
+        "raw_preserved": true,
+        "applied": true
+      }
+    ],
+    "delta": {
+      "merges_added": [
+        [
+          "F4004",
+          "F4003"
+        ],
+        [
+          "F4018",
+          "D2025"
+        ],
+        [
+          "F4020",
+          "D2200"
+        ],
+        [
+          "U4010",
+          "L247"
+        ]
+      ],
+      "holds_added": [
+        "F4009",
+        "F4019",
+        "T4019",
+        "U4013"
+      ]
+    },
+    "theme_validation": {
+      "checked": 48,
+      "invalid": []
+    },
+    "proposal_mapping": [
+      {
+        "proposal_id": "W4F-T01",
+        "theme_id": "G39",
+        "seconds": 210,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": [
+          [
+            2,
+            "new_information"
+          ]
+        ]
+      },
+      {
+        "proposal_id": "W4F-T02",
+        "theme_id": "G40",
+        "seconds": 160,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      },
+      {
+        "proposal_id": "W4F-T03",
+        "theme_id": "G41",
+        "seconds": 150,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      },
+      {
+        "proposal_id": "W4B-T01",
+        "theme_id": "G42",
+        "seconds": 335,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      },
+      {
+        "proposal_id": "W4B-T02",
+        "theme_id": "G43",
+        "seconds": 345,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      },
+      {
+        "proposal_id": "W4T-T01",
+        "theme_id": "G44",
+        "seconds": 250,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      },
+      {
+        "proposal_id": "W4T-T02",
+        "theme_id": "G45",
+        "seconds": 270,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      },
+      {
+        "proposal_id": "W4T-T03",
+        "theme_id": "G46",
+        "seconds": 295,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      },
+      {
+        "proposal_id": "W4U-T01",
+        "theme_id": "G47",
+        "seconds": 220,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      },
+      {
+        "proposal_id": "W4U-T02",
+        "theme_id": "G48",
+        "seconds": 170,
+        "matches_core_duration_cuts_evidence": true,
+        "chapter_seconds_and_refs_match": true,
+        "chapter_field_deltas": []
+      }
+    ],
+    "g37": {
+      "ids": [
+        "I3042",
+        "I3043",
+        "I3055"
+      ],
+      "same_ids_as_treatment": true,
+      "seconds": 220,
+      "treatment_seconds": 220,
+      "chapter_beat_match": true,
+      "removed_ids": [
+        "I3044",
+        "I3048",
+        "I3045"
+      ],
+      "removed_materials_still_selected": true,
+      "followup_resolved": true
+    },
+    "g39": {
+      "seconds": 210,
+      "branch_in_connection": true,
+      "branch_in_last_chapter": true,
+      "variant_ids": [
+        "F4018"
+      ]
+    },
+    "rendered_table_rows": [
+      "| G37 | 網頁都出現了，為什麼還不好用？ | 3:40（工作範圍 3–4.5 分鐘；未試讀） | 3 |",
+      "| G39 | 蛋白霜為什麼越打，反而可能越糟？ | 3:30（工作範圍 3–4 分鐘；未試讀） | 3 |",
+      "| G40 | 都是澱粉，為什麼一杯要煮、一杯冷水就稠？ | 2:40（工作範圍 2.2–3.1 分鐘；未試讀） | 2 |",
+      "| G41 | 泡打粉一直冒氣，蛋糕就會一直長高嗎？ | 2:30（工作範圍 2.1–2.8 分鐘；未試讀） | 2 |",
+      "| G42 | 牆越封越緊，為什麼還是會潮？ | 5:35（工作範圍 4.5–5.583333333333333 分鐘；未試讀） | 5 |",
+      "| G43 | 房間鋪滿軟墊，隔壁就聽不到嗎？ | 5:45（工作範圍 4.25–5.75 分鐘；未試讀） | 4 |",
+      "| G44 | 綠燈亮著，車為什麼還動不了？ | 4:10（工作範圍 3.5–5 分鐘；未試讀） | 4 |",
+      "| G45 | 公車為什麼等很久，卻一次來兩台？ | 4:30（工作範圍 3.5–5.5 分鐘；未試讀） | 4 |",
+      "| G46 | 鐵軌看起來空著，火車為什麼還不能走？ | 4:55（工作範圍 4–6 分鐘；未試讀） | 5 |",
+      "| G47 | 字看起來變了，內容也一定變了嗎？ | 3:40（工作範圍 3–4.5 分鐘；未試讀） | 4 |",
+      "| G48 | 改成大寫，再改回來，為什麼不是原來那句？ | 2:50（工作範圍 2.5–3.5 分鐘；未試讀） | 3 |"
+    ],
+    "state_hashes": {
+      "pool.json": "0cc38944fa505841350dc53123d6b714e9781328a12d5f3389a31a69e463cd10",
+      "themes.json": "039e4b3af9225857c26838bf3d53904043a23aa3363b09f0783132366d417bf3",
+      "dedup-decisions.json": "d87d264acbc00a63c19bff66691d28aad3c2c98f5539a26f72fbbd3b19936f73",
+      "THEMES.md": "49f1a3820ed8bbd844dde549e5c77ec98347aaea1c8d29b093c4e00e8c8430ab",
+      "reviews/wave4-editorial-integration.json": "2413a7bac3f52e411776f09af3314c7c9b321f313e92ca608c2407905e91c0b7",
+      "baselines/2026-11-01-2328.json.gz": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba"
+    }
+  },
+  "g39_editorial_assessment": "唯一新題組章節文字差異是G39第3章補明回到未加熱攪打分支；connection同時明示時間切換。與食品獨立recheck treatment_note一致，不新增機制/來源/秒數。canonical D2025與F4018蛋白變體仍明示，不偷換果醬場景。",
+  "hash_chain_assessment": "33項明列hash綁定均相符，pool生成輸入249檔hash讀回亦無差異。原始review的舊hash不是現版依據；food用targeted recheck、text與G37用followup、home用最後獨立收據，transport用root review。",
+  "code_readback": {
+    "paths": [
+      "tools/video/so-thats-why/pool/render.mjs",
+      "tools/video/so-thats-why/pool/pool.test.mjs"
+    ],
+    "duration_tolerance_seconds": 1e-09,
+    "assessment": "總秒數比較改Math.abs(sum-target*60)>1e-9，容納250/60回乘的浮點尾差；章節秒數仍須正整數，1秒真差遠大於容差。short_explainer最少2章、其他4章及selected引用/非核准狀態/時間範圍檢核仍在。m:ss由章節實際預算加總。",
+    "test_code_read": "讀到250秒總預算可過與251/60目標對250秒章節拒絕的新增案例，並保留先前2章短版/非short/單章/錯總長案例。沒有宣稱執行結果。",
+    "tests_run": false,
+    "production_pipeline_changed_by_this_review": false,
+    "findings": [],
+    "sha256": {
+      "tools/video/so-thats-why/pool/render.mjs": "13240bc900bb8049cde8baf663fe106c01e455ca6b78c7d9dbaa6d2b8f4ad175",
+      "tools/video/so-thats-why/pool/pool.test.mjs": "a2922d54e947c719b5714c08bf4c386c99babbd15e4a206d216ff01d3eb39c95"
+    }
+  },
+  "remaining_limits": [
+    "2790 raw、2449 selected與48題組是素材池/編輯數量，不是2449支影片、48份完整稿或核准製作。",
+    "既有來源抽查、失敗/摘要讀取與具體示意待核限制沿用；本次沒有消除那些來源缺口。",
+    "G37依已留存小樣與另一位reviewer的有界覆核；本代理未重跑、未看成片，220秒仍是預算。",
+    "全部秒數尚未旁白試讀，刪段後須重核總長；品牌片頭片尾與正式產線要求不能由素材池驗證取代。",
+    "只新增本收據，未改中央、作者檔、工具或舊審閱紀錄。"
+  ]
+}

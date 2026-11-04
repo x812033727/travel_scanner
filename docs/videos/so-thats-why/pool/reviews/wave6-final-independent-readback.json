@@ -1,0 +1,632 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01T11:30:40.972046+00:00",
+  "reviewer": "science_sources",
+  "status": "PASS_FINAL_INTEGRATION_READBACK_NOT_PRODUCTION",
+  "blocking_findings": [],
+  "role_and_independence": {
+    "role": "中央整合一致性非整合作者讀回；不是第二輪全部題目事實查核。",
+    "weather_authorship": "本代理是weather作者。K6001–K6025的獨立選題、來源抽查與企劃判斷採pool_life_tech收據及followup_resolution，不將本次匯入與秒數比對稱為天氣自審通過。",
+    "other_content_reviews": "植物採pool_physics、機構採root的非作者覆核；G59既有非作者算術及敘事覆核為本代理先前所做，本次只核整合與hash。"
+  },
+  "scope": {
+    "read": "讀pool/selection/dedup/manifest/checkpoints與2546 gzip，三批作者及獨立覆核修訂鏈，中央9新題組和G59，README/VALIDATION/SEMANTIC及final-validation/browser-QA收據。",
+    "comparison": "全部2895舊raw、2774舊canonical與3855舊來源物件逐欄比對；全部64新raw的題目/研究目標/條件/editorial/來源URL/locator對作者批；53 not_added與64來源閱讀metadata保留。",
+    "not_performed": [
+      "本次沒有外站重新研究或全2959題逐主張查核",
+      "沒有重跑Node/Python/repository checks、索引、語意模型、瀏覽器或G59數字試驗",
+      "沒有完整旁白、試讀、觀眾測試、畫面授權或成片驗收",
+      "未改中央資料、作者批、工具、舊資料、task、commit或production"
+    ]
+  },
+  "input_hashes": [
+    {
+      "file": "pool.json",
+      "sha256": "07a5ca7d6ad3aa5d0fdfe51d3315e663fd927a2e88cb7459a271ef5752c19b50"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "4dd4402eb92b509716129681f14acb32e69dd857417d80cac94621f9a97dea2b"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "221e8c239a83d0bc08b21cb4e9cb9034baf981726b7aaa07e1bfa15628509328"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "f89dcabb0c8406d9dcd3c80db5106efefd4a6304695211211a8c0c2ec5bddd92"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "0994d27b9319fbccae0b64fcdb0307bd960bd8381e5098d0ff272c8e28997cc6"
+    },
+    {
+      "file": "index.html",
+      "sha256": "9f17db274053655dee0e7f69dc95c9c8de77f1bdd59de231cc01005af5aa7fcd"
+    },
+    {
+      "file": "QUESTIONS.md",
+      "sha256": "01d89826af6906370298baa52d482a380ceaefb78db99c81dc0f9909b9003160"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "00ae41c5c7f11546f90bef1566570956fb59e6cd05b25a5dc90d0d45ac89a868"
+    },
+    {
+      "file": "DEDUP.md",
+      "sha256": "44db94bd391ae218b3523d60d496e695290ef9f1d129a30cb87532cb2b5cc668"
+    },
+    {
+      "file": "THEMES.md",
+      "sha256": "e9f0c2ab38334763dfde9490e8893d0610fb607529b23c0895cbcad3b20461ae"
+    },
+    {
+      "file": "checkpoints.json",
+      "sha256": "557e9a356ba16555d193546234e0395b1d86e40e85e8c5ad156e93f3a09ad238"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "sha256": "26d4627eca62057f6bf12eee75e0a80c6a489ceb5528dfee7620d67cf81570e0"
+    },
+    {
+      "file": "checkpoint-2328.json",
+      "sha256": "8958e75c55b81787fea922f8fd503020fb2125816a44990f76cb36b79d8d7fa4"
+    },
+    {
+      "file": "checkpoint-2449.json",
+      "sha256": "1130c79de09e209f0177ecee8190dc0016463a059f0aa3f3a4d48b029e27315b"
+    },
+    {
+      "file": "checkpoint-2546.json",
+      "sha256": "bec71d3e9107a2b2a491a38c20b92a4de4375631bb51b80332cbcdc19a412567"
+    },
+    {
+      "file": "baselines/2026-11-01-2546.json.gz",
+      "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4"
+    },
+    {
+      "file": "README.md",
+      "sha256": "b8f171fc4055d8daa0079bada0793260c757d99568d7049c52953020deee2af1"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "b91b59dcf2bbe1e25623ce5c34a0a892028f2d7ac5dbdc4d3299ee20fb24fd4e"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "d65abce10de0738c8131b3c16e4d0c51d21e7f96e0541dfd6062f5496f0e3e8a"
+    },
+    {
+      "file": "reviews/wave6-editorial-integration.json",
+      "sha256": "095c1fd08b95b632c7438c01d0247b0f5d96582093c45a6b35f635cc42afd56d"
+    },
+    {
+      "file": "reviews/wave6-final-validation.json",
+      "sha256": "d30dfcd707d160e39e6135ad633bb53746ace797bf6e0cc363ac93e1c4d73233"
+    },
+    {
+      "file": "reviews/wave6-browser-qa.json",
+      "sha256": "f17706316684216a052e362392766846b0057c403eff03a0d445d33775e1686d"
+    },
+    {
+      "file": "reviews/wave6-g59-demo.json",
+      "sha256": "de578c0ccd5ecfe1f95e6a6964195f4df4abfd29401be0435f1e961a5f78dfd5"
+    },
+    {
+      "file": "reviews/wave6-g59-independent-review.json",
+      "sha256": "ec4d8ff539f51a28dc4abc4f2b464e5c3e79cfa54c7e2973136a7dfceafbffd0"
+    },
+    {
+      "file": "treatments/G59/treatment.json",
+      "sha256": "91ff5c96372b2f62052fad21af62cd420576b82b9644958c1aafa48ab08240c5"
+    },
+    {
+      "file": "treatments/G59/demo.js",
+      "sha256": "908a8143c3543966e0e764c59891334169c1c6af147d6bae9c0f1e98f0396c67"
+    },
+    {
+      "file": "treatments/G59/demo.html",
+      "sha256": "93efb51a5860941f4d3fd56e53a46b71f0638f27b9f4347a6fd55c62a7160671"
+    },
+    {
+      "file": "treatments/G59/verify-demo.mjs",
+      "sha256": "953994cfb341f86b49e1983963e67cec9828be07267d516092fbd3f54c311379"
+    },
+    {
+      "file": "batches/wave6-plants-garden.json",
+      "sha256": "2a42fb26d9768836bf46238fab555ad833b8c00fcd489ec9d8a0f9f2e558e001"
+    },
+    {
+      "file": "reviews/wave6-plants-author.json",
+      "sha256": "38b54fcf698f7b973954c18158127ce5d3736c1d3dec0f7b800639889b81d886"
+    },
+    {
+      "file": "reviews/wave6-plants-themes.json",
+      "sha256": "b03a8e9a7136a3622c31738181c89884ced93de8463c858251a3632eaa1a6a58"
+    },
+    {
+      "file": "reviews/wave6-physics-reviews-plants.json",
+      "sha256": "f90ae19b6cef97f41ac576735a723b973e46546c55d1726d392144bef25e61a5"
+    },
+    {
+      "file": "batches/wave6-mechanisms.json",
+      "sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2"
+    },
+    {
+      "file": "reviews/wave6-mechanisms-author.json",
+      "sha256": "0558f9f2056d6880ee8f371327696069e01ae1031bc3f5c480d0a4869bbbc419"
+    },
+    {
+      "file": "reviews/wave6-mechanisms-themes.json",
+      "sha256": "6fcc339153ff813f1987db1709c5da9d6eef89a63865d2017b0b32430e4de2c0"
+    },
+    {
+      "file": "reviews/wave6-root-reviews-mechanisms.json",
+      "sha256": "47ea16296af1d010edeea8e0e81b03af38bc7fe6dcdcdadafd3d3a2d61a34136"
+    },
+    {
+      "file": "batches/wave6-weather-sky.json",
+      "sha256": "f961a8fcb1268833678f83d2cd9783fd3cd99066ac255a8c6ba46bddc8ee2065"
+    },
+    {
+      "file": "reviews/wave6-weather-author.json",
+      "sha256": "bfb227dfee16fce41af2aa477ab4d10c89a8b3c21d4c66aaa63dddaf843249a4"
+    },
+    {
+      "file": "reviews/wave6-weather-themes.json",
+      "sha256": "f1f73b21332e6e6881e76a3ee89b697e28817e9e7ae5c9995a337fa44b52c6fd"
+    },
+    {
+      "file": "reviews/wave6-life-reviews-weather.json",
+      "sha256": "9fe14f04d2629da421f6aeb10f198188d64ba4c344283c14eaf6cdba0461d9de"
+    }
+  ],
+  "counts_recomputed": {
+    "raw_records": 2959,
+    "canonical_questions": 2838,
+    "eligible_candidates": 2668,
+    "selected_candidates": 2609,
+    "alias_records": 121,
+    "historical_records": 313,
+    "source_urls": 3919,
+    "current_research_source_urls": 952,
+    "selected_source_urls": 2161,
+    "new_suggestions_not_added": 334,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "preservation": {
+    "old_raw": 2895,
+    "old_selected": 2546,
+    "old_selected_removed": [],
+    "old_theme_changes": [
+      "G59"
+    ],
+    "raw_changes": [],
+    "canonical_changes": [],
+    "sources_changes": [],
+    "old_source_objects": 3855,
+    "old_alias_resolutions_unchanged": true,
+    "old_merges_unchanged": true,
+    "old_distinct_and_excluded_entries_retained": true,
+    "old_not_added_unchanged": true,
+    "legacy_selected": 121,
+    "overflow_candidates": 59,
+    "new_distinct_pairs": 79,
+    "approved_scripts": 0
+  },
+  "checkpoint_readback": {
+    "snapshots_hash_verified": [
+      {
+        "file": "checkpoint-2000.json",
+        "raw": 2293,
+        "selected": 2000,
+        "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4"
+      },
+      {
+        "file": "checkpoint-2328.json",
+        "raw": 2661,
+        "selected": 2328,
+        "sha256": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba"
+      },
+      {
+        "file": "checkpoint-2449.json",
+        "raw": 2790,
+        "selected": 2449,
+        "sha256": "e98b96cad65be24cdc59bfc1d9f60f311040a7987e04a7b008fab08778063bb2"
+      },
+      {
+        "file": "checkpoint-2546.json",
+        "raw": 2895,
+        "selected": 2546,
+        "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4"
+      }
+    ],
+    "new_snapshot_commit": "4fcf10099a4bcaf2f7587cde357790c5cb6c7924",
+    "new_snapshot_selected": 2546,
+    "new_snapshot_raw": 2895,
+    "editorial_baseline": "checkpoint-2000.json",
+    "finding": "新增2546檢查點仍與2000/2328/2449同列必讀清單；editorial例外仍繫於2000檢查點，未把2546快照當新豁免基線。"
+  },
+  "wave6_dispositions": {
+    "batch_counts": [
+      {
+        "file": "batches/wave6-plants-garden.json",
+        "candidates": 16,
+        "sources": 32,
+        "not_added": 19,
+        "sha256": "2a42fb26d9768836bf46238fab555ad833b8c00fcd489ec9d8a0f9f2e558e001"
+      },
+      {
+        "file": "batches/wave6-mechanisms.json",
+        "candidates": 23,
+        "sources": 10,
+        "not_added": 18,
+        "sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2"
+      },
+      {
+        "file": "batches/wave6-weather-sky.json",
+        "candidates": 25,
+        "sources": 22,
+        "not_added": 16,
+        "sha256": "f961a8fcb1268833678f83d2cd9783fd3cd99066ac255a8c6ba46bddc8ee2065"
+      }
+    ],
+    "new_raw": 64,
+    "new_selected": 63,
+    "new_merges": [],
+    "new_excluded": [
+      {
+        "id": "J6016",
+        "raw_retained": true,
+        "canonical_retained": true,
+        "source_refs_retained": true,
+        "eligible": false,
+        "selected": false,
+        "used_by_theme": false,
+        "reason": "幾何誤差如何生成及傳遞仍缺可比較機制；沿原ID補證後重審。"
+      }
+    ],
+    "prelock_withdrawals_not_reintroduced": [
+      "R6010",
+      "R6012",
+      "R6015",
+      "R6016",
+      "R6021"
+    ],
+    "not_added_increment": 53,
+    "not_added_total": 334,
+    "incoming_source_urls": 64,
+    "first_seen_source_urls": 64,
+    "selected_source_urls": 2161,
+    "selected_source_relationships": 3964,
+    "source_readings_preserved": true,
+    "findings": "三批來源摘要、取用方法、限制、locator與退題理由保持作者記錄；沒有把來源索引出現當成全文已核。"
+  },
+  "review_binding_readback": {
+    "status": "PASS",
+    "current_file_bindings_checked": 32,
+    "plants": "採targeted_recheck後185/225/170秒與單向GA條件；所有必改已解。",
+    "mechanisms": "採最終230/175/215秒，J6016 hold、J6003移出題組但留池；三hash吻合root覆核。",
+    "weather": "採followup_resolution綁定f1f73b21…題組、bfb227df…作者、f961a8fc…batch；不誤用收據頂層保留的初審theme/author hash。兩項修正均已解，S006未獨立重開的限制保留。",
+    "g59": "非作者收據reviewed_files五個當前hash均吻合，status/handoff定向修訂已被targeted_followup綁定。",
+    "historical_author_status": "作者凍結當時的待覆核文字仍保留歷史；最新非作者followup及中央狀態承接，不要求修改作者歷史收據造成循環hash。"
+  },
+  "theme_integration": {
+    "total": 69,
+    "new": 9,
+    "old_theme_changes": [
+      "G59"
+    ],
+    "proposal_field_comparisons": [
+      {
+        "id": "G61",
+        "proposal_id": "W6R-T01",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G62",
+        "proposal_id": "W6R-T02",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G63",
+        "proposal_id": "W6R-T03",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G64",
+        "proposal_id": "W6J-T01",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G65",
+        "proposal_id": "W6J-T02",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G66",
+        "proposal_id": "W6J-T03",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G67",
+        "proposal_id": "W6K-T01",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G68",
+        "proposal_id": "W6K-T02",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G69",
+        "proposal_id": "W6K-T03",
+        "permitted_changed_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      }
+    ],
+    "all_69_theme_core_ids_selected_and_canonical": true,
+    "all_chapter_ids_within_theme_core_ids": true,
+    "new_theme_and_g59_core_budget_checks": 24,
+    "timing_and_core_checks": [
+      {
+        "id": "G59",
+        "seconds": 140,
+        "chapter_count": 4,
+        "core_seconds": {
+          "M5004": 70,
+          "M5009": 70
+        },
+        "maximum_beat_gap": 35
+      },
+      {
+        "id": "G61",
+        "seconds": 185,
+        "chapter_count": 2,
+        "core_seconds": {
+          "R6003": 100,
+          "R6019": 85
+        },
+        "maximum_beat_gap": 45
+      },
+      {
+        "id": "G62",
+        "seconds": 225,
+        "chapter_count": 3,
+        "core_seconds": {
+          "R6006": 75,
+          "R6009": 75,
+          "R6008": 75
+        },
+        "maximum_beat_gap": 40
+      },
+      {
+        "id": "G63",
+        "seconds": 170,
+        "chapter_count": 2,
+        "core_seconds": {
+          "R6018": 85,
+          "R6001": 85
+        },
+        "maximum_beat_gap": 45
+      },
+      {
+        "id": "G64",
+        "seconds": 230,
+        "chapter_count": 3,
+        "core_seconds": {
+          "J6001": 85,
+          "J6002": 65,
+          "J6004": 80
+        },
+        "maximum_beat_gap": 35
+      },
+      {
+        "id": "G65",
+        "seconds": 175,
+        "chapter_count": 2,
+        "core_seconds": {
+          "J6006": 75,
+          "J6007": 100
+        },
+        "maximum_beat_gap": 40
+      },
+      {
+        "id": "G66",
+        "seconds": 215,
+        "chapter_count": 2,
+        "core_seconds": {
+          "J6009": 105,
+          "J6010": 110
+        },
+        "maximum_beat_gap": 40
+      },
+      {
+        "id": "G67",
+        "seconds": 255,
+        "chapter_count": 3,
+        "core_seconds": {
+          "K6002": 90,
+          "K6003": 80,
+          "K6004": 85
+        },
+        "maximum_beat_gap": 35
+      },
+      {
+        "id": "G68",
+        "seconds": 225,
+        "chapter_count": 3,
+        "core_seconds": {
+          "K6007": 80,
+          "K6008": 70,
+          "K6009": 75
+        },
+        "maximum_beat_gap": 35
+      },
+      {
+        "id": "G69",
+        "seconds": 140,
+        "chapter_count": 2,
+        "core_seconds": {
+          "K6019": 70,
+          "K6020": 70
+        },
+        "maximum_beat_gap": 40
+      }
+    ],
+    "positive_integer_chapter_seconds": true,
+    "target_minutes_tolerance_seconds": 1e-09,
+    "opening_and_return_included": true,
+    "brand_intro_outro_not_in_body_budget": true,
+    "timing_is_editorial_budget_not_read_aloud": true,
+    "cut_readback": [
+      {
+        "id": "G59",
+        "conditions": "140−15=125秒；奇偶講不清則重寫，不加章。"
+      },
+      {
+        "id": "G61",
+        "conditions": "刪85秒餘100秒單核心，撤回雙機制題案，不當兩章短解說。"
+      },
+      {
+        "id": "G62",
+        "conditions": "225−75=150秒兩章；未偷偷保留原265秒長回顧。"
+      },
+      {
+        "id": "G63",
+        "conditions": "170−85=85秒單段，撤回兩章案。"
+      },
+      {
+        "id": "G64",
+        "conditions": "230−80=150或230−65=165，兩支均缺則85秒單段；J6003不回填。"
+      },
+      {
+        "id": "G65",
+        "conditions": "刪25秒為150秒；寄生位移不可展示則退75秒單段。"
+      },
+      {
+        "id": "G66",
+        "conditions": "刪25秒為190秒；無節流因果則退105秒單題。"
+      },
+      {
+        "id": "G67",
+        "conditions": "255−90=165或255−85=170秒，重寫開場/另審；不承諾完整降雨。"
+      },
+      {
+        "id": "G68",
+        "conditions": "225−70=155秒另審；三個條件分支重設保留，不冒稱同一氣塊必經。"
+      },
+      {
+        "id": "G69",
+        "conditions": "140秒兩核心；缺一章退素材/另提案，不用LEG-S18舊光聲速差補時。"
+      }
+    ]
+  },
+  "g59_readback": {
+    "current_seconds": 140,
+    "chapters": [
+      35,
+      35,
+      35,
+      35
+    ],
+    "core_seconds": {
+      "M5004": 70,
+      "M5009": 70
+    },
+    "variant": "M5008 resolves to M5004; only its reviewed audio angle is used, no extra core or extra PNG time.",
+    "variant_seconds": 70,
+    "variant_maximum": 80,
+    "m5010_still_selected": true,
+    "j6003_still_selected": true,
+    "treatment_status": "REVIEWED_TREATMENT_WITH_ARITHMETIC_DEMO_NOT_SCRIPT_APPROVED",
+    "limitations": "原創整數演算，不是完整FLAC位元流、Rice/CRC、壓縮率或音訊播放；未試讀。"
+  },
+  "artifact_hash_checks": {
+    "manifest_input_files": 260,
+    "manifest_output_files": 6,
+    "theme_definition_files": 1,
+    "working_tree": "PASS",
+    "actual_git_index_blobs_checked": 267,
+    "actual_git_index": "PASS",
+    "all_manifest_inputs_match_pool_inputs": true,
+    "html_payload_selected_candidates": 2609,
+    "html_payload_candidate_objects_equal_selected_pool": true,
+    "html_payload_themes_equal_all_69_themes": true
+  },
+  "documentation_readback": {
+    "status": "PASS",
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "consistent_counts": true,
+    "distance_to_10000": 7391,
+    "semantic": "本批無新增人工合併，不計本批已知合併命中率；過往非隨機已知配對結果不能當全庫召回率。最終2959raw、新建0向量及2.962秒是增量單次紀錄，歷史截斷及10k/100k未驗限制保留。",
+    "sources": "3919全庫/952研究/2161入選URL與3964入選題來源關係皆重算相符；不稱全庫本次外站重讀。",
+    "remaining": "完整稿/試讀/獨立品質抽樣與萬筆或十萬筆效能仍未完成，無製作/發布核准。"
+  },
+  "reported_execution_evidence": {
+    "provenance": "root執行；本次只讀回收據與既有日誌，不重新執行。",
+    "final_validation_sha256": "d30dfcd707d160e39e6135ad633bb53746ace797bf6e0cc363ac93e1c4d73233",
+    "node_log_tail_read": true,
+    "node_log_sha256": "e80d87a78a5c4180ebc8c6a2a270cfdb5742de46d4059382121439c44925c82b",
+    "node_passed": 35,
+    "node_failed": 0,
+    "node_cancelled": 0,
+    "node_skipped": 0,
+    "node_duration_ms": 148236.2188,
+    "python_log_read": true,
+    "python_log_sha256": "4c33f422dd0c8300f056933a48f7c43607e392e99fc4fb868f8a5d6d27a0b2b6",
+    "python_passed": 2,
+    "reported_checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "browser": "root browser-QA與三張截圖目讀紀錄PASS；本次未開瀏覽器/重看截圖，僅驗所綁index hash及HTML payload。",
+    "reported_local_links": 2682,
+    "reported_broken_links": [],
+    "index": "root收據同快照第二次UNCHANGED/0 writes；本次未重跑索引。"
+  },
+  "conclusion": "沒有本輪整合阻擋。保留舊2546題，新增63核心與9題組；作者/非作者修訂、中央處置、來源、秒數、可刪版本與最終文件相符。此收據只通過所列整合一致性，不是全庫外部事實、完整劇本或製作核准。"
+}

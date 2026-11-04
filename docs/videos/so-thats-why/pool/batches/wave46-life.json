@@ -1,0 +1,508 @@
+{
+  "batch_id": "wave46-life-20261103",
+  "created_on": "2026-11-03",
+  "scope": "動物跨越水面、空中姿態及邊緣支點；題級研究候選，並非完整劇本或製作核准。",
+  "sources": [
+    {
+      "id": "L46-S001",
+      "title": "Directional takeoff, aerial righting, and adhesion landing of semiaquatic springtails",
+      "doi": "10.1073/pnas.2211283119",
+      "publisher": "PNAS",
+      "version": "2022正式論文，Europe PMC全文XML；同文作者PDF供圖讀",
+      "url": "https://doi.org/10.1073/pnas.2211283119",
+      "canonical_url": "https://doi.org/10.1073/pnas.2211283119",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9674249/fullTextXML",
+      "accessed_on": "2026-11-03",
+      "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效XML正文並編段讀取",
+      "reading_scope": "XML抽文PARA3–30、33–52；起跳、空中翻正、落水模型與各自實驗方法；另目讀同文PDF pp3/5/7的圖2–3、5–6、8。",
+      "locator": "Results: Takeoff, Aerial Righting, Landing；Methods corresponding sections；Figs2–3,5–6,8",
+      "summary": "姿態與腹管的水面接觸影響離水；U形與附帶水滴協助空中翻正；腹面先接水可制止再彈起。",
+      "limitations": "三題共用同一研究，不是三份獨立重現。起跳黏附強弱主要由模型改動；落水無黏附反例是模型，乾腹管另落乾Plexiglas不是水面單變量對照。未讀影片或全部補充。PMC Web開啟驗證頁不算正文；另UA XML成功。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave46-life-spring.xml",
+        "sha256": "c28523cbc734c485834d6ff73f81205e13d4893ea07dd547e1bb10fc051b3fb7",
+        "text_file": ".cache/wave46-life-spring.txt",
+        "text_sha256": "aa854d56561df757cc7812cc10530e1b392b9aec6509f14e8e4e3f5ef45ce920"
+      },
+      "figure_carrier": {
+        "file": ".cache/wave46-life-spring-figures.pdf",
+        "url": "https://static1.squarespace.com/static/60ef472cab12c51e777931f3/t/64ac574091b596700049c2f8/1731588859189/pnas.2211283119.pdf",
+        "sha256": "56967a4c01d7fb23ac723246e3d77c45c6a580f96cd4edcc62f6174775a31bac",
+        "identity": "same DOI 10.1073/pnas.2211283119, diagram-reading carrier only"
+      }
+    },
+    {
+      "id": "L46-S002",
+      "title": "Rapid Inversion: Running Animals and Robots Swing like a Pendulum under Ledges",
+      "doi": "10.1371/journal.pone.0038003",
+      "publisher": "PLOS ONE",
+      "version": "2012正式刊本PDF",
+      "url": "https://doi.org/10.1371/journal.pone.0038003",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0038003",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0038003&type=printable",
+      "accessed_on": "2026-11-03",
+      "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效PDF，PyMuPDF抽文按頁讀取",
+      "reading_scope": "PDF pp2–4及6–7正文與圖說；另目讀PDF p6 Fig4動能非零與零的模型比較。",
+      "locator": "PDF pp2–4 Results/Discussion，pp6–7 Methods；Fig4，尤其初始動能模型與去爪對照",
+      "summary": "後足勾住邊緣，前進動能帶動身體轉到下面；去爪但保留足墊時，翻到下方多數失敗。",
+      "limitations": "蟑螂紙板斜坡與壁虎砂紙條件不同，不當同一材質組。擺模型主要解釋前半程，非完整神經控制；未讀補充影片。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave46-life-invert.pdf",
+        "sha256": "3cdd6264e04bfd13c1af9faf956380c70eade6d566fd92fb0c129cda2395ca21",
+        "text_file": ".cache/wave46-life-invert.txt",
+        "text_sha256": "e24ced49ecfe763157d16ba2c7cbfbbd85526e4e90288652c80621f79b5279ed"
+      }
+    },
+    {
+      "id": "L46-S003",
+      "title": "Geckos Race Across the Water’s Surface Using Multiple Mechanisms",
+      "doi": "10.1016/j.cub.2018.10.064",
+      "publisher": "Current Biology",
+      "version": "2018作者實驗室託管article-in-press排版PDF，連方法與補充",
+      "url": "https://doi.org/10.1016/j.cub.2018.10.064",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2018.10.064",
+      "retrieval_url": "https://polypedal.berkeley.edu/wp-content/uploads/123_Nirordy_CBio_2018.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效PDF，PyMuPDF抽文按頁讀取",
+      "reading_scope": "PDF pp2–6、8–9正文，另讀補充表／圖說pp11–13；目讀PDF p6 Fig3，未看補充影片。",
+      "locator": "PDF pp2–6主文；pp8–9 STAR Methods；Fig3",
+      "summary": "壁虎快速拍水仍不足單獨提供估算所需垂直衝量；降低表面張力後速度與頭部高度下降，顯示多種支撐作用耦合。",
+      "limitations": "接觸水面的身體受浮力、可能的滑行升力與張力等作用，原研究未逐一直接測出份額。超疏水減阻及動態升力尚屬解釋。正文與表格的速度降幅口徑不一致，本題不採百分比，也不稱所有腿／尾運動不變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave46-life-gecko.pdf",
+        "sha256": "67e50fa1df3f26725ee792627920f55c350bfcf35c36fa47c068d18bfa79d6f9",
+        "text_file": ".cache/wave46-life-gecko.txt",
+        "text_sha256": "aa3b1c2c31ee70d8b1dc2a11d00cb3738a7d0971affd3ef1e5fbc408854c7a6b"
+      }
+    },
+    {
+      "id": "L46-S004",
+      "title": "Undulation enables gliding in flying snakes",
+      "doi": "10.1038/s41567-020-0935-4",
+      "publisher": "Nature Physics",
+      "version": "2020正式刊本，Virginia Tech作者公開PDF",
+      "url": "https://doi.org/10.1038/s41567-020-0935-4",
+      "canonical_url": "https://doi.org/10.1038/s41567-020-0935-4",
+      "retrieval_url": "https://ross.aoe.vt.edu/papers/yeaton-ross-baumgardner-socha-2020.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效PDF，PyMuPDF抽文按頁讀取",
+      "reading_scope": "PDF pp1–7正文；目讀p6 Fig4；未讀補充影片，未把模型較長下降距離當真蛇高處實測。",
+      "locator": "PDF pp1–7主文，Fig4凍結與擺動模型比較",
+      "summary": "實測的三維擺動輸入模型後，能抑制滑翔中翻滾或俯仰失穩；固定姿態仍可短距離滑行，但穩定條件較少。",
+      "limitations": "凍結身體與有擺動的因果比較是模擬，不是對活蛇施作停止擺動。模型包含慣性與氣動作用但不是完整神經回授；不同初始姿態有例外。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave46-life-snake.pdf",
+        "sha256": "f6c63fad73da948b8f25ca9cd01700101af950f2fe46d3828867cb4f3b0ba1b2",
+        "text_file": ".cache/wave46-life-snake.txt",
+        "text_sha256": "b5f2f40a091548377bbe6c02172efa5fd58dab376920f8683b39186179ebc91c"
+      }
+    },
+    {
+      "id": "L46-S005",
+      "title": "Water striders adjust leg movement speed to optimize takeoff velocity for their morphology",
+      "doi": "10.1038/ncomms13698",
+      "publisher": "Nature Communications",
+      "version": "2016正式論文Europe PMC全文XML",
+      "url": "https://doi.org/10.1038/ncomms13698",
+      "canonical_url": "https://doi.org/10.1038/ncomms13698",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5150985/fullTextXML",
+      "accessed_on": "2026-11-03",
+      "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效XML正文並編段讀取",
+      "reading_scope": "抽文PARA0–36的模型、不同形態的自然跳躍與方法；讀Fig3–4圖說，尚未目讀原圖。",
+      "locator": "Results: jumping model and optimization；Fig3–4；Methods",
+      "summary": "足部壓出水窩時的支撐受彎月面破裂限制；模型裡腳更快並非總跳得更快，自然軌跡集中在依形態不同的邊界附近。",
+      "limitations": "五物種跳躍配合模型，沒有直接強迫同一隻改腳速或證明學習最佳化。模型的部分模式未實見；必須分開觀察與模型最佳值。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave46-life-strider.xml",
+        "sha256": "15ec8676a1ce49eec9c12c2768018d8fd696dea938535ec8ce5d74d435be8127",
+        "text_file": ".cache/wave46-life-strider.txt",
+        "text_sha256": "e293cef91a706907b70fe0126f40c9c7ea1a60c7d1fd56fc4552db96ad3b5359"
+      }
+    },
+    {
+      "id": "L46-S006",
+      "title": "Hindwings are unnecessary for flight but essential for execution of normal evasive flight in Lepidoptera",
+      "doi": "10.1073/pnas.0807223105",
+      "publisher": "PNAS",
+      "version": "2008正式刊本PDF之作者公開網站副本",
+      "url": "https://doi.org/10.1073/pnas.0807223105",
+      "canonical_url": "https://doi.org/10.1073/pnas.0807223105",
+      "retrieval_url": "https://www.ratiocination.org/wp-content/uploads/2015/09/Jantzen-Eisner__Hindwings-are-unnecessary-for-flight-but-essential-for-execution-of-normal-evasive-flight-in-Lepidoptera.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效PDF，PyMuPDF抽文按頁讀取",
+      "reading_scope": "五頁主文／方法與圖說；另目讀PDF p3 Table2、Fig2。僅供未收方向判讀。",
+      "locator": "PDF pp1–5 / printed16636–16640；Table2、Fig2",
+      "summary": "去後翅後仍能飛，但速度與轉彎加速度減小；所測轉彎半徑未顯著改。",
+      "limitations": "兩物種、蝶室外蛾室內，不含實際掠食者追捕試驗。轉彎較慢與基本向心加速度重疊，缺足夠獨立機制故本批不計新題。PMC驗證頁及Europe PMC XML500失敗，另取有效PDF才讀正文。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave46-life-hind.pdf",
+        "sha256": "44d96caf5429c0bded90deb0c431f0ef1f47f35e281f0d34669a9d7e819e4bf3",
+        "text_file": ".cache/wave46-life-hind.txt",
+        "text_sha256": "fbf3a840a3c140c2854efedfbfb7e0a1adf8642d435b22026af0f9cd3dc6db4c"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L46-001",
+      "question": "腹部還黏著水面，跳蟲為什麼有時反而能貼水向前衝？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_takeoff_pose_collophore_anchor_coupling",
+      "answer_target": "身體與彈器的起始角度改變離水方向；模型中腹管的黏附牽制身體轉動，能保留向前、貼近水面的路徑。這個牽制對較水平的起跳尤其重要，不能把黏附一概當阻力。",
+      "scope": "限半水生Isotomurus retardatus。姿態與軌跡有實測，單改黏附的效果屬模型；不是已對活體獨立操弄黏附強度。",
+      "source_ids": [
+        "L46-S001"
+      ],
+      "source_locator": "XML PARA3–11、25–27、33–39；Figs2–3",
+      "premise_status": "screened",
+      "notes": "不是B17003腳位預先決定逃跑方向的改寫：本題有水面固定點與暫不離水的接觸條件。先留段落，未因同研究而塞入翻正影片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清向上彈射與仍受水面牽制的水平前衝。",
+        "visual": "並排低角度與高角度實測路徑；再用標明模型的同姿態不同黏附路徑，腹管接水期間以亮點標示。",
+        "seconds": [
+          28,
+          65
+        ]
+      }
+    },
+    {
+      "id": "L46-002",
+      "question": "跳蟲在半空翻了個身，彎成U形和帶著一小滴水各幫了什麼忙？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_u_shape_drop_aerodynamic_righting",
+      "answer_target": "活體翻正時常彎成U形；簡化落體中U形比平片更容易翻正，底部加水滴又使翻正更快且結果較集中。彎形改變空氣作用，水滴降低重心，共同建立回正趨勢。",
+      "scope": "活體與死體比較不能單獨定位神經命令；U形、水滴、平片的因果比較來自塑膠模型。水滴不是所有動物翻正的必要條件。",
+      "source_ids": [
+        "L46-S001"
+      ],
+      "source_locator": "XML PARA12–20、28–29、40–45；Figs4–7；PDF p5 Fig5–6",
+      "premise_status": "screened",
+      "notes": "與P030/P314的內部角動量交換不同，本題依賴外部空氣作用和形狀／重心的配置。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到彎身不只改旋轉慣量，也改變空氣把身體推回哪個方向。",
+        "visual": "活體翻正輪廓後清空畫面，並排三種人造落體：U形加滴、U形無滴、平片；箭頭為原理示意。",
+        "seconds": [
+          28,
+          75
+        ]
+      }
+    },
+    {
+      "id": "L46-003",
+      "question": "跳蟲落回水面，腹部先碰水為什麼比較不容易又被彈起？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_collophore_rebound_adhesion_landing",
+      "answer_target": "腹管先接水的落地可迅速停住；簡化模型保留表面張力等其餘水動力，只拿掉回升時的腹管黏附仍會反彈，加入此黏附後才迅速停止。入水耗能與回升受拉是兩個階段。",
+      "scope": "落水方向對照有觀察，分項力的反事實來自簡化模型。乾腹管的固體落地比較不是在水上只改濕度的對照；不以它證明單一因果。",
+      "source_ids": [
+        "L46-S001"
+      ],
+      "source_locator": "XML PARA21–23、27、30、46–52；PDF p7 Fig8",
+      "premise_status": "screened",
+      "notes": "與A20003固定足墊在液體中拉脫不同，本題分進入水面及回升兩階段，解釋碰水後反彈是否被截斷。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道撞下去的緩衝與向上彈回時被拉住是兩個階段。",
+        "visual": "腹面先接水與背側先接水的獨立影格並排；模型另框，保留其餘水動力，只關掉回升腹管黏附時再彈起，力箭頭標模型。",
+        "seconds": [
+          28,
+          70
+        ]
+      }
+    },
+    {
+      "id": "L46-004",
+      "question": "蟑螂衝出邊緣，怎麼能一下翻到下面，而不是直接掉下去？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.cockroach_ledge_claw_grapple_running_energy_inversion",
+      "answer_target": "後足勾住邊緣，使原來向前的運動轉成繞支點的擺動。去掉爪、保留足墊後，多數翻轉失敗；含進場動能的擺模型較能重現快速前半段，從靜止下擺則太慢。",
+      "scope": "限研究的紙板斜坡與邊緣；壁虎條件不同。不是純被動模型解決整段動作，後半段還有主動拉身與損失。",
+      "source_ids": [
+        "L46-S002"
+      ],
+      "source_locator": "PDF pp2–4、6–7；Fig4，去爪保留足墊對照",
+      "premise_status": "screened",
+      "notes": "補回A20-NA018當時未取得全文的方向。與一般靜摩擦或足墊黏附不同，關鍵是邊緣被爪勾成支點和原有動能的轉向。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出抓住邊緣可把原先看似危險的速度轉成翻到下方的動作。",
+        "visual": "同一隻處理前後的去爪比較以組別標示；另框模型從靜止擺與帶入速度擺，不畫成現場直接量出的能量箭頭。",
+        "seconds": [
+          30,
+          90
+        ]
+      }
+    },
+    {
+      "id": "L46-005",
+      "question": "壁虎腳還在拍水，為什麼水裡加了界面活性劑卻跑得慢、頭也更低？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.gecko_interfacial_running_coupled_support_tension",
+      "answer_target": "足部拍水的衝量估算不足以獨自托住全身；降低表面張力後，身體更低且前進較慢，表示腿部拍水與身體在水氣界面的支撐、阻力互相耦合。",
+      "scope": "是原研究的水面與添加劑對照，不能稱只改張力卻保證所有行為／阻力不變。浮力、可能的滑行升力與表面張力的精確份額未逐項直接量出。",
+      "source_ids": [
+        "L46-S003"
+      ],
+      "source_locator": "PDF pp2–6、8–9；Fig2–3",
+      "premise_status": "screened",
+      "notes": "不採正文有口徑歧異的速度降幅；不把超疏水減阻或尾巴的效應講成單獨已證因果，也不作動物操作教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "打破只要腳一直划就能維持原速的單一作用解釋。",
+        "visual": "並排兩類實測的速度與頭高點，不做相同速度假配對；腳的衝量估算與水面支撐另用框標「估算／未分離」。",
+        "seconds": [
+          30,
+          75
+        ]
+      }
+    },
+    {
+      "id": "L46-006",
+      "question": "飛蛇在空中已經能滑行，為什麼還要一直把身體左右扭？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.flying_snake_undulation_glide_dynamic_stability",
+      "answer_target": "把實測擺動放進三維模型，擺動可讓氣動與慣性力矩隨姿態改變，減少持續翻滾或俯仰失穩。把同一模型凍結成固定形狀，部分仍能滑一段，卻較容易失穩。",
+      "scope": "停止擺動是模擬反事實，並未讓活蛇麻痺後放飛；不同起始姿態有例外。較長下降距離也屬模型，不是同一批實飛高度。",
+      "source_ids": [
+        "L46-S004"
+      ],
+      "source_locator": "PDF pp1–7，尤其p6 Fig4有／無擺動模擬",
+      "premise_status": "screened",
+      "notes": "與P21005固定配重的靜態力矩配置不同，這裡是持續改形的動態穩定；不將軸向推進當本題答案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解看似左右浪費動作，可能是在保持可用的滑翔姿態。",
+        "visual": "先呈真蛇三維追蹤輪廓，再清楚切「模型」：同一初始條件有擺動與固定形狀，讓滾轉失穩對照可見。",
+        "seconds": [
+          30,
+          90
+        ]
+      }
+    },
+    {
+      "id": "L46-007",
+      "question": "水黽跳離水面，腳划得越快就一定跳得越快嗎？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.water_strider_stroke_rate_meniscus_rupture_limit",
+      "answer_target": "腳壓低水面時可利用彎月面提供支撐；模型中動作加快到水面破裂後，這份支撐驟減，起跳速度不再一直增加。自然跳躍的腳速與形態接近各自的模型邊界。",
+      "scope": "原研究比較多物種自然跳躍並配合模型，沒有強迫同一隻掃過全部腳速，也沒證明個體學習最佳化。只採研究實見的破裂／不破裂模式。",
+      "source_ids": [
+        "L46-S005"
+      ],
+      "source_locator": "XML PARA0–36；Fig3–4圖說、模型最佳化及Methods",
+      "premise_status": "screened",
+      "notes": "與P053靜態潤濕不同，控制是足部壓入的速率及破裂時點；尚未目讀原圖，進示範前需確認採用哪組實測影格。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到推得更快可能先破壞腳所借用的支撐。",
+        "visual": "兩列模型同形態不同腳速，圈出破膜前後；自然跳躍點另圖呈現，不把模型整條曲線畫成同一隻的實測。",
+        "seconds": [
+          28,
+          75
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L46-NA001",
+      "question": "沒有後翅仍能飛，為什麼轉彎比較慢？",
+      "existing_ids": [
+        "P015"
+      ],
+      "source_ids": [
+        "L46-S006"
+      ],
+      "reason": "原研究有移除控制，但目前解釋停在速度與轉彎加速度下降、半徑未顯著改；與既有向心加速度關係太近。未直接辨明新增力分配機制，先不計核心。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA002",
+      "question": "壁虎在空中甩尾就能翻正，是新原理嗎？",
+      "existing_ids": [
+        "P030",
+        "P314"
+      ],
+      "source_ids": [],
+      "reason": "沿用舊NA A23-NA003，角動量交換已收；換成尾巴並無新增控制。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA003",
+      "question": "壁虎爬牆時靠什麼黏住？",
+      "existing_ids": [
+        "LEG-S59"
+      ],
+      "source_ids": [],
+      "reason": "足墊細毛黏附已收，本輪水面跑不重述。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA004",
+      "question": "壁虎抓不住牆時，尾巴怎麼幫忙？",
+      "existing_ids": [
+        "A23004"
+      ],
+      "source_ids": [],
+      "reason": "尾巴接觸牆形成支撐力矩已收，不另換速度重問。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA005",
+      "question": "蟑螂被翻過來時如何站回去？",
+      "existing_ids": [
+        "A12007"
+      ],
+      "source_ids": [],
+      "reason": "翅膀改能障與腿擾動已收；新候選是邊緣勾爪轉向，不是翻身重寫。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA006",
+      "question": "蟑螂壓得越低一定跑得越快？",
+      "existing_ids": [
+        "A12006"
+      ],
+      "source_ids": [],
+      "reason": "低身在粗糙地面推力／拖曳折衷已有。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA007",
+      "question": "飛蛙張開腳趾就能像鳥一樣飛？",
+      "existing_ids": [
+        "B2165"
+      ],
+      "source_ids": [],
+      "reason": "增加滑翔面積與有動力飛行的差別已收。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA008",
+      "question": "跳蟲的彈器如何像彈簧蓄能？",
+      "existing_ids": [
+        "B2298"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "本次來源未提供足以區別既有彈簧鎖扣儲能的新控制。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA009",
+      "question": "跳蟲腹管越黏就永遠跳得越好？",
+      "existing_ids": [
+        "L46-001"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "同一模型的參數延伸，且水平／垂直起跳不同；不另拆核心。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA010",
+      "question": "U形水滴是不是所有動物翻正的共同秘訣？",
+      "existing_ids": [
+        "L46-002"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "單物種與塑膠模型不足此泛化。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA011",
+      "question": "乾腹管碰水會不會反彈？",
+      "existing_ids": [
+        "L46-003"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "乾腹管的實驗落點是乾固體，不能冒充在水面只改潤濕的控制。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA012",
+      "question": "飛蛇不擺動就一定立刻掉下去？",
+      "existing_ids": [
+        "L46-006"
+      ],
+      "source_ids": [
+        "L46-S004"
+      ],
+      "reason": "模型仍有固定形狀可短程滑行，失穩不是所有初始條件立即發生。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA013",
+      "question": "水黽會不會先學出最佳跳躍腳速？",
+      "existing_ids": [
+        "L46-007"
+      ],
+      "source_ids": [
+        "L46-S005"
+      ],
+      "reason": "只有自然軌跡與模型最佳值接近，沒有學習操弄。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA014",
+      "question": "壁虎降速就是表面張力少了一半造成？",
+      "existing_ids": [
+        "L46-005"
+      ],
+      "source_ids": [
+        "L46-S003"
+      ],
+      "reason": "身體支撐和阻力耦合；沒有直接分離份額，文字與表格速度降幅也不採。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA015",
+      "question": "去掉後翅會讓蝴蝶更容易被鳥抓到嗎？",
+      "existing_ids": [
+        "P015"
+      ],
+      "source_ids": [
+        "L46-S006"
+      ],
+      "reason": "研究未放入實際掠食者，不能以機動性直接替代生存結果。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA016",
+      "question": "翅果為什麼邊掉邊旋轉？",
+      "existing_ids": [
+        "E9003"
+      ],
+      "source_ids": [],
+      "reason": "前緣渦與自轉升力已收，不因本輪談空中姿態重算。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    },
+    {
+      "id": "L46-NA017",
+      "question": "腳上黏一滴水，是不是落地黏著力唯一來源？",
+      "existing_ids": [
+        "L46-002",
+        "L46-003"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "空中配重和碰水黏附屬不同階段；未獨立改全部足部性質，不能作單因果。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。"
+    }
+  ]
+}

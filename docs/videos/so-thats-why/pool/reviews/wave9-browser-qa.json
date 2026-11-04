@@ -1,0 +1,37 @@
+{
+  "tested_on": "2026-11-01T13:21:49.640Z",
+  "result": "PASS",
+  "selected": 2757,
+  "index_html_sha256": "a1b0a43f4c6732f7924ad629d0e66952cf7cff8630b200ede0d251d34358f0bd",
+  "source_sample": {
+    "id": "Q9001",
+    "urls": [
+      "https://www.jstage.jst.go.jp/article/jamdsm/5/4/5_4_385/_pdf/-char/en"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "Historical N098/L042 aliases resolve with source locator. No new merge aliases in wave9; empty new-merge set is not a new-alias assertion.",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new paper/printing question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59/G79 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave9-desktop.png",
+    "wave9-source-desktop.png",
+    "wave9-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "visual_notes": [
+    "1440x1000: title, 2757/2308/98/129 counts, filters and initial cards readable.",
+    "Q9001 expanded card: revised question, scoped answer, segment budget, provenance note and payoff readable. Source URL lies below the captured viewport; link and locator were verified through DOM assertions, not this screenshot.",
+    "390x844: title and cards wrap, controls remain inside viewport; no horizontal overflow. Title has an orphan final character but no clipped text; page layout unchanged in this batch."
+  ],
+  "screenshot_sha256": {
+    "wave9-desktop.png": "8504f26fb8b5b2a422a698eb0961b4e2f08798489062959c9f801b19595874a2",
+    "wave9-source-desktop.png": "8a2db799d3b6043d5f0da945b1600736de0e527e43e657083cc7711ea154fd56",
+    "wave9-mobile.png": "fc13ac23dab869704666d0b63a8b1dfba7b41cd968f22cc4500c6836ca7472a3"
+  }
+}

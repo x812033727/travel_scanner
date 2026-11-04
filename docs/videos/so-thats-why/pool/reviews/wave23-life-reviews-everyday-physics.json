@@ -1,0 +1,1323 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "pool_physics",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "P23001",
+    "P23002",
+    "P23003",
+    "P23004",
+    "P23005"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave23-everyday-physics.json",
+      "sha256": "a2d9059b685fecad443e3870e1f25dd9c66fdd2cd801cc068f59d2320bb25749"
+    },
+    {
+      "file": "reviews/wave23-everyday-physics-themes.json",
+      "sha256": "490bf4e7515aca870507a39836d197c4e0bc9bba8959794370c8d28e23715b7e"
+    },
+    {
+      "file": "reviews/wave23-everyday-physics-author.json",
+      "sha256": "f5f6ec60d6b37c836453a7d6aaf3053d39193d9d29feefadfedc604a2eacf210"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave23-everyday-physics.json",
+      "sha256": "a2d9059b685fecad443e3870e1f25dd9c66fdd2cd801cc068f59d2320bb25749"
+    },
+    {
+      "file": "reviews/wave23-everyday-physics-themes.json",
+      "sha256": "54c7a706b5c433265f4735cafc1eb96c52fa1e0e8d2c3ba44b206742fd7edda8"
+    },
+    {
+      "file": "reviews/wave23-everyday-physics-author.json",
+      "sha256": "00949a8941c86899c85275c77b2fcea12340d47cd94dd524d10044966ca7b78f"
+    }
+  ],
+  "scope": "逐讀本批5候選/16未收/21作者雙方完整快照/25有向top5與4紙上題案；5指定正文核SHA副本，8圖頁目讀。另關鍵詞掃3393舊raw+1054NA，回讀命中及NA指向的完整舊問答。非全池逐題重審或所有原文逐式驗證。",
+  "counts": {
+    "candidates": 5,
+    "source_bodies_read": 5,
+    "figures_pages_visually_read": 8,
+    "author_pairs": 21,
+    "directed_top5": 25,
+    "not_added": 16,
+    "themes": 4
+  },
+  "source_readings": [
+    {
+      "source_id": "P23-S001",
+      "url": "https://arxiv.org/pdf/2603.14520",
+      "doi": "10.48550/arXiv.2603.14520",
+      "version": "arXiv:2603.14520v1，2026-03-15；當日身份頁未列正式期刊參照，僅預印本。",
+      "read_via": "本輪覆核者核對作者當日有效PDF及抽文SHA後，自主讀指定正文；不是覆核者fresh HTTP。",
+      "reading_scope": "PDF pp2–10主文/圖說；p4外推tf定義、pp6–9氣壓/質量/環形與模型。另實際目讀p8 Fig.3。未讀SI pp12–20/影片，未重擬合。",
+      "cache": {
+        "file": ".cache/wave23-physics-euler2026.pdf",
+        "sha256": "8e405c57bf998ddce590d62302aa870b1b67d93c342c581a5509532333e11166",
+        "text_file": ".cache/wave23-physics-euler2026-pages.json",
+        "text_sha256": "4d2e24894e4655a872c74339edda4f859e2b428a23d13992676b0e0467cff580"
+      },
+      "figures_actually_viewed": [
+        {
+          "file": ".cache/wave23-physics-euler2026-p8.png",
+          "sha256": "3c8fb351121efa4da6230ea63d834d4144b44066bc0675092215daaabc43b9d8"
+        }
+      ],
+      "assessment": "2026v1預印本；同盤0.1atm對照支持末段壓力敏感。環740g/盤445g不同質量不能當單變量；1/3極限未清楚觀察。",
+      "failures": "覆核者未另重試外站。作者Caltech web過期簽名500後UA原URL成功，其餘有效路線見作者收據；不把作者下載當覆核者新HTTP。"
+    },
+    {
+      "source_id": "P23-S002",
+      "url": "https://arxiv.org/pdf/1512.02590",
+      "doi": "10.1063/1.4943543",
+      "version": "所讀arXiv:1512.02590v2（2016-03-21），v1為2015-12-08；與2016正式刊文同一研究。",
+      "read_via": "本輪覆核者核對作者當日有效PDF及抽文SHA後，自主讀指定正文；不是覆核者fresh HTTP。",
+      "reading_scope": "PDF pp2–10、12–14、20–23：水平幾何、溫差、熱流逸/拖曳模型及實測比較。實際目讀p3 Fig.2–3、p5 Fig.4。未讀模擬實作pp15–19，未看影片。",
+      "cache": {
+        "file": ".cache/wave23-physics-radiometer2016.pdf",
+        "sha256": "ea97b727b4d26684efaae2447b895653c8e79bd349035547b9ee7823eb344423",
+        "text_file": ".cache/wave23-physics-radiometer2016-pages.json",
+        "text_sha256": "5c3ac395af305cfcd66450a739756f61c05ab49b9c3ea7971c455e4fdae83f17"
+      },
+      "figures_actually_viewed": [
+        {
+          "file": ".cache/wave23-physics-radiometer2016-p3.png",
+          "sha256": "bb4f3e78942dc548f136f2dca8eced8689f68d176f0941d37f0b7f4d1e2bcc8a"
+        },
+        {
+          "file": ".cache/wave23-physics-radiometer2016-p5.png",
+          "sha256": "aa5c391eaed810547cb30c51d89b08e900e48ebbde27f3be5810d92d2c4b964c"
+        }
+      ],
+      "assessment": "水平葉片避免普通直立葉片的另一溫差幾何；氣體剪力/拖曳分量是模型/模擬，量測的是轉速，模型定量並非完整吻合。",
+      "failures": "覆核者未另重試外站。作者Caltech web過期簽名500後UA原URL成功，其餘有效路線見作者收據；不把作者下載當覆核者新HTTP。"
+    },
+    {
+      "source_id": "P23-S003",
+      "url": "https://arxiv.org/pdf/1606.08237",
+      "doi": "10.1016/j.physd.2016.07.010",
+      "version": "arXiv:1606.08237v1，2016-06-27存入，稿面日期06-28；身份頁列同工作Physica D DOI，非兩份研究。",
+      "read_via": "本輪覆核者核對作者當日有效PDF及抽文SHA後，自主讀指定正文；不是覆核者fresh HTTP。",
+      "reading_scope": "PDF pp1–7 §§1–5起段、p14表與結論、p15結論；實際目讀p6 Fig.3。未完整驗證後半定理/附錄或重新積分。",
+      "cache": {
+        "file": ".cache/wave23-physics-tennis2016.pdf",
+        "sha256": "6318bdc4ef07ed89bae0ea3856f8549292fc075742f3af9dda0e83940db695c9",
+        "text_file": ".cache/wave23-physics-tennis2016-pages.json",
+        "text_sha256": "6b84edede59972732fff765f1d880de60eb4bfe34db96866953f5722859ae700"
+      },
+      "figures_actually_viewed": [
+        {
+          "file": ".cache/wave23-physics-tennis2016-p6.png",
+          "sha256": "21e4193d2d8ebf0ee56407d4def8d05c78ed24acc2cab0db9a39c4eab6405102"
+        }
+      ],
+      "assessment": "理論/數值；三主慣量不同、小偏差條件，實驗室角動量固定而身體座標改變。不採表格可疑單位，也不報精確180度通則。",
+      "failures": "覆核者未另重試外站。作者Caltech web過期簽名500後UA原URL成功，其餘有效路線見作者收據；不把作者下載當覆核者新HTTP。"
+    },
+    {
+      "source_id": "P23-S004",
+      "url": "https://authors.library.caltech.edu/records/xzy5y-mpw80/files/GHAjfm98.pdf?download=1",
+      "doi": "10.1017/S0022112097008410",
+      "version": "Caltech保存1998正式刊文；庫的2005/2023更新不是新研究。Cambridge當日身份資料確認1998-04-10與DOI。",
+      "read_via": "本輪覆核者核對作者當日有效PDF及抽文SHA後，自主讀指定正文；不是覆核者fresh HTTP。",
+      "reading_scope": "PDF pp3–6、9–10、13–14、17–19（印刷123–126/129–130/133–134/137–139）；實際目讀PDF p5 Fig.3、p9 Fig.6–7。未逐式重現模型。",
+      "cache": {
+        "file": ".cache/wave23-physics-vortex1998.pdf",
+        "sha256": "d1a72a3180abe13e4fbd1e518a7773b3c40c1812df2a52a7492e3490867ed304",
+        "text_file": ".cache/wave23-physics-vortex1998-pages.json",
+        "text_sha256": "199248056af73ba2c91a932403dd91682d98c493518a16f74bd333d352a04ddf"
+      },
+      "figures_actually_viewed": [
+        {
+          "file": ".cache/wave23-physics-vortex1998-p5.png",
+          "sha256": "6064eb11a8aefaaf450fd8abbb37e5ae1a6f308ed8f67986770ffa8ad0305a7e"
+        },
+        {
+          "file": ".cache/wave23-physics-vortex1998-p9.png",
+          "sha256": "5b07de794858e62445b0af984754182e56311683f3af677455ccfaa2b4c7438d"
+        }
+      ],
+      "assessment": "Fig.3c拍L/D約8、最終14.5；前環大小約與3.8例相同可支持生活題名，機制資料仍以環量表示而非體積。分離漸進、約4非普遍、可短暫吞尾渦後再釋放。",
+      "failures": "覆核者未另重試外站。作者Caltech web過期簽名500後UA原URL成功，其餘有效路線見作者收據；不把作者下載當覆核者新HTTP。"
+    },
+    {
+      "source_id": "P23-S005",
+      "url": "https://d-nb.info/1209740354/34",
+      "doi": "10.1007/s12283-020-0318-1",
+      "version": "2020-02-06正式刊文；德國國家圖書館PDF與Springer同一工作，不是獨立複驗。",
+      "read_via": "本輪覆核者核對作者當日有效PDF及抽文SHA後，自主讀指定正文；不是覆核者fresh HTTP。",
+      "reading_scope": "PDF pp1–6引言、方法、校準、結果、討論與摘要；實際目讀p2 Fig.1及p4 Fig.3–4。未追讀引用研究9的原始流場全文，Fig.1僅本篇引用的解釋。",
+      "cache": {
+        "file": ".cache/wave23-physics-magnus2020.pdf",
+        "sha256": "68edc75699edfceef10a3ea736ec726c61874ebe63643a0c28e0c5774fce03a4",
+        "text_file": ".cache/wave23-physics-magnus2020-pages.json",
+        "text_sha256": "5f765613c9757bfa966eb557fe0ab0d09ea0f96ac1e196778ca39939c1857c73"
+      },
+      "figures_actually_viewed": [
+        {
+          "file": ".cache/wave23-physics-magnus2020-p2.png",
+          "sha256": "49a8cd0ab87aa3914ad368c02d55d4b0e1b8eff51d0df46a6f6157aec60ae21b"
+        },
+        {
+          "file": ".cache/wave23-physics-magnus2020-p4.png",
+          "sha256": "d0896e01c0b1d677a073151992faf924ea39a226553ce24cbeee45d152db9c6e"
+        }
+      ],
+      "assessment": "負升力由飛行位置速度推算，需扣重力及初始垂速；分離點圖是既有解釋非直接PIV。本研究球型同時改多項材質幾何，不歸因單一凹坑。",
+      "failures": "覆核者未另重試外站。作者Caltech web過期簽名500後UA原URL成功，其餘有效路線見作者收據；不把作者下載當覆核者新HTTP。"
+    }
+  ],
+  "source_identity_review": {
+    "assessment": "arXiv/正式刊文/機構副本是同工作，不因URL另算實驗；S001僅v1預印本，S003理論工作。精確欄位零命中不是獨立證據保證。",
+    "identities_read": [
+      {
+        "source_id": "P23-S001",
+        "title": "Air Drag Controls the Finite-Time Singularity of Euler’s Disk",
+        "doi": "10.48550/arXiv.2603.14520",
+        "read_url": "https://arxiv.org/pdf/2603.14520",
+        "canonical_url": "https://doi.org/10.48550/arXiv.2603.14520",
+        "version_relationship": "arXiv:2603.14520v1，2026-03-15；當日身份頁未列正式期刊參照，僅預印本。",
+        "old_exact_title_doi_url_hits": [],
+        "independence": "同一工作的預印本/正式版/機構副本不算不同研究；精確欄位未命中不是無重複保證。"
+      },
+      {
+        "source_id": "P23-S002",
+        "title": "A Horizontal Vane Radiometer: Experiment, Theory, and Simulation",
+        "doi": "10.1063/1.4943543",
+        "read_url": "https://arxiv.org/pdf/1512.02590",
+        "canonical_url": "https://doi.org/10.1063/1.4943543",
+        "version_relationship": "所讀arXiv:1512.02590v2（2016-03-21），v1為2015-12-08；與2016正式刊文同一研究。",
+        "old_exact_title_doi_url_hits": [],
+        "independence": "同一工作的預印本/正式版/機構副本不算不同研究；精確欄位未命中不是無重複保證。"
+      },
+      {
+        "source_id": "P23-S003",
+        "title": "The tennis racket effect in a three-dimensional rigid body",
+        "doi": "10.1016/j.physd.2016.07.010",
+        "read_url": "https://arxiv.org/pdf/1606.08237",
+        "canonical_url": "https://doi.org/10.1016/j.physd.2016.07.010",
+        "version_relationship": "arXiv:1606.08237v1，2016-06-27存入，稿面日期06-28；身份頁列同工作Physica D DOI，非兩份研究。",
+        "old_exact_title_doi_url_hits": [],
+        "independence": "同一工作的預印本/正式版/機構副本不算不同研究；精確欄位未命中不是無重複保證。"
+      },
+      {
+        "source_id": "P23-S004",
+        "title": "A universal time scale for vortex ring formation",
+        "doi": "10.1017/S0022112097008410",
+        "read_url": "https://authors.library.caltech.edu/records/xzy5y-mpw80/files/GHAjfm98.pdf?download=1",
+        "canonical_url": "https://doi.org/10.1017/S0022112097008410",
+        "version_relationship": "Caltech保存1998正式刊文；庫的2005/2023更新不是新研究。Cambridge當日身份資料確認1998-04-10與DOI。",
+        "old_exact_title_doi_url_hits": [],
+        "independence": "同一工作的預印本/正式版/機構副本不算不同研究；精確欄位未命中不是無重複保證。"
+      },
+      {
+        "source_id": "P23-S005",
+        "title": "The reverse Magnus effect in golf balls",
+        "doi": "10.1007/s12283-020-0318-1",
+        "read_url": "https://d-nb.info/1209740354/34",
+        "canonical_url": "https://doi.org/10.1007/s12283-020-0318-1",
+        "version_relationship": "2020-02-06正式刊文；德國國家圖書館PDF與Springer同一工作，不是獨立複驗。",
+        "old_exact_title_doi_url_hits": [],
+        "independence": "同一工作的預印本/正式版/機構副本不算不同研究；精確欄位未命中不是無重複保證。"
+      }
+    ]
+  },
+  "candidate_review": [
+    {
+      "id": "P23001",
+      "decision": "retain",
+      "question_read": "圓盤快躺平時晃得更快，為什麼抽掉一些空氣仍會改變最後這一段？",
+      "answer_target_read": "傾角減小時，接觸點繞行的進動可加快，但整體仍耗能。所試圓盤的早期滾動摩擦與末段底面空氣耗散比例不同；氣壓控制改變末段傾角歷程，不能只用總停轉時間判斷空氣是否重要。",
+      "scope_read": "限2026 v1預印本的實心圓盤、指定表面及0.1atm對照。加快的是進動而非標記點自轉；終止時間為擬合外推，不承諾任何硬幣末段都由相同機制控制。",
+      "mechanism_assessment": "2026v1預印本；同盤0.1atm對照支持末段壓力敏感。環740g/盤445g不同質量不能當單變量；1/3極限未清楚觀察。",
+      "editorial_assessment": {
+        "payoff": "抽氣後仍會停，不能反推空氣從未參與；要看同一運動的不同階段。",
+        "visual": "同一445g圓盤、兩氣壓的傾角對剩餘擬合時間；另標進動接觸點。用不同顏色標早期接觸耗散/末段空氣作用，曲線只重繪定性。",
+        "seconds": [
+          75,
+          115
+        ],
+        "decision": "有可見受控差異及因果中段；題級保留，尚非動畫或稿核准。"
+      }
+    },
+    {
+      "id": "P23002",
+      "decision": "retain",
+      "question_read": "光照下的小轉輪，把空氣抽得更稀，為什麼反而不一定轉得更快？",
+      "answer_target_read": "水平黑白葉片的面內溫差使稀薄氣體產生熱流逸與反向表面作用；氣壓同時改變驅動和轉動阻力。穩定轉速取決於兩者的平衡，所以轉速可先增後減，不是只把煞車抽走。",
+      "scope_read": "限定研究的水平葉片及測壓範圍，不泛解普通直立葉片光磨。驅動/阻力拆分為模型與模擬，轉速峰為量測；不聲稱光子壓力是此裝置主驅動。",
+      "mechanism_assessment": "水平葉片避免普通直立葉片的另一溫差幾何；氣體剪力/拖曳分量是模型/模擬，量測的是轉速，模型定量並非完整吻合。",
+      "editorial_assessment": {
+        "payoff": "同一份空氣可以參與推動又參與阻擋，轉得最快不代表推得最強。",
+        "visual": "水平葉片黑白區俯視、冷側領先；接兩氣壓端與中間轉速峰，再把模型驅動/阻力兩條變化分開，與實測點符號不同。",
+        "seconds": [
+          75,
+          115
+        ],
+        "decision": "有可見受控差異及因果中段；題級保留，尚非動畫或稿核准。"
+      }
+    },
+    {
+      "id": "P23003",
+      "decision": "retain",
+      "question_read": "同一個球拍換個方向轉，為什麼有一個方向特別容易翻面？",
+      "answer_target_read": "三個不同主慣量中，繞中間者旋轉時小偏差可被角速度分量的耦合放大；繞最大或最小者則有穩定的小擾動。翻的是物體座標方向，實驗室中的總角動量仍可保持不變。",
+      "scope_read": "無外力矩剛體理論/數值，不冒充新實驗。相同球拍不改質量分布；需初始擾動與不同主慣量，並非完美中間軸狀態無因翻轉，也非每一圈必精確180度。",
+      "mechanism_assessment": "理論/數值；三主慣量不同、小偏差條件，實驗室角動量固定而身體座標改變。不採表格可疑單位，也不報精確180度通則。",
+      "editorial_assessment": {
+        "payoff": "沒有外力矩，不表示物體每條自身軸都固定；穩定性還取決於繞哪條主軸。",
+        "visual": "同一球拍畫三主軸/微小偏差；兩軸小幅晃、中間軸逐漸翻面；旁邊始終保留實驗室角動量箭頭，明標理論示意。",
+        "seconds": [
+          80,
+          115
+        ],
+        "decision": "有可見受控差異及因果中段；題級保留，尚非動畫或稿核准。"
+      }
+    },
+    {
+      "id": "P23004",
+      "decision": "retain",
+      "question_read": "水還在往前推，前面的渦環為什麼不繼續變大？",
+      "answer_target_read": "短脈衝的排出流可大多捲入前環；供給持續較久後，前環與尾流逐步分離，新渦量留在後方而前環環量趨平。能量與衝量相容的準穩態模型解釋何以不能把所有持續供給都裝進單一穩定環。",
+      "scope_read": "限1998柱塞/圓管水槽的觀察及帶假設模型；不是任何渦環固定在L/D=4瞬間切斷。分離後仍可能短暫吞尾渦再釋出、或被快尾流破壞，不稱永不接收。",
+      "mechanism_assessment": "Fig.3c拍L/D約8、最終14.5；前環大小約與3.8例相同可支持生活題名，機制資料仍以環量表示而非體積。分離漸進、約4非普遍、可短暫吞尾渦後再釋放。",
+      "editorial_assessment": {
+        "payoff": "送出的總量可以繼續增加，前面那一個環卻不再持續增加環量；多出的動量/渦量留在尾流。",
+        "visual": "同管徑短/長脈衝對照，標前環和尾流；並排總環量續升、前環趨平的定性曲線，再分框畫模型的單環承接限制。",
+        "seconds": [
+          85,
+          120
+        ],
+        "decision": "有可見受控差異及因果中段；題級保留，尚非動畫或稿核准。"
+      }
+    },
+    {
+      "id": "P23005",
+      "decision": "retain",
+      "question_read": "球仍朝同一方向倒旋，空氣為什麼有時反而把它往下壓？",
+      "answer_target_read": "受測高爾夫球接近邊界層轉捩區時，倒旋讓兩側相對氣流條件不同；一側保持層流、另一側先轉湍流的解釋改變分離位置，可令升力方向與通常倒旋相反。繼續改變流速或自旋條件又可回到正升力。",
+      "scope_read": "限三球型和測試範圍；負升力由飛行數據扣重力與初始垂速等推得，並非只看球往下掉。邊界層/分離點為採用文獻的解釋圖，不是本研究直接PIV量到；不以換球型宣稱單一凹坑因果。",
+      "mechanism_assessment": "負升力由飛行位置速度推算，需扣重力及初始垂速；分離點圖是既有解釋非直接PIV。本研究球型同時改多項材質幾何，不歸因單一凹坑。",
+      "editorial_assessment": {
+        "payoff": "同方向旋轉不保證同方向升力；還要看兩側氣流是否跨到不同的分離狀態。",
+        "visual": "旋轉箭頭始終相同，並排一般/反向升力；以不同線型標層流/湍流解釋，另框三門量測與扣重力，避免用下墜當證明。",
+        "seconds": [
+          80,
+          115
+        ],
+        "decision": "有可見受控差異及因果中段；題級保留，尚非動畫或稿核准。"
+      }
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P23001",
+      "b": "P027",
+      "decision": "distinct",
+      "reason": "固定盤的低傾角進動/耗散交替，沒有收縮慣量；抽氣控制不能由收手角動量答案取代。"
+    },
+    {
+      "a": "P23001",
+      "b": "P030",
+      "decision": "distinct",
+      "reason": "存在外力矩只是停轉必要背景；新控制辨接觸與空氣耗散所占階段，總停轉時間不足以排除末段氣阻。"
+    },
+    {
+      "a": "P23001",
+      "b": "K18004",
+      "decision": "distinct",
+      "reason": "翻身陀螺由桌面力矩抬重心；此盤降低傾角，並以同盤不同氣壓辨低傾角耗散。"
+    },
+    {
+      "a": "P23001",
+      "b": "F14008",
+      "decision": "distinct",
+      "reason": "人工指腹氣膜承載減接觸與此盤底面氣體消耗運動能方向不同；共同減壓不構成同核。"
+    },
+    {
+      "a": "P23002",
+      "b": "E2174",
+      "decision": "distinct",
+      "reason": "光子動量與此溫差驅動稀薄氣體剪力不同；本題的氣壓依賴還需同時比較氣阻。"
+    },
+    {
+      "a": "P23002",
+      "b": "P082",
+      "decision": "distinct",
+      "reason": "固定容器升溫增壓不能解釋面內溫度梯度下驅動/拖曳不同壓力依賴及轉速峰。"
+    },
+    {
+      "a": "P23002",
+      "b": "P303",
+      "decision": "distinct",
+      "reason": "分子速率分布不是表面熱流逸/滑移長度與拖曳競爭的控制答案。"
+    },
+    {
+      "a": "P23002",
+      "b": "P23001",
+      "decision": "distinct",
+      "reason": "一個持續光熱輸入且氣體驅動/阻擋並存；另一個自由衰減、接觸與空氣耗散交替。可比較但不合核。"
+    },
+    {
+      "a": "P23003",
+      "b": "P028",
+      "decision": "distinct",
+      "reason": "同一剛體三主軸小擾動穩定性，不是換質量位置比較慣量大小。"
+    },
+    {
+      "a": "P23003",
+      "b": "P030",
+      "decision": "distinct",
+      "reason": "實驗室角動量不變仍可有身體軸翻面；中間主慣量分量耦合提供不同答案。"
+    },
+    {
+      "a": "P23003",
+      "b": "P314",
+      "decision": "distinct",
+      "reason": "人與輪子相互交換角動量不同於單一剛體無外力矩下的身體軸不穩定。"
+    },
+    {
+      "a": "P23003",
+      "b": "K18005",
+      "decision": "distinct",
+      "reason": "反轉石需接觸幾何/慣量主軸錯位及接觸力矩；本題無桌面亦成立。"
+    },
+    {
+      "a": "P23003",
+      "b": "K18004",
+      "decision": "distinct",
+      "reason": "滑動力矩抬重心與無耗散自由剛體的中間軸不穩定不同。"
+    },
+    {
+      "a": "P23004",
+      "b": "E9001",
+      "decision": "distinct",
+      "reason": "孔隙傘固定分離渦環的阻力不同於出口持續供流、前環不再持續納入新渦量。"
+    },
+    {
+      "a": "P23004",
+      "b": "A12011",
+      "decision": "distinct",
+      "reason": "水母回復把停止渦環帶到傘下提供壓力推進；此題控制供流時長與前環/尾流分配。"
+    },
+    {
+      "a": "P23004",
+      "b": "B2123",
+      "decision": "distinct",
+      "reason": "噴流反作用與可轉漏斗不能回答持續供流卻前環環量趨平。"
+    },
+    {
+      "a": "P23004",
+      "b": "P062",
+      "decision": "distinct",
+      "reason": "非穩態渦量輸送/分離與單流線穩態壓力功轉動能不同。"
+    },
+    {
+      "a": "P23005",
+      "b": "P21004",
+      "decision": "distinct",
+      "reason": "薄片轉動環流/短暫抬升沒有同向倒旋下邊界層轉捩導致力反號的控制。"
+    },
+    {
+      "a": "P23005",
+      "b": "E9003",
+      "decision": "distinct",
+      "reason": "翅果穩定前緣渦與球兩側不同轉捩/分離狀態造成反向升力不同。"
+    },
+    {
+      "a": "P23005",
+      "b": "F14005",
+      "decision": "distinct",
+      "reason": "軟壁彈性變形打破潤滑間隙對稱，與剛球外流邊界層轉捩不同。"
+    },
+    {
+      "a": "P23005",
+      "b": "P062",
+      "decision": "distinct",
+      "reason": "不能用理想流線速度壓力關係取代黏性邊界層轉捩與分離位置的反號控制。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P23001",
+      "b": "K18003",
+      "cosine": 0.745401,
+      "decision": "distinct",
+      "reason": "彈簧塌縮前緣尚未到達的局部力平衡，不是盤的耗散階段或進動。"
+    },
+    {
+      "a": "P23001",
+      "b": "A12011",
+      "cosine": 0.729083,
+      "decision": "distinct",
+      "reason": "水母暫停變形仍由既存渦流受推，與耗能圓盤幾何關係令進動增加不同。"
+    },
+    {
+      "a": "P23001",
+      "b": "D2128",
+      "cosine": 0.725761,
+      "decision": "distinct",
+      "reason": "銷槽間歇傳動/鎖止與自由盤傾角/氣阻控制不同。"
+    },
+    {
+      "a": "P23001",
+      "b": "P002",
+      "cosine": 0.723269,
+      "decision": "distinct",
+      "reason": "一般摩擦使平移減速不足以解釋盤耗能但進動加快及末段壓力敏感。"
+    },
+    {
+      "a": "P23001",
+      "b": "P21005",
+      "cosine": 0.721297,
+      "decision": "distinct",
+      "reason": "配重改流體力矩平衡/滑翔穩定與固定盤末段耗散交替不同。"
+    },
+    {
+      "a": "P23002",
+      "b": "P306",
+      "cosine": 0.743142,
+      "decision": "distinct",
+      "reason": "單一熱源循環的第二定律限制，不是持續非均溫表面熱流逸與阻力平衡。"
+    },
+    {
+      "a": "P23002",
+      "b": "P23001",
+      "cosine": 0.708733,
+      "decision": "distinct",
+      "reason": "一個持續光熱輸入且氣體驅動/阻擋並存；另一個自由衰減、接觸與空氣耗散交替。可比較但不合核。"
+    },
+    {
+      "a": "P23002",
+      "b": "D2205",
+      "cosine": 0.685394,
+      "decision": "distinct",
+      "reason": "儲氣罐反覆制動排氣/補氣速率不涉及熱氣體表面驅動。"
+    },
+    {
+      "a": "P23002",
+      "b": "P080",
+      "cosine": 0.673763,
+      "decision": "distinct",
+      "reason": "容器體積限制改壓力反應，不是同幾何溫差下穩態轉速的非單調性。"
+    },
+    {
+      "a": "P23002",
+      "b": "D2178",
+      "cosine": 0.667223,
+      "decision": "distinct",
+      "reason": "熔塞受熱洩壓是保護元件觸發，與氣體熱流逸轉矩不同。"
+    },
+    {
+      "a": "P23003",
+      "b": "D2127",
+      "cosine": 0.770476,
+      "decision": "distinct",
+      "reason": "滾子楔緊/鬆開改傳矩路徑，與無接觸自由剛體中間軸不穩不同。"
+    },
+    {
+      "a": "P23003",
+      "b": "P21004",
+      "cosine": 0.754086,
+      "decision": "distinct",
+      "reason": "薄片受外部流體力/力矩、環流和平移耦合；本題是無外力矩Euler剛體。"
+    },
+    {
+      "a": "P23003",
+      "b": "B11003",
+      "cosine": 0.751321,
+      "decision": "distinct",
+      "reason": "莖的重力/曲率生長回饋與固定形狀剛體的慣量耦合不同。"
+    },
+    {
+      "a": "P23003",
+      "b": "B15004",
+      "cosine": 0.747103,
+      "decision": "distinct",
+      "reason": "可變形螺旋的彎扭剛性及幾何重排，與固定剛體中間軸不穩不同。"
+    },
+    {
+      "a": "P23003",
+      "b": "P029",
+      "cosine": 0.743731,
+      "decision": "distinct",
+      "reason": "收縮做內功會改慣量/動能，本題慣量與能量都保持而姿態改變。"
+    },
+    {
+      "a": "P23004",
+      "b": "F10012",
+      "cosine": 0.76526,
+      "decision": "distinct",
+      "reason": "液絲長度供需差以彎曲花紋容納，與慣性渦環的渦量/衝量承接限制不同。"
+    },
+    {
+      "a": "P23004",
+      "b": "F10016",
+      "cosine": 0.754448,
+      "decision": "distinct",
+      "reason": "開渠水躍前後流深/動量耗散，不是前環與持續尾流分離。"
+    },
+    {
+      "a": "P23004",
+      "b": "F10013",
+      "cosine": 0.753937,
+      "decision": "distinct",
+      "reason": "截面剪切配跨流線擴散的色帶展寬，不是前環環量飽和與尾渦形成。"
+    },
+    {
+      "a": "P23004",
+      "b": "F14006",
+      "cosine": 0.742631,
+      "decision": "distinct",
+      "reason": "凝膠孔隙水排放時間/接觸形狀，不是自由液體出口供給渦環。"
+    },
+    {
+      "a": "P23004",
+      "b": "P072",
+      "cosine": 0.741022,
+      "decision": "distinct",
+      "reason": "急彎促橫向流和混合只給一般渦流入口，不能解釋直出口供流門檻及前環趨平。"
+    },
+    {
+      "a": "P23005",
+      "b": "T4044",
+      "cosine": 0.710403,
+      "decision": "distinct",
+      "reason": "飛機尾渦受橫風移位，不是球表面轉捩使自身升力反號。"
+    },
+    {
+      "a": "P23005",
+      "b": "T4045",
+      "cosine": 0.698497,
+      "decision": "distinct",
+      "reason": "後機翼展/控制能力決定外來尾渦滾轉，與旋球兩側邊界層不同。"
+    },
+    {
+      "a": "P23005",
+      "b": "B17003",
+      "cosine": 0.669501,
+      "decision": "distinct",
+      "reason": "起跳前腿位/重心控制推進方向，沒有球面氣流轉捩與負升力。"
+    },
+    {
+      "a": "P23005",
+      "b": "N147",
+      "cosine": 0.667298,
+      "decision": "distinct",
+      "reason": "地轉力/摩擦/壓力梯度改風向，與小球邊界層分離不對稱不同。"
+    },
+    {
+      "a": "P23005",
+      "b": "N161",
+      "cosine": 0.663665,
+      "decision": "distinct",
+      "reason": "水平風偏轉冰雹路徑不涉及固定倒旋方向下的升力反號。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P23001",
+        "b": "P027",
+        "reason": "固定盤的低傾角進動/耗散交替，沒有收縮慣量；抽氣控制不能由收手角動量答案取代。"
+      },
+      {
+        "a": "P23001",
+        "b": "P030",
+        "reason": "存在外力矩只是停轉必要背景；新控制辨接觸與空氣耗散所占階段，總停轉時間不足以排除末段氣阻。"
+      },
+      {
+        "a": "P23001",
+        "b": "K18004",
+        "reason": "翻身陀螺由桌面力矩抬重心；此盤降低傾角，並以同盤不同氣壓辨低傾角耗散。"
+      },
+      {
+        "a": "P23001",
+        "b": "F14008",
+        "reason": "人工指腹氣膜承載減接觸與此盤底面氣體消耗運動能方向不同；共同減壓不構成同核。"
+      },
+      {
+        "a": "P23002",
+        "b": "E2174",
+        "reason": "光子動量與此溫差驅動稀薄氣體剪力不同；本題的氣壓依賴還需同時比較氣阻。"
+      },
+      {
+        "a": "P23002",
+        "b": "P082",
+        "reason": "固定容器升溫增壓不能解釋面內溫度梯度下驅動/拖曳不同壓力依賴及轉速峰。"
+      },
+      {
+        "a": "P23002",
+        "b": "P303",
+        "reason": "分子速率分布不是表面熱流逸/滑移長度與拖曳競爭的控制答案。"
+      },
+      {
+        "a": "P23002",
+        "b": "P23001",
+        "reason": "一個持續光熱輸入且氣體驅動/阻擋並存；另一個自由衰減、接觸與空氣耗散交替。可比較但不合核。"
+      },
+      {
+        "a": "P23003",
+        "b": "P028",
+        "reason": "同一剛體三主軸小擾動穩定性，不是換質量位置比較慣量大小。"
+      },
+      {
+        "a": "P23003",
+        "b": "P030",
+        "reason": "實驗室角動量不變仍可有身體軸翻面；中間主慣量分量耦合提供不同答案。"
+      },
+      {
+        "a": "P23003",
+        "b": "P314",
+        "reason": "人與輪子相互交換角動量不同於單一剛體無外力矩下的身體軸不穩定。"
+      },
+      {
+        "a": "P23003",
+        "b": "K18005",
+        "reason": "反轉石需接觸幾何/慣量主軸錯位及接觸力矩；本題無桌面亦成立。"
+      },
+      {
+        "a": "P23003",
+        "b": "K18004",
+        "reason": "滑動力矩抬重心與無耗散自由剛體的中間軸不穩定不同。"
+      },
+      {
+        "a": "P23004",
+        "b": "E9001",
+        "reason": "孔隙傘固定分離渦環的阻力不同於出口持續供流、前環不再持續納入新渦量。"
+      },
+      {
+        "a": "P23004",
+        "b": "A12011",
+        "reason": "水母回復把停止渦環帶到傘下提供壓力推進；此題控制供流時長與前環/尾流分配。"
+      },
+      {
+        "a": "P23004",
+        "b": "B2123",
+        "reason": "噴流反作用與可轉漏斗不能回答持續供流卻前環環量趨平。"
+      },
+      {
+        "a": "P23004",
+        "b": "P062",
+        "reason": "非穩態渦量輸送/分離與單流線穩態壓力功轉動能不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "P21004",
+        "reason": "薄片轉動環流/短暫抬升沒有同向倒旋下邊界層轉捩導致力反號的控制。"
+      },
+      {
+        "a": "P23005",
+        "b": "E9003",
+        "reason": "翅果穩定前緣渦與球兩側不同轉捩/分離狀態造成反向升力不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "F14005",
+        "reason": "軟壁彈性變形打破潤滑間隙對稱，與剛球外流邊界層轉捩不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "P062",
+        "reason": "不能用理想流線速度壓力關係取代黏性邊界層轉捩與分離位置的反號控制。"
+      },
+      {
+        "a": "P23001",
+        "b": "K18003",
+        "reason": "彈簧塌縮前緣尚未到達的局部力平衡，不是盤的耗散階段或進動。"
+      },
+      {
+        "a": "P23001",
+        "b": "A12011",
+        "reason": "水母暫停變形仍由既存渦流受推，與耗能圓盤幾何關係令進動增加不同。"
+      },
+      {
+        "a": "P23001",
+        "b": "D2128",
+        "reason": "銷槽間歇傳動/鎖止與自由盤傾角/氣阻控制不同。"
+      },
+      {
+        "a": "P23001",
+        "b": "P002",
+        "reason": "一般摩擦使平移減速不足以解釋盤耗能但進動加快及末段壓力敏感。"
+      },
+      {
+        "a": "P23001",
+        "b": "P21005",
+        "reason": "配重改流體力矩平衡/滑翔穩定與固定盤末段耗散交替不同。"
+      },
+      {
+        "a": "P23002",
+        "b": "P306",
+        "reason": "單一熱源循環的第二定律限制，不是持續非均溫表面熱流逸與阻力平衡。"
+      },
+      {
+        "a": "P23002",
+        "b": "D2205",
+        "reason": "儲氣罐反覆制動排氣/補氣速率不涉及熱氣體表面驅動。"
+      },
+      {
+        "a": "P23002",
+        "b": "P080",
+        "reason": "容器體積限制改壓力反應，不是同幾何溫差下穩態轉速的非單調性。"
+      },
+      {
+        "a": "P23002",
+        "b": "D2178",
+        "reason": "熔塞受熱洩壓是保護元件觸發，與氣體熱流逸轉矩不同。"
+      },
+      {
+        "a": "P23003",
+        "b": "D2127",
+        "reason": "滾子楔緊/鬆開改傳矩路徑，與無接觸自由剛體中間軸不穩不同。"
+      },
+      {
+        "a": "P23003",
+        "b": "P21004",
+        "reason": "薄片受外部流體力/力矩、環流和平移耦合；本題是無外力矩Euler剛體。"
+      },
+      {
+        "a": "P23003",
+        "b": "B11003",
+        "reason": "莖的重力/曲率生長回饋與固定形狀剛體的慣量耦合不同。"
+      },
+      {
+        "a": "P23003",
+        "b": "B15004",
+        "reason": "可變形螺旋的彎扭剛性及幾何重排，與固定剛體中間軸不穩不同。"
+      },
+      {
+        "a": "P23003",
+        "b": "P029",
+        "reason": "收縮做內功會改慣量/動能，本題慣量與能量都保持而姿態改變。"
+      },
+      {
+        "a": "P23004",
+        "b": "F10012",
+        "reason": "液絲長度供需差以彎曲花紋容納，與慣性渦環的渦量/衝量承接限制不同。"
+      },
+      {
+        "a": "P23004",
+        "b": "F10016",
+        "reason": "開渠水躍前後流深/動量耗散，不是前環與持續尾流分離。"
+      },
+      {
+        "a": "P23004",
+        "b": "F10013",
+        "reason": "截面剪切配跨流線擴散的色帶展寬，不是前環環量飽和與尾渦形成。"
+      },
+      {
+        "a": "P23004",
+        "b": "F14006",
+        "reason": "凝膠孔隙水排放時間/接觸形狀，不是自由液體出口供給渦環。"
+      },
+      {
+        "a": "P23004",
+        "b": "P072",
+        "reason": "急彎促橫向流和混合只給一般渦流入口，不能解釋直出口供流門檻及前環趨平。"
+      },
+      {
+        "a": "P23005",
+        "b": "T4044",
+        "reason": "飛機尾渦受橫風移位，不是球表面轉捩使自身升力反號。"
+      },
+      {
+        "a": "P23005",
+        "b": "T4045",
+        "reason": "後機翼展/控制能力決定外來尾渦滾轉，與旋球兩側邊界層不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "B17003",
+        "reason": "起跳前腿位/重心控制推進方向，沒有球面氣流轉捩與負升力。"
+      },
+      {
+        "a": "P23005",
+        "b": "N147",
+        "reason": "地轉力/摩擦/壓力梯度改風向，與小球邊界層分離不對稱不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "N161",
+        "reason": "水平風偏轉冰雹路徑不涉及固定倒旋方向下的升力反號。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "P23-NA001",
+      "question": "翻半瓶水為什麼比較容易站住？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P027",
+        "P028"
+      ],
+      "reason": "本輪只讀arXiv:1712.08271身份/摘要；核心仍是流體散開增慣量、角速下降，尚無獨立於既有慣量重分配的新增控制。",
+      "reentry_condition": "若取得不同決定機制的正文控制再審，不以半瓶場景另計。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA002",
+      "question": "蜂蜜落在桌上為什麼繞成圈？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "F10011"
+      ],
+      "reason": "黏性液柱受壓彎曲已有。",
+      "reentry_condition": "只有不同於黏性屈曲的新因果控制才重入。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA003",
+      "question": "接液平面移快，為什麼花紋從圈變波浪？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "F10012"
+      ],
+      "reason": "供流與帶面移走長度的速度比已有。",
+      "reentry_condition": "不能只列更多花紋名稱。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA004",
+      "question": "先扭乾麵條就能讓斷裂只剩兩截嗎？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "F15001"
+      ],
+      "reason": "預扭/彎曲波與扭轉釋放競賽已收，且原題已有條件。",
+      "reentry_condition": "新控制超出既有應力波鏈才另審。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA005",
+      "question": "鞭尖為什麼能甩得比手更快？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "P21-NA017曾因正文不足退；本輪作者PDF web逾時、指定UA憑證驗證失敗，只取得其他身份/摘要，不以常識補正文。",
+      "reentry_condition": "取得有效原文，分清行波、變截面與翻捲控制後重審。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA006",
+      "question": "把灑水器改成吸水，它必定反向轉嗎？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "F17-NA001未解；本輪最新2026來源仍只讀身份/摘要，正文PMC不可用，不能混用互有條件差的說法。",
+      "reentry_condition": "實讀最新幾何/內部流動/穩態控制與舊研究，再定一個範圍。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA007",
+      "question": "倒立的擺為什麼靠快速震動就能站住？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "F17005"
+      ],
+      "reason": "已讀官方短示範頁但動態穩定核心與倒浮剛體已有題相近，換成擺不另計。",
+      "reentry_condition": "需有新控制機制而非只換不穩定物件。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA008",
+      "question": "轉椅收手為什麼更快？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P027"
+      ],
+      "reason": "相同角動量下慣量變小已有，不拿球拍包裝重收。",
+      "reentry_condition": "只新增不同穩定性機制，見P23003。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA009",
+      "question": "轉輪越重是不是越難改變旋轉？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P028"
+      ],
+      "reason": "質量分布對慣量已有。",
+      "reentry_condition": "需控制慣量之外的新作用。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA010",
+      "question": "玩具陀螺為什麼能靠翻身把重心抬高？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "K18004"
+      ],
+      "reason": "接觸滑動力矩/能量重分配已收。",
+      "reentry_condition": "不以新陀螺品牌增加核心。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA011",
+      "question": "反轉石為什麼不肯朝某個方向轉？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "K18005"
+      ],
+      "reason": "接觸幾何與慣量主軸錯位耦合已有。",
+      "reentry_condition": "自由剛體無接觸的中間軸題另以P23003交審。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA012",
+      "question": "鏡子為什麼比黑面受到更大的光推力？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "E2174"
+      ],
+      "reason": "輻射動量已有；不能拿熱輻射計作相同實驗。",
+      "reentry_condition": "新熱氣體邊界條件採P23002，不再拆光子題。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA013",
+      "question": "把圓盤挖成環，為什麼最後晃動曲線又不一樣？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "同研究空氣耗散判別的輔助對照；實心445g和環740g並非只挖洞的等質量比較，不另算核心。",
+      "reentry_condition": "只有超出P23001耗散交替的新機制才獨立。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA014",
+      "question": "渦環為什麼一定在推到四倍管徑時斷開？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "假前提：分離漸進、速度剖面能改數值，約4不是普遍常數。",
+      "reentry_condition": "改成受限柱流的P23004；不保留必定數值問法。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA015",
+      "question": "哪種高爾夫球凹坑一定最能防止向下升力？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "三球型亦改材質/製法，不足單獨歸因凹坑，更不是器材推薦。",
+      "reentry_condition": "需獨立控制表面幾何且有普遍化證據；本輪不做。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    },
+    {
+      "id": "P23-NA016",
+      "question": "沒有外力矩時，球拍每轉一圈必定翻180度嗎？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "精確角度受慣量和初始條件影響；完全主軸初態與小擾動不同，不能把近似當恆等。",
+      "reentry_condition": "採P23003的穩定性控制而非精確角度通則。",
+      "review_scope": "退題理由及既有ID完整答案已讀；有本批引用來源者含指定正文。沒有新取的鞭/吸水器等外文不宣稱已讀。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W23P-T01",
+      "body_seconds": 180,
+      "chapter_seconds": [
+        50,
+        30,
+        50,
+        50
+      ],
+      "same_core_totals": {
+        "P23001": 80,
+        "P23002": 100
+      },
+      "progression": [
+        "含6秒開場：畫圓盤快躺平、接觸點繞行加快；分開標記點自轉與進動，問抽氣會不會沒有煞車。；同一445g圓盤在常壓/0.1atm的傾角歷程分開；比較相同剩餘擬合時間，差異在末段增大，不用總停轉秒數下結論。",
+        "定性示意早期接觸耗散較大，低傾角末段底面空氣運動成為主要項；圖上標2026預印本和外推時間。；空氣既會阻擋，換成受光轉輪會怎樣？",
+        "明確換研究與壓力刻度：水平黑白葉片持續受光，圖示冷側領先；不是常見直立玻璃光磨。；依Fig.4畫實測轉速隨壓力的峰；左右兩端都比中間慢，推翻抽得愈稀就必定更快的預測。",
+        "模型框畫面內溫差/熱流逸驅動，旁邊畫轉動阻力；兩者隨壓力變化不同，平衡轉速不是驅動力本身。；把光照作能量輸入、氣體作動量傳遞與拖曳的路徑；模型曲線和實測點分符號，不裝成已精準預測每一轉速。；回扣：少一點空氣，可以少一點煞車，也可能少一部分推動。"
+      ],
+      "drop_if_read": "若兩裝置切換使觀眾以為同一個實驗，拆案不補時：只保留圓盤兩章80秒或轉輪兩章100秒，需重寫各自開場/結尾並重核；不能只刪中間機制章仍聲稱回答完整。",
+      "assessment": "同一抽氣預測轉到不同能量來源，明確重設幾何與壓力尺度；20→5秒轉場已讀回，180秒可留。若裝置混淆則拆80/100秒並重寫開收。",
+      "limits": "紙上內容與預算覆核，不是完整稿盲讀/試讀/製作核准。"
+    },
+    {
+      "id": "W23P-T02",
+      "body_seconds": 90,
+      "chapter_seconds": [
+        50,
+        40
+      ],
+      "same_core_totals": {
+        "P23003": 90
+      },
+      "progression": [
+        "含6秒開場：同一球拍三個旋轉方向，標最小/中間/最大主慣量，不用順手拋物示範。；三框各加小偏差：最小/最大軸的小晃動保持有界，中間軸偏差逐步放大；圖標理論對照。",
+        "固定外部角動量箭頭，讓球拍自身三軸轉動；角速度在身體各軸的分量耦合，展示偏差如何轉成大幅姿態變化。；圖註保留相同質量分布與主慣量，翻面角度為近似，不畫每圈必180度。；回扣：無外力矩，不等於每條自身軸都穩。"
+      ],
+      "drop_if_read": "若不能同時看清身體軸和固定外部箭頭，撤90秒案；刪第一章剩40秒、刪第二章剩50秒，不能補成單講角動量名詞。",
+      "assessment": "三主軸小擾動到固定外部角動量有推進；15→5秒圖註已讀回，90秒可留；不再朗讀其他舊題背景。",
+      "limits": "紙上內容與預算覆核，不是完整稿盲讀/試讀/製作核准。"
+    },
+    {
+      "id": "W23P-T03",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "same_core_totals": {
+        "P23004": 110
+      },
+      "progression": [
+        "含6秒開場：短脈衝只有前環，較長脈衝後方仍在供流卻多出尾流；問前環是否會無限變大。；依Fig.3三框看相近下游位置；長例照片在L/D約8，終程14.5另註。再把新渦量標到尾流，不把分離畫成瞬間剪斷。",
+        "Fig.7定性雙曲線：總環量續升而完成分離後的前環趨平；曲線上的「環量」用繞圈強度輔助，不把它直接叫水的體積。；機制模型框：單一穩定環要有相容的能量/衝量與渦量，持續供流後更多留在尾流；以不同出口速度剖面能移動門檻的小圖，打掉萬用四倍規則。；回扣：不是水停了，是它不再持續都收進前面同一個環。"
+      ],
+      "drop_if_read": "若只能畫煙圈而畫不出供給與尾流分開，撤110秒案；刪控制章剩60秒模型、刪機制章剩50秒現象，不能用更多渦環照片補時。",
+      "assessment": "短/長供流到前環/總環量雙曲線，模型條件有推進，不需要更多煙圈畫面。",
+      "limits": "紙上內容與預算覆核，不是完整稿盲讀/試讀/製作核准。"
+    },
+    {
+      "id": "W23P-T04",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        45,
+        60
+      ],
+      "same_core_totals": {
+        "P23005": 105
+      },
+      "progression": [
+        "含6秒開場：兩個倒旋箭頭同向，升力箭頭卻相反；先問是否只是重力。；原研究用多道飛行量測推升力，須扣重力和初始垂速；再看Fig.4同球在特定轉捩區可落到零線以下，而非只看一條拋物線。",
+        "標機制示意：倒旋讓上下側相對來流條件不同，在轉捩區一側先轉湍流、延後分離，另一側仍較早分離，可能把升力方向反轉。；回同球量測曲線，低/較高流速區不都反向；同向倒旋的結果還看流動狀態。球型差異只圖註，不做凹坑排名。；回扣：旋轉方向不是升力方向的唯一線索。"
+      ],
+      "drop_if_read": "若圖只剩「空氣上快下慢」卻畫不出狀態/分離差，撤105秒案；刪量測章剩60秒模型、刪機制章剩45秒異常點，不補球類排行。",
+      "assessment": "先區分負空氣升力和單純下墜，再用流態區間解釋同旋向的反號；量測界線必要但不念儀器表。",
+      "limits": "紙上內容與預算覆核，不是完整稿盲讀/試讀/製作核准。"
+    }
+  ],
+  "retrieval": {
+    "first_read_neighbours": {
+      "file": ".cache/wave23-everyday-physics-neighbours.json",
+      "sha256": "182dd34f5beff51c4dd96ad973d29015b3c4df9fa350642324111b0a0be12e38"
+    },
+    "first_read_draft_sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62",
+    "limits": "目前所有有向top5已逐對比較完整問答scope；共同初版與末版逐列相同。保留初讀與修訂證據，不把檢索或題級查讀升為全庫/逐句稿核准。",
+    "final_input_check": {
+      "status": "PASS_EXACT_COMMON_ROWS_AND_AUTHOR_BINDINGS",
+      "first_common_neighbours": {
+        "file": ".cache/wave23-everyday-physics-neighbours-common-initial.json",
+        "sha256": "a5a2bc937cfe2a5c9cd1a33c90ad16e26aea5ef4a4e92d4e0768ad2dbfd10cdc"
+      },
+      "first_common_draft_sha256": "aa5cd00b37e1d02e0f17b23031e476db12c6a231cbcfb7ca868b259b3feaf85b",
+      "final_neighbours": {
+        "file": ".cache/wave23-everyday-physics-neighbours.json",
+        "sha256": "d0d948fc8dd5a68376263df18b98faf2d8c510a606dda9b471d8444a7818b08a"
+      },
+      "final_draft_sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c",
+      "draft": {
+        "file": ".cache/draft.json",
+        "sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c"
+      },
+      "semantic": {
+        "file": ".cache/semantic-wave23-draft.json",
+        "sha256": "bae2e0b025d838cfe68db428f8323548323d12aba7e3f11653b8aa7b1da2c3eb"
+      },
+      "delta": {
+        "file": ".cache/wave23-semantic-revision-delta.json",
+        "sha256": "49f22062665d7d10b3702a23728f8b70cd57405055978d0c12d4e3617d515caf"
+      },
+      "full_question_answer_scope_cosine_and_top5_rows_identical_to_common_initial": true,
+      "directed_pairs": 25,
+      "new_neighbours_since_common_initial": [],
+      "source_identity": {
+        "file": ".cache/wave23-source-identity-matches.json",
+        "sha256": "5ebc05944f5b40e70aa585ccf2a58266dc794fa51a1b3a529098f04b015fdb84"
+      },
+      "limits": "精確來源比對0命中不是獨立證據保證；image同規格舊版關係另列source_identity_review。檢索不等於全庫逐題或召回率測試。",
+      "lf_metadata_rebind": "PASS：根作者檔LF正規化/author written_files更新，重新preview另納入113組先前已審distinct整合（1664→1777，舊prefix完整保留）。候選問答scope及完整semantic neighbours未變，不是draft只有SHA改變。"
+    }
+  },
+  "remaining_blockers": [],
+  "receipt_emission_reviewed_files": [
+    {
+      "file": "batches/wave23-everyday-physics.json",
+      "sha256": "a2d9059b685fecad443e3870e1f25dd9c66fdd2cd801cc068f59d2320bb25749"
+    },
+    {
+      "file": "reviews/wave23-everyday-physics-themes.json",
+      "sha256": "490bf4e7515aca870507a39836d197c4e0bc9bba8959794370c8d28e23715b7e"
+    },
+    {
+      "file": "reviews/wave23-everyday-physics-author.json",
+      "sha256": "f5f6ec60d6b37c836453a7d6aaf3053d39193d9d29feefadfedc604a2eacf210"
+    }
+  ],
+  "initial_review_note": "初讀三SHA及195/100/110/105秒見作者before_files與本輪逐章讀取；初始收據落地時作者縮時已完成，因此保留receipt_emission_reviewed_files，不把發出時雜湊誤當修前版本。",
+  "resolved_findings": [
+    {
+      "id": "PHYSICS01",
+      "file": "reviews/wave23-everyday-physics-themes.json",
+      "target": "W23P-T01 chapter2 beat2",
+      "request": "20→5秒，只留換受光轉輪的追問；195→180，圓盤80/轉輪100，range/drop同步。",
+      "removed_seconds": 15,
+      "status": "TARGETED_READBACK_PASS",
+      "after": "T01第二章末5秒，總180（80+100）；T02第二章中段5秒圖註，總90（50+40）；候選/來源未改。"
+    },
+    {
+      "id": "PHYSICS02",
+      "file": "reviews/wave23-everyday-physics-themes.json",
+      "target": "W23P-T02 chapter2 beat2",
+      "request": "15→5秒僅保同慣量/近似角度圖註，不再朗讀收手/桌面背景；100→90，range/drop同步。",
+      "removed_seconds": 10,
+      "status": "TARGETED_READBACK_PASS",
+      "after": "T01第二章末5秒，總180（80+100）；T02第二章中段5秒圖註，總90（50+40）；候選/來源未改。"
+    }
+  ],
+  "metadata_revisions": [
+    {
+      "created_on": "2026-11-02",
+      "kind": "LF_NORMALIZATION_AND_HASH_REBIND_ONLY",
+      "reviewer": "pool_life_tech",
+      "before_receipt": {
+        "file": "reviews/wave23-life-reviews-everyday-physics.json",
+        "sha256": "c7b39675e2198cb3a7bd6d70c6f95d7300f70fae7a58f9136c000e25eb7d4d54"
+      },
+      "before_reviewed_files": [
+        {
+          "file": "batches/wave23-everyday-physics.json",
+          "sha256": "a2d9059b685fecad443e3870e1f25dd9c66fdd2cd801cc068f59d2320bb25749"
+        },
+        {
+          "file": "reviews/wave23-everyday-physics-themes.json",
+          "sha256": "490bf4e7515aca870507a39836d197c4e0bc9bba8959794370c8d28e23715b7e"
+        },
+        {
+          "file": "reviews/wave23-everyday-physics-author.json",
+          "sha256": "f5f6ec60d6b37c836453a7d6aaf3053d39193d9d29feefadfedc604a2eacf210"
+        }
+      ],
+      "before_final_input_check": {
+        "status": "PASS_EXACT_COMMON_ROWS_AND_AUTHOR_BINDINGS",
+        "first_common_neighbours": {
+          "file": ".cache/wave23-everyday-physics-neighbours-common-initial.json",
+          "sha256": "a5a2bc937cfe2a5c9cd1a33c90ad16e26aea5ef4a4e92d4e0768ad2dbfd10cdc"
+        },
+        "first_common_draft_sha256": "aa5cd00b37e1d02e0f17b23031e476db12c6a231cbcfb7ca868b259b3feaf85b",
+        "final_neighbours": {
+          "file": ".cache/wave23-everyday-physics-neighbours.json",
+          "sha256": "182dd34f5beff51c4dd96ad973d29015b3c4df9fa350642324111b0a0be12e38"
+        },
+        "final_draft_sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62",
+        "draft": {
+          "file": ".cache/draft.json",
+          "sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62"
+        },
+        "semantic": {
+          "file": ".cache/semantic-wave23-draft.json",
+          "sha256": "0bdeb6c8c7a59b98752bca4c0fb2a13bbb3c42238ed8a321635860dca4c6e1b4"
+        },
+        "delta": {
+          "file": ".cache/wave23-semantic-revision-delta.json",
+          "sha256": "7b591a9d805d32c2f496cf54aaddffc2b1f38912a9813e3a90a288d1f236501b"
+        },
+        "full_question_answer_scope_cosine_and_top5_rows_identical_to_common_initial": true,
+        "directed_pairs": 25,
+        "new_neighbours_since_common_initial": [],
+        "source_identity": {
+          "file": ".cache/wave23-source-identity-matches.json",
+          "sha256": "e79f75bfc829d3f7f7cde3ae683479f5eecfda7118fd56e031962f9347fef9af"
+        },
+        "limits": "精確來源比對0命中不是獨立證據保證；image同規格舊版關係另列source_identity_review。檢索不等於全庫逐題或召回率測試。"
+      },
+      "image_file_comparisons": [
+        {
+          "before": {
+            "file": ".cache/wave23-image.json.pre-lf",
+            "sha256": "cfc96ba7ff70b8d30f7c2c3717b67edef3e51eed449f85a8e5c774e44fae2b2c"
+          },
+          "after": {
+            "file": "batches/wave23-image.json",
+            "sha256": "ac6789cd83bc5f6c0df3e358d4f3d98d7258364e4d5452bb5a8f93e574635dbf"
+          },
+          "result": "JSON及正規化LF後位元組相同"
+        },
+        {
+          "before": {
+            "file": ".cache/wave23-image-themes.json.pre-lf",
+            "sha256": "81b0262f435ccb495b142fd9c3789c81b26df3344db013426f53fe83409710ab"
+          },
+          "after": {
+            "file": "reviews/wave23-image-themes.json",
+            "sha256": "590eaa46b4ea626975eb92e4b7f07d03cd2db129c477d6668aedcb186a2f179f"
+          },
+          "result": "JSON及正規化LF後位元組相同"
+        },
+        {
+          "before": {
+            "file": ".cache/wave23-image-author.json.pre-lf",
+            "sha256": "7270855d390b60b38448abff52173f286246c9cde80cb2d8cb98b086dcfc859b"
+          },
+          "after": {
+            "file": "reviews/wave23-image-author.json",
+            "sha256": "2ec0a5a562dda95139cab3f34a23b715491f5bb1db4926b0d0079947b926e346"
+          },
+          "result": "除written_files當期SHA外JSON全部相同"
+        }
+      ],
+      "neighbour_comparison": {
+        "before": {
+          "file": ".cache/wave23-everyday-physics-neighbours.pre-lf.json",
+          "sha256": "182dd34f5beff51c4dd96ad973d29015b3c4df9fa350642324111b0a0be12e38"
+        },
+        "after": {
+          "file": ".cache/wave23-everyday-physics-neighbours.json",
+          "sha256": "d0d948fc8dd5a68376263df18b98faf2d8c510a606dda9b471d8444a7818b08a"
+        },
+        "all_rows_identical_including_questions_answers_scopes_scores_and_order": true,
+        "directed_pairs": 25
+      },
+      "scope": "只驗LF/作者written_files及共同input metadata；未新增來源閱讀、未改既有逐題/去重/題案判斷。保留所有首次閱讀、修前SHA與歷史delta。"
+    },
+    {
+      "created_on": "2026-11-02",
+      "kind": "LF_AND_PREVIOUSLY_REVIEWED_DEDUP_INTEGRATION_METADATA_CLARIFICATION",
+      "before_receipt": {
+        "file": "reviews/wave23-life-reviews-everyday-physics.json",
+        "sha256": "d1913ce4c2fc740cc33a9cc3b56f9fd8e5afdb1725f2932cd5447f1c76cd9771"
+      },
+      "before_delta_binding": {
+        "file": ".cache/wave23-semantic-revision-delta.json",
+        "sha256": "7b591a9d805d32c2f496cf54aaddffc2b1f38912a9813e3a90a288d1f236501b"
+      },
+      "after_delta_binding": {
+        "file": ".cache/wave23-semantic-revision-delta.json",
+        "sha256": "49f22062665d7d10b3702a23728f8b70cd57405055978d0c12d4e3617d515caf"
+      },
+      "read_line_ending_revision": {
+        "status": "PASS_ALL_RAW_RECORDS_AND_NEIGHBOURS_IDENTICAL",
+        "old_input_sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62",
+        "new_input_sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c",
+        "scope": "CRLF to LF for root-authored files. Regenerated draft also incorporates 113 already-reviewed distinct-pair integration decisions. All other draft fields except input hashes and all full semantic neighbour rows are identical; no question, answer or scope changed."
+      },
+      "independent_comparison": {
+        "before_draft": {
+          "file": ".cache/draft.json.pre-lf",
+          "sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62"
+        },
+        "after_draft": {
+          "file": ".cache/draft.json",
+          "sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c"
+        },
+        "distinct_before": 1664,
+        "distinct_after": 1777,
+        "previous_distinct_prefix_unchanged": true,
+        "other_draft_fields_except_inputs_identical": true,
+        "full_semantic_neighbours_identical": true
+      },
+      "scope": "補正上一metadata rebind的draft變化描述；原始閱讀/修訂歷史全部保留。113組是先前已審整合，不是本次新增內容查核；不變更候選、近對或題案判斷。"
+    }
+  ]
+}

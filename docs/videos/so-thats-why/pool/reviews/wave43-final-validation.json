@@ -1,0 +1,807 @@
+{
+  "tested_on": "2026-11-02T23:03:17.067Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3779,
+    "canonical_questions": 3623,
+    "eligible_candidates": 3453,
+    "selected_candidates": 3394,
+    "alias_records": 156,
+    "historical_records": 313,
+    "source_urls": 4766,
+    "current_research_source_urls": 1809,
+    "selected_source_urls": 2986,
+    "new_suggestions_not_added": 1875,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 464,
+  "checkpoint": {
+    "revision": "2026-11-03-pool-3356",
+    "carried": 3356,
+    "added": 38,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "ab8621e41bbf50dcc0356d213eec6c9082ef91e70f0aadb2b7ad88281b182feb",
+    "writes": 7402,
+    "selected": 3394
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "ab8621e41bbf50dcc0356d213eec6c9082ef91e70f0aadb2b7ad88281b182feb",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "L43-004",
+      "resolved": "B2248"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4871,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 3709.777,
+    "index_ms": 2053.113300000001,
+    "unchanged_index_ms": 161.63420000000042,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 15,
+        "milliseconds": 9.827699999999822
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 2.289699999999357
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 3.3377999999993335
+      }
+    ],
+    "rss_bytes": 493707264,
+    "sqlite_bytes": 58859520
+  },
+  "dedup_audit": {
+    "selection": "All reviewed merges, if any, in this wave. A wave with no merged proposals has no positive sample. No threshold tuning; not recall or precision.",
+    "judged": 1,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 1,
+    "pairs": [
+      {
+        "duplicate_id": "L43-004",
+        "canonical_id": "B2248",
+        "reason": "B2248已回答椋鳥取附近若干鄰居而非全群，並有不固定七隻的界線；此研究的三維距離與近鄰順位比較是該核心的實證變體。",
+        "lexical": null,
+        "semantic": {
+          "id": "B2248",
+          "cosine": 0.805767
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "4e55141e254c6b7e7bdf4edb700ea31a7a05506979fba53d04338adbd8c2029f",
+    "records": 3779,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 3.814
+  },
+  "hashes": {
+    "pool.json": "4e55141e254c6b7e7bdf4edb700ea31a7a05506979fba53d04338adbd8c2029f",
+    "themes.json": "e829eb4a76c880265497cd449da93712c7aad8417c1a317ab19f114e2bd68b00",
+    "manifest.json": "a2c512876bfb43b9a835c89ea7ab361695c00e3b84e05032dbfe46e57623f110",
+    "index.html": "33851c6115757a2879f6d0bde6d1ffe07f3a35e590ed7ab2e5477b16784e04a0",
+    "batches/wave43-earth.json": "0e22465f34336994fc55ed6ec3ed4382ff3168e395ba1ad828f60f9495b6f2c1",
+    "batches/wave43-life.json": "1748389ebbe14cb15bd40598696df5e5e2815a2a942f4bdacade52feaf3541c4",
+    "batches/wave43-physics.json": "b621cd4d63ab6429c38d1b5ec206d7f1063a61e3c080a69965357390aee34f9b",
+    "batches/wave43-speech.json": "39fb2a1f08533f6d7cc5ce39a387e850bd490abb8fccf1fd98a48ff17fb17b2c"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3740,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3356,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 444,
+    "changed_old_canonical_ids": [
+      "B2248"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_production_treatments": 0,
+    "human_readthroughs": 0,
+    "offline_synthetic_timing_samples": 5,
+    "samples": [
+      {
+        "theme_id": "G445",
+        "continuous_seconds": 62.085,
+        "seconds_for_looking": 5.915
+      },
+      {
+        "theme_id": "G448",
+        "continuous_seconds": 57.661,
+        "seconds_for_looking": 8.339
+      },
+      {
+        "theme_id": "G451",
+        "continuous_seconds": 66.03,
+        "seconds_for_looking": 8.97
+      },
+      {
+        "theme_id": "G455",
+        "continuous_seconds": 61.313,
+        "seconds_for_looking": 7.687
+      },
+      {
+        "theme_id": "G460",
+        "continuous_seconds": 68.768,
+        "seconds_for_looking": 7.232
+      }
+    ],
+    "receipt": "reviews/wave43-timing.json"
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4726,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://doi.org/10.1073/pnas.0606083103",
+        "source_id": "SRC-5d3e6d7324d814c6",
+        "candidate_ids": [
+          "S43-001"
+        ],
+        "theme_ids": [
+          "G460"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1029/2001GL013966",
+        "source_id": "SRC-85514d28aa5c2348",
+        "candidate_ids": [
+          "S43-002"
+        ],
+        "theme_ids": [
+          "G461"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1029/2021GC009894",
+        "source_id": "SRC-f04f3b035bee6812",
+        "candidate_ids": [
+          "S43-003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1038/s43247-022-00482-x",
+        "source_id": "SRC-f61530454432581f",
+        "candidate_ids": [
+          "S43-004",
+          "S43-005",
+          "S43-010"
+        ],
+        "theme_ids": [
+          "G462",
+          "G464"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.231589498",
+        "source_id": "SRC-df1e16debd287e2a",
+        "candidate_ids": [
+          "S43-006"
+        ],
+        "theme_ids": [
+          "G463"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.2205602119",
+        "source_id": "SRC-bf57eb4fd679739b",
+        "candidate_ids": [
+          "S43-007"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1029/2021JC017363",
+        "source_id": "SRC-bfa5d2654e1265b4",
+        "candidate_ids": [
+          "S43-008"
+        ],
+        "theme_ids": [
+          "G461"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1128/Spectrum.00955-21",
+        "source_id": "SRC-0fa794392a6a3337",
+        "candidate_ids": [
+          "S43-009"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.7554/eLife.78908",
+        "source_id": "SRC-eb2bb0b37e10e325",
+        "candidate_ids": [
+          "L43-001"
+        ],
+        "theme_ids": [
+          "G451"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.7554/eLife.109449",
+        "source_id": "SRC-8475844f7daa54a4",
+        "candidate_ids": [
+          "L43-001"
+        ],
+        "theme_ids": [
+          "G451"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/sciadv.abg9259",
+        "source_id": "SRC-a8cd73576e8865a9",
+        "candidate_ids": [
+          "L43-002"
+        ],
+        "theme_ids": [
+          "G451"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.anbehav.2014.09.028",
+        "source_id": "SRC-f308e3ea788ff7a7",
+        "candidate_ids": [
+          "L43-003"
+        ],
+        "theme_ids": [
+          "G453"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.0711437105",
+        "source_id": "SRC-cb9106319f3a77db",
+        "candidate_ids": [
+          "B2248"
+        ],
+        "theme_ids": [
+          "G452"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/nphys3035",
+        "source_id": "SRC-0a7c22778a3127aa",
+        "candidate_ids": [
+          "L43-005"
+        ],
+        "theme_ids": [
+          "G452"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1905585116",
+        "source_id": "SRC-d905d5c434219e8a",
+        "candidate_ids": [
+          "L43-006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0020260",
+        "source_id": "SRC-c4a8e95b90e3b614",
+        "candidate_ids": [
+          "L43-007"
+        ],
+        "theme_ids": [
+          "G454"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.cub.2013.08.038",
+        "source_id": "SRC-bedff410e2ea8556",
+        "candidate_ids": [
+          "L43-008"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1038/ncomms6367",
+        "source_id": "SRC-7ede214a619ed60b",
+        "candidate_ids": [
+          "L43-009"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1038/ncomms15551",
+        "source_id": "SRC-a867d4d57d55de27",
+        "candidate_ids": [
+          "P43-001"
+        ],
+        "theme_ids": [
+          "G455"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s42005-024-01694-7",
+        "source_id": "SRC-1827923f6cd82530",
+        "candidate_ids": [
+          "P43-002"
+        ],
+        "theme_ids": [
+          "G456"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevLett.109.068001",
+        "source_id": "SRC-98182065ce6b9b1e",
+        "candidate_ids": [
+          "P43-003"
+        ],
+        "theme_ids": [
+          "G456"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1039/D0SM00938E",
+        "source_id": "SRC-7501f937b9e8e394",
+        "candidate_ids": [
+          "P43-004"
+        ],
+        "theme_ids": [
+          "G456"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevE.58.3357",
+        "source_id": "SRC-2d3bb2b2cf81fdaa",
+        "candidate_ids": [
+          "P43-005"
+        ],
+        "theme_ids": [
+          "G457"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1088/1367-2630/17/9/093023",
+        "source_id": "SRC-9a7d575922673c57",
+        "candidate_ids": [
+          "P43-006"
+        ],
+        "theme_ids": [
+          "G458"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s41598-021-87280-1",
+        "source_id": "SRC-ccc22aa53937174c",
+        "candidate_ids": [
+          "P43-007"
+        ],
+        "theme_ids": [
+          "G459"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1003250107",
+        "source_id": "SRC-331134d866756d86",
+        "candidate_ids": [
+          "P43-008"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevLett.114.178001",
+        "source_id": "SRC-2d18a90d037233b2",
+        "candidate_ids": [
+          "P43-009"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1038/264746a0",
+        "source_id": "SRC-8795d160604ba6b2",
+        "candidate_ids": [
+          "R43001"
+        ],
+        "theme_ids": [
+          "G445"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1046/j.0956-7976.2003.psci_1470.x",
+        "source_id": "SRC-ea9a7439d6fb273f",
+        "candidate_ids": [
+          "R43002"
+        ],
+        "theme_ids": [
+          "G445"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0290826",
+        "source_id": "SRC-ab2173363cabb2e4",
+        "candidate_ids": [
+          "R43003"
+        ],
+        "theme_ids": [
+          "G446"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.7233191",
+        "source_id": "SRC-b9570cce77ba42a7",
+        "candidate_ids": [
+          "R43004"
+        ],
+        "theme_ids": [
+          "G447"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.270.5234.303",
+        "source_id": "SRC-ee37fcbb69554309",
+        "candidate_ids": [
+          "R43005"
+        ],
+        "theme_ids": [
+          "G447"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1037/0096-3445.134.2.222",
+        "source_id": "SRC-87c35b9143848d77",
+        "candidate_ids": [
+          "R43006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0007785",
+        "source_id": "SRC-4b15e027adc467ba",
+        "candidate_ids": [
+          "R43007"
+        ],
+        "theme_ids": [
+          "G448"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1037/0096-1523.6.1.110",
+        "source_id": "SRC-0f556cb800800590",
+        "candidate_ids": [
+          "R43008"
+        ],
+        "theme_ids": [
+          "G450"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1177/0956797613482467",
+        "source_id": "SRC-283db6de609e988c",
+        "candidate_ids": [
+          "R43009"
+        ],
+        "theme_ids": [
+          "G449"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1037/xap0000247",
+        "source_id": "SRC-8779251aac7437e2",
+        "candidate_ids": [
+          "R43009"
+        ],
+        "theme_ids": [
+          "G449"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1037/xlm0000823",
+        "source_id": "SRC-b2dfbc9208edff65",
+        "candidate_ids": [
+          "R43010"
+        ],
+        "theme_ids": [
+          "G449"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.167.3917.392",
+        "source_id": "SRC-4b1bcebadb6f2105",
+        "candidate_ids": [
+          "R43011"
+        ],
+        "theme_ids": [
+          "G450"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.3758/s13423-015-0817-4",
+        "source_id": "SRC-2d9b73a0b099fd09",
+        "candidate_ids": [
+          "R43001"
+        ],
+        "theme_ids": [
+          "G445"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://doi.org/10.1038/264746a0",
+    "core": "R43001",
+    "theme": "G445",
+    "theme_ids": [
+      "G445"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 24584.9952,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "16b97b1101251d3c3f27b02dd0da3cf508f5f9092e315102655cfd694e0486d0"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "1e5d47fe394a3ac2c039161793980cec98251023da515d72c7fbd2754e1e74e4"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "c9ed99456a2e82ca49bc33b7f54097a2984ed7ee202da383b98857ae381415ce",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "068abcf714323d186b5ece525841981c44c57918bb0ba903ce793fa929bd443c"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "46802a4d500c28dbc5cf017a684e05208d41c540c06cc55554bd3743452f99ee",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 437,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 27,
+    "unique_blobs_checked": 464,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 4218,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G445",
+        "core": "R43001",
+        "seconds": 38,
+        "maximum": 78
+      },
+      {
+        "theme": "G445",
+        "core": "R43002",
+        "seconds": 30,
+        "maximum": 78
+      },
+      {
+        "theme": "G446",
+        "core": "R43003",
+        "seconds": 42,
+        "maximum": 78
+      },
+      {
+        "theme": "G447",
+        "core": "R43004",
+        "seconds": 26,
+        "maximum": 78
+      },
+      {
+        "theme": "G447",
+        "core": "R43005",
+        "seconds": 29,
+        "maximum": 78
+      },
+      {
+        "theme": "G448",
+        "core": "R43007",
+        "seconds": 66,
+        "maximum": 78
+      },
+      {
+        "theme": "G449",
+        "core": "R43009",
+        "seconds": 31,
+        "maximum": 78
+      },
+      {
+        "theme": "G449",
+        "core": "R43010",
+        "seconds": 29,
+        "maximum": 78
+      },
+      {
+        "theme": "G450",
+        "core": "R43011",
+        "seconds": 26,
+        "maximum": 78
+      },
+      {
+        "theme": "G450",
+        "core": "R43008",
+        "seconds": 28,
+        "maximum": 78
+      },
+      {
+        "theme": "G451",
+        "core": "L43-001",
+        "seconds": 42,
+        "maximum": 86
+      },
+      {
+        "theme": "G451",
+        "core": "L43-002",
+        "seconds": 33,
+        "maximum": 79
+      },
+      {
+        "theme": "G452",
+        "core": "B2248",
+        "seconds": 31,
+        "maximum": 69
+      },
+      {
+        "theme": "G452",
+        "core": "L43-005",
+        "seconds": 40,
+        "maximum": 84
+      },
+      {
+        "theme": "G453",
+        "core": "L43-003",
+        "seconds": 56,
+        "maximum": 79
+      },
+      {
+        "theme": "G454",
+        "core": "L43-007",
+        "seconds": 58,
+        "maximum": 79
+      },
+      {
+        "theme": "G455",
+        "core": "P43-001",
+        "seconds": 69,
+        "maximum": 76
+      },
+      {
+        "theme": "G456",
+        "core": "P43-002",
+        "seconds": 25,
+        "maximum": 70
+      },
+      {
+        "theme": "G456",
+        "core": "P43-003",
+        "seconds": 29,
+        "maximum": 68
+      },
+      {
+        "theme": "G456",
+        "core": "P43-004",
+        "seconds": 30,
+        "maximum": 73
+      },
+      {
+        "theme": "G457",
+        "core": "P43-005",
+        "seconds": 49,
+        "maximum": 75
+      },
+      {
+        "theme": "G458",
+        "core": "P43-006",
+        "seconds": 49,
+        "maximum": 74
+      },
+      {
+        "theme": "G459",
+        "core": "P43-007",
+        "seconds": 44,
+        "maximum": 68
+      },
+      {
+        "theme": "G460",
+        "core": "S43-001",
+        "seconds": 76,
+        "maximum": 88
+      },
+      {
+        "theme": "G461",
+        "core": "S43-002",
+        "seconds": 36,
+        "maximum": 80
+      },
+      {
+        "theme": "G461",
+        "core": "S43-008",
+        "seconds": 31,
+        "maximum": 64
+      },
+      {
+        "theme": "G462",
+        "core": "S43-004",
+        "seconds": 30,
+        "maximum": 67
+      },
+      {
+        "theme": "G462",
+        "core": "S43-005",
+        "seconds": 32,
+        "maximum": 72
+      },
+      {
+        "theme": "G463",
+        "core": "S43-006",
+        "seconds": 62,
+        "maximum": 87
+      },
+      {
+        "theme": "G464",
+        "core": "S43-010",
+        "seconds": 54,
+        "maximum": 70
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 38,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "5ae33a8f6946f380dc1fd1b424674b3504b794bc3e1204b77cabcd60af96967d"
+  }
+}

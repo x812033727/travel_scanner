@@ -1,0 +1,797 @@
+{
+  "tested_on": "2026-11-03T00:12:11.048Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3817,
+    "canonical_questions": 3659,
+    "eligible_candidates": 3489,
+    "selected_candidates": 3430,
+    "alias_records": 158,
+    "historical_records": 313,
+    "source_urls": 4804,
+    "current_research_source_urls": 1848,
+    "selected_source_urls": 3024,
+    "new_suggestions_not_added": 1939,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 484,
+  "checkpoint": {
+    "revision": "2026-11-03-pool-3394",
+    "carried": 3394,
+    "added": 36,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "6c5dd258f312163fc854b679bd3c2a44975e99f23c9152ba1ee8dc25e2d96db0",
+    "writes": 7476,
+    "selected": 3430
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "6c5dd258f312163fc854b679bd3c2a44975e99f23c9152ba1ee8dc25e2d96db0",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "R44001",
+      "resolved": "A21002"
+    },
+    {
+      "id": "R44008",
+      "resolved": "LEG-S74"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4909,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 7001.070800000001,
+    "index_ms": 2686.7374999999993,
+    "unchanged_index_ms": 309.14760000000024,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 17,
+        "milliseconds": 18.62119999999777
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 4.032400000000052
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 6.638899999998102
+      }
+    ],
+    "rss_bytes": 493948928,
+    "sqlite_bytes": 58859520
+  },
+  "dedup_audit": {
+    "selection": "All reviewed merges, if any, in this wave. A wave with no merged proposals has no positive sample. No threshold tuning; not recall or precision.",
+    "judged": 2,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 2,
+    "pairs": [
+      {
+        "duplicate_id": "R44001",
+        "canonical_id": "A21002",
+        "reason": "同一預測與同一讀值解離，原始提力資料可作A21002證據變體，不再計數。",
+        "lexical": null,
+        "semantic": {
+          "id": "A21002",
+          "cosine": 0.897437
+        }
+      },
+      {
+        "duplicate_id": "R44008",
+        "canonical_id": "LEG-S74",
+        "reason": "同一自生接觸減弱與時空預測被擾亂的解釋；補原始評分給舊LEG-S74，維持歷史未選身分，不追認全部腦區推論。",
+        "lexical": null,
+        "semantic": {
+          "id": "LEG-S74",
+          "cosine": 0.648177
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "3ecf8679435230ad7d90b909b114c94e49f999651b8132d5514ded27abae6efe",
+    "records": 3817,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.945
+  },
+  "hashes": {
+    "pool.json": "3ecf8679435230ad7d90b909b114c94e49f999651b8132d5514ded27abae6efe",
+    "themes.json": "a7c71a1f2c2763b1499339d2eba12c2cab2be8bf87581007a8771f6362df7e22",
+    "manifest.json": "a833ad621481cfd80c6d4ea371eeadf507c715f1ef8819335b84c56b0339afed",
+    "index.html": "c05a9d769bc4923f8c472453da3f0fc4d71cd54d0b1546ce3019a087e137349e",
+    "batches/wave44-earth.json": "e59caeea546afd2b1b384c1c232507eadb5d9eb2839bb414156b366c7873b766",
+    "batches/wave44-life.json": "aaa513a6e5cea94bb30084efe02fd3d0b00242de221ff8a4674f54d7f96faaf1",
+    "batches/wave44-physics.json": "ced48980ad9d89db856065eebcdea2e739f1d32d44daebdcb56b8ab94f61d966",
+    "batches/wave44-touch.json": "3b94c04d9704ccd0b0c2a2215b72833f2340536cf59e7a7871ddb51480e2e0da"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3779,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3394,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 464,
+    "changed_old_canonical_ids": [
+      "LEG-S74",
+      "A21002"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_production_treatments": 0,
+    "human_readthroughs": 0,
+    "offline_synthetic_timing_samples": 5,
+    "samples": [
+      {
+        "theme_id": "G465",
+        "continuous_seconds": 55.371,
+        "seconds_for_looking": 7.629
+      },
+      {
+        "theme_id": "G467",
+        "continuous_seconds": 61.519,
+        "seconds_for_looking": 7.481
+      },
+      {
+        "theme_id": "G470",
+        "continuous_seconds": 70.901,
+        "seconds_for_looking": 8.099
+      },
+      {
+        "theme_id": "G475",
+        "continuous_seconds": 60.84,
+        "seconds_for_looking": 7.16
+      },
+      {
+        "theme_id": "G480",
+        "continuous_seconds": 63.496,
+        "seconds_for_looking": 7.504
+      }
+    ],
+    "receipt": "reviews/wave44-timing.json"
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4766,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0004591",
+        "source_id": "SRC-c9103b513bad5013",
+        "candidate_ids": [
+          "S44-001"
+        ],
+        "theme_ids": [
+          "G480"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0010420",
+        "source_id": "SRC-0a07685b26599dad",
+        "candidate_ids": [
+          "S44-002"
+        ],
+        "theme_ids": [
+          "G483"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rspb.2006.0443",
+        "source_id": "SRC-f72359e23daf2e20",
+        "candidate_ids": [
+          "S44-003"
+        ],
+        "theme_ids": [
+          "G481"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rspb.2013.3316",
+        "source_id": "SRC-9f8439b529d8765f",
+        "candidate_ids": [
+          "S44-004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0142829",
+        "source_id": "SRC-8b761c13b32adef0",
+        "candidate_ids": [
+          "S44-005"
+        ],
+        "theme_ids": [
+          "G482"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1017/pab.2023.19",
+        "source_id": "SRC-f57652e00575e410",
+        "candidate_ids": [
+          "S44-006"
+        ],
+        "theme_ids": [
+          "G482"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1111/pala.12445",
+        "source_id": "SRC-7e7682ee7ba69c9f",
+        "candidate_ids": [
+          "S44-007"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1098/rsos.200305",
+        "source_id": "SRC-2aa90ee3f3de3ac6",
+        "candidate_ids": [
+          "S44-008"
+        ],
+        "theme_ids": [
+          "G481"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1666/09-163.1",
+        "source_id": "SRC-33838d6b634ee54a",
+        "candidate_ids": [
+          "S44-009"
+        ],
+        "theme_ids": [
+          "G484"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1205184109",
+        "source_id": "SRC-a813751bbb8e50d6",
+        "candidate_ids": [
+          "L44-001"
+        ],
+        "theme_ids": [
+          "G470"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1111/ele.12134",
+        "source_id": "SRC-b19aae03d22cbf59",
+        "candidate_ids": [
+          "L44-002"
+        ],
+        "theme_ids": [
+          "G472"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1017/S0266467498000169",
+        "source_id": "SRC-51201064a9ef33de",
+        "candidate_ids": [
+          "L44-003"
+        ],
+        "theme_ids": [
+          "G474"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.0708446105",
+        "source_id": "SRC-2c8847bad65f93fa",
+        "candidate_ids": [
+          "L44-004"
+        ],
+        "theme_ids": [
+          "G473"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rsif.2012.0880",
+        "source_id": "SRC-6aa354d304d3b7d0",
+        "candidate_ids": [
+          "L44-005"
+        ],
+        "theme_ids": [
+          "G471"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rsif.2024.0129",
+        "source_id": "SRC-1257763333e222a6",
+        "candidate_ids": [
+          "L44-006"
+        ],
+        "theme_ids": [
+          "G471"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rsif.2019.0327",
+        "source_id": "SRC-9fa1f7aeff62af8f",
+        "candidate_ids": [
+          "L44-007"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1111/j.1365-2435.2009.01661.x",
+        "source_id": "SRC-15a0bac2d25d0210",
+        "candidate_ids": [
+          "L44-008"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevLett.126.218004",
+        "source_id": "SRC-d3dd89791982bd3c",
+        "candidate_ids": [
+          "P44-001"
+        ],
+        "theme_ids": [
+          "G475"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevLett.112.244301",
+        "source_id": "SRC-11a0d29858f3b2b3",
+        "candidate_ids": [
+          "P44-002"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevLett.109.114301",
+        "source_id": "SRC-bdd34165412a63c5",
+        "candidate_ids": [
+          "P44-003"
+        ],
+        "theme_ids": [
+          "G476"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.1252876",
+        "source_id": "SRC-288f283f94fc884f",
+        "candidate_ids": [
+          "P44-004"
+        ],
+        "theme_ids": [
+          "G477"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1509465112",
+        "source_id": "SRC-c96ad08e845383f4",
+        "candidate_ids": [
+          "P44-005"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1038/s41467-021-21625-2",
+        "source_id": "SRC-c78bab69fa17276b",
+        "candidate_ids": [
+          "P44-006"
+        ],
+        "theme_ids": [
+          "G478"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1817763116",
+        "source_id": "SRC-84999e831c972de2",
+        "candidate_ids": [
+          "P44-007"
+        ],
+        "theme_ids": [
+          "G479"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s41467-024-46667-0",
+        "source_id": "SRC-9755a5c43cf78d25",
+        "candidate_ids": [
+          "P44-008"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1904544116",
+        "source_id": "SRC-3c9dcbd51878ff07",
+        "candidate_ids": [
+          "P44-009"
+        ],
+        "theme_ids": [
+          "G476"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/76701",
+        "source_id": "SRC-30569e208939d6fa",
+        "candidate_ids": [
+          "A21002"
+        ],
+        "theme_ids": [
+          "G221",
+          "G465"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.cub.2008.09.042",
+        "source_id": "SRC-b2cf396a2808723f",
+        "candidate_ids": [
+          "R44002"
+        ],
+        "theme_ids": [
+          "G465"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/89559",
+        "source_id": "SRC-4e096dc45314ec7d",
+        "candidate_ids": [
+          "R44003"
+        ],
+        "theme_ids": [
+          "G466"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/nn1201-1265",
+        "source_id": "SRC-9b1bba958a6e70e7",
+        "candidate_ids": [
+          "R44003"
+        ],
+        "theme_ids": [
+          "G466"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1152/jn.01015.2004",
+        "source_id": "SRC-eed90d212811b004",
+        "candidate_ids": [
+          "R44004"
+        ],
+        "theme_ids": [
+          "G466"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1523/jneurosci.3887-09.2010",
+        "source_id": "SRC-de91dc6198550605",
+        "candidate_ids": [
+          "R44005"
+        ],
+        "theme_ids": [
+          "G467"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1003483107",
+        "source_id": "SRC-3c766a58025017f7",
+        "candidate_ids": [
+          "R44006"
+        ],
+        "theme_ids": [
+          "G468"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1037/a0021921",
+        "source_id": "SRC-e3466d7deda95d0f",
+        "candidate_ids": [
+          "R44007"
+        ],
+        "theme_ids": [
+          "G468"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1162/089892999563607",
+        "source_id": "SRC-108a6f1628831be4",
+        "candidate_ids": [
+          "LEG-S74"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.7554/elife.42888",
+        "source_id": "SRC-49bfccc9567e59fe",
+        "candidate_ids": [
+          "R44009"
+        ],
+        "theme_ids": [
+          "G469"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.1085327",
+        "source_id": "SRC-2649cf55112b53ba",
+        "candidate_ids": [
+          "R44010"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0021659",
+        "source_id": "SRC-0df8b8401cc58c9e",
+        "candidate_ids": [
+          "R44011"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1038/s41586-018-0460-0",
+        "source_id": "SRC-58995b44d2788d86",
+        "candidate_ids": [
+          "R44012"
+        ],
+        "theme_ids": [
+          "G467"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://doi.org/10.1038/76701",
+    "core": "A21002",
+    "theme": "G465",
+    "theme_ids": [
+      "G221",
+      "G465"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 122364.6771,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "a41d415f477c6276f82718e5b70ef33c16f4d41e79ecd5d22559d746fd898833"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "48cc32609f9f40de9e060f04410c56dca8bee64d5fc0f8e4be10b6fdf6ea4167"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "64da8807afc87bce2270559d84869e2806a81305c5f588a84e34f497af6508d5",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "e3204cf8c3990e57d2965b3ca70e6c0c4bb8d5c40ceb1cefd2b8c019f0ac825b"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "4ba2ca7046d845ea8edf3643d95f7d03c5fcf0c71beee91ff309678004adde01",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 443,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 27,
+    "unique_blobs_checked": 470,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 4265,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G465",
+        "core": "A21002",
+        "seconds": 31,
+        "maximum": 80
+      },
+      {
+        "theme": "G465",
+        "core": "R44002",
+        "seconds": 32,
+        "maximum": 80
+      },
+      {
+        "theme": "G466",
+        "core": "R44003",
+        "seconds": 25,
+        "maximum": 80
+      },
+      {
+        "theme": "G466",
+        "core": "R44004",
+        "seconds": 29,
+        "maximum": 80
+      },
+      {
+        "theme": "G467",
+        "core": "R44005",
+        "seconds": 38,
+        "maximum": 80
+      },
+      {
+        "theme": "G467",
+        "core": "R44012",
+        "seconds": 31,
+        "maximum": 80
+      },
+      {
+        "theme": "G468",
+        "core": "R44006",
+        "seconds": 27,
+        "maximum": 80
+      },
+      {
+        "theme": "G468",
+        "core": "R44007",
+        "seconds": 29,
+        "maximum": 80
+      },
+      {
+        "theme": "G469",
+        "core": "R44009",
+        "seconds": 50,
+        "maximum": 80
+      },
+      {
+        "theme": "G470",
+        "core": "L44-001",
+        "seconds": 79,
+        "maximum": 90
+      },
+      {
+        "theme": "G471",
+        "core": "L44-005",
+        "seconds": 34,
+        "maximum": 63
+      },
+      {
+        "theme": "G471",
+        "core": "L44-006",
+        "seconds": 39,
+        "maximum": 70
+      },
+      {
+        "theme": "G472",
+        "core": "L44-002",
+        "seconds": 66,
+        "maximum": 76
+      },
+      {
+        "theme": "G473",
+        "core": "L44-004",
+        "seconds": 67,
+        "maximum": 82
+      },
+      {
+        "theme": "G474",
+        "core": "L44-003",
+        "seconds": 63,
+        "maximum": 76
+      },
+      {
+        "theme": "G475",
+        "core": "P44-001",
+        "seconds": 68,
+        "maximum": 78
+      },
+      {
+        "theme": "G476",
+        "core": "P44-003",
+        "seconds": 29,
+        "maximum": 69
+      },
+      {
+        "theme": "G476",
+        "core": "P44-009",
+        "seconds": 30,
+        "maximum": 64
+      },
+      {
+        "theme": "G477",
+        "core": "P44-004",
+        "seconds": 47,
+        "maximum": 68
+      },
+      {
+        "theme": "G478",
+        "core": "P44-006",
+        "seconds": 47,
+        "maximum": 66
+      },
+      {
+        "theme": "G479",
+        "core": "P44-007",
+        "seconds": 46,
+        "maximum": 67
+      },
+      {
+        "theme": "G480",
+        "core": "S44-001",
+        "seconds": 71,
+        "maximum": 84
+      },
+      {
+        "theme": "G481",
+        "core": "S44-003",
+        "seconds": 36,
+        "maximum": 76
+      },
+      {
+        "theme": "G481",
+        "core": "S44-008",
+        "seconds": 33,
+        "maximum": 75
+      },
+      {
+        "theme": "G482",
+        "core": "S44-005",
+        "seconds": 33,
+        "maximum": 70
+      },
+      {
+        "theme": "G482",
+        "core": "S44-006",
+        "seconds": 35,
+        "maximum": 73
+      },
+      {
+        "theme": "G483",
+        "core": "S44-002",
+        "seconds": 57,
+        "maximum": 74
+      },
+      {
+        "theme": "G484",
+        "core": "S44-009",
+        "seconds": 53,
+        "maximum": 68
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 38,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "2af6fda156a558f7be6ee80b57de0bc0041af7c48be564470b40c0be70240ef9"
+  }
+}

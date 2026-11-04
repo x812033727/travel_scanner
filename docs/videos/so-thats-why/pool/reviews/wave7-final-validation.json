@@ -1,0 +1,329 @@
+{
+  "tested_on": "2026-11-01T11:54:47.530Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3017,
+    "canonical_questions": 2896,
+    "eligible_candidates": 2726,
+    "selected_candidates": 2667,
+    "alias_records": 121,
+    "historical_records": 313,
+    "source_urls": 3979,
+    "current_research_source_urls": 1012,
+    "selected_source_urls": 2220,
+    "new_suggestions_not_added": 364,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 78,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2609",
+    "carried": 2609,
+    "added": 58,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "9326fbe26402c3a4ddcb20dd99d132d6bc38798ec118b26750ac12564c688cd7",
+    "writes": 5913,
+    "selected": 2667
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "9326fbe26402c3a4ddcb20dd99d132d6bc38798ec118b26750ac12564c688cd7",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4030,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 1937.1575000000003,
+    "index_ms": 2567.9677999999994,
+    "unchanged_index_ms": 415.2386000000006,
+    "searches": [
+      {
+        "query": "動物",
+        "returned": 30,
+        "milliseconds": 3.1396999999997206
+      },
+      {
+        "query": "光",
+        "returned": 30,
+        "milliseconds": 2.5518000000010943
+      },
+      {
+        "query": "岩",
+        "returned": 30,
+        "milliseconds": 368.7600000000002
+      }
+    ],
+    "rss_bytes": 569114624,
+    "sqlite_bytes": 40886272
+  },
+  "dedup_audit": {
+    "selection": "Every final wave7 manual merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "cb4501bbb3cabeb2d0ff4d004fdb19c61ecf1ac2f7bcc31da42063c38f43ffc9",
+    "records": 3017,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.341
+  },
+  "hashes": {
+    "pool.json": "cb4501bbb3cabeb2d0ff4d004fdb19c61ecf1ac2f7bcc31da42063c38f43ffc9",
+    "themes.json": "0a4449bf60563b40b69687e29d5ac66cfeae6d1912054cbeba71c3df3f985320",
+    "manifest.json": "e9c543334cecbc9d80f8c838e7834dcaae246e6a8f55c801651c393f41107b7e",
+    "index.html": "435871a6727468d9f5b2d1e990b999e8ade878101bb4ca06721ee4796c1a609b",
+    "batches/wave7-animals.json": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410",
+    "batches/wave7-earth.json": "94a61a554df789eff70234a8713f1f5bb98d4d81b0ba21fd58070b28fcd5b299",
+    "batches/wave7-optics.json": "d956836ae3d50a418f5794e0265e44a1924389056430aafd5c483ec99a675021"
+  },
+  "tests": {
+    "node": {
+      "passed": 36,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 83934.4465,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "9444f1e4f181dc6a134c334f3afe9b5a07f0199b86e5be3677f3f45c369d9263"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "ac3b672749d855fa8b921609c1d90088da5a2289c18c1be4f47ce75fa26d509d"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "98899f018d9d4ce289efb0523253b4e5f3ae8b201997844f727fd699d67596ae",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 265,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 2754,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G59",
+        "core": "M5004",
+        "seconds": 65,
+        "maximum": 80,
+        "variant_budget": "M5008"
+      },
+      {
+        "theme": "G59",
+        "core": "M5009",
+        "seconds": 65,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G70",
+        "core": "Z7002",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G70",
+        "core": "Z7003",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G71",
+        "core": "Z7011",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G71",
+        "core": "Z7012",
+        "seconds": 110,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G72",
+        "core": "Z7017",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G72",
+        "core": "Z7009",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G73",
+        "core": "O7001",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G73",
+        "core": "O7002",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G73",
+        "core": "O7003",
+        "seconds": 65,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G74",
+        "core": "O7004",
+        "seconds": 90,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G74",
+        "core": "O7005",
+        "seconds": 75,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G74",
+        "core": "O7006",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G75",
+        "core": "O7008",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G75",
+        "core": "O7009",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G75",
+        "core": "O7010",
+        "seconds": 75,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G76",
+        "core": "E7003",
+        "seconds": 95,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G76",
+        "core": "E7004",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G76",
+        "core": "E7006",
+        "seconds": 65,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G77",
+        "core": "E7007",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G77",
+        "core": "E7008",
+        "seconds": 95,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G77",
+        "core": "E7012",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G78",
+        "core": "E7017",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G78",
+        "core": "E7016",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G78",
+        "core": "E7020",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  }
+}

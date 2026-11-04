@@ -1,0 +1,91 @@
+{
+  "theme_id": "G79",
+  "revision": "wave9-narration-draft-3",
+  "author": "root",
+  "status": "TEXT_DRAFT_NOT_READ_ALOUD",
+  "production_ready": false,
+  "title": "巧克力裡的油已經是液體，為什麼整團還卡住？",
+  "treatment_file": "treatments/G79/treatment.json",
+  "treatment_sha256": "ec6f7e80ccaa7c5781178d6cb72a1151987fb361630614814179b68f308c58f6",
+  "core_ids": [
+    "F8001",
+    "F8003"
+  ],
+  "beats": [
+    {
+      "id": "b1",
+      "core_id": "F8001",
+      "seconds": 15,
+      "claim_ids": [
+        "c1"
+      ],
+      "paragraphs": [
+        "巧克力裡的脂肪已經融化，整團卻還是不太流。是不是再加油就好？先把畫面放大：糖和可可固體仍是顆粒。液體在，不代表顆粒彼此推得動。"
+      ],
+      "visual": "原創顆粒示意：連續液體中仍有糖與可可固體；只顯示相同顆粒數，不用水滴融掉顆粒的動畫。",
+      "question": "油已是液體，整團為何仍不流？",
+      "spoken_characters": 56,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 12.4,
+      "new_information": "油已是液體，整團為何仍不流？"
+    },
+    {
+      "id": "b2",
+      "core_id": "F8001",
+      "seconds": 20,
+      "claim_ids": [
+        "c2"
+      ],
+      "paragraphs": [
+        "研究者把糖、牛奶和可可做成的乾燥粉料，混上葵花油，做簡化模型。反覆搓揉能拆開聚團，但料仍可能像糊一樣推不動。接下來的一組對照，特別有意思。"
+      ],
+      "visual": "切換標籤「研究用簡化模型／葵花油」，用聚團拆解示意搓揉效果；不是家用巧克力實驗，也不畫實測微觀照片。",
+      "question": "解開聚團之後，為何還需要改變接觸？",
+      "spoken_characters": 61,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 13.6,
+      "new_information": "解開聚團之後，為何還需要改變接觸？"
+    },
+    {
+      "id": "b3",
+      "core_id": "F8001",
+      "seconds": 20,
+      "claim_ids": [
+        "c3",
+        "c4"
+      ],
+      "paragraphs": [
+        "在這組對照中，加卵磷脂後，料流動了；另一次對照只加相當體積的油，卻還是不流。研究者用顆粒接觸阻力降低來解釋：不只調整油有多少，也是在改變顆粒怎麼互相卡住。"
+      ],
+      "visual": "同一來源乾精煉糊料分樣的兩欄質性結果，卵磷脂／對應最大卵磷脂加入量體積的油。只標本研究條件，不畫連續劑量曲線或聲稱所有油量都無效。顆粒接觸用模型圖，與觀察結果分欄。",
+      "question": "同樣多一點體積，為何結果不同？",
+      "spoken_characters": 69,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 15.3,
+      "new_information": "同樣多一點體積，為何結果不同？"
+    },
+    {
+      "id": "b4",
+      "core_id": "F8003",
+      "seconds": 30,
+      "claim_ids": [
+        "c5"
+      ],
+      "paragraphs": [
+        "那換成水呢？現在換回融化的巧克力。一點水不會均勻混進脂肪，反而會先潤濕糖等親水固體，讓它們結成團，變得難攪。這只是在談少量水，不是加水一定變硬。兩個方向看完，關鍵都回到顆粒：加進去的是液體，結果也不一定更好流。"
+      ],
+      "visual": "明示「另一個條件：熔融巧克力＋少量水」，不要接成前一組葵花油試驗。定性畫潤濕／結團，不畫確定液橋力、相反轉示意、更多水修復方法或加熱操作。",
+      "question": "加的是液體，為什麼仍可能變得難攪？",
+      "spoken_characters": 93,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 20.7,
+      "new_information": "加的是液體，為什麼仍可能變得難攪？"
+    }
+  ],
+  "duration": {
+    "body_budget_seconds": 85,
+    "spoken_characters": 279,
+    "estimate_basis": "只計中文字/英文字母/數字；每秒4.5字僅粗估，不是實際試讀。每段圖解與理解時間未實測，講完就剪。",
+    "read_aloud": "NOT_PERFORMED",
+    "recorded_audio": "NONE",
+    "previous_body_budget_seconds": 140
+  },
+  "paid_media_calls": 0,
+  "next_gate": "非作者定向核對後，下一步實際試讀並記理解卡點與各段時間；85秒為上限草稿，禁止慢播或填停頓，未核准配音/製作/發布。"
+}

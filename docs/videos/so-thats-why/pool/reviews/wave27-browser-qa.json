@@ -1,0 +1,37 @@
+{
+  "tested_on": "2026-11-02T06:42:35.582Z",
+  "result": "PASS",
+  "selected": 3073,
+  "index_html_sha256": "9f309e9aba7f0a2222df7e361faea6e708c751714abe9fb64b06617ae14952e4",
+  "source_sample": {
+    "id": "A27001",
+    "urls": [
+      "https://elifesciences.org/articles/669"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave27-desktop.png",
+    "wave27-source-desktop.png",
+    "wave27-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": [
+    "1440×1000首頁四數字與搜尋/分類/題案篩選均可見，清單首屏50筆。",
+    "展開A27001可見摘要、預估95–140秒與適用條件。來源連結較低，由DOM href核對。",
+    "390×844標題自然換行，統計卡兩欄，篩選控制可見，瀏覽器檢測無橫向溢出。"
+  ]
+}

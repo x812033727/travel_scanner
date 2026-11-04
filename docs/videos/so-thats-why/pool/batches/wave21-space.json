@@ -1,0 +1,306 @@
+{
+  "batch_id": "wave21-space-20261102",
+  "created_on": "2026-11-02",
+  "scope": "以有限儲存、氣液界面、電荷平衡與參考系控制補太空工程缺口；4候選非作者覆核前不計入入選。",
+  "sources": [
+    {
+      "id": "R21-S001",
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+      "title": "5.0 Guidance, Navigation, and Control",
+      "publisher": "NASA Small Spacecraft Systems Virtual Institute",
+      "accessed_on": "2026-11-02",
+      "version": "當日官方HTML；只採§5.2機制，不採供應商表的即時產品性能。",
+      "canonical_url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+      "retrieval_url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+      "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+      "reading_scope": "§5.2.2 Reaction Wheels、§5.2.3 Magnetic Torquers、§5.2.4 Thrusters；抽文73、79–90、96–97。",
+      "locator": "§5.2.2 Reaction Wheels、§5.2.3 Magnetic Torquers、§5.2.4 Thrusters；抽文73、79–90、96–97。",
+      "summary": "反作用輪儲存角動量有速度餘裕限制；外部力矩搭配輪子反向調整可卸載。",
+      "limitations": "飽和不是所有方向都完全不能施力；本題限需繼續同方向累積而逼近速度上限。磁力矩受當地磁場方向與強度限制，不可畫成任何方向/深空均能即時卸載。未讀所有引用論文、未核產品表。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave21-space-gnc.html",
+        "sha256": "487fbe0087deb23467403bc14a9901d3382c95bb533cc0bd70660292ddda6b22",
+        "text_file": ".cache/wave21-space-gnc.txt",
+        "text_sha256": "ae0c2826a8174e03ddfa6234f85d47887a76bec95825132d8c0f4c98238a6140"
+      }
+    },
+    {
+      "id": "R21-S002",
+      "url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf",
+      "title": "Bubble Point Measurements With Liquid Methane of a Screen Capillary Liquid Acquisition Device",
+      "publisher": "John M. Jurns and John B. McQuillen; NASA Glenn Research Center",
+      "accessed_on": "2026-11-02",
+      "version": "NASA/TM-2009-215496，March 2009；2006/2007地面元件試驗。",
+      "canonical_url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf",
+      "retrieval_url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf",
+      "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+      "reading_scope": "PDF p5 Introduction；p6硬體；pp8–10方法、結果/限制與Table1；p12結論；p7 Fig2/3及p10 Table1目讀。",
+      "locator": "PDF p5 Introduction；p6硬體；pp8–10方法、結果/限制與Table1；p12結論；p7 Fig2/3及p10 Table1目讀。",
+      "summary": "潤濕網孔有氣體突破壓差門檻；更細網提高門檻，也增加液體通過的壓損，須比較整體壓損與門檻。",
+      "limitations": "原文地面液態甲烷/兩種不鏽鋼網測試，非在軌全油箱演示；細網流阻取Introduction設計論述，不冒稱本文另做全流量最佳化實驗。重封有遲滯，過冷液的簡式預測偏低；不以一條門檻公式承諾所有溫度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave21-space-lad.pdf",
+        "sha256": "bf1fae9f19995f1a1e1a22d652793e954c9bc0009d572ec4b69c77ae5c843ee2",
+        "text_file": ".cache/wave21-space-lad.txt",
+        "text_sha256": "f470c7eb226c38b7b0a7d34a875d77dbda5a45146e6d0fe89218403e57353aa3"
+      }
+    },
+    {
+      "id": "R21-S003",
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf",
+      "title": "Ion Propulsion — NASA Facts",
+      "publisher": "NASA Glenn Research Center",
+      "accessed_on": "2026-11-02",
+      "version": "PDF文件代碼PS–01628–1215；URL資料夾2015/08不當正式出版日。",
+      "canonical_url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf",
+      "retrieval_url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf",
+      "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+      "reading_scope": "PDF p1 How Does an Ion Thruster Work? 電離、網格與neutralizer三段；p2只核版本及歷史界線；p1版面目讀。",
+      "locator": "PDF p1 How Does an Ion Thruster Work? 電離、網格與neutralizer三段；p2只核版本及歷史界線；p1版面目讀。",
+      "summary": "正離子持續離開會讓機體負電累積；另排出電子維持排氣束總電荷平衡，避免吸回離子。",
+      "limitations": "限文件所述有網格與獨立中和器的架構；束流整體近中性不等於每顆離子立刻與電子復合。未算電位/空間電荷或測推力，不採舊current/future任務數為今日現況。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave21-space-ion.pdf",
+        "sha256": "946a8f706cbd4a759ef42047303607662d56d82d9617db7bd163bbebac0015c8",
+        "text_file": ".cache/wave21-space-ion.txt",
+        "text_sha256": "8354672b1e6112d69e45794f2cf84c9b217ba4e7e1ba5f666d17d5687d501be6"
+      }
+    },
+    {
+      "id": "R21-S004",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview",
+      "title": "LISA Pathfinder overview",
+      "publisher": "European Space Agency",
+      "accessed_on": "2026-11-02",
+      "version": "當日ESA任務概述；任務2017已結束，非目前正在飛行的驗證。",
+      "canonical_url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview",
+      "retrieval_url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview",
+      "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+      "reading_scope": "抽文4–5、12–16、20：任務性質、慣性感測器—微推力器控制與兩質量；其餘概述閱讀不作性能宣稱。",
+      "locator": "抽文4–5、12–16、20：任務性質、慣性感測器—微推力器控制與兩質量；其餘概述閱讀不作性能宣稱。",
+      "summary": "感測器讀方塊相對外殼偏移，推動太空船追隨參考質量，盡量減少非重力擾動傳到參考質量。",
+      "limitations": "概述含宣傳性性能用語，不採最高精度或已測得重力波的標題；本題為單一敏感方向概念，不宣稱兩方塊全自由度完全無力。未核原始噪聲資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave21-space-lisa.html",
+        "sha256": "411ca6a808b2edc18b41947a8612f4ce07a5424346c4c91bfea270bd22e2ae00",
+        "text_file": ".cache/wave21-space-lisa.txt",
+        "text_sha256": "a08f756d887784e6067b278f50bee4d3f1c5b855a0399c8d32f2a5cc1eb085f9"
+      }
+    },
+    {
+      "id": "R21-S005",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder",
+      "title": "Freefall achieved on LISA Pathfinder",
+      "publisher": "European Space Agency",
+      "accessed_on": "2026-11-02",
+      "version": "24 February 2016任務操作報導；與S004同一任務的補充段落，非獨立重複實驗。",
+      "canonical_url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder",
+      "retrieval_url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder",
+      "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+      "reading_scope": "抽文3–5釋放；7–12由靜電控制轉為敏感軸不施加靜電力、微推力器讓船跟隨方塊；14操作界線。",
+      "locator": "抽文3–5釋放；7–12由靜電控制轉為敏感軸不施加靜電力、微推力器讓船跟隨方塊；14操作界線。",
+      "summary": "從用靜電力讓方塊跟船，轉成減少敏感軸施力、改推船跟隨參考質量，顯示控制對象的差異。",
+      "limitations": "只用敏感軸/當時操作的界線；未目讀ESA影片與圖、未核所有其他自由度控制。近自由落體不是太空中沒有重力。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave21-space-lisa2016.html",
+        "sha256": "501ba5a9253182b90f1ed90d11000d42ac42e98a2f2d4a580426cac1d046b606",
+        "text_file": ".cache/wave21-space-lisa2016.txt",
+        "text_sha256": "db50228acca6b48b16b05b5396b6124e854d9835e9fb579fac0b6cfaba804ea9"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R21001",
+      "question": "輪子還在轉，衛星為什麼不能一直靠它穩住方向？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.reaction_wheel_capacity_external_momentum_unloading",
+      "answer_target": "反作用輪能把擾動帶來的角動量暫存起來；持續同向擾動會耗掉輪速餘裕。只在船內減速會把角動量還給船，需配合推力器或磁力矩器的外部力矩，才能卸載又維持指向。",
+      "scope": "限有限輪速下的持續擾動與卸載；不把速度飽和說成所有方向失去控制。磁力矩只在外部磁場允許的方向/環境有效，不承諾深空通用。",
+      "source_ids": [
+        "R21-S001"
+      ],
+      "source_locator": "§5.2.2/5.2.3，抽文80、85–87、89。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "輪子是有容量的角動量暫存，不是能無限消掉擾動的煞車。",
+        "visual": "兩個角動量條：持續擾動進入、輪子接走；對比只減速與外部力矩卸載。原創單軸示意，箭頭須核正負。",
+        "seconds": [
+          85,
+          135
+        ]
+      }
+    },
+    {
+      "id": "R21002",
+      "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.wetted_screen_bubble_point_vs_flow_pressure_budget",
+      "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+      "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。",
+      "source_ids": [
+        "R21-S002"
+      ],
+      "source_locator": "PDF p5 Introduction末兩段，pp9–10方法/結果，p12結論。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "氣泡不是因為比網孔大就永遠過不去；擋氣能力與讓液體流過的代價要一起算。",
+        "visual": "同一潤濕孔剖面跨門檻前/後；再畫粗/細網兩組門檻與流阻概念柱，不用未量的數值冒充資料。",
+        "seconds": [
+          85,
+          130
+        ]
+      }
+    },
+    {
+      "id": "R21003",
+      "question": "離子引擎已把帶電粒子噴出去，為什麼還要再噴電子？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.ion_beam_neutralization_prevents_vehicle_charge_return",
+      "answer_target": "正離子離開時若沒有對應電子排出，機體會累積負電，逐漸把正離子吸回。中和器供應電子讓排氣束總電荷接近平衡，避免這條回吸路徑抵銷推進並侵蝕機體。",
+      "scope": "限所讀有網格與獨立中和器的離子推進架構。整束近中性不是所有離子逐一復合；也不是中和會把已給粒子的動量取消。無精確失效時間或數值性能推論。",
+      "source_ids": [
+        "R21-S003"
+      ],
+      "source_locator": "PDF p1右欄 The neutralizer 段及前文電離/加速。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "推進不只要把粒子加速出去，還須避免自己累積的電荷把它們拉回。",
+        "visual": "正/負電荷帳與粒子路徑並排；中和器有/無兩狀態，總電荷平衡與前進動量分欄，非數值模擬。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "R21004",
+      "question": "要讓艙內方塊自由落下，為什麼反而得不停推太空船？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.drag_free_reference_mass_spacecraft_following",
+      "answer_target": "陽光等非重力擾動會推動外殼，讓外殼相對參考方塊偏移；感測器讀出這個偏移，微推力器調整船身追隨方塊，減少沿敏感方向直接拉住方塊的需要。",
+      "scope": "限LISA Pathfinder的拖曳補償概念與單一敏感方向；重力仍在，近自由落體不是絕對無力。兩質量/其他自由度另有控制，不畫成兩塊在所有方向完全不受作用。",
+      "source_ids": [
+        "R21-S004",
+        "R21-S005"
+      ],
+      "source_locator": "ESA overview抽文12–16；2016報導抽文7–12。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似是把方塊保持在箱子中央，實際可以選擇推箱子去跟隨方塊，而非把方塊拉回箱子。",
+        "visual": "並排控制：外殼受擾後拉方塊、或讀偏移後推外殼；同一敏感軸顯示外力作用位置，非任務原動畫。",
+        "seconds": [
+          75,
+          120
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "R21-NA001",
+      "question": "太空船轉動裡面的輪子，自己就能轉向嗎？",
+      "existing_ids": [
+        "P314",
+        "P030"
+      ],
+      "source_ids": [
+        "R21-S001"
+      ],
+      "reason": "基本角動量交換已收；只換成衛星不足增核。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。"
+    },
+    {
+      "id": "R21-NA002",
+      "question": "衛星熱控百葉為什麼能自己打開？",
+      "existing_ids": [
+        "P076"
+      ],
+      "source_ids": [],
+      "reason": "雙金屬熱彎既有核心；未讀特定熱控裝置正文，不另收。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。"
+    },
+    {
+      "id": "R21-NA003",
+      "question": "換成氫或氧，擋氣網就各算一題嗎？",
+      "existing_ids": [
+        "R21002"
+      ],
+      "source_ids": [
+        "R21-S002"
+      ],
+      "reason": "液體種類與溫度改門檻，留在來源條件，不拆數量。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。"
+    },
+    {
+      "id": "R21-NA004",
+      "question": "氣泡比孔大，就永遠過不去嗎？",
+      "existing_ids": [
+        "R21002"
+      ],
+      "source_ids": [
+        "R21-S002"
+      ],
+      "reason": "錯誤硬篩前提由同題壓差控制解答，不再獨立收。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。"
+    },
+    {
+      "id": "R21-NA005",
+      "question": "中和器是不是把每顆離子都變回中性原子？",
+      "existing_ids": [
+        "R21003"
+      ],
+      "source_ids": [
+        "R21-S003"
+      ],
+      "reason": "本文說束流總電荷中性，不支持逐粒立即復合，留同題界線。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。"
+    },
+    {
+      "id": "R21-NA006",
+      "question": "太空人漂浮，是不是因為太空沒有重力？",
+      "existing_ids": [
+        "LEG-S80"
+      ],
+      "source_ids": [],
+      "reason": "既有共同自由落體已答，不重收。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。"
+    },
+    {
+      "id": "R21-NA007",
+      "question": "LISA Pathfinder是不是已直接拍到太空重力波？",
+      "existing_ids": [],
+      "source_ids": [
+        "R21-S004",
+        "R21-S005"
+      ],
+      "reason": "概述標題容易誤讀；正文定位為技術示範，不收過強前提。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。"
+    },
+    {
+      "id": "R21-NA008",
+      "question": "衛星用磁力矩器就能往任何方向轉嗎？",
+      "existing_ids": [
+        "R21001"
+      ],
+      "source_ids": [
+        "R21-S001"
+      ],
+      "reason": "局部磁場限制已納卸載題，不將同控制的限制另拆核心。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。"
+    }
+  ]
+}

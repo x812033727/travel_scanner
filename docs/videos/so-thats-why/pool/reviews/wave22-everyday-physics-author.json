@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "c32fabb135",
+    "selected": 3010,
+    "raw_records": 3379,
+    "not_added": 1005,
+    "pool_sha256": "db3c2209e84f44cc79fa32ed1f6459200512a9eea3f24ca941dff4dd2b98c534"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave22-everyday-physics.json",
+      "sha256": "cdfdd157873ce4580263e66c88de90e429d3fb557eefc70e2bd556de7190bada"
+    },
+    {
+      "file": "reviews/wave22-everyday-physics-themes.json",
+      "sha256": "11f93bd2ad826c23c2f84b39e2184a65a98ed0d797a4402da5fc7a108ec6fe62"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 5,
+    "independent_research": 5,
+    "not_added": 19,
+    "near_pairs": 21,
+    "themes": 4,
+    "expected_new_cores_before_non_author": 5
+  },
+  "scope": "五個液體/接觸可見控制提案；去重與來源閱讀僅題級，非劇本或製作核准。",
+  "dedup_reading": {
+    "method": "全3379 raw與1005 not_added問答/範圍關鍵詞檢索，相關完整近題與退題讀回；不是逐條人工精讀全部3379題。",
+    "queries": [
+      "射流|液柱|液絲|珠串|洗髮|kaye|beads.on.string|elasto.capillary|pinch|breakup|黏彈|粘彈",
+      "蒸發|蒸氣|溶解|過飽和|成核|乳液|乳白|變白|透明|ouzo|vapour.mediated|marangoni",
+      "紙張|紙片|紙割|切割|起裂|屈曲|buckling|slicing|paper.cut"
+    ],
+    "scan_file": ".cache/wave22-physics-oldscan.json",
+    "scan_sha256": "b0590ca3463c95c4ded61b273c70188f018b1b53ec443aed4733b8eb2d4e112d",
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P22001",
+      "b": "I12008",
+      "proposed": "distinct_pending_non_author",
+      "reason": "最高近核風險：舊核是孤立液滴氣層撐過回彈；新題多連續供流/氣層剪切位置與破裂截流控制。若編輯判此增量只適合作例，接受合併，不憑Kaye名稱保核。",
+      "a_snapshot": {
+        "id": "P22001",
+        "question": "往上折返的洗髮精流，為什麼會在一瞬間失去支撐？",
+        "answer_target": "連續射流沿薄氣層轉彎，主要剪切可集中在空氣中而非一層高速變稀的洗髮精；氣層裂成小氣泡時，離開池面的那段流失去持續供應，落下並變細。",
+        "scope": "限原文洗髮精與傾斜同液池、高速影像/粒子速度觀察；氣層如何最初形成與非牛頓性的角色仍未完全釐清。這不是一次碰撞後靠回彈離開的孤立液滴。"
+      },
+      "b_snapshot": {
+        "id": "I12008",
+        "question": "液滴碰到已經濕的表面，怎麼還可能像球一樣彈開？",
+        "answer_target": "液滴與濕層間的空氣需時間排走；若薄氣層撐過變形回彈，液滴尚未真正接通就能離開，排空破膜則會合併。",
+        "scope": "實驗為矽油滴撞高黏矽油薄層；氣層是未排走的空氣，不是高溫蒸氣，也不是外接打氣。"
+      }
+    },
+    {
+      "a": "P22001",
+      "b": "F10011",
+      "proposed": "distinct_pending_non_author",
+      "reason": "液繩受壓盤圈只在本研究起始出現；新題關注出流沿氣層轉向以及破膜後斷料，不以盤圈新增。",
+      "a_snapshot": {
+        "id": "P22001",
+        "question": "往上折返的洗髮精流，為什麼會在一瞬間失去支撐？",
+        "answer_target": "連續射流沿薄氣層轉彎，主要剪切可集中在空氣中而非一層高速變稀的洗髮精；氣層裂成小氣泡時，離開池面的那段流失去持續供應，落下並變細。",
+        "scope": "限原文洗髮精與傾斜同液池、高速影像/粒子速度觀察；氣層如何最初形成與非牛頓性的角色仍未完全釐清。這不是一次碰撞後靠回彈離開的孤立液滴。"
+      },
+      "b_snapshot": {
+        "id": "F10011",
+        "question": "細細的蜂蜜落到表面，為什麼會盤成圈，而不是只堆成一條直線？",
+        "answer_target": "落流到表面受阻形成軸向壓縮，細長黏性液柱可透過彎曲失穩盤繞，無需固體彈性繩。",
+        "scope": "蜂蜜是來源生活入口，實驗是高黏矽油；限細長連續黏性流，非任意水柱或已凝固外殼。"
+      }
+    },
+    {
+      "a": "P22001",
+      "b": "F8006",
+      "proposed": "distinct_pending_non_author",
+      "reason": "觸變性是內部結構歷史；本研究粒子速度與空氣破裂反駁把滑動全歸於厚剪切變稀層。",
+      "a_snapshot": {
+        "id": "P22001",
+        "question": "往上折返的洗髮精流，為什麼會在一瞬間失去支撐？",
+        "answer_target": "連續射流沿薄氣層轉彎，主要剪切可集中在空氣中而非一層高速變稀的洗髮精；氣層裂成小氣泡時，離開池面的那段流失去持續供應，落下並變細。",
+        "scope": "限原文洗髮精與傾斜同液池、高速影像/粒子速度觀察；氣層如何最初形成與非牛頓性的角色仍未完全釐清。這不是一次碰撞後靠回彈離開的孤立液滴。"
+      },
+      "b_snapshot": {
+        "id": "F8006",
+        "question": "番茄醬剛搖過和靜置一會兒，為什麼一樣傾斜卻可能流得不同？",
+        "answer_target": "較大變形破壞暫時性結構，低變形下結構逐步恢復；因此當下流動還取決於先前受力歷程。",
+        "scope": "限受測具有觸變性的番茄醬；定性結構模型，不指定每款產品的聚合物或鍵種，也不宣稱靜置必定完全恢復。"
+      }
+    },
+    {
+      "a": "P22002",
+      "b": "Q9005",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊核毛細放大擾動斷滴；新核伸長彈性反饋讓珠間細線保留並慢縮，是對舊預期失效的控制，非換墨水名稱。",
+      "a_snapshot": {
+        "id": "P22002",
+        "question": "細液絲已經鼓成一串珠子，為什麼珠子之間還拉著不斷的線？",
+        "answer_target": "毛細作用把液體從細頸推向珠滴，但伸長中的聚合物建立軸向彈性應力，抵抗細頸快速縮斷；在所研究的中間階段留下慢慢變細的連線，並不是表面張力消失。",
+        "scope": "限稀聚合物液橋/自由射流與模型；兩種試液分開。Oldroyd-B無限可伸長假設不能用來承諾永不斷，最終斷裂不在本次模型對照內。"
+      },
+      "b_snapshot": {
+        "id": "Q9005",
+        "question": "連續流出的細墨柱，怎麼不用一滴一滴擠，就能排成規律墨滴？",
+        "answer_target": "曲率造成的壓力差能放大特定長波粗細擾動；連續噴墨施加合適的週期擾動，控制液柱斷滴的節奏。",
+        "scope": "限連續噴墨與毛細主導液柱；MIT 無黏小擾動結果用作機制示意，不套用所有高黏或聚合物墨水的數值。"
+      }
+    },
+    {
+      "a": "P22002",
+      "b": "H3090",
+      "proposed": "distinct_pending_non_author",
+      "reason": "固定形變應力鬆弛不同於自由液絲持續伸長、毛細壓力與彈性動態平衡；不能只剩鬆弛時間比較。",
+      "a_snapshot": {
+        "id": "P22002",
+        "question": "細液絲已經鼓成一串珠子，為什麼珠子之間還拉著不斷的線？",
+        "answer_target": "毛細作用把液體從細頸推向珠滴，但伸長中的聚合物建立軸向彈性應力，抵抗細頸快速縮斷；在所研究的中間階段留下慢慢變細的連線，並不是表面張力消失。",
+        "scope": "限稀聚合物液橋/自由射流與模型；兩種試液分開。Oldroyd-B無限可伸長假設不能用來承諾永不斷，最終斷裂不在本次模型對照內。"
+      },
+      "b_snapshot": {
+        "id": "H3090",
+        "question": "塑膠被固定在同一個形狀，為什麼它頂住物體的力還會慢慢變小？",
+        "answer_target": "聚合物的彈性與時間依賴重排使固定形變的應力鬆弛；和固定應力的蠕變並排，延伸到週期載荷的延遲耗能。",
+        "scope": "不是單純彈性模數題，也不將所有塑膠視同一鬆弛時間；時間溫度疊加只在可用範圍近似。"
+      }
+    },
+    {
+      "a": "P22002",
+      "b": "F17002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "轉桿剪切法向應力與慣性改液面；新題是伸長流中頸縮被彈性應力抵抗，控制/可見結果不同。",
+      "a_snapshot": {
+        "id": "P22002",
+        "question": "細液絲已經鼓成一串珠子，為什麼珠子之間還拉著不斷的線？",
+        "answer_target": "毛細作用把液體從細頸推向珠滴，但伸長中的聚合物建立軸向彈性應力，抵抗細頸快速縮斷；在所研究的中間階段留下慢慢變細的連線，並不是表面張力消失。",
+        "scope": "限稀聚合物液橋/自由射流與模型；兩種試液分開。Oldroyd-B無限可伸長假設不能用來承諾永不斷，最終斷裂不在本次模型對照內。"
+      },
+      "b_snapshot": {
+        "id": "F17002",
+        "question": "轉動細桿時，有些液體往桿上爬；沒有爬上去就代表它沒有彈性嗎？",
+        "answer_target": "轉動引出的法向應力提供向內收攏作用，慣性則向外推液，兩者決定自由面升降；弱彈性溶液也會因慣性勝出而下凹，不能只憑液面方向判有無彈性。",
+        "scope": "限聚合物溶液低轉速研究，扣除靜態毛細爬升。提高溶劑黏度的同濃度對照也改變鬆弛時間/法向應力，不聲稱單獨改黏度。"
+      }
+    },
+    {
+      "a": "P22002",
+      "b": "B16005",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊核為液滴收納固體蛛絲的屈曲盤繞；新題整根液絲本身為聚合物溶液，沒有一根被滴收進去的固線。",
+      "a_snapshot": {
+        "id": "P22002",
+        "question": "細液絲已經鼓成一串珠子，為什麼珠子之間還拉著不斷的線？",
+        "answer_target": "毛細作用把液體從細頸推向珠滴，但伸長中的聚合物建立軸向彈性應力，抵抗細頸快速縮斷；在所研究的中間階段留下慢慢變細的連線，並不是表面張力消失。",
+        "scope": "限稀聚合物液橋/自由射流與模型；兩種試液分開。Oldroyd-B無限可伸長假設不能用來承諾永不斷，最終斷裂不在本次模型對照內。"
+      },
+      "b_snapshot": {
+        "id": "B16005",
+        "question": "蛛絲放鬆後，為什麼多出來的長度不一定垂成鬆線？",
+        "answer_target": "液滴的毛細拉力可使極細絲在滴內屈曲盤繞，將多餘長度存入液滴，同時保留滴外張力；能否收線取決於毛細作用是否勝過細絲的抗彎門檻。",
+        "scope": "限所測Nephila edulis捕獲絲與合成微細線/液滴對照；不是所有蛛絲，也不是真的固液相變。粗線不能任意套用，極端鬆弛時也不維持同樣張力。"
+      }
+    },
+    {
+      "a": "P22002",
+      "b": "P22001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "兩者都是連續流但可決定結果的中段不同：空氣膜剪切與供流通道，對比液體內伸長彈性與毛細頸縮。",
+      "a_snapshot": {
+        "id": "P22002",
+        "question": "細液絲已經鼓成一串珠子，為什麼珠子之間還拉著不斷的線？",
+        "answer_target": "毛細作用把液體從細頸推向珠滴，但伸長中的聚合物建立軸向彈性應力，抵抗細頸快速縮斷；在所研究的中間階段留下慢慢變細的連線，並不是表面張力消失。",
+        "scope": "限稀聚合物液橋/自由射流與模型；兩種試液分開。Oldroyd-B無限可伸長假設不能用來承諾永不斷，最終斷裂不在本次模型對照內。"
+      },
+      "b_snapshot": {
+        "id": "P22001",
+        "question": "往上折返的洗髮精流，為什麼會在一瞬間失去支撐？",
+        "answer_target": "連續射流沿薄氣層轉彎，主要剪切可集中在空氣中而非一層高速變稀的洗髮精；氣層裂成小氣泡時，離開池面的那段流失去持續供應，落下並變細。",
+        "scope": "限原文洗髮精與傾斜同液池、高速影像/粒子速度觀察；氣層如何最初形成與非牛頓性的角色仍未完全釐清。這不是一次碰撞後靠回彈離開的孤立液滴。"
+      }
+    },
+    {
+      "a": "P22003",
+      "b": "P232",
+      "proposed": "distinct_pending_non_author",
+      "reason": "不只溶解上限/成核門檻；蒸發沿組成路徑先產生散射小滴，後又合併離開主滴使透明恢復。只把油換成糖而無此歷程則不收。",
+      "a_snapshot": {
+        "id": "P22003",
+        "question": "一滴透明混合液放著變乾，怎麼先變白，後來又透明了？",
+        "answer_target": "乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。",
+        "scope": "限水/乙醇/茴香油指定初始配比和疏水玻璃；透明—乳白—透明為同一分離歷程，只計一核。數值場屬模型，變化分鐘數非普遍定值。"
+      },
+      "b_snapshot": {
+        "id": "P232",
+        "question": "已經超過溶解上限，為什麼溶液有時仍暫時透明？",
+        "answer_target": "過飽和是非平衡或亞穩態，析出還涉及成核條件。",
+        "scope": "成核細節需加第二來源"
+      }
+    },
+    {
+      "a": "P22003",
+      "b": "P243",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題只分分散相物態；新題為同一滴從溶液到微滴再合併的時序機制，分類無法回答透明兩次。",
+      "a_snapshot": {
+        "id": "P22003",
+        "question": "一滴透明混合液放著變乾，怎麼先變白，後來又透明了？",
+        "answer_target": "乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。",
+        "scope": "限水/乙醇/茴香油指定初始配比和疏水玻璃；透明—乳白—透明為同一分離歷程，只計一核。數值場屬模型，變化分鐘數非普遍定值。"
+      },
+      "b_snapshot": {
+        "id": "P243",
+        "question": "油滴散在水裡和空氣散在液體裡，為什麼分別叫乳液與泡沫？",
+        "answer_target": "分散相與連續相的物態組合決定分類，不只看外觀。",
+        "scope": "避開泡泡為何圓的既有題"
+      }
+    },
+    {
+      "a": "P22003",
+      "b": "H3092",
+      "proposed": "distinct_pending_non_author",
+      "reason": "咖啡原有懸浮粒隨補流沉積；此題在蒸發中才因溶解度變化生成油滴，後續再合併。",
+      "a_snapshot": {
+        "id": "P22003",
+        "question": "一滴透明混合液放著變乾，怎麼先變白，後來又透明了？",
+        "answer_target": "乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。",
+        "scope": "限水/乙醇/茴香油指定初始配比和疏水玻璃；透明—乳白—透明為同一分離歷程，只計一核。數值場屬模型，變化分鐘數非普遍定值。"
+      },
+      "b_snapshot": {
+        "id": "H3092",
+        "question": "一滴咖啡乾掉，為什麼顏色常擠到外圈而不是均勻留下？",
+        "answer_target": "固定接觸線的液滴蒸發時，補充外緣損失的液流將懸浮顆粒輸送到邊緣。",
+        "scope": "限接觸線固定且外向輸送重要的情境；顆粒、表面與內部流動可改變沉積，不宣稱任何液滴必成環。"
+      }
+    },
+    {
+      "a": "P22003",
+      "b": "I12004",
+      "proposed": "distinct_pending_non_author",
+      "reason": "共用乙醇優先蒸發前提，但新核心是三元互溶性變化和油滴相分離/合併，不另收內部Marangoni環流題。",
+      "a_snapshot": {
+        "id": "P22003",
+        "question": "一滴透明混合液放著變乾，怎麼先變白，後來又透明了？",
+        "answer_target": "乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。",
+        "scope": "限水/乙醇/茴香油指定初始配比和疏水玻璃；透明—乳白—透明為同一分離歷程，只計一核。數值場屬模型，變化分鐘數非普遍定值。"
+      },
+      "b_snapshot": {
+        "id": "I12004",
+        "question": "酒杯壁上的液體為什麼先往上爬，才變成一條條往下流？",
+        "answer_target": "薄層優先失去酒精，使局部表面張力提高並拉動表面流向上；累積液體形成隆起後，重力使其向下流。",
+        "scope": "水酒精混合液的薄層與持續蒸發；不從酒淚判品質，也不把過程全當毛細上升。"
+      }
+    },
+    {
+      "a": "P22004",
+      "b": "P041",
+      "proposed": "distinct_pending_non_author",
+      "reason": "小面積集中應力不能解釋越薄反而先失去載荷；新增切入與紙自身屈曲的先後競爭。",
+      "a_snapshot": {
+        "id": "P22004",
+        "question": "紙越薄越容易切進軟材料嗎？為什麼太薄反而先彎掉？",
+        "answer_target": "在所測紙張切明膠的條件下，厚紙分散載荷而未達起裂門檻；很薄的紙又可能先屈曲而失去傳遞載荷的能力。只有能先達切入門檻、又尚未彎垮的區域，才形成切口。",
+        "scope": "限明膠與商用紙的受控接觸/切向角度；紙樣的模數也不同，不聲稱只改厚度。門檻模型近似，不能用特定厚度評定人體危險或哪種紙安全。"
+      },
+      "b_snapshot": {
+        "id": "P041",
+        "question": "針尖為什麼能用不大的力刺進材料？",
+        "answer_target": "小接觸面積集中應力；刺穿還涉及材料破壞而非壓力單獨決定。",
+        "scope": "不作人體或武器操作展示"
+      }
+    },
+    {
+      "a": "P22004",
+      "b": "K11004",
+      "proposed": "distinct_pending_non_author",
+      "reason": "一般柱屈曲只是其中一道門檻；新問題須同時比較明膠起裂且厚薄趨勢相反，並有三種可見結局。",
+      "a_snapshot": {
+        "id": "P22004",
+        "question": "紙越薄越容易切進軟材料嗎？為什麼太薄反而先彎掉？",
+        "answer_target": "在所測紙張切明膠的條件下，厚紙分散載荷而未達起裂門檻；很薄的紙又可能先屈曲而失去傳遞載荷的能力。只有能先達切入門檻、又尚未彎垮的區域，才形成切口。",
+        "scope": "限明膠與商用紙的受控接觸/切向角度；紙樣的模數也不同，不聲稱只改厚度。門檻模型近似，不能用特定厚度評定人體危險或哪種紙安全。"
+      },
+      "b_snapshot": {
+        "id": "K11004",
+        "question": "細長片被兩端壓縮時，為什麼可能還沒被壓扁就先向旁邊彎？",
+        "answer_target": "側向偏移讓軸向壓力產生額外彎矩，削弱回復剛性；細長構件可先失穩，短粗構件則可能先材料壓潰。",
+        "scope": "理想彈性細長柱及受控邊界；長度、端部固定只作同核心條件，不各算新題。"
+      }
+    },
+    {
+      "a": "P22004",
+      "b": "F15003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊核固定線徑改切向載荷比較起裂/延續；新核紙自身可先屈曲，不能視為剛性細線或按切向角度再拆題。",
+      "a_snapshot": {
+        "id": "P22004",
+        "question": "紙越薄越容易切進軟材料嗎？為什麼太薄反而先彎掉？",
+        "answer_target": "在所測紙張切明膠的條件下，厚紙分散載荷而未達起裂門檻；很薄的紙又可能先屈曲而失去傳遞載荷的能力。只有能先達切入門檻、又尚未彎垮的區域，才形成切口。",
+        "scope": "限明膠與商用紙的受控接觸/切向角度；紙樣的模數也不同，不聲稱只改厚度。門檻模型近似，不能用特定厚度評定人體危險或哪種紙安全。"
+      },
+      "b_snapshot": {
+        "id": "F15003",
+        "question": "同一塊軟凝膠，直壓和邊拉邊切為什麼差這麼多？",
+        "answer_target": "在細線切agar的實驗中，純直壓要先造成較大整體變形；加入切向載荷能在表面建立局部拉應力，較早起裂。已切開後的持續切割，並未顯示相同優勢。",
+        "scope": "限所測agar凝膠與細線幾何；固定線徑及法向速度改切向運動。局部應力來自模型，力與變形來自實驗；不能泛化所有食物或當廚刀操作教學。"
+      }
+    },
+    {
+      "a": "P22004",
+      "b": "H3060",
+      "proposed": "distinct_pending_non_author",
+      "reason": "裂長/載荷/韌性門檻不含切割工具本身先失穩；新核不是另一材料的裂尖應力集中。",
+      "a_snapshot": {
+        "id": "P22004",
+        "question": "紙越薄越容易切進軟材料嗎？為什麼太薄反而先彎掉？",
+        "answer_target": "在所測紙張切明膠的條件下，厚紙分散載荷而未達起裂門檻；很薄的紙又可能先屈曲而失去傳遞載荷的能力。只有能先達切入門檻、又尚未彎垮的區域，才形成切口。",
+        "scope": "限明膠與商用紙的受控接觸/切向角度；紙樣的模數也不同，不聲稱只改厚度。門檻模型近似，不能用特定厚度評定人體危險或哪種紙安全。"
+      },
+      "b_snapshot": {
+        "id": "H3060",
+        "question": "裂痕多長會突然快速擴大，為什麼還要看拉力和材料？",
+        "answer_target": "在指定幾何及適用模型下，裂長與外加應力共同決定裂尖擴裂驅動；達到材料斷裂韌性對應的門檻，才可能發生快速擴裂。",
+        "scope": "聚焦線彈性斷裂模型的臨界裂長／載荷；應力集中沿用既有前提。幾何與材料適用條件不可省略，不由刮痕外觀判實物承載安全。"
+      }
+    },
+    {
+      "a": "P22005",
+      "b": "I12003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "浮物需共用變形液面；新滴在固體/斷口兩側、氣相傳遞改邊緣蒸發，無共用液面能量下降。",
+      "a_snapshot": {
+        "id": "P22005",
+        "question": "兩滴液體之間的玻璃已經斷開，怎麼還會往彼此靠近？",
+        "answer_target": "鄰滴釋出的水蒸氣提高近側濕度，減少該側薄膜失水；薄膜成分與表面張力因而左右不對稱，對液滴產生淨驅動。玻璃斷口與不碰觸的水源控制支持傳遞走氣相，不需要連續固體或相通液面。",
+        "scope": "限PG/水混合滴、乾淨高表面能基材和所測濃度；局部成分/受力為實驗支持的模型。不同濃度可不相吸，本題不採高PG排斥假說或短程直接接觸追逐作已證同機制。"
+      },
+      "b_snapshot": {
+        "id": "I12003",
+        "question": "兩個漂浮小物還沒碰到，為什麼會慢慢靠在一起？",
+        "answer_target": "浮物改變周圍液面的高低；彼此靠近可降低液面與重力相關的總能量，同向變形常相吸，反向變形可相斥。",
+        "scope": "小浮物、靜水、界面變形主導的條件；先排除水流、磁力，不能只憑密度判所有組合。"
+      }
+    },
+    {
+      "a": "P22005",
+      "b": "I12004",
+      "proposed": "distinct_pending_non_author",
+      "reason": "本題的新增控制是遠端鄰滴/水源在不接觸時造成左右不對稱蒸發；酒淚為單液膜自身垂直濃度梯度與重力。",
+      "a_snapshot": {
+        "id": "P22005",
+        "question": "兩滴液體之間的玻璃已經斷開，怎麼還會往彼此靠近？",
+        "answer_target": "鄰滴釋出的水蒸氣提高近側濕度，減少該側薄膜失水；薄膜成分與表面張力因而左右不對稱，對液滴產生淨驅動。玻璃斷口與不碰觸的水源控制支持傳遞走氣相，不需要連續固體或相通液面。",
+        "scope": "限PG/水混合滴、乾淨高表面能基材和所測濃度；局部成分/受力為實驗支持的模型。不同濃度可不相吸，本題不採高PG排斥假說或短程直接接觸追逐作已證同機制。"
+      },
+      "b_snapshot": {
+        "id": "I12004",
+        "question": "酒杯壁上的液體為什麼先往上爬，才變成一條條往下流？",
+        "answer_target": "薄層優先失去酒精，使局部表面張力提高並拉動表面流向上；累積液體形成隆起後，重力使其向下流。",
+        "scope": "水酒精混合液的薄層與持續蒸發；不從酒淚判品質，也不把過程全當毛細上升。"
+      }
+    },
+    {
+      "a": "P22005",
+      "b": "I12005",
+      "proposed": "distinct_pending_non_author",
+      "reason": "泡膜局部伸展使界面分子稀疏；此題隔空蒸氣改薄膜溶劑組成與平移淨力，非局部膜厚自修復。",
+      "a_snapshot": {
+        "id": "P22005",
+        "question": "兩滴液體之間的玻璃已經斷開，怎麼還會往彼此靠近？",
+        "answer_target": "鄰滴釋出的水蒸氣提高近側濕度，減少該側薄膜失水；薄膜成分與表面張力因而左右不對稱，對液滴產生淨驅動。玻璃斷口與不碰觸的水源控制支持傳遞走氣相，不需要連續固體或相通液面。",
+        "scope": "限PG/水混合滴、乾淨高表面能基材和所測濃度；局部成分/受力為實驗支持的模型。不同濃度可不相吸，本題不採高PG排斥假說或短程直接接觸追逐作已證同機制。"
+      },
+      "b_snapshot": {
+        "id": "I12005",
+        "question": "泡泡膜局部被拉薄時，為什麼有時會自己把液體拉回來？",
+        "answer_target": "局部面積拉大使表面活性分子暫時稀疏、張力上升；張力梯度帶動界面回流，抵抗進一步變薄。",
+        "scope": "限有足夠界面濃度響應、交換時間適合的膜；回復不代表永久不破，不把蛋白網絡力學當此機制。"
+      }
+    },
+    {
+      "a": "P22005",
+      "b": "Q9008",
+      "proposed": "distinct_pending_non_author",
+      "reason": "噴嘴內補給與出口蒸發平衡形成濃度梯度；新題鄰滴蒸氣打破周向對稱而促平移，沒有連通儲液腔。",
+      "a_snapshot": {
+        "id": "P22005",
+        "question": "兩滴液體之間的玻璃已經斷開，怎麼還會往彼此靠近？",
+        "answer_target": "鄰滴釋出的水蒸氣提高近側濕度，減少該側薄膜失水；薄膜成分與表面張力因而左右不對稱，對液滴產生淨驅動。玻璃斷口與不碰觸的水源控制支持傳遞走氣相，不需要連續固體或相通液面。",
+        "scope": "限PG/水混合滴、乾淨高表面能基材和所測濃度；局部成分/受力為實驗支持的模型。不同濃度可不相吸，本題不採高PG排斥假說或短程直接接觸追逐作已證同機制。"
+      },
+      "b_snapshot": {
+        "id": "Q9008",
+        "question": "噴嘴一直有水蒸發，裡面的墨液濃度為什麼不一定一直升高？",
+        "answer_target": "較易揮發的水從出口流失，同時內部水分藉擴散與流動補入；通量可平衡，留下空間濃度梯度而非整腔均勻乾濃。",
+        "scope": "水—甘油模型液與連通儲液的閒置噴嘴；不套用所有墨水或無補給封閉小滴，不承諾濃度變化必使滴形肉眼變歪。"
+      }
+    },
+    {
+      "a": "P22005",
+      "b": "P22003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "兩者選擇蒸發，但前者對遠方液滴施加不對稱氣相邊界，後者在同一滴引起油相生成和合併；不把共享Marangoni名詞當完整答案。",
+      "a_snapshot": {
+        "id": "P22005",
+        "question": "兩滴液體之間的玻璃已經斷開，怎麼還會往彼此靠近？",
+        "answer_target": "鄰滴釋出的水蒸氣提高近側濕度，減少該側薄膜失水；薄膜成分與表面張力因而左右不對稱，對液滴產生淨驅動。玻璃斷口與不碰觸的水源控制支持傳遞走氣相，不需要連續固體或相通液面。",
+        "scope": "限PG/水混合滴、乾淨高表面能基材和所測濃度；局部成分/受力為實驗支持的模型。不同濃度可不相吸，本題不採高PG排斥假說或短程直接接觸追逐作已證同機制。"
+      },
+      "b_snapshot": {
+        "id": "P22003",
+        "question": "一滴透明混合液放著變乾，怎麼先變白，後來又透明了？",
+        "answer_target": "乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。",
+        "scope": "限水/乙醇/茴香油指定初始配比和疏水玻璃；透明—乳白—透明為同一分離歷程，只計一核。數值場屬模型，變化分鐘數非普遍定值。"
+      }
+    }
+  ],
+  "prior_rejection_reentry": [
+    {
+      "prior_id": "F17-NA019",
+      "candidate_id": "P22001",
+      "old_reason": "舊批尚未讀足空氣層與剪切歷史原研究，I12008只記相近而非定同核。",
+      "new_evidence": "本輪實讀Lee2013 pp1–4，Fig.3–5破膜、截斷供流與粒子速度；保留非牛頓角色未解。",
+      "status": "PROPOSED_REENTRY_NEEDS_NON_AUTHOR_CORE_DECISION"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P22-S001",
+      "url": "https://www.math.fsu.edu/~lee/papers/2013_LLMBT_Kaye.pdf",
+      "read_via": "當日web搜尋作者PDF與PubMed身份頁；web.open PDF逾時；指定UA urllib HTTP200，PyMuPDF逐頁抽文，另渲染目讀PDF pp2–3。",
+      "reading_scope": "PDF pp1–4主文與圖說；目讀p2 Fig.3、p3 Fig.4–5。未看補充影片、未讀補充材料、未重算膜厚。",
+      "limitations": "氣層厚度為估算且有幾何不確定性；非牛頓性可能協助氣層形成/維持，不能說不重要。不是所有洗髮精或牛頓液都會跳，也未以真空控制證成。",
+      "cache": {
+        "file": ".cache/wave22-physics-kaye.pdf",
+        "sha256": "ae9e9a8bb29eb23d34eaff8159672d39ec6a9532b1c6a50191517ea79c369f68",
+        "text_file": ".cache/wave22-physics-kaye-pages.json",
+        "text_sha256": "25d99e37a267e547e8250424e50be895652130e13e9d8f424ab7eaa55a8ccc08"
+      }
+    },
+    {
+      "source_id": "P22-S002",
+      "url": "https://web.mit.edu/nnf/publications/GHM90.pdf",
+      "read_via": "當日web.open MIT PDF成功定位；指定UA urllib HTTP200，PyMuPDF指定頁抽文，目讀PDF pp3–4 Fig.1–2。",
+      "reading_scope": "PDF pp1–10（印刷283–292）Intro/§1.1–1.3/§2.1–2.2及圖說；PDF pp21–24（303–306）§5 Discussion與Appendix。未逐式重推§3–4、未做模型或實驗。",
+      "limitations": "兩組實驗分別是高黏聚苯乙烯Boger液橋與低黏聚丙烯醯胺自由射流，非同一試件或配方。無限伸長Oldroyd-B模型不涵蓋最終斷裂；不把唾液/每種黏液等同試液。",
+      "cache": {
+        "file": ".cache/wave22-physics-beads.pdf",
+        "sha256": "d4009bf9c55d38b6c6c8eaed093abe4eae66602c88019c0020c54c354f4d355f",
+        "text_file": ".cache/wave22-physics-beads-pages.json",
+        "text_sha256": "f49e16e91dce367f4e413cc7bda2dced5a2b9a79e5e9ade834c55a8f90497e6d"
+      }
+    },
+    {
+      "source_id": "P22-S003",
+      "url": "https://arxiv.org/pdf/1706.01395",
+      "read_via": "當日web讀arXiv身份與PDF；PMC路線出CAPTCHA未取得正文；指定UA urllib取得arXiv PDF HTTP200，PyMuPDF抽文，目讀PDF pp21–22、24。",
+      "reading_scope": "PDF pp1–11主文/Material起始與Experimental methods；PDF pp21–22 Fig.1–2、p24 Fig.4圖說及圖頁。未逐讀其餘補充推導、未看影片；不把40頁皆稱已核。",
+      "limitations": "試驗為指定水/乙醇/茴香油微滴及OTS玻璃，不是任意酒。時間與精確速度依條件；模型用軸對稱潤滑近似、部分幾何/濕度取實驗資料，不能把全場成分模型冒充直接量測。",
+      "cache": {
+        "file": ".cache/wave22-physics-ouzo.pdf",
+        "sha256": "535e91b742e9186a601a0e1bc0ae65cfd9db4d6604bdcd00ca0a4f4ef79a311a",
+        "text_file": ".cache/wave22-physics-ouzo-pages.json",
+        "text_sha256": "5007f82c9c2ad74da581fd3d8582b0fa5b1460c7f6ecb0b91021da96206788c3"
+      }
+    },
+    {
+      "source_id": "P22-S004",
+      "url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/383088592/PhysRevE.110.025003.pdf",
+      "read_via": "當日web.open DTU PDF定位；指定UA urllib HTTP200，PyMuPDF抽文；目讀PDF pp3–4 Fig.1–3。",
+      "reading_scope": "PDF pp2–7主文、Methods、Results A/B、Discussion與Appendix A–E/Table I；未採製造工具或人體風險延伸，未看影片/SI。",
+      "limitations": "研究切明膠而非人體；不同商用紙同時有厚度/模數差，不能說只改厚度。特定最易切厚度與均勻角度機率模型不作普遍危險排名，不給傷人或切割器具操作。",
+      "cache": {
+        "file": ".cache/wave22-physics-paper.pdf",
+        "sha256": "099da5e5a972fec0ae747b1d721bc7b5c0c09c86a99458eab868d93db2aea8a6",
+        "text_file": ".cache/wave22-physics-paper-pages.json",
+        "text_sha256": "e35bf31174628d8ddd9aaade1ca3d30136d684a10f48651b700e42ed0975a55c"
+      }
+    },
+    {
+      "source_id": "P22-S005",
+      "url": "https://web.stanford.edu/group/prakash-lab/docs/Cira_DancingDroplets.pdf",
+      "read_via": "當日web定位Nature與Stanford作者PDF；期刊首次open遇redirect錯誤，後web搜尋讀到Change history；作者PDF web.open及指定UA urllib HTTP200，PyMuPDF抽文並目讀PDF pp2–3。",
+      "reading_scope": "PDF pp1–5主文與Fig.1–5圖說，p6 Extended Data Fig.1圖說；目讀p2 Fig.2、p3 Fig.3。未讀另檔Supplementary Information、未看影片、未核每種混合液或全部15頁。",
+      "limitations": "限定所試PG/水及乾淨高表面能基材；水蒸氣主導模型在高PG/高濕度較差，排斥僅提出假說，不泛稱任何兩滴必相吸。未直接逐點量到全部局部成分，不把分子濃度動畫當實測。",
+      "cache": {
+        "file": ".cache/wave22-physics-vapour.pdf",
+        "sha256": "289ed222735a821680452f12ce91cb76af7ce241a9f127ee3a99f086b0094a9a",
+        "text_file": ".cache/wave22-physics-vapour-pages.json",
+        "text_sha256": "16f204fd5b76802ca5369f946051e661a2b463343427d7322201f923b6ff3289"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P22-S001",
+      "doi": "10.1103/PhysRevE.87.061001",
+      "canonical_url": "https://doi.org/10.1103/PhysRevE.87.061001",
+      "read_carrier": "https://www.math.fsu.edu/~lee/papers/2013_LLMBT_Kaye.pdf",
+      "relationship": "作者機構PDF，頁首2013-04-23稿；正式刊文2013-06-10。PDF補充材料連結仍有占位字，不宣稱已讀補充。",
+      "independent_research_count": 1,
+      "old_exact_doi_title_or_url_matches": [],
+      "limitation": "僅字串身份檢索，不保證沒有不同標題或載體的同文；共同root身份比對待做。"
+    },
+    {
+      "source_id": "P22-S002",
+      "doi": "10.1017/S0022112006009633",
+      "canonical_url": "https://doi.org/10.1017/S0022112006009633",
+      "read_carrier": "https://web.mit.edu/nnf/publications/GHM90.pdf",
+      "relationship": "MIT作者機構存放的2006正式刊文；另有MIT repository 06-P-04/2007入庫紀錄屬同工作，不算第二研究。",
+      "independent_research_count": 1,
+      "old_exact_doi_title_or_url_matches": [],
+      "limitation": "僅字串身份檢索，不保證沒有不同標題或載體的同文；共同root身份比對待做。"
+    },
+    {
+      "source_id": "P22-S003",
+      "doi": "10.1073/pnas.1602260113",
+      "canonical_url": "https://doi.org/10.1073/pnas.1602260113",
+      "read_carrier": "https://arxiv.org/pdf/1706.01395",
+      "relationship": "2016正式研究；所讀arXiv:1706.01395v1於2017-06-05存入，40頁包含補充內容，非2017另一研究。",
+      "independent_research_count": 1,
+      "old_exact_doi_title_or_url_matches": [],
+      "limitation": "僅字串身份檢索，不保證沒有不同標題或載體的同文；共同root身份比對待做。"
+    },
+    {
+      "source_id": "P22-S004",
+      "doi": "10.1103/PhysRevE.110.025003",
+      "canonical_url": "https://doi.org/10.1103/PhysRevE.110.025003",
+      "read_carrier": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/383088592/PhysRevE.110.025003.pdf",
+      "relationship": "DTU作者機構保存正式刊文；2024-08-23發表。PDF p1機構封面，pp2–8為印刷025003-1至7。",
+      "independent_research_count": 1,
+      "old_exact_doi_title_or_url_matches": [],
+      "limitation": "僅字串身份檢索，不保證沒有不同標題或載體的同文；共同root身份比對待做。"
+    },
+    {
+      "source_id": "P22-S005",
+      "doi": "10.1038/nature14272",
+      "canonical_url": "https://doi.org/10.1038/nature14272",
+      "read_carrier": "https://web.stanford.edu/group/prakash-lab/docs/Cira_DancingDroplets.pdf",
+      "relationship": "Stanford作者機構15頁PDF，主文尚帶early-online頁首；同2015-03-11 Nature研究。期刊Change history載2015-11-17修HTML一條公式；此題不採精確公式或指數，載體不是第二獨立證據。",
+      "independent_research_count": 1,
+      "old_exact_doi_title_or_url_matches": [],
+      "limitation": "僅字串身份檢索，不保證沒有不同標題或載體的同文；共同root身份比對待做。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://www.math.fsu.edu/~lee/papers/2013_LLMBT_Kaye.pdf",
+      "route": "web.open",
+      "result": "timeout；另指定UA HTTP200副本正文已讀"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4978298/",
+      "route": "web.open",
+      "result": "CAPTCHA；未以此路線稱正文已讀，改同文arXiv作者稿"
+    },
+    {
+      "url": "https://www.nature.com/articles/nature14272",
+      "route": "web.open首次",
+      "result": "redirect/IdP錯誤；後搜尋輸出讀身份/Change history，完整主文用Stanford作者PDF"
+    }
+  ],
+  "reading_limits": [
+    "五來源皆指定正文閱讀，未稱所有頁/補充/影片已查。",
+    "引用只連結與原創短摘要，不複製原圖/全文入Git。",
+    "來源中的理想模型、實際實驗和原創示意分框；未重做試驗、未試讀或製作。",
+    "P22001與I12008是強邊界待裁；P22003/P232、P22005/I12004和P22004/K11004同樣交另一作者嚴判。",
+    "飛濺、擠出膨脹、Leidenfrost棘輪僅探索，未據摘要建立核心。"
+  ],
+  "visual_reads": [
+    {
+      "source_name": "kaye",
+      "pdf_pages": [
+        2,
+        3
+      ],
+      "route": "本輪有效PDF經PyMuPDF渲染後view_image目讀",
+      "files": [
+        ".cache/wave22-physics-kaye-p2.png",
+        ".cache/wave22-physics-kaye-p3.png"
+      ]
+    },
+    {
+      "source_name": "beads",
+      "pdf_pages": [
+        3,
+        4
+      ],
+      "route": "本輪有效PDF經PyMuPDF渲染後view_image目讀",
+      "files": [
+        ".cache/wave22-physics-beads-p3.png",
+        ".cache/wave22-physics-beads-p4.png"
+      ]
+    },
+    {
+      "source_name": "ouzo",
+      "pdf_pages": [
+        21,
+        22,
+        24
+      ],
+      "route": "本輪有效PDF經PyMuPDF渲染後view_image目讀",
+      "files": [
+        ".cache/wave22-physics-ouzo-p21.png",
+        ".cache/wave22-physics-ouzo-p22.png",
+        ".cache/wave22-physics-ouzo-p24.png"
+      ]
+    },
+    {
+      "source_name": "paper",
+      "pdf_pages": [
+        3,
+        4
+      ],
+      "route": "本輪有效PDF經PyMuPDF渲染後view_image目讀",
+      "files": [
+        ".cache/wave22-physics-paper-p3.png",
+        ".cache/wave22-physics-paper-p4.png"
+      ]
+    },
+    {
+      "source_name": "vapour",
+      "pdf_pages": [
+        2,
+        3
+      ],
+      "route": "本輪有效PDF經PyMuPDF渲染後view_image目讀",
+      "files": [
+        ".cache/wave22-physics-vapour-p2.png",
+        ".cache/wave22-physics-vapour-p3.png"
+      ]
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W22P-T01",
+      "body_seconds": 100,
+      "per_core": {
+        "P22002": 100
+      },
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_ONLY"
+    },
+    {
+      "id": "W22P-T02",
+      "body_seconds": 110,
+      "per_core": {
+        "P22003": 110
+      },
+      "max_beat_seconds": 35,
+      "status": "PAPER_BUDGET_CHECK_ONLY"
+    },
+    {
+      "id": "W22P-T03",
+      "body_seconds": 95,
+      "per_core": {
+        "P22004": 95
+      },
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_ONLY"
+    },
+    {
+      "id": "W22P-T04",
+      "body_seconds": 100,
+      "per_core": {
+        "P22005": 100
+      },
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_ONLY"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "recursive_string_rstrip": true,
+    "source_ids_resolve": true,
+    "chapter_sum_and_core_cap": true,
+    "beat_max_45": true,
+    "repo_build_run": false,
+    "scope": "作者檔格式/預算檢查，不等於非作者內容核准。"
+  },
+  "unresolved": [
+    "作者接受P22001→I12008，保留raw與來源作變體，待中央合併。",
+    "非作者最終修後收據與共同輸入雜湊由reviewer/root綁定；此處不冒稱作者自行覆核通過。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "reviewer": "pool_life_tech",
+      "before_files": [
+        {
+          "file": "batches/wave22-everyday-physics.json",
+          "sha256": "abbde51e1a467f83e5d39002da1a74517ee6d12036ebdd4bbeb6a249711b5132"
+        },
+        {
+          "file": "reviews/wave22-everyday-physics-themes.json",
+          "sha256": "b3443eb635893fc33ba9bebb3eea1136ff36c814545f674698fc7b2af21fa173"
+        },
+        {
+          "file": "reviews/wave22-everyday-physics-author.json",
+          "sha256": "2ce7e42e80419f45879e26840f05a0133e0c5ede30c6e8ca793e89c746c06366"
+        }
+      ],
+      "changes": [
+        {
+          "id": "PHYSICS22-01",
+          "action": "接受P22001併I12008，保留原始提案與氣膜剪切/破膜新證據變體；中央去重由root落定，未刪候選。"
+        },
+        {
+          "id": "PHYSICS22-02",
+          "action": "W22P-T03第二章移除重回三框的門檻重述，15→10秒，只留角度/支撐移動窗口；100→95秒。",
+          "removed_seconds": 5
+        },
+        {
+          "id": "PHYSICS22-03",
+          "action": "P22-NA008問法由牛頓液收窄為有些聚合物液，與未完成擠出膨脹研究的退題理由一致；不新增核心。"
+        }
+      ],
+      "removed_seconds": 5,
+      "candidate_question_answer_scope_changed": false
+    }
+  ]
+}

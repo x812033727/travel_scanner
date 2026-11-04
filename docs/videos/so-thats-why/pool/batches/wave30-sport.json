@@ -1,0 +1,390 @@
+{
+  "batch_id": "wave30-sport-20261102",
+  "created_on": "2026-11-02",
+  "scope": "翻過正向仍會擺動的羽球、少旋足球的側向漂移、網球拍兩種甜區，以及離棒球轉速超過剛體預測。",
+  "sources": [
+    {
+      "id": "P30-S001",
+      "url": "https://yakari.polytechnique.fr/Django-pub/documents/cohen2015rp-1pp.pdf",
+      "canonical_url": "https://doi.org/10.1088/1367-2630/17/6/063001",
+      "retrieval_url": "https://yakari.polytechnique.fr/Django-pub/documents/cohen2015rp-1pp.pdf",
+      "title": "The physics of badminton",
+      "publisher": "Caroline Cohen 等／New Journal of Physics 17, 063001",
+      "doi": "10.1088/1367-2630/17/6/063001",
+      "version": "2015期刊，實讀École Polytechnique作者公開的期刊排版本（PDF第1頁為下載封面）。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核對原作者或出版資料，使用指定UA取得HTTP200原始PDF，本機抽文並讀所列圖頁。",
+      "reading_scope": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+      "locator": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+      "summary": "高速影像分出首次轉正與隨後擺幅變小。兩球模型把側向姿態的回復力矩和擺動的流體阻尼分開。",
+      "limitations": "Fig3兩次擊球的初速與初始轉速同時變。圖5是簡化模型；不把水槽原型與球場擊球當同一試次。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave30-sport-shuttle.pdf",
+        "sha256": "1f5f132a64dcfd451cf64f94024aeda146c7401071720b364ecd4588b62b6c88",
+        "text_file": ".cache/wave30-sport-shuttle.txt",
+        "text_sha256": "4c98b69a0342cf6fe19f96b20d2f7e66f54ed67f85c33eb4615097754de45215"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-shuttle-p4.png",
+          "sha256": "ee0b682caaea6b21ba62e3f3b4631bdfae640b5f48366da84328162230362ab4",
+          "read_scope": "Fig3兩組截影、Fig4姿態角曲線越過零線後縮小"
+        },
+        {
+          "file": ".cache/wave30-sport-shuttle-p5.png",
+          "sha256": "90c31422af91366e2dfe2c01c85a3a411dac167a8cf7cb5563cb2736751cda29",
+          "read_scope": "Fig5實物的受力示意與雙球模型分圖"
+        }
+      ]
+    },
+    {
+      "id": "P30-S002",
+      "url": "https://www.nature.com/articles/srep01871.pdf",
+      "canonical_url": "https://doi.org/10.1038/srep01871",
+      "retrieval_url": "https://www.nature.com/articles/srep01871.pdf",
+      "title": "The strange flight behaviour of slowly spinning soccer balls",
+      "publisher": "Taketo Mizota 等／Scientific Reports 3, 1871",
+      "doi": "10.1038/srep01871",
+      "version": "2013期刊版，Nature公開PDF。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核對原作者或出版資料，使用指定UA取得HTTP200原始PDF，本機抽文並讀所列圖頁。",
+      "reading_scope": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+      "locator": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+      "summary": "飛行球側偏，固定球仍有變動側力。煙霧與同步力資料把尾流渦所在一側和朝另一側的合力連在一起。",
+      "limitations": "自由飛行的力由位置推算，固定風洞球則直接測力。Fig4a–c的光滑球與早年草圖不同於g的本研究足球。不把少旋當完全無旋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave30-sport-football.pdf",
+        "sha256": "cdc528b1f2f3315bc351f6a7f069165530c054ef0f6ba2058a70045f27fa7d77",
+        "text_file": ".cache/wave30-sport-football.txt",
+        "text_sha256": "3fa6f13477e4443973f9fdeb79ecb21b10da8a27eaa0fbc969a0d24fc8a73bae"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-football-p2.png",
+          "sha256": "73a618922bfd5c30d6d975b2c73d89297ae9d75ee4673fed98da28a2379be84b",
+          "read_scope": "Fig1自由落體與兩次發球機案例、側力係數時間曲線"
+        },
+        {
+          "file": ".cache/wave30-sport-football-p5.png",
+          "sha256": "caa0ba7d7ef2d462e171339c2e35a31a186bc53832bbc137b0a8614c70d79062",
+          "read_scope": "Fig4e–g對準時間，後視圖渦的位置及力箭頭；a–c另屬早年圖"
+        }
+      ]
+    },
+    {
+      "id": "P30-S003",
+      "url": "https://www.physics.usyd.edu.au/~cross/PUBLICATIONS/4.%20RacquetSweetSpot.PDF",
+      "canonical_url": "https://doi.org/10.1046/j.1460-2687.1999.00011.x",
+      "retrieval_url": "https://www.physics.usyd.edu.au/~cross/PUBLICATIONS/4.%20RacquetSweetSpot.PDF",
+      "title": "The sweet spots of a tennis racquet",
+      "publisher": "Rod Cross／Sports Engineering 1, 63–78",
+      "doi": "10.1046/j.1460-2687.1999.00011.x",
+      "version": "1998卷期，Wiley記載2002年線上版，實讀雪梨大學作者公開的原刊PDF。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核對原作者或出版資料，使用指定UA取得HTTP200原始PDF，本機抽文並讀所列圖頁。",
+      "reading_scope": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+      "locator": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+      "summary": "換拍面撞點、量手上不同位置和前臂起始速度。振動節點及擊心可由不同量測辨別。",
+      "limitations": "一支1990年代拍、初始靜止、單手、沿中軸低速正面撞擊。不能推最佳出球速度或醫療功效；腕部量相對速度，沒有直接測全手合力。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave30-sport-racket.pdf",
+        "sha256": "bc0cec2ac9ada3a39e4fd60507d566b5127ca2cca230e6224149036bd501047a",
+        "text_file": ".cache/wave30-sport-racket.txt",
+        "text_sha256": "885cb5af65248fb5d15263e533f90d70587fce792c08fcc26c6c3983743bdbc8"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-racket-p11.png",
+          "sha256": "5dbac678642dc0d8c7817e9f9aeb2ed185159c696424b901a3b2433cd423978b",
+          "read_scope": "原刊p73 Fig10各撞點的局部受力訊號"
+        },
+        {
+          "file": ".cache/wave30-sport-racket-p13.png",
+          "sha256": "f8ab7b4811175c3eb9fe8bf9d6ce6de25efb48d511a644e1217f64c2cce916f6",
+          "read_scope": "原刊p75 Fig12單一落高、各位置腕部速度差別"
+        }
+      ]
+    },
+    {
+      "id": "P30-S004",
+      "url": "https://arxiv.org/pdf/1610.03464",
+      "canonical_url": "https://doi.org/10.1119/1.4982793",
+      "retrieval_url": "https://arxiv.org/pdf/1610.03464",
+      "title": "Oblique Collisions of Baseballs and Softballs with a Bat",
+      "publisher": "Jeffrey R. Kensrud、Alan M. Nathan、Lloyd V. Smith／arXiv與American Journal of Physics",
+      "doi": "10.1119/1.4982793",
+      "version": "實讀arXiv:1610.03464作者本；2017正式版同研究，文中頁碼均採22頁arXiv稿。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核對原作者或出版資料，使用指定UA取得HTTP200原始PDF，本機抽文並讀所列圖頁。",
+      "reading_scope": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+      "locator": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+      "summary": "球棒撞靜止球的出射轉速高於剛球純滾基準。接觸時可有切向變形和回復，是與數據相容的模型。",
+      "limitations": "點標高速影像量整球與球棒，沒有直接量球內剪切場。比較含特定棒、棒球與壘球、撞角範圍；不推所有揮棒或球速。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave30-sport-bat.pdf",
+        "sha256": "1f244ad33d667b9ff602f40b9676af4bc54527a3a03184a6b0d2c068a3f1991b",
+        "text_file": ".cache/wave30-sport-bat.txt",
+        "text_sha256": "e992283c851e2000bb92e49739bec162ea1ab7ac217b822eaac46e709888c023"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-bat-p18.png",
+          "sha256": "7b5a6d85149931b0658019f8bdf43add99a8bae8a9350a157bf815a3f1e03d51",
+          "read_scope": "Fig5棒球與壘球資料、擬合線及斜率一的剛體基準"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P30001",
+      "question": "羽球被打回去時，為什麼球頭越過正前方，擺幾下才穩住？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.shuttlecock.restoring_aerodynamic_moment_with_rotational_damping",
+      "answer_target": "球頭較重，羽裙的迎風面積較大。歪著飛時空氣阻力對重心產生回復力矩，球已經在轉，首次越過對準方向時不會立刻停下。擺動本身也受空氣阻力，後續振幅逐漸縮小。",
+      "scope": "限本研究擊拍高速影像及簡化模型。兩次擊拍的離拍速度與初始轉速皆有差別，不能單獨歸因其中之一。",
+      "source_ids": [
+        "P30-S001"
+      ],
+      "source_locator": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+      "premise_status": "screened",
+      "notes": "模型將兩個質量與迎風面積寫成雙球示意，不當實測壓力場。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用同一段慢動作找到兩個不同時刻：第一次球頭向前，與後來保持穩定。",
+        "visual": "球頭、羽裙上色，畫速度方向及姿態角；把第一次過零和幾次縮小的擺幅分別標出。",
+        "seconds": [
+          45,
+          100
+        ]
+      }
+    },
+    {
+      "id": "P30002",
+      "question": "足球幾乎不轉，怎麼還會在飛行途中忽然往旁邊飄？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.soccer.slow_spin_unsteady_wake_orientation_sideforce",
+      "answer_target": "即使球幾乎不旋轉，球後的尾流也能歪向不同方位。風洞球後的縱向渦位置會變，對應的橫向氣動力也會變；側力持續一段時間就足以把球推離原先的路線。",
+      "scope": "限所測球與特定速度範圍。自由落體和發球機試驗量軌跡，Type-A固定球在風洞另測力並拍尾流。不能由單一截圖預報每次偏移。",
+      "source_ids": [
+        "P30-S002"
+      ],
+      "source_locator": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+      "premise_status": "screened",
+      "notes": "飛行軌跡的二次微分與風洞負載計要標明，原文早年光滑球示意另置。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看軌跡之外還能用固定球檢驗：球不必先往旁邊跑，空氣的橫向推力便能改變。",
+        "visual": "地面視角畫少旋球偏離直線，另開風洞後視框，用同步時段配對渦的位置和橫力箭頭。",
+        "seconds": [
+          50,
+          100
+        ]
+      }
+    },
+    {
+      "id": "P30003",
+      "question": "打中網球拍上最不震的地方，手腕也最不會被推動嗎？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.tennis.vibration_node_versus_percussion_wrist_initial_motion",
+      "answer_target": "撞在主振動的節點，手上的振動分量很小，整支拍仍會平移和轉動。換到擊心附近，柄在手的不同位置施加的衝擊可部分抵消，前臂起始速度很小，局部壓力與少量振動仍能測到。",
+      "scope": "沿靜止球拍中軸正撞、單手握持，區分局部力和腕部所測的前臂初始速度。沒有測哪裡回球最快，也不把力抵消畫成手上各點都沒有受力。",
+      "source_ids": [
+        "P30-S003"
+      ],
+      "source_locator": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+      "premise_status": "screened",
+      "notes": "不引用健康效果。Fig10使用不同垂直增益，不把圖上高度直接換成絕對力。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在同一張拍面標出兩個答案，取決於問的是拍框有沒有震、還是前臂最初移了多少。",
+        "visual": "先比較手柄三個位置的訊號，再在同落高條件下看不同拍面撞點的腕部起始曲線。",
+        "seconds": [
+          55,
+          105
+        ]
+      }
+    },
+    {
+      "id": "P30004",
+      "question": "斜打靜止的棒球，為什麼離棒後會比硬球沿棒面滾過的預測轉得更快？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.batball.oblique_compliant_contact_overspin",
+      "answer_target": "若把接觸物當作剛體，從滑動到純滾動給出一條轉速基準。實測轉速可超過它；模型讓接觸區短暫抓住棒面，球體在切向拉歪並回復，離棒時的轉動便能超出純滾動情況。",
+      "scope": "揮棒撞靜止棒球與壘球的研究。由高速影像測出射，內部切向回復屬符合資料的模型；不同球種的差距不等於已隔離單一材質。",
+      "source_ids": [
+        "P30-S004"
+      ],
+      "source_locator": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+      "premise_status": "screened",
+      "notes": "先留研究段，之後須能直觀畫出剛球基準再組片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "球面上的標點能檢驗純滾動預測，形變模型說明為何剛球基準不足。",
+        "visual": "用打點球的轉速資料和剛球基準並排，另用帶色小方格示意模型中的切向伸縮。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P30-NA001",
+      "question": "羽球翻正和穩住各是一個題目嗎？",
+      "source_ids": [
+        "P30-S001"
+      ],
+      "existing_ids": [
+        "P30001"
+      ],
+      "reason": "兩個時刻由同一角度曲線與回復、阻尼模型串接。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA002",
+      "question": "羽球飛得較慢那次較晚轉正，就是平移速度單獨造成嗎？",
+      "source_ids": [
+        "P30-S001"
+      ],
+      "existing_ids": [
+        "P30001"
+      ],
+      "reason": "研究中初始轉速亦變，不能視為只改平移速度的隔離實驗。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA003",
+      "question": "球拍拋上空中沿短軸翻面，算另一種羽球翻面嗎？",
+      "source_ids": [],
+      "existing_ids": [
+        "P23003"
+      ],
+      "reason": "無外力矩剛體的中間主軸不穩定已收。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA004",
+      "question": "高爾夫球倒旋會一律把球往上抬嗎？",
+      "source_ids": [],
+      "existing_ids": [
+        "P23005"
+      ],
+      "reason": "舊題已討論轉捩下逆升力；換球型不另計。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA005",
+      "question": "只改球面凹坑，就能選出任何情況最遠的球？",
+      "source_ids": [],
+      "existing_ids": [
+        "P23005"
+      ],
+      "reason": "既有比較未單獨改一個變項，不能普推最佳器材。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA006",
+      "question": "足球每飄一次就一定按固定週期回來嗎？",
+      "source_ids": [
+        "P30-S002"
+      ],
+      "existing_ids": [
+        "P30002"
+      ],
+      "reason": "球型、速度、測力時段有限，尾流並非規則節拍。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA007",
+      "question": "給足球畫一條拼片線就能指定下一次偏哪邊？",
+      "source_ids": [
+        "P30-S002"
+      ],
+      "existing_ids": [
+        "P30002"
+      ],
+      "reason": "未取得隔離這一條拼縫控制與逐球預報的證據。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA008",
+      "question": "能否用棒球某條縫的位置預報整顆球的變化？",
+      "source_ids": [],
+      "existing_ids": [],
+      "reason": "本輪只檢到縫線位向和分離點的資料庫說明，未完成整個軌跡與條件正文覆核，不與無旋足球混算。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA009",
+      "question": "球打到甜區，是不是一定能反彈最快？",
+      "source_ids": [
+        "P30-S003"
+      ],
+      "existing_ids": [
+        "P30003"
+      ],
+      "reason": "握持反衝與主振動的研究明示未直接測最佳出球速度。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA010",
+      "question": "同一個拍子每個位置都各有一個獨立撞擊機制？",
+      "source_ids": [
+        "P30-S003"
+      ],
+      "existing_ids": [
+        "P30003"
+      ],
+      "reason": "拍面位置是同一組控制，用來分開振動與腕部初動。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA011",
+      "question": "球打棒面時一定全程在滑嗎？",
+      "source_ids": [
+        "P30-S004"
+      ],
+      "existing_ids": [
+        "P30004"
+      ],
+      "reason": "全程滑、轉為純滾與可變形接觸是同題對照。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA012",
+      "question": "把棒球換壘球後再算一個超額轉速核心？",
+      "source_ids": [
+        "P30-S004"
+      ],
+      "existing_ids": [
+        "P30004"
+      ],
+      "reason": "另組資料用來檢查同一剛球基準。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA013",
+      "question": "同時落到彈床的兩顆球怎麼交換能量？",
+      "source_ids": [],
+      "existing_ids": [
+        "P26003"
+      ],
+      "reason": "同時接觸的雙球經床面交換能量已有。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    },
+    {
+      "id": "P30-NA014",
+      "question": "用拍線彈回去再立一個增加出球轉速的核心？",
+      "source_ids": [],
+      "existing_ids": [],
+      "reason": "檢到單線與多線研究線索，單線不能代表整拍；本輪未讀足以分開線回位及球體切向儲能的控制正文。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。"
+    }
+  ]
+}

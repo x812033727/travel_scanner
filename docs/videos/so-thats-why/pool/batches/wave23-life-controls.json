@@ -1,0 +1,419 @@
+{
+  "batch_id": "wave23-life-controls-20261102",
+  "created_on": "2026-11-02",
+  "scope": "四個控制核心：氣體補給與流失、彈性投射時序、機械同步與滑步後支承；不按氣體/物種/動作參數拆題。",
+  "sources": [
+    {
+      "id": "A23-S001",
+      "url": "https://journals.biologists.com/jeb/article-pdf/214/13/2175/1436566/2175.pdf",
+      "title": "The diving bell and the spider: the physical gill of Argyroneta aquatica",
+      "publisher": "Seymour and Hetz; The Company of Biologists / Journal of Experimental Biology",
+      "doi": "10.1242/jeb.056093",
+      "canonical_url": "https://doi.org/10.1242/jeb.056093",
+      "retrieval_url": "https://journals.biologists.com/jeb/article-pdf/214/13/2175/1436566/2175.pdf",
+      "accessed_on": "2026-11-02",
+      "version": "2011, J Exp Biol 214:2175–2181, version of record; accepted 2011-04-05",
+      "read_via": "當日web.open官方PDF指定正文，存工具原回傳文字副本；指定UA urllib同URL403。web screenshot失敗，未把圖說當目讀圖。",
+      "reading_scope": "web原PDF文字頁2175–2180：Introduction、Methods氧測量/呼吸測定、Results、Discussion至Diving bell longevity；讀Fig2–6圖說，未目讀圖像。未讀完2181末尾/參考文獻或重現模型。",
+      "locator": "pp2175–2176氣體分壓；pp2178–2179 Results / Effectiveness of the physical gill；p2180 Diving bell longevity及Fig6圖說",
+      "summary": "氣鐘的氧氣可由周圍水補入；呼吸改變氣體比例，氮氣流失使能補氧的氣鐘仍可能縮小。",
+      "limitations": "靜止蜘蛛與受測暖靜水條件；外水含氧、表面積與耗氧需求都有限制。長期體積曲線是以測得導通/耗氧參數推算，不是連拍37小時縮半的直接觀察；不宣稱永不浮上或水中產氧。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave23-life-spider-web-body.json",
+        "sha256": "84b4878a91f3c48c8966076756d5994043bb67332af4a9a0e46856fed45224a0",
+        "text_file": ".cache/wave23-life-spider-web-start.json",
+        "text_sha256": "591940bc9b098a9a0c743a8be469efd27a77b8255a10ee04acaeccdc5b41bcff"
+      }
+    },
+    {
+      "id": "A23-S002",
+      "url": "https://www.nature.com/articles/s41467-023-36376-5",
+      "title": "Droplet superpropulsion in an energetically constrained insect",
+      "publisher": "Challita, Sehgal, Krugner and Bhamla; Nature Communications",
+      "doi": "10.1038/s41467-023-36376-5",
+      "canonical_url": "https://doi.org/10.1038/s41467-023-36376-5",
+      "retrieval_url": "https://www.nature.com/articles/s41467-023-36376-5",
+      "accessed_on": "2026-11-02",
+      "version": "2023-02-28, Nature Communications 14:860; current HTML includes 2023-07-20 correction",
+      "read_via": "web搜尋原研究；web.open轉驗證頁失敗。指定UA urllib當日HTTP200取得有效完整article正文，lxml明確UTF8抽段；不是200空頁。舊錯編碼抽取保留但不作閱讀本體。",
+      "reading_scope": "HTML抽取段15–62：Introduction、Results、Discussion、Two-spring model、CFD、Drop-on-plate；段69–71勘誤連結。Fig1–3原圖另取得目讀；同日讀勘誤正文。未讀全部SI/影片或重跑模擬。",
+      "locator": "Results: Kinematics of droplet catapulting / Superpropulsion principles / Tight temporal tuning；Fig1–3；Methods Two-spring model / Experiment: Drop-on-plate",
+      "summary": "液滴形變與致動部位的時間配合可讓液滴超過致動部位峰速；干預後致動部位更快，卻不再得到同樣速度比優勢。",
+      "limitations": "液滴尺寸、表面張力、阻尼與接觸影響結果；感毛干預同時改變液滴大小及彈片頻率，不是只改單一神經時鐘。動物資料、兩彈簧模型、CFD與振動板實驗分開；不把模型節能估算當代謝實測。勘誤刪泵流式的慣性項，不採精確節能倍數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave23-life-droplet.html",
+        "sha256": "491471a0838b807fc11750871060dcf8498374587fe73eed397ea7e63b8263d2",
+        "text_file": ".cache/wave23-life-droplet-text-utf8.json",
+        "text_sha256": "f9b815c7fcfc6aafb31557f2a4714f172e336b744d62698f49ae95bbcfa20882"
+      },
+      "associated_correction": {
+        "doi": "10.1038/s41467-023-40159-3",
+        "url": "https://doi.org/10.1038/s41467-023-40159-3",
+        "version": "Author Correction, 2023-07-20",
+        "reading_scope": "完整更正正文兩段，包含原式2與正確式2及SI措辭修正",
+        "read_via": "web.open DOI失敗；指定UA urllib有效HTML正文，lxml UTF8抽取",
+        "summary": "低Re模型刪除可忽略慣性項；作者聲明原估算、圖與結論不變。不另算原研究。",
+        "author_cache": {
+          "file": ".cache/wave23-life-droplet-correction.html",
+          "sha256": "5861628c98d5ea3579d0957dc776e377288b52cea9bba16bfbfc352f64e6b278",
+          "text_file": ".cache/wave23-life-droplet-correction.txt",
+          "text_sha256": "6038f1c4d532c798683c5a225b7387809964f0399fbf8978bba56f5176dc7fa1"
+        }
+      }
+    },
+    {
+      "id": "A23-S003",
+      "url": "https://www.scienceintheclassroom.org/sites/default/files/research-papers/science-2013-burrows-1254-6.pdf",
+      "title": "Interacting Gears Synchronize Propulsive Leg Movements in a Jumping Insect",
+      "publisher": "Burrows and Sutton; AAAS / Science",
+      "doi": "10.1126/science.1240284",
+      "canonical_url": "https://doi.org/10.1126/science.1240284",
+      "retrieval_url": "https://www.scienceintheclassroom.org/sites/default/files/research-papers/science-2013-burrows-1254-6.pdf",
+      "accessed_on": "2026-11-02",
+      "version": "2013-09-13, Science 341:1254–1256, official AAAS classroom-hosted version of record",
+      "read_via": "web開啟AAAS官方PDF與指定UA urllib當日HTTP200；PyMuPDF按頁讀，渲染p3目讀。Bristol accepted-manuscript路線web及UA403，未當第二份證據。",
+      "reading_scope": "PDF pp2–4即印刷1254–1256全文正文/圖說；PDF p3 Fig2目讀。未讀SI影片/補充方法。",
+      "locator": "p1255機械單腿操控與失嚙合後重合；p1256神經同步/機械同步與成蟲段；Fig2",
+      "summary": "若蟲兩條後腿的齒列把運動機械連結，補足快速跳躍所需同步；單腿操控與重新嚙合提供控制。",
+      "limitations": "限Issus若蟲；神經仍控制肌肉，不能稱不需神經。成蟲不再用齒列的原因是討論假說，不能說已證磨損導致改制。PDF文字抽取把µs誤成ms，圖頁原文確認微秒，題案不依賴精確數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave23-life-gears-official.pdf",
+        "sha256": "a4d9eb95e7563a907d3aae3b5576c238b7b470fa2b139eb894c413a602b3e7e0",
+        "text_file": ".cache/wave23-life-gears-official-text.json",
+        "text_sha256": "c099206e6262ba93d5e4428628d18244de786ae7240c9483e1fc81d972ad6cbe"
+      }
+    },
+    {
+      "id": "A23-S004",
+      "url": "https://crablab.gatech.edu/pages/publications/pdf/PNASgecko.pdf",
+      "title": "Active tails enhance arboreal acrobatics in geckos",
+      "publisher": "Jusufi, Goldman, Revzen and Full; PNAS, Georgia Tech author-hosted copy",
+      "doi": "10.1073/pnas.0711944105",
+      "canonical_url": "https://doi.org/10.1073/pnas.0711944105",
+      "retrieval_url": "https://crablab.gatech.edu/pages/publications/pdf/PNASgecko.pdf",
+      "accessed_on": "2026-11-02",
+      "version": "2008-03-18, PNAS 105(11):4215–4219, published journal PDF author-hosted",
+      "read_via": "web搜尋原文並開PMC（驗證頁失敗）；指定UA urllib從Georgia Tech作者庫當日HTTP200取得期刊PDF，PyMuPDF指定頁讀與p2渲染目讀。",
+      "reading_scope": "PDF pp1–4：Results and Discussion、Rapid Vertical Ascent methods，以及空中轉向段用於判退；p2 Fig1–3目讀，其中本候選只採Fig1–2牆面。未讀SI影片/末頁全部內容。",
+      "locator": "pp4215–4216 rapid vertical climbing / slippery patch / tail force；p4218 Climbing substrata、Wall reaction force measurements、Kinematic measurements: Climbing；Fig1–2",
+      "summary": "腳滑時尾巴可接入牆面支承；中等抓地條件下尾巴本來就接觸，遇滑步再增加支承力，過大後仰則改成支架姿態。",
+      "limitations": "限受測扁尾家壁虎與實驗垂直牆；延遲與力隨滑步變化支持主動控制，未直接定位反射神經路徑。高抓地與中等抓地配置不同，不能畫所有尾巴都先懸空；不稱任何滑步皆能救回，不提供活體干預操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave23-life-gecko.pdf",
+        "sha256": "33e33727635c3bb92aa0a05d71978d347123b6483f52276e093c4068a139f0b4",
+        "text_file": ".cache/wave23-life-gecko-text.json",
+        "text_sha256": "85037cbdc5691f179256b6ec8f178ec8c1ac528d9c896b32387a657523f555c0"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "A23001",
+      "question": "水蜘蛛的氣鐘能從水裡補氧，為什麼還會越來越小？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.diving_bell_oxygen_supply_nitrogen_loss_coupling",
+      "answer_target": "蜘蛛耗氧使氣鐘內氧分壓降低，水中溶氧可持續補入；但總壓受外水約束，氣體比例改變提高氮分壓，氮向外流失，使能供氧的氣鐘仍逐漸縮小。",
+      "scope": "限研究受測靜止水蜘蛛與有足夠溶氧的水；氧供需及氣鐘尺寸皆有限制。持續縮小為以實測參數建立的長期模型，不把模型時間當直接觀測；不是所有水下氣泡都能維持呼吸。",
+      "source_ids": [
+        "A23-S001"
+      ],
+      "source_locator": "pp2178–2179 Results與Effectiveness；p2180 Diving bell longevity/Fig6圖說",
+      "premise_status": "screened",
+      "notes": "氧擴散與氮流失合成一核，不把換氣體或時間參數拆題。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "補得到氧氣，不等於留得住整個氣鐘；分清氧供應與總氣體量兩本帳。",
+        "visual": "原創兩條時間線：氧補入/被消耗與氮流出/體積縮小；第二條長期曲線明標模型。相同水條件下空鐘與有蜘蛛曲線只作來源模型比較，不畫直接縮時攝影。",
+        "seconds": [
+          100,
+          140
+        ]
+      }
+    },
+    {
+      "id": "A23002",
+      "question": "這種小蟲甩出的水滴，怎麼能比甩它的部位還快？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.elastic_droplet_projectile_actuator_timing_superpropulsion",
+      "answer_target": "液滴受表面張力維持、受力時能壓扁再回彈；形變與彈片運動配合，把能量在適當時段交給液滴，可讓它的離開速度超過彈片峰速。改變感毛後彈片更快，卻失去原來的速度比優勢，說明快甩不等於配合好。",
+      "scope": "限原文葉蟬、液滴與振動板/兩彈簧模型條件。干預也改變滴徑與頻率，不宣稱已證單一感毛神經計時回路；不把所有液滴彈跳叫超推進，也不宣稱能量憑空增加。",
+      "source_ids": [
+        "A23-S002"
+      ],
+      "source_locator": "HTML段19–34/50–62；Fig1–3；2023-07-20勘誤",
+      "premise_status": "screened",
+      "notes": "三種葉蟬為同機制，不按物種拆；彈性體儲能與液滴時序差異交非作者比較B2298/P114/Q9007。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把「甩得更快」和「能量交接時機更好」分開：較快的彈片未必帶來更高的液滴速度。",
+        "visual": "原創同時鐘畫彈片位置/速度與液滴壓扁回彈；對照正常與研究干預條件，圖註滴徑也變。另清空重設振動板模型，只改時序的概念圖不冒充單變量動物實驗。",
+        "seconds": [
+          110,
+          150
+        ]
+      }
+    },
+    {
+      "id": "A23003",
+      "question": "兩條後腿各有肌肉，這種小蟲怎麼讓起跳幾乎同時？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.planthopper_leg_mechanical_engagement_synchrony",
+      "answer_target": "若蟲左右後腿齒列互相嚙合，先動的一側可帶動另一側；單腿機械操控及起初錯過、重新嚙合後跟上的對照，顯示同步精度有機械約束，不能只靠兩側各收到相近神經指令解釋。",
+      "scope": "限Issus若蟲後腿；不是說神經或肌肉不用工作，也不是齒輪增速題。成年失去齒列另用接觸同步，但其演化/發育理由未定，不作本題已證因果。",
+      "source_ids": [
+        "A23-S003"
+      ],
+      "source_locator": "Science1255兩項機械控制；1256神經與機械同步；Fig2",
+      "premise_status": "screened",
+      "notes": "與D2121齒形固定速度比、S10010卸載訊號、A22001水動力鎖相分開；若覆核認為僅齒輪常識，降為舊題變體，不保筆數。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "身體不必每一瞬間靠神經重新算時間，直接連住兩個輸出也能修正先後差。",
+        "visual": "放大左右齒列；比較沒咬到時先動一側與重新咬合後帶動另一側，保留左右肌肉。只示意原研究機械操控結果，不提供活體操作。",
+        "seconds": [
+          50,
+          90
+        ]
+      }
+    },
+    {
+      "id": "A23004",
+      "question": "壁虎腳下一滑，原本沒碰牆的尾巴為什麼會立刻頂上去？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.gecko_slip_dependent_tail_wall_support_control",
+      "answer_target": "前腳滑動後尾部可接觸牆面，以支承力產生抵抗後仰的力矩；較易滑的基面上尾巴本來就貼牆，遇到滑步則增加支承，嚴重後仰時還可改成支架姿態。接觸何時介入與支承如何調整，取決於抓地條件。",
+      "scope": "限原研究垂直攀爬扁尾家壁虎；高抓地夾滑片與中等抓地測力是不同配置。反應延遲/滑步相關支持主動控制，未直接定位神經迴路；不以空中甩尾角動量解釋頂牆。",
+      "source_ids": [
+        "A23-S004"
+      ],
+      "source_locator": "PNAS4215–4216 Results climbing；4218 Methods climbing；Fig1–2",
+      "premise_status": "screened",
+      "notes": "重新檢驗舊A20-NA017未讀正文方向，但只收垂直攀爬滑步，未補落樹幹研究，因此不復活落地問法。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "好抓時尾巴可不碰牆；抓地變差時，尾巴會成為依情況加入、調整的支點。",
+        "visual": "原創先畫高抓地→局部滑步→尾尖頂牆，再清空切到中等抓地的尾巴已貼牆對照，力箭頭變大。末段大後仰支架是姿態切換，不畫所有滑步都能救回。",
+        "seconds": [
+          90,
+          125
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "A23-NA001",
+      "question": "壁虎為什麼能倒掛牆面？",
+      "existing_ids": [
+        "LEG-S59"
+      ],
+      "source_ids": [],
+      "reason": "足部細毛接觸與剝離已有；不能把尾巴題重寫成黏腳百科。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA002",
+      "question": "壁虎腳底有灰，走幾步為什麼又能黏？",
+      "existing_ids": [
+        "A20001"
+      ],
+      "source_ids": [],
+      "reason": "污染接觸轉移/捲趾/撤離速率已有同核心。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA003",
+      "question": "壁虎甩尾能在空中翻身，另算一核嗎？",
+      "existing_ids": [
+        "P030",
+        "P314"
+      ],
+      "source_ids": [
+        "A23-S004"
+      ],
+      "reason": "本次讀到的反向角動量交換未提供超出既有旋轉交換的新控制；不因換動物重計。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA004",
+      "question": "壁虎落在樹幹時如何用尾巴避免彈走？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S004"
+      ],
+      "reason": "舊A20-NA017方向未完全補足：本輪正文是攀爬/空中轉向，沒有取得樹幹落地原研究；不以近似場景代證。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA005",
+      "question": "成蟲不用齒輪，是不是因為齒輪一定會磨壞？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S003"
+      ],
+      "reason": "原研究只提出磨損維修/尺寸摩擦等可能；不能把討論選一個當已證原因。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA006",
+      "question": "齒輪一大一小，能讓蟲跳更快嗎？",
+      "existing_ids": [
+        "D2123"
+      ],
+      "source_ids": [
+        "A23-S003"
+      ],
+      "reason": "D2123僅相關齒輪傳動背景，非本問直接同義；此研究只支持左右同步，不支持改大小增速，因此不收。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA007",
+      "question": "齒輪咬合的形狀有什麼特別？",
+      "existing_ids": [
+        "D2121"
+      ],
+      "source_ids": [
+        "A23-S003"
+      ],
+      "reason": "若只答齒形維持速度比就是舊核；本題未把形狀細節拆出。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA008",
+      "question": "螳螂蝦怎麼先蓄力再突然出拳？",
+      "existing_ids": [
+        "B2298"
+      ],
+      "source_ids": [],
+      "reason": "彈性儲能/卡榫釋放已有；本輪液滴只留下投射物自身形變與交接時序。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA009",
+      "question": "液滴受壓回彈，是不是又一種彈簧？",
+      "existing_ids": [
+        "P100",
+        "P102"
+      ],
+      "source_ids": [
+        "A23-S002"
+      ],
+      "reason": "單講彈性與儲能太薄且已有，不拆成新題。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA010",
+      "question": "兩滴水合起來，為什麼能把孢子彈出去？",
+      "existing_ids": [
+        "U8001"
+      ],
+      "source_ids": [],
+      "reason": "合滴釋放表面能已有；不是本輪外部驅動的彈性液滴。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA011",
+      "question": "葉蟬排尿比噴射省幾倍能量？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S002"
+      ],
+      "reason": "主要是管流/能量模型估算，單列倍數太薄；本輪也不把模型當代謝實測。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA012",
+      "question": "換另一種葉蟬，液滴又能比彈片更快嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S002"
+      ],
+      "reason": "同文三物種支持同一時序機制，不能物種各算一題。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA013",
+      "question": "水蜘蛛的氧氣怎麼從濃的一邊移過去？",
+      "existing_ids": [
+        "L003"
+      ],
+      "source_ids": [
+        "A23-S001"
+      ],
+      "reason": "若只解釋淨擴散方向就是舊核；本批將氧供應與氮流失造成體積限制保留在同一答案。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA014",
+      "question": "水蜘蛛氣鐘越大就一定越好嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S001"
+      ],
+      "reason": "只改表面積/體積參數不足獨立核心；耗氧需求與外水氧條件也是限制，併入主題條件。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA015",
+      "question": "水蜘蛛有氣鐘就永遠不用回水面嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S001"
+      ],
+      "reason": "前提過強；含氣量/含氧條件與活動需求皆有界線，不把模型固定容積假設當活體能力。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA016",
+      "question": "細菌氣囊為什麼不會灌滿水？",
+      "existing_ids": [
+        "U8013"
+      ],
+      "source_ids": [],
+      "reason": "疏水蛋白殼排水及剛性維持氣腔已有；不混同可縮水蜘蛛氣鐘。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA017",
+      "question": "竹節蟲倒掛時為什麼換用腳尖的墊？",
+      "existing_ids": [
+        "A20002"
+      ],
+      "source_ids": [],
+      "reason": "不同受力分量啟用不同足墊已收；尾支承不重講足墊材料。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    },
+    {
+      "id": "A23-NA018",
+      "question": "兩支鞭毛不碰到也會同步？",
+      "existing_ids": [
+        "A22001"
+      ],
+      "source_ids": [],
+      "reason": "上一批水動力/胞內連結邊界已收，不用齒輪題夾帶重收。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。"
+    }
+  ]
+}

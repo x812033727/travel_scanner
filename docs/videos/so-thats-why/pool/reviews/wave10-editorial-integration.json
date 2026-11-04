@@ -1,0 +1,186 @@
+{
+  "status": "CENTRAL_EDITORIAL_INTEGRATION_NOT_SCRIPT_APPROVAL",
+  "previous_selected": 2757,
+  "selected": 2797,
+  "new_raw": 45,
+  "new_core_proposal_records": 42,
+  "source_refresh_records": 3,
+  "source_refresh_merge_ids": [
+    "R10001",
+    "R10002",
+    "R10003"
+  ],
+  "new_selected": 40,
+  "new_merges": [
+    {
+      "duplicate_id": "H10005",
+      "canonical_id": "L003",
+      "reason": "CCI直接案例仍只用濃度梯度與內庫補給；擦除表面是同原理的新邊界，未建立不同材料機制，併L003。"
+    },
+    {
+      "duplicate_id": "F10004",
+      "canonical_id": "F10003",
+      "reason": "液體靜水壓疊加及水位控制適合作F10003量測變體；不另計核心，不丟來源/問題。"
+    },
+    {
+      "duplicate_id": "R10001",
+      "canonical_id": "LEG-A20",
+      "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+    },
+    {
+      "duplicate_id": "R10002",
+      "canonical_id": "LEG-A25",
+      "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+    },
+    {
+      "duplicate_id": "R10003",
+      "canonical_id": "LEG-A35",
+      "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+    }
+  ],
+  "new_core_proposal_merges": [
+    {
+      "duplicate_id": "H10005",
+      "canonical_id": "L003",
+      "reason": "CCI直接案例仍只用濃度梯度與內庫補給；擦除表面是同原理的新邊界，未建立不同材料機制，併L003。"
+    },
+    {
+      "duplicate_id": "F10004",
+      "canonical_id": "F10003",
+      "reason": "液體靜水壓疊加及水位控制適合作F10003量測變體；不另計核心，不丟來源/問題。"
+    }
+  ],
+  "new_excluded": [],
+  "new_distinct_count": 94,
+  "old_selected_removed": [],
+  "new_theme_ids": [
+    "G99",
+    "G100",
+    "G101",
+    "G102",
+    "G103",
+    "G104",
+    "G105",
+    "G106",
+    "G107",
+    "G108",
+    "G109",
+    "G110"
+  ],
+  "theme_mapping": [
+    {
+      "proposal_id": "W10H-T01",
+      "theme_id": "G99",
+      "seconds": 175
+    },
+    {
+      "proposal_id": "W10H-T02",
+      "theme_id": "G100",
+      "seconds": 155
+    },
+    {
+      "proposal_id": "W10F-T01",
+      "theme_id": "G101",
+      "seconds": 155
+    },
+    {
+      "proposal_id": "W10F-T02",
+      "theme_id": "G102",
+      "seconds": 145
+    },
+    {
+      "proposal_id": "W10F-T03",
+      "theme_id": "G103",
+      "seconds": 165
+    },
+    {
+      "proposal_id": "W10F-T04",
+      "theme_id": "G104",
+      "seconds": 150
+    },
+    {
+      "proposal_id": "W10S-T01",
+      "theme_id": "G105",
+      "seconds": 180
+    },
+    {
+      "proposal_id": "W10S-T02",
+      "theme_id": "G106",
+      "seconds": 170
+    },
+    {
+      "proposal_id": "W10S-T03",
+      "theme_id": "G107",
+      "seconds": 170
+    },
+    {
+      "proposal_id": "W10M-T01",
+      "theme_id": "G108",
+      "seconds": 110
+    },
+    {
+      "proposal_id": "W10M-T02",
+      "theme_id": "G109",
+      "seconds": 150
+    },
+    {
+      "proposal_id": "W10M-T03",
+      "theme_id": "G110",
+      "seconds": 95
+    }
+  ],
+  "theme_total": 110,
+  "review_receipts": [
+    {
+      "file": "reviews/wave10-physics-reviews-household.json",
+      "sha256": "12ec81fc5b2af22364e3c7cbb610fd453da0263eba7dcc1e7b0d53458ec96b97"
+    },
+    {
+      "file": "reviews/wave10-science-reviews-flows.json",
+      "sha256": "b01fcd488043df8f734cd05b34aa148679f036955285f58bb0aa6eaac3d72325"
+    },
+    {
+      "file": "reviews/wave10-life-reviews-sensing.json",
+      "sha256": "648cd53492c10ae0cb0aab57a39c11dcd6cd1ab0ca5d1f7be0c52b98f38bb1b4"
+    },
+    {
+      "file": "reviews/wave10-physics-reviews-decisions.json",
+      "sha256": "b3cd7ab6949ab9b4769fc6d0b418fac2f07b6cb3144272fdff941f5e70f9c484"
+    },
+    {
+      "file": "reviews/wave10-physics-reviews-source-refresh.json",
+      "sha256": "eea008940a7dae730c1b9448b9f41d618b07b8554930eb52abb4880aba9f8f53"
+    }
+  ],
+  "batches": [
+    {
+      "file": "batches/wave10-household.json",
+      "sha256": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9",
+      "raw": 6
+    },
+    {
+      "file": "batches/wave10-flows.json",
+      "sha256": "9a2904a1b2b8f9180504c7c17c0991cd28895ea352341576202fdd4cf70fd42b",
+      "raw": 16
+    },
+    {
+      "file": "batches/wave10-sensing.json",
+      "sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823",
+      "raw": 13
+    },
+    {
+      "file": "batches/wave10-decisions.json",
+      "sha256": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854",
+      "raw": 7
+    },
+    {
+      "file": "batches/wave10-source-refresh.json",
+      "sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24",
+      "raw": 3
+    }
+  ],
+  "existing_alias_resolution": [],
+  "existing_theme_changes": [],
+  "limits": "題級編輯覆核與指定來源查讀，不是完整稿逐主張核准；三筆來源更新不全面核准舊答案。題案秒數未試讀；既有G79/G59文字與小樣未改未重跑。未做萬筆/十萬筆規模驗證。",
+  "production_ready": false
+}

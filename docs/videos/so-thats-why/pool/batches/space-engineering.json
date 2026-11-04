@@ -1,0 +1,215 @@
+{
+  "batch_id": "space-engineering-20261101",
+  "created_on": "2026-11-01",
+  "scope": "深空通訊與太空熱控；來源支持題級研究方向，未作任務現況或劇本核准",
+  "sources": [
+    {
+      "id": "RS01",
+      "url": "https://www.nasa.gov/communicating-with-missions/dsn/",
+      "title": "Deep Space Network",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web_open_target_section",
+      "reading_scope": "Deep Space Network Complexes",
+      "locator": "Deep Space Network Complexes",
+      "summary": "三地接力接收，避免地球自轉遮蔽視線。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "RS02",
+      "url": "https://www.nasa.gov/technology/space-comms/optical-communications-overview/",
+      "title": "Optical Communications",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web_open_target_section",
+      "reading_scope": "Benefits; Challenges",
+      "locator": "Benefits; Challenges",
+      "summary": "資料率與傳播速度不同；窄光束瞄準及地面天氣限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "RS03",
+      "url": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Thermal_Control",
+      "title": "Thermal Control",
+      "publisher": "ESA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web_open_target_section",
+      "reading_scope": "Why is Thermal Control important?",
+      "locator": "Why is Thermal Control important?",
+      "summary": "熱平衡、隔熱和散熱分工，溫差可能影響光學對準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "RS04",
+      "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/dsn-functions/",
+      "title": "What Does the DSN Do?",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web_open_target_section",
+      "reading_scope": "Telemetry; Spacecraft Command; Tracking; Radio Science",
+      "locator": "Telemetry; Spacecraft Command; Tracking; Radio Science",
+      "summary": "科學資料和工程遙測回傳；無線電訊號也可用於探測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "RS05",
+      "url": "https://www.nasa.gov/communicating-with-missions/delay-disruption-tolerant-networking/",
+      "title": "Delay / Disruption Tolerant Networking",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web_open_target_section",
+      "reading_scope": "Delay/Disruption Tolerant Networking; Benefits",
+      "locator": "Delay/Disruption Tolerant Networking; Benefits",
+      "summary": "中間節點先存資料，等下一段連線可用再轉送。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R001",
+      "question": "跟太空船聯絡，為什麼要在地球不同地方蓋接收站？",
+      "domain": "太空通訊",
+      "mechanism_key": "dsn.earthrotation.handover",
+      "answer_target": "地球自轉造成的視線變化與跨站接力",
+      "scope": "只談深空網路的幾何需求，不保證所有任務全天占用天線。",
+      "source_ids": [
+        "RS01"
+      ],
+      "source_locator": "Deep Space Network Complexes",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R002",
+      "question": "用雷射傳太空照片更快，代表訊號跑得比無線電快嗎？",
+      "domain": "太空通訊",
+      "mechanism_key": "optical.datarate.not.propagation",
+      "answer_target": "區分每秒資料量、傳播延遲和完成下載時間",
+      "scope": "比較資料率，不把光通訊寫成超光速。",
+      "source_ids": [
+        "RS02"
+      ],
+      "source_locator": "Benefits; Challenges",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R003",
+      "question": "太空雷射能跨越很遠，為什麼一片雲反而會讓它收不到？",
+      "domain": "太空通訊",
+      "mechanism_key": "optical.cloud.ground.diversity",
+      "answer_target": "地面大氣遮蔽與不同地面站的天氣備援",
+      "scope": "限光通訊接收條件，不泛化成所有無線電也同樣失效。",
+      "source_ids": [
+        "RS02"
+      ],
+      "source_locator": "Benefits; Challenges",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R004",
+      "question": "光束越集中，太空通訊就一定越容易嗎？",
+      "domain": "太空通訊",
+      "mechanism_key": "optical.pointing.narrowbeam",
+      "answer_target": "窄光束減少照射範圍，同時提高瞄準要求",
+      "scope": "不提供通用角度容許值；須依任務距離與光學系統補算。",
+      "source_ids": [
+        "RS02"
+      ],
+      "source_locator": "Benefits; Challenges",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R005",
+      "question": "衛星包著隔熱毯，為什麼還需要散熱板？",
+      "domain": "太空工程",
+      "mechanism_key": "space.thermal.insulation.radiator",
+      "answer_target": "外部受熱與內部發熱並存，隔熱和排熱各有任務",
+      "scope": "工程配置依任務而異，不把反光毯當作主動冷凍機。",
+      "source_ids": [
+        "RS03"
+      ],
+      "source_locator": "Why is Thermal Control important?",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R006",
+      "question": "衛星零件還沒熱壞，溫差為什麼就可能讓鏡頭看不準？",
+      "domain": "太空工程",
+      "mechanism_key": "space.thermal.gradient.alignment",
+      "answer_target": "不同位置熱脹冷縮造成光學結構對準偏移",
+      "scope": "只談可發生的設計風險，不虛構已故障的太空任務。",
+      "source_ids": [
+        "RS03"
+      ],
+      "source_locator": "Why is Thermal Control important?",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R007",
+      "question": "太空望遠鏡有些偵測器，為什麼要故意維持低溫？",
+      "domain": "太空工程",
+      "mechanism_key": "space.infrared.detector.temperature",
+      "answer_target": "儀器工作範圍與紅外線偵測器的低溫需求",
+      "scope": "只初篩工作溫度前提；暗電流與背景輻射細節另補儀器來源。",
+      "source_ids": [
+        "RS03"
+      ],
+      "source_locator": "Why is Thermal Control important?",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R008",
+      "question": "探測器傳回的不是只有照片，工程師還在等什麼資料？",
+      "domain": "太空通訊",
+      "mechanism_key": "dsn.telemetry.health.science",
+      "answer_target": "工程遙測和科學觀測的不同用途",
+      "scope": "各任務欄位不同，電量溫度等具體例子須補實際遙測定義。",
+      "source_ids": [
+        "RS04"
+      ],
+      "source_locator": "Telemetry; Radio Science",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R009",
+      "question": "太空船傳來的無線電，為什麼本身也能拿來做實驗？",
+      "domain": "太空通訊",
+      "mechanism_key": "dsn.radio.science.signal",
+      "answer_target": "比較傳送前後的訊號變化來研究沿途天體",
+      "scope": "訊號沿途傳播效應與由探測器運動推回重力場，是不同研究路徑；不把內部結構說成電波直接穿透行星。反演方法、誤差和任務證據待補。",
+      "source_ids": [
+        "RS04"
+      ],
+      "source_locator": "Telemetry; Radio Science",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    },
+    {
+      "id": "R010",
+      "question": "太空網路中間斷線，資料能先在半路等下一班嗎？",
+      "domain": "太空通訊",
+      "mechanism_key": "dtn.store.forward.disruption",
+      "answer_target": "存放再轉送，不要求全程同時連通",
+      "scope": "不等於無限儲存或保證永不遺失；僅研究 DTN 機制。",
+      "source_ids": [
+        "RS05"
+      ],
+      "source_locator": "Delay/Disruption Tolerant Networking",
+      "premise_status": "screened",
+      "notes": "題級機制有官方來源；原創提問，未複製圖文。完整答案、具體任務與畫面使用權仍待查。"
+    }
+  ],
+  "not_added": [
+    {
+      "question": "太空雷射能讓資料超越光速嗎？",
+      "reason": "錯誤前提；改用 R002 區分資料率與傳播速度。"
+    }
+  ]
+}

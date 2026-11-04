@@ -1,0 +1,869 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "science_sources",
+  "author": "pool_life_tech",
+  "role": "non_author_topic_source_and_editorial_review",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "reviewed_candidate_ids": [
+    "B15001",
+    "B15002",
+    "B15003",
+    "B15004",
+    "B15005",
+    "B15006",
+    "B15007"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave15-plants.json",
+      "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+    },
+    {
+      "file": "reviews/wave15-plants-themes.json",
+      "sha256": "a79d258c920780ad891352c1f81b27f7c48dd1f671986017ff6fa4a6b8b383db"
+    },
+    {
+      "file": "reviews/wave15-plants-author.json",
+      "sha256": "80733ee05dc4ac192f5634afe0a37c3fb2448327f7d03de1e94bbff11ce24b3b"
+    }
+  ],
+  "coverage": {
+    "all_candidate_rows": 7,
+    "all_not_added_rows": 25,
+    "author_boundary_pairs": 20,
+    "within_batch_boundaries": 2,
+    "retrieval_rows": 7,
+    "top5_comparisons": 35,
+    "all_themes": 4,
+    "primary_works_with_fresh_body_reading": 6,
+    "primary_work_read_from_verified_author_copy": 1,
+    "first_party_report_read_for_not_added": 1,
+    "rendered_source_pages": 5,
+    "scope": "逐題question/answer/scope/locator/editorial、25未收、20作者邊界及2批內邊界、7×top5完整問答scope與4案。不是全3287題人工重查、不是全來源逐主張全文核准。"
+  },
+  "source_readings": [
+    {
+      "source_id": "B15-S001",
+      "url": "https://doi.org/10.1016/j.cub.2013.06.034",
+      "retrieval_url": "https://eprints.whiterose.ac.uk/id/eprint/84375/1/1-s2.0-S0960982213007598-main.pdf",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "PDF p1–3，Results兩小節與auxin依賴段；Fig1 p2圖像。未讀p4後組織特異實驗及SI。",
+      "result": "雙向回復與clinorotation支持偏移分量；生長分量不是直接測得的反重力作用力。",
+      "read_via": "本reviewer指定UA當日HTTP200取得，獨立PyMuPDF/XML/HTML擷取閱讀；只有列出的正文與圖頁。",
+      "http_status": 200,
+      "copy_file": ".cache/wave15-science-plants-B15-S001.pdf",
+      "body_sha256": "0b203bf5fec1fda93223c0c82bb251352ddf12bbdd7e6c7b727a1cd729f51c86",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "B15-S002",
+      "url": "https://www.nature.com/articles/nplants201757",
+      "retrieval_url": "https://pure-oai.bham.ac.uk/ws/files/40254023/Dietrich_et_al_post_print.pdf",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "本次新取PDF p5–12：根冠消融/無梯度對照、皮層SnRK2.2/MIZ1救援、SIM選擇性干預、Discussion開頭。未完整讀69頁或圖像/全部方法。",
+      "result": "感知和生長路徑可與向地解離；完整根冠仍可能整合訊號，皮層提早延長屬模型設定。",
+      "read_via": "本reviewer指定UA當日HTTP200取得，獨立PyMuPDF/XML/HTML擷取閱讀；只有列出的正文與圖頁。",
+      "http_status": 200,
+      "copy_file": ".cache/wave15-science-plants-B15-S002.pdf",
+      "body_sha256": "649c108253c1dcce349c8ea79c2b08c996f1dc42d619c6c80026c2a8867cb114",
+      "matches_author_copy": false,
+      "different_byte_copy_check": {
+        "author_sha256": "075e4308da358b86ea544ec8921f640dd3f1b4f50bcb6131d1f18b47c2bf327c",
+        "fresh_sha256": "649c108253c1dcce349c8ea79c2b08c996f1dc42d619c6c80026c2a8867cb114",
+        "pages_compared": 69,
+        "changed_extracted_text_pages": [],
+        "limit": "逐頁文字層一致；不以此聲稱PDF所有物件/圖像位元一致，也沒有把新副本算獨立研究。"
+      }
+    },
+    {
+      "source_id": "B15-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5789911/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5789911/fullTextXML",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "XML Results的Competent Zone、Mathematical Model、Growth Dynamics三小節全文與Discussion；未重算模型或讀全部gene-expression/方法。",
+      "result": "位置偏向可受生長抑制影響，但內水勢是模型、Oh7B表明生長非充分條件。",
+      "read_via": "本reviewer指定UA當日HTTP200取得，獨立PyMuPDF/XML/HTML擷取閱讀；只有列出的正文與圖頁。",
+      "http_status": 200,
+      "copy_file": ".cache/wave15-science-plants-B15-S003.xml",
+      "body_sha256": "30f8b2ce63ad3742188099148abab224ddbe8bfea7d583b2fd9f281b0b24c1e7",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "B15-S004",
+      "url": "https://doi.org/10.1126/science.1223304",
+      "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-18.pdf",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "PDF p3–5（印刷1088–1090）纖維帶抽出、普通/加強模型、彎扭比與年輕/老捲鬚；p4 Fig2–3渲染目讀。未讀SI或影片。",
+      "result": "固定兩端且保留交接處時，彎扭代價可使伸長與增圈並存；不可泛指所有年輕捲鬚。",
+      "read_via": "本reviewer指定UA當日HTTP200取得，獨立PyMuPDF/XML/HTML擷取閱讀；只有列出的正文與圖頁。",
+      "http_status": 200,
+      "copy_file": ".cache/wave15-science-plants-B15-S004.pdf",
+      "body_sha256": "cab37ba6cd1aa1becf3fe561b04e74554d5e9e25e63e04a020e9d8ca37ab5b56",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "B15-S005",
+      "url": "https://genesdev.cshlp.org/content/21/14/1720",
+      "retrieval_url": "https://genesdev.cshlp.org/content/21/14/1720.full.pdf",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "指定URL本次403；驗作者PDF SHA後獨立讀p1–4原文，p2 Fig1渲染目讀；未讀完整Methods/SI。",
+      "result": "缺失/補回與前驅表現支持位置訊號模型；此文不直接證明配體受體結合。",
+      "read_via": "公網指定UA HTTP403後，驗作者留存原PDF SHA並由本reviewer獨立擷取/閱讀指定正文；未冒稱重新取得外站全文。",
+      "fresh_attempt_error": "HTTP Error 403: Forbidden",
+      "copy_file": ".cache/wave15-life-stomata-journal.pdf",
+      "body_sha256": "2c4e8014107a9096e5ea383ffc05cc6b9da0211e6456f62ef3e2b63592aa70b0",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "B15-S006",
+      "url": "https://doi.org/10.1073/pnas.1015162108",
+      "retrieval_url": "https://algorithmicbotany.org/papers/leafmargin.pnas2011.pdf",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "web PDF及本次UA副本p1–4：兩Results小節、PIN1表皮救援、概念/計算模型開頭；p2 Fig1–2圖像。未驗整個計算實作/SI。",
+      "result": "均勻CUC2或auxin可抹平鋸齒，完整自組織回路仍是模型；現locator指概念模型正文，未宣稱作者看過Fig5原圖。",
+      "read_via": "本reviewer指定UA當日HTTP200取得，獨立PyMuPDF/XML/HTML擷取閱讀；只有列出的正文與圖頁。",
+      "http_status": 200,
+      "copy_file": ".cache/wave15-science-plants-B15-S006.pdf",
+      "body_sha256": "a25a2b76c5a52bc7b145c19a20f00adf6d366f47a09bbf0293b3de910ff7cdfe",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "B15-S007",
+      "url": "https://doi.org/10.1073/pnas.1007808108",
+      "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2011-03.pdf",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "web與UA PDF p1–3：Observations and Experiments、中肋/邊緣切除、沿面增長、模型假設及數值定性結果；p2 Fig1–3圖像。未讀SI圖/影片或逐式驗證。",
+      "result": "去邊緣使彎曲減少，和跨厚度差長主要驅動的預測相反；足以支持不同核心，仍限所測百合。",
+      "read_via": "本reviewer指定UA當日HTTP200取得，獨立PyMuPDF/XML/HTML擷取閱讀；只有列出的正文與圖頁。",
+      "http_status": 200,
+      "copy_file": ".cache/wave15-science-plants-B15-S007.pdf",
+      "body_sha256": "637a9f7d7dc34e58bc8f56252abd63f5f4631a05f9091479d6f7c50f4b301792",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "B15-S008",
+      "url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "retrieval_url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "UA HTML：East to west, and back、Clocks and two growth mechanisms、Why face the sun?；只核退題追蹤。",
+      "result": "報告確有固定頂光和24/30小時對照，但非原篇全文；不因此推翻作者暫不新增處置。",
+      "read_via": "本reviewer指定UA當日HTTP200取得，獨立PyMuPDF/XML/HTML擷取閱讀；只有列出的正文與圖頁。",
+      "http_status": 200,
+      "copy_file": ".cache/wave15-science-plants-B15-S008.html",
+      "body_sha256": "3540178394dcad40727d355edd3db9827836edd73f116f844a66179298d3419b",
+      "matches_author_copy": true
+    }
+  ],
+  "source_reading_policy": {
+    "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "rendered_pages": [
+      "B15-S001 p2",
+      "B15-S004 p4",
+      "B15-S005作者副本p2",
+      "B15-S006 p2",
+      "B15-S007 p2"
+    ],
+    "web_attempts": "AlgorithmicBotany與Harvard lily web正文可讀；Harvard tendril web逾時，UA PDF成功。CSHL指定PDF UA403；依記錄讀作者原PDF，未繞過驗證。",
+    "same_work": "PMC/XML/作者庫/DOI是同工作載體；8來源URL不等於8獨立實驗；向日葵團隊報告只支援未收追蹤。",
+    "not_done": "未看補充影片、未重算統計或模型、未做植物處理/實拍；後續圖解仍需逐稿查核。"
+  },
+  "retrieval_readback": {
+    "file": ".cache/wave15-plants-neighbours.json",
+    "sha256": "0885f8cbed116da35e42525fa74da41ba7a6bfbc49cdc0182702f665244a4a29",
+    "draft_sha256": "1c58b1961462547cd7652b1e23caa3013b9f6aeb2b944fc713cbd6340cc4e923",
+    "batch_sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b",
+    "raw_records": 3306,
+    "read_rows": 7,
+    "read_comparisons": 35,
+    "note": "僅提近對，不是去重準確率或全面召回；root最後修訂delta待另行定點綁定。"
+  },
+  "candidate_rows": [
+    {
+      "id": "B15001",
+      "recommendation": "retain",
+      "source_ids": [
+        "B15-S001"
+      ],
+      "reason": "保留非垂直穩態與雙向回復；反重力偏移是功能模型，不能畫兩股重力。",
+      "editorial_seconds": [
+        80,
+        120
+      ]
+    },
+    {
+      "id": "B15002",
+      "recommendation": "retain",
+      "source_ids": [
+        "B15-S002"
+      ],
+      "reason": "保留組織特異解離。消融/無梯度/皮層救援各有控制，不宣稱根冠永遠不參與。",
+      "editorial_seconds": [
+        75,
+        105
+      ]
+    },
+    {
+      "id": "B15003",
+      "recommendation": "retain",
+      "source_ids": [
+        "B15-S003"
+      ],
+      "reason": "保留生長依賴的定位控制；內水勢是模型、Oh7B反例保留，不能改成生長率決定全部分枝。",
+      "editorial_seconds": [
+        80,
+        115
+      ]
+    },
+    {
+      "id": "B15004",
+      "recommendation": "retain",
+      "source_ids": [
+        "B15-S004"
+      ],
+      "reason": "保留已成螺旋受拉增圈；舊初纏、濕乾芒與線性彈簧不足回答此控制。",
+      "editorial_seconds": [
+        90,
+        130
+      ]
+    },
+    {
+      "id": "B15005",
+      "recommendation": "retain",
+      "source_ids": [
+        "B15-S005"
+      ],
+      "reason": "保留短segment，局部訊號/分裂方向不是開孔控制；不補基因清單撐獨立長片。",
+      "editorial_seconds": [
+        40,
+        70
+      ]
+    },
+    {
+      "id": "B15006",
+      "recommendation": "retain",
+      "source_ids": [
+        "B15-S006"
+      ],
+      "reason": "保留短segment，連續活動抹平峰谷有可見控制；完整回路為模型，現不硬塞題案。",
+      "editorial_seconds": [
+        75,
+        115
+      ]
+    },
+    {
+      "id": "B15007",
+      "recommendation": "retain",
+      "source_ids": [
+        "B15-S007"
+      ],
+      "reason": "保留平面內邊緣驅動與切除辨別；不把最硬部位等同主驅動，也不泛化全部花。",
+      "editorial_seconds": [
+        80,
+        120
+      ]
+    }
+  ],
+  "author_boundary_checks": [
+    {
+      "a": "B15001",
+      "b": "B2234",
+      "decision": "distinct",
+      "reason": "非垂直設定點的兩側恢復及旋轉台對照，不是再問主根重力感知。"
+    },
+    {
+      "a": "B15001",
+      "b": "B11003",
+      "decision": "distinct",
+      "reason": "曲率回饋使直莖停止彎曲，不能單獨解釋維持斜向直線生長；新偏移分量改變穩態目標。"
+    },
+    {
+      "a": "B15001",
+      "b": "L076",
+      "decision": "distinct",
+      "reason": "頂端優勢控制側芽啟動，和已形成分枝的角度控制不是同答案。"
+    },
+    {
+      "a": "B15002",
+      "b": "B2234",
+      "decision": "distinct",
+      "reason": "根冠消融與皮層選擇性救援把向水與向地路徑分開，並非把刺激名詞換掉。"
+    },
+    {
+      "a": "B15002",
+      "b": "L083",
+      "decision": "distinct",
+      "reason": "分區伸長的結構背景，不包含單一組織干預能解離兩種向性的條件。"
+    },
+    {
+      "a": "B15003",
+      "b": "L097",
+      "decision": "distinct",
+      "reason": "水輸運是背景；新控制是生長保持內部不均衡及分枝位置反應。"
+    },
+    {
+      "a": "B15003",
+      "b": "B11004",
+      "decision": "distinct",
+      "reason": "壁鬆弛只是抑制生長處理的關聯背景，輸出觀察從蠕變改為水接觸側的分枝定位。"
+    },
+    {
+      "a": "B15003",
+      "b": "B11001",
+      "decision": "distinct",
+      "reason": "乙烯散逸的因果與生長作為水勢差生成條件不同。"
+    },
+    {
+      "a": "B15004",
+      "b": "B2236",
+      "decision": "distinct",
+      "reason": "初次接觸纏繞與已成雙旋結構受拉時的增圈不同。"
+    },
+    {
+      "a": "B15004",
+      "b": "P076",
+      "decision": "distinct",
+      "reason": "形成曲率的雙層差長不是本題新增；受拉後保持曲率而改螺距/半徑才是增量。"
+    },
+    {
+      "a": "B15004",
+      "b": "E9006",
+      "decision": "distinct",
+      "reason": "濕乾棘輪入土與固定端軸向受拉的內部旋轉不同。"
+    },
+    {
+      "a": "B15004",
+      "b": "P100",
+      "decision": "distinct",
+      "reason": "Hooke線性回復力答不出為何增圈；彎扭剛性比與交接約束是新條件。"
+    },
+    {
+      "a": "B15005",
+      "b": "L090",
+      "decision": "distinct",
+      "reason": "氣孔形成位置/分裂方向與既有氣孔開關不同。"
+    },
+    {
+      "a": "B15006",
+      "b": "B2233",
+      "decision": "distinct",
+      "reason": "沿整個葉緣形成重複峰谷，與莖兩側差速單次轉彎不同。"
+    },
+    {
+      "a": "B15006",
+      "b": "B11005",
+      "decision": "distinct",
+      "reason": "機械應力/微管回饋與此處訊號分布峰谷及鋪平對照不同。"
+    },
+    {
+      "a": "B15006",
+      "b": "L089",
+      "decision": "distinct",
+      "reason": "莖上葉序分類不涵蓋單葉邊緣圖樣。"
+    },
+    {
+      "a": "B15007",
+      "b": "P076",
+      "decision": "distinct",
+      "reason": "平面內邊/中伸長不同於跨厚度雙層伸長；去邊緣後彎曲變少提供可區分預測。"
+    },
+    {
+      "a": "B15007",
+      "b": "E9010",
+      "decision": "distinct",
+      "reason": "花藥跨厚度乾縮/增厚層約束不能等同百合花瓣平面內邊緣生長。"
+    },
+    {
+      "a": "B15007",
+      "b": "K11012",
+      "decision": "distinct",
+      "reason": "外力壓自然平片與增長改變薄殼自然面內度量不同，非只換形狀。"
+    },
+    {
+      "a": "B15007",
+      "b": "K11010",
+      "decision": "distinct",
+      "reason": "無軟基底的花瓣部署不等同硬膜軟底選皺紋波長；沒有另收花瓣皺紋題。"
+    }
+  ],
+  "top5_checks": [
+    {
+      "id": "B15001",
+      "comparisons": [
+        {
+          "other_id": "B11003",
+          "decision": "distinct",
+          "reason": "角度/曲率回饋不含非垂直偏移的穩態設定。"
+        },
+        {
+          "other_id": "K11002",
+          "decision": "distinct",
+          "reason": "彈性帶簧受彎失穩不是生長姿態回復。"
+        },
+        {
+          "other_id": "D2115",
+          "decision": "distinct",
+          "reason": "剛性連桿運動轉換沒有生長設定點。"
+        },
+        {
+          "other_id": "J6016",
+          "decision": "distinct",
+          "reason": "螺桿加工誤差不同於生物角度回復；舊hold不復活。"
+        },
+        {
+          "other_id": "K11001",
+          "decision": "distinct",
+          "reason": "端部曲率支撐與生長反應不同。"
+        }
+      ]
+    },
+    {
+      "id": "B15002",
+      "comparisons": [
+        {
+          "other_id": "I12001",
+          "decision": "distinct",
+          "reason": "接觸線釘扎沒有根組織訊號/生長。"
+        },
+        {
+          "other_id": "N100",
+          "decision": "distinct",
+          "reason": "地下水消耗不解釋向水彎曲。"
+        },
+        {
+          "other_id": "O3076",
+          "decision": "distinct",
+          "reason": "ADCP旁瓣為檢索誤近，非水感知生物機制。"
+        },
+        {
+          "other_id": "B15003",
+          "decision": "distinct",
+          "reason": "水勢下轉彎的組織路徑與分枝定位不同。"
+        },
+        {
+          "other_id": "F14006",
+          "decision": "distinct",
+          "reason": "孔隙排水的接觸力學不同於細胞訊號/生長解離。"
+        }
+      ]
+    },
+    {
+      "id": "B15003",
+      "comparisons": [
+        {
+          "other_id": "N100",
+          "decision": "distinct",
+          "reason": "取水使水位下降不等同生長依賴的分枝定位。"
+        },
+        {
+          "other_id": "B15002",
+          "decision": "distinct",
+          "reason": "分枝位置和根向水彎曲是不同輸出與控制。"
+        },
+        {
+          "other_id": "L097",
+          "decision": "distinct",
+          "reason": "水勢輸運背景相同，生長作為訊號生成條件新增。"
+        },
+        {
+          "other_id": "B2226",
+          "decision": "distinct",
+          "reason": "失去浮力的支撐與水勢定位無同核。"
+        },
+        {
+          "other_id": "B2234",
+          "decision": "distinct",
+          "reason": "根冠向地感知不同於供水側分枝定位。"
+        }
+      ]
+    },
+    {
+      "id": "B15004",
+      "comparisons": [
+        {
+          "other_id": "J6014",
+          "decision": "distinct",
+          "reason": "自調心軸承幾何沒有受拉增圈或雙旋交接。"
+        },
+        {
+          "other_id": "K11011",
+          "decision": "distinct",
+          "reason": "夾端橫向收縮限制與螺旋彎扭代價不同。"
+        },
+        {
+          "other_id": "P033",
+          "decision": "distinct",
+          "reason": "螺紋旋轉換位移不是固定兩端仍可增圈。"
+        },
+        {
+          "other_id": "X5004",
+          "decision": "distinct",
+          "reason": "針織線圈接觸內力矩/無外載捲邊不同於已螺旋受拉。"
+        },
+        {
+          "other_id": "K11001",
+          "decision": "distinct",
+          "reason": "橫曲率提高抗彎不是受拉雙旋的內部旋轉。"
+        }
+      ]
+    },
+    {
+      "id": "B15005",
+      "comparisons": [
+        {
+          "other_id": "B11007",
+          "decision": "distinct",
+          "reason": "乾燥後開合暫態與形成時分裂定位不同。"
+        },
+        {
+          "other_id": "L090",
+          "decision": "distinct",
+          "reason": "已成孔開關與新孔間距不同。"
+        },
+        {
+          "other_id": "V3001",
+          "decision": "distinct",
+          "reason": "局部訊號範圍是背景；新題有前驅/鄰細胞分裂方向與缺失救援控制。"
+        },
+        {
+          "other_id": "B15006",
+          "decision": "distinct",
+          "reason": "鄰接分裂方向與沿葉緣峰谷回饋不同。"
+        },
+        {
+          "other_id": "U8004",
+          "decision": "distinct",
+          "reason": "菌絲傷口塞孔不是發育間隔規則。"
+        }
+      ]
+    },
+    {
+      "id": "B15006",
+      "comparisons": [
+        {
+          "other_id": "K11013",
+          "decision": "distinct",
+          "reason": "揉皺記憶門檻不是生長訊號空間分布。"
+        },
+        {
+          "other_id": "R6017",
+          "decision": "distinct",
+          "reason": "鈣訊號時間積分不是葉緣空間交錯活動。"
+        },
+        {
+          "other_id": "G13002",
+          "decision": "distinct",
+          "reason": "顆粒剪脹與發育訊號無同核。"
+        },
+        {
+          "other_id": "E2267",
+          "decision": "distinct",
+          "reason": "傳輸線反射與生物生長回饋無同核。"
+        },
+        {
+          "other_id": "P14006",
+          "decision": "distinct",
+          "reason": "知覺瞬變干擾不是植物形態調節。"
+        }
+      ]
+    },
+    {
+      "id": "B15007",
+      "comparisons": [
+        {
+          "other_id": "K11011",
+          "decision": "distinct",
+          "reason": "固定端拉膜的橫壓縮不同於薄殼面內增長分布。"
+        },
+        {
+          "other_id": "B15001",
+          "decision": "distinct",
+          "reason": "根的重力設定點回復不同於花瓣形狀部署。"
+        },
+        {
+          "other_id": "K11001",
+          "decision": "distinct",
+          "reason": "自然平片端部施曲率與增長改變平面內度量不同。"
+        },
+        {
+          "other_id": "B2236",
+          "decision": "distinct",
+          "reason": "觸碰後差速初纏與邊/中增長切除對照不同。"
+        },
+        {
+          "other_id": "K11009",
+          "decision": "distinct",
+          "reason": "切口面片自由度與未切花瓣平面內生長不同。"
+        }
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "B15001",
+        "b": "B2234",
+        "reason": "非垂直設定點的兩側恢復及旋轉台對照，不是再問主根重力感知。"
+      },
+      {
+        "a": "B15001",
+        "b": "B11003",
+        "reason": "曲率回饋使直莖停止彎曲，不能單獨解釋維持斜向直線生長；新偏移分量改變穩態目標。"
+      },
+      {
+        "a": "B15001",
+        "b": "L076",
+        "reason": "頂端優勢控制側芽啟動，和已形成分枝的角度控制不是同答案。"
+      },
+      {
+        "a": "B15002",
+        "b": "B2234",
+        "reason": "根冠消融與皮層選擇性救援把向水與向地路徑分開，並非把刺激名詞換掉。"
+      },
+      {
+        "a": "B15002",
+        "b": "L083",
+        "reason": "分區伸長的結構背景，不包含單一組織干預能解離兩種向性的條件。"
+      },
+      {
+        "a": "B15003",
+        "b": "L097",
+        "reason": "水輸運是背景；新控制是生長保持內部不均衡及分枝位置反應。"
+      },
+      {
+        "a": "B15003",
+        "b": "B11004",
+        "reason": "壁鬆弛只是抑制生長處理的關聯背景，輸出觀察從蠕變改為水接觸側的分枝定位。"
+      },
+      {
+        "a": "B15003",
+        "b": "B11001",
+        "reason": "乙烯散逸的因果與生長作為水勢差生成條件不同。"
+      },
+      {
+        "a": "B15004",
+        "b": "B2236",
+        "reason": "初次接觸纏繞與已成雙旋結構受拉時的增圈不同。"
+      },
+      {
+        "a": "B15004",
+        "b": "P076",
+        "reason": "形成曲率的雙層差長不是本題新增；受拉後保持曲率而改螺距/半徑才是增量。"
+      },
+      {
+        "a": "B15004",
+        "b": "E9006",
+        "reason": "濕乾棘輪入土與固定端軸向受拉的內部旋轉不同。"
+      },
+      {
+        "a": "B15004",
+        "b": "P100",
+        "reason": "Hooke線性回復力答不出為何增圈；彎扭剛性比與交接約束是新條件。"
+      },
+      {
+        "a": "B15005",
+        "b": "L090",
+        "reason": "氣孔形成位置/分裂方向與既有氣孔開關不同。"
+      },
+      {
+        "a": "B15006",
+        "b": "B2233",
+        "reason": "沿整個葉緣形成重複峰谷，與莖兩側差速單次轉彎不同。"
+      },
+      {
+        "a": "B15006",
+        "b": "B11005",
+        "reason": "機械應力/微管回饋與此處訊號分布峰谷及鋪平對照不同。"
+      },
+      {
+        "a": "B15006",
+        "b": "L089",
+        "reason": "莖上葉序分類不涵蓋單葉邊緣圖樣。"
+      },
+      {
+        "a": "B15007",
+        "b": "P076",
+        "reason": "平面內邊/中伸長不同於跨厚度雙層伸長；去邊緣後彎曲變少提供可區分預測。"
+      },
+      {
+        "a": "B15007",
+        "b": "E9010",
+        "reason": "花藥跨厚度乾縮/增厚層約束不能等同百合花瓣平面內邊緣生長。"
+      },
+      {
+        "a": "B15007",
+        "b": "K11012",
+        "reason": "外力壓自然平片與增長改變薄殼自然面內度量不同，非只換形狀。"
+      },
+      {
+        "a": "B15007",
+        "b": "K11010",
+        "reason": "無軟基底的花瓣部署不等同硬膜軟底選皺紋波長；沒有另收花瓣皺紋題。"
+      },
+      {
+        "a": "B15002",
+        "b": "B15003",
+        "reason": "向水轉彎的皮層訊號路徑與生長依賴的分枝位置訊號不同，不可合為同株完整流程。"
+      },
+      {
+        "a": "B15005",
+        "b": "B15006",
+        "reason": "鄰接分裂的局部定位規則與沿葉緣峰谷自組織不同；都留限定短素材，不因同屬發育就合併。"
+      },
+      {
+        "a": "B15005",
+        "b": "V3001",
+        "reason": "局部訊號擴散距離是背景，新題比較不對稱分裂方向及間隔缺失/救援。"
+      }
+    ]
+  },
+  "not_added_readback": {
+    "rows": 25,
+    "result": "接受全部未收處置；向日葵屬可再研究缺口，不是假前提判定；不把原稿取得失敗寫成不存在研究。沒有因題數要求復活舊題。"
+  },
+  "editorial_readback": [
+    {
+      "id": "W15B-T01",
+      "body_seconds": 105,
+      "chapters": 2,
+      "core_totals": {
+        "B15001": 105
+      },
+      "beat_and_cap_status": "PASS",
+      "drop_readback": "若雙向回復無法用原創圖表講清，撤案。刪旋轉章55秒後只剩50秒現象，撤雙章案；不補向地基礎段。"
+    },
+    {
+      "id": "W15B-T02",
+      "body_seconds": 200,
+      "chapters": 2,
+      "core_totals": {
+        "B15002": 100,
+        "B15003": 100
+      },
+      "beat_and_cap_status": "PASS",
+      "drop_readback": "刪任一研究章後剩100秒，原跨研究追問失去對照，撤案或重新寫單核短案再審。若模型被畫成直接量到水勢，先撤第二章，不用術語補時。"
+    },
+    {
+      "id": "W15B-T03",
+      "body_seconds": 120,
+      "chapters": 2,
+      "core_totals": {
+        "B15004": 120
+      },
+      "beat_and_cap_status": "PASS",
+      "drop_readback": "若無法畫對左右旋/固定端，撤案；去任一章只剩60秒，撤雙章案，不塞初次纏繞故事。"
+    },
+    {
+      "id": "W15B-T04",
+      "body_seconds": 105,
+      "chapters": 2,
+      "core_totals": {
+        "B15007": 105
+      },
+      "beat_and_cap_status": "PASS",
+      "drop_readback": "若B15007被覆核併既有跨厚度形變題，撤此案再按變體預算重審；刪第一章50秒後剩55秒、刪第二章55秒後剩50秒，均缺完整辨別鏈，撤案。"
+    }
+  ],
+  "findings_and_targeted_recheck": {
+    "initial_files": [
+      {
+        "file": "batches/wave15-plants.json",
+        "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+      },
+      {
+        "file": "reviews/wave15-plants-themes.json",
+        "sha256": "cf7f518558e611d03942178b018d25d79d44216a887f7ea1c50ab4bbb08bbec1"
+      },
+      {
+        "file": "reviews/wave15-plants-author.json",
+        "sha256": "34ef7ff52240a4eb2d2b3b556f95a7932f8f83f9bf24d7b158e4b837ef11dceb"
+      }
+    ],
+    "required_changes": [
+      {
+        "id": "PLANTS01",
+        "scope": "W15B-T01",
+        "finding": "第1章末10秒只轉問，縮5秒；110→105。",
+        "status": "RESOLVED"
+      },
+      {
+        "id": "PLANTS02",
+        "scope": "W15B-T02",
+        "finding": "第2章末10秒重述轉彎/分枝差別，縮5秒；205→200。",
+        "status": "RESOLVED"
+      },
+      {
+        "id": "PLANTS03",
+        "scope": "W15B-T04",
+        "finding": "第1章末10秒純追問，縮5秒；110→105。",
+        "status": "RESOLVED"
+      }
+    ],
+    "resolution": "獨立JSON前後diff：只有指定三個5秒節拍、章/正文/target/range/drop與作者修訂紀錄同步；T03 120秒及batch bytes不變。未補新資訊湊時。",
+    "locator_clarification": "S006鎖前已把未目讀圖號定位收成實讀概念模型正文；本reviewer查PDF Fig5實位p4，採較窄正文定位無阻擋。",
+    "final_seconds": [
+      105,
+      200,
+      120,
+      105
+    ],
+    "final_hashes_match": true
+  },
+  "limitations": [
+    "這是來源指定段、題級前提/去重/編輯時間審閱，不是完整旁白稿核准。",
+    "未實際試讀、做動畫、驗證觀眾理解或發布；圖像不自動取得原研究圖片商用權。",
+    "作者的source_identity比對與本次指定段可支持關係說明，不能證明全庫不存在其他同文。"
+  ],
+  "final_retrieval_delta": {
+    "status": "PASS_TARGETED_INPUT_READBACK",
+    "previous_receipt_sha256": "c067a9e92ef3b3f870ba9e8a957d32404dcd7d9d8a0ed2325110e25c146b4f9d",
+    "first_draft_sha256": "1c58b1961462547cd7652b1e23caa3013b9f6aeb2b944fc713cbd6340cc4e923",
+    "final_draft_sha256": "826cdf995f376de004951498768ea52be8845bd11ffc374bae8028fcf9706cfd",
+    "delta_file": ".cache/wave15-plants-neighbour-delta.json",
+    "delta_sha256": "487244310a7ee30db5396d3137db65a31e6dca64d440e56eb074ecd80ea08c1b",
+    "final_neighbours_file": ".cache/wave15-plants-neighbours.json",
+    "final_neighbours_sha256": "0885f8cbed116da35e42525fa74da41ba7a6bfbc49cdc0182702f665244a4a29",
+    "final_semantic_sha256": "321a1288efe22412090102c551f33576200284344288bdf0bee9f72a33a432ae",
+    "read_candidate_rows": 7,
+    "changed_rows": [
+      {
+        "id": "B15006",
+        "changed_fields": [
+          "source_locator",
+          "source_refs"
+        ],
+        "before": {
+          "source_locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I, Fig.5 conceptual model",
+          "source_refs": [
+            {
+              "source_id": "SRC-bfd2e6c073ddb135",
+              "origin": "wave15-plants-20261102",
+              "locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I, Fig.5 conceptual model",
+              "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+            }
+          ]
+        },
+        "after": {
+          "source_locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+          "source_refs": [
+            {
+              "source_id": "SRC-bfd2e6c073ddb135",
+              "origin": "wave15-plants-20261102",
+              "locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+              "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+            }
+          ]
+        }
+      }
+    ],
+    "question_answer_scope_editorial_changes": 0,
+    "top5_full_objects_compared": 35,
+    "top5_changed": 0,
+    "new_neighbour_ids": [],
+    "decision": "B15006只收窄source_locator，正規化source_refs[0].locator同步；來源ID/origin/supports不變。其餘6raw全欄位不變。初版共同快照早於定位收窄，不能說整batch與first bytes完全相同。無新增合併/暫緩或內容必改。三作者檔仍為本收據reviewed_files所綁版本。"
+  }
+}

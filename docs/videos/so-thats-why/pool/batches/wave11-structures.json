@@ -1,0 +1,658 @@
+{
+  "batch_id": "wave11-structures-20261101",
+  "created_on": "2026-11-01",
+  "scope": "薄片曲率、屈曲路徑、折／剪紙運動限制、皺紋與預應力的題級素材；不提供結構設計或危險負載實作。",
+  "sources": [
+    {
+      "id": "K11-S001",
+      "url": "https://arxiv.org/pdf/1907.09414",
+      "title": "Limitations of curvature-induced rigidity: How a curved strip buckles under gravity",
+      "publisher": "Taffetani, Box, Neveu & Vella; University of Oxford / arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:1907.09414v1，2019-07-22",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–4，§1 Introduction、§2 A simple view of the buckling threshold，Figs.1–2",
+      "locator": "PDF pp.1–4，§1 Introduction、§2 A simple view of the buckling threshold，Figs.1–2",
+      "summary": "橫向曲率使另一方向彎曲需要面內伸長；有限彎曲剛性及重量限制支撐範圍。",
+      "limitations": "採作者預印本指定段，未逐式重算全篇；Manchester offprint HTTP握手逾時，改讀arXiv。披薩只作來源入口，材料試片才是模型。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S002",
+      "url": "https://www.its.caltech.edu/~sslab/PUBLICATIONS/Deployment%20of%20a%20rigid%20panel%20by%20tape-springs_1997.pdf",
+      "title": "Deployment of a Rigid Panel by Tape-Springs",
+      "publisher": "Seffen & Pellegrino; University of Cambridge，Caltech作者典藏",
+      "accessed_on": "2026-11-01",
+      "version": "CUED/D-STRUCT/TR168，1997-08",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "§1.2.1 printed pp.1–4 / PDF pp.8–11，Figs.1.2–1.3；§3.1–3.2 printed pp.34–40 / PDF pp.41–47，Figs.3.1–3.5",
+      "locator": "§1.2.1 printed pp.1–4 / PDF pp.8–11，Figs.1.2–1.3；§3.1–3.2 printed pp.34–40 / PDF pp.41–47，Figs.3.1–3.5",
+      "summary": "帶簧彎折方向決定局部失穩路徑；反向成對帶簧的展開與反向翻折可用能量比較。",
+      "limitations": "讀機理與設計推導，不宣稱重做第5章實驗；鎖定不等於沒有小振盪。圖1.2–1.3另渲染看過。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S003",
+      "url": "https://ocw.mit.edu/courses/16-001-unified-engineering-materials-and-structures-fall-2021/mit16_001_f21_lec33lec34lec35.pdf",
+      "title": "Buckling of Beams",
+      "publisher": "MIT OpenCourseWare，Radovitzky & Cordero",
+      "accessed_on": "2026-11-01",
+      "version": "16.001 Fall 2021，lectures 33–35",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.4–9、15–27、43–48；deformed equilibrium、simply-supported column、Failure of columns",
+      "locator": "PDF pp.4–9、15–27、43–48；deformed equilibrium、simply-supported column、Failure of columns",
+      "summary": "軸向壓力在側向偏移後增加彎矩，可能先失穩而非先壓潰。",
+      "limitations": "只採彈性細長柱機理；不把理想公式作實物承載建議。p.46擷取式有混亂，公式若進稿以p.27與p.47讀回。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S004",
+      "url": "https://ntrs.nasa.gov/api/citations/20120008838/downloads/20120008838.pdf",
+      "title": "The Effects of Geometric and Loading Imperfections on the Response and Lower-Bound Buckling Load of a Compression-Loaded Cylindrical Shell",
+      "publisher": "Kriegesmann, Hilburger & Rolfes; NASA NTRS",
+      "accessed_on": "2026-11-01",
+      "version": "2012 conference paper，NTRS 20120008838",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF p.2 Introduction；pp.4–7，Fig.2–8與III.B Distributed loading imperfection",
+      "locator": "PDF p.2 Introduction；pp.4–7，Fig.2–8與III.B Distributed loading imperfection",
+      "summary": "局部側向擾動或不均勻邊界載入都能誘發局部凹陷並降低圓筒的失穩載荷。",
+      "limitations": "數值研究與指定圓筒條件；不移用文中臨界數值到罐子。p.4文字176N與圖軸kN不一致，不採該數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S005",
+      "url": "https://groups.seas.harvard.edu/hutchinson/papers/2018-1-Imperfections%26EnergyBarriers.pdf",
+      "title": "Imperfections and energy barriers in shell buckling",
+      "publisher": "Hutchinson & Thompson; Harvard / Cambridge作者PDF",
+      "accessed_on": "2026-11-01",
+      "version": "International Journal of Solids and Structures 148–149 (2018),157–168",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF p.1 Introduction；pp.6–9 / printed162–165，§4、§5.1–5.3與Figs.5–10",
+      "locator": "PDF p.1 Introduction；pp.6–9 / printed162–165，§4、§5.1–5.3與Figs.5–10",
+      "summary": "薄殼既有失穩載荷，也有承受額外擾動的能障；固定壓力與固定體積改變造成不同後屈曲結果。",
+      "limitations": "採球殼模型及指定半球實驗的比較；未獨立重算。只稱局部凹陷及控制方式，無壓力容器操作。Fig.5渲染看過。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S006",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2013-09.pdf",
+      "title": "Geometric Mechanics of Periodic Pleated Origami",
+      "publisher": "Wei et al.; Harvard，Physical Review Letters",
+      "accessed_on": "2026-11-01",
+      "version": "PRL110,215501 (2013)，主文及補充合併PDF",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "主文PDF pp.1–3，Fig.1、Eqs.1–3、Fig.3與Eq.6；未把附錄全列為已讀",
+      "locator": "主文PDF pp.1–3，Fig.1、Eqs.1–3、Fig.3與Eq.6；未把附錄全列為已讀",
+      "summary": "三浦摺的平面展開耦合長寬；整片彎曲須容許面板內額外變形，不能直接套平面反應。",
+      "limitations": "僅規則菱形單元、小角度增量模型；不稱所有折紙都有相同性質。Fig.1另渲染看過。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S007",
+      "url": "https://arxiv.org/pdf/1702.06470",
+      "title": "Buckling-Induced Kirigami",
+      "publisher": "Rafsanjani & Bertoldi; Harvard / arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:1702.06470v1，2017-02-21",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "主文PDF pp.1–4，Figs.1–4，initial response、out-of-plane buckling、permanent folds及open faces段",
+      "locator": "主文PDF pp.1–4，Figs.1–4，initial response、out-of-plane buckling、permanent folds及open faces段",
+      "summary": "細連接處可在拉伸時向平面外屈曲；切口讓折後開放面變形，改變橫向收縮條件。",
+      "limitations": "Harvard DASH 429，改讀作者arXiv正文；未看補充影片。永久折痕需進入塑性，初次彈性屈曲與之分開。Fig.1另渲染看過。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S008",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=902425",
+      "title": "Surface Wrinkling: A Versatile Platform for Measuring Thin-Film Properties",
+      "publisher": "Chung, Nolte & Stafford; NIST",
+      "accessed_on": "2026-11-01",
+      "version": "Advanced Materials23 (2011),349–368；機構研究者綜述",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–3 / printed349–351；§2 Wrinkling Mechanics and Measurements，Eqs.1–8與Fig.1",
+      "locator": "PDF pp.1–3 / printed349–351；§2 Wrinkling Mechanics and Measurements，Eqs.1–8與Fig.1",
+      "summary": "硬薄層和軟基底分別抑制過短及過長的波長，決定皺紋尺度。",
+      "limitations": "這是NIST研究者綜述，非本次新實驗；只採彈性、黏結良好、適度壓縮範圍，不外推所有皮膚老化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S009",
+      "url": "https://arxiv.org/pdf/2012.13046",
+      "title": "Stretching Hookean ribbons Part I: relative edge extension underlies transverse compression & buckling instability",
+      "publisher": "Xin & Davidovitch; University of Massachusetts Amherst / arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:2012.13046v1，2020-12-24",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–2，§I Introduction、Fig.1 Model A/B與壓縮區對照",
+      "locator": "PDF pp.1–2，§I Introduction、Fig.1 Model A/B與壓縮區對照",
+      "summary": "夾端不能隨主體橫向收縮，邊界不相容可在受拉薄片中產生橫向壓縮。",
+      "limitations": "指定段屬正文中的模型與數值對照；不宣稱逐式驗證後文，亦不把橫向負應變直接等同負應力。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S010",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-05.pdf",
+      "title": "Confined developable elastic surfaces: cylinders, cones and the Elastica",
+      "publisher": "Cerda & Mahadevan; Royal Society／作者Harvard典藏",
+      "accessed_on": "2026-11-01",
+      "version": "Proc.R.Soc.A461 (2005),671–700；2004-12-22 online",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–3 / printed671–673，§1；pp.12–13 / printed682–683，§4 The puckered cone、4(a) Geometry、Fig.6",
+      "locator": "PDF pp.1–3 / printed671–673，§1；pp.12–13 / printed682–683，§4 The puckered cone、4(a) Geometry、Fig.6",
+      "summary": "薄片受空間限制時保留大部分近乎不伸長的區域，把伸長集中到尖點與稜線。",
+      "limitations": "主分析為純彈性；不能單靠此文宣稱紙永久皺痕或揉紙記憶。只採圓環壓入對照，不推廣任意揉紙全形狀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S011",
+      "url": "https://arxiv.org/pdf/2109.05212v2",
+      "title": "Memory from coupled instabilities in unfolded crumpled sheets",
+      "publisher": "Shohat, Hexner & Lahini; Tel Aviv University / Technion / arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:2109.05212v2，2022-07-27，對應PNAS119(28)e2200028119",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–5 Results and Discussion：Global Response、Return Point Memory、Mesoscopic Excitations、Interactions Between Hysterons；Figs.1–4；模型開頭",
+      "locator": "PDF pp.1–5 Results and Discussion：Global Response、Return Point Memory、Mesoscopic Excitations、Interactions Between Hysterons；Figs.1–4；模型開頭",
+      "summary": "揉後攤平的Mylar薄片，局部雙穩態的翻轉和相互作用保留最大壓縮歷史。",
+      "limitations": "PMC首次讀到摘要、續讀遇驗證頁，改讀作者v2正文；未把所有模型或補充影片列已核。研究是揉後再攤平薄片，不是普通紙球儲存任意資訊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S012",
+      "url": "https://www3.eng.cam.ac.uk/~sdg13/preprint/tensstiff.pdf",
+      "title": "The Stiffness of Tensegrity Structures",
+      "publisher": "S.D.Guest; University of Cambridge作者典藏",
+      "accessed_on": "2026-11-01",
+      "version": "作者稿2010-07-09；正式IMA J.Appl.Math.76(1),57–66 (2011)",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–6 §1–3；pp.8、10–11 §5、Fig.6及§7，兩個指定骨架的剛性對照",
+      "locator": "PDF pp.1–6 §1–3；pp.8、10–11 §5、Fig.6及§7，兩個指定骨架的剛性對照",
+      "summary": "預應力下構件方向改變可提供回復剛性，效果與材料伸長剛性不同，且不保證愈拉愈穩。",
+      "limitations": "只以原文expanded octahedron模型作圖，不把任何拉索桌都歸此型；高預應力反例依柔順索模型，非建議實物拉緊測試。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "K11-S013",
+      "url": "https://www3.eng.cam.ac.uk/~sdg/preprint/OnZeroStiffness.pdf",
+      "title": "On Zero Stiffness",
+      "publisher": "Schenk & Guest; University of Cambridge作者典藏",
+      "accessed_on": "2026-11-01",
+      "version": "作者預印本，正式文2014，DOI10.1177/0954406213511903",
+      "read_via": "當日 urllib（指定 Mokaair-editorial UA）取得 PDF，pypdf 擷取後逐段讀；副本僅在忽略的 .cache。",
+      "reading_scope": "PDF pp.1–5，§1邊界與§2.2 Anglepoise Lamp",
+      "locator": "PDF pp.1–5，§1邊界與§2.2 Anglepoise Lamp",
+      "summary": "適當彈簧與連桿幾何可使彈性能和重力位能互換，讓指定負載在連續位置平衡。",
+      "limitations": "作者綜述而非本輪檯燈實測；理想零自由長度與無摩擦模型，實品有公差及行程限制；不採產品宣傳。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K11001",
+      "question": "把薄片橫向拱起來，為什麼前端較不容易垂下，卻也不是能無限伸長？",
+      "domain": "physics",
+      "mechanism_key": "structures.transverse_curvature_stretching_constraint",
+      "answer_target": "同時往另一方向彎會要求面內伸長；但端部施加的曲率可沿長度鬆開，重量也能突破支撐。",
+      "scope": "自然平直、薄而近乎不伸長的彈性長片，只在一端施加橫向曲率；不是聲稱材料模數變大。",
+      "source_ids": [
+        "K11-S001"
+      ],
+      "source_locator": "S001 PDF pp.1–4 §1–2，Figs.1–2",
+      "premise_status": "screened",
+      "notes": "來源直接模型；披薩是來源入口，圖解採非食物薄片。曲率衰減與重量限制保留同一題，不另計。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清材料變硬與幾何迫使伸長，並看出拱形何時失效。",
+        "visual": "相同網格薄片平放／橫向彎曲，再沿長度顯示截面由弧變平。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "K11002",
+      "question": "同一條弧形薄金屬帶，朝兩邊折為什麼會出現不同的扭轉和突然打折？",
+      "domain": "physics",
+      "mechanism_key": "structures.tape_spring_cross_section_flattening_localization",
+      "answer_target": "彎曲方向改變局部截面變平與扭轉失穩的路徑；折後變形集中在短區域，並非整條均勻彎曲。",
+      "scope": "來源帶簧幾何與彈性範圍；短而夾緊的端部會改變路徑，不把每把捲尺視為相同試件。",
+      "source_ids": [
+        "K11-S002"
+      ],
+      "source_locator": "S002 §1.2.1，printed pp.1–4 / PDF pp.8–11，Figs.1.2–1.3",
+      "premise_status": "screened",
+      "notes": "來源直接模型；與J6019恆力捲帶逐段展直不同。只用一題比較兩個彎曲方向。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂突然變軟是截面與變形路徑轉換，而非金屬必然折壞。",
+        "visual": "兩個方向並排；截面弧度、扭轉及局部折區對齊力矩曲線。",
+        "seconds": [
+          70,
+          110
+        ]
+      }
+    },
+    {
+      "id": "K11003",
+      "question": "兩條反向安裝的薄帶，為什麼能讓展開的板子不再整個翻到另一側？",
+      "domain": "physics",
+      "mechanism_key": "structures.opposed_tape_spring_kinetic_energy_trapping",
+      "answer_target": "相反曲率帶簧疊加的力矩曲線形成兩側翻折能障；展開釋出的能量低於反向翻折所需能量時，可避免大幅越界。",
+      "scope": "來源成對同型帶簧、指定初始角與理想能量比較；鎖定後仍可小幅振盪，不稱無耗能立即靜止。",
+      "source_ids": [
+        "K11-S002"
+      ],
+      "source_locator": "S002 §3.1–3.2，printed pp.34–40 / PDF pp.41–47，Figs.3.1–3.5",
+      "premise_status": "screened",
+      "notes": "來源直接工程模型；未重做部署實驗，不提供製作或安裝指令。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "比較越界所需能量與剛抵達直線的動能，分清止住大翻折和完全停止。",
+        "visual": "原創示意板過直線的動能，與成對曲線下可吸收的能量面積對照。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "K11004",
+      "question": "細長片被兩端壓縮時，為什麼可能還沒被壓扁就先向旁邊彎？",
+      "domain": "physics",
+      "mechanism_key": "structures.column_axial_load_lateral_destabilization",
+      "answer_target": "側向偏移讓軸向壓力產生額外彎矩，削弱回復剛性；細長構件可先失穩，短粗構件則可能先材料壓潰。",
+      "scope": "理想彈性細長柱及受控邊界；長度、端部固定只作同核心條件，不各算新題。",
+      "source_ids": [
+        "K11-S003"
+      ],
+      "source_locator": "S003 PDF pp.15–27 deformed equilibrium / simply-supported column；pp.45–48 Failure of columns",
+      "premise_status": "screened",
+      "notes": "原創細長片入口，來源直接柱模型；與F10011黏性落流盤繞的流動耗散模型不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "知道承載失敗不一定等於材料先達破壞強度。",
+        "visual": "壓力線與彎後偏移的力臂；並排短柱壓潰和細長柱側彎的概念圖。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "K11005",
+      "question": "薄殼還沒到理想承載極限，為什麼小凹痕或額外輕推就可能讓它失穩？",
+      "domain": "physics",
+      "mechanism_key": "structures.shell_imperfection_and_finite_disturbance_barrier",
+      "answer_target": "凹痕或不均勻載入改變局部失穩路徑；即使低於當期失穩載荷，額外擾動仍可能跨過已降低的能障。",
+      "scope": "分清既有缺陷改變載荷門檻、額外擾動跨能障兩個角色；採薄球殼與薄圓筒指定模型，不報通用安全倍率。",
+      "source_ids": [
+        "K11-S004",
+        "K11-S005"
+      ],
+      "source_locator": "S004 PDF p.2、pp.4–7 Figs.2–8；S005 PDF pp.6–9 §4、§5.1–5.3，Figs.5、8、10",
+      "premise_status": "screened",
+      "notes": "來源直接模型／研究；兩條追問合成一核。非裂縫長大機制H3060，也不把圓筒數值移用球殼。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能區分理想計算值、實物缺陷後門檻與抗擾動餘裕。",
+        "visual": "同一球殼的近完美／有凹痕對照，加壓後再以局部探針示意能障；非實拍試驗。",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "K11006",
+      "question": "同樣把薄球殼壓凹，為什麼有時停在一個凹坑，有時卻一路塌下去？",
+      "domain": "physics",
+      "mechanism_key": "structures.shell_postbuckling_pressure_volume_control",
+      "answer_target": "固定外壓會持續推動後屈曲塌陷；固定體積改變時，凹陷後壓力下降，可停在穩定的局部凹坑。",
+      "scope": "來源彈性球殼、指定壓力或指定體積變化的模型；不把塑膠瓶永久凹陷、所有封閉容器都當同條件。",
+      "source_ids": [
+        "K11-S005"
+      ],
+      "source_locator": "S005 PDF pp.6–7 / printed162–163，§4，prescribed pressure / prescribed volume change段與Figs.4、6–7",
+      "premise_status": "screened",
+      "notes": "來源直接模型；與K11005的起始門檻不同，本題是外部控制的回授如何改變失穩後終點。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道外力來源是否繼續作功，會改變凹陷能不能停住。",
+        "visual": "相同球殼模型兩條路：外壓維持／抽走體積固定；壓力讀值與凹陷深度同步。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "K11007",
+      "question": "一拉就整片展開的摺紙，為什麼越拉越寬，不像橡皮條變細？",
+      "domain": "physics",
+      "mechanism_key": "structures.miura_fold_compatible_auxetic_kinematics",
+      "answer_target": "固定形狀的面片繞相連摺線轉動，單元幾何把長寬展開綁在一起，而非面片本身被拉長。",
+      "scope": "規則三浦摺、近剛性面片與相容摺線；不擴成所有折紙或所有波紋板都會橫向擴張。",
+      "source_ids": [
+        "K11-S006"
+      ],
+      "source_locator": "S006 主文PDF pp.1–2，Fig.1、Eqs.1–3",
+      "premise_status": "screened",
+      "notes": "來源直接例子；與X5002針織線圈彎曲／滑移伸展不同；用同一題包含負泊松比名稱，不另計名詞題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用面片標記看出尺寸變化來自轉動，並預測寬度方向。",
+        "visual": "同一單元兩格圖：保持面片邊長，疊長寬外框與轉動摺線。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "K11008",
+      "question": "能整片展開的三浦摺紙，為什麼彎起來時還要讓面片變形，並形成馬鞍？",
+      "domain": "physics",
+      "mechanism_key": "structures.miura_nonplanar_bending_requires_extra_panel_modes",
+      "answer_target": "原有剛性面片摺線只容許平面展開；加入面片內彎曲自由度後，兩方向曲率耦合，可出現馬鞍形。",
+      "scope": "原文用面片對角線額外摺線近似彎曲；小增量規則單元，不宣稱面板永遠完全剛性又能彎成任意形。",
+      "source_ids": [
+        "K11-S006"
+      ],
+      "source_locator": "S006 主文PDF p.3，Fig.3、Eq.6與nonplanar bending段",
+      "premise_status": "screened",
+      "notes": "來源直接模型；與K11007比較同一摺紋的不同可行自由度，作者列近似對供覆核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "避免把平面負泊松比直接當作任意彎曲形狀的答案。",
+        "visual": "剛性菱形先鎖住彎曲，再顯示對角線變形與正負曲率。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "K11009",
+      "question": "同樣是立體摺紋薄片，為什麼有的越拉越寬，有的反而變窄？",
+      "domain": "physics",
+      "mechanism_key": "structures.kirigami_hinge_buckling_open_face_deformation",
+      "answer_target": "細連接處先向平面外屈曲；大伸長形成摺痕後，切口圍出的開放面仍能變形，允許橫向收縮，與全為剛性面的摺紙不同。",
+      "scope": "正交方形切口網格、特定厚度／連接寬度；初次彈性屈曲、後續塑性成摺、成摺後再拉三階段明列。",
+      "source_ids": [
+        "K11-S007",
+        "K11-S006"
+      ],
+      "source_locator": "S007 主文PDF pp.1–3，Figs.1–3，initial response／permanent folds／not all the faces are rigid段；S006主文PDF pp.1–2 Fig.1、Eqs.1–3（三浦摺比較）",
+      "premise_status": "screened",
+      "notes": "來源直接研究；不同拉伸方向的紋樣合在同題、不另拆。未看補充影片，圖示須重畫並驗三階段。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "從看起來相似的摺紋，找出封閉剛性面與可改形孔洞的差別。",
+        "visual": "同尺度三浦單元與剪縫單元並排，保留實面邊長、標開口對角線與外框寬度。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "K11010",
+      "question": "硬薄層黏在軟底上被擠皺時，為什麼常出現一排相近間距，而不是只拱一大包？",
+      "domain": "physics",
+      "mechanism_key": "structures.film_substrate_wrinkle_wavelength_competition",
+      "answer_target": "薄層彎曲不喜歡太密的小波，軟基底變形又不喜歡太寬的大波，兩者競爭選出波長。",
+      "scope": "黏結良好、薄硬膜／厚軟彈性基底、適度壓縮；失黏、大幅摺疊及一般老化皮膚另查。",
+      "source_ids": [
+        "K11-S008"
+      ],
+      "source_locator": "S008 §2，printed350–351 / PDF pp.2–3，Eq.1–5、Fig.1",
+      "premise_status": "screened",
+      "notes": "來源直接模型；不把厚度或模數公式每換一項就新開題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能判斷皺紋尺度反映上下兩層共同限制，不只是擠多少。",
+        "visual": "同一多餘長度排成密波／疏波，分色表示薄層彎曲與基底變形。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "K11011",
+      "question": "把薄膜兩端拉緊，為什麼反而可能沿著拉力方向長出皺紋？",
+      "domain": "physics",
+      "mechanism_key": "structures.clamped_tension_sheet_transverse_compression",
+      "answer_target": "夾端阻止橫向收縮，和可自由收縮的主體不相容，產生局部橫向壓縮；受拉不代表每個方向都是拉應力。",
+      "scope": "兩短邊夾持的薄長方形彈性膜，長邊自由；自由滑動端條件不等同；不宣稱拉得愈大皺紋必愈多。",
+      "source_ids": [
+        "K11-S009"
+      ],
+      "source_locator": "S009 PDF pp.1–2，§I Introduction、Fig.1 A–D",
+      "premise_status": "screened",
+      "notes": "來源直接數值模型；負橫向應變本身不是壓應力；夾持與自由收縮對照才是本題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能同時追兩個方向的應力，不再把拉緊視為必然消皺。",
+        "visual": "端點可滑／完全夾住兩種邊界；畫收縮外形，再疊橫向壓縮區。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "K11012",
+      "question": "把圓紙片中央壓進圓環，為什麼會翹起一塊，而不是均勻變成小碗？",
+      "domain": "physics",
+      "mechanism_key": "structures.dcone_geometric_inextensibility_strain_localization",
+      "answer_target": "整圈貼成圓錐會違反近乎不伸長的限制；薄片局部離開圓環，把伸長集中到尖點附近，保留大部分區域只彎曲。",
+      "scope": "自然平整薄片、中央壓入剛性圓環的純彈性近似；無切口、無預摺，不由本題推論永久紙痕。",
+      "source_ids": [
+        "K11-S010"
+      ],
+      "source_locator": "S010 §1 printed672–673 / PDF pp.2–3；§4(a) printed682–683 / PDF pp.12–13，Fig.6",
+      "premise_status": "screened",
+      "notes": "來源直接模型；與K11001同樣涉及伸長代價，但本題新增閉合周長和環接觸限制下的離環／局部化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂翹起不是隨機瑕疵，而是未剪開圓片難以均勻縮周長的出口。",
+        "visual": "紙面同心圓標記，圓環接觸弧與抬起區分色，尖點只作有限小區。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "K11013",
+      "question": "揉皺再攤開的薄片，為什麼能對「先前最多壓到哪裡」留下不同反應？",
+      "domain": "physics",
+      "mechanism_key": "structures.crumpled_sheet_interacting_bistable_history",
+      "answer_target": "局部凸凹區的翻轉門檻不同且會互相影響；超過先前最大壓縮會改寫集體狀態與力的跳變序列。",
+      "scope": "原研究揉後攤平Mylar的慢速循環與小於初次揉皺的載入；記憶是可量測的歷史依賴，不是認知或永久無漂移儲存。",
+      "source_ids": [
+        "K11-S011"
+      ],
+      "source_locator": "S011 PDF pp.1–5，Global Response、Mesoscopic Excitations、Interactions Between Hysterons，Figs.1、3–4",
+      "premise_status": "screened",
+      "notes": "來源直接實驗；已讀材料老化慢漂移限制；與H3090時間鬆弛不同，不用聲音分布另開題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能用回到舊範圍與超過舊上限的對照，辨認幾何狀態被改寫。",
+        "visual": "原創力—位移軌跡與兩個局部翻轉區同步，標舊壓縮上限。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "K11014",
+      "question": "一個鬆垮的桿索骨架，為什麼不增加支桿、只先拉緊纜索就可能站穩？",
+      "domain": "physics",
+      "mechanism_key": "structures.tensegrity_prestress_geometric_stiffness",
+      "answer_target": "已有張力的構件轉向會改變力的分量，提供不靠一階伸長的回復剛性；但不同模式下預拉力增加也可能變軟。",
+      "scope": "來源expanded-octahedron及其加索對照；限其自平衡預應力與小變形，不說任何欠約束骨架都能靠拉緊穩定。",
+      "source_ids": [
+        "K11-S012"
+      ],
+      "source_locator": "S012 PDF pp.1–6 §1–3；p.8、pp.10–11 Fig.6／§7",
+      "premise_status": "screened",
+      "notes": "來源直接模型；不同於D2252預壓混凝土避免受拉開裂，亦不是J6001補足獨立剛體接觸數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清構件材料本身的硬度與先有內力造成的幾何回復。",
+        "visual": "原文骨架拓撲的原創模型，未預拉／預拉並排，突出索方向變化及回復力。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "K11015",
+      "question": "彈簧越拉越用力，檯燈卻為什麼能停在不同高度，不只停在一個平衡點？",
+      "domain": "physics",
+      "mechanism_key": "structures.spring_linkage_gravity_static_balancing",
+      "answer_target": "適當彈簧力與連桿幾何配合，使彈性能與重力位能互換；指定負載在一段行程內可連續平衡。",
+      "scope": "理想靜平衡彈簧連桿、適當近零自由長度彈簧；非任意檯燈或任意負載；摩擦和工作行程仍有限制。",
+      "source_ids": [
+        "K11-S013"
+      ],
+      "source_locator": "S013 PDF p.5 §2.2 Anglepoise Lamp；pp.1–3 ideal-zero-stiffness boundaries",
+      "premise_status": "screened",
+      "notes": "來源直接例子；與J6019固定曲率捲帶的恆力生成不同；不把換較重燈頭仍平衡當保證。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "明白不用每個位置上鎖，也可能透過力與幾何配合抵銷重量。",
+        "visual": "同一燈臂低／中／高三格，同步能量交換及重力作用方向；理想圖另標假設。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "K11-NA01",
+      "question": "薄片摺成U形為什麼較難彎？",
+      "existing_id": "P103",
+      "reason": "若僅說截面幾何改變剛性，仍是舊核；本批只收K11001可驗的雙向曲率／伸長限制。"
+    },
+    {
+      "id": "K11-NA02",
+      "question": "紙盒沿壓線折，為什麼比沒壓線容易？",
+      "existing_id": "Q9001",
+      "reason": "舊題已含多層局部分離、層間滑移與折彎阻力。"
+    },
+    {
+      "id": "K11-NA03",
+      "question": "長長的捲帶拉出來，拉力怎麼還差不多？",
+      "existing_id": "J6019",
+      "reason": "固定曲率逐段展直的恆力機制已有。"
+    },
+    {
+      "id": "K11-NA04",
+      "question": "金屬板折過放手，為什麼會彈回一點？",
+      "existing_id": "D2144",
+      "reason": "彈性回復與殘留塑性舊題，換薄殼不新增。"
+    },
+    {
+      "id": "K11-NA05",
+      "question": "兩層材料受熱後為什麼能自己彎起？",
+      "existing_id": "P076",
+      "reason": "差異伸長造成彎曲已有；未取得新結構轉換證據不另計。"
+    },
+    {
+      "id": "K11-NA06",
+      "question": "沒有轉軸的薄片鉸鏈，為什麼也能轉？",
+      "existing_id": "J6006",
+      "reason": "細葉彈性彎曲提供柔性導向已有。"
+    },
+    {
+      "id": "K11-NA07",
+      "question": "薄片鉸鏈移動時為什麼還會偏移一點？",
+      "existing_id": "J6007",
+      "reason": "有限幾何造成寄生運動與折疊補償已有。"
+    },
+    {
+      "id": "K11-NA08",
+      "question": "彈跳玩具翻面後為什麼突然跳回來？",
+      "existing_id": "E9010",
+      "reason": "只有越過幾何門檻釋能的說法，與舊花藥跳開條件同層級；未實讀玩具特有機理不新增。"
+    },
+    {
+      "id": "K11-NA09",
+      "question": "中空骨架裡加小支柱，為什麼比較不容易凹？",
+      "existing_id": "B2175",
+      "reason": "目前只是內部支撐，未補不同失穩模式，不用不同物件重算。"
+    },
+    {
+      "id": "K11-NA10",
+      "question": "紙張沿不同方向彎，為什麼手感不同？",
+      "existing_id": "D2197",
+      "reason": "纖維取向異向性已在舊題；本批的摺紋幾何不以此代答。"
+    },
+    {
+      "id": "K11-NA11",
+      "question": "揉皺的塑膠為什麼慢慢變鬆？",
+      "existing_id": "H3090",
+      "reason": "若只追時間鬆弛／蠕變仍是舊核；與K11013幾何翻轉歷史分開。"
+    },
+    {
+      "id": "K11-NA12",
+      "question": "先把混凝土壓緊，為什麼能減少拉裂？",
+      "existing_id": "D2252",
+      "reason": "預應力抵銷工作拉應力已有，不等於K11014幾何剛性。"
+    },
+    {
+      "id": "K11-NA13",
+      "question": "同一根柱子只改長度或端點，臨界力為什麼變？",
+      "existing_id": "K11004",
+      "reason": "留作同一屈曲機制的條件，不逐公式參數另計。",
+      "source_ids": [
+        "K11-S003"
+      ]
+    },
+    {
+      "id": "K11-NA14",
+      "question": "切口方向旋轉後，立體花紋怎麼變？",
+      "existing_id": "K11009",
+      "reason": "同一切口連接失穩的紋樣變體，不為每個角度另開題。",
+      "source_ids": [
+        "K11-S007"
+      ]
+    },
+    {
+      "id": "K11-NA15",
+      "question": "薄殼的凹痕更深，承載一定按比例下降嗎？",
+      "existing_id": "K11005",
+      "reason": "門檻與缺陷關係是同核心深入段；不拆參數曲線。",
+      "source_ids": [
+        "K11-S004",
+        "K11-S005"
+      ]
+    },
+    {
+      "id": "K11-NA16",
+      "question": "皺紋的間距能用來反推薄層模數嗎？",
+      "existing_id": "K11010",
+      "reason": "只是同一波長選擇關係的反算；可用作同題收束，不另算量測新核。",
+      "source_ids": [
+        "K11-S008"
+      ]
+    },
+    {
+      "id": "K11-NA17",
+      "question": "三浦摺是什麼，負泊松比又是什麼？",
+      "existing_id": "K11007",
+      "reason": "名稱與定義沒有額外因果，保留在長寬對照題內。",
+      "source_ids": [
+        "K11-S006"
+      ]
+    }
+  ]
+}

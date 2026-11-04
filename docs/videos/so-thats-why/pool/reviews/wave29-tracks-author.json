@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "d45e37fc4ff32672b9bb97b6d4e33621537b7a09",
+    "selected": 3083,
+    "raw_records": 3458,
+    "not_added": 1286,
+    "pool_sha256": "36c7cefc4dd174b3359461229840e5d411f878c64f1ecf36470eb19de4e702be",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3083.json.gz",
+      "sha256": "2d5b5340e3c64858a94efad5b73ca8971984ef4fe069d4303813ad030161e7c3"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave29-tracks.json",
+      "sha256": "1ada60d816f673a567b894753d1108fb49f07dcce654854b91e54a98b242e528"
+    },
+    {
+      "file": "reviews/wave29-tracks-themes.json",
+      "sha256": "a994680df7f0983605f993575631dd025c8d525662612bbc4b9dbd14836c2a35"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 5,
+    "candidate_sources": 5,
+    "not_added_only_sources": 0,
+    "not_added": 14,
+    "near_pairs": 14,
+    "themes": 3
+  },
+  "scope": "同一步的層間變形與進出趾痕、選擇性留印，以及判斷痕跡在動物生前或死後形成的兩件標本。",
+  "dedup_reading": {
+    "method": "逐列機械檢索全3458 raw與1286 NA的足印、足跡、咬痕、三維步態與相關英詞，再定向讀層序、壓力、顆粒、步幅及傷口的完整問答與範圍。",
+    "scan_files": [
+      {
+        "file": ".cache/wave29-tracks-lexical.json",
+        "sha256": "f90e798f94b5606bb5e4e17b5d790a295dd51d52c044343aeca544954c4842cd"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P29001",
+      "b": "G13001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "沙堆承力歷史會左右底部壓力；這題比較直接受踩表面塌回與透過層間變形留下的趾形。",
+      "a_snapshot": {
+        "id": "P29001",
+        "question": "踩過的表面只剩一團凹坑，為什麼剝開下層反而認得出三根腳趾？",
+        "answer_target": "足部的壓入使下面的層也偏移。半流質試材的表面在抬腳後會塌回去，原先趾形被蓋掉。部分較淺的下伏層仍留下三趾變形，繼續向下則會逐漸失去輪廓。",
+        "scope": "限鴯鶓足標本壓入硬底上的分層水泥試材。可辨的淺層變形與腳趾真的穿過某層須分開；越深越清楚並非一般規律。"
+      },
+      "b_snapshot": {
+        "id": "G13001",
+        "question": "沙堆中央最高，底下承受的壓力為什麼反而可能比較小？",
+        "answer_target": "同種顆粒以集中落料或廣面撒落堆置，可留下不同接觸承力方向；重量向周圍分配，使集中堆置的圓錐堆底壓在中央出現低谷。",
+        "scope": "限無側牆圓錐堆、足夠剛的底座與兩種建堆程序；整個底面積分仍對應總重量，不能畫成重量消失。力鏈方向是解釋，非直接重建該三維堆全部接觸。"
+      }
+    },
+    {
+      "a": "P29001",
+      "b": "G13006",
+      "proposed": "distinct_pending_non_author",
+      "reason": "球入顆粒時的減速與停時，不能解釋卸載後上下層保存趾形的差別。",
+      "a_snapshot": {
+        "id": "P29001",
+        "question": "踩過的表面只剩一團凹坑，為什麼剝開下層反而認得出三根腳趾？",
+        "answer_target": "足部的壓入使下面的層也偏移。半流質試材的表面在抬腳後會塌回去，原先趾形被蓋掉。部分較淺的下伏層仍留下三趾變形，繼續向下則會逐漸失去輪廓。",
+        "scope": "限鴯鶓足標本壓入硬底上的分層水泥試材。可辨的淺層變形與腳趾真的穿過某層須分開；越深越清楚並非一般規律。"
+      },
+      "b_snapshot": {
+        "id": "G13006",
+        "question": "同一顆球落進顆粒裡，衝得更快、埋得更深，為什麼不一定停得更久？",
+        "answer_target": "量測中的減速同時受速度平方項與深度相關阻力控制；較快入射增加阻力並改變整段減速路徑，使更深不必對應更長停止時間。",
+        "scope": "限固定鋼球與準備一致的乾玻璃珠床；深度項是經驗性friction-like模型，微觀形式未完全解決，不把所有沙土或其他撞擊速度套成同曲線。"
+      }
+    },
+    {
+      "a": "P29001",
+      "b": "R28002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "繃點受拉位置由底層固定的布紋辨識，與足下多深度試件及回流對照不同。",
+      "a_snapshot": {
+        "id": "P29001",
+        "question": "踩過的表面只剩一團凹坑，為什麼剝開下層反而認得出三根腳趾？",
+        "answer_target": "足部的壓入使下面的層也偏移。半流質試材的表面在抬腳後會塌回去，原先趾形被蓋掉。部分較淺的下伏層仍留下三趾變形，繼續向下則會逐漸失去輪廓。",
+        "scope": "限鴯鶓足標本壓入硬底上的分層水泥試材。可辨的淺層變形與腳趾真的穿過某層須分開；越深越清楚並非一般規律。"
+      },
+      "b_snapshot": {
+        "id": "R28002",
+        "question": "畫布早離開繃架，怎麼還看得出哪一邊靠近原來的大布邊？",
+        "answer_target": "布繃在固定點之間時，線向會在受拉邊緣週期性偏轉。上膠打底把變形固定下來。X光角度圖裡沿邊的一列扇形偏轉，配合底層是否覆蓋折邊，有助判斷它在大張上底布上的位置。",
+        "scope": "限文中強烈的原始繃布痕及所述製布流程。後來重繃的痕跡需分辨，缺線或缺圖不能推精確裁接位置。密度圖與角度圖回答不同問題。"
+      }
+    },
+    {
+      "a": "P29002",
+      "b": "P29001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "有無直接接觸是判準。此題的入/出痕由足趾兩次穿過同一水平面產生；上一題是足下受力變形。",
+      "a_snapshot": {
+        "id": "P29002",
+        "question": "同一隻腳只踩一步，石板裡怎麼多出一組像拖過的趾痕？",
+        "answer_target": "珍珠雞下踩時側趾張開，拔出時側趾收攏，中趾沿彎曲路徑撤回。同一深度先被進入的趾、再被退出的趾經過，位置可以分開；剖到更深處時，可能只剩最長中趾的痕。",
+        "scope": "現代珠雞的X光運動資料與早侏羅紀穿透岩板是兩種證據。不同層切過的是三維運動路徑，不能把岩板當成逐幀影片或由孤立痕跡定物種。"
+      },
+      "b_snapshot": {
+        "id": "P29001",
+        "question": "踩過的表面只剩一團凹坑，為什麼剝開下層反而認得出三根腳趾？",
+        "answer_target": "足部的壓入使下面的層也偏移。半流質試材的表面在抬腳後會塌回去，原先趾形被蓋掉。部分較淺的下伏層仍留下三趾變形，繼續向下則會逐漸失去輪廓。",
+        "scope": "限鴯鶓足標本壓入硬底上的分層水泥試材。可辨的淺層變形與腳趾真的穿過某層須分開；越深越清楚並非一般規律。"
+      }
+    },
+    {
+      "a": "P29002",
+      "b": "S10006",
+      "proposed": "distinct_pending_non_author",
+      "reason": "鼠跨步策略受障礙線索調整。珠雞題看腳在基底內三維進出造成額外痕跡。",
+      "a_snapshot": {
+        "id": "P29002",
+        "question": "同一隻腳只踩一步，石板裡怎麼多出一組像拖過的趾痕？",
+        "answer_target": "珍珠雞下踩時側趾張開，拔出時側趾收攏，中趾沿彎曲路徑撤回。同一深度先被進入的趾、再被退出的趾經過，位置可以分開；剖到更深處時，可能只剩最長中趾的痕。",
+        "scope": "現代珠雞的X光運動資料與早侏羅紀穿透岩板是兩種證據。不同層切過的是三維運動路徑，不能把岩板當成逐幀影片或由孤立痕跡定物種。"
+      },
+      "b_snapshot": {
+        "id": "S10006",
+        "question": "同樣碰到前方障礙，老鼠為什麼有時跨大步、有時先縮步？",
+        "answer_target": "鬍鬚給出的障礙位置須與當下足部位置和身體速度整合，改變前足先落在障礙前或直接跨過的策略。",
+        "scope": "限頭固定跑輪小鼠、接觸時正在擺動的前足；運動學模型預測不是逐條神經電路已解碼，不概括自由活動時視覺無用。"
+      }
+    },
+    {
+      "a": "P29002",
+      "b": "B2329",
+      "proposed": "distinct_pending_non_author",
+      "reason": "沙漠蟻依步幅估距，和趾在同層交出多個位置的幾何紀錄不同。",
+      "a_snapshot": {
+        "id": "P29002",
+        "question": "同一隻腳只踩一步，石板裡怎麼多出一組像拖過的趾痕？",
+        "answer_target": "珍珠雞下踩時側趾張開，拔出時側趾收攏，中趾沿彎曲路徑撤回。同一深度先被進入的趾、再被退出的趾經過，位置可以分開；剖到更深處時，可能只剩最長中趾的痕。",
+        "scope": "現代珠雞的X光運動資料與早侏羅紀穿透岩板是兩種證據。不同層切過的是三維運動路徑，不能把岩板當成逐幀影片或由孤立痕跡定物種。"
+      },
+      "b_snapshot": {
+        "id": "B2329",
+        "question": "沙漠蟻回家時估計走了多遠，會受自己的步幅影響嗎？",
+        "answer_target": "步幅改變造成有方向性的距離誤估，支持步行訊息加入回家向量",
+        "scope": "只描述既有研究結果，不提供傷害或改造動物的重現方法"
+      }
+    },
+    {
+      "a": "P29003",
+      "b": "P041",
+      "proposed": "distinct_pending_non_author",
+      "reason": "力與接觸面積提供背景。本題用前後足分載加不同土地承載窗口，預測完整四足步態如何只留部分足印。",
+      "a_snapshot": {
+        "id": "P29003",
+        "question": "一串蜥腳類足跡只有前腳印，能斷定後腳浮在水裡嗎？",
+        "answer_target": "前後腳承擔的重量與接地面積可以不同。在一段基底強度範圍內，地面能撐住其中一種腳的載荷，另一種腳卻使它發生明顯破壞變形。四足著地於是也能只留下半套足印。換一組重心與足面積估值，優先留下的腳甚至可以互換。",
+        "scope": "限腕龍與梁龍重建參數的有限元素模型。地面承載取決於基底剪切強度、腳形與負荷，不能把腳壓直接等同於剪切強度的數值。並非某一條足跡的唯一解。"
+      },
+      "b_snapshot": {
+        "id": "P041",
+        "question": "針尖為什麼能用不大的力刺進材料？",
+        "answer_target": "小接觸面積集中應力；刺穿還涉及材料破壞而非壓力單獨決定。",
+        "scope": "不作人體或武器操作展示"
+      }
+    },
+    {
+      "a": "P29003",
+      "b": "P043",
+      "proposed": "distinct_pending_non_author",
+      "reason": "壓力單位無法單獨判定四足記錄偏差，尚需比較每足負荷、面積與基底破壞。",
+      "a_snapshot": {
+        "id": "P29003",
+        "question": "一串蜥腳類足跡只有前腳印，能斷定後腳浮在水裡嗎？",
+        "answer_target": "前後腳承擔的重量與接地面積可以不同。在一段基底強度範圍內，地面能撐住其中一種腳的載荷，另一種腳卻使它發生明顯破壞變形。四足著地於是也能只留下半套足印。換一組重心與足面積估值，優先留下的腳甚至可以互換。",
+        "scope": "限腕龍與梁龍重建參數的有限元素模型。地面承載取決於基底剪切強度、腳形與負荷，不能把腳壓直接等同於剪切強度的數值。並非某一條足跡的唯一解。"
+      },
+      "b_snapshot": {
+        "id": "P043",
+        "question": "把數字說成幾公斤的壓力，究竟少說了什麼？",
+        "answer_target": "區分質量、重量與壓力，以及面積和單位轉換不可省略。",
+        "scope": "生活用語釐清，不給設備操作值"
+      }
+    },
+    {
+      "a": "P29003",
+      "b": "P29001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "蜥腳類模型控制哪些腳先使基底明顯失效；鴯鶓試材比較同一足痕在不同層保存什麼。",
+      "a_snapshot": {
+        "id": "P29003",
+        "question": "一串蜥腳類足跡只有前腳印，能斷定後腳浮在水裡嗎？",
+        "answer_target": "前後腳承擔的重量與接地面積可以不同。在一段基底強度範圍內，地面能撐住其中一種腳的載荷，另一種腳卻使它發生明顯破壞變形。四足著地於是也能只留下半套足印。換一組重心與足面積估值，優先留下的腳甚至可以互換。",
+        "scope": "限腕龍與梁龍重建參數的有限元素模型。地面承載取決於基底剪切強度、腳形與負荷，不能把腳壓直接等同於剪切強度的數值。並非某一條足跡的唯一解。"
+      },
+      "b_snapshot": {
+        "id": "P29001",
+        "question": "踩過的表面只剩一團凹坑，為什麼剝開下層反而認得出三根腳趾？",
+        "answer_target": "足部的壓入使下面的層也偏移。半流質試材的表面在抬腳後會塌回去，原先趾形被蓋掉。部分較淺的下伏層仍留下三趾變形，繼續向下則會逐漸失去輪廓。",
+        "scope": "限鴯鶓足標本壓入硬底上的分層水泥試材。可辨的淺層變形與腳趾真的穿過某層須分開；越深越清楚並非一般規律。"
+      }
+    },
+    {
+      "a": "P29004",
+      "b": "E17006",
+      "proposed": "distinct_pending_non_author",
+      "reason": "死亡谷石移有薄冰受風推動的直接觀測；菊石是用殼肋與拖痕配對、軟體缺失估計死後接地，非冰推。",
+      "a_snapshot": {
+        "id": "P29004",
+        "question": "一條八公尺多的痕跡停在菊石殼旁，怎麼看出它可能沒活著爬過去？",
+        "answer_target": "拖痕末端的脊溝間距和殼肋對上，接近停處時有更多肋接觸，走向也轉了。連同殼內缺下顎的觀察，研究者重建出殼在死後被搬運、輕觸泥底並側倒的過程。",
+        "scope": "限CosmoCaixa標本MCFO 0492。保留8.5公尺且起點缺失，沿途脊數不單調。水流拖曳為解釋，未直接量得流速，也不能完全排除緩坡作用。"
+      },
+      "b_snapshot": {
+        "id": "E17006",
+        "question": "死亡谷的石頭沒有浮起來，薄薄的冰怎麼仍能推著它走？",
+        "answer_target": "所觀測事件中，風與水流推動大面積薄冰片，冰片把力傳給仍在濕泥底上的石頭；冰片破裂、越過低石或接觸位置不同，使鄰石可能不同步。",
+        "scope": "限Racetrack Playa 2013–2014直接觀察與GPS事件；不把歷史所有軌跡、最大岩塊或所有冰推石都概括成已測。不是厚冰浮載石頭，也不是石頭自己滑動發動。"
+      }
+    },
+    {
+      "a": "P29004",
+      "b": "P29002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "見多道痕時，菊石證據是殼肋接地；珠雞為不同趾與不同入出位置。",
+      "a_snapshot": {
+        "id": "P29004",
+        "question": "一條八公尺多的痕跡停在菊石殼旁，怎麼看出它可能沒活著爬過去？",
+        "answer_target": "拖痕末端的脊溝間距和殼肋對上，接近停處時有更多肋接觸，走向也轉了。連同殼內缺下顎的觀察，研究者重建出殼在死後被搬運、輕觸泥底並側倒的過程。",
+        "scope": "限CosmoCaixa標本MCFO 0492。保留8.5公尺且起點缺失，沿途脊數不單調。水流拖曳為解釋，未直接量得流速，也不能完全排除緩坡作用。"
+      },
+      "b_snapshot": {
+        "id": "P29002",
+        "question": "同一隻腳只踩一步，石板裡怎麼多出一組像拖過的趾痕？",
+        "answer_target": "珍珠雞下踩時側趾張開，拔出時側趾收攏，中趾沿彎曲路徑撤回。同一深度先被進入的趾、再被退出的趾經過，位置可以分開；剖到更深處時，可能只剩最長中趾的痕。",
+        "scope": "現代珠雞的X光運動資料與早侏羅紀穿透岩板是兩種證據。不同層切過的是三維運動路徑，不能把岩板當成逐幀影片或由孤立痕跡定物種。"
+      }
+    },
+    {
+      "a": "P29005",
+      "b": "A27002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "渦蟲的傷口方向決定再生頭尾，新題由反應骨包覆嵌牙判生前受傷順序。",
+      "a_snapshot": {
+        "id": "P29005",
+        "question": "恐龍骨裡卡著別隻恐龍的牙，怎麼看出牠挨咬時還活著？",
+        "answer_target": "嵌入尾椎的齒冠可提供咬者的形態線索；包住齒冠一部分的新生骨則決定先後。牙已在傷口裡，受傷的鴨嘴龍類仍活到骨頭能夠修復。",
+        "scope": "限PBMNH.P.09.039兩節尾椎。研究用齒形及鋸齒與已知樣本比較後歸於T. rex。單獨咬痕、普通骨融合或缺少癒合都不能在其他個案作同樣判斷。"
+      },
+      "b_snapshot": {
+        "id": "A27002",
+        "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+        "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+        "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。"
+      }
+    },
+    {
+      "a": "P29005",
+      "b": "N135",
+      "proposed": "distinct_pending_non_author",
+      "reason": "穿切關係能排岩脈地層先後，反應骨證據額外需要活體修復發生在牙齒嵌入之後。",
+      "a_snapshot": {
+        "id": "P29005",
+        "question": "恐龍骨裡卡著別隻恐龍的牙，怎麼看出牠挨咬時還活著？",
+        "answer_target": "嵌入尾椎的齒冠可提供咬者的形態線索；包住齒冠一部分的新生骨則決定先後。牙已在傷口裡，受傷的鴨嘴龍類仍活到骨頭能夠修復。",
+        "scope": "限PBMNH.P.09.039兩節尾椎。研究用齒形及鋸齒與已知樣本比較後歸於T. rex。單獨咬痕、普通骨融合或缺少癒合都不能在其他個案作同樣判斷。"
+      },
+      "b_snapshot": {
+        "id": "N135",
+        "question": "一條穿過地層的岩脈，怎麼能幫地層定年？",
+        "answer_target": "先有地層後被侵入的先後限制。",
+        "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages"
+      }
+    },
+    {
+      "a": "P29005",
+      "b": "P29004",
+      "proposed": "distinct_pending_non_author",
+      "reason": "殼形與沉積溝辨死後移動；骨修復覆蓋齒冠則顯示咬傷後仍活，各有獨立判準。",
+      "a_snapshot": {
+        "id": "P29005",
+        "question": "恐龍骨裡卡著別隻恐龍的牙，怎麼看出牠挨咬時還活著？",
+        "answer_target": "嵌入尾椎的齒冠可提供咬者的形態線索；包住齒冠一部分的新生骨則決定先後。牙已在傷口裡，受傷的鴨嘴龍類仍活到骨頭能夠修復。",
+        "scope": "限PBMNH.P.09.039兩節尾椎。研究用齒形及鋸齒與已知樣本比較後歸於T. rex。單獨咬痕、普通骨融合或缺少癒合都不能在其他個案作同樣判斷。"
+      },
+      "b_snapshot": {
+        "id": "P29004",
+        "question": "一條八公尺多的痕跡停在菊石殼旁，怎麼看出它可能沒活著爬過去？",
+        "answer_target": "拖痕末端的脊溝間距和殼肋對上，接近停處時有更多肋接觸，走向也轉了。連同殼內缺下顎的觀察，研究者重建出殼在死後被搬運、輕觸泥底並側倒的過程。",
+        "scope": "限CosmoCaixa標本MCFO 0492。保留8.5公尺且起點缺失，沿途脊數不單調。水流拖曳為解釋，未直接量得流速，也不能完全排除緩坡作用。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P29-S001",
+      "scope": "PDF pp5–11擇讀§3.2至§5，包括較硬/半流質層的印象、兩個深度與有限底層。實際目讀pp8–9 Figs7–9。另核p1三個實驗的區分。",
+      "locator": "§3.2.3–4；§4末與§5；Figs6–9，印刷頁259–263。",
+      "read_via": "web核對原研究，指定UA HTTP200取得研究者公開PDF。本機抽文，圖頁另目讀。",
+      "cache": {
+        "file": ".cache/wave29-tracks-emu.pdf",
+        "sha256": "9cdfca0b7a8c7a492ca5b879a6b1563d6f7475908a19b51c978c519282355036",
+        "text_file": ".cache/wave29-tracks-emu.txt",
+        "text_sha256": "fcdd756ecf24b36b54c1f7ca4048c752259a140feb7a6b424361c80f9491bbad"
+      }
+    },
+    {
+      "source_id": "P29-S002",
+      "scope": "作者稿PDF pp4、6–9、11–12，實驗與主要結果、討論、圖說；pp21–22 Figs1/2目讀。核期刊原文標識，未讀補充影片或重建原始資料。",
+      "locator": "PDF pp4、6–9；Table2、Figs1d–h、2b–d（pp21–22）。",
+      "read_via": "web核對原研究，指定UA HTTP200取得研究者公開PDF。本機抽文，圖頁另目讀。",
+      "cache": {
+        "file": ".cache/wave29-tracks-loop.pdf",
+        "sha256": "1b6d9120eacd3ab8958a7c1fbf711252113a399ddfcb8431d60179fac6345e1f",
+        "text_file": ".cache/wave29-tracks-loop.txt",
+        "text_sha256": "0c1a835dad70719f6ebbb5c05a6412a9cf6158cf6d2a3b8ec14a76c9bd60fd49"
+      }
+    },
+    {
+      "source_id": "P29-S003",
+      "scope": "PMC L99–152，Intro、Methods表1、Results及Fig2圖說、Discussion。只讀圖說和表數值，未目讀圖2圖像或執行模型。",
+      "locator": "PMC L107–141表1與Fig2圖說；L143–152解釋與限制。",
+      "read_via": "PMC web.open分段成功，將工具實際回傳的原文與行號存成文字供覆核。EuropePMC XML用指定UA回500。正文閱讀採PMC回傳，沒有本機有效PDF。",
+      "cache": {
+        "file": ".cache/wave29-tracks-sauropod-web.txt",
+        "sha256": "25038cd5cb5c0c5eab877fdfed866b270d5eb0347cd61932bd18c7ea42edca99"
+      }
+    },
+    {
+      "source_id": "P29-S004",
+      "scope": "PDF pp1–2標本身份與Fig1圖說、pp4–7 Description、Interpretation and review、Table1及Conclusions。目讀p5 Fig3。未操作3D模型、未看附片。",
+      "locator": "MCFO 0492，PDF p4 Description、p5 Fig3、p6 Table1、p7 Conclusions。",
+      "read_via": "web核對原研究，指定UA HTTP200取得研究者公開PDF。本機抽文，圖頁另目讀。",
+      "cache": {
+        "file": ".cache/wave29-tracks-ammonite.pdf",
+        "sha256": "b4804ced6a0ad17106d79d3e1085bfb906768e1338586f0b255e8daf85a27507",
+        "text_file": ".cache/wave29-tracks-ammonite.txt",
+        "text_sha256": "cd41773612b29c5744565669d6b542b64d3b51117f3f771f4311a2918750f97b"
+      }
+    },
+    {
+      "source_id": "P29-S005",
+      "scope": "PMC L115–157、L165–167。讀尾椎/嵌入齒冠、反應骨、CT與齒形比較、癒合含義及保存機構。Figs1–4僅讀圖說，沒有目讀CT原圖或重做鑑齒統計。",
+      "locator": "Results L122–150；Discussion L151–157；Materials and Methods L165–167。",
+      "read_via": "PMC web.open分段成功，將工具實際回傳的原文與行號存成文字供覆核。EuropePMC XML用指定UA回500。正文閱讀採PMC回傳，沒有本機有效PDF。",
+      "cache": {
+        "file": ".cache/wave29-tracks-bite-web.txt",
+        "sha256": "e5bc7009231af71d3b4ecbbd1285569e8f67a7deced7df6ce73f78a706fdf033"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P29-S001",
+      "doi": "10.1016/j.palaeo.2004.12.022",
+      "primary_body_url": "https://s3.amazonaws.com/publicationslist.org/data/jesper.milan/ref-13/2006%20-%20Mil%C3%A0n%20_%20Bromley%20-%20PALAEO3.pdf",
+      "identity_relation": "2006期刊卷，版權頁2005。作者書目頁載原刊PDF。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、期刊版及索引為同文；S002、S003與S004有共同研究者，並非完全獨立的三次重現。"
+    },
+    {
+      "source_id": "P29-S002",
+      "doi": "10.1098/rsbl.2020.0309",
+      "primary_body_url": "https://researchonline.ljmu.ac.uk/id/eprint/13219/1/20200518_LoopingFootKinematics_MainText_Pre-Proofs.pdf",
+      "identity_relation": "2020期刊原研究，採作者在LJMU典藏的排版前稿，PMC7423045及期刊版同一研究。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、期刊版及索引為同文；S002、S003與S004有共同研究者，並非完全獨立的三次重現。"
+    },
+    {
+      "source_id": "P29-S003",
+      "doi": "10.1098/rsbl.2010.0403",
+      "primary_body_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030862/",
+      "identity_relation": "2010-06-30線上、2011期刊卷。同研究PMC保存版。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、期刊版及索引為同文；S002、S003與S004有共同研究者，並非完全獨立的三次重現。"
+    },
+    {
+      "source_id": "P29-S004",
+      "doi": "10.1371/journal.pone.0175426",
+      "primary_body_url": "https://researchonline.ljmu.ac.uk/id/eprint/6408/1/ammonite.pdf",
+      "identity_relation": "2017-05-10正式期刊PDF，LJMU館藏副本。同文PMC頁遇驗證，未作另一來源。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、期刊版及索引為同文；S002、S003與S004有共同研究者，並非完全獨立的三次重現。"
+    },
+    {
+      "source_id": "P29-S005",
+      "doi": "10.1073/pnas.1216534110",
+      "primary_body_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3732924/",
+      "identity_relation": "2013原刊、PMC同文。標本PBMNH.P.09.039。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、期刊版及索引為同文；S002、S003與S004有共同研究者，並非完全獨立的三次重現。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave29-tracks-fetch.json",
+      "sha256": "f8fc9d11f9ca0d0ec6b30ad7a960f60706f949fd66336c9327e8573eb678e960"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3030862/fullTextXML",
+      "route": "指定UA EuropePMC XML",
+      "result": "HTTP Error 500: ；改讀另路PMC web正文，快取保留工具原文。"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3732924/fullTextXML",
+      "route": "指定UA EuropePMC XML",
+      "result": "HTTP Error 500: ；改讀另路PMC web正文，快取保留工具原文。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5425149/",
+      "route": "web.open",
+      "result": "驗證頁。改讀研究者LJMU正式PDF副本。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "source_id": "P29-S001",
+      "file": ".cache/wave29-tracks-emu-p8.png",
+      "sha256": "2c53abb45df761e599e4aa12c6186fd6164802a27c5fc81def651efe085eeef8",
+      "read_scope": "Figs7/8軟試件切面與下伏面"
+    },
+    {
+      "source_id": "P29-S001",
+      "file": ".cache/wave29-tracks-emu-p9.png",
+      "sha256": "8075fa628ba623183f5eea41c14aeecf1dceaa32dee167b53be53780610bbd9b",
+      "read_scope": "Fig9約4cm下伏面"
+    },
+    {
+      "source_id": "P29-S002",
+      "file": ".cache/wave29-tracks-loop-p21.png",
+      "sha256": "12b735eaed37c0bf535b845d668f47c8c8174150f6e69b11d4403d61c86922fe",
+      "read_scope": "Fig1不同趾入出與深度區"
+    },
+    {
+      "source_id": "P29-S002",
+      "file": ".cache/wave29-tracks-loop-p22.png",
+      "sha256": "63097d633b916387dc2592e556c029d167166a46a9299875ad42097593689014",
+      "read_scope": "Fig2岩板上下表面及同組五層"
+    },
+    {
+      "source_id": "P29-S004",
+      "file": ".cache/wave29-tracks-ammonite-p5.png",
+      "sha256": "f8058e1f0ea038b0f422fdfae66fd44901db5cb36e6e4baaf17181d7b8f8f5d7",
+      "read_scope": "Fig3殼肋與末端接觸痕方向"
+    }
+  ],
+  "reading_limits": [
+    "五研究指定位實讀。三份指定UA PDF，兩份PMC工具返回正文；五圖頁目讀，其他僅圖說。",
+    "未看SI/影片，未重跑有限元素模型或重判原始CT牙種。足跡實驗與運動學推論各按來源標示。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W29P-T01",
+      "body_seconds": 130,
+      "core_seconds": {
+        "P29001": 60,
+        "P29002": 70
+      },
+      "chapter_seconds": [
+        60,
+        70
+      ],
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W29P-T02",
+      "body_seconds": 70,
+      "core_seconds": {
+        "P29003": 70
+      },
+      "chapter_seconds": [
+        40,
+        30
+      ],
+      "max_beat_seconds": 25,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W29P-T03",
+      "body_seconds": 95,
+      "core_seconds": {
+        "P29004": 45,
+        "P29005": 50
+      },
+      "chapter_seconds": [
+        45,
+        50
+      ],
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "all_strings_rstrip": true,
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "等待另一作者來源、近似核心與紙上節拍覆核。"
+  ],
+  "revision_history": [
+    {
+      "reviewer": "root",
+      "before": [
+        {
+          "file": "batches/wave29-tracks.json",
+          "sha256": "1ada60d816f673a567b894753d1108fb49f07dcce654854b91e54a98b242e528"
+        },
+        {
+          "file": "reviews/wave29-tracks-themes.json",
+          "sha256": "4793ccba7d30f63a8ed93a00ec9b625750851c754b08addad98bd52d1a369ad9"
+        },
+        {
+          "file": "reviews/wave29-tracks-author.json",
+          "sha256": "f5bfd39b7df652cfe9247b8aa921f402a8f5c48b3e1ee7797cc5a4e4875a7464"
+        }
+      ],
+      "removed_seconds": 15,
+      "changes": [
+        "T02 缺印並排僅留五秒水深未知角標，75→70。",
+        "T03 菊石搬運的不確定性移到既有剖面圖註，撤末拍，105→95。"
+      ],
+      "scope": "只改題案與預算，不改候選問答或來源。"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "status": "PASS_PAIR_LEVEL_ONLY",
+  "reviewer": "science_sources",
+  "reviewed_on": "2026-11-02",
+  "role": "本代理不是這12筆原作者；獨立讀完整存錄問題/答案/範圍後比對 root 提案。",
+  "reviewed_candidate_ids": [
+    "D9014",
+    "D9016",
+    "E2083",
+    "E2169",
+    "E2002",
+    "H3036",
+    "E2161",
+    "E2255",
+    "P129",
+    "P131",
+    "L138",
+    "L143"
+  ],
+  "reviewed_files": [
+    {
+      "file": "baselines/2026-11-02-2959.json.gz",
+      "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f"
+    },
+    {
+      "file": "reviews/wave17-root-old-pairs.json",
+      "sha256": "5550c576d6e4b03b87c6203e4ea33b41ea71fe2fe977b644ac9429c677af1a86"
+    }
+  ],
+  "ignored_evidence_hashes": [
+    {
+      "file": ".cache/wave17-old-pair-discovery.json",
+      "sha256": "5b8f650bcac6bb30bb281cd2b499348ae4bfd429f49a8ebf21d86d7edc32e237"
+    }
+  ],
+  "coverage": {
+    "pairs": 6,
+    "full_stored_records": 12,
+    "baseline_fields_equal": true,
+    "fresh_source_pages": 5,
+    "root_source_pages_not_reopened": 6,
+    "selection": "最高近鄰分數且尚未明確判 distinct 的六對，非隨機樣本，不能推算全庫誤判率。"
+  },
+  "rows": [
+    {
+      "a": "D9014",
+      "b": "D9016",
+      "decision": "distinct",
+      "reason": "一題改探頭間距，衡量梯度近似與固定相位失配的相對誤差；另一題保持感測器、改近場聲源位置，產生真實前後幅度差。儀器偏差與聲場響應的控制變量不同。",
+      "source_check": "BR0476 Appendix 高/低頻限制；DPA Why proximity / On-axis vs off-axis / When proximity。"
+    },
+    {
+      "a": "E2083",
+      "b": "E2169",
+      "decision": "distinct",
+      "reason": "並聯題固定電壓而新增路徑；輸電題固定功率而提高電壓，並比較線阻損耗。不能因都含電流/電壓而合併。",
+      "source_check": "本次僅完整存錄條件比對，未重新開啟兩份 OpenStax 原來源；不承接 root 的實讀為我的實讀。"
+    },
+    {
+      "a": "E2002",
+      "b": "H3036",
+      "decision": "distinct",
+      "reason": "中性導體受外場時重新分布電子，對照的是化學活度不同的電極系統產生電位差；前者不需要兩室化學梯度，後者不能用靜電感應當完整答案。",
+      "source_check": "本次僅完整存錄條件比對，未重新開啟這兩份來源。"
+    },
+    {
+      "a": "E2161",
+      "b": "E2255",
+      "decision": "distinct",
+      "reason": "交流電容回答電路兩側為何有充放電電流；類比開關題另有控制端到訊號端的寄生耦合及負載電容，解釋開關瞬間輸出步階。多出的路徑與負載條件改變解答，不只是換電容名稱。",
+      "source_check": "MT-088 printed pp9–10 定點重讀；OpenStax AC 電容頁本次未重開。"
+    },
+    {
+      "a": "P129",
+      "b": "P131",
+      "decision": "merge",
+      "duplicate_id": "P131",
+      "canonical_id": "P129",
+      "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。",
+      "source_check": "OpenStax 17.5 的閉管節/腹、較短允許波長、兩端開口邊界與模態序列已讀；不引用文中較混淆的泛音命名段作新結論。"
+    },
+    {
+      "a": "L138",
+      "b": "L143",
+      "decision": "distinct",
+      "reason": "吸氣的壓力驅動和最大呼氣後仍留氣的容量定義，回答不同問題；不能合成同一壓差機制。但 L143 現答案尚未解釋殘氣形成的力學，僅宜作容量比較短段，不是獨立影片厚度核准。",
+      "source_check": "OpenStax 22.3 Pulmonary Ventilation 與 Respiratory Volumes and Capacities 已讀。未採固定人體數值或臨床判斷，也沒有從相鄰肺泡敘述補造完整成因。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "P131",
+        "canonical_id": "P129",
+        "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "D9014",
+        "b": "D9016",
+        "reason": "一題改探頭間距，衡量梯度近似與固定相位失配的相對誤差；另一題保持感測器、改近場聲源位置，產生真實前後幅度差。儀器偏差與聲場響應的控制變量不同。"
+      },
+      {
+        "a": "E2083",
+        "b": "E2169",
+        "reason": "並聯題固定電壓而新增路徑；輸電題固定功率而提高電壓，並比較線阻損耗。不能因都含電流/電壓而合併。"
+      },
+      {
+        "a": "E2002",
+        "b": "H3036",
+        "reason": "中性導體受外場時重新分布電子，對照的是化學活度不同的電極系統產生電位差；前者不需要兩室化學梯度，後者不能用靜電感應當完整答案。"
+      },
+      {
+        "a": "E2161",
+        "b": "E2255",
+        "reason": "交流電容回答電路兩側為何有充放電電流；類比開關題另有控制端到訊號端的寄生耦合及負載電容，解釋開關瞬間輸出步階。多出的路徑與負載條件改變解答，不只是換電容名稱。"
+      },
+      {
+        "a": "L138",
+        "b": "L143",
+        "reason": "吸氣的壓力驅動和最大呼氣後仍留氣的容量定義，回答不同問題；不能合成同一壓差機制。但 L143 現答案尚未解釋殘氣形成的力學，僅宜作容量比較短段，不是獨立影片厚度核准。"
+      }
+    ]
+  },
+  "source_readings": [
+    {
+      "url": "https://openstax.org/books/college-physics-2e/pages/17-5-sound-interference-and-resonance-standing-waves-in-air-columns",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh web.open primary page/PDF text",
+      "reading_scope": "17.5: displacement boundary paragraphs, shorter permitted wavelengths, closed-pipe harmonic sequence and both-open comparison; web lines48–86 and146–155.",
+      "limits": "只核理想管邊界/允許模態；未核全部例題、樂器外推或音訊，圖以回傳圖說閱讀，未獨立目讀圖像。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-3-the-process-of-breathing",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh web.open primary page/PDF text",
+      "reading_scope": "Pulmonary Ventilation; Respiratory Volumes and Capacities, web lines66–84.",
+      "limits": "核容量差別與通氣壓差；未作生理全章/臨床查核，不把殘氣量定義當成形成機制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-088.pdf",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh web.open primary page/PDF text",
+      "reading_scope": "Rev.0 10/08, printed pp9–10 (zero-based PDF8–9), charge injection and following retained-charge distinction.",
+      "limits": "web PDF 文字定點閱讀；未獨立看示波器圖，不採歷史產品數值為當期規格。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.dpamicrophones.com/mic-university/background-knowledge/proximity-effect-in-microphones-explained/",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh web.open primary page/PDF text",
+      "reading_scope": "The sound sources; Why proximity?; On-axis vs off-axis; When proximity? web lines211–251.",
+      "limits": "原廠解說正文；未聽音訊、未驗產品曲線；限制壓差型與聲源/角度條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.bksv.com/doc/br0476.pdf",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh web.open primary page/PDF text",
+      "reading_scope": "Appendix: Measurement Limitations, printed pp30–33, finite-difference error and phase mismatch; web lines165–191.",
+      "limits": "原廠歷史教材指定段；未全篇實驗重做或圖像檢驗，不沿用舊產品頻帶或「尚無標準」字句。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "source_failures": [],
+  "editorial_limits": [
+    "L143 可保留作容量比較研究短段；本次未核准獨立影片、補長時數或用臨床機制擴寫。",
+    "P131 合併保留原始問法/來源，不應刪原 raw 或將舊附件冒稱本輪完整核准。"
+  ],
+  "remaining_blockers": [],
+  "limits": "僅六對的語意/條件及五份高風險來源指定段覆核；未重新核全庫、未實際試讀、無製作批准，中央處置由 root 另行採用。"
+}

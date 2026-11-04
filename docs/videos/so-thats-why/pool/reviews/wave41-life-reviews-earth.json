@@ -1,0 +1,1914 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "head": "ad12e51f985a572a7b05b5d3f606b186e10f629d",
+    "selected": 3285,
+    "raw_records": 3666,
+    "not_added": 1691,
+    "themes": 406,
+    "pool_sha256": "3dfd8fd5bcdf200642310151769feacb5251ccb2085e4c2ca15c2d3ff394511c",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3285.json.gz",
+      "sha256": "c32e460947933ba33b93d83b67ea4ea4edd65d9bf8c6091b08e3566c6c2789db"
+    }
+  },
+  "role_and_scope": "逐讀8候選完整問答、來源限定、視覺和估時。完成8份來源定點、14未收、21作者近對與40有向語意對，再查壓力傳播、混合組成與一次質量/比值測量的舊題。",
+  "reviewed_candidate_ids": [
+    "S41-001",
+    "S41-002",
+    "S41-003",
+    "S41-004",
+    "S41-005",
+    "S41-006",
+    "S41-007",
+    "S41-008"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave41-earth.json",
+      "sha256": "edcd24acfc1b8212ab07859ad41de55495194c8fe69f7312f200c510041c717b"
+    },
+    {
+      "file": "reviews/wave41-earth-author.json",
+      "sha256": "290ce9d30cacb6a39a167871ac30153ac6b58e22c63c8bc91d839dbd0b0334e8"
+    },
+    {
+      "file": "reviews/wave41-earth-themes.json",
+      "sha256": "0da1879b81ecd6a86089c5a7da7725e6ba23ba07d5cb9985ab6972d3a3305f33"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "S41-001",
+      "canonical_id": "S41-001",
+      "decision": "retain",
+      "reason": "把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度",
+      "scope_check": "圖17基勞厄亞山頂湖氣塞序列，質量推論只涵蓋升降層。橫軸與圖說的年份彼此衝突，當期只取十小時時序。",
+      "source_ids": [
+        "S41-S001"
+      ],
+      "editorial_seconds": [
+        35,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "S41-002",
+      "canonical_id": "S41-002",
+      "decision": "retain",
+      "reason": "大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉",
+      "scope_check": "Fig40熱影像呈現一般表流與噴濺造成的局部會流，瞬時凹陷的剖面必須以模型呈現。",
+      "source_ids": [
+        "S41-S002"
+      ],
+      "editorial_seconds": [
+        38,
+        84
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "S41-003",
+      "canonical_id": "S41-003",
+      "decision": "retain",
+      "reason": "以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋",
+      "scope_check": "1月2日落石撞擊時序與VLP深震源來源不同：後者來自系列事件模型。未將每次震動當作落石。",
+      "source_ids": [
+        "S41-S002",
+        "S41-S003"
+      ],
+      "editorial_seconds": [
+        35,
+        86
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "S41-004",
+      "canonical_id": "S41-004",
+      "decision": "retain",
+      "reason": "把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速",
+      "scope_check": "七月部分塌陷後下裂谷增流與跨地點壓力聯繫；初升在分鐘量級、峰值晚數小時。地下通路為可解釋資料的路徑，非精確追蹤。",
+      "source_ids": [
+        "S41-S004",
+        "S41-S001"
+      ],
+      "editorial_seconds": [
+        33,
+        77
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "S41-005",
+      "canonical_id": "S41-005",
+      "decision": "retain",
+      "reason": "分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動",
+      "scope_check": "分噴口組成與量到的氣體通量不同，風改變來氣貢獻是可解釋山緣讀數的情境；沒有為每一次波動找出唯一原因。",
+      "source_ids": [
+        "S41-S005"
+      ],
+      "editorial_seconds": [
+        34,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "S41-006",
+      "canonical_id": "S41-006",
+      "decision": "retain",
+      "reason": "以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段",
+      "scope_check": "以日均二氧化硫通量配合比值估碳通量。作者將2019秋季持續高比值主要解為出硫減弱；無法由單次峰值預報噴發。",
+      "source_ids": [
+        "S41-S006"
+      ],
+      "editorial_seconds": [
+        33,
+        74
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "S41-007",
+      "canonical_id": "S41-007",
+      "decision": "retain",
+      "reason": "首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動",
+      "scope_check": "雙衛星雲高與地面電訊號定位支持首環與重力波前共移。電荷分布及擾動如何促成放電仍屬機制解釋，並非所有環都同因。",
+      "source_ids": [
+        "S41-S007"
+      ],
+      "editorial_seconds": [
+        41,
+        84
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "S41-008",
+      "canonical_id": "S41-008",
+      "decision": "retain",
+      "reason": "類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化",
+      "scope_check": "Fe富集小圓珠及模擬灰的熔融、再凝固屬觀察。氣化距離依電流與材料計算，小圓珠形狀不等於鑑定玻璃相。",
+      "source_ids": [
+        "S41-S008"
+      ],
+      "editorial_seconds": [
+        36,
+        82
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "S41-S001",
+      "title": "A Decade of Geodetic Change at Kīlauea’s Summit—Observations, Interpretations, and Unanswered Questions from Studies of the 2008–2018 Halema‘uma‘u Eruption",
+      "url": "https://doi.org/10.3133/pp1867G",
+      "doi": "10.3133/pp1867G",
+      "version": "USGS 專刊正式第G章。",
+      "reading_scope": "PDF p27 Gas Pistoning解釋泡沫，p28 Fig17十小時窗口與內部日期矛盾。p32左欄為裂谷增流開始及峰值的觀測，與連通模型分開。",
+      "locator": "PDF pp.27–28，Gas Pistoning 及圖17湖面／傾斜／重力三排；p.32 關於2018年裂口流量開始與峰值的分別。",
+      "cache": {
+        "file": ".cache/wave41-earth-ppG.pdf",
+        "sha256": "35f8ad645b2351a52533954fb5270c35963fe266189b193a5f9b8dc91f617c6c",
+        "text_file": ".cache/wave41-earth-ppG.txt",
+        "text_sha256": "018e08482c556b8692989ee6bb549f91a17d813f2abbffb52eb206c15050e100"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "PDF p27 Gas Pistoning解釋泡沫，p28 Fig17十小時窗口與內部日期矛盾。p32左欄為裂谷增流開始及峰值的觀測，與連通模型分開。",
+      "limitations": "圖17修改自同團隊2018論文；pp.27–28的氣體蓄積和p.32的山頂塌陷為不同事件。 圖17橫軸列2010年5月24日，圖說列2011年同月日，本題不採用年份。"
+    },
+    {
+      "source_id": "S41-S002",
+      "title": "Lava Lake Activity at the Summit of Kīlauea Volcano in 2016",
+      "url": "https://doi.org/10.3133/sir20185008",
+      "doi": "10.3133/sir20185008",
+      "version": "USGS 團隊觀測報告正式PDF。",
+      "reading_scope": "PDF p33 Lake Surface Motion、Fig40a–c正常與局部擾動，p45落石14:17:49首次辨出、14:17:54撞入時序與Fig58圖說。",
+      "locator": "PDF p.33 Lake Surface Motion／圖40正常與轉向流場；p.45 Explosive Events、2016年1月2日攝影時序及圖58圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-sir.pdf",
+        "sha256": "5c76a056fe0a6db63d35ab3b0abcf98ea6e41de0ee16e35b4272c84ff2126db7",
+        "text_file": ".cache/wave41-earth-sir.txt",
+        "text_sha256": "0616cc074e905e0b79b64bd11da2cfcc6254768418f328b8fd9681ac45b19f2e"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "PDF p33 Lake Surface Motion、Fig40a–c正常與局部擾動，p45落石14:17:49首次辨出、14:17:54撞入時序與Fig58圖說。",
+      "limitations": "特定熔岩湖的觀測；熱影像看見表面，水下式的深部流線不在影像量測內。"
+    },
+    {
+      "source_id": "S41-S003",
+      "title": "Kīlauea’s 2008–2018 Summit Lava Lake—Chronology and Eruption Insights",
+      "url": "https://doi.org/10.3133/pp1867A",
+      "doi": "10.3133/pp1867A",
+      "version": "USGS 團隊專刊第A章，含既有長期觀測整合。",
+      "reading_scope": "第A章pp51–52 Rockfall-Triggered Explosions and Top-Down Seismicity，從先前深泡方案轉到表面觸發及深部壁耦合的理由與其他VLP起因。",
+      "locator": "PDF pp.51–52，Rockfall-Triggered Explosions and Top-Down Seismicity。",
+      "cache": {
+        "file": ".cache/wave41-earth-ppA.pdf",
+        "sha256": "6c17dac90aacc5cf106cc377c0819eb784cae15f96a0b0685d6b5431bff152dc",
+        "text_file": ".cache/wave41-earth-ppA.txt",
+        "text_sha256": "8b2a46fb206bfca9dd7f57d5958dca58a75d756003b5abb752af3a2f018668a3"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "第A章pp51–52 Rockfall-Triggered Explosions and Top-Down Seismicity，從先前深泡方案轉到表面觸發及深部壁耦合的理由與其他VLP起因。",
+      "limitations": "深處受壓帶動圍岩是模型；也有極長週期訊號沒有已辨認的落石爆發。"
+    },
+    {
+      "source_id": "S41-S004",
+      "title": "The 2018 rift eruption and summit collapse of Kīlauea Volcano",
+      "url": "https://doi.org/10.1126/science.aav7046",
+      "doi": "10.1126/science.aav7046",
+      "version": "USGS 保存 Science 正式論文PDF，2018線上／2019卷期。",
+      "reading_scope": "Science PDF p6 July部分山頂塌陷後發生下裂谷增流的記載；分鐘起始及小時峰值以另讀S001 p32核對。",
+      "locator": "PDF p.6，討論中從山頂與裂谷壓力脈衝、7月部分出流增強到連通回饋的段落。",
+      "cache": {
+        "file": ".cache/wave41-earth-cyclic.pdf",
+        "sha256": "3bfacde1c3d1fabb706c55ec839674bd574ef40f9629f0c4bb8df86bf3c9d2c4",
+        "text_file": ".cache/wave41-earth-cyclic.txt",
+        "text_sha256": "9b387e00dc8bba3c2930fbe3bf98676e89f0d4006b46db372f201a12e59f25ea"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "Science PDF p6 July部分山頂塌陷後發生下裂谷增流的記載；分鐘起始及小時峰值以另讀S001 p32核對。",
+      "limitations": "此研究報告部分事件先後；分鐘量級的起始與數小時後達峰另由第G章p.32說明。"
+    },
+    {
+      "source_id": "S41-S005",
+      "title": "Combined ground and aerial measurements resolve vent-specific gas fluxes from a multi-vent volcano",
+      "url": "https://doi.org/10.1038/s41467-020-16862-w",
+      "doi": "10.1038/s41467-020-16862-w",
+      "version": "出版者正式PDF，2020。",
+      "reading_scope": "正式PDF p8分口及山緣混合，風向與特定噴口在一例的貢獻；p9無人機氣體比例與雙UV相機的分口通量。",
+      "locator": "PDF p.8 討論分噴口／山緣 bulk plume 對照及結論；p.9 Methods 分別量氣體組成與二氧化硫通量。",
+      "cache": {
+        "file": ".cache/wave41-earth-vent.pdf",
+        "sha256": "4be563648c9f10c7b6b6a6ddee51d58bc238980fdddd6522dec08ed93021ea5f",
+        "text_file": ".cache/wave41-earth-vent.txt",
+        "text_sha256": "e5f61f28177b9c53ae868fbe64785f700cc1f07ba3a0d90d4982d2734905e805"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "正式PDF p8分口及山緣混合，風向與特定噴口在一例的貢獻；p9無人機氣體比例與雙UV相機的分口通量。",
+      "limitations": "該次量測支持混合程度不同；風向是可能原因，不能替未量事件指定是哪個噴口。"
+    },
+    {
+      "source_id": "S41-S006",
+      "title": "Volcanic CO₂ tracks the incubation period of basaltic paroxysms",
+      "url": "https://doi.org/10.1126/sciadv.abh0191",
+      "doi": "10.1126/sciadv.abh0191",
+      "version": "2021正式論文的Europe PMC正文XML。",
+      "reading_scope": "期刊XML Results之SO₂ and CO₂ fluxes、Discussion秋季四個月高比值的替代解釋、Methods日均比值乘二氧化硫通量。",
+      "locator": "Results：SO₂ and CO₂ fluxes（圖4、5）；Discussion：CO₂ escalates before basaltic paroxysms，尤其2019年9–12月的另一個高比值時段；Methods：CO₂ fluxes。",
+      "cache": {
+        "file": ".cache/wave41-earth-strom.xml",
+        "sha256": "b4e9737af5be29795cdf015dab5b5bad556547c15c1c76c88ce226ff755c72b9",
+        "text_file": ".cache/wave41-earth-strom.txt",
+        "text_sha256": "1cde968bdedbdb5ad910a932593a57bb3db41127119b1d4688730162cecd073d"
+      },
+      "read_via": "核作者同日期刊原文XML及抽文雜湊後，直接讀分節結果/討論/方法。未重新發HTTP或檢視該篇原圖。",
+      "decision": "supports_bounded_topic",
+      "finding": "期刊XML Results之SO₂ and CO₂ fluxes、Discussion秋季四個月高比值的替代解釋、Methods日均比值乘二氧化硫通量。",
+      "limitations": "二氧化碳通量由比值和通量推估；缺測週有插值，不是逐時直接測到深處儲庫。"
+    },
+    {
+      "source_id": "S41-S007",
+      "title": "Lightning Rings and Gravity Waves: Insights Into the Giant Eruption Plume From Tonga’s Hunga Volcano on 15 January 2022",
+      "url": "https://doi.org/10.1029/2022GL102341",
+      "doi": "10.1029/2022GL102341",
+      "version": "NOAA 典藏2023正式論文PDF。",
+      "reading_scope": "正式PDF pp4–5 §§3.3/4.1，地面站、光學衛星與雙星高度各自量什麼；Fig2藍點與灰色傘雲高度圖及後來補閃限制。",
+      "locator": "PDF pp.4–5 §§3.3、4.1，圖2地面放電定位與雙衛星雲高，以及中央空區稍後出現閃電的限制。",
+      "cache": {
+        "file": ".cache/wave41-earth-lightning.pdf",
+        "sha256": "a6bbe298b4381aaf77018af490ba021b3f143e85111e3d5ddf5352976e2b0ce3",
+        "text_file": ".cache/wave41-earth-lightning.txt",
+        "text_sha256": "39a9bf8efbf2afc48d60743c18965dc18d2569e8e42de962ba1129f84ecb5c23"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "正式PDF pp4–5 §§3.3/4.1，地面站、光學衛星與雙星高度各自量什麼；Fig2藍點與灰色傘雲高度圖及後來補閃限制。",
+      "limitations": "定位和雲高共同移動是觀測，並未逐點取得粒子電荷或壓力；不將每一圈或中央補閃都套同機制。"
+    },
+    {
+      "source_id": "S41-S008",
+      "title": "The Elusive Evidence of Volcanic Lightning",
+      "url": "https://doi.org/10.1038/s41598-017-15643-8",
+      "doi": "10.1038/s41598-017-15643-8",
+      "version": "2017出版者正式論文PDF。",
+      "reading_scope": "正式PDF pp3–6模擬灰與鋁板的熔融珠、鐵相定性限制，Fig3元素影像圖說、Fig4實驗電流與模型徑向溫度、熔化與氣化區間。",
+      "locator": "PDF pp.3–6 Effects of current impulse、Discussion、圖3與4；原文區別觀察到的熔融珠與徑向溫度計算。",
+      "cache": {
+        "file": ".cache/wave41-earth-sphere17.pdf",
+        "sha256": "54c9f5d1b22057c011513a32aae5d53ad8acd3c655527ec43cf4a318e3a136d3",
+        "text_file": ".cache/wave41-earth-sphere17.txt",
+        "text_sha256": "b395bb55bd691d51738ad78cc0485ee899e603f2de239cb296cea819a21a2423"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "正式PDF pp3–6模擬灰與鋁板的熔融珠、鐵相定性限制，Fig3元素影像圖說、Fig4實驗電流與模型徑向溫度、熔化與氣化區間。",
+      "limitations": "用特定成分的模擬灰、鋁板與實驗放電；天然閃電的圓珠比率和每粒灰經歷的溫度沒有直接測得。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "S41-S001",
+      "title": "A Decade of Geodetic Change at Kīlauea’s Summit—Observations, Interpretations, and Unanswered Questions from Studies of the 2008–2018 Halema‘uma‘u Eruption",
+      "url": "https://doi.org/10.3133/pp1867G",
+      "doi": "10.3133/pp1867G",
+      "version": "USGS 專刊正式第G章。",
+      "reading_scope": "PDF p27 Gas Pistoning解釋泡沫，p28 Fig17十小時窗口與內部日期矛盾。p32左欄為裂谷增流開始及峰值的觀測，與連通模型分開。",
+      "locator": "PDF pp.27–28，Gas Pistoning 及圖17湖面／傾斜／重力三排；p.32 關於2018年裂口流量開始與峰值的分別。",
+      "cache": {
+        "file": ".cache/wave41-earth-ppG.pdf",
+        "sha256": "35f8ad645b2351a52533954fb5270c35963fe266189b193a5f9b8dc91f617c6c",
+        "text_file": ".cache/wave41-earth-ppG.txt",
+        "text_sha256": "018e08482c556b8692989ee6bb549f91a17d813f2abbffb52eb206c15050e100"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "PDF p27 Gas Pistoning解釋泡沫，p28 Fig17十小時窗口與內部日期矛盾。p32左欄為裂谷增流開始及峰值的觀測，與連通模型分開。",
+      "limitations": "圖17修改自同團隊2018論文；pp.27–28的氣體蓄積和p.32的山頂塌陷為不同事件。 圖17橫軸列2010年5月24日，圖說列2011年同月日，本題不採用年份。"
+    },
+    {
+      "source_id": "S41-S002",
+      "title": "Lava Lake Activity at the Summit of Kīlauea Volcano in 2016",
+      "url": "https://doi.org/10.3133/sir20185008",
+      "doi": "10.3133/sir20185008",
+      "version": "USGS 團隊觀測報告正式PDF。",
+      "reading_scope": "PDF p33 Lake Surface Motion、Fig40a–c正常與局部擾動，p45落石14:17:49首次辨出、14:17:54撞入時序與Fig58圖說。",
+      "locator": "PDF p.33 Lake Surface Motion／圖40正常與轉向流場；p.45 Explosive Events、2016年1月2日攝影時序及圖58圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-sir.pdf",
+        "sha256": "5c76a056fe0a6db63d35ab3b0abcf98ea6e41de0ee16e35b4272c84ff2126db7",
+        "text_file": ".cache/wave41-earth-sir.txt",
+        "text_sha256": "0616cc074e905e0b79b64bd11da2cfcc6254768418f328b8fd9681ac45b19f2e"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "PDF p33 Lake Surface Motion、Fig40a–c正常與局部擾動，p45落石14:17:49首次辨出、14:17:54撞入時序與Fig58圖說。",
+      "limitations": "特定熔岩湖的觀測；熱影像看見表面，水下式的深部流線不在影像量測內。"
+    },
+    {
+      "source_id": "S41-S003",
+      "title": "Kīlauea’s 2008–2018 Summit Lava Lake—Chronology and Eruption Insights",
+      "url": "https://doi.org/10.3133/pp1867A",
+      "doi": "10.3133/pp1867A",
+      "version": "USGS 團隊專刊第A章，含既有長期觀測整合。",
+      "reading_scope": "第A章pp51–52 Rockfall-Triggered Explosions and Top-Down Seismicity，從先前深泡方案轉到表面觸發及深部壁耦合的理由與其他VLP起因。",
+      "locator": "PDF pp.51–52，Rockfall-Triggered Explosions and Top-Down Seismicity。",
+      "cache": {
+        "file": ".cache/wave41-earth-ppA.pdf",
+        "sha256": "6c17dac90aacc5cf106cc377c0819eb784cae15f96a0b0685d6b5431bff152dc",
+        "text_file": ".cache/wave41-earth-ppA.txt",
+        "text_sha256": "8b2a46fb206bfca9dd7f57d5958dca58a75d756003b5abb752af3a2f018668a3"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "第A章pp51–52 Rockfall-Triggered Explosions and Top-Down Seismicity，從先前深泡方案轉到表面觸發及深部壁耦合的理由與其他VLP起因。",
+      "limitations": "深處受壓帶動圍岩是模型；也有極長週期訊號沒有已辨認的落石爆發。"
+    },
+    {
+      "source_id": "S41-S004",
+      "title": "The 2018 rift eruption and summit collapse of Kīlauea Volcano",
+      "url": "https://doi.org/10.1126/science.aav7046",
+      "doi": "10.1126/science.aav7046",
+      "version": "USGS 保存 Science 正式論文PDF，2018線上／2019卷期。",
+      "reading_scope": "Science PDF p6 July部分山頂塌陷後發生下裂谷增流的記載；分鐘起始及小時峰值以另讀S001 p32核對。",
+      "locator": "PDF p.6，討論中從山頂與裂谷壓力脈衝、7月部分出流增強到連通回饋的段落。",
+      "cache": {
+        "file": ".cache/wave41-earth-cyclic.pdf",
+        "sha256": "3bfacde1c3d1fabb706c55ec839674bd574ef40f9629f0c4bb8df86bf3c9d2c4",
+        "text_file": ".cache/wave41-earth-cyclic.txt",
+        "text_sha256": "9b387e00dc8bba3c2930fbe3bf98676e89f0d4006b46db372f201a12e59f25ea"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "Science PDF p6 July部分山頂塌陷後發生下裂谷增流的記載；分鐘起始及小時峰值以另讀S001 p32核對。",
+      "limitations": "此研究報告部分事件先後；分鐘量級的起始與數小時後達峰另由第G章p.32說明。"
+    },
+    {
+      "source_id": "S41-S005",
+      "title": "Combined ground and aerial measurements resolve vent-specific gas fluxes from a multi-vent volcano",
+      "url": "https://doi.org/10.1038/s41467-020-16862-w",
+      "doi": "10.1038/s41467-020-16862-w",
+      "version": "出版者正式PDF，2020。",
+      "reading_scope": "正式PDF p8分口及山緣混合，風向與特定噴口在一例的貢獻；p9無人機氣體比例與雙UV相機的分口通量。",
+      "locator": "PDF p.8 討論分噴口／山緣 bulk plume 對照及結論；p.9 Methods 分別量氣體組成與二氧化硫通量。",
+      "cache": {
+        "file": ".cache/wave41-earth-vent.pdf",
+        "sha256": "4be563648c9f10c7b6b6a6ddee51d58bc238980fdddd6522dec08ed93021ea5f",
+        "text_file": ".cache/wave41-earth-vent.txt",
+        "text_sha256": "e5f61f28177b9c53ae868fbe64785f700cc1f07ba3a0d90d4982d2734905e805"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "正式PDF p8分口及山緣混合，風向與特定噴口在一例的貢獻；p9無人機氣體比例與雙UV相機的分口通量。",
+      "limitations": "該次量測支持混合程度不同；風向是可能原因，不能替未量事件指定是哪個噴口。"
+    },
+    {
+      "source_id": "S41-S006",
+      "title": "Volcanic CO₂ tracks the incubation period of basaltic paroxysms",
+      "url": "https://doi.org/10.1126/sciadv.abh0191",
+      "doi": "10.1126/sciadv.abh0191",
+      "version": "2021正式論文的Europe PMC正文XML。",
+      "reading_scope": "期刊XML Results之SO₂ and CO₂ fluxes、Discussion秋季四個月高比值的替代解釋、Methods日均比值乘二氧化硫通量。",
+      "locator": "Results：SO₂ and CO₂ fluxes（圖4、5）；Discussion：CO₂ escalates before basaltic paroxysms，尤其2019年9–12月的另一個高比值時段；Methods：CO₂ fluxes。",
+      "cache": {
+        "file": ".cache/wave41-earth-strom.xml",
+        "sha256": "b4e9737af5be29795cdf015dab5b5bad556547c15c1c76c88ce226ff755c72b9",
+        "text_file": ".cache/wave41-earth-strom.txt",
+        "text_sha256": "1cde968bdedbdb5ad910a932593a57bb3db41127119b1d4688730162cecd073d"
+      },
+      "read_via": "核作者同日期刊原文XML及抽文雜湊後，直接讀分節結果/討論/方法。未重新發HTTP或檢視該篇原圖。",
+      "decision": "supports_bounded_topic",
+      "finding": "期刊XML Results之SO₂ and CO₂ fluxes、Discussion秋季四個月高比值的替代解釋、Methods日均比值乘二氧化硫通量。",
+      "limitations": "二氧化碳通量由比值和通量推估；缺測週有插值，不是逐時直接測到深處儲庫。"
+    },
+    {
+      "source_id": "S41-S007",
+      "title": "Lightning Rings and Gravity Waves: Insights Into the Giant Eruption Plume From Tonga’s Hunga Volcano on 15 January 2022",
+      "url": "https://doi.org/10.1029/2022GL102341",
+      "doi": "10.1029/2022GL102341",
+      "version": "NOAA 典藏2023正式論文PDF。",
+      "reading_scope": "正式PDF pp4–5 §§3.3/4.1，地面站、光學衛星與雙星高度各自量什麼；Fig2藍點與灰色傘雲高度圖及後來補閃限制。",
+      "locator": "PDF pp.4–5 §§3.3、4.1，圖2地面放電定位與雙衛星雲高，以及中央空區稍後出現閃電的限制。",
+      "cache": {
+        "file": ".cache/wave41-earth-lightning.pdf",
+        "sha256": "a6bbe298b4381aaf77018af490ba021b3f143e85111e3d5ddf5352976e2b0ce3",
+        "text_file": ".cache/wave41-earth-lightning.txt",
+        "text_sha256": "39a9bf8efbf2afc48d60743c18965dc18d2569e8e42de962ba1129f84ecb5c23"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "正式PDF pp4–5 §§3.3/4.1，地面站、光學衛星與雙星高度各自量什麼；Fig2藍點與灰色傘雲高度圖及後來補閃限制。",
+      "limitations": "定位和雲高共同移動是觀測，並未逐點取得粒子電荷或壓力；不將每一圈或中央補閃都套同機制。"
+    },
+    {
+      "source_id": "S41-S008",
+      "title": "The Elusive Evidence of Volcanic Lightning",
+      "url": "https://doi.org/10.1038/s41598-017-15643-8",
+      "doi": "10.1038/s41598-017-15643-8",
+      "version": "2017出版者正式論文PDF。",
+      "reading_scope": "正式PDF pp3–6模擬灰與鋁板的熔融珠、鐵相定性限制，Fig3元素影像圖說、Fig4實驗電流與模型徑向溫度、熔化與氣化區間。",
+      "locator": "PDF pp.3–6 Effects of current impulse、Discussion、圖3與4；原文區別觀察到的熔融珠與徑向溫度計算。",
+      "cache": {
+        "file": ".cache/wave41-earth-sphere17.pdf",
+        "sha256": "54c9f5d1b22057c011513a32aae5d53ad8acd3c655527ec43cf4a318e3a136d3",
+        "text_file": ".cache/wave41-earth-sphere17.txt",
+        "text_sha256": "b395bb55bd691d51738ad78cc0485ee899e603f2de239cb296cea819a21a2423"
+      },
+      "read_via": "作者同日取得的原文件與抽文核SHA後獨立讀指定段及列出的圖，未重新發HTTP。",
+      "decision": "supports_bounded_topic",
+      "finding": "正式PDF pp3–6模擬灰與鋁板的熔融珠、鐵相定性限制，Fig3元素影像圖說、Fig4實驗電流與模型徑向溫度、熔化與氣化區間。",
+      "limitations": "用特定成分的模擬灰、鋁板與實驗放電；天然閃電的圓珠比率和每粒灰經歷的溫度沒有直接測得。"
+    }
+  ],
+  "source_identity_review": "8筆DOI。USGS第A/G章不同出版章、共用山頂湖觀測史，亦與2016記錄重疊。同站同事件的兩個來源不能當作兩場獨立驗證。",
+  "source_reading_summary": "核SHA後讀7份PDF指定頁與1份期刊XML，另目讀4個PDF頁面，未自行重新下載。",
+  "source_fetch_limits": "作者各源先前直接下載或由Europe PMC取得。本次沒有重開外站也未看補充影片、原始時序資料。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave41-earth-figs.jpg",
+      "sha256": "715a7fa84163f744e5bf90cd0cab3bb97401bbd374a11d82ca098e7f25826227",
+      "scope": "已目讀S001 PDF p28 Fig17（橫軸與圖說年份不合）、S002 p33 Fig40、S007 p5 Fig2、S008 p6 Fig4。其他圖只依所列正文圖說。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "S41-001",
+      "b": "O3063",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。O3063解釋衛星重力反映區域總儲水質量，不能孤立指定單井。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-001",
+      "b": "E7015",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。E7015解釋岩漿黏度與氣體逸出影響碎裂或流出。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-001",
+      "b": "LEG-S72",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。LEG-S72解釋粗糙表面提供氣泡成核點讓溶解二氧化碳釋出。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-002",
+      "b": "E7017",
+      "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。E7017解釋熔岩表殼的變形、剪切及破裂決定表面紋理。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-002",
+      "b": "S41-001",
+      "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。S41-001解釋把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-002",
+      "b": "E7020",
+      "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。E7020解釋水下熔岩急冷表皮而內部持續撐出枕狀單元。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-003",
+      "b": "P31001",
+      "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。P31001解釋用火星震動與大氣波不同到時圈定撞擊候選區。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-003",
+      "b": "P31003",
+      "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。P31003解釋用日照節奏及到時方位追查月面登月艙的重複熱震。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-003",
+      "b": "S41-002",
+      "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。S41-002解釋大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-004",
+      "b": "S41-003",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。S41-003解釋以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-004",
+      "b": "E7016",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。E7016解釋表面先成殼隔熱、內流排空而留管。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-005",
+      "b": "S41-006",
+      "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。S41-006解釋以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-005",
+      "b": "O3063",
+      "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。O3063解釋衛星重力反映區域總儲水質量，不能孤立指定單井。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-006",
+      "b": "E7015",
+      "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。E7015解釋岩漿黏度與氣體逸出影響碎裂或流出。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-006",
+      "b": "S40-005",
+      "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。S40-005解釋高空紫外光留下硫同位素異常，可限制硫經歷的高度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-007",
+      "b": "K6019",
+      "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。K6019解釋同一對地電閃可以多次回擊。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-007",
+      "b": "N163",
+      "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。N163解釋下降先導連上地面的向上放電。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-007",
+      "b": "X2035",
+      "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。X2035解釋探測器尺度限制天文時空重力波的觀測頻率。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-008",
+      "b": "N126",
+      "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。N126解釋熔岩快速冷卻，晶體無暇生長而成玻璃。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-008",
+      "b": "S41-007",
+      "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。S41-007解釋首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-008",
+      "b": "S40-004",
+      "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。S40-004解釋多粒玻璃成分與時層同看以追索已知噴發來源。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "S41-001",
+      "b": "S41-002",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。S41-002解釋大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.772868
+    },
+    {
+      "a": "S41-001",
+      "b": "S41-003",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。S41-003解釋以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.683085
+    },
+    {
+      "a": "S41-001",
+      "b": "N102",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。N102解釋集水區大小及流路匯集時間控制河川洪峰。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.682501
+    },
+    {
+      "a": "S41-001",
+      "b": "S39-009",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。S39-009解釋泰坦湖海相對重力等位面的高程分布限制流域連通。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.674258
+    },
+    {
+      "a": "S41-001",
+      "b": "N140",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。N140解釋碎屑先堵河、蓄水與後來潰決造成洪水。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.656106
+    },
+    {
+      "a": "S41-002",
+      "b": "S41-001",
+      "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。S41-001解釋把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.772868
+    },
+    {
+      "a": "S41-002",
+      "b": "N138",
+      "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。N138解釋熱氣與灰岩混合成比空氣密的貼地流。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.733767
+    },
+    {
+      "a": "S41-002",
+      "b": "E7020",
+      "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。E7020解釋水下熔岩急冷表皮而內部持續撐出枕狀單元。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.731187
+    },
+    {
+      "a": "S41-002",
+      "b": "N143",
+      "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。N143解釋熱液改造岩石使坡體轉弱。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.717743
+    },
+    {
+      "a": "S41-002",
+      "b": "N128",
+      "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。N128解釋蒸發或過飽和讓礦物析出。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710943
+    },
+    {
+      "a": "S41-003",
+      "b": "N212",
+      "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。N212解釋快速大氣擾動可激起海水波動。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.744263
+    },
+    {
+      "a": "S41-003",
+      "b": "LEG-S83",
+      "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。LEG-S83解釋深水波進入淺處時波速、波長與波高變化。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.703799
+    },
+    {
+      "a": "S41-003",
+      "b": "E11007",
+      "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。E11007解釋風暴退去時潟湖水位梯度切開沙洲。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.702319
+    },
+    {
+      "a": "S41-003",
+      "b": "S41-002",
+      "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。S41-002解釋大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.701466
+    },
+    {
+      "a": "S41-003",
+      "b": "N211",
+      "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。N211解釋盆地遭擾後的自由振盪。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.692518
+    },
+    {
+      "a": "S41-004",
+      "b": "E7009",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。E7009解釋填谷熔岩較耐蝕，後來周遭被削低。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.689661
+    },
+    {
+      "a": "S41-004",
+      "b": "E7016",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。E7016解釋表面先成殼隔熱、內流排空而留管。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.644087
+    },
+    {
+      "a": "S41-004",
+      "b": "N138",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。N138解釋熱氣與灰岩混合成比空氣密的貼地流。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.637717
+    },
+    {
+      "a": "S41-004",
+      "b": "N143",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。N143解釋熱液改造岩石使坡體轉弱。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.629297
+    },
+    {
+      "a": "S41-004",
+      "b": "S41-002",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。S41-002解釋大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.620306
+    },
+    {
+      "a": "S41-005",
+      "b": "S40-005",
+      "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。S40-005解釋高空紫外光留下硫同位素異常，可限制硫經歷的高度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667989
+    },
+    {
+      "a": "S41-005",
+      "b": "S41-006",
+      "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。S41-006解釋以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.643961
+    },
+    {
+      "a": "S41-005",
+      "b": "P238",
+      "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。P238解釋氣液成分因揮發性不同而在蒸餾中分離。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.62143
+    },
+    {
+      "a": "S41-005",
+      "b": "S40-003",
+      "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。S40-003解釋比較氮與氬的分餾區分溫差與重力。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.604514
+    },
+    {
+      "a": "S41-005",
+      "b": "B4035",
+      "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。B4035解釋室內材料在濃度降低後由吸附匯轉成再釋放來源。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.601997
+    },
+    {
+      "a": "S41-006",
+      "b": "S41-005",
+      "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。S41-005解釋分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.643961
+    },
+    {
+      "a": "S41-006",
+      "b": "N197",
+      "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。N197解釋海氣交換及碳酸系統變動改變海水酸度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.622524
+    },
+    {
+      "a": "S41-006",
+      "b": "S40-005",
+      "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。S40-005解釋高空紫外光留下硫同位素異常，可限制硫經歷的高度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.601861
+    },
+    {
+      "a": "S41-006",
+      "b": "N242",
+      "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。N242解釋少量二氧化碳因能吸收熱輻射而影響能量平衡。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.585406
+    },
+    {
+      "a": "S41-006",
+      "b": "A5035",
+      "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。A5035解釋腦部感受二氧化碳造成的酸鹼變化帶動呼吸負回饋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.577842
+    },
+    {
+      "a": "S41-007",
+      "b": "N139",
+      "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。N139解釋噴發柱降溫增密而失去浮力。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.729126
+    },
+    {
+      "a": "S41-007",
+      "b": "N163",
+      "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。N163解釋下降先導連上地面的向上放電。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.7133
+    },
+    {
+      "a": "S41-007",
+      "b": "K6019",
+      "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。K6019解釋同一對地電閃可以多次回擊。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.688459
+    },
+    {
+      "a": "S41-007",
+      "b": "N278",
+      "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。N278解釋山岳駐波上升處凝結，固定雲形與流過氣團分離。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.66152
+    },
+    {
+      "a": "S41-007",
+      "b": "K6009",
+      "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。K6009解釋升流衝過平衡高度造成短暫雲冠。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.65935
+    },
+    {
+      "a": "S41-008",
+      "b": "N139",
+      "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。N139解釋噴發柱降溫增密而失去浮力。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.642481
+    },
+    {
+      "a": "S41-008",
+      "b": "S40-005",
+      "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。S40-005解釋高空紫外光留下硫同位素異常，可限制硫經歷的高度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.635525
+    },
+    {
+      "a": "S41-008",
+      "b": "F10008",
+      "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。F10008解釋強振動顆粒層中的動能梯度會反轉粒徑分選。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.631807
+    },
+    {
+      "a": "S41-008",
+      "b": "S41-007",
+      "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。S41-007解釋首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.629035
+    },
+    {
+      "a": "S41-008",
+      "b": "N162",
+      "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。N162解釋電荷分離和強電場如何開出空氣放電通道，未處理通道周圍灰粒的熔融或氣化。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.618373
+    }
+  ],
+  "additional_cross_wave_pairs": [
+    {
+      "a": "S41-001",
+      "b": "N026",
+      "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。N026解釋土星的總體積與質量及氣體組成使平均密度低。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-004",
+      "b": "P046",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。P046解釋封閉靜態流體傳遞壓力，作用方向由當地表面決定。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-004",
+      "b": "B4032",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。B4032解釋快速關閥造成流體及管壁形變與反射水錘。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-004",
+      "b": "E2059",
+      "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。E2059解釋電場傳播令沿線載流子同時作出局地響應。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-005",
+      "b": "P195",
+      "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。P195解釋各同位素精確質量與天然豐度決定元素表平均原子量。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S41-006",
+      "b": "N240",
+      "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。N240解釋特定溫度下的相對濕度百分比與水氣絕對量不同。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "historical_not_added_comparison": "S40-NA014僅有海床碎屑百分比與其分母的相似問法，當時因缺通量原文而未成核心。S41-006以實測SO₂及已發表推估CO₂通量的實際時段區分兩種假設。",
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "S41-001",
+        "b": "O3063",
+        "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。O3063解釋衛星重力反映區域總儲水質量，不能孤立指定單井。"
+      },
+      {
+        "a": "S41-001",
+        "b": "E7015",
+        "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。E7015解釋岩漿黏度與氣體逸出影響碎裂或流出。"
+      },
+      {
+        "a": "S41-001",
+        "b": "LEG-S72",
+        "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。LEG-S72解釋粗糙表面提供氣泡成核點讓溶解二氧化碳釋出。"
+      },
+      {
+        "a": "S41-002",
+        "b": "E7017",
+        "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。E7017解釋熔岩表殼的變形、剪切及破裂決定表面紋理。"
+      },
+      {
+        "a": "S41-002",
+        "b": "S41-001",
+        "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。S41-001解釋把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。"
+      },
+      {
+        "a": "S41-002",
+        "b": "E7020",
+        "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。E7020解釋水下熔岩急冷表皮而內部持續撐出枕狀單元。"
+      },
+      {
+        "a": "S41-003",
+        "b": "P31001",
+        "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。P31001解釋用火星震動與大氣波不同到時圈定撞擊候選區。"
+      },
+      {
+        "a": "S41-003",
+        "b": "P31003",
+        "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。P31003解釋用日照節奏及到時方位追查月面登月艙的重複熱震。"
+      },
+      {
+        "a": "S41-003",
+        "b": "S41-002",
+        "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。S41-002解釋大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。"
+      },
+      {
+        "a": "S41-004",
+        "b": "S41-003",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。S41-003解釋以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。"
+      },
+      {
+        "a": "S41-004",
+        "b": "E7016",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。E7016解釋表面先成殼隔熱、內流排空而留管。"
+      },
+      {
+        "a": "S41-005",
+        "b": "S41-006",
+        "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。S41-006解釋以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。"
+      },
+      {
+        "a": "S41-005",
+        "b": "O3063",
+        "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。O3063解釋衛星重力反映區域總儲水質量，不能孤立指定單井。"
+      },
+      {
+        "a": "S41-006",
+        "b": "E7015",
+        "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。E7015解釋岩漿黏度與氣體逸出影響碎裂或流出。"
+      },
+      {
+        "a": "S41-006",
+        "b": "S40-005",
+        "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。S40-005解釋高空紫外光留下硫同位素異常，可限制硫經歷的高度。"
+      },
+      {
+        "a": "S41-007",
+        "b": "K6019",
+        "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。K6019解釋同一對地電閃可以多次回擊。"
+      },
+      {
+        "a": "S41-007",
+        "b": "N163",
+        "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。N163解釋下降先導連上地面的向上放電。"
+      },
+      {
+        "a": "S41-007",
+        "b": "X2035",
+        "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。X2035解釋探測器尺度限制天文時空重力波的觀測頻率。"
+      },
+      {
+        "a": "S41-008",
+        "b": "N126",
+        "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。N126解釋熔岩快速冷卻，晶體無暇生長而成玻璃。"
+      },
+      {
+        "a": "S41-008",
+        "b": "S41-007",
+        "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。S41-007解釋首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。"
+      },
+      {
+        "a": "S41-008",
+        "b": "S40-004",
+        "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。S40-004解釋多粒玻璃成分與時層同看以追索已知噴發來源。"
+      },
+      {
+        "a": "S41-001",
+        "b": "S41-003",
+        "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。S41-003解釋以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。"
+      },
+      {
+        "a": "S41-001",
+        "b": "N102",
+        "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。N102解釋集水區大小及流路匯集時間控制河川洪峰。"
+      },
+      {
+        "a": "S41-001",
+        "b": "S39-009",
+        "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。S39-009解釋泰坦湖海相對重力等位面的高程分布限制流域連通。"
+      },
+      {
+        "a": "S41-001",
+        "b": "N140",
+        "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。N140解釋碎屑先堵河、蓄水與後來潰決造成洪水。"
+      },
+      {
+        "a": "S41-002",
+        "b": "N138",
+        "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。N138解釋熱氣與灰岩混合成比空氣密的貼地流。"
+      },
+      {
+        "a": "S41-002",
+        "b": "N143",
+        "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。N143解釋熱液改造岩石使坡體轉弱。"
+      },
+      {
+        "a": "S41-002",
+        "b": "N128",
+        "reason": "S41-002檢查大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。N128解釋蒸發或過飽和讓礦物析出。"
+      },
+      {
+        "a": "S41-003",
+        "b": "N212",
+        "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。N212解釋快速大氣擾動可激起海水波動。"
+      },
+      {
+        "a": "S41-003",
+        "b": "LEG-S83",
+        "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。LEG-S83解釋深水波進入淺處時波速、波長與波高變化。"
+      },
+      {
+        "a": "S41-003",
+        "b": "E11007",
+        "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。E11007解釋風暴退去時潟湖水位梯度切開沙洲。"
+      },
+      {
+        "a": "S41-003",
+        "b": "N211",
+        "reason": "S41-003檢查以落石撞湖先於爆發的影像及深源極長週期地震系列，檢驗表面觸發、壓力向下傳的解釋。N211解釋盆地遭擾後的自由振盪。"
+      },
+      {
+        "a": "S41-004",
+        "b": "E7009",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。E7009解釋填谷熔岩較耐蝕，後來周遭被削低。"
+      },
+      {
+        "a": "S41-004",
+        "b": "N138",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。N138解釋熱氣與灰岩混合成比空氣密的貼地流。"
+      },
+      {
+        "a": "S41-004",
+        "b": "N143",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。N143解釋熱液改造岩石使坡體轉弱。"
+      },
+      {
+        "a": "S41-004",
+        "b": "S41-002",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。S41-002解釋大泡在噴濺點留下局部低處，表殼軌跡顯示表流向該處匯聚及下沉。"
+      },
+      {
+        "a": "S41-005",
+        "b": "S40-005",
+        "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。S40-005解釋高空紫外光留下硫同位素異常，可限制硫經歷的高度。"
+      },
+      {
+        "a": "S41-005",
+        "b": "P238",
+        "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。P238解釋氣液成分因揮發性不同而在蒸餾中分離。"
+      },
+      {
+        "a": "S41-005",
+        "b": "S40-003",
+        "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。S40-003解釋比較氮與氬的分餾區分溫差與重力。"
+      },
+      {
+        "a": "S41-005",
+        "b": "B4035",
+        "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。B4035解釋室內材料在濃度降低後由吸附匯轉成再釋放來源。"
+      },
+      {
+        "a": "S41-006",
+        "b": "N197",
+        "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。N197解釋海氣交換及碳酸系統變動改變海水酸度。"
+      },
+      {
+        "a": "S41-006",
+        "b": "N242",
+        "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。N242解釋少量二氧化碳因能吸收熱輻射而影響能量平衡。"
+      },
+      {
+        "a": "S41-006",
+        "b": "A5035",
+        "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。A5035解釋腦部感受二氧化碳造成的酸鹼變化帶動呼吸負回饋。"
+      },
+      {
+        "a": "S41-007",
+        "b": "N139",
+        "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。N139解釋噴發柱降溫增密而失去浮力。"
+      },
+      {
+        "a": "S41-007",
+        "b": "N278",
+        "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。N278解釋山岳駐波上升處凝結，固定雲形與流過氣團分離。"
+      },
+      {
+        "a": "S41-007",
+        "b": "K6009",
+        "reason": "S41-007檢查首次放電圓環與傘雲重力波前一起外擴，可區分移動的成閃條件與同一放電通道移動。K6009解釋升流衝過平衡高度造成短暫雲冠。"
+      },
+      {
+        "a": "S41-008",
+        "b": "N139",
+        "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。N139解釋噴發柱降溫增密而失去浮力。"
+      },
+      {
+        "a": "S41-008",
+        "b": "S40-005",
+        "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。S40-005解釋高空紫外光留下硫同位素異常，可限制硫經歷的高度。"
+      },
+      {
+        "a": "S41-008",
+        "b": "F10008",
+        "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。F10008解釋強振動顆粒層中的動能梯度會反轉粒徑分選。"
+      },
+      {
+        "a": "S41-008",
+        "b": "N162",
+        "reason": "S41-008檢查類比灰的熔珠與電弧徑向溫度計算併讀，只有適當區域能熔而不致氣化。N162解釋電荷分離和強電場如何開出空氣放電通道，未處理通道周圍灰粒的熔融或氣化。"
+      },
+      {
+        "a": "S41-001",
+        "b": "N026",
+        "reason": "S41-001檢查把湖面升高的體積與同步的小重力訊號合用，限制發生變動那一層的低密度。N026解釋土星的總體積與質量及氣體組成使平均密度低。"
+      },
+      {
+        "a": "S41-004",
+        "b": "P046",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。P046解釋封閉靜態流體傳遞壓力，作用方向由當地表面決定。"
+      },
+      {
+        "a": "S41-004",
+        "b": "B4032",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。B4032解釋快速關閥造成流體及管壁形變與反射水錘。"
+      },
+      {
+        "a": "S41-004",
+        "b": "E2059",
+        "reason": "S41-004檢查把山頂塌陷、遠端出流起始及峰值分開，時差限制岩漿系統的壓力連動而非團塊的流速。E2059解釋電場傳播令沿線載流子同時作出局地響應。"
+      },
+      {
+        "a": "S41-005",
+        "b": "P195",
+        "reason": "S41-005檢查分口組成與通量不同，風送至山緣的羽流比例改變可造成測站比值變動。P195解釋各同位素精確質量與天然豐度決定元素表平均原子量。"
+      },
+      {
+        "a": "S41-006",
+        "b": "N240",
+        "reason": "S41-006檢查以獨立二氧化硫通量對碳硫比值定標，分出分子增加與分母減少的高比值階段。N240解釋特定溫度下的相對濕度百分比與水氣絕對量不同。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "S41-NA001",
+      "decision": "agree_not_added",
+      "reason": "東加原研究有額外站點與時序，但只問氣壓波能否推水，已與N212及地球觀測舊退題同解。",
+      "existing_ids": [
+        "N212"
+      ],
+      "reentry_condition": "須有不同控制，例如定點核算地形使強迫波轉為自由波的證據。"
+    },
+    {
+      "id": "S41-NA002",
+      "decision": "agree_not_added",
+      "reason": "只重述既有火碎流與噴發柱失去浮力。",
+      "existing_ids": [
+        "N138",
+        "N139"
+      ],
+      "reentry_condition": "先有可分辨不同失穩條件的原研究。"
+    },
+    {
+      "id": "S41-NA003",
+      "decision": "agree_not_added",
+      "reason": "快速冷卻成玻璃已收，沒有電弧內熔化與氣化之間的控制。",
+      "existing_ids": [
+        "N126"
+      ],
+      "reentry_condition": "需辨別保留與完全消失的條件。"
+    },
+    {
+      "id": "S41-NA004",
+      "decision": "agree_not_added",
+      "reason": "跨越煙氣高度、顆粒輸送和沉降，單看高度不夠，舊冰芯篇已區分玻璃與硫來源。",
+      "existing_ids": [
+        "S40-004",
+        "S40-005"
+      ],
+      "reentry_condition": "需獨立沉積率與輸送對照。"
+    },
+    {
+      "id": "S41-NA005",
+      "decision": "agree_not_added",
+      "reason": "舊題已收雨水再搬運。",
+      "existing_ids": [
+        "N141"
+      ],
+      "reentry_condition": "若有獨立事件可辨同雨量的不同土體門檻再提。"
+    },
+    {
+      "id": "S41-NA006",
+      "decision": "agree_not_added",
+      "reason": "重述既有火山灰材質。",
+      "existing_ids": [
+        "N137"
+      ],
+      "reentry_condition": "需不同磨損機制和現地對照。"
+    },
+    {
+      "id": "S41-NA007",
+      "decision": "agree_not_added",
+      "reason": "本輪只檢索到共振研究入口，未將形狀、阻尼和體積的獨立拘束查足。",
+      "existing_ids": [
+        "P129"
+      ],
+      "reentry_condition": "須核原文中不同幾何是否仍能產生同一音高。"
+    },
+    {
+      "id": "S41-NA008",
+      "decision": "agree_not_added",
+      "reason": "否定的反例已在湖面與重力合題，無新控制。",
+      "existing_ids": [
+        "S41-001"
+      ],
+      "reentry_condition": "須換成另一種實際量測並能排除同一原因。"
+    },
+    {
+      "id": "S41-NA009",
+      "decision": "agree_not_added",
+      "reason": "查看表殼流向已能推翻這個必要關係。",
+      "existing_ids": [
+        "S41-002"
+      ],
+      "reentry_condition": "如有深部通量獨立測量再提。"
+    },
+    {
+      "id": "S41-NA010",
+      "decision": "agree_not_added",
+      "reason": "同型震動還有其他起源，本次研究沒有通用未來時間。",
+      "existing_ids": [
+        "S41-003",
+        "N120"
+      ],
+      "reentry_condition": "取得檢驗假警報、漏報和預測時窗的前瞻研究。"
+    },
+    {
+      "id": "S41-NA011",
+      "decision": "agree_not_added",
+      "reason": "靠氣味難確定濃度、通量與來源；沒有獨立控制。",
+      "existing_ids": [
+        "S41-005",
+        "S41-006"
+      ],
+      "reentry_condition": "須有分離混合來源或通量的儀器實證。"
+    },
+    {
+      "id": "S41-NA012",
+      "decision": "agree_not_added",
+      "reason": "共同前緣證據以第一圈最清楚；原研究保留後來空洞補閃的疑問。",
+      "existing_ids": [
+        "S41-007"
+      ],
+      "reentry_condition": "需有後續各圈分層定位和機制證據。"
+    },
+    {
+      "id": "S41-NA013",
+      "decision": "agree_not_added",
+      "reason": "圓珠也可由其他過程形成；特定模擬灰的電弧實驗不能替每顆天然圓粒唯一溯源。",
+      "existing_ids": [
+        "S41-008",
+        "S40-004"
+      ],
+      "reentry_condition": "需內部結構、組成及沉積背景等獨立證據。"
+    },
+    {
+      "id": "S41-NA014",
+      "decision": "agree_not_added",
+      "reason": "流量對壓力的反應不是追蹤標記岩漿，重出同核。",
+      "existing_ids": [
+        "S41-004"
+      ],
+      "reentry_condition": "需獨立示蹤或運移時間估計。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W41S-T01",
+      "decision": "retain_paper_plan",
+      "core_totals": {
+        "S41-002": 63
+      },
+      "core_caps": {
+        "S41-002": 84
+      },
+      "body_seconds": 63,
+      "maximum_beat_seconds": 18,
+      "chapter_seconds": [
+        31,
+        32
+      ],
+      "drop_if_read": "若無法讓觀眾追到岩殼，撤案。刪任一章只剩32或31秒，保留片段給熔岩湖專題。",
+      "editorial_result": "由飛起的滴與向下的殼提出相反預測，再用在湖緣出現的新噴濺點看表流方向是否也變。63秒已納入實讀。",
+      "timing_result": "ROOT_SAMPLE_VOICE_PLUS_VISUAL_ALLOWANCE"
+    },
+    {
+      "id": "W41S-T02",
+      "decision": "retain_paper_plan",
+      "core_totals": {
+        "S41-001": 62
+      },
+      "core_caps": {
+        "S41-001": 78
+      },
+      "body_seconds": 62,
+      "maximum_beat_seconds": 19,
+      "chapter_seconds": [
+        30,
+        32
+      ],
+      "drop_if_read": "缺任一曲線就撤；刪一章剩32或30秒，不再支撐同高不同質量的檢驗。",
+      "editorial_result": "官能讀值改成兩張等體積模型，再比時間對齊的高度與重力；限定只估當時參與升降的上部。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W41S-T03",
+      "decision": "retain_paper_plan",
+      "core_totals": {
+        "S41-005": 37,
+        "S41-006": 36
+      },
+      "core_caps": {
+        "S41-005": 78,
+        "S41-006": 74
+      },
+      "body_seconds": 73,
+      "maximum_beat_seconds": 20,
+      "chapter_seconds": [
+        37,
+        36
+      ],
+      "drop_if_read": "若只能取山緣一個比值，撤此比較；刪一章剩36或37秒，需另立不同問題。",
+      "editorial_result": "不同噴口到達測站的比例，與同一觀測中碳、硫的絕對通量，是兩個可獨立改動的條件。需保留切到2019監測的重設。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W41S-T04",
+      "decision": "retain_paper_plan",
+      "core_totals": {
+        "S41-007": 62
+      },
+      "core_caps": {
+        "S41-007": 84
+      },
+      "body_seconds": 62,
+      "maximum_beat_seconds": 19,
+      "chapter_seconds": [
+        30,
+        32
+      ],
+      "drop_if_read": "若分不開定位點和衛星雲高，撤案。刪一章剩32或30秒，不再能呈現觀測與解釋。",
+      "editorial_result": "先把放電點與同時的雲高波前疊在一起，再畫重力回復力可能如何改變放電條件。中央補閃保留未知。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W41S-T05",
+      "decision": "retain_paper_plan",
+      "core_totals": {
+        "S41-008": 60
+      },
+      "core_caps": {
+        "S41-008": 82
+      },
+      "body_seconds": 60,
+      "maximum_beat_seconds": 19,
+      "chapter_seconds": [
+        30,
+        30
+      ],
+      "drop_if_read": "沒法把實驗產物與溫度模型分框時撤案。刪任一章剩30秒。",
+      "editorial_result": "先比實驗產物、再預測電弧中留下熔珠的區域。低熱未熔、太熱可能氣化各有可見反差。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    }
+  ],
+  "timing_probe": {
+    "file": ".cache/wave41-lava-read.json",
+    "sha256": "98f2ae72cf71ae320de1d60a954c621974aacf1d5554b8838e1884b54c58b780",
+    "continuous_wav": {
+      "file": ".cache/wave41-lava-read-3.wav",
+      "sha256": "5561be5dcedbb0a5807f7fd4d590a0be2bd21c0c7f741e2d42d2912f9d8f552b"
+    },
+    "read_seconds": 55.309,
+    "plan_seconds": 63,
+    "visual_allowance_seconds": 7.691,
+    "scope": "根代理的離線整段樣讀，經WAV標頭獨立核長，未冒稱成片或觀眾試讀。"
+  },
+  "corrections": {
+    "before_files": [
+      {
+        "file": "batches/wave41-earth.json",
+        "sha256": "31ca382d1abb0ca4f3893ccc3f83b94d802d6c9874c22234e2226051fb82bb96"
+      },
+      {
+        "file": "reviews/wave41-earth-themes.json",
+        "sha256": "7949e3760282d4ef39c70f65935ab3218eb4a6d92dcc86e3a622b2cc581c317b"
+      },
+      {
+        "file": "reviews/wave41-earth-author.json",
+        "sha256": "92b34e80212253464863783526c8c6a659e1c29446d9516d77edd09b7be98d8a"
+      }
+    ],
+    "resolved": [
+      "S41-001原圖17橫軸2010-05-24與圖說2011-05-24不一致。候選與來源改以同一十小時序列定位，不選任一日期。",
+      "S41-008與T05、NA013用熔成的小圓珠，未把形狀當成玻璃相鑑定。",
+      "S41-003 notes回歸自己的落石與VLP資料來源及模型區分。T01已改31+32=63秒。"
+    ]
+  },
+  "first_retrieval": {
+    "neighbours": {
+      "file": ".cache/wave41-life-review-earth-first.json",
+      "sha256": "26750ab5f4c659f61686620a446bce454a6ea713aa5724b59a3bbd7ee82bc130"
+    },
+    "draft_sha256": "08ef3b8926e72f02a7923fa5123ab3165673fe52209cfa8d2d2851abc849a75d"
+  },
+  "draft_sha256": "d1ab309f2058f01b3fed8c2372de2f92dc11a5a0a32146abdbdb601d2a993057",
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "d1ab309f2058f01b3fed8c2372de2f92dc11a5a0a32146abdbdb601d2a993057",
+    "neighbours": {
+      "file": ".cache/wave41-earth-neighbours.json",
+      "sha256": "0836619a9e4052e598ab22a1e74846757bcc2e5743fc467d4ce11863feb43b60"
+    },
+    "directed_pairs": 40,
+    "before_rows_identical": false,
+    "old_to_final_new_neighbours": {
+      "S41-001": [],
+      "S41-002": [],
+      "S41-003": [],
+      "S41-004": [],
+      "S41-005": [],
+      "S41-006": [],
+      "S41-007": [],
+      "S41-008": [
+        "N162",
+        "S40-005"
+      ]
+    },
+    "written_files_verified": true
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "題級判斷及片段時間檢核，沒有完成劇本逐句查核或驗證成片。"
+  ]
+}

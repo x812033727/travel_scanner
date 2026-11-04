@@ -1,0 +1,522 @@
+{
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave12-digital-20261101",
+  "author": "/root/pool_life_tech",
+  "created_on": "2026-11-01",
+  "candidate_count": 9,
+  "source_count": 8,
+  "not_added_count": 19,
+  "candidate_ids": [
+    "D12001",
+    "D12002",
+    "D12003",
+    "D12004",
+    "D12005",
+    "D12006",
+    "D12007",
+    "D12008",
+    "D12009"
+  ],
+  "authored_files": [
+    {
+      "file": "batches/wave12-digital.json",
+      "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
+    },
+    {
+      "file": "reviews/wave12-digital-themes.json",
+      "sha256": "eabd2473f7471cca113c809ed78ac4f1e88b31f81bb4d8b5adbb978d31715d1b"
+    }
+  ],
+  "baseline_scan": {
+    "file": "pool.json",
+    "sha256": "335ad35f1299664a96d6d1b5251a4ec52153d81a9b38ba49cfe72e63a411adef",
+    "raw_count": 3201,
+    "not_added_count": 550,
+    "method": "全庫raw question/answer_target/scope/notes及全not_added字面檢索；逐讀命中/相關數位批與24組指定近對，不是逐筆人工查核3201題。",
+    "broad_query": "重送|重複|冪等|一次性|驗證碼|登入|登出|密碼|通行密鑰|身份|身分|權限|分享|連結|換機|同步|一致|版本|時鐘|時間戳|刪除|快照|儲存|備份|授權|撤銷|nonce|token|idempoten|transaction|credential|authentic|signature|hash",
+    "broad_raw_hit_count": 274,
+    "followup_query": "TOTP|WebAuthn|PKCE|DMARC|SPF|CRDT|驗證碼|撤銷|合併|同步|密碼|身分|身份|指紋|郵件|電子郵件|冪等|重送|重放",
+    "not_added_followup_hits": 19,
+    "additional_read": "全部information-systems/digital-text/digital-media/networks歷史not_added及L200–311/I3相關原始問答；無命中不當作全庫無重複。",
+    "limitation": "待root統一全批語意top5及非作者裁決，不自稱召回全部重複。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "D12001",
+      "b": "LEG-A54",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "簡訊的電話號碼綁定與離線共同秘密/時窗計算不同；不做兩者安全排行。",
+      "compared_record": {
+        "question": "為什麼簡訊驗證碼不算最安全？",
+        "answer_target": "簡訊綁的是電話號碼，不是你手上那支手機：號碼可能被人冒名補發 SIM 卡轉走，驗證碼也可能被騙你自己說出來。美國 NIST 2025 年版指引仍把電話簡訊列為「受限制」的驗證方式，要求另外提供其他選項。有簡訊驗證還是比只有密碼好。",
+        "scope": "沿用 A54 題級條件，須讀原查核包的限制；驗證安全比較移實用安全教學，現行標準須重查。"
+      }
+    },
+    {
+      "a": "D12001",
+      "b": "I3074",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "預先簽發令牌的年齡檢查與雙方獨立計算隨時窗變動短碼不同；時窗到期不另計。",
+      "compared_record": {
+        "question": "密文沒有壞、鑰匙也對，為什麼系統仍可能拒收？",
+        "answer_target": "驗證流程可另外檢查令牌年齡，超過允許期限即拒絕。",
+        "scope": "Fernet 啟用 TTL 時；未設定則不自動套用期限。"
+      }
+    },
+    {
+      "a": "D12001",
+      "b": "I3065",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "單調鐘度量間隔；TOTP用共同Unix時間格，校時風險為條件而非另立時鐘題。",
+      "compared_record": {
+        "question": "電腦校正時間後，倒數計時為什麼不該跟著往回跳？",
+        "answer_target": "單調時鐘量測兩次讀值之差，不用可被校正的日期時間判斷經過多久。",
+        "scope": "Python 時鐘介面作機制範例；不涵蓋所有休眠計時政策。"
+      }
+    },
+    {
+      "a": "D12001",
+      "b": "I3084",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "已用短碼不得再用需要狀態，這一步沿舊核心，不算第二題。",
+      "compared_record": {
+        "question": "每封訊息都驗證成功，為什麼還可能被重播或換順序？",
+        "answer_target": "獨立驗證只判斷每封本身，未記錄序列狀態就不能識別重送或重排。",
+        "scope": "Libsodium secretbox 獨立訊息模式。"
+      }
+    },
+    {
+      "a": "D12002",
+      "b": "I3080",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "不只公/私鑰權能；須有瀏覽器來源、RP選鑰與伺服器origin核對的可觀察錯配。",
+      "compared_record": {
+        "question": "人人都有驗證用的鑰匙，為什麼不代表人人都能簽出你的名字？",
+        "answer_target": "簽署使用私鑰，驗證使用不同的公開鑰匙，兩者權能不同。",
+        "scope": "數位簽章的密碼學模型；不宣稱鑰匙永不外洩。"
+      }
+    },
+    {
+      "a": "D12002",
+      "b": "I3082",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "舊題要求可信身分綁定但未解釋跨來源憑證範圍檢查；本題不重講真人是誰。",
+      "compared_record": {
+        "question": "簽章驗證成功，為什麼還不能直接相信它來自你認識的人？",
+        "answer_target": "驗證只連結訊息與指定公鑰，公鑰與現實身分的可信對應需另行建立。",
+        "scope": "不把密碼學驗證外推為身分或內容真實保證。"
+      }
+    },
+    {
+      "a": "D12003",
+      "b": "LEG-A44",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "舊題生物相似度錯判，此題本機比對與網站驗證資料的邊界。",
+      "compared_record": {
+        "question": "為什麼雙胞胎可能解鎖彼此的手機？",
+        "answer_target": "依Apple Face ID及Google Pixel現行官方支援頁保留相似臉/手足警告；Face ID統計與單一註冊樣貌等條件限該系統與隨機他人群體，不推所有裝置或孿生/相似手足。不是雙胞胎必能成功、品牌排名、設定教程或真人解鎖實驗。",
+        "scope": "沿用 A44 題級條件，須讀原查核包的限制；辨識與相似度限制可短解，資料須指定機型與版本。"
+      }
+    },
+    {
+      "a": "D12003",
+      "b": "I3080",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "簽署是背景；新增驗證發生位置與UV不揭露原生物資料的分工。",
+      "compared_record": {
+        "question": "人人都有驗證用的鑰匙，為什麼不代表人人都能簽出你的名字？",
+        "answer_target": "簽署使用私鑰，驗證使用不同的公開鑰匙，兩者權能不同。",
+        "scope": "數位簽章的密碼學模型；不宣稱鑰匙永不外洩。"
+      }
+    },
+    {
+      "a": "D12004",
+      "b": "I3076",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "兩者都作轉換比對；本題必須保留每次授權、兩階段綁定及回傳碼不足的條件，不能只教hash。",
+      "compared_record": {
+        "question": "網站不保存原密碼，怎麼還能知道你輸入得對不對？",
+        "answer_target": "保存帶參數的驗證值，再用輸入密碼按相同方法計算並比對。",
+        "scope": "密碼雜湊驗證模型，不等於可還原的加密。"
+      }
+    },
+    {
+      "a": "D12004",
+      "b": "I3084",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "不是在接收端標記已用以拒重播；是同一授權碼交換時須附先前秘密。",
+      "compared_record": {
+        "question": "每封訊息都驗證成功，為什麼還可能被重播或換順序？",
+        "answer_target": "獨立驗證只判斷每封本身，未記錄序列狀態就不能識別重送或重排。",
+        "scope": "Libsodium secretbox 獨立訊息模式。"
+      }
+    },
+    {
+      "a": "D12005",
+      "b": "I3074",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "期限預載於票內，撤銷決定可能發生在簽發後；沒有新狀態時本地驗簽不知道。",
+      "compared_record": {
+        "question": "密文沒有壞、鑰匙也對，為什麼系統仍可能拒收？",
+        "answer_target": "驗證流程可另外檢查令牌年齡，超過允許期限即拒絕。",
+        "scope": "Fernet 啟用 TTL 時；未設定則不自動套用期限。"
+      }
+    },
+    {
+      "a": "D12005",
+      "b": "I8010",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "不是日誌已到但未重播；此模型根本不必向授權端每次查詢，需另建立撤銷資訊路徑。",
+      "compared_record": {
+        "question": "系統說兩台都存好了，為什麼另一台查詢還可能看不到剛存的內容？",
+        "answer_target": "副本把交易日誌持久保存後，仍須重播才使資料查得到；remote_apply把確認點再往後移到重播完成。",
+        "scope": "PostgreSQL18所述同步副本；查詢自身快照仍另有限制，不把任意舊交易保證成最新。"
+      }
+    },
+    {
+      "a": "D12006",
+      "b": "L249",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "From/Sender欄位定義不是最後SMTP IP是否獲信封網域授權；不能混淆兩種寄件身分。",
+      "compared_record": {
+        "question": "一封信的作者和實際代寄的人，為什麼能寫在不同欄位？",
+        "answer_target": "From 作者與 Sender 傳送者分工",
+        "scope": "電子郵件欄位語意；不等同傳輸層身分驗證"
+      }
+    },
+    {
+      "a": "D12006",
+      "b": "L250",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "傳遞收件清單與可見Bcc分工不同；本題是發送授權隨中繼IP變動。",
+      "compared_record": {
+        "question": "密件副本的收件者，為什麼不必出現在其他人看到的信件名單上？",
+        "answer_target": "傳遞收件對象與可見 Bcc 欄位處理",
+        "scope": "電子郵件欄位語意；不等同傳輸層身分驗證"
+      }
+    },
+    {
+      "a": "D12007",
+      "b": "I3082",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "最接近舊通論；新增一封信有多個域名身分，需將有效SPF/DKIM域對齊可見From。若僅講身分需綁定，應合併。",
+      "compared_record": {
+        "question": "簽章驗證成功，為什麼還不能直接相信它來自你認識的人？",
+        "answer_target": "驗證只連結訊息與指定公鑰，公鑰與現實身分的可信對應需另行建立。",
+        "scope": "不把密碼學驗證外推為身分或內容真實保證。"
+      }
+    },
+    {
+      "a": "D12007",
+      "b": "D12006",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "轉寄題改IP而保留信封身分；對齊題保留驗證成功而改可見作者網域，兩種失配不同。",
+      "compared_record": {
+        "question": "內容沒有改的轉寄郵件，為什麼仍可能通不過寄件網域檢查？",
+        "answer_target": "SPF以最後寄送SMTP伺服器的IP對照信封寄件網域的授權；轉寄若保留原信封身分，路徑換了而授權未涵蓋轉寄IP，就可能失敗。",
+        "scope": "限這類轉寄與SPF授權檢查；不等於郵件一定被丟棄、不概括手動另寫一封轉寄信，也不把可見From當MAIL FROM。"
+      }
+    },
+    {
+      "a": "D12008",
+      "b": "L301",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "HTTP冪等描述請求預期結果；此處具體以分量最大值合併並行狀態，並說明總數不足。",
+      "compared_record": {
+        "question": "網路斷一下後，有些請求可以放心重送，有些卻可能重複下單？",
+        "answer_target": "重試是否改變預期結果的冪等性",
+        "scope": "HTTP 語意；實作不一定遵守，示範需選自建安全頁"
+      }
+    },
+    {
+      "a": "D12008",
+      "b": "L209",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "序號去重丟重複傳輸；此處不丟整份訊息，而按分量合併共同與獨有歷史。",
+      "compared_record": {
+        "question": "同一段網路資料不小心傳了兩次，接收端怎麼避免算兩份？",
+        "answer_target": "序號辨認重複資料",
+        "scope": "TCP 基本可靠傳輸；不混同網路訊息與應用程式訊息"
+      }
+    },
+    {
+      "a": "D12008",
+      "b": "I3018",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "資料庫快照互相依賴造成非串行結果；此處定義可收斂的狀態合併，未保一般交易不變量。",
+      "compared_record": {
+        "question": "每個人都依自己看到的資料做對，合起來為何仍可能出錯？",
+        "answer_target": "各自穩定快照仍可能形成無法排成任何串行順序的相互依賴。",
+        "scope": "以 PostgreSQL 文件兩組加總互寫為例；完整展示需重現。"
+      }
+    },
+    {
+      "a": "D12008",
+      "b": "I3053",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "離線資源快取只是可打開；此處是離線變動合併後如何得到計數，不換App計數。",
+      "compared_record": {
+        "question": "網路斷了，有些網站為什麼還能打開？",
+        "answer_target": "Service worker 可攔截請求並回傳事先存好的資源，提供離線介面。",
+        "scope": "須先取得所需資源；不保證離線能取得最新資料。"
+      }
+    },
+    {
+      "a": "D12009",
+      "b": "I3009",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "拒絕舊快照寫入與接受並行加入/移除後按已觀察識別合併不同。",
+      "compared_record": {
+        "question": "剛查完資料，為何輪到自己修改時卻被拒絕？",
+        "answer_target": "其他寫入已前進時，舊快照升級會形成分岔，SQLite 拒絕此升級。",
+        "scope": "SQLite WAL 的讀取轉寫入，不把所有鎖錯誤混為一談。"
+      }
+    },
+    {
+      "a": "D12009",
+      "b": "I3019",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "重做整筆交易不是OR-Set的加入/移除語意，不把所有衝突解決同一化。",
+      "compared_record": {
+        "question": "資料庫要求重試，為何只重送最後一步可能不夠？",
+        "answer_target": "衝突涉及交易先前讀值與判斷，重新取得快照後必須重做整筆交易。",
+        "scope": "PostgreSQL 序列化失敗；有外部副作用時另需設計。"
+      }
+    },
+    {
+      "a": "D12009",
+      "b": "I3059",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "瀏覽器回收資料不是邏輯刪除的觀察範圍；同樣畫面不見不能只依字詞合題。",
+      "compared_record": {
+        "question": "久沒開的網站，離線資料為什麼可能自己不見？",
+        "answer_target": "儲存壓力下，瀏覽器可優先回收較久未用來源的盡力保存資料。",
+        "scope": "已獲持久保存權限者不同；其他瀏覽器策略另核。"
+      }
+    },
+    {
+      "a": "D12009",
+      "b": "D12008",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "計數器保各副本增量並逐欄取大；清單用每次加入識別與已觀察刪除範圍，不能套相同算法。",
+      "compared_record": {
+        "question": "兩台離線各加一次的計數器，怎麼合起來不漏算、再同步也不多算？",
+        "answer_target": "每個副本只增加自己的獨立欄位；同步取各欄最大值，讀取再加總。直接相加會重複共同歷史，只取整體最大又會丟掉另一邊新增。",
+        "scope": "限固定副本身分的增量計數模型；不處理減少、覆寫、同身分分岔或副本永久遺失。最終一致依賴相關狀態最終送達，非即時一致。"
+      }
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "D12-S001",
+      "url": "https://www.rfc-editor.org/rfc/rfc6238.txt",
+      "cache_file": ".cache/wave12-digital-sources/totp.txt",
+      "sha256": "82947ed9064450850547f55959dc79d2de775f0fa33f7b3f9622fb6c93e69a7a",
+      "read_scope": "§3 R1–R7; §4.2; §5.2; §6（印刷 pp.3–7）。",
+      "method": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。"
+    },
+    {
+      "source_id": "D12-S002",
+      "url": "https://www.w3.org/TR/2026/REC-webauthn-3-20260825/",
+      "cache_file": ".cache/wave12-digital-sources/webauthn.html",
+      "sha256": "157030c980d44a3ce4b1ec5bcfaa16790c7dfefac20709af6ed2b11c7120970b",
+      "read_scope": "§4 Relying Party Identifier 定義；§5 API scope 引言；§5.11 related origins；§6.1 rpIdHash/UV；§13.4.9；§14.3。",
+      "method": "當日指定 UA urllib HTTP 200 保存 W3C 固定版 HTML；web find/open 實讀所列定義及正文，非只讀搜尋摘要。"
+    },
+    {
+      "source_id": "D12-S003",
+      "url": "https://www.rfc-editor.org/rfc/rfc7636.txt",
+      "cache_file": ".cache/wave12-digital-sources/pkce.txt",
+      "sha256": "1972e5d81cbaba7066cfd46374207bc2b4546b085ed5dd9b034e79e023e0ca31",
+      "read_scope": "§1/§1.1 流程 A–D；§4.1–4.6（印刷 pp.3–5、8–10）。",
+      "method": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。"
+    },
+    {
+      "source_id": "D12-S004",
+      "url": "https://www.rfc-editor.org/rfc/rfc7009.txt",
+      "cache_file": ".cache/wave12-digital-sources/revoke.txt",
+      "sha256": "b2f346d5a87ba9d7f09047901257a65f7ac0b26352095969c25821afab447829",
+      "read_scope": "§2.1–2.2；§3 Implementation Note（印刷 pp.3–5、7）。",
+      "method": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。"
+    },
+    {
+      "source_id": "D12-S005",
+      "url": "https://www.rfc-editor.org/rfc/rfc7208.txt",
+      "cache_file": ".cache/wave12-digital-sources/spf.txt",
+      "sha256": "3cca3f2551f50d24a7b6423a7451d285df077863dab4bb261080ee87844f2d5b",
+      "read_scope": "§10.2 Receivers；§10.3 Mediators（印刷 p.42）。",
+      "method": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。"
+    },
+    {
+      "source_id": "D12-S006",
+      "url": "https://www.rfc-editor.org/rfc/rfc9989.txt",
+      "cache_file": ".cache/wave12-digital-sources/dmarc-new.txt",
+      "sha256": "cdd78e2918a210ca0f1bcd167dfd9e5555a9331506bcea988432793b71fd0c1e",
+      "read_scope": "首頁 Status of This Memo/Obsoletes；§4.2–4.4.3，尤其 Table 1、§4.4.1/4.4.2。",
+      "method": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。"
+    },
+    {
+      "source_id": "D12-S007",
+      "url": "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf",
+      "cache_file": ".cache/wave12-digital-sources/crdt.pdf",
+      "sha256": "8bff8d9185bb1d3bb200b1c752e32ad58f3e91c8b16851d896d90c63ffb7b980",
+      "read_scope": "PDF/文內 pp.1–2 引言；p.8 §3.3 並行語意；p.9 §4.1 Integer vectors and counters。",
+      "method": "當日指定 UA urllib HTTP 200 下載作者公開 PDF，以 PyMuPDF 讀指定正文文字層。"
+    },
+    {
+      "source_id": "D12-S008",
+      "url": "https://www.lip6.fr/Marc.Shapiro/papers/RR-8083.pdf",
+      "cache_file": ".cache/wave12-digital-sources/orset.pdf",
+      "sha256": "1f8de34b17738e40f1560932502e5766f09ef45fc1a3aefba744fce44fd2dfe7",
+      "read_scope": "PDF pp.6–8 / 印刷 pp.4–6：§4、Figure 2、§4.1；§4.2 開頭刪除資訊說明。",
+      "method": "當日指定 UA urllib HTTP 200 下載作者公開 PDF，以 PyMuPDF 讀指定正文文字層。"
+    }
+  ],
+  "failed_or_unread_methods": [
+    {
+      "target": "初版下載腳本",
+      "result": "因未安裝bs4，在發出下載請求前失敗；改用標準庫HTMLParser後下載成功，無繞過帳號或付費限制。"
+    },
+    {
+      "target": "https://www.rfc-editor.org/rfc/rfc7489.txt",
+      "result": "HTTP200下載舊版但未作正文支持閱讀；發現9989取代後改讀新版本。舊版不計來源，也不列獨立證據。"
+    },
+    {
+      "target": "完整標準/研究證明",
+      "result": "只讀source reading_scope指定正文，不宣稱逐條實作規範、全文推導或補充實驗皆已查核。"
+    }
+  ],
+  "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "editorial_review": {
+    "episodes": [
+      {
+        "id": "W12D-T01",
+        "body_seconds": 115,
+        "chapters": 2,
+        "candidate_ids": [
+          "D12001"
+        ]
+      },
+      {
+        "id": "W12D-T02",
+        "body_seconds": 170,
+        "chapters": 2,
+        "candidate_ids": [
+          "D12003",
+          "D12002"
+        ]
+      },
+      {
+        "id": "W12D-T03",
+        "body_seconds": 110,
+        "chapters": 2,
+        "candidate_ids": [
+          "D12004"
+        ]
+      },
+      {
+        "id": "W12D-T04",
+        "body_seconds": 160,
+        "chapters": 2,
+        "candidate_ids": [
+          "D12006",
+          "D12007"
+        ]
+      },
+      {
+        "id": "W12D-T05",
+        "body_seconds": 190,
+        "chapters": 2,
+        "candidate_ids": [
+          "D12008",
+          "D12009"
+        ]
+      }
+    ],
+    "unused_pool_candidates": [
+      "D12005"
+    ],
+    "reason_unused": "撤銷狀態是另個問題，暫無自然第二條推進，不硬接登入題案。",
+    "duration_status": "PAPER_BUDGET_ONLY_NOT_READ_ALOUD_OR_MEDIA_MEASURED",
+    "comments": "單核雙章分別是建立因果和改變條件；不因格式要求重複回顧。未做到15題是因舊庫已覆蓋一般重送/時間/儲存核心。"
+  },
+  "risk_focus": [
+    "D12004與I3076是否只有轉換核對；保留交易綁定與回傳碼/驗證值分工才能成立。",
+    "D12007與I3082是否只重說身分需綁定；必要時併為郵件變體，不保9數量。",
+    "D12005不得把2013標準成熟度外推2026，且只做架構對照，不宣稱某產品登出後仍有效。",
+    "D12002不得簡化為全部不同網域皆不能使用；related origins、子網域與原站失陷界線保留。",
+    "D12008/09是模型可見結果，不是假稱觀測某App，計數固定副本身分與最終送達不可省。"
+  ],
+  "validation": {
+    "status": "PASS_AUTHOR_SCHEMA_AND_TIMING_ONLY",
+    "runtime": "bundled Node v24.22.1",
+    "checks": [
+      "現有validateEditorial、validateThemes以隔離批次及selected模型通過，不更動中央。",
+      "9個唯一候選ID/機制鍵，8個來源ID與連接完整。",
+      "5題案各2章；每beat<=45秒、章節秒數相符、逐核心跨章總秒數<=editorial上限。",
+      "三個輸出UTF-8 LF、無本機使用者絕對路徑。"
+    ],
+    "script": ".cache/wave12-digital-validate.mjs",
+    "initial_failure": "忽略暫存validator的相對import多一層導致ERR_MODULE_NOT_FOUND；修正暫存路徑後通過，未改正式工具。",
+    "limits": "只查結構/時間算術，不代表來源或觀眾理解已通過非作者覆核。"
+  },
+  "limits": "僅作者題級來源篩選與紙上題案；未逐句寫稿、盲讀、實測/錄製、購買媒體或中央選入；8份文件不是8次獨立實驗。",
+  "revision_history": [
+    {
+      "reason": "作者鎖後發現「完成登入」會把OAuth授權碼交換混成使用者身分驗證，收窄D12004問法及T03題名/界線；不改機制、來源或110秒。",
+      "before_files": [
+        {
+          "file": "batches/wave12-digital.json",
+          "sha256": "f16dd0ca17e9ff472d1aebbba08a58aba81611dab1fbb526f2409d76d975ad5e"
+        },
+        {
+          "file": "reviews/wave12-digital-themes.json",
+          "sha256": "e984a013eb7559aeb3b7aa3093b40825cae6b02f8375e30949a964f48cbb30a1"
+        },
+        {
+          "file": "reviews/wave12-digital-author.json",
+          "sha256": "d8e29de69208cd80d2c93ea0f3c2dba32ea44922b375a2084a8be194ed6e7a7c"
+        }
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave12-digital.json",
+          "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
+        },
+        {
+          "file": "reviews/wave12-digital-themes.json",
+          "sha256": "5624d3b3743839118f5ba1881a973a6e614c81ffc3e21b5591f259e6dc14e6fc"
+        }
+      ],
+      "status": "AUTHOR_CORRECTION_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "reason": "非作者physics逐題/來源閱讀後，T04第一章刪已說明的信封/IP條件15秒，只留驗證結果不等投遞處置10秒；T05第一章模型重設10→5秒。來源/候選/機制不變。",
+      "before_files": [
+        {
+          "file": "batches/wave12-digital.json",
+          "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
+        },
+        {
+          "file": "reviews/wave12-digital-themes.json",
+          "sha256": "5624d3b3743839118f5ba1881a973a6e614c81ffc3e21b5591f259e6dc14e6fc"
+        },
+        {
+          "file": "reviews/wave12-digital-author.json",
+          "sha256": "ffe719ff1baf5e0027ce05da678eefd9f0faaedb0fbdff493dac6a37004826a5"
+        }
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave12-digital.json",
+          "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
+        },
+        {
+          "file": "reviews/wave12-digital-themes.json",
+          "sha256": "eabd2473f7471cca113c809ed78ac4f1e88b31f81bb4d8b5adbb978d31715d1b"
+        }
+      ],
+      "status": "PENDING_TARGETED_INDEPENDENT_READBACK"
+    }
+  ]
+}

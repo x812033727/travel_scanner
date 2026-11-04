@@ -1,0 +1,1147 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "/root/science_sources",
+  "reviewer": "/root/pool_life_tech",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "role_and_scope": "獨立非作者題級來源／去重／紙上片案覆核。全5候選、16未收、19作者對、25有向top5；5指定正文與7圖頁/圖，未逐式重現或核准完整稿。",
+  "reviewed_candidate_ids": [
+    "S48-001",
+    "S48-002",
+    "S48-003",
+    "S48-004",
+    "S48-005"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave48-earth.json",
+      "sha256": "6122037def0dbebfceb0d7206dbeee8de27c186bf499b13facbf4a7f454bc36a"
+    },
+    {
+      "file": "reviews/wave48-earth-author.json",
+      "sha256": "661225b40008593f367e606894c4e8687bc53c749869813cea919403dd67add1"
+    },
+    {
+      "file": "reviews/wave48-earth-themes.json",
+      "sha256": "133f9fdf1c38f936400c3dfa3ef4647cacdd1ca3e373be3ce43f90f60b2277a0"
+    }
+  ],
+  "accepted_theme_proposal_ids": [
+    "W48S-T01",
+    "W48S-T02",
+    "W48S-T03",
+    "W48S-T04"
+  ],
+  "remaining_blockers": [],
+  "draft_sha256": "965ae2f57e0662b686f5658fbae91e556bde0f6d905ed0360963db24a53905ea",
+  "first_retrieval": {
+    "file": ".cache/wave48-earth-neighbours.json",
+    "sha256": "92e02eef7cd4163dc7da7715c1e9892d7ce6e3019b89bd4506318e468cd5810f",
+    "draft_sha256": "c96e15af12e70d5e0d50db2431432bcbf1585432e0e53ea8616493ffa7c95811",
+    "batch_sha256": "1d3a135518cc8343696d1de7471d12b906120777c4320625fcf75094eb6be4e9",
+    "directed_pairs": 25
+  },
+  "source_identity_review": "5個研究題錄，S002/003同作者相連研究不稱獨立重複驗證；大學稿／PMC／原刊是同文載體。未由URL數保證研究獨立。",
+  "source_fetch_limits": "本覆核無新HTTP。核作者保存3份有效PDF、PMC正文HTML與1份原刊Web指定段返回及對應抽文SHA後讀；作者Nature驗證、eScholarship403、Wiley PDF403與PMC web驗證失敗不升成正文讀取成功。S004只讀原刊正文／圖說，未目讀圖版。",
+  "source_reads": [
+    {
+      "id": "S48-S001",
+      "source_id": "S48-S001",
+      "url": "https://doi.org/10.1038/ngeo2209",
+      "retrieval_url": "https://web.natur.cuni.cz/uhigug/masin/download/Bruthans_et_al-NatureGeosci2014-pp.pdf",
+      "doi": "10.1038/ngeo2209",
+      "title": "Sandstone landforms shaped by negative feedback between stress and erosion",
+      "version": "2014研究之作者大學託管19頁稿；非另一次研究",
+      "read_via": "非作者核SHA後獨立閱讀作者當日有效快取，非本覆核fresh HTTP；不是只讀作者摘要。",
+      "reading_scope": "核SHA大學作者PDF pp2–8正文／材料與pp14–15圖說；另目讀p17 Fig2。未重讀SI或逐式重現有限元素模型。",
+      "limitations": "限所試Strelec鎖固砂及另組膠結砂岩；侵蝕、形狀與載荷為實驗，天然地形的應力場為模型解釋。不能說壓力無限增加都安全，或所有石拱皆此單一成因。Nature頁本次導向驗證失敗；正文採大學作者稿。",
+      "author_cache_verified": {
+        "file": ".cache/wave48-earth-arches.pdf",
+        "sha256": "9f2fd62736eb1b86d3a64655f4fe83e04dcfbf63f57a7f1721a187f72922d1a7",
+        "text_file": ".cache/wave48-earth-arches.txt",
+        "text_sha256": "ad582cdf270f9b19bd26ccd5fb934063750cec1c52944c12033ca04551a96a8c"
+      },
+      "status": "READ_SPECIFIED_BODY_ONLY"
+    },
+    {
+      "id": "S48-S002",
+      "source_id": "S48-S002",
+      "url": "https://doi.org/10.1016/j.epsl.2016.11.055",
+      "retrieval_url": "https://seismo.berkeley.edu/~manga/fauriaetal2017.pdf",
+      "doi": "10.1016/j.epsl.2016.11.055",
+      "title": "Trapped bubbles keep pumice afloat and gas diffusion makes pumice sink",
+      "version": "2017正式刊本460:50–59，作者大學同文PDF",
+      "read_via": "非作者核SHA後獨立閱讀作者當日有效快取，非本覆核fresh HTTP；不是只讀作者摘要。",
+      "reading_scope": "核SHA刊本PDF pp2–8，§1.1困氣至§4.4起段、Figs2/3/6與Table2圖說；另目讀p5 Figs2–3。未目讀其餘原圖或重算CT。",
+      "limitations": "六小塊CT含常溫與500°C處理，漂浮實驗另組人工海水；CT未定論旁路與截斷哪一種主導。擴散由時標／模型支持，未逐分子追蹤；體積有假設換算，不能承諾任一浮石漂幾天。eScholarship直接UA403、網頁驗證；Web可讀其同文轉製PDF，正式閱讀／原圖以大學10頁刊本為準。",
+      "author_cache_verified": {
+        "file": ".cache/wave48-earth-pumice.pdf",
+        "sha256": "6063fb3604620f2101073dd9d9d25e6aead8382abd1fd36de460fefa8955a1d6",
+        "text_file": ".cache/wave48-earth-pumice.txt",
+        "text_sha256": "1ba25defffd24c9f13e1b8d5c534aa84b38e94631b11afc6428b364ed88a82ee"
+      },
+      "status": "READ_SPECIFIED_BODY_ONLY"
+    },
+    {
+      "id": "S48-S003",
+      "source_id": "S48-S003",
+      "url": "https://doi.org/10.1016/j.jvolgeores.2018.07.002",
+      "retrieval_url": "https://seismo.berkeley.edu/~manga/fauriaandmanga2018.pdf",
+      "doi": "10.1016/j.jvolgeores.2018.07.002",
+      "title": "Pyroclast cooling and saturation in water",
+      "version": "2018正式刊本362:17–31，大學同文PDF",
+      "read_via": "非作者核SHA後獨立閱讀作者當日有效快取，非本覆核fresh HTTP；不是只讀作者摘要。",
+      "reading_scope": "核SHA刊本PDF pp2–7的§2方法、§3結果與§4.3.2模型對照，p11外推限制／結論；目讀p4 Figs2–3、p6 Fig6、p7 Fig7。未逐式重算Appendix。",
+      "limitations": "常壓、初為空氣的厘米級浮石；浸沒重量及熱電偶量測，內部凝結前緣由重量推算／模型而非透視影片。原爐溫260–460°C有空缺，不宣稱完整連續溫度律。海底上升圖是外推模型，本文此題不採深海秒數或浮升距離。",
+      "author_cache_verified": {
+        "file": ".cache/wave48-earth-hotpumice.pdf",
+        "sha256": "3fdcb83ed5d93d5a5f6b941aea53eaba910939e74b10a016300eed686c03db73",
+        "text_file": ".cache/wave48-earth-hotpumice.txt",
+        "text_sha256": "3606efbbfb44e959125e0adeb9eaed65d0a9bbebea0f3860f9e9743a1136a9d0"
+      },
+      "status": "READ_SPECIFIED_BODY_ONLY"
+    },
+    {
+      "id": "S48-S004",
+      "source_id": "S48-S004",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582",
+      "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582",
+      "doi": "10.1002/2015GL063582",
+      "title": "Wormhole formation and compact dissolution in single- and two-phase CO2-brine injections",
+      "version": "2015正式刊本42:2270–2276；原刊Web指定正文",
+      "read_via": "非作者核SHA後獨立閱讀作者當日有效快取，非本覆核fresh HTTP；不是只讀作者摘要。",
+      "reading_scope": "核SHA作者保存的原刊Web實際返回，L126–191 §§2.1–2.4/§3及Figs1–4圖說；本覆核未取圖版或SI。",
+      "limitations": "特定石灰岩、100bar／50°C水平岩芯；對照維持鹽水流率，總注入流量不同。CT觀測與Fig4推論分開；未直接拍每個新孔被占的全過程，不當作所有地層的固定結果。UA PDF403；只留Web返回指定段，不冒充全篇PDF／HTML或已看補充影片。Figs1–4只讀圖說，未另取圖版。",
+      "author_cache_verified": {
+        "file": ".cache/wave48-earth-worm-web.json",
+        "sha256": "0a1bd564e6dc8f0af16aa5b9c80a27b37bbda891fe4a1a8b62e8f988c1593d75",
+        "text_file": ".cache/wave48-earth-worm.txt",
+        "text_sha256": "7bf2e028f9f0d48ee3138eeae2641c8a9105ada5f9064fe2e9bbb178fe607176"
+      },
+      "status": "READ_SPECIFIED_BODY_ONLY"
+    },
+    {
+      "id": "S48-S005",
+      "source_id": "S48-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+      "doi": "10.1021/acsomega.3c00543",
+      "title": "Fracture Surface Evolution During Acidized Brine Injection in Calcareous Mudrocks",
+      "version": "2023正式刊本8:18626–18636；PMC同文HTML",
+      "read_via": "非作者核SHA後獨立閱讀作者當日有效快取，非本覆核fresh HTTP；不是只讀作者摘要。",
+      "reading_scope": "核SHA PMC HTML抽文§§2.1–2.2、3.1–3.4、4 Discussion與Tables2–3／Figs4–5圖說；目讀Fig4、Fig5。未追逐粒堵塞或另外取SI。",
+      "limitations": "單塊高方解石Wolfcamp樣品、人工鋸切縫與圍壓；CT前後量幾何，注入期間壓降反算導流。細粒堵塞是多項觀測支持的解釋，非逐粒影片。前後測換用平衡鹽水、不同流率，不能只以流量解釋差別。§2.2.2寫1/2/4 mL/h，§3.2及Discussion卻寫mL/min，故不採精確流率或無保留稱前後測更高流量；Discussion的較高流量可能解堵僅列作者解釋。原Fig5圖說倍數與正文數值也不一致，本題只採方向。Web重開曾驗證頁，UA HTML為有效正文。",
+      "author_cache_verified": {
+        "file": ".cache/wave48-earth-fracture.html",
+        "sha256": "73a5adce7db72149ad3231120a6f6394ab8b74d1bb1bda97cd469e351a9a0d18",
+        "text_file": ".cache/wave48-earth-fracture.txt",
+        "text_sha256": "30657bbd62c22cf77d0d49e872bd679a7556485f1519743caaab0bc318507e8c"
+      },
+      "status": "READ_SPECIFIED_BODY_ONLY"
+    }
+  ],
+  "visual_readings": [
+    {
+      "source_id": "S48-S001",
+      "file": ".cache/wave48-earth-arches-p17.png",
+      "sha256": "f30b3332ddd93438089ac5ae3dda9291da17ccadfe2984c999863bcaff2078fe",
+      "scope": "PDF p17 Fig2 減載、截面與應力圖；照片不是整條逐時影片"
+    },
+    {
+      "source_id": "S48-S002",
+      "file": ".cache/wave48-earth-pumice-p5.png",
+      "sha256": "0ba44a090c012b1925ab9643e04e7544b66ff28b8f1fa9fa932d21514397b025",
+      "scope": "PDF p5 Fig2三相切片、Fig3分離氣團重建"
+    },
+    {
+      "source_id": "S48-S003",
+      "file": ".cache/wave48-earth-hotpumice-p4.png",
+      "sha256": "8609572caec20b8559b548d506f1f6ffb2150ec452ef3b754ec724e63a850df5",
+      "scope": "PDF p4 Fig2 ML03量測／照片；Fig3 ML01同石初溫曲線"
+    },
+    {
+      "source_id": "S48-S003",
+      "file": ".cache/wave48-earth-hotpumice-p6.png",
+      "sha256": "a726db2bbefd603c6b403fe82e03a4fb4194709691667d4291d88c1899e7e6d8",
+      "scope": "PDF p6 Fig6明標概念凝結前緣模型，並非透視影片"
+    },
+    {
+      "source_id": "S48-S003",
+      "file": ".cache/wave48-earth-hotpumice-p7.png",
+      "sha256": "09f9f99ed0fc76c59ecfff697ae32458f3c1f134ada1a1142badf32a57154c59",
+      "scope": "PDF p7 Fig7由實驗換算點與平面／球面模型"
+    },
+    {
+      "source_id": "S48-S005",
+      "file": ".cache/wave48-earth-fracture-fig4.jpg",
+      "sha256": "f994dc2119db47b22f8b99b07d0382e6c13ee024889b7c574d593e60e06b6e5a",
+      "scope": "Fig4前後平均開度與差值"
+    },
+    {
+      "source_id": "S48-S005",
+      "file": ".cache/wave48-earth-fracture-fig5.jpg",
+      "sha256": "9e54161ab88ad5525083de6429a6efc180b833a2efb5498822143ef5a0b82646",
+      "scope": "Fig5注酸期間壓降／反算導流方向，不採圖說倍數"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "S48-001",
+      "decision": "retain",
+      "reason": "減載後侵蝕再起的可見對照支持形狀—應力負回饋；不是一般壓力、剪切卡緊或石頭磨圓。",
+      "scope_checked": "Strelec材料的浸水與分步減載試驗；顆粒互鎖是材料解釋，應力選擇侵蝕路徑的數值圖與實驗照片分框；不以此推所有岩石或自然拱門的安全。",
+      "source_ids": [
+        "S48-S001"
+      ],
+      "visual_checked": true,
+      "editorial_cap_seconds": 95
+    },
+    {
+      "id": "S48-002",
+      "decision": "retain",
+      "reason": "液體充入連通孔卻切斷氣相出口，CT與另組浮沉時標對照有推理；快照與擴散模型已分開。",
+      "scope_checked": "氣、水、玻璃三相CT與另組人工海水漂浮試驗；不是兩種困氣機制的定論，也不是所有石塊或浮石必浮；擴散為受資料支持模型，非直接拍到整顆氣團穿過孔喉。",
+      "source_ids": [
+        "S48-S002"
+      ],
+      "visual_checked": true,
+      "editorial_cap_seconds": 95
+    },
+    {
+      "id": "S48-003",
+      "decision": "retain",
+      "reason": "同石初溫干預有非單調初期流率；熱移除對滲透能力的限速選擇超出單句冷凝吸液，保留實測／模型分框。",
+      "scope_checked": "常壓空氣充填小浮石的重量／內部溫度量測與Stefan含對流模型；原圖的100°C僅常壓條件。初始猛烈排氣階段尚無完整定量模型，不將所有冒泡當蒸氣，不外推海底實際浮升時間。",
+      "source_ids": [
+        "S48-S003"
+      ],
+      "visual_checked": true,
+      "editorial_cap_seconds": 90
+    },
+    {
+      "id": "S48-004",
+      "decision": "retain",
+      "reason": "維持鹽水率而新增另一相，使溶道正回饋中斷；限定總流量不同，非把CO2直接當酸。",
+      "scope_checked": "同岩類與溫壓、相同鹽水率而非相同總流量；超臨界CO2不是氣泡影片。Fig3是CT溶蝕形狀，Fig4是機制模型，兩者不可同稱直接看到。",
+      "source_ids": [
+        "S48-S004"
+      ],
+      "visual_checked": true,
+      "editorial_cap_seconds": 85
+    },
+    {
+      "id": "S48-005",
+      "decision": "retain",
+      "reason": "幾何增寬卻注入期導流降低，以及不同前後測法的反轉，不能只用孔越大越通解釋；細粒仍屬支持性解釋。",
+      "scope_checked": "單塊人工鋸切高方解石頁岩、酸化平衡鹽水及圍壓；幾何為前後掃描，非同步追蹤每一處開度。細粒堵塞為作者解釋；Discussion以較高流量可能解堵，但Methods與Results／Discussion單位矛盾，故不把前後測確定更高流量或唯一流量因果當結論。不給注酸操作或地層施工建議。",
+      "source_ids": [
+        "S48-S005"
+      ],
+      "visual_checked": true,
+      "editorial_cap_seconds": 95
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "S48-001",
+      "b": "S47-005",
+      "cosine": 0.809486,
+      "decision": "distinct",
+      "reason": "削掉邊角仍保軸長是幾何磨耗分段；本題減載重啟侵蝕並改穩定截面，控制量不同。"
+    },
+    {
+      "a": "S48-001",
+      "b": "E7022",
+      "cosine": 0.79281,
+      "decision": "distinct",
+      "reason": "粗粒護甲透過粒徑選擇保護床面；本題同材料承載截面縮小而提高應力，不是去細留粗。"
+    },
+    {
+      "a": "S48-001",
+      "b": "S47-002",
+      "cosine": 0.784651,
+      "decision": "distinct",
+      "reason": "加砂使礫石門檻改變與骨架轉換，不含外載減少後侵蝕再起的形狀回饋。"
+    },
+    {
+      "a": "S48-001",
+      "b": "E11001",
+      "cosine": 0.768571,
+      "decision": "distinct",
+      "reason": "磨蝕工具與覆蓋競爭不同於侵蝕截面使承載應力增加；不因都是侵蝕非單調而併。"
+    },
+    {
+      "a": "S48-001",
+      "b": "P32004",
+      "cosine": 0.76176,
+      "decision": "distinct",
+      "reason": "水躍使侵蝕堆積分處、床形逆遷移；本題固體內承載應力回饋，非流況遷移。"
+    },
+    {
+      "a": "S48-002",
+      "b": "S43-008",
+      "cosine": 0.818676,
+      "decision": "distinct",
+      "reason": "水合物結皮封一出口讓氣改道；本題水侵入孔網隔離氣團且其後經液體慢擴散。"
+    },
+    {
+      "a": "S48-002",
+      "b": "W5013",
+      "cosine": 0.730547,
+      "decision": "distinct",
+      "reason": "停泵壓差反轉改裂縫進出流，不含液體包圍氣體導致連通孔仍困氣。"
+    },
+    {
+      "a": "S48-002",
+      "b": "X38-007",
+      "cosine": 0.73045,
+      "decision": "distinct",
+      "reason": "滴回縮空穴聚焦壓力後穿網是瞬態噴射，本題毛細侵入後的孤立氣相與浮沉。"
+    },
+    {
+      "a": "S48-002",
+      "b": "X42-004",
+      "cosine": 0.727856,
+      "decision": "distinct",
+      "reason": "非球顆粒在界面成網抑制咖啡環，與水填孔網後切斷氣體出口不同。"
+    },
+    {
+      "a": "S48-002",
+      "b": "U8013",
+      "cosine": 0.725746,
+      "decision": "distinct",
+      "reason": "蛋白殼疏水屏障阻水且通氣，浮石本題反而允許水進入，靠液體隔離氣相而非疏水殼。"
+    },
+    {
+      "a": "S48-003",
+      "b": "LEG-S49",
+      "cosine": 0.778017,
+      "decision": "distinct",
+      "reason": "熱水結冰的多條件現象不是同石孔隙內蒸氣凝結、熱移除限制進水率。"
+    },
+    {
+      "a": "S48-003",
+      "b": "P092",
+      "cosine": 0.754392,
+      "decision": "distinct",
+      "reason": "穩態平板熱阻是前提，沒有水移入和凝結界面推進的耦合或初溫控制。"
+    },
+    {
+      "a": "S48-003",
+      "b": "P085",
+      "cosine": 0.746883,
+      "decision": "distinct",
+      "reason": "單相加熱熱容量不含凝結潛熱及多孔體水侵入的限速選擇。"
+    },
+    {
+      "a": "S48-003",
+      "b": "P090",
+      "cosine": 0.745408,
+      "decision": "distinct",
+      "reason": "凝結放熱是必要背景；本題還有同石初溫反差及熱傳相對滲透能力成為瓶頸。"
+    },
+    {
+      "a": "S48-003",
+      "b": "P086",
+      "cosine": 0.732713,
+      "decision": "distinct",
+      "reason": "比熱造成不同溫升並不回答水進孔的速率受相變移熱限制。"
+    },
+    {
+      "a": "S48-004",
+      "b": "E17001",
+      "cosine": 0.807404,
+      "decision": "distinct",
+      "reason": "孔隙鹽水密度對流／蒸發供鹽與非潤濕相占據溶道種子的反應流回饋不同。"
+    },
+    {
+      "a": "S48-004",
+      "b": "S48-005",
+      "decision": "distinct",
+      "reason": "S48-004另一非潤濕流體占孔抑制反應通道延伸；S48-005固體弱化可能產細粒，並有不同前後測法的導流反轉，末版仍是不同控制。",
+      "cosine": 0.802739
+    },
+    {
+      "a": "S48-004",
+      "b": "LEG-S32",
+      "cosine": 0.793012,
+      "decision": "distinct",
+      "reason": "溶解離子來源與海鹽收支不含同酸水流率下另一相抑制通道延伸。"
+    },
+    {
+      "a": "S48-004",
+      "b": "P272",
+      "cosine": 0.773535,
+      "decision": "distinct",
+      "reason": "共軛酸鹼平衡不等於兩相占位改反應流體路徑。"
+    },
+    {
+      "a": "S48-004",
+      "b": "N088",
+      "cosine": 0.76985,
+      "decision": "distinct",
+      "reason": "抽水造成鹽淡水邊界移動不含溶道成長與兩相占位競爭。"
+    },
+    {
+      "a": "S48-005",
+      "b": "S48-004",
+      "cosine": 0.802739,
+      "decision": "distinct",
+      "reason": "S48-005是反應弱化表面／細粒解釋及測試條件反轉；S48-004是非潤濕流體占新溶道，不能互代。"
+    },
+    {
+      "a": "S48-005",
+      "b": "E17001",
+      "cosine": 0.786938,
+      "decision": "distinct",
+      "reason": "蒸發密度對流與表面鹽脊收支，不能回答岩縫平均開度與導流方向相反。"
+    },
+    {
+      "a": "S48-005",
+      "b": "N234",
+      "decision": "distinct",
+      "reason": "N234鹽再結晶壓力撐碎孔壁；S48-005是酸溶弱化、可能釋放細粒及兩套測法導流反轉，不能以鹽結晶解釋。",
+      "cosine": 0.773235
+    },
+    {
+      "a": "S48-005",
+      "b": "F14006",
+      "cosine": 0.751301,
+      "decision": "distinct",
+      "reason": "凝膠孔壓和接觸時間的排水競爭，不是溶岩增寬而細粒可能堵窄處。"
+    },
+    {
+      "a": "S48-005",
+      "b": "S47-002",
+      "cosine": 0.74996,
+      "decision": "distinct",
+      "reason": "外加細砂改床面礫石起動與反應產生細粒可能堵窄處不同；本題還分幾何與導流測法。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "S48-001",
+      "b": "G13003",
+      "decision": "distinct",
+      "reason": "G13003固定填充剪切承力網絡；S48-001的減載干預加上侵蝕改截面／應力再抑侵蝕，是另一閉環控制。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-001",
+      "b": "G13001",
+      "decision": "distinct",
+      "reason": "G13001建堆程序改底壓分布；S48-001形狀在侵蝕中改變承載截面，減載後會再選穩定形狀。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-001",
+      "b": "B4038",
+      "decision": "distinct",
+      "reason": "B4038弱膠結濕陷與受載樣表面更抗崩解的對照不同，不能沿用濕陷答法。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-001",
+      "b": "E17005",
+      "decision": "distinct",
+      "reason": "E17005糖溶液密度流改局部溶解；S48-001主要控制為固體應力與顆粒脫離，不是形狀換名。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-001",
+      "b": "S47-001",
+      "decision": "distinct",
+      "reason": "S47-001已是G13003變體，其反向剪切記憶未包含本題侵蝕截面負回饋。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-002",
+      "b": "R21002",
+      "decision": "distinct",
+      "reason": "R21002濕網的氣體突破門檻／液體壓損取捨；S48-002問孔網水侵入後氣相是否還相通及慢流失。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-002",
+      "b": "N094",
+      "decision": "distinct",
+      "reason": "N094非飽和毛細水與可抽地下水不同，未回答液體侵入後孤立氣相的浮力持續。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-002",
+      "b": "S43-002",
+      "decision": "distinct",
+      "reason": "S43-002水合物皮阻慢傳質，與連通孔中水相隔斷氣路不同。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-002",
+      "b": "D2095",
+      "decision": "distinct",
+      "reason": "D2095留空孔緩衝凍結壓力，沒有浮石浸水後困氣和擴散的時序。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-003",
+      "b": "S48-002",
+      "decision": "distinct",
+      "reason": "S48-002常溫液體隔離氣相／慢擴散；S48-003熱石內凝結要排熱，初溫干預改進水率，控制問題不同。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-003",
+      "b": "F4026",
+      "decision": "distinct",
+      "reason": "F4026已含冷凝降壓吸液，若只講此句應併；S48-003實讀Fig3/§4.3後仍有熱移除相對孔道導流的限速選擇，以及同石最高初溫流率較低的新預測。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-003",
+      "b": "P090",
+      "decision": "distinct",
+      "reason": "P090潛熱去向不足以回答熱石進水率；本題把移熱與滲透兩種速率比較，保留模型身份。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-003",
+      "b": "P231",
+      "decision": "distinct",
+      "reason": "P231液體升溫溶解氣逸出，與熱多孔固體內蒸氣凝結／吸水不同。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-004",
+      "b": "N082",
+      "decision": "distinct",
+      "reason": "N082只含弱酸溶碳酸鹽；S48-004固定酸水流率，增另一相使正回饋受阻，限定答案新增。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-004",
+      "b": "R21002",
+      "decision": "distinct",
+      "reason": "R21002濕網突破門檻與供液設計不等於S48-004兩相占位改反應通道形狀。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-004",
+      "b": "S48-005",
+      "decision": "distinct",
+      "reason": "S48-004非反應相占位，S48-005固體弱化可能產細粒；兩控制條件及測量方向不同。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-005",
+      "b": "D2097",
+      "decision": "distinct",
+      "reason": "D2097水膠比留下孔隙，沒有溶解當下增寬／導流下降與不同測試條件的反轉。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-005",
+      "b": "S47-006",
+      "decision": "distinct",
+      "reason": "S47-006外來細料沉積封旁支；S48-005的溶解既開孔又可能產生堵孔細粒，且前後平衡鹽水測法讀出相反變化。",
+      "snapshots_read": true
+    },
+    {
+      "a": "S48-005",
+      "b": "W5027",
+      "decision": "distinct",
+      "reason": "W5027濾床配置容納外來絮體；S48-005是反應產細粒、平均幾何與局部導流不一致，非只換濾料。",
+      "snapshots_read": true
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "S48-001",
+        "b": "S47-005",
+        "reason": "削掉邊角仍保軸長是幾何磨耗分段；本題減載重啟侵蝕並改穩定截面，控制量不同。"
+      },
+      {
+        "a": "S48-001",
+        "b": "E7022",
+        "reason": "粗粒護甲透過粒徑選擇保護床面；本題同材料承載截面縮小而提高應力，不是去細留粗。"
+      },
+      {
+        "a": "S48-001",
+        "b": "S47-002",
+        "reason": "加砂使礫石門檻改變與骨架轉換，不含外載減少後侵蝕再起的形狀回饋。"
+      },
+      {
+        "a": "S48-001",
+        "b": "E11001",
+        "reason": "磨蝕工具與覆蓋競爭不同於侵蝕截面使承載應力增加；不因都是侵蝕非單調而併。"
+      },
+      {
+        "a": "S48-001",
+        "b": "P32004",
+        "reason": "水躍使侵蝕堆積分處、床形逆遷移；本題固體內承載應力回饋，非流況遷移。"
+      },
+      {
+        "a": "S48-002",
+        "b": "S43-008",
+        "reason": "水合物結皮封一出口讓氣改道；本題水侵入孔網隔離氣團且其後經液體慢擴散。"
+      },
+      {
+        "a": "S48-002",
+        "b": "W5013",
+        "reason": "停泵壓差反轉改裂縫進出流，不含液體包圍氣體導致連通孔仍困氣。"
+      },
+      {
+        "a": "S48-002",
+        "b": "X38-007",
+        "reason": "滴回縮空穴聚焦壓力後穿網是瞬態噴射，本題毛細侵入後的孤立氣相與浮沉。"
+      },
+      {
+        "a": "S48-002",
+        "b": "X42-004",
+        "reason": "非球顆粒在界面成網抑制咖啡環，與水填孔網後切斷氣體出口不同。"
+      },
+      {
+        "a": "S48-002",
+        "b": "U8013",
+        "reason": "蛋白殼疏水屏障阻水且通氣，浮石本題反而允許水進入，靠液體隔離氣相而非疏水殼。"
+      },
+      {
+        "a": "S48-003",
+        "b": "LEG-S49",
+        "reason": "熱水結冰的多條件現象不是同石孔隙內蒸氣凝結、熱移除限制進水率。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P092",
+        "reason": "穩態平板熱阻是前提，沒有水移入和凝結界面推進的耦合或初溫控制。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P085",
+        "reason": "單相加熱熱容量不含凝結潛熱及多孔體水侵入的限速選擇。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P090",
+        "reason": "凝結放熱是必要背景；本題還有同石初溫反差及熱傳相對滲透能力成為瓶頸。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P086",
+        "reason": "比熱造成不同溫升並不回答水進孔的速率受相變移熱限制。"
+      },
+      {
+        "a": "S48-004",
+        "b": "E17001",
+        "reason": "孔隙鹽水密度對流／蒸發供鹽與非潤濕相占據溶道種子的反應流回饋不同。"
+      },
+      {
+        "a": "S48-004",
+        "b": "LEG-S32",
+        "reason": "溶解離子來源與海鹽收支不含同酸水流率下另一相抑制通道延伸。"
+      },
+      {
+        "a": "S48-004",
+        "b": "P272",
+        "reason": "共軛酸鹼平衡不等於兩相占位改反應流體路徑。"
+      },
+      {
+        "a": "S48-004",
+        "b": "N088",
+        "reason": "抽水造成鹽淡水邊界移動不含溶道成長與兩相占位競爭。"
+      },
+      {
+        "a": "S48-004",
+        "b": "N234",
+        "reason": "鹽結晶壓力破壞岩孔不同於流動酸液溶解及另一相阻斷延伸。"
+      },
+      {
+        "a": "S48-005",
+        "b": "S47-002",
+        "reason": "外加細砂改床面礫石起動與反應產生細粒可能堵窄處不同；本題還分幾何與導流測法。"
+      },
+      {
+        "a": "S48-005",
+        "b": "S48-004",
+        "reason": "S48-005是反應弱化表面／細粒解釋及測試條件反轉；S48-004是非潤濕流體占新溶道，不能互代。"
+      },
+      {
+        "a": "S48-005",
+        "b": "F14006",
+        "reason": "凝膠孔壓和接觸時間的排水競爭，不是溶岩增寬而細粒可能堵窄處。"
+      },
+      {
+        "a": "S48-005",
+        "b": "F14005",
+        "reason": "軟壁變形改流體升力與間隙拖曳，不含反應移除固體後的暫時阻塞。"
+      },
+      {
+        "a": "S48-005",
+        "b": "E17001",
+        "reason": "蒸發密度對流與表面鹽脊收支，不能回答岩縫平均開度與導流方向相反。"
+      },
+      {
+        "a": "S48-001",
+        "b": "G13003",
+        "reason": "G13003固定填充剪切承力網絡；S48-001的減載干預加上侵蝕改截面／應力再抑侵蝕，是另一閉環控制。"
+      },
+      {
+        "a": "S48-001",
+        "b": "G13001",
+        "reason": "G13001建堆程序改底壓分布；S48-001形狀在侵蝕中改變承載截面，減載後會再選穩定形狀。"
+      },
+      {
+        "a": "S48-001",
+        "b": "B4038",
+        "reason": "B4038弱膠結濕陷與受載樣表面更抗崩解的對照不同，不能沿用濕陷答法。"
+      },
+      {
+        "a": "S48-001",
+        "b": "E17005",
+        "reason": "E17005糖溶液密度流改局部溶解；S48-001主要控制為固體應力與顆粒脫離，不是形狀換名。"
+      },
+      {
+        "a": "S48-001",
+        "b": "S47-001",
+        "reason": "S47-001已是G13003變體，其反向剪切記憶未包含本題侵蝕截面負回饋。"
+      },
+      {
+        "a": "S48-002",
+        "b": "R21002",
+        "reason": "R21002濕網的氣體突破門檻／液體壓損取捨；S48-002問孔網水侵入後氣相是否還相通及慢流失。"
+      },
+      {
+        "a": "S48-002",
+        "b": "N094",
+        "reason": "N094非飽和毛細水與可抽地下水不同，未回答液體侵入後孤立氣相的浮力持續。"
+      },
+      {
+        "a": "S48-002",
+        "b": "S43-002",
+        "reason": "S43-002水合物皮阻慢傳質，與連通孔中水相隔斷氣路不同。"
+      },
+      {
+        "a": "S48-002",
+        "b": "D2095",
+        "reason": "D2095留空孔緩衝凍結壓力，沒有浮石浸水後困氣和擴散的時序。"
+      },
+      {
+        "a": "S48-003",
+        "b": "S48-002",
+        "reason": "S48-002常溫液體隔離氣相／慢擴散；S48-003熱石內凝結要排熱，初溫干預改進水率，控制問題不同。"
+      },
+      {
+        "a": "S48-003",
+        "b": "F4026",
+        "reason": "F4026已含冷凝降壓吸液，若只講此句應併；S48-003實讀Fig3/§4.3後仍有熱移除相對孔道導流的限速選擇，以及同石最高初溫流率較低的新預測。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P231",
+        "reason": "P231液體升溫溶解氣逸出，與熱多孔固體內蒸氣凝結／吸水不同。"
+      },
+      {
+        "a": "S48-004",
+        "b": "N082",
+        "reason": "N082只含弱酸溶碳酸鹽；S48-004固定酸水流率，增另一相使正回饋受阻，限定答案新增。"
+      },
+      {
+        "a": "S48-004",
+        "b": "R21002",
+        "reason": "R21002濕網突破門檻與供液設計不等於S48-004兩相占位改反應通道形狀。"
+      },
+      {
+        "a": "S48-005",
+        "b": "D2097",
+        "reason": "D2097水膠比留下孔隙，沒有溶解當下增寬／導流下降與不同測試條件的反轉。"
+      },
+      {
+        "a": "S48-005",
+        "b": "S47-006",
+        "reason": "S47-006外來細料沉積封旁支；S48-005的溶解既開孔又可能產生堵孔細粒，且前後平衡鹽水測法讀出相反變化。"
+      },
+      {
+        "a": "S48-005",
+        "b": "W5027",
+        "reason": "W5027濾床配置容納外來絮體；S48-005是反應產細粒、平均幾何與局部導流不一致，非只換濾料。"
+      },
+      {
+        "a": "S48-005",
+        "b": "N234",
+        "reason": "N234鹽再結晶壓力撐碎孔壁；S48-005是酸溶弱化、可能釋放細粒及兩套測法導流反轉，不能以鹽結晶解釋。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "S48-NA001",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "LEG-S56"
+      ],
+      "reason": "舊題已含雨滴產氣膠機制；不改物件另計。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA002",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "N234"
+      ],
+      "reason": "孔隙結晶壓力已收；沒有本輪新控制。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA003",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "E7002"
+      ],
+      "reason": "舊核心已含角邊較多接觸面；不把材料改成砂岩再收。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA004",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "S47-005"
+      ],
+      "reason": "上一批已收角先磨耗與原平面保留。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA005",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "N082"
+      ],
+      "reason": "普通酸性溶蝕已收，本批只考慮流體分相會改變溶道發展。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA006",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "D2090"
+      ],
+      "reason": "毛細阻斷已有雪與地板變體，不另拆岩石例子。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA007",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "S43-002"
+      ],
+      "reason": "甲烷水合物介面已收，與本批孔內困氣不同。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA008",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "S48-001"
+      ],
+      "reason": "本篇是同一應力—侵蝕回饋配不同裂隙邊界，保留一核。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA009",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "S48-002"
+      ],
+      "reason": "困氣後慢流失是同一追問的兩階段，合在一核。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA010",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "S48-003"
+      ],
+      "reason": "本文未觀察外部蒸氣鞘，採內部凝結模型，不收相反前提。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA011",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "S48-005"
+      ],
+      "reason": "較高流量前後測反而導流增加；永久更堵超過證據。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA012",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "S48-004"
+      ],
+      "reason": "研究區分酸性水相與較不反應的另一相；不能刪掉兩相條件。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA013",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "N195"
+      ],
+      "reason": "混合冷卻沉澱已收，沒有新增原始控制。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA014",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "N234",
+        "B4037"
+      ],
+      "reason": "本輪只有檢索到反應膨脹／蛇紋化研究，未讀其指定完整正文與對照；不把搜尋摘要當因果通過。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA015",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "E7020"
+      ],
+      "reason": "搜尋到熔體—水實驗摘要，但未取得並讀足正文對照；本批不以強烈畫面補數量。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    },
+    {
+      "id": "S48-NA016",
+      "decision": "accept_not_added",
+      "existing_ids": [
+        "S48-004"
+      ],
+      "reason": "2023模擬研究只找到題錄，未讀模型條件；本輪不先按名詞拆核。",
+      "reading_boundary": "已讀本列與有效指向題完整問答/scope；未收方向另篇正文若未取得，不冒稱覆核過。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W48S-T01",
+      "decision": "accept_topic_proposal_only",
+      "body_seconds": 70,
+      "chapter_seconds": [
+        24,
+        46
+      ],
+      "core_seconds": {
+        "S48-001": 70
+      },
+      "reason": "受載／未載到減載再侵蝕有共同問題，24/46按完整離線樣讀映射，70秒不是自然地形百科。",
+      "drop_if_checked": "拿不出分步減載與穩定截面對照即撤案；任刪一章不能只剩加壓變硬常識。",
+      "production_ready": false
+    },
+    {
+      "id": "W48S-T02",
+      "decision": "accept_topic_proposal_only",
+      "body_seconds": 92,
+      "chapter_seconds": [
+        42,
+        50
+      ],
+      "core_seconds": {
+        "S48-002": 42,
+        "S48-003": 50
+      },
+      "reason": "共同追問是連通孔仍無法預測吸水：先氣路被水切斷，再換蒸氣凝結的移熱限速；兩研究有接續推理，非同材料湊片。CT限制移圖註，縮重述。",
+      "drop_if_checked": "若第二核只能說熱脹冷縮而畫不出同石改初溫的非單調流率，刪第二章，另提42秒困氣短案；未另覆核前不自動發布。",
+      "production_ready": false
+    },
+    {
+      "id": "W48S-T03",
+      "decision": "accept_topic_proposal_only",
+      "body_seconds": 70,
+      "chapter_seconds": [
+        32,
+        38
+      ],
+      "core_seconds": {
+        "S48-004": 70
+      },
+      "reason": "單相溶道正回饋與兩相占位中斷可在兩章比較；末版題名長不出，正確指另一岩芯未發展成長通道。",
+      "drop_if_checked": "若原創圖無法分清兩相或無法標同鹽水率／不同總率即撤案；不可只用長洞與短洞照片猜因。",
+      "production_ready": false
+    },
+    {
+      "id": "W48S-T04",
+      "decision": "accept_topic_proposal_only",
+      "body_seconds": 75,
+      "chapter_seconds": [
+        35,
+        40
+      ],
+      "core_seconds": {
+        "S48-005": 75
+      },
+      "reason": "平均開度、注酸期壓降與另一前後測法形成新對照；末版已明示平衡鹽水／不同流率，單位衝突留限制，不把相反結果作唯一流量因果。",
+      "drop_if_checked": "若不能同畫兩套液體／流量與時間框，撤案；刪第二章會留下誤導的永久堵塞結論，不作自動短版。",
+      "production_ready": false
+    }
+  ],
+  "corrections": [
+    {
+      "id": "EARTH01",
+      "file": "reviews/wave48-earth-themes.json",
+      "issue": "T03消失可能誤讀為既有通道被抹掉；原實驗是另一組未形成長通道。",
+      "requested": "改標題為長不出，正文保持獨立岩芯對照。",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "T03題名已改長不出長溶道，兩岩芯與兩相占位模型分框未變。"
+    },
+    {
+      "id": "EARTH02",
+      "file": "reviews/wave48-earth-themes.json",
+      "issue": "T04不能將前後測當只改流量；使用平衡鹽水而非反應酸水。Methods mL/h與Results/Discussion mL/min另有原文矛盾。",
+      "requested": "章節/connection/限制明列兩項條件切換；source記單位矛盾，不採精確流量或唯一因果。",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "已核§2.2.2原文mL/h、§3.2/Discussion mL/min，末版answer/scope/visual及T04同時收成不同流率與平衡鹽水，較高流量僅保留作者Discussion推測。"
+    },
+    {
+      "id": "EARTH03",
+      "file": "reviews/wave48-earth-themes.json",
+      "issue": "T02第一章23秒CT圖說與前拍重複、限制不宜朗讀撐時。",
+      "requested": "23→15，第一章42秒、全片92，不補內容。",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "T02 CT拍23→15；章42+50=92，drop短版42同步，沒有補旁白。"
+    }
+  ],
+  "revision_history": [
+    {
+      "kind": "author_corrections_targeted_readback",
+      "before_review_sha256": "2d7909e2e64223ef05f417f452bc1572ba8ddd2c483ef7a9c588378dfc0417e1",
+      "before_files": [
+        {
+          "file": "batches/wave48-earth.json",
+          "sha256": "842a8e43627775a28fab5ae401d1f4496f9e47be4ab527605efca79e058d282b"
+        },
+        {
+          "file": "reviews/wave48-earth-author.json",
+          "sha256": "5cc78cb972f9a3251e25997e874bf84effff1347965ba9133dc8c1e8449d66fc"
+        },
+        {
+          "file": "reviews/wave48-earth-themes.json",
+          "sha256": "0aa7c45726b65cb3bdf84b420a314cdfae3cc9e678a2347db8ab49d7f1d450fb"
+        }
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave48-earth.json",
+          "sha256": "6122037def0dbebfceb0d7206dbeee8de27c186bf499b13facbf4a7f454bc36a"
+        },
+        {
+          "file": "reviews/wave48-earth-author.json",
+          "sha256": "661225b40008593f367e606894c4e8687bc53c749869813cea919403dd67add1"
+        },
+        {
+          "file": "reviews/wave48-earth-themes.json",
+          "sha256": "133f9fdf1c38f936400c3dfa3ef4647cacdd1ca3e373be3ce43f90f60b2277a0"
+        }
+      ],
+      "resolved": [
+        "EARTH01",
+        "EARTH02",
+        "EARTH03"
+      ],
+      "new_source_fetches": 0,
+      "candidate_change": "僅S48-005答案/範圍對流率單位矛盾收窄；其餘4問答核心不變。",
+      "timing_seconds": [
+        70,
+        92,
+        70,
+        75
+      ]
+    },
+    {
+      "kind": "final_common_retrieval_readback",
+      "before_review_sha256": "9bc71c977cb567809d030fc0f10a111678b6c9494af69a5e8adf368d4210e2d1",
+      "from_draft_sha256": "c96e15af12e70d5e0d50db2431432bcbf1585432e0e53ea8616493ffa7c95811",
+      "to_draft_sha256": "965ae2f57e0662b686f5658fbae91e556bde0f6d905ed0360963db24a53905ea",
+      "delta": [
+        {
+          "id": "S48-004",
+          "added": [
+            "S48-005"
+          ],
+          "removed": [
+            "N234"
+          ],
+          "readback": "已重新讀完整q/answer/scope及排名/分數；新增S48-004→S48-005原已為作者近對，S48-005→N234另完成此方向比較。"
+        },
+        {
+          "id": "S48-005",
+          "added": [
+            "N234"
+          ],
+          "removed": [
+            "F14005"
+          ],
+          "readback": "已重新讀完整q/answer/scope及排名/分數；新增S48-004→S48-005原已為作者近對，S48-005→N234另完成此方向比較。"
+        }
+      ],
+      "former_top5_retained_as_history": [
+        {
+          "a": "S48-004",
+          "b": "N234",
+          "cosine": 0.751695,
+          "decision": "distinct",
+          "reason": "鹽結晶壓力破壞岩孔不同於流動酸液溶解及另一相阻斷延伸。"
+        },
+        {
+          "a": "S48-005",
+          "b": "F14005",
+          "cosine": 0.726503,
+          "decision": "distinct",
+          "reason": "軟壁變形改流體升力與間隙拖曳，不含反應移除固體後的暫時阻塞。"
+        }
+      ],
+      "decision_change": "無新增合併或暫緩；5留，接受4題案70/92/70/75秒。",
+      "new_source_fetches": 0
+    }
+  ],
+  "limits": [
+    "相似度僅找候選近鄰，未以分數裁決。",
+    "五題暫可留不等於全庫沒有任何漏對；圖中模型／估算與實驗界線保留。",
+    "未審所有SI／影片，也未獨立重做實驗或本機數學模型。",
+    "僅T01有root離線完整樣讀，其他紙上節奏不稱真人試映。"
+  ],
+  "final_input_check": {
+    "draft_file": ".cache/draft.json",
+    "draft_sha256": "965ae2f57e0662b686f5658fbae91e556bde0f6d905ed0360963db24a53905ea",
+    "raw_count": 3903,
+    "neighbours_file": ".cache/wave48-earth-neighbours.json",
+    "neighbours_sha256": "f65aca7d1707c93624cbf3bbdb8fb56be1afe92d8ba59e8418e76c6da81bcc3d",
+    "batch_sha256": "6122037def0dbebfceb0d7206dbeee8de27c186bf499b13facbf4a7f454bc36a",
+    "directed_pairs": 25,
+    "changed_rows": [
+      {
+        "id": "S48-004",
+        "added": [
+          "S48-005"
+        ],
+        "removed": [
+          "N234"
+        ],
+        "readback": "已重新讀完整q/answer/scope及排名/分數；新增S48-004→S48-005原已為作者近對，S48-005→N234另完成此方向比較。"
+      },
+      {
+        "id": "S48-005",
+        "added": [
+          "N234"
+        ],
+        "removed": [
+          "F14005"
+        ],
+        "readback": "已重新讀完整q/answer/scope及排名/分數；新增S48-004→S48-005原已為作者近對，S48-005→N234另完成此方向比較。"
+      }
+    ],
+    "candidate_snapshots_match": true,
+    "author_near_snapshots_match": true,
+    "reading_scope": "最終五候選與所有25完整近鄰逐欄相符；S005修訂後兩列排名/集合已重讀，沒有以第一版分數冒充末版。"
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "batch_id": "wave23-image-20261102",
+  "created_on": "2026-11-02",
+  "scope": "數位影像分組與座標解讀；4提案、2題案，色環保留短段；規格固定日期版不是額外獨立研究。",
+  "sources": [
+    {
+      "id": "R23-S001",
+      "url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/",
+      "canonical_url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/",
+      "retrieval_url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/",
+      "title": "CSS Color Module Level 4",
+      "publisher": "W3C CSS Working Group",
+      "accessed_on": "2026-11-02",
+      "version": "W3C Candidate Recommendation Draft, 1 November 2026；固定日期版，非最終Recommendation。",
+      "read_via": "web原始規格正文及明示UA urllib HTTP200固定版；lxml抽文定點讀回。",
+      "reading_scope": "§3.3–3.5正文（本機抽文201–232；未採未標籤影片預設）；§13.4–13.5及§14.1.1以web正文讀回，抽文826–851定點重讀色環部分。未逐條跑WPT或目讀原圖。",
+      "locator": "§3.3–3.5正文（本機抽文201–232；未採未標籤影片預設）；§13.4–13.5及§14.1.1以web正文讀回，抽文826–851定點重讀色環部分。未逐條跑WPT或目讀原圖。",
+      "summary": "整體透明度在子項合成後施加；色彩標記決定數值解讀；色相插值需選色環路徑。",
+      "limitations": "規格模型與示例，不是所有軟體實測；色域外映射另有取捨，不保證所有裝置顯色相同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave23-image-color.html",
+        "sha256": "eba7dd95e75d70af4755c627e59367a0b0860a0b22ffe4f5be545e4df19220c1",
+        "text_file": ".cache/wave23-image-color-text.json",
+        "text_sha256": "646a8b19e8ed9e7d2dcb3d8c4231c445fde9d5aa218c0eeacc559b9e738a1e88"
+      },
+      "related_prior_versions": [
+        {
+          "source_id": "SRC-9a785aacd173f1b9",
+          "url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261029/",
+          "origin": "wave5-digital-media",
+          "relationship": "same specification, earlier dated draft",
+          "limits": "新URL不算獨立來源佐證；舊規格完整內容未在本批重讀，只核本機來源身分與原範圍。新題依不同問題/條件判斷，不因改版計數。"
+        }
+      ]
+    },
+    {
+      "id": "R23-S002",
+      "url": "https://www.w3.org/TR/2024/CRD-compositing-1-20240321/",
+      "canonical_url": "https://www.w3.org/TR/2024/CRD-compositing-1-20240321/",
+      "retrieval_url": "https://www.w3.org/TR/2024/CRD-compositing-1-20240321/",
+      "title": "Compositing and Blending Level 1",
+      "publisher": "W3C CSS Working Group",
+      "accessed_on": "2026-11-02",
+      "version": "W3C Candidate Recommendation Draft, 21 March 2024；固定日期版。",
+      "read_via": "web原始規格正文及明示UA urllib HTTP200固定版；lxml抽文定點讀回。",
+      "reading_scope": "§5.1公式、§8–8.2、§10.1.2–10.1.3、§10.3（本機抽文255–280、325–338、440–447、501–503）；只讀公式/正文與圖說，未目讀原圖。",
+      "locator": "§5.1公式、§8–8.2、§10.1.2–10.1.3、§10.3（本機抽文255–280、325–338、440–447、501–503）；只讀公式/正文與圖說，未目讀原圖。",
+      "summary": "逐層alpha合成與群組結果再合成的順序不同；隔離群組先從透明底開始，內部混色不直接吃外部底色。",
+      "limitations": "預設正常合成只加分組應維持外觀；不是資料夾本身有魔法。multiply須在指定混色空間比較；隔離不表示最後不與外部背景合成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave23-image-compositing.html",
+        "sha256": "0fb91119308e706a5e4df368a91fa3b43cd5fe8cd8f192418b2df0a30ba8a62b",
+        "text_file": ".cache/wave23-image-compositing-text.json",
+        "text_sha256": "9ea4f204b99f8d497e3d4a0e159667f2cd5e439e1c1bfe6830634b4ce6a0dacd"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R23001",
+      "question": "兩個圖形都調成半透明，為什麼和整組一起調淡長得不一樣？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.group_opacity_postcomposite_vs_per_element",
+      "answer_target": "逐個調淡時，下層仍從上層透出，重疊區累加遮擋；整組調淡時，先按原本遮擋關係合成，再把整個結果與背景混合。兩個原本不透明的同色圖形各取0.5 alpha，在與外部底色合成前，圖形層重疊alpha為0.75；整組取0.5則為0.5。若最後合到不透明白底，輸出alpha皆為1，差的是顏色。",
+      "scope": "限定source-over與原本不透明同色圖形的數值例；alpha是合成參數，不把0.5稱為主觀亮度減半。改色、其他混合模式要重算。",
+      "source_ids": [
+        "R23-S001",
+        "R23-S002"
+      ],
+      "source_locator": "Color4 §3.3；Compositing §5.1、§8。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同兩個圖形與相同50%滑桿，差別在先後順序，重疊處可一眼比對。",
+        "visual": "固定白底、兩個黑色圓；並列逐圓0.5與先合整組0.5，重疊區標圖形層在白底合成前alpha0.75/0.5；完成白底合成的輸出alpha均為1，原創公式示意。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "R23002",
+      "question": "圖層沒換顏色，為什麼加一個隔離群組就不再被背景染暗？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.blend_isolation_backdrop_boundary",
+      "answer_target": "內部採multiply時，未隔離組可把外部底色納入混色；隔離組先在透明底上合成，只在整組完成後以組的正常模式放到外部背景。改的是內部混色能看到的底，不是把背景刪掉。",
+      "scope": "限定內部multiply、組層normal與保持相同內容/位置/alpha；預設normal只分組不應改外觀。隔離後組內元素仍會相互混色，組邊緣仍可露出外部背景。",
+      "source_ids": [
+        "R23-S002"
+      ],
+      "source_locator": "§8.1–8.2、§10.1.2、§10.3。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同顏色會變，是混色讀到的背景範圍變了。",
+        "visual": "藍底上的不透明紅方塊採multiply：未隔離重疊黑，隔離後紅；再加組內第二塊顯示內部混色仍在。與normal控制並列。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "R23003",
+      "question": "照片的RGB數字沒改，為什麼換掉色彩標記就可能變色？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.profile_interpretation_vs_color_conversion",
+      "answer_target": "RGB座標要配色彩空間才有顏色意義。把同一數字當另一空間解讀，和把原顏色換算成另一空間的數字不同；有有效標記的影像應先按標記解讀，再轉到顯示空間。",
+      "scope": "只論CSS規格對有效標記靜態影像的模型；示例選兩空間共同色域內的顏色以排除裁切，不保證所有軟體遵守或螢幕校準正確。不推未標記影片規則。",
+      "source_ids": [
+        "R23-S001"
+      ],
+      "source_locator": "§3.4–3.5；標記BT.2020轉Display P3示例。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不改數字只是換標籤，和為了保色而換算數字，是兩個不同操作。",
+        "visual": "同一RGB三數字搭兩種座標格；一條路只換標記，另一條先轉換數值；原創色塊須先驗均在目的色域內，避免用超界顏色混淆。",
+        "seconds": [
+          75,
+          115
+        ]
+      }
+    },
+    {
+      "id": "R23004",
+      "question": "兩個接近紅色的端點做漸層，為什麼中間還可能繞到青色？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.circular_hue_interpolation_arc_choice",
+      "answer_target": "色相角在一圈後回到零；350度到10度可跨零走短弧，也可繞長弧。其他分量固定時，前者中點在0度、後者在180度，兩個端點相同也不決定唯一漸層路徑。",
+      "scope": "限定HSL色環、固定非零飽和度與中等明度、顯式指定shorter/longer；不把HSL角距當知覺色差，不把長路說成程式錯誤。只有短段價值，未單獨配影片。",
+      "source_ids": [
+        "R23-S001"
+      ],
+      "source_locator": "§13.5.1–13.5.2；350→10為自行套式例。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "端點相同，走哪條路仍會改變中間色。",
+        "visual": "兩個相同色環端點，動畫分短弧跨零與長弧經180；並列等長漸層，不唸四種語法清單。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "R23-NA001",
+      "question": "黑白各半為什麼算出不同的灰？",
+      "existing_ids": [
+        "M5001"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "非線性編碼與線性光插值已有核心，不換軟體重算新題。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA002",
+      "question": "透明漸層怎麼冒出髒邊？",
+      "existing_ids": [
+        "M5002"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "預乘alpha已收；本批只作與群組順序不同的近對。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA003",
+      "question": "把鮮豔顏色截回範圍怎麼變色相？",
+      "existing_ids": [
+        "M5003"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "通道裁切已收，不拿新版本規格再發核心。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA004",
+      "question": "PNG為什麼先把像素變差值？",
+      "existing_ids": [
+        "M5004"
+      ],
+      "source_ids": [],
+      "reason": "可逆濾波與後續壓縮已有核心。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA005",
+      "question": "圖片還沒下載完怎麼先有全圖？",
+      "existing_ids": [
+        "M5005",
+        "M5007"
+      ],
+      "source_ids": [],
+      "reason": "PNG交錯與JPEG漸進均已收，不用新圖片改標題。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA006",
+      "question": "JPEG品質100就沒有損失？",
+      "existing_ids": [
+        "M5006"
+      ],
+      "source_ids": [],
+      "reason": "既有退題已併量化限制，本輪不重入。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA007",
+      "question": "乘色、濾色、差值等模式每種各拍一集？",
+      "existing_ids": [],
+      "source_ids": [
+        "R23-S002"
+      ],
+      "reason": "僅羅列公式缺故事，不按功能選項拆題；本批只取隔離能否讀到背景的對照。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA008",
+      "question": "同圖層交換上下，怎麼換了顏色？",
+      "existing_ids": [
+        "R23001"
+      ],
+      "source_ids": [
+        "R23-S002"
+      ],
+      "reason": "合成遮擋順序的補例，併入R23001，不再新發一核。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA009",
+      "question": "透明度數字0就表示檔案裡沒有RGB嗎？",
+      "existing_ids": [
+        "M5002"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "隱藏顏色作預乘題邊界即可；未另補檔案格式實驗，不收獨立題。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA010",
+      "question": "HDR、P3、十億色哪個一定比較好？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "品牌規格比較缺可控因果，不把規格名詞當吸引力。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    },
+    {
+      "id": "R23-NA011",
+      "question": "色環四種走法各拍一集？",
+      "existing_ids": [
+        "R23004"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "同一環狀插值的選項，合成單一段，不拆四核。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。"
+    }
+  ]
+}

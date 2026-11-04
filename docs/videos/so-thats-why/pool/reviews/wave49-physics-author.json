@@ -1,0 +1,779 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_DRAFT_PENDING_NONAUTHOR_REVIEW",
+  "author": "pool_physics",
+  "production_ready": false,
+  "scope": "四個薄片/纖維控制核心，三紙上短案與一素材段落。",
+  "baseline": {
+    "head": "a638b454dd377f2ea242b07a1c545555cc345a99",
+    "selected": 3514,
+    "raw_records": 3903,
+    "not_added": 2136,
+    "themes": 537,
+    "pool_sha256": "a3c8acc22ed8e029702d46d55219474489a6a6c923f054363d6e66719a411287"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave49-physics.json",
+      "sha256": "3976f127046a0a4ef724da145b966ddb3e480c0bb3a3f2a221b96bd0cf1aef8d"
+    },
+    {
+      "file": "reviews/wave49-physics-themes.json",
+      "sha256": "59587eff163762489698d55ccdc41745cbf78845caabdddb85ee47fc8e29d005"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 4,
+    "independent_studies": 4,
+    "not_added": 14,
+    "near_pairs": 17,
+    "themes": 3,
+    "segment_only": 1
+  },
+  "dedup_reading": {
+    "method": "全3903raw/2136NA詞面篩薄片/纖維/摺痕/撕裂/捲曲等，153raw/120NA命中；候選近對再逐完整問答scope讀，非逐題精讀全庫。早期進度誤報3890/2089，實際scan檔當時即為3903/2136。",
+    "cache": ".cache/wave49-physics-oldscan.json",
+    "cache_sha256": "3eabad3e5018a20078f07424a055539a979793f206146a9e4f6b6d8296486b65",
+    "semantic": "待root共同檢索，未稱已完整去重。"
+  },
+  "near_pairs": [
+    {
+      "a": "P49-001",
+      "b": "X5004",
+      "reason": "舊是受約束線圈的內力矩；新是同質薄帶受刀口載入留下厚度方向塑性梯度及高載荷補償。",
+      "a_snapshot": {
+        "id": "P49-001",
+        "question": "把緞帶拉得更用力，為什麼反而捲得比較鬆？",
+        "answer_target": "外側先屈服並永久伸長，留下捲曲；較高拉力下離開刀口時，內側也可能再屈服，減少兩側永久伸長差，因此捲曲減弱。",
+        "scope": "限PVC帶在尖刀或1mm刀口的固定速率載荷比較；卸載後曲率，不是刀上彎度。速度效應不拆新核，較鈍刀可先斷而不見下降支。"
+      },
+      "b_snapshot": {
+        "id": "X5004",
+        "question": "平針布沒有被拉，邊緣為什麼還會自己捲起來？",
+        "answer_target": "彎曲線圈受互相接觸約束而帶有內部力矩；線圈長寬形狀關聯於不同捲曲方向。",
+        "scope": "無外載形狀而非X5002面內拉伸；不把個別研究相圖套到所有毛衣。"
+      }
+    },
+    {
+      "a": "P49-001",
+      "b": "P076",
+      "reason": "舊異材熱膨脹差；新同材塑性屈服、離刀再屈服，使載荷與殘留曲率可反向。",
+      "a_snapshot": {
+        "id": "P49-001",
+        "question": "把緞帶拉得更用力，為什麼反而捲得比較鬆？",
+        "answer_target": "外側先屈服並永久伸長，留下捲曲；較高拉力下離開刀口時，內側也可能再屈服，減少兩側永久伸長差，因此捲曲減弱。",
+        "scope": "限PVC帶在尖刀或1mm刀口的固定速率載荷比較；卸載後曲率，不是刀上彎度。速度效應不拆新核，較鈍刀可先斷而不見下降支。"
+      },
+      "b_snapshot": {
+        "id": "P076",
+        "question": "兩種金屬黏在一起加熱，為什麼會彎向一邊？",
+        "answer_target": "不同膨脹係數造成長度不相容，複合片以彎曲協調變形。",
+        "scope": "彈性範圍的雙金屬片"
+      }
+    },
+    {
+      "a": "P49-001",
+      "b": "F15002",
+      "reason": "舊暫態吸液膨潤差；新在不換液/不吸水的載荷程序中塑性應變補償。",
+      "a_snapshot": {
+        "id": "P49-001",
+        "question": "把緞帶拉得更用力，為什麼反而捲得比較鬆？",
+        "answer_target": "外側先屈服並永久伸長，留下捲曲；較高拉力下離開刀口時，內側也可能再屈服，減少兩側永久伸長差，因此捲曲減弱。",
+        "scope": "限PVC帶在尖刀或1mm刀口的固定速率載荷比較；卸載後曲率，不是刀上彎度。速度效應不拆新核，較鈍刀可先斷而不見下降支。"
+      },
+      "b_snapshot": {
+        "id": "F15002",
+        "question": "一片平麵片只壓了溝槽，為什麼下水後能自己捲起來？",
+        "answer_target": "溝槽突出部的中心吸液較慢，與較快膨潤的表面形成暫時形變差，讓單材麵片彎曲；窄槽接觸後，溶出澱粉的黏合連同烹煮材料變化可協助保留彎曲。",
+        "scope": "限研究壓槽的semolina水麵糰；PDMS溶劑對照只展示暫時膨潤原理，必須標明換材料與液體。麵糰模型不涵蓋全部黏彈/塑性，不能稱所有槽距都鎖形。"
+      }
+    },
+    {
+      "a": "P49-001",
+      "b": "H3090",
+      "reason": "舊固定形變的力衰減；新移動帶厚度不同區屈服決定殘留曲率且有負載窗口。",
+      "a_snapshot": {
+        "id": "P49-001",
+        "question": "把緞帶拉得更用力，為什麼反而捲得比較鬆？",
+        "answer_target": "外側先屈服並永久伸長，留下捲曲；較高拉力下離開刀口時，內側也可能再屈服，減少兩側永久伸長差，因此捲曲減弱。",
+        "scope": "限PVC帶在尖刀或1mm刀口的固定速率載荷比較；卸載後曲率，不是刀上彎度。速度效應不拆新核，較鈍刀可先斷而不見下降支。"
+      },
+      "b_snapshot": {
+        "id": "H3090",
+        "question": "塑膠被固定在同一個形狀，為什麼它頂住物體的力還會慢慢變小？",
+        "answer_target": "聚合物的彈性與時間依賴重排使固定形變的應力鬆弛；和固定應力的蠕變並排，延伸到週期載荷的延遲耗能。",
+        "scope": "不是單純彈性模數題，也不將所有塑膠視同一鬆弛時間；時間溫度疊加只在可用範圍近似。"
+      }
+    },
+    {
+      "a": "P49-001",
+      "b": "P26002",
+      "reason": "舊橡膠芯棒上的手性與加熱控制；新刀口外內層塑性伸長差，不是同一熱致捲曲。",
+      "a_snapshot": {
+        "id": "P49-001",
+        "question": "把緞帶拉得更用力，為什麼反而捲得比較鬆？",
+        "answer_target": "外側先屈服並永久伸長，留下捲曲；較高拉力下離開刀口時，內側也可能再屈服，減少兩側永久伸長差，因此捲曲減弱。",
+        "scope": "限PVC帶在尖刀或1mm刀口的固定速率載荷比較；卸載後曲率，不是刀上彎度。速度效應不拆新核，較鈍刀可先斷而不見下降支。"
+      },
+      "b_snapshot": {
+        "id": "P26002",
+        "question": "同樣把橡膠線圈拉長，為什麼一個變熱、另一個反而變冷？",
+        "answer_target": "拉長線圈不只改長度，也改纖維扭轉；內扭與外圈同手性時增加扭轉，反手性時解扭，後者可把拉伸時的溫度反應反轉。",
+        "scope": "限天然橡膠同/異手性線圈、相同spring index的Fig1F；異手性橡膠保留芯棒，快速變形表面溫變。不是任意橡皮筋都拉伸降溫，也不把不同材料相變混為同一機制。"
+      }
+    },
+    {
+      "a": "P49-002",
+      "b": "X5002",
+      "reason": "舊限鬆針織展開及方向伸展；新密針織先硬後軟且可由無摩擦模型的受限重排產生，非再解釋線圈會展開。",
+      "a_snapshot": {
+        "id": "P49-002",
+        "question": "緊密針織布剛開始很難拉，為什麼拉開一些後反而比較軟？",
+        "answer_target": "緊線圈的彎曲與接觸約束使初始變形需先重排；模型顯示橫向拉伸先調整出平面形狀，另一方向則須克服接觸力，越過受限區後才進入較軟伸展。",
+        "scope": "只問低應變先硬後軟，不含大伸長後再硬化。實測機台設定改線長及線徑，微觀機制取無摩擦模型；不把模擬厚度當已量到。"
+      },
+      "b_snapshot": {
+        "id": "X5002",
+        "question": "同一根不太能拉長的線，織成針織布後為什麼變得這麼有彈性？",
+        "answer_target": "拉布先改變線圈彎曲與接觸幾何，並非同等拉長線本身；正反針排列可改變方向伸展性。",
+        "scope": "合併針法與方向比較，不把每種針法各算核心；限研究所測線材與鬆針織。"
+      }
+    },
+    {
+      "a": "P49-002",
+      "b": "X5003",
+      "reason": "舊往返摩擦耗能；新單向低應變軟化，模型不含摩擦也出現，沒有聲稱真布摩擦為零。",
+      "a_snapshot": {
+        "id": "P49-002",
+        "question": "緊密針織布剛開始很難拉，為什麼拉開一些後反而比較軟？",
+        "answer_target": "緊線圈的彎曲與接觸約束使初始變形需先重排；模型顯示橫向拉伸先調整出平面形狀，另一方向則須克服接觸力，越過受限區後才進入較軟伸展。",
+        "scope": "只問低應變先硬後軟，不含大伸長後再硬化。實測機台設定改線長及線徑，微觀機制取無摩擦模型；不把模擬厚度當已量到。"
+      },
+      "b_snapshot": {
+        "id": "X5003",
+        "question": "針織布拉完能恢復形狀，為什麼收回的功卻比拉出去少？",
+        "answer_target": "線圈接觸處的摩擦在拉伸與卸載時方向相反，形成加卸載曲線間的耗能。",
+        "scope": "區別H3090的聚合物黏彈模型；這裡採尼龍單絲針織自摩擦模型，不宣稱衣物耗能全由摩擦。"
+      }
+    },
+    {
+      "a": "P49-002",
+      "b": "X5004",
+      "reason": "舊自由邊緣捲曲；新外載開始時幾何受限後重排的切線剛度變化。",
+      "a_snapshot": {
+        "id": "P49-002",
+        "question": "緊密針織布剛開始很難拉，為什麼拉開一些後反而比較軟？",
+        "answer_target": "緊線圈的彎曲與接觸約束使初始變形需先重排；模型顯示橫向拉伸先調整出平面形狀，另一方向則須克服接觸力，越過受限區後才進入較軟伸展。",
+        "scope": "只問低應變先硬後軟，不含大伸長後再硬化。實測機台設定改線長及線徑，微觀機制取無摩擦模型；不把模擬厚度當已量到。"
+      },
+      "b_snapshot": {
+        "id": "X5004",
+        "question": "平針布沒有被拉，邊緣為什麼還會自己捲起來？",
+        "answer_target": "彎曲線圈受互相接觸約束而帶有內部力矩；線圈長寬形狀關聯於不同捲曲方向。",
+        "scope": "無外載形狀而非X5002面內拉伸；不把個別研究相圖套到所有毛衣。"
+      }
+    },
+    {
+      "a": "P49-002",
+      "b": "P44-001",
+      "reason": "舊層間滑移增加整疊平均峰值/耗能；新連續線圈接觸及彎曲約束解除，不是多疊材料。",
+      "a_snapshot": {
+        "id": "P49-002",
+        "question": "緊密針織布剛開始很難拉，為什麼拉開一些後反而比較軟？",
+        "answer_target": "緊線圈的彎曲與接觸約束使初始變形需先重排；模型顯示橫向拉伸先調整出平面形狀，另一方向則須克服接觸力，越過受限區後才進入較軟伸展。",
+        "scope": "只問低應變先硬後軟，不含大伸長後再硬化。實測機台設定改線長及線徑，微觀機制取無摩擦模型；不把模擬厚度當已量到。"
+      },
+      "b_snapshot": {
+        "id": "P44-001",
+        "question": "像書頁那樣把薄片疊起來壓彎，總力除以片數，為什麼平均值還比單片大？",
+        "answer_target": "彎曲時相鄰薄片需要相對滑動，接觸面的摩擦會抵抗這個動作。研究把整疊的力除以片數來比，算出的平均每片峰值仍比單片大；壓下和退回的兩條曲線圍出面積，顯出一個循環中耗散的能量。",
+        "scope": "限兩滾輪上未黏結的PET疊片、中央壓頭與受測厚度，不說裝訂或膠合書必有相同力曲線。 這是總力按片數正規化，未逐片直接量其負荷。"
+      }
+    },
+    {
+      "a": "P49-003",
+      "b": "K11013",
+      "reason": "舊超越歷史最大壓縮改寫幾何翻轉序列；新不超舊峰、部分卸載後定間距，峰時記錄等候多久，快慢模態模型解反向演化。",
+      "a_snapshot": {
+        "id": "P49-003",
+        "question": "揉皺薄膜已放鬆一點再固定，為什麼頂住夾板的力還會先變大？",
+        "answer_target": "先壓住等候，再部分卸載，會讓不同快慢的內部鬆弛模式暫時朝相反方向變化；快模式先主導回升，稍後慢模式主導下降。不同等候時間改變峰值出現時間。",
+        "scope": "限訓練過Mylar、兩階段間距控制，放開後保持H3。模型說明多時尺度，不聲稱量出每條摺痕；與單純固定形變力下降、以及記錄最大壓縮的幾何翻轉不同。"
+      },
+      "b_snapshot": {
+        "id": "K11013",
+        "question": "揉皺再攤開的薄片，為什麼能對「先前最多壓到哪裡」留下不同反應？",
+        "answer_target": "局部凸凹區的翻轉門檻不同且會互相影響；超過先前最大壓縮會改寫集體狀態與力的跳變序列。",
+        "scope": "原研究揉後攤平Mylar的慢速循環與小於初次揉皺的載入；記憶是可量測的歷史依賴，不是認知或永久無漂移儲存。"
+      }
+    },
+    {
+      "a": "P49-003",
+      "b": "H3090",
+      "reason": "舊一般固定形變應力衰減/黏彈延遲；新兩階段歷史下相反模態暫主導、力非單調，相同宏觀狀態未定後續方向。",
+      "a_snapshot": {
+        "id": "P49-003",
+        "question": "揉皺薄膜已放鬆一點再固定，為什麼頂住夾板的力還會先變大？",
+        "answer_target": "先壓住等候，再部分卸載，會讓不同快慢的內部鬆弛模式暫時朝相反方向變化；快模式先主導回升，稍後慢模式主導下降。不同等候時間改變峰值出現時間。",
+        "scope": "限訓練過Mylar、兩階段間距控制，放開後保持H3。模型說明多時尺度，不聲稱量出每條摺痕；與單純固定形變力下降、以及記錄最大壓縮的幾何翻轉不同。"
+      },
+      "b_snapshot": {
+        "id": "H3090",
+        "question": "塑膠被固定在同一個形狀，為什麼它頂住物體的力還會慢慢變小？",
+        "answer_target": "聚合物的彈性與時間依賴重排使固定形變的應力鬆弛；和固定應力的蠕變並排，延伸到週期載荷的延遲耗能。",
+        "scope": "不是單純彈性模數題，也不將所有塑膠視同一鬆弛時間；時間溫度疊加只在可用範圍近似。"
+      }
+    },
+    {
+      "a": "P49-003",
+      "b": "P49-001",
+      "reason": "都提時間但新三是等候歷史造成力方向反轉；新一是移動薄帶厚度塑性差及永久曲率，不合為泛鬆弛。",
+      "a_snapshot": {
+        "id": "P49-003",
+        "question": "揉皺薄膜已放鬆一點再固定，為什麼頂住夾板的力還會先變大？",
+        "answer_target": "先壓住等候，再部分卸載，會讓不同快慢的內部鬆弛模式暫時朝相反方向變化；快模式先主導回升，稍後慢模式主導下降。不同等候時間改變峰值出現時間。",
+        "scope": "限訓練過Mylar、兩階段間距控制，放開後保持H3。模型說明多時尺度，不聲稱量出每條摺痕；與單純固定形變力下降、以及記錄最大壓縮的幾何翻轉不同。"
+      },
+      "b_snapshot": {
+        "id": "P49-001",
+        "question": "把緞帶拉得更用力，為什麼反而捲得比較鬆？",
+        "answer_target": "外側先屈服並永久伸長，留下捲曲；較高拉力下離開刀口時，內側也可能再屈服，減少兩側永久伸長差，因此捲曲減弱。",
+        "scope": "限PVC帶在尖刀或1mm刀口的固定速率載荷比較；卸載後曲率，不是刀上彎度。速度效應不拆新核，較鈍刀可先斷而不見下降支。"
+      }
+    },
+    {
+      "a": "P49-004",
+      "b": "H3063",
+      "reason": "舊橋接/脫黏耗能且明記界面最佳化待補；新有同複材強弱界面使起裂與持續擴裂兩閾值反向，新增可判控制。",
+      "a_snapshot": {
+        "id": "P49-004",
+        "question": "布和軟膠黏得更牢，為什麼反覆撕扯時反而更容易一路撕開？",
+        "answer_target": "較強界面阻礙紗滑移，使起裂門檻升高；但滑移能沿紗分散裂尖應力，受限後更容易斷紗，因此持續擴裂門檻下降。中間區的紗滑後堆積橋接可使裂口停住。",
+        "scope": "限UHMWPE織布/TPU兩種製程比較，起裂與持續擴裂分開判；不是所有黏合劑越強越差，也不將三種載荷區各拆一題。"
+      },
+      "b_snapshot": {
+        "id": "H3063",
+        "question": "纖維跨過已經裂開的地方，為什麼能讓裂縫更難繼續長？",
+        "answer_target": "跨裂紋的纖維承擔橋接力，纖維與基材分離還會耗能，增加擴裂阻力。",
+        "scope": "與 D2099 鋼筋分擔整體拉力不同，聚焦裂後橋接與界面耗能。"
+      }
+    },
+    {
+      "a": "P49-004",
+      "b": "H3060",
+      "reason": "舊線彈性裂長/應力/韌性決定快速擴裂；新循環下紗滑、堵住、斷紗及界面取捨。",
+      "a_snapshot": {
+        "id": "P49-004",
+        "question": "布和軟膠黏得更牢，為什麼反覆撕扯時反而更容易一路撕開？",
+        "answer_target": "較強界面阻礙紗滑移，使起裂門檻升高；但滑移能沿紗分散裂尖應力，受限後更容易斷紗，因此持續擴裂門檻下降。中間區的紗滑後堆積橋接可使裂口停住。",
+        "scope": "限UHMWPE織布/TPU兩種製程比較，起裂與持續擴裂分開判；不是所有黏合劑越強越差，也不將三種載荷區各拆一題。"
+      },
+      "b_snapshot": {
+        "id": "H3060",
+        "question": "裂痕多長會突然快速擴大，為什麼還要看拉力和材料？",
+        "answer_target": "在指定幾何及適用模型下，裂長與外加應力共同決定裂尖擴裂驅動；達到材料斷裂韌性對應的門檻，才可能發生快速擴裂。",
+        "scope": "聚焦線彈性斷裂模型的臨界裂長／載荷；應力集中沿用既有前提。幾何與材料適用條件不可省略，不由刮痕外觀判實物承載安全。"
+      }
+    },
+    {
+      "a": "P49-004",
+      "b": "D2198",
+      "reason": "舊紙纖維自身或纖維間鍵破壞競爭；新織布複材循環閾值兩頭反向，靠紗滑移分散與斷紗中段。",
+      "a_snapshot": {
+        "id": "P49-004",
+        "question": "布和軟膠黏得更牢，為什麼反覆撕扯時反而更容易一路撕開？",
+        "answer_target": "較強界面阻礙紗滑移，使起裂門檻升高；但滑移能沿紗分散裂尖應力，受限後更容易斷紗，因此持續擴裂門檻下降。中間區的紗滑後堆積橋接可使裂口停住。",
+        "scope": "限UHMWPE織布/TPU兩種製程比較，起裂與持續擴裂分開判；不是所有黏合劑越強越差，也不將三種載荷區各拆一題。"
+      },
+      "b_snapshot": {
+        "id": "D2198",
+        "question": "紙巾有時不是纖維被拉斷，而是纖維彼此分開，差別在哪？",
+        "answer_target": "纖維本身與纖維接合兩種弱點可控制斷裂，紙品用途與加工影響失效路徑。",
+        "scope": "Understanding the Effect of Machine Technology and Cellulosic Fibers on Tissue Properties – A Review；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "P49-004",
+      "b": "P005",
+      "reason": "舊乾接觸最大靜摩擦/動摩擦；新不是啟滑單一門檻，而是滑後形成橋接區和持續斷紗的兩閾值取捨。",
+      "a_snapshot": {
+        "id": "P49-004",
+        "question": "布和軟膠黏得更牢，為什麼反覆撕扯時反而更容易一路撕開？",
+        "answer_target": "較強界面阻礙紗滑移，使起裂門檻升高；但滑移能沿紗分散裂尖應力，受限後更容易斷紗，因此持續擴裂門檻下降。中間區的紗滑後堆積橋接可使裂口停住。",
+        "scope": "限UHMWPE織布/TPU兩種製程比較，起裂與持續擴裂分開判；不是所有黏合劑越強越差，也不將三種載荷區各拆一題。"
+      },
+      "b_snapshot": {
+        "id": "P005",
+        "question": "推箱子時，為什麼剛推動的那一下常比持續滑動費力？",
+        "answer_target": "區分最大靜摩擦與滑動後的動摩擦，而非所有物品都如此。",
+        "scope": "乾燥接觸的簡化模型"
+      }
+    },
+    {
+      "a": "P49-004",
+      "b": "P49-002",
+      "reason": "同是紡織而不同拓撲與失效：針織先硬後軟對比織布裂後停裂；不以同題材合拍。",
+      "a_snapshot": {
+        "id": "P49-004",
+        "question": "布和軟膠黏得更牢，為什麼反覆撕扯時反而更容易一路撕開？",
+        "answer_target": "較強界面阻礙紗滑移，使起裂門檻升高；但滑移能沿紗分散裂尖應力，受限後更容易斷紗，因此持續擴裂門檻下降。中間區的紗滑後堆積橋接可使裂口停住。",
+        "scope": "限UHMWPE織布/TPU兩種製程比較，起裂與持續擴裂分開判；不是所有黏合劑越強越差，也不將三種載荷區各拆一題。"
+      },
+      "b_snapshot": {
+        "id": "P49-002",
+        "question": "緊密針織布剛開始很難拉，為什麼拉開一些後反而比較軟？",
+        "answer_target": "緊線圈的彎曲與接觸約束使初始變形需先重排；模型顯示橫向拉伸先調整出平面形狀，另一方向則須克服接觸力，越過受限區後才進入較軟伸展。",
+        "scope": "只問低應變先硬後軟，不含大伸長後再硬化。實測機台設定改線長及線徑，微觀機制取無摩擦模型；不把模擬厚度當已量到。"
+      }
+    }
+  ],
+  "not_added_history": [
+    {
+      "prior_id": "P24-NA012",
+      "prior_snapshot": {
+        "id": "P24-NA012",
+        "question": "緞帶刮過邊緣後為什麼捲起？",
+        "existing_ids": [
+          "X5004"
+        ],
+        "source_ids": [],
+        "reason": "只有方向篩選，尚未取得塑性應變/張力的原研究控制；X5004只是針織殘留彎曲近題，不認定同核。",
+        "reentry_condition": "讀到可分辨塑性梯度與彈性回復的原研究再審。",
+        "reading_status": "關鍵字及舊題比較，未採新來源",
+        "origin": "wave24-physics-20261102",
+        "source_file": "docs/videos/so-thats-why/pool/batches/wave24-physics.json"
+      },
+      "current_disposition": "補入P49-001：已有載荷/速度控制及厚度塑性模型，舊NA不改。"
+    },
+    {
+      "prior_id": "K11-NA11",
+      "prior_snapshot": {
+        "id": "K11-NA11",
+        "question": "揉皺的塑膠為什麼慢慢變鬆？",
+        "existing_id": "H3090",
+        "reason": "若只追時間鬆弛／蠕變仍是舊核；與K11013幾何翻轉歷史分開。",
+        "origin": "wave11-structures-20261101",
+        "source_file": "docs/videos/so-thats-why/pool/batches/wave11-structures.json"
+      },
+      "current_disposition": "單調鬆弛仍不收；P49-003增加兩階段記憶及相反模式，不以物件改名。"
+    },
+    {
+      "prior_id": "P44-NA018",
+      "prior_snapshot": {
+        "id": "P44-NA018",
+        "question": "摺線拉住不動，量到力慢慢掉就代表新結構機制？",
+        "existing_ids": [
+          "H3090"
+        ],
+        "source_ids": [],
+        "reason": "單憑一條應力鬆弛曲線無法排除舊聚合物鬆弛，只作素材入口。",
+        "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。",
+        "origin": "wave44-physics-20261103",
+        "source_file": "docs/videos/so-thats-why/pool/batches/wave44-physics.json"
+      },
+      "current_disposition": "保留舊泛鬆弛退題；本批P49-003有新的非單調控制。"
+    },
+    {
+      "prior_id": "K18-NA001",
+      "prior_snapshot": {
+        "id": "K18-NA001",
+        "question": "交錯的兩本電話簿，為什麼很難拉開？",
+        "existing_id": "X5001",
+        "reason": "舊紙張退題及紗線核心已有拉力轉正向接觸、摩擦放大。本輪未補讀能區分的新控制，不換紙張物件新增。",
+        "source_ids": [],
+        "origin": "wave18-mechanical-surprises-20261102",
+        "source_file": "docs/videos/so-thats-why/pool/batches/wave18-mechanical-surprises.json"
+      },
+      "current_disposition": "維持不收，P49-NA001。"
+    },
+    {
+      "prior_id": "X5049",
+      "prior_snapshot": {
+        "id": "X5049",
+        "question": "慢慢拉針織布，為什麼內部會一小群一小群突然滑動？",
+        "reason": "黏滑與彈性傳遞已有N116/P005；可作規則網絡例子，暫不把研究中的crackling誤寫成一定聽得到爆聲。",
+        "existing_ids": [
+          "N116",
+          "P005"
+        ],
+        "source_ids": [
+          "X5-S019"
+        ],
+        "origin": "wave5-textiles-paper-20261101",
+        "source_file": "docs/videos/so-thats-why/pool/batches/wave5-textiles-paper.json"
+      },
+      "current_disposition": "維持不收，P49-NA012。"
+    }
+  ],
+  "source_identity": [
+    {
+      "id": "P49-S001",
+      "title": "Ribbon curling via stress relaxation in thin polymer films",
+      "doi": "10.1073/pnas.1514626113",
+      "canonical_url": "https://doi.org/10.1073/pnas.1514626113",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4763768/",
+      "version": "2016-02-01 online；PMC同文HTML，非第二研究。",
+      "source_id": "P49-S001",
+      "exact_old_matches": [],
+      "same_work_policy": "DOI/作者庫/PMC/arXiv/期刊版只算同一研究；未因多網址增證據數。"
+    },
+    {
+      "id": "P49-S002",
+      "title": "Pulling apart the mechanisms that lead to jammed knitted fabrics",
+      "doi": "10.1103/g94g-c6tt",
+      "canonical_url": "https://doi.org/10.1103/g94g-c6tt",
+      "retrieval_url": "https://arxiv.org/pdf/2410.03940v2",
+      "version": "實讀arXiv:2410.03940v2，2024-11-20；期刊2025-07-24，同研究。HTML渲染的2026日期不當新版出版日。",
+      "source_id": "P49-S002",
+      "exact_old_matches": [],
+      "same_work_policy": "DOI/作者庫/PMC/arXiv/期刊版只算同一研究；未因多網址增證據數。"
+    },
+    {
+      "id": "P49-S003",
+      "title": "Nonmonotonic Aging and Memory Retention in Disordered Mechanical Systems",
+      "doi": "10.1103/PhysRevLett.118.085501",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.118.085501",
+      "retrieval_url": "https://dash.harvard.edu/server/api/core/bitstreams/ed4cbe92-f3cd-440b-8389-f74c6a830122/content",
+      "version": "Harvard DASH載作者稿，頁腳arXiv:1608.02429v3，2017-04-13；同2017期刊研究，PDF首頁為書庫封面。",
+      "source_id": "P49-S003",
+      "exact_old_matches": [],
+      "same_work_policy": "DOI/作者庫/PMC/arXiv/期刊版只算同一研究；未因多網址增證據數。"
+    },
+    {
+      "id": "P49-S004",
+      "title": "Cyclic tearing of a woven fabric embedded in a soft matrix",
+      "doi": "10.1007/s10704-024-00828-w",
+      "canonical_url": "https://doi.org/10.1007/s10704-024-00828-w",
+      "retrieval_url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/2025-05/507.pdf",
+      "version": "原刊2025-01-08；作者Harvard庫同文排版PDF，與Springer不是獨立研究。",
+      "source_id": "P49-S004",
+      "exact_old_matches": [],
+      "same_work_policy": "DOI/作者庫/PMC/arXiv/期刊版只算同一研究；未因多網址增證據數。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P49-S001",
+      "read_via": "先web查原刊；web重開曾captcha、EuropePMC XML500。指定UA取得有效PMC全文HTML200，逐段讀正文、下載目讀Fig1–3。",
+      "reading_scope": "Results: Experimental Results、Physical Interpretation；Discussion；Materials and Methods: Model Description；Fig1–3。",
+      "limitations": "限PVC薄帶、所測刀口與速度。非所有刀口都在斷裂前出現下降支；模型忽略摩擦，屈服/鬆弛參數依刀口調整，不能說磨薄或摩擦加熱已被直接量測。未讀SI推導或影片。",
+      "author_cache": {
+        "file": ".cache/wave49-physics-ribbon-html.html",
+        "sha256": "13f277666ef408f96e58be37baad2a7aa413c81a73efc2bdba29d03b990e5a9c",
+        "text_file": ".cache/wave49-physics-ribbon-html.txt",
+        "text_sha256": "2bba3ffff55a5aef8f48f05031d48ad8215bf2c18a4a61c7721d747008992fbd"
+      }
+    },
+    {
+      "source_id": "P49-S002",
+      "read_via": "web核arXiv版本/期刊metadata；指定UA PDF200，pypdf抽文；所列頁圖實際目讀。",
+      "reading_scope": "PDF pp2–5 §§II–IV、p7及pp10–11 §VII–VIII，pp14–15 S1–S2/FigS1；Fig2、6。",
+      "limitations": "實測是壓克力平針布；機台stitch-size同時改線長和線徑。微觀/厚度先縮後增是模型，實驗未準確量厚度。接近轉變的五次重拉不全一致；不將摩擦排除於真布。未逐讀其他SI及數值碼。",
+      "author_cache": {
+        "file": ".cache/wave49-physics-knit.pdf",
+        "sha256": "7c6f68bb2990e119317b72ebc77c57be1fa2d3385dd7605814ce059183c16f02",
+        "text_file": ".cache/wave49-physics-knit.txt",
+        "text_sha256": "026b257961813007903fe646f1fe058ab62eaf14b0511e21e50bf0aaf97955fc"
+      }
+    },
+    {
+      "source_id": "P49-S003",
+      "read_via": "web曾成功原頁後重開timeout；指定UA PDF200，pypdf抽文並目讀兩圖頁。",
+      "reading_scope": "PDF pp2–5（稿頁1–4）：訓練Mylar、兩階段壓縮、Fig1/3/4與Eq1–4快慢模態解釋；不採參考文獻為另證。",
+      "limitations": "Mylar先訓練，且部分放開仍壓縮；不是任意揉紙都有相同數值。快慢模態是現象模型，未逐條摺痕定位。模型到力曲線需比例修正，非無參數精確預言；泡棉只同文重現不再增題。",
+      "author_cache": {
+        "file": ".cache/wave49-physics-memory.pdf",
+        "sha256": "db6168de2d63a45c94c8965b7d709b8c82845f2fff22c121ac2dc6965c940834",
+        "text_file": ".cache/wave49-physics-memory.txt",
+        "text_sha256": "c361c8eec68e48b65c9a882ee7f17db53030e7a4f68c3be4adb068d970c85625"
+      }
+    },
+    {
+      "source_id": "P49-S004",
+      "read_via": "web.open作者庫PDF正文成功，指定UA403；Springer原刊頁只摘要/書目/圖連結可讀，PDF請求回HTML非有效PDF。快取是web工具指定正文回傳，不稱本機取得原PDF。 另循原刊公開圖連結以同UA取Fig3/10並目讀；不另算研究。",
+      "reading_scope": "作者庫PDF pp3–10 §§3–7，Fig3/4滑移和斷紗、Fig7拔出、Fig9–11閾值/橋接區；web行162–470快取。",
+      "limitations": "限UHMWPE織布/TPU複材、所測預裂幾何及至30000次循環。強界面製程同時改處理與溶液，不當單一分子操弄。起裂與持續撕裂兩門檻合一核；Fig3/10已目讀；其餘原圖僅圖說。未看影片/原始數據。",
+      "author_cache": {
+        "file": ".cache/wave49-physics-tearing-web.json",
+        "sha256": "ea850fe682bdf2b73c3e2b44479271b21ddcfacd8a7e31a1165728217017bb34",
+        "text_file": ".cache/wave49-physics-tearing-web.txt",
+        "text_sha256": "16ce70e8f35d4d8628aa1ce55002a9f119c715ce8cd1ded32c17472180be6b41"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave49-physics-fetch.json",
+      "sha256": "05dbc070df60ef969520b6017fa6d225a74d288ebe18aa2943f7d0257d1e035b"
+    },
+    {
+      "file": ".cache/wave49-physics-fetch-extra.json",
+      "sha256": "5c5c1ade3638ca4273d4ff464ff48502ddabdb2b2ee079ab4ec2d3b55bdfbe98"
+    },
+    {
+      "file": ".cache/wave49-physics-images.json",
+      "sha256": "bae1151acbb3f2c7ee721b50b540b6a36bffacdbd69da4e8e92ce1f5ffb169d6"
+    },
+    {
+      "file": ".cache/wave49-physics-tearing-images.json",
+      "sha256": "c6697194b9e3680c61ceed5e5d4f0f69472a45ea782c00084d1755d173bc24dc"
+    }
+  ],
+  "retrieval_failures": [
+    "ribbon: EuropePMC XML500；PMC web重開captcha，但指定UA有效完整HTML取得。",
+    "tearing: Harvard正常UA403；Springer PDF返回HTML不是PDF，沒有成功PDF原件SHA；採web工具正文回傳及公開原圖。",
+    "memory: web重開timeout，正常UA作者庫PDF成功。",
+    "web PDF screenshot回傳未實際展示可目讀圖片，未把該路線列目讀；tearing另取公開Fig3/10。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "P49-S001",
+      "images": [
+        {
+          "file": ".cache/wave49-physics-ribbon-f1.jpg",
+          "sha256": "bb7e859e163f457b78c4b46b1df948b0ec959b20d5ad0591c6a256a63f45529d",
+          "read_scope": "Fig1裝置/不同拉力下輪廓；捲曲在卸載後量。"
+        },
+        {
+          "file": ".cache/wave49-physics-ribbon-f2.jpg",
+          "sha256": "22e56ee18d5dc6475c0ea8dcb9227631e2bd9ad85f3dee3841d1d4601222b0c0",
+          "read_scope": "Fig2A點為實驗線為模型；尖刀與1mm刀口有下降支，2mm先斷；B固定載荷速度比較。"
+        },
+        {
+          "file": ".cache/wave49-physics-ribbon-f3.jpg",
+          "sha256": "276e45e4d52a0d6250a066214ff8833de4e96de329d4a224f6b249a033d9f114",
+          "read_scope": "Fig3理想化厚度塑性應變示意，不是實測剖面。"
+        }
+      ]
+    },
+    {
+      "source_id": "P49-S002",
+      "images": [
+        {
+          "file": ".cache/wave49-physics-knit-p3.png",
+          "sha256": "4a0b157526237fbf50ce9cfcf4d6f2e28f93da545d815f3f994e38129a94e3a4",
+          "read_scope": "Fig2a/b同樣本伸展前後；c/d實測、e/f模擬分開。"
+        },
+        {
+          "file": ".cache/wave49-physics-knit-p10.png",
+          "sha256": "f9f272a79fea4a9ddadc82e65db12ec74c34ad75a4256c9aa24b1aafab66c866",
+          "read_scope": "Fig6模擬接觸分區與g厚度先縮後增，非相機量得厚度。"
+        },
+        {
+          "file": ".cache/wave49-physics-knit-p14.png",
+          "sha256": "329cc1c70555f7a4a7866dc28c70acbbdcc7f28b3a6b4cbab3d589d79239af8b",
+          "read_scope": "S1實驗重拉與五分鐘休息程序，近轉變試次不一致限制。"
+        },
+        {
+          "file": ".cache/wave49-physics-knit-p15.png",
+          "sha256": "f1135e8dae64e151edee4dd6cde2f5ad215f5068ef1f30b99e7d6c462b83ca90",
+          "read_scope": "FigS1實測小應變區與全曲線；不可把後段再次硬化省成永遠越拉越軟。"
+        }
+      ]
+    },
+    {
+      "source_id": "P49-S003",
+      "images": [
+        {
+          "file": ".cache/wave49-physics-memory-p3.png",
+          "sha256": "46caf1385d50bed8cd196513eb877083c52ee447d83d8e37f227ebee5fbee020",
+          "read_scope": "Fig1c Mylar部分卸載後非單調曲線；不同等候時間，非位移繼續變動。"
+        },
+        {
+          "file": ".cache/wave49-physics-memory-p4.png",
+          "sha256": "abaf4927072d359f99b02a50d48e06aaf4be11e7edb7a73f60202bd2e12a9cec",
+          "read_scope": "Fig3等候/峰值時間與Fig4快慢模態示意。原Fig4圖說快慢不等號與正文/圖軸相反，採正文及λ定義，不照抄該圖說。"
+        }
+      ]
+    },
+    {
+      "source_id": "P49-S004",
+      "images": [
+        {
+          "file": ".cache/wave49-physics-tearing-f3.png",
+          "sha256": "ae62fcb0a29f546bd64d86f285bc9214be8c1091d7db661a17fb8a34533df6cf",
+          "read_scope": "原刊公開Fig3，60N循環的三角堆積區與裂口停住；小圖只看形態/曲線方向，不從縮圖讀精確數字。"
+        },
+        {
+          "file": ".cache/wave49-physics-tearing-f10.png",
+          "sha256": "6781e20fc36b6434b0d84983041b8000c806a5aa81fb23c1949418dd9175f19c",
+          "read_scope": "原刊公開Fig10，強界面使起裂閾值上升、持續擴裂閾值下降；精確值採正文。"
+        }
+      ]
+    }
+  ],
+  "reading_limits": [
+    "四研究指定段正文，非全部參考文獻/SI逐式核驗。",
+    "針織/記憶微觀圖為作者模型；不擴稱逐紗或逐摺痕量得。",
+    "沒有自製實驗、音訊、影片或真人試讀。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W49P-T01",
+      "seconds": 70,
+      "chapters": [
+        23,
+        24,
+        23
+      ],
+      "core_totals": {
+        "P49-001": 70
+      }
+    },
+    {
+      "id": "W49P-T02",
+      "seconds": 75,
+      "chapters": [
+        36,
+        39
+      ],
+      "core_totals": {
+        "P49-003": 75
+      }
+    },
+    {
+      "id": "W49P-T03",
+      "seconds": 85,
+      "chapters": [
+        40,
+        45
+      ],
+      "core_totals": {
+        "P49-004": 85
+      }
+    }
+  ],
+  "sample": {
+    "file": ".cache/w49-sample-physics.json",
+    "sha256": "bbd0654b4f51318c8bec395110140cdb0ea678781ebd2c76c4cef9f646886fac",
+    "theme_id": "W49P-T01",
+    "paragraphs": 3,
+    "characters_including_punctuation": 231,
+    "paragraph_to_chapter": [
+      1,
+      2,
+      3
+    ],
+    "audio_generated_by_author": false,
+    "timing_status": "ROOT_SYNTHETIC_READ_RECORDED_NOT_VIEWER_TEST",
+    "timing_probe": {
+      "file": ".cache/wave49-physics-read.json",
+      "sha256": "df6119a94cdd6f5e3e26210c1073ae35a16d5a465a8e8d5b7285ed085deb63bb",
+      "reported_paragraph_seconds": [
+        19.572,
+        19.05,
+        19.635
+      ],
+      "reported_continuous_seconds": 58.258,
+      "chapter_seconds": [
+        23,
+        24,
+        23
+      ],
+      "scope": "root量時；本作者核新JSON口白及檔案雜湊，未獨立播放音訊。"
+    }
+  },
+  "validation": {
+    "json_utf8_lf": true,
+    "valid_existing_ids": true,
+    "chapter_and_core_caps": true,
+    "beats_at_most_45": true,
+    "exact_minutes": true,
+    "manifest_current": true
+  },
+  "revision_history": [
+    {
+      "reason": "首版來源圖補核：透過原刊公開連結成功取得Fig3/10並目讀，原UA PDF失敗歷史保留。",
+      "before_batch_sha256": "824daaad8335550d4a8a6a6dc1d2f54a09a129287750c4d5926b845fd285a2f5",
+      "batch_changes": [
+        "P49-S004 read_via/limitations/viewed_images；候選問答scope不變。"
+      ],
+      "removed_seconds": 0
+    },
+    {
+      "reason": "非作者定點：Mylar同曲線等力兩點，不稱微觀形狀或跨組絕對力相同；持續撕裂的門檻而非循環次數；根代理SAPI計時註記。",
+      "before_files": [
+        {
+          "file": "batches/wave49-physics.json",
+          "sha256": "e29ec2b69fb182d754c6be04b4c943d31f999104f21b3d6ac412dd754be5de11"
+        },
+        {
+          "file": "reviews/wave49-physics-themes.json",
+          "sha256": "7db840af52be422d040b6d68a3f8e542f81cd8aeaf5d595452478b91c43292f8"
+        },
+        {
+          "file": "reviews/wave49-physics-author.json",
+          "sha256": "e6dbabe538c2ab2926981e24010194c6bc985315c9d0493689d71a2a95cd9976"
+        }
+      ],
+      "changes": [
+        "P49-003 editorial payoff/visual收窄；答案與scope不變",
+        "P49-004題名更早→更容易；作者近對題名同步",
+        "T01 timing_basis及sample綁定root量時，70秒不變"
+      ],
+      "removed_seconds": 0
+    },
+    {
+      "reason": "非作者樣稿界線：塑性差模型未直接排除磨耗，刪未證排除句；候選不變。",
+      "before_files": [
+        {
+          "file": "batches/wave49-physics.json",
+          "sha256": "3976f127046a0a4ef724da145b966ddb3e480c0bb3a3f2a221b96bd0cf1aef8d"
+        },
+        {
+          "file": "reviews/wave49-physics-themes.json",
+          "sha256": "c220de627fb1405520094794191e98241a16c7945fc4b6435522035400254302"
+        },
+        {
+          "file": "reviews/wave49-physics-author.json",
+          "sha256": "10b07e2413757d28e5b6c9d18da69f833f44ccf97da5b471ff6437703b39e257"
+        },
+        {
+          "file": ".cache/w49-sample-physics.json",
+          "sha256": "3e87e4989c5e329df272643eac4e21908ed2e8495712ab4e01b9db08aa10820d"
+        }
+      ],
+      "previous_timing_probe": {
+        "file": ".cache/wave49-physics-read.json",
+        "sha256": "114cedc042fe4c088d953e1a4c746b147c41a53e7df1d2e9a94ced4304b00777",
+        "reported_paragraph_seconds": [
+          19.572,
+          20.415,
+          19.635
+        ],
+        "reported_continuous_seconds": 59.624,
+        "chapter_seconds": [
+          23,
+          24,
+          23
+        ],
+        "scope": "由root量時；本作者讀JSON稿文字與檔案綁定，未獨立播放音檔。"
+      },
+      "removed_seconds": 0
+    },
+    {
+      "reason": "Root重讀收窄後樣稿，綁新計時；正文70秒與候選不變，前版計時保留歷史。",
+      "before_files": [
+        {
+          "file": "batches/wave49-physics.json",
+          "sha256": "3976f127046a0a4ef724da145b966ddb3e480c0bb3a3f2a221b96bd0cf1aef8d"
+        },
+        {
+          "file": "reviews/wave49-physics-themes.json",
+          "sha256": "8eac3322558b123ec71a8500008a244f63abb0e5f05834546d3db6901fc86fa0"
+        },
+        {
+          "file": "reviews/wave49-physics-author.json",
+          "sha256": "1d707adaf694010a41de21a42df0925bb90f49528260233883bd036c43a4d758"
+        }
+      ],
+      "removed_seconds": 0
+    }
+  ],
+  "unresolved": [
+    "待非作者裁定P49-002與X5002、P49-003與H3090/K11013是否足新增；不保數。",
+    "待root共同top5及彩帶樣讀，再核圖譯/片長；目前非最終查核。"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "tested_on": "2026-11-02T09:09:38.080Z",
+  "result": "PASS",
+  "selected": 3104,
+  "index_html_sha256": "945579b2902e73a6ec00996f93f97526bc8fa5e9b078ec73ffce0d0d97de7dc7",
+  "source_sample": {
+    "id": "R30001",
+    "urls": [
+      "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Johansson-et-al.-2005-Failure-to-Detect-Mismatches-Between-Intention-and-Outcome-in-a-Simple-Decision-Task.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave30-desktop.png",
+    "wave30-source-desktop.png",
+    "wave30-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": [
+    "桌面總數3104與299題案可讀；展開R30001顯示題目、說明、估秒、範圍，網址另由DOM核對。",
+    "手機390寬時標題與連結換行、統計分兩列、題組篩選獨占下一行；搜尋欄較窄但仍可點選。"
+  ]
+}

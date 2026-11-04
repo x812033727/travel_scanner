@@ -1,0 +1,872 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "pool_physics",
+  "production_ready": false,
+  "scope": "大滴在氣流中破袋、自由飛蟲撞擊、葉上濕滴／乾孢子散出、葉尖排水、砂坑殘留物、網面回縮噴射與水槽滴聲。",
+  "baseline": {
+    "head": "6997905a563e169503dbf1d507ce8bddb7f4e2db",
+    "selected": 3200,
+    "raw_records": 3579,
+    "not_added": 1547,
+    "pool_sha256": "6587009df02657cb13cca0dfc8e0a59afafebfefd2451a172257e3c66df481d5",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3200.json.gz",
+      "sha256": "3e2c6463737caf65df7814ded6d4315a8e9357c31ae5b3e8e90768fae0779317"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave38-physics.json",
+      "sha256": "1cbbc0752e842360b5e45193e82d8471ad0ee7d345606f67e05f62ea343feda6"
+    },
+    {
+      "file": "reviews/wave38-physics-themes.json",
+      "sha256": "f6f8bb91ad363e5be8c378afc4fb61807dc0c5b637434090fe7896a430092b8a"
+    }
+  ],
+  "counts": {
+    "candidates": 8,
+    "sources": 10,
+    "original_research": 8,
+    "scope_correspondence": 2,
+    "not_added_only_sources": 0,
+    "candidate_sources": 10,
+    "not_added": 18,
+    "near_pairs": 24,
+    "themes": 5
+  },
+  "dedup_reading": {
+    "method": "檢索3579原始題及1547未收的問答、scope、reason、機制詞，初篩雨雪冰晶再讀候選近似舊題。雨味、雨滴雷達、冰腳、豬籠草彈蟲與乾燥咖啡環不重計。",
+    "scan_files": [
+      {
+        "file": ".cache/wave38-physics-scan.json",
+        "sha256": "3bc5f4c16a8b7e873bf162f0ec91fdb3e24904a3583cf44f723c60a7e98801c0"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "X38-001",
+      "b": "LEG-S84",
+      "proposed": "distinct",
+      "reason": "扁滴與雷達偏振已有；新題限定逆向氣流中單滴鼓袋且厚邊碎出一群不同粒徑。",
+      "a_snapshot": {
+        "id": "X38-001",
+        "question": "空中只有一個大水滴，沒有碰到別滴，怎麼能碎出一群大小不一的小滴？",
+        "answer_target": "在向上的氣流裡，大水滴先被壓扁，再像一個薄袋被撐起。袋膜破開時水多集中在起伏的厚邊；邊緣再裂成一串大小不一的小滴。這說明單滴也有不靠互撞的碎裂路徑。",
+        "scope": "限可形成袋狀破裂的大滴與逆向氣流試驗。天然雨量與滴徑分布還受碰合、碰碎等作用，不能從形狀相似決定每場雨的唯一主因。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S84",
+        "question": "雨滴不是淚滴形，雷達為什麼在乎它的形狀？",
+        "answer_target": "雨滴形狀受表面張力與氣流影響，較大雨滴會變扁；雷達觀測利用粒子形狀等資訊判讀降水。",
+        "scope": "不能說所有雨滴都漢堡形。；若雷達觀測段無足夠資料，只剩形狀冷知識就改短片。"
+      }
+    },
+    {
+      "a": "X38-001",
+      "b": "K6003",
+      "proposed": "distinct",
+      "reason": "舊題為凝結成長受擴散限制，這次由單滴分裂向較小尺寸走。",
+      "a_snapshot": {
+        "id": "X38-001",
+        "question": "空中只有一個大水滴，沒有碰到別滴，怎麼能碎出一群大小不一的小滴？",
+        "answer_target": "在向上的氣流裡，大水滴先被壓扁，再像一個薄袋被撐起。袋膜破開時水多集中在起伏的厚邊；邊緣再裂成一串大小不一的小滴。這說明單滴也有不靠互撞的碎裂路徑。",
+        "scope": "限可形成袋狀破裂的大滴與逆向氣流試驗。天然雨量與滴徑分布還受碰合、碰碎等作用，不能從形狀相似決定每場雨的唯一主因。"
+      },
+      "b_snapshot": {
+        "id": "K6003",
+        "question": "雲滴已經長出來了，為什麼光靠吸水汽還是很難迅速變成雨滴？",
+        "answer_target": "水汽需擴散到滴面，凝結潛熱也需傳出；定環境近似下半徑成長率隨半徑增大而降低。",
+        "scope": "凝結成長理想模型，分清半徑成長速度與總質量增加；碰併與冰相成長只作其他路徑入口。"
+      }
+    },
+    {
+      "a": "X38-001",
+      "b": "O3026",
+      "proposed": "distinct",
+      "reason": "雷達/雨量筒的採樣區差別未檢驗單滴碎裂。",
+      "a_snapshot": {
+        "id": "X38-001",
+        "question": "空中只有一個大水滴，沒有碰到別滴，怎麼能碎出一群大小不一的小滴？",
+        "answer_target": "在向上的氣流裡，大水滴先被壓扁，再像一個薄袋被撐起。袋膜破開時水多集中在起伏的厚邊；邊緣再裂成一串大小不一的小滴。這說明單滴也有不靠互撞的碎裂路徑。",
+        "scope": "限可形成袋狀破裂的大滴與逆向氣流試驗。天然雨量與滴徑分布還受碰合、碰碎等作用，不能從形狀相似決定每場雨的唯一主因。"
+      },
+      "b_snapshot": {
+        "id": "O3026",
+        "question": "雨量筒和雷達報不同數字，為什麼不能直接判一個壞了？",
+        "answer_target": "雨量筒近地面點取樣與雷達高空體積間歇取樣不同，雨滴在下落途中可蒸發、合併或被吹走。",
+        "scope": "雷達估雨與雨量筒比較的空間、高度和時間代表性；不將單次不一致直接判成任一儀器錯誤。"
+      }
+    },
+    {
+      "a": "X38-002",
+      "b": "P018",
+      "proposed": "distinct",
+      "reason": "接球是假定同初末動量、延長停止時間；自由蚊子讓雨滴繼續向下，改變的是雨滴實際轉出的動量。",
+      "a_snapshot": {
+        "id": "X38-002",
+        "question": "雨滴比蚊子重很多，為什麼在半空正面撞上，牠卻常能飛走？",
+        "answer_target": "撞上沒有支撐、很輕的目標時，雨滴會帶著它一起往下動，滴本身只損失一小部分動量。高速影片看見正面碰中的蚊子短暫隨滴下降，擦到翅的碰撞則能使它旋轉；替代球的質量對照幫忙估算實際傳力。",
+        "scope": "有限飛行空間的活蚊碰撞、不同質量模型；最快試次是脈動水柱，不能假裝每段都是天然終端速雨滴。低力不等於低加速度或貼地安全。"
+      },
+      "b_snapshot": {
+        "id": "P018",
+        "question": "接球時手跟著球往後退，為什麼衝擊能變小？",
+        "answer_target": "延長使球停止的時間可降低平均作用力。",
+        "scope": "相同來球動量，不提供傷害防護保證"
+      }
+    },
+    {
+      "a": "X38-002",
+      "b": "P019",
+      "proposed": "distinct",
+      "reason": "軟硬板都使球停住有相同衝量；實際自由小目標隨滴移動，滴未停止。",
+      "a_snapshot": {
+        "id": "X38-002",
+        "question": "雨滴比蚊子重很多，為什麼在半空正面撞上，牠卻常能飛走？",
+        "answer_target": "撞上沒有支撐、很輕的目標時，雨滴會帶著它一起往下動，滴本身只損失一小部分動量。高速影片看見正面碰中的蚊子短暫隨滴下降，擦到翅的碰撞則能使它旋轉；替代球的質量對照幫忙估算實際傳力。",
+        "scope": "有限飛行空間的活蚊碰撞、不同質量模型；最快試次是脈動水柱，不能假裝每段都是天然終端速雨滴。低力不等於低加速度或貼地安全。"
+      },
+      "b_snapshot": {
+        "id": "P019",
+        "question": "同樣把球停下來，軟墊和硬板給球的衝量會不同嗎？",
+        "answer_target": "相同初末動量決定相同衝量，峰值與接觸時間卻可不同。",
+        "scope": "不反彈且初速一致"
+      }
+    },
+    {
+      "a": "X38-002",
+      "b": "A25001",
+      "proposed": "distinct",
+      "reason": "落滴打蓋面使昆蟲脫離，與直接打在可移動的低質量飛蟲上傳少量動量不同。",
+      "a_snapshot": {
+        "id": "X38-002",
+        "question": "雨滴比蚊子重很多，為什麼在半空正面撞上，牠卻常能飛走？",
+        "answer_target": "撞上沒有支撐、很輕的目標時，雨滴會帶著它一起往下動，滴本身只損失一小部分動量。高速影片看見正面碰中的蚊子短暫隨滴下降，擦到翅的碰撞則能使它旋轉；替代球的質量對照幫忙估算實際傳力。",
+        "scope": "有限飛行空間的活蚊碰撞、不同質量模型；最快試次是脈動水柱，不能假裝每段都是天然終端速雨滴。低力不等於低加速度或貼地安全。"
+      },
+      "b_snapshot": {
+        "id": "A25001",
+        "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+        "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+        "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。"
+      }
+    },
+    {
+      "a": "X38-003",
+      "b": "A25001",
+      "proposed": "distinct",
+      "reason": "舊答用硬蓋/基部、足墊和蠟晶解釋落蟲，新答的染色液對照區分兩滴直接相碰或葉動在別處拋出原有液體。",
+      "a_snapshot": {
+        "id": "X38-003",
+        "question": "雨滴根本沒撞上葉尖那滴水，它怎麼還會被拋走？",
+        "answer_target": "落滴與葉上原有水珠相碰時，能挑起一片彎月狀液片再碎開；但易彎的葉被打動、快速改變運動時，沒直接相碰的另一滴也可能與葉分離。用染色標出原先的水，便能分辨兩條路。",
+        "scope": "真葉高速觀察與剛/柔人工支撐的比較；染色珠模擬帶污染物的液體，並不是被感染鄰株的影像。"
+      },
+      "b_snapshot": {
+        "id": "A25001",
+        "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+        "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+        "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。"
+      }
+    },
+    {
+      "a": "X38-003",
+      "b": "B2229",
+      "proposed": "distinct",
+      "reason": "地錢杯利用濺水傳播芽體；此處改葉順應性及撞點，量沒有直接相碰的原有染色液如何離開。",
+      "a_snapshot": {
+        "id": "X38-003",
+        "question": "雨滴根本沒撞上葉尖那滴水，它怎麼還會被拋走？",
+        "answer_target": "落滴與葉上原有水珠相碰時，能挑起一片彎月狀液片再碎開；但易彎的葉被打動、快速改變運動時，沒直接相碰的另一滴也可能與葉分離。用染色標出原先的水，便能分辨兩條路。",
+        "scope": "真葉高速觀察與剛/柔人工支撐的比較；染色珠模擬帶污染物的液體，並不是被感染鄰株的影像。"
+      },
+      "b_snapshot": {
+        "id": "B2229",
+        "question": "地錢上的小杯子，怎麼利用雨滴把後代送出去？",
+        "answer_target": "雨滴濺出芽胞並於附近長成配子體",
+        "scope": "無性芽胞，不誤稱受精種子或單細胞孢子"
+      }
+    },
+    {
+      "a": "X38-003",
+      "b": "X38-004",
+      "proposed": "distinct",
+      "reason": "一篇搬的是液滴、由葉片動作或滴滴直接接觸；另一篇量乾孢子及其離葉後受渦流輸運的彎曲。",
+      "a_snapshot": {
+        "id": "X38-003",
+        "question": "雨滴根本沒撞上葉尖那滴水，它怎麼還會被拋走？",
+        "answer_target": "落滴與葉上原有水珠相碰時，能挑起一片彎月狀液片再碎開；但易彎的葉被打動、快速改變運動時，沒直接相碰的另一滴也可能與葉分離。用染色標出原先的水，便能分辨兩條路。",
+        "scope": "真葉高速觀察與剛/柔人工支撐的比較；染色珠模擬帶污染物的液體，並不是被感染鄰株的影像。"
+      },
+      "b_snapshot": {
+        "id": "X38-004",
+        "question": "雨滴落在帶鏽斑的小麥葉，怎麼連沒沾水的孢子也會打著圈飛起來？",
+        "answer_target": "葉片運動或直接撞擊先讓一些孢子離開原位。水滴往外攤開時也推動旁邊空氣，形成脫離表面的空氣渦環；乾孢子的繞行軌跡非單純拋物線。另一組煙霧及替代微珠試次讓原看不見的空氣運動現形。",
+        "scope": "限感染小麥的試驗與人工表面對照。未測下游整片田的疾病量，不能把每一顆孢子說成都由同一種方式脫附。"
+      }
+    },
+    {
+      "a": "X38-004",
+      "b": "U8001",
+      "proposed": "distinct",
+      "reason": "舊核為擔子菌表面凝結滴合併後的主動發射；這裡是外來雨滴使乾孢子離開，隨氣相渦旋運動。",
+      "a_snapshot": {
+        "id": "X38-004",
+        "question": "雨滴落在帶鏽斑的小麥葉，怎麼連沒沾水的孢子也會打著圈飛起來？",
+        "answer_target": "葉片運動或直接撞擊先讓一些孢子離開原位。水滴往外攤開時也推動旁邊空氣，形成脫離表面的空氣渦環；乾孢子的繞行軌跡非單純拋物線。另一組煙霧及替代微珠試次讓原看不見的空氣運動現形。",
+        "scope": "限感染小麥的試驗與人工表面對照。未測下游整片田的疾病量，不能把每一顆孢子說成都由同一種方式脫附。"
+      },
+      "b_snapshot": {
+        "id": "U8001",
+        "question": "蘑菇沒有彈簧，孢子怎麼突然被射出去？",
+        "answer_target": "孢子表面兩滴水接觸合併，表面自由能減少帶動快速液體位移與孢子發射。",
+        "scope": "限具有Buller水滴機制的擔子菌；不套所有真菌，不把質心移動本身當能源。"
+      }
+    },
+    {
+      "a": "X38-004",
+      "b": "P23004",
+      "proposed": "distinct",
+      "reason": "注入脈衝形成渦環的飽和與脫離；本題用煙霧比對已起飛乾孢子的後段軌跡，非追渦環能成長多大。",
+      "a_snapshot": {
+        "id": "X38-004",
+        "question": "雨滴落在帶鏽斑的小麥葉，怎麼連沒沾水的孢子也會打著圈飛起來？",
+        "answer_target": "葉片運動或直接撞擊先讓一些孢子離開原位。水滴往外攤開時也推動旁邊空氣，形成脫離表面的空氣渦環；乾孢子的繞行軌跡非單純拋物線。另一組煙霧及替代微珠試次讓原看不見的空氣運動現形。",
+        "scope": "限感染小麥的試驗與人工表面對照。未測下游整片田的疾病量，不能把每一顆孢子說成都由同一種方式脫附。"
+      },
+      "b_snapshot": {
+        "id": "P23004",
+        "question": "水還在往前推，前面的渦環為什麼不繼續變大？",
+        "answer_target": "短脈衝的排出流可大多捲入前環；供給持續較久後，前環與尾流逐步分離，新渦量留在後方而前環環量趨平。能量與衝量相容的準穩態模型解釋何以不能把所有持續供給都裝進單一穩定環。",
+        "scope": "限1998柱塞/圓管水槽的觀察及帶假設模型；不是任何渦環固定在L/D=4瞬間切斷。分離後仍可能短暫吞尾渦再釋出、或被快尾流破壞，不稱永不接收。"
+      }
+    },
+    {
+      "a": "X38-004",
+      "b": "LEG-S56",
+      "proposed": "distinct",
+      "reason": "乾土受雨釋氣溶膠與氣味，不是尚未進入水珠的小麥孢子被氣相渦環捲走。",
+      "a_snapshot": {
+        "id": "X38-004",
+        "question": "雨滴落在帶鏽斑的小麥葉，怎麼連沒沾水的孢子也會打著圈飛起來？",
+        "answer_target": "葉片運動或直接撞擊先讓一些孢子離開原位。水滴往外攤開時也推動旁邊空氣，形成脫離表面的空氣渦環；乾孢子的繞行軌跡非單純拋物線。另一組煙霧及替代微珠試次讓原看不見的空氣運動現形。",
+        "scope": "限感染小麥的試驗與人工表面對照。未測下游整片田的疾病量，不能把每一顆孢子說成都由同一種方式脫附。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S56",
+        "question": "雨還沒下大，你為什麼先聞到下雨的味道？",
+        "answer_target": "這種味道 1964 年被取名 petrichor。泥土味的主角之一是土壤中放線菌等微生物產生的土臭素，人鼻對它非常敏感。小雨打在乾土上會噴出微小氣溶膠，把氣味帶進空氣。雷雨前的「清新味」常歸因於臭氧，屬常見說法。",
+        "scope": "沿用 S56 題級條件，須讀原查核包的限制；追氣味來源與釋放條件，不宣稱所有雨味只有一種物質。"
+      }
+    },
+    {
+      "a": "X38-005",
+      "b": "R6004",
+      "proposed": "distinct",
+      "reason": "從植物體內吐水與外來水在不同尖端幾何的頸縮脫離不同。",
+      "a_snapshot": {
+        "id": "X38-005",
+        "question": "兩個葉尖都朝下，為什麼有凹凸轉折的那個能早一步滴水？",
+        "answer_target": "葉尖微槽把水導向出口，凹面轉成凸面處讓液滴與尖端連著的區域變窄。作者以接觸線縮小和頸部變細解釋水滴在固定位置較快脫離；同供水下，仿生凹凸尖與只有單一凸曲率的尖端分離時間不同。",
+        "scope": "形貌源自姑婆芋屬所測葉尖，對照來自指定的人工模型。只談水滴自尖端脫離，整株乾燥或病菌減少未由此直接測得。"
+      },
+      "b_snapshot": {
+        "id": "R6004",
+        "question": "夜裡沒有太陽，葉尖的水珠還能從植物裡冒出來嗎？",
+        "answer_target": "根部溶質累積促進滲透進水；蒸散低時正壓可把水推向上方並造成吐水。",
+        "scope": "只談根壓型吐水，不由一張照片判所有水珠都是吐水；不將根壓當高樹白天運水主因。"
+      }
+    },
+    {
+      "a": "X38-005",
+      "b": "X38-003",
+      "proposed": "distinct",
+      "reason": "靜態供水下幾何轉折減少掛水，並非受落滴動量後甩動整葉。",
+      "a_snapshot": {
+        "id": "X38-005",
+        "question": "兩個葉尖都朝下，為什麼有凹凸轉折的那個能早一步滴水？",
+        "answer_target": "葉尖微槽把水導向出口，凹面轉成凸面處讓液滴與尖端連著的區域變窄。作者以接觸線縮小和頸部變細解釋水滴在固定位置較快脫離；同供水下，仿生凹凸尖與只有單一凸曲率的尖端分離時間不同。",
+        "scope": "形貌源自姑婆芋屬所測葉尖，對照來自指定的人工模型。只談水滴自尖端脫離，整株乾燥或病菌減少未由此直接測得。"
+      },
+      "b_snapshot": {
+        "id": "X38-003",
+        "question": "雨滴根本沒撞上葉尖那滴水，它怎麼還會被拋走？",
+        "answer_target": "落滴與葉上原有水珠相碰時，能挑起一片彎月狀液片再碎開；但易彎的葉被打動、快速改變運動時，沒直接相碰的另一滴也可能與葉分離。用染色標出原先的水，便能分辨兩條路。",
+        "scope": "真葉高速觀察與剛/柔人工支撐的比較；染色珠模擬帶污染物的液體，並不是被感染鄰株的影像。"
+      }
+    },
+    {
+      "a": "X38-006",
+      "b": "E11015",
+      "proposed": "distinct",
+      "reason": "重點為坑中央滲水後的攜粒殘留物，不是天體開挖坑形。",
+      "a_snapshot": {
+        "id": "X38-006",
+        "question": "一滴水撞在乾砂上，水滲走後，坑中央怎麼有時是一圈、有時是一團？",
+        "answer_target": "水滴攤開又收回時把砂粒帶上；能量小時顆粒多在水團表面，水滲走後只剩環狀殘留。提高撞擊能量會攜入更多顆粒、逐漸填滿中心；更高時顆粒卡住，水膜來不及縮成完整球。",
+        "scope": "原研究的乾燥顆粒床與不同撞擊能量。此題看坑內的殘留物，不把它誤當外緣，更不由單圈推定古代大氣或撞體尺寸。"
+      },
+      "b_snapshot": {
+        "id": "E11015",
+        "question": "撞來的石頭不圓，撞擊坑為什麼卻常接近圓形？",
+        "answer_target": "高速撞擊產生向外傳遞的衝擊與拋出，開挖範圍不只是撞物輪廓；很低角度等條件仍可留下明顯拉長坑。",
+        "scope": "限高速行星撞擊的一般機制，非日常低速落物壓痕；不用通用角度閾值，不說每個坑都正圓。"
+      }
+    },
+    {
+      "a": "X38-006",
+      "b": "H3092",
+      "proposed": "distinct",
+      "reason": "咖啡環為固定液緣蒸發補流，乾砂的顆粒外殼在液體滲走後留環。",
+      "a_snapshot": {
+        "id": "X38-006",
+        "question": "一滴水撞在乾砂上，水滲走後，坑中央怎麼有時是一圈、有時是一團？",
+        "answer_target": "水滴攤開又收回時把砂粒帶上；能量小時顆粒多在水團表面，水滲走後只剩環狀殘留。提高撞擊能量會攜入更多顆粒、逐漸填滿中心；更高時顆粒卡住，水膜來不及縮成完整球。",
+        "scope": "原研究的乾燥顆粒床與不同撞擊能量。此題看坑內的殘留物，不把它誤當外緣，更不由單圈推定古代大氣或撞體尺寸。"
+      },
+      "b_snapshot": {
+        "id": "H3092",
+        "question": "一滴咖啡乾掉，為什麼顏色常擠到外圈而不是均勻留下？",
+        "answer_target": "固定接觸線的液滴蒸發時，補充外緣損失的液流將懸浮顆粒輸送到邊緣。",
+        "scope": "限接觸線固定且外向輸送重要的情境；顆粒、表面與內部流動可改變沉積，不宣稱任何液滴必成環。"
+      }
+    },
+    {
+      "a": "X38-006",
+      "b": "G13006",
+      "proposed": "distinct",
+      "reason": "硬球減速取決於入床速度與埋深；新題液滴把床粒帶回、水滲入後留殘形。",
+      "a_snapshot": {
+        "id": "X38-006",
+        "question": "一滴水撞在乾砂上，水滲走後，坑中央怎麼有時是一圈、有時是一團？",
+        "answer_target": "水滴攤開又收回時把砂粒帶上；能量小時顆粒多在水團表面，水滲走後只剩環狀殘留。提高撞擊能量會攜入更多顆粒、逐漸填滿中心；更高時顆粒卡住，水膜來不及縮成完整球。",
+        "scope": "原研究的乾燥顆粒床與不同撞擊能量。此題看坑內的殘留物，不把它誤當外緣，更不由單圈推定古代大氣或撞體尺寸。"
+      },
+      "b_snapshot": {
+        "id": "G13006",
+        "question": "同一顆球落進顆粒裡，衝得更快、埋得更深，為什麼不一定停得更久？",
+        "answer_target": "量測中的減速同時受速度平方項與深度相關阻力控制；較快入射增加阻力並改變整段減速路徑，使更深不必對應更長停止時間。",
+        "scope": "限固定鋼球與準備一致的乾玻璃珠床；深度項是經驗性friction-like模型，微觀形式未完全解決，不把所有沙土或其他撞擊速度套成同曲線。"
+      }
+    },
+    {
+      "a": "X38-006",
+      "b": "X36-004",
+      "proposed": "distinct",
+      "reason": "手沖連續射流挖空床底引發側滑；單次水滴收粒成水團又滲走。",
+      "a_snapshot": {
+        "id": "X38-006",
+        "question": "一滴水撞在乾砂上，水滲走後，坑中央怎麼有時是一圈、有時是一團？",
+        "answer_target": "水滴攤開又收回時把砂粒帶上；能量小時顆粒多在水團表面，水滲走後只剩環狀殘留。提高撞擊能量會攜入更多顆粒、逐漸填滿中心；更高時顆粒卡住，水膜來不及縮成完整球。",
+        "scope": "原研究的乾燥顆粒床與不同撞擊能量。此題看坑內的殘留物，不把它誤當外緣，更不由單圈推定古代大氣或撞體尺寸。"
+      },
+      "b_snapshot": {
+        "id": "X36-004",
+        "question": "手沖只沖中間一點，為什麼濾杯兩側的粉也會整片滑下來？",
+        "answer_target": "水柱須先穿入上層液體並挖動底部，顆粒被揚起、往邊緣堆，斜面的顆粒再受重力滑回，讓單點注水帶動更大區域。真咖啡另試注水高度，較粗水柱隨高度增加杯中固形物濃度上升；細水柱未見同樣明顯的高度差。",
+        "scope": "運動細節取自透明的二氧化矽凝膠顆粒（silica gel）床，真咖啡試驗測成品濃度。直徑和供水時間的差別不能用作普遍的最佳注水高度。"
+      }
+    },
+    {
+      "a": "X38-007",
+      "b": "R21002",
+      "proposed": "distinct",
+      "reason": "太空油箱用潤濕網擋氣體越過靜壓差，並非液體在回縮時聚焦穿網。",
+      "a_snapshot": {
+        "id": "X38-007",
+        "question": "一滴水撞上細網，為什麼有時不是撞上的那一刻，反而縮回時才從網下噴出一小滴？",
+        "answer_target": "水滴在超疏水網上展開後退縮，中央空穴合攏會把液流聚到一條軸線，讓局部壓力高到能把細流推過網孔。在特定條件只有回縮時才脫出一滴；有些配置先入孔的水還會彈回上方，改變空穴形成途徑。",
+        "scope": "人造超疏水網的指定孔徑與速度。區分入孔變形、網下液滴真正脫離；不推到一般衣料。"
+      },
+      "b_snapshot": {
+        "id": "R21002",
+        "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+        "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+        "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。"
+      }
+    },
+    {
+      "a": "X38-007",
+      "b": "I12013",
+      "proposed": "distinct",
+      "reason": "微柱間液體毛細回推提早抬起整滴；新題回縮中央的空穴收攏，局部聚焦射流往下穿孔。",
+      "a_snapshot": {
+        "id": "X38-007",
+        "question": "一滴水撞上細網，為什麼有時不是撞上的那一刻，反而縮回時才從網下噴出一小滴？",
+        "answer_target": "水滴在超疏水網上展開後退縮，中央空穴合攏會把液流聚到一條軸線，讓局部壓力高到能把細流推過網孔。在特定條件只有回縮時才脫出一滴；有些配置先入孔的水還會彈回上方，改變空穴形成途徑。",
+        "scope": "人造超疏水網的指定孔徑與速度。區分入孔變形、網下液滴真正脫離；不推到一般衣料。"
+      },
+      "b_snapshot": {
+        "id": "I12013",
+        "question": "水滴還攤成薄餅，怎麼就能跳離表面，不必先縮回一顆球？",
+        "answer_target": "液體暫時進入疏水微柱間並儲存毛細能；回推出來的向上動量若夠大，且與橫向展開時間相配，就能提早抬起整滴。",
+        "scope": "特殊微柱表面上的水滴；需足夠能量與時機匹配，不把可逆滲入稱永久濕透，不把柱形或落速每改一次另算一題。"
+      }
+    },
+    {
+      "a": "X38-007",
+      "b": "Q9006",
+      "proposed": "distinct",
+      "reason": "固定噴頭內刻意成蒸氣泡推墨水；新題空穴是網上水滴自由界面收縮形成。",
+      "a_snapshot": {
+        "id": "X38-007",
+        "question": "一滴水撞上細網，為什麼有時不是撞上的那一刻，反而縮回時才從網下噴出一小滴？",
+        "answer_target": "水滴在超疏水網上展開後退縮，中央空穴合攏會把液流聚到一條軸線，讓局部壓力高到能把細流推過網孔。在特定條件只有回縮時才脫出一滴；有些配置先入孔的水還會彈回上方，改變空穴形成途徑。",
+        "scope": "人造超疏水網的指定孔徑與速度。區分入孔變形、網下液滴真正脫離；不推到一般衣料。"
+      },
+      "b_snapshot": {
+        "id": "Q9006",
+        "question": "有些噴墨機沒有擠墨活塞，怎麼靠一個小氣泡把墨滴推出去？",
+        "answer_target": "微小加熱區在墨液中產生蒸氣泡，快速體積變化提供推動墨滴的動量；這是按需噴墨的一種致動方式。",
+        "scope": "限熱式按需噴墨；不概括壓電噴頭，不宣稱墨水全部煮沸，不補未讀的精確溫度、壽命或冷卻時序。"
+      }
+    },
+    {
+      "a": "X38-008",
+      "b": "P311",
+      "proposed": "distinct",
+      "reason": "超音波空化的形成/崩潰提供清洗作用；新題無超音波，空腔夾泡的振盪及抑制夾泡的空中聲壓對照。",
+      "a_snapshot": {
+        "id": "X38-008",
+        "question": "水滴落進水槽那聲清脆的「滴」，真的是水面剛被撞到時發出來的嗎？",
+        "answer_target": "把聲壓和高速影像對時，特徵聲跟在凹坑閉合、夾入小氣泡之後。用細桿阻止夾泡，水面仍會出現凹坑，清脆聲卻消失。研究以氣泡振動帶動上方水面來解釋聲音如何傳到空氣。",
+        "scope": "該文平靜水槽的指定落滴條件，只指特徵聲。水槽水下回音、空中聲壓及水面運動不等同；不將全部雨聲說成同一音源。"
+      },
+      "b_snapshot": {
+        "id": "P311",
+        "question": "超音波清洗器裡的小空穴，跟把水燒開的氣泡有什麼不同？",
+        "answer_target": "聲波造成壓力反覆降低可形成空穴，崩潰產生局部作用，並非整槽水沸騰。",
+        "scope": "清洗適用材質另查，不作操作建議"
+      }
+    },
+    {
+      "a": "X38-008",
+      "b": "LEG-S67",
+      "proposed": "distinct",
+      "reason": "指關節音源形成/塌陷有爭論，平靜水面滴落試驗能直接用擋泡控制那段聲響。",
+      "a_snapshot": {
+        "id": "X38-008",
+        "question": "水滴落進水槽那聲清脆的「滴」，真的是水面剛被撞到時發出來的嗎？",
+        "answer_target": "把聲壓和高速影像對時，特徵聲跟在凹坑閉合、夾入小氣泡之後。用細桿阻止夾泡，水面仍會出現凹坑，清脆聲卻消失。研究以氣泡振動帶動上方水面來解釋聲音如何傳到空氣。",
+        "scope": "該文平靜水槽的指定落滴條件，只指特徵聲。水槽水下回音、空中聲壓及水面運動不等同；不將全部雨聲說成同一音源。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S67",
+        "question": "為什麼扳手指會喀喀響？",
+        "answer_target": "拉開關節時，關節裡滑液的壓力驟降，形成一個氣體空腔（空穴），響聲和這個過程有關。聲音來自空腔形成的瞬間，還是氣泡部分塌陷，科學家至今仍有爭論；響過之後約 20 分鐘內通常無法再響。",
+        "scope": "沿用 S67 題級條件，須讀原查核包的限制；關節聲的現象與研究限制夠短片，別擴成健康保證。"
+      }
+    },
+    {
+      "a": "X38-008",
+      "b": "X38-007",
+      "proposed": "distinct",
+      "reason": "共同詞彙是空穴，但一個看是否噴出穿網細滴，另一個把氣泡與聲音對時。",
+      "a_snapshot": {
+        "id": "X38-008",
+        "question": "水滴落進水槽那聲清脆的「滴」，真的是水面剛被撞到時發出來的嗎？",
+        "answer_target": "把聲壓和高速影像對時，特徵聲跟在凹坑閉合、夾入小氣泡之後。用細桿阻止夾泡，水面仍會出現凹坑，清脆聲卻消失。研究以氣泡振動帶動上方水面來解釋聲音如何傳到空氣。",
+        "scope": "該文平靜水槽的指定落滴條件，只指特徵聲。水槽水下回音、空中聲壓及水面運動不等同；不將全部雨聲說成同一音源。"
+      },
+      "b_snapshot": {
+        "id": "X38-007",
+        "question": "一滴水撞上細網，為什麼有時不是撞上的那一刻，反而縮回時才從網下噴出一小滴？",
+        "answer_target": "水滴在超疏水網上展開後退縮，中央空穴合攏會把液流聚到一條軸線，讓局部壓力高到能把細流推過網孔。在特定條件只有回縮時才脫出一滴；有些配置先入孔的水還會彈回上方，改變空穴形成途徑。",
+        "scope": "人造超疏水網的指定孔徑與速度。區分入孔變形、網下液滴真正脫離；不推到一般衣料。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "X38-S001",
+      "doi": "10.1038/nphys1340",
+      "primary_body_url": "https://www.irphe.fr/~fragmix/publis/VB2009.pdf",
+      "identity_relation": "原刊PDF之作者團隊網頁版本，web工具可開，指定UA直抓逾時。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S002",
+      "doi": "10.1073/pnas.1205446109",
+      "primary_body_url": "https://hu.gatech.edu/Publications/Hu12-mosquitoes.pdf",
+      "identity_relation": "Georgia Tech作者團隊原刊PDF。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S003",
+      "doi": "10.1098/rsif.2014.1092",
+      "primary_body_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4345476/",
+      "identity_relation": "PMC原刊HTML。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S004",
+      "doi": "10.1073/pnas.1820318116",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6421443/fullTextXML",
+      "identity_relation": "Europe PMC 原刊XML。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S005",
+      "doi": "10.1073/pnas.1909924117",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6995007/fullTextXML",
+      "identity_relation": "Europe PMC 原刊XML。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S006",
+      "doi": "10.1073/pnas.1419271112",
+      "primary_body_url": "https://arxiv.org/pdf/1407.7420",
+      "identity_relation": "實讀arXiv:1407.7420作者稿，正式刊文同研究。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S007",
+      "doi": "10.1038/s41467-020-18103-6",
+      "primary_body_url": "https://www.nature.com/articles/s41467-020-18103-6",
+      "identity_relation": "Nature Communications原刊全文HTML。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S008",
+      "doi": "10.1038/s41598-018-27913-0",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6014985/fullTextXML",
+      "identity_relation": "Europe PMC原刊XML。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S009",
+      "doi": "10.1038/nphys1646",
+      "primary_body_url": "https://www.nature.com/articles/nphys1646",
+      "identity_relation": "原刊公開來函開頭，未取得付費後全文；不是另一項落滴實驗。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    },
+    {
+      "source_id": "X38-S010",
+      "doi": "10.1038/nphys1648",
+      "primary_body_url": "https://www.nature.com/articles/nphys1648",
+      "identity_relation": "原刊作者回覆公開首段，與2009論文是同組研究脈絡。",
+      "old_exact_matches": [],
+      "count_policy": "DOI/載體/實驗分開；S009及S010為評論及作者答覆而非新實驗。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "X38-S001",
+      "scope": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。",
+      "locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。",
+      "cache": {
+        "file": ".cache/wave38-physics-bag-web.txt",
+        "sha256": "6a5305d22a6ed73878bd352c413b867fd62a65d87883ae0a299b3eb3a0ed332d",
+        "text_file": ".cache/wave38-physics-bag-more-web.txt",
+        "text_sha256": "1cffa25dc9e61931cdfc311c530128e0c698286c09b2f8d4362c0f94378530b7"
+      },
+      "read_via": "web.open/find作者公開PDF正文；存工具回傳文字，非完整PDF。"
+    },
+    {
+      "source_id": "X38-S002",
+      "scope": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。",
+      "locator": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。",
+      "cache": {
+        "file": ".cache/wave38-physics-mosquito.pdf",
+        "sha256": "3d7b55ba6106eed052b8638aae5c40d7cde047376848d4c0b4b426278cadb2ec",
+        "text_file": ".cache/wave38-physics-mosquito.txt",
+        "text_sha256": "7dd4dd247236cb87f61c2b08c4c80ad3554fabfa19521fe88633aa6b51c39cdb"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    },
+    {
+      "source_id": "X38-S003",
+      "scope": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。",
+      "locator": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。",
+      "cache": {
+        "file": ".cache/wave38-physics-foliar.html",
+        "sha256": "e7d163d418142df51d9e6e5ac9c62d6f5116f79889882b83a2366bfd4ec1f715",
+        "text_file": ".cache/wave38-physics-foliar.txt",
+        "text_sha256": "e3633f94b8771746aaea88eae1f66e4e2e908904fd898ed6df1a6cfa5252be91"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    },
+    {
+      "source_id": "X38-S004",
+      "scope": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。",
+      "locator": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。",
+      "cache": {
+        "file": ".cache/wave38-physics-spore.xml",
+        "sha256": "22f12e738e54f679326c1e643d5a40972292c1cee463e15e71e9f7b570b23786",
+        "text_file": ".cache/wave38-physics-spore.txt",
+        "text_sha256": "9a685f98b7be5e394e5e675d189481e2211c2297fecad200141e3c5616180e0e"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    },
+    {
+      "source_id": "X38-S005",
+      "scope": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。",
+      "locator": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。",
+      "cache": {
+        "file": ".cache/wave38-physics-tip.xml",
+        "sha256": "64d216c79e4bd16413e39d2c8aa2b62e8f5f74067270ef3fac575def012ab0d6",
+        "text_file": ".cache/wave38-physics-tip.txt",
+        "text_sha256": "92c3cec506046ec390678c3afe889e4753fa620ec2c078e9c88667ca7157b5b5"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    },
+    {
+      "source_id": "X38-S006",
+      "scope": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。",
+      "locator": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。",
+      "cache": {
+        "file": ".cache/wave38-physics-crater.pdf",
+        "sha256": "b4b36a8fc9e6cbb671702a99b0c8c1b2b5a38f50696a20c889d481a8b53f9299",
+        "text_file": ".cache/wave38-physics-crater.txt",
+        "text_sha256": "9a42f112dc6ebd7e6aef5ff6d0a31560eb018d69557e45112a1e6a2ae6757c88"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    },
+    {
+      "source_id": "X38-S007",
+      "scope": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。",
+      "locator": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。",
+      "cache": {
+        "file": ".cache/wave38-physics-mesh.html",
+        "sha256": "3c6290b8d02a548e074ca52407f51616e9641faa97ae7fa9165832dfb35825a6",
+        "text_file": ".cache/wave38-physics-mesh.txt",
+        "text_sha256": "0d8c3097491ac9d1dfad04c5fa7aaea373797a5080558705464e806468695b19"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    },
+    {
+      "source_id": "X38-S008",
+      "scope": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。",
+      "locator": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。",
+      "cache": {
+        "file": ".cache/wave38-physics-plink.xml",
+        "sha256": "32ad2e0d77cade34658b3e59619263588cd125e6a392a8a2dfa7d2ca8e30e5df",
+        "text_file": ".cache/wave38-physics-plink.txt",
+        "text_sha256": "c15cd7412b8429a78b11bff033fc2af50edfba5d1aacbb3d17f5600a570a0cbe"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    },
+    {
+      "source_id": "X38-S009",
+      "scope": "公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。",
+      "locator": "公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。",
+      "cache": {
+        "file": ".cache/wave38-physics-crit.html",
+        "sha256": "3742f29e454406aa416052724b7b32e327cb81080dc1786d0691ffb435d3c465",
+        "text_file": ".cache/wave38-physics-crit.txt",
+        "text_sha256": "03b396a4f3685ec8f397450d68858aeaccd19fd7229216f89dfd7ee6449ad900"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    },
+    {
+      "source_id": "X38-S010",
+      "scope": "公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+      "locator": "公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+      "cache": {
+        "file": ".cache/wave38-physics-reply.html",
+        "sha256": "d4e40efafc8fe4c439c1fd996a21bd94d2b2441caea284167dbeb766fdbbc247",
+        "text_file": ".cache/wave38-physics-reply.txt",
+        "text_sha256": "fdb1f6e59b2bd5df50582a25185daf5a6f4b50596a3ceffbbe6ddf8b30ec772d"
+      },
+      "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave38-physics-fetch.json",
+      "sha256": "b316aff03c2ab19da9356a57ccdac2a5fa473175928f7df80e1899634b7b09ee"
+    },
+    {
+      "file": ".cache/wave38-physics-alt.json",
+      "sha256": "ba0201d630af533ff8cf21bc3555a9d0ad00da64298c3d682e5c5f8bfc55c72f"
+    },
+    {
+      "file": ".cache/wave38-physics-figs.json",
+      "sha256": "64b0087189fd6370d9eb858449acde3642f658bfc4de77604a1ab79aa2be9559"
+    }
+  ],
+  "retrieval_failures": [
+    "蚊子、顆粒坑和網面初試Europe PMC XML timeout/PMC HTML不能取得可讀主文；分別改讀作者團隊刊版PDF、arXiv原稿及Nature全文HTML。",
+    "單滴袋狀破裂的作者網站指定UA逾時，Nature頁只摘要或預覽。web.open可讀實際作者PDF指定正文與圖說，保存定點文字回傳，未留原PDF或目讀照片。",
+    "來函及答覆僅讀原刊公開首段，僅支持自然雨外推的科學爭議。"
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave38-physics-mosquito-p2.png",
+      "url": null,
+      "sha256": "ebf72c5b44599f4959c57fd2e0f09a049dec1604997f86b4cfbfa334f38166e6"
+    },
+    {
+      "file": ".cache/wave38-physics-foliar-f3.jpg",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/203f/4345476/74440ec402dc/rsif20141092-g3.jpg",
+      "sha256": "a353a8cf058d8da43a0c23a8e767a489c73c13e17b11f24c08baec2787c3fda4"
+    },
+    {
+      "file": ".cache/wave38-physics-spore-f2.jpg",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9ca4/6421443/9f1fece644df/pnas.1820318116fig02.jpg",
+      "sha256": "c88ab9c9e0c80ca8976bf4f831dbcdfe225805fa8f098f8ff6bf3ed7885e922f"
+    },
+    {
+      "file": ".cache/wave38-physics-spore-f4.jpg",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9ca4/6421443/ff392572f11d/pnas.1820318116fig04.jpg",
+      "sha256": "64a15128823b42f83d416cae2cbaae7b0d152f237434dbd785b478b95f9e1360"
+    },
+    {
+      "file": ".cache/wave38-physics-tip-f5.jpg",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/18e7/6995007/9424894f557b/pnas.1909924117fig05.jpg",
+      "sha256": "960cb77ead1d77260e2bccadafb6901ba07a4ab6122f99004c41150fed5d6611"
+    },
+    {
+      "file": ".cache/wave38-physics-crater-p2.png",
+      "url": null,
+      "sha256": "52836b02b09eb6ae13020132c44373187ade29eed7572a6319d0f2882a23bea5"
+    },
+    {
+      "file": ".cache/wave38-physics-crater-p3.png",
+      "url": null,
+      "sha256": "3e058d2a53ff8efd2255e5088dab7fcdb3290a74a3f5744018ea28e07a57fab7"
+    },
+    {
+      "file": ".cache/wave38-physics-mesh-f1.png",
+      "url": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41467-020-18103-6/MediaObjects/41467_2020_18103_Fig1_HTML.png",
+      "sha256": "4658bf5b4daa1ca20077a90f673c1959bc9bd1ec1c065d3322add557b5d0255d"
+    },
+    {
+      "file": ".cache/wave38-physics-plink-f7.jpg",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/0d94/6014985/b9d36dc67e68/41598_2018_27913_Fig7_HTML.jpg",
+      "sha256": "4d53639111210c2fc4581dfbe8b3f4c6c58e0b86bef26a66cf7a084225325848"
+    }
+  ],
+  "reading_limits": [
+    "直接目讀9個圖頁；未播放補充影片或音訊。圖說讀取與圖像目讀分開。",
+    "滴聲、模型葉、乾孢子等均是受控試驗，不宣稱直接測出真實雨場的每滴命運。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W38P-T01",
+      "body_seconds": 52,
+      "chapter_seconds": [
+        26,
+        26
+      ],
+      "core_seconds": {
+        "X38-002": 52
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W38P-T02",
+      "body_seconds": 71,
+      "chapter_seconds": [
+        35,
+        36
+      ],
+      "core_seconds": {
+        "X38-003": 35,
+        "X38-004": 36
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W38P-T03",
+      "body_seconds": 49,
+      "chapter_seconds": [
+        24,
+        25
+      ],
+      "core_seconds": {
+        "X38-006": 49
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W38P-T04",
+      "body_seconds": 43,
+      "chapter_seconds": [
+        24,
+        19
+      ],
+      "core_seconds": {
+        "X38-007": 43
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W38P-T05",
+      "body_seconds": 43,
+      "chapter_seconds": [
+        24,
+        19
+      ],
+      "core_seconds": {
+        "X38-008": 43
+      },
+      "max_beat_seconds": 19,
+      "status": "LOCAL_TTS_SAMPLE_TIMED_NOT_FINAL_NARRATION"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "all_strings_rstrip": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待另一作者題級覆核。其餘四案尚未試讀。"
+  ],
+  "revision_history": [
+    {
+      "before": [
+        {
+          "file": "batches/wave38-physics.json",
+          "sha256": "1cbbc0752e842360b5e45193e82d8471ad0ee7d345606f67e05f62ea343feda6"
+        },
+        {
+          "file": "reviews/wave38-physics-themes.json",
+          "sha256": "88ef7f9158bee2ddc22fb2fc9552a04afba9e3871d2b2cbc4d1f67a9afc2b0f4"
+        },
+        {
+          "file": "reviews/wave38-physics-author.json",
+          "sha256": "d912fb3e7f8823713ab8710294800edca6d99c27ae9e6dd5f9af20d80f822330"
+        }
+      ],
+      "after_batch_sha256": "1cbbc0752e842360b5e45193e82d8471ad0ee7d345606f67e05f62ea343feda6",
+      "after_themes_sha256": "f6f8bb91ad363e5be8c378afc4fb61807dc0c5b637434090fe7896a430092b8a",
+      "removed_seconds": 0,
+      "reason": "補T05實際台灣華語樣讀與靜看對時圖的時間；總秒數、候選、證據與節拍未變。"
+    }
+  ],
+  "timing_probe": {
+    "manifest": {
+      "file": ".cache/wave38-plink-read.json",
+      "sha256": "dae18eddb6dabcbd00aa4c72e68b280c905cc51eebcfa4a9221667cd5ca73226"
+    },
+    "wave_seconds": [
+      8.813,
+      7.44,
+      16.055,
+      32.309
+    ],
+    "scope": "親核樣稿與WAV檔頭；非親耳聽原試水滴，未另做合成。其餘四案為紙上估時。"
+  }
+}

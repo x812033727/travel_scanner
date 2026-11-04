@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCK_PENDING_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "c7bf184ed",
+    "raw": 3287,
+    "selected": 2921,
+    "themes": 159,
+    "not_added": 712,
+    "pool_sha256": "46736647ed691eecba8ad9c67c7b00c846e9511ce81b31d64fd08bafc7c31ee3"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave15-imaging.json",
+      "sha256": "05408177378982b02fdbcf246e4699949fc551710455918c376cc2007456e33c"
+    },
+    {
+      "file": "reviews/wave15-imaging-themes.json",
+      "sha256": "90131cdc7dc14ba4e78137643b4723d2b8487be8cd9d7e12b79c5d54ecb59a8f"
+    }
+  ],
+  "counts": {
+    "candidates": 8,
+    "sources": 8,
+    "not_added": 18,
+    "themes": 5,
+    "near_pairs": 24
+  },
+  "scope": "原創題級研究與自然短解說預算；無媒體、裝置、算法重建或人聲試讀。",
+  "dedup_reading": {
+    "method": "對全部3287 raw問答/scope/key與712 not_added執行關鍵詞檢索；逐讀所命中成像相關條目與指定近對，不宣稱人工逐讀全3287。",
+    "first_hits": ".cache/wave15-physics-imaging-old-hits.json",
+    "allraw_hits": ".cache/wave15-physics-imaging-allraw-hits.json",
+    "specific_hits": ".cache/wave15-physics-specific-old-hits.json",
+    "not_added_hits": ".cache/wave15-physics-imaging-old-not-added.json",
+    "deferred_revisited": [
+      {
+        "id": "O7023",
+        "new_id": "I15001",
+        "reason": "舊not_added是缺STED原文；本次已讀2000原實驗空間耗盡與對照圖。"
+      },
+      {
+        "id": "O7024",
+        "new_id": "I15003",
+        "reason": "舊not_added缺已知圖樣/重建原文；本次已讀2008 Theory及控制。"
+      }
+    ],
+    "limits": "詞彙檢索非語意召回率，等待共同top5與非作者再判。"
+  },
+  "near_pairs": [
+    {
+      "a": "I15001",
+      "b": "E2186",
+      "proposed": "distinct",
+      "reason": "舊題是受激放射模式匹配；新題增加空間強度分布與非線性存留率如何縮小有效發光區。"
+    },
+    {
+      "a": "I15001",
+      "b": "O7009",
+      "proposed": "distinct",
+      "reason": "兩光子在激發端靠強度平方限制發光；STED在已激發後以第二光場耗盡，控制/量測不同。"
+    },
+    {
+      "a": "I15001",
+      "b": "P157",
+      "proposed": "distinct",
+      "reason": "有限孔徑繞射斑沒有消失；新題改發光體狀態，不重講孔徑公式。"
+    },
+    {
+      "a": "I15002",
+      "b": "X13002",
+      "proposed": "distinct",
+      "reason": "舊題扣除穩定天體隔離一個變暗來源；新題控制多發光體稀疏輪流開關，反覆定位全組，非只換天體為分子。"
+    },
+    {
+      "a": "I15002",
+      "b": "LEG-A21",
+      "proposed": "distinct",
+      "reason": "平均對齊可降噪，但不能直接解除同時重疊的多中心歧義；新題先改亮起的稀疏集合。"
+    },
+    {
+      "a": "I15002",
+      "b": "I15001",
+      "proposed": "distinct",
+      "reason": "稀疏時間定位與縮小有效發光區是不同成像機制，原始單點光斑是否變窄也不同。"
+    },
+    {
+      "a": "I15003",
+      "b": "LEG-A50",
+      "proposed": "distinct",
+      "reason": "舊題解釋非預期拍屏摩爾紋；新題已知照明多相位量測分離頻率分量並搬回，產生新增資訊的條件不同。"
+    },
+    {
+      "a": "I15003",
+      "b": "E2200",
+      "proposed": "distinct",
+      "reason": "反混疊在取樣前去掉帶外；SIM刻意以已知照明混頻，再用多張獨立條件分離，不同資訊流程。"
+    },
+    {
+      "a": "I15003",
+      "b": "O3012",
+      "proposed": "distinct",
+      "reason": "SAR運動相位史合成孔徑；SIM已知空間照明乘法與相位解混，不把兩者都稱多圖所以相同。"
+    },
+    {
+      "a": "I15004",
+      "b": "O7003",
+      "proposed": "distinct",
+      "reason": "Scheimpflug實際轉感測面改合焦平面；光場保留角度資料後重排，普通照片沒有該資料。"
+    },
+    {
+      "a": "I15004",
+      "b": "O7001",
+      "proposed": "distinct",
+      "reason": "遠心鏡頭限制主光線方向穩定尺度；新題分開量測方向後數位重對焦。"
+    },
+    {
+      "a": "I15004",
+      "b": "LEG-A21",
+      "proposed": "distinct",
+      "reason": "光場不是多次曝光對齊平均；同一次曝光已分方向，目的與資料維度不同。"
+    },
+    {
+      "a": "I15005",
+      "b": "LEG-A21",
+      "proposed": "distinct",
+      "reason": "編碼單次積分的模糊核，非多幀對齊降噪。"
+    },
+    {
+      "a": "I15005",
+      "b": "O7015",
+      "proposed": "distinct",
+      "reason": "舊題串接對比衰減乘積；新題主動設計曝光核避免頻率零點，再還原特定運動影像。"
+    },
+    {
+      "a": "I15005",
+      "b": "E2200",
+      "proposed": "distinct",
+      "reason": "取樣混疊與曝光平均的頻率零點不同；不能只靠數位濾波把被抹掉資訊補回。"
+    },
+    {
+      "a": "I15006",
+      "b": "O7008",
+      "proposed": "distinct",
+      "reason": "小孔按空間聚焦拒焦外光；OCT按低相干參考延遲匹配選回波深度。"
+    },
+    {
+      "a": "I15006",
+      "b": "P153",
+      "proposed": "distinct",
+      "reason": "雙縫路徑相位造亮暗；新題用有限相干包絡選深度、掃延遲形成剖面。"
+    },
+    {
+      "a": "I15007",
+      "b": "M5013",
+      "proposed": "distinct",
+      "reason": "色度抽樣降低既成通道空間讀取；單像素在取像時量已知加權總和，並需可壓縮先驗。"
+    },
+    {
+      "a": "I15007",
+      "b": "E2201",
+      "proposed": "distinct",
+      "reason": "窄頻欠取樣靠限頻不重疊；新題未知影像從投影總和加稀疏限制恢復，並非直接套頻寬條件。"
+    },
+    {
+      "a": "I15007",
+      "b": "I15003",
+      "proposed": "distinct",
+      "reason": "單像素總量投影重建與SIM相位解混雖都編碼照明，未知量、量測和解的條件不同。"
+    },
+    {
+      "a": "I15008",
+      "b": "O7007",
+      "proposed": "distinct",
+      "reason": "暗場用光路排除未散射光；新題利用照明空間頻率與間接傳輸平均分量分離路徑。"
+    },
+    {
+      "a": "I15008",
+      "b": "O7017",
+      "proposed": "distinct",
+      "reason": "SCI/SCE收集鏡面方向幾何不同；本題直接/全域不是鏡面/漫反射二分。"
+    },
+    {
+      "a": "I15008",
+      "b": "Q9002",
+      "proposed": "distinct",
+      "reason": "舊題紙內橫向傳光造成網點擴大；新題利用局部切換/全域平均分離路徑，短程傳輸反而會失效。"
+    },
+    {
+      "a": "I15008",
+      "b": "I15003",
+      "proposed": "distinct",
+      "reason": "都用條紋但SIM解混高頻結構，直接/全域法利用間接項平滑且不跟局部切換；目的/模型/失敗條件不同。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "I15-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/",
+      "file": ".cache/wave15-physics-sted.html",
+      "sha256": "f16a9e38f3aa34612471f8aa52b3aaa84a91e8970042001cf1e6c4d8a05a6fb1",
+      "text_file": ".cache/wave15-physics-sted.txt",
+      "text_sha256": "8251cbdd6dfdf4842bf80657b8279e9e5e874267501f8cb52fec3fcb450386eb",
+      "reading_scope": "Physical Principles and Setup；Results開頭至Fig.2及後續bead比較段；Discussion and Outlook。快取段10–33、47–54；目讀Fig.1、2。未讀全部Methods或補充媒體。",
+      "not_full_claim_verification": true
+    },
+    {
+      "source_id": "I15-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700296/",
+      "file": ".cache/wave15-physics-storm.html",
+      "sha256": "b65299fab3c886d796b8ca797e46790f036428fe96187aec754801f1bfd0e4f4",
+      "text_file": ".cache/wave15-physics-storm.txt",
+      "text_sha256": "ff1953faa4e8db5e508f60b40016608e5a49c57b3b5a8a67c8afacbd70249af9",
+      "reading_scope": "正文快取段9–25及Fig.1–3圖說；目讀Fig.1、3；未讀Supplementary Methods/Movies。",
+      "not_full_claim_verification": true
+    },
+    {
+      "source_id": "I15-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2397368/",
+      "file": ".cache/wave15-physics-sim.html",
+      "sha256": "43d3a1a83ce45a08425a2f878f3a66810c9de0ed2823e97ab8ce75e3a5a36d39",
+      "text_file": ".cache/wave15-physics-sim.txt",
+      "text_sha256": "e90fb4d87e160ce52b11c08333131732fbb42e2d5bdda7979f29b3805dfd362f",
+      "reading_scope": "Theory指定段19–38；資料處理段60–64；結果/比較段81–87；Discussion段100–108；目讀Fig.1、4。未逐段讀整篇。",
+      "not_full_claim_verification": true
+    },
+    {
+      "source_id": "I15-S004",
+      "url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+      "file": ".cache/wave15-physics-lightfield.pdf",
+      "sha256": "ca08d7535fad77d57df47dd49d0771a07255a8ac0a54f525272705e45bfa7243",
+      "text_file": ".cache/wave15-physics-lightfield.txt",
+      "text_sha256": "22a74a8626a2dbed53c86081c7d8fd54d4b7f490ec8bd73cae15be797ff9a833",
+      "reading_scope": "PDF pp.2、4–6的§3、§4.2、§5指定正文；目讀p.2 Fig.1與p.10 Figs.14–18及圖說。未完整讀其餘頁。",
+      "not_full_claim_verification": true
+    },
+    {
+      "source_id": "I15-S005",
+      "url": "https://merl.com/publications/docs/TR2006-124.pdf",
+      "file": ".cache/wave15-physics-flutter.pdf",
+      "sha256": "86ac43701f3a049783921a22d42fcb7645deab4097c621cbf7613789be357909",
+      "text_file": ".cache/wave15-physics-flutter.txt",
+      "text_sha256": "4da008d0092bcbcf9711c8330ce13c63c7d35d371e708931be4e51a4900b1e0d",
+      "reading_scope": "PDF pp.5–7的§3、§3.1、§3.2、§4.1開頭；p.11 §7.2限制；目讀p.5 Fig.4、p.7 Fig.6。頁碼含2頁報告封面。",
+      "not_full_claim_verification": true
+    },
+    {
+      "source_id": "I15-S006",
+      "url": "https://web.mit.edu/2.717/www/oct_fujimoto_91.pdf",
+      "file": ".cache/wave15-physics-oct.pdf",
+      "sha256": "2ac69718595e5a18b26735ddb6923c1d98a40a675e00710277e68914852252ec",
+      "text_file": ".cache/wave15-physics-oct.txt",
+      "text_sha256": "b18409990b0e037308456211544999d7a24667c66ba86ec600c152d0b8b3a071",
+      "reading_scope": "PDF是影像掃描、文字擷取僅119字，改渲染目讀pp.2–4：1178頁原理/Fig.1、1179頁左下方法與Fig.2、1180頁散射限制/Fig.3；p.5僅核結尾和書目。未以醫療討論作建議。",
+      "not_full_claim_verification": true
+    },
+    {
+      "source_id": "I15-S007",
+      "url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content",
+      "file": ".cache/wave15-physics-singlepixel.pdf",
+      "sha256": "18c988453769166034084a03333d962eeb0f674e000994b24db2eac0c647b5af",
+      "text_file": ".cache/wave15-physics-singlepixel.txt",
+      "text_sha256": "2ffdb1504c61a407b5b8e6d6ccbe3844c7b833d82521d0ff0f4de36e4f94090d",
+      "reading_scope": "PDF pp.2–4、6：Architecture、CS in a Nutshell、Image Acquisition Examples與tradeoffs指定段；目讀p.2 Fig.1及p.4 Fig.2。未讀整套相關文獻/補充。",
+      "not_full_claim_verification": true
+    },
+    {
+      "source_id": "I15-S008",
+      "url": "https://merl.com/publications/docs/TR2006-087.pdf",
+      "file": ".cache/wave15-physics-directglobal.pdf",
+      "sha256": "73ffb55d35861e1ac5d093b3602c1322e5b636311dad52ae7fc2f09f890761a7",
+      "text_file": ".cache/wave15-physics-directglobal.txt",
+      "text_sha256": "2957d420806e52ac3d0ffc4c5493fdb65d7fbd37f8c24ce6cf2d83fe4ee8ef85",
+      "reading_scope": "PDF pp.5–7、9：§3.1末、§3.2–3.5、§4.1、§4.3–4.4與Discussion；目讀p.7 Fig.4、p.10 Fig.6及圖說。頁碼含2頁封面。",
+      "not_full_claim_verification": true
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "I15-S001",
+      "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/",
+      "identity": "PNAS 97(15),8206–8210 (2000-07-18); DOI 10.1073/pnas.97.15.8206",
+      "independent_studies": 1,
+      "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+      "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+      "old_exact_url_or_title_matches": []
+    },
+    {
+      "source_id": "I15-S002",
+      "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700296/",
+      "identity": "Nature Methods 3,793–795 (2006), DOI 10.1038/nmeth929；PMC作者稿公開於2009，與2006研究是同工作。",
+      "independent_studies": 1,
+      "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+      "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+      "old_exact_url_or_title_matches": []
+    },
+    {
+      "source_id": "I15-S003",
+      "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2397368/",
+      "identity": "Biophys J 94(12),4957–4970 (2008), DOI 10.1529/biophysj.107.120345",
+      "independent_studies": 1,
+      "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+      "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+      "old_exact_url_or_title_matches": []
+    },
+    {
+      "source_id": "I15-S004",
+      "adopted_url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+      "identity": "Stanford CSTR 2005-02 technical report, April 2005；本批未另採期刊版。",
+      "independent_studies": 1,
+      "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+      "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+      "old_exact_url_or_title_matches": []
+    },
+    {
+      "source_id": "I15-S005",
+      "adopted_url": "https://merl.com/publications/docs/TR2006-124.pdf",
+      "identity": "MERL TR2006-124；同文ACM TOG25(3),795–804,July2006。MERL落地頁與PDF同研究，不另計證據。",
+      "independent_studies": 1,
+      "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+      "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+      "old_exact_url_or_title_matches": []
+    },
+    {
+      "source_id": "I15-S006",
+      "adopted_url": "https://web.mit.edu/2.717/www/oct_fujimoto_91.pdf",
+      "identity": "Science254(5035),1178–1181,1991-11-22；DOI10.1126/science.1957169；MIT掃描副本與PubMed/期刊為同工作。",
+      "independent_studies": 1,
+      "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+      "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+      "old_exact_url_or_title_matches": []
+    },
+    {
+      "source_id": "I15-S007",
+      "adopted_url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content",
+      "identity": "IEEE Signal Processing Magazine25(2),83–91,March2008；PDF DOI10.1109/MSP.2007.914730。",
+      "independent_studies": 1,
+      "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+      "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+      "old_exact_url_or_title_matches": []
+    },
+    {
+      "source_id": "I15-S008",
+      "adopted_url": "https://merl.com/publications/docs/TR2006-087.pdf",
+      "identity": "MERL TR2006-087；同文ACM TOG25(3),935–944,July2006。落地頁與PDF為同研究。",
+      "independent_studies": 1,
+      "relation": "所讀PMC/大學/作者機構副本與原論文為同一工作，不按URL或報告封面多算研究。",
+      "old_pool_relation": "當期舊庫精確URL/題名比對：無精確命中；非跨版本/DOI人工全面排除，root另核身份。",
+      "old_exact_url_or_title_matches": []
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC26924/fullTextXML",
+      "error": "HTTP Error 500:",
+      "fallback": "改讀PMC HTML有效正文"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2700296/fullTextXML",
+      "error": "HTTP Error 500:",
+      "fallback": "改讀PMC HTML有效正文"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2397368/fullTextXML",
+      "error": "HTTP Error 500:",
+      "fallback": "改讀PMC HTML有效正文"
+    },
+    {
+      "url": "https://www.graphics.stanford.edu/papers/lfcamera/",
+      "error": "web.open timeout",
+      "fallback": "Stanford CSTR PDF指定UA成功，讀正文與結果圖"
+    },
+    {
+      "url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content",
+      "error": "web.open 403",
+      "fallback": "同URL指定UA取得有效Rice PDF，核首頁身分與正文"
+    },
+    {
+      "url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+      "error": "web.open timeout",
+      "fallback": "指定UA PDF成功"
+    }
+  ],
+  "visual_reads": {
+    "pmc_figures": [
+      {
+        "source": "sted",
+        "figure": "F1",
+        "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/f5e0/26924/3cab31d17914/pq1401062001.jpg",
+        "sha256": "b36afc56d499eab2596f49804fb8e84f49267b72b81a57a38a5531b1132681bc"
+      },
+      {
+        "source": "sted",
+        "figure": "F2",
+        "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/f5e0/26924/60413c6b58fd/pq1401062002.jpg",
+        "sha256": "0ce4a2a8b4f528740471dc033cca3b9d959759b063e58666806908f53d5b5865"
+      },
+      {
+        "source": "storm",
+        "figure": "F1",
+        "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/7d4a/2700296/5efaa1224cd7/nihms-88406-f0001.jpg",
+        "sha256": "b37d5a35bd8d6fdd894a8145fe52473d5b161cf649f6727140237f1c9c9df26d"
+      },
+      {
+        "source": "storm",
+        "figure": "F3",
+        "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/7d4a/2700296/357b58e48879/nihms-88406-f0003.jpg",
+        "sha256": "001d687dd14c28e0bc4ccd26b10ea280fe2fc742be8bb2343ccb2e755691fca6"
+      },
+      {
+        "source": "sim",
+        "figure": "fig1",
+        "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/819a/2397368/c9b228d1b812/BIO.120345.gs.f1.jpg",
+        "sha256": "c22210663b5270c7dd6f416b7d98d6d09af9f56f001496757ae35b2d06735cca"
+      },
+      {
+        "source": "sim",
+        "figure": "fig4",
+        "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/819a/2397368/189c5be8f5b0/BIO.120345.gs.f4.jpg",
+        "sha256": "2f9dd5321bc51954d10ccb93f194ec8761d7cde8ee3cb85309438223bcf5553b"
+      }
+    ],
+    "rendered_pdf_pages": {
+      "lightfield": [
+        2,
+        10
+      ],
+      "flutter": [
+        5,
+        7
+      ],
+      "oct": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "singlepixel": [
+        2,
+        4
+      ],
+      "directglobal": [
+        7,
+        10
+      ]
+    },
+    "limits": "目讀是來源原圖與原文，不是製作影片或觀看補充影片；外部圖不進Git、不承諾圖像重用權。"
+  },
+  "timing_checks": [
+    {
+      "id": "W15I-T01",
+      "seconds": 110,
+      "core_ids": [
+        "I15002"
+      ],
+      "chapters": [
+        50,
+        60
+      ],
+      "max_beat": 35
+    },
+    {
+      "id": "W15I-T02",
+      "seconds": 110,
+      "core_ids": [
+        "I15004"
+      ],
+      "chapters": [
+        50,
+        60
+      ],
+      "max_beat": 30
+    },
+    {
+      "id": "W15I-T03",
+      "seconds": 115,
+      "core_ids": [
+        "I15005"
+      ],
+      "chapters": [
+        55,
+        60
+      ],
+      "max_beat": 35
+    },
+    {
+      "id": "W15I-T04",
+      "seconds": 120,
+      "core_ids": [
+        "I15007"
+      ],
+      "chapters": [
+        55,
+        65
+      ],
+      "max_beat": 35
+    },
+    {
+      "id": "W15I-T05",
+      "seconds": 115,
+      "core_ids": [
+        "I15008"
+      ],
+      "chapters": [
+        55,
+        60
+      ],
+      "max_beat": 35
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_ONLY",
+    "checks": [
+      "Node validateEditorial 8候選",
+      "Node validateThemes 5案，隔離selected記憶體模型",
+      "Python每章1core/beat<=45/章總和/每core cap/range<=body",
+      "UTF8 LF／所有字串rstrip一致"
+    ],
+    "read_aloud": false,
+    "media_produced": false
+  },
+  "unresolved": [
+    "等待非作者全cohort與共同近鄰覆核；來源僅題級支持。",
+    "單像素/頻率圖解未計算原創小例，進稿必須先核對，未把未實作說成結果。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "requested_by": "pool_life_tech independent review",
+      "before_files": [
+        {
+          "file": "batches/wave15-imaging.json",
+          "sha256": "5976ac631f38fbebe7a4273b0658024a599714b1e74a95b778835933aa4861eb"
+        },
+        {
+          "file": "reviews/wave15-imaging-themes.json",
+          "sha256": "90131cdc7dc14ba4e78137643b4723d2b8487be8cd9d7e12b79c5d54ecb59a8f"
+        },
+        {
+          "file": "reviews/wave15-imaging-author.json",
+          "sha256": "da7b898edce0ed62dd509b247f3e1d639700171a46eeed542a6d235186e03bc4"
+        }
+      ],
+      "changes": [
+        {
+          "id": "I15003",
+          "field": "editorial.visual",
+          "before": "固定細格圖樣，改已知照明相位，畫出三張不同混合再解混；清楚標原創原理圖，不仿真未運算重建。",
+          "after": "固定細格圖樣，改變照明的已知相位，畫出多個相位各自形成的不同混合，再解混；清楚標原創原理圖，不仿真未運算重建。",
+          "reason": "原篇Theory使用多個已知相位分離線性組分；Data acquisition的3D實驗為5相位、3方向。原創原理圖不固定為三張，以免把2D三分量概念當作本篇3D取得流程。"
+        }
+      ],
+      "author_readback": "重新閱讀當日已取I15-S003正文副本Theory段34及Data acquisition段62–64；不是新增HTTP或重新核全篇。",
+      "unchanged": "question、answer_target、scope、來源紀錄及全部5題案內容/秒數未變。"
+    }
+  ]
+}

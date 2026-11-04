@@ -1,0 +1,162 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_SCOPE_REVIEW_NOT_FULL_FACT_CHECK",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-01",
+  "reviewed_files": [
+    {
+      "file": "batches/wave13-astronomy.json",
+      "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+    },
+    {
+      "file": "batches/wave13-cell-transport.json",
+      "sha256": "2dd0ab7cef3a2d64efd0db8f7c36b740f82b8b40fdbaffe44ba5b495dffe1828"
+    },
+    {
+      "file": "batches/wave13-granular.json",
+      "sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1"
+    },
+    {
+      "file": "reviews/wave13-cell-transport-author.json",
+      "sha256": "eec61502cffe29d86dc67bf2470bfe3faad5fe6fcb541fa07729db61402b6046"
+    },
+    {
+      "file": "reviews/wave13-granular-author.json",
+      "sha256": "d89f547bd7104d2ee0c2b520a65c94bb4a30ff381eec256f38394ee68f92c4db"
+    },
+    {
+      "file": "reviews/wave13-astronomy-author.json",
+      "sha256": "09b4caad5c8c91ef528c56a858c30565ff42094172d3113e6c00cf72f8f2b71e"
+    },
+    {
+      "file": "baselines/2026-11-01-2870.json.gz",
+      "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32"
+    }
+  ],
+  "new_source_rows": 27,
+  "raw_distinct_urls": 27,
+  "automated_comparison": {
+    "method": "All historical URL registry entries, research titles and DOI metadata, plus within-wave13 comparisons; exact advisory identity matching.",
+    "matched_instances": 0,
+    "script_sha256": "0b749ef60ac8f8f4dc92b3bdc1dc8a759f7a3e72b97f4c68ce0cde43b6f55484",
+    "result_sha256": "f8086d7416b5e4f584f590a321563ea151bd4ef029d9c2ecc7519dcbaa2d19fb",
+    "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+  },
+  "root_manual_identity_checks": {
+    "reviewed_on": "2026-11-01",
+    "scope": "Root checked selected source identity metadata and a local PDF container/title page; not a full-text fact check.",
+    "observations": [
+      {
+        "url": "https://arxiv.org/abs/2501.13434",
+        "paper_id": "2501.13434",
+        "title": "Compaction of Granular Columns under Thermal Cycling",
+        "version_seen": "v1; 2025-01-23",
+        "relationship": "Page does not list a journal reference. Treat the accessed version as a preprint; absence of that field does not independently prove it has never been published elsewhere."
+      },
+      {
+        "url": "https://arxiv.org/abs/cond-mat/9807148",
+        "paper_id": "cond-mat/9807148",
+        "title": "Clustering, Order, and Collapse in a Driven Granular Monolayer",
+        "version_seen": "v3; 1998-10-07",
+        "related_doi": "10.1103/PhysRevLett.81.4369",
+        "relationship": "The preprint page links the journal DOI. They represent versions of the same research, not independent corroborating experiments."
+      },
+      {
+        "url": "https://elifesciences.org/articles/109462",
+        "source_id": "C13-S003",
+        "version_seen": "Version of Record; DOI 10.7554/eLife.109462.3; 2026-04-14",
+        "relationship": "Official page lists prior reviewed-preprint v1 (2025-11-18) and v2 (2026-03-17). These are versions of one study, not independent research.",
+        "read_scope": "Official web extraction header and version history, not full Results verification."
+      },
+      {
+        "source_id": "C13-S006",
+        "url": "https://doi.org/10.1016/j.cell.2008.02.049",
+        "retrieval_url": "https://access.archive-ouverte.unige.ch/access/metadata/71dbacbd-f9a2-4c4c-8902-d25de8165b79/download",
+        "container_url": "https://archive-ouverte.unige.ch/unige:5095",
+        "container_identity": "Camille Mary 2009 doctoral thesis; 172 PDF pages.",
+        "read_scope": "Root read cached PDF page 1 title/provenance and page 64 embedded article title/author list/DOI. Page 64 identifies the 2008 Cell study with the same DOI.",
+        "file_sha256": "405fc6763a404b4fb2df4ff7b863c925d35c85e1edba5c9a3066ea43f8daa1db",
+        "relationship": "The thesis contains the published article; the container and article are not independent evidence. This source reading targets one embedded research article.",
+        "access_limit": "Root web.open DOI failed; local identity comparison used the author-deposited institutional PDF, not a claim of successful DOI-page retrieval."
+      }
+    ]
+  },
+  "authors_disclosed_relationships_read_by_root": [
+    {
+      "batch": "cell-transport",
+      "author_disclosure": [
+        {
+          "source_id": "C13-S001",
+          "same_identity_baseline_source_ids": [],
+          "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+        },
+        {
+          "source_id": "C13-S002",
+          "same_identity_baseline_source_ids": [],
+          "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+        },
+        {
+          "source_id": "C13-S003",
+          "same_identity_baseline_source_ids": [],
+          "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+        },
+        {
+          "source_id": "C13-S004",
+          "same_identity_baseline_source_ids": [],
+          "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+        },
+        {
+          "source_id": "C13-S005",
+          "same_identity_baseline_source_ids": [],
+          "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+        },
+        {
+          "source_id": "C13-S006",
+          "same_identity_baseline_source_ids": [],
+          "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+        },
+        {
+          "source_id": "C13-S007",
+          "same_identity_baseline_source_ids": [],
+          "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+        }
+      ]
+    },
+    {
+      "batch": "granular",
+      "author_disclosure": {
+        "rule": "作者稿與期刊版為同一工作，不計兩份獨立證據；PDF自動排版日期不覆蓋arXiv版本日期。",
+        "adopted_access_urls": 11,
+        "independent_read_claim": "9個候選各1個直接閱讀的研究工作；另2份只支援未加入理由。沒有第二來源交叉證實的暗示。",
+        "specific_cautions": [
+          "2501.13434按v1預印本保留，未宣稱期刊審查。",
+          "9906321題名與關聯期刊題名不同，保留實讀稿題名；同工作不重算。",
+          "9807148 v3與PRL81,4369為同工作；只列研究待補。"
+        ]
+      }
+    },
+    {
+      "batch": "astronomy",
+      "author_disclosure": [
+        "arXiv作者稿與正式期刊版是同篇研究，不將副本多算獨立佐證。",
+        "X13-S008是NASA/STScI託管Kreidberg等作者稿，不是NASA另做一項研究。",
+        "X13-S001與X13-S002同屬Kepler資料驗證方法，官方說明不算獨立測量。",
+        "X13-S005與X13-S006共享太陽對流與磁性區研究背景，SOAP引用前作，不能當完全獨立實驗。",
+        "作者對全庫來源做本批題名正規化及arXivID/專名文字檢索未見匹配；不是完整DOI/同文人工稽核，仍交root統一來源身份比對。"
+      ]
+    }
+  ],
+  "sources_without_raw_candidate_references": [
+    {
+      "source_id": "G13-S010",
+      "url": "https://arxiv.org/pdf/1408.3884",
+      "role": "Retained for not-added direction provenance; no raw candidate references this source."
+    },
+    {
+      "source_id": "G13-S011",
+      "url": "https://arxiv.org/pdf/cond-mat/9807148",
+      "role": "Retained for not-added direction provenance; no raw candidate references this source."
+    }
+  ],
+  "count_policy": "Pool source counts are distinct normalized URLs, not independent experiments or corroborating studies. Publisher pages, repositories, preprints, published versions and article-containing theses can represent the same research. Reader provenance and exact accessed version remain separate.",
+  "limits": "Root checked the stated identities and author disclosures. This is not a full bibliography semantic-equivalence audit or new independent full-text fact check. Candidate factual scope is controlled by the three non-author topic review receipts. No script, illustration-rights, experimental replication or production approval."
+}

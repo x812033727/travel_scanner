@@ -1,0 +1,203 @@
+{
+ "status": "PRIOR_HEAD_LIVE_READBACK",
+ "checked_at": "2026-11-03T06:22:24.287Z",
+ "head": "3f588e4565088b7a0ef82031be0a04b08e1fe353",
+ "counts": {
+  "SUCCESS": 23
+ },
+ "documentation": "本批開始時讀回前版 `3f588e4565`：23 項成功、0 項執行中、0 項失敗。這是前版CI，本批新提交需另讀最新結果；PR1971仍為draft並保留no-auto-merge。歷史a881970的full-stack-smoke失敗紀錄保留於[前次分診](reviews/wave48-prior-ci-triage.json)，不改寫歷史結果。",
+ "pr_snapshot": {
+  "headRefOid": "3f588e4565088b7a0ef82031be0a04b08e1fe353",
+  "isDraft": true,
+  "labels": [
+   "no-auto-merge"
+  ],
+  "state": "OPEN"
+ },
+ "check_runs": [
+  {
+   "name": "api",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T06:01:46Z",
+   "completed_at": "2026-11-03T06:01:49Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125755201741"
+  },
+  {
+   "name": "web",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:58:38Z",
+   "completed_at": "2026-11-03T05:58:40Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125754739740"
+  },
+  {
+   "name": "api-tests (2/4)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:51:57Z",
+   "completed_at": "2026-11-03T05:59:58Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281968"
+  },
+  {
+   "name": "web-e2e (2/3)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:51:40Z",
+   "completed_at": "2026-11-03T05:57:13Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281937"
+  },
+  {
+   "name": "api-tests (1/4)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:51:40Z",
+   "completed_at": "2026-11-03T05:58:37Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281908"
+  },
+  {
+   "name": "web-e2e (3/3)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:52:10Z",
+   "completed_at": "2026-11-03T05:57:55Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281906"
+  },
+  {
+   "name": "web-unit (3/3)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:51:14Z",
+   "completed_at": "2026-11-03T05:53:49Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281862"
+  },
+  {
+   "name": "api-tests (4/4)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:51:42Z",
+   "completed_at": "2026-11-03T06:00:07Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281851"
+  },
+  {
+   "name": "api-checks",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:52:37Z",
+   "completed_at": "2026-11-03T05:55:34Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281844"
+  },
+  {
+   "name": "web-e2e (1/3)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:51:31Z",
+   "completed_at": "2026-11-03T05:57:34Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281836"
+  },
+  {
+   "name": "web-unit (2/3)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:51:06Z",
+   "completed_at": "2026-11-03T05:55:02Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281833"
+  },
+  {
+   "name": "full-stack-smoke",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:51:10Z",
+   "completed_at": "2026-11-03T06:10:28Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281781"
+  },
+  {
+   "name": "containers",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:31Z",
+   "completed_at": "2026-11-03T05:54:17Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281770"
+  },
+  {
+   "name": "web-unit (1/3)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:31Z",
+   "completed_at": "2026-11-03T05:54:43Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281755"
+  },
+  {
+   "name": "api-tests (3/4)",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:43Z",
+   "completed_at": "2026-11-03T05:56:03Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281737"
+  },
+  {
+   "name": "web-checks",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:31Z",
+   "completed_at": "2026-11-03T05:56:24Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281701"
+  },
+  {
+   "name": "image",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:31Z",
+   "completed_at": "2026-11-03T05:53:45Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237674/job/125752281690"
+  },
+  {
+   "name": "lighthouse",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:31Z",
+   "completed_at": "2026-11-03T06:07:06Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237610/job/125752281637"
+  },
+  {
+   "name": "video-tests",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:31Z",
+   "completed_at": "2026-11-03T05:58:35Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237658/job/125752281585"
+  },
+  {
+   "name": "smoke",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:32Z",
+   "completed_at": "2026-11-03T06:03:58Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237633/job/125752281566"
+  },
+  {
+   "name": "food-map-reservations",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:55Z",
+   "completed_at": "2026-11-03T05:57:25Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237579/job/125752281564"
+  },
+  {
+   "name": "discovery-browser",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:30Z",
+   "completed_at": "2026-11-03T05:56:13Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237640/job/125752281432"
+  },
+  {
+   "name": "planner-browser",
+   "status": "COMPLETED",
+   "conclusion": "SUCCESS",
+   "started_at": "2026-11-03T05:50:31Z",
+   "completed_at": "2026-11-03T05:54:58Z",
+   "details_url": "https://github.com/x812033727/travel_scanner/actions/runs/41586237586/job/125752281259"
+  }
+ ]
+}

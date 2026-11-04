@@ -1,0 +1,591 @@
+{
+  "schema_version": 1,
+  "reviewer": "pool_physics (non-author)",
+  "reviewed_on": "2026-11-01",
+  "status": "PASS_AFTER_TARGETED_CORRECTIONS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "M10001",
+    "M10002",
+    "M10003",
+    "M10004",
+    "M10005",
+    "M10006",
+    "M10007"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave10-decisions.json",
+      "sha256": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854"
+    },
+    {
+      "file": "reviews/wave10-decisions-themes.json",
+      "sha256": "c1cf561709389bd88becdd326ecfcce9f59c5ce1c56bfef8a5674e45ffc10438"
+    },
+    {
+      "file": "reviews/wave10-decisions-probe.json",
+      "sha256": "d4650c7bdc9dbf9f92ed3a81de1f8578f23a5137ac70cf35adbe173004355840"
+    },
+    {
+      "file": "reviews/wave10-decisions-author.json",
+      "sha256": "4a34f25bbd797aa02df9bde75397d7d05f6df3009a88511b7d21373b7e63628f"
+    }
+  ],
+  "original_reviewed_files": [
+    {
+      "file": "batches/wave10-decisions.json",
+      "sha256": "3150e0ded0d5373bbaf7d23cb86262176831f89e6d3b4334069e0fabb6edf9ea"
+    },
+    {
+      "file": "reviews/wave10-decisions-themes.json",
+      "sha256": "1ca092ab1733251722421a70b302b56fcd744625cb0cdb3d131bb8f0fbbd8ea2"
+    },
+    {
+      "file": "reviews/wave10-decisions-probe.json",
+      "sha256": "d4650c7bdc9dbf9f92ed3a81de1f8578f23a5137ac70cf35adbe173004355840"
+    },
+    {
+      "file": "reviews/wave10-decisions-author.json",
+      "sha256": "b879097d8e69cd815d182195aeb87c661a2bc14295305b3577b82d9b05abe035"
+    }
+  ],
+  "coverage": {
+    "candidate_rows_full_read": 7,
+    "not_added_read": 3,
+    "author_boundary_pairs_read": 6,
+    "semantic_pairs_read": 35,
+    "source_records_independently_read": 4,
+    "sources_total": 4,
+    "all_old_pool_claims_reverified": false
+  },
+  "semantic_input": {
+    "file": ".cache/wave10-decisions-neighbours.json",
+    "sha256": "8765712599d8866c8abd6cd8b41fa1fd627b59a8c5cfdb4ce8fd54c66080330b",
+    "draft_sha256": "a9e82d8775c1a03dad5928c79f8ccb961e8701ba4d84846094ae9495c991b000",
+    "raw_records": 3160,
+    "read_batch_sha256": "6a6c79ab4b3538b8abf8018fae67d43a88444c0f9fc18fa1c400bb409d2ca532",
+    "revision_delta": "初近鄰後只改scope/locator/editorial.role與題案；題目/答案未變，已讀當期全7題及35近鄰。"
+  },
+  "per_candidate": [
+    {
+      "id": "M10001",
+      "disposition": "retain",
+      "reason": "總體權重改變可反轉比率比較；不同於極值影響平均或樣本量造成估計精度不同。",
+      "source_locator_verified": "M10-S001：Simpson’s Paradox 全節與加權平均解釋",
+      "neighbours_checked": [
+        "M10004",
+        "M2042",
+        "M10007",
+        "I3091",
+        "M2018"
+      ]
+    },
+    {
+      "id": "M10002",
+      "disposition": "retain",
+      "reason": "個人傳遞排序合成為兩兩多數關係後可不傳遞；三邊票數獨立重算相符。",
+      "source_locator_verified": "M10-S002：Plurality with Runoff的兩兩比較定義；Condorcet Consistency",
+      "neighbours_checked": [
+        "M10001",
+        "M2050",
+        "I3018",
+        "M10003",
+        "M2066"
+      ]
+    },
+    {
+      "id": "M10003",
+      "disposition": "retain",
+      "reason": "固定Borda給分規則，但候選集合改變使每人的名次分數改變；與多數循環是不同操作及失敗條件。",
+      "source_locator_verified": "M10-S002：Borda Count的m-k計分規則；撤C計算是本批原創構造例",
+      "neighbours_checked": [
+        "I3091",
+        "M10002",
+        "M10004",
+        "M10001",
+        "M10007"
+      ]
+    },
+    {
+      "id": "M10004",
+      "disposition": "retain",
+      "reason": "最大餘數分配的餘數排序隨總額改變；無平手或最低一個保障的自設例可產生失配，非浮點誤差。",
+      "source_locator_verified": "M10-S003：The Hamilton/Vinton Method 定義段與例表",
+      "neighbours_checked": [
+        "M10001",
+        "M10007",
+        "I3091",
+        "B2022",
+        "M2015"
+      ]
+    },
+    {
+      "id": "M10005",
+      "disposition": "retain",
+      "reason": "知情且每次必開空門並給換的程序保留初選錯的2/3；不是看到兩門就均勻條件分布。",
+      "source_locator_verified": "M10-S004：§16.1.1、§16.2.4–16.2.5；印刷頁667–668、675–677",
+      "neighbours_checked": [
+        "LEG-B73",
+        "M2051",
+        "M10003",
+        "C2013",
+        "B2247"
+      ]
+    },
+    {
+      "id": "M10006",
+      "disposition": "retain",
+      "reason": "任意一對與指定一人匹配不同；所有互異的補集重算相符，已改正配對事件關係的措辭。",
+      "source_locator_verified": "M10-S004：§16.4–16.4.1；印刷頁684–685",
+      "neighbours_checked": [
+        "LEG-T23",
+        "R10002",
+        "LEG-S12",
+        "L063",
+        "B2023"
+      ]
+    },
+    {
+      "id": "M10007",
+      "disposition": "retain",
+      "reason": "每一階段能新增種類的機率變小，使等候期望增加；不同於購買動機或觀察時點的長度偏差。",
+      "source_locator_verified": "M10-S004：§18.5.4；印刷頁766–768",
+      "neighbours_checked": [
+        "I3091",
+        "M2017",
+        "M10004",
+        "M10001",
+        "M2042"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "M10001",
+        "b": "M2025",
+        "reason": "分組權重造成比率反轉，增量不同於泛說相關不等於因果；仍保留因果限制。"
+      },
+      {
+        "a": "M10001",
+        "b": "M2015",
+        "reason": "反轉來自各組分母佔比，不需要極端值拉動平均。"
+      },
+      {
+        "a": "M10002",
+        "b": "M10003",
+        "reason": "前者多數關係不傳遞；後者固定Borda規則在撤項重算後翻轉，用同資料但不同可檢驗操作。"
+      },
+      {
+        "a": "M10007",
+        "b": "LEG-B62",
+        "reason": "數學上可增加進度的結果變少，不是接近目標後更想買的心理效應。"
+      },
+      {
+        "a": "M10007",
+        "b": "T4017",
+        "reason": "集齊的分階段等待，不是觀察時點偏向較長間隔的長度偏差。"
+      },
+      {
+        "a": "M10004",
+        "b": "I3062",
+        "reason": "整數名額按最大餘數重新分配，不是浮點近似誤差。"
+      },
+      {
+        "a": "M10001",
+        "b": "M2042",
+        "reason": "加權組成造成總比率方向反轉，不是平均差的標準誤。"
+      },
+      {
+        "a": "M10004",
+        "b": "I3091",
+        "reason": "名額按整數與餘數重分配，不是隨機整數取模導致類別機率不均。"
+      },
+      {
+        "a": "M10007",
+        "b": "I3091",
+        "reason": "在已等機率的種類模型中，剩餘新種類減少；不是亂數生成偏差。"
+      },
+      {
+        "a": "M10006",
+        "b": "R10002",
+        "reason": "生日任意配對碰撞與儲存時間整數上限沒有共同機制。"
+      }
+    ]
+  },
+  "source_readback": [
+    {
+      "source_id": "M10-S001",
+      "url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+      "route": "fresh web.open/find",
+      "reading_scope": "Simpson’s Paradox正文，分組與合併資料、組成差異與weighted mean解釋；未用動態練習或史料數字作本批素材",
+      "assessment": "支持加權反轉概念，另外以本批自設資料確定各組均反向；不由選擇的分層直接推因果。"
+    },
+    {
+      "source_id": "M10-S002",
+      "url": "https://www.cs.cmu.edu/~15281-f24/coursenotes/gametheory/index.html",
+      "route": "fresh web.open/find",
+      "reading_scope": "Social Choice / Voting Model；Borda Count的m-k規則；Plurality with Runoff的pairwise定義；Condorcet Consistency循環段",
+      "assessment": "可支持M10002及M10003規則；本批11人例另算，沒有挪用圖或採其他投票制度的泛化。"
+    },
+    {
+      "source_id": "M10-S003",
+      "url": "https://www.census.gov/about/history/historical-censuses-and-surveys/census-programs-surveys/decennial-census/methods.html",
+      "route": "fresh web.open/find",
+      "reading_scope": "The Hamilton/Vinton Method定義與例表",
+      "assessment": "只採配額整數加餘數排序方法；本批5:3:1設備例獨立重算，不稱現行美國分配或歷史Alabama實例。"
+    },
+    {
+      "source_id": "M10-S004",
+      "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/mit6_042js15_textbook.pdf",
+      "route": "fresh web.open/find PDF文字層；所列公式讀取後另算",
+      "reading_scope": "§16.1.1 pp667–668；§16.2.4–5 pp675–677；§16.4–16.4.1 pp684–685；§18.5.4 pp766–768；未讀920頁全文",
+      "assessment": "主持人協定、生日互異序列計數、分階段集齊期望可支持。未宣稱讀圖像全部細節或重現真實節目/出生/商品數據。"
+    }
+  ],
+  "independent_source_failures": [],
+  "independent_probe": {
+    "method": "另寫Python Fraction精確數值與有限集合逐列枚舉，不跑作者程式、不用隨機模擬代替證明。",
+    "result": "PASS_ALL_SEVEN_MODELS",
+    "values": {
+      "simpson": {
+        "A": [
+          "9/10",
+          "1/5",
+          "29/110"
+        ],
+        "B": [
+          "4/5",
+          "1/10",
+          "81/110"
+        ]
+      },
+      "pairwise": {
+        "AB": 7,
+        "BC": 9,
+        "CA": 6
+      },
+      "borda3": {
+        "A": 12,
+        "B": 13,
+        "C": 8
+      },
+      "borda2": {
+        "A": 7,
+        "B": 4
+      },
+      "allocation4": {
+        "quotas": [
+          "20/9",
+          "4/3",
+          "4/9"
+        ],
+        "allocation": [
+          2,
+          1,
+          1
+        ]
+      },
+      "allocation5": {
+        "quotas": [
+          "25/9",
+          "5/3",
+          "5/9"
+        ],
+        "allocation": [
+          3,
+          2,
+          0
+        ]
+      },
+      "monty_branches": [
+        [
+          1,
+          2,
+          3,
+          "1/6"
+        ],
+        [
+          1,
+          3,
+          2,
+          "1/6"
+        ],
+        [
+          2,
+          3,
+          2,
+          "1/3"
+        ],
+        [
+          3,
+          2,
+          3,
+          "1/3"
+        ]
+      ],
+      "switch_win": "2/3",
+      "birthday_pairs": 253,
+      "birthday_probability": 0.5072972343239854,
+      "fixed_person_probability": 0.058571325264343346,
+      "coupon_stage_expectations": [
+        "1",
+        "6/5",
+        "3/2",
+        "2",
+        "3",
+        "6"
+      ],
+      "coupon_expected": "147/10"
+    },
+    "limits": "構造模型算術；不是觀眾測試或自然資料驗證。"
+  },
+  "theme_reviews": [
+    {
+      "id": "W10M-T01",
+      "seconds": 110,
+      "core_allocations": {
+        "M10001": 110
+      },
+      "beats_within_45_seconds": true,
+      "result": "PASS_TOPIC_PLAN_ONLY",
+      "editorial_reason": "同一資料由組內比率到樣本組成，再到權重，110秒可用圖解承載；不把分層結論升成因果。",
+      "chapter_seconds": [
+        60,
+        50
+      ]
+    },
+    {
+      "id": "W10M-T02",
+      "seconds": 150,
+      "core_allocations": {
+        "M10002": 80,
+        "M10003": 70
+      },
+      "beats_within_45_seconds": true,
+      "result": "PASS_TOPIC_PLAN_ONLY",
+      "editorial_reason": "同11張卡追兩種合成操作，保留規則重設；重述箭頭與總結已縮30秒。",
+      "chapter_seconds": [
+        80,
+        70
+      ]
+    },
+    {
+      "id": "W10M-T03",
+      "seconds": 95,
+      "core_allocations": {
+        "M10007": 95
+      },
+      "beats_within_45_seconds": true,
+      "result": "PASS_TOPIC_PLAN_ONLY",
+      "editorial_reason": "同六類空格逐步減少新結果，95秒保留期望而非保證；末尾只作短限制回扣。",
+      "chapter_seconds": [
+        55,
+        40
+      ]
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "DEC01",
+      "status": "RESOLVED",
+      "before": "配對事件互相相關",
+      "after": "不同配對事件可以重疊，不能當作互斥事件把253個機率直接相加",
+      "reason": "均勻獨立生日下不同配對事件兩兩獨立，但非共同獨立；直接說互相相關不精確。"
+    },
+    {
+      "id": "DEC02",
+      "status": "RESOLVED",
+      "before": "總分卻輸／分母換了",
+      "after": "總比率卻輸／組別權重",
+      "reason": "兩邊合計分母同110，反轉原因是組別組成。"
+    },
+    {
+      "id": "DEC03",
+      "status": "RESOLVED",
+      "change": "MIT每題locator分別對應開門/生日/集齊段，CMU兩題分別對應多數定義與Borda規則。"
+    },
+    {
+      "id": "DEC04",
+      "status": "RESOLVED",
+      "change": "T02 180→150（80+70），T03 105→95；只刪過長重述，drop_if、target、beats同步。"
+    }
+  ],
+  "unresolved_required_corrections": [],
+  "limits": [
+    "題級與紙上企劃覆核，尚未逐句旁白、試讀或生成動畫。",
+    "所有例子限定原模型；數值正確不保證真實抽取均勻、真實群體符合條件。",
+    "七題是不同機制，不把參數代換另算素材；本輪沒有新增名詞清單或歷史片段補時。"
+  ],
+  "final_input_checks": [
+    {
+      "checked_on": "2026-11-01",
+      "result": "PASS_UNCHANGED_QA_AND_NEIGHBOURS_TARGETED_METADATA_READBACK",
+      "draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+      "raw_records": 3160,
+      "neighbours_file": ".cache/wave10-decisions-neighbours.json",
+      "neighbours_sha256": "88077fe82928f0ee7e3fd9c977c80e878e54b4cc51b362c7ded8702c3bcbde8f",
+      "delta_file": ".cache/wave10-decisions-neighbour-delta.json",
+      "delta_sha256": "58920aae5cfd90181af9f6bd2d91bda77e0064f0446290ecbf73792890e3963b",
+      "current_batch_sha256": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854",
+      "candidate_rows": 7,
+      "top5_ids_match_reviewed": true,
+      "new_neighbour_ids": [],
+      "delta_rows_read": [
+        {
+          "id": "M10002",
+          "changed_fields": [
+            "source_locator"
+          ],
+          "current_values": {
+            "source_locator": "M10-S002：Plurality with Runoff的兩兩比較定義；Condorcet Consistency"
+          },
+          "result": "PASS_TARGETED_READBACK"
+        },
+        {
+          "id": "M10003",
+          "changed_fields": [
+            "source_locator"
+          ],
+          "current_values": {
+            "source_locator": "M10-S002：Borda Count的m-k計分規則；撤C計算是本批原創構造例"
+          },
+          "result": "PASS_TARGETED_READBACK"
+        },
+        {
+          "id": "M10005",
+          "changed_fields": [
+            "source_locator"
+          ],
+          "current_values": {
+            "source_locator": "M10-S004：§16.1.1、§16.2.4–16.2.5；印刷頁667–668、675–677"
+          },
+          "result": "PASS_TARGETED_READBACK"
+        },
+        {
+          "id": "M10006",
+          "changed_fields": [
+            "scope",
+            "source_locator"
+          ],
+          "current_values": {
+            "scope": "忽略閏日的理想模型，不是每個真實班級的實測機率；不同配對事件可以重疊，不能當作互斥事件把253個機率直接相加。",
+            "source_locator": "M10-S004：§16.4–16.4.1；印刷頁684–685"
+          },
+          "result": "PASS_TARGETED_READBACK"
+        },
+        {
+          "id": "M10007",
+          "changed_fields": [
+            "source_locator"
+          ],
+          "current_values": {
+            "source_locator": "M10-S004：§18.5.4；印刷頁766–768"
+          },
+          "result": "PASS_TARGETED_READBACK"
+        }
+      ],
+      "author_file_hashes_match_reviewed_files": true,
+      "limits": "保留最初semantic_input、來源實讀路線及早期SHA；本次僅版本差異讀回，不宣稱重新讀全部來源。"
+    },
+    {
+      "checked_on": "2026-11-01",
+      "result": "PASS_FINAL_INPUT_HASH_ONLY_DELTA",
+      "draft_sha256": "ebd81b1e36f410146eb4921c43ce4e3d2aded07b3fcdef2748d580de5c8eec16",
+      "previous_draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+      "raw_records": 3160,
+      "neighbours_file": ".cache/wave10-decisions-neighbours.json",
+      "neighbours_sha256": "7fb11b5e727b5ef60f7d71c781dbcad8ccf29acea6f99fa1748c021e52973015",
+      "proof": "將當期nearby唯一draft_sha256值回置c371版後，其完整UTF8位元組SHA與前次實讀nearby SHA相同；證明三份payload只有draft欄變動。",
+      "author_file_hashes_match_reviewed_files": true,
+      "candidate_question_answer_scope_and_neighbour_payload_changed": false,
+      "new_required_corrections": [],
+      "limits": "最後版本綁定，不覆寫早期實讀紀錄；未重開來源、未試讀或製作。"
+    }
+  ],
+  "post_lock_targeted_checks": [
+    {
+      "reason": "整合schema要求short_explainer至少2章，作者僅把原4beats分為2章，無新增素材或延長。",
+      "result": "PASS_CHAPTER_SPLIT_NO_CONTENT_OR_TIMING_CHANGE",
+      "reviewed_on": "2026-11-01",
+      "before_reviewed_files": [
+        {
+          "file": "batches/wave10-decisions.json",
+          "sha256": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854"
+        },
+        {
+          "file": "reviews/wave10-decisions-themes.json",
+          "sha256": "a799d2296481bf3e9695a5d0f12a1346ced43571b482bf381438eff5d6040872"
+        },
+        {
+          "file": "reviews/wave10-decisions-probe.json",
+          "sha256": "d4650c7bdc9dbf9f92ed3a81de1f8578f23a5137ac70cf35adbe173004355840"
+        },
+        {
+          "file": "reviews/wave10-decisions-author.json",
+          "sha256": "8d1ebe5ad786a70ba4480fc5de384eeabc8b3b3818df9471d6662fc3ced379a7"
+        }
+      ],
+      "after_theme_sha256": "c1cf561709389bd88becdd326ecfcce9f59c5ce1c56bfef8a5674e45ffc10438",
+      "after_author_sha256": "4a34f25bbd797aa02df9bde75397d7d05f6df3009a88511b7d21373b7e63628f",
+      "proof": "將當期T01/T03兩章合併回已讀舊章標題、原序beat和new_information後，重建整份UTF8 LF主題檔SHA精確等於前版a799d229；因此不只是同字數，而是原節拍內容與順序完全相同。",
+      "reconstructed_previous_theme_sha256": "a799d2296481bf3e9695a5d0f12a1346ced43571b482bf381438eff5d6040872",
+      "checks": [
+        {
+          "id": "W10M-T01",
+          "chapter_seconds": [
+            60,
+            50
+          ],
+          "body_seconds": 110,
+          "flattened_beats_identical": true,
+          "core_allocations": {
+            "M10001": 110
+          },
+          "core_caps": {
+            "M10001": 110
+          },
+          "result": "PASS"
+        },
+        {
+          "id": "W10M-T02",
+          "chapter_seconds": [
+            80,
+            70
+          ],
+          "body_seconds": 150,
+          "flattened_beats_identical": true,
+          "core_allocations": {
+            "M10002": 80,
+            "M10003": 70
+          },
+          "core_caps": {
+            "M10002": 95,
+            "M10003": 85
+          },
+          "result": "PASS"
+        },
+        {
+          "id": "W10M-T03",
+          "chapter_seconds": [
+            55,
+            40
+          ],
+          "body_seconds": 95,
+          "flattened_beats_identical": true,
+          "core_allocations": {
+            "M10007": 95
+          },
+          "core_caps": {
+            "M10007": 105
+          },
+          "result": "PASS"
+        }
+      ],
+      "draft_sha256": "ebd81b1e36f410146eb4921c43ce4e3d2aded07b3fcdef2748d580de5c8eec16",
+      "limits": "來源與semantic未變，本次未重讀外站來源；仍為題級企劃，不是旁白/觀眾或製作核准。"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "status": "LOCAL_ZHTW_SYNTHETIC_VOICE_TIMING_ONLY",
+  "theme": "G327",
+  "proposal": "W34R-T04",
+  "candidate": "R34007",
+  "source": "10.1098/rspb.2009.1161",
+  "voice": "Microsoft Hanhan Desktop - Chinese (Taiwan)",
+  "sapi_rate": 0,
+  "engine": "Windows SAPI.SpVoice，離線本機；預設速率，WAV單聲道PCM16。",
+  "measurement": "前三筆是分拍，末筆把三段連讀並從WAV影格數除以取樣率計時。影片預算以連讀算一次。",
+  "readings": [
+    {
+      "slot": 0,
+      "text": "想像你面前只有一排翼龍腳印。從最早的一步看起，兩個後腳印並排，趾尖還拖出短痕。往前一點，又是兩個後腳印，幾乎就在前一對旁邊。",
+      "wav_sha256": "858b62ab68207cc35ab8d0d68faf9628f41ac7c33b8f7e34871800f1a294aa4c",
+      "rate_hz": 22050,
+      "frames": 352505,
+      "seconds": 15.987,
+      "rms_pcm16": 2215.0
+    },
+    {
+      "slot": 1,
+      "text": "那前腳呢？到這裡才印在地上。再往前，後腳又挪了一小步，前腳也換了位置，接下來才看得出平常四隻腳走路的樣子。",
+      "wav_sha256": "650e837f0f74adf70d773099044d458215458a2f9fe8ae349bfe6d5f6851e250",
+      "rate_hz": 22050,
+      "frames": 304389,
+      "seconds": 13.804,
+      "rms_pcm16": 2489.7
+    },
+    {
+      "slot": 2,
+      "text": "所以研究者把這一串讀成一次降落。",
+      "wav_sha256": "f9f5c4c68119dded9073d7b6d7fc4c3fb9124cdf5808ecf617983f64b970783b",
+      "rate_hz": 22050,
+      "frames": 91864,
+      "seconds": 4.166,
+      "rms_pcm16": 2146.9
+    },
+    {
+      "slot": 3,
+      "text": "想像你面前只有一排翼龍腳印。從最早的一步看起，兩個後腳印並排，趾尖還拖出短痕。往前一點，又是兩個後腳印，幾乎就在前一對旁邊。那前腳呢？到這裡才印在地上。再往前，後腳又挪了一小步，前腳也換了位置，接下來才看得出平常四隻腳走路的樣子。所以研究者把這一串讀成一次降落。",
+      "wav_sha256": "e5ca284904022871429684c48aab814e5bcdc81f30e6b92586dfffc7b46fd53a",
+      "rate_hz": 22050,
+      "frames": 748780,
+      "seconds": 33.958,
+      "rms_pcm16": 2322.7
+    }
+  ],
+  "body_budget_seconds": 38,
+  "continuous_seconds": 33.958,
+  "seconds_for_looking": 4.042,
+  "limits": "單一系統聲音的長度實測；留給看圖的秒數仍是預算，未做人聲聽眾試映、最終配音或剪輯。",
+  "production_ready": false
+}

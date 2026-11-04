@@ -1,0 +1,24 @@
+{
+  "tested_on": "2026-11-01",
+  "result": "PASS",
+  "index_html_sha256": "b5ec7c94782deae3c9dfce10566471dd84fdefce1bf1d07259efe4c0fb108ad7",
+  "checks": [
+    "2328 selected, pagination 50 to 100",
+    "alias N098/E2039/D2130 resolves to L097/E2038/P042 with source locators",
+    "G37 filter count equals theme definition",
+    "new I3073 corrected title, segment time, payoff and visual render",
+    "new and historical aliases retain core/source access",
+    "390x844 mobile no horizontal overflow",
+    "1440x1000 desktop",
+    "four local document targets exist",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave3-desktop.png",
+    "wave3-source-desktop.png",
+    "wave3-mobile.png"
+  ],
+  "visual_inspection": "PASS: root inspected all three final screenshots after the theme-text rebuild; desktop and mobile layout readable, no overflow.",
+  "initial_attempt": "Initial QA wrongly assumed the L042 keyword could match only one card; V3078 also refers to L042 in scope. Final QA checks the expected canonical card and provenance. No application change.",
+  "final_rerun": "Reran browser assertions and re-inspected screenshots after final G29/G32 wording corrections changed embedded theme data and HTML hash."
+}
