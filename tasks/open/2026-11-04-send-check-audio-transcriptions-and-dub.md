@@ -1,14 +1,14 @@
 ---
 id: 2026-11-04-send-check-audio-transcriptions-and-dub
 title: Send check-audio transcriptions and dub syntheses concurrently
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-tech-signal
+claimed_at: 2026-11-04T15:06:08Z
 created_at: 2026-11-04T12:30:00Z
 completed_at:
-branch:
+branch: claude/dazzling-wright-pqolfx
 depends_on: []
 scope:
   - tools/video/tts/check.mjs
@@ -61,3 +61,5 @@ The owner approved (2026-11-04) sending several at once to cut this to about 3 h
   `2026-10-13-dub-narrator-only-explainer-dramas-tool` (review, claimed 10-13),
   `2026-10-16-bind-story-audits-and-narration-to` (in-progress, claimed 10-17),
   `2026-10-19-worker-video-languages-five` (review, claimed 10-20). Check whether they are stale before claiming.
+- 2026-11-04: the owner approved claiming over those three stale overlaps (「准許強制認領」). This task changes only how
+  requests are sent in check.mjs and dubs/cli.mjs, on branch claude/dazzling-wright-pqolfx; it touches none of their branches.
