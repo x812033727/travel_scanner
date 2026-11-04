@@ -27,20 +27,20 @@ scope:
 
 ## Definition of done
 
-- [ ] 站主確認對話版形式（角色、分工、`cute-cartoon` 或 `cute-mystery`、Tech Signal 的理解）。
-- [ ] P02 一集成片交給站主看（`review-push --gate final`），附實際花費與試做量到的問題。
+- [x] 站主確認對話版形式（角色、分工、`cute-cartoon` 或 `cute-mystery`、Tech Signal 的理解）。
+- [x] P02 一集成片交給站主看（`review-push --gate final`），附實際花費與試做量到的問題。
 - [ ] 試做結論寫回企劃頁：要不要量產、主機路線要改什麼（`explainer-series.mjs` 目前固定 `characters: []`）。
 
 ## Steps
 
-- [ ] 站主確認企劃頁 §1–§3。
-- [ ] 小問的聲音試聽，站主選一個。
-- [ ] 撰稿 `docs/videos/sothatswhy-p02-cloud-rain/video.json`（`format: "drama"`、兩個角色、`speaker`、`loops` ≥ 11、`CURIO_MUSIC`、`subtitles.burn_in: true`）。
-- [ ] 另一個代理逐主張查核（企劃頁 §7）→ 盲評 `narrative` → `lint` 0 錯誤 → `script.md` 給站主。
-- [ ] 角色設定圖（每角色 3 張）→ 站主選。
-- [ ] 旁白兩個聲音 → `check-audio` → 站主聽。
-- [ ] 整集插圖一次報價、一次授權 → `keyframes --takes 3` → 分鏡給站主。
-- [ ] `branding --pull --series sothatswhy`、片頭 `intro_at: "start"` → 配樂 → 合成 → 品管 → 成片給站主。
+- [x] 站主確認企劃頁 §1–§3。
+- [x] 小問的聲音試聽，站主選一個（Leda）。
+- [x] 撰稿 `docs/videos/sothatswhy-p02-cloud-rain/video.json`（`format: "drama"`、兩個角色、`speaker`、`loops` ≥ 11、`CURIO_MUSIC`、`subtitles.burn_in: true`）。
+- [x] 另一個代理逐主張查核（企劃頁 §7）→ 盲評 `narrative` → `lint` 0 錯誤 → `script.md` 給站主。
+- [x] 角色設定圖（每角色 3 張）→ 站主選。
+- [x] 旁白兩個聲音 → `check-audio` → 站主聽。
+- [x] 整集插圖一次報價、一次授權 → `keyframes --takes 3` → 分鏡給站主。
+- [x] `branding --pull --series sothatswhy`、片頭 `intro_at: "start"` → 配樂 → 合成 → 品管 → 成片給站主。
 
 ## How to verify
 
@@ -51,3 +51,5 @@ scope:
 
 - 2026-11-03：只做了企劃，沒有付任何費用。repo 裡找不到「Tech Signal」的資料，企劃照「一個大人講解、一個小孩代替觀眾發問」理解，等站主確認。
 - MiniMax `image-01` 讀不懂多人互動，兩個角色一律正反打不同框；小問兼任內容插圖裡那「一個人」。
+
+- 2026-11-04：成片完成並由站主核准，上架包已做（zh-TW）。全過程、花費 US$7.05 與教訓在 `docs/videos/sothatswhy-p02-cloud-rain/NOTES.md`；四輪分鏡獨立評分 31→36→40→38、成片評分 32/60 的紀錄在同目錄 `review/`。剩：上架、外語、上架後 7／28 天數據，以及「試做結論寫回企劃頁」。
