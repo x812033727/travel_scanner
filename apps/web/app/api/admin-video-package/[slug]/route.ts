@@ -8,6 +8,10 @@ import { forwardedClientHeaders } from "@/lib/client-address";
  * this route passes the bytes through, since the generic /api/travel proxy reads a response as
  * text and caps it at 10 MiB. The zip is built as it streams, so there are no byte ranges. The
  * API checks content.manage and names the archive in Content-Disposition.
+ *
+ * With `check=1` the route asks the API's `/package` instead and answers its JSON: whether the zip
+ * can be made, and each file it would miss with why. The page asks this first, because a download
+ * that fails at its first byte only shows the browser's "failed" (2026-11-04, daily-ai-20261103).
  */
 type Context = { params: Promise<{ slug: string }> };
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$/;
@@ -34,12 +38,13 @@ export async function GET(request: NextRequest, context: Context) {
   });
   for (const [name, value] of Object.entries(forwardedClientHeaders(request.headers))) headers.set(name, value);
   const query = new URLSearchParams(entries.map((entry) => ["file", entry]));
+  const check = request.nextUrl.searchParams.get("check") === "1";
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
   let upstream: Response;
   try {
     const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
-    upstream = await fetch(`${base}/api/v1/admin/videos/${slug}/package.zip?${query}`, {
+    upstream = await fetch(`${base}/api/v1/admin/videos/${slug}/${check ? "package" : "package.zip"}?${query}`, {
       headers,
       cache: "no-store",
       redirect: "manual",
@@ -55,6 +60,11 @@ export async function GET(request: NextRequest, context: Context) {
   for (const name of PASSED_BACK) {
     const value = upstream.headers.get(name);
     if (value) out.set(name, value);
+  }
+  if (check && upstream.ok) {
+    const answer: unknown = await upstream.json().catch(() => null);
+    if (!answer || typeof answer !== "object") return problem(502, "upstream_unavailable");
+    return NextResponse.json(answer, { headers: { "Cache-Control": "private, no-store" } });
   }
   if (!upstream.ok) {
     await upstream.body?.cancel();
