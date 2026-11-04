@@ -303,8 +303,14 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
   tidy 照舊刪，現在主機保留。
 - **完整層級多備份這些**（刪了就只剩雲端）：逐句旁白 `audio/`、各語配音的逐句檔（雲端在 `dub-lines/<語言>/`）、翻譯工作表
   `i18n/`、`approvals.json`、`languages.json`。`segments/`、`build/`、`frames/`、審核預覽可以重算，不備份。
-- **審核區同一條規則**：`prune_published_previews` 對符合上面三樣的影片把審核區裡這支的**所有**檔案刪掉（`_done_with`），
-  不只 mp4，也不等 7 天；資料庫的審核紀錄保留。
+- **審核區同一條規則，但等 7 天**：`prune_published_previews` 對符合上面三樣的影片把審核區裡這支的**所有**檔案刪掉（`_done_with`），
+  不只 mp4；資料庫的審核紀錄保留。2026-11-04 起（站主，票 `2026-11-03-admin-upload-zip-fails-to-download`）要等三樣齊了之後
+  再過 `PREVIEW_RETENTION`（7 天）才刪：「齊了」的時間取備份核對時間（`backup.checked_at`）、語言決定時間、任何審核的決定時間、
+  站主設的公開時間裡最晚的一個（`_done_since`），備份紀錄沒有可讀的時間就不刪。原因：站主核准語言批次就算「配音已放上 Studio」，
+  但實際上是核准後才在 /admin/videos 按「全部下載」拿配音去上傳；daily-ai-20261103 在 11-03 23:05 備份完成、23:28 列表頁一開
+  就整支清掉，23:45 的四次 `package.zip` 都是 404 `video_review_file_not_found`，Chrome 只顯示「無法在網站上擷取檔案」。
+  頁面現在下載前先問 `GET /api/v1/admin/videos/<slug>/package`（Next 路由 `?check=1`），缺檔就列出哪個檔、為什麼（`gone`
+  不在審核區／`not_shown` 不屬於任何審核卡）與雲端資料夾，不把連結交給瀏覽器。worker 的 `video_work` 仍照 tidy 的規則立刻清。
 - 之後要補語言、重試配音、剪 Shorts：先從雲端還原（票 `2026-11-03-restore-a-purged-video-from-drive`）。
 - 放棄的影片照舊：放棄後 7 天刪大檔。
 - **刪除影片（站主在 /admin/videos 放棄後再刪除）**：網站刪掉資料庫列、審核區與素材區；worker 每輪讀備份設定時多拿到
