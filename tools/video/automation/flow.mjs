@@ -684,10 +684,11 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
-    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
-    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in (the owner,
-    // 2026-10-31, after trying both).
-    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
+    // 奇聞檔案局 (cute-mystery) burned its zh-TW subtitles in from 2026-10-25 (kept on 2026-10-31
+    // after trying both) to 2026-11-04, when the owner took it back so the en/ja/ko CC and dubs do
+    // not fight a burned zh-TW line.
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
     // slug unless the writer named one, and the owner's licensed music file and sound-effect set
