@@ -9,7 +9,8 @@ plan.json: {"music": path, "music_start": s, "music_gain_db": -14, "shots": [
 Optional per shot: "hold": s (freeze the last frame that long; part of the shot's length),
 "reverse": true, "push": [z0, z1] (slow zoom from z0 to z1 over the shot) with "anchor": [x, y]
 (0..1 point the zoom closes in on), "lights_out": [s, ...] (each step darkens; black 0.4 s after
-the last), "music_off": true (music silent during the shot), "keep_cuts": true.
+the last), "music_off": true (music silent during the shot), "box": [x, y, w, h, at] (0..1 of the frame: a
+near-black patch from `at` seconds, e.g. a screen that goes dead), "keep_cuts": true.
 A missing clip (or "clip": "black") is a black card.
 """
 import json
@@ -59,6 +60,9 @@ def main():
             vf += f",eq=brightness=-0.2:contrast=0.8:saturation=0.7:enable='gte(t,{at})'"
         if shot.get("lights_out"):
             vf += f",drawbox=c=black:t=fill:enable='gte(t,{shot['lights_out'][-1] + 0.4})'"
+        if shot.get("box"):
+            bx, by, bw, bh, bat = shot["box"]
+            vf += f",drawbox=x={int(bx * W)}:y={int(by * H)}:w={int(bw * W)}:h={int(bh * H)}:c=0x0b0d10:t=fill:enable='gte(t,{bat})'"
         hold = shot.get("hold", 0)
         if hold:
             vf += f",tpad=stop_mode=clone:stop_duration={hold}"
