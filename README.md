@@ -6,6 +6,7 @@
   沒帶 `segments-v4/`：那是 `local/asm.sh` 重剪時會重建的中間檔，其中 joined.mkv 超過 GitHub 的 100 MB 上限。
 - `eNNN/review/`：`zhong-tian-qu-qi-eNNN/review/`。
 - `eNNN/import/`：送 /admin/videos 的資料夾（final.mp4、meta.json、字幕、八語配音與標題說明）。
+- `eNNN/edit-dh-eNNN.json`：剪接設定（配樂段落、音效、標題卡；repo 主線的原檔在 `docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/`）。
 - `sfx/`：`_series/zhong-tian-qu-qi/sfx/` 音效庫（剪接用）。
 - 定妝照與場景圖在另一條分支 `transfer/zt-e033-refs` 的 `refs-dh/`。
 
