@@ -29,9 +29,9 @@ scope:
 
 ## Steps
 
-- [ ] 錄台詞、剪接表
-- [ ] 第一段（chain；通判 `tongpan`、知府夫人 `zhifufuren` 由 `extras.json` 接定妝照）、審、重抽
-- [ ] 第二、三段、剪接、匯入
+- [x] 錄台詞、剪接表
+- [x] 第一段（chain；通判 `tongpan`、知府夫人 `zhifufuren` 由 `extras.json` 接定妝照）、審、重抽
+- [x] 第二、三段、剪接（94.9 秒、無凍格）、匯入（2026-11-04）
 
 ## How to verify
 
