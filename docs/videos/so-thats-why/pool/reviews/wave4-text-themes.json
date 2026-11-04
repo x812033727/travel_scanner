@@ -1,0 +1,157 @@
+{
+  "status": "AUTHOR_THEME_PROPOSALS",
+  "episodes": [
+    {
+      "id": "W4U-T01",
+      "title": "字看起來變了，內容也一定變了嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "待獨立企劃覆核",
+      "core_question": "一串文字的字形變化，哪些來自顯示，哪些來自字碼序列？",
+      "connection": "用同一張文字實驗桌，底層字碼卡與上層呈現始終並排。先固定內容只換排版，再固定基底符號加入選擇符，逐次只改一個條件。",
+      "target_minutes": 3.6666666666666665,
+      "range_minutes": [
+        3,
+        4.5
+      ],
+      "body_seconds": 220,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "U4014",
+        "U4001",
+        "U4008",
+        "U4009"
+      ],
+      "chapters": [
+        {
+          "title": "保持內容，只切連字",
+          "seconds": 55,
+          "candidate_ids": [
+            "U4014"
+          ],
+          "new_information": "先猜f+i是否消失，切換連字後揭開底層序列未變；猜題與解答共55秒，不另加開場。",
+          "cut_if": "若字型無該連字，換可驗證且有授權字型，不以截圖冒稱實測。",
+          "beats_seconds": [
+            25,
+            30
+          ]
+        },
+        {
+          "title": "同一行怎麼混進另一個字型",
+          "seconds": 50,
+          "candidate_ids": [
+            "U4001"
+          ],
+          "new_information": "找不到字形時回退；先展示缺字再展示回退來源，每步25秒。",
+          "cut_if": "沒有可靠字型覆蓋對照就刪50秒，縮至170秒並重定工作範圍2至3分鐘。",
+          "beats_seconds": [
+            25,
+            25
+          ]
+        },
+        {
+          "title": "同一串表情為什麼拆開",
+          "seconds": 60,
+          "candidate_ids": [
+            "U4008"
+          ],
+          "new_information": "組合字形是否支援與字碼是否傳到分開，先對照合成再展示原序列。",
+          "cut_if": "不能拿不同序列的兩張圖假裝同一序列。",
+          "beats_seconds": [
+            30,
+            30
+          ]
+        },
+        {
+          "title": "這次真的多了一個呈現要求",
+          "seconds": 55,
+          "candidate_ids": [
+            "U4009"
+          ],
+          "new_information": "VS15/VS16是序列中的呈現要求；最後讓觀眾回查底層序列與支援條件，回收問題含在55秒內。",
+          "cut_if": "只有兩個字型外觀差異時，不能當選擇符生效證據。",
+          "beats_seconds": [
+            25,
+            30
+          ]
+        }
+      ],
+      "boredom_risk": "若只輪播漂亮字型，會像樣式展示。每段要在變化前讓觀眾猜底層有無改變。",
+      "drop_if": "若後兩段還需大量前置術語，改成只保留連字/回退的短示範，重做總長，不補字碼歷史。",
+      "evidence_gaps": "目前只有來源和示範設計，尚未做這組字型/表情對照，也未試讀；字型授權與不同支援環境須實證。",
+      "timing_basis": "開場/回收均含在各機制章；合計與每個素材秒數上限交叉檢查。尚未完整旁白試讀。"
+    },
+    {
+      "id": "W4U-T02",
+      "title": "改成大寫，再改回來，為什麼不是原來那句？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "待獨立企劃覆核",
+      "core_question": "大小寫轉換為什麼不只是把同一字換個外觀？",
+      "connection": "從一個轉換/返回的實驗逐次揭露一對多、語言條件與同形不同字符；不離開同一張字卡桌。",
+      "target_minutes": 2.8333333333333335,
+      "range_minutes": [
+        2.5,
+        3.5
+      ],
+      "body_seconds": 170,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "U4006",
+        "U4007",
+        "U4012"
+      ],
+      "chapters": [
+        {
+          "title": "把轉換想成可以返回的開關",
+          "seconds": 25,
+          "candidate_ids": [
+            "U4006"
+          ],
+          "new_information": "先讓觀眾預測回到小寫能否還原原文。",
+          "cut_if": "不要先公布所有例外。"
+        },
+        {
+          "title": "一張卡變兩張，回頭找不到唯一原文",
+          "seconds": 30,
+          "candidate_ids": [
+            "U4006"
+          ],
+          "new_information": "揭露ß可映射SS、回到ss不能唯一還原；和前章預測共55秒，不另加總結。",
+          "cut_if": "若ß例子所用系統有特化規則，明標預設Unicode映射與軟體結果差異。"
+        },
+        {
+          "title": "同一字母，換語言後配對改了",
+          "seconds": 60,
+          "candidate_ids": [
+            "U4007"
+          ],
+          "new_information": "兩條語言管線先同輸入，後比較帶點/無點輸出；不是字型多畫一點。",
+          "cut_if": "無法明確鎖定locale就刪此章，整體縮短。",
+          "beats_seconds": [
+            30,
+            30
+          ]
+        },
+        {
+          "title": "看起來一樣，連小寫也未必一樣",
+          "seconds": 55,
+          "candidate_ids": [
+            "U4012"
+          ],
+          "new_information": "先揭露同形字的文字身分，再比較小寫對應；回收不可依外觀合併內容的結論，含在55秒內。",
+          "cut_if": "不加入釣魚網站情境或域名清單。",
+          "beats_seconds": [
+            25,
+            30
+          ]
+        }
+      ],
+      "boredom_risk": "如果每段只是多報一個特殊字母，會變成例外背誦。每段必須分別改變映射數量、語言條件、文字身分三個不同條件。",
+      "drop_if": "第三個條件缺乏可見反差就刪55秒，改110秒示範並重定工作範圍1.5至2.5分鐘；不補例外湊長。",
+      "evidence_gaps": "大小寫/語言差異/同形字已在Node24.19、ICU78.3、Unicode17單次執行，輸出見wave4-text-probes.json；與來源標準18版本分開記，不概括所有軟體。尚未做字型畫面與完整旁白試讀。",
+      "local_probe_receipt": "reviews/wave4-text-probes.json",
+      "timing_basis": "開場/回收均含在各機制章；合計與每個素材秒數上限交叉檢查。尚未完整旁白試讀。"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T16:27:44.938Z",
+  "result": "PASS",
+  "selected": 3250,
+  "index_html_sha256": "35347d24e75fbd59d0488e76bf1a1ae34f0f511d058ebad51d344c2b3a3c25ae",
+  "source_sample": {
+    "id": "R39002",
+    "urls": [
+      "https://doi.org/10.1073/pnas.2512779122"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave39-desktop.png",
+    "wave39-source-desktop.png",
+    "wave39-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "桌面與390像素手機顯示3250個入選、387案、2835個來源和152個別名。來源面板展開的是本輪R39002。手機統計卡分兩欄，標題正常換行。"
+}

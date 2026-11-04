@@ -1,0 +1,427 @@
+{
+  "batch_id": "wave16-wave-sensing-20261102",
+  "created_on": "2026-11-02",
+  "scope": "六個聲波/相位與非光學量測的控制問題；題級來源支持候選，不是完整稿/試讀/製作核准。原理示意不給醫療判讀或設備操作。",
+  "sources": [
+    {
+      "id": "W16-S001",
+      "url": "https://ece-classes.usc.edu/ee591/library/Hahn-SpinEchoes.pdf",
+      "title": "Spin Echoes",
+      "publisher": "E. L. Hahn / Physical Review；USC課程庫的原論文掃描副本",
+      "accessed_on": "2026-11-02",
+      "version": "1950-11-15；Physical Review 80:580–594；DOI 10.1103/PhysRev.80.580",
+      "read_via": "web查原論文身分；指定UA下載USC副本HTTP200。PDF無文字層，實際渲染並目讀PDF p1–4（印刷580–583）。",
+      "reading_scope": "只讀PDF p1–4：Introduction、II(B) Nuclear Induction Due to Free Larmor Precession、III(A) Moving Coordinate Representation及III(B) Simple Vector Model of the Spin Echo、Fig1。22頁載體其餘頁未讀。",
+      "locator": "PDF p2–4 / II(B)、III(A–B)、Fig1；印刷581–583",
+      "summary": "不同進動頻率使總感應訊號衰減，脈衝後仍保存的相位關係可形成回波；靜態不均勻造成的散相須與弛豫分開。",
+      "limitations": "Hahn此處Fig1示兩個90度脈衝的原始模型，不拿它當90–180序列圖；本批180度示意另依W16-S002。核自旋不畫成真的自轉小球，未重核全篇早期量值。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W16-S002",
+      "url": "https://mriquestions.com/uploads/3/4/5/7/34572113/stejskal_and_tanner1965.pdf",
+      "title": "Spin Diffusion Measurements: Spin Echoes in the Presence of a Time-Dependent Field Gradient",
+      "publisher": "E. O. Stejskal、J. E. Tanner / Journal of Chemical Physics；教育網站留存的出版者PDF副本",
+      "accessed_on": "2026-11-02",
+      "version": "1965；J. Chem. Phys. 42:288–292；DOI 10.1063/1.1695690",
+      "read_via": "web查題名與文獻；指定UA HTTP200下載第三方教育副本，PyMuPDF讀原文指定頁；PDF p4渲染目讀。",
+      "reading_scope": "PDF p2原研究標題以下Introduction；p3–4 Theory及Eq4–6後的短梯度脈衝解釋；p5–6 Experimental。p1為後附出版資訊；p2上半另篇結尾不採。",
+      "locator": "PDF p3–4 Theory：90/180脈衝、Eq4–6及p4右欄短梯度段；p5–6 Experimental",
+      "summary": "梯度先將位置編入相位，反轉後的第二段梯度只能精確抵消相同位置的編碼；擴散造成未完全重聚，可用固定回波時間下的梯度變化量測。",
+      "limitations": "自由擴散與指定脈衝/近似條件；短脈衝位置圖只是解釋極限，有限脈寬有修正。不是逐分子軌跡，也不延伸醫療判讀。正文明說Eq7未實驗測試，本批不採。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W16-S003",
+      "url": "https://arxiv.org/pdf/1609.01539v1",
+      "title": "Time reversal of ultrasound in granular media",
+      "publisher": "Maxime Harazi、Yougu Yang、Mathias Fink、Arnaud Tourin、Xiaoping Jia / arXiv作者稿",
+      "accessed_on": "2026-11-02",
+      "version": "arXiv:1609.01539v1，2016-09-06；同工作相關期刊DOI 10.1140/epjst/e2016-60259-1",
+      "read_via": "web讀arXiv身分頁；指定UA HTTP200取v1 PDF，PyMuPDF讀指定正文，PDF p5 Fig2渲染目讀。",
+      "reading_scope": "PDF p2 Introduction；p3實驗裝置；p4–5線性TR與coherent/coda、單一換能器對照；p5–7非線性TR與Fig3–4、前後弱探測相關；p8只讀模型設定，後續數值結果未採。",
+      "locator": "PDF p4–5 TR in the linear regime / Fig2；p5–7 TR in the nonlinear regime / Figs3–4",
+      "summary": "記錄並倒序重放散射尾波可沿多條路徑重聚；散射帶來有效孔徑，但聲激發改變接觸網絡時重聚保真度下降。",
+      "limitations": "限受壓玻璃珠堆及指定陣列。接觸重排是相關量測與模型支持的解釋，不是直接拍見每顆珠移動。coda與直達波比較另有頻率差，正文單換能器控制才支持散射的額外作用；不宣稱突破任意波長限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W16-S004",
+      "url": "https://arxiv.org/pdf/1510.01277v1",
+      "title": "Revisiting time reversal and holography with spacetime transformations",
+      "publisher": "Vincent Bacot、Matthieu Labousse、Antonin Eddi、Mathias Fink、Emmanuel Fort / arXiv作者稿",
+      "accessed_on": "2026-11-02",
+      "version": "arXiv:1510.01277v1，2015-10-01；同工作相關正式版DOI 10.1038/nphys3810",
+      "read_via": "web讀arXiv身分頁；指定UA HTTP200取v1 PDF；PyMuPDF讀指定正文；PDF p7 Fig2渲染目讀。",
+      "reading_scope": "PDF p3–6時間邊界與Cauchy初值；p7–12水波實驗、Figs2–4圖說與正文；p13–17時間邊界理論、導數/頻寬及能量由擾動注入的限制。未讀Supplementary Methods或看Videos。",
+      "locator": "PDF p7–10 / Fig2與Fig3；p12、p15–16 / Eq1–2後分解與時間邊界能量說明",
+      "summary": "短暫改變水面波的傳播條件會在原前行波之外生成反向分量；資訊仍在整個波場，不必先由天線記錄再重放。",
+      "limitations": "水槽實驗與理論須分開。瞬時極限生成的是原波時間導數的反向分量，近窄頻才可近似原波形；非全系統倒流，仍有前行波，外部擾動供能。只做原理示意，不給高加速度設備操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W16-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4627579/",
+      "title": "Holographic acoustic elements for manipulation of levitated objects",
+      "publisher": "Asier Marzo、Sue Ann Seah、Bruce W. Drinkwater、Deepak Ranjan Sahoo、Benjamin Long、Sriram Subramanian / Nature Communications",
+      "accessed_on": "2026-11-02",
+      "version": "2015-10-27；Nature Communications 6:8661；DOI 10.1038/ncomms9661",
+      "read_via": "web取得原研究正文資訊；指定UA HTTP200取EuropePMC同文fullTextXML，lxml逐段讀。Nature圖頁重導失敗、EuropePMC原圖403；未宣稱目讀原圖。",
+      "reading_scope": "Introduction；Results / Universal optimizer、Optimal single-beam acoustic traps、Holographic acoustic elements framework；Methods / Characterizing a Levitation Point、Objective function；相關Fig2–7圖說。公式影像未逐式驗算，未看補充圖/影片。",
+      "locator": "Results / Universal optimizer；Methods / Characterizing a Levitation Point、Objective function",
+      "summary": "單純強聲壓焦點未必能穩定留住小粒子；研究同時安排回復力與低聲壓中心，讓各方向的小偏移受到拉回。",
+      "limitations": "限空氣中的研究小球與輻射力模型，材料相對媒質的性質重要。低聲壓本身不充分；不能把聲壓零點直接等同穩定陷阱，也不把模型拉普拉斯目標說成任意場的穩定性保證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "W16-S006",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5579027/",
+      "title": "A hybrid resistive pulse-optical detection platform for microfluidic experiments",
+      "publisher": "Preston Hinkle、Trisha M. Westerhof、Yinghua Qiu、David J. Mallin、Matthew L. Wallace、Edward L. Nelson、Peter Taborek、Zuzanna S. Siwy / Scientific Reports",
+      "accessed_on": "2026-11-02",
+      "version": "2017-08-31；Scientific Reports 7:10173；DOI 10.1038/s41598-017-10000-1",
+      "read_via": "web查原研究；指定UA HTTP200取EuropePMC同文fullTextXML，lxml讀指定段。Nature頁重導不可取、EuropePMC原圖403；沒有目讀原圖。",
+      "reading_scope": "Introduction；Results / Position of maximum RP amplitude in the channel、Dependence of resistive-pulse amplitude on lateral displacement；Channels with cavities及兩個子節；Conclusions；Methods / Microfluidic channel and particle preparation、Experimental hardware、Data analysis and software。只讀文字/圖說，未逐式驗算或執行原軟體。",
+      "locator": "Results / Dependence of resistive-pulse amplitude on lateral displacement、Fig7圖說；Conclusions的電場邊界與奈米限制",
+      "summary": "同尺寸微球造成的電流脈衝仍隨橫向位置而變；同步影像可把路徑與電訊號配對，顯示不能只用峰高當粒徑。",
+      "limitations": "10微米不變形聚苯乙烯球及指定矩形通道；側向位置效應源於電場邊界，垂直自由度受限但非完全零。腔室反轉結果僅作範圍限制，其原因在文中是作者提出解釋，不另立確定機制；奈米另有表面導電/電滲/電泳，不能直接照搬。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "W16001",
+      "question": "核磁訊號明明已變弱，為什麼再打一個脈衝又能出現回波？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.spin_echo.static_dephasing_refocusing_without_reversing_frequencies",
+      "answer_target": "靜態磁場不均讓各群磁矩以不同頻率散相，總和變小但不等於各分量消失；適當反轉相位排列後，頻率差持續作用可使它們再對齊，真正弛豫造成的損失不會因此全部恢復。",
+      "scope": "液體NMR的理想90–180示意以W16-S002為據；Hahn原Fig1兩90脈衝不可畫成同序列。假設頻率差在兩段期間穩定，忽略耦合等細節；只翻轉相位排列，不是使核停止或反向自轉。",
+      "source_ids": [
+        "W16-S001",
+        "W16-S002"
+      ],
+      "source_locator": "S001 PDF p2–4 II(B)、III(A–B)；S002 PDF p3 Theory與p4短脈衝解釋",
+      "premise_status": "screened",
+      "notes": "核種、化學位移與分裂不另複述；不把回波說成能量憑空恢復或醫療影像自動修復。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "消失的可能是彼此抵消後的總和；重新對齊只能找回仍保存的相位資訊。",
+        "visual": "旋轉座標中的三組相位箭頭先張開、再翻轉排列而維持各自頻率差，於同一時刻靠攏；旁邊總和曲線與弛豫衰減包絡分開。箭頭是磁矩示意，不是小球自轉。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "W16002",
+      "question": "同樣做核磁回波，為什麼分子移動會讓訊號回不齊？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.pulsed_gradient_diffusion.position_phase_encoding_incomplete_refocus",
+      "answer_target": "第一段梯度把位置編進相位；反轉與第二段梯度能抵消未移動粒子的編碼，但擴散後所處位置不同會留下相位差，使總回波變弱。固定回波時間而改梯度，可把移動造成的額外衰減與共同弛豫背景分開比較。",
+      "scope": "限Stejskal–Tanner指定自由擴散模型/液體實驗；圖用短梯度脈衝近似，有限脈寬有修正。不是觀察每顆分子的連續路徑，也不是將訊號弱一概判成擴散更快。",
+      "source_ids": [
+        "W16-S002"
+      ],
+      "source_locator": "S002 PDF p3–4 Theory / Eq4–6、p4右欄；p5–6 Experimental",
+      "premise_status": "screened",
+      "notes": "與W16001共享回波背景，新增控制是空間編碼及位移後不可精確抵消；不另拆梯度強度、間隔、分子名稱。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "脈衝沒有把分子搬回原位；正是沒有回齊的部分，變成移動的量測線索。",
+        "visual": "相同初位置分成留原位/移位兩條示意；兩段位置色碼前後抵消或留差。再固定總時間，只改梯度標籤強度，分開共同衰減與額外衰減。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "W16003",
+      "question": "雜亂回聲倒放，為什麼反而能重新聚到聲源附近？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "acoustics.time_reversal.multipath_coda_virtual_aperture_and_path_stability",
+      "answer_target": "將各接收訊號倒序重播，在近線性且路徑未變的介質中，各散射路徑的時序可在原聲源附近重新對齊；多重散射提供額外方向資訊與有效孔徑，但接觸網絡改變後，先前記錄便不再匹配。",
+      "scope": "受壓玻璃珠堆與文中陣列/單換能器控制；不是任意雜訊可還原原聲。聲激發改變接觸路徑的解釋來自前後相關與模型支持，不宣稱逐顆珠子被直接拍見移動。",
+      "source_ids": [
+        "W16-S003"
+      ],
+      "source_locator": "S003 PDF p3–7 / linear TR、single-transducer control、nonlinear TR、Figs2–4",
+      "premise_status": "screened",
+      "notes": "散射孔徑、回波聚焦與路徑改變合為同一核心；不按珠徑/聲量/頻率再拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "尾音藏著多條路徑，不只是應被丟掉的噪音；可利用的前提是路徑仍相同。",
+        "visual": "三條長短不同路徑標記到達時序，倒序發出後在原點同時到達；另將一個接觸點改動，原記錄不再同時到達。以單接收器對照避免把高頻差全算成散射效益。",
+        "seconds": [
+          95,
+          135
+        ]
+      }
+    },
+    {
+      "id": "W16004",
+      "question": "沒有錄下水波再倒放，為什麼波紋也能重新向原處聚攏？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "waves.instantaneous_time_mirror.temporal_medium_jump_backward_component",
+      "answer_target": "波場仍保存分布的資訊；短暫改變整槽水波的傳播條件會改寫時間邊界的初值，在原前行波之外生成反向傳播分量，因而可回聚。它不是靠一面空間牆壁反射，也沒有把整個系統倒轉。",
+      "scope": "限研究重力–毛細水波與短促有效重力變化；瞬時理論的新增反向場對應原波時間導數，近窄頻才近似原波形。前行波繼續存在、擾動供能；不給設備操作數值或聲稱完整無損逆轉。",
+      "source_ids": [
+        "W16-S004"
+      ],
+      "source_locator": "S004 PDF p7–12 Figs2–4及正文；p15–16導數近似、能量與前後行分解",
+      "premise_status": "screened",
+      "notes": "與W16003對照的是記錄後重播與全介質時間改變兩種控制；不以另換水、聲、電磁波名稱增加核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "需要改變的不一定是訊號播放順序，也可以是整個介質在某一時刻的條件。",
+        "visual": "同一水面外行波先不碰任何牆；整幅時間條在同一瞬間變色，之後保留外行波並新增內行波。旁框用帶寬/相位差說明不是逐點完美倒帶。",
+        "seconds": [
+          90,
+          130
+        ]
+      }
+    },
+    {
+      "id": "W16005",
+      "question": "用聲波托住小球，為什麼不能只把聲音集中得更強？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "acoustics.levitation.low_pressure_center_with_restoring_force_design",
+      "answer_target": "強聲壓焦點與穩定陷阱不是同一目標；粒子偏離後的聲輻射力方向也必須能拉回。研究對小球模型同時設計低聲壓中心及各方向回復力，讓粒子能留在指定位置，而非只最大化焦點聲壓。",
+      "scope": "限文中的空氣、小球與陣列模型。低壓點不自動穩定，須看周圍壓力/速度梯度和粒子材料；不推成所有物體在聲壓節都可懸浮，也不等同超音波指腹的擠壓空氣膜。",
+      "source_ids": [
+        "W16-S005"
+      ],
+      "source_locator": "S005 Results / Universal optimizer；Methods / Characterizing a Levitation Point、Objective function",
+      "premise_status": "screened",
+      "notes": "twin/vortex/bottle只是同一優化問題的方案，不拆三題；未看原影片/補充圖，不能聲稱本機實物可懸浮。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "被推到某處和稍微偏離後還會回來，是兩個不同的設計條件。",
+        "visual": "相同目標位置，先只畫強焦點，再在周圍三方向放小偏移測試箭頭；穩定組中心聲壓較低，回復力箭頭向內。只用原創剖面，不複製研究聲場圖。",
+        "seconds": [
+          90,
+          135
+        ]
+      }
+    },
+    {
+      "id": "W16006",
+      "question": "同尺寸微球通過小孔，為什麼電流脈衝看起來像不同大小？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.resistive_pulse.off_axis_electric_field_distortion_size_ambiguity",
+      "answer_target": "微球排開導電液體會改變電流，但脈衝幅度還受粒子與通道表面的電場邊界影響。直通道中的偏軸路徑可產生較大阻塞訊號；同步拍到位置才能將這個效應與粒徑差分開，不能只用峰高排序大小。",
+      "scope": "限定研究10微米不變形聚苯乙烯球、矩形直通道與指定液體；尺寸相同是同一名義尺寸樣本，不假設每粒絕無公差。腔室的偏軸趨勢可反轉，不能把側邊訊號較大泛化所有孔形；奈米還有新增表面效應。",
+      "source_ids": [
+        "W16-S006"
+      ],
+      "source_locator": "S006 Results / Dependence of resistive-pulse amplitude on lateral displacement與Fig7圖說；Conclusions",
+      "premise_status": "screened",
+      "notes": "單純孔截面變小令電阻增加是舊E2063背景；新核限定離軸電場邊界與同步定位控制。不收腔室反轉為另一確定核心，其詳細成因仍待研究。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "訊號很精確仍可能混進另一個變因；同時看路徑才知道峰高多出來的部分是甚麼。",
+        "visual": "同尺寸球走中央/側邊，導電路徑和原創電流凹脈衝並排；加上同步影像位置標記才分組。曲線只畫方向性差異，不偽裝原實測數值。",
+        "seconds": [
+          90,
+          140
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "W16-NA01",
+      "question": "海底回音怎麼變成距離？",
+      "related_ids": [
+        "N209"
+      ],
+      "source_ids": [],
+      "reason": "既有往返時間測深核心，不換超音波儀器再收。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA02",
+      "question": "超音波找小缺陷，只要開大聲就更清楚？",
+      "related_ids": [
+        "P313"
+      ],
+      "source_ids": [],
+      "reason": "舊題已含波長/聲束限制；本批TR須有倒序重放與固定路徑控制，不能以此一般說法另收。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA03",
+      "question": "聲波在不同材料交界為什麼反射？",
+      "related_ids": [
+        "P312"
+      ],
+      "source_ids": [],
+      "reason": "舊聲阻抗界面原理；水波時間邊界才是不同控制，普通空間界面不重收。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA04",
+      "question": "聲音取樣太慢產生假頻率？",
+      "related_ids": [
+        "E2199"
+      ],
+      "source_ids": [],
+      "reason": "舊raw及歷史同問未收均已有混疊，不換聲卡。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA05",
+      "question": "核磁氫峰為何有不同位置或裂成多峰？",
+      "related_ids": [
+        "H3071",
+        "H3074"
+      ],
+      "source_ids": [],
+      "reason": "化學屏蔽和耦合已收；此次只取可逆散相與位移編碼。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA06",
+      "question": "碳12和碳13的核磁訊號不同？",
+      "related_ids": [
+        "H3070"
+      ],
+      "source_ids": [],
+      "reason": "同位素自旋選擇性已收，不改題名重算。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA07",
+      "question": "分子切換太快，NMR只看見平均？",
+      "related_ids": [
+        "H3072"
+      ],
+      "source_ids": [],
+      "reason": "既有交換速率相對頻差的平均化，非本批回波控制。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA08",
+      "question": "空氣管子哪裡有聲壓節點？",
+      "related_ids": [
+        "P130"
+      ],
+      "source_ids": [],
+      "reason": "駐波節腹已有；低壓點不等於穩定陷阱，本批不能只補懸浮物件。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA09",
+      "question": "麥克風讀得很大聲代表能量流很強？",
+      "related_ids": [
+        "D9013"
+      ],
+      "source_ids": [],
+      "reason": "聲壓與淨聲強已有兩點量測題，不換探頭再立核心。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA10",
+      "question": "超音波玻璃使手指完全浮起來？",
+      "related_ids": [
+        "F14008"
+      ],
+      "source_ids": [],
+      "reason": "沿舊F14-NA14拒絕全懸浮前提；本批自由小球輻射力不是指腹擠壓膜。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA11",
+      "question": "反相兩個超音波脈衝如何留下非線性回音？",
+      "related_ids": [],
+      "source_ids": [],
+      "reason": "曾查原始Pulse inversion Doppler文獻10.1109/58.753026，但本輪僅讀PubMed摘要，未取得並讀原研究正文，不採成候選。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA12",
+      "question": "把散射波換成另一種珠子或另一種頻率各算一題？",
+      "related_ids": [
+        "W16003"
+      ],
+      "source_ids": [
+        "W16-S003"
+      ],
+      "reason": "仍為路徑記錄/倒序重放/穩定性同一因果鏈，合在同核控制。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA13",
+      "question": "聲學雙指、渦旋、瓶形陷阱各講一題？",
+      "related_ids": [
+        "W16005"
+      ],
+      "source_ids": [
+        "W16-S005"
+      ],
+      "reason": "三種場形是同一穩定捕捉設計的實例，拆名詞會灌量。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA14",
+      "question": "用聲陷阱轉動或平移小球再算另一核心？",
+      "related_ids": [
+        "W16005"
+      ],
+      "source_ids": [
+        "W16-S005"
+      ],
+      "reason": "相位編碼移動現有陷阱，本輪缺足以獨立改變答案的比較，作延伸不入新核。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA15",
+      "question": "腔室裡靠側邊的球，脈衝反而小，完整原因已知？",
+      "related_ids": [
+        "W16006"
+      ],
+      "source_ids": [
+        "W16-S006"
+      ],
+      "reason": "實驗趨勢已讀，但本文以we believe提出可達區域解釋，未完整解析；只作原核心適用範圍限制，不包裝確定新機制。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA16",
+      "question": "電流脈衝半高寬就是所有孔道的精準通過時間？",
+      "related_ids": [
+        "W16006"
+      ],
+      "source_ids": [
+        "W16-S006"
+      ],
+      "reason": "本文對指定微米直孔比較FWHM較接近入口/出口，不能泛化為通用定義；單一校準註記不另立題。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA17",
+      "question": "改變梯度間隔、強度、液體，各自新增NMR擴散題？",
+      "related_ids": [
+        "W16002"
+      ],
+      "source_ids": [
+        "W16-S002"
+      ],
+      "reason": "同一位置相位編碼與未完全重聚控制，不按參數拆核。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "W16-NA18",
+      "question": "時間鏡讓水中的能量與所有分子都倒退？",
+      "related_ids": [
+        "W16004"
+      ],
+      "source_ids": [
+        "W16-S004"
+      ],
+      "reason": "假前提；仍有前行波與外部能量輸入，反向場還有導數/帶寬限制。",
+      "status": "NOT_ADDED"
+    }
+  ]
+}

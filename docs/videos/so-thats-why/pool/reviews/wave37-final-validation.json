@@ -1,0 +1,579 @@
+{
+  "tested_on": "2026-11-02T13:40:13.569Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3579,
+    "canonical_questions": 3429,
+    "eligible_candidates": 3259,
+    "selected_candidates": 3200,
+    "alias_records": 150,
+    "historical_records": 313,
+    "source_urls": 4562,
+    "current_research_source_urls": 1603,
+    "selected_source_urls": 2782,
+    "new_suggestions_not_added": 1547,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 359,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3183",
+    "carried": 3183,
+    "added": 17,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "37a50701df836d38e744bc984042aa8f058a81b35ead0872fe42dd2647780ab2",
+    "writes": 7008,
+    "selected": 3200
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "37a50701df836d38e744bc984042aa8f058a81b35ead0872fe42dd2647780ab2",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "R37002",
+      "resolved": "Z7010"
+    },
+    {
+      "id": "R37003",
+      "resolved": "B2315"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4660,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 7586.045399999999,
+    "index_ms": 2903.8944999999985,
+    "unchanged_index_ms": 251.84709999999905,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 14,
+        "milliseconds": 12.814599999997881
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 3.681799999998475
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 4.476800000000367
+      }
+    ],
+    "rss_bytes": 444932096,
+    "sqlite_bytes": 58859520
+  },
+  "dedup_audit": {
+    "selection": "All reviewed merges, if any, in this wave. A wave with no merged proposals has no positive sample. No threshold tuning; not recall or precision.",
+    "judged": 2,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 2,
+    "pairs": [
+      {
+        "duplicate_id": "R37002",
+        "canonical_id": "Z7010",
+        "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。",
+        "lexical": null,
+        "semantic": {
+          "id": "Z7010",
+          "cosine": 0.815329
+        }
+      },
+      {
+        "duplicate_id": "R37003",
+        "canonical_id": "B2315",
+        "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。",
+        "lexical": null,
+        "semantic": {
+          "id": "B2315",
+          "cosine": 0.746034
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "6587009df02657cb13cca0dfc8e0a59afafebfefd2451a172257e3c66df481d5",
+    "records": 3579,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.776
+  },
+  "hashes": {
+    "pool.json": "6587009df02657cb13cca0dfc8e0a59afafebfefd2451a172257e3c66df481d5",
+    "themes.json": "18489fd959953eb09d47c325e2c6883567e8ba050edf0e5322e4f9c7bc991f17",
+    "manifest.json": "ce531786153a3d5add2ae9d6ecff3f15ddb4951e48cff67423e8538d02769af2",
+    "index.html": "231e2f6d1fa843a8a6e3e9e1e5ba98c0a3b6fa84e35f01881501df6cec2cc2ef",
+    "batches/wave37-bio.json": "d65d2424632559a86bb2044c9d65f8333ed79dd3bb5b1da785bca256d861fec4",
+    "batches/wave37-physics.json": "22ec7be2992db47cd86e77a880a8a6b822332b4e60ad03739f74ec7b8675beb3"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3560,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3183,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 349,
+    "changed_old_canonical_ids": [
+      "B2315",
+      "Z7010"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_production_treatments": 0,
+    "human_readthroughs": 0,
+    "offline_synthetic_timing_samples": 3,
+    "samples": [
+      {
+        "theme_id": "G350",
+        "continuous_seconds": 75.298,
+        "seconds_for_looking": 7.702
+      },
+      {
+        "theme_id": "G354",
+        "continuous_seconds": 50.534,
+        "seconds_for_looking": 5.466
+      },
+      {
+        "theme_id": "G359",
+        "continuous_seconds": 39.291,
+        "seconds_for_looking": 6.709
+      }
+    ],
+    "receipt": "reviews/wave37-timing.json"
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4540,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://doi.org/10.1098/rsbl.2012.0716",
+        "source_id": "SRC-8f5b070dd710d288",
+        "candidate_ids": [
+          "R37001"
+        ],
+        "theme_ids": [
+          "G350"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.1211667",
+        "source_id": "SRC-1e9143279df8337b",
+        "candidate_ids": [
+          "Z7010"
+        ],
+        "theme_ids": [
+          "G350"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/sciadv.aay6036",
+        "source_id": "SRC-24da4888fd2573ec",
+        "candidate_ids": [
+          "B2315"
+        ],
+        "theme_ids": [
+          "G350"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.cub.2015.03.033",
+        "source_id": "SRC-94ea1fa1e3ad77ad",
+        "candidate_ids": [
+          "R37004"
+        ],
+        "theme_ids": [
+          "G351"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.1245824",
+        "source_id": "SRC-e55e000574bf34eb",
+        "candidate_ids": [
+          "R37005"
+        ],
+        "theme_ids": [
+          "G351"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1242/jeb.247952",
+        "source_id": "SRC-fdfb8893ef071032",
+        "candidate_ids": [
+          "R37005"
+        ],
+        "theme_ids": [
+          "G351"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rspb.2013.2451",
+        "source_id": "SRC-e97b0807daef9d29",
+        "candidate_ids": [
+          "R37006"
+        ],
+        "theme_ids": [
+          "G352"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rspb.2022.1002",
+        "source_id": "SRC-817604ee60a0b9b5",
+        "candidate_ids": [
+          "R37006"
+        ],
+        "theme_ids": [
+          "G352"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rsbl.2004.0227",
+        "source_id": "SRC-a6c329af8e51bc29",
+        "candidate_ids": [
+          "R37007"
+        ],
+        "theme_ids": [
+          "G353"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/nature01065",
+        "source_id": "SRC-63ba79a55ed6cb52",
+        "candidate_ids": [
+          "R37008"
+        ],
+        "theme_ids": [
+          "G353"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.aam9506",
+        "source_id": "SRC-d62cc0d76fb9fc5f",
+        "candidate_ids": [
+          "R37009"
+        ],
+        "theme_ids": [
+          "G352"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rspb.2013.3011",
+        "source_id": "SRC-f90fb13aee57d612",
+        "candidate_ids": [
+          "R37010"
+        ],
+        "theme_ids": [
+          "G354"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.cub.2011.03.054",
+        "source_id": "SRC-5a72cff6a409b380",
+        "candidate_ids": [
+          "R37011"
+        ],
+        "theme_ids": [
+          "G354"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.2142/biophysics.9.85",
+        "source_id": "SRC-46fe6634569c86a5",
+        "candidate_ids": [
+          "Z7010"
+        ],
+        "theme_ids": [
+          "G350"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.2001055117",
+        "source_id": "SRC-6a28f6fe8c697408",
+        "candidate_ids": [
+          "X37-001"
+        ],
+        "theme_ids": [
+          "G355"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s41598-018-25226-w",
+        "source_id": "SRC-b26c4bcdb9304c61",
+        "candidate_ids": [
+          "X37-002"
+        ],
+        "theme_ids": [
+          "G355"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.3758/BF03206916",
+        "source_id": "SRC-6c42ced4468f6f2b",
+        "candidate_ids": [
+          "X37-003"
+        ],
+        "theme_ids": [
+          "G356"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.1166467",
+        "source_id": "SRC-7b166b9c45d751bd",
+        "candidate_ids": [
+          "X37-004"
+        ],
+        "theme_ids": [
+          "G356"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1080/08990220701318163",
+        "source_id": "SRC-0e382e4dfefed844",
+        "candidate_ids": [
+          "X37-005"
+        ],
+        "theme_ids": [
+          "G357"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1109/TOH.2023.3253256",
+        "source_id": "SRC-24005ba27a341f94",
+        "candidate_ids": [
+          "X37-006"
+        ],
+        "theme_ids": [
+          "G358"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/35086588",
+        "source_id": "SRC-5f9ac5e28dfd2541",
+        "candidate_ids": [
+          "X37-007"
+        ],
+        "theme_ids": [
+          "G359"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1523/ENEURO.0095-23.2023",
+        "source_id": "SRC-d8d535f4cede3016",
+        "candidate_ids": [
+          "X37-008"
+        ],
+        "theme_ids": [
+          "G357"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://doi.org/10.1098/rsbl.2012.0716",
+    "core": "R37001",
+    "theme": "G350",
+    "theme_ids": [
+      "G350"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 103193.3022,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "07b772b77649be7eb0abe3d0b34939748e36782472d06466ba52643b908e3517"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "1e5d47fe394a3ac2c039161793980cec98251023da515d72c7fbd2754e1e74e4"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "1d8797b64f51bff4fdcc2992c016d23e1fd033b6f6a66646024665d629328bf3",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "b653fe24b80b4ce0c63b966fc1934e89b9d7858827468001c4dc899b2b7b07aa"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "942ed4264546639158f269cc326a1637486a97490e3f39bf8e6505a3fc10a9f0",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 403,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 19,
+    "unique_blobs_checked": 424,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3963,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G350",
+        "core": "R37001",
+        "seconds": 26,
+        "maximum": 89
+      },
+      {
+        "theme": "G350",
+        "core": "Z7010",
+        "seconds": 30,
+        "maximum": 89
+      },
+      {
+        "theme": "G350",
+        "core": "B2315",
+        "seconds": 27,
+        "maximum": 89
+      },
+      {
+        "theme": "G351",
+        "core": "R37004",
+        "seconds": 32,
+        "maximum": 89
+      },
+      {
+        "theme": "G351",
+        "core": "R37005",
+        "seconds": 38,
+        "maximum": 89
+      },
+      {
+        "theme": "G352",
+        "core": "R37006",
+        "seconds": 35,
+        "maximum": 89
+      },
+      {
+        "theme": "G352",
+        "core": "R37009",
+        "seconds": 34,
+        "maximum": 89
+      },
+      {
+        "theme": "G353",
+        "core": "R37007",
+        "seconds": 32,
+        "maximum": 89
+      },
+      {
+        "theme": "G353",
+        "core": "R37008",
+        "seconds": 28,
+        "maximum": 89
+      },
+      {
+        "theme": "G354",
+        "core": "R37010",
+        "seconds": 29,
+        "maximum": 89
+      },
+      {
+        "theme": "G354",
+        "core": "R37011",
+        "seconds": 27,
+        "maximum": 89
+      },
+      {
+        "theme": "G355",
+        "core": "X37-001",
+        "seconds": 35,
+        "maximum": 73
+      },
+      {
+        "theme": "G355",
+        "core": "X37-002",
+        "seconds": 37,
+        "maximum": 80
+      },
+      {
+        "theme": "G356",
+        "core": "X37-003",
+        "seconds": 32,
+        "maximum": 65
+      },
+      {
+        "theme": "G356",
+        "core": "X37-004",
+        "seconds": 34,
+        "maximum": 71
+      },
+      {
+        "theme": "G357",
+        "core": "X37-005",
+        "seconds": 34,
+        "maximum": 76
+      },
+      {
+        "theme": "G357",
+        "core": "X37-008",
+        "seconds": 39,
+        "maximum": 74
+      },
+      {
+        "theme": "G358",
+        "core": "X37-006",
+        "seconds": 45,
+        "maximum": 76
+      },
+      {
+        "theme": "G359",
+        "core": "X37-007",
+        "seconds": 46,
+        "maximum": 70
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 30,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "35536c5fb871dc14728bad0f63737c6c0a833111996bfe874bebb9a5f442d9b6"
+  }
+}

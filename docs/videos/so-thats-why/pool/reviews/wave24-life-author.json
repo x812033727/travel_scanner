@@ -1,0 +1,578 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "d20abe4da056c35b19c6357ab90185df735979a0",
+    "selected": 3035,
+    "raw_records": 3406,
+    "not_added": 1099,
+    "pool_sha256": "824e615c7c34c8c8075dabbd4644e23681d151ef7ea2b4a1e92e3df99146c5f2",
+    "frozen_file": "baselines/2026-11-02-3035.json.gz",
+    "frozen_sha256": "e96ca8ff7efffe8006c5d93c7148272d661518494309ed9f886af0554c2b95dd"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave24-life.json",
+      "sha256": "6b754774c662dcbbe2f68070d8c61635329b889945772a8ad6572fe45271e661"
+    },
+    {
+      "file": "reviews/wave24-life-themes.json",
+      "sha256": "6682b446ff396f27bf05337945ea9ba08f5285eeb964f7ee31f6504aab968189"
+    }
+  ],
+  "counts": {
+    "candidates": 3,
+    "source_records": 4,
+    "primary_research_articles": 4,
+    "associated_corrections": 1,
+    "not_added": 18,
+    "paper_themes": 2,
+    "near_pairs": 17
+  },
+  "scope": "三核心兩短案。只保留受控對照支撐的因果/模型辨別，不以6–10參考數硬補。A24003是單段候選、閱讀範圍比前兩核心窄。",
+  "dedup_reading": {
+    "search_population": "搜尋全部3406raw問題/答案/條件/機制鍵與序列化1099未收；不是逐句重讀全庫。",
+    "keywords": "乳突|海參|膠原|肌肉|平滑肌|收縮|維持張力|反照明|光器|發光|偽裝|色素|虹彩|黏菌|菌蓋|菌絲|孢子|捕蠅|含羞|纖毛|鬍鬚|同步|管足|盲鰻|tensilin|papilla|counterillumination|mutable collagen",
+    "retrieval_cache": ".cache/wave24-life-screen.json",
+    "retrieval_sha256": "0eda2ff98fd72ff366251ab7376cde5d1434caef8fd9d561bfba7e47f3e65265",
+    "raw_search_hits": 172,
+    "na_search_hits": 50,
+    "manual_scope": "命中清單分批讀題名/答案；17近對及有ID退題逐列完整q/answer/scope讀回。另搜尋松果/眼外/感光/回授並讀命中全文。寬搜尋輸出曾截斷，未宣稱172題全部逐句核查。共同語意top5尚待root。"
+  },
+  "near_pairs": [
+    {
+      "a": "A24001",
+      "b": "B2125",
+      "proposed": "distinct",
+      "reason": "色素囊展縮改圖案是舊核；新核用同側變白但隆起保留與放鬆對照，區分快速動作與持張。",
+      "a_snapshot": {
+        "id": "A24001",
+        "question": "皮膚已經變白，烏賊表面的凸起為什麼還能留著？",
+        "answer_target": "色素囊與皮膚乳突的控制可以分離；乳突除了快速伸縮，也能進入持續張力狀態。切斷下降神經訊號後留下的隆起，以及放鬆路徑被抑制後的持續隆起，支持形狀維持不必等同持續收到快速動作指令；平滑肌參與的catch-like解釋仍是待確認的模型。",
+        "scope": "限Sepia officinalis本文去神經/藥理/肌肉構造對照；去神經時的起始隆起狀態重要，不說切斷就必然凸起。未確定twitchin分子鎖、能耗量或一般烏賊的全部皮膚機制。"
+      },
+      "b_snapshot": {
+        "id": "B2125",
+        "question": "頭足類的皮膚快速變花紋，是在皮下重新製造顏料嗎？",
+        "answer_target": "色素囊面積變化與反光細胞共同改變可見圖案。",
+        "scope": "色素與結構反射的分工，不推論一定能像人辨色。"
+      }
+    },
+    {
+      "a": "A24001",
+      "b": "A5002",
+      "proposed": "distinct",
+      "reason": "舊核須重複刺激在放鬆前疊加；新核是在下降神經訊號切斷後仍保持，不能用刺激頻率增高作答案。",
+      "a_snapshot": {
+        "id": "A24001",
+        "question": "皮膚已經變白，烏賊表面的凸起為什麼還能留著？",
+        "answer_target": "色素囊與皮膚乳突的控制可以分離；乳突除了快速伸縮，也能進入持續張力狀態。切斷下降神經訊號後留下的隆起，以及放鬆路徑被抑制後的持續隆起，支持形狀維持不必等同持續收到快速動作指令；平滑肌參與的catch-like解釋仍是待確認的模型。",
+        "scope": "限Sepia officinalis本文去神經/藥理/肌肉構造對照；去神經時的起始隆起狀態重要，不說切斷就必然凸起。未確定twitchin分子鎖、能耗量或一般烏賊的全部皮膚機制。"
+      },
+      "b_snapshot": {
+        "id": "A5002",
+        "question": "同一批肌肉纖維，為什麼催得更密就能出更大的力？",
+        "answer_target": "新刺激在前次放鬆前到來，鈣與收縮效應疊加，張力增加至受限範圍。",
+        "scope": "頻率調力，不把放電振幅當力量；不給電刺激或訓練方法。"
+      }
+    },
+    {
+      "a": "A24001",
+      "b": "A5013",
+      "proposed": "distinct",
+      "reason": "舊核酵素清掉接點訊號；新核問訊號撤去不一定消掉形狀，catch-like機制與釋放控制另有證據。",
+      "a_snapshot": {
+        "id": "A24001",
+        "question": "皮膚已經變白，烏賊表面的凸起為什麼還能留著？",
+        "answer_target": "色素囊與皮膚乳突的控制可以分離；乳突除了快速伸縮，也能進入持續張力狀態。切斷下降神經訊號後留下的隆起，以及放鬆路徑被抑制後的持續隆起，支持形狀維持不必等同持續收到快速動作指令；平滑肌參與的catch-like解釋仍是待確認的模型。",
+        "scope": "限Sepia officinalis本文去神經/藥理/肌肉構造對照；去神經時的起始隆起狀態重要，不說切斷就必然凸起。未確定twitchin分子鎖、能耗量或一般烏賊的全部皮膚機制。"
+      },
+      "b_snapshot": {
+        "id": "A5013",
+        "question": "手指只想動一下，神經留下的化學訊息怎麼不讓肌肉一直動？",
+        "answer_target": "接點間隙中的乙醯膽鹼酯酶分解乙醯膽鹼，限制受器持續被啟動。",
+        "scope": "限神經肌接點；不是所有神經傳遞物都靠此酵素，也不涉及藥物。"
+      }
+    },
+    {
+      "a": "A24001",
+      "b": "A5003",
+      "proposed": "distinct",
+      "reason": "肌絲重疊決定起始長度與主動力，不能回答去神經後持續隆起。",
+      "a_snapshot": {
+        "id": "A24001",
+        "question": "皮膚已經變白，烏賊表面的凸起為什麼還能留著？",
+        "answer_target": "色素囊與皮膚乳突的控制可以分離；乳突除了快速伸縮，也能進入持續張力狀態。切斷下降神經訊號後留下的隆起，以及放鬆路徑被抑制後的持續隆起，支持形狀維持不必等同持續收到快速動作指令；平滑肌參與的catch-like解釋仍是待確認的模型。",
+        "scope": "限Sepia officinalis本文去神經/藥理/肌肉構造對照；去神經時的起始隆起狀態重要，不說切斷就必然凸起。未確定twitchin分子鎖、能耗量或一般烏賊的全部皮膚機制。"
+      },
+      "b_snapshot": {
+        "id": "A5003",
+        "question": "同一條肌肉，換個起始長度為什麼出力會不同？",
+        "answer_target": "長度改變粗細肌絲可形成橫橋的重疊及擠壓程度，改變主動張力。",
+        "scope": "肌節層級；整個關節還受力臂等條件，不給最佳運動角度。"
+      }
+    },
+    {
+      "a": "A24001",
+      "b": "B2313",
+      "proposed": "distinct",
+      "reason": "晶格改反射波段不同於皮膚實體凸起及持張。",
+      "a_snapshot": {
+        "id": "A24001",
+        "question": "皮膚已經變白，烏賊表面的凸起為什麼還能留著？",
+        "answer_target": "色素囊與皮膚乳突的控制可以分離；乳突除了快速伸縮，也能進入持續張力狀態。切斷下降神經訊號後留下的隆起，以及放鬆路徑被抑制後的持續隆起，支持形狀維持不必等同持續收到快速動作指令；平滑肌參與的catch-like解釋仍是待確認的模型。",
+        "scope": "限Sepia officinalis本文去神經/藥理/肌肉構造對照；去神經時的起始隆起狀態重要，不說切斷就必然凸起。未確定twitchin分子鎖、能耗量或一般烏賊的全部皮膚機制。"
+      },
+      "b_snapshot": {
+        "id": "B2313",
+        "question": "豹紋變色龍換鮮豔顏色時，皮膚是怎麼改變反射光的？",
+        "answer_target": "虹彩細胞內鳥嘌呤奈米晶格間距改變，使選擇反射波段移動",
+        "scope": "限豹紋變色龍鮮豔色變，不宣稱任意背景都能複製"
+      }
+    },
+    {
+      "a": "A24001",
+      "b": "A22004",
+      "proposed": "distinct",
+      "reason": "水螅開口是細胞形變/鄰接保留；本核是快速動作與長時維持/放鬆分離，不是同一形變幾何。",
+      "a_snapshot": {
+        "id": "A24001",
+        "question": "皮膚已經變白，烏賊表面的凸起為什麼還能留著？",
+        "answer_target": "色素囊與皮膚乳突的控制可以分離；乳突除了快速伸縮，也能進入持續張力狀態。切斷下降神經訊號後留下的隆起，以及放鬆路徑被抑制後的持續隆起，支持形狀維持不必等同持續收到快速動作指令；平滑肌參與的catch-like解釋仍是待確認的模型。",
+        "scope": "限Sepia officinalis本文去神經/藥理/肌肉構造對照；去神經時的起始隆起狀態重要，不說切斷就必然凸起。未確定twitchin分子鎖、能耗量或一般烏賊的全部皮膚機制。"
+      },
+      "b_snapshot": {
+        "id": "A22004",
+        "question": "水螅的嘴張大時，嘴邊的細胞是換位置讓出洞嗎？",
+        "answer_target": "開口周邊的細胞仍保留原有鄰接關係，主要靠沿口緣拉長、徑向變窄來容納擴張；肌肉放鬆會抑制開口，支持放射狀肌原纖維施力與細胞黏彈性形變，而非細胞逐一換位騰出空間。",
+        "scope": "限Hydra vulgaris指定成像與放鬆對照，主要追蹤分離頭部的外胚層細胞；完整個體收縮對照另列。閉口為接合封閉、開口涉及細胞間接合，不畫成每次撕破細胞。沒有直接定位完整神經控制，精確力為估算。"
+      }
+    },
+    {
+      "a": "A24002",
+      "b": "B2147",
+      "proposed": "distinct",
+      "reason": "骨片分布是物種構造支撐差異；新核在去肌真皮比較力如何交給同類膠原纖維。",
+      "a_snapshot": {
+        "id": "A24002",
+        "question": "海參的皮膚變硬，是每根膠原纖維都變硬了嗎？",
+        "answer_target": "纖維間較易滑動時，組織可被拉長而纖維本身伸長很少；纖維間基質的傳力增強後，原有纖維承擔更多負荷，整體更難拉長。實測組織變硬時纖維應變反而增加，較符合纖維間傳力改變，而非單純每根纖維自身變硬的模型。",
+        "scope": "限去肌肉的海參中層真皮與本文三種化學狀態/SAXD比較；不是骨片變多或肌肉直接收縮。界面剛性與負荷分配由模型推得，分子橋接身分未直接定案，不泛化所有棘皮組織的唯一機制。"
+      },
+      "b_snapshot": {
+        "id": "B2147",
+        "question": "海膽摸起來硬，海參看起來軟，兩者骨架差在哪裡？",
+        "answer_target": "內部骨片融合、分散或縮小產生不同身體支撐方式。",
+        "scope": "棘皮動物骨片布局，不以觸摸野生動物驗證。"
+      }
+    },
+    {
+      "a": "A24002",
+      "b": "F4015",
+      "proposed": "distinct",
+      "reason": "濕熱下膠原轉明膠不同於活組織可變基質傳力；不靠加熱不可逆變性。",
+      "a_snapshot": {
+        "id": "A24002",
+        "question": "海參的皮膚變硬，是每根膠原纖維都變硬了嗎？",
+        "answer_target": "纖維間較易滑動時，組織可被拉長而纖維本身伸長很少；纖維間基質的傳力增強後，原有纖維承擔更多負荷，整體更難拉長。實測組織變硬時纖維應變反而增加，較符合纖維間傳力改變，而非單純每根纖維自身變硬的模型。",
+        "scope": "限去肌肉的海參中層真皮與本文三種化學狀態/SAXD比較；不是骨片變多或肌肉直接收縮。界面剛性與負荷分配由模型推得，分子橋接身分未直接定案，不泛化所有棘皮組織的唯一機制。"
+      },
+      "b_snapshot": {
+        "id": "F4015",
+        "question": "有些肉越煮越硬，為什麼帶筋的部位久燉卻可能變軟？",
+        "answer_target": "肌肉蛋白收縮失水與結締組織膠原在濕熱下轉為明膠是競爭的質地變化。",
+        "scope": "限含較多膠原部位的定性比較，不提供熟度或食安時間溫度。"
+      }
+    },
+    {
+      "a": "A24002",
+      "b": "M16003",
+      "proposed": "distinct",
+      "reason": "雙網絡缺口抗裂靠廣域解扣耗能；新核問組織變硬時纖維反而更伸長，以負荷傳遞區分兩種變硬模型。",
+      "a_snapshot": {
+        "id": "A24002",
+        "question": "海參的皮膚變硬，是每根膠原纖維都變硬了嗎？",
+        "answer_target": "纖維間較易滑動時，組織可被拉長而纖維本身伸長很少；纖維間基質的傳力增強後，原有纖維承擔更多負荷，整體更難拉長。實測組織變硬時纖維應變反而增加，較符合纖維間傳力改變，而非單純每根纖維自身變硬的模型。",
+        "scope": "限去肌肉的海參中層真皮與本文三種化學狀態/SAXD比較；不是骨片變多或肌肉直接收縮。界面剛性與負荷分配由模型推得，分子橋接身分未直接定案，不泛化所有棘皮組織的唯一機制。"
+      },
+      "b_snapshot": {
+        "id": "M16003",
+        "question": "切了一道缺口的凝膠，為什麼還能拉很長而不立刻一路撕開？",
+        "answer_target": "共價網絡橋接並維持連接，讓離子交聯在較大區域逐步解扣耗能；兩者協同把損傷攤開，減少只在缺口尖端集中。",
+        "scope": "限藻酸鹽/聚丙烯醯胺雙網絡及父網絡對照；立即再拉會變弱，休息後可部分恢復。不是無損拉伸，也非斷成兩半自行接回。"
+      }
+    },
+    {
+      "a": "A24002",
+      "b": "A5004",
+      "proposed": "distinct",
+      "reason": "運動單位招募是神經開啟不同肌纖維；此處纖維recruitment是基質剪切把負荷交給被動膠原，不是神經招募。",
+      "a_snapshot": {
+        "id": "A24002",
+        "question": "海參的皮膚變硬，是每根膠原纖維都變硬了嗎？",
+        "answer_target": "纖維間較易滑動時，組織可被拉長而纖維本身伸長很少；纖維間基質的傳力增強後，原有纖維承擔更多負荷，整體更難拉長。實測組織變硬時纖維應變反而增加，較符合纖維間傳力改變，而非單純每根纖維自身變硬的模型。",
+        "scope": "限去肌肉的海參中層真皮與本文三種化學狀態/SAXD比較；不是骨片變多或肌肉直接收縮。界面剛性與負荷分配由模型推得，分子橋接身分未直接定案，不泛化所有棘皮組織的唯一機制。"
+      },
+      "b_snapshot": {
+        "id": "A5004",
+        "question": "同一隻手從拿輕物改拿重物，是把所有肌肉一起開大嗎？",
+        "answer_target": "輸入增強時，較低門檻的運動單位先被招募，再加入較高門檻單位。",
+        "scope": "以大小原則的基本模型說明；不說所有任務完全同次序。"
+      }
+    },
+    {
+      "a": "A24002",
+      "b": "A5007",
+      "proposed": "distinct",
+      "reason": "肌腱膠原把力施到感覺末梢；此題材料剛性改變與纖維應變分配，未談神經感測。",
+      "a_snapshot": {
+        "id": "A24002",
+        "question": "海參的皮膚變硬，是每根膠原纖維都變硬了嗎？",
+        "answer_target": "纖維間較易滑動時，組織可被拉長而纖維本身伸長很少；纖維間基質的傳力增強後，原有纖維承擔更多負荷，整體更難拉長。實測組織變硬時纖維應變反而增加，較符合纖維間傳力改變，而非單純每根纖維自身變硬的模型。",
+        "scope": "限去肌肉的海參中層真皮與本文三種化學狀態/SAXD比較；不是骨片變多或肌肉直接收縮。界面剛性與負荷分配由模型推得，分子橋接身分未直接定案，不泛化所有棘皮組織的唯一機制。"
+      },
+      "b_snapshot": {
+        "id": "A5007",
+        "question": "手的位置沒變，換上更重的袋子，身體怎麼察覺負荷變大？",
+        "answer_target": "串聯於肌腱受力路徑的膠原被拉緊，擠壓感覺末梢，回報張力而非僅長度。",
+        "scope": "腱器官參與一般用力回饋，不當成只在快拉傷時啟動的開關。"
+      }
+    },
+    {
+      "a": "A24002",
+      "b": "A22002",
+      "proposed": "distinct",
+      "reason": "黏菌未知軟化因子與流路/體積重分配留下管徑記憶；海參是纖維與基質的力學分攤，有不同直接量測與模型預測。",
+      "a_snapshot": {
+        "id": "A24002",
+        "question": "海參的皮膚變硬，是每根膠原纖維都變硬了嗎？",
+        "answer_target": "纖維間較易滑動時，組織可被拉長而纖維本身伸長很少；纖維間基質的傳力增強後，原有纖維承擔更多負荷，整體更難拉長。實測組織變硬時纖維應變反而增加，較符合纖維間傳力改變，而非單純每根纖維自身變硬的模型。",
+        "scope": "限去肌肉的海參中層真皮與本文三種化學狀態/SAXD比較；不是骨片變多或肌肉直接收縮。界面剛性與負荷分配由模型推得，分子橋接身分未直接定案，不泛化所有棘皮組織的唯一機制。"
+      },
+      "b_snapshot": {
+        "id": "A22002",
+        "question": "食物吃完了，黏菌的管路怎麼還可能留著它原來的位置？",
+        "answer_target": "局部營養刺激後，近處管路擴大、其他部分收縮並形成持續的管徑階層；反應時間較符合沿流動路徑傳遞。作者以隨流運送的未知軟化因子改變管壁、加上體積約束解釋這種重分配；留下的粗管又改變後續傳輸路徑。",
+        "scope": "限Physarum polycephalum本文管網觀察與軟化模型。直接觀察是形態/流動/時間差；軟化因子身分與作用未直接證完，不能稱ATP記憶已確定。粗管是否保留取決於刺激的流動距離，並非所有粗管永遠強化；不等同人類回憶或保證最短路。"
+      }
+    },
+    {
+      "a": "A24003",
+      "b": "B2327",
+      "proposed": "distinct",
+      "reason": "舊核是發光匹配背景減剪影；新核是遮眼/遮頭頂位置不同如何改發光，補感測入口條件而非換魷魚種類。",
+      "a_snapshot": {
+        "question": "這種魷魚遮住眼睛還在發光，遮住頭頂一小區卻暗了很多，為什麼？",
+        "answer_target": "受測魷魚不只靠眼睛取得上方光訊息，頭頂另有感光囊。只遮眼睛、只遮頭頂感光囊、兩者都遮的對照造成不同幅度的發光下降，支持兩類輸入共同參與反照明調節，頭頂感光囊在這些條件下影響較大。",
+        "scope": "只限1979原文兩隻Abraliopsis sp.B及由上方入射、經彎曲管壁折射後讓眼睛收到斜入射分量的光照/約束配置；遮眼仍有下降，不是眼睛完全無用。少量個體與重複試次不等同物種普遍比例，沒有完整神經迴路或腹側自光回饋的確證。"
+      },
+      "b_snapshot": {
+        "id": "B2327",
+        "question": "夏威夷短尾魷為什麼要在肚子下面發光，反而更難被看見？",
+        "answer_target": "腹面共生菌光與上方背景光接近，降低由下往上看見的暗剪影對比",
+        "scope": "限背景與觀看方向適合時，不說從各角度都隱形"
+      }
+    },
+    {
+      "a": "A24003",
+      "b": "B2328",
+      "proposed": "distinct",
+      "reason": "菌群排出再增殖是光源日循環，不能回答選擇遮光後的立即調節。",
+      "a_snapshot": {
+        "question": "這種魷魚遮住眼睛還在發光，遮住頭頂一小區卻暗了很多，為什麼？",
+        "answer_target": "受測魷魚不只靠眼睛取得上方光訊息，頭頂另有感光囊。只遮眼睛、只遮頭頂感光囊、兩者都遮的對照造成不同幅度的發光下降，支持兩類輸入共同參與反照明調節，頭頂感光囊在這些條件下影響較大。",
+        "scope": "只限1979原文兩隻Abraliopsis sp.B及由上方入射、經彎曲管壁折射後讓眼睛收到斜入射分量的光照/約束配置；遮眼仍有下降，不是眼睛完全無用。少量個體與重複試次不等同物種普遍比例，沒有完整神經迴路或腹側自光回饋的確證。"
+      },
+      "b_snapshot": {
+        "id": "B2328",
+        "question": "短尾魷早上排出大部分發光細菌，晚上怎麼又有光可用？",
+        "answer_target": "光器每日排出後保留的菌群再增殖，和宿主晝伏夜出的使用節律相連",
+        "scope": "說明觀察到的循環，不把排菌目的單一定為節能或懲罰"
+      }
+    },
+    {
+      "a": "A24003",
+      "b": "B2330",
+      "proposed": "distinct",
+      "reason": "環境取得菌是來源建立，不是光訊息在哪裡被接收。",
+      "a_snapshot": {
+        "question": "這種魷魚遮住眼睛還在發光，遮住頭頂一小區卻暗了很多，為什麼？",
+        "answer_target": "受測魷魚不只靠眼睛取得上方光訊息，頭頂另有感光囊。只遮眼睛、只遮頭頂感光囊、兩者都遮的對照造成不同幅度的發光下降，支持兩類輸入共同參與反照明調節，頭頂感光囊在這些條件下影響較大。",
+        "scope": "只限1979原文兩隻Abraliopsis sp.B及由上方入射、經彎曲管壁折射後讓眼睛收到斜入射分量的光照/約束配置；遮眼仍有下降，不是眼睛完全無用。少量個體與重複試次不等同物種普遍比例，沒有完整神經迴路或腹側自光回饋的確證。"
+      },
+      "b_snapshot": {
+        "id": "B2330",
+        "question": "剛孵出的短尾魷沒有發光細菌，牠的光器怎麼開始運作？",
+        "answer_target": "孵化後透過光器周圍黏液從環境取得共生菌，屬後天建立的夥伴關係",
+        "scope": "只談來源支持的取得方式，不聲稱黏液單獨就完成全部菌種篩選"
+      }
+    },
+    {
+      "a": "A24003",
+      "b": "L100",
+      "proposed": "distinct",
+      "reason": "植物光受器轉生長訊號是概述；新核用眼/眼外感光入口選擇遮蔽控制，不能只以沒有眼睛也感光一句充數。",
+      "a_snapshot": {
+        "question": "這種魷魚遮住眼睛還在發光，遮住頭頂一小區卻暗了很多，為什麼？",
+        "answer_target": "受測魷魚不只靠眼睛取得上方光訊息，頭頂另有感光囊。只遮眼睛、只遮頭頂感光囊、兩者都遮的對照造成不同幅度的發光下降，支持兩類輸入共同參與反照明調節，頭頂感光囊在這些條件下影響較大。",
+        "scope": "只限1979原文兩隻Abraliopsis sp.B及由上方入射、經彎曲管壁折射後讓眼睛收到斜入射分量的光照/約束配置；遮眼仍有下降，不是眼睛完全無用。少量個體與重複試次不等同物種普遍比例，沒有完整神經迴路或腹側自光回饋的確證。"
+      },
+      "b_snapshot": {
+        "id": "L100",
+        "question": "植物沒有眼睛，怎麼知道周圍有沒有光？",
+        "answer_target": "光受器把光訊息轉成生長訊號",
+        "scope": "光敏素與特定光敏感植物；不推論所有種子相同"
+      }
+    },
+    {
+      "a": "A24003",
+      "b": "A5022",
+      "proposed": "distinct",
+      "reason": "雙眼瞳孔同步是眼輸入後雙側投射；新核是眼外獨立入光位置參與發光調節，沒有宣稱其完整投射路徑。",
+      "a_snapshot": {
+        "question": "這種魷魚遮住眼睛還在發光，遮住頭頂一小區卻暗了很多，為什麼？",
+        "answer_target": "受測魷魚不只靠眼睛取得上方光訊息，頭頂另有感光囊。只遮眼睛、只遮頭頂感光囊、兩者都遮的對照造成不同幅度的發光下降，支持兩類輸入共同參與反照明調節，頭頂感光囊在這些條件下影響較大。",
+        "scope": "只限1979原文兩隻Abraliopsis sp.B及由上方入射、經彎曲管壁折射後讓眼睛收到斜入射分量的光照/約束配置；遮眼仍有下降，不是眼睛完全無用。少量個體與重複試次不等同物種普遍比例，沒有完整神經迴路或腹側自光回饋的確證。"
+      },
+      "b_snapshot": {
+        "id": "A5022",
+        "question": "只有一隻眼收到較強光線，另一隻瞳孔為什麼也會縮小？",
+        "answer_target": "光訊號到達頂蓋前區後向兩側瞳孔收縮路徑投射，使兩眼皆可產生反應。",
+        "scope": "正常瞳孔光反射的雙側聯絡；不做強光照眼、自測神經損傷或反射速度比較。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "A24-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6059360/",
+      "read_via": "當日web.open讀PMC正文；指定UA PMC HTML200實為驗證頁、抽文0，改EuropePMC官方fullTextXML成功並逐段讀；圖2頁web為CAPTCHA，未目讀原圖。",
+      "reading_scope": "Introduction與Results神經路徑；XML PARA21–61去神經、藥理、平滑/橫紋肌與Discussion；Methods正文只指向補充，未讀Transparent Methods或影片。另讀同文勘誤全部正文。",
+      "locator": "Results: Pallial Nerve Denervation and Sustained Papillae Expression; Neuropeptide and Neuromodulators Controlling Papillae Expression; Discussion，Fig2D/3/4圖說",
+      "author_cache": {
+        "file": ".cache/wave24-life-sources/papilla.xml",
+        "sha256": "c1697fd665cf8256ff25a1da6f310996bd6ebdae1944e9dc60ae384a11105a41",
+        "text_file": ".cache/wave24-life-sources/papilla-xml.txt",
+        "text_sha256": "692ff456be74692b755c1d9178c4fb9ca3bef6032c289fa59980fbb37c4b80b6"
+      }
+    },
+    {
+      "source_id": "A24-S002",
+      "url": "https://publications.diamond.ac.uk/pubman/downloadpublicationdocument?publicationDocumentId=638",
+      "read_via": "當日web.open定位；指定UA下載有效PDF，PyMuPDF抽文逐頁指定段讀，另渲染目讀PDF p4 Fig3、p7 Fig6。",
+      "reading_scope": "PDF pp1–9：背景、Results、Model and Discussion、Conclusion、組織製備與SAXD方法；不逐式重現、不讀全部補充。",
+      "locator": "PDF pp4–8 / printed E6365–E6369；Fig3組織與纖維應變、Fig6兩種變硬模型；pp8–9去肌層製備與離子處理",
+      "author_cache": {
+        "file": ".cache/wave24-life-sources/nanoscale.pdf",
+        "sha256": "95dccff2c2e2bbfa10f82ca82f8caab7f5a0040a266226b3fb9bb2d48c43548e",
+        "text_file": ".cache/wave24-life-sources/nanoscale.txt",
+        "text_sha256": "5c9127f7505bced98caa715a605b8b5d5ac12ad6527b4cf4cc8367fd79756ac4"
+      }
+    },
+    {
+      "source_id": "A24-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4871580/",
+      "read_via": "當日web.open指定正文；UA PMC HTML200無正文，改官方EuropePMC XML成功。",
+      "reading_scope": "Introduction、Animals and Tissues/Preparation of Three Mechanical States；XML PARA57–101部分Results與Discussion Cross-Bridges/Distance/Diameter；未逐讀全部量測方法或原圖。",
+      "locator": "Introduction三種狀態；Results各形態量、Discussion Cross-Bridges / Distance between Collagen Fibrils / Collagen Fibril Diameter",
+      "author_cache": {
+        "file": ".cache/wave24-life-sources/dermis.xml",
+        "sha256": "7f44aff984d9c976295d18e45c6644852d3e0b311cf33b516503443618d92199",
+        "text_file": ".cache/wave24-life-sources/dermis-xml.txt",
+        "text_sha256": "5cbefb6a288c82812436929a2721414095180ab56d014a4cc907eff5c7992c5a"
+      }
+    },
+    {
+      "source_id": "A24-S004",
+      "url": "https://repository.si.edu/bitstreams/c3f40db7-5991-4e0e-8c2d-ae7a8a205e42/download",
+      "read_via": "當日web.open原PDF抽取正文pp371–376；指定UA下載403，後續頁碼web.open多次timeout停止；出版社頁只核身份/摘要。保留工具已回傳指定正文的人工節錄，非完整原PDF。",
+      "reading_scope": "pp371–376 Introduction、Materials and Methods、Results兩個Abraliopsis sp.B個體；讀Fig1–3圖說，未目讀原圖。未讀完pp377–380，不採後段魚類結果或腹側自光回饋結論。",
+      "locator": "pp373–374 selective shielding方法；pp375–376 Abraliopsis sp.B Specimen No.1/No.2 results",
+      "author_cache": {
+        "file": ".cache/wave24-life-sources/squid1979-web-body-excerpts.txt",
+        "sha256": "2a4924f41db694d6eded3798bbd313801573c714ad6f06b50cc1729334d6ba3a",
+        "text_file": ".cache/wave24-life-sources/squid1979-web-body-excerpts.txt",
+        "text_sha256": "2a4924f41db694d6eded3798bbd313801573c714ad6f06b50cc1729334d6ba3a",
+        "kind": "web-returned-body-selected-transcription-not-original-pdf"
+      }
+    }
+  ],
+  "source_identity": {
+    "count_policy": "四篇不同原研究加一則同文勘誤；來源URL數不等於獨立實驗/重複驗證數。",
+    "comparison": "對pool來源序列化DOI/完整URL/不分大小寫完整標題比對；零精確命中不是無同文保證。",
+    "records": [
+      {
+        "source_id": "A24-S001",
+        "doi": "10.1016/j.isci.2018.01.001",
+        "canonical_url": "https://doi.org/10.1016/j.isci.2018.01.001",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6059360/fullTextXML",
+        "historical_exact_identity_matches": [],
+        "relationship": "原研究的期刊頁、PMC/XML或機構庫是同一論文載體；不是多次獨立重複驗證。本篇2018勘誤只修收到/修稿日期，非獨立研究；wave7機構報導同一研究。"
+      },
+      {
+        "source_id": "A24-S002",
+        "doi": "10.1073/pnas.1609341113",
+        "canonical_url": "https://doi.org/10.1073/pnas.1609341113",
+        "retrieval_url": "https://publications.diamond.ac.uk/pubman/downloadpublicationdocument?publicationDocumentId=638",
+        "historical_exact_identity_matches": [],
+        "relationship": "原研究的期刊頁、PMC/XML或機構庫是同一論文載體；不是多次獨立重複驗證。"
+      },
+      {
+        "source_id": "A24-S003",
+        "doi": "10.1371/journal.pone.0155673",
+        "canonical_url": "https://doi.org/10.1371/journal.pone.0155673",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4871580/fullTextXML",
+        "historical_exact_identity_matches": [],
+        "relationship": "原研究的期刊頁、PMC/XML或機構庫是同一論文載體；不是多次獨立重複驗證。"
+      },
+      {
+        "source_id": "A24-S004",
+        "doi": "10.1007/BF00389215",
+        "canonical_url": "https://doi.org/10.1007/BF00389215",
+        "retrieval_url": "https://repository.si.edu/bitstreams/c3f40db7-5991-4e0e-8c2d-ae7a8a205e42/download",
+        "historical_exact_identity_matches": [],
+        "relationship": "原研究的期刊頁、PMC/XML或機構庫是同一論文載體；不是多次獨立重複驗證。"
+      }
+    ]
+  },
+  "retrieval_failures": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6059360/",
+      "method": "指定UA urllib",
+      "result": "HTTP200驗證HTML；抽文為空，不是正文",
+      "validated_body": false
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6136899/",
+      "method": "指定UA urllib",
+      "result": "HTTP200驗證HTML；抽文為空，不是正文",
+      "validated_body": false
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4871580/",
+      "method": "指定UA urllib",
+      "result": "HTTP200驗證HTML；抽文為空，不是正文",
+      "validated_body": false
+    },
+    {
+      "url": "https://repository.si.edu/bitstreams/c3f40db7-5991-4e0e-8c2d-ae7a8a205e42/download",
+      "method": "指定UA urllib",
+      "result": "HTTP Error 403: Forbidden",
+      "validated_body": false
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700988/",
+      "method": "指定UA urllib",
+      "result": "HTTP200驗證HTML；抽文為空，不是正文",
+      "validated_body": false
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2700988/fullTextXML",
+      "method": "指定UA urllib官方XML",
+      "result": "HTTP Error 500:",
+      "validated_body": false
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6059360/figure/fig2/",
+      "method": "web.open",
+      "result": "CAPTCHA；未目讀圖",
+      "validated_body": false
+    },
+    {
+      "url": "https://repository.si.edu/bitstreams/c3f40db7-5991-4e0e-8c2d-ae7a8a205e42/download",
+      "method": "web.open後頁範圍",
+      "result": "三次Timeout；初次pp371–376已讀，未取得後段，不繼續重試",
+      "validated_body": false
+    }
+  ],
+  "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "reading_limits": [
+    "未逐篇讀完全部補充、逐式重現或做自己的動物實驗。",
+    "S001圖只讀圖說、S004只讀pp371–376；兩者如需精確重畫原圖，進稿前另核。",
+    "S003靜態橋接/纖維內解釋與S002受力SAXD不是同一實驗；本核不把全部推論合成唯一分子答案。",
+    "2009光器感光論文僅摘要/部分web方法，UA無正文與XML500，未採入候選證據；不靠它補齊反照明閉迴路。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "A24-S002",
+      "file": ".cache/wave24-life-sources/nanoscale-page4.png",
+      "sha256": "19257924b1e35bef56eda80a3d2c06b2d0d3058043b1f0219dd509b5a04129a9",
+      "scope": "Fig3組織/纖維應變與應力曲線",
+      "read_via": "有效PDF渲染，view_image實際目讀"
+    },
+    {
+      "source_id": "A24-S002",
+      "file": ".cache/wave24-life-sources/nanoscale-page7.png",
+      "sha256": "235b8647293024d2617b0ba9ab068002215634cbf6c71f73e5eaaf35c405ba40",
+      "scope": "Fig6兩種變硬模型與相反趨勢",
+      "read_via": "有效PDF渲染，view_image實際目讀"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W24A-T01",
+      "seconds": 100,
+      "chapters": [
+        50,
+        50
+      ],
+      "same_core_totals": {
+        "A24001": 100
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W24A-T02",
+      "seconds": 105,
+      "chapters": [
+        55,
+        50
+      ],
+      "same_core_totals": {
+        "A24002": 105
+      },
+      "paper_only": true
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "checks": [
+      "unique IDs, valid references and old ID snapshots",
+      "chapter/beat sums, one core per chapter, cumulative cap and range upper<=body",
+      "UTF8 LF/noBOM/rstrip/no user absolute paths/written_files bindings"
+    ],
+    "limits": "作者本機檢查；尚待非作者與共同top5，不是劇本或製作核准。"
+  },
+  "unresolved": [
+    "A24001的catch-like解釋是否足夠厚度、A24003是否只是補感測器存在的薄題，交非作者嚴判；可合例或暫緩，不保3筆。",
+    "A24002須與一般交聯/雙網絡材料對照；作者近對聚焦相反纖維應變預測，但不替代共同語意檢索。"
+  ],
+  "revision_history": [
+    {
+      "reason": "非作者覆核縮去模型重述，並收窄魷魚眼睛的斜入射光條件；問答核心不變。",
+      "before": [
+        {
+          "file": "batches/wave24-life.json",
+          "sha256": "a938e82bb98bb1e8f70a478b5b9adad95c4785a73ed4eecb510f241e15ef2891"
+        },
+        {
+          "file": "reviews/wave24-life-themes.json",
+          "sha256": "b0f892ae7b9b26b7b676827adcdd2a4b4bfcc45dcdd8f717ac3a802367af8aca"
+        },
+        {
+          "file": "reviews/wave24-life-author.json",
+          "sha256": "e1722fb19a9b43dd38969e9ef27acdbfeccdcf3a5594121998e11cf184fca012"
+        }
+      ],
+      "removed_seconds": 25,
+      "changes": [
+        "T01第二章30→20，全110→100",
+        "T02第二章實測回收30→15，全120→105",
+        "A24003 scope/visual與S004限制明列上方光經管壁折射；作者重開API timeout，採peer指定正文證據，不增加自述實讀頁。"
+      ]
+    }
+  ]
+}

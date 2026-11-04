@@ -1,0 +1,200 @@
+{
+  "status": "AUTHOR_CORRECTIONS_LOCKED_AWAITING_TARGETED_REVIEW",
+  "created_on": "2026-11-01",
+  "batch_file": "docs/videos/so-thats-why/pool/batches/wave5-body-senses.json",
+  "batch_sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53",
+  "theme_file": "docs/videos/so-thats-why/pool/reviews/wave5-body-themes.json",
+  "theme_sha256": "e45e58da1825bccb690e6ec46712c095919ccfcdcb75950bbfc8ec1460203760",
+  "counts": {
+    "candidates": 36,
+    "sources": 19,
+    "not_added": 14,
+    "themes": 3
+  },
+  "baseline": {
+    "raw_records": 2790,
+    "eligible": 2449,
+    "head": "79cc131ee"
+  },
+  "scope": "作者題級來源篩選與紙上組片，不是非作者覆核、逐主張劇本核准或實測。",
+  "readback_method": [
+    "對2790筆raw_records的question/answer_target/scope/mechanism_key做全文關鍵字搜索；搜尋結果第一大批輸出有截斷，未冒稱逐題讀全庫。",
+    "逐讀33筆cognition、生命與生理相關L/V群、命中的動物感官、所有晚加L323–332及多輪精確詞查重。",
+    "逐列讀本批36題；19個來源表記實際正文範圍。大學教材佔多數，未用只有搜尋摘要的頁當已讀。",
+    "所有36題為原創疑問和短機制目標，未複製課後題、圖或整段課本。"
+  ],
+  "duplicate_flags": [
+    {
+      "ids": [
+        "A5026",
+        "C2029",
+        "L326"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "既有桿錐功能分工；新題聚焦多輸入匯聚造成空間資訊取捨。若舊核心scope已含匯聚，接受合併。"
+    },
+    {
+      "ids": [
+        "A5005",
+        "A5008"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "前者是並聯肌梭如何感長度；後者是感測→脊髓→同肌出力的負回饋因果。"
+    },
+    {
+      "ids": [
+        "A5006",
+        "A5012"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "前者調肌梭感測區張緊，後者調反射迴路門檻/增益；不以改問法重算gamma。"
+    },
+    {
+      "ids": [
+        "A5018",
+        "L004"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "A5018是毛束方向性機械門控與受器電位；L004對照開放通路的通道與結合後構形改變的載體，控制問題不同。"
+    },
+    {
+      "ids": [
+        "A5032",
+        "P072"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "新題是完全閉鎖短促釋放與維持狹縫兩種聲源對照；若只剩亂流定義應暫緩。"
+    },
+    {
+      "ids": [
+        "A5036",
+        "C2031",
+        "L167"
+      ],
+      "author_position": "distinct_pending_reviewer",
+      "reason": "膜電位驅動細胞力的主動回饋，不是被動基底膜分頻或聽小骨機械傳遞。"
+    },
+    {
+      "ids": [
+        "A5013",
+        "V3012"
+      ],
+      "author_position": "accept_merge",
+      "reason": "接受酵素終止化學訊號同核心，ACh接點例保留為變體。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "source_ids": [
+        "A5-S002",
+        "A5-S003"
+      ],
+      "note": "不採疲勞=ATP耗盡／乳酸單一因果、等長只在負荷大於出力等過度簡化。"
+    },
+    {
+      "source_ids": [
+        "A5-S004",
+        "A5-S005"
+      ],
+      "note": "腱器官不是只在危險負荷切斷出力；來源亦說傳統單一保護說受質疑。Renshaw假說未作新候選。"
+    },
+    {
+      "source_ids": [
+        "A5-S007",
+        "A5-S008"
+      ],
+      "note": "不採optokinetic在人類退化、VOR只有50度/秒有效等數值/概括；不採caloric操作。"
+    },
+    {
+      "source_ids": [
+        "A5-S010"
+      ],
+      "note": "不採P:M細胞比100:1或桿細胞只回應白光等教學概括；不引用臨床治療。"
+    },
+    {
+      "source_ids": [
+        "A5-S016"
+      ],
+      "note": "只採指定死腔及CO2-H+鏈；正文dose-response叫positive-feedback的用語不沿用。未採胸膜腔為氣腔、胸膜壓永遠負、深淺呼吸二分或CPAP間歇送氣等敘述。"
+    },
+    {
+      "source_ids": [
+        "A5-S017"
+      ],
+      "note": "只用檔案第43–46頁基本空間和公式；非87頁全查核，不採其他臨床/量測數字。"
+    },
+    {
+      "source_ids": [
+        "A5-S019"
+      ],
+      "note": "1998研究的電位—伸縮觀察可作研究線索；蛋白身分當年未知與高頻機制推測不能標現代定論。沒有播放電影。"
+    }
+  ],
+  "failed_access": [
+    {
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK10991/",
+      "result": "web與普通urllib皆reCAPTCHA；未列來源"
+    },
+    {
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK10895/",
+      "result": "同上，搜尋摘要未當正文"
+    },
+    {
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK10809/",
+      "result": "同上，搜尋摘要未當正文"
+    },
+    {
+      "url": "https://openbooks.lib.msu.edu/neuroscience/chapter/spinal-control-of-movement/",
+      "result": "初次正文可讀，後續CPG段重開403；來源只記實際讀到的NMJ/reflex段"
+    },
+    {
+      "url": "https://ecampusontario.pressbooks.pub/essentialsoflinguistics2/chapter/3-3-describing-consonants-place-and-phonation/",
+      "result": "web/urllib 403，未採"
+    },
+    {
+      "url": "https://ecampusontario.pressbooks.pub/essentialsoflinguistics2/chapter/3-2-speech-articulators/",
+      "result": "web 403，未採"
+    },
+    {
+      "url": "https://ecampusontario.pressbooks.pub/essentialsoflinguistics/chapter/3-6-articulatory-processes-assimilation/",
+      "result": "web 403，未採"
+    }
+  ],
+  "quantity_decision": "交36題而非硬湊50。已覆蓋舊庫的收縮、調焦、辣薄荷、暈車、自搔癢不重複。只有術語/薄現象未收；下一批另選新主線。",
+  "verification": {
+    "json_parse": true,
+    "unique_candidate_ids": true,
+    "unique_mechanism_keys": true,
+    "source_links_resolve": true,
+    "utf8_lf": true,
+    "theme_timing": "三片215/220/170秒，章節與節拍加總、逐核心預算核對；範圍為規劃估計非實測"
+  },
+  "remaining": "修訂待非作者定點讀回；中央合併/暫緩由root執行。全部示意、音檔、旁白試讀與製作尚未完成。",
+  "corrections": {
+    "previous_hashes": {
+      "wave5-body-senses.json": "78dacc92b613c9c2e218c1527d4b95ef202ed43a722c3c408052f9f48be39672",
+      "wave5-body-themes.json": "e468a94b5b3282a943ccd9911a8c0886c3be6560ae4801882247911d2808dc5e",
+      "wave5-body-author.json": "c2c914e0eaa83107c2b5e9ae564648289f49f2317e485b04be5740a3c0b0b0e1"
+    },
+    "basis": "pool_physics獨立覆核訊息及root指示；2026-11-01重開UTHealth§2.3 Reflex modulation與§8.4B正文確認修訂範圍。",
+    "items": [
+      "A5012改反射迴路門檻/增益，不只運動神經元。",
+      "A5013接受中央merge至V3012，保留原ID及接點變體。",
+      "A5028接受中央hold，原始機制提案保留審計且notes明說缺直接來源。",
+      "A5018/L004比較修為通道/載體。",
+      "T02保留速度匹配的65秒機制章；沒有具體速度圖時必縮20秒設題、整片175秒。",
+      "BODY04：A5015/A5016及A5-S007小節標題改對應原網頁，未改機制或增加內容。"
+    ],
+    "central_actions_pending": [
+      {
+        "from": "A5013",
+        "into": "V3012",
+        "action": "merge"
+      },
+      {
+        "id": "A5028",
+        "action": "exclude_hold_source_gap"
+      }
+    ]
+  }
+}

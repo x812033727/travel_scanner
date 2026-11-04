@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "batch_id": "wave8-microbes-20261101",
+  "status": "AUTHOR_PROPOSALS_REQUIRING_INDEPENDENT_REVIEW",
+  "rules": {
+    "duration": "依內容落在約2–4.5分鐘，不湊長片。",
+    "cadence": "每30–45秒換一個條件、對照或因果步驟。",
+    "core_budget": "含開場/回扣，全章時間歸其候選核心，不超editorial上限。",
+    "cut": "刪章後重算/改承諾/另審；不足兩章不沿用原題案。"
+  },
+  "episodes": [
+    {
+      "id": "W8U-T01",
+      "title": "孢子射出去了，為什麼還不算成功出發？",
+      "core_question": "離開附著點之後，微小孢子如何跨過空氣阻力與菌蓋下的出口？",
+      "connection": "先追擔子菌水滴發射與菌蓋下換氣，再明示換成子囊盤真菌比較集體造風；是兩種運輸障礙，不是同一真菌必經三階段。",
+      "candidate_ids": [
+        "U8001",
+        "U8002",
+        "U8003"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者來源/內容覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "先離開附著點，還不能射太遠",
+          "seconds": 85,
+          "candidate_ids": [
+            "U8001"
+          ],
+          "new_information": "合滴表面自由能提供發射，菌褶空間又限制理想射程。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：發射後還停在親代附近，問題在哪？"
+            },
+            {
+              "at_seconds": 30,
+              "change": "水滴合併前後的表面與孢子位移；不把質心移動當能源。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "對面還有菌褶，射得遠未必更好；引出下一段搬運。"
+            }
+          ],
+          "cut_if": "若無可讀合滴示意，刪章；餘175秒兩章須改成如何造流並另審。"
+        },
+        {
+          "title": "菌蓋下面自己形成的流",
+          "seconds": 95,
+          "candidate_ids": [
+            "U8002"
+          ],
+          "new_information": "蒸發冷卻、密度差、補流與不對稱幾何共同影響外送。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "固定外界低風條件，先畫蒸發冷卻。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "冷空氣外走同時需要補入空氣，不只畫單一出風箭頭。"
+            },
+            {
+              "at_seconds": 65,
+              "change": "對照兩側相同/一側間隙較高，說明淨搬運為何受幾何限制。"
+            }
+          ],
+          "cut_if": "如果只剩蒸發降溫，刪章；餘165秒改為兩種發射/阻力情境，重寫轉場另審。"
+        },
+        {
+          "title": "換一種真菌：一起出發把空氣也帶動",
+          "seconds": 80,
+          "candidate_ids": [
+            "U8003"
+          ],
+          "new_information": "集體發射轉變周圍流場，使單顆的靜止空氣阻力假設失效。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "明示切換子囊盤真菌，對照單顆與密集束。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "先行孢子向空氣交動量，後續隨形成的流移動。"
+            },
+            {
+              "at_seconds": 65,
+              "change": "15秒回扣：發射、走出受限空間、改變運輸介質各解不同障礙。"
+            }
+          ],
+          "cut_if": "刪章則180秒兩章，改為菌蓋下傳播題；不能仍承諾集體造風。"
+        }
+      ],
+      "body_seconds": 260,
+      "target_minutes": 4.333333333333333,
+      "range_minutes": [
+        3.8,
+        4.8
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 15,
+      "boredom_risk": "容易堆三種真菌名字；每段只保留運輸障礙與對照，不補物種百科。",
+      "drop_if": "U8003觸發同步的細節尚有假說，完全不拿它補時；物種切換說不清就刪末章。",
+      "evidence_gaps": "只有題級來源與含開場回扣的內容預算；未撰完整旁白、未實際試讀，無製作/素材授權/成片核准。"
+    },
+    {
+      "id": "W8U-T02",
+      "title": "細菌亂轉方向，怎麼還能往吸引物聚過去？",
+      "core_question": "轉向沒有預先選好方位，為何許多次游動後仍出現偏向？",
+      "connection": "固定E. coli情境；先解鞭毛束怎麼換方向，再解延長哪一段路如何改變統計結果，避免把隨機轉向畫成瞄準食物。",
+      "candidate_ids": [
+        "U8006",
+        "U8005"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者來源/內容覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "轉向是推進束暫時改組",
+          "seconds": 70,
+          "candidate_ids": [
+            "U8006"
+          ],
+          "new_information": "鞭毛換向與束的重組讓細胞重新定向。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：細菌沒有地圖，畫一條忽直忽轉的路。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "部分鞭毛換向/形態改變，離束後身體方向改變。"
+            },
+            {
+              "at_seconds": 55,
+              "change": "重新成束直游；轉完的方向不保證較好。"
+            }
+          ],
+          "cut_if": "刪此章只剩100秒單核；取消本題案，另提短素材，不能沿用170秒。"
+        },
+        {
+          "title": "不選方向，而是保留變好的路",
+          "seconds": 100,
+          "candidate_ids": [
+            "U8005"
+          ],
+          "new_information": "時間比較與較慢的受器適應，改變直游的持續時間。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "比較剛才與現在的刺激，不畫遠方食物雷達。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "慢適應讓近期狀態留下影響；刺激改善時延長直游。"
+            },
+            {
+              "at_seconds": 70,
+              "change": "將多條路疊在一起看分布；仍有走錯方向的個體。"
+            },
+            {
+              "at_seconds": 85,
+              "change": "15秒回扣：轉向與何時再轉是兩個問題。"
+            }
+          ],
+          "cut_if": "若只能說朝食物走而不能解時間比較，刪章並取消題案；70秒運動段另提。"
+        }
+      ],
+      "body_seconds": 170,
+      "target_minutes": 2.8333333333333335,
+      "range_minutes": [
+        2.5,
+        3.3
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 15,
+      "boredom_risk": "重複畫亂走軌跡會拖長；只做一次微觀轉向、一次路徑統計。",
+      "drop_if": "吸引物不必可食，標題不用保證找到食物；不加入趨磁/眼點/黏菌名單延時。",
+      "evidence_gaps": "只有題級來源與含開場回扣的內容預算；未撰完整旁白、未實際試讀，無製作/素材授權/成片核准。"
+    },
+    {
+      "id": "W8U-T03",
+      "title": "菌絲一路相通，怎麼邊長又能在破損時止漏？",
+      "core_question": "材料持續送往生長端的管狀系統，如何兼顧定向添加與局部隔離？",
+      "connection": "用兩種絲狀子囊菌研究依序比較正常尖端與受傷隔室，明示不是同一株的連續實錄；連通平時有用，損傷時要局部關閉。",
+      "candidate_ids": [
+        "U8019",
+        "U8004"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者來源/內容覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "材料要加在正確的位置",
+          "seconds": 65,
+          "candidate_ids": [
+            "U8019"
+          ],
+          "new_information": "頂端胞吐與後方內吞區的空間分工，讓延伸集中。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：長長細管是整條膨脹，還是前端在施工？"
+            },
+            {
+              "at_seconds": 20,
+              "change": "頂端集中釋放壁材料/相關酵素，對照分散添加的概念圖。"
+            },
+            {
+              "at_seconds": 45,
+              "change": "後方環狀內吞區回收膜相關組件，與尖端添加位置區分。"
+            }
+          ],
+          "cut_if": "刪章只餘65秒單核，取消本案；不得以一般真菌介紹補滿。"
+        },
+        {
+          "title": "通行的孔，受傷時要堵住",
+          "seconds": 65,
+          "candidate_ids": [
+            "U8004"
+          ],
+          "new_information": "Woronin小體封隔膜孔，限制局部內容物漏失。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "明示換成Z. tritici受傷觀測，畫原本相通的隔室。"
+            },
+            {
+              "at_seconds": 20,
+              "change": "受傷處漏出，鄰隔膜孔封閉後限制連帶漏失；只用一次動作。"
+            },
+            {
+              "at_seconds": 50,
+              "change": "15秒回扣：平時分配材料，受傷切斷連通；不等於已完整癒合。"
+            }
+          ],
+          "cut_if": "若圖把所有菌絲都畫成此小體，刪章；65秒生長段另提，取消原案。"
+        }
+      ],
+      "body_seconds": 130,
+      "target_minutes": 2.1666666666666665,
+      "range_minutes": [
+        1.8,
+        2.6
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 15,
+      "boredom_risk": "不加雙核鎖狀聯合，免得從生長/保護跳成繁殖分類。",
+      "drop_if": "不解釋小體未定的完整驅動機制；無法清楚區分兩研究物種時退回個別素材。",
+      "evidence_gaps": "只有題級來源與含開場回扣的內容預算；未撰完整旁白、未實際試讀，無製作/素材授權/成片核准。"
+    }
+  ]
+}

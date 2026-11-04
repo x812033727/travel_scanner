@@ -1,0 +1,412 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave29-food.json",
+      "sha256": "86cb833b187af57a693faf86514c61a712de7b24889924e8104dfa63c41bff2f"
+    },
+    {
+      "file": "reviews/wave29-food-author.json",
+      "sha256": "464b7d7731a6ded1b4bbdcfb625db359e0bdbc203ff8e737264a2ff9154e438e"
+    },
+    {
+      "file": "reviews/wave29-food-themes.json",
+      "sha256": "d01ed0e0ff6a13e2c4d794f322cdf7c22dae3659946c30d2ae1cb34d1ebf59f7"
+    },
+    {
+      "file": "reviews/wave29-tracks-reviews-food.json",
+      "sha256": "9e035e5f62d34d99ea8b9eff47d0bdc4d753dc19f312241b1ef703988159d34e"
+    },
+    {
+      "file": "batches/wave29-tracks.json",
+      "sha256": "1ada60d816f673a567b894753d1108fb49f07dcce654854b91e54a98b242e528"
+    },
+    {
+      "file": "reviews/wave29-tracks-author.json",
+      "sha256": "dcd3b58916db99ce144a73c5a2bc6a08e3373bc52d7d37529c349febf067c52c"
+    },
+    {
+      "file": "reviews/wave29-tracks-themes.json",
+      "sha256": "a994680df7f0983605f993575631dd025c8d525662612bbc4b9dbd14836c2a35"
+    },
+    {
+      "file": "reviews/wave29-food-reviews-tracks.json",
+      "sha256": "217c2684b30c5c8b15fea9d8308e85703f9d975688c6c69573ef8d488edf0d41"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave29-food.json",
+      "author": "root",
+      "reviewer": "pool_physics",
+      "candidate_count": 6,
+      "top5_directed_pairs": 30,
+      "author_pairs": 13,
+      "not_added_count": 13,
+      "theme_count": 3
+    },
+    {
+      "batch": "batches/wave29-tracks.json",
+      "author": "pool_physics",
+      "reviewer": "root",
+      "candidate_count": 5,
+      "top5_directed_pairs": 25,
+      "author_pairs": 14,
+      "not_added_count": 14,
+      "theme_count": 3
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave29-food.json",
+          "sha256": "86cb833b187af57a693faf86514c61a712de7b24889924e8104dfa63c41bff2f"
+        },
+        {
+          "file": "batches/wave29-tracks.json",
+          "sha256": "1ada60d816f673a567b894753d1108fb49f07dcce654854b91e54a98b242e528"
+        }
+      ],
+      "new_source_rows": 13,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "adb433dd4444e622a454677c7947a660d233258cbc3e9372cfbd7e6dae0ea1a8",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "reviewer": "root",
+      "notes": "13個來源網址，涵蓋12項研究。Salque論文的出版社預覽與研究團隊公開說明屬於同一案例。R29-S008的Funding更正另連回原文，不列另一項研究。三份足跡原PDF及兩份PMC正文回傳按各自版本與閱讀範圍列明。"
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave29-food.json",
+      "source_rows": 8,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave29-tracks.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "f809bd7af9012f6a76ed806d13ab635d547b2a5b92e0366fc64ca3902a2adf1a",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source_id": "P29-S001",
+      "url": "https://s3.amazonaws.com/publicationslist.org/data/jesper.milan/ref-13/2006%20-%20Mil%C3%A0n%20_%20Bromley%20-%20PALAEO3.pdf",
+      "file": ".cache/wave29-tracks-emu.pdf",
+      "sha256": "9cdfca0b7a8c7a492ca5b879a6b1563d6f7475908a19b51c978c519282355036",
+      "text_file": ".cache/wave29-tracks-emu.txt",
+      "text_sha256": "fcdd756ecf24b36b54c1f7ca4048c752259a140feb7a6b424361c80f9491bbad",
+      "reading_scope": "§3.2.3–4、§4/5，尤其半流質試材在抬足後回填、3/4公分處的三趾；印刷260–261頁Fig 7–9目讀。",
+      "finding": "在實驗鴯鶓足壓模中，半流質材料的踩踏面塌回，較淺下伏層可比表面更清楚。呈現的剖面應分開爪真的切到的區域與向下傳遞的變形。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave29-tracks-emu-p8.png",
+          "sha256": "2c53abb45df761e599e4aa12c6186fd6164802a27c5fc81def651efe085eeef8"
+        },
+        {
+          "file": ".cache/wave29-tracks-emu-p9.png",
+          "sha256": "8075fa628ba623183f5eea41c14aeecf1dceaa32dee167b53be53780610bbd9b"
+        }
+      ],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    },
+    {
+      "source_id": "P29-S002",
+      "url": "https://researchonline.ljmu.ac.uk/id/eprint/13219/1/20200518_LoopingFootKinematics_MainText_Pre-Proofs.pdf",
+      "file": ".cache/wave29-tracks-loop.pdf",
+      "sha256": "1b6d9120eacd3ab8958a7c1fbf711252113a399ddfcb8431d60179fac6345e1f",
+      "text_file": ".cache/wave29-tracks-loop.txt",
+      "text_sha256": "0c1a835dad70719f6ebbb5c05a6412a9cf6158cf6d2a3b8ec14a76c9bd60fd49",
+      "reading_scope": "作者稿pp6–7、Table2、Figs1–2正文與圖說，目讀pp21–22兩圖。",
+      "finding": "珠雞側趾在拔足時向中趾合攏，三維路徑在同一層可留下不同的進、出位置。圖2c上下兩面是31/50同標本，底面鏡射顯示，不是兩個時間點。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave29-tracks-loop-p21.png",
+          "sha256": "12b735eaed37c0bf535b845d668f47c8c8174150f6e69b11d4403d61c86922fe"
+        },
+        {
+          "file": ".cache/wave29-tracks-loop-p22.png",
+          "sha256": "63097d633b916387dc2592e556c029d167166a46a9299875ad42097593689014"
+        }
+      ],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    },
+    {
+      "source_id": "P29-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030862/",
+      "file": ".cache/wave29-tracks-sauropod-web.txt",
+      "sha256": "25038cd5cb5c0c5eab877fdfed866b270d5eb0347cd61932bd18c7ea42edca99",
+      "reading_scope": "PMC回傳 L107–152，表1、Fig2圖說及模型討論。",
+      "finding": "依兩套重心和接地面積估值，兩類足的承載窗口可顛倒。固定模型參數改地面強度才能解釋有些四足步態只留前足印。單一化石現場不由此確診。",
+      "viewed_images": [],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    },
+    {
+      "source_id": "P29-S004",
+      "url": "https://researchonline.ljmu.ac.uk/id/eprint/6408/1/ammonite.pdf",
+      "file": ".cache/wave29-tracks-ammonite.pdf",
+      "sha256": "b4804ced6a0ad17106d79d3e1085bfb906768e1338586f0b255e8daf85a27507",
+      "text_file": ".cache/wave29-tracks-ammonite.txt",
+      "text_sha256": "cd41773612b29c5744565669d6b542b64d3b51117f3f771f4311a2918750f97b",
+      "reading_scope": "PDF印刷頁4–7描述、Table1及結論，目讀Fig3殼肋靠近痕跡終點。",
+      "finding": "保存段長8.5公尺而非完整行程。末端肋溝形狀對上殼肋並轉向，死後被帶動是標本解釋，流速與起點未知。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave29-tracks-ammonite-p5.png",
+          "sha256": "f8058e1f0ea038b0f422fdfae66fd44901db5cb36e6e4baaf17181d7b8f8f5d7"
+        }
+      ],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    },
+    {
+      "source_id": "P29-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3732924/",
+      "file": ".cache/wave29-tracks-bite-web.txt",
+      "sha256": "e5bc7009231af71d3b4ecbbd1285569e8f67a7deced7df6ce73f78a706fdf033",
+      "reading_scope": "PMC回傳Results及Discussion L122–155，CT、反應骨和牙形比較圖說。",
+      "finding": "包著牙齒的反應骨可決定生前受傷的先後，咬者的歸屬另依齒冠形態。不能由該件判族群獵殺比例或精確存活多久。",
+      "viewed_images": [],
+      "read_via": "非作者讀回已保存的原始PDF與對應抽文或PMC正文回傳。兩個PMC案例限正文與圖說。"
+    }
+  ],
+  "editorial_summary": "本批11個核心排成6組。陶鍋殘留分層與淡水食材的碳庫偏差，分別回答哪一餐、哪一年。火塘焦屑和炭化麥芽用兩種尺度辨加工步驟。陶篩與牙結石從加工器物追到個人。足跡組把下層受壓與足趾穿層放在同一片對照，蜥腳類缺印單獨短講，菊石拖痕與癒合骨則對照生前與死後的證據。27個方向留存未另收理由。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並依收據覆核足跡化石組各來源、近對與題案。food由root撰寫、pool_physics非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 35,
+      "changes": [
+        {
+          "batch": "food",
+          "reviewer": "pool_physics",
+          "before_files": [
+            {
+              "file": "batches/wave29-food.json",
+              "sha256": "90a40acff0920fef58593f3decf44ec29787437b6b04c25883fadb5e154cf559"
+            },
+            {
+              "file": "reviews/wave29-food-themes.json",
+              "sha256": "a1ca0f5827fe82abfd136cf4623f20cfc63649f0946055362e139e70e6573a1d"
+            },
+            {
+              "file": "reviews/wave29-food-author.json",
+              "sha256": "211e76b6362045ee4251a628c6d09134d511961b71e789d7a13dc9e069d105d4"
+            }
+          ],
+          "removed_seconds": 20,
+          "changes": [
+            "訂正為萃取空白，牙結石為不同時地的獨立個人樣本。",
+            "焦屑參照來自論文引述的先前實驗，與24件出土材料分框。",
+            "鍋垢案110降到100秒並收窄標題；乳製品案110降到100秒，精簡重複收束。"
+          ]
+        },
+        {
+          "batch": "tracks",
+          "reviewer": "root",
+          "before": [
+            {
+              "file": "batches/wave29-tracks.json",
+              "sha256": "1ada60d816f673a567b894753d1108fb49f07dcce654854b91e54a98b242e528"
+            },
+            {
+              "file": "reviews/wave29-tracks-themes.json",
+              "sha256": "4793ccba7d30f63a8ed93a00ec9b625750851c754b08addad98bd52d1a369ad9"
+            },
+            {
+              "file": "reviews/wave29-tracks-author.json",
+              "sha256": "f5bfd39b7df652cfe9247b8aa921f402a8f5c48b3e1ee7797cc5a4e4875a7464"
+            }
+          ],
+          "removed_seconds": 15,
+          "changes": [
+            "T02 缺印並排僅留五秒水深未知角標，75→70。",
+            "T03 菊石搬運的不確定性移到既有剖面圖註，撤末拍，105→95。"
+          ],
+          "scope": "只改題案與預算，不改候選問答或來源。"
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "R29-S001",
+        "file": ".cache/wave29-food-pots.html",
+        "sha256": "4193e77029baa93c8a7d084403e9954a92ee11189d7aba1d2773a62b7597c088",
+        "text_file": ".cache/wave29-food-pots.txt",
+        "text_sha256": "86e830968188fd5d6c7166ac8d21a225209641285d1041b9c09408d0c676e29b"
+      },
+      {
+        "source_id": "R29-S001",
+        "file": ".cache/wave29-food-pots-fig2.png",
+        "sha256": "4d7a7fad3917d77bf7eecce64b6d722f76f70649f7281037ef4dea308ba8996c"
+      },
+      {
+        "source_id": "R29-S002",
+        "file": ".cache/wave29-food-fresh.html",
+        "sha256": "092d83140714637096f0013faae45d86d1d449ef1e1a0c0cbfeb198bc6fa0ae4",
+        "text_file": ".cache/wave29-food-fresh.txt",
+        "text_sha256": "17a5c9ae8db640c03e0c10468a5bee6b781c3d7d498a52983df416280bea060b"
+      },
+      {
+        "source_id": "R29-S002",
+        "file": ".cache/wave29-food-fresh-fig3.png",
+        "sha256": "940688557bba850c688e00a3f398e38d2c775eeaa75b7bff048462e4261b90b9"
+      },
+      {
+        "source_id": "R29-S003",
+        "file": ".cache/wave29-food-bread.pdf",
+        "sha256": "9b8cf5a715bfdbba0005171c2c434e191df461f6a9b787e418dc72df02d88460",
+        "text_file": ".cache/wave29-food-bread.txt",
+        "text_sha256": "4f17e02e7da7405eccc5213a718261f9cca4064c971231539219827311ea4f00"
+      },
+      {
+        "source_id": "R29-S003",
+        "file": ".cache/wave29-food-bread-p3.png",
+        "sha256": "fc54247a6a4109a1ebfe3decfb1524f58fa8d6b3c388713196694c9e6efb76fc"
+      },
+      {
+        "source_id": "R29-S004",
+        "file": ".cache/wave29-food-malt.html",
+        "sha256": "74b51d75cb3f83b1d09c754aed1b9094e496b85027fffff318fe1f37d26312d0",
+        "text_file": ".cache/wave29-food-malt.txt",
+        "text_sha256": "0d643aa838951d11f810f717096d40234dca3401bbb289e3ce207f2b60e57876"
+      },
+      {
+        "source_id": "R29-S004",
+        "file": ".cache/wave29-food-malt-fig15.png",
+        "sha256": "1eb16c12b889e6f9f25829844bf46b6ec31ce3383f0c6ff14a5e568218829045"
+      },
+      {
+        "source_id": "R29-S005",
+        "file": ".cache/wave29-food-sieve-lab.html",
+        "sha256": "c07a49d8293d8f1ffd01472d1234adc2b010397578c711ed917a848854c66581",
+        "text_file": ".cache/wave29-food-sieve-lab.txt",
+        "text_sha256": "ef0c96035fdbfd7aaa30fc012b8994fd77ce70b70cec18d6b54c301741fb3b9c"
+      },
+      {
+        "source_id": "R29-S006",
+        "file": ".cache/wave29-food-sieve.html",
+        "sha256": "aa09a03fa63461ed8c298439a700d761c0a08f1f3d85d0b775cfddd12b1e8ef1",
+        "text_file": ".cache/wave29-food-sieve.txt",
+        "text_sha256": "d544f12d98e65f2f24f16b44b9aced5cb5e2fce27385469766404c2b9ffb993b"
+      },
+      {
+        "source_id": "R29-S007",
+        "file": ".cache/wave29-food-milk.html",
+        "sha256": "f363e677056eccb5d3d822d1da828b3fe1c2d8ab93106245459b9059cb5bf480",
+        "text_file": ".cache/wave29-food-milk.txt",
+        "text_sha256": "87ad5b8169a763648e158b34abc08e8802259e6a16386fe3e2834a88af7f234b"
+      },
+      {
+        "source_id": "R29-S007",
+        "file": ".cache/wave29-food-milk-fig2.png",
+        "sha256": "6e610eb08718993ff84d0a36a502bccfb777a8e894244fa70c507305e4dd6a19"
+      },
+      {
+        "source_id": "R29-S008",
+        "file": ".cache/wave29-food-deamid.html",
+        "sha256": "ce478aed1442372754ddd861acd91f46e93e640e3d67cf3c97d0e638cfe14b0d",
+        "text_file": ".cache/wave29-food-deamid.txt",
+        "text_sha256": "28121fe08509797c176e5b16ec4939c670ab2571f408a68ffc2077d512be2026"
+      },
+      {
+        "source_id": "R29-S008",
+        "file": ".cache/wave29-food-correction.html",
+        "sha256": "1a444e437f10289587abbd5203d744eb2b6b105af13c5708e97d704e033ceda7",
+        "text_file": ".cache/wave29-food-correction.txt",
+        "text_sha256": "eca7405efe549261ba1bcd67657d83015f87d7d8ec322b537979fddad9233a45"
+      },
+      {
+        "source_id": "R29-S008",
+        "file": ".cache/wave29-food-deamid-fig3.png",
+        "sha256": "97821484fa2a27af60066f7ca677d29ec56d4fb392167a96eba9ff8d1ead08b5"
+      },
+      {
+        "source_id": "P29-S001",
+        "file": ".cache/wave29-tracks-emu.pdf",
+        "sha256": "9cdfca0b7a8c7a492ca5b879a6b1563d6f7475908a19b51c978c519282355036",
+        "text_file": ".cache/wave29-tracks-emu.txt",
+        "text_sha256": "fcdd756ecf24b36b54c1f7ca4048c752259a140feb7a6b424361c80f9491bbad"
+      },
+      {
+        "source_id": "P29-S002",
+        "file": ".cache/wave29-tracks-loop.pdf",
+        "sha256": "1b6d9120eacd3ab8958a7c1fbf711252113a399ddfcb8431d60179fac6345e1f",
+        "text_file": ".cache/wave29-tracks-loop.txt",
+        "text_sha256": "0c1a835dad70719f6ebbb5c05a6412a9cf6158cf6d2a3b8ec14a76c9bd60fd49"
+      },
+      {
+        "source_id": "P29-S003",
+        "file": ".cache/wave29-tracks-sauropod-web.txt",
+        "sha256": "25038cd5cb5c0c5eab877fdfed866b270d5eb0347cd61932bd18c7ea42edca99"
+      },
+      {
+        "source_id": "P29-S004",
+        "file": ".cache/wave29-tracks-ammonite.pdf",
+        "sha256": "b4804ced6a0ad17106d79d3e1085bfb906768e1338586f0b255e8daf85a27507",
+        "text_file": ".cache/wave29-tracks-ammonite.txt",
+        "text_sha256": "cd41773612b29c5744565669d6b542b64d3b51117f3f771f4311a2918750f97b"
+      },
+      {
+        "source_id": "P29-S005",
+        "file": ".cache/wave29-tracks-bite-web.txt",
+        "sha256": "e5bc7009231af71d3b4ecbbd1285569e8f67a7deced7df6ce73f78a706fdf033"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "food",
+          "initial_draft": "d0cf7ca84bc8b1bdd7f6e6c0b9cb3d5b12a95a33c9ef769b7ce30285fe334044",
+          "final_draft": "1929eb537a7beb2c63d68671b117e9be3a7d7fd475dd1398bf61d00c1d89bd1c",
+          "directed_pairs": 30,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "tracks",
+          "initial_draft": "d0cf7ca84bc8b1bdd7f6e6c0b9cb3d5b12a95a33c9ef769b7ce30285fe334044",
+          "final_draft": "1929eb537a7beb2c63d68671b117e9be3a7d7fd475dd1398bf61d00c1d89bd1c",
+          "directed_pairs": 25,
+          "top5_or_text_changes": 0,
+          "changes": []
+        }
+      ],
+      "earlier_root_only_delta": [],
+      "known_merge_retrieval_audit": [],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  },
+  "editorial_summary_shortlist": "優先試讀「只找到前腳印，這隻恐龍一定在游泳嗎？」。同一組四足著地模型，只改地面強度，足以在一分鐘左右把直覺翻過來。第二順位是古陶篩與牙結石，一張器物圖、一個個人的樣本，就能把村落曾處理乳品和誰曾攝取乳品分開。若跨研究轉場試讀仍容易誤認同一人或同一處，先拆成短段。"
+}

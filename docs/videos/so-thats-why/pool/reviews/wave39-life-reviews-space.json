@@ -1,0 +1,2005 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "head": "b65b15e34f51ad119cf55c5fafe3290db5b1e531",
+    "raw_records": 3599,
+    "selected": 3220,
+    "not_added": 1580,
+    "themes": 370,
+    "pool_sha256": "436f5473e5100bf9e21c661e6d4fb312da1c5d3eacd25a767f6cc6aa40949cca",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3220.json.gz",
+      "sha256": "29477021f2a34f474f064cbf578c1e8a467aa9368ceb2681cffb498c890e5699"
+    }
+  },
+  "role_and_scope": "全9題/15未收/22個作者近對與45個有向召回對逐答讀，另掃舊熱慣性、地形陰影與反照率。依指定來源檢驗每一個可見訊號如何支持受限推論。",
+  "reviewed_candidate_ids": [
+    "S39-001",
+    "S39-002",
+    "S39-003",
+    "S39-004",
+    "S39-005",
+    "S39-006",
+    "S39-007",
+    "S39-008",
+    "S39-009"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave39-space.json",
+      "sha256": "7d7cf2d6014ba74963efc265a8b6d152f783c33c89912345081d2d22f7c7a2ba"
+    },
+    {
+      "file": "reviews/wave39-space-author.json",
+      "sha256": "5c5dd3f948ed1f0b8e5229f9e89d8662a3f38cac6fe06739692468e26770d415"
+    },
+    {
+      "file": "reviews/wave39-space-themes.json",
+      "sha256": "a008446278316dd5be1a66b838af625701486bc29bc131c43375f65203109772"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "S39-001",
+      "decision": "retain",
+      "canonical_id": "S39-001",
+      "reason": "共振半徑以外，徑向波數隨半徑的斜率約束局部面質量。表2的遮光厚度差異可大於面密度差異。",
+      "scope_check": "未外推無可用密度波的環段。星光透射、光學厚度及總面質量是不同量。",
+      "source_ids": [
+        "S39-S001"
+      ],
+      "editorial_seconds": [
+        38,
+        82
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S39-002",
+      "decision": "retain",
+      "canonical_id": "S39-002",
+      "reason": "成分漸變造成穩定分層，可以支持浮力回復振盪。極陡與幾乎延伸全半徑的梯度所預測的環共振均和所選觀測不符。",
+      "scope_check": "屬模型比較，只能約束所試分層範圍，冰岩比例仍有退化解。",
+      "source_ids": [
+        "S39-S002"
+      ],
+      "editorial_seconds": [
+        40,
+        85
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S39-003",
+      "decision": "retain",
+      "canonical_id": "S39-003",
+      "reason": "同一太陽仰角絕對值下，分點前/後溫度不同。較長的季節變化能探測比日變深的蓄熱。",
+      "scope_check": "溫度曲線可由不同內部性質擬合。未重算參數或把粒子剖面當實物照。",
+      "source_ids": [
+        "S39-S003"
+      ],
+      "editorial_seconds": [
+        32,
+        72
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S39-004",
+      "decision": "retain",
+      "canonical_id": "S39-004",
+      "reason": "近分點的低角度陽光讓出環面波與衛星各投影，鋸齒狀的俯視外緣本身無法判高度。",
+      "scope_check": "任務原始影像說明。此次只讀圖說，未另目讀這張影像或量高度。",
+      "source_ids": [
+        "S39-S004"
+      ],
+      "editorial_seconds": [
+        32,
+        70
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S39-005",
+      "decision": "retain",
+      "canonical_id": "S39-005",
+      "reason": "內外軌剪切形成偏錯的斑對。徑向分離尺度在模型中與小天體的重力作用範圍相關；照片中亮的原因有歧義。",
+      "scope_check": "雙斑能約束質量，但從斑長、亮度或模型輪廓不能直接量出中心月體的徑。",
+      "source_ids": [
+        "S39-S005"
+      ],
+      "editorial_seconds": [
+        40,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S39-006",
+      "decision": "retain",
+      "canonical_id": "S39-006",
+      "reason": "電波頻移記錄軌道改變，南極負引力異常小於地形應有的缺額，容許底下有較密的補償物質。",
+      "scope_check": "這次讀的是任務組說明。未以Iess原期刊全文複核，單一南極異常無法限出全球海。",
+      "source_ids": [
+        "S39-S006"
+      ],
+      "editorial_seconds": [
+        37,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S39-007",
+      "decision": "retain",
+      "canonical_id": "S39-007",
+      "reason": "以跨年地標擬合擺動，觀測顯著超過剛連模型，也超過所試軸對稱南極區域補償；隔液層讓表殼相對岩核轉動。",
+      "scope_check": "地標為實測，內部連結為動力模型。厚度數值隨密度及黏彈假設改變。",
+      "source_ids": [
+        "S39-S007"
+      ],
+      "editorial_seconds": [
+        42,
+        88
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S39-008",
+      "decision": "retain",
+      "canonical_id": "S39-008",
+      "reason": "同區正午暗斑較暖。長期模型給予更快失冰，在冷亮區重新積存可放大原來的明暗差。",
+      "scope_check": "未另目讀傳回的影像；現場溫差與推算的長期冰遷移分開，沒有推定暗塵起源。",
+      "source_ids": [
+        "S39-S008"
+      ],
+      "editorial_seconds": [
+        38,
+        80
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S39-009",
+      "decision": "retain",
+      "canonical_id": "S39-009",
+      "reason": "T108同次航跡校正重力等位面後，兩海面相近。部分遠湖高數百米；同流域所測乾盆底不低於局部液位，提供局部連通的檢驗。",
+      "scope_check": "作者兩次直取典藏失敗，覆核只讀保存的指定原文行。未檢視原PDF圖像；跨流域水頭差與滲透性差異仍容許。",
+      "source_ids": [
+        "S39-S009"
+      ],
+      "editorial_seconds": [
+        38,
+        83
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "S39-S001",
+      "title": "The B-ring’s surface mass density from hidden density waves: Less than meets the eye?",
+      "url": "https://doi.org/10.1016/j.icarus.2016.01.007",
+      "version": "arXiv:1601.07955v2（PDF首頁2016-02-17）。期刊同一研究。",
+      "reading_scope": "PDF 3–4 §2、式5，33表2和34圖19圖說與圖頁。",
+      "locator": "PDF pp.3–4 §2與式5，p.33表2及p.34圖19。",
+      "cache": {
+        "file": ".cache/wave39-space-mass.pdf",
+        "sha256": "fb1be7fe474fd3c2ee203c28d310d6b4f600d28f4a2b795ac922162c5932c2da",
+        "text_file": ".cache/wave39-space-mass.txt",
+        "text_sha256": "303699f09f3971460ef5b2ab8517b9e850a6825ef69f4a67b2e98b7db911c5d1"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "共振半徑以外，徑向波數隨半徑的斜率約束局部面質量。表2的遮光厚度差異可大於面密度差異。",
+      "limitations": "未外推無可用密度波的環段。星光透射、光學厚度及總面質量是不同量。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S002",
+      "title": "A diffuse core in Saturn revealed by ring seismology",
+      "url": "https://doi.org/10.1038/s41550-021-01448-3",
+      "version": "arXiv:2104.13385v2（PDF首頁2021-05-03）。期刊DOI同工作。",
+      "reading_scope": "PDF 2–3 W76.44、引力與模態擬合，5模型限制，7圖2圖說與圖頁。",
+      "locator": "PDF pp.2–3主文W76.44與模型對比，p.5討論模型限制，p.7圖2。",
+      "cache": {
+        "file": ".cache/wave39-space-core.pdf",
+        "sha256": "478643beeb16b4ea30f35463e0a8e39f1ba0878879aaef7d35c797521df07168",
+        "text_file": ".cache/wave39-space-core.txt",
+        "text_sha256": "a0eb3e66de17a73886672be2ee7f198a9066f5b03725691283af8d5d1803eaa1"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "成分漸變造成穩定分層，可以支持浮力回復振盪。極陡與幾乎延伸全半徑的梯度所預測的環共振均和所選觀測不符。",
+      "limitations": "屬模型比較，只能約束所試分層範圍，冰岩比例仍有退化解。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S003",
+      "title": "Incomplete cooling down of Saturn’s A ring at solar equinox: Implication for seasonal thermal inertia and internal structure of ring particles",
+      "url": "https://doi.org/10.1016/j.icarus.2015.06.025",
+      "version": "arXiv:1508.07375v1（識別列2015-08-28）。內頁排版日期不當成觀測日期。",
+      "reading_scope": "PDF 4日變探測深度，11圖3說明，37均勻模型與帶核模型，43結論。",
+      "locator": "PDF p.4分點異常，p.11圖3說明，p.37兩模型擬合及p.43 §6。",
+      "cache": {
+        "file": ".cache/wave39-space-cool.pdf",
+        "sha256": "719d735b7914c7e91978c9def2028f7448c1ff8ffa373e2974a52bc8b9282326",
+        "text_file": ".cache/wave39-space-cool.txt",
+        "text_sha256": "946f6bbecff02f07c58cc6929219bcca903be2fd5ce9b61019596ea1c80841a5"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "同一太陽仰角絕對值下，分點前/後溫度不同。較長的季節變化能探測比日變深的蓄熱。",
+      "limitations": "溫度曲線可由不同內部性質擬合。未重算參數或把粒子剖面當實物照。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S004",
+      "title": "Shadows from the Waves",
+      "url": "https://science.nasa.gov/resource/shadows-from-the-waves/",
+      "version": "任務影像說明 PIA12622，發布2010-04-29；觀測2009-06-28。",
+      "reading_scope": "NASA PIA12622圖說全文，達芙妮位置、Keeler環隙邊、平面內外分量、掠射光投影與日期。",
+      "locator": "PIA12622正文第1–2段環隙/波紋與第4段分點投影；末段視角與觀測日期。",
+      "cache": {
+        "file": ".cache/wave39-space-daph.html",
+        "sha256": "cd8adb7b274666355da5f8ec7960ab0d8a61f3b36c2601924d94b93bb9ec57cf",
+        "text_file": ".cache/wave39-space-daph.txt",
+        "text_sha256": "93c26fbb5f2257cbdd7b0960e15355735e2349b081056ed3ea778887241127b9"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "近分點的低角度陽光讓出環面波與衛星各投影，鋸齒狀的俯視外緣本身無法判高度。",
+      "limitations": "任務原始影像說明。此次只讀圖說，未另目讀這張影像或量高度。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S005",
+      "title": "The Population of Propellers in Saturn’s A Ring",
+      "url": "https://doi.org/10.1088/0004-6256/135/3/1083",
+      "version": "共同作者Hedman公開之2008期刊排版PDF。",
+      "reading_scope": "PDF 1–2 §2引力模型、徑向距離與亮斑歧義；4圖2–4與圖頁；8徑向與方位分量討論。",
+      "locator": "原刊pp.1083–1084 §2簡化模型與對亮度的保留，p.1086圖2–4，p.1090 §§5.4–5.5。",
+      "cache": {
+        "file": ".cache/wave39-space-prop.pdf",
+        "sha256": "7eb982ab63dd4e0a04db890198704f20cc22327b3338e0077e29cc17a2500a51",
+        "text_file": ".cache/wave39-space-prop.txt",
+        "text_sha256": "44903c1411fda0d545908e7b1f78ecf359ea37fc46f96907aba9c87e39adc393"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "內外軌剪切形成偏錯的斑對。徑向分離尺度在模型中與小天體的重力作用範圍相關；照片中亮的原因有歧義。",
+      "limitations": "雙斑能約束質量，但從斑長、亮度或模型輪廓不能直接量出中心月體的徑。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S006",
+      "title": "NASA Space Assets Detect Ocean inside Saturn Moon",
+      "url": "https://science.nasa.gov/missions/cassini/nasa-space-assets-detect-ocean-inside-saturn-moon/",
+      "version": "2014年任務研究說明，內含Iess與合作者對10.1126/science.1250551的解說。",
+      "reading_scope": "NASA 2014任務說明，自多普勒段至三次引力飛掠、Iess對南極補償的原話及噴流連結限制。",
+      "locator": "正文「Cassini has flown near Enceladus」至Iess說明補償的三段，上文DSN頻移說明。",
+      "cache": {
+        "file": ".cache/wave39-space-grav.html",
+        "sha256": "e54c79c1afa03c43a42bd8180937efcaf610973ab22ab2f2a63796a681dad409",
+        "text_file": ".cache/wave39-space-grav.txt",
+        "text_sha256": "33514899d4b6938564921608650c0011ee752d507fa076f4ec80515767b4d230"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "電波頻移記錄軌道改變，南極負引力異常小於地形應有的缺額，容許底下有較密的補償物質。",
+      "limitations": "這次讀的是任務組說明。未以Iess原期刊全文複核，單一南極異常無法限出全球海。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S007",
+      "title": "Enceladus’s measured physical libration requires a global subsurface ocean",
+      "url": "https://doi.org/10.1016/j.icarus.2015.08.037",
+      "version": "arXiv:1509.07555作者稿，期刊2016年卷與2015年稿為同工作。",
+      "reading_scope": "PDF 3控制點、5圖1圖頁，11視覺與物理擺動分解，14–16實心/區域異常模型與全球海，18厚度假設。",
+      "locator": "PDF p.3 §2隕坑控制點、p.5圖1、p.11物理與視覺天平動分解、pp.14–16 §6、p.18厚度假設。",
+      "cache": {
+        "file": ".cache/wave39-space-lib.pdf",
+        "sha256": "a1b65daee0a3d83ba0952535736b5e22c7d02d8e020ee8da69bf08a90c34cdc5",
+        "text_file": ".cache/wave39-space-lib.txt",
+        "text_sha256": "b1993a76e759cc7115634d644c64a056c33d0d35c26fd9a7c4235f26a8d401e8"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "以跨年地標擬合擺動，觀測顯著超過剛連模型，也超過所試軸對稱南極區域補償；隔液層讓表殼相對岩核轉動。",
+      "limitations": "地標為實測，內部連結為動力模型。厚度數值隨密度及黏彈假設改變。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S008",
+      "title": "Warm and Dry on Iapetus",
+      "url": "https://science.nasa.gov/resource/warm-and-dry-on-iapetus/",
+      "version": "任務影像說明 PIA10012，比對2007-09-10同次飛掠兩項儀器量測。",
+      "reading_scope": "NASA Warm and Dry on Iapetus 正文前四段，同次飛掠熱圖與可見圖、損冰量計算與重新沉積。",
+      "locator": "任務說明第1–4段：同地可見光/正午溫度、失冰估算、向較冷地區遷移模型。",
+      "cache": {
+        "file": ".cache/wave39-space-iap.html",
+        "sha256": "27743b0042acc07d122396fb1f6a47b4c65251819ca5efe3a1b7769d7f157454",
+        "text_file": ".cache/wave39-space-iap.txt",
+        "text_sha256": "6e103b4950a8a6e6be571a10e587a9c3de9f7f333e5c933b69280bda978423af"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "同區正午暗斑較暖。長期模型給予更快失冰，在冷亮區重新積存可放大原來的明暗差。",
+      "limitations": "未另目讀傳回的影像；現場溫差與推算的長期冰遷移分開，沒有推定暗塵起源。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S009",
+      "title": "Topographic Constraints on the Evolution and Connectivity of Titan’s Lacustrine Basins",
+      "url": "https://doi.org/10.1002/2017GL075468",
+      "version": "2017原刊排版PDF，大學典藏。web工具讀取定點；未取得本機完整PDF。",
+      "reading_scope": "檔存原刊PDF web定點 L59–98，§2/3、Fig2圖說與Fig4討論。",
+      "locator": "§2與圖2、§3圖4討論，典藏PDF工具擷取L59–98，包括同次T108過境與同一流域空盆底部。",
+      "cache": {
+        "file": ".cache/wave39-space-titan-web.txt",
+        "sha256": "dcd6c8df12d31e46eb0a66d4a2e59853a90ebda54fd2d66e1995869faa4c74dc",
+        "text_file": ".cache/wave39-space-titan-web.txt",
+        "text_sha256": "dcd6c8df12d31e46eb0a66d4a2e59853a90ebda54fd2d66e1995869faa4c74dc"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "T108同次航跡校正重力等位面後，兩海面相近。部分遠湖高數百米；同流域所測乾盆底不低於局部液位，提供局部連通的檢驗。",
+      "limitations": "作者兩次直取典藏失敗，覆核只讀保存的指定原文行。未檢視原PDF圖像；跨流域水頭差與滲透性差異仍容許。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "S39-S001",
+      "title": "The B-ring’s surface mass density from hidden density waves: Less than meets the eye?",
+      "url": "https://doi.org/10.1016/j.icarus.2016.01.007",
+      "version": "arXiv:1601.07955v2（PDF首頁2016-02-17）。期刊同一研究。",
+      "reading_scope": "PDF 3–4 §2、式5，33表2和34圖19圖說與圖頁。",
+      "locator": "PDF pp.3–4 §2與式5，p.33表2及p.34圖19。",
+      "cache": {
+        "file": ".cache/wave39-space-mass.pdf",
+        "sha256": "fb1be7fe474fd3c2ee203c28d310d6b4f600d28f4a2b795ac922162c5932c2da",
+        "text_file": ".cache/wave39-space-mass.txt",
+        "text_sha256": "303699f09f3971460ef5b2ab8517b9e850a6825ef69f4a67b2e98b7db911c5d1"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "共振半徑以外，徑向波數隨半徑的斜率約束局部面質量。表2的遮光厚度差異可大於面密度差異。",
+      "limitations": "未外推無可用密度波的環段。星光透射、光學厚度及總面質量是不同量。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S002",
+      "title": "A diffuse core in Saturn revealed by ring seismology",
+      "url": "https://doi.org/10.1038/s41550-021-01448-3",
+      "version": "arXiv:2104.13385v2（PDF首頁2021-05-03）。期刊DOI同工作。",
+      "reading_scope": "PDF 2–3 W76.44、引力與模態擬合，5模型限制，7圖2圖說與圖頁。",
+      "locator": "PDF pp.2–3主文W76.44與模型對比，p.5討論模型限制，p.7圖2。",
+      "cache": {
+        "file": ".cache/wave39-space-core.pdf",
+        "sha256": "478643beeb16b4ea30f35463e0a8e39f1ba0878879aaef7d35c797521df07168",
+        "text_file": ".cache/wave39-space-core.txt",
+        "text_sha256": "a0eb3e66de17a73886672be2ee7f198a9066f5b03725691283af8d5d1803eaa1"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "成分漸變造成穩定分層，可以支持浮力回復振盪。極陡與幾乎延伸全半徑的梯度所預測的環共振均和所選觀測不符。",
+      "limitations": "屬模型比較，只能約束所試分層範圍，冰岩比例仍有退化解。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S003",
+      "title": "Incomplete cooling down of Saturn’s A ring at solar equinox: Implication for seasonal thermal inertia and internal structure of ring particles",
+      "url": "https://doi.org/10.1016/j.icarus.2015.06.025",
+      "version": "arXiv:1508.07375v1（識別列2015-08-28）。內頁排版日期不當成觀測日期。",
+      "reading_scope": "PDF 4日變探測深度，11圖3說明，37均勻模型與帶核模型，43結論。",
+      "locator": "PDF p.4分點異常，p.11圖3說明，p.37兩模型擬合及p.43 §6。",
+      "cache": {
+        "file": ".cache/wave39-space-cool.pdf",
+        "sha256": "719d735b7914c7e91978c9def2028f7448c1ff8ffa373e2974a52bc8b9282326",
+        "text_file": ".cache/wave39-space-cool.txt",
+        "text_sha256": "946f6bbecff02f07c58cc6929219bcca903be2fd5ce9b61019596ea1c80841a5"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "同一太陽仰角絕對值下，分點前/後溫度不同。較長的季節變化能探測比日變深的蓄熱。",
+      "limitations": "溫度曲線可由不同內部性質擬合。未重算參數或把粒子剖面當實物照。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S004",
+      "title": "Shadows from the Waves",
+      "url": "https://science.nasa.gov/resource/shadows-from-the-waves/",
+      "version": "任務影像說明 PIA12622，發布2010-04-29；觀測2009-06-28。",
+      "reading_scope": "NASA PIA12622圖說全文，達芙妮位置、Keeler環隙邊、平面內外分量、掠射光投影與日期。",
+      "locator": "PIA12622正文第1–2段環隙/波紋與第4段分點投影；末段視角與觀測日期。",
+      "cache": {
+        "file": ".cache/wave39-space-daph.html",
+        "sha256": "cd8adb7b274666355da5f8ec7960ab0d8a61f3b36c2601924d94b93bb9ec57cf",
+        "text_file": ".cache/wave39-space-daph.txt",
+        "text_sha256": "93c26fbb5f2257cbdd7b0960e15355735e2349b081056ed3ea778887241127b9"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "近分點的低角度陽光讓出環面波與衛星各投影，鋸齒狀的俯視外緣本身無法判高度。",
+      "limitations": "任務原始影像說明。此次只讀圖說，未另目讀這張影像或量高度。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S005",
+      "title": "The Population of Propellers in Saturn’s A Ring",
+      "url": "https://doi.org/10.1088/0004-6256/135/3/1083",
+      "version": "共同作者Hedman公開之2008期刊排版PDF。",
+      "reading_scope": "PDF 1–2 §2引力模型、徑向距離與亮斑歧義；4圖2–4與圖頁；8徑向與方位分量討論。",
+      "locator": "原刊pp.1083–1084 §2簡化模型與對亮度的保留，p.1086圖2–4，p.1090 §§5.4–5.5。",
+      "cache": {
+        "file": ".cache/wave39-space-prop.pdf",
+        "sha256": "7eb982ab63dd4e0a04db890198704f20cc22327b3338e0077e29cc17a2500a51",
+        "text_file": ".cache/wave39-space-prop.txt",
+        "text_sha256": "44903c1411fda0d545908e7b1f78ecf359ea37fc46f96907aba9c87e39adc393"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "內外軌剪切形成偏錯的斑對。徑向分離尺度在模型中與小天體的重力作用範圍相關；照片中亮的原因有歧義。",
+      "limitations": "雙斑能約束質量，但從斑長、亮度或模型輪廓不能直接量出中心月體的徑。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S006",
+      "title": "NASA Space Assets Detect Ocean inside Saturn Moon",
+      "url": "https://science.nasa.gov/missions/cassini/nasa-space-assets-detect-ocean-inside-saturn-moon/",
+      "version": "2014年任務研究說明，內含Iess與合作者對10.1126/science.1250551的解說。",
+      "reading_scope": "NASA 2014任務說明，自多普勒段至三次引力飛掠、Iess對南極補償的原話及噴流連結限制。",
+      "locator": "正文「Cassini has flown near Enceladus」至Iess說明補償的三段，上文DSN頻移說明。",
+      "cache": {
+        "file": ".cache/wave39-space-grav.html",
+        "sha256": "e54c79c1afa03c43a42bd8180937efcaf610973ab22ab2f2a63796a681dad409",
+        "text_file": ".cache/wave39-space-grav.txt",
+        "text_sha256": "33514899d4b6938564921608650c0011ee752d507fa076f4ec80515767b4d230"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "電波頻移記錄軌道改變，南極負引力異常小於地形應有的缺額，容許底下有較密的補償物質。",
+      "limitations": "這次讀的是任務組說明。未以Iess原期刊全文複核，單一南極異常無法限出全球海。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S007",
+      "title": "Enceladus’s measured physical libration requires a global subsurface ocean",
+      "url": "https://doi.org/10.1016/j.icarus.2015.08.037",
+      "version": "arXiv:1509.07555作者稿，期刊2016年卷與2015年稿為同工作。",
+      "reading_scope": "PDF 3控制點、5圖1圖頁，11視覺與物理擺動分解，14–16實心/區域異常模型與全球海，18厚度假設。",
+      "locator": "PDF p.3 §2隕坑控制點、p.5圖1、p.11物理與視覺天平動分解、pp.14–16 §6、p.18厚度假設。",
+      "cache": {
+        "file": ".cache/wave39-space-lib.pdf",
+        "sha256": "a1b65daee0a3d83ba0952535736b5e22c7d02d8e020ee8da69bf08a90c34cdc5",
+        "text_file": ".cache/wave39-space-lib.txt",
+        "text_sha256": "b1993a76e759cc7115634d644c64a056c33d0d35c26fd9a7c4235f26a8d401e8"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "以跨年地標擬合擺動，觀測顯著超過剛連模型，也超過所試軸對稱南極區域補償；隔液層讓表殼相對岩核轉動。",
+      "limitations": "地標為實測，內部連結為動力模型。厚度數值隨密度及黏彈假設改變。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S008",
+      "title": "Warm and Dry on Iapetus",
+      "url": "https://science.nasa.gov/resource/warm-and-dry-on-iapetus/",
+      "version": "任務影像說明 PIA10012，比對2007-09-10同次飛掠兩項儀器量測。",
+      "reading_scope": "NASA Warm and Dry on Iapetus 正文前四段，同次飛掠熱圖與可見圖、損冰量計算與重新沉積。",
+      "locator": "任務說明第1–4段：同地可見光/正午溫度、失冰估算、向較冷地區遷移模型。",
+      "cache": {
+        "file": ".cache/wave39-space-iap.html",
+        "sha256": "27743b0042acc07d122396fb1f6a47b4c65251819ca5efe3a1b7769d7f157454",
+        "text_file": ".cache/wave39-space-iap.txt",
+        "text_sha256": "6e103b4950a8a6e6be571a10e587a9c3de9f7f333e5c933b69280bda978423af"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "同區正午暗斑較暖。長期模型給予更快失冰，在冷亮區重新積存可放大原來的明暗差。",
+      "limitations": "未另目讀傳回的影像；現場溫差與推算的長期冰遷移分開，沒有推定暗塵起源。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    },
+    {
+      "source_id": "S39-S009",
+      "title": "Topographic Constraints on the Evolution and Connectivity of Titan’s Lacustrine Basins",
+      "url": "https://doi.org/10.1002/2017GL075468",
+      "version": "2017原刊排版PDF，大學典藏。web工具讀取定點；未取得本機完整PDF。",
+      "reading_scope": "檔存原刊PDF web定點 L59–98，§2/3、Fig2圖說與Fig4討論。",
+      "locator": "§2與圖2、§3圖4討論，典藏PDF工具擷取L59–98，包括同次T108過境與同一流域空盆底部。",
+      "cache": {
+        "file": ".cache/wave39-space-titan-web.txt",
+        "sha256": "dcd6c8df12d31e46eb0a66d4a2e59853a90ebda54fd2d66e1995869faa4c74dc",
+        "text_file": ".cache/wave39-space-titan-web.txt",
+        "text_sha256": "dcd6c8df12d31e46eb0a66d4a2e59853a90ebda54fd2d66e1995869faa4c74dc"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "T108同次航跡校正重力等位面後，兩海面相近。部分遠湖高數百米；同流域所測乾盆底不低於局部液位，提供局部連通的檢驗。",
+      "limitations": "作者兩次直取典藏失敗，覆核只讀保存的指定原文行。未檢視原PDF圖像；跨流域水頭差與滲透性差異仍容許。",
+      "read_via": "獨立核對作者當日副本與抽文SHA，實讀所列段落。這份覆核沒有另發HTTP請求。"
+    }
+  ],
+  "source_identity_review": "九筆來源分成五篇完整論文副本、一份原刊的定點取文、三份任務團隊說明。卡西尼資料共用任務與部分量測，來源數不代表獨立複驗次數。",
+  "source_reading_summary": "九筆指定段落均獨立讀已核SHA的快取，另實際目讀四個原始論文頁的合頁。備有圖說而未目讀的其他圖不當獨立圖像覆核。",
+  "source_fetch_limits": "此次沒有新HTTP。S39-S009兩條原取得路徑403，以實際web原刊段落讀回；S39-S006依NASA任務組正文處理，Iess 2014只作書目身份。模型未另重算。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave39-space-figure-check.jpg",
+      "sha256": "2a8deaae9564ce9a7aca994c19d970f409d3a0aa4692abdf47fd9c9dfeb248d2",
+      "scope": "實際查看PDF原頁合頁：B環遮光/面密度圖19、內部模型圖2、徑向/方位雙斑示意圖4與原始特徵圖2/3、冰衛星隕坑控制點圖1。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "S39-001",
+      "b": "N024",
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。N024查的是環由分立顆粒構成。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-001",
+      "b": "K6012",
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。K6012查的是固定水量改變雲滴大小而改反光。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-001",
+      "b": "O3061",
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。O3061查的是雙衛星間距時序反演重力場。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-002",
+      "b": "S39-001",
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-002",
+      "b": "N028",
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。N028查的是冰質分類與物質當下狀態。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-002",
+      "b": "P31001",
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。P31001查的是不同地震/聲波到時和來向定位火星撞坑。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-003",
+      "b": "R36007",
+      "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。R36007查的是小行星白天冷點與近地表熱慣性推孔隙，沒有同角度季節滯後與探深比較。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-003",
+      "b": "N024",
+      "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。N024查的是環由分立顆粒構成。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-004",
+      "b": "N025",
+      "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N025查的是內外兩環因半徑不同而有不同軌道速度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-004",
+      "b": "N279",
+      "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N279查的是地球曲率遮光讓高雲在日落後仍受光。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-005",
+      "b": "S39-004",
+      "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。S39-004查的是掠射光下環邊垂直波形成另一列波影。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-005",
+      "b": "N025",
+      "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。N025查的是內外兩環因半徑不同而有不同軌道速度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-006",
+      "b": "N023",
+      "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。N023查的是飛掠重力限制風暴向深處的質量分布。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-006",
+      "b": "O3063",
+      "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。O3063查的是分離區域重力變化的水儲量成分。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-006",
+      "b": "R009",
+      "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。R009查的是通訊訊號作觀測工具的一般用途。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-007",
+      "b": "LEG-S21",
+      "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。LEG-S21查的是潮汐鎖定及視角使可見月面超過一半。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-007",
+      "b": "S39-006",
+      "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。S39-006查的是負引力異常與南極地形預測缺額的補償差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-008",
+      "b": "N217",
+      "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。N217查的是深色吸光增加熱輸入；尚不含跨區冰遷移後對明暗的回饋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-008",
+      "b": "E17003",
+      "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。E17003查的是石塊遮擋輻射使下方冰消退慢，未改周圍反射率。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-009",
+      "b": "M2080",
+      "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。M2080查的是幾何高與重力位的基準差，沒有乾盆與滿湖的水位約束。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-009",
+      "b": "M2082",
+      "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。M2082查的是海拔基準選擇與地方平均海面差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-009",
+      "b": "N081",
+      "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。N081查的是地下水位與地形/透水層決定出露成泉。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "S39-001",
+      "b": "S39-004",
+      "cosine": 0.729394,
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。S39-004查的是掠射光下環邊垂直波形成另一列波影。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-001",
+      "b": "N018",
+      "cosine": 0.727022,
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。N018查的是木星環因細暗顆粒與背光觀測條件而難看見，沒有利用衛星共振的波距測局部面密度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-001",
+      "b": "N072",
+      "cosine": 0.717174,
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。N072查的是週期性凌日遮光找行星。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-001",
+      "b": "X13008",
+      "cosine": 0.69907,
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。X13008查的是星斑與凌日通道混入透射光譜。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-001",
+      "b": "X2054",
+      "cosine": 0.689399,
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。X2054查的是由散射偏振方向找出照明中心。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-002",
+      "b": "S39-004",
+      "cosine": 0.708831,
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。S39-004查的是掠射光下環邊垂直波形成另一列波影。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-002",
+      "b": "S39-001",
+      "cosine": 0.646703,
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-002",
+      "b": "N025",
+      "cosine": 0.603119,
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。N025查的是內外兩環因半徑不同而有不同軌道速度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-002",
+      "b": "R36010",
+      "cosine": 0.596287,
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。R36010查的是撞擊噴出碎屑的動量反衝增益。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-002",
+      "b": "P31002",
+      "cosine": 0.548303,
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。P31002查的是遮光降溫時熱應變使地震儀傾斜。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-003",
+      "b": "N008",
+      "cosine": 0.70382,
+      "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。N008查的是比較大氣保熱作用。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-003",
+      "b": "N007",
+      "cosine": 0.702557,
+      "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。N007查的是永久陰影低能量環境保存冰。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-003",
+      "b": "R006",
+      "cosine": 0.652057,
+      "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。R006查的是溫差使零件熱形變而光學失準。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-003",
+      "b": "N001",
+      "cosine": 0.649897,
+      "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。N001查的是晝夜加熱保熱條件和地表溫差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-003",
+      "b": "O3053",
+      "cosine": 0.642331,
+      "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。O3053查的是不同放射率造成相同真溫的紅外亮度差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-004",
+      "b": "S39-001",
+      "cosine": 0.729394,
+      "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-004",
+      "b": "S39-002",
+      "cosine": 0.708831,
+      "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-004",
+      "b": "N030",
+      "cosine": 0.698805,
+      "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N030查的是磁軸傾斜使極光偏離自轉極。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-004",
+      "b": "N071",
+      "cosine": 0.698512,
+      "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N071查的是行星引力令宿主恆星視線速度變動。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-004",
+      "b": "N039",
+      "cosine": 0.694065,
+      "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N039查的是同一太陽突出物在不同背景上呈亮暗。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-005",
+      "b": "O3061",
+      "cosine": 0.709031,
+      "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。O3061查的是雙衛星間距時序反演重力場。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-005",
+      "b": "N015",
+      "cosine": 0.703836,
+      "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。N015查的是小天體自重是否足以使整體近球形。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-005",
+      "b": "N025",
+      "cosine": 0.701111,
+      "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。N025查的是內外兩環因半徑不同而有不同軌道速度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-005",
+      "b": "E2112",
+      "cosine": 0.70072,
+      "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。E2112查的是均勻磁場下帶電粒子的非相對論迴轉週期。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-005",
+      "b": "O3012",
+      "cosine": 0.697127,
+      "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。O3012查的是天線沿軌道相干補償合成空間孔徑。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-006",
+      "b": "O3083",
+      "cosine": 0.718721,
+      "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。O3083查的是冰後回彈重新分配質量混入現代水儲量時序。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-006",
+      "b": "O3081",
+      "cosine": 0.714207,
+      "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。O3081查的是空間解析與平滑使鄰區重力訊號洩漏。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-006",
+      "b": "E11019",
+      "cosine": 0.688969,
+      "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。E11019查的是氣墊乾冰塊在砂坡上減摩留溝的地球試驗。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-006",
+      "b": "O3063",
+      "cosine": 0.682387,
+      "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。O3063查的是分離區域重力變化的水儲量成分。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-006",
+      "b": "S39-007",
+      "cosine": 0.678825,
+      "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-007",
+      "b": "R36002",
+      "cosine": 0.720429,
+      "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。R36002查的是使用接觸凹痕與姿態紀錄回溯登陸器彈跳位置。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-007",
+      "b": "O3088",
+      "cosine": 0.714324,
+      "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。O3088查的是以成對光束估橫坡分離軌跡偏差與高程變化。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-007",
+      "b": "S39-006",
+      "cosine": 0.678825,
+      "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。S39-006查的是負引力異常與南極地形預測缺額的補償差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-007",
+      "b": "N056",
+      "cosine": 0.675306,
+      "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。N056查的是冰原與沙漠的背景對比便於尋找隕石。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-007",
+      "b": "O3083",
+      "cosine": 0.644889,
+      "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。O3083查的是冰後回彈重新分配質量混入現代水儲量時序。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-008",
+      "b": "E11012",
+      "cosine": 0.670959,
+      "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。E11012查的是冰楔融失造成邊緣下陷與相對中心升高。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-008",
+      "b": "N007",
+      "cosine": 0.663093,
+      "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。N007查的是永久陰影低能量環境保存冰。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-008",
+      "b": "N274",
+      "cosine": 0.648633,
+      "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。N274查的是多重冰晶/空氣界面散射令雪呈白。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-008",
+      "b": "E17004",
+      "cosine": 0.642536,
+      "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。E17004查的是凹地多重反射聚光加強表面消退，改變尖塔間距與高度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-008",
+      "b": "N001",
+      "cosine": 0.637477,
+      "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。N001查的是晝夜加熱保熱條件和地表溫差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-009",
+      "b": "O3056",
+      "cosine": 0.677237,
+      "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。O3056查的是混合岸地回波造成海洋取高演算法鎖錯峰。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-009",
+      "b": "N102",
+      "cosine": 0.662525,
+      "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。N102查的是集水範圍與匯流時間造成河川洪峰時間差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-009",
+      "b": "O3065",
+      "cosine": 0.661435,
+      "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。O3065查的是浮標與水的壓縮性差產生中性浮力深度回復。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-009",
+      "b": "N185",
+      "cosine": 0.652545,
+      "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。N185查的是河流輸入與潮汐攪拌控制河口分層。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S39-009",
+      "b": "P32004",
+      "cosine": 0.650018,
+      "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。P32004查的是海底混濁流的侵蝕/堆積使陡坡面向上游遷移。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "additional_cross_wave_pairs": [
+    {
+      "a": "S39-001",
+      "b": "O3034",
+      "decision": "distinct",
+      "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。O3034查的是雷達反射的粒徑權重與雨量通量不同，依尺寸分布解釋非唯一性。"
+    },
+    {
+      "a": "S39-002",
+      "b": "N114",
+      "decision": "distinct",
+      "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。N114查的是地震S波是否傳播是判液態外核的材料條件，未藉環共振篩組成梯度。"
+    },
+    {
+      "a": "S39-004",
+      "b": "O3003",
+      "decision": "distinct",
+      "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。O3003查的是地形遮光與水面鏡面反射都可造成低回波。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "S39-001",
+        "b": "N024",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。N024查的是環由分立顆粒構成。"
+      },
+      {
+        "a": "S39-001",
+        "b": "K6012",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。K6012查的是固定水量改變雲滴大小而改反光。"
+      },
+      {
+        "a": "S39-001",
+        "b": "O3061",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。O3061查的是雙衛星間距時序反演重力場。"
+      },
+      {
+        "a": "S39-002",
+        "b": "S39-001",
+        "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。"
+      },
+      {
+        "a": "S39-002",
+        "b": "N028",
+        "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。N028查的是冰質分類與物質當下狀態。"
+      },
+      {
+        "a": "S39-002",
+        "b": "P31001",
+        "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。P31001查的是不同地震/聲波到時和來向定位火星撞坑。"
+      },
+      {
+        "a": "S39-003",
+        "b": "R36007",
+        "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。R36007查的是小行星白天冷點與近地表熱慣性推孔隙，沒有同角度季節滯後與探深比較。"
+      },
+      {
+        "a": "S39-003",
+        "b": "N024",
+        "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。N024查的是環由分立顆粒構成。"
+      },
+      {
+        "a": "S39-004",
+        "b": "N025",
+        "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N025查的是內外兩環因半徑不同而有不同軌道速度。"
+      },
+      {
+        "a": "S39-004",
+        "b": "N279",
+        "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N279查的是地球曲率遮光讓高雲在日落後仍受光。"
+      },
+      {
+        "a": "S39-005",
+        "b": "S39-004",
+        "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。S39-004查的是掠射光下環邊垂直波形成另一列波影。"
+      },
+      {
+        "a": "S39-005",
+        "b": "N025",
+        "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。N025查的是內外兩環因半徑不同而有不同軌道速度。"
+      },
+      {
+        "a": "S39-006",
+        "b": "N023",
+        "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。N023查的是飛掠重力限制風暴向深處的質量分布。"
+      },
+      {
+        "a": "S39-006",
+        "b": "O3063",
+        "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。O3063查的是分離區域重力變化的水儲量成分。"
+      },
+      {
+        "a": "S39-006",
+        "b": "R009",
+        "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。R009查的是通訊訊號作觀測工具的一般用途。"
+      },
+      {
+        "a": "S39-007",
+        "b": "LEG-S21",
+        "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。LEG-S21查的是潮汐鎖定及視角使可見月面超過一半。"
+      },
+      {
+        "a": "S39-007",
+        "b": "S39-006",
+        "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。S39-006查的是負引力異常與南極地形預測缺額的補償差。"
+      },
+      {
+        "a": "S39-008",
+        "b": "N217",
+        "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。N217查的是深色吸光增加熱輸入；尚不含跨區冰遷移後對明暗的回饋。"
+      },
+      {
+        "a": "S39-008",
+        "b": "E17003",
+        "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。E17003查的是石塊遮擋輻射使下方冰消退慢，未改周圍反射率。"
+      },
+      {
+        "a": "S39-009",
+        "b": "M2080",
+        "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。M2080查的是幾何高與重力位的基準差，沒有乾盆與滿湖的水位約束。"
+      },
+      {
+        "a": "S39-009",
+        "b": "M2082",
+        "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。M2082查的是海拔基準選擇與地方平均海面差。"
+      },
+      {
+        "a": "S39-009",
+        "b": "N081",
+        "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。N081查的是地下水位與地形/透水層決定出露成泉。"
+      },
+      {
+        "a": "S39-001",
+        "b": "S39-004",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。S39-004查的是掠射光下環邊垂直波形成另一列波影。"
+      },
+      {
+        "a": "S39-001",
+        "b": "N018",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。N018查的是木星環因細暗顆粒與背光觀測條件而難看見，沒有利用衛星共振的波距測局部面密度。"
+      },
+      {
+        "a": "S39-001",
+        "b": "N072",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。N072查的是週期性凌日遮光找行星。"
+      },
+      {
+        "a": "S39-001",
+        "b": "X13008",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。X13008查的是星斑與凌日通道混入透射光譜。"
+      },
+      {
+        "a": "S39-001",
+        "b": "X2054",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。X2054查的是由散射偏振方向找出照明中心。"
+      },
+      {
+        "a": "S39-002",
+        "b": "S39-004",
+        "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。S39-004查的是掠射光下環邊垂直波形成另一列波影。"
+      },
+      {
+        "a": "S39-002",
+        "b": "N025",
+        "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。N025查的是內外兩環因半徑不同而有不同軌道速度。"
+      },
+      {
+        "a": "S39-002",
+        "b": "R36010",
+        "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。R36010查的是撞擊噴出碎屑的動量反衝增益。"
+      },
+      {
+        "a": "S39-002",
+        "b": "P31002",
+        "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。P31002查的是遮光降溫時熱應變使地震儀傾斜。"
+      },
+      {
+        "a": "S39-003",
+        "b": "N008",
+        "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。N008查的是比較大氣保熱作用。"
+      },
+      {
+        "a": "S39-003",
+        "b": "N007",
+        "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。N007查的是永久陰影低能量環境保存冰。"
+      },
+      {
+        "a": "S39-003",
+        "b": "R006",
+        "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。R006查的是溫差使零件熱形變而光學失準。"
+      },
+      {
+        "a": "S39-003",
+        "b": "N001",
+        "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。N001查的是晝夜加熱保熱條件和地表溫差。"
+      },
+      {
+        "a": "S39-003",
+        "b": "O3053",
+        "reason": "S39-003查的是比較同角度的季節升降溫歷史及較深熱滲透。O3053查的是不同放射率造成相同真溫的紅外亮度差。"
+      },
+      {
+        "a": "S39-004",
+        "b": "N030",
+        "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N030查的是磁軸傾斜使極光偏離自轉極。"
+      },
+      {
+        "a": "S39-004",
+        "b": "N071",
+        "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N071查的是行星引力令宿主恆星視線速度變動。"
+      },
+      {
+        "a": "S39-004",
+        "b": "N039",
+        "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。N039查的是同一太陽突出物在不同背景上呈亮暗。"
+      },
+      {
+        "a": "S39-005",
+        "b": "O3061",
+        "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。O3061查的是雙衛星間距時序反演重力場。"
+      },
+      {
+        "a": "S39-005",
+        "b": "N015",
+        "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。N015查的是小天體自重是否足以使整體近球形。"
+      },
+      {
+        "a": "S39-005",
+        "b": "E2112",
+        "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。E2112查的是均勻磁場下帶電粒子的非相對論迴轉週期。"
+      },
+      {
+        "a": "S39-005",
+        "b": "O3012",
+        "reason": "S39-005查的是雙斑徑向間距與內嵌物體重力尺度的模型連結。O3012查的是天線沿軌道相干補償合成空間孔徑。"
+      },
+      {
+        "a": "S39-006",
+        "b": "O3083",
+        "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。O3083查的是冰後回彈重新分配質量混入現代水儲量時序。"
+      },
+      {
+        "a": "S39-006",
+        "b": "O3081",
+        "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。O3081查的是空間解析與平滑使鄰區重力訊號洩漏。"
+      },
+      {
+        "a": "S39-006",
+        "b": "E11019",
+        "reason": "S39-006查的是負引力異常與南極地形預測缺額的補償差。E11019查的是氣墊乾冰塊在砂坡上減摩留溝的地球試驗。"
+      },
+      {
+        "a": "S39-007",
+        "b": "R36002",
+        "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。R36002查的是使用接觸凹痕與姿態紀錄回溯登陸器彈跳位置。"
+      },
+      {
+        "a": "S39-007",
+        "b": "O3088",
+        "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。O3088查的是以成對光束估橫坡分離軌跡偏差與高程變化。"
+      },
+      {
+        "a": "S39-007",
+        "b": "N056",
+        "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。N056查的是冰原與沙漠的背景對比便於尋找隕石。"
+      },
+      {
+        "a": "S39-007",
+        "b": "O3083",
+        "reason": "S39-007查的是地標物理擺幅對剛連/水層解耦模型的判別。O3083查的是冰後回彈重新分配質量混入現代水儲量時序。"
+      },
+      {
+        "a": "S39-008",
+        "b": "E11012",
+        "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。E11012查的是冰楔融失造成邊緣下陷與相對中心升高。"
+      },
+      {
+        "a": "S39-008",
+        "b": "N007",
+        "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。N007查的是永久陰影低能量環境保存冰。"
+      },
+      {
+        "a": "S39-008",
+        "b": "N274",
+        "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。N274查的是多重冰晶/空氣界面散射令雪呈白。"
+      },
+      {
+        "a": "S39-008",
+        "b": "E17004",
+        "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。E17004查的是凹地多重反射聚光加強表面消退，改變尖塔間距與高度。"
+      },
+      {
+        "a": "S39-008",
+        "b": "N001",
+        "reason": "S39-008查的是升華失冰與冷區保冰改變明暗，再影響吸熱的回饋。N001查的是晝夜加熱保熱條件和地表溫差。"
+      },
+      {
+        "a": "S39-009",
+        "b": "O3056",
+        "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。O3056查的是混合岸地回波造成海洋取高演算法鎖錯峰。"
+      },
+      {
+        "a": "S39-009",
+        "b": "N102",
+        "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。N102查的是集水範圍與匯流時間造成河川洪峰時間差。"
+      },
+      {
+        "a": "S39-009",
+        "b": "O3065",
+        "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。O3065查的是浮標與水的壓縮性差產生中性浮力深度回復。"
+      },
+      {
+        "a": "S39-009",
+        "b": "N185",
+        "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。N185查的是河流輸入與潮汐攪拌控制河口分層。"
+      },
+      {
+        "a": "S39-009",
+        "b": "P32004",
+        "reason": "S39-009查的是利用同流域乾盆底與液面之間的上下界檢驗局地連通。P32004查的是海底混濁流的侵蝕/堆積使陡坡面向上游遷移。"
+      },
+      {
+        "a": "S39-001",
+        "b": "O3034",
+        "reason": "S39-001查的是衛星激波的徑向間距可獨立限制總面質量，與遮星透光度比較。O3034查的是雷達反射的粒徑權重與雨量通量不同，依尺寸分布解釋非唯一性。"
+      },
+      {
+        "a": "S39-002",
+        "b": "N114",
+        "reason": "S39-002查的是以與土星內部振盪共振的環波頻率限制成分過渡帶。N114查的是地震S波是否傳播是判液態外核的材料條件，未藉環共振篩組成梯度。"
+      },
+      {
+        "a": "S39-004",
+        "b": "O3003",
+        "reason": "S39-004查的是掠射光下環邊垂直波形成另一列波影。O3003查的是地形遮光與水面鏡面反射都可造成低回波。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "S39-NA001",
+      "reason": "環由各自運動的顆粒組成已有完整題。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N024"
+      ]
+    },
+    {
+      "id": "S39-NA002",
+      "reason": "半徑與週期關係已收；本批只當雙斑或環邊幾何的前提。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N025"
+      ]
+    },
+    {
+      "id": "S39-NA003",
+      "reason": "背光、顆粒大小與可見性已有。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N018"
+      ]
+    },
+    {
+      "id": "S39-NA004",
+      "reason": "局部面密度不能單獨決定起源與年代。",
+      "decision": "agree_not_added",
+      "existing_ids": []
+    },
+    {
+      "id": "S39-NA005",
+      "reason": "是軌道剪切在同一推斷中的一步。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-005",
+        "N025"
+      ]
+    },
+    {
+      "id": "S39-NA006",
+      "reason": "辨識圖樣屬同一題開場。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-005"
+      ]
+    },
+    {
+      "id": "S39-NA007",
+      "reason": "已納衛星驅動與內部振盪區隔，不能泛化所有波。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-001",
+        "S39-002"
+      ]
+    },
+    {
+      "id": "S39-NA008",
+      "reason": "兩種熱模型都能符合部分量測；不能從紅外亮度宣稱剖開過冰粒。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-003",
+        "R36007"
+      ]
+    },
+    {
+      "id": "S39-NA009",
+      "reason": "重力與旋轉線索支持水層，非生命偵測。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-006",
+        "S39-007"
+      ]
+    },
+    {
+      "id": "S39-NA010",
+      "reason": "潮汐鎖定與表觀天平動舊題已收。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "LEG-S21"
+      ]
+    },
+    {
+      "id": "S39-NA011",
+      "reason": "模型假設與局地結構會改變估算，資料不支持全球逐點厚度。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-007"
+      ]
+    },
+    {
+      "id": "S39-NA012",
+      "reason": "只換天體重述脈衝延遲，沒有新的解釋。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "O3054"
+      ]
+    },
+    {
+      "id": "S39-NA013",
+      "reason": "有限盆底與液位僅支持局部連通可能，不能畫出管網。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-009"
+      ]
+    },
+    {
+      "id": "S39-NA014",
+      "reason": "本次實讀溫度與熱回饋，不足判定最初暗料來源。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-008"
+      ]
+    },
+    {
+      "id": "S39-NA015",
+      "reason": "基本投影幾何只作辨別垂直環波的圖解。",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "S39-004"
+      ]
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W39S-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 81,
+      "core_totals": {
+        "S39-006": 46,
+        "S39-007": 35
+      },
+      "core_caps": {
+        "S39-006": 78,
+        "S39-007": 88
+      },
+      "chapter_seconds": [
+        46,
+        35
+      ],
+      "maximum_beat_seconds": 23,
+      "drop_if_read": "刪任一章剩35或46秒，從區域性證據到全球範圍的判別會斷開，撤此合題。",
+      "editorial_result": "先由缺額比較取得局部較密物質，再由不同年份的地標擺幅排除單一剛體模型，兩個線索能答局部／全球的追問。",
+      "timing_result": "ROOT_SAMPLE_VOICE_PLUS_VISUAL_ALLOWANCE"
+    },
+    {
+      "id": "W39S-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 66,
+      "core_totals": {
+        "S39-001": 66
+      },
+      "core_caps": {
+        "S39-001": 82
+      },
+      "chapter_seconds": [
+        32,
+        34
+      ],
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "去一章只剩34或32秒，若欠缺波距這把尺或取樣點對照，撤本案。",
+      "editorial_result": "第一章讀星光變暗，第二章讀共振波距，兩個讀數相互檢驗。",
+      "timing_result": "PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39S-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 85,
+      "core_totals": {
+        "S39-004": 39,
+        "S39-005": 46
+      },
+      "core_caps": {
+        "S39-004": 70,
+        "S39-005": 78
+      },
+      "chapter_seconds": [
+        39,
+        46
+      ],
+      "maximum_beat_seconds": 23,
+      "drop_if_read": "任刪一章剩46或39秒，兩種觀測的比較隨之消失，撤合題；若不能交代亮斑與模型缺口的區別也撤。",
+      "editorial_result": "從可定位衛星造成的垂直影，轉至看不清的月體與平面雙斑，兩種推論分框。",
+      "timing_result": "PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39S-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 58,
+      "core_totals": {
+        "S39-008": 58
+      },
+      "core_caps": {
+        "S39-008": 80
+      },
+      "chapter_seconds": [
+        29,
+        29
+      ],
+      "maximum_beat_seconds": 19,
+      "drop_if_read": "拿掉一章只剩29秒，缺實測溫差或冰的傳輸，撤案。",
+      "editorial_result": "實測黑白溫差與推算跨區再沉積組成單一正回饋。",
+      "timing_result": "PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39S-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 63,
+      "core_totals": {
+        "S39-009": 63
+      },
+      "core_caps": {
+        "S39-009": 83
+      },
+      "chapter_seconds": [
+        31,
+        32
+      ],
+      "maximum_beat_seconds": 17,
+      "drop_if_read": "去一章只剩32或31秒，失去跨區和區內兩種尺度的檢驗，撤案。",
+      "editorial_result": "同趟過境消除部分基準不確定性，然後縮到同流域比較乾盆與湖面，不把連通推論畫成通道。",
+      "timing_result": "PAPER_BUDGET_NOT_READ_ALOUD"
+    }
+  ],
+  "timing_probe": {
+    "theme_id": "W39S-T01",
+    "local_voice_receipt": {
+      "file": ".cache/wave39-ocean-read.json",
+      "sha256": "fb30532d926db4c28bff5eea0e2ffadeab470dac0a4c10ad0c94da450b7febdf"
+    },
+    "local_wave": {
+      "file": ".cache/wave39-ocean-read-3.wav",
+      "sha256": "513a2818ae2840d7397fe71d247cf191f7b25ed24396583887755bbe414960b0"
+    },
+    "continuous_seconds": 71.579,
+    "adopted_seconds": 81,
+    "scope": "獨立讀根編輯樣稿並核WAV幀數。未宣稱自己做真人試讀或觀看成片。"
+  },
+  "corrections": [
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "finding": "S39-001光學厚度及總物質面密度不能用被遮掉的光量翻倍與純冰量等比例作量測表述。",
+      "question_after": "土星環有一段更不透光，裡面的物質就一定更多嗎？",
+      "result": "現題比較更不透光區是否必有更多物質，配合原答保留表2的局部取樣與總面密度。"
+    },
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "finding": "原97秒中兩次模型回扣可合。",
+      "result": "根試讀後81秒=46+35，刪16秒、保留兩種觀測的範圍。"
+    }
+  ],
+  "first_retrieval": {
+    "neighbours": {
+      "file": ".cache/wave39-life-review-space-initial-neighbours.json",
+      "sha256": "b223ccb325118692326acfffb41760d24e99d3e7430613f60755daa04c13e752"
+    },
+    "draft_sha256": "9a67fc4cb56300c1cfcd74f8b02971dcb5e7b8e292f23a93557abeadc5132005"
+  },
+  "draft_sha256": "85f2d2f5de8610393abbfb08d8746182b4cc571afad1768c2c7527bb0655f990",
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "85f2d2f5de8610393abbfb08d8746182b4cc571afad1768c2c7527bb0655f990",
+    "neighbours": {
+      "file": ".cache/wave39-space-neighbours.json",
+      "sha256": "7313c6552169676f1d69973206f8756630188b92fa14d0123fb41443dfc9afb0"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave39-draft.json",
+      "sha256": "2efb438a2cd922986f5d23feb8a1ddf99760360a4379f99b2b3ecc9f77bb6f90"
+    },
+    "directed_pairs": 45,
+    "before_rows_identical": false,
+    "old_to_final_new_neighbours": {
+      "S39-001": [
+        "N018"
+      ],
+      "S39-002": [],
+      "S39-003": [],
+      "S39-004": [],
+      "S39-005": [],
+      "S39-006": [],
+      "S39-007": [
+        "O3083"
+      ],
+      "S39-008": [],
+      "S39-009": []
+    },
+    "written_files_verified": true
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "本收據僅到選題／題案階段，正式影像需要再核每張照片視角與使用授權。"
+  ]
+}

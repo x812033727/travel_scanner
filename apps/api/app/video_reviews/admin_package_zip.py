@@ -42,16 +42,46 @@ def parse_entries(raw: list[str]) -> list[tuple[str, str]]:
     return entries
 
 
-def resolve_entries(
-    store: ReviewStore, slug: str, shown: list[list[Any]], entries: list[tuple[str, str]]
-) -> list[tuple[str, Path]]:
-    """Each wanted file's path, when a review of the video shows it and the store still has it."""
-    known = {
+def _known(shown: list[list[Any]]) -> set[str]:
+    return {
         str(item["sha256"])
         for files in shown
         for item in files
         if isinstance(item, dict) and "sha256" in item
     }
+
+
+def check_entries(
+    store: ReviewStore, slug: str, shown: list[list[Any]], entries: list[tuple[str, str]]
+) -> tuple[list[dict[str, str]], int]:
+    """Every wanted file the archive could not hold, with why, and the bytes of the rest.
+
+    ``reason`` is ``not_shown`` when no review of the video lists the file (the page is stale)
+    and ``gone`` when a review does but the store no longer has it (pruned after YouTube and
+    Drive, docs/videos/BACKUP.md). The page asks this before it hands the zip link to the
+    browser, because a download that fails at its first byte only says "failed" (2026-11-04:
+    the owner's 全部下載 of daily-ai-20261103 got four bare 404s after the store was pruned).
+    """
+    known = _known(shown)
+    missing: list[dict[str, str]] = []
+    size = 0
+    for sha256, name in entries:
+        if sha256 not in known:
+            missing.append({"name": name, "reason": "not_shown"})
+            continue
+        path = store.path(slug, sha256)
+        if path is None:
+            missing.append({"name": name, "reason": "gone"})
+            continue
+        size += path.stat().st_size
+    return missing, size
+
+
+def resolve_entries(
+    store: ReviewStore, slug: str, shown: list[list[Any]], entries: list[tuple[str, str]]
+) -> list[tuple[str, Path]]:
+    """Each wanted file's path, when a review of the video shows it and the store still has it."""
+    known = _known(shown)
     resolved: list[tuple[str, Path]] = []
     for sha256, name in entries:
         path = store.path(slug, sha256) if sha256 in known else None

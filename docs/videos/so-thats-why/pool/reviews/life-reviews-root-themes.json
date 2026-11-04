@@ -1,0 +1,61 @@
+{
+  "review_id": "life-reviews-root-themes-wave2-20261101",
+  "reviewer": "pool_life_tech",
+  "reviewed_on": "2026-11-01",
+  "input": {
+    "path": "docs/videos/so-thats-why/pool/.cache/root-themes.json",
+    "sha256": "378f559b2c5b8bbcafddf9646f73a09e86127be9735e76ed4ee5aa7a9ec92348"
+  },
+  "scope": "逐組讀 G13–G16 企劃及其所有引用題目/答案目標；檢查主線、片長、章節刪減與 ID。這是候選企劃編輯審閱，沒有劇本、旁白、成片或試讀，不能標盲讀通過。",
+  "mechanical_check": {
+    "all_candidate_ids_resolve": true,
+    "chapter_seconds_equal_target": true,
+    "seconds": {
+      "G13": 540,
+      "G14": 600,
+      "G15": 540,
+      "G16": 540
+    }
+  },
+  "required_changes": [
+    {
+      "theme_id": "G15",
+      "location": "第二章「經緯度後面還缺什麼」150 秒",
+      "reason": "M2083/84 的平面錯位及保留轉換原值，沒有直接回答同山高度差；此處會把固定高度主線岔成座標資料管理課。",
+      "change": "僅保留能以同一剖面明示的高程基準/時點差異；平面經緯與保存原值移出，縮短章節並重新計時。刪後不足 8 分鐘應改短解說或暫緩，不能補名詞湊時長。"
+    },
+    {
+      "theme_id": "G16",
+      "location": "結尾「看到了邊界，還沒看見中心」",
+      "reason": "與 X2042 自己區分陰影及事件視界的目標矛盾，容易把重建亮環/中央暗區說成直接拍到事件視界。",
+      "change": "改成影像能約束哪些性質及中心仍不可見，不能使用「看到了邊界」總結。"
+    },
+    {
+      "theme_id": "G16",
+      "location": "觀測圖與 150 秒盤形模擬段",
+      "reason": "有分標觀測/模擬是正確起點，但一般薄盤彎曲示意不能直接當 EHT 相應物件的已解析形狀。",
+      "change": "明列開場採用哪一張觀測影像，模型的視角、光學厚度/發光幾何僅在所需範圍交代；每段回到該影像能否驗證，不能將彎曲雙隆起當觀測已見。維持 EHT 原資料與重建說明補齊前暫緩。"
+    }
+  ],
+  "no_mandatory_rewrite": [
+    "G13 同一物品追溯標準再回桌面具連續因果，現刪年份/人物條件足夠。",
+    "G14 同資料逐步露出摘要遺漏可成立；重複極值影響已列合併條件，是否能達 10 分鐘須實際視覺與試讀，不先保證。"
+  ],
+  "status": "REVISION_REQUIRED_AT_TREATMENT_LEVEL",
+  "production_ready": false,
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "input_sha256": "378f559b2c5b8bbcafddf9646f73a09e86127be9735e76ed4ee5aa7a9ec92348",
+    "readback": [
+      {
+        "id": "G15",
+        "result": "已移出 M2084，第二章限同山高程參考/時點，120秒，總510秒=8.5分鐘；企劃跑題問題已解。需先拿到具體高程時點資料，若與第一章重複則刪，不以年代名詞填滿120秒。"
+      },
+      {
+        "id": "G16",
+        "result": "尾章已改「影像約束了什麼，中心仍然看不到」，誤稱拍到邊界已解。原觀測/模型條件仍留為 treatment 證據缺口，不視為完整影片通過。"
+      }
+    ],
+    "status": "EDITORIAL_FIXES_RESOLVED_EVIDENCE_GATES_REMAIN"
+  }
+}

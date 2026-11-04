@@ -1,0 +1,981 @@
+{
+ "reviewer": "non-author",
+ "read_files": [
+  "docs/videos/history-curiosity/topics.json",
+  "docs/videos/history-curiosity/topics-fg.json",
+  "docs/videos/history-curiosity/README.md",
+  "docs/videos/history-curiosity/pool/dedup-decisions.json",
+  "（作者題案草稿 themes_legacy.py，已寫進 pool/themes.json）",
+  "docs/videos/history-curiosity/pool/external/so-thats-why-cores.json",
+  "docs/videos/history-curiosity/pool/legacy/branch-episodes.json",
+  "docs/videos/history-curiosity/pool/legacy/w-axis.json",
+  "docs/videos/curio-*/video.json（逐一取標題）",
+  "docs/videos/curio-h03-v2/script.md（#103 車里雅賓斯克）",
+  "docs/videos/curio-h01-v2/script.md（百慕達）",
+  "docs/videos/curio-h24/brief.md、claims.md",
+  "docs/videos/history-curiosity/remake-20261020/curio-s08|s38|s39/video.json",
+  "docs/videos/so-thats-why/schedule.csv（B03 可口可樂）",
+  "docs/videos/long-form/plans.json（B03 premise）"
+ ],
+ "decisions": [
+  {
+   "kind": "merge",
+   "ids": "M01→H18",
+   "verdict": "AGREE",
+   "reason": "同一條因果鏈：Flight 19 是百慕達傳說的頭號案例，『三角』一詞 1964 年才由雜誌造出、靠書賣起來；M01 的保費／事故率是同一個傳說的結論章。M01 單獨只有一句統計。",
+   "suggested_change": "H18 製作時要另找一手：勞合社或保險業的說法常被轉引，原句與年份要查到原件，查不到就只用海岸防衛隊的說明。H01 v2 已有一句『有人把她算進百慕達三角』，T23 不再提瑪麗賽勒斯特號。"
+  },
+  {
+   "kind": "merge",
+   "ids": "L04→H18",
+   "verdict": "AGREE",
+   "reason": "『龍三角／魔鬼海』是同一批作者（Sanderson、Berlitz）把百慕達模式搬到日本外海，換地點不換答案；1952 年第五海洋丸遇明神礁噴發是對照章。",
+   "suggested_change": "這章涉及 31 名罹難者，只講海上保安廳紀錄與火山，不畫船難。"
+  },
+  {
+   "kind": "merge",
+   "ids": "M24→H03",
+   "verdict": "CHANGE",
+   "reason": "結果（不另開長片）對，但理由不準：H03 已經製作，curio-h03-v2/script.md #103–#104 已經用車里雅賓斯克收尾，所以這不是『併進候補題』而是撞已製作集數。而且 M24 題卡自己的核心問題是『為什麼全世界望遠鏡沒看到它來』（從太陽方向來），不是『為什麼沒坑』——它還撈到 650 公斤碎塊，答案跟 H03 相反。",
+   "suggested_change": "改記為『與已製作 H03 撞題』；M24 只留 Shorts（白天從太陽方向來的盲區），不再當 H03 的一章。"
+  },
+  {
+   "kind": "merge",
+   "ids": "F34→M17",
+   "verdict": "DISAGREE",
+   "reason": "同一個場景不等於同一個核心答案。M17 的答案是『沒有夏天當時沒人連到火山，1913 年才寫進論文』；F34 的答案是『吸血鬼原本是浮腫的農民屍體，1819 年波里道利（借拜倫之名出版）才把它寫成優雅貴族，再到 1897《德古拉》』——這是 F 軸的『原版不一樣』，不是火山。併進 M17 會把吸血鬼形象史整條刪掉，或讓 M17 岔題。",
+   "suggested_change": "改為 distinct：F34 重寫成『吸血鬼原本不是貴族』，迪奧達蒂只當一章；M17 只用一兩句帶過別墅那一季，兩集不重講同一段。"
+  },
+  {
+   "kind": "merge",
+   "ids": "H38→H37",
+   "verdict": "CHANGE",
+   "reason": "兩件假證據的拆穿理由不同（石碑是 19 世紀瑞典方言特徵、地圖是 20 世紀鈦白墨水），H38 自己的角度是『一塊石頭怎麼變成小鎮身分』。這是同類別、不同答案，照判準應是 distinct＋同一題案，不是 merge。實際產出不變（T09 已把兩件排在一起）。",
+   "suggested_change": "改記為 distinct 並列進 T09；T09 的 connection 寫成『H37（併入 H38）』方向寫反，一併改正。"
+  },
+  {
+   "kind": "merge",
+   "ids": "M36→M11",
+   "verdict": "AGREE",
+   "reason": "目前最站得住的解釋相同（集體心因性疾病），換時代與地點不算新核心；1963 年醫學期刊報告當對照章即可。",
+   "suggested_change": "照題卡的限制：不下醫學結論；當年的學生多半在世，不點名、不畫臉。"
+  },
+  {
+   "kind": "merge",
+   "ids": "M35→M05",
+   "verdict": "DISAGREE",
+   "reason": "答案不同：聖艾爾摩之火是早有定論的尖端放電，球狀閃電到今天沒定論。作者自己的理由『哪些怪光解開了、哪個還沒』正是題案邏輯（跟 M10/M12 被判 distinct 的理由一樣），不是 merge。M35 本身一句就答完。",
+   "suggested_change": "M35 改列 Shorts；若要長片，排成『怪光』題案（M05 未解＋M21 地震光半解＋M35 已解），不記為重複。"
+  },
+  {
+   "kind": "merge",
+   "ids": "U33→U01",
+   "verdict": "AGREE",
+   "reason": "同一條因果鏈：1978 年起羅斯威爾故事復活，1984/87 年的 MJ-12 文件是『政府藏殘骸』說法的第二份『證據』，FBI 檔案蓋 BOGUS 正好收在 U01 結尾。"
+  },
+  {
+   "kind": "merge",
+   "ids": "U20→U05",
+   "verdict": "AGREE",
+   "reason": "同一條鏈：2017 年《紐約時報》與三段影片 → 2020 年國防部公開 → 2021 年 ODNI 報告。",
+   "suggested_change": "飛行員在世，照片卡用剪影；U05 不要變成 2021 年以後新聞的追蹤報導。"
+  },
+  {
+   "kind": "merge",
+   "ids": "P03→P16",
+   "verdict": "AGREE",
+   "reason": "2012 末日是同一個日期、同一場流行：Nibiru 說被搬到 2012，馬雅長紀曆是同一場末日的另一條來源。",
+   "suggested_change": "馬雅那章要有自己的檔案（Tortuguero 6 號碑、帕倫克碑文寫到 4772 年），不能只有『里程表歸零』一句。P16 牽涉的 Nibiru 網站主持人仍在世，只講網站與日期，不畫、不評論本人。"
+  },
+  {
+   "kind": "merge",
+   "ids": "P02→P01",
+   "verdict": "AGREE",
+   "reason": "同一首四行詩（X.72）、同一種事後對號；換國家不算新題。",
+   "suggested_change": "建議反過來用 P02 當主線：『1999 年 7 月的日本』是唯一一次事前指定日期、能驗證落空的案例，比泛講諾查丹瑪斯更有故事，也避免 P01 變成應驗清單。"
+  },
+  {
+   "kind": "merge",
+   "ids": "P19→P13",
+   "verdict": "AGREE",
+   "reason": "同一個答案（行星會合的引力潮汐小到可忽略）；1919 年的報紙在國會圖書館報紙庫可貼，是好前情章。"
+  },
+  {
+   "kind": "merge",
+   "ids": "P20→P13",
+   "verdict": "AGREE",
+   "reason": "答案相同；但要注意它是宗教儀式場景（寺廟誦經），照 README 不評價信仰。",
+   "suggested_change": "見 T24：P12（已查核）比 P20 更適合當這組的對照章，P20 可降為一句或刪。"
+  },
+  {
+   "kind": "merge",
+   "ids": "P31→P22",
+   "verdict": "CHANGE",
+   "reason": "『查不到原始出處』是一個類別，不是同一個答案：每句名言（Watson 五台電腦、640K、專利局長）各有不同的流傳鏈。P31 題卡本身就是『五到六句』的清單，照判準應淘汰，而不是併進 P22 讓 P22 變清單。",
+   "suggested_change": "P31 改列 drop（清單）；P22 單做『馬糞危機』，最多帶一句有完整追查鏈的名言當插話。見 T25。"
+  },
+  {
+   "kind": "merge",
+   "ids": "P29→P14",
+   "verdict": "AGREE",
+   "reason": "同一個答案（大量嘗試裡命中的被記住）。附帶一提，『七百多集總會撞上』的論證其實更接近 P09 的大文本統計，排章時可借 P09 的說法。",
+   "suggested_change": "辛普森畫面有著作權，照題卡只用卡片轉述。"
+  },
+  {
+   "kind": "merge",
+   "ids": "P30→P26",
+   "verdict": "AGREE",
+   "reason": "同一個答案：最有名的預言是死後別人代寫或追授。"
+  },
+  {
+   "kind": "merge",
+   "ids": "P27→P11",
+   "verdict": "AGREE",
+   "reason": "有條件同意：預言母雞的主人 Mary Bateman 一般記載跟索斯科特的信徒圈有關，查得到就是同一運動的周邊；查不到改 Shorts，作者已寫。",
+   "suggested_change": "補風險：Bateman 1809 年因毒殺案被處絞刑、遺骨曾公開展示，這段只能一句帶過，不講死因細節。"
+  },
+  {
+   "kind": "merge",
+   "ids": "F36→P08",
+   "verdict": "AGREE",
+   "reason": "F36 的『細菌打敗火星人』是情節事實，不是流傳版本被原典修正，單做撐不起 F 軸的翻轉；當 1938 廣播的背景章合理。"
+  },
+  {
+   "kind": "merge",
+   "ids": "G12→H24",
+   "verdict": "AGREE",
+   "reason": "核心答案相同（木乃伊詛咒是報紙與作家造的），且兩者歷史上相連（1923 年卡納文之死讓大英博物館棺蓋傳說再紅一次）。H24 已製作，所以實際是『撞已製作集數 → Shorts』。",
+   "suggested_change": "記錄寫明 H24 已上架、腳本沒用到大英博物館棺蓋（EA 22542）與鐵達尼號，Shorts 可用，不要回頭改 H24。"
+  },
+  {
+   "kind": "merge",
+   "ids": "G17→L17",
+   "verdict": "CHANGE",
+   "reason": "『它是一篇 2ch 貼文』是類別，不是同一個答案：L17 的檔案是 2004 年那串原文與 2022 年遠州鐵道的紀念車票，G17 是 2008 年另一篇洒落怖。換角色不算新題這點成立，但 G17 本身一句就答完，正確處置是 Shorts（或 L17 裡一段插話），而不是記成重複題。",
+   "suggested_change": "G17 改列 Shorts；L17 單做，不需要 G17 撐片長。"
+  },
+  {
+   "kind": "merge",
+   "ids": "G15→L01",
+   "verdict": "DISAGREE",
+   "reason": "錯併。G15 魔神仔是百年山林信仰，答案在林美容、李家愷 2014 年的口述研究（迷途、失智、山區環境與社會功能）；L01 是 1998 年電視播出的一段影片怎麼變成傳說。兩者的連結是 2015 年電影替紅衣小女孩安上魔神仔的設定，那是後來的改編，不是同一個核心答案。",
+   "suggested_change": "改為 distinct：G15 獨立成 G 軸亞洲篇；L01 本身沒有可驗證的檔案、拍攝者在世，反而較適合降為 G15 的一章（『一段影片怎麼把魔神仔換成紅衣小女孩』）。G15 的迷途個案多為近年失蹤或死亡者，不點名。"
+  },
+  {
+   "kind": "merge",
+   "ids": "G20→G04",
+   "verdict": "AGREE",
+   "reason": "同一個機制（意念動作），法拉第 1853 年的實驗正是解開通靈板的鑰匙。",
+   "suggested_change": "照靈異守則第 2 條，只講歷史與實驗，不講操作步驟。"
+  },
+  {
+   "kind": "merge",
+   "ids": "G14→G04",
+   "verdict": "DISAGREE",
+   "reason": "扶乩在台灣仍是活的宗教實踐（鸞堂、善書），README 靈異守則第 5 條明列『扶乩照信眾自己的說法講，不評價』，§不收也排除『還在執業的通靈人與宮廟』。把它放進標題『筆是誰在推？』、答案是意念動作的一集，等於替現存信仰下結論，正好踩線。G14 的有價值部分是明清文人與乩壇詩集的文獻史，跟 G04 不是同一個答案。",
+   "suggested_change": "從 G04／T27 拿掉 G14；G14 改列 drop（或只在題目改成『明清文人的乩壇詩集』、不下機制結論時再提）。"
+  },
+  {
+   "kind": "merge",
+   "ids": "L07→L06",
+   "verdict": "DISAGREE",
+   "reason": "類別合併：十三號星期五的答案是 1907 年小說與 19 世紀末報紙，黑貓的答案是中世紀歐洲對巫術的恐懼與各地習俗，兩個核心答案不同。作者自己承認 L07『單獨只有一句』——那是 drop／Shorts 的理由，不是 merge 的理由。T11 也只給黑貓 60 秒、內容『只講查得到的』，是湊時間。T11 的 connection 還把方向寫成『L06（併入 L07 黑貓）』。",
+   "suggested_change": "L07 改列 Shorts（或 drop）；T11 刪掉黑貓章。"
+  },
+  {
+   "kind": "merge",
+   "ids": "F18→F17",
+   "verdict": "AGREE",
+   "reason": "不只同類別，是同一條來源鏈：木馬與阿基里斯之死都在《伊里亞德》之外的史詩詩系（已失傳），現存完整版本出自維吉爾與斯塔提烏斯。一集講『特洛伊戰爭裡不在荷馬的部分』成立。"
+  },
+  {
+   "kind": "merge",
+   "ids": "U30→S49",
+   "verdict": "AGREE",
+   "reason": "同一題（1835 年《太陽報》月球騙局），S49 已在 codex/curio-preproduction-s46-s56-20261020 分支有草稿與研究。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "M16 / M17",
+   "verdict": "AGREE",
+   "reason": "兩座火山、兩個答案（當年就連起來 vs 1913 年才連起來），各自查核過、撐得起一集。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "P17 / S50",
+   "verdict": "AGREE",
+   "reason": "666 的期待與事後解讀 vs 起火點；但同一場火現在有三集（S38 已在 remake-20261020、S50 在分支、P17），排程要拉開，P17 不重講布丁巷。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "P17 / S38",
+   "verdict": "AGREE",
+   "reason": "核心問題不同；S38 已有 remake 目錄，視為已製作。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "H06 / H29",
+   "verdict": "AGREE",
+   "reason": "不同案件、不同證據（心臟的保存鏈）。但三集都以『粒線體 DNA 判定不是王族』收尾，觀眾會覺得重複，見 T08。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "H15 / H29",
+   "verdict": "AGREE",
+   "reason": "流傳版本來源不同；見 T08 對排法的意見。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "M10 / M12",
+   "verdict": "AGREE",
+   "reason": "一解一未解，答案不同。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "M07 / M23",
+   "verdict": "AGREE",
+   "reason": "冰震 vs 真實的鯨，答案不同。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "M07 / M26",
+   "verdict": "AGREE",
+   "reason": "冰震 vs 鯡魚，答案不同。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "U29 / U41",
+   "verdict": "AGREE",
+   "reason": "兩份證據、兩個反駁。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "M08 / U28",
+   "verdict": "AGREE",
+   "reason": "形狀與加速度 vs 恆星變暗，答案不同。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "U06 / U27",
+   "verdict": "AGREE",
+   "reason": "實物 vs 電波，內容與爭議不同；但見 T05，兩題都缺翻轉。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "U05 / U18",
+   "verdict": "AGREE",
+   "reason": "不同機構、不同年代的檔案與分類法。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "U01 / U39",
+   "verdict": "AGREE",
+   "reason": "答案不同（Mogul 氣球 vs 天幕氣球加缺氧）。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "U15 / U24",
+   "verdict": "AGREE",
+   "reason": "年代與證據完全不同。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "P09 / P14",
+   "verdict": "AGREE",
+   "reason": "統計方法的錯 vs 選擇性記憶。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "P01 / P25",
+   "verdict": "AGREE",
+   "reason": "答案不同；但 P25 有另外的政治風險，見 missed。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "P11 / P26",
+   "verdict": "AGREE",
+   "reason": "封印傳說 vs 後人代寫。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "H25 / H37",
+   "verdict": "AGREE",
+   "reason": "解讀錯 vs 造假。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "F24 / G23",
+   "verdict": "AGREE",
+   "reason": "無關。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "L28 / G02",
+   "verdict": "AGREE",
+   "reason": "剪紙 vs 重複曝光。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "L28 / G19",
+   "verdict": "AGREE",
+   "reason": "有自承 vs 沒自承。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "H37 / S22",
+   "verdict": "AGREE",
+   "reason": "一假一真，同題案合理。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "L06 / L14",
+   "verdict": "AGREE",
+   "reason": "不同文件、不同答案。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "U14 / U39",
+   "verdict": "AGREE",
+   "reason": "答案不同；但兩題都是 README §U 軸說書版點名的單人主角題，見 T06。"
+  },
+  {
+   "kind": "distinct",
+   "ids": "U21 / U40",
+   "verdict": "AGREE",
+   "reason": "答案不同；U40 同樣是 README 點名的說書版主角題，見 T07。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "M02 transfer",
+   "verdict": "AGREE",
+   "reason": "純科普，原來如此事務所已有 X2020 同一題。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "M33 transfer",
+   "verdict": "AGREE",
+   "reason": "量測型科普，沒有流傳版本被紀錄修正，也沒有一份檔案可開。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "L15 transfer",
+   "verdict": "AGREE",
+   "reason": "同意轉出，但理由要修：題卡寫的『磷化氫加甲烷』本身沒有定論（實驗室重現不等於野外觀測），不能在轉出紀錄裡寫成『答案是一個化學反應』。",
+   "suggested_change": "轉出單寫『機制仍有爭議』，避免姊妹系列照抄成定論。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "M19 transfer",
+   "verdict": "AGREE",
+   "reason": "多因素科普，沒有一案一檔。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "M32 transfer",
+   "verdict": "AGREE",
+   "reason": "地點與氣象介紹，沒有翻轉。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "P04 transfer",
+   "verdict": "DISAGREE",
+   "reason": "兩個理由都不成立。(1) 題卡本身就有翻轉：流行說法是『Y2K 是一場虛驚／騙局』，紀錄（美國參議院特別委員會 1999 年報告、GAO、2000 年初少數真實故障）顯示問題是真的、是修好了才沒事——正是『流傳版本被紀錄修正』，也有可開的檔案。(2) 跟 LEG-A25 不是同一條因果鏈：Y2K 是兩位數年份，2038 是 32 位元有號 time_t 溢位，機制不同。README §題材 的 P 軸例子還明列 Y2K。",
+   "suggested_change": "留在 P 軸；開拍前查參議院報告與當年的末日周邊（囤貨、末日教會）。若站主想讓姊妹系列做，也應記為『相關、不同題』，不是同一題。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "L20 transfer",
+   "verdict": "CHANGE",
+   "reason": "轉出目標寫成『品牌故事（或 W 軸）』不成立：w-axis.json 的來源說明寫明重做的品牌故事已改歸奇聞檔案局，W 軸 19 支是站主定的清單，沒有可樂；而姊妹系列另有 B03『可口可樂的配方要鎖在保險庫』（so-thats-why/schedule.csv，PROPOSED），其 premise 明寫『不提古柯鹼』——同一品牌已被別的系列占用，作者漏查。L20 本身是『一半是真的』的都市傳說，有政府文件，符合 L 軸。",
+   "suggested_change": "二擇一：(a) 留在 L 軸，與 L25（題卡裡就有『可樂公司發明紅衣聖誕老人』這則傳說）排成『可樂的兩個傳說：一個一半真、一個假』題案，照規矩不畫商標與瓶型；(b) 若轉出，寫明具體目的地並通知姊妹系列與 B03 錯開。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "U07 drop",
+   "verdict": "AGREE",
+   "reason": "抽象問題，沒有檔案；重提條件（1950 年午餐的一手回憶信）合理。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "P07 drop",
+   "verdict": "AGREE",
+   "reason": "答案一句說完；重提條件合理（1947 年封面設計者與第一次撥針的紀錄若能翻轉流行說法）。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "P23 drop",
+   "verdict": "AGREE",
+   "reason": "只能做成清單。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "L22 drop",
+   "verdict": "AGREE",
+   "reason": "起源查不到，答案就是玩笑。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "L35 drop",
+   "verdict": "AGREE",
+   "reason": "查不到廣告原片與下架紀錄；童星在世，風險高於內容。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "L37 drop",
+   "verdict": "AGREE",
+   "reason": "沒有一手紀錄，又牽涉山難亡者與家屬。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "L39 drop",
+   "verdict": "AGREE",
+   "reason": "只有電台來電，主持人過世未滿 70 年、來電者身分不明，紀錄段是空的。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "G16 drop",
+   "verdict": "AGREE",
+   "reason": "宗教節日解說題，碰信仰；重提條件合理。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "M30 shorts",
+   "verdict": "AGREE",
+   "reason": "一句解開、畫面強。補一點：那組照片是在世攝影師的作品，有著作權，Shorts 也只能用插圖轉述。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "M29 shorts",
+   "verdict": "AGREE",
+   "reason": "一個轉折，長片會空轉。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "U04 shorts",
+   "verdict": "AGREE",
+   "reason": "長片會變成登月陰謀論反駁清單；Shorts 夠用。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "L26 shorts",
+   "verdict": "AGREE",
+   "reason": "身分沒有定論，只有 1946 年一個認領說法；長片會空轉。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "F11 shorts",
+   "verdict": "CHANGE",
+   "reason": "題卡其實有兩個轉折，作者只看到第一個：除了『巨人台詞出自《李爾王》』，早期版本的傑克是無理由的小偷，19 世紀的版本才補上『巨人殺了傑克父親』的正當理由——這跟 F33（最早的羅賓漢沒有劫富濟貧）是同一種新理解：英雄的道德理由是後人補的。",
+   "suggested_change": "台詞那一句留給 Shorts；長片改排『英雄原本不是好人』題案：F11＋F33（可加 F13 穿長靴的貓，若 T13 拿掉它）。"
+  },
+  {
+   "kind": "disposition",
+   "ids": "P28 shorts",
+   "verdict": "AGREE",
+   "reason": "只有一個反高潮，與 P06 答案不同。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "M02 ↔ X2020 transfer",
+   "verdict": "AGREE",
+   "reason": "同一題。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "P04 ↔ LEG-A25 transfer",
+   "verdict": "DISAGREE",
+   "reason": "不是同一條因果鏈（兩位數年份 vs 32 位元 time_t 溢位），見 P04 處置。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "M06 ↔ C2017 distinct",
+   "verdict": "AGREE",
+   "reason": "核心確實不同；但 M06 本身是否該留在奇聞檔案局另有問題，見 missed。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "M04 ↔ E7005 distinct",
+   "verdict": "AGREE",
+   "reason": "只是都講石頭。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "M23 ↔ N194 distinct",
+   "verdict": "AGREE",
+   "reason": "傳播 vs 一隻個體。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "M07 ↔ N194 distinct",
+   "verdict": "AGREE",
+   "reason": "冰震不是鯨歌。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "H03 ↔ N052 distinct",
+   "verdict": "AGREE",
+   "reason": "科學重疊、案子不同。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "U28 ↔ N072 distinct",
+   "verdict": "AGREE",
+   "reason": "奇聞題的重點是論文與媒體。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "M28 ↔ O3083 distinct",
+   "verdict": "AGREE",
+   "reason": "語意近鄰而已。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "P06 ↔ N051 distinct",
+   "verdict": "AGREE",
+   "reason": "無關。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "M10 ↔ K6017 distinct",
+   "verdict": "AGREE",
+   "reason": "光柱光學 vs 車流比對。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "M05 ↔ K6019 distinct",
+   "verdict": "AGREE",
+   "reason": "無關。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "P07 ↔ P110 distinct",
+   "verdict": "AGREE",
+   "reason": "只是都有『鐘』。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "W07 ↔ LEG-S70 distinct",
+   "verdict": "AGREE",
+   "reason": "無關。"
+  },
+  {
+   "kind": "cross_series",
+   "ids": "L20 ↔ LEG-S72 distinct",
+   "verdict": "AGREE",
+   "reason": "對 LEG-S72 正確；但漏了姊妹系列排程裡的 B03 可口可樂（不在 cores 檔），見 L20 處置。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T01 (M07,M23,M26)",
+   "verdict": "AGREE",
+   "reason": "同一種儀器、三個不同答案，排在一起有新理解。",
+   "suggested_change": "結檔的問題『誤判是怎麼發生的』不適用 M23（52 赫茲是真的鯨，不是誤判，被造出來的是『最孤單』這個名字）；結檔改成『儀器只給聲音，身分與故事是誰加的』。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T02 (M10,M12)",
+   "verdict": "AGREE",
+   "reason": "兩題都查核過，一解一未解，『怎樣才算解開』是真的新理解。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T03 (M08,U28)",
+   "verdict": "AGREE",
+   "reason": "放大過程可對照。",
+   "suggested_change": "標題『兩顆星』不準，斥候星不是恆星；提出光帆的作者與塔比星的論文作者都在世，只引論文原句，不畫本人。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T04 (U29,U41)",
+   "verdict": "AGREE",
+   "reason": "同一個問題的兩份證據，第二案接第一案的疑問。設計者 Levin 過世未滿 70 年，不畫臉。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T05 (U06,U27)",
+   "verdict": "CHANGE",
+   "reason": "兩題都沒有『流傳版本被紀錄修正』的翻轉，章節內容是設計說明（1,679 位元、55 種語言），最接近百科清單，也偏科普。",
+   "suggested_change": "要留就找翻轉：例如 2001 年 Chilbolton 電波望遠鏡旁出現『回覆阿雷西博訊息』的麥田圈（可接已製作的 L08）、金唱片被 NASA 拿掉的裸體圖與被拒的歌；找不到就兩題一起轉原來如此事務所。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T06 (U14,U03,U37,U39)",
+   "verdict": "CHANGE",
+   "reason": "README §U 軸說書版明定 U14（德黑蘭 F-4）與 U39（曼特爾）是要『先跟著那個人把那一晚講完』的單人主角長片；切成各 180 秒的章節違背站主的決定，也讓 U14 已查核的豐富檔案被壓縮。四段同構，作者自己也承認第三段會疲乏。",
+   "suggested_change": "U14、U39 各自獨立做說書版；T06 改成 U03（1952 華盛頓雷達）＋U23（1942 洛杉磯防空）＋可選 U37，主題是『雷達與防空怎麼製造出目標』。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T07 (U21,U40,U35,U22)",
+   "verdict": "CHANGE",
+   "reason": "U40（索科羅的警察）同樣是 README 點名的說書版單人主角題；U35 的核心證據是灼傷、脫髮與健康訴訟，碰醫療題，題卡自己都說不講傷勢細節，那這一章就只剩『法院駁回』。",
+   "suggested_change": "拿掉 U40 獨立做；U35 只留法院判決的一段或刪；剩 U21＋U22 不足一集時整組撤回，不補新目擊。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T08 (H15,H29)",
+   "verdict": "CHANGE",
+   "reason": "H15 已查核、題卡有四輪 DNA、Feuerbach 秘密備忘錄、刺傷案，自己就撐得滿一集；跟 H29 對半分，兩案各剩 5 分鐘，而且仍是 H06 已用過的『冒認王族 → DNA 判定』結構，連續三集同一個收尾。",
+   "suggested_change": "H15 單獨做（結構改成『傳言怎麼長出來』）；H29 單獨做『一顆心臟的兩百年』或降為 Shorts；不要排成一集。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T09 (H37,H38,S22)",
+   "verdict": "AGREE",
+   "reason": "一假一真的排法有新理解，S22 的 1021 年樹輪定年是真答案。",
+   "suggested_change": "補一個結檔章（目前五章裡沒有）；H38 記為 distinct 而非 merge；connection 的併入方向寫反。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T10 (L28,G02,G19)",
+   "verdict": "AGREE",
+   "reason": "三種手法、三份檔案，『照片什麼時候能當證據』是新理解。兩姊妹過世未滿 70 年，照題卡不畫臉。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T11 (L14,L06,L07)",
+   "verdict": "CHANGE",
+   "reason": "黑貓 60 秒是湊時間（L07 的錯併見上）；結構也怪：L14 開場、L06 三章、最後又回 L14，沒有結檔。L14 已查核，香港作業備考與立法會質詢足夠單獨成集。",
+   "suggested_change": "刪黑貓章；L14 單獨成集，或 L14＋L06 兩案各自完整，另加結檔。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T12 (F02,F03,F04,F07)",
+   "verdict": "AGREE",
+   "reason": "格林兄弟一版一版改的方向（威廉把它改成給孩子的書）是貫穿四章的真新理解，不是清單。F03 的懷孕情節照文字帶過。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T13 (F05,F06,F12,F13)",
+   "verdict": "AGREE",
+   "reason": "佩羅附在故事後的教訓詩是共同線索。",
+   "suggested_change": "F12 的原型人物吉爾·德·雷是以殺害大量兒童被處決的人，題卡沒寫風險；這段只能一句帶過、不講罪行細節，不然整章刪掉。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T14 (F08,F09,F10)",
+   "verdict": "AGREE",
+   "reason": "都是安徒生的原作與流傳版差異；F10 最薄，要靠書信與自傳原文推進，作者已寫。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T15 (F14,F15,F16,F19)",
+   "verdict": "CHANGE",
+   "reason": "兩個問題。(1) F14 潘朵拉是站主 2026-10-26 定的 F/G 試片四集之一（README §題庫與順序、§選定紀錄），作者把同為試片的 F01 排除在 T12 外，卻把 F14 塞進題案，前後不一致。(2) F15 梅杜莎的翻轉就是『在神廟裡被海神侵犯』，README §不收 已因性侵情節排除巴吉雷的睡美人，同一條線應適用。",
+   "suggested_change": "F14 拿出來照試片單獨做；F15 拿掉或只講赫西俄德與奧維德兩種身世、不以侵犯當鉤子；剩 F16＋F19 太薄，整組撤回或改成 Shorts。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T16 (F20,F21,F22)",
+   "verdict": "AGREE",
+   "reason": "F22『誰寫下的』撐起整集，F20、F21 是例證，每章都回到出處。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T17 (F23,F24,F25)",
+   "verdict": "AGREE",
+   "reason": "讀原書的題案成立。F23 有掏心情節，照血腥守則用道具與遠景。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T18 (F26,F27)",
+   "verdict": "AGREE",
+   "reason": "同出 1904 年《怪談》，『寫的還是聽的』是共同答案。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T19 (F28,F37)",
+   "verdict": "AGREE",
+   "reason": "兩案都在追原型，可接受。於岩稻荷是現存神社，照守則不評價參拜。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T20 (F29,F30)",
+   "verdict": "AGREE",
+   "reason": "8 分鐘、兩題最早版本，答案各自有文本。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T21 (U24,U25,U10)",
+   "verdict": "AGREE",
+   "reason": "『飛碟一詞之前，媒介決定 UFO 長什麼樣』是真的新理解，U10 已查核當主幹。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T22 (U15,U16,U36,U38)",
+   "verdict": "AGREE",
+   "reason": "目擊潮怎麼結束可以比較。",
+   "suggested_change": "四案各 120–180 秒最接近清單；U36 的目擊者當年是孩子、今天在世，U16 牽涉近代政治人物，照題卡不畫臉。查不到一手就照 drop_if 縮。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T23 (H18,M01,L04)",
+   "verdict": "AGREE",
+   "reason": "三題同一條傳說鏈，章節有推進。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T24 (P13,P19,P20)",
+   "verdict": "CHANGE",
+   "reason": "漏了 P12：1524 年的大洪水恐慌就是二十次行星會合、十六次落在水象星座算出來的，跟 P13/P19/P20 核心答案完全相同，而且 P12 已查核、有 Hall 編年史可開。作者用『換年份不算新題』併了 P19、P20，卻沒套到 P12。",
+   "suggested_change": "以 P12（1524）→ P19（1919）→ P13（1982）三次排成，P20 降為一句或刪（宗教場景風險較高）；或 P12、P13 都已查核，各自單做，P19、P20 當插話。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T25 (P22,P31)",
+   "verdict": "CHANGE",
+   "reason": "作者自己寫『很容易變成清單』，五章裡三章是不同名言；而且『640K 夠用：比爾蓋茲的否認』是在世人物的章節，README §內容守則 第 3 條要求在世人物不做漫畫像、不評論。8 分鐘裡只有馬糞一題有完整追查鏈。",
+   "suggested_change": "P31 drop；P22 單做（馬糞問題的真實紀錄 + 『1894 年泰晤士報』這句話怎麼在商業書間傳），刪掉比爾蓋茲章；撐不到 8 分鐘就改 Shorts。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T26 (P26,P30)",
+   "verdict": "AGREE",
+   "reason": "答案相同（死後代寫），兩案來源不同的追查可推進。"
+  },
+  {
+   "kind": "theme",
+   "ids": "T27 (G04,G20,G14)",
+   "verdict": "CHANGE",
+   "reason": "扶乩那一章違反靈異守則第 5 條與 §不收（見 G14 merge）；其他兩案的組合合理。",
+   "suggested_change": "刪扶乩章，改成 G04＋G20 兩案（專利局示範 → 1853 年法拉第的機關），收在『為什麼大家覺得不是自己推的』。"
+  }
+ ],
+ "missed": [
+  {
+   "ids": [
+    "L36"
+   ],
+   "suggestion": "drop",
+   "reason": "README §F 軸與 G 軸／不收 明列『近年命案相關的鬼屋與地點（犬鳴隧道、各地凶宅）』；L36 題卡自己寫傳說建立在『封閉的舊隧道與 1988 年附近發生的一起刑案』上。作者沒處置，是直接踩禁區。"
+  },
+  {
+   "ids": [
+    "P12",
+    "P13",
+    "P19",
+    "P20"
+   ],
+   "suggestion": "theme",
+   "reason": "P12（1524 年行星會合預言大洪水，已查核）與 P13 群組核心答案相同，作者漏掉。見 T24。"
+  },
+  {
+   "ids": [
+    "P05",
+    "P10"
+   ],
+   "suggestion": "theme",
+   "reason": "同一條因果鏈：Festinger 等人 1956 年的《When Prophecy Fails》開頭就拿 1844 年米勒派大失望當歷史前例，P10 已查核。P05 單做容易跟 P10 講同一個『預言落空之後』答案；排成同一題案（或 P05 當 P10 的前情章）。P15（Camping 2011，已查核）夠強，單做即可。"
+  },
+  {
+   "ids": [
+    "P32"
+   ],
+   "suggestion": "drop",
+   "reason": "1998 年從台灣出發的末日團體：領袖與信眾多在世，又是新興宗教，README 第 3 條（在世人物、不把宗教信仰當笑話）風險高；題卡自己能講的只有『預言失敗後解散』，跟 P05/P10 同一個答案。除非能完全不談個人、只用公開媒體紀錄，否則淘汰。"
+  },
+  {
+   "ids": [
+    "P34"
+   ],
+   "suggestion": "shorts",
+   "reason": "『尾數 0 年當選的總統死在任內』：答案就是巧合加後人補的詛咒來源，一句說完；內容全是總統遇刺與在任死亡，又以選舉年份為框架，1980 年後的總統都在世或近代，貼近 README 的選舉與在世人物禁區。最多做 Shorts（只講詛咒出處查不到），或併進 P14 的『事後找命中』當一句。"
+  },
+  {
+   "ids": [
+    "P25"
+   ],
+   "suggestion": "drop",
+   "reason": "推背圖今天的『應驗』解讀大量牽涉兩岸與當代政治，題卡說只講版本史，但觀眾留言與標題都很難避開；套用 README『今天兩群人還在爭的事不收』的原則，建議暫不收，或站主明確同意後只做版本史。"
+  },
+  {
+   "ids": [
+    "U31"
+   ],
+   "suggestion": "distinct",
+   "reason": "薇拉事件的答案指向以色列與南非的未承認核試，屬今天國家之間仍敏感的爭議；不必淘汰，但要在處置裡標風險，結論只能寫到『美國政府專家小組 vs 後來的分析』，不替任何國家下結論。"
+  },
+  {
+   "ids": [
+    "G14"
+   ],
+   "suggestion": "drop",
+   "reason": "見 G14→G04：活的宗教實踐，靈異守則第 5 條。"
+  },
+  {
+   "ids": [
+    "M06"
+   ],
+   "suggestion": "transfer",
+   "reason": "曼德拉效應只有心理學機制（記憶重建、來源混淆），沒有一份檔案、一個現場；名稱的提出者在世。作者只判它跟 C2017 不同，卻沒問它屬不屬於奇聞檔案局。轉原來如此事務所（接 C2017 的記憶題）或淘汰。"
+  },
+  {
+   "ids": [
+    "G22"
+   ],
+   "suggestion": "transfer",
+   "reason": "鬼壓床的答案是 REM 期睡眠癱瘓，一句說完，屬睡眠生理科普；唯一的『檔案』是菲斯利 1781 年的畫。轉原來如此事務所或 Shorts；長片還會滑向醫療解釋。"
+  },
+  {
+   "ids": [
+    "L03"
+   ],
+   "suggestion": "drop",
+   "reason": "人體自燃的核心畫面與證據就是燒剩的遺體，README 第 3、4 條（血腥與遺體不畫、不貼照片）讓整集沒有可用的畫面；答案（燈芯效應）也一句說完。可留 Shorts 只講狄更斯《荒涼山莊》那一段文學史。"
+  },
+  {
+   "ids": [
+    "L05",
+    "L19"
+   ],
+   "suggestion": "theme",
+   "reason": "兩題都是民俗學者 Brunvand 收集的經典都市傳說，題卡答案都是『沒有一件是真的，是換地名的故事』，單做都太薄；排成『你朋友的朋友遇過』題案，或兩題都改 Shorts。L19 牽涉器官買賣，避開醫療陰謀論的講法。"
+  },
+  {
+   "ids": [
+    "G08",
+    "G18",
+    "P11"
+   ],
+   "suggestion": "theme",
+   "reason": "三題的關鍵人物都是靈異研究者 Harry Price（博利教區的書、會說話的貓鼬的毛、1927 年開索斯科特箱），G18 題卡自己就寫『G08 的同一人』。答案不同所以不是 merge，但『一位調查者的三份檔案，後來被自己的學會質疑』是一個有新理解的題案。"
+  },
+  {
+   "ids": [
+    "H25",
+    "P21",
+    "M27"
+   ],
+   "suggestion": "theme",
+   "reason": "三題都是『失落文明的證據』被誤讀：皮里雷斯地圖（真古地圖被讀成南極）、比米尼之路（天然海灘岩被讀成亞特蘭提斯）、巴格達電池（容器被讀成電池）。各自都薄，答案不同，適合排成一集比較『誤讀是怎麼發生的』。"
+  },
+  {
+   "ids": [
+    "L31",
+    "L34",
+    "L33"
+   ],
+   "suggestion": "theme",
+   "reason": "報紙造出來的怪物：1838 彈簧腿傑克、1909 澤西惡魔都靠報紙連日報導擴散，原報紙都是公有領域可貼；L33 是 1975 年一本書把目擊與橋難縫在一起。三題都沒被作者處置。L33 的橋難（46 人死亡）只講官方調查數字。"
+  },
+  {
+   "ids": [
+    "L21",
+    "L38"
+   ],
+   "suggestion": "theme",
+   "reason": "未知生物的證據被送去驗：雪人毛髮 2017 年 DNA（8 隻熊 1 隻狗）、博德明野獸 1995 年政府報告與豹皮頭骨。各自一個答案，排在一起才有『證據能證明到哪裡』的推進。"
+  },
+  {
+   "ids": [
+    "U03",
+    "U23"
+   ],
+   "suggestion": "theme",
+   "reason": "把 U14、U39 拿回去做說書版後，1952 華盛頓雷達與 1942 洛杉磯防空是同一種情境（戰時與冷戰的雷達／防空自己製造目標），答案不同，U23 目前沒被任何題案收。"
+  },
+  {
+   "ids": [
+    "F11",
+    "F33"
+   ],
+   "suggestion": "theme",
+   "reason": "見 F11 處置：英雄的道德理由是後人補的（傑克原本是小偷、羅賓漢原本沒有濟貧）。F33 目前沒被處置也沒進題案。"
+  },
+  {
+   "ids": [
+    "F32",
+    "F35"
+   ],
+   "suggestion": "shorts",
+   "reason": "石中劍與湖中劍是兩把劍、伊索可能不是一個人：各只有一個事實，沒進任何題案也沒被處置，長片撐不起。"
+  },
+  {
+   "ids": [
+    "L20",
+    "L25"
+   ],
+   "suggestion": "theme",
+   "reason": "若 L20 留在 L 軸，L25 題卡本身就有『可樂公司發明紅衣聖誕老人是另一則傳說』，兩題排成可樂的一真一假；同時要跟姊妹系列 B03（可口可樂配方保險庫，不在 cores 檔裡、在 so-thats-why/schedule.csv）錯開。"
+  },
+  {
+   "ids": [
+    "M22"
+   ],
+   "suggestion": "transfer",
+   "reason": "奧克洛天然核反應爐：題卡自己說『聽起來像陰謀，其實是地質』，沒有流傳版本被修正，比照 M02、M33 的標準應轉原來如此事務所。1972 年法國工廠發現同位素比例不對是好故事，若要留就以那份工廠報告當主線。"
+  },
+  {
+   "ids": [
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "H06",
+    "H07",
+    "H09",
+    "H10",
+    "H11",
+    "H12",
+    "H24",
+    "M09",
+    "U09"
+   ],
+   "suggestion": "drop",
+   "reason": "已製作（docs/videos/curio-h0x-v2/v3、curio-h09-v2、curio-h10/h11/h12、curio-h24、curio-m09、curio-u09），題庫狀態卻仍是 checked，H24 甚至是 candidate、沒有 video 欄位；作者在處置裡把 H24、H03 當 canonical 吸收新題，正是因為池子沒標已製作。建議從候補池移出、標 produced，之後的去重直接撞到它們。"
+  },
+  {
+   "ids": [
+    "S02",
+    "S03",
+    "S06",
+    "S07",
+    "S08",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S19",
+    "S20",
+    "S21",
+    "S24",
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29",
+    "S30",
+    "S31",
+    "S34"
+   ],
+   "suggestion": "drop",
+   "reason": "已有 curio-s* 目錄或 remake-20261020（S08）的集數，題庫仍標 candidate；應標 produced 移出候補池。"
+  },
+  {
+   "ids": [
+    "S04",
+    "S05",
+    "S23",
+    "S32",
+    "S33",
+    "S35",
+    "S36"
+   ],
+   "suggestion": "drop",
+   "reason": "已在 codex/curio-s34-endurance-20261019 分支製作中（branch-episodes.json），題庫仍標 candidate；比照 S49 的處理標 in-production。"
+  },
+  {
+   "ids": [
+    "H17",
+    "H18"
+   ],
+   "suggestion": "distinct",
+   "reason": "兩題都是二戰前後的軍機迷航、油盡（淑女好運號以為在海上卻在沙漠，Flight 19 迷向後往大海飛），答案類型接近但案件、檔案不同，不併；H17 已查核可單做，排程時兩集拉開。"
+  }
+ ],
+ "summary": "非作者覆核，逐條判定 114 條作者處置：同意 92、不同意 7、建議修改 15。合併 26 條同意 17、不同意 5、修改 4；distinct 25 條全同意；處置 21 條同意 18、不同意 1、修改 2；跨系列 15 條同意 14、不同意 1；題案 27 個同意 18、修改 9。最重要的五個問題：(1) 把同類別當同答案的錯併：G15→L01（魔神仔的人類學 vs 一段 1998 年影片）、F34→M17（吸血鬼形象史 vs 火山歸因）、M35→M05（已解 vs 未解，作者自己的理由就是題案邏輯）、L07→L06（L07 是太薄，應 Shorts）；H38→H37、G17→L17、P31→P22 也只是同類別。(2) 碰系列禁區：G14 扶乩進了以『筆是誰在推』為答案的 T27，違反靈異守則第 5 條；T25 有在世人物比爾蓋茲的章節；T15 的 F15 以性侵為鉤子（README 已因同理由排除巴吉雷睡美人）；而作者漏掉的 L36 犬鳴村正是 README §不收 點名的犬鳴隧道與 1988 年刑案。(3) 題案違背站主已定的安排：T15 把 F/G 試片的 F14 拆成一章；T06、T07 把 README §U 軸說書版點名的單人主角題 U14、U39、U40 切成 3 分鐘章節；T08 把已查核、能單撐一集的 H15 跟 H29 對半，又重複已製作 H06 的 DNA 結構。(4) 漏掉的同答案與同鏈：P12（1524 行星會合洪水，已查核）跟 P13 群組完全同一答案卻沒處置；P05 米勒派在 P10《When Prophecy Fails》的因果鏈裡；P04 Y2K 的轉出理由錯（題卡本身有翻轉、跟 2038 不是同一條鏈、README 把 Y2K 列為 P 軸例子）。(5) 已製作集數沒標在池子裡：H02–H07、H09–H12、H24、M09、U09 與 25 個 S 題已有 curio-* 目錄，S04 等 7 題在分支上，題庫仍是 candidate/checked；M24 被『併入』的 H03 已上架且腳本 #103 已用車里雅賓斯克，G12 被『併入』的 H24 也已上架——這兩條實際是撞已製作集數，應記為 Shorts 而非併入。另外：L20 轉出目標不成立（W 軸已在本系列內且無可樂，姊妹系列排程另有 B03 可口可樂配方）；M06、G22、M22 應比照 M02/M33 轉出；L03、P34、P25、U31 有未標的風險；建議新增題案 G08+G18+P11（Harry Price）、H25+P21+M27（失落文明證據）、L31+L34+L33（報紙怪物）、L21+L38、U03+U23、F11+F33。"
+}

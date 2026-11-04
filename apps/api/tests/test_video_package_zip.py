@@ -108,3 +108,53 @@ async def test_the_package_route_names_the_archive_and_never_caches_it(
     assert resolve.await_args.args[3] == [("a" * 64, "thumbnail.png")]
     assert refused.status_code == 422 and refused.json()["code"] == "video_package_entries_invalid"
     assert empty.status_code == 422
+
+
+def test_the_check_names_each_file_the_archive_would_miss_and_why(tmp_path: Path) -> None:
+    store = ReviewStore(tmp_path, max_file_bytes=10_000, max_total_bytes=100_000)
+    kept = _stored(tmp_path, "v", b"kept")
+    gone = hashlib.sha256(b"gone").hexdigest()
+    stray = _stored(tmp_path, "v", b"not shown by any review")
+    shown: list[list[Any]] = [[{"role": "final", "sha256": kept}, {"role": "x", "sha256": gone}]]
+    assert package_zip.check_entries(store, "v", shown, [(kept, "final.mp4")]) == ([], 4)
+    missing, size = package_zip.check_entries(
+        store, "v", shown, [(kept, "final.mp4"), (gone, "dub.en.m4a"), (stray, "a.txt")]
+    )
+    assert missing == [
+        {"name": "dub.en.m4a", "reason": "gone"},
+        {"name": "a.txt", "reason": "not_shown"},
+    ]
+    assert size == 4
+
+
+@pytest.mark.asyncio
+async def test_the_check_route_answers_what_the_zip_would_miss_before_the_download(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    answer = {
+        "ok": False,
+        "missing": [{"name": "dub.en.m4a", "reason": "gone"}],
+        "bytes": 3,
+        "drive_folder": "ai-news/v",
+    }
+    check = AsyncMock(return_value=answer)
+    monkeypatch.setattr(admin_service, "package_check_for_admin", check)
+
+    async def settings(_: Any) -> Settings:
+        return Settings(video_review_dir=str(tmp_path))
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
+    viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
+    params = {"file": f"{'a' * 64}:dub.en.m4a"}
+    async with AsyncClient(transport=ASGITransport(app=_app(owner)), base_url="http://test") as c:
+        response = await c.get("/api/v1/admin/videos/v/package", params=params)
+        refused = await c.get("/api/v1/admin/videos/v/package", params=[("file", "x:y")])
+    async with AsyncClient(transport=ASGITransport(app=_app(viewer)), base_url="http://test") as c:
+        forbidden = await c.get("/api/v1/admin/videos/v/package", params=params)
+    assert response.status_code == 200 and response.json() == answer
+    assert check.await_args is not None and check.await_args.args[3] == [("a" * 64, "dub.en.m4a")]
+    assert refused.status_code == 422
+    assert forbidden.status_code == 403

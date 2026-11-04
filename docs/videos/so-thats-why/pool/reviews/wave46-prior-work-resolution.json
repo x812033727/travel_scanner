@@ -1,0 +1,44 @@
+{
+  "status": "RESOLVED_AT_WAVE46_NOT_BACKDATED",
+  "created_on": "2026-11-03",
+  "prior_receipt": "reviews/wave45-pending-work.json",
+  "reading": {
+    "original_file": "pending/wave45-reading.json",
+    "original_sha256": "542b9b544d503b5d5a5df6c5aa1d5b75df9229c6194ba23d81c04e0c8f9fda24",
+    "preserved": true,
+    "previously_counted": false,
+    "candidate_ids": [
+      "R45001",
+      "R45002",
+      "R45003",
+      "R45004",
+      "R45005",
+      "R45006",
+      "R45007",
+      "R45008",
+      "R45009",
+      "R45010",
+      "R45011"
+    ],
+    "now_selected": true,
+    "batch": "batches/wave46-reading.json",
+    "batch_sha256": "e27c0efb3ccc4b3a8c9c337bfb0646c89e45697f1e9a9871c4129bd9af64dc0e",
+    "non_author_review": "reviews/wave46-physics-reviews-reading.json",
+    "review_sha256": "58909157262014b5c4759b237ddae35ef052f52b34f93e3aa9d557e801d53fad"
+  },
+  "reworked_themes": [
+    {
+      "old_proposal": "W45P-T04",
+      "new_proposal": "W46C-T01",
+      "reason": "拿掉另一研究的頭形與力曲線，只保留後段減速度。",
+      "theme_id": "G513"
+    },
+    {
+      "old_proposal": "W45S-T03",
+      "new_proposal": "W46C-T02",
+      "reason": "拿掉另一海岸的沙脊流速偏態，固定海灣俯視圖。",
+      "theme_id": "G514"
+    }
+  ],
+  "limits": "原pending與原未採題案保留歷史。閱讀題只在本批入選一次；舊核心重排片案不增加素材筆數。"
+}

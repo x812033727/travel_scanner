@@ -1,0 +1,1003 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+  "author": "pool_life_tech",
+  "reviewer": "science_sources",
+  "production_ready": false,
+  "reviewed_files": [
+    {
+      "file": "batches/wave46-life.json",
+      "sha256": "54967812a7f77a4e822d990325ea72460c434e81f7fd77a2f3e7da72a5cd1e2f"
+    },
+    {
+      "file": "reviews/wave46-life-themes.json",
+      "sha256": "695821d7ef084bf945859523839e4bd3a2b8003cad5d16f67da2a57f05233d75"
+    },
+    {
+      "file": "reviews/wave46-life-author.json",
+      "sha256": "a9eea8cc7549d7bf5998e3c371cd4a33d7d2e134f060849915519f934b2ccb82"
+    }
+  ],
+  "original_reviewed_files": [
+    {
+      "file": "batches/wave46-life.json",
+      "sha256": "fdb6e03836c189675d1309034d842b972ab1c0fa6f81345c6926eeb52352c563"
+    },
+    {
+      "file": "reviews/wave46-life-themes.json",
+      "sha256": "90958677054ba9ff9a037d09e0f059b2e801f28d4ee6b239468ecdc9359ceaa5"
+    },
+    {
+      "file": "reviews/wave46-life-author.json",
+      "sha256": "86151d2a3c2954a8b97b0307ab657c09d44d58fc03fdb9394c3e57c597d68831"
+    }
+  ],
+  "reviewed_candidate_ids": [
+    "L46-001",
+    "L46-002",
+    "L46-003",
+    "L46-004",
+    "L46-005",
+    "L46-006",
+    "L46-007"
+  ],
+  "accepted_theme_proposal_ids": [
+    "W46L-T01",
+    "W46L-T02",
+    "W46L-T03",
+    "W46L-T04",
+    "W46L-T05"
+  ],
+  "source_readings": [
+    {
+      "id": "L46-S001",
+      "doi": "10.1073/pnas.2211283119",
+      "url": "https://doi.org/10.1073/pnas.2211283119",
+      "version": "2022正式論文，Europe PMC全文XML；同文作者PDF供圖讀",
+      "accessed_on": "2026-11-03",
+      "method": "指定UA獨立重新取得有效XML/PDF，HTTP200，原檔SHA逐筆核同作者；獨立抽文讀指定段。",
+      "locator": "XML body Takeoff/Aerial Righting/Landing；抽文段0–23、28–30、42–43、45–52；對照Methods力項與Fig8模型圖說。",
+      "readback": "三階段共用一研究，非三項獨立佐證。起跳姿態實測與單改腹管黏附模型分開；翻正因果主要是U形塑膠加滴／不加滴／平片。落地模型保留表面張力、附加質量等作用，移除回升腹管黏附仍反彈；不將純耗散當反彈來源。乾腹管落固體不能證水面上僅改黏附。",
+      "limits": "沒有重看補充影片；沒有聲稱全12頁逐句查核或活體黏附單因素實驗。",
+      "cache": {
+        "id": "L46-S001",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9674249/fullTextXML",
+        "status": 200,
+        "file": ".cache/wave46-earth-review-L46-S001.xml",
+        "sha256": "c28523cbc734c485834d6ff73f81205e13d4893ea07dd547e1bb10fc051b3fb7",
+        "text_file": ".cache/wave46-earth-review-L46-S001.txt",
+        "text_sha256": "992f6a40bc60ee0c2b6ab0ecac9b9f010cece756fddaa8c40d775e6abd581271",
+        "same_raw_as_author": true
+      }
+    },
+    {
+      "id": "L46-S002",
+      "doi": "10.1371/journal.pone.0038003",
+      "url": "https://doi.org/10.1371/journal.pone.0038003",
+      "version": "2012正式刊本PDF",
+      "accessed_on": "2026-11-03",
+      "method": "指定UA獨立重新取得有效XML/PDF，HTTP200，原檔SHA逐筆核同作者；獨立抽文讀指定段。",
+      "locator": "PDF pp2–3 Results、p4 Pendulum Model/Discussion起段；pp6–7 Track、Kinematics、Claw Ablation及Pendulum Model。",
+      "readback": "去後爪保留足墊，配對動物多數失敗而進場速度無顯著差；既有動能擺模型較近前半程。起始動能由實測設定，不是無參數預報，後段主動拉身另列。",
+      "limits": "未重看補充影片；不將壁虎不同坡面材質與蟑螂當單變因比較。",
+      "cache": {
+        "id": "L46-S002",
+        "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0038003&type=printable",
+        "status": 200,
+        "file": ".cache/wave46-earth-review-L46-S002.pdf",
+        "sha256": "3cdd6264e04bfd13c1af9faf956380c70eade6d566fd92fb0c129cda2395ca21",
+        "text_file": ".cache/wave46-earth-review-L46-S002.txt",
+        "text_sha256": "48edda5e80b17d196c2b31a5a02e56c0d4c5bc952479e144af9592486e55246d",
+        "same_raw_as_author": true
+      }
+    },
+    {
+      "id": "L46-S003",
+      "doi": "10.1016/j.cub.2018.10.064",
+      "url": "https://doi.org/10.1016/j.cub.2018.10.064",
+      "version": "2018作者實驗室託管article-in-press排版PDF，連方法與補充",
+      "accessed_on": "2026-11-03",
+      "method": "指定UA獨立重新取得有效XML/PDF，HTTP200，原檔SHA逐筆核同作者；獨立抽文讀指定段。",
+      "locator": "PDF pp4–5腳衝量估算、添加劑對照、滑行假說，p6 Fig3及討論；p8 STAR Methods動物／水槽／接受試次。",
+      "readback": "腳拍水衝量估算只提供部分支撐；添加劑處理頭高與速度變低。身體浸水、阻力與多種支撐耦合，模型估算不等於逐力直接量測，不採精確固定比例餅圖。",
+      "limits": "文章主文速度百分比與表列值不作本案數字；未看補充影片，沒有逐頁查全部補充資料。",
+      "cache": {
+        "id": "L46-S003",
+        "url": "https://polypedal.berkeley.edu/wp-content/uploads/123_Nirordy_CBio_2018.pdf",
+        "status": 200,
+        "file": ".cache/wave46-earth-review-L46-S003.pdf",
+        "sha256": "67e50fa1df3f26725ee792627920f55c350bfcf35c36fa47c068d18bfa79d6f9",
+        "text_file": ".cache/wave46-earth-review-L46-S003.txt",
+        "text_sha256": "ed7f580de951ad1c588ee6caf5d85893da4d68b9af06ddf841e1e6faf344eb75",
+        "same_raw_as_author": true
+      }
+    },
+    {
+      "id": "L46-S004",
+      "doi": "10.1038/s41567-020-0935-4",
+      "url": "https://doi.org/10.1038/s41567-020-0935-4",
+      "version": "2020正式刊本，Virginia Tech作者公開PDF",
+      "accessed_on": "2026-11-03",
+      "method": "指定UA獨立重新取得有效XML/PDF，HTTP200，原檔SHA逐筆核同作者；獨立抽文讀指定段。",
+      "locator": "PDF pp4–5 Undulation enhances rotational stability及virtual-wind-tunnel/形態條件；Fig3–4相關圖說。",
+      "readback": "同一模型關閉與開啟擺動比較，部分凍結形狀仍可短程滑翔；初始波形和距離會改結果。10m／75m屬模型，不是假想把活蛇麻痺後放飛。",
+      "limits": "未另目讀Fig4圖頁或播放補充影片；不宣稱所有初始姿態一定失穩。",
+      "cache": {
+        "id": "L46-S004",
+        "url": "https://ross.aoe.vt.edu/papers/yeaton-ross-baumgardner-socha-2020.pdf",
+        "status": 200,
+        "file": ".cache/wave46-earth-review-L46-S004.pdf",
+        "sha256": "f6c63fad73da948b8f25ca9cd01700101af950f2fe46d3828867cb4f3b0ba1b2",
+        "text_file": ".cache/wave46-earth-review-L46-S004.txt",
+        "text_sha256": "c6e6d281e51f676273c4b6e005b514f835ba2155affbda83cb337c2dad9f226f",
+        "same_raw_as_author": true
+      }
+    },
+    {
+      "id": "L46-S005",
+      "doi": "10.1038/ncomms13698",
+      "url": "https://doi.org/10.1038/ncomms13698",
+      "version": "2016正式論文Europe PMC全文XML",
+      "accessed_on": "2026-11-03",
+      "method": "指定UA獨立重新取得有效XML/PDF，HTTP200，原檔SHA逐筆核同作者；獨立抽文讀指定段。",
+      "locator": "XML Results/model與optimization，抽文段0–1、7、14、16–27；Fig3–4圖說；Web原刊Results定點。",
+      "readback": "固定形態的模型顯示腳速越過彎月面破裂條件後起跳速度驟減；五物種自然跳躍點接近各自邊界。自然資料沒有強迫單一個體掃全部速度；個體學習或硬接線是作者後續假說。",
+      "limits": "僅正文及圖說，未目讀原Fig3–4或補充影片；來源模型的pre-takeoff closing未在所報自然跳躍中觀察到，不將其加入片案。",
+      "cache": {
+        "id": "L46-S005",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5150985/fullTextXML",
+        "status": 200,
+        "file": ".cache/wave46-earth-review-L46-S005.xml",
+        "sha256": "15ec8676a1ce49eec9c12c2768018d8fd696dea938535ec8ce5d74d435be8127",
+        "text_file": ".cache/wave46-earth-review-L46-S005.txt",
+        "text_sha256": "208e6aa3ba49677fd517737e627df4e8573d889708b8b5c4273b5434b547e940",
+        "same_raw_as_author": true
+      }
+    },
+    {
+      "id": "L46-S006",
+      "doi": "10.1073/pnas.0807223105",
+      "url": "https://doi.org/10.1073/pnas.0807223105",
+      "version": "2008正式刊本PDF之作者公開網站副本",
+      "accessed_on": "2026-11-03",
+      "method": "指定UA獨立重新取得有效XML/PDF，HTTP200，原檔SHA逐筆核同作者；獨立抽文讀指定段。",
+      "locator": "僅退題用途：PDF p3 Table2、Fig2圖說及相鄰結果。",
+      "readback": "後翅移除降低速度、總／切向／法向加速度，曲率半徑無顯著差；可維持飛行不代表正常逃避機動，與既有P015方向重疊，未新增核心。",
+      "limits": "未讀整篇所有頁；不以此新增捕食存活因果或片案。",
+      "cache": {
+        "id": "L46-S006",
+        "url": "https://www.ratiocination.org/wp-content/uploads/2015/09/Jantzen-Eisner__Hindwings-are-unnecessary-for-flight-but-essential-for-execution-of-normal-evasive-flight-in-Lepidoptera.pdf",
+        "status": 200,
+        "file": ".cache/wave46-earth-review-L46-S006.pdf",
+        "sha256": "44d96caf5429c0bded90deb0c431f0ef1f47f35e281f0d34669a9d7e819e4bf3",
+        "text_file": ".cache/wave46-earth-review-L46-S006.txt",
+        "text_sha256": "c41a94c453310b37a5ee53ab80bde9fd924b6d61dace7c8e5a10d67eb0951ed6",
+        "same_raw_as_author": true
+      }
+    }
+  ],
+  "source_access_scope": {
+    "fresh_primary_files": 6,
+    "candidate_support_studies": 5,
+    "not_added_only_studies": 1,
+    "same_raw_hash_as_author": 6,
+    "method": "只核所列指定正文，非全篇逐字或全部舊庫來源重查。XML與同文PDF不算獨立研究；L46-001/002/003共一篇。",
+    "failures": [
+      "PNAS DOI的web.open回403；獨立UA Europe PMC XML有效200，不能把DOI失敗說成讀通。"
+    ],
+    "supplementary_videos_viewed": 0
+  },
+  "visual_readback": [
+    {
+      "file": ".cache/wave46-life-spring-figures-p5.png",
+      "sha256": "d8089ecbfe041c611394d6bc64a965f1787e8ee24dfd0bcde0edad644ea29460",
+      "scope": "作者留存PDF p5：Fig5活/死風洞及Fig6塑膠U形/加滴/平片三組，獨立目讀。"
+    },
+    {
+      "file": ".cache/wave46-life-spring-figures-p7.png",
+      "sha256": "2acae9531e63b0f5b05567f7fe7f02e919ff1e8261bec2b84cac2191e15e9901",
+      "scope": "作者留存PDF p7：Fig8水動力與collophore移除模型，對回升黏附修正；獨立目讀。"
+    },
+    {
+      "file": ".cache/wave46-life-gecko-p6.png",
+      "sha256": "39acb40f98dd4503bbca61a10712d97f505ed4acb48b96664377e6bec4fadca2",
+      "scope": "作者留存PDF p6/printed5：Fig3添加劑頭高與速度散點、Froude分布，非力份額圖；獨立目讀。"
+    }
+  ],
+  "author_pairs": [
+    {
+      "a": "L46-001",
+      "b": "B17003",
+      "decision": "distinct",
+      "reason": "果蠅先移腳改重心與推力方向；新題多出仍與水面相連的腹管牽制，尤其水平起跳與離水時點。"
+    },
+    {
+      "a": "L46-001",
+      "b": "P053",
+      "decision": "distinct",
+      "reason": "靜態水滴鋪展不包含彈器推動時的轉動、離水與水平前衝；黏附強度反事實是模型。"
+    },
+    {
+      "a": "L46-001",
+      "b": "L46-003",
+      "decision": "distinct",
+      "reason": "起跳的接觸牽制改角速度／方向；落地關鍵是回升時拉住反彈，並有入水耗能的分項模型。不是單換黏附大小。"
+    },
+    {
+      "a": "L46-002",
+      "b": "P030",
+      "decision": "distinct",
+      "reason": "空中翻正的U形和水滴模型有空氣外力矩，非無外力矩固定形狀的角動量問題。"
+    },
+    {
+      "a": "L46-002",
+      "b": "P314",
+      "decision": "distinct",
+      "reason": "不是用另一個旋轉物交換角動量；塑膠U形落體的外部流體作用也能翻正。"
+    },
+    {
+      "a": "L46-002",
+      "b": "P21005",
+      "decision": "distinct",
+      "reason": "舊薄片移配重形成滑翔迎角平衡；新題由倒置狀態翻正並對照U形／平片及水滴配置。仍請非作者嚴判形狀／重心能否足以分核。"
+    },
+    {
+      "a": "L46-002",
+      "b": "A12007",
+      "decision": "distinct",
+      "reason": "地上開翅降低能障再由腿擾動越障；新題在空中由形狀與空氣作用翻正，無地面接觸能障。"
+    },
+    {
+      "a": "L46-002",
+      "b": "L46-006",
+      "decision": "distinct",
+      "reason": "U形／水滴形成回正趨勢和持續波狀形變抑制滑翔失穩不同；一個是落體形狀對照，一個是時變模型關閉擺動。"
+    },
+    {
+      "a": "L46-003",
+      "b": "A20003",
+      "decision": "distinct",
+      "reason": "足墊固定拉脫與落水回彈是不同讀出；本題分入水耗能／出水黏附時序，非換一種分泌液。"
+    },
+    {
+      "a": "L46-003",
+      "b": "P45-002",
+      "decision": "distinct",
+      "reason": "球沿表面爬水片脫離帶入空腔；新題沒有以空腔成因解釋，而是回升是否被黏附截斷。"
+    },
+    {
+      "a": "L46-003",
+      "b": "X41-003",
+      "decision": "distinct",
+      "reason": "軟球變形斜面造成向上水力而躍出；跳蟲腹管作用是回升時拉住，方向與時段不同。"
+    },
+    {
+      "a": "L46-003",
+      "b": "P053",
+      "decision": "distinct",
+      "reason": "靜態接觸角不是落地動態的入水阻力／回升拉力分工。"
+    },
+    {
+      "a": "L46-004",
+      "b": "A12007",
+      "decision": "distinct",
+      "reason": "勾住邊緣轉換已有進場動能，並非翻肚後開翅與踢腿越地面能障。"
+    },
+    {
+      "a": "L46-004",
+      "b": "A23004",
+      "decision": "distinct",
+      "reason": "尾部頂牆提供附加支撐 vs 後爪勾邊緣改變運動支點；不是同一接觸構造換物種。"
+    },
+    {
+      "a": "L46-004",
+      "b": "LEG-S59",
+      "decision": "distinct",
+      "reason": "去爪保留足墊的處理排除只用一般剛毛黏附解釋；此動作依賴邊緣鉤掛。"
+    },
+    {
+      "a": "L46-004",
+      "b": "P164",
+      "decision": "distinct",
+      "reason": "P164實為寬底座容許傾角，並非鐘擺；不能沿歷史未收的泛化描述當同題。"
+    },
+    {
+      "a": "L46-005",
+      "b": "P048",
+      "decision": "distinct",
+      "reason": "完全浸沒的浮力不足抵重不解釋水面高速拍水、體高與阻力的耦合。"
+    },
+    {
+      "a": "L46-005",
+      "b": "P053",
+      "decision": "distinct",
+      "reason": "不是靜態潤濕照片；添加劑條件改變動態支撐／頭高／速度，且不能簡化成唯一張力份額。"
+    },
+    {
+      "a": "L46-005",
+      "b": "LEG-S59",
+      "decision": "distinct",
+      "reason": "水面跑的支撐與貼固體牆面細毛黏附不同。"
+    },
+    {
+      "a": "L46-005",
+      "b": "L46-007",
+      "decision": "distinct",
+      "reason": "水黽模型在破膜時失去主要毛細支撐；壁虎腳拍水產生衝量仍需其他界面作用，非同物理比例換尺寸。"
+    },
+    {
+      "a": "L46-006",
+      "b": "P21005",
+      "decision": "distinct",
+      "reason": "固定配重條件的迎角回復與持續擺動改變力矩的穩定範圍不同。"
+    },
+    {
+      "a": "L46-006",
+      "b": "P23003",
+      "decision": "distinct",
+      "reason": "無外力矩剛體中間軸失穩不包含空氣力矩與身體持續改形。"
+    },
+    {
+      "a": "L46-006",
+      "b": "B2165",
+      "decision": "distinct",
+      "reason": "增加滑翔面積不等於把形狀凍結與波動開關作穩定性比較。"
+    },
+    {
+      "a": "L46-006",
+      "b": "A12009",
+      "decision": "distinct",
+      "reason": "跟隨者與外部渦流到達相位匹配；飛蛇不是兩體尾流同步，而是本體姿態穩定。"
+    },
+    {
+      "a": "L46-007",
+      "b": "P054",
+      "decision": "distinct",
+      "reason": "彎月面靜態形狀不同於腿部下壓速率超過破裂界線、支撐突然終止。"
+    },
+    {
+      "a": "L46-007",
+      "b": "P053",
+      "decision": "distinct",
+      "reason": "固體表面潤濕競爭不包含下壓快慢與水面破裂時點。"
+    }
+  ],
+  "directed_top5": [
+    {
+      "id": "L46-001",
+      "neighbour_ids": [
+        "L46-003",
+        "L46-005",
+        "X41-002",
+        "F17002",
+        "P45-006"
+      ],
+      "decision": "all_distinct",
+      "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+    },
+    {
+      "id": "L46-002",
+      "neighbour_ids": [
+        "L46-003",
+        "A23002",
+        "L45-007",
+        "I12013",
+        "L46-006"
+      ],
+      "decision": "all_distinct",
+      "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+    },
+    {
+      "id": "L46-003",
+      "neighbour_ids": [
+        "L46-001",
+        "L46-002",
+        "A25003",
+        "L46-005",
+        "A23002"
+      ],
+      "decision": "all_distinct",
+      "reason": "入水與回升力項分開，拿掉回升黏附時不會留在水面；與起跳接觸改方向、塑膠空中翻正、足墊拉脫、軟球變形跳水不同。末近鄰A25003黏彈鬆弛限制划水、A23002液滴與彈片能量時序亦非此回升接觸控制。"
+    },
+    {
+      "id": "L46-004",
+      "neighbour_ids": [
+        "A12007",
+        "A12005",
+        "A12006",
+        "L46-006",
+        "LEG-S60"
+      ],
+      "decision": "all_distinct",
+      "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+    },
+    {
+      "id": "L46-005",
+      "neighbour_ids": [
+        "L46-003",
+        "L46-001",
+        "L46-007",
+        "A22001",
+        "Z7006"
+      ],
+      "decision": "all_distinct",
+      "reason": "拍水衝量不足＋添加劑後身體浸水及速度對照；不同於水黽快速下壓破膜、腹管接觸時序、隔水鞭毛鎖相及鬚形抑自激振動。"
+    },
+    {
+      "id": "L46-006",
+      "neighbour_ids": [
+        "L45-007",
+        "A12007",
+        "E9003",
+        "B17003",
+        "P30001"
+      ],
+      "decision": "all_distinct",
+      "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+    },
+    {
+      "id": "L46-007",
+      "neighbour_ids": [
+        "X41-002",
+        "L46-005",
+        "P45-004",
+        "L46-003",
+        "P21005"
+      ],
+      "decision": "all_distinct",
+      "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+    }
+  ],
+  "first_reviewed_retrieval": {
+    "draft_sha256": "1460c3cae62ffc1c65afa6667ff36207fb98ba074de760b42150dde3ec854055",
+    "directed_pairs": 35,
+    "note": "首次完整題答scope人工讀回；該早版檔已由root更新，本欄保留當時input，不假稱有固定檔SHA。"
+  },
+  "semantic_input_sha256": "f6b1222fa0b8a8b7492cdf563e0cd36a1122c613309f8d785b0fa065ec018fd6",
+  "final_retrieval": {
+    "file": ".cache/wave46-life-neighbours.json",
+    "sha256": "025fbded8783367f39635e918308b10fc63bfd803f1ddc5e2f05bacd6f168c3a",
+    "draft_file": ".cache/draft.json",
+    "draft_sha256": "f6b1222fa0b8a8b7492cdf563e0cd36a1122c613309f8d785b0fa065ec018fd6",
+    "raw_records": 3871,
+    "directed_pairs": 35,
+    "batch_sha256": "54967812a7f77a4e822d990325ea72460c434e81f7fd77a2f3e7da72a5cd1e2f"
+  },
+  "final_delta": {
+    "scope": "末版7題×5鄰居完整再讀，L46-003修後答案核同batch/draft。L46-003鄰居新增A25003/A23002：黏彈划水鬆弛和液滴彈射時序不同於腹管回升黏附；均distinct。其餘目前對照逐列記於directed_top5。",
+    "status": "PASS"
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "L46-001",
+        "b": "B17003",
+        "reason": "果蠅先移腳改重心與推力方向；新題多出仍與水面相連的腹管牽制，尤其水平起跳與離水時點。"
+      },
+      {
+        "a": "L46-001",
+        "b": "P053",
+        "reason": "靜態水滴鋪展不包含彈器推動時的轉動、離水與水平前衝；黏附強度反事實是模型。"
+      },
+      {
+        "a": "L46-001",
+        "b": "L46-003",
+        "reason": "起跳的接觸牽制改角速度／方向；落地關鍵是回升時拉住反彈，並有入水耗能的分項模型。不是單換黏附大小。"
+      },
+      {
+        "a": "L46-002",
+        "b": "P030",
+        "reason": "空中翻正的U形和水滴模型有空氣外力矩，非無外力矩固定形狀的角動量問題。"
+      },
+      {
+        "a": "L46-002",
+        "b": "P314",
+        "reason": "不是用另一個旋轉物交換角動量；塑膠U形落體的外部流體作用也能翻正。"
+      },
+      {
+        "a": "L46-002",
+        "b": "P21005",
+        "reason": "舊薄片移配重形成滑翔迎角平衡；新題由倒置狀態翻正並對照U形／平片及水滴配置。仍請非作者嚴判形狀／重心能否足以分核。"
+      },
+      {
+        "a": "L46-002",
+        "b": "A12007",
+        "reason": "地上開翅降低能障再由腿擾動越障；新題在空中由形狀與空氣作用翻正，無地面接觸能障。"
+      },
+      {
+        "a": "L46-002",
+        "b": "L46-006",
+        "reason": "U形／水滴形成回正趨勢和持續波狀形變抑制滑翔失穩不同；一個是落體形狀對照，一個是時變模型關閉擺動。"
+      },
+      {
+        "a": "L46-003",
+        "b": "A20003",
+        "reason": "足墊固定拉脫與落水回彈是不同讀出；本題分入水耗能／出水黏附時序，非換一種分泌液。"
+      },
+      {
+        "a": "L46-003",
+        "b": "P45-002",
+        "reason": "球沿表面爬水片脫離帶入空腔；新題沒有以空腔成因解釋，而是回升是否被黏附截斷。"
+      },
+      {
+        "a": "L46-003",
+        "b": "X41-003",
+        "reason": "軟球變形斜面造成向上水力而躍出；跳蟲腹管作用是回升時拉住，方向與時段不同。"
+      },
+      {
+        "a": "L46-003",
+        "b": "P053",
+        "reason": "靜態接觸角不是落地動態的入水阻力／回升拉力分工。"
+      },
+      {
+        "a": "L46-004",
+        "b": "A12007",
+        "reason": "勾住邊緣轉換已有進場動能，並非翻肚後開翅與踢腿越地面能障。"
+      },
+      {
+        "a": "L46-004",
+        "b": "A23004",
+        "reason": "尾部頂牆提供附加支撐 vs 後爪勾邊緣改變運動支點；不是同一接觸構造換物種。"
+      },
+      {
+        "a": "L46-004",
+        "b": "LEG-S59",
+        "reason": "去爪保留足墊的處理排除只用一般剛毛黏附解釋；此動作依賴邊緣鉤掛。"
+      },
+      {
+        "a": "L46-004",
+        "b": "P164",
+        "reason": "P164實為寬底座容許傾角，並非鐘擺；不能沿歷史未收的泛化描述當同題。"
+      },
+      {
+        "a": "L46-005",
+        "b": "P048",
+        "reason": "完全浸沒的浮力不足抵重不解釋水面高速拍水、體高與阻力的耦合。"
+      },
+      {
+        "a": "L46-005",
+        "b": "P053",
+        "reason": "不是靜態潤濕照片；添加劑條件改變動態支撐／頭高／速度，且不能簡化成唯一張力份額。"
+      },
+      {
+        "a": "L46-005",
+        "b": "LEG-S59",
+        "reason": "水面跑的支撐與貼固體牆面細毛黏附不同。"
+      },
+      {
+        "a": "L46-005",
+        "b": "L46-007",
+        "reason": "水黽模型在破膜時失去主要毛細支撐；壁虎腳拍水產生衝量仍需其他界面作用，非同物理比例換尺寸。"
+      },
+      {
+        "a": "L46-006",
+        "b": "P21005",
+        "reason": "固定配重條件的迎角回復與持續擺動改變力矩的穩定範圍不同。"
+      },
+      {
+        "a": "L46-006",
+        "b": "P23003",
+        "reason": "無外力矩剛體中間軸失穩不包含空氣力矩與身體持續改形。"
+      },
+      {
+        "a": "L46-006",
+        "b": "B2165",
+        "reason": "增加滑翔面積不等於把形狀凍結與波動開關作穩定性比較。"
+      },
+      {
+        "a": "L46-006",
+        "b": "A12009",
+        "reason": "跟隨者與外部渦流到達相位匹配；飛蛇不是兩體尾流同步，而是本體姿態穩定。"
+      },
+      {
+        "a": "L46-007",
+        "b": "P054",
+        "reason": "彎月面靜態形狀不同於腿部下壓速率超過破裂界線、支撐突然終止。"
+      },
+      {
+        "a": "L46-007",
+        "b": "P053",
+        "reason": "固體表面潤濕競爭不包含下壓快慢與水面破裂時點。"
+      },
+      {
+        "a": "L46-001",
+        "b": "L46-005",
+        "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+      },
+      {
+        "a": "L46-001",
+        "b": "X41-002",
+        "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+      },
+      {
+        "a": "L46-001",
+        "b": "F17002",
+        "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+      },
+      {
+        "a": "L46-001",
+        "b": "P45-006",
+        "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+      },
+      {
+        "a": "L46-002",
+        "b": "L46-003",
+        "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+      },
+      {
+        "a": "L46-002",
+        "b": "A23002",
+        "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+      },
+      {
+        "a": "L46-002",
+        "b": "L45-007",
+        "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+      },
+      {
+        "a": "L46-002",
+        "b": "I12013",
+        "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+      },
+      {
+        "a": "L46-003",
+        "b": "A25003",
+        "reason": "入水與回升力項分開，拿掉回升黏附時不會留在水面；與起跳接觸改方向、塑膠空中翻正、足墊拉脫、軟球變形跳水不同。末近鄰A25003黏彈鬆弛限制划水、A23002液滴與彈片能量時序亦非此回升接觸控制。"
+      },
+      {
+        "a": "L46-003",
+        "b": "L46-005",
+        "reason": "入水與回升力項分開，拿掉回升黏附時不會留在水面；與起跳接觸改方向、塑膠空中翻正、足墊拉脫、軟球變形跳水不同。末近鄰A25003黏彈鬆弛限制划水、A23002液滴與彈片能量時序亦非此回升接觸控制。"
+      },
+      {
+        "a": "L46-003",
+        "b": "A23002",
+        "reason": "入水與回升力項分開，拿掉回升黏附時不會留在水面；與起跳接觸改方向、塑膠空中翻正、足墊拉脫、軟球變形跳水不同。末近鄰A25003黏彈鬆弛限制划水、A23002液滴與彈片能量時序亦非此回升接觸控制。"
+      },
+      {
+        "a": "L46-004",
+        "b": "A12005",
+        "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+      },
+      {
+        "a": "L46-004",
+        "b": "A12006",
+        "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+      },
+      {
+        "a": "L46-004",
+        "b": "L46-006",
+        "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+      },
+      {
+        "a": "L46-004",
+        "b": "LEG-S60",
+        "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+      },
+      {
+        "a": "L46-005",
+        "b": "A22001",
+        "reason": "拍水衝量不足＋添加劑後身體浸水及速度對照；不同於水黽快速下壓破膜、腹管接觸時序、隔水鞭毛鎖相及鬚形抑自激振動。"
+      },
+      {
+        "a": "L46-005",
+        "b": "Z7006",
+        "reason": "拍水衝量不足＋添加劑後身體浸水及速度對照；不同於水黽快速下壓破膜、腹管接觸時序、隔水鞭毛鎖相及鬚形抑自激振動。"
+      },
+      {
+        "a": "L46-006",
+        "b": "L45-007",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-006",
+        "b": "A12007",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-006",
+        "b": "E9003",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-006",
+        "b": "B17003",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-006",
+        "b": "P30001",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-007",
+        "b": "X41-002",
+        "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+      },
+      {
+        "a": "L46-007",
+        "b": "P45-004",
+        "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+      },
+      {
+        "a": "L46-007",
+        "b": "L46-003",
+        "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+      },
+      {
+        "a": "L46-007",
+        "b": "P21005",
+        "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+      }
+    ]
+  },
+  "not_added_readback": {
+    "count": 17,
+    "ids": [
+      "L46-NA001",
+      "L46-NA002",
+      "L46-NA003",
+      "L46-NA004",
+      "L46-NA005",
+      "L46-NA006",
+      "L46-NA007",
+      "L46-NA008",
+      "L46-NA009",
+      "L46-NA010",
+      "L46-NA011",
+      "L46-NA012",
+      "L46-NA013",
+      "L46-NA014",
+      "L46-NA015",
+      "L46-NA016",
+      "L46-NA017"
+    ],
+    "conclusion": "17列逐讀；後翅移除新全文支持重疊P015但不擴成新核，其他關鍵界線含P030/P314慣性尾巴、LEG-S59足附著、A12007翻身、A12006狹縫、E9003翅果，以及不能用乾固體對照證落水、不能說全蛇停止立即失穩或個體已學到最佳腳速。"
+  },
+  "timing_review": {
+    "themes": [
+      {
+        "id": "W46L-T01",
+        "accepted": true,
+        "seconds": 71,
+        "chapter_seconds": [
+          25,
+          46
+        ],
+        "core_seconds": {
+          "L46-002": 25,
+          "L46-003": 46
+        },
+        "core_caps": {
+          "L46-002": 75,
+          "L46-003": 70
+        },
+        "max_beat_seconds": 24,
+        "drop_if_review": "已逐讀撤案條件；不將刪章後殘片視為自動核准。"
+      },
+      {
+        "id": "W46L-T02",
+        "accepted": true,
+        "seconds": 44,
+        "chapter_seconds": [
+          18,
+          26
+        ],
+        "core_seconds": {
+          "L46-007": 44
+        },
+        "core_caps": {
+          "L46-007": 75
+        },
+        "max_beat_seconds": 26,
+        "drop_if_review": "已逐讀撤案條件；不將刪章後殘片視為自動核准。",
+        "title": "水黽的腳划得越快，起跳速度就越快嗎？"
+      },
+      {
+        "id": "W46L-T03",
+        "accepted": true,
+        "seconds": 68,
+        "chapter_seconds": [
+          33,
+          35
+        ],
+        "core_seconds": {
+          "L46-004": 68
+        },
+        "core_caps": {
+          "L46-004": 90
+        },
+        "max_beat_seconds": 20,
+        "drop_if_review": "已逐讀撤案條件；不將刪章後殘片視為自動核准。"
+      },
+      {
+        "id": "W46L-T04",
+        "accepted": true,
+        "seconds": 66,
+        "chapter_seconds": [
+          30,
+          36
+        ],
+        "core_seconds": {
+          "L46-006": 66
+        },
+        "core_caps": {
+          "L46-006": 90
+        },
+        "max_beat_seconds": 24,
+        "drop_if_review": "已逐讀撤案條件；不將刪章後殘片視為自動核准。"
+      },
+      {
+        "id": "W46L-T05",
+        "accepted": true,
+        "seconds": 45,
+        "chapter_seconds": [
+          22,
+          23
+        ],
+        "core_seconds": {
+          "L46-005": 45
+        },
+        "core_caps": {
+          "L46-005": 75
+        },
+        "max_beat_seconds": 23,
+        "drop_if_review": "已逐讀撤案條件；不將刪章後殘片視為自動核准。",
+        "title": "壁虎能拍水跑，為什麼加了界面活性劑還會跑低、跑慢？"
+      }
+    ],
+    "split_decision": "原89秒水黽+壁虎共片只是同場景，採root觀眾審拆成44及45秒兩個單一追問案；總時長不增加，均兩章。",
+    "reserve_candidate_ids": [
+      "L46-001"
+    ],
+    "note": "沒有為7候選把起跳段硬塞進翻正/落地片。其他四案仍紙上，非旁白實測。"
+  },
+  "targeted_recheck": [
+    {
+      "id": "LIFE46-01",
+      "finding": "原L46-003／T01／樣稿說只保留入水耗能仍反彈，誤將純耗散當反彈來源。",
+      "evidence": "S001 Landing Model與Methods顯示未關閉表面張力等其他力；Fig8C/D同時支持。",
+      "resolution": "題卡答案/視覺、作者快照、T01第二章及新第3段均改保留其餘水動力只拿掉回升腹管黏附。",
+      "status": "PASS"
+    },
+    {
+      "id": "LIFE46-02",
+      "finding": "水黽破膜速度門檻與壁虎多支撐沒有同一追問。",
+      "resolution": "原T02拆水黽T02 44秒與壁虎T05 45秒，沒有增總預算；兩案均各自完整撤案條件。",
+      "status": "PASS"
+    }
+  ],
+  "voice_sample_readback": {
+    "file": ".cache/w46-sample-life.json",
+    "sha256": "ae6ffce4a1bcba0b4d4ec1fb1a8e3597701ef0bc549336362cbde03e581655c8",
+    "root_receipt": ".cache/wave46-life-read.json",
+    "receipt_sha256": "bc785f70d3d0f18c937ebbb17bdaa2e3a9c0da07c6bc9e96b946c5be02b1b9f6",
+    "independent_wav_header_seconds": [
+      21.743,
+      21.026,
+      19.11,
+      61.88
+    ],
+    "budget_seconds": 71,
+    "visual_margin_seconds": 9.12,
+    "text_check": "三段與root讀取文字一致，第3段已保留其餘水動力；第一段對25秒、後兩段對46秒。",
+    "limitation": "只獨立讀文字／核WAV雜湊與檔頭時長；未聽音訊，未自行產音或假稱真人盲讀。"
+  },
+  "dispositions": {
+    "retain": 7,
+    "merge": 0,
+    "excluded": 0,
+    "accepted_themes": 5
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "選題級來源與紙上編輯核對，不是完整逐字稿逐主張核准或製作核准。",
+    "未復現研究，未逐句重查全部原研究與補充資料；實際範圍逐源列明。",
+    "圖像查核不提供原刊圖片商用授權；題案規劃原創示意。",
+    "語意分數只產候選，未按相似度自動合併；全庫外部來源不在本輪範圍。"
+  ],
+  "binding_revision": [
+    {
+      "reason": "定點更正T02為直接比較的起跳速度，T05用詞改界面活性劑；獨立解析比較只有兩title和作者written_files中themeSHA更新。",
+      "previous_receipt_sha256": "8e565c1a8d989e8bb07e771c6a92de8ab29be297d70bee6531ff61b9859ab0b5",
+      "previous_reviewed_files": [
+        {
+          "file": "batches/wave46-life.json",
+          "sha256": "54967812a7f77a4e822d990325ea72460c434e81f7fd77a2f3e7da72a5cd1e2f"
+        },
+        {
+          "file": "reviews/wave46-life-themes.json",
+          "sha256": "e3ae2db91da1f1387bb87f4dcf84c815774012d6fa3e45616649da15ec71937a"
+        },
+        {
+          "file": "reviews/wave46-life-author.json",
+          "sha256": "8d0964bc27c35d17332a9800ab6e953ab8f39ef00c11776a3d45eb839c68d8f9"
+        }
+      ],
+      "changes": [
+        {
+          "id": "W46L-T02",
+          "before": "水黽的腳劃得越快，就能跳得越高嗎？",
+          "after": "水黽的腳划得越快，起跳速度就越快嗎？"
+        },
+        {
+          "id": "W46L-T05",
+          "before": "壁虎能拍水跑，為什麼加了介面活性劑還會跑低、跑慢？",
+          "after": "壁虎能拍水跑，為什麼加了界面活性劑還會跑低、跑慢？"
+        }
+      ],
+      "before_evidence": [
+        {
+          "file": ".cache/wave46-life-themes-before-title-fix.json",
+          "sha256": "e3ae2db91da1f1387bb87f4dcf84c815774012d6fa3e45616649da15ec71937a"
+        },
+        {
+          "file": ".cache/wave46-life-author-before-title-fix.json",
+          "sha256": "8d0964bc27c35d17332a9800ab6e953ab8f39ef00c11776a3d45eb839c68d8f9"
+        }
+      ],
+      "unchanged": "batch、候選問答scope、來源、所有章節與beats、71/44/68/66/45秒、樣稿與61.880秒讀值均不變；共同draft f6b1222f與原來源/近鄰審閱繼續適用。",
+      "status": "PASS_TARGETED_TITLE_AND_BINDING_READBACK"
+    },
+    {
+      "reason": "第二次定點將T02章名與首beat/彙總副本一併統一起跳速度；以原修前備份對末版完整比較，合共五字串路徑，只有兩題標題與三章節文字欄，無內容/時間額度擴張。",
+      "previous_receipt_sha256": "e82da8ca9d66ef63f5060f1ca7b8a01f93260613ed1d5a2883e6bdfd26eeb337",
+      "previous_reviewed_files": [
+        {
+          "file": "batches/wave46-life.json",
+          "sha256": "54967812a7f77a4e822d990325ea72460c434e81f7fd77a2f3e7da72a5cd1e2f"
+        },
+        {
+          "file": "reviews/wave46-life-themes.json",
+          "sha256": "7cc5ec17f03c52e49e12aca49836a9102b07fc0beeeba757bad257a97660b35a"
+        },
+        {
+          "file": "reviews/wave46-life-author.json",
+          "sha256": "316b9d447f040f236b388106906c3607c33784065265b94414e97d7569b964ae"
+        }
+      ],
+      "before_evidence": [
+        {
+          "file": ".cache/wave46-life-themes-before-title-fix.json",
+          "sha256": "e3ae2db91da1f1387bb87f4dcf84c815774012d6fa3e45616649da15ec71937a"
+        },
+        {
+          "file": ".cache/wave46-life-author-before-title-fix.json",
+          "sha256": "8d0964bc27c35d17332a9800ab6e953ab8f39ef00c11776a3d45eb839c68d8f9"
+        }
+      ],
+      "changes_from_original": [
+        {
+          "path": "/episodes/1/title",
+          "before": "水黽的腳劃得越快，就能跳得越高嗎？",
+          "after": "水黽的腳划得越快，起跳速度就越快嗎？"
+        },
+        {
+          "path": "/episodes/1/chapters/0/beats/0/new_information",
+          "before": "開場問腳速越快是否跳越高；同形態模型的兩次下壓並排，較快那次先把水窩壓破。",
+          "after": "開場問腳速越快是否起跳越快；同形態模型的兩次下壓並排，較快那次先把水窩壓破。"
+        },
+        {
+          "path": "/episodes/1/chapters/0/new_information",
+          "before": "開場問腳速越快是否跳越高；同形態模型的兩次下壓並排，較快那次先把水窩壓破。",
+          "after": "開場問腳速越快是否起跳越快；同形態模型的兩次下壓並排，較快那次先把水窩壓破。"
+        },
+        {
+          "path": "/episodes/1/chapters/1/title",
+          "before": "破掉以後，快不一定換來更高",
+          "after": "破掉以後，划得快不一定起跳快"
+        },
+        {
+          "path": "/episodes/4/title",
+          "before": "壁虎能拍水跑，為什麼加了介面活性劑還會跑低、跑慢？",
+          "after": "壁虎能拍水跑，為什麼加了界面活性劑還會跑低、跑慢？"
+        }
+      ],
+      "unchanged": "批檔、來源、問答scope、所有章節/beat秒數、撤案條件、樣稿與61.880秒讀值均不變；末共同draft f6b1222f仍適用。",
+      "status": "PASS_FINAL_TARGETED_WORDING_AND_BINDING_READBACK"
+    }
+  ]
+}

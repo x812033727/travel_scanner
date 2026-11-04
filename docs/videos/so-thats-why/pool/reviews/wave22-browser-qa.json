@@ -1,0 +1,42 @@
+{
+  "tested_on": "2026-11-02T04:08:52.940Z",
+  "result": "PASS",
+  "selected": 3022,
+  "index_html_sha256": "9faf043ced0ea6550dfe0f5ace3d9e847e2a6f4838eed57770f231021a9f5356",
+  "source_sample": {
+    "id": "P22002",
+    "urls": [
+      "https://web.mit.edu/nnf/publications/GHM90.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave22-desktop.png",
+    "wave22-source-desktop.png",
+    "wave22-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": [
+    "Root viewed actual1440x1000 desktop, source-expanded desktop and390x844 mobile PNGs;3022/2580/237/142 counters readable, cards and controls show no horizontal crop.",
+    "Expanded P22002 question, answer and scope are visible. Source URL list/payoff/visual are below screenshot crop and were checked in DOM by browser assertions; not claimed visible in this crop.",
+    "No audio, original study video, reader comprehension or script timing test performed."
+  ],
+  "screenshot_hashes": {
+    "wave22-desktop.png": "88e1aa2f6b5b50c03a4bec91b6896724e7179d3e65859ad1c84f3de99718b713",
+    "wave22-source-desktop.png": "0b14aa39a1628673fb228e43decea95db754d997cf51c97311cb727400290ecf",
+    "wave22-mobile.png": "06db13a7bd2282720f8f2718392a54afe549f565ea8b9ad0062ccb93343584a3"
+  }
+}

@@ -1,0 +1,598 @@
+{
+  "batch_id": "wave41-life-20261103",
+  "created_on": "2026-11-03",
+  "scope": "動物睡眠與運動，量測行為閾值、腦波階段、後續睡眠壓力與環境操控。",
+  "sources": [
+    {
+      "id": "L41-S001",
+      "title": "The Jellyfish Cassiopea Exhibits a Sleep-like State",
+      "doi": "10.1016/j.cub.2017.08.014",
+      "publisher": "Nath等，Current Biology",
+      "version": "2017 CaltechAUTHORS典藏接受稿",
+      "url": "https://doi.org/10.1016/j.cub.2017.08.014",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2017.08.014",
+      "retrieval_url": "https://authors.library.caltech.edu/records/psp7j-nmv35/files/nihms907190.pdf?download=1",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位同文，指定UA取得有效PDF，以PyMuPDF抽出指定頁正文與圖說。",
+      "reading_scope": "PDF pp.2–4夜間傘搏、撤平台與再次撤台，分日夜等強水流干擾；pp.15–17 Fig3–4圖說。",
+      "locator": "PDF pp.2–4夜間傘搏、撤平台與再次撤台，分日夜等強水流干擾；pp.15–17 Fig3–4圖說。",
+      "summary": "夜裡第一次突然失去支撐，水母比白天慢才開始搏動；在三十秒內再測一次，晝夜差異便消失。另在夜間反覆以水流打斷安靜，隔日活動降低，相似水流施在白天沒出現同樣結果。反應慢能迅速解除，還伴隨休息被打斷後的反彈，支持類睡眠狀態。",
+      "limitations": "限倒立水母Cassiopea多個體行為。量的是撤平台到首次搏動或回到底網的時間，沒有量到夢、哺乳類睡眠腦波或演化時間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-jelly.pdf",
+        "sha256": "3c6605f2ed5302820489a13afc2753643c21b632ea8cb1adcb994fade7e35e66",
+        "text_file": ".cache/wave41-life-jelly.txt",
+        "text_sha256": "293725b7f422be9c03821cc23212f6094e63e53976f7a7893f4bf705a6328454"
+      }
+    },
+    {
+      "id": "L41-S002",
+      "title": "Wake-like skin patterning and neural activity during octopus sleep",
+      "doi": "10.1038/s41586-023-06203-4",
+      "publisher": "Pophale等，Nature",
+      "version": "2023期刊HTML正文",
+      "url": "https://doi.org/10.1038/s41586-023-06203-4",
+      "canonical_url": "https://doi.org/10.1038/s41586-023-06203-4",
+      "retrieval_url": "https://www.nature.com/articles/s41586-023-06203-4",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位同文，指定UA取得有效期刊HTML，從原HTML以UTF-8抽取正文。首個.pdf路線無文字可讀，改期刊HTML。",
+      "reading_scope": "HTML PARA17–21、32–38、52–53，弱/中/強水槽刺激、單次中斷後下一次活動期、清醒與活動睡眠時花紋之相似及其界線。",
+      "locator": "HTML PARA17–21、32–38、52–53，弱/中/強水槽刺激、單次中斷後下一次活動期、清醒與活動睡眠時花紋之相似及其界線。",
+      "summary": "白天休息的章魚偶爾短暫快速換色。弱震動在清醒時能引起動作，換色期卻未引起同樣反應，中強度刺激仍能喚起反應。刻意中斷一次活動期，下一次往往提早出現。色彩在變與對外界保持清醒，是可分開檢驗的兩件事。",
+      "limitations": "限Octopus laqueus及該實驗震動強度。較規則、約一分鐘的活動期與安靜期短暫閃色要分開。花紋和清醒時相像不足以反推夢的內容。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-octoxml.html",
+        "sha256": "3e46a3c2cf8dcc7c6b29af3d5591bef8e746789b1e42cb55720bd1331ee19b77",
+        "text_file": ".cache/wave41-life-octoxml-body.txt",
+        "text_sha256": "32a52499de904f5851b2177df0aa3da323e48e8925bad77082c43b4ec3d1941a"
+      }
+    },
+    {
+      "id": "L41-S003",
+      "title": "Facultative control of avian unihemispheric sleep under the risk of predation",
+      "doi": "10.1016/S0166-4328(99)00070-4",
+      "publisher": "Rattenborg、Lima、Amlaner，Behavioural Brain Research",
+      "version": "1999原刊作者上傳文本",
+      "url": "https://doi.org/10.1016/S0166-4328(99)00070-4",
+      "canonical_url": "https://doi.org/10.1016/S0166-4328(99)00070-4",
+      "retrieval_url": "https://www.researchgate.net/publication/12736702_Facultative_control_of_avian_unihemispheric_sleep_under_the_risk_of_predation",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA未取得正文，改以web.open定位作者或刊方的原文，保留列號與實際返回節錄。",
+      "reading_scope": "web L400–480 位置與眼睛記錄、L711–738威脅刺激、L750–820及L960–995位置/腦波/逃避反應。",
+      "locator": "web L400–480 位置與眼睛記錄、L711–738威脅刺激、L750–820及L960–995位置/腦波/逃避反應。",
+      "summary": "四隻綠頭鴨排成一列，同一隻處在兩端時，較常採用單眼張開的休息方式，而且張開的那眼偏向隊外。腦波支持兩半球慢波不對稱，另以螢幕威脅圖像呈給張眼的一側，鴨仍可快速做出逃避動作。",
+      "limitations": "位置實驗以四鳥成列改變外側暴露，未用真掠食者攻擊。眼向、腦波與螢幕測試有各自樣本，未測知風險的主觀想法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-duck-combined.txt",
+        "sha256": "1eded80d5d38dbf9db80be28e641e63ff182ed99561045f8c4238129846dcfcf",
+        "text_file": ".cache/wave41-life-duck-combined.txt",
+        "text_sha256": "1eded80d5d38dbf9db80be28e641e63ff182ed99561045f8c4238129846dcfcf"
+      }
+    },
+    {
+      "id": "L41-S004",
+      "title": "Evidence that birds sleep in mid-flight",
+      "doi": "10.1038/ncomms12468",
+      "publisher": "Rattenborg等，Nature Communications",
+      "version": "2016期刊PDF",
+      "url": "https://doi.org/10.1038/ncomms12468",
+      "canonical_url": "https://doi.org/10.1038/ncomms12468",
+      "retrieval_url": "https://www.nature.com/articles/ncomms12468.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位同文，指定UA取得有效PDF，以PyMuPDF抽出指定頁正文與圖說。",
+      "reading_scope": "PDF pp.2–6，Sleep during flight、Asymmetric sleep and circling flight及Fig2–3圖說。",
+      "locator": "PDF pp.2–6，Sleep during flight、Asymmetric sleep and circling flight及Fig2–3圖說。",
+      "summary": "大軍艦鳥夜間不拍翅飛行時，可出現單側較強或雙側同時的慢波，慢波睡眠常伴隨在上升氣流盤旋。左右不對稱時，較強慢波的一側偏向轉彎內側；兩側相近時沒有同樣的轉向偏好。雙側慢波的紀錄顯示，短暫維持飛行不必總有一半腦保持清醒。",
+      "limitations": "限出海的大軍艦鳥腦電、頭部加速度及GPS紀錄。眼睛是否實際張開及牠是否看見障礙為推論，盤旋飛行本身也可發生於清醒狀態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-frigate.pdf",
+        "sha256": "e7f197ce32aef5b2b047f512ce1ee7ea595fe500e0902d21c594a7d70dbbe16a",
+        "text_file": ".cache/wave41-life-frigate.txt",
+        "text_sha256": "86e4f7f68c14a5aa6e623f1ee16bab3377d233c3f3f1a5e40cbf2bcd66ff35b5"
+      }
+    },
+    {
+      "id": "L41-S005",
+      "title": "Brain activity of diving seals reveals short sleep cycles at depth",
+      "doi": "10.1126/science.adf0566",
+      "publisher": "Kendall-Bar等，Science",
+      "version": "2023原刊PDF，研究設備團隊網站提供",
+      "url": "https://doi.org/10.1126/science.adf0566",
+      "canonical_url": "https://doi.org/10.1126/science.adf0566",
+      "retrieval_url": "https://www.evolocus.com/Publications/Science2023.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位同文，指定UA取得有效PDF，以PyMuPDF抽出指定頁正文與圖說。",
+      "reading_scope": "PDF pp.1–4、Fig1–3，幼海豹配戴腦波/運動記錄、下沉與翻轉時序、以行為特徵外推成年雌豹的限制。",
+      "locator": "PDF pp.1–4、Fig1–3，幼海豹配戴腦波/運動記錄、下沉與翻轉時序、以行為特徵外推成年雌豹的限制。",
+      "summary": "在有腦波與姿態紀錄的潛次，象海豹能從清醒滑行進入慢波睡眠，開始時仍維持腹部朝下。轉入快速動眼睡眠後失去原有姿態控制，翻成腹面向上，在水中向下繞圈。有些在較淺海域的睡眠發生在海底，未出現同樣的水中路徑。",
+      "limitations": "限北象海豹直接腦波與深度、姿態同步的樣本。較大批成年雌豹的長期睡時另以潛水特徵推估，不能只從任意下降曲線判定睡著。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-sealdive.pdf",
+        "sha256": "317d0b564552b5bd36b9c7cad249e180200542e755cdb2f2b4493d42fefe84bb",
+        "text_file": ".cache/wave41-life-sealdive.txt",
+        "text_sha256": "ba50f709d23a837d1f86374477a548f3a028a2dbe4294396f1d049d41bc22da4"
+      }
+    },
+    {
+      "id": "L41-S006",
+      "title": "Fur Seals Suppress REM Sleep for Very Long Periods without Subsequent Rebound",
+      "doi": "10.1016/j.cub.2018.05.022",
+      "publisher": "Lyamin等，Current Biology",
+      "version": "2018期刊PDF，加州大學研究團隊典藏",
+      "url": "https://doi.org/10.1016/j.cub.2018.05.022",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2018.05.022",
+      "retrieval_url": "https://www.semel.ucla.edu/wp-content/uploads/2026/01/18_fur_seals_suppress_rem_sleep_lyamin_siegel_5.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位同文，指定UA取得有效PDF，以PyMuPDF抽出指定頁正文與圖說。",
+      "reading_scope": "PDF pp.2–4水期與恢復前兩天、Fig1與4圖說；pp.8–9 Experimental design及評分程序。",
+      "locator": "PDF pp.2–4水期與恢復前兩天、Fig1與4圖說；pp.8–9 Experimental design及評分程序。",
+      "summary": "研究先讓北方海狗使用乾平台，撤平台後只能在水中休息，再恢復原條件。水期快速動眼睡眠大幅縮減，慢波睡眠仍在。恢復前兩天的快速動眼時數變化因個體而異，沒有出現與先前短少量相稱的集體反彈。",
+      "limitations": "四隻圈養海狗，水期十至十四天；比較基線及回復前兩天，不能推論長期從不補眠、野生全程沒有快速動眼睡眠或其生理功能。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-fur.pdf",
+        "sha256": "a563dec18355be0d124e89432dc4f9c04843b4f238b03178bc773ff2d4f920a5",
+        "text_file": ".cache/wave41-life-fur.txt",
+        "text_sha256": "c10180880f2e28afd1ec622bc8dd4a53f9d65997fba4a45cb510c5ce959308e3"
+      }
+    },
+    {
+      "id": "L41-S007",
+      "title": "Reindeer in the Arctic reduce sleep need during rumination",
+      "doi": "10.1016/j.cub.2023.12.012",
+      "publisher": "Furrer等，Current Biology",
+      "version": "2023線上、2024卷，UiT典藏作者稿",
+      "url": "https://doi.org/10.1016/j.cub.2023.12.012",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2023.12.012",
+      "retrieval_url": "https://munin.uit.no/bitstream/10037/33347/2/article.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA未取得正文，改以web.open定位作者或刊方的原文，保留列號與實際返回節錄。",
+      "reading_scope": "UiT PDF web L58–66、98–110、133–180，反芻前後非快速動眼期慢波、兩種睡眠壓力模型與圈養限制。",
+      "locator": "UiT PDF web L58–66、98–110、133–180，反芻前後非快速動眼期慢波、兩種睡眠壓力模型與圈養限制。",
+      "summary": "研究比較休息中一段反芻前後。之後進入非快速動眼睡眠時，慢波活動較低；反芻越久，前後的差異往往越大。把反芻算作累積睡意或釋放睡意來預測腦波，後一種模型較貼近資料。嘴在咀嚼，可以同時伴隨部分睡眠壓力下降。",
+      "limitations": "四隻圈養成年雌馴鹿，秋、冬、夏記錄。慢波活動是睡眠壓力指標，咀嚼可造成訊號干擾；研究另檢查了受影響較小的頻帶。模型結果不證明所有反芻等於完整一段睡眠。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-reindeer-web.txt",
+        "sha256": "ad86b632d4e802c2976feb38dbd7eb8ba2fa3d6a87689358f33f197963422bd5",
+        "text_file": ".cache/wave41-life-reindeer-web.txt",
+        "text_sha256": "ad86b632d4e802c2976feb38dbd7eb8ba2fa3d6a87689358f33f197963422bd5"
+      }
+    },
+    {
+      "id": "L41-S008",
+      "title": "The lateral line confers evolutionarily derived sleep loss in the Mexican cavefish",
+      "doi": "10.1242/jeb.145128",
+      "publisher": "Jaggard等，Journal of Experimental Biology",
+      "version": "2017期刊PDF可讀web定點文字",
+      "url": "https://doi.org/10.1242/jeb.145128",
+      "canonical_url": "https://doi.org/10.1242/jeb.145128",
+      "retrieval_url": "https://jeb.biologists.org/content/jexbio/220/2/284.full.pdf",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA未取得正文，改以web.open定位作者或刊方的原文，保留列號與實際返回節錄。",
+      "reading_scope": "期刊PDF web L59–84、90–98與Fig1E/F（Pachón及地表組睡時、清醒活動）；L111、145–146與Fig2B（五個洞群及地表組的睡時）。",
+      "locator": "期刊PDF web L59–84、90–98與Fig1E/F（Pachón及地表組睡時、清醒活動）；L111、145–146與Fig2B（五個洞群及地表組的睡時）。",
+      "summary": "同樣削弱側線感覺，Pachón洞穴魚的行為睡眠時間增加，清醒時泳速並未一起下降。地表魚與另外四個洞穴族群沒有相同的睡時變化。相似的短睡表現，可以來自不同的調節途徑。",
+      "limitations": "限研究的墨西哥脂鯉族群與行為睡眠判準。清醒活動控制支持特異性，但未替其他洞穴族群辨認完整神經路徑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-cave-web.txt",
+        "sha256": "e167eb634ab062958a12990990b4a5912854aafccbed3ebc7d949a00649639fb",
+        "text_file": ".cache/wave41-life-cave-web.txt",
+        "text_sha256": "e167eb634ab062958a12990990b4a5912854aafccbed3ebc7d949a00649639fb"
+      }
+    },
+    {
+      "id": "L41-S009",
+      "title": "Migratory Sleeplessness in the White-Crowned Sparrow (Zonotrichia leucophrys gambelii)",
+      "doi": "10.1371/journal.pbio.0020212",
+      "publisher": "Rattenborg等，PLOS Biology",
+      "version": "2004期刊HTML",
+      "url": "https://doi.org/10.1371/journal.pbio.0020212",
+      "canonical_url": "https://doi.org/10.1371/journal.pbio.0020212",
+      "retrieval_url": "https://journals.plos.org/plosbiology/article?id=10.1371%2Fjournal.pbio.0020212",
+      "accessed_on": "2026-11-03",
+      "read_via": "web定位同文，指定UA取得有效期刊HTML，從原HTML以UTF-8抽取正文。",
+      "reading_scope": "HTML PARA57–71、76–79、86–95，遷徙期腦波與獨立啄鍵行為組，三夜冬季限眠與自然遷徙狀態。",
+      "locator": "HTML PARA57–71、76–79、86–95，遷徙期腦波與獨立啄鍵行為組，三夜冬季限眠與自然遷徙狀態。",
+      "summary": "研究用夜間活動辨認圈養鳥的遷徙狀態，另組腦波顯示此時睡時縮短。啄鍵組在遷徙季學新的三鍵順序，準確率沒有相應下降。非遷徙季只留夜初三小時睡眠、連做三夜，學新順序和執行熟悉順序的準確率卻下降。相似的夜間短睡表象，測得的隔日表現可以不同。",
+      "limitations": "圈養白冠帶鵐，不是跟著同一隻野鳥邊飛邊測腦波與表現。自然遷徙狀態與實驗限睡並非完全等量、等壓的干預。僅談所測啄鍵任務。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave41-life-sparrow.html",
+        "sha256": "192ba6ff0c5fa9c88056d0089a27c78acc615160916680ea4781a6e3bc11a17e",
+        "text_file": ".cache/wave41-life-sparrow-body.txt",
+        "text_sha256": "91124fe3ad078d83b4f6570e70f083bc1e87ac289dbf7658289f29181b41b16c"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L41-001",
+      "question": "倒立水母夜裡還在搏動，抽走牠身下的托盤，怎麼測出牠原本像在睡覺？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.reversible_quiescence_repeated_platform_drop",
+      "answer_target": "夜裡第一次突然失去支撐，水母比白天慢才開始搏動；在三十秒內再測一次，晝夜差異便消失。另在夜間反覆以水流打斷安靜，隔日活動降低，相似水流施在白天沒出現同樣結果。反應慢能迅速解除，還伴隨休息被打斷後的反彈，支持類睡眠狀態。",
+      "scope": "限倒立水母Cassiopea多個體行為。量的是撤平台到首次搏動或回到底網的時間，沒有量到夢、哺乳類睡眠腦波或演化時間。",
+      "source_ids": [
+        "L41-S001"
+      ],
+      "source_locator": "PDF pp.2–4夜間傘搏、撤平台與再次撤台，分日夜等強水流干擾；pp.15–17 Fig3–4圖說。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "觀眾可用第二次撤台猜測，夜裡慢動作究竟是固定體力差還是可解除的狀態。",
+        "visual": "左右畫白天與夜間，先各量第一次搏動，再重設三十秒內第二次；夜間打斷組另開一格。",
+        "seconds": [
+          40,
+          90
+        ]
+      }
+    },
+    {
+      "id": "L41-002",
+      "question": "章魚閉眼時突然滿身換花紋，怎麼知道牠沒有醒？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.octopus_active_bout_threshold_and_selective_reentry",
+      "answer_target": "白天休息的章魚偶爾短暫快速換色。弱震動在清醒時能引起動作，換色期卻未引起同樣反應，中強度刺激仍能喚起反應。刻意中斷一次活動期，下一次往往提早出現。色彩在變與對外界保持清醒，是可分開檢驗的兩件事。",
+      "scope": "限Octopus laqueus及該實驗震動強度。較規則、約一分鐘的活動期與安靜期短暫閃色要分開。花紋和清醒時相像不足以反推夢的內容。",
+      "source_ids": [
+        "L41-S002"
+      ],
+      "source_locator": "HTML PARA17–21、32–38、52–53，弱/中/強水槽刺激、單次中斷後下一次活動期、清醒與活動睡眠時花紋之相似及其界線。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "預測弱震動在清醒、安靜睡眠、正在換色三格會不會引起額外動作。",
+        "visual": "同一色階標示章魚本身換色，在三格上方同步點亮震動時刻；另畫中斷一次與自然結束後下一次活動期的位置。",
+        "seconds": [
+          42,
+          90
+        ]
+      }
+    },
+    {
+      "id": "L41-003",
+      "question": "一排鴨子休息時，最外側那隻會把哪一眼朝外？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.exposed_group_position_directional_monocular_vigilance",
+      "answer_target": "四隻綠頭鴨排成一列，同一隻處在兩端時，較常採用單眼張開的休息方式，而且張開的那眼偏向隊外。腦波支持兩半球慢波不對稱，另以螢幕威脅圖像呈給張眼的一側，鴨仍可快速做出逃避動作。",
+      "scope": "位置實驗以四鳥成列改變外側暴露，未用真掠食者攻擊。眼向、腦波與螢幕測試有各自樣本，未測知風險的主觀想法。",
+      "source_ids": [
+        "L41-S003"
+      ],
+      "source_locator": "web L400–480 位置與眼睛記錄、L711–738威脅刺激、L750–820及L960–995位置/腦波/逃避反應。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "從位置改變與眼向一起翻轉，看見隊列遮護會影響睡眠中保留的視野。",
+        "visual": "同一個記號標示一隻鴨，輪換中央與邊緣後畫眼向的分布；螢幕刺激另開鏡。",
+        "seconds": [
+          35,
+          78
+        ]
+      }
+    },
+    {
+      "id": "L41-004",
+      "question": "軍艦鳥在空中睡著，真的一定得留半邊腦清醒才不會掉下來嗎？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.aerial_soaring_bilateral_sleep_and_turn_asymmetry",
+      "answer_target": "大軍艦鳥夜間不拍翅飛行時，可出現單側較強或雙側同時的慢波，慢波睡眠常伴隨在上升氣流盤旋。左右不對稱時，較強慢波的一側偏向轉彎內側；兩側相近時沒有同樣的轉向偏好。雙側慢波的紀錄顯示，短暫維持飛行不必總有一半腦保持清醒。",
+      "scope": "限出海的大軍艦鳥腦電、頭部加速度及GPS紀錄。眼睛是否實際張開及牠是否看見障礙為推論，盤旋飛行本身也可發生於清醒狀態。",
+      "source_ids": [
+        "L41-S004"
+      ],
+      "source_locator": "PDF pp.2–6，Sleep during flight、Asymmetric sleep and circling flight及Fig2–3圖說。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用盤旋軌跡與兩條腦波線分開驗證能維持飛行和能否監視環境。",
+        "visual": "畫同一段飛行的左右腦波與轉向，先亮一側慢波，再揭出兩側都有慢波時飛行仍在繼續。",
+        "seconds": [
+          40,
+          95
+        ]
+      }
+    },
+    {
+      "id": "L41-005",
+      "question": "象海豹一邊往深處下沉，一邊翻成肚皮朝上，是清醒著在轉彎嗎？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.sleep_stage_transition_postural_loss_drift_spiral",
+      "answer_target": "在有腦波與姿態紀錄的潛次，象海豹能從清醒滑行進入慢波睡眠，開始時仍維持腹部朝下。轉入快速動眼睡眠後失去原有姿態控制，翻成腹面向上，在水中向下繞圈。有些在較淺海域的睡眠發生在海底，未出現同樣的水中路徑。",
+      "scope": "限北象海豹直接腦波與深度、姿態同步的樣本。較大批成年雌豹的長期睡時另以潛水特徵推估，不能只從任意下降曲線判定睡著。",
+      "source_ids": [
+        "L41-S005"
+      ],
+      "source_locator": "PDF pp.1–4、Fig1–3，幼海豹配戴腦波/運動記錄、下沉與翻轉時序、以行為特徵外推成年雌豹的限制。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "將腦波切換對準翻身時刻，區分仍能穩住姿勢的睡眠與失去控制的漂流。",
+        "visual": "並排清醒滑行、腹面向下的慢波、翻身螺旋下降；用不同線型區分實測腦波與由行為外推。",
+        "seconds": [
+          40,
+          92
+        ]
+      }
+    },
+    {
+      "id": "L41-006",
+      "question": "海狗在水裡連日少掉快速動眼睡眠，回到乾平台會一口氣補回來嗎？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.selective_rem_suppression_aquatic_recovery_not_proportional",
+      "answer_target": "研究先讓北方海狗使用乾平台，撤平台後只能在水中休息，再恢復原條件。水期快速動眼睡眠大幅縮減，慢波睡眠仍在。恢復前兩天的快速動眼時數變化因個體而異，沒有出現與先前短少量相稱的集體反彈。",
+      "scope": "四隻圈養海狗，水期十至十四天；比較基線及回復前兩天，不能推論長期從不補眠、野生全程沒有快速動眼睡眠或其生理功能。",
+      "source_ids": [
+        "L41-S006"
+      ],
+      "source_locator": "PDF pp.2–4水期與恢復前兩天、Fig1與4圖說；pp.8–9 Experimental design及評分程序。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把累積短少和恢復初期實得的量放同一尺度，檢驗「少多少就立刻補多少」。",
+        "visual": "同一隻動物的乾平台、水池、平台恢復三段；分開畫慢波和快速動眼時間，保留個體差異。",
+        "seconds": [
+          38,
+          83
+        ]
+      }
+    },
+    {
+      "id": "L41-007",
+      "question": "馴鹿嘴巴一直在反芻，之後睡著時，為什麼腦波顯示的睡意已經少了一些？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.rumination_relaxes_nrem_slow_wave_pressure",
+      "answer_target": "研究比較休息中一段反芻前後。之後進入非快速動眼睡眠時，慢波活動較低；反芻越久，前後的差異往往越大。把反芻算作累積睡意或釋放睡意來預測腦波，後一種模型較貼近資料。嘴在咀嚼，可以同時伴隨部分睡眠壓力下降。",
+      "scope": "四隻圈養成年雌馴鹿，秋、冬、夏記錄。慢波活動是睡眠壓力指標，咀嚼可造成訊號干擾；研究另檢查了受影響較小的頻帶。模型結果不證明所有反芻等於完整一段睡眠。",
+      "source_ids": [
+        "L41-S007"
+      ],
+      "source_locator": "UiT PDF web L58–66、98–110、133–180，反芻前後非快速動眼期慢波、兩種睡眠壓力模型與圈養限制。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "指出動作仍在進行時，怎樣用反芻之前與之後另段睡眠的讀數驗證其影響。",
+        "visual": "先只看嘴部，揭開包夾反芻前後的兩段非快速動眼慢波；最後疊上兩種相反模型的預測方向。",
+        "seconds": [
+          38,
+          80
+        ]
+      }
+    },
+    {
+      "id": "L41-008",
+      "question": "不同洞裡的魚都睡得少，怎麼試出只有其中一群靠體表感水流來保持清醒？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.cave_population_specific_lateral_line_wake_input",
+      "answer_target": "同樣削弱側線感覺，Pachón洞穴魚的行為睡眠時間增加，清醒時泳速並未一起下降。地表魚與另外四個洞穴族群沒有相同的睡時變化。相似的短睡表現，可以來自不同的調節途徑。",
+      "scope": "限研究的墨西哥脂鯉族群與行為睡眠判準。清醒活動控制支持特異性，但未替其他洞穴族群辨認完整神經路徑。",
+      "source_ids": [
+        "L41-S008"
+      ],
+      "source_locator": "期刊PDF web L59–84、90–98與Fig1E/F（Pachón及地表組睡時、清醒活動）；L111、145–146與Fig2B（五個洞群及地表組的睡時）。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用清醒游速與其他洞群兩重對照，把普遍動不了和特定感覺輸入的影響分開。",
+        "visual": "左右兩框。第一框用Fig2B的五洞群及地表魚，比較處理前後睡時。第二框只用Fig1F有清醒泳速資料的Pachón與地表魚，排查整體行動變慢。",
+        "seconds": [
+          38,
+          82
+        ]
+      }
+    },
+    {
+      "id": "L41-009",
+      "question": "遷徙季夜裡少睡的白冠帶鵐，和冬天被限制睡眠時，隔天按鍵會錯得一樣多嗎？",
+      "domain": "動物睡眠、動作與環境控制",
+      "mechanism_key": "sleep.seasonal_short_sleep_vs_imposed_restriction_sequence_accuracy",
+      "answer_target": "研究用夜間活動辨認圈養鳥的遷徙狀態，另組腦波顯示此時睡時縮短。啄鍵組在遷徙季學新的三鍵順序，準確率沒有相應下降。非遷徙季只留夜初三小時睡眠、連做三夜，學新順序和執行熟悉順序的準確率卻下降。相似的夜間短睡表象，測得的隔日表現可以不同。",
+      "scope": "圈養白冠帶鵐，不是跟著同一隻野鳥邊飛邊測腦波與表現。自然遷徙狀態與實驗限睡並非完全等量、等壓的干預。僅談所測啄鍵任務。",
+      "source_ids": [
+        "L41-S009"
+      ],
+      "source_locator": "HTML PARA57–71、76–79、86–95，遷徙期腦波與獨立啄鍵行為組，三夜冬季限眠與自然遷徙狀態。",
+      "premise_status": "screened",
+      "notes": "原創題級研究摘要。實驗固定的條件隨圖註保留，行為判據、直接腦波與外推不互換。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從新、舊三鍵順序的準確率辨別季節狀態與外加限睡的差別。",
+        "visual": "並排兩條實驗歷程，圖上明示腦波與啄鍵來自不同鳥組，畫出遷徙期自然夜動及冬季限睡後的答對率。",
+        "seconds": [
+          38,
+          85
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L41-NA001",
+      "question": "海鳥能連飛好幾天，是否可直接算牠幾天沒睡？",
+      "existing_ids": [
+        "L41-004"
+      ],
+      "source_ids": [
+        "L41-S004"
+      ],
+      "reason": "飛行軌跡本身分不開清醒滑翔與慢波睡眠。",
+      "reentry_condition": "須同時比較腦波與動作。"
+    },
+    {
+      "id": "L41-NA002",
+      "question": "把軍艦鳥換成雨燕就能說牠也在飛行時睡嗎？",
+      "existing_ids": [
+        "L41-004"
+      ],
+      "source_ids": [],
+      "reason": "本批沒有雨燕野外睡眠腦波控制，不能換物種重算。",
+      "reentry_condition": "另有可區分狀態的新測量才收。"
+    },
+    {
+      "id": "L41-NA003",
+      "question": "軍艦鳥睡著時是否看見轉彎處的每個障礙？",
+      "existing_ids": [
+        "L41-004"
+      ],
+      "source_ids": [
+        "L41-S004"
+      ],
+      "reason": "裝置記腦波與頭部加速度，沒有同步追蹤視線及障礙辨認。",
+      "reentry_condition": "需直接眼部觀測或可控視標。"
+    },
+    {
+      "id": "L41-NA004",
+      "question": "海狗可以永遠不需要快速動眼睡眠？",
+      "existing_ids": [
+        "L41-006"
+      ],
+      "source_ids": [
+        "L41-S006"
+      ],
+      "reason": "水期及回到平台的觀察時間均有限。",
+      "reentry_condition": "需更長回復期與功能取樣。"
+    },
+    {
+      "id": "L41-NA005",
+      "question": "把海狗換成海豚，半邊腦休息多一題？",
+      "existing_ids": [
+        "L41-003",
+        "L41-004"
+      ],
+      "source_ids": [],
+      "reason": "只換物種與環境，沒有新增可測的控制。",
+      "reentry_condition": "要有不同控制且原文可讀。"
+    },
+    {
+      "id": "L41-NA006",
+      "question": "象海豹整趟旅行每天睡多久，研究者都量到了腦波嗎？",
+      "existing_ids": [
+        "L41-005"
+      ],
+      "source_ids": [
+        "L41-S005"
+      ],
+      "reason": "長程族群資料靠校正後的軌跡估計，不能當每隻都戴腦波。",
+      "reentry_condition": "保留在原題的測量邊界。"
+    },
+    {
+      "id": "L41-NA007",
+      "question": "倒立水母沒有集中的大腦，能證實睡眠只演化過一次嗎？",
+      "existing_ids": [
+        "B2119",
+        "L41-001"
+      ],
+      "source_ids": [
+        "L41-S001"
+      ],
+      "reason": "單群行為條件不能指定共同祖先的確切狀態，也不足以排除趨同。",
+      "reentry_condition": "需可辨不同演化路徑的比較研究。"
+    },
+    {
+      "id": "L41-NA008",
+      "question": "皮膚出現一種花紋就能還原章魚在夢什麼嗎？",
+      "existing_ids": [
+        "LEG-S10",
+        "L41-002"
+      ],
+      "source_ids": [
+        "L41-S002"
+      ],
+      "reason": "相似花紋不是夢內容的讀出。",
+      "reentry_condition": "需同經驗獨立對照並限制可推知內容。"
+    },
+    {
+      "id": "L41-NA009",
+      "question": "跳蛛吊著時移動眼網膜，是否等於已證實夢境？",
+      "existing_ids": [
+        "LEG-S10",
+        "L41-002"
+      ],
+      "source_ids": [],
+      "reason": "單一外觀不支持主觀夢內容；本輪未另取得有額外操控的研究。",
+      "reentry_condition": "須有能排除清醒等替代的控制，重新界定問題。"
+    },
+    {
+      "id": "L41-NA010",
+      "question": "企鵝孵卵時點頭幾千次，每次都等於一段完整的恢復睡眠？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "研究者開放資料說明可讀，但逐次恢復效益不能由次數相加證實。紙上單純把數秒乘次數也太薄。",
+      "reentry_condition": "若重入，用可量測的新功能結果或對照，先查原文。"
+    },
+    {
+      "id": "L41-NA011",
+      "question": "反芻和單純慢慢吃草，對睡眠完全相同嗎？",
+      "existing_ids": [
+        "B2268",
+        "L41-007"
+      ],
+      "source_ids": [
+        "L41-S007"
+      ],
+      "reason": "模型比的是反芻及其他狀態，沒有以吃草的一切動作互換。",
+      "reentry_condition": "需要獨立咀嚼對照。"
+    },
+    {
+      "id": "L41-NA012",
+      "question": "所有洞穴魚只因同一種感覺變靈敏才少睡？",
+      "existing_ids": [
+        "B2154",
+        "L41-008"
+      ],
+      "source_ids": [
+        "L41-S008"
+      ],
+      "reason": "其他四個洞群未見與Pachón相同的側線處理效應。",
+      "reentry_condition": "新族群要有可重現的獨立操控。"
+    },
+    {
+      "id": "L41-NA013",
+      "question": "遷徙鳥少睡，是否能保證所有工作都不會出錯？",
+      "existing_ids": [
+        "B2244",
+        "L41-009"
+      ],
+      "source_ids": [
+        "L41-S009"
+      ],
+      "reason": "啄鍵結果不等於空中導航、健康或暴露風險。",
+      "reentry_condition": "若談實地導航需直接對照位置誤差。"
+    },
+    {
+      "id": "L41-NA014",
+      "question": "蜂鳥夜裡降體溫是否就是動物都會睡的第二個證明？",
+      "existing_ids": [
+        "B2252"
+      ],
+      "source_ids": [],
+      "reason": "降低代謝的原題已入，不能以低體溫替代睡眠判據。",
+      "reentry_condition": "找到能獨立區分休眠與睡眠的新機制再提。"
+    },
+    {
+      "id": "L41-NA015",
+      "question": "休息時變透明的玻璃蛙，這次可改列睡眠控制新題嗎？",
+      "existing_ids": [
+        "L39-007"
+      ],
+      "source_ids": [],
+      "reason": "已有周邊紅血球集中與透光的完整案例，此處沒有新的控制。",
+      "reentry_condition": "沿既有核心引用。"
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "status": "AUTHOR_REVISED_PROPOSALS_PENDING_TARGETED_READBACK",
+  "rules": [
+    "三組均為候選短解說企劃，不是完成劇本、實驗紀錄或成片。",
+    "秒數是段落預算；每段分成最多 45 秒的新增資訊節拍。若示意無法支持差別，刪段或縮片。",
+    "只製作原創示意，不擷取課本圖、研究圖或以 AI 食物畫面冒充實測。",
+    "不為到八分鐘或滿四章而加入食材百科；修訂三組為210／160／150秒，合併別名不重複計核心。"
+  ],
+  "episodes": [
+    {
+      "id": "W4F-T01",
+      "title": "蛋白霜為什麼越打，反而可能越糟？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "修訂待獨立定點讀回",
+      "core_question": "把空氣打進去、把泡泡留下、避免結構擠出水，為什麼是三個不同條件？",
+      "connection": "沿同一碗蛋白從稀液、泡沫到過度攪打的失敗，糖只作中途一次條件改變。",
+      "target_minutes": 3.5,
+      "range_minutes": [
+        3,
+        4
+      ],
+      "candidate_ids": [
+        "F4012",
+        "F4017",
+        "D2025"
+      ],
+      "chapters": [
+        {
+          "title": "先留住空氣，才有泡沫",
+          "seconds": 80,
+          "candidate_ids": [
+            "F4012"
+          ],
+          "new_information": "攪打送入的是空氣；界面蛋白展開與連結讓泡孔暫時保持。",
+          "beats": [
+            {
+              "seconds": 40,
+              "new_information": "開場並排稀液和泡沫，區分化學產氣與機械送氣。"
+            },
+            {
+              "seconds": 40,
+              "new_information": "切入氣液界面，新增蛋白方向改變及界面膜，回答空氣為何沒有立刻跑光。"
+            }
+          ],
+          "drop_if": "若畫面只有越打越大的泡泡而無法表達界面蛋白，停止進稿補示意。"
+        },
+        {
+          "title": "打得慢，卻可能留得久",
+          "seconds": 80,
+          "candidate_ids": [
+            "F4017"
+          ],
+          "new_information": "糖阻礙蛋白接觸成鍵，使建立泡沫較慢；加熱時與水作用延緩蒸發，幫助泡沫撐到定型。兩步僅採教育來源簡化模型。",
+          "beats": [
+            {
+              "seconds": 40,
+              "new_information": "固定蛋白，糖的加入改變建立接觸的速度；圖是機制示意而非量測曲線。"
+            },
+            {
+              "seconds": 40,
+              "new_information": "時間軸轉到加熱定型，新增糖與水分子作用、延緩水蒸氣逸出，解釋打發較慢不等於定型前保水較差。"
+            }
+          ],
+          "drop_if": "若不能清楚區分成鍵速度與蒸發延後，刪本章80秒，重定為約130秒短示範，不補其他配料。"
+        },
+        {
+          "title": "連得太多，反而擠出水",
+          "seconds": 50,
+          "candidate_ids": [
+            "D2025"
+          ],
+          "new_information": "採D2025網絡過度連結／收縮排水核心，沿用F4018蛋白泡沫問法與F4-S014來源；仍在同一碗蛋白場景，不轉去果醬。蛋白聚集與排水使泡膜不均勻。",
+          "beats": [
+            {
+              "seconds": 35,
+              "new_information": "將細緻界面膜改為聚集蛋白團，新增水被排出的去向。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "15秒回扣同碗蛋白的三狀態；只提取打入、留住、避免擠水，不列新機制。"
+            }
+          ],
+          "drop_if": "若只有失敗照片卻無法交代網絡與水的去向，刪本章50秒，縮至160秒並重寫結尾；不另計蛋白材料的新核心。",
+          "variant_ids": [
+            "F4018"
+          ],
+          "timing_basis": "D2025舊核心沒有editorial欄位；本段採F4018原45–70秒估計，縮成50秒含15秒回扣。"
+        }
+      ],
+      "boredom_risk": "連續蛋白動畫容易看成攪拌教學；每章須改變一個條件並回答上一章留下的問題。",
+      "drop_if": "糖章或排水章無法提供清楚比較就按章刪減並重定總長，不用其他食材填回。",
+      "evidence_gaps": "未做食材小樣或完整旁白試讀。糖的兩步是已讀教育來源簡化模型，逐句進稿仍需對照範圍；D2025僅作canonical引用，蛋白案例明取F4018/F4-S014。酸中和蛋白的過度簡化段不採。",
+      "body_seconds": 210,
+      "format": "short_explainer",
+      "variant_ids": [
+        "F4018"
+      ],
+      "material_seconds": {
+        "F4012": 80,
+        "F4017": 80,
+        "D2025_via_F4018": 50
+      },
+      "timing_basis": "開場與收束已含章內；秒數為編輯預算，尚未試讀。短解說保留自然因果章數，不為章數或分鐘數添材料。"
+    },
+    {
+      "id": "W4F-T02",
+      "title": "都是澱粉，為什麼一杯要煮、一杯冷水就稠？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "修訂待獨立定點讀回",
+      "core_question": "澱粉是否已經加工過，以及同杯糖量，如何改變眼前的增稠？",
+      "connection": "從原澱粉冷水沉降出發，看加熱改變；接著倒回工廠解釋即溶粉，最後只改同鍋糖量檢查條件。",
+      "target_minutes": 2.6666666666666665,
+      "range_minutes": [
+        2.2,
+        3.1
+      ],
+      "candidate_ids": [
+        "F4003",
+        "F4002"
+      ],
+      "chapters": [
+        {
+          "title": "顆粒還在，受熱後才換結構",
+          "seconds": 65,
+          "candidate_ids": [
+            "F4003"
+          ],
+          "new_information": "把冷水中的顆粒分散與熱水中的膨脹糊化分開。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "兩杯外觀反差作開場但先不解冷水即稠那杯；定位原澱粉的冷水沉底與顆粒分散。"
+            },
+            {
+              "seconds": 35,
+              "new_information": "固定同種澱粉後加熱，新增顆粒吸水膨脹與混合物稠度改變。"
+            }
+          ],
+          "drop_if": "若以不同澱粉直接比較卻把差別全歸因溫度，先重設小樣，不進稿。"
+        },
+        {
+          "title": "那次加熱早在工廠做過",
+          "seconds": 30,
+          "candidate_ids": [
+            "F4003"
+          ],
+          "new_information": "用F4004加工前史問法作F4003短反例：家庭不用再加熱，不等於這份澱粉全程沒經過加熱。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "只倒回已完成的預糊化步驟，再返回冷水復水；不重講顆粒膨脹，也不擅補特定乾燥方法。"
+            }
+          ],
+          "drop_if": "若未確認所用粉確為預糊化產品，刪此30秒；剩下130秒以原澱粉與糖條件為主線。",
+          "variant_ids": [
+            "F4004"
+          ]
+        },
+        {
+          "title": "同樣加熱，糖也會改變結果",
+          "seconds": 65,
+          "candidate_ids": [
+            "F4002"
+          ],
+          "new_information": "高糖條件可抑制顆粒膨脹，配料也改變糊化條件；不是煮了就一定同樣稠。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "回到固定水、澱粉與加熱過程的對照，只改糖量。"
+            },
+            {
+              "seconds": 35,
+              "new_information": "把膨脹受限接回稠度，結尾用加工前史與當下條件回答兩杯差別。"
+            }
+          ],
+          "drop_if": "若缺少配方控制就把所有稀餡怪給糖，刪具體畫面，保留限定的機制示意。"
+        }
+      ],
+      "boredom_risk": "容易變成澱粉品種列表；只用一種原澱粉與它的加工對照，不加入每種粉的溫度表。",
+      "drop_if": "若預糊化對照不成立就刪30秒改130秒；若高糖章也無法固定條件，不保留整組，只留下糊化短示意。",
+      "evidence_gaps": "未驗產品標示或做增稠小樣。高糖抑制不能直接推出補救比例；來源為烘焙教材題級依據，進稿需固定材料。",
+      "body_seconds": 160,
+      "format": "short_explainer",
+      "variant_ids": [
+        "F4004"
+      ],
+      "material_seconds": {
+        "F4003_including_F4004_variant": 95,
+        "F4002": 65
+      },
+      "timing_basis": "開場與收束已含章內；秒數為編輯預算，尚未試讀。短解說保留自然因果章數，不為章數或分鐘數添材料。"
+    },
+    {
+      "id": "W4F-T03",
+      "title": "泡打粉一直冒氣，蛋糕就會一直長高嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "修訂待獨立定點讀回",
+      "core_question": "產氣時機和結構定型，為什麼必須在同一個時間窗口配合？",
+      "connection": "從同一個麵糊泡孔模型出發，先問氣何時加入，再把同量產氣放在可伸展與已定型兩個時刻；不解說打發奶油的保氣微結構。",
+      "target_minutes": 2.5,
+      "range_minutes": [
+        2.1,
+        2.8
+      ],
+      "candidate_ids": [
+        "F4005",
+        "F4006"
+      ],
+      "chapters": [
+        {
+          "title": "雙效配方把氣安排在不同階段",
+          "seconds": 70,
+          "candidate_ids": [
+            "F4005"
+          ],
+          "new_information": "不同酸性成分在拌合與受熱條件的反應速率不同，改變放氣時序。",
+          "beats": [
+            {
+              "seconds": 35,
+              "new_information": "開場問氣越多是否一定越高；少量回接酸／碳酸鹽原理後，新增冷態較快反應的酸組分與時序。"
+            },
+            {
+              "seconds": 35,
+              "new_information": "新增在烘烤條件更明顯作用的酸組分；畫重疊區間，不畫精準開關或固定比例。"
+            }
+          ],
+          "drop_if": "若只重講酸遇小蘇打，併回 P263 並刪章；必須清楚說明兩類酸的作用條件差別。"
+        },
+        {
+          "title": "氣趕上柔軟窗口，才有地方長",
+          "seconds": 80,
+          "candidate_ids": [
+            "F4006"
+          ],
+          "new_information": "產氣仍要遇上能伸展的結構；把同一產氣量改到定型前後，可膨大程度及逸氣路徑不同。結尾只回扣這兩項條件。",
+          "beats": [
+            {
+              "seconds": 40,
+              "new_information": "將相同放氣量放在結構仍柔軟的窗口，顯示原泡孔擴大。"
+            },
+            {
+              "seconds": 40,
+              "new_information": "改放到定型之後，新增擴張受限與逸氣路徑；回扣兩條時間線，收束已含本40秒。"
+            }
+          ],
+          "drop_if": "若把結構定型只說成澱粉一項，需補蛋白與配方限定；不能以加更多膨鬆劑作補救結論。"
+        }
+      ],
+      "boredom_risk": "三種名詞可能蓋過同一泡孔的故事；全片追同一個泡孔，避免膨鬆劑產品百科。",
+      "drop_if": "若兩酸時序只能重講P263酸碳酸鹽，刪70秒並取消整組題案；若定型前後無法畫出不同結果，停稿補證據，不添第三題湊長。",
+      "evidence_gaps": "未做受控烘焙小樣或旁白試讀。F4009已移出；現只用來源已述的既有泡孔作模型起點，不補脂肪保氣機制。雙效實際酸種類及結構定型的配方依賴仍須進稿核，不把教材比例／溫度當通則。",
+      "body_seconds": 150,
+      "format": "short_explainer",
+      "removed_ids": [
+        {
+          "id": "F4009",
+          "reason": "脂肪保氣微結構來源不足，暫緩；不以氣袋功能重述替代機制。"
+        }
+      ],
+      "material_seconds": {
+        "F4005": 70,
+        "F4006": 80
+      },
+      "timing_basis": "開場與收束已含章內；秒數為編輯預算，尚未試讀。短解說保留自然因果章數，不為章數或分鐘數添材料。"
+    }
+  ],
+  "revision": {
+    "basis_review": "reviews/wave4-physics-reviews-food.json",
+    "basis_review_sha256": "4abda73aa4059fb2d250c0d69969a956d17e663c91c6a481d1fe4714688eddc5",
+    "prior_sha256": "e26dbaae3619eeb7c772251321b08d331fcb6c977dfadbdb692243bd94f22d49",
+    "chapter_rule": "Root instructed short_explainer may have at least two causal chapters; no minimum four-chapter padding. Reviewer followup pending."
+  }
+}

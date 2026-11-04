@@ -1,0 +1,461 @@
+{
+  "batch": "wave12-20261102",
+  "reviewed_on": "2026-11-02",
+  "method": "非作者覆核者逐題：查重（既有題、已製作、同批、原來如此事務所與語意近鄰）、重開關鍵來源、翻轉與片長、禁區；changes 只收改好的完整文字。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 23,
+    "NEEDS_CHECK": 1,
+    "REJECT": 1
+  },
+  "verdicts": [
+    {
+      "id": "N1281",
+      "agent": "A1",
+      "reviewer": "R121",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A1-S002 https://lab.ndl.go.jp/dl/book/771643?page=17（《標記本朝通鑑》1897 年標記本，NDL 771643 コマ 17）；並重開 A1-S001 https://lab.ndl.go.jp/dl/book/772326?page=81、A1-S003 https://lab.ndl.go.jp/dl/book/980774?page=19、A1-S004 https://lab.ndl.go.jp/dl/book/759920?page=31",
+      "reopen_result": "NDL Lab 全文 JSON 重開：《續日本紀》寶龜七年九月『是月每夜瓦石及塊自落內竪曹司及京中往往屋上，明而視之其物見在，經二十餘日乃止』，沒有原因、沒有井上；《本朝通鑑》コマ 17 同一段後多出『時人驚言…后之…也』（OCR 漏字，研究代理已用影像核對為『井上后之靈』），而同書コマ 14 的註文就引了《水鏡》講井上內親王的傳說，表示 12 世紀末的《水鏡》等中世史書是下一個該查的地方，『1670 年最早』不能講；《山陵の研究》コマ 19 確實寫『七年九月每夜瓦石を京中の屋上に擲げるものがあり…八年の冬…井水が盡く涸れたので，陰陽寮は何れも內親王のたたりであると奏問をした』，全段沒有標出處；《妖怪百談》コマ 31–33〈投石の怪〉確實轉載 1894 年 7 月《中央新聞》京都、8 月《奧羽日日新聞》仙台兩則，結論『投石の怪は人爲なることを知るべし』。",
+      "changed_fields": [
+        "answer_target",
+        "hook",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "前提成立：關鍵三層（776 無原因、1670 加怨靈、1894 報紙破案）都重開確認。片長 8–11 分鐘可信：古代史書兩層、近代研究一層、明治三則報導加井上圓了的結論，每段都有新資訊。原稿 answer_target 用『1670 年《本朝通鑑》加上』『1923 年…再寫成』，容易被讀成『最早』與『有出處』，所以改寫並把 797 年的成書年代與 776 年事件分開；hook 的『同時在報』與 7、8、9 月三則報導不合，改成『接連』。與 N1045、N561 核心答案不同，不重複。"
+    },
+    {
+      "id": "N1282",
+      "agent": "A1",
+      "reviewer": "R121",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A1-S008 https://archive.org/details/bub_gb_BYowAQAAMAAJ（Llorente, Historia crítica de la Inquisición de España t. III, 1822, cap. XV art. II；下載 _djvu.txt 重讀 §2–§31）",
+      "reopen_result": "頁面上確實寫了：§2 引唐吉訶德原文『doce horas』『Torre de Nona』『de vuelta en Madrid』『cerca… de la luna』；§3 Torralba 1528 年 1 月進昆卡裁判所監獄、1531 年 3 月 6 日判決、『所有奇事唯一的證據是他自己的供詞』、八次供述；§19–20 1527 年 5 月 5 日晚上十一點從瓦拉多利德出發、多節木棍、睜眼『tan cerca del mar que podía tocar sus aguas』、聖天使堡鐘響時 Llorente 自己推算『se había hecho el viaje en una sola hora』、『volvió á Valladolid en hora y media』；§21 Zapata 三十年後、Cervantes 八十年後的版本『deben corregirse por la mía sacada del proceso』。但也寫了兩件跟原稿懸念不合的事：§24 他『在八次不同的供述裡有不少矛盾』而且受過刑訊；§30 Manrique 赦免時說是考慮他『cuatro años de prisión』（四年，不是三年）；判決內含 abjuración。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "前提成立，三個版本的差異（十二小時／一小時、月亮／海、馬德里／瓦拉多利德、魔鬼／好天使）在 Llorente 原文逐條對得上，Cervantes 原文也在。改動有三：一、原稿把 Llorente 的摘述講成『1528 年他自己供的』，原始案卷沒讀到，題目與答案都要標明依據是 1822 年與 1880 年的重述；二、『一小時』是 Llorente 由鐘聲推算，不是供詞原話；三、原稿懸念『為什麼寧可坐三年牢也不改口』與來源不合：Llorente 說他八次供述有不少矛盾、判決含悔罪，赦免段寫的是四年監禁，所以懸念改成『只有本人供詞、而且彼此矛盾』。片長 8–11 分鐘可信（小說版、案卷版、1510 年代羅馬的前情、告發者、路德與伊拉斯謨之問、判決與赦免、兩位學者的出入），與 N707 核心不同。"
+    },
+    {
+      "id": "N1283",
+      "agent": "A1",
+      "reviewer": "R121",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A1-S010 https://hndm.iib.unam.mx/consulta/pagina/visualizar/558a32ef7d1ed64f168d349c（El Pueblo 1917-09-07 p.1，PDF 重新下載、轉圖目視）；另重開 A1-S011 p.7（558a32ef7d1ed64f168d35fd）、A1-S014 https://archive.org/details/aa.-vv.-sumario-de-la-residencia-tomada-a-d.-fernando-cortes-ocr-2019（djvu 全文 pp.159–161）；補一個學術來源：Ma. del Carmen Martínez Martínez（Universidad de Valladolid），〈Catalina Suárez, primera esposa de Hernán Cortés〉，UNAM Noticonquista https://www.noticonquista.unam.mx/sites/default/files/2020-09/martinez_-_catalina_suarez_-_final.pdf",
+      "reopen_result": "El Pueblo núm. 1031（1917-09-07）第 1 版右欄確實有〈En la \"Casa de los Espantos\"〉：副標寫科約阿坎一棟房子裡遊蕩著兩位少女 Leonor 與 Margarita 的靈魂、『Lo que dijo al reporter doña Teresa, anciana septuagenaria』；正文記者寫『la pavorosa noche de Todos Santos, de 1522, cuando Hernán Cortés… ahogó precisamente en Coyoacán… a su legítima esposa… doña Catalina Juárez Marcaida』，當成事實；Teresa 說『dicen que soy bruja… ¡con chismes!』；版面還有一幅 Teresa 的素描，並用了貶損的形容。9 月 8 日第 7 版標題〈¿Está chiflada doña Teresa?〉也在。1529 年審查第 XXXIX 條證詞確實是轉述：證人說女管家被叫去、回來說到的情形，修士轉告『全城都說是你殺了她』，同一位證人還指控他毒死 Garay 與 Ponce de León，同條另有性指控。Martínez Martínez 的文章寫：指控是 1529 年審查期間由岳母與舅子提出、證詞彼此矛盾，科爾特斯 1534 年答辯說是自然死亡、她常心病昏厥；學者至今兩邊都有（Toro 1947 認為有罪、Fernández del Castillo 1920 辯護）；岳母後來追討財產時沒有再指控他殺人。另見 Manzo-Robledo《I, Hernán Cortés: The (Second) Trial of Residency》（Peter Lang 2013）出版社說明：這場審查最後在西印度事務院陷入『legal limbo』，沒有判決。原稿說的『只存在於政敵證詞裡』太窄，指控也來自岳母家。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "前提成立：報紙連載與 1529 年證詞都重開確認，還補到一篇學術來源（UNAM Noticonquista，Valladolid 大學的史家）說明指控的來源、科爾特斯的答辯與學界兩派，另有 Peter Lang 2013 年專書的說明支持『審查沒有判決』。原稿把指控說成『只存在於政敵證詞』，這不準確：告發的還有岳母與舅子，而且當時城裡就有傳言。所以題目改成『只見於 1529 年審查證詞與岳母家告發、從未定罪』。scope 也要更嚴：原稿只寫『不描述喉頭傷痕』，現在死因細節全部不寫，也不評價科爾特斯與征服。片長 8–10 分鐘勉強成立：四天報導各有新人物，再加一章 1522 年指控怎麼來、怎麼被答辯，但過夜報導還沒找到，結尾只能停在未知，寫稿前要補讀後續版面。與 N1045 同屬西語報紙鬼屋，不過 N1045 的核心是檔案結論與電稿不合，這題是報導一天疊一層，答案不同，不重複。"
+    },
+    {
+      "id": "N1301",
+      "agent": "A2",
+      "reviewer": "R121",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "A2-S001 https://www.jstage.jst.go.jp/article/jsr1950/42/1/42_1_17/_article/-char/ja/（三隅譲二〈都市伝説：流言としての理論的一考察〉，《社会学評論》42(1), 1991；下載 PDF 用 pdfminer 抽字）",
+      "reopen_result": "頁面上確實寫了『八三年に女性誌『微笑』にその存在を暴露され、八八年に少女雑誌『ポップティーン』の九月号で話題騒然となった』，起源三說（中國山裡的妖犬被九州業者走私後逃走、筑波大學生物研究所 DNA 實驗、SF 電影〈ボディスナッチャー〉的特效被當真）與『北上說』也在；注 (15) 的依據是『別冊宝島九二号 一九八九「うわさの本」JICC出版局など』。所以 1983／1988 這兩個年份，是 1991 年論文轉引 1989 年大眾書，兩份原刊都沒人讀到。A2-S002–S004 只是 NDL 目次條目。",
+      "changed_fields": [],
+      "duplicate_of": null,
+      "reason": "同意研究代理自標的 needs_check。題目的翻轉（『1989 年才冒出來』對『1983 年已上雜誌』）只靠一篇二手論文轉引一本 1989 年的大眾書，第二個來源只是 1989 年底以後的目次，撐不起翻轉。另外，流傳版本的主角是今天還在世、自稱『是我放出去的』寫手與藝人，不點名也很難講清楚這個翻轉。要升級，需要讀到《微笑》1983 年那篇或《Popteen》1988 年 9 月號原刊（NDL 館內或大宅壯一文庫），或至少讀到《別冊宝島》92 號原文。升級後也只撐得起 3–5 分鐘：同批與既有題裡沒有核心相同、還沒排滿的兄弟題（L02 已轉 Shorts，N921、N922 各自是 episode_core），只能轉 Shorts。不重複：existing-titles 與原來如此事務所都沒有人面犬。"
+    },
+    {
+      "id": "N1302",
+      "agent": "A2",
+      "reviewer": "R121",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S005 https://archive.org/details/ElSerpis_Alcoy_0317_18790525（El Serpis, Alcoy, 1879-05-25；重新下載 _djvu.txt）",
+      "reopen_result": "頁面上確實有一篇〈Primeras impresiones falsas de la niñez〉，批評奶媽、保母與傭人用恐嚇管教小孩，列舉『¡Obedece ó te matará Dios!… ¡vendrá el Diablo!… El Bú, el Coco te van á tragar!… ¡Que te vá á comer el lobo! llamo al hombre del saco y te le[va]…』，與 Bú、Coco 並列，是當時現成的嚇人話。OCR 句尾殘缺。這是本次讀到最早的嚇小孩用法，不是最早。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "前提成立：1879 年的用法重開確認，1907 年與 1923 年兩個來源也支持『名字先於案件』。禁區判斷：Gádor 是 1910 年的兒童命案，不算近年；只要全片只用一句帶過，不講細節，也不提『喝血治肺結核』的迷信，這題的核心（名字比案件早一代人）不需要案件內容就能成立，所以不 REJECT。原稿 answer_target 寫『用袋子綁走男童』，這是把手法講進來，而且用『綁架』帶過命案並不誠實，改成一句『男童遇害的刑案』。hook 的『在他出生前 31 年』說的是犯人出生，與事實不合，改成『在那件案子之前』。片長照實估 3–5 分鐘（1879、1907、1923、1911 四個點），原稿 5–8 分鐘偏高，改成 [3,5]。題案：核心相同的 N925 已在 T71，T71 已排兩章不再塞；同批 A1–A6 沒有『嚇小孩的怪物被配上真人原型』的兄弟題；既有題裡最近的 F12（藍鬍子被說成 Gilles de Rais）同樣牽涉殺害兒童，而且 F12 自成一集，不能合。排不成題案，建議轉 Shorts：『袋子人比那件命案早 31 年就在報紙上嚇小孩』。Shorts 更短，Gádor 那一句可以只說『1910 年的一宗刑案』。"
+    },
+    {
+      "id": "N1303",
+      "agent": "A2",
+      "reviewer": "R121",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S010 https://www.argentina.gob.ar/normativa/nacional/decreto-848-1973-158462/texto（Decreto 848/1973 原始條文；另讀 /actualizacion 現行條文）；並重開 A2-S011 https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2024/PDF2024/TP2024/5382-D-2024.pdf",
+      "reopen_result": "/texto 回 200（不帶 /texto 的主頁回 500）。CONSIDERANDO 確實寫『en el año 1907 el entonces Presidente de la Nación, doctor José Figueroa Alcorta, accedió al primer pedido de padrinazgo solicitado por un residente en el país, de nacionalidad rusa』，之後歷任總統『a pedido de parte』照做，成了 costumbre tradicional；起因是圖庫曼省要求擴及女孩。Art. 2 條件：七個都活著到第七個受洗、婚生或經父母結婚而準正、父母 buena conducta；Art. 3 一面金牌；Art. 5 不產生任何權利或利益；簽署 PERÓN。全文沒有 lobizón、lobo、bruja。2024 年法案理由書確實寫 1907 年請求來自伏爾加河殖民地，說請求援引凱薩琳大帝時代的儀式，能讓第七子不變 lobizón、第七女不變女巫，也提到 Rosas；理由書沒有附出處，也沒有『世界唯一』這樣的說法。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "前提成立：關鍵的 1907 年與『俄國籍居民』一句，我在官方頁 /texto 重開確認，全文確實沒有狼人。題目原稿的『世界唯一的防狼人法』在讀到的來源裡都找不到（2024 年法案沒有這麼寫），流傳版本只能寫成『常被說成是為了防止他變成狼人』，所以題目改掉這個標籤。answer_target 補上『法案理由書沒附出處』與『俄國籍』的分寸，scope 補上不點名在世的提案議員，也標出德皇慣例目前只有單一 OCR 來源。片長 8–10 分鐘可信：法令、1909 與 1915 兩份同時代報導、德皇慣例、阿根廷東北的狼人信仰、加利西亞的 saludador、2024 年法案，每段都有新資訊，懸念（狼人說何時才跟制度連上）也是真的懸念。與 N924 核心不同，N924 的 notes 也明說沒查這個制度，可排在同一播放清單，但不必合成一集。"
+    },
+    {
+      "id": "N1304",
+      "agent": "A2",
+      "reviewer": "R121",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S018 https://db.itkc.or.kr/dir/node?dataId=ITKC_BT_1432A_0380_010_0020&viewSync=TR（林下筆記 卷35〈薜荔新志〉）；並重開 A2-S016 ITKC_BT_1301A_0150_020_0170、A2-S017 ITKC_BT_1301A_0010_010_0140；A2-S019 國家記錄院頁 https://theme.archives.go.kr/next/koreaOfRecord/sungnyemunGate.do 這次連線被重設（curl 35），沒重開成",
+      "reopen_result": "林下筆記一條確實寫：『숭례문이란 현판은 양녕대군의 글씨라고 세상에서 전하는데, 이것은 《지봉유설》에서 나온 말이다. 연전에 남대문을 중수할 때 양녕대군의 사손인 이승보 대감이 윤성진 대감과 함께 문루에 올라가서 판각의 개색한 것을 보았더니, 후판 대서는 공조 판서 유진동의 글씨였다 한다. 아마 이것은 옛날 화재가 난 뒤에 다시 쓴 것인가 싶다』。五洲衍文長箋散稿〈숭례문과 대성전의 액자에 대한 변증설〉確實寫：世傳讓寧大君書、壬辰時被拆遺失、戰後南門外池邊夜放怪光挖回；引《書林叢話》1567 年明使許國評『숭례문 액자가 조금 쓸 만하나』；李圭景的結論是『숭례문의 편액은 정난종이 쓴 것』，字體也看得出，讓寧說是戰後重掛時的『와전』，怪光是『부회』，但又說好字埋在土裡發光也不奇怪。〈인물에 빛이 있다는 데 대한 변증설〉也確實有『숭례문의 액자는 못에 묻혀 빛을 발사하였다』。三種說法各自的出處：讓寧大君說出自《芝峯類說》1614（原文沒讀到，靠 1871 年《林下筆記》與國家記錄院轉述），鄭蘭宗說出自 19 世紀李圭景的兩篇（同一作者），柳辰仝說出自 1871 年《林下筆記》轉述的讓寧大君奉祀孫登樓所見（只此一處）。",
+      "changed_fields": [
+        "answer_target",
+        "axis",
+        "hook",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "前提成立：三種說法的兩條出處（李圭景、林下筆記）都重開確認；國家記錄院頁這次連不上，沒有重開成功。改軸：這題的核心是『那塊匾是誰寫的』，三個名字都是歷史人物，各有一本書、一個年代，正是 S 軸『那句台詞是誰寫的』這類名場面翻案；發光池塘只是附帶的傳說，所以建議改 S 軸。hook 的『國寶一號』已過時（2021 年起韓國國家遺產不再編號），改掉。answer_target 補上每個名字只有一條文字來源、《芝峯類說》原文沒讀到。片長 8–10 分鐘可信：三種說法、1567 年明使評語、發光池塘、南池與風水、近代修復，每段都有新資訊。與 N966、N462 核心不同，不重複。"
+    },
+    {
+      "id": "N1321",
+      "agent": "A3",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A3-S001 https://www.filosofia.org/bjf/bjft516.htm（Feijoo, Teatro crítico universal t.V, Disc. XVI，1778 年版的數位文本）",
+      "reopen_result": "頁面上確實寫了：Reflexiones §1–3『cien Autores no son más que uno solo』，但 Feijoo 說他所在的地方書少，『sólo pude ver dos』（Delrío 只引 Vairo，Covarrubias 只引 Delrío），對其餘作者只說『Es verosímil que Vayro sea la fuente de donde bebieron casi todos』，而且他自己沒有 Vairo 的書；§11 鐘響時『ordinariamente hace muy grande viento, con torbellinos』，只舉 1601 年一次無風；§12–13 地震與 Bembo 記 1512 年威尼斯；§17『desde el año de 1667, hasta hoy, que es un intervalo de setenta y tres años』，並說最近三十三年的王朝更替與內戰鐘都沒響；§25 結論『da una gran probabilidad a la existencia del prodigio』。頁面沒有寫寫作年份，1740 是由 1667＋73 推出來的。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "關鍵來源重開對上，前提成立：辯護書的年份清單、Feijoo 的四條反駁（一人之聲、颳風、地震、73 年沉默）與『gran probabilidad』的結論都在頁上。要改兩處：一是題目把『1740 年前後』寫成事實，那是研究代理的推論，改成『到他下筆時已經 73 年沒響』；二是『書上引的一長串作者其實只抄自一位』說得比 Feijoo 本人肯定，他只查到兩本、對其餘用『verosímil』，改成他查得到的兩本都抄回 Vairo、其餘是推測。事件年代（1435 起）與文本年代（Vairo 1583、辯護書與 Feijoo 18 世紀）已在 answer_target 分開。與 N707（Lucrecia de León 的夢）同屬西班牙預言，但核心答案不同（傳抄鏈、風、沉默的 73 年 vs. 抄寫評註與審判），不算重複；與 N442、N441 的預兆物也不同答案。素材有十幾個年份的小冊、三位文人的態度、Feijoo 的逐條推理與他自己的搖擺，8–11 分鐘誠實，維持 episode_core。不碰禁區：只講文獻，不評論信仰。"
+    },
+    {
+      "id": "N1322",
+      "agent": "A3",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A3-S005 https://ulua.uv.mx/index.php/ulua/article/download/1372/pdf_137/6605（Velasco Toro 2007, ULÚA 10）；另重開 A3-S006 https://studio.m-anage.com/aha/2013/webprogram/Paper11494.html（Wright-Rios 2013 AHA 摘要）",
+      "reopen_result": "Velasco Toro 頁上確實寫了：1837 年 1 月 18 日 Irisarri 的命令；『no hemos encontrado evidencia impresa』，1822 年有份道明會報紙叫《Profecías de una Monja…》，『veinte años después, en 1857』由 El Nigromántico 全文刊出、1867 年重印加評註；他同意 Josefina Muriel，認為 Matiana 生死都在 18 世紀、死於 1800 年以前；1837 年的蒐集距她死至少四十年，『la propia madre María Josefa puso en duda la veracidad de lo dicho』。Wright-Rios 摘要確實寫了：1847 年 Valdés y Redondas 印的小冊、1857 年 Abadiano 幾乎相同的一本、1858 年 Murguía 的 Calendario Nigromántico、部分自由派報紙抱怨、『most likely entirely fictitious from the start』；內容是『civil strife, foreign invasion, economic crisis, and secularization』，沒有點名美軍。摘要沒寫 1847 年的月份。",
+      "changed_fields": [
+        "answer_target",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "兩個關鍵來源都重開對上：Velasco Toro 的『1857 年以前找不到印本』、1837 年命令、卷宗缺頁、她存在的論證；Wright-Rios 摘要的 1847／1857／1858 印本序列與『多半是虛構』。學者分歧是真的，翻轉成立。要改三處：題目與鉤子把 Wright-Rios 摘要裡的『foreign invasion』寫成『美軍入侵』、把 1847 寫成『美軍正在打墨西哥城』，摘要沒寫月份也沒點名美軍，改成『外國入侵』與『美墨戰爭那一年』；1847 年印本只讀到研討會摘要，要在 answer_target 與 scope 標明；加上 Velasco Toro 寫到的修女自己存疑一句，讓事件年代與文本年代分開。墨西哥政治只當背景、不評論天主教，已寫進 scope。不與 N1024、N564、N1104 重複（核心是 19 世紀印刷品製造殖民時期預言）。8–10 分鐘誠實：印本序列、1837 年抄本、兩位學者的對立、20 世紀的餘波足夠，維持 episode_core。"
+    },
+    {
+      "id": "N1323",
+      "agent": "A3",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A3-S009 https://www.jstage.jst.go.jp/article/minkennewseries/7/2/7_KJ00003545967/_pdf/-char/ja（小林胖生 1941〈丙午迷信の發生と傳播〉，以頁面影像逐頁讀原誌 pp.103–106）；另重開 A3-S011 https://mhlw-grants.niph.go.jp/system/files/report_pdf/202401013A-buntan1_1.pdf",
+      "reopen_result": "1941 年論文頁面上確實寫了：p.103 現在的北京忌屬羊（未）的女子『十人の中九人は夫の家を害す』，中國看不到日本那種丙午迷信；p.103–104『丙午歳生れの女は夫を殺すといふ迷信は、今の處…寛文二年の序ある元隣の「俳諧身楽千句」に「丙午ならずとも男喰ふなまし」と見えるのが最も古い文獻の様である』，並說也許 1606 年的丙午前後就已流行，只是沒有資料；延寶七年序《俳諧破邪顕正》；p.105 元祿二年《和漢婦人養草》『いむもよし、いまぬもよし』；西鶴『むしろ…揶揄するかの如き印象』，但作者說他只是照錄當時的俗信；p.106 紀海音《八百屋お七歌祭文》『寶永元年初めて大阪で上演されたと言はれる』，『當時流行の歌祭文によつたもの』，『實は丙午歳生れでなかつたお七を丙午歳生れと虚構し』。2025 年報告要旨確實寫了 1966 年比前年減 25%、三年合算減 4%、3.9% 的女性說不想在丙午生、減少的 1/3 是中絕；要旨同時有 2026 年 20% 學生在意、可能減 20% 的推估，這部分不得用。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "兩個關鍵來源都重開對上（1941 年論文用頁面影像逐頁讀，不靠 OCR）。前提成立：1662 年序俳諧是論文『目前』讀到最早的文字、早於 1666；紀海音把お七『虛構』成丙午生是論文作者的判斷；2025 年報告的 −25% 與三年合算 −4% 在要旨上。要改：題目寫『比お七出生的 1666 年還早』等於把傳說的生年當事實，跟同一篇論文說她不是丙午生互相矛盾，改成『傳說中お七出生的 1666 年』；『她死後二十年』的卒年沒有任何來源，改成『1704 年前後』；西鶴『拿來揶揄』說得比論文強（論文說只是印象，其實照錄俗信），照論文改；加上論文自己說 1606 年前後也許就有，避免把『目前讀到最早』講成起源。2026 年正好是丙午，scope 原本已寫不談 2026，但 2025 年報告的要旨裡就有 20% 的推估，明白列為不得使用，並補上不嘲笑當年的人。與 N583 佛滅、N1101 今村只有一句相交，不重複。素材從中國厄年、北京的丁未、四份江戶文獻到兩組統計，9–12 分鐘誠實，維持 episode_core。"
+    },
+    {
+      "id": "N1341",
+      "agent": "A4",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S002 https://www.gaceta.unam.mx/paricutin-primer-volcan-cuya-vida-fue-estudiada-desde-su-nacimiento-hasta-que-se-apago-para-siempre/（Gaceta UNAM 轉錄的市府文件）；A4-S001 https://pubs.usgs.gov/bul/0965d/report.pdf（Foshag & González 1956, pp. 371–376）",
+      "reopen_result": "Gaceta UNAM 其實轉錄了兩份市府文件：一份是 2 月 21 日上午 10 點的議會紀錄（acta），寫 Sánchez 與 Pulido 前一天約 18 點來報，火『約在昨天 17 點』出現，會上一致命名為 Volcán de Parícutin；另一份是鎮長 Felipe Cuara Amezcua 署名、1943 年 3 月 8 日的報告（圖說稱為 acta），寫 17:30 誕生，Pulido『說』看到煙像小蛇、『un ligero calentamiento de la tierra』，結尾說『其餘的報紙都已經說了』。兩份都沒有提到鎮長事前的預言。USGS 報告確實寫了：噴發前『about a week or more』墨西哥城報紙在報 Uruapan 一帶的地震，『In one of these accounts』鎮長『predicted a new volcanic outbreak』；鎮長自己說震動集中在 Cuiyusuru，讓他以為旁邊的老火山錐 Cerro Prieto 要再噴；Severiana Murillo『more than 50 years ago』小時候在洞邊玩、洞會冒暖氣；Pulido 兄弟年年往洞裡丟土填不滿；Pulido 說從沒感到地面變熱，『as has been so frequently stated in popular accounts』，他 4 點去燒樹枝堆；Toral『plowed up the volcano』的說法。",
+      "changed_fields": [
+        "answer_target",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "兩個關鍵來源重開對上，前提成立，而且比研究代理寫的更好：Gaceta UNAM 轉錄的其實是兩份市府文件（2 月 21 日議會紀錄約 17 點、3 月 8 日鎮長報告 17:30 並轉述 Pulido 說地面微熱），正好和 Pulido 後來對 USGS 說『從沒變熱』相反，是同一天證詞在一個月內分岔的直接證據。要改：一、鎮長預言只見於 USGS 對報紙的轉述，原文是『one of these accounts』，時間是『about a week or more』，研究代理寫成『一週前在報上』太確定；鎮長本人以為要噴的是 Cerro Prieto 老火山錐，題目寫『預言會冒出新火山』會讓人以為他說中了地點，改寫；二、『五十年填不滿』把兩件事併成一句（五十多年前是 Murillo 小時候，填不滿是 Pulido 兄弟），拆開；三、鉤子的『九年後長到四百多公尺』在讀過的來源裡找不到，改用 Gaceta 的『第一天 30 公尺、一年 336 公尺』；四、acta 命名是在 2 月 21 日那份，不是 3 月 8 日。與 M16、M17、N1085、N1226 是不同火山、不同答案，原來如此事務所的火山題是地質機制，不重複。8–11 分鐘誠實，維持 episode_core。"
+    },
+    {
+      "id": "N1342",
+      "agent": "A4",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S004 https://archive.org/details/smithsonianmisce1021942smit（Vázquez de Espinosa 英譯，SMC vol.102, §§1395–1402，讀全文 djvu 文字）；A4-S006 https://www.ucdavis.edu/news/1600-eruption-caused-global-disruption；A4-S007 https://eos.org/articles/arctic-glaciers-a-peruvian-volcano-and-a-russian-famine",
+      "reopen_result": "Vázquez de Espinosa 頁上確實寫了：§1395 那座火山『was a low ridge in the center of a sierra』、灰落到 200 里外海上船上、Tambo 河的魚被烤熟；§1397 Pedro de Vivar 從被埋的房子被拉出；§1398 2 月 18 日（週五）晚 9 點起地震，隔天傍晚下白沙；2 月 22 日『nobody knew what was the origin… some said it was sea sand, others that it came from some volcano, others that it was universal throughout the world, which was coming to its end』；§1402 2 月 28 日（週一）『They said that on that day the volcano of Omate, or Los Ubinas, erupted, which is 16 leagues from the city』。原文是『據說那天火山爆發了』，『十天後才知道是哪座山』是由 22 日與 28 日兩段讀出來的。UC Davis 新聞稿確實寫了『Lake Suwa in Japan had one of its earliest freezing dates in 500 years』、俄國 1601–1603 大饑荒導致沙皇倒台、Verosub『we can't prove that the volcano was responsible for all this』；新聞稿標題本身寫『Caused』。Eos 2022 確實寫了饑荒『killed a third of the Russian population』（報導轉述）與 Andy Bruno 對『單一氣候觸發』的保留。讀到的來源都沒有『兩百萬人』。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "關鍵來源重開對上：Vivar 的『沒人知道』『海沙、火山、世界末日』與 28 日才出現的『Omate 或 Ubinas』都在原文；UC Davis 新聞稿確有諏訪湖一句與作者『無法證明』；Eos 2022 有史學者保留。要改：一、answer_target 的『俄國餓死兩百萬人』在讀到的來源裡沒有，改用新聞稿與 Eos 的說法並標成轉述；二、題目的『把它連到俄國大饑荒，則是 408 年後一位教授和他的大學生做的』等於說 2008 年是第一個這樣連的人，沒有讀到更早文獻的檢查，改成『把它和俄國饑荒連在一起的論文作者自己說無法證明』；三、諏訪湖一句只靠新聞稿，在 scope 標明；四、『十天後才知道』是推讀，照原文兩段講。與 M17 坦博拉、N725 多峇同屬火山→氣候，但翻轉在當年人說不清是哪座山與饑荒連結至今有保留，不重複。8–11 分鐘誠實，維持 episode_core。"
+    },
+    {
+      "id": "N1343",
+      "agent": "A4",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S010 https://lab.ndl.go.jp/dl/book/1900238?page=244（以 NDL Lab 全文 API 讀第 244 コマ）；並重開 A4-S008（947697 コマ 34）、A4-S009（1019774 コマ 36）、A4-S011（1124950 コマ 6）；A4-S012 的未讀條目用 CiNii OpenSearch API 查書目",
+      "reopen_result": "四頁都確實寫了：〈復興行進曲〉（北原白秋作詞）每段『どこに見らりよか、地震雲』；1924 年教材註引前田夕暮『むくりむくり空に湧きたつ地震雲くづれんとして渦卷きのぼる』，同頁註『火災の煙りにすかして見たからだ』；田中貢太郎俳句題『大正十二年九月一日の大地震の後にて』，『入道雲かあらず地震雲』；1942 年橫濱展品『九月一日に現はれた地震雲』。CiNii 確實有一筆題為『地震雲』、著者『徳川齊昭編纂』、刊載於《諸物會要》的書目，內容讀不到（cir.nii.ac.jp 網頁回 202 空白，未繞過）；同一查詢最早的前兆推廣書是 1980 年鍵田忠三郎《これが地震雲だ》，1981 年起有其他人的『地震雲による地震予知』手冊。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "editorial_role",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "四個 NDL 一手頁面重開都對上，『震後的雲』這一層成立，而且有一首每天在復興展播放的進行曲，畫面好用。但題目原本寫『把它說成前兆，要到 1980 年』，等於把『書目上目前查到最早』寫成前兆義的起點；CiNii 證實有德川齊昭《諸物會要》的『地震雲』條目，內容讀不到，前兆義可能更早，所以題目只保留讀得到的那一層，1980 年降成『目前查到最早的推廣書』，《諸物會要》寫進懸念。片長 3–5 分鐘照實，維持 chapter。能不能當章節：N703（鯰繪）是 episode_core 9–12 分鐘，再加 3–5 分鐘會超過 13 分鐘，而且核心問題不同（N703 問鯰魚預告地震的信仰與實驗，本題問一個詞的意思怎麼轉）；M21（地震光）已排進 T41（M05、M20、M21 三題 8–11 分鐘），題案已排滿；N1101（今村）也是 9–12 分鐘的 episode_core；同批 A1–A6 沒有地震前兆題。排不成一集，建議轉 Shorts（見 theme_suggestions）。補讀到《諸物會要》條目與鍵田書內文後，若能寫成完整詞史，再考慮升為單集。"
+    },
+    {
+      "id": "N1344",
+      "agent": "A4",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S013 https://www.asj.or.jp/jp/news/item/heritage2021_202202f.pdf（日本天文學會 2021 年度天文遺產認定理由）；另重開 A4-S016 https://astronomia.unam.mx/documentos/historia/francisco.pdf 與 A4-S014 https://elementos.buap.mx/directus/storage/uploads/00000002330.pdf",
+      "reopen_result": "日本天文學會的 PDF 確實寫了：1874（明治 7）年 12 月 9 日；長崎法國隊與美國隊『悪天候のため十分な観測はできなかった』，神戶法國分隊拍照成功，『横浜は晴天に恵まれメキシコ隊が成功裏に観測』；野毛山（今私人宅內、觀測台尚存）與山手（今 Ferris 女學院）；1974 年立碑；海軍水路寮技術士官隨外國隊學習，齋藤國治稱『科学の黒船』。UNAM 天文所 PDF 確實寫了 1875 年在巴黎發表、『la delegación mexicana fue la primera en hacerlo』，法、英、俄、美隊『varios años después』，書名用『8 de diciembre de 1874』。Elementos 節錄的隊長原文確實寫了他決定『antes que las demás comisiones publicasen los suyos』並在巴黎做到；但同一段內文他自己寫的是『Después del 9 de diciembre』。讀到的來源都沒有比較各國隊伍的出發順序，也沒有任何來源解釋日期為什麼差一天。",
+      "changed_fields": [
+        "answer_target",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "關鍵來源重開對上：日本天文學會的認定文寫明長崎壞天氣、橫濱晴天墨西哥隊成功、海軍士官隨隊學習；墨西哥兩份來源都寫 1875 年巴黎發表為最早。要改：一、題目把『日期為什麼差一天』當成有答案的問題，答案還是研究代理自己推的換日線，而且隊長原文自己就寫『12 月 9 日之後』，差一天未必是兩國日曆的差別（也可能和當時天文日從正午起算有關），從題目拿掉，降成 answer_target 結尾的小謎題並在 scope 標明是推論；二、『最晚出發』沒有來源比較各隊出發日，拿掉；三、『比所有大國早兩年』只來自墨西哥方面，加上『據墨西哥方面的記載』。與 S52（庫克 1769）、N1203、N1204 是不同次觀測、不同答案，不重複。8–10 分鐘誠實（報紙批評、跨太平洋路線、橫濱晴天、教日本士官、搶先發表、國家天文台），維持 episode_core。"
+    },
+    {
+      "id": "N1345",
+      "agent": "A4",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S017 https://www.nijl.ac.jp/pages/cijproject/info/img/publication/press_release/20170920_release.pdf（國立極地研究所・國文學研究資料館 2017-09-20 新聞稿）",
+      "reopen_result": "頁面上確實寫了：東羽倉家日記原文『北方之空中赤気有之、遠国若狭之方大炎色』『白気一筋銀河ヲ貫き』『昔から噂にも聞かない天変で恐ろしい』；用天頂計算再現《星解》的形狀；京都當時磁緯 24 度；『1770 年のほうが 1 割程度大きいと推定』『同等か、さらに規模の大きな磁気嵐』；注 3『実際には磁気嵐の規模は同じ程度だった、という可能性も否定はできない』；注 1《星解》現存三個抄本、用最接近原本的松阪本；另有《明月記》1204 年京都極光的記載。",
+      "changed_fields": [
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "關鍵來源重開對上，日記原文、天頂計算、規模推估與注 3 的保留都在頁上，題目與答案的寫法已經用了『可能』『仍是推估』，前提成立。只補 scope：不評論東丸神社與稻荷信仰、《星解》的成書年與抄本層次、新聞稿自己提到 1204 年《明月記》所以不能說最古。與 N126（卡林頓的原始紀錄越翻越不確定）同屬『史上最大磁暴』話題，但答案不同（日本日記與圖被科學重現），兩題都撐得起單集，不建議硬合（見 theme_suggestions）；M20 極光聲不同題。8–11 分鐘誠實，維持 episode_core。"
+    },
+    {
+      "id": "N1346",
+      "agent": "A4",
+      "reviewer": "R122",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S021 https://archive.org/details/analesdelasocied251896soci（Anales SEHN t.25, 1896：Gredilla pp.223–227 與 Actas 三月例會 pp.31–33，讀全文 djvu 文字）",
+      "reopen_result": "頁面上確實寫了：Gredilla 列出碎片主人，Cánovas del Castillo 那塊 143.79 克最大；『No he visto el del Sr. Arcimis; ignoro, por consiguiente, si será auténtico… ¿Será meteorito? El fragmento pesa 6 gramos』；學會紀錄：天文台長 Merino 展示兩塊（52 克、19 克），小的那塊是 10 日當天養路工在 Vallecas 公路撿到、助理買來的，助理在附近村莊的追查都落空；Asilo del Corazón de Jesús 傳說雷擊打碎屋瓦與避雷針的玻璃絕緣子，Merino 要求上屋頂看『no le fué concedido』；會長展示一塊『recogido… por un caballero que marchaba por la calle leyendo un periódico que el meteorito atravesó en su caída』，33 克，『le fué vendido por el citado señor』——是那位紳士賣給會長的。穿報紙的事只有會長在會上的轉述，沒有那位紳士的名字或其他證人。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "關鍵來源重開對上：Gredilla 的『¿Será meteorito?』、碎片主人名單、天文台長上屋頂被拒、會長轉述的穿報紙軼事都在 1896 年學會刊物上。要改：answer_target 的『那塊後來被賣掉』原文是那位紳士把碎片賣給會長，照原文改；結尾『要到 2013 年後才有人檢驗館藏那塊』靠的是只讀到書目的 2013 年論文，『館藏』只來自搜尋摘要，改成『2013 年有研究者分析了其中一塊（只讀到書目）』，不暗示前一百年沒人查過。scope 補上穿報紙軼事的來源層次。與 M24、N982、N1223、H03 同屬火流星或隕石，但翻轉在碎片的歸屬、真偽爭議與軼事的來源層次，不重複。8–10 分鐘誠實（電報與公報、Arcimis 的光聲時差、碎片名單、三則軼事），維持 episode_core。"
+    },
+    {
+      "id": "N1361",
+      "agent": "A5",
+      "reviewer": "R123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A5-S001 https://sac-research.sac.or.th/uploads/article/2021_20211119170534-1.pdf（另重開 A5-S002 Wales 1931 archive.org djvu 全文、A5-S003 Pallegoix 1854 archive.org djvu 全文）",
+      "reopen_result": "SAC 的 PDF（curl 200）第 2–3 頁確實寫了：素可泰『มีแม่น้ำรอบเมือง』是大城的地理；多種『ฝรั่ง』表示 1511、1526 年以後的世界觀；作者把『ฝรั่งการะหนี่』認定為 1815 年維也納會議後的德意志邦聯，再以 1833 年暹美條約為準，推定成書在拉瑪三世 พ.ศ. 2376–2394；再一層推測拉瑪三世之女參與則縮到 2376–2388；『นพมาศ』之名不見於任何文件或碑文。這是作者的推論鏈，不是書中自己寫了德意志。Wales 1931 第 885–915 行確實寫：書中提到素可泰用槍、首都有歐洲人甚至美國人，因此整本書的真實性『受到很大懷疑』，但拉瑪四世、五世相信大部分可靠，Wales 自己也認為核心很古；pp. 292–294 也說不能太看重故事細節。Pallegoix 1854 tome I p. 251 確實記 Loi-Kathong 是向『河的天使』贖罪的芭蕉小筏，沒有發明者；不過日期寫的是『泰曆十二月十五日』（le quinzième jour du douzième mois），不是研究代理摘要說的西曆 12 月 15 日。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_minutes",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "查重：既有 717 題與同批都沒有水燈或 Noppamas；近鄰 G23、F37、N409、N762、N905 核心不同（N905 是名著標準本的編定年代，本題是節日起源故事的出處定年）。前提成立：故事出處的成書年代被推遲，Wales 獨立確認書中有槍與美國人。要改的是：原題目與 hook 把『德意志人』寫成書中確有、且『只能是 1815 年以後』的事實，這其實是單一研究者對一個泰文詞的判讀，改成她的推論；Pallegoix 的日期改正為泰曆；片長素材（出處、Wales、定年線索、Pallegoix、碑文那句、ศรีจุฬาลักษณ์ 的身分）撐 8–10 分鐘，上限從 11 收到 10。禁區：不碰現存宗教儀式的評價與王室評價，已寫進 scope。"
+    },
+    {
+      "id": "N1362",
+      "agent": "A5",
+      "reviewer": "R123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A5-S005 https://resolver.kb.nl/resolve?urn=MMKB08:000095762:mpeg21:a0028:ocr（另重開 A5-S006 https://resolver.kb.nl/resolve?urn=ddd:010324084:mpeg21:a0045:ocr，並自己用 jsru.kb.nl SRU 查 1910 年以前的 'Parijs van Java'）",
+      "reopen_result": "1904-03-19 Arnhemsche courant〈Indische Penkrassen. LII.〉確實寫『Bandoeng „het Parijs van Java”, zooals ik 't heb hooren noemen』。1914 年 De Sumatra post 確實寫巴東馬來文報記者從巨港到萬隆，『dat hij het Parijs van Java noemt』，下一句接著描寫萬隆不論貧富的本地女人都打扮入時；原文沒有寫『因為』，是並列。SRU 查 1910 年以前共 11 筆：1904 年那篇聯載（3 月與 7 月兩期）各報同文，1897 年兩筆讀過是誤命中（環遊世界打賭的新聞，Parijs 與 Java 分在不同句）。",
+      "changed_fields": [
+        "answer_target",
+        "editorial_role",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "查重：既有題與原來如此都沒有萬隆綽號；近鄰 N1366、N662、N1046、N1062 核心不同。前提成立，翻轉清楚（1920 年的發明人故事被 1904 年『聽人這麼叫』往前推）。改的是：原題把 1914 年記者的話寫成『這麼叫是因為』，原文只是並列；hook 的『猶太裔』與題旨無關，拿掉。片長只有 3–5 分鐘，同批與既有題沒有核心相同的兄弟題（N1245、N1061 是巴達維亞舊報紙題，但各自是 episode_core，核心也不同），建議轉 Shorts，見 theme_suggestions。"
+    },
+    {
+      "id": "N1363",
+      "agent": "A5",
+      "reviewer": "R123",
+      "verdict": "REJECT",
+      "key_source_reopened": "A5-S007 https://zh.wikisource.org/wiki/大南寔錄/大南寔錄前編/卷10（A5-S008 https://vjol.info.vn/ncpt-hue/article/view/54471 重開兩次：HTTP/2 PROTOCOL_ERROR、HTTP/1.1 空回應，未繞過；只能對照研究代理已存的 pdftotext 文字）",
+      "reopen_result": "維基文庫卷十（curl 200）確實寫：『上以讖文有“八世還中都”之語，乃改衣服風俗，與民更始，參酌歷代制度定文武朝服』，小注只列冠飾與蟒袍綵緞，講的是朝服與『改衣服風俗』，沒有一個字描寫百姓衣服或長衫。vjol 原頁我打不開；研究代理存的全文裡，Koffler 的轉引是『拋棄北方人的粗鄙衣式，參酌 người Tàu（中國人）的衣式』，黎貴惇的轉引是改穿『北國衣服』；明命帝 1827、1837 年諭旨只有越南語譯文，漢文原文沒讀到。",
+      "changed_fields": [],
+      "duplicate_of": null,
+      "reason": "判 REJECT，理由是禁區，不是前提不成立。前提的狀況：1744 年因讖語『改衣服風俗』這一條在《大南寔錄前編》確實有，但它沒有說改的是什麼衣服；把它接到奧黛，靠的是單一地方期刊（立場是『順化是奧黛搖籃』）轉引的 Koffler、黎貴惇與 Chapman，原書都沒讀；明命帝諭旨原文沒讀到，只有越南語譯文。所以前提部分成立、部分只有一個來源。禁區的判斷：這題的翻轉就是『奧黛不是千年古衣，而是 1744 年一次改服令的產物』，而撐起那次改服令內容的關鍵證據，正是 Koffler 的『參酌中國人的衣式』與黎貴惇的『北國衣服』——這兩句就是越中網路上『奧黛是不是源自中國』爭論兩邊引用的材料。scope 寫『不主張是中國的』也避不開：只要照實講這兩句，觀眾就會被帶進『越南還是中國』；不講這兩句，答案就只剩『1744 年改了衣服、不知道改成什麼』，太薄。加上 1930 年代 Le Mur 款式的來源也常被捲進同一個爭論、明命帝強令北方改服牽涉南北之分，屬於系列 README 不收清單的『今天兩個國家或兩群人還在爭的事』。研究代理自己在 not_added 也因同樣理由不收河粉起源題，標準應該一致。"
+    },
+    {
+      "id": "N1364",
+      "agent": "A5",
+      "reviewer": "R123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A5-S010 的法文原版：La Loubère, Du Royaume de Siam, Amsterdam 1691（archive.org LoubereSiamAmsterdam1691，djvu 全文）https://archive.org/details/LoubereSiamAmsterdam1691；另重開 A5-S009 Baker 2011 https://so06.tci-thaijo.org/index.php/pub_jss/article/download/158376/114737/433881",
+      "reopen_result": "1691 年法文版 tome I pp. 29–30（第三章末）確實寫：『neanmoins cette Ville est peu habitée eu égard à sa grandeur, & le Païs l'est encore moins à proportion』，暹羅人每年點算男女與孩童，『de leur propre confession』上一次只有『dixneuf cent mille Ames』，他認為要扣掉虛報、又要加上逃進森林的人。英譯本 OCR 缺字的那句因此補齊，意思與研究代理的摘要一致。Baker 2011 p. 41 確實寫 Reid 依 17 世紀歐洲人的地圖與觀察估 15 萬到 20 萬；《大城地誌》說船筏『約兩萬、只多不少』，可住十萬人；並寫 17 世紀的地圖與畫沒有一艘船筏、歐洲訪客的記述也沒提到這種密度（Kaempfer 提過有住人的船，但沒說數量）。『一百萬』仍只見於通俗網站，沒有出處。",
+      "changed_fields": [
+        "answer_target",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "查重：既有題與同批都沒有大城人口；近鄰 N382、P12、N1346 只是『數字被修正』的同類，答案不同。前提成立：特別交代的 La Loubère 那句已對到 1691 年法文版原文。要改的是事件年代與文本年代：原題寫『1688 年住在那裡的法國大使寫』，他 1687 年 9 月到、1688 年 1 月走，書是 1691 年出版；Kaempfer 的書也晚很多年。原 answer_target『沒有一個 17 世紀歐洲人畫到』照 Baker 的原話改成『17 世紀的地圖一艘也沒畫』。片長 8–10 分鐘誠實，但素材以數字為主，製作時要靠『三種證據互相矛盾』撐節奏。"
+    },
+    {
+      "id": "N1365",
+      "agent": "A5",
+      "reviewer": "R123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A5-S013 https://archive.org/details/bulletindelasoci28soci（Bulletin de la Société zoologique de France t. 28, 1903，djvu 全文第 3410–3600 行）",
+      "reopen_result": "頁面上確實寫了：Séance du 13 janvier 1903 的註，學會一致決議全文刊出並自費加印『cinquante tirés à part』寄往 Megophias 最常出現的地區、特別是印度支那；Racovitza 轉錄的是『Courrier d'Haïphong』第 1332 號、1898 年 3 月 5 日的〈Chronique locale〉（報名與期號就印在學會刊物上，研究代理寫成『推測』可以更正）；報社說怕『河內的同業』取笑才遲遲不登；1897 年 7 月在下龍灣外看到兩隻約 20 公尺的動物、600 公尺開一砲；1898 年 2 月 15 日在 Fai-tsi-Long 灣（註：在下龍灣北邊）多次開砲，『au moins deux projectiles l'atteignirent sans avoir semblé lui faire le moindre mal, les obus éclatant à la surface』；2 月 24 日 Bayard 號 8 名軍官同船，兩人有相機卻來不及拍；結尾艦長說這些動物『connus et redoutés des Annamites』必定提供了龍的構想；Racovitza 在註裡把頭像海豹、背上鋸齒解釋成 Megophias 的鬃毛。",
+      "changed_fields": [
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "查重：既有題與原來如此都沒有下龍灣海蛇；海怪相近的 L12（尼斯湖照片）、M07（Bloop 是冰山）、T31 的未知生物樣本題，答案都不同：本題沒有照片也沒有樣本，翻轉在『一次訪談怎麼被一位科學家的理論收編、再發出徵求單』。前提成立，學會刊物的轉錄與科學院週報都能讀到。只改兩處措辭：原題『打不死』比原文強，原文是『似乎沒傷到』；海防報紙的報名與期號其實印在學會刊物上。片長 8–11 分鐘可信（三次目擊、Racovitza 的註、50 份加印、1904 年 Décidée 號各說各話、荷蘭報紙兩派反應）。"
+    },
+    {
+      "id": "N1366",
+      "agent": "A5",
+      "reviewer": "R123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A5-S019 https://resolver.kb.nl/resolve?urn=ddd:010504802:mpeg21:a0001:ocr（另重開 A5-S020 https://resolver.kb.nl/resolve?urn=KBDDD02:000204409:mpeg21:a0032:ocr、A5-S021 https://resolver.kb.nl/resolve?urn=KBNRC01:000026941:mpeg21:a0068:ocr，並用 SRU 查 1945–1995 年 Delpher、WebSearch 查歸還年份與藏地）",
+      "reopen_result": "1892-12-17 Java-bode〈Iets over Radén Saleh〉確實寫：〈Gevangenneming van Dipo Negoro〉『het kabinet van het Nederlandsche Vorstenhuis versiert』，因此不能認為畫家想做一幅『Tendenz-stuk』來譴責荷蘭軍人的姿態，比較可能是『de hoveling』露了出來；這是一篇談 Raden Saleh 整體的文章裡的兩段，不是專文。1883-11-12 De Locomotief 確實寫國王把兩幅大畫和〈Dipo Negoro's gevangenneming〉借給展覽。歸還年份：NRC 1978-04-25 寫，在 1975 年合作建議『被正式確認之前』荷蘭已交還 1971 年的 Nagarakertagama 與這幅畫；而那次正式確認就是 1978 年 4 月的儀式，所以這篇報導只撐得住『1978 年 4 月之前已交還』，跟『1978 年歸還』不完全矛盾、也不能確定是哪一年。SRU 查 1945–1995 年只有 1978 與一筆無關的 1971 年報導。藏地：setkab.go.id（2015）寫日惹總統府博物館主展廳，新加坡國家美術館（2025）寫雅加達 Istana Negara 收藏，Smarthistory、Liputan6 寫日惹，Popbela 寫曾在日惹、現在在雅加達的 Istana Merdeka；它也多次出借展覽（2016 年雅加達國家美術館）。兩項都查不清，照實並列。",
+      "changed_fields": [
+        "answer_target",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "查重：既有題無 Diponegoro 與 Raden Saleh；近鄰 N1362、N865、N1241、N961 核心不同；N1245（Si Jagur）同為殖民物件意義翻轉，答案不同。前提成立：1883 年借展與 1892 年評論都在 Delpher 原文讀到。題目原本的語氣偏向『1892 年的讀法才對』，而印尼民族英雄的畫像屬敏感題，改成並列兩種讀法、以沒有定論收尾，並把『專門寫文章』改成實際的『一篇談 Saleh 的文章』。特別交代的兩項：歸還年份與藏地兩個來源不一致，我查到的也互相矛盾，照實並列寫進 answer_target 與 scope。這不是今天兩國還在爭的事（畫已歸還、爭的是藝術史讀法），可以收，但腳本要守 scope。"
+    },
+    {
+      "id": "N1381",
+      "agent": "A6",
+      "reviewer": "R123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A6-S001 https://lab.ndl.go.jp/dl/book/1898837（以 NDL Lab 全文 API https://lab.ndl.go.jp/dl/api/book/fulltext-json/1898837 讀）；另重開 A6-S002 https://www.biblioteca-antologica.org/es/wp-content/uploads/2018/07/VIVERO-Relación-del-Japón-.pdf",
+      "reopen_result": "NDL 全文（200）第 9–12 頁確實寫：通譯告訴村人他是呂宋太守後『聞く人皆感動し、婦女は涕泣せり』，婦女請丈夫借出『綿の入りたるキモノ』；トノ命令好好待他但不准離開；『後に予が寄寓したる家の主人に聞きたる所に依れば、始め會議を開き、我等を悉く殺さんと決したる由』；三四日後トノ帶三百餘人來訪送禮，並負擔『該村滯在三十七日間』的伙食。全文搜尋『海女』零筆。西文轉錄本（200）第一章確實有 junta 與『pasar a todos a cuchillo』、由『el huésped de mi posada』轉告；後半節確實寫『me llevaron atado, y a todos los demás también』、『nos tuvieron presos y cautivos』、『Habiéndome pasado 48 días, vino un piloto inglés…salvoconducto para salir de aquella prisión』。這段只在這份沒有註明底本的網路轉錄本讀到；學術版（Uchmany 2016、Romero de Terreros 1934，後者 INAH 頁 403）我也沒打開。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "查重：既有題與同批都沒有 Vivero 船難；N886（Coria del Río）同屬慶長年間日西往來，核心不同；近鄰 U25（虛舟）是漂著船的文獻比對，答案不同。前提成立：村上 1926 年的日譯與西文轉錄本互證第一段（婦女哭、借棉衣、開會決定殺），兩份文件都沒有海女。特別交代的兩點已寫進 changes：48 天那段只靠網路轉錄本，要標明；海女體溫說只說『目前讀到的紀錄裡沒有』，不寫成被證偽。原題『當地開會決定把他們全殺了』少了『寄宿主人轉述』與『起初』，容易被聽成真的動手，改成完整的轉述。片長 8–11 分鐘可信（兩段 Vivero、《當代記》、《上總國誌》、史料綜覽、1928 年紀念塔、2009 年雕像）。"
+    },
+    {
+      "id": "N1382",
+      "agent": "A6",
+      "reviewer": "R123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A6-S011 https://ojs.uv.es/index.php/IMAGO/article/download/9100/9084（Lucía Megías 2016, IMAGO 8, pp. 19–35，pdftotext 全文）",
+      "reopen_result": "PDF（200）確實寫：1773 年 9 月 24 日學院向 Conde del Águila 借『Alonso del Arco』油畫，到手才發現是 Kent 1738 年版畫的複製，畫家生於 1625、死於 1700，仍被當成真像『hasta 1911』、整個 19 世紀是標準像；第五張假像 1911 年 6 月 11 日首見於《Ilustración Española y Americana》，發現經過可追到 1910 年春 Albiol 修畫，『aparecieron como por arte de magia las dos inscripciones que rememoraban…lo que el propio Cervantes había escrito en el prólogo』，上方是 Cervantes 名字、下方『Iuan de Iauregui Pinxit, año 1600』；Albiol 把畫送給學院，換得瓦倫西亞的教職提名；Pidal 1912 年 1 月 15 日在記者協會演講，要質疑者『acordarse de lo que es patriotismo』；畫掛到學院講堂 Felipe V 像下；作者稱它為『falso retrato』，並說捐贈『de manera interesada』。文中用的詞是『呼應』（rememoraban），不是『抄』。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "查重：既有題與原來如此都沒有塞萬提斯畫像；同批 N1282 也是塞萬提斯，但講 Torralba 醫生飛行，核心不同；近鄰 N965、N743、N321、N489、N345 答案不同。與 N609（Tiradentes）同屬『沒有生前畫像的人』，但答案不同：N609 是共和國成立後的政治形象建構，本題是一條從作者自己的文字長出來的偽作鏈，關鍵在銘文呼應序言；兩題各自撐得起一集，不硬合，見 theme_suggestions。前提成立。只改措辭：『課本上』沒有來源，改成『最常見的』；『抄的是』比原文強，改成『正好呼應』；『畫家還晚生 9 年』語意不清，改成『生於塞萬提斯死後 9 年』。"
+    },
+    {
+      "id": "N1383",
+      "agent": "A6",
+      "reviewer": "R123",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A6-S017 https://lab.ndl.go.jp/dl/book/957745 與 A6-S018 https://lab.ndl.go.jp/dl/book/1917617（皆以 NDL Lab 全文 API 讀）；另重開 A6-S016 https://lab.ndl.go.jp/dl/book/946491",
+      "reopen_result": "三份全文 API 都回 200。1917 年講演集全書只有一處『船中八策』：岡部精一說今天傳下的八策有兩種，『思ふに前の分は最初の草案で、多分長崎から上京の途次船中で假りに案を立てゝ見たものではありますまいか。此の八策を船中八策とも申しますことを併せ考へると…』，前一份即有『○○○』的那份。1926 年《坂本龍馬関係文書 第一》確實在慶應三年六月十五日條下寫『此綱領ヲ俗ニ「船中八策」ト云フ…此名アリト云フ…想フニ船中ノモノハコノ粉本ナランカ 編纂者識』。1912 年《維新土佐勤王史》其一百三十二確實寫『世に所謂坂本の八策なるもの、卽ち是れなり』、龍馬在京都向後藤提出、長岡起草，並把今天通行的文字當成『別に世に傳はりし八策の稿は、頗る其の字句を修飾せる』附錄；這一節沒有『船中』二字（全書的『船中』命中都是別的航程）。1926 年的『俗ニ…ト云フ』表示這個名字當時已在流傳，比 1917 年更早的口頭用法可能存在。知野文哉 2013 年專書與 1883 年《汗血千里駒》都沒讀到。",
+      "changed_fields": [
+        "answer_target",
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": null,
+      "reason": "查重：既有題、同批與原來如此都沒有坂本龍馬或船中八策；近鄰 L24、U25、N1046、N408、N763 答案不同；N601（家康顰像）同為『名場面的標籤比物件晚出現』，人物、文件與答案不同，而且 N601 已在題案 T62。前提成立：四份 NDL 全文都對得上。要改的是：原 hook 的『日本課本說』沒有讀到課本，改成通行說法加國會圖書館展示；原 answer_target『目前讀到的紀錄裡，「船中」是大正年間才出現的名字』容易被讀成『最早』，改成只講 1917 年是目前讀到最早、並把 1926 年『俗稱』隱含的更早口頭用法寫進 scope；1883 年《汗血千里駒》是否已有船上場景沒查清，也寫進 scope。片長 8–10 分鐘可信。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N1302"
+      ],
+      "title": "轉 Shorts：西班牙的『袋子人』，比那件刑案早 31 年就在報紙上嚇小孩",
+      "why": "N1302 只撐得起 3–5 分鐘。核心相同的 N925（Ông Ba Bị）已在 T71，T71 已排兩章，照指示不再塞。同批 A1–A6 沒有『嚇小孩的怪物被配上真人原型』的兄弟題。既有題裡最近的 F12（藍鬍子被說成 Gilles de Rais）同樣牽涉殺害兒童，而且自成一集，不合。所以排不成題案，建議做一支 Shorts：1879 年報紙的那句話 → 1923 年百科也沒提任何真人 → 結論『名字比案件早』。Gádor 案只說『1910 年的一宗刑案』，不講細節。"
+    },
+    {
+      "ids": [
+        "N1301"
+      ],
+      "title": "（條件式）轉 Shorts：人面犬第一次上雜誌，比流行早六年？",
+      "why": "N1301 目前是 NEEDS_CHECK，不選入。若日後讀到 1983 年《微笑》或 1988 年 9 月號《Popteen》原刊而升級，也只有 3–5 分鐘；L02 已轉 Shorts，N921、N922 各自是 episode_core，同批沒有同核心的題，只能轉 Shorts。"
+    },
+    {
+      "ids": [
+        "N1343"
+      ],
+      "title": "轉 Shorts：1930 年東京天天唱『哪裡還看得到地震雲』——那時的地震雲是震後的雲",
+      "why": "N1343 只撐得起 3–5 分鐘。能接它的既有題都排不進：N703（鯰繪）是 episode_core 9–12 分鐘，加上去會超過 13 分鐘，核心問題也不同（鯰魚預告地震的信仰與實驗 vs. 一個詞的意思怎麼轉）；M21（地震光）已在 T41 與 M05、M20 排成 8–11 分鐘，題案已滿；N1101（今村）是 9–12 分鐘的單集；同批 A1–A6 沒有地震前兆題。建議做成一支 Shorts：〈復興行進曲〉的歌詞 → 1924 年教材註『隔著火災的煙看到的』→ 收在『目前讀到的用法指震後的雲；《諸物會要》裡的「地震雲」條目還沒讀到』，不講 1980 年是起點，不做任何地震預測。補讀到《諸物會要》條目與鍵田書內文後，若能寫成完整詞史，再考慮升為單集。"
+    },
+    {
+      "ids": [
+        "N1345",
+        "N126"
+      ],
+      "title": "不合併：1770 年京都的紅色北空與 1859 年卡林頓事件",
+      "why": "兩題都碰『史上最大磁暴』，但各自撐得起一集（N1345 8–11、N126 8–11），合起來會超過 13 分鐘；核心問題也不同：N126 問卡林頓的頭銜怎麼被原始紀錄動搖，N1345 問一本神社日記和一張被當成誇張的圖怎麼被科學重現。建議各做單集，N1345 結尾可用一句提到 N126，不硬排題案。"
+    },
+    {
+      "ids": [
+        "N1341",
+        "N1342"
+      ],
+      "title": "不合併：Parícutin 1943 與 Huaynaputina 1600",
+      "why": "兩題都是火山、近鄰分數高，但核心問題不同：N1341 是同一個下午的證詞怎麼在一個月內分岔、預兆被誰怎麼記；N1342 是當年人說不清是哪座山、四百年後的氣候連結還有保留。各自 8–11 分鐘，不需要合。"
+    },
+    {
+      "ids": [
+        "N1362"
+      ],
+      "title": "轉 Shorts：萬隆的『爪哇巴黎』，1904 年就是『聽人這麼叫的』",
+      "why": "N1362 只撐 3–5 分鐘。同批 A1–A6 與既有 717 題都沒有核心相同的『城市綽號誰先叫』兄弟題；近鄰 N1366 同在西爪哇、同用 Delpher，但核心是畫作讀法，不同；N1245（Si Jagur）、N1061（Pitung）雖同是荷屬東印度舊報紙修正今天說法，但各自是 episode_core 單集，核心也不同；N1023（Krakatoa 片名）是片商命名，不是同一個問題。建議做一支 Shorts：1920 年家具商的流傳版本 → 1904 年專欄『我是聽人這麼叫的』→ 1914 年記者看到的打扮入時 → 收在『目前在 Delpher 讀到最早是 1904 年，第一個說的人不知道』。"
+    },
+    {
+      "ids": [
+        "N1382",
+        "N609"
+      ],
+      "title": "不合併：沒有留下畫像的人，臉是誰畫的？（塞萬提斯與 Tiradentes）",
+      "why": "兩題核心問題確實相近（本人沒有可靠畫像，今天通用的臉是後人造的），但答案不同、各自撐得起一集：N609（episode_core 8–10）是 1890 年共和國成立後的政治形象建構，證據是審訊案卷的外貌描述；N1382（8–11）是一條從作者自己的文字長出來的偽作鏈（Kent 1738 → 假 Alonso del Arco → 1910 年冒出、呼應序言的 Jáuregui 銘文）。兩題各砍到 5–6 分鐘才能放進 13 分鐘，會丟掉各自的翻轉細節，不符合『每章都有新理解、不湊時間』；兩題也都不在 themes.json 的既有題案裡。建議各做單集，N1382 的結尾可用一句帶到 N609。若日後要做『肖像』系列，再加 N743（源頼朝像，答案是畫中人身分）另議。"
+    },
+    {
+      "ids": [
+        "N1361",
+        "N905",
+        "N1225"
+      ],
+      "title": "不合併：泰國的『古典』文本是什麼時候寫定的",
+      "why": "三題都在替泰國的一份『古代』文本定年，但 N1225 已排進 T80（與 N582），題案已滿；N905 的核心是名著標準本的編定與刪改，N1361 的核心是節日起源故事的出處定年，答案不同，N1361 自己撐得起 8–10 分鐘。各做單集即可。"
+    },
+    {
+      "ids": [
+        "N1365"
+      ],
+      "title": "不併入既有海怪題案",
+      "why": "N1365 撐得起 8–11 分鐘。能接的既有題 M07 已在 T01（三段海底聲音）題案已滿；L21、L32、L38 的 T31 是『樣本送驗』，本題沒有樣本；L12（尼斯湖照片）是照片造假。核心問題都不同，單獨成集。"
+    }
+  ]
+}

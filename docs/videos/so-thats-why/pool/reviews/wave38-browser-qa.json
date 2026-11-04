@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T14:11:56.758Z",
+  "result": "PASS",
+  "selected": 3220,
+  "index_html_sha256": "3da21594acbe0ed66bbad8c0ad0aea69517433c4797d3c647816a7e2f8b85ff5",
+  "source_sample": {
+    "id": "R38001",
+    "urls": [
+      "https://doi.org/10.1126/sciadv.adh5217"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave38-desktop.png",
+    "wave38-source-desktop.png",
+    "wave38-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "桌面與390像素手機都顯示3220題、370案、2804個使用來源與150個別名。桌面可展開R38001，手機兩欄統計與篩選正常換行。"
+}

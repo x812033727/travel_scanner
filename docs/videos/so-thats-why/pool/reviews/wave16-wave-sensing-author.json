@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "science_sources",
+  "role": "AUTHOR_NOT_INDEPENDENT_VERIFIER",
+  "status": "AUTHOR_LOCKED_PENDING_INDEPENDENT_REVIEW",
+  "batch_id": "wave16-wave-sensing-20261102",
+  "files": [
+    {
+      "file": "batches/wave16-wave-sensing.json",
+      "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+    },
+    {
+      "file": "reviews/wave16-wave-sensing-themes.json",
+      "sha256": "3d5765f0f1e3364ff78b910322e8bc6056d8c76de0cde79c44805b747f37b073"
+    }
+  ],
+  "encoding": "UTF-8 LF；所有字串rstrip",
+  "counts": {
+    "candidates": 6,
+    "sources": 6,
+    "not_added": 18,
+    "themes": 4
+  },
+  "candidate_ids": [
+    "W16001",
+    "W16002",
+    "W16003",
+    "W16004",
+    "W16005",
+    "W16006"
+  ],
+  "baseline": {
+    "pool_sha256": "7a3943a0460090156a797f370a6d0029b977f7fa854979760eec59f4e52dd705",
+    "selected": 2939,
+    "raw_records": 3306,
+    "themes": 172,
+    "not_added": 776,
+    "search_scope": "全3306 raw問題/答案/範圍/機制與776未收做聲波/相位/核磁/電阻等詞彙搜尋；512 raw及94未收命中是檢索數，不冒稱全部逐字查核。人工讀回舊NMR、聲學/ADCP/SAR群及本表18近對的完整答案/範圍。",
+    "search_cache": ".cache/wave16-wave-sensing-old-search.json"
+  },
+  "source_identity": [
+    {
+      "source_id": "W16-S001",
+      "work_doi": "10.1103/PhysRev.80.580",
+      "canonical_work_title": "Spin Echoes",
+      "version": "1950-11-15；Physical Review 80:580–594；DOI 10.1103/PhysRev.80.580",
+      "old_pool_identity_hits": [],
+      "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。",
+      "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。",
+      "same_work_copies": [
+        "https://122.physics.ucdavis.edu/sites/default/files/files/Pulse%20NMR/Hahn_SpinEchoes_PhysRev.80.580_1950.pdf"
+      ]
+    },
+    {
+      "source_id": "W16-S002",
+      "work_doi": "10.1063/1.1695690",
+      "canonical_work_title": "Spin Diffusion Measurements: Spin Echoes in the Presence of a Time-Dependent Field Gradient",
+      "version": "1965；J. Chem. Phys. 42:288–292；DOI 10.1063/1.1695690",
+      "old_pool_identity_hits": [],
+      "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。此PDF為第三方教育站副本，非作者伺服器；以原印刷題名/作者/年份/DOI核身分，無獨立複現主張。",
+      "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。"
+    },
+    {
+      "source_id": "W16-S003",
+      "work_doi": "10.1140/epjst/e2016-60259-1",
+      "canonical_work_title": "Time reversal of ultrasound in granular media",
+      "version": "arXiv:1609.01539v1，2016-09-06；同工作相關期刊DOI 10.1140/epjst/e2016-60259-1",
+      "old_pool_identity_hits": [],
+      "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。本批實讀鎖定arXiv v1，關聯正式版未逐字比較，不能稱已讀正式版全篇。",
+      "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。"
+    },
+    {
+      "source_id": "W16-S004",
+      "work_doi": "10.1038/nphys3810",
+      "canonical_work_title": "Revisiting time reversal and holography with spacetime transformations",
+      "version": "arXiv:1510.01277v1，2015-10-01；同工作相關正式版DOI 10.1038/nphys3810",
+      "old_pool_identity_hits": [],
+      "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。本批實讀鎖定arXiv v1，關聯正式版未逐字比較，不能稱已讀正式版全篇。",
+      "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。"
+    },
+    {
+      "source_id": "W16-S005",
+      "work_doi": "10.1038/ncomms9661",
+      "canonical_work_title": "Holographic acoustic elements for manipulation of levitated objects",
+      "version": "2015-10-27；Nature Communications 6:8661；DOI 10.1038/ncomms9661",
+      "old_pool_identity_hits": [],
+      "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。",
+      "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。",
+      "same_work_copies": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4627579/fullTextXML"
+      ]
+    },
+    {
+      "source_id": "W16-S006",
+      "work_doi": "10.1038/s41598-017-10000-1",
+      "canonical_work_title": "A hybrid resistive pulse-optical detection platform for microfluidic experiments",
+      "version": "2017-08-31；Scientific Reports 7:10173；DOI 10.1038/s41598-017-10000-1",
+      "old_pool_identity_hits": [],
+      "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。",
+      "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。",
+      "same_work_copies": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5579027/fullTextXML"
+      ]
+    }
+  ],
+  "source_reading": {
+    "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "method": "web搜尋/原研究身分與正文入口；指定UA下載PDF或EuropePMC XML，PyMuPDF/lxml讀指定段；掃描Hahn以圖像實讀。",
+    "copies": [
+      {
+        "source_id": "W16-S001",
+        "file": ".cache/wave16-wave-sensing-hahn.pdf",
+        "sha256": "fee0bae8eb2daebe55a4b2686b16a1c37c8c728e0727f7decfd8de26b3c8f50b",
+        "reading_limit": "只讀PDF p1–4：Introduction、II(B) Nuclear Induction Due to Free Larmor Precession、III(A) Moving Coordinate Representation及III(B) Simple Vector Model of the Spin Echo、Fig1。22頁載體其餘頁未讀。"
+      },
+      {
+        "source_id": "W16-S002",
+        "file": ".cache/wave16-wave-sensing-stejskal.pdf",
+        "sha256": "a5fbab0ab50671dd38a8d40d2013289e2d0d83c96a05187abdfa5dd63be89ee8",
+        "reading_limit": "PDF p2原研究標題以下Introduction；p3–4 Theory及Eq4–6後的短梯度脈衝解釋；p5–6 Experimental。p1為後附出版資訊；p2上半另篇結尾不採。"
+      },
+      {
+        "source_id": "W16-S003",
+        "file": ".cache/wave16-wave-sensing-granular.pdf",
+        "sha256": "fcfbe0632d2fa1f07dbd65cd95e5b5ba4d2ee9469e96487e400fab6c559d72d3",
+        "reading_limit": "PDF p2 Introduction；p3實驗裝置；p4–5線性TR與coherent/coda、單一換能器對照；p5–7非線性TR與Fig3–4、前後弱探測相關；p8只讀模型設定，後續數值結果未採。"
+      },
+      {
+        "source_id": "W16-S004",
+        "file": ".cache/wave16-wave-sensing-timewater.pdf",
+        "sha256": "f18c0b802a0376105d7ae1d006086ea36e8d2595fde9559d3014e705de6b8f3a",
+        "reading_limit": "PDF p3–6時間邊界與Cauchy初值；p7–12水波實驗、Figs2–4圖說與正文；p13–17時間邊界理論、導數/頻寬及能量由擾動注入的限制。未讀Supplementary Methods或看Videos。"
+      },
+      {
+        "source_id": "W16-S005",
+        "file": ".cache/wave16-wave-sensing-traps.xml",
+        "sha256": "6ced2d6dbd4a3c5dfb4158acc14a88445e342f383933c86319af37e6c3f85b9e",
+        "reading_limit": "Introduction；Results / Universal optimizer、Optimal single-beam acoustic traps、Holographic acoustic elements framework；Methods / Characterizing a Levitation Point、Objective function；相關Fig2–7圖說。公式影像未逐式驗算，未看補充圖/影片。"
+      },
+      {
+        "source_id": "W16-S006",
+        "file": ".cache/wave16-wave-sensing-resistive.xml",
+        "sha256": "16de7b2b1d1e17179c7857a21b0a231a4933471c7665b7a0438cb493aa78b996",
+        "reading_limit": "Introduction；Results / Position of maximum RP amplitude in the channel、Dependence of resistive-pulse amplitude on lateral displacement；Channels with cavities及兩個子節；Conclusions；Methods / Microfluidic channel and particle preparation、Experimental hardware、Data analysis and software。只讀文字/圖說，未逐式驗算或執行原軟體。"
+      }
+    ],
+    "rendered_pages_read": [
+      "W16-S001 PDF p1",
+      "W16-S001 PDF p2",
+      "W16-S001 PDF p3",
+      "W16-S001 PDF p4",
+      "W16-S002 PDF p4",
+      "W16-S003 PDF p5",
+      "W16-S004 PDF p7"
+    ],
+    "failures": [
+      "Hahn UCDavis PDF web逾時、UA證書驗證失敗，未關TLS；改USC同文副本成功。",
+      "Stejskal–Tanner Brown文獻入口web502；採已核原頁的第三方教育PDF副本。",
+      "Nature兩篇圖頁/Scientific Reports正文web重導不可取；EuropePMC XML成功。",
+      "兩篇PMC HTML取到頁面但未作正文證據，正文實讀以已保存XML為準；EuropePMC兩張原圖URL均403，未目讀原圖。",
+      "Pulse inversion Doppler DOI10.1109/58.753026只讀PubMed摘要，無正文，不收新核。"
+    ],
+    "reading_limit": "只宣稱六來源reading_scope的指定正文與七頁圖像；未查全部附錄、影片、原始資料或做獨立復現。數值與作圖僅在來源範圍內，未承諾新儀器可實作。",
+    "source_copy_policy": "全文與渲染只存ignored .cache；公開檔只連結、身份、短原創摘要與限制，未授權直接商用原圖。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "W16001",
+      "b": "H3070",
+      "reason": "核自旋是否能響應與已有訊號的散相/重聚不同；不重講核種清單。"
+    },
+    {
+      "a": "W16001",
+      "b": "H3071",
+      "reason": "化學屏蔽解釋頻率差來源；新核控制在相同頻率差下翻轉相位排列而恢復總和。"
+    },
+    {
+      "a": "W16001",
+      "b": "H3074",
+      "reason": "多重峰來自耦合，並非脈衝後重新聚相；本批不以多峰當回波。"
+    },
+    {
+      "a": "W16001",
+      "b": "H3072",
+      "reason": "快速構象交換造成平均譜與靜態頻差可逆散相不同；不宣稱反轉能撤銷任意交換。"
+    },
+    {
+      "a": "W16001",
+      "b": "E2104",
+      "reason": "共享磁矩背景；自旋微觀起源不是散相後脈衝控制。"
+    },
+    {
+      "a": "W16002",
+      "b": "W16001",
+      "reason": "第一核固定頻差下重新聚相；第二核新增空間編碼與粒子位移造成編碼失配，可固定回波時間改梯度。不是只換液體。"
+    },
+    {
+      "a": "W16002",
+      "b": "H3072",
+      "reason": "位移透過空間梯度變成相位差，而非同一分子環境交換快慢造成譜峰合併。"
+    },
+    {
+      "a": "W16003",
+      "b": "O3012",
+      "reason": "SAR由移動平台計算相位補償形成合成孔徑；此為固定接收器記錄實際散射路徑後物理重放，散射本身增方向資訊，媒質改變即失配。共享相干聚焦背景但控制不同。"
+    },
+    {
+      "a": "W16003",
+      "b": "P313",
+      "reason": "波長/聲束解析度是背景；新核為倒序重放記錄的散射路徑且同路徑可逆性受控，未另計更高頻解析度。"
+    },
+    {
+      "a": "W16003",
+      "b": "O3032",
+      "reason": "脈衝歸屬/距離速度歧義不同於已知一個脈衝的散射尾波倒序聚焦。"
+    },
+    {
+      "a": "W16003",
+      "b": "N209",
+      "reason": "單回波往返測深與將多重散射尾波重放聚焦不是同一推論。"
+    },
+    {
+      "a": "W16004",
+      "b": "W16003",
+      "reason": "共同追問回聚但控制不同：聲學記錄後邊界再發射；水波於全空間時間邊界生成反向分量，無先錄音陣列。"
+    },
+    {
+      "a": "W16004",
+      "b": "P312",
+      "reason": "空間界面反射改方向與整個介質時間改變並保留前後行分量不同。"
+    },
+    {
+      "a": "W16005",
+      "b": "P130",
+      "reason": "已有駐波節腹不能決定小球偏移後是否有各方向回復力；低壓中心只是條件之一。"
+    },
+    {
+      "a": "W16005",
+      "b": "D9013",
+      "reason": "舊題量測聲能淨流，新題設計粒子輻射力場與回復性；不以聲壓大小直接判任一者。"
+    },
+    {
+      "a": "W16005",
+      "b": "F14008",
+      "reason": "舊人工指腹空隙的擠壓氣膜減少接觸；新空氣中自由小球受聲輻射梯度力，沒有接觸空隙的承載薄膜。"
+    },
+    {
+      "a": "W16006",
+      "b": "E2063",
+      "reason": "舊均勻導線長度/截面電阻；新為固定通道與同尺寸球改橫向位置，電場邊界使訊號仍不同。"
+    },
+    {
+      "a": "W16006",
+      "b": "E2092",
+      "reason": "電表施加已知量反推電阻不是用粒子電阻脈衝推尺寸的路徑歧義。"
+    }
+  ],
+  "editorial_self_review": {
+    "retained_count_not_quota": 6,
+    "explored_directions": "六個受控核心＋18個未新增方向；舊題變體與僅摘要方向不當成已完成新研究。",
+    "why_short": "只留可畫出控制變因的進展；TR的散射孔徑/重聚/路徑失配合一，聲陷阱形狀及NMR參數不拆核。",
+    "same_core_budget_checks": [
+      {
+        "theme_id": "W16W-T01",
+        "candidate_id": "W16001",
+        "allocated_seconds": 90,
+        "editorial_cap": 110
+      },
+      {
+        "theme_id": "W16W-T01",
+        "candidate_id": "W16002",
+        "allocated_seconds": 90,
+        "editorial_cap": 110
+      },
+      {
+        "theme_id": "W16W-T02",
+        "candidate_id": "W16003",
+        "allocated_seconds": 105,
+        "editorial_cap": 135
+      },
+      {
+        "theme_id": "W16W-T02",
+        "candidate_id": "W16004",
+        "allocated_seconds": 90,
+        "editorial_cap": 130
+      },
+      {
+        "theme_id": "W16W-T03",
+        "candidate_id": "W16005",
+        "allocated_seconds": 115,
+        "editorial_cap": 135
+      },
+      {
+        "theme_id": "W16W-T04",
+        "candidate_id": "W16006",
+        "allocated_seconds": 120,
+        "editorial_cap": 140
+      }
+    ],
+    "not_read_aloud": true,
+    "not_production_approved": true,
+    "explicit_exclusions": "無診療/人體NMR判讀、無高聲壓/高加速度設備操作、無原研究實驗重現；示意不偽裝實測。"
+  },
+  "independent_review_handoff": {
+    "reviewer": "pool_life_tech",
+    "status": "PENDING",
+    "required": [
+      "全6候選/18未收/18作者邊界及root共同top5。",
+      "核磁同一背景下靜態重聚與梯度位移編碼是否足以分核；Hahn兩90與1965的90–180分開。",
+      "TR coda有效孔徑與SAR邊界；水波導數近似/前行分量/外部供能不可省略。",
+      "聲陷阱低壓不充分、電流脈衝同尺寸偏軸條件；原圖未取到的範圍要如實。",
+      "四案180/195/115/120秒；每章有新控制，退掉只轉場/命名內容，不保題數。"
+    ]
+  },
+  "remaining_author_blockers": [],
+  "mechanical_checks": {
+    "runtime": "Python -X utf8；Node v24.22.1",
+    "budget_checks": "4題案10章/6題案-核心累計，beat<=45、body=sum章、range上限<=body、核心累計<=cap，作者腳本PASS。",
+    "encoding_and_string_tails": "三檔落檔後讀回：UTF8 LF，遞迴字串rstrip，全部PASS。",
+    "scope_limit": "只有作者JSON形狀/算術檢查；未跑全庫tests、未試讀、非獨立來源核准。",
+    "validateThemes": "PASS on author-only six-row selected mock；不選入或修改中央素材池。"
+  },
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "requested_by": "pool_life_tech independent editorial review",
+      "before_files": [
+        {
+          "file": "batches/wave16-wave-sensing.json",
+          "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+        },
+        {
+          "file": "reviews/wave16-wave-sensing-themes.json",
+          "sha256": "fd415ea9b33a1e7f38d155f5828fdda404940d3232fcb27f97aea79a5c70eaa5"
+        },
+        {
+          "file": "reviews/wave16-wave-sensing-author.json",
+          "sha256": "b2d1764d525f7e650e9ec1772093e16f9afb7752740efb6bd19399172cdbd526"
+        }
+      ],
+      "changes": [
+        {
+          "id": "W16W-T02",
+          "reason": "第四章末兩裝置並排回扣主要重述，20秒收10秒（仍含5秒回扣）；章45→35，正文205→195，W16004跨章100→90。不補新資訊或停頓。"
+        }
+      ],
+      "unchanged": "batch、六題問答/來源、其餘三案及105秒聲學刪段分支不變。",
+      "after_theme_sha256": "3d5765f0f1e3364ff78b910322e8bc6056d8c76de0cde79c44805b747f37b073"
+    }
+  ]
+}

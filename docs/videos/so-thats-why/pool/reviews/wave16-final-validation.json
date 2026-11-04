@@ -1,0 +1,543 @@
+{
+  "tested_on": "2026-11-02T00:26:59.318Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3326,
+    "canonical_questions": 3188,
+    "eligible_candidates": 3018,
+    "selected_candidates": 2959,
+    "alias_records": 138,
+    "historical_records": 313,
+    "source_urls": 4278,
+    "current_research_source_urls": 1319,
+    "selected_source_urls": 2505,
+    "new_suggestions_not_added": 835,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 185,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-2939",
+    "carried": 2939,
+    "added": 20,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "fdb8c3ac1ffbb0ddc411cf3357657c621d1a77a296fecf302e3ef60dcdccdb56",
+    "writes": 6514,
+    "selected": 2959
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "fdb8c3ac1ffbb0ddc411cf3357657c621d1a77a296fecf302e3ef60dcdccdb56",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4375,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 18632.1873,
+    "index_ms": 10419.429299999996,
+    "unchanged_index_ms": 1146.1631000000052,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 12,
+        "milliseconds": 88.26350000000093
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 19.571300000003248
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 16.790200000003097
+      }
+    ],
+    "rss_bytes": 393936896,
+    "sqlite_bytes": 48181248
+  },
+  "dedup_audit": {
+    "selection": "Every final wave16 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "a480858e3b05361efef0a96a1b0e7b82be27bcd002c13550a5d090d07a550b2e",
+    "records": 3326,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 3.223
+  },
+  "hashes": {
+    "pool.json": "a480858e3b05361efef0a96a1b0e7b82be27bcd002c13550a5d090d07a550b2e",
+    "themes.json": "3cd40ffec4e324ffc207c6d39482c4a4fa18b6c3544e1b3dce0bcb75cf16148e",
+    "manifest.json": "9daf9de432e86516c7640fb5eac487c32d32a53cf4a6b929bb1807ff98d41719",
+    "index.html": "2efb04c2a6effc2b04f55de067caaec1ee8a02a48678914f1c2ec939a756e5f7",
+    "batches/wave16-bio-structures.json": "a49620c48dc563918c93db75566a2311ef5fa760cd6a0ccb3191ef79d43032f9",
+    "batches/wave16-materials.json": "f7b4fae84279bef8103aeb0fafbceb5a2d98220531d0abe888c51139ade664f8",
+    "batches/wave16-wave-sensing.json": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3306,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 2939,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 171,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "old_pair_audit": {
+    "selection": "Six highest-scoring selected pairs not yet explicitly marked distinct in frozen wave15 top10; no additional manual pair; purposive sample, not precision or recall.",
+    "judged": 6,
+    "merges": [],
+    "review": {
+      "file": "reviews/wave16-old-pair-integration.json",
+      "sha256": "48c6fec426945549e00e741dfa652b63c0e7606b31dc29ed1256c6330ab1bea8"
+    }
+  },
+  "existing_theme_changes": [
+    {
+      "id": "G09",
+      "previous_seconds": 660,
+      "body_seconds": 185,
+      "removed_from_theme_only": [
+        "N252"
+      ],
+      "retained_in_pool": [
+        "N248",
+        "N250",
+        "N251",
+        "N252"
+      ],
+      "new_core_count": 0,
+      "proposal": {
+        "file": "reviews/wave16-g09-revision.json",
+        "sha256": "5205cd79c28f3db91f55299c041833b8f6e5d9277b3862d68821b1d37ecd99b0"
+      },
+      "review": {
+        "file": "reviews/wave16-physics-reviews-g09.json",
+        "sha256": "d9ee66988b09108d338841d7e6b5ef4114b9668dcb04446c853f8fc5078e7273"
+      }
+    }
+  ],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4258,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://doi.org/10.1073/pnas.1512241112",
+        "source_id": "SRC-054ffa9af4213a99",
+        "candidate_ids": [
+          "B16001"
+        ],
+        "theme_ids": [
+          "G173"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s41467-022-28773-z",
+        "source_id": "SRC-7519d9522fcb62f9",
+        "candidate_ids": [
+          "B16002"
+        ],
+        "theme_ids": [
+          "G173"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rsif.2021.0213",
+        "source_id": "SRC-1a50b0173c201450",
+        "candidate_ids": [
+          "B16003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://elifesciences.org/articles/86843",
+        "source_id": "SRC-1f1a9893d4781e71",
+        "candidate_ids": [
+          "B16004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1602451113",
+        "source_id": "SRC-c983adbcdf5cb0c8",
+        "candidate_ids": [
+          "B16005"
+        ],
+        "theme_ids": [
+          "G174"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/nature10739",
+        "source_id": "SRC-395d71c97418e2e4",
+        "candidate_ids": [
+          "B16006"
+        ],
+        "theme_ids": [
+          "G175"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rsos.170475",
+        "source_id": "SRC-645d07eab9b9e4aa",
+        "candidate_ids": [
+          "B16007"
+        ],
+        "theme_ids": [
+          "G176"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+        "source_id": "SRC-e5c7fe1400570bf7",
+        "candidate_ids": [
+          "M16001"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+        "source_id": "SRC-35bba200425c9a71",
+        "candidate_ids": [
+          "M16002"
+        ],
+        "theme_ids": [
+          "G177"
+        ]
+      },
+      {
+        "url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+        "source_id": "SRC-4d50efb64e3752eb",
+        "candidate_ids": [
+          "M16003"
+        ],
+        "theme_ids": [
+          "G178"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+        "source_id": "SRC-04e4e5fd2402ae3e",
+        "candidate_ids": [
+          "M16004"
+        ],
+        "theme_ids": [
+          "G179"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1704.03305",
+        "source_id": "SRC-21d0db1e666b2258",
+        "candidate_ids": [
+          "M16005"
+        ],
+        "theme_ids": [
+          "G180"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1905.09250",
+        "source_id": "SRC-f95b568a6085aaa8",
+        "candidate_ids": [
+          "M16006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+        "source_id": "SRC-449864c74ecfc5f8",
+        "candidate_ids": [
+          "M16007"
+        ],
+        "theme_ids": [
+          "G181"
+        ]
+      },
+      {
+        "url": "https://ece-classes.usc.edu/ee591/library/Hahn-SpinEchoes.pdf",
+        "source_id": "SRC-6805df5260304a91",
+        "candidate_ids": [
+          "W16001"
+        ],
+        "theme_ids": [
+          "G182"
+        ]
+      },
+      {
+        "url": "https://mriquestions.com/uploads/3/4/5/7/34572113/stejskal_and_tanner1965.pdf",
+        "source_id": "SRC-85a63574600326f9",
+        "candidate_ids": [
+          "W16001",
+          "W16002"
+        ],
+        "theme_ids": [
+          "G182"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1609.01539v1",
+        "source_id": "SRC-26516b47706816ef",
+        "candidate_ids": [
+          "W16003"
+        ],
+        "theme_ids": [
+          "G183"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1510.01277v1",
+        "source_id": "SRC-c86e731392f1be4b",
+        "candidate_ids": [
+          "W16004"
+        ],
+        "theme_ids": [
+          "G183"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4627579/",
+        "source_id": "SRC-11c75d37c6117557",
+        "candidate_ids": [
+          "W16005"
+        ],
+        "theme_ids": [
+          "G184"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5579027/",
+        "source_id": "SRC-c074cee26f248c95",
+        "candidate_ids": [
+          "W16006"
+        ],
+        "theme_ids": [
+          "G185"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://doi.org/10.1073/pnas.1512241112",
+    "core": "B16001",
+    "theme": "G173",
+    "theme_ids": [
+      "G173"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 195797.5265,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "4d455a0411c8b44b5b47ace8f6b8fcd5489172e501ad20dd872362c8901633e1"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "e671634419ab8f3fe90eb44ab6a06ae116936b1eb22124b2899f290fefda172d"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "5cb2824b0fb36fa640e824d9d451ed8446076d7de7c84ac91316cf81ffc3ec12",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "34843f81da033a1f1723fcee7a47977f9a3b09f6ff7c10bca0558c59014b7a4f"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "890e11b92a1e797628ff122fed0d3240fc6d21574dc25a314d9bd868afa0b0c4",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 313,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true,
+    "independently_bound_stable_blobs": 64,
+    "unique_blobs_checked": 341
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3207,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G173",
+        "core": "B16001",
+        "seconds": 100,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G173",
+        "core": "B16002",
+        "seconds": 105,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G174",
+        "core": "B16005",
+        "seconds": 105,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G175",
+        "core": "B16006",
+        "seconds": 110,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G176",
+        "core": "B16007",
+        "seconds": 110,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G177",
+        "core": "M16002",
+        "seconds": 125,
+        "maximum": 130,
+        "variant_budget": null
+      },
+      {
+        "theme": "G178",
+        "core": "M16003",
+        "seconds": 115,
+        "maximum": 135,
+        "variant_budget": null
+      },
+      {
+        "theme": "G179",
+        "core": "M16004",
+        "seconds": 115,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G180",
+        "core": "M16005",
+        "seconds": 120,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G181",
+        "core": "M16007",
+        "seconds": 105,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G182",
+        "core": "W16001",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G182",
+        "core": "W16002",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G183",
+        "core": "W16003",
+        "seconds": 105,
+        "maximum": 135,
+        "variant_budget": null
+      },
+      {
+        "theme": "G183",
+        "core": "W16004",
+        "seconds": 90,
+        "maximum": 130,
+        "variant_budget": null
+      },
+      {
+        "theme": "G184",
+        "core": "W16005",
+        "seconds": 115,
+        "maximum": 135,
+        "variant_budget": null
+      },
+      {
+        "theme": "G185",
+        "core": "W16006",
+        "seconds": 120,
+        "maximum": 140,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave16-final-independent-readback.json",
+    "sha256": "8d8013561506856a38c415eefe45fdd49a53fbdec0784c2ada8624fb0b5539ae",
+    "status": "PASS_INDEPENDENT_DATA_EDITORIAL_INTEGRATION_READBACK",
+    "root_recomputed_bound_file_hashes": 64,
+    "all_required_data_docs_batches_and_reviews_bound": true,
+    "limits": "Data/editorial integration review; not a new independent full-source or production approval. Wave sensing facts use non-author life receipt. Existing G108 narration and demos are unchanged and were not rerun."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 39,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "receipt_file": ".cache/wave16-staged-hygiene-before-receipt.json",
+    "receipt_sha256": "aec10c385ea9b74175d020d4fb705fd83cf7654f138de994324cd4a5287dc38b",
+    "offences": 0,
+    "self_binding_limit": "This added field is outside the bound pre-field scan. Repeat the identical scanner after staging this receipt; final scan remains in ignored cache to avoid a self-hash cycle."
+  }
+}

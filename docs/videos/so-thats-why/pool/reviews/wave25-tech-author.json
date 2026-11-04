@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "root",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "3c92305785a9aad81ab5544be2d2b181ac4aeb93",
+    "selected": 3047,
+    "raw_records": 3419,
+    "themes": 254,
+    "not_added": 1143,
+    "pool_sha256": "6582e8fe83ba92a6c4149c8a41dec2d789e18bd758119b1be044a07af85e575e"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave25-tech.json",
+      "sha256": "b4190f5b25bc330e7ddd92da2e8a50f7b96bcc9c690d9c263f34d78a7e16ea59"
+    },
+    {
+      "file": "reviews/wave25-tech-themes.json",
+      "sha256": "fe757826930a727c2a99c706672773ff9a083ce49a4d37b54976bfce4031f3c9"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 5,
+    "not_added": 12,
+    "near_pairs": 13,
+    "themes": 3
+  },
+  "dedup_reading": {
+    "method": "全3419raw/1143未收機械篩，已讀命中未收理由與15項指定舊問答/條件；非全庫人工逐題覆讀。",
+    "scan_file": ".cache/wave25-tech-old-scan.json",
+    "scan_sha256": "6b3204d1661fec59385787cdd70180406919d2616335c6ef17d119a05fd30fdb"
+  },
+  "near_pairs": [
+    {
+      "a": "R25001",
+      "b": "I3033",
+      "decision": "propose_distinct",
+      "reason": "I3033以內容命名物件；R25001共享位元只作單邊成員判斷，不恢復或驗證內容。",
+      "a_snapshot": {
+        "question": "名單沒保存完整，為什麼電腦敢說「一定沒出現過」？",
+        "answer_target": "基本Bloom filter把每個項目的多個固定地址設為1。查詢遇到任一0可排除；全為1仍可能只是其他項目留下的重疊痕跡，所以只能回答可能有。",
+        "scope": "限插入、相同雜湊與無損位元陣列。未插入的C可誤中，已插入的A不會漏；任意清除共享位元刪A可能傷到B。不是內容雜湊驗完整性，也不是保存壓縮原名單。"
+      },
+      "b_snapshot": {
+        "question": "兩個不同檔名，為什麼版本庫能只保存一份內容？",
+        "answer_target": "內容物件不負責檔名；目錄樹可讓不同名稱指向同一份內容。",
+        "scope": "Git 概念模型；不把雜湊碰撞機率說成零。"
+      }
+    },
+    {
+      "a": "R25001",
+      "b": "I3076",
+      "decision": "propose_distinct",
+      "reason": "I3076是密碼雜湊核對；R25001多成員共享痕跡的誤中，不能套密碼驗證答案。",
+      "a_snapshot": {
+        "question": "名單沒保存完整，為什麼電腦敢說「一定沒出現過」？",
+        "answer_target": "基本Bloom filter把每個項目的多個固定地址設為1。查詢遇到任一0可排除；全為1仍可能只是其他項目留下的重疊痕跡，所以只能回答可能有。",
+        "scope": "限插入、相同雜湊與無損位元陣列。未插入的C可誤中，已插入的A不會漏；任意清除共享位元刪A可能傷到B。不是內容雜湊驗完整性，也不是保存壓縮原名單。"
+      },
+      "b_snapshot": {
+        "question": "網站不保存原密碼，怎麼還能知道你輸入得對不對？",
+        "answer_target": "保存帶參數的驗證值，再用輸入密碼按相同方法計算並比對。",
+        "scope": "密碼雜湊驗證模型，不等於可還原的加密。"
+      }
+    },
+    {
+      "a": "R25001",
+      "b": "L283",
+      "decision": "propose_distinct",
+      "reason": "L283驗傳輸錯誤；R25001查集合成員而容許假陽性。",
+      "a_snapshot": {
+        "question": "名單沒保存完整，為什麼電腦敢說「一定沒出現過」？",
+        "answer_target": "基本Bloom filter把每個項目的多個固定地址設為1。查詢遇到任一0可排除；全為1仍可能只是其他項目留下的重疊痕跡，所以只能回答可能有。",
+        "scope": "限插入、相同雜湊與無損位元陣列。未插入的C可誤中，已插入的A不會漏；任意清除共享位元刪A可能傷到B。不是內容雜湊驗完整性，也不是保存壓縮原名單。"
+      },
+      "b_snapshot": {
+        "question": "壓縮檔傳輸途中少了或變了資料，gzip 的檢查碼能幫忙發現什麼？",
+        "answer_target": "解壓資料的 CRC32 校驗",
+        "scope": "gzip 格式；不宣稱 CRC 可抵擋蓄意竄改"
+      }
+    },
+    {
+      "a": "R25002",
+      "b": "L159",
+      "decision": "propose_distinct",
+      "reason": "L159處理代表性取樣；R25002逐筆替換與生存機率在未知總長維持均勻，另有可驗算法。",
+      "a_snapshot": {
+        "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+        "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+        "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。"
+      },
+      "b_snapshot": {
+        "question": "只數幾塊草地，就能估算整片草地的植物數量嗎？",
+        "answer_target": "代表性樣區抽樣與外推",
+        "scope": "生態調查原理；不提供捕捉或傷害動物操作"
+      }
+    },
+    {
+      "a": "R25002",
+      "b": "I3091",
+      "decision": "propose_distinct",
+      "reason": "I3091修正亂數取餘偏差；R25002假設均勻抽籤後，調整不同到達時刻的保留機率。",
+      "a_snapshot": {
+        "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+        "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+        "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。"
+      },
+      "b_snapshot": {
+        "question": "亂數除以六取餘數，為什麼可能不是公平骰子？",
+        "answer_target": "原本等機率範圍若不能整除六，部分餘數會對應更多輸入。",
+        "scope": "有限整數範圍的概念示例；不討論賭博策略。"
+      }
+    },
+    {
+      "a": "R25002",
+      "b": "I3092",
+      "decision": "propose_distinct",
+      "reason": "I3092種子重播序列；R25002不是可重現性，而是替換/生存的等機率不變量。",
+      "a_snapshot": {
+        "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+        "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+        "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。"
+      },
+      "b_snapshot": {
+        "question": "看似亂數的一長串數字，為什麼換回同一種子又會重現？",
+        "answer_target": "確定性生成器從相同種子與狀態出發會產生同序列。",
+        "scope": "不把可重現等同容易被未知種子者猜出。"
+      }
+    },
+    {
+      "a": "R25003",
+      "b": "M2067",
+      "decision": "propose_distinct",
+      "reason": "M2067提醒樣本最大值非母體極限；R25003由已知hash分布、多桶最大秩與校正估不同項數。",
+      "a_snapshot": {
+        "question": "同一批名字重播一百遍，估算人數的表為什麼幾乎不動？",
+        "answer_target": "同一ID映射同一雜湊；先分桶，再記餘位首個1的位置的桶內最大值。重播不提高最大值，新ID才可能刷新；多桶的稀有前綴紀錄以經校正的統計估算不同項數，不保存所有ID。",
+        "scope": "實際算的是不同ID，不保證不同人。均勻雜湊假設與小量校正不可省；新ID也未必刷新，估值會有誤差。四桶圖只畫狀態更新，正式HLL參數與估算另依Fig3，不用最大值直接當總人數。"
+      },
+      "b_snapshot": {
+        "question": "區間兩端都沒抽到過，怎麼還能知道抽樣範圍有多大？",
+        "answer_target": "有限樣本極值是對界限的估計而非完整母體界限。",
+        "scope": "不把估計值視為確定上限；限定有均勻模型依據。"
+      }
+    },
+    {
+      "a": "R25003",
+      "b": "D12008",
+      "decision": "propose_distinct",
+      "reason": "D12008逐副本取max合併增量計數；R25003每桶存hash稀有秩估基數，並非各副本真計數相加。",
+      "a_snapshot": {
+        "question": "同一批名字重播一百遍，估算人數的表為什麼幾乎不動？",
+        "answer_target": "同一ID映射同一雜湊；先分桶，再記餘位首個1的位置的桶內最大值。重播不提高最大值，新ID才可能刷新；多桶的稀有前綴紀錄以經校正的統計估算不同項數，不保存所有ID。",
+        "scope": "實際算的是不同ID，不保證不同人。均勻雜湊假設與小量校正不可省；新ID也未必刷新，估值會有誤差。四桶圖只畫狀態更新，正式HLL參數與估算另依Fig3，不用最大值直接當總人數。"
+      },
+      "b_snapshot": {
+        "question": "兩台離線各加一次的計數器，怎麼合起來不漏算、再同步也不多算？",
+        "answer_target": "每個副本只增加自己的獨立欄位；同步取各欄最大值，讀取再加總。直接相加會重複共同歷史，只取整體最大又會丟掉另一邊新增。",
+        "scope": "限固定副本身分的增量計數模型；不處理減少、覆寫、同身分分岔或副本永久遺失。最終一致依賴相關狀態最終送達，非即時一致。"
+      }
+    },
+    {
+      "a": "R25004",
+      "b": "D12008",
+      "decision": "propose_distinct",
+      "reason": "D12008避免合併副本重計；R25004主動讓項目共享計數桶，再以最小值減污染。",
+      "a_snapshot": {
+        "question": "幾個都偏大的計數器，為什麼挑最小的反而比較可信？",
+        "answer_target": "每個項目在每列固定落一格，來一次就在各列加一。同格會混入其他項目，但只加不減時每個讀值都至少包含真次數；取各列最小值能避開部分碰撞污染，仍不能保證恰好等於真值。",
+        "scope": "只採插入式非負頻數。雜湊族的誤差保證有條件；兩列玩具展示方向，不當精度驗證。查詢需要給項目ID，摘要不自行列出全部熱門項；負數相消不套本片判斷。"
+      },
+      "b_snapshot": {
+        "question": "兩台離線各加一次的計數器，怎麼合起來不漏算、再同步也不多算？",
+        "answer_target": "每個副本只增加自己的獨立欄位；同步取各欄最大值，讀取再加總。直接相加會重複共同歷史，只取整體最大又會丟掉另一邊新增。",
+        "scope": "限固定副本身分的增量計數模型；不處理減少、覆寫、同身分分岔或副本永久遺失。最終一致依賴相關狀態最終送達，非即時一致。"
+      }
+    },
+    {
+      "a": "R25004",
+      "b": "R25001",
+      "decision": "propose_distinct",
+      "reason": "R25001回成員可能性；R25004累計碰撞次數的上界，更新/查詢與可視推導不同，可同片對照。",
+      "a_snapshot": {
+        "question": "幾個都偏大的計數器，為什麼挑最小的反而比較可信？",
+        "answer_target": "每個項目在每列固定落一格，來一次就在各列加一。同格會混入其他項目，但只加不減時每個讀值都至少包含真次數；取各列最小值能避開部分碰撞污染，仍不能保證恰好等於真值。",
+        "scope": "只採插入式非負頻數。雜湊族的誤差保證有條件；兩列玩具展示方向，不當精度驗證。查詢需要給項目ID，摘要不自行列出全部熱門項；負數相消不套本片判斷。"
+      },
+      "b_snapshot": {
+        "question": "名單沒保存完整，為什麼電腦敢說「一定沒出現過」？",
+        "answer_target": "基本Bloom filter把每個項目的多個固定地址設為1。查詢遇到任一0可排除；全為1仍可能只是其他項目留下的重疊痕跡，所以只能回答可能有。",
+        "scope": "限插入、相同雜湊與無損位元陣列。未插入的C可誤中，已插入的A不會漏；任意清除共享位元刪A可能傷到B。不是內容雜湊驗完整性，也不是保存壓縮原名單。"
+      }
+    },
+    {
+      "a": "R25005",
+      "b": "I3033",
+      "decision": "propose_distinct",
+      "reason": "I3033完整物件內容位址；R25005共同排列抽樣估集合交聯比，不是整檔hash相等。",
+      "a_snapshot": {
+        "question": "兩份清單各留一個名字，怎麼估出它們有多像？",
+        "answer_target": "把兩集合按同一個均勻隨機次序排序，各留最靠前元素。聯集中最靠前者若在交集，兩份留下的元素才相同；因此相同機率等於交集大小除以聯集大小，多次獨立排列的相同比例可估集合相似度。",
+        "scope": "採無碰撞共享排列、非空集合與去重元素。一次相同不是100%相似。文件切詞/連續片段規則決定集合；本題不回答語意、抄襲或包含比例，任意hash不自動滿足均勻假設。"
+      },
+      "b_snapshot": {
+        "question": "兩個不同檔名，為什麼版本庫能只保存一份內容？",
+        "answer_target": "內容物件不負責檔名；目錄樹可讓不同名稱指向同一份內容。",
+        "scope": "Git 概念模型；不把雜湊碰撞機率說成零。"
+      }
+    },
+    {
+      "a": "R25005",
+      "b": "R25002",
+      "decision": "propose_distinct",
+      "reason": "R25002只保留串流均勻紀錄；R25005兩集合共享排列，匹配機率對應交聯比。",
+      "a_snapshot": {
+        "question": "兩份清單各留一個名字，怎麼估出它們有多像？",
+        "answer_target": "把兩集合按同一個均勻隨機次序排序，各留最靠前元素。聯集中最靠前者若在交集，兩份留下的元素才相同；因此相同機率等於交集大小除以聯集大小，多次獨立排列的相同比例可估集合相似度。",
+        "scope": "採無碰撞共享排列、非空集合與去重元素。一次相同不是100%相似。文件切詞/連續片段規則決定集合；本題不回答語意、抄襲或包含比例，任意hash不自動滿足均勻假設。"
+      },
+      "b_snapshot": {
+        "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+        "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+        "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。"
+      }
+    },
+    {
+      "a": "R25005",
+      "b": "R25003",
+      "decision": "propose_distinct",
+      "reason": "R25003估不同項總數；R25005兩集合交聯相似，統計量、輸入與問題皆不同。",
+      "a_snapshot": {
+        "question": "兩份清單各留一個名字，怎麼估出它們有多像？",
+        "answer_target": "把兩集合按同一個均勻隨機次序排序，各留最靠前元素。聯集中最靠前者若在交集，兩份留下的元素才相同；因此相同機率等於交集大小除以聯集大小，多次獨立排列的相同比例可估集合相似度。",
+        "scope": "採無碰撞共享排列、非空集合與去重元素。一次相同不是100%相似。文件切詞/連續片段規則決定集合；本題不回答語意、抄襲或包含比例，任意hash不自動滿足均勻假設。"
+      },
+      "b_snapshot": {
+        "question": "同一批名字重播一百遍，估算人數的表為什麼幾乎不動？",
+        "answer_target": "同一ID映射同一雜湊；先分桶，再記餘位首個1的位置的桶內最大值。重播不提高最大值，新ID才可能刷新；多桶的稀有前綴紀錄以經校正的統計估算不同項數，不保存所有ID。",
+        "scope": "實際算的是不同ID，不保證不同人。均勻雜湊假設與小量校正不可省；新ID也未必刷新，估值會有誤差。四桶圖只畫狀態更新，正式HLL參數與估算另依Fig3，不用最大值直接當總人數。"
+      }
+    }
+  ],
+  "proposed_merges": [],
+  "source_readings": [
+    {
+      "source_id": "R25-S001",
+      "scope": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+      "cache": {
+        "file": ".cache/wave25-tech-bloom.pdf",
+        "sha256": "62aab4b336dfda911ba456685bd83d83a4cb914dd9d4e11f0fd96b570f63062f",
+        "text_file": ".cache/wave25-tech-bloom-text.json",
+        "text_sha256": "9cb71e1f16e51da130cdddad4b2417e4e1422f0fc24763260c03f1a1cd47b9bb"
+      },
+      "viewed_images": [],
+      "findings": "全零位元陣列以多個地址記錄成員；空位能排除，不空則仍可能是其他成員共同填滿。",
+      "limits": "限插入且雜湊規則一致、無資料損毀；基本版本不任意清位元刪除。"
+    },
+    {
+      "source_id": "R25-S002",
+      "scope": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+      "cache": {
+        "file": ".cache/wave25-tech-reservoir.pdf",
+        "sha256": "dba2241b478a46b49ec90cd95f85a8bc3cdf2c12b8c6de03134b99a754a5803b",
+        "text_file": ".cache/wave25-tech-reservoir-text.json",
+        "text_sha256": "5b759d6b34c987314ac25b90ff09f30ce750ef3593a7c148c588e4bb765271be"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-tech-reservoir-p3.png",
+          "sha256": "78f724745f66e0b57fde872ac535cc37f6cbb155f992ac2a343aaaaf535a38d8"
+        }
+      ],
+      "findings": "Algorithm R由Alan Waterman提出；樣本一格時，第t筆以1/t機率替換，留下的每筆在固定前綴等機率。",
+      "limits": "Vitter文章主題含Algorithm Z，本題只採R的敘述。抽的是資料紀錄，不自動等同不重複的人。"
+    },
+    {
+      "source_id": "R25-S003",
+      "scope": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+      "cache": {
+        "file": ".cache/wave25-tech-hll.pdf",
+        "sha256": "60a708db2b8b771587c816be9bdb7e1f800bfc759f82a273afc76bc8417826e9",
+        "text_file": ".cache/wave25-tech-hll-text.json",
+        "text_sha256": "9eb12a29c79e00c74482e28390ab733f3835dcc92dcde618b50cd80bffcd1bc9"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-tech-hll-p14.png",
+          "sha256": "09f639abe8c58d29ff00fc99c1a43586da40db142c1e085d7e73267b9ec825b0"
+        }
+      ],
+      "findings": "雜湊前綴分桶，餘位的首個1位置只保留桶內最大值；由多桶統計估不重複項數，同值重播不改暫存器。",
+      "limits": "理論均勻雜湊假設；實務小量須校正。只示意更新，不拿四桶玩具輸出冒充正式估計；不是精確人數。"
+    },
+    {
+      "source_id": "R25-S004",
+      "scope": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+      "cache": {
+        "file": ".cache/wave25-tech-countmin.pdf",
+        "sha256": "abc881cc07ecb2e5d5babc88b4e8f77bfc8cb29e3a245b9a4ed363bf5058d808",
+        "text_file": ".cache/wave25-tech-countmin-text.json",
+        "text_sha256": "e88add2c81380d56b0ec8e0d5e47a9fbcf003c8379a02e32849d8ec37fe0c9b9"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-tech-countmin-p7.png",
+          "sha256": "e71af5ce1d1a9d675b267da8108563c276473b439bebe9d73f52716335d51de3"
+        }
+      ],
+      "findings": "每筆更新各列一格，同桶混入其他項次數；非負計數下各列不低估，取最小值減少污染但仍可能高估。",
+      "limits": "本題限只加不減。原文更廣的非負向量條件不等同任意負數；不轉用一般情況的中位數定理。"
+    },
+    {
+      "source_id": "R25-S005",
+      "scope": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+      "cache": {
+        "file": ".cache/wave25-tech-minhash.pdf",
+        "sha256": "da1227992d4a308f9f6f9f99893fd7b00c26e6cf757b1372f426074c101ef56b",
+        "text_file": ".cache/wave25-tech-minhash-text.json",
+        "text_sha256": "c24f18f18f4e56e38ff9447740ecd5c762377a62f579528d4d341d3e8dbc9386"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-tech-minhash-p5.png",
+          "sha256": "8443ecb50dc90db9a4ddfeab61f04e22950255db16c0a495142293fe479ba639"
+        }
+      ],
+      "findings": "共享均勻隨機排列時，兩集合最小元素相同的機率等於交集占聯集比例。",
+      "limits": "實際有限指紋會碰撞，任意hash不等於精確均勻排列；示範用無碰撞排列。集合相似不是語意同義或抄襲判定。"
+    }
+  ],
+  "toy_checks": {
+    "file": ".cache/wave25-tech-toy-checks.json",
+    "sha256": "38b6e74998f8cc3e1d91c3aa3a2e411a10ecc5045385ca95f03dd88a771f6c5d"
+  },
+  "revision_history": [
+    {
+      "reason": "依非作者pool_life_tech覆核，T01結尾15→5秒、T02限制回扣10→5秒；限制改短圖註，不另朗讀。",
+      "removed_seconds": 15,
+      "before_themes": [
+        {
+          "id": "W25R-T01",
+          "title": "記不全，卻知道自己會錯在哪邊",
+          "status": "EDITORIAL_THEME_NOT_SCRIPT",
+          "production_ready": false,
+          "priority": "作者題案，待非作者覆核",
+          "format": "short_explainer",
+          "core_question": "省掉完整名單後，哪一種答案還能保證？",
+          "connection": "位元誤中→改計次數→兩種單邊錯誤的可見對照。",
+          "candidate_ids": [
+            "R25001",
+            "R25004"
+          ],
+          "target_minutes": 2.4166666666666665,
+          "range_minutes": [
+            2.4166666666666665,
+            2.4166666666666665
+          ],
+          "body_seconds": 145,
+          "chapters": [
+            {
+              "title": "燈亮不保證來過",
+              "candidate_ids": [
+                "R25001"
+              ],
+              "seconds": 75,
+              "new_information": "A/B點燈後問C有沒有來，先留猜測。；揭露C三格由別人湊齊，對照D碰到空格能排除。；重查A/B都能通過；圖示共享位元不能任意清除，轉到次數問題。",
+              "beats": [
+                {
+                  "seconds": 20,
+                  "new_information": "A/B點燈後問C有沒有來，先留猜測。"
+                },
+                {
+                  "seconds": 30,
+                  "new_information": "揭露C三格由別人湊齊，對照D碰到空格能排除。"
+                },
+                {
+                  "seconds": 25,
+                  "new_information": "重查A/B都能通過；圖示共享位元不能任意清除，轉到次數問題。"
+                }
+              ]
+            },
+            {
+              "title": "取最小，仍可能太大",
+              "candidate_ids": [
+                "R25004"
+              ],
+              "seconds": 70,
+              "new_information": "A4/B3/C2投到兩列，計出A對應格7與6。；每格都含A真數加其他項，取6可少受污染，仍不是4。；並列可能有/至少真數的錯誤方向，撤掉精確名單與精確排行的承諾。",
+              "beats": [
+                {
+                  "seconds": 25,
+                  "new_information": "A4/B3/C2投到兩列，計出A對應格7與6。"
+                },
+                {
+                  "seconds": 30,
+                  "new_information": "每格都含A真數加其他項，取6可少受污染，仍不是4。"
+                },
+                {
+                  "seconds": 15,
+                  "new_information": "並列可能有/至少真數的錯誤方向，撤掉精確名單與精確排行的承諾。"
+                }
+              ]
+            }
+          ],
+          "drop_if": "若兩種錯誤方向在小樣中混淆，拆成75秒與70秒獨立短案重審；不接HLL或多列產品填長。",
+          "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+          "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+          "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+        },
+        {
+          "id": "W25R-T02",
+          "title": "越晚來越難抽中，最後卻一樣公平",
+          "status": "EDITORIAL_THEME_NOT_SCRIPT",
+          "production_ready": false,
+          "priority": "作者題案，待非作者覆核",
+          "format": "short_explainer",
+          "core_question": "只留一張票，怎麼不偏心？",
+          "connection": "固定50%反例→1/t替換→四票最後機率。",
+          "candidate_ids": [
+            "R25002"
+          ],
+          "target_minutes": 1.4166666666666667,
+          "range_minutes": [
+            1.4166666666666667,
+            1.4166666666666667
+          ],
+          "body_seconds": 85,
+          "chapters": [
+            {
+              "title": "先試看似公平的50%",
+              "candidate_ids": [
+                "R25002"
+              ],
+              "seconds": 45,
+              "new_information": "4張票依次到；每次一半換票，末票立即占1/2。；改成第t張以1/t替換；四票逐步顯示留下機率。",
+              "beats": [
+                {
+                  "seconds": 20,
+                  "new_information": "4張票依次到；每次一半換票，末票立即占1/2。"
+                },
+                {
+                  "seconds": 25,
+                  "new_information": "改成第t張以1/t替換；四票逐步顯示留下機率。"
+                }
+              ]
+            },
+            {
+              "title": "先來者還要熬過後面的人",
+              "candidate_ids": [
+                "R25002"
+              ],
+              "seconds": 40,
+              "new_information": "比較首票生存連乘與末票1/4，兩條路同到1/4；中間票同理。；標出同名重複票是多筆紀錄、看中就停不在保證內。",
+              "beats": [
+                {
+                  "seconds": 30,
+                  "new_information": "比較首票生存連乘與末票1/4，兩條路同到1/4；中間票同理。"
+                },
+                {
+                  "seconds": 10,
+                  "new_information": "標出同名重複票是多筆紀錄、看中就停不在保證內。"
+                }
+              ]
+            }
+          ],
+          "drop_if": "若連乘在畫面上仍看不懂，改45秒玩具短段並重寫結尾；不能加亂數史延長。",
+          "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+          "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+          "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+        },
+        {
+          "id": "W25R-T03",
+          "title": "兩份清單各抽一張，真的能比相似？",
+          "status": "EDITORIAL_THEME_NOT_SCRIPT",
+          "production_ready": false,
+          "priority": "作者題案，待非作者覆核",
+          "format": "short_explainer",
+          "core_question": "為什麼必須用同一副洗牌次序？",
+          "connection": "共同五張排列→首張是否屬交集→同序反例。",
+          "candidate_ids": [
+            "R25005"
+          ],
+          "target_minutes": 1.5,
+          "range_minutes": [
+            1.5,
+            1.5
+          ],
+          "body_seconds": 90,
+          "chapters": [
+            {
+              "title": "五張牌，只認第一名",
+              "candidate_ids": [
+                "R25005"
+              ],
+              "seconds": 50,
+              "new_information": "A三張、B四張，共有b/c；先看兩邊各留下誰。；共有次序的聯集第一名若b/c兩邊才相同，五種首張中占兩種。",
+              "beats": [
+                {
+                  "seconds": 20,
+                  "new_information": "A三張、B四張，共有b/c；先看兩邊各留下誰。"
+                },
+                {
+                  "seconds": 30,
+                  "new_information": "共有次序的聯集第一名若b/c兩邊才相同，五種首張中占兩種。"
+                }
+              ]
+            },
+            {
+              "title": "一次命中還不能下結論",
+              "candidate_ids": [
+                "R25005"
+              ],
+              "seconds": 40,
+              "new_information": "切換共享排列，累計相同比例；標示120排列枚舉48匹配為玩具算核。；改兩邊各洗各的會失去同一首張推導；文字切詞另決定集合，不是語意判決。",
+              "beats": [
+                {
+                  "seconds": 25,
+                  "new_information": "切換共享排列，累計相同比例；標示120排列枚舉48匹配為玩具算核。"
+                },
+                {
+                  "seconds": 15,
+                  "new_information": "改兩邊各洗各的會失去同一首張推導；文字切詞另決定集合，不是語意判決。"
+                }
+              ]
+            }
+          ],
+          "drop_if": "若共享排序與相似度連結無法由五牌看清，撤影片保留來源；不用大數據術語或案例名單填90秒。",
+          "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+          "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+          "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+        }
+      ],
+      "old_theme_seconds": [
+        145,
+        85,
+        90
+      ],
+      "new_theme_seconds": [
+        135,
+        80,
+        90
+      ],
+      "source_or_candidate_text_changed": false
+    }
+  ],
+  "limits": [
+    "五篇為不同原始算法論文，公開副本不是另一次複驗。",
+    "只有玩具算核，未做完整稿/媒體/試讀。",
+    "HLL未排影片，不把專有名詞數量當資訊推進。"
+  ]
+}

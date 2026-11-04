@@ -221,3 +221,18 @@ export function visualHash(doc) {
 export function pictureHash(doc) {
   return visualHash(doc?.theme ? { ...doc, theme: undefined } : doc);
 }
+
+// The card looks a video may ask for (schema.mjs THEMES); kept here so timeline.mjs stays leaf-level.
+const CARD_THEMES = [undefined, "paper"];
+
+/**
+ * Whether a keyframes or clips manifest's recorded `visual_hash` still describes this video's
+ * pictures. Current manifests carry pictureHash; one written before keyframes and clips stopped
+ * following the theme carries visualHash with whichever card theme the video had then (a video
+ * drawn on the paper look and later taken off it, or the other way round, keeps its pictures).
+ */
+export function picturesBound(recorded, doc) {
+  if (typeof recorded !== "string" || !recorded) return false;
+  if (recorded === pictureHash(doc)) return true;
+  return CARD_THEMES.some((theme) => recorded === visualHash({ ...doc, theme }));
+}

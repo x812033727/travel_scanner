@@ -1,0 +1,428 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave24-physics.json",
+      "sha256": "bf986270c20bccecd28f0be07f36fc6f0a34c992a619f8d28de4d5e948a283d2"
+    },
+    {
+      "file": "reviews/wave24-physics-author.json",
+      "sha256": "1947625400ffc2e3325c08f1298ac316672007e0800e03ae7d8fbdb268199af1"
+    },
+    {
+      "file": "reviews/wave24-physics-themes.json",
+      "sha256": "8299d106b03e5fb183aca50547a22645d1d4440791bf73f51ac4ce3486174489"
+    },
+    {
+      "file": "reviews/wave24-life-reviews-physics.json",
+      "sha256": "594b74f9b2edb033fca555a112bb0e1fd6653feca80112a7291784845a6b07ac"
+    },
+    {
+      "file": "batches/wave24-life.json",
+      "sha256": "6b754774c662dcbbe2f68070d8c61635329b889945772a8ad6572fe45271e661"
+    },
+    {
+      "file": "reviews/wave24-life-author.json",
+      "sha256": "d7493388ba2e91786fbaebf8d6f8387a0d8328b0d82eb31d4ae65fee534089f0"
+    },
+    {
+      "file": "reviews/wave24-life-themes.json",
+      "sha256": "6682b446ff396f27bf05337945ea9ba08f5285eeb964f7ee31f6504aab968189"
+    },
+    {
+      "file": "reviews/wave24-physics-reviews-life.json",
+      "sha256": "1726ea8c7f870e59f30677511f215a9ec717c6982af580f3d6d374d96bbfc72a"
+    },
+    {
+      "file": "batches/wave24-sound.json",
+      "sha256": "5e0a73df64373c9dcfd14a12a030afd752e967cd4f952749e1e6bcbe0c50828e"
+    },
+    {
+      "file": "reviews/wave24-sound-author.json",
+      "sha256": "4bc0c6401f4e42cb3fb16b76946bd8f44fa03b265feb6ce6355332d50cc19605"
+    },
+    {
+      "file": "reviews/wave24-sound-themes.json",
+      "sha256": "a85f0bd376d67c2562511d5deeeb3d5c61b1de8cc4cec1ff586c83ad6b16a301"
+    },
+    {
+      "file": "reviews/wave24-life-reviews-sound.json",
+      "sha256": "17b0fc6dec1cef433b95343f1284b746f8f7c2a2f5b78f80f0e7717092e525bc"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave24-physics.json",
+      "author": "pool_physics",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 5,
+      "top5_directed_pairs": 25,
+      "author_pairs": 20,
+      "not_added_count": 14,
+      "theme_count": 3
+    },
+    {
+      "batch": "batches/wave24-life.json",
+      "author": "pool_life_tech",
+      "reviewer": "pool_physics",
+      "candidate_count": 3,
+      "top5_directed_pairs": 15,
+      "author_pairs": 17,
+      "not_added_count": 18,
+      "theme_count": 2
+    },
+    {
+      "batch": "batches/wave24-sound.json",
+      "author": "root",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 5,
+      "top5_directed_pairs": 25,
+      "author_pairs": 16,
+      "not_added_count": 12,
+      "theme_count": 3
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave24-life.json",
+          "sha256": "6b754774c662dcbbe2f68070d8c61635329b889945772a8ad6572fe45271e661"
+        },
+        {
+          "file": "batches/wave24-physics.json",
+          "sha256": "bf986270c20bccecd28f0be07f36fc6f0a34c992a619f8d28de4d5e948a283d2"
+        },
+        {
+          "file": "batches/wave24-sound.json",
+          "sha256": "5e0a73df64373c9dcfd14a12a030afd752e967cd4f952749e1e6bcbe0c50828e"
+        }
+      ],
+      "new_source_rows": 14,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "status": "REVIEWED_EXACT_IDENTITY_ADVISORY",
+      "input_sha256": "337d78d4e8693b8765e00dd232085535c52c05735e86db3376b10fc218eb72d8",
+      "matched_rows_reviewed": 0,
+      "decisions": [],
+      "unresolved": [],
+      "notes": [
+        "14筆本批來源與歷史URL/研究題名/DOI字串及本批互比，無精確匹配；不推論文獻語意上全新。",
+        "A24-S001所附勘誤只改收稿修稿日期，與母文一起記，不算獨立研究。",
+        "P24-S003實讀1968NASA報告，列1969同作者期刊DOI作版本連結，不稱兩項獨立實驗。",
+        "A24-S002及S003以不同方法研究海參可變真皮，保留解釋差異，不稱兩篇完全等同證明。",
+        "R24-S002/S003/S005與舊R22001/R22005有同作者，但實驗不同；不同載體不當獨立複驗。"
+      ],
+      "limits": "機械匹配加本批來源版本定點判讀，非全庫書目語意唯一性稽核。"
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave24-physics.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave24-life.json",
+      "source_rows": 4,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave24-sound.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "6582e8fe83ba92a6c4149c8a41dec2d789e18bd758119b1be044a07af85e575e",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "file": ".cache/wave24-physics-explode2017.pdf",
+      "sha256": "28a7e6f017d174bf89f5f9eba56956dca53fa7b1d27a2b11d09492ebc457c66c",
+      "scope": "PDF主文pp1–3正文與圖說；圖2/3對應p2/3實際目讀。其餘理論及補充未完整讀。另讀arxiv摘要與版本身分。",
+      "findings": "真空蒸氣壓緩衝冷卻之毫米級水滴，外向內冰殼伴隨裂開、空穴、癒合再裂；Fig3壓力軌跡是模型不是探針量測。50微米下不爆裂為模型估計，不稱通用實測門檻或一般家用冰箱操作。",
+      "reviewer": "root",
+      "kind": "targeted_non_author_source_reading",
+      "viewed_images": [
+        {
+          "file": ".cache/wave24-physics-explode2017-p2.png",
+          "sha256": "cd164ac7e51415eef8936f102cfe2fb68111ed2d17566e772ec513d98d1c510e"
+        },
+        {
+          "file": ".cache/wave24-physics-explode2017-p3.png",
+          "sha256": "85cbfcc2db9a3b53fc7e43a840ddca0b04e4730f5827021ba5932446693d5561"
+        }
+      ],
+      "production_ready": false
+    },
+    {
+      "file": ".cache/wave24-life-sources/papilla.xml",
+      "sha256": "c1697fd665cf8256ff25a1da6f310996bd6ebdae1944e9dc60ae384a11105a41",
+      "scope": "Europe PMC官方XML正文PARA0–63：結果、圖1–4圖說與Discussion；未目讀圖像或補充Transparent Methods。另讀勘誤全文。",
+      "findings": "pallial nerve去神經n=2，一隻先鬆弛、一隻切斷時已豎立且維持逾一小時；藥理、肌肉構造與張力維持支持catch-like，未證實雙殼類同一分子鎖定或直接ATP節能。日期勘誤只更正收稿修稿日。ACh圖3D圖說與結果劑量不一致，候選不採該數字。",
+      "reviewer": "root",
+      "kind": "targeted_non_author_source_reading",
+      "viewed_images": [],
+      "associated_correction": {
+        "file": ".cache/wave24-life-sources/papilla-correction.xml",
+        "sha256": "9ceb85636c5bf278f7f53347c992129a0db7ab0acda8b560c1fe482506f7a38b"
+      },
+      "production_ready": false
+    }
+  ],
+  "editorial_summary": "本批保留能改變預測的控制對照：由底向上與由外向內的凍結接成同一追問；循環音高與半八度方向歧義合案，但明確重設刺激。液體指進、附泡顆粒浮沉、烏賊皮膚形狀維持及海參纖維間傳力各自成短案。磁流體小波與魷魚感光入口只留短段，不把相近名詞串成長片。音高記憶受音／數字干擾的材料併回C2018補來源，不另計核心；已收機制、純參數改寫或證據不足的方向不另收。實測與模型、少量個體與一般規則分開；並修正花生密度問法、交錯送音題名及魷魚受光配置。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並對其他作者兩份來源作定點閱讀。sound由root撰寫、pool_life_tech非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 85,
+      "changes": [
+        {
+          "batch": "physics",
+          "created_on": "2026-11-02",
+          "requested_by": "pool_life_tech non-author editorial review",
+          "before_files": [
+            {
+              "file": "batches/wave24-physics.json",
+              "sha256": "bf986270c20bccecd28f0be07f36fc6f0a34c992a619f8d28de4d5e948a283d2"
+            },
+            {
+              "file": "reviews/wave24-physics-themes.json",
+              "sha256": "022561b3ad95143c79d09b2b8cc9e689ea64b9f831989ee71401aef0b7e5360b"
+            },
+            {
+              "file": "reviews/wave24-physics-author.json",
+              "sha256": "3c0ffc63cd36203ef9480964c26b8149dd51efa1d544deeb06981114cfdc863f"
+            }
+          ],
+          "changes": [
+            "W24P-T01第一章不同高矮滴形展示30→20秒。",
+            "第二章重述前緣/均勻膨大15→5秒，只留輪廓模型回扣；全片210→190秒，四章40/40/55/55，P24001累計80秒、P24002維持110秒。",
+            "同步range/drop_if/timing_checks與written_files；候選、來源與其他兩案不變。"
+          ],
+          "removed_seconds": 20,
+          "production_ready": false
+        },
+        {
+          "batch": "life",
+          "reason": "非作者覆核縮去模型重述，並收窄魷魚眼睛的斜入射光條件；問答核心不變。",
+          "before": [
+            {
+              "file": "batches/wave24-life.json",
+              "sha256": "a938e82bb98bb1e8f70a478b5b9adad95c4785a73ed4eecb510f241e15ef2891"
+            },
+            {
+              "file": "reviews/wave24-life-themes.json",
+              "sha256": "b0f892ae7b9b26b7b676827adcdd2a4b4bfcc45dcdd8f717ac3a802367af8aca"
+            },
+            {
+              "file": "reviews/wave24-life-author.json",
+              "sha256": "e1722fb19a9b43dd38969e9ef27acdbfeccdcf3a5594121998e11cf184fca012"
+            }
+          ],
+          "removed_seconds": 25,
+          "changes": [
+            "T01第二章30→20，全110→100",
+            "T02第二章實測回收30→15，全120→105",
+            "A24003 scope/visual與S004限制明列上方光經管壁折射；作者重開API timeout，採peer指定正文證據，不增加自述實讀頁。"
+          ]
+        },
+        {
+          "batch": "sound",
+          "reason": "作者中央編輯自查：限制不佔整段朗讀，縮短已講過的局部/整體回扣與尾聲；保留可見控制及匹配分支。待非作者再審。",
+          "removed_seconds": 40,
+          "old_theme_seconds": [
+            170,
+            100,
+            105
+          ],
+          "new_theme_seconds": [
+            150,
+            90,
+            95
+          ],
+          "source_or_candidate_text_changed": false
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [
+      {
+        "duplicate_id": "R24005",
+        "canonical_id": "C2018",
+        "reason": "本例仍是新插入內容干擾既有記憶的倒攝核心；同域與數字對照可補界線及來源，但不另計核心。"
+      }
+    ],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "P24-S001",
+        "file": ".cache/wave24-physics-tip2014.pdf",
+        "sha256": "f203186c4d2090beca289ae52f72d99075e30ddfaca5424ce0a8fb61d21c28a7",
+        "text_file": ".cache/wave24-physics-tip2014-pages.json",
+        "text_sha256": "e7a917b705a57dac6456f2294fa6846a868275a8e1886d92b4b67015a8029d6b"
+      },
+      {
+        "source_id": "P24-S002",
+        "file": ".cache/wave24-physics-explode2017.pdf",
+        "sha256": "28a7e6f017d174bf89f5f9eba56956dca53fa7b1d27a2b11d09492ebc457c66c",
+        "text_file": ".cache/wave24-physics-explode2017-pages.json",
+        "text_sha256": "49818b386e0d0a8dcb1eb0574db7bd091cf79f7df7e760554195cbc065401fc1"
+      },
+      {
+        "source_id": "P24-S003",
+        "file": ".cache/wave24-physics-ferro1969.pdf",
+        "sha256": "76ccf524dbb7565a745d5b8378b364a7d56a477cf7a7facd192fface8437e2e6",
+        "text_file": ".cache/wave24-physics-ferro1969-pages.json",
+        "text_sha256": "62df4f2011a150641d04fac70844408ffdae53c4fd8a96e630c6c43295e29a18"
+      },
+      {
+        "source_id": "P24-S004",
+        "file": ".cache/wave24-physics-finger1958.pdf",
+        "sha256": "53b51dbce976f5172546e44d70d181a68b3313939e3f51c46dfda033fbb1985a",
+        "text_file": ".cache/wave24-physics-finger1958-pages.json",
+        "text_sha256": "e1cc486ea437a20ecad3326e15ab38858423a19bc681f52770209ef361f296b2"
+      },
+      {
+        "source_id": "P24-S005",
+        "file": ".cache/wave24-physics-peanut2023.html",
+        "sha256": "3dff9ffce9bffefeaeaa62be86fb8909bdd689019ef80bbfe5c7232de32f7313",
+        "text_file": ".cache/wave24-physics-peanut2023-text.json",
+        "text_sha256": "9be770b4ce281a4bed8afaf7049fc204f3db8fd8be84d0b8deb6373bffd52989"
+      },
+      {
+        "source_id": "A24-S001",
+        "file": ".cache/wave24-life-sources/papilla.xml",
+        "sha256": "c1697fd665cf8256ff25a1da6f310996bd6ebdae1944e9dc60ae384a11105a41",
+        "text_file": ".cache/wave24-life-sources/papilla-xml.txt",
+        "text_sha256": "692ff456be74692b755c1d9178c4fb9ca3bef6032c289fa59980fbb37c4b80b6"
+      },
+      {
+        "source_id": "A24-S001",
+        "file": ".cache/wave24-life-sources/papilla-correction.xml",
+        "sha256": "9ceb85636c5bf278f7f53347c992129a0db7ab0acda8b560c1fe482506f7a38b",
+        "text_file": ".cache/wave24-life-sources/papilla-correction-xml.txt",
+        "text_sha256": "0aa9b8916699796671bfe64ee096f906f9efff58137350193bd30a40f87ebc53"
+      },
+      {
+        "source_id": "A24-S002",
+        "file": ".cache/wave24-life-sources/nanoscale.pdf",
+        "sha256": "95dccff2c2e2bbfa10f82ca82f8caab7f5a0040a266226b3fb9bb2d48c43548e",
+        "text_file": ".cache/wave24-life-sources/nanoscale.txt",
+        "text_sha256": "5c9127f7505bced98caa715a605b8b5d5ac12ad6527b4cf4cc8367fd79756ac4"
+      },
+      {
+        "source_id": "A24-S003",
+        "file": ".cache/wave24-life-sources/dermis.xml",
+        "sha256": "7f44aff984d9c976295d18e45c6644852d3e0b311cf33b516503443618d92199",
+        "text_file": ".cache/wave24-life-sources/dermis-xml.txt",
+        "text_sha256": "5cbefb6a288c82812436929a2721414095180ab56d014a4cc907eff5c7992c5a"
+      },
+      {
+        "source_id": "A24-S004",
+        "file": ".cache/wave24-life-sources/squid1979-web-body-excerpts.txt",
+        "sha256": "2a4924f41db694d6eded3798bbd313801573c714ad6f06b50cc1729334d6ba3a",
+        "text_file": ".cache/wave24-life-sources/squid1979-web-body-excerpts.txt",
+        "text_sha256": "2a4924f41db694d6eded3798bbd313801573c714ad6f06b50cc1729334d6ba3a"
+      },
+      {
+        "source_id": "R24-S001",
+        "file": ".cache/wave24-sound-shepard.pdf",
+        "sha256": "090cb72735ac12a85ed7786e253dd0ff22ad623e4f9ddc87e776ad6975992ee7",
+        "text_file": ".cache/wave24-sound-shepard-text.json",
+        "text_sha256": "431e580779bc22bb05bfc9f8174b65ca03b63c5710b1e0d2a8f08b26b0022789"
+      },
+      {
+        "source_id": "R24-S002",
+        "file": ".cache/wave24-sound-tritone.pdf",
+        "sha256": "9dfd97a3274a6e6e85fa8efb5f2865ce71a04cb3886a581216d38a96b231d273",
+        "text_file": ".cache/wave24-sound-tritone-text.json",
+        "text_sha256": "9d80d64dde58d02f7dd8b8dd6af08533f455ac6fff9250329cbcbd033d3a55ee"
+      },
+      {
+        "source_id": "R24-S003",
+        "file": ".cache/wave24-sound-scales.pdf",
+        "sha256": "dc943862c343270ce8eceaafa83642e5f24ccc4f4b5a78d04ed7a3f82e5d1c27",
+        "text_file": ".cache/wave24-sound-scales-text.json",
+        "text_sha256": "25b3ec1e8e0f3be94aefd03ee36e01c72ccb08359d426e4d2efbfd4f6d690f5e"
+      },
+      {
+        "source_id": "R24-S004",
+        "file": ".cache/wave24-sound-residue.pdf",
+        "sha256": "e2dd7122ab6fec05f87dc725e51127990aab7554b49b0c2e5d93ab5d91205fd8",
+        "text_file": ".cache/wave24-sound-residue-text.json",
+        "text_sha256": "cdf7a0a5d20c786d9a5a0a949ed83dbaf4f3436cc07d2b33e942e03cde200c85"
+      },
+      {
+        "source_id": "R24-S005",
+        "file": ".cache/wave24-sound-memory.pdf",
+        "sha256": "2383b67f15f4da92ec711ada5051d5b3ca465cee3a31a0d9950f5d707577e4db",
+        "text_file": ".cache/wave24-sound-memory-text.json",
+        "text_sha256": "580ba8dcba4b06d8cfb359479fe03f4761cc46a833d73b0c83ae5bb6ec02549b"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "physics",
+          "initial_draft": "b0be0256476567fae104288a66c312e93dce42a58b9511c35cc92be70f7017e5",
+          "final_draft": "77b730606a8c2e6680f13448f92ba0a6e91c4c6ca5cce0c9bc68c6acb5dc81b1",
+          "directed_pairs": 25,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "life",
+          "initial_draft": "b0be0256476567fae104288a66c312e93dce42a58b9511c35cc92be70f7017e5",
+          "final_draft": "77b730606a8c2e6680f13448f92ba0a6e91c4c6ca5cce0c9bc68c6acb5dc81b1",
+          "directed_pairs": 15,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "sound",
+          "initial_draft": "b0be0256476567fae104288a66c312e93dce42a58b9511c35cc92be70f7017e5",
+          "final_draft": "77b730606a8c2e6680f13448f92ba0a6e91c4c6ca5cce0c9bc68c6acb5dc81b1",
+          "directed_pairs": 25,
+          "top5_or_text_changes": 0,
+          "changes": []
+        }
+      ],
+      "earlier_root_only_delta": [],
+      "known_merge_retrieval_audit": [
+        {
+          "duplicate_id": "R24005",
+          "canonical_id": "C2018",
+          "retrieved_in_available_top10": false,
+          "rank": null
+        }
+      ],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  }
+}

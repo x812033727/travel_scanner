@@ -1,0 +1,589 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root",
+  "author": "/root/pool_physics",
+  "status": "PASS_EDITORIAL_REVIEW_NOT_PRODUCTION_APPROVAL",
+  "scope": "逐讀19題完整問答/範圍/editorial、20來源各自相關正文段、9退題理由、3題組全章節。不是每頁全文、全庫逐筆查核或觀眾盲測。",
+  "inputs": [
+    {
+      "file": "batches/wave7-optics.json",
+      "sha256": "d956836ae3d50a418f5794e0265e44a1924389056430aafd5c483ec99a675021"
+    },
+    {
+      "file": "reviews/wave7-optics-author.json",
+      "sha256": "4f743e6be9dba0eca6146571ff50d2c5fdb6284e72fddd4d04785b89804c9f7f"
+    },
+    {
+      "file": "reviews/wave7-optics-themes.json",
+      "sha256": "d1094220599330d40b7e472c1aefc640c18d2763d4ea373b7683626fa207df09"
+    }
+  ],
+  "retrieval": {
+    "draft_sha256": "023edd5385d84f0d4d7cd808f1ccb377965904ddd26715f5f098e440734b2413",
+    "batch_sha256": "d956836ae3d50a418f5794e0265e44a1924389056430aafd5c483ec99a675021",
+    "semantic_rows": 19,
+    "neighbours_per_row": 5,
+    "full_neighbour_fields_read": 95,
+    "final_58_candidate_cross_batch_neighbours_for_optics": 0,
+    "manual_additional_ids": [
+      "P241",
+      "O3046",
+      "H3082",
+      "O3041",
+      "P133",
+      "O3008",
+      "H3007",
+      "P159",
+      "P152",
+      "E2247",
+      "O3042",
+      "O3020"
+    ],
+    "method": "95鄰居讀question/answer_target/scope；另讀作者指定近義核心。以干預、因果、觀察量裁定，不用cosine當重複機率。"
+  },
+  "source_readback": [
+    {
+      "source_id": "O7-S001",
+      "url": "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/telecentric-design-topics/",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Object Space Telecentricity：主光線平行和透視；不採入口瞳錯置句或全距離精度宣傳。"
+    },
+    {
+      "source_id": "O7-S002",
+      "url": "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/distortion-and-the-telecentricity-specification/",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "畸變、非零誤差、條件依賴、傾斜物平面/Scheimpflug段；不把遠心說成沒有誤差。"
+    },
+    {
+      "source_id": "O7-S003",
+      "url": "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/distortion/",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "畸變的場內放大率、校正及像素擁擠段；保留取樣細節不可憑拉直補回的條件。"
+    },
+    {
+      "source_id": "O7-S004",
+      "url": "https://www.opto-e.com/en/basics/scheimpflug-optics",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Scheimpflug物面/像面傾斜及共軛關係正文；不採產品數字。"
+    },
+    {
+      "source_id": "O7-S005",
+      "url": "https://www.microscopyu.com/techniques/phase-contrast/introduction-to-phase-contrast-microscopy",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "相位板/背景與繞射光、正負相差、halo及shade-off段；未讀全文。另讀Nikon專門假影教學核低角光穿環。"
+    },
+    {
+      "source_id": "O7-S006",
+      "url": "https://www.microscopyu.com/techniques/stereomicroscopy/darkfield-illumination",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Darkfield正文41–64：中軸遮光、斜光不直接進物鏡、樣本散射進物鏡與假影限制。"
+    },
+    {
+      "source_id": "O7-S007",
+      "url": "https://micro.magnet.fsu.edu/primer/techniques/dic/dicintro.html",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "FSU DIC introduction的光程梯度與折射率/厚度歧義段；非全文。"
+    },
+    {
+      "source_id": "O7-S008",
+      "url": "https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Introductory Confocal Concepts的共軛針孔、光學切片及掃描段，尤其58–64。"
+    },
+    {
+      "source_id": "O7-S009",
+      "url": "https://www.chm.bris.ac.uk/pt/bartlett/confocal.htm",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Bristol Confocal短文針孔與焦外光正文；理想化全排除未採。"
+    },
+    {
+      "source_id": "O7-S010",
+      "url": "https://www.microscopyu.com/techniques/multi-photon/multiphoton-microscopy",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Multiphoton強度平方與焦點局部激發段；不採零背景、無損傷的絕對說法。"
+    },
+    {
+      "source_id": "O7-S011",
+      "url": "https://www.microscopyu.com/techniques/light-sheet/light-sheet-fluorescence-microscopy",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Light-sheet導論與Figure1/2相應文字，分軸照明/觀測及限制曝光體積；未取用圖片。"
+    },
+    {
+      "source_id": "O7-S012",
+      "url": "https://www.microscopyu.com/techniques/polarized-light/principles-of-birefringence",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Birefringent Crystals in a Polarizing Optical Microscope 121–150，相位延遲、分析器及白光色彩；不把所有透明物皆雙折射。"
+    },
+    {
+      "source_id": "O7-S013",
+      "url": "https://www.microscopyu.com/microscopy-basics/water-immersion-objectives",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Water Immersion Objectives中介質失配、隨深度球差及焦點偏移段；不以單一數值概括所有物鏡。"
+    },
+    {
+      "source_id": "O7-S014",
+      "url": "https://www.microscopyu.com/microscopy-basics/conjugate-planes-in-optical-microscopy",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Conjugate Planes表格及燈絲/孔徑共軛、樣本均勻照明段。"
+    },
+    {
+      "source_id": "O7-S015",
+      "url": "https://www.edmundoptics.ca/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "How Aberrations Affect Machine Vision Lenses中色差及雙膠合消色差段；未採問題場曲公式。"
+    },
+    {
+      "source_id": "O7-S016",
+      "url": "https://www.edmundoptics.com.sg/knowledge-center/application-notes/optics/introduction-to-modulation-transfer-function/",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Introduction to MTF中同一空間頻率串接相乘段；保持近似線性成像等條件，不與壓縮品質混用。"
+    },
+    {
+      "source_id": "O7-S017",
+      "url": "https://www.konicaminolta.com/instruments/knowledge/color/part2/08.html",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Color Part2/08同色異譜兩樣品、不同照明下失配的短文全文；不搬舊式儀器限制。"
+    },
+    {
+      "source_id": "O7-S018",
+      "url": "https://www.konicaminolta.com/instruments/knowledge/color/part3/02.html",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Color Part3/02 SCI/SCE trap/plug幾何短文全文；拒絕「人只看漫反射」「表面無影響」等過強句。"
+    },
+    {
+      "source_id": "O7-S019",
+      "url": "https://www.edmundoptics.com/media/hcrhqjpl/beam-manipulation-prisms-vs-mirrors-en.pdf",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "Beam Manipulation PDF第1–2頁相關文字：三面依次反射與橫向偏移；方向分量翻轉為原創幾何解釋，未搬圖。"
+    },
+    {
+      "source_id": "O7-S020",
+      "url": "https://www.grc.nasa.gov/WWW/K-12/airplane/tunvschlrn.html",
+      "read_via": "web open/find actual source body",
+      "read_on": "2026-11-01",
+      "scope": "NASA schlieren短文主體：折射率梯度和刀口成像；不由亮暗推唯一溫度。"
+    }
+  ],
+  "candidate_checks": [
+    {
+      "id": "O7001",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "P151",
+        "O7010",
+        "A5023",
+        "A5025",
+        "P152"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7002",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "J6023",
+        "P151",
+        "O3086",
+        "E2052",
+        "P156"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7003",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "X5004",
+        "O3045",
+        "P144",
+        "J6003",
+        "D2111"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7004",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "O7008",
+        "O7013",
+        "O7005",
+        "O7007",
+        "M5002"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7005",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "O7008",
+        "O7004",
+        "P147",
+        "O7013",
+        "O7010"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7006",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "O7013",
+        "O7004",
+        "O7008",
+        "O7005",
+        "C2029"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7007",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "O7004",
+        "O7013",
+        "O7010",
+        "P143",
+        "P147"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7008",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "O7005",
+        "O7004",
+        "O7013",
+        "O7010",
+        "O7006"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7009",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "P147",
+        "O7010",
+        "A5025",
+        "B4024",
+        "A5023"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7010",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "P147",
+        "P151",
+        "O7009",
+        "O7008",
+        "B4024"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7011",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "E2247",
+        "M5002",
+        "P159",
+        "O7017",
+        "O7014"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7012",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "P141",
+        "P146",
+        "O3037",
+        "P241",
+        "P151"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7013",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "O7008",
+        "O7004",
+        "O7006",
+        "O7007",
+        "P145"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7014",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "E2247",
+        "P145",
+        "O7016",
+        "P146",
+        "O7011"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7015",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "O3045",
+        "M5007",
+        "O7001",
+        "P151",
+        "O7010"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7016",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "E2247",
+        "O7014",
+        "X5023",
+        "O7017",
+        "P153"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7017",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "E2247",
+        "M5003",
+        "O7016",
+        "M5013",
+        "M5002"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7018",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "LEG-S27",
+        "P143",
+        "O7013",
+        "P149",
+        "P151"
+      ],
+      "decision": "retain_as_material_core"
+    },
+    {
+      "id": "O7019",
+      "question_answer_scope_editorial_read": true,
+      "source_support": "指定正文段支持且保留限制；非完整腳本查核",
+      "neighbour_ids": [
+        "B4024",
+        "O7004",
+        "N282",
+        "O7009",
+        "P147"
+      ],
+      "decision": "retain_as_material_core"
+    }
+  ],
+  "not_added_review": {
+    "count": 9,
+    "decision": "agree_keep_out",
+    "reason": "既有核心變體指回舊題；STED/SIM缺新機制來源；散光/場曲來源不足；不以名詞拆題。"
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "O7001",
+        "b": "O7003",
+        "reason": "遠心主光線控制物距到放大率，傾斜共軛平面控制清晰位置；前者不能代替後者。"
+      },
+      {
+        "a": "O7002",
+        "b": "O3046",
+        "reason": "本題固定物平面內的鏡頭畸變和校正取樣限制；舊題掃描角到地面的投影，干預與誤差來源不同。"
+      },
+      {
+        "a": "O7004",
+        "b": "O7005",
+        "reason": "相位成明暗是正常顯影；低角繞射光誤入相位環會產生假邊與平台淡化，多出可對照的儀器假影因果。"
+      },
+      {
+        "a": "O7004",
+        "b": "P153",
+        "reason": "選擇調節背景/繞射成分使透明物顯影，與兩狹縫光程差形成條紋不是同一問題。"
+      },
+      {
+        "a": "O7006",
+        "b": "O7019",
+        "reason": "DIC比較相鄰光程後重合；紋影截取因折射率梯度偏折的光，讀出轉換不同。"
+      },
+      {
+        "a": "O7007",
+        "b": "P241",
+        "reason": "舊題只需解釋側面可見散射；暗場須先排除直接照明進入物鏡的幾何、再比較無樣本與有樣本，保留55–85秒段落，不單獨拉長。"
+      },
+      {
+        "a": "O7008",
+        "b": "O7009",
+        "reason": "共焦在接收端排斥焦外光；雙光子以非線性激發減少焦外產生訊號，有不同可改變條件。"
+      },
+      {
+        "a": "O7009",
+        "b": "H3082",
+        "reason": "舊題單光子吸收後鬆弛再發光；新題雙光子吸收機率的光強依賴及空間集中，不能以同是螢光合併。"
+      },
+      {
+        "a": "O7010",
+        "b": "O7008",
+        "reason": "光片主要限制照明體積；共焦接收端篩選，受照區與被記錄區可構成有意義比較。"
+      },
+      {
+        "a": "O7011",
+        "b": "H3007",
+        "reason": "線性雙折射快慢軸相位延遲與分析器，不能當自然旋光的左右圓偏振相位差；保留機制界線。"
+      },
+      {
+        "a": "O7011",
+        "b": "P159",
+        "reason": "兩片偏光片投影是前提；本題插入各向異性材料後出現波長相關延遲及干涉顏色，有新的因果步驟。"
+      },
+      {
+        "a": "O7012",
+        "b": "P152",
+        "reason": "舊題比較球面和拋物面幾何；新題物鏡設計介質與實際介質失配、隨深度惡化，不能只換鏡面形狀回答。"
+      },
+      {
+        "a": "O7014",
+        "b": "P152",
+        "reason": "不同波長色散與同波長近軸/邊緣焦差不同；消色差不宣稱所有波長完全共焦。"
+      },
+      {
+        "a": "O7015",
+        "b": "O3041",
+        "reason": "串接系統同一空間頻率的對比累積與次像元亮點被發現但形狀未解析不同。"
+      },
+      {
+        "a": "O7016",
+        "b": "E2247",
+        "reason": "舊題兩個光源看似同白而顯色不同；新題固定兩塊材料反射譜在更換照明後配色失敗，條件與觀察對象明確不同。可同片相連，不重講同色溫常識。"
+      },
+      {
+        "a": "O7016",
+        "b": "O3042",
+        "reason": "舊題增加偵測波段辨識岩石；新題保持觀察者而更換照明權重使同一對材料失配，干預不同。光譜不等於三刺激值是共同前提，不重複計時。"
+      },
+      {
+        "a": "O7017",
+        "b": "P133",
+        "reason": "白牆漫反射造成無像是前提；本題同材表面由儀器納入/排除鏡面分量導致讀值變化，測量選擇是新核心。"
+      },
+      {
+        "a": "O7018",
+        "b": "O3008",
+        "reason": "水面與莖幹兩次反射增強雷達回波，不等於三互相垂直面使三維方向分量全反向；兩/三面變體未拆新題。"
+      },
+      {
+        "a": "O7019",
+        "b": "LEG-S85",
+        "reason": "熱空氣折射梯度是前提；本題刀口把方向微偏轉成強度供觀察，沒有再算一條熱空氣扭曲題。"
+      },
+      {
+        "a": "O7001",
+        "b": "P151",
+        "reason": "曲面鏡隨物距放大/縮小與物方遠心降低物距敏感度，設計條件相反且有不同光路解釋。"
+      },
+      {
+        "a": "O7018",
+        "b": "O3020",
+        "reason": "角反射器方向幾何與雷達奇偶次反射偏振判別的觀測量不同。"
+      }
+    ]
+  },
+  "theme_checks": [
+    {
+      "proposal_id": "W7O-T01",
+      "seconds": 235,
+      "per_core_seconds": {
+        "O7001": 85,
+        "O7002": 85,
+        "O7003": 65
+      },
+      "decision": "retain_conditional_editorial_outline",
+      "reason": "同一原創模型沿三個不同控制條件推進；含開場回扣，已列刪段和撤片條件。未製圖/試讀，不能據秒數視為成片通過。"
+    },
+    {
+      "proposal_id": "W7O-T02",
+      "seconds": 250,
+      "per_core_seconds": {
+        "O7004": 90,
+        "O7005": 75,
+        "O7006": 85
+      },
+      "decision": "retain_conditional_editorial_outline",
+      "reason": "同一原創模型沿三個不同控制條件推進；含開場回扣，已列刪段和撤片條件。未製圖/試讀，不能據秒數視為成片通過。"
+    },
+    {
+      "proposal_id": "W7O-T03",
+      "seconds": 245,
+      "per_core_seconds": {
+        "O7008": 80,
+        "O7009": 90,
+        "O7010": 75
+      },
+      "decision": "retain_conditional_editorial_outline",
+      "reason": "同一原創模型沿三個不同控制條件推進；含開場回扣，已列刪段和撤片條件。未製圖/試讀，不能據秒數視為成片通過。"
+    }
+  ],
+  "issues": [],
+  "production_ready": false,
+  "actual_trial_read": false
+}

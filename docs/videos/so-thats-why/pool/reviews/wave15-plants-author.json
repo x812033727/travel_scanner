@@ -1,0 +1,494 @@
+{
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave15-plants-20261102",
+  "author": "pool_life_tech",
+  "created_on": "2026-11-02",
+  "candidate_count": 7,
+  "source_count": 8,
+  "not_added_count": 25,
+  "candidate_ids": [
+    "B15001",
+    "B15002",
+    "B15003",
+    "B15004",
+    "B15005",
+    "B15006",
+    "B15007"
+  ],
+  "authored_files": [
+    {
+      "file": "batches/wave15-plants.json",
+      "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+    },
+    {
+      "file": "reviews/wave15-plants-themes.json",
+      "sha256": "a79d258c920780ad891352c1f81b27f7c48dd1f671986017ff6fa4a6b8b383db"
+    }
+  ],
+  "baseline_scan": {
+    "pool_sha256": "46736647ed691eecba8ad9c67c7b00c846e9511ce81b31d64fd08bafc7c31ee3",
+    "raw_scanned": 3287,
+    "not_added_scanned": 712,
+    "method": "全庫question/answer_target/scope及not_added文字regex檢索；相關79退題完整讀回，相關raw335為寬鬆命中含根/花等誤中；再逐列讀植物生理、wave2植物、wave11植物及本表20近對，不聲稱3287題逐句人工重審。",
+    "cache": ".cache/wave15-life-oldscan.json",
+    "cache_sha256": "662e31cafa1de9fe57e71e14cd13e09471627768326c15563aa1018050cce006",
+    "directions_explored": 32,
+    "limit": "未做全庫語意召回；root共同top5與非作者覆核待完成。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "B15001",
+      "b": "B2234",
+      "old_question": "看不見光的種子埋在土裡，根怎麼仍能往下長？",
+      "old_answer_target": "沉降感知與生長素重新分布造成根兩側差速",
+      "old_scope": "澱粉體是主要線索；不採未定的單一 ER 接觸路徑",
+      "reason": "既有垂直向地感知；新題非垂直目標兩側反向回復及反重力偏移對照。"
+    },
+    {
+      "a": "B15001",
+      "b": "B11003",
+      "old_question": "一根莖彎回上方時，怎麼沒有一直越彎越過頭？",
+      "old_answer_target": "偏離垂直的角度促進轉彎，局部曲率回饋則促進拉直；兩者競爭的模型能重現彎曲後由頂端往下變直，並讓暫態振盪衰減。",
+      "old_scope": "限所讀傾倒後姿態實驗與A/AC模型；不能說從不過衝，也未辨明分子曲率感受器；生長區、平均伸長與時間尺度限制保留。",
+      "reason": "既有角度/局部曲率競爭使彎曲回穩；新題是維持非垂直設定點的另一生長偏移，不將曲率回饋改名。"
+    },
+    {
+      "a": "B15001",
+      "b": "L076",
+      "old_question": "修掉枝條頂端後，植物為什麼可能變得更茂密？",
+      "old_answer_target": "頂端優勢與側芽生長",
+      "old_scope": "木本莖與頂端生長；物種差異須在腳本再查",
+      "reason": "去頂後側枝改角只是新研究的控制之一；不是再次解釋頂端抑制側芽。"
+    },
+    {
+      "a": "B15002",
+      "b": "B2234",
+      "old_question": "看不見光的種子埋在土裡，根怎麼仍能往下長？",
+      "old_answer_target": "沉降感知與生長素重新分布造成根兩側差速",
+      "old_scope": "澱粉體是主要線索；不採未定的單一 ER 接觸路徑",
+      "reason": "向地根冠/auxin路徑與向水伸長區皮層救援/選擇性阻斷不同。"
+    },
+    {
+      "a": "B15002",
+      "b": "L083",
+      "old_question": "一條根變長，主要是整條一起拉長嗎？",
+      "old_answer_target": "根尖分區與局部細胞伸長",
+      "old_scope": "一般維管植物根的結構",
+      "reason": "舊分生區/伸長區分類，不含組織特異驅動及兩種彎曲的解離。"
+    },
+    {
+      "a": "B15003",
+      "b": "L097",
+      "old_question": "葉子把水蒸散出去，為什麼反而能帶動更多水進來？",
+      "old_answer_target": "葉片失水建立水勢梯度",
+      "old_scope": "植物水勢的機制；不給未查物種的澆水配方",
+      "reason": "水勢輸運是前提；新增由生長維持空間差異及分枝定位敏感性的模型/干預。"
+    },
+    {
+      "a": "B15003",
+      "b": "B11004",
+      "old_question": "細胞壁既能撐住植物，為什麼還能在拉力不增加時繼續伸長？",
+      "old_answer_target": "酸性條件能促進壁內expansin相關鬆弛，使承受拉力的細胞壁延伸；熱失活後僅降pH不足，補蛋白可恢復，區分可控制的壁鬆弛與單純加大推力。",
+      "old_scope": "直接證據是幼嫩黃瓜下胚軸的非活體壁、固定外加拉力；不把它當活細胞膨壓量測，不說所有成熟木質壁都如此，也不畫成確定的共價鍵水解。",
+      "reason": "壁鬆弛處理會改生長，但此題的觀察量是分枝位置而非壁蠕變，不能把同一處理當核心。"
+    },
+    {
+      "a": "B15003",
+      "b": "B11001",
+      "old_question": "土被壓實後，根長不進去一定是推不動嗎？",
+      "old_answer_target": "充氣孔隙減少使根產生的乙烯不易散逸，乙烯訊號抑制伸長；同樣硬土中的不敏感株與隔氣對照把主動生長反應和單純阻擋分開。",
+      "old_scope": "限文中水稻/擬南芥與受控土柱；不宣稱硬度、缺氧或機械感測永遠無關；兩腔試驗濕度也隨壓實改變。",
+      "reason": "乙烯排不出抑制伸長是舊題；此題改生長量後對水接觸側分枝判定的影響。"
+    },
+    {
+      "a": "B15004",
+      "b": "B2236",
+      "old_question": "藤蔓的卷鬚碰到支架，怎麼逐漸把它纏住？",
+      "old_answer_target": "接觸後兩側反應差造成定向彎曲",
+      "old_scope": "限卷鬚，具體細胞變化需物種研究補足",
+      "reason": "接觸觸發初次纏繞與已捲結構在固定端受拉增圈不同。"
+    },
+    {
+      "a": "B15004",
+      "b": "P076",
+      "old_question": "兩種金屬黏在一起加熱，為什麼會彎向一邊？",
+      "old_answer_target": "不同膨脹係數造成長度不相容，複合片以彎曲協調變形。",
+      "old_scope": "彈性範圍的雙金屬片",
+      "reason": "兩層差長只作曲率前提，本題控制抗彎/抗扭與左右旋交接，不再新增差長成圈題。"
+    },
+    {
+      "a": "B15004",
+      "b": "E9006",
+      "old_question": "落地的長芒種子，為什麼還能慢慢把自己鑽進縫裡？",
+      "old_answer_target": "濕度反覆變化使芒捲曲/展開產生扭轉與伸長；尖端與定向毛固定在地表縫隙，讓形變轉成入土移動。",
+      "old_scope": "限Erodium及對照Pelargonium；兩者芒微結構不同，土縫/摩擦條件影響結果，不保證平滑硬地也能鑽。",
+      "reason": "濕乾驅動芒鑽土與軸向外拉時增圈的幾何自由度不同。"
+    },
+    {
+      "a": "B15004",
+      "b": "P100",
+      "old_question": "彈簧拉得越長，拉回來的力為什麼通常越大？",
+      "old_answer_target": "線性彈性區內回復力近似與形變成正比，超過範圍不保證成立。",
+      "old_scope": "理想彈簧，非任意橡皮筋",
+      "reason": "本題超出理想線性彈簧力位移，只用線性常數答不出增圈。"
+    },
+    {
+      "a": "B15005",
+      "b": "L090",
+      "old_question": "葉片表面的小孔，怎麼能自己開開關關？",
+      "old_answer_target": "成對保衛細胞控制孔隙",
+      "old_scope": "葉片結構；避免把所有物種說成同一種配置",
+      "reason": "舊是已形成氣孔開合，新是鄰近新氣孔出現的位置與不對稱分裂方向。"
+    },
+    {
+      "a": "B15006",
+      "b": "B2233",
+      "old_question": "植物彎向窗邊時，是亮的一側長得比較快嗎？",
+      "old_answer_target": "兩側伸長差使莖向光彎曲",
+      "old_scope": "典型幼苗藍光向光反應；避免與光敏素避蔭混同",
+      "reason": "兩側差速可彎曲，不能解釋沿葉緣重複峰谷及任一訊號鋪平都減少鋸齒。"
+    },
+    {
+      "a": "B15006",
+      "b": "B11005",
+      "old_question": "嫩芽被側向擠壓後，細胞內的微管為什麼會換方向？",
+      "old_answer_target": "改變組織受力會重排微管；作者模型把微管方向與新壁材料的有向強化連結，使形狀改變應力、應力再影響生長方向。",
+      "old_scope": "限擬南芥莖頂分生組織的壓迫/雷射去細胞實驗與模型；微管重排是觀察，整體強化迴路含推論；不宣稱唯一分子感受器或每個細胞都完全平行。",
+      "reason": "應力-微管重排與auxin/CUC2空間峰谷調節為不同控制，模型均須明標。"
+    },
+    {
+      "a": "B15006",
+      "b": "L089",
+      "old_question": "葉子為什麼不全都整齊長在枝條的同一邊？",
+      "old_answer_target": "互生、對生與輪生排列",
+      "old_scope": "葉片結構；避免把所有物種說成同一種配置",
+      "reason": "互生/對生是葉在莖上排列分類，不是單葉鋸齒生成。"
+    },
+    {
+      "a": "B15007",
+      "b": "P076",
+      "old_question": "兩種金屬黏在一起加熱，為什麼會彎向一邊？",
+      "old_answer_target": "不同膨脹係數造成長度不相容，複合片以彎曲協調變形。",
+      "old_scope": "彈性範圍的雙金屬片",
+      "reason": "跨厚度差長與平面內邊/中增長不同；刪側邊的預測相反是保留判據。"
+    },
+    {
+      "a": "B15007",
+      "b": "E9010",
+      "old_question": "花藥慢慢失水，為什麼包著花粉的壁會翻開？",
+      "old_answer_target": "表皮失水改變偏好曲率，內層次生增厚提供不同抗彎/拉伸阻力；受約束花藥壁可跨越幾何門檻翻開。",
+      "old_scope": "限百合/擬南芥相關模型與觀察；裂口形成前的發育不能省略，模型未預測開啟速度。",
+      "reason": "既有表皮失水與內層次生厚壁約束翻開；新平面內增長由中肋/邊緣切除辨別，不只是換花器。請非作者嚴查。"
+    },
+    {
+      "a": "B15007",
+      "b": "K11012",
+      "old_question": "把圓紙片中央壓進圓環，為什麼會翹起一塊，而不是均勻變成小碗？",
+      "old_answer_target": "整圈貼成圓錐會違反近乎不伸長的限制；薄片局部離開圓環，把伸長集中到尖點附近，保留大部分區域只彎曲。",
+      "old_scope": "自然平整薄片、中央壓入剛性圓環的純彈性近似；無切口、無預摺，不由本題推論永久紙痕。",
+      "reason": "既定自然平紙外壓受邊界約束與正在平面內非均勻長大的曲殼不同。"
+    },
+    {
+      "a": "B15007",
+      "b": "K11010",
+      "old_question": "硬薄層黏在軟底上被擠皺時，為什麼常出現一排相近間距，而不是只拱一大包？",
+      "old_answer_target": "薄層彎曲不喜歡太密的小波，軟基底變形又不喜歡太寬的大波，兩者競爭選出波長。",
+      "old_scope": "黏結良好、薄硬膜／厚軟彈性基底、適度壓縮；失黏、大幅摺疊及一般老化皮膚另查。",
+      "reason": "硬膜軟底波長競爭與無軟底的花瓣邊緣增長、整體曲率反轉不同，不新增花瓣皺紋波長題。"
+    }
+  ],
+  "within_batch_boundaries": [
+    {
+      "a": "B15002",
+      "b": "B15003",
+      "reason": "前者是水勢梯度誘發轉彎的組織路徑；後者是成長產生位置線索與新分枝分布。不可把兩篇合畫成單一已證完整鏈。"
+    },
+    {
+      "a": "B15005",
+      "b": "B15006",
+      "reason": "局部訊號約束鄰接不對稱分裂，與沿葉緣互饋的活動峰谷不同；若最後稿只剩訊號抑制生長，應縮/撤而非念基因表。"
+    }
+  ],
+  "source_identity": {
+    "counting_rule": "8筆URL讀取紀錄，其中7篇原研究、1篇同研究團隊報告僅供退題。不同URL/全文XML/作者PDF不是獨立證據份數。",
+    "historical_compare": "對基線pool.sources全部readings做exact URL、DOI字串和正規化標題比對；無命中不保證沒有未標DOI的同文，交root身份整併。",
+    "records": [
+      {
+        "source_id": "B15-S001",
+        "doi": "10.1016/j.cub.2013.06.034",
+        "canonical_url": "https://doi.org/10.1016/j.cub.2013.06.034",
+        "read_url": "https://eprints.whiterose.ac.uk/id/eprint/84375/1/1-s2.0-S0960982213007598-main.pdf",
+        "version": "Current Biology 23:1497–1504; published version in institutional repository",
+        "historical_identity_matches": [],
+        "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+      },
+      {
+        "source_id": "B15-S002",
+        "doi": "10.1038/nplants.2017.57",
+        "canonical_url": "https://www.nature.com/articles/nplants201757",
+        "read_url": "https://pure-oai.bham.ac.uk/ws/files/40254023/Dietrich_et_al_post_print.pdf",
+        "version": "Nature Plants 3:17057; repository peer-reviewed accepted manuscript, 69-page file including supplements",
+        "historical_identity_matches": [],
+        "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+      },
+      {
+        "source_id": "B15-S003",
+        "doi": "10.1073/pnas.1710709115",
+        "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5789911/",
+        "read_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5789911/fullTextXML",
+        "version": "PNAS 115(4):E822–E831; Europe PMC fullTextXML PMCID PMC5789911",
+        "historical_identity_matches": [],
+        "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+      },
+      {
+        "source_id": "B15-S004",
+        "doi": "10.1126/science.1223304",
+        "canonical_url": "https://doi.org/10.1126/science.1223304",
+        "read_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-18.pdf",
+        "version": "Science 337:1087–1091; coauthor-hosted published PDF with supporting material",
+        "historical_identity_matches": [],
+        "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+      },
+      {
+        "source_id": "B15-S005",
+        "doi": "10.1101/gad.1550707",
+        "canonical_url": "https://genesdev.cshlp.org/content/21/14/1720",
+        "read_url": "https://genesdev.cshlp.org/content/21/14/1720.full.pdf",
+        "version": "Genes & Development 21:1720–1725; publisher PDF",
+        "historical_identity_matches": [],
+        "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+      },
+      {
+        "source_id": "B15-S006",
+        "doi": "10.1073/pnas.1015162108",
+        "canonical_url": "https://doi.org/10.1073/pnas.1015162108",
+        "read_url": "https://algorithmicbotany.org/papers/leafmargin.pnas2011.pdf",
+        "version": "PNAS Early Edition author-hosted published layout, 6 pages; final citation 108(8):3424–3429",
+        "historical_identity_matches": [],
+        "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+      },
+      {
+        "source_id": "B15-S007",
+        "doi": "10.1073/pnas.1007808108",
+        "canonical_url": "https://doi.org/10.1073/pnas.1007808108",
+        "read_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2011-03.pdf",
+        "version": "PNAS 108(14):5516–5521; coauthor-hosted published PDF with SI",
+        "historical_identity_matches": [],
+        "relationship": "同DOI的期刊/機構副本只算同一研究；不是獨立重複。"
+      },
+      {
+        "source_id": "B15-S008",
+        "doi": "10.1126/science.aaf9793",
+        "canonical_url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+        "read_url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+        "version": "2016-08-04 institutional research report about 2016 Science study; not article full text",
+        "historical_identity_matches": [],
+        "relationship": "同一Atamian2016研究的UC Davis報告；原論文未成功讀取，本輪只掛退題。"
+      }
+    ],
+    "related_work": "Robbins2018在正文引用同團隊Bao2014，未獨立讀2014全文，未把其前例當第二次覆驗。Liang2011與Gerbode2012皆含Mahadevan，但為不同材料/問題的原研究，不宣稱獨立團隊重複。"
+  },
+  "source_reading": [
+    {
+      "id": "B15-S001",
+      "url": "https://doi.org/10.1016/j.cub.2013.06.034",
+      "retrieval_url": "https://eprints.whiterose.ac.uk/id/eprint/84375/1/1-s2.0-S0960982213007598-main.pdf",
+      "read_via": "當日web搜尋核DOI與版本；Cell PDF web403、White Rose web timeout，指定UA urllib HTTP200取得同文正式PDF，PyMuPDF指定頁文字層實讀。",
+      "reading_scope": "PDF pp.1–4（印刷1497–1500）：Results and Discussion前三小節及Fig.1–2；後半組織特異實驗和補充檔未完整讀。",
+      "locator": "Stable Nonvertical Growth of Shoot and Root Branches Is Sustained by an Antigravitropic Offset Mechanism; The Antigravitropic Offset Mechanism Is Auxin Dependent; Fig.1",
+      "sha256": "0b203bf5fec1fda93223c0c82bb251352ddf12bbdd7e6c7b727a1cd729f51c86"
+    },
+    {
+      "id": "B15-S002",
+      "url": "https://www.nature.com/articles/nplants201757",
+      "retrieval_url": "https://pure-oai.bham.ac.uk/ws/files/40254023/Dietrich_et_al_post_print.pdf",
+      "read_via": "當日web.open Birmingham稿頭及Results前段，另指定UA urllib HTTP200下載並PyMuPDF實讀；Nature重導500、UMass web/urllib timeout、Birmingham一次後續web timeout均未當成功正文。",
+      "reading_scope": "PDF pp.4–13（稿頁3–12）：Introduction、Results至Fig.4對照、Discussion；只讀方法首段，未完整讀補充方法或69頁全文。",
+      "locator": "Results: The root meristem and columella are dispensable for hydrotropism; Hydrotropism requires SnRK2.2 signalling only in the root cortex; Cortex-specific MIZ1 expression rescues the miz1 hydrotropic defect; Hydrotropism is driven by differential cortical cell expansion",
+      "sha256": "075e4308da358b86ea544ec8921f640dd3f1b4f50bcb6131d1f18b47c2bf327c"
+    },
+    {
+      "id": "B15-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5789911/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5789911/fullTextXML",
+      "read_via": "當日web搜尋定位正文，PMC web為CAPTCHA；指定UA urllib HTTP200取得Europe PMC官方fullTextXML，以lxml實讀指定Results與Discussion。",
+      "reading_scope": "Introduction；Results: competent zone、water-potential model、growth dynamics及Fig.1–5；Discussion模型限制；gene-expression段僅部分讀，未重算模型/統計。",
+      "locator": "The Competent Zone for Hydropatterning Coincides with the Growth Zone; A Mathematical Model to Estimate Growth-Sustained Tissue Water Potentials; Growth Dynamics Affect Hydropatterning of Lateral Root Development; Discussion",
+      "sha256": "30f8b2ce63ad3742188099148abab224ddbe8bfea7d583b2fd9f281b0b24c1e7"
+    },
+    {
+      "id": "B15-S004",
+      "url": "https://doi.org/10.1126/science.1223304",
+      "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-18.pdf",
+      "read_via": "當日web.open Harvard作者PDF指定正文，指定UA urllib HTTP200保存同一PDF，PyMuPDF逐頁讀回。",
+      "reading_scope": "web PDF正文前段及UA副本PDF pp.2–5（印刷1087–1090），Fig.1–3與材料/幾何模型解釋；未完整讀補充推導或觀看影片。",
+      "locator": "Printed pp.1088–1090; Fig.2A–F, Fig.3; paragraphs beginning However, there is an unexpected difference and The modified model exhibited substantial overwinding",
+      "sha256": "cab37ba6cd1aa1becf3fe561b04e74554d5e9e25e63e04a020e9d8ca37ab5b56"
+    },
+    {
+      "id": "B15-S005",
+      "url": "https://genesdev.cshlp.org/content/21/14/1720",
+      "retrieval_url": "https://genesdev.cshlp.org/content/21/14/1720.full.pdf",
+      "read_via": "當日web搜尋原文；PMC web CAPTCHA、期刊HTML web403、Europe PMC XML500；期刊公開PDF指定UA urllib HTTP200，PyMuPDF實讀指定頁。",
+      "reading_scope": "PDF pp.1–4（印刷1720–1723）：Introduction、突變/補回/過量表現、表現位置與A model of stomatal patterning；未完整讀Methods和補充表。",
+      "locator": "Loss-of-function epf1 mutant has a defect in one-cell-spacing rule of stomatal pattern; EPF1 is expressed in the stomatal precursor cells; A model of stomatal patterning; Fig.1",
+      "sha256": "2c4e8014107a9096e5ea383ffc05cc6b9da0211e6456f62ef3e2b63592aa70b0"
+    },
+    {
+      "id": "B15-S006",
+      "url": "https://doi.org/10.1073/pnas.1015162108",
+      "retrieval_url": "https://algorithmicbotany.org/papers/leafmargin.pnas2011.pdf",
+      "read_via": "當日web搜尋核期刊身份，指定UA urllib HTTP200取得作者群公開PDF，PyMuPDF實讀指定頁；不把PMC檢索摘要當另一份證據。",
+      "reading_scope": "PDF pp.1–4：兩個Results調節小節、表皮PIN1補回、Fig.1–4與computational model開頭；模型後半、SI與影片未完整讀。",
+      "locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+      "sha256": "a25a2b76c5a52bc7b145c19a20f00adf6d366f47a09bbf0293b3de910ff7cdfe"
+    },
+    {
+      "id": "B15-S007",
+      "url": "https://doi.org/10.1073/pnas.1007808108",
+      "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2011-03.pdf",
+      "read_via": "當日web.open Harvard作者PDF正文並指定UA urllib HTTP200保存；Europe PMC XML500未取到，不計為第二來源。",
+      "reading_scope": "web及UA PDF pp.1–3（印刷5516–5518）：Observations and Experiments、Mathematical Model的假設與數值模型定性結果、Fig.1–3；未逐式驗證或讀完整SI。",
+      "locator": "Observations and Experiments: midrib shaving and lateral-edge removal; Fig.2–3; Mathematical Model of Blooming",
+      "sha256": "637a9f7d7dc34e58bc8f56252abd63f5f4631a05f9091479d6f7c50f4b301792"
+    },
+    {
+      "id": "B15-S008",
+      "url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "retrieval_url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "read_via": "當日web.open研究報告指定段；指定UA urllib HTTP200保存並讀回。Harvard原稿urllib403/web timeout、Berkeley原稿web/urllib404；不把搜尋呈現的原稿段落升格為全文閱讀。",
+      "reading_scope": "East to west, and back；Clocks and two growth mechanisms；Why face the sun?；只作退題追蹤，未納候選。",
+      "locator": "East to west, and back: constant overhead light and 24/30-hour cycles",
+      "sha256": "3540178394dcad40727d355edd3db9827836edd73f116f844a66179298d3419b"
+    }
+  ],
+  "retrieval_attempts": {
+    "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "receipts": [
+      {
+        "file": ".cache/wave15-life-fetch-receipt.json",
+        "sha256": "672e25de4a6d8e4fa278ad985b33b9f981d8f6b84f52d7ed9ba7f10688757dda"
+      },
+      {
+        "file": ".cache/wave15-life-fetch2-receipt.json",
+        "sha256": "9bdc31c6ba4d1271a1e402765053787c21853691e615ab32a56f8011cf8619f5"
+      },
+      {
+        "file": ".cache/wave15-life-fetch3-receipt.json",
+        "sha256": "b4aaa53879f256efa683849d42b4fdf925896d8c91b5239c6e0472a331a69a7c"
+      }
+    ],
+    "web_failures": [
+      "Atamian Berkeley PDF404; Harvard PDF timeout / urllib403",
+      "Dietrich Nature redirected500; UMass PDF timeout; Birmingham second web timeout but fresh UA PDF200",
+      "Roychoudhry Cell PDF403; WhiteRose web timeout but fresh UA200",
+      "PMC5789911 and PMC1920166 CAPTCHA; not read as body",
+      "EPF1 journal HTML web403; official PDF fresh UA200",
+      "Europe PMC XML for PMC1920166 and PMC3078366 HTTP500; separate lawful publisher/author PDFs read"
+    ],
+    "not_claimed": "下載成功不代表全篇讀完；PDF/圖/影片未全讀範圍逐來源明列。沒有改UA冒充真人、登入、付費或繞過驗證。"
+  },
+  "editorial_check": {
+    "episodes": [
+      {
+        "id": "W15B-T01",
+        "body_seconds": 105,
+        "chapters": 2,
+        "core_seconds": {
+          "B15001": 105
+        }
+      },
+      {
+        "id": "W15B-T02",
+        "body_seconds": 200,
+        "chapters": 2,
+        "core_seconds": {
+          "B15002": 100,
+          "B15003": 100
+        }
+      },
+      {
+        "id": "W15B-T03",
+        "body_seconds": 120,
+        "chapters": 2,
+        "core_seconds": {
+          "B15004": 120
+        }
+      },
+      {
+        "id": "W15B-T04",
+        "body_seconds": 105,
+        "chapters": 2,
+        "core_seconds": {
+          "B15007": 105
+        }
+      }
+    ],
+    "unassigned_candidates": [
+      "B15005",
+      "B15006"
+    ],
+    "reason": "局部圖樣題留池，待能用清楚圖解連到更自然觀眾追問再組片；不把氣孔/葉緣/花瓣硬串成百科。",
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY"
+  },
+  "review_requests": [
+    "B15001是否相對B11003有足夠不同的設定點控制；不要把反重力偏移說成直接測力。",
+    "B15002重開舊向水暫緩方向，請核根冠可有整合角色與皮層specific救援範圍。",
+    "B15003生長水勢模型是否有足夠可見對照；若變成水勢梯度泛論或唯一決定因子應暫緩。",
+    "B15004不把年輕/所有整條捲鬚都說成增圈；核B/C與左右旋交接模型限制。",
+    "B15005受體配對僅此篇模型，保留短段不補分子流水帳；B15006不得將模型每條箭頭當直接測量。",
+    "B15007與E9010/P076/K11012機械近族；以平面內vs跨厚度和切除預測判，不以花朵外觀保數量。"
+  ],
+  "production_status": "題級來源與紙上企劃，沒有完整稿、試讀、媒體、費用或發布核准。",
+  "local_validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "runtime": "Node v24.22.1",
+    "checks": [
+      "validateEditorial",
+      "validateThemes against isolated selected candidates",
+      "unique candidate/mechanism/source references",
+      "all chapter beats <=45 seconds; chapter sums; per-core cap",
+      "range upper <= body duration",
+      "UTF-8 no BOM; LF; all string lines rstrip; no local user absolute paths"
+    ],
+    "limitations": "只有結構/紙上算術；不是獨立內容查核、試讀或完整稿核准。",
+    "helper": ".cache/wave15-life-validate.mjs",
+    "initial_helper_error": "相對import路徑多上一層造成ERR_MODULE_NOT_FOUND，修正helper後通過；正式工具未改。"
+  },
+  "revision_history": [
+    {
+      "reason": "science_sources非作者覆核刪純轉問/回顧，不增內容；候選及來源未改。",
+      "before_files": [
+        {
+          "file": "batches/wave15-plants.json",
+          "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+        },
+        {
+          "file": "reviews/wave15-plants-themes.json",
+          "sha256": "cf7f518558e611d03942178b018d25d79d44216a887f7ea1c50ab4bbb08bbec1"
+        },
+        {
+          "file": "reviews/wave15-plants-author.json",
+          "sha256": "34ef7ff52240a4eb2d2b3b556f95a7932f8f83f9bf24d7b158e4b837ef11dceb"
+        }
+      ],
+      "changes": [
+        "T01第一章末10→5秒，50+55=105秒",
+        "T02第二章末10→5秒，100+100=200秒",
+        "T04第一章末10→5秒，50+55=105秒",
+        "T03維持120秒；range/target/body/drop_if與作者表同步"
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave15-plants.json",
+          "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+        },
+        {
+          "file": "reviews/wave15-plants-themes.json",
+          "sha256": "a79d258c920780ad891352c1f81b27f7c48dd1f671986017ff6fa4a6b8b383db"
+        }
+      ],
+      "status": "AUTHOR_CORRECTED_PENDING_TARGETED_RECHECK"
+    }
+  ]
+}

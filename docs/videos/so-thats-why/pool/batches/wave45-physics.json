@@ -1,0 +1,693 @@
+{
+  "batch_id": "wave45-physics-20261103",
+  "created_on": "2026-11-03",
+  "scope": "從球移動前的水線到撞擊後的流場，辨認球面處理、先行水體、接觸形狀與容器內部動量交換在何時改變結果。",
+  "sources": [
+    {
+      "id": "P45-S001",
+      "url": "https://doi.org/10.5802/crmeca.46",
+      "canonical_url": "https://doi.org/10.5802/crmeca.46",
+      "doi": "10.5802/crmeca.46",
+      "retrieval_url": "https://arxiv.org/pdf/2010.06713",
+      "title": "The ping-pong ball water cannon",
+      "publisher": "Andreotti等，Comptes Rendus Mécanique（2020）",
+      "version": "arXiv:2010.06713v2，與期刊同一工作。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+      "locator": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+      "summary": "自由落下期間球先浸得更深，撞地急停時水對球的壓力衝量可使它反向彈射。",
+      "limitations": "靜置對照限未攪水；作者亦討論攪動例外和附加質量測試的偏差。模型不等於每次射速的定量預報。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-cannon.pdf",
+        "sha256": "8fed805a81eb7315f86270bb3fa389471cb9ae7b271d99ad60edd6f424aefb72",
+        "text_file": ".cache/wave45-physics-cannon.txt",
+        "text_sha256": "d8758e463b7eabe20d0438774faeb82d546d375d8ba84701d96a182ea285306d"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-read0.jpg",
+          "sha256": "893cfc077ba1cb9be448fbe635a1ebece2ed7fab67e616c117fe0a1f5e841546",
+          "read_scope": "p9 Fig4落地前後的高速影像"
+        }
+      ]
+    },
+    {
+      "id": "P45-S002",
+      "url": "https://doi.org/10.1038/nphys545",
+      "canonical_url": "https://doi.org/10.1038/nphys545",
+      "doi": "10.1038/nphys545",
+      "retrieval_url": "https://arxiv.org/pdf/cond-mat/0701093",
+      "title": "Making a splash with water repellency",
+      "publisher": "Duez、Ybert、Clanet、Bocquet，Nature Physics（2007）",
+      "version": "arXiv:cond-mat/0701093v1，同原刊。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+      "locator": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+      "summary": "水對球面的潤濕速度能否跟上，使水片沿球爬到上端或脫開捲進外界空氣。",
+      "limitations": "疏水性移動臨界速度；不能推成親水球在所有速度下都沒有空腔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-wet.pdf",
+        "sha256": "9c73f3e601a8cc5ae1fb52616d3dec93f36a0e9ff5e58d52f506f026b1370c71",
+        "text_file": ".cache/wave45-physics-wet.txt",
+        "text_sha256": "09373f3f69a29c961b1b6387f8f25d4ef0664ea8f152d3445953e5a184b7ef2a"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-read0.jpg",
+          "sha256": "893cfc077ba1cb9be448fbe635a1ebece2ed7fab67e616c117fe0a1f5e841546",
+          "read_scope": "p2 Figs2–3濕潤角與速度及水片影格"
+        }
+      ]
+    },
+    {
+      "id": "P45-S003",
+      "url": "https://doi.org/10.1063/1.3272264",
+      "canonical_url": "https://doi.org/10.1063/1.3272264",
+      "doi": "10.1063/1.3272264",
+      "retrieval_url": "https://dspace.mit.edu/server/api/core/bitstreams/597f686b-1115-456d-9b01-182ef21a3209/content",
+      "title": "A spin on cavity formation during water entry of hydrophobic and hydrophilic spheres",
+      "publisher": "Truscott、Techet，Physics of Fluids（2009）",
+      "version": "MIT典藏原刊PDF（封面註Final published version），與期刊同文。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+      "locator": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+      "summary": "半邊親水半邊疏水的球不用自旋也會偏；一側帶入空氣使受力不對稱，空腔消失後和自旋球分道。",
+      "limitations": "只比較受測球、相近入水條件；初期偏轉相似不等於整段水下球路重合。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-half.pdf",
+        "sha256": "328c420b4f222d9c2e2b4bf460363fa005d71d40ba27d234e3cb58716568251b",
+        "text_file": ".cache/wave45-physics-half.txt",
+        "text_sha256": "c12053525b7ab77619b514821a962f955cf7b8441c236428f536e08ae12c0483"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-read0.jpg",
+          "sha256": "893cfc077ba1cb9be448fbe635a1ebece2ed7fab67e616c117fe0a1f5e841546",
+          "read_scope": "PDF p5 Fig3兩側潤濕不同的球及球後空腔"
+        }
+      ]
+    },
+    {
+      "id": "P45-S004",
+      "url": "https://doi.org/10.1017/jfm.2018.931",
+      "canonical_url": "https://doi.org/10.1017/jfm.2018.931",
+      "doi": "10.1017/jfm.2018.931",
+      "retrieval_url": "https://arxiv.org/pdf/1806.11453",
+      "title": "The water entry of a sphere in a jet",
+      "publisher": "Speirs等，Journal of Fluid Mechanics（2019）",
+      "version": "arXiv:1806.11453v1，早稿題名 Reducing water entry impact forces；與期刊同研究。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+      "locator": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+      "summary": "先射入的水柱可使將被撞到的水先向下流，球追上一團同向移動的水，與它的相對速度減小。",
+      "limitations": "流場測速和加速度以不同配置量，不把兩圖當同一瞬間的同步讀數，也不推人體入水安全。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-jet.pdf",
+        "sha256": "4b9cf5ace9be2ad159bc027637f3883604da8d4998afa5a1a21069708f985a6e",
+        "text_file": ".cache/wave45-physics-jet.txt",
+        "text_sha256": "41f0ce2f5f06765cba444c1731f26efa53e5878e4985ce201a2478544bf94211"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-read0.jpg",
+          "sha256": "893cfc077ba1cb9be448fbe635a1ebece2ed7fab67e616c117fe0a1f5e841546",
+          "read_scope": "p8 Fig5 PIV平均流場與速度剖面"
+        }
+      ]
+    },
+    {
+      "id": "P45-S005",
+      "url": "https://doi.org/10.1017/jfm.2020.1165",
+      "canonical_url": "https://doi.org/10.1017/jfm.2020.1165",
+      "doi": "10.1017/jfm.2020.1165",
+      "retrieval_url": "https://arxiv.org/pdf/2007.01943",
+      "title": "Impact force reduction by consecutive water entry of spheres",
+      "publisher": "Rabbi等，Journal of Fluid Mechanics（2021）",
+      "version": "arXiv:2007.01943v1，同JFM 915 A55。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+      "locator": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+      "summary": "球先落讓水面一路變形；後球遇到內縮而向上回衝的碗狀面或細噴流，接觸面與水的速度不同，峰值能增也能減。",
+      "limitations": "後球高度固定，間距、先行球尺寸會改變空腔。圖中樣本不能混成單變量時間控制，百分比非普遍常數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-two.pdf",
+        "sha256": "f2f75440d5c057280a25e013c7e3e6665b376b0ea0c0d3ae0fb168d2768eb2b0",
+        "text_file": ".cache/wave45-physics-two.txt",
+        "text_sha256": "e62cba05eb306f9a3e5bf9c4d95b7defcfdfbc3a2ae38e65c3198947553a4072"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-read4.jpg",
+          "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+          "read_scope": "p8 Fig7a–c三組撞擊影格及峰值"
+        }
+      ]
+    },
+    {
+      "id": "P45-S006",
+      "url": "https://doi.org/10.1017/jfm.2023.820",
+      "canonical_url": "https://doi.org/10.1017/jfm.2023.820",
+      "doi": "10.1017/jfm.2023.820",
+      "retrieval_url": "https://arxiv.org/pdf/2304.08672",
+      "title": "Slamming forces during water entry of a simple harmonic oscillator",
+      "publisher": "Antolik等，Journal of Fluid Mechanics（2023）",
+      "version": "arXiv:2304.08672v3，同JFM原刊。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+      "locator": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+      "summary": "球頭碰水後彈簧先壓縮再將力傳向後段；傳力時序與水的衝擊相配時，後段峰值能超過剛接。",
+      "limitations": "等幾何且質量近似，差在2.4%內。加速度計在後段，不能據此判每一部位或不同落速都放大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-spring.pdf",
+        "sha256": "cceb37528fab68e8d8b9c9d95589c793a100e43787a1f5b0b741fbfa945331bc",
+        "text_file": ".cache/wave45-physics-spring.txt",
+        "text_sha256": "209bb0b37abd5c6975104d49b28e391db593cd4745fcbafa46a81a111e5f851d"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-read4.jpg",
+          "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+          "read_scope": "p6 Fig2後段加速度歷時與剛接對照"
+        }
+      ]
+    },
+    {
+      "id": "P45-S007",
+      "url": "https://doi.org/10.1017/jfm.2021.846",
+      "canonical_url": "https://doi.org/10.1017/jfm.2021.846",
+      "doi": "10.1017/jfm.2021.846",
+      "retrieval_url": "https://arxiv.org/pdf/2012.10137",
+      "title": "Air entrapment and its effect on pressure impulses in the slamming of a flat disc on water",
+      "publisher": "Jain、Vega-Martínez、van der Meer，Journal of Fluid Mechanics（2021）",
+      "version": "arXiv:2012.10137v2，同原刊。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+      "locator": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+      "summary": "盤下空氣先擠壓水面，盤緣先接水；中心短暫隔著氣層。局部壓力峰出現的早晚和大小並非同一件事。",
+      "limitations": "只指水平平底盤的定速測試，中央壓力峰不代表整片盤的總力，更不是證明有氣一定緩衝。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-disc.pdf",
+        "sha256": "f41b4438388d55adc66087a8ec1bd041037ef5c7fc80b02d609c2cd67c9c77ec",
+        "text_file": ".cache/wave45-physics-disc.txt",
+        "text_sha256": "74efacde4a4aad52c29a82b0f224c36f69b405e43c2bd624c1f3c7e0a6f24ee9"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-read4.jpg",
+          "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+          "read_scope": "p5 Fig3盤底困氣的影像對照"
+        }
+      ]
+    },
+    {
+      "id": "P45-S008",
+      "url": "https://doi.org/10.1103/PhysRevLett.130.244001",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.130.244001",
+      "doi": "10.1103/PhysRevLett.130.244001",
+      "retrieval_url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.130.244001",
+      "title": "Swirling Fluid Reduces the Bounce of Partially Filled Containers",
+      "publisher": "Andrade等，Physical Review Letters（2023）",
+      "version": "APS期刊PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+      "locator": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+      "summary": "旋轉的水在落下時沿壁爬高，撞地後回流匯成中央上噴的水柱；向上加速內部水的反作用壓住容器，降低回彈。",
+      "limitations": "限這種彈性底、受測填充量與轉速，對空瓶和裝滿對照效應微弱，不解釋一般翻瓶的所有落地姿態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-swirl.pdf",
+        "sha256": "4a5c625113f6e06ab8e94cfac1460c11befa9ffba673c77c6939ffd5297a131f",
+        "text_file": ".cache/wave45-physics-swirl.txt",
+        "text_sha256": "58226ef43d819af322612d2917fe48a41a6ab2d63a92fbabbfdc96857e75e5bc"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-read4.jpg",
+          "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+          "read_scope": "p3 Fig4瓶內水面與噴流時間序列"
+        }
+      ]
+    },
+    {
+      "id": "P45-S009",
+      "url": "https://doi.org/10.1126/sciadv.abo5888",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abo5888",
+      "doi": "10.1126/sciadv.abo5888",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9328685/",
+      "title": "Slamming dynamics of diving and its implications for diving-related injuries",
+      "publisher": "Pandey等，Science Advances（2022）",
+      "version": "PMC收錄期刊原文HTML。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+      "reading_scope": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+      "locator": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+      "summary": "圓鈍與圓錐式前端每深入一截，水面交圈以不同方式長大，必須帶動的水和初期撞力隨時間的增長也不同。",
+      "limitations": "Fig3圓頭與尖頭分別3.42、3.95 m/s；可看各自的力曲線如何上升並與模型比，不能直接把力大小之差歸於形狀。未採人體傷害門檻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave45-physics-shape.html",
+        "sha256": "f5114dc25238a844a42096f309ffc8973205a083bc494581443b93d277d368ad",
+        "text_file": ".cache/wave45-physics-shape.txt",
+        "text_sha256": "c34dbbc175eeb4a38e3081592b59a5ef12f63f8d9019fcfd0024dd07b9d41761"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave45-physics-shape-fig3.jpg",
+          "sha256": "aac873f02eddae6ff0d438516c1153b474b402d1c316ed938983f6190a47bf45",
+          "read_scope": "PMC原刊Fig3模型照片及其力曲線"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P45-001",
+      "question": "乒乓球浮在一杯水上，敲杯底沒把它彈出去，為什麼整杯先落下再撞地卻可以？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.freefall_capillary_immersion_impact_impulse",
+      "answer_target": "一起落下時水原有的靜水壓力梯度幾乎消失，球在毛細作用下浸得比原來深。杯底撞地使水急停，短暫壓力衝量可改變球的動量，把它向上拋出。關鍵對照是未攪動的靜杯受敲並沒有同樣效果。",
+      "scope": "觀察同落的杯、水和球，重點是碰地前已改變的浸深；不把所有敲杯條件或每次速度混在一起。",
+      "source_ids": [
+        "P45-S001"
+      ],
+      "source_locator": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+      "premise_status": "screened",
+      "notes": "靜置對照限未攪水；作者亦討論攪動例外和附加質量測試的偏差。模型不等於每次射速的定量預報。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "遮住碰地影格，光看前一格水線在哪裡，就有機會辨出哪次會噴球。",
+        "visual": "並排靜杯受敲、全組落下兩段示意；用高速影像位置標浸深，再畫碰地瞬態壓力作用。",
+        "seconds": [
+          25,
+          87
+        ]
+      }
+    },
+    {
+      "id": "P45-002",
+      "question": "兩顆一樣大的球用同樣速度入水，怎麼一顆身後留了長空腔，另一顆幾乎沒有？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.advancing_wetting_sheet_detachment_air_entrainment",
+      "answer_target": "球落水時水片沿球面向上爬。在選定速度下，容易沾水的球被水片包覆；較難沾水的那顆，水片先脫離球面，把外界的空氣一路帶入水下。",
+      "scope": "比較相同直徑、質量及入水速率但受不同表面處理的球；速度夠高時親水球也能帶入空氣。",
+      "source_ids": [
+        "P45-S002"
+      ],
+      "source_locator": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+      "premise_status": "screened",
+      "notes": "疏水性移動臨界速度；不能推成親水球在所有速度下都沒有空腔。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出長空腔裡的空氣是怎麼從水面進來的。",
+        "visual": "同速影格逐對對齊水線，先圈最早脫離球面的水片，才揭示後面的空腔。",
+        "seconds": [
+          18,
+          62
+        ]
+      }
+    },
+    {
+      "id": "P45-003",
+      "question": "球沒有自旋，怎麼一入水就朝旁邊拐？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.hemisphere_wetting_asymmetry_early_cavity_side_force",
+      "answer_target": "半邊疏水、半邊親水時，兩側水片沒有一起包住球，空腔偏在一側；左右液流和推力不再平衡，足以讓不轉的球先偏向一邊。空腔閉合後，這顆球和持續轉動的對照球，路徑不再一樣。",
+      "scope": "同速比較單側塗層無旋球及兩種均勻表面自旋球，另有均勻表面無旋對照；不聲稱同一彎向可用於所有速度或球面。",
+      "source_ids": [
+        "P45-S003"
+      ],
+      "source_locator": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+      "premise_status": "screened",
+      "notes": "只比較受測球、相近入水條件；初期偏轉相似不等於整段水下球路重合。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只看起初的彎線會猜有旋，接著看空腔閉合後的軌跡才能拆開解釋。",
+        "visual": "以色塊標兩半球和有無自旋；在實測路徑標記空腔閉合時段，把閉合前後分開看。",
+        "seconds": [
+          18,
+          68
+        ]
+      }
+    },
+    {
+      "id": "P45-004",
+      "question": "球前面先射一柱水，落下去還是同樣快，為什麼撞水那一下反而輕了？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.downward_jet_accelerates_receiving_pool_reduces_relative_speed",
+      "answer_target": "先行水柱使一團水也向下流。球雖以相近速度越過原來的水面，撞上的水已經在同向運動，因此相對撞速和量到的初期減速峰值都可變小。水柱太短時效應不及較長的水柱。",
+      "scope": "限受控垂直入水，速度場與衝擊加速度的量測為分開配置，不把空腔本身當唯一緩衝器。",
+      "source_ids": [
+        "P45-S004"
+      ],
+      "source_locator": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+      "premise_status": "screened",
+      "notes": "流場測速和加速度以不同配置量，不把兩圖當同一瞬間的同步讀數，也不推人體入水安全。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把參考線從池邊改畫在將被球追上的水上。",
+        "visual": "並排無噴流和先行水柱兩條球速箭頭，另框用測速圖畫出水的箭頭，再對照球載峰值。",
+        "seconds": [
+          16,
+          62
+        ]
+      }
+    },
+    {
+      "id": "P45-005",
+      "question": "前面已經有球先落水，為什麼後面那顆有時撞得比單獨落水還重？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.second_sphere_hits_retracting_cavity_bowl_or_narrow_jet",
+      "answer_target": "先行球留下的空腔會收縮。若後球撞上向上回衝的碗狀液面，迎面水速和較大的接觸區可合力放大峰值；晚到碰上中央細噴柱時，球先逐漸被水沾濕，峰值反可低於它單獨落水。",
+      "scope": "實驗調下球尺寸及兩球間距，比後球內加速度；不以一個固定延遲分所有球，也不把所有空腔狀態當減震。",
+      "source_ids": [
+        "P45-S005"
+      ],
+      "source_locator": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+      "premise_status": "screened",
+      "notes": "後球高度固定，間距、先行球尺寸會改變空腔。圖中樣本不能混成單變量時間控制，百分比非普遍常數。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在一列影格上指出後球撞到寬碗還是細柱，就能解開同一球峰值一高一低。",
+        "visual": "挑兩組Fig7影像各對齊其自身加速度曲線，旁加單球基準；禁止剪成一次撞擊連續經歷兩種峰值。",
+        "seconds": [
+          22,
+          76
+        ]
+      }
+    },
+    {
+      "id": "P45-006",
+      "question": "球頭後面加了彈簧，入水後的機身怎麼反而挨了更重的一下？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.elastic_nose_response_time_amplifies_rear_body_slam_peak",
+      "answer_target": "水先推前端，壓縮彈簧後力量才傳往後段。若彈簧本身的振動時程與水的衝擊時程配合，後段稍晚出現的峰值可超過相近質量的剛接樣件，並非只要變軟就能把力攤平。",
+      "scope": "比較相同頭形及落速的剛接/彈性件；量的是後段加速度，兩試件總質量近似，不能把後段峰值當前端直接量力。",
+      "source_ids": [
+        "P45-S006"
+      ],
+      "source_locator": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+      "premise_status": "screened",
+      "notes": "等幾何且質量近似，差在2.4%內。加速度計在後段，不能據此判每一部位或不同落速都放大。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把兩條曲線時間對齊，最先挨推的地方和峰值最大的時間未必相同。",
+        "visual": "畫出前端/彈簧/後段感測器，再把相近速度的兩條後段曲線疊在同一軸。",
+        "seconds": [
+          19,
+          69
+        ]
+      }
+    },
+    {
+      "id": "P45-007",
+      "question": "平圓盤水平拍到水上，為什麼盤中央和盤邊沒有同時碰水？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.flat_disc_squeeze_air_depresses_free_surface_periphery_first",
+      "answer_target": "盤靠近時先擠壓盤下的空氣，原來平坦的水面受到氣壓而變形。邊緣先接觸，中央還隔一片空氣；兩處的壓力峰時序也不同，先到並不等於峰值最大。",
+      "scope": "只採水平平盤定速衝擊的困氣和局部測壓，不把兩點壓力換算成整盤所受力。",
+      "source_ids": [
+        "P45-S007"
+      ],
+      "source_locator": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+      "premise_status": "screened",
+      "notes": "只指水平平底盤的定速測試，中央壓力峰不代表整片盤的總力，更不是證明有氣一定緩衝。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張平板上，光看中心位置就會錯過第一次碰水。",
+        "visual": "以底視圖標首觸環與中央的氣片，再用兩個測壓點分別標峰值的出現時間。",
+        "seconds": [
+          18,
+          59
+        ]
+      }
+    },
+    {
+      "id": "P45-008",
+      "question": "裝半瓶水的容器直直落地，為什麼只讓它繞直軸旋轉，有時就彈得低多了？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.vertical_axis_swirl_creates_axial_jet_recoil_reduces_bounce",
+      "answer_target": "繞直軸旋轉時，部分裝水的容器在自由落下中可見水沿壁升高；撞地後水向中心匯聚並噴起。水被向上加速時對瓶有向下反作用，外殼的反彈變小；空瓶或裝滿水的旋轉對照沒有同等效應。",
+      "scope": "量的是帶彈性半球底容器的反彈高度/恢復係數；核心是部分裝水後的豎向動量交換，不是水平軸翻瓶。",
+      "source_ids": [
+        "P45-S008"
+      ],
+      "source_locator": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+      "premise_status": "screened",
+      "notes": "限這種彈性底、受測填充量與轉速，對空瓶和裝滿對照效應微弱，不解釋一般翻瓶的所有落地姿態。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在同一高度線看瓶底，畫面裡反而是裡面的水噴得高、瓶身跳得低。",
+        "visual": "對齊無旋與繞直軸旋轉的落地影格：標水壁、噴柱和瓶底反彈高度，另示空/滿填充對照。",
+        "seconds": [
+          20,
+          73
+        ]
+      }
+    },
+    {
+      "id": "P45-009",
+      "question": "尖頭和圓頭模型扎進水裡，為什麼撞力的上升曲線形狀不同？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.nose_cross_section_growth_added_mass_slam",
+      "answer_target": "看模型穿過水面的那一圈。兩種頭形隨浸入深度而增加的截面不同，要加速的水量也以不同方式增加。兩組實測曲線各自與模型比較：尖頭的力平滑上升，圓鈍頭初次碰水就較突然地升起，流動分離後另作處理。",
+      "scope": "Fig3鼠海豚圓頭仿生件自60公分落下（3.42 m/s），塘鵝尖頭件自80公分落下（3.95 m/s）。各自配對當組速度的預測，只比較分離前的曲線形狀，不能把兩組峰值差全歸頭形，亦不推活體或人體安全。",
+      "source_ids": [
+        "P45-S009"
+      ],
+      "source_locator": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+      "premise_status": "screened",
+      "notes": "Fig3圓頭與尖頭分別3.42、3.95 m/s；可看各自的力曲線如何上升並與模型比，不能直接把力大小之差歸於形狀。未採人體傷害門檻。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不用先亮出整個輪廓；看剛沾水的圈變大得多快，就能比較兩條力曲線。",
+        "visual": "對齊兩組模型剛接觸的一格，各自標落速與截圈成長；同色配實驗點和該組模型虛線，不把不同落速的兩個峰畫成同速高度排名。",
+        "seconds": [
+          18,
+          65
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P45-NA001",
+      "question": "丟起半瓶水，液體散開所以瓶子翻慢了？",
+      "existing_ids": [
+        "P027",
+        "P028"
+      ],
+      "source_ids": [],
+      "reason": "P26-NA001已退此翻瓶題；繞直軸後撞地的水柱反作用才是本輪新控制。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA002",
+      "question": "不轉的足球在空中不定向地飄，也單獨算一種轉彎？",
+      "existing_ids": [
+        "P30002"
+      ],
+      "source_ids": [],
+      "reason": "已收低旋球尾流不對稱，不因水下球新實驗而重收。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA003",
+      "question": "高爾夫球倒旋時又見到向下力？",
+      "existing_ids": [
+        "P23005"
+      ],
+      "source_ids": [],
+      "reason": "逆馬格努斯與兩側轉捩/分離的原答已足。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA004",
+      "question": "軟球斜著碰水後變扁，又跳出水面？",
+      "existing_ids": [
+        "X41-003"
+      ],
+      "source_ids": [],
+      "reason": "舊題切向入水變形及水漂，不能只換球種。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA005",
+      "question": "圓盤一定得按一個角度才打得出水漂？",
+      "existing_ids": [
+        "X41-002"
+      ],
+      "source_ids": [],
+      "reason": "原題是自旋維持斜盤姿態，沒有普遍最佳角度。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA006",
+      "question": "棒球換縫線朝向就能預測完整落點？",
+      "existing_ids": [
+        "X41-006"
+      ],
+      "source_ids": [],
+      "reason": "原題有縫與邊界層分離位置，完整落點另須測。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA007",
+      "question": "球背後那條空洞是水突然沸騰？",
+      "existing_ids": [
+        "P311",
+        "P45-002"
+      ],
+      "source_ids": [
+        "P45-S002"
+      ],
+      "reason": "本文觀察由水面帶入的大氣，沒有證據指向汽化空穴。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA008",
+      "question": "表面親水就永遠不可能拖出空腔？",
+      "existing_ids": [
+        "P45-002"
+      ],
+      "source_ids": [
+        "P45-S002"
+      ],
+      "reason": "所需速度門檻改變；固定表面不能決定所有速度。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA009",
+      "question": "只憑半疏水球頭幾格偏轉就能量出它的轉速？",
+      "existing_ids": [
+        "P45-003"
+      ],
+      "source_ids": [
+        "P45-S003"
+      ],
+      "reason": "無旋對照也偏，單一初期路徑識別不了原因。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA010",
+      "question": "水柱已在球前打洞，所以它減速一定比較小？",
+      "existing_ids": [
+        "P45-004",
+        "P45-005"
+      ],
+      "source_ids": [
+        "P45-S004",
+        "P45-S005"
+      ],
+      "reason": "忽略迎面水速、接觸區及空腔收縮階段；掏空不能獨立解釋。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA011",
+      "question": "撞到先行球造的水柱，全部都能軟著陸？",
+      "existing_ids": [
+        "P45-005"
+      ],
+      "source_ids": [
+        "P45-S005"
+      ],
+      "reason": "有增幅也有降幅，不能把一個射流階段代表整段尾流。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA012",
+      "question": "換任何彈簧頭就能保護整個入水裝置？",
+      "existing_ids": [
+        "P45-006"
+      ],
+      "source_ids": [
+        "P45-S006"
+      ],
+      "reason": "只核後段測點及結構時間尺度，未證每處受力下降。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA013",
+      "question": "量到平盤中心峰值，能代表全盤同時受這個壓力嗎？",
+      "existing_ids": [
+        "P45-007"
+      ],
+      "source_ids": [
+        "P45-S007"
+      ],
+      "reason": "不同半徑讀值及出現時間有別，局部不能直接當面積積分。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA014",
+      "question": "任何裝水瓶子轉得越快彈得越低？",
+      "existing_ids": [
+        "P45-008"
+      ],
+      "source_ids": [
+        "P45-S008"
+      ],
+      "reason": "低填充率等條件未呈普遍單調。受測是有彈性底的豎軸旋轉。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA015",
+      "question": "以模型頭形算出一般人跳多高都安全？",
+      "existing_ids": [
+        "P45-009"
+      ],
+      "source_ids": [
+        "P45-S009"
+      ],
+      "reason": "模型/初期水載重和個體運動安全不同，剔除。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA016",
+      "question": "第一滴雨把果杯裡的種子打飛，就是乒乓球水砲嗎？",
+      "existing_ids": [
+        "L44-005",
+        "L44-006"
+      ],
+      "source_ids": [],
+      "reason": "偏心雨滴或已有存水的帶出物原答已收，欠缺球杯同落使浸深先變的控制。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA017",
+      "question": "沒有先掉落，只管敲靜杯就能把任何浮球打飛？",
+      "existing_ids": [
+        "P45-001"
+      ],
+      "source_ids": [
+        "P45-S001"
+      ],
+      "reason": "未攪動的靜杯試驗失敗；另有攪水例外。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    },
+    {
+      "id": "P45-NA018",
+      "question": "空氣膜隔著兩滴水使它們反彈，換平盤再算一次？",
+      "existing_ids": [
+        "I12008"
+      ],
+      "source_ids": [],
+      "reason": "本批只收平盤的接觸前緣與中心/邊上壓力時序，未重收兩液面的薄膜支撐。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。"
+    }
+  ]
+}

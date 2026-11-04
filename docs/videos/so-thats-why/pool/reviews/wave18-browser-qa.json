@@ -1,0 +1,54 @@
+{
+  "tested_on": "2026-11-02T01:41:58.663Z",
+  "result": "PASS",
+  "selected": 2982,
+  "index_html_sha256": "c970b465b75a36154b9c6116250be70fb8383db8efd1eef92c4ea6f6cd544647",
+  "source_sample": {
+    "id": "K18001",
+    "urls": [
+      "https://escholarship.org/content/qt7qs984k7/qt7qs984k7_noSplash_66a8485e2a04a2d12bd2baeb463325cf.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new mechanical-surprise question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave18-desktop.png",
+    "wave18-source-desktop.png",
+    "wave18-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_review": {
+    "reviewer": "root",
+    "observations": [
+      "Desktop1440x1000: 2982 selected, 2529 source URLs, 204 themes, 139 aliases shown; search and filters, first cards and navigation readable without overlap. Header remains original2026-11-01; existing task records date-label issue.",
+      "Expanded K18001: full question, bounded answer,75–125 second segment budget, scope and source-reading note visible. Payoff/visual/source URL fields fall below the crop and were checked by DOM assertions, not claimed visible in this screenshot.",
+      "Mobile390x844: heading wraps, four stats arrange in two rows, navigation and filters fit the viewport. Narrow search placeholder clips; the field remains available. Lower question cards are outside this crop; this is not a full-page visual audit."
+    ],
+    "screenshots": [
+      {
+        "file": ".cache/wave18-desktop.png",
+        "sha256": "754a58dda17cc1d03af24aede7908bc3d8c00362baac0b65a08646e5a1cef7cd"
+      },
+      {
+        "file": ".cache/wave18-source-desktop.png",
+        "sha256": "7907b88fef96d11320aadfbbbf6ab5ad01d66f4847b48ba9e20f1c251336f394"
+      },
+      {
+        "file": ".cache/wave18-mobile.png",
+        "sha256": "85893210092eb034b5db31389380bb3082e6919a08e360b7d73c347943944e80"
+      }
+    ]
+  }
+}

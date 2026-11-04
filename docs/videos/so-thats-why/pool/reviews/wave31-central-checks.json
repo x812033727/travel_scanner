@@ -1,0 +1,894 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave31-rings.json",
+      "sha256": "6685fbac9dbaa04fcbae77c126fce044aed2e6f904f8b2935f092eea5d68fb50"
+    },
+    {
+      "file": "reviews/wave31-rings-author.json",
+      "sha256": "86c933c43857f4fec1fd2a30d30c682f6c28d30df8b804706eb7ab9c63faed0d"
+    },
+    {
+      "file": "reviews/wave31-rings-themes.json",
+      "sha256": "1dc3dd9da4a397745c0beae7304ce78fd65e9e7b5a0f6be4fd5cc29d6a13a30c"
+    },
+    {
+      "file": "reviews/wave31-lander-reviews-rings.json",
+      "sha256": "782a194076c00a87354e945d6254e246f2ae0b5910ee1dda0278e7e3965ce10f"
+    },
+    {
+      "file": "batches/wave31-lander.json",
+      "sha256": "c39e28388a29d8fd01479438368bea69b71bdfbe1734a038bb51cbc51000cc0c"
+    },
+    {
+      "file": "reviews/wave31-lander-author.json",
+      "sha256": "cc82b01eaebc9892ec41bb364c76be1be0d7e03eeca9c9f202dff4a59b49eee7"
+    },
+    {
+      "file": "reviews/wave31-lander-themes.json",
+      "sha256": "589ac2d53bedeeab7c2cc0f8bad0a2c3e7842b769b6c2d68231c93a50bb65aae"
+    },
+    {
+      "file": "reviews/wave31-rings-reviews-lander.json",
+      "sha256": "43eed84b4f69c33c980e3d74c6cfb533ea33b4ba934dbe0e63076df73d3958f6"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave31-rings.json",
+      "author": "root",
+      "reviewer": "pool_physics",
+      "candidate_count": 7,
+      "top5_directed_pairs": 35,
+      "author_pairs": 13,
+      "not_added_count": 14,
+      "theme_count": 5
+    },
+    {
+      "batch": "batches/wave31-lander.json",
+      "author": "pool_physics",
+      "reviewer": "root",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 13,
+      "not_added_count": 14,
+      "theme_count": 3
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave31-lander.json",
+          "sha256": "c39e28388a29d8fd01479438368bea69b71bdfbe1734a038bb51cbc51000cc0c"
+        },
+        {
+          "file": "batches/wave31-rings.json",
+          "sha256": "6685fbac9dbaa04fcbae77c126fce044aed2e6f904f8b2935f092eea5d68fb50"
+        }
+      ],
+      "new_source_rows": 13,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "fb33923f6b7c79020e8c9bed2702fc5b7f9ef7b7a86a6f5c8d17c32d88a38866",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "decisions": [],
+      "note": "檔中13份來源的URL、標題與可抽取DOI未精確撞名。橄欖枝兩篇同團隊的不同論文按其實際用途記錄，不當成兩地獨立重複。"
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave31-rings.json",
+      "source_rows": 8,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave31-lander.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "f4de461137fca5064ed0b89ff405175e5e70c240825c2695d6969410335f5fe3",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source_id": "P31-S001",
+      "url": "https://research-information.bris.ac.uk/files/329879244/36856_2_merged_1658502913.pdf",
+      "file": ".cache/wave31-lander-impact-web.txt",
+      "sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc",
+      "text_file": ".cache/wave31-lander-impact-web.txt",
+      "text_sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc",
+      "reading_scope": "Bristol接受稿指定網頁文字，稿行105–155及157–180。",
+      "finding": "稿行130–145說明誤差區與前後影像、三件事件皆有新撞擊跡。稿行149附近說明S0533a是例行成像先找到；同期壓力量測無法使用，聲波是由耦合地面運動辨認。",
+      "viewed_images": [],
+      "read_via": "閱讀網頁保存之作者稿指定段落，未檢圖。"
+    },
+    {
+      "source_id": "P31-S002",
+      "url": "https://eps.rutgers.edu/images/EPS_Publications/A_Tectonic_Origin_for_the_Largest_Marsquake_Observed_by_InSight.pdf",
+      "file": ".cache/wave31-lander-negative.pdf",
+      "sha256": "841ed38d6e25d930979913ba1d992e9f038712b175a7817f405793194f1f89ef",
+      "text_file": ".cache/wave31-lander-negative.txt",
+      "text_sha256": "47fcc611c3499df1e5be633e9af36702851f5e227cb3501fb1a59b976e148cac",
+      "reading_scope": "原刊PDF頁6–8，Fig3四幅地圖及中解析、高解析兩級搜尋；結論段。",
+      "finding": "此篇獨立處理S1222a。找不到一場預期規模撞擊所需的大爆散區是支持構造事件的理由。高解析影像覆蓋有限，未直接觀測地底破裂。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave31-lander-negative-p7.png",
+          "sha256": "d862a074b3b652d1701b804f754097d838418665f0d74d78d14dd7164aa3df23",
+          "read_scope": "Fig3a–d影像覆蓋與機率格，細長軌跡和底圖解析度有別。"
+        }
+      ],
+      "read_via": "重新核對原研究PDF與本列實際閱覽圖頁。"
+    },
+    {
+      "source_id": "P31-S003",
+      "url": "https://elib.dlr.de/136478/1/staehler-etal2020GL089099.pdf",
+      "file": ".cache/wave31-lander-transit.pdf",
+      "sha256": "a77b940d95721bcae612d4833db297f4098049fdbc3fd75e27347b6f05cd10bd",
+      "text_file": ".cache/wave31-lander-transit.txt",
+      "text_sha256": "8cd87161f2fda491e7490e2f54c5dac4caab19a8bc15121419f88d0227da5137",
+      "reading_scope": "原刊PDF頁6 Fig1六組不同量測，頁8 Fig2兩場事件對齊以及陸上燈光實驗，頁9–10熱彈性模型。",
+      "finding": "凌日對太陽電池、地溫和水平通道有不同到時。地面實驗比較隔熱而可見燈光的儀器與暗處參照；模型提出受照區與遮蔭區不同熱應變，沒有量到火星儀器腳下的變形。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave31-lander-transit-p6.png",
+          "sha256": "db634cebee8b9d7bfa14bb95426412ea4ae7e57b5d8885a44afc31c1018ea55d",
+          "read_scope": "Fig1太陽電池、地溫、風壓、地震儀分軌時間序列。"
+        },
+        {
+          "file": ".cache/wave31-lander-transit-p8.png",
+          "sha256": "c649312ae90fea60ccc1d7d41207c7b91621ea1d43c187cfacd904bfca312fe3",
+          "read_scope": "Fig2不同凌日資料與由地面燈光實驗推得的黑色曲線，非同地同時量。"
+        }
+      ],
+      "read_via": "重新核對原研究PDF與本列實際閱覽圖頁。"
+    },
+    {
+      "source_id": "P31-S004",
+      "url": "https://authors.library.caltech.edu/api/records/60dcb-gn218/files/JGR%20Planets%20-%202025%20-%20Tamama%20-%20Classifying%20Thermal%20Moonquakes%20Recorded%20in%20Apollo%2017%20Lunar%20Seismic%20Data%20Using.pdf/content",
+      "file": ".cache/wave31-lander-lunar.pdf",
+      "sha256": "d34f9a05e804b67e9e30ff53da6a80321060d59bb70c14ba434fc1752e4f4cba",
+      "text_file": ".cache/wave31-lander-lunar.txt",
+      "text_sha256": "19d46a08c41137c0657acd085f1cc7009d791abc4fc0503c2335c8d18e20ab01",
+      "reading_scope": "原刊PDF頁9–11 Fig5～7，重複族的時段、方位估計與LM事件的討論。",
+      "finding": "多個大族的到時差指向東方，清晨集中是另一條證據；方向不全精確正東，地面設備是候選來源之一。推論不能延伸成每個熱月震都來自某件零件。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave31-lander-lunar-p9.png",
+          "sha256": "8b41a5c37048b1d17c0c747c677936e509f9e69230885d50d61c46f2468c9971",
+          "read_scope": "Fig5重複與孤立族的日相分布及來向。"
+        },
+        {
+          "file": ".cache/wave31-lander-lunar-p10.png",
+          "sha256": "2e884c823a63cabacf5216bb7541a3c129966cf4fc8ff5d958d734b504be4d8a",
+          "read_scope": "Fig6大族的發生時段與方向分布、四條堆疊波形。"
+        },
+        {
+          "file": ".cache/wave31-lander-lunar-p11.png",
+          "sha256": "27b5d5d41fa9dba73d147bf93037f4bf12d02cef315e7543a99eba9ee6953fd0",
+          "read_scope": "Fig7候選LM事件的來向、峰度時間與日照時段。"
+        }
+      ],
+      "read_via": "重新核對原研究PDF與本列實際閱覽圖頁。"
+    },
+    {
+      "source_id": "P31-S005",
+      "url": "https://tmurphy.physics.ucsd.edu/papers/Icarus-231-183.pdf",
+      "file": ".cache/wave31-lander-laser.pdf",
+      "sha256": "1ee861ee122493ff5c2accfbf687433c1c65552a7af1ee3d4b5198038f35e410",
+      "text_file": ".cache/wave31-lander-laser.txt",
+      "text_sha256": "b2c6fcae10544be4921573d67590605fb8c47b7a19197f2370b86db570ec387c",
+      "reading_scope": "原刊pp186、190，Fig4假想溫差／回光變化，Fig9依各陣列日照時程對時，Fig11以紅外天空資料監測透明度。",
+      "finding": "觀測在進出影子時有兩次回強，全食末段的訊號很弱。角錐內外溫差近零使回光集中是模型解釋，不是筆者量到溫度或塵量。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave31-lander-laser-p4.png",
+          "sha256": "2d20c4ad7e6ee18e455e672b3c54c2b5ae2c187c0ed8b500096afb130d255ac9",
+          "read_scope": "Fig4為作者預測示意曲線，沒有實測角錐內部溫度。"
+        },
+        {
+          "file": ".cache/wave31-lander-laser-p8.png",
+          "sha256": "4f9590e9c091596a0807da982625e6293cb763dc00e42d1ece02f013ebd9c9d1",
+          "read_scope": "Fig9各陣列對齊受照時間的回光點，Fig11與天空透明度代理對照。"
+        }
+      ],
+      "read_via": "重新核對原研究PDF與本列實際閱覽圖頁。"
+    }
+  ],
+  "editorial_summary": "本批收進7個木材與年輪問題及4個火星、月球探測問題。取捨集中在證據能支持到哪裡：已知火年的日誌可測樹疤是否漏記，單一傷痕不足以認定火災；軌道前後照能查火星新撞坑，沒看到坑時也要先看搜尋覆蓋。28個重複或過度延伸的提法留有退題紀錄。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並依收據覆核地外探測組各來源、近對與題案。rings由root撰寫、pool_physics非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 28,
+      "changes": [
+        {
+          "batch": "rings",
+          "before": [
+            {
+              "file": "batches/wave31-rings.json",
+              "sha256": "b4c387fc632991e71090369925875d44b7627f325fffe30dec505ef08a1f00a8"
+            },
+            {
+              "file": "reviews/wave31-rings-author.json",
+              "sha256": "77d2d5e8e87d430b19314d306c21e802629ac41b3d6af84c7cd7a2e228053fa8"
+            },
+            {
+              "file": "reviews/wave31-rings-themes.json",
+              "sha256": "55ad0a7c82fc3fa141fae9929b5a4aff7b66e34ccd07b57f138ef5d02ae4f0a2"
+            }
+          ],
+          "removed_seconds": 20,
+          "themes": [
+            "W31R-T01 116→104",
+            "W31R-T05 66→58"
+          ],
+          "reason": "查核後限縮風化與燃料證據的用語，增加極冷年對蟲害判讀的干擾條件。砍伐年與火疤兩案刪去重述。"
+        },
+        {
+          "batch": "lander",
+          "reviewer": "root",
+          "before": [
+            {
+              "file": "batches/wave31-lander.json",
+              "sha256": "c39e28388a29d8fd01479438368bea69b71bdfbe1734a038bb51cbc51000cc0c"
+            },
+            {
+              "file": "reviews/wave31-lander-themes.json",
+              "sha256": "a0679f94c3cafea5c5f9c92a6ac4f11ad1e49ab5c8f2d1c9beb73c8891ec5674"
+            },
+            {
+              "file": "reviews/wave31-lander-author.json",
+              "sha256": "7a9de3c65c964faabc93b0fa4bd8f922346566a76ae8a5b7853e20635c9ad63d"
+            }
+          ],
+          "removed_seconds": 8,
+          "reason": "T01查大震暗區的圖解先給預期再查覆蓋，維持中解析搜尋與高解析抽樣。刪去結尾對小坑及地下斷層的重述，85秒縮為77秒。"
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "R31-S001",
+        "file": ".cache/wave31-rings-viking.pdf",
+        "sha256": "e577c621671de880bdb0ee2b2a44e89db073ccd5e8c7d1c2fbc0052b94789cf8",
+        "text_file": ".cache/wave31-rings-viking.txt",
+        "text_sha256": "72c846df6e30320be97847b120f01477cf3b40c9409a837899a6da8f4eabce3d"
+      },
+      {
+        "source_id": "R31-S001",
+        "file": ".cache/wave31-rings-viking-p2.png",
+        "sha256": "bed2cf0d459fb38e28520e5bb3e7dbca40447eef88b5cacf862ab31e3a777988"
+      },
+      {
+        "source_id": "R31-S001",
+        "file": ".cache/wave31-rings-viking-p3.png",
+        "sha256": "a1ead87f1725fc14c892f8cab968b02209f1ca1b4abe777f75d2e90855bebc64"
+      },
+      {
+        "source_id": "R31-S002",
+        "file": ".cache/wave31-rings-olive.pdf",
+        "sha256": "e99ee3aec25c04da728323997a1519bcb894abd9a06e3aaf027e82881ff2cd00",
+        "text_file": ".cache/wave31-rings-olive.txt",
+        "text_sha256": "82086f911e77271b82de6ecb62f9bea7ed6e815ae26358d7633ed261e100283d"
+      },
+      {
+        "source_id": "R31-S002",
+        "file": ".cache/wave31-rings-olive-p4.png",
+        "sha256": "a6c00fae56bea5fbd8f1f81402a27385f122408c3a4e87e6d0c09f2875789d08"
+      },
+      {
+        "source_id": "R31-S003",
+        "file": ".cache/wave31-rings-olive2.pdf",
+        "sha256": "f9b2489d0aba41bc2019ade00369b29e5809451bf8d04d2b6b1134fd1dc0d669",
+        "text_file": ".cache/wave31-rings-olive2.txt",
+        "text_sha256": "8354bfa78a5d7d10655d0d4b2a77ecb11f927c756047113d00c434de73b5b0a3"
+      },
+      {
+        "source_id": "R31-S003",
+        "file": ".cache/wave31-rings-olive2-p5.png",
+        "sha256": "8b19711717db0fe8def1146a9285c4bea300a28bf5500aaacaf257e7d779d70e"
+      },
+      {
+        "source_id": "R31-S004",
+        "file": ".cache/wave31-rings-rome.pdf",
+        "sha256": "03f83acd7f93bb8befe237f7e03fca483a6ecb95c81a6797490f640475983007",
+        "text_file": ".cache/wave31-rings-rome.txt",
+        "text_sha256": "d9d88f6a10cee9904ebc22613ca75009efc3d11b2b3d482beaffd01583f29583"
+      },
+      {
+        "source_id": "R31-S004",
+        "file": ".cache/wave31-rings-rome-p8.png",
+        "sha256": "37804d1f4dd943e9a62709d3a212498e5ebda30de6526458efedc06fa044f5fb"
+      },
+      {
+        "source_id": "R31-S005",
+        "file": ".cache/wave31-rings-coast.pdf",
+        "sha256": "7bd3776251462e946264fe9eb0672c31f16477f65cca86132f14eaa5d9a6390f",
+        "text_file": ".cache/wave31-rings-coast.txt",
+        "text_sha256": "b2079ec6212368f75f581ccb5bed50206c05344268258417dd5d751089a9b460"
+      },
+      {
+        "source_id": "R31-S005",
+        "file": ".cache/wave31-rings-coast-p2.png",
+        "sha256": "4733abb6f023d78b269cbedcc4d9dff30b2a51ecdce1c5e5eb1d30d8b549e5b3"
+      },
+      {
+        "source_id": "R31-S006",
+        "file": ".cache/wave31-rings-blue.pdf",
+        "sha256": "44b2ba0c0ebfad1a550af4129c283cfeed11b82aa5058c8b3979255a48afa986",
+        "text_file": ".cache/wave31-rings-blue.txt",
+        "text_sha256": "281e158a6e1776986d480552f7643fc7a8791f7a50ca13bf8c7b36911372062e"
+      },
+      {
+        "source_id": "R31-S006",
+        "file": ".cache/wave31-rings-blue-p6.png",
+        "sha256": "5dcab46fcfacbb781005cb764ed3729956a892e592160c5579d928928e42b39a"
+      },
+      {
+        "source_id": "R31-S006",
+        "file": ".cache/wave31-rings-blue-p7.png",
+        "sha256": "f7a3c51adf8a68d72d25545dd3ed3121aced728ccef1ae69cf376efc8bd4e923"
+      },
+      {
+        "source_id": "R31-S007",
+        "file": ".cache/wave31-rings-insect.pdf",
+        "sha256": "3b33583c34b408c7ad0ff478792cb370ddf1e761ff4230eff0da68388cf20d7e",
+        "text_file": ".cache/wave31-rings-insect.txt",
+        "text_sha256": "53774d5254e1d951517562a423842dffadcbed3e9e034e202d600fdce9a9391f"
+      },
+      {
+        "source_id": "R31-S007",
+        "file": ".cache/wave31-rings-insect-p2.png",
+        "sha256": "3069d6534ba907bcc47fd0cfe560fc5de57b72e4421da7a07e98c8c2cfb9dfe3"
+      },
+      {
+        "source_id": "R31-S007",
+        "file": ".cache/wave31-rings-insect-p3.png",
+        "sha256": "3d64868356ad57a110f404e75742f822e77d336befa21c4ba047a5ee5c661879"
+      },
+      {
+        "source_id": "R31-S008",
+        "file": ".cache/wave31-rings-fire.pdf",
+        "sha256": "d61cafd9f2ce5e080aaae1875f1827c26ffa7fb05dafac73c9ecfe69d42bb80e",
+        "text_file": ".cache/wave31-rings-fire.txt",
+        "text_sha256": "b68088e14f9d1624e1eb1e38833514303c359db2d131f4aa6d75d8a5d0faa873"
+      },
+      {
+        "source_id": "R31-S008",
+        "file": ".cache/wave31-rings-fire-p5.png",
+        "sha256": "d0a838bd889b410375f872f102926df03ac227f3d33a69818e183fa3edf26311"
+      },
+      {
+        "source_id": "P31-S001",
+        "file": ".cache/wave31-lander-impact-web.txt",
+        "sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc",
+        "text_file": ".cache/wave31-lander-impact-web.txt",
+        "text_sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc"
+      },
+      {
+        "source_id": "P31-S002",
+        "file": ".cache/wave31-lander-negative.pdf",
+        "sha256": "841ed38d6e25d930979913ba1d992e9f038712b175a7817f405793194f1f89ef",
+        "text_file": ".cache/wave31-lander-negative.txt",
+        "text_sha256": "47fcc611c3499df1e5be633e9af36702851f5e227cb3501fb1a59b976e148cac"
+      },
+      {
+        "source_id": "P31-S002",
+        "file": ".cache/wave31-lander-negative-p7.png",
+        "sha256": "d862a074b3b652d1701b804f754097d838418665f0d74d78d14dd7164aa3df23",
+        "read_scope": "Fig3a–d影像覆蓋與機率格，細長軌跡和底圖解析度有別。"
+      },
+      {
+        "source_id": "P31-S003",
+        "file": ".cache/wave31-lander-transit.pdf",
+        "sha256": "a77b940d95721bcae612d4833db297f4098049fdbc3fd75e27347b6f05cd10bd",
+        "text_file": ".cache/wave31-lander-transit.txt",
+        "text_sha256": "8cd87161f2fda491e7490e2f54c5dac4caab19a8bc15121419f88d0227da5137"
+      },
+      {
+        "source_id": "P31-S003",
+        "file": ".cache/wave31-lander-transit-p6.png",
+        "sha256": "db634cebee8b9d7bfa14bb95426412ea4ae7e57b5d8885a44afc31c1018ea55d",
+        "read_scope": "Fig1太陽電池、地溫、風壓、地震儀分軌時間序列。"
+      },
+      {
+        "source_id": "P31-S003",
+        "file": ".cache/wave31-lander-transit-p8.png",
+        "sha256": "c649312ae90fea60ccc1d7d41207c7b91621ea1d43c187cfacd904bfca312fe3",
+        "read_scope": "Fig2不同凌日資料與由地面燈光實驗推得的黑色曲線，非同地同時量。"
+      },
+      {
+        "source_id": "P31-S004",
+        "file": ".cache/wave31-lander-lunar.pdf",
+        "sha256": "d34f9a05e804b67e9e30ff53da6a80321060d59bb70c14ba434fc1752e4f4cba",
+        "text_file": ".cache/wave31-lander-lunar.txt",
+        "text_sha256": "19d46a08c41137c0657acd085f1cc7009d791abc4fc0503c2335c8d18e20ab01"
+      },
+      {
+        "source_id": "P31-S004",
+        "file": ".cache/wave31-lander-lunar-p9.png",
+        "sha256": "8b41a5c37048b1d17c0c747c677936e509f9e69230885d50d61c46f2468c9971",
+        "read_scope": "Fig5重複與孤立族的日相分布及來向。"
+      },
+      {
+        "source_id": "P31-S004",
+        "file": ".cache/wave31-lander-lunar-p10.png",
+        "sha256": "2e884c823a63cabacf5216bb7541a3c129966cf4fc8ff5d958d734b504be4d8a",
+        "read_scope": "Fig6大族的發生時段與方向分布、四條堆疊波形。"
+      },
+      {
+        "source_id": "P31-S004",
+        "file": ".cache/wave31-lander-lunar-p11.png",
+        "sha256": "27b5d5d41fa9dba73d147bf93037f4bf12d02cef315e7543a99eba9ee6953fd0",
+        "read_scope": "Fig7候選LM事件的來向、峰度時間與日照時段。"
+      },
+      {
+        "source_id": "P31-S005",
+        "file": ".cache/wave31-lander-laser.pdf",
+        "sha256": "1ee861ee122493ff5c2accfbf687433c1c65552a7af1ee3d4b5198038f35e410",
+        "text_file": ".cache/wave31-lander-laser.txt",
+        "text_sha256": "b2c6fcae10544be4921573d67590605fb8c47b7a19197f2370b86db570ec387c"
+      },
+      {
+        "source_id": "P31-S005",
+        "file": ".cache/wave31-lander-laser-p4.png",
+        "sha256": "2d20c4ad7e6ee18e455e672b3c54c2b5ae2c187c0ed8b500096afb130d255ac9",
+        "read_scope": "Fig4為作者預測示意曲線，沒有實測角錐內部溫度。"
+      },
+      {
+        "source_id": "P31-S005",
+        "file": ".cache/wave31-lander-laser-p8.png",
+        "sha256": "4f9590e9c091596a0807da982625e6293cb763dc00e42d1ece02f013ebd9c9d1",
+        "read_scope": "Fig9各陣列對齊受照時間的回光點，Fig11與天空透明度代理對照。"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "rings",
+          "initial_draft": "5da7d3723178caf27d2e35bbd1b52e40b5ab664fbd581d1d241ca89996753d21",
+          "final_draft": "2e2dba998e2c99996c324b5490a6d45e94a2a2cd7c0d115ec94ab5fb86548c78",
+          "directed_pairs": 35,
+          "top5_or_text_changes": 4,
+          "changes": [
+            {
+              "id": "R31001",
+              "before": {
+                "id": "R31001",
+                "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+                "neighbours": [
+                  {
+                    "id": "R31002",
+                    "cosine": 0.730737,
+                    "question": "明明是同一根活橄欖枝，貼著樹皮的兩處怎會差了幾十年？",
+                    "answer_target": "研究者沿一根砍伐年份已知的活枝圓周，在不同方位取外緣木材，以現代大氣碳十四變化核對形成年代。有的區域在砍下前多年就沒有再添新木，其他方位仍在長；整根枝條活著，外圈也可能不是同一年。",
+                    "scope": "限已測現代橄欖枝；局部生長中止是研究者的解釋。沿半徑不易辨出每年界線是另一種誤差，不能拿一個現代樣本替古代火山定日。"
+                  },
+                  {
+                    "id": "R31004",
+                    "cosine": 0.612718,
+                    "question": "枯樹的樹幹已被風吹爛，科學家為什麼挖樹根來查一次大地震？",
+                    "answer_target": "海岸下陷後潮水淹入森林。若幹外側已腐蝕，剩下的最後一圈可能比樹死亡早很多。研究者拿高地活樹的輪寬序列對時，再追到帶皮根的末輪；六棵已完成1699年晚材卻沒長出次年新輪，把死亡窗口縮到兩個生長季之間。",
+                    "scope": "限研究中的紅柏及河口。另有根樣到1708年；日本海嘯文書提供獨立時間線，樹輪不能給出地震的某日某時。"
+                  },
+                  {
+                    "id": "R31007",
+                    "cosine": 0.579873,
+                    "question": "明明前一年燒過、隔年又燒，白橡樹怎麼只記下其中一場火？",
+                    "answer_target": "拿已知燃燒日誌回查白橡切片，有些確實燒過的年份在樣本裡沒留下火疤，五場漏掉的火都發生在前一年燒過的地塊。研究指出可燃落葉減少、受熱不足以傷到形成層，是一種解釋；沒有疤就不能反推那年無火。",
+                    "scope": "限俄亥俄州研究的計畫燃燒與取樣位置。不是每場連續燒都漏記；另有無火年份的傷痕與火疤形狀相似。"
+                  },
+                  {
+                    "id": "R31006",
+                    "cosine": 0.550341,
+                    "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+                    "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+                    "scope": "限瑞士阿爾卑斯高地的重建。單棵樹出現一個低谷還有天氣等解釋，密度曲線不能換算蟲數。"
+                  },
+                  {
+                    "id": "B2278",
+                    "cosine": 0.533109,
+                    "question": "河狸天天啃硬木，門牙為什麼不會用完就沒了？",
+                    "answer_target": "持續生長補償啃咬磨耗",
+                    "scope": "不由橘色推論鐵含量，該機制另補來源"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R31001",
+                "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+                "neighbours": [
+                  {
+                    "id": "R31002",
+                    "cosine": 0.730737,
+                    "question": "明明是同一根活橄欖枝，貼著樹皮的兩處怎會差了幾十年？",
+                    "answer_target": "研究者沿一根砍伐年份已知的活枝圓周，在不同方位取外緣木材，以現代大氣碳十四變化核對形成年代。有的區域在砍下前多年就沒有再添新木，其他方位仍在長；整根枝條活著，外圈也可能不是同一年。",
+                    "scope": "限已測現代橄欖枝；局部生長中止是研究者的解釋。沿半徑不易辨出每年界線是另一種誤差，不能拿一個現代樣本替古代火山定日。"
+                  },
+                  {
+                    "id": "R31004",
+                    "cosine": 0.599519,
+                    "question": "枯樹的樹幹外層已經風化，怎麼靠樹根追查一次大地震？",
+                    "answer_target": "海岸下陷後潮水淹入森林。若幹外側已腐蝕，剩下的最後一圈可能比樹死亡早很多。研究者拿高地活樹的輪寬序列對時，再追到帶皮根的末輪；六棵已完成1699年晚材卻沒長出次年新輪，把死亡窗口縮到兩個生長季之間。",
+                    "scope": "限研究中的紅柏及河口。另有根樣到1708年；日本海嘯文書提供獨立時間線，樹輪不能給出地震的某日某時。"
+                  },
+                  {
+                    "id": "R31007",
+                    "cosine": 0.579873,
+                    "question": "明明前一年燒過、隔年又燒，白橡樹怎麼只記下其中一場火？",
+                    "answer_target": "拿已知燃燒日誌回查白橡切片，有些確實燒過的年份在樣本裡沒留下火疤，五場漏掉的火都發生在前一年燒過的地塊。研究指出可燃落葉減少、受熱不足以傷到形成層，是一種解釋；沒有疤就不能反推那年無火。",
+                    "scope": "限俄亥俄州研究的計畫燃燒與取樣位置。不是每場連續燒都漏記；另有無火年份的傷痕與火疤形狀相似。"
+                  },
+                  {
+                    "id": "R31006",
+                    "cosine": 0.550341,
+                    "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+                    "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+                    "scope": "限瑞士阿爾卑斯高地的重建。極冷年也可能使非寄主出現低值，難以拆開同年的雙重影響；密度曲線不能換算蟲數。"
+                  },
+                  {
+                    "id": "B2278",
+                    "cosine": 0.533109,
+                    "question": "河狸天天啃硬木，門牙為什麼不會用完就沒了？",
+                    "answer_target": "持續生長補償啃咬磨耗",
+                    "scope": "不由橘色推論鐵含量，該機制另補來源"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "R31002",
+              "before": {
+                "id": "R31002",
+                "question": "明明是同一根活橄欖枝，貼著樹皮的兩處怎會差了幾十年？",
+                "neighbours": [
+                  {
+                    "id": "R31001",
+                    "cosine": 0.730737,
+                    "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+                    "answer_target": "樹每年長木頭時會收進當年的大氣碳。三件帶有金屬工具痕、保留天然外緣的木料中，有一段碳十四變化能和已知的993年前後訊號對齊。從已定年的輪位數到外緣，三件木料的最後一年都指向1021年。",
+                    "scope": "先依遺址層位與工具痕判斷關聯，再替砍木定年。樣本顯示當年有人加工木料，不能據此定出首航或佔居年數。"
+                  },
+                  {
+                    "id": "R31004",
+                    "cosine": 0.724531,
+                    "question": "枯樹的樹幹已被風吹爛，科學家為什麼挖樹根來查一次大地震？",
+                    "answer_target": "海岸下陷後潮水淹入森林。若幹外側已腐蝕，剩下的最後一圈可能比樹死亡早很多。研究者拿高地活樹的輪寬序列對時，再追到帶皮根的末輪；六棵已完成1699年晚材卻沒長出次年新輪，把死亡窗口縮到兩個生長季之間。",
+                    "scope": "限研究中的紅柏及河口。另有根樣到1708年；日本海嘯文書提供獨立時間線，樹輪不能給出地震的某日某時。"
+                  },
+                  {
+                    "id": "R31006",
+                    "cosine": 0.684386,
+                    "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+                    "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+                    "scope": "限瑞士阿爾卑斯高地的重建。單棵樹出現一個低谷還有天氣等解釋，密度曲線不能換算蟲數。"
+                  },
+                  {
+                    "id": "L120",
+                    "cosine": 0.671488,
+                    "question": "植物剪下一段枝條，沒有原來的根還能再長根嗎？",
+                    "answer_target": "不定根由非根部位形成",
+                    "scope": "植物繁殖原理；不提供食品食用安全判斷"
+                  },
+                  {
+                    "id": "L080",
+                    "cosine": 0.630891,
+                    "question": "葉子長到一定大小就停，枝幹為什麼還能持續長？",
+                    "answer_target": "有限與無限生長的器官差別",
+                    "scope": "木本莖與頂端生長；物種差異須在腳本再查"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R31002",
+                "question": "明明是同一根活橄欖枝，貼著樹皮的兩處怎會差了幾十年？",
+                "neighbours": [
+                  {
+                    "id": "R31001",
+                    "cosine": 0.730737,
+                    "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+                    "answer_target": "樹每年長木頭時會收進當年的大氣碳。三件帶有金屬工具痕、保留天然外緣的木料中，有一段碳十四變化能和已知的993年前後訊號對齊。從已定年的輪位數到外緣，三件木料的最後一年都指向1021年。",
+                    "scope": "先依遺址層位與工具痕判斷關聯，再替砍木定年。樣本顯示當年有人加工木料，不能據此定出首航或佔居年數。"
+                  },
+                  {
+                    "id": "R31004",
+                    "cosine": 0.729988,
+                    "question": "枯樹的樹幹外層已經風化，怎麼靠樹根追查一次大地震？",
+                    "answer_target": "海岸下陷後潮水淹入森林。若幹外側已腐蝕，剩下的最後一圈可能比樹死亡早很多。研究者拿高地活樹的輪寬序列對時，再追到帶皮根的末輪；六棵已完成1699年晚材卻沒長出次年新輪，把死亡窗口縮到兩個生長季之間。",
+                    "scope": "限研究中的紅柏及河口。另有根樣到1708年；日本海嘯文書提供獨立時間線，樹輪不能給出地震的某日某時。"
+                  },
+                  {
+                    "id": "R31006",
+                    "cosine": 0.684386,
+                    "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+                    "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+                    "scope": "限瑞士阿爾卑斯高地的重建。極冷年也可能使非寄主出現低值，難以拆開同年的雙重影響；密度曲線不能換算蟲數。"
+                  },
+                  {
+                    "id": "L120",
+                    "cosine": 0.671488,
+                    "question": "植物剪下一段枝條，沒有原來的根還能再長根嗎？",
+                    "answer_target": "不定根由非根部位形成",
+                    "scope": "植物繁殖原理；不提供食品食用安全判斷"
+                  },
+                  {
+                    "id": "L080",
+                    "cosine": 0.630891,
+                    "question": "葉子長到一定大小就停，枝幹為什麼還能持續長？",
+                    "answer_target": "有限與無限生長的器官差別",
+                    "scope": "木本莖與頂端生長；物種差異須在腳本再查"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "R31004",
+              "before": {
+                "id": "R31004",
+                "question": "枯樹的樹幹已被風吹爛，科學家為什麼挖樹根來查一次大地震？",
+                "neighbours": [
+                  {
+                    "id": "R31002",
+                    "cosine": 0.724531,
+                    "question": "明明是同一根活橄欖枝，貼著樹皮的兩處怎會差了幾十年？",
+                    "answer_target": "研究者沿一根砍伐年份已知的活枝圓周，在不同方位取外緣木材，以現代大氣碳十四變化核對形成年代。有的區域在砍下前多年就沒有再添新木，其他方位仍在長；整根枝條活著，外圈也可能不是同一年。",
+                    "scope": "限已測現代橄欖枝；局部生長中止是研究者的解釋。沿半徑不易辨出每年界線是另一種誤差，不能拿一個現代樣本替古代火山定日。"
+                  },
+                  {
+                    "id": "L078",
+                    "cosine": 0.709184,
+                    "question": "樹皮看起來像死掉的外殼，為什麼仍對樹很重要？",
+                    "answer_target": "周皮保護與減少水分散失",
+                    "scope": "木本莖與頂端生長；物種差異須在腳本再查"
+                  },
+                  {
+                    "id": "R31006",
+                    "cosine": 0.668789,
+                    "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+                    "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+                    "scope": "限瑞士阿爾卑斯高地的重建。單棵樹出現一個低谷還有天氣等解釋，密度曲線不能換算蟲數。"
+                  },
+                  {
+                    "id": "B2278",
+                    "cosine": 0.651175,
+                    "question": "河狸天天啃硬木，門牙為什麼不會用完就沒了？",
+                    "answer_target": "持續生長補償啃咬磨耗",
+                    "scope": "不由橘色推論鐵含量，該機制另補來源"
+                  },
+                  {
+                    "id": "L120",
+                    "cosine": 0.630297,
+                    "question": "植物剪下一段枝條，沒有原來的根還能再長根嗎？",
+                    "answer_target": "不定根由非根部位形成",
+                    "scope": "植物繁殖原理；不提供食品食用安全判斷"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R31004",
+                "question": "枯樹的樹幹外層已經風化，怎麼靠樹根追查一次大地震？",
+                "neighbours": [
+                  {
+                    "id": "R31002",
+                    "cosine": 0.729988,
+                    "question": "明明是同一根活橄欖枝，貼著樹皮的兩處怎會差了幾十年？",
+                    "answer_target": "研究者沿一根砍伐年份已知的活枝圓周，在不同方位取外緣木材，以現代大氣碳十四變化核對形成年代。有的區域在砍下前多年就沒有再添新木，其他方位仍在長；整根枝條活著，外圈也可能不是同一年。",
+                    "scope": "限已測現代橄欖枝；局部生長中止是研究者的解釋。沿半徑不易辨出每年界線是另一種誤差，不能拿一個現代樣本替古代火山定日。"
+                  },
+                  {
+                    "id": "L078",
+                    "cosine": 0.717738,
+                    "question": "樹皮看起來像死掉的外殼，為什麼仍對樹很重要？",
+                    "answer_target": "周皮保護與減少水分散失",
+                    "scope": "木本莖與頂端生長；物種差異須在腳本再查"
+                  },
+                  {
+                    "id": "R31006",
+                    "cosine": 0.65447,
+                    "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+                    "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+                    "scope": "限瑞士阿爾卑斯高地的重建。極冷年也可能使非寄主出現低值，難以拆開同年的雙重影響；密度曲線不能換算蟲數。"
+                  },
+                  {
+                    "id": "R6018",
+                    "cosine": 0.643327,
+                    "question": "樹幹的舊傷被包進去後，裡面受傷的木頭也變回原樣了嗎？",
+                    "answer_target": "樹木可在受傷區周邊建立化學與物理界線，並從傷口邊緣長出新組織，限制傷區而非把舊木全部修復。",
+                    "scope": "機制模型不保證隔離成功，不提供修樹、填洞或樹木安全判斷。"
+                  },
+                  {
+                    "id": "L120",
+                    "cosine": 0.642006,
+                    "question": "植物剪下一段枝條，沒有原來的根還能再長根嗎？",
+                    "answer_target": "不定根由非根部位形成",
+                    "scope": "植物繁殖原理；不提供食品食用安全判斷"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "R31005",
+              "before": {
+                "id": "R31005",
+                "question": "把木片染色，為什麼寒冷夏天長出的那一圈有時會變藍？",
+                "neighbours": [
+                  {
+                    "id": "R6006",
+                    "cosine": 0.609371,
+                    "question": "天氣已經回暖，植物怎麼還記得自己過過冬？",
+                    "answer_target": "長冷期可使FLC開花抑制基因進入穩定的染色質沉默狀態，回暖後仍維持。",
+                    "scope": "以冬性擬南芥研究為模型，不泛化所有園藝植物；不把記憶當意識，也不把未證寡聚化假說寫成定論。"
+                  },
+                  {
+                    "id": "B2205",
+                    "cosine": 0.58508,
+                    "question": "森林裡有些小花為什麼搶在大樹長滿葉子以前開？",
+                    "answer_target": "在林冠封閉前完成主要地上生長利用季節光窗",
+                    "scope": "春季短命地上部植物，不說多年生地下部死亡"
+                  },
+                  {
+                    "id": "R31006",
+                    "cosine": 0.583625,
+                    "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+                    "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+                    "scope": "限瑞士阿爾卑斯高地的重建。單棵樹出現一個低谷還有天氣等解釋，密度曲線不能換算蟲數。"
+                  },
+                  {
+                    "id": "N179",
+                    "cosine": 0.58165,
+                    "question": "樹枝迎風面為什麼會長出羽毛狀白冰？",
+                    "answer_target": "過冷霧滴碰到物體凍結堆積。",
+                    "scope": "What is fog?"
+                  },
+                  {
+                    "id": "L101",
+                    "cosine": 0.577494,
+                    "question": "同樣看起來不暗，樹下和空地的光對植物為什麼不同？",
+                    "answer_target": "紅光與遠紅光比例作為遮蔭線索",
+                    "scope": "光敏素與特定光敏感植物；不推論所有種子相同"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R31005",
+                "question": "把木片染色，為什麼寒冷夏天長出的那一圈有時會變藍？",
+                "neighbours": [
+                  {
+                    "id": "R6006",
+                    "cosine": 0.609371,
+                    "question": "天氣已經回暖，植物怎麼還記得自己過過冬？",
+                    "answer_target": "長冷期可使FLC開花抑制基因進入穩定的染色質沉默狀態，回暖後仍維持。",
+                    "scope": "以冬性擬南芥研究為模型，不泛化所有園藝植物；不把記憶當意識，也不把未證寡聚化假說寫成定論。"
+                  },
+                  {
+                    "id": "B2205",
+                    "cosine": 0.58508,
+                    "question": "森林裡有些小花為什麼搶在大樹長滿葉子以前開？",
+                    "answer_target": "在林冠封閉前完成主要地上生長利用季節光窗",
+                    "scope": "春季短命地上部植物，不說多年生地下部死亡"
+                  },
+                  {
+                    "id": "R31006",
+                    "cosine": 0.583625,
+                    "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+                    "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+                    "scope": "限瑞士阿爾卑斯高地的重建。極冷年也可能使非寄主出現低值，難以拆開同年的雙重影響；密度曲線不能換算蟲數。"
+                  },
+                  {
+                    "id": "N179",
+                    "cosine": 0.58165,
+                    "question": "樹枝迎風面為什麼會長出羽毛狀白冰？",
+                    "answer_target": "過冷霧滴碰到物體凍結堆積。",
+                    "scope": "What is fog?"
+                  },
+                  {
+                    "id": "L101",
+                    "cosine": 0.577494,
+                    "question": "同樣看起來不暗，樹下和空地的光對植物為什麼不同？",
+                    "answer_target": "紅光與遠紅光比例作為遮蔭線索",
+                    "scope": "光敏素與特定光敏感植物；不推論所有種子相同"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "batch": "lander",
+          "initial_draft": "5da7d3723178caf27d2e35bbd1b52e40b5ab664fbd581d1d241ca89996753d21",
+          "final_draft": "2e2dba998e2c99996c324b5490a6d45e94a2a2cd7c0d115ec94ab5fb86548c78",
+          "directed_pairs": 20,
+          "top5_or_text_changes": 0,
+          "changes": []
+        }
+      ],
+      "earlier_root_only_delta": [
+        {
+          "id": "R31001",
+          "added_ids": [],
+          "removed_ids": []
+        },
+        {
+          "id": "R31002",
+          "added_ids": [],
+          "removed_ids": []
+        },
+        {
+          "id": "R31004",
+          "added_ids": [
+            "R6018"
+          ],
+          "removed_ids": [
+            "B2278"
+          ]
+        },
+        {
+          "id": "R31005",
+          "added_ids": [],
+          "removed_ids": []
+        }
+      ],
+      "known_merge_retrieval_audit": [],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  },
+  "editorial_summary_shortlist": "優先試讀《最外面那圈木頭，真的是砍樹那一年嗎？》（1:44）與《火星一震，天上的相機怎麼知道該往哪裡找？》（1:17）。前者讓一根知道砍伐年份的橄欖枝來考驗判斷；後者讓觀眾先圈搜尋區，再翻衛星照片看有沒有撞痕。白橡火疤在揭曉15場已知燃燒後收在58秒。",
+  "source_summary": "13筆來源各有研究版本、閱讀位置及適用範圍。木材組使用8篇研究，包括同團隊對橄欖木圓周與半徑所作的不同檢查。探測組使用5篇研究；火星新撞坑論文採作者接受稿指定正文，其餘4篇讀PDF與圖頁。以原創示意呈現時，證據、模型與推測各自標示。",
+  "historical_retrieval": {
+    "file": "reviews/wave31-historical-retrieval.json",
+    "sha256": "9eeb6f3018569507677ad5c32777bd23ed142a8eac97e91ec85a5b7375ecd566",
+    "checkpoint": 3104,
+    "metrics": {
+      "same_core": {
+        "compared": 146,
+        "counts": {
+          "both": 40,
+          "semantic_only": 48,
+          "lexical_only": 9,
+          "neither": 49
+        }
+      },
+      "different_core": {
+        "compared": 2332,
+        "counts": {
+          "both": 24,
+          "semantic_only": 1343,
+          "lexical_only": 5,
+          "neither": 960
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,847 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "author": "science_sources",
+  "scope": "卡西尼號考察土星系。以遮星、熱輻射、重力追蹤、冰殼擺動與湖面測高區分不同解釋。",
+  "baseline": {
+    "head": "b65b15e34f51ad119cf55c5fafe3290db5b1e531",
+    "raw_records": 3599,
+    "selected": 3220,
+    "not_added": 1580,
+    "themes": 370,
+    "pool_sha256": "436f5473e5100bf9e21c661e6d4fb312da1c5d3eacd25a767f6cc6aa40949cca",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3220.json.gz",
+      "sha256": "29477021f2a34f474f064cbf578c1e8a467aa9368ceb2681cffb498c890e5699"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave39-space.json",
+      "sha256": "7d7cf2d6014ba74963efc265a8b6d152f783c33c89912345081d2d22f7c7a2ba"
+    },
+    {
+      "file": "reviews/wave39-space-themes.json",
+      "sha256": "a008446278316dd5be1a66b838af625701486bc29bc131c43375f65203109772"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "primary_research_body": 6,
+    "mission_observation_or_research_explanation": 3,
+    "not_added": 15,
+    "near_pairs": 22,
+    "themes": 5
+  },
+  "dedup_reading": {
+    "method": "掃全3599 raw與1580未收的問答、機制、scope與reason，再加查質量異常、冷點、升華、地下水和等位面。檢讀下列22組完整近對。",
+    "scan_files": [
+      {
+        "file": ".cache/wave39-space-scan.json",
+        "sha256": "8ce68f1cb3c06eeeeabcf0a822dd0568c8a51fe0ea68c2126125c92111f5386b"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "S39-001",
+      "b": "N024",
+      "reason": "舊題只說是顆粒構成；新題從同一環另量面密度，檢驗遮光和質量的相關。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-001",
+        "question": "土星環有一段更不透光，裡面的物質就一定更多嗎？",
+        "answer_target": "B環的遮星曲線先告訴人哪裡不透光。研究者另挑出衛星反覆拉扯造成的密度波，用波峰間距隨半徑的變化估算每塊面積含多少物質。幾個遮光程度差很多的環段，估得的面密度卻接近。",
+        "scope": "限B環可辨認波的取樣區及適用密度波模型。不同粒徑或顆粒排列都可能改變擋光程度，這裡不指定成因。"
+      },
+      "b_snapshot": {
+        "id": "N024",
+        "question": "土星環看起來像一整片，裡面其實是什麼？",
+        "answer_target": "冰岩顆粒組成與連續圓盤外觀的差異",
+        "scope": "土星；不採未另查的近期新多邊形風暴新聞"
+      }
+    },
+    {
+      "a": "S39-001",
+      "b": "K6012",
+      "reason": "雲滴分配改變反照是既知條件；此處並未識別顆粒尺寸原因，而用波距獨立估質量。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-001",
+        "question": "土星環有一段更不透光，裡面的物質就一定更多嗎？",
+        "answer_target": "B環的遮星曲線先告訴人哪裡不透光。研究者另挑出衛星反覆拉扯造成的密度波，用波峰間距隨半徑的變化估算每塊面積含多少物質。幾個遮光程度差很多的環段，估得的面密度卻接近。",
+        "scope": "限B環可辨認波的取樣區及適用密度波模型。不同粒徑或顆粒排列都可能改變擋光程度，這裡不指定成因。"
+      },
+      "b_snapshot": {
+        "id": "K6012",
+        "question": "一樣多的雲水，分成更多小水滴，為什麼能更亮？",
+        "answer_target": "在可比雲水與雲層條件下，水分配成更多較小液滴可提高散射與反光，並非多出同量新水。",
+        "scope": "液水雲、控制水量與幾何的雲反照率效應；不是只憑肉眼亮度反推粒徑或污染濃度。"
+      }
+    },
+    {
+      "a": "S39-001",
+      "b": "O3061",
+      "reason": "地球雙星距離量重力；新題由已知共振的波長梯度估局部環面密度。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-001",
+        "question": "土星環有一段更不透光，裡面的物質就一定更多嗎？",
+        "answer_target": "B環的遮星曲線先告訴人哪裡不透光。研究者另挑出衛星反覆拉扯造成的密度波，用波峰間距隨半徑的變化估算每塊面積含多少物質。幾個遮光程度差很多的環段，估得的面密度卻接近。",
+        "scope": "限B環可辨認波的取樣區及適用密度波模型。不同粒徑或顆粒排列都可能改變擋光程度，這裡不指定成因。"
+      },
+      "b_snapshot": {
+        "id": "O3061",
+        "question": "衛星不拍地面，只量兩顆衛星之間的距離，怎麼知道地球哪裡變重？",
+        "answer_target": "先後經過質量異常的雙星受力不同，間距時序可反推重力變化。",
+        "scope": "GRACE 類雙星跟飛重力觀測；測距須結合軌道和其他修正反演，不是兩星距離直接給單點質量。"
+      }
+    },
+    {
+      "a": "S39-002",
+      "b": "S39-001",
+      "reason": "B環讀衛星所激波的徑向波距來秤環，C環則找土星內部振盪的頻率約束星球結構。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-002",
+        "question": "土星外面的一圈波紋，怎麼能排除某些星球內部的樣子？",
+        "answer_target": "土星內部若有受浮力拉回的振盪，就能讓引力隨節奏改變，在相應環段引起波紋。研究把幾種內部成分過渡方式算出的頻率和重力，與C環特定波型比較。成分在較寬範圍逐漸過渡的模型能較好地對上。",
+        "scope": "限論文選用的C環波型、引力資料及內部模型。擬合不是照片，也不足以決定核心裡冰和岩石各占多少。"
+      },
+      "b_snapshot": {
+        "id": "S39-001",
+        "question": "土星環有一段更不透光，裡面的物質就一定更多嗎？",
+        "answer_target": "B環的遮星曲線先告訴人哪裡不透光。研究者另挑出衛星反覆拉扯造成的密度波，用波峰間距隨半徑的變化估算每塊面積含多少物質。幾個遮光程度差很多的環段，估得的面密度卻接近。",
+        "scope": "限B環可辨認波的取樣區及適用密度波模型。不同粒徑或顆粒排列都可能改變擋光程度，這裡不指定成因。"
+      }
+    },
+    {
+      "a": "S39-002",
+      "b": "N028",
+      "reason": "冰巨星材料分類沒有把觀測振盪與內部成分梯度模型對照。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-002",
+        "question": "土星外面的一圈波紋，怎麼能排除某些星球內部的樣子？",
+        "answer_target": "土星內部若有受浮力拉回的振盪，就能讓引力隨節奏改變，在相應環段引起波紋。研究把幾種內部成分過渡方式算出的頻率和重力，與C環特定波型比較。成分在較寬範圍逐漸過渡的模型能較好地對上。",
+        "scope": "限論文選用的C環波型、引力資料及內部模型。擬合不是照片，也不足以決定核心裡冰和岩石各占多少。"
+      },
+      "b_snapshot": {
+        "id": "N028",
+        "question": "叫做冰巨星，內部為什麼不是一顆大冰球？",
+        "answer_target": "天文分類的冰質材料與當下熱流體狀態",
+        "scope": "天王星；不將造成傾斜的碰撞假說當已確定"
+      }
+    },
+    {
+      "a": "S39-002",
+      "b": "P31001",
+      "reason": "火星震波到時圈地表撞坑；此處靠特定引力模態在環上共振，約束內部過渡寬度。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-002",
+        "question": "土星外面的一圈波紋，怎麼能排除某些星球內部的樣子？",
+        "answer_target": "土星內部若有受浮力拉回的振盪，就能讓引力隨節奏改變，在相應環段引起波紋。研究把幾種內部成分過渡方式算出的頻率和重力，與C環特定波型比較。成分在較寬範圍逐漸過渡的模型能較好地對上。",
+        "scope": "限論文選用的C環波型、引力資料及內部模型。擬合不是照片，也不足以決定核心裡冰和岩石各占多少。"
+      },
+      "b_snapshot": {
+        "id": "P31001",
+        "question": "火星地面只放了一台地震儀，怎麼指給天上的相機去找新撞坑？",
+        "answer_target": "地震波和穿過大氣的波並非同時到站。大氣波還會帶動測站腳下的地面；把不同到時和地面運動的來向合起來，就能圈出搜尋範圍。再比對事件前後的軌道照片，查那個範圍內是否真的多了撞擊痕。",
+        "scope": "採2021年三次由訊號導引而找到新痕的事件；時間與方向是有誤差的反推。S1222a是另一場大震，中解析搜尋未見預期爆散區，高解析僅抽查。"
+      }
+    },
+    {
+      "a": "S39-003",
+      "b": "R36007",
+      "reason": "龍宮用不同地方時的岩塊與附近地面溫差推孔隙；此題比較分點兩側相同日照角，季節熱滲透探及日變達不到的粒內深度。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-003",
+        "question": "陽光照向土星環的角度差不多，為什麼分點前後量到的溫度不同？",
+        "answer_target": "土星A環在分點後比太陽仰角絕對值相同的分點前更冷。季節冷卻可深入顆粒，當下溫度仍帶著先前受熱的影響。比較整段冷卻與回暖曲線，能限制內層蓄熱情況，補上短期溫度變化只探到表層的缺口。",
+        "scope": "限卡西尼紅外觀測及兩類粒子模型。均勻熱性質與緻密內部加鬆散外層都能給出可行擬合，不能畫成取樣證實的唯一剖面。"
+      },
+      "b_snapshot": {
+        "id": "R36007",
+        "question": "龍宮布滿大石頭，怎麼多數都沒在白天的熱圖上變成冷點？",
+        "answer_target": "若巨石都像緻密岩塊，比細碎地面升溫慢，白天應有明顯冷點。把不同地方時的熱圖和可見地形對照，多數巨石的溫度卻與附近相近，少數則偏冷。研究團隊用熱慣性差異推估多孔與較緻密岩塊。",
+        "scope": "色溫並非直接量孔隙；日照、表面粗糙度及地方時都影響讀數。簡報與原刊為同一研究。"
+      }
+    },
+    {
+      "a": "S39-003",
+      "b": "N024",
+      "reason": "辨別鬆表層與較深的蓄熱靠季節滯後，不只列出冰岩顆粒。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-003",
+        "question": "陽光照向土星環的角度差不多，為什麼分點前後量到的溫度不同？",
+        "answer_target": "土星A環在分點後比太陽仰角絕對值相同的分點前更冷。季節冷卻可深入顆粒，當下溫度仍帶著先前受熱的影響。比較整段冷卻與回暖曲線，能限制內層蓄熱情況，補上短期溫度變化只探到表層的缺口。",
+        "scope": "限卡西尼紅外觀測及兩類粒子模型。均勻熱性質與緻密內部加鬆散外層都能給出可行擬合，不能畫成取樣證實的唯一剖面。"
+      },
+      "b_snapshot": {
+        "id": "N024",
+        "question": "土星環看起來像一整片，裡面其實是什麼？",
+        "answer_target": "冰岩顆粒組成與連續圓盤外觀的差異",
+        "scope": "土星；不採未另查的近期新多邊形風暴新聞"
+      }
+    },
+    {
+      "a": "S39-004",
+      "b": "N025",
+      "reason": "距心不同轉速是背景；只有傾斜軌道激起的出平面波才會另投邊緣波影。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-004",
+        "question": "土星環邊像紙上畫的波浪，怎麼看出有些地方真的翹起來？",
+        "answer_target": "達芙妮的軌道稍微傾斜，引力讓環隙邊的顆粒既沿環面擺動，也上下移。當陽光近乎沿著環面射來，翹起的波峰在旁邊投下影子，顯出俯視輪廓無法單獨辨認的高度。",
+        "scope": "限Keeler環隙及接近2009分點的斜照。區別衛星本身的影子與邊緣波影；不主張整圈都隆起或重算高度。"
+      },
+      "b_snapshot": {
+        "id": "N025",
+        "question": "土星環裡的不同圈，為什麼不一起轉同樣快？",
+        "answer_target": "環粒子各自繞行與半徑差異",
+        "scope": "土星；不採未另查的近期新多邊形風暴新聞"
+      }
+    },
+    {
+      "a": "S39-004",
+      "b": "N279",
+      "reason": "日落高雲仍受光，是地球曲率遮光幾何；本題以波峰對環面的獨立投影檢垂直擾動。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-004",
+        "question": "土星環邊像紙上畫的波浪，怎麼看出有些地方真的翹起來？",
+        "answer_target": "達芙妮的軌道稍微傾斜，引力讓環隙邊的顆粒既沿環面擺動，也上下移。當陽光近乎沿著環面射來，翹起的波峰在旁邊投下影子，顯出俯視輪廓無法單獨辨認的高度。",
+        "scope": "限Keeler環隙及接近2009分點的斜照。區別衛星本身的影子與邊緣波影；不主張整圈都隆起或重算高度。"
+      },
+      "b_snapshot": {
+        "id": "N279",
+        "question": "地面已經日落，為什麼有些高空雲還能亮得像自己發光？",
+        "answer_target": "地球曲率與雲的高度，使地面進入陰影時高空雲仍受陽光照射。",
+        "scope": "Unusual cloud formations"
+      }
+    },
+    {
+      "a": "S39-005",
+      "b": "S39-004",
+      "reason": "達芙妮題是直接定位的小衛星與環隙垂直波影；另一研究以平面雙斑徑向間距約束看不清的中心質量。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-005",
+        "question": "卡西尼沒拍清小月亮本身，為什麼能從兩道錯開的短斑估它多大？",
+        "answer_target": "嵌在A環裡的小天體會撥開附近顆粒。內側軌道走得較快、外側較慢，局部擾動被帶向前後兩方。若照片的雙斑對應模型裡的局部缺口，兩斑的徑向間距便隨小天體引力可支配的尺度改變，能約束其質量。",
+        "scope": "採2008年模型與已解析的雙斑。亮度也受顆粒堆聚或尾跡影響，取不同解釋會改變尺寸估計。不要直接將斑的長度當小月直徑。"
+      },
+      "b_snapshot": {
+        "id": "S39-004",
+        "question": "土星環邊像紙上畫的波浪，怎麼看出有些地方真的翹起來？",
+        "answer_target": "達芙妮的軌道稍微傾斜，引力讓環隙邊的顆粒既沿環面擺動，也上下移。當陽光近乎沿著環面射來，翹起的波峰在旁邊投下影子，顯出俯視輪廓無法單獨辨認的高度。",
+        "scope": "限Keeler環隙及接近2009分點的斜照。區別衛星本身的影子與邊緣波影；不主張整圈都隆起或重算高度。"
+      }
+    },
+    {
+      "a": "S39-005",
+      "b": "N025",
+      "reason": "差速已有；局部散射區的尺度和兩斑徑向距離的證據鏈是新控制。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-005",
+        "question": "卡西尼沒拍清小月亮本身，為什麼能從兩道錯開的短斑估它多大？",
+        "answer_target": "嵌在A環裡的小天體會撥開附近顆粒。內側軌道走得較快、外側較慢，局部擾動被帶向前後兩方。若照片的雙斑對應模型裡的局部缺口，兩斑的徑向間距便隨小天體引力可支配的尺度改變，能約束其質量。",
+        "scope": "採2008年模型與已解析的雙斑。亮度也受顆粒堆聚或尾跡影響，取不同解釋會改變尺寸估計。不要直接將斑的長度當小月直徑。"
+      },
+      "b_snapshot": {
+        "id": "N025",
+        "question": "土星環裡的不同圈，為什麼不一起轉同樣快？",
+        "answer_target": "環粒子各自繞行與半徑差異",
+        "scope": "土星；不採未另查的近期新多邊形風暴新聞"
+      }
+    },
+    {
+      "a": "S39-006",
+      "b": "N023",
+      "reason": "大紅斑測風暴深度；冰衛星題額外用已知缺失地形預測負異常，殘差的方向才約束地下補償質量。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-006",
+        "question": "土衛二南極明明凹下去，引力怎麼沒弱到原先預期的程度？",
+        "answer_target": "表面少了一塊質量，能預測當地引力應少多少。三次飛掠的無線電頻移讓研究者反推出引力變化，實際缺額比只算地面凹陷來得小。冰的下方若有比冰密的液態水，可以在質量帳上補回一部分。",
+        "scope": "根據2014年局部重力/地形比較。這組資料本身容許南極區域海，無法單獨判定全球範圍或噴流來源。"
+      },
+      "b_snapshot": {
+        "id": "N023",
+        "question": "木星大紅斑有多深，為什麼能靠重力訊號推估？",
+        "answer_target": "風暴質量分布與飛掠重力測量",
+        "scope": "木星；深層結構屬觀測約束模型"
+      }
+    },
+    {
+      "a": "S39-006",
+      "b": "O3063",
+      "reason": "重力水儲量的成分歧義已有，新題以地形本應造成的缺額與實際缺額作符號及強度比較。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-006",
+        "question": "土衛二南極明明凹下去，引力怎麼沒弱到原先預期的程度？",
+        "answer_target": "表面少了一塊質量，能預測當地引力應少多少。三次飛掠的無線電頻移讓研究者反推出引力變化，實際缺額比只算地面凹陷來得小。冰的下方若有比冰密的液態水，可以在質量帳上補回一部分。",
+        "scope": "根據2014年局部重力/地形比較。這組資料本身容許南極區域海，無法單獨判定全球範圍或噴流來源。"
+      },
+      "b_snapshot": {
+        "id": "O3063",
+        "question": "重力衛星說一個地方少了水，為什麼不能直接知道是哪口井缺水？",
+        "answer_target": "重力反映總質量變化，地下水需結合雪、地表水、土壤水及模型分離，也不是單井測量。",
+        "scope": "區域陸地總水儲量變化與地下水分量推估；需外部資料及模型，空間解析不支持單井結論。"
+      }
+    },
+    {
+      "a": "S39-006",
+      "b": "R009",
+      "reason": "無線電可做實驗只是儀器入口，無法由此推出質量補償。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-006",
+        "question": "土衛二南極明明凹下去，引力怎麼沒弱到原先預期的程度？",
+        "answer_target": "表面少了一塊質量，能預測當地引力應少多少。三次飛掠的無線電頻移讓研究者反推出引力變化，實際缺額比只算地面凹陷來得小。冰的下方若有比冰密的液態水，可以在質量帳上補回一部分。",
+        "scope": "根據2014年局部重力/地形比較。這組資料本身容許南極區域海，無法單獨判定全球範圍或噴流來源。"
+      },
+      "b_snapshot": {
+        "id": "R009",
+        "question": "太空船傳來的無線電，為什麼本身也能拿來做實驗？",
+        "answer_target": "比較傳送前後的訊號變化來研究沿途天體",
+        "scope": "訊號沿途傳播效應與由探測器運動推回重力場，是不同研究路徑；不把內部結構說成電波直接穿透行星。反演方法、誤差和任務證據待補。"
+      }
+    },
+    {
+      "a": "S39-007",
+      "b": "LEG-S21",
+      "reason": "同一面與幾何天平動不決定此處的受迫物理擺幅；剛連與解耦模型對同一個潮汐力矩有不同響應。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-007",
+        "question": "只追蹤土衛二表面的隕坑，怎麼判斷冰下的海可能繞遍全球？",
+        "answer_target": "沿略呈橢圓的軌道運行時，土星反覆拉扯土衛二，冰殼的朝向會輕輕來回擺動。跨年對齊隕坑，扣除觀看幾何的影響後，實測擺幅大於冰殼和岩核鎖在一起的模型。全球液層讓外殼能與內核相對擺動，可得到較大的幅度。",
+        "scope": "限實際追蹤之地標及所試模型。所測物理擺動不同於因視線改變而看見更多表面；層厚與熱來源仍需額外條件。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S21",
+        "question": "月亮明明會轉，為什麼總讓你看到同一面？",
+        "answer_target": "月亮其實有在自轉，只是自轉一圈的時間（約 27.3 天）剛好等於繞地球一圈，所以總是同一面朝著我們。這叫潮汐鎖定：地球的引力把月亮拉出微微的隆起，拉扯產生的摩擦像煞車，把月亮的自轉慢慢拖到跟公轉同步。不過月亮會輕輕搖晃，站在地球上累積看得到約 59% 的表面；背面也不是暗面，它一樣有白天。",
+        "scope": "沿用 S21 題級條件，須讀原查核包的限制；用公轉自轉模型拆直覺，補天平動邊界，不說完全同一畫面。"
+      }
+    },
+    {
+      "a": "S39-007",
+      "b": "S39-006",
+      "reason": "同一水層假說但局部重力補償約束密度，旋轉幅度約束殼核機械連結與海的範圍。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-007",
+        "question": "只追蹤土衛二表面的隕坑，怎麼判斷冰下的海可能繞遍全球？",
+        "answer_target": "沿略呈橢圓的軌道運行時，土星反覆拉扯土衛二，冰殼的朝向會輕輕來回擺動。跨年對齊隕坑，扣除觀看幾何的影響後，實測擺幅大於冰殼和岩核鎖在一起的模型。全球液層讓外殼能與內核相對擺動，可得到較大的幅度。",
+        "scope": "限實際追蹤之地標及所試模型。所測物理擺動不同於因視線改變而看見更多表面；層厚與熱來源仍需額外條件。"
+      },
+      "b_snapshot": {
+        "id": "S39-006",
+        "question": "土衛二南極明明凹下去，引力怎麼沒弱到原先預期的程度？",
+        "answer_target": "表面少了一塊質量，能預測當地引力應少多少。三次飛掠的無線電頻移讓研究者反推出引力變化，實際缺額比只算地面凹陷來得小。冰的下方若有比冰密的液態水，可以在質量帳上補回一部分。",
+        "scope": "根據2014年局部重力/地形比較。這組資料本身容許南極區域海，無法單獨判定全球範圍或噴流來源。"
+      }
+    },
+    {
+      "a": "S39-008",
+      "b": "N217",
+      "reason": "只談深淺色的吸光不能解釋冰從暖處損失、冷處保留後再放大亮暗。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-008",
+        "question": "土衛八原本的一點色差，怎麼可能自己越拉越大？",
+        "answer_target": "同一次飛掠比對相同地區，暗色斑塊的正午溫度較高。依這些溫度估算，暗處冰較容易升華，移到較冷的亮處後更容易保留。暗處少了亮冰、冷處添了亮冰，原先的色差就可能逐漸放大。",
+        "scope": "2007年CIRS正午熱圖與ISS影像直接給亮度和溫差；長期遷移、冷端保留及極冠為熱模型解釋。未觀測整個遷移歷程。"
+      },
+      "b_snapshot": {
+        "id": "N217",
+        "question": "冰河上的黑灰或微生物，為什麼會影響融冰速度？",
+        "answer_target": "表面反射率下降增加吸收能量。",
+        "scope": "Science of Glaciers"
+      }
+    },
+    {
+      "a": "S39-008",
+      "b": "E17003",
+      "reason": "薄石遮蔽入射改變其下的升華，沒有跨區凝結後改變反射率的回饋。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-008",
+        "question": "土衛八原本的一點色差，怎麼可能自己越拉越大？",
+        "answer_target": "同一次飛掠比對相同地區，暗色斑塊的正午溫度較高。依這些溫度估算，暗處冰較容易升華，移到較冷的亮處後更容易保留。暗處少了亮冰、冷處添了亮冰，原先的色差就可能逐漸放大。",
+        "scope": "2007年CIRS正午熱圖與ISS影像直接給亮度和溫差；長期遷移、冷端保留及極冠為熱模型解釋。未觀測整個遷移歷程。"
+      },
+      "b_snapshot": {
+        "id": "E17003",
+        "question": "寒冷湖面上的薄石片，為什麼也能站在細細的冰腳上？",
+        "answer_target": "在升華主導條件中，石片遮住部分入射輻射，使下方冰比周圍消退慢；材質與溝槽接觸對照支持遮蔽作用，不能照搬溫暖冰河的導熱尺寸門檻。",
+        "scope": "限2021自然觀察、凍乾類比與二維定性模型；實驗用腔壁紅外輻射，自然以散射日照為研究解釋，不能把兩者能譜或時間直接等同。"
+      }
+    },
+    {
+      "a": "S39-009",
+      "b": "M2080",
+      "reason": "橢球高與勢面是比較基準，本題另一觀測是局部乾盆底與已填湖液位的上下界，以檢驗連通範圍。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-009",
+        "question": "泰坦的幾片海差不多齊平，遠方有些湖怎麼會高出幾百公尺？",
+        "answer_target": "先扣除重力等位面形狀，幾片北方海面的高度在量測誤差內相近，遠方部分湖泊卻高得多。再把比較範圍縮到同一流域，有資料的乾盆底位在附近液面之上。這種分布符合局部有液體往來、不同流域卻能維持不同液位的解釋。",
+        "scope": "限Cassini測高覆蓋的湖海與乾盆。地下相通是推論，並未拍到底下的通道；不同高程也不意味流域間絕對隔絕。"
+      },
+      "b_snapshot": {
+        "id": "M2080",
+        "question": "GPS 的幾何高度，為什麼不直接等於水會往哪邊流？",
+        "answer_target": "水的流動與重力位相關，幾何橢球高度不是等位面。",
+        "scope": "只解釋概念，實際水流還受邊界與動力條件影響。"
+      }
+    },
+    {
+      "a": "S39-009",
+      "b": "M2082",
+      "reason": "地方海面和海拔零點沒有提供同流域乾盆/滿湖的對照。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-009",
+        "question": "泰坦的幾片海差不多齊平，遠方有些湖怎麼會高出幾百公尺？",
+        "answer_target": "先扣除重力等位面形狀，幾片北方海面的高度在量測誤差內相近，遠方部分湖泊卻高得多。再把比較範圍縮到同一流域，有資料的乾盆底位在附近液面之上。這種分布符合局部有液體往來、不同流域卻能維持不同液位的解釋。",
+        "scope": "限Cassini測高覆蓋的湖海與乾盆。地下相通是推論，並未拍到底下的通道；不同高程也不意味流域間絕對隔絕。"
+      },
+      "b_snapshot": {
+        "id": "M2082",
+        "question": "大家都說海拔零公尺，海邊的平均海面卻不一定是同一面？",
+        "answer_target": "地方平均海面與全球選定等位面有差別。",
+        "scope": "不把潮汐瞬時高度與長期平均混為一談。"
+      }
+    },
+    {
+      "a": "S39-009",
+      "b": "N081",
+      "reason": "坡上泉水是露出地表的流出點；此處無目視通道，以液位及空盆底分布約束局域連通。",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "a_snapshot": {
+        "id": "S39-009",
+        "question": "泰坦的幾片海差不多齊平，遠方有些湖怎麼會高出幾百公尺？",
+        "answer_target": "先扣除重力等位面形狀，幾片北方海面的高度在量測誤差內相近，遠方部分湖泊卻高得多。再把比較範圍縮到同一流域，有資料的乾盆底位在附近液面之上。這種分布符合局部有液體往來、不同流域卻能維持不同液位的解釋。",
+        "scope": "限Cassini測高覆蓋的湖海與乾盆。地下相通是推論，並未拍到底下的通道；不同高程也不意味流域間絕對隔絕。"
+      },
+      "b_snapshot": {
+        "id": "N081",
+        "question": "泉水為什麼會從山坡半腰冒出來？",
+        "answer_target": "地下水位、地形與透水層共同決定出露位置。",
+        "scope": "Springs and the Water Cycle"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "S39-S001",
+      "doi": "10.1016/j.icarus.2016.01.007",
+      "primary_body_url": "https://arxiv.org/pdf/1601.07955",
+      "identity_relation": "arXiv:1601.07955v2（PDF首頁2016-02-17）。期刊同一研究。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    },
+    {
+      "source_id": "S39-S002",
+      "doi": "10.1038/s41550-021-01448-3",
+      "primary_body_url": "https://arxiv.org/pdf/2104.13385",
+      "identity_relation": "arXiv:2104.13385v2（PDF首頁2021-05-03）。期刊DOI同工作。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    },
+    {
+      "source_id": "S39-S003",
+      "doi": "10.1016/j.icarus.2015.06.025",
+      "primary_body_url": "https://arxiv.org/pdf/1508.07375",
+      "identity_relation": "arXiv:1508.07375v1（識別列2015-08-28）。內頁排版日期不當成觀測日期。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    },
+    {
+      "source_id": "S39-S004",
+      "doi": "",
+      "primary_body_url": "https://science.nasa.gov/resource/shadows-from-the-waves/",
+      "identity_relation": "任務影像說明 PIA12622，發布2010-04-29；觀測2009-06-28。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    },
+    {
+      "source_id": "S39-S005",
+      "doi": "10.1088/0004-6256/135/3/1083",
+      "primary_body_url": "https://mmhedman.github.io/papers_published/MST_proppop_aj_2008.pdf",
+      "identity_relation": "共同作者Hedman公開之2008期刊排版PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    },
+    {
+      "source_id": "S39-S006",
+      "doi": "",
+      "primary_body_url": "https://science.nasa.gov/missions/cassini/nasa-space-assets-detect-ocean-inside-saturn-moon/",
+      "identity_relation": "2014年任務研究說明，內含Iess與合作者對10.1126/science.1250551的解說。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    },
+    {
+      "source_id": "S39-S007",
+      "doi": "10.1016/j.icarus.2015.08.037",
+      "primary_body_url": "https://arxiv.org/pdf/1509.07555",
+      "identity_relation": "arXiv:1509.07555作者稿，期刊2016年卷與2015年稿為同工作。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    },
+    {
+      "source_id": "S39-S008",
+      "doi": "",
+      "primary_body_url": "https://science.nasa.gov/resource/warm-and-dry-on-iapetus/",
+      "identity_relation": "任務影像說明 PIA10012，比對2007-09-10同次飛掠兩項儀器量測。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    },
+    {
+      "source_id": "S39-S009",
+      "doi": "10.1002/2017GL075468",
+      "primary_body_url": "https://iris.uniroma1.it/retrieve/e383532c-6823-15e8-e053-a505fe0a3de9/Hayes1_Topographic-constraints_2017.pdf",
+      "identity_relation": "2017原刊排版PDF，大學典藏。web工具讀取定點；未取得本機完整PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同篇的DOI、資料庫、期刊／作者稿視為同一研究；任務文章標為該次分析或觀測的說明。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "S39-S001",
+      "scope": "PDF pp.3–4 §2與式5，p.33表2及p.34圖19。",
+      "locator": "PDF pp.3–4 §2與式5，p.33表2及p.34圖19。",
+      "cache": {
+        "file": ".cache/wave39-space-mass.pdf",
+        "sha256": "fb1be7fe474fd3c2ee203c28d310d6b4f600d28f4a2b795ac922162c5932c2da",
+        "text_file": ".cache/wave39-space-mass.txt",
+        "text_sha256": "303699f09f3971460ef5b2ab8517b9e850a6825ef69f4a67b2e98b7db911c5d1"
+      },
+      "read_via": "指定編輯UA下載研究PDF或任務HTML，讀本機抽取的指定正文。"
+    },
+    {
+      "source_id": "S39-S002",
+      "scope": "PDF pp.2–3主文W76.44與模型對比，p.5討論模型限制，p.7圖2。",
+      "locator": "PDF pp.2–3主文W76.44與模型對比，p.5討論模型限制，p.7圖2。",
+      "cache": {
+        "file": ".cache/wave39-space-core.pdf",
+        "sha256": "478643beeb16b4ea30f35463e0a8e39f1ba0878879aaef7d35c797521df07168",
+        "text_file": ".cache/wave39-space-core.txt",
+        "text_sha256": "a0eb3e66de17a73886672be2ee7f198a9066f5b03725691283af8d5d1803eaa1"
+      },
+      "read_via": "指定編輯UA下載研究PDF或任務HTML，讀本機抽取的指定正文。"
+    },
+    {
+      "source_id": "S39-S003",
+      "scope": "PDF p.4分點異常，p.11圖3說明，p.37兩模型擬合及p.43 §6。",
+      "locator": "PDF p.4分點異常，p.11圖3說明，p.37兩模型擬合及p.43 §6。",
+      "cache": {
+        "file": ".cache/wave39-space-cool.pdf",
+        "sha256": "719d735b7914c7e91978c9def2028f7448c1ff8ffa373e2974a52bc8b9282326",
+        "text_file": ".cache/wave39-space-cool.txt",
+        "text_sha256": "946f6bbecff02f07c58cc6929219bcca903be2fd5ce9b61019596ea1c80841a5"
+      },
+      "read_via": "指定編輯UA下載研究PDF或任務HTML，讀本機抽取的指定正文。"
+    },
+    {
+      "source_id": "S39-S004",
+      "scope": "PIA12622正文第1–2段環隙/波紋與第4段分點投影；末段視角與觀測日期。",
+      "locator": "PIA12622正文第1–2段環隙/波紋與第4段分點投影；末段視角與觀測日期。",
+      "cache": {
+        "file": ".cache/wave39-space-daph.html",
+        "sha256": "cd8adb7b274666355da5f8ec7960ab0d8a61f3b36c2601924d94b93bb9ec57cf",
+        "text_file": ".cache/wave39-space-daph.txt",
+        "text_sha256": "93c26fbb5f2257cbdd7b0960e15355735e2349b081056ed3ea778887241127b9"
+      },
+      "read_via": "指定編輯UA下載研究PDF或任務HTML，讀本機抽取的指定正文。"
+    },
+    {
+      "source_id": "S39-S005",
+      "scope": "原刊pp.1083–1084 §2簡化模型與對亮度的保留，p.1086圖2–4，p.1090 §§5.4–5.5。",
+      "locator": "原刊pp.1083–1084 §2簡化模型與對亮度的保留，p.1086圖2–4，p.1090 §§5.4–5.5。",
+      "cache": {
+        "file": ".cache/wave39-space-prop.pdf",
+        "sha256": "7eb982ab63dd4e0a04db890198704f20cc22327b3338e0077e29cc17a2500a51",
+        "text_file": ".cache/wave39-space-prop.txt",
+        "text_sha256": "44903c1411fda0d545908e7b1f78ecf359ea37fc46f96907aba9c87e39adc393"
+      },
+      "read_via": "指定編輯UA下載研究PDF或任務HTML，讀本機抽取的指定正文。"
+    },
+    {
+      "source_id": "S39-S006",
+      "scope": "正文「Cassini has flown near Enceladus」至Iess說明補償的三段，上文DSN頻移說明。",
+      "locator": "正文「Cassini has flown near Enceladus」至Iess說明補償的三段，上文DSN頻移說明。",
+      "cache": {
+        "file": ".cache/wave39-space-grav.html",
+        "sha256": "e54c79c1afa03c43a42bd8180937efcaf610973ab22ab2f2a63796a681dad409",
+        "text_file": ".cache/wave39-space-grav.txt",
+        "text_sha256": "33514899d4b6938564921608650c0011ee752d507fa076f4ec80515767b4d230"
+      },
+      "read_via": "指定編輯UA下載研究PDF或任務HTML，讀本機抽取的指定正文。"
+    },
+    {
+      "source_id": "S39-S007",
+      "scope": "PDF p.3 §2隕坑控制點、p.5圖1、p.11物理與視覺天平動分解、pp.14–16 §6、p.18厚度假設。",
+      "locator": "PDF p.3 §2隕坑控制點、p.5圖1、p.11物理與視覺天平動分解、pp.14–16 §6、p.18厚度假設。",
+      "cache": {
+        "file": ".cache/wave39-space-lib.pdf",
+        "sha256": "a1b65daee0a3d83ba0952535736b5e22c7d02d8e020ee8da69bf08a90c34cdc5",
+        "text_file": ".cache/wave39-space-lib.txt",
+        "text_sha256": "b1993a76e759cc7115634d644c64a056c33d0d35c26fd9a7c4235f26a8d401e8"
+      },
+      "read_via": "指定編輯UA下載研究PDF或任務HTML，讀本機抽取的指定正文。"
+    },
+    {
+      "source_id": "S39-S008",
+      "scope": "任務說明第1–4段：同地可見光/正午溫度、失冰估算、向較冷地區遷移模型。",
+      "locator": "任務說明第1–4段：同地可見光/正午溫度、失冰估算、向較冷地區遷移模型。",
+      "cache": {
+        "file": ".cache/wave39-space-iap.html",
+        "sha256": "27743b0042acc07d122396fb1f6a47b4c65251819ca5efe3a1b7769d7f157454",
+        "text_file": ".cache/wave39-space-iap.txt",
+        "text_sha256": "6e103b4950a8a6e6be571a10e587a9c3de9f7f333e5c933b69280bda978423af"
+      },
+      "read_via": "指定編輯UA下載研究PDF或任務HTML，讀本機抽取的指定正文。"
+    },
+    {
+      "source_id": "S39-S009",
+      "scope": "§2與圖2、§3圖4討論，典藏PDF工具擷取L59–98，包括同次T108過境與同一流域空盆底部。",
+      "locator": "§2與圖2、§3圖4討論，典藏PDF工具擷取L59–98，包括同次T108過境與同一流域空盆底部。",
+      "cache": {
+        "file": ".cache/wave39-space-titan-web.txt",
+        "sha256": "dcd6c8df12d31e46eb0a66d4a2e59853a90ebda54fd2d66e1995869faa4c74dc",
+        "text_file": ".cache/wave39-space-titan-web.txt",
+        "text_sha256": "dcd6c8df12d31e46eb0a66d4a2e59853a90ebda54fd2d66e1995869faa4c74dc"
+      },
+      "read_via": "web.open大學典藏PDF，保留定位返回的原文節選。指定UA直接抓取兩個典藏網址均403。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave39-space-fetch.json",
+      "sha256": "b26c679213ccadf490dd6eb200a014afa8cba513c55e890058c56a8d41abf806"
+    },
+    {
+      "file": ".cache/wave39-space-fetch2.json",
+      "sha256": "776aa635320f761e1fe51bd7dafa0abb30bc6e8e5264ce3a436def11d208aab6"
+    },
+    {
+      "file": ".cache/wave39-space-crossref.json",
+      "sha256": "137870e98ebb9f5ed2a638dcefe5749df3abf407c4f5a996a835df36a0fa3cef"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://www.jpl.nasa.gov/news/nasa-space-assets-detect-ocean-inside-saturn-moon/",
+      "method": "指定編輯UA，urllib GET",
+      "result": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://lunar.earth.northwestern.edu/courses/450/enceladus3.pdf",
+      "method": "指定編輯UA，urllib GET",
+      "result": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'lunar.earth.northwestern.edu'. (_ssl.c:1082)>"
+    },
+    {
+      "url": "https://www.jpl.nasa.gov/images/pia10012-warm-and-dry-on-iapetus/",
+      "method": "指定編輯UA，urllib GET",
+      "result": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://iris.uniroma1.it/bitstream/11573/1560393/1/Hayes1_Topographic-constraints_2017.pdf",
+      "method": "指定編輯UA，urllib GET",
+      "result": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://iris.uniroma1.it/retrieve/e383532c-6823-15e8-e053-a505fe0a3de9/Hayes1_Topographic-constraints_2017.pdf",
+      "method": "指定編輯UA，urllib GET",
+      "result": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave39-space-figure-check.jpg",
+      "sha256": "2a8deaae9564ce9a7aca994c19d970f409d3a0aa4692abdf47fd9c9dfeb248d2",
+      "read_scope": "本機渲染合頁目讀4頁。B環圖19、土星內部模型圖2、螺槳斑圖2–4與土衛二隕坑控制點圖1；其餘讀正文/圖說。"
+    }
+  ],
+  "reading_limits": [
+    "9來源中6篇研究讀指定正文，3份NASA任務科學組說明。本地保留5原研究PDF、3份任務HTML、1份典藏web定點原文。",
+    "S009兩個典藏直接抓取均403；web返回原刊PDF指定段，快取是節選。同一次量測/模型若由不同載體引述不另計證據。",
+    "沒有重算原始資料或試拍；S006只據任務團隊對2014飛掠的解釋與原刊書目，沒有聲稱讀過期刊全文。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W39S-T01",
+      "body_seconds": 81,
+      "chapter_seconds": [
+        46,
+        35
+      ],
+      "core_seconds": {
+        "S39-006": 46,
+        "S39-007": 35
+      },
+      "max_beat_seconds": 23,
+      "status": "OFFLINE_VOICE_TIMING_INFORMED_PAPER_BUDGET"
+    },
+    {
+      "id": "W39S-T02",
+      "body_seconds": 66,
+      "chapter_seconds": [
+        32,
+        34
+      ],
+      "core_seconds": {
+        "S39-001": 66
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39S-T03",
+      "body_seconds": 85,
+      "chapter_seconds": [
+        39,
+        46
+      ],
+      "core_seconds": {
+        "S39-004": 39,
+        "S39-005": 46
+      },
+      "max_beat_seconds": 23,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39S-T04",
+      "body_seconds": 58,
+      "chapter_seconds": [
+        29,
+        29
+      ],
+      "core_seconds": {
+        "S39-008": 58
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W39S-T05",
+      "body_seconds": 63,
+      "chapter_seconds": [
+        31,
+        32
+      ],
+      "core_seconds": {
+        "S39-009": 63
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "all_strings_rstrip": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "S39-002 C環探核心與S39-003季節熱滯後留池，這輪五案不以額外模型章補時。",
+    "待非作者及共同近鄰審閱。"
+  ],
+  "revision_history": [
+    {
+      "id": "SPACE-TIMING-01",
+      "previous_files": [
+        {
+          "file": "batches/wave39-space.json",
+          "sha256": "24a5f5ac8ed8e049e0297c7312c6df505e9d1c5ab18b75b3773261b44607af50"
+        },
+        {
+          "file": "reviews/wave39-space-themes.json",
+          "sha256": "080b42a4496753124e68c2b369022576af9b2f91f5ecc4843127732681b2c0a7"
+        },
+        {
+          "file": "reviews/wave39-space-author.json",
+          "sha256": "0ab127f6d2ee21104deefc468606b21b9f1c7421a76372d0df72512d5debfbee"
+        }
+      ],
+      "finding": "W39S-T01離線旁白測得71.579秒，原本97秒預算留下過長轉換。",
+      "resolution": "採81秒（46+35）。兩研究、地標定位與海層模型對照保留。更新range/beat/drop，未擴充事實或新素材。",
+      "updated_themes_sha256": "a008446278316dd5be1a66b838af625701486bc29bc131c43375f65203109772"
+    },
+    {
+      "id": "SPACE01",
+      "previous_files": [
+        {
+          "file": "batches/wave39-space.json",
+          "sha256": "24a5f5ac8ed8e049e0297c7312c6df505e9d1c5ab18b75b3773261b44607af50"
+        },
+        {
+          "file": "reviews/wave39-space-themes.json",
+          "sha256": "a008446278316dd5be1a66b838af625701486bc29bc131c43375f65203109772"
+        },
+        {
+          "file": "reviews/wave39-space-author.json",
+          "sha256": "8da093ead47e6391f90052df538290e59c605a1fde300762db7f408b1f432bd8"
+        }
+      ],
+      "finding": "圖19比較透光的光學厚度及總面密度。原題兩倍遮光分率、兩倍冰量的對照超出這兩個讀數。",
+      "old_question": "土星環遮掉的星光多一倍，那裡的冰也多一倍嗎？",
+      "new_question": "土星環有一段更不透光，裡面的物質就一定更多嗎？",
+      "resolution": "題名收成不透光與物質多少，各作者近對快照同步。原答案、讀數與五案秒數保持。",
+      "updated_batch_sha256": "7d7cf2d6014ba74963efc265a8b6d152f783c33c89912345081d2d22f7c7a2ba"
+    }
+  ],
+  "timing_probe": {
+    "theme_id": "W39S-T01",
+    "source": "root於本輪回傳之離線連讀測量；作者採用其時長，不宣稱自行聽讀或測試有圖的成片。",
+    "voice_seconds": 71.579,
+    "separate_segment_seconds": [
+      23.024,
+      17.908,
+      30.646
+    ],
+    "adopted_body_seconds": 81,
+    "chapter_seconds": [
+      46,
+      35
+    ],
+    "observable_work": "看清同一凹地的質量缺額、對準隕坑、將全球液層畫成推論虛線。"
+  }
+}

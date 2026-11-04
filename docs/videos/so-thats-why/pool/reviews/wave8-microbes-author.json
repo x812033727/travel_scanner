@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave8-microbes-20261101",
+  "files": [
+    {
+      "path": "batches/wave8-microbes.json",
+      "sha256": "57511f3a8b837a728317b0017135c688187691411360f95db9fcd886b2cec3fd"
+    },
+    {
+      "path": "reviews/wave8-microbes-themes.json",
+      "sha256": "b2ae618d622b5feb0ef77f2c47999457d98090722abafaef861987b82964d5f6"
+    }
+  ],
+  "encoding": "UTF-8 without BOM; LF; exact byte hashes",
+  "counts": {
+    "candidates": 22,
+    "sources": 22,
+    "candidate_referenced_sources": 22,
+    "not_added": 14,
+    "theme_proposals": 3,
+    "author_proposed_merges": 1
+  },
+  "candidate_ids": [
+    "U8001",
+    "U8002",
+    "U8003",
+    "U8004",
+    "U8005",
+    "U8006",
+    "U8007",
+    "U8008",
+    "U8009",
+    "U8010",
+    "U8011",
+    "U8012",
+    "U8013",
+    "U8014",
+    "U8015",
+    "U8016",
+    "U8017",
+    "U8018",
+    "U8019",
+    "U8020",
+    "U8021",
+    "U8022"
+  ],
+  "baseline": {
+    "path": "pool.json",
+    "sha256": "cb4501bbb3cabeb2d0ff4d004fdb19c61ecf1ac2f7bcc31da42063c38f43ffc9",
+    "raw_records": 3017,
+    "selected": 2667,
+    "method": "對3017 raw含別名之question/answer_target/scope/mechanism_key做中英機制檢索；三份相關結果90/93/12列共187個不同ID已讀；另依非作者提醒補讀P257，共188個舊ID。不是逐題全庫人工再查核，也不是已完成語意top-k覆核。"
+  },
+  "source_reading": {
+    "body_read_sources": 22,
+    "abstract_only_sources": 0,
+    "original_research_pages": 19,
+    "university_authored_reviews": 2,
+    "university_lab_educational_pages": 1,
+    "limits": "每頁只按來源reading_scope所列正文閱讀；部分新題採原研究Introduction的既有背景機制，不能宣稱該篇新實驗驗了此候選全部內容。S013/S014由公開Europe PMC XML取得，PMC檢查頁未繞過；S022由web.open正文。未播放補充影片、未逐條查引用、未核圖片商用權。"
+  },
+  "boundary_pairs": [
+    {
+      "ids": [
+        "U8001",
+        "LEG-S70"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "合滴能量轉換與發射，不只表面張力使泡成球；菌褶限距已併同核。"
+    },
+    {
+      "ids": [
+        "U8002",
+        "U8003",
+        "P013"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "前者蒸發冷卻/受限交換流，後者集體動量造流；不是同一流場換孢子名稱，也不是單粒Stokes阻力。"
+    },
+    {
+      "ids": [
+        "U8004",
+        "V3076",
+        "R6018"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "孔的平時交換、植物傷口區隔與Woronin急性封孔各有不同作用條件；不把單純隔離效果當唯一區別。"
+    },
+    {
+      "ids": [
+        "U8005",
+        "U8006",
+        "V3016"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "何時轉、怎樣轉與酵母交配停止週期不同；U8005時間比較/適應合一題。"
+    },
+    {
+      "ids": [
+        "U8007",
+        "V3017",
+        "W5010"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "鉀釋出接力及膜電位/代謝連結，不是自誘導物累積，也不是氧擴散消耗梯度。"
+    },
+    {
+      "ids": [
+        "U8008",
+        "V3068",
+        "U8007"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "跨菌絲將相隔半反應連起來，不只是末端受體或鉀訊號。"
+    },
+    {
+      "ids": [
+        "U8009",
+        "V3017"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "環境路徑痕跡與偏避，不是群體門檻或有腦記憶。"
+    },
+    {
+      "ids": [
+        "U8010",
+        "L177",
+        "U8005"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "磁場定向與趨氧結合是新條件，不能僅換成微需氧窗口解釋。"
+    },
+    {
+      "ids": [
+        "U8011",
+        "U8005",
+        "L172"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "自轉眼點遮光取樣/雙鞭毛不平衡，不是沿路濃度適應或一般纖毛推流。"
+    },
+    {
+      "ids": [
+        "U8012",
+        "L109",
+        "L110"
+      ],
+      "proposal": "uncertain_requires_independent_editorial_decision",
+      "reason": "外側細菌的液體路徑，非真菌吸收；因果尚有限制，請非作者評估是否只夠研究註記。"
+    },
+    {
+      "ids": [
+        "U8013",
+        "B2176"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "選擇透氣拒液的蛋白殼結構，不是氣囊名稱相同即同核心。"
+    },
+    {
+      "ids": [
+        "U8014",
+        "V3018"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "內建新殼的幾何繼承，非DNA複製啟動。"
+    },
+    {
+      "ids": [
+        "U8015",
+        "V3018",
+        "V3053"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "空間排除端點分裂與複製/週期時間控制不同。"
+    },
+    {
+      "ids": [
+        "U8016",
+        "U8006"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "表面抓附回縮牽引與液中旋轉鞭毛推進不同，不拆菌毛伸長/縮短。"
+    },
+    {
+      "ids": [
+        "U8017",
+        "P257"
+      ],
+      "proposal": "merge_into_P257_retain_source_and_variant",
+      "reason": "核心仍是移走產物改變反應條件；共營伙伴是生物變體，速率限制警語未提供另一完整機制。"
+    },
+    {
+      "ids": [
+        "U8018",
+        "R6020",
+        "V3086",
+        "V3087"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "異形胞屏障/停止產氧/鄰胞交換是細胞分化分工，與根瘤血紅素緩衝及光反應定義不同；不與food Nox耗氧合。"
+    },
+    {
+      "ids": [
+        "U8019",
+        "L017",
+        "L183"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "尖端添加與後方回收的空間配置，不只膜回收或菌絲外觀。"
+    },
+    {
+      "ids": [
+        "U8020",
+        "V3078"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "核分裂後的隔室分配，與質配/核配延後不同；非所有雙核均用此法。"
+    },
+    {
+      "ids": [
+        "U8021",
+        "L004",
+        "B2257"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "急變膜張力直接門控釋溶質，非一般通道類型或魚類長期滲透平衡。"
+    },
+    {
+      "ids": [
+        "U8022",
+        "D2021"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "休眠構造的多層損傷保護，不是冷凍減慢生長或泛稱滅菌。"
+    }
+  ],
+  "recommended_decisions": [
+    {
+      "kind": "merge",
+      "source_id": "U8017",
+      "target_id": "P257",
+      "reason": "移走產物使原轉化繼續的同核心，保留丁酸共營來源及變體；不提高新增核心數。"
+    }
+  ],
+  "prelock_feedback": [
+    {
+      "reviewer": "pool_physics",
+      "candidate_id": "U8012",
+      "change": "將液膜硬門檻收為觀測/假說，明列間斷液區少數細菌例外，不演必停；待正式獨立覆核。"
+    },
+    {
+      "reviewer": "pool_physics",
+      "candidate_id": "U8017",
+      "change": "讀P257後接受合併建議，不放題組。"
+    },
+    {
+      "reviewer": "pool_physics",
+      "candidate_id": "U8007",
+      "change": "明示釋鉀接力的實驗證據與Figure 3c代謝閉環模型層級。"
+    },
+    {
+      "reviewer": "pool_physics",
+      "candidate_id": "U8019",
+      "change": "來源與候選定位對齊實讀的Results: Localization of a Vesicular SNARE…真標題；沒有冒稱已讀Discussion。"
+    },
+    {
+      "reviewer": "pool_physics",
+      "candidate_id": "U8020",
+      "change": "圖序修為側支形成/核先進入、再同步分裂/設隔膜/回接分配。"
+    }
+  ],
+  "editorial_checks": [
+    {
+      "theme_id": "W8U-T01",
+      "seconds": 260,
+      "core_totals": {
+        "U8001": 85,
+        "U8002": 95,
+        "U8003": 80
+      },
+      "max_beat_gap": 35
+    },
+    {
+      "theme_id": "W8U-T02",
+      "seconds": 170,
+      "core_totals": {
+        "U8006": 70,
+        "U8005": 100
+      },
+      "max_beat_gap": 35
+    },
+    {
+      "theme_id": "W8U-T03",
+      "seconds": 130,
+      "core_totals": {
+        "U8019": 65,
+        "U8004": 65
+      },
+      "max_beat_gap": 30
+    }
+  ],
+  "checks_run": [
+    "作者本機JSON、唯一ID、來源存在、題組總秒數/逐核心上限/最長beat gap，以及UTF8 LF；未跑repo tests、未宣稱獨立來源批准。"
+  ],
+  "limits": [
+    "22筆raw不等於22新核心；作者已建議1筆合舊P257，中央與非作者決定。",
+    "U8012觀測限制尚可能過薄，保持可退；不以22筆為配額。",
+    "3題組260/170/130秒尚未寫稿/試讀，未核准正式長片或製作。",
+    "不提供微生物培養、感染處理、食品安全或健康效果；food同輪題材未重收。"
+  ],
+  "pre_distribution_revision": {
+    "previous_batch_sha256": "2c11fe9c2b7c64191978b036e5803f39273987571fd6992694fabbde457edd27",
+    "previous_author_sha256": "2ebf8f30f2a5dd5a4d2591452b20f2a280a79518547f242781258a10ad936345",
+    "changed": "首次實體鎖稿尚未對外發送前，採非作者三點精確修訂；題數/來源URL/題案/秒數未改。"
+  },
+  "metadata_readback": {
+    "previous_author_sha256": "02e66102084204b7d9f6bf7f8906025e620967399e3a7285d349782ebe32641c",
+    "change": "baseline.selected由不存在的counts.selected取到null，讀回pool.counts.selected_candidates確認2667並修正；題目/來源/題組未改。"
+  },
+  "correction_history": [
+    {
+      "requested_by": "pool_physics; root採用",
+      "pre_correction_themes_sha256": "ca493d575c1636e0f5b6e207a6d67b7bd7216557d9f0187f1947240ebd8def75",
+      "pre_correction_author_sha256": "134bebef5414efdf92ed6271f4d7094c932cdb5823cba6520cd13a2d88dd5ec3",
+      "post_correction_themes_sha256": "b2ae618d622b5feb0ef77f2c47999457d98090722abafaef861987b82964d5f6",
+      "unchanged_batch_sha256": "57511f3a8b837a728317b0017135c688187691411360f95db9fcd886b2cec3fd",
+      "changes": [
+        "T03兩章由85+85縮65+65=130秒，刪尖端位置重述及過長堵孔展示；保留開場/物種切換/15秒回扣。",
+        "同步章節節拍、總秒數、range、刪章後65秒及作者核心預算；沒有新增機制或來源。"
+      ],
+      "status": "PENDING_NONAUTHOR_TARGETED_READBACK"
+    }
+  ]
+}

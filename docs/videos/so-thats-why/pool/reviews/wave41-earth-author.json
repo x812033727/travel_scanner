@@ -1,0 +1,748 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "science_sources",
+  "production_ready": false,
+  "scope": "從熔岩湖、火山氣體、煙雲放電的成對觀測，區分體積與質量、觸發與震源、混合比例與通量，以及觀測和模型。",
+  "baseline": {
+    "head": "ad12e51f985a572a7b05b5d3f606b186e10f629d",
+    "selected": 3285,
+    "raw_records": 3666,
+    "not_added": 1691,
+    "themes": 406,
+    "pool_sha256": "3dfd8fd5bcdf200642310151769feacb5251ccb2085e4c2ca15c2d3ff394511c",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3285.json.gz",
+      "sha256": "c32e460947933ba33b93d83b67ea4ea4edd65d9bf8c6091b08e3566c6c2789db"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave41-earth.json",
+      "sha256": "edcd24acfc1b8212ab07859ad41de55495194c8fe69f7312f200c510041c717b"
+    },
+    {
+      "file": "reviews/wave41-earth-themes.json",
+      "sha256": "0da1879b81ecd6a86089c5a7da7725e6ba23ba07d5cb9985ab6972d3a3305f33"
+    }
+  ],
+  "counts": {
+    "candidates": 8,
+    "sources": 8,
+    "not_added": 14,
+    "near_pairs": 21,
+    "themes": 5
+  },
+  "near_pairs": [
+    {
+      "a": "S41-001",
+      "b": "O3063",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "衛星區域總水量分離分項；此題用近場重力變化配同時湖面求升降部分的密度。",
+      "a_snapshot": {
+        "id": "S41-001",
+        "question": "熔岩湖面漲了幾十公尺，為什麼旁邊的重力儀只動了一點？",
+        "answer_target": "基勞厄亞一次次湖面升高再突然回落。若新佔的體積全是密實熔岩，增加的質量會留下較大的重力變化；附近測站只記到小幅變化。兩種讀值合起來，支持湖面下積著很多氣泡，形成低密度層。",
+        "scope": "限2008–2018山頂湖的短週期氣體蓄積與圖17的十小時序列。圖軸和圖說年份不一致，例圖不採年份；估值只屬參與升降的那部分。"
+      },
+      "b_snapshot": {
+        "id": "O3063",
+        "question": "重力衛星說一個地方少了水，為什麼不能直接知道是哪口井缺水？",
+        "answer_target": "重力反映總質量變化，地下水需結合雪、地表水、土壤水及模型分離，也不是單井測量。",
+        "scope": "區域陸地總水儲量變化與地下水分量推估；需外部資料及模型，空間解析不支持單井結論。"
+      }
+    },
+    {
+      "a": "S41-001",
+      "b": "E7015",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "解壓氣泡使黏岩漿碎裂不同於重力與湖高指向低質量的表層升降。",
+      "a_snapshot": {
+        "id": "S41-001",
+        "question": "熔岩湖面漲了幾十公尺，為什麼旁邊的重力儀只動了一點？",
+        "answer_target": "基勞厄亞一次次湖面升高再突然回落。若新佔的體積全是密實熔岩，增加的質量會留下較大的重力變化；附近測站只記到小幅變化。兩種讀值合起來，支持湖面下積著很多氣泡，形成低密度層。",
+        "scope": "限2008–2018山頂湖的短週期氣體蓄積與圖17的十小時序列。圖軸和圖說年份不一致，例圖不採年份；估值只屬參與升降的那部分。"
+      },
+      "b_snapshot": {
+        "id": "E7015",
+        "question": "岩漿都有氣體，為什麼有的流出來，有的卻炸成碎屑？",
+        "answer_target": "壓力降低釋出氣體後，低黏度熔體較易讓氣逸出；黏滯熔體若留住膨脹氣體，可積壓並破碎。",
+        "scope": "限氣體逸出與熔體流動性的機制對照；水、晶體、供應與通道等也重要，不用岩石名字單獨預測危險。"
+      }
+    },
+    {
+      "a": "S41-001",
+      "b": "LEG-S72",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "急速起泡噴射不是用質量和體積兩種觀測估蓄氣層。",
+      "a_snapshot": {
+        "id": "S41-001",
+        "question": "熔岩湖面漲了幾十公尺，為什麼旁邊的重力儀只動了一點？",
+        "answer_target": "基勞厄亞一次次湖面升高再突然回落。若新佔的體積全是密實熔岩，增加的質量會留下較大的重力變化；附近測站只記到小幅變化。兩種讀值合起來，支持湖面下積著很多氣泡，形成低密度層。",
+        "scope": "限2008–2018山頂湖的短週期氣體蓄積與圖17的十小時序列。圖軸和圖說年份不一致，例圖不採年份；估值只屬參與升降的那部分。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S72",
+        "question": "為什麼曼陀珠丟進可樂會噴發？",
+        "answer_target": "可樂裡溶了大量二氧化碳，只缺讓氣泡長出來的地方。曼陀珠表面粗糙，提供大量成核點；糖衣的阿拉伯膠、可樂裡的代糖與防腐劑讓氣泡更容易形成，二氧化碳一下子冒出，把可樂往外推。噴完酸鹼值不變，主要是物理過程。",
+        "scope": "沿用 S72 題級條件，須讀原查核包的限制；成核噴發可用短動畫解釋，不安排噴射危險示範，也不稱化學爆炸。"
+      }
+    },
+    {
+      "a": "S41-002",
+      "b": "E7017",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "表面紋理由剪切及結殼改變；此題靠殼塊流向辨識噴濺處下沉而非上湧。",
+      "a_snapshot": {
+        "id": "S41-002",
+        "question": "熔岩明明往上噴濺，漂在湖面的岩殼為什麼往那裡沉？",
+        "answer_target": "在2016年基勞厄亞山頂湖，熱影像追到表面岩殼朝噴濺點匯聚並被吞入。大泡破開留下局部凹處，周圍熔岩補進去；活躍噴濺點換位時，附近表流也能轉彎。",
+        "scope": "限此湖觀測到的噴濺區。氣泡造成凹處是解釋，不將熱影像當成拍到整條深部通道。"
+      },
+      "b_snapshot": {
+        "id": "E7017",
+        "question": "同一條熔岩流，怎麼一段像繩子，一段像碎石堆？",
+        "answer_target": "表殼的變形能力與流動剪切配合時可皺成繩紋；黏度增加/剪切使其不能順應時破成粗礫外殼。",
+        "scope": "限pahoehoe與aa流態對照；同成分可轉形，不稱任何皺紋或碎石都能判成分/溫度。"
+      }
+    },
+    {
+      "a": "S41-002",
+      "b": "S41-001",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "這裡是水平匯聚及向下搬運；另一題是整段湖面升降對質量的比例。",
+      "a_snapshot": {
+        "id": "S41-002",
+        "question": "熔岩明明往上噴濺，漂在湖面的岩殼為什麼往那裡沉？",
+        "answer_target": "在2016年基勞厄亞山頂湖，熱影像追到表面岩殼朝噴濺點匯聚並被吞入。大泡破開留下局部凹處，周圍熔岩補進去；活躍噴濺點換位時，附近表流也能轉彎。",
+        "scope": "限此湖觀測到的噴濺區。氣泡造成凹處是解釋，不將熱影像當成拍到整條深部通道。"
+      },
+      "b_snapshot": {
+        "id": "S41-001",
+        "question": "熔岩湖面漲了幾十公尺，為什麼旁邊的重力儀只動了一點？",
+        "answer_target": "基勞厄亞一次次湖面升高再突然回落。若新佔的體積全是密實熔岩，增加的質量會留下較大的重力變化；附近測站只記到小幅變化。兩種讀值合起來，支持湖面下積著很多氣泡，形成低密度層。",
+        "scope": "限2008–2018山頂湖的短週期氣體蓄積與圖17的十小時序列。圖軸和圖說年份不一致，例圖不採年份；估值只屬參與升降的那部分。"
+      }
+    },
+    {
+      "a": "S41-002",
+      "b": "E7020",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "水冷外殼內熔岩突破長出新枕狀，未產生氣泡破裂後表層向噴濺處匯聚的控制。",
+      "a_snapshot": {
+        "id": "S41-002",
+        "question": "熔岩明明往上噴濺，漂在湖面的岩殼為什麼往那裡沉？",
+        "answer_target": "在2016年基勞厄亞山頂湖，熱影像追到表面岩殼朝噴濺點匯聚並被吞入。大泡破開留下局部凹處，周圍熔岩補進去；活躍噴濺點換位時，附近表流也能轉彎。",
+        "scope": "限此湖觀測到的噴濺區。氣泡造成凹處是解釋，不將熱影像當成拍到整條深部通道。"
+      },
+      "b_snapshot": {
+        "id": "E7020",
+        "question": "海底熔岩碰到冷水，為什麼不是全凍住，反而長出一顆顆枕頭？",
+        "answer_target": "水先使外皮急冷，持續熔岩輸入撐大仍熱的內部，局部破皮後可形成新的枕狀單元。",
+        "scope": "限較低噴出率等有利枕狀流的水下情境；水下也能有片狀流，不說海底全部都是枕頭。"
+      }
+    },
+    {
+      "a": "S41-003",
+      "b": "P31001",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "衝擊在火星引發兩類波並用到時與方向定位；火山案在較深處產生地震訊號，與地表落石觸發地點分離。",
+      "a_snapshot": {
+        "id": "S41-003",
+        "question": "深處傳來地震訊號，小爆發卻是湖邊掉下一塊石頭先開始的？",
+        "answer_target": "影像先記下崖壁落石撞入湖面，隨後撞擊處噴出碎屑。事件時序無法用深處大氣泡先造成震動、再緩緩升到湖面爆開來解釋。研究提出湖面擾動的壓力往下傳，到深處帶動圍岩產生極長週期震動。",
+        "scope": "2016年1月2日影像是先後例子；深處震源與傳壓機制來自山頂系列研究。未追蹤壓力波走完全程，亦有其他起因的極長週期震動。"
+      },
+      "b_snapshot": {
+        "id": "P31001",
+        "question": "火星地面只放了一台地震儀，怎麼指給天上的相機去找新撞坑？",
+        "answer_target": "地震波和穿過大氣的波並非同時到站。大氣波還會帶動測站腳下的地面；把不同到時和地面運動的來向合起來，就能圈出搜尋範圍。再比對事件前後的軌道照片，查那個範圍內是否真的多了撞擊痕。",
+        "scope": "採2021年三次由訊號導引而找到新痕的事件；時間與方向是有誤差的反推。S1222a是另一場大震，中解析搜尋未見預期爆散區，高解析僅抽查。"
+      }
+    },
+    {
+      "a": "S41-003",
+      "b": "P31003",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "太陽加熱登月艙並產生熱震的辨源不同於由地表觸發、向深處傳壓的方向限制。",
+      "a_snapshot": {
+        "id": "S41-003",
+        "question": "深處傳來地震訊號，小爆發卻是湖邊掉下一塊石頭先開始的？",
+        "answer_target": "影像先記下崖壁落石撞入湖面，隨後撞擊處噴出碎屑。事件時序無法用深處大氣泡先造成震動、再緩緩升到湖面爆開來解釋。研究提出湖面擾動的壓力往下傳，到深處帶動圍岩產生極長週期震動。",
+        "scope": "2016年1月2日影像是先後例子；深處震源與傳壓機制來自山頂系列研究。未追蹤壓力波走完全程，亦有其他起因的極長週期震動。"
+      },
+      "b_snapshot": {
+        "id": "P31003",
+        "question": "月球天一亮，地震儀就記到一些熟悉的短震。怎麼追到旁邊留下的登月艙？",
+        "answer_target": "先找在多次記錄中形狀相似的震動，再用多個地面感測器的到時差估來向。幾個大的重複訊號族多在清晨出現，來向又接近遺留登月艙的位置。日照節奏加上空間線索，支持附近設備受熱是來源之一。",
+        "scope": "限Apollo17陣列與該研究的分類；不把所有重複事件指定為登月艙，也不把所有孤立事件指定為岩石。震源方位有散布，無法指認零件或證實膨脹的物質。"
+      }
+    },
+    {
+      "a": "S41-003",
+      "b": "S41-002",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "落石可以同時引起噴濺；本題辨擾動起點與深震源，另一題辨表殼水平流向。",
+      "a_snapshot": {
+        "id": "S41-003",
+        "question": "深處傳來地震訊號，小爆發卻是湖邊掉下一塊石頭先開始的？",
+        "answer_target": "影像先記下崖壁落石撞入湖面，隨後撞擊處噴出碎屑。事件時序無法用深處大氣泡先造成震動、再緩緩升到湖面爆開來解釋。研究提出湖面擾動的壓力往下傳，到深處帶動圍岩產生極長週期震動。",
+        "scope": "2016年1月2日影像是先後例子；深處震源與傳壓機制來自山頂系列研究。未追蹤壓力波走完全程，亦有其他起因的極長週期震動。"
+      },
+      "b_snapshot": {
+        "id": "S41-002",
+        "question": "熔岩明明往上噴濺，漂在湖面的岩殼為什麼往那裡沉？",
+        "answer_target": "在2016年基勞厄亞山頂湖，熱影像追到表面岩殼朝噴濺點匯聚並被吞入。大泡破開留下局部凹處，周圍熔岩補進去；活躍噴濺點換位時，附近表流也能轉彎。",
+        "scope": "限此湖觀測到的噴濺區。氣泡造成凹處是解釋，不將熱影像當成拍到整條深部通道。"
+      }
+    },
+    {
+      "a": "S41-004",
+      "b": "S41-003",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "落石引起湖內壓擾動再耦合地震訊號，裂谷則是山頂塌陷與遠端出流隨時間增強，需分壓力與岩漿本體運移。",
+      "a_snapshot": {
+        "id": "S41-004",
+        "question": "山頂剛塌，四十公里外的熔岩出口怎麼很快就有反應？",
+        "answer_target": "2018年基勞厄亞部分山頂塌陷後，下裂谷出流開始增強，幾小時後才達高峰。兩地相連的岩漿系統可傳遞塌陷造成的壓力改變，推動已在裂谷管道裡的岩漿；這個時差沒有量到某團岩漿從山頂跑到出口的速度。",
+        "scope": "限2018下東裂谷與山頂連動事件。資料分辨的是出流起始和峰值，地下傳壓為機理解讀。"
+      },
+      "b_snapshot": {
+        "id": "S41-003",
+        "question": "深處傳來地震訊號，小爆發卻是湖邊掉下一塊石頭先開始的？",
+        "answer_target": "影像先記下崖壁落石撞入湖面，隨後撞擊處噴出碎屑。事件時序無法用深處大氣泡先造成震動、再緩緩升到湖面爆開來解釋。研究提出湖面擾動的壓力往下傳，到深處帶動圍岩產生極長週期震動。",
+        "scope": "2016年1月2日影像是先後例子；深處震源與傳壓機制來自山頂系列研究。未追蹤壓力波走完全程，亦有其他起因的極長週期震動。"
+      }
+    },
+    {
+      "a": "S41-004",
+      "b": "E7016",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "排空形成管洞與山頂塌陷對遠端裂口的流量響應不同。",
+      "a_snapshot": {
+        "id": "S41-004",
+        "question": "山頂剛塌，四十公里外的熔岩出口怎麼很快就有反應？",
+        "answer_target": "2018年基勞厄亞部分山頂塌陷後，下裂谷出流開始增強，幾小時後才達高峰。兩地相連的岩漿系統可傳遞塌陷造成的壓力改變，推動已在裂谷管道裡的岩漿；這個時差沒有量到某團岩漿從山頂跑到出口的速度。",
+        "scope": "限2018下東裂谷與山頂連動事件。資料分辨的是出流起始和峰值，地下傳壓為機理解讀。"
+      },
+      "b_snapshot": {
+        "id": "E7016",
+        "question": "熔岩都變成石頭了，裡面怎麼留下長長的空隧道？",
+        "answer_target": "流動表面先固結成殼並減緩散熱，內部仍能輸送熔岩；供應停止或改道，內部排出而留下空管。",
+        "scope": "限來源玄武質熔岩管機制；不是每條流都成空管，不把空管當完全安全或可進入的訊號。"
+      }
+    },
+    {
+      "a": "S41-005",
+      "b": "S41-006",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "多源混合能改單站比例，即使各口排放不變；另一題是在給定羽流裡用獨立硫通量區分分子增加或分母減少。",
+      "a_snapshot": {
+        "id": "S41-005",
+        "question": "火山氣體的讀數忽然變了，可能只是風把另一個噴口的氣送過來嗎？",
+        "answer_target": "斯特龍博利山緣測到多個噴口混在一起的氣。研究分頭在各口上方量組成，再在地面量各口的二氧化硫通量，顯示噴口的配方與供氣量不同。只要抵達測站的各股氣所佔比例改變，混合讀值也可能改變。",
+        "scope": "2018年6月研究期間的分口與山緣資料。風向改變是可能情境，不是每一次比值變動的已證成因。"
+      },
+      "b_snapshot": {
+        "id": "S41-006",
+        "question": "火山氣裡二氧化碳相對變多，怎麼知道是碳真的多了，還是硫變少？",
+        "answer_target": "同一個二氧化碳對二氧化硫的高比值，可由碳通量增加或硫通量減少造成。斯特龍博利研究再量每段時間放出的二氧化硫，配合比值估算碳通量；2019年秋季高比值伴隨硫通量下降，與先前部分真正增碳的時段不同。",
+        "scope": "限監測資料和特定時段的解釋；秋季硫減少是作者提出的主要原因。碳通量為組合估值，未把高比值當噴發倒數器。"
+      }
+    },
+    {
+      "a": "S41-005",
+      "b": "O3063",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "水儲量空間分量要用不同觀測；此題是多股羽流被風送到山緣造成來源權重改變，並可在各口量到組成。",
+      "a_snapshot": {
+        "id": "S41-005",
+        "question": "火山氣體的讀數忽然變了，可能只是風把另一個噴口的氣送過來嗎？",
+        "answer_target": "斯特龍博利山緣測到多個噴口混在一起的氣。研究分頭在各口上方量組成，再在地面量各口的二氧化硫通量，顯示噴口的配方與供氣量不同。只要抵達測站的各股氣所佔比例改變，混合讀值也可能改變。",
+        "scope": "2018年6月研究期間的分口與山緣資料。風向改變是可能情境，不是每一次比值變動的已證成因。"
+      },
+      "b_snapshot": {
+        "id": "O3063",
+        "question": "重力衛星說一個地方少了水，為什麼不能直接知道是哪口井缺水？",
+        "answer_target": "重力反映總質量變化，地下水需結合雪、地表水、土壤水及模型分離，也不是單井測量。",
+        "scope": "區域陸地總水儲量變化與地下水分量推估；需外部資料及模型，空間解析不支持單井結論。"
+      }
+    },
+    {
+      "a": "S41-006",
+      "b": "E7015",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "氣泡成長致岩漿破碎不同於氣體組成比例、通量與深淺部出氣解讀。",
+      "a_snapshot": {
+        "id": "S41-006",
+        "question": "火山氣裡二氧化碳相對變多，怎麼知道是碳真的多了，還是硫變少？",
+        "answer_target": "同一個二氧化碳對二氧化硫的高比值，可由碳通量增加或硫通量減少造成。斯特龍博利研究再量每段時間放出的二氧化硫，配合比值估算碳通量；2019年秋季高比值伴隨硫通量下降，與先前部分真正增碳的時段不同。",
+        "scope": "限監測資料和特定時段的解釋；秋季硫減少是作者提出的主要原因。碳通量為組合估值，未把高比值當噴發倒數器。"
+      },
+      "b_snapshot": {
+        "id": "E7015",
+        "question": "岩漿都有氣體，為什麼有的流出來，有的卻炸成碎屑？",
+        "answer_target": "壓力降低釋出氣體後，低黏度熔體較易讓氣逸出；黏滯熔體若留住膨脹氣體，可積壓並破碎。",
+        "scope": "限氣體逸出與熔體流動性的機制對照；水、晶體、供應與通道等也重要，不用岩石名字單獨預測危險。"
+      }
+    },
+    {
+      "a": "S41-006",
+      "b": "S40-005",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "冰內硫同位素提供高空光解線索，不涉及當代噴口排放比值與通量。",
+      "a_snapshot": {
+        "id": "S41-006",
+        "question": "火山氣裡二氧化碳相對變多，怎麼知道是碳真的多了，還是硫變少？",
+        "answer_target": "同一個二氧化碳對二氧化硫的高比值，可由碳通量增加或硫通量減少造成。斯特龍博利研究再量每段時間放出的二氧化硫，配合比值估算碳通量；2019年秋季高比值伴隨硫通量下降，與先前部分真正增碳的時段不同。",
+        "scope": "限監測資料和特定時段的解釋；秋季硫減少是作者提出的主要原因。碳通量為組合估值，未把高比值當噴發倒數器。"
+      },
+      "b_snapshot": {
+        "id": "S40-005",
+        "question": "極地冰裡的一層硫酸鹽，怎麼留下火山氣體曾經飛得很高的線索？",
+        "answer_target": "火山氣體進入臭氧層附近或更高處，會遇到不同的短波紫外光。光化學反應可留下偏離一般質量規律的硫同位素組合。比較南極冰芯一層內不同位置的硫酸鹽，若有這種異常，可推知至少部分火山硫曾到高空。",
+        "scope": "限多巴年代前後的候選硫峰及該研究的量測誤差。多個峰都含高空信號，不能由此直接報出唯一火山或煙柱高度。"
+      }
+    },
+    {
+      "a": "S41-007",
+      "b": "K6019",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "既有通道微秒尺度重複放電；此題是眾多不同地點放電的空間排列隨雲波前移動。",
+      "a_snapshot": {
+        "id": "S41-007",
+        "question": "東加火山上空的閃電為什麼排成一圈，還會一起向外跑？",
+        "answer_target": "2022年洪阿火山噴發，雙衛星雲高與地面放電定位顯示，第一個清楚的閃電環貼著傘狀雲上一道向外傳開的波前。噴柱衝高後回落，在浮力作用下激發重力波。研究推測波伴隨的垂直運動、亂流與壓力差，有助帶電區在移動的前緣形成。",
+        "scope": "首圈的共同位置與移動由觀測支持；未直接量到電荷的空間排列，也未確定後來中央補閃或以後每一圈的起因。"
+      },
+      "b_snapshot": {
+        "id": "K6019",
+        "question": "看起來同一條閃電，為什麼會一亮一暗閃好幾下？",
+        "answer_target": "一次負雲地閃可能包含多次回擊，使地面通道重複變亮；一次閃事件不等於一個瞬時電流脈衝。",
+        "scope": "負雲地閃的多回擊情況，非每個閃電都如此；不由肉眼頻閃推算精確回擊次數。"
+      }
+    },
+    {
+      "a": "S41-007",
+      "b": "N163",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "地面迎接先導描述單次閃電連接，不能解釋一個大尺度放電環怎麼移動。",
+      "a_snapshot": {
+        "id": "S41-007",
+        "question": "東加火山上空的閃電為什麼排成一圈，還會一起向外跑？",
+        "answer_target": "2022年洪阿火山噴發，雙衛星雲高與地面放電定位顯示，第一個清楚的閃電環貼著傘狀雲上一道向外傳開的波前。噴柱衝高後回落，在浮力作用下激發重力波。研究推測波伴隨的垂直運動、亂流與壓力差，有助帶電區在移動的前緣形成。",
+        "scope": "首圈的共同位置與移動由觀測支持；未直接量到電荷的空間排列，也未確定後來中央補閃或以後每一圈的起因。"
+      },
+      "b_snapshot": {
+        "id": "N163",
+        "question": "閃電是從天上打下來，還是地上也會往上接？",
+        "answer_target": "下降先導與地表物體向上放電連接。",
+        "scope": "Severe Weather 101: Lightning Basics"
+      }
+    },
+    {
+      "a": "S41-007",
+      "b": "X2035",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "雲內重力波由浮力恢復；並非時空重力波的頻率偵測。",
+      "a_snapshot": {
+        "id": "S41-007",
+        "question": "東加火山上空的閃電為什麼排成一圈，還會一起向外跑？",
+        "answer_target": "2022年洪阿火山噴發，雙衛星雲高與地面放電定位顯示，第一個清楚的閃電環貼著傘狀雲上一道向外傳開的波前。噴柱衝高後回落，在浮力作用下激發重力波。研究推測波伴隨的垂直運動、亂流與壓力差，有助帶電區在移動的前緣形成。",
+        "scope": "首圈的共同位置與移動由觀測支持；未直接量到電荷的空間排列，也未確定後來中央補閃或以後每一圈的起因。"
+      },
+      "b_snapshot": {
+        "id": "X2035",
+        "question": "重力波也有高低音，為什麼一種探測器聽不完？",
+        "answer_target": "比較波長頻率與探測器尺度。",
+        "scope": "聲音只是資料轉譯，不是太空傳來空氣聲。"
+      }
+    },
+    {
+      "a": "S41-008",
+      "b": "N126",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "岩漿快速冷卻成玻璃不足以解釋同一放電半徑上熔化／氣化的存證窗。",
+      "a_snapshot": {
+        "id": "S41-008",
+        "question": "火山灰碰上閃電，最靠近電弧的灰粒反倒不容易留下熔成的小圓珠？",
+        "answer_target": "研究讓受控放電通過模擬灰後看見熔融再凝固的小珠。計算顯示，離軸太遠的材料未必能熔，某些強放電中心附近則可能熱到氣化；介於兩者之間，熔滴才有機會被推出、冷卻並保留下來。",
+        "scope": "實驗使用氧化物模擬灰和鋁板。徑向溫度及氣化區是計算結果，圈寬取決於電流、材料；沒有量出每次天然閃電會留下幾顆。 圓珠描述形狀，未逐粒驗證為玻璃。"
+      },
+      "b_snapshot": {
+        "id": "N126",
+        "question": "火山噴出的東西，為什麼也能變成天然玻璃？",
+        "answer_target": "快速淬冷來不及長出晶體。",
+        "scope": "How Rocks are Classified"
+      }
+    },
+    {
+      "a": "S41-008",
+      "b": "S41-007",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "一個估電弧內小顆粒相變與留存，另一個比較傘雲波前和大量放電位置。",
+      "a_snapshot": {
+        "id": "S41-008",
+        "question": "火山灰碰上閃電，最靠近電弧的灰粒反倒不容易留下熔成的小圓珠？",
+        "answer_target": "研究讓受控放電通過模擬灰後看見熔融再凝固的小珠。計算顯示，離軸太遠的材料未必能熔，某些強放電中心附近則可能熱到氣化；介於兩者之間，熔滴才有機會被推出、冷卻並保留下來。",
+        "scope": "實驗使用氧化物模擬灰和鋁板。徑向溫度及氣化區是計算結果，圈寬取決於電流、材料；沒有量出每次天然閃電會留下幾顆。 圓珠描述形狀，未逐粒驗證為玻璃。"
+      },
+      "b_snapshot": {
+        "id": "S41-007",
+        "question": "東加火山上空的閃電為什麼排成一圈，還會一起向外跑？",
+        "answer_target": "2022年洪阿火山噴發，雙衛星雲高與地面放電定位顯示，第一個清楚的閃電環貼著傘狀雲上一道向外傳開的波前。噴柱衝高後回落，在浮力作用下激發重力波。研究推測波伴隨的垂直運動、亂流與壓力差，有助帶電區在移動的前緣形成。",
+        "scope": "首圈的共同位置與移動由觀測支持；未直接量到電荷的空間排列，也未確定後來中央補閃或以後每一圈的起因。"
+      }
+    },
+    {
+      "a": "S41-008",
+      "b": "S40-004",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "古冰火山玻璃比成分追來源；這裡問放電熱場中哪些灰能熔又保留。",
+      "a_snapshot": {
+        "id": "S41-008",
+        "question": "火山灰碰上閃電，最靠近電弧的灰粒反倒不容易留下熔成的小圓珠？",
+        "answer_target": "研究讓受控放電通過模擬灰後看見熔融再凝固的小珠。計算顯示，離軸太遠的材料未必能熔，某些強放電中心附近則可能熱到氣化；介於兩者之間，熔滴才有機會被推出、冷卻並保留下來。",
+        "scope": "實驗使用氧化物模擬灰和鋁板。徑向溫度及氣化區是計算結果，圈寬取決於電流、材料；沒有量出每次天然閃電會留下幾顆。 圓珠描述形狀，未逐粒驗證為玻璃。"
+      },
+      "b_snapshot": {
+        "id": "S40-004",
+        "question": "格陵蘭的冰裡找到幾粒看不見的火山玻璃，怎麼追到冰島那次噴發？",
+        "answer_target": "硫含量出現尖峰能提示噴發，卻不會報出火山名字。研究者取出同一時段的玻璃碎粒，逐粒比較幾種元素的組合，再核對已知噴發沉積與年代。多種元素範圍和時間證據支持1477年冰島Veiðivötn噴發，個別元素仍有偏差。",
+        "scope": "限TUNU2013冰芯的已分析碎粒和可比較參照樣本。不同噴發可出自同火山系，也不以一粒或一個元素單獨定案。"
+      }
+    }
+  ],
+  "dedup_reading": {
+    "method": "全3666 raw與1691未收搜尋熔岩、火山灰、海嘯、閃電、重力波與測站等，54 raw與17未收符合擴充字詞。按問題／限定答案核近對，未收舊N212的火山氣壓案例。",
+    "scan_files": [
+      {
+        "file": ".cache/wave41-earth-scan-deep.json",
+        "sha256": "3ecaa651b950e3c266a8fdda3ebd5144ec93114f879c122c28139a215df4c0a0"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "source_identity": [
+    {
+      "source_id": "S41-S001",
+      "doi": "10.3133/pp1867G",
+      "primary_body_url": "https://pubs.usgs.gov/pp/1867/g/pp1867g.pdf",
+      "identity_relation": "USGS 專刊正式第G章。",
+      "old_exact_matches": [],
+      "count_policy": "USGS專刊A/G為同一卷不同章。S001/S002/S003與S004的部分田野脈絡和人員重疊，重述舊研究不算獨立複驗。兩篇氣體研究取樣時段和做法不同；典藏與正式版同文只計一次。"
+    },
+    {
+      "source_id": "S41-S002",
+      "doi": "10.3133/sir20185008",
+      "primary_body_url": "https://pubs.usgs.gov/sir/2018/5008/sir20185008.pdf",
+      "identity_relation": "USGS 團隊觀測報告正式PDF。",
+      "old_exact_matches": [],
+      "count_policy": "USGS專刊A/G為同一卷不同章。S001/S002/S003與S004的部分田野脈絡和人員重疊，重述舊研究不算獨立複驗。兩篇氣體研究取樣時段和做法不同；典藏與正式版同文只計一次。"
+    },
+    {
+      "source_id": "S41-S003",
+      "doi": "10.3133/pp1867A",
+      "primary_body_url": "https://pubs.usgs.gov/pp/1867/a/pp1867a.pdf",
+      "identity_relation": "USGS 團隊專刊第A章，含既有長期觀測整合。",
+      "old_exact_matches": [],
+      "count_policy": "USGS專刊A/G為同一卷不同章。S001/S002/S003與S004的部分田野脈絡和人員重疊，重述舊研究不算獨立複驗。兩篇氣體研究取樣時段和做法不同；典藏與正式版同文只計一次。"
+    },
+    {
+      "source_id": "S41-S004",
+      "doi": "10.1126/science.aav7046",
+      "primary_body_url": "https://volcanoes.usgs.gov/vsc/file_mngr/file-204/367.full.pdf",
+      "identity_relation": "USGS 保存 Science 正式論文PDF，2018線上／2019卷期。",
+      "old_exact_matches": [],
+      "count_policy": "USGS專刊A/G為同一卷不同章。S001/S002/S003與S004的部分田野脈絡和人員重疊，重述舊研究不算獨立複驗。兩篇氣體研究取樣時段和做法不同；典藏與正式版同文只計一次。"
+    },
+    {
+      "source_id": "S41-S005",
+      "doi": "10.1038/s41467-020-16862-w",
+      "primary_body_url": "https://www.nature.com/articles/s41467-020-16862-w.pdf",
+      "identity_relation": "出版者正式PDF，2020。",
+      "old_exact_matches": [],
+      "count_policy": "USGS專刊A/G為同一卷不同章。S001/S002/S003與S004的部分田野脈絡和人員重疊，重述舊研究不算獨立複驗。兩篇氣體研究取樣時段和做法不同；典藏與正式版同文只計一次。"
+    },
+    {
+      "source_id": "S41-S006",
+      "doi": "10.1126/sciadv.abh0191",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8448455/fullTextXML",
+      "identity_relation": "2021正式論文的Europe PMC正文XML。",
+      "old_exact_matches": [],
+      "count_policy": "USGS專刊A/G為同一卷不同章。S001/S002/S003與S004的部分田野脈絡和人員重疊，重述舊研究不算獨立複驗。兩篇氣體研究取樣時段和做法不同；典藏與正式版同文只計一次。"
+    },
+    {
+      "source_id": "S41-S007",
+      "doi": "10.1029/2022GL102341",
+      "primary_body_url": "https://repository.library.noaa.gov/view/noaa/54932/noaa_54932_DS1.pdf",
+      "identity_relation": "NOAA 典藏2023正式論文PDF。",
+      "old_exact_matches": [],
+      "count_policy": "USGS專刊A/G為同一卷不同章。S001/S002/S003與S004的部分田野脈絡和人員重疊，重述舊研究不算獨立複驗。兩篇氣體研究取樣時段和做法不同；典藏與正式版同文只計一次。"
+    },
+    {
+      "source_id": "S41-S008",
+      "doi": "10.1038/s41598-017-15643-8",
+      "primary_body_url": "https://www.nature.com/articles/s41598-017-15643-8.pdf",
+      "identity_relation": "2017出版者正式論文PDF。",
+      "old_exact_matches": [],
+      "count_policy": "USGS專刊A/G為同一卷不同章。S001/S002/S003與S004的部分田野脈絡和人員重疊，重述舊研究不算獨立複驗。兩篇氣體研究取樣時段和做法不同；典藏與正式版同文只計一次。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "S41-S001",
+      "locator": "PDF pp.27–28，Gas Pistoning 及圖17湖面／傾斜／重力三排；p.32 關於2018年裂口流量開始與峰值的分別。",
+      "read_via": "以編輯UA取得原文。本機PDF逐頁抽字查讀指定正文／圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-ppG.pdf",
+        "sha256": "35f8ad645b2351a52533954fb5270c35963fe266189b193a5f9b8dc91f617c6c",
+        "text_file": ".cache/wave41-earth-ppG.txt",
+        "text_sha256": "018e08482c556b8692989ee6bb549f91a17d813f2abbffb52eb206c15050e100"
+      }
+    },
+    {
+      "source_id": "S41-S002",
+      "locator": "PDF p.33 Lake Surface Motion／圖40正常與轉向流場；p.45 Explosive Events、2016年1月2日攝影時序及圖58圖說。",
+      "read_via": "以編輯UA取得原文。本機PDF逐頁抽字查讀指定正文／圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-sir.pdf",
+        "sha256": "5c76a056fe0a6db63d35ab3b0abcf98ea6e41de0ee16e35b4272c84ff2126db7",
+        "text_file": ".cache/wave41-earth-sir.txt",
+        "text_sha256": "0616cc074e905e0b79b64bd11da2cfcc6254768418f328b8fd9681ac45b19f2e"
+      }
+    },
+    {
+      "source_id": "S41-S003",
+      "locator": "PDF pp.51–52，Rockfall-Triggered Explosions and Top-Down Seismicity。",
+      "read_via": "以編輯UA取得原文。本機PDF逐頁抽字查讀指定正文／圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-ppA.pdf",
+        "sha256": "6c17dac90aacc5cf106cc377c0819eb784cae15f96a0b0685d6b5431bff152dc",
+        "text_file": ".cache/wave41-earth-ppA.txt",
+        "text_sha256": "8b2a46fb206bfca9dd7f57d5958dca58a75d756003b5abb752af3a2f018668a3"
+      }
+    },
+    {
+      "source_id": "S41-S004",
+      "locator": "PDF p.6，討論中從山頂與裂谷壓力脈衝、7月部分出流增強到連通回饋的段落。",
+      "read_via": "以編輯UA取得原文。本機PDF逐頁抽字查讀指定正文／圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-cyclic.pdf",
+        "sha256": "3bfacde1c3d1fabb706c55ec839674bd574ef40f9629f0c4bb8df86bf3c9d2c4",
+        "text_file": ".cache/wave41-earth-cyclic.txt",
+        "text_sha256": "9b387e00dc8bba3c2930fbe3bf98676e89f0d4006b46db372f201a12e59f25ea"
+      }
+    },
+    {
+      "source_id": "S41-S005",
+      "locator": "PDF p.8 討論分噴口／山緣 bulk plume 對照及結論；p.9 Methods 分別量氣體組成與二氧化硫通量。",
+      "read_via": "以編輯UA取得原文。本機PDF逐頁抽字查讀指定正文／圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-vent.pdf",
+        "sha256": "4be563648c9f10c7b6b6a6ddee51d58bc238980fdddd6522dec08ed93021ea5f",
+        "text_file": ".cache/wave41-earth-vent.txt",
+        "text_sha256": "e5f61f28177b9c53ae868fbe64785f700cc1f07ba3a0d90d4982d2734905e805"
+      }
+    },
+    {
+      "source_id": "S41-S006",
+      "locator": "Results：SO₂ and CO₂ fluxes（圖4、5）；Discussion：CO₂ escalates before basaltic paroxysms，尤其2019年9–12月的另一個高比值時段；Methods：CO₂ fluxes。",
+      "read_via": "以編輯UA取得原文。解析正文XML指定段及圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-strom.xml",
+        "sha256": "b4e9737af5be29795cdf015dab5b5bad556547c15c1c76c88ce226ff755c72b9",
+        "text_file": ".cache/wave41-earth-strom.txt",
+        "text_sha256": "1cde968bdedbdb5ad910a932593a57bb3db41127119b1d4688730162cecd073d"
+      }
+    },
+    {
+      "source_id": "S41-S007",
+      "locator": "PDF pp.4–5 §§3.3、4.1，圖2地面放電定位與雙衛星雲高，以及中央空區稍後出現閃電的限制。",
+      "read_via": "以編輯UA取得原文。本機PDF逐頁抽字查讀指定正文／圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-lightning.pdf",
+        "sha256": "a6bbe298b4381aaf77018af490ba021b3f143e85111e3d5ddf5352976e2b0ce3",
+        "text_file": ".cache/wave41-earth-lightning.txt",
+        "text_sha256": "39a9bf8efbf2afc48d60743c18965dc18d2569e8e42de962ba1129f84ecb5c23"
+      }
+    },
+    {
+      "source_id": "S41-S008",
+      "locator": "PDF pp.3–6 Effects of current impulse、Discussion、圖3與4；原文區別觀察到的熔融珠與徑向溫度計算。",
+      "read_via": "以編輯UA取得原文。本機PDF逐頁抽字查讀指定正文／圖說。",
+      "cache": {
+        "file": ".cache/wave41-earth-sphere17.pdf",
+        "sha256": "54c9f5d1b22057c011513a32aae5d53ad8acd3c655527ec43cf4a318e3a136d3",
+        "text_file": ".cache/wave41-earth-sphere17.txt",
+        "text_sha256": "b395bb55bd691d51738ad78cc0485ee899e603f2de239cb296cea819a21a2423"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave41-earth-fetch.json",
+      "sha256": "7b39ccece0b79ff6f08a974e1e1a1f1a95882615290ff6e92ac822c4a6970745"
+    },
+    {
+      "file": ".cache/wave41-earth-fetch2.json",
+      "sha256": "572e82743678e260e51d9eec9fc85c4c853b0cb1c9b6cc5ad2e103a28c5b2f88"
+    },
+    {
+      "file": ".cache/wave41-earth-fetch3.json",
+      "sha256": "1c48ef5a4403374ebe21fd5fb8e6cf7359037a546054ceaf67d721bda63a3096"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://ir.canterbury.ac.nz/server/api/core/bitstreams/36b32a6b-87cd-4498-9d34-b789d7348cb3/content",
+      "error": "指定UA HTTP403；web可讀2015作者庫的指定段。此次收2017另一實驗之正文，不把2015該篇計為入選来源。"
+    },
+    {
+      "url": "https://pubs.usgs.gov/publication/70211533",
+      "error": "web開2019循環出流研究索引403。採同時期現場Neal團隊正文與G章明列的出流起始／峰值，不將索引當成原文。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave41-earth-figs.jpg",
+      "sha256": "715a7fa84163f744e5bf90cd0cab3bb97401bbd374a11d82ca098e7f25826227",
+      "read_scope": "另目讀G章圖17、2016報告圖40、洪阿圖2、模擬灰圖4。其餘圖片只據定位文字圖說。"
+    }
+  ],
+  "reading_limits": [
+    "七份有效PDF與一份PMC XML均以指定UA讀到所列範圍，並非逐頁審完全文。沒有重算灰粒熱場、岩漿壓力與雲高、沒有讀補充影片。",
+    "灰熔化和氣化的徑向範圍、電荷組織與深處傳壓應區別於直接攝影或感測器記錄。",
+    "S001圖17橫軸／圖說相差一年，未據此指定事件年份。模擬灰的實驗熔珠未一律鑑定為玻璃。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W41S-T01",
+      "body_seconds": 63,
+      "chapter_seconds": [
+        31,
+        32
+      ],
+      "core_seconds": {
+        "S41-002": 63
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_REVISED_AFTER_ROOT_OFFLINE_NARRATION",
+      "root_offline_narration_seconds": 55.309
+    },
+    {
+      "id": "W41S-T02",
+      "body_seconds": 62,
+      "chapter_seconds": [
+        30,
+        32
+      ],
+      "core_seconds": {
+        "S41-001": 62
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W41S-T03",
+      "body_seconds": 73,
+      "chapter_seconds": [
+        37,
+        36
+      ],
+      "core_seconds": {
+        "S41-005": 37,
+        "S41-006": 36
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W41S-T04",
+      "body_seconds": 62,
+      "chapter_seconds": [
+        30,
+        32
+      ],
+      "core_seconds": {
+        "S41-007": 62
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W41S-T05",
+      "body_seconds": 60,
+      "chapter_seconds": [
+        30,
+        30
+      ],
+      "core_seconds": {
+        "S41-008": 60
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "all_strings_rstrip": true,
+    "utf8_lf": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "S41-003、S41-004留作後續素材，未塞入現有五案。",
+    "候選待非作者核對，時間另待紙上企劃實際試讀。"
+  ],
+  "revision_history": [
+    {
+      "before_files": [
+        {
+          "file": "batches/wave41-earth.json",
+          "sha256": "31ca382d1abb0ca4f3893ccc3f83b94d802d6c9874c22234e2226051fb82bb96"
+        },
+        {
+          "file": "reviews/wave41-earth-themes.json",
+          "sha256": "7949e3760282d4ef39c70f65935ab3218eb4a6d92dcc86e3a622b2cc581c317b"
+        },
+        {
+          "file": "reviews/wave41-earth-author.json",
+          "sha256": "92b34e80212253464863783526c8c6a659e1c29446d9516d77edd09b7be98d8a"
+        }
+      ],
+      "after_batch_sha256": "edcd24acfc1b8212ab07859ad41de55495194c8fe69f7312f200c510041c717b",
+      "after_themes_sha256": "0da1879b81ecd6a86089c5a7da7725e6ba23ba07d5cb9985ab6972d3a3305f33",
+      "review": "pool_life_tech topic-level readback and root timing",
+      "changes": [
+        "圖17橫軸／圖說年份相異，本案只採十小時序列。",
+        "電弧模擬灰輸出為熔融再凝固的小圓珠，形狀不能證明為玻璃；題名、未收與題案同步。",
+        "S41-003 notes重寫為自身時序／深部震源界線。",
+        "T01 70→63秒，31+32；採主代理離線旁白55.309秒，留7.691秒讀圖。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,697 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "science_sources",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "scope": "考古痕跡、材料與製法的實驗辨識；不由可行重現宣稱唯一古代故事。",
+  "baseline": {
+    "head": "faeba1adac4eba4fa1993af0e0de8d45dea1edc2",
+    "selected": 3528,
+    "raw_records": 3917,
+    "not_added": 2182,
+    "themes": 547,
+    "pool_sha256": "d521779c2addbf70ab52338ac24086c059f9e554aceab6b7bbbf354d6cacbdc7"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave50-earth.json",
+      "sha256": "b4ab478a7a9cfead3026b913eab57f8947a32b17220e40bbc70060c13a0f622b"
+    },
+    {
+      "file": "reviews/wave50-earth-themes.json",
+      "sha256": "55abcb7aee10c1235f5d2069c03044632289fb3e36cdf7f13afac29ad284c5d4"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 5,
+    "candidate_supporting_sources": 5,
+    "na_only_sources": 0,
+    "not_added": 15,
+    "near_pairs": 17,
+    "themes": 4,
+    "proposed_new_cores": 5,
+    "proposed_merges": 0
+  },
+  "near_pairs": [
+    {
+      "a": "S50-001",
+      "b": "R38010",
+      "a_snapshot": {
+        "id": "S50-001",
+        "question": "樺樹焦油一定要在密閉爐裡燒出來嗎？",
+        "answer_target": "實驗中，在石面上直接燒樹皮沒有得到可辨量焦油，改讓火焰靠近傾斜石面，便能刮下黏稠沉積；化學與工具使用測試支持它是能用的樺樹焦油。",
+        "scope": "這是開放燃燒位置的反例，不是所有樺木火都產膠，也不等於出土焦油都採此法。完整化學保留機制未定。"
+      },
+      "b_snapshot": {
+        "id": "R38010",
+        "question": "一塊有人嚼過的樺樹焦油，怎麼分出裡面的口腔線索和後來的污染？",
+        "answer_target": "研究者把短DNA片段和末端損傷當古老來源的線索，再比對微生物組成與不同人體部位的參照樣本；結果支持其中留有咀嚼者的口腔微生物。",
+        "scope": "損傷本身不證明口腔來源，動植物DNA也不能定出某天最後一餐。"
+      },
+      "decision": "distinct",
+      "reason": "舊焦油中口腔DNA歸屬，新改問開放環境生成條件；不是換古人物種。"
+    },
+    {
+      "a": "S50-001",
+      "b": "R38009",
+      "a_snapshot": {
+        "id": "S50-001",
+        "question": "樺樹焦油一定要在密閉爐裡燒出來嗎？",
+        "answer_target": "實驗中，在石面上直接燒樹皮沒有得到可辨量焦油，改讓火焰靠近傾斜石面，便能刮下黏稠沉積；化學與工具使用測試支持它是能用的樺樹焦油。",
+        "scope": "這是開放燃燒位置的反例，不是所有樺木火都產膠，也不等於出土焦油都採此法。完整化學保留機制未定。"
+      },
+      "b_snapshot": {
+        "id": "R38009",
+        "question": "赭石粉會讓一種膠黏得比較差，為什麼加了它反而能握住石片？",
+        "answer_target": "研究者分開測兩種需求。在風乾瀝青配方的接合試驗中，加入大量赭石會降低黏著強度；測手持握把時，新鮮瀝青會沾手，加粉調稠就能捏成握柄。兩種測法回答的問題不同。",
+        "scope": "黏著試驗與握把用的起始材料狀態分開；無法從握持複製品確定所有古石片都有柄。"
+      },
+      "decision": "distinct",
+      "reason": "舊不同配方在接合與握持間的權衡；新是生成焦油的裝置前提。"
+    },
+    {
+      "a": "S50-002",
+      "b": "S50-001",
+      "a_snapshot": {
+        "id": "S50-002",
+        "question": "都做得出黑色焦油，怎麼再問出土的那兩塊比較像哪種製法？",
+        "answer_target": "把五種製法得到的61份焦油作參照，兩件Königsaue實物都保有較強的木栓質相關訊號，與地下法參照較相近；上方冷凝的參照通常只有很弱訊號，作者以材料輸送路徑不同解釋。",
+        "scope": "兩件實物與所測參照；分子指紋縮小方法類型，不唯一指定爐形。污染與長期保存會改變部分訊號，尤其不把缺少煙灰相關分子當單一排除證據。"
+      },
+      "b_snapshot": {
+        "id": "S50-001",
+        "question": "樺樹焦油一定要在密閉爐裡燒出來嗎？",
+        "answer_target": "實驗中，在石面上直接燒樹皮沒有得到可辨量焦油，改讓火焰靠近傾斜石面，便能刮下黏稠沉積；化學與工具使用測試支持它是能用的樺樹焦油。",
+        "scope": "這是開放燃燒位置的反例，不是所有樺木火都產膠，也不等於出土焦油都採此法。完整化學保留機制未定。"
+      },
+      "decision": "distinct",
+      "reason": "前者用實物/參照化學組合辨技術；後者只驗另一技術可行；同片承接但控制與答案不同。"
+    },
+    {
+      "a": "S50-002",
+      "b": "R28004",
+      "a_snapshot": {
+        "id": "S50-002",
+        "question": "都做得出黑色焦油，怎麼再問出土的那兩塊比較像哪種製法？",
+        "answer_target": "把五種製法得到的61份焦油作參照，兩件Königsaue實物都保有較強的木栓質相關訊號，與地下法參照較相近；上方冷凝的參照通常只有很弱訊號，作者以材料輸送路徑不同解釋。",
+        "scope": "兩件實物與所測參照；分子指紋縮小方法類型，不唯一指定爐形。污染與長期保存會改變部分訊號，尤其不把缺少煙灰相關分子當單一排除證據。"
+      },
+      "b_snapshot": {
+        "id": "R28004",
+        "question": "古人像的眉眼看起來不是藍的，研究者怎麼找到藏在裡面的埃及藍？",
+        "answer_target": "用可見光照畫，另收近紅外發光，埃及藍會在這個波段留下訊號。這幅人像的眉眼線條同時對上發光圖和銅分布。項鍊上的深色珠也含銅，卻缺少相同發光特徵，可見只看銅會把另一種色料也算進來。",
+        "scope": "限Nelson-Atkins館藏37-40與研究方法。發光像不等於人眼看見的顏色；項鍊色料的確切身分在本研究未定。"
+      },
+      "decision": "distinct",
+      "reason": "舊發光與銅分布辨顏料；新同種焦油內不同輸送路徑留下成分差，不僅換儀器。"
+    },
+    {
+      "a": "S50-002",
+      "b": "R38010",
+      "a_snapshot": {
+        "id": "S50-002",
+        "question": "都做得出黑色焦油，怎麼再問出土的那兩塊比較像哪種製法？",
+        "answer_target": "把五種製法得到的61份焦油作參照，兩件Königsaue實物都保有較強的木栓質相關訊號，與地下法參照較相近；上方冷凝的參照通常只有很弱訊號，作者以材料輸送路徑不同解釋。",
+        "scope": "兩件實物與所測參照；分子指紋縮小方法類型，不唯一指定爐形。污染與長期保存會改變部分訊號，尤其不把缺少煙灰相關分子當單一排除證據。"
+      },
+      "b_snapshot": {
+        "id": "R38010",
+        "question": "一塊有人嚼過的樺樹焦油，怎麼分出裡面的口腔線索和後來的污染？",
+        "answer_target": "研究者把短DNA片段和末端損傷當古老來源的線索，再比對微生物組成與不同人體部位的參照樣本；結果支持其中留有咀嚼者的口腔微生物。",
+        "scope": "損傷本身不證明口腔來源，動植物DNA也不能定出某天最後一餐。"
+      },
+      "decision": "distinct",
+      "reason": "材料同為樺焦油，DNA污染/口腔來源與製法化學參照不同。"
+    },
+    {
+      "a": "S50-003",
+      "b": "R35002",
+      "a_snapshot": {
+        "id": "S50-003",
+        "question": "彎掉的青銅劍，為什麼還要一起看劍身上的斜刮痕？",
+        "answer_target": "複製劍以平面擋住來劍後，一起出現彎曲和斜向刮痕，與四件出土劍的組合特徵相近。把形變與接觸痕一起比較，比單說劍彎了更能檢驗可能的受力方式。",
+        "scope": "限這組青銅複製劍、動態平擋試驗與四件古物；支持可行受力路徑，不排除刻意毀損或不同力道／材料造成相近結果。"
+      },
+      "b_snapshot": {
+        "id": "R35002",
+        "question": "獼猴用過的石錘，哪一頭的磨痕能洩漏牠是敲牡蠣，還是砸放在砧上的食物？",
+        "answer_target": "用石頭較小的端部去敲附著牡蠣，與用寬面去砸鬆動食物，受打擊最集中的位置有別。把尖端、寬面的壓碎痕和重量放在一起，比對60件已觀察到用途的石錘，多數判對，有五件不符。",
+        "scope": "最後觀察到的用途與累積磨損的歷史未必相同；92%是這批工具的符合率。"
+      },
+      "decision": "distinct",
+      "reason": "舊石錘擊痕位置對食物處理方式；新平擋使整劍彎曲及相連斜刮痕，兩種損傷同時約束受力。"
+    },
+    {
+      "a": "S50-003",
+      "b": "R38004",
+      "a_snapshot": {
+        "id": "S50-003",
+        "question": "彎掉的青銅劍，為什麼還要一起看劍身上的斜刮痕？",
+        "answer_target": "複製劍以平面擋住來劍後，一起出現彎曲和斜向刮痕，與四件出土劍的組合特徵相近。把形變與接觸痕一起比較，比單說劍彎了更能檢驗可能的受力方式。",
+        "scope": "限這組青銅複製劍、動態平擋試驗與四件古物；支持可行受力路徑，不排除刻意毀損或不同力道／材料造成相近結果。"
+      },
+      "b_snapshot": {
+        "id": "R38004",
+        "question": "一塊圓頭肋骨被磨亮，怎麼從亮的位置判斷它可能磨過皮？",
+        "answer_target": "這件骨器尖端的凸面與低處都有磨光，向後細紋漸稀。把這種分布和細紋的方向記下來，再與複製肋骨沿乾皮來回摩擦留下的紋理並排。位置和方向一起吻合才支持磨皮用途。",
+        "scope": "磨耗相符不能還原一件特定皮製品；複製試驗的分鐘數也不是古人工作時間。"
+      },
+      "decision": "distinct",
+      "reason": "舊軟接觸磨光分布；新瞬時平擋造成塑性彎曲與刮痕，非只換骨到劍。"
+    },
+    {
+      "a": "S50-003",
+      "b": "H3061",
+      "a_snapshot": {
+        "id": "S50-003",
+        "question": "彎掉的青銅劍，為什麼還要一起看劍身上的斜刮痕？",
+        "answer_target": "複製劍以平面擋住來劍後，一起出現彎曲和斜向刮痕，與四件出土劍的組合特徵相近。把形變與接觸痕一起比較，比單說劍彎了更能檢驗可能的受力方式。",
+        "scope": "限這組青銅複製劍、動態平擋試驗與四件古物；支持可行受力路徑，不排除刻意毀損或不同力道／材料造成相近結果。"
+      },
+      "b_snapshot": {
+        "id": "H3061",
+        "question": "同樣有缺口，為什麼銅可能先彎很多，玻璃卻直接裂？",
+        "answer_target": "裂紋附近的塑性形變能吸收能量並改變局部狀態；脆性材料可在較少耗能下擴裂。",
+        "scope": "只作來源銅/玻璃對照，不把所有金屬或所有陶瓷一概分類。"
+      },
+      "decision": "distinct",
+      "reason": "舊一般塑性耗能；新用形變+痕跡的對照排可能使用方式，不單講金屬會彎。"
+    },
+    {
+      "a": "S50-003",
+      "b": "F14009",
+      "a_snapshot": {
+        "id": "S50-003",
+        "question": "彎掉的青銅劍，為什麼還要一起看劍身上的斜刮痕？",
+        "answer_target": "複製劍以平面擋住來劍後，一起出現彎曲和斜向刮痕，與四件出土劍的組合特徵相近。把形變與接觸痕一起比較，比單說劍彎了更能檢驗可能的受力方式。",
+        "scope": "限這組青銅複製劍、動態平擋試驗與四件古物；支持可行受力路徑，不排除刻意毀損或不同力道／材料造成相近結果。"
+      },
+      "b_snapshot": {
+        "id": "F14009",
+        "question": "毛髮比鋼軟得多，為什麼還能讓剃刀刃口崩一小塊？",
+        "answer_target": "毛髮彎曲使刃口承受面外載荷；當毛髮邊緣碰上刃口缺口及兩側剛性不均的特定位置，裂紋較易起始並轉向形成崩口，早於顯著均勻磨耗。",
+        "scope": "所測麻田散鐵鋼刃口；直向/傾斜切割與均質/異質模型分開標；三條件要同時滿足，不能把任一條件說成必然崩口。"
+      },
+      "decision": "distinct",
+      "reason": "舊毛髮/鋼裂口起始條件；新青銅平擋的連動損傷與考古反推，不共用同一破裂答案。"
+    },
+    {
+      "a": "S50-004",
+      "b": "R38012",
+      "a_snapshot": {
+        "id": "S50-004",
+        "question": "石器被火燒過，怎麼知道它是在做工具時加熱，還是丟掉後才被燒？",
+        "answer_target": "先用岩相相近的現代石材比較加熱前後的取片疤，再看古物的粗糙舊面、較平滑新疤與熱裂如何交切。若後續取片切過熱裂面，便知道裂後還繼續加工，不能只把它當棄置後燒裂。",
+        "scope": "限Klipdrift PBD矽質岩及相匹配的參照；熱裂未被後疤切過時不具這種時序診斷力。表面光澤單獨不足以認定意圖。"
+      },
+      "b_snapshot": {
+        "id": "R38012",
+        "question": "泥燒紅了只能說那裡有過火，為什麼在巴納姆還要找黃鐵礦？",
+        "answer_target": "英國巴納姆約四十萬年前的遺址，不同區有受熱沉積、受熱破裂的燧石手斧和兩塊黃鐵礦。第一塊礦在古土壤中靠近受熱燧石，第二塊在另一區的古土壤表面，位置可能移動過。附近地質調查顯示這種礦物罕見，研究者據此提出有人帶來打火材料的解釋。",
+        "scope": "這是多條線索的推論，單靠紅土或兩塊礦物都無法認定誰點了火。"
+      },
+      "decision": "distinct",
+      "reason": "舊多證據火與黃鐵礦；新加熱前後取片的交切關係辨順序。"
+    },
+    {
+      "a": "S50-004",
+      "b": "R38008",
+      "a_snapshot": {
+        "id": "S50-004",
+        "question": "石器被火燒過，怎麼知道它是在做工具時加熱，還是丟掉後才被燒？",
+        "answer_target": "先用岩相相近的現代石材比較加熱前後的取片疤，再看古物的粗糙舊面、較平滑新疤與熱裂如何交切。若後續取片切過熱裂面，便知道裂後還繼續加工，不能只把它當棄置後燒裂。",
+        "scope": "限Klipdrift PBD矽質岩及相匹配的參照；熱裂未被後疤切過時不具這種時序診斷力。表面光澤單獨不足以認定意圖。"
+      },
+      "b_snapshot": {
+        "id": "R38008",
+        "question": "有刻畫的石板只紅了一邊，怎麼試出它可能擺在火旁哪裡？",
+        "answer_target": "複製石板放進或放在火堆旁，受熱發紅的分布會不同。部分出土石板的邊緣紅斑與在火旁受熱相符；變動的火光會如何照出刻線，則用數位模擬另外檢查。",
+        "scope": "出土地點的早期紀錄不完整，不能證實古人刻意製作動畫或所有石板都以相同方式擺放。"
+      },
+      "decision": "distinct",
+      "reason": "舊石牌受熱位置與火光；新岩相匹配實驗及後疤切前裂的製程時序。"
+    },
+    {
+      "a": "S50-004",
+      "b": "E7018",
+      "a_snapshot": {
+        "id": "S50-004",
+        "question": "石器被火燒過，怎麼知道它是在做工具時加熱，還是丟掉後才被燒？",
+        "answer_target": "先用岩相相近的現代石材比較加熱前後的取片疤，再看古物的粗糙舊面、較平滑新疤與熱裂如何交切。若後續取片切過熱裂面，便知道裂後還繼續加工，不能只把它當棄置後燒裂。",
+        "scope": "限Klipdrift PBD矽質岩及相匹配的參照；熱裂未被後疤切過時不具這種時序診斷力。表面光澤單獨不足以認定意圖。"
+      },
+      "b_snapshot": {
+        "id": "E7018",
+        "question": "兩層岩石明明貼在一起，中間怎麼會少掉很長一段時間？",
+        "answer_target": "沉積停下或舊層遭侵蝕後才再沉積，新舊層相貼但不含中間期間的岩石記錄。",
+        "scope": "限不整合的記錄缺口；不說時間本身消失，沒有定年不能只憑界面外觀量出缺多久。"
+      },
+      "decision": "distinct",
+      "reason": "舊地層缺失記錄；新不是泛說先後，而是加熱參照讓兩類疤具有製程含義。"
+    },
+    {
+      "a": "S50-004",
+      "b": "H3051",
+      "a_snapshot": {
+        "id": "S50-004",
+        "question": "石器被火燒過，怎麼知道它是在做工具時加熱，還是丟掉後才被燒？",
+        "answer_target": "先用岩相相近的現代石材比較加熱前後的取片疤，再看古物的粗糙舊面、較平滑新疤與熱裂如何交切。若後續取片切過熱裂面，便知道裂後還繼續加工，不能只把它當棄置後燒裂。",
+        "scope": "限Klipdrift PBD矽質岩及相匹配的參照；熱裂未被後疤切過時不具這種時序診斷力。表面光澤單獨不足以認定意圖。"
+      },
+      "b_snapshot": {
+        "id": "H3051",
+        "question": "已經加工變硬的金屬，為什麼加熱後又可能變軟？",
+        "answer_target": "新生低位錯密度晶粒長大，取代加工形成的高缺陷組織。",
+        "scope": "聚焦再結晶；恢復與晶粒後續長大不假裝同一步，溫度依材料。"
+      },
+      "decision": "distinct",
+      "reason": "舊金屬再結晶軟化；新矽質岩取片疤與受熱歷程，非退火換材料。"
+    },
+    {
+      "a": "S50-005",
+      "b": "P282",
+      "a_snapshot": {
+        "id": "S50-005",
+        "question": "銅斧表面驗出較多銀，就一定是古人替它鍍銀嗎？",
+        "answer_target": "銅斧切面顯示銀顆粒散在多孔氧化層裡，並非只看到一層完整銀皮。另一個合金腐蝕試驗讓銅減少、表面銀相對增加，支持埋藏腐蝕也能留下銀富集的解釋。",
+        "scope": "單件斧與2023預印本對照；表面分布和人工試驗支持腐蝕路徑，不等於證實所有古銀表面皆天然形成。配比文字矛盾不採精確量；前後影像尺度不同。"
+      },
+      "b_snapshot": {
+        "id": "P282",
+        "question": "銅表面變色和鐵生鏽，為什麼對底下金屬的影響不同？",
+        "answer_target": "某些銅表層可減慢進一步腐蝕，鐵鏽常無同等保護性。",
+        "scope": "成分與環境不同，避免一概而論"
+      },
+      "decision": "distinct",
+      "reason": "舊表層對腐蝕保護性；新合金選擇性損失使殘留銀富集、能冒充鍍層。"
+    },
+    {
+      "a": "S50-005",
+      "b": "P285",
+      "a_snapshot": {
+        "id": "S50-005",
+        "question": "銅斧表面驗出較多銀，就一定是古人替它鍍銀嗎？",
+        "answer_target": "銅斧切面顯示銀顆粒散在多孔氧化層裡，並非只看到一層完整銀皮。另一個合金腐蝕試驗讓銅減少、表面銀相對增加，支持埋藏腐蝕也能留下銀富集的解釋。",
+        "scope": "單件斧與2023預印本對照；表面分布和人工試驗支持腐蝕路徑，不等於證實所有古銀表面皆天然形成。配比文字矛盾不採精確量；前後影像尺度不同。"
+      },
+      "b_snapshot": {
+        "id": "P285",
+        "question": "金屬表面出現不同顏色，就能直接知道是哪一種鏽嗎？",
+        "answer_target": "腐蝕產物可能多種混合且受環境影響，顏色只是線索不是成分鑑定。",
+        "scope": "不提供古物清洗或修復建議"
+      },
+      "decision": "distinct",
+      "reason": "舊顏色不能定鏽；新已有元素圖仍需剖面與腐蝕對照，問題是來源非辨色。"
+    },
+    {
+      "a": "S50-005",
+      "b": "H3041",
+      "a_snapshot": {
+        "id": "S50-005",
+        "question": "銅斧表面驗出較多銀，就一定是古人替它鍍銀嗎？",
+        "answer_target": "銅斧切面顯示銀顆粒散在多孔氧化層裡，並非只看到一層完整銀皮。另一個合金腐蝕試驗讓銅減少、表面銀相對增加，支持埋藏腐蝕也能留下銀富集的解釋。",
+        "scope": "單件斧與2023預印本對照；表面分布和人工試驗支持腐蝕路徑，不等於證實所有古銀表面皆天然形成。配比文字矛盾不採精確量；前後影像尺度不同。"
+      },
+      "b_snapshot": {
+        "id": "H3041",
+        "question": "電鍍不是把金屬塗上去，金屬層怎麼一點點長出來？",
+        "answer_target": "溶液金屬離子在導電表面得到電子成為金屬，陽極可補回離子。",
+        "scope": "成核、粗糙度需另核；不示範鍍液或電源設置。"
+      },
+      "decision": "distinct",
+      "reason": "舊電鍍把離子還原新增金屬；新不新增銀而銅減少的相反途徑。"
+    },
+    {
+      "a": "S50-005",
+      "b": "H3043",
+      "a_snapshot": {
+        "id": "S50-005",
+        "question": "銅斧表面驗出較多銀，就一定是古人替它鍍銀嗎？",
+        "answer_target": "銅斧切面顯示銀顆粒散在多孔氧化層裡，並非只看到一層完整銀皮。另一個合金腐蝕試驗讓銅減少、表面銀相對增加，支持埋藏腐蝕也能留下銀富集的解釋。",
+        "scope": "單件斧與2023預印本對照；表面分布和人工試驗支持腐蝕路徑，不等於證實所有古銀表面皆天然形成。配比文字矛盾不採精確量；前後影像尺度不同。"
+      },
+      "b_snapshot": {
+        "id": "H3043",
+        "question": "金屬外殼接上一塊更容易腐蝕的金屬，怎麼反而能受保護？",
+        "answer_target": "較活潑金屬成為陽極優先氧化，使被保護件主要承接還原反應。",
+        "scope": "要有適當電連接與電解質；效力有限，非永不生鏽。"
+      },
+      "decision": "distinct",
+      "reason": "舊外接犧牲陽極保護另一金屬；新合金內選擇性腐蝕後表面組成與考古解釋。"
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "raw_records_searched": 3917,
+    "not_added_searched": 2182,
+    "method": "全庫問答scope與NA字詞搜索，已讀考古/食物/磨痕/金屬腐蝕相關完整列；17人工近對，非全庫外站重查。",
+    "cache_files": [
+      ".cache/wave50-earth-prior.json"
+    ],
+    "common_semantic_status": "等待root共同preview與非作者判讀。"
+  },
+  "source_identity": [
+    {
+      "id": "S50-S001",
+      "doi": "10.1073/pnas.1911137116",
+      "version": "2019正式刊本；PMC同文載體",
+      "canonical_url": "https://doi.org/10.1073/pnas.1911137116",
+      "read_copy": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6731756/?pdf=1",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊／PMC或arXiv為同研究載體，不計獨立佐證；S001與S002有作者重疊且後篇明確接續前篇，但研究對象與實驗不同。",
+      "limits": "exact未命中不保證無同文；S005僅核到預印本。"
+    },
+    {
+      "id": "S50-S002",
+      "doi": "10.1007/s12520-023-01789-2",
+      "version": "2023-05-22正式刊本；PMC同文載體",
+      "canonical_url": "https://doi.org/10.1007/s12520-023-01789-2",
+      "read_copy": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10202989/",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊／PMC或arXiv為同研究載體，不計獨立佐證；S001與S002有作者重疊且後篇明確接續前篇，但研究對象與實驗不同。",
+      "limits": "exact未命中不保證無同文；S005僅核到預印本。"
+    },
+    {
+      "id": "S50-S003",
+      "doi": "10.1007/s10816-020-09451-0",
+      "version": "2020正式刊本",
+      "canonical_url": "https://doi.org/10.1007/s10816-020-09451-0",
+      "read_copy": "https://link.springer.com/article/10.1007/s10816-020-09451-0",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊／PMC或arXiv為同研究載體，不計獨立佐證；S001與S002有作者重疊且後篇明確接續前篇，但研究對象與實驗不同。",
+      "limits": "exact未命中不保證無同文；S005僅核到預印本。"
+    },
+    {
+      "id": "S50-S004",
+      "doi": "10.1371/journal.pone.0163874",
+      "version": "2016-10-19正式刊本",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0163874",
+      "read_copy": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163874",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊／PMC或arXiv為同研究載體，不計獨立佐證；S001與S002有作者重疊且後篇明確接續前篇，但研究對象與實驗不同。",
+      "limits": "exact未命中不保證無同文；S005僅核到預印本。"
+    },
+    {
+      "id": "S50-S005",
+      "doi": "10.48550/arXiv.2309.15120",
+      "version": "arXiv:2309.15120v1，2023-08-21；本次身份頁未列正式期刊版本",
+      "canonical_url": "https://doi.org/10.48550/arXiv.2309.15120",
+      "read_copy": "https://arxiv.org/pdf/2309.15120",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊／PMC或arXiv為同研究載體，不計獨立佐證；S001與S002有作者重疊且後篇明確接續前篇，但研究對象與實驗不同。",
+      "limits": "exact未命中不保證無同文；S005僅核到預印本。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "S50-S001",
+      "reading_scope": "Results中三種燃燒位置對照、Fig1；Results的工具測試／GC–MS；Discussion前三段；Methods。Fig1當日目讀。",
+      "limitations": "無法判定局部缺氧或較慢氧化何者保住焦油；不由可重現推定古人實際製法或整體認知。補充影片未播放。原PMC UA首次為驗證頁、PNAS PDF及Europe PMC PDF 403、Europe PMC XML 500；最後PMC ?pdf=1回有效HTML而非PDF。",
+      "cache": {
+        "file": ".cache/wave50-earth-tar2019-route2.raw",
+        "sha256": "e2e9384d491742f44d7557b63e8a93ea94eaccb0f7c6a7b1d515f43e6a12f9b6",
+        "text_file": ".cache/wave50-earth-tar2019-valid.txt",
+        "text_sha256": "0a3b2673d16cfad517d38770868cd668a02a7afe5ccc75a4c1dd6a6d40a8bc8d"
+      }
+    },
+    {
+      "source_id": "S50-S002",
+      "reading_scope": "Methods: Experimental birch tar making；Results: Chemical analysis（本機P036–053）、Figs1–6圖說；Discussion。Fig1/3當日目讀。",
+      "limitations": "只在五種參照技術內比較，沒有唯一重建爐形。石英可後污染、多環芳烴古代穩定性未定，不能單用其缺席判製法；不採累積文化的強結論。補充資料未另讀。Web開啟驗證頁，UA取得有效正文。",
+      "cache": {
+        "file": ".cache/wave50-earth-tar2023.html",
+        "sha256": "a6a4c67dbd88c9db6688d52aa9febe53eb7bc090ef9d2caa73c10c7f6fd1a92b",
+        "text_file": ".cache/wave50-earth-tar2023-paragraphs.txt",
+        "text_sha256": "dc927cf2c8570dbf51c314deabe0513c61349a5d17d415f1e1802d8b9fc0f752"
+      }
+    },
+    {
+      "source_id": "S50-S003",
+      "reading_scope": "Data Analysis、Diagnostic Combat Marks中flat parry段（本機P065–067、P099–108）、Figs17–20；Patterning的限制P110–119。目讀Figs17/19/20。",
+      "limitations": "單次控制對打的材料／幾何／力道有限；古物也可能是刻意毀損，不能唯一還原交戰動作。未看補充影片或重演。UA回傳網址附cookie錯誤查詢但本文完整。",
+      "cache": {
+        "file": ".cache/wave50-earth-sword.html",
+        "sha256": "fdf77e52f6086188201d257c6bb05c2c1db65e14708246a37fd7dcaf7e3be2df",
+        "text_file": ".cache/wave50-earth-sword-paragraphs.txt",
+        "text_sha256": "ce4c1a6e9b8aea9b4b3d30ad56330417f07e096f5dd38ec16b3c855af890ee83"
+      }
+    },
+    {
+      "source_id": "S50-S004",
+      "reading_scope": "Methods: Experimental reference collection、Macroscopic identification的四項列表；Results: Chronology、Technological advantages（P093–096）；Figs2/5/7/8圖說，Fig2/7目讀。",
+      "limitations": "先比對岩相相近的參照樣，不把所有亮石面視為加熱證據。未被後續疤切過的熱裂不能單獨分辨加工加熱與棄置後被燒；不由此決定唯一爐型或溫度。",
+      "cache": {
+        "file": ".cache/wave50-earth-silcrete.html",
+        "sha256": "3a1a1511dffb044a2b0c94377406a90477fe8d4d6a603fe0bdfcc48cbdc2d01f",
+        "text_file": ".cache/wave50-earth-silcrete.txt",
+        "text_sha256": "553d82f34d03a4729a383afe459918c35725f6f7d5d5300377e1b5d9a62f3b82"
+      }
+    },
+    {
+      "source_id": "S50-S005",
+      "reading_scope": "PDF pp3–5 §2.1與§3.1；pp7–11 §3.2、§3.3及Discussion；pp11–12 Conclusion。目讀p5 Fig2與p10 Fig8。",
+      "limitations": "預印本、單件銅斧；人工腐蝕只支持路徑可行，不等於重播數千年。Methods配比95/5與Results94/6不一致，不採精確配比／倍率。Fig8前後尺度不同，不假裝同視野逐顆追蹤；不說排盡所有裝飾可能。",
+      "cache": {
+        "file": ".cache/wave50-earth-axe.pdf",
+        "sha256": "c0587e325f98c80fce4a113ec92ad95b87d57fcd1487a068b4d8b3a5e7793e6f",
+        "text_file": ".cache/wave50-earth-axe.txt",
+        "text_sha256": "10e9094f6dec69f1354d734b96e68172159973b454cd34c1ad70aed0e4e83893"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "source_id": "S50-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6731756/?pdf=1",
+      "result": "當日指定UA有效原文；實讀範圍與圖見上欄",
+      "file": ".cache/wave50-earth-tar2019-route2.raw",
+      "sha256": "e2e9384d491742f44d7557b63e8a93ea94eaccb0f7c6a7b1d515f43e6a12f9b6",
+      "text_file": ".cache/wave50-earth-tar2019-valid.txt",
+      "text_sha256": "0a3b2673d16cfad517d38770868cd668a02a7afe5ccc75a4c1dd6a6d40a8bc8d"
+    },
+    {
+      "source_id": "S50-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10202989/",
+      "result": "當日指定UA有效原文；實讀範圍與圖見上欄",
+      "file": ".cache/wave50-earth-tar2023.html",
+      "sha256": "a6a4c67dbd88c9db6688d52aa9febe53eb7bc090ef9d2caa73c10c7f6fd1a92b",
+      "text_file": ".cache/wave50-earth-tar2023-paragraphs.txt",
+      "text_sha256": "dc927cf2c8570dbf51c314deabe0513c61349a5d17d415f1e1802d8b9fc0f752"
+    },
+    {
+      "source_id": "S50-S003",
+      "url": "https://link.springer.com/article/10.1007/s10816-020-09451-0",
+      "result": "當日指定UA有效原文；實讀範圍與圖見上欄",
+      "file": ".cache/wave50-earth-sword.html",
+      "sha256": "fdf77e52f6086188201d257c6bb05c2c1db65e14708246a37fd7dcaf7e3be2df",
+      "text_file": ".cache/wave50-earth-sword-paragraphs.txt",
+      "text_sha256": "ce4c1a6e9b8aea9b4b3d30ad56330417f07e096f5dd38ec16b3c855af890ee83"
+    },
+    {
+      "source_id": "S50-S004",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163874",
+      "result": "當日指定UA有效原文；實讀範圍與圖見上欄",
+      "file": ".cache/wave50-earth-silcrete.html",
+      "sha256": "3a1a1511dffb044a2b0c94377406a90477fe8d4d6a603fe0bdfcc48cbdc2d01f",
+      "text_file": ".cache/wave50-earth-silcrete.txt",
+      "text_sha256": "553d82f34d03a4729a383afe459918c35725f6f7d5d5300377e1b5d9a62f3b82"
+    },
+    {
+      "source_id": "S50-S005",
+      "url": "https://arxiv.org/pdf/2309.15120",
+      "result": "當日指定UA有效原文；實讀範圍與圖見上欄",
+      "file": ".cache/wave50-earth-axe.pdf",
+      "sha256": "c0587e325f98c80fce4a113ec92ad95b87d57fcd1487a068b4d8b3a5e7793e6f",
+      "text_file": ".cache/wave50-earth-axe.txt",
+      "text_sha256": "10e9094f6dec69f1354d734b96e68172159973b454cd34c1ad70aed0e4e83893"
+    }
+  ],
+  "retrieval_failures": [
+    "陶器eScholarship web驗證頁；後查確認同題R29001而不追全文。",
+    "S001 PMC初始UA及第二次web是驗證頁；PNAS PDF/Europe PMC PDF403，Europe PMC XML500；PMC ?pdf=1回有效HTML且篇名正文核對。",
+    "S002 web驗證頁；指定UA得有效原刊PMC全文。",
+    "不依搜尋片段採古石鑽磨粉或盲測磨石題。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "S50-S001",
+      "file": ".cache/wave50-earth-tar2019-fig1.jpg",
+      "sha256": "d7693ffb70634b71e18d30e84a776c341fff5dd28256231ea9ca15bf2acb4144",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S002",
+      "file": ".cache/wave50-earth-tar2023-fig1.jpg",
+      "sha256": "73d7d566604faa56df605fbbef0ed5aa62e818d64b6a711c192af87c0875a6f0",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S002",
+      "file": ".cache/wave50-earth-tar2023-fig3.jpg",
+      "sha256": "baf2a33841ee0950594e1b59149c0538168bfb2620baaa600ae4860060341a54",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S003",
+      "file": ".cache/wave50-earth-sword-fig17.jpg",
+      "sha256": "a53c2b13c59b825b2548bccbfd8f189f053bac305597b83f475125af823525db",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S003",
+      "file": ".cache/wave50-earth-sword-fig19.jpg",
+      "sha256": "da8b4f70827cd7c78f8f6d4be889439c62930136da066d1b125c41450a4c54a1",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S003",
+      "file": ".cache/wave50-earth-sword-fig20.jpg",
+      "sha256": "80b38aa690fcee65d9816b9405d4d48ac641766f43d8989b8e9327b22c5848bf",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S004",
+      "file": ".cache/wave50-earth-silcrete-fig2.jpg",
+      "sha256": "6168159923a3736a8f1738d6a277e0f33174bea413ccc8c9eaaa5bd59aaa4ced",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S004",
+      "file": ".cache/wave50-earth-silcrete-fig7.jpg",
+      "sha256": "57e15bccb8800436632b3204307dc9ea14a8a04a8f699db169dc7e5f6b1d4e31",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S005",
+      "file": ".cache/wave50-earth-axe-p5.png",
+      "sha256": "fc094529121880dab2f991b22a77f77e6f3f173a259e267a2ad06b96e45a7f3f",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    },
+    {
+      "source_id": "S50-S005",
+      "file": ".cache/wave50-earth-axe-p10.png",
+      "sha256": "1fd012d253b9e4b6da4367581c45092f1529a089da7e97ba64d4c19f89de3a66",
+      "read": "當日view_image目讀原圖／原頁；用於核本文圖號、對照與尺度，不代表商用圖授權。"
+    }
+  ],
+  "sample_artifact": {
+    "theme_id": "W50S-T01",
+    "file": ".cache/w50-sample-earth.json",
+    "sha256": "83c204f7b686b407e3336fa039869d0eb958208c96fb7257308fa12476d6ae16",
+    "characters": 225,
+    "status": "root離線SAPI已量時；本作者只讀時長收據，未播放聽感驗收。",
+    "sample_to_chapter_segments": [
+      [
+        0,
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "budget_seconds": 68,
+    "read_receipt": ".cache/wave50-earth-read.json",
+    "read_receipt_sha256": "2bc2a3750511830735d5a5f069b4a26a512f1fcf9a2a82d348adc13c0f0b2c33",
+    "segment_seconds": [
+      19.286,
+      17.87,
+      19.577
+    ],
+    "continuous_seconds": 56.734,
+    "chapter_seconds": [
+      42,
+      26
+    ]
+  },
+  "timing_checks": [
+    {
+      "id": "W50S-T01",
+      "body_seconds": 68,
+      "sum_chapters": 68,
+      "core_seconds": {
+        "S50-004": 68
+      },
+      "caps": {
+        "S50-004": 90
+      }
+    },
+    {
+      "id": "W50S-T02",
+      "body_seconds": 88,
+      "sum_chapters": 88,
+      "core_seconds": {
+        "S50-001": 40,
+        "S50-002": 48
+      },
+      "caps": {
+        "S50-001": 75,
+        "S50-002": 85
+      }
+    },
+    {
+      "id": "W50S-T03",
+      "body_seconds": 63,
+      "sum_chapters": 63,
+      "core_seconds": {
+        "S50-003": 63
+      },
+      "caps": {
+        "S50-003": 85
+      }
+    },
+    {
+      "id": "W50S-T04",
+      "body_seconds": 59,
+      "sum_chapters": 59,
+      "core_seconds": {
+        "S50-005": 59
+      },
+      "caps": {
+        "S50-005": 80
+      }
+    }
+  ],
+  "reserve_candidate_ids": [],
+  "limits": [
+    "題級來源範圍與紙上片案，不是完整稿／媒體核准。",
+    "圖片10張已目讀；補充影片未看。S005預印本與內部配比矛盾保留。",
+    "所有外部全文只在ignored cache；讀不到路線不當正文來源。"
+  ],
+  "revision_history": [
+    {
+      "reason": "root SAPI使T01 75→68，段0+1需42秒首章；life非作者刪T03動機限制12→5及T04尾回扣11→5，不加內容。",
+      "before_files": [
+        {
+          "file": "batches/wave50-earth.json",
+          "sha256": "b4ab478a7a9cfead3026b913eab57f8947a32b17220e40bbc70060c13a0f622b"
+        },
+        {
+          "file": "reviews/wave50-earth-themes.json",
+          "sha256": "af7b963896b0d03f55a38f5beb397ffee357fd2e6ac54daef92f3e4c133acd42"
+        },
+        {
+          "file": "reviews/wave50-earth-author.json",
+          "sha256": "e22ee6484947a03ccf3f90f6150480c6bfea0e5e9cd78eba2757acbe710c1cb3"
+        }
+      ],
+      "after_theme_sha256": "55abcb7aee10c1235f5d2069c03044632289fb3e36cdf7f13afac29ad284c5d4",
+      "batch_unchanged": true,
+      "budgets_before": [
+        75,
+        88,
+        70,
+        65
+      ],
+      "budgets_after": [
+        68,
+        88,
+        63,
+        59
+      ],
+      "new_sources_or_claims": false
+    }
+  ],
+  "removed_seconds": 20
+}

@@ -1,0 +1,427 @@
+{
+  "tested_on": "2026-11-01T12:45:19.483Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3069,
+    "canonical_questions": 2940,
+    "eligible_candidates": 2770,
+    "selected_candidates": 2711,
+    "alias_records": 129,
+    "historical_records": 313,
+    "source_urls": 4031,
+    "current_research_source_urls": 1070,
+    "selected_source_urls": 2265,
+    "new_suggestions_not_added": 401,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 88,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2667",
+    "carried": 2667,
+    "added": 44,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "731b49a2269b2aad87893bd8a65d8f359ee158c13e6f156ad36aded74f700a13",
+    "writes": 6009,
+    "selected": 2711
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "731b49a2269b2aad87893bd8a65d8f359ee158c13e6f156ad36aded74f700a13",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "I8013",
+      "resolved": "I3039"
+    },
+    {
+      "id": "U8017",
+      "resolved": "P257"
+    },
+    {
+      "id": "R8001",
+      "resolved": "LEG-S07"
+    },
+    {
+      "id": "R8002",
+      "resolved": "LEG-S18"
+    },
+    {
+      "id": "R8003",
+      "resolved": "LEG-S21"
+    },
+    {
+      "id": "R8004",
+      "resolved": "LEG-S23"
+    },
+    {
+      "id": "R8005",
+      "resolved": "LEG-S80"
+    },
+    {
+      "id": "R8006",
+      "resolved": "LEG-S83"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4087,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 8545.285500000002,
+    "index_ms": 4881.286800000002,
+    "unchanged_index_ms": 359.41019999999844,
+    "searches": [
+      {
+        "query": "菌",
+        "returned": 30,
+        "milliseconds": 11.560499999999593
+      },
+      {
+        "query": "食",
+        "returned": 30,
+        "milliseconds": 0.9663999999975204
+      },
+      {
+        "query": "封包",
+        "returned": 12,
+        "milliseconds": 14.877200000002631
+      }
+    ],
+    "rss_bytes": 401084416,
+    "sqlite_bytes": 42733568
+  },
+  "dedup_audit": {
+    "selection": "Every final wave8 new-core proposal merge, excluding six source-refresh revisions, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 2,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 1,
+    "pairs": [
+      {
+        "duplicate_id": "I8013",
+        "canonical_id": "I3039",
+        "reason": "I3039 已明載先增加共指既有版本的參照、後續修改才產生新物件；當前reflink目標／視覺仍是先共享、改時分離，塊與Git物件的場景更換不足另計。",
+        "lexical": null,
+        "semantic": null
+      },
+      {
+        "duplicate_id": "U8017",
+        "canonical_id": "P257",
+        "reason": "與P257產物移除改變驅動核心重複，保留共營例子；本研究的速率抑制及未觀察反向途徑須維持原scope，不能宣稱整個菌路徑都達可逆平衡。",
+        "lexical": null,
+        "semantic": {
+          "id": "P257",
+          "cosine": 0.716041
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b",
+    "records": 3069,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 19.152
+  },
+  "hashes": {
+    "pool.json": "b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b",
+    "themes.json": "188ce2152f13d423406c792c2d6d4ce0716f467f1c7e19bef8e03d71b482b47e",
+    "manifest.json": "55e811644441468afdc478e0eb3b6452d151f1205deab9a4f607c9a531ed2b76",
+    "index.html": "2dd8750ccb2e3c75589d00a9c2a53297c8d0948afcd0f94edd53cd9b4c1d2dad",
+    "batches/wave8-food.json": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389",
+    "batches/wave8-microbes.json": "57511f3a8b837a728317b0017135c688187691411360f95db9fcd886b2cec3fd",
+    "batches/wave8-networks.json": "eb70cf6acf12bb10ada4be4fc35af3b890713e286e5c1e095ff8054e3e2915ba",
+    "batches/wave8-source-refresh.json": "5273727d5cc9759624f32d5dd84936df65b20b08f8536f7c0ad7214fcd09bbeb"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3017,
+    "old_raw_changed": 0,
+    "old_selected_retained": 2667,
+    "old_themes_retained_unchanged": 78,
+    "changed_old_canonical_ids": [
+      "LEG-S07",
+      "LEG-S18",
+      "LEG-S21",
+      "LEG-S23",
+      "LEG-S80",
+      "LEG-S83",
+      "P257",
+      "I3039"
+    ],
+    "allowed_changes": "Only aliases, question variants, source refs and provenance from reviewed merges; old factual fields unchanged."
+  },
+  "source_refresh": {
+    "records": [
+      {
+        "revision": "R8001",
+        "core": "LEG-S07",
+        "refs": 1,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      },
+      {
+        "revision": "R8002",
+        "core": "LEG-S18",
+        "refs": 1,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      },
+      {
+        "revision": "R8003",
+        "core": "LEG-S21",
+        "refs": 2,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      },
+      {
+        "revision": "R8004",
+        "core": "LEG-S23",
+        "refs": 2,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      },
+      {
+        "revision": "R8005",
+        "core": "LEG-S80",
+        "refs": 1,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      },
+      {
+        "revision": "R8006",
+        "core": "LEG-S83",
+        "refs": 1,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      }
+    ],
+    "new_cores": 0,
+    "not_a_full_legacy_answer_approval": true
+  },
+  "new_source_impact_sample": {
+    "url": "https://btrfs.readthedocs.io/en/latest/Reflink.html",
+    "core": "I3039",
+    "merged_variant": "I8013",
+    "theme_ids": [
+      "G85"
+    ],
+    "scope": "Btrfs example retained under shared-then-separate core; not Git implementation evidence."
+  },
+  "tests": {
+    "node": {
+      "passed": 37,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 355188.2843,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "53d554646b16c2810e1a855589077ee28789e66d4a919997ae310fbc7ff227dc"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "da8e3a4e6e60da461686fb343c8172aafaae9e365113b81fdae105982b4848c7"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "5c08898c879c03007deffb7032a71c1a79f5eec0427cd3e6b56d78fc04dbf7fb",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 271,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 2810,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G79",
+        "core": "F8001",
+        "seconds": 100,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G79",
+        "core": "F8003",
+        "seconds": 40,
+        "maximum": 40,
+        "variant_budget": null
+      },
+      {
+        "theme": "G80",
+        "core": "F8004",
+        "seconds": 105,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G81",
+        "core": "F8005",
+        "seconds": 105,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G82",
+        "core": "I8001",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G82",
+        "core": "I8002",
+        "seconds": 95,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G82",
+        "core": "I8003",
+        "seconds": 80,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G83",
+        "core": "I8006",
+        "seconds": 90,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G83",
+        "core": "I8007",
+        "seconds": 95,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G84",
+        "core": "I8012",
+        "seconds": 75,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G84",
+        "core": "I8011",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G85",
+        "core": "I3039",
+        "seconds": 60,
+        "maximum": 95,
+        "variant_budget": "I8013"
+      },
+      {
+        "theme": "G85",
+        "core": "I8014",
+        "seconds": 70,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G86",
+        "core": "U8001",
+        "seconds": 85,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G86",
+        "core": "U8002",
+        "seconds": 95,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G86",
+        "core": "U8003",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G87",
+        "core": "U8006",
+        "seconds": 70,
+        "maximum": 75,
+        "variant_budget": null
+      },
+      {
+        "theme": "G87",
+        "core": "U8005",
+        "seconds": 100,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G88",
+        "core": "U8019",
+        "seconds": 65,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G88",
+        "core": "U8004",
+        "seconds": 65,
+        "maximum": 85,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_final_readback": {
+    "file": "reviews/wave8-final-independent-readback.json",
+    "sha256": "824c254b3216fd7b681912ff1575e9761f7f509b1b16186b1f59a58ae644ace0",
+    "bound_artifact_hashes_verified_by_root": 33,
+    "findings": 0,
+    "scope": "Data/editorial integration; author independence boundaries remain in the linked receipt."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_ACTUAL_GIT_INDEX",
+    "text_blobs": 36,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "method": "Reuses the unchanged CHECKS and findings function from tools/repo-hygiene.test.mjs; scans every changed staged docs/tasks/ops text blob, with no allowlist. Supplemental check for files written after the full test started.",
+    "scope": "Supplemental pass over late-written staged text after full 37-test run; same scan rerun after this receipt is staged."
+  }
+}

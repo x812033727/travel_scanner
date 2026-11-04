@@ -1,0 +1,324 @@
+{
+  "tested_on": "2026-11-02T06:43:01.841Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3448,
+    "canonical_questions": 3302,
+    "eligible_candidates": 3132,
+    "selected_candidates": 3073,
+    "alias_records": 146,
+    "historical_records": 313,
+    "source_urls": 4415,
+    "current_research_source_urls": 1456,
+    "selected_source_urls": 2637,
+    "new_suggestions_not_added": 1262,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 279,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3065",
+    "carried": 3065,
+    "added": 8,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "0630d4bd61afd5f4177205b6f5c105fb4250693824234b4e6df7fdb24470f62b",
+    "writes": 6750,
+    "selected": 3073
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "0630d4bd61afd5f4177205b6f5c105fb4250693824234b4e6df7fdb24470f62b",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4513,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 7181.8325,
+    "index_ms": 4918.2271,
+    "unchanged_index_ms": 374.3207000000002,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 13,
+        "milliseconds": 31.03770000000077
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 6.199399999997695
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 8.898300000000745
+      }
+    ],
+    "rss_bytes": 422334464,
+    "sqlite_bytes": 53858304
+  },
+  "dedup_audit": {
+    "selection": "Every final wave27 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "bafaaeeb9977c586a82dce108e592246e4292ad4026d765e429d33eabd8fb375",
+    "records": 3448,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.388
+  },
+  "hashes": {
+    "pool.json": "bafaaeeb9977c586a82dce108e592246e4292ad4026d765e429d33eabd8fb375",
+    "themes.json": "eb23fb4aa6b74cb1943b351adc4fa5d04e863a7022cc7c8dee063f8f12f90cb4",
+    "manifest.json": "5230578c1398f4ef2b5ec34227a73a33327cf9386a2287068cc938e95e405a3e",
+    "index.html": "9f309e9aba7f0a2222df7e361faea6e708c751714abe9fb64b06617ae14952e4",
+    "batches/wave27-life.json": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792",
+    "batches/wave27-physics.json": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b",
+    "batches/wave27-tech.json": "0f988eef0320092b77b4806781a38ccb03f6a53310a0817bc3a3eb51b331490c"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3440,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3065,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 271,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4407,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://elifesciences.org/articles/669",
+        "source_id": "SRC-cfb33fa7f27ee8e4",
+        "candidate_ids": [
+          "A27001"
+        ],
+        "theme_ids": [
+          "G276"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/",
+        "source_id": "SRC-bf97c152fe9590b3",
+        "candidate_ids": [
+          "A27002"
+        ],
+        "theme_ids": [
+          "G277"
+        ]
+      },
+      {
+        "url": "https://pure.uva.nl/ws/files/177499027/PhysRevApplied.19.024005.pdf",
+        "source_id": "SRC-b4576cd64f00b663",
+        "candidate_ids": [
+          "P27001"
+        ],
+        "theme_ids": [
+          "G272"
+        ]
+      },
+      {
+        "url": "https://www.snowcrystals.com/spikes/knight.pdf",
+        "source_id": "SRC-bfb96e46c729e4d4",
+        "candidate_ids": [
+          "P27002"
+        ],
+        "theme_ids": [
+          "G273"
+        ]
+      },
+      {
+        "url": "https://www.sandia.gov/app/uploads/sites/182/2022/03/33_2002_JFM_PG.pdf",
+        "source_id": "SRC-b5c34319a4642e0e",
+        "candidate_ids": [
+          "P27003"
+        ],
+        "theme_ids": [
+          "G274"
+        ]
+      },
+      {
+        "url": "https://germain-rousseaux.cnrs.fr/wp-content/uploads/2020/10/PNAS2020.pdf",
+        "source_id": "SRC-ed79c8cb19923136",
+        "candidate_ids": [
+          "P27004"
+        ],
+        "theme_ids": [
+          "G275"
+        ]
+      },
+      {
+        "url": "https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf",
+        "source_id": "SRC-c12311c7bf629ac4",
+        "candidate_ids": [
+          "R27001"
+        ],
+        "theme_ids": [
+          "G278"
+        ]
+      },
+      {
+        "url": "https://iqua.ece.toronto.edu/baochun/ece1771f/papers/Gale-Shapley-1962.pdf",
+        "source_id": "SRC-4dcbe24af7f5d729",
+        "candidate_ids": [
+          "R27002"
+        ],
+        "theme_ids": [
+          "G279"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://pure.uva.nl/ws/files/177499027/PhysRevApplied.19.024005.pdf",
+    "core": "P27001",
+    "theme": "G272",
+    "theme_ids": [
+      "G272"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 134018.0388,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "5b3db3d298fa4f240b5feacce12a70011afc028676549ed35d7158c20ab9539b"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "e70a695bce506c6b7c20660b196d606a1d5814ad9e381995ab1b92380e7805a0"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "61c49b8ffbfb0677ba6d5cdda97821af0cb21c2abea7f881f788e3d550db4625",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "ae0a8dd3eb2f21257785dec94aa58522ddefd02b7866b91a3ef6dc12a42ab187"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "8f6844abd55a63da5ea0f01d18ac0d38bbd50546a54864121c5ce12759b8dadb",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 363,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 22,
+    "unique_blobs_checked": 386,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3612,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G272",
+        "core": "P27001",
+        "seconds": 95,
+        "maximum": 115
+      },
+      {
+        "theme": "G273",
+        "core": "P27002",
+        "seconds": 95,
+        "maximum": 115
+      },
+      {
+        "theme": "G274",
+        "core": "P27003",
+        "seconds": 80,
+        "maximum": 110
+      },
+      {
+        "theme": "G275",
+        "core": "P27004",
+        "seconds": 105,
+        "maximum": 120
+      },
+      {
+        "theme": "G276",
+        "core": "A27001",
+        "seconds": 125,
+        "maximum": 140
+      },
+      {
+        "theme": "G277",
+        "core": "A27002",
+        "seconds": 105,
+        "maximum": 135
+      },
+      {
+        "theme": "G278",
+        "core": "R27001",
+        "seconds": 80,
+        "maximum": 105
+      },
+      {
+        "theme": "G279",
+        "core": "R27002",
+        "seconds": 100,
+        "maximum": 130
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 33,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "75c946d180eb8bfcca968c1761fd17970d2642fd3dc57c875417861fdeb15435"
+  }
+}

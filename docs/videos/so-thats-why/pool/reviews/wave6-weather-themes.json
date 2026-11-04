@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "batch_id": "wave6-weather-sky-20261101",
+  "status": "AUTHOR_PROPOSALS_REQUIRING_INDEPENDENT_REVIEW",
+  "rules": {
+    "duration": "全部為未撰稿的short_explainer預算，含開場/回扣，不是長片產線核准。",
+    "cadence": "每30–40秒新的條件/對照，最長間隔40秒；完整稿仍需另一人盲讀。",
+    "core_budget": "開場與回顧都計入所用核心累計；單片每核心不得超過editorial.seconds上限。",
+    "cut": "刪章後須改標題承諾、重算總長並另審版本，不能直接沿用原案。"
+  },
+  "episodes": [
+    {
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "id": "W6K-T01",
+      "title": "水進了雲，只靠凝結就能一直長大嗎？",
+      "core_question": "從沾水、成雲到繼續長大，還有哪些門檻？",
+      "connection": "先區分吸濕與活化，再遇到凝結成長減速，最後切換到冰水共存的條件，比較水經氣相轉移而讓冰成長的路徑；全片追水的去向，不承諾完整解釋降雨或落地。",
+      "candidate_ids": [
+        "K6002",
+        "K6003",
+        "K6004"
+      ],
+      "chapters": [
+        {
+          "title": "沾到水，還不一定跨過成雲門檻",
+          "seconds": 90,
+          "candidate_ids": [
+            "K6002"
+          ],
+          "new_information": "溶質與曲率競爭造成門檻；霾滴吸濕與雲滴活化不同。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "8秒開場：同一團濕空氣，粒子不是全都長成雲滴。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "固定粒子組成，沿半徑改變曲率與稀釋效應，畫出門檻。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "比較門檻兩側成長/回縮方向；不另列CCN分類。"
+            }
+          ],
+          "cut_if": "若無法用圖說清門檻，刪此章，改成165秒兩章的雲滴成長題；另寫開場並重審，不能留90秒術語講解。"
+        },
+        {
+          "title": "已經成滴，成長卻沒有一直加速",
+          "seconds": 80,
+          "candidate_ids": [
+            "K6003"
+          ],
+          "new_information": "水汽送到滴面與潛熱送出，讓定條件下半徑成長逐漸放慢。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "接著追已活化的同一滴，詢問能不能一直吸到雨滴大小。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "畫出水汽流入和熱流出兩條路，不把質量增長與半徑增長混同。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "比較相等時間的半徑增量，轉問是否有其他成長路徑。"
+            }
+          ],
+          "cut_if": "若只剩一條公式，重寫成流入/流出對照；不補雨滴大小排行榜。"
+        },
+        {
+          "title": "冰與水共存後，水可以繞一條路",
+          "seconds": 85,
+          "candidate_ids": [
+            "K6004"
+          ],
+          "new_information": "冰面與液水面平衡條件不同，水可先蒸發再凝華，不必直接碰撞。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "加入冰晶但保持冰與液滴沒有碰觸。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "同溫畫兩個平衡門檻，追水汽由液滴經空氣到冰。"
+            },
+            {
+              "at_seconds": 65,
+              "change": "20秒回扣：成雲、長大、轉移是不同門檻；不承諾一定降雨。"
+            }
+          ],
+          "cut_if": "若無法交代混相與濕度範圍，刪本章，改為170秒兩章版並另審；不能說冰吸走所有雲水。"
+        }
+      ],
+      "body_seconds": 255,
+      "target_minutes": 4.25,
+      "range_minutes": [
+        3.5,
+        4.5
+      ],
+      "opening_seconds_included": 8,
+      "closing_seconds_included": 20,
+      "boredom_risk": "微物理易變成三個名詞；每章必須改一個條件並看水的去向。",
+      "drop_if": "完整稿若聽者無法分辨三個問題，縮成兩章；不加雲種或大氣水循環湊8分鐘。",
+      "evidence_gaps": "本片未含碰併效率、雨滴落地機制；若承諾完整解釋降雨需另做企劃。未有數值模擬與完整稿盲讀。"
+    },
+    {
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "id": "W6K-T02",
+      "title": "雲還想往上長，是誰讓它停下來？",
+      "core_question": "阻止雲往上長的原因一樣嗎？為什麼有時停下，有時還能多衝一截？",
+      "connection": "依序控制不同條件，比較三個問題：第一支氣塊被下方抑制層擋住，留在該支線；第二章換成已受抬升並跨過抑制層的氣塊，檢查捲入乾氣的影響；第三章再指定已到浮力平衡高度且仍有上升速度的氣塊。不是同一氣塊必然走完的流程。",
+      "candidate_ids": [
+        "K6007",
+        "K6008",
+        "K6009"
+      ],
+      "chapters": [
+        {
+          "title": "地面熱，也可能先被一層暖空氣擋住",
+          "seconds": 80,
+          "candidate_ids": [
+            "K6007"
+          ],
+          "new_information": "有上方浮力能量不等於已越過下方抑制區。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "8秒開場：地面同樣熱濕，兩朵雲卻只有一朵長高。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "保留上方條件，加入較暖封頂層，追氣塊在哪裡比環境冷。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "分開可用能量與啟動障礙；這支未跨過抑制層的氣塊停在此支線，不教指數預報。"
+            }
+          ],
+          "cut_if": "若只剩CAPE/CIN縮寫，改畫溫度與高度比較；不採一個門檻就判暴雨。"
+        },
+        {
+          "title": "換成已越過抑制層的氣塊，還會怎樣？",
+          "seconds": 70,
+          "candidate_ids": [
+            "K6008"
+          ],
+          "new_information": "雲不是封閉氣塊；捲入乾空氣造成蒸發冷卻與浮力減弱。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "重設條件：改看已受抬升並跨過抑制層的氣塊；打開其邊界，讓乾空氣從側邊進來。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "追液滴減少和溫度下降，說明雲邊被擦掉可以伴隨上升受挫。"
+            }
+          ],
+          "cut_if": "若沒有混合前後的對照，刪章另審155秒兩章版；不以雲延時影片補空白。"
+        },
+        {
+          "title": "到平衡高度，不會瞬間煞停",
+          "seconds": 75,
+          "candidate_ids": [
+            "K6009"
+          ],
+          "new_information": "零浮力不是零速度；上升動量可讓雲頂短暫進入負浮力區。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "再重設條件：指定這支氣塊已到平衡線且仍有上升速度；不是前兩支必然到達這裡。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "進入負浮力區後速度減小，形成超越雲頂；不是新的上方加速來源。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "15秒回扣：先看障礙、再看混合、最後看剩餘速度。"
+            }
+          ],
+          "cut_if": "若氣塊動畫誤把平衡線畫成硬牆，先修正；不能用真實雲高反推示意速度。"
+        }
+      ],
+      "body_seconds": 225,
+      "target_minutes": 3.75,
+      "range_minutes": [
+        3,
+        4
+      ],
+      "opening_seconds_included": 8,
+      "closing_seconds_included": 15,
+      "boredom_risk": "三個機制若都講成暖空氣上升會重複；圖上要保留三個不同改動。",
+      "drop_if": "若圖示仍不能區分尚未啟動、途中失去浮力、已越過平衡線，暫緩完整稿；不加雷暴分類。",
+      "evidence_gaps": "歷史氣塊模型只作原理解說；實雲的混合、降水與動力更複雜，未作任何天氣預報。"
+    },
+    {
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "id": "W6K-T03",
+      "title": "同一條閃電，為什麼看見好幾閃、聽到一長串？",
+      "core_question": "眼睛與耳朵看到的長短，是否都等於一次閃電本身持續的時間？",
+      "connection": "同一個事件切兩個時鐘：先看通道多次變亮，再看延伸通道各處聲音的不同到達時間。不是重講光比聲音快。",
+      "candidate_ids": [
+        "K6019",
+        "K6020"
+      ],
+      "chapters": [
+        {
+          "title": "一次閃電事件，裡面可以有多次回擊",
+          "seconds": 70,
+          "candidate_ids": [
+            "K6019"
+          ],
+          "new_information": "負雲地閃可能在同一通道發生多次回擊，形成頻閃。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "8秒開場：先把看見的幾下閃與事件次數分開。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "示意時間軸拆出多次回擊，保持同一通道；說明不是每一閃都如此。"
+            }
+          ],
+          "cut_if": "若找不到可合法使用且可核對的影像，保留明示原創示意；若連示意也難懂，整組改單核心素材，不硬作兩章片。"
+        },
+        {
+          "title": "聲音同時在很多位置出發，卻不同時抵達",
+          "seconds": 70,
+          "candidate_ids": [
+            "K6020"
+          ],
+          "new_information": "長通道的各段到耳距離不同，產生到達時間展寬。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "固定只看一回擊，沿長通道標出多個產聲點。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "按距離依序抵達，不把低鳴全歸為多回擊。"
+            },
+            {
+              "at_seconds": 55,
+              "change": "15秒回扣：多次發生與一次事件被拉長，是兩種不同的時間。"
+            }
+          ],
+          "cut_if": "若只講光聲延遲，已退回LEG-S18，不再作本組；任何刪章都需重新提案，不能以回顧補到140秒。"
+        }
+      ],
+      "body_seconds": 140,
+      "target_minutes": 2.3333333333333335,
+      "range_minutes": [
+        2,
+        2.5
+      ],
+      "opening_seconds_included": 8,
+      "closing_seconds_included": 15,
+      "boredom_risk": "最容易把兩章都說成閃電很快、雷聲很慢；要保留通道重亮與聲音到達序列兩個不同畫面。",
+      "drop_if": "完整稿若重複舊光聲速差超過必要一句，刪除；不補危險觀測或雷擊距離口訣。",
+      "evidence_gaps": "只有140秒內容預算，不符合正式長片時長；未取得影像、錄音或製作授權，沒有成片與旁白驗收。"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "tested_on": "2026-11-02T04:33:54.687Z",
+  "result": "PASS",
+  "selected": 3035,
+  "index_html_sha256": "7cadca5b19243c4b9e1796a330be54287ed7315d881e034f09b94ed4394d5d8c",
+  "source_sample": {
+    "id": "P23001",
+    "urls": [
+      "https://arxiv.org/pdf/2603.14520"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave23-desktop.png",
+    "wave23-source-desktop.png",
+    "wave23-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "Root目讀桌面總覽、P23001展開範圍、手機總覽：3035/2591/246/142數字可讀，標示建立日，題文與詳情正常；手機無橫向溢出。來源URL落在截圖裁切下方，只由DOM連結斷言驗證，不冒稱截圖目讀。",
+  "screenshot_sha256": {
+    "wave23-desktop.png": "f303e6158baa93319a83c7521313c1224a590684068609ad7fa2451799bffa50",
+    "wave23-source-desktop.png": "814c7c6bd5e82ec899d5c29be5c0be5143b841e4d6989e3f2e07d3999008bd52",
+    "wave23-mobile.png": "67979fa5aee14a27bc4c0f62742397875b2a05ed73b15518aabdb7af891a4e2e"
+  }
+}

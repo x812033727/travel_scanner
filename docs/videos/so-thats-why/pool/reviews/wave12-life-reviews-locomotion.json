@@ -1,0 +1,729 @@
+{
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "reviewer": "/root/pool_life_tech",
+  "author": "/root/science_sources",
+  "created_on": "2026-11-01",
+  "review_type": "INDEPENDENT_TOPIC_SOURCE_AND_EDITORIAL_REVIEW_NOT_SCRIPT",
+  "reviewed_candidate_ids": [
+    "A12001",
+    "A12002",
+    "A12003",
+    "A12004",
+    "A12005",
+    "A12006",
+    "A12007",
+    "A12008",
+    "A12009",
+    "A12010",
+    "A12011"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave12-locomotion.json",
+      "sha256": "ba380600fca6c8e61527610c69960c44c996d54c201be3b303e5117b7ef3ae2a"
+    },
+    {
+      "file": "reviews/wave12-locomotion-themes.json",
+      "sha256": "719f01a41b5826d908386ccabb0105fc954f9ade8bac96f6661c8fd71375b5a2"
+    },
+    {
+      "file": "reviews/wave12-locomotion-author.json",
+      "sha256": "fb91720ec5480b70041de7eb55782511a660586100ae9f966ebce819f0d72184"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave12-locomotion.json",
+      "sha256": "dc6ab39121db0c4ca5b36c29c40bb1d8ea025c9ef7f9c26abe02654b7c00e069"
+    },
+    {
+      "file": "reviews/wave12-locomotion-themes.json",
+      "sha256": "d90446338414c3afc35aede7dcb738a19df768e673149e245cb3e3af7f915d59"
+    },
+    {
+      "file": "reviews/wave12-locomotion-author.json",
+      "sha256": "d586e50c706252057f2c7f4ee5db6ce7b8f82a207114c2ce940359cc5f677d91"
+    }
+  ],
+  "coverage": {
+    "candidate_rows_read": 11,
+    "not_added_rows_read": 12,
+    "author_boundary_pairs_read": 21,
+    "semantic_neighbour_comparisons_read": 55,
+    "source_records_metadata_read": 13,
+    "source_body_targeted_reads": 11,
+    "fresh_http_body_reads": 10,
+    "sha_verified_author_copy_body_reads": 1,
+    "not_independently_read_sources": [
+      "A12-S004",
+      "A12-S013"
+    ],
+    "limits": "逐列讀候選問題/target/scope/notes/editorial、12退題、4題案；來源為風險定點查讀，非每篇全文或逐主張核准。S004更正與S013退題僅讀作者紀錄。",
+    "additional_final_neighbour_comparisons_read": 4
+  },
+  "retrieval": {
+    "file": ".cache/wave12-locomotion-neighbours.json",
+    "sha256": "9b439782ebca26e80fc77ed4d31da87a012d3747329c27dba3e94e848993c143",
+    "draft_sha256": "d0d169c75385d7819fb3a81d241f3035493e4636da6fe311a1fc59135836d2fe",
+    "batch_sha256": "dc6ab39121db0c4ca5b36c29c40bb1d8ea025c9ef7f9c26abe02654b7c00e069",
+    "rule": "top5只提比對對象，不以cosine當合併機率；另比較作者21對，尤其未被top5召回的P164/K11005/N280。"
+  },
+  "source_checks": [
+    {
+      "source_id": "A12-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/",
+      "actual_read_scope": "Fresh PMC HTML提取P029–044：障礙/繫繩、兩類力與持續性模型、固定條件切換；另P050群體相變與P064討論定點。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S001.html",
+      "sha256": "5aa22fe0b0bfd1b47bd02da9fcd979de25af737d47ad17b605a6a326ee98eaba",
+      "matches_author": false,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11725855/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11725855/fullTextXML",
+      "actual_read_scope": "Fresh Europe PMC XML Ant Solvers P017–025、P040–041、P055/071：大小隊碰牆運動、機械耦合/方向對齊、尺寸修正與模型；非全部人類比較。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S002.xml",
+      "sha256": "6f99dd39fcc4b9aa6e19bb8de0ee578a778149312d441386bffa8a1cce3ae335",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S003",
+      "url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf",
+      "retrieval_url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf",
+      "actual_read_scope": "Fresh作者PDF pp.4–6 Mechanism/Phototactic Robophysical Blobs的前拉後抬、可能減摩、僵硬/柔順連結段與Fig4/5；p.7 Fig6與同質爬行對照開頭。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S003.pdf",
+      "sha256": "4f6adf85e981065ec9fc81b9a6562a0317f430f4e97a4820b609490d7a952b4e",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S005",
+      "url": "https://math.mit.edu/~dunkel/Papers/2023PaEtAl_Science.pdf",
+      "retrieval_url": "https://math.mit.edu/~dunkel/Papers/2023PaEtAl_Science.pdf",
+      "actual_read_scope": "Fresh MIT PDF pp.3–6：頭部軌跡SDE、gamma、Fig3/4、Mean-field theory的R與固定gamma/R時間縮放、Discussion指定段；非SI或逐式證明。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S005.pdf",
+      "sha256": "9b1c143e1419c6b5c25f6cbf2de0c9ee96c95d5a9783395b5f293e94c420e1c2",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S006",
+      "url": "https://arxiv.org/abs/2112.10615v2",
+      "retrieval_url": "https://arxiv.org/pdf/2112.10615v2",
+      "actual_read_scope": "Fresh明指定arXiv v2 PDF p.24 §3.5，pp.26–30 §3.7/3.8、Fig10、§4.1/4.3；支撐多邊形及主動收腿段；未讀正式JEB排版。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S006.pdf",
+      "sha256": "6987af5d2c2edd0a63ca30c338f03f5d44107eee5b194ebe5eb0fe14d397fe00",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S007",
+      "url": "https://polypedal.berkeley.edu/wp-content/uploads/117_Jayaram_CockroachesTraverseCrevicesCrawlRapidly_PNAS_2016.pdf",
+      "retrieval_url": "https://polypedal.berkeley.edu/wp-content/uploads/117_Jayaram_CockroachesTraverseCrevicesCrawlRapidly_PNAS_2016.pdf",
+      "actual_read_scope": "Fresh Berkeley PDF pp.3–5：受限爬行、頂板/地面摩擦操弄、身體拖曳與腿推力競爭及模型開頭指定段。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S007.pdf",
+      "sha256": "fcbb1d8c080d92a105bed0fa97de40ba911aa52ae098aea0c86156596fe4f06e",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S008",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8315797/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8315797/fullTextXML",
+      "actual_read_scope": "Fresh Europe PMC XML P013–014/025、P079、P099–100/103、P170/174/176：前翻/側滾能障、方向動能、機器人重建及動物限制；Fig5/7圖說定點，未重現模型。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S008.xml",
+      "sha256": "2d0afaedc3e9c937e0b916a575c81988d31b6420c93fe7443775a5dbd7d286c0",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S009",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf",
+      "retrieval_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf",
+      "actual_read_scope": "Fresh Cambridge PDF pp.3–6：假設(i)–(v)、單鴨跟隨波阻，Fig1–3相關圖說；波壓位置、正負效益及非代謝限制；未審整隊wave-passing。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S009.pdf",
+      "sha256": "fc085b212a928699647e9c85773862f24b966233c74c9299582dd42ebeb7bfe1",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S010",
+      "url": "https://www.nature.com/articles/s41467-020-19086-0",
+      "retrieval_url": "https://www.nature.com/articles/s41467-020-19086-0.pdf",
+      "actual_read_scope": "Fresh Nature PDF pp.3–6：機器魚功率與相位/位置、簡化尾流模型及式2、真魚只能用運動近似效益；未讀完整SI。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S010.pdf",
+      "sha256": "598ebbcaf595ade60e0e4861195bc5a4b2a263105aadd972ef6d6de1284360d0",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S011",
+      "url": "https://web.mit.edu/awinter/www/Documents/2012%20JEB%20Razor%20Clam%20final.full.pdf",
+      "retrieval_url": "https://web.mit.edu/awinter/www/Documents/2012%20JEB%20Razor%20Clam%20final.full.pdf",
+      "actual_read_scope": "Fresh MIT PDF pp.4–5：Results、局部應力失效面、體積補水/孔隙率與PIV外插限制；未重算流化模型。",
+      "method": "FRESH_HTTP_BODY_TARGETED",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-review-sources/A12-S011.pdf",
+      "sha256": "375a570630f920f85b799430fcbf32b0ef2a81ffeda69b032daddaabd72efa8f",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。"
+    },
+    {
+      "source_id": "A12-S012",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3816424/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3816424/",
+      "actual_read_scope": "Fresh UA回reCAPTCHA（HTTP200非正文）；改獨立核作者HTML SHA後讀正文18/21/24/25及Fig4圖說：停止渦環、彈性回復、暫停後加速/正壓推算。",
+      "method": "AUTHOR_COPY_SHA_VERIFIED_BODY_TARGETED_AFTER_FRESH_CAPTCHA",
+      "http_status": 200,
+      "cache_file": ".cache/wave12-locomotion-sources/jellyfish_html.html",
+      "sha256": "ee93aac9f6c7da75cfd1be6fe7df58808d7e27e02714012dc305e8a2594e6aa0",
+      "matches_author": true,
+      "limits": "只讀所列正文/圖說，未逐式重建、播放影片或外推整篇。",
+      "failed_fresh_response": {
+        "cache_file": ".cache/wave12-locomotion-review-sources/A12-S012.html",
+        "sha256": "7f637ff16f87fd0124b6f56130eef072e50a2449c13a995de230db54658ef2be",
+        "result": "HTTP 200但內容為Checking your browser/reCAPTCHA，不算正文重開"
+      }
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "LOCOMOTION01",
+      "severity": "required_merge",
+      "candidate_ids": [
+        "A12005"
+      ],
+      "finding": "收腿縮小支撐多邊形、降低側滾穩定餘裕，與P164同物理中段；草梁只增加場景/用途。",
+      "required_change": "中央建議A12005→P164，作者保留原問題與來源、題案採草梁變體及其原預算，不計第二核心。",
+      "source_basis": "A12-S006 arXiv v2 PDF30 §4.3；P164原始answer/scope已完整比較。",
+      "resolution_status": "RESOLVED_IN_TARGETED_RECHECK"
+    },
+    {
+      "id": "LOCOMOTION02",
+      "severity": "required_correction",
+      "candidate_ids": [
+        "A12004"
+      ],
+      "finding": "現target與T02把速度主要只改時間寫得過廣，忽略R=v/(alpha*l)也影響纏結；「繞完整圈」也不是觀察給出的固定分界。",
+      "required_change": "固定迴圈尺度/鄰距與gamma/R才比較純時間縮放；對照早/晚換向能否繞住鄰居，不聲稱必須先繞一整圈或速度永遠不改拓撲。同步target/scope及T02節拍。",
+      "source_basis": "A12-S005 PDF3–6，Fig3/4與Mean-field theory。",
+      "resolution_status": "RESOLVED_IN_TARGETED_RECHECK"
+    },
+    {
+      "id": "LOCOMOTION03",
+      "severity": "required_correction",
+      "candidate_ids": [
+        "A12007"
+      ],
+      "finding": "只說能障降低加擾動接近K11005；原文另有可成立的方向/模式分工，現target未充分寫出。",
+      "required_change": "明列對稱開翅後前翻能量仍不足，側滾門檻卻降到腿的側向動能可跨的範圍；模型/機器人與動物證據分開，不能把平均能量當每次保證。同步visual與T03。",
+      "source_basis": "A12-S008 Wing opening facilitates self-righting via rolling、Fig7，fresh XML P099–100/103。",
+      "resolution_status": "RESOLVED_IN_TARGETED_RECHECK"
+    },
+    {
+      "id": "LOCOMOTION04",
+      "severity": "required_editorial_cut",
+      "theme_ids": [
+        "W12A-T03"
+      ],
+      "finding": "三章以接觸為大傘容易成不同技巧並列；中章摩擦競爭不是兩個側滾案例的因果接續。",
+      "required_change": "移出A12006留池；P164的A12005草梁變體75秒＋A12007翻肚側滾75秒＝150秒，聚焦滾動模式與支撐/動能。重設兩研究、來源/變體預算/range/drop及author同步。",
+      "source_basis": "逐章編輯判斷；非劇本試讀。",
+      "resolution_status": "RESOLVED_IN_TARGETED_RECHECK"
+    },
+    {
+      "id": "LOCOMOTION05",
+      "severity": "required_correction",
+      "candidate_ids": [
+        "A12002"
+      ],
+      "finding": "「大隊維持狀態、小隊停下」較像現象重述，應把已讀模型中間步驟寫清。",
+      "required_change": "補持續貨物運動維持機械耦合與拉力對齊，形成持續滑牆；小隊降速後對齊瓦解。明標模型解釋，T01第二章畫回饋，不宣稱直接測每隻蟻記憶。",
+      "source_basis": "A12-S002 Ant Solvers fresh XML P020，與P017/023對照。",
+      "resolution_status": "RESOLVED_IN_TARGETED_RECHECK"
+    }
+  ],
+  "dispositions": [
+    {
+      "id": "A12001",
+      "decision": "RETAIN",
+      "reason": "外部約束讓朝巢與沿運動拉力衝突，產生振盪；不同於Z7015新加入者提供方向資訊。"
+    },
+    {
+      "id": "A12002",
+      "decision": "RETAIN",
+      "reason": "補出機械耦合/對齊回饋後可保留群體狀態維持的機制；與A12001的兩方向衝突分開。",
+      "resolution": "已依targeted_recheck收窄；原疑點保存在required_corrections。"
+    },
+    {
+      "id": "A12003",
+      "decision": "RETAIN",
+      "reason": "梯度下活動分化＋纏結連接可傳力，來源明記減摩為可能機制；不是宣稱所有蟲團已逐蟲量測。"
+    },
+    {
+      "id": "A12004",
+      "decision": "RETAIN",
+      "reason": "換向路徑改纏結可保留；速度作用須綁幾何/無因次量條件，不是單純快慢對比。",
+      "resolution": "已依targeted_recheck收窄；原疑點保存在required_corrections。"
+    },
+    {
+      "id": "A12005",
+      "decision": "MERGE",
+      "reason": "合併P164；原稿本身可作有趣草梁案例，但支撐縮小機制已收。"
+    },
+    {
+      "id": "A12006",
+      "decision": "RETAIN",
+      "reason": "腳抓地增加與腹背拖曳競爭是新反差，不只P006/P008；移出T03不代表淘汰。"
+    },
+    {
+      "id": "A12007",
+      "decision": "RETAIN",
+      "reason": "補方向性能源/門檻後保留；不可只重說K11005降能障再加擾動。",
+      "resolution": "已依targeted_recheck收窄；原疑點保存在required_corrections。"
+    },
+    {
+      "id": "A12008",
+      "decision": "RETAIN",
+      "reason": "只保波阻模型中位置使壓力合力改號；與B2013印痕、A12009動作時序不同。"
+    },
+    {
+      "id": "A12009",
+      "decision": "RETAIN",
+      "reason": "尾流傳播延遲使相位依距離調整；不等固定鞦韆相位或單純跟隨；真魚估算界線適當。"
+    },
+    {
+      "id": "A12010",
+      "decision": "RETAIN",
+      "reason": "縮殼卸側向應力→局部失效面→補水/增孔隙率，不同於外加上升流或震動孔壓；須保該鏈。"
+    },
+    {
+      "id": "A12011",
+      "decision": "RETAIN",
+      "reason": "傘停止變形後停止渦環帶來正壓與延後加速，不只是噴流或慣性；讀到支持模型。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "A12005",
+        "canonical_id": "P164",
+        "reason": "合併P164；原稿本身可作有趣草梁案例，但支撐縮小機制已收。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "A12001",
+        "b": "Z7015",
+        "reason": "新條件是外部約束把兩股方向拆開，出現振盪；舊題只解釋新加入者的帶路。"
+      },
+      {
+        "a": "A12002",
+        "b": "Z7015",
+        "reason": "保留的條件是模型中持續運動/機械耦合對齊回饋，非只換迷宮；Z7015提供新資訊，A12001外部約束使兩方向競爭。"
+      },
+      {
+        "a": "A12001",
+        "b": "A12002",
+        "reason": "同力耦合基礎但約束振盪與尺寸影響邊界搜尋不同；願接受覆核合例，不保數量。"
+      },
+      {
+        "a": "A12002",
+        "b": "U8009",
+        "reason": "蟻群方向暫存在持續施力狀態，黏菌用環境痕跡避重訪，非同記憶載體。"
+      },
+      {
+        "a": "A12001",
+        "b": "B11002",
+        "reason": "根機器模型主動環旋提供側向推力；蟻群約束下兩方向競爭產生振盪。"
+      },
+      {
+        "a": "A12003",
+        "b": "S10010",
+        "reason": "蟲團跨個體纏結與活動分化，不是同身體負載轉移觸發腿肌EMG。"
+      },
+      {
+        "a": "A12004",
+        "b": "X5001",
+        "reason": "主動換旋向改變繞行連接，不是拉緊短纖維捻紗的摩擦放大。"
+      },
+      {
+        "a": "A12004",
+        "b": "X5007",
+        "reason": "羊毛被動表面鱗片交鎖與密實，沒有可逆頭部換向拓撲控制。"
+      },
+      {
+        "a": "A12005",
+        "b": "A12007",
+        "reason": "梁間由頂開轉側滾vs翻肚後翅改門檻/腿供擾動分工；共享能障框架但控制條件與新理解不同。"
+      },
+      {
+        "a": "A12006",
+        "b": "P006",
+        "reason": "新題同時有腳推進與身體拖曳的相反摩擦用途，不只地板推腳。"
+      },
+      {
+        "a": "A12006",
+        "b": "P008",
+        "reason": "新題不是壓緊增加摩擦，而是固定縫高改地面摩擦兩條效應競爭。"
+      },
+      {
+        "a": "A12007",
+        "b": "K11005",
+        "reason": "已讀回前翻動能仍不足、側滾門檻降至腿側向擾動可跨的兩方向比較；不是只把K11005降門檻加擾動換成動物。"
+      },
+      {
+        "a": "A12008",
+        "b": "B2013",
+        "reason": "物理跟隨位置效應與早期印痕辨認分開，不能互作動機答案。"
+      },
+      {
+        "a": "A12009",
+        "b": "P112",
+        "reason": "行進尾流延遲使相位須隨距離調整，非固定鞦韆共振加能。"
+      },
+      {
+        "a": "A12008",
+        "b": "A12009",
+        "reason": "水面波壓位置效應vs水下渦流抵達/尾部相位；不能只泛稱跟隨省能而分兩題。"
+      },
+      {
+        "a": "A12010",
+        "b": "D2048",
+        "reason": "不是向上吹氣托顆粒；縮殼卸載導致鄰土失效並吸水，局部流化。"
+      },
+      {
+        "a": "A12010",
+        "b": "W5021",
+        "reason": "濾床外加上升水流與殼縮局部失效/體積補水的觸發不同。"
+      },
+      {
+        "a": "A12010",
+        "b": "N280",
+        "reason": "強震孔壓升高與縮殼側向卸載/失效面不同；若只講失去有效應力則應合舊例。"
+      },
+      {
+        "a": "A12011",
+        "b": "B2123",
+        "reason": "停止渦環在回復後形成延後推力，不是只噴出水的反作用。"
+      },
+      {
+        "a": "A12011",
+        "b": "E9001",
+        "reason": "蒲公英穩定分離渦環增加拖曳；水母脈動後停止渦環推傘，非看到渦環即同一答案。"
+      },
+      {
+        "a": "A12004",
+        "b": "E2112",
+        "reason": "非相對論磁場迴轉週期與速度相消，不是換旋向/圈徑相對鄰居控制纏結。"
+      },
+      {
+        "a": "A12004",
+        "b": "B11003",
+        "reason": "植物角度/曲率回饋拉直，不涉及活動細絲彼此繞住與換向率控制。"
+      },
+      {
+        "a": "A12004",
+        "b": "P016",
+        "reason": "向心轉向速率只給運動學背景，沒有鄰居連接及拓撲狀態。"
+      },
+      {
+        "a": "A12007",
+        "b": "LEG-S60",
+        "reason": "氣流偵測逃跑與翻肚後兩方向能障/動能不同；只因物種相同被召回。"
+      }
+    ]
+  },
+  "theme_review": [
+    {
+      "id": "W12A-T01",
+      "before_seconds": 175,
+      "recommended_seconds": 175,
+      "decision": "PASS_TOPIC_LEVEL_ONLY",
+      "final_seconds": 175
+    },
+    {
+      "id": "W12A-T02",
+      "before_seconds": 180,
+      "recommended_seconds": 180,
+      "decision": "PASS_TOPIC_LEVEL_ONLY",
+      "final_seconds": 180
+    },
+    {
+      "id": "W12A-T03",
+      "before_seconds": 225,
+      "recommended_seconds": 150,
+      "decision": "PASS_TOPIC_LEVEL_ONLY",
+      "final_seconds": 150
+    },
+    {
+      "id": "W12A-T04",
+      "before_seconds": 175,
+      "recommended_seconds": 175,
+      "decision": "PASS_TOPIC_LEVEL_ONLY",
+      "final_seconds": 175
+    }
+  ],
+  "limits": [
+    "未實測、播放原影片、重算原數據/每式、寫完整旁白或試讀；時間只為章節預算。",
+    "原研究來源/作者副本是同一證據，不按下載次數重複計數。",
+    "最終三作者檔、共同draft與新增近鄰已讀回；此收據不改中央selection，也不授權製作。"
+  ],
+  "targeted_recheck": {
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "initial_review_sha256": "5210135b804075bb87d584e5ec42e4c66e90e3a6faf2d16d63a2ba0729d9c751",
+    "before_files": [
+      {
+        "file": "batches/wave12-locomotion.json",
+        "sha256": "dc6ab39121db0c4ca5b36c29c40bb1d8ea025c9ef7f9c26abe02654b7c00e069"
+      },
+      {
+        "file": "reviews/wave12-locomotion-themes.json",
+        "sha256": "d90446338414c3afc35aede7dcb738a19df768e673149e245cb3e3af7f915d59"
+      },
+      {
+        "file": "reviews/wave12-locomotion-author.json",
+        "sha256": "d586e50c706252057f2c7f4ee5db6ce7b8f82a207114c2ce940359cc5f677d91"
+      }
+    ],
+    "after_files": [
+      {
+        "file": "batches/wave12-locomotion.json",
+        "sha256": "ba380600fca6c8e61527610c69960c44c996d54c201be3b303e5117b7ef3ae2a"
+      },
+      {
+        "file": "reviews/wave12-locomotion-themes.json",
+        "sha256": "719f01a41b5826d908386ccabb0105fc954f9ade8bac96f6661c8fd71375b5a2"
+      },
+      {
+        "file": "reviews/wave12-locomotion-author.json",
+        "sha256": "fb91720ec5480b70041de7eb55782511a660586100ae9f966ebce819f0d72184"
+      }
+    ],
+    "resolutions": [
+      {
+        "id": "LOCOMOTION01",
+        "status": "RESOLVED",
+        "readback": "作者接受A12005→P164，raw原提案保留追溯；T03 variant_use明列P164/A12005/A12-S006及75秒，原cap95。"
+      },
+      {
+        "id": "LOCOMOTION02",
+        "status": "RESOLVED",
+        "readback": "A12004 target/範圍/visual及T02同步固定gamma/R/鄰距的幾何對照；同比加快前進/轉向/換向才縮時，沒有一整圈通用分界。"
+      },
+      {
+        "id": "LOCOMOTION03",
+        "status": "RESOLVED",
+        "readback": "A12007 target/visual/T03區分前翻仍不足、側滾門檻可跨，機器人逐次能量與動物平均/成功率分框；足以區別K11005泛能障。"
+      },
+      {
+        "id": "LOCOMOTION04",
+        "status": "RESOLVED",
+        "readback": "T03改兩個側滾研究，A12006留池、75+75=150，5秒回扣已含，range/drop同步；其他三案175/180/175。"
+      },
+      {
+        "id": "LOCOMOTION05",
+        "status": "RESOLVED",
+        "readback": "A12002明寫持續移動—機械耦合/局部對齊—持續滑牆模型環，T01第二章同步；不冒稱直接量測全部個蟻認知。"
+      }
+    ],
+    "additional_range_check": "四案range上限均等body_seconds/60，不藉未估內容填上緣。"
+  },
+  "remaining_required_corrections": [],
+  "final_input_check": {
+    "status": "PASS_FINAL_DRAFT_AND_CHANGED_NEIGHBOURS_READBACK",
+    "draft_file": ".cache/draft.json",
+    "draft_sha256": "211f265f2e2933468efeb711528eaeee4946dbd2f8a827d4266e5b257e2ecd04",
+    "raw_count": 3235,
+    "semantic_file": ".cache/semantic-wave12-draft.json",
+    "semantic_sha256": "5bdab30cff5d5c267869863e06fa18201e4b38e443f521697ec0ca11712805d5",
+    "delta_file": ".cache/wave12-locomotion-neighbour-delta.json",
+    "delta_sha256": "ac1a2a6a4069a3395bbe997210d7209fa67256069050248602b23241a42c54d9",
+    "old_retrieval_preserved": true,
+    "note": "原逐批neighbours.json仍保存初讀輸入，沒有假稱它已更新；最終以此全量semantic及delta綁定。",
+    "author_cohort_fields_equal_final_draft": [
+      "question",
+      "answer_target",
+      "scope",
+      "editorial"
+    ],
+    "final_top5": {
+      "A12001": [
+        "A12002",
+        "Z7015",
+        "Z7007",
+        "B2317",
+        "B2323"
+      ],
+      "A12002": [
+        "A12001",
+        "Z7015",
+        "Z7007",
+        "B2323",
+        "B2317"
+      ],
+      "A12003": [
+        "A12004",
+        "B2133",
+        "H3010",
+        "X2041",
+        "D2127"
+      ],
+      "A12004": [
+        "D2127",
+        "E2112",
+        "B11003",
+        "P016",
+        "A12003"
+      ],
+      "A12005": [
+        "A12007",
+        "A12006",
+        "LEG-S60",
+        "B2133",
+        "K11001"
+      ],
+      "A12006": [
+        "A12005",
+        "A12007",
+        "LEG-S60",
+        "B2133",
+        "B11002"
+      ],
+      "A12007": [
+        "A12005",
+        "A12006",
+        "E9003",
+        "LEG-S60",
+        "B2174"
+      ],
+      "A12008": [
+        "B2013",
+        "A12009",
+        "B2302",
+        "B2154",
+        "B2086"
+      ],
+      "A12009": [
+        "Z7005",
+        "B2155",
+        "B2302",
+        "S10007",
+        "B2326"
+      ],
+      "A12010": [
+        "B4038",
+        "E11014",
+        "E11003",
+        "E11001",
+        "N127"
+      ],
+      "A12011": [
+        "P101",
+        "E9002",
+        "N160",
+        "Q9007",
+        "N155"
+      ]
+    },
+    "new_comparisons": [
+      {
+        "a": "A12004",
+        "b": "E2112",
+        "compared_record": {
+          "question": "同種粒子繞的圈更大，為什麼一圈時間卻可能一樣？",
+          "answer_target": "較高垂直速率同時放大半徑，使非相對論迴轉週期不隨速率改變。",
+          "scope": "相同質荷比與均勻磁場；高速相對論效應另核"
+        },
+        "decision": "DISTINCT",
+        "reason": "非相對論磁場迴轉週期與速度相消，不是換旋向/圈徑相對鄰居控制纏結。"
+      },
+      {
+        "a": "A12004",
+        "b": "B11003",
+        "compared_record": {
+          "question": "一根莖彎回上方時，怎麼沒有一直越彎越過頭？",
+          "answer_target": "偏離垂直的角度促進轉彎，局部曲率回饋則促進拉直；兩者競爭的模型能重現彎曲後由頂端往下變直，並讓暫態振盪衰減。",
+          "scope": "限所讀傾倒後姿態實驗與A/AC模型；不能說從不過衝，也未辨明分子曲率感受器；生長區、平均伸長與時間尺度限制保留。"
+        },
+        "decision": "DISTINCT",
+        "reason": "植物角度/曲率回饋拉直，不涉及活動細絲彼此繞住與換向率控制。"
+      },
+      {
+        "a": "A12004",
+        "b": "P016",
+        "compared_record": {
+          "question": "同樣速度過彎，急彎為什麼比大彎更難轉？",
+          "answer_target": "固定速率下較小半徑代表更快改變速度方向。",
+          "scope": "不延伸成實際駕駛安全建議"
+        },
+        "decision": "DISTINCT",
+        "reason": "向心轉向速率只給運動學背景，沒有鄰居連接及拓撲狀態。"
+      },
+      {
+        "a": "A12007",
+        "b": "LEG-S60",
+        "compared_record": {
+          "question": "你手才靠近，蟑螂為什麼就先跑了？",
+          "answer_target": "蟑螂尾端有一對尾毛，上面的感覺毛對空氣流動非常敏感；拖鞋揮下推動的氣流會先觸發神經，讓牠在極短時間內轉身逃跑。牠的逃跑方向也不固定，更難預測。",
+          "scope": "沿用 S60 題級條件，須讀原查核包的限制；從氣流感測到逃跑反應，避免快過所有動物的誇張比較。"
+        },
+        "decision": "DISTINCT",
+        "reason": "氣流偵測逃跑與翻肚後兩方向能障/動能不同；只因物種相同被召回。"
+      }
+    ],
+    "result": "4個新近鄰完整問答/範圍已讀，沒有新增合併或暫緩；保留原55對閱讀與21作者邊界。"
+  },
+  "validation": {
+    "status": "PASS_ISOLATED_STRUCTURE_AND_TIMING",
+    "runtime": "bundled Node v24.22.1",
+    "checks": [
+      "現有validateThemes通過隔離資料，未改中央。",
+      "四案章節總和175/180/150/175，beats起點遞增且最長間隔<=45秒。",
+      "核心累計不超各自editorial cap；A12005變體75<=95，P164不額外加舊例秒數。",
+      "11個cohort question/answer/scope/editorial與最終3235raw draft逐欄一致；三作者SHA符合鎖版。",
+      "收據UTF-8 LF；無本機使用者絕對路徑。"
+    ],
+    "script": ".cache/wave12-locomotion-review-validate.mjs",
+    "limits": "通過只到題級研究與紙上編輯；不是試讀、復現或正式製作核准。"
+  },
+  "outcome": {
+    "raw_candidates_preserved": 11,
+    "recommended_new_cores": 10,
+    "merges": 1,
+    "excluded": 0,
+    "theme_seconds": [
+      175,
+      180,
+      150,
+      175
+    ],
+    "unused_pool_candidates": [
+      "A12006",
+      "A12010",
+      "A12011"
+    ]
+  }
+}

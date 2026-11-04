@@ -1,0 +1,727 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "reviewer": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "P33001",
+    "P33002",
+    "P33003",
+    "P33004",
+    "P33005"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave33-whales.json",
+      "sha256": "a894447e9730e77b8522a0d6b53ba37bf34cbbb1dbebd68fba88f0b6aea78fa0"
+    },
+    {
+      "file": "reviews/wave33-whales-author.json",
+      "sha256": "7c61dfe9c1edd7841c8fd29aff08b6f4126db9d8523de8386894f16f445b3f0c"
+    },
+    {
+      "file": "reviews/wave33-whales-themes.json",
+      "sha256": "da8f028b0a309fac2a3e858c1d07312db702c751d76d52e39e8e6cb236bd4b63"
+    },
+    {
+      "file": ".cache/wave33-whales-neighbours.json",
+      "sha256": "104e8def43830613f0ed2ca7d1fbbb8daa24b0a6dfe865f3497ca5ed257d3782"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P33001",
+      "decision": "retain",
+      "reason": "深潛上衝、滑行與水面換氣條件分開，沒有將單一藍鯨推成全種。"
+    },
+    {
+      "id": "P33002",
+      "decision": "retain",
+      "reason": "以顎部影格檢查速度峰是否能代理開口。"
+    },
+    {
+      "id": "P33003",
+      "decision": "retain",
+      "reason": "內外圈不同泡距與吐泡節奏有獨立觀察，攝食增益只能條件式估計。"
+    },
+    {
+      "id": "P33004",
+      "decision": "retain",
+      "reason": "四頭個體可判讀片段的判準完整，未聲稱看到吞嚥。"
+    },
+    {
+      "id": "P33005",
+      "decision": "retain",
+      "reason": "分層時序和脂肪累積量回答不同問題，時間解析度說得清楚。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "P33-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6911174/fullTextXML",
+      "file": ".cache/wave33-whales-heart.xml",
+      "sha256": "4175a086661d8929b7b3306abc901ff46f545babaf4e8664dbb03caf7d7647b5",
+      "text_file": ".cache/wave33-whales-heart.txt",
+      "text_sha256": "46cf3e6d103afce705d23e0e2469a2ab492f1b1ce2069e3fff39a08ec01cd8f3",
+      "reading_scope": "原刊XML Results及Fig1D、E和Fig2A–D。",
+      "finding": "一頭雄性藍鯨約8.5小時的紀錄。潛次底段局部上衝時的暫時增快和回到水面的高心率差異可從分段記錄讀出；相對肺容量線並非直接量得肌肉供氧。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave33-whales-heart-fig1.jpg",
+          "sha256": "1b5bba9e8a6f481ac13f427729619b296f5cd9cbb0940ab96b32c53e3dbfd412",
+          "read_scope": "Fig1D單潛分段與Fig1E行為階段分布。"
+        },
+        {
+          "file": ".cache/wave33-whales-heart-fig2.jpg",
+          "sha256": "76edeb9fb3801ed44b5a9894b4ade12f307f29f2c4d394ae8d7a753a2a21eb3f",
+          "read_scope": "Fig2四次深淺潛，深水局部上衝與回到水面分開。"
+        }
+      ],
+      "read_via": "讀原研究PDF或XML，並核對本列圖表。"
+    },
+    {
+      "source_id": "P33-S002",
+      "url": "https://www.fundacionmeri.cl/wp-content/files_mf/cade_et_al_2016_currentbiology_extended.pdf",
+      "file": ".cache/wave33-whales-mouth.pdf",
+      "sha256": "317323629f661b6b9ab99dc42034e50a646792c83d5dabef28dcd765b4a59285",
+      "text_file": ".cache/wave33-whales-mouth.txt",
+      "text_sha256": "505a784adc722e1797c2557ba409afac9148ef19029bdf9e0e248e2d2275c38c",
+      "reading_scope": "刊前PDF頁3–5，兩種餌料的顎部影格、Fig1–2的速度曲線及Table1。",
+      "finding": "用上顎抬起標示開口。Fig2追魚的例子中先達最高速度才開口，和吃磷蝦的記錄不同；可約束只用速度峰判開口的做法。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave33-whales-mouth-p3.png",
+          "sha256": "f13846c1d35af26f1ba077859dbfac16be246c98c4c3780afdaaeb2aef460238",
+          "read_scope": "Fig1藍鯨抬顎照片與速度曲線。"
+        },
+        {
+          "file": ".cache/wave33-whales-mouth-p4.png",
+          "sha256": "c1b2a1923cb8a9e4b160db4bcd52abf965fc26af788b28eaa3347dea3cd03236",
+          "read_scope": "Fig2追魚座頭鯨的速度峰與稍後抬顎。"
+        },
+        {
+          "file": ".cache/wave33-whales-mouth-p5.png",
+          "sha256": "3785026fa51d468de304a94ae102281347cfdc86d866cc553d90f85a3a375803",
+          "read_scope": "Table 1依獵物與鯨種分列開、閉口時點。"
+        }
+      ],
+      "read_via": "讀原研究PDF或XML，並核對本列圖表。"
+    },
+    {
+      "source_id": "P33-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11336686/fullTextXML",
+      "file": ".cache/wave33-whales-bubble.xml",
+      "sha256": "b4ecddf3ea862234cb323a2992a2ed479517ebd078f7395eec9a42045dc63ff3",
+      "text_file": ".cache/wave33-whales-bubble.txt",
+      "text_sha256": "4e449b17e3dc91ad9c537dd4dda796640d1cb9b1e14f3689a6d73f9fed7a2bfc",
+      "reading_scope": "原刊XML正文P021–030、P034–039；Fig1、3與4的內外圈泡團、面積比較與速度資料。",
+      "finding": "單鯨內圈面積及泡團間隔較小。游速比較與單位時間吐泡數支持較密泡網；幾何模型以獵物不逃出等假設推估，沒有用吞入的磷蝦數作驗證。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave33-whales-bubble-fig1.jpg",
+          "sha256": "46ef95cd739aa8240f3ba1781b387faaa4b83aecae5008f89c701b769fe8d12a",
+          "read_scope": "Fig1a空拍相鄰泡間距、內外圈與面積界定。"
+        },
+        {
+          "file": ".cache/wave33-whales-bubble-fig3.jpg",
+          "sha256": "8ea12a6f398a806d700ff06c486608778a7ad482bf1ec9d6678a73ddc73646db",
+          "read_scope": "Fig3各圈數的內外圈面積與泡間距分布。"
+        },
+        {
+          "file": ".cache/wave33-whales-bubble-fig4.jpg",
+          "sha256": "4b62d2cc4054e0f1323af436ac0347d8c2f3553cf2cdf4ddefcdaffe6bd25910",
+          "read_scope": "Fig4五頭鯨深度與速度對時，另一研究的無泡網速度以點線表示。"
+        }
+      ],
+      "read_via": "讀原研究PDF或XML，並核對本列圖表。"
+    },
+    {
+      "source_id": "P33-S004",
+      "url": "https://marinebioacoustics.wordpress.com/wp-content/uploads/2018/04/wisniewska_etal_2016.pdf",
+      "file": ".cache/wave33-whales-capture.pdf",
+      "sha256": "f4aa58938f418f7edf39e7f9796b48b0dd4c21478d48d084d9e765ec6365776f",
+      "text_file": ".cache/wave33-whales-capture.txt",
+      "text_sha256": "845d2fec79a324e870e8ca9a42a098e7d05d514a6129bb3c97bc39376b6ea23d",
+      "reading_scope": "刊前PDF頁5 Fig3及補充頁10–11，對目標回聲、逼近、末段動作與難判情況的描述。",
+      "finding": "四頭鼠海豚有可判讀目標回聲。會排除並替補不可判的追逐，直至各100次有結論；缺少回聲本身不能當作截獲證據。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave33-whales-capture-p5.png",
+          "sha256": "6b2ed997a1c6454b9258dc1db39d9702c9e5a4fc0537c8df720468b732131ad0",
+          "read_scope": "Fig3逃逸時回聲距離與魚尾拍造成的強弱變化。"
+        }
+      ],
+      "read_via": "讀原研究PDF或XML，並核對本列圖表。"
+    },
+    {
+      "source_id": "P33-S005",
+      "url": "https://www.vliz.be/imisdocs/publications/ocrd/286777.pdf",
+      "file": ".cache/wave33-whales-ear.pdf",
+      "sha256": "11740805d0acecaad6f207d5c7bab35777149f5091e39fd42405cb1bb3d8d99d",
+      "text_file": ".cache/wave33-whales-ear.txt",
+      "text_sha256": "377214e3ba6789852ae3864457c26dd8e7c4ed7e5426253cda5e9873a4dc52d8",
+      "reading_scope": "原刊PDF頁2–3 Fig1、2，耳栓斷面與有機污染物及汞按估計年齡的曲線。",
+      "finding": "每層按約半年處理，24層是同一頭雄性藍鯨的時間序列。耳栓能排序個體濃度高點，無法從高點直接定位污染源。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave33-whales-ear-p2.png",
+          "sha256": "6293a7ffe9cb86e3a45ac3950b9d1af636074309b8d829c941f61023af5eba60",
+          "read_scope": "Fig1耳栓實物、縱切及放大分層。"
+        },
+        {
+          "file": ".cache/wave33-whales-ear-p3.png",
+          "sha256": "4be33bbece6665ffa49bc63a44a0e164a4fb00d5bdacab7600594f12304bd797",
+          "read_scope": "Fig2B–D初層有機污染物高值，F汞有不同峰期。"
+        }
+      ],
+      "read_via": "讀原研究PDF或XML，並核對本列圖表。"
+    },
+    {
+      "source_id": "P33-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8547948/fullTextXML",
+      "file": ".cache/wave33-whales-sonar.xml",
+      "sha256": "321b36322eadec6aff2ba2922ba9e92fff6c16023fcbefd97f6a4f92eb2298e1",
+      "text_file": ".cache/wave33-whales-sonar.txt",
+      "text_sha256": "ad84c2272636882e2b049b701dd1100c13403e72963db66fa6ebaca440502def",
+      "reading_scope": "原刊XML P011–015與Fig2圖說；這一來源只用於審核退題。",
+      "finding": "逃逸獵物的聲學變化和發聲間隔回應並不是每次單一回聲立刻切換下一聲的直接證據，沒有另創一個捕獲估計核心。",
+      "viewed_images": [],
+      "read_via": "僅讀限定的XML段落與圖說。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P33001",
+      "b": "V3062",
+      "decision": "distinct",
+      "reason": "循環代謝能否在缺氧時繼續，與同次潛水的運動和心率時序不同。"
+    },
+    {
+      "a": "P33001",
+      "b": "P33002",
+      "decision": "distinct",
+      "reason": "捕食運動只是共有條件，一題心電貼合深度、一題顎部影像校準速度。"
+    },
+    {
+      "a": "P33002",
+      "b": "P32002",
+      "decision": "distinct",
+      "reason": "泥流需分開地震儀與慢流的讀值，這題比對動物運動標記的開口瞬間。"
+    },
+    {
+      "a": "P33002",
+      "b": "A23002",
+      "decision": "distinct",
+      "reason": "小蟲水滴相對發射器的彈性增速與鯨的攝影定時無關。"
+    },
+    {
+      "a": "P33002",
+      "b": "P33003",
+      "decision": "distinct",
+      "reason": "吐泡形成圈網是開口前的收聚，顎部校時測的是衝刺何時進食。"
+    },
+    {
+      "a": "P33002",
+      "b": "P33004",
+      "decision": "distinct",
+      "reason": "開口影格屬行為起始；牙鯨獵物是否被截獲需要追蹤目標回聲和末段動作。"
+    },
+    {
+      "a": "P33003",
+      "b": "V3077",
+      "decision": "distinct",
+      "reason": "真菌的生物圈套是不同載體，並無單鯨吐泡頻率、游速及內外圈幾何的量測。"
+    },
+    {
+      "a": "P33003",
+      "b": "P33004",
+      "decision": "distinct",
+      "reason": "泡網增益是留在圈內的模型；鼠海豚實測回聲估單次追逐結局。"
+    },
+    {
+      "a": "P33004",
+      "b": "B2320",
+      "decision": "distinct",
+      "reason": "遮蔽後預期出現位置的追蹤能力與多通道判斷截獲或逃脫不同。"
+    },
+    {
+      "a": "P33004",
+      "b": "Z7017",
+      "decision": "distinct",
+      "reason": "棲葉獵物與葉片回波如何分隔與單次終端捕獲的成功判準不同。"
+    },
+    {
+      "a": "P33004",
+      "b": "Z7013",
+      "decision": "distinct",
+      "reason": "飛蛾干擾超音波是獵物規避的因果操弄，這篇追蹤野生鼠海豚的末段回聲。"
+    },
+    {
+      "a": "P33004",
+      "b": "A14003",
+      "decision": "distinct",
+      "reason": "熟悉的哨音在缺少原聲紋時仍可辨認，並非定位與評估獵物結局。"
+    },
+    {
+      "a": "P33004",
+      "b": "N194",
+      "decision": "distinct",
+      "reason": "深海聲道的遠距傳播不給近距追逐後是否捕獲的判據。"
+    },
+    {
+      "a": "P33005",
+      "b": "B2095",
+      "decision": "distinct",
+      "reason": "營養階層放大是物種間濃度比較，分層耳栓追的是同一個體內的時間順序。"
+    },
+    {
+      "a": "P33005",
+      "b": "R31001",
+      "decision": "distinct",
+      "reason": "年輪定年靠共同的絕對曆年標記，耳栓按生長層推相對年齡，沒有逐日對時。"
+    },
+    {
+      "a": "P33005",
+      "b": "R31006",
+      "decision": "distinct",
+      "reason": "年輪蟲害由寄主及非寄主交叉定位異常；耳栓化學序列直接測不同時間層的含量。"
+    },
+    {
+      "a": "P33005",
+      "b": "R29001",
+      "decision": "distinct",
+      "reason": "陶鍋比較不同部位殘留多久；耳栓本身已有分層形成次序，和脂肪單點樣本的時間意義不同。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P33001",
+      "b": "P33002",
+      "decision": "distinct",
+      "reason": "捕食運動只是共有條件，一題心電貼合深度、一題顎部影像校準速度。"
+    },
+    {
+      "a": "P33001",
+      "b": "N194",
+      "decision": "distinct",
+      "reason": "研究的是水下上衝與心率變化，不是鯨歌傳多遠。"
+    },
+    {
+      "a": "P33001",
+      "b": "P33003",
+      "decision": "distinct",
+      "reason": "泡團密度與吐泡頻率只描述捕食工具，與同一深潛前後的心電信號不同。"
+    },
+    {
+      "a": "P33001",
+      "b": "N208",
+      "decision": "distinct",
+      "reason": "靜水壓隨深度變化本身不足以解釋類似深度上衝與滑行的心跳差。"
+    },
+    {
+      "a": "P33001",
+      "b": "S10007",
+      "decision": "distinct",
+      "reason": "電魚來回游動幫助感覺／控制，並無捕食前後心電記錄。"
+    },
+    {
+      "a": "P33002",
+      "b": "P33001",
+      "decision": "distinct",
+      "reason": "捕食運動只是共有條件，一題心電貼合深度、一題顎部影像校準速度。"
+    },
+    {
+      "a": "P33002",
+      "b": "P33003",
+      "decision": "distinct",
+      "reason": "吐泡形成圈網是開口前的收聚，顎部校時測的是衝刺何時進食。"
+    },
+    {
+      "a": "P33002",
+      "b": "P33004",
+      "decision": "distinct",
+      "reason": "開口影格屬行為起始；牙鯨獵物是否被截獲需要追蹤目標回聲和末段動作。"
+    },
+    {
+      "a": "P33002",
+      "b": "N194",
+      "decision": "distinct",
+      "reason": "低頻聲道傳播不會把一次速度尖峰換算成上顎抬起的時點。"
+    },
+    {
+      "a": "P33002",
+      "b": "O3077",
+      "decision": "distinct",
+      "reason": "魚通過聲學流速剖面產生怪值是量到錯目標；鯨題另有同步影格識別行為。"
+    },
+    {
+      "a": "P33003",
+      "b": "P33002",
+      "decision": "distinct",
+      "reason": "吐泡形成圈網是開口前的收聚，顎部校時測的是衝刺何時進食。"
+    },
+    {
+      "a": "P33003",
+      "b": "P33001",
+      "decision": "distinct",
+      "reason": "單座頭鯨收緊泡網的方式和藍鯨深潛時的心率變動需不同紀錄。"
+    },
+    {
+      "a": "P33003",
+      "b": "B2302",
+      "decision": "distinct",
+      "reason": "電鰻彎身將獵物置於電勢差中，並非改變氣泡的空間密度。"
+    },
+    {
+      "a": "P33003",
+      "b": "A12008",
+      "decision": "distinct",
+      "reason": "小鴨尾隨利用另一個體的波場，泡網是捕食者自行吐出並圍住獵物。"
+    },
+    {
+      "a": "P33003",
+      "b": "A12009",
+      "decision": "distinct",
+      "reason": "魚群擺尾相位與前魚尾流的配合不會造成泡團的內外圈幾何。"
+    },
+    {
+      "a": "P33004",
+      "b": "A14003",
+      "decision": "distinct",
+      "reason": "熟悉的哨音在缺少原聲紋時仍可辨認，並非定位與評估獵物結局。"
+    },
+    {
+      "a": "P33004",
+      "b": "B2281",
+      "decision": "distinct",
+      "reason": "河狸拍水提供外部訊號，而非使用回聲、動作等記錄評估捕獵。"
+    },
+    {
+      "a": "P33004",
+      "b": "B2320",
+      "decision": "distinct",
+      "reason": "遮蔽後預期出現位置的追蹤能力與多通道判斷截獲或逃脫不同。"
+    },
+    {
+      "a": "P33004",
+      "b": "P33002",
+      "decision": "distinct",
+      "reason": "開口影格屬行為起始；牙鯨獵物是否被截獲需要追蹤目標回聲和末段動作。"
+    },
+    {
+      "a": "P33004",
+      "b": "B17004",
+      "decision": "distinct",
+      "reason": "魚被觸鬚蛇假動作驚到的逃向，無法代替鼠海豚記錄中截獲的判準。"
+    },
+    {
+      "a": "P33005",
+      "b": "B2224",
+      "decision": "distinct",
+      "reason": "蒼耳散布的體表附著不保存動物一生分層暴露曲線。"
+    },
+    {
+      "a": "P33005",
+      "b": "N194",
+      "decision": "distinct",
+      "reason": "耳栓層序比較污染物濃度，並非測鯨歌在海水中的路徑。"
+    },
+    {
+      "a": "P33005",
+      "b": "P33002",
+      "decision": "distinct",
+      "reason": "張嘴的片刻用影格對時，耳栓化學給的是多年平均形成序。"
+    },
+    {
+      "a": "P33005",
+      "b": "B2255",
+      "decision": "distinct",
+      "reason": "大象外耳的熱交換不是鯨耳蠟的時間累積。"
+    },
+    {
+      "a": "P33005",
+      "b": "B2037",
+      "decision": "distinct",
+      "reason": "鰭骨同源是演化線索，耳栓化驗同一隻鯨不同時段。"
+    }
+  ],
+  "not_added_review": [
+    {
+      "id": "P33-NA001",
+      "decision": "keep_not_added",
+      "reason": "單一雄性記錄時程不可當所有個體固定速率。"
+    },
+    {
+      "id": "P33-NA002",
+      "decision": "keep_not_added",
+      "reason": "心率相對倍數不能直接換算組織供氧。"
+    },
+    {
+      "id": "P33-NA003",
+      "decision": "keep_not_added",
+      "reason": "深度換一個數值不另成機制。"
+    },
+    {
+      "id": "P33-NA004",
+      "decision": "keep_not_added",
+      "reason": "開口時間、實吞數及成功率是不同可觀察量。"
+    },
+    {
+      "id": "P33-NA005",
+      "decision": "keep_not_added",
+      "reason": "需和顎部影格對齊，不單靠加速度。"
+    },
+    {
+      "id": "P33-NA006",
+      "decision": "keep_not_added",
+      "reason": "此研究用的正是單鯨泡網。"
+    },
+    {
+      "id": "P33-NA007",
+      "decision": "keep_not_added",
+      "reason": "面積比的假設不能代替實際食入量。"
+    },
+    {
+      "id": "P33-NA008",
+      "decision": "keep_not_added",
+      "reason": "泡團幾何與整天獵物總數之間沒有校準。"
+    },
+    {
+      "id": "P33-NA009",
+      "decision": "keep_not_added",
+      "reason": "回聲消失可能是不可判或遮蔽，另需末段運動等條件。"
+    },
+    {
+      "id": "P33-NA010",
+      "decision": "keep_not_added",
+      "reason": "每小時觀測中的極值不能直接乘全天。"
+    },
+    {
+      "id": "P33-NA011",
+      "decision": "keep_not_added",
+      "reason": "另一論文也不能支持每個回聲逐一控制下一聲的概括。"
+    },
+    {
+      "id": "P33-NA012",
+      "decision": "keep_not_added",
+      "reason": "每層估半年而非一年。"
+    },
+    {
+      "id": "P33-NA013",
+      "decision": "keep_not_added",
+      "reason": "每層時間窗較寬，不能定位港口。"
+    },
+    {
+      "id": "P33-NA014",
+      "decision": "keep_not_added",
+      "reason": "污染物營養級放大已有舊核心。"
+    },
+    {
+      "id": "P33-NA015",
+      "decision": "keep_not_added",
+      "reason": "長距聲道、個體聲音辨識不等於捕獲判定。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W33P-T01",
+      "seconds": 60,
+      "decision": "retain_paper_plan",
+      "reason": "只用同一個體的水下與水面心率對照，剪到60秒仍能區分兩者。"
+    },
+    {
+      "id": "W33P-T02",
+      "seconds": 96,
+      "decision": "retain_paper_plan",
+      "reason": "比較實見張嘴和多訊號推論截獲，兩者用不同物種及量測，清楚分框。"
+    },
+    {
+      "id": "W33P-T03",
+      "seconds": 74,
+      "decision": "retain_paper_plan",
+      "reason": "以內外圈起手，回到吐泡頻率和速度，最後讓模型假設與真實攝食量分開。"
+    },
+    {
+      "id": "W33P-T04",
+      "seconds": 62,
+      "decision": "retain_paper_plan",
+      "reason": "耳栓和脂肪樣本對照足夠，有限時間窗只需圖註。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P33001",
+        "b": "V3062",
+        "reason": "循環代謝能否在缺氧時繼續，與同次潛水的運動和心率時序不同。"
+      },
+      {
+        "a": "P33002",
+        "b": "P33001",
+        "reason": "捕食運動只是共有條件，一題心電貼合深度、一題顎部影像校準速度。"
+      },
+      {
+        "a": "P33002",
+        "b": "P32002",
+        "reason": "泥流需分開地震儀與慢流的讀值，這題比對動物運動標記的開口瞬間。"
+      },
+      {
+        "a": "P33002",
+        "b": "A23002",
+        "reason": "小蟲水滴相對發射器的彈性增速與鯨的攝影定時無關。"
+      },
+      {
+        "a": "P33003",
+        "b": "P33002",
+        "reason": "吐泡形成圈網是開口前的收聚，顎部校時測的是衝刺何時進食。"
+      },
+      {
+        "a": "P33004",
+        "b": "P33002",
+        "reason": "開口影格屬行為起始；牙鯨獵物是否被截獲需要追蹤目標回聲和末段動作。"
+      },
+      {
+        "a": "P33003",
+        "b": "V3077",
+        "reason": "真菌的生物圈套是不同載體，並無單鯨吐泡頻率、游速及內外圈幾何的量測。"
+      },
+      {
+        "a": "P33003",
+        "b": "P33004",
+        "reason": "泡網增益是留在圈內的模型；鼠海豚實測回聲估單次追逐結局。"
+      },
+      {
+        "a": "P33004",
+        "b": "B2320",
+        "reason": "遮蔽後預期出現位置的追蹤能力與多通道判斷截獲或逃脫不同。"
+      },
+      {
+        "a": "P33004",
+        "b": "Z7017",
+        "reason": "棲葉獵物與葉片回波如何分隔與單次終端捕獲的成功判準不同。"
+      },
+      {
+        "a": "P33004",
+        "b": "Z7013",
+        "reason": "飛蛾干擾超音波是獵物規避的因果操弄，這篇追蹤野生鼠海豚的末段回聲。"
+      },
+      {
+        "a": "P33004",
+        "b": "A14003",
+        "reason": "熟悉的哨音在缺少原聲紋時仍可辨認，並非定位與評估獵物結局。"
+      },
+      {
+        "a": "P33004",
+        "b": "N194",
+        "reason": "深海聲道的遠距傳播不給近距追逐後是否捕獲的判據。"
+      },
+      {
+        "a": "P33005",
+        "b": "B2095",
+        "reason": "營養階層放大是物種間濃度比較，分層耳栓追的是同一個體內的時間順序。"
+      },
+      {
+        "a": "P33005",
+        "b": "R31001",
+        "reason": "年輪定年靠共同的絕對曆年標記，耳栓按生長層推相對年齡，沒有逐日對時。"
+      },
+      {
+        "a": "P33005",
+        "b": "R31006",
+        "reason": "年輪蟲害由寄主及非寄主交叉定位異常；耳栓化學序列直接測不同時間層的含量。"
+      },
+      {
+        "a": "P33005",
+        "b": "R29001",
+        "reason": "陶鍋比較不同部位殘留多久；耳栓本身已有分層形成次序，和脂肪單點樣本的時間意義不同。"
+      },
+      {
+        "a": "P33001",
+        "b": "N194",
+        "reason": "研究的是水下上衝與心率變化，不是鯨歌傳多遠。"
+      },
+      {
+        "a": "P33003",
+        "b": "P33001",
+        "reason": "單座頭鯨收緊泡網的方式和藍鯨深潛時的心率變動需不同紀錄。"
+      },
+      {
+        "a": "P33001",
+        "b": "N208",
+        "reason": "靜水壓隨深度變化本身不足以解釋類似深度上衝與滑行的心跳差。"
+      },
+      {
+        "a": "P33001",
+        "b": "S10007",
+        "reason": "電魚來回游動幫助感覺／控制，並無捕食前後心電記錄。"
+      },
+      {
+        "a": "P33002",
+        "b": "N194",
+        "reason": "低頻聲道傳播不會把一次速度尖峰換算成上顎抬起的時點。"
+      },
+      {
+        "a": "P33002",
+        "b": "O3077",
+        "reason": "魚通過聲學流速剖面產生怪值是量到錯目標；鯨題另有同步影格識別行為。"
+      },
+      {
+        "a": "P33003",
+        "b": "B2302",
+        "reason": "電鰻彎身將獵物置於電勢差中，並非改變氣泡的空間密度。"
+      },
+      {
+        "a": "P33003",
+        "b": "A12008",
+        "reason": "小鴨尾隨利用另一個體的波場，泡網是捕食者自行吐出並圍住獵物。"
+      },
+      {
+        "a": "P33003",
+        "b": "A12009",
+        "reason": "魚群擺尾相位與前魚尾流的配合不會造成泡團的內外圈幾何。"
+      },
+      {
+        "a": "P33004",
+        "b": "B2281",
+        "reason": "河狸拍水提供外部訊號，而非使用回聲、動作等記錄評估捕獵。"
+      },
+      {
+        "a": "P33004",
+        "b": "B17004",
+        "reason": "魚被觸鬚蛇假動作驚到的逃向，無法代替鼠海豚記錄中截獲的判準。"
+      },
+      {
+        "a": "P33005",
+        "b": "B2224",
+        "reason": "蒼耳散布的體表附著不保存動物一生分層暴露曲線。"
+      },
+      {
+        "a": "P33005",
+        "b": "N194",
+        "reason": "耳栓層序比較污染物濃度，並非測鯨歌在海水中的路徑。"
+      },
+      {
+        "a": "P33005",
+        "b": "P33002",
+        "reason": "張嘴的片刻用影格對時，耳栓化學給的是多年平均形成序。"
+      },
+      {
+        "a": "P33005",
+        "b": "B2255",
+        "reason": "大象外耳的熱交換不是鯨耳蠟的時間累積。"
+      },
+      {
+        "a": "P33005",
+        "b": "B2037",
+        "reason": "鰭骨同源是演化線索，耳栓化驗同一隻鯨不同時段。"
+      }
+    ]
+  },
+  "final_draft_sha256": "03b315322cc37ecaefa068f93f4f48270a0a40fab3fdf663fd1cbd0bd63ddd9b",
+  "remaining_blockers": [],
+  "limits": "本輪題級研究。圖中階段、指標、顏色與個體數必須在後續改稿與試讀時保留。"
+}

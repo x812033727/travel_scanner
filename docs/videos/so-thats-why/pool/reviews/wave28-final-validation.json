@@ -1,0 +1,363 @@
+{
+  "tested_on": "2026-11-02T07:08:57.850Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3458,
+    "canonical_questions": 3312,
+    "eligible_candidates": 3142,
+    "selected_candidates": 3083,
+    "alias_records": 146,
+    "historical_records": 313,
+    "source_urls": 4426,
+    "current_research_source_urls": 1467,
+    "selected_source_urls": 2647,
+    "new_suggestions_not_added": 1286,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 286,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3073",
+    "carried": 3073,
+    "added": 10,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "5382907241134f9107ea4ad963b0a2bde8ac98939e631e4ce1cefb60541da9e5",
+    "writes": 6770,
+    "selected": 3083
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "5382907241134f9107ea4ad963b0a2bde8ac98939e631e4ce1cefb60541da9e5",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4525,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 5671.885900000001,
+    "index_ms": 3318.6847000000016,
+    "unchanged_index_ms": 305.5118999999977,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 13,
+        "milliseconds": 16.787500000002183
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 6.880600000000413
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 6.178799999997864
+      }
+    ],
+    "rss_bytes": 429699072,
+    "sqlite_bytes": 54763520
+  },
+  "dedup_audit": {
+    "selection": "Every final wave28 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "36c7cefc4dd174b3359461229840e5d411f878c64f1ecf36470eb19de4e702be",
+    "records": 3458,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 3.137
+  },
+  "hashes": {
+    "pool.json": "36c7cefc4dd174b3359461229840e5d411f878c64f1ecf36470eb19de4e702be",
+    "themes.json": "bdb72fe101271e8b154770e7d518f4f9c1971d43674960c9c92ee77ef58cdc09",
+    "manifest.json": "f11ceaf5ae67ed6c507918be928d691980f503f59a87c2f5cef38b54b789d9cf",
+    "index.html": "433bdbd59000d02a69c6569b08ac9c0940d64d18d560bcdae44ab62d7cfade7f",
+    "batches/wave28-audio.json": "cd636a2c7572234e273dca27d49594b2ae23f489e0e471cb37ee782acc6795c0",
+    "batches/wave28-museum.json": "698d4c37527b8241ba16c0b7c98f6e30ffe835bea32b30cd62d8b53b02b9e935"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3448,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3073,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 279,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4415,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf",
+        "source_id": "SRC-94091d512ddf0800",
+        "candidate_ids": [
+          "P28001",
+          "P28002"
+        ],
+        "theme_ids": [
+          "G284"
+        ]
+      },
+      {
+        "url": "https://www.nedcc.org/about/nedcc-stories/bcm",
+        "source_id": "SRC-1a0df10f608e304a",
+        "candidate_ids": [
+          "P28002"
+        ],
+        "theme_ids": [
+          "G284"
+        ]
+      },
+      {
+        "url": "https://firstsounds.org/research/articles/scott-discography.pdf",
+        "source_id": "SRC-1837dca4dee9e01f",
+        "candidate_ids": [
+          "P28003"
+        ],
+        "theme_ids": [
+          "G285"
+        ]
+      },
+      {
+        "url": "https://aes.org/wp-content/uploads/2025/02/printthrough.pdf",
+        "source_id": "SRC-83a3a0f6ae05b116",
+        "candidate_ids": [
+          "P28004"
+        ],
+        "theme_ids": [
+          "G286"
+        ]
+      },
+      {
+        "url": "https://loc.gov/preservation/scientists/projects/lacquered_disc.html",
+        "source_id": "SRC-7f165c48a9791ed6",
+        "candidate_ids": [],
+        "theme_ids": []
+      },
+      {
+        "url": "https://people.ece.cornell.edu/johnson/aic2010.pdf",
+        "source_id": "SRC-578fb52089d9b4ff",
+        "candidate_ids": [
+          "R28001",
+          "R28002"
+        ],
+        "theme_ids": [
+          "G280"
+        ]
+      },
+      {
+        "url": "https://www.nationalgallery.org.uk/paintings/catalogues/plazzotta-and-henry-2022/saint-catherine-of-alexandria",
+        "source_id": "SRC-e018a8923b9f610d",
+        "candidate_ids": [
+          "R28003"
+        ],
+        "theme_ids": [
+          "G281"
+        ]
+      },
+      {
+        "url": "https://www.nationalgallery.org.uk/research/publications/studying-raphael/studying-raphael-drawings-and-cartoons",
+        "source_id": "SRC-f2580714e8c186d9",
+        "candidate_ids": [
+          "R28003"
+        ],
+        "theme_ids": [
+          "G281"
+        ]
+      },
+      {
+        "url": "https://www.getty.edu/publications/mummy-portraits-2/14/",
+        "source_id": "SRC-70d9d38149d433eb",
+        "candidate_ids": [
+          "R28004"
+        ],
+        "theme_ids": [
+          "G282"
+        ]
+      },
+      {
+        "url": "https://www.getty.edu/art/exhibitions/ultra-violet/downloads/IRS_WebPDF.pdf",
+        "source_id": "SRC-35a4ed024b61cb9b",
+        "candidate_ids": [
+          "R28005"
+        ],
+        "theme_ids": [
+          "G283"
+        ]
+      },
+      {
+        "url": "https://www.rijksmuseum.nl/en/press/press-releases/for-the-first-time-in-300-years-the-night-watch-is-complete-again",
+        "source_id": "SRC-dd4d76d106021895",
+        "candidate_ids": [
+          "R28006"
+        ],
+        "theme_ids": [
+          "G283"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://people.ece.cornell.edu/johnson/aic2010.pdf",
+    "core": "R28001",
+    "theme": "G280",
+    "theme_ids": [
+      "G280"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 101868.6009,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "0cd25bcec86ca880d73c234375b113167b06e033361cb59e6120798914d93e33"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "33e80996fd8881ccf315bfd5b434c3ed6c3b8029de14eac97bfb5a2b03617102"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "36062d0918d2abd8d8c4af4d0373f6e681cbe615104ab4e45b4604dbf0b1d2cd",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "b34a7edaabc6ada5192e543f4a35b28397160509cd236dedb534588284115b3b"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "9d668658d3619fa493378d97b8e8d956ac0b9942a3c343a00d1720ca0ce3559f",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 367,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 18,
+    "unique_blobs_checked": 387,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3655,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G280",
+        "core": "R28001",
+        "seconds": 70,
+        "maximum": 105
+      },
+      {
+        "theme": "G280",
+        "core": "R28002",
+        "seconds": 45,
+        "maximum": 95
+      },
+      {
+        "theme": "G281",
+        "core": "R28003",
+        "seconds": 80,
+        "maximum": 105
+      },
+      {
+        "theme": "G282",
+        "core": "R28004",
+        "seconds": 70,
+        "maximum": 95
+      },
+      {
+        "theme": "G283",
+        "core": "R28005",
+        "seconds": 60,
+        "maximum": 105
+      },
+      {
+        "theme": "G283",
+        "core": "R28006",
+        "seconds": 55,
+        "maximum": 95
+      },
+      {
+        "theme": "G284",
+        "core": "P28001",
+        "seconds": 65,
+        "maximum": 90
+      },
+      {
+        "theme": "G284",
+        "core": "P28002",
+        "seconds": 60,
+        "maximum": 100
+      },
+      {
+        "theme": "G285",
+        "core": "P28003",
+        "seconds": 85,
+        "maximum": 105
+      },
+      {
+        "theme": "G286",
+        "core": "P28004",
+        "seconds": 75,
+        "maximum": 90
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 29,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "5003aace3160f8588dfad9db428ae8d1f70d93c7ca234cb1488792b0250b3c8a"
+  }
+}

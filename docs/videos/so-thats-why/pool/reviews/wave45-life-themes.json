@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "rules": "短解說各有一條可追問主線，秒數按跨章單核合計。",
+  "episodes": [
+    {
+      "id": "W45L-T01",
+      "title": "六角蜂巢接縫裡，怎麼跑出五邊和七邊的格？",
+      "core_question": "兩塊規整格子方向不同，如何在相遇處接合？",
+      "connection": "先改格向，再看只調角度的預測哪裡還不夠。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L45-001"
+      ],
+      "target_minutes": 1.2,
+      "range_minutes": [
+        1.2,
+        1.2
+      ],
+      "body_seconds": 72,
+      "chapters": [
+        {
+          "title": "順著六角格看出兩側方向",
+          "candidate_ids": [
+            "L45-001"
+          ],
+          "seconds": 35,
+          "beats": [
+            {
+              "seconds": 19,
+              "new_information": "並排兩塊格向不同的巢脾，問原本的六角排列直直往前會在哪裡撞上。"
+            },
+            {
+              "seconds": 16,
+              "new_information": "用未印底紋的巢脾照片為據，重繪每格的一條邊：接近的小角度可由數排逐漸轉向。"
+            }
+          ],
+          "new_information": "並排兩塊格向不同的巢脾，問原本的六角排列直直往前會在哪裡撞上。 用未印底紋的巢脾照片為據，重繪每格的一條邊：接近的小角度可由數排逐漸轉向。"
+        },
+        {
+          "title": "看角度對不上時的接縫",
+          "candidate_ids": [
+            "L45-001"
+          ],
+          "seconds": 37,
+          "beats": [
+            {
+              "seconds": 14,
+              "new_information": "比較兩側方向差更大的接縫，非六角格占得更多。"
+            },
+            {
+              "seconds": 23,
+              "new_information": "在另一張不規則格分布圖圈出常相鄰的五邊和七邊，再回到前面的接合區辨認。"
+            }
+          ],
+          "new_information": "比較兩側方向差更大的接縫，非六角格占得更多。 在另一張不規則格分布圖圈出常相鄰的五邊和七邊，再回到前面的接合區辨認。"
+        }
+      ],
+      "drop_if": "若看不出相接兩片原來的方向差或不能分五／七邊格，撤案；刪一章剩37或35秒。",
+      "evidence_gaps": "不是每一格都成對；幾何頻率是觀察，沒有逐隻量規劃能力。",
+      "boredom_risk": "各章交付一個可以看見結果的條件差異；若沒有對照就刪或撤。",
+      "timing_basis": "根代理完整三段連讀63.900秒，72秒留8.100秒供看格向及數接縫的邊。"
+    },
+    {
+      "id": "W45L-T02",
+      "title": "白蟻丘沒有風扇，外側土肋裡的風怎麼過一夜就反著吹？",
+      "core_question": "巢內代謝發熱能解釋日夜的方向變化嗎？",
+      "connection": "同處的時間對照再接廢丘，檢查是否需要活白蟻持續供熱。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L45-002"
+      ],
+      "target_minutes": 1.05,
+      "range_minutes": [
+        1.05,
+        1.05
+      ],
+      "body_seconds": 63,
+      "chapters": [
+        {
+          "title": "同一條外側土肋通道，白天與晚上",
+          "candidate_ids": [
+            "L45-002"
+          ],
+          "seconds": 34,
+          "beats": [
+            {
+              "seconds": 17,
+              "new_information": "在剖面圈出靠外薄肋和靠裡厚中心，標出白天兩區實測溫差。"
+            },
+            {
+              "seconds": 17,
+              "new_information": "夜裡薄肋先降溫，外側氣速的方向反轉；閉環的回程以虛線畫在中心。"
+            }
+          ],
+          "new_information": "在剖面圈出靠外薄肋和靠裡厚中心，標出白天兩區實測溫差。 夜裡薄肋先降溫，外側氣速的方向反轉；閉環的回程以虛線畫在中心。"
+        },
+        {
+          "title": "居民搬走，風會不會停？",
+          "candidate_ids": [
+            "L45-002"
+          ],
+          "seconds": 29,
+          "beats": [
+            {
+              "seconds": 14,
+              "new_information": "換成研究中一座棄用丘：肋中仍有日夜同向轉變，夜間幅度與活丘不同。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "對照活丘內的氣體濃度時序，解釋何以結構加日夜溫差能驅動巢內循環。"
+            }
+          ],
+          "new_information": "換成研究中一座棄用丘：肋中仍有日夜同向轉變，夜間幅度與活丘不同。 對照活丘內的氣體濃度時序，解釋何以結構加日夜溫差能驅動巢內循環。"
+        }
+      ],
+      "drop_if": "若只有白天圖或不能區分氣速實測和中心回流，就撤案；分章剩29或34秒。",
+      "evidence_gaps": "濃度是所測位置、時間的記錄，不泛推換氣量。",
+      "boredom_risk": "各章交付一個可以看見結果的條件差異；若沒有對照就刪或撤。",
+      "timing_basis": "含開場回扣，紙上預算未試讀。"
+    },
+    {
+      "id": "W45L-T03",
+      "title": "螞蟻怎麼讓水別進巢？已經進去的水又怎麼送走？",
+      "core_question": "水在上方與水已進巢，兩種棲地各有什麼可驗證的處理？",
+      "connection": "先預防打開一條水路，再重設成竹節中已經淹水的另一物種，問沒有排水管時怎麼搬水。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L45-004",
+        "L45-006"
+      ],
+      "target_minutes": 1.1833333333333333,
+      "range_minutes": [
+        1.1833333333333333,
+        1.1833333333333333
+      ],
+      "body_seconds": 71,
+      "chapters": [
+        {
+          "title": "表面有水時，往上挖的巢道停在哪？",
+          "candidate_ids": [
+            "L45-004"
+          ],
+          "seconds": 36,
+          "beats": [
+            {
+              "seconds": 17,
+              "new_information": "切葉蟻從兩根黏土柱底部向上施工，一根表面積水，另一根沒有。"
+            },
+            {
+              "seconds": 19,
+              "new_information": "有表面積水時隧道停在下方。另給均勻濕土，較濕的土仍可挖：單一停挖濕度難以解釋。圖註標明，沿路變濕是研究者提出的線索。"
+            }
+          ],
+          "new_information": "切葉蟻從兩根黏土柱底部向上施工，一根表面積水，另一根沒有。 有表面積水時隧道停在下方。另給均勻濕土，較濕的土仍可挖：單一停挖濕度難以解釋。圖註標明，沿路變濕是研究者提出的線索。"
+        },
+        {
+          "title": "換到竹節，水已經進去了",
+          "candidate_ids": [
+            "L45-006"
+          ],
+          "seconds": 35,
+          "beats": [
+            {
+              "seconds": 18,
+              "new_information": "另一種蟻在封閉竹節中遇到注水。工蟻先飲水，再移到外側從腹端排滴。"
+            },
+            {
+              "seconds": 17,
+              "new_information": "記下外排滴開始的時刻，再對照延後才檢出的染色訊號；排水經過身體，圖上別畫成由嘴原樣吐回。"
+            }
+          ],
+          "new_information": "另一種蟻在封閉竹節中遇到注水。工蟻先飲水，再移到外側從腹端排滴。 記下外排滴開始的時刻，再對照延後才檢出的染色訊號；排水經過身體，圖上別畫成由嘴原樣吐回。"
+        }
+      ],
+      "drop_if": "缺兩種不同棲地／實驗標籤就拆回36與35秒。若看不清水是從哪端排出，竹節段暫緩。",
+      "evidence_gaps": "兩項研究及物種明確切換；不拼成同一巢洪水前後的連續紀錄。",
+      "boredom_risk": "各章交付一個可以看見結果的條件差異；若沒有對照就刪或撤。",
+      "timing_basis": "含開場回扣，紙上預算未試讀。"
+    },
+    {
+      "id": "W45L-T04",
+      "title": "巢口泥塔有時留好幾個孔，工蟻施工時是對風還是氣體成分有反應？",
+      "core_question": "工蟻是在不同條件下建出不同開孔數，還是開孔只跟風與乾濕走？",
+      "connection": "以外形相似的土塔為起點；分開呼吸氣體與出風、濕度的控制。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L45-003"
+      ],
+      "target_minutes": 0.95,
+      "range_minutes": [
+        0.95,
+        0.95
+      ],
+      "body_seconds": 57,
+      "chapters": [
+        {
+          "title": "人工管口不改，先換風與水氣",
+          "candidate_ids": [
+            "L45-003"
+          ],
+          "seconds": 28,
+          "beats": [
+            {
+              "seconds": 14,
+              "new_information": "讓工蟻造塔，在不同出口氣流與濕度的處理下看建好後留幾個洞。"
+            },
+            {
+              "seconds": 14,
+              "new_information": "單改這組條件沒有明顯孔數差，轉而換出風的成分。"
+            }
+          ],
+          "new_information": "讓工蟻造塔，在不同出口氣流與濕度的處理下看建好後留幾個洞。 單改這組條件沒有明顯孔數差，轉而換出風的成分。"
+        },
+        {
+          "title": "同樣是出風口，換裡面的二氧化碳",
+          "candidate_ids": [
+            "L45-003"
+          ],
+          "seconds": 29,
+          "beats": [
+            {
+              "seconds": 16,
+              "new_information": "在較高濃度條件，常多出幾個小開口。標孔的個數，不以最寬單孔代替。"
+            },
+            {
+              "seconds": 13,
+              "new_information": "縮小內外差異，多孔反應仍在，局部濃度能引出另一種造塔形式。"
+            }
+          ],
+          "new_information": "在較高濃度條件，常多出幾個小開口。標孔的個數，不以最寬單孔代替。 縮小內外差異，多孔反應仍在，局部濃度能引出另一種造塔形式。"
+        }
+      ],
+      "drop_if": "缺風濕度對照或氣體條件就撤案；拆章剩29或28秒。",
+      "evidence_gaps": "這個試驗沒有拿一座自然蟻巢量改造前後的排氣量。",
+      "boredom_risk": "各章交付一個可以看見結果的條件差異；若沒有對照就刪或撤。",
+      "timing_basis": "含開場回扣，紙上預算未試讀。"
+    },
+    {
+      "id": "W45L-T05",
+      "title": "一團倒掛的蜜蜂被晃來晃去，怎麼會自己攤寬？",
+      "core_question": "只要晃就會攤開，還是方向有差？",
+      "connection": "同裝置的方向對照後才提出局部應變規則。",
+      "priority": "候選企劃",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "L45-007"
+      ],
+      "target_minutes": 0.9666666666666667,
+      "range_minutes": [
+        0.9666666666666667,
+        0.9666666666666667
+      ],
+      "body_seconds": 58,
+      "chapters": [
+        {
+          "title": "把搖板箭頭轉九十度",
+          "candidate_ids": [
+            "L45-007"
+          ],
+          "seconds": 29,
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "水平搖使蜂團逐漸變寬。另在垂直搖晃條件，外形沒有相同的變化。"
+            },
+            {
+              "seconds": 14,
+              "new_information": "追蹤表面蜜蜂的路徑，橫搖時整體有向上移動的趨勢。"
+            }
+          ],
+          "new_information": "水平搖使蜂團逐漸變寬。另在垂直搖晃條件，外形沒有相同的變化。 追蹤表面蜜蜂的路徑，橫搖時整體有向上移動的趨勢。"
+        },
+        {
+          "title": "寬度改變之後，再受一次力",
+          "candidate_ids": [
+            "L45-007"
+          ],
+          "seconds": 29,
+          "beats": [
+            {
+              "seconds": 16,
+              "new_information": "模型顯示橫搖時不同位置拉伸不一，讓個體往局部拉得較大的區域移動可重現外形。"
+            },
+            {
+              "seconds": 13,
+              "new_information": "比較攤寬前後受橫向負載時的形變；末圖把模型色階和實際蜂團輪廓分開。"
+            }
+          ],
+          "new_information": "模型顯示橫搖時不同位置拉伸不一，讓個體往局部拉得較大的區域移動可重現外形。 比較攤寬前後受橫向負載時的形變；末圖把模型色階和實際蜂團輪廓分開。"
+        }
+      ],
+      "drop_if": "沒有橫／直兩條件或沒有標明模型屬性就撤；分段各29秒。",
+      "evidence_gaps": "是暫棲活蜂團，不把應變圖假充單蜂受器量測。",
+      "boredom_risk": "各章交付一個可以看見結果的條件差異；若沒有對照就刪或撤。",
+      "timing_basis": "含開場回扣，紙上預算未試讀。"
+    }
+  ]
+}

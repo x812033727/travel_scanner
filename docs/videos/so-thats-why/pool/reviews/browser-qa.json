@@ -1,0 +1,30 @@
+{
+  "tested_on": "2026-11-01",
+  "result": "PASS",
+  "checks": [
+    "1000 selected reported, 50 initial cards",
+    "pagination 50 to 100",
+    "core ID lookup L097, original alias N098 resolves to same card",
+    "candidate source locator visible",
+    "theme G01 filter matches selected IDs",
+    "390px mobile without horizontal overflow",
+    "local navigation targets exist",
+    "no browser JavaScript errors"
+  ],
+  "screenshots": [
+    "qa-source-desktop.png",
+    "qa-mobile.png",
+    "qa-desktop.png"
+  ],
+  "viewport_mobile": [
+    390,
+    844
+  ],
+  "viewport_desktop": [
+    1440,
+    1000
+  ],
+  "final_rebuild_verified": true,
+  "additional_check": "Revised L259 TZID question visible",
+  "index_html_sha256": "e425e28ccc42e990ac03e78f130ddb81fb6cb30e45a8f5569a691563a54881ea"
+}

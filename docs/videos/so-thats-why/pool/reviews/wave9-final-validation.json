@@ -1,0 +1,368 @@
+{
+  "tested_on": "2026-11-01T13:21:32.592Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3115,
+    "canonical_questions": 2986,
+    "eligible_candidates": 2816,
+    "selected_candidates": 2757,
+    "alias_records": 129,
+    "historical_records": 313,
+    "source_urls": 4076,
+    "current_research_source_urls": 1115,
+    "selected_source_urls": 2308,
+    "new_suggestions_not_added": 444,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 98,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2711",
+    "carried": 2711,
+    "added": 46,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "44d1742cb3df9b414f885a9993db9a817cc2c7c2b7b94bf9d7cff891fef40e33",
+    "writes": 6101,
+    "selected": 2757
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "44d1742cb3df9b414f885a9993db9a817cc2c7c2b7b94bf9d7cff891fef40e33",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://www.jstage.jst.go.jp/article/jtappij/63/11/63_11_1362/_pdf",
+    "core": "Q9002",
+    "theme": "G89",
+    "theme_ids": [
+      "G89"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4143,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 3247.5725,
+    "index_ms": 2643.4506999999994,
+    "unchanged_index_ms": 197.71550000000025,
+    "searches": [
+      {
+        "query": "紙",
+        "returned": 25,
+        "milliseconds": 10.408400000000256
+      },
+      {
+        "query": "聲",
+        "returned": 30,
+        "milliseconds": 2.201100000000224
+      },
+      {
+        "query": "種",
+        "returned": 30,
+        "milliseconds": 0.7223000000012689
+      }
+    ],
+    "rss_bytes": 416153600,
+    "sqlite_bytes": 42733568
+  },
+  "dedup_audit": {
+    "selection": "Every final wave9 new-core proposal merge; nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "5d3c3ba007095f44cc50196de3270e1c9008c46d9347567efcd5735e6b537e69",
+    "records": 3115,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.381
+  },
+  "hashes": {
+    "pool.json": "5d3c3ba007095f44cc50196de3270e1c9008c46d9347567efcd5735e6b537e69",
+    "themes.json": "2b91aa9472fe34cfb5fa060276e1a4e4d84e536943565f0495eaf23e2e99f036",
+    "manifest.json": "5be95ea480bac54596f614b7388375f3446a3233c114413132297e9ba5c37fbc",
+    "index.html": "a1b0a43f4c6732f7924ad629d0e66952cf7cff8630b200ede0d251d34358f0bd",
+    "treatments/G79/treatment.json": "ec6f7e80ccaa7c5781178d6cb72a1151987fb361630614814179b68f308c58f6",
+    "treatments/G79/narration-draft.json": "84e42a012238f352bcb681b0e2354b049a4e146ce80218848d28088a1e660ac6",
+    "batches/wave9-acoustics.json": "bd184137dcf336337213a6769b6cc0235251eeacb58b2eb840a98ff860572a93",
+    "batches/wave9-paper.json": "b67dfadf119c4cf02d68b7c2a96dfa0ae2cda9fe01b3443269d6bf57eb5118fb",
+    "batches/wave9-seeds.json": "fe4510e2a9f0fe4616a1a63b02adde70625c8e3dd1e83e7bf896bc6d0133ea28"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3069,
+    "old_raw_changed": 0,
+    "old_selected_retained": 2711,
+    "old_themes_retained_unchanged": 87,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only aliases, question variants, source refs and provenance from reviewed merges; old factual fields unchanged.",
+    "old_theme_change": {
+      "id": "G79",
+      "previous_seconds": 140,
+      "current_seconds": 85,
+      "same_cores": true,
+      "new_core_count": 0
+    }
+  },
+  "g79": {
+    "complete_text_draft": true,
+    "characters": 279,
+    "body_budget_seconds": 85,
+    "read_aloud": false,
+    "new_pool_candidates": 0,
+    "source_theme_relation": [
+      "G79"
+    ]
+  },
+  "tests": {
+    "node": {
+      "passed": 38,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 100329.452,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "5872ba278093219ce15ac5f4d8d8b6364c6d3987fdbf3e7392122d992e5ccee8"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "4ea35901dba90efbb6d536a0a994ed2d02afc483503244a35d308220109c3406"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "187568fdfc26ffb680c5eb68d3d6b0064e5ad5a78bc6b87296366716ff6d3229",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 276,
+    "output_and_theme_blobs": 7,
+    "additional_g79_blobs": 4,
+    "checked_actual_git_index": true
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 2870,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G79",
+        "core": "F8001",
+        "seconds": 55,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G79",
+        "core": "F8003",
+        "seconds": 30,
+        "maximum": 40,
+        "variant_budget": null
+      },
+      {
+        "theme": "G89",
+        "core": "Q9002",
+        "seconds": 90,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G89",
+        "core": "Q9003",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G90",
+        "core": "Q9006",
+        "seconds": 40,
+        "maximum": 45,
+        "variant_budget": null
+      },
+      {
+        "theme": "G90",
+        "core": "Q9007",
+        "seconds": 100,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G91",
+        "core": "Q9001",
+        "seconds": 110,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G92",
+        "core": "D9006",
+        "seconds": 70,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G92",
+        "core": "D9007",
+        "seconds": 95,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G93",
+        "core": "D9002",
+        "seconds": 70,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G93",
+        "core": "D9003",
+        "seconds": 65,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G93",
+        "core": "D9004",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G94",
+        "core": "D9009",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G94",
+        "core": "D9010",
+        "seconds": 65,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G94",
+        "core": "D9011",
+        "seconds": 80,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G95",
+        "core": "D9013",
+        "seconds": 95,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G95",
+        "core": "D9014",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G95",
+        "core": "D9015",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G96",
+        "core": "E9001",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G96",
+        "core": "E9002",
+        "seconds": 100,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G97",
+        "core": "E9004",
+        "seconds": 105,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G97",
+        "core": "E9005",
+        "seconds": 105,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G98",
+        "core": "E9012",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G98",
+        "core": "E9019",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_final_readback": {
+    "file": "reviews/wave9-final-independent-readback.json",
+    "sha256": "874d09f792d2fcd2367940fad8b8cfefb845000c1e71d17794c9bfd6d6e34f9b",
+    "stable_artifact_hashes_verified_by_root": 29,
+    "all_bound_files_including_history_and_cache_verified_by_root": 49,
+    "tests_subobject_hash_verified": true,
+    "findings": 0,
+    "scope": "Central data and editorial integration. Source author/reviewer independence and read limits remain in the receipt."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_ACTUAL_GIT_INDEX",
+    "text_blobs": 37,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "method": "Reuses the unchanged CHECKS and findings function from tools/repo-hygiene.test.mjs; scans every changed staged docs/tasks/ops text blob, with no allowlist. Supplemental check for files written after the full test started.",
+    "scope": "Supplemental pass over late-written staged text after full 38-test run; same scan rerun after this receipt is staged."
+  }
+}

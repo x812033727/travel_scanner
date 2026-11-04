@@ -1,0 +1,651 @@
+{
+  "batch_id": "wave10-flows-20261101",
+  "created_on": "2026-11-01",
+  "scope": "流場、顆粒分選與堵塞、容器幾何、黏性液絲及輸運；16個題級候選，非操作、腳本或製作核准。",
+  "sources": [
+    {
+      "id": "F10-S001",
+      "url": "https://www.jsme-fed.org/experiment-e/2012_4/002.html",
+      "title": "Collecting Tea Leaves",
+      "publisher": "Japan Society of Mechanical Engineers, Fluids Engineering Division",
+      "accessed_on": "2026-11-01",
+      "version": "頁面更新2013-09-07",
+      "read_via": "web.open正文",
+      "reading_scope": "Experimental procedure and explanation，五個解釋段",
+      "locator": "Experimental procedure and explanation，五個解釋段",
+      "summary": "杯底減速使徑向壓力與旋轉不再平衡，形成向內二次流。",
+      "limitations": "讀正文未看嵌入影片；不把旋轉座標中的離心力當成額外真實外力。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10672922/",
+      "title": "Thomson–Einstein’s Tea Leaf Paradox Revisited: Aggregation in Rings",
+      "publisher": "Kolesnik et al. / Micromachines；PMC原論文副本",
+      "accessed_on": "2026-11-01",
+      "version": "2023；14(11):2024",
+      "read_via": "web.open讀Introduction與Methods至3.1；續頁captcha後，以當日公開urllib HTML讀3.1–3.3",
+      "reading_scope": "§1；§2.1、2.3、2.4；§3.1–3.3及Figs.1–5圖說",
+      "locator": "§1；§2.1、2.3、2.4；§3.1–3.3及Figs.1–5圖說",
+      "summary": "停止轉動後，底部流、重力與接觸摩擦共同決定顆粒停留位置。",
+      "limitations": "僅採受控轉杯後停止的實驗，不等同任意湯匙攪拌；原文concave/convex正負標法前後不一致，企劃只寫沿底往中心上坡的幾何；不採疑似排印錯誤的密度公式，也不把有限Re的球形近似稱精確。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S003",
+      "url": "https://pubs.rsc.org/en/content/articlehtml/2025/sm/d5sm00523j",
+      "title": "Janssen effect in submerged granular columns",
+      "publisher": "Aguilar-González, Maza and Pacheco-Vázquez / Soft Matter",
+      "accessed_on": "2026-11-01",
+      "version": "2025；21:6234–6242；2025-07-10首刊",
+      "read_via": "canonical HTML與PDF先403；web.open同頁?page=search公開正文成功",
+      "reading_scope": "§1；§2.1 Experimental setup；§2.2 Results；§2.3開頭分解液體與顆粒應力段",
+      "locator": "§1；§2.1 Experimental setup；§2.2 Results；§2.3開頭分解液體與顆粒應力段",
+      "summary": "側壁分擔顆粒載荷；浸水測值還須分離水位上升的靜水壓。",
+      "limitations": "只採已讀沉降柱範圍，不採上浮柱與後段機制；2.2高度數字疑似排印錯誤，未引用；頁面CC BY-NC，僅連結與原創摘要。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S004",
+      "url": "https://arxiv.org/html/2411.11264v1",
+      "title": "Facilitating a 3D granular flow with an obstruction",
+      "publisher": "Sinha et al. / TIFR and University of Massachusetts Amherst，arXiv作者稿",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv v1，提交2024-11-18；HTML內另印2026-08-24，日期不當作改版證據",
+      "read_via": "web.open HTML正文；另開abs頁核v1歷史",
+      "reading_scope": "Flow geometry and grains；Obstacle geometry；Measurements；Figs.2–5前後、幾何機制段；Appendix C Clamping conditions",
+      "locator": "Flow geometry and grains；Obstacle geometry；Measurements；Figs.2–5前後、幾何機制段；Appendix C Clamping conditions",
+      "summary": "障礙物可把最可能形成的拱移到失去支撐的擴張位置。",
+      "limitations": "預印本；只主張此玻璃珠/球形模擬幾何，最優位置數字不外推；不採文中一處把flow duration誤稱clog duration的敘述。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S005",
+      "url": "https://www.nature.com/articles/s42005-021-00756-4",
+      "title": "On the dual effect of obstacles in preventing silo clogging in 2D",
+      "publisher": "Gella et al. / Communications Physics",
+      "accessed_on": "2026-11-01",
+      "version": "2021；DOI 10.1038/s42005-021-00756-4",
+      "read_via": "web.open重導失敗；當日公開urllib取得HTML正文，文字暫存僅.cache",
+      "reading_scope": "Results and discussion：Clogging、Dynamics、接觸fabric tensor段；Conclusions；Methods/Experimental setup",
+      "locator": "Results and discussion：Clogging、Dynamics、接觸fabric tensor段；Conclusions；Methods/Experimental setup",
+      "summary": "二維抽料研究區分快速碰撞擾動與準靜態接觸方向改變。",
+      "limitations": "接觸方向到受力/穩定性的論證含作者推論；不可把2D機制當3D所有料斗的唯一答案。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S006",
+      "url": "https://arxiv.org/pdf/cond-mat/0601179",
+      "title": "Mechanisms in the size segregation of a binary granular mixture",
+      "publisher": "Schröter et al. / University of Texas at Austin，arXiv作者稿",
+      "accessed_on": "2026-11-01",
+      "version": "v3，2006-12-07；文內排版日期2018-04-09",
+      "read_via": "web.open PDF文字；web.find定位後實讀結論",
+      "reading_scope": "PDF pp.1–3：§II A.1、II B、II C.2；pp.11–13 Fig.11–12與§VII Conclusions",
+      "locator": "PDF pp.1–3：§II A.1、II B、II C.2；pp.11–13 Fig.11–12與§VII Conclusions",
+      "summary": "同材質雙粒徑系統中，填隙、壁面對流及顆粒動能梯度可競爭。",
+      "limitations": "不是全15頁逐式查核；低氣壓黃銅球實驗，不能直接宣布真實堅果或所有粉末都同規律；顆粒溫度不是熱力學溫度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S007",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7422868/",
+      "title": "Geometric mixing",
+      "publisher": "Arrieta et al. / Philosophical Transactions of the Royal Society A；PMC原論文副本",
+      "accessed_on": "2026-11-01",
+      "version": "2020",
+      "read_via": "當日公開urllib HTML正文",
+      "reading_scope": "§1 The geometric phase and mixing；§4 Geometric phase in the journal-bearing flow及Figs.1–3；§5四步映射順序",
+      "locator": "§1 The geometric phase and mixing；§4 Geometric phase in the journal-bearing flow及Figs.1–3；§5四步映射順序",
+      "summary": "低Re往返可還原流線；兩個不交換的邊界動作循環可留下淨位移。",
+      "limitations": "未復現模擬、未採後段生理延伸；示蹤軌跡拉伸不等於分子擴散可逆，亦非所有非互易攪拌都混得均勻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S008",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/pre2000-11.pdf",
+      "title": "Fluid rope trick investigated，含作者Correction",
+      "publisher": "Mahadevan, Ryu and Samuel / Nature；Harvard作者PDF",
+      "accessed_on": "2026-11-01",
+      "version": "1998原文＋2000更正",
+      "read_via": "web.open PDF文字，兩頁指定文章與更正均讀",
+      "reading_scope": "PDF p.1 Fluid rope trick investigated；p.2 Correction（不採旁邊其他文章）",
+      "locator": "PDF p.1 Fluid rope trick investigated；p.2 Correction（不採旁邊其他文章）",
+      "summary": "受軸向壓縮的黏性細流可彎曲盤繞，不需先凝固成繩。",
+      "limitations": "原文頻率尺度律已更正；本題不用舊冪次，也不把慣性主導的遠離起始條件當所有盤繞的通則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S009",
+      "url": "https://arxiv.org/pdf/1410.5382",
+      "title": "Liquid ropes: a geometrical model for thin viscous jet instabilities",
+      "publisher": "Brun et al. / CNRS、EPFL、MIT、Cambridge，arXiv作者稿",
+      "accessed_on": "2026-11-01",
+      "version": "v1，2014-10-20",
+      "read_via": "web.open PDF文字",
+      "reading_scope": "PDF pp.1–2，Fig.1–2及Uc、V與heel區域的正文",
+      "locator": "PDF pp.1–2，Fig.1–2及Uc、V與heel區域的正文",
+      "summary": "接觸點的彎曲運動可容納落流供應速度與帶面速度的差額。",
+      "limitations": "採去除慣性的數值比較與幾何機制；未讀全5頁，也未重現真實輸送帶；不將每個花紋另算核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S010",
+      "url": "https://web.mit.edu/1.061/www/dream/EIGHT/EIGHTTHEORY.PDF",
+      "title": "8. Shear Dispersion",
+      "publisher": "MIT 1.061 course material",
+      "accessed_on": "2026-11-01",
+      "version": "公開講義未列明修訂日；當日版本",
+      "read_via": "web.open PDF文字",
+      "reading_scope": "pp.1–2 Fig.1；pp.5–7橫向擴散與Fickian限制；p.8 Dead-zone Dispersion/Fig.4",
+      "locator": "pp.1–2 Fig.1；pp.5–7橫向擴散與Fickian限制；p.8 Dead-zone Dispersion/Fig.4",
+      "summary": "流速差與跨流線交換造成展寬；停滯區暫存可留下長尾。",
+      "limitations": "未驗每一步推導；只採可見對照與所列時間尺度限制，不從此講義推出特定污染或水質安全結論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S011",
+      "url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/magma_chambers.pdf",
+      "title": "The Boycott effect in magma chambers",
+      "publisher": "Blanchette, Peacock and Bush / Geophysical Research Letters；MIT作者PDF",
+      "accessed_on": "2026-11-01",
+      "version": "2004；31:L05611",
+      "read_via": "出版商403後，web.open MIT公開作者PDF",
+      "reading_scope": "PDF p.2（printed 2 of 4）[6]及§2 The Boycott Effect [7]–[8]起段；同頁Figs.1–2圖說",
+      "locator": "PDF p.2（printed 2 of 4）[6]及§2 The Boycott Effect [7]–[8]起段；同頁Figs.1–2圖說",
+      "summary": "斜壁附近顆粒沉離後形成較輕清液，上升回流可加快澄清。",
+      "limitations": "只採稀懸浮液的基本機制與實驗圖說；岩漿成層是論文提出的合理性研究，不在本題主張已確證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F10-S012",
+      "url": "https://ocw.mit.edu/courses/1-060-engineering-mechanics-ii-spring-2006/cd065e9eda29389eb05981ad1388895c_lecture27.pdf",
+      "title": "Lecture 27: Momentum principle for open channels and hydraulic jump",
+      "publisher": "MIT OpenCourseWare / Gonzalez-Rodriguez and Madsen",
+      "accessed_on": "2026-11-01",
+      "version": "Spring 2006",
+      "read_via": "web.click官方PDF無文字；當日urllib取公開PDF，以PyMuPDF渲染後view_image實讀手寫頁",
+      "reading_scope": "PDF p.3 Momentum-Depth Diagram；p.4 The Unassisted (Free) Hydraulic Jump；p.5 The Assisted Hydraulic Jump",
+      "locator": "PDF p.3 Momentum-Depth Diagram；p.4 The Unassisted (Free) Hydraulic Jump；p.5 The Assisted Hydraulic Jump",
+      "summary": "自由水躍的前後深度需符合質量、動量及能量耗散方向。",
+      "limitations": "只讀pp.3–5；不提供水工設計或接近急流的操作；另查Cambridge講義只得目錄與搜尋摘錄、續頁timeout/SSL失敗，未採其正文。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "F10001",
+      "question": "水明明繞著杯子轉，杯底茶葉為什麼卻往中心集合？",
+      "domain": "physics",
+      "mechanism_key": "flows.rotating_boundary_layer_secondary_inflow",
+      "answer_target": "杯底摩擦使旋轉較慢，而徑向壓力梯度仍在，產生沿底向內的二次流。",
+      "scope": "停止攪動後、較重且已在底部的顆粒；不推論漂浮葉片或任意轉速。",
+      "source_ids": [
+        "F10-S001",
+        "F10-S002"
+      ],
+      "source_locator": "S001 Experimental procedure；S002 §1及Fig.1",
+      "premise_status": "screened",
+      "notes": "來源直接例子；模型用原創剖面箭頭，未實拍。與P072急彎亂流不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "從俯視繞圈改看剖面，可分清沿圓周與向中心兩種流。",
+        "visual": "同一杯標示上層/杯底的旋轉速度，再疊徑向壓力與回流。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "F10002",
+      "question": "同樣轉過再停下，為什麼有些杯底留下茶葉圈，沒有全聚到中心？",
+      "domain": "physics",
+      "mechanism_key": "flows.sloped_base_particle_friction_stagnation",
+      "answer_target": "沿底向內的拖曳須克服坡向重力與接觸摩擦，衰減時可在中途停住。",
+      "scope": "限論文沿底往中心上坡的受控容器和不易滾動茶葉；非蒸發咖啡環。",
+      "source_ids": [
+        "F10-S002"
+      ],
+      "source_locator": "§2.3式19；§3.1–3.3、Figs.2、4",
+      "premise_status": "screened",
+      "notes": "來源直接例子；形狀正負標記採原創剖面，不沿用正文混用的concave/convex詞。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見水向內流，不代表顆粒一定走到終點。",
+        "visual": "保持初始轉速，並排平底與往中心上坡底；顆粒力箭頭在停滯處比較。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    },
+    {
+      "id": "F10003",
+      "question": "往高筒裡繼續倒顆粒，筒底承受的力為什麼可能幾乎不再增加？",
+      "domain": "physics",
+      "mechanism_key": "granular.janssen_wall_supported_load",
+      "answer_target": "顆粒接觸把部分垂直載荷傳向側壁，壁面摩擦分擔重量，底部負荷可趨飽和。",
+      "scope": "支壁與底座分開量測的顆粒柱；不是整個容器連同顆粒放磅秤後總重不增。",
+      "source_ids": [
+        "F10-S003"
+      ],
+      "source_locator": "§1；§2.1及§2.3式3前後",
+      "premise_status": "screened",
+      "notes": "來源直接模型；壁/底分開的量測圖必備，避免把側壁支撐漏畫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清底部承載和整套裝置的總重量。",
+        "visual": "同一加料高度，對照底部與側壁承擔的兩條力帳。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "F10004",
+      "question": "顆粒泡進水後，筒底讀數一直增加，就代表側壁不再分擔重量嗎？",
+      "domain": "physics",
+      "mechanism_key": "granular.submerged_load_hydrostatic_superposition",
+      "answer_target": "水位升高帶來靜水壓增量，可疊在趨飽和的顆粒接觸負荷上，掩蓋側壁分擔。",
+      "scope": "限論文沉降顆粒、可變/固定水位對照；量測基準與支壁固定條件須相同。",
+      "source_ids": [
+        "F10-S003"
+      ],
+      "source_locator": "§2.1 VLL/CLL；§2.2 Fig.2；§2.3開頭",
+      "premise_status": "screened",
+      "notes": "來源直接實驗；與F10003共用壁面支撐，但新增可分離的液體負荷測量條件，交非作者判是否併例。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用控制水位，辨別曲線上兩種負荷。",
+        "visual": "可變水位與等水位兩圖疊讀數；拆出液體與顆粒兩條線。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "F10005",
+      "question": "料斗出口已經很窄，放一根細桿在上方為什麼有時反而更不容易堵？",
+      "domain": "physics",
+      "mechanism_key": "granular.obstacle_diverging_gap_arch_support_loss",
+      "answer_target": "合適位置可讓堵塞拱出現在往下變寬的間隙，稍向下移就失去支撐；放太低也會堵。",
+      "scope": "限3D球粒料斗原研究幾何；不推廣為人群疏散或所有粉末通用方法。",
+      "source_ids": [
+        "F10-S004",
+        "F10-S005"
+      ],
+      "source_locator": "S004 Figs.2–5及幾何解釋段；S005 Conclusions作邊界",
+      "premise_status": "screened",
+      "notes": "來源直接例子；3D預印本結論與2D已刊研究的動力/接觸取向說法並存，不以減壓或碰撞單因包辦；不拆各桿徑/高度成新題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "關鍵不是空隙越大越好，而是拱能否在下一步繼續獲支撐。",
+        "visual": "同一料斗的高/合適/低桿位；框出拱端支點與下移後失去的接點。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "F10006",
+      "question": "同材質大小珠子一起搖，大珠子比較重，為什麼仍可能跑到上面？",
+      "domain": "physics",
+      "mechanism_key": "granular.size_segregation_void_filling",
+      "answer_target": "輕度振動張開空隙後，小珠較易落進下方空位，反覆壓實造成尺寸分選。",
+      "scope": "限同材質、低氣壓顆粒實驗的填隙區間；不把氣流、不同密度與真實堅果形狀全部忽略。",
+      "source_ids": [
+        "F10-S006"
+      ],
+      "source_locator": "§II A.1 Void filling；§VII結論(1)",
+      "premise_status": "screened",
+      "notes": "來源直接黃銅球案例；不以更換米/豆/堅果各算一題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "重不代表沉，先看下方有沒有容得下的空位。",
+        "visual": "放大相同膨鬆/壓實一輪；讓小球下落，追蹤大球相對高度。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "F10007",
+      "question": "大珠子被整群帶上去，為什麼不一定能跟著旁邊的小珠子回到底部？",
+      "domain": "physics",
+      "mechanism_key": "granular.sidewall_convection_return_layer_size_exclusion",
+      "answer_target": "壁面摩擦形成中心上升、貼壁下降的顆粒循環；下降層太窄時，大粒回不去而留在頂部。",
+      "scope": "限來源的垂直振動與壁面條件；下降層能容納大粒時可循環混合。",
+      "source_ids": [
+        "F10-S006"
+      ],
+      "source_locator": "§II B Convection；Fig.11–12；§VII結論(2)",
+      "premise_status": "screened",
+      "notes": "來源直接條件；與F10006填隙不同，可用追蹤整條粒子路徑分辨；與D2048氣流支撐不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "找到回程瓶頸，比只看哪顆上升更能辨別機制。",
+        "visual": "同一中心上升/壁邊下降流；比較大球可進與不可進下降層。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    },
+    {
+      "id": "F10008",
+      "question": "同一批大小珠子，為什麼搖得更激烈時，大珠子反而可能沉到下面？",
+      "domain": "physics",
+      "mechanism_key": "granular.temperature_gradient_thermal_segregation",
+      "answer_target": "強振動稀疏層中，顆粒隨機動能的空間梯度可使大粒聚向低動能區，勝過原本向上分選。",
+      "scope": "限低氣壓同材質淺黃銅球層；顆粒溫度是隨機動能指標，非摸起來的溫度，也非所有強搖都反轉。",
+      "source_ids": [
+        "F10-S006"
+      ],
+      "source_locator": "§II C.2 Diffusion in a granular temperature gradient；§VII結論(3)",
+      "premise_status": "screened",
+      "notes": "來源研究的機制解釋；不將所有RBNE歸為此因；只保留有速度散布圖能說清的段落。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "改變搖動不是把同一上升規則加速，可能換成另一主導過程。",
+        "visual": "同一容器弱/強振動；用箭頭長度散布標低動能區與大粒分布。",
+        "seconds": [
+          50,
+          85
+        ]
+      }
+    },
+    {
+      "id": "F10009",
+      "question": "一滴色料被慢慢攪得看不見，反方向轉回去，為什麼有時又能聚成一滴？",
+      "domain": "physics",
+      "mechanism_key": "flows.stokes_kinematic_reversibility",
+      "answer_target": "慣性可忽略時，精確倒轉邊界運動可使流動軌跡反走；先前只是被拉成細紋，分子擴散不會因此倒轉。",
+      "scope": "低Re牛頓流體、短時間擴散小、相同路徑反轉；不推廣到一般咖啡攪拌。",
+      "source_ids": [
+        "F10-S007"
+      ],
+      "source_locator": "§1 The geometric phase and mixing",
+      "premise_status": "screened",
+      "notes": "來源直接原理；色料由點變細紋的圖為原創情境示意，未做實驗。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "肉眼像混勻，不代表已分子尺度均勻。",
+        "visual": "同心筒慢轉：色斑拉長後精確逆轉；旁列擴散已發生時不能完全回復。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "F10010",
+      "question": "兩個攪拌筒各自轉出去又轉回來，為什麼水中的標記還是回不了原位？",
+      "domain": "physics",
+      "mechanism_key": "flows.noncommuting_boundary_cycles_geometric_mixing",
+      "answer_target": "偏心雙筒依A、B、反A、反B操作，不等於按原路倒帶；不同流線映射不能交換，循環可留下淨位移與拉伸。",
+      "scope": "限來源Stokes雙筒模型；真正倒帶為反B、反A，不能把任何往返都稱不可逆。",
+      "source_ids": [
+        "F10-S007"
+      ],
+      "source_locator": "§4 Figs.1–3；§5四步映射",
+      "premise_status": "screened",
+      "notes": "來源直接模型；必顯示偏心與操作順序，未復現數值；避免泛稱反熵或永久完美混合。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "每個把手回到原位，並不保證內部流體也回原位。",
+        "visual": "同一偏心雙筒分屏，對照AB反B反A與AB反A反B的同一示蹤點。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "F10011",
+      "question": "細細的蜂蜜落到表面，為什麼會盤成圈，而不是只堆成一條直線？",
+      "domain": "physics",
+      "mechanism_key": "flows.viscous_thread_compressive_buckling",
+      "answer_target": "落流到表面受阻形成軸向壓縮，細長黏性液柱可透過彎曲失穩盤繞，無需固體彈性繩。",
+      "scope": "蜂蜜是來源生活入口，實驗是高黏矽油；限細長連續黏性流，非任意水柱或已凝固外殼。",
+      "source_ids": [
+        "F10-S008",
+        "F10-S009"
+      ],
+      "source_locator": "S008 p.1開頭及p.2更正；S009 p.1及p.2尾端heel段",
+      "premise_status": "screened",
+      "notes": "來源直接例子；不引用已更正的舊頻率冪次。與E7017熔岩表殼皺裂、H3090聚合物鬆弛不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "液體也會因受壓來不及直排而改走彎路。",
+        "visual": "同一細流從上方拉伸區切到表面受壓彎曲區，標示流體持續流過。",
+        "seconds": [
+          50,
+          85
+        ]
+      }
+    },
+    {
+      "id": "F10012",
+      "question": "接住細液流的平面慢慢移快，圈圈為什麼會變成波浪，最後接近直線？",
+      "domain": "physics",
+      "mechanism_key": "flows.viscous_thread_belt_speed_mismatch",
+      "answer_target": "落流供應的長度與帶面移走的長度不匹配時，接觸點需彎曲游移來容納差額；速度比改變花紋。",
+      "scope": "限來源忽略慣性的牛頓液絲模型與其速度區間；不把所有花紋說成慣性共振。",
+      "source_ids": [
+        "F10-S009"
+      ],
+      "source_locator": "PDF pp.1–2 Fig.1–2；Uc/V與無滑移式1前後",
+      "premise_status": "screened",
+      "notes": "來源直接模型；多種花紋留同一核心，不各算一題；未拍攝或重現。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂花紋是供料與帶走速度的配合，而非多個不同振動器。",
+        "visual": "同一流量與落高，逐改帶速；疊接觸點軌跡與沉積線，展示兩者不等同。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "F10013",
+      "question": "一小段染色水進入直管，沒有明顯亂流，為什麼還會被拖成長長一段？",
+      "domain": "physics",
+      "mechanism_key": "flows.shear_dispersion_cross_stream_exchange",
+      "answer_target": "截面不同流速先拉長色帶，跨流線擴散又改變各部分經歷的速度，造成沿流向展寬。",
+      "scope": "理想剪切流示意；長時間有效擴散近似需跨截面交換時間，不從剛入管就套高斯分布。",
+      "source_ids": [
+        "F10-S010"
+      ],
+      "source_locator": "pp.1–2 Fig.1；pp.5–7橫向擴散與長時間限制",
+      "premise_status": "screened",
+      "notes": "來源講義的水道圖延伸為原創直管情境，進稿需固定管型速度剖面；側向擴散更快可能減小剪切展寬留在同核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "平均流速相同，仍不保證一群色料一起抵達。",
+        "visual": "並排均速與中心快/壁邊慢兩圖，再讓同一標記跨到不同流線。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "F10014",
+      "question": "一波染色水大多已經流走，為什麼下游還會慢慢收到淡淡的尾巴？",
+      "domain": "physics",
+      "mechanism_key": "flows.dead_zone_exchange_delayed_release",
+      "answer_target": "部分示蹤物先擴散進低流速側區，停留後返回主流；不同停留時間形成延遲尾端。",
+      "scope": "非反應性示蹤物、少數停滯區且停留時間大於主團通過時間；不是化學吸附或新增污染來源。",
+      "source_ids": [
+        "F10-S010"
+      ],
+      "source_locator": "p.8 Dead-zone Dispersion，Fig.4及後兩段",
+      "premise_status": "screened",
+      "notes": "來源直接側池/死端孔例子；與D2169降低水齡的迴路設計近似，交非作者判是否合併；本題只採可見釋放尾形增量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "晚到的色料可來自先前暫存，無需假設入口仍在加色。",
+        "visual": "同一脈衝分出進側池與留主流兩色軌跡，關閉入口後畫濃度長尾。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "F10015",
+      "question": "同一管混濁液，斜放時為什麼可能比直放更快出現清澈區？",
+      "domain": "physics",
+      "mechanism_key": "flows.boycott_inclined_wall_clear_layer_return_flow",
+      "answer_target": "顆粒沉離傾斜上壁，留下較輕清液沿壁上升，形成額外循環與澄清通道。",
+      "scope": "稀且低粒子Re懸浮液；不推論每種泥漿或凝聚懸浮物皆加快，也不以重力變大解釋。",
+      "source_ids": [
+        "F10-S011"
+      ],
+      "source_locator": "PDF p.2（printed 2 of 4）[6]；§2 [7]與Fig.1",
+      "premise_status": "screened",
+      "notes": "來源直接機制；不是W5018單位表面積流量，也不是W5019顆粒彼此阻礙。實驗圖重繪需固定濃度與液柱幾何。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "傾斜改變了清液回程，不是改變地球重力。",
+        "visual": "直立與斜壁並排；斜壁下方先畫粒子離開，再畫清液沿壁上行。",
+        "seconds": [
+          50,
+          85
+        ]
+      }
+    },
+    {
+      "id": "F10016",
+      "question": "水流沒有碰到台階，為什麼仍會突然從淺而快變成深而慢？",
+      "domain": "physics",
+      "mechanism_key": "flows.hydraulic_jump_conjugate_depth_and_dissipation",
+      "answer_target": "開放水道可由超臨界流轉為亞臨界流，前後深度受流量與動量關係約束，轉換耗散機械能。",
+      "scope": "限近水平、固定截面自由水躍的教學模型；不是所有水面高低差都叫水躍，不提供水工操作。",
+      "source_ids": [
+        "F10-S012"
+      ],
+      "source_locator": "PDF pp.3–4 conjugate depths與free hydraulic jump；p.5僅作有外力時的界線",
+      "premise_status": "screened",
+      "notes": "來源直接教學圖；不把總能量說成消失，不以無損伯努力式算跳前後；與R8006淺水波變速不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有地形階梯，也能有流態階梯；倒著接卻不能無中生有增加機械能。",
+        "visual": "固定流量的薄快/厚慢兩段，標跳區與機械能耗散；反向模型加叉。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "F10-NA01",
+      "question": "咖啡乾後為什麼形成外圈？",
+      "existing_id": "H3092",
+      "reason": "固定接觸線蒸發補流已入庫；不因茶葉也能成環而混為同機制。"
+    },
+    {
+      "id": "F10-NA02",
+      "question": "水通過窄處為什麼變快？",
+      "existing_id": "P058",
+      "reason": "管道截面縮小而流速增加的直接舊核是P058連續性；P062靜壓下降屬相關伯努力條件，不能代替本題定位。換容器不新增。"
+    },
+    {
+      "id": "F10-NA03",
+      "question": "為什麼吸水紙能把水帶高？",
+      "existing_id": "P057",
+      "reason": "已有毛細與孔隙問題，未新增機制。"
+    },
+    {
+      "id": "F10-NA04",
+      "question": "粉末被氣吹得翻滾，怎麼像液體？",
+      "existing_id": "D2048",
+      "reason": "流化床上升氣流支撐已存在。"
+    },
+    {
+      "id": "F10-NA05",
+      "question": "顆粒更多為什麼沉得慢？",
+      "existing_id": "W5019",
+      "reason": "阻礙沉降核心已存在。"
+    },
+    {
+      "id": "F10-NA06",
+      "question": "巧克力或玉米粉漿為什麼會卡住？",
+      "existing_id": "F8001",
+      "reason": "摩擦接觸卡住已有核心；不以換食品重算，且本批避開食品/界面化學。"
+    },
+    {
+      "id": "F10-NA07",
+      "question": "液滴噴出後為什麼斷成一串？",
+      "existing_id": "Q9005",
+      "reason": "已有液柱毛細失穩，不用換噴嘴重新計數。"
+    },
+    {
+      "id": "F10-NA08",
+      "question": "障礙物抑堵是因為撞開顆粒，還是改變接觸方向？",
+      "existing_id": "F10005",
+      "source_ids": [
+        "F10-S005"
+      ],
+      "reason": "保留2D抽料條件作F10005機制邊界；不將同障礙抑堵的每個模型獨立計數。"
+    },
+    {
+      "id": "F10-NA09",
+      "question": "杯底改斜度或初始轉速，茶葉圈會多大？",
+      "existing_id": "F10002",
+      "source_ids": [
+        "F10-S002"
+      ],
+      "reason": "仍是拖曳、重力、摩擦停滯的參數變化，併同題。"
+    },
+    {
+      "id": "F10-NA10",
+      "question": "液絲的每一種圈圈和W形是不同原理嗎？",
+      "existing_id": "F10012",
+      "source_ids": [
+        "F10-S009"
+      ],
+      "reason": "同一速度與幾何框架的多種形態，不按花紋數量造題。"
+    },
+    {
+      "id": "F10-NA11",
+      "question": "真實巴西堅果要先站起來才會上升嗎？",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8055975/",
+      "reason": "原研究只取得搜尋摘要，web與當日HTTP皆captcha；形狀機制未實讀正文，暫不加入。"
+    },
+    {
+      "id": "F10-NA12",
+      "question": "顆粒柱中的浮球也會把浮力傳給側壁嗎？",
+      "source_ids": [
+        "F10-S003"
+      ],
+      "reason": "本輪未讀該文上浮柱後段正文；不能從摘要把此條件當已查候選。"
+    },
+    {
+      "id": "F10-NA13",
+      "question": "流體逆轉不成功，就一定產生亂流嗎？",
+      "existing_id": "F10009",
+      "source_ids": [
+        "F10-S007"
+      ],
+      "reason": "分子擴散與操作誤差的界線已包含，不拆一句反例。"
+    },
+    {
+      "id": "F10-NA14",
+      "question": "水躍能用來消能嗎？",
+      "existing_id": "F10016",
+      "source_ids": [
+        "F10-S012"
+      ],
+      "reason": "同一機械能耗散的用途，不另計功能型薄題。"
+    }
+  ]
+}

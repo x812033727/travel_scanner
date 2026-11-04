@@ -1,0 +1,756 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "pool_physics",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "P26001",
+    "P26002",
+    "P26003"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave26-physics.json",
+      "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+    },
+    {
+      "file": "reviews/wave26-physics-author.json",
+      "sha256": "71a3bb465900b9f91ea30acb7db8b346dc28b526bf5d550fe9fde3417b9d787d"
+    },
+    {
+      "file": "reviews/wave26-physics-themes.json",
+      "sha256": "da2225d59ea9cd50d2a6f2882bc772cbbfb415d80b66c036bbe55509f7184ec5"
+    }
+  ],
+  "scope": "逐題讀問題/答案/條件/editorial，完整作者近對、共同top5、全部未收與題案；3份原研究指定正文獨立核SHA讀。不是全池人工去重、整篇逐式重現或完整稿/媒體核准。",
+  "counts": {
+    "candidates": 3,
+    "sources_read_at_specified_scope": 3,
+    "fresh_http_sources": 0,
+    "figures_or_scanned_pages_viewed": 5,
+    "author_pairs": 12,
+    "directed_top5": 15,
+    "not_added": 13,
+    "themes": 3,
+    "retained_new_core_candidates": 3,
+    "merges": 0,
+    "excluded": 0
+  },
+  "source_readings": [
+    {
+      "source_id": "P26-S001",
+      "url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+      "version": "2023-10-13正式版；DTU副本有1頁封面，PDF頁碼比印刷頁多1；arXiv2305.00812為同工作，不另算研究。",
+      "read_via": "核SHA作者PDF抽文及原頁目讀，非fresh HTTP",
+      "reading_scope": "PDF pp4–5 §III A/B；pp9–15 §§IV/V A–D/VI；目讀p5觀察畫面、p13 Fig6",
+      "cache": {
+        "file": ".cache/wave26-physics-magnet.pdf",
+        "sha256": "6efa86a06df8d0050b5d2ace905cada9de043ca31bad8f0d8a6998ae95f8a89d",
+        "text_file": ".cache/wave26-physics-magnet.txt",
+        "text_sha256": "71df7ddf34c75057ff861495d8d553abb1c2ed5f4898de6cee6f8954dee9d16a"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-physics-magnet-p5.png",
+          "sha256": "9d5d559ed3f5b74e0cb3931781bca991b9aa9f208dc241f51946c734cb3b5ac6",
+          "read_scope": "PDF5/印刷4：觀察圖與極向標記"
+        },
+        {
+          "file": ".cache/wave26-physics-magnet-p13.png",
+          "sha256": "a5e1d83ea2f86b2dad52b8a2a75c2df760fa1b104922c287efc5f56e226f5411",
+          "read_scope": "PDF13/印刷12：Fig6各動力狀態與力曲線"
+        }
+      ],
+      "finding": "實測磁矩近垂直及同步進動；固定位置模型的距離—取向—吸排競爭提供回復。定常場分量重要，不把渦流單獨當托力。",
+      "limits": "模型Fig6固定位置與自由運動不同；阻尼模型只能定性重現部分趨勢，實物去鋁板後有限時間。未看影片/SI，未重算模擬或逐式驗證。",
+      "fresh_http": false,
+      "failures": "本覆核未重抓外站；作者web/UA失敗僅視為作者路線紀錄，不稱覆核者成功。"
+    },
+    {
+      "source_id": "P26-S002",
+      "url": "https://lab.semi.ac.cn/library/upload/files/2019/10/219314543.pdf",
+      "version": "2019-10-11正式版PDF，機構網站所存2019下載副本；NSF/PubMed是同篇的另載體/索引。",
+      "read_via": "核SHA作者PDF抽文及原頁目讀，非fresh HTTP",
+      "reading_scope": "PDF pp1–3天然橡膠正文；p5 heterochiral fibers段及NiTi材料邊界；目讀p2 Fig1F",
+      "cache": {
+        "file": ".cache/wave26-physics-twist.pdf",
+        "sha256": "0e2ace224e5e9adfaaaeab4088da266099705ed3414b1efb1ce85ece58cdd8da",
+        "text_file": ".cache/wave26-physics-twist.txt",
+        "text_sha256": "4c3f6bdb6b50ee14b0487a97e99c968612524506c01bdfc94b863caa277ccab6"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-physics-twist-p2.png",
+          "sha256": "6f4a584bfbad5d363d2c28c85aeafa4e120d1bf5e7da09f75810847b1bffdfa2",
+          "read_scope": "PDF2 Fig1F的同/異手性伸縮熱反號；同頁Fig1A–E僅背景"
+        }
+      ],
+      "finding": "p5直接給同手性拉伸增扭、異手性解扭，Fig1F冷熱反號支持限定題級答案。",
+      "limits": "天然橡膠異手性測量保留芯棒；相同spring index/快速表面溫變，不拿NiTi相變或整機效率代替答案。未看SI/附片。",
+      "fresh_http": false,
+      "failures": "本覆核未重抓外站；作者web/UA失敗僅視為作者路線紀錄，不稱覆核者成功。"
+    },
+    {
+      "source_id": "P26-S003",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645",
+      "version": "2013-11-13正式HTML；PMC3827250為同篇另載體，不另算研究。",
+      "read_via": "核SHA作者PLOS HTML/抽文；另以標準HTMLParser整理正文；原圖2/6目讀，非fresh HTTP",
+      "reading_scope": "Results A physical demonstration、A mathematical model、Passive dynamics的能量交換段、Maximizing energy transfer至Fig6及其限制；Methods Table-top demonstration",
+      "cache": {
+        "file": ".cache/wave26-physics-trampoline.html",
+        "sha256": "49aa84d226bdcfd20fb51c3ff5076df90353560333bf4a2ecd9151cc1e1bce45",
+        "text_file": ".cache/wave26-physics-trampoline.txt",
+        "text_sha256": "a7f7cdca7e533a6217e7ab5cd68c4507feb3a43880e0aae88f15f25249cb2b86"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-physics-trampoline-fig2.png",
+          "sha256": "61495baf3b1887e77e46c5884f4332ce79937038598e4962b8793bbe22c7403c",
+          "read_scope": "兩球接觸與離床序列"
+        },
+        {
+          "file": ".cache/wave26-physics-trampoline-fig6.png",
+          "sha256": "4fa7677f2e8233b474bc18524083c1f6be1335cc9e26f12a00627eef810a149a",
+          "read_scope": "有無第二球的瞬時支承力對照"
+        }
+      ],
+      "finding": "原文及Fig2支持後接觸球可較高，Fig6固定瞬時位置時另一球減少上升球受力/正功；不誇大成全過程均如此。",
+      "limits": "球序列是未嚴格控制的示範，Fig5等初能量為模型；Fig6只瞬時啟發式。未讀完整博弈推導、未看影片/SI，無真人操作建議。",
+      "fresh_http": false,
+      "failures": "本覆核未重抓外站；作者web/UA失敗僅視為作者路線紀錄，不稱覆核者成功。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P26001",
+      "decision": "retain",
+      "canonical_id": null,
+      "reason": "驅動磁矩取向隨距離改變吸排競爭，補上一般磁場/動態穩定舊題沒有的中段。",
+      "scope_check": "定常場+旋轉場模型、取向進動/球體轉動區分，有限實物穩定",
+      "editorial_check": "實測取向→固定位置模型力箭頭→穩定條件，105秒。",
+      "source_ids": [
+        "P26-S001"
+      ],
+      "source_locator": "印刷p4 §III A；pp8–9 §IV；pp11–13 §V B–D/Fig6。"
+    },
+    {
+      "id": "P26002",
+      "decision": "retain",
+      "canonical_id": null,
+      "reason": "內扭與外圈手性控制相同拉伸的熱響應反號，超越普通橡膠回彈。",
+      "scope_check": "天然橡膠指定試件、保芯棒、相同spring index；表面溫變非效率",
+      "editorial_check": "兩尺度扭向→拉伸增/解扭→放回符號反轉，95秒。",
+      "source_ids": [
+        "P26-S002"
+      ],
+      "source_locator": "PDF p2 Fig1F；p5 Twistocaloric cooling by stretching heterochiral fibers。"
+    },
+    {
+      "id": "P26003",
+      "decision": "retain",
+      "canonical_id": null,
+      "reason": "共同彈性支承與接觸重疊時序改變另一球可獲的功，不是只說守恆。",
+      "scope_check": "等質量/等初能量模型與不嚴格控制球示範分層；Fig6瞬時",
+      "editorial_check": "球序列→重疊時間→瞬時支承受力→離床能量帳，105秒。",
+      "source_ids": [
+        "P26-S003"
+      ],
+      "source_locator": "Results A physical demonstration、A mathematical model、Maximizing energy transfer；Fig2、Fig5a、Fig6；Methods Table-top demonstration。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P26001",
+      "b": "E2134",
+      "decision": "distinct",
+      "reason": "P26001驅動既有永久磁矩取向；E2134靜態反向誘導磁矩的抗磁。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26001",
+      "b": "E2146",
+      "decision": "distinct",
+      "reason": "P26001的磁偶極回復力不等於渦流耗能煞車；E2146只處理磁通變化下的反作用阻尼。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26001",
+      "b": "F17005",
+      "decision": "distinct",
+      "reason": "同屬動態穩定但P26001須磁矩同步取向和定常場/旋轉場配合；F17005垂直振動對浮體偏離產生有效回復，物理中段不同。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26001",
+      "b": "W16005",
+      "decision": "distinct",
+      "reason": "P26001取向隨驅動及距離改變；W16005聲壓/速度梯度與材料形成小球聲輻射陷阱。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26001",
+      "b": "K18004",
+      "decision": "distinct",
+      "reason": "P26001不接觸桌面，由外場驅動磁矩；K18004桌面滑動摩擦力矩重新分配偏心陀螺旋轉能。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26002",
+      "b": "H3026",
+      "decision": "distinct",
+      "reason": "H3026解釋橡膠回彈不永久流走；P26002需內外扭向對照才能預測同伸長時熱或冷。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26002",
+      "b": "M16001",
+      "decision": "distinct",
+      "reason": "P26002天然橡膠的扭轉幾何，不用NiTi相變；M16001馬氏體/奧氏體熱恢復。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26002",
+      "b": "P294",
+      "decision": "distinct",
+      "reason": "P294區分彈性與線性；P26002比較同樣伸長下熱響應反號，非可回復性定義。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26003",
+      "b": "P173",
+      "decision": "distinct",
+      "reason": "P26003兩球受支承外力且需床的能量帳；P173短碰撞兩車近封閉系統的動量轉移。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26003",
+      "b": "P019",
+      "decision": "distinct",
+      "reason": "P26003末速度隨共同接觸時差改變；P019固定相同初末動量比較衝量時間，不足以預測能量分配。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26003",
+      "b": "P112",
+      "decision": "distinct",
+      "reason": "P26003被動體共享支承分配能量，沒有外部周期推力；P112相位配合把外界功逐次輸入。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "P26003",
+      "b": "A12009",
+      "decision": "distinct",
+      "reason": "P26003同一支承瞬時幾何耦合；A12009上游渦流傳播時間與魚擺尾相位配合。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P26001",
+      "b": "E2141",
+      "cosine": 0.826621,
+      "decision": "distinct",
+      "reason": "P26001永久磁矩的驅動取向與距離回復；E2141閉路感應場抵抗磁通變化，不提供這個取向回復機制。"
+    },
+    {
+      "a": "P26001",
+      "b": "P315",
+      "cosine": 0.822771,
+      "decision": "distinct",
+      "reason": "P26001指定動態取向可形成回復區間；P315磁擺初始條件敏感性，未解該旋轉場與恆定場的結合。"
+    },
+    {
+      "a": "P26001",
+      "b": "E2106",
+      "cosine": 0.813151,
+      "decision": "distinct",
+      "reason": "P26001磁偶極力矩及轉動慣性；E2106單電荷速度與磁場叉積為零的條件。"
+    },
+    {
+      "a": "P26001",
+      "b": "E2139",
+      "cosine": 0.804143,
+      "decision": "distinct",
+      "reason": "P26001外加旋轉場穩住磁矩；E2139閉路投影面積變化產生感應電動勢。"
+    },
+    {
+      "a": "P26001",
+      "b": "E2148",
+      "cosine": 0.800624,
+      "decision": "distinct",
+      "reason": "阻尼可協助P26001進入狀態，但回復取向需旋轉/恆定場；E2148只有低速阻尼隨速度消失。"
+    },
+    {
+      "a": "P26002",
+      "b": "P076",
+      "cosine": 0.749055,
+      "decision": "distinct",
+      "reason": "P26002拉伸透過內外扭向改變冷熱符號；P076先加熱後由不同膨脹係數彎曲。"
+    },
+    {
+      "a": "P26002",
+      "b": "G13005",
+      "cosine": 0.745476,
+      "decision": "distinct",
+      "reason": "P26002手性幾何讓同一拉伸加扭或解扭；G13005熱循環差異膨脹剪動顆粒，產生不可逆下沉。"
+    },
+    {
+      "a": "P26002",
+      "b": "P092",
+      "cosine": 0.738833,
+      "decision": "distinct",
+      "reason": "P26002機械變形的熱響應反號；P092熱傳導路徑長度改變熱阻。"
+    },
+    {
+      "a": "P26002",
+      "b": "D2174",
+      "cosine": 0.708662,
+      "decision": "distinct",
+      "reason": "P26002可逆扭轉熱響應；D2174摩擦發熱、塑性流動排除表面層形成接合。"
+    },
+    {
+      "a": "P26002",
+      "b": "E2071",
+      "cosine": 0.700643,
+      "decision": "distinct",
+      "reason": "P26002是纖維內扭與外圈的幾何條件；E2071電源固定電流/電壓改變焦耳功率。"
+    },
+    {
+      "a": "P26003",
+      "b": "P018",
+      "cosine": 0.74084,
+      "decision": "distinct",
+      "reason": "P26003另一球改變支承受力與末速度；P018在相同來球動量下延長停止時間降低平均力。"
+    },
+    {
+      "a": "P26003",
+      "b": "G13007",
+      "cosine": 0.737104,
+      "decision": "distinct",
+      "reason": "P26003兩球共享彈性支承互作；G13007顆粒床空氣壓力梯度使埋球與床加速度不同。"
+    },
+    {
+      "a": "P26003",
+      "b": "P019",
+      "cosine": 0.732729,
+      "decision": "distinct",
+      "reason": "P26003末速度隨共同接觸時差改變；P019固定相同初末動量比較衝量時間，不足以預測能量分配。"
+    },
+    {
+      "a": "P26003",
+      "b": "I12003",
+      "cosine": 0.711486,
+      "decision": "distinct",
+      "reason": "P26003動態共享彈性支承與接觸重疊；I12003浮物靜態液面形變的毛細/重力能量偏好。"
+    },
+    {
+      "a": "P26003",
+      "b": "A23002",
+      "cosine": 0.691309,
+      "decision": "distinct",
+      "reason": "P26003兩質量藉共同支承交換原有能量；A23002液滴自身回彈與驅動彈片配相，需液滴/彈片兩尺度控制，非同一受力圖。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P26001",
+        "b": "E2141",
+        "reason": "P26001永久磁矩的驅動取向與距離回復；E2141閉路感應場抵抗磁通變化，不提供這個取向回復機制。"
+      },
+      {
+        "a": "P26001",
+        "b": "P315",
+        "reason": "P26001指定動態取向可形成回復區間；P315磁擺初始條件敏感性，未解該旋轉場與恆定場的結合。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2106",
+        "reason": "P26001磁偶極力矩及轉動慣性；E2106單電荷速度與磁場叉積為零的條件。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2139",
+        "reason": "P26001外加旋轉場穩住磁矩；E2139閉路投影面積變化產生感應電動勢。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2148",
+        "reason": "阻尼可協助P26001進入狀態，但回復取向需旋轉/恆定場；E2148只有低速阻尼隨速度消失。"
+      },
+      {
+        "a": "P26002",
+        "b": "P076",
+        "reason": "P26002拉伸透過內外扭向改變冷熱符號；P076先加熱後由不同膨脹係數彎曲。"
+      },
+      {
+        "a": "P26002",
+        "b": "G13005",
+        "reason": "P26002手性幾何讓同一拉伸加扭或解扭；G13005熱循環差異膨脹剪動顆粒，產生不可逆下沉。"
+      },
+      {
+        "a": "P26002",
+        "b": "P092",
+        "reason": "P26002機械變形的熱響應反號；P092熱傳導路徑長度改變熱阻。"
+      },
+      {
+        "a": "P26002",
+        "b": "D2174",
+        "reason": "P26002可逆扭轉熱響應；D2174摩擦發熱、塑性流動排除表面層形成接合。"
+      },
+      {
+        "a": "P26002",
+        "b": "E2071",
+        "reason": "P26002是纖維內扭與外圈的幾何條件；E2071電源固定電流/電壓改變焦耳功率。"
+      },
+      {
+        "a": "P26003",
+        "b": "P018",
+        "reason": "P26003另一球改變支承受力與末速度；P018在相同來球動量下延長停止時間降低平均力。"
+      },
+      {
+        "a": "P26003",
+        "b": "G13007",
+        "reason": "P26003兩球共享彈性支承互作；G13007顆粒床空氣壓力梯度使埋球與床加速度不同。"
+      },
+      {
+        "a": "P26003",
+        "b": "P019",
+        "reason": "P26003末速度隨共同接觸時差改變；P019固定相同初末動量比較衝量時間，不足以預測能量分配。"
+      },
+      {
+        "a": "P26003",
+        "b": "I12003",
+        "reason": "P26003動態共享彈性支承與接觸重疊；I12003浮物靜態液面形變的毛細/重力能量偏好。"
+      },
+      {
+        "a": "P26003",
+        "b": "A23002",
+        "reason": "P26003兩質量藉共同支承交換原有能量；A23002液滴自身回彈與驅動彈片配相，需液滴/彈片兩尺度控制，非同一受力圖。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2134",
+        "reason": "P26001驅動既有永久磁矩取向；E2134靜態反向誘導磁矩的抗磁。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2146",
+        "reason": "P26001的磁偶極回復力不等於渦流耗能煞車；E2146只處理磁通變化下的反作用阻尼。"
+      },
+      {
+        "a": "P26001",
+        "b": "F17005",
+        "reason": "同屬動態穩定但P26001須磁矩同步取向和定常場/旋轉場配合；F17005垂直振動對浮體偏離產生有效回復，物理中段不同。"
+      },
+      {
+        "a": "P26001",
+        "b": "W16005",
+        "reason": "P26001取向隨驅動及距離改變；W16005聲壓/速度梯度與材料形成小球聲輻射陷阱。"
+      },
+      {
+        "a": "P26001",
+        "b": "K18004",
+        "reason": "P26001不接觸桌面，由外場驅動磁矩；K18004桌面滑動摩擦力矩重新分配偏心陀螺旋轉能。"
+      },
+      {
+        "a": "P26002",
+        "b": "H3026",
+        "reason": "H3026解釋橡膠回彈不永久流走；P26002需內外扭向對照才能預測同伸長時熱或冷。"
+      },
+      {
+        "a": "P26002",
+        "b": "M16001",
+        "reason": "P26002天然橡膠的扭轉幾何，不用NiTi相變；M16001馬氏體/奧氏體熱恢復。"
+      },
+      {
+        "a": "P26002",
+        "b": "P294",
+        "reason": "P294區分彈性與線性；P26002比較同樣伸長下熱響應反號，非可回復性定義。"
+      },
+      {
+        "a": "P26003",
+        "b": "P173",
+        "reason": "P26003兩球受支承外力且需床的能量帳；P173短碰撞兩車近封閉系統的動量轉移。"
+      },
+      {
+        "a": "P26003",
+        "b": "P112",
+        "reason": "P26003被動體共享支承分配能量，沒有外部周期推力；P112相位配合把外界功逐次輸入。"
+      },
+      {
+        "a": "P26003",
+        "b": "A12009",
+        "reason": "P26003同一支承瞬時幾何耦合；A12009上游渦流傳播時間與魚擺尾相位配合。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "P26-NA001",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P027",
+        "P028"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：已讀2018來源搜尋回傳的p733摘要/引言；水或球重分布增加慣量仍是舊核心。",
+      "reentry_condition": "須有超出質量重分布的新因果控制；目前只留生活例子。"
+    },
+    {
+      "id": "P26-NA002",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "K11013"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：舊題已有局部翻轉門檻與最大壓縮歷史，不換紙種。",
+      "reentry_condition": "另有非門檻歷史機制才重入。"
+    },
+    {
+      "id": "P26-NA003",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "F17005"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：舊動態穩定核心已在倒浮剛體題；只是換成擺。",
+      "reentry_condition": "需要不同於週期驅動穩定的控制。"
+    },
+    {
+      "id": "P26-NA004",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "O3004"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：相干散斑干涉已有，不換相機或雷射。",
+      "reentry_condition": "須有新訊息取得機制而非再說干涉。"
+    },
+    {
+      "id": "P26-NA005",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P173"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：只用兩次獨立碰撞與守恆的版本太薄；Cross/Bristol完整接觸研究本輪僅發現未讀。",
+      "reentry_condition": "另輪實讀有限接觸重疊/控制後再判，不採搜尋摘要補答案。"
+    },
+    {
+      "id": "P26-NA006",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P173"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：已有P24-NA011退題；一般動量能量故事仍不足。",
+      "reentry_condition": "接觸波/耗散造成不同結果需原文與控制後才重入。"
+    },
+    {
+      "id": "P26-NA007",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "H3026"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：交聯與鏈排列已收。",
+      "reentry_condition": "冷熱反號另有本批P26002控制；不再拆普通回彈。"
+    },
+    {
+      "id": "P26-NA008",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M16001"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：NiTi相態恢復已有；本輪讀扭冷文NiTi段不另拆相變題。",
+      "reentry_condition": "不同於原相態循環的因果控制才收。"
+    },
+    {
+      "id": "P26-NA009",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "E2146"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：渦流耗能與反作用已有，換銅管不增核心。",
+      "reentry_condition": "不同於磁通改變煞車的新作用才收。"
+    },
+    {
+      "id": "P26-NA010",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "E2134"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：靜態抗磁已有，不以浮起畫面換名。",
+      "reentry_condition": "需不同微觀/動態條件控制。"
+    },
+    {
+      "id": "P26-NA011",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "已讀退題理由及相關舊完整問答：同一旋轉磁矩機制的尺寸依賴，本批不拆成第二核心。",
+      "reentry_condition": "只有超出P26001的獨立控制答案才另立。"
+    },
+    {
+      "id": "P26-NA012",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "已讀退題理由及相關舊完整問答：材料冷卻幅度不等於整機效率/循環壽命；本輪未查完整工程條件。",
+      "reentry_condition": "需要實際全循環與能耗基準比較，現不作效益題。"
+    },
+    {
+      "id": "P26-NA013",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "已讀退題理由及相關舊完整問答：不採真人操作或博弈策略，紙上模型後半非本題所需。",
+      "reentry_condition": "若另有安全、獨立的行為控制研究再評估；目前只用球體被動交換。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W26P-T01",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        45,
+        60
+      ],
+      "candidate_seconds": {
+        "P26001": 105
+      },
+      "flow_check": "實測取向→固定位置模型力箭頭→穩定條件，105秒。",
+      "drop_condition_review": "已讀具體撤案/縮段條件；不補新物種/術語/背景以滿長度。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    },
+    {
+      "id": "W26P-T02",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 95,
+      "chapter_seconds": [
+        45,
+        50
+      ],
+      "candidate_seconds": {
+        "P26002": 95
+      },
+      "flow_check": "兩尺度扭向→拉伸增/解扭→放回符號反轉，95秒。",
+      "drop_condition_review": "已讀具體撤案/縮段條件；不補新物種/術語/背景以滿長度。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    },
+    {
+      "id": "W26P-T03",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "candidate_seconds": {
+        "P26003": 105
+      },
+      "flow_check": "球序列→重疊時間→瞬時支承受力→離床能量帳，105秒。",
+      "drop_condition_review": "已讀具體撤案/縮段條件；不補新物種/術語/背景以滿長度。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    }
+  ],
+  "source_identity_review": {
+    "method": "逐文版本/原頁身份與同文載體說明；讀當期exact scan作提示，無命中不代表獨立重複實驗。",
+    "sources": [
+      {
+        "source_id": "P26-S001",
+        "version": "2023-10-13正式版；DTU副本有1頁封面，PDF頁碼比印刷頁多1；arXiv2305.00812為同工作，不另算研究。",
+        "identity": "所採PDF/典藏或PMC版本不另算第二份獨立證據。"
+      },
+      {
+        "source_id": "P26-S002",
+        "version": "2019-10-11正式版PDF，機構網站所存2019下載副本；NSF/PubMed是同篇的另載體/索引。",
+        "identity": "所採PDF/典藏或PMC版本不另算第二份獨立證據。"
+      },
+      {
+        "source_id": "P26-S003",
+        "version": "2013-11-13正式HTML；PMC3827250為同篇另載體，不另算研究。",
+        "identity": "所採PDF/典藏或PMC版本不另算第二份獨立證據。"
+      }
+    ],
+    "source_identity_scan": {
+      "file": ".cache/wave26-source-identity-matches.json",
+      "sha256": "f6eda58783eed7a565f623ec6047928f31e194fa4114e7071fa88e9abc88d4c6"
+    }
+  },
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave26-physics.json",
+      "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+    },
+    {
+      "file": "reviews/wave26-physics-author.json",
+      "sha256": "71a3bb465900b9f91ea30acb7db8b346dc28b526bf5d550fe9fde3417b9d787d"
+    },
+    {
+      "file": "reviews/wave26-physics-themes.json",
+      "sha256": "da2225d59ea9cd50d2a6f2882bc772cbbfb415d80b66c036bbe55509f7184ec5"
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "PHYSICS01",
+      "finding": "Root編輯提出三案純追問/回扣合計20秒。",
+      "resolution": "本非作者已讀修後105/95/105，45+60、45+50、50+55；新對照保留，原版本雜湊由作者history保存。",
+      "status": "resolved"
+    }
+  ],
+  "retrieval": {
+    "draft_sha256": "bb9ba6b618db77d852b4a0505bf7384f41144b363b6989df426cc92c2c96f763",
+    "neighbours": {
+      "file": ".cache/wave26-physics-neighbours.json",
+      "sha256": "e57b4224f1f70b9735b25e01ee63afacb579a3ea33ec03d6b726df8eee03bbe5"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave26-draft.json",
+      "sha256": "a660a680cfd1e02db2792c85c636b0025358881e5b7f15b94b4d7e2625ca4254"
+    },
+    "initial_neighbours": {
+      "file": ".cache/wave26-physics-neighbours-common-initial.json",
+      "sha256": "bff494e26df8cc78abe72a6794ca342134c93538c509a85acf01fcb4a6ea406d"
+    },
+    "initial_draft_sha256": "101f7e92784c4bed396afc71a3a147af4153cf115f59bf37a4bee107c8181588",
+    "meaning": "semantic分數僅召回提示；15有向近對逐項按完整答案/條件判定。"
+  },
+  "final_input_check": {
+    "input_sha256": "bb9ba6b618db77d852b4a0505bf7384f41144b363b6989df426cc92c2c96f763",
+    "batch_sha256_matches": true,
+    "rows_equal_to_common_initial": true,
+    "directed_rows_checked": 15,
+    "author_written_files_match": true,
+    "note": "當期batch及兩作者文件綁定；比較common-initial與current完整rows，問答/條件/順序/分數皆一致。生命scope及分類/題案metadata變動不冒稱全draft位元組相同。"
+  },
+  "remaining_blockers": [],
+  "local_reading_note": "PLOS作者抽文含頁面腳本，覆核另用Python標準HTMLParser抽指定正文；bs4不可用未影響閱讀。公式圖像未由抽文猜測，Fig2/6另目讀。",
+  "prior_author_versions": [
+    {
+      "file": "batches/wave26-physics.json",
+      "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+    },
+    {
+      "file": "reviews/wave26-physics-themes.json",
+      "sha256": "d5f23c11af4ab7383add459957f7d7015187afe139ba89a0e3753e68266bfbc7"
+    },
+    {
+      "file": "reviews/wave26-physics-author.json",
+      "sha256": "d9e2dee586dea958b0ee947cd1663b37a6e4d521317033393a700a0ddb94131a"
+    }
+  ],
+  "initial_reading_note": "本非作者開始完整讀稿時已是105/95/105版；較早115/100/110三hash只保存作者修訂歷史，不聲稱本覆核者對舊版另做全文查核。"
+}

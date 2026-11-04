@@ -1,0 +1,182 @@
+{
+  "status": "AUTHOR_THEME_PROPOSALS",
+  "episodes": [
+    {
+      "id": "W5M-T01",
+      "title": "電腦只是在算顏色，畫面怎麼就變髒了？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "平均、透明混色與超界顏色轉換，為什麼看似合理的運算會改變畫面？",
+      "connection": "全片用同一張混色桌，每次只改光量表示、透明權重或可顯示範圍。",
+      "candidate_ids": [
+        "M5001",
+        "M5002",
+        "M5003"
+      ],
+      "target_minutes": 3.3333333333333335,
+      "body_seconds": 200,
+      "range_minutes": [
+        2.8333333333333335,
+        3.8333333333333335
+      ],
+      "chapters": [
+        {
+          "title": "同樣一半，先猜哪一格",
+          "seconds": 70,
+          "candidate_ids": [
+            "M5001"
+          ],
+          "new_information": "開場與黑白中點並排，先問一半的定義，再切換線性化。",
+          "beats_seconds": [
+            30,
+            40
+          ]
+        },
+        {
+          "title": "這次讓另一端看不見",
+          "seconds": 65,
+          "candidate_ids": [
+            "M5002"
+          ],
+          "new_information": "換成紅與透明黑，先顯示錯誤結果，再揭開alpha權重。",
+          "beats_seconds": [
+            30,
+            35
+          ]
+        },
+        {
+          "title": "這次算對，螢幕仍裝不下",
+          "seconds": 65,
+          "candidate_ids": [
+            "M5003"
+          ],
+          "new_information": "固定超界色，顯示裁切比例改變；最後回扣三個不同問題，包含收尾。",
+          "beats_seconds": [
+            30,
+            35
+          ]
+        }
+      ],
+      "boredom_risk": "若只念術語與規格表就失去觀察；每次先留預測，再揭露數值或畫面差異。",
+      "drop_if": "若色域示意無法在一般顯示器誠實呈現，刪第三章改135秒短版，重估工作範圍；不補色彩歷史。",
+      "evidence_gaps": "來源章節已讀，示範尚未製作或測量；需正確實作、獨立覆核與旁白試讀才能鎖片長。",
+      "timing_basis": "開場猜題與結尾回扣含在章內；單核心累積不超過素材預算。每25–40秒有新觀察。"
+    },
+    {
+      "id": "W5M-T02",
+      "title": "無損壓縮，為什麼敢先猜錯聲音？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "檔案變小時，哪些資訊仍足以原樣還原？",
+      "connection": "用同一張整數樣本工作桌，從時間預測改到左右變換，再看分塊成本；不是音質排行。",
+      "candidate_ids": [
+        "M5008",
+        "M5009",
+        "M5010"
+      ],
+      "target_minutes": 3.3333333333333335,
+      "body_seconds": 200,
+      "range_minutes": [
+        2.8333333333333335,
+        3.8333333333333335
+      ],
+      "chapters": [
+        {
+          "title": "故意猜錯，再補回",
+          "seconds": 70,
+          "candidate_ids": [
+            "M5008"
+          ],
+          "new_information": "開場挑戰原樣還原，揭開殘差；不得先播有損音效假裝FLAC。",
+          "beats_seconds": [
+            30,
+            40
+          ]
+        },
+        {
+          "title": "左右變成和與差",
+          "seconds": 70,
+          "candidate_ids": [
+            "M5009"
+          ],
+          "new_information": "先反解偶數和，再用奇數和揭露最低位如何恢復。",
+          "beats_seconds": [
+            35,
+            35
+          ]
+        },
+        {
+          "title": "為什麼不一直切更小",
+          "seconds": 60,
+          "candidate_ids": [
+            "M5010"
+          ],
+          "new_information": "對比穩定段和突變段，最後回扣表頭與模型成本；收尾已含。",
+          "beats_seconds": [
+            30,
+            30
+          ]
+        }
+      ],
+      "boredom_risk": "若只念術語與規格表就失去觀察；每次先留預測，再揭露數值或畫面差異。",
+      "drop_if": "若數值演示重複，刪分塊章成140秒；不湊格式沿革。",
+      "evidence_gaps": "自製1秒整數PCM以FFmpeg independent及mid-side編解碼已逐位元還原；只驗此訊號，不證明任意預測器、最佳壓縮設定、音質優劣或所有輸入。片中工作桌與分塊成本示範未製作，完整稿及試讀未完成。詳wave5-media-probe。",
+      "timing_basis": "開場猜題與結尾回扣含在章內；單核心累積不超過素材預算。每25–40秒有新觀察。"
+    },
+    {
+      "id": "W5M-T03",
+      "title": "最高音量一樣，為什麼還是忽大忽小？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "只對齊最高點或直接平均整段聲音，各會漏看什麼？",
+      "connection": "先用同峰值片段辨認時間能量與頻率權重，再用同一段聲音加靜默檢查整段量測門檻；不插入點間峰值的另一條問題。",
+      "candidate_ids": [
+        "M5017",
+        "M5019"
+      ],
+      "target_minutes": 2.25,
+      "body_seconds": 135,
+      "range_minutes": [
+        1.75,
+        2.75
+      ],
+      "chapters": [
+        {
+          "title": "最高點一樣的兩段聲音",
+          "seconds": 70,
+          "candidate_ids": [
+            "M5017"
+          ],
+          "new_information": "開場先比同峰值，揭示持續性與K頻率權重；量測模型和主觀聽感分開，不能退回只有RMS定義。",
+          "beats_seconds": [
+            30,
+            40
+          ]
+        },
+        {
+          "title": "多放安靜，話聲該變大嗎",
+          "seconds": 65,
+          "candidate_ids": [
+            "M5019"
+          ],
+          "new_information": "比較量測門檻前後，結尾保留播放時間軸說清沒剪音。",
+          "beats_seconds": [
+            30,
+            35
+          ]
+        }
+      ],
+      "boredom_risk": "若只念術語與規格表就失去觀察；每次先留預測，再揭露數值或畫面差異。",
+      "drop_if": "若K頻率權重與時間能量沒有可信示範，或靜默門檻只剩口號，暫緩整片並重寫；不加真峰值或格式沿革湊長。",
+      "evidence_gaps": "來源章節已讀，示範尚未製作或測量；需正確實作、獨立覆核與旁白試讀才能鎖片長。",
+      "timing_basis": "開場猜題與結尾回扣含在章內；單核心累積不超過素材預算。每25–40秒有新觀察。",
+      "revision_note": "獨立覆核後205→135秒；M5018真峰值留素材池，未合併或淘汰，但不推進這片核心問題。"
+    }
+  ]
+}

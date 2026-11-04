@@ -1,0 +1,417 @@
+{
+  "tested_on": "2026-11-02T10:30:44.660Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3502,
+    "canonical_questions": 3356,
+    "eligible_candidates": 3186,
+    "selected_candidates": 3127,
+    "alias_records": 146,
+    "historical_records": 313,
+    "source_urls": 4479,
+    "current_research_source_urls": 1520,
+    "selected_source_urls": 2700,
+    "new_suggestions_not_added": 1396,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 314,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3115",
+    "carried": 3115,
+    "added": 12,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "663762b28d2a959accbfe9dbfad28d6f6051530e249de136e15df1f16b633724",
+    "writes": 6858,
+    "selected": 3127
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "663762b28d2a959accbfe9dbfad28d6f6051530e249de136e15df1f16b633724",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4578,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 6779.6685,
+    "index_ms": 3587.228299999999,
+    "unchanged_index_ms": 341.4313000000002,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 14,
+        "milliseconds": 12.318199999997887
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 3.4457000000002154
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 3.9579000000012456
+      }
+    ],
+    "rss_bytes": 417861632,
+    "sqlite_bytes": 58228736
+  },
+  "dedup_audit": {
+    "selection": "Every final wave32 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "f49ccb0ece6cd560c1ed86d0b6476a65ba3b8b5707c1e7ef43378095cf8780a3",
+    "records": 3502,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.423
+  },
+  "hashes": {
+    "pool.json": "f49ccb0ece6cd560c1ed86d0b6476a65ba3b8b5707c1e7ef43378095cf8780a3",
+    "themes.json": "d05fbf16de5697841404fdd7d8cdf1f4fde212c8f360c273c4a5e69b80d0367f",
+    "manifest.json": "7504156c8b6315a44a9b4b312c4cec1e3ea66cbf8e54d2237ed1220c45092660",
+    "index.html": "55d6c8fa958acb1a124155f36e6bb9d8d16899e1f5fbb91004134e69e68926df",
+    "batches/wave32-compass.json": "d9c8041dc013c11b5ae022452d9d6dd3a37d9d85ebf7c533fd76fe5b5763fe3a",
+    "batches/wave32-seafloor.json": "74335ed5cd0b64a3f4764a79ab5145c9f67e63d5059b26e4d4ffeac6b3247c16"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3490,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3115,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 307,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4464,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://web.mnstate.edu/wisenden/AnBeh13%20Paper%205%20Dacke%20et%20al%202013.pdf",
+        "source_id": "SRC-fe88101dee1ed822",
+        "candidate_ids": [
+          "R32001"
+        ],
+        "theme_ids": [
+          "G308"
+        ]
+      },
+      {
+        "url": "https://portal.research.lu.se/en/publications/light-pollution-forces-a-change-in-dung-beetle-orientation-behavi/",
+        "source_id": "SRC-e916bce388fbccec",
+        "candidate_ids": [
+          "R32002"
+        ],
+        "theme_ids": [
+          "G308"
+        ]
+      },
+      {
+        "url": "https://www.lunduniversity.lu.se/article/artificial-light-disrupts-dung-beetles-sense-direction",
+        "source_id": "SRC-6ba32beaa32df249",
+        "candidate_ids": [
+          "R32002"
+        ],
+        "theme_ids": [
+          "G308"
+        ]
+      },
+      {
+        "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0030211&type=printable",
+        "source_id": "SRC-024a0259a6f3192c",
+        "candidate_ids": [
+          "R32003"
+        ],
+        "theme_ids": [
+          "G309"
+        ]
+      },
+      {
+        "url": "https://lucris.lub.lu.se/ws/portalfiles/portal/2307625/3132016.pdf",
+        "source_id": "SRC-34ec99d5b7ffcbab",
+        "candidate_ids": [
+          "R32004"
+        ],
+        "theme_ids": [
+          "G309"
+        ]
+      },
+      {
+        "url": "https://www.lunduniversity.lu.se/article/dung-beetles-use-wind-compass-when-sun-high",
+        "source_id": "SRC-6bb433cb068e4d82",
+        "candidate_ids": [
+          "R32005"
+        ],
+        "theme_ids": [
+          "G310"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1904308116",
+        "source_id": "SRC-f93c9fe7b3f1c2c4",
+        "candidate_ids": [
+          "R32005"
+        ],
+        "theme_ids": [
+          "G310"
+        ]
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27609893/",
+        "source_id": "SRC-c036e2d4379d3639",
+        "candidate_ids": [
+          "R32006"
+        ],
+        "theme_ids": [
+          "G311"
+        ]
+      },
+      {
+        "url": "https://www.uni-ulm.de/en/university-news/news-details/?cHash=d5524db91100ec96e30287af2b9e5566&tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=22742",
+        "source_id": "SRC-160c205dc7152f4d",
+        "candidate_ids": [
+          "R32006"
+        ],
+        "theme_ids": [
+          "G311"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1186/1742-9994-6-5",
+        "source_id": "SRC-306c500637343110",
+        "candidate_ids": [
+          "R32007"
+        ],
+        "theme_ids": [
+          "G312"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.isci.2026.116523",
+        "source_id": "SRC-957cae4c4fe24177",
+        "candidate_ids": [
+          "R32008"
+        ],
+        "theme_ids": [
+          "G312"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/s41467-022-31689-3.pdf",
+        "source_id": "SRC-4a04b112e5736a41",
+        "candidate_ids": [
+          "P32001"
+        ],
+        "theme_ids": [
+          "G313"
+        ]
+      },
+      {
+        "url": "https://nora.nerc.ac.uk/id/eprint/538670/1/Geophysical%20Research%20Letters%20-%202024%20-%20Baker%20-%20Seabed%20Seismographs%20Reveal%20Duration%20and%20Structure%20of%20Longest%20Runout%20Sediment.pdf",
+        "source_id": "SRC-2ed121583f0daaa2",
+        "candidate_ids": [
+          "P32002"
+        ],
+        "theme_ids": [
+          "G313"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/s41467-018-06254-6.pdf",
+        "source_id": "SRC-818fb8e04678b4fc",
+        "candidate_ids": [
+          "P32003"
+        ],
+        "theme_ids": [
+          "G314"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/ncomms11896.pdf",
+        "source_id": "SRC-c262c4a2ee7ffdf7",
+        "candidate_ids": [
+          "P32004"
+        ],
+        "theme_ids": [
+          "G314"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://web.mnstate.edu/wisenden/AnBeh13%20Paper%205%20Dacke%20et%20al%202013.pdf",
+    "core": "R32001",
+    "theme": "G308",
+    "theme_ids": [
+      "G308"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 104853.5534,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "d51011a963c617b42fd64d3a7b1fa142f21c1c6a070389014fd8f42d4dccc064"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "b77d1c3301983bd23b637b6cb87854e8759d7ad3247457c4665c3597d00d2499"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "cf74aa5ce8e60b1ea144c3165eceb83b964b4b6f279c07a0ca002b6782fcf470",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "2d86b3a9b7b4dc112f2dd549d4c846cbf080cd5bb4616b88ab5d77cf904d1e2f"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "f5035c4a94f10e10583f8158b69de1b24dcb7cec362f3be349a90f9b29ac535e",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 383,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 18,
+    "unique_blobs_checked": 403,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3842,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G308",
+        "core": "R32001",
+        "seconds": 45,
+        "maximum": 90
+      },
+      {
+        "theme": "G308",
+        "core": "R32002",
+        "seconds": 49,
+        "maximum": 80
+      },
+      {
+        "theme": "G309",
+        "core": "R32003",
+        "seconds": 35,
+        "maximum": 85
+      },
+      {
+        "theme": "G309",
+        "core": "R32004",
+        "seconds": 47,
+        "maximum": 90
+      },
+      {
+        "theme": "G310",
+        "core": "R32005",
+        "seconds": 59,
+        "maximum": 85
+      },
+      {
+        "theme": "G311",
+        "core": "R32006",
+        "seconds": 63,
+        "maximum": 90
+      },
+      {
+        "theme": "G312",
+        "core": "R32007",
+        "seconds": 43,
+        "maximum": 85
+      },
+      {
+        "theme": "G312",
+        "core": "R32008",
+        "seconds": 52,
+        "maximum": 90
+      },
+      {
+        "theme": "G313",
+        "core": "P32001",
+        "seconds": 80,
+        "maximum": 100
+      },
+      {
+        "theme": "G313",
+        "core": "P32002",
+        "seconds": 50,
+        "maximum": 100
+      },
+      {
+        "theme": "G314",
+        "core": "P32003",
+        "seconds": 55,
+        "maximum": 105
+      },
+      {
+        "theme": "G314",
+        "core": "P32004",
+        "seconds": 45,
+        "maximum": 95
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 29,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "bb46bc95178a92b36a81ae7d1c1fc5fcd82986b6e60f9b877d95987914d81bd3"
+  }
+}

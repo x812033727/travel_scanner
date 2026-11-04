@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "root",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "c32fabb1352272e39e7bcbacb5b8d3290c6bbbfb",
+    "selected": 3010,
+    "raw_records": 3379,
+    "themes": 226,
+    "not_added": 1005,
+    "pool_sha256": "db3c2209e84f44cc79fa32ed1f6459200512a9eea3f24ca941dff4dd2b98c534"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave22-sound.json",
+      "sha256": "59bcefcdc016715a1123b595b8f26ac358d17a79f48b078a0371a341b9e983e1"
+    },
+    {
+      "file": "reviews/wave22-sound-themes.json",
+      "sha256": "bd79e7562d2042272e0a021ffd2310a092efc9b0ee0291ff081181da3a79fe46"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 5,
+    "not_added": 8,
+    "near_pairs": 13,
+    "themes": 4
+  },
+  "dedup_reading": {
+    "method": "3379 raw與1005 NA機械檢索；寬搜尋245 raw輸出有截斷，未宣稱全讀。針對聽覺問句完整讀問答與範圍，並逐對讀下列13高風險近對。",
+    "scan_file": ".cache/wave22-sound-old-scan.json",
+    "scan_sha256": "29c6899c35a06b070259cf540793fb6a0b2b354b210b2a391c6bf561300b30e6",
+    "queries": [
+      "聲|聽|音|耳|回音|回聲|共振|resonan|auditory|sound",
+      "聽|耳|音高|音色|回音|節奏|旋律|掩蔽|聲源|聲音|口形|嘴形|唇"
+    ]
+  },
+  "near_pairs": [
+    {
+      "a": "R22001",
+      "b": "C2012",
+      "decision": "propose_distinct",
+      "reason": "不是相關詞促發辨識速度，而是同一語音重播條件改變歌唱知覺。",
+      "a_snapshot": {
+        "question": "同一句話沒換音檔，反覆聽怎麼越像在唱歌？",
+        "answer_target": "同一句語音完整反覆播放，可由說話轉為較像歌唱的知覺。中間若轉調或打亂音節，即使起點與終點用同一段錄音，轉變也減弱；關鍵不只是聽得更多，還有穩定音高與順序。音高顯著性重加權是作者提出的解釋。",
+        "scope": "限研究的英語短句與有音樂訓練樣本；不能說任何語句重播十次都變歌，也不以神經抑制已被證實解釋。"
+      },
+      "b_snapshot": {
+        "question": "剛接觸一個相關詞，為什麼下一個詞可能更快被認出？",
+        "answer_target": "研究語意關聯對後續辨識的促發。",
+        "scope": "限可重現的詞彙任務；不延伸成操控人生。"
+      }
+    },
+    {
+      "a": "R22001",
+      "b": "C2022",
+      "decision": "propose_distinct",
+      "reason": "發聲記憶區別性與被動重播後的類型知覺不同；本題不稱記得較好。",
+      "a_snapshot": {
+        "question": "同一句話沒換音檔，反覆聽怎麼越像在唱歌？",
+        "answer_target": "同一句語音完整反覆播放，可由說話轉為較像歌唱的知覺。中間若轉調或打亂音節，即使起點與終點用同一段錄音，轉變也減弱；關鍵不只是聽得更多，還有穩定音高與順序。音高顯著性重加權是作者提出的解釋。",
+        "scope": "限研究的英語短句與有音樂訓練樣本；不能說任何語句重播十次都變歌，也不以神經抑制已被證實解釋。"
+      },
+      "b_snapshot": {
+        "question": "把部分詞唸出聲，為什麼可能比較容易從一串詞裡想起？",
+        "answer_target": "研究發聲產生的區別性線索。",
+        "scope": "限生產效應任務，不宣稱所有內容唸出都更有效。"
+      }
+    },
+    {
+      "a": "R22001",
+      "b": "C2031",
+      "decision": "propose_distinct",
+      "reason": "外周頻率分工不直接解答相同音檔因前史改變類型評分。",
+      "a_snapshot": {
+        "question": "同一句話沒換音檔，反覆聽怎麼越像在唱歌？",
+        "answer_target": "同一句語音完整反覆播放，可由說話轉為較像歌唱的知覺。中間若轉調或打亂音節，即使起點與終點用同一段錄音，轉變也減弱；關鍵不只是聽得更多，還有穩定音高與順序。音高顯著性重加權是作者提出的解釋。",
+        "scope": "限研究的英語短句與有音樂訓練樣本；不能說任何語句重播十次都變歌，也不以神經抑制已被證實解釋。"
+      },
+      "b_snapshot": {
+        "question": "耳朵怎麼把高音低音分開，難道只要神經跳得更快？",
+        "answer_target": "研究基底膜的位置分工；音高不必一對一映射單一神經的放電次數。",
+        "scope": "NIDCD支持位置與轉導；時間編碼的精確頻率界線另查。不能把毛細胞當成逐聲波週期發動作電位的神經。"
+      }
+    },
+    {
+      "a": "R22002",
+      "b": "B4020",
+      "decision": "propose_distinct",
+      "reason": "舊為房間聲能與吸收，本題辨識結果隨切斷/混響順序反轉，必須保留三路控制。",
+      "a_snapshot": {
+        "question": "斷掉的話補噪音有時更好懂，為什麼換個房間反而輸給安靜？",
+        "answer_target": "無混響時，斷續語音的缺口填噪音可比留白更好辨識；若先切斷聲源再通過混響房間，前文殘響填入安靜缺口，結果反而是留白較好。把混響後的訊號再切斷，噪音優勢又出現，顯示處理順序改變了耳邊實際留下的線索。",
+        "scope": "12人、英語句、50%斷續、模擬T60=1.1秒；整體混響表現仍差於無混響。不是噪音永遠助聽、不是大腦重建原波形；不用噪音尾巴單因解釋反轉。"
+      },
+      "b_snapshot": {
+        "question": "房間加了吸音材料，為什麼離喇叭很近時聲音不一定小很多？",
+        "answer_target": "吸聲主要減少反射累積的混響場，近聲源的直接聲尚未經牆面，兩個區域對加吸聲的反應不同。",
+        "scope": "不是說吸音完全不影響任何近場；採來源直接/混響場理想模型。"
+      }
+    },
+    {
+      "a": "R22002",
+      "b": "C2001",
+      "decision": "propose_distinct",
+      "reason": "弱訊號偵測機率不同於斷續語音的噪音與殘響控制，不用有無聽到代替詞辨識。",
+      "a_snapshot": {
+        "question": "斷掉的話補噪音有時更好懂，為什麼換個房間反而輸給安靜？",
+        "answer_target": "無混響時，斷續語音的缺口填噪音可比留白更好辨識；若先切斷聲源再通過混響房間，前文殘響填入安靜缺口，結果反而是留白較好。把混響後的訊號再切斷，噪音優勢又出現，顯示處理順序改變了耳邊實際留下的線索。",
+        "scope": "12人、英語句、50%斷續、模擬T60=1.1秒；整體混響表現仍差於無混響。不是噪音永遠助聽、不是大腦重建原波形；不用噪音尾巴單因解釋反轉。"
+      },
+      "b_snapshot": {
+        "question": "同一個很微弱的聲音，為什麼這次聽到、下次又沒聽到？",
+        "answer_target": "區分偵測機率與絕對開關。",
+        "scope": "受控條件的閾值，不拿來評估個人聽力。"
+      }
+    },
+    {
+      "a": "R22003",
+      "b": "C2032",
+      "decision": "propose_distinct",
+      "reason": "舊為當次到達線索；新增前史固定/隨機對相同目標的權重與規律交換控制，刪此前史就併舊。",
+      "a_snapshot": {
+        "question": "兩聲的先後沒變，前面聽過什麼為什麼會改變你指向哪邊？",
+        "answer_target": "短延遲的兩聲常由先到聲主導定位；先聽一串固定延遲的聲對，對照隨機延遲前史，部分受試者更偏向先到方向。若目標對交換領先方向，這種優勢可被削弱，顯示定位還受剛建立的聲學規律影響。",
+        "scope": "只採4成人部分；固定與隨機前史的目標刺激相同，交換方向另為破壞條件。測最顯著聲音方向，不把定位優勢叫第二聲聽不見，也不宣稱所有人同一延遲邊界。"
+      },
+      "b_snapshot": {
+        "question": "閉上眼睛，兩邊耳朵怎麼一起判斷聲音從哪邊來？",
+        "answer_target": "比較到達時間與聲級差。",
+        "scope": "頻率與方向影響線索用途；不用高音量示範。"
+      }
+    },
+    {
+      "a": "R22003",
+      "b": "B2012",
+      "decision": "propose_distinct",
+      "reason": "無害刺激反應下降不同於空間定位前史與領先交換，不能以習慣統稱就重講。",
+      "a_snapshot": {
+        "question": "兩聲的先後沒變，前面聽過什麼為什麼會改變你指向哪邊？",
+        "answer_target": "短延遲的兩聲常由先到聲主導定位；先聽一串固定延遲的聲對，對照隨機延遲前史，部分受試者更偏向先到方向。若目標對交換領先方向，這種優勢可被削弱，顯示定位還受剛建立的聲學規律影響。",
+        "scope": "只採4成人部分；固定與隨機前史的目標刺激相同，交換方向另為破壞條件。測最顯著聲音方向，不把定位優勢叫第二聲聽不見，也不宣稱所有人同一延遲邊界。"
+      },
+      "b_snapshot": {
+        "question": "動物反覆聽見沒有後果的聲音，為什麼可能越來越不理它？",
+        "answer_target": "對無害重複線索的反應下降，且可對刺激具有特異性。",
+        "scope": "來源草原犬鼠腳步聲例子，非聽力消失。"
+      }
+    },
+    {
+      "a": "R22003",
+      "b": "P14010",
+      "decision": "propose_distinct",
+      "reason": "舊為視聽跨模態空間整合，本題單聽覺前史與方向控制；不宣稱都證明腦內貝氏計算。",
+      "a_snapshot": {
+        "question": "兩聲的先後沒變，前面聽過什麼為什麼會改變你指向哪邊？",
+        "answer_target": "短延遲的兩聲常由先到聲主導定位；先聽一串固定延遲的聲對，對照隨機延遲前史，部分受試者更偏向先到方向。若目標對交換領先方向，這種優勢可被削弱，顯示定位還受剛建立的聲學規律影響。",
+        "scope": "只採4成人部分；固定與隨機前史的目標刺激相同，交換方向另為破壞條件。測最顯著聲音方向，不把定位優勢叫第二聲聽不見，也不宣稱所有人同一延遲邊界。"
+      },
+      "b_snapshot": {
+        "question": "聲音與亮點同時出現，分得越遠就一定把聲音拖得更偏嗎？",
+        "answer_target": "視聽空間差距增大時，聲音定位受視覺牽引不一定繼續變大；把同來源整合與分來源估計按可能性折衷的理想觀察者模型，比無條件融合更能描述這組非線性結果。",
+        "scope": "2007原實驗20名學生招募、19分析；個人HRTF、五個方位按鍵、短同步訊號。模型先驗與高斯雜訊是假設，沒有量測腦內貝氏運算。文中第二實驗是舊資料再分析，不另算獨立新招研究。"
+      }
+    },
+    {
+      "a": "R22004",
+      "b": "C2032",
+      "decision": "propose_distinct",
+      "reason": "比較雙耳關係但任務是噪音中目標偵測，不是定位；只留素材段。",
+      "a_snapshot": {
+        "question": "音量沒加大，只把一耳的目標音反相，為什麼可能更容易聽到？",
+        "answer_target": "兩耳收到相同背景噪音時，若目標純音在一耳反相，目標與噪音的耳間關係不同，受試者能在較低目標聲級辨識它。改善的是遮蔽中的偵測條件，不是把外界噪音物理消掉。",
+        "scope": "限耳機分耳呈現的500Hz短音及本文Exp1；不承諾所有聲音/設備固定改善量，不把兩耳訊號畫成空氣中直接相消。"
+      },
+      "b_snapshot": {
+        "question": "閉上眼睛，兩邊耳朵怎麼一起判斷聲音從哪邊來？",
+        "answer_target": "比較到達時間與聲級差。",
+        "scope": "頻率與方向影響線索用途；不用高音量示範。"
+      }
+    },
+    {
+      "a": "R22004",
+      "b": "LEG-S86",
+      "decision": "propose_distinct",
+      "reason": "不產生外界反噪聲，耳間資訊用於偵測；物理相消不是本題答案。",
+      "a_snapshot": {
+        "question": "音量沒加大，只把一耳的目標音反相，為什麼可能更容易聽到？",
+        "answer_target": "兩耳收到相同背景噪音時，若目標純音在一耳反相，目標與噪音的耳間關係不同，受試者能在較低目標聲級辨識它。改善的是遮蔽中的偵測條件，不是把外界噪音物理消掉。",
+        "scope": "限耳機分耳呈現的500Hz短音及本文Exp1；不承諾所有聲音/設備固定改善量，不把兩耳訊號畫成空氣中直接相消。"
+      },
+      "b_snapshot": {
+        "question": "降噪耳機開著，旁邊說話為什麼還聽得到？",
+        "answer_target": "主動降噪感測噪音後產生抵消訊號，效果受頻率、變動性與佩戴條件影響，並非完全消音。",
+        "scope": "目前官方來源是指定產品說明，不代表所有機種排名或定量表現。；不可說 ANC 完全不能減弱人聲；數值比較需固定條件實測。"
+      }
+    },
+    {
+      "a": "R22004",
+      "b": "C2001",
+      "decision": "propose_distinct",
+      "reason": "機率偵測泛論不能替代相位控制與閾值差；保留具體耳間對照才有新增價值。",
+      "a_snapshot": {
+        "question": "音量沒加大，只把一耳的目標音反相，為什麼可能更容易聽到？",
+        "answer_target": "兩耳收到相同背景噪音時，若目標純音在一耳反相，目標與噪音的耳間關係不同，受試者能在較低目標聲級辨識它。改善的是遮蔽中的偵測條件，不是把外界噪音物理消掉。",
+        "scope": "限耳機分耳呈現的500Hz短音及本文Exp1；不承諾所有聲音/設備固定改善量，不把兩耳訊號畫成空氣中直接相消。"
+      },
+      "b_snapshot": {
+        "question": "同一個很微弱的聲音，為什麼這次聽到、下次又沒聽到？",
+        "answer_target": "區分偵測機率與絕對開關。",
+        "scope": "受控條件的閾值，不拿來評估個人聽力。"
+      }
+    },
+    {
+      "a": "R22005",
+      "b": "C2017",
+      "decision": "propose_merge",
+      "reason": "熟悉內容與來源歸屬是同一核心；音高出現位置是新證據變體，建議併C2017不增核心。",
+      "a_snapshot": {
+        "question": "明明首尾音不同，中間重播末音怎麼更容易聽成相同？",
+        "answer_target": "第一個音與最後測試音不同時，讓測試音先在中間出現，會增加誤答首尾相同。作者提出，聽者可能記得這個音出現過，卻把它歸到第一個位置；這是內容熟悉與出現位置分離的受控例子。",
+        "scope": "作者重排版本Fig1；選過練習表現的聽者，樣本總人數未明列。順序歸屬為解釋，不把所有記憶錯誤歸此。建議併C2017作音高時間來源變體，不另計核心。"
+      },
+      "b_snapshot": {
+        "question": "記得一件事，卻把是誰告訴自己的記錯了，怎麼回事？",
+        "answer_target": "區分內容熟悉與來源歸屬。",
+        "scope": "不用教材刑事個案做娛樂推論。"
+      }
+    },
+    {
+      "a": "R22005",
+      "b": "C2018",
+      "decision": "propose_distinct",
+      "reason": "一般前後干擾方向不足區分特定錯置；C2017來源歸屬更適合作canonical。",
+      "a_snapshot": {
+        "question": "明明首尾音不同，中間重播末音怎麼更容易聽成相同？",
+        "answer_target": "第一個音與最後測試音不同時，讓測試音先在中間出現，會增加誤答首尾相同。作者提出，聽者可能記得這個音出現過，卻把它歸到第一個位置；這是內容熟悉與出現位置分離的受控例子。",
+        "scope": "作者重排版本Fig1；選過練習表現的聽者，樣本總人數未明列。順序歸屬為解釋，不把所有記憶錯誤歸此。建議併C2017作音高時間來源變體，不另計核心。"
+      },
+      "b_snapshot": {
+        "question": "舊資料和新資料，為什麼會互相妨礙想起？",
+        "answer_target": "比較前攝與倒攝干擾的時間方向。",
+        "scope": "兩個方向合一核心，並非所有遺忘都由干擾。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "R22-S001",
+      "scope": "PDF pp1–7正文；p3 Fig2目讀。未聽作者音訊，p8僅參考文獻未逐條查。",
+      "cache": {
+        "file": ".cache/wave22-sound-song.pdf",
+        "sha256": "ee516ef7282d54ac5195d8e03ed7ab4a8a50c4d3e8fdcc4668b4e36353fc0348",
+        "text_file": ".cache/wave22-sound-song-text.json",
+        "text_sha256": "2148f62172f3ea02135ca10caf43ce341d9f5af48eb9c0cdae8a78a71c8a34eb"
+      }
+    },
+    {
+      "source_id": "R22-S002",
+      "scope": "抽文0–62正文、Fig1/2目讀；六音訊列只讀說明未播放。",
+      "cache": {
+        "file": ".cache/wave22-sound-restoration.html",
+        "sha256": "c0dacc6ccd37ef67c19a510e8bff4823ab68676d860dd55065084b7bda503493",
+        "text_file": ".cache/wave22-sound-restoration-text.json",
+        "text_sha256": "83ff2ea50c500ccb9b1b110db16d9d918b1814aeabee1e2dbb8126b32f7ccd05"
+      }
+    },
+    {
+      "source_id": "R22-S003",
+      "scope": "抽文0–51、56、78–83、85、90–91、100、102–105、107–108、110；Fig2/6目讀。未完整讀59–76動物結果。",
+      "cache": {
+        "file": ".cache/wave22-sound-precedence.html",
+        "sha256": "e7d0992af7ac5c9062191434a45b07b7fc502e4713f27bd2803c1f192ee05112",
+        "text_file": ".cache/wave22-sound-precedence-text.json",
+        "text_sha256": "5110afc4d04ea68c73bd84a70979893ede996aae472f110627a31f6986c22fba"
+      }
+    },
+    {
+      "source_id": "R22-S004",
+      "scope": "抽文8、13–14、19、21、23–24、26、28–30、34–35、37、42、49、52、55、95、106–109；Fig2目讀。",
+      "cache": {
+        "file": ".cache/wave22-sound-binaural.html",
+        "sha256": "c0bee7063131305c5f9474f4e2caee9385160f19d8b83a30ee5e86abde8d6548",
+        "text_file": ".cache/wave22-sound-binaural-text.json",
+        "text_sha256": "a8c177a0fbeea0133f796d221c7fdd9b0562183600f3d2bc2473972cf9297acd"
+      }
+    },
+    {
+      "source_id": "R22-S005",
+      "scope": "重排PDF pp1–3全文；p2 Fig1目讀。",
+      "cache": {
+        "file": ".cache/wave22-sound-pitch-memory.pdf",
+        "sha256": "378b8648a326cc9deac967f3dfe3624b1708f7070d6740970d79e54539724e30",
+        "text_file": ".cache/wave22-sound-pitch-memory-text.json",
+        "text_sha256": "44a9c13f5751949e5a5f95b107249adc815fe797f6ab0ffd5dd45f2295700281"
+      }
+    }
+  ],
+  "visual_readings": [
+    {
+      "file": ".cache/wave22-sound-song-p3.png",
+      "sha256": "517e182f15c552074ce446e2e8f397673b6103c2b2c0958e2d6f02306f67e1da"
+    },
+    {
+      "file": ".cache/wave22-sound-pitch-memory-p2.png",
+      "sha256": "aa8761e06c5659d322606a976bc1789d693b8001d3565ac79c7c03e23efff3f0"
+    },
+    {
+      "file": ".cache/wave22-sound-restoration-f1-0.jpg",
+      "sha256": "c265f842deba4142aa784c7bf1b4b1152e9ca22a40e030a374bc9a918ce31f63"
+    },
+    {
+      "file": ".cache/wave22-sound-restoration-f2-0.jpg",
+      "sha256": "2c219003db79d43f0d873170e4959b0efa94c2dc93f2943d62f7438f24266810"
+    },
+    {
+      "file": ".cache/wave22-sound-precedence-f2-0.jpg",
+      "sha256": "a987dd6273d5b60531f0fc1369eddbafa302d380f83a0de2aeeac7a9c6018c5e"
+    },
+    {
+      "file": ".cache/wave22-sound-precedence-f6-0.jpg",
+      "sha256": "9f42f7a40aa7c4c29085f8d760948c85c347e970b98fb4b6f155af7831d62c84"
+    },
+    {
+      "file": ".cache/wave22-sound-binaural-f2-0.jpg",
+      "sha256": "4d677addda0fc49de231117a55b557908d2fd087946498509fd97aefb20024ff"
+    }
+  ],
+  "source_identity_notes": [
+    "S001與S005同作者不同實驗/年代，不當同一研究複本；仍須全庫URL/title/DOI再比。",
+    "S003動物與人部分同一論文，不按物種另增來源或題數。"
+  ],
+  "limits": [
+    "5候選不等於5新核；R22005建議併C2017，交非作者嚴判。",
+    "未製音訊、聆聽研究音檔或試讀；四題案80–115秒僅紙上預算。",
+    "R22004留50–80秒素材段，不強配與回聲同片。"
+  ],
+  "prior_not_added_readback": {
+    "rows_read": 51,
+    "status": "READ_MATCHED_ROWS_NOT_ALL_1005",
+    "high_risk": "McGurk兩次舊退題仍只有摘要；鼓膜缺失基頻/雙膜麥克風舊退題本輪無新正文，均不復活。"
+  },
+  "revision_history": [
+    {
+      "reason": "非作者pool_life_tech要求目標音反相題名明確；刪除旁白中的研究限制/合核行政資訊，仍留metadata與畫面註記。",
+      "prior_sha256": {
+        "batches/wave22-sound.json": "e09acaa17b8c70421c36a2f9a2e3a955ca5d2adee64ca74b5a81ec33a804bb32",
+        "reviews/wave22-sound-themes.json": "68dc8a148e68d4c66019d5662ab1e0d8ca679902bf4815776dbb0a6859f6c201",
+        "reviews/wave22-sound-author.json": "dd7990c0d15eb1016214edd7dd0fa1a24672103d713604bfa58df02f796c8ec6"
+      },
+      "removed_seconds": 45,
+      "theme_changes": [
+        {
+          "id": "W22R-T01",
+          "before": 110,
+          "after": 100
+        },
+        {
+          "id": "W22R-T02",
+          "before": 130,
+          "after": 115
+        },
+        {
+          "id": "W22R-T03",
+          "before": 100,
+          "after": 90
+        },
+        {
+          "id": "W22R-T04",
+          "before": 90,
+          "after": 80
+        }
+      ],
+      "semantic_refresh_required": "R22004 question changed; root reruns draft and compares all current top5 before final nonauthor receipt."
+    }
+  ]
+}

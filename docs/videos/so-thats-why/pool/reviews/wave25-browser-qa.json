@@ -1,0 +1,34 @@
+{
+  "tested_on": "2026-11-02T05:56:03.264Z",
+  "result": "PASS",
+  "selected": 3058,
+  "index_html_sha256": "d7ebafd2ea89e2a47a58f17eb838d05bac55b89f6d72b1003f8ecf104622e650",
+  "source_sample": {
+    "id": "A25001",
+    "urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC3374759/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC4629364/"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave25-desktop.png",
+    "wave25-source-desktop.png",
+    "wave25-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "root目讀桌面總覽、A25001展開卡與390px手機；文字/控制可讀，無水平裁切。展開卡來源URL在截圖折線下方，其出現與數量以DOM斷言核對，不冒稱截圖內逐URL目讀。"
+}

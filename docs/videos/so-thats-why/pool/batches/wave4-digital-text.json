@@ -1,0 +1,575 @@
+{
+  "batch_id": "wave4-digital-text",
+  "created_on": "2026-11-01",
+  "scope": "文字顯示、排序、交換與掃描文件；原創問題，機制與字數/正規化舊題分開。",
+  "sources": [
+    {
+      "id": "U4-S001",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-family",
+      "title": "font-family",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Introduction before Syntax: per-character font fallback",
+      "locator": "Introduction before Syntax: per-character font fallback",
+      "summary": "字型選擇可逐字回退，單一段落不保證全由同一字型顯示。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S002",
+      "url": "https://www.unicode.org/faq/bidi.html",
+      "title": "Writing Direction and Bidirectional Text FAQ",
+      "publisher": "Unicode Consortium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Bidirectional Text: Bidi_Class, neutral characters, memory order",
+      "locator": "Bidirectional Text: Bidi_Class, neutral characters, memory order",
+      "summary": "儲存順序與混合方向排版分開；標點受鄰近方向影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S003",
+      "url": "https://www.w3.org/International/questions/qa-bidi-unicode-controls",
+      "title": "How to use Unicode controls for bidi text",
+      "publisher": "W3C Internationalization",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Changing direction; tightly wrapping; dealing with spillover",
+      "locator": "Changing direction; tightly wrapping; dealing with spillover",
+      "summary": "隔離標記限制內外文字的方向交互影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S004",
+      "url": "https://www.unicode.org/faq/collation.html",
+      "title": "Collation FAQ",
+      "publisher": "Unicode Consortium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Code point order; locale tailoring; readings for Kanji",
+      "locator": "Code point order; locale tailoring; readings for Kanji",
+      "summary": "語言排序使用權重與地區規則，漢字讀音需要額外語境資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S005",
+      "url": "https://www.unicode.org/faq/casemap_charprop.html",
+      "title": "Character Properties, Case Mappings and Names",
+      "publisher": "Unicode Consortium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Case Mapping: full mappings, reversibility, locale-specific Turkish I",
+      "locator": "Case Mapping: full mappings, reversibility, locale-specific Turkish I",
+      "summary": "大小寫轉換可一對多、受地區影響且不可逆。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S006",
+      "url": "https://www.unicode.org/reports/tr51/tr51-31.html",
+      "title": "Unicode Emoji, UTS #51 revision 31",
+      "publisher": "Unicode Consortium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "1.4.3 presentation sequences; 2.5 ZWJ fallback; 2.7.1 selectors; 4 Presentation Style",
+      "locator": "1.4.3 presentation sequences; 2.5 ZWJ fallback; 2.7.1 selectors; 4 Presentation Style",
+      "summary": "序列與選擇符影響組合顯示；未支援組合字形時可拆成分開圖示。閱讀latest頁當時標示18.0/revision31，引用其This Version固定頁。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S007",
+      "url": "https://www.unicode.org/faq/utf_bom.html",
+      "title": "UTF-8, UTF-16, UTF-32 and BOM FAQ",
+      "publisher": "Unicode Consortium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "BE/LE serialization; BOM FAQ; UTF-8 signature",
+      "locator": "BE/LE serialization; BOM FAQ; UTF-8 signature",
+      "summary": "UTF-16序列化有位元組先後，UTF-8的BOM則只是簽記。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S008",
+      "url": "https://www.unicode.org/faq/idn.html",
+      "title": "Internationalized Domain Names FAQ",
+      "publisher": "Unicode Consortium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Do IDNs change the DNS; UTS #46 preprocessing introduction",
+      "locator": "Do IDNs change the DNS; UTS #46 preprocessing introduction",
+      "summary": "國際化網域以ASCII標籤與既有DNS相容；輸入處理與協定有效名稱分層。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S009",
+      "url": "https://www.unicode.org/faq/security.html",
+      "title": "Security Issues FAQ",
+      "publisher": "Unicode Consortium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Why is it impossible to give all characters that use the same glyph a single code",
+      "locator": "Why is it impossible to give all characters that use the same glyph a single code",
+      "summary": "相似外觀不代表同一文字身分，大小寫處理可以揭露差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S010",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Fonts/Variable_fonts",
+      "title": "Variable fonts",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Static vs variable fonts; Introducing variation axes",
+      "locator": "Static vs variable fonts; Introducing variation axes",
+      "summary": "單檔可包含設計變化軸，並非只含一個固定字形風格。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S011",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-variant-ligatures",
+      "title": "font-variant-ligatures",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Introduction; common-ligatures example Difficult waffles",
+      "locator": "Introduction; common-ligatures example Difficult waffles",
+      "summary": "排版可開關連字與上下文形式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S012",
+      "url": "https://helpx.adobe.com/acrobat/desktop/create-documents/scan-documents-to-pdfs/recognize-text.html",
+      "title": "Recognize text in scanned documents",
+      "publisher": "Adobe Acrobat",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "Introduction; Recognize text in a single document; review OCR results",
+      "locator": "Introduction; Recognize text in a single document; review OCR results",
+      "summary": "影像掃描與可搜尋文字層不同，OCR結果仍須檢查。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "U4-S013",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Text/Whitespace",
+      "title": "Handling whitespace",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary page body",
+      "reading_scope": "How HTML processes whitespace; CSS collapsing and transformation",
+      "locator": "How HTML processes whitespace; CSS collapsing and transformation",
+      "summary": "文字節點可保存空白，而CSS預設折疊顯示多個空白。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "U4001",
+      "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.font.glyph-fallback",
+      "answer_target": "某字型缺所需字形時，瀏覽器可為那個字轉用後續字型。",
+      "scope": "CSS逐字fallback；不把字型回退等同傳輸亂碼。",
+      "source_ids": [
+        "U4-S001"
+      ],
+      "source_locator": "Introduction before Syntax: per-character font fallback",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分開指定字型名稱與實際可用字形。",
+        "visual": "同一行以色框標出不同來源的字，配一個逐字查找表。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4002",
+      "question": "一句話混進從右往左寫的字，標點怎麼會跑到意外的位置？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.bidi.logical-visual",
+      "answer_target": "混合方向文字以類別及上下文排版，畫面位置不必等同記憶體字序。",
+      "scope": "Unicode雙向文字；標點、數字與基底方向共同展示，不把整段字串反轉當處理法。",
+      "source_ids": [
+        "U4-S002"
+      ],
+      "source_locator": "Bidirectional Text: Bidi_Class, neutral characters, memory order",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到儲存順序與顯示順序的分工。",
+        "visual": "一排編號字卡保持存放順序，下排依方向分組，標點跟著上下文定位。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "U4003",
+      "question": "外語名稱插入句子後，怎麼避免把旁邊本來無關的數字也拉走？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.bidi.isolation",
+      "answer_target": "隔離一段文字的方向影響，使其內部方向處理不外溢到周圍文字。",
+      "scope": "隔離與單純指定方向不同；不在示例埋不可見控制符，改以可見框線說明。與U4002合片時須保留外溢對照。",
+      "source_ids": [
+        "U4-S003"
+      ],
+      "source_locator": "Changing direction; tightly wrapping; dealing with spillover",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解方向邊界是額外資訊。",
+        "visual": "相同短語先無框，再加隔離框，追蹤框外數字位置。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4004",
+      "question": "同一份通訊錄，換個語言排序為什麼就變了？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.collation.locale-weights",
+      "answer_target": "語言排序比較分層權重並依地區調整，並非單按字碼大小。",
+      "scope": "排序規則而非字碼更動；精確語例需指定locale，不能說所有語言同順序。",
+      "source_ids": [
+        "U4-S004"
+      ],
+      "source_locator": "Code point order; locale tailoring; readings for Kanji",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清電腦儲存編號與人們習慣的排列。",
+        "visual": "同一組字卡保留編號，切換排序規則後改位置。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "U4005",
+      "question": "日本姓名都已存成漢字，電腦為什麼還可能要另外存讀音？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.collation.reading-context",
+      "answer_target": "漢字姓名的讀音無法只從字碼可靠推回，按讀音排序需要額外讀音欄位。",
+      "scope": "日文姓名讀音排序；不把字形、部首與語音排序混為一談。",
+      "source_ids": [
+        "U4-S004"
+      ],
+      "source_locator": "Code point order; locale tailoring; readings for Kanji",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排序欠的是名字讀法，不是字型。",
+        "visual": "同漢字卡搭兩張可能讀音卡，補指定讀音後才能進排序格。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4006",
+      "question": "把字母改成大寫，字數怎麼還可能增加？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.case.expansion-loss",
+      "answer_target": "完整大小寫映射可以把單一字元轉成多字元，轉回小寫不保證還原。",
+      "scope": "例如Unicode預設完整映射的德文ß；不把所有應用程式的語言特化當同一規則。",
+      "source_ids": [
+        "U4-S005"
+      ],
+      "source_locator": "Case Mapping: full mappings, reversibility, locale-specific Turkish I",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大小寫不是可逆的一對一換外觀。",
+        "visual": "一張字卡分成兩張，反向箭頭同時遇到多個可能原文。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4007",
+      "question": "同一個 i 改成大寫，為什麼不同語言可能多出一個點？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.case.locale-tailoring",
+      "answer_target": "大小寫對應可依語言特化，土耳其語帶點與無點字母有不同配對。",
+      "scope": "對比明確指定的土耳其語與預設映射；不拿不同字型當改碼證據。",
+      "source_ids": [
+        "U4-S005"
+      ],
+      "source_locator": "Case Mapping: full mappings, reversibility, locale-specific Turkish I",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "文字轉換需要語言條件。",
+        "visual": "兩條有語言標籤的轉換管線，輸入相同字，輸出字碼另列。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4008",
+      "question": "一個合在一起的表情，傳到別人手機怎麼拆成好幾個？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.emoji.zwj-fallback",
+      "answer_target": "接收系統沒有整組ZWJ序列的單一字形時，可忽略連接符而顯示分開的表情。",
+      "scope": "與LEG-A20同字碼不同畫風、L317字數計算分開；這題比較組合支援與fallback。",
+      "source_ids": [
+        "U4-S006"
+      ],
+      "source_locator": "1.4.3 presentation sequences; 2.5 ZWJ fallback; 2.7.1 selectors; 4 Presentation Style",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂外觀拆開不必代表傳輸少字。",
+        "visual": "同一串字碼通過支援/不支援組合字形兩道門。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4009",
+      "question": "同一顆愛心為什麼有時像文字，有時像彩色圖？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.emoji.presentation-selector",
+      "answer_target": "有效變體序列中的選擇符可要求文字或表情顯示；實際呈現仍受環境支援影響。",
+      "scope": "有定義的text/emoji presentation sequences；不承諾任意符號加選擇符都生效。",
+      "source_ids": [
+        "U4-S006"
+      ],
+      "source_locator": "1.4.3 presentation sequences; 2.5 ZWJ fallback; 2.7.1 selectors; 4 Presentation Style",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "隱藏的呈現要求可影響圖形樣式。",
+        "visual": "基底符號旁放可見的VS15/VS16標籤，再對照兩種呈現。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4010",
+      "question": "文字檔最前面幾個看不見的位元組，怎麼會影響整份檔案的讀法？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.encoding.byte-order-mark",
+      "answer_target": "位元組標記可指示UTF-16的序列化先後；UTF-8的標記則只當編碼簽記。",
+      "scope": "不等於每個格式都必須有BOM；不要和L243變長編碼或L244截斷序列混為一談。",
+      "source_ids": [
+        "U4-S007"
+      ],
+      "source_locator": "BE/LE serialization; BOM FAQ; UTF-8 signature",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "知道同一數值用位元組存放時還需要讀序規則。",
+        "visual": "兩格位元組互換先後，開頭放一張讀序指示卡；UTF-8另畫單位元組隊列。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "U4011",
+      "question": "明明是中文網域，為什麼有時會變成 xn-- 開頭的字串？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.idn.ascii-compatibility",
+      "answer_target": "國際化網域把非ASCII標籤轉成相容ASCII表示，讓既有DNS處理。",
+      "scope": "網域標籤，不是網址路徑中的百分比轉義L231；輸入預處理與註冊限制另核當期規範。",
+      "source_ids": [
+        "U4-S008"
+      ],
+      "source_locator": "Do IDNs change the DNS; UTS #46 preprocessing introduction",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人讀形式與DNS相容形式可對應同一標籤。",
+        "visual": "同一張網域卡經轉換接頭進入ASCII格子，路徑另外保持分區。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4012",
+      "question": "兩個字母明明長一樣，為什麼改成小寫後卻露出差別？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.character.identity-not-shape",
+      "answer_target": "不同書寫系統的字符可有相似字形但不同大小寫對應，因此不能只依外觀合併字碼。",
+      "scope": "用拉丁B與希臘Beta等標記清楚的例子；不是L311規範等價，也不做仿站連結。",
+      "source_ids": [
+        "U4-S009"
+      ],
+      "source_locator": "Why is it impossible to give all characters that use the same glyph a single code",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同形不同字與同字不同表示不是同一問題。",
+        "visual": "上排看似相同的兩張卡翻面顯示書寫系統，下排轉小寫。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4013",
+      "question": "只下載一個字型檔，怎麼還能連續調整字的粗細和寬窄？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.font.variation-axes",
+      "answer_target": "可變字型把允許的設計變化軸放在同一檔案，顯示端取指定軸值。",
+      "scope": "僅限字型提供的軸及範圍；不是任意拉伸圖片，也不保證檔案一定更小。",
+      "source_ids": [
+        "U4-S010"
+      ],
+      "source_locator": "Static vs variable fonts; Introducing variation axes",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從一排固定樣式改成有範圍的設計座標。",
+        "visual": "控制滑桿對應設計軸，旁邊固定顯示檔案仍只有一份。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "U4014",
+      "question": "f 和 i 看起來黏成一個字，原本的兩個字母就消失了嗎？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.font.ligature-substitution",
+      "answer_target": "排版連字可將字母組合顯示成連接形式，不必改掉底層文字序列。",
+      "scope": "OpenType/CSS連字開關；不是事先輸入單獨相容連字字元，也不是L317字素計數。",
+      "source_ids": [
+        "U4-S011"
+      ],
+      "source_locator": "Introduction; common-ligatures example Difficult waffles",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "字形替換與文字內容修改分開。",
+        "visual": "同一底層f+i字卡，切換連字設定，只改上方輪廓。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    },
+    {
+      "id": "U4015",
+      "question": "PDF裡明明看得到字，為什麼卻選不到、也搜尋不到？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.document.image-text-layer",
+      "answer_target": "影像掃描只含像素；辨識後加入文字層才有可搜尋的文本資訊。",
+      "scope": "限影像型掃描PDF；權限與字碼映射也可能另造成搜尋問題；OCR不保證正確。",
+      "source_ids": [
+        "U4-S012"
+      ],
+      "source_locator": "Introduction; Recognize text in a single document; review OCR results",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人能辨認的畫面不等於檔案已有文字資料。",
+        "visual": "紙張變像素格，再疊有校對標記的文字層；不編造OCR準確率。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "U4016",
+      "question": "網頁裡連打好幾個空格，為什麼畫面卻只剩一格？",
+      "domain": "數位文字與閱讀日常",
+      "mechanism_key": "text.layout.whitespace-collapse",
+      "answer_target": "一般文字節點可保留多個空白，但預設CSS排版把連續空白折疊顯示。",
+      "scope": "限正常文字內容與預設折疊；解析特殊位置、pre與CSS設定有例外。不是網路掉字。",
+      "source_ids": [
+        "U4-S013"
+      ],
+      "source_locator": "How HTML processes whitespace; CSS collapsing and transformation",
+      "premise_status": "screened",
+      "notes": "原創研究入口；顯示示範需記錄字型、軟體與版本，尚未完成逐主張旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "儲存內容與呈現規則可以不同。",
+        "visual": "底層五個可見空格方框保留，上層切換normal/pre呈現。",
+        "seconds": [
+          35,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "同一個重音字看起來相同卻比較不相同",
+      "existing_id": "L311",
+      "reason": "既有正規化核心；本輪只作查重，不新增。"
+    },
+    {
+      "question": "一個表情怎麼算成好幾個字",
+      "existing_id": "L317",
+      "reason": "既有字素與碼點計數；ZWJ本批僅收組合支援不同。"
+    },
+    {
+      "question": "表情在不同手機畫得不一樣",
+      "existing_id": "LEG-A20",
+      "reason": "既有品牌畫風題，不重收。"
+    },
+    {
+      "question": "亂碼被換成替代字後還原不了",
+      "existing_id": "L244",
+      "reason": "目前只延伸非法/截斷序列處理結果，缺不同核心；不另計。"
+    },
+    {
+      "question": "排序時10怎麼在2之前",
+      "existing_id": "U4004",
+      "reason": "作字碼/語言排序的對照例，不另拆一題。"
+    },
+    {
+      "question": "大寫改回小寫怎麼回不去",
+      "existing_id": "U4006",
+      "reason": "已納一對多與不可逆的同一轉換段。"
+    },
+    {
+      "question": "旗幟怎麼由兩個字碼組起來",
+      "existing_id": "U4008",
+      "reason": "此刻只介紹組合名稱，不足另立機制，先不加入。"
+    },
+    {
+      "question": "細分字型的光學尺寸軸",
+      "existing_id": "U4013",
+      "reason": "待有可見的小尺寸設計對照，先不拆設計軸名目。"
+    }
+  ]
+}
