@@ -29,9 +29,9 @@ scope:
 
 ## Steps
 
-- [ ] 錄台詞、剪接表
-- [ ] 第一段（chain；掌櫃 `zhanggui` 用第 42 集的 `innkeeper-portrait-t1`、衙役 `yayi`，都由 `extras.json` 接；s23 掌櫃腋下的「酒罈」照站主 10-31 的提醒改成陶甕、不畫酒瓶）、審、重抽
-- [ ] 第二、三段、剪接、匯入
+- [x] 錄台詞、剪接表
+- [x] 第一段（chain；掌櫃 `zhanggui` 用第 42 集的 `innkeeper-portrait-t1`、衙役 `yayi`，都由 `extras.json` 接；s23 掌櫃腋下的「酒罈」照站主 10-31 的提醒改成陶甕、不畫酒瓶）、審、重抽
+- [x] 第二、三段、剪接（125.4 秒、無凍格）、匯入（2026-11-04）
 
 ## How to verify
 
@@ -39,3 +39,4 @@ scope:
 
 ## Notes
 
+- 酒瓶：提示詞把酒杯、酒罈全改成陶器（`extras.json` 的 `_replace`），但 `set-zhou-kezhan-t1` 場景圖帶著酒瓶，s22、s23、s26 右緣還是有一支顯眼的棕色長頸玻璃瓶，剪接時裁掉；s21、s43、s52 背景的小瓶子不是焦點，照站主的標準留著。
