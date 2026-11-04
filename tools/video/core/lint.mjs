@@ -6,7 +6,7 @@
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
 import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
-import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isNarratedExplainer, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
@@ -512,8 +512,8 @@ export function lintVideo(doc, context = {}) {
   const minutes = frameToSeconds(timeline.total_frames) / 60;
   const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc) || isC08ApprovedShortStory(doc) || isC20ApprovedShortStory(doc);
   const opening = chapters[0]?.seconds;
-  // A brand story is narrated and opens on the condensation even when its pictures have a cast.
-  if (opening !== undefined && hasCast(doc) && !isStory(context.series)) {
+  // A brand story and a narrator's explainer open on the condensation even when their pictures have a cast.
+  if (opening !== undefined && hasCast(doc) && !isStory(context.series) && !isNarratedExplainer(doc)) {
     if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
   } else if (opening !== undefined && !isCompilation(doc) && episodeLengthForNarrative) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.

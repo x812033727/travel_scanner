@@ -245,11 +245,15 @@ export const isCuteExplainer = (doc) => isDrama(doc) && CUTE_EXPLAINER_PRESETS.i
 /**
  * The explainer looks that may carry a cast: So That's Why's dialogue format, a host and a kid who
  * asks the viewer's questions (owner, 2026-11-03; docs/videos/so-thats-why/dialogue-pilot-20261103/).
- * Every other explainer is told by the narrator alone.
+ * Every other explainer is told by the narrator alone: it may still list characters, but only so
+ * their approved sheets keep a recurring historical figure's face the same from picture to picture
+ * (奇聞檔案局 S42, owner 2026-11-04); none of them speaks a line.
  */
 export const DIALOGUE_EXPLAINER_PRESETS = Object.freeze(["cute-cartoon"]);
 /** An explainer whose lines are spoken by its cast: still pictures and the floor, but a drama's intro at the start. */
 export const isDialogueExplainer = (doc) => isExplainer(doc) && DIALOGUE_EXPLAINER_PRESETS.includes(doc.look.preset) && Array.isArray(doc.characters) && doc.characters.length > 0;
+/** An explainer the narrator tells alone, with or without characters drawn from sheets: every explainer but a dialogue one. */
+export const isNarratedExplainer = (doc) => isExplainer(doc) && !isDialogueExplainer(doc);
 /**
  * Whether the eight-minute floor (MIN_EPISODE_MINUTES) holds: slides, screencasts and the
  * explainer, never a drama episode, a brand story or a compilation.
@@ -644,7 +648,8 @@ export function validateDrama(doc, errors, validateVoice) {
   if (!drama && doc.look !== undefined && !pictures) errors.push({ path: "look", message: `a slides video with no "${SHOT_TEMPLATE}" scenes has nothing to draw with a look` });
   const explainer = isExplainer(doc);
   const cards = explainer ? explainerCardTemplates(doc.look?.preset) : CARD_TEMPLATES;
-  if (explainer && characterIds.size && !DIALOGUE_EXPLAINER_PRESETS.includes(doc.look.preset)) errors.push({ path: "characters", message: `an explainer (look preset "${doc.look.preset}") has no characters: the narrator tells it` });
+  // A narrator's explainer may draw characters from their sheets, but none of them speaks.
+  const silentCast = explainer && !DIALOGUE_EXPLAINER_PRESETS.includes(doc.look.preset);
   if (drama && doc.series !== undefined) {
     validateSeries(doc.series, errors, isLongAnime(doc));
     // An episode lists its cast by id, so lookHash changes only when the cast itself changes
@@ -711,6 +716,8 @@ export function validateDrama(doc, errors, validateVoice) {
         }
         if (line.speaker !== undefined && line.speaker !== NARRATOR && !characterIds.has(line.speaker)) {
           errors.push({ path: `${label}.speaker`, message: `must be "${NARRATOR}" or a character id` });
+        } else if (silentCast && line.speaker !== undefined && line.speaker !== NARRATOR) {
+          errors.push({ path: `${label}.speaker`, message: `an explainer (look preset "${doc.look.preset}") is told by the narrator: its characters are drawn from their sheets, never voiced` });
         }
         try {
           const voice = voiceFor(doc, line);
@@ -1010,7 +1017,7 @@ export function shotProblems(doc, timeline) {
   if (seconds.length >= 3) {
     const sorted = [...seconds].sort((a, b) => a - b);
     const median = sorted[Math.floor(sorted.length / 2)];
-    if (hasCast(doc)) {
+    if (hasCast(doc) && !isNarratedExplainer(doc)) {
       if (median < MIN_MEDIAN_SHOT_SECONDS) warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; the measured dramas sit at 1.5–2.25 s, but under ${MIN_MEDIAN_SHOT_SECONDS} s this pipeline pays a clip per cut: merge some shots (.agents/skills/youtube-video/references/drama-craft.md §五)` });
     } else if (median < MIN_MEDIAN_SHOT_SECONDS_NARRATED) {
       warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; cuts this fast read as a montage, merge some shots` });
@@ -1088,7 +1095,7 @@ export function cohostProblems(doc) {
  * flat and lint says so. A script with neither is from before the contract and is left alone.
  */
 export function cueCoverageProblems(doc) {
-  const cast = hasCast(doc);
+  const cast = hasCast(doc) && !isNarratedExplainer(doc);
   const reachable = [];
   let cued = 0;
   for (const { line } of lines(doc)) {
