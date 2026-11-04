@@ -38,7 +38,7 @@ import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, isDraftCap, KEY_BAND_NOTE, LAYOUT_NOTE, layoutProblemsIn, withCardText, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, withKeyBand, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, isDraftCap, KEY_BAND_NOTE, LAYOUT_NOTE, layoutProblemsIn, withCardText, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, retakeFlags, settingsFor, settle, sheetDone, withKeyBand, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN, TRANSLATOR_TITLE } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -5866,7 +5866,7 @@ const HEARD_WRONG = "第一個問題是，你要他做什麼工作。";
  * command named in `stops` ("tts", "tts --redo", "check-audio") is ended once by a STOP file:
  * exit 6, nothing written. `retakeRounds` is the settings tab's max_retake_rounds.
  */
-async function narrationGate({ rewrite, stillFlagged, retakeRounds = 1 }) {
+async function narrationGate({ rewrite, stillFlagged, retakeRounds = 1, reword = false }) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   assert.equal(fixture().scenes[1].lines[0].id, "x9fe");
@@ -5900,7 +5900,7 @@ async function narrationGate({ rewrite, stillFlagged, retakeRounds = 1 }) {
       const flagged = stillFlagged(current);
       if (flagged) Object.assign(lines.x9fe, { match: false, match_kind: null, heard: HEARD_WRONG, noul: 0.2 });
       write("review/check.json", { lines });
-      write("review/check-flags.json", { slug, speech_hash: "s", flags: flagged ? ["x9fe"] : [], notes: flagged ? { x9fe: `Jev 0.20: heard 「${HEARD_WRONG}」` } : {} });
+      write("review/check-flags.json", { slug, speech_hash: "s", flags: flagged ? ["x9fe"] : [], ...(flagged && reword ? { reword: ["x9fe"] } : {}), notes: flagged ? { x9fe: `Jev 0.20: heard 「${HEARD_WRONG}」` } : {} });
       return { code: flagged ? 1 : 0, out: flagged ? "1 flagged" : "every line passed" };
     }
     const { main: cli } = await import("../cli.mjs");
@@ -5957,6 +5957,32 @@ test("with the retakes spent, the listener rewords the line Jev keeps hearing wr
   assert.deepEqual([state.retakes, state.rewrites], [1, 1]);
   assert.ok(state.notes.includes(`narration rewritten: x9fe 「${ORIGINAL}」 → 「${REWRITE}」`));
   assert.equal(MAX_REWRITE_ROUNDS, 2);
+});
+
+test("a line heard only as a near-homophone is reworded first: no retake round is spent on it", async () => {
+  const REWRITE = "第一個問題是，你要它做哪一種工作。";
+  const gate = await narrationGate({ rewrite: () => ({ lines: [{ id: "x9fe", text: REWRITE }] }), stillFlagged: (video) => video.scenes[1].lines[0].text === ORIGINAL, reword: true });
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line; 1 lines rewritten in 1 rewrite round\) and sent for review$/);
+  assert.deepEqual(gate.redos, [["rewrite-flags.json", ["x9fe"]]], "only the rewritten line is recorded again");
+  assert.equal(gate.runs.filter((run) => run.startsWith("check-audio")).length, 2, "the first check and the one after the rewrite");
+  assert.deepEqual([gate.state().retakes, gate.state().rewrites], [0, 1], "the retake round is still there for a line the voice misread");
+  assert.equal(gate.lineText(), REWRITE);
+});
+
+test("retakeFlags leaves the reword lines out of a retake, and retakes a file without them as it is", () => {
+  const box = sandbox();
+  const workdir = path.join(box.work, "v");
+  const file = path.join(workdir, "review", "check-flags.json");
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, JSON.stringify({ slug: "v", speech_hash: "s", flags: ["a", "b"], notes: { a: "Jev 0.10", b: "Jev 0.20" } }));
+  assert.equal(retakeFlags(workdir), file, "no reword: the check's own file");
+  writeFileSync(file, JSON.stringify({ slug: "v", speech_hash: "s", flags: ["a", "b"], reword: ["b"], notes: { a: "Jev 0.10", b: "Jev 0.20" } }));
+  const retake = retakeFlags(workdir);
+  assert.equal(path.basename(retake), "check-flags.retake.json");
+  assert.deepEqual(readJson(retake), { slug: "v", speech_hash: "s", flags: ["a"], notes: { a: "Jev 0.10" } });
+  assert.equal(retakeFlags(workdir, { rewordFirst: false }), file, "a pilot whose script is locked retakes every line");
+  writeFileSync(file, JSON.stringify({ slug: "v", speech_hash: "s", flags: ["b"], reword: ["b"], notes: {} }));
+  assert.equal(retakeFlags(workdir), null, "nothing left to retake");
 });
 
 test("a rewrite that changes a number is dropped, the line keeps its text, and after the rounds the narration waits for the owner with the reasons in the notes", async () => {

@@ -221,6 +221,25 @@ export function matchKind(heard, line, lexicon, locale = NARRATION_LOCALE) {
   return null;
 }
 
+/** How a text is read with the tones left out: 擋 and 當 read alike, 本機 and 本期 do not. */
+export function tonelessReading(text) {
+  return pinyin(comparable(text).replace(/妳/gu, "你"), { toneType: "none", type: "array", nonZh: "consecutive", v: true }).join(" ");
+}
+
+/**
+ * Whether a zh transcript reads as the line once tones are left out, filler words and closing
+ * particles dropped as matchKind drops them: the voice said the line and the transcriber wrote a
+ * commoner word that differs only in tone (擋呼叫→當呼叫, 九行→就行, 沒有量→沒有亮). A retake of the
+ * same text is heard the same way again (script-writing.md §給 TTS 唸的稿子), so such a line goes
+ * to the listener's rewrite first. Same-tone homophones never get here: matchKind passes them.
+ */
+export function soundsAlikeTonelessly(heard, line, lexicon, locale = NARRATION_LOCALE) {
+  if (!CHINESE.has(locale) || typeof heard !== "string" || !heard.trim()) return false;
+  const bare = (text) => comparable(text).replace(FILLERS, "");
+  const said = new Set([bare(heard), bare(heard).replace(CLOSING_PARTICLES, ""), bare(String(heard).replace(CLAUSE_CLOSING_PARTICLES, ""))].map(tonelessReading));
+  return [line.text, spokenText(line), spokenForm(line, lexicon)].some((form) => said.has(tonelessReading(bare(form))));
+}
+
 // Words the voice has read aloud before a line, a stray token rather than the script: on
 // 2026-10-15 the English dubs of H05 and H06 opened lines with "thought", glued to the sentence
 // ("thoughtIt proves ...") or on a line of its own. Jev passed one of them; a viewer hears it.
@@ -602,7 +621,14 @@ export async function checkAudio(args, ctx, options) {
   const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, noteOf(id, entry)]));
   // A dub's flags name their track, and the translation the dub was read from.
   const provenance = dub ? { locale, translation_hash: timeline.translation_hash } : {};
-  atomicWrite(flagsFile, `${JSON.stringify({ slug: doc.slug, ...provenance, speech_hash: timeline.speech_hash, flags: flagged.map(([id]) => id), notes }, null, 2)}\n`);
+  // The flagged lines every transcript heard as a near-homophone of the script: for the worker to
+  // reword before it spends a retake on them (automation/flow.mjs narration()). A hand
+  // `tts --redo` of this file still retakes every flagged line; `reword` is written only when
+  // there is one, so the file is what it always was otherwise.
+  const reword = flagged
+    .filter(([id, entry]) => !leaks.has(id) && soundsAlikeTonelessly(entry.heard, byLine.get(id), lexicon, locale) && (!entry.second || soundsAlikeTonelessly(entry.second.heard, byLine.get(id), lexicon, locale)))
+    .map(([id]) => id);
+  atomicWrite(flagsFile, `${JSON.stringify({ slug: doc.slug, ...provenance, speech_hash: timeline.speech_hash, flags: flagged.map(([id]) => id), ...(reword.length ? { reword } : {}), notes }, null, 2)}\n`);
   const total = lines.length;
   const missing = total - entries.length;
   recordStage(
@@ -652,6 +678,7 @@ export async function checkAudio(args, ctx, options) {
     const why = leaks.has(id) ? `leaked word 「${leaks.get(id)}」, ${jevNote(entry)}` : jevNote(entry);
     ctx.stdout.write(`  ${id}  ${why}\n    script: ${entry.intended}\n    heard:  ${entry.heard}${other}\n`);
   }
+  if (reword.length) ctx.stdout.write(`${reword.length} of them only differ by tone (${reword.join(", ")}): a retake is heard the same way, so reword them (script-writing.md §給 TTS 唸的稿子)\n`);
   if (flagged.length) {
     ctx.stdout.write(`next: fix the dictionary or the ${dub ? "translation" : "line"}, then node tools/video/cli.mjs ${remake} --redo ${flagsFile}\n`);
   }

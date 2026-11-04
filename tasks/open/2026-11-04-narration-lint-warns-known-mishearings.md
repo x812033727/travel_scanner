@@ -1,19 +1,22 @@
 ---
 id: 2026-11-04-narration-lint-warns-known-mishearings
 title: Narration lint warns on words the transcriber is known to mishear, before any TTS is paid for
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5.5-tts-retakes
+claimed_at: 2026-11-04T16:50:58Z
 created_at: 2026-11-04T16:48:18Z
 completed_at:
-branch:
+branch: claude/tender-einstein-ss8r5w
 depends_on: []
 scope:
   - tools/video/core/mishearings.mjs
   - tools/video/core/mishearings.test.mjs
   - tools/video/core/lint.mjs
+  - tools/video/automation/register.mjs
+  - tools/video/templates/fixtures/paper/video.json
+  - tools/video/templates/terminal/fixtures/claude-code/video.json
   - .agents/skills/youtube-video/references/script-writing.md
 ---
 
@@ -35,23 +38,24 @@ instead.
 
 ## Definition of done
 
-- [ ] `node tools/video/cli.mjs lint --slug <slug>` on a zh-TW script that contains a phrase
+- [x] `node tools/video/cli.mjs lint --slug <slug>` on a zh-TW script that contains a phrase
       from the table prints a **warning** (never an error) on that line, naming the phrase, what
       the transcriber writes for it and the wording to use instead.
-- [ ] The phrases live in one module (`tools/video/core/mishearings.mjs`); the table in
+- [x] The phrases live in one module (`tools/video/core/mishearings.mjs`); the table in
       `script-writing.md` is kept in step with it by a test, so adding a row in one place and
       not the other fails `npm run test:tools`.
-- [ ] A phrase that is part of its own fix or of an unrelated word does not warn
+- [x] A phrase that is part of its own fix or of an unrelated word does not warn
       (沒有量到 for 沒有量, 日本機場 for 本機).
-- [ ] English narration (`narration_locale: "en"`) and dub translations are not checked.
+- [x] English narration (`narration_locale: "en"`) and dub translations are not checked.
 
 ## Steps
 
-- [ ] `core/mishearings.mjs`: `MISHEARINGS = [{ said, heard: [...], instead, unless? }]`
+- [x] `core/mishearings.mjs`: the existing `MISHEARD_WORDS` moved here from
+      `automation/register.mjs` (which imports and re-exports it), plus `UNLESS`, `phrasesOf`
       and `mishearingsIn(text)`.
-- [ ] `core/lint.mjs`: one `warn(label, …)` per hit in the per-line loop, zh only.
-- [ ] `mishearings.test.mjs`: hits, the exceptions, and the table-vs-module parity.
-- [ ] `script-writing.md`: say the table is enforced as a lint warning and where to add rows.
+- [x] `core/lint.mjs`: one `warn(label, …)` per hit in the per-line loop, zh only.
+- [x] `mishearings.test.mjs`: hits, the exceptions, and the table-vs-module parity.
+- [x] `script-writing.md`: say the table is enforced as a lint warning and where to add rows.
 
 ## How to verify
 
@@ -70,3 +74,19 @@ npm run test:tools
   are in the scope of five in-progress tasks; every one of those claims is older than 24 hours
   (stale). Taking it needs `claim --force`, which the session's permission mode did not allow
   without the owner's go-ahead.
+- 2026-11-04 (claude-opus-5.5-tts-retakes, claimed with `--force` on the owner's go-ahead):
+  done on branch `claude/tender-einstein-ss8r5w`.
+  - The list already existed: `MISHEARD_WORDS` in `automation/register.mjs`, sent to the slides
+    writer and listener in `HEARD_RULES` and checked against the guide's table by
+    `prompts.test.mjs`. lint cannot import register.mjs (register imports lint), so the list
+    moved to `core/mishearings.mjs`; `HEARD_RULES`' text is byte-for-byte the same, so the
+    hash-pinned prompts do not change and no host stage reruns.
+  - `mishearings.test.mjs` asserts every row's own fix never warns; that found three more
+    exceptions beyond the obvious ones (含糊的那一份, 尺取十一, 延後的到底是什麼).
+  - Lint reads `spokenText` (the `say` form when there is one), zh narration only.
+  - Two template fixtures said 「印出」 and their tests require zero warnings; their text now
+    says 「顯示」 (paper `pl14`, claude-code `tc04`, `tc08`).
+  - `lint.mjs` is bound by the long-form duration receipt; it is rebound by an independent
+    reviewer agent (`.agents/skills/dev-and-ci/references/duration-receipt.md`).
+  - `npm run test:tools`: the only failures left are the 15 that also fail on `origin/main`
+    in this container (the native-log exit classifier tests 124–142).

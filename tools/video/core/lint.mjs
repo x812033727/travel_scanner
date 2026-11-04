@@ -8,6 +8,7 @@ import { craftProblems } from "./craft.mjs";
 import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
+import { mishearingsIn } from "./mishearings.mjs";
 import { DEFAULT_CADENCE, isNarrated, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
@@ -463,6 +464,13 @@ export function lintVideo(doc, context = {}) {
     const longest = english ? SENTENCE_WARN_EN : SENTENCE_WARN;
     if (spokenUnits(line.text) > longest) warn(label, `${spokenUnits(line.text)} spoken units; split sentences longer than ${longest}`);
     if (/[()（）]/.test(line.text)) warn(label, "parentheses do not survive being read aloud; make it its own sentence");
+    // The audio check's transcriber writes these as another word, and a retake is heard the same
+    // way again: each one found now is a retake round, Jev calls and a rewrite not paid for later.
+    if (!english) {
+      for (const { written, instead, phrase } of mishearingsIn(spoken)) {
+        warn(label, `「${phrase}」 is a word the audio check mishears (script-writing.md §給 TTS 唸的稿子, row 「${written}」); say 「${instead}」 or another wording, or the line is flagged and retaken for nothing`);
+      }
+    }
   }
 
   doc.scenes.forEach((scene, index) => {

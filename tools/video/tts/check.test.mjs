@@ -26,7 +26,9 @@ import {
   MAX_INTENDED_CHARACTERS,
   parseDubLocale,
   reading,
+  soundsAlikeTonelessly,
   spokenForm,
+  tonelessReading,
   trackFiles,
 } from "./check.mjs";
 import { concatSamples, downsample, encodeWav } from "./wav.mjs";
@@ -344,6 +346,41 @@ test("check-audio flags only the line Jev doubts, writes a redo file, and reuses
   const forced = context(box, server.fetchImpl);
   await main(["check-audio", "--slug", box.slug, "--force"], forced.ctx);
   assert.equal(server.calls.transcribe.length, lines.length * 2);
+});
+
+test("a transcript that differs from the line only in tone sounds alike tonelessly; another syllable or a missing word does not", () => {
+  const line = (text) => ({ id: "a", text });
+  assert.equal(tonelessReading("擋"), tonelessReading("當"));
+  assert.notEqual(reading("擋"), reading("當"), "the toned reading keeps them apart, so matchKind still flags it");
+  assert.equal(soundsAlikeTonelessly("負責當呼叫的", line("負責擋呼叫的"), null), true);
+  assert.equal(soundsAlikeTonelessly("沒有亮啊", line("沒有量。"), null), true, "fillers and punctuation fall away as in matchKind");
+  assert.equal(soundsAlikeTonelessly("先在本期跑", line("先在本機跑"), null), false, "ji and qi are other syllables: a retake may help");
+  assert.equal(soundsAlikeTonelessly("負責當", line("負責擋呼叫的"), null), false, "words left out");
+  assert.equal(soundsAlikeTonelessly("GPT 3", line("GPT 5"), null), false, "a number is never a tone");
+  assert.equal(soundsAlikeTonelessly("hello", line("hello"), null, "en"), false, "Mandarin only");
+  assert.equal(soundsAlikeTonelessly("", line("擋"), null), false);
+});
+
+test("check-audio lists the flagged lines heard only as a near-homophone under reword, and leaves the file as it was without one", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const [missing, tone] = [lines[2], lines[3]];
+  assert.ok(spokenText(tone).includes("想多久"));
+  const heardFor = (count) => {
+    const index = count % lines.length;
+    if (index === 2) return spokenText(missing).slice(0, 4);
+    if (index === 3) return spokenText(tone).replace("想多久", "像多久");
+    return spokenText(lines[index]);
+  };
+  const server = site({ heardFor, noul: (line) => ([missing.id, tone.id].includes(line.id) ? 0.1 : 0.95) });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+  const run = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  const flags = JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8"));
+  assert.deepEqual(flags.flags, [missing.id, tone.id], "a hand tts --redo still retakes both");
+  assert.deepEqual(flags.reword, [tone.id]);
+  assert.match(run.out.stdout, new RegExp(`1 of them only differ by tone \\(${tone.id}\\)`));
 });
 
 test("check-audio tells the transcriber each line's English words, and redoes transcripts made without them", async () => {

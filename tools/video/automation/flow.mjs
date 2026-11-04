@@ -963,6 +963,27 @@ function changedTakes(timeline, workdir, ids = null) {
 }
 
 /** How a retake that exited 4 waits: as a tts would, everyone's trouble never counting toward a block. */
+/**
+ * The flags file a retake round redoes (tts --redo), or null when there is nothing worth
+ * retaking. check-audio lists in `reword` the flagged lines every transcript heard only as a
+ * near-homophone (tts/check.mjs soundsAlikeTonelessly); with `rewordFirst` they are left out
+ * here and go to the listener's rewrite, so no retake round and no Jev round is spent on a line
+ * that would be heard the same way again. The rest are written to check-flags.retake.json; a
+ * file with no `reword` is retaken as it is, as it always was.
+ */
+export function retakeFlags(workdir, { rewordFirst = true } = {}) {
+  const file = path.join(workdir, "review", "check-flags.json");
+  const flags = readJson(file, null);
+  const reword = new Set(rewordFirst && Array.isArray(flags?.reword) ? flags.reword : []);
+  if (!reword.size) return file;
+  const retake = (flags.flags ?? []).filter((id) => !reword.has(id));
+  if (!retake.length) return null;
+  const { reword: _reword, ...rest } = flags;
+  const out = path.join(workdir, "review", "check-flags.retake.json");
+  atomicWrite(out, `${JSON.stringify({ ...rest, flags: retake, notes: Object.fromEntries(Object.entries(flags.notes ?? {}).filter(([id]) => !reword.has(id))) }, null, 2)}\n`);
+  return out;
+}
+
 const retakeWait = (redo) => ({ what: "tts", everyone: Boolean(everyones(redo.out)) });
 
 /**
@@ -4275,10 +4296,14 @@ export class Automation {
     if (review?.status === "pending") return null;
     let check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     const retakeRounds = settingsFor(this.settings, state.format).retakeRounds;
+    const pilotScriptLocked = Object.hasOwn(PILOT_SCRIPT_REFERENCES, state.slug);
     while (check.code === 1 && state.retakes < retakeRounds) {
+      // Lines heard only as a near-homophone go to the rewrite below without a retake: the same
+      // text is heard the same way again. A pilot whose script cannot be rewritten retakes them all.
+      const flagsFile = retakeFlags(workdir, { rewordFirst: !pilotScriptLocked });
+      if (!flagsFile) break;
       state.retakes += 1;
       saveState(workdir, state);
-      const flagsFile = path.join(workdir, "review", "check-flags.json");
       const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code === 4) return this.retakeStopped(state, flagsFile, `the retake could not finish (${lastLine(redo.out)})`, retakeWait(redo), { giveBack: true });
@@ -4292,7 +4317,6 @@ export class Automation {
     // video.json here would bypass that review and immediately buy TTS for unreviewed words.
     // Their remaining flags go to the owner instead; a rejection sends the story listener back
     // through the chapter merge, narrative panel and pilot script receipt before new TTS.
-    const pilotScriptLocked = Object.hasOwn(PILOT_SCRIPT_REFERENCES, state.slug);
     let rounds = 0;
     let rewritten = 0;
     let problems = [];

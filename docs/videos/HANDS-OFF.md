@@ -174,6 +174,7 @@ OAuth 的做法：
 - 數字、專有名詞與說法不能改，lint 會比對改寫前後出現的數字與拉丁字詞；
 - 改完用 `tts --redo` 重錄這幾句，再檢查一次，最多兩輪；
 - 還是不過，才等站主。
+- **只差聲調的句子先改寫，不先重錄**（2026-11-04，票 `2026-11-04-worker-rewords-near-homophone-flags-first`）：同聲調的同音字 `check-audio` 本來就放行；被標的 zh 句子裡，每一份轉寫（Gemini 的，有第二個轉寫時也算它的）去掉聲調後念法都跟稿子一樣的（擋呼叫→當呼叫、沒有量→沒有亮），列在 `check-flags.json` 的 `reword`（`tts/check.mjs` 的 `soundsAlikeTonelessly`）。聲音唸對了、是轉寫挑了常見的詞，重錄同一句只會再被聽成一樣，所以工人的重錄輪只重錄 `reword` 以外的句子（寫成 `check-flags.retake.json`，`flow.mjs` 的 `retakeFlags`），全部都在 `reword` 裡就不花重錄輪、直接進改寫。手動 `tts --redo review/check-flags.json` 照舊重錄每一句被標的句子；腳本鎖定的品牌故事小樣不能改寫，照舊全部重錄。只比整句去掉聲調的念法，所以 j／q／x 之類的混淆（本機→本期）與多音字讀法不同的（pinyin-pro 把「九行」讀成 jiu háng）照舊先重錄。
 
 ## 漫劇的設定圖
 
