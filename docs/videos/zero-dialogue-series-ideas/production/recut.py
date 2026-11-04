@@ -40,8 +40,8 @@ CUTS = {
   ("s01-tap", 0.3, 2.4, [("tap", 0.2, 0), ("pop", 1.4, -8)]),
   ("s02-door", 0.3, 2.4, [("lock", 1.9, 0)]),
   ("s03-cobweb", 0.3, 3.2, [("wind", 0.0, -8), ("birds", 0.4, 0), ("tension", 0.8, 0)]),
-  ("s05-slipper", 0.3, 0.9, [], {"push": [2.4, 2.4], "anchor": [0.5, 1.0]}),
-  ("s03-cobweb", 2.9, 1.5, [("lock", 0.3, 0)], {"hold": 1.1, "music_off": True})],
+  ("s05-slipper", 0.3, 0.9, [("lock", 0.75, 0)], {"push": [3.5, 3.5], "anchor": [0.5, 1.0]}),
+  ("s03-cobweb", 2.9, 1.5, [], {"hold": 1.1, "music_off": True})],
  "wangjia-couple-e04": [
   ("s02-game", 1.35, 2.0, [("buttons", 0.0, 0)]),
   ("s03-door", 0.3, 2.0, [("tension", 0.0, 0)]),
@@ -50,14 +50,14 @@ CUTS = {
   ("s07-mobile", 0.3, 2.8, [("musicbox", 0.0, -8), ("click", 2.0, 0)], {"hold": 0.8})],
  "wangjia-couple-e05": [
   ("s01-burrito", 0.3, 0.9, [("snore", 0.0, 0)]),
-  ("s02-twitch", 0.3, 1.2, [("tension", 0.0, 0)]),
-  ("s04-mega", 0.3, 2.6, [("pop", 0.3, -6)]),
+  ("s02-twitch", 0.3, 0.8, [("tension", 0.0, 0)]),
+  ("s04-mega", 0.3, 2.8, [("pop", 0.3, -6)]),
   ("s03-petbed", 0.3, 2.6, [("birds", 0.0, -8)]),
-  ("s05-towel", 0.4, 2.0, [("snore", 0.0, -4)], {"hold": 0.6, "music_off": True})],
+  ("s05-towel", 0.4, 2.0, [("snore", 0.0, -4)], {"hold": 0.9, "music_off": True})],
  "raccoon-mischief-e01": [
   ("s01-crash", 0.2, 0.8, [("shatter", 0.0, 0)]),
   ("s02-key", 0.3, 0.8, [("keys", 0.1, 0)]),
-  ("s03-still", 0, 2.6, [("crunch", 1.6, -4)]),
+  ("s03-still", 0, 2.6, [("crunch", 1.6, -4)], {"push": [1.45, 1.6], "anchor": [0.5, 0.55]}),
   ("s05-mama", 0.3, 2.4, [("keys", 0.0, -6)]),
   ("s04-lamp", 0.2, 2.6, [("sting", 1.2, 0), ("click", 2.1, 0)], {"hold": 0.7})],
  "raccoon-mischief-e02": [
@@ -103,13 +103,13 @@ CUTS = {
   ("s03-rooftop", 0.3, 3.0, [("recordscratch", 0.0, 0), ("blender", 0.3, -6)]),
   ("s04-boyfriend", 0.3, 2.2, [("blender", 0.0, -4)]),
   ("s05-still", 0, 2.4, [("shutter", 0.0, 0)]),
-  ("s04-boyfriend", 1.6, 1.0, [("inhale", 0.2, 0)], {"hold": 0.4, "music_off": True, "push": [1.0, 1.2], "anchor": [0.5, 0.3]}),
+  ("s04-boyfriend", 1.6, 0.9, [("inhale", 0.1, 0)], {"hold": 0.4, "music_off": True, "push": [1.9, 2.3], "anchor": [0.54, 0.16]}),
   ("s06-sneeze", 0.5, 3.0, [("sneeze", 0.0, 0)], {"hold": 0.8})],
  "influencer-piglet-e03": [
   ("s01-falls-still", 0, 1.2, [("shutter", 0.9, 0)]),
   ("s03-roof", 0.3, 3.0, [("recordscratch", 0.0, 0), ("pour", 0.3, -4)]),
   ("s04-boyfriend", 0.3, 2.8, [("pour", 0.0, -6)]),
-  ("s05-crop", 0.3, 3.2, [("shutter", 0.0, 0), ("gurgle", 1.8, 0)], {"push": [1.0, 1.4], "anchor": [0.5, 0.0]})],
+  ("s05-crop", 0.3, 3.4, [("shutter", 0.0, 0), ("gurgle", 2.2, 0)], {"push": [1.0, 1.8], "anchor": [0.95, 0.0], "hold": 0.6})],
  "influencer-piglet-e04": [
   ("s01-sakura", 0.3, 1.2, [("shutter", 0.9, 0)]),
   ("s03-lot", 0.3, 3.0, [("recordscratch", 0.0, 0), ("blower", 0.3, -6)]),
@@ -121,12 +121,14 @@ CUTS = {
   ("s03-garage", 1.9, 1.8, [("recordscratch", 0.0, 0), ("hum", 0.3, 0)]),
   ("s04-boyfriend", 0.3, 2.2, [("hum", 0.0, -4)]),
   ("s05-photo", 0.2, 1.8, [("shutter", 0.0, 0)]),
-  ("s06-tangle", 0.5, 3.4, [("whoosh", 0.2, 0), ("powerdown", 1.4, 0)], {"lights_out": [1.4, 1.9, 2.4]})],
+  ("s06-tangle", 0.5, 1.5, [("whoosh", 0.2, 0)]),
+  ("s04-boyfriend", 1.0, 0.9, [("powerdown", 0.2, 0)], {"push": [2.2, 2.2], "anchor": [0.68, 0.57], "lights_out": [0.45]}),
+  ("s06-tangle", 2.0, 1.6, [("click", 0.3, 0), ("click", 0.6, 0)], {"lights_out": [0.3, 0.6], "music_off": True})],
  "shechu-hell-e01": [
   ("s02-pack", 0.2, 1.4, []),
   ("s03-crop", 0.3, 1.5, []),
-  ("s05-fall", 0.5, 1.6, [("paper", 0.0, 0)]),
   ("s04-turn", 0.3, 1.0, []),
+  ("s05-fall", 0.5, 1.6, [("paper", 0.0, 0)]),
   ("s06-night", 0.3, 2.0, [("crickets", 0.0, -6)]),
   ("s07-again", 1.0, 2.4, [("dun", 1.8, 0)], {"hold": 0.6})],
  "shechu-hell-e02": [
@@ -139,13 +141,12 @@ CUTS = {
   ("s02-pupils", 2.4, 0.6, []),
   ("black", 0, 0.5, [])],
  "shechu-hell-e03": [
-  ("s01-slack", 0.3, 2.0, []),
-  ("s02-ears", 0.3, 0.5, [("bell", 0.0, 0)]),
+  ("s01-slack", 0.3, 2.2, [("bell", 1.7, 0)]),
   ("s03-work", 0.3, 2.2, [("typing", 0.0, 0)]),
   ("s04-toy", 0.3, 2.0, [("bell", 0.0, -4)]),
   ("s05-relax", 0.2, 1.4, []),
   ("s06-shadow", 1.6, 2.0, [("dun", 0.4, 0)]),
-  ("s07-perch", 0.3, 2.5, [("thud", 1.5, 0)], {"hold": 1.4, "music_off": True})],
+  ("s07-perch", 0.3, 2.5, [("click", 1.3, 4), ("thud", 1.6, 0)], {"hold": 1.4, "music_off": True})],
  "shechu-hell-e04": [
   ("s01-knock", 0.3, 1.2, [("knock", 0.4, 0)]),
   ("s02-box", 0.3, 2.2, [("dun", 0.4, -6)]),
@@ -160,7 +161,7 @@ CUTS = {
   ("s04-keyboard", 0.3, 3.0, [("typing", 0.3, -10)]),
   ("s05-crop", 0.3, 1.1, [("aircon", 0.0, 0)]),
   ("s06-warm", 0.3, 2.2, []),
-  ("s07-eye", 0.3, 3.0, [("dun", 1.2, 0)], {"hold": 0.6})],
+  ("s07-eye", 0.3, 3.0, [("dun", 1.2, 0)], {"hold": 0.6, "push": [1.06, 1.06], "anchor": [1.0, 0.5]})],
 }
 
 
