@@ -1,14 +1,14 @@
 ---
 id: 2026-11-04-curio-and-sothatswhy-stop-burning-subtitles
 title: 奇聞檔案局與原來如此事務所不燒字幕：繁中與外語都走 CC
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-stw-dialogue
 claimed_at: 2026-11-04T04:31:07Z
 created_at: 2026-11-04T04:31:02Z
 completed_at:
-branch: claude/focused-hopper-zq70n8
+branch: claude/focused-hopper-zq70n8-p02
 depends_on: []
 scope:
   - tools/video/automation/flow.mjs

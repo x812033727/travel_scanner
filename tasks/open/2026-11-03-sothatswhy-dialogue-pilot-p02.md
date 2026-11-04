@@ -1,14 +1,14 @@
 ---
 id: 2026-11-03-sothatswhy-dialogue-pilot-p02
 title: 原來如此事務所對話版試做：P02 雲變午後大雨（所長＋小問）
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-opus-stw-dialogue
 claimed_at: 2026-11-03T07:17:05Z
 created_at: 2026-11-03T07:12:15Z
 completed_at:
-branch: claude/focused-hopper-zq70n8
+branch: claude/focused-hopper-zq70n8-p02
 depends_on: []
 scope:
   - docs/videos/so-thats-why/dialogue-pilot-20261103
