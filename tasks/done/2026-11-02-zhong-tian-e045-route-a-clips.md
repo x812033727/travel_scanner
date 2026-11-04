@@ -1,13 +1,13 @@
 ---
 id: 2026-11-02-zhong-tian-e045-route-a-clips
 title: Zhong-tian e045: route A clips on RunPod, cut, import, dubs and publish package
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5.5-zt-e043
 claimed_at: 2026-11-02T03:51:30Z
 created_at: 2026-11-02T03:51:29Z
-completed_at:
+completed_at: 2026-11-04T02:00:56Z
 branch:
 depends_on: []
 scope:
@@ -24,8 +24,8 @@ scope:
 
 ## Definition of done
 
-- [ ] 37 鏡 1080p 片段，紀錄在 `colab/runs/e045/`
-- [ ] 剪接、匯入、站主核准；八語、上架包核准
+- [x] 37 鏡 1080p 片段，紀錄在 `colab/runs/e045/`
+- [x] 剪接、匯入、站主核准；八語、上架包核准
 
 ## Steps
 
@@ -42,3 +42,4 @@ scope:
 - 09:18 起 EU-RO-1 沒貨（409），`_scripts/st23-retry.sh` 每 3 分鐘重試，09:32 開到一台，但第三段每支 830–900 秒（正常約 200 秒），慢 4 倍；做了 7 支後 11:20 換機。之後 EU-RO-1 又沒貨，迴圈繼續等。
 - s33、s36（唐小棠在客房）高領下露抹胸，四個 seed 都壓不住，剪接時只取上半部再放大。
 - 剪接時的修正見 `colab/runs/e045/review-st1.md` 最後一節（s08 漏看了背景的全身分身，裁切救回）。匯入回報 120 fps：是成片的 r_frame_rate，平均 23.96 fps，與前兩集相同。
+- 2026-11-04 站主核准上架包（含片段）；結案。
