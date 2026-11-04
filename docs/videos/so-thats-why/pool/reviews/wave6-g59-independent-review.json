@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "author": "root",
+  "role": "INDEPENDENT_TREATMENT_SOURCE_ARITHMETIC_REVIEW",
+  "status": "PASS_TREATMENT_AND_ARITHMETIC_NOT_SCRIPT_OR_PRODUCTION_APPROVAL",
+  "theme_id": "G59",
+  "reviewed_files": [
+    {
+      "path": "treatments/G59/treatment.json",
+      "sha256": "91ff5c96372b2f62052fad21af62cd420576b82b9644958c1aafa48ab08240c5"
+    },
+    {
+      "path": "treatments/G59/demo.js",
+      "sha256": "908a8143c3543966e0e764c59891334169c1c6af147d6bae9c0f1e98f0396c67"
+    },
+    {
+      "path": "treatments/G59/demo.html",
+      "sha256": "93efb51a5860941f4d3fd56e53a46b71f0638f27b9f4347a6fd55c62a7160671"
+    },
+    {
+      "path": "treatments/G59/verify-demo.mjs",
+      "sha256": "953994cfb341f86b49e1983963e67cec9828be07267d516092fbd3f54c311379"
+    },
+    {
+      "path": "reviews/wave6-g59-demo.json",
+      "sha256": "de578c0ccd5ecfe1f95e6a6964195f4df4abfd29401be0435f1e961a5f78dfd5"
+    }
+  ],
+  "read_scope": [
+    "treatment全部承諾、4節拍、6主張、刪段與交接條件",
+    "demo.js全算術、demo.html全UI文字與事件程式",
+    "verify-demo.mjs與root的demo receipt，作者收據3個檔案hash讀回一致",
+    "原M5004/M5008/M5009/M5010 raw目標、適用範圍與秒數上限",
+    "root留存桌面/手機截圖各1張獨立目讀；未自行重點按鈕或重跑UI"
+  ],
+  "source_review": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+      "publisher": "RFC Editor / IETF",
+      "version": "RFC9639, December 2024",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find官方正文",
+      "reading_scope": "§2 arithmetic shifts；§4.2 mid-side構造/逆轉與額外位元；§4.3–4.4；§9.2.5 Table20與warm-up/逐點解碼；§9.2.7相關段作編碼界線，不是全文逐條驗證。",
+      "supports": [
+        "一階用前一點，須保留第一點；殘差與解碼規則恢復原整數。",
+        "mid採和向下取整，side採左減右；side奇偶可補回和的最低位，負奇數也要用算術右移等價規則。",
+        "可逆表示仍需後續編碼，未由此證明任何特定檔案縮小。"
+      ],
+      "limits": "沒有測完整FLAC位元流、Rice編碼、CRC或所有位深；未查RFC完整互通性附錄。"
+    }
+  ],
+  "claim_results": [
+    {
+      "ids": [
+        "c1",
+        "c2"
+      ],
+      "result": "supported_with_stated_limits",
+      "reason": "一階前點與warm-up一致；UI未省略起點。"
+    },
+    {
+      "ids": [
+        "c3"
+      ],
+      "result": "supported_with_stated_limits",
+      "reason": "明確不把格數/差值小當壓縮率，跳動對照仍可還原。"
+    },
+    {
+      "ids": [
+        "c4"
+      ],
+      "result": "supported_with_stated_limits",
+      "reason": "floor配非負奇偶值符合所示整數逆轉；負數不能改成截向零。"
+    },
+    {
+      "ids": [
+        "e1",
+        "e2"
+      ],
+      "result": "author_receipt_checked_plus_independent_arithmetic",
+      "reason": "作者回報的65536/49/128/4來自其收據；我沒有冒稱親跑同一組。另以BigInt oracle和改錯差值獨立驗證如下。"
+    }
+  ],
+  "independent_execution": {
+    "status": "PASS_INDEPENDENT_ARITHMETIC_ORACLE",
+    "node": "v24.22.1",
+    "command": "PowerShell here-string to bundled Node stdin; read-only VM evaluation of demo.js; no author receipt overwritten",
+    "reference_method": "BigInt signed arithmetic shifts and side&1 recovery, compared against Number/floor implementation",
+    "bigint_signed_shift_oracle_pairs": 4217,
+    "boundary_pairs": 121,
+    "boundary_values": [
+      -32768,
+      -32767,
+      -32766,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      32765,
+      32766,
+      32767
+    ],
+    "seeded_16bit_pairs": 4096,
+    "seed": 62026,
+    "seed_generator": "xorshift32: <<13, >>>17, <<5; unsigned%65536-32768",
+    "prediction_presets": 2,
+    "corrupted_residual_cases": 20,
+    "corruption_definition": "每組6點的5個殘差，各加-3或+2；後續樣本應整段偏移相同delta，前段不變。",
+    "odd_parity_counterexamples": 2,
+    "demo_js_sha256": "908a8143c3543966e0e764c59891334169c1c6af147d6bae9c0f1e98f0396c67",
+    "scope": "算術oracle通過；未重跑作者verify-demo.mjs或瀏覽器測試，不改作者收據。"
+  },
+  "editorial": {
+    "decision": "140秒兩核心成立，優於硬留200秒三核心",
+    "body_seconds": 140,
+    "beats_seconds": [
+      35,
+      35,
+      35,
+      35
+    ],
+    "core_seconds": {
+      "M5004": 70,
+      "M5009": 70
+    },
+    "core_limits": {
+      "M5004_via_M5008": 80,
+      "M5009": 80
+    },
+    "opening_and_closing_included": true,
+    "new_progress": [
+      "先保留起點與差值",
+      "故意改錯差值，再分清可逆與省空間",
+      "左右換成中間與差",
+      "奇數和取整後由差值補回"
+    ],
+    "removed_from_film": [
+      "M5010"
+    ],
+    "removal_reason": "區塊表頭成本改答如何更省，不服務本片如何完整還原；仍應留素材池。",
+    "listener_read": "treatment及樣例句的書面編輯審閱；沒有完整稿盲讀、試讀或受眾接受測試。",
+    "cut_if": "完整稿若35秒內無法讓觀眾跟上奇偶步驟，先改寫或再縮範圍；負值/邊界案例留證據，不加成第五章。"
+  },
+  "visual_readback": {
+    "desktop": "既有root截圖中六欄與兩步算式可讀，未見遮擋。",
+    "mobile": "既有root截圖中表格需要橫捲且有提示；其可捲到最後欄由root UI收據支持，非本審閱者另點按驗證。",
+    "scope": "這是互動示意頁的視覺讀回，不是成片畫面或播放驗收。"
+  },
+  "findings": [],
+  "blocking_issues": [],
+  "nonblocking_script_note": "完整稿宜把「少了一半」說清是奇數和除2後的半格/最低位，避免聽者誤認資料被丟掉一半；當前頁面已用取整和奇偶恢復補足，不構成退件。",
+  "handoff": {
+    "author_status_at_read": "REVIEWED_TREATMENT_WITH_ARITHMETIC_DEMO_NOT_SCRIPT_APPROVED",
+    "requested_adoption": "已確認root採納為已審treatment且完整稿未核准；下一步依交接撰寫完整旁白與試讀。",
+    "production_ready": false,
+    "full_script_approved": false,
+    "paid_media_authorized": false
+  },
+  "limitations": [
+    "沒有全素材池再次去重或來源重查",
+    "沒有完整稿、旁白、音訊播放或最終成片",
+    "未測完整編碼器、檔案大小、CRC損毀處置或全32位元輸入",
+    "不把純數字示意當正式內容產線已通過"
+  ],
+  "conclusion": "未發現阻擋；可採為兩核心140秒treatment與原創算術示意，後續完整稿、口播與畫面仍需各自審核。",
+  "targeted_followup": {
+    "reviewed_on": "2026-11-01",
+    "reviewer": "science_sources",
+    "status": "PASS_STATUS_HANDOFF_ONLY_READBACK",
+    "previous_treatment_sha256": "8719b530a4a884f5adb5bd3c514c8e16155879ef135f5198d3df4aea26233b93",
+    "current_treatment_sha256": "91ff5c96372b2f62052fad21af62cd420576b82b9644958c1aafa48ab08240c5",
+    "changed_fields": [
+      "status",
+      "handoff"
+    ],
+    "method": "將目前JSON的status/handoff還原成首次實讀文字，重新序列化後SHA256精確符合首次綁定檔；因此其餘欄位未變。其餘4個已審檔案SHA256亦吻合。",
+    "confirmed": [
+      "狀態改為REVIEWED_TREATMENT_WITH_ARITHMETIC_DEMO_NOT_SCRIPT_APPROVED",
+      "交接明示完整稿與試讀為下一步，取整半格/最低位不等於資料丟掉一半",
+      "公式、4個35秒節拍、140秒總長、兩核心及原算術證據未變"
+    ],
+    "scope": "定向狀態與交接讀回；未重跑算術或UI、未讀仍在變動的中央檔。"
+  }
+}

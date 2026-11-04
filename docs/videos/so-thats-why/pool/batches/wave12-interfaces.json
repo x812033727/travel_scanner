@@ -1,0 +1,560 @@
+{
+  "batch_id": "wave12-interfaces-20261101",
+  "created_on": "2026-11-01",
+  "scope": "接觸線、動態界面、薄膜退縮與液滴／顆粒殼的題級研究。只採可區分舊核心的控制條件；無危險或粉末製備操作。",
+  "sources": [
+    {
+      "id": "I12-S001",
+      "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf",
+      "title": "18.357 Interfacial Phenomena — Complete lecture notes",
+      "publisher": "John W. M. Bush; MIT OpenCourseWare",
+      "accessed_on": "2026-11-01",
+      "version": "Fall 2010 course; compiled June 3, 2013",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "printed pp.22–23 §6/6.1；28–31 §8.1/§9開頭；34–36、38–39 §10.1–10.4；47–48 §12.3；59–61 §15.1；64–72 §16.1–17.1。PDF頁碼為printed+1。",
+      "locator": "printed pp.22–23 §6/6.1；28–31 §8.1/§9開頭；34–36、38–39 §10.1–10.4；47–48 §12.3；59–61 §15.1；64–72 §16.1–17.1。PDF頁碼為printed+1。",
+      "summary": "界面形狀、接觸線歷史與流動共同決定浮物相吸、液滴卡住、表面流及薄膜移動。",
+      "limitations": "只採列出的教學機制，不稱全82頁讀完；不採酒品質推論、§16符號不一致的臨界式、§17回顧中的指數疑誤。與舊Q9005的Lecture11單章屬同課程，非第二份獨立證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I12-S002",
+      "url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/PoF-Incline.pdf",
+      "title": "Droplets bouncing on a wet, inclined surface",
+      "publisher": "Tristan Gilet & John W. M. Bush; MIT / Physics of Fluids",
+      "accessed_on": "2026-11-01",
+      "version": "24,122103 (2012), DOI:10.1063/1.4771605",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF pp.2–5 / printed122103-1–4，§I、§II、§III.A Phenomenology與Figs.1–4的已讀文字。",
+      "locator": "PDF pp.2–5 / printed122103-1–4，§I、§II、§III.A Phenomenology與Figs.1–4的已讀文字。",
+      "summary": "介於液滴和濕表面的氣層若撐過變形回彈，液滴可在真正合併前離開。",
+      "limitations": "原實驗為矽油滴與高黏矽油薄層；不偷換成普通冷水池，不採普遍破膜厚度或通用We門檻。未看補充影片，未讀全能量推導。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I12-S003",
+      "url": "https://www.math.ubc.ca/~jfeng/Publications/PDFs/06_PoF4.pdf",
+      "title": "A computational study of the coalescence between a drop and an interface in Newtonian and viscoelastic fluids",
+      "publisher": "Pengtao Yue, Chunfeng Zhou & James J. Feng; UBC / Physics of Fluids",
+      "accessed_on": "2026-11-01",
+      "version": "18,102102 (2006), DOI:10.1063/1.2364144",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF/printed pp.1–7，§I、§III.A、§III.B.1–2；p.13 §IV Conclusion。採機制段pp.3–6與Fig.2，Fig.2另渲染看過。",
+      "locator": "PDF/printed pp.1–7，§I、§III.A、§III.B.1–2；p.13 §IV Conclusion。採機制段pp.3–6與Fig.2，Fig.2另渲染看過。",
+      "summary": "破開間隔薄膜後，界面波與慣性可把上部留下成小滴；耗散或快速向下排空會取消此路徑。",
+      "limitations": "數值模型以水滴／油水界面實驗比較；擴散界面使破膜與斷頸時刻偏差，高重力區幾何不準。不採通用半徑比例或所有流體共同門檻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I12-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8740717/",
+      "title": "Submicron drops from flapping bursting bubbles",
+      "publisher": "Jiang et al.; PNAS / PMC",
+      "accessed_on": "2026-11-01",
+      "version": "PNAS119,e2112924119 (2022), DOI:10.1073/pnas.2112924119",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 XML；ElementTree 擷取指定主文小節逐段閱讀。",
+      "reading_scope": "Introduction；Results and Discussion的Submicron Film Drop Production、Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods的Definition of Dp與Gas Dilution。",
+      "locator": "Introduction；Results and Discussion的Submicron Film Drop Production、Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods的Definition of Dp與Gas Dilution。",
+      "summary": "快速退縮薄膜可受周圍流體的剪切而擺動破碎；氣體密度對小泡產生微滴的數量有可測影響。",
+      "limitations": "實際取得路線是Europe PMC fullTextXML，同一篇論文；空氣／水尺度的擺動難直接看清，清楚視覺來自FC43／水類比；量測是乾燥粒徑，非原始濕滴直徑。精確滴數仍非模型可預測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I12-S005",
+      "url": "https://arxiv.org/pdf/2010.06664",
+      "title": "Experimentally Testing a Generalized Coarsening Model for Individual Bubbles in Quasi-Two-Dimensional Wet Foams",
+      "publisher": "A. T. Chieco & D. J. Durian; University of Pennsylvania / arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:2010.06664v1 (2020-10-13)",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "主文PDF pp.1–8，§I、§II.A、§III、§IV.A–B、§V；採Figs.3–7文字，未讀補充演算法。",
+      "locator": "主文PDF pp.1–8，§I、§II.A、§III、§IV.A–B、§V；採Figs.3–7文字，未讀補充演算法。",
+      "summary": "氣體經相鄰泡之間的液膜交換；乾燥近二維泡沫的邊數規則，會受含液邊界和泡形改變。",
+      "limitations": "兩平板間、三邊相接的近二維泡沫；不套一般一盆三維泡沫。六邊泡面積變化需曲線或明示放大示意，原照片不易直接看出；模型速率常數有未解偏差。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I12-S006",
+      "url": "https://blog.espci.fr/benoitroman/files/2018/04/Py07b.pdf",
+      "title": "Capillary Origami: Spontaneous Wrapping of a Droplet with an Elastic Sheet",
+      "publisher": "Charlotte Py et al.; ESPCI / Physical Review Letters",
+      "accessed_on": "2026-11-01",
+      "version": "98,156103 (2007), DOI:10.1103/PhysRevLett.98.156103",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF/printed pp.1–2：實驗敘述、Fig.1、彈毛細尺度與未閉合對照；p.3開頭二維模型至Fig.4前。Fig.1另渲染看過。",
+      "locator": "PDF/printed pp.1–2：實驗敘述、Fig.1、彈毛細尺度與未閉合對照；p.3開頭二維模型至Fig.4前。Fig.1另渲染看過。",
+      "summary": "液面面積減少可支付薄片彎曲代價；不夠薄或不夠大的片會先彎再攤開，未必包住液滴。",
+      "limitations": "PDMS薄片與特定底面，不是普通紙吸水；只採包覆和重開的競爭，不把二維近似冒稱完整三維預測。未看影片。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I12-S007",
+      "url": "https://arxiv.org/pdf/1406.3203",
+      "title": "Pancake bouncing on superhydrophobic surfaces",
+      "publisher": "Y. Liu et al.; City University of Hong Kong / Oxford / arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:1406.3203v1 (2014-06-12)",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF pp.2–7，Figs.1–4、滲入／排空及兩個時間尺度相配的主文。Fig.1另渲染看過。",
+      "locator": "PDF pp.2–7，Figs.1–4、滲入／排空及兩個時間尺度相配的主文。Fig.1另渲染看過。",
+      "summary": "微柱間暫存的毛細能回推液滴，若能量和時機都足夠，液滴可尚未縮回球形就離面。",
+      "limitations": "特殊微柱／奈米結構的研究表面；不作一般防水塗層保證。不把可逆局部滲入等同Cassie到Wenzel失敗，也不採所有落速固定四倍快。未看補充影片。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I12-S008",
+      "url": "https://arxiv.org/pdf/2102.06434",
+      "title": "A General Framework for Liquid Marbles",
+      "publisher": "A. Gallo Jr., F. Tavares, R. Das & H. Mishra; KAUST / arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:2102.06434 (2021)",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF pp.1–2 Introduction；pp.7–11 Fig.3、三種蒸發結果、Analytic framework與Fig.4。Fig.3另渲染看過。",
+      "locator": "PDF pp.1–2 Introduction；pp.7–11 Fig.3、三種蒸發結果、Analytic framework與Fig.4。Fig.3另渲染看過。",
+      "summary": "蒸發使表面顆粒受擠壓；顆粒是否仍黏液體、能否互相滑開，決定皺縮、排粒或疊層。",
+      "limitations": "採指定矽粒包覆水滴實驗及簡化受力模型，不把三類當所有粉末必然結果；未讀後半蒸發率擬合或把材料製備寫成居家操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "I12001",
+      "question": "水滴已經歪向下坡，為什麼還能卡在原地？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.contact_line_hysteresis_pinning",
+      "answer_target": "表面缺陷或幾何邊界卡住接觸線；前後接觸角可先改變，達到前進／後退條件後才滑移。",
+      "scope": "比較同一滴與同一表面上的傾斜或加減液體歷史；不是只比較靜態接觸角大小。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "source_locator": "S001 printed pp.59–61 / PDF pp.60–62，§15.1 Hysteresis、雨滴窗面例。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看出底部邊界不移動時，形狀仍能變；圓不等於易滾。",
+        "visual": "固定基底線、逐格前後角度變化，再標第一個移動的邊。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    },
+    {
+      "id": "I12002",
+      "question": "原本很會滾水珠的粗糙表面，為什麼一次撞擊後反而黏住水？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.cassie_impalement_metastable_pressure_barrier",
+      "answer_target": "空氣口袋可把液滴托在紋理頂端；壓力跨過幾何門檻使液體侵入空隙，接觸狀態和回復路徑便改變。",
+      "scope": "限具有可維持含氣狀態的疏水紋理；壓力門檻隨形狀改變，不稱所有粗糙表面或所有撞擊必然失效。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "source_locator": "S001 printed pp.64–65 / PDF pp.65–66，§16.1–16.2 Wenzel/Cassie stability、Fakir touchdown。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一種化學塗層也可因空氣口袋消失而改變表現。",
+        "visual": "相同紋理剖面：跨頂含氣→界面下壓→空隙被液體占據。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "I12003",
+      "question": "兩個漂浮小物還沒碰到，為什麼會慢慢靠在一起？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.meniscus_lateral_interaction",
+      "answer_target": "浮物改變周圍液面的高低；彼此靠近可降低液面與重力相關的總能量，同向變形常相吸，反向變形可相斥。",
+      "scope": "小浮物、靜水、界面變形主導的條件；先排除水流、磁力，不能只憑密度判所有組合。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "source_locator": "S001 printed pp.22–23 / PDF pp.23–24，§6與§6.1 lateral capillary forces。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分開向上托住物體與沿水面推動物體兩種作用。",
+        "visual": "側視液面凹／凸兩種組合，俯視距離同步縮短或拉大。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "I12004",
+      "question": "酒杯壁上的液體為什麼先往上爬，才變成一條條往下流？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.evaporation_composition_marangoni_tears",
+      "answer_target": "薄層優先失去酒精，使局部表面張力提高並拉動表面流向上；累積液體形成隆起後，重力使其向下流。",
+      "scope": "水酒精混合液的薄層與持續蒸發；不從酒淚判品質，也不把過程全當毛細上升。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "source_locator": "S001 printed p.34 / PDF p.35，§10.1 The tears of wine。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一條軌跡中先上後下，來自成分差和重量在不同位置的作用。",
+        "visual": "薄層酒精比例、表面流箭頭與頂部隆起下流分三格。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "I12005",
+      "question": "泡泡膜局部被拉薄時，為什麼有時會自己把液體拉回來？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.surfactant_dilation_marangoni_restoring_feedback",
+      "answer_target": "局部面積拉大使表面活性分子暫時稀疏、張力上升；張力梯度帶動界面回流，抵抗進一步變薄。",
+      "scope": "限有足夠界面濃度響應、交換時間適合的膜；回復不代表永久不破，不把蛋白網絡力學當此機制。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "source_locator": "S001 printed pp.35–36、38 / PDF pp.36–37、39，§10.2 surfactant elasticity、§10.3 soap film stability。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是張力越低就越穩，而是局部變化能產生回復。",
+        "visual": "同膜局部拉伸，標分子間距和張力方向；均勻降張力作對照。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "I12006",
+      "question": "肥皂膜破一個洞後，液體去了哪裡，為什麼洞會快速擴大？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.inertial_film_retraction_mass_collecting_rim",
+      "answer_target": "兩面表面張力把膜收回，液體集中到越來越重的邊緣；持續帶入靜止膜的動量需求使退縮可接近定速。",
+      "scope": "低黏、近均勻厚度薄膜的Taylor–Culick慣性區；不把它當每個厚膜、高黏膜或所有初始瞬間的通則。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "source_locator": "S001 printed pp.47–48 / PDF pp.48–49，§12.3 bursting soap films。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見消失的膜變成邊緣，不是蒸發；邊緣變重卻不必持續減速。",
+        "visual": "平面膜洞擴大，質量顏色追到加粗圓環，旁列孔半徑時間線。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "I12007",
+      "question": "同一塊板子從液體拉出，為什麼拉得快會帶走不同厚度的液膜？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.withdrawal_dynamic_meniscus_film_selection",
+      "answer_target": "移動固體以黏滯作用帶液向上，彎曲液面又把液體抽回；連接平薄膜與槽內液面的動態彎月面選出膜厚。",
+      "scope": "採可形成連續膜、低毛細數的完全潤濕模型；部分潤濕的帶膜門檻另屬邊界，不說任意慢拉都乾或任意快拉都適用。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "source_locator": "S001 printed pp.66–67 / PDF pp.67–68，§16.3 coating flows / Landau–Levich–Derjaguin。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "帶走多少液體由流動與彎曲液面共同決定，不只看板子是否親水。",
+        "visual": "同板兩拉速；放大液槽與均勻薄膜間的過渡區，標向上拖曳及回流。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "I12008",
+      "question": "液滴碰到已經濕的表面，怎麼還可能像球一樣彈開？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.air_film_drainage_vs_rebound_time",
+      "answer_target": "液滴與濕層間的空氣需時間排走；若薄氣層撐過變形回彈，液滴尚未真正接通就能離開，排空破膜則會合併。",
+      "scope": "實驗為矽油滴撞高黏矽油薄層；氣層是未排走的空氣，不是高溫蒸氣，也不是外接打氣。",
+      "source_ids": [
+        "I12-S002"
+      ],
+      "source_locator": "S002 PDF pp.2–3 §I、p.5 §III.A，氣層排空時間與回彈時間比較。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "肉眼看似碰到，液體之間仍可能隔著氣體。",
+        "visual": "慢動作側視加氣層放大窗；兩條時間線分回彈先到或破膜先到。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "I12009",
+      "question": "一顆液滴融進液面，為什麼上面又留下一顆更小的液滴？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.partial_coalescence_wave_inertia_drainage_competition",
+      "answer_target": "間隔膜破開後，界面波把滴形拉長；慣性可在排空前造成頸縮並留下小滴。耗散過強或向下排空太快，就變成完整合併。",
+      "scope": "採低重力影響的牛頓流體模型及指定油水實驗；不是一般無限長液柱的線性失穩，也不保證每次都剩一半。",
+      "source_ids": [
+        "I12-S003"
+      ],
+      "source_locator": "S003 pp.3–6 §III.A、Fig.2與能障／黏性／重力對照。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "合併不是只有越來越小；液體運動能暫時把一部分再分開。",
+        "visual": "標膜破點、向上表面波、上部拉長、底頸切斷；並排耗散後全流入。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "I12010",
+      "question": "泡泡破掉噴出的細霧，為什麼也會受周圍氣體影響？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.retracting_bubble_cap_aerodynamic_flapping",
+      "answer_target": "高速退縮的輕薄泡膜與周圍流體相對運動，可產生剪切擺動並碎成小滴；氣體密度改變這條途徑的成長機會。",
+      "scope": "限研究的小泡與指定液氣條件；水氣實驗支持粒徑／數量差，清楚擺動影像採FC43在水中的類比，不能當同一實驗；測得乾燥粒徑。",
+      "source_ids": [
+        "I12-S004"
+      ],
+      "source_locator": "S004 Results: Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods: Definition of Dp。",
+      "premise_status": "screened",
+      "notes": "來源直接研究，機制採作者理論與對照支持；未親看影片，示意需保留模型／量測尺度切換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "泡泡不是一破就只剩氣體；周圍氣體能參與液膜碎裂。",
+        "visual": "薄膜退縮示意→明標液液類比的擺動→不同氣體下乾燥粒子分布。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "I12011",
+      "question": "一片泡沫沒明顯破掉，為什麼仍有泡泡變大、有的變小？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.foam_diffusive_coarsening_network_wetness",
+      "answer_target": "相鄰氣泡因壓力差透過膜交換氣體；近二維乾泡沫的網絡形狀讓邊數控制面積變化，含液邊界變厚後，交換路徑與泡形也要算進去。",
+      "scope": "只採兩平板間近二維泡沫；六邊不變是乾燥理想限制，較濕時可增減；不把所有大泡必長、小泡必縮當通則。",
+      "source_ids": [
+        "I12-S005"
+      ],
+      "source_locator": "S005 pp.1–2 §I、pp.4–7 §III/§IV.A/§V，Figs.3–6。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清膜破合併與隔膜傳氣，並看到邊數口訣的失效條件。",
+        "visual": "固定標記數個泡與完整分隔膜，面積曲線同步；乾／較濕六邊泡對照，微小變化明示放大。",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "I12012",
+      "question": "一滴水變小，怎麼能把薄片拉起來包住自己？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.elastocapillary_wrapping_vs_bending_cost",
+      "answer_target": "包覆減少液氣界面能，卻要付薄片彎曲能；薄片尺寸與彎曲剛度使兩者競爭，有些會包起來，有些只彎一段再打開。",
+      "scope": "指定PDMS薄片、底面及水滴蒸發實驗；不是紙張吸水膨脹或有預設折痕的機構，未套用三維通用臨界值。",
+      "source_ids": [
+        "I12-S006"
+      ],
+      "source_locator": "S006 pp.1–2 Fig.1、未閉合對照與elasto-capillary length，p.3二維路徑文字。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "液體變少不只留下空位，也能透過界面拉動固體。",
+        "visual": "同形薄片兩種厚度，水量下降同步：閉合／彎後重開。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "I12013",
+      "question": "水滴還攤成薄餅，怎麼就能跳離表面，不必先縮回一顆球？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.pancake_bounce_capillary_emptying_timing",
+      "answer_target": "液體暫時進入疏水微柱間並儲存毛細能；回推出來的向上動量若夠大，且與橫向展開時間相配，就能提早抬起整滴。",
+      "scope": "特殊微柱表面上的水滴；需足夠能量與時機匹配，不把可逆滲入稱永久濕透，不把柱形或落速每改一次另算一題。",
+      "source_ids": [
+        "I12-S007"
+      ],
+      "source_locator": "S007 pp.2–6 Figs.1–3、energy/time criteria、capillary emptying；p.7 Fig.4界線。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拒水不只是讓水變圓；微結構還能把進入空隙的運動導回向上。",
+        "visual": "同表面低／較高入射條件的剖面；垂直排空時鐘與橫向展開時鐘對齊。",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "I12014",
+      "question": "裹滿粉末的小水珠乾掉時，為什麼有的皺掉，有的反而把顆粒擠出去？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.liquid_marble_evaporation_particle_force_competition",
+      "answer_target": "液面後退使表面顆粒互相擠壓；強液體黏附讓外殼被迫變形，黏附與粒間摩擦都低可排粒，摩擦高則可能改成疊層。",
+      "scope": "指定包覆顆粒的水滴與簡化模型；三結果留同一核心，不按粉末種類另計，不給粉末吸入或製備操作。",
+      "source_ids": [
+        "I12-S008"
+      ],
+      "source_locator": "S008 pp.7–11 Fig.3、Cases I–III與Analytic framework、Fig.4。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水珠縮小時，殼不是只能跟著等比例縮；顆粒有三種去向。",
+        "visual": "相同剩餘液量坐標，顯示殼皺、粒子離開、疊成厚層；微觀接觸剖面對照。",
+        "seconds": [
+          85,
+          125
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "I12-NA01",
+      "question": "水珠為什麼是圓的？",
+      "existing_id": "LEG-S70",
+      "reason": "只重述表面積／能量，不新增。"
+    },
+    {
+      "id": "I12-NA02",
+      "question": "水滴為什麼在玻璃攤平、在防水面變圓？",
+      "existing_id": "P053",
+      "reason": "靜態潤濕已收；新I12001只追接觸線歷史與卡住。"
+    },
+    {
+      "id": "I12-NA03",
+      "question": "毛細管越細，水怎麼爬得越高？",
+      "existing_id": "P055",
+      "reason": "靜態支承／重量平衡已收，不換管徑拆核。"
+    },
+    {
+      "id": "I12-NA04",
+      "question": "平放細管裡的吸液前緣為什麼越走越慢？",
+      "existing_id": "P057",
+      "reason": "MIT §8.1已讀到增長液柱的黏滯耗散；本輪編輯視為既有毛細輸運的速度延伸，不為數量另計。",
+      "source_ids": [
+        "I12-S001"
+      ]
+    },
+    {
+      "id": "I12-NA05",
+      "question": "水面為什麼托得住金屬針？",
+      "existing_id": "P056",
+      "reason": "垂直支承已收；I12003僅收另有側向交互作用的條件。"
+    },
+    {
+      "id": "I12-NA06",
+      "question": "咖啡乾後為什麼外圈較深？",
+      "existing_id": "H3092",
+      "reason": "接觸線固定與蒸發補流已收，不換成茶滴。"
+    },
+    {
+      "id": "I12-NA07",
+      "question": "泡泡上的彩色條紋怎麼改變？",
+      "existing_id": "LEG-S81",
+      "reason": "薄膜干涉已收，不用膜排液當新題包裝。"
+    },
+    {
+      "id": "I12-NA08",
+      "question": "兩顆水滴合起來為什麼能跳走？",
+      "existing_id": "U8001",
+      "reason": "合滴釋放界面能已是Buller水滴孢子發射核心；可作無孢子變體，不新增。"
+    },
+    {
+      "id": "I12-NA09",
+      "question": "細水柱為什麼斷成一顆顆水滴？",
+      "existing_id": "Q9005",
+      "reason": "Rayleigh–Plateau原理已收；不把破膜邊緣後續斷滴再另計。"
+    },
+    {
+      "id": "I12-NA10",
+      "question": "肥皂越多，泡泡就一定活越久嗎？",
+      "existing_id": null,
+      "reason": "過寬配方前提；本輪只收I12005的局部濃度回復，不作配方優劣建議。",
+      "source_ids": [
+        "I12-S001"
+      ]
+    },
+    {
+      "id": "I12-NA11",
+      "question": "有一點雜質的小氣泡為什麼可能升得更慢？",
+      "existing_id": null,
+      "reason": "MIT §10.4已讀表面活性物聚後端、Marangoni阻滯；本輪保留作I12005界面濃度／流動變體，不拆一個零件式核心。",
+      "source_ids": [
+        "I12-S001"
+      ]
+    },
+    {
+      "id": "I12-NA12",
+      "question": "氣壓降低為什麼就不會濺出水花？",
+      "existing_id": null,
+      "reason": "問法太泛。已讀Driscoll等arXiv:1005.2771 §IV–VII，較黏液體的薄片噴出／破滴門檻不同，該研究明言薄片生成基本機制未明；不以觀察控制量假裝完整機制。",
+      "source_url": "https://arxiv.org/pdf/1005.2771"
+    },
+    {
+      "id": "I12-NA13",
+      "question": "泡泡一破，底下就一定噴出小水柱嗎？",
+      "existing_id": null,
+      "reason": "已讀PNAS引言可分膜滴／射流滴，但本輪沒有獨立讀射流聚焦原論文的決定條件，不另收泛現象。",
+      "source_ids": [
+        "I12-S004"
+      ]
+    },
+    {
+      "id": "I12-NA14",
+      "question": "蛋白為什麼能把泡泡撐住？",
+      "existing_id": "F4012",
+      "reason": "界面展開與網絡支承已收；I12005不冒稱同一蛋白彈性模型。"
+    },
+    {
+      "id": "I12-NA15",
+      "question": "把板、纖維、管子拉出液體，會各有一種帶液原理嗎？",
+      "existing_id": "I12007",
+      "reason": "同一動態彎月面選膜機制不按物件分題；幾何修正進同題邊界。",
+      "source_ids": [
+        "I12-S001"
+      ]
+    },
+    {
+      "id": "I12-NA16",
+      "question": "粉末水珠為什麼不沾桌面？",
+      "existing_id": null,
+      "reason": "僅顆粒隔開接觸仍偏功能描述；I12014改追蒸發時顆粒受力與三種可見去向。",
+      "source_ids": [
+        "I12-S008"
+      ]
+    }
+  ]
+}

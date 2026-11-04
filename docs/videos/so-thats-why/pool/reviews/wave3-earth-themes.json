@@ -1,0 +1,279 @@
+{
+  "author": "science_sources",
+  "created_on": "2026-11-01",
+  "input": {
+    "file": "batches/wave3-earth-observation.json",
+    "sha256": "c782c4b0947e1c4e7ce19b148cce119b05f1423ce84f2a880fcda224a2a7c93f"
+  },
+  "status": "AUTHOR_PROPOSALS_PENDING_INDEPENDENT_REVIEW",
+  "limits": "89 列是選題級原始候選；screened 不是完整稿或製作核准。以下秒數是正文預算，不含片頭片尾，不是實測旁白。各章需再拆成每 30–45 秒的新追問、對照或推進。未獨立外部逐句查核，不新增實測數值。",
+  "author_dedup_proposals": [
+    {
+      "ids": [
+        "O3001",
+        "O3046"
+      ],
+      "recommendation": "MERGE",
+      "retain": "O3001",
+      "reason": "兩者皆以投影幾何解釋近遠端地面尺規不同；斜距座標與等角掃描可作同一核心的兩種量測座標對照，不必各占新核心。"
+    },
+    {
+      "ids": [
+        "O3014",
+        "O3052"
+      ],
+      "recommendation": "MERGE",
+      "retain": "O3014",
+      "reason": "跨軌基線讓地形進入相位；拿它求地形和把它從位移解中扣除是同一機制的正反用途，保留兩個觀眾提問作章節。"
+    },
+    {
+      "ids": [
+        "O3044",
+        "O3045"
+      ],
+      "recommendation": "MERGE",
+      "retain": "O3044",
+      "reason": "推掃陣列需要多探測元件一致校準，條帶正是這個取捨的具體後果。"
+    },
+    {
+      "ids": [
+        "O3068",
+        "P049"
+      ],
+      "recommendation": "MERGE_REVIEW",
+      "retain": "P049",
+      "reason": "油從內囊移到外囊的排水體積變化可能只是既有平均密度與浮力核心的工程例子；由覆核按 P049 完整範圍裁定，不為新物件另算核心。"
+    },
+    {
+      "ids": [
+        "O3069"
+      ],
+      "recommendation": "HOLD_THIN",
+      "reason": "目前只有縮短浮面時間減少暴露的簡短因果；尚缺可展示的具體任務設計對照，不宜作獨立核心或撐長片。"
+    },
+    {
+      "ids": [
+        "O3013",
+        "O3052"
+      ],
+      "recommendation": "KEEP_WITH_SCOPE",
+      "reason": "O3013 是相位反演中多種來源混合的觀測不可識別性；O3052 已提議併 O3014。組片時不可用同一張誤差清單重複兩次計時。"
+    },
+    {
+      "ids": [
+        "O3071"
+      ],
+      "recommendation": "CROSS_DOMAIN_CHECK",
+      "reason": "螢光產率與光保護可能與生命新批重複；須比對其特定答案目標。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "EARTH-P1",
+      "title": "雷達說大雨，為什麼你家地面不是那個樣子？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "雷達看見的是回波，怎麼走到地面雨量？每一步少了什麼條件？",
+      "connection": "沿一個原創降雨橫剖面，先從雨滴返回的訊號推雨量，再跟著雨滴到地面，最後加入一個沒有雨滴的強回波作反證；不羅列雷達故障大全。",
+      "target_minutes": 8.25,
+      "range_minutes": [
+        7,
+        9
+      ],
+      "body_seconds": 495,
+      "candidate_ids": [
+        "O3034",
+        "O3022",
+        "O3026",
+        "O3023",
+        "O3030"
+      ],
+      "chapters": [
+        {
+          "title": "顏色不是量杯",
+          "seconds": 105,
+          "candidate_ids": [
+            "O3034"
+          ],
+          "new_information": "兩組不同大小與數量的雨滴可給相近反射率，觀眾先看到少掉的粒徑分布未知數。"
+        },
+        {
+          "title": "先確認量到哪個高度",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3022"
+          ],
+          "new_information": "把同一雨區移到遠處，地面沒變但取樣高度變高，淺雨可能從波束下漏過。"
+        },
+        {
+          "title": "雨滴還沒到你的雨量筒",
+          "seconds": 120,
+          "candidate_ids": [
+            "O3026"
+          ],
+          "new_information": "追同一群滴下落、漂移與改變，分開高空體積平均和地面小面積時段累積。"
+        },
+        {
+          "title": "如果強回波根本沒有雨滴",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3023"
+          ],
+          "new_information": "改變折射路徑讓地面進入回波，加入其他觀測作交叉判斷；原創示意不冒充真實事件。"
+        },
+        {
+          "title": "多量一種性質，補上一條線索",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3030"
+          ],
+          "new_information": "比較傳過去的偏振相位延遲與反射回來的能量，回到為什麼一張顏色圖不夠。"
+        }
+      ],
+      "boredom_risk": "五個限制若各換不同地圖會變成錯誤清單；必須保留同一剖面與同一追問。",
+      "drop_if": "若相位示意無法讓觀眾新增理解，刪末章成 6–7 分鐘解說，不能靠雷達歷史或更多產品名稱補足 8 分鐘。",
+      "evidence_gaps": "實際雷達與雨量案例、圖資授權、產品色標時間及雙偏振適用條件要進稿查核；正文未實測。"
+    },
+    {
+      "id": "EARTH-P2",
+      "title": "不拍地下，衛星怎麼知道一個地方少了水？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "從雙星間距到地下水地圖，中間哪些是真正量到、哪些是模型分出的？",
+      "connection": "用同一片流域逐步拆一筆質量總帳；每加一種儀器或模型只解決上一章的一項歧義，最後解釋為何估值還可能更新。",
+      "target_minutes": 10,
+      "range_minutes": [
+        8,
+        11
+      ],
+      "body_seconds": 600,
+      "candidate_ids": [
+        "O3061",
+        "O3062",
+        "O3063",
+        "O3081",
+        "O3083",
+        "O3084"
+      ],
+      "chapters": [
+        {
+          "title": "先量兩顆衛星怎麼拉開",
+          "seconds": 120,
+          "candidate_ids": [
+            "O3061"
+          ],
+          "new_information": "雙星先後越過質量異常，將差異受力轉成間距時序；圖上不是直接拍到水。"
+        },
+        {
+          "title": "太陽推一下也會改軌道",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3062"
+          ],
+          "new_information": "加速度計提供非重力擾動線索，分離不能歸到地下的作用。"
+        },
+        {
+          "title": "總水量不是地下水明細",
+          "seconds": 110,
+          "candidate_ids": [
+            "O3063"
+          ],
+          "new_information": "積雪、地表水、土壤水與地下水同時進帳，需要外部資料與模型分量。"
+        },
+        {
+          "title": "流域邊界不是訊號的牆",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3081"
+          ],
+          "new_information": "空間平滑把變化攤過邊界，畫面放大不能恢復不存在的細節。"
+        },
+        {
+          "title": "連古冰蓋都還在改變今天的重力",
+          "seconds": 110,
+          "candidate_ids": [
+            "O3083"
+          ],
+          "new_information": "內部地球持續調整也改重力，當代水變化前要交代 GIA 模型修正。"
+        },
+        {
+          "title": "新的月份為何能改舊估值",
+          "seconds": 80,
+          "candidate_ids": [
+            "O3084"
+          ],
+          "new_information": "明示改切到 JPL mascon 的時間約束例子；新觀測改估計解，原始觀測不因此被改寫。"
+        }
+      ],
+      "boredom_risk": "容易變成一連串扣誤差；每章必須問『還能有哪個不同原因做出相同訊號』並在同一總帳加一層。",
+      "drop_if": "若球諧洩漏與 mascon 時間約束兩種產品切換講不清，刪最後章或改獨立短段，不混成單一處理流程。若缺可理解圖解，縮短而不加衛星任務名單。",
+      "evidence_gaps": "要選定產品與版本後查完整流程，數值趨勢需新資料；源文的歷史任務進度不能當現況，沒有完整稿或盲讀。"
+    },
+    {
+      "id": "EARTH-P3",
+      "title": "船明明沒動，流速計怎麼說它往上游走？",
+      "status": "EDITORIAL_SHORT_EXPLAINER_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "靠回音算水流時，儀器究竟把誰當成不動的參考？",
+      "connection": "固定一艘量測船，依序讓水中粒子、河床泥沙與局部流場改變；每次展示被破壞的一項量測假設，再回答最後流量還有多少是外推。",
+      "target_minutes": 7.25,
+      "range_minutes": [
+        5.5,
+        7.5
+      ],
+      "body_seconds": 435,
+      "candidate_ids": [
+        "O3072",
+        "O3073",
+        "O3077",
+        "O3078",
+        "O3079"
+      ],
+      "chapters": [
+        {
+          "title": "儀器聽到的不是水分子直接報速",
+          "seconds": 80,
+          "candidate_ids": [
+            "O3072"
+          ],
+          "new_information": "先建立需要散射體，過少和過多都能失效的量測窗口。"
+        },
+        {
+          "title": "錯把移動的河床當作岸",
+          "seconds": 110,
+          "candidate_ids": [
+            "O3073"
+          ],
+          "new_information": "底追蹤把泥沙運動解成反向船速，畫出水速與流量低估的方向。"
+        },
+        {
+          "title": "會自己游的回音又算誰",
+          "seconds": 55,
+          "candidate_ids": [
+            "O3077"
+          ],
+          "new_information": "被動粒子和主動魚類對照，揭露水速其實依賴散射體代表性。"
+        },
+        {
+          "title": "多一束聲波做交叉檢查",
+          "seconds": 100,
+          "candidate_ids": [
+            "O3078"
+          ],
+          "new_information": "兩組速度解在均勻流場重合，局部渦流使其不一致；冗餘不是保證全對。"
+        },
+        {
+          "title": "沒量到的水層不能偷偷算成實測",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3079"
+          ],
+          "new_information": "把近表面與近床空白區標出，兩種外推形狀展示流量還含模型假設。"
+        }
+      ],
+      "boredom_risk": "魚類段若只是插笑話應刪；第四束只保留觀眾能看懂的冗餘關係，不教完整矩陣運算。",
+      "drop_if": "未有足夠清楚的參考系動畫就縮到 4–6 分鐘；目前不列為達到 8 分鐘的長片候選，不接更多儀器術語湊長度。",
+      "evidence_gaps": "應另查適用 ADCP 型號與資料品質流程；所有動畫是假設示意，不是已完成河流實測。"
+    }
+  ]
+}

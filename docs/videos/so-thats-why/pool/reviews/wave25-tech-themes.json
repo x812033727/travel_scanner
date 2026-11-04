@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "片長從可見對照估，不以五個算法硬湊大主題。",
+    "HLL先留segment，尚缺夠直覺的誤差對照，不強制排片。",
+    "每beat<=45秒，各核跨章累計<=素材上限。"
+  ],
+  "episodes": [
+    {
+      "id": "W25R-T01",
+      "title": "記不全，卻知道自己會錯在哪邊",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "省掉完整名單後，哪一種答案還能保證？",
+      "connection": "位元誤中→改計次數→兩種單邊錯誤的可見對照。",
+      "candidate_ids": [
+        "R25001",
+        "R25004"
+      ],
+      "target_minutes": 2.25,
+      "range_minutes": [
+        2.25,
+        2.25
+      ],
+      "body_seconds": 135,
+      "chapters": [
+        {
+          "title": "燈亮不保證來過",
+          "candidate_ids": [
+            "R25001"
+          ],
+          "seconds": 75,
+          "new_information": "A/B點燈後問C有沒有來，先留猜測。；揭露C三格由別人湊齊，對照D碰到空格能排除。；重查A/B都能通過；圖示共享位元不能任意清除，轉到次數問題。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "A/B點燈後問C有沒有來，先留猜測。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "揭露C三格由別人湊齊，對照D碰到空格能排除。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "重查A/B都能通過；圖示共享位元不能任意清除，轉到次數問題。"
+            }
+          ]
+        },
+        {
+          "title": "取最小，仍可能太大",
+          "candidate_ids": [
+            "R25004"
+          ],
+          "seconds": 60,
+          "new_information": "A4/B3/C2投到兩列，計出A對應格7與6。；每格都含A真數加其他項，取6可少受污染，仍不是4。；並列兩種錯誤方向回扣；精確排行等限制留圖註。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "A4/B3/C2投到兩列，計出A對應格7與6。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "每格都含A真數加其他項，取6可少受污染，仍不是4。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "並列兩種錯誤方向回扣；精確排行等限制留圖註。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若兩種錯誤方向在小樣中混淆，拆成75秒與60秒獨立短案重審；不接HLL或多列產品填長。",
+      "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+      "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+      "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+    },
+    {
+      "id": "W25R-T02",
+      "title": "越晚來越難抽中，最後卻一樣公平",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "只留一張票，怎麼不偏心？",
+      "connection": "固定50%反例→1/t替換→四票最後機率。",
+      "candidate_ids": [
+        "R25002"
+      ],
+      "target_minutes": 1.3333333333333333,
+      "range_minutes": [
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "body_seconds": 80,
+      "chapters": [
+        {
+          "title": "先試看似公平的50%",
+          "candidate_ids": [
+            "R25002"
+          ],
+          "seconds": 45,
+          "new_information": "4張票依次到；每次一半換票，末票立即占1/2。；改成第t張以1/t替換；四票逐步顯示留下機率。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "4張票依次到；每次一半換票，末票立即占1/2。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "改成第t張以1/t替換；四票逐步顯示留下機率。"
+            }
+          ]
+        },
+        {
+          "title": "先來者還要熬過後面的人",
+          "candidate_ids": [
+            "R25002"
+          ],
+          "seconds": 35,
+          "new_information": "比較首票生存連乘與末票1/4，兩條路同到1/4；中間票同理。；同名票是多筆紀錄留圖註回扣；依結果停抽不在保證內同框標示。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "比較首票生存連乘與末票1/4，兩條路同到1/4；中間票同理。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "同名票是多筆紀錄留圖註回扣；依結果停抽不在保證內同框標示。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若連乘在畫面上仍看不懂，改45秒玩具短段並重寫結尾；不能加亂數史延長。",
+      "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+      "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+      "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+    },
+    {
+      "id": "W25R-T03",
+      "title": "兩份清單各抽一張，真的能比相似？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "為什麼必須用同一副洗牌次序？",
+      "connection": "共同五張排列→首張是否屬交集→同序反例。",
+      "candidate_ids": [
+        "R25005"
+      ],
+      "target_minutes": 1.5,
+      "range_minutes": [
+        1.5,
+        1.5
+      ],
+      "body_seconds": 90,
+      "chapters": [
+        {
+          "title": "五張牌，只認第一名",
+          "candidate_ids": [
+            "R25005"
+          ],
+          "seconds": 50,
+          "new_information": "A三張、B四張，共有b/c；先看兩邊各留下誰。；共有次序的聯集第一名若b/c兩邊才相同，五種首張中占兩種。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "A三張、B四張，共有b/c；先看兩邊各留下誰。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "共有次序的聯集第一名若b/c兩邊才相同，五種首張中占兩種。"
+            }
+          ]
+        },
+        {
+          "title": "一次命中還不能下結論",
+          "candidate_ids": [
+            "R25005"
+          ],
+          "seconds": 40,
+          "new_information": "切換共享排列，累計相同比例；標示120排列枚舉48匹配為玩具算核。；改兩邊各洗各的會失去同一首張推導；文字切詞另決定集合，不是語意判決。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "切換共享排列，累計相同比例；標示120排列枚舉48匹配為玩具算核。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "改兩邊各洗各的會失去同一首張推導；文字切詞另決定集合，不是語意判決。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若共享排序與相似度連結無法由五牌看清，撤影片保留來源；不用大數據術語或案例名單填90秒。",
+      "evidence_gaps": "玩具算例已核但未作可播放示範、完整稿、試讀及觀眾理解測試。",
+      "boredom_risk": "先讓觀眾猜結果再翻格子；不列算法史、產品名單或推整段公式。",
+      "timing_basis": "含鉤子轉場回扣的紙上預算；試讀若超時先刪解釋重複，不拉長。"
+    }
+  ]
+}

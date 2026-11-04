@@ -1,0 +1,428 @@
+{
+  "batch_id": "wave50-physics-20261103",
+  "created_on": "2026-11-03",
+  "scope": "遮擋、散射與細微影像中仍可利用的資訊；四研究，非媒體製作。",
+  "sources": [
+    {
+      "id": "P50-S001",
+      "url": "https://doi.org/10.1038/s41586-018-0868-6",
+      "canonical_url": "https://doi.org/10.1038/s41586-018-0868-6",
+      "doi": "10.1038/s41586-018-0868-6",
+      "retrieval_url": "https://open.bu.edu/bitstreams/3e7f957b-ed40-45bb-8b8a-b8c09b3caa63/download",
+      "title": "Computational periscopy with an ordinary digital camera",
+      "publisher": "Saunders、Murray-Bruce、Goyal；Nature 565,472–475 (2019)",
+      "version": "期刊2019-01-23；實讀BU機構庫作者接受稿（檔名20181115-word），同一研究。",
+      "accessed_on": "2026-11-03",
+      "read_via": "web核期刊/BU身分；web開正文403/timeout，指定UA取得BU PDF200。原刊HTML僅摘要/圖連結；循其原圖URL取Fig1/3/4目讀。",
+      "reading_scope": "PDF pp2–6主文、pp8–9 Fig1–4圖說與p9設備/資料取得；未逐讀pp10–12數學方法、SI或影片。",
+      "locator": "PDF pp2–6主文、pp8–9 Fig1–4圖說與p9設備/資料取得；未逐讀pp10–12數學方法、SI或影片。",
+      "summary": "遮擋使牆上各點混入不同方向的光，半影因此可用來估計藏起來的圖樣。",
+      "limitations": "已知遮擋物形狀/尺寸並估其位置；監視器平面、白色漫反射板和正則化先驗。Fig4輸入平均20次曝光，不稱一次物理快門；不能恢復完全遮住或全處同樣可見的方向。圖為低解析近似，未自行跑演算法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave50-physics-periscope.pdf",
+        "sha256": "dd4d08bb39e1434c130539478d3b18f80ecc6b107603f42b2c7aabe5151fe08b",
+        "text_file": ".cache/wave50-physics-periscope.txt",
+        "text_sha256": "82008aa73f36bf0b73175ba8010a748de73ab1246d5e26e550179b0b33b07c4d"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave50-physics-periscope-f1.png",
+          "sha256": "805d266a7ded5b02a37f63e72162efeb353edb4d7ed15391cf4c27d20ff78710",
+          "read_scope": "原刊Fig1幾何示意：相機只看牆、已知形狀的遮擋物位置待估。"
+        },
+        {
+          "file": ".cache/wave50-physics-periscope-f3.png",
+          "sha256": "dc5b6b90e6123d5a40ab71a50ac07ea24c7f69503132f54e875031d784cdba87",
+          "read_scope": "原刊Fig3計算視野與最佳條件區，示意非實測照片。"
+        },
+        {
+          "file": ".cache/wave50-physics-periscope-f4.png",
+          "sha256": "95ef2cd36ed2057125b876bee13385caf9bbf68f78f25fbd9c6548278f9be878",
+          "read_scope": "原刊Fig4原圖/量測/三種重建並排；四列不同圖案，非同一場景時間序列。"
+        }
+      ]
+    },
+    {
+      "id": "P50-S002",
+      "url": "https://doi.org/10.1038/nphoton.2014.189",
+      "canonical_url": "https://doi.org/10.1038/nphoton.2014.189",
+      "doi": "10.1038/nphoton.2014.189",
+      "retrieval_url": "https://blog.espci.fr/pse1/files/2018/03/nphoton.2014.189.pdf",
+      "title": "Non-invasive single-shot imaging through scattering layers and around corners via speckle correlations",
+      "publisher": "Katz、Heidmann、Fink、Gigan；Nature Photonics 8,784–790 (2014)",
+      "version": "原刊2014-08-31；ESPCI同文刊本PDF。arXiv:1403.3316v1是同工作早稿，題名有real-time，不另算研究。",
+      "accessed_on": "2026-11-03",
+      "read_via": "web核原文與arXiv身分，PDF web.open timeout；指定UA PDF200，抽文並目讀所列頁圖。",
+      "reading_scope": "PDF pp1–6主文、Eq1–2、Methods與p7相位恢復尾段；Fig1/2/5實際目讀，未讀SI或影片。",
+      "locator": "PDF pp1–6主文、Eq1–2、Methods與p7相位恢復尾段；Fig1/2/5實際目讀，未讀SI或影片。",
+      "summary": "記憶角內的物點產生平移相關散斑；自相關保留物體點間距，再以相位恢復估圖。",
+      "limitations": "窄頻空間非相干照明、小視野/足夠散斑取樣與先驗。Fig1數值模型；Fig2蔥皮列平均10影格，不當單張例。手機另加小孔、通常RAW綠通道；複雜圖案低對比及迭代停滯可失敗，不保證任意彩色實景唯一重建。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave50-physics-speckle.pdf",
+        "sha256": "6904bed8fde1b4e66007862bdd05e930161ac422a6d80c015a51bf24c646f583",
+        "text_file": ".cache/wave50-physics-speckle.txt",
+        "text_sha256": "8d64fc2bc48c22b05abfa212b2f06654d9dc5bc8342b95778a62dfc4f99b1241"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave50-physics-speckle-p2.png",
+          "sha256": "d72423df076d0bceeea4677ca67637b2779af92cd03c903a82d56b43dc64c830",
+          "read_scope": "Fig1原理與數值示例，散斑/自相關/重建不混成同一張直接照片。"
+        },
+        {
+          "file": ".cache/wave50-physics-speckle-p3.png",
+          "sha256": "dc0ad84a2aa8d74c8ca79458f6e479dc14cb79519bb49321d8ccc788610992de",
+          "read_scope": "Fig2實測擴散片、雞胸、蔥皮；蔥皮10影格平均。"
+        },
+        {
+          "file": ".cache/wave50-physics-speckle-p6.png",
+          "sha256": "a046223cde5ff5c45ddff44432f1ed6bc2f6370e4a532198f92008851510cd6e",
+          "read_scope": "Fig5手機實測/重建/物件；文中另加小孔及RAW限制。"
+        }
+      ]
+    },
+    {
+      "id": "P50-S003",
+      "url": "https://doi.org/10.1364/OL.32.002309",
+      "canonical_url": "https://doi.org/10.1364/OL.32.002309",
+      "doi": "10.1364/OL.32.002309",
+      "retrieval_url": "https://nano-cops.com/app/uploads/2018/06/Focusing_light_OptLett-3.pdf",
+      "title": "Focusing coherent light through opaque strongly scattering media",
+      "publisher": "Vellekoop、Mosk；Optics Letters 32(16),2309–2311 (2007)",
+      "version": "原刊2007-08-02線上、2007-08-15期；作者nano-cops庫刊本。早期arXiv cond-mat/0604253題名不同，本輪只核身分不採作另證。",
+      "accessed_on": "2026-11-03",
+      "read_via": "web讀作者團隊出版頁及原PDF連結，指定UA PDF200；全文指定段及兩頁原圖目讀。",
+      "reading_scope": "PDF pp1–3正文、Fig1–4與Table1；未讀其引文、影片或原始碼。",
+      "locator": "PDF pp1–3正文、Fig1–4與Table1；未讀其引文、影片或原始碼。",
+      "summary": "逐區改入射相位，以另一側目標亮度回饋，讓散射後的場在目標同相相加形成亮點。",
+      "limitations": "相干光、穩定散射樣本，需目標側偵測回饋。增亮是目標點相對原平均，不是總透光率增加千倍。Fig4飽和以有限散斑維持時間等解釋；未展示活組織即時控制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave50-physics-wavefront.pdf",
+        "sha256": "859e637865bc30132b72457d6789eb99d283c52a7e64b5f06489e44fb023778c",
+        "text_file": ".cache/wave50-physics-wavefront.txt",
+        "text_sha256": "2ffeac3a4fc7cfe19a2f5eed25ddd07502dd5acedfec482503e02a114a0a36dd"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave50-physics-wavefront-p2.png",
+          "sha256": "8ec941add3da98ffdda8d8d915fec3591d667bfe231fd89e09f91da38b930a1c",
+          "read_scope": "Fig2裝置與Fig3未整形/整形/五焦點，光強同對數色標；不是把層挖洞。"
+        },
+        {
+          "file": ".cache/wave50-physics-wavefront-p3.png",
+          "sha256": "ce0f82e5fc1fbbb68dcdf98d94924d0d5311179c47f6dbb21f98eef4b9e717be",
+          "read_scope": "Fig4控制區數/增亮的實測點與理想/修正線，Table1不同散射體不另增核。"
+        }
+      ]
+    },
+    {
+      "id": "P50-S004",
+      "url": "https://doi.org/10.1145/2601097.2601119",
+      "canonical_url": "https://doi.org/10.1145/2601097.2601119",
+      "doi": "10.1145/2601097.2601119",
+      "retrieval_url": "https://people.csail.mit.edu/billf/publications/VisualMic_SIGGRAPH2014.pdf",
+      "title": "The visual microphone: Passive recovery of sound from video",
+      "publisher": "Davis、Rubinstein、Wadhwa、Mysore、Durand、Freeman；ACM TOG 33(4),Article79 (2014)",
+      "version": "MIT機構庫標作者最終稿，2014-07；CSAIL作者PDF同文，不把2017回顧算第二研究。",
+      "accessed_on": "2026-11-03",
+      "read_via": "web核MIT機構庫DOI/作者最終稿；web PDF超工具大小上限，指定UA取得完整PDF200並抽文/目讀。",
+      "reading_scope": "PDF pp1–4 §§1–4.1、p7 §5.2、pp8–9 §§6–8；Fig4/5/8/9/10/11所列頁已目讀。未完整讀pp5–6人類辨識測試，未播放聲音/影片。",
+      "locator": "PDF pp1–4 §§1–4.1、p7 §5.2、pp8–9 §§6–8；Fig4/5/8/9/10/11所列頁已目讀。未完整讀pp5–6人類辨識測試，未播放聲音/影片。",
+      "summary": "微小表面振動改變影像局部相位；對齊並整合多個有紋理區域，可提取聲致振動訊號。",
+      "limitations": "受控播放/照明/高影格率為主，磚塊比輕物差；聲源與物體分桌避免直接傳振。逐行快門低幀率變體有缺樣和曝光平均限制，非所有影片都可還原清晰語句；此輪未核可聽性，先留段落。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave50-physics-visualmic.pdf",
+        "sha256": "3c389a1377622d9e022e34dd0307442521b1d61702cc7d3be3c0584296a2f4db",
+        "text_file": ".cache/wave50-physics-visualmic.txt",
+        "text_sha256": "3eabf1b60ec21fe4cd9e3a9f942081ac5123d943106db935eb73e5b468e8ca40"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave50-physics-visualmic-p4.png",
+          "sha256": "0c20d737f687243abe7f733fb7a9dfd62fc2df591b281710535d2245980d36df",
+          "read_scope": "Fig4隔振實驗與Fig5磚/水/紙板/袋/鋁箔掃頻譜；只核圖，不稱已聽錄音。"
+        },
+        {
+          "file": ".cache/wave50-physics-visualmic-p8.png",
+          "sha256": "eba80482b31b23f7f30fb0c3d123c0918aef7659d8f1d15eed1717fbd6ed3bd5",
+          "read_scope": "Fig8訊噪與位移表；Fig9逐行時間/缺樣示意。"
+        },
+        {
+          "file": ".cache/wave50-physics-visualmic-p9.png",
+          "sha256": "c346b12e07badee0a836ac7e502d3720720dc722e16004f6caaee44dbefa09d5",
+          "read_scope": "Fig10零曝光模擬與真相機分開；Fig11難懂語音仍可估音高，不等同語句恢復。"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P50-001",
+      "question": "相機只拍白牆，為什麼多擋掉一些光，反而能算出轉角後的圖案？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.occluder.penumbra_directional_encoding",
+      "answer_target": "沒有遮擋時，不同位置發出的光在牆上混成相似分布；加入遮擋後，各位置有不同的半影邊界，牆上亮度便帶有方向差。估計遮擋位置並以幾何模型解混，可重建低解析圖樣。",
+      "scope": "限已知形狀/尺寸遮擋物、白漫反射板與指定隱藏螢幕平面；不是透過不透光牆。影像平均20曝光，不保證任意房間或任意未知遮擋。",
+      "source_ids": [
+        "P50-S001"
+      ],
+      "source_locator": "S001 PDF pp2–6、Fig1/3/4圖說及p9資料取得。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "擋光可以增加可區分的線索，並非只讓照片更暗。",
+        "visual": "原創俯視幾何：兩個隱藏色點對同一牆的半影不同；再比Fig4量測與重建，真值只作核對，非輸入。",
+        "seconds": [
+          50,
+          100
+        ]
+      }
+    },
+    {
+      "id": "P50-002",
+      "question": "一張只剩亮砂粒的照片，為什麼仍可能算回磨砂片後的小圖案？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.speckle.memory_range_autocorrelation_recovery",
+      "answer_target": "在記憶角內，鄰近物點的散斑近似只是平移；它們相加的自相關可留下物點間距關係，再配合非負等先驗迭代估回圖案。不是把亮砂粒逐粒擦掉。",
+      "scope": "限窄頻空間非相干照明、受限視野/足夠取樣；小透明圖案實驗，不保證一般散射照片唯一重建。蔥皮例為10幀平均，與單張擴散片例分清。",
+      "source_ids": [
+        "P50-S002"
+      ],
+      "source_locator": "S002 PDF pp1–3 Eq1–2/Fig1–2、pp6–7 Methods/phase retrieval。",
+      "premise_status": "screened",
+      "notes": "I15-NA13先前只有身分/導言；本輪補讀記憶效應、自相關/相位恢復及視野/演算法限制後重提，舊NA保留。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂雜亂亮點的相對位移仍可保有幾何資訊。",
+        "visual": "Fig1概念模型先用兩物點給出平移散斑，標自相關而非直接影像；切Fig2a–d真正擴散片實測與重建。",
+        "seconds": [
+          45,
+          95
+        ]
+      }
+    },
+    {
+      "id": "P50-003",
+      "question": "不刮掉白色散射層，只改照進去的光，怎麼能在另一側聚出亮點？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.wavefront.target_feedback_phase_alignment",
+      "answer_target": "逐區掃入射相位，記下讓指定目標最亮的設定；合併後，各區經散射到目標的場更同相相加，形成亮點。這不要求先知道每條路徑，但樣本變動會讓已找好的設定失配。",
+      "scope": "限相干光、散射而非全吸收層、另一側CCD回饋與足夠穩定時間；不是單張被動拍照，也不是錄下完整波形再倒放。",
+      "source_ids": [
+        "P50-S003"
+      ],
+      "source_locator": "S003 pp1–3逐區相位程序、Fig2/3、Eq1–2與Fig4有限持續時間。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "散射的路徑未必要去除，也能利用回饋逐步配合。",
+        "visual": "實測Fig3同色標散斑與亮點；另標模型的相位箭頭及目標回饋，不把1000倍局部亮度畫成1000倍總能量。",
+        "seconds": [
+          45,
+          95
+        ]
+      }
+    },
+    {
+      "id": "P50-004",
+      "question": "影片裡的零食袋看來沒動，為什麼仍能提取當時的聲音？",
+      "domain": "光學中的隱藏資訊與控制",
+      "mechanism_key": "imaging.motion.subpixel_phase_aggregation_sound",
+      "answer_target": "聲壓造成遠小於像素的表面振動，仍會改變有紋理區域的局部影像相位；先加權整合各尺度與方向內的局部訊號，再對齊不同尺度與方向的訊號後合併，減少雜訊及相互抵銷，提取聲致振動。逐行時間差可作同文的額外取樣變體。",
+      "scope": "受控播放且相機/物體隔振；硬重磚的恢復較差。逐行變體受曝光平均/幀間缺樣限制；本輪只核正文/譜圖，未聽恢復音訊，不承諾可懂語句。",
+      "source_ids": [
+        "P50-S004"
+      ],
+      "source_locator": "S004 pp2–4相位整合/Fig4–5；pp8–9逐行缺樣/曝光限制。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；待非作者覆核，未製作媒體。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "像素未跨格不代表影像沒有可量的位移。",
+        "visual": "原創放大紋理小位移；Fig5同掃頻的磚與袋譜分開；有聲對照未實聽前不做獨立片。",
+        "seconds": [
+          30,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P50-NA001",
+      "question": "白牆為何不像鏡子照出人？",
+      "existing_ids": [
+        "P133"
+      ],
+      "source_ids": [],
+      "reason": "僅漫反射破壞直接方向對應，已有；P50-001須保半影編碼新控制。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。"
+    },
+    {
+      "id": "P50-NA002",
+      "question": "亮暗散斑是怎麼形成的？",
+      "existing_ids": [
+        "O3004",
+        "P153"
+      ],
+      "source_ids": [],
+      "reason": "相干散射/干涉生成已有，不以雷射替雷達重收。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I15-NA12"
+    },
+    {
+      "id": "P50-NA003",
+      "question": "把散斑平滑掉是不是就能恢復圖案？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "source_ids": [],
+      "reason": "去噪/細部損失舊核；與本批利用相關性解圖不同。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "P26-NA004"
+    },
+    {
+      "id": "P50-NA004",
+      "question": "手機拍螢幕的大片波紋怎麼來？",
+      "existing_ids": [
+        "LEG-A50"
+      ],
+      "source_ids": [],
+      "reason": "格網取樣摩爾紋已有。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I15-NA10"
+    },
+    {
+      "id": "P50-NA005",
+      "question": "相機改曝光時序讓動態模糊更好救？",
+      "existing_ids": [
+        "I15005"
+      ],
+      "source_ids": [],
+      "reason": "已知編碼模糊核舊核，未另採新研究。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "P20-NA007"
+    },
+    {
+      "id": "P50-NA006",
+      "question": "用更少感光點和更多遮罩還原圖像？",
+      "existing_ids": [
+        "I15007"
+      ],
+      "source_ids": [],
+      "reason": "主動已知遮罩多次量測已有，單改遮罩形狀不另收。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。"
+    },
+    {
+      "id": "P50-NA007",
+      "question": "拍完才換焦點，能從普通照片找回角度嗎？",
+      "existing_ids": [
+        "I15004"
+      ],
+      "source_ids": [],
+      "reason": "光場方向記錄及限制已有。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I15-NA17"
+    },
+    {
+      "id": "P50-NA008",
+      "question": "轉一下眼鏡，螢幕為什麼變黑？",
+      "existing_ids": [
+        "P159",
+        "P160",
+        "P161",
+        "P162"
+      ],
+      "source_ids": [],
+      "reason": "偏振方向選擇與角度透光已有。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "P20-NA003"
+    },
+    {
+      "id": "P50-NA009",
+      "question": "逐行掃描使移動影像變形，可換成袋子再計嗎？",
+      "existing_ids": [
+        "O3047",
+        "P20006"
+      ],
+      "source_ids": [],
+      "reason": "逐行時序本身已有；P50-004只保聲致微振動提取，逐行是同文變體不拆核。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "I15-NA11"
+    },
+    {
+      "id": "P50-NA010",
+      "question": "用相機沿唱片凹槽找回聲音？",
+      "existing_ids": [
+        "P28001"
+      ],
+      "source_ids": [],
+      "reason": "靜態已刻錄幾何讀取舊核，與當下動態微振動不同。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。"
+    },
+    {
+      "id": "P50-NA011",
+      "question": "把穿透擴散片換成白漆反射再加一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "P50-S002"
+      ],
+      "reason": "S002同記憶角/自相關恢復機制，白漆反射例留P50-002範圍，不計新核。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。"
+    },
+    {
+      "id": "P50-NA012",
+      "question": "用蛋殼、花瓣分別聚光能各新增一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "P50-S003"
+      ],
+      "reason": "S003同相位回饋程序換樣本，不拆材料。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。"
+    },
+    {
+      "id": "P50-NA013",
+      "question": "把聲音倒放的重聚直接改名成光學重聚？",
+      "existing_ids": [
+        "W16003"
+      ],
+      "source_ids": [],
+      "reason": "若只說路徑反向對齊即重複；P50-003須保目標強度回饋找相位、未記錄時域波形的差別。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
+      "prior_not_added_id": "W16-NA12"
+    },
+    {
+      "id": "P50-NA014",
+      "question": "手機每秒60幀還原更高頻聲音獨立算一題？",
+      "existing_ids": [
+        "O3047",
+        "P20006"
+      ],
+      "source_ids": [
+        "P50-S004"
+      ],
+      "reason": "S004逐行樣本/缺口/曝光是P50-004同文測量變體；本輪不拆取樣參數為另一核心。",
+      "reentry_condition": "需有既有完整答案未涵蓋的新控制與實讀正文，才重新評估。",
+      "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。"
+    }
+  ]
+}

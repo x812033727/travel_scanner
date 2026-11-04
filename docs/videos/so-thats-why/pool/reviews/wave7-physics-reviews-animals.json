@@ -1,0 +1,594 @@
+{
+  "status": "PASS_TOPIC_LEVEL_AFTER_TARGETED_CORRECTIONS_NOT_SCRIPT_APPROVAL",
+  "reviewer": "pool_physics",
+  "author": "pool_life_tech",
+  "created_on": "2026-11-01",
+  "input_sha256": {
+    "batches/wave7-animals.json": "ae0011f1620052f358c10ae0958123d91a542b193978e43500c4c71a0a2394a7",
+    "reviews/wave7-animals-themes.json": "46b4dca95a4ab76383a0dd01eacc26209768498faf4659a513f8a1661aabfac1",
+    "reviews/wave7-animals-author.json": "1abc04e21c3061cdc22dabed7d6d1ec6e62983f3dd61f104c86207a44607b5f8",
+    ".cache/wave7-animals-neighbours.json": "2e281e6176c99bc8d23e4af8e44b3378c4c8a380109b8f9a3163321fec52e4a8",
+    "pool.json": "07a5ca7d6ad3aa5d0fdfe51d3315e663fd927a2e88cb7459a271ef5752c19b50"
+  },
+  "preview_draft_sha256": "a20a66ff61c7cda70061d8d524b3da65b6fe100461469e5b46a37b7dd7c9f1a2",
+  "review_depth": {
+    "candidate_rows_read": 17,
+    "source_metadata_rows_read": 19,
+    "not_added_rows_read": 10,
+    "theme_proposals_read": 3,
+    "neighbour_pairs_full_question_answer_scope_read": 85,
+    "independent_source_records_read": 12,
+    "not_independently_read": 7,
+    "notes": "首輪17題與85鄰居逐列；鎖版逐列問題/定位/範圍及作者17邊界再讀。新版近鄰只metadata變，正式鎖hash已綁。未逐列人工讀全2959舊庫；近鄰僅檢索輔助，不按分數合併。來源抽查非17題所有主張查核；未動畫/試讀/觀眾測試。"
+  },
+  "merges": [],
+  "excluded": [],
+  "distinct": [
+    {
+      "a": "Z7002",
+      "b": "LEG-S34",
+      "reason": "固定移動條件下 CO2 改變行為及視葉鈣訊號，可呈現跨感官增益；不能把所有視覺刺激或先聞後看寫成固定自然程序。"
+    },
+    {
+      "a": "Z7003",
+      "b": "LEG-S34",
+      "reason": "區分傳熱模式並用觸角／TRPA1條件建立感測模型，超出找人線索清單；升溫與下游細節仍是模型。"
+    },
+    {
+      "a": "Z7003",
+      "b": "Z7002",
+      "reason": "區分傳熱模式並用觸角／TRPA1條件建立感測模型，超出找人線索清單；升溫與下游細節仍是模型。"
+    },
+    {
+      "a": "Z7004",
+      "b": "B2300",
+      "reason": "干擾頻率接近→調頻分離是可比較的閉環目標；限55–85秒，不靠JAR名詞或物種列表延長。"
+    },
+    {
+      "a": "Z7004",
+      "b": "E2252",
+      "reason": "干擾頻率接近→調頻分離是可比較的閉環目標；限55–85秒，不靠JAR名詞或物種列表延長。"
+    },
+    {
+      "a": "Z7005",
+      "b": "B2318",
+      "reason": "快慢往復改變毛陣列流體通過與樣本保留，非只說觸角能聞；原來源本次未重開。"
+    },
+    {
+      "a": "Z7006",
+      "b": "B2179",
+      "reason": "外形破壞一致渦脫落降低自身振動，與外來尾流強響應構成兩次對照；不同於毛受力的轉導。"
+    },
+    {
+      "a": "Z7006",
+      "b": "B2154",
+      "reason": "外形破壞一致渦脫落降低自身振動，與外來尾流強響應構成兩次對照；不同於毛受力的轉導。"
+    },
+    {
+      "a": "Z7007",
+      "b": "B2243",
+      "reason": "前向熟悉視景定向後由天體線索保持倒退方向，身體朝向與行進向分離；不是一般多線索備援。"
+    },
+    {
+      "a": "Z7007",
+      "b": "B2246",
+      "reason": "前向熟悉視景定向後由天體線索保持倒退方向，身體朝向與行進向分離；不是一般多線索備援。"
+    },
+    {
+      "a": "Z7008",
+      "b": "B2315",
+      "reason": "時間變動位置可以建立雙眼對應，靜態圖樣不匹配仍有效；不只是把烏賊立體視差換螳螂。"
+    },
+    {
+      "a": "Z7009",
+      "b": "O3032",
+      "reason": "自己的前飛使回聲中心頻率上移，發射端下調使回聲落回敏感窄帶；引言支持，結果精度本次未驗。"
+    },
+    {
+      "a": "Z7009",
+      "b": "Z7017",
+      "reason": "自己的前飛使回聲中心頻率上移，發射端下調使回聲落回敏感窄帶；引言支持，結果精度本次未驗。"
+    },
+    {
+      "a": "Z7010",
+      "b": "L324",
+      "reason": "色差改變失焦與跳距提供距離模型的判別，非為看清而調焦；神經實作未知，本次未重開日文原頁。"
+    },
+    {
+      "a": "Z7010",
+      "b": "B2315",
+      "reason": "色差改變失焦與跳距提供距離模型的判別，非為看清而調焦；神經實作未知，本次未重開日文原頁。"
+    },
+    {
+      "a": "Z7011",
+      "b": "B2286",
+      "reason": "積分光流產生里程訊號，與舞蹈傳訊規則、計步不同；地形／近遠景應分清角速度、對比度，不能說任意紋理必改估距。"
+    },
+    {
+      "a": "Z7011",
+      "b": "B2329",
+      "reason": "積分光流產生里程訊號，與舞蹈傳訊規則、計步不同；地形／近遠景應分清角速度、對比度，不能說任意紋理必改估距。"
+    },
+    {
+      "a": "Z7012",
+      "b": "Z7011",
+      "reason": "某段膨脹率回授與旅程累積不同；2023個體結果足以限制平均模型，題名一路減速須修。"
+    },
+    {
+      "a": "Z7013",
+      "b": "L191",
+      "reason": "三種功能假說的時間預測＋靜音對照能支持干擾功能，並非只有蛾會叫；未確定神經干擾路徑不得虛構。"
+    },
+    {
+      "a": "Z7013",
+      "b": "B2071",
+      "reason": "三種功能假說的時間預測＋靜音對照能支持干擾功能，並非只有蛾會叫；未確定神經干擾路徑不得虛構。"
+    },
+    {
+      "a": "Z7014",
+      "b": "B2314",
+      "reason": "局部抑制吸附反射與接觸食物分子轉導不同；離體／整體差異可形成60–85秒，但不補分子身份或自我意識。"
+    },
+    {
+      "a": "Z7015",
+      "b": "B2005",
+      "reason": "共同物體傳力和新加入者短暫資訊優勢，與費洛蒙路徑或普通近鄰共識不同；本次未重開原研究。"
+    },
+    {
+      "a": "Z7015",
+      "b": "B2248",
+      "reason": "共同物體傳力和新加入者短暫資訊優勢，與費洛蒙路徑或普通近鄰共識不同；本次未重開原研究。"
+    },
+    {
+      "a": "Z7016",
+      "b": "B2001",
+      "reason": "移除風向資訊後方向受損而氣味速度／搜尋仍在，拆出感測器分工；不是鼠婦不定向速度調整，也非僅重述感官增益。"
+    },
+    {
+      "a": "Z7016",
+      "b": "Z7002",
+      "reason": "移除風向資訊後方向受損而氣味速度／搜尋仍在，拆出感測器分工；不是鼠婦不定向速度調整，也非僅重述感官增益。"
+    },
+    {
+      "a": "Z7017",
+      "b": "Z7009",
+      "reason": "振翅引起回聲調制用於區別背景，與補償自身運動的中心頻移是不同控制變量。"
+    },
+    {
+      "a": "Z7017",
+      "b": "B2320",
+      "reason": "振翅引起回聲調制用於區別背景，與補償自身運動的中心頻移是不同控制變量。"
+    }
+  ],
+  "row_dispositions": [
+    {
+      "id": "Z7001",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "姿態參考亮區與近點光困繞具因果圖；軌跡種類已合在一題，保留物種與遠距吸引限制。",
+      "compare_ids": [],
+      "source_review_status": [
+        "NOT_INDEPENDENTLY_READ"
+      ]
+    },
+    {
+      "id": "Z7002",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "固定移動條件下 CO2 改變行為及視葉鈣訊號，可呈現跨感官增益；不能把所有視覺刺激或先聞後看寫成固定自然程序。",
+      "compare_ids": [
+        "LEG-S34"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7003",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "區分傳熱模式並用觸角／TRPA1條件建立感測模型，超出找人線索清單；升溫與下游細節仍是模型。",
+      "compare_ids": [
+        "LEG-S34",
+        "Z7002"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7004",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "干擾頻率接近→調頻分離是可比較的閉環目標；限55–85秒，不靠JAR名詞或物種列表延長。",
+      "compare_ids": [
+        "B2300",
+        "E2252"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7005",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "快慢往復改變毛陣列流體通過與樣本保留，非只說觸角能聞；原來源本次未重開。",
+      "compare_ids": [
+        "B2318"
+      ],
+      "source_review_status": [
+        "NOT_INDEPENDENTLY_READ"
+      ]
+    },
+    {
+      "id": "Z7006",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "外形破壞一致渦脫落降低自身振動，與外來尾流強響應構成兩次對照；不同於毛受力的轉導。",
+      "compare_ids": [
+        "B2179",
+        "B2154"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7007",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "前向熟悉視景定向後由天體線索保持倒退方向，身體朝向與行進向分離；不是一般多線索備援。",
+      "compare_ids": [
+        "B2243",
+        "B2246"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7008",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "時間變動位置可以建立雙眼對應，靜態圖樣不匹配仍有效；不只是把烏賊立體視差換螳螂。",
+      "compare_ids": [
+        "B2315"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7009",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "自己的前飛使回聲中心頻率上移，發射端下調使回聲落回敏感窄帶；引言支持，結果精度本次未驗。",
+      "compare_ids": [
+        "O3032",
+        "Z7017"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7010",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "色差改變失焦與跳距提供距離模型的判別，非為看清而調焦；神經實作未知，本次未重開日文原頁。",
+      "compare_ids": [
+        "L324",
+        "B2315"
+      ],
+      "source_review_status": [
+        "NOT_INDEPENDENTLY_READ"
+      ]
+    },
+    {
+      "id": "Z7011",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "積分光流產生里程訊號，與舞蹈傳訊規則、計步不同；地形／近遠景應分清角速度、對比度，不能說任意紋理必改估距。",
+      "compare_ids": [
+        "B2286",
+        "B2329"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7012",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "某段膨脹率回授與旅程累積不同；2023個體結果足以限制平均模型，題名一路減速須修。",
+      "compare_ids": [
+        "Z7011"
+      ],
+      "source_review_status": [
+        "NOT_INDEPENDENTLY_READ",
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7013",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "三種功能假說的時間預測＋靜音對照能支持干擾功能，並非只有蛾會叫；未確定神經干擾路徑不得虛構。",
+      "compare_ids": [
+        "L191",
+        "B2071"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7014",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "局部抑制吸附反射與接觸食物分子轉導不同；離體／整體差異可形成60–85秒，但不補分子身份或自我意識。",
+      "compare_ids": [
+        "B2314"
+      ],
+      "source_review_status": [
+        "NOT_INDEPENDENTLY_READ",
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7015",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "共同物體傳力和新加入者短暫資訊優勢，與費洛蒙路徑或普通近鄰共識不同；本次未重開原研究。",
+      "compare_ids": [
+        "B2005",
+        "B2248"
+      ],
+      "source_review_status": [
+        "NOT_INDEPENDENTLY_READ"
+      ]
+    },
+    {
+      "id": "Z7016",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "移除風向資訊後方向受損而氣味速度／搜尋仍在，拆出感測器分工；不是鼠婦不定向速度調整，也非僅重述感官增益。",
+      "compare_ids": [
+        "B2001",
+        "Z7002"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    },
+    {
+      "id": "Z7017",
+      "disposition": "RETAIN_TOPIC_LEVEL",
+      "reason": "振翅引起回聲調制用於區別背景，與補償自身運動的中心頻移是不同控制變量。",
+      "compare_ids": [
+        "Z7009",
+        "B2320"
+      ],
+      "source_review_status": [
+        "READ_SPECIFIED_SCOPE_ONLY"
+      ]
+    }
+  ],
+  "source_checks": [
+    {
+      "source_id": "Z7-S001",
+      "url": "https://www.nature.com/articles/s41467-024-44785-3",
+      "result": "NOT_INDEPENDENTLY_READ",
+      "limit": "本次未獨立重開；只審作者來源定位／範圍與題目一致性，不升格成獨立來源驗證。"
+    },
+    {
+      "source_id": "Z7-S002",
+      "url": "https://www.washington.edu/news/2019/07/18/mosquito-sensory-integration/",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "web.open",
+      "locator": "UW正文：moving horizontal bar、lobula calcium、reverse test段",
+      "finding": "固定畫面與CO2前置對照支持題級增益；未讀原Current Biology全文。"
+    },
+    {
+      "source_id": "Z7-S003",
+      "url": "https://www.nature.com/articles/s41586-024-07848-5",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "public urllib HTML + stdlib HTMLParser",
+      "locator": "IR is detected at mid-range；opsin/TRPA1結果部分；Discussion",
+      "finding": "已讀輻射隔離與觸角局部升溫模型；不是全部Methods或完整蛋白路徑核驗。"
+    },
+    {
+      "source_id": "Z7-S004",
+      "url": "https://efishlab.org/eod-modulations-and-electrocommunication/",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "web.open",
+      "locator": "The Jamming Avoidance Response and LTFE 第1–3段",
+      "finding": "支持頻率接近干擾與物種不同方向；不延伸成完整神經比較器。"
+    },
+    {
+      "source_id": "Z7-S005",
+      "url": "https://newsarchive.berkeley.edu/news/media/releases/2001/11/30_lobst.html",
+      "result": "NOT_INDEPENDENTLY_READ",
+      "limit": "本次未獨立重開；只審作者來源定位／範圍與題目一致性，不升格成獨立來源驗證。"
+    },
+    {
+      "source_id": "Z7-S006",
+      "url": "https://www.whoi.edu/oceanus/feature/seal-whiskers-inspire-marine-technology/",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "web.open",
+      "locator": "Vibrations and vortices；An artificial whisker；Engineering a bio-inspired sensor",
+      "finding": "模型幾何、渦脫落與外來尾流對照可支持；不是大腦如何解碼的證據。"
+    },
+    {
+      "source_id": "Z7-S007",
+      "url": "https://news.cnrs.fr/articles/ants-have-a-mighty-sense-of-direction",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "web.open",
+      "locator": "Reverse, full speed ahead；鏡面太陽與reference direction段",
+      "finding": "支持倒退前的前向瞥視及天體保持方向；機構自己的研究報導，不宣稱原論文全文。"
+    },
+    {
+      "source_id": "Z7-S008",
+      "url": "https://www.ncl.ac.uk/press/articles/archive/2018/02/newformof3dvisiondiscoveredinprayingmantis/",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "web.open",
+      "locator": "Going bug-eyed?末兩段（web lines104–105）",
+      "finding": "不同左右靜態內容仍能利用改變位置；僅此獵物立體任務，非所有螳螂視覺。"
+    },
+    {
+      "source_id": "Z7-S009",
+      "url": "https://www.nature.com/articles/s41598-018-22880-y",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "public urllib HTML + stdlib HTMLParser",
+      "locator": "Introduction：wing glints、DSC、auditory fovea；Results開頭僅背景",
+      "finding": "足以題級區分外來調制與自運動補償；未逐查Results精度、引言所引原實驗或補充資料。"
+    },
+    {
+      "source_id": "Z7-S010",
+      "url": "https://www.jstage.jst.go.jp/article/biophys/53/2/53_109/_pdf/-char/en",
+      "result": "NOT_INDEPENDENTLY_READ",
+      "limit": "本次未獨立重開；只審作者來源定位／範圍與題目一致性，不升格成獨立來源驗證。"
+    },
+    {
+      "source_id": "Z7-S011",
+      "url": "https://openresearch-repository.anu.edu.au/server/api/core/bitstreams/3fa47ee5-d05c-4bd0-94f1-263830dd804d/content",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "public urllib PDF + PyMuPDF text",
+      "locator": "pp916–917 Results Experiment 1/2；pp919–920 Discussion讀到地形／高度／對比解釋",
+      "finding": "不同地形的舞蹈量距結果支持；近遠幾何示意不可當本篇直接同條件操控資料。"
+    },
+    {
+      "source_id": "Z7-S012",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3831993/",
+      "result": "NOT_INDEPENDENTLY_READ",
+      "limit": "PMC web與urllib回reCAPTCHA；Europe PMC fullTextXML HTTP500；本次未讀到2013正文。2023結果／討論另有成功補讀。"
+    },
+    {
+      "source_id": "Z7-S013",
+      "url": "https://www1.pbrc.hawaii.edu/~danh/Neurodiversity/Fall%202012/2012-10-31_Petra_BatAvoidance/Corcoran-Barber-Connor_2009_MothSonarJamming.pdf",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "public urllib PDF + PyMuPDF text",
+      "locator": "pp325–327 三假說、分夜與靜音對照、結果及攻擊階段逆轉",
+      "finding": "讀本文主要實驗及結果；未讀online SOM/影片，不採上一篇文章內容。"
+    },
+    {
+      "source_id": "Z7-S014",
+      "url": "https://www.cuny.edu/news/secrets-of-the-octopus/",
+      "result": "NOT_INDEPENDENTLY_READ",
+      "limit": "CUNY web timeout，urllib HTTP404；未讀到此頁。以S015原摘要作有限抽查。"
+    },
+    {
+      "source_id": "Z7-S015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24835454/",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "web.open",
+      "locator": "PubMed Abstract（web lines243–246）",
+      "finding": "僅原研究摘要，支持皮膚化學抑制局部反射及完整動物可能覆蓋；不是完整分子機制。"
+    },
+    {
+      "source_id": "Z7-S016",
+      "url": "https://www.nature.com/articles/ncomms8729",
+      "result": "NOT_INDEPENDENTLY_READ",
+      "limit": "本次未獨立重開；只審作者來源定位／範圍與題目一致性，不升格成獨立來源驗證。"
+    },
+    {
+      "source_id": "Z7-S017",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103744/",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "web.open primary publisher alternative",
+      "locator": "https://elifesciences.org/articles/37815；Results ON/OFF responses及Local search is driven purely by odor dynamics、Fig1/2；Discussion對應段",
+      "finding": "PMC回challenge；從eLife原出版頁讀風感限制與氣味運動分工，未讀全部動態模型／審稿。"
+    },
+    {
+      "source_id": "Z7-S018",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10482386/",
+      "result": "READ_SPECIFIED_SCOPE_ONLY",
+      "read_via": "public Europe PMC fullTextXML + ElementTree",
+      "locator": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10482386/fullTextXML；DISCUSSION平均／個體／切值三小節及expansion cues開頭",
+      "finding": "PMC回challenge；公開全文XML補讀支持分段與瞬態調整限制，未重分析原軌跡。"
+    },
+    {
+      "source_id": "Z7-S019",
+      "url": "https://news.uchicago.edu/story/neurological-study-reveals-cuttlefish-have-surprising-control-skin-spikes",
+      "result": "NOT_INDEPENDENTLY_READ",
+      "limit": "僅供作者not_added，本次未重開。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "ANIMALS01",
+      "target": "W7Z-T03.title",
+      "problem": "聽出振翅聲可能誤導為被動聽翅膀自發聲；正文實為自發CF訊號返回後受振翅調制。",
+      "required": "改為辨出振翅的回聲，保留160秒與兩個原核心。",
+      "status": "RESOLVED_TARGETED_READBACK"
+    },
+    {
+      "id": "ANIMALS02",
+      "target": "Z7012.question",
+      "problem": "一路減速可能宣稱全程單調減速；2023個體分段切值可包含加速與減速瞬態。",
+      "required": "改問接近降落面時不先量出公分如何控制減速；保留answer/scope中的分段條件。",
+      "status": "RESOLVED_TARGETED_READBACK"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W7Z-T01",
+      "disposition": "RETAIN_SHORT_EXPLAINER_PROPOSAL",
+      "seconds": 170,
+      "chapters": [
+        80,
+        90
+      ],
+      "per_core_seconds": {
+        "Z7002": 80,
+        "Z7003": 90
+      },
+      "why": "固定畫面→改CO2增益→另一研究的紅外線感測，明確標研究切換，非一段已觀察的追人路程。",
+      "limits": "通道結果與局部升溫模型要分開；不能把看不見紅外線改成生理絕對否定。刪第二章即80秒素材並撤雙章案。"
+    },
+    {
+      "id": "W7Z-T02",
+      "disposition": "RETAIN_SHORT_EXPLAINER_PROPOSAL",
+      "seconds": 200,
+      "chapters": [
+        90,
+        110
+      ],
+      "per_core_seconds": {
+        "Z7011": 90,
+        "Z7012": 110
+      },
+      "why": "旅程積分量→當下膨脹率閉環，有新控制量；2023分段限制已占末35秒，不把平均線作全軌跡。",
+      "limits": "近牆示意為幾何解釋，地形結果不可偷換成只變距離；旋轉圖案原實驗本次未重讀。刪地形補例20秒→180，刪降落章→90素材。"
+    },
+    {
+      "id": "W7Z-T03",
+      "disposition": "RETAIN_SHORT_EXPLAINER_PROPOSAL_AFTER_TARGETED_FIX",
+      "seconds": 160,
+      "chapters": [
+        75,
+        85
+      ],
+      "per_core_seconds": {
+        "Z7017": 75,
+        "Z7009": 85
+      },
+      "why": "先目標振翅調制，再自身前飛造成中心頻移與發射補償，固定同一訊號圖可有連貫追問。",
+      "limits": "主題限定CF-FM；原研究引言級支持非成稿查核。標題必修ANIMALS01，刪調制章→85秒素材並撤雙章案。"
+    }
+  ],
+  "verification": {
+    "all_theme_chapter_and_beat_sums_pass": true,
+    "all_beats_at_most45_seconds": true,
+    "opening_transition_recap_included": true,
+    "per_canonical_core_seconds_within_editorial_max": true,
+    "current_core_ids_distinct_no_alias_budget_double_count": true,
+    "not_added_not_sent_as_central_exclusions": true
+  },
+  "conclusion": "17個新核心題級保留，0合併/暫緩；兩處文字已在最終hash定點讀回，3個短解說企劃保留170/200/160秒。獨立實讀12/19來源的列示範圍、7未完成，不宣稱逐主張全驗。製作前補證據、原創示意與旁白試讀限制繼續有效。",
+  "final_targeted_recheck": {
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "input_sha256": {
+      "batches/wave7-animals.json": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410",
+      "reviews/wave7-animals-themes.json": "e8aaedf8119f571b918fe62e4b5cbfde491bec9085e5e2984d94ee4437a34afe",
+      "reviews/wave7-animals-author.json": "e76e750bcde5cfc12b2ab3da585a35b04b952631ef092d4819f59219f3bcbc1f",
+      ".cache/wave7-animals-neighbours.json": "d282ed31c1199f5d46f33be2872cd084295cd24d5030f2f2652b4bd400db0652"
+    },
+    "preview_draft_sha256": "023edd5385d84f0d4d7cd808f1ccb377965904ddd26715f5f098e440734b2413",
+    "readback": [
+      "Z7012問法已去掉一路，答案與scope仍限定進場某段及個體切換。",
+      "W7Z-T03標題明示振翅的回聲，章節仍處理主動發聲後的回聲調制。",
+      "作者revisions保存前後SHA且未聲稱修改即覆核完成；本收據才記非作者定點讀回。",
+      "重讀Z7012最終5鄰居：Z7011為旅程積分，其他P104/P014/P252/O3086無相同回授核心；未新增merge。",
+      "重核三案170/200/160、章節及beats、逐核心上限皆通過；作者三檔和本收據LF。"
+    ],
+    "open_required_corrections": 0,
+    "additional_external_source_reads": 0
+  }
+}

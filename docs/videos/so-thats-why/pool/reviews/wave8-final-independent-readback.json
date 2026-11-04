@@ -1,0 +1,822 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01",
+  "reviewer": "/root/science_sources",
+  "status": "PASS_DATA_AND_EDITORIAL_INTEGRATION_STAGING_PENDING",
+  "production_ready": false,
+  "independence": {
+    "scope": "對中央整合結果作非整合作者讀回；檢查資料保留、合併、來源閱讀關係、題組映射、秒數及證據雜湊，不重新批准全部外部事實。",
+    "microbes": "本人是wave8-microbes作者。該批內容與來源的獨立結論依pool_physics收據；此處只核已覆核版本是否正確整合，不稱自審為獨立內容批准。",
+    "source_refresh": "本人已獨立覆核root的6來源修訂，8指定正文閱讀範圍在另一收據；本次不重開外站。",
+    "other_batches": "食品採root非作者收據、網路採pool_life_tech非作者收據，逐讀所列修訂/限制及中央題案內容。"
+  },
+  "baseline_comparison": {
+    "checkpoint_path": "docs/videos/so-thats-why/pool/checkpoint-2667.json",
+    "gzip_path": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2667.json.gz",
+    "gzip_sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c",
+    "method": "核gzip SHA後解壓，將其中pool.raw_records逐物件與當期比對，並比對canonical欄位、選入ID、sources.readings、not_added與themes。",
+    "raw_compared": 3017,
+    "raw_removed": 0,
+    "raw_changed": 0,
+    "selected_carried": 2667,
+    "themes_compared": 78,
+    "themes_removed_or_changed": 0,
+    "old_source_urls_carried": 3979,
+    "old_source_readings_removed": 0,
+    "old_not_added_carried": 364,
+    "old_canonical_changed": {
+      "LEG-S07": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ],
+      "LEG-S18": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ],
+      "LEG-S21": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ],
+      "LEG-S23": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ],
+      "LEG-S80": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ],
+      "LEG-S83": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ],
+      "P257": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ],
+      "I3039": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ]
+    },
+    "canonical_change_limit": "恰8核心只增加aliases/provenance_ids/question_variants/source_refs，原question/answer_target/scope/editorial/premise_status等完全不變。",
+    "other_snapshots": "registry所列2000/2328/2449/2546/2609快照只核manifest記載檔案SHA，沒有逐raw再比較這五個快照；沒有把1000文件當已解壓快照。",
+    "editorial_exemption": "checkpoints.json仍指定checkpoint-2000.json；新增2667檢查點不擴大editorial豁免。"
+  },
+  "counts_independently_recomputed": {
+    "raw_records": 3069,
+    "canonical_questions": 2940,
+    "eligible_candidates": 2770,
+    "selected_candidates": 2711,
+    "alias_records": 129,
+    "historical_records": 313,
+    "source_urls": 4031,
+    "current_research_source_urls": 1070,
+    "selected_source_urls": 2265,
+    "new_suggestions_not_added": 401
+  },
+  "cohort": {
+    "new_proposals": 46,
+    "proposal_batch_counts": {
+      "food": 7,
+      "networks": 17,
+      "microbes": 22
+    },
+    "proposal_merges": 2,
+    "proposal_holds": 0,
+    "new_cores_selected": 44,
+    "source_refresh_records": 6,
+    "source_refresh_merges": 6,
+    "source_refresh_new_cores": 0,
+    "total_added_raw": 52,
+    "old_selected_removed": [],
+    "new_selected_ids": [
+      "F8001",
+      "F8002",
+      "F8003",
+      "F8004",
+      "F8005",
+      "F8006",
+      "F8007",
+      "I8001",
+      "I8002",
+      "I8003",
+      "I8004",
+      "I8006",
+      "I8007",
+      "I8008",
+      "I8010",
+      "I8011",
+      "I8012",
+      "I8014",
+      "I8015",
+      "I8016",
+      "I8017",
+      "I8018",
+      "I8020",
+      "U8001",
+      "U8002",
+      "U8003",
+      "U8004",
+      "U8005",
+      "U8006",
+      "U8007",
+      "U8008",
+      "U8009",
+      "U8010",
+      "U8011",
+      "U8012",
+      "U8013",
+      "U8014",
+      "U8015",
+      "U8016",
+      "U8018",
+      "U8019",
+      "U8020",
+      "U8021",
+      "U8022"
+    ],
+    "not_added_new": 37,
+    "not_added_total": 401,
+    "batch_source_records": 59,
+    "batch_distinct_source_urls": 59,
+    "first_seen_full_pool_urls": 52,
+    "full_pool_current_research_url_increment": 58,
+    "remaining_to_10000": 7289
+  },
+  "merge_readback": [
+    {
+      "id": "I8013",
+      "canonical": "I3039",
+      "decision_present": true,
+      "raw_present": true,
+      "alias_present": true,
+      "variant_present": true,
+      "provenance_present": true,
+      "not_separately_selected": true,
+      "canonical_selected": true
+    },
+    {
+      "id": "U8017",
+      "canonical": "P257",
+      "decision_present": true,
+      "raw_present": true,
+      "alias_present": true,
+      "variant_present": true,
+      "provenance_present": true,
+      "not_separately_selected": true,
+      "canonical_selected": true
+    },
+    {
+      "id": "R8001",
+      "canonical": "LEG-S07",
+      "decision_present": true,
+      "raw_present": true,
+      "alias_present": true,
+      "variant_present": true,
+      "provenance_present": true,
+      "not_separately_selected": true,
+      "canonical_selected": true
+    },
+    {
+      "id": "R8002",
+      "canonical": "LEG-S18",
+      "decision_present": true,
+      "raw_present": true,
+      "alias_present": true,
+      "variant_present": true,
+      "provenance_present": true,
+      "not_separately_selected": true,
+      "canonical_selected": true
+    },
+    {
+      "id": "R8003",
+      "canonical": "LEG-S21",
+      "decision_present": true,
+      "raw_present": true,
+      "alias_present": true,
+      "variant_present": true,
+      "provenance_present": true,
+      "not_separately_selected": true,
+      "canonical_selected": true
+    },
+    {
+      "id": "R8004",
+      "canonical": "LEG-S23",
+      "decision_present": true,
+      "raw_present": true,
+      "alias_present": true,
+      "variant_present": true,
+      "provenance_present": true,
+      "not_separately_selected": true,
+      "canonical_selected": true
+    },
+    {
+      "id": "R8005",
+      "canonical": "LEG-S80",
+      "decision_present": true,
+      "raw_present": true,
+      "alias_present": true,
+      "variant_present": true,
+      "provenance_present": true,
+      "not_separately_selected": true,
+      "canonical_selected": true
+    },
+    {
+      "id": "R8006",
+      "canonical": "LEG-S83",
+      "decision_present": true,
+      "raw_present": true,
+      "alias_present": true,
+      "variant_present": true,
+      "provenance_present": true,
+      "not_separately_selected": true,
+      "canonical_selected": true
+    }
+  ],
+  "sources": {
+    "method": "四batch逐列與當期raw比較除source_ids外所有原始欄位；source_ids逐一對應正規化來源ID及origin，核title/publisher/accessed_on/read_via/reading_scope/locator/summary/rights完全保留。",
+    "batch_reading_records_checked": 59,
+    "batch_checks": [
+      {
+        "file": "batches/wave8-food.json",
+        "candidate_rows": 7,
+        "source_rows": 13,
+        "not_added": 10,
+        "raw_fields_and_source_mapping_equal": true
+      },
+      {
+        "file": "batches/wave8-microbes.json",
+        "candidate_rows": 22,
+        "source_rows": 22,
+        "not_added": 14,
+        "raw_fields_and_source_mapping_equal": true
+      },
+      {
+        "file": "batches/wave8-networks.json",
+        "candidate_rows": 17,
+        "source_rows": 16,
+        "not_added": 13,
+        "raw_fields_and_source_mapping_equal": true
+      },
+      {
+        "file": "batches/wave8-source-refresh.json",
+        "candidate_rows": 6,
+        "source_rows": 8,
+        "not_added": 0,
+        "raw_fields_and_source_mapping_equal": true
+      }
+    ],
+    "old_urls_and_readings_preserved": true,
+    "refresh_chain": [
+      {
+        "revision": "R8001",
+        "canonical": "LEG-S07",
+        "source_ids": [
+          "SRC-348b3625561b95cc"
+        ],
+        "legacy_status": "legacy_review_requires_refresh",
+        "old_answer_unchanged": true
+      },
+      {
+        "revision": "R8002",
+        "canonical": "LEG-S18",
+        "source_ids": [
+          "SRC-77b6c4d38f36a899"
+        ],
+        "legacy_status": "legacy_review_requires_refresh",
+        "old_answer_unchanged": true
+      },
+      {
+        "revision": "R8003",
+        "canonical": "LEG-S21",
+        "source_ids": [
+          "SRC-90cd1ba51152632e",
+          "SRC-803aa9b5b91218a2"
+        ],
+        "legacy_status": "legacy_review_requires_refresh",
+        "old_answer_unchanged": true
+      },
+      {
+        "revision": "R8004",
+        "canonical": "LEG-S23",
+        "source_ids": [
+          "SRC-871bda2403276477",
+          "SRC-bc930d66525465c4"
+        ],
+        "legacy_status": "legacy_review_requires_refresh",
+        "old_answer_unchanged": true
+      },
+      {
+        "revision": "R8005",
+        "canonical": "LEG-S80",
+        "source_ids": [
+          "SRC-995e4418ebe95117"
+        ],
+        "legacy_status": "legacy_review_requires_refresh",
+        "old_answer_unchanged": true
+      },
+      {
+        "revision": "R8006",
+        "canonical": "LEG-S83",
+        "source_ids": [
+          "SRC-0622b4ad0adc81ad"
+        ],
+        "legacy_status": "legacy_review_requires_refresh",
+        "old_answer_unchanged": true
+      }
+    ],
+    "refresh_readings_checked": 8,
+    "legacy_selected_still_requires_full_refresh": 121,
+    "selected_source_refs_recounted": 4087,
+    "scope_limit": "新來源閱讀是指定段落，不取代舊答案或歷史附件全部核准；6個legacy premise_status仍為legacy_review_requires_refresh，沒有從121扣成115全面通過。",
+    "btrfs_chain": "I8-S008原URL及locator經I8013 raw/變體留在I3039 source_refs，G85明確指定此變體；不是把Git來源當Btrfs實作證據。"
+  },
+  "themes": {
+    "new_theme_count": 10,
+    "total": 88,
+    "new_body_seconds_min_max": [
+      105,
+      260
+    ],
+    "new_body_seconds_total": 1645,
+    "core_allocations_checked": 20,
+    "checks": [
+      {
+        "id": "G79",
+        "proposal": "W8F-T01",
+        "seconds": 140,
+        "core_totals": {
+          "F8001": 100,
+          "F8003": 40
+        },
+        "max_beat_gap": 35,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G80",
+        "proposal": "W8F-T02",
+        "seconds": 105,
+        "core_totals": {
+          "F8004": 105
+        },
+        "max_beat_gap": 30,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G81",
+        "proposal": "W8F-T03",
+        "seconds": 105,
+        "core_totals": {
+          "F8005": 105
+        },
+        "max_beat_gap": 30,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G82",
+        "proposal": "W8I-T01",
+        "seconds": 255,
+        "core_totals": {
+          "I8001": 80,
+          "I8002": 95,
+          "I8003": 80
+        },
+        "max_beat_gap": 35,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G83",
+        "proposal": "W8I-T02",
+        "seconds": 185,
+        "core_totals": {
+          "I8006": 90,
+          "I8007": 95
+        },
+        "max_beat_gap": 40,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G84",
+        "proposal": "W8I-T03",
+        "seconds": 165,
+        "core_totals": {
+          "I8012": 75,
+          "I8011": 90
+        },
+        "max_beat_gap": 35,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G85",
+        "proposal": "W8I-T04",
+        "seconds": 130,
+        "core_totals": {
+          "I3039": 60,
+          "I8014": 70
+        },
+        "max_beat_gap": 30,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id",
+          "variant_budget_ids",
+          "variant_budget_reason"
+        ]
+      },
+      {
+        "id": "G86",
+        "proposal": "W8U-T01",
+        "seconds": 260,
+        "core_totals": {
+          "U8001": 85,
+          "U8002": 95,
+          "U8003": 80
+        },
+        "max_beat_gap": 35,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G87",
+        "proposal": "W8U-T02",
+        "seconds": 170,
+        "core_totals": {
+          "U8006": 70,
+          "U8005": 100
+        },
+        "max_beat_gap": 35,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      },
+      {
+        "id": "G88",
+        "proposal": "W8U-T03",
+        "seconds": 130,
+        "core_totals": {
+          "U8019": 65,
+          "U8004": 65
+        },
+        "max_beat_gap": 30,
+        "proposal_diff_fields": [
+          "id",
+          "priority",
+          "proposal_id"
+        ]
+      }
+    ],
+    "mapping_limit": "對照3作者提案及各非作者修訂結論；中央差異只有ID/priority/proposal_id，G85額外記variant_budget_ids/reason。沒有藉別名重複計核心或時間。",
+    "single_core_two_chapters": "G80/F8004與G81/F8005各45+60=105秒，同片按核心累加，皆不超110秒素材cap。",
+    "alias_case": "G85 I3039合計60秒，採I8013 Btrfs變體，第二章I8014為70秒；130秒不是舊150秒。",
+    "microbe_trim": "G88依非作者採65+65=130秒；節拍/刪章後65秒取消題組一致，沒有復活170秒。",
+    "cuts_and_scope": "已讀十題案的drop_if/cut_if與條件切換；G82 TCP→QUIC、G86真菌物種切換、G88兩研究物種切換均明示。",
+    "old_G59": "原78題組逐物件不變，其中G59維持130秒；README/VALIDATION所述506字文字草稿、未試讀及未重跑小樣與本批範圍一致。本次未重新逐句查稿或執行小樣。",
+    "not_claimed": "均為正文紙上預算，含解說開場/回扣、不含固定品牌片頭片尾；未實際試讀或核准製作。"
+  },
+  "hashes": {
+    "manifest_working_tree_inputs_checked": 271,
+    "manifest_listed_output_files_checked": 6,
+    "theme_definition_sha_checked": true,
+    "manifest_self_sha_recorded": true,
+    "integration_four_batch_and_four_review_hashes_match": true,
+    "author_and_non_author_current_artifact_bindings": [
+      {
+        "path": "reviews/wave8-food-author.json",
+        "sha256": "31bc393befaabae28eeb4add88581e9103d48955c25561464627d5e2a237a93a",
+        "bound_artifacts_checked": 2
+      },
+      {
+        "path": "reviews/wave8-networks-author.json",
+        "sha256": "4af32fa53c3b72211dea07df7c8d02f71e43087b065040509eb2e956a98a6b5e",
+        "bound_artifacts_checked": 2
+      },
+      {
+        "path": "reviews/wave8-microbes-author.json",
+        "sha256": "a8890475d6d47125ee0c47f0c9d6b673a0010b68395a3634fdb10bbe0759b7a8",
+        "bound_artifacts_checked": 2
+      },
+      {
+        "path": "reviews/wave8-source-refresh-author.json",
+        "sha256": "c837d97d156ca596625a93e9b4836ad26dbd0b7cfee220d2342c92f196c24c38",
+        "bound_artifacts_checked": 1
+      },
+      {
+        "path": "reviews/wave8-root-reviews-food.json",
+        "sha256": "cdb1b1bdbeba060fdb3d74e9e2b710b298ab1d68ea9138c39cc723d67fc45e0f",
+        "bound_artifacts_checked": 3
+      },
+      {
+        "path": "reviews/wave8-life-reviews-networks.json",
+        "sha256": "f22de98b53c1a4f8f8d9d70e2954e46eeacb4496d38ae3f2ebd0bda6f95cdc8f",
+        "bound_artifacts_checked": 3
+      },
+      {
+        "path": "reviews/wave8-physics-reviews-microbes.json",
+        "sha256": "11178b76b639637c62f6cba8564e38d9a23bbd1b2aa67e1c0a52aeda857c978c",
+        "bound_artifacts_checked": 3
+      },
+      {
+        "path": "reviews/wave8-science-reviews-source-refresh.json",
+        "sha256": "ed7a9a7ec8d031ee3d8549957e820039feafca903f8f935ece33bf8c1bf1aa7d",
+        "bound_artifacts_checked": 2
+      }
+    ],
+    "bound_files": [
+      {
+        "path": "docs/videos/so-thats-why/pool/pool.json",
+        "sha256": "b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/themes.json",
+        "sha256": "188ce2152f13d423406c792c2d6d4ce0716f467f1c7e19bef8e03d71b482b47e"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/manifest.json",
+        "sha256": "55e811644441468afdc478e0eb3b6452d151f1205deab9a4f607c9a531ed2b76"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/selection.json",
+        "sha256": "7d4595a4e15e770f18b6a9d112667145e5043b5a1a320ab083fe1c900b78350a"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/dedup-decisions.json",
+        "sha256": "466c54a56e70972e63d7e6b9eb9d8f8b3dbc868e6ff57b6cbbdc313cbf312f22"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/checkpoints.json",
+        "sha256": "b3fd314ad13acae6c3146e86f790c8f8ba3e5ba977a42ab87012ec5fc5f7565a"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/checkpoint-2667.json",
+        "sha256": "9d1ef51719bdbd35122dd872feac02fb9e97b2d3c659d5e02f735d27b71fa845"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-editorial-integration.json",
+        "sha256": "07155a2f5b885193809dd4df35d44620d9cfdc58d48b531df67dd6b631edddea"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-food-author.json",
+        "sha256": "31bc393befaabae28eeb4add88581e9103d48955c25561464627d5e2a237a93a"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-networks-author.json",
+        "sha256": "4af32fa53c3b72211dea07df7c8d02f71e43087b065040509eb2e956a98a6b5e"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-microbes-author.json",
+        "sha256": "a8890475d6d47125ee0c47f0c9d6b673a0010b68395a3634fdb10bbe0759b7a8"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-source-refresh-author.json",
+        "sha256": "c837d97d156ca596625a93e9b4836ad26dbd0b7cfee220d2342c92f196c24c38"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-root-reviews-food.json",
+        "sha256": "cdb1b1bdbeba060fdb3d74e9e2b710b298ab1d68ea9138c39cc723d67fc45e0f"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-life-reviews-networks.json",
+        "sha256": "f22de98b53c1a4f8f8d9d70e2954e46eeacb4496d38ae3f2ebd0bda6f95cdc8f"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-physics-reviews-microbes.json",
+        "sha256": "11178b76b639637c62f6cba8564e38d9a23bbd1b2aa67e1c0a52aeda857c978c"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-science-reviews-source-refresh.json",
+        "sha256": "ed7a9a7ec8d031ee3d8549957e820039feafca903f8f935ece33bf8c1bf1aa7d"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/batches/wave8-food.json",
+        "sha256": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/batches/wave8-microbes.json",
+        "sha256": "57511f3a8b837a728317b0017135c688187691411360f95db9fcd886b2cec3fd"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/batches/wave8-networks.json",
+        "sha256": "eb70cf6acf12bb10ada4be4fc35af3b890713e286e5c1e095ff8054e3e2915ba"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/batches/wave8-source-refresh.json",
+        "sha256": "5273727d5cc9759624f32d5dd84936df65b20b08f8536f7c0ad7214fcd09bbeb"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-food-themes.json",
+        "sha256": "78abdaa4fa64d10f1ba74cc2c798df67dbed4e716c050a02f66086c83acf15a3"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-networks-themes.json",
+        "sha256": "50b235a765412a6c7e4b10593223164896ce44928e8c1067680a8bce966d1682"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-microbes-themes.json",
+        "sha256": "b2ae618d622b5feb0ef77f2c47999457d98090722abafaef861987b82964d5f6"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/reviews/wave8-browser-qa.json",
+        "sha256": "5c08898c879c03007deffb7032a71c1a79f5eec0427cd3e6b56d78fc04dbf7fb"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/index.html",
+        "sha256": "2dd8750ccb2e3c75589d00a9c2a53297c8d0948afcd0f94edd53cd9b4c1d2dad"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/QUESTIONS.md",
+        "sha256": "8d64eb5c4104ee8bb60d91916ee4e28a6b11916978c1b846c8318ed259b9fda0"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/SOURCES.md",
+        "sha256": "d18a2a9099532b0d7743f21b91e0bd2d1e207ec67cae7050c9aa820525da7d77"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/DEDUP.md",
+        "sha256": "0e072ac6ef6705de7a787baefdfb30b6b65f58c5f9c64850bb8bc3613f841fa5"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/THEMES.md",
+        "sha256": "e99c33282e2dc683402a2a3a34d7c15371c2c2a83a22fb85ed47f23fb4cf7ac9"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2667.json.gz",
+        "sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c"
+      }
+    ],
+    "documentation": [
+      {
+        "path": "docs/videos/so-thats-why/pool/README.md",
+        "sha256": "e1285b1c8982d770f6f2a296ab06a1e0c0f69fb51d06f663cda28d76ae9ce3c7"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/VALIDATION.md",
+        "sha256": "441430d3f5df0d378719ceb43f973ec67043d33387f913fc6a710e6dd473db0b"
+      },
+      {
+        "path": "docs/videos/so-thats-why/pool/SEMANTIC.md",
+        "sha256": "097d57ae54d45973408dfa5719e7a56d0340576bd185cbeb63c57183a6d8d072"
+      }
+    ],
+    "scope": "工作樹實體bytes及收據鏈核對；不等於Git index blob或CI驗證。過去hash/原發現保留，由最新followup承接，沒有為pending作者凍結狀態任意換hash。"
+  },
+  "validation_receipt_readback": {
+    "path": "docs/videos/so-thats-why/pool/reviews/wave8-final-validation.json",
+    "read_status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_STAGED_PENDING",
+    "original_tested_on": "2026-11-01T12:45:19.483Z",
+    "whole_file_sha_bound": false,
+    "reason": "root之後會追加Git index/staged欄位，避免循環雜湊；此處明列所讀tests及穩定資料hash已另綁。",
+    "tests_observed": {
+      "node": {
+        "passed": 37,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 355188.2843,
+        "files": [
+          "tools/video/so-thats-why/pool/pool.test.mjs",
+          "tools/video/so-thats-why/catalog.test.mjs",
+          "tools/repo-hygiene.test.mjs",
+          "tools/json-duplicate-keys.test.mjs",
+          "tools/docs-videos-tests.test.mjs"
+        ],
+        "log_sha256": "53d554646b16c2810e1a855589077ee28789e66d4a919997ae310fbc7ff227dc"
+      },
+      "python": {
+        "passed": 2,
+        "failed": 0,
+        "file": "tools/video/so-thats-why/pool/semantic_test.py",
+        "log_sha256": "da8e3a4e6e60da461686fb343c8172aafaae9e365113b81fdae105982b4848c7"
+      },
+      "checks": {
+        "pool": "PASS",
+        "series": "PASS",
+        "long_form_plans": 473,
+        "task_files": 2287,
+        "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+      },
+      "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+    },
+    "tests_subobject_sha256": "3c9bb5f2855c4f4d5d0272c4f7deb694fe6926db45da6e5c9e69e93b6f8c1787",
+    "execution_attribution": "由root執行並落收據，本審閱者讀回結果，沒有自行重跑或宣稱執行過測試。",
+    "data_index_observed": {
+      "first_status": "IMPORTED",
+      "second_status": "UNCHANGED",
+      "second_writes": 0,
+      "aliases": [
+        {
+          "id": "I8013",
+          "resolved": "I3039"
+        },
+        {
+          "id": "U8017",
+          "resolved": "P257"
+        },
+        {
+          "id": "R8001",
+          "resolved": "LEG-S07"
+        },
+        {
+          "id": "R8002",
+          "resolved": "LEG-S18"
+        },
+        {
+          "id": "R8003",
+          "resolved": "LEG-S21"
+        },
+        {
+          "id": "R8004",
+          "resolved": "LEG-S23"
+        },
+        {
+          "id": "R8005",
+          "resolved": "LEG-S80"
+        },
+        {
+          "id": "R8006",
+          "resolved": "LEG-S83"
+        }
+      ],
+      "held": [],
+      "no_new_hold_negative_case_exercised": true
+    },
+    "dedup_audit_observed": {
+      "judged_new_proposal_merges": 2,
+      "lexical_retrieved": 0,
+      "semantic_top10_retrieved": 1,
+      "refresh_revisions_excluded": 6,
+      "interpretation": "事先知道結果的非隨機小集合，不是全庫召回率、精確率或2/46品質率。"
+    },
+    "browser_attribution": "讀root QA收據：2711/分頁/別名/來源/題組及桌面手機DOM通過；root人工看3張截圖。本審閱者未操作瀏覽器或重看截圖。來源URL截圖裁切限制已保留。"
+  },
+  "documentation_readback": {
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "counts_durations_and_remaining_target_match": true,
+    "no_new_holds_claim_correct": true,
+    "source_refresh_not_counted_as_new_core_or_full_approval": true,
+    "semantic_nonrandom_limit_preserved": true,
+    "task_scope_read": "tasks/open/2026-11-01-so-thats-why-expand-the-reviewed.md僅第八批checkpoint段落；與2711/+44/59來源/10題案一致，未綁整檔，root後續release會改frontmatter。",
+    "staging_boundary": "VALIDATION與task指向最終驗證的Git blob紀錄，當下final-validation仍明示STAGED_PENDING；此收據不把後續待補欄位視為已完成檢查。"
+  },
+  "findings": [],
+  "remaining_blockers": [],
+  "pending_handoff": [
+    "root執行並記錄實際Git index blob/本地鏈接與最後staged檢查。",
+    "root釋放task claim、依授權處理commit/PR；此收據未執行這些動作。"
+  ],
+  "limits": [
+    "未重開本輪所有外站、未逐句核全部舊資料或腳本；素材池screened不是影片事實或製作核准。",
+    "本審只解壓2667一份快照作逐raw比較，不籠統宣稱所有歷史快照逐列重審。",
+    "本次新完整旁白0、試讀0、付費媒體0；沒有萬筆/十萬筆性能或獨立隨機品質驗收。",
+    "無修改中央或舊batch；只新增此審閱收據，暫存檢查程式與結果在忽略版控.cache。"
+  ]
+}

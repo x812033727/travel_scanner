@@ -1,0 +1,1362 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R30001",
+    "R30002",
+    "R30003",
+    "R30004",
+    "R30005",
+    "R30006"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave30-choice.json",
+      "sha256": "f0e201b9630c6a762177c79757b5805922e24fba71f165134518332e4b89e949"
+    },
+    {
+      "file": "reviews/wave30-choice-author.json",
+      "sha256": "9fcd0df6f7198bc3bb95fec2fa95f4b92239f5172739a2120a589acbc931edd3"
+    },
+    {
+      "file": "reviews/wave30-choice-themes.json",
+      "sha256": "8d31cd65e32c3b4d82c3b44fef7dc1f3e27ed8f8e6efe03213bcc79de1e2f2b4"
+    }
+  ],
+  "role_and_scope": "球場物理作者獨立核對選擇組的原件指定段、可觀察結果、近似問題及影片預算。",
+  "baseline": {
+    "head": "a5823a89782d0cbb68a5ba797895aa5ff80c516c",
+    "selected": 3094,
+    "raw_records": 3469,
+    "not_added": 1313,
+    "themes": 292,
+    "pool_sha256": "f809bd7af9012f6a76ed806d13ab635d547b2a5b92e0366fc64ca3902a2adf1a"
+  },
+  "candidate_review": [
+    {
+      "id": "R30001",
+      "canonical_id": "R30001",
+      "decision": "retain",
+      "reason": "先保存實際所選，再換呈現結果。兩項分開記，才可比較後來理由指向哪張臉。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R30-S001"
+      ],
+      "editorial_seconds": [
+        50,
+        85
+      ]
+    },
+    {
+      "id": "R30002",
+      "canonical_id": "R30002",
+      "decision": "retain",
+      "reason": "兩種排序時序加上事後依選擇標記，即使未能歸因關鍵選擇仍能觀察到拉開；這提供可測的替代解釋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R30-S002"
+      ],
+      "editorial_seconds": [
+        50,
+        80
+      ]
+    },
+    {
+      "id": "R30003",
+      "canonical_id": "R30003",
+      "decision": "retain",
+      "reason": "第三款只有對其中一款居劣，同樣的兩款在不同集合的選取率變了；以各題組與反向格限制外推。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R30-S003",
+        "R30-S004"
+      ],
+      "editorial_seconds": [
+        50,
+        85
+      ]
+    },
+    {
+      "id": "R30004",
+      "canonical_id": "R30004",
+      "decision": "retain",
+      "reason": "比較單看與並排的出價，對兩筆極端答覆的敏感度能直接影響哪個反轉有把握。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R30-S005"
+      ],
+      "editorial_seconds": [
+        45,
+        80
+      ]
+    },
+    {
+      "id": "R30005",
+      "canonical_id": "R30005",
+      "decision": "retain",
+      "reason": "兩組問卷在買票後的錢包同少20美元，但丟票與丟鈔的再買意願不同；帳本是作者所提解釋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R30-S006"
+      ],
+      "editorial_seconds": [
+        50,
+        85
+      ]
+    },
+    {
+      "id": "R30006",
+      "canonical_id": "R30006",
+      "decision": "retain",
+      "reason": "三角色估價對照與另一研究的多程序調整回答剩餘價差能否歸因持有。沒有測得顯著差不能寫成完全等值。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R30-S007",
+        "R30-S008"
+      ],
+      "editorial_seconds": [
+        55,
+        95
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R30-S001",
+      "title": "Failure to Detect Mismatches Between Intention and Outcome in a Simple Decision Task",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者快取雜湊與指定正文，非本覆核者新HTTP。",
+      "reading_scope": "PDF原刊p117 Fig1/2實物步驟、3/15調包的實驗、p118口頭理由及補充偵測說明片段。",
+      "locator": "原刊p117圖1、圖2及p118口頭理由；補充方法的當場與事後偵測。",
+      "cache": {
+        "file": ".cache/wave30-choice-choice.pdf",
+        "sha256": "d30aaeac79bc477b9bb6fdda77915847a038557527a2134322ac3e44d66104be",
+        "text_file": ".cache/wave30-choice-choice.txt",
+        "text_sha256": "e5c8765c903c8e665a4f8acb7b778c41b7e6dd90dc3f0d8d2bb38b9eab5fc417"
+      },
+      "result": "120參與者的二選一；354調包試次中46次當場發現。包括回顧的總偵測另算，但兩者均能以調包試次為分母。",
+      "limitations": "低察覺率不能換成說謊或某個人的無意識診斷；不同排除規則另標。"
+    },
+    {
+      "source_id": "R30-S002",
+      "title": "How Choice Affects and Reflects Preferences: Revisiting the Free-Choice Paradigm",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者快取雜湊與指定正文，非本覆核者新HTTP。",
+      "reading_scope": "原作者典藏PDF由web.open讀得之正文節錄，Study1 L363–385及後續，Study2 Table5及L524–599。",
+      "locator": "原刊Study 1排序與關鍵選擇順序，Study 2 Table 5與兩組差異討論；出版社版作者典藏，網頁文字快照。",
+      "cache": {
+        "file": ".cache/wave30-choice-rating-web.txt",
+        "sha256": "7a1d3adafe0ed810f06a8bf4d7057cb1ce69a2ec6391d3c2a5c4c12ef8fc7073",
+        "text_file": ".cache/wave30-choice-rating-web.txt",
+        "text_sha256": "7a1d3adafe0ed810f06a8bf4d7057cb1ce69a2ec6391d3c2a5c4c12ef8fc7073"
+      },
+      "result": "以關鍵排名7與9的選擇安排RCR/RRC。兩次排名後才作關鍵選擇也見分離。",
+      "limitations": "第二研究組間差異p=.06，不能由此證成人完全不改偏好。未把本機零位元PDF當原文。"
+    },
+    {
+      "source_id": "R30-S003",
+      "title": "Adding Asymmetrically Dominated Alternatives: Violations of Regularity and the Similarity Hypothesis",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者快取雜湊與指定正文，非本覆核者新HTTP。",
+      "reading_scope": "原刊掃描PDF目讀印刷p90、92–95，方法、FigA/B、Table1/2/3。",
+      "locator": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。",
+      "cache": {
+        "file": ".cache/wave30-choice-decoy.pdf",
+        "sha256": "f7405be0245a5609c7bc9fa702310c8c1d5ade484493ca33ff7f9a4d37e400c7",
+        "text_file": ".cache/wave30-choice-decoy.txt",
+        "text_sha256": "1cfa4fbc675ea6eab5900c1fe1f4093dddf56318a7593fa98f8e1fd9f31f9458"
+      },
+      "result": "表1的同價低分條件受目標支配，另一端須在好處與代價間取捨。表3部分組別份額增加，亦見減少。",
+      "limitations": "組內研究先三項，兩週後去掉誘餌；分組圖只表示不同條件。掃描文字抽取僅頁碼，未用其充當正文。"
+    },
+    {
+      "source_id": "R30-S004",
+      "title": "Let’s Be Honest About the Attraction Effect",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者快取雜湊與指定正文，非本覆核者新HTTP。",
+      "reading_scope": "2014原作者評論PDF pp2–4，受試者是否認可支配、價格暗示品質，以及不受歡迎的誘餌。",
+      "locator": "PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+      "cache": {
+        "file": ".cache/wave30-choice-decoylimit.pdf",
+        "sha256": "525d1a780cdb7841b107b9672e0fff3e42a09c7c5d69dce2b1b8108c07c9e645",
+        "text_file": ".cache/wave30-choice-decoylimit.txt",
+        "text_sha256": "8d762f8af091320be15f4127154b293583504a3f5b00ae765ee8199312fc37b2"
+      },
+      "result": "若表列的優點並非該人的優點，實驗上以為的劣勢商品也有可能是真實偏好。",
+      "limitations": "本文屬原研究者評論，不能當另一次獨立重現。"
+    },
+    {
+      "source_id": "R30-S005",
+      "title": "“Less Is Better” in Separate Evaluations Versus “More Is Better” in Joint Evaluations: Mostly Successful Close Replication and Extension of Hsee (1998)",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者快取雜湊與指定正文，非本覆核者新HTTP。",
+      "reading_scope": "2023出版網頁的有效web.open正文節錄，Study2單獨與並排、Table2/敏感度段L464–490；綜合L594–625含Study4。",
+      "locator": "Study 2 Separate evaluation與Joint evaluation結果、敏感度分析、Study 4與表6；原刊網頁特定段落文字。",
+      "cache": {
+        "file": ".cache/wave30-choice-ice2-web.txt",
+        "sha256": "28f9b8274cc74547991f25c8f518515132f0ac5c8a9d010d07b2bb4c016ddb43",
+        "text_file": ".cache/wave30-choice-ice2-web.txt",
+        "text_sha256": "28f9b8274cc74547991f25c8f518515132f0ac5c8a9d010d07b2bb4c016ddb43"
+      },
+      "result": "兩筆極端值對單杯結果影響較大；並排冰淇淋的估價仍較偏向大份，餐具並排結果較不一致。",
+      "limitations": "願付價不等於吸引力、好吃程度或實付。早期Hsee論文抓到的空內容HTML不作證據。"
+    },
+    {
+      "source_id": "R30-S006",
+      "title": "The Framing of Decisions and the Psychology of Choice",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者快取雜湊與指定正文，非本覆核者新HTTP。",
+      "reading_scope": "1981原刊 Problems8/9與緊接解釋，印刷p457。",
+      "locator": "原刊p457 Problems 8、9及其後對劇院帳的解釋；PDF第5頁。",
+      "cache": {
+        "file": ".cache/wave30-choice-ticket.pdf",
+        "sha256": "c0b38a214463d00781f21783de700fcd647675a04d6481ab87d583f91fe31810",
+        "text_file": ".cache/wave30-choice-ticket.txt",
+        "text_sha256": "2bdf999a92f5c7dffa0296d69abf7dc8e1bd9984b0e9e0113e44f0ced79748b2"
+      },
+      "result": "同為10美元，丟鈔組183人中88%答願買，丟票組200人46%答願補買。未劃位、無從找回。",
+      "limitations": "這是不同組想像情境；金額配平不是實際售票紀錄。"
+    },
+    {
+      "source_id": "R30-S007",
+      "title": "Experimental Tests of the Endowment Effect and the Coase Theorem",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者快取雜湊與指定正文，非本覆核者新HTTP。",
+      "reading_scope": "PDF pp5–8市場/代幣與換杯比較，p15實驗6/7三角色及中位數。",
+      "locator": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。",
+      "cache": {
+        "file": ".cache/wave30-choice-mug.pdf",
+        "sha256": "4870092b2e11e08d0b59a1e24aa126f55a19747e808fac630415c196d7075510",
+        "text_file": ".cache/wave30-choice-mug.txt",
+        "text_sha256": "39194a9fee750b9eaca8c6e2b8b3ef5619567330f25d3cff9056afceb5160fad"
+      },
+      "result": "實驗6的賣家7.12、可選者3.12、買家2.87美元中位數提供第三組的判讀。",
+      "limitations": "不同實驗/商品需分清，不採固定倍數或個人必然的估價。"
+    },
+    {
+      "source_id": "R30-S008",
+      "title": "The Willingness to Pay–Willingness to Accept Gap, the “Endowment Effect,” Subject Misconceptions, and Experimental Procedures for Eliciting Valuations",
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者快取雜湊與指定正文，非本覆核者新HTTP。",
+      "reading_scope": "2005 PDF報價機制與練習/匿名設計、pp10–11表4/5及pp13–14討論。",
+      "locator": "PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+      "cache": {
+        "file": ".cache/wave30-choice-mug2.pdf",
+        "sha256": "fd0df2d1e88b042d64a1476f14b3169117145aa611025c788f863cef2de38a77",
+        "text_file": ".cache/wave30-choice-mug2.txt",
+        "text_sha256": "9cfed3ab4bf5a9de78099e8a77e35edecb619fc4cb51c371de6a7b25b7a392b5"
+      },
+      "result": "合併控制的部分實驗未有顯著WTP/WTA落差，驗證程序能改變判讀。",
+      "limitations": "沒有把每項程序獨立開關；可重現的落差和原因不能視為同一件事。"
+    }
+  ],
+  "source_identity_review": [
+    {
+      "source_id": "R30-S001",
+      "url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Johansson-et-al.-2005-Failure-to-Detect-Mismatches-Between-Intention-and-Outcome-in-a-Simple-Decision-Task.pdf",
+      "result": "依作者檔指定版本讀取；典藏與正式刊文同一工作。"
+    },
+    {
+      "source_id": "R30-S002",
+      "url": "https://www.anderson.ucla.edu/faculty/keith.chen/papers/Final_JPSP10.pdf",
+      "result": "依作者檔指定版本讀取；典藏與正式刊文同一工作。"
+    },
+    {
+      "source_id": "R30-S003",
+      "url": "https://people.duke.edu/~jch8/bio/Papers/Huber%20Payne%20Puto%201982%20JoCR.pdf",
+      "result": "依作者檔指定版本讀取；典藏與正式刊文同一工作。"
+    },
+    {
+      "source_id": "R30-S004",
+      "url": "https://people.duke.edu/~jch8/bio/Papers/HuberPaynePutoJMR%202014.pdf",
+      "result": "1982研究者的範圍評論，與實驗分列但不增加重現計數。"
+    },
+    {
+      "source_id": "R30-S005",
+      "url": "https://online.ucpress.edu/collabra/article/9/1/77859/196807/Less-Is-Better-in-Separate-Evaluations-Versus-More",
+      "result": "依作者檔指定版本讀取；典藏與正式刊文同一工作。"
+    },
+    {
+      "source_id": "R30-S006",
+      "url": "https://stanford.edu/class/psych205/papers/Tversky-Kahneman-1981.pdf",
+      "result": "依作者檔指定版本讀取；典藏與正式刊文同一工作。"
+    },
+    {
+      "source_id": "R30-S007",
+      "url": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_et_al_1990_Experimental_tests.pdf",
+      "result": "依作者檔指定版本讀取；典藏與正式刊文同一工作。"
+    },
+    {
+      "source_id": "R30-S008",
+      "url": "https://home.cerge-ei.cz/ortmann/UpcesCourse/Plott_Zeiler_%20W_to_Pay_W_to_A_Gap_AER_2005.pdf",
+      "result": "依作者檔指定版本讀取；典藏與正式刊文同一工作。"
+    }
+  ],
+  "source_reading_summary": {
+    "candidate_sources_read": 8,
+    "not_added_only_sources": 0,
+    "fresh_http_by_reviewer": 0,
+    "valid_author_caches_independently_read": 8,
+    "local_pdf_scanned_or_text_layer": 6,
+    "web_open_body_excerpts": 2,
+    "figures_or_pages_visually_read": 6
+  },
+  "related_source_review": [],
+  "source_fetch_limits": "S002、S005讀有效的web.open出版正文節錄。S003依原頁圖讀掃描本。未冒稱全部新HTTP或全篇核准。",
+  "visual_readings": [
+    {
+      "source_id": "R30-S001",
+      "file": ".cache/wave30-choice-choice-p3.png",
+      "sha256": "e8445ecef3d4a9656d691291713d0cd7c0bcca6261436d59414f6a3143f13d12",
+      "scope": "實驗卡牌動作及偵測類別圖1/2。"
+    },
+    {
+      "source_id": "R30-S003",
+      "file": ".cache/wave30-choice-decoy-p2.png",
+      "sha256": "b13f52d553aaeba1186c5c481cc1ada5f291f83f50594ecba8d9025dae92d9e9",
+      "scope": "印刷p90定義、相對原集合的選取率。"
+    },
+    {
+      "source_id": "R30-S003",
+      "file": ".cache/wave30-choice-decoy-p4.png",
+      "sha256": "1e8bc83eec5a817f7497305a570fc22777fbbf15c8356eb9ffe9413fb9cd63c0",
+      "scope": "p92方法、圖A的支配區及兩週組內順序。"
+    },
+    {
+      "source_id": "R30-S003",
+      "file": ".cache/wave30-choice-decoy-p5.png",
+      "sha256": "1be845e4d8243454768ba2ecf6c74af910cf593764743b23ef7b2cc81e728f01",
+      "scope": "p93表1同價低分與其他三種位置。"
+    },
+    {
+      "source_id": "R30-S003",
+      "file": ".cache/wave30-choice-decoy-p6.png",
+      "sha256": "259c19b303c8eb6838213c674f794b672b887b4c79a0c2d499c2802caf49f17c",
+      "scope": "p94組內/組間結果區分。"
+    },
+    {
+      "source_id": "R30-S003",
+      "file": ".cache/wave30-choice-decoy-p7.png",
+      "sha256": "3dcb68cdf75405c8c597c3025a40540f99244161b1682963e23f6e6c5d909697",
+      "scope": "p95表3原始比例與不同產品條件，並非每格上升。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R30001",
+      "b": "P14006",
+      "decision": "distinct",
+      "reason": "漏看場景的閃動與替換選擇後對新結果給理由的操弄及輸出不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30001",
+      "b": "C2016",
+      "decision": "distinct",
+      "reason": "後來問法改變對事件的記憶，不是直接交換被選卡片再核對口頭理由。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30001",
+      "b": "C2017",
+      "decision": "distinct",
+      "reason": "來源歸屬錯誤並未設保留指向、替換結果的行為對照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30002",
+      "b": "R30001",
+      "decision": "distinct",
+      "reason": "海報排序控制沒有暗換所選物件；用改時間順序來檢驗選擇提供額外訊息。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30002",
+      "b": "C2027",
+      "decision": "distinct",
+      "reason": "事後認為早知結果不同於兩次排序中的測量噪音和依最後選擇分組。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30003",
+      "b": "M10003",
+      "decision": "distinct",
+      "reason": "Borda票序固定只改計分，心理實驗看的是改選項集合後人各自選誰。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30003",
+      "b": "C2026",
+      "decision": "distinct",
+      "reason": "數字估計的起始錨點與雙屬性的一側被支配關係不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30004",
+      "b": "R30003",
+      "decision": "distinct",
+      "reason": "是否能並排評份量改變出價時可見的參照；第三款居劣則改原兩款的選取比例。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30004",
+      "b": "D2040",
+      "decision": "distinct",
+      "reason": "空氣改冰淇淋物理組成不涉及評價方式或願付價。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30005",
+      "b": "C2026",
+      "decision": "distinct",
+      "reason": "兩邊票價相同，本題是可能歸入哪一支出帳與再買票的差異。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30006",
+      "b": "LEG-B04",
+      "decision": "distinct",
+      "reason": "自己動手組裝的成果估值，與分配成買賣/選擇三角角色、改報價程序不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R30006",
+      "b": "R30005",
+      "decision": "distinct",
+      "reason": "遺失同額現金或戲票的支出歸屬不涉及商品持有與交易規則。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R30001",
+      "b": "C2003",
+      "decision": "distinct",
+      "reason": "目標使模糊畫面容易辨別；換卡後的理由與原選不一致要核對兩個觀測。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.700448
+    },
+    {
+      "a": "R30001",
+      "b": "C2006",
+      "decision": "distinct",
+      "reason": "圖地歸屬不是調換決策結果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.646958
+    },
+    {
+      "a": "R30001",
+      "b": "R30002",
+      "decision": "distinct",
+      "reason": "重排名次可能反映偏好資訊，不涉及偷偷交換已選照片。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.609407
+    },
+    {
+      "a": "R30001",
+      "b": "C2013",
+      "decision": "distinct",
+      "reason": "再次辨認與無提示回憶沒有記下選項及收回結果的控制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.585277
+    },
+    {
+      "a": "R30001",
+      "b": "O3045",
+      "decision": "distinct",
+      "reason": "相機元件響應條紋屬成像誤差，沒有決策結果調包。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.577488
+    },
+    {
+      "a": "R30002",
+      "b": "R30003",
+      "decision": "distinct",
+      "reason": "改選項集合與改關鍵選擇在二次排序之前或之後，檢驗不同效應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.66188
+    },
+    {
+      "a": "R30002",
+      "b": "C2013",
+      "decision": "distinct",
+      "reason": "回想與辨認的線索條件不是順位的重測及選取標記。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.6603
+    },
+    {
+      "a": "R30002",
+      "b": "LEG-A75",
+      "decision": "distinct",
+      "reason": "購後推薦取決於演算法和訊號，並非利用晚選資訊解釋重排名。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.641243
+    },
+    {
+      "a": "R30002",
+      "b": "I3031",
+      "decision": "distinct",
+      "reason": "部分索引的條件證明與人類排序測量誤差無關。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.630587
+    },
+    {
+      "a": "R30002",
+      "b": "C2024",
+      "decision": "distinct",
+      "reason": "偏找支持資料改變取證，這裡實驗者改的是關鍵選擇時點。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.621613
+    },
+    {
+      "a": "R30003",
+      "b": "R25002",
+      "decision": "distinct",
+      "reason": "等機率水庫抽樣是演算法；實驗參與者看兩個屬性再決定選哪款。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.664322
+    },
+    {
+      "a": "R30003",
+      "b": "R30002",
+      "decision": "distinct",
+      "reason": "排序重測控制與增加一個單側被支配選項不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.66188
+    },
+    {
+      "a": "R30003",
+      "b": "M10001",
+      "decision": "distinct",
+      "reason": "辛普森反轉由群組加權產生，不需第三款選項改變個人的比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.639206
+    },
+    {
+      "a": "R30003",
+      "b": "R25004",
+      "decision": "distinct",
+      "reason": "雜湊碰撞估計過量的計數，與幾乎沒人選的選項改變分配不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.619048
+    },
+    {
+      "a": "R30003",
+      "b": "M2048",
+      "decision": "distinct",
+      "reason": "平衡配置增加統計檢出力，不會推出一款被支配選項會改變原來的選取比例。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.610975
+    },
+    {
+      "a": "R30004",
+      "b": "R30006",
+      "decision": "distinct",
+      "reason": "出價者角色及程序與單獨/並排評兩杯的可比性不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.730427
+    },
+    {
+      "a": "R30004",
+      "b": "LEG-B73",
+      "decision": "distinct",
+      "reason": "兩杯才有折扣的定價條件和滿杯造成的單獨估價參照不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.677702
+    },
+    {
+      "a": "R30004",
+      "b": "M2004",
+      "decision": "distinct",
+      "reason": "量度物理量的定義不同於問卷願付價格。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.63457
+    },
+    {
+      "a": "R30004",
+      "b": "P268",
+      "decision": "distinct",
+      "reason": "混合pH需化學與物料平衡，不是視覺比較容器中的份量。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.5997
+    },
+    {
+      "a": "R30004",
+      "b": "D2023",
+      "decision": "distinct",
+      "reason": "凍結受罐口幾何限制，與兩組估價無關。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.594036
+    },
+    {
+      "a": "R30005",
+      "b": "M10005",
+      "decision": "distinct",
+      "reason": "主持人揭門規則會改條件機率，本例兩組經濟終態相同而損失歸戶可能不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.602541
+    },
+    {
+      "a": "R30005",
+      "b": "LEG-T16",
+      "decision": "distinct",
+      "reason": "機票收益管理依庫存及需求，不是遺失票/現金後的假設購買決策。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.593209
+    },
+    {
+      "a": "R30005",
+      "b": "T4036",
+      "decision": "distinct",
+      "reason": "批次撿貨降低行走另需分類，與兩組相同金額帳款推論不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.563152
+    },
+    {
+      "a": "R30005",
+      "b": "R30003",
+      "decision": "distinct",
+      "reason": "支配性的第三款改變選取率，不要求丟失等值資產或歸入支出帳。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.553083
+    },
+    {
+      "a": "R30005",
+      "b": "R25002",
+      "decision": "distinct",
+      "reason": "串流抽樣的留存機率與願不願再付款不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.547969
+    },
+    {
+      "a": "R30006",
+      "b": "R30004",
+      "decision": "distinct",
+      "reason": "願付價隨可比較性而改，不涉及隨機持有/出售杯子或報價練習。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.730428
+    },
+    {
+      "a": "R30006",
+      "b": "LEG-B73",
+      "decision": "distinct",
+      "reason": "促銷說法與買家、賣家、可選者的估值比較不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.676239
+    },
+    {
+      "a": "R30006",
+      "b": "M2004",
+      "decision": "distinct",
+      "reason": "量杯溫需界定位置，並非持杯者的成交保留價。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.622468
+    },
+    {
+      "a": "R30006",
+      "b": "R30003",
+      "decision": "distinct",
+      "reason": "兩個屬性增加支配選項，不涉及所有權分派與報價程序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.597666
+    },
+    {
+      "a": "R30006",
+      "b": "G13004",
+      "decision": "distinct",
+      "reason": "等密度顆粒的歷史效應源自先前敲擊與微觀配置；杯子實驗改的是參與者分組及報價程序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.565846
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R30001",
+        "b": "P14006",
+        "reason": "漏看場景的閃動與替換選擇後對新結果給理由的操弄及輸出不同。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2016",
+        "reason": "後來問法改變對事件的記憶，不是直接交換被選卡片再核對口頭理由。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2017",
+        "reason": "來源歸屬錯誤並未設保留指向、替換結果的行為對照。"
+      },
+      {
+        "a": "R30002",
+        "b": "R30001",
+        "reason": "海報排序控制沒有暗換所選物件；用改時間順序來檢驗選擇提供額外訊息。"
+      },
+      {
+        "a": "R30002",
+        "b": "C2027",
+        "reason": "事後認為早知結果不同於兩次排序中的測量噪音和依最後選擇分組。"
+      },
+      {
+        "a": "R30003",
+        "b": "M10003",
+        "reason": "Borda票序固定只改計分，心理實驗看的是改選項集合後人各自選誰。"
+      },
+      {
+        "a": "R30003",
+        "b": "C2026",
+        "reason": "數字估計的起始錨點與雙屬性的一側被支配關係不同。"
+      },
+      {
+        "a": "R30004",
+        "b": "R30003",
+        "reason": "是否能並排評份量改變出價時可見的參照；第三款居劣則改原兩款的選取比例。"
+      },
+      {
+        "a": "R30004",
+        "b": "D2040",
+        "reason": "空氣改冰淇淋物理組成不涉及評價方式或願付價。"
+      },
+      {
+        "a": "R30005",
+        "b": "C2026",
+        "reason": "兩邊票價相同，本題是可能歸入哪一支出帳與再買票的差異。"
+      },
+      {
+        "a": "R30006",
+        "b": "LEG-B04",
+        "reason": "自己動手組裝的成果估值，與分配成買賣/選擇三角角色、改報價程序不同。"
+      },
+      {
+        "a": "R30006",
+        "b": "R30005",
+        "reason": "遺失同額現金或戲票的支出歸屬不涉及商品持有與交易規則。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2003",
+        "reason": "目標使模糊畫面容易辨別；換卡後的理由與原選不一致要核對兩個觀測。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2006",
+        "reason": "圖地歸屬不是調換決策結果。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2013",
+        "reason": "再次辨認與無提示回憶沒有記下選項及收回結果的控制。"
+      },
+      {
+        "a": "R30001",
+        "b": "O3045",
+        "reason": "相機元件響應條紋屬成像誤差，沒有決策結果調包。"
+      },
+      {
+        "a": "R30002",
+        "b": "R30003",
+        "reason": "改選項集合與改關鍵選擇在二次排序之前或之後，檢驗不同效應。"
+      },
+      {
+        "a": "R30002",
+        "b": "C2013",
+        "reason": "回想與辨認的線索條件不是順位的重測及選取標記。"
+      },
+      {
+        "a": "R30002",
+        "b": "LEG-A75",
+        "reason": "購後推薦取決於演算法和訊號，並非利用晚選資訊解釋重排名。"
+      },
+      {
+        "a": "R30002",
+        "b": "I3031",
+        "reason": "部分索引的條件證明與人類排序測量誤差無關。"
+      },
+      {
+        "a": "R30002",
+        "b": "C2024",
+        "reason": "偏找支持資料改變取證，這裡實驗者改的是關鍵選擇時點。"
+      },
+      {
+        "a": "R30003",
+        "b": "R25002",
+        "reason": "等機率水庫抽樣是演算法；實驗參與者看兩個屬性再決定選哪款。"
+      },
+      {
+        "a": "R30003",
+        "b": "M10001",
+        "reason": "辛普森反轉由群組加權產生，不需第三款選項改變個人的比較。"
+      },
+      {
+        "a": "R30003",
+        "b": "R25004",
+        "reason": "雜湊碰撞估計過量的計數，與幾乎沒人選的選項改變分配不同。"
+      },
+      {
+        "a": "R30003",
+        "b": "M2048",
+        "reason": "平衡配置增加統計檢出力，不會推出一款被支配選項會改變原來的選取比例。"
+      },
+      {
+        "a": "R30004",
+        "b": "R30006",
+        "reason": "出價者角色及程序與單獨/並排評兩杯的可比性不同。"
+      },
+      {
+        "a": "R30004",
+        "b": "LEG-B73",
+        "reason": "兩杯才有折扣的定價條件和滿杯造成的單獨估價參照不同。"
+      },
+      {
+        "a": "R30004",
+        "b": "M2004",
+        "reason": "量度物理量的定義不同於問卷願付價格。"
+      },
+      {
+        "a": "R30004",
+        "b": "P268",
+        "reason": "混合pH需化學與物料平衡，不是視覺比較容器中的份量。"
+      },
+      {
+        "a": "R30004",
+        "b": "D2023",
+        "reason": "凍結受罐口幾何限制，與兩組估價無關。"
+      },
+      {
+        "a": "R30005",
+        "b": "M10005",
+        "reason": "主持人揭門規則會改條件機率，本例兩組經濟終態相同而損失歸戶可能不同。"
+      },
+      {
+        "a": "R30005",
+        "b": "LEG-T16",
+        "reason": "機票收益管理依庫存及需求，不是遺失票/現金後的假設購買決策。"
+      },
+      {
+        "a": "R30005",
+        "b": "T4036",
+        "reason": "批次撿貨降低行走另需分類，與兩組相同金額帳款推論不同。"
+      },
+      {
+        "a": "R30005",
+        "b": "R30003",
+        "reason": "支配性的第三款改變選取率，不要求丟失等值資產或歸入支出帳。"
+      },
+      {
+        "a": "R30005",
+        "b": "R25002",
+        "reason": "串流抽樣的留存機率與願不願再付款不同。"
+      },
+      {
+        "a": "R30006",
+        "b": "LEG-B73",
+        "reason": "促銷說法與買家、賣家、可選者的估值比較不同。"
+      },
+      {
+        "a": "R30006",
+        "b": "M2004",
+        "reason": "量杯溫需界定位置，並非持杯者的成交保留價。"
+      },
+      {
+        "a": "R30006",
+        "b": "R30003",
+        "reason": "兩個屬性增加支配選項，不涉及所有權分派與報價程序。"
+      },
+      {
+        "a": "R30006",
+        "b": "G13004",
+        "reason": "等密度顆粒的歷史效應源自先前敲擊與微觀配置；杯子實驗改的是參與者分組及報價程序。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R30-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30001"
+      ],
+      "reason": "臉孔身份替換不改掉包核對機制。"
+    },
+    {
+      "id": "R30-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30001"
+      ],
+      "reason": "研究沒有測說謊意圖。"
+    },
+    {
+      "id": "R30-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30002"
+      ],
+      "reason": "排名差不單獨證明買後偏好因果。"
+    },
+    {
+      "id": "R30-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30002"
+      ],
+      "reason": "換藝術媒材沒有改關鍵選擇時點。"
+    },
+    {
+      "id": "R30-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30003"
+      ],
+      "reason": "單靠昂貴不構成不對稱支配。"
+    },
+    {
+      "id": "R30-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2026"
+      ],
+      "reason": "數字錨定已屬C2026。"
+    },
+    {
+      "id": "R30-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30004"
+      ],
+      "reason": "其他品項可當效應範圍，不以換品項計數。"
+    },
+    {
+      "id": "R30-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30004"
+      ],
+      "reason": "出價不含嚐味比較。"
+    },
+    {
+      "id": "R30-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30005"
+      ],
+      "reason": "換娛樂場所不改遺失票與錢的對照。"
+    },
+    {
+      "id": "R30-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30005"
+      ],
+      "reason": "想像購買意願不能直接推售票收入。"
+    },
+    {
+      "id": "R30-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "LEG-B04"
+      ],
+      "reason": "自己成功組裝有既有LEG-B04，並非本次單純分派角色。"
+    },
+    {
+      "id": "R30-NA012",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R30006"
+      ],
+      "reason": "多種調整改了整套程序，未隔離單一因素。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W30R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 90,
+      "chapter_seconds": [
+        36,
+        54
+      ],
+      "core_totals": {
+        "R30001": 36,
+        "R30002": 54
+      },
+      "core_caps": {
+        "R30001": 85,
+        "R30002": 80
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若看不清關鍵選擇發生在哪一刻，就剪下海報段獨講；不加第三個心理效應。",
+      "editorial_result": "分開兩個實驗。用先指與取卡結果檢查理由，再將關鍵選擇時間前後對照兩次排名。偵測依時點與判準標示。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W30R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 95,
+      "chapter_seconds": [
+        45,
+        50
+      ],
+      "core_totals": {
+        "R30003": 45,
+        "R30004": 50
+      },
+      "core_caps": {
+        "R30003": 85,
+        "R30004": 80
+      },
+      "maximum_beat_seconds": 28,
+      "drop_if_read": "若觀眾誤把意願出價看成選購人數，便拆開用兩種圖示；保留極端回答的檢查，不重複演相同投票。",
+      "editorial_result": "從改選項集合到改比較方式，一段畫選取比例、一段畫願付價。敏感度段留給改判斷的兩筆回答。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W30R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 64,
+      "chapter_seconds": [
+        41,
+        23
+      ],
+      "core_totals": {
+        "R30005": 64
+      },
+      "core_caps": {
+        "R30005": 85
+      },
+      "maximum_beat_seconds": 23,
+      "drop_if_read": "算完餘額、揭曉問卷就收尾；不接折扣、省錢術或日常教訓。",
+      "editorial_result": "兩個錢包及劇院支出欄可以當場算完。結尾標原問卷不同組的意願與解釋。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W30R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 69,
+      "chapter_seconds": [
+        40,
+        29
+      ],
+      "core_totals": {
+        "R30006": 69
+      },
+      "core_caps": {
+        "R30006": 95
+      },
+      "maximum_beat_seconds": 24,
+      "drop_if_read": "若照著朗讀交易術語，就以三張桌牌替代；練習流程只展示差異，不示範規則細節。",
+      "editorial_result": "先看三角色的估值差，再換另一團隊的多項程序。不能歸因單一因素只留五秒註記。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave30-choice.json",
+      "sha256": "a66f2adf8e5bdb3dc4df355bc01a0083e02b7c6b7e67151e0b0a547f52bf245d"
+    },
+    {
+      "file": "reviews/wave30-choice-author.json",
+      "sha256": "c4c833e2addde0fbd4a03dd082fb66886db21f58cde2247a63fc7919bc180feb"
+    },
+    {
+      "file": "reviews/wave30-choice-themes.json",
+      "sha256": "31fabc0809788967781d7ad41c5ab308c0b87faf53a3a46f15414bf9799e0cf5"
+    }
+  ],
+  "corrections": [
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "T01當場與事後偵測比較改為時點及判準，不把共用的調包試次分母畫成兩套。100→90秒。"
+    },
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "R30005及戲票題案採原文未劃位且無法找回的條件。"
+    },
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "R30006新題名問何時可見價差，移除只歸因練習的暗示。T04已說過的程序限制12→5秒，76→69。"
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "01aca824432bacd8db952a40b4035de2137b6fc777be08168b6ddd73e8fab0f9",
+    "neighbours": {
+      "file": ".cache/wave30-sport-first-wave30-choice-neighbours.json",
+      "sha256": "2e4fddfdcabe2248155740a552a965c917d237158886914b659f2f11d161b73c"
+    },
+    "candidate_rows": 6,
+    "directed_pairs": 30
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "0abc7a076614d57a713324f25ca14a6adb38d4c5f7ce7fac231e545c0b6526e1",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "0abc7a076614d57a713324f25ca14a6adb38d4c5f7ce7fac231e545c0b6526e1"
+    },
+    "neighbours": {
+      "file": ".cache/wave30-choice-neighbours.json",
+      "sha256": "ec1b3f04b8c11ef9aae8a6c106c236401da25a53fbef2774578cbb190ce77b38"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave30-draft.json",
+      "sha256": "944c2a55449c147073cc1b03252dd78bf0f24c82f5e8bdf0553cf8ff5facdcd1"
+    },
+    "candidate_rows_checked": 6,
+    "directed_pairs_checked": 30,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "direct_comparison_against_common_initial": true,
+    "changed_rows": [
+      {
+        "id": "R30003",
+        "new_neighbours": [
+          "M2048"
+        ],
+        "removed_neighbours": [
+          "R30006"
+        ],
+        "ranking_or_payload_changed": true
+      },
+      {
+        "id": "R30004",
+        "new_neighbours": [],
+        "removed_neighbours": [],
+        "ranking_or_payload_changed": true
+      },
+      {
+        "id": "R30006",
+        "new_neighbours": [
+          "G13004"
+        ],
+        "removed_neighbours": [
+          "LEG-B62"
+        ],
+        "ranking_or_payload_changed": true
+      }
+    ],
+    "result": "初版全部30對已讀。末版新增M2048/G13004的完整問答與範圍已查，R30006措辭/相關分數重新核對；全部當期30對均有裁定。"
+  },
+  "remaining_blockers": [],
+  "limits": "題級證據與估時計畫。未實際拍攝、試讀或核准腳本。"
+}

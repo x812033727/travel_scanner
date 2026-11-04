@@ -1,0 +1,320 @@
+{
+  "tested_on": "2026-11-01T11:24:56.759Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 2959,
+    "canonical_questions": 2838,
+    "eligible_candidates": 2668,
+    "selected_candidates": 2609,
+    "alias_records": 121,
+    "historical_records": 313,
+    "source_urls": 3919,
+    "current_research_source_urls": 952,
+    "selected_source_urls": 2161,
+    "new_suggestions_not_added": 334,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 69,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2546",
+    "carried": 2546,
+    "added": 63,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "90101e54b13f713a298d3d4692c2cb0f8fd6193a1cc5aeda7887745ad5f0244c",
+    "writes": 5797,
+    "selected": 2609
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "90101e54b13f713a298d3d4692c2cb0f8fd6193a1cc5aeda7887745ad5f0244c",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [
+    {
+      "id": "J6016",
+      "selected": false,
+      "eligible": false
+    }
+  ],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 3964,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 4214.8069,
+    "index_ms": 2454.0164000000004,
+    "unchanged_index_ms": 196.48699999999735,
+    "searches": [
+      {
+        "query": "種子",
+        "returned": 21,
+        "milliseconds": 9.005600000000413
+      },
+      {
+        "query": "螺絲",
+        "returned": 4,
+        "milliseconds": 11.267800000001444
+      },
+      {
+        "query": "天氣",
+        "returned": 10,
+        "milliseconds": 9.897600000000239
+      }
+    ],
+    "rss_bytes": 374730752,
+    "sqlite_bytes": 40869888
+  },
+  "dedup_audit": {
+    "selection": "Every final wave6 manual merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "07a5ca7d6ad3aa5d0fdfe51d3315e663fd927a2e88cb7459a271ef5752c19b50",
+    "records": 2959,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.962
+  },
+  "hashes": {
+    "pool.json": "07a5ca7d6ad3aa5d0fdfe51d3315e663fd927a2e88cb7459a271ef5752c19b50",
+    "themes.json": "0994d27b9319fbccae0b64fcdb0307bd960bd8381e5098d0ff272c8e28997cc6",
+    "manifest.json": "4dd4402eb92b509716129681f14acb32e69dd857417d80cac94621f9a97dea2b",
+    "index.html": "9f17db274053655dee0e7f69dc95c9c8de77f1bdd59de231cc01005af5aa7fcd",
+    "batches/wave6-mechanisms.json": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2",
+    "batches/wave6-plants-garden.json": "2a42fb26d9768836bf46238fab555ad833b8c00fcd489ec9d8a0f9f2e558e001",
+    "batches/wave6-weather-sky.json": "f961a8fcb1268833678f83d2cd9783fd3cd99066ac255a8c6ba46bddc8ee2065"
+  },
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 260,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 2682,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G59",
+        "core": "M5004",
+        "seconds": 70,
+        "maximum": 80,
+        "variant_budget": "M5008"
+      },
+      {
+        "theme": "G59",
+        "core": "M5009",
+        "seconds": 70,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G61",
+        "core": "R6003",
+        "seconds": 100,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G61",
+        "core": "R6019",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G62",
+        "core": "R6006",
+        "seconds": 75,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G62",
+        "core": "R6009",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G62",
+        "core": "R6008",
+        "seconds": 75,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G63",
+        "core": "R6018",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G63",
+        "core": "R6001",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G64",
+        "core": "J6001",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G64",
+        "core": "J6002",
+        "seconds": 65,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G64",
+        "core": "J6004",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G65",
+        "core": "J6006",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G65",
+        "core": "J6007",
+        "seconds": 100,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G66",
+        "core": "J6009",
+        "seconds": 105,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G66",
+        "core": "J6010",
+        "seconds": 110,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G67",
+        "core": "K6002",
+        "seconds": 90,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G67",
+        "core": "K6003",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G67",
+        "core": "K6004",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G68",
+        "core": "K6007",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G68",
+        "core": "K6008",
+        "seconds": 70,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G68",
+        "core": "K6009",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G69",
+        "core": "K6019",
+        "seconds": 70,
+        "maximum": 75,
+        "variant_budget": null
+      },
+      {
+        "theme": "G69",
+        "core": "K6020",
+        "seconds": 70,
+        "maximum": 75,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "tests": {
+    "node": {
+      "passed": 35,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 148236.2188,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "e80d87a78a5c4180ebc8c6a2a270cfdb5742de46d4059382121439c44925c82b"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "4c33f422dd0c8300f056933a48f7c43607e392e99fc4fb868f8a5d6d27a0b2b6"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  }
+}

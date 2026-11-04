@@ -1,0 +1,141 @@
+{
+  "tested_on": "2026-11-01",
+  "node": "v24.19.0",
+  "status": "PASS_SCOPED_VALIDATION",
+  "counts": {
+    "raw_records": 2293,
+    "canonical_questions": 2211,
+    "eligible_candidates": 2059,
+    "selected_candidates": 2000,
+    "alias_records": 82,
+    "historical_records": 313,
+    "source_urls": 3545,
+    "current_research_source_urls": 576,
+    "selected_source_urls": 1807,
+    "new_suggestions_not_added": 112,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 26,
+  "baseline": {
+    "revision": "2026-11-01-pool-1000",
+    "carried": 1000,
+    "added": 1000,
+    "changed_raw_ids": [],
+    "removed_ids": [],
+    "changed_source_records": 4,
+    "note": "Source record changes include additional readings; they do not prove the external page changed. Retained historical rows must not be silently rewritten.",
+    "cli_readback": true
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "30d4423af23dd185d71feaf5e62aed28d48d54391f94993ca5864ced267abb3e",
+    "writes": 4504,
+    "selected": 2000
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "30d4423af23dd185d71feaf5e62aed28d48d54391f94993ca5864ced267abb3e",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "N098",
+      "resolved": "L097"
+    },
+    {
+      "id": "E2039",
+      "resolved": "E2038"
+    },
+    {
+      "id": "D2130",
+      "resolved": "P042"
+    }
+  ],
+  "held": {
+    "id": "D2250",
+    "selected": false,
+    "eligible": false
+  },
+  "source_impact_sample": {
+    "url": "https://bioresources.cnr.ncsu.edu/resources/understanding-the-effect-of-machine-technology-and-cellulosic-fibers-on-tissue-properties-a-review/",
+    "affected_candidates": 4,
+    "theme_ids": [],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 3260,
+  "performance": {
+    "kind": "One local run on real current pool; not a benchmark of 10000 or 100000 records",
+    "similarity_ms": 2874.9351000000006,
+    "index_ms": 1167.9814999999999,
+    "unchanged_index_ms": 142.14180000000124,
+    "searches": [
+      {
+        "query": "地下水",
+        "returned": 10,
+        "milliseconds": 1.1401999999998225
+      },
+      {
+        "query": "電容",
+        "returned": 30,
+        "milliseconds": 1.738999999999578
+      },
+      {
+        "query": "牛奶",
+        "returned": 9,
+        "milliseconds": 4.878199999999197
+      }
+    ],
+    "rss_bytes": 308846592,
+    "sqlite_bytes": 29073408
+  },
+  "dedup_audit": {
+    "judged": 50,
+    "retrieved": 11,
+    "required": 0,
+    "missed": 39
+  },
+  "hashes": {
+    "pool.json": "a0502f924ba7c3980a597a1ce8dee956f9c9eb63d33e232d9e276d4e11b94ba3",
+    "themes.json": "e19936d97a71755fdc9acd23ea62fe688e5c027d97ef7353105d2e03d8b09717",
+    "manifest.json": "26a5eb34d3b25eb81441f02c23b4e02c62c660c9a872635785909930649978ee",
+    "index.html": "aa69250d61e8f259c4d252c63979379935d590100683641fe3e43f82552c3c05",
+    "batches/wave2-animals-ecology.json": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0",
+    "batches/wave2-astronomy.json": "5d32b05a35e7430a253ddab06d0771822bc3e20c536b0ec19118de5bc71572eb",
+    "batches/wave2-cognition.json": "61230f9782ea495623060502feb0a3135ffe9f60f4b43ce2c49c65f2635a776b",
+    "batches/wave2-electricity.json": "17a3e40fa79d79ba908d38bb73b0c559e78d8a00212d3fb1a8d13755e70bfbcb",
+    "batches/wave2-everyday-engineering.json": "98251c48402466941956fbea3da9ec6a17371201bceda56954a0f04dd17d77ef",
+    "batches/wave2-measurement.json": "a8e98475ba231033761a79a0c92df8f71aa7d51e824d1d6504953bc87483ef1f"
+  },
+  "source_impact_with_theme": {
+    "source_id": "SRC-bd76751be01f5512",
+    "url": "https://www.nist.gov/metrology/metrological-traceability",
+    "candidates": [
+      "M2001",
+      "M2002",
+      "M2003"
+    ],
+    "theme_ids": [
+      "G13"
+    ],
+    "cli_readback": true
+  },
+  "legacy_long_form_entries_checked": 473,
+  "task_files_validated": 2287,
+  "test_results": {
+    "passed": 29,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "scope": "pool11 independently rerun + catalog4 + repo-hygiene3 + json-duplicate-keys9 + docs-videos-tests2; not full tools/docs-videos suites"
+  },
+  "local_links_checked": 2030,
+  "staged_input_hashes_verified": 235,
+  "local_links_missing": [],
+  "line_endings": "Final source/definition files normalized to LF before build; all manifest inputs match Git index blob bytes.",
+  "post_stage_hygiene": {
+    "passed": 3,
+    "failed": 0,
+    "note": "Re-ran after adding new files to Git index so new batch and review files were included."
+  }
+}

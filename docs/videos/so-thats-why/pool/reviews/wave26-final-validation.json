@@ -1,0 +1,372 @@
+{
+  "tested_on": "2026-11-02T06:18:00.403Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3440,
+    "canonical_questions": 3294,
+    "eligible_candidates": 3124,
+    "selected_candidates": 3065,
+    "alias_records": 146,
+    "historical_records": 313,
+    "source_urls": 4407,
+    "current_research_source_urls": 1448,
+    "selected_source_urls": 2629,
+    "new_suggestions_not_added": 1225,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 271,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3058",
+    "carried": 3058,
+    "added": 7,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "8735e9c35fb43e68fd380497b3d73834b249ee76e7bf44ba23c799101b8dd8ce",
+    "writes": 6734,
+    "selected": 3065
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "8735e9c35fb43e68fd380497b3d73834b249ee76e7bf44ba23c799101b8dd8ce",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "A26003",
+      "resolved": "V3007"
+    },
+    {
+      "id": "R26001",
+      "resolved": "M10002"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4505,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 2833.7870999999996,
+    "index_ms": 1646.0476999999992,
+    "unchanged_index_ms": 146.2390000000014,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 13,
+        "milliseconds": 6.71559999999954
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 1.9584999999988213
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 2.964299999999639
+      }
+    ],
+    "rss_bytes": 414646272,
+    "sqlite_bytes": 53460992
+  },
+  "dedup_audit": {
+    "selection": "Every final wave26 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 2,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 1,
+    "pairs": [
+      {
+        "duplicate_id": "A26003",
+        "canonical_id": "V3007",
+        "reason": "接受方反應不同已屬V3007核心；移植/位置結果保留為有用組織層級變體，不新增核心。1997研究不識別胞內效應蛋白，不能當舊答案分子中段的直接證據。",
+        "lexical": null,
+        "semantic": null
+      },
+      {
+        "duplicate_id": "R26001",
+        "canonical_id": "M10002",
+        "reason": "單次聯合抽樣的三數仍可排序，聚合兩兩勝出機率卻成環，與M10002個人排序有傳遞性、群體多數成環相同核心；骰子九格只是可驗的新分布變體。",
+        "lexical": null,
+        "semantic": {
+          "id": "M10002",
+          "cosine": 0.676983
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "ae73179046738088056ab98653ef28895285f5c3bbaed24e6bc1d27f88b3cb67",
+    "records": 3440,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.377
+  },
+  "hashes": {
+    "pool.json": "ae73179046738088056ab98653ef28895285f5c3bbaed24e6bc1d27f88b3cb67",
+    "themes.json": "2b3d4b328f42a9727db46aa6347ca148285eb85f1ef677b1f4a3dde8727ecc45",
+    "manifest.json": "a3213164f56507d5a6b6629c40dd0ceecd7c18ae2bed43fae97ae414414b2a4c",
+    "index.html": "e6c7517f97542e67e6d60a1d47ff0ccb03c7003bd6ad17d13c80f6d84efd8d38",
+    "batches/wave26-life.json": "1f79dd2e319e569f86378caaf32b81bb2b2449e6718b2059df6ec406228b5f0a",
+    "batches/wave26-physics.json": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7",
+    "batches/wave26-tech.json": "9ca5ad128940fb557fc4bf1ff38aca181e90c18e6e32639499a8ad2d82d74f87"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3431,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3058,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 263,
+    "changed_old_canonical_ids": [
+      "M10002",
+      "V3007"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4398,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
+        "source_id": "SRC-7f5c439319d0d1d6",
+        "candidate_ids": [
+          "A26001"
+        ],
+        "theme_ids": [
+          "G267"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3912879/",
+        "source_id": "SRC-2f07dd66a36d5a59",
+        "candidate_ids": [
+          "A26001",
+          "A26002"
+        ],
+        "theme_ids": [
+          "G267"
+        ]
+      },
+      {
+        "url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf",
+        "source_id": "SRC-418f17d6b05d5ef9",
+        "candidate_ids": [
+          "V3007"
+        ],
+        "theme_ids": [
+          "G268"
+        ]
+      },
+      {
+        "url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+        "source_id": "SRC-5119bb0648a8795b",
+        "candidate_ids": [
+          "P26001"
+        ],
+        "theme_ids": [
+          "G264"
+        ]
+      },
+      {
+        "url": "https://lab.semi.ac.cn/library/upload/files/2019/10/219314543.pdf",
+        "source_id": "SRC-1551d29a6c1517e6",
+        "candidate_ids": [
+          "P26002"
+        ],
+        "theme_ids": [
+          "G265"
+        ]
+      },
+      {
+        "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645",
+        "source_id": "SRC-8f9c1719f6a90cd7",
+        "candidate_ids": [
+          "P26003"
+        ],
+        "theme_ids": [
+          "G266"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1311.6511v2",
+        "source_id": "SRC-96148f846af4aa1b",
+        "candidate_ids": [
+          "M10002"
+        ],
+        "theme_ids": [
+          "G109",
+          "G269"
+        ]
+      },
+      {
+        "url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf",
+        "source_id": "SRC-5451556a500fe1a6",
+        "candidate_ids": [
+          "R26002"
+        ],
+        "theme_ids": [
+          "G270"
+        ]
+      },
+      {
+        "url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf",
+        "source_id": "SRC-0364d129c4cc6670",
+        "candidate_ids": [
+          "R26003"
+        ],
+        "theme_ids": [
+          "G271"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+    "core": "P26001",
+    "theme": "G264",
+    "theme_ids": [
+      "G264"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 145733.5128,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "05557cd37959e36741dd5fd8b49398a0dc01ac5f1646d5d320de1f415d180aeb"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "23a31466922d312d8a977cebde0df63ad44eb1b1545a1c42778dd00e3183e2b8"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "575094cdd1ee42181912ccc9295c642e8cccfe7e64267789d977eebc23a71854",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "ce9c19f3de580bf4790dd9bdaa028e951b41aefe74acf144ef40fef0157c83ad"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "209d41057df60ab563278856d898a62a39e71072516764542f943988bc53a19d",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 358,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 22,
+    "unique_blobs_checked": 381,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3572,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G264",
+        "core": "P26001",
+        "seconds": 105,
+        "maximum": 125
+      },
+      {
+        "theme": "G265",
+        "core": "P26002",
+        "seconds": 95,
+        "maximum": 115
+      },
+      {
+        "theme": "G266",
+        "core": "P26003",
+        "seconds": 105,
+        "maximum": 120
+      },
+      {
+        "theme": "G267",
+        "core": "A26001",
+        "seconds": 90,
+        "maximum": 125
+      },
+      {
+        "theme": "G267",
+        "core": "A26002",
+        "seconds": 70,
+        "maximum": 90
+      },
+      {
+        "theme": "G268",
+        "core": "V3007",
+        "seconds": 95,
+        "maximum": 120
+      },
+      {
+        "theme": "G269",
+        "core": "M10002",
+        "seconds": 80,
+        "maximum": 110
+      },
+      {
+        "theme": "G270",
+        "core": "R26002",
+        "seconds": 80,
+        "maximum": 105
+      },
+      {
+        "theme": "G271",
+        "core": "R26003",
+        "seconds": 80,
+        "maximum": 105
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 33,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "25bd7ea09efed46a600ecde62b132698bb7e72b3103d385b1fbc001c1cc32e24"
+  }
+}

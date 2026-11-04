@@ -1,0 +1,144 @@
+{
+  "status": "PASS_TOPIC_BOUNDARY_SECOND_READER_ONLY",
+  "reviewer": "pool_life_tech",
+  "role": "獨立第二讀者；不是本批root提案作者，不重作全池或逐主張腳本查核。",
+  "reviewed_on": "2026-11-02",
+  "remaining_blockers": [],
+  "reviewed_files": [
+    {
+      "file": "reviews/wave16-root-old-pairs.json",
+      "sha256": "110d462a27eb0839c296e068b6eb5710518e5a5eb0715032154361a72cebb6ac"
+    },
+    {
+      "file": "baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
+    },
+    {
+      "file": ".cache/wave16-old-pair-discovery.json",
+      "sha256": "e65be9e332e5e790450be0a2f339852ef9ff42154dcdcf6ffde6198378f1d676"
+    }
+  ],
+  "scope": {
+    "pairs_read": 6,
+    "stored_full_records_read": 12,
+    "unique_ids": 11,
+    "source_passages_independently_read": 4,
+    "selection": "六對指定高分未決近鄰的目的性樣本，不是全庫召回率/抽樣估計。",
+    "method": "逐讀discovery完整問題、答案、scope與source_ref；核baseline壓縮檔SHA；四個風險原來源指定段由當日web.open重開，未把root其他六處讀取冒充本人的閱讀。",
+    "frozen_record_check": "12個stored紀錄的question/answer_target/scope逐欄對2939凍結baseline全部相同；11個唯一ID。"
+  },
+  "pairs": [
+    {
+      "a": "E2115",
+      "b": "E2129",
+      "decision": "distinct",
+      "reason": "直線電流環場的方向對照，與繞成多匝後的場疊加及長徑比近似不同。後者必須保留內外場/中央區的幾何條件，並非只把導線換彎。"
+    },
+    {
+      "a": "E2002",
+      "b": "E2036",
+      "decision": "distinct",
+      "reason": "孤立中性導體只重新分配原有電子；電容的兩個隔離極板須由外部電路搬電荷。兩題都可能總電中性，但是否有外部電荷搬運是不同控制。"
+    },
+    {
+      "a": "E2082",
+      "b": "E2172",
+      "decision": "distinct",
+      "reason": "固定串聯電流下壓降正比電阻，不會導出經兩線圈觀測的平方匝比阻抗映射；新控制是一次/二次側的電壓與電流比同時改變。"
+    },
+    {
+      "a": "E2041",
+      "b": "E2082",
+      "decision": "distinct",
+      "reason": "電阻串聯約束相同電流，電容初始中性串聯約束相同電荷；V=IR與V=Q/C對元件值給相反分壓趨勢。是可比較的物理約束，不是換元件名重述比例。"
+    },
+    {
+      "a": "N086",
+      "b": "N230",
+      "decision": "distinct",
+      "reason": "孔隙水壓概念共享，但抽水使承載轉到沉積骨架而壓密，入滲則降低斜坡顆粒接觸的抗剪餘裕；水壓改變方向、變形模式與失穩條件不同。不能用一個地面變動案例互換。"
+    },
+    {
+      "a": "E2171",
+      "b": "E2229",
+      "decision": "distinct",
+      "reason": "理想變壓器以交變磁通與匝比/功率約束交換電壓電流；buck則用切換占空比及LC儲放能形成平均直流。兩者使用條件與控制自由度不同。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "E2115",
+        "b": "E2129",
+        "reason": "直線電流環場的方向對照，與繞成多匝後的場疊加及長徑比近似不同。後者必須保留內外場/中央區的幾何條件，並非只把導線換彎。"
+      },
+      {
+        "a": "E2002",
+        "b": "E2036",
+        "reason": "孤立中性導體只重新分配原有電子；電容的兩個隔離極板須由外部電路搬電荷。兩題都可能總電中性，但是否有外部電荷搬運是不同控制。"
+      },
+      {
+        "a": "E2082",
+        "b": "E2172",
+        "reason": "固定串聯電流下壓降正比電阻，不會導出經兩線圈觀測的平方匝比阻抗映射；新控制是一次/二次側的電壓與電流比同時改變。"
+      },
+      {
+        "a": "E2041",
+        "b": "E2082",
+        "reason": "電阻串聯約束相同電流，電容初始中性串聯約束相同電荷；V=IR與V=Q/C對元件值給相反分壓趨勢。是可比較的物理約束，不是換元件名重述比例。"
+      },
+      {
+        "a": "N086",
+        "b": "N230",
+        "reason": "孔隙水壓概念共享，但抽水使承載轉到沉積骨架而壓密，入滲則降低斜坡顆粒接觸的抗剪餘裕；水壓改變方向、變形模式與失穩條件不同。不能用一個地面變動案例互換。"
+      },
+      {
+        "a": "E2171",
+        "b": "E2229",
+        "reason": "理想變壓器以交變磁通與匝比/功率約束交換電壓電流；buck則用切換占空比及LC儲放能形成平均直流。兩者使用條件與控制自由度不同。"
+      }
+    ]
+  },
+  "source_readings": [
+    {
+      "url": "https://www.nps.gov/subjects/geohazards/landslide-hazards.htm",
+      "read_via": "2026-11-02 fresh web.open primary educational/official body",
+      "reading_scope": "Opening and Saturation of slopes bullet, returned lines21–25",
+      "summary": "入滲增加孔隙壓力、弱化坡體；僅用來核兩題的差異，不作地點風險判讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.usgs.gov/water-science-school/science/groundwater-decline-and-depletion",
+      "read_via": "2026-11-02 fresh web.open primary educational/official body",
+      "reading_scope": "LAND SUBSIDENCE, returned lines73–75",
+      "summary": "移除地下水後材料條件決定是否壓密；不用頁面其他舊統計。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers",
+      "read_via": "2026-11-02 fresh web.open primary educational/official body",
+      "reading_scope": "Ideal assumptions and Equations15.20–15.22 plus reflected resistance, returned lines35–77",
+      "summary": "匝比映射與輸入所見阻值；不取範例數據/電網現況。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-2-capacitors-in-series-and-in-parallel",
+      "read_via": "2026-11-02 fresh web.open primary educational/official body",
+      "reading_scope": "The Series Combination of Capacitors, returned lines31–46",
+      "summary": "等電荷及逆電容量分壓，限初始中性理想串聯。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "source_not_independently_reopened": [
+    "https://openstax.org/books/university-physics-volume-2/pages/5-2-conductors-insulators-and-charging-by-induction",
+    "https://www.ti.com/document-viewer/lit/html/slvafj5",
+    "https://openstax.org/books/university-physics-volume-2/pages/12-6-solenoids-and-toroids",
+    "https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel",
+    "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance",
+    "https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor"
+  ],
+  "failures": [],
+  "limits": "6對均可distinct；不表示舊題已完整更新來源，也不表示有足夠新素材可單獨拍片。無新增題目、無媒體製作、無中央修改。"
+}

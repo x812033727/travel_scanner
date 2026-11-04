@@ -1,0 +1,391 @@
+{
+  "batch_id": "wave24-life-20261102",
+  "created_on": "2026-11-02",
+  "scope": "三個受控生物機制：皮膚形狀維持、可變膠原傳力、反照明感測入口；兩案與一短段，不按器官/狀態拆核心。",
+  "sources": [
+    {
+      "id": "A24-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6059360/",
+      "title": "Neural Control of Dynamic 3-Dimensional Skin Papillae for Cuttlefish Camouflage",
+      "publisher": "Gonzalez-Bellido et al.; iScience / Elsevier",
+      "doi": "10.1016/j.isci.2018.01.001",
+      "canonical_url": "https://doi.org/10.1016/j.isci.2018.01.001",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6059360/fullTextXML",
+      "accessed_on": "2026-11-02",
+      "version": "2018, iScience1:24–34; online2018-01-31, issue2018-03-23; corrected receipt/revision dates",
+      "read_via": "當日web.open讀PMC正文；指定UA PMC HTML200實為驗證頁、抽文0，改EuropePMC官方fullTextXML成功並逐段讀；圖2頁web為CAPTCHA，未目讀原圖。",
+      "reading_scope": "Introduction與Results神經路徑；XML PARA21–61去神經、藥理、平滑/橫紋肌與Discussion；Methods正文只指向補充，未讀Transparent Methods或影片。另讀同文勘誤全部正文。",
+      "locator": "Results: Pallial Nerve Denervation and Sustained Papillae Expression; Neuropeptide and Neuromodulators Controlling Papillae Expression; Discussion，Fig2D/3/4圖說",
+      "summary": "皮膚變白與隆起消退可分離；持續張力及放鬆控制支持catch-like狀態，詳細分子鎖定仍未證完。",
+      "limitations": "去神經關鍵觀察n=2，其中一隻留下隆起；藥理/肌肉構造為額外支持。catch-like不等同已證實雙殼類twitchin機制，不稱零耗能或所有烏賊都保持一小時。只描述已發表結果，不設活體操作示範。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-life-sources/papilla.xml",
+        "sha256": "c1697fd665cf8256ff25a1da6f310996bd6ebdae1944e9dc60ae384a11105a41",
+        "text_file": ".cache/wave24-life-sources/papilla-xml.txt",
+        "text_sha256": "692ff456be74692b755c1d9178c4fb9ca3bef6032c289fa59980fbb37c4b80b6"
+      },
+      "correction": {
+        "doi": "10.1016/j.isci.2018.03.021",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6136899/",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6136899/fullTextXML",
+        "reading_scope": "勘誤全部正文：僅更正Received/ Revised日期，非結果翻案。",
+        "author_cache": {
+          "file": ".cache/wave24-life-sources/papilla-correction.xml",
+          "sha256": "9ceb85636c5bf278f7f53347c992129a0db7ab0acda8b560c1fe482506f7a38b",
+          "text_file": ".cache/wave24-life-sources/papilla-correction-xml.txt",
+          "text_sha256": "0aa9b8916699796671bfe64ee096f906f9efff58137350193bd30a40f87ebc53"
+        }
+      }
+    },
+    {
+      "id": "A24-S002",
+      "url": "https://publications.diamond.ac.uk/pubman/downloadpublicationdocument?publicationDocumentId=638",
+      "title": "Interfibrillar stiffening of echinoderm mutable collagenous tissue demonstrated at the nanoscale",
+      "publisher": "Mo et al.; PNAS; Diamond Light Source託管正式版PDF",
+      "doi": "10.1073/pnas.1609341113",
+      "canonical_url": "https://doi.org/10.1073/pnas.1609341113",
+      "retrieval_url": "https://publications.diamond.ac.uk/pubman/downloadpublicationdocument?publicationDocumentId=638",
+      "accessed_on": "2026-11-02",
+      "version": "2016-10-05 online; PNAS113:E6362–E6371，正式版10頁",
+      "read_via": "當日web.open定位；指定UA下載有效PDF，PyMuPDF抽文逐頁指定段讀，另渲染目讀PDF p4 Fig3、p7 Fig6。",
+      "reading_scope": "PDF pp1–9：背景、Results、Model and Discussion、Conclusion、組織製備與SAXD方法；不逐式重現、不讀全部補充。",
+      "locator": "PDF pp4–8 / printed E6365–E6369；Fig3組織與纖維應變、Fig6兩種變硬模型；pp8–9去肌層製備與離子處理",
+      "summary": "軟組織整體被拉長時纖維可主要相對滑動；纖維間傳力增強後，更多負荷交給原有纖維，整體較難拉長。",
+      "limitations": "離體Holothuria leucospilota中層真皮、移除肌肉及外層，三種離子條件比較；不是活海參被摸一下的全身神經直接成像。纖維應變為X光推得，界面模數/負荷分配由模型估算；特定交聯蛋白與分子位置未在本實驗直接確定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-life-sources/nanoscale.pdf",
+        "sha256": "95dccff2c2e2bbfa10f82ca82f8caab7f5a0040a266226b3fb9bb2d48c43548e",
+        "text_file": ".cache/wave24-life-sources/nanoscale.txt",
+        "text_sha256": "5c9127f7505bced98caa715a605b8b5d5ac12ad6527b4cf4cc8367fd79756ac4"
+      }
+    },
+    {
+      "id": "A24-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4871580/",
+      "title": "Ultrastructural Changes Associated with Reversible Stiffening in Catch Connective Tissue of Sea Cucumbers",
+      "publisher": "Tamori et al.; PLoS ONE",
+      "doi": "10.1371/journal.pone.0155673",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0155673",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4871580/fullTextXML",
+      "accessed_on": "2026-11-02",
+      "version": "2016-05-18, PLoS ONE11(5):e0155673，正式版",
+      "read_via": "當日web.open指定正文；UA PMC HTML200無正文，改官方EuropePMC XML成功。",
+      "reading_scope": "Introduction、Animals and Tissues/Preparation of Three Mechanical States；XML PARA57–101部分Results與Discussion Cross-Bridges/Distance/Diameter；未逐讀全部量測方法或原圖。",
+      "locator": "Introduction三種狀態；Results各形態量、Discussion Cross-Bridges / Distance between Collagen Fibrils / Collagen Fibril Diameter",
+      "summary": "較硬狀態有更多纖維間橋接；靜態形態與纖維內部變化的解釋保留為模型，不另拆一題。",
+      "limitations": "電子顯微比較用兩隻動物，多個測點不是動物樣本數。本文對纖維內部黏結有推論；不與S002不同方法混成完全相同結論，不將tensilin畫成已確定的可見橋臂。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-life-sources/dermis.xml",
+        "sha256": "7f44aff984d9c976295d18e45c6644852d3e0b311cf33b516503443618d92199",
+        "text_file": ".cache/wave24-life-sources/dermis-xml.txt",
+        "text_sha256": "5cbefb6a288c82812436929a2721414095180ab56d014a4cc907eff5c7992c5a"
+      }
+    },
+    {
+      "id": "A24-S004",
+      "url": "https://repository.si.edu/bitstreams/c3f40db7-5991-4e0e-8c2d-ae7a8a205e42/download",
+      "title": "Eyes and extraocular photoreceptors in midwater cephalopods and fishes: Their roles in detecting downwelling light for counterillumination",
+      "publisher": "Young, Roper and Walters; Marine Biology / Springer; Smithsonian作者機構庫",
+      "doi": "10.1007/BF00389215",
+      "canonical_url": "https://doi.org/10.1007/BF00389215",
+      "retrieval_url": "https://repository.si.edu/bitstreams/c3f40db7-5991-4e0e-8c2d-ae7a8a205e42/download",
+      "accessed_on": "2026-11-02",
+      "version": "1979, Marine Biology51:371–380；出版社列issue December1979，非機構庫近期入庫年",
+      "read_via": "當日web.open原PDF抽取正文pp371–376；指定UA下載403，後續頁碼web.open多次timeout停止；出版社頁只核身份/摘要。保留工具已回傳指定正文的人工節錄，非完整原PDF。",
+      "reading_scope": "pp371–376 Introduction、Materials and Methods、Results兩個Abraliopsis sp.B個體；讀Fig1–3圖說，未目讀原圖。未讀完pp377–380，不採後段魚類結果或腹側自光回饋結論。",
+      "locator": "pp373–374 selective shielding方法；pp375–376 Abraliopsis sp.B Specimen No.1/No.2 results",
+      "summary": "眼睛與頭頂眼外感光囊各提供光輸入；選擇遮住不同位置，發光量下降幅度不同。",
+      "limitations": "只限這兩隻當時稱Abraliopsis sp.B的魷魚及由上方入射且經管壁折射的定向光/約束配置；多次trial不等於很多動物。未定位完整神經運算；不說眼睛無用、所有發光生物同法，或已證腹側感測閉迴路。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-life-sources/squid1979-web-body-excerpts.txt",
+        "sha256": "2a4924f41db694d6eded3798bbd313801573c714ad6f06b50cc1729334d6ba3a",
+        "text_file": ".cache/wave24-life-sources/squid1979-web-body-excerpts.txt",
+        "text_sha256": "2a4924f41db694d6eded3798bbd313801573c714ad6f06b50cc1729334d6ba3a",
+        "kind": "web-returned-body-selected-transcription-not-original-pdf"
+      },
+      "reviewer_locator_followup": {
+        "locator": "p374/PDF P3 L248–280",
+        "evidence": "非作者pool_physics當日官方API web指定正文讀回：彎曲管壁折射使眼睛接到斜光；純垂直光不在其視網膜形成像。作者依其提供原句/段落修圖示，未把這段新route冒稱作者fresh正文成功。",
+        "url": "https://repository.si.edu/server/api/core/bitstreams/c3f40db7-5991-4e0e-8c2d-ae7a8a205e42/content",
+        "author_reopen": "web.open timeout；不重試、不擴首讀範圍"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "A24001",
+      "question": "皮膚已經變白，烏賊表面的凸起為什麼還能留著？",
+      "domain": "動物組織與感測控制",
+      "mechanism_key": "life.papilla_fast_actuation_sustained_tension_release",
+      "answer_target": "色素囊與皮膚乳突的控制可以分離；乳突除了快速伸縮，也能進入持續張力狀態。切斷下降神經訊號後留下的隆起，以及放鬆路徑被抑制後的持續隆起，支持形狀維持不必等同持續收到快速動作指令；平滑肌參與的catch-like解釋仍是待確認的模型。",
+      "scope": "限Sepia officinalis本文去神經/藥理/肌肉構造對照；去神經時的起始隆起狀態重要，不說切斷就必然凸起。未確定twitchin分子鎖、能耗量或一般烏賊的全部皮膚機制。",
+      "source_ids": [
+        "A24-S001"
+      ],
+      "source_locator": "Results Pallial Nerve Denervation… / Neuropeptide and Neuromodulators…；Discussion；XML PARA25–27/43–45/54/58–61",
+      "premise_status": "screened",
+      "notes": "舊wave7未收方向原因是只讀機構摘要；本輪補原研究指定正文後重審，仍不把catch-like假說升格已證分子機制。不是B2125色素囊大小的改問法。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把動起來、保持形狀和釋放分成不同控制步驟；停止指令不必等於立刻恢復平坦。",
+        "visual": "原創並排輪廓：顏色退去但乳突保留；再切換到局部放鬆/抑制放鬆的研究對照。內部平滑肌持張示意標模型，不畫分子扣鎖已拍到。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "A24002",
+      "question": "海參的皮膚變硬，是每根膠原纖維都變硬了嗎？",
+      "domain": "動物組織與感測控制",
+      "mechanism_key": "life.mutable_collagen_interfibrillar_shear_load_transfer",
+      "answer_target": "纖維間較易滑動時，組織可被拉長而纖維本身伸長很少；纖維間基質的傳力增強後，原有纖維承擔更多負荷，整體更難拉長。實測組織變硬時纖維應變反而增加，較符合纖維間傳力改變，而非單純每根纖維自身變硬的模型。",
+      "scope": "限去肌肉的海參中層真皮與本文三種化學狀態/SAXD比較；不是骨片變多或肌肉直接收縮。界面剛性與負荷分配由模型推得，分子橋接身分未直接定案，不泛化所有棘皮組織的唯一機制。",
+      "source_ids": [
+        "A24-S002",
+        "A24-S003"
+      ],
+      "source_locator": "S002 PDFpp4–8 Fig3/Fig6與Model and Discussion，pp8–9 Methods；S003 Discussion Cross-Bridges",
+      "premise_status": "screened",
+      "notes": "兩篇2016研究的方法和部分解釋不同；本核以S002受力中X光對照為主，S003僅橋接形態佐證。軟/標準/硬不拆成三題；不提供處理活體或食品建議。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "較硬的整體裡，纖維反而被拉得更多；關鍵可以是把力交給原有纖維，而非另造更硬纖維。",
+        "visual": "原創同組織伸長量示意：可相對滑動的短纖維，與連結較強、把力傳入纖維的狀態；另畫兩個模型相反預測，清楚標實測趨勢與模型。",
+        "seconds": [
+          100,
+          135
+        ]
+      }
+    },
+    {
+      "id": "A24003",
+      "question": "這種魷魚遮住眼睛還在發光，遮住頭頂一小區卻暗了很多，為什麼？",
+      "domain": "動物組織與感測控制",
+      "mechanism_key": "life.counterillumination_eye_extraocular_input_partition",
+      "answer_target": "受測魷魚不只靠眼睛取得上方光訊息，頭頂另有感光囊。只遮眼睛、只遮頭頂感光囊、兩者都遮的對照造成不同幅度的發光下降，支持兩類輸入共同參與反照明調節，頭頂感光囊在這些條件下影響較大。",
+      "scope": "只限1979原文兩隻Abraliopsis sp.B及由上方入射、經彎曲管壁折射後讓眼睛收到斜入射分量的光照/約束配置；遮眼仍有下降，不是眼睛完全無用。少量個體與重複試次不等同物種普遍比例，沒有完整神經迴路或腹側自光回饋的確證。",
+      "source_ids": [
+        "A24-S004"
+      ],
+      "source_locator": "pp373–374 selective shielding方法；pp375–376兩個Abraliopsis sp.B個體結果",
+      "premise_status": "screened",
+      "notes": "與B2327反照明降低剪影的光學用途不同，聚焦外光訊息從哪裡進入及選擇遮光對照；先留短段，不靠感測器名稱擴成長片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "眼睛有遮住，不等於所有光資訊入口都關掉；並能區分部分作用與唯一控制。",
+        "visual": "原創三格相同由上方入射配置，圖註彎曲管壁折射給眼睛斜入射分量，不能畫下往上照或純垂直光直接入眼：眼、頭頂感光區、兩者遮住；亮度只用定性相對條，兩個體分列，不畫確定神經線路或所有魷魚平均值。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "A24-NA001",
+      "question": "烏賊快速變花紋，是重新製造顏料嗎？",
+      "existing_ids": [
+        "B2125"
+      ],
+      "source_ids": [],
+      "reason": "色素囊面積與反光細胞已有，不能把表面形變研究包成同一變色題。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA002",
+      "question": "變色龍改變鮮豔顏色，能再算一種皮膚控制嗎？",
+      "existing_ids": [
+        "B2313"
+      ],
+      "source_ids": [],
+      "reason": "晶格間距調整反射已有；換成另一皮膚名詞不增加核心。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA003",
+      "question": "短尾魷腹面發光，為什麼反而不易被看見？",
+      "existing_ids": [
+        "B2327"
+      ],
+      "source_ids": [],
+      "reason": "背景匹配降低下方剪影已有；新題只保留感測入口的控制比較。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA004",
+      "question": "短尾魷早上排菌後，晚上怎麼再有光？",
+      "existing_ids": [
+        "B2328"
+      ],
+      "source_ids": [],
+      "reason": "排出後再增殖的循環已收，不把晝夜參數重算。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA005",
+      "question": "幼魷的發光菌從哪裡來？",
+      "existing_ids": [
+        "B2330"
+      ],
+      "source_ids": [],
+      "reason": "環境取得共生菌已有，不與眼外感測混成新共生機制。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA006",
+      "question": "海參軟、海膽硬，只是骨頭擺法不一樣嗎？",
+      "existing_ids": [
+        "B2147"
+      ],
+      "source_ids": [],
+      "reason": "骨片配置比較已收；本輪新核另問同類真皮材料受控變硬。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA007",
+      "question": "蘑菇怎麼在沒有風時把孢子送走？",
+      "existing_ids": [
+        "U8002"
+      ],
+      "source_ids": [],
+      "reason": "蒸發冷卻驅動氣流已收；本輪搜尋確認原研究同方向，不重新計筆。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA008",
+      "question": "真菌一起噴孢子，為何能走更遠？",
+      "existing_ids": [
+        "U8003"
+      ],
+      "source_ids": [],
+      "reason": "集體動量帶動氣流已有，不能只換菌種。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA009",
+      "question": "孢子表面的兩滴水怎麼把孢子射出？",
+      "existing_ids": [
+        "U8001"
+      ],
+      "source_ids": [],
+      "reason": "Buller滴合併釋放表面能已收。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA010",
+      "question": "海豹游泳時怎麼不被自己的水流吵翻？",
+      "existing_ids": [
+        "Z7006"
+      ],
+      "source_ids": [],
+      "reason": "鬚形降低自生渦振已有。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA011",
+      "question": "章魚碰到自己皮膚，怎麼不黏成一團？",
+      "existing_ids": [
+        "Z7014"
+      ],
+      "source_ids": [],
+      "reason": "局部化學抑制吸附反射已有；不以另一組皮膚控制重包。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA012",
+      "question": "章魚吸盤怎麼同時摸出食物的化學線索？",
+      "existing_ids": [
+        "B2314"
+      ],
+      "source_ids": [],
+      "reason": "難溶分子的接觸化學感測已有。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA013",
+      "question": "捕蠅草兩次觸碰為什麼要夠接近？",
+      "existing_ids": [
+        "R6017"
+      ],
+      "source_ids": [],
+      "reason": "鈣訊號衰減與累積門檻已有，不另算植物記憶。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA014",
+      "question": "捕食真菌的圈套怎麼收緊？",
+      "existing_ids": [
+        "V3077"
+      ],
+      "source_ids": [],
+      "reason": "接觸後膨脹收緊已收，未補真正新控制。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA015",
+      "question": "盲鰻的黏液一定能讓任何捕食者窒息嗎？",
+      "existing_ids": [
+        "B2150"
+      ],
+      "source_ids": [],
+      "reason": "舊題只有捕捉困難，本輪未讀微結構/鰓阻塞原研究，且任何捕食者是過強前提。",
+      "reentry_condition": "只有直接正文支持、且既有答案未涵蓋的控制差異才重入；原有例子/物種/倍數不重計。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA016",
+      "question": "烏賊乳突已證實用twitchin鎖住，而且完全不耗能？",
+      "existing_ids": [],
+      "source_ids": [
+        "A24-S001"
+      ],
+      "reason": "原研究明列分子確認與耗能機制仍待檢驗；catch-like不是已證實的分子名稱。",
+      "reentry_condition": "需補足所指出的直接機制證據與條件，且不能只是本批同核心的另一次命名。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA017",
+      "question": "海參有三種硬度，能拆成三個不同題目嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A24-S002",
+        "A24-S003"
+      ],
+      "reason": "控制條件不同不自動等於三核；現有證據足以合在纖維間傳力對照，不為數量拆狀態。",
+      "reentry_condition": "需補足所指出的直接機制證據與條件，且不能只是本批同核心的另一次命名。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    },
+    {
+      "id": "A24-NA018",
+      "question": "魷魚腹側感光囊已證明能直接量自己發出的光並自動校準？",
+      "existing_ids": [],
+      "source_ids": [
+        "A24-S004"
+      ],
+      "reason": "1979來源稱初步回饋實驗；本輪未讀完後頁結果/討論，不用摘要推成已解完整閉迴路。2009光器感光研究只取得摘要/部分web方法，UA空正文、XML500，亦未用來補完此因果。",
+      "reentry_condition": "需補足所指出的直接機制證據與條件，且不能只是本批同核心的另一次命名。",
+      "reading_status": "有舊ID者讀回完整問題/答案/條件；來源閱讀限於本輪逐源列出的指定範圍。"
+    }
+  ]
+}

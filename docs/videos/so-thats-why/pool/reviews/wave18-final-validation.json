@@ -1,0 +1,306 @@
+{
+  "tested_on": "2026-11-02T01:42:38.169Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3350,
+    "canonical_questions": 3211,
+    "eligible_candidates": 3041,
+    "selected_candidates": 2982,
+    "alias_records": 139,
+    "historical_records": 313,
+    "source_urls": 4304,
+    "current_research_source_urls": 1345,
+    "selected_source_urls": 2529,
+    "new_suggestions_not_added": 910,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 204,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-2977",
+    "carried": 2977,
+    "added": 5,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "e6b2012f26e48b9f0ce992a7fb84fbf6dc29d082ea4c3eec7f086215e0106e6f",
+    "writes": 6561,
+    "selected": 2982
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "e6b2012f26e48b9f0ce992a7fb84fbf6dc29d082ea4c3eec7f086215e0106e6f",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4399,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 11693.860500000003,
+    "index_ms": 9671.245599999995,
+    "unchanged_index_ms": 972.8609000000142,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 12,
+        "milliseconds": 191.39280000000144
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 32.25359999999637
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 43.298300000009476
+      }
+    ],
+    "rss_bytes": 436948992,
+    "sqlite_bytes": 48181248
+  },
+  "dedup_audit": {
+    "selection": "Every final wave18 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "ec3e81460eb11b6e4f8d8bb763f550ab56c774ba5a3d471c2218c8ae7761ab80",
+    "records": 3350,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 9.402
+  },
+  "hashes": {
+    "pool.json": "ec3e81460eb11b6e4f8d8bb763f550ab56c774ba5a3d471c2218c8ae7761ab80",
+    "themes.json": "1b6d0a0ca83ae820bd52c1fba1f78a19088c193834f4f2f4c86368b39247c931",
+    "manifest.json": "8a66f14fe116916148794558287c02563acd0edfd915b96fafde2ea4aa30c2d6",
+    "index.html": "c970b465b75a36154b9c6116250be70fb8383db8efd1eef92c4ea6f6cd544647",
+    "batches/wave18-mechanical-surprises.json": "5372f7220dcfc4bfed77850e88a7f9e9e83cb7e686824f0eaac986326b72b4f5"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3345,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 2977,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 199,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4298,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://escholarship.org/content/qt7qs984k7/qt7qs984k7_noSplash_66a8485e2a04a2d12bd2baeb463325cf.pdf",
+        "source_id": "SRC-f692d90083093016",
+        "candidate_ids": [
+          "K18001"
+        ],
+        "theme_ids": [
+          "G200"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1910.03125",
+        "source_id": "SRC-48d412b51705c6cc",
+        "candidate_ids": [
+          "K18002"
+        ],
+        "theme_ids": [
+          "G201"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1612.09319",
+        "source_id": "SRC-84b8597d0e22667f",
+        "candidate_ids": [
+          "K18002"
+        ],
+        "theme_ids": [
+          "G201"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1208.4629",
+        "source_id": "SRC-8bc9d7847aa34965",
+        "candidate_ids": [
+          "K18003"
+        ],
+        "theme_ids": [
+          "G202"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1306.2470",
+        "source_id": "SRC-035f576a4791423e",
+        "candidate_ids": [
+          "K18004"
+        ],
+        "theme_ids": [
+          "G203"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1704.06717",
+        "source_id": "SRC-6638c0d4bd44cc8b",
+        "candidate_ids": [
+          "K18005"
+        ],
+        "theme_ids": [
+          "G204"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://escholarship.org/content/qt7qs984k7/qt7qs984k7_noSplash_66a8485e2a04a2d12bd2baeb463325cf.pdf",
+    "core": "K18001",
+    "theme": "G200",
+    "theme_ids": [
+      "G200"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 350737.5604,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "5f0b15acc497d81066b4cb5c6b46332b52c2a5b99f21b07193beed604ebd6014",
+      "execution_history": {
+        "initial_run": {
+          "tests": 44,
+          "passed": 43,
+          "failed": 1,
+          "failure": "New batch arrived while this run was in progress, before central integration/build; the current-pool test correctly rejected stale generated data.",
+          "log_sha256": "5f0b15acc497d81066b4cb5c6b46332b52c2a5b99f21b07193beed604ebd6014",
+          "duration_ms": 280806.7983
+        },
+        "targeted_after_build": {
+          "passed": 1,
+          "failed": 0,
+          "name_pattern": "current expansion preserves all checkpoints",
+          "log_sha256": "7609abc5229660fb29e1ab626ad2422763028b2271e24f4e5f25c338b9e835b2",
+          "duration_ms": 69930.7621
+        },
+        "meaning": "44 distinct related tests passed across the initial run and the targeted post-build retry, not a single all-green full-suite invocation. No tool code changed."
+      }
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "e05a68fdb2283a60d7f3fe4217d764e49a18ae39fcc0ff904da6d9de1f7f0a38"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "c3747348de34bc72a1374250b2a736ae23e6195f84a532f3ad8a5d2703ebeec1",
+        "series": "ee97a3c5c288e720363a06b0be4b78859301bfd9403ad37fa6f6d0dff15da04e",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "7e03ebef3798a36dfeb7cc93fe609e8fa1545743946765f7e353e39c020b3657"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "a610b29fe7a5b27b56cffb325c9974bbb092995e9ee9b6612bb3c1afcfa158db",
+  "task_release": {
+    "status": "OPEN_UNCLAIMED_TARGET_UNFINISHED",
+    "post_release_check_sha256": "856aac5a88d053a3368b72c747073e786d7d1026d427aabd7532ed47ec908cb8"
+  },
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 321,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 13,
+    "unique_blobs_checked": 337,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3271,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G200",
+        "core": "K18001",
+        "seconds": 105,
+        "maximum": 125
+      },
+      {
+        "theme": "G201",
+        "core": "K18002",
+        "seconds": 110,
+        "maximum": 130
+      },
+      {
+        "theme": "G202",
+        "core": "K18003",
+        "seconds": 95,
+        "maximum": 115
+      },
+      {
+        "theme": "G203",
+        "core": "K18004",
+        "seconds": 95,
+        "maximum": 115
+      },
+      {
+        "theme": "G204",
+        "core": "K18005",
+        "seconds": 105,
+        "maximum": 125
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 24,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "fe985db6cb575999cbe096be2b6d966b6a75101efd4ae5640cebecd2e9e7bb3c"
+  }
+}

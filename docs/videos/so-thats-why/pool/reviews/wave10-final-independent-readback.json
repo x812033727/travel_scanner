@@ -1,0 +1,1601 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "status": "PASS_INDEPENDENT_DATA_INTEGRATION_READBACK_NOT_FACT_OR_SCRIPT_APPROVAL",
+  "production_ready": false,
+  "independence": {
+    "central_integration_author": "root",
+    "readback_reviewer": "science_sources",
+    "self_authored_cohort": "wave10-sensing",
+    "sensing_content_decision_basis": {
+      "file": "reviews/wave10-life-reviews-sensing.json",
+      "sha256": "648cd53492c10ae0cb0aab57a39c11dcd6cd1ab0ca5d1f7be0c52b98f38bb1b4",
+      "scope": "本收據只驗life的非作者題級結論、修訂hash及中央採用一致；不把感測作者自查稱獨立來源核准。"
+    },
+    "other_content_basis": "flows由本覆核者先前獨立查讀；household/decisions/source-refresh依physics已鎖非作者收據。此次是整合讀回，不再次全面查外站。"
+  },
+  "independent_checks": {
+    "method": "另寫Python標準函式庫腳本，解壓2757快照逐列比較；重算數量/來源關係/新題案秒數，讀實體hash；另以sqlite3 mode=ro逐表核對索引。不是照抄root的PASS。",
+    "script": {
+      "file": ".cache/wave10-science-final-readback.py",
+      "sha256": "e4f921f1c7320670ff04b0172644bc41c8c49c5a42f0832995714cd021379523"
+    },
+    "results": {
+      "file": ".cache/wave10-science-independent-data-check.json",
+      "sha256": "da479ea0448e95c3d74e1553e4543d3f78ceacbc7ae693285850347692eb62c1"
+    },
+    "own_execution": "上述資料核對腳本與唯讀SQL已實際執行；未重新執行root測試套件、索引匯入、效能測量或瀏覽器。"
+  },
+  "baseline_comparison": {
+    "snapshot": {
+      "file": "baselines/2026-11-01-2757.json.gz",
+      "sha256": "92c8527689b44740352d8698bfe38be5e46b42c7a299878309501245c992ac0d"
+    },
+    "raw_rows_unchanged": 3115,
+    "selected_retained": 2757,
+    "old_themes_unchanged": 98,
+    "old_canonical_changes": [
+      {
+        "id": "LEG-A20",
+        "fields": [
+          "aliases",
+          "provenance_ids",
+          "question_variants",
+          "source_refs"
+        ]
+      },
+      {
+        "id": "LEG-A25",
+        "fields": [
+          "aliases",
+          "provenance_ids",
+          "question_variants",
+          "source_refs"
+        ]
+      },
+      {
+        "id": "LEG-A35",
+        "fields": [
+          "aliases",
+          "provenance_ids",
+          "question_variants",
+          "source_refs"
+        ]
+      },
+      {
+        "id": "L003",
+        "fields": [
+          "aliases",
+          "provenance_ids",
+          "question_variants",
+          "source_refs"
+        ]
+      }
+    ],
+    "old_sources_preserved": 4076,
+    "old_sources_with_added_readings": [
+      {
+        "id": "SRC-40ff6b33f4a8a5c6",
+        "added_readings": 1
+      },
+      {
+        "id": "SRC-d9df97d76514fd99",
+        "added_readings": 1
+      },
+      {
+        "id": "SRC-ffa13074901d3ef3",
+        "added_readings": 1
+      }
+    ],
+    "historical_snapshot_checks": [
+      {
+        "metadata": "baseline.json",
+        "file": "baselines/2026-11-01-1000.json.gz",
+        "sha256": "6cf3b0f5a7e37546d3c53806b94376f68f2a5cf16b1510d5ca64ef06ee9ac7fd",
+        "selected": 1000,
+        "raw": 1224
+      },
+      {
+        "metadata": "checkpoint-2000.json",
+        "file": "baselines/2026-11-01-2000.json.gz",
+        "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4",
+        "selected": 2000,
+        "raw": 2293
+      },
+      {
+        "metadata": "checkpoint-2328.json",
+        "file": "baselines/2026-11-01-2328.json.gz",
+        "sha256": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba",
+        "selected": 2328,
+        "raw": 2661
+      },
+      {
+        "metadata": "checkpoint-2449.json",
+        "file": "baselines/2026-11-01-2449.json.gz",
+        "sha256": "e98b96cad65be24cdc59bfc1d9f60f311040a7987e04a7b008fab08778063bb2",
+        "selected": 2449,
+        "raw": 2790
+      },
+      {
+        "metadata": "checkpoint-2546.json",
+        "file": "baselines/2026-11-01-2546.json.gz",
+        "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4",
+        "selected": 2546,
+        "raw": 2895
+      },
+      {
+        "metadata": "checkpoint-2609.json",
+        "file": "baselines/2026-11-01-2609.json.gz",
+        "sha256": "06f9fdec324c8e0f6fabd22805eed413fbf5e3f109473e595ec1e2228ab150f1",
+        "selected": 2609,
+        "raw": 2959
+      },
+      {
+        "metadata": "checkpoint-2667.json",
+        "file": "baselines/2026-11-01-2667.json.gz",
+        "sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c",
+        "selected": 2667,
+        "raw": 3017
+      },
+      {
+        "metadata": "checkpoint-2711.json",
+        "file": "baselines/2026-11-01-2711.json.gz",
+        "sha256": "035074191cbf98fe87426589b6f746a90934e1087a65271e4cdd9b03784da217",
+        "selected": 2711,
+        "raw": 3069
+      },
+      {
+        "metadata": "checkpoint-2757.json",
+        "file": "baselines/2026-11-01-2757.json.gz",
+        "sha256": "92c8527689b44740352d8698bfe38be5e46b42c7a299878309501245c992ac0d",
+        "selected": 2757,
+        "raw": 3115
+      }
+    ],
+    "historical_scope": "九份gzip均實際解壓並核metadata的hash、raw/selected數；只有最新2757快照的全3115 raw、全舊canonical/來源及98題案逐欄對當期比較，不宣稱九份都各做一次全raw內容比較。",
+    "editorial_exemption": "checkpoints.json仍指定checkpoint-2000；未擴大editorial豁免。",
+    "old_artifacts": [
+      {
+        "file": "treatments/G79/narration-draft.json",
+        "sha256": "84e42a012238f352bcb681b0e2354b049a4e146ce80218848d28088a1e660ac6",
+        "equal_to_baseline_commit": "65c51184d04130edbd1844ef8b0ef95582600786"
+      },
+      {
+        "file": "treatments/G59/narration-draft.json",
+        "sha256": "70ff154bed6de44b0ab9eb344c9e9242e1e4adfeceef11a4b3519f46326ac923",
+        "equal_to_baseline_commit": "65c51184d04130edbd1844ef8b0ef95582600786"
+      },
+      {
+        "file": "treatments/G59/demo.js",
+        "sha256": "908a8143c3543966e0e764c59891334169c1c6af147d6bae9c0f1e98f0396c67",
+        "equal_to_baseline_commit": "65c51184d04130edbd1844ef8b0ef95582600786"
+      },
+      {
+        "file": "treatments/G59/demo.html",
+        "sha256": "93efb51a5860941f4d3fd56e53a46b71f0638f27b9f4347a6fd55c62a7160671",
+        "equal_to_baseline_commit": "65c51184d04130edbd1844ef8b0ef95582600786"
+      },
+      {
+        "file": "treatments/G37/demo.html",
+        "sha256": "b40819e8cd1f76ad209f3ff7e94a06dd37e592b46dd4c01c15e49a298fe3bf3c",
+        "equal_to_baseline_commit": "65c51184d04130edbd1844ef8b0ef95582600786"
+      }
+    ]
+  },
+  "counts_independently_recomputed": {
+    "raw_records": 3160,
+    "canonical_questions": 3026,
+    "eligible_candidates": 2856,
+    "selected_candidates": 2797,
+    "alias_records": 134,
+    "historical_records": 313,
+    "source_urls": 4115,
+    "current_research_source_urls": 1156,
+    "selected_source_urls": 2346,
+    "new_suggestions_not_added": 497,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "cohort": {
+    "batches": [
+      {
+        "file": "batches/wave10-household.json",
+        "sha256": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9",
+        "raw": 6
+      },
+      {
+        "file": "batches/wave10-flows.json",
+        "sha256": "9a2904a1b2b8f9180504c7c17c0991cd28895ea352341576202fdd4cf70fd42b",
+        "raw": 16
+      },
+      {
+        "file": "batches/wave10-sensing.json",
+        "sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823",
+        "raw": 13
+      },
+      {
+        "file": "batches/wave10-decisions.json",
+        "sha256": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854",
+        "raw": 7
+      },
+      {
+        "file": "batches/wave10-source-refresh.json",
+        "sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24",
+        "raw": 3
+      }
+    ],
+    "review_chain_checks": [
+      {
+        "review": {
+          "file": "reviews/wave10-physics-reviews-household.json",
+          "sha256": "12ec81fc5b2af22364e3c7cbb610fd453da0263eba7dcc1e7b0d53458ec96b97"
+        },
+        "status": "PASS_AFTER_TARGETED_CORRECTIONS_TOPIC_LEVEL_ONLY",
+        "reviewed_files": [
+          {
+            "file": "batches/wave10-household.json",
+            "sha256": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9"
+          },
+          {
+            "file": "reviews/wave10-household-themes.json",
+            "sha256": "4fe65a4ca99e1b7f327ab282459c939424395bf875ed38de48e671e532ff190b"
+          },
+          {
+            "file": "reviews/wave10-household-author.json",
+            "sha256": "8afa2f86a759c5248e36cafbff7458e17e6f54089a41738f44bf9754e2f28217"
+          }
+        ],
+        "cohort_count": 6
+      },
+      {
+        "review": {
+          "file": "reviews/wave10-science-reviews-flows.json",
+          "sha256": "b01fcd488043df8f734cd05b34aa148679f036955285f58bb0aa6eaac3d72325"
+        },
+        "status": "PASS_TOPIC_LEVEL_ONLY_WITH_STATED_SOURCE_ACCESS_LIMIT",
+        "reviewed_files": [
+          {
+            "file": "batches/wave10-flows.json",
+            "sha256": "9a2904a1b2b8f9180504c7c17c0991cd28895ea352341576202fdd4cf70fd42b"
+          },
+          {
+            "file": "reviews/wave10-flows-themes.json",
+            "sha256": "221c68e442852e8b6b8a3bc3cc9a328ac4037f2d5053875254e16eee2ed7c99a"
+          },
+          {
+            "file": "reviews/wave10-flows-author.json",
+            "sha256": "ba4df39c7121573e3e3d065e530deac2967a6b56a97cff6fece3da4af8194517"
+          }
+        ],
+        "cohort_count": 16
+      },
+      {
+        "review": {
+          "file": "reviews/wave10-life-reviews-sensing.json",
+          "sha256": "648cd53492c10ae0cb0aab57a39c11dcd6cd1ab0ca5d1f7be0c52b98f38bb1b4"
+        },
+        "status": "PASS_TOPIC_LEVEL_ONLY",
+        "reviewed_files": [
+          {
+            "file": "batches/wave10-sensing.json",
+            "sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823"
+          },
+          {
+            "file": "reviews/wave10-sensing-themes.json",
+            "sha256": "5c2f8b40a83aa3a92a631ff6ea0f718b84ae7d48ab4d31cdc7f122d711d0ac60"
+          },
+          {
+            "file": "reviews/wave10-sensing-author.json",
+            "sha256": "9b93a19fad6974fe73ad9a1067bb78940b765234c92c1eb891ba69b6dfd4f6bb"
+          }
+        ],
+        "cohort_count": 13
+      },
+      {
+        "review": {
+          "file": "reviews/wave10-physics-reviews-decisions.json",
+          "sha256": "b3cd7ab6949ab9b4769fc6d0b418fac2f07b6cb3144272fdff941f5e70f9c484"
+        },
+        "status": "PASS_AFTER_TARGETED_CORRECTIONS_TOPIC_LEVEL_ONLY",
+        "reviewed_files": [
+          {
+            "file": "batches/wave10-decisions.json",
+            "sha256": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854"
+          },
+          {
+            "file": "reviews/wave10-decisions-themes.json",
+            "sha256": "c1cf561709389bd88becdd326ecfcce9f59c5ce1c56bfef8a5674e45ffc10438"
+          },
+          {
+            "file": "reviews/wave10-decisions-probe.json",
+            "sha256": "d4650c7bdc9dbf9f92ed3a81de1f8578f23a5137ac70cf35adbe173004355840"
+          },
+          {
+            "file": "reviews/wave10-decisions-author.json",
+            "sha256": "4a34f25bbd797aa02df9bde75397d7d05f6df3009a88511b7d21373b7e63628f"
+          }
+        ],
+        "cohort_count": 7
+      },
+      {
+        "review": {
+          "file": "reviews/wave10-physics-reviews-source-refresh.json",
+          "sha256": "eea008940a7dae730c1b9448b9f41d618b07b8554930eb52abb4880aba9f8f53"
+        },
+        "status": "PASS_LIMITED_SOURCE_REFRESH_AND_DEDUP",
+        "reviewed_files": [
+          {
+            "file": "batches/wave10-source-refresh.json",
+            "sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24"
+          },
+          {
+            "file": "reviews/wave10-representation-probe.json",
+            "sha256": "3894ee2a289400f19ea8a6e80c4d7569da1d684c3e936917ead1effe71ddf420"
+          },
+          {
+            "file": "reviews/wave10-source-refresh-author.json",
+            "sha256": "fac667c836c7b1a2f9f2a409dc36c55d64dbde3308e6bd00820a13c7e7df3172"
+          }
+        ],
+        "cohort_count": 3
+      }
+    ],
+    "new_raw_records": 45,
+    "new_core_proposals": 42,
+    "source_refresh_records": 3,
+    "new_selected_cores": 40,
+    "new_proposal_merges": [
+      {
+        "duplicate_id": "H10005",
+        "canonical_id": "L003",
+        "reason": "CCI直接案例仍只用濃度梯度與內庫補給；擦除表面是同原理的新邊界，未建立不同材料機制，併L003。"
+      },
+      {
+        "duplicate_id": "F10004",
+        "canonical_id": "F10003",
+        "reason": "液體靜水壓疊加及水位控制適合作F10003量測變體；不另計核心，不丟來源/問題。"
+      }
+    ],
+    "source_refresh_merges": [
+      {
+        "duplicate_id": "R10001",
+        "canonical_id": "LEG-A20",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      },
+      {
+        "duplicate_id": "R10002",
+        "canonical_id": "LEG-A25",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      },
+      {
+        "duplicate_id": "R10003",
+        "canonical_id": "LEG-A35",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      }
+    ],
+    "new_excluded": [],
+    "all_new_raw_to_canonical_mappings": [
+      {
+        "raw_id": "H10001",
+        "canonical_id": "H10001",
+        "source_refs": 2
+      },
+      {
+        "raw_id": "H10002",
+        "canonical_id": "H10002",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "H10003",
+        "canonical_id": "H10003",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "H10004",
+        "canonical_id": "H10004",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "H10005",
+        "canonical_id": "L003",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "H10006",
+        "canonical_id": "H10006",
+        "source_refs": 3
+      },
+      {
+        "raw_id": "F10001",
+        "canonical_id": "F10001",
+        "source_refs": 2
+      },
+      {
+        "raw_id": "F10002",
+        "canonical_id": "F10002",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10003",
+        "canonical_id": "F10003",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10004",
+        "canonical_id": "F10003",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10005",
+        "canonical_id": "F10005",
+        "source_refs": 2
+      },
+      {
+        "raw_id": "F10006",
+        "canonical_id": "F10006",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10007",
+        "canonical_id": "F10007",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10008",
+        "canonical_id": "F10008",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10009",
+        "canonical_id": "F10009",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10010",
+        "canonical_id": "F10010",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10011",
+        "canonical_id": "F10011",
+        "source_refs": 2
+      },
+      {
+        "raw_id": "F10012",
+        "canonical_id": "F10012",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10013",
+        "canonical_id": "F10013",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10014",
+        "canonical_id": "F10014",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10015",
+        "canonical_id": "F10015",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "F10016",
+        "canonical_id": "F10016",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10001",
+        "canonical_id": "S10001",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10002",
+        "canonical_id": "S10002",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10003",
+        "canonical_id": "S10003",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10004",
+        "canonical_id": "S10004",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10005",
+        "canonical_id": "S10005",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10006",
+        "canonical_id": "S10006",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10007",
+        "canonical_id": "S10007",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10008",
+        "canonical_id": "S10008",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10009",
+        "canonical_id": "S10009",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10010",
+        "canonical_id": "S10010",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10011",
+        "canonical_id": "S10011",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10012",
+        "canonical_id": "S10012",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "S10013",
+        "canonical_id": "S10013",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "M10001",
+        "canonical_id": "M10001",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "M10002",
+        "canonical_id": "M10002",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "M10003",
+        "canonical_id": "M10003",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "M10004",
+        "canonical_id": "M10004",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "M10005",
+        "canonical_id": "M10005",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "M10006",
+        "canonical_id": "M10006",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "M10007",
+        "canonical_id": "M10007",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "R10001",
+        "canonical_id": "LEG-A20",
+        "source_refs": 2
+      },
+      {
+        "raw_id": "R10002",
+        "canonical_id": "LEG-A25",
+        "source_refs": 1
+      },
+      {
+        "raw_id": "R10003",
+        "canonical_id": "LEG-A35",
+        "source_refs": 1
+      }
+    ],
+    "old_selected_removed": [],
+    "new_not_added": 53,
+    "not_added_limit": "53方向只保留未收錄理由，不算入45 raw或40新核心；舊444列均保留。",
+    "legacy_selected_still_waiting_full_refresh": 121
+  },
+  "sources": {
+    "batch_source_records": 42,
+    "batch_distinct_urls": 42,
+    "first_seen_in_full_pool": 39,
+    "old_url_and_reading_preservation": "4076舊URL及每筆原reading均保留；3個舊URL只新增reading。全42批次來源的欄位逐一對中央reading相等，45原題的source_id/locator/origin映射與合併後canonical持續存在。",
+    "selected_source_refs": 4195,
+    "source_refresh_limits": "R10001/2/3全部併回舊核，新增來源與限定答案作variant；原legacy答案/核准狀態未覆寫，121筆歷史入選全文/附件待核不因此減少。",
+    "source_theme_reverse": [
+      {
+        "source_id": "SRC-14d4413806a24f22",
+        "url": "https://liulab.mie.utoronto.ca/wp-content/uploads/J26_Wen_Neuron.pdf",
+        "raw_candidate_ids": [
+          "S10012"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-1636837e852ec85c",
+        "url": "https://arxiv.org/pdf/1410.5382",
+        "raw_candidate_ids": [
+          "F10011",
+          "F10012"
+        ],
+        "new_theme_ids": [
+          "G104"
+        ]
+      },
+      {
+        "source_id": "SRC-173280f17c85fe7e",
+        "url": "https://bioresources.cnr.ncsu.edu/resources/detergency-mechanisms-and-cellulosic-surfaces-a-review/",
+        "raw_candidate_ids": [
+          "H10001"
+        ],
+        "new_theme_ids": [
+          "G99"
+        ]
+      },
+      {
+        "source_id": "SRC-1b6e6b7a3f2738ec",
+        "url": "https://www.jneurosci.org/content/jneuro/27/12/3285.full.pdf",
+        "raw_candidate_ids": [
+          "S10011"
+        ],
+        "new_theme_ids": [
+          "G107"
+        ]
+      },
+      {
+        "source_id": "SRC-1bca15fdc4dd20be",
+        "url": "https://news.vanderbilt.edu/2006/12/20/scientist-discovers-some-mammals-can-smell-objects-under-water-58788/",
+        "raw_candidate_ids": [
+          "S10013"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-24df37628a2ddfea",
+        "url": "https://web.mit.edu/1.061/www/dream/EIGHT/EIGHTTHEORY.PDF",
+        "raw_candidate_ids": [
+          "F10013",
+          "F10014"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-2617c71292ae197c",
+        "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/caring-plastics-rubbers.html",
+        "raw_candidate_ids": [
+          "H10005"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-2bb64f2bafc9a48c",
+        "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/ceramics-glass-preventive-conservation.html",
+        "raw_candidate_ids": [
+          "H10006"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-324839efaddbfe2e",
+        "url": "https://www.cs.cmu.edu/~15281-f24/coursenotes/gametheory/index.html",
+        "raw_candidate_ids": [
+          "M10002",
+          "M10003"
+        ],
+        "new_theme_ids": [
+          "G109"
+        ]
+      },
+      {
+        "source_id": "SRC-37d396d6488b1167",
+        "url": "https://plastics-rubber.basf.com/global/en/performance_polymers/products/basotect",
+        "raw_candidate_ids": [],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-40de974c246dc7d7",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11533165/",
+        "raw_candidate_ids": [
+          "H10004"
+        ],
+        "new_theme_ids": [
+          "G100"
+        ]
+      },
+      {
+        "source_id": "SRC-40ff6b33f4a8a5c6",
+        "url": "https://www.unicode.org/faq/emoji_dingbats.html",
+        "raw_candidate_ids": [
+          "R10001"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-41fdb056087749f8",
+        "url": "https://arxiv.org/pdf/cond-mat/0601179",
+        "raw_candidate_ids": [
+          "F10006",
+          "F10007",
+          "F10008"
+        ],
+        "new_theme_ids": [
+          "G102"
+        ]
+      },
+      {
+        "source_id": "SRC-4ad96e9a057513ff",
+        "url": "https://www.columbia.edu/cu/neurotheory/Larry/EnikolopovNeuron18.pdf",
+        "raw_candidate_ids": [
+          "S10001"
+        ],
+        "new_theme_ids": [
+          "G105"
+        ]
+      },
+      {
+        "source_id": "SRC-4b16b47a22c10c86",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4639583/",
+        "raw_candidate_ids": [
+          "H10001",
+          "H10002"
+        ],
+        "new_theme_ids": [
+          "G99"
+        ]
+      },
+      {
+        "source_id": "SRC-5477358f373617a7",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5740276/",
+        "raw_candidate_ids": [
+          "S10010"
+        ],
+        "new_theme_ids": [
+          "G107"
+        ]
+      },
+      {
+        "source_id": "SRC-55a1c0c1169fc10b",
+        "url": "https://www.census.gov/about/history/historical-censuses-and-surveys/census-programs-surveys/decennial-census/methods.html",
+        "raw_candidate_ids": [
+          "M10004"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-5b1ae819102cc56f",
+        "url": "https://elifesciences.org/articles/78410",
+        "raw_candidate_ids": [
+          "S10008"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-5fc7020104645066",
+        "url": "https://www.jneurosci.org/content/jneuro/24/9/2102.full.pdf",
+        "raw_candidate_ids": [
+          "S10003"
+        ],
+        "new_theme_ids": [
+          "G105"
+        ]
+      },
+      {
+        "source_id": "SRC-66f84ac761435d4a",
+        "url": "https://elifesciences.org/articles/52371",
+        "raw_candidate_ids": [
+          "S10007"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-69b766093ef4f6ae",
+        "url": "https://elifesciences.org/articles/44032",
+        "raw_candidate_ids": [
+          "S10002"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-72b076e069d79a2d",
+        "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/pre2000-11.pdf",
+        "raw_candidate_ids": [
+          "F10011"
+        ],
+        "new_theme_ids": [
+          "G104"
+        ]
+      },
+      {
+        "source_id": "SRC-816343699a645766",
+        "url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/magma_chambers.pdf",
+        "raw_candidate_ids": [
+          "F10015"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-88aa822fc402a97d",
+        "url": "https://elifesciences.org/articles/68848",
+        "raw_candidate_ids": [
+          "S10004"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-969ab66fa7311d71",
+        "url": "https://pubs.rsc.org/en/content/articlehtml/2025/sm/d5sm00523j",
+        "raw_candidate_ids": [
+          "F10003",
+          "F10004"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-9e5e24bf11357d57",
+        "url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+        "raw_candidate_ids": [
+          "M10001"
+        ],
+        "new_theme_ids": [
+          "G108"
+        ]
+      },
+      {
+        "source_id": "SRC-a7b9f3700ec6e863",
+        "url": "https://elifesciences.org/articles/63596",
+        "raw_candidate_ids": [
+          "S10006"
+        ],
+        "new_theme_ids": [
+          "G106"
+        ]
+      },
+      {
+        "source_id": "SRC-afb252b8a64e91b7",
+        "url": "https://www.wacker.com/h/en-us/medias/7461-EN.pdf",
+        "raw_candidate_ids": [
+          "H10003"
+        ],
+        "new_theme_ids": [
+          "G100"
+        ]
+      },
+      {
+        "source_id": "SRC-b1cf9a32b2674cb8",
+        "url": "https://libanswers.cmog.org/faq/144576",
+        "raw_candidate_ids": [
+          "H10006"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-c33932726e2cd4ad",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3445569/",
+        "raw_candidate_ids": [
+          "S10005"
+        ],
+        "new_theme_ids": [
+          "G106"
+        ]
+      },
+      {
+        "source_id": "SRC-ce022a29d4877073",
+        "url": "https://www.nature.com/articles/s42005-021-00756-4",
+        "raw_candidate_ids": [
+          "F10005"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-d0a7c5fb9c84d3df",
+        "url": "https://elifesciences.org/articles/14449",
+        "raw_candidate_ids": [
+          "S10009"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-d7c79ff8eeb837e6",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10672922/",
+        "raw_candidate_ids": [
+          "F10001",
+          "F10002"
+        ],
+        "new_theme_ids": [
+          "G101"
+        ]
+      },
+      {
+        "source_id": "SRC-d91f6e7bfae464f0",
+        "url": "https://ocw.mit.edu/courses/1-060-engineering-mechanics-ii-spring-2006/cd065e9eda29389eb05981ad1388895c_lecture27.pdf",
+        "raw_candidate_ids": [
+          "F10016"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-d9df97d76514fd99",
+        "url": "https://www.unicode.org/reports/tr51/tr51-31.html",
+        "raw_candidate_ids": [
+          "R10001"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-e42356de1932ca1b",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7422868/",
+        "raw_candidate_ids": [
+          "F10009",
+          "F10010"
+        ],
+        "new_theme_ids": [
+          "G103"
+        ]
+      },
+      {
+        "source_id": "SRC-e618210c48d0b70c",
+        "url": "https://www.jsme-fed.org/experiment-e/2012_4/002.html",
+        "raw_candidate_ids": [
+          "F10001"
+        ],
+        "new_theme_ids": [
+          "G101"
+        ]
+      },
+      {
+        "source_id": "SRC-ea1c6ba60408a4ad",
+        "url": "https://blog.cmog.org/2012/osler-candelabrum-and-incipient-crizzling",
+        "raw_candidate_ids": [
+          "H10006"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-ea89cc2736ed2c0a",
+        "url": "https://arxiv.org/html/2411.11264v1",
+        "raw_candidate_ids": [
+          "F10005"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-ef8789e1db746120",
+        "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/mit6_042js15_textbook.pdf",
+        "raw_candidate_ids": [
+          "M10005",
+          "M10006",
+          "M10007"
+        ],
+        "new_theme_ids": [
+          "G110"
+        ]
+      },
+      {
+        "source_id": "SRC-f294d035e767ef44",
+        "url": "https://man7.org/linux/man-pages/man2/time.2.html",
+        "raw_candidate_ids": [
+          "R10002"
+        ],
+        "new_theme_ids": []
+      },
+      {
+        "source_id": "SRC-ffa13074901d3ef3",
+        "url": "https://physics.nist.gov/cuu/Units/binary.html",
+        "raw_candidate_ids": [
+          "R10003"
+        ],
+        "new_theme_ids": []
+      }
+    ],
+    "external_access_scope": "本階段沒有重開全部外站；沿已綁作者/非作者紀錄，保留讀取失敗及副本限制。flows F10-S003未獨立重開正文的限制未因中央匯入消失。"
+  },
+  "themes": {
+    "old_98_unchanged": true,
+    "new_theme_count": 12,
+    "total": 110,
+    "new_body_seconds_min": 95,
+    "new_body_seconds_max": 180,
+    "chapter_count": 24,
+    "distinct_core_allocations_checked": 22,
+    "checks": [
+      {
+        "theme_id": "G99",
+        "proposal_id": "W10H-T01",
+        "seconds": 175,
+        "chapters": [
+          70,
+          105
+        ],
+        "cores": [
+          {
+            "id": "H10001",
+            "allocated_seconds": 70,
+            "cap": 100
+          },
+          {
+            "id": "H10002",
+            "allocated_seconds": 105,
+            "cap": 120
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "若 H10002 的封邊/剪流對照不能準確呈現，刪105秒，只留 H10001 的70秒單核心素材並撤此雙章案；若 H10001 併舊核心，重新審該變體的70秒預算，不能直接把舊肥皂通論塞回。"
+      },
+      {
+        "theme_id": "G100",
+        "proposal_id": "W10H-T02",
+        "seconds": 155,
+        "chapters": [
+          80,
+          75
+        ],
+        "cores": [
+          {
+            "id": "H10003",
+            "allocated_seconds": 80,
+            "cap": 90
+          },
+          {
+            "id": "H10004",
+            "allocated_seconds": 75,
+            "cap": 105
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "若 H10004 只剩玻璃轉移/塑化舊知，撤第二章75秒，留下80秒單核心素材並撤雙章案；若任一章需要大量配方名詞才成立，撤案而不加時。"
+      },
+      {
+        "theme_id": "G101",
+        "proposal_id": "W10F-T01",
+        "seconds": 155,
+        "chapters": [
+          75,
+          80
+        ],
+        "cores": [
+          {
+            "id": "F10001",
+            "allocated_seconds": 75,
+            "cap": 80
+          },
+          {
+            "id": "F10002",
+            "allocated_seconds": 80,
+            "cap": 90
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若坡底力與停滯圖做不清，刪80秒只剩75秒單題素材，撤本雙核心題案並改標題；若第一章壓力/速度平衡不能畫清，整案暫緩。不得把旋轉參數表補回片長。"
+      },
+      {
+        "theme_id": "G102",
+        "proposal_id": "W10F-T02",
+        "seconds": 145,
+        "chapters": [
+          65,
+          80
+        ],
+        "cores": [
+          {
+            "id": "F10006",
+            "allocated_seconds": 65,
+            "cap": 75
+          },
+          {
+            "id": "F10007",
+            "allocated_seconds": 80,
+            "cap": 90
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若壁面回程圖無法看清，刪第二章80秒，只剩65秒填隙單核心素材並撤本雙章案；若填隙圖不成立，刪第一章65秒，只剩80秒循環素材並另審單核版本。F10008仍在研究池，不在本片補時。"
+      },
+      {
+        "theme_id": "G103",
+        "proposal_id": "W10F-T03",
+        "seconds": 165,
+        "chapters": [
+          75,
+          90
+        ],
+        "cores": [
+          {
+            "id": "F10009",
+            "allocated_seconds": 75,
+            "cap": 80
+          },
+          {
+            "id": "F10010",
+            "allocated_seconds": 90,
+            "cap": 100
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "若第二章不能以同一標記清楚展示兩種順序，刪90秒後僅75秒單核，撤165秒雙核心企劃並改題。若第一章把擴散誤畫成可逆，整案退回。"
+      },
+      {
+        "theme_id": "G104",
+        "proposal_id": "W10F-T04",
+        "seconds": 150,
+        "chapters": [
+          75,
+          75
+        ],
+        "cores": [
+          {
+            "id": "F10011",
+            "allocated_seconds": 75,
+            "cap": 85
+          },
+          {
+            "id": "F10012",
+            "allocated_seconds": 75,
+            "cap": 85
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若第二章只展示花紋集而無速度差與落點對照，刪75秒剩75秒單題素材，撤150秒組片。若液絲仍流動的畫法無法與固體繩區分，整案暫緩；不補頻率公式或畫家史話。"
+      },
+      {
+        "theme_id": "G105",
+        "proposal_id": "W10S-T01",
+        "seconds": 180,
+        "chapters": [
+          90,
+          90
+        ],
+        "cores": [
+          {
+            "id": "S10001",
+            "allocated_seconds": 90,
+            "cap": 105
+          },
+          {
+            "id": "S10003",
+            "allocated_seconds": 90,
+            "cap": 105
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若無法把兩物種實驗條件講清楚，或S10001被判僅舊核變體且無適用增量，撤回此案；不補更多感覺器名單。"
+      },
+      {
+        "theme_id": "G106",
+        "proposal_id": "W10S-T02",
+        "seconds": 170,
+        "chapters": [
+          75,
+          95
+        ],
+        "cores": [
+          {
+            "id": "S10005",
+            "allocated_seconds": 75,
+            "cap": 85
+          },
+          {
+            "id": "S10006",
+            "allocated_seconds": 95,
+            "cap": 105
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若只剩泛稱鬍鬚能摸到東西或只剩皮質名詞，撤回；刪任一核心不加回其他鼠技能補時。"
+      },
+      {
+        "theme_id": "G107",
+        "proposal_id": "W10S-T03",
+        "seconds": 170,
+        "chapters": [
+          85,
+          85
+        ],
+        "cores": [
+          {
+            "id": "S10010",
+            "allocated_seconds": 85,
+            "cap": 95
+          },
+          {
+            "id": "S10011",
+            "allocated_seconds": 85,
+            "cap": 95
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若無法分清卸載與加載、前進/後退或模型/直接神經證據，撤回；不把每條腿再講一次來補長。"
+      },
+      {
+        "theme_id": "G108",
+        "proposal_id": "W10M-T01",
+        "seconds": 110,
+        "chapters": [
+          60,
+          50
+        ],
+        "cores": [
+          {
+            "id": "M10001",
+            "allocated_seconds": 110,
+            "cap": 110
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "無法在同一畫面看出分母與難度組成，就撤回此110秒案；不加其他悖論補長。"
+      },
+      {
+        "theme_id": "G109",
+        "proposal_id": "W10M-T02",
+        "seconds": 150,
+        "chapters": [
+          80,
+          70
+        ],
+        "cores": [
+          {
+            "id": "M10002",
+            "allocated_seconds": 80,
+            "cap": 95
+          },
+          {
+            "id": "M10003",
+            "allocated_seconds": 70,
+            "cap": 85
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "無法持續追蹤同11張卡就撤案。刪一個核心時不得沿用150秒雙機制案，須另審縮版；不加政治案例。"
+      },
+      {
+        "theme_id": "G110",
+        "proposal_id": "W10M-T03",
+        "seconds": 95,
+        "chapters": [
+          55,
+          40
+        ],
+        "cores": [
+          {
+            "id": "M10007",
+            "allocated_seconds": 95,
+            "cap": 105
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若只能反覆播重抽而不能顯示新種類機率，就撤回95秒案；不加盲盒消費故事或用慢播補時。"
+      }
+    ],
+    "proposal_mapping_method": "逐欄比較四份作者題案至中央G99–G110；只允許id/priority的集中編號狀態差異。新案無被hold或alias ID，所有核心累計<=editorial max。",
+    "editorial_readback": [
+      "G99/G100依physics覆核縮175/155秒；烤硬膜與液滴、RTV-1與乳膠均明示重設條件，不串成同一物料的必經過程。H10006留池但原第三題案已撤。",
+      "G101–G104維持流體四案155/145/165/150；F10008留研究池而不補回G102。F10004合併變體沒有被拿來另算片內核心。",
+      "G105–G107精確採life核過180/170/170的感測題案與修後素材；本階段僅核整合一致，不自核事實。",
+      "G108用M10001跨兩章60+50=110，G110用M10007跨兩章55+40=95，均按單核心總秒核cap；沒有因拆章重置上限。physics的post_lock_targeted_checks綁最新題案/author。",
+      "G109仍80+70=150，清楚由兩兩多數切換2/1/0 Borda，再刪C換1/0；自設數字不冒充民意資料。"
+    ],
+    "drop_and_timing_limits": "開場/回扣已在預算內；各新章beat或at_seconds間隔<=45秒。刪章需依drop_if縮版另審或撤案，不能沿用原總秒數。正文預算不含品牌片頭片尾，未試讀，不是完成片長。"
+  },
+  "manifest_readback": {
+    "actual_input_files_hashed": 283,
+    "actual_output_files_hashed": 6,
+    "themes_definition_hashed": true,
+    "scope": "工作樹實體位元組，非Git staged blobs"
+  },
+  "sqlite_readback": {
+    "status": "PASS_READONLY_SQLITE_CONTENT_MATCH",
+    "mode": "Python sqlite3 URI mode=ro; no import, benchmark or browser rerun",
+    "active_canonical_bodies_compared": 3026,
+    "raw_alias_bodies_compared": 3160,
+    "source_bodies_compared": 4115,
+    "active_candidate_source_locator_links_compared": 6097,
+    "selected": 2797,
+    "inactive_historical_candidate_rows": [
+      "E2106",
+      "L042",
+      "L293",
+      "P150"
+    ],
+    "inactive_history_note": "四列非active歷史候選及其4來源關係仍在版本索引，不冒充當期canonical；active join的6097關係與pool完全一致。",
+    "snapshot": "2cea4ecafa49759ac9fd003cc79dc1cd5c91e22b0c0f4b127822e71b8eaa6b42",
+    "new_aliases_checked": [
+      {
+        "id": "H10005",
+        "resolved": "L003"
+      },
+      {
+        "id": "F10004",
+        "resolved": "F10003"
+      },
+      {
+        "id": "R10001",
+        "resolved": "LEG-A20"
+      },
+      {
+        "id": "R10002",
+        "resolved": "LEG-A25"
+      },
+      {
+        "id": "R10003",
+        "resolved": "LEG-A35"
+      }
+    ],
+    "new_source_theme_reverse_sample": {
+      "source_id": "SRC-173280f17c85fe7e",
+      "url": "https://bioresources.cnr.ncsu.edu/resources/detergency-mechanisms-and-cellulosic-surfaces-a-review/",
+      "raw_candidate_ids": [
+        "H10001"
+      ],
+      "new_theme_ids": [
+        "G99"
+      ]
+    }
+  },
+  "hashes": [
+    {
+      "file": "DEDUP.md",
+      "sha256": "78beb6b2c1d724b02e3eab26a9f22f5067f9877caf36ebb5084611b531d960e4"
+    },
+    {
+      "file": "QUESTIONS.md",
+      "sha256": "ebc0398bd86ca67f470e4df7f72f684a786ab60c6cb192f78ef86bec0a54fb30"
+    },
+    {
+      "file": "README.md",
+      "sha256": "65107c06a4db20c224b5dfc9939c3229aa9b6beb9cd54fd7a70168b2a8b80fe7"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "b996e50df94ffd4ef93850a8463bb41ddb072953ca10fb53f536770abcf29f32"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "12f13057371ea0354e640fe4351d2b84e6d00d5877d5527991848608a539f43b"
+    },
+    {
+      "file": "THEMES.md",
+      "sha256": "ca15d8265943c79e620d9734832b182ed6b961ff3b510293435cbf1bf2b096af"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "1e25b191cd4d74ef37aad73270cec70e4fdf55ffb1f5ea33fd3d431111ac72ab"
+    },
+    {
+      "file": "batches/wave10-decisions.json",
+      "sha256": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854"
+    },
+    {
+      "file": "batches/wave10-flows.json",
+      "sha256": "9a2904a1b2b8f9180504c7c17c0991cd28895ea352341576202fdd4cf70fd42b"
+    },
+    {
+      "file": "batches/wave10-household.json",
+      "sha256": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9"
+    },
+    {
+      "file": "batches/wave10-sensing.json",
+      "sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823"
+    },
+    {
+      "file": "batches/wave10-source-refresh.json",
+      "sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24"
+    },
+    {
+      "file": "checkpoints.json",
+      "sha256": "cab43bdcd65a6d67b5358dd897c54e7a660cf5ffe8e84a1024cf0bc555d09e76"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "93b5cd20bbef2a52e63a05fe1376d36f880a62c06b5b3e28cbe74c0a3b7d943e"
+    },
+    {
+      "file": "index.html",
+      "sha256": "65f0452e91ca711d6d3d949a182c6523dafd16056f4d41b08ce72cc975ceb9cd"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "4833cff7d82302f98dc49debe2d46c4dd9dd194e8907c86d0cbc3cbd760e886b"
+    },
+    {
+      "file": "pool.json",
+      "sha256": "837667313fcc0a56b3642dd85e0810beda26f6b3a1dc6edfff48fb8c2038577c"
+    },
+    {
+      "file": "reviews/wave10-browser-qa.json",
+      "sha256": "b6b928a22d4862c9832528f5615d0db5250dcc99f245a7bd865275b1883e3e09"
+    },
+    {
+      "file": "reviews/wave10-decisions-author.json",
+      "sha256": "4a34f25bbd797aa02df9bde75397d7d05f6df3009a88511b7d21373b7e63628f"
+    },
+    {
+      "file": "reviews/wave10-decisions-probe.json",
+      "sha256": "d4650c7bdc9dbf9f92ed3a81de1f8578f23a5137ac70cf35adbe173004355840"
+    },
+    {
+      "file": "reviews/wave10-decisions-themes.json",
+      "sha256": "c1cf561709389bd88becdd326ecfcce9f59c5ce1c56bfef8a5674e45ffc10438"
+    },
+    {
+      "file": "reviews/wave10-editorial-integration.json",
+      "sha256": "9ca9f894b8af3f5ff6d7598be290dc3901e5d43839577b3d1a457603b02e52d5"
+    },
+    {
+      "file": "reviews/wave10-flows-author.json",
+      "sha256": "ba4df39c7121573e3e3d065e530deac2967a6b56a97cff6fece3da4af8194517"
+    },
+    {
+      "file": "reviews/wave10-flows-themes.json",
+      "sha256": "221c68e442852e8b6b8a3bc3cc9a328ac4037f2d5053875254e16eee2ed7c99a"
+    },
+    {
+      "file": "reviews/wave10-household-author.json",
+      "sha256": "8afa2f86a759c5248e36cafbff7458e17e6f54089a41738f44bf9754e2f28217"
+    },
+    {
+      "file": "reviews/wave10-household-themes.json",
+      "sha256": "4fe65a4ca99e1b7f327ab282459c939424395bf875ed38de48e671e532ff190b"
+    },
+    {
+      "file": "reviews/wave10-life-reviews-sensing.json",
+      "sha256": "648cd53492c10ae0cb0aab57a39c11dcd6cd1ab0ca5d1f7be0c52b98f38bb1b4"
+    },
+    {
+      "file": "reviews/wave10-physics-reviews-decisions.json",
+      "sha256": "b3cd7ab6949ab9b4769fc6d0b418fac2f07b6cb3144272fdff941f5e70f9c484"
+    },
+    {
+      "file": "reviews/wave10-physics-reviews-household.json",
+      "sha256": "12ec81fc5b2af22364e3c7cbb610fd453da0263eba7dcc1e7b0d53458ec96b97"
+    },
+    {
+      "file": "reviews/wave10-physics-reviews-source-refresh.json",
+      "sha256": "eea008940a7dae730c1b9448b9f41d618b07b8554930eb52abb4880aba9f8f53"
+    },
+    {
+      "file": "reviews/wave10-representation-probe.json",
+      "sha256": "3894ee2a289400f19ea8a6e80c4d7569da1d684c3e936917ead1effe71ddf420"
+    },
+    {
+      "file": "reviews/wave10-science-reviews-flows.json",
+      "sha256": "b01fcd488043df8f734cd05b34aa148679f036955285f58bb0aa6eaac3d72325"
+    },
+    {
+      "file": "reviews/wave10-sensing-author.json",
+      "sha256": "9b93a19fad6974fe73ad9a1067bb78940b765234c92c1eb891ba69b6dfd4f6bb"
+    },
+    {
+      "file": "reviews/wave10-sensing-themes.json",
+      "sha256": "5c2f8b40a83aa3a92a631ff6ea0f718b84ae7d48ab4d31cdc7f122d711d0ac60"
+    },
+    {
+      "file": "reviews/wave10-source-refresh-author.json",
+      "sha256": "fac667c836c7b1a2f9f2a409dc36c55d64dbde3308e6bd00820a13c7e7df3172"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "fb69eb7b8e5693691928f7472e6eb8e3b5965d038133644f778f804738486cfc"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "a45e9ee1e63c81af8ea4c2387c1ef610bde08d41ef704cdd58965cc83e03abda"
+    },
+    {
+      "file": "treatments/G37/demo.html",
+      "sha256": "b40819e8cd1f76ad209f3ff7e94a06dd37e592b46dd4c01c15e49a298fe3bf3c"
+    },
+    {
+      "file": "treatments/G59/demo.html",
+      "sha256": "93efb51a5860941f4d3fd56e53a46b71f0638f27b9f4347a6fd55c62a7160671"
+    },
+    {
+      "file": "treatments/G59/demo.js",
+      "sha256": "908a8143c3543966e0e764c59891334169c1c6af147d6bae9c0f1e98f0396c67"
+    },
+    {
+      "file": "treatments/G59/narration-draft.json",
+      "sha256": "70ff154bed6de44b0ab9eb344c9e9242e1e4adfeceef11a4b3519f46326ac923"
+    },
+    {
+      "file": "treatments/G79/narration-draft.json",
+      "sha256": "84e42a012238f352bcb681b0e2354b049a4e146ce80218848d28088a1e660ac6"
+    }
+  ],
+  "validation_receipt_readback": {
+    "file": "reviews/wave10-final-validation.json",
+    "whole_file_hash_intentionally_not_bound": true,
+    "reason": "root仍會加入actual Git index/hygiene與本收據hash，避免循環綁定；只綁已固定tests子物件及穩定來源檔。",
+    "tests_object": {
+      "node": {
+        "passed": 39,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 138328.2042,
+        "files": [
+          "tools/video/so-thats-why/pool/pool.test.mjs",
+          "tools/video/so-thats-why/catalog.test.mjs",
+          "tools/repo-hygiene.test.mjs",
+          "tools/json-duplicate-keys.test.mjs",
+          "tools/docs-videos-tests.test.mjs"
+        ],
+        "log_sha256": "19a396098f34924d3f20e4014a24ce9a391c3f6bbc060a0869bfbd9162034f85"
+      },
+      "python": {
+        "passed": 2,
+        "failed": 0,
+        "file": "tools/video/so-thats-why/pool/semantic_test.py",
+        "log_sha256": "04a6b65d74e54b7fe77db28086be657f93ebf3e14db96134a511b232f7e1c4e3"
+      },
+      "checks": {
+        "pool": "PASS",
+        "series": "PASS",
+        "long_form_plans": 473,
+        "task_files": 2287,
+        "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+      },
+      "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+    },
+    "tests_object_sha256": "37d1500472b353cfd014072c60905766e4ddcf18bc1ffb3ae45d310bf91be9e0",
+    "tests_hash_encoding": "UTF-8 json.dumps(ensure_ascii=False, sort_keys=True, separators=(comma, colon))，無尾換行",
+    "actual_logs_read": [
+      {
+        "file": ".cache/wave10-node-tests.log",
+        "sha256": "19a396098f34924d3f20e4014a24ce9a391c3f6bbc060a0869bfbd9162034f85",
+        "read_scope": "結果尾段39 tests/39 pass/0 fail,cancel,skip,todo及138328.2042ms；非本覆核者重新執行。"
+      },
+      {
+        "file": ".cache/wave10-python-tests.log",
+        "sha256": "04a6b65d74e54b7fe77db28086be657f93ebf3e14db96134a511b232f7e1c4e3",
+        "read_scope": "完整短結果2 tests/OK；非本覆核者重新執行。"
+      },
+      {
+        "file": ".cache/wave10-final-tasks-check.log",
+        "sha256": "67f06c2fbf7fb66b038a1a45a29f7c8d673f9e92f85f81c394eaef9cc35bb06d",
+        "read_scope": "末段2287 task files及既有warning；未替別人任務修警告。"
+      }
+    ],
+    "other_checks_attribution": "pool/series/473長片格式PASS依root固定tests.checks收據讀回，未重跑全repo/API/web CI。",
+    "performance_attribution": "單次索引/搜尋/0 writes為root實測紀錄；本覆核另做唯讀內容一致性，沒有重做benchmark或萬筆/十萬筆壓測。"
+  },
+  "documentation_readback": {
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "result": "當期2797/+40、3160raw、42/39 URL、53未收、12/110題案及剩7203一致；README的12列m:ss逐一對中央body_seconds；相關39/2測試與固定收據一致。",
+    "semantic_limit": "當批2個事先已知新提案合併對：詞面0/top10為1，非隨機、不代表全庫召回率；3筆預定來源更新未混入。",
+    "historical_media": "G79 279字/85秒、G59 506字/130秒及既有G37/G59小樣對基線commit位元組未變；未試讀、未重跑小樣。",
+    "browser_qa": {
+      "file": "reviews/wave10-browser-qa.json",
+      "sha256": "b6b928a22d4862c9832528f5615d0db5250dcc99f245a7bd865275b1883e3e09",
+      "root_result": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+      "reviewer_scope": "讀QA收據、核index HTML及三張PNG實體hash；本覆核者未重新操作瀏覽器或把root目讀稱自己目讀。",
+      "limits": "來源URL在展開卡截圖裁切範圍下方，完整來源由DOM斷言；本批新增held為空，不冒稱做了負向排除案例。"
+    }
+  },
+  "findings": [],
+  "remaining_blockers": [],
+  "pending_handoff": [
+    "root執行實際Git index blob hash及提交前hygiene檢查，再依既有授權commit/push草稿PR；本收據不宣稱已驗stage、CI、合併或部署。"
+  ],
+  "limits": [
+    "本收據核整合與證據鏈，沒有全面重查3160題外部事實或所有歷史附件。",
+    "screened與本收據PASS都不是完整旁白、試讀、素材圖權、製作或發布核准。",
+    "未修改中央、作者檔、任務或程式；僅寫本收據及ignored檢查暫存。",
+    "不綁整張仍可釋放的task，也不綁會追加驗證資料的final-validation全檔。"
+  ]
+}

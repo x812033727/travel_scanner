@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave4-transport-cities-20261101",
+  "files": [
+    {
+      "path": "batches/wave4-transport-cities.json",
+      "sha256": "386e8eca137aba5bd3adfa4264cff6ee4ac8256f493c5eef9c5bd39a12d95b88"
+    },
+    {
+      "path": "reviews/wave4-transport-themes.json",
+      "sha256": "722e8793ceffe45d89d7bdbc38bf71e65f4e5b01cd5ed929190155e4d14a56bb"
+    }
+  ],
+  "encoding": "UTF-8 without BOM; LF; exact byte hashes after normalization",
+  "counts": {
+    "candidates": 50,
+    "sources": 24,
+    "candidate_referenced_sources": 23,
+    "not_added": 9,
+    "theme_proposals": 3
+  },
+  "candidate_ids": [
+    "T4001",
+    "T4002",
+    "T4003",
+    "T4004",
+    "T4005",
+    "T4006",
+    "T4008",
+    "T4009",
+    "T4010",
+    "T4011",
+    "T4012",
+    "T4014",
+    "T4015",
+    "T4016",
+    "T4017",
+    "T4018",
+    "T4019",
+    "T4020",
+    "T4022",
+    "T4023",
+    "T4024",
+    "T4025",
+    "T4026",
+    "T4027",
+    "T4028",
+    "T4029",
+    "T4030",
+    "T4031",
+    "T4032",
+    "T4033",
+    "T4034",
+    "T4035",
+    "T4036",
+    "T4037",
+    "T4038",
+    "T4039",
+    "T4040",
+    "T4041",
+    "T4042",
+    "T4043",
+    "T4044",
+    "T4045",
+    "T4046",
+    "T4047",
+    "T4048",
+    "T4049",
+    "T4050",
+    "T4051",
+    "T4052",
+    "T4053"
+  ],
+  "baseline": {
+    "path": "pool.json",
+    "sha256": "a2839318e7a628904e126309a5bd1ea9226c54f8fb9b557a289bc3233daeb633",
+    "raw_records": 2661,
+    "method": "閱讀交通相關舊題的問題／機制／答案／範圍，並以中文關鍵詞與英文機制詞檢索全池；不是2661題逐一外部事實重查。"
+  },
+  "source_reading": {
+    "method": "逐來源實讀各source.reading_scope所列正文；PDF可用作者副本在本機抽取正文，未讀部分不視為查核通過。",
+    "source_ids": [
+      "T4-S001",
+      "T4-S002",
+      "T4-S003",
+      "T4-S004",
+      "T4-S005",
+      "T4-S006",
+      "T4-S007",
+      "T4-S008",
+      "T4-S009",
+      "T4-S010",
+      "T4-S011",
+      "T4-S012",
+      "T4-S013",
+      "T4-S014",
+      "T4-S015",
+      "T4-S016",
+      "T4-S017",
+      "T4-S018",
+      "T4-S019",
+      "T4-S020",
+      "T4-S021",
+      "T4-S022",
+      "T4-S023",
+      "T4-S024"
+    ],
+    "restrictions": [
+      "FHWA Traffic Signal Timing Manual章3/5/6/9頁首標archived/replaced，只解釋原理，非現行法規。",
+      "RSC-G-005-B檔註SUPERSEDED，不當現行愛爾蘭或台灣規範。",
+      "MIT為課程歷史教材；未實測公車、櫃檯或倉庫。",
+      "Warehouse Science圖表不因教材可讀就取得商用授權，受版控檔只留連結與原創短摘要。",
+      "登機研究受限單走道模型機艙、72位參與者及各方法單次測試，不能作所有航空公司方法排名。",
+      "2020虛擬聯結為研究概念，不採過時ETCS L4標籤為現行標準。",
+      "NPTEL只採模型配置；不沿用數值例題、表格或未逐圖視覺核對的圖形。",
+      "所有候選為screened題級研究入口，不是完整旁白、現行營運制度或安全操作核准。"
+    ]
+  },
+  "retained_source_copies": [
+    {
+      "path": ".cache/wave4-transport-rail-guidance.pdf",
+      "sha256": "b52ff68de961f754542508a8265eb284c67d03328fe411e9f8534166c9e496f1",
+      "source_id": "T4-S012",
+      "read": "pp.3–11"
+    },
+    {
+      "path": ".cache/wave4-transport-warehouse.pdf",
+      "sha256": "1c4db4f28175cbce2e130c73e2f4d09ba8e295783d318a6519a40ab7fe731882",
+      "source_id": "T4-S014",
+      "read": "printed pp.5–19,25–28,54–56,60–64,99–102,111–112"
+    },
+    {
+      "path": ".cache/wave4-transport-braess.pdf",
+      "sha256": "921f9c2e606917ff5d2c24b58e7972bcf023e1eb1859760e032bccf43c2b0c69",
+      "source_id": "T4-S021",
+      "read": "PDF pp.1–4 / journal pp.446–449"
+    }
+  ],
+  "author_dispositions": [
+    {
+      "from": "T4007",
+      "to": "T4006",
+      "action": "not_added_same_core",
+      "reason": "雙向窗口約束是同一旅行時間配相題的延伸，不另算。"
+    },
+    {
+      "from": "T4013",
+      "to": "D2075",
+      "action": "not_added_existing_core",
+      "reason": "行人先行時相增加可見性原池已有，新頁僅補來源。"
+    },
+    {
+      "from": "T4021",
+      "to": "T4017",
+      "action": "not_added_thin_measurement_note",
+      "reason": "刷卡未觀測到站只剩一句限制，移入等待推估註記。"
+    },
+    {
+      "ids": [
+        "T4018",
+        "T4019",
+        "T4017"
+      ],
+      "action": "reword_and_bound",
+      "reason": "滿載持車改已有人；早走標題改客觀錯過班次；等待式補近似固定到站率、均勻時間抽樣與班車獨立。"
+    }
+  ],
+  "ambiguities_for_reviewer": [
+    {
+      "ids": [
+        "T4034",
+        "T4038"
+      ],
+      "recommendation": "人工判斷，不依相似度自動合。",
+      "reason": "T4034為品項專屬／共用儲位政策；T4038為深貨道節省走道卻犧牲可及性與空位重用。若正文只寫品項保留空位，應合；要保留須真的展示深度／面積／存取條件。"
+    },
+    {
+      "ids": [
+        "T4006",
+        "T4010"
+      ],
+      "recommendation": "可保留不同觀察目標，但主題不要重複兩次介紹綠波。",
+      "reason": "前者時間—距離配相；後者端到端通行帶的評量未必涵蓋途中側向到達。"
+    },
+    {
+      "ids": [
+        "T4032",
+        "T4053"
+      ],
+      "recommendation": "不同制動假設可保留研究入口；三個短版主題不帶T4053。",
+      "reason": "移動保護邊界不等於可採相對制動假設；後者的安全證明未完成。"
+    },
+    {
+      "ids": [
+        "T4046",
+        "T4047"
+      ],
+      "recommendation": "同登機大題中的不同瓶頸，不另聲稱各自能成長片。",
+      "reason": "並行放行李受走道工作面限制，座位穿越則受已就座者阻擋，且局部時間不直接全加。"
+    }
+  ],
+  "theme_readback": [
+    {
+      "id": "W4T-T01",
+      "body_seconds": 250,
+      "range_minutes": [
+        3.5,
+        5
+      ],
+      "candidates": [
+        "T4001",
+        "T4009",
+        "T4011",
+        "T4012"
+      ],
+      "note": "同一車隊經歷不同瓶頸；不得追加無關綠波段撐時。"
+    },
+    {
+      "id": "W4T-T02",
+      "body_seconds": 270,
+      "range_minutes": [
+        3.5,
+        5.5
+      ],
+      "candidates": [
+        "T4016",
+        "T4017",
+        "T4018",
+        "T4020"
+      ],
+      "shorter_variant_seconds": 210,
+      "note": "終站章若離開本趟班距主線，刪60秒；等待圖須另驗。"
+    },
+    {
+      "id": "W4T-T03",
+      "body_seconds": 295,
+      "range_minutes": [
+        4,
+        6
+      ],
+      "candidates": [
+        "T4026",
+        "T4027",
+        "T4028",
+        "T4030",
+        "T4032"
+      ],
+      "shorter_variant_seconds": 230,
+      "note": "移動閉塞條件講不清則刪65秒；未加入計軸重置或虛擬聯結尾章。"
+    }
+  ],
+  "local_checks": {
+    "json_parse": "PASS",
+    "unique_candidate_and_source_ids": "PASS",
+    "candidate_source_references": "PASS",
+    "not_added_id_disjoint": "PASS",
+    "theme_candidate_references": "PASS",
+    "chapter_seconds_sums": "PASS",
+    "target_and_range_arithmetic": "PASS",
+    "planned_beat_gap_max_45s": "PASS",
+    "utf8_lf": "PASS",
+    "full_repo_tests": "NOT_RUN_CONTENT_ONLY"
+  },
+  "limitations": [
+    "沒有獨立查核自己寫的來源／新主張；另一作者覆核由root安排。",
+    "未做完整稿盲讀、實驗、量化模擬、配音、畫面授權審查或成片驗收。",
+    "50題是作者原始候選，不宣稱50個中央新核心或50支影片。",
+    "三支4–5分鐘編輯短版不等於長片製作門檻通過；不能用片頭片尾、停頓、同義重述補8分鐘。",
+    "本輪約60–90只是方向；在排除重複與薄題後停在50，未為數字追加題目。"
+  ]
+}

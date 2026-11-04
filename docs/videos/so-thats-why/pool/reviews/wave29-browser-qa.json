@@ -1,0 +1,37 @@
+{
+  "tested_on": "2026-11-02T07:38:45.338Z",
+  "result": "PASS",
+  "selected": 3094,
+  "index_html_sha256": "3fef80277d18819a3f6dec7b4eaedc3a9ae391ff56f22602681dbe2c793b9823",
+  "source_sample": {
+    "id": "R29001",
+    "urls": [
+      "https://www.nature.com/articles/s41598-020-70109-8"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave29-desktop.png",
+    "wave29-source-desktop.png",
+    "wave29-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": [
+    "桌面首屏統計3094核心、2660來源頁、292題案，三項篩選與結果卡可見。",
+    "手機390x844統計分成兩欄，搜尋、分類和題案篩選可使用，無橫向溢出。",
+    "新題R29001可由ID找到與展開，顯示焦塊/薄層/陶壁的答案、65–100秒段落預算與適用範圍。畫面下方的來源href另由DOM核對。"
+  ]
+}

@@ -1,0 +1,2628 @@
+{
+  "batch_id": "wave3-information-systems-20261101",
+  "created_on": "2026-11-01",
+  "scope": "資訊系統如何保存、辨認、傳遞資料：可演示的原創因果問題；片段秒數僅為編輯預估，非獨立長片承諾。",
+  "sources": [
+    {
+      "id": "I3-S001",
+      "url": "https://www.sqlite.org/atomiccommit.html",
+      "title": "Atomic Commit In SQLite",
+      "publisher": "SQLite",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Sections 2 and 3.2–3.7: device assumptions, locks, rollback journal and flush",
+      "locator": "Sections 2 and 3.2–3.7: device assumptions, locks, rollback journal and flush",
+      "summary": "回復資料必須先於覆寫頁面保存；斷電保護依賴檔案系統履行同步承諾。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S002",
+      "url": "https://www.sqlite.org/wal.html",
+      "title": "Write-Ahead Logging",
+      "publisher": "SQLite",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Sections 2.1–2.3: checkpointing, concurrency and performance",
+      "locator": "Sections 2.1–2.3: checkpointing, concurrency and performance",
+      "summary": "新頁追加至 WAL；讀者以自己的結束標記取快照，長讀取可阻止回收。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S003",
+      "url": "https://www.sqlite.org/isolation.html",
+      "title": "Isolation In SQLite",
+      "publisher": "SQLite",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Isolation and concurrency; no isolation between operations on the same connection",
+      "locator": "Isolation and concurrency; no isolation between operations on the same connection",
+      "summary": "過期快照不能升級寫入；同一連線尚未完成的查詢與更新有不同邊界。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S004",
+      "url": "https://www.sqlite.org/lang_vacuum.html",
+      "title": "VACUUM",
+      "publisher": "SQLite",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Description: free pages, fragmentation, VACUUM INTO, disk space and auto_vacuum",
+      "locator": "Description: free pages, fragmentation, VACUUM INTO, disk space and auto_vacuum",
+      "summary": "刪除後的可重用空頁不等於縮小檔案；重建可整理零散空間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S005",
+      "url": "https://www.postgresql.org/docs/current/transaction-iso.html",
+      "title": "Transaction Isolation",
+      "publisher": "PostgreSQL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "PostgreSQL 18: 13.2 introductory sequence note; 13.2.1–13.2.3 through dependency example",
+      "locator": "PostgreSQL 18: 13.2 introductory sequence note; 13.2.1–13.2.3 through dependency example",
+      "summary": "交易的快照範圍、併發依賴與序號回滾例外各有不同保證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S006",
+      "url": "https://www.postgresql.org/docs/current/routine-vacuuming.html",
+      "title": "Routine Vacuuming",
+      "publisher": "PostgreSQL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "PostgreSQL 18: 24.1.2–24.1.5 through freezing and circular transaction IDs",
+      "locator": "PostgreSQL 18: 24.1.2–24.1.5 through freezing and circular transaction IDs",
+      "summary": "過期列的回收、抽樣統計與交易序號凍結是不同維護工作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S007",
+      "url": "https://www.postgresql.org/docs/current/indexes-multicolumn.html",
+      "title": "Multicolumn Indexes",
+      "publisher": "PostgreSQL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "PostgreSQL 18: B-tree leading keys, ranges and skip scan",
+      "locator": "PostgreSQL 18: B-tree leading keys, ranges and skip scan",
+      "summary": "多欄排序的前置條件影響能縮小多少搜尋範圍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S008",
+      "url": "https://www.postgresql.org/docs/current/indexes-index-only-scans.html",
+      "title": "Index-Only Scans and Covering Indexes",
+      "publisher": "PostgreSQL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "PostgreSQL 18: index-only prerequisites, visibility map and INCLUDE payload",
+      "locator": "PostgreSQL 18: index-only prerequisites, visibility map and INCLUDE payload",
+      "summary": "索引能提供數值，仍需判斷版本可見性；額外承載欄位也有空間代價。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S009",
+      "url": "https://www.postgresql.org/docs/current/indexes-partial.html",
+      "title": "Partial Indexes",
+      "publisher": "PostgreSQL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "PostgreSQL 18: 11.8 examples 1–3 introduction and predicate implication",
+      "locator": "PostgreSQL 18: 11.8 examples 1–3 introduction and predicate implication",
+      "summary": "只為有用子集合建立索引，需能證明查詢條件落在該集合內。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S010",
+      "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects",
+      "title": "Pro Git: Git Objects",
+      "publisher": "Git / Pro Git authors",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "2nd edition: content-addressable objects; trees; commit objects; object storage",
+      "locator": "2nd edition: content-addressable objects; trees; commit objects; object storage",
+      "summary": "內容、檔名目錄與版本關係以不同物件連接，內容識別包含型別與長度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S011",
+      "url": "https://git-scm.com/book/en/v2/Git-Internals-Packfiles",
+      "title": "Pro Git: Packfiles",
+      "publisher": "Git / Pro Git authors",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "2nd edition: loose objects, packing, index offsets and example reverse delta",
+      "locator": "2nd edition: loose objects, packing, index offsets and example reverse delta",
+      "summary": "邏輯完整物件可以用壓縮差異表示；打包索引保存物件位置。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S012",
+      "url": "https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell",
+      "title": "Pro Git: Branches in a Nutshell",
+      "publisher": "Git / Pro Git authors",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "2nd edition: snapshot/parent model, branches and switching",
+      "locator": "2nd edition: snapshot/parent model, branches and switching",
+      "summary": "分支是可移動的版本指向；切換工作目錄才需呈現另一份快照。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S013",
+      "url": "https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History",
+      "title": "Pro Git: Rewriting History",
+      "publisher": "Git / Pro Git authors",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "2nd edition: Changing the Last Commit",
+      "locator": "2nd edition: Changing the Last Commit",
+      "summary": "修改版本說明會建立替代版本物件，既有識別碼不再是同一物件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S014",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work",
+      "title": "Populating the page: how browsers work",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Parsing: DOM and preload scanner; Render: layers/compositing; Interactivity",
+      "locator": "Parsing: DOM and preload scanner; Render: layers/compositing; Interactivity",
+      "summary": "下載、解析、排版與互動使用不同階段；資源到齊不表示主執行緒空閒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S015",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame",
+      "title": "Window: requestAnimationFrame()",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Opening description, refresh rate, hidden tabs and timestamp warning",
+      "locator": "Opening description, refresh rate, hidden tabs and timestamp warning",
+      "summary": "動畫更新跟隨繪製時機；進度須依時間而不是每幀固定步數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S016",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API",
+      "title": "Intersection Observer API",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Overview; concepts; rootMargin, threshold and trackVisibility options",
+      "locator": "Overview; concepts; rootMargin, threshold and trackVisibility options",
+      "summary": "區域相交通知可驅動延後載入，幾何相交與真正看得見仍有差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S017",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API",
+      "title": "Working with the History API",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Single-page applications and session history; pushState and popstate examples",
+      "locator": "Single-page applications and session history; pushState and popstate examples",
+      "summary": "畫面局部替換不自動產生新歷史項目，需保存並恢復對應狀態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S018",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers",
+      "title": "Using Service Workers",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Premise and basic architecture: initial installation and replacing an existing service worker",
+      "locator": "Premise and basic architecture: initial installation and replacing an existing service worker",
+      "summary": "背景代理可回應快取；新版安裝完成後可等待舊版頁面退出才接手。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S019",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers",
+      "title": "Using Web Workers",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Web Workers API; transferring data to and from workers introduction",
+      "locator": "Web Workers API; transferring data to and from workers introduction",
+      "summary": "背景工作執行緒以訊息交換結果，普通訊息資料採複製而非共同持有。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S020",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone",
+      "title": "Window: structuredClone()",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Description and transferring values example",
+      "locator": "Description and transferring values example",
+      "summary": "資源轉移會讓原持有者失去使用權，避免傳完後仍同時改同一緩衝區。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S021",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria",
+      "title": "Storage quotas and eviction criteria",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Origin separation; persistence; quota vs physical space; estimates; eviction",
+      "locator": "Origin separation; persistence; quota vs physical space; estimates; eviction",
+      "summary": "瀏覽器分配的儲存額度不是保留容量；盡力保存的資料可能被整組回收。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S022",
+      "url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+      "title": "Floating-Point Arithmetic: Issues and Limitations",
+      "publisher": "Python Software Foundation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Representation, rounded display, equality comparison and summation examples",
+      "locator": "Representation, rounded display, equality comparison and summation examples",
+      "summary": "二進位有限精度不一定能精確表示十進位小數，顯示與運算也各自捨入。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S023",
+      "url": "https://docs.python.org/3/library/time.html",
+      "title": "time — Time access and conversions",
+      "publisher": "Python Software Foundation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "get_clock_info, monotonic, monotonic_ns and perf_counter",
+      "locator": "get_clock_info, monotonic, monotonic_ns and perf_counter",
+      "summary": "經過時間可用不隨系統時間跳動的時鐘；單位與數值表示精度仍需分開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S024",
+      "url": "https://docs.python.org/3/library/copy.html",
+      "title": "copy — Shallow and deep copy operations",
+      "publisher": "Python Software Foundation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Assignment, shallow/deep copy distinction and memo dictionary",
+      "locator": "Assignment, shallow/deep copy distinction and memo dictionary",
+      "summary": "複製外層容器不一定複製內部物件；循環結構需記住已複製節點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S025",
+      "url": "https://docs.python.org/3/library/gc.html",
+      "title": "gc — Garbage Collector interface",
+      "publisher": "Python Software Foundation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Introductory reference-counting supplement; generation and tracked-object descriptions",
+      "locator": "Introductory reference-counting supplement; generation and tracked-object descriptions",
+      "summary": "引用環可能需要額外回收；分代掃描與類型追蹤讓整理成本不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S026",
+      "url": "https://docs.python.org/3/library/weakref.html",
+      "title": "weakref — Weak references",
+      "publisher": "Python Software Foundation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Introduction and cache/image mapping example",
+      "locator": "Introduction and cache/image mapping example",
+      "summary": "弱參照允許查找仍存活物件，但不單獨阻止回收。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S027",
+      "url": "https://docs.python.org/3/library/functools.html",
+      "title": "functools — Higher-order functions",
+      "publisher": "Python Software Foundation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "lru_cache: cache_info, retained references, recency and inappropriate side effects",
+      "locator": "lru_cache: cache_info, retained references, recency and inappropriate side effects",
+      "summary": "結果快取需衡量重用、容量與副作用，命中不代表適合任何函式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S028",
+      "url": "https://cryptography.io/en/latest/fernet/",
+      "title": "Fernet (symmetric encryption)",
+      "publisher": "Python Cryptographic Authority",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Fernet encryption, plaintext timestamp, decryption TTL and MultiFernet key rotation",
+      "locator": "Fernet encryption, plaintext timestamp, decryption TTL and MultiFernet key rotation",
+      "summary": "加密內容仍可能含公開時間；期限與金鑰輪替是額外驗證條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S029",
+      "url": "https://doc.libsodium.org/password_hashing/default_phf",
+      "title": "The pwhash API",
+      "publisher": "Libsodium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Key derivation; password storage; needs_rehash",
+      "locator": "Key derivation; password storage; needs_rehash",
+      "summary": "驗證字串保存鹽與成本參數；再次輸入可重算比對，演算法參數可更新。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S030",
+      "url": "https://doc.libsodium.org/public-key_cryptography/public-key_signatures",
+      "title": "Public-key signatures",
+      "publisher": "Libsodium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Purpose; combined and detached mode; multi-part message description",
+      "locator": "Purpose; combined and detached mode; multi-part message description",
+      "summary": "公開驗證鑰匙可驗簽；內容未因簽名變成密文，鑰匙身分另需信任。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S031",
+      "url": "https://doc.libsodium.org/secret-key_cryptography/secretbox",
+      "title": "Authenticated encryption",
+      "publisher": "Libsodium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Purpose and independent-message replay/reordering limitation",
+      "locator": "Purpose and independent-message replay/reordering limitation",
+      "summary": "保密與防竄改可合併，但獨立訊息驗證不提供順序或重送辨認。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S032",
+      "url": "https://doc.libsodium.org/secret-key_cryptography/secretstream",
+      "title": "Encrypted streams and file encryption",
+      "publisher": "Libsodium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Properties; usage tags; additional authenticated data; rekeying",
+      "locator": "Properties; usage tags; additional authenticated data; rekeying",
+      "summary": "加密串流保留順序狀態、逐段驗證及明確結尾，並可更換後續金鑰。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S033",
+      "url": "https://doc.libsodium.org/padding",
+      "title": "Padding",
+      "publisher": "Libsodium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Opening length disclosure; padding usage; notes on encryption order and side channels",
+      "locator": "Opening length disclosure; padding usage; notes on encryption order and side channels",
+      "summary": "密文常仍透露長度；填充可模糊精確長度但不消除所有旁通資訊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S034",
+      "url": "https://doc.libsodium.org/generating_random_data",
+      "title": "Generating random data",
+      "publisher": "Libsodium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "uniform vs modulo; deterministic generator; VM snapshot note",
+      "locator": "uniform vs modulo; deterministic generator; VM snapshot note",
+      "summary": "均勻映射、種子重現與不可預測是不同性質；恢復狀態可能重播序列。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I3-S035",
+      "url": "https://doc.libsodium.org/public-key_cryptography/sealed_boxes",
+      "title": "Sealed boxes",
+      "publisher": "Libsodium",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Purpose and usage: recipient key, ephemeral sender key and sender-authentication limit",
+      "locator": "Purpose and usage: recipient key, ephemeral sender key and sender-authentication limit",
+      "summary": "匿名密封訊息只指定接收者，臨時私鑰不保存，完整性與寄件身分分開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "I3001",
+      "question": "資料庫改一行，為何先保存舊資料？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.rollback.preimage",
+      "answer_target": "回復日誌保存將被覆寫頁面的原貌，失敗時據此還原。",
+      "scope": "SQLite rollback journal；不是全部系統都用同一日誌。",
+      "source_ids": [
+        "I3-S001"
+      ],
+      "source_locator": "Sections 2 and 3.2–3.7: device assumptions, locks, rollback journal and flush",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解撤銷需要更新前的狀態。",
+        "visual": "兩張紙頁與一份舊頁備份，切斷更新流程。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3002",
+      "question": "檔案寫入呼叫成功，為什麼還怕突然斷電？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.flush.order",
+      "answer_target": "寫入可能停在作業系統快取；同步要求把必要資料依序送往持久儲存。",
+      "scope": "依賴底層正確實作同步；不保證故障硬體。",
+      "source_ids": [
+        "I3-S001"
+      ],
+      "source_locator": "Sections 2 and 3.2–3.7: device assumptions, locks, rollback journal and flush",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分收到寫入與持久保存。",
+        "visual": "記憶體、快取、磁碟三層逐格亮燈。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "I3003",
+      "question": "準備改資料的人，為何還能讓別人繼續讀？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.reserved.lock",
+      "answer_target": "保留鎖先排除其他寫入者，尚未覆寫時仍容許讀者。",
+      "scope": "SQLite rollback mode 的鎖階段。",
+      "source_ids": [
+        "I3-S001"
+      ],
+      "source_locator": "Sections 2 and 3.2–3.7: device assumptions, locks, rollback journal and flush",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解預約寫入與實際覆寫是兩階段。",
+        "visual": "一位拿修改號碼牌，多位讀者仍看舊頁。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3004",
+      "question": "程式當掉後，為何鎖消失、未完成資料卻還在？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.lock.volatile",
+      "answer_target": "鎖通常是作業系統的暫存狀態；持久頁面與回復紀錄另有生命週期。",
+      "scope": "以文件描述的檔案鎖為例，不外推分散式租約。",
+      "source_ids": [
+        "I3-S001"
+      ],
+      "source_locator": "Sections 2 and 3.2–3.7: device assumptions, locks, rollback journal and flush",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分互斥控制與故障復原。",
+        "visual": "重啟後鎖圖示消失，磁碟頁仍保留。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3005",
+      "question": "一邊修改資料，一邊查詢，為何讀者不會看見改到一半？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.wal.endmark",
+      "answer_target": "讀者固定讀取結束標記，以該時點以前的最新頁重建一致視圖。",
+      "scope": "SQLite WAL；隔離與耐久性是不同問題。",
+      "source_ids": [
+        "I3-S002"
+      ],
+      "source_locator": "Sections 2.1–2.3: checkpointing, concurrency and performance",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解快照不等於即時最新。",
+        "visual": "兩位讀者各有不同高度的時間窗。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "I3006",
+      "question": "資料庫明明沒新增多少內容，旁邊的日誌為何越長越大？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.wal.reader.pin",
+      "answer_target": "長讀取固定舊版本，檢查點不能覆寫它仍需要的頁面。",
+      "scope": "SQLite WAL，長讀取只是可能原因之一。",
+      "source_ids": [
+        "I3-S002"
+      ],
+      "source_locator": "Sections 2.1–2.3: checkpointing, concurrency and performance",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂讀者也能造成儲存壓力。",
+        "visual": "一張舊讀者卡擋住回收線。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3007",
+      "question": "大多數存檔很快，為何偶爾一次特別慢？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.wal.checkpoint.latency",
+      "answer_target": "觸發檢查點的提交可能負擔累積頁面搬移與同步成本。",
+      "scope": "SQLite 預設自動檢查點例子；不泛稱所有卡頓。",
+      "source_ids": [
+        "I3-S002"
+      ],
+      "source_locator": "Sections 2.1–2.3: checkpointing, concurrency and performance",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分辨平均速度與偶發延遲。",
+        "visual": "多次短條後出現一次搬運長條。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3008",
+      "question": "日誌為何能回頭覆寫開頭，而不是一直加新頁？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.wal.reuse.boundary",
+      "answer_target": "已完成搬移同步且無讀者需要舊 WAL 時，寫入可從開頭重用空間。",
+      "scope": "SQLite WAL 回繞的前提。",
+      "source_ids": [
+        "I3-S002"
+      ],
+      "source_locator": "Sections 2.1–2.3: checkpointing, concurrency and performance",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解回收要等持久化與讀取條件同時成立。",
+        "visual": "環形紙帶等待最後讀者離開才重用。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3009",
+      "question": "剛查完資料，為何輪到自己修改時卻被拒絕？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.snapshot.upgrade",
+      "answer_target": "其他寫入已前進時，舊快照升級會形成分岔，SQLite 拒絕此升級。",
+      "scope": "SQLite WAL 的讀取轉寫入，不把所有鎖錯誤混為一談。",
+      "source_ids": [
+        "I3-S003"
+      ],
+      "source_locator": "Isolation and concurrency; no isolation between operations on the same connection",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解讀過不代表仍持有最新寫入資格。",
+        "visual": "兩條時間線在舊分支嘗試落筆。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "I3010",
+      "question": "同一份修改，為何自己已看見、別人卻還看不見？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.connection.ownwrites",
+      "answer_target": "同一連線可讀到自己未提交的更新，別的隔離連線尚看不到。",
+      "scope": "不啟用 shared-cache read_uncommitted 的一般情形。",
+      "source_ids": [
+        "I3-S003"
+      ],
+      "source_locator": "Isolation and concurrency; no isolation between operations on the same connection",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解可見性取決於連線與交易邊界。",
+        "visual": "兩個觀景窗在提交前後切換。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3011",
+      "question": "一邊逐筆讀表、一邊改同一張表，為何有時會看到重複列？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.cursor.selfmutation",
+      "answer_target": "同連線查詢尚未走完就更新，後續可見內容可能隨執行細節改變。",
+      "scope": "SQLite 文件明示未定義的觀察結果，非必然重複。",
+      "source_ids": [
+        "I3-S003"
+      ],
+      "source_locator": "Isolation and concurrency; no isolation between operations on the same connection",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清資料未損壞與讀取結果可預測。",
+        "visual": "游標往前時卡片重新排序。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3012",
+      "question": "刪掉一半資料，資料庫檔案為何沒有縮成一半？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.storage.freelist",
+      "answer_target": "刪除頁面可留在檔案內供日後重用，檔案長度不必立即變小。",
+      "scope": "SQLite，區分邏輯空間與檔案大小。",
+      "source_ids": [
+        "I3-S004"
+      ],
+      "source_locator": "Description: free pages, fragmentation, VACUUM INTO, disk space and auto_vacuum",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解可用空間與歸還空間的差異。",
+        "visual": "書中擦空頁仍占厚度。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3013",
+      "question": "清理空間的工作，為什麼反而先需要更多空間？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.vacuum.rebuild",
+      "answer_target": "重建要先形成整理後的副本，再安全替換原資料。",
+      "scope": "SQLite VACUUM 的暫存需求，不給固定跨版本倍率。",
+      "source_ids": [
+        "I3-S004"
+      ],
+      "source_locator": "Description: free pages, fragmentation, VACUUM INTO, disk space and auto_vacuum",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂安全整理需要過渡容量。",
+        "visual": "舊書與重排新書並存後才交接。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3014",
+      "question": "回收整張空頁，為何還不能把所有零碎空間拼起來？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.vacuum.partialpages",
+      "answer_target": "整頁回收與重新打包半滿頁是不同工作，僅回收空頁仍可能有碎片。",
+      "scope": "SQLite auto_vacuum 與 VACUUM 的機制差別。",
+      "source_ids": [
+        "I3-S004"
+      ],
+      "source_locator": "Description: free pages, fragmentation, VACUUM INTO, disk space and auto_vacuum",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解回收粒度造成的限制。",
+        "visual": "空箱可退還，半箱需重新裝箱。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3015",
+      "question": "資料內容沒變，重新整理後的行號為何可能改變？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.rowid.rebuild",
+      "answer_target": "未明確固定的內部 ROWID 可在重建時重新分配。",
+      "scope": "SQLite 無明確 INTEGER PRIMARY KEY 的表；不等於業務主鍵都會改。",
+      "source_ids": [
+        "I3-S004"
+      ],
+      "source_locator": "Description: free pages, fragmentation, VACUUM INTO, disk space and auto_vacuum",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清系統分配的列識別碼與應用程式要長期追蹤的業務主鍵。",
+        "visual": "同一張內容卡在重建後換上不同整數 ID 標籤；固定業務主鍵作對照，不把 ID 畫成磁碟物理位置。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3016",
+      "question": "交易取消了，流水號為什麼沒有退回去？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.sequence.rollback.gaps",
+      "answer_target": "序列取號不隨交易回滾，避免把並行分配當成可撤銷的普通欄位。",
+      "scope": "PostgreSQL 序列；跳號不直接證明資料遺失。",
+      "source_ids": [
+        "I3-S005"
+      ],
+      "source_locator": "PostgreSQL 18: 13.2 introductory sequence note; 13.2.1–13.2.3 through dependency example",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分唯一取號與連續無缺口計數。",
+        "visual": "取消一張號碼票後下一位仍拿新號。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3017",
+      "question": "同一次操作裡查兩次，為什麼答案可能不一樣？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.statement.snapshot",
+      "answer_target": "Read Committed 每個指令取得新快照，兩次查詢之間可納入別人已提交的更新。",
+      "scope": "PostgreSQL 18，與整筆交易固定快照對照。",
+      "source_ids": [
+        "I3-S005"
+      ],
+      "source_locator": "PostgreSQL 18: 13.2 introductory sequence note; 13.2.1–13.2.3 through dependency example",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "認識交易不必然保證重複讀一致。",
+        "visual": "兩次拍照之間另一人移動卡片。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3018",
+      "question": "每個人都依自己看到的資料做對，合起來為何仍可能出錯？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.snapshot.write.skew",
+      "answer_target": "各自穩定快照仍可能形成無法排成任何串行順序的相互依賴。",
+      "scope": "以 PostgreSQL 文件兩組加總互寫為例；完整展示需重現。",
+      "source_ids": [
+        "I3-S005"
+      ],
+      "source_locator": "PostgreSQL 18: 13.2 introductory sequence note; 13.2.1–13.2.3 through dependency example",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分快照一致與全局可串行化。",
+        "visual": "兩人各讀舊總和再寫入對方組別。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "I3019",
+      "question": "資料庫要求重試，為何只重送最後一步可能不夠？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.serialization.fullretry",
+      "answer_target": "衝突涉及交易先前讀值與判斷，重新取得快照後必須重做整筆交易。",
+      "scope": "PostgreSQL 序列化失敗；有外部副作用時另需設計。",
+      "source_ids": [
+        "I3-S005"
+      ],
+      "source_locator": "PostgreSQL 18: 13.2 introductory sequence note; 13.2.1–13.2.3 through dependency example",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解失敗邊界是整筆交易。",
+        "visual": "把舊判斷留下的重試與整段重算並排。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3020",
+      "question": "等別人改完後，自己原本選中的那一列為什麼不見了？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.update.predicate.recheck",
+      "answer_target": "等待中的更新會重新檢查新版列是否仍符合條件。",
+      "scope": "PostgreSQL Read Committed；不是一般搜尋刪失。",
+      "source_ids": [
+        "I3-S005"
+      ],
+      "source_locator": "PostgreSQL 18: 13.2 introductory sequence note; 13.2.1–13.2.3 through dependency example",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解搜尋時符合不代表寫入時仍符合。",
+        "visual": "卡片數字在排隊期間跨過篩選門檻。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3021",
+      "question": "資料沒丟，查詢為什麼會突然選到很慢的路？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.planner.stale.statistics",
+      "answer_target": "查詢計畫依資料分布估計成本，舊統計可能把稀有值與常見值估錯。",
+      "scope": "PostgreSQL ANALYZE；慢查詢仍有其他成因。",
+      "source_ids": [
+        "I3-S006"
+      ],
+      "source_locator": "PostgreSQL 18: 24.1.2–24.1.5 through freezing and circular transaction IDs",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解資料分布也會改變最佳查法。",
+        "visual": "資料從均勻變集中，規劃者仍拿舊柱狀圖。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3022",
+      "question": "資料更新很多次，為什麼不代表每次都要重新統計？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.statistics.distribution.change",
+      "answer_target": "更新次數與分布變化不同；改同類值可能不改變選擇性。",
+      "scope": "PostgreSQL 統計維護的研究問題，不提供正式站調參建議。",
+      "source_ids": [
+        "I3-S006"
+      ],
+      "source_locator": "PostgreSQL 18: 24.1.2–24.1.5 through freezing and circular transaction IDs",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分開資料活動量與統計形狀變化。",
+        "visual": "交換同色卡與大批換成新色作對照。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3023",
+      "question": "資料庫的舊資料為什麼需要被標成「很久以前」？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.xid.freeze",
+      "answer_target": "有限長度交易序號會繞回；凍結標記讓足夠舊的列不再受普通環狀比較影響。",
+      "scope": "PostgreSQL XID，可與 TCP 序號環繞區分為持久可見性機制。",
+      "source_ids": [
+        "I3-S006"
+      ],
+      "source_locator": "PostgreSQL 18: 24.1.2–24.1.5 through freezing and circular transaction IDs",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解回繞不只影響排序，也影響資料可見性。",
+        "visual": "環形號碼盤轉一圈，舊列獲永久過去標籤。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "I3024",
+      "question": "同樣兩個欄位建立索引，先排哪個為什麼有差？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.index.lexicographic.prefix",
+      "answer_target": "多欄 B-tree 先按前欄分組，前置相等條件才容易縮成連續區間。",
+      "scope": "PostgreSQL B-tree，其他索引型態不可套用同規則。",
+      "source_ids": [
+        "I3-S007"
+      ],
+      "source_locator": "PostgreSQL 18: B-tree leading keys, ranges and skip scan",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂複合排序限制的搜尋形狀。",
+        "visual": "先按城市再按姓名與反向排列兩本名冊。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3025",
+      "question": "索引裡有要查的欄位，為何仍可能掃過很多頁？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.index.range.tail",
+      "answer_target": "前欄已是範圍時，後欄條件可過濾列但未必縮小整段掃描。",
+      "scope": "多欄 B-tree；保留 skip scan 等可用最佳化例外。",
+      "source_ids": [
+        "I3-S007"
+      ],
+      "source_locator": "PostgreSQL 18: B-tree leading keys, ranges and skip scan",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清減少回表與減少掃描。",
+        "visual": "在許多分組中各挑局部符合卡片。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3026",
+      "question": "缺少第一個搜尋條件，資料庫怎麼有時還能跳著查？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.index.skip.scan",
+      "answer_target": "前欄不同值很少時，可逐一補上前欄值進行多次定點搜尋。",
+      "scope": "PostgreSQL 18 skip scan；是否採用依成本估計。",
+      "source_ids": [
+        "I3-S007"
+      ],
+      "source_locator": "PostgreSQL 18: B-tree leading keys, ranges and skip scan",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解多次短搜尋可能比一次長掃描划算。",
+        "visual": "少量抽屜逐一跳到相同尾碼。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "I3027",
+      "question": "索引已經有答案，為什麼資料庫還要回原表看一次？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.index.visibility",
+      "answer_target": "索引數值不等於該版本對這次快照可見，需檢查可見性地圖或原列。",
+      "scope": "PostgreSQL MVCC 索引查詢。",
+      "source_ids": [
+        "I3-S008"
+      ],
+      "source_locator": "PostgreSQL 18: index-only prerequisites, visibility map and INCLUDE payload",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清找到值與有資格讀到該版本。",
+        "visual": "答案卡旁另有這次能否看見的通行燈。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3028",
+      "question": "資料庫怎麼只看一個小標記，就省掉一整頁讀取？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.visibility.page.summary",
+      "answer_target": "整頁列都已對所有交易可見時，可用頁級標記替代逐列可見性讀取。",
+      "scope": "PostgreSQL all-visible map；修改後需重新判斷。",
+      "source_ids": [
+        "I3-S008"
+      ],
+      "source_locator": "PostgreSQL 18: index-only prerequisites, visibility map and INCLUDE payload",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解安全的摘要如何減少 I/O。",
+        "visual": "滿頁綠燈壓成一顆總燈，變動後熄滅。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3029",
+      "question": "多放一欄進索引能省一次查詢，為什麼不是放越多越好？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.covering.index.payload",
+      "answer_target": "承載欄位可免回表，但複製資料會放大索引並增加維護與容量成本。",
+      "scope": "PostgreSQL INCLUDE，不把所有寬欄位都建索引。",
+      "source_ids": [
+        "I3-S008"
+      ],
+      "source_locator": "PostgreSQL 18: index-only prerequisites, visibility map and INCLUDE payload",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解讀取捷徑的儲存代價。",
+        "visual": "薄目錄變成厚重副本，搬動成本上升。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3030",
+      "question": "資料庫索引為什麼有時故意漏掉大部分資料？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.partial.index.subset",
+      "answer_target": "只收錄常查的少數列，可降低索引大小與更新負擔。",
+      "scope": "PostgreSQL partial index；被排除的查詢需別的路徑。",
+      "source_ids": [
+        "I3-S009"
+      ],
+      "source_locator": "PostgreSQL 18: 11.8 examples 1–3 introduction and predicate implication",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解索引服務的是查詢需求。",
+        "visual": "全員名冊旁只放待處理件的小冊。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3031",
+      "question": "兩個條件看起來一樣，為什麼電腦不一定認出同一條捷徑？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.predicate.proof.limit",
+      "answer_target": "查詢規劃器必須證明條件包含部分索引範圍，等價表達超出辨認能力時不使用。",
+      "scope": "PostgreSQL 18 部分索引；不宣稱所有參數查詢一律失效。",
+      "source_ids": [
+        "I3-S009"
+      ],
+      "source_locator": "PostgreSQL 18: 11.8 examples 1–3 introduction and predicate implication",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解正確性要求限制最佳化。",
+        "visual": "同一集合用兩種式子寫出，證明閘門只認部分形式。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3032",
+      "question": "為什麼某些資料要唯一，另一些卻可以重複？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.partial.unique.constraint",
+      "answer_target": "只對符合條件的列建立唯一約束，可分開約束活躍與其他狀態。",
+      "scope": "PostgreSQL 部分唯一索引，非一般全表唯一。",
+      "source_ids": [
+        "I3-S009"
+      ],
+      "source_locator": "PostgreSQL 18: 11.8 examples 1–3 introduction and predicate implication",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂有條件的不重複規則。",
+        "visual": "只有帶有效標籤的票進入重複檢查槽。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3033",
+      "question": "兩個不同檔名，為什麼版本庫能只保存一份內容？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.content.addressed.blob",
+      "answer_target": "內容物件不負責檔名；目錄樹可讓不同名稱指向同一份內容。",
+      "scope": "Git 概念模型；不把雜湊碰撞機率說成零。",
+      "source_ids": [
+        "I3-S010"
+      ],
+      "source_locator": "2nd edition: content-addressable objects; trees; commit objects; object storage",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解名稱與內容可以分開保存。",
+        "visual": "兩張名字標籤連到同一內容盒。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3034",
+      "question": "明明檔案內容相同，為什麼兩個版本編號還不同？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.commit.metadata.identity",
+      "answer_target": "版本物件還包含父版本、作者與時間等資訊，內容樹相同不代表版本物件相同。",
+      "scope": "Pro Git 範例，不依賴特定雜湊字數。",
+      "source_ids": [
+        "I3-S010"
+      ],
+      "source_locator": "2nd edition: content-addressable objects; trees; commit objects; object storage",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分內容相同與歷史身分相同。",
+        "visual": "相同頁面配不同歷史箭頭與時間牌。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3035",
+      "question": "一個資料夾的版本怎麼記住裡面每一層？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.tree.recursive.references",
+      "answer_target": "樹物件記錄名稱與內容或子樹的指向，逐層重建整個目錄快照。",
+      "scope": "Git 樹模型，不把實體檔案系統都說成同一格式。",
+      "source_ids": [
+        "I3-S010"
+      ],
+      "source_locator": "2nd edition: content-addressable objects; trees; commit objects; object storage",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂遞迴指向如何重建完整快照。",
+        "visual": "巢狀目錄展成可重用的節點圖。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3036",
+      "question": "保存很多完整版本，為何不一定占很多倍空間？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.pack.delta.storage",
+      "answer_target": "邏輯快照可重用物件，相似物件打包時還能用差異重建。",
+      "scope": "Git packfile；不同內容的壓縮收益不同。",
+      "source_ids": [
+        "I3-S011"
+      ],
+      "source_locator": "2nd edition: loose objects, packing, index offsets and example reverse delta",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分完整版本語意與實際儲存格式。",
+        "visual": "多份近似文件拆成共用底稿與差異紙條。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "I3037",
+      "question": "舊版本為什麼有時反而要從新版本倒推？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.delta.direction",
+      "answer_target": "差異壓縮的基底可以是較新物件，時間順序不必等於儲存依賴方向。",
+      "scope": "Pro Git 打包示例；不宣稱每次都以最新版作基底。",
+      "source_ids": [
+        "I3-S011"
+      ],
+      "source_locator": "2nd edition: loose objects, packing, index offsets and example reverse delta",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解壓縮依賴不等於歷史先後。",
+        "visual": "最新稿完整保存，舊稿用反向差異拼回。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3038",
+      "question": "幾千個小檔合成一個大包，電腦怎麼還能快速找到其中一個？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.pack.offset.index",
+      "answer_target": "額外索引記錄物件在包內的位置，避免每次順序拆整包。",
+      "scope": "Git pack 索引；與資料庫業務索引的用途區別。",
+      "source_ids": [
+        "I3-S011"
+      ],
+      "source_locator": "2nd edition: loose objects, packing, index offsets and example reverse delta",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解封裝與隨機存取可同時存在。",
+        "visual": "長紙卷旁附帶精確刻度目錄。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3039",
+      "question": "開一條新版本分支，為什麼不必複製整個專案？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.branch.pointer",
+      "answer_target": "新分支先增加一個指向既有版本的參照，後續修改才產生新物件。",
+      "scope": "Git 機制；不使用舊文件的預設分支名當現況。",
+      "source_ids": [
+        "I3-S012"
+      ],
+      "source_locator": "2nd edition: snapshot/parent model, branches and switching",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解分支起點可共享整段歷史。",
+        "visual": "同一歷史節點插入第二支書籤。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3040",
+      "question": "版本還在，為什麼歷史列表有時看不到它？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.history.reachability",
+      "answer_target": "歷史顯示常從指定起點沿父節點追溯，其他分支不一定在這條可達路徑上。",
+      "scope": "Git 一般歷史檢視；不是刪除後找回保證。",
+      "source_ids": [
+        "I3-S012"
+      ],
+      "source_locator": "2nd edition: snapshot/parent model, branches and switching",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分沒顯示與資料不存在。",
+        "visual": "聚光燈只照一條書籤可追溯的路。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3041",
+      "question": "只改了一行版本說明，為什麼版本識別碼也變了？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.commit.amend.identity",
+      "answer_target": "說明屬於版本物件內容；修改建立新物件而不是在原識別碼下偷偷換字。",
+      "scope": "Git amend；不提供重寫他人已分享歷史的操作。",
+      "source_ids": [
+        "I3-S013"
+      ],
+      "source_locator": "2nd edition: Changing the Last Commit",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解不可變物件的修改其實是替換。",
+        "visual": "標籤文字改動後產生新封套。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3042",
+      "question": "網頁已經出現了，為什麼按鈕還點不動？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.browser.mainthread.busy",
+      "answer_target": "可見畫面可能先畫好，但主執行緒仍忙於腳本，互動事件需等待。",
+      "scope": "瀏覽器的一種常見原因，非所有按鈕故障。",
+      "source_ids": [
+        "I3-S014"
+      ],
+      "source_locator": "Parsing: DOM and preload scanner; Render: layers/compositing; Interactivity",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分看得到與能互動。",
+        "visual": "畫面完成燈先亮，處理點擊的工作台仍排滿。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3043",
+      "question": "圖片晚一秒出現，為什麼整頁文字會突然跳位？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.layout.intrinsic.size",
+      "answer_target": "未預留圖片尺寸時，晚到的尺寸資訊觸發重新排版。",
+      "scope": "比較有無預留大小；不混同捲動恢復。",
+      "source_ids": [
+        "I3-S014"
+      ],
+      "source_locator": "Parsing: DOM and preload scanner; Render: layers/compositing; Interactivity",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解版面位移來自幾何資訊變更。",
+        "visual": "空白插槽有尺寸與無尺寸的雙畫面。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3044",
+      "question": "網頁還沒讀到圖片的位置，為什麼圖片已開始下載？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.preload.speculation",
+      "answer_target": "預載掃描可先找出後方資源，與主解析流程交疊請求。",
+      "scope": "瀏覽器預載掃描機制，非任意腳本動態資源都能預知。",
+      "source_ids": [
+        "I3-S014"
+      ],
+      "source_locator": "Parsing: DOM and preload scanner; Render: layers/compositing; Interactivity",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解依賴工作可以提早並行。",
+        "visual": "先遣掃描員標記資源，排版員稍後到達。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3045",
+      "question": "畫面分成很多圖層會更順，為什麼不能無限加圖層？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.compositor.memory.tradeoff",
+      "answer_target": "分層能局部合成減少重畫，卻增加圖層儲存與管理負擔。",
+      "scope": "瀏覽器合成；不給跨裝置固定圖層上限。",
+      "source_ids": [
+        "I3-S014"
+      ],
+      "source_locator": "Parsing: DOM and preload scanner; Render: layers/compositing; Interactivity",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看見重畫成本與記憶體的交換。",
+        "visual": "透明膠片局部移動，旁邊記憶體格逐漸占滿。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3046",
+      "question": "換了高更新率螢幕，為什麼寫錯的網頁動畫會突然變快？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.animation.timebase",
+      "answer_target": "每幀固定前進距離會讓速度隨幀率變；用經過時間計算才維持速度。",
+      "scope": "requestAnimationFrame 實作對照，非高更新率必然有問題。",
+      "source_ids": [
+        "I3-S015"
+      ],
+      "source_locator": "Opening description, refresh rate, hidden tabs and timestamp warning",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清畫面更新次數與真實時間。",
+        "visual": "相同秒數內 60 與 120 個刻度各走固定一步。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3047",
+      "question": "切到別的分頁後，動畫為什麼可能停住？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.animation.hidden.throttle",
+      "answer_target": "瀏覽器常暫停背景分頁的動畫回呼以節省運算與電力。",
+      "scope": "行為依瀏覽器情境；不是所有背景工作都停止。",
+      "source_ids": [
+        "I3-S015"
+      ],
+      "source_locator": "Opening description, refresh rate, hidden tabs and timestamp warning",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解看不見的動畫可能被暫緩排程。",
+        "visual": "可見窗與隱藏窗的幀計數器。",
+        "seconds": [
+          30,
+          50
+        ]
+      }
+    },
+    {
+      "id": "I3048",
+      "question": "往下滑才出現的圖片，網站怎麼知道該開始載入？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.viewport.threshold",
+      "answer_target": "瀏覽器回報元素跨過可視區域附近門檻，網站可在接近時載入內容。",
+      "scope": "Intersection Observer 的一種用法，不宣稱每站皆使用它。",
+      "source_ids": [
+        "I3-S016"
+      ],
+      "source_locator": "Overview; concepts; rootMargin, threshold and trackVisibility options",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解延後載入也能預留等待時間。",
+        "visual": "可視窗外加一道預載邊界，圖片提前亮燈。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3049",
+      "question": "元素已進入畫面，為什麼不代表人真的看見它？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.intersection.occlusion",
+      "answer_target": "幾何相交不會自動排除被其他元素遮住或透明的情況。",
+      "scope": "一般相交回報；額外可見性追蹤另有支援與成本限制。",
+      "source_ids": [
+        "I3-S016"
+      ],
+      "source_locator": "Overview; concepts; rootMargin, threshold and trackVisibility options",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清位置重疊與實際可見。",
+        "visual": "元素跨入視窗卻仍被不透明卡片遮住。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3050",
+      "question": "滑動偵測只在幾個門檻通知，為什麼可能比每一刻檢查更順？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.observer.batched.notifications",
+      "answer_target": "由瀏覽器集中管理相交變化，可減少主執行緒反覆自行讀取幾何資訊。",
+      "scope": "回呼本身仍在主執行緒，重工作仍可能卡頓。",
+      "source_ids": [
+        "I3-S016"
+      ],
+      "source_locator": "Overview; concepts; rootMargin, threshold and trackVisibility options",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解事件式觀察減少不必要輪詢。",
+        "visual": "一排重複巡檢改為跨線通知。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3051",
+      "question": "網頁明明換了內容，按上一頁為什麼會直接離開網站？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.spa.history.state",
+      "answer_target": "局部換內容若未建立歷史項目，瀏覽器仍把它當成同一次頁面載入。",
+      "scope": "單頁應用的示例；不泛稱所有返回問題。",
+      "source_ids": [
+        "I3-S017"
+      ],
+      "source_locator": "Single-page applications and session history; pushState and popstate examples",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解視覺換頁與瀏覽歷史是兩回事。",
+        "visual": "畫面換三次，歷史卡卻只有一張。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3052",
+      "question": "網址變了，為什麼不一定代表網頁重新下載一次？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.history.url.withoutnavigation",
+      "answer_target": "歷史狀態 API 可更新同源網址與歷史項目，由應用自行呈現內容。",
+      "scope": "History API；與重新導向及頁內錨點分開。",
+      "source_ids": [
+        "I3-S017"
+      ],
+      "source_locator": "Single-page applications and session history; pushState and popstate examples",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分導覽位址與整頁載入。",
+        "visual": "網址列變動，文件框架與未變動區域保留。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3053",
+      "question": "網路斷了，有些網站為什麼還能打開？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.offline.request.interceptor",
+      "answer_target": "Service worker 可攔截請求並回傳事先存好的資源，提供離線介面。",
+      "scope": "須先取得所需資源；不保證離線能取得最新資料。",
+      "source_ids": [
+        "I3-S018"
+      ],
+      "source_locator": "Premise and basic architecture: initial installation and replacing an existing service worker",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解離線可用需要預先準備。",
+        "visual": "網路線斷開，請求轉向本地備用架。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3054",
+      "question": "網站新版已下載，為什麼舊分頁還在用舊版？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.worker.waiting.activation",
+      "answer_target": "新版可先安裝但等待舊版控制的頁面結束，再取得控制權。",
+      "scope": "Service worker 預設等待行為；應用可採不同更新策略。",
+      "source_ids": [
+        "I3-S018"
+      ],
+      "source_locator": "Premise and basic architecture: initial installation and replacing an existing service worker",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分下載、安裝與啟用。",
+        "visual": "新店員備妥貨架，舊客人離場後交接。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3055",
+      "question": "網頁正在做很大的計算，怎麼還能讓人順暢操作？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.worker.execution.isolation",
+      "answer_target": "可把計算放到背景工作執行緒，讓主要介面執行緒處理互動。",
+      "scope": "Worker 可分擔運算但建立、通信與 CPU 競爭仍有成本。",
+      "source_ids": [
+        "I3-S019"
+      ],
+      "source_locator": "Web Workers API; transferring data to and from workers introduction",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解把工作移開與把工作做得更少不同。",
+        "visual": "前台接待與後台計算兩條工作線。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3056",
+      "question": "把資料交給背景工作者後，為什麼改副本不會直接改到原本？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.message.clone.isolation",
+      "answer_target": "普通訊息傳遞會複製可序列化資料，接收方得到不同物件。",
+      "scope": "Web Worker 普通 postMessage；transfer/shared memory 另有規則。",
+      "source_ids": [
+        "I3-S019"
+      ],
+      "source_locator": "Web Workers API; transferring data to and from workers introduction",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分訊息傳遞與共享記憶體。",
+        "visual": "寄出影本後兩邊各自改字。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3057",
+      "question": "資料明明只是交給另一個工作者，原本那份為什麼突然不能用了？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.buffer.transfer.ownership",
+      "answer_target": "可轉移緩衝區改交新持有者，原物件的資源會分離。",
+      "scope": "structuredClone transfer 的 ArrayBuffer 範例，非一般複製。",
+      "source_ids": [
+        "I3-S020"
+      ],
+      "source_locator": "Description and transferring values example",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解轉移所有權與拷貝的不同。",
+        "visual": "一把唯一鑰匙交出後，舊端不能再開盒。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3058",
+      "question": "網站顯示還有儲存額度，為什麼仍可能存不進去？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.quota.not.reservation",
+      "answer_target": "額度可能按總容量計算，並未替網站保留實際可用空間。",
+      "scope": "瀏覽器儲存，不把某版百分比當永久常數。",
+      "source_ids": [
+        "I3-S021"
+      ],
+      "source_locator": "Origin separation; persistence; quota vs physical space; estimates; eviction",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分使用上限與已保留容量。",
+        "visual": "配額票仍有餘額，實體倉庫卻已被別人占滿。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3059",
+      "question": "久沒開的網站，離線資料為什麼可能自己不見？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.storage.pressure.eviction",
+      "answer_target": "儲存壓力下，瀏覽器可優先回收較久未用來源的盡力保存資料。",
+      "scope": "已獲持久保存權限者不同；其他瀏覽器策略另核。",
+      "source_ids": [
+        "I3-S021"
+      ],
+      "source_locator": "Origin separation; persistence; quota vs physical space; estimates; eviction",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解本機保存也有回收政策。",
+        "visual": "有限貨架移除最久未使用的一組箱子。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3060",
+      "question": "網站的圖片快取被清掉時，為什麼同站資料庫也可能一起清掉？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.origin.atomic.eviction",
+      "answer_target": "按來源整組回收可避免只剩互相依賴的一半資料。",
+      "scope": "文件描述的 origin eviction；不等於所有手動清除選項。",
+      "source_ids": [
+        "I3-S021"
+      ],
+      "source_locator": "Origin separation; persistence; quota vs physical space; estimates; eviction",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解回收邊界與一致性。",
+        "visual": "同色箱組整組移除，避免只剩索引沒有內容。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3061",
+      "question": "瀏覽器回報用了多少空間，為什麼可能只是估計值？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.storage.privacy.padding",
+      "answer_target": "儲存用量可能包含刻意填充的跨來源估計，避免暴露細節。",
+      "scope": "Storage estimate，不推測任何個別使用者資料。",
+      "source_ids": [
+        "I3-S021"
+      ],
+      "source_locator": "Origin separation; persistence; quota vs physical space; estimates; eviction",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解隱私保護也會影響量測精度。",
+        "visual": "實際刻度與模糊化刻度並排。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3062",
+      "question": "電腦連 0.1 加三次都算不出剛好的 0.3 嗎？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.float.binary.representation",
+      "answer_target": "十進位十分之一在二進位需無限循環，有限位元只能近似並產生運算捨入。",
+      "scope": "以二進位浮點為例；十進位或有理數型態不同。",
+      "source_ids": [
+        "I3-S022"
+      ],
+      "source_locator": "Representation, rounded display, equality comparison and summation examples",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解表示方式的限制不是算術規則失效。",
+        "visual": "十進位三分之一與二進位十分之一並排。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "I3063",
+      "question": "畫面都顯示 0.1，電腦裡存的為什麼可能更長？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.float.display.rounding",
+      "answer_target": "顯示會選較短的十進位表示，並未改變底層近似值。",
+      "scope": "浮點顯示；不混同測量不確定度。",
+      "source_ids": [
+        "I3-S022"
+      ],
+      "source_locator": "Representation, rounded display, equality comparison and summation examples",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分呈現文字與內部數值。",
+        "visual": "短數字標籤翻開露出精確儲存分數。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3064",
+      "question": "加總同一串數字，為什麼更仔細的算法可能算出不同末位？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.sum.roundoff.accumulation",
+      "answer_target": "中間捨入會遺失低位資訊，追蹤殘餘的加總方法可減少累積誤差。",
+      "scope": "Python 文件中大數相消例；不保證所有算法任意精確。",
+      "source_ids": [
+        "I3-S022"
+      ],
+      "source_locator": "Representation, rounded display, equality comparison and summation examples",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解運算路徑會影響有限精度結果。",
+        "visual": "大數抵銷後，先前丟失的小格影響結果。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "I3065",
+      "question": "電腦校正時間後，倒數計時為什麼不該跟著往回跳？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.monotonic.elapsed",
+      "answer_target": "單調時鐘量測兩次讀值之差，不用可被校正的日期時間判斷經過多久。",
+      "scope": "Python 時鐘介面作機制範例；不涵蓋所有休眠計時政策。",
+      "source_ids": [
+        "I3-S023"
+      ],
+      "source_locator": "get_clock_info, monotonic, monotonic_ns and perf_counter",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分現在幾點與已過多久。",
+        "visual": "日曆鐘回撥，碼表箭頭仍向前。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3066",
+      "question": "計時數字有很多小數位，為什麼仍可能失去很短的時間差？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.clock.float.precision",
+      "answer_target": "浮點表示大累積秒數時低位精度有限，整數奈秒可避免這種表示損失。",
+      "scope": "表示損失與硬體解析度、準確度不同；不重複 M2070 校正題。",
+      "source_ids": [
+        "I3-S023"
+      ],
+      "source_locator": "get_clock_info, monotonic, monotonic_ns and perf_counter",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清表示精度與時鐘本身能力。",
+        "visual": "大數字槽擠掉末端小刻度，整數計數保留位數。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3067",
+      "question": "明明複製了一份清單，為什麼改裡面的項目會連原本一起變？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.copy.shallow.alias",
+      "answer_target": "淺複製只新建外層，內部仍可指向同一個可變物件。",
+      "scope": "以 Python 容器示範；不是檔案複製的普遍行為。",
+      "source_ids": [
+        "I3-S024"
+      ],
+      "source_locator": "Assignment, shallow/deep copy distinction and memo dictionary",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解副本可能仍共享內部資料。",
+        "visual": "兩個清單封面連到同一內頁。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3068",
+      "question": "資料指回自己，複製時為什麼不會永遠複製下去？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.deepcopy.memo.cycle",
+      "answer_target": "深複製記住已處理的物件，遇到循環時重用新參照。",
+      "scope": "Python deepcopy 的 memo；不是所有序列化格式都支援循環。",
+      "source_ids": [
+        "I3-S024"
+      ],
+      "source_locator": "Assignment, shallow/deep copy distinction and memo dictionary",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解複製圖結構不同於無限展開樹。",
+        "visual": "環形節點走到已登記站點後接回新環。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3069",
+      "question": "兩個物件只剩互相指著對方，為什麼單數引用次數找不到垃圾？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.gc.reference.cycle",
+      "answer_target": "互相引用令計數不為零，但整組可能已無外部可達路徑，需循環回收判斷。",
+      "scope": "CPython 的引用計數加循環回收模型。",
+      "source_ids": [
+        "I3-S025"
+      ],
+      "source_locator": "Introductory reference-counting supplement; generation and tracked-object descriptions",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分有人引用與程式仍能到達。",
+        "visual": "孤立的兩個節點仍互指，外界路徑全切斷。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3070",
+      "question": "清理記憶體時，為什麼不一定每次把全部物件都查一遍？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.gc.generational.scan",
+      "answer_target": "分代機制依存活經驗安排不同頻率掃描，減少重複檢查。",
+      "scope": "以所讀 CPython 文件為例；分代細節會隨版本調整。",
+      "source_ids": [
+        "I3-S025"
+      ],
+      "source_locator": "Introductory reference-counting supplement; generation and tracked-object descriptions",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解回收效率也利用物件生命週期。",
+        "visual": "新舊物件分隊，短週期先檢查新隊。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3071",
+      "question": "只是為了方便查找保留的索引，為什麼可能讓大圖片一直占記憶體？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.weakref.cache.liveness",
+      "answer_target": "普通參照會維持物件存活；弱參照可讓無其他用途的物件被回收。",
+      "scope": "Python 弱參照快取例，需處理物件已不存在。",
+      "source_ids": [
+        "I3-S026"
+      ],
+      "source_locator": "Introduction and cache/image mapping example",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解索引本身也可能延長資源壽命。",
+        "visual": "通訊錄分成保管契約與不保留本體的地址卡。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3072",
+      "question": "把計算結果記起來能加速，為什麼有些工作反而不能這樣做？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.memoization.sideeffects",
+      "answer_target": "重用舊結果會跳過重新執行，對需產生副作用或新狀態的工作改變語意。",
+      "scope": "函式結果快取；與 HTTP 新鮮度題不同。",
+      "source_ids": [
+        "I3-S027"
+      ],
+      "source_locator": "lru_cache: cache_info, retained references, recency and inappropriate side effects",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解相同輸入不保證可以略過動作。",
+        "visual": "需要每次蓋章的工作被舊答案取代。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3073",
+      "question": "內容已經加密了，為什麼別人還可能看得出令牌建立時間？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.crypto.metadata.timestamp",
+      "answer_target": "Fernet 把建立時間留在明文欄位，加密保護不涵蓋所有中繼資料。",
+      "scope": "Fernet 格式示例；不是所有加密格式都公開時間。",
+      "source_ids": [
+        "I3-S028"
+      ],
+      "source_locator": "Fernet encryption, plaintext timestamp, decryption TTL and MultiFernet key rotation",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂內容保密與中繼資料保密的邊界。",
+        "visual": "密封信封遮住內文但時間戳仍在外面。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3074",
+      "question": "密文沒有壞、鑰匙也對，為什麼系統仍可能拒收？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.crypto.expiry.policy",
+      "answer_target": "驗證流程可另外檢查令牌年齡，超過允許期限即拒絕。",
+      "scope": "Fernet 啟用 TTL 時；未設定則不自動套用期限。",
+      "source_ids": [
+        "I3-S028"
+      ],
+      "source_locator": "Fernet encryption, plaintext timestamp, decryption TTL and MultiFernet key rotation",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解完整性通過不等於政策有效。",
+        "visual": "封條完整但通行證日期超過門檻。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3075",
+      "question": "換新加密鑰匙時，怎麼讓舊資料暫時還讀得到？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.key.rotation.overlap",
+      "answer_target": "新資料用新鑰匙，過渡期保留舊鑰匙解讀既有資料，再逐步退役。",
+      "scope": "MultiFernet 輪替模型；保留舊鑰匙也保留其風險。",
+      "source_ids": [
+        "I3-S028"
+      ],
+      "source_locator": "Fernet encryption, plaintext timestamp, decryption TTL and MultiFernet key rotation",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解安全更新需要相容窗口。",
+        "visual": "新入口一把鑰匙，舊箱子保留過渡鑰匙環。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3076",
+      "question": "網站不保存原密碼，怎麼還能知道你輸入得對不對？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.password.hash.verification",
+      "answer_target": "保存帶參數的驗證值，再用輸入密碼按相同方法計算並比對。",
+      "scope": "密碼雜湊驗證模型，不等於可還原的加密。",
+      "source_ids": [
+        "I3-S029"
+      ],
+      "source_locator": "Key derivation; password storage; needs_rehash",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解驗證不必保存可讀原文。",
+        "visual": "只有比對模具，沒有能打開原密碼的盒子。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3077",
+      "question": "兩人用相同密碼，為什麼儲存的驗證字串可以不同？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.password.salt.diversity",
+      "answer_target": "每筆隨機鹽作為額外輸入，讓相同密碼不直接得到相同驗證值。",
+      "scope": "Libsodium 自動鹽例；鹽不是必須保密的第二密碼。",
+      "source_ids": [
+        "I3-S029"
+      ],
+      "source_locator": "Key derivation; password storage; needs_rehash",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解鹽讓不同紀錄的計算分開。",
+        "visual": "相同文字配不同鹽卡進入計算盒。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3078",
+      "question": "驗證密碼為什麼要故意花一些時間和記憶體？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.password.work.factor",
+      "answer_target": "可調計算與記憶體成本增加大量猜測的單次代價，也需控制服務端負擔。",
+      "scope": "概念解說，不給跨設備通用成本設定。",
+      "source_ids": [
+        "I3-S029"
+      ],
+      "source_locator": "Key derivation; password storage; needs_rehash",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂安全成本與回應速度的取捨。",
+        "visual": "一次正常驗證與大量候選各需搬動記憶格。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3079",
+      "question": "密碼演算法升級後，為什麼有時要等下次登入才更新舊紀錄？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.password.rehash.onlogin",
+      "answer_target": "舊驗證值不含原密碼，下次成功驗證拿到輸入時才可用新參數重算。",
+      "scope": "Libsodium needs_rehash 例；系統也可要求重設。",
+      "source_ids": [
+        "I3-S029"
+      ],
+      "source_locator": "Key derivation; password storage; needs_rehash",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解不可逆驗證值限制無感升級方式。",
+        "visual": "舊模具等待使用者再次提供原材料。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3080",
+      "question": "人人都有驗證用的鑰匙，為什麼不代表人人都能簽出你的名字？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.signature.asymmetric.roles",
+      "answer_target": "簽署使用私鑰，驗證使用不同的公開鑰匙，兩者權能不同。",
+      "scope": "數位簽章的密碼學模型；不宣稱鑰匙永不外洩。",
+      "source_ids": [
+        "I3-S030"
+      ],
+      "source_locator": "Purpose; combined and detached mode; multi-part message description",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解可驗證不等於可偽造。",
+        "visual": "簽發印章與公開驗證尺分成不同工具。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "I3081",
+      "question": "文件有數位簽章，為什麼內容還是人人看得懂？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.signature.not.encryption",
+      "answer_target": "簽章附加完整性與來源驗證資料，不改變原訊息的可讀表示。",
+      "scope": "Libsodium 簽章示例；保密需另外設計。",
+      "source_ids": [
+        "I3-S030"
+      ],
+      "source_locator": "Purpose; combined and detached mode; multi-part message description",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分可驗真偽與隱藏內容。",
+        "visual": "透明文件附驗證封條，文字仍可讀。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3082",
+      "question": "簽章驗證成功，為什麼還不能直接相信它來自你認識的人？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.signature.key.trust",
+      "answer_target": "驗證只連結訊息與指定公鑰，公鑰與現實身分的可信對應需另行建立。",
+      "scope": "不把密碼學驗證外推為身分或內容真實保證。",
+      "source_ids": [
+        "I3-S030"
+      ],
+      "source_locator": "Purpose; combined and detached mode; multi-part message description",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂信任鏈的起點。",
+        "visual": "驗證尺符合，名字標籤卻仍待核對。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3083",
+      "question": "訊息能解密，為什麼還需要驗證標記？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.aead.integrity",
+      "answer_target": "驗證標記檢查訊息是否被改動，保密與完整性提供不同保護。",
+      "scope": "以認證加密為例，不自行設計加密流程。",
+      "source_ids": [
+        "I3-S031"
+      ],
+      "source_locator": "Purpose and independent-message replay/reordering limitation",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解看不懂內容仍可能試圖改動它。",
+        "visual": "密封盒外加可檢查的封條。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3084",
+      "question": "每封訊息都驗證成功，為什麼還可能被重播或換順序？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.independent.auth.replay",
+      "answer_target": "獨立驗證只判斷每封本身，未記錄序列狀態就不能識別重送或重排。",
+      "scope": "Libsodium secretbox 獨立訊息模式。",
+      "source_ids": [
+        "I3-S031"
+      ],
+      "source_locator": "Purpose and independent-message replay/reordering limitation",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解防竄改不等於防重播。",
+        "visual": "有效票 A、B、A 依序出現，每張封條都完整。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "I3085",
+      "question": "大檔案還沒收完，怎麼就能知道前半段有被改動？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.stream.chunk.authentication",
+      "answer_target": "每段各有驗證標記，可在串流未結束前發現該段不完整或遭改動。",
+      "scope": "Libsodium secretstream；部分驗證不等於整檔已完整。",
+      "source_ids": [
+        "I3-S032"
+      ],
+      "source_locator": "Properties; usage tags; additional authenticated data; rekeying",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解逐段確認與整體完成的差別。",
+        "visual": "長紙帶每段通過獨立驗證門。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3086",
+      "question": "連線突然沒資料了，怎麼分辨是傳完還是被截斷？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.stream.final.marker",
+      "answer_target": "加密結束標記明確宣告串流完成，缺少標記不能只憑輸入停止判定成功。",
+      "scope": "接收方需檢查 TAG_FINAL；不宣稱任意用法自動安全。",
+      "source_ids": [
+        "I3-S032"
+      ],
+      "source_locator": "Properties; usage tags; additional authenticated data; rekeying",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解完整結尾也必須被驗證。",
+        "visual": "正常結尾帶封口章，中途斷掉沒有章。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3087",
+      "question": "為什麼有些欄位不加密，仍能防止別人偷偷改？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.aead.associated.data",
+      "answer_target": "附加資料可參與認證計算而保持可讀，使公開欄位與密文綁定。",
+      "scope": "secretstream additional data；保密與認證範圍需明列。",
+      "source_ids": [
+        "I3-S032"
+      ],
+      "source_locator": "Properties; usage tags; additional authenticated data; rekeying",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂公開不代表無完整性保護。",
+        "visual": "公開標籤用封條與密封盒一起固定。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3088",
+      "question": "串流還在繼續，為什麼要把前一把鑰匙忘掉？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.stream.key.ratchet",
+      "answer_target": "更新金鑰並移除舊狀態，可減少後來狀態暴露對先前訊息的影響。",
+      "scope": "secretstream rekey；前提是舊金鑰確實不再保留。",
+      "source_ids": [
+        "I3-S032"
+      ],
+      "source_locator": "Properties; usage tags; additional authenticated data; rekeying",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解時間方向的金鑰隔離。",
+        "visual": "單向走過鑰匙站，舊鑰匙不再留在環上。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "I3089",
+      "question": "訊息內容看不懂，為什麼長短仍可能洩漏線索？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.ciphertext.length.leak",
+      "answer_target": "許多加密格式只增加固定額外長度，密文大小仍反映原文長度。",
+      "scope": "只談長度線索，不聲稱可據此直接還原內文。",
+      "source_ids": [
+        "I3-S033"
+      ],
+      "source_locator": "Opening length disclosure; padding usage; notes on encryption order and side channels",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解加密未必隱藏訊息尺寸。",
+        "visual": "兩封不透明信封仍有明顯長短差。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "I3090",
+      "question": "為了保密，資料為什麼有時故意塞進沒有內容的填充？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.padding.length.buckets",
+      "answer_target": "加密前補到共同長度區間，可讓多種原長度呈現相同外部大小。",
+      "scope": "填充有容量代價且不隱藏所有側通道。",
+      "source_ids": [
+        "I3-S033"
+      ],
+      "source_locator": "Opening length disclosure; padding usage; notes on encryption order and side channels",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂減少長度線索的代價。",
+        "visual": "不同短訊息裝入同尺寸信封。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "I3091",
+      "question": "亂數除以六取餘數，為什麼可能不是公平骰子？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.random.modulo.bias",
+      "answer_target": "原本等機率範圍若不能整除六，部分餘數會對應更多輸入。",
+      "scope": "有限整數範圍的概念示例；不討論賭博策略。",
+      "source_ids": [
+        "I3-S034"
+      ],
+      "source_locator": "uniform vs modulo; deterministic generator; VM snapshot note",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解轉換也能製造偏差。",
+        "visual": "十張等機率數字卡分進六盒，盒中張數不同。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3092",
+      "question": "看似亂數的一長串數字，為什麼換回同一種子又會重現？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.prng.seed.reproducibility",
+      "answer_target": "確定性生成器從相同種子與狀態出發會產生同序列。",
+      "scope": "不把可重現等同容易被未知種子者猜出。",
+      "source_ids": [
+        "I3-S034"
+      ],
+      "source_locator": "uniform vs modulo; deterministic generator; VM snapshot note",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分可重現、分布與不可預測。",
+        "visual": "同一張起始卡走同一齒輪路徑。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3093",
+      "question": "把虛擬機還原到舊快照，為什麼可能連亂數都重複？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.rng.snapshot.state",
+      "answer_target": "快照可能恢復生成器狀態，讓後續輸出重走已經走過的序列。",
+      "scope": "Libsodium 警示是可能情形，依環境重新注入熵等機制而異。",
+      "source_ids": [
+        "I3-S034"
+      ],
+      "source_locator": "uniform vs modulo; deterministic generator; VM snapshot note",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解備份狀態可能影響新鮮隨機性。",
+        "visual": "時間回卷時連亂數盒內的齒輪位置也還原。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3094",
+      "question": "收件人能確認密文完整，為什麼仍可能不知道是誰寄的？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.sealedbox.sender.anonymity",
+      "answer_target": "密封盒使用臨時發件鑰匙，可保護給特定接收者的訊息而不驗證寄件身分。",
+      "scope": "Libsodium sealed box；網路中繼資料匿名性不是此保證。",
+      "source_ids": [
+        "I3-S035"
+      ],
+      "source_locator": "Purpose and usage: recipient key, ephemeral sender key and sender-authentication limit",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解完整性與發件人識別可分開。",
+        "visual": "只有收件人欄的密封信，寄件人欄空白。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "I3095",
+      "question": "自己剛加密寄出的東西，為什麼事後也可能打不開？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "information.sealedbox.ephemeral.erase",
+      "answer_target": "臨時私鑰加密後被移除，發送者若未另存明文或可解密金鑰，不能靠密文讀回。",
+      "scope": "sealed box 示例；不表示已刪掉所有明文副本。",
+      "source_ids": [
+        "I3-S035"
+      ],
+      "source_locator": "Purpose and usage: recipient key, ephemeral sender key and sender-authentication limit",
+      "premise_status": "screened",
+      "notes": "原創研究入口；完整旁白、展示結果與當期版本仍需逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂加密權限與解密權限可以不同。",
+        "visual": "投進收件人專用信箱後丟掉臨時工具。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "PostgreSQL 為什麼能讓讀者與寫者同時工作？",
+      "reason": "與本批 WAL 快照可見性主題高度重疊；MVCC 版本差異作補充來源，不用產品名另算核心。"
+    },
+    {
+      "question": "PostgreSQL 刪除資料後為什麼檔案不變小？",
+      "reason": "已由本批空間回收粒度與重建題涵蓋；不因換資料庫重複計數。"
+    },
+    {
+      "question": "索引、交易、鎖各是什麼？",
+      "reason": "只有名詞定義，合併至具體失敗情境的必要解說。"
+    }
+  ]
+}

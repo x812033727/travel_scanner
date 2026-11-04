@@ -1,0 +1,391 @@
+{
+  "tested_on": "2026-11-02T07:39:04.930Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3469,
+    "canonical_questions": 3323,
+    "eligible_candidates": 3153,
+    "selected_candidates": 3094,
+    "alias_records": 146,
+    "historical_records": 313,
+    "source_urls": 4439,
+    "current_research_source_urls": 1480,
+    "selected_source_urls": 2660,
+    "new_suggestions_not_added": 1313,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 292,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3083",
+    "carried": 3083,
+    "added": 11,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "dc77563ca20c43f01af1e60d5d9a9a7cbdd8727a79a687e70074e141d434be43",
+    "writes": 6792,
+    "selected": 3094
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "dc77563ca20c43f01af1e60d5d9a9a7cbdd8727a79a687e70074e141d434be43",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4538,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 5408.035799999998,
+    "index_ms": 3182.9751000000033,
+    "unchanged_index_ms": 293.90020000000004,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 13,
+        "milliseconds": 24.072100000001228
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 3.899299999997311
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 8.882200000000012
+      }
+    ],
+    "rss_bytes": 418287616,
+    "sqlite_bytes": 54763520
+  },
+  "dedup_audit": {
+    "selection": "Every final wave29 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "f809bd7af9012f6a76ed806d13ab635d547b2a5b92e0366fc64ca3902a2adf1a",
+    "records": 3469,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.525
+  },
+  "hashes": {
+    "pool.json": "f809bd7af9012f6a76ed806d13ab635d547b2a5b92e0366fc64ca3902a2adf1a",
+    "themes.json": "56ea4537d491161a0e6cebc8bf413382cd2c0432b24ed50f19d9acb116a3de02",
+    "manifest.json": "0176b0f2ac42f605a106568d8377fa8129fde59507d588bfe266aa81f361077f",
+    "index.html": "3fef80277d18819a3f6dec7b4eaedc3a9ae391ff56f22602681dbe2c793b9823",
+    "batches/wave29-food.json": "86cb833b187af57a693faf86514c61a712de7b24889924e8104dfa63c41bff2f",
+    "batches/wave29-tracks.json": "1ada60d816f673a567b894753d1108fb49f07dcce654854b91e54a98b242e528"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3458,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3083,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 286,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4426,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://www.nature.com/articles/s41598-020-70109-8",
+        "source_id": "SRC-cf441bcb6c2cdf5d",
+        "candidate_ids": [
+          "R29001"
+        ],
+        "theme_ids": [
+          "G287"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/BMC2050-7445-1-24",
+        "source_id": "SRC-3e281def9f18c0bf",
+        "candidate_ids": [
+          "R29002"
+        ],
+        "theme_ids": [
+          "G287"
+        ]
+      },
+      {
+        "url": "https://discovery.ucl.ac.uk/10052964/1/Arranz-Otaeguia_7925.full.pdf",
+        "source_id": "SRC-131c08cc1e9974f2",
+        "candidate_ids": [
+          "R29003"
+        ],
+        "theme_ids": [
+          "G288"
+        ]
+      },
+      {
+        "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231696",
+        "source_id": "SRC-659702518b8c372f",
+        "candidate_ids": [
+          "R29004"
+        ],
+        "theme_ids": [
+          "G288"
+        ]
+      },
+      {
+        "url": "https://www.bristol.ac.uk/news/2012/9008.html",
+        "source_id": "SRC-2aa8105ba8d186c0",
+        "candidate_ids": [
+          "R29005"
+        ],
+        "theme_ids": [
+          "G289"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/nature11698",
+        "source_id": "SRC-3b6f45e5a6e34f7c",
+        "candidate_ids": [
+          "R29005"
+        ],
+        "theme_ids": [
+          "G289"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/srep07104",
+        "source_id": "SRC-1afb65e180e786c1",
+        "candidate_ids": [
+          "R29006"
+        ],
+        "theme_ids": [
+          "G289"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/s41598-021-87125-x",
+        "source_id": "SRC-ca9b6ad704772233",
+        "candidate_ids": [
+          "R29006"
+        ],
+        "theme_ids": [
+          "G289"
+        ]
+      },
+      {
+        "url": "https://s3.amazonaws.com/publicationslist.org/data/jesper.milan/ref-13/2006%20-%20Mil%C3%A0n%20_%20Bromley%20-%20PALAEO3.pdf",
+        "source_id": "SRC-1ef897aac5280a2a",
+        "candidate_ids": [
+          "P29001"
+        ],
+        "theme_ids": [
+          "G290"
+        ]
+      },
+      {
+        "url": "https://researchonline.ljmu.ac.uk/id/eprint/13219/1/20200518_LoopingFootKinematics_MainText_Pre-Proofs.pdf",
+        "source_id": "SRC-fce11838ac72a128",
+        "candidate_ids": [
+          "P29002"
+        ],
+        "theme_ids": [
+          "G290"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030862/",
+        "source_id": "SRC-bd0ef060503a014b",
+        "candidate_ids": [
+          "P29003"
+        ],
+        "theme_ids": [
+          "G291"
+        ]
+      },
+      {
+        "url": "https://researchonline.ljmu.ac.uk/id/eprint/6408/1/ammonite.pdf",
+        "source_id": "SRC-16332b48e1a43c77",
+        "candidate_ids": [
+          "P29004"
+        ],
+        "theme_ids": [
+          "G292"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3732924/",
+        "source_id": "SRC-a833f09c2fa5e0c3",
+        "candidate_ids": [
+          "P29005"
+        ],
+        "theme_ids": [
+          "G292"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://www.nature.com/articles/s41598-020-70109-8",
+    "core": "R29001",
+    "theme": "G287",
+    "theme_ids": [
+      "G287"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 118266.1044,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "ae5d0bc67773114d8807e5fa366939cd73114d1e4fbecfc0faa992c537b9e523"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "e70a695bce506c6b7c20660b196d606a1d5814ad9e381995ab1b92380e7805a0"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "c42c1637d8536dfdec9ea4739c62fd92cd9eba958acdb893d8230425ea7843fb",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "87f1eb2caae03a5d4d8db10b9992ee42a8b5912cd328300fa0731c2615e394d5"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "7e17dc649f4a1fa4eec0f598f4c9f72946be966a9d5e7da10ee1c9d69229b391",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 371,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 18,
+    "unique_blobs_checked": 391,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3700,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G287",
+        "core": "R29001",
+        "seconds": 50,
+        "maximum": 100
+      },
+      {
+        "theme": "G287",
+        "core": "R29002",
+        "seconds": 50,
+        "maximum": 100
+      },
+      {
+        "theme": "G288",
+        "core": "R29003",
+        "seconds": 50,
+        "maximum": 95
+      },
+      {
+        "theme": "G288",
+        "core": "R29004",
+        "seconds": 50,
+        "maximum": 100
+      },
+      {
+        "theme": "G289",
+        "core": "R29005",
+        "seconds": 45,
+        "maximum": 100
+      },
+      {
+        "theme": "G289",
+        "core": "R29006",
+        "seconds": 55,
+        "maximum": 110
+      },
+      {
+        "theme": "G290",
+        "core": "P29001",
+        "seconds": 60,
+        "maximum": 90
+      },
+      {
+        "theme": "G290",
+        "core": "P29002",
+        "seconds": 70,
+        "maximum": 95
+      },
+      {
+        "theme": "G291",
+        "core": "P29003",
+        "seconds": 70,
+        "maximum": 85
+      },
+      {
+        "theme": "G292",
+        "core": "P29004",
+        "seconds": 45,
+        "maximum": 85
+      },
+      {
+        "theme": "G292",
+        "core": "P29005",
+        "seconds": 50,
+        "maximum": 80
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 29,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "47eec4b07c0bf73feec86e4483e19714a6bf7eba01f46c5fc381c2a224d514ac"
+  }
+}

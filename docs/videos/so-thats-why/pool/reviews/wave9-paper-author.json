@@ -1,0 +1,204 @@
+{
+  "status": "AUTHOR_LOCKED_PENDING_INDEPENDENT_REVIEW",
+  "created_on": "2026-11-01",
+  "batch_file": "batches/wave9-paper.json",
+  "batch_sha256": "b67dfadf119c4cf02d68b7c2a96dfa0ae2cda9fe01b3443269d6bf57eb5118fb",
+  "theme_file": "reviews/wave9-paper-themes.json",
+  "theme_sha256": "243e2527b7f2f092d3296f372d71b6b03e87465aaeb0ecc136d66ae83335d6a1",
+  "counts": {
+    "candidates": 8,
+    "sources": 8,
+    "not_added": 18,
+    "themes": 3
+  },
+  "baseline": {
+    "pool_file": "pool.json",
+    "pool_sha256": "b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b",
+    "raw_records": 3069,
+    "selected": 2711
+  },
+  "scope": "只寫 wave9-paper 三檔與 ignored .cache/wave9-paper-*；根代理已 claim，沒有中央改動、付費、製作或 commit。",
+  "readback_method": "對全3069 raw 的 question/answer_target/scope/mechanism_key 與401 historical not_added 作紙張/印刷/包裝關鍵詞檢索。廣義131、光學64與黏彈42命中輸出曾截斷，不宣稱全數人工讀；另讀精確紙張55命中的相關列、歷史退題及18筆指定近義完整 target/scope。噴墨/氣泡/表面張力與共振/蒸發邊界再全文檢索。不是3069題逐列人工審核，最終語意近鄰尚待根代理。",
+  "duplicate_flags": [
+    {
+      "candidate_id": "Q9001",
+      "compare_ids": [
+        "D2198",
+        "H3063",
+        "H3090"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "控制分層降低折線剛性，區別斷裂類型、裂後橋接與時間鬆弛。"
+    },
+    {
+      "candidate_id": "Q9002",
+      "compare_ids": [
+        "N274",
+        "P244",
+        "X5019",
+        "X5020",
+        "X5021"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "橫向光路越過墨點邊界，區別單純散射白色或改變油墨接受。"
+    },
+    {
+      "candidate_id": "Q9003",
+      "compare_ids": [
+        "Q9002",
+        "P142",
+        "P143"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "新增覆膜與空氣界面回返，圖案尺度是可觀察條件；但與 Q9002 都為光學網點族，優先審是否同核。"
+    },
+    {
+      "candidate_id": "Q9004",
+      "compare_ids": [
+        "X5017"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "局部壓破的空間接觸開關與聯單層面配對，不重算染料顯色本身。"
+    },
+    {
+      "candidate_id": "Q9005",
+      "compare_ids": [
+        "LEG-S70",
+        "E2034"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "擾動波長的成長條件及控制斷滴，不只是液滴變圓或電場轉向。"
+    },
+    {
+      "candidate_id": "Q9006",
+      "compare_ids": [
+        "LEG-S72",
+        "E2264"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "局部蒸氣泡按需致動，非溶解氣體脫溶或石英時鐘；證據薄只給45秒上限（非作者收緊），可退。"
+    },
+    {
+      "candidate_id": "Q9007",
+      "compare_ids": [
+        "N286",
+        "P115",
+        "V3073",
+        "Q9006"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "可壓縮氣泡耦合噴嘴流動造成先增後停；優先審是否只有一般共振換場景。"
+    },
+    {
+      "candidate_id": "Q9008",
+      "compare_ids": [
+        "P238"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "出口選擇蒸發與內部補給造成非均勻濃度穩態，不是蒸餾冷凝分離。"
+    }
+  ],
+  "source_reading_limits": [
+    "8個支持來源均實讀指定正文，不只搜尋片段；其中 Q9-S005 是原作者出版版在教育平台的副本，作者官方書目僅核身分。",
+    "沒有宣稱逐主張、逐圖或全篇核准；Q9-S002 理論段、Q9-S003 部分結果、Q9-S005 技術段、Q9-S008 指定結果是限定讀取。",
+    "Q9-S007 原研究的模型與實驗只有定性一致，Q9-S008 為水—甘油模型液的作者稿；不轉成任何現售噴頭的產品事實。",
+    "未讀 Beex 2009 全文、風味吸收原研究、紙填料完整機械章；這些發現不計入來源或候選。"
+  ],
+  "requested_independent_focus": [
+    "Q9002/Q9003 是否只是同一光學網點核心",
+    "Q9006 的局部相變致動是否足夠獨立，或應合回既有氣泡推液",
+    "Q9007 是否超出一般共振案例；先增後停與氣泡可壓縮性解釋是否清楚",
+    "Q9008 梯度穩態增量是否成立；不要把推測恢復流場當直接觀測",
+    "三題案的模型切換、圖案尺度反例與核心累計秒數"
+  ],
+  "omitted_from_themes": [
+    "Q9004",
+    "Q9005",
+    "Q9008"
+  ],
+  "quality_boundary": "原目標25–35不是配額；已知常見紙題大多被舊庫覆蓋，只交8題給另一代理判斷。7個或更少核心亦可接受，不為數量保存近義。",
+  "checks": {
+    "json_parse": "PASS",
+    "ids_and_keys": "PASS; 8 unique candidate IDs/keys, no baseline ID collision",
+    "source_links": "PASS; every source_id resolves within 8 records",
+    "editorial_caps_and_beats": "Coordinator rechecked 170/140/110 seconds; each core cumulative <= cap, beats <=45 seconds; prior isolated validators were run on original author version.",
+    "line_endings": "PASS; UTF-8 LF, no absolute local user path",
+    "independent_review": "PENDING",
+    "isolated_repository_validators": "PASS; bundled Node v24.22.1 validateEditorial for all 8 and validateThemes with only this batch selected; did not assemble or write central pool"
+  },
+  "readiness": "TOPIC_SCREENING_ONLY; not script approval, not production ready",
+  "source_readings": [
+    {
+      "id": "Q9-S001",
+      "url": "https://www.jstage.jst.go.jp/article/jamdsm/5/4/5_4_385/_pdf/-char/en",
+      "locator": "§1 Introduction; §2.1 Pre-processing of specimen; §2.2; §3.1–3.2, printed pp.385–391 / PDF pp.1–7",
+      "read_via": "web open 原論文 PDF 文字層；public urllib + PyMuPDF 留存供覆核"
+    },
+    {
+      "id": "Q9-S002",
+      "url": "https://www.jstage.jst.go.jp/article/jtappij/63/11/63_11_1362/_pdf",
+      "locator": "English abstract on PDF p.1; Japanese §1 緒言 and §2 理論〈光学的ドットゲイン〉 on PDF p.2 / printed p.1363",
+      "read_via": "public urllib 下載出版方 PDF；PyMuPDF 文字層"
+    },
+    {
+      "id": "Q9-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9504082/",
+      "locator": "Introduction; §2.1; §2.2 Optical Model; §2.3 Experimental Method and Computation; §3 opening and Figure 7 explanation; §5 Conclusions",
+      "read_via": "web open 正文前段；再次開啟遇 reCAPTCHA，public urllib HTML + HTMLParser 補讀正文"
+    },
+    {
+      "id": "Q9-S004",
+      "url": "https://stacks.cdc.gov/view/cdc/6410/cdc_6410_DS1.pdf",
+      "locator": "§1.2 Development and Production of CCP; §2.1 How CCP Works and §2.2 CCP Production, printed pp.1–2 and 5–6 / PDF pp.22–23 and 26–27",
+      "read_via": "web open 官方 PDF 文字層；同文件 archive.cdc.gov 副本亦成功讀取"
+    },
+    {
+      "id": "Q9-S005",
+      "url": "https://platform.ict-tex.eu/pluginfile.php/4018/mod_resource/content/2/Inkjet%20printing%20-%20the%20physics%20of%20manipulating%20liquid.pdf",
+      "locator": "§3 Inkjet Technologies, printed pp.3–4 / PDF pp.4–5; Figures 2–5 的文字說明",
+      "read_via": "web open 出版版 PDF 文字層；作者機構 bibliography 另核題名/作者/DOI"
+    },
+    {
+      "id": "Q9-S006",
+      "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/d77da8d5f1bb8b69a62682bc0dbc5845_MIT18_357F10_Lecture11.pdf",
+      "locator": "§11.2 The Plateau-Rayleigh Instability, PDF pp.2–4 / printed pp.41–43, through pinch-off viscosity note",
+      "read_via": "web open 官方 PDF；public urllib + PyMuPDF 留存"
+    },
+    {
+      "id": "Q9-S007",
+      "url": "https://pure.tue.nl/ws/files/2910863/Metis236347.pdf",
+      "locator": "§I–III printed pp.121511-1–4; §IV One-dimensional Disk Bubble Model; §V Comparison; §VI Conclusions and Outlook, PDF pp.2–8",
+      "read_via": "web PDF timeout；Twente abstract 頁成功、PDF403；public urllib 從 TU/e 官方典藏下載 + PyMuPDF 讀正文"
+    },
+    {
+      "id": "Q9-S008",
+      "url": "https://arxiv.org/html/2205.06639v2",
+      "locator": "§I Introduction; §II opening; §V.1; §V.2 through concentration/geometry discussion; §V.3 Recovering the liquid composition; §VI Conclusion & Outlook",
+      "read_via": "web open 作者稿正文；public urllib HTML + HTMLParser 補讀 §V.3 與結論"
+    }
+  ],
+  "coordinator_revision": {
+    "applied_by": "root",
+    "requested_by": "pool_physics",
+    "previous_files": [
+      {
+        "file": "batches/wave9-paper.json",
+        "sha256": "7f963a0aa6e6dc4d8878ab85d51ac09b3cf595d7d2195229f511a336cbb077b1"
+      },
+      {
+        "file": "reviews/wave9-paper-themes.json",
+        "sha256": "efb33c81a44f9a05f6ed13da009d72adfcfd01d17e5317f0df093045235f7cbb"
+      },
+      {
+        "file": "reviews/wave9-paper-author.json",
+        "sha256": "e0b5dfd0bc46f2d27fbf4a7690054818e67ce28e11f95513139f6a19c02ca8f0"
+      }
+    ],
+    "changes": [
+      "Q9001問法限有些多層紙板，不泛稱所有紙盒必須先壓出內部分層。",
+      "Q9006 cap65→45，T02第一章60→40、總160→140，刪段算術同步。"
+    ],
+    "source_or_core_mechanism_changed": false,
+    "non_author_readback": "PENDING"
+  }
+}

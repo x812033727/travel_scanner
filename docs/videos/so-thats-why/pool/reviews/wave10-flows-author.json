@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_AWAITING_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "selected": 2757,
+    "raw": 3115,
+    "not_added": 444,
+    "pool_sha256": "5d3c3ba007095f44cc50196de3270e1c9008c46d9347567efcd5735e6b537e69"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave10-flows.json",
+      "sha256": "9a2904a1b2b8f9180504c7c17c0991cd28895ea352341576202fdd4cf70fd42b"
+    },
+    {
+      "file": "reviews/wave10-flows-themes.json",
+      "sha256": "221c68e442852e8b6b8a3bc3cc9a328ac4037f2d5053875254e16eee2ed7c99a"
+    }
+  ],
+  "counts": {
+    "candidates": 16,
+    "sources": 12,
+    "not_added": 14,
+    "themes": 4,
+    "expected_retained_before_independent_review": 15
+  },
+  "scope": "本輪16原始候選保留；接受F10004併F10003，預期15不同核心，最終中央依獨立覆核處理。不為方向數量硬拆。",
+  "dedup_reading": {
+    "method": "全3115 raw_records及444 not_added做題名/答案/機制/條件關鍵詞檢索；193個寬範圍命中先列題名後按機制定向讀完整欄位；另做精確術語及候選近義檢索。並非逐字重讀全3115題。",
+    "keywords": [
+      "顆粒",
+      "堵塞",
+      "粒徑",
+      "壓力",
+      "Janssen",
+      "巴西",
+      "堅果",
+      "剪脹",
+      "沙漏",
+      "料斗",
+      "混沌",
+      "水躍",
+      "液繩",
+      "盤繞",
+      "二次流",
+      "茶葉",
+      "Taylor",
+      "泰勒",
+      "可逆",
+      "混合",
+      "擴散",
+      "沉降",
+      "停滯",
+      "死區",
+      "滯留"
+    ],
+    "final_semantic_neighbours": "待root全批鎖定後產生；作者未宣稱已審當期top5"
+  },
+  "near_pairs": [
+    {
+      "a": "F10001",
+      "b": "P072",
+      "author_judgment": "底部旋轉減速的二次環流，非急彎促成亂流。"
+    },
+    {
+      "a": "F10002",
+      "b": "H3092",
+      "author_judgment": "均可見環，但本題是濕態停滯/接觸摩擦，舊題是蒸發補流固定外緣。"
+    },
+    {
+      "a": "F10001",
+      "b": "F10002",
+      "author_judgment": "前者建立向內水流，後者以坡向重力及摩擦回答水內流卻不走到底的新條件。"
+    },
+    {
+      "a": "F10003",
+      "b": "P182",
+      "author_judgment": "分類固體與顆粒流動，未包含載荷向側壁轉移。"
+    },
+    {
+      "a": "F10003",
+      "b": "F10004",
+      "author_judgment": "接受非作者及root合併F10004→F10003；液體負荷與水位控制作同核心變體，raw保留。"
+    },
+    {
+      "a": "F10005",
+      "b": "F4030",
+      "author_judgment": "乾顆粒出口的自支撐拱失穩，非水穿咖啡粉床的不均勻滲流與萃取。"
+    },
+    {
+      "a": "F10005",
+      "b": "F8001",
+      "author_judgment": "出口幾何失去拱端支撐，非懸浮體摩擦接觸/固含卡住門檻；二維障礙模型另記同題不拆。"
+    },
+    {
+      "a": "F10006",
+      "b": "W5027",
+      "author_judgment": "同密度振動填隙，非流動濾床不同密度粗細料配置。"
+    },
+    {
+      "a": "F10006",
+      "b": "F10007",
+      "author_judgment": "填隙的局部位置交換，對照整體壁面循環的回程尺寸瓶頸。"
+    },
+    {
+      "a": "F10007",
+      "b": "D2048",
+      "author_judgment": "壁面摩擦驅動循環與粒徑回程篩選，非向上氣流托住顆粒。"
+    },
+    {
+      "a": "F10008",
+      "b": "F10006",
+      "author_judgment": "強振動稀疏層的隨機動能梯度，非弱搖填隙更快速重播；是否太專門由非作者裁。"
+    },
+    {
+      "a": "F10009",
+      "b": "P072",
+      "author_judgment": "低Re運動學可逆，非亂流混合。"
+    },
+    {
+      "a": "F10009",
+      "b": "F10010",
+      "author_judgment": "精確倒帶的條件，對照非互易邊界循環；不是把同一動作反方向再問一次。"
+    },
+    {
+      "a": "F10011",
+      "b": "E7017",
+      "author_judgment": "牛頓液絲受壓彎曲，非冷卻表殼的變形/破裂。"
+    },
+    {
+      "a": "F10011",
+      "b": "H3090",
+      "author_judgment": "不需聚合物鬆弛或固體彈性；黏性流的軸向壓縮失穩。"
+    },
+    {
+      "a": "F10011",
+      "b": "F10012",
+      "author_judgment": "靜止面盤繞起因，對照移動邊界的長度/速度配合；花紋全收同核。"
+    },
+    {
+      "a": "F10013",
+      "b": "P305",
+      "author_judgment": "確定性速度差配合跨流線擴散，非單粒隨機撞擊起因。"
+    },
+    {
+      "a": "F10013",
+      "b": "Q9008",
+      "author_judgment": "示蹤脈衝沿程展寬，非噴嘴選擇蒸發與補給的穩態濃度梯度。"
+    },
+    {
+      "a": "F10014",
+      "b": "D2169",
+      "author_judgment": "高風險近似：舊題減低循環區水齡，新題側區交換返回主流的長尾；若增量不足宜併舊核。"
+    },
+    {
+      "a": "F10014",
+      "b": "F10013",
+      "author_judgment": "暫存與再釋放使尾形偏斜，非連續剪切速度分布的展寬。"
+    },
+    {
+      "a": "F10015",
+      "b": "W5018",
+      "author_judgment": "斜壁形成較輕清液上升循環，非只比較沉速與表面溢流率。"
+    },
+    {
+      "a": "F10015",
+      "b": "W5019",
+      "author_judgment": "稀系統斜壁回流與澄清，非高濃度顆粒互相阻礙。"
+    },
+    {
+      "a": "F10016",
+      "b": "R8006",
+      "author_judgment": "有耗散的固定流態跳躍，非波進淺水改變傳播速度與波長。"
+    }
+  ],
+  "source_reading": {
+    "count": 12,
+    "level": "全部12來源均實讀所列指定正文/圖，不是每頁逐式查核；未重現任何原實驗或模擬。",
+    "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "routes": "web公開HTML/PDF；失敗時用同日公開urllib與標準HTMLParser抽文；手寫MIT PDF以PyMuPDF+view_image實讀。外部正文僅.cache。",
+    "failures": [
+      "RSC canonical HTML/PDF與urllib 403；同頁?page=search的web正文可讀，來源只登canonical URL。",
+      "Nature s42005-021-00756-4 web重導失敗；同日公開urllib得到原正文，未繞登入。",
+      "PMC茶葉初次web正文成功，續頁captcha；同日urllib原文成功。",
+      "PMC不規則堅果web及urllib皆captcha；只摘要，退題。",
+      "MDPI Fluids 3/4/107 web429、urllib403；NMT副本404，未採為來源；液絲改讀Harvard原文+更正及arXiv作者稿。",
+      "Wiley Boycott出版頁403；MIT作者PDF成功。",
+      "Cambridge波動講義web只有目錄，指定段續讀timeout；urllib憑證失敗，未關TLS，未登來源；改讀MIT OCW pp.3–5手寫圖文。"
+    ]
+  },
+  "source_cautions": [
+    "F10-S002坡底concave/convex文字前後不一致，統一以物理坡向表述，不採疑似錯誤密度式。",
+    "F10-S003只採§1及§2.1–2.3開頭，不宣稱上浮柱已讀；排印高度數字不採。",
+    "F10-S004預印本v1提交日期與HTML文內日期不同，版本歷史有另核，未暗示已刊或新修訂。",
+    "F10-S006強搖反分選限定低氣壓同材質淺層；顆粒溫度不是熱溫度。",
+    "F10-S008原文尺度律有作者更正，兩者都讀，本題不採舊公式。",
+    "F10013直管為教學流道原理的原創情境推導，須進稿再固定幾何；所有視覺均尚未製作。"
+  ],
+  "theme_timing": [
+    {
+      "id": "W10F-T01",
+      "seconds": 155,
+      "chapters": 2
+    },
+    {
+      "id": "W10F-T02",
+      "seconds": 145,
+      "chapters": 2
+    },
+    {
+      "id": "W10F-T03",
+      "seconds": 165,
+      "chapters": 2
+    },
+    {
+      "id": "W10F-T04",
+      "seconds": 150,
+      "chapters": 2
+    }
+  ],
+  "validation": "JSON/LF、ID唯一、來源引用、章節/beat加總、target_minutes、逐核心秒數cap已由作者自檢；不是獨立覆核或觀眾試讀。",
+  "open_editorial_questions": [
+    "F10014延遲釋放長尾與D2169不同條件，待非作者最終收據。",
+    "F10008仍留研究池；動能梯度圖尚未製作，不列本輪題案。"
+  ],
+  "revision_history": [
+    {
+      "reason": "採非作者science_sources與root裁定：F10004作F10003變體；T02移出F10008的強搖反分選支線，收145秒兩章並重寫追問/回扣/刪段算術。",
+      "before_sha256": {
+        "batches/wave10-flows.json": "a3d1418197f3c3e40edde1276b96bf674e1655ac9e823233cebd19ff095566ee",
+        "reviews/wave10-flows-themes.json": "75b447744752d41294eeda92293894e21f820be7bb92749c966e0a8d7b6e1005",
+        "reviews/wave10-flows-author.json": "f6db373163190c0287afe02e4378b85ddb9594977bc7ff2adb8a834dd78395f3"
+      },
+      "after_batch_sha256": "a3d1418197f3c3e40edde1276b96bf674e1655ac9e823233cebd19ff095566ee",
+      "after_theme_sha256": "221c68e442852e8b6b8a3bc3cc9a328ac4037f2d5053875254e16eee2ed7c99a",
+      "fact_and_source_rows_changed": false
+    },
+    {
+      "reason": "非作者定點指出F10-NA02舊核定位；讀回P058/P062後改直接existing_id為P058，不變候選事實與來源。",
+      "before_sha256": {
+        "batches/wave10-flows.json": "a3d1418197f3c3e40edde1276b96bf674e1655ac9e823233cebd19ff095566ee",
+        "reviews/wave10-flows-themes.json": "221c68e442852e8b6b8a3bc3cc9a328ac4037f2d5053875254e16eee2ed7c99a",
+        "reviews/wave10-flows-author.json": "b83938160500961b7aa2230e55187d0c53dd2009d54689698383199d4bd5a3a4"
+      },
+      "after_batch_sha256": "69bfa20adf0021a171ea4207e7ba14939201e0113a483ec326e8e8b9774f4ebe",
+      "after_theme_sha256": "221c68e442852e8b6b8a3bc3cc9a328ac4037f2d5053875254e16eee2ed7c99a",
+      "candidate_rows_changed": false
+    },
+    {
+      "reason": "非作者指出Boycott [6]頁碼誤寫；作者當期web重開MIT PDF，確認[6]、[7]及Figs1–2都在PDF p2（printed 2 of 4），同步source與candidate locator，明示[8]只首段。機制與秒數不變。",
+      "before_sha256": {
+        "batches/wave10-flows.json": "69bfa20adf0021a171ea4207e7ba14939201e0113a483ec326e8e8b9774f4ebe",
+        "reviews/wave10-flows-themes.json": "221c68e442852e8b6b8a3bc3cc9a328ac4037f2d5053875254e16eee2ed7c99a",
+        "reviews/wave10-flows-author.json": "6e86c527eae14a25abdddbc79dffa9bbc95c372f286588a4beb5fcc4e8b680bd"
+      },
+      "after_batch_sha256": "9a2904a1b2b8f9180504c7c17c0991cd28895ea352341576202fdd4cf70fd42b",
+      "after_theme_sha256": "221c68e442852e8b6b8a3bc3cc9a328ac4037f2d5053875254e16eee2ed7c99a",
+      "candidate_question_answer_scope_changed": false
+    }
+  ]
+}

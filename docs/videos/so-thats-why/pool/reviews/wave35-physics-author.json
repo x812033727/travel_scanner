@@ -1,0 +1,669 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "5843373379c541a3d2725be199542a7c94418533",
+    "selected": 3151,
+    "raw_records": 3528,
+    "not_added": 1456,
+    "pool_sha256": "3d3ed6d1c4c994ddac11fa726d96e794c6a5711aa526aa425f3f908eec820b4a",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3151.json.gz",
+      "sha256": "4a0cc27059f59ce74f2e98eab6e5131cf80fcf0f77c15f6c1d129acd5b11674d"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave35-physics.json",
+      "sha256": "b30ebe39e91b44eb182f1708b3d80c1f4eb9e4e845a5ffc37f9aeafa7a8bdffa"
+    },
+    {
+      "file": "reviews/wave35-physics-themes.json",
+      "sha256": "0607459d679e61ab35423b7e942acd1924454ff988f6296b51b2fe2d46f7ec31"
+    }
+  ],
+  "counts": {
+    "candidates": 6,
+    "sources": 6,
+    "candidate_sources": 6,
+    "not_added_only_sources": 0,
+    "not_added": 15,
+    "near_pairs": 17,
+    "themes": 4
+  },
+  "scope": "交通波動、雙向行人分流、交叉條帶、出口局部通行、虛擬選路及結伴隊形。",
+  "dedup_reading": {
+    "method": "先掃全庫關鍵詞及退題，再比較近似問答的適用條件與新操作；不以換車、人或通道計數。",
+    "scan_files": [
+      {
+        "file": ".cache/wave35-physics-scan.json",
+        "sha256": "4108d3aa465fedb34488b1411eb727653a3629cafc274756f6c829578a3b73ea"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "X35-001",
+      "b": "T4014",
+      "proposed": "distinct",
+      "reason": "舊題說明進出慢區的流率使邊界向後；新題用一輛受控車改變整群車速波動的增幅。",
+      "a_snapshot": {
+        "id": "X35-001",
+        "question": "一圈車已經走走停停，怎麼只改其中一輛的開法，後面的煞車波就小了？",
+        "answer_target": "人工跟車容易把前車的快慢重新傳下去。環道試驗中，一輛車改用依車距及前車速度限制自己速度的控制，不急著追上每一次加速，留下的空間可緩衝再一次慢行。對照控制切換前後，全車速度起伏縮小，波峰不再像先前那樣一圈圈傳。",
+        "scope": "限21輛車的Experiment A及其控制時段。車數、跑道固定；其他人接到跟車指示。未估一般城市只需多少自駕車就能消塞。"
+      },
+      "b_snapshot": {
+        "id": "T4014",
+        "question": "車都往前開，塞車的尾端為什麼會往後退？",
+        "answer_target": "進入慢車區與離開慢車區的速率改變隊列邊界，邊界移動方向不必與車相同。",
+        "scope": "流量狀態交界的示意；含事故已移除但隊列仍存在的例子，不把所有壅塞當自發煞車波。"
+      }
+    },
+    {
+      "a": "X35-001",
+      "b": "T4012",
+      "proposed": "distinct",
+      "reason": "固定號誌選擇容納隊列的位置，並非在同一環道中以移動控制車緩衝車距。",
+      "a_snapshot": {
+        "id": "X35-001",
+        "question": "一圈車已經走走停停，怎麼只改其中一輛的開法，後面的煞車波就小了？",
+        "answer_target": "人工跟車容易把前車的快慢重新傳下去。環道試驗中，一輛車改用依車距及前車速度限制自己速度的控制，不急著追上每一次加速，留下的空間可緩衝再一次慢行。對照控制切換前後，全車速度起伏縮小，波峰不再像先前那樣一圈圈傳。",
+        "scope": "限21輛車的Experiment A及其控制時段。車數、跑道固定；其他人接到跟車指示。未估一般城市只需多少自駕車就能消塞。"
+      },
+      "b_snapshot": {
+        "id": "T4012",
+        "question": "明知前方塞住，為什麼有時反而要讓上游多等一點？",
+        "answer_target": "將無法避免的隊列留在較不阻塞其他路口的位置，避免回堵再減少網路容量。",
+        "scope": "已無法靠增加放行量消除排隊的路網；不是宣稱總需求消失，也不是既有匝道平滑合流核心。"
+      }
+    },
+    {
+      "a": "X35-001",
+      "b": "T4001",
+      "proposed": "distinct",
+      "reason": "紅燈後依序起步與已行駛的封閉車群速度波衰減不同。",
+      "a_snapshot": {
+        "id": "X35-001",
+        "question": "一圈車已經走走停停，怎麼只改其中一輛的開法，後面的煞車波就小了？",
+        "answer_target": "人工跟車容易把前車的快慢重新傳下去。環道試驗中，一輛車改用依車距及前車速度限制自己速度的控制，不急著追上每一次加速，留下的空間可緩衝再一次慢行。對照控制切換前後，全車速度起伏縮小，波峰不再像先前那樣一圈圈傳。",
+        "scope": "限21輛車的Experiment A及其控制時段。車數、跑道固定；其他人接到跟車指示。未估一般城市只需多少自駕車就能消塞。"
+      },
+      "b_snapshot": {
+        "id": "T4001",
+        "question": "綠燈已亮，為什麼車隊不是一起動起來？",
+        "answer_target": "起步反應與加速使最初數輛的放行間隔較大。",
+        "scope": "定點號誌前原本停住的車隊；不給固定反應秒數，不等同一般慣性題。"
+      }
+    },
+    {
+      "a": "X35-001",
+      "b": "D2071",
+      "proposed": "distinct",
+      "reason": "變更路段的待轉空間，與不變道路或車數只控制一車不同。",
+      "a_snapshot": {
+        "id": "X35-001",
+        "question": "一圈車已經走走停停，怎麼只改其中一輛的開法，後面的煞車波就小了？",
+        "answer_target": "人工跟車容易把前車的快慢重新傳下去。環道試驗中，一輛車改用依車距及前車速度限制自己速度的控制，不急著追上每一次加速，留下的空間可緩衝再一次慢行。對照控制切換前後，全車速度起伏縮小，波峰不再像先前那樣一圈圈傳。",
+        "scope": "限21輛車的Experiment A及其控制時段。車數、跑道固定；其他人接到跟車指示。未估一般城市只需多少自駕車就能消塞。"
+      },
+      "b_snapshot": {
+        "id": "D2071",
+        "question": "四線道減成三線道，為什麼不一定更塞？",
+        "answer_target": "中央轉彎等候空間減少直行車被阻擋與變換車道，適用性取決於轉向及流量。",
+        "scope": "Why Consider a Road Diet?；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "X35-002",
+      "b": "B2320",
+      "proposed": "distinct",
+      "reason": "單蝙蝠追蹤暫時被遮的目標不是雙向人群中分心者位置、慢走對照與全群成行時間。",
+      "a_snapshot": {
+        "id": "X35-002",
+        "question": "迎面走來的兩隊人，為何前排三個人看手機，連沒看手機的人都比較難走成行？",
+        "answer_target": "迎面相遇時，微調方向可讓同向的人接續進入已打開的空隙。把手機任務放在其中一隊前排，兩隊避讓較突然，形成同向行列的時點比無手機時晚；另請前排三人刻意放慢，整體更慢，卻沒測出同樣的成行延遲。這支持彼此預判動作的作用。",
+        "scope": "兩隊各27名男性受試者的指定直走廊。前排效應與中後排比較；慢走實驗的成行時間差未達顯著，不能說速度永遠無影響。"
+      },
+      "b_snapshot": {
+        "id": "B2320",
+        "question": "獵物暫時躲到回聲遮蔽物後面，蝙蝠怎麼還能朝牠將出現的方向轉頭？",
+        "answer_target": "連續離散回聲中的運動資訊形成短期目標預測，與只追最後回聲的模型作比較",
+        "scope": "限棲架追蹤實驗，不說能預知任意獵物轉向"
+      }
+    },
+    {
+      "a": "X35-002",
+      "b": "X35-003",
+      "proposed": "distinct",
+      "reason": "何時成行受互相避讓影響；改出口後條帶朝哪裡形成是另一種幾何結果。",
+      "a_snapshot": {
+        "id": "X35-002",
+        "question": "迎面走來的兩隊人，為何前排三個人看手機，連沒看手機的人都比較難走成行？",
+        "answer_target": "迎面相遇時，微調方向可讓同向的人接續進入已打開的空隙。把手機任務放在其中一隊前排，兩隊避讓較突然，形成同向行列的時點比無手機時晚；另請前排三人刻意放慢，整體更慢，卻沒測出同樣的成行延遲。這支持彼此預判動作的作用。",
+        "scope": "兩隊各27名男性受試者的指定直走廊。前排效應與中後排比較；慢走實驗的成行時間差未達顯著，不能說速度永遠無影響。"
+      },
+      "b_snapshot": {
+        "id": "X35-003",
+        "question": "兩群人都朝前走，為什麼從上面看，隊伍卻會橫著斜過去？",
+        "answer_target": "同一時刻的同向行人會聚成條帶，條帶方向並不等於個人要去的方向。兩群人直角相穿的試驗中，人流沿各自路線走，當下排列卻接近斜45度。理論從兩群人的相對前進方向解釋條帶初生的走向；把目標換成兩個窄門，局部方向隨位置改變，實測人點也沿彎曲帶分布。",
+        "scope": "限研究的二組受控步行和初生條帶。橢圓等理論曲線是對排列方向的預測，非追到一個人繞橢圓，亦非任意擁擠程度或所有大街皆然。"
+      }
+    },
+    {
+      "a": "X35-002",
+      "b": "X35-006",
+      "proposed": "distinct",
+      "reason": "雙向陌生人相遇要避讓；社交同伴有靠近及維持互見的額外模型條件。",
+      "a_snapshot": {
+        "id": "X35-002",
+        "question": "迎面走來的兩隊人，為何前排三個人看手機，連沒看手機的人都比較難走成行？",
+        "answer_target": "迎面相遇時，微調方向可讓同向的人接續進入已打開的空隙。把手機任務放在其中一隊前排，兩隊避讓較突然，形成同向行列的時點比無手機時晚；另請前排三人刻意放慢，整體更慢，卻沒測出同樣的成行延遲。這支持彼此預判動作的作用。",
+        "scope": "兩隊各27名男性受試者的指定直走廊。前排效應與中後排比較；慢走實驗的成行時間差未達顯著，不能說速度永遠無影響。"
+      },
+      "b_snapshot": {
+        "id": "X35-006",
+        "question": "三個朋友並肩走，人變多時，為什麼中間那位反而落後半步？",
+        "answer_target": "較空的觀測場地裡，同伴多並排；另一個較密的場地，三人同行的平均位置由中間稍落後，四人同行的中央兩人也偏後。模型若只要求結伴靠近，與再要求兼顧能看見同伴，會得到不同的隊形；後者較接近實測的彎曲排列。",
+        "scope": "兩組街頭觀測的平均相對位置及模型對照。不是對同三人規定准不准說話，也不能只由一張照片判定他們在聊天。"
+      }
+    },
+    {
+      "a": "X35-003",
+      "b": "T4006",
+      "proposed": "distinct",
+      "reason": "固定號誌間的放行時差造綠波，不是兩群行人的相對速度方向決定斜帶。",
+      "a_snapshot": {
+        "id": "X35-003",
+        "question": "兩群人都朝前走，為什麼從上面看，隊伍卻會橫著斜過去？",
+        "answer_target": "同一時刻的同向行人會聚成條帶，條帶方向並不等於個人要去的方向。兩群人直角相穿的試驗中，人流沿各自路線走，當下排列卻接近斜45度。理論從兩群人的相對前進方向解釋條帶初生的走向；把目標換成兩個窄門，局部方向隨位置改變，實測人點也沿彎曲帶分布。",
+        "scope": "限研究的二組受控步行和初生條帶。橢圓等理論曲線是對排列方向的預測，非追到一個人繞橢圓，亦非任意擁擠程度或所有大街皆然。"
+      },
+      "b_snapshot": {
+        "id": "T4006",
+        "question": "一路綠燈為什麼不是把整條路的燈同時變綠？",
+        "answer_target": "各路口綠燈錯開旅行時間，才能接住上一個路口放出的車隊。",
+        "scope": "未被殘留隊列阻住的幹道示意；行速和距離影響時差，不保證任意速度一路綠。雙向通行帶共用號誌且受轉向時段限制，作同題延伸對照。"
+      }
+    },
+    {
+      "a": "X35-003",
+      "b": "T4014",
+      "proposed": "distinct",
+      "reason": "車流邊界進退不同於兩個方向的行人在當下排成條帶。",
+      "a_snapshot": {
+        "id": "X35-003",
+        "question": "兩群人都朝前走，為什麼從上面看，隊伍卻會橫著斜過去？",
+        "answer_target": "同一時刻的同向行人會聚成條帶，條帶方向並不等於個人要去的方向。兩群人直角相穿的試驗中，人流沿各自路線走，當下排列卻接近斜45度。理論從兩群人的相對前進方向解釋條帶初生的走向；把目標換成兩個窄門，局部方向隨位置改變，實測人點也沿彎曲帶分布。",
+        "scope": "限研究的二組受控步行和初生條帶。橢圓等理論曲線是對排列方向的預測，非追到一個人繞橢圓，亦非任意擁擠程度或所有大街皆然。"
+      },
+      "b_snapshot": {
+        "id": "T4014",
+        "question": "車都往前開，塞車的尾端為什麼會往後退？",
+        "answer_target": "進入慢車區與離開慢車區的速率改變隊列邊界，邊界移動方向不必與車相同。",
+        "scope": "流量狀態交界的示意；含事故已移除但隊列仍存在的例子，不把所有壅塞當自發煞車波。"
+      }
+    },
+    {
+      "a": "X35-003",
+      "b": "X35-006",
+      "proposed": "distinct",
+      "reason": "同一社交小群的相對位置與兩個交叉人流的條帶方向不同。",
+      "a_snapshot": {
+        "id": "X35-003",
+        "question": "兩群人都朝前走，為什麼從上面看，隊伍卻會橫著斜過去？",
+        "answer_target": "同一時刻的同向行人會聚成條帶，條帶方向並不等於個人要去的方向。兩群人直角相穿的試驗中，人流沿各自路線走，當下排列卻接近斜45度。理論從兩群人的相對前進方向解釋條帶初生的走向；把目標換成兩個窄門，局部方向隨位置改變，實測人點也沿彎曲帶分布。",
+        "scope": "限研究的二組受控步行和初生條帶。橢圓等理論曲線是對排列方向的預測，非追到一個人繞橢圓，亦非任意擁擠程度或所有大街皆然。"
+      },
+      "b_snapshot": {
+        "id": "X35-006",
+        "question": "三個朋友並肩走，人變多時，為什麼中間那位反而落後半步？",
+        "answer_target": "較空的觀測場地裡，同伴多並排；另一個較密的場地，三人同行的平均位置由中間稍落後，四人同行的中央兩人也偏後。模型若只要求結伴靠近，與再要求兼顧能看見同伴，會得到不同的隊形；後者較接近實測的彎曲排列。",
+        "scope": "兩組街頭觀測的平均相對位置及模型對照。不是對同三人規定准不准說話，也不能只由一張照片判定他們在聊天。"
+      }
+    },
+    {
+      "a": "X35-004",
+      "b": "F10005",
+      "proposed": "distinct",
+      "reason": "顆粒料斗的桿與堵塞拱新位置有專門模型，人體柱前演練所測局部通行時間和整體流率不能換用。",
+      "a_snapshot": {
+        "id": "X35-004",
+        "question": "門前多一根柱子，為什麼有人反而早點到門口，站在柱後的人卻更晚？",
+        "answer_target": "柱子會把正面來的人分到兩旁，靠牆與柱之間形成較快的通行區，柱後原來較直接的路反而受阻。比較相近門距的不同出發位置，有柱會改變餘下通過時間的空間分布；有些位置獲益與其他位置多等可以同時出現，不能把局部變快當作門的總通行量增加。",
+        "scope": "限該研究180位士兵、窄門與指定柱距的演練，著重競爭條件下Fig3。比較群體位置的時間場，非跟同一人反覆跑兩條路。"
+      },
+      "b_snapshot": {
+        "id": "F10005",
+        "question": "料斗出口已經很窄，放一根細桿在上方為什麼有時反而更不容易堵？",
+        "answer_target": "合適位置可讓堵塞拱出現在往下變寬的間隙，稍向下移就失去支撐；放太低也會堵。",
+        "scope": "限3D球粒料斗原研究幾何；不推廣為人群疏散或所有粉末通用方法。"
+      }
+    },
+    {
+      "a": "X35-004",
+      "b": "T4047",
+      "proposed": "distinct",
+      "reason": "機上靠窗旅客讓座中斷走道，非門前柱使不同區域多等或少等。",
+      "a_snapshot": {
+        "id": "X35-004",
+        "question": "門前多一根柱子，為什麼有人反而早點到門口，站在柱後的人卻更晚？",
+        "answer_target": "柱子會把正面來的人分到兩旁，靠牆與柱之間形成較快的通行區，柱後原來較直接的路反而受阻。比較相近門距的不同出發位置，有柱會改變餘下通過時間的空間分布；有些位置獲益與其他位置多等可以同時出現，不能把局部變快當作門的總通行量增加。",
+        "scope": "限該研究180位士兵、窄門與指定柱距的演練，著重競爭條件下Fig3。比較群體位置的時間場，非跟同一人反覆跑兩條路。"
+      },
+      "b_snapshot": {
+        "id": "T4047",
+        "question": "同一排先坐靠走道的人，為什麼可能讓後面整列停下來？",
+        "answer_target": "靠窗乘客需越過已就座者，引發起身與重排；只有干擾傳到仍需通行的走道時才拖慢其他人的登機。",
+        "scope": "比較指定座位、同一排的進入次序；不把每次起身時間直接加成整機延誤，因為部分動作可與放行李同時進行。"
+      }
+    },
+    {
+      "a": "X35-004",
+      "b": "X35-005",
+      "proposed": "distinct",
+      "reason": "單門局部時間場是量到的不同出發位置；雙出口模型問人根據何種線索作選擇。",
+      "a_snapshot": {
+        "id": "X35-004",
+        "question": "門前多一根柱子，為什麼有人反而早點到門口，站在柱後的人卻更晚？",
+        "answer_target": "柱子會把正面來的人分到兩旁，靠牆與柱之間形成較快的通行區，柱後原來較直接的路反而受阻。比較相近門距的不同出發位置，有柱會改變餘下通過時間的空間分布；有些位置獲益與其他位置多等可以同時出現，不能把局部變快當作門的總通行量增加。",
+        "scope": "限該研究180位士兵、窄門與指定柱距的演練，著重競爭條件下Fig3。比較群體位置的時間場，非跟同一人反覆跑兩條路。"
+      },
+      "b_snapshot": {
+        "id": "X35-005",
+        "question": "畫面上明明有條比較短的出口路，為什麼有人反而轉去另一邊？",
+        "answer_target": "螢幕實驗讓每人控制一個行人，改變是否看得見比較短的路，以及較長路線的門寬。能看見短路並未顯著提高選短路比例；現場模擬隊列會變，含兩隊長短及消長等動態資訊的模型，比只靠可見長短和門寬更能描述逐時選擇。",
+        "scope": "頂視、兩出口、周圍電腦行人的任務，以無額外時間壓力時的模型對照為主。模型吻合不證實每人盯住同個指標，不搬用到真災搶逃。"
+      }
+    },
+    {
+      "a": "X35-005",
+      "b": "T4050",
+      "proposed": "distinct",
+      "reason": "Braess在指定成本函數下改網路路段；螢幕受試者在既定布局中逐時因隊列動態改選。",
+      "a_snapshot": {
+        "id": "X35-005",
+        "question": "畫面上明明有條比較短的出口路，為什麼有人反而轉去另一邊？",
+        "answer_target": "螢幕實驗讓每人控制一個行人，改變是否看得見比較短的路，以及較長路線的門寬。能看見短路並未顯著提高選短路比例；現場模擬隊列會變，含兩隊長短及消長等動態資訊的模型，比只靠可見長短和門寬更能描述逐時選擇。",
+        "scope": "頂視、兩出口、周圍電腦行人的任務，以無額外時間壓力時的模型對照為主。模型吻合不證實每人盯住同個指標，不搬用到真災搶逃。"
+      },
+      "b_snapshot": {
+        "id": "T4050",
+        "question": "車子沒有變多，多一條捷徑為什麼反而可能讓大家更慢？",
+        "answer_target": "捷徑改變個別用路者的最佳選路，讓共享的壅塞路段負載增加；沒有單人願意改道的均衡，未必是全體較快的分配。",
+        "scope": "僅論文固定起迄總流量、路段成本依流量增長的模型可能性；不直接判定任何真實城市道路應關閉，也不同於新增旅次的誘發需求。"
+      }
+    },
+    {
+      "a": "X35-005",
+      "b": "T4052",
+      "proposed": "distinct",
+      "reason": "隨機到達與服務導致排隊波動，未測人看哪一種資訊換隊。",
+      "a_snapshot": {
+        "id": "X35-005",
+        "question": "畫面上明明有條比較短的出口路，為什麼有人反而轉去另一邊？",
+        "answer_target": "螢幕實驗讓每人控制一個行人，改變是否看得見比較短的路，以及較長路線的門寬。能看見短路並未顯著提高選短路比例；現場模擬隊列會變，含兩隊長短及消長等動態資訊的模型，比只靠可見長短和門寬更能描述逐時選擇。",
+        "scope": "頂視、兩出口、周圍電腦行人的任務，以無額外時間壓力時的模型對照為主。模型吻合不證實每人盯住同個指標，不搬用到真災搶逃。"
+      },
+      "b_snapshot": {
+        "id": "T4052",
+        "question": "櫃檯平均做得完，為什麼排隊還會忽長忽短？",
+        "answer_target": "平均供需不代表每個時刻相配；隨機到達或處理時間使短時積壓，利用率越靠近滿載，消化積壓的餘裕越少，等待可急升。",
+        "scope": "限穩態同質服務模型的機制；非宣稱任何100%利用率系統都無限排隊，完全規律到達／服務是不同條件，暫態尖峰也要另算。"
+      }
+    },
+    {
+      "a": "X35-005",
+      "b": "T4002",
+      "proposed": "distinct",
+      "reason": "量到的流量並非未實現需求，未區分虛擬行人按長度或隊列消長作選擇。",
+      "a_snapshot": {
+        "id": "X35-005",
+        "question": "畫面上明明有條比較短的出口路，為什麼有人反而轉去另一邊？",
+        "answer_target": "螢幕實驗讓每人控制一個行人，改變是否看得見比較短的路，以及較長路線的門寬。能看見短路並未顯著提高選短路比例；現場模擬隊列會變，含兩隊長短及消長等動態資訊的模型，比只靠可見長短和門寬更能描述逐時選擇。",
+        "scope": "頂視、兩出口、周圍電腦行人的任務，以無額外時間壓力時的模型對照為主。模型吻合不證實每人盯住同個指標，不搬用到真災搶逃。"
+      },
+      "b_snapshot": {
+        "id": "T4002",
+        "question": "路口數到的車變少，為什麼不一定代表需求下降？",
+        "answer_target": "受容量或上游阻塞限制，實際通過量可低於想通過的需求。",
+        "scope": "交叉口量測；必須同看排隊或上游到達，不能用單點車數宣稱需求增減。"
+      }
+    },
+    {
+      "a": "X35-006",
+      "b": "B16001",
+      "proposed": "distinct",
+      "reason": "群體活橋最短路線和被占用工蟻的成本，不涉及同伴彼此視野及行走排列。",
+      "a_snapshot": {
+        "id": "X35-006",
+        "question": "三個朋友並肩走，人變多時，為什麼中間那位反而落後半步？",
+        "answer_target": "較空的觀測場地裡，同伴多並排；另一個較密的場地，三人同行的平均位置由中間稍落後，四人同行的中央兩人也偏後。模型若只要求結伴靠近，與再要求兼顧能看見同伴，會得到不同的隊形；後者較接近實測的彎曲排列。",
+        "scope": "兩組街頭觀測的平均相對位置及模型對照。不是對同三人規定准不准說話，也不能只由一張照片判定他們在聊天。"
+      },
+      "b_snapshot": {
+        "id": "B16001",
+        "question": "螞蟻搭的活橋還能再抄近路，為什麼卻先停下來？",
+        "answer_target": "橋往內移縮短路程，同時加長加寬、占用更多原本可運輸的工蟻；在幾何成本上升與交通收益競爭的模型中，較短路線不等於較高運輸效率。",
+        "scope": "限2015 Eciton hamatum不同平台角度/交通量實驗與成本效益模型；不稱工蟻會算帳、結果是全局最優，或局部加入/退出規則已直接查明。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "X35-S001",
+      "scope": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+      "locator": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "cache": {
+        "file": ".cache/wave35-physics-ring.pdf",
+        "sha256": "d0750bc4b524065c94bed4fbc43f4fc79836440fbeeab7e0fa9d74450fd6c372",
+        "text_file": ".cache/wave35-physics-ring.txt",
+        "text_sha256": "32b1a464b15a1bc22b3baa8f9c2b68808537ec821c3734ba981ec95b4b0ccc6a"
+      }
+    },
+    {
+      "source_id": "X35-S002",
+      "scope": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+      "locator": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "cache": {
+        "file": ".cache/wave35-physics-phone.xml",
+        "sha256": "5c810992e91553d02f6ab89fbcc570e21a2c493d97537c90e0549c5702d674dd",
+        "text_file": ".cache/wave35-physics-phone.txt",
+        "text_sha256": "1d555462f5f3b8e6c3d61cff82c67430010c40ac13df740f9dcea0a4e23673eb"
+      }
+    },
+    {
+      "source_id": "X35-S003",
+      "scope": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+      "locator": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "cache": {
+        "file": ".cache/wave35-physics-lanes.pdf",
+        "sha256": "ec3f1da39d99f0cb3d01eb7c423f28d73bfb96872a63f20953dc6ca2bc1fedda",
+        "text_file": ".cache/wave35-physics-lanes.txt",
+        "text_sha256": "db28b269c59e1f26079f137994be14414c6fbe47613fd714f8ae0bb568c2f352"
+      }
+    },
+    {
+      "source_id": "X35-S004",
+      "scope": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+      "locator": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "cache": {
+        "file": ".cache/wave35-physics-column.pdf",
+        "sha256": "2242d9f283fcc113028731788dc75dd708af06a015538fd16d3ad40a91e1ca41",
+        "text_file": ".cache/wave35-physics-column.txt",
+        "text_sha256": "678473ed83c5d1d8ec7734bd0e9d19d3d7357ef2cdc34348c7ac7d19b78b225e"
+      }
+    },
+    {
+      "source_id": "X35-S005",
+      "scope": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+      "locator": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "cache": {
+        "file": ".cache/wave35-physics-virtual.xml",
+        "sha256": "9163b457c38a7a479fc9ff8e9c15de1717449f277113696537531deb182f3065",
+        "text_file": ".cache/wave35-physics-virtual.txt",
+        "text_sha256": "a9e5c9d29943cd809c53d7661a0e34508b449a746f7728e4ef46e14cdce5b6ef"
+      }
+    },
+    {
+      "source_id": "X35-S006",
+      "scope": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+      "locator": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "cache": {
+        "file": ".cache/wave35-physics-social.xml",
+        "sha256": "d615fb6fa9c08fc8f30c774917057b220c417a299803529379454a05ebfdc8ca",
+        "text_file": ".cache/wave35-physics-social.txt",
+        "text_sha256": "9ce0d7e3da9583598cacc4afa0c346192a59a4c37ba73c0264aa49425247c5df"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "X35-S001",
+      "doi": "10.1016/j.trc.2018.02.005",
+      "primary_body_url": "https://arxiv.org/pdf/1705.01693",
+      "identity_relation": "實讀arXiv:1705.01693v1（2017）作者預印本，arXiv身分頁列後續2018期刊DOI。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、arXiv、補充資料與同文正刊只計一項研究。"
+    },
+    {
+      "source_id": "X35-S002",
+      "doi": "10.1126/sciadv.abe7758",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7968841/fullTextXML",
+      "identity_relation": "Europe PMC原刊全文XML。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、arXiv、補充資料與同文正刊只計一項研究。"
+    },
+    {
+      "source_id": "X35-S003",
+      "doi": "10.1126/science.add8091",
+      "primary_body_url": "https://purehost.bath.ac.uk/ws/portalfiles/portal/268111217/manuscript_merged.pdf",
+      "identity_relation": "University of Bath作者接受稿及同檔補充資料。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、arXiv、補充資料與同文正刊只計一項研究。"
+    },
+    {
+      "source_id": "X35-S004",
+      "doi": "10.1016/j.ssci.2019.09.014",
+      "primary_body_url": "https://www.unav.edu/documents/14434042/23511993/2020_SafetyScience121_394.pdf/63ebdbe2-1298-b884-0650-24fd0b1e926e",
+      "identity_relation": "研究者任職大學典藏原刊PDF，pp394–402。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、arXiv、補充資料與同文正刊只計一項研究。"
+    },
+    {
+      "source_id": "X35-S005",
+      "doi": "10.1098/rsos.140410",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448793/fullTextXML",
+      "identity_relation": "Europe PMC原刊全文XML。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、arXiv、補充資料與同文正刊只計一項研究。"
+    },
+    {
+      "source_id": "X35-S006",
+      "doi": "10.1371/journal.pone.0010047",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2850937/fullTextXML",
+      "identity_relation": "Europe PMC原刊全文XML。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、arXiv、補充資料與同文正刊只計一項研究。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave35-physics-fetch.json",
+      "sha256": "bda8fd515b28bd4a3703a67668939d1c0b72c47baccee8076d861291ba14a924"
+    },
+    {
+      "file": ".cache/wave35-physics-fig-routes.json",
+      "sha256": "200118082c423a4ff4b0b830cc34c37158b55fab624dbf3de1b532369ef55283"
+    }
+  ],
+  "retrieval_failures": [
+    "另一篇出口改選研究之Europe PMC XML（PMC5332561）回500，沒有用搜尋摘錄代替正文；未當成第二份驗證。",
+    "街頭同行Fig4一度抓到同figure內嵌的公式片段，改由完整figure的graphic標籤重取；只以實際黑灰兩列位置圖作目讀圖證。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "X35-S001",
+      "file": ".cache/wave35-physics-ring-p9.png",
+      "sha256": "8f729385b0fd7057ad9d9e71020e07d727936c2bd595ca36f3ec1290839d9cee",
+      "read_scope": "表1 Experiment A各時段速度離散、煞車、流量。"
+    },
+    {
+      "source_id": "X35-S001",
+      "file": ".cache/wave35-physics-ring-p11.png",
+      "sha256": "db03f97eb26d515eb8bd300f20b9218fddef4f069bbf46e537bb2a07886bad99",
+      "read_scope": "Fig3a/b全車位置與速度隨時間；控制開關的同場先後，非兩組隨機試驗。"
+    },
+    {
+      "source_id": "X35-S002",
+      "file": ".cache/wave35-physics-phone-f1.jpg",
+      "sha256": "5b1df86ec832dccef373480f632b7e0466bb6d51eeca32488cad83d560d5313c",
+      "read_scope": "Fig1手機條件位置與對向足跡圖。"
+    },
+    {
+      "source_id": "X35-S002",
+      "file": ".cache/wave35-physics-phone-f4.jpg",
+      "sha256": "0f0aa086811a2e40b805c1228b9ad9758bf756cb58def2195e6e90f3b8407385",
+      "read_scope": "Fig4只慢走條件的速度及成行時點。"
+    },
+    {
+      "source_id": "X35-S003",
+      "file": ".cache/wave35-physics-lanes-p24.png",
+      "sha256": "dcde1b73bbbc7ebae4f85f793ecf2462cd42520c728747a28abf41ed4f8c6b79",
+      "read_scope": "Fig4A/B/C分開瞬時斜帶與行走軌跡；D兩窄出口與理論橢圓疊在人點上。"
+    },
+    {
+      "source_id": "X35-S004",
+      "file": ".cache/wave35-physics-column-p6.png",
+      "sha256": "272f908f116b826b0be926f3d47fba3c861d372c7d437f26e4b5ed2b67654674",
+      "read_scope": "Fig3同一組空間座標的通過時間圖與依門距平方調整的對照；白圓為柱。"
+    },
+    {
+      "source_id": "X35-S005",
+      "file": ".cache/wave35-physics-virtual-f1.jpg",
+      "sha256": "55ca551884283456b7b6a0f4376b7a75f9553e9fd521d76a332c2063cb02a9fb",
+      "read_scope": "Fig1虛擬房間、能見走廊和改寬出口等不同條件。"
+    },
+    {
+      "source_id": "X35-S006",
+      "file": ".cache/wave35-physics-social-actual-f4.jpg",
+      "sha256": "83ce6039068ed26558a3b9b1628858e9b8044a615e464a23579cfc77531320b0",
+      "read_scope": "Fig4向上為步行方向，黑點為依觀測重建的位置，灰色列為模擬。"
+    }
+  ],
+  "reading_limits": [
+    "3份PDF及3份XML指定正文，8份圖/表頁目讀。未觀看補充影片或重新跑人群實驗。",
+    "模型、街頭平均觀測、螢幕行為與實體場地四種證據分開使用；欄位的視覺提案均未製作。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W35P-T01",
+      "body_seconds": 56,
+      "chapter_seconds": [
+        31,
+        25
+      ],
+      "core_seconds": {
+        "X35-001": 56
+      },
+      "max_beat_seconds": 19,
+      "status": "LOCAL_SYNTHETIC_READING_TIME_CHECKED_LAYOUT_NOT_PRODUCED",
+      "reading_evidence": {
+        "file": ".cache/wave35-ring-read.json",
+        "sha256": "ef59b01906cc89743c8ff29418041e749f2313db9a50afb2d28cbeac3733adb2"
+      },
+      "local_read_seconds": 47.996
+    },
+    {
+      "id": "W35P-T02",
+      "body_seconds": 78,
+      "chapter_seconds": [
+        34,
+        44
+      ],
+      "core_seconds": {
+        "X35-002": 34,
+        "X35-003": 44
+      },
+      "max_beat_seconds": 23,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W35P-T03",
+      "body_seconds": 50,
+      "chapter_seconds": [
+        28,
+        22
+      ],
+      "core_seconds": {
+        "X35-004": 50
+      },
+      "max_beat_seconds": 22,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W35P-T04",
+      "body_seconds": 58,
+      "chapter_seconds": [
+        29,
+        29
+      ],
+      "core_seconds": {
+        "X35-005": 58
+      },
+      "max_beat_seconds": 21,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "all_strings_rstrip": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待非作者逐題查核及共同近鄰。"
+  ],
+  "revision_history": [
+    {
+      "before": [
+        {
+          "file": "batches/wave35-physics.json",
+          "sha256": "b30ebe39e91b44eb182f1708b3d80c1f4eb9e4e845a5ffc37f9aeafa7a8bdffa"
+        },
+        {
+          "file": "reviews/wave35-physics-themes.json",
+          "sha256": "ca1fee710127d11dec8947f50d6f527835208ca81a6041fa7589c52788300f9e"
+        },
+        {
+          "file": "reviews/wave35-physics-author.json",
+          "sha256": "e10cf2a414eac6880fe23a91e660622f9a48402748c6efef13e7d70f90023d85"
+        }
+      ],
+      "removed_seconds": 19,
+      "reason": "T02題名涵蓋對向與直角相穿，11秒重述刪除；T03刪8秒收尾再說全室流量，用圖例分開刻度。",
+      "body_seconds_before": [
+        67,
+        89,
+        58,
+        58
+      ],
+      "body_seconds_after": [
+        67,
+        78,
+        50,
+        58
+      ]
+    },
+    {
+      "before": [
+        {
+          "file": "batches/wave35-physics.json",
+          "sha256": "b30ebe39e91b44eb182f1708b3d80c1f4eb9e4e845a5ffc37f9aeafa7a8bdffa"
+        },
+        {
+          "file": "reviews/wave35-physics-themes.json",
+          "sha256": "ad77bb783a929a996e7d2a637e1ec9d43dd39e7b0b32fcb0a851a1445b8d720e"
+        },
+        {
+          "file": "reviews/wave35-physics-author.json",
+          "sha256": "5893abd5416d147325067b03717b7019899b49db30247d8081f5151aa1b13b84"
+        }
+      ],
+      "removed_seconds": 11,
+      "reason": "依根作者本機臺灣華語連讀47.996秒與圖停規劃，67→56。已核四個WAV雜湊、取樣率及影格數，未另行生成或聲音品質評核。"
+    }
+  ]
+}

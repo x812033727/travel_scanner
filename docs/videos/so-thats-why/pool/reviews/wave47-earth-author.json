@@ -1,0 +1,897 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "science_sources",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "scope": "河床方向記憶、混合泥沙輸運、形態調整時間與尺度量測的可見對照；不作天然河流或河道工程的普遍保證。",
+  "baseline": {
+    "head": "437b78bfe5f05294c35c3feb2a2c80fd667d48c6",
+    "selected": 3483,
+    "raw_records": 3871,
+    "not_added": 2038,
+    "themes": 514,
+    "pool_sha256": "34b8cc264a3d98f670bc183fb94f5b3cc8d52cd33abea53d4e3df212161fd160"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave47-earth.json",
+      "sha256": "6be3f441d1522e707e36688a007f02fa5df5e266c5a556fe5f8385ae1cb1e270"
+    },
+    {
+      "file": "reviews/wave47-earth-themes.json",
+      "sha256": "b8ed26841afce4e6f2d1cd80312720abc0d927fa6a012c5f148cb25df39a532f"
+    }
+  ],
+  "counts": {
+    "candidates": 7,
+    "sources": 7,
+    "not_added": 18,
+    "near_pairs": 24,
+    "themes": 5,
+    "proposed_new_cores": 6,
+    "proposed_merges": 1
+  },
+  "near_pairs": [
+    {
+      "a": "S47-001",
+      "b": "G13003",
+      "a_snapshot": {
+        "id": "S47-001",
+        "question": "被反覆沖過的顆粒越來越難動，反轉流向為什麼又容易動了？",
+        "answer_target": "等粒徑床在相同剪切強度下反覆同向作用，移動逐次減少；改反向時又增加。每次交替方向的床雖壓得更密，仍比反覆同向者活躍，顯示僅用密度不足以解釋，還需方向性顆粒配置的記憶。",
+        "scope": "透明油環槽與等徑壓克力球的層流剪切；活動／濃度是量測，方向性接觸結構為解釋，不把全部深層記憶都說反向即可抹除。"
+      },
+      "b_snapshot": {
+        "id": "G13003",
+        "question": "顆粒沒有裝得更多，往旁邊推一推為什麼會卡緊？",
+        "answer_target": "固定裝填量下，剪切重排可建立能承載的摩擦接觸網絡；反向剪切會改變這個網絡，但只有某些先前狀態會退回低於可測應力的鬆散狀態。",
+        "scope": "限均勻剪切近二維圓盤；剪切量與填充率一起決定fragile或shear-jammed，反推不是通用解鎖法。保留量測噪聲判準，不能說所有接觸完全消失。"
+      },
+      "decision": "merge",
+      "reason": "舊題已含剪切重排承力網絡及反向脆弱。等徑油槽壓密／方向交替是有力新對照變體，不能另計核心。"
+    },
+    {
+      "a": "S47-001",
+      "b": "E7022",
+      "a_snapshot": {
+        "id": "S47-001",
+        "question": "被反覆沖過的顆粒越來越難動，反轉流向為什麼又容易動了？",
+        "answer_target": "等粒徑床在相同剪切強度下反覆同向作用，移動逐次減少；改反向時又增加。每次交替方向的床雖壓得更密，仍比反覆同向者活躍，顯示僅用密度不足以解釋，還需方向性顆粒配置的記憶。",
+        "scope": "透明油環槽與等徑壓克力球的層流剪切；活動／濃度是量測，方向性接觸結構為解釋，不把全部深層記憶都說反向即可抹除。"
+      },
+      "b_snapshot": {
+        "id": "E7022",
+        "question": "河床表面的石頭為什麼可能比下面粗，還擋住繼續沖刷？",
+        "answer_target": "特定水流先移走表層細粒，留下較難搬動的粗粒覆蓋；條件變強仍可破壞這層保護。",
+        "scope": "限去細留粗形成護甲的簡化條件；天然粗化也有其他顆粒過程，不把護甲當永久不動或工程防洪保證。"
+      },
+      "decision": "distinct",
+      "reason": "去細留粗與等徑方向記憶不同；此distinct不阻止S47-001併G13003。"
+    },
+    {
+      "a": "S47-001",
+      "b": "G13001",
+      "a_snapshot": {
+        "id": "S47-001",
+        "question": "被反覆沖過的顆粒越來越難動，反轉流向為什麼又容易動了？",
+        "answer_target": "等粒徑床在相同剪切強度下反覆同向作用，移動逐次減少；改反向時又增加。每次交替方向的床雖壓得更密，仍比反覆同向者活躍，顯示僅用密度不足以解釋，還需方向性顆粒配置的記憶。",
+        "scope": "透明油環槽與等徑壓克力球的層流剪切；活動／濃度是量測，方向性接觸結構為解釋，不把全部深層記憶都說反向即可抹除。"
+      },
+      "b_snapshot": {
+        "id": "G13001",
+        "question": "沙堆中央最高，底下承受的壓力為什麼反而可能比較小？",
+        "answer_target": "同種顆粒以集中落料或廣面撒落堆置，可留下不同接觸承力方向；重量向周圍分配，使集中堆置的圓錐堆底壓在中央出現低谷。",
+        "scope": "限無側牆圓錐堆、足夠剛的底座與兩種建堆程序；整個底面積分仍對應總重量，不能畫成重量消失。力鏈方向是解釋，非直接重建該三維堆全部接觸。"
+      },
+      "decision": "distinct",
+      "reason": "堆置方式分配底壓與剪切歷史／反向活動不同，非只換材料的壓力谷。"
+    },
+    {
+      "a": "S47-001",
+      "b": "S47-003",
+      "a_snapshot": {
+        "id": "S47-001",
+        "question": "被反覆沖過的顆粒越來越難動，反轉流向為什麼又容易動了？",
+        "answer_target": "等粒徑床在相同剪切強度下反覆同向作用，移動逐次減少；改反向時又增加。每次交替方向的床雖壓得更密，仍比反覆同向者活躍，顯示僅用密度不足以解釋，還需方向性顆粒配置的記憶。",
+        "scope": "透明油環槽與等徑壓克力球的層流剪切；活動／濃度是量測，方向性接觸結構為解釋，不把全部深層記憶都說反向即可抹除。"
+      },
+      "b_snapshot": {
+        "id": "S47-003",
+        "question": "洪水已經退下來，河床的沙丘為什麼還沒跟著縮小？",
+        "answer_target": "床形改造需要搬移物質的時間。退水後小床形先在大床形上出現，削低舊峰並填入舊谷；同樣流量範圍的快慢洪水比較顯示，快洪水較容易留下明顯形態遲滯。",
+        "scope": "再循環沙槽的階躍及2/8小時三角洪水實驗；慢洪水並非零遲滯。不能用單張床形反算唯一洪峰；退水後部分推算輸砂混用不同尺度，不採為直接量測。"
+      },
+      "decision": "distinct",
+      "reason": "方向記憶的控制是應力方向與密度；床形遲滯控制是流量變化相對搬砂改造時間，不是同一歷史效應泛稱。"
+    },
+    {
+      "a": "S47-002",
+      "b": "F10006",
+      "a_snapshot": {
+        "id": "S47-002",
+        "question": "在同樣強的水流下，加進細砂，怎麼反而搬走更多原來的礫石？",
+        "answer_target": "在同一礫石級配的循環水槽中提高砂含量，礫石比例雖降低，單位時間礫石輸送卻增加。增加程度超過只用混合粒徑變細估算的效果；較低起動門檻及由礫石骨架向細料支撐轉換是研究提出的解釋。",
+        "scope": "比較匹配床面剪應力的混合物；不是加砂前後同一顆石頭的跟拍。砂含量效應與較砂質組沿用資料的限制保留，不給現地加砂建議。"
+      },
+      "b_snapshot": {
+        "id": "F10006",
+        "question": "同材質大小珠子一起搖，大珠子比較重，為什麼仍可能跑到上面？",
+        "answer_target": "輕度振動張開空隙後，小珠較易落進下方空位，反覆壓實造成尺寸分選。",
+        "scope": "限同材質、低氣壓顆粒實驗的填隙區間；不把氣流、不同密度與真實堅果形狀全部忽略。"
+      },
+      "decision": "distinct",
+      "reason": "小粒填隙造成分選沒有回答固定粗料級配、匹配剪應力下粗料通量增大；不以高度分層當輸砂。"
+    },
+    {
+      "a": "S47-002",
+      "b": "P43-005",
+      "a_snapshot": {
+        "id": "S47-002",
+        "question": "在同樣強的水流下，加進細砂，怎麼反而搬走更多原來的礫石？",
+        "answer_target": "在同一礫石級配的循環水槽中提高砂含量，礫石比例雖降低，單位時間礫石輸送卻增加。增加程度超過只用混合粒徑變細估算的效果；較低起動門檻及由礫石骨架向細料支撐轉換是研究提出的解釋。",
+        "scope": "比較匹配床面剪應力的混合物；不是加砂前後同一顆石頭的跟拍。砂含量效應與較砂質組沿用資料的限制保留，不給現地加砂建議。"
+      },
+      "b_snapshot": {
+        "id": "P43-005",
+        "question": "明明一路倒下混合的兩種顆粒，沙堆怎麼自己排出一層深、一層淺？",
+        "answer_target": "顆粒沿斜坡下滾時，小粒能落到流層下方，大粒留在上方。坡腳有顆粒先停下，接著到的顆粒在那裡堆住；停下的邊界一步步向坡上移，把下方細粒和上方粗粒留成成對斜層。",
+        "scope": "限夾板間受測混料；大有棱角、小較圓和相反配置的比較亦換了材料。分層與一般大小粒分在上下游兩區有別。"
+      },
+      "decision": "distinct",
+      "reason": "舊題分選加逆坡停止前緣產生斜層；新題砂含量改變粗料輸送起動條件。"
+    },
+    {
+      "a": "S47-002",
+      "b": "E7022",
+      "a_snapshot": {
+        "id": "S47-002",
+        "question": "在同樣強的水流下，加進細砂，怎麼反而搬走更多原來的礫石？",
+        "answer_target": "在同一礫石級配的循環水槽中提高砂含量，礫石比例雖降低，單位時間礫石輸送卻增加。增加程度超過只用混合粒徑變細估算的效果；較低起動門檻及由礫石骨架向細料支撐轉換是研究提出的解釋。",
+        "scope": "比較匹配床面剪應力的混合物；不是加砂前後同一顆石頭的跟拍。砂含量效應與較砂質組沿用資料的限制保留，不給現地加砂建議。"
+      },
+      "b_snapshot": {
+        "id": "E7022",
+        "question": "河床表面的石頭為什麼可能比下面粗，還擋住繼續沖刷？",
+        "answer_target": "特定水流先移走表層細粒，留下較難搬動的粗粒覆蓋；條件變強仍可破壞這層保護。",
+        "scope": "限去細留粗形成護甲的簡化條件；天然粗化也有其他顆粒過程，不把護甲當永久不動或工程防洪保證。"
+      },
+      "decision": "distinct",
+      "reason": "舊題細料離開留下護甲；新題添加非黏性砂、粗石比例減少卻搬更多。"
+    },
+    {
+      "a": "S47-002",
+      "b": "E11001",
+      "a_snapshot": {
+        "id": "S47-002",
+        "question": "在同樣強的水流下，加進細砂，怎麼反而搬走更多原來的礫石？",
+        "answer_target": "在同一礫石級配的循環水槽中提高砂含量，礫石比例雖降低，單位時間礫石輸送卻增加。增加程度超過只用混合粒徑變細估算的效果；較低起動門檻及由礫石骨架向細料支撐轉換是研究提出的解釋。",
+        "scope": "比較匹配床面剪應力的混合物；不是加砂前後同一顆石頭的跟拍。砂含量效應與較砂質組沿用資料的限制保留，不給現地加砂建議。"
+      },
+      "b_snapshot": {
+        "id": "E11001",
+        "question": "砂礫越多，為什麼不一定把岩床磨得越快？",
+        "answer_target": "可動砂礫撞擊提供磨蝕工具，但覆蓋底床又減少裸露受撞面；兩者競爭使侵蝕不隨砂量一直增加，振盪流聚沙成床形又改變覆蓋效率。",
+        "scope": "限所讀振盪水槽、礫石及泡棉替代岩床實驗；河流只作機制背景，不套用統一最佳砂量或侵蝕率。"
+      },
+      "decision": "distinct",
+      "reason": "磨蝕工具與遮蓋競爭的岩床侵蝕量，不同於粗石本身輸送通量與支撐條件。"
+    },
+    {
+      "a": "S47-002",
+      "b": "E11003",
+      "a_snapshot": {
+        "id": "S47-002",
+        "question": "在同樣強的水流下，加進細砂，怎麼反而搬走更多原來的礫石？",
+        "answer_target": "在同一礫石級配的循環水槽中提高砂含量，礫石比例雖降低，單位時間礫石輸送卻增加。增加程度超過只用混合粒徑變細估算的效果；較低起動門檻及由礫石骨架向細料支撐轉換是研究提出的解釋。",
+        "scope": "比較匹配床面剪應力的混合物；不是加砂前後同一顆石頭的跟拍。砂含量效應與較砂質組沿用資料的限制保留，不給現地加砂建議。"
+      },
+      "b_snapshot": {
+        "id": "E11003",
+        "question": "河底的細泥比砂還小，為什麼反而可能更難被沖起來？",
+        "answer_target": "細粒間黏聚提高從床面啟動的難度；一旦分散進水中，維持輸送所需條件又不同，不能只用單顆重量排序。",
+        "scope": "限Hjulström-Sundborg概念圖的黏聚細粒床；不給任意河川通用流速，也不假設所有小粒子都已黏結。"
+      },
+      "decision": "distinct",
+      "reason": "細泥黏聚與非黏性砂改變礫石門檻不同，不把細粒一律當黏聚。"
+    },
+    {
+      "a": "S47-003",
+      "b": "O3058",
+      "a_snapshot": {
+        "id": "S47-003",
+        "question": "洪水已經退下來，河床的沙丘為什麼還沒跟著縮小？",
+        "answer_target": "床形改造需要搬移物質的時間。退水後小床形先在大床形上出現，削低舊峰並填入舊谷；同樣流量範圍的快慢洪水比較顯示，快洪水較容易留下明顯形態遲滯。",
+        "scope": "再循環沙槽的階躍及2/8小時三角洪水實驗；慢洪水並非零遲滯。不能用單張床形反算唯一洪峰；退水後部分推算輸砂混用不同尺度，不採為直接量測。"
+      },
+      "b_snapshot": {
+        "id": "O3058",
+        "question": "同一條河同一個水位，漲水時和退水時流量為什麼可能不同？",
+        "answer_target": "洪波通過時能量坡度和慣性改變，水位流量關係形成回圈，單一固定曲線無法完整表示。",
+        "scope": "USGS 動態水位流量理論下的非定常洪水；不是每站都有相同方向或大小的遲滯回圈。"
+      },
+      "decision": "distinct",
+      "reason": "同水位流量回圈是非定常水力；新題同流量床形差與削峰填谷時間，量測量不同。"
+    },
+    {
+      "a": "S47-003",
+      "b": "E11010",
+      "a_snapshot": {
+        "id": "S47-003",
+        "question": "洪水已經退下來，河床的沙丘為什麼還沒跟著縮小？",
+        "answer_target": "床形改造需要搬移物質的時間。退水後小床形先在大床形上出現，削低舊峰並填入舊谷；同樣流量範圍的快慢洪水比較顯示，快洪水較容易留下明顯形態遲滯。",
+        "scope": "再循環沙槽的階躍及2/8小時三角洪水實驗；慢洪水並非零遲滯。不能用單張床形反算唯一洪峰；退水後部分推算輸砂混用不同尺度，不採為直接量測。"
+      },
+      "b_snapshot": {
+        "id": "E11010",
+        "question": "小沙丘看似穿過大沙丘，真的是同一堆沙穿透過去嗎？",
+        "answer_target": "碰撞時砂量可由下風向丘轉向上風向丘，兩丘大小與移速互換，於是前後小/大輪廓看似穿透；外觀相似不等於原物質穿透。",
+        "scope": "限Bodélé影像序列與文中模型解釋；非所有碰撞都保持兩丘，無逐粒追蹤，體積由寬度推估有限制。"
+      },
+      "decision": "distinct",
+      "reason": "穿透表象已有，本題快慢洪水及退水次級床形削峰填谷，不另拆床形碰撞。"
+    },
+    {
+      "a": "S47-003",
+      "b": "E11009",
+      "a_snapshot": {
+        "id": "S47-003",
+        "question": "洪水已經退下來，河床的沙丘為什麼還沒跟著縮小？",
+        "answer_target": "床形改造需要搬移物質的時間。退水後小床形先在大床形上出現，削低舊峰並填入舊谷；同樣流量範圍的快慢洪水比較顯示，快洪水較容易留下明顯形態遲滯。",
+        "scope": "再循環沙槽的階躍及2/8小時三角洪水實驗；慢洪水並非零遲滯。不能用單張床形反算唯一洪峰；退水後部分推算輸砂混用不同尺度，不採為直接量測。"
+      },
+      "b_snapshot": {
+        "id": "E11009",
+        "question": "水底兩座一樣大的沙堆，為什麼還沒碰到就越走越遠？",
+        "answer_target": "水槽上游床形的尾流與下游輸砂波動相關，下游較快移動、距離拉大；作者提出尾流波動增強輸砂的機制，不須先以撞擊交換質量解釋。",
+        "scope": "限準二維固底環形水槽、玻璃珠與所讀觀測；精確流場解析受裝置限制，湍流致速鏈為作者解釋，沙漠外推未證實。"
+      },
+      "decision": "distinct",
+      "reason": "尾流相互排斥對比變流量後尺度調整，不是兩丘遠離換地點。"
+    },
+    {
+      "a": "S47-003",
+      "b": "E11004",
+      "a_snapshot": {
+        "id": "S47-003",
+        "question": "洪水已經退下來，河床的沙丘為什麼還沒跟著縮小？",
+        "answer_target": "床形改造需要搬移物質的時間。退水後小床形先在大床形上出現，削低舊峰並填入舊谷；同樣流量範圍的快慢洪水比較顯示，快洪水較容易留下明顯形態遲滯。",
+        "scope": "再循環沙槽的階躍及2/8小時三角洪水實驗；慢洪水並非零遲滯。不能用單張床形反算唯一洪峰；退水後部分推算輸砂混用不同尺度，不採為直接量測。"
+      },
+      "b_snapshot": {
+        "id": "E11004",
+        "question": "岩層大致平放，裡面的細紋為什麼一排排斜著？",
+        "answer_target": "移動沙紋或沙丘的前緣堆積出斜層，後續床形可侵蝕截去一部分，留下平層內成組的斜紋。",
+        "scope": "限沉積形成的交錯層理，判讀需確認層位/構造；不以任一斜線排除後期變形，不反算精確風速。"
+      },
+      "decision": "distinct",
+      "reason": "地層保存斜紋對比仍活動床形調整時間，不能互代答案。"
+    },
+    {
+      "a": "S47-004",
+      "b": "N236",
+      "a_snapshot": {
+        "id": "S47-004",
+        "question": "水量幾乎沒變，實驗裡的小河為什麼會越送沙越寬？",
+        "answer_target": "近固定水量、改變供料量的層流小河資料顯示寬深比增加。結合流體應力、重力與顆粒橫向擴散的模型中，單位寬輸送強度接近上限時，要搬更多料須增加輸送寬度；低供料的弱輸運區則不一定變寬。",
+        "scope": "只談直線單股層流穩態；本篇分析Abramian既有實驗，非新獨立試驗。穩態模型不是河岸即時拓寬的全過程，也未驗天然紊流以寬深比反推泥沙量。"
+      },
+      "b_snapshot": {
+        "id": "N236",
+        "question": "一條河為什麼會突然分成好多條交錯的小河道？",
+        "answer_target": "泥沙負荷與輸送能力失衡造成辮狀分流。",
+        "scope": "Weathering and Erosion"
+      },
+      "decision": "distinct",
+      "reason": "新題直線單股層流穩態供料與寬深比，不把辮化終態另收。"
+    },
+    {
+      "a": "S47-004",
+      "b": "P013",
+      "a_snapshot": {
+        "id": "S47-004",
+        "question": "水量幾乎沒變，實驗裡的小河為什麼會越送沙越寬？",
+        "answer_target": "近固定水量、改變供料量的層流小河資料顯示寬深比增加。結合流體應力、重力與顆粒橫向擴散的模型中，單位寬輸送強度接近上限時，要搬更多料須增加輸送寬度；低供料的弱輸運區則不一定變寬。",
+        "scope": "只談直線單股層流穩態；本篇分析Abramian既有實驗，非新獨立試驗。穩態模型不是河岸即時拓寬的全過程，也未驗天然紊流以寬深比反推泥沙量。"
+      },
+      "b_snapshot": {
+        "id": "P013",
+        "question": "小顆粒在黏液裡慢慢移動，能套用車輛的風阻公式嗎？",
+        "answer_target": "區分黏滯主導與慣性主導流動的尺度，不把平方律套到所有物體。",
+        "scope": "牛頓流體、緩慢運動"
+      },
+      "decision": "distinct",
+      "reason": "Stokes尺度只是背景，未回答自由岸穩態輸送寬度如何配合供料。"
+    },
+    {
+      "a": "S47-004",
+      "b": "S47-006",
+      "a_snapshot": {
+        "id": "S47-004",
+        "question": "水量幾乎沒變，實驗裡的小河為什麼會越送沙越寬？",
+        "answer_target": "近固定水量、改變供料量的層流小河資料顯示寬深比增加。結合流體應力、重力與顆粒橫向擴散的模型中，單位寬輸送強度接近上限時，要搬更多料須增加輸送寬度；低供料的弱輸運區則不一定變寬。",
+        "scope": "只談直線單股層流穩態；本篇分析Abramian既有實驗，非新獨立試驗。穩態模型不是河岸即時拓寬的全過程，也未驗天然紊流以寬深比反推泥沙量。"
+      },
+      "b_snapshot": {
+        "id": "S47-006",
+        "question": "河彎旁邊明明有捷徑，細料怎麼讓水暫時不抄近路？",
+        "answer_target": "點壩後方低槽的弱流帶入細料並沉積，堵住旁支入口，使點壩接上洪氾平原，抑制旁支立刻擴大成捷徑。原實驗的固岸植物與細料一起使曲流能維持、切斷後再長彎，但未永久阻止所有切斷。",
+        "scope": "2009水槽中輕質非黏性塑膠模擬細料且用苜蓿固岸；不是無植物／無砂完整因子對照。最後定流量階段仍漫岸，不說沒有洪氾；不外推整治處方。"
+      },
+      "decision": "distinct",
+      "reason": "直線穩態橫剖面輸送限制，與曲流壩後槽填入口的動態觀測不同。"
+    },
+    {
+      "a": "S47-005",
+      "b": "N204",
+      "a_snapshot": {
+        "id": "S47-005",
+        "question": "石頭已經磨掉不少重量，尺量長寬卻可能幾乎沒變？",
+        "answer_target": "角狀石塊碰撞平面時先削掉突出的角與邊，兩端原平面仍可保住主要軸長，因此質量持續流失不必同步變短。原平面逐漸消失後，圓滑物體的軸長才進入另一階段；四次鼓內石灰岩實驗與幾何模型呈現這種分段。",
+        "scope": "單顆石灰岩塊被提起落下撞鼓壁，模型近似大平面、各方向碰撞；不是所有河石一定如此，碎裂和滑磨另有條件。體積由質量換算，不能把兩者列為兩個獨立儀器驗證。"
+      },
+      "b_snapshot": {
+        "id": "N204",
+        "question": "海灘上的沙，為什麼可能是從很遠的山上來的？",
+        "answer_target": "風化、河流搬運與波浪再磨蝕。",
+        "scope": "How does sand form?"
+      },
+      "decision": "distinct",
+      "reason": "一般風化搬運磨蝕沒有軸長不變而質量流失的兩階段量測，新問題是量尺與秤矛盾。"
+    },
+    {
+      "a": "S47-005",
+      "b": "S46-002",
+      "a_snapshot": {
+        "id": "S47-005",
+        "question": "石頭已經磨掉不少重量，尺量長寬卻可能幾乎沒變？",
+        "answer_target": "角狀石塊碰撞平面時先削掉突出的角與邊，兩端原平面仍可保住主要軸長，因此質量持續流失不必同步變短。原平面逐漸消失後，圓滑物體的軸長才進入另一階段；四次鼓內石灰岩實驗與幾何模型呈現這種分段。",
+        "scope": "單顆石灰岩塊被提起落下撞鼓壁，模型近似大平面、各方向碰撞；不是所有河石一定如此，碎裂和滑磨另有條件。體積由質量換算，不能把兩者列為兩個獨立儀器驗證。"
+      },
+      "b_snapshot": {
+        "id": "S46-002",
+        "question": "雪粒仍圓圓的，就能說它一直待在均勻的溫度裡嗎？",
+        "answer_target": "讓雪柱上下的冷暖反覆互換，微CT仍見圓粒而非持續長出稜角，但冰體在不同位置消失與再形成。方向交替使形貌不唯一對應於恒定或均勻溫度；圓粒也可能經歷很活躍的重結晶。",
+        "scope": "三個小雪柱的受控周期，只有完成位置配準的s3可估算質量替換；不是單張雪照能測出實際輸運速率。"
+      },
+      "decision": "distinct",
+      "reason": "雪晶圓化是溫度梯度重結晶；石塊碰撞削角的幾何量測不同。"
+    },
+    {
+      "a": "S47-006",
+      "b": "E7007",
+      "a_snapshot": {
+        "id": "S47-006",
+        "question": "河彎旁邊明明有捷徑，細料怎麼讓水暫時不抄近路？",
+        "answer_target": "點壩後方低槽的弱流帶入細料並沉積，堵住旁支入口，使點壩接上洪氾平原，抑制旁支立刻擴大成捷徑。原實驗的固岸植物與細料一起使曲流能維持、切斷後再長彎，但未永久阻止所有切斷。",
+        "scope": "2009水槽中輕質非黏性塑膠模擬細料且用苜蓿固岸；不是無植物／無砂完整因子對照。最後定流量階段仍漫岸，不說沒有洪氾；不外推整治處方。"
+      },
+      "b_snapshot": {
+        "id": "E7007",
+        "question": "河水一直往下流，河道為什麼還會慢慢往旁邊搬？",
+        "answer_target": "彎道外側較強侵蝕、內側沉積共同搬移河道邊界，河水下流和河曲側移不是同一方向的運動。",
+        "scope": "限可侵蝕河岸的曲流模型；工程固定岸、岩盤河與複雜三維流不按單一簡圖預測。"
+      },
+      "decision": "distinct",
+      "reason": "內外彎侵蝕堆積側移已收，新題壩後低槽封入口抑制立即捷徑，不重收曲流一般式。"
+    },
+    {
+      "a": "S47-006",
+      "b": "E7008",
+      "a_snapshot": {
+        "id": "S47-006",
+        "question": "河彎旁邊明明有捷徑，細料怎麼讓水暫時不抄近路？",
+        "answer_target": "點壩後方低槽的弱流帶入細料並沉積，堵住旁支入口，使點壩接上洪氾平原，抑制旁支立刻擴大成捷徑。原實驗的固岸植物與細料一起使曲流能維持、切斷後再長彎，但未永久阻止所有切斷。",
+        "scope": "2009水槽中輕質非黏性塑膠模擬細料且用苜蓿固岸；不是無植物／無砂完整因子對照。最後定流量階段仍漫岸，不說沒有洪氾；不外推整治處方。"
+      },
+      "b_snapshot": {
+        "id": "E7008",
+        "question": "河床越堆越高，為什麼有時會整條河改走旁邊？",
+        "answer_target": "河床與天然堤積高增加相對附近低地的水勢；洪水逸出可侵蝕或重占較有坡降優勢的路徑，形成改道。",
+        "scope": "限積高河道與氾濫平原的avulsion機制；不是每次溢堤都永久改道，不用固定一個水深閾值或預報年份。"
+      },
+      "decision": "distinct",
+      "reason": "淤高增加旁路優勢促改道，與細料堵入口抑制捷徑是不同條件；不宣稱永不改道。"
+    },
+    {
+      "a": "S47-006",
+      "b": "E11005",
+      "a_snapshot": {
+        "id": "S47-006",
+        "question": "河彎旁邊明明有捷徑，細料怎麼讓水暫時不抄近路？",
+        "answer_target": "點壩後方低槽的弱流帶入細料並沉積，堵住旁支入口，使點壩接上洪氾平原，抑制旁支立刻擴大成捷徑。原實驗的固岸植物與細料一起使曲流能維持、切斷後再長彎，但未永久阻止所有切斷。",
+        "scope": "2009水槽中輕質非黏性塑膠模擬細料且用苜蓿固岸；不是無植物／無砂完整因子對照。最後定流量階段仍漫岸，不說沒有洪氾；不外推整治處方。"
+      },
+      "b_snapshot": {
+        "id": "E11005",
+        "question": "河口自己堆出的沙洲，怎麼又把河水分成兩條路？",
+        "answer_target": "出河口的射流擴散減速而沉積；沙洲逐漸淺化後增加上游壅水並迫使流動繞側，降低頂部輸砂能力、促進加高與兩側通道。",
+        "scope": "限所讀河流主導、無強潮浪的模型與歷史圖像；不是所有分汊皆由此形成，不套用模型深度比例當普遍門檻。"
+      },
+      "decision": "distinct",
+      "reason": "河口堆壩迫分流與曲流旁槽封入口不同，不只重述水慢沉積。"
+    },
+    {
+      "a": "S47-007",
+      "b": "W5019",
+      "a_snapshot": {
+        "id": "S47-007",
+        "question": "水流沒加強，狹槽底下的玻璃珠怎麼忽然一群接一群動起來？",
+        "answer_target": "近固定水流下改變玻璃珠餵入頻率，撞擊可伴隨表層一群顆粒啟動；提高供料主要提高群集出現頻率，而群集大小分布近似不變。低供料較長的等待使輸送顯得一陣一陣，不能只用水流忽強忽弱解釋。",
+        "scope": "準二維狹槽、厘米級玻璃珠、高慣性碰撞條件。群集按位移和相鄰距離定義；延時與遠距傳力使逐撞擊配對困難，不宣稱每一顆都找到唯一原因。"
+      },
+      "b_snapshot": {
+        "id": "W5019",
+        "question": "水裡顆粒更多、總重量更重，為什麼整群反而可能沉得較慢？",
+        "answer_target": "顆粒擁擠縮減相對流動空間，沉降互相干擾。",
+        "scope": "限高濃度懸浮群體的阻礙沉降；不套每種污泥或把總重當單粒重量。"
+      },
+      "decision": "distinct",
+      "reason": "擁擠沉降阻礙與撞擊帶動表層群集的頻率／規模不同。"
+    },
+    {
+      "a": "S47-007",
+      "b": "F10006",
+      "a_snapshot": {
+        "id": "S47-007",
+        "question": "水流沒加強，狹槽底下的玻璃珠怎麼忽然一群接一群動起來？",
+        "answer_target": "近固定水流下改變玻璃珠餵入頻率，撞擊可伴隨表層一群顆粒啟動；提高供料主要提高群集出現頻率，而群集大小分布近似不變。低供料較長的等待使輸送顯得一陣一陣，不能只用水流忽強忽弱解釋。",
+        "scope": "準二維狹槽、厘米級玻璃珠、高慣性碰撞條件。群集按位移和相鄰距離定義；延時與遠距傳力使逐撞擊配對困難，不宣稱每一顆都找到唯一原因。"
+      },
+      "b_snapshot": {
+        "id": "F10006",
+        "question": "同材質大小珠子一起搖，大珠子比較重，為什麼仍可能跑到上面？",
+        "answer_target": "輕度振動張開空隙後，小珠較易落進下方空位，反覆壓實造成尺寸分選。",
+        "scope": "限同材質、低氣壓顆粒實驗的填隙區間；不把氣流、不同密度與真實堅果形狀全部忽略。"
+      },
+      "decision": "distinct",
+      "reason": "乾式振動尺寸分選不同於固定水流、同混合物改供料頻率的碰撞群集。"
+    },
+    {
+      "a": "S47-007",
+      "b": "S47-002",
+      "a_snapshot": {
+        "id": "S47-007",
+        "question": "水流沒加強，狹槽底下的玻璃珠怎麼忽然一群接一群動起來？",
+        "answer_target": "近固定水流下改變玻璃珠餵入頻率，撞擊可伴隨表層一群顆粒啟動；提高供料主要提高群集出現頻率，而群集大小分布近似不變。低供料較長的等待使輸送顯得一陣一陣，不能只用水流忽強忽弱解釋。",
+        "scope": "準二維狹槽、厘米級玻璃珠、高慣性碰撞條件。群集按位移和相鄰距離定義；延時與遠距傳力使逐撞擊配對困難，不宣稱每一顆都找到唯一原因。"
+      },
+      "b_snapshot": {
+        "id": "S47-002",
+        "question": "在同樣強的水流下，加進細砂，怎麼反而搬走更多原來的礫石？",
+        "answer_target": "在同一礫石級配的循環水槽中提高砂含量，礫石比例雖降低，單位時間礫石輸送卻增加。增加程度超過只用混合粒徑變細估算的效果；較低起動門檻及由礫石骨架向細料支撐轉換是研究提出的解釋。",
+        "scope": "比較匹配床面剪應力的混合物；不是加砂前後同一顆石頭的跟拍。砂含量效應與較砂質組沿用資料的限制保留，不給現地加砂建議。"
+      },
+      "decision": "distinct",
+      "reason": "改組成看粗料門檻，對比同混合物改供料率看群集大小近不變；控制與觀測量不同。"
+    }
+  ],
+  "proposed_aliases": [
+    {
+      "duplicate_id": "S47-001",
+      "canonical_id": "G13003",
+      "reason": "舊題已含剪切重排承力網絡及反向脆弱。等徑油槽壓密／方向交替是有力新對照變體，不能另計核心。"
+    }
+  ],
+  "dedup_reading": {
+    "scope": "搜尋全raw與not_added相關字詞；讀117相關抽取與74物理近對抽取，逐讀上述24對完整問答範圍；非全庫外站重查。",
+    "cache_files": [
+      ".cache/wave47-earth-old-matches.json",
+      ".cache/wave47-earth-physical-near.json"
+    ],
+    "common_semantic_status": "等待root最終共同top5與非作者判斷；不把作者distinct當正式核准。"
+  },
+  "source_identity": [
+    {
+      "id": "S47-S001",
+      "doi": "10.1103/PhysRevResearch.4.L022055",
+      "version": "2022正式刊本4,L022055；作者大學同文PDF",
+      "canonical_url": "https://doi.org/10.1103/PhysRevResearch.4.L022055",
+      "read_copy": "https://sites.fem.unicamp.br/~franklin/images/cunez_et_al%282022%29.pdf",
+      "old_exact_doi_matches": [],
+      "relationship": "原刊與作者／典藏／XML副本為同工作，不分計獨立佐證。",
+      "limits": "DOI未命中不證明沒有未登錄的同文，另按人工近對與共同檢索覆核。"
+    },
+    {
+      "id": "S47-S002",
+      "doi": "10.1029/2001WR000683",
+      "version": "2001正式刊本37(12)3349–3358；大學託管副本",
+      "canonical_url": "https://doi.org/10.1029/2001WR000683",
+      "read_copy": "https://calm.geo.berkeley.edu/geomorph/wilcock/WKCexpStudy.pdf",
+      "old_exact_doi_matches": [],
+      "relationship": "原刊與作者／典藏／XML副本為同工作，不分計獨立佐證。",
+      "limits": "DOI未命中不證明沒有未登錄的同文，另按人工近對與共同檢索覆核。"
+    },
+    {
+      "id": "S47-S003",
+      "doi": "10.1002/wrcr.20093",
+      "version": "2013正式原刊49(3)1314–1333",
+      "canonical_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093",
+      "read_copy": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093",
+      "old_exact_doi_matches": [],
+      "relationship": "原刊與作者／典藏／XML副本為同工作，不分計獨立佐證。",
+      "limits": "DOI未命中不證明沒有未登錄的同文，另按人工近對與共同檢索覆核。"
+    },
+    {
+      "id": "S47-S004",
+      "doi": "10.1073/pnas.2111215118",
+      "version": "PNAS2021同工作之arXiv:2203.03758v1作者稿（頁首2022-03-09；上傳2022-03-07）",
+      "canonical_url": "https://arxiv.org/abs/2203.03758v1",
+      "read_copy": "https://arxiv.org/pdf/2203.03758",
+      "old_exact_doi_matches": [],
+      "relationship": "2021論文與2022作者上傳同工作；沿用Abramian2019實驗，不是又一獨立實驗。",
+      "limits": "DOI未命中不證明沒有未登錄的同文，另按人工近對與共同檢索覆核。"
+    },
+    {
+      "id": "S47-S005",
+      "doi": "10.1371/journal.pone.0088657",
+      "version": "2014正式刊本9(2)e88657；原刊PDF及Europe PMC同文XML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0088657",
+      "read_copy": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0088657&type=printable",
+      "old_exact_doi_matches": [],
+      "relationship": "原刊與作者／典藏／XML副本為同工作，不分計獨立佐證。",
+      "limits": "DOI未命中不證明沒有未登錄的同文，另按人工近對與共同檢索覆核。"
+    },
+    {
+      "id": "S47-S006",
+      "doi": "10.1073/pnas.0909417106",
+      "version": "2009正式刊本106(40)16936–16941；PMC同文HTML",
+      "canonical_url": "https://doi.org/10.1073/pnas.0909417106",
+      "read_copy": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2761352/",
+      "old_exact_doi_matches": [],
+      "relationship": "原刊與作者／典藏／XML副本為同工作，不分計獨立佐證。",
+      "limits": "DOI未命中不證明沒有未登錄的同文，另按人工近對與共同檢索覆核。"
+    },
+    {
+      "id": "S47-S007",
+      "doi": "10.5194/esurf-6-1089-2018",
+      "version": "2018正式刊本6,1089–1099",
+      "canonical_url": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.html",
+      "read_copy": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.pdf",
+      "old_exact_doi_matches": [],
+      "relationship": "原刊與作者／典藏／XML副本為同工作，不分計獨立佐證。",
+      "limits": "DOI未命中不證明沒有未登錄的同文，另按人工近對與共同檢索覆核。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "S47-S001",
+      "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+      "reading_scope": "PDF pp2–5，等粒徑油槽方法、base/alternating cases、Figs2–3及較強應力掃描的限制。",
+      "limitations": "1.5 mm壓克力球、透明油、層流；未直接量每顆接觸力，方向性結構為由控制結果作的解釋；不將臨界倍數移植天然河流。",
+      "author_cache": {
+        "file": ".cache/wave47-earth-hardening.pdf",
+        "sha256": "b0e32b30eef0b20f8864608eb9630f2ba4c8aed2db71465ec600a4e4afcbc7b1",
+        "text_file": ".cache/wave47-earth-hardening.txt",
+        "text_sha256": "d8da257342dbeb49422a0d5681d5e6a76adec7bbfa0b6a9434211bfcdda83213"
+      }
+    },
+    {
+      "source_id": "S47-S002",
+      "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+      "reading_scope": "PDF pp1–3方法與材料、pp7–10 §§4–7，Fig4(c–d)、Figs5–6尺度比較及結論。",
+      "limitations": "五混合物中最砂質組沿用早期同礫石研究且砂級配稍不同；表層只在每次結束量測。骨架到基質支撐與門檻降低是解釋，非逐接觸力實測；不提供向河中加砂的操作建議。",
+      "author_cache": {
+        "file": ".cache/wave47-earth-sand.pdf",
+        "sha256": "6e11a07c24fd83fa73cbb18bef44440130fb615b89afcfa7867e67813eb5b76f",
+        "text_file": ".cache/wave47-earth-sand.txt",
+        "text_sha256": "b78f60fb3009d452bda28cb39639df0d22d605b4a64292425134df307db34279"
+      }
+    },
+    {
+      "source_id": "S47-S003",
+      "read_via": "原刊Web實際回傳指定正文與圖說；快取是工具文字摘取範圍，不冒充全篇HTML，並記直接UA403。",
+      "reading_scope": "原刊Web L164–249（§§2–4.3、Figs3–6圖說）與L411–470（§§7–8.2）；另讀初始方法與人工流量誤差段。",
+      "limitations": "直接UA原刊403，改Web指定正文回傳並留存；未另取得圖版影像，圖只讀圖說。退水階段高度與波速混尺度會使推算輸砂偏誤，不能把該推算畫成直接量測；慢洪水也有小遲滯，不稱完全沒有。",
+      "author_cache": {
+        "file": ".cache/wave47-earth-bedform-excerpts.txt",
+        "sha256": "596011ea081a6d7f98768577eed7400f82d212f13a50fa8219d5145d88d8ab3a",
+        "text_file": ".cache/wave47-earth-bedform-excerpts.txt",
+        "text_sha256": "596011ea081a6d7f98768577eed7400f82d212f13a50fa8219d5145d88d8ab3a"
+      }
+    },
+    {
+      "source_id": "S47-S004",
+      "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+      "reading_scope": "作者稿PDF pp1–5，§I既有實驗與Figs1–3，p8形態／供砂分析；正文對弱輸運及Parker regime的區分。",
+      "limitations": "沿用Abramian等既有實驗，不能說本篇另做獨立一批驗證。直線單股、層流、穩態；低供砂弱輸運區可增加通量而幾乎不變形。模型不描述到達穩態路徑，天然紊流仍待驗。",
+      "author_cache": {
+        "file": ".cache/wave47-earth-shape.pdf",
+        "sha256": "d397365a23408df036065eaa2bde4a437f693a520395a00ef6c185601baf129c",
+        "text_file": ".cache/wave47-earth-shape-extra.txt",
+        "text_sha256": "a4a4ab0ee3da5338de67de0e4dcfd5426d817731864fd415edd0093a4c1c535c"
+      }
+    },
+    {
+      "source_id": "S47-S005",
+      "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+      "reading_scope": "XML Results、Discussion and Conclusions、Laboratory experiments；原刊PDF p3 Figs2–3，Fig4圖說。",
+      "limitations": "四次單塊實驗、鼓內提起落下減少滑磨；不是自然河水同步追蹤。體積由質量與均質密度換算；模型不含碎裂，不把外形直接換成旅行公里數或年齡。",
+      "author_cache": {
+        "file": ".cache/wave47-earth-pebble.pdf",
+        "sha256": "ad98d730994a3fe371ac24e0951bcb868923192be8f8894fef6e48a9b1c6b1f2",
+        "text_file": ".cache/wave47-earth-pebble.txt",
+        "text_sha256": "6c6c4c5edb1222c6fbfeeb1962b44904ddf50a7c1df4390bfb59e4dd5feefe8e"
+      }
+    },
+    {
+      "source_id": "S47-S006",
+      "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+      "reading_scope": "Experimental Procedures、Results、Discussion；抽文P020–064，Fig3–5圖說，Fig3原圖另目讀。",
+      "limitations": "同時有苜蓿固岸與粗細供料，非只開關一個變因的完整因子試驗；細料是輕質非黏性塑膠。最後定流量仍有漫岸，且仍發生切斷，不稱加細料可永久禁止改道。",
+      "author_cache": {
+        "file": ".cache/wave47-earth-meander.html",
+        "sha256": "84af7d6dd62012d1af14e4bbc841c0f3f12119c7452804f914f4467750fccfe6",
+        "text_file": ".cache/wave47-earth-meander-body.txt",
+        "text_sha256": "a2ec265824d7dfd2789ce1e682a4d88e9255cd1ac712fd61c53bc270c0f7330b"
+      }
+    },
+    {
+      "source_id": "S47-S007",
+      "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+      "reading_scope": "PDF pp3–8 §§2–3，Fig3事件定義、Figs5–9供料率／群大小與碰撞證據、Fig10圖說及能量估算起段。",
+      "limitations": "準二維、厘米級玻璃珠、高Stokes數；幾乎所有啟動伴隨撞擊，但不能逐顆唯一配對某次撞擊，能量是速度差估算。正文坡度與表1數值不一，本題不採坡度數字；不聲稱所有河床都是撞擊主導。",
+      "author_cache": {
+        "file": ".cache/wave47-earth-collective.pdf",
+        "sha256": "c3d7198f7daa007886884d489eb428e69e3a1755c5e02e4ec960fbd89f661395",
+        "text_file": ".cache/wave47-earth-collective.txt",
+        "text_sha256": "ce9e852487dccda24060795ad02281d8d3ca3f4996e4eb6f20eb18456388867c"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "name": "hardening",
+      "url": "https://sites.fem.unicamp.br/~franklin/images/cunez_et_al%282022%29.pdf",
+      "status": 200,
+      "file": ".cache/wave47-earth-hardening.pdf",
+      "sha256": "b0e32b30eef0b20f8864608eb9630f2ba4c8aed2db71465ec600a4e4afcbc7b1",
+      "text_file": ".cache/wave47-earth-hardening.txt",
+      "text_sha256": "d8da257342dbeb49422a0d5681d5e6a76adec7bbfa0b6a9434211bfcdda83213",
+      "bytes": 2457834
+    },
+    {
+      "name": "sand",
+      "url": "https://calm.geo.berkeley.edu/geomorph/wilcock/WKCexpStudy.pdf",
+      "status": 200,
+      "file": ".cache/wave47-earth-sand.pdf",
+      "sha256": "6e11a07c24fd83fa73cbb18bef44440130fb615b89afcfa7867e67813eb5b76f",
+      "text_file": ".cache/wave47-earth-sand.txt",
+      "text_sha256": "b78f60fb3009d452bda28cb39639df0d22d605b4a64292425134df307db34279",
+      "bytes": 235233
+    },
+    {
+      "name": "bedform",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "name": "shape",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8670519/fullTextXML",
+      "error": "HTTP Error 500: "
+    },
+    {
+      "name": "pebble",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3922984/fullTextXML",
+      "status": 200,
+      "file": ".cache/wave47-earth-pebble.xml",
+      "sha256": "8e821856af3cee19ff044f4d697a67c270fdf463264ae1565a538cf07b9bbe84",
+      "text_file": ".cache/wave47-earth-pebble.txt",
+      "text_sha256": "6c6c4c5edb1222c6fbfeeb1962b44904ddf50a7c1df4390bfb59e4dd5feefe8e",
+      "bytes": 82250
+    },
+    {
+      "name": "meander",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2761352/fullTextXML",
+      "error": "HTTP Error 500: "
+    },
+    {
+      "name": "collective",
+      "url": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.pdf",
+      "status": 200,
+      "file": ".cache/wave47-earth-collective.pdf",
+      "sha256": "c3d7198f7daa007886884d489eb428e69e3a1755c5e02e4ec960fbd89f661395",
+      "text_file": ".cache/wave47-earth-collective.txt",
+      "text_sha256": "ce9e852487dccda24060795ad02281d8d3ca3f4996e4eb6f20eb18456388867c",
+      "bytes": 9653002
+    },
+    {
+      "name": "shape",
+      "url": "https://arxiv.org/pdf/2203.03758",
+      "status": 200,
+      "file": ".cache/wave47-earth-shape.pdf",
+      "sha256": "d397365a23408df036065eaa2bde4a437f693a520395a00ef6c185601baf129c",
+      "text_file": ".cache/wave47-earth-shape-extra.txt",
+      "text_sha256": "a4a4ab0ee3da5338de67de0e4dcfd5426d817731864fd415edd0093a4c1c535c",
+      "bytes": 7553477
+    },
+    {
+      "name": "meander",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2761352/",
+      "status": 200,
+      "file": ".cache/wave47-earth-meander.html",
+      "sha256": "84af7d6dd62012d1af14e4bbc841c0f3f12119c7452804f914f4467750fccfe6",
+      "text_file": ".cache/wave47-earth-meander-extra.txt",
+      "text_sha256": "20b80b14a0c32527180f3aee4dc6776f1264023287572ef59b180b8c32f7c716",
+      "bytes": 168601
+    },
+    {
+      "name": "pebble",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0088657&type=printable",
+      "status": 200,
+      "file": ".cache/wave47-earth-pebble.pdf",
+      "sha256": "ad98d730994a3fe371ac24e0951bcb868923192be8f8894fef6e48a9b1c6b1f2",
+      "text_file": ".cache/wave47-earth-pebble-extra.txt",
+      "text_sha256": "d863062a5ebfac3e53b20eb53f39e0439c3786b145fb99910500304a53af19f0",
+      "bytes": 679064
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "name": "bedform",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "name": "shape",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8670519/fullTextXML",
+      "error": "HTTP Error 500: "
+    },
+    {
+      "name": "meander",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2761352/fullTextXML",
+      "error": "HTTP Error 500: "
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8670519/",
+      "route": "web.open",
+      "result": "回驗證頁不作正文，改讀arXiv有效PDF"
+    }
+  ],
+  "visual_reads": [
+    {
+      "source_id": "S47-S001",
+      "file": ".cache/wave47-earth-hardening-p3.png",
+      "sha256": "1a43fe0c95b14833ac742d74aeb666c9bfa771d381d720efa3eb12f43d9220c1",
+      "read": "PDF p3 Fig2活動與濃度"
+    },
+    {
+      "source_id": "S47-S001",
+      "file": ".cache/wave47-earth-hardening-p4.png",
+      "sha256": "2bd717ec82fef72a56846bffa38233a97a88a8707c994f6f3d04dfb7cf3687f2",
+      "read": "PDF p4 Fig3方向反轉與活動／壓密"
+    },
+    {
+      "source_id": "S47-S002",
+      "file": ".cache/wave47-earth-sand-p7.png",
+      "sha256": "67a674595c841dc99846f28775b717a66bc14df89a6c8b4f5e6a3f44a1ff03d5",
+      "read": "PDF p7 Fig4，相同剪應力的礫石通量"
+    },
+    {
+      "source_id": "S47-S004",
+      "file": ".cache/wave47-earth-shape-p4.png",
+      "sha256": "795de6f59f747593584e2648a01084c98970ae613ba12f2cb7aeaefb2fb19023",
+      "read": "作者稿p4 Fig2，剖面和實驗／模型分框"
+    },
+    {
+      "source_id": "S47-S004",
+      "file": ".cache/wave47-earth-shape-p5.png",
+      "sha256": "3bba94b4573d600a54e55307bd106f9ee51765dcff78eb26585f1d4154ddf896",
+      "read": "作者稿p5 Fig3，寬深比與輸送資料點和理論線"
+    },
+    {
+      "source_id": "S47-S005",
+      "file": ".cache/wave47-earth-pebble-p3.png",
+      "sha256": "1f7b9fd5fc54062d1715b85455e953f19fbe2ed2f6435efad625e431db90547f",
+      "read": "PDF p3 Figs2–3，模型與三方向照片區分"
+    },
+    {
+      "source_id": "S47-S006",
+      "file": ".cache/wave47-earth-meander-fig3.jpg",
+      "sha256": "4f584adc1806cc59b8fc688ad4e4bb8450a908af41b14c25a6f7d24eb690b343",
+      "read": "Fig3白色細料、C旁支與F沉積位置"
+    },
+    {
+      "source_id": "S47-S007",
+      "file": ".cache/wave47-earth-collective-p5.png",
+      "sha256": "db12284614a2d4eff025519266f34e1377d19d9f8e77a80a83a7b8e6585eba88",
+      "read": "PDF p5 Fig3四時刻示意"
+    },
+    {
+      "source_id": "S47-S007",
+      "file": ".cache/wave47-earth-collective-p7.png",
+      "sha256": "c5283d97a4c5ba38ae1fe834660dc5ab0495a7663cf315864e85ddb5825bc3fe",
+      "read": "PDF p7 Figs7–9群大小及等待時間"
+    }
+  ],
+  "sample_artifact": {
+    "theme_id": "W47S-T01",
+    "file": ".cache/w47-sample-earth.json",
+    "sha256": "941771cca0379c6287593fbf9c0faf457b240fcf3c44a67dc68c2aa9c4aaac76",
+    "characters": 234,
+    "status": "root離線完成連讀；未由作者產音訊。",
+    "read_seconds": 58.573,
+    "segment_read_seconds": [
+      19.427,
+      19.138,
+      20.007
+    ],
+    "sample_to_chapter_segments": [
+      [
+        0,
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "budget_seconds": 70
+  },
+  "timing_checks": [
+    {
+      "id": "W47S-T01",
+      "body_seconds": 70,
+      "sum_chapters": 70,
+      "single_core_total": 70,
+      "cap": 85
+    },
+    {
+      "id": "W47S-T02",
+      "body_seconds": 73,
+      "sum_chapters": 73,
+      "single_core_total": 73,
+      "cap": 85
+    },
+    {
+      "id": "W47S-T03",
+      "body_seconds": 63,
+      "sum_chapters": 63,
+      "single_core_total": 63,
+      "cap": 80
+    },
+    {
+      "id": "W47S-T04",
+      "body_seconds": 78,
+      "sum_chapters": 78,
+      "single_core_total": 78,
+      "cap": 90
+    },
+    {
+      "id": "W47S-T05",
+      "body_seconds": 63,
+      "sum_chapters": 63,
+      "single_core_total": 63,
+      "cap": 80
+    }
+  ],
+  "reserve_candidate_ids": [
+    "S47-004",
+    "S47-006"
+  ],
+  "limits": [
+    "選題級與紙上片案，非完整旁白逐句通過，未核准製作。",
+    "未看補充影片；床形論文只讀指定正文與圖說，其他圖版範圍逐條列。",
+    "外站失敗與成功副本分開；同文不可倍增獨立證據。"
+  ],
+  "revision_history": [
+    {
+      "reason": "root要求油槽題名不稱水流；玻璃珠題名收窄狹槽，問答機制不動。另人工近對提S47-001→G13003變體，未改中央。",
+      "before_batch_sha256": "a7d02999b65fb17151837181b2def57f1472b012311695d156ef2c25c24b5001",
+      "after_batch_sha256": "6be3f441d1522e707e36688a007f02fa5df5e266c5a556fe5f8385ae1cb1e270"
+    },
+    {
+      "reason": "依root離線樣讀，原第一章36秒放不下前兩段38.565秒；改44+26=70，第一章完整呈現保留原平面與角先磨耗，第二章只續原平面耗盡與模型界線，不補時。",
+      "before_themes_sha256": "e963c3d071b0b38ad4557626ab7a779d6d1dd89880566813e3acf81db635b5b1",
+      "before_author_sha256": "8bf529cc9db2908b36858eb1f028ac019df80196cff85093a3bc67dc9b08c384",
+      "after_themes_sha256": "6e4081ffbc31684bdabac6691b58f6fdee3bf17de890b6c1e258e4810fd887b0"
+    },
+    {
+      "reason": "非作者life刪純限制朗讀：T03末14→5，全72→63；T05末12→5，全70→63。限制保圖註，不補內容。",
+      "removed_seconds": 16,
+      "before_themes_sha256": "6e4081ffbc31684bdabac6691b58f6fdee3bf17de890b6c1e258e4810fd887b0",
+      "before_author_sha256": "8d8cac045cbad65009e10d1e08eff96c568308494bae278a8daa499ea2bb144b",
+      "after_themes_sha256": "b8ed26841afce4e6f2d1cd80312720abc0d927fa6a012c5f148cb25df39a532f"
+    }
+  ],
+  "removed_seconds": 16
+}

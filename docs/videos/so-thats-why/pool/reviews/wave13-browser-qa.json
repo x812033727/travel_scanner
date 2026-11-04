@@ -1,0 +1,49 @@
+{
+  "tested_on": "2026-11-01T15:26:25.162Z",
+  "result": "PASS",
+  "selected": 2897,
+  "index_html_sha256": "69774a82ada3b10a30cb24b54742db928c13a25767552e01552bcd6e3869f29f",
+  "source_sample": {
+    "id": "C13001",
+    "urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new cell transport mechanism question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave13-desktop.png",
+    "wave13-source-desktop.png",
+    "wave13-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "visual_review": {
+    "reviewer": "root",
+    "observations": [
+      "Desktop 1440x1000: 2897 selected, 2437 source URLs, 147 themes and 136 aliases visible; search, filters and question cards are readable without overlap.",
+      "Expanded C13001 card: question, answer, 70-115 second segment estimate, scope and start of payoff visible. Source links are below the screenshot crop; URL completeness is supported by DOM assertions, not a visual claim.",
+      "Mobile 390x844: heading wraps, four statistics form two rows, links and filters remain within viewport. This screenshot does not show the lower question cards; it is not a full-page visual audit."
+    ],
+    "screenshots": [
+      {
+        "file": ".cache/wave13-desktop.png",
+        "sha256": "a3d24a726341faff43f373fe567b7d71024780599c4e85ace4c0e37bb9f9a66c"
+      },
+      {
+        "file": ".cache/wave13-source-desktop.png",
+        "sha256": "5d32220c20802c25794952452fbdbb7f6b89b4d7ba8a31549637bd65c9210f49"
+      },
+      {
+        "file": ".cache/wave13-mobile.png",
+        "sha256": "6e1eec9e24131f844c370e027e7f5e4537d46fbebabf3877d1c6f9a8b61612ef"
+      }
+    ]
+  }
+}

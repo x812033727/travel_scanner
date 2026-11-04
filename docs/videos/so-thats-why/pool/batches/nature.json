@@ -1,0 +1,5063 @@
+{
+  "batch_id": "nature-20261101",
+  "created_on": "2026-11-01",
+  "scope": "自然、地球、天文、天氣與海洋；來源支持的問題候選，非已查核完整答案或長片核准。",
+  "sources": [
+    {
+      "id": "NS01",
+      "url": "https://science.nasa.gov/mercury/facts/",
+      "title": "Mercury Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Introduction; Orbit and Rotation; Structure; Surface; Atmosphere; Magnetosphere",
+      "locator": "Introduction; Orbit and Rotation; Structure; Surface; Atmosphere; Magnetosphere",
+      "summary": "水星的自轉、公轉、大氣稀薄、地表收縮與外氣層可形成不同問題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS02",
+      "url": "https://science.nasa.gov/venus/venus-facts/",
+      "title": "Venus Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Introduction; Moons; Structure; Surface; Atmosphere; Magnetosphere",
+      "locator": "Introduction; Moons; Structure; Surface; Atmosphere; Magnetosphere",
+      "summary": "金星的大氣、雷達地形、誘發磁場與準衛星定義。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS03",
+      "url": "https://science.nasa.gov/mars/facts/",
+      "title": "Mars Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Orbit and Rotation; Moons; Surface; Water on Mars; Atmosphere; Magnetosphere",
+      "locator": "Orbit and Rotation; Moons; Surface; Water on Mars; Atmosphere; Magnetosphere",
+      "summary": "火星顏色、季節長度、衛星形狀與古水流及古磁場證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS04",
+      "url": "https://science.nasa.gov/jupiter/jupiter-facts/",
+      "title": "Jupiter Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Rings; Formation; Structure; Surface; Atmosphere",
+      "locator": "Rings; Formation; Structure; Surface; Atmosphere",
+      "summary": "木星環、內部物質狀態與探測器對深層結構的推斷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS05",
+      "url": "https://science.nasa.gov/saturn/facts/",
+      "title": "Saturn Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Rings; Structure; Atmosphere",
+      "locator": "Rings; Structure; Atmosphere",
+      "summary": "土星環是多個顆粒軌道，並非一塊固體圓盤；密度與構成可另作問題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS06",
+      "url": "https://science.nasa.gov/uranus/facts/",
+      "title": "Uranus Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Orbit and Rotation; Structure; Magnetosphere",
+      "locator": "Orbit and Rotation; Structure; Magnetosphere",
+      "summary": "天王星傾斜、季節、冰巨星內部及不對齊磁場。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS07",
+      "url": "https://science.nasa.gov/neptune/neptune-facts/",
+      "title": "Neptune Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Orbit and Rotation; Atmosphere",
+      "locator": "Orbit and Rotation; Atmosphere",
+      "summary": "海王星與冥王星共振，以及行星影像色彩處理。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS08",
+      "url": "https://science.nasa.gov/sun/facts/",
+      "title": "Sun Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Orbit and Rotation; Structure; Surface; Key Sun Features; Magnetosphere",
+      "locator": "Orbit and Rotation; Structure; Surface; Key Sun Features; Magnetosphere",
+      "summary": "讀取太陽物質、能量輸送、磁活動及可見特徵；不採用頁內已過時的極大期預測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS09",
+      "url": "https://science.nasa.gov/moon/facts/",
+      "title": "Moon Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Orbit and Rotation; Surface; Water on the Moon",
+      "locator": "Orbit and Rotation; Surface; Water on the Moon",
+      "summary": "月相、月海、風化碎屑及水分觀測；排除既有同步自轉題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS10",
+      "url": "https://science.nasa.gov/solar-system/comets/facts/",
+      "title": "Comet Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Where Do Comets Come From?; Exploration of Comets",
+      "locator": "Where Do Comets Come From?; Exploration of Comets",
+      "summary": "彗髮、雙尾、來源軌道與彗星取樣所能回答的問題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS11",
+      "url": "https://science.nasa.gov/solar-system/meteors-meteorites/facts/",
+      "title": "Meteors and Meteorites: Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Meteoroids; Meteor Showers; Meteorites; What Do Meteorites Look Like?; Where Do Meteorites Come From?",
+      "locator": "Meteoroids; Meteor Showers; Meteorites; What Do Meteorites Look Like?; Where Do Meteorites Come From?",
+      "summary": "流星現象、殘餘隕石、搜尋偏差與來源辨識。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS12",
+      "url": "https://science.nasa.gov/universe/stars/",
+      "title": "Stars",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Birth; Life; Death",
+      "locator": "Birth; Life; Death",
+      "summary": "恆星從雲團形成到不同質量的晚期演化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS13",
+      "url": "https://science.nasa.gov/universe/black-holes/",
+      "title": "Black Holes",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Black Holes; Finding Black Holes; Black Holes Are Not; Essential Facts",
+      "locator": "Black Holes; Finding Black Holes; Black Holes Are Not; Essential Facts",
+      "summary": "黑洞邊界、間接觀測與重力作用的概念區別。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS14",
+      "url": "https://science.nasa.gov/exoplanets/how-we-find-and-characterize/",
+      "title": "How We Find and Characterize",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Radial Velocity; Transits; Transit Spectroscopy; Gravitational Microlensing; Direct Imaging",
+      "locator": "Radial Velocity; Transits; Transit Spectroscopy; Gravitational Microlensing; Direct Imaging",
+      "summary": "系外行星以不同觀測訊號揭露位置、軌道及大氣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS15",
+      "url": "https://www.usgs.gov/water-science-school/science/aquifers-and-groundwater",
+      "title": "Aquifers and Groundwater",
+      "publisher": "USGS Water Science School",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Groundwater and aquifers; Visualizing groundwater; Pumping can affect the level of the water table; Water movement in aquifers",
+      "locator": "Groundwater and aquifers; Visualizing groundwater; Pumping can affect the level of the water table; Water movement in aquifers",
+      "summary": "地下水的儲存空間、流動能力與抽水後的水位反應。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS16",
+      "url": "https://www.usgs.gov/water-science-school/science/springs-and-water-cycle",
+      "title": "Springs and the Water Cycle",
+      "publisher": "USGS Water Science School",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "What is a spring?; How are springs formed?; Spring water is not always clear; This water is cold and clear—is it fit to drink?; Thermal springs",
+      "locator": "What is a spring?; How are springs formed?; Spring water is not always clear; This water is cold and clear—is it fit to drink?; Thermal springs",
+      "summary": "泉水與地下水面交會、溶岩地形、色澤及熱源的關係。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS17",
+      "url": "https://www.usgs.gov/water-science-school/science/groundwater-decline-and-depletion",
+      "title": "Groundwater Decline and Depletion",
+      "publisher": "USGS Water Science School",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "What are some effects of groundwater depletion?",
+      "locator": "What are some effects of groundwater depletion?",
+      "summary": "超抽造成水位降低、地面下陷、地表水改變及海水入侵。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS18",
+      "url": "https://www.usgs.gov/water-science-school/science/infiltration-and-water-cycle",
+      "title": "Infiltration and the Water Cycle",
+      "publisher": "USGS Water Science School",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Factors affecting infiltration; Subsurface water; Infiltration replenishes aquifers; Artificial recharge gives natural infiltration a push",
+      "locator": "Factors affecting infiltration; Subsurface water; Infiltration replenishes aquifers; Artificial recharge gives natural infiltration a push",
+      "summary": "雨水入滲受雨勢、土壤、植被與地面覆蓋影響；補注不等於立即補滿深井。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS19",
+      "url": "https://www.usgs.gov/water-science-school/science/evapotranspiration-and-water-cycle",
+      "title": "Evapotranspiration and the Water Cycle",
+      "publisher": "USGS Water Science School",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "What is evapotranspiration?; What is transpiration?; What affects transpiration?; How does transpiration affect groundwater?",
+      "locator": "What is evapotranspiration?; What is transpiration?; What affects transpiration?; How does transpiration affect groundwater?",
+      "summary": "植物從根吸水、由氣孔釋水；環境條件與根系深度會改變水通量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS20",
+      "url": "https://www.usgs.gov/water-science-school/science/streamflow-and-water-cycle",
+      "title": "Streamflow and the Water Cycle",
+      "publisher": "USGS Water Science School",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Watersheds and rivers; Streamflow is always changing; Hydrologists study streamflow with hydrographs; Streamflow and global distribution",
+      "locator": "Watersheds and rivers; Streamflow is always changing; Hydrologists study streamflow with hydrographs; Streamflow and global distribution",
+      "summary": "集水區把上游降雨傳至下游，水位與流量是不同測量量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS21",
+      "url": "https://www.usgs.gov/water-science-school/science/snowmelt-runoff-and-water-cycle",
+      "title": "Snowmelt Runoff and the Water Cycle",
+      "publisher": "USGS Water Science School",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Snowmelt Runoff and the Water Cycle; Contribution of snowmelt to streamflow; Snowmelt and flooding",
+      "locator": "Snowmelt Runoff and the Water Cycle; Contribution of snowmelt to streamflow; Snowmelt and flooding",
+      "summary": "山地積雪暫存冬季水量，融雪時間與降雨疊加會改變河流。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS22",
+      "url": "https://pubs.usgs.gov/gip/dynamic/understanding.html",
+      "title": "Understanding plate motions",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.search_query expanded page content; direct web.open returned 403",
+      "reading_scope": "Divergent boundaries; Convergent boundaries; Transform boundaries; Rates of motion",
+      "locator": "Divergent boundaries; Convergent boundaries; Transform boundaries; Rates of motion",
+      "summary": "不同板塊交界產生不同地形；海底磁條帶可重建過去運動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS23",
+      "url": "https://www.bgs.ac.uk/discovering-geology/earth-hazards/earthquakes/what-causes-earthquakes/",
+      "title": "What causes earthquakes?",
+      "publisher": "British Geological Survey",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "The structure of the Earth; Elastic rebound theory; Types of fault",
+      "locator": "The structure of the Earth; Elastic rebound theory; Types of fault",
+      "summary": "地震波探測內部、長時間岩石流動及斷層儲能釋放。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS24",
+      "url": "https://www.usgs.gov/faqs/what-a-hotspot-and-how-do-you-know-its-there",
+      "title": "What is a hotspot and how do you know it's there?",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "FAQ answer paragraphs 1–4",
+      "locator": "FAQ answer paragraphs 1–4",
+      "summary": "火山島鏈年代與板塊在相對固定熱點上移動相符，但熱點起源仍有討論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS25",
+      "url": "https://www.usgs.gov/programs/earthquake-hazards/science-earthquakes",
+      "title": "The Science of Earthquakes",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "What is an earthquake?; How are earthquakes recorded?; How do scientists measure the size of earthquakes?; How can scientists tell where the earthquake happened?",
+      "locator": "What is an earthquake?; How are earthquakes recorded?; How do scientists measure the size of earthquakes?; How can scientists tell where the earthquake happened?",
+      "summary": "震源、地表震央、儀器記錄與規模／震度分別代表不同量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS26",
+      "url": "https://www.usgs.gov/faqs/foreshocks-aftershocks-whats-difference",
+      "title": "Foreshocks, aftershocks - what's the difference?",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.search_query expanded FAQ answer",
+      "reading_scope": "FAQ answer",
+      "locator": "FAQ answer",
+      "summary": "前震為事後分類，餘震涉及主震後斷層調整。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS27",
+      "url": "https://www.nps.gov/subjects/geology/how-rocks-are-classified.htm",
+      "title": "How Rocks are Classified",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Three Rock Types",
+      "locator": "Three Rock Types",
+      "summary": "冷卻、壓密膠結、沉澱與變質會留下不同岩石組織。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS28",
+      "url": "https://www.nps.gov/articles/000/grcatime-timescale.htm",
+      "title": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Geologic Timescale; Geologic Dating Techniques through Numeric Ages",
+      "locator": "Geologic Timescale; Geologic Dating Techniques through Numeric Ages",
+      "summary": "地層先後、放射性時鐘及交切關係相互約束岩石年代。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS29",
+      "url": "https://volcanoes.usgs.gov/volcanic_ash/ash_gas.html",
+      "title": "Volcanic Ash & Gases",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Volcanic Ash & Gases opening paragraphs",
+      "locator": "Volcanic Ash & Gases opening paragraphs",
+      "summary": "火山灰是岩石與玻璃碎屑，性質不同於燃燒後的灰。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS30",
+      "url": "https://www.usgs.gov/programs/VHP/pyroclastic-flows-move-fast-and-destroy-everything-their-path",
+      "title": "Pyroclastic flows move fast and destroy everything in their path",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Composition; formation mechanisms; secondary hazards",
+      "locator": "Composition; formation mechanisms; secondary hazards",
+      "summary": "高密度熱碎屑流沿地形運動，也能堵河或融雪。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS31",
+      "url": "https://www.nps.gov/articles/000/volcanic-processes-lahars.htm",
+      "title": "Volcanic Processes—Lahars",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Introduction; Hot Lahars; Cold Lahars; Mount Rainier National Park; Petrified Wood Fossils in Lahar Deposits",
+      "locator": "Introduction; Hot Lahars; Cold Lahars; Mount Rainier National Park; Petrified Wood Fossils in Lahar Deposits",
+      "summary": "水與鬆散火山碎屑可形成泥流，未噴發時也可能發生。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS32",
+      "url": "https://www.noaa.gov/jetstream/synoptic/origin-of-wind",
+      "title": "Origin of Wind",
+      "publisher": "NOAA JetStream",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Main text: isobars, pressure gradient, Coriolis, friction, vertical motion",
+      "locator": "Main text: isobars, pressure gradient, Coriolis, friction, vertical motion",
+      "summary": "風受壓力差、旋轉參考系及地面摩擦共同影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS33",
+      "url": "https://www.noaa.gov/jetstream/global/global-atmospheric-circulations",
+      "title": "Global Atmospheric Circulations",
+      "publisher": "NOAA JetStream",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Main text: three cells and pressure bands",
+      "locator": "Main text: three cells and pressure bands",
+      "summary": "行星尺度環流把熱量重新分配，與乾濕氣候帶相關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS34",
+      "url": "https://www.noaa.gov/jetstream/global/jet-stream",
+      "title": "The Jet Stream",
+      "publisher": "NOAA JetStream",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Jet stream main text; seasonal temperature contrast; seasonal location",
+      "locator": "Jet stream main text; seasonal temperature contrast; seasonal location",
+      "summary": "高空強風帶隨冷暖交界和季節移動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS35",
+      "url": "https://www.noaa.gov/jetstream/tstrmtypes",
+      "title": "Types of Thunderstorms",
+      "publisher": "NOAA JetStream",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Ordinary Cell; Multi-cell Cluster; Multi-cell Line; Supercell Thunderstorms",
+      "locator": "Ordinary Cell; Multi-cell Cluster; Multi-cell Line; Supercell Thunderstorms",
+      "summary": "雷暴的補充方式、風切與降水位置決定壽命及降雨分布。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS36",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/hail/",
+      "title": "Severe Weather 101: Hail Basics",
+      "publisher": "NOAA NSSL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "What is hail? through What areas have the most hail?",
+      "locator": "What is hail? through What areas have the most hail?",
+      "summary": "冰雹在上升氣流中碰撞過冷水成長，其紋理、落速與分布各有條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS37",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/lightning/",
+      "title": "Severe Weather 101: Lightning Basics",
+      "publisher": "NOAA NSSL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "What is lightning?; Where does lightning strike?; What causes lightning?",
+      "locator": "What is lightning?; Where does lightning strike?; What causes lightning?",
+      "summary": "電場可使空氣絕緣失效；連接放電路徑並非只由最高物決定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS38",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/winter/types/",
+      "title": "Severe Weather 101: Winter Weather Types",
+      "publisher": "NOAA NSSL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Winter Storms; Types of Winter Precipitation",
+      "locator": "Winter Storms; Types of Winter Precipitation",
+      "summary": "積雪可被風再抬起；降水型態取決於整條下降路徑的溫度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS39",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/",
+      "title": "Severe Weather 101: Tornado Basics",
+      "publisher": "NOAA NSSL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "What is a tornado?; annual records; How is tornado strength rated?; storm spotter descriptions",
+      "locator": "What is a tornado?; annual records; How is tornado strength rated?; storm spotter descriptions",
+      "summary": "可見漏斗不等於完整風場，龍捲強度常透過損害估算。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS40",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/wind/types/",
+      "title": "Severe Weather 101: Damaging Winds Types",
+      "publisher": "NOAA NSSL",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Types of Damaging Winds main text",
+      "locator": "Types of Damaging Winds main text",
+      "summary": "下降氣流落地向外擴散，能產生直線強風、陣風鋒與沙塵牆。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS41",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/fog",
+      "title": "What is fog?",
+      "publisher": "UK Met Office",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "What are the different types of fog?; What is the difference between mist, fog and haze?; How do you forecast fog?",
+      "locator": "What are the different types of fog?; What is the difference between mist, fog and haze?; How do you forecast fog?",
+      "summary": "輻射冷卻、平流、地形抬升與混合增濕形成不同的霧。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS42",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_currents/04currents4.html",
+      "title": "The Ekman Spiral",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanatory paragraph",
+      "locator": "Main explanatory paragraph",
+      "summary": "風的拖曳向下傳遞並受科氏效應改變方向。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS43",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor1.html",
+      "title": "Thermohaline Circulation",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanatory paragraphs",
+      "locator": "Main explanatory paragraphs",
+      "summary": "溫度與鹽度改變密度，極地海水沉降能連結深層環流。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS44",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_estuaries/est05_circulation.html",
+      "title": "Classifying Estuaries: By Water Circulation",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Introduction; Salt-wedge Estuaries; Fjord-type Estuaries; Vertically Mixed Estuary; Freshwater Estuaries",
+      "locator": "Introduction; Salt-wedge Estuaries; Fjord-type Estuaries; Vertically Mixed Estuary; Freshwater Estuaries",
+      "summary": "淡鹹水是否分層取決於密度、潮流、河流量與地形。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS45",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_currents/03coastal1.html",
+      "title": "Waves",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanatory paragraphs",
+      "locator": "Main explanatory paragraphs",
+      "summary": "風速、吹送時間與風區長度共同影響風浪。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS46",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_currents/03coastal2.html",
+      "title": "Longshore Currents",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanatory paragraphs",
+      "locator": "Main explanatory paragraphs",
+      "summary": "波浪受水深折向，斜向入岸能驅動沿岸流與輸沙。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS47",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_currents/03coastal3.html",
+      "title": "Rip Currents",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Formation paragraphs before safety advice",
+      "locator": "Formation paragraphs before safety advice",
+      "summary": "破浪帶的水能集中由沙洲缺口往外流。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS48",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_currents/04currents3.html",
+      "title": "Boundary Currents",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "First two main paragraphs",
+      "locator": "First two main paragraphs",
+      "summary": "大洋風系與自轉形成環流，兩側邊界流強弱不對稱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS49",
+      "url": "https://oceanservice.noaa.gov/facts/sound.html",
+      "title": "How far does sound travel in the ocean?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanatory paragraphs",
+      "locator": "Main explanatory paragraphs",
+      "summary": "溫度與壓力使聲速隨深度變化，可形成遠距聲道。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS50",
+      "url": "https://oceanservice.noaa.gov/facts/vents.html",
+      "title": "What is a hydrothermal vent?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main text and black smoker caption",
+      "locator": "Main text and black smoker caption",
+      "summary": "海水進入熱岩裂縫，再帶出礦物形成噴口煙囪。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS51",
+      "url": "https://oceanservice.noaa.gov/facts/acidification.html",
+      "title": "What is Ocean Acidification?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "First three explanatory paragraphs",
+      "locator": "First three explanatory paragraphs",
+      "summary": "海洋吸收二氧化碳改變氫離子與碳酸根供應。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS52",
+      "url": "https://oceanservice.noaa.gov/facts/deadzone.html",
+      "title": "What is a dead zone?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Hypoxia explanation and nutrient pollution paragraph",
+      "locator": "Hypoxia explanation and nutrient pollution paragraph",
+      "summary": "過多養分引發藻類生長，分解有機物會耗氧。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS53",
+      "url": "https://oceanservice.noaa.gov/facts/upwelling.html",
+      "title": "What is upwelling?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanatory paragraphs",
+      "locator": "Main explanatory paragraphs",
+      "summary": "表層水被帶離後，深層冷水與養分補上。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS54",
+      "url": "https://oceanservice.noaa.gov/facts/marinesnow.html",
+      "title": "What is marine snow?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanatory paragraphs",
+      "locator": "Main explanatory paragraphs",
+      "summary": "表層有機碎屑下沉聚集，供應深海食物與底泥。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS55",
+      "url": "https://oceanservice.noaa.gov/facts/seafoam.html",
+      "title": "What is sea foam?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "First three explanatory paragraphs",
+      "locator": "First three explanatory paragraphs",
+      "summary": "風浪攪動含有機物的海水形成泡沫。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS56",
+      "url": "https://oceanservice.noaa.gov/facts/sand.html",
+      "title": "How does sand form?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Sand origin and beach-color paragraphs",
+      "locator": "Sand origin and beach-color paragraphs",
+      "summary": "沙可來自岩石侵蝕、生物殼體與魚類磨碎礁材。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS57",
+      "url": "https://oceanservice.noaa.gov/facts/light_travel.html",
+      "title": "How far does light travel in the ocean?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanatory paragraphs",
+      "locator": "Main explanatory paragraphs",
+      "summary": "光隨水深衰減，可探測微光不等於足以支持光合作用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS58",
+      "url": "https://oceanservice.noaa.gov/facts/pressure.html",
+      "title": "How does pressure change with ocean depth?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "First explanatory paragraphs",
+      "locator": "First explanatory paragraphs",
+      "summary": "水深增加使承受的液柱壓力增加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS59",
+      "url": "https://oceanservice.noaa.gov/facts/sonar.html",
+      "title": "What is sonar?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Introduction; Active Sonar; Passive Sonar",
+      "locator": "Introduction; Active Sonar; Passive Sonar",
+      "summary": "聲納以回聲測距，或以多點被動接收定位聲源。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS60",
+      "url": "https://oceanservice.noaa.gov/facts/seiche.html",
+      "title": "What is a seiche?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Main explanation and Seiches and meteotsunamis comparison",
+      "locator": "Main explanation and Seiches and meteotsunamis comparison",
+      "summary": "封閉水體受擾後反覆擺盪，與傳播的波有別。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS61",
+      "url": "https://nsidc.org/learn/parts-cryosphere/glaciers/science-glaciers",
+      "title": "Science of Glaciers",
+      "publisher": "NSIDC / University of Colorado Boulder",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "Growing; Moving forward; In retreat; How glaciers move; Components through Glacier caves",
+      "locator": "Growing; Moving forward; In retreat; How glaciers move; Components through Glacier caves",
+      "summary": "冰雪累積、形變流動、末端收支與裂隙形成控制冰河形態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS62",
+      "url": "https://nsidc.org/learn/parts-cryosphere/sea-ice/science-sea-ice",
+      "title": "Science of Sea Ice",
+      "publisher": "NSIDC / University of Colorado Boulder",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "How sea ice forms; Stages of ice formation; Multiyear ice; Salinity and sea ice; Snow on sea ice",
+      "locator": "How sea ice forms; Stages of ice formation; Multiyear ice; Salinity and sea ice; Snow on sea ice",
+      "summary": "海冰成長、擠壓、鹵水排出與雪覆蓋產生不同構造。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS63",
+      "url": "https://nsidc.org/learn/parts-cryosphere/frozen-ground-permafrost/science-frozen-ground",
+      "title": "Science of Frozen Ground & Permafrost",
+      "publisher": "NSIDC / University of Colorado Boulder",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "How does permafrost form?; Impact on weather and climate; Permafrost and the carbon cycle; Layered Earth; Landscape features through Rock glaciers",
+      "locator": "How does permafrost form?; Impact on weather and climate; Permafrost and the carbon cycle; Layered Earth; Landscape features through Rock glaciers",
+      "summary": "凍土控制排水、熱傳與有機碳保存，冰透鏡生長可改變地面。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS64",
+      "url": "https://www.nps.gov/subjects/geohazards/landslide-hazards.htm",
+      "title": "Landslide Hazards",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Opening explanation and trigger bullets",
+      "locator": "Opening explanation and trigger bullets",
+      "summary": "重力與坡體強度的平衡可被含水、削腳或加重破壞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS65",
+      "url": "https://www.nps.gov/articles/000/weathering-erosion.htm",
+      "title": "Weathering and Erosion",
+      "publisher": "National Park Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML extraction plus web.search_query expanded article",
+      "reading_scope": "Physical Weathering; Growth of Foreign Crystals; Changing Stream Beds; The North Platte River",
+      "locator": "Physical Weathering; Growth of Foreign Crystals; Changing Stream Beds; The North Platte River",
+      "summary": "溫度與晶體成長能使岩石碎裂，河道會回應泥沙供應。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS66",
+      "url": "https://floridadep.gov/fgs/sinkholes/content/sinkhole-faq",
+      "title": "Sinkhole FAQ",
+      "publisher": "Florida Geological Survey / DEP",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "General Sinkhole Questions Answered 1–2",
+      "locator": "General Sinkhole Questions Answered 1–2",
+      "summary": "地下溶蝕空洞的覆蓋層可以緩慢下陷或突然塌落；地面凹陷不只一種成因。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS67",
+      "url": "https://scied.ucar.edu/learning-zone/how-weather-works/humidity",
+      "title": "Humidity",
+      "publisher": "UCAR Center for Science Education",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "How Much Water Vapor Can Be in the Air?; Absolute vs. Relative Humidity",
+      "locator": "How Much Water Vapor Can Be in the Air?; Absolute vs. Relative Humidity",
+      "summary": "相對濕度包含溫度依賴，不能單看百分比比較水氣總量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS68",
+      "url": "https://scied.ucar.edu/learning-zone/how-climate-works/greenhouse-effect",
+      "title": "The Greenhouse Effect",
+      "publisher": "UCAR Center for Science Education",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "How Does the Greenhouse Effect Work?; More Greenhouse Gases",
+      "locator": "How Does the Greenhouse Effect Work?; More Greenhouse Gases",
+      "summary": "部分分子吸收、再放射地表熱輻射，改變向太空散熱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS69",
+      "url": "https://scied.ucar.edu/learning-zone/climate-change-impacts/rising-sea-level",
+      "title": "Rising Sea Level",
+      "publisher": "UCAR Center for Science Education",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Sea Level Rise Due to Melting Ice Sheets and Glaciers; Sea Level Rise Caused by Thermal Expansion of Water",
+      "locator": "Sea Level Rise Due to Melting Ice Sheets and Glaciers; Sea Level Rise Caused by Thermal Expansion of Water",
+      "summary": "陸冰增水與海水熱膨脹抬升海面，浮冰效應不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS70",
+      "url": "https://spaceplace.nasa.gov/seasons/en/",
+      "title": "What Causes the Seasons?",
+      "publisher": "NASA Space Place",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open",
+      "reading_scope": "It's all about Earth's tilt!; Earth's lopsided orbit",
+      "locator": "It's all about Earth's tilt!; Earth's lopsided orbit",
+      "summary": "季節由傾角與日照幾何主導，南北半球相反。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS71",
+      "url": "https://science.nasa.gov/eclipses/geometry/",
+      "title": "Why Do Eclipses Happen?",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Introduction; Total Solar Eclipse; Annular Solar Eclipse; Hybrid Solar Eclipse",
+      "locator": "Introduction; Total Solar Eclipse; Annular Solar Eclipse; Hybrid Solar Eclipse",
+      "summary": "軌道傾角、角直徑與影錐幾何決定日食類型與可見區。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS72",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/clouds/unusual-cloud-formations/contrails",
+      "title": "Contrails or condensation trails",
+      "publisher": "UK Met Office",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.search_query expanded page content",
+      "reading_scope": "How do contrails form?; How do we categorise contrails?",
+      "locator": "How do contrails form?; How do we categorise contrails?",
+      "summary": "飛機排氣與低溫空氣混合生成冰晶；環境濕度決定持續程度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS73",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/wind/foehn-effect",
+      "title": "Foehn effect",
+      "publisher": "UK Met Office",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "How does the foehn effect work? four mechanisms",
+      "locator": "How does the foehn effect work? four mechanisms",
+      "summary": "焚風可由凝結降水、上層氣流下沉、混合與輻射共同造成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS74",
+      "url": "https://www.epa.gov/heatislands/what-are-heat-islands",
+      "title": "What Are Heat Islands?",
+      "publisher": "US EPA",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Causes of Heat Islands; Characteristics of Heat Islands; Impaired Water Quality",
+      "locator": "Causes of Heat Islands; Characteristics of Heat Islands; Impaired Water Quality",
+      "summary": "城市儲熱、通風與表面覆蓋改變溫度，表面與空氣讀值不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS75",
+      "url": "https://oceanservice.noaa.gov/facts/ninonina.html",
+      "title": "What are El Niño and La Niña?",
+      "publisher": "NOAA National Ocean Service",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Normal conditions; El Niño; La Niña",
+      "locator": "Normal conditions; El Niño; La Niña",
+      "summary": "信風與熱帶海洋的耦合改變暖水位置，影響大氣環流。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS76",
+      "url": "https://www.spaceweather.gov/phenomena/geomagnetic-storms",
+      "title": "Geomagnetic Storms",
+      "publisher": "NOAA Space Weather Prediction Center",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Solar wind field orientation; ionosphere changes",
+      "locator": "Solar wind field orientation; ionosphere changes",
+      "summary": "地磁暴能量傳遞受太陽風磁場方向影響，電離層變動也能擾動導航訊號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS77",
+      "url": "https://www.spaceweather.gov/impacts/satellite-drag",
+      "title": "Satellite Drag",
+      "publisher": "NOAA Space Weather Prediction Center",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Opening drag explanation; solar activity heating; orbit modelling",
+      "locator": "Opening drag explanation; solar activity heating; orbit modelling",
+      "summary": "近地軌道仍有稀薄空氣，太陽活動加熱上層大氣可增加軌道阻力。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS78",
+      "url": "https://www.spaceweather.gov/phenomena/aurora",
+      "title": "Aurora",
+      "publisher": "NOAA Space Weather Prediction Center",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Electron collisions; auroral ovals; equatorward expansion",
+      "locator": "Electron collisions; auroral ovals; equatorward expansion",
+      "summary": "極光是高空粒子激發氣體發光，地磁場導引造成極光帶及其擴張。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS79",
+      "url": "https://www.spaceweather.gov/impacts/electric-power-transmission",
+      "title": "Electric Power Transmission",
+      "publisher": "NOAA Space Weather Prediction Center",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Time-varying magnetic fields; geomagnetically induced currents; transformer saturation",
+      "locator": "Time-varying magnetic fields; geomagnetically induced currents; transformer saturation",
+      "summary": "地磁變動在長導電網路誘發電流，可使變壓器偏離正常運作條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS80",
+      "url": "https://science.nasa.gov/solar-system/asteroids/facts/",
+      "title": "Asteroid Facts",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Composition; Asteroid Classifications; near-Earth-object definitions",
+      "locator": "Composition; Asteroid Classifications; near-Earth-object definitions",
+      "summary": "小行星的成分、軌道族群與形成史可用來區分不同問題；接近地球不等於必然撞擊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS81",
+      "url": "https://nsidc.org/learn/parts-cryosphere/snow/quick-facts-about-snow",
+      "title": "Quick Facts About Snow",
+      "publisher": "NSIDC, University of Colorado Boulder",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "What color is snow?; Why is it so quiet after it snows?",
+      "locator": "What color is snow?; Why is it so quiet after it snows?",
+      "summary": "雪的光散射與聲音吸收取決於冰晶及雪層結構。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS82",
+      "url": "https://www.nesdis.noaa.gov/about/k-12-education/ice-snow/how-do-snowflakes-form",
+      "title": "How Do Snowflakes Form?",
+      "publisher": "NOAA NESDIS / NASA JPL",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "The Birth of a Snowflake; Chaos Ensues",
+      "locator": "The Birth of a Snowflake; Chaos Ensues",
+      "summary": "冰晶晶格與生長時的溫濕歷程共同影響雪花形狀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS83",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/clouds/unusual-cloud-formations",
+      "title": "Unusual cloud formations",
+      "publisher": "Met Office",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Virga; Lenticular clouds; Nacreous clouds through How do we categorise Nacreous clouds?",
+      "locator": "Virga; Lenticular clouds; Nacreous clouds through How do we categorise Nacreous clouds?",
+      "summary": "降水蒸發、山岳波凝結及高空日照幾何產生不同可見雲景。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS84",
+      "url": "https://www.usgs.gov/faqs/what-liquefaction",
+      "title": "What is liquefaction?",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Opening definition and Niigata/Loma Prieta examples",
+      "locator": "Opening definition and Niigata/Loma Prieta examples",
+      "summary": "鬆散且含水沉積物在強烈震動下可能失去承載強度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS85",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/optical-effects",
+      "title": "Optical effects: nature's light show",
+      "publisher": "Met Office",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Haloes; Coronas; Brocken spectre; Crepuscular Rays",
+      "locator": "Haloes; Coronas; Brocken spectre; Crepuscular Rays",
+      "summary": "不同光環與雲隙光可分別涉及冰晶折射、水滴繞射與觀察透視。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS86",
+      "url": "https://science.nasa.gov/universe/galaxies/",
+      "title": "Galaxy Basics",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Our Milky Way",
+      "locator": "Our Milky Way",
+      "summary": "銀河的亮帶是從銀河盤內觀察盤面所得的視角。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS87",
+      "url": "https://www.bgs.ac.uk/discovering-geology/earth-hazards/earthquakes/how-do-earthquakes-affect-people/",
+      "title": "How do earthquakes affect people?",
+      "publisher": "British Geological Survey",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Ground conditions; Resonant frequency",
+      "locator": "Ground conditions; Resonant frequency",
+      "summary": "地盤條件與建築自然振動頻率會改變同一地震的局部影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "NS88",
+      "url": "https://science.nasa.gov/universe/galaxies/types/",
+      "title": "Galaxy Types",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "reading_scope": "Elliptical Galaxies; Active Galaxies; Seyfert Galaxies; Blazars",
+      "locator": "Elliptical Galaxies; Active Galaxies; Seyfert Galaxies; Blazars",
+      "summary": "氣體供給影響造星，觀測角度亦影響部分活動星系的分類與外觀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "N001",
+      "question": "離太陽很近的水星，夜晚怎麼還會那麼冷？",
+      "domain": "天文",
+      "mechanism_key": "mercury_diurnal_heat_retention",
+      "answer_target": "白晝加熱與夜間保熱條件",
+      "scope": "水星；限 NASA 本頁敘述的環境與軌道",
+      "source_ids": [
+        "NS01"
+      ],
+      "source_locator": "Introduction; Surface",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N002",
+      "question": "水星上的太陽，為什麼可能升起後又短暫落下？",
+      "domain": "天文",
+      "mechanism_key": "mercury_apparent_solar_reversal",
+      "answer_target": "橢圓軌道速度與自轉共同決定太陽視運動",
+      "scope": "水星；限 NASA 本頁敘述的環境與軌道",
+      "source_ids": [
+        "NS01"
+      ],
+      "source_locator": "Orbit and Rotation",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N003",
+      "question": "水星自轉一圈，為什麼不等於當地的一天？",
+      "domain": "天文",
+      "mechanism_key": "mercury_solar_sidereal_day",
+      "answer_target": "自轉週期與日夜週期的差別",
+      "scope": "水星；限 NASA 本頁敘述的環境與軌道",
+      "source_ids": [
+        "NS01"
+      ],
+      "source_locator": "Orbit and Rotation",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N004",
+      "question": "水星表面那些長長的懸崖，怎麼和行星變小有關？",
+      "domain": "天文",
+      "mechanism_key": "mercury_cooling_contraction_scarps",
+      "answer_target": "內部冷卻收縮與陡崖地形",
+      "scope": "水星；限 NASA 本頁敘述的環境與軌道",
+      "source_ids": [
+        "NS01"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N005",
+      "question": "水星撞擊坑旁的亮線，為什麼會慢慢變暗？",
+      "domain": "天文",
+      "mechanism_key": "impact_rays_space_weathering",
+      "answer_target": "撞擊拋出物與太空風化",
+      "scope": "水星；限 NASA 本頁敘述的環境與軌道",
+      "source_ids": [
+        "NS01"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N006",
+      "question": "水星沒有像地球這樣的大氣，稀薄氣體從哪裡來？",
+      "domain": "天文",
+      "mechanism_key": "mercury_exosphere_sputtering",
+      "answer_target": "太陽風及隕石撞擊把表面原子釋入外氣層",
+      "scope": "水星；限 NASA 本頁敘述的環境與軌道",
+      "source_ids": [
+        "NS01"
+      ],
+      "source_locator": "Atmosphere; Magnetosphere",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N007",
+      "question": "水星那麼熱，極區陰影為什麼仍可能留住冰？",
+      "domain": "天文",
+      "mechanism_key": "mercury_permanent_shadow_cold_traps",
+      "answer_target": "永久陰影和日照區的能量差異",
+      "scope": "水星；限 NASA 本頁敘述的環境與軌道",
+      "source_ids": [
+        "NS01"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "本頁用 may；研究極區保存條件，不把本頁當直接冰量證據。"
+    },
+    {
+      "id": "N008",
+      "question": "金星比水星離太陽遠，為什麼地表反而更熱？",
+      "domain": "天文",
+      "mechanism_key": "venus_runaway_greenhouse_comparison",
+      "answer_target": "濃厚大氣與保熱作用的行星比較",
+      "scope": "金星；不把早期演化假說寫成定論",
+      "source_ids": [
+        "NS02"
+      ],
+      "source_locator": "Introduction; Atmosphere",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N009",
+      "question": "金星探測器落地後，為什麼很難長時間工作？",
+      "domain": "天文",
+      "mechanism_key": "venus_lander_environment_limits",
+      "answer_target": "高溫與高壓對地面探測的限制",
+      "scope": "金星；不把早期演化假說寫成定論",
+      "source_ids": [
+        "NS02"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N010",
+      "question": "金星表面被雲遮住，地圖是怎麼畫出來的？",
+      "domain": "天文",
+      "mechanism_key": "venus_radar_surface_mapping",
+      "answer_target": "用雷達穿透雲層觀測地形",
+      "scope": "金星；不把早期演化假說寫成定論",
+      "source_ids": [
+        "NS02"
+      ],
+      "source_locator": "Structure",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N011",
+      "question": "金星沒有地球式的內生磁場，怎麼還有磁場包圍？",
+      "domain": "天文",
+      "mechanism_key": "venus_induced_magnetosphere",
+      "answer_target": "太陽風與電離大氣的交互作用",
+      "scope": "金星；不把早期演化假說寫成定論",
+      "source_ids": [
+        "NS02"
+      ],
+      "source_locator": "Magnetosphere",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N012",
+      "question": "一顆小行星跟著金星走，為什麼還不算它的月亮？",
+      "domain": "天文",
+      "mechanism_key": "quasisatellite_vs_bound_moon",
+      "answer_target": "繞太陽的準衛星與真正行星衛星之別",
+      "scope": "金星；不把早期演化假說寫成定論",
+      "source_ids": [
+        "NS02"
+      ],
+      "source_locator": "Moons / Zoozve",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N013",
+      "question": "火星近看有很多顏色，遠看為什麼卻一片紅？",
+      "domain": "天文",
+      "mechanism_key": "mars_iron_oxidation_dust_color",
+      "answer_target": "含鐵物質氧化及塵埃對整體外觀的作用",
+      "scope": "火星；不採本頁有爭議的現今坡面鹽水流動句",
+      "source_ids": [
+        "NS03"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N014",
+      "question": "火星也有四季，為什麼每一季長短不一樣？",
+      "domain": "天文",
+      "mechanism_key": "mars_eccentric_orbit_season_lengths",
+      "answer_target": "橢圓軌道造成季節時間不均",
+      "scope": "火星；不採本頁有爭議的現今坡面鹽水流動句",
+      "source_ids": [
+        "NS03"
+      ],
+      "source_locator": "Orbit and Rotation",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N015",
+      "question": "火星的兩顆小月亮，為什麼不像月球那麼圓？",
+      "domain": "天文",
+      "mechanism_key": "small_moon_self_gravity_shape",
+      "answer_target": "小天體質量與塑造成球形的重力限制",
+      "scope": "火星；不採本頁有爭議的現今坡面鹽水流動句",
+      "source_ids": [
+        "NS03"
+      ],
+      "source_locator": "Moons",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N016",
+      "question": "火星現在乾燥，科學家怎麼看出以前曾有河湖？",
+      "domain": "天文",
+      "mechanism_key": "mars_ancient_water_geologic_evidence",
+      "answer_target": "河谷、三角洲與含水環境礦物的證據鏈",
+      "scope": "火星；不採本頁有爭議的現今坡面鹽水流動句",
+      "source_ids": [
+        "NS03"
+      ],
+      "source_locator": "Water on Mars",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N017",
+      "question": "火星沒有全球磁場，岩石為什麼還能留下磁性？",
+      "domain": "天文",
+      "mechanism_key": "mars_crustal_remanent_magnetism",
+      "answer_target": "地殼殘留磁化與過去磁場的區別",
+      "scope": "火星；不採本頁有爭議的現今坡面鹽水流動句",
+      "source_ids": [
+        "NS03"
+      ],
+      "source_locator": "Magnetosphere",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N018",
+      "question": "木星也有環，為什麼不像土星環那麼容易看見？",
+      "domain": "天文",
+      "mechanism_key": "jupiter_dark_dust_rings_visibility",
+      "answer_target": "細暗顆粒及背光觀測條件",
+      "scope": "木星；深層結構屬觀測約束模型",
+      "source_ids": [
+        "NS04"
+      ],
+      "source_locator": "Rings",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N019",
+      "question": "木星有很多氫，為什麼沒有變成另一顆太陽？",
+      "domain": "天文",
+      "mechanism_key": "jupiter_mass_fusion_threshold",
+      "answer_target": "成分相近仍不足以啟動恆星核融合",
+      "scope": "木星；深層結構屬觀測約束模型",
+      "source_ids": [
+        "NS04"
+      ],
+      "source_locator": "Formation",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N020",
+      "question": "木星裡的氫，為什麼可能像金屬一樣導電？",
+      "domain": "天文",
+      "mechanism_key": "jupiter_pressure_metallic_hydrogen",
+      "answer_target": "極高壓下氫的物質與電子狀態",
+      "scope": "木星；深層結構屬觀測約束模型",
+      "source_ids": [
+        "NS04"
+      ],
+      "source_locator": "Structure",
+      "premise_status": "screened",
+      "notes": "保留 scientists think 的模型語氣。"
+    },
+    {
+      "id": "N021",
+      "question": "木星沒有固體地面，探測器能直接穿過去嗎？",
+      "domain": "天文",
+      "mechanism_key": "gas_giant_no_surface_pressure_limit",
+      "answer_target": "無落腳表面與深層高壓不是同一件事",
+      "scope": "木星；深層結構屬觀測約束模型",
+      "source_ids": [
+        "NS04"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N022",
+      "question": "看不到木星中心，怎麼知道它的核心可能是模糊的？",
+      "domain": "天文",
+      "mechanism_key": "juno_gravity_dilute_core_inference",
+      "answer_target": "重力及磁場資料如何約束核心模型",
+      "scope": "木星；深層結構屬觀測約束模型",
+      "source_ids": [
+        "NS04"
+      ],
+      "source_locator": "Structure",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N023",
+      "question": "木星大紅斑有多深，為什麼能靠重力訊號推估？",
+      "domain": "天文",
+      "mechanism_key": "jupiter_storm_depth_gravity_signature",
+      "answer_target": "風暴質量分布與飛掠重力測量",
+      "scope": "木星；深層結構屬觀測約束模型",
+      "source_ids": [
+        "NS04"
+      ],
+      "source_locator": "Atmosphere",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N024",
+      "question": "土星環看起來像一整片，裡面其實是什麼？",
+      "domain": "天文",
+      "mechanism_key": "saturn_rings_discrete_particles",
+      "answer_target": "冰岩顆粒組成與連續圓盤外觀的差異",
+      "scope": "土星；不採未另查的近期新多邊形風暴新聞",
+      "source_ids": [
+        "NS05"
+      ],
+      "source_locator": "Rings",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N025",
+      "question": "土星環裡的不同圈，為什麼不一起轉同樣快？",
+      "domain": "天文",
+      "mechanism_key": "planetary_ring_differential_orbits",
+      "answer_target": "環粒子各自繞行與半徑差異",
+      "scope": "土星；不採未另查的近期新多邊形風暴新聞",
+      "source_ids": [
+        "NS05"
+      ],
+      "source_locator": "Rings",
+      "premise_status": "screened",
+      "notes": "需於寫答案時補軌道速度教材；本頁直接支持不同環速前提。"
+    },
+    {
+      "id": "N026",
+      "question": "土星那麼大，平均密度怎麼可能比水還低？",
+      "domain": "天文",
+      "mechanism_key": "saturn_bulk_density_gas_composition",
+      "answer_target": "總質量與體積的平均密度及氣體組成",
+      "scope": "土星；不採未另查的近期新多邊形風暴新聞",
+      "source_ids": [
+        "NS05"
+      ],
+      "source_locator": "Structure",
+      "premise_status": "screened",
+      "notes": "不把巨大浴缸當可實作的物理情境。"
+    },
+    {
+      "id": "N027",
+      "question": "天王星的一個冬天，為什麼能黑上很多年？",
+      "domain": "天文",
+      "mechanism_key": "uranus_obliquity_polar_seasons",
+      "answer_target": "極大軸傾角與長公轉週期造成長極夜",
+      "scope": "天王星；不將造成傾斜的碰撞假說當已確定",
+      "source_ids": [
+        "NS06"
+      ],
+      "source_locator": "Orbit and Rotation",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N028",
+      "question": "叫做冰巨星，內部為什麼不是一顆大冰球？",
+      "domain": "天文",
+      "mechanism_key": "ice_giant_hot_dense_fluids",
+      "answer_target": "天文分類的冰質材料與當下熱流體狀態",
+      "scope": "天王星；不將造成傾斜的碰撞假說當已確定",
+      "source_ids": [
+        "NS06"
+      ],
+      "source_locator": "Structure",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N029",
+      "question": "天王星為什麼呈現藍綠色？",
+      "domain": "天文",
+      "mechanism_key": "uranus_methane_visible_absorption",
+      "answer_target": "甲烷選擇吸收及反射光譜",
+      "scope": "天王星；不將造成傾斜的碰撞假說當已確定",
+      "source_ids": [
+        "NS06"
+      ],
+      "source_locator": "Structure",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N030",
+      "question": "天王星的極光，為什麼不乖乖待在自轉兩極附近？",
+      "domain": "天文",
+      "mechanism_key": "uranus_tilted_magnetic_aurora_geometry",
+      "answer_target": "磁軸與自轉軸不重合的後果",
+      "scope": "天王星；不將造成傾斜的碰撞假說當已確定",
+      "source_ids": [
+        "NS06"
+      ],
+      "source_locator": "Magnetosphere",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N031",
+      "question": "冥王星有時比海王星靠近太陽，兩者怎麼不撞上？",
+      "domain": "天文",
+      "mechanism_key": "neptune_pluto_orbital_resonance",
+      "answer_target": "軌道週期共振避免近接的幾何關係",
+      "scope": "海王星與冥王星；限軌道幾何和影像呈現",
+      "source_ids": [
+        "NS07"
+      ],
+      "source_locator": "Orbit and Rotation",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N032",
+      "question": "海王星真的那麼深藍，還是照片調過顏色？",
+      "domain": "天文",
+      "mechanism_key": "neptune_processed_image_color",
+      "answer_target": "增強對比影像與校正後視覺色彩之別",
+      "scope": "海王星與冥王星；限軌道幾何和影像呈現",
+      "source_ids": [
+        "NS07"
+      ],
+      "source_locator": "Atmosphere",
+      "premise_status": "screened",
+      "notes": "候選前提已作來源級篩查；非完整答案查核。"
+    },
+    {
+      "id": "N033",
+      "question": "太陽一直發光，能量是從哪裡來的？",
+      "domain": "天文",
+      "mechanism_key": "solar_core_hydrogen_fusion",
+      "answer_target": "核融合供能與一般燃燒的區別",
+      "scope": "太陽；不預測當期太陽活動",
+      "source_ids": [
+        "NS08"
+      ],
+      "source_locator": "Structure",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N034",
+      "question": "太陽赤道和兩極，為什麼轉一圈花的時間不同？",
+      "domain": "天文",
+      "mechanism_key": "solar_differential_rotation",
+      "answer_target": "非剛體太陽的差異自轉",
+      "scope": "太陽；不預測當期太陽活動",
+      "source_ids": [
+        "NS08"
+      ],
+      "source_locator": "Orbit and Rotation",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N035",
+      "question": "太陽核心產生的能量，為什麼不會直接跑到表面？",
+      "domain": "天文",
+      "mechanism_key": "solar_radiative_convective_transport",
+      "answer_target": "輻射傳輸與外層對流的不同路徑",
+      "scope": "太陽；不預測當期太陽活動",
+      "source_ids": [
+        "NS08"
+      ],
+      "source_locator": "Structure",
+      "premise_status": "screened",
+      "notes": "不使用頁內特定傳輸年數當精確通則。"
+    },
+    {
+      "id": "N036",
+      "question": "太陽沒有固體地面，我們看到的表面是哪裡？",
+      "domain": "天文",
+      "mechanism_key": "solar_photosphere_visible_surface",
+      "answer_target": "光球與固體表面的概念區別",
+      "scope": "太陽；不預測當期太陽活動",
+      "source_ids": [
+        "NS08"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N037",
+      "question": "太陽照片上的黑子和冕洞，為什麼都黑卻不是同一回事？",
+      "domain": "天文",
+      "mechanism_key": "sunspot_coronal_hole_darkness_comparison",
+      "answer_target": "溫度反差與稀薄區域的不同可見機制",
+      "scope": "太陽；不預測當期太陽活動",
+      "source_ids": [
+        "NS08"
+      ],
+      "source_locator": "Key Sun Features",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N038",
+      "question": "太陽閃焰和拋出一大團物質，差別在哪裡？",
+      "domain": "天文",
+      "mechanism_key": "solar_flare_cme_distinction",
+      "answer_target": "磁能釋放與磁化粒子雲拋射的區別",
+      "scope": "太陽；不預測當期太陽活動",
+      "source_ids": [
+        "NS08"
+      ],
+      "source_locator": "Key Sun Features",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N039",
+      "question": "太陽上的突出拱橋，為什麼換個角度看會變暗線？",
+      "domain": "天文",
+      "mechanism_key": "solar_prominence_filament_viewing_geometry",
+      "answer_target": "同一結構在邊緣與太陽盤面前的外觀",
+      "scope": "太陽；不預測當期太陽活動",
+      "source_ids": [
+        "NS08"
+      ],
+      "source_locator": "Key Sun Features / Solar Prominence",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N040",
+      "question": "太陽風往外吹，磁場線為什麼卻像旋轉灑水器？",
+      "domain": "天文",
+      "mechanism_key": "parker_spiral_rotation_outflow",
+      "answer_target": "太陽自轉與向外流動共同形成螺旋",
+      "scope": "太陽；不預測當期太陽活動",
+      "source_ids": [
+        "NS08"
+      ],
+      "source_locator": "Magnetosphere",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N041",
+      "question": "月亮每晚形狀不同，是被地球影子遮住了嗎？",
+      "domain": "天文",
+      "mechanism_key": "lunar_phase_illumination_geometry",
+      "answer_target": "月相與日照幾何，不等同月食",
+      "scope": "地球的月球",
+      "source_ids": [
+        "NS09"
+      ],
+      "source_locator": "Orbit and Rotation",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N042",
+      "question": "月球繞地球一圈，為什麼還沒回到相同月相？",
+      "domain": "天文",
+      "mechanism_key": "lunar_synodic_sidereal_month",
+      "answer_target": "地球同時繞太陽使月相週期不同",
+      "scope": "地球的月球",
+      "source_ids": [
+        "NS09"
+      ],
+      "source_locator": "Orbit and Rotation",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N043",
+      "question": "月亮上的海，為什麼沒有海水？",
+      "domain": "天文",
+      "mechanism_key": "lunar_maria_basalt_plains",
+      "answer_target": "古代熔岩填滿盆地形成暗區",
+      "scope": "地球的月球",
+      "source_ids": [
+        "NS09"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N044",
+      "question": "月球沒有風吹雨打，表面粉末怎麼磨出來的？",
+      "domain": "天文",
+      "mechanism_key": "lunar_regolith_impact_comminution",
+      "answer_target": "反覆撞擊把岩石磨成碎屑",
+      "scope": "地球的月球",
+      "source_ids": [
+        "NS09"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N045",
+      "question": "登月影片裡的人，為什麼走起路像在彈跳？",
+      "domain": "天文",
+      "mechanism_key": "lunar_surface_low_gravity_gait",
+      "answer_target": "有地面支撐時的較低重力與步態",
+      "scope": "地球的月球",
+      "source_ids": [
+        "NS09"
+      ],
+      "source_locator": "Surface",
+      "premise_status": "screened",
+      "notes": "與 S80 軌道共同自由落體不同；不把登月當失重。"
+    },
+    {
+      "id": "N046",
+      "question": "月球遇到微小撞擊，為什麼會釋出水分？",
+      "domain": "天文",
+      "mechanism_key": "lunar_impact_water_release",
+      "answer_target": "撞擊穿透乾土層並釋放土粒附著水",
+      "scope": "地球的月球",
+      "source_ids": [
+        "NS09"
+      ],
+      "source_locator": "Water on the Moon",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N047",
+      "question": "彗星靠近太陽時，為什麼突然長出一大片霧？",
+      "domain": "天文",
+      "mechanism_key": "comet_sublimation_coma",
+      "answer_target": "冰受熱轉為氣體並帶出塵埃形成彗髮",
+      "scope": "彗星；起源及物質輸送推斷保留研究語氣",
+      "source_ids": [
+        "NS10"
+      ],
+      "source_locator": "Where Do Comets Come From?",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N048",
+      "question": "彗星的尾巴為什麼朝離開太陽的方向，還不只一條？",
+      "domain": "天文",
+      "mechanism_key": "comet_ion_dust_tail_forcing",
+      "answer_target": "太陽風與光壓對不同尾部物質的作用",
+      "scope": "彗星；起源及物質輸送推斷保留研究語氣",
+      "source_ids": [
+        "NS10"
+      ],
+      "source_locator": "Where Do Comets Come From?",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N049",
+      "question": "有些彗星常回來，有些一走就是很久，差別在哪？",
+      "domain": "天文",
+      "mechanism_key": "comet_reservoir_orbital_period_classes",
+      "answer_target": "不同來源區域與長短週期軌道",
+      "scope": "彗星；起源及物質輸送推斷保留研究語氣",
+      "source_ids": [
+        "NS10"
+      ],
+      "source_locator": "Where Do Comets Come From?",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N050",
+      "question": "冰冷彗星裡怎麼會有曾在高溫環境形成的礦物？",
+      "domain": "天文",
+      "mechanism_key": "comet_samples_radial_material_transport",
+      "answer_target": "樣本成分對早期太陽系物質移動的線索",
+      "scope": "彗星；起源及物質輸送推斷保留研究語氣",
+      "source_ids": [
+        "NS10"
+      ],
+      "source_locator": "Exploration of Comets",
+      "premise_status": "screened",
+      "notes": "屬樣本支持的推斷，不宣稱唯一輸送路線。"
+    },
+    {
+      "id": "N051",
+      "question": "想知道彗星裡面是什麼，為什麼要讓探測器撞上去？",
+      "domain": "天文",
+      "mechanism_key": "comet_impact_excavation_spectroscopy",
+      "answer_target": "暴露內部物質並以成像光譜研究",
+      "scope": "彗星；起源及物質輸送推斷保留研究語氣",
+      "source_ids": [
+        "NS10"
+      ],
+      "source_locator": "Exploration of Comets",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N052",
+      "question": "看完流星雨，為什麼通常找不到掉下來的隕石？",
+      "domain": "天文",
+      "mechanism_key": "meteor_shower_fragile_debris_survival",
+      "answer_target": "小型彗星碎屑與能存活落地物體的差異",
+      "scope": "地球觀測流星與隕石；不沿用年度觀測時刻表",
+      "source_ids": [
+        "NS11"
+      ],
+      "source_locator": "Meteor Showers; Meteorites",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N053",
+      "question": "流星雨為什麼常在每年差不多的時候出現？",
+      "domain": "天文",
+      "mechanism_key": "meteor_shower_earth_debris_trail",
+      "answer_target": "地球定期穿越殘留碎屑帶",
+      "scope": "地球觀測流星與隕石；不沿用年度觀測時刻表",
+      "source_ids": [
+        "NS11"
+      ],
+      "source_locator": "Meteor Showers",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N054",
+      "question": "流星雨叫英仙座，真的是從英仙座的星星掉下來嗎？",
+      "domain": "天文",
+      "mechanism_key": "meteor_shower_radiant_name_origin",
+      "answer_target": "視覺輻射點命名與實際母天體的區別",
+      "scope": "地球觀測流星與隕石；不沿用年度觀測時刻表",
+      "source_ids": [
+        "NS11"
+      ],
+      "source_locator": "Meteor Showers",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N055",
+      "question": "太空岩石還沒碰到地面，為什麼就可能碎裂？",
+      "domain": "天文",
+      "mechanism_key": "meteoroid_aerodynamic_fragmentation",
+      "answer_target": "進入大氣後壓力超過材料強度",
+      "scope": "地球觀測流星與隕石；不沿用年度觀測時刻表",
+      "source_ids": [
+        "NS11"
+      ],
+      "source_locator": "Meteorites",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N056",
+      "question": "找隕石的人為什麼常往沙漠和南極去？",
+      "domain": "天文",
+      "mechanism_key": "meteorite_detection_environment_bias",
+      "answer_target": "深色石塊在少岩沙地與冰原容易辨認",
+      "scope": "地球觀測流星與隕石；不沿用年度觀測時刻表",
+      "source_ids": [
+        "NS11"
+      ],
+      "source_locator": "Meteorites",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N057",
+      "question": "隕石外面那層像燒過的皮，是怎麼形成的？",
+      "domain": "天文",
+      "mechanism_key": "meteorite_fusion_crust",
+      "answer_target": "通過大氣時表層熔融留下的外殼",
+      "scope": "地球觀測流星與隕石；不沿用年度觀測時刻表",
+      "source_ids": [
+        "NS11"
+      ],
+      "source_locator": "What Do Meteorites Look Like?",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N058",
+      "question": "一顆落在地上的石頭，怎麼追查它來自哪裡？",
+      "domain": "天文",
+      "mechanism_key": "meteorite_origin_multievidence",
+      "answer_target": "軌道、成分與年齡的交叉辨識",
+      "scope": "地球觀測流星與隕石；不沿用年度觀測時刻表",
+      "source_ids": [
+        "NS11"
+      ],
+      "source_locator": "Where Do Meteorites Come From?",
+      "premise_status": "screened",
+      "notes": "候選級篩查；延伸解釋仍須逐主張查核。"
+    },
+    {
+      "id": "N059",
+      "question": "一大片冷氣體，怎麼能變成發亮的星星？",
+      "domain": "天文",
+      "mechanism_key": "protostar_gravitational_collapse_heating",
+      "answer_target": "雲團聚集坍縮與原恆星升溫",
+      "scope": "恆星演化的一般模型；不保證個別恆星命運",
+      "source_ids": [
+        "NS12"
+      ],
+      "source_locator": "Birth; Life",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N060",
+      "question": "大星星燃料多，為什麼壽命反而可能更短？",
+      "domain": "天文",
+      "mechanism_key": "stellar_mass_fuel_consumption_lifetime",
+      "answer_target": "質量與維持支撐所需能量消耗率",
+      "scope": "恆星演化的一般模型；不保證個別恆星命運",
+      "source_ids": [
+        "NS12"
+      ],
+      "source_locator": "Life",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N061",
+      "question": "恆星核心快沒燃料，外面為什麼反而膨脹？",
+      "domain": "天文",
+      "mechanism_key": "stellar_core_contraction_giant_expansion",
+      "answer_target": "晚期核心與外層不同的演化",
+      "scope": "恆星演化的一般模型；不保證個別恆星命運",
+      "source_ids": [
+        "NS12"
+      ],
+      "source_locator": "Death",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N062",
+      "question": "白矮星已不是正常恆星，為什麼還會發亮？",
+      "domain": "天文",
+      "mechanism_key": "white_dwarf_residual_cooling",
+      "answer_target": "殘餘核心慢慢冷卻的輻射",
+      "scope": "恆星演化的一般模型；不保證個別恆星命運",
+      "source_ids": [
+        "NS12"
+      ],
+      "source_locator": "Death",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N063",
+      "question": "大恆星能製造很多元素，為什麼遇到鐵就不同？",
+      "domain": "天文",
+      "mechanism_key": "stellar_iron_fusion_energy_limit",
+      "answer_target": "融合產能鏈到鐵後的能量收支改變",
+      "scope": "恆星演化的一般模型；不保證個別恆星命運",
+      "source_ids": [
+        "NS12"
+      ],
+      "source_locator": "Death",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N064",
+      "question": "死去恆星拋出的東西，怎麼又成為下一代星星？",
+      "domain": "天文",
+      "mechanism_key": "stellar_ejecta_chemical_enrichment",
+      "answer_target": "拋射物回到分子雲並進入新恆星",
+      "scope": "恆星演化的一般模型；不保證個別恆星命運",
+      "source_ids": [
+        "NS12"
+      ],
+      "source_locator": "Death",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N065",
+      "question": "黑洞的邊緣，是像地面一樣摸得到的表面嗎？",
+      "domain": "天文",
+      "mechanism_key": "black_hole_event_horizon_boundary",
+      "answer_target": "事件視界作逃逸邊界而非物質表面",
+      "scope": "黑洞外部可觀測現象；不推測事件視界內部",
+      "source_ids": [
+        "NS13"
+      ],
+      "source_locator": "Black Holes",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N066",
+      "question": "黑洞自己不發光，照片裡亮亮的東西是什麼？",
+      "domain": "天文",
+      "mechanism_key": "black_hole_accretion_emission",
+      "answer_target": "吸積物質發光與黑洞本體的差別",
+      "scope": "黑洞外部可觀測現象；不推測事件視界內部",
+      "source_ids": [
+        "NS13"
+      ],
+      "source_locator": "Finding Black Holes",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N067",
+      "question": "看著幾顆星繞圈，怎麼知道中央藏著黑洞？",
+      "domain": "天文",
+      "mechanism_key": "stellar_orbits_hidden_compact_mass",
+      "answer_target": "以恆星軌道約束不可見中心質量",
+      "scope": "黑洞外部可觀測現象；不推測事件視界內部",
+      "source_ids": [
+        "NS13"
+      ],
+      "source_locator": "Finding Black Holes",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N068",
+      "question": "沒有亮氣體陪著的黑洞，要怎麼被發現？",
+      "domain": "天文",
+      "mechanism_key": "isolated_black_hole_microlensing",
+      "answer_target": "背景星光偏折提供間接偵測線索",
+      "scope": "黑洞外部可觀測現象；不推測事件視界內部",
+      "source_ids": [
+        "NS13"
+      ],
+      "source_locator": "Finding Black Holes",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N069",
+      "question": "如果太陽換成同質量黑洞，地球會立刻被吸進去嗎？",
+      "domain": "天文",
+      "mechanism_key": "black_hole_far_field_mass_equivalence",
+      "answer_target": "遠處重力主要由質量決定的比較",
+      "scope": "黑洞外部可觀測現象；不推測事件視界內部",
+      "source_ids": [
+        "NS13"
+      ],
+      "source_locator": "Essential Facts / Gravity's the same",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N070",
+      "question": "靠近黑洞的物質，為什麼會被拉得像麵條？",
+      "domain": "天文",
+      "mechanism_key": "black_hole_tidal_spaghettification",
+      "answer_target": "不同位置受力差造成伸長與擠壓",
+      "scope": "黑洞外部可觀測現象；不推測事件視界內部",
+      "source_ids": [
+        "NS13"
+      ],
+      "source_locator": "Essential Facts / Spaghettification",
+      "premise_status": "screened",
+      "notes": "寫答案需補潮汐力教材；本頁直接支持變形前提。"
+    },
+    {
+      "id": "N071",
+      "question": "行星看不清楚，為什麼看恆星搖晃就能找它？",
+      "domain": "天文",
+      "mechanism_key": "exoplanet_radial_velocity_doppler",
+      "answer_target": "行星引力造成恆星視線速度與光譜改變",
+      "scope": "系外行星觀測；不沿用頁內任務未來時態",
+      "source_ids": [
+        "NS14"
+      ],
+      "source_locator": "Radial Velocity: Reading the Wobble",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N072",
+      "question": "星光只暗了一點點，怎麼判斷有行星經過？",
+      "domain": "天文",
+      "mechanism_key": "exoplanet_transit_photometry",
+      "answer_target": "週期性遮光的偵測方向及幾何限制",
+      "scope": "系外行星觀測；不沿用頁內任務未來時態",
+      "source_ids": [
+        "NS14"
+      ],
+      "source_locator": "Transits: Planets Found in Dips in Light",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N073",
+      "question": "隔著那麼遠，怎麼知道行星大氣裡有什麼？",
+      "domain": "天文",
+      "mechanism_key": "exoplanet_transmission_spectroscopy",
+      "answer_target": "穿過大氣的星光留下分子吸收訊號",
+      "scope": "系外行星觀測；不沿用頁內任務未來時態",
+      "source_ids": [
+        "NS14"
+      ],
+      "source_locator": "Transit Spectroscopy: Reading the Light",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N074",
+      "question": "星光突然變亮，為什麼也可能是找到行星的線索？",
+      "domain": "天文",
+      "mechanism_key": "exoplanet_gravitational_microlensing",
+      "answer_target": "前景重力透鏡與行星額外增亮訊號",
+      "scope": "系外行星觀測；不沿用頁內任務未來時態",
+      "source_ids": [
+        "NS14"
+      ],
+      "source_locator": "Gravitational Microlensing",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N075",
+      "question": "拍另一顆行星，為什麼得先想辦法遮住它的太陽？",
+      "domain": "天文",
+      "mechanism_key": "exoplanet_coronagraph_starlight_suppression",
+      "answer_target": "主星耀光與微弱行星成像的反差",
+      "scope": "系外行星觀測；不沿用頁內任務未來時態",
+      "source_ids": [
+        "NS14"
+      ],
+      "source_locator": "The Rise of Direct Imaging",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；模型簡化及數據須於撰稿重新查核。"
+    },
+    {
+      "id": "N076",
+      "question": "地下水是不是都藏在地下的大湖裡？",
+      "domain": "地球與水",
+      "mechanism_key": "aquifer_pore_fracture_storage",
+      "answer_target": "比較孔隙、裂縫儲水與地下空洞想像。",
+      "scope": "Aquifers and Groundwater",
+      "source_ids": [
+        "NS15"
+      ],
+      "source_locator": "Groundwater and aquifers",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N077",
+      "question": "石頭明明有很多小孔，為什麼井裡還是抽不出多少水？",
+      "domain": "地球與水",
+      "mechanism_key": "aquifer_porosity_permeability_distinction",
+      "answer_target": "區分能存多少水與孔隙是否連通、能多快供水。",
+      "scope": "Aquifers and Groundwater",
+      "source_ids": [
+        "NS15"
+      ],
+      "source_locator": "Water movement in aquifers",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N078",
+      "question": "鄰居抽井水，為什麼我家的井也可能變淺？",
+      "domain": "地球與水",
+      "mechanism_key": "well_pumping_cone_interference",
+      "answer_target": "抽水降深與相鄰井共享含水層。",
+      "scope": "Aquifers and Groundwater",
+      "source_ids": [
+        "NS15"
+      ],
+      "source_locator": "Pumping can affect the level of the water table",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N079",
+      "question": "有些井沒裝馬達，水為什麼自己往上冒？",
+      "domain": "地球與水",
+      "mechanism_key": "confined_aquifer_artesian_pressure",
+      "answer_target": "受壓含水層的水頭與井口高度條件。",
+      "scope": "Aquifers and Groundwater",
+      "source_ids": [
+        "NS15"
+      ],
+      "source_locator": "Water movement in aquifers",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N080",
+      "question": "水井是不是挖得越深，就一定越有水？",
+      "domain": "地球與水",
+      "mechanism_key": "well_depth_aquifer_yield_mismatch",
+      "answer_target": "井深與可供水岩層分布不能畫上等號。",
+      "scope": "Aquifers and Groundwater",
+      "source_ids": [
+        "NS15"
+      ],
+      "source_locator": "Visualizing groundwater",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N081",
+      "question": "泉水為什麼會從山坡半腰冒出來？",
+      "domain": "地球與水",
+      "mechanism_key": "spring_water_table_surface_intersection",
+      "answer_target": "地下水位、地形與透水層共同決定出露位置。",
+      "scope": "Springs and the Water Cycle",
+      "source_ids": [
+        "NS16"
+      ],
+      "source_locator": "What is a spring?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N082",
+      "question": "雨水怎麼能在堅硬石灰岩裡挖出洞穴？",
+      "domain": "地球與水",
+      "mechanism_key": "karst_carbonic_acid_dissolution",
+      "answer_target": "含二氧化碳水的弱酸性如何沿裂縫溶蝕碳酸鹽岩。",
+      "scope": "Springs and the Water Cycle",
+      "source_ids": [
+        "NS16"
+      ],
+      "source_locator": "How are springs formed?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N083",
+      "question": "有些泉水為什麼呈紅色或茶色？",
+      "domain": "地球與水",
+      "mechanism_key": "spring_mineral_tannin_coloration",
+      "answer_target": "區分鐵等礦物與有機單寧造成的顏色。",
+      "scope": "Springs and the Water Cycle",
+      "source_ids": [
+        "NS16"
+      ],
+      "source_locator": "Spring water is not always clear",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N084",
+      "question": "山泉水看起來清澈，為什麼仍不能單憑外觀判定能喝？",
+      "domain": "地球與水",
+      "mechanism_key": "groundwater_clarity_contaminant_mismatch",
+      "answer_target": "透明度不能檢出溶解污染與微生物。",
+      "scope": "Springs and the Water Cycle",
+      "source_ids": [
+        "NS16"
+      ],
+      "source_locator": "This water is cold and clear—is it fit to drink?",
+      "premise_status": "screened",
+      "notes": "只解釋判讀限制，不提供野外飲水安全保證。"
+    },
+    {
+      "id": "N085",
+      "question": "附近沒有活火山，為什麼也可能有溫泉？",
+      "domain": "地球與水",
+      "mechanism_key": "nonvolcanic_deep_circulation_thermal_spring",
+      "answer_target": "深循環地下水受熱再沿通道上升。",
+      "scope": "Springs and the Water Cycle",
+      "source_ids": [
+        "NS16"
+      ],
+      "source_locator": "Thermal springs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N086",
+      "question": "抽地下水為什麼會讓地面跟著下陷？",
+      "domain": "地球與水",
+      "mechanism_key": "groundwater_withdrawal_sediment_compaction",
+      "answer_target": "孔隙水壓下降後沉積物壓密的地質條件。",
+      "scope": "Groundwater Decline and Depletion",
+      "source_ids": [
+        "NS17"
+      ],
+      "source_locator": "LAND SUBSIDENCE",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N087",
+      "question": "明明沒有抽河水，為什麼河流仍會因附近抽井水而變少？",
+      "domain": "地球與水",
+      "mechanism_key": "pumping_groundwater_stream_capture",
+      "answer_target": "地下水與河流交換，以及抽水攔截補注或誘發滲漏。",
+      "scope": "Groundwater Decline and Depletion",
+      "source_ids": [
+        "NS17"
+      ],
+      "source_locator": "REDUCTION OF WATER IN STREAMS AND LAKES",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N088",
+      "question": "海邊的井為什麼抽久了可能變鹹？",
+      "domain": "地球與水",
+      "mechanism_key": "coastal_aquifer_saltwater_intrusion",
+      "answer_target": "淡水水頭改變讓鹽水邊界內移或上湧。",
+      "scope": "Groundwater Decline and Depletion",
+      "source_ids": [
+        "NS17"
+      ],
+      "source_locator": "DETERIORATION OF WATER QUALITY",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N089",
+      "question": "同樣抽一桶水，井水位越低為什麼通常越耗電？",
+      "domain": "地球與水",
+      "mechanism_key": "groundwater_pumping_lift_energy",
+      "answer_target": "抽升高度與所需能量的關係。",
+      "scope": "Groundwater Decline and Depletion",
+      "source_ids": [
+        "NS17"
+      ],
+      "source_locator": "INCREASED COSTS",
+      "premise_status": "screened",
+      "notes": "來源支持方向；泵效率及算例須另核。"
+    },
+    {
+      "id": "N090",
+      "question": "同樣下一場雨，毛毛雨和暴雨為什麼不會讓地下吸進一樣多水？",
+      "domain": "地球與水",
+      "mechanism_key": "rainfall_intensity_infiltration_capacity",
+      "answer_target": "雨強超過入滲能力後轉為地表逕流。",
+      "scope": "Infiltration and the Water Cycle",
+      "source_ids": [
+        "NS18"
+      ],
+      "source_locator": "Factors affecting infiltration",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N091",
+      "question": "土壤已經濕透時，再下一場雨為什麼特別容易積水？",
+      "domain": "地球與水",
+      "mechanism_key": "antecedent_soil_saturation_runoff",
+      "answer_target": "先前含水量限制新增儲水空間。",
+      "scope": "Infiltration and the Water Cycle",
+      "source_ids": [
+        "NS18"
+      ],
+      "source_locator": "Factors affecting infiltration",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N092",
+      "question": "把草地鋪成柏油，為什麼雨水會更快衝進排水溝？",
+      "domain": "地球與水",
+      "mechanism_key": "urban_impervious_cover_runoff_timing",
+      "answer_target": "不透水面與排水路徑改變逕流量及速度。",
+      "scope": "Infiltration and the Water Cycle",
+      "source_ids": [
+        "NS18"
+      ],
+      "source_locator": "Factors affecting infiltration",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N093",
+      "question": "植物的根和蚯蚓，怎麼會改變雨水進入土壤的方式？",
+      "domain": "地球與水",
+      "mechanism_key": "soil_biopores_infiltration_paths",
+      "answer_target": "生物形成通道與植被減速作用。",
+      "scope": "Infiltration and the Water Cycle",
+      "source_ids": [
+        "NS18"
+      ],
+      "source_locator": "Subsurface water; Factors affecting infiltration",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N094",
+      "question": "土摸起來還濕，為什麼井裡卻可能沒有水？",
+      "domain": "地球與水",
+      "mechanism_key": "unsaturated_capillary_water_pumpability",
+      "answer_target": "毛細作用留在非飽和土壤的水與可抽地下水不同。",
+      "scope": "Infiltration and the Water Cycle",
+      "source_ids": [
+        "NS18"
+      ],
+      "source_locator": "Subsurface water",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N095",
+      "question": "下了好幾天大雨，深井水為什麼不一定立刻補回來？",
+      "domain": "地球與水",
+      "mechanism_key": "deep_aquifer_recharge_travel_time",
+      "answer_target": "補注路徑、深度及透水性造成延遲。",
+      "scope": "Infiltration and the Water Cycle",
+      "source_ids": [
+        "NS18"
+      ],
+      "source_locator": "Infiltration replenishes aquifers",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N096",
+      "question": "把水留在滲透池裡，真的能補進地下含水層嗎？",
+      "domain": "地球與水",
+      "mechanism_key": "managed_aquifer_recharge_infiltration_injection",
+      "answer_target": "比較表面滲入與注水井，及適用地質條件。",
+      "scope": "Infiltration and the Water Cycle",
+      "source_ids": [
+        "NS18"
+      ],
+      "source_locator": "Artificial recharge gives natural infiltration a push",
+      "premise_status": "screened",
+      "notes": "不作工程設計與水質安全建議。"
+    },
+    {
+      "id": "N097",
+      "question": "很久沒下雨，河流為什麼還可能一直有水？",
+      "domain": "地球與水",
+      "mechanism_key": "groundwater_baseflow_dry_weather",
+      "answer_target": "地下水持續排入河道形成基流。",
+      "scope": "Infiltration and the Water Cycle",
+      "source_ids": [
+        "NS18"
+      ],
+      "source_locator": "Factors affecting infiltration",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N098",
+      "question": "樹沒有流汗，為什麼葉子仍會把水送回空氣？",
+      "domain": "地球與水",
+      "mechanism_key": "plant_root_stomatal_transpiration",
+      "answer_target": "根吸水、植株輸送與氣孔散失的連續路徑。",
+      "scope": "Evapotranspiration and the Water Cycle",
+      "source_ids": [
+        "NS19"
+      ],
+      "source_locator": "What is transpiration?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N099",
+      "question": "風一直吹著葉子，為什麼會改變植物失水的速度？",
+      "domain": "地球與水",
+      "mechanism_key": "leaf_boundary_layer_humidity_transpiration",
+      "answer_target": "風與濕度改變葉面附近水蒸氣梯度。",
+      "scope": "Evapotranspiration and the Water Cycle",
+      "source_ids": [
+        "NS19"
+      ],
+      "source_locator": "What affects transpiration?",
+      "premise_status": "screened",
+      "notes": "不把強風或高溫一律說成蒸散增加；氣孔調節另查。"
+    },
+    {
+      "id": "N100",
+      "question": "靠近地下水的樹，為什麼可能讓周圍水位下降？",
+      "domain": "地球與水",
+      "mechanism_key": "deep_root_groundwater_transpiration_drawdown",
+      "answer_target": "根系觸及飽和帶時直接使用地下水。",
+      "scope": "Evapotranspiration and the Water Cycle",
+      "source_ids": [
+        "NS19"
+      ],
+      "source_locator": "How does transpiration affect groundwater?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N101",
+      "question": "這裡明明沒下雨，河水為什麼突然漲起來？",
+      "domain": "地球與水",
+      "mechanism_key": "upstream_rainfall_downstream_flood_routing",
+      "answer_target": "上游降雨沿集水區與河道傳遞。",
+      "scope": "Streamflow and the Water Cycle",
+      "source_ids": [
+        "NS20"
+      ],
+      "source_locator": "Streamflow is always changing",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N102",
+      "question": "為什麼一條小溪暴漲很快，大河的洪峰卻可能晚幾天？",
+      "domain": "地球與水",
+      "mechanism_key": "catchment_scale_flood_response_time",
+      "answer_target": "集水區大小與水流匯集時間。",
+      "scope": "Streamflow and the Water Cycle",
+      "source_ids": [
+        "NS20"
+      ],
+      "source_locator": "Streamflow is always changing",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N103",
+      "question": "看河水有多高，就能知道每秒流過多少水嗎？",
+      "domain": "地球與水",
+      "mechanism_key": "river_stage_discharge_distinction",
+      "answer_target": "水位、斷面與流速共同決定流量。",
+      "scope": "Streamflow and the Water Cycle",
+      "source_ids": [
+        "NS20"
+      ],
+      "source_locator": "Hydrologists study streamflow with hydrographs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N104",
+      "question": "住在山的另一邊，為什麼雨水可能流向完全不同的河？",
+      "domain": "地球與水",
+      "mechanism_key": "watershed_divide_nested_catchments",
+      "answer_target": "地形分水嶺與以出口定義的巢狀集水區。",
+      "scope": "Streamflow and the Water Cycle",
+      "source_ids": [
+        "NS20"
+      ],
+      "source_locator": "Watersheds and rivers",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N105",
+      "question": "河裡只存著地球很少的水，為什麼還能一直供水？",
+      "domain": "地球與水",
+      "mechanism_key": "river_throughflow_storage_distinction",
+      "answer_target": "區分某刻儲水量與不斷更新的水通量。",
+      "scope": "Streamflow and the Water Cycle",
+      "source_ids": [
+        "NS20"
+      ],
+      "source_locator": "Streamflow and global distribution",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N106",
+      "question": "冬天山上的雪，為什麼會影響夏天河裡還有沒有水？",
+      "domain": "地球與水",
+      "mechanism_key": "seasonal_snowpack_water_storage_release",
+      "answer_target": "冬季積存與暖季融化的季節延遲。",
+      "scope": "Snowmelt Runoff and the Water Cycle",
+      "source_ids": [
+        "NS21"
+      ],
+      "source_locator": "Contribution of snowmelt to streamflow",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N107",
+      "question": "雨下在厚厚積雪上，為什麼可能比單純下雨更容易洪水？",
+      "domain": "地球與水",
+      "mechanism_key": "rain_on_snow_combined_runoff",
+      "answer_target": "降雨與融雪同時提供逕流的條件。",
+      "scope": "Snowmelt Runoff and the Water Cycle",
+      "source_ids": [
+        "NS21"
+      ],
+      "source_locator": "Snowmelt and flooding",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；當地地質、尺度與量值須於撰稿重新查核。"
+    },
+    {
+      "id": "N108",
+      "question": "有些冰河融水為什麼呈乳綠色？",
+      "domain": "地球與水",
+      "mechanism_key": "glacial_flour_meltwater_color",
+      "answer_target": "細碎岩石顆粒懸浮造成水色差異。",
+      "scope": "Snowmelt Runoff and the Water Cycle",
+      "source_ids": [
+        "NS21"
+      ],
+      "source_locator": "Snowmelt Runoff and the Water Cycle",
+      "premise_status": "screened",
+      "notes": "光學細節須另補來源；不把所有綠色河流都歸因冰河。"
+    },
+    {
+      "id": "N109",
+      "question": "海底一直冒出新地殼，地球為什麼沒有越長越大？",
+      "domain": "地質",
+      "mechanism_key": "seafloor_creation_subduction_recycling",
+      "answer_target": "海底擴張與隱沒回收的收支。",
+      "scope": "Understanding plate motions",
+      "source_ids": [
+        "NS22"
+      ],
+      "source_locator": "Divergent boundaries; Convergent boundaries",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N110",
+      "question": "兩塊大陸撞在一起，為什麼會擠出高山？",
+      "domain": "地質",
+      "mechanism_key": "continental_collision_crustal_thickening",
+      "answer_target": "浮力較大的大陸地殼縮短、增厚與抬升。",
+      "scope": "Understanding plate motions",
+      "source_ids": [
+        "NS22"
+      ],
+      "source_locator": "Continental-continental convergence",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N111",
+      "question": "海底為什麼會有又長又深的海溝？",
+      "domain": "地質",
+      "mechanism_key": "subduction_trench_geometry",
+      "answer_target": "海洋板塊彎曲下沉形成的交界地形。",
+      "scope": "Understanding plate motions",
+      "source_ids": [
+        "NS22"
+      ],
+      "source_locator": "Oceanic-continental convergence",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N112",
+      "question": "海底的磁性條紋，怎麼能算出板塊以前移動多快？",
+      "domain": "地質",
+      "mechanism_key": "seafloor_magnetic_stripes_spreading_rate",
+      "answer_target": "把磁場翻轉時間與條帶間距對照。",
+      "scope": "Understanding plate motions",
+      "source_ids": [
+        "NS22"
+      ],
+      "source_locator": "Rates of motion",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N113",
+      "question": "板塊只慢慢移動，衛星真的量得到嗎？",
+      "domain": "地質",
+      "mechanism_key": "geodetic_plate_motion_repeated_positions",
+      "answer_target": "跨年重測地面測站位置得到相對運動。",
+      "scope": "Understanding plate motions",
+      "source_ids": [
+        "NS22"
+      ],
+      "source_locator": "Rates of motion",
+      "premise_status": "screened",
+      "notes": "只用測量原理；來源 GPS 星數為歷史敘述，不沿用。"
+    },
+    {
+      "id": "N114",
+      "question": "沒有挖到地心，科學家怎麼知道外核是液體？",
+      "domain": "地質",
+      "mechanism_key": "seismic_s_wave_outer_core_inference",
+      "answer_target": "S 波缺席與震波折射提供內部分層證據。",
+      "scope": "What causes earthquakes?",
+      "source_ids": [
+        "NS23"
+      ],
+      "source_locator": "The structure of the Earth",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N115",
+      "question": "地函是固體，為什麼又說裡面的岩石在流動？",
+      "domain": "地質",
+      "mechanism_key": "mantle_solid_shortterm_longterm_creep",
+      "answer_target": "區分震波時間尺度與地質時間尺度的變形。",
+      "scope": "What causes earthquakes?",
+      "source_ids": [
+        "NS23"
+      ],
+      "source_locator": "The structure of the Earth",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N116",
+      "question": "板塊平常只移動一點點，地震為什麼會突然猛震？",
+      "domain": "地質",
+      "mechanism_key": "fault_elastic_strain_frictional_release",
+      "answer_target": "卡住期間累積彈性形變，滑動時釋放。",
+      "scope": "What causes earthquakes?",
+      "source_ids": [
+        "NS23"
+      ],
+      "source_locator": "Elastic rebound theory",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N117",
+      "question": "同樣叫斷層，為什麼有的把地面抬高，有的讓道路橫向錯開？",
+      "domain": "地質",
+      "mechanism_key": "fault_slip_orientation_surface_offsets",
+      "answer_target": "比較正斷、逆斷與走滑的相對位移。",
+      "scope": "What causes earthquakes?",
+      "source_ids": [
+        "NS23"
+      ],
+      "source_locator": "Types of fault",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N118",
+      "question": "夏威夷火山島為什麼排成一串，而且年齡不一樣？",
+      "domain": "地質",
+      "mechanism_key": "hotspot_track_plate_motion_age_sequence",
+      "answer_target": "板塊移過長期火山供應區形成漸變年代。",
+      "scope": "What is a hotspot and how do you know it's there?",
+      "source_ids": [
+        "NS24"
+      ],
+      "source_locator": "FAQ answer paragraphs 1–4",
+      "premise_status": "screened",
+      "notes": "不把所有熱點的深部起源說成已完全確定。"
+    },
+    {
+      "id": "N119",
+      "question": "地震新聞的震央，為什麼不等於地下真正開始破裂的位置？",
+      "domain": "地質",
+      "mechanism_key": "earthquake_hypocenter_epicenter_geometry",
+      "answer_target": "地下起始點與其地表投影。",
+      "scope": "The Science of Earthquakes",
+      "source_ids": [
+        "NS25"
+      ],
+      "source_locator": "What is an earthquake?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N120",
+      "question": "地震儀自己也在搖，怎麼還能量到地面在動？",
+      "domain": "地質",
+      "mechanism_key": "seismometer_inertial_relative_motion",
+      "answer_target": "利用懸掛質量與儀器底座的相對運動。",
+      "scope": "The Science of Earthquakes",
+      "source_ids": [
+        "NS25"
+      ],
+      "source_locator": "How are earthquakes recorded?",
+      "premise_status": "screened",
+      "notes": "此頁為簡化機械模型；現代回授儀器須另補來源。"
+    },
+    {
+      "id": "N121",
+      "question": "同一場地震，為什麼各地震度不同，卻只有一個主要規模值？",
+      "domain": "地質",
+      "mechanism_key": "earthquake_magnitude_intensity_distinction",
+      "answer_target": "震源事件大小與地點搖晃程度的區分。",
+      "scope": "The Science of Earthquakes",
+      "source_ids": [
+        "NS25"
+      ],
+      "source_locator": "How do scientists measure the size of earthquakes?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N122",
+      "question": "只靠幾個測站的波形，怎麼找出地震發生在哪裡？",
+      "domain": "地質",
+      "mechanism_key": "seismic_arrival_time_source_location",
+      "answer_target": "多站到時差約束震源位置。",
+      "scope": "The Science of Earthquakes",
+      "source_ids": [
+        "NS25"
+      ],
+      "source_locator": "How can scientists tell where the earthquake happened?",
+      "premise_status": "screened",
+      "notes": "與舊 S28 預警不同，研究目標為定位；三圓交會是教學簡化。"
+    },
+    {
+      "id": "N123",
+      "question": "小地震發生時，為什麼不能立刻說它是大地震的前震？",
+      "domain": "地質",
+      "mechanism_key": "foreshock_retrospective_classification",
+      "answer_target": "事件相對分類不能當作預知大震。",
+      "scope": "Foreshocks, aftershocks - what's the difference?",
+      "source_ids": [
+        "NS26"
+      ],
+      "source_locator": "Foreshocks",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N124",
+      "question": "大地震結束後，為什麼還會斷斷續續震很久？",
+      "domain": "地質",
+      "mechanism_key": "aftershock_fault_readjustment_decay",
+      "answer_target": "破裂附近持續調整與發生頻率隨時間下降。",
+      "scope": "Foreshocks, aftershocks - what's the difference?",
+      "source_ids": [
+        "NS26"
+      ],
+      "source_locator": "Aftershocks",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N125",
+      "question": "有些石頭晶粒很大，有些細到看不見，差在哪裡？",
+      "domain": "地質",
+      "mechanism_key": "igneous_cooling_rate_crystal_size",
+      "answer_target": "冷卻速度改變晶體成長時間。",
+      "scope": "How Rocks are Classified",
+      "source_ids": [
+        "NS27"
+      ],
+      "source_locator": "Intrusive Igneous; Extrusive Igneous",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N126",
+      "question": "火山噴出的東西，為什麼也能變成天然玻璃？",
+      "domain": "地質",
+      "mechanism_key": "volcanic_quench_glass_formation",
+      "answer_target": "快速淬冷來不及長出晶體。",
+      "scope": "How Rocks are Classified",
+      "source_ids": [
+        "NS27"
+      ],
+      "source_locator": "Extrusive Igneous",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N127",
+      "question": "鬆散沙泥埋進地下，怎麼會變成堅硬岩石？",
+      "domain": "地質",
+      "mechanism_key": "sediment_compaction_cementation_lithification",
+      "answer_target": "壓密與膠結把顆粒組成岩體。",
+      "scope": "How Rocks are Classified",
+      "source_ids": [
+        "NS27"
+      ],
+      "source_locator": "Clastic",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N128",
+      "question": "水裡原本看不見的礦物，怎麼會最後變成一層岩石？",
+      "domain": "地質",
+      "mechanism_key": "chemical_sediment_precipitation",
+      "answer_target": "蒸發或過飽和造成礦物析出。",
+      "scope": "How Rocks are Classified",
+      "source_ids": [
+        "NS27"
+      ],
+      "source_locator": "Chemical",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N129",
+      "question": "貝殼和植物殘骸，也能堆成岩石嗎？",
+      "domain": "地質",
+      "mechanism_key": "biogenic_sedimentary_accumulation",
+      "answer_target": "生物遺骸沉積與岩石形成。",
+      "scope": "How Rocks are Classified",
+      "source_ids": [
+        "NS27"
+      ],
+      "source_locator": "Biologic",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N130",
+      "question": "有些石頭為什麼能像薄片一層層剝開？",
+      "domain": "地質",
+      "mechanism_key": "metamorphic_mineral_alignment_foliation",
+      "answer_target": "定向壓力讓扁平礦物排列。",
+      "scope": "How Rocks are Classified",
+      "source_ids": [
+        "NS27"
+      ],
+      "source_locator": "Foliated",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N131",
+      "question": "岩石沒熔化，怎麼也會被地下熱源變成另一種岩石？",
+      "domain": "地質",
+      "mechanism_key": "contact_metamorphism_without_melting",
+      "answer_target": "接觸熱與礦物重組，不等於再凝固。",
+      "scope": "How Rocks are Classified",
+      "source_ids": [
+        "NS27"
+      ],
+      "source_locator": "Non-Foliated",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N132",
+      "question": "還沒發明放射性定年時，人們怎麼排出地層的先後？",
+      "domain": "地質",
+      "mechanism_key": "relative_stratigraphic_fossil_order",
+      "answer_target": "疊置、化石群序列與相對時間。",
+      "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages",
+      "source_ids": [
+        "NS28"
+      ],
+      "source_locator": "Geologic Timescale; Relative Dating",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N133",
+      "question": "石頭怎麼可能留下幾億年的時鐘？",
+      "domain": "地質",
+      "mechanism_key": "radiometric_parent_daughter_geologic_clock",
+      "answer_target": "母子元素與半衰期提供數值年代。",
+      "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages",
+      "source_ids": [
+        "NS28"
+      ],
+      "source_locator": "Numeric Ages",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N134",
+      "question": "砂岩裡的一顆晶體很老，為什麼不代表整塊砂岩一樣老？",
+      "domain": "地質",
+      "mechanism_key": "detrital_grain_age_deposition_limit",
+      "answer_target": "碎屑形成早於搬運沉積，只提供年代界限。",
+      "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages",
+      "source_ids": [
+        "NS28"
+      ],
+      "source_locator": "Sedimentary Rocks",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N135",
+      "question": "一條穿過地層的岩脈，怎麼能幫地層定年？",
+      "domain": "地質",
+      "mechanism_key": "crosscutting_intrusion_age_bracketing",
+      "answer_target": "先有地層後被侵入的先後限制。",
+      "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages",
+      "source_ids": [
+        "NS28"
+      ],
+      "source_locator": "Sedimentary Rocks",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N136",
+      "question": "岩石年齡後面的正負幾百萬年，是不是代表科學家只是猜？",
+      "domain": "地質",
+      "mechanism_key": "geochronology_precision_accuracy_uncertainty",
+      "answer_target": "區分分析精度、準確性與地質解釋。",
+      "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages",
+      "source_ids": [
+        "NS28"
+      ],
+      "source_locator": "Numeric Ages, paragraph beginning Every analytical method",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N137",
+      "question": "火山灰叫做灰，為什麼卻能磨傷機器，而且不會溶在水裡？",
+      "domain": "地質",
+      "mechanism_key": "volcanic_ash_rock_glass_abrasion",
+      "answer_target": "碎岩與玻璃顆粒的材料性質。",
+      "scope": "Volcanic Ash & Gases",
+      "source_ids": [
+        "NS29"
+      ],
+      "source_locator": "Volcanic Ash & Gases opening paragraphs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N138",
+      "question": "火山上明明是一團雲，為什麼會貼著山坡高速往下衝？",
+      "domain": "地質",
+      "mechanism_key": "pyroclastic_density_current_gravity",
+      "answer_target": "熱氣、岩塊與灰形成高密度混合流。",
+      "scope": "Pyroclastic flows move fast and destroy everything in their path",
+      "source_ids": [
+        "NS30"
+      ],
+      "source_locator": "Composition; formation mechanisms",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N139",
+      "question": "噴向天空的火山柱，為什麼有時會突然塌下來？",
+      "domain": "地質",
+      "mechanism_key": "eruption_column_buoyancy_collapse",
+      "answer_target": "噴發柱冷卻增密後無法維持上升。",
+      "scope": "Pyroclastic flows move fast and destroy everything in their path",
+      "source_ids": [
+        "NS30"
+      ],
+      "source_locator": "formation mechanisms",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N140",
+      "question": "火山噴發為什麼也可能讓下游發生洪水？",
+      "domain": "地質",
+      "mechanism_key": "volcanic_deposit_river_damming_flood",
+      "answer_target": "碎屑阻河後蓄水，再漫溢沖破堵塞。",
+      "scope": "Pyroclastic flows move fast and destroy everything in their path",
+      "source_ids": [
+        "NS30"
+      ],
+      "source_locator": "secondary hazards",
+      "premise_status": "screened",
+      "notes": "此題限定堵河；融雪另歸火山泥流候選。"
+    },
+    {
+      "id": "N141",
+      "question": "火山沒有在噴，為什麼下大雨還可能流出危險泥流？",
+      "domain": "地質",
+      "mechanism_key": "rain_remobilized_cold_lahar",
+      "answer_target": "雨水動員舊火山沉積物。",
+      "scope": "Volcanic Processes—Lahars",
+      "source_ids": [
+        "NS31"
+      ],
+      "source_locator": "Cold Lahars",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N142",
+      "question": "滿山冰雪為什麼可能讓火山噴發的危險延伸到遠方？",
+      "domain": "地質",
+      "mechanism_key": "eruption_snowmelt_hot_lahar",
+      "answer_target": "噴發熱量融雪供水形成沿河谷移動的泥流。",
+      "scope": "Volcanic Processes—Lahars",
+      "source_ids": [
+        "NS31"
+      ],
+      "source_locator": "Hot Lahars",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N143",
+      "question": "火山裡的熱水，為什麼可能讓整片山坡變脆弱？",
+      "domain": "地質",
+      "mechanism_key": "hydrothermal_alteration_clay_slope_weakening",
+      "answer_target": "熱液改造岩石產生黏土而削弱坡體。",
+      "scope": "Volcanic Processes—Lahars",
+      "source_ids": [
+        "NS31"
+      ],
+      "source_locator": "Mount Rainier National Park",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N144",
+      "question": "一棵樹被火山泥流埋住，怎麼可能變成石化木？",
+      "domain": "地質",
+      "mechanism_key": "lahar_burial_silica_petrification",
+      "answer_target": "富含火山灰的環境與地下水促進矽質置換。",
+      "scope": "Volcanic Processes—Lahars",
+      "source_ids": [
+        "NS31"
+      ],
+      "source_locator": "Petrified Wood Fossils in Lahar Deposits",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N145",
+      "question": "天氣圖上的等壓線擠得很近，為什麼常代表風比較強？",
+      "domain": "天氣",
+      "mechanism_key": "pressure_gradient_isobar_spacing",
+      "answer_target": "同樣距離內氣壓差與推動氣流的力。",
+      "scope": "Origin of Wind",
+      "source_ids": [
+        "NS32"
+      ],
+      "source_locator": "isobars and pressure gradient",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N146",
+      "question": "空氣想從高壓跑向低壓，為什麼不直接吹一直線？",
+      "domain": "天氣",
+      "mechanism_key": "geostrophic_wind_coriolis_balance",
+      "answer_target": "壓力梯度與科氏效應使大尺度風偏轉。",
+      "scope": "Origin of Wind",
+      "source_ids": [
+        "NS32"
+      ],
+      "source_locator": "pressure gradient force and Coriolis force",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N147",
+      "question": "地面風為什麼會斜著吹進低壓中心？",
+      "domain": "天氣",
+      "mechanism_key": "surface_friction_cross_isobar_flow",
+      "answer_target": "摩擦減速改變力平衡而有跨等壓線分量。",
+      "scope": "Origin of Wind",
+      "source_ids": [
+        "NS32"
+      ],
+      "source_locator": "friction",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N148",
+      "question": "低氣壓附近為什麼比較容易多雲下雨？",
+      "domain": "天氣",
+      "mechanism_key": "low_pressure_convergence_rising_cooling",
+      "answer_target": "近地面輻合、抬升冷卻與凝結。",
+      "scope": "Origin of Wind",
+      "source_ids": [
+        "NS32"
+      ],
+      "source_locator": "mass continuity and rising air",
+      "premise_status": "screened",
+      "notes": "條件式關係，不宣稱所有低壓都下雨。"
+    },
+    {
+      "id": "N149",
+      "question": "世界上的大沙漠，為什麼很多聚在南北緯三十度附近？",
+      "domain": "天氣",
+      "mechanism_key": "subtropical_subsidence_desert_belt",
+      "answer_target": "副熱帶下沉氣流與乾燥高壓帶。",
+      "scope": "Global Atmospheric Circulations",
+      "source_ids": [
+        "NS33"
+      ],
+      "source_locator": "three cells and pressure bands",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N150",
+      "question": "赤道的熱空氣，為什麼不是一路直飛北極再回來？",
+      "domain": "天氣",
+      "mechanism_key": "rotating_planet_multicell_circulation",
+      "answer_target": "地球自轉、季節與海陸差異打破單環流模型。",
+      "scope": "Global Atmospheric Circulations",
+      "source_ids": [
+        "NS33"
+      ],
+      "source_locator": "Main text: idealized circulation versus actual pattern",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N151",
+      "question": "高空為什麼會出現一條特別快的風帶？",
+      "domain": "天氣",
+      "mechanism_key": "upper_air_jet_temperature_gradient",
+      "answer_target": "冷暖梯度與自轉共同形成集中強風帶。",
+      "scope": "The Jet Stream",
+      "source_ids": [
+        "NS34"
+      ],
+      "source_locator": "main text paragraphs beginning Jet streams",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N152",
+      "question": "冬天的噴射氣流為什麼往往比夏天強？",
+      "domain": "天氣",
+      "mechanism_key": "winter_jet_stream_thermal_contrast",
+      "answer_target": "冷暖空氣差異的季節變化。",
+      "scope": "The Jet Stream",
+      "source_ids": [
+        "NS34"
+      ],
+      "source_locator": "paragraph beginning Since these hot and cold",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N153",
+      "question": "天氣圖上的噴射氣流，為什麼會南北彎來彎去？",
+      "domain": "天氣",
+      "mechanism_key": "jet_stream_airmass_boundary_meander",
+      "answer_target": "冷暖氣團與高低壓配置使強風帶位置改變。",
+      "scope": "The Jet Stream",
+      "source_ids": [
+        "NS34"
+      ],
+      "source_locator": "paragraph beginning The actual appearance",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N154",
+      "question": "一朵雷雨雲為什麼可能被自己的雨澆熄？",
+      "domain": "天氣",
+      "mechanism_key": "ordinary_storm_precipitation_updraft_cutoff",
+      "answer_target": "下降氣流切斷暖濕上升補給。",
+      "scope": "Types of Thunderstorms",
+      "source_ids": [
+        "NS35"
+      ],
+      "source_locator": "Ordinary Cell",
+      "premise_status": "screened",
+      "notes": "與舊 S57 午後生成不同，限定消散機制。"
+    },
+    {
+      "id": "N155",
+      "question": "雷雨明明一直移動，為什麼同一個地方還能連下好幾輪暴雨？",
+      "domain": "天氣",
+      "mechanism_key": "training_thunderstorm_repeated_tracks",
+      "answer_target": "新胞在上游接續生成，沿同路徑通過。",
+      "scope": "Types of Thunderstorms",
+      "source_ids": [
+        "NS35"
+      ],
+      "source_locator": "Multi-cell Cluster",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N156",
+      "question": "有些雷雨雲為什麼能整朵慢慢旋轉？",
+      "domain": "天氣",
+      "mechanism_key": "supercell_vertical_wind_shear_rotation",
+      "answer_target": "隨高度改變的風向風速與旋轉上升氣流。",
+      "scope": "Types of Thunderstorms",
+      "source_ids": [
+        "NS35"
+      ],
+      "source_locator": "Supercell Thunderstorms",
+      "premise_status": "screened",
+      "notes": "不把旋轉雷暴等同必有龍捲風。"
+    },
+    {
+      "id": "N157",
+      "question": "暴雨前方那道像牆一樣的低雲，是怎麼長出來的？",
+      "domain": "天氣",
+      "mechanism_key": "shelf_cloud_outflow_lifting",
+      "answer_target": "冷出流抬升前方暖濕空氣形成弧狀雲。",
+      "scope": "Types of Thunderstorms",
+      "source_ids": [
+        "NS35"
+      ],
+      "source_locator": "Multi-cell Line (Squall Line)",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N158",
+      "question": "冰雹那麼重，為什麼能先留在雲裡越長越大？",
+      "domain": "天氣",
+      "mechanism_key": "hail_updraft_growth_support",
+      "answer_target": "上升氣流托住冰粒並使其收集液滴。",
+      "scope": "Severe Weather 101: Hail Basics",
+      "source_ids": [
+        "NS36"
+      ],
+      "source_locator": "How does hail form?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N159",
+      "question": "切開冰雹，為什麼有透明和乳白相間的層？",
+      "domain": "天氣",
+      "mechanism_key": "hail_wet_dry_growth_trapped_air",
+      "answer_target": "凍結速度與氣泡排出決定透明程度。",
+      "scope": "Severe Weather 101: Hail Basics",
+      "source_ids": [
+        "NS36"
+      ],
+      "source_locator": "How does hail form?",
+      "premise_status": "screened",
+      "notes": "不沿用反覆上下飛一圈一層的過度簡化。"
+    },
+    {
+      "id": "N160",
+      "question": "同樣大小的冰雹，為什麼落下速度不一定一樣？",
+      "domain": "天氣",
+      "mechanism_key": "hail_shape_drag_melting_fall_speed",
+      "answer_target": "形狀、融化與氣流改變阻力。",
+      "scope": "Severe Weather 101: Hail Basics",
+      "source_ids": [
+        "NS36"
+      ],
+      "source_locator": "How fast does hail fall?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N161",
+      "question": "冰雹為什麼有時會橫著打破窗戶？",
+      "domain": "天氣",
+      "mechanism_key": "hail_horizontal_wind_trajectory",
+      "answer_target": "近地面水平風改變降落軌跡。",
+      "scope": "Severe Weather 101: Hail Basics",
+      "source_ids": [
+        "NS36"
+      ],
+      "source_locator": "How does hail fall to the ground?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N162",
+      "question": "空氣平常不導電，閃電怎麼能一下子穿過去？",
+      "domain": "天氣",
+      "mechanism_key": "lightning_air_dielectric_breakdown",
+      "answer_target": "電荷分離建立強電場，形成放電通道。",
+      "scope": "Severe Weather 101: Lightning Basics",
+      "source_ids": [
+        "NS37"
+      ],
+      "source_locator": "What is lightning?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N163",
+      "question": "閃電是從天上打下來，還是地上也會往上接？",
+      "domain": "天氣",
+      "mechanism_key": "lightning_leader_streamer_attachment",
+      "answer_target": "下降先導與地表物體向上放電連接。",
+      "scope": "Severe Weather 101: Lightning Basics",
+      "source_ids": [
+        "NS37"
+      ],
+      "source_locator": "Where does lightning strike?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N164",
+      "question": "旁邊有高樹，為什麼空地仍可能被雷打中？",
+      "domain": "天氣",
+      "mechanism_key": "lightning_attachment_probabilistic_targets",
+      "answer_target": "高物增加接閃機率卻不能保證周圍免受雷擊。",
+      "scope": "Severe Weather 101: Lightning Basics",
+      "source_ids": [
+        "NS37"
+      ],
+      "source_locator": "Where does lightning strike?",
+      "premise_status": "screened",
+      "notes": "不提供以物體遮蔽躲雷的建議。"
+    },
+    {
+      "id": "N165",
+      "question": "天空沒在下雪，為什麼還會出現白茫茫的暴風雪？",
+      "domain": "天氣",
+      "mechanism_key": "ground_blizzard_resuspended_snow",
+      "answer_target": "強風揚起地面積雪降低能見度。",
+      "scope": "Severe Weather 101: Winter Weather Types",
+      "source_ids": [
+        "NS38"
+      ],
+      "source_locator": "Winter Storms",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N166",
+      "question": "大湖的下風處，為什麼可能突然下特別多雪？",
+      "domain": "天氣",
+      "mechanism_key": "lake_effect_cold_air_moisture_pickup",
+      "answer_target": "冷空氣越過較暖湖水取得水氣再降雪。",
+      "scope": "Severe Weather 101: Winter Weather Types",
+      "source_ids": [
+        "NS38"
+      ],
+      "source_locator": "Winter Storms",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N167",
+      "question": "同樣是冰冷的降水，為什麼有的會彈跳，有的卻黏成冰？",
+      "domain": "天氣",
+      "mechanism_key": "sleet_freezing_rain_thermal_profile",
+      "answer_target": "比較下落前已重新凍結與過冷液滴接觸後凍結。",
+      "scope": "Severe Weather 101: Winter Weather Types",
+      "source_ids": [
+        "NS38"
+      ],
+      "source_locator": "Sleet; Freezing Rain",
+      "premise_status": "screened",
+      "notes": "此處 sleet 指下降途中重新凍結的冰粒，不混稱 graupel；中文正式術語於撰稿再核。 原 N168 的高空溫度層比較併入本題。"
+    },
+    {
+      "id": "N169",
+      "question": "龍捲風的漏斗看起來還沒碰地，地面為什麼已經在捲東西？",
+      "domain": "天氣",
+      "mechanism_key": "tornado_condensation_funnel_visibility",
+      "answer_target": "凝結可見範圍不同於實際接地旋轉氣流。",
+      "scope": "Severe Weather 101: Tornado Basics",
+      "source_ids": [
+        "NS39"
+      ],
+      "source_locator": "What is a tornado?; condensation funnel",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N170",
+      "question": "龍捲風太強量不到，事後怎麼估它的風速等級？",
+      "domain": "天氣",
+      "mechanism_key": "tornado_damage_indicator_wind_estimation",
+      "answer_target": "用建物與樹木等損害指標推估。",
+      "scope": "Severe Weather 101: Tornado Basics",
+      "source_ids": [
+        "NS39"
+      ],
+      "source_locator": "How is tornado strength rated?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N171",
+      "question": "龍捲風被記錄得越來越多，就代表它真的越來越多嗎？",
+      "domain": "天氣",
+      "mechanism_key": "tornado_reporting_detection_bias",
+      "answer_target": "觀測與通報改變影響長期紀錄可比性。",
+      "scope": "Severe Weather 101: Tornado Basics",
+      "source_ids": [
+        "NS39"
+      ],
+      "source_locator": "How many tornadoes occur in the U.S. each year?",
+      "premise_status": "screened",
+      "notes": "不藉此否定氣候影響；只研究記錄偏差。"
+    },
+    {
+      "id": "N172",
+      "question": "沒有龍捲風，為什麼一場雷雨也能把樹成排吹倒？",
+      "domain": "天氣",
+      "mechanism_key": "downburst_surface_outward_spread",
+      "answer_target": "強下降氣流撞地後向外擴散。",
+      "scope": "Severe Weather 101: Damaging Winds Types",
+      "source_ids": [
+        "NS40"
+      ],
+      "source_locator": "macroburst; microburst",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N173",
+      "question": "雨還沒到，為什麼風先變強，空氣也突然變冷？",
+      "domain": "天氣",
+      "mechanism_key": "gust_front_raincooled_air_advance",
+      "answer_target": "雨冷出流前緣先抵達。",
+      "scope": "Severe Weather 101: Damaging Winds Types",
+      "source_ids": [
+        "NS40"
+      ],
+      "source_locator": "gust front",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N174",
+      "question": "雷雨附近為什麼會冒出一道移動的沙塵牆？",
+      "domain": "天氣",
+      "mechanism_key": "haboob_thunderstorm_outflow_dust",
+      "answer_target": "雷暴下沉出流在地面揚塵。",
+      "scope": "Severe Weather 101: Damaging Winds Types",
+      "source_ids": [
+        "NS40"
+      ],
+      "source_locator": "haboob",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N175",
+      "question": "晴朗又沒什麼風的清晨，為什麼特別容易起霧？",
+      "domain": "天氣",
+      "mechanism_key": "radiation_fog_clear_night_cooling",
+      "answer_target": "地表夜間失熱使近地面濕空氣飽和。",
+      "scope": "What is fog?",
+      "source_ids": [
+        "NS41"
+      ],
+      "source_locator": "Radiation fog",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N176",
+      "question": "霧為什麼會像水一樣窩在山谷裡？",
+      "domain": "天氣",
+      "mechanism_key": "valley_cold_air_pool_fog",
+      "answer_target": "冷密空氣沉降並受地形與逆溫限制。",
+      "scope": "What is fog?",
+      "source_ids": [
+        "NS41"
+      ],
+      "source_locator": "Valley fog",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N177",
+      "question": "海邊明明在吹風，為什麼霧還能一大片飄進來？",
+      "domain": "天氣",
+      "mechanism_key": "advection_fog_warm_air_cold_surface",
+      "answer_target": "暖濕氣流越過冷海面冷卻，再被風輸送。",
+      "scope": "What is fog?",
+      "source_ids": [
+        "NS41"
+      ],
+      "source_locator": "Advection fog; Coastal fog",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N178",
+      "question": "湖水沒有沸騰，冷天為什麼像在冒煙？",
+      "domain": "天氣",
+      "mechanism_key": "evaporation_fog_warm_water_cold_air",
+      "answer_target": "蒸發水氣與冷空氣混合達飽和。",
+      "scope": "What is fog?",
+      "source_ids": [
+        "NS41"
+      ],
+      "source_locator": "Evaporation fog",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N179",
+      "question": "樹枝迎風面為什麼會長出羽毛狀白冰？",
+      "domain": "天氣",
+      "mechanism_key": "freezing_fog_rime_accretion",
+      "answer_target": "過冷霧滴碰到物體凍結堆積。",
+      "scope": "What is fog?",
+      "source_ids": [
+        "NS41"
+      ],
+      "source_locator": "Freezing fog",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N180",
+      "question": "看起來都是灰白一片，霧和霾到底差在哪裡？",
+      "domain": "天氣",
+      "mechanism_key": "fog_haze_droplet_particle_distinction",
+      "answer_target": "懸浮水滴與乾微粒對能見度的影響。",
+      "scope": "What is fog?",
+      "source_ids": [
+        "NS41"
+      ],
+      "source_locator": "What is the difference between mist, fog and haze?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N181",
+      "question": "海面下的水，為什麼不一定跟海面往同一個方向流？",
+      "domain": "海洋",
+      "mechanism_key": "ekman_spiral_depth_dependent_current",
+      "answer_target": "摩擦傳遞與旋轉效應產生隨深度變化的流向。",
+      "scope": "The Ekman Spiral",
+      "source_ids": [
+        "NS42"
+      ],
+      "source_locator": "Main explanatory paragraph",
+      "premise_status": "screened",
+      "notes": "理想化模型，實際深度與角度不固定。"
+    },
+    {
+      "id": "N182",
+      "question": "風只吹海面，幾千公尺深的海水為什麼也在流？",
+      "domain": "海洋",
+      "mechanism_key": "thermohaline_density_driven_deep_circulation",
+      "answer_target": "冷卻、增鹽與密度差驅動深層交換。",
+      "scope": "Thermohaline Circulation",
+      "source_ids": [
+        "NS43"
+      ],
+      "source_locator": "Main explanatory paragraphs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N183",
+      "question": "海水結成冰，旁邊還沒凍住的水為什麼反而更鹹？",
+      "domain": "海洋",
+      "mechanism_key": "sea_ice_brine_rejection",
+      "answer_target": "結冰時鹽被排到周圍液態海水。",
+      "scope": "Thermohaline Circulation",
+      "source_ids": [
+        "NS43"
+      ],
+      "source_locator": "paragraph beginning In the Earth's polar regions",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N184",
+      "question": "河水流進大海，為什麼有時會浮在鹹水上面？",
+      "domain": "海洋",
+      "mechanism_key": "estuarine_salt_wedge_density_stratification",
+      "answer_target": "密度差與強河流、弱潮流共同維持鹽楔。",
+      "scope": "Classifying Estuaries: By Water Circulation",
+      "source_ids": [
+        "NS44"
+      ],
+      "source_locator": "Salt-wedge Estuaries",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N185",
+      "question": "有些河口上下都是混合水，有些卻分層，差在哪裡？",
+      "domain": "海洋",
+      "mechanism_key": "estuarine_tidal_mixing_river_competition",
+      "answer_target": "潮流攪拌與河流供水的相對強弱。",
+      "scope": "Classifying Estuaries: By Water Circulation",
+      "source_ids": [
+        "NS44"
+      ],
+      "source_locator": "Vertically Mixed Estuary",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N186",
+      "question": "峽灣明明通向大海，深處的海水為什麼不容易換新？",
+      "domain": "海洋",
+      "mechanism_key": "fjord_sill_deepwater_exchange_restriction",
+      "answer_target": "入口淺門檻限制深層水交換。",
+      "scope": "Classifying Estuaries: By Water Circulation",
+      "source_ids": [
+        "NS44"
+      ],
+      "source_locator": "Fjord-type Estuaries",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N187",
+      "question": "大湖沒有海水，為什麼也有人說它有河口灣？",
+      "domain": "海洋",
+      "mechanism_key": "freshwater_estuary_storm_seiche_exchange",
+      "answer_target": "河湖交會的化學差異與風暴驅動交換。",
+      "scope": "Classifying Estuaries: By Water Circulation",
+      "source_ids": [
+        "NS44"
+      ],
+      "source_locator": "Freshwater Estuaries",
+      "premise_status": "screened",
+      "notes": "分類名稱須交代定義，不把它說成鹹淡混合。"
+    },
+    {
+      "id": "N188",
+      "question": "風很大，為什麼小池塘不會掀起跟外海一樣高的浪？",
+      "domain": "海洋",
+      "mechanism_key": "wind_wave_fetch_duration_growth",
+      "answer_target": "風浪成長取決於風速、持續時間與作用距離。",
+      "scope": "Waves",
+      "source_ids": [
+        "NS45"
+      ],
+      "source_locator": "paragraph beginning Before one can understand",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N189",
+      "question": "外海的浪方向不整齊，為什麼靠岸時常變得沿著海岸排開？",
+      "domain": "海洋",
+      "mechanism_key": "wave_refraction_variable_depth",
+      "answer_target": "同一道波各部分進入淺水先後不同而彎折。",
+      "scope": "Longshore Currents",
+      "source_ids": [
+        "NS46"
+      ],
+      "source_locator": "paragraph beginning The speed at which waves",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N190",
+      "question": "沙灘上的沙，為什麼會沿著海岸慢慢搬家？",
+      "domain": "海洋",
+      "mechanism_key": "longshore_wave_angle_sediment_transport",
+      "answer_target": "斜向入浪與沿岸流輸送沉積物。",
+      "scope": "Longshore Currents",
+      "source_ids": [
+        "NS46"
+      ],
+      "source_locator": "longshore current and longshore drift paragraphs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N191",
+      "question": "海浪一直往岸上來，為什麼沙灘前又會有一股水往外拉？",
+      "domain": "海洋",
+      "mechanism_key": "rip_current_sandbar_gap_return_flow",
+      "answer_target": "近岸水流透過局部缺口集中離岸。",
+      "scope": "Rip Currents",
+      "source_ids": [
+        "NS47"
+      ],
+      "source_locator": "formation paragraphs",
+      "premise_status": "screened",
+      "notes": "只研究機制；成片若含自救須另查台灣最新官方指引。"
+    },
+    {
+      "id": "N192",
+      "question": "大洋裡的海流為什麼常繞成一個大圈？",
+      "domain": "海洋",
+      "mechanism_key": "wind_driven_ocean_gyre_circulation",
+      "answer_target": "全球風系與地球自轉組織大尺度海流。",
+      "scope": "Boundary Currents",
+      "source_ids": [
+        "NS48"
+      ],
+      "source_locator": "First paragraph",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N193",
+      "question": "同一個大洋兩邊，為什麼會有一邊海流窄又急，另一邊寬又慢？",
+      "domain": "海洋",
+      "mechanism_key": "western_boundary_current_intensification",
+      "answer_target": "比較西岸強化與東側邊界流。",
+      "scope": "Boundary Currents",
+      "source_ids": [
+        "NS48"
+      ],
+      "source_locator": "Second paragraph",
+      "premise_status": "screened",
+      "notes": "來源支持現象；緯度變化的科氏參數與渦度機制需補研究／教材來源。"
+    },
+    {
+      "id": "N194",
+      "question": "海裡的鯨歌，為什麼有時能傳到很遠的地方？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_sound_channel_refraction",
+      "answer_target": "聲速剖面讓聲波反覆折回深海聲道。",
+      "scope": "How far does sound travel in the ocean?",
+      "source_ids": [
+        "NS49"
+      ],
+      "source_locator": "paragraphs beginning Imagine a whale and The area",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N195",
+      "question": "海底黑煙囪真的在冒燃燒的煙嗎？",
+      "domain": "海洋",
+      "mechanism_key": "hydrothermal_sulfide_precipitate_black_smoker",
+      "answer_target": "熱液混入冷海水後析出的礦物微粒。；析出的礦物也逐步堆出煙囪狀構造。",
+      "scope": "What is a hydrothermal vent?",
+      "source_ids": [
+        "NS50"
+      ],
+      "source_locator": "black smoker caption",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。 原 N196 煙囪生長併入，不再拆題。"
+    },
+    {
+      "id": "N197",
+      "question": "空氣裡多一點二氧化碳，為什麼會改變海水的酸鹼度？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_co2_carbonate_chemistry",
+      "answer_target": "氣海交換後的碳酸系統反應。",
+      "scope": "What is Ocean Acidification?",
+      "source_ids": [
+        "NS51"
+      ],
+      "source_locator": "first two explanatory paragraphs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N198",
+      "question": "海水酸化，為什麼會讓某些貝類造殼更吃力？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_acidification_carbonate_availability",
+      "answer_target": "碳酸根供應與碳酸鈣結構維持。",
+      "scope": "What is Ocean Acidification?",
+      "source_ids": [
+        "NS51"
+      ],
+      "source_locator": "third explanatory paragraph",
+      "premise_status": "screened",
+      "notes": "不把所有物種反應一概而論；魚類行為敘述未納入。"
+    },
+    {
+      "id": "N199",
+      "question": "海裡養分太多，為什麼最後反而會讓魚待不下去？",
+      "domain": "海洋",
+      "mechanism_key": "eutrophication_decomposition_hypoxia",
+      "answer_target": "過量生產、下沉分解與缺氧的因果鏈。",
+      "scope": "What is a dead zone?",
+      "source_ids": [
+        "NS52"
+      ],
+      "source_locator": "paragraph beginning Hypoxic zones can occur naturally",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N200",
+      "question": "海邊吹一陣風，為什麼海水有時反而變冷？",
+      "domain": "海洋",
+      "mechanism_key": "coastal_upwelling_wind_surface_displacement",
+      "answer_target": "表水離開後深水上湧補位。",
+      "scope": "What is upwelling?",
+      "source_ids": [
+        "NS53"
+      ],
+      "source_locator": "first two explanatory paragraphs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N201",
+      "question": "有些冷海域為什麼反而是很好的漁場？",
+      "domain": "海洋",
+      "mechanism_key": "upwelling_nutrient_primary_productivity",
+      "answer_target": "上湧帶來養分，支持表層生產力。",
+      "scope": "What is upwelling?",
+      "source_ids": [
+        "NS53"
+      ],
+      "source_locator": "last explanatory paragraph",
+      "premise_status": "screened",
+      "notes": "漁場還受生態與漁業管理影響，不作捕撈建議。"
+    },
+    {
+      "id": "N202",
+      "question": "漆黑的深海為什麼像一直在下雪？",
+      "domain": "海洋",
+      "mechanism_key": "marine_snow_organic_particle_export",
+      "answer_target": "有機碎屑聚集下沉，連結表層與深海食物供應。",
+      "scope": "What is marine snow?",
+      "source_ids": [
+        "NS54"
+      ],
+      "source_locator": "Main explanatory paragraphs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N203",
+      "question": "海邊一大片泡沫，都是有人把洗衣精倒進海裡嗎？",
+      "domain": "海洋",
+      "mechanism_key": "seafoam_organic_surfactant_wave_agitation",
+      "answer_target": "天然有機物也能在風浪攪動下形成泡沫。",
+      "scope": "What is sea foam?",
+      "source_ids": [
+        "NS55"
+      ],
+      "source_locator": "First three explanatory paragraphs",
+      "premise_status": "screened",
+      "notes": "不靠外觀判定污染或安全；不宣稱所有海泡沫無害。"
+    },
+    {
+      "id": "N204",
+      "question": "海灘上的沙，為什麼可能是從很遠的山上來的？",
+      "domain": "海洋",
+      "mechanism_key": "river_rock_weathering_beach_sand_supply",
+      "answer_target": "風化、河流搬運與波浪再磨蝕。",
+      "scope": "How does sand form?",
+      "source_ids": [
+        "NS56"
+      ],
+      "source_locator": "paragraphs beginning Sand comes and Often starting",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N205",
+      "question": "有些海灘為什麼是黑的，有些卻是粉紅色？",
+      "domain": "海洋",
+      "mechanism_key": "beach_sediment_mineral_biogenic_color",
+      "answer_target": "比較火山礦物與有色殼體碎屑來源。",
+      "scope": "How does sand form?",
+      "source_ids": [
+        "NS56"
+      ],
+      "source_locator": "beach-color paragraphs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N206",
+      "question": "白沙灘的一部分，真的可能是魚排出來的嗎？",
+      "domain": "海洋",
+      "mechanism_key": "parrotfish_reef_bioerosion_sand",
+      "answer_target": "鸚哥魚磨碎碳酸鈣礁材後排出砂粒。",
+      "scope": "How does sand form?",
+      "source_ids": [
+        "NS56"
+      ],
+      "source_locator": "paragraph beginning Less common",
+      "premise_status": "screened",
+      "notes": "不把所有白沙灘或夏威夷白沙全歸於魚糞；比例須另核。"
+    },
+    {
+      "id": "N207",
+      "question": "海底還測得到一點光，為什麼植物不一定能靠它生長？",
+      "domain": "海洋",
+      "mechanism_key": "ocean_light_detection_photosynthesis_threshold",
+      "answer_target": "區分微光探測與光合作用所需能量。",
+      "scope": "How far does light travel in the ocean?",
+      "source_ids": [
+        "NS57"
+      ],
+      "source_locator": "twilight-zone paragraph",
+      "premise_status": "screened",
+      "notes": "深度界線為概略分類，不把200公尺作全球絕對值。"
+    },
+    {
+      "id": "N208",
+      "question": "往海裡下潛一點，為什麼壓力就增加得這麼快？",
+      "domain": "海洋",
+      "mechanism_key": "hydrostatic_ocean_depth_pressure",
+      "answer_target": "上方水柱重量與壓力隨深度增加。",
+      "scope": "How does pressure change with ocean depth?",
+      "source_ids": [
+        "NS58"
+      ],
+      "source_locator": "First explanatory paragraphs",
+      "premise_status": "screened",
+      "notes": "不使用頁面對人骨／鯨肋骨的簡化比較，無潛水操作建議。"
+    },
+    {
+      "id": "N209",
+      "question": "看不見的海底，怎麼靠一聲回音畫成地圖？",
+      "domain": "海洋",
+      "mechanism_key": "active_sonar_echo_time_bathymetry",
+      "answer_target": "聲脈衝往返時間與方向用來推估距離。",
+      "scope": "What is sonar?",
+      "source_ids": [
+        "NS59"
+      ],
+      "source_locator": "Active Sonar",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N210",
+      "question": "水下麥克風聽到船聲，為什麼一支通常不夠定位？",
+      "domain": "海洋",
+      "mechanism_key": "passive_acoustic_multisensor_localization",
+      "answer_target": "沒有已知發射時刻，須多點訊號約束位置。",
+      "scope": "What is sonar?",
+      "source_ids": [
+        "NS59"
+      ],
+      "source_locator": "Passive Sonar",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N211",
+      "question": "風已停了，湖水為什麼還會一邊高、一邊低地反覆搖？",
+      "domain": "海洋",
+      "mechanism_key": "basin_seiche_standing_wave",
+      "answer_target": "風或氣壓擾動後的盆地自由振盪。",
+      "scope": "What is a seiche?",
+      "source_ids": [
+        "NS60"
+      ],
+      "source_locator": "main explanatory paragraphs",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N212",
+      "question": "沒有地震，為什麼也可能出現像小海嘯一樣的海水漲落？",
+      "domain": "海洋",
+      "mechanism_key": "meteotsunami_atmospheric_pressure_forcing",
+      "answer_target": "快速天氣擾動激發傳播水波。",
+      "scope": "What is a seiche?",
+      "source_ids": [
+        "NS60"
+      ],
+      "source_locator": "Seiches and meteotsunamis. What's the difference?",
+      "premise_status": "screened",
+      "notes": "與舊 S83 海嘯淺化分開，限定大氣觸發；須另核放大條件。"
+    },
+    {
+      "id": "N213",
+      "question": "鬆軟的積雪，怎麼會變成緻密的冰河冰？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "firn_compaction_glacial_ice_formation",
+      "answer_target": "積雪壓密、晶體增長與空氣孔隙封閉。",
+      "scope": "Science of Glaciers",
+      "source_ids": [
+        "NS61"
+      ],
+      "source_locator": "Growing",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N214",
+      "question": "冰河明明是固體，為什麼能像河一樣流下山？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "glacier_internal_deformation_basal_sliding",
+      "answer_target": "冰內形變與底部滑動共同搬運冰。",
+      "scope": "Science of Glaciers",
+      "source_ids": [
+        "NS61"
+      ],
+      "source_locator": "Moving forward; How glaciers move",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N215",
+      "question": "冰河正在後退，代表整條冰河往山上流嗎？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "glacier_terminus_retreat_vs_ice_flow",
+      "answer_target": "末端融失大於補入時，位置後退但冰仍向下流。",
+      "scope": "Science of Glaciers",
+      "source_ids": [
+        "NS61"
+      ],
+      "source_locator": "How glaciers move",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N216",
+      "question": "冰河看起來厚厚一整塊，為什麼表面會裂出深縫？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "glacier_differential_stress_crevasses",
+      "answer_target": "地形與速度差造成拉應力超過冰強度。",
+      "scope": "Science of Glaciers",
+      "source_ids": [
+        "NS61"
+      ],
+      "source_locator": "Moving forward; Crevasses",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N217",
+      "question": "冰河上的黑灰或微生物，為什麼會影響融冰速度？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "glacier_surface_darkening_albedo_melt",
+      "answer_target": "表面反射率下降增加吸收能量。",
+      "scope": "Science of Glaciers",
+      "source_ids": [
+        "NS61"
+      ],
+      "source_locator": "In retreat",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N218",
+      "question": "冰河裡的洞穴，為什麼常有水流穿過？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "glacial_meltwater_cave_channels",
+      "answer_target": "融水在冰內或冰下侵蝕出通道。",
+      "scope": "Science of Glaciers",
+      "source_ids": [
+        "NS61"
+      ],
+      "source_locator": "Glacier caves",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N219",
+      "question": "海水為什麼通常比淡水更難結冰？",
+      "domain": "冰雪與海洋",
+      "mechanism_key": "seawater_freezing_point_convection",
+      "answer_target": "鹽降低冰點，冷卻增密還使表水下沉混合。",
+      "scope": "Science of Sea Ice",
+      "source_ids": [
+        "NS62"
+      ],
+      "source_locator": "How sea ice forms",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N220",
+      "question": "海面上的冰為什麼會像一塊塊圓煎餅？",
+      "domain": "冰雪與海洋",
+      "mechanism_key": "pancake_ice_wave_collision_rims",
+      "answer_target": "初生碎冰在波浪中聚集碰撞形成圓盤與隆邊。",
+      "scope": "Science of Sea Ice",
+      "source_ids": [
+        "NS62"
+      ],
+      "source_locator": "Stages of ice formation",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N221",
+      "question": "平坦海冰為什麼會被擠成一排小山？",
+      "domain": "冰雪與海洋",
+      "mechanism_key": "sea_ice_compression_pressure_ridges",
+      "answer_target": "冰片破裂堆疊形成冰脊與水下冰龍骨。",
+      "scope": "Science of Sea Ice",
+      "source_ids": [
+        "NS62"
+      ],
+      "source_locator": "Stages of ice formation",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N222",
+      "question": "海冰年紀越大，為什麼可能越不鹹？",
+      "domain": "冰雪與海洋",
+      "mechanism_key": "multiyear_sea_ice_brine_drainage",
+      "answer_target": "鹵水沿通道排出並被夏季融水沖洗。",
+      "scope": "Science of Sea Ice",
+      "source_ids": [
+        "NS62"
+      ],
+      "source_locator": "Salinity and sea ice",
+      "premise_status": "screened",
+      "notes": "與結冰排鹽候選不同，限定多年冰後續脫鹽。"
+    },
+    {
+      "id": "N223",
+      "question": "海冰上蓋了一層雪，為什麼冬天反而可能長得比較慢？",
+      "domain": "冰雪與海洋",
+      "mechanism_key": "snow_insulation_sea_ice_growth",
+      "answer_target": "雪的隔熱作用限制海冰向空氣散熱。",
+      "scope": "Science of Sea Ice",
+      "source_ids": [
+        "NS62"
+      ],
+      "source_locator": "Snow on sea ice",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N224",
+      "question": "北方雨不多，為什麼凍土地區夏天卻到處是濕地？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "permafrost_barrier_surface_water_ponding",
+      "answer_target": "淺層融化但下方凍土阻止水下滲。",
+      "scope": "Science of Frozen Ground & Permafrost",
+      "source_ids": [
+        "NS63"
+      ],
+      "source_locator": "Impact on weather and climate",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N225",
+      "question": "土壤解凍，為什麼可能讓原本封住的碳回到空氣？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "permafrost_thaw_organic_carbon_decomposition",
+      "answer_target": "凍結保存有機物，回暖後分解再活動。",
+      "scope": "Science of Frozen Ground & Permafrost",
+      "source_ids": [
+        "NS63"
+      ],
+      "source_locator": "Permafrost and the carbon cycle",
+      "premise_status": "screened",
+      "notes": "二氧化碳／甲烷比例取決於環境，不能一概而論。"
+    },
+    {
+      "id": "N226",
+      "question": "冬天的道路為什麼可能被地下的冰頂成凸包？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "frost_heave_ice_lens_cryosuction",
+      "answer_target": "水向凍結前緣遷移、冰透鏡成長抬升土壤。",
+      "scope": "Science of Frozen Ground & Permafrost",
+      "source_ids": [
+        "NS63"
+      ],
+      "source_locator": "The density of frozen water",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N227",
+      "question": "夏天地面已經暖了，為什麼底下還能保持凍結？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "soil_thermal_diffusion_seasonal_lag",
+      "answer_target": "熱向深層傳遞有延遲，形成活動層與永久凍土。",
+      "scope": "Science of Frozen Ground & Permafrost",
+      "source_ids": [
+        "NS63"
+      ],
+      "source_locator": "Distribution of temperature within soil",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N228",
+      "question": "北極那麼冷，地下為什麼不是一路凍到地心？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "geothermal_flux_permafrost_depth_limit",
+      "answer_target": "地熱向上輸送限制凍土深度。",
+      "scope": "Science of Frozen Ground & Permafrost",
+      "source_ids": [
+        "NS63"
+      ],
+      "source_locator": "Depth of frozen ground",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N229",
+      "question": "有些小土丘看起來像火山，裡面為什麼其實是冰？",
+      "domain": "冰雪與地形",
+      "mechanism_key": "pingo_ground_ice_uplift",
+      "answer_target": "地下冰核膨長抬升上覆土層。",
+      "scope": "Science of Frozen Ground & Permafrost",
+      "source_ids": [
+        "NS63"
+      ],
+      "source_locator": "Pingos",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N230",
+      "question": "雨水滲進山坡，為什麼可能把原本穩定的土推到滑下去？",
+      "domain": "地質",
+      "mechanism_key": "rain_slope_pore_pressure_failure",
+      "answer_target": "孔隙水壓增加、有效接觸與抗剪強度下降。",
+      "scope": "Landslide Hazards",
+      "source_ids": [
+        "NS64"
+      ],
+      "source_locator": "Saturation of slopes bullet",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N231",
+      "question": "河水只沖山腳，為什麼上面的整片山坡也可能垮掉？",
+      "domain": "地質",
+      "mechanism_key": "slope_toe_erosion_support_loss",
+      "answer_target": "坡腳侵蝕讓坡度與支撐條件改變。",
+      "scope": "Landslide Hazards",
+      "source_ids": [
+        "NS64"
+      ],
+      "source_locator": "Erosion and undercutting bullet",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N232",
+      "question": "山坡上多蓋東西或切一條路，為什麼會改變崩塌風險？",
+      "domain": "地質",
+      "mechanism_key": "slope_loading_excavation_equilibrium",
+      "answer_target": "增加載重與開挖削坡改變力的平衡。",
+      "scope": "Landslide Hazards",
+      "source_ids": [
+        "NS64"
+      ],
+      "source_locator": "over weighting and under cutting bullet",
+      "premise_status": "screened",
+      "notes": "只解釋機制，不作個別建地安全判定。"
+    },
+    {
+      "id": "N233",
+      "question": "沒有被敲打的石頭，為什麼也會自己裂開？",
+      "domain": "地質",
+      "mechanism_key": "rock_thermal_expansion_contraction_weathering",
+      "answer_target": "反覆受熱冷卻造成礦物差異形變與裂縫。",
+      "scope": "Weathering and Erosion",
+      "source_ids": [
+        "NS65"
+      ],
+      "source_locator": "Physical Weathering",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N234",
+      "question": "一點鹽水滲進石頭，乾掉後為什麼可能把表面撐碎？",
+      "domain": "地質",
+      "mechanism_key": "salt_crystallization_pressure_weathering",
+      "answer_target": "孔隙鹽類溶解遷移再結晶的壓力。",
+      "scope": "Weathering and Erosion",
+      "source_ids": [
+        "NS65"
+      ],
+      "source_locator": "Growth of Foreign Crystals",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N235",
+      "question": "冬天石縫結冰，為什麼能把石頭一點點拆開？",
+      "domain": "地質",
+      "mechanism_key": "ice_crystal_growth_rock_fracture",
+      "answer_target": "冰晶持續吸引水並在裂縫內生長。",
+      "scope": "Weathering and Erosion",
+      "source_ids": [
+        "NS65"
+      ],
+      "source_locator": "Growth of Foreign Crystals",
+      "premise_status": "screened",
+      "notes": "不只說體積膨脹；與道路凍脹的土壤搬運尺度不同。"
+    },
+    {
+      "id": "N236",
+      "question": "一條河為什麼會突然分成好多條交錯的小河道？",
+      "domain": "地質",
+      "mechanism_key": "sediment_supply_braided_channel_adjustment",
+      "answer_target": "泥沙負荷與輸送能力失衡造成辮狀分流。",
+      "scope": "Weathering and Erosion",
+      "source_ids": [
+        "NS65"
+      ],
+      "source_locator": "The North Platte River",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N237",
+      "question": "地面看起來好好的，為什麼會突然出現一個大洞？",
+      "domain": "地質",
+      "mechanism_key": "cover_collapse_sinkhole_cavity_roof_failure",
+      "answer_target": "空洞上方覆蓋層失去支撐後坍塌。",
+      "scope": "Sinkhole FAQ",
+      "source_ids": [
+        "NS66"
+      ],
+      "source_locator": "Question 1: Why do sinkholes form?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N238",
+      "question": "同樣地下有空洞，為什麼有的地面慢慢凹，有的瞬間塌？",
+      "domain": "地質",
+      "mechanism_key": "sinkhole_cover_sediment_failure_modes",
+      "answer_target": "透水鬆散覆蓋的流失與較完整覆蓋層的失穩。",
+      "scope": "Sinkhole FAQ",
+      "source_ids": [
+        "NS66"
+      ],
+      "source_locator": "Question 1: sinkhole types",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N239",
+      "question": "地上凹一塊，就一定是地下溶洞造成的天坑嗎？",
+      "domain": "地質",
+      "mechanism_key": "surface_subsidence_multiple_causes",
+      "answer_target": "比較喀斯特空洞、管線流失、壓密與埋藏有機物。",
+      "scope": "Sinkhole FAQ",
+      "source_ids": [
+        "NS66"
+      ],
+      "source_locator": "Question 1: Other subterranean events",
+      "premise_status": "screened",
+      "notes": "不替實際個案診斷。"
+    },
+    {
+      "id": "N240",
+      "question": "同樣寫濕度百分之八十，冬天和夏天的水氣真的一樣多嗎？",
+      "domain": "天氣",
+      "mechanism_key": "relative_humidity_temperature_dependence",
+      "answer_target": "相對百分比與實際水氣含量的差別。",
+      "scope": "Humidity",
+      "source_ids": [
+        "NS67"
+      ],
+      "source_locator": "Absolute vs. Relative Humidity",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。 原 N241 的固定含水量冷卻比較併入。"
+    },
+    {
+      "id": "N242",
+      "question": "二氧化碳只占空氣一小部分，為什麼還能影響地球溫度？",
+      "domain": "氣候",
+      "mechanism_key": "trace_greenhouse_gas_infrared_absorption",
+      "answer_target": "比較氣體豐度與對地球熱輻射的吸收能力。",
+      "scope": "The Greenhouse Effect",
+      "source_ids": [
+        "NS68"
+      ],
+      "source_locator": "How Does the Greenhouse Effect Work?",
+      "premise_status": "screened",
+      "notes": "與金星失控溫室不同，限定地球氣體光譜角色；分子選擇律須補來源。 原 N243 的收支能量比較併入延伸，並非另一個機制候選。"
+    },
+    {
+      "id": "N244",
+      "question": "沒有多倒水進海裡，海水變暖為什麼也會讓海面升高？",
+      "domain": "氣候",
+      "mechanism_key": "ocean_thermal_expansion_sea_level",
+      "answer_target": "海水受熱體積增加累積成海面變化。",
+      "scope": "Rising Sea Level",
+      "source_ids": [
+        "NS69"
+      ],
+      "source_locator": "Sea Level Rise Caused by Thermal Expansion of Water",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N245",
+      "question": "陸地冰河融化和海上浮冰融化，為什麼對海平面不一樣？",
+      "domain": "氣候",
+      "mechanism_key": "land_ice_vs_floating_ice_sealevel",
+      "answer_target": "陸冰新加入海水，浮冰原已排開水量。",
+      "scope": "Rising Sea Level",
+      "source_ids": [
+        "NS69"
+      ],
+      "source_locator": "Sea Level Rise Due to Melting Ice Sheets and Glaciers",
+      "premise_status": "screened",
+      "notes": "不用此頁舊速率或全球海平面校準敘述。"
+    },
+    {
+      "id": "N246",
+      "question": "地球離太陽最近時，北半球為什麼反而是冬天？",
+      "domain": "天文",
+      "mechanism_key": "earth_axial_tilt_seasons_not_distance",
+      "answer_target": "直射角與日照分配勝過小幅距離變化。",
+      "scope": "What Causes the Seasons?",
+      "source_ids": [
+        "NS70"
+      ],
+      "source_locator": "It's all about Earth's tilt!; Earth's lopsided orbit",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。 原 N247 南北半球比較併入。"
+    },
+    {
+      "id": "N248",
+      "question": "每個月都有新月，為什麼不會每個月都日食？",
+      "domain": "天文",
+      "mechanism_key": "lunar_orbit_inclination_eclipse_seasons",
+      "answer_target": "月球多數時候從太陽視線上下方經過。",
+      "scope": "Why Do Eclipses Happen?",
+      "source_ids": [
+        "NS71"
+      ],
+      "source_locator": "Introduction",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N250",
+      "question": "都是月亮擋太陽，為什麼有時黑一整片，有時剩一圈火環？",
+      "domain": "天文",
+      "mechanism_key": "eclipse_annular_total_apparent_diameter",
+      "answer_target": "月地距離改變影錐能否到達地表。",
+      "scope": "Why Do Eclipses Happen?",
+      "source_ids": [
+        "NS71"
+      ],
+      "source_locator": "Annular Solar Eclipse",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。 原 N249 日月大小與距離形成視直徑的比較併入。"
+    },
+    {
+      "id": "N251",
+      "question": "日全食為什麼只給一條窄窄地帶的人看到？",
+      "domain": "天文",
+      "mechanism_key": "eclipse_umbra_penumbra_ground_footprint",
+      "answer_target": "月球影錐縮窄，本影與半影覆蓋不同範圍。",
+      "scope": "Why Do Eclipses Happen?",
+      "source_ids": [
+        "NS71"
+      ],
+      "source_locator": "Total Solar Eclipse",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N252",
+      "question": "同一次日食，為什麼有人看到全食，有人卻看到環食？",
+      "domain": "天文",
+      "mechanism_key": "hybrid_eclipse_earth_curvature_shadow",
+      "answer_target": "地球曲面改變地表到月球本影端點的相對距離。",
+      "scope": "Why Do Eclipses Happen?",
+      "source_ids": [
+        "NS71"
+      ],
+      "source_locator": "Hybrid Solar Eclipse",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N253",
+      "question": "飛機後面的白線為什麼有時一下就消失，有時卻留很久？",
+      "domain": "天氣",
+      "mechanism_key": "contrail_ice_persistence_ambient_humidity",
+      "answer_target": "排氣形成冰晶後依濕度昇華或持續。",
+      "scope": "Contrails or condensation trails",
+      "source_ids": [
+        "NS72"
+      ],
+      "source_locator": "How do contrails form?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N254",
+      "question": "機翼尖端拉出的白線，和引擎後的白線是一回事嗎？",
+      "domain": "天氣",
+      "mechanism_key": "aerodynamic_vortex_condensation_vs_exhaust",
+      "answer_target": "局部降壓冷卻與排氣增濕的兩種成因。",
+      "scope": "Contrails or condensation trails",
+      "source_ids": [
+        "NS72"
+      ],
+      "source_locator": "How do we categorise contrails?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N255",
+      "question": "船開過海面，為什麼連衛星也可能看到它留下的雲線？",
+      "domain": "天氣",
+      "mechanism_key": "ship_exhaust_aerosol_cloud_tracks",
+      "answer_target": "排放粒子成為原有水氣凝結的核心。",
+      "scope": "Contrails or condensation trails",
+      "source_ids": [
+        "NS72"
+      ],
+      "source_locator": "How do we categorise contrails?, ship trails paragraph",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N256",
+      "question": "風翻過一座山，為什麼另一邊會突然又熱又乾？",
+      "domain": "天氣",
+      "mechanism_key": "foehn_crossmountain_warming_drying",
+      "answer_target": "比較抬升凝結、下沉壓縮與混合的角色。",
+      "scope": "Foehn effect",
+      "source_ids": [
+        "NS73"
+      ],
+      "source_locator": "How does the foehn effect work?",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N257",
+      "question": "山的迎風面沒下雨，背風面還可能有焚風嗎？",
+      "domain": "天氣",
+      "mechanism_key": "dry_foehn_isentropic_drawdown_mixing",
+      "answer_target": "上層空氣下拉與湍流混合不必先降雨。",
+      "scope": "Foehn effect",
+      "source_ids": [
+        "NS73"
+      ],
+      "source_locator": "2. The draw-down of air from aloft; 3. Turbulent mixing",
+      "premise_status": "screened",
+      "notes": "與上一題可成對照，拆分理由是排除降水後仍有替代機制。"
+    },
+    {
+      "id": "N258",
+      "question": "太陽下山了，市中心為什麼還比郊外熱？",
+      "domain": "氣候與城市",
+      "mechanism_key": "urban_material_heat_storage_nocturnal_release",
+      "answer_target": "白天儲熱與夜間緩慢釋放。",
+      "scope": "What Are Heat Islands?",
+      "source_ids": [
+        "NS74"
+      ],
+      "source_locator": "Urban Material Properties",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N259",
+      "question": "兩條街都很曬，為什麼高樓夾住的街道有時特別悶熱？",
+      "domain": "氣候與城市",
+      "mechanism_key": "urban_canyon_ventilation_radiative_trapping",
+      "answer_target": "建物配置影響風與熱能散出。",
+      "scope": "What Are Heat Islands?",
+      "source_ids": [
+        "NS74"
+      ],
+      "source_locator": "Urban Geometry",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N260",
+      "question": "新聞拍到柏油五十幾度，為什麼不等於當天氣溫五十幾度？",
+      "domain": "氣候與城市",
+      "mechanism_key": "surface_temperature_air_temperature_distinction",
+      "answer_target": "表面熱像與標準空氣溫度為不同測量對象。",
+      "scope": "What Are Heat Islands?",
+      "source_ids": [
+        "NS74"
+      ],
+      "source_locator": "Characteristics of Heat Islands",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N261",
+      "question": "一場雨流過熱柏油路，為什麼可能讓附近溪水突然升溫？",
+      "domain": "氣候與城市",
+      "mechanism_key": "heated_urban_runoff_stream_thermal_pulse",
+      "answer_target": "地表把熱傳給逕流，再輸入溪流。",
+      "scope": "What Are Heat Islands?",
+      "source_ids": [
+        "NS74"
+      ],
+      "source_locator": "Impaired Water Quality",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N262",
+      "question": "太平洋一片海水變暖，為什麼能影響很遠地方的雨？",
+      "domain": "氣候與海洋",
+      "mechanism_key": "enso_tropical_ocean_atmosphere_teleconnection",
+      "answer_target": "暖水分布改變大氣與噴射氣流位置。",
+      "scope": "What are El Niño and La Niña?",
+      "source_ids": [
+        "NS75"
+      ],
+      "source_locator": "El Niño",
+      "premise_status": "screened",
+      "notes": "選題前提篩查；完整解釋與量值仍須逐項查核。"
+    },
+    {
+      "id": "N263",
+      "question": "聖嬰和反聖嬰，為什麼不只是海水熱一點或冷一點？",
+      "domain": "氣候與海洋",
+      "mechanism_key": "enso_trade_wind_ocean_coupling",
+      "answer_target": "信風、暖水堆積與上湧共同改變的系統。",
+      "scope": "What are El Niño and La Niña?",
+      "source_ids": [
+        "NS75"
+      ],
+      "source_locator": "Normal conditions; El Niño; La Niña",
+      "premise_status": "screened",
+      "notes": "不把美國區域雨量敘述直接套到台灣。"
+    },
+    {
+      "id": "N264",
+      "question": "同樣是太陽風，為什麼磁場方向不同，對地球的衝擊會差很多？",
+      "domain": "太空天氣",
+      "mechanism_key": "solar_wind_southward_field_coupling",
+      "answer_target": "太陽風磁場方向如何改變與地球磁層的能量交換效率。",
+      "scope": "Geomagnetic Storms",
+      "source_ids": [
+        "NS76"
+      ],
+      "source_locator": "Opening paragraphs: southward directed solar wind magnetic field",
+      "premise_status": "screened",
+      "notes": "屬機制候選；需要補磁重聯圖解來源，不能只用磁鐵相吸類比當完整答案。"
+    },
+    {
+      "id": "N265",
+      "question": "衛星沒有壞，為什麼磁暴也能讓定位變不準？",
+      "domain": "太空天氣",
+      "mechanism_key": "ionospheric_density_navigation_delay",
+      "answer_target": "磁暴造成電離層密度空間差異，改變無線電傳播路徑與定位。",
+      "scope": "Geomagnetic Storms",
+      "source_ids": [
+        "NS76"
+      ],
+      "source_locator": "Final paragraph: local heating and ionospheric density",
+      "premise_status": "screened",
+      "notes": "與舊 GPS 相對論校時題區隔；不承諾任何事件一定達到特定誤差。"
+    },
+    {
+      "id": "N266",
+      "question": "近地軌道衛星已經在太空，為什麼還需要不時把軌道抬高？",
+      "domain": "太空天氣",
+      "mechanism_key": "thermospheric_expansion_orbital_drag",
+      "answer_target": "稀薄大氣阻力耗掉軌道能量，以及太陽活動如何改變衛星所在高度的密度。",
+      "scope": "近地軌道衛星的上層大氣阻力；不泛指所有高度與任務的衛星。",
+      "source_ids": [
+        "NS77"
+      ],
+      "source_locator": "Opening three paragraphs",
+      "premise_status": "screened",
+      "notes": "頁面舊有衛星數量、太空垃圾數量與補軌頻率不當現行通則；具體任務另查。"
+    },
+    {
+      "id": "N267",
+      "question": "極光看起來像發亮的雲，它到底是什麼在發光？",
+      "domain": "太空天氣",
+      "mechanism_key": "auroral_electron_excitation_emission",
+      "answer_target": "加速電子碰撞上層大氣的原子與分子，激發後釋放光。",
+      "scope": "Aurora",
+      "source_ids": [
+        "NS78"
+      ],
+      "source_locator": "First paragraph",
+      "premise_status": "screened",
+      "notes": "此頁未完整支持不同極光顏色，顏色題未另外計入。"
+    },
+    {
+      "id": "N268",
+      "question": "為什麼極光常在高緯度出現，強磁暴時卻能往南看見？",
+      "domain": "太空天氣",
+      "mechanism_key": "auroral_oval_field_guidance_expansion",
+      "answer_target": "磁力線導引形成極光橢圓帶，地磁活動增強時其範圍向低緯延伸。",
+      "scope": "Aurora",
+      "source_ids": [
+        "NS78"
+      ],
+      "source_locator": "Second and fourth paragraphs",
+      "premise_status": "screened",
+      "notes": "不把固定緯度或每年可見比例當保證；南半球方向需相應改為向低緯。"
+    },
+    {
+      "id": "N269",
+      "question": "太陽上的風暴，怎麼會讓地面的電網出問題？",
+      "domain": "太空天氣",
+      "mechanism_key": "geomagnetically_induced_currents_transformer_saturation",
+      "answer_target": "變動地磁與地電場、長導線感應電流、變壓器飽和及保護設備連鎖反應。",
+      "scope": "Electric Power Transmission",
+      "source_ids": [
+        "NS79"
+      ],
+      "source_locator": "Final assessment paragraph",
+      "premise_status": "screened",
+      "notes": "不是每次磁暴都停電；地質、電網設計及負載均影響結果。來源的電磁簡述不代替完整電路查核。"
+    },
+    {
+      "id": "N270",
+      "question": "小行星帶為什麼沒有聚成一顆大行星？",
+      "domain": "天文",
+      "mechanism_key": "jupiter_perturbations_asteroid_belt_accretion",
+      "answer_target": "木星重力擾動如何妨礙該區小天體聚合，並使碰撞破碎持續發生。",
+      "scope": "Asteroid Facts",
+      "source_ids": [
+        "NS80"
+      ],
+      "source_locator": "Asteroid Classifications: Main Asteroid Belt",
+      "premise_status": "screened",
+      "notes": "形成史仍要補研究限定；不說小行星帶是已成形行星炸碎。"
+    },
+    {
+      "id": "N271",
+      "question": "有些小行星跟著木星繞太陽，為什麼不會很快撞上木星？",
+      "domain": "天文",
+      "mechanism_key": "trojan_lagrange_orbital_stability",
+      "answer_target": "特洛伊小行星在行星公轉軌道附近的拉格朗日穩定區運動。",
+      "scope": "Asteroid Facts",
+      "source_ids": [
+        "NS80"
+      ],
+      "source_locator": "Asteroid Classifications: Trojans",
+      "premise_status": "screened",
+      "notes": "不將拉格朗日點說成沒有重力或小行星完全靜止。"
+    },
+    {
+      "id": "N272",
+      "question": "小行星怎麼有的偏石頭，有的卻富含金屬？",
+      "domain": "天文",
+      "mechanism_key": "asteroid_thermal_differentiation_composition",
+      "answer_target": "形成環境與早期受熱熔融分異，如何留下不同成分。",
+      "scope": "Asteroid Facts",
+      "source_ids": [
+        "NS80"
+      ],
+      "source_locator": "Composition",
+      "premise_status": "screened",
+      "notes": "分類不代表每顆都是純岩石或純金屬；個別天體需另查。"
+    },
+    {
+      "id": "N273",
+      "question": "被列為『潛在危險小行星』，是不是代表它將撞上地球？",
+      "domain": "天文",
+      "mechanism_key": "potentially_hazardous_asteroid_classification_vs_impact",
+      "answer_target": "軌道接近與大小分類，和實際碰撞機率之間的差別。",
+      "scope": "Asteroid Facts",
+      "source_ids": [
+        "NS80"
+      ],
+      "source_locator": "Will an Asteroid Ever Hit Earth? PHA definition",
+      "premise_status": "screened",
+      "notes": "只做分類與機率概念；現行名單、門檻與風險事件製作時再查，不重述此頁概括百年預測。"
+    },
+    {
+      "id": "N274",
+      "question": "冰看起來透明，為什麼積雪卻常是白色？",
+      "domain": "冰雪",
+      "mechanism_key": "snow_multiple_scattering_white_appearance",
+      "answer_target": "大量冰晶界面讓不同可見光多次散射，與透明整塊冰區別。",
+      "scope": "Quick Facts About Snow",
+      "source_ids": [
+        "NS81"
+      ],
+      "source_locator": "What color is snow?",
+      "premise_status": "screened",
+      "notes": "不使用該頁食雪與脫水段的健康建議；不將所有雪說成純白。"
+    },
+    {
+      "id": "N275",
+      "question": "為什麼剛下完雪的街道常變安靜，結冰後卻不一定？",
+      "domain": "冰雪",
+      "mechanism_key": "fresh_snow_sound_absorption_refrozen_reflection",
+      "answer_target": "鬆軟新雪吸收聲音，融化再結冰的表面則較易反射聲波。",
+      "scope": "Quick Facts About Snow",
+      "source_ids": [
+        "NS81"
+      ],
+      "source_locator": "Why is it so quiet after it snows?",
+      "premise_status": "screened",
+      "notes": "需要補孔隙吸音的定量研究才可報數字；不能排除車流、風等現場因素。"
+    },
+    {
+      "id": "N276",
+      "question": "雪花為什麼常有六角結構，卻又長得不一樣？",
+      "domain": "冰雪",
+      "mechanism_key": "snow_crystal_symmetry_branching_growth_history",
+      "answer_target": "六方冰晶結構提供對稱基礎，晶面和分枝生長隨微環境改變。",
+      "scope": "How Do Snowflakes Form?",
+      "source_ids": [
+        "NS82"
+      ],
+      "source_locator": "The Birth of a Snowflake; Chaos Ensues",
+      "premise_status": "screened",
+      "notes": "同一核心包含六角與分枝比較，不另拆兩題；避免宣稱已證明全宇宙沒有兩片相同雪花。"
+    },
+    {
+      "id": "N277",
+      "question": "明明看見雲底垂下雨絲，地面為什麼一滴雨也沒有？",
+      "domain": "天氣",
+      "mechanism_key": "virga_precipitation_evaporation_before_ground",
+      "answer_target": "雨雪穿過乾暖空氣，在落地前蒸發或昇華形成雨幡。",
+      "scope": "Unusual cloud formations",
+      "source_ids": [
+        "NS83"
+      ],
+      "source_locator": "Virga / How does virga form?",
+      "premise_status": "screened",
+      "notes": "不說看見雨幡就一定有微爆流；微爆流只作已存在題 N172 的可選連結。"
+    },
+    {
+      "id": "N278",
+      "question": "山邊的飛碟雲，為什麼能待在附近不跟著風整片跑走？",
+      "domain": "天氣",
+      "mechanism_key": "lenticular_mountain_wave_stationary_condensation",
+      "answer_target": "山岳駐波的上升段持續凝結，雲形位置與流過的空氣不是同一件事。",
+      "scope": "Unusual cloud formations",
+      "source_ids": [
+        "NS83"
+      ],
+      "source_locator": "Lenticular clouds / How do lenticular clouds form?",
+      "premise_status": "screened",
+      "notes": "來源支持駐波形成；空氣進出雲的動畫仍需補凝結蒸發路徑資料；不將所有飛碟狀雲都認作同類。"
+    },
+    {
+      "id": "N279",
+      "question": "地面已經日落，為什麼有些高空雲還能亮得像自己發光？",
+      "domain": "天氣",
+      "mechanism_key": "high_altitude_cloud_twilight_illumination_geometry",
+      "answer_target": "地球曲率與雲的高度，使地面進入陰影時高空雲仍受陽光照射。",
+      "scope": "Unusual cloud formations",
+      "source_ids": [
+        "NS83"
+      ],
+      "source_locator": "Nacreous clouds / How do Nacreous clouds form?",
+      "premise_status": "screened",
+      "notes": "此題只處理受光幾何，不將珠母雲、夜光雲與極光混為一種機制。"
+    },
+    {
+      "id": "N280",
+      "question": "地震時看似堅固的地面，為什麼會像液體一樣失去支撐？",
+      "domain": "地球",
+      "mechanism_key": "earthquake_saturated_sediment_liquefaction",
+      "answer_target": "強震作用於鬆散含水沉積物的強度流失；孔隙水壓與有效應力是後續研究方向。",
+      "scope": "What is liquefaction?",
+      "source_ids": [
+        "NS84"
+      ],
+      "source_locator": "Opening definition",
+      "premise_status": "screened",
+      "notes": "來源支持現象與條件，完整孔隙水壓機制須補工程來源；不把任何土壤、任何地震都說成會液化。"
+    },
+    {
+      "id": "N281",
+      "question": "月亮旁邊的大光圈和緊貼月亮的小彩圈，是同一回事嗎？",
+      "domain": "天氣",
+      "mechanism_key": "ice_halo_refraction_vs_droplet_corona_diffraction",
+      "answer_target": "冰晶形成的暈與雲滴繞射的華，其材料、角度尺度與形成機制不同。",
+      "scope": "Optical effects: nature's light show",
+      "source_ids": [
+        "NS85"
+      ],
+      "source_locator": "Haloes; Coronas",
+      "premise_status": "screened",
+      "notes": "不把來源『light passes through them at a 22° angle』字面當精確入射角定義；後續以光線偏折圖另核對。"
+    },
+    {
+      "id": "N282",
+      "question": "雲縫裡的陽光，為什麼看起來像從一個點散開？",
+      "domain": "天氣",
+      "mechanism_key": "crepuscular_parallel_rays_perspective",
+      "answer_target": "幾乎平行的光束透過散射可見，再由觀察透視形成放射外觀。",
+      "scope": "Optical effects: nature's light show",
+      "source_ids": [
+        "NS85"
+      ],
+      "source_locator": "Crepuscular Rays",
+      "premise_status": "screened",
+      "notes": "與舊 S02 天空色彩題區隔；本題核心為幾何透視，不另拆日落色彩。"
+    },
+    {
+      "id": "N283",
+      "question": "站在山上，為什麼有時會在雲霧裡看見巨大的自己？",
+      "domain": "天氣",
+      "mechanism_key": "brocken_spectre_shadow_projection_distance",
+      "answer_target": "身後陽光把觀察者影子投向前方雲霧，距離線索不足影響大小判斷。",
+      "scope": "Optical effects: nature's light show",
+      "source_ids": [
+        "NS85"
+      ],
+      "source_locator": "Brocken spectre",
+      "premise_status": "screened",
+      "notes": "此來源支持影子投射與大小錯覺；環繞光環的 glory 機制未在本題當作已解釋。"
+    },
+    {
+      "id": "N284",
+      "question": "我們住在銀河裡，為什麼夜空的銀河看起來只是一條帶子？",
+      "domain": "天文",
+      "mechanism_key": "milky_way_disk_inside_edge_on_view",
+      "answer_target": "身處星系盤內沿盤面看見較密集星光，與從外面看螺旋盤不同。",
+      "scope": "Galaxy Basics",
+      "source_ids": [
+        "NS86"
+      ],
+      "source_locator": "Our Milky Way",
+      "premise_status": "screened",
+      "notes": "本題不沿用頁面未交叉確認的星系年齡與最新故事資訊。"
+    },
+    {
+      "id": "N285",
+      "question": "同一場地震，為什麼軟地盤和岩盤上的搖晃可能差很多？",
+      "domain": "地球",
+      "mechanism_key": "seismic_site_amplification_soft_sediments",
+      "answer_target": "地層性質使震波振幅與頻率分布改變，不能只按離震央距離判斷。",
+      "scope": "How do earthquakes affect people?",
+      "source_ids": [
+        "NS87"
+      ],
+      "source_locator": "How earthquakes affect buildings / Ground conditions",
+      "premise_status": "screened",
+      "notes": "非場址耐震評估；地盤放大細節、頻帶與盆地效應需補專門資料。"
+    },
+    {
+      "id": "N286",
+      "question": "同一條街的高樓和矮樓，為什麼不一定一起搖得最厲害？",
+      "domain": "地球",
+      "mechanism_key": "building_seismic_resonance_frequency_matching",
+      "answer_target": "地震動頻率和建築自然頻率的匹配，造成不同高度結構的反應差異。",
+      "scope": "How do earthquakes affect people?",
+      "source_ids": [
+        "NS87"
+      ],
+      "source_locator": "Resonant frequency",
+      "premise_status": "screened",
+      "notes": "高度只是影響因素之一，不用樓高直接判安全，也不提供工程設計指示。"
+    },
+    {
+      "id": "N287",
+      "question": "有些星系滿是老星星，為什麼不繼續大量生出新星？",
+      "domain": "天文",
+      "mechanism_key": "galaxy_gas_supply_star_formation_quenching",
+      "answer_target": "新恆星形成需要氣體材料，氣體稀少的星系較難持續造星。",
+      "scope": "Galaxy Types",
+      "source_ids": [
+        "NS88"
+      ],
+      "source_locator": "Elliptical Galaxies",
+      "premise_status": "screened",
+      "notes": "來源支持燃料不足的近因，不把所有停止造星的原因都歸於同一種耗盡機制。"
+    },
+    {
+      "id": "N288",
+      "question": "看起來很不一樣的活動星系，為什麼有時只是觀看角度不同？",
+      "domain": "天文",
+      "mechanism_key": "active_galaxy_orientation_obscuring_torus_jets",
+      "answer_target": "塵埃環遮蔽與噴流朝向，改變活動星系核心所見光譜及亮度。",
+      "scope": "Galaxy Types",
+      "source_ids": [
+        "NS88"
+      ],
+      "source_locator": "Active Galaxies; Seyfert Galaxies; Blazars",
+      "premise_status": "screened",
+      "notes": "保留統一模型的適用範圍；不是所有星系種類都能靠轉個角度互換。"
+    }
+  ],
+  "not_added": [
+    {
+      "question": "太陽日冕離表面更遠，為什麼反而更熱？",
+      "reason": "來源明列主要未解問題；本批不把未定機制計成已篩通過的確定答案題。"
+    },
+    {
+      "question": "天王星為什麼被撞得側躺？",
+      "reason": "碰撞是形成傾斜的假說，不能把題目前提寫成已確認事件。"
+    },
+    {
+      "question": "月亮為什麼總是同一面朝向地球？",
+      "reason": "與舊題 S21 同核心，不新增。"
+    },
+    {
+      "question": "月球極區為什麼能保存冰？",
+      "reason": "與本批水星永久陰影冷阱的核心過近，先留作比較素材不另計。"
+    },
+    {
+      "question": "為什麼超級胞一定會生出龍捲風？",
+      "reason": "前提錯誤；來源明言生成機制尚未完全理解，旋轉雷暴不等於必有龍捲風。"
+    },
+    {
+      "question": "為什麼冰雹每上下飛一趟就長一圈？",
+      "reason": "NOAA NSSL 明確反對此簡化；保留凍結速度與氣泡機制的新題。"
+    },
+    {
+      "question": "地面氣溫差不多，為什麼一下雪、一下雨又一下冰？",
+      "reason": "原編 N168 的核心可作 N167 的比較或延伸，合併後不另計候選。"
+    },
+    {
+      "question": "海底的煙囪為什麼會越長越高？",
+      "reason": "原編 N196 的核心可作 N195 的比較或延伸，合併後不另計候選。"
+    },
+    {
+      "question": "空氣沒有多加水，降溫後濕度為什麼仍會上升？",
+      "reason": "原編 N241 的核心可作 N240 的比較或延伸，合併後不另計候選。"
+    },
+    {
+      "question": "溫室氣體又不會自己生火，為什麼增加後地球會變暖？",
+      "reason": "原編 N243 的核心可作 N242 的比較或延伸，合併後不另計候選。"
+    },
+    {
+      "question": "台灣在過夏天時，澳洲為什麼正在過冬天？",
+      "reason": "原編 N247 的核心可作 N246 的比較或延伸，合併後不另計候選。"
+    },
+    {
+      "question": "太陽那麼大，月球怎麼可能剛好擋住它？",
+      "reason": "原編 N249 的核心可作 N250 的比較或延伸，合併後不另計候選。"
+    }
+  ]
+}

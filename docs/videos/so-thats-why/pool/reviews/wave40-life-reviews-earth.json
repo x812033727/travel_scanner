@@ -1,0 +1,2084 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "head": "440d2c70285ace7623feb683787ce1e6ea59c348",
+    "selected": 3250,
+    "raw_records": 3631,
+    "not_added": 1633,
+    "themes": 387,
+    "pool_sha256": "f41471227f04b878bf54465c869cb69c0bdb5863a00deb8600092be1eb117d4c",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3250.json.gz",
+      "sha256": "caba6983b00dc7da38cc89fe5e14e4b866c9410b998f9e87a7a5f5ca5aa21427"
+    }
+  },
+  "role_and_scope": "逐讀9題問答、適用條件、素材估時，15未收及20作者近對。全9份來源定點讀核SHA副本，另目讀4個PDF圖頁。",
+  "reviewed_candidate_ids": [
+    "S40-001",
+    "S40-002",
+    "S40-003",
+    "S40-004",
+    "S40-005",
+    "S40-006",
+    "S40-007",
+    "S40-008",
+    "S40-009"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave40-earth.json",
+      "sha256": "ed0f7ed09c7f38f7cf8dfe809e356e184f8e5ce5828d30eda2c1da4185c48f54"
+    },
+    {
+      "file": "reviews/wave40-earth-author.json",
+      "sha256": "eee80d997f893bbb7f877bb6aa06195aeabbb48bb17b17c84514a43eaedccf18"
+    },
+    {
+      "file": "reviews/wave40-earth-themes.json",
+      "sha256": "dc3b915fd799e2fa4e36d6c5761492782b25932e316bb69b504ffe5552ad1a51"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "S40-001",
+      "canonical_id": "S40-001",
+      "decision": "retain",
+      "reason": "落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開",
+      "scope_check": "對齊的是氣體事件。個別場址從氣體推回冰的年代還需當地冰氣年差模型。",
+      "editorial_seconds": [
+        28,
+        62
+      ],
+      "source_ids": [
+        "S40-S001"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S40-002",
+      "canonical_id": "S40-002",
+      "decision": "retain",
+      "reason": "孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平",
+      "scope_check": "氣齡分布的寬度控制振幅衰減，與平均年齡偏移可分。高解析冰芯只是參照。",
+      "editorial_seconds": [
+        28,
+        65
+      ],
+      "source_ids": [
+        "S40-S002"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S40-003",
+      "canonical_id": "S40-003",
+      "decision": "retain",
+      "reason": "比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾",
+      "scope_check": "較重同位素往暫冷深端偏聚，純重力與熱貢獻對氮、氬每單位質量差有不同預期。該事件可與部分重力成分並存。",
+      "editorial_seconds": [
+        33,
+        66
+      ],
+      "source_ids": [
+        "S40-S003"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S40-004",
+      "canonical_id": "S40-004",
+      "decision": "retain",
+      "reason": "硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發",
+      "scope_check": "QUB-1965多粒主量元素、大致層位及已知噴發對照；鎂等成分不全重合，不能宣稱只用單粒定源。",
+      "editorial_seconds": [
+        31,
+        69
+      ],
+      "source_ids": [
+        "S40-S004"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S40-005",
+      "canonical_id": "S40-005",
+      "decision": "retain",
+      "reason": "臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度",
+      "scope_check": "候選脈衝中不止一峰有質量無關硫分餾，支持硫到達可受短波照射的高度，無法憑此定源或定精確高度。",
+      "editorial_seconds": [
+        34,
+        67
+      ],
+      "source_ids": [
+        "S40-S005"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S40-006",
+      "canonical_id": "S40-006",
+      "decision": "retain",
+      "reason": "用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫",
+      "scope_check": "孔隙水提供獨立資料但經模型推回古海水組成；殼體是該區不同芯的同類有孔蟲資料。",
+      "editorial_seconds": [
+        34,
+        75
+      ],
+      "source_ids": [
+        "S40-S006"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S40-007",
+      "canonical_id": "S40-007",
+      "decision": "retain",
+      "reason": "海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被",
+      "scope_check": "現代表層泥的脂質組合可限制缺棲地或生產受限。衛星比對的是海冰覆蓋，厚冰遮光仍是解釋，兩種脂質都低時保留不確定性。",
+      "editorial_seconds": [
+        30,
+        73
+      ],
+      "source_ids": [
+        "S40-S007"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S40-008",
+      "canonical_id": "S40-008",
+      "decision": "retain",
+      "reason": "以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例",
+      "scope_check": "另量氪85提供當代污染上限。氬39異常可有較舊污染或流程等解釋，氪85陰性不足以保證絕對純。",
+      "editorial_seconds": [
+        28,
+        65
+      ],
+      "source_ids": [
+        "S40-S008"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "S40-009",
+      "canonical_id": "S40-009",
+      "decision": "retain",
+      "reason": "每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮",
+      "scope_check": "模型令拉森灣設定下兩個低潮壓回的位置不同，可消去舊痕。Fig4a/b兩種退速為模型，4c是海床剖面，未追拍形成過程。",
+      "editorial_seconds": [
+        34,
+        76
+      ],
+      "source_ids": [
+        "S40-S009"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "S40-S001",
+      "title": "The WAIS Divide deep ice core WD2014 chronology – Part 1: Methane synchronization (68–31 ka BP) and the gas age–ice age difference",
+      "url": "https://doi.org/10.5194/cp-11-153-2015",
+      "doi": "10.5194/cp-11-153-2015",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.2–3粒雪通氣、雪冰與氣齡模型；p.9 §4.2、p.10 Fig6圖說。",
+      "locator": "PDF pp.2–3 §2與雪層氣齡差模型；p.9 §4.2步驟、p.10圖6與p.14定年表。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-age.pdf",
+        "sha256": "b7994d6bf28fbf3a360ebdc43180c8efbcfbb23e461e3c6dc98fd62a1257f21e",
+        "text_file": ".cache/wave40-earth-age.txt",
+        "text_sha256": "f61ea13047bcc79efb112c257edde5b5ac85e092c4151f12b635e94b36e1b8e8"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-age.pdf",
+        "sha256": "b7994d6bf28fbf3a360ebdc43180c8efbcfbb23e461e3c6dc98fd62a1257f21e",
+        "text_file": ".cache/wave40-earth-age.txt",
+        "text_sha256": "f61ea13047bcc79efb112c257edde5b5ac85e092c4151f12b635e94b36e1b8e8"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "對齊的是氣體事件。個別場址從氣體推回冰的年代還需當地冰氣年差模型。",
+      "decision": "supports_bounded_topic",
+      "limitations": "深處氣齡差部分靠粒雪密實化模型並以氮同位素約束。跨記錄的事件對齊與誤差不能略去。"
+    },
+    {
+      "source_id": "S40-S002",
+      "title": "The SP19 chronology for the South Pole Ice Core – Part 2: gas chronology, Δage, and smoothing of atmospheric records",
+      "url": "https://doi.org/10.5194/cp-16-2431-2020",
+      "doi": "10.5194/cp-16-2431-2020",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.7–10 §3.2、Table2、Fig5與Fig6圖說；另目讀PDF p.9 Table2與Fig5。",
+      "locator": "PDF pp.7–9 §3.2、表2及圖5；p.10圖6說明的氣齡分布比較。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-smooth.pdf",
+        "sha256": "90484424b37d6378b58791fe42b7df3b8bddfebab73655b48579ccc805ec5686",
+        "text_file": ".cache/wave40-earth-smooth.txt",
+        "text_sha256": "2e0d3f4d80f37929234918a09dbc12ff3db7563982d97deaa2e7fe8a7a1c1a11"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-smooth.pdf",
+        "sha256": "90484424b37d6378b58791fe42b7df3b8bddfebab73655b48579ccc805ec5686",
+        "text_file": ".cache/wave40-earth-smooth.txt",
+        "text_sha256": "2e0d3f4d80f37929234918a09dbc12ff3db7563982d97deaa2e7fe8a7a1c1a11"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "氣齡分布的寬度控制振幅衰減，與平均年齡偏移可分。高解析冰芯只是參照。",
+      "decision": "supports_bounded_topic",
+      "limitations": "西南極記錄被當作較高解析的參考，並非當時實測的大氣連續曲線。"
+    },
+    {
+      "source_id": "S40-S003",
+      "title": "Timing of abrupt climate change at the end of the Younger Dryas interval from thermally fractionated gases in polar ice",
+      "url": "https://doi.org/10.1038/34346",
+      "doi": "10.1038/34346",
+      "version": "Caltech課程典藏1998 Nature原刊掃描文字，版權與研究身份同DOI；只保留web定點文字。",
+      "reading_scope": "原刊掃描的Web文字 L117–165、194–209 與306–334，著重兩種分餾對氮、氬的不同預測。",
+      "locator": "原刊PDF Web L117–165、L194–209溫差分餾；L306–334對照同深度氮與氬、區別重力成分。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-nitrogen-web.txt",
+        "sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b",
+        "text_file": ".cache/wave40-earth-nitrogen-web.txt",
+        "text_sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-nitrogen-web.txt",
+        "sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b",
+        "text_file": ".cache/wave40-earth-nitrogen-web.txt",
+        "text_sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b"
+      },
+      "read_via": "作者當日web取得之典藏原文定點文本，核SHA後自主讀段。直取曾TLS失敗；本次未另取PDF或檢視原圖。",
+      "finding": "較重同位素往暫冷深端偏聚，純重力與熱貢獻對氮、氬每單位質量差有不同預期。該事件可與部分重力成分並存。",
+      "decision": "supports_bounded_topic",
+      "limitations": "1998年格陵蘭GISP2特定轉折；本文稱幅度分解為初步估計，不能從單一氣泡讀出精確溫度。"
+    },
+    {
+      "source_id": "S40-S004",
+      "title": "Cryptotephra from the Icelandic Veiðivötn 1477 CE eruption in a Greenland ice core: confirming the dating of volcanic events in the 1450s CE and assessing the eruption’s climatic impact",
+      "url": "https://doi.org/10.5194/cp-17-565-2021",
+      "doi": "10.5194/cp-17-565-2021",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.6–9冰芯粒分析與已知沉積對照、p.14 §5.4偏差，另目讀p.9 Fig4的元素散點。",
+      "locator": "PDF pp.6–8玻璃粒微探針與QUB-1965結果，p.9圖4，p.14 §5.4解釋鎂等偏差。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-glass.pdf",
+        "sha256": "46077bbefdfa4a2559e51d82e1790efff8221846b53e4e0eb142a4a9efd8333e",
+        "text_file": ".cache/wave40-earth-glass.txt",
+        "text_sha256": "28af7e15479aa364ea2e0040ccce251840758b2984816329f013bbd29c80ba43"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-glass.pdf",
+        "sha256": "46077bbefdfa4a2559e51d82e1790efff8221846b53e4e0eb142a4a9efd8333e",
+        "text_file": ".cache/wave40-earth-glass.txt",
+        "text_sha256": "28af7e15479aa364ea2e0040ccce251840758b2984816329f013bbd29c80ba43"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "QUB-1965多粒主量元素、大致層位及已知噴發對照；鎂等成分不全重合，不能宣稱只用單粒定源。",
+      "decision": "supports_bounded_topic",
+      "limitations": "並非每種氧化物完全吻合；部分玻璃成分有偏移。只採冰芯與玻璃分析，不引用樹輪溫度結論。"
+    },
+    {
+      "source_id": "S40-S005",
+      "title": "New insights into the ∼74 ka Toba eruption from sulfur isotopes of polar ice cores",
+      "url": "https://doi.org/10.5194/cp-17-2119-2021",
+      "doi": "10.5194/cp-17-2119-2021",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF p.2光化學和臭氧屏蔽、pp.7–8 §4.1–4.2兩芯結果；另目讀p.6 Fig3的硫濃度及同位素峰。",
+      "locator": "PDF p.2分餾與紫外光機制；p.6圖3，pp.7–8 §4.1–4.2比較南極兩芯候選硫峰。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-sulfur.pdf",
+        "sha256": "5274299b55c39a88b191abbc3f6d2c5e39f0506c728fd5a019c93949186770b9",
+        "text_file": ".cache/wave40-earth-sulfur.txt",
+        "text_sha256": "60eb8793b30a05038ac07571f6662661abe5b054655f6281b87dded50a571df6"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-sulfur.pdf",
+        "sha256": "5274299b55c39a88b191abbc3f6d2c5e39f0506c728fd5a019c93949186770b9",
+        "text_file": ".cache/wave40-earth-sulfur.txt",
+        "text_sha256": "60eb8793b30a05038ac07571f6662661abe5b054655f6281b87dded50a571df6"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "候選脈衝中不止一峰有質量無關硫分餾，支持硫到達可受短波照射的高度，無法憑此定源或定精確高度。",
+      "decision": "supports_bounded_topic",
+      "limitations": "未據此鎖定唯一的多巴噴發年份、煙柱頂高度或地表降溫量。"
+    },
+    {
+      "source_id": "S40-S006",
+      "title": "Pore fluid constraints on deep ocean temperature and salinity during the Last Glacial Maximum",
+      "url": "https://doi.org/10.1029/2000GL011597",
+      "doi": "10.1029/2000GL011597",
+      "version": "作者Caltech網站稿件標2000年3月，期刊刊於2001年；以作者稿定位，未逐字比對正式版。",
+      "reading_scope": "作者稿Web定點 L27–44、112–159、167–194、220–242、335–355，核孔隙水變化的平滑、逆推假設與扣除海水差值。",
+      "locator": "作者網頁PDF的Web原文L27–44殼體二義、L112–159方法、L167–194剖面、L220–242擴散模型及L335–355扣除海水成分。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-pores-web.txt",
+        "sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f",
+        "text_file": ".cache/wave40-earth-pores-web.txt",
+        "text_sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-pores-web.txt",
+        "sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f",
+        "text_file": ".cache/wave40-earth-pores-web.txt",
+        "text_sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f"
+      },
+      "read_via": "作者當日web取得之典藏原文定點文本，核SHA後自主讀段。直取曾TLS失敗；本次未另取PDF或檢視原圖。",
+      "finding": "孔隙水提供獨立資料但經模型推回古海水組成；殼體是該區不同芯的同類有孔蟲資料。",
+      "decision": "supports_bounded_topic",
+      "limitations": "百慕達海隆殼體差值來自同類有孔蟲的不同岩芯；孔水剖面也經擴散。局部估值不能直代全球海溫。"
+    },
+    {
+      "source_id": "S40-S007",
+      "title": "Evaluation of lipid biomarkers as proxies for sea ice and ocean temperatures along the Antarctic continental margin",
+      "url": "https://doi.org/10.5194/cp-17-2305-2021",
+      "doi": "10.5194/cp-17-2305-2021",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.8–9 §4.2–4.3，讀Dronning Maud Land衛星覆被、兩類脂質皆低的限制。",
+      "locator": "PDF pp.8–9 §4.2、§4.3：海冰脂質IPSO25缺席的兩義，與開水藻類並比，Dronning Maud Land低訊號和衛星對照。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-algae.pdf",
+        "sha256": "cc2e7c006306f92ef503c2073619378a22bc19d9a0be229404366764411f2ccf",
+        "text_file": ".cache/wave40-earth-algae.txt",
+        "text_sha256": "20ff60f77396538ceb71a30129089b1ae43d513f284d0c71a14619cf4c916cd9"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-algae.pdf",
+        "sha256": "cc2e7c006306f92ef503c2073619378a22bc19d9a0be229404366764411f2ccf",
+        "text_file": ".cache/wave40-earth-algae.txt",
+        "text_sha256": "20ff60f77396538ceb71a30129089b1ae43d513f284d0c71a14619cf4c916cd9"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "現代表層泥的脂質組合可限制缺棲地或生產受限。衛星比對的是海冰覆蓋，厚冰遮光仍是解釋，兩種脂質都低時保留不確定性。",
+      "decision": "supports_bounded_topic",
+      "limitations": "用南極大陸邊緣表層沉積物評估代用指標。兩組標誌都極低時單一指數可能失真，並非每份古泥都能定冰量。"
+    },
+    {
+      "source_id": "S40-S008",
+      "title": "Radiometric 81Kr dating identifies 120,000-year-old ice at Taylor Glacier, Antarctica",
+      "url": "https://doi.org/10.1073/pnas.1320329111",
+      "doi": "10.1073/pnas.1320329111",
+      "version": "2014年arXiv:1403.6201作者稿，與PNAS正式研究同工作。",
+      "reading_scope": "PDF p.4與pp.6–8，氪定年、氪85檢出限、髒樣控制及Kr-1的氬39異常。",
+      "locator": "作者稿PDF pp.4、6–8：近表採樣的問題、Kr樣品、85Kr偵測上限與Kr-1的39Ar異常。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-kr.pdf",
+        "sha256": "e761edbe0a4327093546cc5f7373ac4acdabe5d8fd8038fe7ee62f6b60351156",
+        "text_file": ".cache/wave40-earth-kr.txt",
+        "text_sha256": "cbd307814cb69aa158249141c09753d981f7e7374b546329b2c3fcb28e5f9756"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-kr.pdf",
+        "sha256": "e761edbe0a4327093546cc5f7373ac4acdabe5d8fd8038fe7ee62f6b60351156",
+        "text_file": ".cache/wave40-earth-kr.txt",
+        "text_sha256": "cbd307814cb69aa158249141c09753d981f7e7374b546329b2c3fcb28e5f9756"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "另量氪85提供當代污染上限。氬39異常可有較舊污染或流程等解釋，氪85陰性不足以保證絕對純。",
+      "decision": "supports_bounded_topic",
+      "limitations": "測的是氣體封存。氪85未檢出只給混入上限，其中一份有氬39訊號，研究列替代解釋。"
+    },
+    {
+      "source_id": "S40-S009",
+      "title": "Towards modelling of corrugation ridges at ice-sheet grounding lines",
+      "url": "https://doi.org/10.5194/tc-17-2645-2023",
+      "doi": "10.5194/tc-17-2645-2023",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.2–3接地線與沉積方式、p.14 §3.3、p.15 Fig4圖說與模型限度；另目讀p.15 Fig4a–c。",
+      "locator": "PDF pp.2–3接地線往返/覆寫條件，p.14 §3.3 Larsen Inlet雙潮模擬、p.15圖4a–c模型與實測海床剖面。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-ridge.pdf",
+        "sha256": "a733cff2bb92a8d6bd487538135edc988273a06a9be9db8cc69b129e534f0f55",
+        "text_file": ".cache/wave40-earth-ridge.txt",
+        "text_sha256": "ab9ac17343ec340a8fdc27f118b10eb45310e31dc50f842492cd74aadbbf0539"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-ridge.pdf",
+        "sha256": "a733cff2bb92a8d6bd487538135edc988273a06a9be9db8cc69b129e534f0f55",
+        "text_file": ".cache/wave40-earth-ridge.txt",
+        "text_sha256": "ab9ac17343ec340a8fdc27f118b10eb45310e31dc50f842492cd74aadbbf0539"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "模型令拉森灣設定下兩個低潮壓回的位置不同，可消去舊痕。Fig4a/b兩種退速為模型，4c是海床剖面，未追拍形成過程。",
+      "decision": "supports_bounded_topic",
+      "limitations": "海底稜脊地形是實測，逐潮形成和消除是模型。稜距反推退縮需限定地形、潮差與保存機制。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "S40-S001",
+      "title": "The WAIS Divide deep ice core WD2014 chronology – Part 1: Methane synchronization (68–31 ka BP) and the gas age–ice age difference",
+      "url": "https://doi.org/10.5194/cp-11-153-2015",
+      "doi": "10.5194/cp-11-153-2015",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.2–3粒雪通氣、雪冰與氣齡模型；p.9 §4.2、p.10 Fig6圖說。",
+      "locator": "PDF pp.2–3 §2與雪層氣齡差模型；p.9 §4.2步驟、p.10圖6與p.14定年表。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-age.pdf",
+        "sha256": "b7994d6bf28fbf3a360ebdc43180c8efbcfbb23e461e3c6dc98fd62a1257f21e",
+        "text_file": ".cache/wave40-earth-age.txt",
+        "text_sha256": "f61ea13047bcc79efb112c257edde5b5ac85e092c4151f12b635e94b36e1b8e8"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-age.pdf",
+        "sha256": "b7994d6bf28fbf3a360ebdc43180c8efbcfbb23e461e3c6dc98fd62a1257f21e",
+        "text_file": ".cache/wave40-earth-age.txt",
+        "text_sha256": "f61ea13047bcc79efb112c257edde5b5ac85e092c4151f12b635e94b36e1b8e8"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "對齊的是氣體事件。個別場址從氣體推回冰的年代還需當地冰氣年差模型。",
+      "decision": "supports_bounded_topic",
+      "limitations": "深處氣齡差部分靠粒雪密實化模型並以氮同位素約束。跨記錄的事件對齊與誤差不能略去。"
+    },
+    {
+      "source_id": "S40-S002",
+      "title": "The SP19 chronology for the South Pole Ice Core – Part 2: gas chronology, Δage, and smoothing of atmospheric records",
+      "url": "https://doi.org/10.5194/cp-16-2431-2020",
+      "doi": "10.5194/cp-16-2431-2020",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.7–10 §3.2、Table2、Fig5與Fig6圖說；另目讀PDF p.9 Table2與Fig5。",
+      "locator": "PDF pp.7–9 §3.2、表2及圖5；p.10圖6說明的氣齡分布比較。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-smooth.pdf",
+        "sha256": "90484424b37d6378b58791fe42b7df3b8bddfebab73655b48579ccc805ec5686",
+        "text_file": ".cache/wave40-earth-smooth.txt",
+        "text_sha256": "2e0d3f4d80f37929234918a09dbc12ff3db7563982d97deaa2e7fe8a7a1c1a11"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-smooth.pdf",
+        "sha256": "90484424b37d6378b58791fe42b7df3b8bddfebab73655b48579ccc805ec5686",
+        "text_file": ".cache/wave40-earth-smooth.txt",
+        "text_sha256": "2e0d3f4d80f37929234918a09dbc12ff3db7563982d97deaa2e7fe8a7a1c1a11"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "氣齡分布的寬度控制振幅衰減，與平均年齡偏移可分。高解析冰芯只是參照。",
+      "decision": "supports_bounded_topic",
+      "limitations": "西南極記錄被當作較高解析的參考，並非當時實測的大氣連續曲線。"
+    },
+    {
+      "source_id": "S40-S003",
+      "title": "Timing of abrupt climate change at the end of the Younger Dryas interval from thermally fractionated gases in polar ice",
+      "url": "https://doi.org/10.1038/34346",
+      "doi": "10.1038/34346",
+      "version": "Caltech課程典藏1998 Nature原刊掃描文字，版權與研究身份同DOI；只保留web定點文字。",
+      "reading_scope": "原刊掃描的Web文字 L117–165、194–209 與306–334，著重兩種分餾對氮、氬的不同預測。",
+      "locator": "原刊PDF Web L117–165、L194–209溫差分餾；L306–334對照同深度氮與氬、區別重力成分。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-nitrogen-web.txt",
+        "sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b",
+        "text_file": ".cache/wave40-earth-nitrogen-web.txt",
+        "text_sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-nitrogen-web.txt",
+        "sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b",
+        "text_file": ".cache/wave40-earth-nitrogen-web.txt",
+        "text_sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b"
+      },
+      "read_via": "作者當日web取得之典藏原文定點文本，核SHA後自主讀段。直取曾TLS失敗；本次未另取PDF或檢視原圖。",
+      "finding": "較重同位素往暫冷深端偏聚，純重力與熱貢獻對氮、氬每單位質量差有不同預期。該事件可與部分重力成分並存。",
+      "decision": "supports_bounded_topic",
+      "limitations": "1998年格陵蘭GISP2特定轉折；本文稱幅度分解為初步估計，不能從單一氣泡讀出精確溫度。"
+    },
+    {
+      "source_id": "S40-S004",
+      "title": "Cryptotephra from the Icelandic Veiðivötn 1477 CE eruption in a Greenland ice core: confirming the dating of volcanic events in the 1450s CE and assessing the eruption’s climatic impact",
+      "url": "https://doi.org/10.5194/cp-17-565-2021",
+      "doi": "10.5194/cp-17-565-2021",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.6–9冰芯粒分析與已知沉積對照、p.14 §5.4偏差，另目讀p.9 Fig4的元素散點。",
+      "locator": "PDF pp.6–8玻璃粒微探針與QUB-1965結果，p.9圖4，p.14 §5.4解釋鎂等偏差。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-glass.pdf",
+        "sha256": "46077bbefdfa4a2559e51d82e1790efff8221846b53e4e0eb142a4a9efd8333e",
+        "text_file": ".cache/wave40-earth-glass.txt",
+        "text_sha256": "28af7e15479aa364ea2e0040ccce251840758b2984816329f013bbd29c80ba43"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-glass.pdf",
+        "sha256": "46077bbefdfa4a2559e51d82e1790efff8221846b53e4e0eb142a4a9efd8333e",
+        "text_file": ".cache/wave40-earth-glass.txt",
+        "text_sha256": "28af7e15479aa364ea2e0040ccce251840758b2984816329f013bbd29c80ba43"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "QUB-1965多粒主量元素、大致層位及已知噴發對照；鎂等成分不全重合，不能宣稱只用單粒定源。",
+      "decision": "supports_bounded_topic",
+      "limitations": "並非每種氧化物完全吻合；部分玻璃成分有偏移。只採冰芯與玻璃分析，不引用樹輪溫度結論。"
+    },
+    {
+      "source_id": "S40-S005",
+      "title": "New insights into the ∼74 ka Toba eruption from sulfur isotopes of polar ice cores",
+      "url": "https://doi.org/10.5194/cp-17-2119-2021",
+      "doi": "10.5194/cp-17-2119-2021",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF p.2光化學和臭氧屏蔽、pp.7–8 §4.1–4.2兩芯結果；另目讀p.6 Fig3的硫濃度及同位素峰。",
+      "locator": "PDF p.2分餾與紫外光機制；p.6圖3，pp.7–8 §4.1–4.2比較南極兩芯候選硫峰。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-sulfur.pdf",
+        "sha256": "5274299b55c39a88b191abbc3f6d2c5e39f0506c728fd5a019c93949186770b9",
+        "text_file": ".cache/wave40-earth-sulfur.txt",
+        "text_sha256": "60eb8793b30a05038ac07571f6662661abe5b054655f6281b87dded50a571df6"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-sulfur.pdf",
+        "sha256": "5274299b55c39a88b191abbc3f6d2c5e39f0506c728fd5a019c93949186770b9",
+        "text_file": ".cache/wave40-earth-sulfur.txt",
+        "text_sha256": "60eb8793b30a05038ac07571f6662661abe5b054655f6281b87dded50a571df6"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "候選脈衝中不止一峰有質量無關硫分餾，支持硫到達可受短波照射的高度，無法憑此定源或定精確高度。",
+      "decision": "supports_bounded_topic",
+      "limitations": "未據此鎖定唯一的多巴噴發年份、煙柱頂高度或地表降溫量。"
+    },
+    {
+      "source_id": "S40-S006",
+      "title": "Pore fluid constraints on deep ocean temperature and salinity during the Last Glacial Maximum",
+      "url": "https://doi.org/10.1029/2000GL011597",
+      "doi": "10.1029/2000GL011597",
+      "version": "作者Caltech網站稿件標2000年3月，期刊刊於2001年；以作者稿定位，未逐字比對正式版。",
+      "reading_scope": "作者稿Web定點 L27–44、112–159、167–194、220–242、335–355，核孔隙水變化的平滑、逆推假設與扣除海水差值。",
+      "locator": "作者網頁PDF的Web原文L27–44殼體二義、L112–159方法、L167–194剖面、L220–242擴散模型及L335–355扣除海水成分。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-pores-web.txt",
+        "sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f",
+        "text_file": ".cache/wave40-earth-pores-web.txt",
+        "text_sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-pores-web.txt",
+        "sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f",
+        "text_file": ".cache/wave40-earth-pores-web.txt",
+        "text_sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f"
+      },
+      "read_via": "作者當日web取得之典藏原文定點文本，核SHA後自主讀段。直取曾TLS失敗；本次未另取PDF或檢視原圖。",
+      "finding": "孔隙水提供獨立資料但經模型推回古海水組成；殼體是該區不同芯的同類有孔蟲資料。",
+      "decision": "supports_bounded_topic",
+      "limitations": "百慕達海隆殼體差值來自同類有孔蟲的不同岩芯；孔水剖面也經擴散。局部估值不能直代全球海溫。"
+    },
+    {
+      "source_id": "S40-S007",
+      "title": "Evaluation of lipid biomarkers as proxies for sea ice and ocean temperatures along the Antarctic continental margin",
+      "url": "https://doi.org/10.5194/cp-17-2305-2021",
+      "doi": "10.5194/cp-17-2305-2021",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.8–9 §4.2–4.3，讀Dronning Maud Land衛星覆被、兩類脂質皆低的限制。",
+      "locator": "PDF pp.8–9 §4.2、§4.3：海冰脂質IPSO25缺席的兩義，與開水藻類並比，Dronning Maud Land低訊號和衛星對照。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-algae.pdf",
+        "sha256": "cc2e7c006306f92ef503c2073619378a22bc19d9a0be229404366764411f2ccf",
+        "text_file": ".cache/wave40-earth-algae.txt",
+        "text_sha256": "20ff60f77396538ceb71a30129089b1ae43d513f284d0c71a14619cf4c916cd9"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-algae.pdf",
+        "sha256": "cc2e7c006306f92ef503c2073619378a22bc19d9a0be229404366764411f2ccf",
+        "text_file": ".cache/wave40-earth-algae.txt",
+        "text_sha256": "20ff60f77396538ceb71a30129089b1ae43d513f284d0c71a14619cf4c916cd9"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "現代表層泥的脂質組合可限制缺棲地或生產受限。衛星比對的是海冰覆蓋，厚冰遮光仍是解釋，兩種脂質都低時保留不確定性。",
+      "decision": "supports_bounded_topic",
+      "limitations": "用南極大陸邊緣表層沉積物評估代用指標。兩組標誌都極低時單一指數可能失真，並非每份古泥都能定冰量。"
+    },
+    {
+      "source_id": "S40-S008",
+      "title": "Radiometric 81Kr dating identifies 120,000-year-old ice at Taylor Glacier, Antarctica",
+      "url": "https://doi.org/10.1073/pnas.1320329111",
+      "doi": "10.1073/pnas.1320329111",
+      "version": "2014年arXiv:1403.6201作者稿，與PNAS正式研究同工作。",
+      "reading_scope": "PDF p.4與pp.6–8，氪定年、氪85檢出限、髒樣控制及Kr-1的氬39異常。",
+      "locator": "作者稿PDF pp.4、6–8：近表採樣的問題、Kr樣品、85Kr偵測上限與Kr-1的39Ar異常。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-kr.pdf",
+        "sha256": "e761edbe0a4327093546cc5f7373ac4acdabe5d8fd8038fe7ee62f6b60351156",
+        "text_file": ".cache/wave40-earth-kr.txt",
+        "text_sha256": "cbd307814cb69aa158249141c09753d981f7e7374b546329b2c3fcb28e5f9756"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-kr.pdf",
+        "sha256": "e761edbe0a4327093546cc5f7373ac4acdabe5d8fd8038fe7ee62f6b60351156",
+        "text_file": ".cache/wave40-earth-kr.txt",
+        "text_sha256": "cbd307814cb69aa158249141c09753d981f7e7374b546329b2c3fcb28e5f9756"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "另量氪85提供當代污染上限。氬39異常可有較舊污染或流程等解釋，氪85陰性不足以保證絕對純。",
+      "decision": "supports_bounded_topic",
+      "limitations": "測的是氣體封存。氪85未檢出只給混入上限，其中一份有氬39訊號，研究列替代解釋。"
+    },
+    {
+      "source_id": "S40-S009",
+      "title": "Towards modelling of corrugation ridges at ice-sheet grounding lines",
+      "url": "https://doi.org/10.5194/tc-17-2645-2023",
+      "doi": "10.5194/tc-17-2645-2023",
+      "version": "期刊網站正式PDF。",
+      "reading_scope": "PDF pp.2–3接地線與沉積方式、p.14 §3.3、p.15 Fig4圖說與模型限度；另目讀p.15 Fig4a–c。",
+      "locator": "PDF pp.2–3接地線往返/覆寫條件，p.14 §3.3 Larsen Inlet雙潮模擬、p.15圖4a–c模型與實測海床剖面。",
+      "source_cache_verified": {
+        "file": ".cache/wave40-earth-ridge.pdf",
+        "sha256": "a733cff2bb92a8d6bd487538135edc988273a06a9be9db8cc69b129e534f0f55",
+        "text_file": ".cache/wave40-earth-ridge.txt",
+        "text_sha256": "ab9ac17343ec340a8fdc27f118b10eb45310e31dc50f842492cd74aadbbf0539"
+      },
+      "cache": {
+        "file": ".cache/wave40-earth-ridge.pdf",
+        "sha256": "a733cff2bb92a8d6bd487538135edc988273a06a9be9db8cc69b129e534f0f55",
+        "text_file": ".cache/wave40-earth-ridge.txt",
+        "text_sha256": "ab9ac17343ec340a8fdc27f118b10eb45310e31dc50f842492cd74aadbbf0539"
+      },
+      "read_via": "核原作者快取SHA後獨立讀指定原文段與所列圖頁，無另發HTTP。",
+      "finding": "模型令拉森灣設定下兩個低潮壓回的位置不同，可消去舊痕。Fig4a/b兩種退速為模型，4c是海床剖面，未追拍形成過程。",
+      "decision": "supports_bounded_topic",
+      "limitations": "海底稜脊地形是實測，逐潮形成和消除是模型。稜距反推退縮需限定地形、潮差與保存機制。"
+    }
+  ],
+  "source_identity_review": "9個DOI。兩個Caltech文字載體與其正式研究同身份，氪作者預印本與PNAS刊本為同一研究。共同作者、站址或參照芯不能算複驗。",
+  "source_reading_summary": "7篇PDF抽取的指定正文，2篇原作者所存典藏網頁定點。未網路重抓。",
+  "source_fetch_limits": "兩篇Caltech原PDF的直接取得由作者記TLS失敗，此覆核只用可讀文字，無法核那兩篇的原始圖面。沒有讀補充資料，未重算定年模型。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave40-earth-figures.jpg",
+      "sha256": "ec55d7baefaee805895c8693c8ab300a9cfc86f6c7c5714c1c2b0303937a6a73",
+      "scope": "目讀合頁4格：S002 PDF9 Table2/Fig5、S004 PDF9 Fig4、S005 PDF6 Fig3、S009 PDF15 Fig4a–c。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "S40-001",
+      "b": "N213",
+      "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。N213處理的是雪層壓密、冰晶增長及孔隙封閉如何形成冰。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-001",
+      "b": "R31001",
+      "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。R31001處理的是以大氣碳十四突變替一個輪位定年，再數輪到木料外緣。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-001",
+      "b": "N132",
+      "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。N132處理的是地層疊置與化石群只給相對年代。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-002",
+      "b": "S40-001",
+      "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。S40-001處理的是落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-002",
+      "b": "H3072",
+      "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。H3072處理的是構象交換速率相對NMR頻差過快造成訊號平均。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-003",
+      "b": "S40-001",
+      "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。S40-001處理的是落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-003",
+      "b": "S39-003",
+      "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。S39-003處理的是以等太陽角度、不同季節溫度對照限制環顆粒蓄熱。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-004",
+      "b": "N137",
+      "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。N137處理的是火山灰是碎岩與玻璃，磨蝕取決材料性質。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-004",
+      "b": "R31001",
+      "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。R31001處理的是以大氣碳十四突變替一個輪位定年，再數輪到木料外緣。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-005",
+      "b": "S40-004",
+      "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。S40-004處理的是硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-005",
+      "b": "S40-003",
+      "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。S40-003處理的是比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-006",
+      "b": "O3063",
+      "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。O3063處理的是衛星只見區域總質量，需其他水儲量資料分離地下水。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-006",
+      "b": "S40-002",
+      "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。S40-002處理的是孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-007",
+      "b": "N222",
+      "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N222處理的是海冰經鹵水排出與融水沖洗而淡化。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-007",
+      "b": "N223",
+      "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N223處理的是雪的隔熱限制冬季海冰向外散熱。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-008",
+      "b": "N133",
+      "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。N133處理的是母子核種的衰變時鐘定年。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-008",
+      "b": "R29002",
+      "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。R29002處理的是水生食物網承接老碳，焦垢年代偏老。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-009",
+      "b": "E7005",
+      "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。E7005處理的是近穩定冰河末端持續受碎屑供應而累積端磧。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-009",
+      "b": "N215",
+      "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。N215處理的是末端位置可後退，同時冰繼續往下流。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S40-009",
+      "b": "R34004",
+      "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。R34004處理的是足印疊置方向與步距可限制哪種動物後踩。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "S40-001",
+      "b": "S40-002",
+      "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。S40-002處理的是孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.80365
+    },
+    {
+      "a": "S40-001",
+      "b": "S40-008",
+      "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。S40-008處理的是以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.76067
+    },
+    {
+      "a": "S40-001",
+      "b": "LEG-S44",
+      "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。LEG-S44處理的是固冰直接昇華失水。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.700102
+    },
+    {
+      "a": "S40-001",
+      "b": "N213",
+      "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。N213處理的是雪層壓密、冰晶增長及孔隙封閉如何形成冰。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.675424
+    },
+    {
+      "a": "S40-001",
+      "b": "N222",
+      "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。N222處理的是海冰經鹵水排出與融水沖洗而淡化。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.674035
+    },
+    {
+      "a": "S40-002",
+      "b": "S40-001",
+      "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。S40-001處理的是落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.80365
+    },
+    {
+      "a": "S40-002",
+      "b": "E11011",
+      "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。E11011處理的是凍土收縮生裂與逐季補冰形成冰楔。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.757041
+    },
+    {
+      "a": "S40-002",
+      "b": "E7004",
+      "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。E7004處理的是主、支冰河下蝕差留下懸谷。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.743533
+    },
+    {
+      "a": "S40-002",
+      "b": "N213",
+      "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。N213處理的是雪層壓密、冰晶增長及孔隙封閉如何形成冰。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.728316
+    },
+    {
+      "a": "S40-002",
+      "b": "E7005",
+      "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。E7005處理的是近穩定冰河末端持續受碎屑供應而累積端磧。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.713885
+    },
+    {
+      "a": "S40-003",
+      "b": "S40-006",
+      "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。S40-006處理的是用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.697326
+    },
+    {
+      "a": "S40-003",
+      "b": "K6022",
+      "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。K6022處理的是近地冷穩定時高架濕空氣仍可對流。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.684598
+    },
+    {
+      "a": "S40-003",
+      "b": "S40-002",
+      "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。S40-002處理的是孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.679506
+    },
+    {
+      "a": "S40-003",
+      "b": "K6023",
+      "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。K6023處理的是降水蒸發冷卻改變下一批降水路徑的溫層。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.655058
+    },
+    {
+      "a": "S40-003",
+      "b": "N227",
+      "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。N227處理的是熱傳延遲使表土融解時底下仍可凍結。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.651602
+    },
+    {
+      "a": "S40-004",
+      "b": "S40-005",
+      "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。S40-005處理的是臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.654436
+    },
+    {
+      "a": "S40-004",
+      "b": "N229",
+      "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。N229處理的是地下冰核生長把上覆土頂起。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.637367
+    },
+    {
+      "a": "S40-004",
+      "b": "N126",
+      "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。N126處理的是快速淬冷阻止晶體長大而成火山玻璃。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.610358
+    },
+    {
+      "a": "S40-004",
+      "b": "K6005",
+      "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。K6005處理的是特定覆冰條件濺出碎冰使雲內冰晶數增加。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.575253
+    },
+    {
+      "a": "S40-004",
+      "b": "N139",
+      "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。N139處理的是氣柱冷卻增密時失去上升能力。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.575033
+    },
+    {
+      "a": "S40-005",
+      "b": "S40-004",
+      "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。S40-004處理的是硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.654436
+    },
+    {
+      "a": "S40-005",
+      "b": "N229",
+      "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。N229處理的是地下冰核生長把上覆土頂起。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.646542
+    },
+    {
+      "a": "S40-005",
+      "b": "N139",
+      "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。N139處理的是氣柱冷卻增密時失去上升能力。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.64115
+    },
+    {
+      "a": "S40-005",
+      "b": "S40-002",
+      "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。S40-002處理的是孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.620908
+    },
+    {
+      "a": "S40-005",
+      "b": "S40-003",
+      "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。S40-003處理的是比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.588941
+    },
+    {
+      "a": "S40-006",
+      "b": "S40-003",
+      "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。S40-003處理的是比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.697326
+    },
+    {
+      "a": "S40-006",
+      "b": "N244",
+      "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。N244處理的是海水受熱膨脹改變海面。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.641951
+    },
+    {
+      "a": "S40-006",
+      "b": "P32003",
+      "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。P32003處理的是用失去潮週期的溫度、壓力與回收位置重建設備在海底移動。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.616861
+    },
+    {
+      "a": "S40-006",
+      "b": "N200",
+      "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。N200處理的是表水離開後深水上湧補位。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.60708
+    },
+    {
+      "a": "S40-006",
+      "b": "S40-007",
+      "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。S40-007處理的是海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.605835
+    },
+    {
+      "a": "S40-007",
+      "b": "N221",
+      "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N221處理的是海冰破裂互相擠壓而堆成稜。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710286
+    },
+    {
+      "a": "S40-007",
+      "b": "N245",
+      "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N245處理的是陸冰與浮冰原先排水量不同。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.687354
+    },
+    {
+      "a": "S40-007",
+      "b": "N222",
+      "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N222處理的是海冰經鹵水排出與融水沖洗而淡化。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667132
+    },
+    {
+      "a": "S40-007",
+      "b": "N183",
+      "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N183處理的是海水結冰把鹽擠回液相。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.660071
+    },
+    {
+      "a": "S40-007",
+      "b": "LEG-S44",
+      "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。LEG-S44處理的是固冰直接昇華失水。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.659966
+    },
+    {
+      "a": "S40-008",
+      "b": "S40-001",
+      "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。S40-001處理的是落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.76067
+    },
+    {
+      "a": "S40-008",
+      "b": "S40-003",
+      "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。S40-003處理的是比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.587162
+    },
+    {
+      "a": "S40-008",
+      "b": "D2205",
+      "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。D2205處理的是氣煞反覆放氣可快過壓縮機補氣。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.564483
+    },
+    {
+      "a": "S40-008",
+      "b": "D2079",
+      "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。D2079處理的是排氣量以縫隙或進氣口的來氣補足。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.558364
+    },
+    {
+      "a": "S40-008",
+      "b": "N253",
+      "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。N253處理的是飛機尾冰晶受環境濕度控制而存續或昇華。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.548611
+    },
+    {
+      "a": "S40-009",
+      "b": "E11007",
+      "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。E11007處理的是潟湖水位梯度及回湧水切開沙洲。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.686535
+    },
+    {
+      "a": "S40-009",
+      "b": "N189",
+      "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。N189處理的是海浪進入淺水先後不同而折射。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.673229
+    },
+    {
+      "a": "S40-009",
+      "b": "LEG-S82",
+      "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。LEG-S82處理的是潮汐力、海盆與岸形控制地方潮週期。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667173
+    },
+    {
+      "a": "S40-009",
+      "b": "N220",
+      "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。N220處理的是浮冰碰撞聚集形成盤及突起邊緣。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.642125
+    },
+    {
+      "a": "S40-009",
+      "b": "S39-007",
+      "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。S39-007處理的是地標對準後測得土衛二冰殼擺幅以限制殼核是否解耦。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.637916
+    }
+  ],
+  "additional_cross_wave_pairs": [
+    {
+      "a": "S40-007",
+      "b": "O3071",
+      "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。O3071處理的是螢光強度會隨光保護與細胞遮蔽改變，不能直接換算浮游植物量。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "S40-001",
+        "b": "N213",
+        "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。N213處理的是雪層壓密、冰晶增長及孔隙封閉如何形成冰。"
+      },
+      {
+        "a": "S40-001",
+        "b": "R31001",
+        "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。R31001處理的是以大氣碳十四突變替一個輪位定年，再數輪到木料外緣。"
+      },
+      {
+        "a": "S40-001",
+        "b": "N132",
+        "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。N132處理的是地層疊置與化石群只給相對年代。"
+      },
+      {
+        "a": "S40-002",
+        "b": "S40-001",
+        "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。S40-001處理的是落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。"
+      },
+      {
+        "a": "S40-002",
+        "b": "H3072",
+        "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。H3072處理的是構象交換速率相對NMR頻差過快造成訊號平均。"
+      },
+      {
+        "a": "S40-003",
+        "b": "S40-001",
+        "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。S40-001處理的是落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。"
+      },
+      {
+        "a": "S40-003",
+        "b": "S39-003",
+        "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。S39-003處理的是以等太陽角度、不同季節溫度對照限制環顆粒蓄熱。"
+      },
+      {
+        "a": "S40-004",
+        "b": "N137",
+        "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。N137處理的是火山灰是碎岩與玻璃，磨蝕取決材料性質。"
+      },
+      {
+        "a": "S40-004",
+        "b": "R31001",
+        "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。R31001處理的是以大氣碳十四突變替一個輪位定年，再數輪到木料外緣。"
+      },
+      {
+        "a": "S40-005",
+        "b": "S40-004",
+        "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。S40-004處理的是硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。"
+      },
+      {
+        "a": "S40-005",
+        "b": "S40-003",
+        "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。S40-003處理的是比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。"
+      },
+      {
+        "a": "S40-006",
+        "b": "O3063",
+        "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。O3063處理的是衛星只見區域總質量，需其他水儲量資料分離地下水。"
+      },
+      {
+        "a": "S40-006",
+        "b": "S40-002",
+        "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。S40-002處理的是孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。"
+      },
+      {
+        "a": "S40-007",
+        "b": "N222",
+        "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N222處理的是海冰經鹵水排出與融水沖洗而淡化。"
+      },
+      {
+        "a": "S40-007",
+        "b": "N223",
+        "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N223處理的是雪的隔熱限制冬季海冰向外散熱。"
+      },
+      {
+        "a": "S40-008",
+        "b": "N133",
+        "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。N133處理的是母子核種的衰變時鐘定年。"
+      },
+      {
+        "a": "S40-008",
+        "b": "R29002",
+        "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。R29002處理的是水生食物網承接老碳，焦垢年代偏老。"
+      },
+      {
+        "a": "S40-009",
+        "b": "E7005",
+        "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。E7005處理的是近穩定冰河末端持續受碎屑供應而累積端磧。"
+      },
+      {
+        "a": "S40-009",
+        "b": "N215",
+        "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。N215處理的是末端位置可後退，同時冰繼續往下流。"
+      },
+      {
+        "a": "S40-009",
+        "b": "R34004",
+        "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。R34004處理的是足印疊置方向與步距可限制哪種動物後踩。"
+      },
+      {
+        "a": "S40-001",
+        "b": "S40-008",
+        "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。S40-008處理的是以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。"
+      },
+      {
+        "a": "S40-001",
+        "b": "LEG-S44",
+        "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。LEG-S44處理的是固冰直接昇華失水。"
+      },
+      {
+        "a": "S40-001",
+        "b": "N222",
+        "reason": "S40-001用來解釋落雪之後孔隙仍通氣，氣泡最後封存的日期須與冰體日期分開。N222處理的是海冰經鹵水排出與融水沖洗而淡化。"
+      },
+      {
+        "a": "S40-002",
+        "b": "E11011",
+        "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。E11011處理的是凍土收縮生裂與逐季補冰形成冰楔。"
+      },
+      {
+        "a": "S40-002",
+        "b": "E7004",
+        "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。E7004處理的是主、支冰河下蝕差留下懸谷。"
+      },
+      {
+        "a": "S40-002",
+        "b": "N213",
+        "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。N213處理的是雪層壓密、冰晶增長及孔隙封閉如何形成冰。"
+      },
+      {
+        "a": "S40-002",
+        "b": "E7005",
+        "reason": "S40-002用來解釋孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。E7005處理的是近穩定冰河末端持續受碎屑供應而累積端磧。"
+      },
+      {
+        "a": "S40-003",
+        "b": "S40-006",
+        "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。S40-006處理的是用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。"
+      },
+      {
+        "a": "S40-003",
+        "b": "K6022",
+        "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。K6022處理的是近地冷穩定時高架濕空氣仍可對流。"
+      },
+      {
+        "a": "S40-003",
+        "b": "S40-002",
+        "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。S40-002處理的是孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。"
+      },
+      {
+        "a": "S40-003",
+        "b": "K6023",
+        "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。K6023處理的是降水蒸發冷卻改變下一批降水路徑的溫層。"
+      },
+      {
+        "a": "S40-003",
+        "b": "N227",
+        "reason": "S40-003用來解釋比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。N227處理的是熱傳延遲使表土融解時底下仍可凍結。"
+      },
+      {
+        "a": "S40-004",
+        "b": "N229",
+        "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。N229處理的是地下冰核生長把上覆土頂起。"
+      },
+      {
+        "a": "S40-004",
+        "b": "N126",
+        "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。N126處理的是快速淬冷阻止晶體長大而成火山玻璃。"
+      },
+      {
+        "a": "S40-004",
+        "b": "K6005",
+        "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。K6005處理的是特定覆冰條件濺出碎冰使雲內冰晶數增加。"
+      },
+      {
+        "a": "S40-004",
+        "b": "N139",
+        "reason": "S40-004用來解釋硫峰只指向事件，相鄰多粒玻璃的主量元素指紋結合年代才支持特定噴發。N139處理的是氣柱冷卻增密時失去上升能力。"
+      },
+      {
+        "a": "S40-005",
+        "b": "N229",
+        "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。N229處理的是地下冰核生長把上覆土頂起。"
+      },
+      {
+        "a": "S40-005",
+        "b": "N139",
+        "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。N139處理的是氣柱冷卻增密時失去上升能力。"
+      },
+      {
+        "a": "S40-005",
+        "b": "S40-002",
+        "reason": "S40-005用來解釋臭氧層附近的短波紫外光可造成硫同位素異常，用以限制氣柱經歷的高度。S40-002處理的是孔隙陸續封閉且空氣曾在雪層間擴散，短事件會因多個氣齡混合而變平。"
+      },
+      {
+        "a": "S40-006",
+        "b": "N244",
+        "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。N244處理的是海水受熱膨脹改變海面。"
+      },
+      {
+        "a": "S40-006",
+        "b": "P32003",
+        "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。P32003處理的是用失去潮週期的溫度、壓力與回收位置重建設備在海底移動。"
+      },
+      {
+        "a": "S40-006",
+        "b": "N200",
+        "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。N200處理的是表水離開後深水上湧補位。"
+      },
+      {
+        "a": "S40-006",
+        "b": "S40-007",
+        "reason": "S40-006用來解釋用孔隙水的同位素與擴散模型約束冰期海水成分，再從殼體的混合成因估溫。S40-007處理的是海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。"
+      },
+      {
+        "a": "S40-007",
+        "b": "N221",
+        "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N221處理的是海冰破裂互相擠壓而堆成稜。"
+      },
+      {
+        "a": "S40-007",
+        "b": "N245",
+        "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N245處理的是陸冰與浮冰原先排水量不同。"
+      },
+      {
+        "a": "S40-007",
+        "b": "N183",
+        "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。N183處理的是海水結冰把鹽擠回液相。"
+      },
+      {
+        "a": "S40-007",
+        "b": "LEG-S44",
+        "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。LEG-S44處理的是固冰直接昇華失水。"
+      },
+      {
+        "a": "S40-008",
+        "b": "S40-003",
+        "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。S40-003處理的是比較氮與氬按質量校正後的訊號，區分溫度梯度與重力分餾。"
+      },
+      {
+        "a": "S40-008",
+        "b": "D2205",
+        "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。D2205處理的是氣煞反覆放氣可快過壓縮機補氣。"
+      },
+      {
+        "a": "S40-008",
+        "b": "D2079",
+        "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。D2079處理的是排氣量以縫隙或進氣口的來氣補足。"
+      },
+      {
+        "a": "S40-008",
+        "b": "N253",
+        "reason": "S40-008用來解釋以短壽命氪85限制現代空氣混入長壽命氪81定年樣本的比例。N253處理的是飛機尾冰晶受環境濕度控制而存續或昇華。"
+      },
+      {
+        "a": "S40-009",
+        "b": "E11007",
+        "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。E11007處理的是潟湖水位梯度及回湧水切開沙洲。"
+      },
+      {
+        "a": "S40-009",
+        "b": "N189",
+        "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。N189處理的是海浪進入淺水先後不同而折射。"
+      },
+      {
+        "a": "S40-009",
+        "b": "LEG-S82",
+        "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。LEG-S82處理的是潮汐力、海盆與岸形控制地方潮週期。"
+      },
+      {
+        "a": "S40-009",
+        "b": "N220",
+        "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。N220處理的是浮冰碰撞聚集形成盤及突起邊緣。"
+      },
+      {
+        "a": "S40-009",
+        "b": "S39-007",
+        "reason": "S40-009用來解釋每日兩個不等低潮的接地線運動可在特定模型中覆寫舊脊，留痕數不足以直接數潮。S39-007處理的是地標對準後測得土衛二冰殼擺幅以限制殼核是否解耦。"
+      },
+      {
+        "a": "S40-007",
+        "b": "O3071",
+        "reason": "S40-007用來解釋海冰藻脂質低可出於缺海冰或缺光，再量開水藻脂質及對照衛星覆被。O3071處理的是螢光強度會隨光保護與細胞遮蔽改變，不能直接換算浮游植物量。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "S40-NA001",
+      "decision": "agree_not_added",
+      "reason": "粒雪壓實原理舊庫已有。",
+      "existing_ids": [
+        "N213"
+      ],
+      "reentry_condition": "需提出與讀取古氣體有關的獨立觀測。"
+    },
+    {
+      "id": "S40-NA002",
+      "decision": "agree_not_added",
+      "reason": "一般地層疊置與缺失已收，冰流扭曲只當氪定年動機。",
+      "existing_ids": [
+        "N132",
+        "E7018"
+      ],
+      "reentry_condition": "需定點測到褶皺或倒轉再獨立提題。"
+    },
+    {
+      "id": "S40-NA003",
+      "decision": "agree_not_added",
+      "reason": "通用衰變定年已有，本批增量是不同壽命示蹤對污染量的限制。",
+      "existing_ids": [
+        "N133"
+      ],
+      "reentry_condition": "如只有核種替換，不再提。"
+    },
+    {
+      "id": "S40-NA004",
+      "decision": "agree_not_added",
+      "reason": "公開記錄測多個封閉孔隙的樣本，不能把年齡分布硬指定到單泡單年。",
+      "existing_ids": [
+        "S40-001",
+        "S40-002"
+      ],
+      "reentry_condition": "先有逐泡封存年代證據。"
+    },
+    {
+      "id": "S40-NA005",
+      "decision": "agree_not_added",
+      "reason": "同一問題的錯誤固定常數假設。",
+      "existing_ids": [
+        "S40-001"
+      ],
+      "reentry_condition": "重新提案要有新的觀測量與相應條件。"
+    },
+    {
+      "id": "S40-NA006",
+      "decision": "agree_not_added",
+      "reason": "平滑程度已能產生差異，未排除取樣與封泡過程。",
+      "existing_ids": [
+        "S40-002"
+      ],
+      "reentry_condition": "需要獨立可檢驗的當地源證據。"
+    },
+    {
+      "id": "S40-NA007",
+      "decision": "agree_not_added",
+      "reason": "高空同位素訊號/濃度不是唯一源頭。",
+      "existing_ids": [
+        "S40-004",
+        "S40-005"
+      ],
+      "reentry_condition": "取得該層可匹配的碎片或其他來源證據。"
+    },
+    {
+      "id": "S40-NA008",
+      "decision": "agree_not_added",
+      "reason": "定源研究讀的是多粒成分與時序；色澤不是唯一指紋。",
+      "existing_ids": [
+        "N137",
+        "S40-004"
+      ],
+      "reentry_condition": "需可區分噴發的化學、年齡與誤差。"
+    },
+    {
+      "id": "S40-NA009",
+      "decision": "agree_not_added",
+      "reason": "重力、溫差與演化歷程都會影響訊號。",
+      "existing_ids": [
+        "S40-003"
+      ],
+      "reentry_condition": "先能把互相混雜的貢獻分開。"
+    },
+    {
+      "id": "S40-NA010",
+      "decision": "agree_not_added",
+      "reason": "跨到樹輪另案，且同年代不等於已分離降溫成因。",
+      "existing_ids": [],
+      "reentry_condition": "由樹輪組檢驗獨立控制後再評。"
+    },
+    {
+      "id": "S40-NA011",
+      "decision": "agree_not_added",
+      "reason": "海冰藻生長、開放水面生產及保存都影響指標。",
+      "existing_ids": [
+        "S40-007"
+      ],
+      "reentry_condition": "要有能排除其他因素的區域標定。"
+    },
+    {
+      "id": "S40-NA012",
+      "decision": "agree_not_added",
+      "reason": "僅外形聯想，沒有本批實讀的漂冰刮痕辨別。",
+      "existing_ids": [
+        "N111",
+        "E7003"
+      ],
+      "reentry_condition": "要有刮痕與其他底床構造的觀測對照。"
+    },
+    {
+      "id": "S40-NA013",
+      "decision": "agree_not_added",
+      "reason": "岩石母源的時鐘與冰運沉積年代不同；候選文僅檢索到摘要與索引，未採。",
+      "existing_ids": [
+        "N133"
+      ],
+      "reentry_condition": "先補原研究正文、母源與沉積期如何分開。"
+    },
+    {
+      "id": "S40-NA014",
+      "decision": "agree_not_added",
+      "reason": "百分比受有孔蟲等分母改變；目前只讀檢索摘要與綜述線索。",
+      "existing_ids": [],
+      "reentry_condition": "需定點閱讀原始通量和沉積率對照。"
+    },
+    {
+      "id": "S40-NA015",
+      "decision": "agree_not_added",
+      "reason": "這是場址、潮差、再壓過的位置與設定速度共同造成的模型結果。",
+      "existing_ids": [
+        "S40-009"
+      ],
+      "reentry_condition": "更換場址需先比較地形保存與潮汐。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W40S-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 71,
+      "core_totals": {
+        "S40-001": 35,
+        "S40-002": 36
+      },
+      "core_caps": {
+        "S40-001": 62,
+        "S40-002": 65
+      },
+      "chapter_seconds": [
+        35,
+        36
+      ],
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "任刪一章只剩36或35秒，失去年齡偏移與峰形被攤平的區分，撤此合題。",
+      "editorial_result": "先分同一深度冰與空氣的平均年差，再換兩冰芯同一事件比尖峰保留，移動日期與混合抹平各有可見預測。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W40S-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 69,
+      "core_totals": {
+        "S40-004": 35,
+        "S40-005": 34
+      },
+      "core_caps": {
+        "S40-004": 69,
+        "S40-005": 67
+      },
+      "chapter_seconds": [
+        35,
+        34
+      ],
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "沒有兩地、兩事件的畫面重設就撤合題。任刪一章剩34或35秒，另一份證據可作素材段。",
+      "editorial_result": "清空格陵蘭的火山玻璃幾何散點，另開南極硫異常；一問以成分縮小來源，一問硫經歷高空，不能混為同一事件。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W40S-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 59,
+      "core_totals": {
+        "S40-006": 59
+      },
+      "core_caps": {
+        "S40-006": 75
+      },
+      "chapter_seconds": [
+        28,
+        31
+      ],
+      "maximum_beat_seconds": 17,
+      "drop_if_read": "刪一章剩31或28秒，不能交代為何多取一種樣本，撤案。",
+      "editorial_result": "固定一項再換另一項的兩種成殼情境指出單一讀數有歧義，孔隙水提供額外限制。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W40S-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 59,
+      "core_totals": {
+        "S40-007": 59
+      },
+      "core_caps": {
+        "S40-007": 73
+      },
+      "chapter_seconds": [
+        28,
+        31
+      ],
+      "maximum_beat_seconds": 18,
+      "drop_if_read": "若無法把缺棲地與缺光分開，刪任一章剩31或28秒時撤原案。",
+      "editorial_result": "有無棲地和有無光可造成同樣低值，第二層開水藻脂質及實際衛星覆蓋回收。兩欄皆低仍可不確定。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W40S-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 59,
+      "core_totals": {
+        "S40-009": 59
+      },
+      "core_caps": {
+        "S40-009": 76
+      },
+      "chapter_seconds": [
+        29,
+        30
+      ],
+      "maximum_beat_seconds": 18,
+      "drop_if_read": "若只能展示平行紋、無法畫出第二次觸地覆寫，撤案。任刪一章只剩30或29秒。",
+      "editorial_result": "潮位圖先預測兩條脊，接著讓較低一次接地線繞回覆寫，看實測地形和模型各自能支持哪一步。",
+      "timing_result": "ROOT_SAMPLE_VOICE_PLUS_VISUAL_ALLOWANCE"
+    }
+  ],
+  "timing_probe": {
+    "file": ".cache/wave40-ridge-read.json",
+    "sha256": "418d9534ef65439cce5c81e4c8b3772e798762a35fdb587845623cc12fdac5ac",
+    "scope": "根代理離線樣稿，核當期WAV雜湊並由標頭計長，不是獨立人聲錄音或畫面驗收。",
+    "continuous_wav": {
+      "file": ".cache/wave40-ridge-read-3.wav",
+      "sha256": "d35c5fd7647276142aec1af1da11892537d65f04168402b4cb8ef2a0eaccb269"
+    },
+    "read_seconds": 51.376,
+    "plan_seconds": 59,
+    "visual_allowance_seconds": 7.624
+  },
+  "corrections": {
+    "before_files": [
+      {
+        "file": "batches/wave40-earth.json",
+        "sha256": "c3d94cb3bbdfe9f22222ce98ef5463dc41661e13cdc6766b16e139f945d20476"
+      },
+      {
+        "file": "reviews/wave40-earth-themes.json",
+        "sha256": "59e7f09bec18a034da4a7a9989166ad5751befb41266420238d213fc20a362ca"
+      },
+      {
+        "file": "reviews/wave40-earth-author.json",
+        "sha256": "4493ec650fe60111065c0dbb3964df3fadef3b581196c922b439fa19286c58a3"
+      }
+    ],
+    "resolved": [
+      "S40-003明寫氮同位素比例。S40-006作者同步明寫化石殼重氧比例。",
+      "W40S-T04題名指實際量測的是海冰藻脂質，末拍區分衛星資料的季節覆蓋與厚冰遮光解釋。",
+      "W40S-T05 62→59秒。29+30=59；完整樣稿離線51.376，模型示意保留7.624秒看兩次接地。"
+    ]
+  },
+  "first_retrieval": {
+    "neighbours": {
+      "file": ".cache/wave40-life-review-earth-initial-neighbours.json",
+      "sha256": "c571df77ada3ff8c6785d616faf8d0cfe794b8c2cdd83c67d2f236ca87a22c51"
+    },
+    "draft_sha256": "c27725591978624903bb505850c98a623fdf92fb73b1df54cddb78f6491d06c5"
+  },
+  "draft_sha256": "c27725591978624903bb505850c98a623fdf92fb73b1df54cddb78f6491d06c5",
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "c27725591978624903bb505850c98a623fdf92fb73b1df54cddb78f6491d06c5",
+    "neighbours": {
+      "file": ".cache/wave40-earth-neighbours.json",
+      "sha256": "c571df77ada3ff8c6785d616faf8d0cfe794b8c2cdd83c67d2f236ca87a22c51"
+    },
+    "directed_pairs": 45,
+    "before_rows_identical": true,
+    "old_to_final_new_neighbours": {
+      "S40-001": [],
+      "S40-002": [],
+      "S40-003": [],
+      "S40-004": [],
+      "S40-005": [],
+      "S40-006": [],
+      "S40-007": [],
+      "S40-008": [],
+      "S40-009": []
+    },
+    "written_files_verified": true
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "題級素材與紙上規劃，尚未查核完成稿逐句、圖像授權、實際觀眾解讀或成片。"
+  ]
+}

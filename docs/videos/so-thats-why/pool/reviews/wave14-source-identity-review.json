@@ -1,0 +1,434 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_SCOPE_REVIEW_NOT_FULL_FACT_CHECK",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-01",
+  "reviewed_files": [
+    {
+      "file": "batches/wave14-animal-signals.json",
+      "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
+    },
+    {
+      "file": "batches/wave14-friction.json",
+      "sha256": "e597071b1f486cca9860fe1ffb8bd55d2ea38c452305c3ff14613777008023ab"
+    },
+    {
+      "file": "batches/wave14-perception.json",
+      "sha256": "de3b0612607512e3afe87676e3a93591d85d4989e0f400ee09532cc7c2e8d071"
+    },
+    {
+      "file": "reviews/wave14-animal-signals-author.json",
+      "sha256": "a0ef741721028bde043f4af2da9b5fd506ebee46706b332ba13d596c6697dfda"
+    },
+    {
+      "file": "reviews/wave14-friction-author.json",
+      "sha256": "f3a9f638dce27bd85420092ccc06609e2608a9dfc215356fe8e0316e0eff3c3e"
+    },
+    {
+      "file": "reviews/wave14-perception-author.json",
+      "sha256": "cceadb39876e9bd6e0fba98de211f07e6002cc148d4554a98bdcc907373405b8"
+    },
+    {
+      "file": "baselines/2026-11-01-2897.json.gz",
+      "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0"
+    }
+  ],
+  "new_source_rows": 29,
+  "raw_distinct_urls": 29,
+  "automated_comparison": {
+    "method": "All historical URL registry entries, research titles and DOI metadata, plus within-wave14 comparisons; exact advisory identity matching.",
+    "matched_instances": 0,
+    "script_sha256": "5f86399d0bd46c089c23fa55a1c23ae820ffbc03fad4c6277adc0228068fbf01",
+    "result_sha256": "ca8aad002b07c6dc5b0cd61c9bf6c4b288b7e514f21bb7c7b8220cafae8ff07f",
+    "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+  },
+  "match_decisions": [],
+  "root_manual_identity_checks": {
+    "reviewer": "root",
+    "scope": "External work identity and version checks only; full candidate claims are reviewed separately by non-authors.",
+    "checks": [
+      {
+        "url": "https://jlupub.ub.uni-giessen.de/items/0665986d-f21f-4ac6-8971-950310707a6f",
+        "method": "web.open repository metadata page; no root PDF read",
+        "status": "READ_METADATA",
+        "title": "Temperature Activates Contact Aging in Silica Nanocontacts",
+        "year": 2019,
+        "repository_doi": "10.22029/jlupub-9186",
+        "original_publication_doi": "10.1103/PhysRevX.9.041045",
+        "relationship": "The university deposit explicitly links to the original PRX article. Repository DOI and journal DOI describe this deposited work and its original publication, not two independent studies.",
+        "limits": "License metadata is present, but this identity check does not authorize reuse of each third-party figure or validate the article's full claims."
+      },
+      {
+        "url": "https://arxiv.org/abs/1601.03063",
+        "method": "web.open arXiv abstract and version metadata; no root full-text read",
+        "status": "READ_METADATA_AND_ABSTRACT",
+        "title": "Self-sustained lift and low friction via soft lubrication",
+        "version": "v2, 2016-08-04; v1 submitted 2016-01-12",
+        "journal_reference": "PNAS 113, 5847 (2016)",
+        "related_doi": "10.1073/pnas.1525462113",
+        "relationship": "The arXiv record links the preprint to this published paper. Abstract describes an immersed cylinder beside a soft inclined wall; root does not treat suggested wider applications as directly tested systems."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1978520/",
+        "method": "web.open metadata, abstract and introduction; no root full-paper review",
+        "status": "READ_METADATA_AND_OPENING_SECTIONS",
+        "title": "Causal Inference in Multisensory Perception",
+        "publication_date": "2007-09-26",
+        "doi": "10.1371/journal.pone.0000943",
+        "relationship": "PMC hosts the PLOS ONE article, not a separate NIH experiment. The opening sections distinguish a proposed ideal-observer model from human localization-task observations; a fit is not proof of a particular neural implementation."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8444456/",
+        "method": "web.open metadata, abstract and introduction; no root full-paper review",
+        "status": "READ_METADATA_AND_OPENING_SECTIONS",
+        "title": "Dissecting (un)crowding",
+        "publication_date": "2021-09-13",
+        "doi": "10.1167/jov.21.10.10",
+        "relationship": "PMC hosts this Journal of Vision article. Its opening discussion compares competing model approaches, not an agreed single physiological mechanism.",
+        "rights_scope": "Page states CC BY-NC-ND 4.0. Source availability is not authorization to reuse published figures commercially; planning uses independently drawn explanatory comparisons."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5687857/",
+        "method": "web.open metadata, introduction and returned results through start of experiment 2; not the entire paper or supplements",
+        "status": "READ_METADATA_AND_SPECIFIED_SECTIONS",
+        "title": "Vocalizing in chimpanzees is influenced by social-cognitive processes",
+        "publication_date": "2017-11-15",
+        "doi": "10.1126/sciadv.1701742",
+        "relationship": "Introduction explicitly identifies experiment 1 as a new analysis of nonvocal behavior from prior data, while experiment 2 uses call playback. This is not two independent replications; behavioral observations and the authors' mental-state interpretation must remain distinguished.",
+        "rights_scope": "Page carries a noncommercial license; availability does not establish commercial figure permission."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11627086/",
+        "method": "web.open",
+        "status": "CAPTCHA_NO_ARTICLE_READ",
+        "limits": "Only a browser-check page was returned. Root did not verify metadata or body from this request."
+      },
+      {
+        "url": "https://www.nature.com/articles/439153a",
+        "method": "web.open",
+        "status": "IDENTITY_REDIRECT_NO_ARTICLE_READ",
+        "limits": "Tool returned an inaccessible identity-service redirect. Root did not verify this publication or body from this request."
+      },
+      {
+        "url": "https://arxiv.org/abs/1104.3320",
+        "method": "web.open version metadata and abstract; no root PDF review",
+        "status": "READ_METADATA_AND_ABSTRACT",
+        "title": "Self-retracting motion of graphite micro-flakes: superlubricity in micrometer scale",
+        "version": "v1, 2011-04-17",
+        "related_doi": "10.1103/PhysRevLett.108.205503",
+        "relationship": "The arXiv entry explicitly links this preprint to the related PRL DOI. It is a different work from the earlier Delft 2004 paper that root could not access; no independent corroboration count is inferred."
+      },
+      {
+        "url": "https://arxiv.org/abs/2011.10774",
+        "method": "web.open version metadata and abstract; no root PDF review",
+        "status": "READ_METADATA_AND_ABSTRACT",
+        "title": "Creation and evolution of roughness on silica under unlubricated wear",
+        "version": "v2, 2021-07-30; v1 submitted 2020-11-21",
+        "related_doi": "10.1016/j.wear.2021.203648",
+        "relationship": "The archive links the Wear publication and identifies the current version. The described convergence is limited to the tested loading conditions, not every wearing surface."
+      },
+      {
+        "url": "https://arxiv.org/abs/1807.07502",
+        "method": "web.open version metadata and abstract; no root PDF review",
+        "status": "READ_METADATA_AND_ABSTRACT",
+        "title": "Friction of poroelastic contacts with thin hydrogel films",
+        "version": "v1, 2018-07-19",
+        "journal_reference": "Langmuir 34 (2018), 9617-9626",
+        "related_doi": "10.1021/acs.langmuir.8b01466",
+        "relationship": "Archive and journal DOI refer to the same work. The stated test uses glass-supported PDMA films, a spherical glass probe and water immersion; it is not a generic claim about all soft lubricated contacts."
+      },
+      {
+        "url": "https://repository.tudelft.nl/record/uuid%3Ab0b2ee8b-03eb-4115-8e27-5cb6b8349630",
+        "method": "web.open",
+        "status": "TIMEOUT_NO_CONTENT_READ",
+        "limits": "The fetch timed out. No metadata, version, body or source claim was verified by root from this failed request."
+      }
+    ]
+  },
+  "authors_disclosed_relationships_read_by_root": [
+    {
+      "batch": "animal-signals",
+      "author_disclosure": {
+        "counting": "9個來源記錄，8篇原研究加1篇同一研究的第一方報告；URL/篇數均不等於獨立實驗或獨立重現數。",
+        "relations": [
+          {
+            "source_ids": [
+              "A14-S001",
+              "A14-S002"
+            ],
+            "relationship": "同一主作者與研究系統；2016順序播放和2018聲音×木棍運動為不同設計，2018沿用先前叫聲錄音，非全新獨立團隊。"
+          },
+          {
+            "source_ids": [
+              "A14-S003",
+              "A14-S004"
+            ],
+            "relationship": "2006與2013共享Janik，兩個地點/設計的研究；身份輪廓辨識與複製回答在本批只計同一核心，非互相獨立replication。"
+          },
+          {
+            "source_ids": [
+              "A14-S005"
+            ],
+            "relationship": "UCSD實驗室的出版PDF是同一DOI原研究副本，非新研究；PMC3192021僅發現未另讀/計源。"
+          },
+          {
+            "source_ids": [
+              "A14-S006",
+              "A14-S007"
+            ],
+            "relationship": "ResearchGate標作者Franks上傳的Nature單頁主文與Bristol團隊報告，同一2006研究；官方報告的觸碰干預細節不能標成已核原補充方法。"
+          },
+          {
+            "source_ids": [
+              "A14-S008",
+              "A14-S009"
+            ],
+            "relationship": "2017 Exp1重新分析先前觀察的非聲音行為，Exp2另為播放；只用Exp2主支撐。2024共享研究站與部分團隊、不同蜘蛛模型設計，非2017播放實驗獨立重現；其不顯著聲音結果與替代解釋限制泛化。"
+          }
+        ],
+        "historical_comparison": [
+          {
+            "source_id": "A14-S001",
+            "doi": "10.1038/ncomms10986",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          },
+          {
+            "source_id": "A14-S002",
+            "doi": "10.1073/pnas.1718884115",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          },
+          {
+            "source_id": "A14-S003",
+            "doi": "10.1073/pnas.0509918103",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          },
+          {
+            "source_id": "A14-S004",
+            "doi": "10.1073/pnas.1304459110",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          },
+          {
+            "source_id": "A14-S005",
+            "doi": "10.1242/jeb.056101",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          },
+          {
+            "source_id": "A14-S006",
+            "doi": "10.1038/439153a",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          },
+          {
+            "source_id": "A14-S007",
+            "doi": "",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          },
+          {
+            "source_id": "A14-S008",
+            "doi": "10.1126/sciadv.1701742",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          },
+          {
+            "source_id": "A14-S009",
+            "doi": "10.7717/peerj.18498",
+            "historical_exact_identity_ids": [],
+            "comparison": "全pool sources按DOI字串/標題去非字元小寫/完整URL比對；非引用文獻或獨立實驗數的人工全庫核對。"
+          }
+        ]
+      }
+    },
+    {
+      "batch": "friction",
+      "author_disclosure": {
+        "rule": "一個研究的預印本、正式版、大學/作者副本不算多份獨立證據；每題目前一份直接研究，沒有第二份實驗確認的暗示。",
+        "adopted_access_urls": 9,
+        "work_records": [
+          {
+            "source_id": "F14-S001",
+            "access_url": "https://jlupub.ub.uni-giessen.de/server/api/core/bitstreams/616d2c43-608e-48a6-b719-93ee3c972693/content",
+            "old_pool_exact_url_or_title_matches": [],
+            "work_doi": "10.1103/PhysRevX.9.041045",
+            "repository_doi": "10.22029/jlupub-9186",
+            "relation": "期刊排版在大學圖書館的副本，兩DOI非兩研究。"
+          },
+          {
+            "source_id": "F14-S002",
+            "access_url": "https://arxiv.org/pdf/1405.4953",
+            "old_pool_exact_url_or_title_matches": [],
+            "arxiv_version": "1405.4953v3",
+            "work_doi": "10.1103/PhysRevE.91.012408",
+            "relation": "預印本與期刊關聯為同研究；本輪實讀arXiv稿。"
+          },
+          {
+            "source_id": "F14-S003",
+            "access_url": "https://arxiv.org/pdf/1104.3320",
+            "old_pool_exact_url_or_title_matches": [],
+            "arxiv_version": "1104.3320v1",
+            "work_doi": "10.1103/PhysRevLett.108.205503",
+            "relation": "本輪讀預印本，關聯期刊不是第二證據；Delft 2004另一研究正文取得失敗，未用來補強。"
+          },
+          {
+            "source_id": "F14-S004",
+            "access_url": "https://www.nature.com/articles/ncomms11816.pdf",
+            "old_pool_exact_url_or_title_matches": [],
+            "work_doi": "10.1038/ncomms11816",
+            "relation": "出版社PDF；cookie重導後仍為有效8頁PDF，不把重導URL當另一來源。"
+          },
+          {
+            "source_id": "F14-S005",
+            "access_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2016-12.pdf",
+            "old_pool_exact_url_or_title_matches": [],
+            "work_doi": "10.1073/pnas.1525462113",
+            "related_preprint": "https://arxiv.org/abs/1601.03063",
+            "relation": "Harvard Early Edition與arXiv/期刊同一研究，2019下載目錄不是發表年。"
+          },
+          {
+            "source_id": "F14-S006",
+            "access_url": "https://arxiv.org/pdf/1807.07502",
+            "old_pool_exact_url_or_title_matches": [],
+            "arxiv_version": "1807.07502v1",
+            "work_doi": "10.1021/acs.langmuir.8b01466",
+            "relation": "arXiv與Langmuir同研究，非兩個支持來源。"
+          },
+          {
+            "source_id": "F14-S007",
+            "access_url": "https://arxiv.org/pdf/2011.10774",
+            "old_pool_exact_url_or_title_matches": [],
+            "arxiv_version": "2011.10774v2",
+            "work_doi": "10.1016/j.wear.2021.203648",
+            "relation": "作者稿與Wear同研究；其中臨界磨屑尺度承接S004，不把該部分重算新核心。"
+          },
+          {
+            "source_id": "F14-S008",
+            "access_url": "https://mwiertlewski.github.io/pdf/pub/2017-RFF-MW-MP-EC-WHC.pdf",
+            "old_pool_exact_url_or_title_matches": [],
+            "author_publications": "https://mwiertlewski.github.io/publications/",
+            "publisher_record": "https://ieeexplore.ieee.org/document/7989955/",
+            "relation": "公開作者稿與會議記錄同工作；正文有未解析引用，不宣稱已比對出版社定稿。2016 PNAS研究未成功取正文，未列獨立補強。"
+          },
+          {
+            "source_id": "F14-S009",
+            "access_url": "https://fisherp.mit.edu/wp-content/uploads/2020/08/689.full_.pdf",
+            "old_pool_exact_url_or_title_matches": [],
+            "work_doi": "10.1126/science.aba9490",
+            "relation": "MIT存放原刊排版副本，同一研究；不是另讀一則新聞便成獨立證據。"
+          }
+        ],
+        "old_pool_check": "exact URL/title 作者先查；DOI別名/正規化由root續查，未因此把未取得版本當已讀。"
+      }
+    },
+    {
+      "batch": "perception",
+      "author_disclosure": [
+        {
+          "source_id": "P14-S001",
+          "work_doi": "10.3758/PP.70.1.132",
+          "canonical_work_title": "Object-based attention: Strength of object representation and attentional guidance",
+          "version": "2008正式研究之PMC作者稿",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S002",
+          "work_doi": "10.3758/s13414-022-02459-6",
+          "canonical_work_title": "Excess success in articles on object-based attention",
+          "version": "2022正式研究，PMC XML版本2",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S003",
+          "work_doi": "10.3758/BF03194470",
+          "canonical_work_title": "Contingent attentional capture or delayed allocation of attention?",
+          "version": "2001正式出版PDF，63(2):298–307",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S004",
+          "work_doi": "10.1167/4.12.12",
+          "canonical_work_title": "Crowding is unlike ordinary masking: Distinguishing feature integration from detection",
+          "version": "2004正式出版PDF，作者大學頁副本",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S005",
+          "work_doi": "10.1167/jov.21.10.10",
+          "canonical_work_title": "Dissecting (un)crowding",
+          "version": "2021正式研究，PMC XML版本1",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S006",
+          "work_doi": "10.3758/BF03194971",
+          "canonical_work_title": "Different effects of eyelid blinks and target blanking on saccadic suppression of displacement",
+          "version": "2004正式出版PDF，66(5):772–778",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S007",
+          "work_doi": "10.1038/17953",
+          "canonical_work_title": "Change blindness as a result of mudsplashes",
+          "version": "作者1998-12-07修訂稿，頁首明載1999 Nature將刊修改版；非最終版逐字等同",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S008",
+          "work_doi": "10.1037/0096-1523.35.1.159",
+          "canonical_work_title": "Unmasking the attentional blink",
+          "version": "2009正式論文之PMC作者稿",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S009",
+          "work_doi": "10.1037/0096-1523.17.2.404",
+          "canonical_work_title": "Repetition blindness and illusory conjunctions: Errors in binding visual types with visual tokens",
+          "version": "1991正式PDF，MIT作者實驗室副本",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S010",
+          "work_doi": "10.1038/415429a",
+          "canonical_work_title": "Humans integrate visual and haptic information in a statistically optimal fashion",
+          "version": "2002正式PDF，大學教學副本；p1上半前篇尾文排除",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        },
+        {
+          "source_id": "P14-S011",
+          "work_doi": "10.1371/journal.pone.0000943",
+          "canonical_work_title": "Causal Inference in Multisensory Perception",
+          "version": "2007正式研究，PMC XML版本1",
+          "carrier": "作者/大學/PMC副本與DOI正式論文是同一工作，不因URL不同算獨立證據。",
+          "old_pool_identity_hits": [],
+          "independence_limit": "身分比對僅exact normalized-title/DOI/URL；沒有命中不證明沒有其他同文載體。"
+        }
+      ]
+    }
+  ],
+  "sources_without_raw_candidate_references": [],
+  "count_policy": "Counts are distinct normalized URLs, not independent experiments or corroborating studies. Publisher pages, repositories, preprints and published versions can represent the same research. Reading provenance and exact accessed version remain separate.",
+  "limits": "Root checked the stated identities and author disclosures. This is not a full bibliography semantic-equivalence audit or a new independent full-text fact check. Candidate factual scope is controlled by the three non-author topic review receipts. No script, image rights, experimental replication or production approval."
+}

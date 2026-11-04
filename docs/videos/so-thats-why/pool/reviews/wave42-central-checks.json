@@ -1,0 +1,396 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "reviewer": "root",
+  "bound_files": [
+    {
+      "file": "batches/wave42-flavor.json",
+      "sha256": "159170fde72e8a41cc8216ae67b86eceeb0b02b7fb9543954ff19f0a2306019c"
+    },
+    {
+      "file": "batches/wave42-life.json",
+      "sha256": "f656a7f6f0ecc3661af68fda01242f25ee6eb8961627b5656ee0ff33ecdfe4f8"
+    },
+    {
+      "file": "batches/wave42-physics.json",
+      "sha256": "df2b986be63ddecd06e7cb2865a703793e1f744d324c56dee180e29657a8ee99"
+    },
+    {
+      "file": "batches/wave42-earth.json",
+      "sha256": "795524d9595b991c02b26f5c05aad43fea2677bbd7f0a605b68c2d7b0c4219f6"
+    },
+    {
+      "file": "reviews/wave42-physics-reviews-flavor.json",
+      "sha256": "b3e6c0e567e0739f2c23d9f1e3bd1c5bb639f5ba5389a21043dc5c8d5cdc30d2"
+    },
+    {
+      "file": "reviews/wave42-earth-reviews-life.json",
+      "sha256": "68cdb343df6e1e1066b904ebc377117ac6418d708841764cb500918d38004ad7"
+    },
+    {
+      "file": "reviews/wave42-root-reviews-physics.json",
+      "sha256": "b68fda3b19adaed512b3371059d9a8620a1462c1afb2e96a09b8e02a234d7cab"
+    },
+    {
+      "file": "reviews/wave42-life-reviews-earth.json",
+      "sha256": "c5b1aaf37a7d77b98ba25fe91e863f1cc2c657b0f4b823f284d184fe0a54c2ba"
+    },
+    {
+      "file": "reviews/wave42-flavor-author.json",
+      "sha256": "0779037c3f33a827391101eb3ffeec02dd2d3db836f378d90d28c5c966713bfd"
+    },
+    {
+      "file": "reviews/wave42-flavor-themes.json",
+      "sha256": "22aed18a568e0b61f5985e1846e24796ed28a46dc817ef3b15f7b89447213941"
+    },
+    {
+      "file": "reviews/wave42-life-themes.json",
+      "sha256": "b295ae4bf1d1763b61bed0411f46d154c39dc038bdc693d337f0968f5578f39c"
+    },
+    {
+      "file": "reviews/wave42-life-author.json",
+      "sha256": "a16fd2f05d5d5bcfd1e92d117f1268e71fa60344d1c1d333e11acebbc95dfb4b"
+    },
+    {
+      "file": "reviews/wave42-physics-themes.json",
+      "sha256": "766eb5da0a290ffff52c2c912f6baa550939d52afb2fb63e22e050e314eae1a6"
+    },
+    {
+      "file": "reviews/wave42-physics-author.json",
+      "sha256": "334160b2163d92f081f55c7e6c83de41b6e114ff137de1916063fb0aa8bb23e0"
+    },
+    {
+      "file": "reviews/wave42-earth-author.json",
+      "sha256": "ef11dec3f426aa468646ab833eb591419072cf93d35e2372bb854a707c481077"
+    },
+    {
+      "file": "reviews/wave42-earth-themes.json",
+      "sha256": "399a1c2a86ea42f25a920b23c5924271613eec4115876cb3bca422e64bf2784e"
+    },
+    {
+      "file": "reviews/wave42-editorial-integration.json",
+      "sha256": "ffd40409ac44dc301e86e62240b0833ba05b749293944e49382923904fbf5186"
+    },
+    {
+      "file": "reviews/wave42-timing.json",
+      "sha256": "f3d0b8bf4e1729b7b4fc0d84ff65023bc7db3619d132a258ba319ecabb80125c"
+    }
+  ],
+  "source_identities": [
+    {
+      "local_id": "R42-S001",
+      "title": "The role of auditory cues in modulating the perceived crispness and staleness of potato chips",
+      "doi": "10.1111/j.1745-459x.2004.080403.x",
+      "url": "https://doi.org/10.1111/j.1745-459x.2004.080403.x",
+      "retrieval_url": "https://wiki.idiot.io/_media/zampini2004.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S002",
+      "title": "Effect of background noise on food perception",
+      "doi": "10.1016/j.foodqual.2010.07.003",
+      "url": "https://doi.org/10.1016/j.foodqual.2010.07.003",
+      "retrieval_url": "https://psychologyrocks.org/wp-content/uploads/2021/10/woods-et-al.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S003",
+      "title": "The influence of bubbles on the perception carbonation bite",
+      "doi": "10.1371/journal.pone.0071488",
+      "url": "https://doi.org/10.1371/journal.pone.0071488",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3749224/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S004",
+      "title": "The taste of carbonation",
+      "doi": "10.1126/science.1174601",
+      "url": "https://doi.org/10.1126/science.1174601",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3654389/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S005",
+      "title": "Optimal directional volatile transport in retronasal olfaction",
+      "doi": "10.1073/pnas.1511495112",
+      "url": "https://doi.org/10.1073/pnas.1511495112",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4664350/?report=classic",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S006",
+      "title": "Potential mechanisms of retronasal odor referral to the mouth",
+      "doi": "10.1093/chemse/bjq125",
+      "url": "https://doi.org/10.1093/chemse/bjq125",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A21098583&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S007",
+      "title": "Human sweet taste receptor mediates acid-induced sweetness of miraculin",
+      "doi": "10.1073/pnas.1016644108",
+      "url": "https://doi.org/10.1073/pnas.1016644108",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3189030/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S008",
+      "title": "A TAS1R receptor-based explanation of sweet 'water-taste'",
+      "doi": "10.1038/nature04765",
+      "url": "https://doi.org/10.1038/nature04765",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A16633339&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S009",
+      "title": "Thermal stimulation of taste",
+      "doi": "10.1038/35002581",
+      "url": "https://doi.org/10.1038/35002581",
+      "retrieval_url": "https://pages.uoregon.edu/chendon/coffee_literature/old_literature/2000%20Nature%2C%20Thermal%20stimulation%20of%20taste.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S010",
+      "title": "The color of odors",
+      "doi": "10.1006/brln.2001.2493",
+      "url": "https://doi.org/10.1006/brln.2001.2493",
+      "retrieval_url": "https://web.stanford.edu/class/linguist62n/morrot01colorofodors.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R42-S011",
+      "title": "Marketing actions can modulate neural representations of experienced pleasantness",
+      "doi": "10.1073/pnas.0706929105",
+      "url": "https://doi.org/10.1073/pnas.0706929105",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2242704/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L42-S001",
+      "title": "The Ant Odometer: Stepping on Stilts and Stumps",
+      "doi": "10.1126/science.1126912",
+      "url": "https://doi.org/10.1126/science.1126912",
+      "retrieval_url": "https://www.staff.uni-mainz.de/cduch/Softskills_SS2013/3-4_Ants%20on%20Stilts%20Pedometers/12_ants%20on%20stilts_paper.pdf",
+      "existing_matches": [
+        "SRC-b20bc56c9f9595ee"
+      ]
+    },
+    {
+      "local_id": "L42-S002",
+      "title": "Distance estimation in the third dimension in desert ants",
+      "doi": "10.1007/s00359-002-0301-2",
+      "url": "https://doi.org/10.1007/s00359-002-0301-2",
+      "retrieval_url": "https://www.imls.uzh.ch/static/CMS_publications/wehner/literatur/pdf02/wehner20029.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L42-S003",
+      "title": "Discordant timing between antennae disrupts sun compass orientation in migratory monarch butterflies",
+      "doi": "10.1038/ncomms1965",
+      "url": "https://doi.org/10.1038/ncomms1965",
+      "retrieval_url": "https://www.nature.com/articles/ncomms1965.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L42-S004",
+      "title": "Coldness Triggers Northward Flight in Remigrant Monarch Butterflies",
+      "doi": "10.1016/j.cub.2013.01.052",
+      "url": "https://doi.org/10.1016/j.cub.2013.01.052",
+      "retrieval_url": "https://www.umassmed.edu/globalassets/reppert-lab/publications/currentbiologycold.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L42-S005",
+      "title": "Evidence for a navigational map stretching across the continental U.S. in a migratory songbird",
+      "doi": "10.1073/pnas.0704734104",
+      "url": "https://doi.org/10.1073/pnas.0704734104",
+      "retrieval_url": "https://npb.ucdavis.edu/sites/g/files/dgvnsk581/files/files/person/thorup%20et%20al%20PNAS.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L42-S006",
+      "title": "Magnetic map navigation in a migratory songbird requires trigeminal input",
+      "doi": "10.1038/s41598-018-30477-8",
+      "url": "https://doi.org/10.1038/s41598-018-30477-8",
+      "retrieval_url": "https://www.nature.com/articles/s41598-018-30477-8.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L42-S007",
+      "title": "Learned magnetic map cues and two mechanisms of magnetoreception in turtles",
+      "doi": "10.1038/s41586-024-08554-y",
+      "url": "https://doi.org/10.1038/s41586-024-08554-y",
+      "retrieval_url": "https://www.osti.gov/pages/servlets/purl/3004077",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L42-S008",
+      "title": "Evidence for Geomagnetic Imprinting and Magnetic Navigation in the Natal Homing of Sea Turtles",
+      "doi": "10.1016/j.cub.2014.12.035",
+      "url": "https://doi.org/10.1016/j.cub.2014.12.035",
+      "retrieval_url": "https://www.researchgate.net/publication/271534369_Evidence_for_Geomagnetic_Imprinting_and_Magnetic_Navigation_in_the_Natal_Homing_of_Sea_Turtles",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L42-S009",
+      "title": "Homing Pigeons Only Navigate in Air with Intact Environmental Odours: A Test of the Olfactory Activation Hypothesis with GPS Data Loggers",
+      "doi": "10.1371/journal.pone.0022385",
+      "url": "https://doi.org/10.1371/journal.pone.0022385",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0022385&type=printable",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S001",
+      "title": "Hydrodynamics of Writing with Ink",
+      "doi": "10.1103/physrevlett.107.264501",
+      "url": "https://doi.org/10.1103/PhysRevLett.107.264501",
+      "retrieval_url": "https://physicsmuseum.uq.edu.au/sites/default/files/PhysRevLett.107.264501.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S002",
+      "title": "The retraction of jetted slender viscoelastic liquid filaments",
+      "doi": "10.1017/jfm.2021.855",
+      "url": "https://doi.org/10.1017/jfm.2021.855",
+      "retrieval_url": "https://arxiv.org/pdf/2102.08876",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S003",
+      "title": "Understanding Inkjet Printed Pattern Generation",
+      "doi": null,
+      "url": "https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-38.html",
+      "retrieval_url": "https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/Archive/EECS-2011-38.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S004",
+      "title": "Suppression of the coffee-ring effect by shape-dependent capillary interactions",
+      "doi": "10.1038/nature10344",
+      "url": "https://doi.org/10.1038/nature10344",
+      "retrieval_url": "https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/b/502/files/2019/11/nature10344.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S005",
+      "title": "Nanochromatography Driven by the Coffee Ring Effect",
+      "doi": "10.1021/ac102963x",
+      "url": "https://doi.org/10.1021/ac102963x",
+      "retrieval_url": "https://personal.cityu.edu.hk/thchen/PDF/TSWong_AC.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S006",
+      "title": "Pattern formation by droplet evaporation and imbibition in watercolor paintings",
+      "doi": "10.48550/arxiv.1909.09098",
+      "url": "https://doi.org/10.48550/arXiv.1909.09098",
+      "retrieval_url": "https://arxiv.org/pdf/1909.09098",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S007",
+      "title": "Imprinting the Memory into Paste and Its Visualization as Crack Patterns in Drying Process",
+      "doi": "10.1143/jpsj.74.1362",
+      "url": "https://doi.org/10.1143/JPSJ.74.1362",
+      "retrieval_url": "https://arxiv.org/pdf/cond-mat/0501447",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S008",
+      "title": "Pencil Drawn Strain Gauges and Chemiresistors on Paper",
+      "doi": "10.1038/srep03812",
+      "url": "https://doi.org/10.1038/srep03812",
+      "retrieval_url": "https://www.nature.com/articles/srep03812.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "X42-S009",
+      "title": "Influence of Substrate Conductivity on Circulation Reversal in Evaporating Drops",
+      "doi": "10.1103/physrevlett.99.234502",
+      "url": "https://doi.org/10.1103/PhysRevLett.99.234502",
+      "retrieval_url": "https://wan.ucdavis.edu/sites/g/files/dgvnsk6321/files/inline-files/Influenceofsubstrateconductivityoncirculationreversalinevaporatingdrops.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S001",
+      "title": "The InSight HP³ Penetrator (Mole) on Mars: Soil Properties Derived from the Penetration Attempts and Related Activities",
+      "doi": "10.1007/s11214-022-00941-z",
+      "url": "https://doi.org/10.1007/s11214-022-00941-z",
+      "retrieval_url": "https://elib.dlr.de/191936/2/Spohn_SSR_2022.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S002",
+      "title": "Assessing Mars Curiosity Rover Wheel Damage",
+      "doi": "10.1109/aero53065.2022.9843634",
+      "url": "https://doi.org/10.1109/AERO53065.2022.9843634",
+      "retrieval_url": "https://robotics.jpl.nasa.gov/media/documents/fmwi-rankin-2022-0225-final.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S003",
+      "title": "Overview and Results From the Mars 2020 Perseverance Rover’s First Science Campaign on the Jezero Crater Floor",
+      "doi": "10.1029/2022je007613",
+      "url": "https://doi.org/10.1029/2022JE007613",
+      "retrieval_url": "https://ntrs.nasa.gov/api/citations/20230016431/downloads/Sun%20et%20al%202023%20JGR%20Planets%20Jezero%20Campaign.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S004",
+      "title": "The Phoenix Mars Lander Robotic Arm",
+      "doi": "10.1109/aero.2009.4839306",
+      "url": "https://doi.org/10.1109/AERO.2009.4839306",
+      "retrieval_url": "https://robotics.jpl.nasa.gov/media/documents/f1695_2.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S005",
+      "title": "In situ recording of Mars soundscape",
+      "doi": "10.1038/s41586-022-04679-0",
+      "url": "https://doi.org/10.1038/s41586-022-04679-0",
+      "retrieval_url": "https://www.nature.com/articles/s41586-022-04679-0.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S006",
+      "title": "The sound of a Martian dust devil",
+      "doi": "10.1038/s41467-022-35100-z",
+      "url": "https://doi.org/10.1038/s41467-022-35100-z",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9747922/fullTextXML",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S007",
+      "title": "Lifting and Transport of Martian Dust by the Ingenuity Helicopter Rotor Downwash as Observed by High-Speed Imaging From the Perseverance Rover",
+      "doi": "10.1029/2022je007605",
+      "url": "https://doi.org/10.1029/2022JE007605",
+      "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022JE007605",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S008",
+      "title": "Mars Oxygen ISRU Experiment (MOXIE)—Preparing for human Mars exploration",
+      "doi": "10.1126/sciadv.abp8636",
+      "url": "https://doi.org/10.1126/sciadv.abp8636",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9432831/fullTextXML",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S42-S009",
+      "title": "Results from the Mars Phoenix Lander Robotic Arm experiment",
+      "doi": "10.1029/2009je003408",
+      "url": "https://doi.org/10.1029/2009JE003408",
+      "retrieval_url": "https://robotics.jpl.nasa.gov/media/documents/2009JE003408.pdf",
+      "existing_matches": []
+    }
+  ],
+  "source_identity_limits": "舊庫依網址、DOI與正規化英文篇名比對。相同書目不重算獨立研究；補查來源閱讀列在各組作者與非作者紀錄。其他作者稿與正式刊物的關係以各組來源紀錄為準。",
+  "independent_review": "風味由pool_physics覆核，書寫與沉積由root覆核，導航與火星兩組交叉覆核。",
+  "draft_input_sha256": "5cf0fb7fa40728949df510fcbb1ec42efff5aa6a904bf99b256737ce99a732af",
+  "directed_semantic_top5_matches_final": {
+    "flavor": 55,
+    "life": 45,
+    "physics": 45,
+    "earth": 45
+  },
+  "limits": "近鄰不是全庫去重召回率，來源書目不是素材數。"
+}

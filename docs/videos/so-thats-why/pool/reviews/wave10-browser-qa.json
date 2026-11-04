@@ -1,0 +1,34 @@
+{
+  "tested_on": "2026-11-01T13:50:33.169Z",
+  "result": "PASS",
+  "selected": 2797,
+  "index_html_sha256": "65f0452e91ca711d6d3d949a182c6523dafd16056f4d41b08ce72cc975ceb9cd",
+  "source_sample": {
+    "id": "H10001",
+    "urls": [
+      "https://bioresources.cnr.ncsu.edu/resources/detergency-mechanisms-and-cellulosic-surfaces-a-review/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC4639583/"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new household materials/cleaning question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59/G79 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave10-desktop.png",
+    "wave10-source-desktop.png",
+    "wave10-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "visual_notes": "Root實際查看1440px首頁、H10001展開卡與390px手機三圖。計數/控制項/正文可讀、無重疊或橫溢。H10001來源連結在截圖下方，圖片本身未涵蓋完整來源；所有來源URL/定位由獨立DOM斷言核對，不把裁切圖片當全部source可見證據。",
+  "screenshot_hashes": {
+    "wave10-desktop.png": "69c3c5fee47dce1ef85bf10ec1edc031ddac23bc666ef726e5072204543117a8",
+    "wave10-source-desktop.png": "84976fc30259d5d195f3696bafc126d1c320bc30b74466aeddf2019edebb38c7",
+    "wave10-mobile.png": "61b1d102ae9907939afe984b68ff34dc51b62b0e8f07d94b981991445b4f1e6d"
+  }
+}

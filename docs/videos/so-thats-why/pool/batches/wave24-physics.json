@@ -1,0 +1,398 @@
+{
+  "batch_id": "wave24-physics-20261102",
+  "created_on": "2026-11-02",
+  "scope": "五個結冰/流動/界面控制提案；磁流體先留段落，其餘組三案。題級研究，非劇本或製作核准。",
+  "sources": [
+    {
+      "id": "P24-S001",
+      "url": "https://arxiv.org/pdf/1404.7023",
+      "title": "Universality of Tip Singularity Formation in Freezing Water Drops",
+      "publisher": "A. G. Marín, O. R. Enríquez, P. Brunet, P. Colinet, J. H. Snoeijer; arXiv / Physical Review Letters",
+      "doi": "10.1103/PhysRevLett.113.054301",
+      "accessed_on": "2026-11-02",
+      "version": "arXiv:1404.7023v1（2014-04-25）；對應PRL 113,054301 (2014)。PDF內排版日期2021-11-22不當作新研究。",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.113.054301",
+      "retrieval_url": "https://arxiv.org/pdf/1404.7023",
+      "read_via": "當日web讀arXiv身份頁及PDF；指定UA urllib HTTP200取得PDF，PyMuPDF抽文並渲染圖頁。",
+      "reading_scope": "PDF pp1–4主文/圖說；目讀pp2–3 Fig.2–3。未看補充影片、未重算模型。",
+      "locator": "pp2–3 Experiments / Freezing front / Heat-transfer-limited self-similar freezing dynamics；p4質量平衡與Fig.4；Fig.2–3。",
+      "summary": "末期彎曲凍結前緣與體積增加共同收成尖端，平面前緣近似反而不能解釋普通水的結果。",
+      "limitations": "限由冷板向上凍結的4–8µL水滴及可重現溫區；夾玻片觀察是另一實驗。理論角與實測有散布，不說每滴角度完全相同或無限尖。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-physics-tip2014.pdf",
+        "sha256": "f203186c4d2090beca289ae52f72d99075e30ddfaca5424ce0a8fb61d21c28a7",
+        "text_file": ".cache/wave24-physics-tip2014-pages.json",
+        "text_sha256": "e7a917b705a57dac6456f2294fa6846a868275a8e1886d92b4b67015a8029d6b"
+      }
+    },
+    {
+      "id": "P24-S002",
+      "url": "https://arxiv.org/pdf/1701.06818",
+      "title": "Fast dynamics of water droplets freezing from the outside-in",
+      "publisher": "Sander Wildeman, Sebastian Sterl, Chao Sun, Detlef Lohse; arXiv / Physical Review Letters",
+      "doi": "10.1103/PhysRevLett.118.084101",
+      "accessed_on": "2026-11-02",
+      "version": "arXiv:1701.06818v1（2017-01-24），對應PRL 118,084101 (2017)。",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.118.084101",
+      "retrieval_url": "https://arxiv.org/pdf/1701.06818",
+      "read_via": "當日web讀arXiv身份頁；web PDF timeout，指定UA urllib HTTP200，PyMuPDF抽文並渲染。",
+      "reading_scope": "主文PDF pp1–4及p5結論開頭；目讀pp2–3 Fig.2–3。未讀SI pp6–9或觀看影片。",
+      "locator": "p2 Fig.2裂縫/空穴癒合/爆裂序列；pp3–4 Fig.3殼內壓力與能量模型；p5結論開頭。",
+      "summary": "先成冰殼再向內凍結，壓力累積、開裂及重新凍合可反覆發生，最後是否完全碎開還受可用能量限制。",
+      "limitations": "直接證據是受控蒸發冷卻的毫米水滴；50µm下限是含強度假設的模型估計，非本次尺寸實驗。圖示不能轉成普通冰箱所有水滴必爆，也不提供低壓/成核操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-physics-explode2017.pdf",
+        "sha256": "28a7e6f017d174bf89f5f9eba56956dca53fa7b1d27a2b11d09492ebc457c66c",
+        "text_file": ".cache/wave24-physics-explode2017-pages.json",
+        "text_sha256": "49818b386e0d0a8dcb1eb0574db7bd091cf79f7df7e760554195cbc065401fc1"
+      }
+    },
+    {
+      "id": "P24-S003",
+      "url": "https://ntrs.nasa.gov/api/citations/19690011736/downloads/19690011736.pdf",
+      "title": "Dynamics and stability of ferrofluids: surface interactions",
+      "publisher": "Ronald E. Zelazo, James R. Melcher; MIT / NASA contractor report",
+      "doi": "10.1017/S0022112069002011",
+      "accessed_on": "2026-11-02",
+      "version": "實讀NASA-CR-100446 / CSR-TR-68-12（1968-12-01）；同題名作者的JFM39(1),1–24 (1969)為相關正式發表，2006上網日期非新研究。",
+      "canonical_url": "https://doi.org/10.1017/S0022112069002011",
+      "retrieval_url": "https://ntrs.nasa.gov/api/citations/19690011736/downloads/19690011736.pdf",
+      "read_via": "當日web讀NTRS身份/PDF及Cambridge正式版metadata；指定UA urllib HTTP200取報告，抽文並渲染。",
+      "reading_scope": "PDF pp2–4、14、16–18、27–31及34–35圖說；目讀pp41–44 Fig.6–7。核心只用§III B/D/E與§VI A/B；非全46頁逐式查核。",
+      "locator": "印刷p13 §III B Eq.33，pp15–17 §III D/E；pp26–28 §VI A/B；PDF pp41–44 Fig.6–7。",
+      "summary": "沿液面與垂直液面的磁場，對表面變形分別提供不同方向的回應，實測液面模態頻率呈相反變化。",
+      "limitations": "法向實驗存在小磁場梯度與校準誤差，不能畫成完美均勻場；沿面增強需波沿場方向。兩套實驗分框，不把磁流體當變硬固體，也不讀成聲音。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-physics-ferro1969.pdf",
+        "sha256": "76ccf524dbb7565a745d5b8378b364a7d56a477cf7a7facd192fface8437e2e6",
+        "text_file": ".cache/wave24-physics-ferro1969-pages.json",
+        "text_sha256": "62df4f2011a150641d04fac70844408ffdae53c4fd8a96e630c6c43295e29a18"
+      }
+    },
+    {
+      "id": "P24-S004",
+      "url": "https://pages.uoregon.edu/rempel/_readings/week3-saffman_taylor.pdf",
+      "title": "The penetration of a fluid into a porous medium or Hele-Shaw cell containing a more viscous liquid",
+      "publisher": "P. G. Saffman, Geoffrey Taylor; Proceedings of the Royal Society A / University of Oregon teaching copy",
+      "doi": "10.1098/rspa.1958.0085",
+      "accessed_on": "2026-11-02",
+      "version": "Proc. R. Soc. A245(1242),312–329（1958-06-24）的JSTOR掃描，由大學課程存放；2013下載戳非研究日期。",
+      "canonical_url": "https://doi.org/10.1098/rspa.1958.0085",
+      "retrieval_url": "https://pages.uoregon.edu/rempel/_readings/week3-saffman_taylor.pdf",
+      "read_via": "當日web檢索原文/大學PDF；web open timeout，指定UA urllib HTTP200取得掃描，PyMuPDF抽文、渲染目讀。",
+      "reading_scope": "印刷pp312–318、322–325正文/圖說與PDF p9 plate2目讀；沒有逐讀§5完整推導、§9–10或引用文獻。",
+      "locator": "印刷pp312–317 §1–3線性穩定/表面張力；pp317–318 §4；pp324–325 §7–8；plate2 Fig.2–4、8–9。",
+      "summary": "低黏度相推進高黏度相時，小凸起可因流阻分布而放大；表面張力限制細小起伏。",
+      "limitations": "限窄間隙的流動/模型；早期寬槽照片與後來水平窄槽為不同實驗。水平逆黏度對照是模型預測，不冒充同場實測；不稱所有手指固定半槽寬。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-physics-finger1958.pdf",
+        "sha256": "53b51dbce976f5172546e44d70d181a68b3313939e3f51c46dfda033fbb1985a",
+        "text_file": ".cache/wave24-physics-finger1958-pages.json",
+        "text_sha256": "e1cc486ea437a20ecad3326e15ab38858423a19bc681f52770209ef361f296b2"
+      }
+    },
+    {
+      "id": "P24-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10265002/",
+      "title": "The physics of dancing peanuts in beer",
+      "publisher": "Luiz Pereira et al.; Royal Society Open Science10:230376",
+      "doi": "10.1098/rsos.230376",
+      "accessed_on": "2026-11-02",
+      "version": "2023-06-14正式論文；PMC為同文載體，不把Durham副本另算研究。",
+      "canonical_url": "https://doi.org/10.1098/rsos.230376",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10265002/",
+      "read_via": "當日web讀原刊/PMC/Durham身份；PMC web驗證頁、原刊與Durham web403，指定UA urllib正常HTTP200取得PMC全文；lxml抽段及原圖目讀。",
+      "reading_scope": "正文§§1–3.3及§5（快取PARA21–63、73–74）；另讀§4類比但不採為候選證據。目讀Fig.1、5、6；未看附片或讀原始資料。",
+      "locator": "§1 Fig.1循環；§2量測與三時間窗；§3.2 Fig.5浮沉門檻；§3.3 Fig.6歷程；§5變體尚待研究。",
+      "summary": "顆粒上長出的氣泡提供浮升，液面轉動協助排氣後再下沉；氣體逐漸不足時循環停止。",
+      "limitations": "研究為特定烘烤去殼花生與lager，13粒觀察；初期可聚液面，非立刻規律往返。氣泡數由可見數乘二、50µm辨識下限，模型點均值有偏差；不同花生/飲料尚未控制比較。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave24-physics-peanut2023.html",
+        "sha256": "3dff9ffce9bffefeaeaa62be86fb8909bdd689019ef80bbfe5c7232de32f7313",
+        "text_file": ".cache/wave24-physics-peanut2023-text.json",
+        "text_sha256": "9be770b4ce281a4bed8afaf7049fc204f3db8fd8be84d0b8deb6373bffd52989"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P24001",
+      "question": "水滴從底下結冰，為什麼最後會長出尖尖的帽子？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "freezing.drop_tip_curved_front_mass_conservation",
+      "answer_target": "末期熱主要穿過冰層流向冷板，凍結前緣彎曲並近乎垂直地接上外表面；配合水結冰增體積的質量平衡，最後一小塊液體收成尖頂，不能只把整滴等比例放大。",
+      "scope": "限冷板上向上凍結的小水滴；前緣形狀來自另做的夾玻片實驗與熱傳模型，不以雪晶六角形解釋宏觀尖帽。",
+      "source_ids": [
+        "P24-S001"
+      ],
+      "source_locator": "PDF pp2–4；Fig.2滴形/溫度對照，Fig.3夾玻片前緣，p4質量平衡。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗與模型分框；未看影片。與普通冰密度舊核共用前提，但新增前緣形狀如何選擇最後輪廓。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道同樣變大，不代表所有地方都等量鼓起。",
+        "visual": "三種初始滴形的尖頂照片改為定性原創示意；另框畫夾片前緣從凸轉凹，再畫冷板散熱/末段液帽。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "P24002",
+      "question": "水滴已經凍出外殼，為什麼還會裂了又合，最後突然碎開？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "freezing.inward_ice_shell_pressure_fracture_healing_energy_threshold",
+      "answer_target": "外殼繼續向內生長，把剩餘液水壓縮；開裂讓壓力快速釋放，後續凍結又能癒合裂口並重新升壓。裂開未必立即整滴分離，儲能還須足夠支付新表面的形成。",
+      "scope": "限毫米滴從外向內凍結的原研究；壓力和能量為模型解釋，裂癒/空穴/碎裂有高速影像。微滴不爆的估計不能當實測通用尺寸。",
+      "source_ids": [
+        "P24-S002"
+      ],
+      "source_locator": "PDF p2 Fig.2 D–I；pp3–4 Fig.3殼/液核心模型及能量比較。",
+      "premise_status": "screened",
+      "notes": "來源直接序列，不同事件用時間標分開；不重講分子氫鍵。原創殼剖面需另核與真影像的對應。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "裂了一次不等於能量已足以把整滴拆開。",
+        "visual": "真實序列參照的裂口—癒合—再裂三框；模型框只畫液核心受壓、開裂卸壓和新表面能帳，不畫未實測壓力曲線。",
+        "seconds": [
+          85,
+          125
+        ]
+      }
+    },
+    {
+      "id": "P24003",
+      "question": "磁場方向一換，液面的小波為什麼可能從變慢轉成變快？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "ferrofluid.surface_wave_restoring_force_field_orientation",
+      "answer_target": "磁場與液面形變互相改變。法向場會增強原有表面偏移、降低回復作用；沿面且沿波方向的場則傾向拉回表面。固定模態的實測頻率因此隨場強出現相反趨勢。",
+      "scope": "限磁流體表面小波及指定方向；法向實驗需計入弱梯度修正。比較兩套裝置結果，不宣稱一塊磁鐵轉向即有完全相同場強。",
+      "source_ids": [
+        "P24-S003"
+      ],
+      "source_locator": "報告印刷p13 Eq.33；pp26–28 §VI A/B；Fig.6–7（PDF pp41–44）。",
+      "premise_status": "screened",
+      "notes": "來源直接頻率掃描；先留段落，不因名詞新穎強做影片。所謂變快指固定波長模態的頻率/波速，不是鐵粉游速。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "場的方向會改作用符號，不是磁鐵愈強就一律愈硬。",
+        "visual": "法向/沿面兩框固定同一波長，畫偏移與回應箭頭，再各標頻率下移/上移；圖註兩組實驗。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "P24004",
+      "question": "把黏液往前推，前緣為什麼會伸出手指，而不是整齊前進？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "flow.viscous_fingering_mobility_contrast_interface_instability",
+      "answer_target": "低黏度流體侵入高黏度流體的窄縫時，向前凸出的部分替代較高流阻的路段，流量更集中而放大凸起；表面張力又抑制過細的起伏，不能只用顏色混合解釋手指形狀。",
+      "scope": "限Hele-Shaw窄縫置換；以低黏度推高黏度的原始實驗及Darcy穩定模型為據，黏度次序反轉的示意屬理論對照，重力另標。",
+      "source_ids": [
+        "P24-S004"
+      ],
+      "source_locator": "印刷pp312–317 §1–3；pp317–318 §4；pp324–325 §7–8；plate2 Fig.2–4。",
+      "premise_status": "screened",
+      "notes": "凸起—局部流阻—流量的原創因果圖為模型轉譯，進稿另核箭頭；不同照片不是同次逐格影片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "局部領先可以自己放大，總供流均勻不保證前緣平整。",
+        "visual": "先畫兩板窄縫與微小凸起；兩條流路比較高黏液剩餘長度，再切換黏度次序的模型框；原照片只作獨立觀察對照。",
+        "seconds": [
+          75,
+          115
+        ]
+      }
+    },
+    {
+      "id": "P24005",
+      "question": "花生密度比飲料大，為什麼能反覆浮起又沉下去？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "multiphase.attached_bubble_growth_surface_release_buoyancy_cycle",
+      "answer_target": "花生表面成核並留住的氣泡長大，讓整個組合跨過浮沉門檻；到液面後氣泡破掉，花生轉動又露出下側氣泡供排出，組合再沉下。只要仍有足夠氣體補給，這個增氣/排氣回路便可重複。",
+      "scope": "直接證據限原研究的去殼烤花生/lager；初期可能停留液面，氣少後循環終止。不同類飲料/果乾未作同場對照，不把每次氣泡數視作精確臨界常數。",
+      "source_ids": [
+        "P24-S005"
+      ],
+      "source_locator": "§1 Fig.1；§2方法；§3.2 Fig.5；§3.3 Fig.6；§5。",
+      "premise_status": "screened",
+      "notes": "來源直接歷程與浮沉計算；圖1是作者機制圖而非影片幀，未看補充影片。新核是位置依賴的加氣/排氣回路，不將浮力/成核各拆一題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "抵達液面不是終點；那裡會改變附著氣量，讓原本的浮升反過來。",
+        "visual": "跟著同一顆粒的原創循環圖，氣泡體積條跨門檻後上浮，液面翻轉排氣再下沉；另標實驗初期停留與晚期停舞，不畫等週期鐘擺。",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P24-NA001",
+      "question": "水結冰膨脹，為什麼會浮起來？",
+      "existing_ids": [
+        "LEG-S07",
+        "R8001"
+      ],
+      "source_ids": [],
+      "reason": "氫鍵晶體疏鬆與密度差已有；新尖端題只借此前提。",
+      "reentry_condition": "須有不同決定機制，不能換容器或冰塊外形再算。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA002",
+      "question": "地下結冰為什麼把路面頂高？",
+      "existing_ids": [
+        "N226"
+      ],
+      "source_ids": [],
+      "reason": "水供給冰透鏡與抬升已有。",
+      "reentry_condition": "只有新增控制機制且取得正文才重入。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA003",
+      "question": "石縫裡的冰為什麼把石頭撐裂？",
+      "existing_ids": [
+        "N235"
+      ],
+      "source_ids": [],
+      "reason": "裂縫內冰吸水成長已有，不因換石材再算。",
+      "reentry_condition": "不同裂紋控制證據再審。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA004",
+      "question": "鹽水乾掉為什麼能撐碎多孔石頭？",
+      "existing_ids": [
+        "N234"
+      ],
+      "source_ids": [],
+      "reason": "孔隙再結晶壓力已有。",
+      "reentry_condition": "本輪不把結晶物改名當新機制。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA005",
+      "question": "雪花的分枝為什麼長得不同？",
+      "existing_ids": [
+        "N276"
+      ],
+      "source_ids": [],
+      "reason": "晶體對稱與環境生長已有；與整滴宏觀尖帽有別。",
+      "reentry_condition": "需不同於既有生長條件的控制。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA006",
+      "question": "落下的黏液為什麼盤成圈？",
+      "existing_ids": [
+        "F10011"
+      ],
+      "source_ids": [],
+      "reason": "軸向受阻造成黏性屈曲已有。",
+      "reentry_condition": "不同材料/落高不單獨重入。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA007",
+      "question": "移動接液平面為什麼改變線圈花紋？",
+      "existing_ids": [
+        "F10012"
+      ],
+      "source_ids": [],
+      "reason": "供給與帶走長度的匹配已有。",
+      "reentry_condition": "需新的決定過程，不只加一種花紋。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA008",
+      "question": "乾麵條先扭轉為什麼比較可能只斷兩截？",
+      "existing_ids": [
+        "F15001"
+      ],
+      "source_ids": [],
+      "reason": "已有同原研究的彎曲/扭轉波控制。",
+      "reentry_condition": "不以另換麵條重算。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA009",
+      "question": "異號帶電液滴碰到後為什麼還能分開？",
+      "existing_ids": [
+        "F17007"
+      ],
+      "source_ids": [],
+      "reason": "已有錐角液橋回流與斷橋原研究。",
+      "reentry_condition": "若另一機制再審；本輪只檢索身份，未重讀原文。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA010",
+      "question": "水裡包著一層空氣的反氣泡，為什麼會破？",
+      "existing_ids": [
+        "I12008"
+      ],
+      "source_ids": [],
+      "reason": "只找到2005相關研究身份/摘要，尚未實讀足夠排液/破裂控制；不能憑外形翻轉就增核。",
+      "reentry_condition": "取得反氣泡指定正文並證明不同於既有氣膜隔離核心。",
+      "reading_status": "研究身份/摘要與舊題比對；未採全文"
+    },
+    {
+      "id": "P24-NA011",
+      "question": "牛頓擺為什麼從另一端彈出球？",
+      "existing_ids": [
+        "P173",
+        "P176",
+        "P178"
+      ],
+      "source_ids": [],
+      "reason": "目前只到一般碰撞/動量與能量說明，沒有新的可見控制研究。",
+      "reentry_condition": "取得有限接觸時間/波傳或其他不同機制的實驗後重審。",
+      "reading_status": "舊完整問答/範圍比對；本輪未新增正文證據"
+    },
+    {
+      "id": "P24-NA012",
+      "question": "緞帶刮過邊緣後為什麼捲起？",
+      "existing_ids": [
+        "X5004"
+      ],
+      "source_ids": [],
+      "reason": "只有方向篩選，尚未取得塑性應變/張力的原研究控制；X5004只是針織殘留彎曲近題，不認定同核。",
+      "reentry_condition": "讀到可分辨塑性梯度與彈性回復的原研究再審。",
+      "reading_status": "關鍵字及舊題比較，未採新來源"
+    },
+    {
+      "id": "P24-NA013",
+      "question": "磁性液體表面為什麼會冒出尖峰？",
+      "existing_ids": [],
+      "source_ids": [
+        "P24-S003"
+      ],
+      "reason": "本輪所讀報告的失穩門檻與表面小波是相連邊界，先不從同一法向場回應再拆尖峰一題；1967原研究只讀身份。",
+      "reentry_condition": "若有獨立可見控制且讀到其直接正文，再判是否超出P24003。",
+      "reading_status": "1968報告§III D/VI A已讀；1967文未讀正文"
+    },
+    {
+      "id": "P24-NA014",
+      "question": "換鹽焗花生或另一種飲料，浮沉會更快嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P24-S005"
+      ],
+      "reason": "原文只提出不同密度/潤濕性可能影響，未做這些配方控制，不編造結果。",
+      "reentry_condition": "實讀不同品種的受控數據後再判；仍不把P24005參數變體重算。",
+      "reading_status": "原文§5已讀，該比較屬未來問題"
+    }
+  ]
+}

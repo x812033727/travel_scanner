@@ -1,0 +1,54 @@
+{
+  "tested_on": "2026-11-02T01:07:11.466Z",
+  "result": "PASS",
+  "selected": 2977,
+  "index_html_sha256": "e9c560778b22c5e451d9196a0d543d9a2dcfd47d2abf28f7093131970779a2a7",
+  "source_sample": {
+    "id": "B17001",
+    "urls": [
+      "https://doi.org/10.1038/s41586-024-07157-x"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new animal control mechanism question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave17-desktop.png",
+    "wave17-source-desktop.png",
+    "wave17-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_review": {
+    "reviewer": "root",
+    "observations": [
+      "Desktop 1440x1000: 2977 selected, 2523 used source URLs, 199 themes and 139 aliases visible; search, filters and the first question cards are readable without overlap. Existing header date remains the original pool date2026-11-01.",
+      "Expanded B17001 card: question, answer, 75-135 second segment estimate, scope, prior not-added provenance and payoff visible. The visual idea starts at the screenshot bottom; full visual text and source URLs extend below the crop and are supported by DOM assertions, not a screenshot visibility claim.",
+      "Mobile 390x844: heading wraps, four statistics form two rows, links and filters fit within the viewport. The compact search placeholder is clipped but its input remains visible; the screenshot does not include lower question cards and is not a full-page visual audit."
+    ],
+    "screenshots": [
+      {
+        "file": ".cache/wave17-desktop.png",
+        "sha256": "21e707fc06ef9f536358b1f56d258ac7e3a6d907f96a55c1baa1facba64c90f9"
+      },
+      {
+        "file": ".cache/wave17-source-desktop.png",
+        "sha256": "a80281dfce0987774387c6241ab8846b9ce457ddaa4d4837fe3b073bf1733291"
+      },
+      {
+        "file": ".cache/wave17-mobile.png",
+        "sha256": "b74260a64ed6bd0fd99de71452bdbd9fa26f596bf5a211733c0da18e595b39b4"
+      }
+    ]
+  }
+}

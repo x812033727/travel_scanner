@@ -1,0 +1,577 @@
+{
+  "tested_on": "2026-11-01T15:26:15.380Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3262,
+    "canonical_questions": 3126,
+    "eligible_candidates": 2956,
+    "selected_candidates": 2897,
+    "alias_records": 136,
+    "historical_records": 313,
+    "source_urls": 4209,
+    "current_research_source_urls": 1250,
+    "selected_source_urls": 2437,
+    "new_suggestions_not_added": 646,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 147,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2870",
+    "carried": 2870,
+    "added": 27,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "ea1c5eb88fb121a4f561cda4879d704e9401503f982aabc8bc13db4e0ac99ab0",
+    "writes": 6388,
+    "selected": 2897
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "ea1c5eb88fb121a4f561cda4879d704e9401503f982aabc8bc13db4e0ac99ab0",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4307,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 3955.7499000000007,
+    "index_ms": 2412.4305999999997,
+    "unchanged_index_ms": 226.15560000000005,
+    "searches": [
+      {
+        "query": "細胞",
+        "returned": 30,
+        "milliseconds": 4.449399999999514
+      },
+      {
+        "query": "沙",
+        "returned": 30,
+        "milliseconds": 10.581399999999121
+      },
+      {
+        "query": "星",
+        "returned": 30,
+        "milliseconds": 6.449100000001636
+      }
+    ],
+    "rss_bytes": 395784192,
+    "sqlite_bytes": 47726592
+  },
+  "dedup_audit": {
+    "selection": "Every final wave13 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "1b07b2ca7a656dda15d51d70dab863f2c78b592bdaab8ca0d39010b8f3295c6b",
+    "records": 3262,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.736
+  },
+  "hashes": {
+    "pool.json": "1b07b2ca7a656dda15d51d70dab863f2c78b592bdaab8ca0d39010b8f3295c6b",
+    "themes.json": "e8faf83e80c593351cccb8ab0d2dda77ad483a2270566a0ccfb6c9f409c6fb2d",
+    "manifest.json": "372a18cc6a2103efbf7445b57a9637f0fd7002b461f70cd9866a72da4fe69857",
+    "index.html": "69774a82ada3b10a30cb24b54742db928c13a25767552e01552bcd6e3869f29f",
+    "batches/wave13-astronomy.json": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de",
+    "batches/wave13-cell-transport.json": "2dd0ab7cef3a2d64efd0db8f7c36b740f82b8b40fdbaffe44ba5b495dffe1828",
+    "batches/wave13-granular.json": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3235,
+    "old_raw_changed": 0,
+    "old_selected_retained": 2870,
+    "old_themes_retained_unchanged": 135,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only aliases, question variants, source refs and provenance from reviewed merges; old factual fields unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4182,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://arxiv.org/pdf/1303.0052",
+        "source_id": "SRC-34395e5a4388f819",
+        "candidate_ids": [
+          "X13001",
+          "X13002"
+        ],
+        "theme_ids": [
+          "G144"
+        ]
+      },
+      {
+        "url": "https://exoplanetarchive.ipac.caltech.edu/docs/DVSummaryPageCompanion.html",
+        "source_id": "SRC-ce94b782a7ba7921",
+        "candidate_ids": [
+          "X13002",
+          "X13003"
+        ],
+        "theme_ids": [
+          "G144"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1203.5537",
+        "source_id": "SRC-10a9a508dec98cb9",
+        "candidate_ids": [
+          "X13004"
+        ],
+        "theme_ids": [
+          "G147"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1201.5409",
+        "source_id": "SRC-73925a79ad32482e",
+        "candidate_ids": [
+          "X13005"
+        ],
+        "theme_ids": [
+          "G147"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1409.3594",
+        "source_id": "SRC-04c0e0916564fc1b",
+        "candidate_ids": [
+          "X13006",
+          "X13007"
+        ],
+        "theme_ids": [
+          "G145"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1001.1638",
+        "source_id": "SRC-ffdb487a0dfdfaf7",
+        "candidate_ids": [
+          "X13007"
+        ],
+        "theme_ids": [
+          "G145"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1711.05691",
+        "source_id": "SRC-70958b1162fa4cdb",
+        "candidate_ids": [
+          "X13008",
+          "X13011"
+        ],
+        "theme_ids": [
+          "G146"
+        ]
+      },
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/12/STScI-01EVSR9MQCEW6XQ8EVQH08F26M.pdf",
+        "source_id": "SRC-9a9e67c897f271f5",
+        "candidate_ids": [
+          "X13009"
+        ],
+        "theme_ids": [
+          "G146"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/0705.0993",
+        "source_id": "SRC-cebaf4d4698c8e11",
+        "candidate_ids": [
+          "X13010"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/",
+        "source_id": "SRC-3617a0de3e7ee806",
+        "candidate_ids": [
+          "C13001"
+        ],
+        "theme_ids": [
+          "G136"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617890/",
+        "source_id": "SRC-ee965966dfee8b8e",
+        "candidate_ids": [
+          "C13002"
+        ],
+        "theme_ids": [
+          "G137"
+        ]
+      },
+      {
+        "url": "https://elifesciences.org/articles/109462",
+        "source_id": "SRC-df602442f0a3053a",
+        "candidate_ids": [
+          "C13003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5986196/",
+        "source_id": "SRC-3f6392c5a4e1f242",
+        "candidate_ids": [
+          "C13004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1083/jcb.109.4.1421",
+        "source_id": "SRC-8b532193f62a6fe9",
+        "candidate_ids": [
+          "C13005"
+        ],
+        "theme_ids": [
+          "G139"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.cell.2008.02.049",
+        "source_id": "SRC-83a99909d4d6121a",
+        "candidate_ids": [
+          "C13006"
+        ],
+        "theme_ids": [
+          "G138"
+        ]
+      },
+      {
+        "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000298",
+        "source_id": "SRC-5e3bccdc26d3e5d8",
+        "candidate_ids": [
+          "C13007"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/cond-mat/9906321",
+        "source_id": "SRC-27426b36eb49df41",
+        "candidate_ids": [
+          "G13001"
+        ],
+        "theme_ids": [
+          "G140"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/0704.3745",
+        "source_id": "SRC-7f888841ee682a37",
+        "candidate_ids": [
+          "G13002"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/1904.10051",
+        "source_id": "SRC-c64661ed10011bf6",
+        "candidate_ids": [
+          "G13003"
+        ],
+        "theme_ids": [
+          "G141"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/cond-mat/0002401",
+        "source_id": "SRC-619fb21c9678e666",
+        "candidate_ids": [
+          "G13004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/2501.13434",
+        "source_id": "SRC-eb8bf8bd3a8dbca8",
+        "candidate_ids": [
+          "G13005"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/cond-mat/0703072",
+        "source_id": "SRC-c2591932c2ebecc1",
+        "candidate_ids": [
+          "G13006"
+        ],
+        "theme_ids": [
+          "G142"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/cond-mat/0502622",
+        "source_id": "SRC-9ad83a06befa3e36",
+        "candidate_ids": [
+          "G13007"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/granular/PhysRevLett.108.108302.pdf",
+        "source_id": "SRC-f0c7fb6039e85762",
+        "candidate_ids": [
+          "G13008"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://ris.utwente.nl/ws/files/6616258/granular.pdf",
+        "source_id": "SRC-f0bf3a1e2efa7bdb",
+        "candidate_ids": [
+          "G13009"
+        ],
+        "theme_ids": [
+          "G143"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1408.3884",
+        "source_id": "SRC-9757a3b4c1d7a96b",
+        "candidate_ids": [],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/cond-mat/9807148",
+        "source_id": "SRC-eadfb063cd0d4ba6",
+        "candidate_ids": [],
+        "theme_ids": []
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/",
+    "core": "C13001",
+    "theme": "G136",
+    "theme_ids": [
+      "G136"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 42,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 96952.6919,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "92982c106130bc234fc6bc5994a9690469425fa43825bd100ced9be323e0e231"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "6db60670f96b323b5cc9682f84bb4f1597bb19ab126b795840fd97bf2181b2b3"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "bdff61f2759bdf24b004ba4cc4bd255faf9635c9978f2da34551edf00af3d8b5",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "61114db7a1665d28ad627f10912772d7f6eefa4154185bcb6b0da628674e6b0b"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "c49bac4bf6535bb468bb3512387834085d9721e5d6cc44adc2802979a2dc328b",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 298,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true,
+    "independently_bound_stable_blobs": 32,
+    "unique_blobs_checked": 321
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3076,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G136",
+        "core": "C13001",
+        "seconds": 110,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G137",
+        "core": "C13002",
+        "seconds": 100,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G138",
+        "core": "C13006",
+        "seconds": 125,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G139",
+        "core": "C13005",
+        "seconds": 100,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G140",
+        "core": "G13001",
+        "seconds": 105,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G141",
+        "core": "G13003",
+        "seconds": 115,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G142",
+        "core": "G13006",
+        "seconds": 110,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G143",
+        "core": "G13009",
+        "seconds": 115,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G144",
+        "core": "X13001",
+        "seconds": 60,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G144",
+        "core": "X13002",
+        "seconds": 85,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G144",
+        "core": "X13003",
+        "seconds": 65,
+        "maximum": 75,
+        "variant_budget": null
+      },
+      {
+        "theme": "G145",
+        "core": "X13006",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G145",
+        "core": "X13007",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G146",
+        "core": "X13008",
+        "seconds": 85,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G146",
+        "core": "X13011",
+        "seconds": 55,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G146",
+        "core": "X13009",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G147",
+        "core": "X13004",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G147",
+        "core": "X13005",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave13-final-independent-readback.json",
+    "sha256": "957549081ab355dbd135ea9c11f7f303fc10c3dcfddd70a2f7e24070ddecc55f",
+    "status": "PASS_INDEPENDENT_CENTRAL_INTEGRATION_NOT_PRODUCTION",
+    "root_recomputed_bound_file_hashes": 32,
+    "all_required_data_docs_batches_and_reviews_bound": true,
+    "limits": "Data/editorial integration review; not a new independent full-source or production approval. Astronomy facts use non-author life receipt. Existing G108 narration and demos are unchanged and were not rerun."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 34,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "receipt_file": ".cache/wave13-staged-hygiene-before-receipt.json",
+    "receipt_sha256": "fe64c805aea9dc95473dd1376dfc9025dfa9cefeebd9d883c3674698cb67a7e5",
+    "offences": 0,
+    "self_binding_limit": "This added field is outside the bound pre-field scan. Repeat the identical scanner after staging this receipt; final scan remains in ignored cache to avoid a self-hash cycle."
+  }
+}

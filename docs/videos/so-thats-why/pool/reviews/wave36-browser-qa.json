@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T12:49:45.159Z",
+  "result": "PASS",
+  "selected": 3183,
+  "index_html_sha256": "c434b19778eabd49b3a77f12fa8263c154ffb1fd52b16d7767656828afec00ca",
+  "source_sample": {
+    "id": "X36-001",
+    "urls": [
+      "https://doi.org/10.1111/j.1365-2621.2000.tb16026.x"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave36-desktop.png",
+    "wave36-source-desktop.png",
+    "wave36-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "桌面、手機都顯示3,183題與349個片案，手機統計分兩列。用題號搜尋後可讀烘豆實驗的範圍及來源；桌面來源展開與窄螢幕篩選可用。"
+}

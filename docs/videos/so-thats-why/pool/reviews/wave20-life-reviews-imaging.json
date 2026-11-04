@@ -1,0 +1,1502 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "pool_physics",
+  "reviewer": "pool_life_tech",
+  "review_role": "另一代理的題級來源、去重與紙上題案覆核；非作者自審，非完整稿或製作核准。",
+  "reviewed_candidate_ids": [
+    "P20001",
+    "P20002",
+    "P20003",
+    "P20004",
+    "P20005",
+    "P20006",
+    "P20007"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave20-imaging.json",
+      "sha256": "7a743edcf2f4afee4ca8ce8a50679193cec53ce9b187fd8c07f578a6e17ba97b"
+    },
+    {
+      "file": "reviews/wave20-imaging-themes.json",
+      "sha256": "83d99babaa19b72212e27eec04e3cdfbad98af4386d7ef9dbc03a6bda0e92ce7"
+    },
+    {
+      "file": "reviews/wave20-imaging-author.json",
+      "sha256": "c48e4bc34b1d63d1a8f88a34c4aacaadcd0d03619f5c4475f6f035ebada66cac"
+    }
+  ],
+  "scope": {
+    "candidate_rows_read": 7,
+    "not_added_rows_read": 14,
+    "final_directed_top5_pairs_read": 35,
+    "original_author_pairs_read": 21,
+    "final_author_pairs_read": 22,
+    "source_records_read": 6,
+    "source_methods": {
+      "verified_author_body_caches": 5,
+      "reviewer_fresh_web_body": 1
+    },
+    "figure_pages_independently_viewed": 5,
+    "theme_plans_read": 4,
+    "limits": "全讀此cohort的問法/答案/條件/編輯欄位與指定近對；來源按以下段落實讀，不稱全文逐句/全池3356列逐題查核。"
+  },
+  "summary": {
+    "retain_new_cores": 6,
+    "merge_aliases": 1,
+    "excluded": 0,
+    "merge": "P20007 -> O7018",
+    "theme_seconds": [
+      140,
+      145,
+      100,
+      90
+    ],
+    "reason": "角錐舊題已含全部機制與限制；其餘六題有不同控制和可見結果。刪純重述/限制朗讀後仍有新資訊推進，不為片長補枝節。"
+  },
+  "candidate_review": [
+    {
+      "id": "P20001",
+      "decision": "retain",
+      "canonical_id": "P20001",
+      "question": "黑白細邊拍成照片，怎麼會冒出原本沒有的彩色毛邊？",
+      "answer_and_scope_review": "同資料、不同補值規則的可見彩邊是可講的新控制，不只說缺色要補。",
+      "nearest_core_reason": "Bayer資料與M5013已有完整亮度/色度通道的稀疏化不同；與兩網格拍頻及鏡片色差分開。",
+      "editorial_review": "原創黑白模型尚未實作；不照搬論文圖，不把補色叫超解析。",
+      "source_ids": [
+        "P20-S001"
+      ],
+      "editorial_seconds": [
+        65,
+        95
+      ],
+      "scope_read": "限Bayer取樣/重建造成的假色；不把鏡頭色差、螢幕摩爾紋全歸此因。原文比較是影像人工降採樣，黑白邊緣屬原創簡化示意。"
+    },
+    {
+      "id": "P20002",
+      "decision": "retain",
+      "canonical_id": "P20002",
+      "question": "亮點把CCD照片拉出長尾，為什麼替電荷留排水口就能縮短它？",
+      "answer_and_scope_review": "超容量之後多餘電荷去向，以及排流對鄰位污染的改變，支持原因對照。",
+      "nearest_core_reason": "與SiPM有限單元占用/雪崩光學串音、一般電容儲能及CCD smear不同。",
+      "editorial_review": "容量/排流原創圖要標出電荷；抗溢流不能承諾所有亮痕消失。",
+      "source_ids": [
+        "P20-S002"
+      ],
+      "editorial_seconds": [
+        60,
+        85
+      ],
+      "scope_read": "限技術筆記CCD的blooming與所示對照；不說所有亮線皆由溢流，也不把鄰近SiPM光子觸發當電荷溢出。"
+    },
+    {
+      "id": "P20003",
+      "decision": "retain",
+      "canonical_id": "P20003",
+      "question": "CCD還在搬上一張照片的訊號，怎麼就混進下一次照明？",
+      "answer_and_scope_review": "新積分與上一張讀出重疊時，移位暫存器受污染；FIT縮短轉送脆弱階段。",
+      "nearest_core_reason": "舊通道殘留污染新讀值與新光生訊號混進舊移位電荷不同；A5025視網膜中心周圍抑制亦不同。",
+      "editorial_review": "修後問題與T01轉問均明示搬運途中；不能把smear畫成滿桶溢流或讀出完成後發生。",
+      "source_ids": [
+        "P20-S002"
+      ],
+      "editorial_seconds": [
+        65,
+        90
+      ],
+      "scope_read": "限所讀IT/FIT二維CCD；此題是轉送路徑污染，不預設感光區已達飽和。不說FIT完全零smear或所有相機均同構。"
+    },
+    {
+      "id": "P20004",
+      "decision": "retain",
+      "canonical_id": "P20004",
+      "question": "兩張都一樣模糊，相機怎麼知道焦點在前面還是後面？",
+      "answer_and_scope_review": "兩路相對相位提供前後方向，不只報模糊；第二章能用相同物體前/後焦作判別。",
+      "nearest_core_reason": "與拍後光場位移相加重對焦、壓縮量測與基本凸鏡聚焦不同。",
+      "editorial_review": "Canon段落/圖支持題級模型；精確信號曲線、方向符號與回饋示意須進稿另核，未取得私有算法或實機測試。",
+      "source_ids": [
+        "P20-S003"
+      ],
+      "editorial_seconds": [
+        85,
+        115
+      ],
+      "scope_read": "採Canon C300 Mark II的雙像素/Focus Guide說明；兩路不是紅藍分色。不外推所有AF架構或保證各場景都有效；不把相位差等同單個像素的亮度相減。"
+    },
+    {
+      "id": "P20005",
+      "decision": "retain",
+      "canonical_id": "P20005",
+      "question": "追著畫面裡的白色物體看，為什麼邊緣會像散成彩虹？",
+      "answer_and_scope_review": "保持逐色時序條件、改後兩子影格位置可改追視彩邊；可見對照不是只是稱彩虹效應。",
+      "nearest_core_reason": "不等於一般幀率/低光桿錐、同色異譜或自然彩虹。與P20001分屬重建和顯示觀看階段。",
+      "editorial_review": "保留CRT模擬、3人2作者及不追視反例；不聲稱商用DLP已實測或所有人適用單一補償數字。",
+      "source_ids": [
+        "P20-S004"
+      ],
+      "editorial_seconds": [
+        70,
+        100
+      ],
+      "scope_read": "限2014研究CRT模擬逐色時序及其追視控制；不是商用DLP測試。不追視也能見彩邊，需要時空濾波解釋，不能說眼睛不動就必然消失；3受試2作者，不能給萬用補償數字。"
+    },
+    {
+      "id": "P20006",
+      "decision": "retain",
+      "canonical_id": "P20006",
+      "question": "閃光照亮了整個場景，照片為什麼只有一條特別亮？",
+      "answer_and_scope_review": "等長窗口起點錯開，固定場景仍不同光量；共同窗口存在/不存在給第二個預測對照。",
+      "nearest_core_reason": "與O3047逐行取樣期間場景位置改變的幾何歪斜不同，不是只換相機名稱。",
+      "editorial_review": "時間條未實作；只在所有列窗口交集非空時談同步脈衝，不寫通用閃光時間。",
+      "source_ids": [
+        "P20-S005"
+      ],
+      "editorial_seconds": [
+        80,
+        110
+      ],
+      "scope_read": "固定場景、改照明時間；區分O3047的場景位置在行間移動。不是只看快門名詞，也不說所有曝光設定都有共同窗口；不採廠牌固定毫秒值為通則。"
+    },
+    {
+      "id": "P20007",
+      "decision": "merge",
+      "canonical_id": "O7018",
+      "question": "三面小鏡子拼成角落，歪一點為什麼還能把光送回來？",
+      "answer_and_scope_review": "來源支持，但所問答案與O7018已收核心一致，沒有足以另計的控制。",
+      "nearest_core_reason": "三正交面方向分量翻轉、碰全三面、側移與角度界線皆已在O7018。",
+      "editorial_review": "保留新Ansys來源/問法為O7018變體；不另添not_added雙計，4題案均不含P20007。",
+      "source_ids": [
+        "P20-S006"
+      ],
+      "editorial_seconds": [
+        45,
+        75
+      ],
+      "scope_read": "限完整碰到三面的理想角錐幾何；回程可有側向位移，非原路重合。傾斜會讓部分光錯過面，非任何方向皆回射；不包括玻璃珠機制。"
+    }
+  ],
+  "source_review": {
+    "readings": [
+      {
+        "source_id": "P20-S001",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf",
+        "title": "High-Quality Linear Interpolation for Demosaicing of Bayer-Patterned Color Images",
+        "accessed_on": "2026-11-02",
+        "read_via": "獨立讀已核SHA的作者當日PDF/抽文副本；本review未另發HTTP。",
+        "reading_scope": "PDF pp1–3：§1/2/3/3.1/3.2及§4比較方法的限制；p4 Fig.3與結論另目讀。",
+        "cache": {
+          "file": ".cache/wave20-imaging-demosaic-paper.pdf",
+          "sha256": "3ff72638c049336f2fd0471810498e38de7c3ab88b3299f099033eb6ea7de24a",
+          "text_file": ".cache/wave20-imaging-demosaic-paper-pages.json",
+          "text_sha256": "cb07cc8a6e3ea1ed74d2d25c79d29958b6a173cc8c26c226883b141bfb0dc3ae"
+        },
+        "cache_integrity": "VERIFIED_BODY_AND_TEXT_SHA256",
+        "conclusion": "同一原始Bayer樣本的獨立通道補值與跨通道梯度修正支持題級因果。人工降採樣/實際光學低通的界線保留；未重算Table1，也不稱2004算法仍為最優。"
+      },
+      {
+        "source_id": "P20-S002",
+        "url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+        "title": "CCD image sensors — Technical note",
+        "accessed_on": "2026-11-02",
+        "read_via": "獨立讀已核SHA的作者當日PDF/抽文副本；本review未另發HTTP。",
+        "reading_scope": "PDF p3 IT二維/FIT與Fig.1-5/1-6；p21 §2-15 Anti-blooming及Fig.2-20–22；p39版次。p3/p21圖頁目讀。",
+        "cache": {
+          "file": ".cache/wave20-imaging-ccd.pdf",
+          "sha256": "1f31a77a98be3f57060df7ee6857fd525bc4f1098407b12e86ab2eb45c3622d5",
+          "text_file": ".cache/wave20-imaging-ccd-pages.json",
+          "text_sha256": "d4a059da325316e919fd4f9318d3ffe4f36c721b767b09716fbd4148f9556d77"
+        },
+        "cache_integrity": "VERIFIED_BODY_AND_TEXT_SHA256",
+        "conclusion": "同份技術筆記的不同指定段支持滿容量溢流/排流與轉送漏訊號/快速轉儲存兩個控制。P20003不得畫成已完成讀出後再污染，亦不預設像素飽和；不推廣為所有CMOS。"
+      },
+      {
+        "source_id": "P20-S003",
+        "url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf",
+        "title": "Ergonomic and Operational Enhancements to C300 Mark II",
+        "accessed_on": "2026-11-02",
+        "read_via": "獨立讀已核SHA的作者當日官方PDF/抽文副本；未重新嘗試作者web超大檔失敗路線。",
+        "reading_scope": "PDF pp9–11（印刷pp8–10）§3.3 Dual Pixel Focus Guide與§3.4；PDF p9 Fig.12、p10 Fig.13目讀。",
+        "cache": {
+          "file": ".cache/wave20-imaging-autofocus-whitepaper.pdf",
+          "sha256": "8445cd7b818f33750765e945874f8efe7d578ba342d151dfc04dc636b1f69985",
+          "text_file": ".cache/wave20-imaging-autofocus-whitepaper-pages.json",
+          "text_sha256": "d1c17f52e43f842fed92932a0eebeaabe9d1a3e3901bf23d38eb0bb83b77a4c6"
+        },
+        "cache_integrity": "VERIFIED_BODY_AND_TEXT_SHA256",
+        "conclusion": "原文直接支持每微透鏡雙二極體、兩路相位依離焦改變及前後焦方向提示。未公開精確內部算法；進稿原創相位曲線/左右符號仍須光路查核，不把單像素亮度相減當相位。未採性能/產品可靠性主張。"
+      },
+      {
+        "source_id": "P20-S004",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4274840/",
+        "title": "The visibility of color breakup and a means to reduce it",
+        "accessed_on": "2026-11-02",
+        "read_via": "獨立讀已核SHA作者當日真實HTML與段落抽文；本review沒有把作者web驗證頁或搜索摘要當正文。",
+        "reading_scope": "快取PARA 15/16/19/25/28/35/40/50/51/54/56/62/63/64/68/70/74/76/77/82/89/96/99/106：引言、受試/裝置/程序、追視與不追視結果、gain與模型限制。未目讀此篇圖像。",
+        "cache": {
+          "file": ".cache/wave20-imaging-colorbreakup.html",
+          "sha256": "0021894e441e7f2be8ab3d1382e716bf7d251895fb77a09bc137e5121a9b88ab",
+          "text_file": ".cache/wave20-imaging-colorbreakup.txt",
+          "text_sha256": "508ffdbfa3ef92868174e8fe2399d77b5f953c48b75de5bcf8092123375f610c"
+        },
+        "cache_integrity": "VERIFIED_BODY_AND_TEXT_SHA256",
+        "conclusion": "3人且2作者、CRT時序模擬，非商用DLP整機試驗；追視子影格偏移支持受控彩邊變化，不追視也可出現。未實測本次受試者眼動速度，不能稱所有觀看者精準符合模型；未讀完Appendix A、未看SI影片。"
+      },
+      {
+        "source_id": "P20-S005",
+        "url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter",
+        "title": "Global shutter vs rolling shutter",
+        "accessed_on": "2026-11-02",
+        "read_via": "獨立讀已核SHA作者當日官方HTML與段落抽文；本review未另發HTTP。",
+        "reading_scope": "快取PARA9–13/25/30/45–48/50/69–70；Exposure schemes及Rolling shutter with strobing light。共同窗口條件在45–46。",
+        "cache": {
+          "file": ".cache/wave20-imaging-shutter.html",
+          "sha256": "8972fb001433a52b5767f0d5279cbccc564bdad6725ed305d87976ff400da815",
+          "text_file": ".cache/wave20-imaging-shutter.txt",
+          "text_sha256": "8cbdc078aa5cc2d5bf29fa4aed8211cc55fdc7f33457dfacb75a0949ecfe54dc"
+        },
+        "cache_integrity": "VERIFIED_BODY_AND_TEXT_SHA256",
+        "conclusion": "固定場景的短閃光與等長錯開窗口可造成局部亮帶；只有存在共同積分區間時，適時脈衝才能全列同時接收。不採固定產品毫秒值，不把所有曝光設定說成都有共同窗口。未目讀網頁圖像或做相機測試。"
+      },
+      {
+        "source_id": "P20-S006",
+        "url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors",
+        "title": "How to model corner-cube retroreflectors",
+        "accessed_on": "2026-11-02",
+        "read_via": "本review fresh web.open成功；最後定點再次web.open正文成功。作者指定UA HTTP403為作者路線，reviewer未重試該UA路徑；沒有可宣稱已核的成功HTML副本。",
+        "reading_scope": "官方web正文Introduction lines45–57；A polygon object model of the corner-cube lines99–111；A model for rectangular arrays lines242–247；理想零偏移面lines50–54僅作界線。",
+        "cache": null,
+        "cache_integrity": "NO_LOCAL_BODY_CLAIM_WEB_BODY_READ",
+        "conclusion": "已確認三次反射可側向位移、傾斜可能未碰全三面。舊定位perfect段是抽象理想面而非實際三面模型，已修正。未執行OpticStudio、未目讀該頁圖像；此有效新來源不使P20007成為新核心。"
+      }
+    ],
+    "visual_reads": [
+      {
+        "file": ".cache/wave20-imaging-ccd-p3.png",
+        "sha256": "18aa0de2e0404c7da02cfbb92fdd58450cb588c3cb5453e4d10f2a5901c34e47",
+        "scope": "Fig.1-5/1-6 IT/FIT移位與儲存結構",
+        "method": "reviewer以view_image獨立目讀作者已渲染圖頁；讀回並核對檔SHA，不是重新HTTP取得圖。"
+      },
+      {
+        "file": ".cache/wave20-imaging-ccd-p21.png",
+        "sha256": "ead47c875d47885e8c3294f8a7b43b321845d80d47b3a2deeaac115fd802d47d",
+        "scope": "§2-15與Fig.2-20/2-21/2-22抗溢流及成像對照",
+        "method": "reviewer以view_image獨立目讀作者已渲染圖頁；讀回並核對檔SHA，不是重新HTTP取得圖。"
+      },
+      {
+        "file": ".cache/wave20-imaging-autofocus-whitepaper-p9.png",
+        "sha256": "14eda41e5883088b5d61dbe63d7fb88f7a21606fa32e40078aa998038dfbc16c",
+        "scope": "Fig.12微透鏡/雙二極體及兩路影像處理",
+        "method": "reviewer以view_image獨立目讀作者已渲染圖頁；讀回並核對檔SHA，不是重新HTTP取得圖。"
+      },
+      {
+        "file": ".cache/wave20-imaging-autofocus-whitepaper-p10.png",
+        "sha256": "95df878e33b808425295acb6b55a72af9e9c5367b4719d1d651bc24178e9526b",
+        "scope": "Fig.13前焦/後焦/正焦方向提示",
+        "method": "reviewer以view_image獨立目讀作者已渲染圖頁；讀回並核對檔SHA，不是重新HTTP取得圖。"
+      },
+      {
+        "file": ".cache/wave20-imaging-demosaic-paper-p4.png",
+        "sha256": "3dbca26ee2a678c4e694ffe5ca273621834be1a1a10950cae8835593c9759852",
+        "scope": "Fig.3同一原影像、不同去馬賽克方法的彩邊比較",
+        "method": "reviewer以view_image獨立目讀作者已渲染圖頁；讀回並核對檔SHA，不是重新HTTP取得圖。"
+      }
+    ],
+    "failures_and_routes": {
+      "reviewer": "S001–005直接讀作者當日有效副本，未發fresh HTTP；S006 fresh web正文成功，未嘗試作者UA403路線。",
+      "author_routes_not_relabelled_as_reviewer": "Canon web超檔、PMC web驗證頁、Ansys UA403及其他未採來源失敗只保留為作者路線。S001–005已核本文及抽文SHA，不以成功狀態碼代替正文。"
+    },
+    "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY；全文與圖頁只在ignored cache，未授權直接製片使用。"
+  },
+  "source_identity_review": {
+    "file": {
+      "file": ".cache/wave20-source-identity-matches.json",
+      "sha256": "5dabf8ba58400f5dad932c4985b71420be3c8cfecf5dfd1fe59300ea2f00cf60"
+    },
+    "exact_matches_reported": 0,
+    "new_source_rows_across_two_batches": 14,
+    "method_limits": "URL/標題/DOI精確命中0不是獨立研究或無重複保證；P20007/O7018即為來源不同仍同核心。S002同文兩小節不能當兩篇獨立證據；Microsoft路徑2016不改論文2004年，PMC載體與DOI是同篇2014研究。Canon未核明刊日，不臆造版次。"
+  },
+  "top5_review": [
+    {
+      "a": "P20001",
+      "b": "M5002",
+      "cosine": 0.68052,
+      "decision": "distinct",
+      "reason": "透明像素是否先乘alpha改變插值權重；本題是不同位置缺色的Bayer資料，保持樣本、改跨通道邊緣補值。控制變項與資料缺失結構不同。"
+    },
+    {
+      "a": "P20001",
+      "b": "O7011",
+      "cosine": 0.668306,
+      "decision": "distinct",
+      "reason": "舊題為雙折射相位延遲經分析器轉成波長透過差；新題沒有偏振晶體，彩邊由RGB空間取樣與重建產生。"
+    },
+    {
+      "a": "P20001",
+      "b": "M5003",
+      "cosine": 0.668061,
+      "decision": "distinct",
+      "reason": "舊題已有完整色分量卻被色域裁切改比例；新題需估計未量到的色分量，改補值規則而非裁切界線。"
+    },
+    {
+      "a": "P20001",
+      "b": "P20005",
+      "cosine": 0.664484,
+      "decision": "distinct",
+      "reason": "一個在重建時把假色寫入影像，另一個在逐色顯示與觀看的時間座標分離；同樣白邊不等於同一控制。"
+    },
+    {
+      "a": "P20001",
+      "b": "Q9003",
+      "cosine": 0.662695,
+      "decision": "distinct",
+      "reason": "透明覆膜使光重返墨區、增加吸收；Bayer彩邊不需要膜或墨，控制是同資料採不同重建法。"
+    },
+    {
+      "a": "P20002",
+      "b": "P20003",
+      "cosine": 0.709298,
+      "decision": "distinct",
+      "reason": "感光區滿容量後向鄰區溢出與讀出移位路徑在新積分期間混入訊號不同；分別由排流與快速轉儲存控制，不能只看亮痕外觀合併。"
+    },
+    {
+      "a": "P20002",
+      "b": "E2213",
+      "cosine": 0.700512,
+      "decision": "distinct",
+      "reason": "保持電容因漏電逐漸失去電荷，與強光過量電荷流向鄰位相反；本題新增過容量後的污染路徑及排流控制。"
+    },
+    {
+      "a": "P20002",
+      "b": "E2048",
+      "cosine": 0.695505,
+      "decision": "distinct",
+      "reason": "隔離電容插入介電質後電壓變化是極化與電容量問題，不是感光區過容量溢出。"
+    },
+    {
+      "a": "P20002",
+      "b": "E2047",
+      "cosine": 0.693146,
+      "decision": "distinct",
+      "reason": "增加已存電荷會抬高電位、增加充電功，仍未回答CCD滿後多餘電荷去向或排流改變鄰位污染。"
+    },
+    {
+      "a": "P20002",
+      "b": "E2042",
+      "cosine": 0.692796,
+      "decision": "distinct",
+      "reason": "串聯電容按電容量分配電壓與感光區電荷溢入鄰像素不是同一邊界條件。"
+    },
+    {
+      "a": "P20003",
+      "b": "P20002",
+      "cosine": 0.709298,
+      "decision": "distinct",
+      "reason": "前者是上一張電荷仍移位時受新積分訊號污染，並不預設滿容量；後者以感光區超容量及排流作控制。"
+    },
+    {
+      "a": "P20003",
+      "b": "E2256",
+      "cosine": 0.60628,
+      "decision": "distinct",
+      "reason": "多工器殘留舊電壓使新通道未穩定；CCD題是新光生訊號進入正在搬運的舊電荷。時間順序、污染路徑與對策都不同。"
+    },
+    {
+      "a": "P20003",
+      "b": "E2198",
+      "cosine": 0.593173,
+      "decision": "distinct",
+      "reason": "取樣保持為了固定欲轉換的瞬時電壓；CCD題處理已形成的電荷在轉送途中被加入不欲訊號，不是同一取樣保持目的。"
+    },
+    {
+      "a": "P20003",
+      "b": "I15003",
+      "cosine": 0.592209,
+      "decision": "distinct",
+      "reason": "SIM以已知照明把空間頻率搬入可測範圍並解混；CCD漏訊號是轉送階段污染，未提供超解析資訊。"
+    },
+    {
+      "a": "P20003",
+      "b": "A5025",
+      "cosine": 0.582187,
+      "decision": "distinct",
+      "reason": "A5025是視網膜中心與周圍的相反神經輸入及橫向連接；P20003是CCD暫存器中的電荷污染。周圍變亮只是字面近似，沒有共同因果中段。"
+    },
+    {
+      "a": "P20004",
+      "b": "I15007",
+      "cosine": 0.75852,
+      "decision": "distinct",
+      "reason": "已知遮罩的壓縮量測重建整幅影像，與兩路影像相位差判調焦方向不同；本題不從欠定投影解整張影像。"
+    },
+    {
+      "a": "P20004",
+      "b": "A5023",
+      "cosine": 0.756123,
+      "decision": "distinct",
+      "reason": "雙眼會聚使兩眼朝向同一目標，與感測器比較兩路離焦訊號再驅動鏡頭不同，不能只因都是兩路便合併。"
+    },
+    {
+      "a": "P20004",
+      "b": "O7001",
+      "cosine": 0.729515,
+      "decision": "distinct",
+      "reason": "遠心光路抑制物距改變造成的倍率變化；本題輸出是前焦/後焦方向，而非尺寸量測不變。"
+    },
+    {
+      "a": "P20004",
+      "b": "I15004",
+      "cosine": 0.725689,
+      "decision": "distinct",
+      "reason": "兩者都保留入射方向的部分資訊，但光場舊題以子孔徑位移相加重建拍後焦面，本題測相位差給當次鏡頭調焦方向。控制與輸出不同。"
+    },
+    {
+      "a": "P20004",
+      "b": "P146",
+      "cosine": 0.720675,
+      "decision": "distinct",
+      "reason": "焦距與光圈尺寸的差別不能回答同樣模糊時如何判前後；本題增加雙路相對訊號與方向判別。"
+    },
+    {
+      "a": "P20005",
+      "b": "K6015",
+      "cosine": 0.819206,
+      "decision": "distinct",
+      "reason": "兩道自然彩虹由水滴內反射次數改變角度及色序；逐色顯示彩邊由不同時刻與視網膜位置錯配，沒有水滴光路。"
+    },
+    {
+      "a": "P20005",
+      "b": "E2247",
+      "cosine": 0.727823,
+      "decision": "distinct",
+      "reason": "相同色溫可有不同光譜；本題保持逐色內容而改顯示位置/時序與追視，不靠照明光譜差異解釋彩邊。"
+    },
+    {
+      "a": "P20005",
+      "b": "O3051",
+      "cosine": 0.724157,
+      "decision": "distinct",
+      "reason": "雷達包裹相位以偽彩色循環顯示不是人眼看逐色白邊的時間分離；彩虹字樣不構成同核。"
+    },
+    {
+      "a": "P20005",
+      "b": "O7017",
+      "cosine": 0.719807,
+      "decision": "distinct",
+      "reason": "SCI/SCE選擇收不收鏡面反射以量色；本題是RGB子影格與觀看座標的時間錯配，無收光幾何切換。"
+    },
+    {
+      "a": "P20005",
+      "b": "L326",
+      "cosine": 0.710213,
+      "decision": "distinct",
+      "reason": "昏暗時桿/錐敏感度改變與CRT逐色時序下的追視彩邊不同；本題沒有以低照度或暗適應作控制。"
+    },
+    {
+      "a": "P20006",
+      "b": "I15002",
+      "cosine": 0.774047,
+      "decision": "distinct",
+      "reason": "STORM每輪稀疏亮起以定位近鄰分子；逐行亮帶是同一閃光與錯開窗口重疊，不涉及分子定位或稀疏解混。"
+    },
+    {
+      "a": "P20006",
+      "b": "P147",
+      "cosine": 0.770682,
+      "decision": "distinct",
+      "reason": "虛焦點來自光線發散的幾何延長；本題是固定場景在不同積分時間窗接到不同光量。"
+    },
+    {
+      "a": "P20006",
+      "b": "B4024",
+      "cosine": 0.760818,
+      "decision": "distinct",
+      "reason": "建築採光區域的方向與空間分配和感測器各列時間窗口不同；本題照明空間固定，只有時間交集改變。"
+    },
+    {
+      "a": "P20006",
+      "b": "P153",
+      "cosine": 0.751713,
+      "decision": "distinct",
+      "reason": "相干光程差造成干涉明暗，與非相干總光量的時間積分重疊不同，不能按都形成亮暗帶合併。"
+    },
+    {
+      "a": "P20006",
+      "b": "O7010",
+      "cosine": 0.749409,
+      "decision": "distinct",
+      "reason": "光片以空間選擇性激發減少背景；本題全場同時受光、列曝光時間不同，控制是脈衝時點與共同窗口。"
+    },
+    {
+      "a": "P20007",
+      "b": "O7018",
+      "cosine": 0.928882,
+      "decision": "merge",
+      "reason": "兩題完整答案均是三個正交面逐次反轉方向分量；命中三面、允許側向位移及非任意角都已在舊scope。沒有新增機制或控制，P20007併O7018並保留本輪來源/問法。"
+    },
+    {
+      "a": "P20007",
+      "b": "P151",
+      "cosine": 0.806512,
+      "decision": "distinct",
+      "reason": "曲面鏡依物距產生不同虛實像與倍率，與三正交面使出射反平行的光路約束不同；但P20007另與O7018重複。"
+    },
+    {
+      "a": "P20007",
+      "b": "P143",
+      "cosine": 0.805196,
+      "decision": "distinct",
+      "reason": "光導纖維用全反射把光沿路徑導走，不以三正交反射把方向反轉送回；此對不同不影響P20007併O7018。"
+    },
+    {
+      "a": "P20007",
+      "b": "P149",
+      "cosine": 0.780898,
+      "decision": "distinct",
+      "reason": "平面鏡後虛像是反射光的延長線交會，本題是出射光方向；此對可區分，但已有O7018完整解釋本題。"
+    },
+    {
+      "a": "P20007",
+      "b": "LEG-S27",
+      "cosine": 0.766492,
+      "decision": "distinct",
+      "reason": "平面鏡前後方向反轉與鏡中左右的描述，不等同三正交面的三次光線方向分量反轉；P20007仍與O7018合併。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P20001",
+      "b": "M5013",
+      "decision": "distinct",
+      "reason": "舊核先分Y與色度、再降低色度解析度；新核各空間位置只量一色，缺失值的跨通道邊緣補法造成假色。不是只換取樣率或相機名稱。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20001",
+      "b": "LEG-A50",
+      "decision": "distinct",
+      "reason": "舊題兩個規則網格的空間取樣拍頻；本題固定同一Bayer資料比較重建法。高頻取樣可並存混疊，但本題限定的是缺色重建彩邊。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20001",
+      "b": "O7014",
+      "decision": "distinct",
+      "reason": "舊核不同玻璃/色散使波長焦點接近；本題鏡片與樣本不變，改演算法便改彩邊，不能互代。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20001",
+      "b": "I15003",
+      "decision": "distinct",
+      "reason": "已知照明相位的頻率搬移/解混可取回原截止之外資訊；Bayer補色不具有該控制，不宣稱超解析。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20002",
+      "b": "E2272",
+      "decision": "distinct",
+      "reason": "SiPM有限可用單元使同時多光子難分辨；CCD題不是只說飽和非線性，而是過量電荷污染鄰位及排流。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20002",
+      "b": "E2274",
+      "decision": "distinct",
+      "reason": "SiPM雪崩放出的光子觸發鄰位雪崩；CCD題移動的是過容量電荷，不是光子引發新雪崩。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20002",
+      "b": "P20003",
+      "decision": "distinct",
+      "reason": "感光區滿容量後向鄰區溢出與讀出移位路徑在新積分期間混入訊號不同；分別由排流與快速轉儲存控制，不能只看亮痕外觀合併。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20003",
+      "b": "O3045",
+      "decision": "distinct",
+      "reason": "探測元件固定響應差造成條紋，可用平場校正；CCD題是新積分與舊轉送重疊污染，須改路徑/時序而非只改增益。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20003",
+      "b": "P20006",
+      "decision": "distinct",
+      "reason": "前者電荷已形成後在移位路徑混入額外訊號，後者在光電積分階段各列接收不同光量；不用同種CCD結構也能有後者。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20004",
+      "b": "I15004",
+      "decision": "distinct",
+      "reason": "兩者都保留入射方向的部分資訊，但光場舊題以子孔徑位移相加重建拍後焦面，本題測相位差給當次鏡頭調焦方向。控制與輸出不同。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20004",
+      "b": "P145",
+      "decision": "distinct",
+      "reason": "凸面折射聚焦解釋光線會聚，沒有前/後焦的量測訊號；雙路相位差才回答本題控制問題。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20005",
+      "b": "LEG-A42",
+      "decision": "distinct",
+      "reason": "電影/遊戲幀率舊題談動態模糊與操作延遲；本題逐色子影格落點分離，可用子影格空間偏移改變彩邊，不是一般幀率高低。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20005",
+      "b": "O7016",
+      "decision": "distinct",
+      "reason": "同色異譜在換照明光譜後分離；本題用逐色時間與追視位置，不需兩材料光譜不同。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20005",
+      "b": "P20001",
+      "decision": "distinct",
+      "reason": "顯示端/眼動的時間錯位與相機缺色重建不同。可沿白邊追問比較，但必須明示換研究與不同階段。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20006",
+      "b": "O3047",
+      "decision": "distinct",
+      "reason": "舊題逐行期間地球轉動使位置移動而幾何歪斜；新題固定場景、只改短閃光，影響是各列積分光量，並新增共同窗口有無的可見控制。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20006",
+      "b": "O3045",
+      "decision": "distinct",
+      "reason": "固定元件響應差與等響應元件在錯開時間看到同一脈衝不同；新題改閃光時點會移動亮帶。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20006",
+      "b": "I15005",
+      "decision": "distinct",
+      "reason": "編碼曝光調模糊傳遞函數以便反卷積；本題沒有運動反演，只有照明與行窗口的光量交集。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20006",
+      "b": "LEG-A50",
+      "decision": "distinct",
+      "reason": "空間網格的拍頻與時間光脈衝積分不同；同是條紋外觀不能代替對控制條件的比較。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20007",
+      "b": "O3020",
+      "decision": "distinct",
+      "reason": "舊核利用奇偶反射的偏振反應補足亮度判別，本題只論三正交面回射方向。不因此新收P20007，因O7018已含完整方向核。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20007",
+      "b": "D2077",
+      "decision": "distinct",
+      "reason": "D2077答案是黑背板的背景對比，即使來源名稱含反光邊框也未解釋三面回射；此對不同，但P20007須併O7018。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20007",
+      "b": "P149",
+      "decision": "distinct",
+      "reason": "平面鏡後虛像是反射光的延長線交會，本題是出射光方向；此對可區分，但已有O7018完整解釋本題。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    },
+    {
+      "a": "P20007",
+      "b": "O7018",
+      "decision": "merge",
+      "reason": "兩題完整答案均是三個正交面逐次反轉方向分量；命中三面、允許側向位移及非任意角都已在舊scope。沒有新增機制或控制，P20007併O7018並保留本輪來源/問法。",
+      "compared_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "snapshot_basis": "最終author near_pairs的雙方完整快照；新題另與鎖定batch讀回。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "P20007",
+        "canonical_id": "O7018",
+        "reason": "兩題完整答案均是三個正交面逐次反轉方向分量；命中三面、允許側向位移及非任意角都已在舊scope。沒有新增機制或控制，P20007併O7018並保留本輪來源/問法。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P20001",
+        "b": "M5002",
+        "reason": "透明像素是否先乘alpha改變插值權重；本題是不同位置缺色的Bayer資料，保持樣本、改跨通道邊緣補值。控制變項與資料缺失結構不同。"
+      },
+      {
+        "a": "P20001",
+        "b": "O7011",
+        "reason": "舊題為雙折射相位延遲經分析器轉成波長透過差；新題沒有偏振晶體，彩邊由RGB空間取樣與重建產生。"
+      },
+      {
+        "a": "P20001",
+        "b": "M5003",
+        "reason": "舊題已有完整色分量卻被色域裁切改比例；新題需估計未量到的色分量，改補值規則而非裁切界線。"
+      },
+      {
+        "a": "P20001",
+        "b": "P20005",
+        "reason": "一個在重建時把假色寫入影像，另一個在逐色顯示與觀看的時間座標分離；同樣白邊不等於同一控制。"
+      },
+      {
+        "a": "P20001",
+        "b": "Q9003",
+        "reason": "透明覆膜使光重返墨區、增加吸收；Bayer彩邊不需要膜或墨，控制是同資料採不同重建法。"
+      },
+      {
+        "a": "P20002",
+        "b": "P20003",
+        "reason": "感光區滿容量後向鄰區溢出與讀出移位路徑在新積分期間混入訊號不同；分別由排流與快速轉儲存控制，不能只看亮痕外觀合併。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2213",
+        "reason": "保持電容因漏電逐漸失去電荷，與強光過量電荷流向鄰位相反；本題新增過容量後的污染路徑及排流控制。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2048",
+        "reason": "隔離電容插入介電質後電壓變化是極化與電容量問題，不是感光區過容量溢出。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2047",
+        "reason": "增加已存電荷會抬高電位、增加充電功，仍未回答CCD滿後多餘電荷去向或排流改變鄰位污染。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2042",
+        "reason": "串聯電容按電容量分配電壓與感光區電荷溢入鄰像素不是同一邊界條件。"
+      },
+      {
+        "a": "P20003",
+        "b": "P20002",
+        "reason": "前者是上一張電荷仍移位時受新積分訊號污染，並不預設滿容量；後者以感光區超容量及排流作控制。"
+      },
+      {
+        "a": "P20003",
+        "b": "E2256",
+        "reason": "多工器殘留舊電壓使新通道未穩定；CCD題是新光生訊號進入正在搬運的舊電荷。時間順序、污染路徑與對策都不同。"
+      },
+      {
+        "a": "P20003",
+        "b": "E2198",
+        "reason": "取樣保持為了固定欲轉換的瞬時電壓；CCD題處理已形成的電荷在轉送途中被加入不欲訊號，不是同一取樣保持目的。"
+      },
+      {
+        "a": "P20003",
+        "b": "I15003",
+        "reason": "SIM以已知照明把空間頻率搬入可測範圍並解混；CCD漏訊號是轉送階段污染，未提供超解析資訊。"
+      },
+      {
+        "a": "P20003",
+        "b": "A5025",
+        "reason": "A5025是視網膜中心與周圍的相反神經輸入及橫向連接；P20003是CCD暫存器中的電荷污染。周圍變亮只是字面近似，沒有共同因果中段。"
+      },
+      {
+        "a": "P20004",
+        "b": "I15007",
+        "reason": "已知遮罩的壓縮量測重建整幅影像，與兩路影像相位差判調焦方向不同；本題不從欠定投影解整張影像。"
+      },
+      {
+        "a": "P20004",
+        "b": "A5023",
+        "reason": "雙眼會聚使兩眼朝向同一目標，與感測器比較兩路離焦訊號再驅動鏡頭不同，不能只因都是兩路便合併。"
+      },
+      {
+        "a": "P20004",
+        "b": "O7001",
+        "reason": "遠心光路抑制物距改變造成的倍率變化；本題輸出是前焦/後焦方向，而非尺寸量測不變。"
+      },
+      {
+        "a": "P20004",
+        "b": "I15004",
+        "reason": "兩者都保留入射方向的部分資訊，但光場舊題以子孔徑位移相加重建拍後焦面，本題測相位差給當次鏡頭調焦方向。控制與輸出不同。"
+      },
+      {
+        "a": "P20004",
+        "b": "P146",
+        "reason": "焦距與光圈尺寸的差別不能回答同樣模糊時如何判前後；本題增加雙路相對訊號與方向判別。"
+      },
+      {
+        "a": "P20005",
+        "b": "K6015",
+        "reason": "兩道自然彩虹由水滴內反射次數改變角度及色序；逐色顯示彩邊由不同時刻與視網膜位置錯配，沒有水滴光路。"
+      },
+      {
+        "a": "P20005",
+        "b": "E2247",
+        "reason": "相同色溫可有不同光譜；本題保持逐色內容而改顯示位置/時序與追視，不靠照明光譜差異解釋彩邊。"
+      },
+      {
+        "a": "P20005",
+        "b": "O3051",
+        "reason": "雷達包裹相位以偽彩色循環顯示不是人眼看逐色白邊的時間分離；彩虹字樣不構成同核。"
+      },
+      {
+        "a": "P20005",
+        "b": "O7017",
+        "reason": "SCI/SCE選擇收不收鏡面反射以量色；本題是RGB子影格與觀看座標的時間錯配，無收光幾何切換。"
+      },
+      {
+        "a": "P20005",
+        "b": "L326",
+        "reason": "昏暗時桿/錐敏感度改變與CRT逐色時序下的追視彩邊不同；本題沒有以低照度或暗適應作控制。"
+      },
+      {
+        "a": "P20006",
+        "b": "I15002",
+        "reason": "STORM每輪稀疏亮起以定位近鄰分子；逐行亮帶是同一閃光與錯開窗口重疊，不涉及分子定位或稀疏解混。"
+      },
+      {
+        "a": "P20006",
+        "b": "P147",
+        "reason": "虛焦點來自光線發散的幾何延長；本題是固定場景在不同積分時間窗接到不同光量。"
+      },
+      {
+        "a": "P20006",
+        "b": "B4024",
+        "reason": "建築採光區域的方向與空間分配和感測器各列時間窗口不同；本題照明空間固定，只有時間交集改變。"
+      },
+      {
+        "a": "P20006",
+        "b": "P153",
+        "reason": "相干光程差造成干涉明暗，與非相干總光量的時間積分重疊不同，不能按都形成亮暗帶合併。"
+      },
+      {
+        "a": "P20006",
+        "b": "O7010",
+        "reason": "光片以空間選擇性激發減少背景；本題全場同時受光、列曝光時間不同，控制是脈衝時點與共同窗口。"
+      },
+      {
+        "a": "P20007",
+        "b": "P151",
+        "reason": "曲面鏡依物距產生不同虛實像與倍率，與三正交面使出射反平行的光路約束不同；但P20007另與O7018重複。"
+      },
+      {
+        "a": "P20007",
+        "b": "P143",
+        "reason": "光導纖維用全反射把光沿路徑導走，不以三正交反射把方向反轉送回；此對不同不影響P20007併O7018。"
+      },
+      {
+        "a": "P20007",
+        "b": "P149",
+        "reason": "平面鏡後虛像是反射光的延長線交會，本題是出射光方向；此對可區分，但已有O7018完整解釋本題。"
+      },
+      {
+        "a": "P20007",
+        "b": "LEG-S27",
+        "reason": "平面鏡前後方向反轉與鏡中左右的描述，不等同三正交面的三次光線方向分量反轉；P20007仍與O7018合併。"
+      },
+      {
+        "a": "P20001",
+        "b": "M5013",
+        "reason": "舊核先分Y與色度、再降低色度解析度；新核各空間位置只量一色，缺失值的跨通道邊緣補法造成假色。不是只換取樣率或相機名稱。"
+      },
+      {
+        "a": "P20001",
+        "b": "LEG-A50",
+        "reason": "舊題兩個規則網格的空間取樣拍頻；本題固定同一Bayer資料比較重建法。高頻取樣可並存混疊，但本題限定的是缺色重建彩邊。"
+      },
+      {
+        "a": "P20001",
+        "b": "O7014",
+        "reason": "舊核不同玻璃/色散使波長焦點接近；本題鏡片與樣本不變，改演算法便改彩邊，不能互代。"
+      },
+      {
+        "a": "P20001",
+        "b": "I15003",
+        "reason": "已知照明相位的頻率搬移/解混可取回原截止之外資訊；Bayer補色不具有該控制，不宣稱超解析。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2272",
+        "reason": "SiPM有限可用單元使同時多光子難分辨；CCD題不是只說飽和非線性，而是過量電荷污染鄰位及排流。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2274",
+        "reason": "SiPM雪崩放出的光子觸發鄰位雪崩；CCD題移動的是過容量電荷，不是光子引發新雪崩。"
+      },
+      {
+        "a": "P20003",
+        "b": "O3045",
+        "reason": "探測元件固定響應差造成條紋，可用平場校正；CCD題是新積分與舊轉送重疊污染，須改路徑/時序而非只改增益。"
+      },
+      {
+        "a": "P20003",
+        "b": "P20006",
+        "reason": "前者電荷已形成後在移位路徑混入額外訊號，後者在光電積分階段各列接收不同光量；不用同種CCD結構也能有後者。"
+      },
+      {
+        "a": "P20004",
+        "b": "P145",
+        "reason": "凸面折射聚焦解釋光線會聚，沒有前/後焦的量測訊號；雙路相位差才回答本題控制問題。"
+      },
+      {
+        "a": "P20005",
+        "b": "LEG-A42",
+        "reason": "電影/遊戲幀率舊題談動態模糊與操作延遲；本題逐色子影格落點分離，可用子影格空間偏移改變彩邊，不是一般幀率高低。"
+      },
+      {
+        "a": "P20005",
+        "b": "O7016",
+        "reason": "同色異譜在換照明光譜後分離；本題用逐色時間與追視位置，不需兩材料光譜不同。"
+      },
+      {
+        "a": "P20005",
+        "b": "P20001",
+        "reason": "顯示端/眼動的時間錯位與相機缺色重建不同。可沿白邊追問比較，但必須明示換研究與不同階段。"
+      },
+      {
+        "a": "P20006",
+        "b": "O3047",
+        "reason": "舊題逐行期間地球轉動使位置移動而幾何歪斜；新題固定場景、只改短閃光，影響是各列積分光量，並新增共同窗口有無的可見控制。"
+      },
+      {
+        "a": "P20006",
+        "b": "O3045",
+        "reason": "固定元件響應差與等響應元件在錯開時間看到同一脈衝不同；新題改閃光時點會移動亮帶。"
+      },
+      {
+        "a": "P20006",
+        "b": "I15005",
+        "reason": "編碼曝光調模糊傳遞函數以便反卷積；本題沒有運動反演，只有照明與行窗口的光量交集。"
+      },
+      {
+        "a": "P20006",
+        "b": "LEG-A50",
+        "reason": "空間網格的拍頻與時間光脈衝積分不同；同是條紋外觀不能代替對控制條件的比較。"
+      },
+      {
+        "a": "P20007",
+        "b": "O3020",
+        "reason": "舊核利用奇偶反射的偏振反應補足亮度判別，本題只論三正交面回射方向。不因此新收P20007，因O7018已含完整方向核。"
+      },
+      {
+        "a": "P20007",
+        "b": "D2077",
+        "reason": "D2077答案是黑背板的背景對比，即使來源名稱含反光邊框也未解釋三面回射；此對不同，但P20007須併O7018。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "P20-NA001",
+      "question": "拍螢幕為什麼出現大片波紋？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "LEG-A50"
+      ],
+      "source_ids": [],
+      "reason": "與LEG-A50雙網格拍頻重複，保留退題。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA002",
+      "question": "轉動的螺旋槳為什麼被拍歪？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "O3047"
+      ],
+      "source_ids": [],
+      "reason": "與O3047同逐行時間差乘場景位置變動；不同物體不新增核心。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA003",
+      "question": "偏光眼鏡轉一下，螢幕怎麼變黑？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P159",
+        "P160",
+        "P161",
+        "P162"
+      ],
+      "source_ids": [],
+      "reason": "P159–162已涵蓋交叉偏振/選向/入射態角度；不換螢幕重收。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA004",
+      "question": "夜景多拍幾張為什麼更乾淨？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "LEG-A21"
+      ],
+      "source_ids": [],
+      "reason": "LEG-A21已有對齊疊合多幀降噪，未提出新運動錯配控制，退題合理。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA005",
+      "question": "OLED怎麼留下舊圖示影子？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "LEG-A53"
+      ],
+      "source_ids": [],
+      "reason": "LEG-A53已有差異老化；不得把暫時影像殘留全歸同因。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA006",
+      "question": "拍完才改焦點是不是魔法？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "I15004"
+      ],
+      "source_ids": [],
+      "reason": "I15004已涵蓋保存方向資料與拍後重對焦，與本批AF題分開。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA007",
+      "question": "用另一種快門時序能不能讓模糊更好還原？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "I15005"
+      ],
+      "source_ids": [],
+      "reason": "I15005已有編碼曝光保留可逆資訊/反卷積，不以快門名稱另收。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA008",
+      "question": "彩色細字怎麼比黑白細字模糊？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M5013"
+      ],
+      "source_ids": [],
+      "reason": "M5013已有亮度/色度解析度差異；P20001只有在缺色重建條件下才另留。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA009",
+      "question": "鏡頭加一片玻璃為什麼能少彩邊？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "O7014"
+      ],
+      "source_ids": [],
+      "reason": "O7014已含不同色散玻璃補償焦點，不換鏡片問法另收。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。"
+    },
+    {
+      "id": "P20-NA010",
+      "question": "電子紙斷電為什麼還看得到字？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "僅功能與搜尋身份線索沒有保持機制正文，暫不收正確；reviewer未另讀該研究，不替它補證。",
+      "reentry_condition": "需直接研究或技術正文說明採用架構的保持/再驅動機制。"
+    },
+    {
+      "id": "P20-NA011",
+      "question": "CCD抗溢流的左右排水和向下排水各算一題嗎？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P20002"
+      ],
+      "source_ids": [
+        "P20-S002"
+      ],
+      "reason": "已讀S002 p21：側向/垂直排流留在P20002例子，不按方向拆核心。",
+      "reentry_condition": "若有新的失效控制不能由排流核心解釋，再查。"
+    },
+    {
+      "id": "P20-NA012",
+      "question": "換一個投影品牌也能再問一次彩虹邊嗎？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P20005"
+      ],
+      "source_ids": [
+        "P20-S004"
+      ],
+      "reason": "已讀S004受測條件；更換投影品牌不構成新研究，保留退題。",
+      "reentry_condition": "需不同已證因果，非品牌或頻率參數變化。"
+    },
+    {
+      "id": "P20-NA013",
+      "question": "LED亮度條紋和短閃光亮帶可算兩題嗎？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P20006"
+      ],
+      "source_ids": [],
+      "reason": "時間亮度與行窗口重疊可涵蓋脈衝/週期照明，現無另核。Basler附加段是作者閱讀，本review未重新取得，不採其產品時值。",
+      "reentry_condition": "若提出不同獨立機制再評；不能只換脈衝頻率。"
+    },
+    {
+      "id": "P20-NA014",
+      "question": "紅外反光片是不是更特殊的新回射核心？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "P20007"
+      ],
+      "source_ids": [
+        "P20-S006"
+      ],
+      "reason": "僅換波段不另計三面回射；本批P20007又併O7018，這列保留退題歷史引用，沒有新增核心。",
+      "reentry_condition": "須有幾何核心以外直接受控機制。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W20P-T01",
+      "decision": "retain_topic_plan_only",
+      "title": "亮點拉出長尾，原因都是光太多嗎？",
+      "body_seconds": 140,
+      "chapter_seconds": [
+        65,
+        75
+      ],
+      "core_totals": {
+        "P20002": 65,
+        "P20003": 75
+      },
+      "core_caps": {
+        "P20002": 85,
+        "P20003": 90
+      },
+      "max_beat_seconds": 35,
+      "reason": "共同追問是相似長尾的兩個污染位置。65秒排流與75秒轉送有不同控制；縮掉排流限制重述後140秒。最後轉問已改搬運途中，不以已讀出完畢暗示錯誤時序。",
+      "drop_if_readback": "任刪一章，撤140秒原因比較案；只剩65或75秒素材不能保留雙原因標題。若smear動畫仍畫成感光區裝滿溢出，也撤案重寫。",
+      "limits": "含開場/轉場/回扣的紙上預算；未試讀，未製作原創示意，不是完整稿核准。"
+    },
+    {
+      "id": "W20P-T02",
+      "decision": "retain_topic_plan_only",
+      "title": "明明是白邊，彩色毛邊從哪一步冒出來？",
+      "body_seconds": 145,
+      "chapter_seconds": [
+        70,
+        75
+      ],
+      "core_totals": {
+        "P20001": 70,
+        "P20005": 75
+      },
+      "core_caps": {
+        "P20001": 95,
+        "P20005": 100
+      },
+      "max_beat_seconds": 35,
+      "reason": "白邊在哪一步變彩色是可連續追的問題，不是同屬相機的拼盤。70秒Bayer補值後明切另一CRT研究的75秒追視；165→145刪長篇限制朗讀仍保留不追視反例。",
+      "drop_if_readback": "刪任一章撤145秒比較案（剩75或70秒）；若第二章只剩彩色閃爍裝飾、沒有兩座標對照，就撤案。不可用原研究未量的商用投影機效果補圖。",
+      "limits": "含開場/轉場/回扣的紙上預算；未試讀，未製作原創示意，不是完整稿核准。"
+    },
+    {
+      "id": "W20P-T03",
+      "decision": "retain_topic_plan_only",
+      "title": "一樣模糊，相機怎麼知道要往哪邊對焦？",
+      "body_seconds": 100,
+      "chapter_seconds": [
+        50,
+        50
+      ],
+      "core_totals": {
+        "P20004": 100
+      },
+      "core_caps": {
+        "P20004": 115
+      },
+      "max_beat_seconds": 30,
+      "reason": "同一核心兩章先留下兩路，再用相對位移區分前後並回饋調焦；100秒未超115秒cap。若沒有正確前/後訊號圖，按drop_if撤案，不能用產品功能補時間。",
+      "drop_if_readback": "若無法清楚畫出兩路相對位移與前後方向，撤100秒案；刪任一章只剩50秒，不補AF沿革或性能排行。",
+      "limits": "含開場/轉場/回扣的紙上預算；未試讀，未製作原創示意，不是完整稿核准。"
+    },
+    {
+      "id": "W20P-T04",
+      "decision": "retain_topic_plan_only",
+      "title": "場景全被閃光照到，照片怎麼只有一條亮帶？",
+      "body_seconds": 90,
+      "chapter_seconds": [
+        50,
+        40
+      ],
+      "core_totals": {
+        "P20006": 90
+      },
+      "core_caps": {
+        "P20006": 110
+      },
+      "max_beat_seconds": 30,
+      "reason": "50秒時間交集原理後40秒改有/無共同窗口，形成真正控制而非重述；100→90刪限制重述。場景固定，沒有混入運動幾何歪斜。",
+      "drop_if_readback": "時間條若不能準確顯示重疊範圍，撤90秒案；刪控制章剩50秒、刪原理章剩40秒，不用LED/閃光不同名稱補成兩核心。",
+      "limits": "含開場/轉場/回扣的紙上預算；未試讀，未製作原創示意，不是完整稿核准。"
+    }
+  ],
+  "findings_and_resolution": [
+    {
+      "id": "IMAGING01",
+      "finding": "共同top5顯示P20007/O7018答案與條件完整重複。",
+      "resolution": "merge accepted；原raw/來源保留為變體，不增not_added雙計；四案均不含此題。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "IMAGING02",
+      "finding": "P20003原題名可誤讀為已搬走/完成讀出後才污染。",
+      "resolution": "改仍在搬上一張；最後T01轉問也改搬運訊號途中。answer未改。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "IMAGING03",
+      "finding": "S006及P20007舊locator落在The perfect retro-reflector抽象零偏移面，非三面模型。",
+      "resolution": "fresh web重讀polygon heading及99–111/242–247；作者來源/題目同步修正。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "IMAGING04",
+      "finding": "T01第一章/T04末章各有10秒限制重述；root另指出T02兩20秒研究限制不應作旁白補長。",
+      "resolution": "T01 150→140；T04 100→90；T02 165→145，仍保留不追視反例；T03 100不變。",
+      "status": "RESOLVED"
+    }
+  ],
+  "before_review_files": [
+    {
+      "file": "batches/wave20-imaging.json",
+      "sha256": "77fd687930752cce9e4ea42bd158e42e9b7f205b02d9ae7c551960fe1da4ee9b"
+    },
+    {
+      "file": "reviews/wave20-imaging-themes.json",
+      "sha256": "430464efa9bb9d4661f55f88630c233670eab0989b12d12d3574a082186078c1"
+    },
+    {
+      "file": "reviews/wave20-imaging-author.json",
+      "sha256": "5869f7db379b28c9ea82c1a9f311aac59fabaa7d97d3776d76c81f47d6a45c32"
+    }
+  ],
+  "preserved_intermediate_files": [
+    {
+      "file": ".cache/wave20-imaging-before-review-wave20-imaging.json",
+      "sha256": "77fd687930752cce9e4ea42bd158e42e9b7f205b02d9ae7c551960fe1da4ee9b"
+    },
+    {
+      "file": ".cache/wave20-imaging-before-review-wave20-imaging-themes.json",
+      "sha256": "33d37e3dceebb4728704c9359a896f0d2adef196596e45f88baeef73cee84dbd"
+    },
+    {
+      "file": ".cache/wave20-imaging-before-review-wave20-imaging-author.json",
+      "sha256": "efcfa06cc4ac3649bafc148b70cb84f475c58708c47ef640e6df39c21c997c8d"
+    }
+  ],
+  "retrieval": {
+    "first_input_sha256": "f097d0ebdcde32f4725695da01c656ff059731ef2e8f9b905c77660af264128a",
+    "first_neighbours": {
+      "file": ".cache/wave20-imaging-neighbours-before-review.json",
+      "sha256": "91fbcbce49dc9c5045aa75460961ee228c970c9df5c4c5a37cca571ab6be4c26"
+    },
+    "first_semantic": {
+      "file": ".cache/semantic-wave20-draft-before-review.json",
+      "sha256": "1258d9ede516c9e6643a98d19a73c7a8c6ddaef6a49851308d793a4b8e2ce6c6"
+    },
+    "final_input_sha256": "1b0e6901238a88ee359c691416f294547ef5dfbc787e94285f85d9ad5adc1f05",
+    "final_neighbours": {
+      "file": ".cache/wave20-imaging-neighbours.json",
+      "sha256": "8c4e9eecb05be31cedb390479b00ae4207926b4f5f188a47929caa630fc7e6d2"
+    },
+    "final_semantic": {
+      "file": ".cache/semantic-wave20-draft.json",
+      "sha256": "b17e5613459e689e2d4e23b13f933f6abca12427ef1510a01dfec02d5b4c7702"
+    },
+    "delta": {
+      "file": ".cache/wave20-review-neighbour-delta.json",
+      "sha256": "44a0c7f24090fd53c4787176123481c580e1744705af582641f69d6de3caa2f9"
+    },
+    "advisory_only": true,
+    "final_input_check": "P20003新A5025的完整問法/答案/scope已讀，判distinct；舊I3093移出final top5留歷史。P20002僅rank/score改、集合相同；其餘影像列集合不變。按final檔重列35有向對並綁最後三作者檔。",
+    "first_only_removed_pair_review": [
+      {
+        "a": "P20003",
+        "b": "I3093",
+        "cosine": 0.591927,
+        "decision": "distinct",
+        "reason": "VM快照重用隨機產生器狀態會重複輸出；與CCD新光訊號混入舊電荷轉送無共同機制。此對只屬first retrieval，修題後已離開final top5。"
+      }
+    ]
+  },
+  "targeted_recheck": {
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "final_files": [
+      {
+        "file": "batches/wave20-imaging.json",
+        "sha256": "7a743edcf2f4afee4ca8ce8a50679193cec53ce9b187fd8c07f578a6e17ba97b"
+      },
+      {
+        "file": "reviews/wave20-imaging-themes.json",
+        "sha256": "83d99babaa19b72212e27eec04e3cdfbad98af4386d7ef9dbc03a6bda0e92ce7"
+      },
+      {
+        "file": "reviews/wave20-imaging-author.json",
+        "sha256": "c48e4bc34b1d63d1a8f88a34c4aacaadcd0d03619f5c4475f6f035ebada66cac"
+      }
+    ],
+    "checks": [
+      "P20003題名與T01末5秒轉問均表示搬運途中；未改answer。",
+      "S006/P20007 locator對齊實際polygon正文，允許側向位移並保留傾斜漏光條件。",
+      "P20007合併O7018已在author接受；不在distinct清單同對重列。",
+      "四題案140/145/100/90，章秒數=beats，max beat<=45，含開場回扣；所有核心累計<=素材cap。",
+      "每案至少兩章且每章一核，range上限不超body，drop_if重算讀回。",
+      "最後A5025讀回、35最終top5與22作者對完成；沒有因相似度高便合題。"
+    ]
+  },
+  "remaining_blockers": [],
+  "next_stage_cautions": [
+    "P20004的原創相位曲線與前/後焦方向符號需要進稿光路查核；現官方圖支持題級，不等於內部算法已公開。",
+    "P20005保留CRT/小樣本/不追視也可出彩邊；不能改為商用DLP測量結果。",
+    "P20006須先算出各列共同窗口是否存在，不能先畫全幅同步再補說明。",
+    "所有原創示意尚未製作或試讀，來源圖不自動具製作用途授權。"
+  ],
+  "validation": {
+    "json_parse": true,
+    "reviewer_is_not_author": true,
+    "complete_cohort": true,
+    "35_final_top5": true,
+    "22_author_pairs": true,
+    "source_cache_sha_checks": true,
+    "figure_sha_checks": true,
+    "theme_arithmetic_and_caps": true,
+    "no_central_or_author_edits_by_reviewer": true,
+    "scope": "只對本review收據及指定作者資料做JSON/時間/雜湊讀回；不宣稱已跑全倉庫測試。"
+  },
+  "metadata_only_followup": {
+    "date": "2026-11-02",
+    "reason": "中央作者manifest一致性關卡發現written_files仍指向修訂前theme；只同步該雜湊，不改候選、來源、題案或內容判讀。",
+    "changed_json_path": "author.written_files[1].sha256",
+    "before_value": "26ebfa2b8bed3dbc6a7e75796cef01aeb684d5134ec423da0c3a073652a5fadc",
+    "after_value": "83d99babaa19b72212e27eec04e3cdfbad98af4386d7ef9dbc03a6bda0e92ce7",
+    "before_author_sha256": "13dfc60ccad6c8afc2b2241c39d0a95c802e692176b4f66c4ea6bf001aa783d2",
+    "after_author_sha256": "c48e4bc34b1d63d1a8f88a34c4aacaadcd0d03619f5c4475f6f035ebada66cac",
+    "before_review_sha256": "6c05aa2a43224ded6dc570fa51bb64e469185cf87238652ff527deebcd314307",
+    "verification": "將當期author該唯一欄位還原為舊值，以原UTF-8 LF JSON格式序列化，完整位元組SHA精確回到13dfc60c；證明此次只改此manifest欄。batch與theme SHA完全不變，當期written_files兩項逐檔核驗通過。",
+    "status": "PASS_METADATA_ONLY",
+    "content_decisions_unchanged": true
+  }
+}

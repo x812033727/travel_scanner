@@ -1,0 +1,61 @@
+{
+  "review_id": "life-reviews-engineering-themes-wave2-20261101",
+  "reviewer": "pool_life_tech",
+  "reviewed_on": "2026-11-01",
+  "input": {
+    "path": "docs/videos/so-thats-why/pool/.cache/engineering-themes.json",
+    "sha256": "de2994c891a697bc57b3ad637e9b70710236bc0585dfdfd2de800d87c662ffd4"
+  },
+  "scope": "逐組讀 G23–G25 企劃全文、相關題名/答案目標與修訂；這是候選企劃審閱，沒有劇本盲讀、旁白試讀或成片判定。",
+  "status": "TREATMENT_CANDIDATES_WITH_EVIDENCE_GAPS",
+  "mechanical_checks": {
+    "all_ids_resolve": true,
+    "chapter_seconds_equal_targets": true,
+    "seconds": {
+      "G23": 600,
+      "G24": 570,
+      "G25": 660
+    }
+  },
+  "initial_findings_and_resolution": [
+    {
+      "id": "G24",
+      "initial_problem": "開場夾模90秒未先回答凹痕細線；聲稱成形時間線卻把流前匯合放在保壓冷卻後。",
+      "readback": "已改先展示痕跡再倒回模具，開場60秒；流前章在縮痕章前，總9.5分鐘。D2130同核心已改引用P042。",
+      "resolved": true
+    },
+    {
+      "id": "G25",
+      "initial_problem": "「繼續攪」可能讓觀眾以為把前章均質鮮奶直接攪成奶油。",
+      "readback": "第二章明示換成脂肪含量較高的鮮奶油，並指出起始配方不同；D2037同核心已映射P242，保留乳脂情境。",
+      "resolved": true
+    }
+  ],
+  "editorial_assessment": [
+    {
+      "id": "G23",
+      "verdict": "可進treatment",
+      "reason": "持續問污染物去向，吸附容量、跨介質、再生液與膜濃縮流各增加不同資訊；沒有把不同原水假裝成一條萬用設備流程。",
+      "cut_condition": "維持已列的適用物質對照；若只能換技術名詞、畫面沒有新去向，就縮成單一流程，不補氧化段。"
+    },
+    {
+      "id": "G24",
+      "verdict": "可進treatment",
+      "reason": "同一零件的充填→冷卻→取出能形成因果；目前修正已消除初始時間線混亂。",
+      "cut_condition": "倒扣與斜度若只列設計名詞而沒有同一盒子的取出障礙，縮該段；外觀不能冒充缺陷鑑定。"
+    },
+    {
+      "id": "G25",
+      "verdict": "可進treatment，11分鐘仍待圖像和試讀",
+      "reason": "同一結構圖比較分散相、連續相、固液脂肪及冰氣結構；新增資訊足以研究，並非單靠產品名稱堆章。",
+      "cut_condition": "奶油硬軟90秒可先刪或縮，若無清楚晶體證據；冰淇淋段也須明示換配方，不能把奶油加冰空氣畫成實際製程。原始來源圖與微觀資料未取得不宣稱已驗證視覺可行。"
+    }
+  ],
+  "remaining_required_changes": [],
+  "limits": [
+    "ID存在及秒數加總不等於內容一定好看。",
+    "來源機制僅抽查；所有實物配方、加工條件、數值、觀測圖授權須進稿另核。",
+    "此階段沒有執行實驗、製作聲音影像或發佈。"
+  ],
+  "production_ready": false
+}

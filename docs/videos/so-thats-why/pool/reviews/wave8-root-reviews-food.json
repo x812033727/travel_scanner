@@ -1,0 +1,436 @@
+{
+  "status": "PASS_AFTER_SCOPED_AUTHOR_CORRECTIONS_NOT_SCRIPT_APPROVAL",
+  "reviewer": "/root",
+  "author": "/root/pool_life_tech",
+  "created_on": "2026-11-01",
+  "locked_artifacts": [
+    {
+      "file": "batches/wave8-food.json",
+      "sha256": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389"
+    },
+    {
+      "file": "reviews/wave8-food-themes.json",
+      "sha256": "78abdaa4fa64d10f1ba74cc2c798df67dbed4e716c050a02f66086c83acf15a3"
+    },
+    {
+      "file": "reviews/wave8-food-author.json",
+      "sha256": "31bc393befaabae28eeb4add88581e9103d48955c25561464627d5e2a237a93a"
+    }
+  ],
+  "semantic": {
+    "file": ".cache/wave8-food-neighbours.json",
+    "sha256": "35ca570eb0b7edfbbde447c8941a18383e390558d5842a7e876a8e2e144297d6",
+    "draft_sha256": "221130408075a050f99522e1be8d8aff10e9dd7e1b9cfc2c362420c447a73aa8",
+    "per_row_top_k": 5,
+    "advisory_only": true
+  },
+  "scope": "逐讀7題所有欄位、7×5近鄰、作者指定對、3題案及本輪修訂；另從3017 raw關鍵詞找到37及65筆（有重疊）讀問題/答案/範圍，未宣稱全庫逐題重審。",
+  "rows": [
+    {
+      "id": "F8001",
+      "decision": "retain_distinct_core",
+      "compared_neighbour_ids": [
+        "F8003",
+        "D2163",
+        "F8002",
+        "D2044",
+        "D2043"
+      ],
+      "author_pair_ids": [
+        "D2163",
+        "W5017"
+      ],
+      "reason": "固定主要固含，比較界面潤滑及卡住門檻；D2163配比、W5017破絮不足取代此對照。與F8003加水聚團、F8002晶種選擇及D2043凍更多水、D2044設備添加時點不同。保留模型限定，100秒需有等體積油對照。"
+    },
+    {
+      "id": "F8002",
+      "decision": "retain_distinct_core",
+      "compared_neighbour_ids": [
+        "F8001",
+        "D2163",
+        "D2029",
+        "F8003",
+        "D2041"
+      ],
+      "author_pair_ids": [
+        "D2029",
+        "F4011"
+      ],
+      "reason": "D2029一般冷卻史及F4011晶核多寡沒有回答回熱選擇性淘汰晶種；與D2041熟成及D2163配比不同。Purdue正文支持此機制，但不採全部只剩V型或所有條件最穩定的絕對化。"
+    },
+    {
+      "id": "F8003",
+      "decision": "retain_limited_segment",
+      "compared_neighbour_ids": [
+        "D2163",
+        "D2028",
+        "F8001",
+        "F4021",
+        "P228"
+      ],
+      "author_pair_ids": [
+        "F8001",
+        "D2028"
+      ],
+      "reason": "少水潤濕與聚團提供不同控制條件，不等同F8001接觸潤滑、D2028相反轉、F4021粉末拒水或P228溶解上限。大學教育模型足供題級短段，不能撐75秒；改20–40秒，與F8001同片形成一次反向預測，不獨立成片。未證接觸力仍為缺口。"
+    },
+    {
+      "id": "F8004",
+      "decision": "retain_distinct_core",
+      "compared_neighbour_ids": [
+        "D2058",
+        "D2057",
+        "D2056",
+        "W5023",
+        "D2269"
+      ],
+      "author_pair_ids": [
+        "D2056",
+        "D2039"
+      ],
+      "reason": "先改變鈣與酪蛋白的作用，讓蛋白再分散水合後穩定油脂；不同於D2056/57凝乳、D2058排乳清、D2039新界面補膜、W5023鈣脂肪酸沉澱、D2269阻麵筋。105秒只追同一間接鏈。"
+    },
+    {
+      "id": "F8005",
+      "decision": "retain_distinct_core",
+      "compared_neighbour_ids": [
+        "L029",
+        "L177",
+        "V3062",
+        "R6020",
+        "L176"
+      ],
+      "author_pair_ids": [
+        "L025",
+        "L026",
+        "L029",
+        "L175",
+        "U8018"
+      ],
+      "reason": "特定菌株Nox缺失的耗氧及酸化對照，不是L025載體再生、L026呼吸定義、L029切換代謝、L175/176/177泛氧耐受或能量分類；V3062為呼吸鏈再生載體對循環的影響；R6020根瘤供氧、W5010擴散耗氧與U8018分化固氮也非此機制。修窄問法避免必須先耗完或泛稱所有優格菌。Pfl因果不升格。"
+    },
+    {
+      "id": "F8006",
+      "decision": "retain_distinct_core",
+      "compared_neighbour_ids": [
+        "H3026",
+        "J6002",
+        "H3062",
+        "J6009",
+        "P062"
+      ],
+      "author_pair_ids": [
+        "P070",
+        "P073",
+        "W5017"
+      ],
+      "reason": "低高低變形後的結構回復使時間歷程成為變因；不是P070密度/黏度、P073固定黏度梯度或W5017破絮。語意提示H3026彈性、H3062疲勞、J6002定位摩擦、J6009油膜、P062動壓皆只是表面用詞近，不合併。只作短素材，不硬湊新片。"
+    },
+    {
+      "id": "F8007",
+      "decision": "retain_distinct_core",
+      "compared_neighbour_ids": [
+        "F4003",
+        "P223",
+        "H3027",
+        "H3093",
+        "F4004"
+      ],
+      "author_pair_ids": [
+        "H3027",
+        "F4012"
+      ],
+      "reason": "MC水合改變及可逆疏水聚集不同於F4003/4澱粉膨脹/預糊化、P223溶解熱、H3027共價交聯、H3093永久網絡膨潤、F4012界面泡沫。web討論本身是DSC模型，保留作者解釋層級；刪熟蛋白共價的多餘暗示。"
+    }
+  ],
+  "recommended_decisions": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "F8001",
+        "b": "D2163",
+        "reason": "固定固含的接觸潤滑／卡住門檻，與配比、剪切破絮或少水潤濕聚團的條件不同。"
+      },
+      {
+        "a": "F8001",
+        "b": "W5017",
+        "reason": "固定固含的接觸潤滑／卡住門檻，與配比、剪切破絮或少水潤濕聚團的條件不同。"
+      },
+      {
+        "a": "F8001",
+        "b": "F8003",
+        "reason": "固定固含的接觸潤滑／卡住門檻，與配比、剪切破絮或少水潤濕聚團的條件不同。"
+      },
+      {
+        "a": "F8002",
+        "b": "D2029",
+        "reason": "選擇性回熱留下晶種，不是只改固液脂肪比例或晶核數量。"
+      },
+      {
+        "a": "F8002",
+        "b": "F4011",
+        "reason": "選擇性回熱留下晶種，不是只改固液脂肪比例或晶核數量。"
+      },
+      {
+        "a": "F8003",
+        "b": "D2028",
+        "reason": "有限水潤濕聚團不同於乳化相反轉或粉末表面脂肪阻礙進水；僅保留短段。"
+      },
+      {
+        "a": "F8003",
+        "b": "F4021",
+        "reason": "有限水潤濕聚團不同於乳化相反轉或粉末表面脂肪阻礙進水；僅保留短段。"
+      },
+      {
+        "a": "F8004",
+        "b": "D2056",
+        "reason": "鈣結合先改變酪蛋白可分散性，再間接乳化；非凝乳或僅新增界面。"
+      },
+      {
+        "a": "F8004",
+        "b": "D2039",
+        "reason": "鈣結合先改變酪蛋白可分散性，再間接乳化；非凝乳或僅新增界面。"
+      },
+      {
+        "a": "F8005",
+        "b": "L025",
+        "reason": "特定Nox缺失與牛乳耗氧/酸化對照，非泛稱載體再生、呼吸分類、代謝切換、氧毒或異形胞固氮。"
+      },
+      {
+        "a": "F8005",
+        "b": "L026",
+        "reason": "特定Nox缺失與牛乳耗氧/酸化對照，非泛稱載體再生、呼吸分類、代謝切換、氧毒或異形胞固氮。"
+      },
+      {
+        "a": "F8005",
+        "b": "L029",
+        "reason": "特定Nox缺失與牛乳耗氧/酸化對照，非泛稱載體再生、呼吸分類、代謝切換、氧毒或異形胞固氮。"
+      },
+      {
+        "a": "F8005",
+        "b": "L175",
+        "reason": "特定Nox缺失與牛乳耗氧/酸化對照，非泛稱載體再生、呼吸分類、代謝切換、氧毒或異形胞固氮。"
+      },
+      {
+        "a": "F8005",
+        "b": "L176",
+        "reason": "特定Nox缺失與牛乳耗氧/酸化對照，非泛稱載體再生、呼吸分類、代謝切換、氧毒或異形胞固氮。"
+      },
+      {
+        "a": "F8005",
+        "b": "U8018",
+        "reason": "特定Nox缺失與牛乳耗氧/酸化對照，非泛稱載體再生、呼吸分類、代謝切換、氧毒或異形胞固氮。"
+      },
+      {
+        "a": "F8006",
+        "b": "P070",
+        "reason": "有低高低變形與隨時間回復的額外條件，不是固定黏度或單次絮體破裂。"
+      },
+      {
+        "a": "F8006",
+        "b": "P073",
+        "reason": "有低高低變形與隨時間回復的額外條件，不是固定黏度或單次絮體破裂。"
+      },
+      {
+        "a": "F8006",
+        "b": "W5017",
+        "reason": "有低高低變形與隨時間回復的額外條件，不是固定黏度或單次絮體破裂。"
+      },
+      {
+        "a": "F8007",
+        "b": "H3027",
+        "reason": "水合與疏水聚集的可逆熱凝，非共價網絡、界面泡沫或澱粉糊化。"
+      },
+      {
+        "a": "F8007",
+        "b": "F4012",
+        "reason": "水合與疏水聚集的可逆熱凝，非共價網絡、界面泡沫或澱粉糊化。"
+      },
+      {
+        "a": "F8007",
+        "b": "F4003",
+        "reason": "水合與疏水聚集的可逆熱凝，非共價網絡、界面泡沫或澱粉糊化。"
+      }
+    ]
+  },
+  "source_reviews": [
+    {
+      "id": "F8-S001",
+      "route": "web/urllib都是captcha；改獨立閱讀作者同輪完整HTML擷取文字，非重新開站成功",
+      "scope": "Lecithin as a Lubricant、Summary and Conclusions及方法中材料辨認",
+      "finding": "等體積油未使paste液化的對照支持非單純稀釋；crumb/葵花油模型與摩擦推論限制保留",
+      "cache_file": ".cache/wave8-food-conching.txt",
+      "cache_sha256": "dd6b25ad98d310219ed269a46c09396cede6241e3d5b2131b43ec985d86b1ed8"
+    },
+    {
+      "id": "F8-S002",
+      "route": "web timeout；新urllib HTTP200＋PyMuPDF",
+      "scope": "PDF pp.1–2正文與Steps1–4文字",
+      "finding": "回熱利用晶型熔點差；不核配方溫度或重用圖像"
+    },
+    {
+      "id": "F8-S003",
+      "route": "web timeout；新urllib HTTP200＋PyMuPDF",
+      "scope": "PDF pp.8–9現象及Explanation前兩點",
+      "finding": "只支持教育層級潤濕聚團；不採emulsion概括，不增液橋模型。短段40秒可留，原75秒刪35秒"
+    },
+    {
+      "id": "F8-S004",
+      "route": "web timeout；新urllib HTTP200＋HTMLParser",
+      "scope": "Role of ES in cheese system正文；Type開頭及cheese analogues相關段",
+      "finding": "鈣移除/交換、蛋白水合分散、間接油脂穩定支持；沒有採配方/菌抑制/法規段"
+    },
+    {
+      "id": "F8-S005",
+      "route": "web/urllib captcha；改獨立閱讀作者同輪完整HTML擷取文字，非重新開站成功",
+      "scope": "作者機構、摘要、Introduction呼吸與flavoprotein段、Discussion的缺失株及多種可能中介",
+      "finding": "Meiji University與Meiji Co.及Kitasato共同作者；水生成Nox與呼吸鏈不同。定性缺失對照支持，Pfl只是可能途徑",
+      "cache_file": ".cache/wave8-food-yogurt.txt",
+      "cache_sha256": "41e98a0bf48cb3b9e4390872f3466be6995640f037492369676adfea36aedc4c"
+    },
+    {
+      "id": "F8-S006",
+      "route": "web PDF正文及新urllib HTTP200，轉址至agriculturejournals.cz/pdfs/cjf/2009/03/04.pdf",
+      "scope": "印刷p.166 Rheological analysis及Fig.1文字解釋",
+      "finding": "低高低變形／moduli恢復原文直接支持。未分析感官統計或讀圖數值"
+    },
+    {
+      "id": "F8-S007",
+      "route": "web.find/open正文成功；另urllib僅captcha，不混記",
+      "scope": "§4 Discussion至§5 Conclusions",
+      "finding": "可逆熱凝和水合/疏水聚集為作者的DSC解釋，不當逐分子拍攝或唯一理論"
+    },
+    {
+      "id": "F8-S008",
+      "route": "新urllib HTTP200",
+      "scope": "公開Description",
+      "finding": "只支持材料與熱凝冷溶現象，未讀付費全文"
+    }
+  ],
+  "source_fetch_attempts": [
+    {
+      "id": "F8-S001",
+      "status": 200,
+      "bytes": 21408,
+      "characters": 165,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6535019/",
+      "sha256": "cc3cf0c83f2f77ede2563c885b8e0176efbfea33dc7e2480144e9d87f2bed683",
+      "captcha": true
+    },
+    {
+      "id": "F8-S002",
+      "status": 200,
+      "bytes": 1186552,
+      "characters": 7536,
+      "url": "https://extension.purdue.edu/extmedia/FS/FS-153-W.pdf",
+      "sha256": "8487a1ded9e475a82a3671fb362058161d1c71c233a26b0d1f6bb273f69d3222",
+      "captcha": false
+    },
+    {
+      "id": "F8-S003",
+      "status": 200,
+      "bytes": 3042503,
+      "characters": 18826,
+      "url": "https://blog.susnano.wisc.edu/wp-content/uploads/sites/2179/2025/08/Chocolate-Experimentpdf.pdf",
+      "sha256": "b5d0cf6ac7f91a854760fbc3b4a0b5aa48a486ea68ffe99559d180dd4318b793",
+      "captcha": false
+    },
+    {
+      "id": "F8-S004",
+      "status": 200,
+      "bytes": 66792,
+      "characters": 25993,
+      "url": "https://ebooks.inflibnet.ac.in/ftp03/chapter/emulsifying-salts-for-the-dairy-and-food-industry/",
+      "sha256": "a00ae5cfa7be4fb13cb2926ff2f85f7d3abb46cf0f40941d3dae65e411311eae",
+      "captcha": false
+    },
+    {
+      "id": "F8-S005",
+      "status": 200,
+      "bytes": 21406,
+      "characters": 165,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4034325/",
+      "sha256": "52a66295f3358fd33ffb91dedc462ce2979562dd25cef40acb8a21591ce66986",
+      "captcha": true
+    },
+    {
+      "id": "F8-S006",
+      "status": 200,
+      "bytes": 286310,
+      "characters": 17972,
+      "url": "https://www.agriculturejournals.cz/pdfs/cjf/2009/03/04.pdf",
+      "sha256": "7436a9a7ac7b620d18ea70f28698cf14361c4038cc3ee5b4eed67ead75cb9588",
+      "captcha": false
+    },
+    {
+      "id": "F8-S007",
+      "status": 200,
+      "bytes": 21407,
+      "characters": 165,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9105695/",
+      "sha256": "03f4a76c5a494f079ab00e85361438ea0ceb588f979f573371a45392e42a358c",
+      "captcha": true
+    },
+    {
+      "id": "F8-S008",
+      "status": 200,
+      "bytes": 4836,
+      "characters": 942,
+      "url": "https://doi.usp.org/USPFCC/FCC_F100443_04_01.html",
+      "sha256": "fc995046a06aa5249564c72774c0ccc9442661c98e3130bbab1caf585fb4d9e5",
+      "captcha": false
+    }
+  ],
+  "author_not_added_review": "10筆作者退題理由已讀；S009–13僅作退題來源，本審未重新開站核其全部主張。F8008沒有進7候選，不增核心。",
+  "correction_readback": {
+    "passed": true,
+    "food3_cap": [
+      20,
+      40
+    ],
+    "theme1_before": 175,
+    "theme1_after": 140,
+    "food5_question_narrowed": true,
+    "food7_covalent_generalization_removed": true,
+    "source_limits_not_audience_narration": true
+  },
+  "theme_review": {
+    "themes": 3,
+    "body_seconds": [
+      140,
+      105,
+      105
+    ],
+    "core_allocations": [
+      {
+        "theme": "W8F-T01",
+        "core": "F8001",
+        "seconds": 100,
+        "maximum": 110
+      },
+      {
+        "theme": "W8F-T01",
+        "core": "F8003",
+        "seconds": 40,
+        "maximum": 40
+      },
+      {
+        "theme": "W8F-T02",
+        "core": "F8004",
+        "seconds": 105,
+        "maximum": 110
+      },
+      {
+        "theme": "W8F-T03",
+        "core": "F8005",
+        "seconds": 105,
+        "maximum": 110
+      }
+    ],
+    "single_core_two_chapters": "T02/T03同一機制的連續兩步，合計105秒未雙計核心；不足2分鐘不補名詞。",
+    "trial_read": false
+  },
+  "limitations": "題級來源與編輯候選審閱；舊鄰居來源未全部重開，沒有完整劇本逐句審核、示範、試讀、成片或觀眾測試。",
+  "production_ready": false
+}

@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "author": "/root",
+  "status": "AUTHOR_LOCKED_AWAITING_INDEPENDENT_REVIEW",
+  "counts": {
+    "source_refresh_records": 6,
+    "new_core_proposals": 0,
+    "source_readings": 8
+  },
+  "locked_artifacts": [
+    {
+      "path": "docs/videos/so-thats-why/pool/batches/wave8-source-refresh.json",
+      "sha256": "5273727d5cc9759624f32d5dd84936df65b20b08f8536f7c0ad7214fcd09bbeb"
+    }
+  ],
+  "recommended_decisions": {
+    "merges": [
+      {
+        "duplicate_id": "R8001",
+        "canonical_id": "LEG-S07",
+        "reason": "本輪重新讀原理來源；同問題、同因果與條件，僅新增可追溯閱讀，非新核心。"
+      },
+      {
+        "duplicate_id": "R8002",
+        "canonical_id": "LEG-S18",
+        "reason": "本輪重新讀原理來源；同問題、同因果與條件，僅新增可追溯閱讀，非新核心。"
+      },
+      {
+        "duplicate_id": "R8003",
+        "canonical_id": "LEG-S21",
+        "reason": "本輪重新讀原理來源；同問題、同因果與條件，僅新增可追溯閱讀，非新核心。"
+      },
+      {
+        "duplicate_id": "R8004",
+        "canonical_id": "LEG-S23",
+        "reason": "本輪重新讀原理來源；同問題、同因果與條件，僅新增可追溯閱讀，非新核心。"
+      },
+      {
+        "duplicate_id": "R8005",
+        "canonical_id": "LEG-S80",
+        "reason": "本輪重新讀原理來源；同問題、同因果與條件，僅新增可追溯閱讀，非新核心。"
+      },
+      {
+        "duplicate_id": "R8006",
+        "canonical_id": "LEG-S83",
+        "reason": "本輪重新讀原理來源；同問題、同因果與條件，僅新增可追溯閱讀，非新核心。"
+      }
+    ],
+    "excluded": [],
+    "distinct": []
+  },
+  "coverage": [
+    {
+      "revision_id": "R8001",
+      "canonical_id": "LEG-S07",
+      "reviewed_scope": "只更新常壓普通冰的結構與密度機制，不重核原答案9%數值，不推所有高壓冰相。",
+      "old_question": "冰明明是水，為什麼反而浮在水上？",
+      "source_ids": [
+        "R8-S001"
+      ],
+      "full_legacy_answer_reverified": false
+    },
+    {
+      "revision_id": "R8002",
+      "canonical_id": "LEG-S18",
+      "reviewed_scope": "一句核心太薄，仍只作雷雨母題一段；距離換算、聲速數值未本輪重核；不可數秒後才避雷。",
+      "old_question": "為什麼雷聲總比閃電晚到？",
+      "source_ids": [
+        "R8-S002"
+      ],
+      "full_legacy_answer_reverified": false
+    },
+    {
+      "revision_id": "R8003",
+      "canonical_id": "LEG-S21",
+      "reviewed_scope": "與原題同核心；59%是不同時日累計，非瞬時；舊27.3日與背面日照句未在此來源對全量重核。",
+      "old_question": "月亮明明會轉，為什麼總讓你看到同一面？",
+      "source_ids": [
+        "R8-S003",
+        "R8-S004"
+      ],
+      "full_legacy_answer_reverified": false
+    },
+    {
+      "revision_id": "R8004",
+      "canonical_id": "LEG-S23",
+      "reviewed_scope": "只更新主虹光路、幾何與遮擋；紫光40°未重核，不把彩虹當固定實體。",
+      "old_question": "彩虹其實能是圓的，地上為什麼只見一段？",
+      "source_ids": [
+        "R8-S005",
+        "R8-S006"
+      ],
+      "full_legacy_answer_reverified": false
+    },
+    {
+      "revision_id": "R8005",
+      "canonical_id": "LEG-S80",
+      "reviewed_scope": "只更新共同自由落下與軌道原理；不宣稱零重力或任何軌道固定重力值。",
+      "old_question": "太空人一直往下掉，為什麼沒撞上地球？",
+      "source_ids": [
+        "R8-S007"
+      ],
+      "full_legacy_answer_reverified": false
+    },
+    {
+      "revision_id": "R8006",
+      "canonical_id": "LEG-S83",
+      "reviewed_scope": "只更新水深與傳播核心；未重核全部岸形與個案，不把所有海嘯畫成同一面碎浪牆。",
+      "old_question": "海嘯外海不顯眼，靠岸怎麼突然變高？",
+      "source_ids": [
+        "R8-S008"
+      ],
+      "full_legacy_answer_reverified": false
+    }
+  ],
+  "source_read_failures": [
+    {
+      "url": "https://www.usgs.gov/water-science-school/science/water-density",
+      "outcome": "web repeated timeout; urllib403",
+      "resolution": "改讀OpenStax原出版正文；未標舊USGS已重讀"
+    }
+  ],
+  "limits": "作者鎖定非獨立通過。六筆局部核心更新不代表121歷史入選題有六份完整答案核准，不是刷新所有舊附件。不新增題組／核心／旁白／成片。",
+  "revision_history": [
+    {
+      "requested_by": "/root/science_sources",
+      "before_sha256": "6a99a46788f663e438cff58ab3cc70f02e7e5db263e757b0affd49af8e5c087f",
+      "after_sha256": "5273727d5cc9759624f32d5dd84936df65b20b08f8536f7c0ad7214fcd09bbeb",
+      "change": "NASA tidal-locking頁為無小節題頭的正文；以實際段落起語定位，機制及計數不變。"
+    }
+  ]
+}

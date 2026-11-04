@@ -1,0 +1,600 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "author": "pool_physics",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "P28001",
+    "P28002",
+    "P28003",
+    "P28004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave28-audio.json",
+      "sha256": "cd636a2c7572234e273dca27d49594b2ae23f489e0e471cb37ee782acc6795c0"
+    },
+    {
+      "file": "reviews/wave28-audio-author.json",
+      "sha256": "4555941fb24490fae2b7c6b36370ee5df4c73914f79047fd8c63b7c931e90081"
+    },
+    {
+      "file": "reviews/wave28-audio-themes.json",
+      "sha256": "222b783580d69ee7cfb07dbdb87c643a2be4669c301755aa984117516042b114"
+    },
+    {
+      "file": ".cache/wave28-audio-neighbours.json",
+      "sha256": "2a11b0397952f5fcaf12b470e73493963ba4675e1b73c0a94aff3f9d39b5ba2e"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P28001",
+      "decision": "retain",
+      "reason": "確認2D與3D的控制依調變方向，並在同案用橫刻盤3D掃描作反例。"
+    },
+    {
+      "id": "P28002",
+      "decision": "retain",
+      "reason": "保留尚有槽但錯位與漆層全失的對照，刪掉片尾第二次並排回顧。"
+    },
+    {
+      "id": "P28003",
+      "decision": "retain",
+      "reason": "同時時標校局部速度與250/500誤讀改整體尺度，是一個完整反轉。題名已明指紙上歌聲。"
+    },
+    {
+      "id": "P28004",
+      "decision": "retain",
+      "reason": "盤帶相鄰改時間順序，主聲前與後的弱副本都能示意，圖2構型已註明。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "P28-S001",
+      "file": ".cache/wave28-audio-workflow.pdf",
+      "sha256": "44c92b88f0f207f2b4067678bba949f3a30b015287bd58a2ab58a4bd3758b276",
+      "text_file": ".cache/wave28-audio-workflow.txt",
+      "text_sha256": "2f06f22f4f4869ce2ec157dcd4be5b40959c97f4ec523bafae019a17a756146d",
+      "url": "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf",
+      "reading_scope": "工作流程PDF印刷頁264–267影像與處理段，p267 Fig5/6目讀。",
+      "finding": "側刻看橫向位移、縱刻需高度，按時間求位移變化率。3D可掃側刻也可掃縱刻，不能從器形斷定量測方向。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave28-audio-workflow-p6.png",
+          "sha256": "6beac5921a0288e8284bcd1557d399f08fe0d4c9e913f1bee02092b3b69df236"
+        }
+      ],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    },
+    {
+      "source_id": "P28-S002",
+      "file": ".cache/wave28-audio-broken.html",
+      "sha256": "e12e773042477406e892fabf6b315ae095704e05bbc40dd607f628b6d31b82d3",
+      "text_file": ".cache/wave28-audio-broken.txt",
+      "text_sha256": "bb5e08e393651580dd56639d7641f93501702257224c1a473543ac9e15cf7c68",
+      "url": "https://www.nedcc.org/about/nedcc-stories/bcm",
+      "reading_scope": "NEDCC作者報告 L0239–0257，Weaver循跡截圖目讀。",
+      "finding": "漆層剝離後會縮翹；該橫刻盤用了3D相機。先實體排回，再在影像循跡。缺料造成掉音，另製聆聽版可減噪。未聽嵌入音檔。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave28-audio-st_bocm_4_groovescr.jpg",
+          "sha256": "ebd8d91fafdb6b27447192ef1c05e225bed87b685929e66bc76a925fa5ad3c1f"
+        }
+      ],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    },
+    {
+      "source_id": "P28-S003",
+      "file": ".cache/wave28-audio-fork.pdf",
+      "sha256": "a42285d2c8a6ae4d360d9586f9fd7119ec8929e1ff0347a2fd984eec4131e7d2",
+      "text_file": ".cache/wave28-audio-fork.txt",
+      "text_sha256": "7f70bb549fb686eeb1543125de3dbbe7aa233a9d0abe2ebb3324e469ffa84e14",
+      "url": "https://firstsounds.org/research/articles/scott-discography.pdf",
+      "reading_scope": "ARSC 2010作者論文刊48–49之時間校正段，PDF p26 Fig4圖說目讀。",
+      "finding": "同步叉軌用於局部伸縮，原文本的歷史用語不自明。研究者用後續說話樣本及同期用法改採250 Hz。p26圖4是另一計時器示例，不用它充當該歌聲的同步音叉原圖。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave28-audio-fork-p26.png",
+          "sha256": "8876131232c135b2e2788f94e3a0d064f20d83f047a3a8582ff25e3ea066194a"
+        }
+      ],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    },
+    {
+      "source_id": "P28-S004",
+      "file": ".cache/wave28-audio-3m.pdf",
+      "sha256": "b239e1cd6f88fe9c5e4d1d2b5880a3ade59129b2b663faa3f6d86e67ad648b21",
+      "text_file": ".cache/wave28-audio-3m.txt",
+      "text_sha256": "15ef9bf432a0b420144044475020fb897045c2d3c3aa63c8fe975f990d0ed807",
+      "url": "https://aes.org/wp-content/uploads/2025/02/printthrough.pdf",
+      "reading_scope": "3M公告A011194，PDF p1 Situation/Recommendation及p3 Fig2目讀。",
+      "finding": "鄰層漏印與播放前後順序相連。圖2限定氧化層朝內收帶盤，C所受較強轉印在B之後出現。發布年按頁腳1994。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave28-audio-3m-p3.png",
+          "sha256": "beb5168992d6a8009f6f6607a03097fe924d016316c71add133ae85d9639d445"
+        }
+      ],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    },
+    {
+      "source_id": "P28-S005",
+      "file": ".cache/wave28-audio-lacquer.html",
+      "sha256": "6dd649dcf8155bcd951a5266dcdb2332049531fcaf56518c228fab5d832367bb",
+      "text_file": ".cache/wave28-audio-lacquer.txt",
+      "text_sha256": "cdd92e38e85acb80568bdd149353f5b8f0fbb24b9edcd809fcd86bc79d577c58",
+      "url": "https://loc.gov/preservation/scientists/projects/lacquered_disc.html",
+      "reading_scope": "LOC專案頁L0025–0033背景與研究結果，只作退題核對。",
+      "finding": "受測劣化盤表面有硬脂酸及棕櫚酸，沒有支持所有白霧來自相同材料或可使用同一清洗方法。未核後列論文或原照片。",
+      "viewed_images": [],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P28001",
+      "b": "I15006",
+      "decision": "distinct",
+      "reason": "OCT依光程延遲辨反射深度。新題按機械調變方向選表面位移分量，再轉回聲音。"
+    },
+    {
+      "a": "P28001",
+      "b": "O7009",
+      "decision": "distinct",
+      "reason": "雙光子限制激發體積，與是否持有槽深資訊各自可獨立改變。"
+    },
+    {
+      "a": "P28001",
+      "b": "N209",
+      "decision": "distinct",
+      "reason": "聲納由回波測物距，而唱片由原刻錄位移還原訊號。"
+    },
+    {
+      "a": "P28002",
+      "b": "I3086",
+      "decision": "distinct",
+      "reason": "串流終止標記可辨截斷。漆盤缺的是幾何路徑的連續性，要對回既有槽段。"
+    },
+    {
+      "a": "P28002",
+      "b": "I8011",
+      "decision": "distinct",
+      "reason": "RAID有校驗及日誌。此處曲線若已掉落，讀錯鄰槽不能由一個校驗量反解原段。"
+    },
+    {
+      "a": "P28002",
+      "b": "O3050",
+      "decision": "distinct",
+      "reason": "遙測相干性變化是統計線索，這裡是人工循殘片上的實際槽路。"
+    },
+    {
+      "a": "P28003",
+      "b": "E2202",
+      "decision": "distinct",
+      "reason": "時鐘抖動造成量測誤差。紙上並行記錄的時標可重新定局部時間，但還需確認每週期多長。"
+    },
+    {
+      "a": "P28003",
+      "b": "E2203",
+      "decision": "distinct",
+      "reason": "通道間延遲造成假相位差，與同一載體的音叉等時標記及其尺度不同。"
+    },
+    {
+      "a": "P28003",
+      "b": "P125",
+      "decision": "distinct",
+      "reason": "都卜勒是接收波峰時距的物理改變，此題是解讀歷史記錄時整體播放倍速錯置。"
+    },
+    {
+      "a": "P28003",
+      "b": "M2001",
+      "decision": "distinct",
+      "reason": "校準追溯的比較鏈不同於同步音叉抵消手搖速度波動再判單位。"
+    },
+    {
+      "a": "P28004",
+      "b": "E2136",
+      "decision": "distinct",
+      "reason": "磁域遲滯是磁性前提，未解釋捲帶鄰層的副本為何能在播放上領先原聲。"
+    },
+    {
+      "a": "P28004",
+      "b": "W16001",
+      "decision": "distinct",
+      "reason": "核磁回波需散相後脈衝重新聚合。磁帶層間複印沒有脈衝回聚步驟。"
+    },
+    {
+      "a": "P28004",
+      "b": "W16003",
+      "decision": "distinct",
+      "reason": "散射場倒序重播聚焦，磁帶漏印是磁性載體捲起時的空間鄰接。"
+    },
+    {
+      "a": "P28004",
+      "b": "N209",
+      "decision": "distinct",
+      "reason": "聲納反射一定在發送之後，預印可聽在前是捲帶原本較早的時間段正好相鄰。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P28001",
+      "b": "D9019",
+      "decision": "distinct",
+      "reason": "麥克風在聲場中改變聲壓；題目是刻槽位移的方向。"
+    },
+    {
+      "a": "P28001",
+      "b": "P28004",
+      "decision": "distinct",
+      "reason": "機械溝紋光學讀取與磁帶鄰層複印是不同載體及過程。"
+    },
+    {
+      "a": "P28001",
+      "b": "O7015",
+      "decision": "distinct",
+      "reason": "總傳遞函數降低細部對比，沒有解決俯視平面幾何未量深度的缺失。"
+    },
+    {
+      "a": "P28001",
+      "b": "P126",
+      "decision": "distinct",
+      "reason": "移動聲源／聽者影響聲波傳播，與刻槽軌跡的讀取無關。"
+    },
+    {
+      "a": "P28001",
+      "b": "P28002",
+      "decision": "distinct",
+      "reason": "一題解碼槽本身的位移，另一題處理跨裂縫把原有槽的兩端連回。"
+    },
+    {
+      "a": "P28002",
+      "b": "P28001",
+      "decision": "distinct",
+      "reason": "同一轉錄流程的不同失敗：調變方向選錯和跨縫接錯圈，各需獨立判斷。"
+    },
+    {
+      "a": "P28002",
+      "b": "W16004",
+      "decision": "distinct",
+      "reason": "水波仍存在於場中而反向回聚，漆層缺處的紀錄已失去。"
+    },
+    {
+      "a": "P28002",
+      "b": "O7002",
+      "decision": "distinct",
+      "reason": "徑向畸變需鏡頭校正，漆碎片已實際變形錯位，須逐槽追蹤。"
+    },
+    {
+      "a": "P28002",
+      "b": "P28004",
+      "decision": "distinct",
+      "reason": "重接凹槽順序與磁帶相鄰層多出弱副本不同。"
+    },
+    {
+      "a": "P28002",
+      "b": "L280",
+      "decision": "distinct",
+      "reason": "數位壓縮回指有明確資料歷史，原始漆溝沒有資料區塊和回指。"
+    },
+    {
+      "a": "P28003",
+      "b": "D9002",
+      "decision": "distinct",
+      "reason": "鋼琴泛音偏移來自弦剛性，這裡校錯時標讓整組頻率成比例移動。"
+    },
+    {
+      "a": "P28003",
+      "b": "R24002",
+      "decision": "distinct",
+      "reason": "同一音對的升降知覺不確定性，與按錯週期定義導致播放頻率倍增不同。"
+    },
+    {
+      "a": "P28003",
+      "b": "R24001",
+      "decision": "distinct",
+      "reason": "Shepard合成層用頻譜包絡製造持續上升，此處每一秒的換算錯一倍。"
+    },
+    {
+      "a": "P28003",
+      "b": "P28004",
+      "decision": "distinct",
+      "reason": "時間軸的伸縮錯誤不會像帶層漏印般新增一個早或晚的訊號副本。"
+    },
+    {
+      "a": "P28003",
+      "b": "M2072",
+      "decision": "distinct",
+      "reason": "兩鐘走速相同仍可能有固定時差，屬原點對齊。聲圖上即使局部時長已校勻，錯估週期會改全段時間尺度。"
+    },
+    {
+      "a": "P28004",
+      "b": "P28001",
+      "decision": "distinct",
+      "reason": "幾何位移轉回聲音與磁印跨層多出一個複本功能不同。"
+    },
+    {
+      "a": "P28004",
+      "b": "D9017",
+      "decision": "distinct",
+      "reason": "心形麥以延遲減少膜片壓差，沒有磁帶儲存過程。"
+    },
+    {
+      "a": "P28004",
+      "b": "C2001",
+      "decision": "distinct",
+      "reason": "弱聲的心理偵測閾值不解釋為何一樣的波形在原聲前出現。"
+    },
+    {
+      "a": "P28004",
+      "b": "R22001",
+      "decision": "distinct",
+      "reason": "同檔重播改變聽感；漏印讓儲存的波形真的多一份。"
+    },
+    {
+      "a": "P28004",
+      "b": "A14004",
+      "decision": "distinct",
+      "reason": "狨猴用外界空檔選擇發聲時機，沒有捲帶上鄰層磁紀錄提早出現的機制。"
+    }
+  ],
+  "not_added_review": [
+    {
+      "id": "P28-NA001",
+      "decision": "keep_not_added",
+      "reason": "受測漆盤化學例補在材料退題，原有遷移/水解素材可作脈絡。"
+    },
+    {
+      "id": "P28-NA002",
+      "decision": "keep_not_added",
+      "reason": "清洗表面和修補漆層缺損的效果分開。"
+    },
+    {
+      "id": "P28-NA003",
+      "decision": "keep_not_added",
+      "reason": "研究只涵蓋指定退化漆盤。"
+    },
+    {
+      "id": "P28-NA004",
+      "decision": "keep_not_added",
+      "reason": "外形不足判定調變方向，合主題。"
+    },
+    {
+      "id": "P28-NA005",
+      "decision": "keep_not_added",
+      "reason": "無相同載體下3D必勝的對照。"
+    },
+    {
+      "id": "P28-NA006",
+      "decision": "keep_not_added",
+      "reason": "彩色共焦與低相干選深不同，儀器術語不額外計。"
+    },
+    {
+      "id": "P28-NA007",
+      "decision": "keep_not_added",
+      "reason": "內向外刻錄只改追蹤方向。"
+    },
+    {
+      "id": "P28-NA008",
+      "decision": "keep_not_added",
+      "reason": "缺料無原始槽可讀。"
+    },
+    {
+      "id": "P28-NA009",
+      "decision": "keep_not_added",
+      "reason": "共鳴管增響已有P132。"
+    },
+    {
+      "id": "P28-NA010",
+      "decision": "keep_not_added",
+      "reason": "聽感不足鑑定身份，屬校速段落限制。"
+    },
+    {
+      "id": "P28-NA011",
+      "decision": "keep_not_added",
+      "reason": "沒同步時標的可信度降低，未證明唯一速度。"
+    },
+    {
+      "id": "P28-NA012",
+      "decision": "keep_not_added",
+      "reason": "捲法不會消除所有印記。"
+    },
+    {
+      "id": "P28-NA013",
+      "decision": "keep_not_added",
+      "reason": "聲納和核磁回波本文無須重講。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W28P-T01",
+      "body_seconds": 125,
+      "decision": "retain_paper_plan",
+      "note": "保留調變與接縫先後兩步。修版共125秒，表面漆層剝落與缺料的界線清楚。"
+    },
+    {
+      "id": "W28P-T02",
+      "body_seconds": 85,
+      "decision": "retain_paper_plan",
+      "note": "先校局部再辨全程倍速，保留85秒。"
+    },
+    {
+      "id": "W28P-T03",
+      "body_seconds": 75,
+      "decision": "retain_paper_plan",
+      "note": "三段捲帶對回時間線，75秒足夠。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P28001",
+        "b": "I15006",
+        "reason": "OCT依光程延遲辨反射深度。新題按機械調變方向選表面位移分量，再轉回聲音。"
+      },
+      {
+        "a": "P28001",
+        "b": "O7009",
+        "reason": "雙光子限制激發體積，與是否持有槽深資訊各自可獨立改變。"
+      },
+      {
+        "a": "P28001",
+        "b": "N209",
+        "reason": "聲納由回波測物距，而唱片由原刻錄位移還原訊號。"
+      },
+      {
+        "a": "P28002",
+        "b": "I3086",
+        "reason": "串流終止標記可辨截斷。漆盤缺的是幾何路徑的連續性，要對回既有槽段。"
+      },
+      {
+        "a": "P28002",
+        "b": "I8011",
+        "reason": "RAID有校驗及日誌。此處曲線若已掉落，讀錯鄰槽不能由一個校驗量反解原段。"
+      },
+      {
+        "a": "P28002",
+        "b": "O3050",
+        "reason": "遙測相干性變化是統計線索，這裡是人工循殘片上的實際槽路。"
+      },
+      {
+        "a": "P28003",
+        "b": "E2202",
+        "reason": "時鐘抖動造成量測誤差。紙上並行記錄的時標可重新定局部時間，但還需確認每週期多長。"
+      },
+      {
+        "a": "P28003",
+        "b": "E2203",
+        "reason": "通道間延遲造成假相位差，與同一載體的音叉等時標記及其尺度不同。"
+      },
+      {
+        "a": "P28003",
+        "b": "P125",
+        "reason": "都卜勒是接收波峰時距的物理改變，此題是解讀歷史記錄時整體播放倍速錯置。"
+      },
+      {
+        "a": "P28003",
+        "b": "M2001",
+        "reason": "校準追溯的比較鏈不同於同步音叉抵消手搖速度波動再判單位。"
+      },
+      {
+        "a": "P28004",
+        "b": "E2136",
+        "reason": "磁域遲滯是磁性前提，未解釋捲帶鄰層的副本為何能在播放上領先原聲。"
+      },
+      {
+        "a": "P28004",
+        "b": "W16001",
+        "reason": "核磁回波需散相後脈衝重新聚合。磁帶層間複印沒有脈衝回聚步驟。"
+      },
+      {
+        "a": "P28004",
+        "b": "W16003",
+        "reason": "散射場倒序重播聚焦，磁帶漏印是磁性載體捲起時的空間鄰接。"
+      },
+      {
+        "a": "P28004",
+        "b": "N209",
+        "reason": "聲納反射一定在發送之後，預印可聽在前是捲帶原本較早的時間段正好相鄰。"
+      },
+      {
+        "a": "P28001",
+        "b": "D9019",
+        "reason": "麥克風在聲場中改變聲壓；題目是刻槽位移的方向。"
+      },
+      {
+        "a": "P28004",
+        "b": "P28001",
+        "reason": "幾何位移轉回聲音與磁印跨層多出一個複本功能不同。"
+      },
+      {
+        "a": "P28001",
+        "b": "O7015",
+        "reason": "總傳遞函數降低細部對比，沒有解決俯視平面幾何未量深度的缺失。"
+      },
+      {
+        "a": "P28001",
+        "b": "P126",
+        "reason": "移動聲源／聽者影響聲波傳播，與刻槽軌跡的讀取無關。"
+      },
+      {
+        "a": "P28002",
+        "b": "P28001",
+        "reason": "同一轉錄流程的不同失敗：調變方向選錯和跨縫接錯圈，各需獨立判斷。"
+      },
+      {
+        "a": "P28002",
+        "b": "W16004",
+        "reason": "水波仍存在於場中而反向回聚，漆層缺處的紀錄已失去。"
+      },
+      {
+        "a": "P28002",
+        "b": "O7002",
+        "reason": "徑向畸變需鏡頭校正，漆碎片已實際變形錯位，須逐槽追蹤。"
+      },
+      {
+        "a": "P28002",
+        "b": "P28004",
+        "reason": "重接凹槽順序與磁帶相鄰層多出弱副本不同。"
+      },
+      {
+        "a": "P28002",
+        "b": "L280",
+        "reason": "數位壓縮回指有明確資料歷史，原始漆溝沒有資料區塊和回指。"
+      },
+      {
+        "a": "P28003",
+        "b": "D9002",
+        "reason": "鋼琴泛音偏移來自弦剛性，這裡校錯時標讓整組頻率成比例移動。"
+      },
+      {
+        "a": "P28003",
+        "b": "R24002",
+        "reason": "同一音對的升降知覺不確定性，與按錯週期定義導致播放頻率倍增不同。"
+      },
+      {
+        "a": "P28003",
+        "b": "R24001",
+        "reason": "Shepard合成層用頻譜包絡製造持續上升，此處每一秒的換算錯一倍。"
+      },
+      {
+        "a": "P28003",
+        "b": "P28004",
+        "reason": "時間軸的伸縮錯誤不會像帶層漏印般新增一個早或晚的訊號副本。"
+      },
+      {
+        "a": "P28003",
+        "b": "M2072",
+        "reason": "兩鐘走速相同仍可能有固定時差，屬原點對齊。聲圖上即使局部時長已校勻，錯估週期會改全段時間尺度。"
+      },
+      {
+        "a": "P28004",
+        "b": "D9017",
+        "reason": "心形麥以延遲減少膜片壓差，沒有磁帶儲存過程。"
+      },
+      {
+        "a": "P28004",
+        "b": "C2001",
+        "reason": "弱聲的心理偵測閾值不解釋為何一樣的波形在原聲前出現。"
+      },
+      {
+        "a": "P28004",
+        "b": "R22001",
+        "reason": "同檔重播改變聽感；漏印讓儲存的波形真的多一份。"
+      },
+      {
+        "a": "P28004",
+        "b": "A14004",
+        "reason": "狨猴用外界空檔選擇發聲時機，沒有捲帶上鄰層磁紀錄提早出現的機制。"
+      }
+    ]
+  },
+  "final_draft_sha256": "f1316e6031840d5ddae4813710cba4ed571b82f89d59b4a0ef8a8f72f701e649",
+  "remaining_blockers": [],
+  "limits": "非作者讀存取原件、指定圖頁與全部新候選。未播放歷史音檔、試錄或測受眾。本批上片前需核示意聲音與圖像使用條件。"
+}

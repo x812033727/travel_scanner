@@ -1,0 +1,939 @@
+{
+  "batch_id": "wave11-landforms-20261101",
+  "created_on": "2026-11-01",
+  "scope": "河流侵蝕與沉積回饋、沙丘互動、凍土地表圖樣、障壁島及撞擊/乾冰地貌；19個題級候選，模型/實驗/自然證據分開，不以配額或地名擴題。",
+  "sources": [
+    {
+      "id": "E11-S001",
+      "url": "https://biogeoscapes.org/wp-content/uploads/sites/62/2021/07/Bramante-2020-Experimental-quantification-of-bedrock-abrasion-under-oscillatory-flow..pdf",
+      "title": "Experimental quantification of bedrock abrasion under oscillatory flow",
+      "publisher": "Bramante et al.; Geology 48, 541–545；WHOI作者實驗室副本",
+      "version": "2020正式論文，doi:10.1130/G47089.1",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀PDF pp.1–3正文與Figures 1–3圖說；未讀pp.4–5及補充資料。",
+      "locator": "PDF pp.1–3，Oscillatory abrasion experiments；Controls on bedrock incision",
+      "summary": "礫石既是磨蝕工具也可遮蔽底床；振盪流聚成床形，使保護範圍並非由總砂量單獨決定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。底材是低強度泡棉；不把實驗冪次直接當任何海岸的侵蝕預報。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/waveabrasion.pdf",
+        "sha256": "4f57ceb7312152cafe00653be5a5d619e858195a9a5130e2a1f11eb5ee1c3abb",
+        "text_path": ".cache/wave11-landforms-sources/waveabrasion.txt",
+        "text_sha256": "c184fe70742150c81596025e4c96fdf0688a8ba30ff1a47198910e261502f743"
+      }
+    },
+    {
+      "id": "E11-S002",
+      "url": "https://lamb.caltech.edu/documents/19705/Scheingross_et_al_Nature_2019.pdf",
+      "title": "Self-formed bedrock waterfalls",
+      "publisher": "Scheingross, Lamb & Fuller; Nature 567, 229–233；Caltech作者副本",
+      "version": "2019正式論文，doi:10.1038/s41586-019-0991-z",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀PDF pp.1–3正文及Figures 1–2圖說；未逐讀後附Methods或補充影片。",
+      "locator": "PDF pp.1–3，upstream pool armoring、downstream incision、stationary waterfalls與自然適用限制",
+      "summary": "固定外部條件的均質實驗河床，可因局部砂礫覆蓋和差異侵蝕自行生成瀑布。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。實驗支持自然界可能性，不證明任何具名天然瀑布必為同因；未把泡棉當天然岩石的等比例復現。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/waterfalls.pdf",
+        "sha256": "d19baccd2feb5f5ee093b24321a9bd07e5a232b92a761add50e1372f480df45f",
+        "text_path": ".cache/wave11-landforms-sources/waterfalls.txt",
+        "text_sha256": "d7cbcab44387992c1c518f38851f62ed2bd400a9ec1a34ed4d3035123a3b34a1"
+      }
+    },
+    {
+      "id": "E11-S003",
+      "url": "https://opentextbc.ca/physicalgeology2ed/chapter/13-3-stream-erosion-and-deposition/",
+      "title": "13.3 Stream Erosion and Deposition",
+      "publisher": "Steven Earle / BCcampus, Physical Geology – 2nd Edition",
+      "version": "2019第二版",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀本章正文p3–14與Figure 13.3.3相關說明；未做教材習題。",
+      "locator": "Figure 13.3.3之前與之後的Hjulström-Sundborg說明，尤其小粒子黏聚段",
+      "summary": "很細的沉積物可因黏聚難以從床面啟動；啟動和已在水中被運送不是同一門檻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "university_textbook",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。不採本章簡化流速數字作現場標準，不沿用把慢河一概稱層流的概括。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/stream.html",
+        "sha256": "7e816f5cff1e06058667a9245f1880614537677d6386ce418fc4579d9b0d11d6",
+        "text_path": ".cache/wave11-landforms-sources/stream.txt",
+        "text_sha256": "64596a3cde76bff337f9c696d9d8b48ce6a9fafd130f8f14bdac21140d6f54fe"
+      }
+    },
+    {
+      "id": "E11-S004",
+      "url": "https://opentextbc.ca/physicalgeology2ed/chapter/6-4-sedimentary-structures-and-fossils/",
+      "title": "6.4 Sedimentary Structures and Fossils",
+      "publisher": "Steven Earle / BCcampus, Physical Geology – 2nd Edition",
+      "version": "2019第二版",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀正文p3–13與媒體定位；候選只用cross-bedding兩段，未使用習題。",
+      "locator": "Cross-bedding兩段，Figures 6.4.2–6.4.3",
+      "summary": "移動的沙紋或沙丘在前緣堆出斜層，後來的床形又可截去一部分；斜層不必等於整層後來傾倒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "university_textbook",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/crossbeds.html",
+        "sha256": "49a89c5c189d4368dd6f0d53ea589fbb042b5020f72f19ecdeb90540c22bc14e",
+        "text_path": ".cache/wave11-landforms-sources/crossbeds.txt",
+        "text_sha256": "68569bf92d08e6725df9c81114b4e73207b9b66f9567425c6cd0c77e1e5420cb"
+      }
+    },
+    {
+      "id": "E11-S005",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2006JF000574",
+      "title": "Mechanics of river mouth bar formation: Implications for the morphodynamics of delta distributary networks",
+      "publisher": "Edmonds & Slingerland; JGR Earth Surface",
+      "version": "2007正文，另讀2007JF000874勘誤",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find直接返回出版者正文；urllib帶指定UA回403，未繞驗證；web介面不能設定UA。",
+      "reading_scope": "實讀§1–3返回的主要正文、§4.4 [33]–[38]、§5.1 [40]–[42]、§5.2 [43]及§5.4 [48]定點內容；未逐式驗算模型，也未宣稱§5每段全讀。",
+      "locator": "§3 [17]；§4.4 [33]–[36]；§5.1 [40]–[42]；§5.2 [43]；§5.4 [48]",
+      "summary": "河口射流減速沉積，淺化的沙洲又把水引向兩側，形成沉積與分流回饋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。正式研究含歷史圖像及數值模型；候選只用河流主導、弱潮弱浪的模型條件，沒有當成所有三角洲公式。web返回部分已存.cache/wave11-landforms-sources/public-web-open.json；局部find閱讀未另假稱完整離線副本。"
+    },
+    {
+      "id": "E11-S006",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2007JF000874",
+      "title": "Correction to Mechanics of river mouth bar formation",
+      "publisher": "Edmonds & Slingerland; JGR Earth Surface",
+      "version": "2007年9月勘誤",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.click/find直接返回出版者勘誤正文；母文urllib帶指定UA回403，此勘誤未另外用urllib下載；web介面不能設定UA。",
+      "reading_scope": "實讀勘誤唯一正文[1]及改正Figure 2圖說；未使用地圖座標。",
+      "locator": "勘誤[1]，Figure 2位置更正",
+      "summary": "勘誤更正三個三角洲在地圖的位置；本批不沿用原地圖位置，也不使用數值門檻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。此頁由web.click/find讀回；未宣稱urllib成功下載此勘誤，母文urllib回403。"
+    },
+    {
+      "id": "E11-S007",
+      "url": "https://www.nps.gov/articles/barrier-island-response-to-storms.htm",
+      "title": "Barrier Island Response to Storms",
+      "publisher": "U.S. National Park Service",
+      "version": "頁面標示Last updated June 11, 2019",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀Introduction、Barrier Dune Systems、Inlet Formation及Washover Channels and Fans正文；歷史風暴只是文中案例。",
+      "locator": "Introduction；Inlet Formation；Washover Channels and Fans",
+      "summary": "越浪可把沙移向沙洲背側；風暴後灣內積水回流，也可從背側切出破口。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "government_geoscience",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。不採風暴分級的概括作今日防災規範；不保證任何沙洲能靠越浪長久存續。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/barrier.html",
+        "sha256": "1409c62055ca04ef1d46e69cd1eae94640ca46b8aea2e368690df1b0caf2dbd3",
+        "text_path": ".cache/wave11-landforms-sources/barrier.txt",
+        "text_sha256": "59686c4be3b4098a73ce72ba258336f760c3e34656357c3475ddd651dfe4d9b6"
+      }
+    },
+    {
+      "id": "E11-S008",
+      "url": "https://pubs.usgs.gov/gip/deserts/dunes/",
+      "title": "Types of Dunes",
+      "publisher": "U.S. Geological Survey, Deserts: Geology and Resources",
+      "version": "GIP網站現存版本；頁面未明列更新日",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀HTML擷取中barchan與parabolic段；表格內未擷取段落不宣稱全讀。",
+      "locator": "以U-shaped mounds of sand開頭的parabolic dunes段",
+      "summary": "植被固定兩臂而中央繼續移動，可讓拋物線沙丘拖著兩臂，不只由風向命名。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "government_geoscience",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/dunes.html",
+        "sha256": "dcd70a8580ae93285d812f3f68deebe6e6e848d37a3b15497b9c98500b6772b8",
+        "text_path": ".cache/wave11-landforms-sources/dunes.txt",
+        "text_sha256": "34c0e5dabc8f98f43e8edff00ebf656ba1b63b8cfd775c484ff6b6982c678506"
+      }
+    },
+    {
+      "id": "E11-S009",
+      "url": "https://api.repository.cam.ac.uk/server/api/core/bitstreams/c73cabf6-f44d-45fe-8970-83598b5adb0c/content",
+      "title": "Wake-induced long range repulsion of aqueous dunes",
+      "publisher": "Bacik et al.; University of Cambridge accepted manuscript, Physical Review Letters",
+      "version": "稿面2019-10-25；期刊2020，doi:10.1103/PhysRevLett.124.054501",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀PDF pp.1–4正文與Figures 1–4圖說；未讀最後參考文獻頁或補充影片。",
+      "locator": "PDF pp.2–4，同質量分離、mobile-layer fluctuations、mean-flow限制與secondary-circulation限制",
+      "summary": "上游床形的尾流可改變下游顆粒輸運；同質量沙堆也不必同速，毋須先相撞。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。直接證據為水槽玻璃珠/準二維固底；湍流波動致速的完整因果為作者高度可能解釋，風成外推仍是假說。大學新聞front/back用詞易混，採原稿upstream/downstream定位。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/dunewakepaper.pdf",
+        "sha256": "3c1a633ef5966b5cbf61c567a56ddc7257e4368e6530f058fc837a7ad9d1cd91",
+        "text_path": ".cache/wave11-landforms-sources/dunewakepaper.txt",
+        "text_sha256": "52c4c676c256e6ff2c51651217bc3633c5ae211ba647b5b7b847843bbe30fd2c"
+      }
+    },
+    {
+      "id": "E11-S010",
+      "url": "https://pieter-vermeesch.es.ucl.ac.uk/papers/VermeeschGRL2011/",
+      "title": "Solitary wave behavior in sand dunes observed from space",
+      "publisher": "Pieter Vermeesch; UCL作者HTML，Geophysical Research Letters",
+      "version": "2011，doi:10.1029/2011GL049610",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀作者全文主要段落p5–15，包括質量交換與二維體積估算限制；未看補充動畫。",
+      "locator": "模型機制段p5、影像序列段p6、Discussion p10–11",
+      "summary": "先後沙丘交換砂量、改變大小與速度，可產生外觀似穿越的結果；並不是同一堆沙穿透另一堆。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。45年圖像序列支持形態過程；無直接逐粒追蹤，體積以寬度代理且不確定性大。不將soliton當真正孤立波。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/dunecollision.html",
+        "sha256": "13b56bf1ce9578035b362daa203d77a156adfd1dd6876f4bd3cc87fb1462941e",
+        "text_path": ".cache/wave11-landforms-sources/dunecollision.txt",
+        "text_sha256": "c48ea20f9c083f15b1e19a46a2e6f1e147a80a5d5e20f34001eddaa495dcac71"
+      }
+    },
+    {
+      "id": "E11-S011",
+      "url": "https://www.nps.gov/articles/aps-v12-i2-c7.htm",
+      "title": "Permafrost Landforms as Indicators of Climate Change in Parks Across the Arctic",
+      "publisher": "David K. Swanson / U.S. National Park Service, Alaska Park Science 12(2)",
+      "version": "頁面Last updated August 11, 2015；歷史監測資料",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀全部四種地形及結論正文；採Ice-wedge Polygons與Thermokarst Lakes，並讀Active-layer detachments供退題。",
+      "locator": "Ice-wedge Polygons三段；Thermokarst Lakes一段",
+      "summary": "季節裂隙填水結冰累積成冰楔；冰楔退化可降低邊緣，湖泊解凍也可能因出口破開而排水。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "government_original_monitoring",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。是指定園區歷史監測與機制說明，不宣稱2026年當地變化率或所有北極地區一致。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/iceparks.html",
+        "sha256": "0c3e4c9c619393b5659cf6cd7827ef254118dac975abc6d4f658d58dedf825ec",
+        "text_path": ".cache/wave11-landforms-sources/iceparks.txt",
+        "text_sha256": "994c36961a90045518c8953dd32ea64111e817be292eaf8341055378d880f058"
+      }
+    },
+    {
+      "id": "E11-S012",
+      "url": "https://arxiv.org/pdf/1211.6762",
+      "title": "Evolving fracture patterns: columnar joints, mud cracks, and polygonal terrain",
+      "publisher": "Lucas Goehring；作者公開稿，Philosophical Transactions A對應論文",
+      "version": "arXiv 1211.6762現取稿；2013期刊doi:10.1098/rsta.2012.0353",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀PDF p4–9的§II末、§III模型、§IV新泥裂實驗與Figures 3–6圖說；p6末少量輸出截斷不列全頁逐字核。未讀§V以後。",
+      "locator": "§III三條件與局部裂徑模型；§IV Mud Cracks，Figures 4–6",
+      "summary": "反覆濕乾留下不完全的裂徑記憶，開裂先後改變可移動交點，實驗裂角逐漸接近三等角。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。此篇兼綜述與作者新增厚度實驗，只採實讀模型/實驗；不以全球最省周長當直接成因。2010原論文NTU副本urllib403，未冒稱已讀。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/mudreview.pdf",
+        "sha256": "a893f15c1596c01444b7c7c982ce403b5db61596efab4a1197db7c133d426213",
+        "text_path": ".cache/wave11-landforms-sources/mudreview.txt",
+        "text_sha256": "6b36d1c21e2570d9c788eba1378b3cb8bae2d8075a01f370bb45ee10db570094"
+      }
+    },
+    {
+      "id": "E11-S013",
+      "url": "https://www.lpi.usra.edu/education/explore/shaping_the_planets/impact-cratering/",
+      "title": "Shaping the Planets: Impact Cratering",
+      "publisher": "Lunar and Planetary Institute / USRA",
+      "version": "現存教育頁，未標更新日",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find直接返回出版者正文；urllib帶指定UA回403，未繞驗證；web介面不能設定UA。",
+      "reading_scope": "實讀What are craters、What happens when an impactor hits、形狀與相對年代段；未使用地球案例數值、重轟炸年代或當代撞擊率。",
+      "locator": "What are craters?；What happens when an impactor hits?；What influences the size and shape?；How can craters be used to determine age?",
+      "summary": "高速撞擊向外傳遞能量，不是撞物形狀的壓印；大坑可重力塌陷，上覆新物質又會清除舊坑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "research_institute_education",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。urllib403；web.open正文成功且返回文本存public-web-open.json。所有角度/直徑閾值不採為通則，未看圖檔。"
+    },
+    {
+      "id": "E11-S014",
+      "url": "https://science.nasa.gov/moon/lunar-craters/",
+      "title": "Moon Craters",
+      "publisher": "NASA Science / Goddard科學顧問",
+      "version": "當日網站版本；未以頁面例子作最新年代測定",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀How Craters Form的Excavation/Modification及大型坑塌陷正文；另讀頁末熔融覆蓋使坑齡看似較年輕段；其他背景僅瀏覽不用。",
+      "locator": "How Craters Form—Modification；大型坑與長時熔融表面重新覆蓋段",
+      "summary": "撞擊後坑壁下滑與中央隆起改造最初空穴，撞擊記錄也能被後續表面更新抹去。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "government_geoscience",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。不用本頁breccia分類與重轟炸歷史概括；沒有聲稱所有多環盆地細節已定論。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/lunar.html",
+        "sha256": "bfd122121f1b4cc085f688f1a8ffa0defbc62feff6207129cfaac9eb04e137a2",
+        "text_path": ".cache/wave11-landforms-sources/lunar.txt",
+        "text_sha256": "9a6678ff5d3345153cb4133a6b6f1a91f8b7df4115dafc529f978af70912d1dc"
+      }
+    },
+    {
+      "id": "E11-S015",
+      "url": "https://www.nasa.gov/solar-system/planets/mars/nasa-scientists-re-create-mars-spiders-in-a-lab-for-first-time/",
+      "title": "NASA Scientists Re-Create Mars Spiders in a Lab for First Time",
+      "publisher": "NASA / JPL實驗團隊報告",
+      "version": "2024-09-11",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀全文主要段落p6–24，包括Kieffer模型、底部加熱實驗及未解問題；未另讀PSJ研究全文。",
+      "locator": "Kieffer model說明；DUSTIE實驗；未來從上方照光與火星分布未解段",
+      "summary": "半透明乾冰下方昇華的氣體可能被封住並噴出挖出支狀紋；模擬實驗支持部分過程。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "government_firsthand_research_report",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。官方第一手研究報告，不假稱原期刊全文。實驗是底部加熱，不是已用日光從上方重現全部火星情境；未觀察到所有火星紋路正在長。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/spiders.html",
+        "sha256": "58d2ed3dc499a410e6f627944138c52928f05ec1ac7b03a303fb8b049ff47a0b",
+        "text_path": ".cache/wave11-landforms-sources/spiders.txt",
+        "text_sha256": "32101a9454bab0c440c967b6af3e5b2c891970bdc30402f92a8260db6632e361"
+      }
+    },
+    {
+      "id": "E11-S016",
+      "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/30906_mro20130611.pdf",
+      "title": "Dry Ice Moves on Mars — transcript",
+      "publisher": "NASA / JPL研究者影片逐字稿",
+      "version": "2013-06-11資源，PDF一頁",
+      "accessed_on": "2026-11-01",
+      "read_via": "公開正文以Python urllib自訂UA取得；HTML以lxml、PDF以PyMuPDF擷取所列範圍後閱讀。",
+      "reading_scope": "實讀一頁完整逐字稿；未播放影片、未另讀原論文。",
+      "locator": "中段dry ice / water ice / wooden block對照；氣墊與末端坑的假說",
+      "summary": "乾冰昇華可形成氣體墊，研究者以地球沙丘實驗探討火星細長溝槽及末端坑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "government_firsthand_research_report",
+      "access_notes": "HTTP User-Agent: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。只讀所列範圍；未播放補充影片、未復現實驗、未判定原圖商用授權。JPL新聞canonical urllib403，改官方逐字稿成功；地球實驗不是火星原位驗證；不提供乾冰操作或沿用娛樂化運動建議。",
+      "author_cache": {
+        "path": ".cache/wave11-landforms-sources/gullies2.pdf",
+        "sha256": "fa961f034f6dba381e59e29e30610abe9f0f3808268a1e2814e13e4e3f2479ce",
+        "text_path": ".cache/wave11-landforms-sources/gullies2.txt",
+        "text_sha256": "31b9a5f03ebfc11c5a05af8673f10dfc52da5390a593eababbbd66d68ca00563"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "E11001",
+      "question": "砂礫越多，為什麼不一定把岩床磨得越快？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.abrasion_tools_cover_exposure_competition",
+      "answer_target": "可動砂礫撞擊提供磨蝕工具，但覆蓋底床又減少裸露受撞面；兩者競爭使侵蝕不隨砂量一直增加，振盪流聚沙成床形又改變覆蓋效率。",
+      "scope": "限所讀振盪水槽、礫石及泡棉替代岩床實驗；河流只作機制背景，不套用統一最佳砂量或侵蝕率。",
+      "source_ids": [
+        "E11-S001"
+      ],
+      "source_locator": "PDF pp.1–3；Controls on bedrock incision",
+      "premise_status": "screened",
+      "notes": "與E7022選擇搬走細粒形成粗化層不同，聚焦工具與覆蓋的反向作用。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一砂礫可以是磨具，也可以是護墊。",
+        "visual": "固定流動的少/中/多砂三格；在多砂格另標裸露區與靜止沙堆，不把全床鋪成一樣厚。",
+        "seconds": [
+          65,
+          105
+        ]
+      }
+    },
+    {
+      "id": "E11002",
+      "question": "河床沒有硬軟岩交界，瀑布也可能自己長出來嗎？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.autogenic_waterfall_pool_armoring_differential_incision",
+      "answer_target": "均質可侵蝕床的局部深池先積砂受保護，下游仍下切，使兩者間坡段變陡並形成離床水柱；外部條件固定也能產生地形階梯。",
+      "scope": "限2019水槽實驗及自然界可能性；不稱所有瀑布都如此，不把水躍等同瀑布或天然岩石與泡棉視為等比例。",
+      "source_ids": [
+        "E11-S002"
+      ],
+      "source_locator": "PDF pp.1–3，Figure 1及pool armoring到waterfall形成段",
+      "premise_status": "screened",
+      "notes": "與F10016固定床水躍不同；新核是床形和砂礫覆蓋共同演化。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "階梯可能是侵蝕與沉積互相改造的結果，不必事先藏著一層硬岩。",
+        "visual": "同一床材標示上游積砂與下游繼續下切，再出現水柱離床；開頭標水槽機制示意。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "E11003",
+      "question": "河底的細泥比砂還小，為什麼反而可能更難被沖起來？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.cohesive_fines_entrainment_vs_suspension",
+      "answer_target": "細粒間黏聚提高從床面啟動的難度；一旦分散進水中，維持輸送所需條件又不同，不能只用單顆重量排序。",
+      "scope": "限Hjulström-Sundborg概念圖的黏聚細粒床；不給任意河川通用流速，也不假設所有小粒子都已黏結。",
+      "source_ids": [
+        "E11-S003"
+      ],
+      "source_locator": "Figure 13.3.3說明與tiny grains of clay段",
+      "premise_status": "screened",
+      "notes": "與N236輸砂能力、F10006空隙填充和一般沉降不同。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沖起來與帶著走，是兩個不同問題。",
+        "visual": "相同大小細粒用黏結床/已分散懸浮兩個狀態比較，不把畫面換成粒徑分選。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "E11004",
+      "question": "岩層大致平放，裡面的細紋為什麼一排排斜著？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.cross_bedding_migration_and_truncation_record",
+      "answer_target": "移動沙紋或沙丘的前緣堆積出斜層，後續床形可侵蝕截去一部分，留下平層內成組的斜紋。",
+      "scope": "限沉積形成的交錯層理，判讀需確認層位/構造；不以任一斜線排除後期變形，不反算精確風速。",
+      "source_ids": [
+        "E11-S004"
+      ],
+      "source_locator": "cross-bedding兩段，Figures 6.4.2–6.4.3",
+      "premise_status": "screened",
+      "notes": "近E7011沙丘遷移；新增保存/截切與地層判讀，若完整稿只重講搬砂則併舊例。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "岩內斜紋能是沙堆移動的保存紀錄，不必是整層岩石被掀斜。",
+        "visual": "原創剖面以色層標前緣加砂與下一床形截切，只保留最後留下部分。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "E11005",
+      "question": "河口自己堆出的沙洲，怎麼又把河水分成兩條路？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.mouth_bar_shoaling_flow_diversion_feedback",
+      "answer_target": "出河口的射流擴散減速而沉積；沙洲逐漸淺化後增加上游壅水並迫使流動繞側，降低頂部輸砂能力、促進加高與兩側通道。",
+      "scope": "限所讀河流主導、無強潮浪的模型與歷史圖像；不是所有分汊皆由此形成，不套用模型深度比例當普遍門檻。",
+      "source_ids": [
+        "E11-S005",
+        "E11-S006"
+      ],
+      "source_locator": "§3 [17]；§4.4 [33]–[36]；§5.1–5.4 [40]–[48]",
+      "premise_status": "screened",
+      "notes": "與E7008堤岸抬高後改道、N236辮狀河的輸砂概括不同。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水流造出障礙，障礙又改寫水流路線。",
+        "visual": "由平床到低沙洲再到繞側流的三格，兩側流量箭頭隨條件改；不要畫成突然搬來大石。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "E11006",
+      "question": "風暴把沙越過沙洲頂端，為什麼不只是把陸地沖走？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.barrier_overwash_landward_sediment_transfer",
+      "answer_target": "越浪把海側砂移到背側形成覆沙扇，可能增高或推動沙洲向陸側遷移；局部海側侵蝕與背側堆積可同時發生。",
+      "scope": "限障壁島越浪過程，不保證淨增陸地或長期存續；水量/砂供應及地形不同可導致破碎。",
+      "source_ids": [
+        "E11-S007"
+      ],
+      "source_locator": "Introduction；Washover Channels and Fans",
+      "premise_status": "screened",
+      "notes": "不同於N190沿岸漂沙，這裡橫越沙洲向背側搬砂。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "侵蝕的位置與沉積的位置不同，退岸也可能伴隨整體向內搬。",
+        "visual": "同一剖面追蹤海側砂粒去向，保留兩岸線並標淨量未必增加。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    },
+    {
+      "id": "E11007",
+      "question": "沙洲的風暴破口，為什麼有時會從潟湖這一側切出去？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.barrier_bay_water_return_flow_breaching",
+      "answer_target": "風暴讓灣內積水並形成水面傾斜；風勢減弱或轉向後，回湧積水可越過低處沖出通道，通道又集中向外排水。",
+      "scope": "限NPS列出的灣側破口路徑，不採較常發生的比例或預測特定海岸；不主張所有破口皆從內側開始。",
+      "source_ids": [
+        "E11-S007"
+      ],
+      "source_locator": "Inlet Formation整段",
+      "premise_status": "screened",
+      "notes": "不是N189波折射或單純海水倒灌；回流的初始儲水與風勢條件不可省。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "衝破海岸的水，不一定是當下迎面打來的浪。",
+        "visual": "先標風暴期間灣內積水，再重設風勢減弱/轉向，追水向低處集中；與前章越浪方向分清。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "E11008",
+      "question": "有些U形沙丘，為什麼是中間往前跑、兩隻腳留在後面？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.parabolic_dune_vegetation_anchored_arms",
+      "answer_target": "植被使兩臂較固定，未同樣固定的中央仍移動，形成鼻部向前而臂部拖後的形態。",
+      "scope": "限USGS所述植被固定的拋物線沙丘；不是所有U形沙堆都能如此辨識，不另列沙丘名稱當新核心。",
+      "source_ids": [
+        "E11-S008"
+      ],
+      "source_locator": "parabolic dunes段",
+      "premise_status": "screened",
+      "notes": "E7011明列未涵蓋植被固定；這裡新增空間不同活動性，不重新算普通遷移。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "形狀不只由風向決定，也取決於哪一段能移動。",
+        "visual": "同風向下以綠色標兩臂固定區，逐格只讓中段前移；比較未固定條件僅作示意。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "E11009",
+      "question": "水底兩座一樣大的沙堆，為什麼還沒碰到就越走越遠？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.aqueous_dune_wake_mediated_repulsion",
+      "answer_target": "水槽上游床形的尾流與下游輸砂波動相關，下游較快移動、距離拉大；作者提出尾流波動增強輸砂的機制，不須先以撞擊交換質量解釋。",
+      "scope": "限準二維固底環形水槽、玻璃珠與所讀觀測；精確流場解析受裝置限制，湍流致速鏈為作者解釋，沙漠外推未證實。",
+      "source_ids": [
+        "E11-S009"
+      ],
+      "source_locator": "PDF pp.2–4，Figures 2–3與conjecture/secondary circulation限制",
+      "premise_status": "screened",
+      "notes": "少量質量差是後續結果，不能說全程零顆粒交換；不同於E7011單丘遷移。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一座沙堆可以透過水流改變另一座的移動條件。",
+        "visual": "先畫等質量/同外部驅動，再標上游尾流和下游顆粒輸運突發；不把砂丘畫成有意識互斥。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "E11010",
+      "question": "小沙丘看似穿過大沙丘，真的是同一堆沙穿透過去嗎？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.barchan_collision_mass_exchange_apparent_pass_through",
+      "answer_target": "碰撞時砂量可由下風向丘轉向上風向丘，兩丘大小與移速互換，於是前後小/大輪廓看似穿透；外觀相似不等於原物質穿透。",
+      "scope": "限Bodélé影像序列與文中模型解釋；非所有碰撞都保持兩丘，無逐粒追蹤，體積由寬度推估有限制。",
+      "source_ids": [
+        "E11-S010"
+      ],
+      "source_locator": "正文p5–6與Discussion p10–11",
+      "premise_status": "screened",
+      "notes": "同批E11009是碰撞前尾流；此題是形態碰撞時質量交換，須明示換成風成地點與不同證據。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "要追的是砂的去向，不能只追大小相似的輪廓。",
+        "visual": "用兩色做機制示意但標非追蹤實測；比較輪廓認同與質量交換，不動畫成實體互穿。",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "E11011",
+      "question": "凍土地面的大多邊形邊線，為什麼下面藏著一楔楔冰？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.ice_wedge_recurrent_thermal_contraction_infill",
+      "answer_target": "冬季凍土收縮開裂，春季融水填入並凍結保存；多年沿裂隙重複，可累積成向下變窄的冰楔並抬起鄰近地面。",
+      "scope": "限所述冰楔多邊形，並非所有多邊形地形同成因；季節次序不能倒寫成水先結冰撐出每條初裂縫。",
+      "source_ids": [
+        "E11-S011"
+      ],
+      "source_locator": "Ice-wedge Polygons第一段",
+      "premise_status": "screened",
+      "notes": "N226冰透鏡凍脹、N235裂隙內冰生長均非此反覆收縮裂隙保存。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "表面細線可以記錄許多冬春循環，不是一場結冰一次完成。",
+        "visual": "冬季裂開/春季填水/凍住的循環，再以多年疊加剖面，分開地表低中心與冰楔位置。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "E11012",
+      "question": "冰楔融掉以後，多邊形中央為什麼反而看起來變高？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.ice_wedge_thaw_margin_subsidence_relief_inversion",
+      "answer_target": "原在邊界下方的冰楔退化，使邊緣下陷；中心相對邊緣變高，不能把高中心一概解讀成中央隆升。",
+      "scope": "限冰楔退化造成的地形反轉；不宣稱所有高中心都由此形成，不假定中央絕對高度完全不變。",
+      "source_ids": [
+        "E11-S011"
+      ],
+      "source_locator": "Ice-wedge Polygons第二段",
+      "premise_status": "screened",
+      "notes": "與E7006埋冰鍋穴不同：聚焦冰楔位於邊界造成相對地形翻轉，非泛稱冰融地陷。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看起來升高可能是比較基準降低。",
+        "visual": "同一垂直基準線前後比較；邊界下陷用實線，中央高度不作無來源數字。",
+        "seconds": [
+          45,
+          80
+        ]
+      }
+    },
+    {
+      "id": "E11013",
+      "question": "凍土變暖可能融出湖，為什麼也可能讓原有的湖突然排乾？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.thermokarst_lake_thaw_outlet_breach_vs_basin_expansion",
+      "answer_target": "地下冰退化可擴大凹盆，但若解凍打開湖岸出口，排水反而降低湖水面積；造出容水空間與保住水的條件不同。",
+      "scope": "限NPS所述熱融湖盆擴大/破岸排水兩路徑；不由單張湖面變化推定原因，降水蒸發也能改面積。",
+      "source_ids": [
+        "E11-S011"
+      ],
+      "source_locator": "Thermokarst Lakes一段",
+      "premise_status": "screened",
+      "notes": "N224是不透水層限制下滲，E7006為埋冰留下凹穴；此題是出口開啟的反向結果。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "更多融化不保證更多湖水，還要看出口是否仍封住。",
+        "visual": "兩支條件分叉：盆地加深且出口封住；湖岸破口後流出，不能當同一湖必經順序。",
+        "seconds": [
+          45,
+          80
+        ]
+      }
+    },
+    {
+      "id": "E11014",
+      "question": "泥地反覆濕了又乾，裂縫交點為什麼會從T形慢慢變得像Y形？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.recurrent_crack_memory_order_vertex_drift",
+      "answer_target": "舊裂痕留下不完全的弱化路徑，下一輪開裂順序可變，局部裂徑偏轉使交點移動；作者模型與泥層實驗呈現裂角逐漸較等分。",
+      "scope": "限所讀膨潤土薄層反覆濕乾實驗與局部模型；不是每個多邊形必變正六邊形，也不把最省周長當已證直接成因。",
+      "source_ids": [
+        "E11-S012"
+      ],
+      "source_locator": "PDF pp.4–9，§III及§IV，Figures 3–6",
+      "premise_status": "screened",
+      "notes": "E7001冷卻前緣決定柱方向、D2093乾縮起裂不同；新核是重複順序與不完全記憶改變交點。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "裂痕會留下記憶，但記憶不必每次完全重播。",
+        "visual": "同一交點三條裂路用開裂先後編號，重濕後只小幅移動；標模型示意/實驗趨勢而非真實逐幀重建。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "E11015",
+      "question": "撞來的石頭不圓，撞擊坑為什麼卻常接近圓形？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.hypervelocity_crater_radial_excavation_not_imprint",
+      "answer_target": "高速撞擊產生向外傳遞的衝擊與拋出，開挖範圍不只是撞物輪廓；很低角度等條件仍可留下明顯拉長坑。",
+      "scope": "限高速行星撞擊的一般機制，非日常低速落物壓痕；不用通用角度閾值，不說每個坑都正圓。",
+      "source_ids": [
+        "E11-S013"
+      ],
+      "source_locator": "What are craters?；What happens when an impactor hits?；shape段",
+      "premise_status": "screened",
+      "notes": "與N055大氣中碎裂、N005亮射紋風化不同。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "坑像什麼，不等於撞它的物體像什麼。",
+        "visual": "不規則撞體與向外傳遞區域並排，再加入低角度例外；不畫成化學炸藥爆炸。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "E11016",
+      "question": "有些撞擊坑中央為什麼反而站著一座山？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.complex_crater_gravity_collapse_central_uplift",
+      "answer_target": "足夠大的最初空穴會在重力作用下改形；坑壁下滑、中央物質隆起，形成中央峰與階梯狀坑壁，不是撞體留在坑中心。",
+      "scope": "限複雜撞擊坑的Modification階段；各天體門檻不同，多環盆地細節不概括；不把岩石畫成彈性球完整彈回。",
+      "source_ids": [
+        "E11-S013",
+        "E11-S014"
+      ],
+      "source_locator": "LPI中央峰/壁段；NASA How Craters Form—Modification",
+      "premise_status": "screened",
+      "notes": "與E7009差異侵蝕留下高地不同；這是撞擊後重力重整。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最後的坑是撞擊之後又塌改的形狀。",
+        "visual": "初始空穴→坑壁滑落/中央隆起兩步剖面；不把熔岩噴發接進同一動畫。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "E11017",
+      "question": "月面某塊地方的坑比較少，就能說那塊岩石一定比較年輕嗎？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.crater_retention_age_resurfacing_reset",
+      "answer_target": "坑數反映暴露累積與保存，也受後來覆蓋、侵蝕或熔融重整抹除影響；更新表面能重設保留紀錄，不能直接等同所有岩石的形成年代。",
+      "scope": "限相對表面年代概念，需要相似撞擊環境與可比區域；不給絕對定年或把坑數當無誤的時鐘。",
+      "source_ids": [
+        "E11-S013",
+        "E11-S014"
+      ],
+      "source_locator": "LPI age段；NASA熔融表面覆蓋早期坑的說明",
+      "premise_status": "screened",
+      "notes": "不同於N134碎屑礦物年齡與沉積年齡；這是保存/抹除的表面曝光紀錄。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要分清表面何時開始留坑，與下面物質何時形成。",
+        "visual": "同樣底材兩面，只有一面後來被覆蓋重置，再累積新坑；標假設相似撞擊條件。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "E11018",
+      "question": "火星像蜘蛛的地紋，怎麼可能由冰下面噴出的氣體刻出來？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.co2_slab_basal_sublimation_trapped_gas_jets",
+      "answer_target": "Kieffer模型以透光乾冰蓋下方加熱昇華、氣體受困增壓後噴出挖沙來解釋支狀紋；模擬實驗支持噴出與挖掘過程，尚未重現全部日照條件。",
+      "scope": "限火星南極araneiform模型與2024底部加熱模擬；不稱每一支狀紋均已原位證實，未直接讀PSJ全文。",
+      "source_ids": [
+        "E11-S015"
+      ],
+      "source_locator": "Kieffer model與DUSTIE實驗/未解問題段",
+      "premise_status": "screened",
+      "notes": "不是液態河水刻溝或生物痕跡；不提供乾冰操作。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "冰也能像蓋子，把氣體導成挖地的出口。",
+        "visual": "先標模型，再標底部加熱實驗差別；氣體匯到裂口挾砂，冰消退才露出刻痕。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "E11019",
+      "question": "火星有些細長溝槽末端只有坑，為什麼研究者會想到乾冰滑塊？",
+      "domain": "地形與地表過程",
+      "mechanism_key": "landforms.dry_ice_block_sublimation_cushion_terminal_pit_hypothesis",
+      "answer_target": "研究者比較乾冰、水冰與木塊在地球沙坡上的運動，提出乾冰昇華氣體墊降低接觸阻力、沿坡刻槽並消失留下末端坑的火星假說。",
+      "scope": "限2013研究者官方逐字稿與其地球演示；不是所有火星溝槽成因，也不把無碎屑扇獨自當乾冰的充分證據。",
+      "source_ids": [
+        "E11-S016"
+      ],
+      "source_locator": "官方逐字稿中段對照與末端消失段",
+      "premise_status": "screened",
+      "notes": "與E11018冰蓋下受困氣體噴發不同；此題是移動冰塊的氣墊及消失，不把兩者串成同事件。 題級研究候選；不是完整答案、旁白或製作核准。圖像為待核原創機制示意，不冒充實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "移動物若最後變成氣體，末端留下的證據就可能不同。",
+        "visual": "用乾冰/水冰/木塊三個已報對照做概念格，最後淡出滑塊並標火星解釋仍是假說。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "沙丘為什麼會沿風向搬家？",
+      "existing_ids": [
+        "E7011"
+      ],
+      "source_ids": [
+        "E11-S008"
+      ],
+      "reason": "已有顆粒迎風搬運/背風崩落核心，這輪不換地名再收。"
+    },
+    {
+      "question": "星形、線形和新月形沙丘各叫什麼？",
+      "existing_ids": [],
+      "source_ids": [
+        "E11-S008"
+      ],
+      "reason": "純名詞分類沒有一條新增因果；歷史not_added已拒此方向。"
+    },
+    {
+      "question": "小沙丘是不是一定比大沙丘跑得快？",
+      "existing_ids": [
+        "E7011"
+      ],
+      "source_ids": [
+        "E11-S009",
+        "E11-S010"
+      ],
+      "reason": "速度與尺寸關係留在互動題的背景/控制，不拆成另一薄核心，也不忽略流場差異。"
+    },
+    {
+      "question": "火星的移動沙丘是不是另一種原理？",
+      "existing_ids": [
+        "E7011"
+      ],
+      "source_ids": [],
+      "reason": "只換星球不計新機制；本批沒有把普通遷移另收。"
+    },
+    {
+      "question": "外彎沖刷、內彎堆積怎麼讓河變彎？",
+      "existing_ids": [
+        "E7007"
+      ],
+      "source_ids": [
+        "E11-S003"
+      ],
+      "reason": "河曲遷移舊核。"
+    },
+    {
+      "question": "洪水時河道為什麼會換路？",
+      "existing_ids": [
+        "E7008"
+      ],
+      "source_ids": [],
+      "reason": "河道抬高與替代路徑坡降舊核；不把三角洲改道換名再收。"
+    },
+    {
+      "question": "河床為什麼留下較大的石頭？",
+      "existing_ids": [
+        "E7022"
+      ],
+      "source_ids": [
+        "E11-S003"
+      ],
+      "reason": "選擇啟動與粗化層已有；新磨蝕題只比較工具與覆蓋。"
+    },
+    {
+      "question": "洪水越過河岸後為什麼堆出自然堤？",
+      "existing_ids": [
+        "E7008"
+      ],
+      "source_ids": [
+        "E11-S003"
+      ],
+      "reason": "本章只提供擴寬減速沉積短鏈；留作改道舊題前置，不另增核心。"
+    },
+    {
+      "question": "沉積層為什麼上細下粗？",
+      "existing_ids": [
+        "W5019",
+        "F10006"
+      ],
+      "source_ids": [
+        "E11-S004"
+      ],
+      "reason": "普通分選/沉降方向已多；這輪沒有補到能區分其他逆級序的新機制。"
+    },
+    {
+      "question": "冰河融後地上為什麼留水坑？",
+      "existing_ids": [
+        "E7006"
+      ],
+      "source_ids": [
+        "E11-S011"
+      ],
+      "reason": "埋冰消失凹陷已有；熱融湖只保留出口破開的反向條件。"
+    },
+    {
+      "question": "凍土表層解凍為什麼會滑下坡？",
+      "existing_ids": [
+        "N230"
+      ],
+      "source_ids": [
+        "E11-S011"
+      ],
+      "reason": "目前所讀僅融水泥漿潤滑短鏈，與有效抗剪弱化近；不為數量保留。"
+    },
+    {
+      "question": "六角石柱是不是自然界最省材料？",
+      "existing_ids": [
+        "E7001",
+        "LEG-S41"
+      ],
+      "source_ids": [
+        "E11-S012"
+      ],
+      "reason": "已有冷卻裂隙題；本批不把全域省周長當局部開裂已證機制。"
+    },
+    {
+      "question": "泥乾了為什麼裂？",
+      "existing_ids": [
+        "D2093",
+        "B4037"
+      ],
+      "source_ids": [
+        "E11-S004",
+        "E11-S012"
+      ],
+      "reason": "泛稱乾縮/受限裂開薄且近舊核；只收多輪次序改變交點的新對照。"
+    },
+    {
+      "question": "海岸岩壁下被挖空為什麼會倒？",
+      "existing_ids": [
+        "N231"
+      ],
+      "source_ids": [
+        "E11-S007"
+      ],
+      "reason": "坡腳支撐被移除舊核心；歷史not_added亦已退。"
+    },
+    {
+      "question": "海邊砂為什麼沿岸跑？",
+      "existing_ids": [
+        "N190"
+      ],
+      "source_ids": [],
+      "reason": "沿岸輸砂已有，新案只講跨岸越浪與灣側回流。"
+    },
+    {
+      "question": "冥王星冰面多邊形是否就是對流細胞？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "僅發現官方報告和模型線索，未完成本批原研究正文與2026後續條件核對，不以換物質重收對流。"
+    },
+    {
+      "question": "火星大型沙紋能不能直接算古大氣密度？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "發現2016及2025不同模型/風洞論文，未完成其正文閱讀與反演限制；不從新聞摘要作確定前提。"
+    },
+    {
+      "question": "月球每多一個坑是否就多老固定年數？",
+      "existing_ids": [
+        "E11017"
+      ],
+      "source_ids": [
+        "E11-S013",
+        "E11-S014"
+      ],
+      "reason": "與保存年代同核，而且固定速率/可比面積/二次坑等假設不足，不能做一對一時鐘。"
+    }
+  ]
+}

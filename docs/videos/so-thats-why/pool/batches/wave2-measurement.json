@@ -1,0 +1,1721 @@
+{
+  "batch_id": "wave2-measurement-20261101",
+  "created_on": "2026-11-01",
+  "scope": "量測、統計與地圖的原創研究問題；每頁記錄實讀範圍，非逐主張核准答案。",
+  "sources": [
+    {
+      "id": "M2-S001",
+      "url": "https://www.nist.gov/metrology/metrological-traceability",
+      "title": "Metrological Traceability: Frequently Asked Questions and NIST Policy",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Terminology; FAQ 5.1.1; 5.2.1; 5.4.3",
+      "locator": "Terminology; FAQ 5.1.1; 5.2.1; 5.4.3",
+      "summary": "校正鏈連接量測結果與參考標準，每一環都有不確定度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S002",
+      "url": "https://www.nist.gov/itl/sed/topic-areas/measurement-uncertainty",
+      "title": "Measurement Uncertainty",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Introduction, measurand and probability distribution",
+      "locator": "Introduction, measurand and probability distribution",
+      "summary": "量測值包含對特定待測量的估計與不完整知識。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S003",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-2-classification-components-uncertainty",
+      "title": "TN 1297: Classification of Components of Uncertainty",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "2.1–2.3",
+      "locator": "2.1–2.3",
+      "summary": "A、B 類依評估方法分類，不等同隨機與系統效應。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S004",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-3-type-evaluation-standard-uncertainty",
+      "title": "TN 1297: Type A Evaluation of Standard Uncertainty",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Type A statistical methods paragraph",
+      "locator": "Type A statistical methods paragraph",
+      "summary": "重複觀測、擬合與變異分析可用於評估不同不確定度成分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S005",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-4-type-b-evaluation-standard-uncertainty",
+      "title": "TN 1297: Type B Evaluation of Standard Uncertainty",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "4.1–4.7",
+      "locator": "4.1–4.7",
+      "summary": "規格、校正報告與已知界限須帶著分布假設使用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S006",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-5-combined-standard-uncertainty",
+      "title": "TN 1297: Combined Standard Uncertainty",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "5.1–5.2",
+      "locator": "5.1–5.2",
+      "summary": "合成需考慮各成分與協方差；修正系統效應仍有不確定度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S007",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda351.htm",
+      "title": "Measures of Location",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Definition of Location; Why Different Measures; heavy tails",
+      "locator": "Definition of Location; Why Different Measures; heavy tails",
+      "summary": "平均、中位與眾數回答不同的典型值問題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S008",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm",
+      "title": "Measures of Scale",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Definitions of Variability",
+      "locator": "Definitions of Variability",
+      "summary": "離散程度的指標會給中心與尾端不同權重。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S009",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm",
+      "title": "Histogram",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Definition; relative counts; density normalization",
+      "locator": "Definition; relative counts; density normalization",
+      "summary": "分箱與縱軸定義會影響直方圖的外觀與讀法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S010",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm",
+      "title": "Scatter Plot",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Questions; Causality Is Not Proved By Association; Appearance",
+      "locator": "Questions; Causality Is Not Proved By Association; Appearance",
+      "summary": "關聯的形狀、分散與因果解釋需分開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S011",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm",
+      "title": "Detection of Outliers",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Introduction; Normality Assumption; Masking and Swamping",
+      "locator": "Introduction; Normality Assumption; Masking and Swamping",
+      "summary": "離群點需調查成因與模型，不直接當壞資料刪除。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S012",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/boxplot.htm",
+      "title": "Box Plot",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Definition; Box plots with fences",
+      "locator": "Definition; Box plots with fences",
+      "summary": "盒與鬚的意義取決於明定的圖形慣例。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S013",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm",
+      "title": "Lag Plot",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Purpose; Definition; Importance",
+      "locator": "Purpose; Definition; Importance",
+      "summary": "相隔固定步數的值可揭露序列相關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S014",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/runseqpl.htm",
+      "title": "Run-Sequence Plot",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Purpose; Importance",
+      "locator": "Purpose; Importance",
+      "summary": "量測次序有助辨認中心和散布隨時間的變化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S015",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm",
+      "title": "Confidence Limits for the Mean",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Purpose; Definition: Confidence Interval",
+      "locator": "Purpose; Definition: Confidence Interval",
+      "summary": "平均的信賴區間寬度受樣本數、散布和信心水準影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S016",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm",
+      "title": "Two-Sample t-Test for Equal Means",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Purpose; paired data; unequal variances; threshold",
+      "locator": "Purpose; paired data; unequal variances; threshold",
+      "summary": "比較兩組前需保留配對結構及變異假設。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S017",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri33.htm",
+      "title": "How do you select an experimental design?",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Experimental Design Objectives; resources and center points",
+      "locator": "Experimental Design Objectives; resources and center points",
+      "summary": "篩選因素、尋找最佳設定與配方問題需要不同設計。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S018",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri331.htm",
+      "title": "Completely randomized designs",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Randomized run sequence; Balance",
+      "locator": "Randomized run sequence; Balance",
+      "summary": "處置隨機分派與重複次數是設計的一部分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S019",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm",
+      "title": "Randomized block designs",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Blocking for nuisance factors; within-block comparisons",
+      "locator": "Blocking for nuisance factors; within-block comparisons",
+      "summary": "控制可觀察干擾因素並在區塊內比較處置。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S020",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri333.htm",
+      "title": "Full factorial designs",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Full factorial designs in two levels",
+      "locator": "Full factorial designs in two levels",
+      "summary": "所有高低組合的試驗數會隨因素數指數成長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S021",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm",
+      "title": "Measures of Skewness and Kurtosis",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Skewness and Kurtosis; Definition of Skewness",
+      "locator": "Skewness and Kurtosis; Definition of Skewness",
+      "summary": "偏態與尾部形狀提供平均和散布以外的資訊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S022",
+      "url": "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+      "title": "What is Process Capability?",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Process capability; indices definitions",
+      "locator": "Process capability; indices definitions",
+      "summary": "穩定製程還需與規格範圍比較，中心偏移會影響結果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S023",
+      "url": "https://www.itl.nist.gov/div898/handbook/ppc/section4/ppc44.htm",
+      "title": "Analyzing Variance Structure",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Furnace oxide thickness example; lot and zone",
+      "locator": "Furnace oxide thickness example; lot and zone",
+      "summary": "批次間變異可能遮住同批內位置差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S024",
+      "url": "https://www.nist.gov/si-redefinition/kilogram-introduction",
+      "title": "Kilogram: Introduction",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Introduction; One Mass to Rule Them All",
+      "locator": "Introduction; One Mass to Rule Them All",
+      "summary": "公斤定義離開單一實物，傳遞仍需實體標準與比較。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S025",
+      "url": "https://www.nist.gov/si-redefinition/meter",
+      "title": "Meter",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Prototype bars; inscriptions; reference conditions",
+      "locator": "Prototype bars; inscriptions; reference conditions",
+      "summary": "歷史線紋式長度標準減少端部受損對定義的影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S026",
+      "url": "https://www.nist.gov/si-redefinition/second-introduction",
+      "title": "Second: Introduction",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Atomic clocks and cesium definition",
+      "locator": "Atomic clocks and cesium definition",
+      "summary": "原子躍遷所對應的微波週期提供秒的基準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S027",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-6-expanded-uncertainty",
+      "title": "TN 1297: Expanded Uncertainty",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "6.1–6.4; archived guidance",
+      "locator": "6.1–6.4; archived guidance",
+      "summary": "擴展倍率與涵蓋率關係依分布與估計條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S028",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-7-reporting-uncertainty",
+      "title": "TN 1297: Reporting Uncertainty",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "7.1–7.2; archived guidance",
+      "locator": "7.1–7.2; archived guidance",
+      "summary": "可回查的報告需交代成分、方法及涵蓋倍率。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S029",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3661.htm",
+      "title": "Normal Distribution",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Density function; comments and assumptions",
+      "locator": "Density function; comments and assumptions",
+      "summary": "常態分布是帶有假設的模型，範圍延伸無限。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S030",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3662.htm",
+      "title": "Uniform Distribution",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "正文 probability density、cumulative distribution、common statistics 與 Parameter Estimation；未採圖像或來源例題。2026-11-01 覆核補讀端點估計公式。",
+      "locator": "Probability density; cumulative distribution; Parameter Estimation",
+      "summary": "均勻密度用等長區間得到等機率。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S031",
+      "url": "https://www.nist.gov/pml/time-and-frequency-division/what-time-it-faqs",
+      "title": "What Time is It? FAQs",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open body",
+      "reading_scope": "Internet time display; audio buffering; radio-controlled clocks",
+      "locator": "Internet time display; audio buffering; radio-controlled clocks",
+      "summary": "報時傳遞有延遲，接收標準時訊號的鐘不等於內含原子鐘。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S032",
+      "url": "https://www.nist.gov/pml/time-and-frequency-division/popular-links/time-frequency-z/time-and-frequency-z-st-sy",
+      "title": "Time and Frequency from A to Z, St to Sy",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open body",
+      "reading_scope": "Stability; Synchronization; Syntonization",
+      "locator": "Stability; Synchronization; Syntonization",
+      "summary": "頻率穩定度依觀測時間，對時與同頻不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S033",
+      "url": "https://www.usgs.gov/faqs/how-are-different-map-projections-used",
+      "title": "How are different map projections used?",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main body after web.open timeout",
+      "reading_scope": "FAQ main answer before Related FAQ",
+      "locator": "FAQ main answer before Related FAQ",
+      "summary": "平面投影無法同時保真所有幾何性質，適用性取決於目的與區域。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S034",
+      "url": "https://www.usgs.gov/educational-resources/topographic-mapping",
+      "title": "Topographic Mapping",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main body after web.open timeout",
+      "reading_scope": "Historical reference: topographic map; mapping scale; Aerial Photography; Field Survey",
+      "locator": "Historical reference: topographic map; mapping scale; Aerial Photography; Field Survey",
+      "summary": "舊式地形圖製程說明比例尺、立體航照和地面控制的分工。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S035",
+      "url": "https://geodesy.noaa.gov/research/geopotential-datums/geopotential-surface.shtml",
+      "title": "The Geopotential Surface",
+      "publisher": "NOAA NGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open body",
+      "reading_scope": "Geometric ellipsoid; plumb line; geopotential; local mean sea level",
+      "locator": "Geometric ellipsoid; plumb line; geopotential; local mean sea level",
+      "summary": "幾何參考面與重力等位面不同，地方平均海面也非完全相同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S036",
+      "url": "https://www.usgs.gov/about/organization/science-support/office-science-quality-and-integrity/guidance-use-and",
+      "title": "Guidance on Use and Documentation of Horizontal and Vertical Datums",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open body",
+      "reading_scope": "Background; datum documentation; archival native datum",
+      "locator": "Background; datum documentation; archival native datum",
+      "summary": "比較座標需保留基準、實現年代與轉換方式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S037",
+      "url": "https://www.usgs.gov/faqs/what-do-different-north-arrows-a-usgs-topographic-map-mean",
+      "title": "What do the different north arrows on a USGS topographic map mean?",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open body",
+      "reading_scope": "Main answer: grid north versus true north",
+      "locator": "Main answer: grid north versus true north",
+      "summary": "平面格網方向與經線方向因投影而不總一致。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M2-S038",
+      "url": "https://www.usgs.gov/ngp-standards-and-specifications/lidar-base-specification-glossary",
+      "title": "Lidar Base Specification: Glossary",
+      "publisher": "USGS",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open body",
+      "reading_scope": "checkpoint/control point; DEM resolution; DSM; discrete return lidar",
+      "locator": "checkpoint/control point; DEM resolution; DSM; discrete return lidar",
+      "summary": "高程模型與原始回波不同，檢核也需獨立資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "M2001",
+      "question": "幫秤校正的砝碼，又是誰說它準？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.traceability_chain",
+      "answer_target": "追溯有紀錄的校正比較鏈。",
+      "scope": "限定量測追溯，不說所有砝碼都曾送到同一機構。",
+      "source_ids": [
+        "M2-S001"
+      ],
+      "source_locator": "Terminology; FAQ 5.1.1; 5.2.1; 5.4.3",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2002",
+      "question": "儀器貼了校正標籤，量出來的數字就自動可信嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.result_not_instrument",
+      "answer_target": "追溯屬於結果，還要控制方法與使用條件。",
+      "scope": "不以機構商標替代整個量測系統的證據。",
+      "source_ids": [
+        "M2-S001"
+      ],
+      "source_locator": "Terminology; FAQ 5.1.1; 5.2.1; 5.4.3",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2003",
+      "question": "標準樣品明明有認證，為什麼還要管保存條件？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.reference_material_stability",
+      "answer_target": "認證性質有穩定期間、均勻性與最低樣品量等條件。",
+      "scope": "不提供化學品保存操作；區分證書中的不同認證性質。",
+      "source_ids": [
+        "M2-S001"
+      ],
+      "source_locator": "Terminology; FAQ 5.1.1; 5.2.1; 5.4.3",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2004",
+      "question": "說要量「杯子的溫度」，為什麼還不算把問題說清楚？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.measurand_definition",
+      "answer_target": "先界定待測性質、位置與條件，才有可比較結果。",
+      "scope": "杯子情境為推導；不假設杯身與液體處處同溫。",
+      "source_ids": [
+        "M2-S002"
+      ],
+      "source_locator": "Introduction, measurand and probability distribution",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2005",
+      "question": "報告主動寫出不確定度，是承認量錯了嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.uncertainty_not_mistake",
+      "answer_target": "不確定度描述可合理歸給待測量的值之分散。",
+      "scope": "區分量測不完整知識與已知操作失誤。",
+      "source_ids": [
+        "M2-S002"
+      ],
+      "source_locator": "Introduction, measurand and probability distribution",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2006",
+      "question": "為什麼「統計算出來」和「隨機誤差」不能直接畫等號？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.typeAB_not_random_systematic",
+      "answer_target": "評估方法與誤差作用方式是不同分類軸。",
+      "scope": "科普辨析，避免把 A、B 類說成品質等級。",
+      "source_ids": [
+        "M2-S003"
+      ],
+      "source_locator": "2.1–2.3",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2007",
+      "question": "兩份報告都寫 10.0，為什麼還不能認定它們一樣準？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.number_without_uncertainty",
+      "answer_target": "單一估計值沒有表達結果的不確定度。",
+      "scope": "與結果追溯不同，聚焦數值附帶資訊。",
+      "source_ids": [
+        "M2-S003"
+      ],
+      "source_locator": "2.1–2.3",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2008",
+      "question": "把同一讀值抄十遍，為什麼不等於多量十次？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.repeat_data_independence",
+      "answer_target": "平均值標準差的計算需要對應有效的獨立觀測。",
+      "scope": "抄寫例為方法推導；相關觀測不套獨立樣本公式。",
+      "source_ids": [
+        "M2-S004"
+      ],
+      "source_locator": "Type A statistical methods paragraph",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2009",
+      "question": "校正線畫得出來，為什麼斜率仍要附一個誤差範圍？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.fit_parameter_uncertainty",
+      "answer_target": "擬合參數也是由有限含雜訊資料估計。",
+      "scope": "不把校正線不確定度當作下一次觀測的完整預測區間。",
+      "source_ids": [
+        "M2-S004"
+      ],
+      "source_locator": "Type A statistical methods paragraph",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2010",
+      "question": "沒辦法一直重測，還能估計量測有多不確定嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.typeB_information",
+      "answer_target": "可利用規格、既有校正與材料行為資訊。",
+      "scope": "資訊不足時不能捏造可信分布。",
+      "source_ids": [
+        "M2-S005"
+      ],
+      "source_locator": "4.1–4.7",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2011",
+      "question": "只知道誤差上下限，為什麼仍不知道最可能落在哪？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.bounded_distribution_shape",
+      "answer_target": "相同界限可能對應均勻或集中於中央的不同分布。",
+      "scope": "用原創簡圖比較，不把矩形分布說成普遍真相。",
+      "source_ids": [
+        "M2-S005"
+      ],
+      "source_locator": "4.1–4.7",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2012",
+      "question": "兩張證書都寫正負一格，為什麼不能直接比大小？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.multiplier_conversion",
+      "answer_target": "先對齊擴展倍率與標準不確定度的定義。",
+      "scope": "本題比較量尺，不重複報告是否需要不確定度。",
+      "source_ids": [
+        "M2-S005"
+      ],
+      "source_locator": "4.1–4.7",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2013",
+      "question": "兩把尺都偏長，合在一起算會互相抵銷嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.covariance_combination",
+      "answer_target": "相關誤差的合成取決於量測模型與協方差。",
+      "scope": "用相加與相減兩個明定模型；不把所有誤差平方相加。",
+      "source_ids": [
+        "M2-S006"
+      ],
+      "source_locator": "5.1–5.2",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2014",
+      "question": "已經扣掉秤的偏差，為什麼還不能宣布完全準確？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.correction_uncertainty",
+      "answer_target": "修正值本身也由不確定的估計而來。",
+      "scope": "只談已辨識系統效應，不暗示能知道真值。",
+      "source_ids": [
+        "M2-S006"
+      ],
+      "source_locator": "5.1–5.2",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2015",
+      "question": "多一個超大包裹，為什麼平均重量變了，大多數包裹卻沒變？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.mean_tail_pull",
+      "answer_target": "平均會被尾端極值拉動，中位依排序。",
+      "scope": "包裹為自建有限資料例；不泛指所有資料都該用中位。",
+      "source_ids": [
+        "M2-S007"
+      ],
+      "source_locator": "Definition of Location; Why Different Measures; heavy tails",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2016",
+      "question": "最常見的鞋碼，為什麼不一定等於平均鞋碼？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.mode_not_average",
+      "answer_target": "眾數計次而平均累加數值，資料可有多個峰。",
+      "scope": "鞋碼使用同一尺寸系統；不視為人體連續長度。",
+      "source_ids": [
+        "M2-S007"
+      ],
+      "source_locator": "Definition of Location; Why Different Measures; heavy tails",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2017",
+      "question": "資料越多，平均值真的一定會越穩嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.cauchy_mean_nonconvergence",
+      "answer_target": "重尾的柯西模型提供平均不按常見方式穩定的反例。",
+      "scope": "明說特殊模型及不存在有限母體平均；不否定一般大數法則的條件。",
+      "source_ids": [
+        "M2-S007"
+      ],
+      "source_locator": "Definition of Location; Why Different Measures; heavy tails",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2018",
+      "question": "兩班最高和最低分相同，為什麼成績分布仍可能差很多？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.range_ignores_middle",
+      "answer_target": "全距只使用兩端，忽略中間資料。",
+      "scope": "成績例只作分布展示，不判斷教學品質。",
+      "source_ids": [
+        "M2-S008"
+      ],
+      "source_locator": "Definitions of Variability",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2019",
+      "question": "為什麼一個很遠的數字，會把標準差拉大那麼多？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.variance_squared_weight",
+      "answer_target": "平方偏差賦予遠端值較大權重。",
+      "scope": "與平均偏移分開，聚焦分散指標。",
+      "source_ids": [
+        "M2-S008"
+      ],
+      "source_locator": "Definitions of Variability",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2020",
+      "question": "變異數的單位為什麼要平方，標準差又把它開根號？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.standard_deviation_units",
+      "answer_target": "恢復原量綱便於比較分散尺度。",
+      "scope": "定位為短章節中的解釋，不能單題長片。",
+      "source_ids": [
+        "M2-S008"
+      ],
+      "source_locator": "Definitions of Variability",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2021",
+      "question": "只看中間一半資料，能看見什麼，又會漏掉什麼？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.iqr_central_half",
+      "answer_target": "四分位距描述中心散布，尾端風險需另看。",
+      "scope": "不能用刪尾方式隱藏異常值。",
+      "source_ids": [
+        "M2-S008"
+      ],
+      "source_locator": "Definitions of Variability",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2022",
+      "question": "同一批資料，為什麼換個分組寬度就像換了故事？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.histogram_bin_choice",
+      "answer_target": "分箱會合併或顯露局部結構。",
+      "scope": "自建同資料不同分箱比較，不從圖形單獨判原因。",
+      "source_ids": [
+        "M2-S009"
+      ],
+      "source_locator": "Definition; relative counts; density normalization",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2023",
+      "question": "機率圖的柱子比 1 還高，難道機率超過百分之百？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.density_area_not_height",
+      "answer_target": "密度用面積積成機率，高度帶有倒數量綱。",
+      "scope": "明確區分頻數、相對頻率與密度。",
+      "source_ids": [
+        "M2-S009"
+      ],
+      "source_locator": "Definition; relative counts; density normalization",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2024",
+      "question": "「五分鐘內完成」和「第四到第五分鐘完成」，為什麼不能混著讀？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.cumulative_vs_bin",
+      "answer_target": "累積比例和單一區間比例計數範圍不同。",
+      "scope": "時間為原創圖例，不用真實服務效能數字。",
+      "source_ids": [
+        "M2-S009"
+      ],
+      "source_locator": "Definition; relative counts; density normalization",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2025",
+      "question": "兩條數據一起升高，就能說一個造成另一個嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.association_not_cause",
+      "answer_target": "關聯不排除共同原因或其他解釋。",
+      "scope": "避免編造真實社會或健康因果案例。",
+      "source_ids": [
+        "M2-S010"
+      ],
+      "source_locator": "Questions; Causality Is Not Proved By Association; Appearance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2026",
+      "question": "點沒有排成直線，就表示兩件事沒關係嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.nonlinear_association",
+      "answer_target": "曲線結構也可能具有強關聯。",
+      "scope": "不把零線性相關當獨立。",
+      "source_ids": [
+        "M2-S010"
+      ],
+      "source_locator": "Questions; Causality Is Not Proved By Association; Appearance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2027",
+      "question": "預測值越大，點散得越開，這只是圖畫得不好嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.heteroscedasticity",
+      "answer_target": "條件變異可能隨解釋變數改變。",
+      "scope": "先查量尺與量測機制，不從漏斗形直接診斷原因。",
+      "source_ids": [
+        "M2-S010"
+      ],
+      "source_locator": "Questions; Causality Is Not Proved By Association; Appearance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2028",
+      "question": "把散點依序連起來，為什麼可能畫出不存在的路線？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.connecting_scatter_artifact",
+      "answer_target": "任意連線引入沒有觀測支持的插值。",
+      "scope": "時間序列有正當次序時另議。",
+      "source_ids": [
+        "M2-S010"
+      ],
+      "source_locator": "Questions; Causality Is Not Proved By Association; Appearance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2029",
+      "question": "有個數字離大家特別遠，第一步真的是刪掉它嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.outlier_investigation",
+      "answer_target": "極端值可來自錯誤、真實變異或新現象。",
+      "scope": "保留原資料及排除理由；不提供美化研究結果的方法。",
+      "source_ids": [
+        "M2-S011"
+      ],
+      "source_locator": "Introduction; Normality Assumption; Masking and Swamping",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2030",
+      "question": "同一個數字在一張圖很離群，換個模型就不一定奇怪？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.outlier_distribution_model",
+      "answer_target": "離群判定依母體尾端及分布假設。",
+      "scope": "正常不是常態分布的同義詞。",
+      "source_ids": [
+        "M2-S011"
+      ],
+      "source_locator": "Introduction; Normality Assumption; Masking and Swamping",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2031",
+      "question": "為什麼兩個異常點一起出現，反而可能彼此掩護？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.outlier_masking",
+      "answer_target": "異常值會影響作為參考的估計與檢定。",
+      "scope": "以簡單自建資料說明遮蔽，不宣稱單一門檻包辦所有情形。",
+      "source_ids": [
+        "M2-S011"
+      ],
+      "source_locator": "Introduction; Normality Assumption; Masking and Swamping",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2032",
+      "question": "盒鬚圖的盒子比較寬，就一定代表資料更多嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.box_width_sample_size",
+      "answer_target": "繪圖軟體可使用固定或按樣本數調整寬度。",
+      "scope": "必須讀圖例；不猜測任何特定軟體預設。",
+      "source_ids": [
+        "M2-S012"
+      ],
+      "source_locator": "Definition; Box plots with fences",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2033",
+      "question": "盒鬚圖最外面的線，一定就是最大值和最小值嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.whisker_conventions",
+      "answer_target": "極值型與圍籬型的鬚採不同終點規則。",
+      "scope": "與離群點該不該刪除分開，聚焦圖例解碼。",
+      "source_ids": [
+        "M2-S012"
+      ],
+      "source_locator": "Definition; Box plots with fences",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2034",
+      "question": "連續量一百次，為什麼可能沒有想像中一百份資訊？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.lag_dependence",
+      "answer_target": "相鄰觀測相關使獨立樣本假設不成立。",
+      "scope": "不同於複製讀值：這裡是真觀測但存在時間相依。",
+      "source_ids": [
+        "M2-S013"
+      ],
+      "source_locator": "Purpose; Definition; Importance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2035",
+      "question": "只看相鄰一天，會不會漏掉每週才出現的規律？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.lag_period_choice",
+      "answer_target": "檢查的時間間隔決定可觀察的序列結構。",
+      "scope": "每週是原創情境；沒有結構不等於證明隨機。",
+      "source_ids": [
+        "M2-S013"
+      ],
+      "source_locator": "Purpose; Definition; Importance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2036",
+      "question": "把數字由小排到大，為什麼可能把機器變壞的線索弄丟？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.order_vs_histogram",
+      "answer_target": "排序破壞量測先後，遮住漂移或突變。",
+      "scope": "保留原始次序，排序副本仍可另用。",
+      "source_ids": [
+        "M2-S014"
+      ],
+      "source_locator": "Purpose; Importance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2037",
+      "question": "平均沒動，但機器忽然忽大忽小，也算穩定嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.variance_shift_over_time",
+      "answer_target": "中心固定不代表散布固定。",
+      "scope": "與單純兩組平均比較區分，聚焦隨時間穩定性。",
+      "source_ids": [
+        "M2-S014"
+      ],
+      "source_locator": "Purpose; Importance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2038",
+      "question": "95% 信賴區間的 95%，究竟是在數什麼？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.confidence_repeated_coverage",
+      "answer_target": "以重複抽樣的區間涵蓋率解釋頻率學派程序。",
+      "scope": "不能說固定真值有 95% 機率在已算定區間內。",
+      "source_ids": [
+        "M2-S015"
+      ],
+      "source_locator": "Purpose; Definition: Confidence Interval",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2039",
+      "question": "要把平均估計的誤差縮一半，為什麼通常不只多量一倍？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.sqrt_sample_precision",
+      "answer_target": "在同變異獨立條件下標準誤按樣本數平方根下降。",
+      "scope": "近似四倍，t 倍率與設計效應另核，不做通用樣本數建議。",
+      "source_ids": [
+        "M2-S015"
+      ],
+      "source_locator": "Purpose; Definition: Confidence Interval",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2040",
+      "question": "想更有把握，為什麼報出的範圍反而要變寬？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.confidence_width_tradeoff",
+      "answer_target": "固定資料提高涵蓋水準需擴張區間。",
+      "scope": "區分變寬與儀器突然變差。",
+      "source_ids": [
+        "M2-S015"
+      ],
+      "source_locator": "Purpose; Definition: Confidence Interval",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2041",
+      "question": "同一批零件加工前後比較，為什麼不能當成兩批陌生零件？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.paired_measurements",
+      "answer_target": "逐件配對保留個體差異與前後差值。",
+      "scope": "不等同一般分區設計；使用原創零件數據。",
+      "source_ids": [
+        "M2-S016"
+      ],
+      "source_locator": "Purpose; paired data; unequal variances; threshold",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2042",
+      "question": "兩組數量差很多，為什麼不能只比兩個平均數？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.unequal_variance_comparison",
+      "answer_target": "平均差的精度取決於各組樣本數與變異。",
+      "scope": "不宣稱樣本不等必須捨棄資料。",
+      "source_ids": [
+        "M2-S016"
+      ],
+      "source_locator": "Purpose; paired data; unequal variances; threshold",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2043",
+      "question": "改善一點點也被判有差，為什麼仍可能不值得換機器？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.practical_effect_threshold",
+      "answer_target": "統計上的差異與事先訂定實用差距不同。",
+      "scope": "非投資或採購建議；門檻須依實際用途事先定義。",
+      "source_ids": [
+        "M2-S016"
+      ],
+      "source_locator": "Purpose; paired data; unequal variances; threshold",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2044",
+      "question": "十個旋鈕都可能影響結果，為什麼不先逐個找最佳值？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.screen_before_optimize",
+      "answer_target": "先篩選重要因素，再研究局部曲率與交互作用。",
+      "scope": "不保證一次篩選能抓所有效應。",
+      "source_ids": [
+        "M2-S017"
+      ],
+      "source_locator": "Experimental Design Objectives; resources and center points",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2045",
+      "question": "配方多加一成材料，為什麼其他材料就不能全都不變？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.mixture_constraint",
+      "answer_target": "比例總和受限使配方實驗不同於獨立旋鈕。",
+      "scope": "只談數學比例，不提供食品或化學製作配方。",
+      "source_ids": [
+        "M2-S017"
+      ],
+      "source_locator": "Experimental Design Objectives; resources and center points",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2046",
+      "question": "只試最強和最弱，怎麼知道中間會不會更好？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.design_center_curvature",
+      "answer_target": "中央點可用來檢查兩水準設計未顯露的曲率。",
+      "scope": "檢出曲率不代表已找到全域最佳設定。",
+      "source_ids": [
+        "M2-S017"
+      ],
+      "source_locator": "Experimental Design Objectives; resources and center points",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2047",
+      "question": "實驗總是先做 A 再做 B，會把什麼誤當成效果？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.randomized_run_order",
+      "answer_target": "執行次序可與時間漂移混淆，隨機化降低系統性綁定。",
+      "scope": "不說隨機化一次就完全平衡所有條件。",
+      "source_ids": [
+        "M2-S018"
+      ],
+      "source_locator": "Randomized run sequence; Balance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2048",
+      "question": "每種設定做一樣多次，對比較有什麼幫助？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.balanced_allocation",
+      "answer_target": "在同成本同變異等條件下平衡分配提升比較敏感度。",
+      "scope": "不是所有研究都必須一比一分配。",
+      "source_ids": [
+        "M2-S018"
+      ],
+      "source_locator": "Randomized run sequence; Balance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2049",
+      "question": "不同天做的實驗，怎麼避免把天氣差別算成產品差別？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.block_nuisance_control",
+      "answer_target": "按干擾條件分區並在區內包含處置比較。",
+      "scope": "天氣是設計情境，非宣稱任一產品有天氣效應。",
+      "source_ids": [
+        "M2-S019"
+      ],
+      "source_locator": "Blocking for nuisance factors; within-block comparisons",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2050",
+      "question": "已經按批次分組，為什麼組內還要打亂實驗順序？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.block_randomization_complement",
+      "answer_target": "分區控制已知因素，隨機化處理剩餘無法控制因素。",
+      "scope": "與無分區的隨機順序不同，交代兩種設計的互補。",
+      "source_ids": [
+        "M2-S019"
+      ],
+      "source_locator": "Blocking for nuisance factors; within-block comparisons",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2051",
+      "question": "只是多加一個開關，完整測試為什麼就可能翻倍？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.factorial_combinatorial_growth",
+      "answer_target": "二水準全因子每多一因素需對每種舊組合各試兩種狀態。",
+      "scope": "不能用複製既有素材的組合計數冒充知識數。",
+      "source_ids": [
+        "M2-S020"
+      ],
+      "source_locator": "Full factorial designs in two levels",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2052",
+      "question": "大多數點擠在左邊，為什麼卻叫右偏？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.skewness_tail_direction",
+      "answer_target": "偏態方向描述尾端延伸，不是最高柱的位置。",
+      "scope": "限定清楚單峰例，不用符號概括複雜多峰資料。",
+      "source_ids": [
+        "M2-S021"
+      ],
+      "source_locator": "Skewness and Kurtosis; Definition of Skewness",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2053",
+      "question": "兩個分布平均和標準差一樣，極端事件的機會也一樣嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.kurtosis_tails",
+      "answer_target": "尾部形狀仍可不同，需額外分布資訊。",
+      "scope": "不預測金融或災害風險；展示自建分布。",
+      "source_ids": [
+        "M2-S021"
+      ],
+      "source_locator": "Skewness and Kurtosis; Definition of Skewness",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2054",
+      "question": "機器每次都做得一模一樣，為什麼還能一直做出不合格品？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.stable_but_out_of_spec",
+      "answer_target": "重複穩定與符合外部規格是兩個問題。",
+      "scope": "規格由用途定義，控制界限不是規格界限。",
+      "source_ids": [
+        "M2-S022"
+      ],
+      "source_locator": "Process capability; indices definitions",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2055",
+      "question": "散布已經很窄，為什麼把中心移正還能減少不合格？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.capability_center_offset",
+      "answer_target": "規格相對於平均的位置也影響超界比例。",
+      "scope": "限定穩定、分布假設合理時；不以單一能力指標核准產品。",
+      "source_ids": [
+        "M2-S022"
+      ],
+      "source_locator": "Process capability; indices definitions",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2056",
+      "question": "混在一起看沒差，分清批次後為什麼才看見爐子位置的影響？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.nested_variation_masking",
+      "answer_target": "巢狀資料結構可分離批次與區域變異。",
+      "scope": "以來源爐區案例作入口，須重核資料與設計才能沿用數值。",
+      "source_ids": [
+        "M2-S023"
+      ],
+      "source_locator": "Furnace oxide thickness example; lot and zone",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2057",
+      "question": "全世界的公斤，為什麼曾經依賴一顆鎖起來的金屬塊？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_artifact_dependency",
+      "answer_target": "以原器定義的優點與對唯一實物的依賴。",
+      "scope": "區分歷史定義與 2019 後常數定義；不寫成現況。",
+      "source_ids": [
+        "M2-S024"
+      ],
+      "source_locator": "Introduction; One Mass to Rule Them All",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2058",
+      "question": "公斤改用自然常數定義，舊砝碼就全都沒用了嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.artifacts_after_redefinition",
+      "answer_target": "定義與實際傳遞量值是不同層次。",
+      "scope": "不暗示一般秤直接讀取普朗克常數。",
+      "source_ids": [
+        "M2-S024"
+      ],
+      "source_locator": "Introduction; One Mass to Rule Them All",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2059",
+      "question": "一公尺的標準棒，為什麼反而要做得比一公尺長？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.line_end_standard",
+      "answer_target": "以棒上的兩條刻線定義距離，避免端部損傷改變基準。",
+      "scope": "限定歷史原器，不聲稱現代公尺仍由金屬棒定義。",
+      "source_ids": [
+        "M2-S025"
+      ],
+      "source_locator": "Prototype bars; inscriptions; reference conditions",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2060",
+      "question": "標準尺的長度，為什麼連測量溫度也要一起規定？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.prototype_reference_conditions",
+      "answer_target": "物體尺寸受環境影響，基準比較需指定條件。",
+      "scope": "與熱膨脹原理舊題相鄰但聚焦標準傳遞；進集中去重再判。",
+      "source_ids": [
+        "M2-S025"
+      ],
+      "source_locator": "Prototype bars; inscriptions; reference conditions",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2061",
+      "question": "原子鐘不是有個小指針，究竟在數什麼？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.atomic_second_cycles",
+      "answer_target": "秒由指定原子躍遷頻率對應的週期數定義。",
+      "scope": "不能畫成原子像鐘擺機械搖晃；現行定義須於進稿再查。",
+      "source_ids": [
+        "M2-S026"
+      ],
+      "source_locator": "Atomic clocks and cesium definition",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2062",
+      "question": "古人的一小時，為什麼夏天和冬天可能不一樣長？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.unequal_historical_hours",
+      "answer_target": "固定份數切分白晝與黑夜，會得到季節時長不同的小時。",
+      "scope": "限定來源提及的歷史制度，不概括所有古文明。",
+      "source_ids": [
+        "M2-S026"
+      ],
+      "source_locator": "Atomic clocks and cesium definition",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2063",
+      "question": "寫上兩倍標準不確定度，就一定有 95% 把握嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.coverage_factor_assumptions",
+      "answer_target": "近似涵蓋率需有合理分布與可靠不確定度估計。",
+      "scope": "來源頁已標停止更新，只用穩定原理；正式規範須另查現行 GUM。",
+      "source_ids": [
+        "M2-S027"
+      ],
+      "source_locator": "6.1–6.4; archived guidance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2064",
+      "question": "一張漂亮的正負誤差表，怎麼看出它到底算進了哪些東西？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.uncertainty_budget_audit",
+      "answer_target": "查看不確定度預算中的成分及各自評估方式。",
+      "scope": "來源為舊版指引，不用來聲稱現行認證法規合規。",
+      "source_ids": [
+        "M2-S028"
+      ],
+      "source_locator": "7.1–7.2; archived guidance",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2065",
+      "question": "常態曲線可以延伸到負數，能直接拿來描述任何重量嗎？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.normal_model_physical_bounds",
+      "answer_target": "模型尾部可能跨越物理界限，近似適用範圍須檢查。",
+      "scope": "不說常態近似永遠不能用正值資料；誤差項與原量分開。",
+      "source_ids": [
+        "M2-S029"
+      ],
+      "source_locator": "Density function; comments and assumptions",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2066",
+      "question": "號稱均勻隨機，為什麼短短幾次仍可能擠在一起？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.uniform_equal_intervals",
+      "answer_target": "分布規則不是每個有限樣本都平均排開的保證。",
+      "scope": "有限樣本情境為機率推導，須另建可重現模擬。",
+      "source_ids": [
+        "M2-S030"
+      ],
+      "source_locator": "Probability density; cumulative distribution",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2067",
+      "question": "區間兩端都沒抽到過，怎麼還能知道抽樣範圍有多大？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "statistics.uniform_support_bounds",
+      "answer_target": "有限樣本極值是對界限的估計而非完整母體界限。",
+      "scope": "不把估計值視為確定上限；限定有均勻模型依據。",
+      "source_ids": [
+        "M2-S030"
+      ],
+      "source_locator": "Probability density; cumulative distribution; Parameter Estimation / Maximum Likelihood Estimation (sample extrema as endpoint estimates)",
+      "premise_status": "screened",
+      "notes": "原創研究提問；來源支持統計或量測機制，生活情境是編輯推導，未採用來源圖表與例題。進稿須自建可重算例子及核對適用假設；只作段落候選，不能單憑一個定義拉長片。"
+    },
+    {
+      "id": "M2068",
+      "question": "直播裡聽到的報時聲，為什麼不一定是你此刻的時間？",
+      "domain": "量測與地圖",
+      "mechanism_key": "time.streaming_buffer_offset",
+      "answer_target": "音訊緩衝與傳輸延遲造成接收時刻落後。",
+      "scope": "聚焦媒體緩衝，不重複手機自動校時舊題。",
+      "source_ids": [
+        "M2-S031"
+      ],
+      "source_locator": "Internet time display; audio buffering; radio-controlled clocks",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2069",
+      "question": "會自動對時的「原子鐘」，裡面真的裝了一顆原子鐘嗎？",
+      "domain": "量測與地圖",
+      "mechanism_key": "time.radio_clock_not_atomic",
+      "answer_target": "無線電控制鐘可接收標準時訊號並以石英持續走時。",
+      "scope": "以來源 WWVB 接收鐘為例，不能概括所有商品。",
+      "source_ids": [
+        "M2-S031"
+      ],
+      "source_locator": "Internet time display; audio buffering; radio-controlled clocks",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2070",
+      "question": "網頁時鐘看起來很準，為什麼不能拿來認證碼表？",
+      "domain": "量測與地圖",
+      "mechanism_key": "time.display_service_interval_limit",
+      "answer_target": "顯示一天中時刻與可追溯的時間間隔校正有不同需求。",
+      "scope": "不提供正式校正流程；與一般追溯題比較後再判是否併入。",
+      "source_ids": [
+        "M2-S031"
+      ],
+      "source_locator": "Internet time display; audio buffering; radio-controlled clocks",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2071",
+      "question": "一分鐘內最穩的鐘，一整天也一定最穩嗎？",
+      "domain": "量測與地圖",
+      "mechanism_key": "time.stability_timescale",
+      "answer_target": "短期與長期頻率波動不同，須附觀測時間。",
+      "scope": "不使用頁上特定機型數字作現行規格。",
+      "source_ids": [
+        "M2-S032"
+      ],
+      "source_locator": "Stability; Synchronization; Syntonization",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2072",
+      "question": "兩個鐘每秒都走得一樣快，為什麼仍可能永遠差五分鐘？",
+      "domain": "量測與地圖",
+      "mechanism_key": "time.same_rate_different_epoch",
+      "answer_target": "同頻只保證走速一致，不保證時刻起點對齊。",
+      "scope": "用理想鐘示意；不重複原子秒的定義。",
+      "source_ids": [
+        "M2-S032"
+      ],
+      "source_locator": "Stability; Synchronization; Syntonization",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2073",
+      "question": "為什麼沒有一張平面世界地圖能把面積、形狀、距離全畫對？",
+      "domain": "量測與地圖",
+      "mechanism_key": "cartography.projection_tradeoff",
+      "answer_target": "把曲面攤到平面必須在幾何性質間取捨。",
+      "scope": "不以一種投影概括所有地圖；與航線大圓舊題不同。",
+      "source_ids": [
+        "M2-S033"
+      ],
+      "source_locator": "FAQ main answer before Related FAQ",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2074",
+      "question": "地圖標榜等距，為什麼還不能任選兩點直接量距離？",
+      "domain": "量測與地圖",
+      "mechanism_key": "cartography.equidistant_selected_lines",
+      "answer_target": "等距條件通常只沿指定線或相對指定中心成立。",
+      "scope": "不作導航操作建議。",
+      "source_ids": [
+        "M2-S033"
+      ],
+      "source_locator": "FAQ main answer before Related FAQ",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2075",
+      "question": "一種投影畫世界很歪，畫一座城市卻可能很好用？",
+      "domain": "量測與地圖",
+      "mechanism_key": "cartography.local_extent_distortion",
+      "answer_target": "投影方向與範圍縮小可降低局部變形。",
+      "scope": "不用幾乎正確代替誤差量化。",
+      "source_ids": [
+        "M2-S033"
+      ],
+      "source_locator": "FAQ main answer before Related FAQ",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2076",
+      "question": "把世界地圖放大，為什麼不會憑空長出每條小巷？",
+      "domain": "量測與地圖",
+      "mechanism_key": "cartography.scale_generalization",
+      "answer_target": "小比例尺圖已概化或省略細節，放大不能補回未編入資訊。",
+      "scope": "只談固定圖層；動態地圖換資料層另論。",
+      "source_ids": [
+        "M2-S034"
+      ],
+      "source_locator": "Historical reference: topographic map; mapping scale; Aerial Photography; Field Survey",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2077",
+      "question": "兩張平面的空拍照，怎麼一起量出山的高低？",
+      "domain": "量測與地圖",
+      "mechanism_key": "cartography.stereo_aerial_parallax",
+      "answer_target": "不同拍攝位置提供立體視差，還需已知幾何與控制。",
+      "scope": "歷史攝影測量原理；不是單張照片就能確知任意高度。",
+      "source_ids": [
+        "M2-S034"
+      ],
+      "source_locator": "Historical reference: topographic map; mapping scale; Aerial Photography; Field Survey",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2078",
+      "question": "想拍清楚森林下的地形，為什麼有時要挑樹葉少的季節？",
+      "domain": "量測與地圖",
+      "mechanism_key": "cartography.leaf_off_survey",
+      "answer_target": "葉片遮擋影響航空影像可見的地表特徵。",
+      "scope": "限定落葉林與可見光攝影，不概括光達穿透。",
+      "source_ids": [
+        "M2-S034"
+      ],
+      "source_locator": "Historical reference: topographic map; mapping scale; Aerial Photography; Field Survey",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2079",
+      "question": "空拍照片已經很清楚，為什麼製圖員還要去現場看？",
+      "domain": "量測與地圖",
+      "mechanism_key": "cartography.photo_field_verification",
+      "answer_target": "影像未必能區分常流水與季節溪流等性質。",
+      "scope": "來源是歷史流程，現代產品驗證方法另查。",
+      "source_ids": [
+        "M2-S034"
+      ],
+      "source_locator": "Historical reference: topographic map; mapping scale; Aerial Photography; Field Survey",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2080",
+      "question": "GPS 的幾何高度，為什麼不直接等於水會往哪邊流？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.ellipsoid_geopotential",
+      "answer_target": "水的流動與重力位相關，幾何橢球高度不是等位面。",
+      "scope": "只解釋概念，實際水流還受邊界與動力條件影響。",
+      "source_ids": [
+        "M2-S035"
+      ],
+      "source_locator": "Geometric ellipsoid; plumb line; geopotential; local mean sea level",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2081",
+      "question": "吊一條鉛垂線，指向的方向一定穿過地球正中心嗎？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.local_vertical",
+      "answer_target": "局部重力方向受形狀、旋轉與質量分布影響。",
+      "scope": "不把示意圖誇大成日常明顯傾斜。",
+      "source_ids": [
+        "M2-S035"
+      ],
+      "source_locator": "Geometric ellipsoid; plumb line; geopotential; local mean sea level",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2082",
+      "question": "大家都說海拔零公尺，海邊的平均海面卻不一定是同一面？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.local_global_sea_level",
+      "answer_target": "地方平均海面與全球選定等位面有差別。",
+      "scope": "不把潮汐瞬時高度與長期平均混為一談。",
+      "source_ids": [
+        "M2-S035"
+      ],
+      "source_locator": "Geometric ellipsoid; plumb line; geopotential; local mean sea level",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2083",
+      "question": "兩張地圖用同一組經緯度，疊起來怎麼還可能錯位？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.datum_before_overlay",
+      "answer_target": "座標數字必須與其基準及實現一起解讀。",
+      "scope": "不把舊版 2019 建議當作當期全部正式基準。",
+      "source_ids": [
+        "M2-S036"
+      ],
+      "source_locator": "Background; datum documentation; archival native datum",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2084",
+      "question": "座標已經換成新版，為什麼還要留下原始數值？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.preserve_native_coordinates",
+      "answer_target": "轉換可能近似且受版本影響，原始基準是可追查依據。",
+      "scope": "與一般備份不同，聚焦不可任意逆轉的基準轉換。",
+      "source_ids": [
+        "M2-S036"
+      ],
+      "source_locator": "Background; datum documentation; archival native datum",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2085",
+      "question": "不看指南針，地圖上怎麼仍然可能有兩種「北」？",
+      "domain": "量測與地圖",
+      "mechanism_key": "cartography.grid_true_north",
+      "answer_target": "格網北沿平面網格，真北沿地理經線，差值依投影位置。",
+      "scope": "刻意區分舊地磁偏角題；不再拆出三個同義方向問題。",
+      "source_ids": [
+        "M2-S037"
+      ],
+      "source_locator": "Main answer: grid north versus true north",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2086",
+      "question": "用來調準地圖的點，為什麼不能又拿來證明地圖準？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.control_checkpoint_independence",
+      "answer_target": "獨立檢核點避免把擬合資料當驗證資料。",
+      "scope": "聚焦地理校正中的獨立驗證，不冒稱通用研究準確率。",
+      "source_ids": [
+        "M2-S038"
+      ],
+      "source_locator": "checkpoint/control point; DEM resolution; DSM; discrete return lidar",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2087",
+      "question": "高程圖每格十公尺，半公尺寬的溝渠會跑去哪？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.dem_cell_resolution",
+      "answer_target": "比格網小的特徵無法在該柵格中明確表示。",
+      "scope": "補充線性地形資料可能改善模型；不說地面本身消失。",
+      "source_ids": [
+        "M2-S038"
+      ],
+      "source_locator": "checkpoint/control point; DEM resolution; DSM; discrete return lidar",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2088",
+      "question": "城市模型的高度，究竟量到屋頂還是地面？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.surface_terrain_difference",
+      "answer_target": "表面模型與裸地模型包含的目標不同。",
+      "scope": "DEM/DSM 用詞依供應者定義，不能只看副檔名。",
+      "source_ids": [
+        "M2-S038"
+      ],
+      "source_locator": "checkpoint/control point; DEM resolution; DSM; discrete return lidar",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    },
+    {
+      "id": "M2089",
+      "question": "一束測距雷射，為什麼會收到不只一個回聲？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.multiple_lidar_returns",
+      "answer_target": "脈衝照到不同位置或高度目標可形成多個可辨回波。",
+      "scope": "不說雷射能直接穿透任何實體遮擋。",
+      "source_ids": [
+        "M2-S038"
+      ],
+      "source_locator": "checkpoint/control point; DEM resolution; DSM; discrete return lidar",
+      "premise_status": "screened",
+      "notes": "原創提問及研究目標；只轉述來源機制。示意情境需自行建構驗算，不搬用來源圖片；進稿再查案例及現行資料產品。"
+    }
+  ],
+  "not_added": [
+    {
+      "question": "每一種單位各拆一集固定十三分鐘",
+      "reason": "單位定義本身缺乏故事厚度，不用套版拆題湊數。"
+    },
+    {
+      "question": "用一個信賴區間就判定產品絕對更好",
+      "reason": "混淆條件推論與實用差距；改成明確的限制問題。"
+    }
+  ]
+}

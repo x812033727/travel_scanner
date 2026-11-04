@@ -1,0 +1,356 @@
+{
+  "review_id": "nature-reviews-physics-20261101",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "science_sources (nature author; not physics or space-engineering author)",
+  "status": "CANDIDATE_REVIEW_WITH_REQUIRED_EDITS_AND_MERGE_RECOMMENDATIONS",
+  "input_files": [
+    {
+      "path": "docs/videos/so-thats-why/pool/batches/physics.json",
+      "sha256": "c29a0ccd8f0756e34581c398db16c5a0e1ba6166ff4a42d2d86e0c41537e74ff",
+      "candidate_count": 295,
+      "source_count": 74
+    },
+    {
+      "path": "docs/videos/so-thats-why/pool/batches/space-engineering.json",
+      "sha256": "fc1790c4282a4619c80cfe7b7489ce17ad386afe55f282a3f91d57561472895b",
+      "candidate_count": 10,
+      "source_count": 5
+    }
+  ],
+  "scope": {
+    "candidate_records_read": 305,
+    "physics_records_read": 295,
+    "space_engineering_records_read": 10,
+    "fields_read": "每題 question、answer_target、scope；來源 id/url 清單與抽查頁對應小節。非所有 notes 逐字重查。",
+    "batch_source_pages_sampled": 15,
+    "physics_batch_source_pages_sampled": 10,
+    "space_engineering_source_pages_sampled": 5,
+    "additional_context_pages_read": 1,
+    "external_fact_check": "限定來源級前提與機制抽查；沒有逐一重查 305 題的所有外部事實、量值、例子。",
+    "limits": [
+      "不是完整稿盲讀、Treatment 核准或製作通過。",
+      "未由此審閱證明每題足以獨立成長片。",
+      "語義合併依現在 answer_target；後續若有真正不同的條件與來源，可重新提出，而不是換標題恢復。",
+      "來源文字、插圖、圖表與實驗步驟未搬入素材池；本紀錄只記 URL 與原創短評。"
+    ]
+  },
+  "source_checks": [
+    {
+      "source_id": "PHYS-S010",
+      "url": "https://openstax.org/books/college-physics-2e/pages/11-3-pressure",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Pressure definition and Figure 11.5",
+      "result": "P040/P041 的核心均為力除以接觸面積；破壞機制未形成另一套已具來源的目標。"
+    },
+    {
+      "source_id": "PHYS-S023",
+      "url": "https://openstax.org/books/college-physics-2e/pages/14-7-radiation",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Opening paragraphs and thermal spectrum",
+      "result": "P096/P097 均由不需介質的電磁輻射回答；P098/P099 的頻譜問題可另留。"
+    },
+    {
+      "source_id": "PHYS-S038",
+      "url": "https://openstax.org/books/college-physics-2e/pages/27-5-single-slit-diffraction",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Figure 27.21–27.23 and opening Huygens analysis",
+      "result": "P156/P157 為同一有限開口繞射；P158 主峰旁瓣是同一圖樣內的延伸。"
+    },
+    {
+      "source_id": "PHYS-S056",
+      "url": "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Mole Fraction and Molality",
+      "result": "molarity 為 mol/L solution；molality 為 mol/kg solvent。"
+    },
+    {
+      "source_id": "PHYS-S059",
+      "url": "https://openstax.org/books/chemistry-2e/pages/12-7-catalysis",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Opening mechanism discussion; Figure 12.19",
+      "result": "P250/P252 都由較低能障的替代路徑回答，步驟數本身不是快慢判準。"
+    },
+    {
+      "source_id": "PHYS-S069",
+      "url": "https://openstax.org/books/college-physics-2e/pages/5-3-elasticity-stress-and-strain",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Opening elastic/linear discussion; Sideways Stress: Shear Modulus",
+      "result": "可恢復與線性不同；軸向、剪切模數是不同形變量，非硬度分類。"
+    },
+    {
+      "source_id": "PHYS-S028",
+      "url": "https://openstax.org/books/college-physics-2e/pages/17-2-speed-of-sound-frequency-and-wavelength",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Opening frequency, wavelength and speed relation",
+      "result": "P117/P181 皆為固定頻率、不同速率造成不同波長；載體改換不產生新核心。"
+    },
+    {
+      "source_id": "PHYS-S071",
+      "url": "https://openstax.org/books/college-physics-2e/pages/15-3-introduction-to-the-second-law-of-thermodynamics-heat-engines-and-their-efficiency",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Spontaneous processes; Heat Engines; Second Law second expression",
+      "result": "P306/P307 適合單一第二定律主題；須保留單一熱庫、循環與自發性的限制。"
+    },
+    {
+      "source_id": "PHYS-S070",
+      "url": "https://openstax.org/books/college-physics-2e/pages/13-4-kinetic-theory-atomic-and-molecular-explanation-of-pressure-and-temperature",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Pressure derivation; rms speed; Distribution of Molecular Speeds",
+      "result": "P301/P303 為速率分布與升溫後重疊的同一比較；P302 跨分子質量可另留。"
+    },
+    {
+      "source_id": "PHYS-S034",
+      "url": "https://openstax.org/books/college-physics-2e/pages/25-4-total-internal-reflection",
+      "read_via": "web.run open; displayed relevant body sections",
+      "locator": "Critical Angle and high-to-low refractive-index condition",
+      "result": "P141/P142/P144 是全反射同一套方向與臨界條件，可用正反例串起。"
+    },
+    {
+      "source_id": "RS01",
+      "url": "https://www.nasa.gov/communicating-with-missions/dsn/",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "locator": "Deep Space Network Complexes",
+      "result": "支持地球自轉與跨站接力；未延伸成每任務全天可排到天線。"
+    },
+    {
+      "source_id": "RS02",
+      "url": "https://www.nasa.gov/technology/space-comms/optical-communications-overview/",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "locator": "Benefits; Challenges",
+      "result": "明說資料率提高不代表傳播速度提高；雲霧與窄束瞄準挑戰支持 R002–R004。"
+    },
+    {
+      "source_id": "RS03",
+      "url": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Thermal_Control",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "locator": "What is the Thermal Control domain?; Why is Thermal Control important?",
+      "result": "支持隔熱／排熱、熱梯度對準及部分紅外線偵測器低溫需求；未把暗電流細節當已核。"
+    },
+    {
+      "source_id": "RS04",
+      "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/dsn-functions/",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "locator": "Telemetry; Tracking; Radio Science",
+      "result": "支持工程與科學遙測及無線電科學；R009 研究路徑要分清。"
+    },
+    {
+      "source_id": "RS05",
+      "url": "https://www.nasa.gov/communicating-with-missions/delay-disruption-tolerant-networking/",
+      "read_via": "urllib.request HTML main extraction; User-Agent Mokaair-editorial/1.0",
+      "locator": "Delay/Disruption Tolerant Networking; Benefits",
+      "result": "明列節點可存放資料至下一節點可用；沒有無限儲存或零遺失保證。"
+    }
+  ],
+  "extra_context": [
+    {
+      "url": "https://openstax.org/books/college-physics-2e/pages/15-2-the-first-law-of-thermodynamics-and-some-simple-processes",
+      "locator": "Heat-engine opening and cycle energy accounting",
+      "purpose": "對照 P308 循環內能變化為零但可有淨功；不是第 11 個批次抽查來源。"
+    }
+  ],
+  "required_edits": [
+    {
+      "id": "P237",
+      "issue": "『質量基準的莫耳濃度』容易把 molality 與一般中文莫耳濃度 molarity 混用。",
+      "change": "改寫為『以溶劑質量為分母的重量莫耳濃度 molality（mol/kg 溶劑）』；與 mol/L 溶液的體積莫耳濃度清楚區分。",
+      "source_id": "PHYS-S056"
+    },
+    {
+      "id": "P298",
+      "issue": "題名用『硬度』描述軸向與剪切彈性模數，會混淆壓痕／刮痕硬度與抵抗彈性形變能力。",
+      "change": "題名改為『把材料拉長和把上層推歪，為什麼需要不同的形變指標？』或以『剛性』說明；目標維持楊氏模數與剪切模數。",
+      "source_id": "PHYS-S069"
+    },
+    {
+      "id": "R009",
+      "issue": "answer_target 的『研究沿途天體』容易把行星內部結構誤說成無線電直接穿透行星。",
+      "change": "scope 加註『訊號沿途傳播效應與由探測器運動推回重力場，是不同研究路徑；不把內部結構說成電波直接穿透行星。』也可先限行星環掩星一條研究線。",
+      "source_ids": [
+        "RS01",
+        "RS04"
+      ]
+    }
+  ],
+  "recommended_core_merges": [
+    {
+      "ids": [
+        "P040",
+        "P041"
+      ],
+      "canonical_id": "P040",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "平均接觸壓力與接觸面積。針尖的額外破壞機制目前僅提醒待查，不能靠此註記虛增獨立核心。"
+    },
+    {
+      "ids": [
+        "P096",
+        "P097"
+      ],
+      "canonical_id": "P096",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "熱輻射不需接觸與介質；暖爐與真空是同一答案的兩例。"
+    },
+    {
+      "ids": [
+        "P156",
+        "P157"
+      ],
+      "canonical_id": "P156",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "有限開口的波前疊加產生擴散與條紋。P158 建議作母題延伸，不必再獨立企劃。"
+    },
+    {
+      "ids": [
+        "P117",
+        "P181"
+      ],
+      "canonical_id": "P117",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "在頻率固定下，傳播速率變化造成波長變化；繩與聲音只是載體例子。"
+    },
+    {
+      "ids": [
+        "P116",
+        "P310"
+      ],
+      "canonical_id": "P310",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "頻率不是傳播速度；超音波命名可作比高低音更好的生活入口。"
+    },
+    {
+      "ids": [
+        "P198",
+        "P216"
+      ],
+      "canonical_id": "P216",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "P198 已以金屬可塑性作比較，與 P216 的離子晶體／金屬變形差異重疊。"
+    },
+    {
+      "ids": [
+        "P250",
+        "P252"
+      ],
+      "canonical_id": "P250",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "較多但較低能障的替代路徑，就是催化加快的同一核心。"
+    },
+    {
+      "ids": [
+        "P211",
+        "P212"
+      ],
+      "canonical_id": "P211",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "有液相共存的純液體，定溫平衡蒸氣壓不依液面面積或餘量；兩個控制變數宜同題對照。"
+    },
+    {
+      "ids": [
+        "P084",
+        "P085"
+      ],
+      "canonical_id": "P084",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "同物質水量影響熱容量；加熱時間是同一能量帳的呈現。"
+    },
+    {
+      "ids": [
+        "P018",
+        "P019",
+        "P021"
+      ],
+      "canonical_id": "P018",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "固定初末動量下，力—時間累積與平均力／峰值區別，可在同一接球衝擊核心說完。"
+    },
+    {
+      "ids": [
+        "P031",
+        "P034"
+      ],
+      "canonical_id": "P031",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "省力以施力距離換取，滑輪與斜坡沒有改變能量守恆回答。"
+    },
+    {
+      "ids": [
+        "P141",
+        "P142",
+        "P144"
+      ],
+      "canonical_id": "P141",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "同一套全反射條件的現象、反例及臨界角定義；合成一個核心記錄並保留各子問。"
+    },
+    {
+      "ids": [
+        "P301",
+        "P303"
+      ],
+      "canonical_id": "P301",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "有速率分布所以不同溫度的群體仍可重疊；升溫比較適合作為同題下一問。"
+    },
+    {
+      "ids": [
+        "P306",
+        "P307"
+      ],
+      "canonical_id": "P307",
+      "action": "merge_question_variants_preserve_sources",
+      "reason": "熱不能在單一熱庫循環中全變功；煞車熱回復是同一限制的入口，不能另計核心。"
+    }
+  ],
+  "cross_batch_merges": [
+    {
+      "ids": [
+        "N208",
+        "P067"
+      ],
+      "canonical_id": "N208",
+      "reason": "P067 現有目標仍是深度增加造成較大靜水壓；小孔噴流只是同核心展示。若另研究流出能量與射程，需新增該部分來源並明確重新界定。",
+      "action": "保留兩批來源與變體，不把 2 個物件計為 2 個機制。"
+    }
+  ],
+  "retain_distinctions": [
+    {
+      "ids": [
+        "P027",
+        "P029",
+        "P314"
+      ],
+      "reason": "轉動慣量改變、收手做功的能量帳、角動量方向交換，研究目標不同；不可只看到角動量就整批判重。"
+    },
+    {
+      "ids": [
+        "P053",
+        "P055"
+      ],
+      "reason": "表面濕潤接觸角與液柱毛細上升的重力平衡有不同待解差別。"
+    },
+    {
+      "ids": [
+        "P100",
+        "P294",
+        "P295"
+      ],
+      "reason": "線性回復、可恢復但非線性、剛性與破壞強度，不能直接互換。"
+    },
+    {
+      "ids": [
+        "R001",
+        "R003"
+      ],
+      "reason": "跨站需求分別來自地球自轉幾何與局部天氣遮蔽，條件確實改變答案。"
+    },
+    {
+      "ids": [
+        "R005",
+        "P096"
+      ],
+      "reason": "衛星熱設計同時限制外部熱輸入與內部熱排出；單純輻射無介質只是必要背景，不足回答工程配置。"
+    }
+  ],
+  "content_thickness_note": "很多物理列適合問題池中的子問或對照，不適合逐列承諾 13 分鐘；尤其 P135、P148、P161、P222、P243、P260、P293 目前更像定義辨析，沒有具體生活後果或因果主線前不應單獨排長片。",
+  "final_conclusion": "抽查未發現需要整批退回的來源偽造或大面積錯前提；應修 3 處措辭並裁合至少上述同核群。題庫可繼續編輯，仍不等於稿件事實查核通過。"
+}

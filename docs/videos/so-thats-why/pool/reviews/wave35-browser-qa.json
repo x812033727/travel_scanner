@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T12:24:54.145Z",
+  "result": "PASS",
+  "selected": 3166,
+  "index_html_sha256": "a15279d3b59af5b388638b1a0c4420f9f8c192559fced2b5f61c15f542365c7d",
+  "source_sample": {
+    "id": "X35-001",
+    "urls": [
+      "https://arxiv.org/pdf/1705.01693"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave35-desktop.png",
+    "wave35-source-desktop.png",
+    "wave35-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "三張圖已目讀，頁首及手機統計為3,166題和340題案。X35-001展開後顯示21車實驗範圍。縮小後手機篩選與統計卡分行，無水平溢出。"
+}

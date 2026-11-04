@@ -1,0 +1,439 @@
+{
+  "tested_on": "2026-11-02T12:24:45.617Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3543,
+    "canonical_questions": 3395,
+    "eligible_candidates": 3225,
+    "selected_candidates": 3166,
+    "alias_records": 148,
+    "historical_records": 313,
+    "source_urls": 4523,
+    "current_research_source_urls": 1564,
+    "selected_source_urls": 2743,
+    "new_suggestions_not_added": 1485,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 340,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3151",
+    "carried": 3151,
+    "added": 15,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "33e731b45f274c55c5fcf5893f0df9af35d9465e22a75c7d68b919511861e202",
+    "writes": 6938,
+    "selected": 3166
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "33e731b45f274c55c5fcf5893f0df9af35d9465e22a75c7d68b919511861e202",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4621,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 6084.909300000001,
+    "index_ms": 2984.890299999999,
+    "unchanged_index_ms": 239.73489999999947,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 14,
+        "milliseconds": 11.592099999998027
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 4.53070000000298
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 5.5033000000003085
+      }
+    ],
+    "rss_bytes": 425361408,
+    "sqlite_bytes": 58859520
+  },
+  "dedup_audit": {
+    "selection": "All reviewed merges, if any, in this wave. A wave with no merged proposals has no positive sample. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "f53e4d974fc3ed288037a1cc17e8db8005157b05becf8e4b8477a1d2824a91de",
+    "records": 3543,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.888
+  },
+  "hashes": {
+    "pool.json": "f53e4d974fc3ed288037a1cc17e8db8005157b05becf8e4b8477a1d2824a91de",
+    "themes.json": "4232854d50b9ecf9e08db7c16838d1f5dab7369c2b7e72f9ec50669ab18ba4c1",
+    "manifest.json": "aef3098dfb8ac08ddb6dc18b7301fbb1bdbb1ae30669808f402f1f493022390e",
+    "index.html": "a15279d3b59af5b388638b1a0c4420f9f8c192559fced2b5f61c15f542365c7d",
+    "batches/wave35-physics.json": "b30ebe39e91b44eb182f1708b3d80c1f4eb9e4e845a5ffc37f9aeafa7a8bdffa",
+    "batches/wave35-tools.json": "f352fbf7eb2c99492285d37d104e3e6188202be4c980e28df2f88a5fb5602e45"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3528,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3151,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 331,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_production_treatments": 0,
+    "human_readthroughs": 0,
+    "offline_synthetic_timing_samples": 2,
+    "samples": [
+      {
+        "theme_id": "G333",
+        "continuous_seconds": 39.078,
+        "seconds_for_looking": 3.922
+      },
+      {
+        "theme_id": "G337",
+        "continuous_seconds": 47.996,
+        "seconds_for_looking": 8.004
+      }
+    ],
+    "receipt": "reviews/wave35-timing.json"
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4508,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://arxiv.org/pdf/1705.01693",
+        "source_id": "SRC-b422a111fa713d96",
+        "candidate_ids": [
+          "X35-001"
+        ],
+        "theme_ids": [
+          "G337"
+        ]
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7968841/fullTextXML",
+        "source_id": "SRC-dc2493397c727ad0",
+        "candidate_ids": [
+          "X35-002"
+        ],
+        "theme_ids": [
+          "G338"
+        ]
+      },
+      {
+        "url": "https://purehost.bath.ac.uk/ws/portalfiles/portal/268111217/manuscript_merged.pdf",
+        "source_id": "SRC-50c26dc1ba0c65e0",
+        "candidate_ids": [
+          "X35-003"
+        ],
+        "theme_ids": [
+          "G338"
+        ]
+      },
+      {
+        "url": "https://www.unav.edu/documents/14434042/23511993/2020_SafetyScience121_394.pdf/63ebdbe2-1298-b884-0650-24fd0b1e926e",
+        "source_id": "SRC-96b6d482b7e3b413",
+        "candidate_ids": [
+          "X35-004"
+        ],
+        "theme_ids": [
+          "G339"
+        ]
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448793/fullTextXML",
+        "source_id": "SRC-dcfdd5bc269f1865",
+        "candidate_ids": [
+          "X35-005"
+        ],
+        "theme_ids": [
+          "G340"
+        ]
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2850937/fullTextXML",
+        "source_id": "SRC-b6ba5dbfdb7c7a86",
+        "candidate_ids": [
+          "X35-006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1126/sciadv.ade8159",
+        "source_id": "SRC-aada3391ff863973",
+        "candidate_ids": [
+          "R35001"
+        ],
+        "theme_ids": [
+          "G332"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0072872",
+        "source_id": "SRC-ec6eb70ee13c7b4d",
+        "candidate_ids": [
+          "R35002"
+        ],
+        "theme_ids": [
+          "G332"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s41598-019-39902-y",
+        "source_id": "SRC-0dcef8db10eae76d",
+        "candidate_ids": [
+          "R35003"
+        ],
+        "theme_ids": [
+          "G333"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s41559-017-0429-7",
+        "source_id": "SRC-a2181685906c1980",
+        "candidate_ids": [
+          "R35004"
+        ],
+        "theme_ids": [
+          "G334"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.7554/eLife.64829",
+        "source_id": "SRC-909a391aa6262bd2",
+        "candidate_ids": [
+          "R35005"
+        ],
+        "theme_ids": [
+          "G334"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s41598-018-33458-z",
+        "source_id": "SRC-bad2e21660aad68d",
+        "candidate_ids": [
+          "R35006"
+        ],
+        "theme_ids": [
+          "G335"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.cub.2023.01.023",
+        "source_id": "SRC-061a681dd4c84d56",
+        "candidate_ids": [
+          "R35007"
+        ],
+        "theme_ids": [
+          "G335"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1098/rsbl.2008.0786",
+        "source_id": "SRC-9753dd63a5b9cd82",
+        "candidate_ids": [
+          "R35008"
+        ],
+        "theme_ids": [
+          "G336"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/srep34783",
+        "source_id": "SRC-c41cf593679b73a4",
+        "candidate_ids": [
+          "R35009"
+        ],
+        "theme_ids": [
+          "G336"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://doi.org/10.1126/sciadv.ade8159",
+    "core": "R35001",
+    "theme": "G332",
+    "theme_ids": [
+      "G332"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 91742.8119,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "0df2771337252082774ca2fbf14195aaa84965aee3f07fdcc83a085c4275f1e1"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "7816568c6befd87dc10a064e848003f752f7e182651f942c3d3e26a95f2070e2"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "678b88c2f0006359988e3dd06c5d7c7d8c0f52575b74c494537de39a5f10de0b",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "99fe7cad1d42f80b7eef7ad32a5f46ebc47564d6685dd71ac8f4033b2c5c0898"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "2217352cbf5612806b3968e1692494f2f486a6bf0156c28015a10671d0a3415a",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 395,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 19,
+    "unique_blobs_checked": 416,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3911,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G332",
+        "core": "R35001",
+        "seconds": 42,
+        "maximum": 85
+      },
+      {
+        "theme": "G332",
+        "core": "R35002",
+        "seconds": 43,
+        "maximum": 85
+      },
+      {
+        "theme": "G333",
+        "core": "R35003",
+        "seconds": 43,
+        "maximum": 85
+      },
+      {
+        "theme": "G334",
+        "core": "R35004",
+        "seconds": 31,
+        "maximum": 85
+      },
+      {
+        "theme": "G334",
+        "core": "R35005",
+        "seconds": 36,
+        "maximum": 85
+      },
+      {
+        "theme": "G335",
+        "core": "R35006",
+        "seconds": 34,
+        "maximum": 85
+      },
+      {
+        "theme": "G335",
+        "core": "R35007",
+        "seconds": 39,
+        "maximum": 85
+      },
+      {
+        "theme": "G336",
+        "core": "R35008",
+        "seconds": 38,
+        "maximum": 85
+      },
+      {
+        "theme": "G336",
+        "core": "R35009",
+        "seconds": 34,
+        "maximum": 85
+      },
+      {
+        "theme": "G337",
+        "core": "X35-001",
+        "seconds": 56,
+        "maximum": 95
+      },
+      {
+        "theme": "G338",
+        "core": "X35-002",
+        "seconds": 34,
+        "maximum": 89
+      },
+      {
+        "theme": "G338",
+        "core": "X35-003",
+        "seconds": 44,
+        "maximum": 82
+      },
+      {
+        "theme": "G339",
+        "core": "X35-004",
+        "seconds": 50,
+        "maximum": 87
+      },
+      {
+        "theme": "G340",
+        "core": "X35-005",
+        "seconds": 58,
+        "maximum": 77
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 30,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "a019a384132e2cbb38d4361b80ca4c394731fdf1eabf67f973b8f110b215fe30"
+  }
+}

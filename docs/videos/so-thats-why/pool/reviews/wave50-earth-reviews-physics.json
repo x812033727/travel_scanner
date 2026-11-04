@@ -1,0 +1,829 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+  "author": "/root/pool_physics",
+  "reviewer": "/root/science_sources",
+  "reviewed_candidate_ids": [
+    "P50-001",
+    "P50-002",
+    "P50-003",
+    "P50-004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave50-physics.json",
+      "sha256": "56fdacc7a9914d6ac41326de0a6e256163d71cc38067b99ccc95face0dae772a"
+    },
+    {
+      "file": "reviews/wave50-physics-themes.json",
+      "sha256": "2e6e9717ffe6d5e330529618269ed32368e277a5540d8176a0257235d21031e0"
+    },
+    {
+      "file": "reviews/wave50-physics-author.json",
+      "sha256": "6730845e24706f99ac22a8a3af2dcc91984560e2e64dd0b3a50d8ea20e5814c6"
+    }
+  ],
+  "accepted_theme_proposal_ids": [
+    "W50P-T01",
+    "W50P-T02",
+    "W50P-T03"
+  ],
+  "timing_checks": [
+    {
+      "id": "W50P-T01",
+      "body_seconds": 72,
+      "chapter_seconds": [
+        24,
+        25,
+        23
+      ],
+      "core_totals": {
+        "P50-001": 72
+      },
+      "caps": {
+        "P50-001": 100
+      },
+      "beats_at_most_45": true,
+      "range_not_above_body": true
+    },
+    {
+      "id": "W50P-T02",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        45,
+        35
+      ],
+      "core_totals": {
+        "P50-002": 80
+      },
+      "caps": {
+        "P50-002": 95
+      },
+      "beats_at_most_45": true,
+      "range_not_above_body": true
+    },
+    {
+      "id": "W50P-T03",
+      "body_seconds": 70,
+      "chapter_seconds": [
+        45,
+        25
+      ],
+      "core_totals": {
+        "P50-003": 70
+      },
+      "caps": {
+        "P50-003": 95
+      },
+      "beats_at_most_45": true,
+      "range_not_above_body": true
+    }
+  ],
+  "remaining_blockers": [],
+  "final_common_readback": {
+    "draft_file": ".cache/draft.json",
+    "draft_sha256": "45307969c3e2d3151bfaf71d9eeef016d33d52659e9ec4674879b679a936c3d3",
+    "raw_records": 3931,
+    "neighbours_file": ".cache/wave50-physics-neighbours.json",
+    "neighbours_sha256": "102aea4a05bd5bc5b007049d713e7c9829f175d084b2f8475883f150930d0ece",
+    "candidate_fields_match_final_batch": true,
+    "author_written_files_match": true,
+    "rows": [
+      {
+        "id": "P50-001",
+        "neighbour_ids": [
+          "P133",
+          "O7010",
+          "O7001",
+          "B4024",
+          "P153"
+        ],
+        "all_five_full_question_answer_scope_read": true
+      },
+      {
+        "id": "P50-002",
+        "neighbour_ids": [
+          "E11004",
+          "O7002",
+          "X37-003",
+          "O7001",
+          "I15005"
+        ],
+        "all_five_full_question_answer_scope_read": true
+      },
+      {
+        "id": "P50-003",
+        "neighbour_ids": [
+          "I15002",
+          "I15007",
+          "P50-001",
+          "I15003",
+          "O7010"
+        ],
+        "all_five_full_question_answer_scope_read": true
+      },
+      {
+        "id": "P50-004",
+        "neighbour_ids": [
+          "M5019",
+          "D9019",
+          "B4020",
+          "R42001",
+          "P28001"
+        ],
+        "all_five_full_question_answer_scope_read": true
+      }
+    ],
+    "changed_rows": [
+      {
+        "id": "P50-004",
+        "change": "移出LEG-S86、加入P28001，其餘重排；P28001已在作者近對獨立讀過，末版完整內容再讀。"
+      }
+    ]
+  },
+  "not_added_readback": {
+    "ids": [
+      "P50-NA001",
+      "P50-NA002",
+      "P50-NA003",
+      "P50-NA004",
+      "P50-NA005",
+      "P50-NA006",
+      "P50-NA007",
+      "P50-NA008",
+      "P50-NA009",
+      "P50-NA010",
+      "P50-NA011",
+      "P50-NA012",
+      "P50-NA013",
+      "P50-NA014"
+    ],
+    "count": 14,
+    "scope": "逐條讀問法、理由、重入條件與來源閱讀限制；existing_ids可回到舊raw或歷史NA。不重開未採用來源，不使退題自動復活。"
+  },
+  "limits": [
+    "題級來源與紙上編輯覆核，不是完整逐字稿、製作或發布核准。",
+    "近鄰分數僅協助找候選，非重複率或全庫無漏題證明。",
+    "原圖只供查證；未以本收據授權商用原圖。",
+    "本審閱者未產生或播放音訊；計時只核root的樣稿文字、讀值檔及WAV雜湊/標頭，不稱真人或觀眾測試。"
+  ],
+  "scope": "4候選、17作者近對、初末20有向top5、14退題、3片案；4篇原研究指定正文當日獨立取得並讀回，11原圖/頁目讀。非全部補充資料或原始程式重現。",
+  "candidate_review": [
+    {
+      "id": "P50-001",
+      "question": "相機只拍白牆，為什麼多擋掉一些光，反而能算出轉角後的圖案？",
+      "decision": "retain",
+      "reason": "新增已知幾何遮擋讓牆上可見權重帶方向差，改善被動影像反問題；不同於只說漫反射、主動輪換已知遮罩或一般光線合成。",
+      "scope_kept": "限已知形狀/尺寸遮擋物、白漫反射板與指定隱藏螢幕平面；不是透過不透光牆。影像平均20曝光，不保證任意房間或任意未知遮擋。",
+      "source_ids": [
+        "P50-S001"
+      ]
+    },
+    {
+      "id": "P50-002",
+      "question": "一張只剩亮砂粒的照片，為什麼仍可能算回磨砂片後的小圖案？",
+      "decision": "retain",
+      "reason": "未知散射細節仍可利用受限視角內平移相關保留物點間距，再估相位；不是一般模糊反卷積或擦掉散斑，重入舊NA有新增正文。",
+      "scope_kept": "限窄頻空間非相干照明、受限視野/足夠取樣；小透明圖案實驗，不保證一般散射照片唯一重建。蔥皮例為10幀平均，與單張擴散片例分清。",
+      "source_ids": [
+        "P50-S002"
+      ]
+    },
+    {
+      "id": "P50-003",
+      "question": "不刮掉白色散射層，只改照進去的光，怎麼能在另一側聚出亮點？",
+      "decision": "retain",
+      "reason": "以另一側目標亮度回饋逐區掃空間相位，無須先錄完整時域波形；這個控制不同於時間倒序聚焦，也不同被動重建圖樣。",
+      "scope_kept": "限相干光、散射而非全吸收層、另一側CCD回饋與足夠穩定時間；不是單張被動拍照，也不是錄下完整波形再倒放。",
+      "source_ids": [
+        "P50-S003"
+      ]
+    },
+    {
+      "id": "P50-004",
+      "question": "影片裡的零食袋看來沒動，為什麼仍能提取當時的聲音？",
+      "decision": "retain",
+      "reason": "聲致微振動以影像局部相位擷取，先在尺度/方向內加權、再對齊合併；不同於聲溝靜態掃描、雷達路徑相位或音量計算。未聽恢復音訊，保segment。",
+      "scope_kept": "受控播放且相機/物體隔振；硬重磚的恢復較差。逐行變體受曝光平均/幀間缺樣限制；本輪只核正文/譜圖，未聽恢復音訊，不承諾可懂語句。",
+      "source_ids": [
+        "P50-S004"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P50-001",
+        "b": "P133",
+        "reason": "漫反射是背景；新控制增遮擋、比較位置相關半影，才讓逆問題可解。",
+        "author_reason_read": "舊回答直接反射方向混散；新問已知遮擋新增空間可見性差及反算，原漫反射限制仍成立。"
+      },
+      {
+        "a": "P50-001",
+        "b": "I15005",
+        "reason": "新用靜態遮擋形成方向相關半影；舊以快門時間開關改變運動模糊核，並用已知或可估運動反卷積。",
+        "author_reason_read": "舊是主動時間快門改運動模糊核；新是靜態遮擋形成方向依存半影，估位置再解混。"
+      },
+      {
+        "a": "P50-001",
+        "b": "I15007",
+        "reason": "已知形狀遮擋物固定、位置估計，與輪換已知遮罩編碼的主動測量不同。",
+        "author_reason_read": "舊單點偵測需輪換已知遮罩量多次總和；新以相機平行量牆的空間差、遮擋位置未知。兩者解混相關，交非作者嚴判新增控制。"
+      },
+      {
+        "a": "P50-001",
+        "b": "I15008",
+        "reason": "新以被動遮擋解混隱藏圖案；舊平移高頻照明，依直接/間接光切換程度分離路徑成分。",
+        "author_reason_read": "舊主動高頻照明分直接/全域路徑；新被動遮擋編碼未知圖案，不是照明分量分離。"
+      },
+      {
+        "a": "P50-001",
+        "b": "O7019",
+        "reason": "舊將折射率梯度造成的小偏角經焦點遮擋轉為明暗；新遮住不同隱藏場景方向，不依氣體密度梯度偏折。",
+        "author_reason_read": "舊遮擋把折射偏角轉亮度；新遮住不同場景方向，沒有密度梯度光偏折。"
+      },
+      {
+        "a": "P50-002",
+        "b": "O3004",
+        "reason": "舊抑制或平均斑點，新保留平移相關以恢復物點間距，觀測目標相反。",
+        "author_reason_read": "舊散斑生成/平均去噪；新利用記憶角內平移相關保存點間距，非擦除散斑。"
+      },
+      {
+        "a": "P50-002",
+        "b": "I15007",
+        "reason": "沒有輪換已知輸入圖樣；受限角度的未知散斑相關才是重建條件。",
+        "author_reason_read": "舊已知遮罩多次加權；新無已知隨機PSF，取自相關消去其影響再做相位恢復。"
+      },
+      {
+        "a": "P50-002",
+        "b": "I15005",
+        "reason": "舊時間快門編碼已知或可估運動模糊核；新散射核未知，靠記憶角內的平移相關估自相關，再補相位。",
+        "author_reason_read": "舊已知模糊核反卷積；新未知散射核但有平移相關/尖峰自相關條件，不套任意反模糊。"
+      },
+      {
+        "a": "P50-002",
+        "b": "O7015",
+        "reason": "舊線性成像各環節MTF相乘衰減細紋；新利用雜亂散射影像仍保留的二階關係恢復受限圖樣。",
+        "author_reason_read": "舊串接MTF對比損失；新問散射圖中保留的二階關係與受限恢復，不以相機更好重收。"
+      },
+      {
+        "a": "P50-003",
+        "b": "W16003",
+        "reason": "空間相位掃描以目標強度回饋，不錄波形倒序；原文亦明說不要求時間反演對稱。",
+        "author_reason_read": "舊記錄時域波形倒序重播；新只量目標強度掃空間相位，文中明說不要求時間反演對稱。仍同屬相干重聚，請非作者嚴判控制增量。"
+      },
+      {
+        "a": "P50-003",
+        "b": "W16004",
+        "reason": "回饋優化相干入射波前與回波倒序/散射孔徑的時間控制不同。",
+        "author_reason_read": "舊全槽時間邊界生成反向水波；新逐區目標回饋無時間邊界/整場倒轉。"
+      },
+      {
+        "a": "P50-003",
+        "b": "P153",
+        "reason": "干涉是背景，新有未知散射層、逐區尋優與樣本漂移使已得設定失配的控制。",
+        "author_reason_read": "干涉相長是基礎；新增在未知散射層後以局部目標回饋選相位，並有樣本穩定時間限制。"
+      },
+      {
+        "a": "P50-003",
+        "b": "O3004",
+        "reason": "新讓目標點相位合拍形成局部亮點；舊以平均降低散斑，不是同一操作。",
+        "author_reason_read": "舊討論散斑與平均；新有相位控制重排能量，非光滑去噪。"
+      },
+      {
+        "a": "P50-002",
+        "b": "P50-003",
+        "reason": "前者被動估圖且依散斑位移相關；後者主動相位尋優聚焦且需另一側回饋。",
+        "author_reason_read": "前者空間非相干物點強度相關來被動還原圖；後者相干入射場主動改相位聚一點，目標與所需接觸條件不同。"
+      },
+      {
+        "a": "P50-004",
+        "b": "P28001",
+        "reason": "舊掃靜態錄音溝槽；新影片量活物表面亞像素聲致運動。",
+        "author_reason_read": "舊讀靜態已刻錄槽紋；新聲壓使當下物體微振動，從時間影像的局部相位整合取訊號。"
+      },
+      {
+        "a": "P50-004",
+        "b": "O3047",
+        "reason": "逐行取樣在此只是一個變體；核心是局部影像相位擷取及尺度方向訊號對齊。",
+        "author_reason_read": "逐行時序原理已有，故不另拆低幀率變體；候選主核是紋理微位移/相位對齊提聲。"
+      },
+      {
+        "a": "P50-004",
+        "b": "P20006",
+        "reason": "舊短閃光只與部分列曝光窗重疊而形成亮帶；新要擷取物體聲致微振動，不將照明閃爍當待測聲音。",
+        "author_reason_read": "舊相同行曝光窗收不同光量；新提取表面聲致位移，亮帶時間不是待測訊號。"
+      },
+      {
+        "a": "P50-004",
+        "b": "O3013",
+        "reason": "雷達電磁相位量路徑差，與影像紋理局部相位估位移再恢復聲音，不是同一物理觀測。"
+      },
+      {
+        "a": "P50-001",
+        "b": "P20004",
+        "reason": "雙子孔徑對焦相位差與隱藏場景被幾何遮擋後的半影亮度反問題不同。"
+      }
+    ]
+  },
+  "source_readings": [
+    {
+      "source_id": "P50-S001",
+      "url": "https://doi.org/10.1038/s41586-018-0868-6",
+      "doi": "10.1038/s41586-018-0868-6",
+      "version": "期刊2019-01-23；實讀BU機構庫作者接受稿（檔名20181115-word），同一研究。",
+      "read_via": "當日web開DOI未回有效正文；指定UA另取有效PDF HTTP200，獨立讀指定正文並核作者原文/抽文SHA。",
+      "reading_scope": "PDF pp2–6主文、pp8–9圖說/設備/資料取得；讀已知遮擋形狀、估位置、計算視野與Fig4平均20次曝光。未逐讀pp10–12數學方法/SI。",
+      "limits": "BU接受稿缺圖，另讀原刊公開Fig1/3/4，非第二份研究；限定螢幕平面/白板、低解析正則化重建，不宣稱任意房間透視。",
+      "author_cache_readback": {
+        "file": ".cache/wave50-physics-periscope.pdf",
+        "sha256": "dd4d08bb39e1434c130539478d3b18f80ecc6b107603f42b2c7aabe5151fe08b",
+        "text_file": ".cache/wave50-physics-periscope.txt",
+        "text_sha256": "82008aa73f36bf0b73175ba8010a748de73ab1246d5e26e550179b0b33b07c4d"
+      },
+      "fresh_retrieval": {
+        "id": "P50-S001",
+        "author_raw_sha_verified": true,
+        "author_text_sha_verified": true,
+        "returned_url": "https://open.bu.edu/server/api/core/bitstreams/3e7f957b-ed40-45bb-8b8a-b8c09b3caa63/content",
+        "status": 200,
+        "file": ".cache/wave50-earth-review-P50-S001.pdf",
+        "sha256": "841ca5b45e155d484372c471beed2070c6f72085839c330ff34a3b84e996bb59",
+        "valid_pdf": true,
+        "same_as_author": false
+      },
+      "copy_comparison": "Fresh與作者PDF位元組SHA不同，但12頁fitz抽文串接完全相同；不聲稱兩PDF位元組相同或兩獨立研究。"
+    },
+    {
+      "source_id": "P50-S002",
+      "url": "https://doi.org/10.1038/nphoton.2014.189",
+      "doi": "10.1038/nphoton.2014.189",
+      "version": "原刊2014-08-31；ESPCI同文刊本PDF。arXiv:1403.3316v1是同工作早稿，題名有real-time，不另算研究。",
+      "read_via": "當日web開DOI未回有效正文；指定UA另取有效PDF HTTP200，獨立讀指定正文並核作者原文/抽文SHA。",
+      "reading_scope": "PDF pp1–6正文與p7相位恢復演算法尾段；Fig1數值模型、Fig2實測、記憶角、取樣及手機孔徑條件。未追讀參考文獻或SI。",
+      "limits": "窄頻空間非相干照明與受限記憶角，Fig1是數值；蔥皮圖平均10幀，手機有孔徑控制。不保證任意散射照片唯一還原。",
+      "author_cache_readback": {
+        "file": ".cache/wave50-physics-speckle.pdf",
+        "sha256": "6904bed8fde1b4e66007862bdd05e930161ac422a6d80c015a51bf24c646f583",
+        "text_file": ".cache/wave50-physics-speckle.txt",
+        "text_sha256": "8d64fc2bc48c22b05abfa212b2f06654d9dc5bc8342b95778a62dfc4f99b1241"
+      },
+      "fresh_retrieval": {
+        "id": "P50-S002",
+        "author_raw_sha_verified": true,
+        "author_text_sha_verified": true,
+        "returned_url": "https://blog.espci.fr/pse1/files/2018/03/nphoton.2014.189.pdf",
+        "status": 200,
+        "file": ".cache/wave50-earth-review-P50-S002.pdf",
+        "sha256": "6904bed8fde1b4e66007862bdd05e930161ac422a6d80c015a51bf24c646f583",
+        "valid_pdf": true,
+        "same_as_author": true
+      }
+    },
+    {
+      "source_id": "P50-S003",
+      "url": "https://doi.org/10.1364/OL.32.002309",
+      "doi": "10.1364/OL.32.002309",
+      "version": "原刊2007-08-02線上、2007-08-15期；作者nano-cops庫刊本。早期arXiv cond-mat/0604253題名不同，本輪只核身分不採作另證。",
+      "read_via": "當日web開DOI未回有效正文；指定UA另取有效PDF HTTP200，獨立讀指定正文並核作者原文/抽文SHA。",
+      "reading_scope": "全3頁主文，Eqs1–2、逐區相位程序、Fig2–4與Table1；參考文獻未另追讀。",
+      "limits": "原文明說不依賴時間反演對稱/無吸收；局部亮度增加非總透光率暴增。漂移限制含模型解釋，非逐散射點量測。",
+      "author_cache_readback": {
+        "file": ".cache/wave50-physics-wavefront.pdf",
+        "sha256": "859e637865bc30132b72457d6789eb99d283c52a7e64b5f06489e44fb023778c",
+        "text_file": ".cache/wave50-physics-wavefront.txt",
+        "text_sha256": "2ffeac3a4fc7cfe19a2f5eed25ddd07502dd5acedfec482503e02a114a0a36dd"
+      },
+      "fresh_retrieval": {
+        "id": "P50-S003",
+        "author_raw_sha_verified": true,
+        "author_text_sha_verified": true,
+        "returned_url": "https://nano-cops.com/app/uploads/2018/06/Focusing_light_OptLett-3.pdf",
+        "status": 200,
+        "file": ".cache/wave50-earth-review-P50-S003.pdf",
+        "sha256": "859e637865bc30132b72457d6789eb99d283c52a7e64b5f06489e44fb023778c",
+        "valid_pdf": true,
+        "same_as_author": true
+      }
+    },
+    {
+      "source_id": "P50-S004",
+      "url": "https://doi.org/10.1145/2601097.2601119",
+      "doi": "10.1145/2601097.2601119",
+      "version": "MIT機構庫標作者最終稿，2014-07；CSAIL作者PDF同文，不把2017回顧算第二研究。",
+      "read_via": "當日web開DOI未回有效正文；指定UA另取有效PDF HTTP200，獨立讀指定正文並核作者原文/抽文SHA。",
+      "reading_scope": "PDF pp1–4 §1–4.1、p7 §5.2、pp8–9 §6–8；§3.2 Eqs3–5順序與逐行缺樣/曝光限制。未讀pp5–6人體辨識測試，未聽音訊或看影片。",
+      "limits": "保留其他聲學/成像控制限制；未聽恢復音訊，不對可懂語句或真人辨識率下結論。逐行是同核變體，不再拆題。",
+      "author_cache_readback": {
+        "file": ".cache/wave50-physics-visualmic.pdf",
+        "sha256": "3c389a1377622d9e022e34dd0307442521b1d61702cc7d3be3c0584296a2f4db",
+        "text_file": ".cache/wave50-physics-visualmic.txt",
+        "text_sha256": "3eabf1b60ec21fe4cd9e3a9f942081ac5123d943106db935eb73e5b468e8ca40"
+      },
+      "fresh_retrieval": {
+        "id": "P50-S004",
+        "author_raw_sha_verified": true,
+        "author_text_sha_verified": true,
+        "returned_url": "https://people.csail.mit.edu/billf/publications/VisualMic_SIGGRAPH2014.pdf",
+        "status": 200,
+        "file": ".cache/wave50-earth-review-P50-S004.pdf",
+        "sha256": "3c389a1377622d9e022e34dd0307442521b1d61702cc7d3be3c0584296a2f4db",
+        "valid_pdf": true,
+        "same_as_author": true
+      }
+    }
+  ],
+  "visual_readings": [
+    {
+      "source_id": "P50-S001",
+      "file": ".cache/wave50-physics-periscope-f1.png",
+      "sha256": "805d266a7ded5b02a37f63e72162efeb353edb4d7ed15391cf4c27d20ff78710",
+      "read_scope": "原刊Fig1幾何示意：相機只看牆、已知形狀的遮擋物位置待估。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S001",
+      "file": ".cache/wave50-physics-periscope-f3.png",
+      "sha256": "dc5b6b90e6123d5a40ab71a50ac07ea24c7f69503132f54e875031d784cdba87",
+      "read_scope": "原刊Fig3計算視野與最佳條件區，示意非實測照片。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S001",
+      "file": ".cache/wave50-physics-periscope-f4.png",
+      "sha256": "95ef2cd36ed2057125b876bee13385caf9bbf68f78f25fbd9c6548278f9be878",
+      "read_scope": "原刊Fig4原圖/量測/三種重建並排；四列不同圖案，非同一場景時間序列。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S002",
+      "file": ".cache/wave50-physics-speckle-p2.png",
+      "sha256": "d72423df076d0bceeea4677ca67637b2779af92cd03c903a82d56b43dc64c830",
+      "read_scope": "Fig1原理與數值示例，散斑/自相關/重建不混成同一張直接照片。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S002",
+      "file": ".cache/wave50-physics-speckle-p3.png",
+      "sha256": "dc0ad84a2aa8d74c8ca79458f6e479dc14cb79519bb49321d8ccc788610992de",
+      "read_scope": "Fig2實測擴散片、雞胸、蔥皮；蔥皮10影格平均。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S002",
+      "file": ".cache/wave50-physics-speckle-p6.png",
+      "sha256": "a046223cde5ff5c45ddff44432f1ed6bc2f6370e4a532198f92008851510cd6e",
+      "read_scope": "Fig5手機實測/重建/物件；文中另加小孔及RAW限制。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S003",
+      "file": ".cache/wave50-physics-wavefront-p2.png",
+      "sha256": "8ec941add3da98ffdda8d8d915fec3591d667bfe231fd89e09f91da38b930a1c",
+      "read_scope": "Fig2裝置與Fig3未整形/整形/五焦點，光強同對數色標；不是把層挖洞。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S003",
+      "file": ".cache/wave50-physics-wavefront-p3.png",
+      "sha256": "ce0f82e5fc1fbbb68dcdf98d94924d0d5311179c47f6dbb21f98eef4b9e717be",
+      "read_scope": "Fig4控制區數/增亮的實測點與理想/修正線，Table1不同散射體不另增核。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S004",
+      "file": ".cache/wave50-physics-visualmic-p4.png",
+      "sha256": "0c20d737f687243abe7f733fb7a9dfd62fc2df591b281710535d2245980d36df",
+      "read_scope": "Fig4隔振實驗與Fig5磚/水/紙板/袋/鋁箔掃頻譜；只核圖，不稱已聽錄音。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S004",
+      "file": ".cache/wave50-physics-visualmic-p8.png",
+      "sha256": "eba80482b31b23f7f30fb0c3d123c0918aef7659d8f1d15eed1717fbd6ed3bd5",
+      "read_scope": "Fig8訊噪與位移表；Fig9逐行時間/缺樣示意。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    },
+    {
+      "source_id": "P50-S004",
+      "file": ".cache/wave50-physics-visualmic-p9.png",
+      "sha256": "c346b12e07badee0a836ac7e502d3720720dc722e16004f6caaee44dbefa09d5",
+      "read_scope": "Fig10零曝光模擬與真相機分開；Fig11難懂語音仍可估音高，不等同語句恢復。",
+      "reviewer_read": "本審閱者目讀該原圖/頁，未將示意圖當新實驗。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://doi.org/10.1038/s41586-018-0868-6",
+      "result": "web.open工具返回InternalError，未由該路徑讀到正文；改指定UA取得上列有效公開PDF。"
+    },
+    {
+      "url": "https://doi.org/10.1038/nphoton.2014.189",
+      "result": "web.open工具返回InternalError，未由該路徑讀到正文；改指定UA取得上列有效公開PDF。"
+    },
+    {
+      "url": "https://doi.org/10.1364/OL.32.002309",
+      "result": "web.open工具返回InternalError，未由該路徑讀到正文；改指定UA取得上列有效公開PDF。"
+    },
+    {
+      "url": "https://doi.org/10.1145/2601097.2601119",
+      "result": "web.open工具返回InternalError，未由該路徑讀到正文；改指定UA取得上列有效公開PDF。"
+    }
+  ],
+  "source_identity_readback": {
+    "same_study_copies": "DOI期刊、作者庫PDF與個別原刊圖是同研究不同載體，不計多份獨立證據。",
+    "reentry": "P50-002對I15-NA13：先前只身份/導言，本輪補讀同一研究自相關/相位恢復、實測與失效條件，不改舊NA。"
+  },
+  "theme_review": [
+    {
+      "id": "W50P-T01",
+      "title": "多擋住一些光，怎麼反而看得出轉角後的圖？",
+      "decision": "accept",
+      "reason": "混光→半影可分→重建/全遮區邊界三步不同新資訊；真值不是輸入，72秒對齊3段樣稿。",
+      "drop_if_read": "若不能把相機視野與隱藏場景分清，撤72秒。刪任一控制章便不再完整回答，不能只放重建前後效果。"
+    },
+    {
+      "id": "W50P-T02",
+      "title": "只拍到一堆亮砂，磨砂片後的字怎麼還能找回來？",
+      "decision": "accept",
+      "reason": "先看受限角度內散斑位移，再看自相關/相位恢復；末10秒拉出記憶角是新增失效控制，非只回顧。",
+      "drop_if_read": "如果自相關與直接照片無法一眼區分，撤80秒；若只有重建結果沒有平移控制示意，先保段落。"
+    },
+    {
+      "id": "W50P-T03",
+      "title": "不擦掉白漆，只調光，怎麼把亮點送到另一邊？",
+      "decision": "accept",
+      "reason": "目標強度逐區尋優→增加控制區仍受漂移限制；末重述刪5秒，只保局部/總能量圖註。",
+      "drop_if_read": "若無法畫清目標側偵測與輸入相位區，撤70秒；若只剩名詞與1000倍數字，保素材不拍。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "PHYS50-01",
+      "target": "P50-004 answer_target",
+      "finding": "原文§3.2 Eq3先各尺度/方向內局部加權，Eq4對齊尺度/方向訊號，Eq5合併；原稿泛稱先對齊多區域再加權容易顛倒。",
+      "resolution": "最終答明列順序，直接定點讀回Eq3–5與修稿。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "PHYS50-02",
+      "target": "W50P-T03末拍",
+      "finding": "最後10秒同色標重訪/能量界線可縮為5秒圖註。",
+      "resolution": "75→70，45+25，未補內容；drop/range/new_information同步。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "PHYS50-03",
+      "target": "author.near_pairs",
+      "finding": "17對缺顯式decision欄。",
+      "resolution": "全17補distinct，快照已核最終raw；不是由作者標籤直接決定審閱結論。",
+      "status": "RESOLVED"
+    }
+  ],
+  "targeted_readback": {
+    "before_author_files_sha256": {
+      "batch": "6f3256bfc0e8974752d87fa28ae1786d045589247c0420b17ff7d00f1724b31c",
+      "themes": "2699d3de37e9f2c4fb1ba58a4fa62c1149342de04de72c67df5eb7031a10d780",
+      "author": "ead57bef35728b0b541fbaaf4de6ba3f653c56f75634a052378e65c89785e6b9"
+    },
+    "result": "指定修正與最後三檔、作者written_files均讀回；無剩餘必改。"
+  },
+  "initial_retrieval_readback": {
+    "draft_sha256": "94ea6ce500c4804b2ee9f87ed037abeae1bb2a501dd8c9d31f5b223629131ed4",
+    "rows": [
+      {
+        "id": "P50-001",
+        "neighbour_ids": [
+          "P133",
+          "O7010",
+          "O7001",
+          "B4024",
+          "P153"
+        ]
+      },
+      {
+        "id": "P50-002",
+        "neighbour_ids": [
+          "E11004",
+          "O7002",
+          "X37-003",
+          "O7001",
+          "I15005"
+        ]
+      },
+      {
+        "id": "P50-003",
+        "neighbour_ids": [
+          "I15002",
+          "I15007",
+          "P50-001",
+          "I15003",
+          "O7010"
+        ]
+      },
+      {
+        "id": "P50-004",
+        "neighbour_ids": [
+          "M5019",
+          "B4020",
+          "R42001",
+          "D9019",
+          "LEG-S86"
+        ]
+      }
+    ],
+    "evidence_limit": "首輪完整欄位已讀，這裡保留當時ID順序；未保留首輪近鄰檔SHA，不將後來複製到first命名的末版檔當初版證據。"
+  },
+  "retrieval_pair_readback": [
+    {
+      "a": "P50-001",
+      "b": "P133",
+      "decision": "distinct",
+      "reason": "漫反射是背景；新控制增遮擋、比較位置相關半影，才讓逆問題可解。",
+      "neighbour_scope_read": "不重述鏡中左右舊題"
+    },
+    {
+      "a": "P50-001",
+      "b": "O7010",
+      "decision": "distinct",
+      "reason": "新增已知幾何遮擋讓牆上可見權重帶方向差，改善被動影像反問題；不同於只說漫反射、主動輪換已知遮罩或一般光線合成。",
+      "neighbour_scope_read": "限典型側向光片；不是樣本完全無散射，也不承諾照明厚度固定或任意樣本皆適用。"
+    },
+    {
+      "a": "P50-001",
+      "b": "O7001",
+      "decision": "distinct",
+      "reason": "新增已知幾何遮擋讓牆上可見權重帶方向差，改善被動影像反問題；不同於只說漫反射、主動輪換已知遮罩或一般光線合成。",
+      "neighbour_scope_read": "限設計工作範圍；尺寸較穩不等於始終清晰、零畸變或無限景深。"
+    },
+    {
+      "a": "P50-001",
+      "b": "B4024",
+      "decision": "distinct",
+      "reason": "新增已知幾何遮擋讓牆上可見權重帶方向差，改善被動影像反問題；不同於只說漫反射、主動輪換已知遮罩或一般光線合成。",
+      "neighbour_scope_read": "來自辦公測試室；住家使用是原創情境推導，需依朝向室形另核，不保證節能幅度。"
+    },
+    {
+      "a": "P50-001",
+      "b": "P153",
+      "decision": "distinct",
+      "reason": "新增已知幾何遮擋讓牆上可見權重帶方向差，改善被動影像反問題；不同於只說漫反射、主動輪換已知遮罩或一般光線合成。",
+      "neighbour_scope_read": "經相干照明的雙縫，不宣稱一般手電筒即可"
+    },
+    {
+      "a": "P50-002",
+      "b": "E11004",
+      "decision": "distinct",
+      "reason": "未知散射細節仍可利用受限視角內平移相關保留物點間距，再估相位；不是一般模糊反卷積或擦掉散斑，重入舊NA有新增正文。",
+      "neighbour_scope_read": "限沉積形成的交錯層理，判讀需確認層位/構造；不以任一斜線排除後期變形，不反算精確風速。"
+    },
+    {
+      "a": "P50-002",
+      "b": "O7002",
+      "decision": "distinct",
+      "reason": "未知散射細節仍可利用受限視角內平移相關保留物點間距，再估相位；不是一般模糊反卷積或擦掉散斑，重入舊NA有新增正文。",
+      "neighbour_scope_read": "用同一平面點陣比較徑向畸變，不把透視或焦外模糊混稱同一畸變。"
+    },
+    {
+      "a": "P50-002",
+      "b": "X37-003",
+      "decision": "distinct",
+      "reason": "未知散射細節仍可利用受限視角內平移相關保留物點間距，再估相位；不是一般模糊反卷積或擦掉散斑，重入舊NA有新增正文。",
+      "neighbour_scope_read": "兩選粗糙度判斷，細砂紙靜止成績接近而略高於猜測；不把實驗粒徑切點套到所有表面。"
+    },
+    {
+      "a": "P50-002",
+      "b": "O7001",
+      "decision": "distinct",
+      "reason": "未知散射細節仍可利用受限視角內平移相關保留物點間距，再估相位；不是一般模糊反卷積或擦掉散斑，重入舊NA有新增正文。",
+      "neighbour_scope_read": "限設計工作範圍；尺寸較穩不等於始終清晰、零畸變或無限景深。"
+    },
+    {
+      "a": "P50-002",
+      "b": "I15005",
+      "decision": "distinct",
+      "reason": "舊時間快門編碼已知或可估運動模糊核；新散射核未知，靠記憶角內的平移相關估自相關，再補相位。",
+      "neighbour_scope_read": "限所讀近一維/可建模運動及未飽和線性影像；原始照片仍模糊、關閉也少收光，不保證任意手震或遮擋可還原。"
+    },
+    {
+      "a": "P50-003",
+      "b": "I15002",
+      "decision": "distinct",
+      "reason": "以另一側目標亮度回饋逐區掃空間相位，無須先錄完整時域波形；這個控制不同於時間倒序聚焦，也不同被動重建圖樣。",
+      "neighbour_scope_read": "限所讀可逆光開關標記與穩定配準；每個原始光斑仍模糊，漂移與光子數限制定位，不能把中心估計精度等同整張解析度。"
+    },
+    {
+      "a": "P50-003",
+      "b": "I15007",
+      "decision": "distinct",
+      "reason": "以另一側目標亮度回饋逐區掃空間相位，無須先錄完整時域波形；這個控制不同於時間倒序聚焦，也不同被動重建圖樣。",
+      "neighbour_scope_read": "單感光點不是單次讀值；任意N像素影像不能由少於N個量測唯一解出。來源是固定印刷圖案與指定重建，未做自己的裝置/演算法實驗。"
+    },
+    {
+      "a": "P50-003",
+      "b": "P50-001",
+      "decision": "distinct",
+      "reason": "以另一側目標亮度回饋逐區掃空間相位，無須先錄完整時域波形；這個控制不同於時間倒序聚焦，也不同被動重建圖樣。",
+      "neighbour_scope_read": "限已知形狀/尺寸遮擋物、白漫反射板與指定隱藏螢幕平面；不是透過不透光牆。影像平均20曝光，不保證任意房間或任意未知遮擋。"
+    },
+    {
+      "a": "P50-003",
+      "b": "I15003",
+      "decision": "distinct",
+      "reason": "以另一側目標亮度回饋逐區掃空間相位，無須先錄完整時域波形；這個控制不同於時間倒序聚焦，也不同被動重建圖樣。",
+      "neighbour_scope_read": "線性螢光SIM；物體需在多張量測間穩定，已知照明與系統響應重要。不把條紋平均、摩爾紋本身或數位放大視為解析度提升。"
+    },
+    {
+      "a": "P50-003",
+      "b": "O7010",
+      "decision": "distinct",
+      "reason": "以另一側目標亮度回饋逐區掃空間相位，無須先錄完整時域波形；這個控制不同於時間倒序聚焦，也不同被動重建圖樣。",
+      "neighbour_scope_read": "限典型側向光片；不是樣本完全無散射，也不承諾照明厚度固定或任意樣本皆適用。"
+    },
+    {
+      "a": "P50-004",
+      "b": "M5019",
+      "decision": "distinct",
+      "reason": "聲致微振動以影像局部相位擷取，先在尺度/方向內加權、再對齊合併；不同於聲溝靜態掃描、雷達路徑相位或音量計算。未聽恢復音訊，保segment。",
+      "neighbour_scope_read": "門檻用於量測不是剪掉檔案或降噪；不保證任意加靜默讀值完全不變。"
+    },
+    {
+      "a": "P50-004",
+      "b": "D9019",
+      "decision": "distinct",
+      "reason": "聲致微振動以影像局部相位擷取，先在尺度/方向內加權、再對齊合併；不同於聲溝靜態掃描、雷達路徑相位或音量計算。未聽恢復音訊，保segment。",
+      "neighbour_scope_read": "有限尺寸壓力麥克風，區分入射聲場與插入感測器後的聲場；不作型號排名。"
+    },
+    {
+      "a": "P50-004",
+      "b": "B4020",
+      "decision": "distinct",
+      "reason": "聲致微振動以影像局部相位擷取，先在尺度/方向內加權、再對齊合併；不同於聲溝靜態掃描、雷達路徑相位或音量計算。未聽恢復音訊，保segment。",
+      "neighbour_scope_read": "不是說吸音完全不影響任何近場；採來源直接/混響場理想模型。"
+    },
+    {
+      "a": "P50-004",
+      "b": "R42001",
+      "decision": "distinct",
+      "reason": "聲致微振動以影像局部相位擷取，先在尺度/方向內加權、再對齊合併；不同於聲溝靜態掃描、雷達路徑相位或音量計算。未聽恢復音訊，保segment。",
+      "neighbour_scope_read": "量的是主觀酥脆、新鮮評分，沒有讓洋芋片失水或變新鮮。"
+    },
+    {
+      "a": "P50-004",
+      "b": "P28001",
+      "decision": "distinct",
+      "reason": "舊掃靜態錄音溝槽；新影片量活物表面亞像素聲致運動。",
+      "neighbour_scope_read": "限NEDCC的IRENE與可辨識機械溝紋。3D也可掃側刻，圓盤或圓筒外形本身不足以決定調變方向。"
+    }
+  ],
+  "manual_search_readback": {
+    "baseline_raw": 3917,
+    "baseline_not_added": 2182,
+    "method": "獨立以相機、半影、散斑、波前、聲致振動等關鍵詞讀9個raw與6個NA命中；另完整比17作者近對，不把語詞命中當同核。",
+    "additional_useful_pairs": [
+      "P50-004/O3013",
+      "P50-001/P20004"
+    ]
+  },
+  "sample_readback": {
+    "theme_id": "W50P-T01",
+    "file": ".cache/w50-sample-physics.json",
+    "sha256": "9ec7d2c592d619f5f25cfd7f8c4eafe42eaabd23a8969c3d4fb7878b066dd1e9",
+    "read_receipt": {
+      "file": ".cache/wave50-physics-read.json",
+      "sha256": "d11b38a57e04866dccdded33b2575d833da100e8d52eda93bfbdfea4e3fc9085"
+    },
+    "reviewer_header_readback": {
+      "file": ".cache/wave50-earth-physics-wav-readback.json",
+      "sha256": "d72b56df800b4ea851ee1b795e12a28640e35c799be3cbbbae4099ac355cc857"
+    },
+    "paragraph_to_chapter": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "paragraph_seconds": [
+      19.622857142857143,
+      19.60249433106576,
+      20.962312925170068
+    ],
+    "continuous_seconds": 60.18875283446712,
+    "chapter_seconds": [
+      24,
+      25,
+      23
+    ],
+    "sample_text_read": true,
+    "four_wav_hashes_and_headers_verified": true,
+    "reviewer_generated_or_played_audio": false
+  }
+}

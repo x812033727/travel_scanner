@@ -1,0 +1,669 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "dacde5edad10a2e7a44218c00549f25ed7d021b1",
+    "selected": 3065,
+    "raw_records": 3440,
+    "not_added": 1225,
+    "pool_sha256": "ae73179046738088056ab98653ef28895285f5c3bbaed24e6bc1d27f88b3cb67",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3065.json.gz",
+      "sha256": "66a5d9f6f2e149d08edfc69180036d31419329fafd22b57663fbfe3fb16edac7"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave27-physics.json",
+      "sha256": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b"
+    },
+    {
+      "file": "reviews/wave27-physics-themes.json",
+      "sha256": "71d625168f4c854ec277383fb80362792cd29021234e02c9c228134558344acb"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 4,
+    "candidate_sources": 4,
+    "not_added_only_sources": 0,
+    "not_added": 14,
+    "near_pairs": 19,
+    "themes": 4
+  },
+  "scope": "結冰表面的液體通路與分層水內隱藏的流動控制；四個原研究，不以同為水硬串長片。",
+  "dedup_reading": {
+    "method": "全3440raw及1225NA機械關鍵詞篩，相關舊題讀完整問答/scope；不冒稱人工逐條核全庫。",
+    "scan_files": [
+      {
+        "file": ".cache/wave27-physics-oldscan.json",
+        "sha256": "25d68e897cd7ffc43072cf0dba06b6fe3a579b5ec9413e3dc4d304c7fafb718a"
+      },
+      {
+        "file": ".cache/wave27-physics-oldscan2.json",
+        "sha256": "6d163f1e814ee858ceb153bb62d049f713d1907a55a0a10313d2895948557b9f"
+      },
+      {
+        "file": ".cache/wave27-physics-oldscan3.json",
+        "sha256": "1b86047b7c51310130fbea7323de2fcfced489497be3d9392c99ecccc4ce5ff3"
+      },
+      {
+        "file": ".cache/wave27-physics-near-old.json",
+        "sha256": "f4299f280d687cd85797c38a053412433e6277ccce9925d94d6b9c7af0814c0a"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P27001",
+      "b": "P054",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊為容器彎月面/一般接觸角；新需凍結排溶質、潤濕改流路再改成長形態的控制鏈。",
+      "a_snapshot": {
+        "id": "P27001",
+        "question": "同樣往下滴水結冰，為什麼用較純的水，冰柱反而可能長得更不規則？",
+        "answer_target": "研究中的低溶質水較容易形成局部滴流；加鹽後冰上潤濕增強，液體較連續地覆蓋表面，冰柱因而較規整並可形成環狀波紋。差別不只在凍結溫度，而在水先流過哪些位置。",
+        "scope": "限2023控制低溫/流量的冰柱與另做平面冰接觸角比較；界面濃縮是解釋，未量出局部鹽濃度。不是所有天然冰柱通則，也不把有色示蹤左樣稱零溶質。"
+      },
+      "b_snapshot": {
+        "id": "P054",
+        "question": "杯子邊緣的水面為什麼不是完全平的？",
+        "answer_target": "容器壁附著與液面張力決定彎月面與接觸角。",
+        "scope": "尺度小到界面效應可見"
+      }
+    },
+    {
+      "a": "P27001",
+      "b": "I12001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊為缺陷釘扎與下滑門檻；新是正在長成的冰表面由滴流轉水膜及形態結果，不只換液滴。",
+      "a_snapshot": {
+        "id": "P27001",
+        "question": "同樣往下滴水結冰，為什麼用較純的水，冰柱反而可能長得更不規則？",
+        "answer_target": "研究中的低溶質水較容易形成局部滴流；加鹽後冰上潤濕增強，液體較連續地覆蓋表面，冰柱因而較規整並可形成環狀波紋。差別不只在凍結溫度，而在水先流過哪些位置。",
+        "scope": "限2023控制低溫/流量的冰柱與另做平面冰接觸角比較；界面濃縮是解釋，未量出局部鹽濃度。不是所有天然冰柱通則，也不把有色示蹤左樣稱零溶質。"
+      },
+      "b_snapshot": {
+        "id": "I12001",
+        "question": "水滴已經歪向下坡，為什麼還能卡在原地？",
+        "answer_target": "表面缺陷或幾何邊界卡住接觸線；前後接觸角可先改變，達到前進／後退條件後才滑移。",
+        "scope": "比較同一滴與同一表面上的傾斜或加減液體歷史；不是只比較靜態接觸角大小。"
+      }
+    },
+    {
+      "a": "P27001",
+      "b": "I12007",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊外拉平板的黏滯/毛細選膜；新不拉板，溶質潤濕與結冰形態耦合。",
+      "a_snapshot": {
+        "id": "P27001",
+        "question": "同樣往下滴水結冰，為什麼用較純的水，冰柱反而可能長得更不規則？",
+        "answer_target": "研究中的低溶質水較容易形成局部滴流；加鹽後冰上潤濕增強，液體較連續地覆蓋表面，冰柱因而較規整並可形成環狀波紋。差別不只在凍結溫度，而在水先流過哪些位置。",
+        "scope": "限2023控制低溫/流量的冰柱與另做平面冰接觸角比較；界面濃縮是解釋，未量出局部鹽濃度。不是所有天然冰柱通則，也不把有色示蹤左樣稱零溶質。"
+      },
+      "b_snapshot": {
+        "id": "I12007",
+        "question": "同一塊板子從液體拉出，為什麼拉得快會帶走不同厚度的液膜？",
+        "answer_target": "移動固體以黏滯作用帶液向上，彎曲液面又把液體抽回；連接平薄膜與槽內液面的動態彎月面選出膜厚。",
+        "scope": "採可形成連續膜、低毛細數的完全潤濕模型；部分潤濕的帶膜門檻另屬邊界，不說任意慢拉都乾或任意快拉都適用。"
+      }
+    },
+    {
+      "a": "P27001",
+      "b": "N183",
+      "proposed": "distinct_pending_non_author",
+      "reason": "排鹽只是背景；新有冰上濕潤範圍與流路改變的可見中段，非再問旁邊更鹹。",
+      "a_snapshot": {
+        "id": "P27001",
+        "question": "同樣往下滴水結冰，為什麼用較純的水，冰柱反而可能長得更不規則？",
+        "answer_target": "研究中的低溶質水較容易形成局部滴流；加鹽後冰上潤濕增強，液體較連續地覆蓋表面，冰柱因而較規整並可形成環狀波紋。差別不只在凍結溫度，而在水先流過哪些位置。",
+        "scope": "限2023控制低溫/流量的冰柱與另做平面冰接觸角比較；界面濃縮是解釋，未量出局部鹽濃度。不是所有天然冰柱通則，也不把有色示蹤左樣稱零溶質。"
+      },
+      "b_snapshot": {
+        "id": "N183",
+        "question": "海水結成冰，旁邊還沒凍住的水為什麼反而更鹹？",
+        "answer_target": "結冰時鹽被排到周圍液態海水。",
+        "scope": "Thermohaline Circulation"
+      }
+    },
+    {
+      "a": "P27001",
+      "b": "D2091",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊屋頂溫差融雪再凍；新控溫供水下接觸/膜變化，沒有暖屋頂熱源。",
+      "a_snapshot": {
+        "id": "P27001",
+        "question": "同樣往下滴水結冰，為什麼用較純的水，冰柱反而可能長得更不規則？",
+        "answer_target": "研究中的低溶質水較容易形成局部滴流；加鹽後冰上潤濕增強，液體較連續地覆蓋表面，冰柱因而較規整並可形成環狀波紋。差別不只在凍結溫度，而在水先流過哪些位置。",
+        "scope": "限2023控制低溫/流量的冰柱與另做平面冰接觸角比較；界面濃縮是解釋，未量出局部鹽濃度。不是所有天然冰柱通則，也不把有色示蹤左樣稱零溶質。"
+      },
+      "b_snapshot": {
+        "id": "D2091",
+        "question": "屋簷掛冰柱，問題為什麼可能出在屋內太暖？",
+        "answer_target": "暖屋面融雪、冷屋簷再凍，形成阻水冰壩；氣密與保溫影響漏熱。",
+        "scope": "Attic Air Sealing, Insulating, and Ventilating for Ice Dam Prevention；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "P27002",
+      "b": "P24001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊凍滴尖點由末期曲前緣/體積平衡；新維持液體管道，端緣接長且水帽擾動恢復。",
+      "a_snapshot": {
+        "id": "P27002",
+        "question": "冰塊頂上的細冰刺，為什麼能一直往上長，卻不變成越來越大的水包？",
+        "answer_target": "結冰膨脹把水擠出尚未封閉的小孔，管端邊緣繼續凍結；供水與軸向凍結配合時維持細管。供水相對增加或減少會改變水帽與管徑，原研究吹去水帽後看見先收窄再恢復。",
+        "scope": "限冰方格中空冰刺的探索性觀察與幾何解釋；不是由冰底整根頂起。吹帽為指定觀察序列，不宣稱普遍穩定性定理或所有家用冰塊必形成冰刺。"
+      },
+      "b_snapshot": {
+        "id": "P24001",
+        "question": "水滴從底下結冰，為什麼最後會長出尖尖的帽子？",
+        "answer_target": "末期熱主要穿過冰層流向冷板，凍結前緣彎曲並近乎垂直地接上外表面；配合水結冰增體積的質量平衡，最後一小塊液體收成尖頂，不能只把整滴等比例放大。",
+        "scope": "限冷板上向上凍結的小水滴；前緣形狀來自另做的夾玻片實驗與熱傳模型，不以雪晶六角形解釋宏觀尖帽。"
+      }
+    },
+    {
+      "a": "P27002",
+      "b": "P24002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊閉殼壓力裂合/碎裂；新孔口開放輸水而非封閉殼內儲能破裂。",
+      "a_snapshot": {
+        "id": "P27002",
+        "question": "冰塊頂上的細冰刺，為什麼能一直往上長，卻不變成越來越大的水包？",
+        "answer_target": "結冰膨脹把水擠出尚未封閉的小孔，管端邊緣繼續凍結；供水與軸向凍結配合時維持細管。供水相對增加或減少會改變水帽與管徑，原研究吹去水帽後看見先收窄再恢復。",
+        "scope": "限冰方格中空冰刺的探索性觀察與幾何解釋；不是由冰底整根頂起。吹帽為指定觀察序列，不宣稱普遍穩定性定理或所有家用冰塊必形成冰刺。"
+      },
+      "b_snapshot": {
+        "id": "P24002",
+        "question": "水滴已經凍出外殼，為什麼還會裂了又合，最後突然碎開？",
+        "answer_target": "外殼繼續向內生長，把剩餘液水壓縮；開裂讓壓力快速釋放，後續凍結又能癒合裂口並重新升壓。裂開未必立即整滴分離，儲能還須足夠支付新表面的形成。",
+        "scope": "限毫米滴從外向內凍結的原研究；壓力和能量為模型解釋，裂癒/空穴/碎裂有高速影像。微滴不爆的估計不能當實測通用尺寸。"
+      }
+    },
+    {
+      "a": "P27002",
+      "b": "R8001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "冰較低密度是供水前提，不足回答管口如何維持與擾動後管徑變化。",
+      "a_snapshot": {
+        "id": "P27002",
+        "question": "冰塊頂上的細冰刺，為什麼能一直往上長，卻不變成越來越大的水包？",
+        "answer_target": "結冰膨脹把水擠出尚未封閉的小孔，管端邊緣繼續凍結；供水與軸向凍結配合時維持細管。供水相對增加或減少會改變水帽與管徑，原研究吹去水帽後看見先收窄再恢復。",
+        "scope": "限冰方格中空冰刺的探索性觀察與幾何解釋；不是由冰底整根頂起。吹帽為指定觀察序列，不宣稱普遍穩定性定理或所有家用冰塊必形成冰刺。"
+      },
+      "b_snapshot": {
+        "id": "R8001",
+        "question": "普通淡水結冰後，為什麼同樣質量反而占更大體積？",
+        "answer_target": "普通冰的氫鍵晶體排列較疏，使同質量體積較大、密度較低而浮起。",
+        "scope": "只更新常壓普通冰的結構與密度機制，不重核原答案9%數值，不推所有高壓冰相。"
+      }
+    },
+    {
+      "a": "P27002",
+      "b": "N226",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊土中水遷移到冰透鏡；新凍結膨脹擠出液柱並在管口凍結，新增位置與驅動不同。",
+      "a_snapshot": {
+        "id": "P27002",
+        "question": "冰塊頂上的細冰刺，為什麼能一直往上長，卻不變成越來越大的水包？",
+        "answer_target": "結冰膨脹把水擠出尚未封閉的小孔，管端邊緣繼續凍結；供水與軸向凍結配合時維持細管。供水相對增加或減少會改變水帽與管徑，原研究吹去水帽後看見先收窄再恢復。",
+        "scope": "限冰方格中空冰刺的探索性觀察與幾何解釋；不是由冰底整根頂起。吹帽為指定觀察序列，不宣稱普遍穩定性定理或所有家用冰塊必形成冰刺。"
+      },
+      "b_snapshot": {
+        "id": "N226",
+        "question": "冬天的道路為什麼可能被地下的冰頂成凸包？",
+        "answer_target": "水向凍結前緣遷移、冰透鏡成長抬升土壤。",
+        "scope": "Science of Frozen Ground & Permafrost"
+      }
+    },
+    {
+      "a": "P27002",
+      "b": "P25002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "外形同為空管但鹽腿在底端新增晶體抬殼；冰刺液水供給頂緣，不是底部晶體推升整管。",
+      "a_snapshot": {
+        "id": "P27002",
+        "question": "冰塊頂上的細冰刺，為什麼能一直往上長，卻不變成越來越大的水包？",
+        "answer_target": "結冰膨脹把水擠出尚未封閉的小孔，管端邊緣繼續凍結；供水與軸向凍結配合時維持細管。供水相對增加或減少會改變水帽與管徑，原研究吹去水帽後看見先收窄再恢復。",
+        "scope": "限冰方格中空冰刺的探索性觀察與幾何解釋；不是由冰底整根頂起。吹帽為指定觀察序列，不宣稱普遍穩定性定理或所有家用冰塊必形成冰刺。"
+      },
+      "b_snapshot": {
+        "id": "P25002",
+        "question": "同樣很不沾水，鹽滴乾掉後為什麼一邊黏住、一邊長腿站起來？",
+        "answer_target": "液體偏好潤濕自身晶殼而從表面退開；奈米紋理把剩餘接觸限制在局部，供液與蒸發持續在底端析鹽，長出的空心管腿抬起晶體。微米紋理若被晶體侵入，接觸區擴大，則可能被釘住。",
+        "scope": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。"
+      }
+    },
+    {
+      "a": "P27003",
+      "b": "N184",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊鹽楔為密度/河流維持分層；新穩定整體分層中不等成分擴散自行產生局部浮力反饋。",
+      "a_snapshot": {
+        "id": "P27003",
+        "question": "較輕的糖水放在較重的鹽水上，為什麼沒攪拌也會長出上下穿插的細流？",
+        "answer_target": "整層密度穩定不代表局部一直穩定：糖與鹽跨界面擴散速率不同，局部液團的成分與浮力可改變，讓微小位移得到增強並形成指流。若只把兩溶質當同一種緩慢混合，就漏了這個驅動。",
+        "scope": "限較輕蔗糖上層、較重NaCl下層的傾斜薄隙槽；流動停止後觀察，非攪拌或抽出隔板。速率比和弱流出現受濃度/黏度影響，最稀條件幾乎只見微弱不穩定。"
+      },
+      "b_snapshot": {
+        "id": "N184",
+        "question": "河水流進大海，為什麼有時會浮在鹹水上面？",
+        "answer_target": "密度差與強河流、弱潮流共同維持鹽楔。",
+        "scope": "Classifying Estuaries: By Water Circulation"
+      }
+    },
+    {
+      "a": "P27003",
+      "b": "N182",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊冷卻增鹽形成深層交換；新兩溶質不同擴散速度，沒有由上層整體增密開始。",
+      "a_snapshot": {
+        "id": "P27003",
+        "question": "較輕的糖水放在較重的鹽水上，為什麼沒攪拌也會長出上下穿插的細流？",
+        "answer_target": "整層密度穩定不代表局部一直穩定：糖與鹽跨界面擴散速率不同，局部液團的成分與浮力可改變，讓微小位移得到增強並形成指流。若只把兩溶質當同一種緩慢混合，就漏了這個驅動。",
+        "scope": "限較輕蔗糖上層、較重NaCl下層的傾斜薄隙槽；流動停止後觀察，非攪拌或抽出隔板。速率比和弱流出現受濃度/黏度影響，最稀條件幾乎只見微弱不穩定。"
+      },
+      "b_snapshot": {
+        "id": "N182",
+        "question": "風只吹海面，幾千公尺深的海水為什麼也在流？",
+        "answer_target": "冷卻、增鹽與密度差驅動深層交換。",
+        "scope": "Thermohaline Circulation"
+      }
+    },
+    {
+      "a": "P27003",
+      "b": "L003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊被動淨擴散方向；新兩成分交換速度差進一步改變浮力並驅動對流。",
+      "a_snapshot": {
+        "id": "P27003",
+        "question": "較輕的糖水放在較重的鹽水上，為什麼沒攪拌也會長出上下穿插的細流？",
+        "answer_target": "整層密度穩定不代表局部一直穩定：糖與鹽跨界面擴散速率不同，局部液團的成分與浮力可改變，讓微小位移得到增強並形成指流。若只把兩溶質當同一種緩慢混合，就漏了這個驅動。",
+        "scope": "限較輕蔗糖上層、較重NaCl下層的傾斜薄隙槽；流動停止後觀察，非攪拌或抽出隔板。速率比和弱流出現受濃度/黏度影響，最稀條件幾乎只見微弱不穩定。"
+      },
+      "b_snapshot": {
+        "id": "L003",
+        "question": "細胞膜兩側濃度不同時，能穿膜的中性小分子會往哪邊淨移動？",
+        "answer_target": "濃度梯度與中性溶質的淨擴散方向",
+        "scope": "限定可穿膜、不帶電的溶質被動擴散；相同溫度，忽略其他驅動力，不套用帶電離子的電化學梯度。"
+      }
+    },
+    {
+      "a": "P27003",
+      "b": "M16007",
+      "proposed": "distinct_pending_non_author",
+      "reason": "都含擴散不等但舊靠固態空位集結成孔；新靠液體成分改浮力，無固態晶格/空位。",
+      "a_snapshot": {
+        "id": "P27003",
+        "question": "較輕的糖水放在較重的鹽水上，為什麼沒攪拌也會長出上下穿插的細流？",
+        "answer_target": "整層密度穩定不代表局部一直穩定：糖與鹽跨界面擴散速率不同，局部液團的成分與浮力可改變，讓微小位移得到增強並形成指流。若只把兩溶質當同一種緩慢混合，就漏了這個驅動。",
+        "scope": "限較輕蔗糖上層、較重NaCl下層的傾斜薄隙槽；流動停止後觀察，非攪拌或抽出隔板。速率比和弱流出現受濃度/黏度影響，最稀條件幾乎只見微弱不穩定。"
+      },
+      "b_snapshot": {
+        "id": "M16007",
+        "question": "實心奈米粒子和外界反應後，為什麼沒有被挖掉卻留下空心？",
+        "answer_target": "反應殼兩側物質擴散速率不等，向外淨通量對應空位向內累積；空位在有限核心內聚成孔，物質同時搬到殼層。",
+        "scope": "限原鈷氧化物/硫化物/硒化物實驗；不能一概假設內向通量為零，但本研究未直接量得非零內向通量。孔徑差也可能涉及空位界面湮滅或估計誤差；TEM階段序列與機制推論分開。"
+      }
+    },
+    {
+      "a": "P27003",
+      "b": "F10013",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊橫向混合結合速度剪切拉長示蹤；新混合速度差生成浮力驅動，並非只被流運送。",
+      "a_snapshot": {
+        "id": "P27003",
+        "question": "較輕的糖水放在較重的鹽水上，為什麼沒攪拌也會長出上下穿插的細流？",
+        "answer_target": "整層密度穩定不代表局部一直穩定：糖與鹽跨界面擴散速率不同，局部液團的成分與浮力可改變，讓微小位移得到增強並形成指流。若只把兩溶質當同一種緩慢混合，就漏了這個驅動。",
+        "scope": "限較輕蔗糖上層、較重NaCl下層的傾斜薄隙槽；流動停止後觀察，非攪拌或抽出隔板。速率比和弱流出現受濃度/黏度影響，最稀條件幾乎只見微弱不穩定。"
+      },
+      "b_snapshot": {
+        "id": "F10013",
+        "question": "一小段染色水進入直管，沒有明顯亂流，為什麼還會被拖成長長一段？",
+        "answer_target": "截面不同流速先拉長色帶，跨流線擴散又改變各部分經歷的速度，造成沿流向展寬。",
+        "scope": "理想剪切流示意；長時間有效擴散近似需跨截面交換時間，不從剛入管就套高斯分布。"
+      }
+    },
+    {
+      "a": "P27004",
+      "b": "A12008",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊後方鴨在特定波相位減阻；新船自己的起步內波相對掠過造成定力下的暫態，非固定隊形位置。",
+      "a_snapshot": {
+        "id": "P27004",
+        "question": "拉船的力沒變，水面也沒大浪，小船為什麼還會一陣快、一陣慢？",
+        "answer_target": "分層水中的船可激起水下界面波；起步產生的分散波包會相對船移動，改變船所受阻力，與跟著船走的尾波不同。因此定力拖行也會有暫態速度起伏，較長通道模型中起伏過後可趨穩。",
+        "scope": "限2020低速淡水覆鹽水的定力水槽及模型；定力不是定速。分離波包/尾波與撤離障礙物控制支持解釋，更長通道後期穩定是模型，不說水槽已拍到完整長時間終態。"
+      },
+      "b_snapshot": {
+        "id": "A12008",
+        "question": "小鴨跟在媽媽後面游，為什麼有些距離幫忙、有些反而添阻力？",
+        "answer_target": "相對位置改變波峰波谷落在胸腹哪裡，水壓的水平合力不同；理想模型中同樣跟隨可降低或增加波阻。",
+        "scope": "限單一跟隨者的剛體橢球勢流模型、同速與不計黏性差的假設；不證明小鴨選位動機、總代謝或所有編隊比例。"
+      }
+    },
+    {
+      "a": "P27004",
+      "b": "N184",
+      "proposed": "distinct_pending_non_author",
+      "reason": "分層只是場景；新造波/波包傳播改拖力的時間歷史不在鹽楔靜態答案內。",
+      "a_snapshot": {
+        "id": "P27004",
+        "question": "拉船的力沒變，水面也沒大浪，小船為什麼還會一陣快、一陣慢？",
+        "answer_target": "分層水中的船可激起水下界面波；起步產生的分散波包會相對船移動，改變船所受阻力，與跟著船走的尾波不同。因此定力拖行也會有暫態速度起伏，較長通道模型中起伏過後可趨穩。",
+        "scope": "限2020低速淡水覆鹽水的定力水槽及模型；定力不是定速。分離波包/尾波與撤離障礙物控制支持解釋，更長通道後期穩定是模型，不說水槽已拍到完整長時間終態。"
+      },
+      "b_snapshot": {
+        "id": "N184",
+        "question": "河水流進大海，為什麼有時會浮在鹹水上面？",
+        "answer_target": "密度差與強河流、弱潮流共同維持鹽楔。",
+        "scope": "Classifying Estuaries: By Water Circulation"
+      }
+    },
+    {
+      "a": "P27004",
+      "b": "F10014",
+      "proposed": "distinct_pending_non_author",
+      "reason": "英文dead字相近但舊滯流區暫存示蹤再釋出；新波動壓力/拖力，不是質量暫存。",
+      "a_snapshot": {
+        "id": "P27004",
+        "question": "拉船的力沒變，水面也沒大浪，小船為什麼還會一陣快、一陣慢？",
+        "answer_target": "分層水中的船可激起水下界面波；起步產生的分散波包會相對船移動，改變船所受阻力，與跟著船走的尾波不同。因此定力拖行也會有暫態速度起伏，較長通道模型中起伏過後可趨穩。",
+        "scope": "限2020低速淡水覆鹽水的定力水槽及模型；定力不是定速。分離波包/尾波與撤離障礙物控制支持解釋，更長通道後期穩定是模型，不說水槽已拍到完整長時間終態。"
+      },
+      "b_snapshot": {
+        "id": "F10014",
+        "question": "一波染色水大多已經流走，為什麼下游還會慢慢收到淡淡的尾巴？",
+        "answer_target": "部分示蹤物先擴散進低流速側區，停留後返回主流；不同停留時間形成延遲尾端。",
+        "scope": "非反應性示蹤物、少數停滯區且停留時間大於主團通過時間；不是化學吸附或新增污染來源。"
+      }
+    },
+    {
+      "a": "P27004",
+      "b": "W16004",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊瞬時改介質造時間鏡反傳；新起步波包自然分散，未跳變介質係數或反演時間。",
+      "a_snapshot": {
+        "id": "P27004",
+        "question": "拉船的力沒變，水面也沒大浪，小船為什麼還會一陣快、一陣慢？",
+        "answer_target": "分層水中的船可激起水下界面波；起步產生的分散波包會相對船移動，改變船所受阻力，與跟著船走的尾波不同。因此定力拖行也會有暫態速度起伏，較長通道模型中起伏過後可趨穩。",
+        "scope": "限2020低速淡水覆鹽水的定力水槽及模型；定力不是定速。分離波包/尾波與撤離障礙物控制支持解釋，更長通道後期穩定是模型，不說水槽已拍到完整長時間終態。"
+      },
+      "b_snapshot": {
+        "id": "W16004",
+        "question": "沒有錄下水波再倒放，為什麼波紋也能重新向原處聚攏？",
+        "answer_target": "波場仍保存分布的資訊；短暫改變整槽水波的傳播條件會改寫時間邊界的初值，在原前行波之外生成反向傳播分量，因而可回聚。它不是靠一面空間牆壁反射，也沒有把整個系統倒轉。",
+        "scope": "限研究重力–毛細水波與短促有效重力變化；瞬時理論的新增反向場對應原波時間導數，近窄頻才近似原波形。前行波繼續存在、擾動供能；不給設備操作數值或聲稱完整無損逆轉。"
+      }
+    }
+  ],
+  "prior_rejection_reentry": [
+    {
+      "prior_id": "E17-NA01",
+      "current": "P27-NA009",
+      "decision": "仍退：未補旋轉冰盤的完整控制與後續反例；不把本輪只讀摘要當重入。"
+    },
+    {
+      "prior_id": "P24-NA001",
+      "current": "P27-NA001",
+      "decision": "一般冰浮原理仍指舊核心。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P27-S001",
+      "read_via": "當日web讀UvA身份頁；web PDF因超過10MB未開。指定UA urllib HTTP200有效PDF，PyMuPDF抽文及指定圖頁目讀。",
+      "scope": "PDF pp2–7正文Intro/Experimental Details/Results and Discussion；p8只Conclusion開頭，未逐讀references/SI。目讀PDF p6 Fig7與p7 Fig8。",
+      "body_cache": {
+        "file": ".cache/wave27-physics-icicle.pdf",
+        "sha256": "dda46f537b51e7f11af00bd7113f490085e666d4ab460761ac76ec62e6d0fb3c",
+        "text_file": ".cache/wave27-physics-icicle.txt",
+        "text_sha256": "264524f6844203c7b5c29aad6ca9db839b67c9c9eeaebe1be09edbda8288a1a5"
+      }
+    },
+    {
+      "source_id": "P27-S002",
+      "read_via": "當日web讀Cambridge正式頁及Snowcrystals PDF；指定UA urllib HTTP200，抽文與兩圖頁目讀。",
+      "scope": "PDF pp1–2；pp4–8（§3尾、§4、§5、§6.1–6.4開頭）；p9只§6.4續段開頭約1800字元。p3未全讀、references未逐核、影片未看。目讀p6 Fig6/7與p8 Fig10。",
+      "body_cache": {
+        "file": ".cache/wave27-physics-spike.pdf",
+        "sha256": "8e287d041487dfaaed082ccb9597f7eb93d01299d13604ac02ad1108bfbf66eb",
+        "text_file": ".cache/wave27-physics-spike.txt",
+        "text_sha256": "fb49575aaefedd76d7d090f8b793990f0840d60bb1479ac06b6d840e8fecd220"
+      }
+    },
+    {
+      "source_id": "P27-S003",
+      "read_via": "當日web讀Sandia官方研究頁及其連結PDF；指定UA urllib HTTP200有效PDF，抽文並目讀Fig4。",
+      "scope": "PDF pp1–5 Intro/Theory/Experimental design；pp7–10方法與Results4.1；pp21–22 Discussion尾/Conclusion；目讀pp11–12 Fig4a–h。未讀pp6、13–20完整正文，未核references或影片。",
+      "body_cache": {
+        "file": ".cache/wave27-physics-fingers.pdf",
+        "sha256": "4d984bebf6f8f65445f0d127539f3eae6c0153f9f13a7ef92e5a445d9930ee4d",
+        "text_file": ".cache/wave27-physics-fingers.txt",
+        "text_sha256": "1283055f0625cee09ef4d14e9f6ba18ca4cff2a599854f7bb55ca919a09bfe93"
+      }
+    },
+    {
+      "source_id": "P27-S004",
+      "read_via": "當日web核PubMed/PMC原文身份及正文結果；指定UA取得CNRS作者PDF HTTP200；抽文完整讀主文並目讀p3。",
+      "scope": "PDF pp1–6主文正文/圖說均讀，p2–3另逐頁讀回；目讀PDF p3 Fig3/4。後附SI pp7–19未讀；未觀看影片、重跑程式或逐篇核references。",
+      "body_cache": {
+        "file": ".cache/wave27-physics-deadwater.pdf",
+        "sha256": "2a669946a3bc7044ba2260fdd382ab68dbced4c55b0aef34b0e35dae7cfb3c2c",
+        "text_file": ".cache/wave27-physics-deadwater.txt",
+        "text_sha256": "c76afd7c9d3e99f9cd09b96af04403314fc1c97c487fea44a0a3fcfa42f7aa3d"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P27-S001",
+      "doi": "10.1103/PhysRevApplied.19.024005",
+      "primary_body_url": "https://pure.uva.nl/ws/files/177499027/PhysRevApplied.19.024005.pdf",
+      "related_identity_urls": [
+        "https://dare.uva.nl/id/d47465a7-d2f7-4d22-b925-82c8f1d76961"
+      ],
+      "identity_relation": "2023-02-02正式版；UvA機構副本PDF含1頁封面，印刷頁碼比PDF少1。",
+      "old_exact_doi_url_title_matches": [],
+      "independence": "單篇原研究；機構副本/索引不是額外獨立研究。精確字串未命中不是全庫唯一保證。"
+    },
+    {
+      "source_id": "P27-S002",
+      "doi": "10.3189/172756505781829368",
+      "primary_body_url": "https://www.snowcrystals.com/spikes/knight.pdf",
+      "related_identity_urls": [
+        "https://www.cambridge.org/core/journals/journal-of-glaciology/article/an-exploratory-study-of-icecube-spikes/6957EF076AEE1C37F74F864F8287343F"
+      ],
+      "identity_relation": "2005原刊；Cambridge頁2017-09-08為上網日期，非新研究。Snowcrystals研究者網站存同篇原刊PDF。",
+      "old_exact_doi_url_title_matches": [],
+      "independence": "單篇原研究；機構副本/索引不是額外獨立研究。精確字串未命中不是全庫唯一保證。"
+    },
+    {
+      "source_id": "P27-S003",
+      "doi": "10.1017/S0022112002008522",
+      "primary_body_url": "https://www.sandia.gov/app/uploads/sites/182/2022/03/33_2002_JFM_PG.pdf",
+      "related_identity_urls": [
+        "https://fluidflowvisualization.sandia.gov/experimental-research/double-diffusion-research/"
+      ],
+      "identity_relation": "2002原刊；Sandia頁另用描述性書目標題，採PDF正式題名；2022網址路徑不是出版年。",
+      "old_exact_doi_url_title_matches": [],
+      "independence": "單篇原研究；機構副本/索引不是額外獨立研究。精確字串未命中不是全庫唯一保證。"
+    },
+    {
+      "source_id": "P27-S004",
+      "doi": "10.1073/pnas.1922584117",
+      "primary_body_url": "https://germain-rousseaux.cnrs.fr/wp-content/uploads/2020/10/PNAS2020.pdf",
+      "related_identity_urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7382212/"
+      ],
+      "identity_relation": "2020-07-08線上、2020-07-21期刊；CNRS研究者副本前6頁原文、後13頁SI；PMC7382212同研究另載體。",
+      "old_exact_doi_url_title_matches": [],
+      "independence": "單篇原研究；機構副本/索引不是額外獨立研究。精確字串未命中不是全庫唯一保證。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://pure.uva.nl/ws/files/177499027/PhysRevApplied.19.024005.pdf",
+      "route": "web PDF",
+      "result": "超過10MB；指定UA HTTP200有效PDF後實讀。"
+    },
+    {
+      "topic": "2023 rotating ice disk",
+      "route": "Cambridge web.open",
+      "result": "timeout，只有搜尋摘要/身份，不收候選。"
+    }
+  ],
+  "retrieval_receipt": {
+    "file": ".cache/wave27-physics-fetch.json",
+    "sha256": "817219aadf1f4e9513436036e7629b5437740022018ec305e535252bbe27b49e"
+  },
+  "reading_limits": [
+    "4篇指定正文實讀、7圖頁目讀；影片/SI均未讀，未重跑任何研究方程。",
+    "冰柱2013/2022另文僅身份或摘要，不列支持來源；旋轉冰盤後續正文失敗，不靠摘要補答案。",
+    "糖鹽Fig4是不同濃度與時刻；冰柱Fig8亦非等時兩組。所有圖僅當證據閱讀，公開題案使用原創重畫規劃。",
+    "本批原創短提問/摘要，不將教材/論文全文或外圖放入Git。"
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave27-physics-icicle-p6.png",
+      "sha256": "010d0b6a83953e5e5a3f3a33824b4b78e87adb0f2a3380827f02e0d08009bcd7",
+      "page": 6
+    },
+    {
+      "file": ".cache/wave27-physics-icicle-p7.png",
+      "sha256": "5598995b890970371130c2d7fb841a835ceb22199240067820f7fcd2ef66d62b",
+      "page": 7
+    },
+    {
+      "file": ".cache/wave27-physics-spike-p6.png",
+      "sha256": "cb0f83c40f69b9debeb192c1042fbb4b172da9cbb4221f1a377cb0a24f71d7de",
+      "page": 6
+    },
+    {
+      "file": ".cache/wave27-physics-spike-p8.png",
+      "sha256": "d580948d5f1da211613f18cc2ea46dc4021a53691a8d23ded21ccd99a69f9bf8",
+      "page": 8
+    },
+    {
+      "file": ".cache/wave27-physics-fingers-p11.png",
+      "sha256": "5a3d87c7cc80e7cff21c4f3dd1a0b6b21bda3cfe613bc513fa358ec2e5a3397a",
+      "page": 11
+    },
+    {
+      "file": ".cache/wave27-physics-fingers-p12.png",
+      "sha256": "4a4e0b00798fb77cb201807820dc03e826d2074f1bc6f34e3c209237f1a69524",
+      "page": 12
+    },
+    {
+      "file": ".cache/wave27-physics-deadwater-p3.png",
+      "sha256": "318995393325cad739fdfa353adc73df4ad7a713b0737d29998b8fcf52002f55",
+      "page": 3
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W27P-T01",
+      "body_seconds": 95,
+      "core_seconds": {
+        "P27001": 95
+      },
+      "chapter_seconds": [
+        45,
+        50
+      ],
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W27P-T02",
+      "body_seconds": 95,
+      "core_seconds": {
+        "P27002": 95
+      },
+      "chapter_seconds": [
+        45,
+        50
+      ],
+      "max_beat_seconds": 35,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W27P-T03",
+      "body_seconds": 80,
+      "core_seconds": {
+        "P27003": 80
+      },
+      "chapter_seconds": [
+        30,
+        50
+      ],
+      "max_beat_seconds": 35,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W27P-T04",
+      "body_seconds": 105,
+      "core_seconds": {
+        "P27004": 105
+      },
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "max_beat_seconds": 35,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "all_strings_rstrip": true,
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true,
+    "checks": "只核本包JSON、時間與SHA，未跑中央build/tests。"
+  },
+  "unresolved": [
+    "作者初審不等於獨立通過；等待另一作者來源/去重/片長覆核與root共同top5。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "reviewer": "pool_life_tech",
+      "before_files": [
+        {
+          "file": "batches/wave27-physics.json",
+          "sha256": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b"
+        },
+        {
+          "file": "reviews/wave27-physics-themes.json",
+          "sha256": "7097c4d02650df6b53dd8c4166ee04c3acd9f37a03a916dae32aaa34f8917917"
+        },
+        {
+          "file": "reviews/wave27-physics-author.json",
+          "sha256": "21a695cbbc68b8d10eb5e864f8530a6e9432b5bdcf72801aa47df29d3073735c"
+        }
+      ],
+      "reason": "非作者編輯：糖鹽指流第一章方法/限制拍30→15秒，保留停流後仍生指流的控制，其餘幾何/濃度/各時刻限制作圖註；不補新內容。",
+      "removed_seconds": 15,
+      "candidate_content_changed": false,
+      "seconds_before": [
+        95,
+        95,
+        95,
+        105
+      ],
+      "seconds_after": [
+        95,
+        95,
+        80,
+        105
+      ],
+      "after_theme_sha256": "71d625168f4c854ec277383fb80362792cd29021234e02c9c228134558344acb"
+    }
+  ]
+}

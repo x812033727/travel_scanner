@@ -1,0 +1,609 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "f74658d43d1c87e5ac80c4c4a90a5dc227936699",
+    "selected": 3058,
+    "raw_records": 3431,
+    "not_added": 1185,
+    "pool_sha256": "a499bd7b2ffe1d5c5970adca0d3cd6737efd38f72fd0ccd76d59bcd6b505d2f4"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave26-life.json",
+      "sha256": "1f79dd2e319e569f86378caaf32b81bb2b2449e6718b2059df6ec406228b5f0a"
+    },
+    {
+      "file": "reviews/wave26-life-themes.json",
+      "sha256": "0a53bbfacf3768cabafa8d2f330d2bbbb2d56aa83f827d49a0b049d35438fa6e"
+    }
+  ],
+  "counts": {
+    "raw_candidates": 3,
+    "proposed_new_cores": 2,
+    "proposed_variants_merged": 1,
+    "sources": 3,
+    "not_added": 16,
+    "near_pairs": 13,
+    "themes": 2
+  },
+  "scope": "發育花紋的控制比較。screened僅題級來源；兩新核與一既有核心變體，待非作者定案。",
+  "dedup_reading": {
+    "all_raw_mechanically_scanned": 3431,
+    "all_not_added_mechanically_scanned": 1185,
+    "queries": [
+      "斑馬魚",
+      "色素細胞",
+      "條紋形成",
+      "花紋形成",
+      "渦蟲",
+      "扁蟲",
+      "再生",
+      "胚胎",
+      "羽毛",
+      "眼斑",
+      "變色龍",
+      "色素",
+      "花紋",
+      "條紋",
+      "圖靈",
+      "Turing",
+      "濃度梯度",
+      "細胞訊號",
+      "細胞分化",
+      "分化"
+    ],
+    "focused_record": ".cache/wave26-life-focused-screen.json",
+    "focused_sha256": "5f091fb212df5380e398c30b29a360751aa4b6f481fc7e52a7a11f8cf0eba2e0",
+    "full_answer_pairs_read": 13,
+    "limits": "未宣稱逐列人工讀完3431題或全庫去重完成；共同semantic由root產生後另審。"
+  },
+  "near_pairs": [
+    {
+      "a": "A26001",
+      "b": "V3001",
+      "proposed": "distinct",
+      "reason": "V3001只解訊號能傳多遠；A26001比較相同細胞類型在近遠處對存活/遷移的相反淨作用及空間回饋。",
+      "a_snapshot": {
+        "id": "A26001",
+        "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+        "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+        "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。"
+      },
+      "b_snapshot": {
+        "id": "V3001",
+        "question": "細胞放出的訊號，為什麼有些只傳得到附近？",
+        "answer_target": "比較擴散與吸收、分解的競爭如何限制局部訊號距離",
+        "scope": "限旁分泌；不把距離只歸因於分子大小"
+      }
+    },
+    {
+      "a": "A26001",
+      "b": "L003",
+      "proposed": "distinct",
+      "reason": "L003是中性溶質被動淨擴散；A26001沒有將顏料或訊號畫成已定單純擴散，需細胞互作反號。",
+      "a_snapshot": {
+        "id": "A26001",
+        "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+        "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+        "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。"
+      },
+      "b_snapshot": {
+        "id": "L003",
+        "question": "細胞膜兩側濃度不同時，能穿膜的中性小分子會往哪邊淨移動？",
+        "answer_target": "濃度梯度與中性溶質的淨擴散方向",
+        "scope": "限定可穿膜、不帶電的溶質被動擴散；相同溫度，忽略其他驅動力，不套用帶電離子的電化學梯度。"
+      }
+    },
+    {
+      "a": "A26001",
+      "b": "A22003",
+      "proposed": "distinct",
+      "reason": "A22003以肌肉收縮與組織回復重排既有腕；A26001涉及細胞生成/死亡/遷移及距離互作，非同一力學平衡。",
+      "a_snapshot": {
+        "id": "A26001",
+        "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+        "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+        "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。"
+      },
+      "b_snapshot": {
+        "id": "A22003",
+        "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+        "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+        "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。"
+      }
+    },
+    {
+      "a": "A26001",
+      "b": "LEG-S62",
+      "proposed": "distinct",
+      "reason": "LEG-S62問斑馬條紋對吸血蠅的功能；A26001問發育如何排圖，不能用功能替代形成。",
+      "a_snapshot": {
+        "id": "A26001",
+        "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+        "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+        "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S62",
+        "question": "為什麼斑馬要長黑白條紋？",
+        "answer_target": "從達爾文、華萊士那時就有人爭論。目前證據最多的主流假說是條紋會干擾馬蠅等吸血蠅降落、減少叮咬；偽裝、躲掠食者、散熱、社交等說法支持較弱或結果不一，例如有研究發現條紋多寡和氣溫相關。",
+        "scope": "沿用 S62 題級條件，須讀原查核包的限制；斑馬條紋的多種功能假說仍須比較，先不選唯一演化目的。"
+      }
+    },
+    {
+      "a": "A26002",
+      "b": "A26001",
+      "proposed": "distinct",
+      "reason": "A26001控制距離影響細胞命運與分區；A26002在仍能形成近似寬度條帶時比較走向與初始解剖位置。",
+      "a_snapshot": {
+        "id": "A26002",
+        "question": "細胞能自己排成條紋，為什麼條紋還會長歪？",
+        "answer_target": "細胞互作可以產生分隔與近似條帶寬度，但不會自動指定身體的橫向。正常發育中虹彩細胞先沿水平肌隔附近出現，提供初始位置；缺該結構的choker突變體中，較晚出現的虹彩細胞分散成任意方向區塊，仍可形成彎曲、分岔或轉向的條紋。",
+        "scope": "限2013斑馬魚軀幹發育與choker突變體；不是將肌隔單獨移除的充分必要性試驗，也不稱每個突變體都垂直。起始線索與細胞自組織可共存；不套用鰭或所有動物條紋。"
+      },
+      "b_snapshot": {
+        "id": "A26001",
+        "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+        "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+        "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。"
+      }
+    },
+    {
+      "a": "A26002",
+      "b": "B2313",
+      "proposed": "distinct",
+      "reason": "B2313虹彩細胞晶格改反射色；A26002虹彩細胞出現位置作發育方向線索，不靠晶格反射調色。",
+      "a_snapshot": {
+        "id": "A26002",
+        "question": "細胞能自己排成條紋，為什麼條紋還會長歪？",
+        "answer_target": "細胞互作可以產生分隔與近似條帶寬度，但不會自動指定身體的橫向。正常發育中虹彩細胞先沿水平肌隔附近出現，提供初始位置；缺該結構的choker突變體中，較晚出現的虹彩細胞分散成任意方向區塊，仍可形成彎曲、分岔或轉向的條紋。",
+        "scope": "限2013斑馬魚軀幹發育與choker突變體；不是將肌隔單獨移除的充分必要性試驗，也不稱每個突變體都垂直。起始線索與細胞自組織可共存；不套用鰭或所有動物條紋。"
+      },
+      "b_snapshot": {
+        "id": "B2313",
+        "question": "豹紋變色龍換鮮豔顏色時，皮膚是怎麼改變反射光的？",
+        "answer_target": "虹彩細胞內鳥嘌呤奈米晶格間距改變，使選擇反射波段移動",
+        "scope": "限豹紋變色龍鮮豔色變，不宣稱任意背景都能複製"
+      }
+    },
+    {
+      "a": "A26002",
+      "b": "R6002",
+      "proposed": "distinct",
+      "reason": "R6002再生取哪一基因細胞層決定斑葉保留；A26002比較解剖起點與條帶方向，不是取出單一顏色譜系。",
+      "a_snapshot": {
+        "id": "A26002",
+        "question": "細胞能自己排成條紋，為什麼條紋還會長歪？",
+        "answer_target": "細胞互作可以產生分隔與近似條帶寬度，但不會自動指定身體的橫向。正常發育中虹彩細胞先沿水平肌隔附近出現，提供初始位置；缺該結構的choker突變體中，較晚出現的虹彩細胞分散成任意方向區塊，仍可形成彎曲、分岔或轉向的條紋。",
+        "scope": "限2013斑馬魚軀幹發育與choker突變體；不是將肌隔單獨移除的充分必要性試驗，也不稱每個突變體都垂直。起始線索與細胞自組織可共存；不套用鰭或所有動物條紋。"
+      },
+      "b_snapshot": {
+        "id": "R6002",
+        "question": "明明沒用種子繁殖，斑葉的新株為什麼可能變成全綠或全白？",
+        "answer_target": "嵌合品種的不同細胞層基因不同；葉插新芽若從其中一層再生，可能丟失原本的分層組合。",
+        "scope": "限來源所舉嵌合葉插案例，不把所有斑葉都歸為嵌合，也不泛稱所有植物新芽一定來自LII。"
+      }
+    },
+    {
+      "a": "A26002",
+      "b": "L064",
+      "proposed": "distinct",
+      "reason": "L064是基因表現造成細胞身分；A26002問已分化色素細胞的排列軸，不以身分不同解釋方向。",
+      "a_snapshot": {
+        "id": "A26002",
+        "question": "細胞能自己排成條紋，為什麼條紋還會長歪？",
+        "answer_target": "細胞互作可以產生分隔與近似條帶寬度，但不會自動指定身體的橫向。正常發育中虹彩細胞先沿水平肌隔附近出現，提供初始位置；缺該結構的choker突變體中，較晚出現的虹彩細胞分散成任意方向區塊，仍可形成彎曲、分岔或轉向的條紋。",
+        "scope": "限2013斑馬魚軀幹發育與choker突變體；不是將肌隔單獨移除的充分必要性試驗，也不稱每個突變體都垂直。起始線索與細胞自組織可共存；不套用鰭或所有動物條紋。"
+      },
+      "b_snapshot": {
+        "id": "L064",
+        "question": "皮膚和肌肉的細胞有相似的 DNA，為什麼長得完全不同？",
+        "answer_target": "不同基因表現形成不同蛋白組合",
+        "scope": "一般分化與基因表現，不把差異只歸因於單一開關"
+      }
+    },
+    {
+      "a": "A26003",
+      "b": "V3007",
+      "proposed": "merge",
+      "reason": "原研究將色環差異主要定位在接受組織，仍是同類訊號下接收方不同反應；閾值未識別新分子中段，保研究變體不重計。",
+      "a_snapshot": {
+        "id": "A26003",
+        "question": "換了蝴蝶眼斑的中心，周圍色環就一定跟著換嗎？",
+        "answer_target": "眼斑中心能組織周圍圖案，但接受訊號的翅面不是被動著色紙。黑環與金環比例不同的兩條選育線互換中心後，色環比例主要隨宿主；接受組織的反應差異可使同類中心訊號產生不同色環。濃度閾值改變是與結果相容的空間解釋模型。",
+        "scope": "限1997 Bicyclus anynana GOLD/BLACK選育線蛹期移植；不能由此判所有蝴蝶的分子訊號。移植近遠位置和總眼斑大小影響比例；中心來源對大小仍可有影響，不說中心完全無作用。 本研究只支持接受組織層級的反應差異，不識別胞內效應蛋白，不能作V3007分子中段的直接證據。"
+      },
+      "b_snapshot": {
+        "id": "V3007",
+        "question": "兩種細胞都收到同一訊號，為什麼最後做的事不同？",
+        "answer_target": "不同胞內效應蛋白使同一外界線索被接往不同反應",
+        "scope": "與受體有無不同；L064 是細胞身分的表現差異背景"
+      }
+    },
+    {
+      "a": "A26003",
+      "b": "V3002",
+      "proposed": "distinct",
+      "reason": "V3002受體存在決定收不收；此研究兩類宿主都可形成眼斑，差在反應比例/空間界線，不是有無受體對照。",
+      "a_snapshot": {
+        "id": "A26003",
+        "question": "換了蝴蝶眼斑的中心，周圍色環就一定跟著換嗎？",
+        "answer_target": "眼斑中心能組織周圍圖案，但接受訊號的翅面不是被動著色紙。黑環與金環比例不同的兩條選育線互換中心後，色環比例主要隨宿主；接受組織的反應差異可使同類中心訊號產生不同色環。濃度閾值改變是與結果相容的空間解釋模型。",
+        "scope": "限1997 Bicyclus anynana GOLD/BLACK選育線蛹期移植；不能由此判所有蝴蝶的分子訊號。移植近遠位置和總眼斑大小影響比例；中心來源對大小仍可有影響，不說中心完全無作用。 本研究只支持接受組織層級的反應差異，不識別胞內效應蛋白，不能作V3007分子中段的直接證據。"
+      },
+      "b_snapshot": {
+        "id": "V3002",
+        "question": "同一份訊息到達所有細胞，為什麼只有部分細胞回應？",
+        "answer_target": "受體是否存在決定細胞能否接收特定配體",
+        "scope": "受體辨識層，不與下游反應差異合為一題"
+      }
+    },
+    {
+      "a": "A26003",
+      "b": "R6002",
+      "proposed": "distinct",
+      "reason": "眼斑外圈主要由宿主組織作反應，不能用嫁接後是哪一層供應細胞的斑葉機制取代。",
+      "a_snapshot": {
+        "id": "A26003",
+        "question": "換了蝴蝶眼斑的中心，周圍色環就一定跟著換嗎？",
+        "answer_target": "眼斑中心能組織周圍圖案，但接受訊號的翅面不是被動著色紙。黑環與金環比例不同的兩條選育線互換中心後，色環比例主要隨宿主；接受組織的反應差異可使同類中心訊號產生不同色環。濃度閾值改變是與結果相容的空間解釋模型。",
+        "scope": "限1997 Bicyclus anynana GOLD/BLACK選育線蛹期移植；不能由此判所有蝴蝶的分子訊號。移植近遠位置和總眼斑大小影響比例；中心來源對大小仍可有影響，不說中心完全無作用。 本研究只支持接受組織層級的反應差異，不識別胞內效應蛋白，不能作V3007分子中段的直接證據。"
+      },
+      "b_snapshot": {
+        "id": "R6002",
+        "question": "明明沒用種子繁殖，斑葉的新株為什麼可能變成全綠或全白？",
+        "answer_target": "嵌合品種的不同細胞層基因不同；葉插新芽若從其中一層再生，可能丟失原本的分層組合。",
+        "scope": "限來源所舉嵌合葉插案例，不把所有斑葉都歸為嵌合，也不泛稱所有植物新芽一定來自LII。"
+      }
+    },
+    {
+      "a": "A26003",
+      "b": "L188",
+      "proposed": "distinct",
+      "reason": "L188是共同警告與捕食者學習；A26003為蛹期組織控制，不推警告功能。",
+      "a_snapshot": {
+        "id": "A26003",
+        "question": "換了蝴蝶眼斑的中心，周圍色環就一定跟著換嗎？",
+        "answer_target": "眼斑中心能組織周圍圖案，但接受訊號的翅面不是被動著色紙。黑環與金環比例不同的兩條選育線互換中心後，色環比例主要隨宿主；接受組織的反應差異可使同類中心訊號產生不同色環。濃度閾值改變是與結果相容的空間解釋模型。",
+        "scope": "限1997 Bicyclus anynana GOLD/BLACK選育線蛹期移植；不能由此判所有蝴蝶的分子訊號。移植近遠位置和總眼斑大小影響比例；中心來源對大小仍可有影響，不說中心完全無作用。 本研究只支持接受組織層級的反應差異，不識別胞內效應蛋白，不能作V3007分子中段的直接證據。"
+      },
+      "b_snapshot": {
+        "id": "L188",
+        "question": "兩種真的不好吃的蝴蝶，為什麼可能長出相似的警告花紋？",
+        "answer_target": "共同警告訊號與捕食者學習",
+        "scope": "生態機制；具體物種個案仍需補獨立研究"
+      }
+    },
+    {
+      "a": "A26003",
+      "b": "A26001",
+      "proposed": "distinct",
+      "reason": "A26001是細胞距離互作回饋形成分區；眼斑變體是固定中心來源/接受方的移植比較，不宣稱同一自組織網路。",
+      "a_snapshot": {
+        "id": "A26003",
+        "question": "換了蝴蝶眼斑的中心，周圍色環就一定跟著換嗎？",
+        "answer_target": "眼斑中心能組織周圍圖案，但接受訊號的翅面不是被動著色紙。黑環與金環比例不同的兩條選育線互換中心後，色環比例主要隨宿主；接受組織的反應差異可使同類中心訊號產生不同色環。濃度閾值改變是與結果相容的空間解釋模型。",
+        "scope": "限1997 Bicyclus anynana GOLD/BLACK選育線蛹期移植；不能由此判所有蝴蝶的分子訊號。移植近遠位置和總眼斑大小影響比例；中心來源對大小仍可有影響，不說中心完全無作用。 本研究只支持接受組織層級的反應差異，不識別胞內效應蛋白，不能作V3007分子中段的直接證據。"
+      },
+      "b_snapshot": {
+        "id": "A26001",
+        "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+        "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+        "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "A26-S001",
+      "url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
+      "reading_scope": "PDF pp1–4引言、Results四種移除對照、Discussion及Fish Stock/Laser Ablation方法；pp5–6模型描述與限制讀回，未重算方程或讀SI。目讀PDF pp2、3、5的Fig1–4。",
+      "read_via": "web.search定位原文與大阪大學作者PDF；web.open可讀；指定UA fresh HTTP200下載有效6頁PDF，以PyMuPDF抽文並目讀指定圖頁。",
+      "author_cache": {
+        "file": ".cache/wave26-life-sources/stripe2009.pdf",
+        "sha256": "a1fc424041f6e399e84c6ab8740424e34c4853aa1d7d8588708256fbd5d804ca",
+        "text_file": ".cache/wave26-life-sources/stripe2009.txt",
+        "text_sha256": "c1514aed8c690332d2be9ddc059cf637c3944507ec66858a0f68a7e496444187"
+      }
+    },
+    {
+      "source_id": "A26-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3912879/",
+      "reading_scope": "XML PARA0–58（背景、方法及主要突變/互補結果）；PARA72–101（choker結果、Discussion、模型限制）；同文PDF p9印3005目讀Fig8/9。未讀全部補充材料，未逐式重算模型。",
+      "read_via": "web.open PMC遇CAPTCHA；指定UA fresh HTTP200取得Europe PMC官方XML，核article-id/DOI/正文。另web.open及指定UA取得德里大學生化系託管同文PDF，核頁首身份並目讀Fig9。",
+      "author_cache": {
+        "file": ".cache/wave26-life-sources/stripe2013.xml",
+        "sha256": "6442d6a48c33cf95bc144b091cc88ed6362004aec0e13cc747efef9e4275bf66",
+        "text_file": ".cache/wave26-life-sources/stripe2013.txt",
+        "text_sha256": "100f0ce057e4dba32f90a6e8dd0552acf19a4e5825cbd51fd871b1a5575f29bd",
+        "same_article_pdf": {
+          "file": ".cache/wave26-life-sources/stripe2013-institutional.pdf",
+          "sha256": "41f363619fa9b769689d7907d3a86c894e1f1a98921d364b8eb61c6a096d326e",
+          "retrieval_url": "https://www.biochem.du.ac.in/userfiles/downloads/stripe%20formation-1.pdf",
+          "text_file": ".cache/wave26-life-sources/stripe2013-institutional.txt",
+          "text_sha256": "29deec702caa3e02baecf9535d6950cc86f56513839ecfa9039923999c8ab70a",
+          "relationship": "同一Development原研究之機構教學副本，非額外實驗。"
+        }
+      }
+    },
+    {
+      "source_id": "A26-S003",
+      "url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf",
+      "reading_scope": "PDF pp1–9（印1207–1215）：背景、選育與兩種移植方法、Results、Discussion；Fig1、2、3、4、5、6及相關Table3/4/6。p10參考文獻未逐讀，統計未重新計算。",
+      "read_via": "web.search/Open核作者實驗室原PDF；指定UA fresh HTTP200下載10頁掃描PDF，無可用正文文字層；PyMuPDF渲染後逐頁目讀pp1–9。PubMed/期刊metadata另核DOI、作者、年卷頁。",
+      "author_cache": {
+        "file": ".cache/wave26-life-sources/eyespot1997.pdf",
+        "sha256": "89d78a15c5a81276199e5c5a8994faa809265dad10286b2a4f527dab629858b1",
+        "text_file": ".cache/wave26-life-sources/eyespot1997.txt",
+        "text_sha256": "9c1b6eb2509a0d868af28ae442b635eedc0bc32326763ddb409cf6823da49bb1",
+        "text_limitation": "抽文只有頁標，不能當正文讀取證據；正文閱讀依下列rendered_pages。",
+        "rendered_pages": [
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p1.png",
+            "sha256": "8e236aa39e15ed4f989febb451b638546fbe5c0bad554adc757e839ea0ad46c1",
+            "printed_page": 1207
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p2.png",
+            "sha256": "67b6845e27d6991051be17cda7f021f20b5345eaf59f4f134860546276bad679",
+            "printed_page": 1208
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p3.png",
+            "sha256": "7b5e82e0f9730d03d0b7531733782f53f633c3e64bc69732c16134de187d6a27",
+            "printed_page": 1209
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p4.png",
+            "sha256": "7229c419e994f278c870fcac98a18e46c51c434d283496ad76563ffe7ef01ebc",
+            "printed_page": 1210
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p5.png",
+            "sha256": "cd0378ab01aa20484dad2d85ac1174e9691cea83ade9fb2a3ab1f0bd16ac4a5e",
+            "printed_page": 1211
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p6.png",
+            "sha256": "bbed5b96817f873bff63302130cdea8c5f7df4f73466213db1cda5f6e4595085",
+            "printed_page": 1212
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p7.png",
+            "sha256": "00b921de2e7baeec2ee43dcae2d39d23eff9c1923f5d77ad124da0fafe174b0b",
+            "printed_page": 1213
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p8.png",
+            "sha256": "d21e3e9f98e5dd237bcfdf303af301571a74f6f331486916e95a24fdd2234148",
+            "printed_page": 1214
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p9.png",
+            "sha256": "5e170a9303ab220bedf665f8a4aea973a3e8fc3f419ccbe0f1857c5385b08c33",
+            "printed_page": 1215
+          }
+        ]
+      }
+    }
+  ],
+  "source_identity": {
+    "count_policy": "3來源紀錄為3篇原研究；2013同文另XML/PDF不另算研究，1997兩移植實驗不是兩篇獨立論文。",
+    "comparison": "比舊sources序列化DOI/完整題名/URL，0精確命中亦不證明研究獨立。",
+    "records": [
+      {
+        "source_id": "A26-S001",
+        "doi": "10.1073/pnas.0808622106",
+        "canonical_url": "https://doi.org/10.1073/pnas.0808622106",
+        "retrieval_url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
+        "historical_exact_identity_matches": [],
+        "relationship": "期刊、PMC、XML與PDF副本為同一研究；URL數不等於實驗數。"
+      },
+      {
+        "source_id": "A26-S002",
+        "doi": "10.1242/dev.096719",
+        "canonical_url": "https://doi.org/10.1242/dev.096719",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3912879/fullTextXML",
+        "historical_exact_identity_matches": [],
+        "relationship": "期刊、PMC、XML與PDF副本為同一研究；URL數不等於實驗數。2013直接引用2009並補充第三色素細胞作用，不是整套2009對照的獨立複驗。"
+      },
+      {
+        "source_id": "A26-S003",
+        "doi": "10.1111/j.1558-5646.1997.tb03968.x",
+        "canonical_url": "https://doi.org/10.1111/j.1558-5646.1997.tb03968.x",
+        "retrieval_url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf",
+        "historical_exact_identity_matches": [],
+        "relationship": "期刊、PMC、XML與PDF副本為同一研究；URL數不等於實驗數。"
+      }
+    ]
+  },
+  "retrieval_failures": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3912879/",
+      "method": "web.open",
+      "result": "CAPTCHA；未把驗證頁當正文，改官方EuropePMC XML。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3912879/figure/F9/",
+      "method": "web.open",
+      "result": "inaccessible；未目讀該網頁圖，改同文機構PDF p9。"
+    },
+    {
+      "url": "https://www.biochem.du.ac.in/userfiles/downloads/stripe%20formation-1.pdf",
+      "method": "web.find after successful web.open",
+      "result": "timeout；指定UA另取有效PDF成功，保留兩種路線。"
+    },
+    {
+      "url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf",
+      "method": "web.open/PyMuPDF text extraction",
+      "result": "掃描無可用正文文字層；以渲染目讀p1–9，不稱抽文成功。"
+    }
+  ],
+  "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "reading_limits": [
+    "不是逐主張稿核准、未試讀或產媒體；原圖僅作查核，不搬入影片。",
+    "2009未重算模型與SI；2013指定段而非全部補充全文；1997未重算統計、p10參考文獻未逐讀。",
+    "2020材料接觸與1997眼斑形狀只定位/摘要或搜尋回傳，列NA，不計已讀正文來源。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "A26-S001",
+      "file": ".cache/wave26-life-sources/stripe2009-p2.png",
+      "sha256": "699943a28b190c0e3542b0213c2380eda15d5c7baf0bb7d8154460fdae26ec59",
+      "scope": "Fig1/2"
+    },
+    {
+      "source_id": "A26-S001",
+      "file": ".cache/wave26-life-sources/stripe2009-p3.png",
+      "sha256": "11ab9e5199b31fc16a4661676fd428c38d3a67ab486b49cd1191451de4e55471",
+      "scope": "Fig3"
+    },
+    {
+      "source_id": "A26-S001",
+      "file": ".cache/wave26-life-sources/stripe2009-p5.png",
+      "sha256": "63514c845d49af58c90ce245ec01f22d1c3af5fbac8732099c855fb33e7b2ba6",
+      "scope": "Fig4"
+    },
+    {
+      "source_id": "A26-S002",
+      "file": ".cache/wave26-life-sources/stripe2013-p9.png",
+      "sha256": "5b9d508918ff1e16cc805df8fe3a31b9e83b78107e01eb8f84ecd25d1e5b49a6",
+      "scope": "Fig8/9，尤choker方向"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p1.png",
+      "sha256": "8e236aa39e15ed4f989febb451b638546fbe5c0bad554adc757e839ea0ad46c1",
+      "printed_page": 1207,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p2.png",
+      "sha256": "67b6845e27d6991051be17cda7f021f20b5345eaf59f4f134860546276bad679",
+      "printed_page": 1208,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p3.png",
+      "sha256": "7b5e82e0f9730d03d0b7531733782f53f633c3e64bc69732c16134de187d6a27",
+      "printed_page": 1209,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p4.png",
+      "sha256": "7229c419e994f278c870fcac98a18e46c51c434d283496ad76563ffe7ef01ebc",
+      "printed_page": 1210,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p5.png",
+      "sha256": "cd0378ab01aa20484dad2d85ac1174e9691cea83ade9fb2a3ab1f0bd16ac4a5e",
+      "printed_page": 1211,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p6.png",
+      "sha256": "bbed5b96817f873bff63302130cdea8c5f7df4f73466213db1cda5f6e4595085",
+      "printed_page": 1212,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p7.png",
+      "sha256": "00b921de2e7baeec2ee43dcae2d39d23eff9c1923f5d77ad124da0fafe174b0b",
+      "printed_page": 1213,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p8.png",
+      "sha256": "d21e3e9f98e5dd237bcfdf303af301571a74f6f331486916e95a24fdd2234148",
+      "printed_page": 1214,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997-p9.png",
+      "sha256": "5e170a9303ab220bedf665f8a4aea973a3e8fc3f419ccbe0f1857c5385b08c33",
+      "printed_page": 1215,
+      "scope": "掃描頁正文與該頁圖表目讀"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W26A-T01",
+      "body_seconds": 160,
+      "candidate_seconds": {
+        "A26001": 90,
+        "A26002": 70
+      },
+      "opening_transitions_ending_included": true,
+      "measured": false
+    },
+    {
+      "id": "W26A-T02",
+      "body_seconds": 95,
+      "candidate_seconds": {
+        "A26003": 95
+      },
+      "opening_transitions_ending_included": true,
+      "measured": false
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "checks": [
+      "unique IDs/source refs/valid existing IDs/full near snapshots",
+      "chapter/beat/core cap<=150 seconds and range arithmetic",
+      "UTF8 LF/no BOM/rstrip/written_files"
+    ],
+    "limits": "待另一代理與共同top5，未自我升格製作核准。"
+  },
+  "unresolved": [
+    "A26001/A26002是否足以分核心交非作者嚴判；2009模型不能遮蓋2013新證據。",
+    "A26003建議合併V3007，保變體105秒，不計新核心。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "reason": "Root/physics非作者讀回：刪純追問/回扣30秒；V3007變體採獨立cap，補組織層級/模型方向界線。",
+      "before_files": [
+        {
+          "file": "batches/wave26-life.json",
+          "sha256": "027478b0bbe4d4c0044bfb7906dfaee62f2f455e4e6d95c10566213a63bf3426"
+        },
+        {
+          "file": "reviews/wave26-life-themes.json",
+          "sha256": "c331538b9b969449720a7168c8b20f40e664ddbe0c63fbc68875b9b502c57a40"
+        },
+        {
+          "file": "reviews/wave26-life-author.json",
+          "sha256": "e60fa154644a6b4536e1832b5f39a3101a5911014443967cf483e298a8b842a6"
+        }
+      ],
+      "removed_seconds": 30,
+      "changes": [
+        "T01 180→160（40+50+70）",
+        "T02 105→95（45+50）",
+        "V3007原cap80，變體採A26003 cap120；蝴蝶移植不證胞內效應蛋白",
+        "Fig6 local-sink低谷模型方向明示；候選q/answer未改"
+      ]
+    }
+  ],
+  "proposed_merges": [
+    {
+      "duplicate_id": "A26003",
+      "canonical_id": "V3007",
+      "reason": "接收方反應差異仍是既有核心；新移植研究與空間閾值模型作變體，未識別新分子中段。"
+    }
+  ]
+}

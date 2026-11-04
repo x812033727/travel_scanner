@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-03T00:13:10.174Z",
+  "result": "PASS",
+  "selected": 3430,
+  "index_html_sha256": "c05a9d769bc4923f8c472453da3f0fc4d71cd54d0b1546ce3019a087e137349e",
+  "source_sample": {
+    "id": "S44-001",
+    "urls": [
+      "https://doi.org/10.1371/journal.pone.0004591"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "selected aliases resolve with source locator; unselected historical merge alias remains absent from selected-only dashboard",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow; mobile search field >=350px and keyword + ID search + source expansion pass",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave44-desktop.png",
+    "wave44-source-desktop.png",
+    "wave44-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "桌面計數與搜尋結果可讀，輸入 S44-001 後可展開資料。390 像素寬手機上搜尋欄獨占一列，下方各篩選器獨立換行，標題和數字卡沒有溢出。"
+}

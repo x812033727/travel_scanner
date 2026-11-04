@@ -1,0 +1,456 @@
+{
+  "reviewer": "pool_physics",
+  "created_on": "2026-11-01",
+  "status": "PASS_WITH_DISCLOSED_SOURCE_LIMIT_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_files": [
+    {
+      "file": "batches/wave9-paper.json",
+      "sha256": "b67dfadf119c4cf02d68b7c2a96dfa0ae2cda9fe01b3443269d6bf57eb5118fb"
+    },
+    {
+      "file": "reviews/wave9-paper-themes.json",
+      "sha256": "243e2527b7f2f092d3296f372d71b6b03e87465aaeb0ecc136d66ae83335d6a1"
+    },
+    {
+      "file": "reviews/wave9-paper-author.json",
+      "sha256": "22cdf331cf63bdb10022b1593036c56e5ed1d84251fb5ba095e9055478ac6a11"
+    }
+  ],
+  "reviewed_candidate_ids": [
+    "Q9001",
+    "Q9002",
+    "Q9003",
+    "Q9004",
+    "Q9005",
+    "Q9006",
+    "Q9007",
+    "Q9008"
+  ],
+  "coverage": {
+    "candidates_read": 8,
+    "author_boundary_pairs_read": 21,
+    "semantic_neighbour_entries_read": 40,
+    "sources_independently_read_at_specified_scope": 7,
+    "sources_not_independently_read": 1,
+    "fresh_public_http_bodies": 4,
+    "hashed_author_bodies": 3,
+    "baseline": "3069 raw / 2711 selected; pool SHA b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b",
+    "method": "全8題question/answer/scope/editorial與18退題、21作者近對、40近鄰全文比對；另關鍵詞查3069 raw與401歷史not_added並讀相關命中。不是全庫逐列或全部來源逐主張查核。",
+    "semantic_delta_rows_read": 1,
+    "semantic_new_neighbour_pairs_after_revision": 2
+  },
+  "semantic_readback": {
+    "file": ".cache/wave9-paper-neighbours.json",
+    "draft_sha256": "e50a5f168641760e538d113a5fe4fc2b8ccc6b13268f82527a17b67c890352dd",
+    "batch_sha256": "b67dfadf119c4cf02d68b7c2a96dfa0ae2cda9fe01b3443269d6bf57eb5118fb",
+    "status": "FINAL_40_ENTRIES_COVERED_BY_ORIGINAL_FULL_READ_PLUS_Q9001_DELTA",
+    "score_use": "只導向閱讀；cosine不是合併機率。",
+    "file_sha256": "d93e4b7657fe6c40cf1321c8d8e5bb336a7c6d0c141d24178a635586c268b8e2",
+    "raw_count": 3115,
+    "delta_file": ".cache/wave9-paper-neighbour-delta.json",
+    "delta_file_sha256": "dc1f6f6aa13579d59cffd0d95082d30bf3be20879031fbdb7fcfe3bbff3c8fad",
+    "prior_draft_sha256": "38b53e2b164b6613633cf18e53051bccae52c8c2d6260a9801587a6bbc378dae",
+    "delta_result": "Q9001重讀5鄰居；新增D2111為方向性尺寸約束，P298為不同形變模數分類，均非分層軟化。原7行未變、原近鄰ID集合讀回一致。"
+  },
+  "candidate_dispositions": [
+    {
+      "id": "Q9001",
+      "decision": "RETAIN",
+      "reason": "控制局部分層與抗彎剛性；修後近鄰是乾縮取向、剝離載荷、纖維各向異性、交叉紋理尺寸約束與彈性模數分類，都不回答壓痕後薄層相對變形。",
+      "neighbour_ids_read": [
+        "D2107",
+        "D2183",
+        "D2197",
+        "D2111",
+        "P298"
+      ],
+      "scope_limit": "限研究的多層塗佈紙板與壓痕方向；不是割穿外表，也不保證壓得越深越好，不泛稱所有紙盒都採相同製程。"
+    },
+    {
+      "id": "Q9002",
+      "decision": "RETAIN",
+      "reason": "固定覆墨幾何的紙內光路；與Q9003區分外膜新回返尺度，其餘是顯色或油墨轉移。",
+      "neighbour_ids_read": [
+        "Q9003",
+        "Q9004",
+        "X5020",
+        "X5019",
+        "X5017"
+      ],
+      "scope_limit": "半色調紙印刷，與機械性油墨鋪展分開；不把所有印刷斑駁歸於散光，也不以裸眼判斷真實墨點面積。"
+    },
+    {
+      "id": "Q9003",
+      "decision": "RETAIN",
+      "reason": "固定已印圖案新增外層回返；不是數位alpha插值、量測SCI/SCE、薄膜干涉或色域裁切。",
+      "neighbour_ids_read": [
+        "M5002",
+        "Q9002",
+        "O7017",
+        "LEG-S81",
+        "M5003"
+      ],
+      "scope_limit": "限透明、平滑且光學接觸良好的覆膜與半色調；均勻實色或大尺度圖案的增量可小，不泛稱覆膜都變深。"
+    },
+    {
+      "id": "Q9004",
+      "decision": "RETAIN",
+      "reason": "受壓膠囊打開化學接觸；與熱混合、油墨回拉/拒墨與純光學表觀不同。",
+      "neighbour_ids_read": [
+        "X5017",
+        "X5019",
+        "Q9002",
+        "X5020",
+        "Q9003"
+      ],
+      "scope_limit": "限來源三聯無碳複寫結構；不是筆墨穿透整疊紙，不把自含型紙、熱感收據混為同一構造，無化學配方操作。"
+    },
+    {
+      "id": "Q9005",
+      "decision": "RETAIN",
+      "reason": "液柱的毛細不穩定性與波長條件；不是電場改軌、泡耦合、彎管渦流、油膜潤滑或聚合物交聯。",
+      "neighbour_ids_read": [
+        "E2034",
+        "Q9007",
+        "P072",
+        "J6009",
+        "H3026"
+      ],
+      "scope_limit": "限連續噴墨與毛細主導液柱；MIT 無黏小擾動結果用作機制示意，不套用所有高黏或聚合物墨水的數值。"
+    },
+    {
+      "id": "Q9006",
+      "decision": "RETAIN",
+      "reason": "熱產蒸氣泡作致動；與混入氣泡改變傳遞、電荷轉印、旋轉成形、滾筒乾燥或電場偏轉不同。",
+      "neighbour_ids_read": [
+        "Q9007",
+        "E2031",
+        "D2157",
+        "D2047",
+        "E2034"
+      ],
+      "scope_limit": "限熱式按需噴墨；不概括壓電噴頭，不宣稱墨水全部煮沸，不補未讀的精確溫度、壽命或冷卻時序。"
+    },
+    {
+      "id": "Q9007",
+      "decision": "RETAIN",
+      "reason": "泡的可壓縮性、流量耦合與成滴門檻；不是脫溶平衡、濃度補給穩態或孢子動量帶動氣流。",
+      "neighbour_ids_read": [
+        "Q9006",
+        "P230",
+        "Q9008",
+        "P210",
+        "U8003"
+      ],
+      "scope_limit": "限來源改裝壓電噴頭與定性模型；不是一般堵孔，非所有尺寸或噴頭同一曲線，不能拿論文微米數當通用故障線。"
+    },
+    {
+      "id": "Q9008",
+      "decision": "RETAIN",
+      "reason": "有開放補給的局部成分穩態；與密閉相平衡、滲濾過載、排水量浮力、氣塞與果乾密閉再分配不同。",
+      "neighbour_ids_read": [
+        "P210",
+        "D2020",
+        "O3066",
+        "D2168",
+        "D2199"
+      ],
+      "scope_limit": "水—甘油模型液與連通儲液的閒置噴嘴；不套用所有墨水或無補給封閉小滴，不承諾濃度變化必使滴形肉眼變歪。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "Q9001",
+        "b": "D2198",
+        "reason": "預先控制層間損傷來降低折線抗彎剛性，並非只分類拉斷纖維或接合。"
+      },
+      {
+        "a": "Q9001",
+        "b": "H3063",
+        "reason": "分層形成可彎薄層與裂後橋接阻礙擴裂，作用方向與負載問題不同。"
+      },
+      {
+        "a": "Q9001",
+        "b": "H3090",
+        "reason": "結構分層造成剛性改變，不是固定形變下隨時間鬆弛。"
+      },
+      {
+        "a": "Q9001",
+        "b": "D2183",
+        "reason": "折彎中薄層可相對變形與剝膠時載荷集中在剝離前緣不同。"
+      },
+      {
+        "a": "Q9002",
+        "b": "N274",
+        "reason": "重點為跨印墨邊界的橫向光路改變表觀覆墨範圍，並非單純白色多重散射。"
+      },
+      {
+        "a": "Q9002",
+        "b": "P244",
+        "reason": "不是用混濁度估粒徑，而是固定實體墨點仍可變深的光路反例。"
+      },
+      {
+        "a": "Q9002",
+        "b": "X5019",
+        "reason": "光路與後續滾筒帶走油墨不同。"
+      },
+      {
+        "a": "Q9002",
+        "b": "X5020",
+        "reason": "光路與潤版水妨礙油墨接受不同。"
+      },
+      {
+        "a": "Q9002",
+        "b": "X5021",
+        "reason": "光路與底塗引發的載液/膠乳分布不同。"
+      },
+      {
+        "a": "Q9003",
+        "b": "Q9002",
+        "reason": "透明膜新增外部界面回返與由膜厚決定的跨區尺度；紙內散光沒有這一新增幾何條件。兩效應獨立僅為模型近似，不拆成所有光路均互不耦合。"
+      },
+      {
+        "a": "Q9003",
+        "b": "P142",
+        "reason": "全反射方向條件只是背景；本題判斷回返光是否跨墨區、被再吸收。"
+      },
+      {
+        "a": "Q9003",
+        "b": "P143",
+        "reason": "導光保持在棒內與圖案尺度控制覆膜後吸收不同。"
+      },
+      {
+        "a": "Q9003",
+        "b": "O7017",
+        "reason": "改材料外層造成吸收路徑變化，與同一樣本改儀器鏡面分量採集模式不同。"
+      },
+      {
+        "a": "Q9004",
+        "b": "X5017",
+        "reason": "壓破微膠囊和聯單界面配對是接觸開關，感熱紙則靠熱使顯色成分混合。顯色反應只作已有背景。"
+      },
+      {
+        "a": "Q9005",
+        "b": "LEG-S70",
+        "reason": "曲率擾動的波長決定成長或抑制，是液柱不穩定性；不是既定體積的球形平衡。"
+      },
+      {
+        "a": "Q9005",
+        "b": "E2034",
+        "reason": "先控制液柱斷滴，與成滴後帶電偏轉不同。"
+      },
+      {
+        "a": "Q9006",
+        "b": "LEG-S72",
+        "reason": "局部液體汽化提供按需致動，與溶解CO2在成核點逸出不同。只夠短段，不擴成長片。"
+      },
+      {
+        "a": "Q9006",
+        "b": "E2264",
+        "reason": "熱相變致動與壓電石英時鐘不同；題內不重講壓電效應。"
+      },
+      {
+        "a": "Q9007",
+        "b": "N286",
+        "reason": "不是只說匹配自然頻率；新增氣泡體積變化改寫噴腔/噴嘴通量與成滴門檻，回答先快後停。"
+      },
+      {
+        "a": "Q9007",
+        "b": "P115",
+        "reason": "阻尼限制一般共振振幅，並不包含可壓縮氣泡的流量耦合與出滴失效條件。"
+      },
+      {
+        "a": "Q9007",
+        "b": "V3073",
+        "reason": "壓力傳遞動態改變，不是張力水柱中斷。"
+      },
+      {
+        "a": "Q9007",
+        "b": "Q9006",
+        "reason": "混入空氣改變既有壓電驅動的傳遞，與熱式主動產生蒸氣泡不同。"
+      },
+      {
+        "a": "Q9008",
+        "b": "P238",
+        "reason": "出口濃度梯度與內部持續補給的穩態，並非冷凝收集蒸餾分離。"
+      },
+      {
+        "a": "Q9008",
+        "b": "P210",
+        "reason": "開放系統有非零淨通量、非均勻濃度仍可穩定；密閉蒸發/凝結平衡的條件不同。"
+      },
+      {
+        "a": "Q9008",
+        "b": "D2168",
+        "reason": "成分通量的穩態與高點積氣阻流不同。"
+      },
+      {
+        "a": "Q9001",
+        "b": "D2111",
+        "reason": "交叉紋理互相限制尺寸變化，與壓痕引入局部分層、降低轉折抗彎剛性不同。"
+      },
+      {
+        "a": "Q9001",
+        "b": "P298",
+        "reason": "材料不同形變用不同模數，並不解釋控制層間損傷後的局部抗彎改變。"
+      }
+    ]
+  },
+  "source_readbacks": [
+    {
+      "id": "Q9-S001",
+      "url": "https://www.jstage.jst.go.jp/article/jamdsm/5/4/5_4_385/_pdf/-char/en",
+      "route": "NEW_HTTP_BODY",
+      "actual_reading_scope": "web PDF逾時；public urllib成功PDF，SHA與作者副本一致；PyMuPDF讀PDF pp.1–2,6–7（§2.1、§3.2及相鄰上下文）。",
+      "body_sha256_if_cached": "520de993d9238c2863fb1998c983e407001f9de0ba6f73e41c0c8125eef0ee56"
+    },
+    {
+      "id": "Q9-S002",
+      "url": "https://www.jstage.jst.go.jp/article/jtappij/63/11/63_11_1362/_pdf",
+      "route": "NEW_HTTP_BODY",
+      "actual_reading_scope": "public urllib成功PDF，與作者副本SHA相同；PyMuPDF讀PDF pp.1–2英摘及日文緒言/光學網點理論。",
+      "body_sha256_if_cached": "3434a52fa66cddfc9a9a4ba7880d8c0cb4a7af445c94ef5d35d81042ad257436"
+    },
+    {
+      "id": "Q9-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9504082/",
+      "route": "HASHED_AUTHOR_BODY",
+      "actual_reading_scope": "web與urllib都只回reCAPTCHA；讀作者既有正文文字副本§2.2、§2.3開頭、§3 Fig7解釋、§5結論，未重算光學模型。",
+      "body_sha256_if_cached": "80fd87fd70f8b024686f95293ffa32fa26401ad22d794c515901dbb7d798ea94"
+    },
+    {
+      "id": "Q9-S004",
+      "url": "https://stacks.cdc.gov/view/cdc/6410/cdc_6410_DS1.pdf",
+      "route": "NEW_HTTP_BODY",
+      "actual_reading_scope": "web讀官方PDF printed pp.5–6 / PDF pp.26–27，§2.1–2.2與Figure2-1文字；不採健康章。",
+      "body_sha256_if_cached": null
+    },
+    {
+      "id": "Q9-S005",
+      "url": "https://platform.ict-tex.eu/pluginfile.php/4018/mod_resource/content/2/Inkjet%20printing%20-%20the%20physics%20of%20manipulating%20liquid.pdf",
+      "route": "NOT_INDEPENDENTLY_READ",
+      "actual_reading_scope": "web open與public urllib均timeout；搜尋摘要/書目沒有當作正文。作者已讀§3，但本收據不冒稱重讀。",
+      "body_sha256_if_cached": null
+    },
+    {
+      "id": "Q9-S006",
+      "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/d77da8d5f1bb8b69a62682bc0dbc5845_MIT18_357F10_Lecture11.pdf",
+      "route": "HASHED_AUTHOR_BODY",
+      "actual_reading_scope": "PyMuPDF讀作者官方PDF副本§11.2 printed pp.41–43 / PDF pp.2–4，線性小擾動與黏性限制；未獨立重算推導。",
+      "body_sha256_if_cached": "5ee02d2f9dbb86f2c0dca314bd096cc3f74db8095f1d4c263fbb4e1a11a4d30b"
+    },
+    {
+      "id": "Q9-S007",
+      "url": "https://pure.tue.nl/ws/files/2910863/Metis236347.pdf",
+      "route": "HASHED_AUTHOR_BODY",
+      "actual_reading_scope": "public urllib官方TU/e URL回403；核作者PDF副本SHA，讀PDF pp.4–8 / printed pp.121511-3–7之§III–VI與圖說；沒有看高速影片。",
+      "body_sha256_if_cached": "3a894de6d66ce1ce7bf8b0ccd4c179d3f678a29fdafbe22b9f2640c4b9cbd462"
+    },
+    {
+      "id": "Q9-S008",
+      "url": "https://arxiv.org/html/2205.06639v2",
+      "route": "NEW_HTTP_BODY",
+      "actual_reading_scope": "web讀v2 §I–II開頭、§V.1–V.2與§V.3開頭/恢復的可能解釋；§I明列熱式汽化泡提供致動壓力，補強Q9006但不替S005聲稱已讀。",
+      "body_sha256_if_cached": null
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W9Q-T01",
+      "decision": "RETAIN_TOPIC_PROPOSAL",
+      "seconds": 170,
+      "core_seconds": {
+        "Q9002": 90,
+        "Q9003": 80
+      },
+      "opening_recap_included": true,
+      "read_aloud": false
+    },
+    {
+      "id": "W9Q-T02",
+      "decision": "RETAIN_TOPIC_PROPOSAL",
+      "seconds": 140,
+      "core_seconds": {
+        "Q9006": 40,
+        "Q9007": 100
+      },
+      "opening_recap_included": true,
+      "read_aloud": false
+    },
+    {
+      "id": "W9Q-T03",
+      "decision": "RETAIN_TOPIC_PROPOSAL",
+      "seconds": 110,
+      "core_seconds": {
+        "Q9001": 110
+      },
+      "opening_recap_included": true,
+      "read_aloud": false
+    }
+  ],
+  "theme_editorial_conditions": [
+    {
+      "id": "W9Q-T01",
+      "reason": "紙內橫向輸運→新增外膜回返→圖案尺度反例，170秒可作未試讀上限。固定墨點輪廓、分色光路必須畫清。",
+      "cut_check": "Q9003刪除剩90秒並撤雙核心企劃，計算正確；不把平滑膜結論套所有覆膜。"
+    },
+    {
+      "id": "W9Q-T02",
+      "reason": "40秒熱式主動汽化致動→100秒壓電腔混入泡的耦合，兩系統重設明確。Q9007尾段須解釋成滴門檻而非朗讀研究限制。",
+      "cut_check": "刪Q9006剩100秒，改單核心案；先快後停圖解若說不清整案撤回。"
+    },
+    {
+      "id": "W9Q-T03",
+      "reason": "同厚紙板剖面從完整層到受控分層與隆起，是同核心的條件/機制，總110秒沒有重複計數。",
+      "cut_check": "首章若刪15秒剩95秒；無剖面因果圖則撤案，不加歷史補時。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "PAPER01",
+      "severity": "required",
+      "issue": "Q9001必要步驟泛化",
+      "resolution": "已限有些多層紙板，保留來源條件",
+      "status": "TARGETED_READBACK_PASS"
+    },
+    {
+      "id": "PAPER02",
+      "severity": "required",
+      "issue": "熱式短鏈分配60秒偏鬆",
+      "resolution": "Q9006 cap65→45、T02首章60→40，總140與刪段100同步",
+      "status": "TARGETED_READBACK_PASS"
+    }
+  ],
+  "required_corrections": [],
+  "validation": {
+    "json_and_lf": "PASS",
+    "repository_validateThemes_current_paper": "PASS; isolated in-memory selected rows only; Node v24.13.0",
+    "beat_sums_and_core_caps": "PASS;170/140/110",
+    "central_files_modified": false
+  },
+  "limits": [
+    "7/8來源指定段獨立閱讀，不是全來源全篇或全主張核准。",
+    "Q9005毛細失穩由MIT段支持；具體連續噴墨施加週期擾動的S005正文此輪未取得，進完整稿前仍應重開。",
+    "Q9007定性模型忽略部分回饋、峰值不精確，不將尺寸閾值套現售噴頭。",
+    "沒有實際試讀、樣張、噴頭實驗、媒體製作或發布。"
+  ],
+  "initial_author_locked_files": [
+    {
+      "file": "batches/wave9-paper.json",
+      "sha256": "7f963a0aa6e6dc4d8878ab85d51ac09b3cf595d7d2195229f511a336cbb077b1"
+    },
+    {
+      "file": "reviews/wave9-paper-themes.json",
+      "sha256": "efb33c81a44f9a05f6ed13da009d72adfcfd01d17e5317f0df093045235f7cbb"
+    },
+    {
+      "file": "reviews/wave9-paper-author.json",
+      "sha256": "e0b5dfd0bc46f2d27fbf4a7690054818e67ce28e11f95513139f6a19c02ca8f0"
+    }
+  ],
+  "revision_comparison": "8題及核心/來源不變；Q9001問法收窄，Q9006素材上限與T02章節減時；已定點讀回修後三檔及最後語意delta。其他兩案170/110秒不變。"
+}

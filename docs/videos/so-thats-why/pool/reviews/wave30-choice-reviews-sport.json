@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "reviewer": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "P30001",
+    "P30002",
+    "P30003",
+    "P30004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave30-sport.json",
+      "sha256": "3cada69dd60f7ebf269952706391bebd58eb76665ac1e1bb800b5b6d231b8af2"
+    },
+    {
+      "file": "reviews/wave30-sport-author.json",
+      "sha256": "08c01c1e7f3896f58446b6bf7db7571e0b46ca35aafd75702038e991c0b793a6"
+    },
+    {
+      "file": "reviews/wave30-sport-themes.json",
+      "sha256": "75378a4dec64abc17ad5dc30bf4993e471e58a5175baaf2a0e47d0ac8d8814fc"
+    },
+    {
+      "file": ".cache/wave30-sport-neighbours.json",
+      "sha256": "591ccaa8e0c4458d796a90dbc7f88f5ee30f1306bfb08d76c0a944402d3fb95c"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P30001",
+      "decision": "retain",
+      "reason": "姿態過零的慢動作與角度封套足以支持兩步推理。"
+    },
+    {
+      "id": "P30002",
+      "decision": "retain",
+      "reason": "自由飛行估力與固定球測力在題案分隔，風洞結果只用於解釋可能機制。"
+    },
+    {
+      "id": "P30003",
+      "decision": "retain",
+      "reason": "零震動與零合力分開，前臂速度是代理量。"
+    },
+    {
+      "id": "P30004",
+      "decision": "retain",
+      "reason": "轉速相對基準超額有攝影數據，內部形變是模型；只留素材段。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "P30-S001",
+      "url": "https://yakari.polytechnique.fr/Django-pub/documents/cohen2015rp-1pp.pdf",
+      "file": ".cache/wave30-sport-shuttle.pdf",
+      "sha256": "1f5f132a64dcfd451cf64f94024aeda146c7401071720b364ecd4588b62b6c88",
+      "text_file": ".cache/wave30-sport-shuttle.txt",
+      "text_sha256": "4c98b69a0342cf6fe19f96b20d2f7e66f54ed67f85c33eb4615097754de45215",
+      "reading_scope": "PDF第4、5頁；Fig3序列、Fig4角度過零與衰減包絡、Fig5阻力作用線與球心。",
+      "finding": "圖4首次到零後仍有負角再回擺，兩條軌跡的初速度和角速度一起改。簡化兩元件模型把回復項與阻尼項分開，支持先翻正再穩定的解釋。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-shuttle-p4.png",
+          "sha256": "ee0b682caaea6b21ba62e3f3b4631bdfae640b5f48366da84328162230362ab4",
+          "read_scope": "Fig3兩組截影、Fig4姿態角曲線越過零線後縮小"
+        },
+        {
+          "file": ".cache/wave30-sport-shuttle-p5.png",
+          "sha256": "90c31422af91366e2dfe2c01c85a3a411dac167a8cf7cb5563cb2736751cda29",
+          "read_scope": "Fig5實物的受力示意與雙球模型分圖"
+        }
+      ],
+      "read_via": "非作者讀原始PDF指定文字、圖頁與圖說，以圖、不同實驗條件及量測量相互核對。"
+    },
+    {
+      "source_id": "P30-S002",
+      "url": "https://www.nature.com/articles/srep01871.pdf",
+      "file": ".cache/wave30-sport-football.pdf",
+      "sha256": "cdc528b1f2f3315bc351f6a7f069165530c054ef0f6ba2058a70045f27fa7d77",
+      "text_file": ".cache/wave30-sport-football.txt",
+      "text_sha256": "3fa6f13477e4443973f9fdeb79ecb21b10da8a27eaa0fbc969a0d24fc8a73bae",
+      "reading_scope": "PDF第2頁Fig1自由落體及慢旋發球機示例，第5頁Fig4e–g煙流與同步力訊號。",
+      "finding": "發球機軌跡中的側力由位置推估。另一次固定球風洞測得的橫向力與後方縱渦偏移相應，不能把煙流當作同一腳射門的現場畫面。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-football-p2.png",
+          "sha256": "73a618922bfd5c30d6d975b2c73d89297ae9d75ee4673fed98da28a2379be84b",
+          "read_scope": "Fig1自由落體與兩次發球機案例、側力係數時間曲線"
+        },
+        {
+          "file": ".cache/wave30-sport-football-p5.png",
+          "sha256": "caa0ba7d7ef2d462e171339c2e35a31a186bc53832bbc137b0a8614c70d79062",
+          "read_scope": "Fig4e–g對準時間，後視圖渦的位置及力箭頭；a–c另屬早年圖"
+        }
+      ],
+      "read_via": "非作者讀原始PDF指定文字、圖頁與圖說，以圖、不同實驗條件及量測量相互核對。"
+    },
+    {
+      "source_id": "P30-S003",
+      "url": "https://www.physics.usyd.edu.au/~cross/PUBLICATIONS/4.%20RacquetSweetSpot.PDF",
+      "file": ".cache/wave30-sport-racket.pdf",
+      "sha256": "bc0cec2ac9ada3a39e4fd60507d566b5127ca2cca230e6224149036bd501047a",
+      "text_file": ".cache/wave30-sport-racket.txt",
+      "text_sha256": "885cb5af65248fb5d15263e533f90d70587fce792c08fcc26c6c3983743bdbc8",
+      "reading_scope": "原刊pp73、75，Fig10的手上感測訊號，Fig12的前臂初速與擊球位置。",
+      "finding": "中央附近震盪小仍有力的直流分量；擊心附近的腕部初速很小。波形以可比較的靈敏度呈現，沒有腕速的絕對校正或全手同步合力測量。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-racket-p11.png",
+          "sha256": "5dbac678642dc0d8c7817e9f9aeb2ed185159c696424b901a3b2433cd423978b",
+          "read_scope": "原刊p73 Fig10各撞點的局部受力訊號"
+        },
+        {
+          "file": ".cache/wave30-sport-racket-p13.png",
+          "sha256": "f8ab7b4811175c3eb9fe8bf9d6ce6de25efb48d511a644e1217f64c2cce916f6",
+          "read_scope": "原刊p75 Fig12單一落高、各位置腕部速度差別"
+        }
+      ],
+      "read_via": "非作者讀原始PDF指定文字、圖頁與圖說，以圖、不同實驗條件及量測量相互核對。"
+    },
+    {
+      "source_id": "P30-S004",
+      "url": "https://arxiv.org/pdf/1610.03464",
+      "file": ".cache/wave30-sport-bat.pdf",
+      "sha256": "1f244ad33d667b9ff602f40b9676af4bc54527a3a03184a6b0d2c068a3f1991b",
+      "text_file": ".cache/wave30-sport-bat.txt",
+      "text_sha256": "e992283c851e2000bb92e49739bec162ea1ab7ac217b822eaac46e709888c023",
+      "reading_scope": "作者稿Methods、切向恢復模型及p18 Fig5。",
+      "finding": "實心和空心散點分別標棒球及壘球；斜率與剛體滾動的單位斜率線比較。抓附與剪切回復是符合資料的模型，不能畫成攝影機量到內部形變。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-bat-p18.png",
+          "sha256": "7b5a6d85149931b0658019f8bdf43add99a8bae8a9350a157bf815a3f1e03d51",
+          "read_scope": "Fig5棒球與壘球資料、擬合線及斜率一的剛體基準"
+        }
+      ],
+      "read_via": "非作者讀原始PDF指定文字、圖頁與圖說，以圖、不同實驗條件及量測量相互核對。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P30001",
+      "b": "P21005",
+      "decision": "distinct",
+      "reason": "配重薄片測迎角平衡及不同質量位置是否滑翔；羽球題測被打反後超越正向與回擺衰減。"
+    },
+    {
+      "a": "P30001",
+      "b": "P23003",
+      "decision": "distinct",
+      "reason": "球拍拋轉的中間軸不穩定可以在沒有外力矩時出現，羽球的翻正需要氣動力矩。"
+    },
+    {
+      "a": "P30001",
+      "b": "P012",
+      "decision": "distinct",
+      "reason": "平放或側落的阻力量級不是偏斜氣動力矩與慣性、阻尼的競合。"
+    },
+    {
+      "a": "P30002",
+      "b": "P23005",
+      "decision": "distinct",
+      "reason": "倒旋球的負馬格努斯升力來自轉捩與分離；這裡近無旋球的非定常尾流給出側向力。"
+    },
+    {
+      "a": "P30002",
+      "b": "T4043",
+      "decision": "distinct",
+      "reason": "機翼留下的尾渦影響後方飛機，與尾流偏移對同一顆近無旋足球的作用對象不同。"
+    },
+    {
+      "a": "P30002",
+      "b": "Z7006",
+      "decision": "distinct",
+      "reason": "海豹鬍鬚用形狀抑制自身渦致振動，沒有固定足球同步測側力或球路偏折的條件。"
+    },
+    {
+      "a": "P30003",
+      "b": "P024",
+      "decision": "distinct",
+      "reason": "理想力偶的定義與不同擊點處的手上局部衝擊和腕部初速不同。"
+    },
+    {
+      "a": "P30003",
+      "b": "P019",
+      "decision": "distinct",
+      "reason": "碰撞前後動量與時間決定衝量，未區分手持拍的振動節點和擊心。"
+    },
+    {
+      "a": "P30003",
+      "b": "P23003",
+      "decision": "distinct",
+      "reason": "自由球拍的主軸翻轉與手握球拍受撞後兩處低訊號的位置不同。"
+    },
+    {
+      "a": "P30004",
+      "b": "P298",
+      "decision": "distinct",
+      "reason": "比較靜態剪切與壓縮模量不能判斷一次斜撞離棒轉速為何超過純滾動基準。"
+    },
+    {
+      "a": "P30004",
+      "b": "P020",
+      "decision": "distinct",
+      "reason": "反彈後法向動量變化的符號不能單獨推算切向回復給出的額外自旋。"
+    },
+    {
+      "a": "P30004",
+      "b": "P26003",
+      "decision": "distinct",
+      "reason": "兩球透過彈床傳遞能量是共用支承與時間差，這裡是球和棒的單次斜撞。"
+    },
+    {
+      "a": "P30004",
+      "b": "P30003",
+      "decision": "distinct",
+      "reason": "前一題比較握拍手上的震動／衝擊位置，這題用離棒轉速區分剛體與可形變接觸。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P30001",
+      "b": "P30002",
+      "decision": "distinct",
+      "reason": "羽球方向左右回擺並衰減；足球是尾流側力使質心路徑偏離。"
+    },
+    {
+      "a": "P30001",
+      "b": "P23005",
+      "decision": "distinct",
+      "reason": "旋轉球升力正負的轉捩與羽球翻轉後角度的衰減不同。"
+    },
+    {
+      "a": "P30001",
+      "b": "T4043",
+      "decision": "distinct",
+      "reason": "客機遠去後尾渦的留存時間，不會決定一顆羽球由超越到反擺的角度軌跡。"
+    },
+    {
+      "a": "P30001",
+      "b": "P21005",
+      "decision": "distinct",
+      "reason": "配重薄片測迎角平衡及不同質量位置是否滑翔；羽球題測被打反後超越正向與回擺衰減。"
+    },
+    {
+      "a": "P30001",
+      "b": "T4045",
+      "decision": "distinct",
+      "reason": "尾隨飛機的滾轉取決於翼展及控制，羽球在自身阻力作用下回到對準方向。"
+    },
+    {
+      "a": "P30002",
+      "b": "P30001",
+      "decision": "distinct",
+      "reason": "足球是質心的側移與尾渦，羽球重點是本體角度的回復與衰減。"
+    },
+    {
+      "a": "P30002",
+      "b": "P23005",
+      "decision": "distinct",
+      "reason": "倒旋球的負馬格努斯升力來自轉捩與分離；這裡近無旋球的非定常尾流給出側向力。"
+    },
+    {
+      "a": "P30002",
+      "b": "P017",
+      "decision": "distinct",
+      "reason": "鬆手後的初始切線方向，不說明飛行中持續而變化的側力。"
+    },
+    {
+      "a": "P30002",
+      "b": "P018",
+      "decision": "distinct",
+      "reason": "手延長接球時間降低平均力，不會讓已離腳的球在空中產生橫向力。"
+    },
+    {
+      "a": "P30002",
+      "b": "P30004",
+      "decision": "distinct",
+      "reason": "離棒轉速是在接觸時形成，飄球題問空中近無旋球的尾流。"
+    },
+    {
+      "a": "P30003",
+      "b": "LEG-S67",
+      "decision": "distinct",
+      "reason": "手指關節液的空穴與球拍打到不同點的柄上受力沒有共因。"
+    },
+    {
+      "a": "P30003",
+      "b": "P018",
+      "decision": "distinct",
+      "reason": "接球的延長作用時間和同拍不同撞擊位置造成的局部力抵消是不同比較。"
+    },
+    {
+      "a": "P30003",
+      "b": "P029",
+      "decision": "distinct",
+      "reason": "收手改變轉動慣量，與拍面振動節點與擊心兩種量測不同。"
+    },
+    {
+      "a": "P30003",
+      "b": "K18003",
+      "decision": "distinct",
+      "reason": "拉伸彈簧鬆手後的擾動傳遞不能辨識手中剛體平移與局部振動的不同撞點。"
+    },
+    {
+      "a": "P30003",
+      "b": "K18005",
+      "decision": "distinct",
+      "reason": "反轉玩具的自旋／搖晃能量交換不是球拍擊心位置的判定方式。"
+    },
+    {
+      "a": "P30004",
+      "b": "P26003",
+      "decision": "distinct",
+      "reason": "兩球透過彈床傳遞能量是共用支承與時間差，這裡是球和棒的單次斜撞。"
+    },
+    {
+      "a": "P30004",
+      "b": "P018",
+      "decision": "distinct",
+      "reason": "接球的平均力不給出出射球的轉動與切向接觸基準。"
+    },
+    {
+      "a": "P30004",
+      "b": "P30001",
+      "decision": "distinct",
+      "reason": "羽球離拍後的氣動力矩，不是棒球接觸時的切向形變模型。"
+    },
+    {
+      "a": "P30004",
+      "b": "P019",
+      "decision": "distinct",
+      "reason": "軟墊硬板在法向停球的總衝量，不足以解釋斜撞離棒的額外轉速。"
+    },
+    {
+      "a": "P30004",
+      "b": "P020",
+      "decision": "distinct",
+      "reason": "反彈後法向動量變化的符號不能單獨推算切向回復給出的額外自旋。"
+    }
+  ],
+  "not_added_review": [
+    {
+      "id": "P30-NA001",
+      "decision": "keep_not_added",
+      "reason": "翻正第一次過零與穩定本來就是同一條角度曲線的兩段。"
+    },
+    {
+      "id": "P30-NA002",
+      "decision": "keep_not_added",
+      "reason": "初始角速與平移速未獨立改變，不能指定單因。"
+    },
+    {
+      "id": "P30-NA003",
+      "decision": "keep_not_added",
+      "reason": "中間軸自由翻轉已有舊題，羽球需空氣力矩。"
+    },
+    {
+      "id": "P30-NA004",
+      "decision": "keep_not_added",
+      "reason": "負馬格努斯及其條件已有原題。"
+    },
+    {
+      "id": "P30-NA005",
+      "decision": "keep_not_added",
+      "reason": "沒有可分離凹坑的全條件測試。"
+    },
+    {
+      "id": "P30-NA006",
+      "decision": "keep_not_added",
+      "reason": "實測側向力並非每次相同的週期訊號。"
+    },
+    {
+      "id": "P30-NA007",
+      "decision": "keep_not_added",
+      "reason": "試驗尾流變動不支持從單縫預知一次個別球路。"
+    },
+    {
+      "id": "P30-NA008",
+      "decision": "keep_not_added",
+      "reason": "沒有把足球尾流結果推到棒球縫線的控制實驗。"
+    },
+    {
+      "id": "P30-NA009",
+      "decision": "keep_not_added",
+      "reason": "網球拍這個研究的前臂速度不是回球速度。"
+    },
+    {
+      "id": "P30-NA010",
+      "decision": "keep_not_added",
+      "reason": "同支拍若只換撞點，留在圖中比較兩種訊號。"
+    },
+    {
+      "id": "P30-NA011",
+      "decision": "keep_not_added",
+      "reason": "剛體滑動到滾動是比較模型，不能把全程滑動當已證實。"
+    },
+    {
+      "id": "P30-NA012",
+      "decision": "keep_not_added",
+      "reason": "不同球種是同一張比較圖，不能確定是哪種材質造成差異。"
+    },
+    {
+      "id": "P30-NA013",
+      "decision": "keep_not_added",
+      "reason": "兩球彈床已有核心，單次斜撞沒有共用床面。"
+    },
+    {
+      "id": "P30-NA014",
+      "decision": "keep_not_added",
+      "reason": "拍線位移缺另一項獨立證據；不從球內模型直接推到線床。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W30P-T01",
+      "seconds": 85,
+      "decision": "retain_paper_plan",
+      "reason": "首過正向與幅度變小有不同預測，85秒有兩個可見推進。"
+    },
+    {
+      "id": "W30P-T02",
+      "seconds": 85,
+      "decision": "retain_paper_plan",
+      "reason": "先看飛行，再換測力裝置。85秒的價值在於交代怎麼知道有側力。"
+    },
+    {
+      "id": "W30P-T03",
+      "seconds": 90,
+      "decision": "retain_paper_plan",
+      "reason": "兩組不同感測順序顯示，90秒足以拆開兩個被叫成甜區的位置。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P30001",
+        "b": "P21005",
+        "reason": "配重薄片測迎角平衡及不同質量位置是否滑翔；羽球題測被打反後超越正向與回擺衰減。"
+      },
+      {
+        "a": "P30001",
+        "b": "P23003",
+        "reason": "球拍拋轉的中間軸不穩定可以在沒有外力矩時出現，羽球的翻正需要氣動力矩。"
+      },
+      {
+        "a": "P30001",
+        "b": "P012",
+        "reason": "平放或側落的阻力量級不是偏斜氣動力矩與慣性、阻尼的競合。"
+      },
+      {
+        "a": "P30002",
+        "b": "P23005",
+        "reason": "倒旋球的負馬格努斯升力來自轉捩與分離；這裡近無旋球的非定常尾流給出側向力。"
+      },
+      {
+        "a": "P30002",
+        "b": "T4043",
+        "reason": "機翼留下的尾渦影響後方飛機，與尾流偏移對同一顆近無旋足球的作用對象不同。"
+      },
+      {
+        "a": "P30002",
+        "b": "Z7006",
+        "reason": "海豹鬍鬚用形狀抑制自身渦致振動，沒有固定足球同步測側力或球路偏折的條件。"
+      },
+      {
+        "a": "P30003",
+        "b": "P024",
+        "reason": "理想力偶的定義與不同擊點處的手上局部衝擊和腕部初速不同。"
+      },
+      {
+        "a": "P30003",
+        "b": "P019",
+        "reason": "碰撞前後動量與時間決定衝量，未區分手持拍的振動節點和擊心。"
+      },
+      {
+        "a": "P30003",
+        "b": "P23003",
+        "reason": "自由球拍的主軸翻轉與手握球拍受撞後兩處低訊號的位置不同。"
+      },
+      {
+        "a": "P30004",
+        "b": "P298",
+        "reason": "比較靜態剪切與壓縮模量不能判斷一次斜撞離棒轉速為何超過純滾動基準。"
+      },
+      {
+        "a": "P30004",
+        "b": "P020",
+        "reason": "反彈後法向動量變化的符號不能單獨推算切向回復給出的額外自旋。"
+      },
+      {
+        "a": "P30004",
+        "b": "P26003",
+        "reason": "兩球透過彈床傳遞能量是共用支承與時間差，這裡是球和棒的單次斜撞。"
+      },
+      {
+        "a": "P30004",
+        "b": "P30003",
+        "reason": "前一題比較握拍手上的震動／衝擊位置，這題用離棒轉速區分剛體與可形變接觸。"
+      },
+      {
+        "a": "P30002",
+        "b": "P30001",
+        "reason": "足球是質心的側移與尾渦，羽球重點是本體角度的回復與衰減。"
+      },
+      {
+        "a": "P30001",
+        "b": "P23005",
+        "reason": "旋轉球升力正負的轉捩與羽球翻轉後角度的衰減不同。"
+      },
+      {
+        "a": "P30001",
+        "b": "T4043",
+        "reason": "客機遠去後尾渦的留存時間，不會決定一顆羽球由超越到反擺的角度軌跡。"
+      },
+      {
+        "a": "P30001",
+        "b": "T4045",
+        "reason": "尾隨飛機的滾轉取決於翼展及控制，羽球在自身阻力作用下回到對準方向。"
+      },
+      {
+        "a": "P30002",
+        "b": "P017",
+        "reason": "鬆手後的初始切線方向，不說明飛行中持續而變化的側力。"
+      },
+      {
+        "a": "P30002",
+        "b": "P018",
+        "reason": "手延長接球時間降低平均力，不會讓已離腳的球在空中產生橫向力。"
+      },
+      {
+        "a": "P30002",
+        "b": "P30004",
+        "reason": "離棒轉速是在接觸時形成，飄球題問空中近無旋球的尾流。"
+      },
+      {
+        "a": "P30003",
+        "b": "LEG-S67",
+        "reason": "手指關節液的空穴與球拍打到不同點的柄上受力沒有共因。"
+      },
+      {
+        "a": "P30003",
+        "b": "P018",
+        "reason": "接球的延長作用時間和同拍不同撞擊位置造成的局部力抵消是不同比較。"
+      },
+      {
+        "a": "P30003",
+        "b": "P029",
+        "reason": "收手改變轉動慣量，與拍面振動節點與擊心兩種量測不同。"
+      },
+      {
+        "a": "P30003",
+        "b": "K18003",
+        "reason": "拉伸彈簧鬆手後的擾動傳遞不能辨識手中剛體平移與局部振動的不同撞點。"
+      },
+      {
+        "a": "P30003",
+        "b": "K18005",
+        "reason": "反轉玩具的自旋／搖晃能量交換不是球拍擊心位置的判定方式。"
+      },
+      {
+        "a": "P30004",
+        "b": "P018",
+        "reason": "接球的平均力不給出出射球的轉動與切向接觸基準。"
+      },
+      {
+        "a": "P30004",
+        "b": "P30001",
+        "reason": "羽球離拍後的氣動力矩，不是棒球接觸時的切向形變模型。"
+      },
+      {
+        "a": "P30004",
+        "b": "P019",
+        "reason": "軟墊硬板在法向停球的總衝量，不足以解釋斜撞離棒的額外轉速。"
+      }
+    ]
+  },
+  "final_draft_sha256": "0abc7a076614d57a713324f25ca14a6adb38d4c5f7ce7fac231e545c0b6526e1",
+  "remaining_blockers": [],
+  "limits": "只有素材與紙上題案。慢動作、受力示意與旁白試讀均待下一階段。"
+}

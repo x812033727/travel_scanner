@@ -1,0 +1,780 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "science_sources",
+  "production_ready": false,
+  "scope": "從冰內氣體、火山沉降、海泥孔隙水與脂質、冰底接地痕跡，追查過去氣候及事件。以兩種可比較的觀測分開年齡、混合、來源與保存歧義。",
+  "baseline": {
+    "head": "440d2c70285ace7623feb683787ce1e6ea59c348",
+    "selected": 3250,
+    "raw_records": 3631,
+    "not_added": 1633,
+    "themes": 387,
+    "pool_sha256": "f41471227f04b878bf54465c869cb69c0bdb5863a00deb8600092be1eb117d4c",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3250.json.gz",
+      "sha256": "caba6983b00dc7da38cc89fe5e14e4b866c9410b998f9e87a7a5f5ca5aa21427"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave40-earth.json",
+      "sha256": "ed0f7ed09c7f38f7cf8dfe809e356e184f8e5ce5828d30eda2c1da4185c48f54"
+    },
+    {
+      "file": "reviews/wave40-earth-themes.json",
+      "sha256": "dc3b915fd799e2fa4e36d6c5761492782b25932e316bb69b504ffe5552ad1a51"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "original_research": 9,
+    "not_added": 15,
+    "near_pairs": 20,
+    "themes": 5
+  },
+  "near_pairs": [
+    {
+      "a": "S40-001",
+      "b": "N213",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "舊題只到雪壓成冰，新核心用孔隙封閉比降雪晚解釋兩個年齡，對氣體事件定年後如何換算旁邊的冰。",
+      "a_snapshot": {
+        "id": "S40-001",
+        "question": "從同一截冰取出來的空氣，怎麼會比包住它的冰年輕？",
+        "answer_target": "雪落下後逐漸被埋，可通氣的孔隙還能和上方大氣交換，直到較深處才封成氣泡。以深處冰芯裡的大氣甲烷轉折對年代，先得到氣體的年齡；要替旁邊的冰定年，還得加回當地估算的冰氣年齡差。",
+        "scope": "限西南極冰分水嶺深部定年。參照時標和冰氣差都有誤差，不能把各地、各時期都當成固定晚幾年。"
+      },
+      "b_snapshot": {
+        "id": "N213",
+        "question": "鬆軟的積雪，怎麼會變成緻密的冰河冰？",
+        "answer_target": "積雪壓密、晶體增長與空氣孔隙封閉。",
+        "scope": "Science of Glaciers"
+      }
+    },
+    {
+      "a": "S40-001",
+      "b": "R31001",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "樹輪中的碳標記用來數到砍伐年；氣體和冰不同時封存，需要另估年齡差。",
+      "a_snapshot": {
+        "id": "S40-001",
+        "question": "從同一截冰取出來的空氣，怎麼會比包住它的冰年輕？",
+        "answer_target": "雪落下後逐漸被埋，可通氣的孔隙還能和上方大氣交換，直到較深處才封成氣泡。以深處冰芯裡的大氣甲烷轉折對年代，先得到氣體的年齡；要替旁邊的冰定年，還得加回當地估算的冰氣年齡差。",
+        "scope": "限西南極冰分水嶺深部定年。參照時標和冰氣差都有誤差，不能把各地、各時期都當成固定晚幾年。"
+      },
+      "b_snapshot": {
+        "id": "R31001",
+        "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+        "answer_target": "樹每年長木頭時會收進當年的大氣碳。三件帶有金屬工具痕、保留天然外緣的木料中，有一段碳十四變化能和已知的993年前後訊號對齊。從已定年的輪位數到外緣，三件木料的最後一年都指向1021年。",
+        "scope": "先依遺址層位與工具痕判斷關聯，再替砍木定年。樣本顯示當年有人加工木料，不能據此定出首航或佔居年數。"
+      }
+    },
+    {
+      "a": "S40-001",
+      "b": "N132",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "相對疊置沒有提供同一深度分屬冰相和氣相的不同時計。",
+      "a_snapshot": {
+        "id": "S40-001",
+        "question": "從同一截冰取出來的空氣，怎麼會比包住它的冰年輕？",
+        "answer_target": "雪落下後逐漸被埋，可通氣的孔隙還能和上方大氣交換，直到較深處才封成氣泡。以深處冰芯裡的大氣甲烷轉折對年代，先得到氣體的年齡；要替旁邊的冰定年，還得加回當地估算的冰氣年齡差。",
+        "scope": "限西南極冰分水嶺深部定年。參照時標和冰氣差都有誤差，不能把各地、各時期都當成固定晚幾年。"
+      },
+      "b_snapshot": {
+        "id": "N132",
+        "question": "還沒發明放射性定年時，人們怎麼排出地層的先後？",
+        "answer_target": "疊置、化石群序列與相對時間。",
+        "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages"
+      }
+    },
+    {
+      "a": "S40-002",
+      "b": "S40-001",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "平均封存年齡改時間座標，封泡年齡分布的寬度則改信號幅度；相同中心可配不同寬度。",
+      "a_snapshot": {
+        "id": "S40-002",
+        "question": "同一次大氣甲烷變化，為什麼在一根冰芯很尖，在另一根卻矮而平？",
+        "answer_target": "一截冰樣的許多孔隙不是同時封住，空氣又曾在雪層間擴散，因此裡面混有一段時間的空氣。比較南極點與西南極較高解析的甲烷記錄，持續較短的事件往往被攤得更平。移動時間軸只能調日期，不能把混在一起的峰重新拉高。",
+        "scope": "以SPC14與WD所測事件為例。參考芯也不是直接連續觀測，不能用一個固定倍數還原每座冰芯的尖峰。"
+      },
+      "b_snapshot": {
+        "id": "S40-001",
+        "question": "從同一截冰取出來的空氣，怎麼會比包住它的冰年輕？",
+        "answer_target": "雪落下後逐漸被埋，可通氣的孔隙還能和上方大氣交換，直到較深處才封成氣泡。以深處冰芯裡的大氣甲烷轉折對年代，先得到氣體的年齡；要替旁邊的冰定年，還得加回當地估算的冰氣年齡差。",
+        "scope": "限西南極冰分水嶺深部定年。參照時標和冰氣差都有誤差，不能把各地、各時期都當成固定晚幾年。"
+      }
+    },
+    {
+      "a": "S40-002",
+      "b": "H3072",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "分子快速交換平均頻譜是不同觀測；此題靠不同時代的氣體分別封入一截樣本，並有兩站甲烷事件幅度對照。",
+      "a_snapshot": {
+        "id": "S40-002",
+        "question": "同一次大氣甲烷變化，為什麼在一根冰芯很尖，在另一根卻矮而平？",
+        "answer_target": "一截冰樣的許多孔隙不是同時封住，空氣又曾在雪層間擴散，因此裡面混有一段時間的空氣。比較南極點與西南極較高解析的甲烷記錄，持續較短的事件往往被攤得更平。移動時間軸只能調日期，不能把混在一起的峰重新拉高。",
+        "scope": "以SPC14與WD所測事件為例。參考芯也不是直接連續觀測，不能用一個固定倍數還原每座冰芯的尖峰。"
+      },
+      "b_snapshot": {
+        "id": "H3072",
+        "question": "分子在兩種姿勢間快速切換，儀器為什麼可能只看到平均的一種？",
+        "answer_target": "構象交換相對訊號頻差夠快時可平均化；降速後可能解析出不同環境。",
+        "scope": "不可用固定每秒次數當所有NMR的通用界線；未等同分子只剩一種姿勢。"
+      }
+    },
+    {
+      "a": "S40-003",
+      "b": "S40-001",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "氮作為密實度模型的約束不等於重氮／氬的對照剝離重力與溫差貢獻，所求物理量與對照均不同。",
+      "a_snapshot": {
+        "id": "S40-003",
+        "question": "古空氣裡重氮同位素的比例升高，怎麼分辨是雪面回暖，還是重力造成的？",
+        "answer_target": "雪面突然變暖時，深處暫時仍冷；較重的氣體同位素偏向冷端，趕在溫度均勻前留下短暫異常。重力也能讓重同位素偏在底部，但若只受重力影響，氮和氬按質量差換算的訊號應相近。這次兩者不等，支持有溫差貢獻。",
+        "scope": "限格陵蘭GISP2新仙女木期結束時的異常。作者還發現部分重力成分，沒有採精確回暖幅度或另判甲烷因果。"
+      },
+      "b_snapshot": {
+        "id": "S40-001",
+        "question": "從同一截冰取出來的空氣，怎麼會比包住它的冰年輕？",
+        "answer_target": "雪落下後逐漸被埋，可通氣的孔隙還能和上方大氣交換，直到較深處才封成氣泡。以深處冰芯裡的大氣甲烷轉折對年代，先得到氣體的年齡；要替旁邊的冰定年，還得加回當地估算的冰氣年齡差。",
+        "scope": "限西南極冰分水嶺深部定年。參照時標和冰氣差都有誤差，不能把各地、各時期都當成固定晚幾年。"
+      }
+    },
+    {
+      "a": "S40-003",
+      "b": "S39-003",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "太陽照角配季節熱滯後限制環粒內部；新題看氮氬在同一氣樣按質量差歸一後是否一起變。",
+      "a_snapshot": {
+        "id": "S40-003",
+        "question": "古空氣裡重氮同位素的比例升高，怎麼分辨是雪面回暖，還是重力造成的？",
+        "answer_target": "雪面突然變暖時，深處暫時仍冷；較重的氣體同位素偏向冷端，趕在溫度均勻前留下短暫異常。重力也能讓重同位素偏在底部，但若只受重力影響，氮和氬按質量差換算的訊號應相近。這次兩者不等，支持有溫差貢獻。",
+        "scope": "限格陵蘭GISP2新仙女木期結束時的異常。作者還發現部分重力成分，沒有採精確回暖幅度或另判甲烷因果。"
+      },
+      "b_snapshot": {
+        "id": "S39-003",
+        "question": "陽光照向土星環的角度差不多，為什麼分點前後量到的溫度不同？",
+        "answer_target": "土星A環在分點後比太陽仰角絕對值相同的分點前更冷。季節冷卻可深入顆粒，當下溫度仍帶著先前受熱的影響。比較整段冷卻與回暖曲線，能限制內層蓄熱情況，補上短期溫度變化只探到表層的缺口。",
+        "scope": "限卡西尼紅外觀測及兩類粒子模型。均勻熱性質與緻密內部加鬆散外層都能給出可行擬合，不能畫成取樣證實的唯一剖面。"
+      }
+    },
+    {
+      "a": "S40-004",
+      "b": "N137",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "碎玻璃不溶/磨耗是火山灰的性質，不能替某次噴發定源。這裡比較一組化學指紋和事件年代。",
+      "a_snapshot": {
+        "id": "S40-004",
+        "question": "格陵蘭的冰裡找到幾粒看不見的火山玻璃，怎麼追到冰島那次噴發？",
+        "answer_target": "硫含量出現尖峰能提示噴發，卻不會報出火山名字。研究者取出同一時段的玻璃碎粒，逐粒比較幾種元素的組合，再核對已知噴發沉積與年代。多種元素範圍和時間證據支持1477年冰島Veiðivötn噴發，個別元素仍有偏差。",
+        "scope": "限TUNU2013冰芯的已分析碎粒和可比較參照樣本。不同噴發可出自同火山系，也不以一粒或一個元素單獨定案。"
+      },
+      "b_snapshot": {
+        "id": "N137",
+        "question": "火山灰叫做灰，為什麼卻能磨傷機器，而且不會溶在水裡？",
+        "answer_target": "碎岩與玻璃顆粒的材料性質。",
+        "scope": "Volcanic Ash & Gases"
+      }
+    },
+    {
+      "a": "S40-004",
+      "b": "R31001",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "時間框架共同，判定噴發需各碎片的多元素族群與已知參照，不是由標記輪數逐年數到邊緣。",
+      "a_snapshot": {
+        "id": "S40-004",
+        "question": "格陵蘭的冰裡找到幾粒看不見的火山玻璃，怎麼追到冰島那次噴發？",
+        "answer_target": "硫含量出現尖峰能提示噴發，卻不會報出火山名字。研究者取出同一時段的玻璃碎粒，逐粒比較幾種元素的組合，再核對已知噴發沉積與年代。多種元素範圍和時間證據支持1477年冰島Veiðivötn噴發，個別元素仍有偏差。",
+        "scope": "限TUNU2013冰芯的已分析碎粒和可比較參照樣本。不同噴發可出自同火山系，也不以一粒或一個元素單獨定案。"
+      },
+      "b_snapshot": {
+        "id": "R31001",
+        "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+        "answer_target": "樹每年長木頭時會收進當年的大氣碳。三件帶有金屬工具痕、保留天然外緣的木料中，有一段碳十四變化能和已知的993年前後訊號對齊。從已定年的輪位數到外緣，三件木料的最後一年都指向1021年。",
+        "scope": "先依遺址層位與工具痕判斷關聯，再替砍木定年。樣本顯示當年有人加工木料，不能據此定出首航或佔居年數。"
+      }
+    },
+    {
+      "a": "S40-005",
+      "b": "S40-004",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "火山玻璃元素組合加時間辨來源；硫同位素異常檢驗氣體是否受高空UV作用，多個來源亦可有相同高空記號。",
+      "a_snapshot": {
+        "id": "S40-005",
+        "question": "極地冰裡的一層硫酸鹽，怎麼留下火山氣體曾經飛得很高的線索？",
+        "answer_target": "火山氣體進入臭氧層附近或更高處，會遇到不同的短波紫外光。光化學反應可留下偏離一般質量規律的硫同位素組合。比較南極冰芯一層內不同位置的硫酸鹽，若有這種異常，可推知至少部分火山硫曾到高空。",
+        "scope": "限多巴年代前後的候選硫峰及該研究的量測誤差。多個峰都含高空信號，不能由此直接報出唯一火山或煙柱高度。"
+      },
+      "b_snapshot": {
+        "id": "S40-004",
+        "question": "格陵蘭的冰裡找到幾粒看不見的火山玻璃，怎麼追到冰島那次噴發？",
+        "answer_target": "硫含量出現尖峰能提示噴發，卻不會報出火山名字。研究者取出同一時段的玻璃碎粒，逐粒比較幾種元素的組合，再核對已知噴發沉積與年代。多種元素範圍和時間證據支持1477年冰島Veiðivötn噴發，個別元素仍有偏差。",
+        "scope": "限TUNU2013冰芯的已分析碎粒和可比較參照樣本。不同噴發可出自同火山系，也不以一粒或一個元素單獨定案。"
+      }
+    },
+    {
+      "a": "S40-005",
+      "b": "S40-003",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "粒雪溫差分餾按質量差比較氮氬；火山硫的高空光化學過程留下偏離質量規律的異常，推斷不同。",
+      "a_snapshot": {
+        "id": "S40-005",
+        "question": "極地冰裡的一層硫酸鹽，怎麼留下火山氣體曾經飛得很高的線索？",
+        "answer_target": "火山氣體進入臭氧層附近或更高處，會遇到不同的短波紫外光。光化學反應可留下偏離一般質量規律的硫同位素組合。比較南極冰芯一層內不同位置的硫酸鹽，若有這種異常，可推知至少部分火山硫曾到高空。",
+        "scope": "限多巴年代前後的候選硫峰及該研究的量測誤差。多個峰都含高空信號，不能由此直接報出唯一火山或煙柱高度。"
+      },
+      "b_snapshot": {
+        "id": "S40-003",
+        "question": "古空氣裡重氮同位素的比例升高，怎麼分辨是雪面回暖，還是重力造成的？",
+        "answer_target": "雪面突然變暖時，深處暫時仍冷；較重的氣體同位素偏向冷端，趕在溫度均勻前留下短暫異常。重力也能讓重同位素偏在底部，但若只受重力影響，氮和氬按質量差換算的訊號應相近。這次兩者不等，支持有溫差貢獻。",
+        "scope": "限格陵蘭GISP2新仙女木期結束時的異常。作者還發現部分重力成分，沒有採精確回暖幅度或另判甲烷因果。"
+      }
+    },
+    {
+      "a": "S40-006",
+      "b": "O3063",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "重力資料總體儲水拆分並非殼體同位素同時受水質與成殼溫度影響；後者需獨立孔隙水剖面。",
+      "a_snapshot": {
+        "id": "S40-006",
+        "question": "海底化石殼裡的重氧比例升高，怎麼知道當時的海水有沒有變冷？",
+        "answer_target": "有孔蟲殼中重氧的比例同時受成殼水溫與海水本來的氧同位素比例影響。研究者另在不同深度擠出泥中的孔隙水，量出其同位素剖面，用擴散模型回推冰期海水的變化，再從殼體總差值中扣除這部分，估算當地深水降溫。",
+        "scope": "以百慕達海隆的孔水與殼體資料為限。比較的是重氧比例，不是殼的重量。殼資料來自不同岩芯，模型的邊界條件與擴散會影響估值。"
+      },
+      "b_snapshot": {
+        "id": "O3063",
+        "question": "重力衛星說一個地方少了水，為什麼不能直接知道是哪口井缺水？",
+        "answer_target": "重力反映總質量變化，地下水需結合雪、地表水、土壤水及模型分離，也不是單井測量。",
+        "scope": "區域陸地總水儲量變化與地下水分量推估；需外部資料及模型，空間解析不支持單井結論。"
+      }
+    },
+    {
+      "a": "S40-006",
+      "b": "S40-002",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "岩芯孔水受擴散雖會平滑，在這題用它回推當地海水組成、解除殼溫度二義；氣體題對照兩種封泡展寬。",
+      "a_snapshot": {
+        "id": "S40-006",
+        "question": "海底化石殼裡的重氧比例升高，怎麼知道當時的海水有沒有變冷？",
+        "answer_target": "有孔蟲殼中重氧的比例同時受成殼水溫與海水本來的氧同位素比例影響。研究者另在不同深度擠出泥中的孔隙水，量出其同位素剖面，用擴散模型回推冰期海水的變化，再從殼體總差值中扣除這部分，估算當地深水降溫。",
+        "scope": "以百慕達海隆的孔水與殼體資料為限。比較的是重氧比例，不是殼的重量。殼資料來自不同岩芯，模型的邊界條件與擴散會影響估值。"
+      },
+      "b_snapshot": {
+        "id": "S40-002",
+        "question": "同一次大氣甲烷變化，為什麼在一根冰芯很尖，在另一根卻矮而平？",
+        "answer_target": "一截冰樣的許多孔隙不是同時封住，空氣又曾在雪層間擴散，因此裡面混有一段時間的空氣。比較南極點與西南極較高解析的甲烷記錄，持續較短的事件往往被攤得更平。移動時間軸只能調日期，不能把混在一起的峰重新拉高。",
+        "scope": "以SPC14與WD所測事件為例。參考芯也不是直接連續觀測，不能用一個固定倍數還原每座冰芯的尖峰。"
+      }
+    },
+    {
+      "a": "S40-007",
+      "b": "N222",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "海冰脫鹽不決定藻類代謝物在兩種極端海況都可接近零。",
+      "a_snapshot": {
+        "id": "S40-007",
+        "question": "海底泥裡找不到海冰藻的脂質，怎麼可能是沒海冰，也可能是冰太厚？",
+        "answer_target": "沒有海冰，冰藻缺生長場所；海冰太厚，底部光線太弱，冰藻留下的脂質也可能很少。研究再量開水浮游藻類的脂質，把「冰藻少但開水藻有產出」與「兩邊都很少」分開，並和南極大陸邊緣的衛星海冰資料比較。",
+        "scope": "此篇以現代表層沉積物檢驗代用指標。兩類分子都稀少時證據薄弱，不能直接用指數報冰蓋百分比。"
+      },
+      "b_snapshot": {
+        "id": "N222",
+        "question": "海冰年紀越大，為什麼可能越不鹹？",
+        "answer_target": "鹵水沿通道排出並被夏季融水沖洗。",
+        "scope": "Science of Sea Ice"
+      }
+    },
+    {
+      "a": "S40-007",
+      "b": "N223",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "冰上覆雪隔熱非厚海冰阻光降低藻類生產；且此題加入另一開水指標辨別無冰的情境。",
+      "a_snapshot": {
+        "id": "S40-007",
+        "question": "海底泥裡找不到海冰藻的脂質，怎麼可能是沒海冰，也可能是冰太厚？",
+        "answer_target": "沒有海冰，冰藻缺生長場所；海冰太厚，底部光線太弱，冰藻留下的脂質也可能很少。研究再量開水浮游藻類的脂質，把「冰藻少但開水藻有產出」與「兩邊都很少」分開，並和南極大陸邊緣的衛星海冰資料比較。",
+        "scope": "此篇以現代表層沉積物檢驗代用指標。兩類分子都稀少時證據薄弱，不能直接用指數報冰蓋百分比。"
+      },
+      "b_snapshot": {
+        "id": "N223",
+        "question": "海冰上蓋了一層雪，為什麼冬天反而可能長得比較慢？",
+        "answer_target": "雪的隔熱作用限制海冰向空氣散熱。",
+        "scope": "Science of Sea Ice"
+      }
+    },
+    {
+      "a": "S40-008",
+      "b": "N133",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "長壽命同位素衰變是既有方法；此題另用短壽命核種及現代參照，檢驗混入新氣體會把年齡朝哪邊帶。",
+      "a_snapshot": {
+        "id": "S40-008",
+        "question": "拿十多萬年前的冰量空氣年齡，怎麼查是不是有今天的空氣從裂縫混進來？",
+        "answer_target": "氪81緩慢衰變，可為封存很久的空氣估年；混入現代空氣時，古老樣本會看起來偏年輕。研究另測近代空氣帶有而古老空氣中應已幾乎衰盡的氪85，以現代對照估計混入量的上限。",
+        "scope": "限泰勒冰川樣本。氪85低於偵測值只提供上限，一份樣本另有氬39異常，不能保證每瓶氣體都毫無污染。"
+      },
+      "b_snapshot": {
+        "id": "N133",
+        "question": "石頭怎麼可能留下幾億年的時鐘？",
+        "answer_target": "母子元素與半衰期提供數值年代。",
+        "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages"
+      }
+    },
+    {
+      "a": "S40-008",
+      "b": "R29002",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "魚食物鏈繼承老碳使樣本偏老，氪樣本反是漏入當代空氣使年齡偏小，並以另一壽命的同元素示蹤。",
+      "a_snapshot": {
+        "id": "S40-008",
+        "question": "拿十多萬年前的冰量空氣年齡，怎麼查是不是有今天的空氣從裂縫混進來？",
+        "answer_target": "氪81緩慢衰變，可為封存很久的空氣估年；混入現代空氣時，古老樣本會看起來偏年輕。研究另測近代空氣帶有而古老空氣中應已幾乎衰盡的氪85，以現代對照估計混入量的上限。",
+        "scope": "限泰勒冰川樣本。氪85低於偵測值只提供上限，一份樣本另有氬39異常，不能保證每瓶氣體都毫無污染。"
+      },
+      "b_snapshot": {
+        "id": "R29002",
+        "question": "今天才煮的魚，怎麼可能讓鍋巴測起來老了幾百年？",
+        "answer_target": "部分河川有來自古碳酸鹽等來源的老碳。這些碳進入水生食物網，使活魚的碳十四含量已低於同時的大氣參照。做成食物後，焦垢可以繼承食材的偏差，把日期推得比烹煮事件更早。",
+        "scope": "限淡水碳庫與所測河流。差額隨水域、生物及配方而異，不能算出所有鍋垢通用的校正年數；地層相近也不保證同時。"
+      }
+    },
+    {
+      "a": "S40-009",
+      "b": "E7005",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "穩定末端持續堆石形成終磧；本題則是海水浮力使接地線隨潮往返，重訪並覆寫舊痕，改變時間換算。",
+      "a_snapshot": {
+        "id": "S40-009",
+        "question": "海底一排排矮脊，看似潮汐刻的日曆，真的每次低潮都能留下來嗎？",
+        "answer_target": "接地線是冰底從碰著海床轉為漂浮的位置，漲落潮會使它往返。拉森灣模型裡，一天兩次低潮高度不等，冰底有時能再往海側壓過前一道脊。於是多段時間只保存一道，若按每道脊必等於半天去算，就會高估這段冰的退縮速率。",
+        "scope": "限Larsen Inlet指定潮差、坡度、沉積機制與模擬退縮率。聲納量到的是地形剖面，覆寫是模型解釋，不能把每岸每一天都設成相同保留率。"
+      },
+      "b_snapshot": {
+        "id": "E7005",
+        "question": "冰河末端停在原地，前面的小石堆為什麼還會越堆越高？",
+        "answer_target": "末端位置穩定不代表冰停止輸送；碎屑隨冰到達融失端，持續在近同一帶堆積成脊。",
+        "scope": "限末端近穩定且有碎屑供給的端冰磧情境；不以脊大小唯一反算停留年數或氣候。"
+      }
+    },
+    {
+      "a": "S40-009",
+      "b": "N215",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "冰退與冰流方向已有；本題推估的是每道海床脊代表多少時間，需判別觸床後能否保留。",
+      "a_snapshot": {
+        "id": "S40-009",
+        "question": "海底一排排矮脊，看似潮汐刻的日曆，真的每次低潮都能留下來嗎？",
+        "answer_target": "接地線是冰底從碰著海床轉為漂浮的位置，漲落潮會使它往返。拉森灣模型裡，一天兩次低潮高度不等，冰底有時能再往海側壓過前一道脊。於是多段時間只保存一道，若按每道脊必等於半天去算，就會高估這段冰的退縮速率。",
+        "scope": "限Larsen Inlet指定潮差、坡度、沉積機制與模擬退縮率。聲納量到的是地形剖面，覆寫是模型解釋，不能把每岸每一天都設成相同保留率。"
+      },
+      "b_snapshot": {
+        "id": "N215",
+        "question": "冰河正在後退，代表整條冰河往山上流嗎？",
+        "answer_target": "末端融失大於補入時，位置後退但冰仍向下流。",
+        "scope": "Science of Glaciers"
+      }
+    },
+    {
+      "a": "S40-009",
+      "b": "R34004",
+      "decision": "distinct",
+      "proposed": "distinct",
+      "reason": "足跡疊印提供先後順序，本題把同日潮差及淨後退量帶入，檢驗稜距對退速的倍數歧義。",
+      "a_snapshot": {
+        "id": "S40-009",
+        "question": "海底一排排矮脊，看似潮汐刻的日曆，真的每次低潮都能留下來嗎？",
+        "answer_target": "接地線是冰底從碰著海床轉為漂浮的位置，漲落潮會使它往返。拉森灣模型裡，一天兩次低潮高度不等，冰底有時能再往海側壓過前一道脊。於是多段時間只保存一道，若按每道脊必等於半天去算，就會高估這段冰的退縮速率。",
+        "scope": "限Larsen Inlet指定潮差、坡度、沉積機制與模擬退縮率。聲納量到的是地形剖面，覆寫是模型解釋，不能把每岸每一天都設成相同保留率。"
+      },
+      "b_snapshot": {
+        "id": "R34004",
+        "question": "人腳印一個個踩進巨型地懶的腳印，能追到故事的哪一步？",
+        "answer_target": "一串人印與地懶印長軸對齊，人的步距得配合較大的間隔；疊印的變形順序也支持人後踩。另一些痕組有轉向或環狀抓痕，支持可能曾有互動，但無法指證獵殺成功。",
+        "scope": "白沙這批疊印與鄰近痕組，仍可能曾沿既有足跡行走。"
+      }
+    }
+  ],
+  "dedup_reading": {
+    "method": "對現有3631 raw及1633未收搜尋冰芯、火山、同位素、雪與冰、海冰、沉積、定年、擴散與地形。讀候選鄰近原題的目標與scope；普通半衰期、積雪壓實、疊置不另算。",
+    "scan_files": [
+      {
+        "file": ".cache/wave40-earth-scan.json",
+        "sha256": "af15b967ce19dd1b4312608dee1f125bcb65e1a9306ccfcd08d75e84a23b836b"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "source_identity": [
+    {
+      "source_id": "S40-S001",
+      "doi": "10.5194/cp-11-153-2015",
+      "primary_body_url": "https://cp.copernicus.org/articles/11/153/2015/cp-11-153-2015.pdf",
+      "identity_relation": "期刊網站正式PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    },
+    {
+      "source_id": "S40-S002",
+      "doi": "10.5194/cp-16-2431-2020",
+      "primary_body_url": "https://cp.copernicus.org/articles/16/2431/2020/cp-16-2431-2020.pdf",
+      "identity_relation": "期刊網站正式PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    },
+    {
+      "source_id": "S40-S003",
+      "doi": "10.1038/34346",
+      "primary_body_url": "https://web.gps.caltech.edu/classes/ge140a/Stable_Isotope_W19/Readings_files/Severinghaus1998Nature.pdf",
+      "identity_relation": "Caltech課程典藏1998 Nature原刊掃描文字，版權與研究身份同DOI；只保留web定點文字。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    },
+    {
+      "source_id": "S40-S004",
+      "doi": "10.5194/cp-17-565-2021",
+      "primary_body_url": "https://cp.copernicus.org/articles/17/565/2021/cp-17-565-2021.pdf",
+      "identity_relation": "期刊網站正式PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    },
+    {
+      "source_id": "S40-S005",
+      "doi": "10.5194/cp-17-2119-2021",
+      "primary_body_url": "https://cp.copernicus.org/articles/17/2119/2021/cp-17-2119-2021.pdf",
+      "identity_relation": "期刊網站正式PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    },
+    {
+      "source_id": "S40-S006",
+      "doi": "10.1029/2000GL011597",
+      "primary_body_url": "https://web.gps.caltech.edu/~jess/GRL_Adkins_Final.pdf",
+      "identity_relation": "作者Caltech網站稿件標2000年3月，期刊刊於2001年；以作者稿定位，未逐字比對正式版。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    },
+    {
+      "source_id": "S40-S007",
+      "doi": "10.5194/cp-17-2305-2021",
+      "primary_body_url": "https://cp.copernicus.org/articles/17/2305/2021/cp-17-2305-2021.pdf",
+      "identity_relation": "期刊網站正式PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    },
+    {
+      "source_id": "S40-S008",
+      "doi": "10.1073/pnas.1320329111",
+      "primary_body_url": "https://arxiv.org/pdf/1403.6201",
+      "identity_relation": "2014年arXiv:1403.6201作者稿，與PNAS正式研究同工作。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    },
+    {
+      "source_id": "S40-S009",
+      "doi": "10.5194/tc-17-2645-2023",
+      "primary_body_url": "https://tc.copernicus.org/articles/17/2645/2023/tc-17-2645-2023.pdf",
+      "identity_relation": "期刊網站正式PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同研究典藏、課程副本或作者稿與正式版合看；半球／站點／資料集共用不另計獨立重現。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "S40-S001",
+      "locator": "PDF pp.2–3 §2與雪層氣齡差模型；p.9 §4.2步驟、p.10圖6與p.14定年表。",
+      "scope": "PDF pp.2–3 §2與雪層氣齡差模型；p.9 §4.2步驟、p.10圖6與p.14定年表。",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "cache": {
+        "file": ".cache/wave40-earth-age.pdf",
+        "sha256": "b7994d6bf28fbf3a360ebdc43180c8efbcfbb23e461e3c6dc98fd62a1257f21e",
+        "text_file": ".cache/wave40-earth-age.txt",
+        "text_sha256": "f61ea13047bcc79efb112c257edde5b5ac85e092c4151f12b635e94b36e1b8e8"
+      }
+    },
+    {
+      "source_id": "S40-S002",
+      "locator": "PDF pp.7–9 §3.2、表2及圖5；p.10圖6說明的氣齡分布比較。",
+      "scope": "PDF pp.7–9 §3.2、表2及圖5；p.10圖6說明的氣齡分布比較。",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "cache": {
+        "file": ".cache/wave40-earth-smooth.pdf",
+        "sha256": "90484424b37d6378b58791fe42b7df3b8bddfebab73655b48579ccc805ec5686",
+        "text_file": ".cache/wave40-earth-smooth.txt",
+        "text_sha256": "2e0d3f4d80f37929234918a09dbc12ff3db7563982d97deaa2e7fe8a7a1c1a11"
+      }
+    },
+    {
+      "source_id": "S40-S003",
+      "locator": "原刊PDF Web L117–165、L194–209溫差分餾；L306–334對照同深度氮與氬、區別重力成分。",
+      "scope": "原刊PDF Web L117–165、L194–209溫差分餾；L306–334對照同深度氮與氬、區別重力成分。",
+      "read_via": "指定UA直抓Caltech網址未通過TLS憑證驗證，改用web工具在同PDF定位查讀、保存工具回傳原文節選。",
+      "cache": {
+        "file": ".cache/wave40-earth-nitrogen-web.txt",
+        "sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b",
+        "text_file": ".cache/wave40-earth-nitrogen-web.txt",
+        "text_sha256": "bb2b16394ebdf0fe1c35f4abce04b99e53f817b6e49b47720852c0b7069f995b"
+      }
+    },
+    {
+      "source_id": "S40-S004",
+      "locator": "PDF pp.6–8玻璃粒微探針與QUB-1965結果，p.9圖4，p.14 §5.4解釋鎂等偏差。",
+      "scope": "PDF pp.6–8玻璃粒微探針與QUB-1965結果，p.9圖4，p.14 §5.4解釋鎂等偏差。",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "cache": {
+        "file": ".cache/wave40-earth-glass.pdf",
+        "sha256": "46077bbefdfa4a2559e51d82e1790efff8221846b53e4e0eb142a4a9efd8333e",
+        "text_file": ".cache/wave40-earth-glass.txt",
+        "text_sha256": "28af7e15479aa364ea2e0040ccce251840758b2984816329f013bbd29c80ba43"
+      }
+    },
+    {
+      "source_id": "S40-S005",
+      "locator": "PDF p.2分餾與紫外光機制；p.6圖3，pp.7–8 §4.1–4.2比較南極兩芯候選硫峰。",
+      "scope": "PDF p.2分餾與紫外光機制；p.6圖3，pp.7–8 §4.1–4.2比較南極兩芯候選硫峰。",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "cache": {
+        "file": ".cache/wave40-earth-sulfur.pdf",
+        "sha256": "5274299b55c39a88b191abbc3f6d2c5e39f0506c728fd5a019c93949186770b9",
+        "text_file": ".cache/wave40-earth-sulfur.txt",
+        "text_sha256": "60eb8793b30a05038ac07571f6662661abe5b054655f6281b87dded50a571df6"
+      }
+    },
+    {
+      "source_id": "S40-S006",
+      "locator": "作者網頁PDF的Web原文L27–44殼體二義、L112–159方法、L167–194剖面、L220–242擴散模型及L335–355扣除海水成分。",
+      "scope": "作者網頁PDF的Web原文L27–44殼體二義、L112–159方法、L167–194剖面、L220–242擴散模型及L335–355扣除海水成分。",
+      "read_via": "指定UA直抓Caltech網址未通過TLS憑證驗證，改用web工具在同PDF定位查讀、保存工具回傳原文節選。",
+      "cache": {
+        "file": ".cache/wave40-earth-pores-web.txt",
+        "sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f",
+        "text_file": ".cache/wave40-earth-pores-web.txt",
+        "text_sha256": "ff67706ec10fc699f0f0566562c391edb55cfb5f2c012ba01ac3e4de0cb7d70f"
+      }
+    },
+    {
+      "source_id": "S40-S007",
+      "locator": "PDF pp.8–9 §4.2、§4.3：海冰脂質IPSO25缺席的兩義，與開水藻類並比，Dronning Maud Land低訊號和衛星對照。",
+      "scope": "PDF pp.8–9 §4.2、§4.3：海冰脂質IPSO25缺席的兩義，與開水藻類並比，Dronning Maud Land低訊號和衛星對照。",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "cache": {
+        "file": ".cache/wave40-earth-algae.pdf",
+        "sha256": "cc2e7c006306f92ef503c2073619378a22bc19d9a0be229404366764411f2ccf",
+        "text_file": ".cache/wave40-earth-algae.txt",
+        "text_sha256": "20ff60f77396538ceb71a30129089b1ae43d513f284d0c71a14619cf4c916cd9"
+      }
+    },
+    {
+      "source_id": "S40-S008",
+      "locator": "作者稿PDF pp.4、6–8：近表採樣的問題、Kr樣品、85Kr偵測上限與Kr-1的39Ar異常。",
+      "scope": "作者稿PDF pp.4、6–8：近表採樣的問題、Kr樣品、85Kr偵測上限與Kr-1的39Ar異常。",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "cache": {
+        "file": ".cache/wave40-earth-kr.pdf",
+        "sha256": "e761edbe0a4327093546cc5f7373ac4acdabe5d8fd8038fe7ee62f6b60351156",
+        "text_file": ".cache/wave40-earth-kr.txt",
+        "text_sha256": "cbd307814cb69aa158249141c09753d981f7e7374b546329b2c3fcb28e5f9756"
+      }
+    },
+    {
+      "source_id": "S40-S009",
+      "locator": "PDF pp.2–3接地線往返/覆寫條件，p.14 §3.3 Larsen Inlet雙潮模擬、p.15圖4a–c模型與實測海床剖面。",
+      "scope": "PDF pp.2–3接地線往返/覆寫條件，p.14 §3.3 Larsen Inlet雙潮模擬、p.15圖4a–c模型與實測海床剖面。",
+      "read_via": "以指定編輯UA取得PDF，以PyMuPDF逐頁抽字查讀下列正文。",
+      "cache": {
+        "file": ".cache/wave40-earth-ridge.pdf",
+        "sha256": "a733cff2bb92a8d6bd487538135edc988273a06a9be9db8cc69b129e534f0f55",
+        "text_file": ".cache/wave40-earth-ridge.txt",
+        "text_sha256": "ab9ac17343ec340a8fdc27f118b10eb45310e31dc50f842492cd74aadbbf0539"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave40-earth-fetch.json",
+      "sha256": "94b1cc60be1a38d4a087b7d1b4eeb64b0a1291ecd07650c6c193641be19dbca5"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://web.gps.caltech.edu/classes/ge140a/Stable_Isotope_W19/Readings_files/Severinghaus1998Nature.pdf",
+      "result": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
+      "handled": "改以同一原文web工具定位閱讀。"
+    },
+    {
+      "url": "https://web.gps.caltech.edu/~jess/GRL_Adkins_Final.pdf",
+      "result": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
+      "handled": "改以同一原文web工具定位閱讀。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave40-earth-figures.jpg",
+      "sha256": "ec55d7baefaee805895c8693c8ab300a9cfc86f6c7c5714c1c2b0303937a6a73",
+      "read_scope": "自行渲染後目讀4頁：S002表2/圖5、S004圖4、S005圖3、S009圖4。其餘讀定位文字；外部圖片不交付作片。"
+    }
+  ],
+  "reading_limits": [
+    "9篇皆讀到指定正文；6份Copernicus原刊PDF加一份氪定年arXiv作者PDF在本機下載，另兩份Caltech TLS失敗後使用web原文節選。沒有重算模型、重作實驗或影像授權。",
+    "硫同位素能指向高空暴露，未識別每個峰的源頭。孔水模型不等同密封的原始海水；海冰脂質缺席不作無冰的唯一判定。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W40S-T01",
+      "body_seconds": 71,
+      "chapter_seconds": [
+        35,
+        36
+      ],
+      "core_seconds": {
+        "S40-001": 35,
+        "S40-002": 36
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W40S-T02",
+      "body_seconds": 69,
+      "chapter_seconds": [
+        35,
+        34
+      ],
+      "core_seconds": {
+        "S40-004": 35,
+        "S40-005": 34
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W40S-T03",
+      "body_seconds": 59,
+      "chapter_seconds": [
+        28,
+        31
+      ],
+      "core_seconds": {
+        "S40-006": 59
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W40S-T04",
+      "body_seconds": 59,
+      "chapter_seconds": [
+        28,
+        31
+      ],
+      "core_seconds": {
+        "S40-007": 59
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W40S-T05",
+      "body_seconds": 59,
+      "chapter_seconds": [
+        29,
+        30
+      ],
+      "core_seconds": {
+        "S40-009": 59
+      },
+      "max_beat_seconds": 18,
+      "status": "OFFLINE_VOICE_TIMING_INFORMED_PAPER_BUDGET"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "all_strings_rstrip": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "S40-003與S40-008暫留素材，未強塞入五案。",
+    "交由非作者核對近對、來源、範圍與實際可講時長。"
+  ],
+  "revision_history": [
+    {
+      "id": "EARTH40-01",
+      "before_files": [
+        {
+          "file": "batches/wave40-earth.json",
+          "sha256": "c3d94cb3bbdfe9f22222ce98ef5463dc41661e13cdc6766b16e139f945d20476"
+        },
+        {
+          "file": "reviews/wave40-earth-themes.json",
+          "sha256": "59e7f09bec18a034da4a7a9989166ad5751befb41266420238d213fc20a362ca"
+        },
+        {
+          "file": "reviews/wave40-earth-author.json",
+          "sha256": "4493ec650fe60111065c0dbb3964df3fadef3b581196c922b439fa19286c58a3"
+        }
+      ],
+      "findings": [
+        "非作者要求S40-003標題明寫重氮同位素比例，避免與氮氣含量混淆。",
+        "作者同時收窄S40-006題名，指明化石殼中重氧比例。",
+        "非作者要求T04確切指出缺的是冰藻脂質，衛星量季節性覆冰，厚冰遮光是對照機制。"
+      ],
+      "resolution": "更新兩個題名及近對快照，T04片名、最後一拍與章摘要同步。9題及五案時長均未擴增。",
+      "after_batch_sha256": "ed0f7ed09c7f38f7cf8dfe809e356e184f8e5ce5828d30eda2c1da4185c48f54",
+      "after_themes_sha256": "14f827077c8eab91647e22238dde7f73161ffddb920031830ed36a061f2625f5"
+    },
+    {
+      "id": "EARTH40-TIMING01",
+      "before_files": [
+        {
+          "file": "batches/wave40-earth.json",
+          "sha256": "ed0f7ed09c7f38f7cf8dfe809e356e184f8e5ce5828d30eda2c1da4185c48f54"
+        },
+        {
+          "file": "reviews/wave40-earth-themes.json",
+          "sha256": "14f827077c8eab91647e22238dde7f73161ffddb920031830ed36a061f2625f5"
+        },
+        {
+          "file": "reviews/wave40-earth-author.json",
+          "sha256": "0794fa423db5131cf81c57d5b5aeceea58bdafc00bd6c582e1ae01cac703718a"
+        }
+      ],
+      "changes": [
+        "T05的62秒依root離線連讀51.376秒收至59秒，末拍減3秒。實測剖面與模型覆寫維持分框。"
+      ],
+      "after_themes_sha256": "dc3b915fd799e2fa4e36d6c5761492782b25932e316bb69b504ffe5552ad1a51"
+    }
+  ],
+  "timing_probe": {
+    "theme_id": "W40S-T05",
+    "read_via": "root離線全文連讀時長；作者核對新章時，未自行錄製成片。",
+    "voice_seconds": 51.376,
+    "body_seconds": 59,
+    "visual_seconds": 7.624,
+    "visual_action": "看第二次接地線往海側覆過前脊，再比較海床上的剩餘間距。"
+  }
+}

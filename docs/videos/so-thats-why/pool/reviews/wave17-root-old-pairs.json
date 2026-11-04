@@ -1,0 +1,132 @@
+{
+  "status": "ROOT_PROPOSALS_PENDING_SECOND_READER",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-02",
+  "selection": "Six highest-scoring selected core pairs not already in explicit distinct decisions, from frozen wave16 top10 neighbours. Non-random retrieval sample; no uniqueness/recall claim.",
+  "reviewed_files": [
+    {
+      "file": "baselines/2026-11-02-2959.json.gz",
+      "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f"
+    }
+  ],
+  "retrieval_evidence": {
+    "file": ".cache/wave17-old-pair-discovery.json",
+    "sha256": "5b8f650bcac6bb30bb281cd2b499348ae4bfd429f49a8ebf21d86d7edc32e237",
+    "distribution": "ignored scratch"
+  },
+  "pairs": [
+    {
+      "a": "D9014",
+      "b": "D9016",
+      "cosine": 0.867661,
+      "proposed_decision": "distinct",
+      "reason": "D9014比較探頭間距造成的梯度近似與固定相位失配誤差；D9016比較同一壓差型麥克風在近場的前後幅度差。前者是測量偏差取捨，後者是聲場與感測方式產生的真實低頻響應，不是同核換問法。"
+    },
+    {
+      "a": "E2083",
+      "b": "E2169",
+      "cosine": 0.867586,
+      "proposed_decision": "distinct",
+      "reason": "E2083保持各支路電壓，增加並聯導通路徑使總電流增加；E2169保持傳輸功率，提高電壓使線路電流降低。固定條件、改變的量與待解釋結果不同。"
+    },
+    {
+      "a": "E2002",
+      "b": "H3036",
+      "cosine": 0.867062,
+      "proposed_decision": "distinct",
+      "reason": "E2002由外部電場重新分配孤立中性導體內的電子；H3036在相同電極材料、不同化學活度的兩個半電池形成電位差。靜電重新分布與電化學自由能差並非同機制。"
+    },
+    {
+      "a": "E2161",
+      "b": "E2255",
+      "cosine": 0.867041,
+      "proposed_decision": "distinct",
+      "reason": "E2161是理想電容在交流下以dq/dt描述充放電電流；E2255是開關控制端的快速電壓變化經寄生電容注入訊號端，步階取決於注入電荷與負載電容。後者多出分離的控制路徑、寄生耦合與負載條件。"
+    },
+    {
+      "a": "P129",
+      "b": "P131",
+      "cosine": 0.866498,
+      "proposed_decision": "merge",
+      "reason": "P131現有答案只說同一管內可容納多個駐波模態，沒有另立模態激發、非線性吹奏或量測頻譜的因果問題；P129的開閉邊界如何篩選允許波長已涵蓋這個結果。建議P131合併至P129保留問法與來源，影片可用高階模態作比較段，不再另算一個核心。",
+      "duplicate_id": "P131",
+      "canonical_id": "P129"
+    },
+    {
+      "a": "L138",
+      "b": "L143",
+      "cosine": 0.866461,
+      "proposed_decision": "distinct",
+      "reason": "L138用胸腔容積改變與壓力梯度解釋空氣進肺；L143定義最大呼氣後仍留的殘氣量。後者目前較薄，宜作肺容量比較短段，但不能據共同肺部主題合併為壓力驅動吸氣的同一答案。"
+    }
+  ],
+  "source_readings": [
+    {
+      "url": "https://www.bksv.com/doc/br0476.pdf",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "PDF pages30–33, printed30–33; finite-difference high-frequency error, low-frequency phase mismatch, spacer tradeoff. No current product limits adopted.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://community.sw.siemens.com/articles/en_US/Knowledge/Sound-Intensity",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Sections2–3; phase-matched pressure-pressure probe, pressure-gradient inference, spacing/frequency tradeoff. Figures read as captions/text only.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.dpamicrophones.com/mic-university/background-knowledge/proximity-effect-in-microphones-explained/",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Why proximity?, On-axis vs. off-axis and When; near-field front/rear amplitude difference in gradient microphones. No audio listened to.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Parallel branches: shared voltage and sum of individual currents.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Opening power-transmission discussion: fixed power IV, higher voltage/lower current reduces I-squared-R loss. Numerical grid examples not adopted.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-2-conductors-insulators-and-charging-by-induction",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Charging by Induction: electron redistribution in an isolated conductor that remains neutral.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/chemistry-2e/pages/17-4-potential-free-energy-and-equilibrium",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Concentration cells: same electrodes/half-cells, different concentrations and Nernst potential; no numerical example adopted.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Capacitor section Q=CV and i=dq/dt, current enters/leaves plates; no charge conduction through ideal insulator.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-088.pdf",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "PDF pages8–9, printed9–10: charge-injection text and control-to-signal parasitic coupling; distinguish later channel-settling discussion. Extracted text only, no full-document or figure inspection claimed.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/college-physics-2e/pages/17-5-sound-interference-and-resonance-standing-waves-in-air-columns",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Closed/open boundary conditions, allowed higher modes and harmonic series. Used boundary/mode argument, not potentially confusing overtone labels or application examples.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-3-the-process-of-breathing",
+      "read_via": "2026-11-02 web.open returned primary educational or official technical text; specified portions actually read",
+      "reading_scope": "Pulmonary ventilation pressure-gradient discussion and respiratory-volume definitions including residual volume. No fixed physiological values or clinical guidance adopted.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "limits": "All six complete stored question/answer/scope pairs compared, and eleven specified source portions freshly read. Root is not the original author. One proposed consolidation needs a second reader; no old pool mutation yet. Not complete historical source refresh, script approval or uniqueness proof."
+}

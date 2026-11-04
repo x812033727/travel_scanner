@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-03T00:53:55.092Z",
+  "result": "PASS",
+  "selected": 3458,
+  "index_html_sha256": "2b9f895e576b1687fbd319ce5ae341c1baff25b3ba5ba5f26426701b5e83e844",
+  "source_sample": {
+    "id": "S45-001",
+    "urls": [
+      "https://doi.org/10.1016/j.earscirev.2017.12.014"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow; mobile search field >=350px and keyword + ID search + source expansion pass",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave45-desktop.png",
+    "wave45-source-desktop.png",
+    "wave45-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "已逐張開啟桌面總覽、S45-001展開卡與390像素手機截圖。3458計數、497片案及題卡文字可讀，手機搜尋欄獨占一列且無水平溢出。來源網址由瀏覽器逐href斷言核實；卡片下方不全在截圖視窗內。"
+}

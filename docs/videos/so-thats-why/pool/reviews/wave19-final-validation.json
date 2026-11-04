@@ -1,0 +1,311 @@
+{
+  "tested_on": "2026-11-02T02:05:27.117Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3356,
+    "canonical_questions": 3217,
+    "eligible_candidates": 3047,
+    "selected_candidates": 2988,
+    "alias_records": 139,
+    "historical_records": 313,
+    "source_urls": 4312,
+    "current_research_source_urls": 1353,
+    "selected_source_urls": 2537,
+    "new_suggestions_not_added": 928,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 208,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-2982",
+    "carried": 2982,
+    "added": 6,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "236e5c73a02ae77699a6a334766674a3e4ad20dea27ec15e709aecbc2ae4a17e",
+    "writes": 6573,
+    "selected": 2988
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "236e5c73a02ae77699a6a334766674a3e4ad20dea27ec15e709aecbc2ae4a17e",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4408,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 4504.080300000001,
+    "index_ms": 2314.1919000000016,
+    "unchanged_index_ms": 225.5053999999982,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 12,
+        "milliseconds": 11.927599999999074
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 3.2070999999996275
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 3.5221999999994296
+      }
+    ],
+    "rss_bytes": 404881408,
+    "sqlite_bytes": 48181248
+  },
+  "dedup_audit": {
+    "selection": "Every final wave19 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "aaa936e8bc5d09f1ec0ba3ada65cb7c84b8c524ae13e0b58787881385c8a9cf0",
+    "records": 3356,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 3.992
+  },
+  "hashes": {
+    "pool.json": "aaa936e8bc5d09f1ec0ba3ada65cb7c84b8c524ae13e0b58787881385c8a9cf0",
+    "themes.json": "c5909d4d9c1c3c3f2505e43f3673cb570b497343afb66c3c51bb4d5ca7b8f5e3",
+    "manifest.json": "3b884c710b8057b69cdb7bfe3fa77dc1399ba42bf4372f7521017f3b4fdcda32",
+    "index.html": "5927f9ec169ebeabea1f1e7b8a4e96d5ef1b7fa8d0fb0fd6d7e4f5a78d92b5fa",
+    "batches/wave19-life-mechanisms.json": "964689f9693b30a05741d9b9e91e88e7924f09452d76a90ca88f4aa01b5b6b5a"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3350,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 2982,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 204,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4304,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4632618/",
+        "source_id": "SRC-4e1c31c9bd2255c1",
+        "candidate_ids": [
+          "A19001"
+        ],
+        "theme_ids": [
+          "G205"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3670378/",
+        "source_id": "SRC-a382112b03524bb0",
+        "candidate_ids": [
+          "A19002"
+        ],
+        "theme_ids": [
+          "G205"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7480147/",
+        "source_id": "SRC-0b649c3ccc81340c",
+        "candidate_ids": [
+          "A19003"
+        ],
+        "theme_ids": [
+          "G206"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10372696/",
+        "source_id": "SRC-97e12c107df8c273",
+        "candidate_ids": [
+          "A19003",
+          "A19004"
+        ],
+        "theme_ids": [
+          "G206"
+        ]
+      },
+      {
+        "url": "https://web.stanford.edu/group/prakash-lab/docs/Prakash_Science_2008.pdf",
+        "source_id": "SRC-a339f3ef273b6542",
+        "candidate_ids": [
+          "A19005"
+        ],
+        "theme_ids": [
+          "G207"
+        ]
+      },
+      {
+        "url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/27_2010_Reis_Science_CatsLapWaterUptake.pdf",
+        "source_id": "SRC-c7e2c5025cdbb594",
+        "candidate_ids": [
+          "A19006"
+        ],
+        "theme_ids": [
+          "G208"
+        ]
+      },
+      {
+        "url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/29_2011_Nauenberg_Science_OriginalCommentCatsLapWaterUptake.pdf",
+        "source_id": "SRC-f6aa0fb26f30dfe4",
+        "candidate_ids": [
+          "A19006"
+        ],
+        "theme_ids": [
+          "G208"
+        ]
+      },
+      {
+        "url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/29_2011_Stocker_Science_ResponseCommentCatsLapWaterUptake.pdf",
+        "source_id": "SRC-93702f0ecdd8adb7",
+        "candidate_ids": [
+          "A19006"
+        ],
+        "theme_ids": [
+          "G208"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4632618/",
+    "core": "A19001",
+    "theme": "G205",
+    "theme_ids": [
+      "G205"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 285954.2625,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "94bbf45719f2ddd7ebbc51327e61a3baafac9c8f76abc6c267702caa9ddde522"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "692b767f41743535a78f13091a87cc1b40517ab021d652ccf96dcbccc89284f2"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "ca0b20bb881f93dcd9e26261f4ec558abff19c2df975aa71869bca89a4e1eaff",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "45cdaafbbdc52d74f88051b0ae1066ecab01174879e736108d280437384f90ab"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "6c1c98a64224f01d1dc4ddc2873144c8164c720f0dc2acb259331c8c2b2fc770",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 324,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 14,
+    "unique_blobs_checked": 341,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3300,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G205",
+        "core": "A19001",
+        "seconds": 90,
+        "maximum": 110
+      },
+      {
+        "theme": "G205",
+        "core": "A19002",
+        "seconds": 85,
+        "maximum": 105
+      },
+      {
+        "theme": "G206",
+        "core": "A19003",
+        "seconds": 100,
+        "maximum": 115
+      },
+      {
+        "theme": "G206",
+        "core": "A19004",
+        "seconds": 85,
+        "maximum": 95
+      },
+      {
+        "theme": "G207",
+        "core": "A19005",
+        "seconds": 105,
+        "maximum": 115
+      },
+      {
+        "theme": "G208",
+        "core": "A19006",
+        "seconds": 100,
+        "maximum": 110
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 25,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "e239653700da16b29534f5f3dc21f24775cd57e44596f1458a5a5d2f692a1963"
+  }
+}

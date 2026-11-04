@@ -1,0 +1,519 @@
+{
+  "batch_id": "wave35-physics-20261102",
+  "created_on": "2026-11-02",
+  "scope": "交通波動、雙向行人分流、交叉條帶、出口局部通行、虛擬選路及結伴隊形。",
+  "sources": [
+    {
+      "id": "X35-S001",
+      "url": "https://arxiv.org/pdf/1705.01693",
+      "canonical_url": "https://doi.org/10.1016/j.trc.2018.02.005",
+      "retrieval_url": "https://arxiv.org/pdf/1705.01693",
+      "doi": "10.1016/j.trc.2018.02.005",
+      "title": "Dissipation of stop-and-go waves via control of autonomous vehicles: Field experiments",
+      "publisher": "Stern等，Transportation Research Part C 89（2018）",
+      "version": "實讀arXiv:1705.01693v1（2017）作者預印本，arXiv身分頁列後續2018期刊DOI。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "reading_scope": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+      "locator": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+      "summary": "封閉環道由人駕駛時先形成走停波；只控制其中一車的縱向速度，與切換前後的全車瞬時速度、速度離散及煞車記錄比較。",
+      "limitations": "Experiment A有21車，駕駛被要求跟上前車，並非隨機抽樣公路。不同控制策略或期別不混；不宣稱對外部瓶頸的效果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave35-physics-ring.pdf",
+        "sha256": "d0750bc4b524065c94bed4fbc43f4fc79836440fbeeab7e0fa9d74450fd6c372",
+        "text_file": ".cache/wave35-physics-ring.txt",
+        "text_sha256": "32b1a464b15a1bc22b3baa8f9c2b68808537ec821c3734ba981ec95b4b0ccc6a"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave35-physics-ring-p9.png",
+          "sha256": "8f729385b0fd7057ad9d9e71020e07d727936c2bd595ca36f3ec1290839d9cee",
+          "read_scope": "表1 Experiment A各時段速度離散、煞車、流量。"
+        },
+        {
+          "file": ".cache/wave35-physics-ring-p11.png",
+          "sha256": "db03f97eb26d515eb8bd300f20b9218fddef4f069bbf46e537bb2a07886bad99",
+          "read_scope": "Fig3a/b全車位置與速度隨時間；控制開關的同場先後，非兩組隨機試驗。"
+        }
+      ]
+    },
+    {
+      "id": "X35-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7968841/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abe7758",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7968841/fullTextXML",
+      "doi": "10.1126/sciadv.abe7758",
+      "title": "Mutual anticipation can contribute to self-organization in human crowds",
+      "publisher": "Murakami等，Science Advances 7（2021）",
+      "version": "Europe PMC原刊全文XML。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "reading_scope": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+      "locator": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+      "summary": "兩組各27人對向走，3人操作手機的相對位置可換；另試3人刻意慢走，分別量速度和自發排成同向行列的時點。",
+      "limitations": "54位男大學生受測。慢走組樣本有限，未檢出成行延遲不能證明完全無影響。互相預判是與軌跡相符的解釋，未量每人注視點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave35-physics-phone.xml",
+        "sha256": "5c810992e91553d02f6ab89fbcc570e21a2c493d97537c90e0549c5702d674dd",
+        "text_file": ".cache/wave35-physics-phone.txt",
+        "text_sha256": "1d555462f5f3b8e6c3d61cff82c67430010c40ac13df740f9dcea0a4e23673eb"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave35-physics-phone-f1.jpg",
+          "sha256": "5b1df86ec832dccef373480f632b7e0466bb6d51eeca32488cad83d560d5313c",
+          "read_scope": "Fig1手機條件位置與對向足跡圖。"
+        },
+        {
+          "file": ".cache/wave35-physics-phone-f4.jpg",
+          "sha256": "0f0aa086811a2e40b805c1228b9ad9758bf756cb58def2195e6e90f3b8407385",
+          "read_scope": "Fig4只慢走條件的速度及成行時點。"
+        }
+      ]
+    },
+    {
+      "id": "X35-S003",
+      "url": "https://purehost.bath.ac.uk/ws/portalfiles/portal/268111217/manuscript_merged.pdf",
+      "canonical_url": "https://doi.org/10.1126/science.add8091",
+      "retrieval_url": "https://purehost.bath.ac.uk/ws/portalfiles/portal/268111217/manuscript_merged.pdf",
+      "doi": "10.1126/science.add8091",
+      "title": "Lane nucleation in complex active flows",
+      "publisher": "Bacik、Bacik與Rogers，Science 379（2023）",
+      "version": "University of Bath作者接受稿及同檔補充資料。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "reading_scope": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+      "locator": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+      "summary": "在相交人流中以不同顏色標出各組位置；兩組前進方向改成直角或朝各自的窄門集中，出現的同向群帶也改變幾何。",
+      "limitations": "彩帶是群體在某一時刻的排列，並非每人要走的路徑。理論描述初成形的條帶方向，不把實際人點擬合成完美曲線。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave35-physics-lanes.pdf",
+        "sha256": "ec3f1da39d99f0cb3d01eb7c423f28d73bfb96872a63f20953dc6ca2bc1fedda",
+        "text_file": ".cache/wave35-physics-lanes.txt",
+        "text_sha256": "db28b269c59e1f26079f137994be14414c6fbe47613fd714f8ae0bb568c2f352"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave35-physics-lanes-p24.png",
+          "sha256": "dcde1b73bbbc7ebae4f85f793ecf2462cd42520c728747a28abf41ed4f8c6b79",
+          "read_scope": "Fig4A/B/C分開瞬時斜帶與行走軌跡；D兩窄出口與理論橢圓疊在人點上。"
+        }
+      ]
+    },
+    {
+      "id": "X35-S004",
+      "url": "https://www.unav.edu/documents/14434042/23511993/2020_SafetyScience121_394.pdf/63ebdbe2-1298-b884-0650-24fd0b1e926e",
+      "canonical_url": "https://doi.org/10.1016/j.ssci.2019.09.014",
+      "retrieval_url": "https://www.unav.edu/documents/14434042/23511993/2020_SafetyScience121_394.pdf/63ebdbe2-1298-b884-0650-24fd0b1e926e",
+      "doi": "10.1016/j.ssci.2019.09.014",
+      "title": "Contact forces and dynamics of pedestrians evacuating a room: The column effect",
+      "publisher": "Zuriguel等，Safety Science 121（2020）",
+      "version": "研究者任職大學典藏原刊PDF，pp394–402。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "reading_scope": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+      "locator": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+      "summary": "在本次窄門演練，有柱與無柱時靠牆及柱後不同位置的剩餘離場時間變化方向不同，局部速度或等待時間不等於門的總通行量。",
+      "limitations": "180名士兵的受控演練，含指定競爭條件；只量所測區域及牆/門框局部接觸力，不作逃生路線、建築安全或加柱指引。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave35-physics-column.pdf",
+        "sha256": "2242d9f283fcc113028731788dc75dd708af06a015538fd16d3ad40a91e1ca41",
+        "text_file": ".cache/wave35-physics-column.txt",
+        "text_sha256": "678473ed83c5d1d8ec7734bd0e9d19d3d7357ef2cdc34348c7ac7d19b78b225e"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave35-physics-column-p6.png",
+          "sha256": "272f908f116b826b0be926f3d47fba3c861d372c7d437f26e4b5ed2b67654674",
+          "read_scope": "Fig3同一組空間座標的通過時間圖與依門距平方調整的對照；白圓為柱。"
+        }
+      ]
+    },
+    {
+      "id": "X35-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448793/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsos.140410",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448793/fullTextXML",
+      "doi": "10.1098/rsos.140410",
+      "title": "Information use by humans during dynamic route choice in virtual crowd evacuations",
+      "publisher": "Bode等，Royal Society Open Science（2014）",
+      "version": "Europe PMC原刊全文XML。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "reading_scope": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+      "locator": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+      "summary": "參與者在螢幕控制一個行人；改可見路長、出口寬度，並逐時比較隊長和隊列長度變化的模型，區分靜態門寬與動態排隊線索。",
+      "limitations": "頂視虛擬任務，其餘人是模擬。未量眼動或實際災難行為；隊列消長是人數隨時間變化，不是逐人量步速。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave35-physics-virtual.xml",
+        "sha256": "9163b457c38a7a479fc9ff8e9c15de1717449f277113696537531deb182f3065",
+        "text_file": ".cache/wave35-physics-virtual.txt",
+        "text_sha256": "a9e5c9d29943cd809c53d7661a0e34508b449a746f7728e4ef46e14cdce5b6ef"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave35-physics-virtual-f1.jpg",
+          "sha256": "55ca551884283456b7b6a0f4376b7a75f9553e9fd521d76a332c2063cb02a9fb",
+          "read_scope": "Fig1虛擬房間、能見走廊和改寬出口等不同條件。"
+        }
+      ]
+    },
+    {
+      "id": "X35-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2850937/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0010047",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2850937/fullTextXML",
+      "doi": "10.1371/journal.pone.0010047",
+      "title": "The Walking Behaviour of Pedestrian Social Groups and Its Impact on Crowd Dynamics",
+      "publisher": "Moussaïd等，PLOS ONE（2010）",
+      "version": "Europe PMC原刊全文XML。",
+      "accessed_on": "2026-11-02",
+      "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+      "reading_scope": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+      "locator": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+      "summary": "在兩組行人觀測中，同伴間相對位置隨擁擠程度而異；在模型內只讓同伴靠攏，與加入朝同伴看、維持交流的成本，產生不同隊形。",
+      "limitations": "觀測A與B是不同地點/時段，非同一群人的隨機切換。交談機制只作模型解釋，不推斷被攝者實際談話內容或疏散速度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave35-physics-social.xml",
+        "sha256": "d615fb6fa9c08fc8f30c774917057b220c417a299803529379454a05ebfdc8ca",
+        "text_file": ".cache/wave35-physics-social.txt",
+        "text_sha256": "9ce0d7e3da9583598cacc4afa0c346192a59a4c37ba73c0264aa49425247c5df"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave35-physics-social-actual-f4.jpg",
+          "sha256": "83ce6039068ed26558a3b9b1628858e9b8044a615e464a23579cfc77531320b0",
+          "read_scope": "Fig4向上為步行方向，黑點為依觀測重建的位置，灰色列為模擬。"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "X35-001",
+      "question": "一圈車已經走走停停，怎麼只改其中一輛的開法，後面的煞車波就小了？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.ring_road_mobile_speed_damping",
+      "answer_target": "人工跟車容易把前車的快慢重新傳下去。環道試驗中，一輛車改用依車距及前車速度限制自己速度的控制，不急著追上每一次加速，留下的空間可緩衝再一次慢行。對照控制切換前後，全車速度起伏縮小，波峰不再像先前那樣一圈圈傳。",
+      "scope": "限21輛車的Experiment A及其控制時段。車數、跑道固定；其他人接到跟車指示。未估一般城市只需多少自駕車就能消塞。",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "source_locator": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+      "premise_status": "screened",
+      "notes": "表1不同目標速度期間效果不一；不以最佳期幅度作普遍保證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "全車都在往前走，可以只改一條軌跡，觀察傳到後車的快慢起伏是否縮小。",
+        "visual": "先遮住控制狀態顯示21條速度軌跡，在同場時間軸標出一車開啟控制。固定縱軸，再比全車振幅及表1煞車頻率。",
+        "seconds": [
+          53,
+          95
+        ]
+      }
+    },
+    {
+      "id": "X35-002",
+      "question": "迎面走來的兩隊人，為何前排三個人看手機，連沒看手機的人都比較難走成行？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.bidirectional_walking_mutual_anticipation_distraction_control",
+      "answer_target": "迎面相遇時，微調方向可讓同向的人接續進入已打開的空隙。把手機任務放在其中一隊前排，兩隊避讓較突然，形成同向行列的時點比無手機時晚；另請前排三人刻意放慢，整體更慢，卻沒測出同樣的成行延遲。這支持彼此預判動作的作用。",
+      "scope": "兩隊各27名男性受試者的指定直走廊。前排效應與中後排比較；慢走實驗的成行時間差未達顯著，不能說速度永遠無影響。",
+      "source_ids": [
+        "X35-S002"
+      ],
+      "source_locator": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+      "premise_status": "screened",
+      "notes": "此處看成行時點與路徑的橫向轉折，不把每次急轉都當實際碰撞。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把「走得慢」和「迎面時難以彼此配合」拆成兩個可測的對照。",
+        "visual": "兩色軌跡共用起點和時間軸，切換三人手機任務所在列，再清空畫面換前三人慢走的另一批試次。",
+        "seconds": [
+          48,
+          89
+        ]
+      }
+    },
+    {
+      "id": "X35-003",
+      "question": "兩群人都朝前走，為什麼從上面看，隊伍卻會橫著斜過去？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.cross_flow_relative_velocities_lane_orientation",
+      "answer_target": "同一時刻的同向行人會聚成條帶，條帶方向並不等於個人要去的方向。兩群人直角相穿的試驗中，人流沿各自路線走，當下排列卻接近斜45度。理論從兩群人的相對前進方向解釋條帶初生的走向；把目標換成兩個窄門，局部方向隨位置改變，實測人點也沿彎曲帶分布。",
+      "scope": "限研究的二組受控步行和初生條帶。橢圓等理論曲線是對排列方向的預測，非追到一個人繞橢圓，亦非任意擁擠程度或所有大街皆然。",
+      "source_ids": [
+        "X35-S003"
+      ],
+      "source_locator": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+      "premise_status": "screened",
+      "notes": "不同幾何分框；示意依Fig4，不畫成示範影片的實際觀眾反應。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "凍結人群的一張照片，再追單人的路線，兩個方向可以完全不同。",
+        "visual": "先畫直角交叉的兩組個人軌跡，固定一格連起同色點；另開雙窄門的試次，比對當地條帶與模型曲線。",
+        "seconds": [
+          44,
+          82
+        ]
+      }
+    },
+    {
+      "id": "X35-004",
+      "question": "門前多一根柱子，為什麼有人反而早點到門口，站在柱後的人卻更晚？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.door_column_redistributes_local_time_not_total_flow",
+      "answer_target": "柱子會把正面來的人分到兩旁，靠牆與柱之間形成較快的通行區，柱後原來較直接的路反而受阻。比較相近門距的不同出發位置，有柱會改變餘下通過時間的空間分布；有些位置獲益與其他位置多等可以同時出現，不能把局部變快當作門的總通行量增加。",
+      "scope": "限該研究180位士兵、窄門與指定柱距的演練，著重競爭條件下Fig3。比較群體位置的時間場，非跟同一人反覆跑兩條路。",
+      "source_ids": [
+        "X35-S004"
+      ],
+      "source_locator": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+      "premise_status": "screened",
+      "notes": "非實際緊急疏散；不把柱子變成安全建議。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩個人離門一樣遠，站位不同就可能得到相反結果。",
+        "visual": "把有柱無柱的空間圖放同尺度，以相同半徑框靠牆區及柱後區，分開顯示尚需時間和全室流量。",
+        "seconds": [
+          47,
+          87
+        ]
+      }
+    },
+    {
+      "id": "X35-005",
+      "question": "畫面上明明有條比較短的出口路，為什麼有人反而轉去另一邊？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.dynamic_route_choice_queue_evolution_vs_static_geometry",
+      "answer_target": "螢幕實驗讓每人控制一個行人，改變是否看得見比較短的路，以及較長路線的門寬。能看見短路並未顯著提高選短路比例；現場模擬隊列會變，含兩隊長短及消長等動態資訊的模型，比只靠可見長短和門寬更能描述逐時選擇。",
+      "scope": "頂視、兩出口、周圍電腦行人的任務，以無額外時間壓力時的模型對照為主。模型吻合不證實每人盯住同個指標，不搬用到真災搶逃。",
+      "source_ids": [
+        "X35-S005"
+      ],
+      "source_locator": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+      "premise_status": "screened",
+      "notes": "通道長度、出口寬度與動態隊列指標在研究中以條件操弄及模型比較區分。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "改變一扇門，會同時改變門寬與門外隊伍；要分得出是哪項線索與選擇更合。",
+        "visual": "在相同俯視布局先揭露兩條路長，接著在模擬畫面畫出兩隊人數隨時間變化，並列模型所用線索。",
+        "seconds": [
+          40,
+          77
+        ]
+      }
+    },
+    {
+      "id": "X35-006",
+      "question": "三個朋友並肩走，人變多時，為什麼中間那位反而落後半步？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.social_group_visibility_cost_V_formation",
+      "answer_target": "較空的觀測場地裡，同伴多並排；另一個較密的場地，三人同行的平均位置由中間稍落後，四人同行的中央兩人也偏後。模型若只要求結伴靠近，與再要求兼顧能看見同伴，會得到不同的隊形；後者較接近實測的彎曲排列。",
+      "scope": "兩組街頭觀測的平均相對位置及模型對照。不是對同三人規定准不准說話，也不能只由一張照片判定他們在聊天。",
+      "source_ids": [
+        "X35-S006"
+      ],
+      "source_locator": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+      "premise_status": "screened",
+      "notes": "屬觀測與機制假說的短段；不從群體寬度直接推算路口容量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一群人兼顧看得見彼此時，最接近實測的隊形未必最利於穿過迎面人流。",
+        "visual": "畫出行走箭頭，在同一尺度疊三人平均位置；另分框比較模型只靠近與兼顧視線，不作真實對話錄音。",
+        "seconds": [
+          32,
+          65
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "X35-NA001",
+      "question": "塞車隊伍尾端為什麼向後退？",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "existing_ids": [
+        "T4014"
+      ],
+      "reason": "既有流量邊界已回答；此次另問一輛受控車是否能削弱波動。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA002",
+      "question": "只要一輛自駕車，任何街道都能不塞？",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "existing_ids": [
+        "X35-001"
+      ],
+      "reason": "固定車數不超車的環道，不能涵蓋號誌、匝道與進出車流。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA003",
+      "question": "車起步慢，換條道路再列一次？",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "existing_ids": [
+        "T4001"
+      ],
+      "reason": "綠燈起步放行間隔已有舊核。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA004",
+      "question": "哪個受控速度最省油，直接給所有駕駛照表開？",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "existing_ids": [
+        "X35-001"
+      ],
+      "reason": "各段目標值是試驗設定，不是一般道路控制規則。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA005",
+      "question": "把手機任務分前、中、後排各收一題？",
+      "source_ids": [
+        "X35-S002"
+      ],
+      "existing_ids": [
+        "X35-002"
+      ],
+      "reason": "同一操弄的空間對照，不拆。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA006",
+      "question": "沒專心的人每次急轉就是撞到別人？",
+      "source_ids": [
+        "X35-S002"
+      ],
+      "existing_ids": [
+        "X35-002"
+      ],
+      "reason": "圖像測的是動作而非事故。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA007",
+      "question": "看到斜線是不是每個人轉進同一條斜向小路？",
+      "source_ids": [
+        "X35-S003"
+      ],
+      "existing_ids": [
+        "X35-003"
+      ],
+      "reason": "瞬時排列與各人的累積軌跡為兩種圖。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA008",
+      "question": "橢圓、拋物線和雙曲線各當一種人群機制？",
+      "source_ids": [
+        "X35-S003"
+      ],
+      "existing_ids": [
+        "X35-003"
+      ],
+      "reason": "只是不同流向配置對同一條帶理論的結果。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA009",
+      "question": "料斗上方的細桿能推廣為所有人群門口應放柱？",
+      "source_ids": [
+        "X35-S004"
+      ],
+      "existing_ids": [
+        "F10005",
+        "X35-004"
+      ],
+      "reason": "顆粒拱的模型與人群演練不同，局部時間與總通行量也不等同。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA010",
+      "question": "測到門框壓力高就能換算每個人的最大受力？",
+      "source_ids": [
+        "X35-S004"
+      ],
+      "existing_ids": [
+        "X35-004"
+      ],
+      "reason": "此裝置量局部接觸力；沒有直接量全身每一點。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA011",
+      "question": "新捷徑一開，全網必然更快？",
+      "source_ids": [],
+      "existing_ids": [
+        "T4050"
+      ],
+      "reason": "既有Braess題以固定需求模型談個人與全網均衡，不另收。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA012",
+      "question": "看見虛擬人選某扇門，就能推真火場逃生法？",
+      "source_ids": [
+        "X35-S005"
+      ],
+      "existing_ids": [
+        "X35-005"
+      ],
+      "reason": "螢幕視角、互動及壓力不同。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA013",
+      "question": "排隊長短可直接算出真實火場中每人的想法？",
+      "source_ids": [
+        "X35-S005"
+      ],
+      "existing_ids": [
+        "X35-005",
+        "T4052"
+      ],
+      "reason": "不同模型的相對吻合無法逐人認定內在決策。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA014",
+      "question": "三人V字、四人U字分別另算核心？",
+      "source_ids": [
+        "X35-S006"
+      ],
+      "existing_ids": [
+        "X35-006"
+      ],
+      "reason": "同一視野與隊形模型，換人數不另算。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    },
+    {
+      "id": "X35-NA015",
+      "question": "用兩處街頭影片就能證明三個人一定在說話？",
+      "source_ids": [
+        "X35-S006"
+      ],
+      "existing_ids": [
+        "X35-006"
+      ],
+      "reason": "研究沒有隨機分派是否談話。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。"
+    }
+  ]
+}
