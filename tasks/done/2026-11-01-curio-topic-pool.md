@@ -1,13 +1,13 @@
 ---
 id: 2026-11-01-curio-topic-pool
 title: Curio topic pool: dedup, sources, merge thin topics, themes
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-curio-pool
 claimed_at: 2026-11-01T14:56:04Z
 created_at: 2026-11-01T14:56:03Z
-completed_at:
+completed_at: 2026-11-04T06:05:37Z
 branch: claude/curio-topic-pool
 depends_on: []
 scope:
@@ -202,6 +202,8 @@ node tools/video/curio/pool/cli.mjs index && node tools/video/curio/pool/cli.mjs
 - 還沒做：
   - 37 題候補的來源（N2306 要可引的泰文來源；N2342 要《居家必用》與光圀日記原文；N2147 要 Catirina 劇情的可引來源；N2182 要이원철論文原文；N2021 要一份讀得到的日文原稿研究；N2083、N2088、N2104 寫在各題 notes；N386、N387 在 loc.gov；U36 要塔斯社原電訊；N447 在韓國論文庫；N748 要 1939／1941 年原書；N841 要 2001 年原文或原卷時刻；其餘寫在各題 notes）；
   - 題案的實際試讀。
+
+- 2026-11-04 站主：「沒問題的話就先訂閱合併」。併入 main（五集 curio 的 `video.json` 有改，重建後只更新輸入雜湊，數字不變），本票結案；候補補來源與待站主決定的題案組合移到 `tasks/open/2026-11-04-curio-pool-followups.md`。
 
 ## 2026-11-02 解除重做題的鎖定
 
