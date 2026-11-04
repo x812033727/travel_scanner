@@ -242,3 +242,32 @@ test("pictureHash ignores the paper theme, so turning it on redraws no keyframe 
   picture.scenes[1].data.items[0] = "別的";
   assert.notEqual(pictureHash(picture), pictureHash(paper), "a changed picture still counts");
 });
+
+test("奇聞檔案局 and 原來如此事務所 breathe less on the measured timeline only; written beats and every other video keep their pauses (ticket 2026-11-04-explainer-beat-motion-and-tight-pauses)", async () => {
+  const { TIGHT_PAUSES } = await import("./timeline.mjs");
+  assert.deepEqual(TIGHT_PAUSES, { line: 150, scene: 250 });
+  const base = fixture();
+  const samples = Object.fromEntries(base.scenes.flatMap((scene) => scene.lines).map((line) => [line.id, 48_000]));
+  const gaps = (doc, options) => {
+    const timeline = buildTimeline(doc, samples, options);
+    return timeline.lines.map((line) => line.end_frame - line.start_frame - framesFor(48_000));
+  };
+  const paced = { ...structuredClone(base), slug: "curio-test" };
+  const plain = gaps(base);
+  const tight = gaps(paced);
+  assert.ok(tight.every((gap, index) => gap <= plain[index]));
+  assert.ok(tight.reduce((a, b) => a + b, 0) < plain.reduce((a, b) => a + b, 0));
+  // A line that is not a scene's last takes 150 ms (5 frames) instead of 300; a scene change 400 ms instead of 1,000.
+  const lines = buildTimeline(paced, samples).lines;
+  for (const [index, line] of lines.entries()) {
+    const scene = paced.scenes.find((each) => each.id === line.scene);
+    const last = scene.lines.at(-1).id === line.id;
+    const written = scene.lines.find((each) => each.id === line.id).pause_after_ms;
+    const extra = last ? (scene === paced.scenes.at(-1) ? TAIL_MS : TIGHT_PAUSES.scene) : 0;
+    assert.equal(line.end_frame - line.start_frame, framesFor(48_000 + msToSamples((written ?? TIGHT_PAUSES.line) + extra)), `line ${index}`);
+  }
+  // The estimate lint and the blind panel read is unchanged, so no saved check goes stale.
+  assert.deepEqual(estimateTimeline(paced).lines.map((line) => line.end_frame), estimateTimeline({ ...paced, slug: "fixture-minimal" }).lines.map((line) => line.end_frame));
+  assert.deepEqual(gaps({ ...structuredClone(base), slug: "sothatswhy-a01" }), tight);
+  assert.deepEqual(gaps({ ...structuredClone(base), slug: "story-test" }), plain);
+});

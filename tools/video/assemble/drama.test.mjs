@@ -619,7 +619,7 @@ test("the manga tier's stills take a move the viewer sees, under their own versi
   const { MANGA_MOTION, MOTION_MANGA_VERSION, MOTION_PROFILES, motionProfile, motionTravel } = await import("./drama.mjs");
   assert.equal(MOTION_MANGA_VERSION, "manga-motion-v1");
   assert.deepEqual(MANGA_MOTION, { zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
-  assert.deepEqual(Object.keys(MOTION_PROFILES), ["manga"]);
+  assert.deepEqual(Object.keys(MOTION_PROFILES), ["manga", "beat"]);
   // Only a tier with a profile marks the move; the clips, hybrid and stills tiers add nothing.
   assert.deepEqual(motionMove({ camera: "push in" }, "a", "manga"), { name: "push-in", startsAtIdentity: true, profile: "manga" });
   assert.deepEqual(motionMove({}, "b", "manga"), { name: "drift", startsAtIdentity: true, direction: "right", profile: "manga" });
@@ -670,4 +670,52 @@ test("the manga tier's stills take a move the viewer sees, under their own versi
   assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes, { tier: "manga" })[0].move, { name: "push-in", startsAtIdentity: true, profile: "manga" });
   assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes, { tier: "hybrid" })[0].move, { name: "push-in", startsAtIdentity: true });
   assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes)[0].move, { name: "push-in", startsAtIdentity: true });
+});
+
+test("奇聞檔案局 and 原來如此事務所 stills hold, then punch in on a detail, under their own version; other series keep their moves (ticket 2026-11-04-explainer-beat-motion-and-tight-pauses)", async () => {
+  const { BEAT_MOTION, MOTION_BEAT_VERSION, beatMotion, beatPunches, motionProfile } = await import("./drama.mjs");
+  assert.equal(MOTION_BEAT_VERSION, "beat-motion-v1");
+  // Which videos: the two series by slug or identity, never a brand story, a drama or other slides.
+  assert.equal(beatMotion({ slug: "curio-s04-v2", format: "drama", category: "explainer", look: { preset: "cute-mystery" } }), true);
+  assert.equal(beatMotion({ slug: "curio-h05-v2", format: "slides", category: "explainer", look: { preset: "cute-mystery" } }), true);
+  assert.equal(beatMotion({ slug: "sothatswhy-a01", format: "drama", category: "explainer", look: { preset: "flat-explainer" } }), true);
+  assert.equal(beatMotion({ slug: "why-sky-blue", format: "drama", category: "explainer", look: { preset: "cute-cartoon" } }), true);
+  assert.equal(beatMotion({ slug: "story-everyday-kikkoman-c08-short-v8", format: "drama", category: "explainer", look: { preset: "cute-mystery" } }), false);
+  assert.equal(beatMotion({ slug: "story-rolling-suitcase-v2", format: "drama", category: "story", look: { preset: "cute-mystery" } }), false);
+  assert.equal(beatMotion(dramaFixture()), false);
+  assert.equal(beatMotion(fixture()), false);
+  // The move: every camera word opens on the whole picture but a pull-out, and carries the profile.
+  assert.deepEqual(motionMove({ camera: "pan left" }, "a", "beat"), { name: "pan-right", startsAtIdentity: true, profile: "beat" });
+  assert.deepEqual(motionMove({ camera: "pull out" }, "a", "beat"), { name: "pull-out", startsAtIdentity: false, profile: "beat" });
+  assert.deepEqual(motionMove({}, "b", "beat"), { name: "drift", startsAtIdentity: true, direction: "right", profile: "beat" });
+  assert.equal(motionProfile({ name: "push-in", profile: "beat" }), BEAT_MOTION);
+  // Punches: none under 2.5 s, one to 7 s, two to 12 s, three above.
+  assert.deepEqual([60, 75, 209, 210, 359, 360, 540].map(beatPunches), [0, 1, 1, 2, 2, 3, 3]);
+  const beat = (name, direction) => ({ name, startsAtIdentity: name !== "pull-out", profile: "beat", ...(direction ? { direction } : {}) });
+  const s = (start) => `(clip((on-${start})/10,0,1))*(clip((on-${start})/10,0,1))*(3-2*(clip((on-${start})/10,0,1)))`;
+  // A six-second push-in holds three seconds, punches 12% toward the middle in a third of a second, and holds.
+  assert.deepEqual(zoompanExpr(beat("push-in"), 180), { z: `1+0.12*(${s(85)})`, x: "(iw-iw/zoom)*0.5", y: "(ih-ih/zoom)*0.45" });
+  // Ten seconds: two punches at a third and two thirds; the drift's side picks the focus.
+  assert.deepEqual(zoompanExpr(beat("drift", "left"), 300), { z: `1+0.12*(${s(95)}+${s(195)})`, x: "(iw-iw/zoom)*0.45", y: "(ih-ih/zoom)*0.42" });
+  // Three punches share the 24% so no frame is enlarged; a pull-out runs the steps backwards.
+  assert.deepEqual(zoompanExpr(beat("pull-out"), 400), { z: `1.24-0.08*(${s(95)}+${s(195)}+${s(295)})`, x: "(iw-iw/zoom)*0.5", y: "(ih-ih/zoom)*0.45" });
+  assert.ok(1 + BEAT_MOTION.maxZoom <= 1.25, "inside MOTION_SOURCE_SCALE");
+  // A short shot and a locked one hold the whole picture.
+  assert.deepEqual(zoompanExpr(beat("push-in"), 60), { z: "1", x: "0", y: "0" });
+  assert.deepEqual(zoompanExpr(beat("locked"), 300), { z: "1", x: "0", y: "0" });
+  // The segment takes the same expressions; it is not eased or scaled by the held shot's travel.
+  const args = motionSegmentArgs({ keyframe: "keyframes/a.png", frames: 180, move: beat("push-in"), outFile: "seg.mp4" });
+  assert.ok(args[args.indexOf("-filter_complex") + 1].includes(`zoompan=z='1+0.12*(${s(85)})':x='(iw-iw/zoom)*0.5'`));
+  // Keys: a beat move keys apart; the unprofiled and manga keys are what they were.
+  const scene = { id: "a", frames: 90, keyframe: { file: "keyframes/a.png", sha256: "1".repeat(64) }, transition: "cut" };
+  assert.equal(motionSegmentKey(scene, motionMove({ camera: "push in" })), "d6b028730031d355");
+  assert.notEqual(motionSegmentKey(scene, motionMove({ camera: "push in" }, "a", "beat")), "d6b028730031d355");
+  assert.notEqual(motionSegmentKey(scene, motionMove({ camera: "push in" }, "a", "beat")), motionSegmentKey(scene, motionMove({ camera: "push in" }, "a", "manga")));
+  // The layout carries the profile through.
+  const doc = dramaFixture();
+  doc.scenes[0].data.visual = "still";
+  const timeline = estimateTimeline(doc);
+  const frames = framesManifestFor(doc, timeline);
+  const keyframes = { shots: { opening: { file: "keyframes/opening-1.png", sha256: "b".repeat(64) } } };
+  assert.equal(layoutDrama(doc, timeline, frames, clipsManifestFor(doc), keyframes, { tier: "beat" })[0].move.profile, "beat");
 });

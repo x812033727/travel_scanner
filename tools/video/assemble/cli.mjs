@@ -22,6 +22,7 @@ import { ARTIFACTS, keyframeProblems, lintProject, loadProject, recordStage } fr
 import { FPS, pictureHash, speechHash, visualHash } from "../core/timeline.mjs";
 import { resolveWatermark, watermarkRecord } from "../core/watermark.mjs";
 import {
+  beatMotion,
   bedLevel,
   bedLoudnessArgs,
   checkBed,
@@ -320,11 +321,12 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   try {
     // Illustrated slides (docs/videos/ILLUSTRATED.md) take the drama's mixed layout: the shots
     // under their camera moves, single-state cards drifting, dissolves between pictures and a
-    // hard cut into every chapter card.
+    // hard cut into every chapter card. An explainer's stills (奇聞檔案局, 原來如此事務所) hold and
+    // punch in rather than drift (drama.mjs BEAT_MOTION).
     layout = drama
-      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes, { tier: project.series?.visual_tier ?? null })
+      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes, { tier: beatMotion(doc) ? "beat" : (project.series?.visual_tier ?? null) })
       : pictures
-        ? layoutDrama(doc, timeline, manifest, null, inputs.keyframes, { transitionRule: illustratedTransition, cardMotion: true })
+        ? layoutDrama(doc, timeline, manifest, null, inputs.keyframes, { transitionRule: illustratedTransition, cardMotion: true, tier: beatMotion(doc) ? "beat" : null })
         : layoutScenes(timeline, manifest);
   } catch (error) {
     if (!(error instanceof PlanError)) throw error;
