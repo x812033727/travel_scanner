@@ -89,3 +89,9 @@ npm run test:tools
   - `flow.mjs`, `automation.test.mjs`, `check.test.mjs` and `automated.md` are bound by the
     long-form duration receipt; rebound by an independent reviewer agent.
   - Dub retakes are unchanged.
+- 2026-11-04 feasibility check: of the 80 single-phrase rows of the script-writing.md table,
+  `soundsAlikeTonelessly` puts 25 under `reword` (擋→當, 怎麼搬→怎麼辦, 只多→至多, 推回→退回,
+  …), 2 already pass `matchKind`, 55 still go to a retake first. All 25 read as true
+  near-homophones. Resuming a stopped retake is unaffected: `retakeExplains` checks takes, not
+  the flags file name. If a video's rewrite rounds are already spent, its reword lines are no
+  longer retaken and wait for the owner; a retake would have been heard the same way anyway.

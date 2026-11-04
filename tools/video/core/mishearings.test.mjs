@@ -81,3 +81,11 @@ test("English narration is not checked", () => {
   const doc = enFixture();
   assert.deepEqual(warningsAbout(lintVideo(doc, context())), []);
 });
+
+test("an itinerary, a count past ten and the fixed form of a row do not warn", () => {
+  assert.deepEqual(mishearingsIn("它說幫你排行程，這份行程表照天的行程排。"), []);
+  assert.deepEqual(mishearingsIn("需要執行程式的工具。"), []);
+  assert.deepEqual(mishearingsIn("庫存表有二十四項，第四項最難。"), []);
+  assert.deepEqual(mishearingsIn("要讀檔案，不是讀摘要。"), []);
+  assert.deepEqual(mishearingsIn("先看執行中的行程。").map((hit) => hit.written), ["行程"], "the program sense still warns");
+});

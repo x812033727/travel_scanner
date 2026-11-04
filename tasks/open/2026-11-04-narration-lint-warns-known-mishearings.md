@@ -90,3 +90,12 @@ npm run test:tools
     reviewer agent (`.agents/skills/dev-and-ci/references/duration-receipt.md`).
   - `npm run test:tools`: the only failures left are the 15 that also fail on `origin/main`
     in this container (the native-log exit classifier tests 124–142).
+- 2026-11-04 feasibility check on all 203 zh `docs/videos/*/video.json` (21,336 lines): 151
+  warnings in 50 videos at first, mostly true positives in tutorials (印出, 放行, 讀檔, 本機).
+  False positives fixed with `UNLESS`: 行程 as an itinerary (排行程, 這份行程, 天的行程) and
+  inside 執行程式, 四項 inside 二十四項 and 第四項, 讀檔 inside 讀檔案; 137 left.
+- **The host worker never sees these warnings**: flow.mjs `lintWarnings` passes only
+  `kind: "narrative"` warnings to the writer, and only alongside a rewrite errors already asked
+  for. So this helps an agent or person who runs `lint` by hand; the host's slides writer keeps
+  getting the same list through `HEARD_RULES`. Giving the warning `kind: "narrative"` would put
+  it in front of the worker's writer, but only on drafts that already fail lint; left as is.

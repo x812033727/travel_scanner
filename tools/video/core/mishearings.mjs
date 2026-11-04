@@ -96,6 +96,10 @@ export const MISHEARD_WORDS = [
 // Longer phrases that contain a row's words and are fine: the row's own fix, or another word.
 // A stretch one of these covers is blanked before the row is looked for.
 const UNLESS = {
+  // 行程 the row means is a running program; on a travel site it is mostly an itinerary, where
+  // 「執行中的程式」 is the wrong advice, and 執行程式 only spans the two words.
+  "行程": /執行程|排行程|行程[表單草規]|[天日遊趟份][的]?行程|(?:可用|旅遊|旅行|整份|這份|可驗收的|影響)行程/gu,
+  "讀檔": /讀檔案/gu,
   "數什麼": /要數什麼/gu,
   "有檔、沒檔": /有檔案|沒檔案/gu,
   "本機": /日本機|本機場/gu,
@@ -103,7 +107,7 @@ const UNLESS = {
   "呼叫進來": /有呼叫進來/gu,
   "九行": /共九行/gu,
   "執行了。": /被執行了。/gu,
-  "四項": /那四項/gu,
+  "四項": /那四項|[十百第]四項/gu,
   "同事也要": /的同事也要/gu,
   "延後載入的這一次": /用延後載入的這一次/gu,
   "含糊的那一份": /寫得含糊的那一份/gu,
