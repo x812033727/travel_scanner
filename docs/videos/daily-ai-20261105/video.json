@@ -1,0 +1,3140 @@
+{
+  "schema_version": 1,
+  "slug": "daily-ai-20261105",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [
+    20,
+    25
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像 Podcast 主持人跟搭檔 Kai 聊昨天的新聞：輕鬆、有來有往，接 Kai 的問題先順口接話再講重點；日期、公司名與數字前停半拍；「據報導」「公司自己說」語氣保留；主題段講選民拿到選票的場景放慢、靠近；「我的看法是」放穩，「我不確定」放輕；最後「訊號收到」乾脆收。"
+  },
+  "host": {
+    "name": "Sola"
+  },
+  "cohost": {
+    "id": "kai",
+    "name": "Kai",
+    "voice": {
+      "provider": "gemini",
+      "name": "Puck",
+      "style": "台灣國語，年輕男生，好奇、輕鬆、有點吐槽，像跟朋友聊天"
+    }
+  },
+  "subtitles": {
+    "burn_in": false,
+    "speaker_prefix": false
+  },
+  "music": {
+    "track": "techsignal-bed.mp3",
+    "sha256": "9bc49615189bc364a010da6532f4df837b1378ebb1690e4071e7f28e7acf4c76"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Tech Signal 11/5｜Data centers on the ballot",
+    "description": "兩位主持人皆為 AI 合成語音、配樂為 AI 生成，內容依官方來源與媒體報導整理。\n\nMokaair 文章：\nhttps://mokaair.com/zh-TW/life/ai-news-data-center-midterms-20261104\nhttps://mokaair.com/zh-TW/life/ai-news-us-voters-data-center-restrictions-20261104\n\nTry This 為節目建議；本集不談價格與投資。",
+    "tags": [
+      "Tech Signal",
+      "科技訊號",
+      "資料中心",
+      "期中選舉",
+      "AI 基礎建設",
+      "高通",
+      "Siri",
+      "ChatGPT",
+      "OCC",
+      "代幣化"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "Voted **down**",
+      "sub": "Data centers, in 29+ US places",
+      "layout": "ai"
+    }
+  },
+  "sources": [
+    {
+      "title": "The Verge: data centers, midterms",
+      "url": "https://www.theverge.com/policy/1026365/data-centers-midterms-results",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "Decrypt: voters back limits",
+      "url": "https://decrypt.co/382556/us-voters-back-ai-data-center-restrictions",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "The Verge: Qualcomm data centers",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1026867/qualcomm-earnings-data-centers",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "The Verge: ChatGPT GIFs",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1026474/openai-chatgpt-animated-gifs-images-2-6",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "TechCrunch: Siri Recaps",
+      "url": "https://techcrunch.com/2026/11/04/i-tried-apples-siri-recaps-theyre-surprisingly-useful-and-a-little-unsettling/",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "TechCrunch: Meta buys Conductor",
+      "url": "https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "TechCrunch: Google AI in schools",
+      "url": "https://techcrunch.com/2026/11/04/duckduckgo-pitches-itself-to-schools-amid-backlash-over-googles-ai-policy/",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "TechCrunch: OpenAI and 2028",
+      "url": "https://techcrunch.com/2026/11/04/openai-is-already-trying-to-shape-the-2028-election/",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "The Verge: Uber AI agents",
+      "url": "https://www.theverge.com/transportation/1026306/uber-ai-agents-q3-earnings-disintermediation",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "Decrypt: OCC AI framework",
+      "url": "https://decrypt.co/382560/us-bank-regulator-issues-first-ai-framework-banks-battle-rogue-agents",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "Decrypt: Morgan Stanley tokenizes",
+      "url": "https://decrypt.co/382513/wall-streets-plumbing-onchain-morgan-stanley-tokenizes-securities",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "Decrypt: Circle staff cut",
+      "url": "https://decrypt.co/382493/usdc-issuer-circle-quietly-cuts-5-of-staff-in-profitable-quarter",
+      "checked_on": "2026-11-04"
+    },
+    {
+      "title": "The Verge: Altman on RAM",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1026292/sam-altman-ram-shortage-pcs-comments",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "qwhy",
+      "payoff": "qans",
+      "what": "一棟放電腦的房子，為什麼要用投票擋"
+    },
+    {
+      "setup": "siriq",
+      "payoff": "siria",
+      "what": "Siri Recaps 是不是一直在聽"
+    },
+    {
+      "setup": "monq",
+      "payoff": "mona",
+      "what": "誰贏誰輸、錢流向哪裡"
+    },
+    {
+      "setup": "twnq",
+      "payoff": "twna",
+      "what": "跟台灣有沒有關係"
+    },
+    {
+      "setup": "numq",
+      "payoff": "numa",
+      "what": "訊號數字 4 是什麼"
+    },
+    {
+      "setup": "votq",
+      "payoff": "vota",
+      "what": "Janesville 的選票上寫什麼"
+    },
+    {
+      "setup": "advq",
+      "payoff": "adva",
+      "what": "通過了是不是就不能蓋"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "chapter": "Intro：資料中心上了選票",
+      "template": "title",
+      "data": {
+        "tag": "Tech Signal",
+        "title": "Tech Signal\n**Thursday, Nov 5**",
+        "subtitle": "The signal in today's tech news",
+        "key": "Tech Signal · Thu, Nov 5"
+      },
+      "lines": [
+        {
+          "id": "k8gk",
+          "text": "今天是 11 月 5 日，星期四。",
+          "emotion": "明亮、穩，像每天固定打招呼"
+        },
+        {
+          "id": "qu5h",
+          "text": "這裡是 Tech Signal 科技訊號，從一堆雜訊裡，挑出今天真正重要的訊號。",
+          "emotion": "固定開場句，輕快不趕"
+        }
+      ]
+    },
+    {
+      "id": "intro-kai",
+      "template": "big",
+      "data": {
+        "kicker": "Today's signal",
+        "text": "Data centers\n**on the ballot**",
+        "key": "Today: AI on the ballot"
+      },
+      "lines": [
+        {
+          "id": "l2e4",
+          "text": "我是 Sola。"
+        },
+        {
+          "id": "olyi",
+          "speaker": "kai",
+          "text": "我是 Kai。",
+          "emotion": "輕鬆、帶笑"
+        },
+        {
+          "id": "32a2",
+          "text": "今天的主題，是美國期中選舉裡，一個意外的大題目：AI 資料中心。"
+        }
+      ]
+    },
+    {
+      "id": "intro-q",
+      "template": "big",
+      "data": {
+        "kicker": "The question",
+        "text": "Just a building,\n**why vote on it?**",
+        "key": "Why vote on a building?"
+      },
+      "lines": [
+        {
+          "id": "qwhy",
+          "speaker": "kai",
+          "text": "等等，資料中心不就是一棟放電腦的房子？美國人為什麼要用投票擋它？",
+          "emotion": "不解，問句停在半空"
+        }
+      ]
+    },
+    {
+      "id": "hl-open",
+      "chapter": "Headlines：ChatGPT 動圖、Siri 摘要等五則",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 4, 2026",
+        "text": "Headlines",
+        "key": "Yesterday's tech news"
+      },
+      "lines": [
+        {
+          "id": "cvea",
+          "text": "這個問題，我們留到主題段。先來看昨天，11 月 4 日的科技新聞。",
+          "emotion": "切換段落，輕快"
+        },
+        {
+          "id": "jd2t",
+          "speaker": "kai",
+          "text": "先從好玩的開始？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-gif",
+      "template": "big",
+      "data": {
+        "kicker": "OpenAI · via The Verge",
+        "text": "ChatGPT now makes\n**animated GIFs**",
+        "key": "ChatGPT makes GIFs now"
+      },
+      "lines": [
+        {
+          "id": "czez",
+          "text": "好。據 The Verge，ChatGPT 現在能直接做 GIF 動圖。"
+        },
+        {
+          "id": "7iv8",
+          "speaker": "kai",
+          "text": "就是那種一直循環的小動畫？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "p33d",
+          "text": "對。打一句話，或丟一張照片，它就做出來。"
+        }
+      ]
+    },
+    {
+      "id": "hl-gif-how",
+      "template": "bullets",
+      "data": {
+        "title": "After it's made",
+        "items": [
+          "Change the speed",
+          "Edit frame by frame",
+          "Share it"
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "keys": [
+          "Can you edit it?",
+          "Change the speed",
+          "Edit frames, then share"
+        ]
+      },
+      "lines": [
+        {
+          "id": "3rol",
+          "speaker": "kai",
+          "text": "做完還能改嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "2cd0",
+          "text": "可以調播放速度，",
+          "reveal": 1
+        },
+        {
+          "id": "y8lz",
+          "text": "也能一格一格改畫面，再分享出去。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "hl-gif-who",
+      "template": "stats",
+      "data": {
+        "title": "Images 2.6, per The Verge",
+        "stats": [
+          {
+            "value": "All users",
+            "label": "ChatGPT and Codex",
+            "note": "web, desktop, mobile"
+          },
+          {
+            "value": "4B+",
+            "label": "images a week",
+            "note": "3B in September, per OpenAI"
+          }
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "keys": [
+          "Who gets it?",
+          "Rolling out to all users",
+          "4B+ images a week"
+        ]
+      },
+      "lines": [
+        {
+          "id": "i5im",
+          "speaker": "kai",
+          "text": "台灣的帳號用得到嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "wg8u",
+          "text": "它跟新的圖像模型一起推出；報導說，正開放給所有 ChatGPT 和 Codex 的使用者。",
+          "reveal": 1
+        },
+        {
+          "id": "tww7",
+          "text": "OpenAI 也說，現在每週生成超過四十億張圖，九月時是三十億張。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "hl-gif-limit",
+      "template": "bullets",
+      "data": {
+        "title": "Not in the report",
+        "items": [
+          "Length",
+          "Resolution",
+          "File size"
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "key": "Limits: not reported"
+      },
+      "lines": [
+        {
+          "id": "snzc",
+          "speaker": "kai",
+          "text": "有沒有長度限制？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "hobm",
+          "text": "報導沒提長度、解析度和檔案大小。要用，先看 OpenAI 自己的說明。"
+        }
+      ]
+    },
+    {
+      "id": "hl-siri",
+      "template": "big",
+      "data": {
+        "kicker": "Apple · via TechCrunch",
+        "text": "Siri Recaps:\n**your day, summarized**",
+        "key": "Siri Recaps: your day"
+      },
+      "lines": [
+        {
+          "id": "8edi",
+          "text": "從做出來的畫面，換到被記下來的聲音。",
+          "emotion": "串場，語氣一轉"
+        },
+        {
+          "id": "7spw",
+          "text": "據 TechCrunch，蘋果週二開始在開發者測試版裡，測試一組 Apple Watch 的音訊 AI 功能。"
+        }
+      ]
+    },
+    {
+      "id": "hl-siri-what",
+      "template": "bullets",
+      "data": {
+        "title": "Four audio features",
+        "items": [
+          "Sound alerts",
+          "Song ID",
+          "Live Rewind: last 15 seconds",
+          "Siri Recaps: your whole day"
+        ],
+        "source": "TechCrunch, Nov 4, 2026",
+        "keys": [
+          "What's being tested?",
+          "Sounds and songs",
+          "Live Rewind: last 15 s",
+          "Recaps: your whole day"
+        ]
+      },
+      "lines": [
+        {
+          "id": "4lqw",
+          "speaker": "kai",
+          "text": "測了什麼？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "uv3k",
+          "text": "四項。偵測門鈴、警報這類重要聲音，還有辨識歌曲。",
+          "reveal": 2
+        },
+        {
+          "id": "ydfk",
+          "text": "另外兩項會錄音。Live Rewind，讓你回看過去十五秒說了什麼；",
+          "reveal": 1
+        },
+        {
+          "id": "6lr8",
+          "text": "Siri Recaps，把一整天的聲音做成摘要，存成筆記。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-siri-good",
+      "template": "big",
+      "data": {
+        "kicker": "A TechCrunch writer's test",
+        "text": "Fast talk at a shop\n**caught in notes**",
+        "key": "It caught the details"
+      },
+      "lines": [
+        {
+          "id": "qaji",
+          "speaker": "kai",
+          "text": "好用嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "sa4f",
+          "text": "TechCrunch 的作者試了一天。送修車的時候，店員講得很快，它記下了自付額和維修時程。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "hl-siri-bad",
+      "template": "big",
+      "data": {
+        "kicker": "The catch",
+        "text": "It also kept\n**the small talk**",
+        "key": "It kept the small talk"
+      },
+      "lines": [
+        {
+          "id": "nwlu",
+          "text": "可是它也記下不重要的閒聊。作者說，如果談話更私人，會讓人覺得被侵犯。"
+        }
+      ]
+    },
+    {
+      "id": "hl-siri-privacy",
+      "template": "bullets",
+      "data": {
+        "title": "Apple's privacy design",
+        "items": [
+          "On-device where possible",
+          "No speaker identification",
+          "No raw audio kept"
+        ],
+        "source": "TechCrunch, Nov 4, 2026",
+        "keys": [
+          "Always listening?",
+          "On-device, where it can",
+          "No speaker ID, no audio"
+        ]
+      },
+      "lines": [
+        {
+          "id": "siriq",
+          "speaker": "kai",
+          "text": "它一直在聽嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "siria",
+          "text": "設成隨時運作的話，是。TechCrunch 說，蘋果盡量在裝置上處理，",
+          "reveal": 1
+        },
+        {
+          "id": "h8e0",
+          "text": "不辨認是誰在說話，也不存原始錄音。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "hl-siri-norm",
+      "template": "big",
+      "data": {
+        "kicker": "The worry",
+        "text": "Always listening\n**as the new normal?**",
+        "key": "Worry: always listening"
+      },
+      "lines": [
+        {
+          "id": "z62g",
+          "speaker": "kai",
+          "text": "設計成這樣，還有什麼好擔心？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "ra54",
+          "text": "有些人反感的，是科技隨時在聽，慢慢變成常態。"
+        }
+      ]
+    },
+    {
+      "id": "hl-siri-when",
+      "template": "stats",
+      "data": {
+        "title": "Who can use it",
+        "stats": [
+          {
+            "value": "Beta",
+            "label": "developers only, for now"
+          },
+          {
+            "value": "Series 12",
+            "label": "Apple Watch model"
+          }
+        ],
+        "source": "TechCrunch, Nov 4, 2026",
+        "key": "Beta only, for now"
+      },
+      "lines": [
+        {
+          "id": "p6v0",
+          "speaker": "kai",
+          "text": "一般人現在用得到嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "hh4z",
+          "text": "還不行。目前只在開發者測試版，對象是 Apple Watch Series 12；正式推出時間，報導沒說。"
+        }
+      ]
+    },
+    {
+      "id": "hl-meta",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 4 · TechCrunch",
+        "text": "Meta buys\n**Conductor**",
+        "key": "Meta buys Conductor"
+      },
+      "lines": [
+        {
+          "id": "sr4v",
+          "text": "從手錶上的 AI，換到寫程式的 AI。",
+          "emotion": "串場"
+        },
+        {
+          "id": "56da",
+          "text": "據 TechCrunch，Meta 收購了 AI 寫程式的新創公司 Conductor。"
+        },
+        {
+          "id": "d9r8",
+          "speaker": "kai",
+          "text": "Conductor 是做什麼的？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-meta-what",
+      "template": "big",
+      "data": {
+        "kicker": "What it does",
+        "text": "Many AI agents\n**coding side by side**",
+        "key": "Many agents at once"
+      },
+      "lines": [
+        {
+          "id": "ajeb",
+          "text": "它讓你同時派好幾個 AI 代理，在各自獨立的工作區，分工做一個軟體專案。"
+        },
+        {
+          "id": "7ynj",
+          "speaker": "kai",
+          "text": "那些代理，是它自己做的嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-meta-src",
+      "template": "big",
+      "data": {
+        "kicker": "Under the hood",
+        "text": "Agents from\n**Anthropic, OpenAI**",
+        "key": "Agents from big labs"
+      },
+      "lines": [
+        {
+          "id": "1qd0",
+          "text": "不是。TechCrunch 說，代理來自 Anthropic、OpenAI 這些大實驗室。"
+        }
+      ]
+    },
+    {
+      "id": "hl-meta-date",
+      "template": "stats",
+      "data": {
+        "title": "What users need to know",
+        "stats": [
+          {
+            "value": "Nov 20",
+            "label": "cloud service shuts down",
+            "note": "then cloud data is deleted"
+          },
+          {
+            "value": "Early 2027",
+            "label": "core features run until"
+          }
+        ],
+        "source": "TechCrunch, Nov 4, 2026",
+        "keys": [
+          "What about users?",
+          "Nov 20: the cloud shuts",
+          "Core: until early 2027"
+        ]
+      },
+      "lines": [
+        {
+          "id": "fsj9",
+          "speaker": "kai",
+          "text": "那原本在用的人呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "4jol",
+          "text": "創辦人說，雲端服務這個月 20 號關閉，之後開始刪除使用者的雲端資料。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "f3o4",
+          "text": "其他核心功能，到明年初照常運作。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-meta-deal",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Confirmed",
+          "icon": "checklist",
+          "points": [
+            "Meta bought Conductor"
+          ]
+        },
+        "right": {
+          "heading": "Not disclosed",
+          "icon": "lock",
+          "points": [
+            "Price",
+            "Terms"
+          ]
+        },
+        "source": "TechCrunch, Nov 4, 2026",
+        "key": "Deal terms: not given"
+      },
+      "lines": [
+        {
+          "id": "93b8",
+          "speaker": "kai",
+          "text": "Meta 花了多少錢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "ccjq",
+          "text": "Meta 向 TechCrunch 確認了收購，但金額、條件都沒說。"
+        }
+      ]
+    },
+    {
+      "id": "hl-school",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 3 · Google, via TechCrunch",
+        "text": "Schools can turn\n**Gemini off**",
+        "key": "Gemini: can be off"
+      },
+      "lines": [
+        {
+          "id": "boit",
+          "text": "講完寫程式的 AI，來看教室裡的 AI。",
+          "emotion": "串場"
+        },
+        {
+          "id": "9s0f",
+          "text": "據 TechCrunch，Google 週二告訴學校：Gemini 可以關；"
+        }
+      ]
+    },
+    {
+      "id": "hl-school-all",
+      "template": "big",
+      "data": {
+        "kicker": "The catch",
+        "text": "Turn off more AI?\n**lose Search too**",
+        "key": "Lose AI, lose Search"
+      },
+      "lines": [
+        {
+          "id": "wxj7",
+          "text": "但要關其他 AI 功能，就會連 Google 搜尋一起失去。"
+        },
+        {
+          "id": "im2v",
+          "speaker": "kai",
+          "text": "搜尋也算 AI？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-school-why",
+      "template": "big",
+      "data": {
+        "kicker": "Why",
+        "text": "AI is built\n**into Search**",
+        "key": "AI is built into Search"
+      },
+      "lines": [
+        {
+          "id": "z66e",
+          "text": "現在的 Google 搜尋，有 AI 摘要，也有對話式的 AI Mode，很難跟搜尋本身分開。"
+        },
+        {
+          "id": "zn26",
+          "speaker": "kai",
+          "text": "那 Google 怎麼回應？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-school-reply",
+      "template": "bullets",
+      "data": {
+        "title": "Google's reply",
+        "items": [
+          "Gemini: off by default",
+          "Search: off by default",
+          "Schools choose what to enable"
+        ],
+        "source": "TechCrunch, Nov 4, 2026",
+        "key": "Off by default, it says"
+      },
+      "lines": [
+        {
+          "id": "pt89",
+          "text": "Google 被批評之後說，Gemini 和搜尋這些功能預設關閉，學校可以自己決定開哪個。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "hl-school-ddg",
+      "template": "big",
+      "data": {
+        "kicker": "DuckDuckGo's pitch",
+        "text": "Switch your default\n**to us**",
+        "key": "DuckDuckGo: switch to us"
+      },
+      "lines": [
+        {
+          "id": "o5fg",
+          "speaker": "kai",
+          "text": "這種時候，對手一定跳出來。"
+        },
+        {
+          "id": "14z5",
+          "text": "對。DuckDuckGo 執行長貼出說明，教學校把預設搜尋引擎換成它。"
+        }
+      ]
+    },
+    {
+      "id": "hl-school-ddg2",
+      "template": "big",
+      "data": {
+        "kicker": "DuckDuckGo says",
+        "text": "Its own AI\n**can be switched off**",
+        "key": "Its AI: can be off"
+      },
+      "lines": [
+        {
+          "id": "5u57",
+          "text": "它也強調，自己的 AI 功能可以關。這是它自己的說法。",
+          "emotion": "語氣保留"
+        },
+        {
+          "id": "a35h",
+          "speaker": "kai",
+          "text": "等於趁機招生。",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "hl-school-scale",
+      "template": "stats",
+      "data": {
+        "title": "Google's earlier numbers",
+        "stats": [
+          {
+            "value": "50M",
+            "label": "Chromebooks in schools"
+          },
+          {
+            "value": "150M+",
+            "label": "Google Classroom users"
+          }
+        ],
+        "source": "TechCrunch, citing Google",
+        "keys": [
+          "How many schools?",
+          "About 50M Chromebooks",
+          "150M+ Classroom users"
+        ]
+      },
+      "lines": [
+        {
+          "id": "zz6h",
+          "speaker": "kai",
+          "text": "這會影響多少學校？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "vt5z",
+          "text": "TechCrunch 引用 Google 以前公布的數字：校園裡大約五千萬台 Chromebook，",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "eid1",
+          "text": "Google Classroom 使用者超過一億五千萬。不過，這不等於這次受影響的人數。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-school-tw",
+      "template": "big",
+      "data": {
+        "kicker": "For parents",
+        "text": "Each school's admin\n**decides**",
+        "key": "Each school decides"
+      },
+      "lines": [
+        {
+          "id": "460x",
+          "speaker": "kai",
+          "text": "台灣的學校也一樣嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "kzgt",
+          "text": "報導沒有分地區。實際怎麼設，由各校和它的管理員決定。"
+        }
+      ]
+    },
+    {
+      "id": "hl-oai",
+      "template": "big",
+      "data": {
+        "kicker": "Reported · TechCrunch",
+        "text": "OpenAI eyes\n**the 2028 election**",
+        "key": "Reported: OpenAI on 2028"
+      },
+      "lines": [
+        {
+          "id": "5jfg",
+          "text": "從學校的政策，到國家的政策。",
+          "emotion": "串場"
+        },
+        {
+          "id": "4fhs",
+          "text": "據 TechCrunch 報導，OpenAI 全球事務長發文說，2028 年美國大選，可能是 AI 的關鍵時刻。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "hl-oai-why",
+      "template": "big",
+      "data": {
+        "kicker": "The timing",
+        "text": "Right after\n**the midterms**",
+        "key": "Timed after the midterms"
+      },
+      "lines": [
+        {
+          "id": "dwjh",
+          "speaker": "kai",
+          "text": "還有兩年耶，這麼早？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "uvh3",
+          "text": "時間點很巧。TechCrunch 說，他這篇，剛好發在民主黨期中選舉大勝之後。"
+        }
+      ]
+    },
+    {
+      "id": "hl-oai-what",
+      "template": "bullets",
+      "data": {
+        "title": "Lehane's five priorities include",
+        "items": [
+          "Worker protection",
+          "Education",
+          "AI safety",
+          "Data centers"
+        ],
+        "source": "TechCrunch, Nov 4, 2026",
+        "keys": [
+          "AI likened to New Deal",
+          "Jobs, schools, safety"
+        ]
+      },
+      "lines": [
+        {
+          "id": "w6mf",
+          "text": "作者 Lehane，把 AI 對經濟的影響，比作 1930 年代的新政，提出五個方向，"
+        },
+        {
+          "id": "3o19",
+          "text": "從勞工保護、教育，到 AI 安全和資料中心。",
+          "reveal": 4
+        }
+      ]
+    },
+    {
+      "id": "hl-oai-dc",
+      "template": "big",
+      "data": {
+        "kicker": "On data centers",
+        "text": "A pause, he warns,\n**could cost the lead**",
+        "key": "Warns against a pause"
+      },
+      "lines": [
+        {
+          "id": "x6dr",
+          "speaker": "kai",
+          "text": "資料中心也在裡面？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "0i9h",
+          "text": "對。據報導，他警告，支持暫停興建資料中心的政治人物，可能危及美國對中國的領先。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "hl-oai-reply",
+      "template": "big",
+      "data": {
+        "kicker": "No reply",
+        "text": "OpenAI didn't\n**answer TechCrunch**",
+        "key": "OpenAI didn't respond"
+      },
+      "lines": [
+        {
+          "id": "v9p7",
+          "text": "TechCrunch 問 OpenAI 更多細節，到發稿時都沒有回應。"
+        },
+        {
+          "id": "j9ct",
+          "speaker": "kai",
+          "text": "資料中心這個字，今天會一直出現。",
+          "emotion": "抓到"
+        }
+      ]
+    },
+    {
+      "id": "hl-number",
+      "template": "big",
+      "data": {
+        "kicker": "Signal Number",
+        "text": "4",
+        "sub": "rides booked by third-party AI agents · Uber, Q3",
+        "key": "Signal Number: 4"
+      },
+      "lines": [
+        {
+          "id": "99uy",
+          "text": "最後，今天的訊號數字。",
+          "emotion": "停半拍"
+        },
+        {
+          "id": "5032",
+          "text": "四。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "numq",
+          "speaker": "kai",
+          "text": "四什麼？四百萬？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-number-what",
+      "template": "big",
+      "data": {
+        "kicker": "Uber, third quarter",
+        "text": "4 rides\n**booked by AI agents**",
+        "key": "4 rides from AI agents"
+      },
+      "lines": [
+        {
+          "id": "numa",
+          "text": "是四趟車。Uber 昨天在財報會議上說，第三季整季，第三方 AI 代理只叫了這麼多趟。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "x4cc",
+          "speaker": "kai",
+          "text": "一整季？",
+          "emotion": "誇張地拉長"
+        }
+      ]
+    },
+    {
+      "id": "hl-number-eats",
+      "template": "stats",
+      "data": {
+        "title": "Uber Eats, per The Verge",
+        "stats": [
+          {
+            "value": "~500",
+            "label": "orders by AI agents",
+            "note": "Halloween week only"
+          }
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "key": "Eats: ~500 in one week"
+      },
+      "lines": [
+        {
+          "id": "cbj0",
+          "text": "對，一整季。外送多一點：萬聖節那一週，大約五百筆。不過兩個數字的期間不同，不能直接比。"
+        }
+      ]
+    },
+    {
+      "id": "hl-number-why",
+      "template": "big",
+      "data": {
+        "kicker": "Why it matters",
+        "text": "Skip the app,\n**ask an agent?**",
+        "key": "Agents instead of apps?"
+      },
+      "lines": [
+        {
+          "id": "7oy2",
+          "speaker": "kai",
+          "text": "為什麼大家在意這個數字？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "csbh",
+          "text": "有專家擔心，以後大家叫 AI 代理去叫車、點餐，就不打開 Uber 了。"
+        }
+      ]
+    },
+    {
+      "id": "hl-number-small",
+      "template": "big",
+      "data": {
+        "kicker": "The Verge's read",
+        "text": "That risk\n**is still small**",
+        "key": "The risk: small for now"
+      },
+      "lines": [
+        {
+          "id": "q4fg",
+          "text": "The Verge 認為，從這個數字看，這個風險現在還很小。",
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "yvbf",
+          "speaker": "kai",
+          "text": "所以叫 AI 代理去叫車，還早得很。"
+        }
+      ]
+    },
+    {
+      "id": "sd-open",
+      "chapter": "Signal of the Day：資料中心上了選票",
+      "template": "big",
+      "data": {
+        "kicker": "Signal of the Day",
+        "text": "When voters\n**say no**",
+        "key": "Signal of the Day"
+      },
+      "lines": [
+        {
+          "id": "fhyn",
+          "text": "AI 代理還沒什麼人用；可是撐起 AI 的那些房子，已經有人在用選票擋了。",
+          "emotion": "放慢，像要講故事"
+        },
+        {
+          "id": "h2nb",
+          "text": "我們從一張選票講起。"
+        }
+      ]
+    },
+    {
+      "id": "sd-scene",
+      "template": "big",
+      "data": {
+        "kicker": "Tuesday, Nov 3 · Wisconsin",
+        "text": "A ballot question\n**on an old GM plant**",
+        "key": "A vote on an old GM site"
+      },
+      "lines": [
+        {
+          "id": "i2a5",
+          "text": "想像你住在威斯康辛州的 Janesville。週二，你拿到選票。",
+          "emotion": "放慢、靠近"
+        },
+        {
+          "id": "votq",
+          "speaker": "kai",
+          "text": "選票上寫什麼？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sd-scene-q",
+      "template": "big",
+      "data": {
+        "kicker": "The question",
+        "text": "Vote again before\n**a big project?**",
+        "key": "Another vote first?"
+      },
+      "lines": [
+        {
+          "id": "vota",
+          "text": "有一題是：以前通用汽車工廠那塊地，要做大型開發之前，要不要再讓大家投一次票？"
+        }
+      ]
+    },
+    {
+      "id": "sd-scene-dc",
+      "template": "big",
+      "data": {
+        "kicker": "What's behind it",
+        "text": "A proposed\n**data center**",
+        "key": "Tied to a data center"
+      },
+      "lines": [
+        {
+          "id": "x4e0",
+          "speaker": "kai",
+          "text": "這跟資料中心有什麼關係？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "4dqz",
+          "text": "據 Decrypt，那塊地，跟一座擬議中的資料中心有關。結果，超過六成的人投了贊成。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-def",
+      "template": "big",
+      "data": {
+        "kicker": "Data center =",
+        "text": "Chips and servers\n**that run AI**",
+        "key": "Where AI actually runs"
+      },
+      "lines": [
+        {
+          "id": "terq",
+          "speaker": "kai",
+          "text": "先翻白話：資料中心到底是什麼？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "w24t",
+          "text": "就是放滿晶片和伺服器的大樓。你問 AI 的每個問題，都是在這種地方算出來的。"
+        }
+      ]
+    },
+    {
+      "id": "sd-many",
+      "template": "big",
+      "data": {
+        "kicker": "Not just one town",
+        "text": "At least 29\n**places voted to limit**",
+        "key": "29+ places vote to limit"
+      },
+      "lines": [
+        {
+          "id": "vptb",
+          "text": "而 Janesville 不是特例。"
+        },
+        {
+          "id": "gslf",
+          "text": "Decrypt 引述華盛頓郵報：週二，美國至少二十九個地方的選民，支持禁止或限制資料中心。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "qckq",
+          "speaker": "kai",
+          "text": "這麼多地方。",
+          "emotion": "驚訝"
+        }
+      ]
+    },
+    {
+      "id": "sd-why",
+      "template": "big",
+      "data": {
+        "kicker": "Why now",
+        "text": "Huge power use,\n**higher bills?**",
+        "key": "The worry: power bills"
+      },
+      "lines": [
+        {
+          "id": "9gmv",
+          "speaker": "kai",
+          "text": "可是為什麼？AI 不是大家都在用嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "wggb",
+          "text": "因為電。Decrypt 說，資料中心用電量太大，居民擔心推高電費，也加重電網的負擔。"
+        }
+      ]
+    },
+    {
+      "id": "sd-why-more",
+      "template": "bullets",
+      "data": {
+        "title": "Other worries, per Decrypt",
+        "items": [
+          "Water",
+          "Noise",
+          "Deals out of public view"
+        ],
+        "source": "Decrypt, Nov 4, 2026",
+        "keys": [
+          "Only power?",
+          "Water",
+          "Noise",
+          "Deals out of public view"
+        ]
+      },
+      "lines": [
+        {
+          "id": "6syb",
+          "speaker": "kai",
+          "text": "只有電嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "v4fe",
+          "text": "還有用水，",
+          "reveal": 1
+        },
+        {
+          "id": "g6az",
+          "text": "噪音，",
+          "reveal": 1
+        },
+        {
+          "id": "4qk5",
+          "text": "還有開發協議缺少公眾監督。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-near",
+      "template": "big",
+      "data": {
+        "kicker": "The shift",
+        "text": "Far-off AI\n**next door**",
+        "key": "The cloud has neighbors"
+      },
+      "lines": [
+        {
+          "id": "j8kn",
+          "text": "你平常用 AI，覺得它在雲端、很遠。可是雲端，其實是蓋在某些人家附近的一棟房子。"
+        },
+        {
+          "id": "12ah",
+          "speaker": "kai",
+          "text": "而那些人，手上有選票。"
+        }
+      ]
+    },
+    {
+      "id": "sd-poll",
+      "template": "stats",
+      "data": {
+        "title": "NBC News, election day",
+        "stats": [
+          {
+            "value": "76%",
+            "label": "of voters oppose a data center",
+            "note": "in their own community"
+          }
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "key": "76% oppose one nearby"
+      },
+      "lines": [
+        {
+          "id": "hkoq",
+          "text": "The Verge 引述 NBC News 選舉日的調查：百分之七十六的受訪選民，反對自己的社區出現資料中心。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-count",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Ballotpedia",
+          "icon": "checklist",
+          "points": [
+            "41 measures, 10 states",
+            "28: a yes vote limits"
+          ]
+        },
+        "right": {
+          "heading": "Redbud tally",
+          "icon": "search",
+          "points": [
+            "45 local measures",
+            "33 lean toward limits"
+          ]
+        },
+        "source": "Decrypt; The Verge, Nov 4, 2026",
+        "keys": [
+          "How many measures?",
+          "Ballotpedia: 41 measures",
+          "Redbud: 33 of 45"
+        ]
+      },
+      "lines": [
+        {
+          "id": "21i7",
+          "speaker": "kai",
+          "text": "總共有多少題在投？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "nfom",
+          "text": "看誰算。Decrypt 引述選舉資料網站 Ballotpedia：十個州共四十一項，其中二十八項，投贊成就是限制。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "olgz",
+          "text": "The Verge 引用另一份整理：四十五項地方公投裡，到週三早上，有三十三項的結果會限制開發。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-examples",
+      "template": "table",
+      "data": {
+        "columns": [
+          "Where",
+          "What voters backed"
+        ],
+        "rows": [
+          [
+            "Hubbard, Ohio",
+            "A ban, 3 in 4 voters"
+          ],
+          [
+            "Wells, Maine",
+            "A 180-day pause"
+          ],
+          [
+            "El Dorado, Kansas",
+            "10 years: no sites over 10 MW"
+          ]
+        ],
+        "source": "Decrypt; The Verge, Nov 4, 2026",
+        "keys": [
+          "What did they pass?",
+          "Hubbard: 3/4+ back a ban",
+          "Wells: a 180-day pause",
+          "El Dorado: a 10-year cap"
+        ]
+      },
+      "lines": [
+        {
+          "id": "xbgb",
+          "speaker": "kai",
+          "text": "投過的，都長什麼樣？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "atya",
+          "text": "俄亥俄州的 Hubbard，超過四分之三的人，支持禁止資料中心。",
+          "reveal": 1
+        },
+        {
+          "id": "oq86",
+          "text": "緬因州的 Wells 鎮，對大型資料中心暫停一百八十天。",
+          "reveal": 1
+        },
+        {
+          "id": "9snz",
+          "text": "堪薩斯州一個城市，十年內，不准用電超過十兆瓦的資料中心。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-flip",
+      "template": "big",
+      "data": {
+        "kicker": "The other side",
+        "text": "Measures backing\n**projects, too**",
+        "key": "Some asked to back them"
+      },
+      "lines": [
+        {
+          "id": "tbsc",
+          "speaker": "kai",
+          "text": "有沒有反過來，問要不要支持的？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "dov8",
+          "text": "有。Ballotpedia 那四十一項裡，另外十三項，是允許或支持資料中心的。"
+        }
+      ]
+    },
+    {
+      "id": "sd-joliet",
+      "template": "big",
+      "data": {
+        "kicker": "Joliet Township, Illinois",
+        "text": "Nearly 80%\n**voted no**",
+        "key": "Joliet: ~80% said no"
+      },
+      "lines": [
+        {
+          "id": "0xoa",
+          "text": "像伊利諾州的 Joliet，近八成選民，否決了一個支持 AI 資料中心的諮詢提案。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "b8ht",
+          "speaker": "kai",
+          "text": "連問要不要支持，都被否決。"
+        }
+      ]
+    },
+    {
+      "id": "sd-advisory",
+      "template": "big",
+      "data": {
+        "kicker": "Not all binding",
+        "text": "Some votes\n**only advise**",
+        "key": "Some are advisory only"
+      },
+      "lines": [
+        {
+          "id": "advq",
+          "speaker": "kai",
+          "text": "所以這些地方，現在就不能蓋了？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "adva",
+          "text": "不一定。Decrypt 說，有些只是諮詢性投票，表達民意，通過了也不會自動停工。"
+        }
+      ]
+    },
+    {
+      "id": "sd-texas",
+      "template": "big",
+      "data": {
+        "kicker": "Statewide · Decrypt",
+        "text": "Texas: Hinojosa\n**backs a pause**",
+        "key": "Texas: pause backer wins"
+      },
+      "lines": [
+        {
+          "id": "mrdo",
+          "text": "地方之外還有州。德州的民主黨候選人，擊敗了現任州長。"
+        },
+        {
+          "id": "y4hj",
+          "text": "她競選時，主張暫停新的資料中心。"
+        }
+      ]
+    },
+    {
+      "id": "sd-state",
+      "template": "big",
+      "data": {
+        "kicker": "Per Decrypt",
+        "text": "Stricter\n**state rules?**",
+        "key": "Maybe stricter rules"
+      },
+      "lines": [
+        {
+          "id": "g3mm",
+          "speaker": "kai",
+          "text": "一個州長，管得到這麼多？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "rd7c",
+          "text": "Decrypt 認為，這類勝選，可能帶來更嚴格的州級規範。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-careful",
+      "template": "big",
+      "data": {
+        "kicker": "The Verge's caution",
+        "text": "Hard to say\n**it decided races**",
+        "key": "Not the only reason"
+      },
+      "lines": [
+        {
+          "id": "xnxr",
+          "speaker": "kai",
+          "text": "所以，資料中心決定了選舉？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "5zz0",
+          "text": "The Verge 特別提醒：很難把哪一位當選，直接歸功於這個議題。也有主張溫和限制的人勝選。",
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-money-q",
+      "template": "big",
+      "data": {
+        "kicker": "Follow the money",
+        "text": "Who pays\n**for the power?**",
+        "key": "Who pays for the power?"
+      },
+      "lines": [
+        {
+          "id": "monq",
+          "speaker": "kai",
+          "text": "那誰贏誰輸？錢的部分呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "8mfi",
+          "text": "最直接的是開發商。The Verge 說，他們接下來要面對更難蓋的環境。"
+        }
+      ]
+    },
+    {
+      "id": "sd-terms",
+      "template": "bullets",
+      "data": {
+        "title": "What winners proposed",
+        "items": [
+          "Developers pay for power, water",
+          "End the tax breaks",
+          "No NDAs on projects"
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "keys": [
+          "Even without a pause",
+          "Pay own power and water",
+          "End the tax breaks",
+          "No NDAs on projects"
+        ]
+      },
+      "lines": [
+        {
+          "id": "su43",
+          "text": "就算不主張暫停的當選人，也提了別的條件。"
+        },
+        {
+          "id": "e351",
+          "text": "像佛羅里達的共和黨當選人，提案要開發商自己負擔能源和用水；",
+          "reveal": 1
+        },
+        {
+          "id": "8ra8",
+          "speaker": "kai",
+          "text": "還有呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "fcxn",
+          "text": "愛荷華的當選人，跟對手一樣，同意停掉稅收優惠；",
+          "reveal": 1
+        },
+        {
+          "id": "m1tz",
+          "text": "賓州州長簽了行政命令，禁止資料中心開發案用保密協議。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-industry",
+      "template": "big",
+      "data": {
+        "kicker": "The industry's move",
+        "text": "Lobbying,\n**and a new name**",
+        "key": "Lobbying and rebranding"
+      },
+      "lines": [
+        {
+          "id": "26e8",
+          "speaker": "kai",
+          "text": "AI 公司一定不開心吧？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "ifrg",
+          "text": "Decrypt 說，有的加強遊說，有的做公關，像 OpenAI，想把資料中心改叫運算園區。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-qcom",
+      "template": "big",
+      "data": {
+        "kicker": "Also Nov 4 · The Verge",
+        "text": "Qualcomm bets\n**on data centers**",
+        "key": "Qualcomm bets on AI"
+      },
+      "lines": [
+        {
+          "id": "c25g",
+          "text": "另一邊，昨天的新聞裡，晶片公司高通，正把成長押在 AI 資料中心。"
+        },
+        {
+          "id": "kffj",
+          "speaker": "kai",
+          "text": "高通？不是做手機晶片的嗎？",
+          "emotion": "意外"
+        }
+      ]
+    },
+    {
+      "id": "sd-qcom-why",
+      "template": "stats",
+      "data": {
+        "title": "Qualcomm, per The Verge",
+        "stats": [
+          {
+            "value": "~20%",
+            "label": "drop in phone sales",
+            "note": "vs. 2025"
+          },
+          {
+            "value": "$15B",
+            "label": "data center revenue goal",
+            "note": "for 2029"
+          },
+          {
+            "value": "~30%",
+            "label": "of its business, eventually",
+            "note": "a forecast"
+          }
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "keys": [
+          "Phones: down about 20%",
+          "2029 goal: $15B",
+          "Goal: ~30% of business"
+        ]
+      },
+      "lines": [
+        {
+          "id": "24fy",
+          "text": "就是因為手機。The Verge 說，智慧型手機銷量比 2025 年少了大約兩成。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "k5se",
+          "text": "高通預測，2029 年資料中心營收要做到一百五十億美元，",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "ncun",
+          "text": "最後占它業務的三成左右。這些都是公司自己的預測。",
+          "reveal": 1,
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-qcom-link",
+      "template": "big",
+      "data": {
+        "kicker": "The link",
+        "text": "Chips need\n**buildings**",
+        "key": "Chips need buildings"
+      },
+      "lines": [
+        {
+          "id": "q2gi",
+          "speaker": "kai",
+          "text": "所以選民擋資料中心，會擋到高通？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "mona",
+          "text": "報導沒這樣說，我們不推論。但晶片押注的資料中心，總得蓋在某個地方。"
+        }
+      ]
+    },
+    {
+      "id": "sd-taiwan",
+      "template": "big",
+      "data": {
+        "kicker": "What about Taiwan?",
+        "text": "Taiwan, Asia?\n**not in these sources**",
+        "key": "Taiwan: not mentioned"
+      },
+      "lines": [
+        {
+          "id": "twnq",
+          "speaker": "kai",
+          "text": "晶片、資料中心，聽起來跟台灣很有關。報導有提到台灣嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "twna",
+          "text": "老實說，今天這幾篇都沒有提到台灣，我們不硬湊。",
+          "emotion": "放穩"
+        }
+      ]
+    },
+    {
+      "id": "sd-ram",
+      "template": "big",
+      "data": {
+        "kicker": "One link we can see",
+        "text": "AI data centers\n**buy up memory**",
+        "key": "Data centers buy up RAM"
+      },
+      "lines": [
+        {
+          "id": "vgq2",
+          "text": "看得到的一條線，是記憶體。"
+        },
+        {
+          "id": "o8a8",
+          "text": "The Verge 寫，AI 資料中心一直在搶購全球的記憶體，造成短缺，科技產品跟著漲價。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-ram-when",
+      "template": "stats",
+      "data": {
+        "title": "How long, by makers' forecasts",
+        "stats": [
+          {
+            "value": "2027",
+            "label": "Intel: at least into next year",
+            "note": "\"next year\" in the report"
+          },
+          {
+            "value": "2030",
+            "label": "SK Hynix: could last until"
+          }
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "keys": [
+          "Harder to add RAM",
+          "Intel: into next year",
+          "SK Hynix: maybe 2030"
+        ]
+      },
+      "lines": [
+        {
+          "id": "upfl",
+          "speaker": "kai",
+          "text": "所以連買電腦都會被影響？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "28yk",
+          "text": "The Verge 說，短缺已經讓很多人更難幫電腦裝大量記憶體。"
+        },
+        {
+          "id": "bbfv",
+          "text": "要多久？英特爾預期至少到明年，",
+          "reveal": 1
+        },
+        {
+          "id": "yb2l",
+          "text": "記憶體廠 SK 海力士說，可能拖到 2030 年。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-ram-unknown",
+      "template": "big",
+      "data": {
+        "kicker": "Not answered",
+        "text": "Fewer builds,\n**more memory?**",
+        "key": "Supply effect: unknown"
+      },
+      "lines": [
+        {
+          "id": "rq0j",
+          "speaker": "kai",
+          "text": "那美國少蓋幾座，記憶體會比較好買嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "omt0",
+          "text": "來源沒有說，我們不猜。亞洲供應鏈會不會受影響，今天也沒有答案。"
+        }
+      ]
+    },
+    {
+      "id": "sd-next",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Binding?",
+            "detail": "or advisory",
+            "icon": "document"
+          },
+          {
+            "title": "State rules",
+            "detail": "new governors",
+            "icon": "gear"
+          },
+          {
+            "title": "Who pays",
+            "detail": "power, water, tax",
+            "icon": "lightning"
+          }
+        ],
+        "source": "Decrypt; The Verge, Nov 4, 2026",
+        "keys": [
+          "Three things to watch",
+          "Which votes are binding",
+          "New state rules",
+          "Who pays for power"
+        ]
+      },
+      "lines": [
+        {
+          "id": "awwt",
+          "text": "接下來，看三件事。",
+          "emotion": "收束，節奏放穩"
+        },
+        {
+          "id": "9dal",
+          "text": "第一，哪些投票真的有約束力，哪些只是表態。",
+          "reveal": 1
+        },
+        {
+          "id": "zm5l",
+          "speaker": "kai",
+          "text": "第二呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "9965",
+          "text": "新當選的州長，會不會把暫停寫成州的規定。",
+          "reveal": 1
+        },
+        {
+          "id": "v8ir",
+          "text": "第三，電費、用水和稅收優惠，最後由誰來付。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-timeline",
+      "template": "big",
+      "data": {
+        "kicker": "No timetable yet",
+        "text": "Policy depends on\n**what gets passed**",
+        "key": "No timeline given"
+      },
+      "lines": [
+        {
+          "id": "1os9",
+          "speaker": "kai",
+          "text": "多快會看到？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "2a7u",
+          "text": "The Verge 說，實際政策要看後續的立法和執行，報導沒有給時間表。"
+        }
+      ]
+    },
+    {
+      "id": "sd-2028",
+      "template": "big",
+      "data": {
+        "kicker": "And then",
+        "text": "The 2028\n**election**",
+        "key": "Next: the 2028 race"
+      },
+      "lines": [
+        {
+          "id": "kspt",
+          "text": "再往後，是 2028 年的大選。"
+        },
+        {
+          "id": "7m2b",
+          "speaker": "kai",
+          "text": "就是剛剛 OpenAI 那篇在講的？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sd-2028-why",
+      "template": "big",
+      "data": {
+        "kicker": "TechCrunch's view",
+        "text": "Power bills, jobs\n**on the ballot?**",
+        "key": "2028: a bigger AI issue?"
+      },
+      "lines": [
+        {
+          "id": "yqj3",
+          "text": "對。TechCrunch 認為，如果選民擔心電費、擔心工作被取代，AI 會變成更大的議題。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-back",
+      "template": "big",
+      "data": {
+        "kicker": "Back in Janesville",
+        "text": "One ballot,\n**one building**",
+        "key": "One ballot, one building"
+      },
+      "lines": [
+        {
+          "id": "bbtv",
+          "text": "回到 Janesville 那張選票。它問的，只是一塊地、一棟房子。",
+          "emotion": "放慢，回到場景"
+        },
+        {
+          "id": "z2uw",
+          "speaker": "kai",
+          "text": "可是像這樣的選票，不只一張。"
+        }
+      ]
+    },
+    {
+      "id": "sd-wrap",
+      "template": "big",
+      "data": {
+        "kicker": "The signal",
+        "text": "AI infrastructure\n**is now a ballot issue**",
+        "key": "AI is now a ballot issue"
+      },
+      "lines": [
+        {
+          "id": "dum4",
+          "text": "對。剛剛那二十九個地方加起來，AI 的基礎建設，就成了選票上的題目。",
+          "emotion": "放慢，總結"
+        }
+      ]
+    },
+    {
+      "id": "wp-open",
+      "chapter": "What People Are Saying：三句原話",
+      "template": "bullets",
+      "data": {
+        "title": "Three voices",
+        "items": [
+          {
+            "text": "BlackRock's CEO",
+            "icon": "chat"
+          },
+          {
+            "text": "AI Now's Kate Brennan",
+            "icon": "chat"
+          },
+          {
+            "text": "Uber's CEO",
+            "icon": "chat"
+          }
+        ],
+        "key": "What people are saying"
+      },
+      "lines": [
+        {
+          "id": "tlgt",
+          "speaker": "kai",
+          "text": "選民用票說話了。那業界和批評的人，怎麼說？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "mg2t",
+          "text": "我們挑了三句，都是原始報導裡的原話。"
+        }
+      ]
+    },
+    {
+      "id": "wp-fink",
+      "template": "quote",
+      "data": {
+        "kicker": "BlackRock CEO Larry Fink, last month",
+        "quote": "If we have a moratorium of some sort in this country, we will be in a recession.",
+        "source": "Quoted by Decrypt, Nov 4, 2026",
+        "key": "Fink: pause = recession"
+      },
+      "lines": [
+        {
+          "id": "lbw1",
+          "text": "第一句，是貝萊德執行長上個月說的。"
+        },
+        {
+          "id": "k97z",
+          "text": "他說：如果這個國家實施某種暫停令，我們就會陷入經濟衰退。"
+        }
+      ]
+    },
+    {
+      "id": "wp-brennan",
+      "template": "quote",
+      "data": {
+        "kicker": "AI Now's Kate Brennan, on Lehane's essay",
+        "quote": "…ahistorical at best and harmful at worst.",
+        "source": "Quoted by TechCrunch, Nov 4, 2026",
+        "key": "Critic: harmful at worst"
+      },
+      "lines": [
+        {
+          "id": "n22p",
+          "speaker": "kai",
+          "text": "很重的一句。第二句呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "wvgr",
+          "text": "研究機構 AI Now 的 Brennan，評論 OpenAI 那篇。"
+        },
+        {
+          "id": "sy2z",
+          "text": "她說，往好處說是不顧歷史，往壞處說是有害。"
+        }
+      ]
+    },
+    {
+      "id": "wp-brennan-why",
+      "template": "big",
+      "data": {
+        "kicker": "Her point",
+        "text": "A private company\n**pushing its own policy**",
+        "key": "Her point: self-interest"
+      },
+      "lines": [
+        {
+          "id": "fx7i",
+          "speaker": "kai",
+          "text": "為什麼這麼說？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "ymgf",
+          "text": "她認為，這是一家私人公司，在為自己的利益倡議政策。"
+        }
+      ]
+    },
+    {
+      "id": "wp-uber",
+      "template": "quote",
+      "data": {
+        "kicker": "Uber CEO Dara Khosrowshahi, on AI agents",
+        "quote": "It is just very, very early…",
+        "source": "Quoted by The Verge, Nov 4, 2026",
+        "key": "Uber: very, very early"
+      },
+      "lines": [
+        {
+          "id": "atwo",
+          "speaker": "kai",
+          "text": "最後一句？"
+        },
+        {
+          "id": "syf4",
+          "text": "跟訊號數字有關。Uber 執行長說，現在還非常、非常早期。"
+        },
+        {
+          "id": "8tfq",
+          "text": "他也說，Uber 要確保自己不依賴任何單一業者。"
+        }
+      ]
+    },
+    {
+      "id": "ms-open",
+      "chapter": "Money Signal：銀行的 AI 框架、代幣化股票、Circle 裁員",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 4 · OCC, via Decrypt",
+        "text": "A bank regulator's\n**first AI framework**",
+        "key": "OCC: first AI framework"
+      },
+      "lines": [
+        {
+          "id": "sqnb",
+          "text": "Uber 說還很早；可是 AI 代理一旦能動到錢，銀行那邊已經緊張起來了。",
+          "emotion": "語氣一轉"
+        },
+        {
+          "id": "s9lu",
+          "speaker": "kai",
+          "text": "連監理機關都出手了？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-occ",
+      "template": "big",
+      "data": {
+        "kicker": "OCC · Nov 4",
+        "text": "Bank AI, judged\n**by what can go wrong**",
+        "key": "Judged by what can fail"
+      },
+      "lines": [
+        {
+          "id": "jg1n",
+          "text": "對。據 Decrypt，美國通貨監理署 OCC 昨天發布了第一份銀行業的 AI 監理框架。"
+        },
+        {
+          "id": "8icx",
+          "speaker": "kai",
+          "text": "監理署是管什麼的？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-occ-who",
+      "template": "stats",
+      "data": {
+        "title": "Who it's for",
+        "stats": [
+          {
+            "value": "22",
+            "label": "pages, for bank examiners"
+          }
+        ],
+        "source": "Decrypt, Nov 4, 2026",
+        "key": "Written for examiners"
+      },
+      "lines": [
+        {
+          "id": "zrmc",
+          "text": "管銀行的。這份二十二頁的框架，寫給檢查人員看，也就是去評估銀行怎麼用 AI 的人。"
+        }
+      ]
+    },
+    {
+      "id": "ms-occ-how",
+      "template": "bullets",
+      "data": {
+        "title": "What examiners weigh",
+        "items": [
+          "What happens if it fails",
+          "Can the action be undone?",
+          "How much humans control"
+        ],
+        "source": "Decrypt, Nov 4, 2026",
+        "keys": [
+          "Not how smart it is",
+          "If it fails, then what?",
+          "Can it be undone?",
+          "Who stays in control?"
+        ]
+      },
+      "lines": [
+        {
+          "id": "qev6",
+          "speaker": "kai",
+          "text": "他們看什麼？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "o5cu",
+          "text": "不是看 AI 有多強，而是三件事：出錯的後果，",
+          "reveal": 1
+        },
+        {
+          "id": "w7us",
+          "text": "動作能不能撤回，",
+          "reveal": 1
+        },
+        {
+          "id": "oqrx",
+          "text": "還有人類保有多少控制權。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ms-occ-top",
+      "template": "big",
+      "data": {
+        "kicker": "Highest risk",
+        "text": "AI agents\n**that can pay**",
+        "key": "Top risk: paying agents"
+      },
+      "lines": [
+        {
+          "id": "mt7a",
+          "text": "列在最高風險的，是完全自主的付款代理，還有即時決定信用的系統。"
+        },
+        {
+          "id": "vory",
+          "speaker": "kai",
+          "text": "比很強的模型還危險？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-occ-simple",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Simple agent",
+          "icon": "lightning",
+          "points": [
+            "Can start payments",
+            "Possibly higher risk"
+          ]
+        },
+        "right": {
+          "heading": "Advanced model",
+          "icon": "document",
+          "points": [
+            "Writes internal docs",
+            "Possibly lower risk"
+          ]
+        },
+        "source": "Decrypt, Nov 4, 2026",
+        "key": "Simple payer, more risk"
+      },
+      "lines": [
+        {
+          "id": "ofxn",
+          "text": "對。OCC 認為，一個能發起交易的簡單代理，風險可能高過只寫內部文件的先進模型。"
+        }
+      ]
+    },
+    {
+      "id": "ms-occ-guard",
+      "template": "bullets",
+      "data": {
+        "title": "Suggested safeguards",
+        "items": [
+          "Circuit breakers",
+          "Rate limits",
+          "Limited permissions",
+          "Kill switch"
+        ],
+        "source": "Decrypt, Nov 4, 2026",
+        "keys": [
+          "How to keep it safe?",
+          "Circuit breakers",
+          "Rate limits",
+          "Less access, kill switch"
+        ]
+      },
+      "lines": [
+        {
+          "id": "8o1z",
+          "speaker": "kai",
+          "text": "那要怎麼管？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "x0l1",
+          "text": "建議的保護有斷路器，就是出問題時，讓系統停下來；",
+          "reveal": 1
+        },
+        {
+          "id": "3wb1",
+          "speaker": "kai",
+          "text": "像家裡的總開關。"
+        },
+        {
+          "id": "61wf",
+          "text": "對。還有限制一段時間內，能做幾次動作；",
+          "reveal": 1
+        },
+        {
+          "id": "8vru",
+          "text": "縮小權限，還有緊急關閉。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "ms-occ-axios",
+      "template": "big",
+      "data": {
+        "kicker": "Per Axios, Oct 22",
+        "text": "Unapproved agents\n**in customer accounts**",
+        "key": "Rogue agents in accounts"
+      },
+      "lines": [
+        {
+          "id": "yqdl",
+          "text": "背景是，Decrypt 引述 Axios：銀行發現，有未經授權的第三方 AI 代理，在客戶帳戶裡運作。",
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "9dp7",
+          "speaker": "kai",
+          "text": "這也太可怕。"
+        }
+      ]
+    },
+    {
+      "id": "ms-occ-banks",
+      "template": "big",
+      "data": {
+        "kicker": "Banks respond",
+        "text": "Block them,\n**or limit access**",
+        "key": "Banks block or limit"
+      },
+      "lines": [
+        {
+          "id": "tvdn",
+          "text": "摩根士丹利在擋外部代理，摩根大通、美國銀行和花旗在限制存取。"
+        },
+        {
+          "id": "5l7f",
+          "text": "不過 OCC 沒有把框架，跟這些事件直接連在一起。",
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "ms-occ-rule",
+      "template": "big",
+      "data": {
+        "kicker": "What it is",
+        "text": "Guidance\n**not new law**",
+        "key": "Guidance, not new law"
+      },
+      "lines": [
+        {
+          "id": "iref",
+          "speaker": "kai",
+          "text": "所以銀行明天就要照做？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "c2tl",
+          "text": "不是。OCC 強調，這不是新規定，是讓檢查人員用既有的風險類別評估 AI。"
+        },
+        {
+          "id": "7m5u",
+          "speaker": "kai",
+          "text": "所以是指引。"
+        }
+      ]
+    },
+    {
+      "id": "ms-ms",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 3 · Decrypt",
+        "text": "Morgan Stanley\n**tokenizes stocks**",
+        "key": "Stocks, now as tokens"
+      },
+      "lines": [
+        {
+          "id": "xk39",
+          "text": "第二則，回到華爾街。據 Decrypt，摩根士丹利週二說，",
+          "emotion": "串場"
+        },
+        {
+          "id": "suq6",
+          "text": "它透過 DTCC 的新服務，把美國股票和公債，轉成了區塊鏈代幣。"
+        }
+      ]
+    },
+    {
+      "id": "ms-dtc",
+      "template": "stats",
+      "data": {
+        "title": "Wall Street's plumbing",
+        "stats": [
+          {
+            "value": "$114T+",
+            "label": "in assets held by DTC"
+          }
+        ],
+        "source": "Decrypt, Nov 4, 2026",
+        "key": "DTC: $114T+ in custody"
+      },
+      "lines": [
+        {
+          "id": "gyam",
+          "speaker": "kai",
+          "text": "等等，DTCC 是誰？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "ftzx",
+          "text": "美國的存管結算公司。旗下的 DTC，負責成交後的保管和交割，託管超過一百一十四兆美元。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "ms-twin",
+      "template": "big",
+      "data": {
+        "kicker": "DTCC says",
+        "text": "A digital twin\n**same rights**",
+        "key": "Token keeps same rights"
+      },
+      "lines": [
+        {
+          "id": "2s5d",
+          "speaker": "kai",
+          "text": "變成代幣之後，權利會變嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "jk7p",
+          "text": "DTCC 說不會。代幣跟原本的證券，有一樣的所有權和投資人保護，也能換回去。"
+        }
+      ]
+    },
+    {
+      "id": "ms-who",
+      "template": "big",
+      "data": {
+        "kicker": "Who can use it",
+        "text": "Banks, yes\n**retail, no**",
+        "key": "Firms only, not retail"
+      },
+      "lines": [
+        {
+          "id": "q4cl",
+          "speaker": "kai",
+          "text": "一般人用得到嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "lwdi",
+          "text": "目前不行。用的是符合資格的金融機構，已經有二十家報名，包括美國銀行、花旗和摩根大通。"
+        }
+      ]
+    },
+    {
+      "id": "ms-contrast",
+      "template": "big",
+      "data": {
+        "kicker": "Decrypt's take",
+        "text": "Tokenization\n**led by the banks**",
+        "key": "Led by banks, not crypto"
+      },
+      "lines": [
+        {
+          "id": "r6no",
+          "text": "Decrypt 說，這是銀行主導的做法，跟加密貨幣業者自己推出代幣化股票，不一樣。"
+        },
+        {
+          "id": "pdn6",
+          "speaker": "kai",
+          "text": "等於華爾街自己下場做。"
+        }
+      ]
+    },
+    {
+      "id": "ms-circle",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 4 · Decrypt",
+        "text": "Circle cuts\n**about 5% of staff**",
+        "key": "Circle: ~5% of staff cut"
+      },
+      "lines": [
+        {
+          "id": "7zu7",
+          "text": "最後一則，關於工作。",
+          "emotion": "串場"
+        },
+        {
+          "id": "t7ie",
+          "text": "據 Decrypt，USDC 穩定幣的發行商 Circle，在第三季財報裡揭露，裁掉大約百分之五的員工。"
+        }
+      ]
+    },
+    {
+      "id": "ms-circle-why",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Profit",
+          "icon": "arrow",
+          "points": [
+            "Net income up 5%"
+          ]
+        },
+        "right": {
+          "heading": "Biggest income source",
+          "icon": "clock",
+          "points": [
+            "Reserve income down 8%",
+            "Lower interest rates"
+          ]
+        },
+        "source": "Decrypt, citing Circle, Nov 4, 2026",
+        "keys": [
+          "Business bad?",
+          "Profit still grew",
+          "Its main income fell"
+        ]
+      },
+      "lines": [
+        {
+          "id": "drw6",
+          "speaker": "kai",
+          "text": "生意不好嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "to9e",
+          "text": "其實這季有賺，淨利比去年多百分之五。",
+          "reveal": 1
+        },
+        {
+          "id": "oaq5",
+          "text": "但最大的收入來源，也就是支撐 USDC 那些資產的利息，因為利率下降，少了百分之八。",
+          "reveal": 1
+        },
+        {
+          "id": "d2yl",
+          "speaker": "kai",
+          "text": "有賺錢，也裁員。"
+        }
+      ]
+    },
+    {
+      "id": "ms-circle-unknown",
+      "template": "bullets",
+      "data": {
+        "title": "Not disclosed by Circle",
+        "items": [
+          "How many people",
+          "Which teams"
+        ],
+        "source": "Decrypt, Nov 4, 2026",
+        "key": "How many? Not disclosed"
+      },
+      "lines": [
+        {
+          "id": "elrc",
+          "text": "Circle 說，是為了讓組織更符合營運模式和策略重點，但沒說裁了幾個人、哪些團隊。"
+        }
+      ]
+    },
+    {
+      "id": "ms-circle-wave",
+      "template": "table",
+      "data": {
+        "columns": [
+          "Company",
+          "Cut"
+        ],
+        "rows": [
+          [
+            "Coinbase, May",
+            "14%"
+          ],
+          [
+            "Ethereum Foundation, June",
+            "20%"
+          ],
+          [
+            "Bitwise, August",
+            "14%"
+          ]
+        ],
+        "source": "Decrypt, Nov 4, 2026",
+        "key": "Crypto cuts, AI cited"
+      },
+      "lines": [
+        {
+          "id": "5sy1",
+          "speaker": "kai",
+          "text": "只有它在裁嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "7kus",
+          "text": "不是。Decrypt 列出，今年 Coinbase、以太坊基金會等加密企業都裁過員，理由包括市場轉弱、AI，或兩者都有。"
+        }
+      ]
+    },
+    {
+      "id": "ms-cb",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 4 · Decrypt",
+        "text": "Coinbase:\n**not hit by the hack**",
+        "key": "Coinbase: not affected"
+      },
+      "lines": [
+        {
+          "id": "8i38",
+          "text": "說到帳戶安全，順便補一則。",
+          "emotion": "串場"
+        },
+        {
+          "id": "952e",
+          "text": "據 Decrypt，Coinbase 昨天在部落格說，上週幣安遭駭，沒有影響到它。"
+        },
+        {
+          "id": "5zbr",
+          "speaker": "kai",
+          "text": "它怎麼說自己比較安全？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-cb-how",
+      "template": "bullets",
+      "data": {
+        "title": "Coinbase's own account",
+        "items": [
+          "99%+ in offline cold storage",
+          "Keys split, never rejoined",
+          "Odd withdrawals held for review"
+        ],
+        "source": "Decrypt, Nov 4, 2026",
+        "keys": [
+          "Over 99% kept offline",
+          "Keys split into parts",
+          "Odd withdrawals held"
+        ]
+      },
+      "lines": [
+        {
+          "id": "4dbk",
+          "text": "它說，超過百分之九十九的客戶資產，放在不連網的冷儲存。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "8w63",
+          "text": "私鑰被切成好幾份，簽交易時也不會完整拼回來；",
+          "reveal": 1
+        },
+        {
+          "id": "0eaj",
+          "text": "提領量突然暴增，會先暫扣，等人工審查。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ms-cb-note",
+      "template": "big",
+      "data": {
+        "kicker": "Keep in mind",
+        "text": "Its own words\n**not an outside review**",
+        "key": "Coinbase's own claims"
+      },
+      "lines": [
+        {
+          "id": "2bi8",
+          "speaker": "kai",
+          "text": "所以 Coinbase 就絕對安全？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "dp9t",
+          "text": "不能這樣說。這些都是 Coinbase 自己的說法，經 Decrypt 轉述，不是外部機構的評估。",
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "ms-you",
+      "template": "big",
+      "data": {
+        "kicker": "For you",
+        "text": "Money rules, jobs\n**no price talk**",
+        "key": "No prices, no tips here"
+      },
+      "lines": [
+        {
+          "id": "jhpv",
+          "speaker": "kai",
+          "text": "這段對一般人的意義？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "7duu",
+          "text": "AI 代理碰到錢的規則，正在成形；工作也在被重新安排。提醒一下，這段不談任何價格。"
+        }
+      ]
+    },
+    {
+      "id": "tt-open",
+      "chapter": "Try This：會聽、會存、會付錢的 AI",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Listening AI",
+            "detail": "know when",
+            "icon": "search"
+          },
+          {
+            "title": "Conductor",
+            "detail": "save your work",
+            "icon": "folder"
+          },
+          {
+            "title": "AI and money",
+            "detail": "set limits",
+            "icon": "lock"
+          }
+        ],
+        "source": "Our advice",
+        "key": "Today: three checks"
+      },
+      "lines": [
+        {
+          "id": "5eze",
+          "speaker": "kai",
+          "text": "好，實際一點。聽完這些新聞，我們今天能做什麼？",
+          "emotion": "認真起來"
+        },
+        {
+          "id": "bcyl",
+          "text": "下面三件，都是節目的建議，不是蘋果、Conductor 或銀行的指示。",
+          "emotion": "認真、放慢"
+        }
+      ]
+    },
+    {
+      "id": "tt-listen",
+      "template": "big",
+      "data": {
+        "kicker": "1 · our advice",
+        "text": "Know when\n**it's listening**",
+        "key": "Know when it listens"
+      },
+      "lines": [
+        {
+          "id": "8ijm",
+          "text": "第一，我們的建議：用任何會錄音、會做摘要的 AI 功能，先搞清楚它什麼時候在聽。"
+        },
+        {
+          "id": "bxwm",
+          "speaker": "kai",
+          "text": "像 TechCrunch 那位作者，想在晚上關掉？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "tt-listen-off",
+      "template": "big",
+      "data": {
+        "kicker": "1 · our advice",
+        "text": "Private talk?\n**switch it off**",
+        "key": "Private talk? Switch off"
+      },
+      "lines": [
+        {
+          "id": "12sb",
+          "text": "對。在家、談私事的時候，我們建議先關掉；身邊的人，也可以先跟他們說一聲。"
+        }
+      ]
+    },
+    {
+      "id": "tt-export",
+      "template": "big",
+      "data": {
+        "kicker": "2 · our advice",
+        "text": "Conductor cloud user?\n**save before Nov 20**",
+        "key": "Save it before Nov 20"
+      },
+      "lines": [
+        {
+          "id": "e3d0",
+          "text": "第二，如果你或團隊用 Conductor 的雲端，還記得剛剛那個日期嗎？"
+        },
+        {
+          "id": "9nmu",
+          "text": "我們建議在那之前，把要留的東西存下來。"
+        },
+        {
+          "id": "dll5",
+          "speaker": "kai",
+          "text": "因為之後會刪？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "tt-export-why",
+      "template": "big",
+      "data": {
+        "kicker": "2 · why",
+        "text": "Deletion starts\n**after shutdown**",
+        "key": "Then deletion begins"
+      },
+      "lines": [
+        {
+          "id": "sope",
+          "text": "對。雲端一關，就開始刪資料。"
+        }
+      ]
+    },
+    {
+      "id": "tt-pay",
+      "template": "big",
+      "data": {
+        "kicker": "3 · our advice",
+        "text": "Before AI touches\n**your money**",
+        "key": "Before AI touches money"
+      },
+      "lines": [
+        {
+          "id": "2grf",
+          "text": "第三，我們建議：讓 AI 工具碰你的帳戶以前，先看能不能設上限、隨時收回權限。"
+        },
+        {
+          "id": "g105",
+          "speaker": "kai",
+          "text": "跟 OCC 想的一樣。"
+        }
+      ]
+    },
+    {
+      "id": "nd-open",
+      "chapter": "Noise of the Day：Altman 選舉夜談記憶體",
+      "template": "big",
+      "data": {
+        "kicker": "Noise of the Day",
+        "text": "Election night,\n**a RAM argument**",
+        "key": "Noise: Altman on RAM"
+      },
+      "lines": [
+        {
+          "id": "b3nx",
+          "speaker": "kai",
+          "text": "從錢換到有點荒謬的：今天的雜訊。選舉夜大家看開票，Sam Altman 在做什麼？",
+          "emotion": "放鬆，帶笑"
+        },
+        {
+          "id": "rjvu",
+          "text": "在 X 上，吵記憶體。",
+          "emotion": "停一拍，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "nd-what",
+      "template": "big",
+      "data": {
+        "kicker": "Per The Verge",
+        "text": "Defending his take\n**on PC memory**",
+        "key": "Defending his RAM take"
+      },
+      "lines": [
+        {
+          "id": "6r21",
+          "text": "據 The Verge，他在替自己對電腦記憶體的說法辯護。",
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "dtpn",
+          "speaker": "kai",
+          "text": "他之前說了什麼？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "nd-podcast",
+      "template": "stats",
+      "data": {
+        "title": "Altman's point, per The Verge",
+        "stats": [
+          {
+            "value": "5%",
+            "label": "of the time your PC's RAM is used",
+            "note": "his figure"
+          }
+        ],
+        "source": "The Verge, Nov 4, 2026",
+        "key": "Used 5% of the time?"
+      },
+      "lines": [
+        {
+          "id": "5ivw",
+          "text": "他在一個訪談節目裡說，大家把有限的記憶體放在自己電腦，只用百分之五的時間，相當糟糕。"
+        }
+      ]
+    },
+    {
+      "id": "nd-clarify",
+      "template": "quote",
+      "data": {
+        "kicker": "Sam Altman, on X",
+        "quote": "i want you to have so much ram lets build more.",
+        "source": "Quoted by The Verge, Nov 4, 2026",
+        "key": "Altman: let's build more"
+      },
+      "lines": [
+        {
+          "id": "efw5",
+          "speaker": "kai",
+          "text": "然後呢？"
+        },
+        {
+          "id": "ynxd",
+          "text": "然後他說自己被斷章取義，還回一位網友：我希望你有超多記憶體，我們多蓋一點。"
+        }
+      ]
+    },
+    {
+      "id": "nd-end",
+      "template": "big",
+      "data": {
+        "kicker": "Meanwhile",
+        "text": "The shortage\n**is still real**",
+        "key": "The shortage is real"
+      },
+      "lines": [
+        {
+          "id": "u1h0",
+          "speaker": "kai",
+          "text": "可是剛剛不是說，記憶體就是被資料中心搶走的？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "ec2i",
+          "text": "對。所以吵架是雜訊，但背後的短缺是真的。"
+        },
+        {
+          "id": "hpwf",
+          "speaker": "kai",
+          "text": "好，這則雜訊，聽聽就好。",
+          "emotion": "輕鬆收掉"
+        }
+      ]
+    },
+    {
+      "id": "tk-main",
+      "chapter": "Sola's Take：今天最重要的是選票上的資料中心",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's Take",
+        "text": "AI's buildings\n**face voters now**",
+        "key": "AI now faces voters"
+      },
+      "lines": [
+        {
+          "id": "1bip",
+          "text": "我的看法是，今天最重要的，是這場選舉裡的資料中心。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "5nzz",
+          "speaker": "kai",
+          "text": "為什麼是它？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "tk-why",
+      "template": "big",
+      "data": {
+        "kicker": "Why it matters",
+        "text": "AI has an address\n**and neighbors**",
+        "key": "AI has neighbors now"
+      },
+      "lines": [
+        {
+          "id": "ctww",
+          "text": "因為 AI 不只是 App，它有房子、要用電；而住在旁邊的人，開始用選票說話。"
+        },
+        {
+          "id": "me8s",
+          "speaker": "kai",
+          "text": "業界和 OpenAI，也已經在回應了。"
+        }
+      ]
+    },
+    {
+      "id": "tk-unsure",
+      "template": "big",
+      "data": {
+        "kicker": "What I'm not sure of",
+        "text": "Will building\n**actually slow?**",
+        "key": "Will builds slow? Unsure"
+      },
+      "lines": [
+        {
+          "id": "gzox",
+          "speaker": "kai",
+          "text": "那你覺得，資料中心真的會蓋得比較慢嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "txb8",
+          "text": "老實說，我不確定。很多投票只是表態，因果也很難斷定；要看接下來的立法。",
+          "emotion": "放輕，承認不確定"
+        }
+      ]
+    },
+    {
+      "id": "tk-site",
+      "template": "big",
+      "data": {
+        "kicker": "Full stories",
+        "text": "Today's topic\n**on Mokaair**",
+        "key": "Articles in description"
+      },
+      "lines": [
+        {
+          "id": "qftg",
+          "text": "主題的完整整理在 Mokaair 網站，連結放在說明欄。",
+          "emotion": "輕鬆提醒"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "The cloud has neighbors",
+        "lines": [
+          "Yes or no, next door? Tell us"
+        ],
+        "cta": "Subscribe to Tech Signal",
+        "key": "Yes or no, next door?"
+      },
+      "lines": [
+        {
+          "id": "qans",
+          "text": "答案：電費、用水和噪音，把雲端的 AI 帶到了家門口。"
+        },
+        {
+          "id": "0vcg",
+          "speaker": "kai",
+          "text": "你家附近要蓋，你投哪邊？留言說。"
+        },
+        {
+          "id": "xdv3",
+          "text": "訂閱 Tech Signal。訊號收到。",
+          "emotion": "乾脆、帶笑地收"
+        }
+      ]
+    }
+  ]
+}
