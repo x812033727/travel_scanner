@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "batch_id": "wave5-water-systems-20261101",
+  "status": "AUTHOR_PROPOSALS_REQUIRING_INDEPENDENT_REVIEW",
+  "rules": {
+    "duration": "秒數為未撰稿的內容預算，開場與回扣已含在章節內；不是配音或成片實測。三支均short_explainer，不能冒充長片產線已過門檻。",
+    "cadence": "每章列出30–40秒內的新條件或對照，完整稿仍須獨立盲讀。",
+    "core_budget": "單一候選在同片累計分配不得超過editorial.seconds上限；不可用開場或回顧偷偷延長。",
+    "scope": "只解釋水處理與測量原理，無配藥、飲用安全判斷、設施進入或改管操作。"
+  },
+  "episodes": [
+    {
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "id": "W5W-T01",
+      "title": "污水廠要把磷拿走，為什麼先讓水裡的磷變多？",
+      "core_question": "同樣把磷放回水中，什麼情況是去磷流程的一步，什麼情況卻會壞事？",
+      "connection": "跟著同一群聚磷菌的能量與物質帳：先釋磷換儲存，再吸磷與排泥，接著改變競爭者和等待時間，看相同釋磷外觀如何走向不同結果。",
+      "candidate_ids": [
+        "W5004",
+        "W5006",
+        "W5005"
+      ],
+      "chapters": [
+        {
+          "title": "先放出去，是為了後面能拿走",
+          "seconds": 100,
+          "candidate_ids": [
+            "W5004"
+          ],
+          "new_information": "正常釋磷配合儲存碳源；好氧階段吸磷後仍須排出含磷剩餘污泥，才是系統淨去除。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "8秒開場：同一流程前段水中磷上升，設下待解問題。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "把磷與碳源儲存分成兩個帳，不把釋出等同失敗。"
+            },
+            {
+              "at_seconds": 65,
+              "change": "切到好氧吸磷與排泥出口，補齊去除路徑。"
+            }
+          ],
+          "cut_if": "若不能畫清儲存、吸收、排泥三步，先重寫本章；不能刪排泥只留下『菌吃掉了磷』。"
+        },
+        {
+          "title": "沒有打氣，怎麼還有人搶食？",
+          "seconds": 75,
+          "candidate_ids": [
+            "W5006"
+          ],
+          "new_information": "硝酸鹽帶入會讓其他微生物消耗原本可供聚磷菌利用的碳源；不打氣不等於已無其他電子受體。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "保持不曝氣，改變是否有硝酸鹽被帶入。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "追蹤可利用碳源的分流，交代為何聚磷菌取得的儲存材料減少。"
+            }
+          ],
+          "cut_if": "若僅剩缺氧／厭氧術語對照而沒有碳源去向，刪章，影片降180秒，另審兩章版本。"
+        },
+        {
+          "title": "多等一段時間，不一定能補回來",
+          "seconds": 80,
+          "candidate_ids": [
+            "W5005"
+          ],
+          "new_information": "碳源已耗盡後的次級釋磷沒有伴隨所需能量儲存，與第一章正常交換不同。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "讓碳源已耗盡，時間繼續走，與第一章仍有碳源的狀態對照。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "比較兩次釋磷後菌體的儲存帳，解釋相同水中變化不保證相同後續吸收。"
+            },
+            {
+              "at_seconds": 65,
+              "change": "15秒回扣：看整條物質與能量路徑，不能只看某一池濃度升降。"
+            }
+          ],
+          "cut_if": "若來源或圖示不足以區分正常與次級釋磷，刪本章，主題改問流程為何先釋磷，不以慢鏡頭補時。"
+        }
+      ],
+      "body_seconds": 255,
+      "target_minutes": 4.25,
+      "range_minutes": [
+        3.5,
+        4.5
+      ],
+      "opening_seconds_included": 8,
+      "closing_seconds_included": 15,
+      "boredom_risk": "三個專有名詞容易變成背流程；畫面必須持續追蹤磷、可用碳與菌體儲存的不同帳，不用設備空拍拖時間。",
+      "drop_if": "若完整稿讀者仍分不出磷在水中／菌體／排泥三個位置，停止進製作；不另加氮處理百科撐到8分鐘。",
+      "evidence_gaps": "EPA2010教材支持機制；未採實廠效率與精確停留時間。所有數值及分子細節、完整旁白需另查核。"
+    },
+    {
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "id": "W5W-T02",
+      "title": "濾水為什麼不是濾得越細、沖得越猛越好？",
+      "core_question": "要讓顆粒離開水，怎麼兼顧抓得住、放得下、洗得走？",
+      "connection": "追同一批絮體：先長大又怕打碎，再在粗上細下濾層分配堆積位置，最後清洗時要移走截留物卻不能把濾材一起帶走。",
+      "candidate_ids": [
+        "W5017",
+        "W5027",
+        "W5021"
+      ],
+      "chapters": [
+        {
+          "title": "先讓小顆粒碰面，但別把長大的絮體打碎",
+          "seconds": 80,
+          "candidate_ids": [
+            "W5017"
+          ],
+          "new_information": "混合增加碰撞，也會對長大變脆弱的絮體施加剪切，存在不同階段的需求。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "8秒開場：同樣在濾水，前面慢拌、後面猛沖，究竟在保護什麼？"
+            },
+            {
+              "at_seconds": 30,
+              "change": "把碰撞與碎裂兩種結果分開標，讓『混得更多』不再等於一直長大。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "移到逐段降低混合強度的概念，接上後續攔截。"
+            }
+          ],
+          "cut_if": "若無法用示意區分碰撞成長與剪切碎裂，縮短為核心對照；不沿用歷史轉速作現行設計。"
+        },
+        {
+          "title": "較粗的一層，先幫細砂留下空間",
+          "seconds": 75,
+          "candidate_ids": [
+            "W5027"
+          ],
+          "new_information": "較輕粗無煙煤位於細砂上方，先容納較大絮體，避免只在細層快速堆積。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "同批示意顆粒進入單細砂與雙層濾床，顯示堆積位置。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "揭示粒徑與密度要一起看，粗在上面有容污用途，不是未完成過濾。"
+            }
+          ],
+          "cut_if": "若只有材料剖面名稱而看不到截留物位置差別，刪此章，另審155秒兩章版本。"
+        },
+        {
+          "title": "清洗要把床鬆開，卻不能把床沖走",
+          "seconds": 75,
+          "candidate_ids": [
+            "W5021"
+          ],
+          "new_information": "反沖洗讓濾床膨脹以移走截留物；太大的水力作用也可能帶走濾材。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "反轉水流，先展示顆粒床鬆開與截留物離開。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "再增加到濾材被帶離的示意條件，區分想移走與要保留的兩類顆粒。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "15秒回扣：成長、容納、分離的目標不同，所以不是一路加細、加快。"
+            }
+          ],
+          "cut_if": "若要靠未查的流量數字才能成立，改用定性示意，不教家用反洗或借設備聲音補長度。"
+        }
+      ],
+      "body_seconds": 230,
+      "target_minutes": 3.8333333333333335,
+      "range_minutes": [
+        3,
+        4
+      ],
+      "opening_seconds_included": 8,
+      "closing_seconds_included": 15,
+      "boredom_risk": "不能寫成三種濾水設備清單；始終追同批顆粒，讓它長大、換堆積位置、最後被分離。",
+      "drop_if": "若雙層章只有『多一道更乾淨』而無位置差別就刪；兩章版本仍要另選並重核總秒數，不沿用230秒。",
+      "evidence_gaps": "來源支持各段機制，不代表它們已組成某一真實淨水廠的完整設計；場景標概念流程，不能宣稱出水可飲。"
+    },
+    {
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "id": "W5W-T03",
+      "title": "水裡的氧變少，真的就能知道污染有多少？",
+      "core_question": "用耗氧量判讀水質時，怎麼確認讀數真的是想測的反應？",
+      "connection": "同一個BOD讀數依序遇到三個可辨識問題：微生物沒正常工作、氧量先到天花板，以及氧氣另走物理逸出路徑。",
+      "candidate_ids": [
+        "W5024",
+        "W5026",
+        "W5025"
+      ],
+      "chapters": [
+        {
+          "title": "讀數很低，也可能是量測用的菌失去活性",
+          "seconds": 80,
+          "candidate_ids": [
+            "W5024"
+          ],
+          "new_information": "BOD依賴微生物作用；消毒或pH不合適可能壓低反應，不能直接等同可分解物已少。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "8秒開場：兩個低讀數，一個可能是需求少，另一個可能是反應沒正常進行。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "把待測物與微生物活性拆開，解釋為何消毒過的樣品仍需方法控制。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "限定BOD只看這種耗氧反應，不代表飲用安全或所有污染。"
+            }
+          ],
+          "cut_if": "若受抑制與物質移除沒有分開畫，停止寫成『殺菌讓水測起來更好』的誤導標題。"
+        },
+        {
+          "title": "全部耗光，也分不出誰原本要更多",
+          "seconds": 75,
+          "candidate_ids": [
+            "W5026"
+          ],
+          "new_information": "瓶內溶氧有限；兩種更高需求都可能歸零，稀釋的目的在讓讀數保持可分辨。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "相同氧氣格子供應兩個不同需求，兩瓶最後都歸零。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "改為受控稀釋概念，保留可比較的氧量差，不把稀釋說成污染被去除。"
+            }
+          ],
+          "cut_if": "若無法建立自洽且明標示意的氧預算，不出數值；仍不足就刪，另審150秒兩章版本。"
+        },
+        {
+          "title": "下降的氧，有一部分可能只是跑出水裡",
+          "seconds": 70,
+          "candidate_ids": [
+            "W5025"
+          ],
+          "new_information": "過飽和樣品可因物理逸出降低溶氧，若把全部下降都算成反應便會偏高。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "相同溶氧下降，分成生物使用與離開水相兩條箭頭。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "放入溫度／氣壓決定的飽和條件，回扣必須辨認讀數下降的原因。"
+            },
+            {
+              "at_seconds": 55,
+              "change": "15秒收束：這是量測條件的故事，不能憑一個數字給飲用安全保證。"
+            }
+          ],
+          "cut_if": "若只有泛講氣泡而回不到耗氧讀數偏差，刪章，不補溶解度百科。"
+        }
+      ],
+      "body_seconds": 225,
+      "target_minutes": 3.75,
+      "range_minutes": [
+        3,
+        4
+      ],
+      "opening_seconds_included": 8,
+      "closing_seconds_included": 15,
+      "boredom_risk": "實驗瓶畫面容易重複；三章必須各改一個條件並指出偏差方向／不可辨識點，不列水質指標名詞表。",
+      "drop_if": "若不能讓盲讀者分開『反應失活』『可用氧耗盡』『物理逸出』，重寫到能辨認再製作；不加入操作配方。",
+      "evidence_gaps": "Wisconsin DNR方法說明支持條件；沒有本批實測數據。示意量值、控制條件與完整稿須另行查核。"
+    }
+  ]
+}

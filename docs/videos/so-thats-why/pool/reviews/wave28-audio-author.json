@@ -1,0 +1,559 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "624a79da921686f75d88c15e768fd45ab67cf59f",
+    "selected": 3073,
+    "raw_records": 3448,
+    "not_added": 1262,
+    "pool_sha256": "bafaaeeb9977c586a82dce108e592246e4292ad4026d765e429d33eabd8fb375",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3073.json.gz",
+      "sha256": "1e19a6ad41a75caee409b58b8c440d10a0267c3bf9e5293a0872cee2c9784417"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave28-audio.json",
+      "sha256": "cd636a2c7572234e273dca27d49594b2ae23f489e0e471cb37ee782acc6795c0"
+    },
+    {
+      "file": "reviews/wave28-audio-themes.json",
+      "sha256": "222b783580d69ee7cfb07dbdb87c643a2be4669c301755aa984117516042b114"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 5,
+    "candidate_sources": 4,
+    "not_added_only_sources": 1,
+    "not_added": 13,
+    "near_pairs": 14,
+    "themes": 3
+  },
+  "scope": "機械溝紋解碼、變形碎片循跡、同步音叉校時與捲盤層間磁印。",
+  "dedup_reading": {
+    "method": "3448 raw及1262 NA以錄音載體/機械溝紋/詞彙與鄰近機制掃描，定向讀完整舊問答與適用範圍。捲層磁印另查剩磁/回波，音叉另查時基/音高。",
+    "scan_files": [
+      {
+        "file": ".cache/wave28-audio-lexical.json",
+        "sha256": "358ffbb807d46a34d758dc265ca7292299b5cddf7d8aed015582d7062c74da61"
+      },
+      {
+        "file": ".cache/wave28-audio-nearscan.json",
+        "sha256": "42ab956adbc54707587d2a22a212bf74ce44888f51de39314327fc3871bdf2bc"
+      },
+      {
+        "file": ".cache/wave28-audio-old-full.json",
+        "sha256": "6aa5cd2a85d661152ac152395118eed0439bca097c7e58e218d3d0d17ab4d9d9"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P28001",
+      "b": "I15006",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題以干涉包絡選擇深度。這題需依聲音調變方向把槽的位置讀成播放訊號，沒有OCT參考臂。",
+      "a_snapshot": {
+        "id": "P28001",
+        "question": "老唱片可以用相機「聽」，為什麼有些錄音光沿著照片裡的彎線走還不夠？",
+        "answer_target": "側刻把振動寫成左右擺動，平面掃描可量出沿槽的橫移。縱刻把振動寫成槽底深淺，須取得高度資訊。沿正確方向取出相對靜止軌跡的位移，按播放時間求變化率，就能估計唱針原會產生的訊號。",
+        "scope": "限NEDCC的IRENE與可辨識機械溝紋。3D也可掃側刻，圓盤或圓筒外形本身不足以決定調變方向。"
+      },
+      "b_snapshot": {
+        "id": "I15006",
+        "question": "反射光混在一起，怎麼只挑出某個深度回來的那一份？",
+        "answer_target": "低相干光的參考與樣本回波只有延遲近匹配時才有明顯干涉包絡；掃參考路徑得到不同深度回波，橫向移動再拼成剖面。",
+        "scope": "1991年時域OCT指定架構；深度由光程而非直接秒表計時，需介質群折射率換算。多重散射和角度會限制有效深度，非醫療判讀指南。"
+      }
+    },
+    {
+      "a": "P28001",
+      "b": "O7009",
+      "proposed": "distinct_pending_non_author",
+      "reason": "雙光子非線性局限激發位置與讀出溝槽相對位移的幾何映射不同。",
+      "a_snapshot": {
+        "id": "P28001",
+        "question": "老唱片可以用相機「聽」，為什麼有些錄音光沿著照片裡的彎線走還不夠？",
+        "answer_target": "側刻把振動寫成左右擺動，平面掃描可量出沿槽的橫移。縱刻把振動寫成槽底深淺，須取得高度資訊。沿正確方向取出相對靜止軌跡的位移，按播放時間求變化率，就能估計唱針原會產生的訊號。",
+        "scope": "限NEDCC的IRENE與可辨識機械溝紋。3D也可掃側刻，圓盤或圓筒外形本身不足以決定調變方向。"
+      },
+      "b_snapshot": {
+        "id": "O7009",
+        "question": "不用小孔擋掉上下層，為什麼也能讓光只在焦點附近亮起？",
+        "answer_target": "雙光子激發在低飽和近似下依光強平方增長；聚焦讓激發集中在光子密度較高的小體積，焦外較少被激發。",
+        "scope": "與共焦的接收端篩選比較；不說焦外絕對零激發、不保證無損傷，不提供雷射規格或架設操作。"
+      }
+    },
+    {
+      "a": "P28001",
+      "b": "N209",
+      "proposed": "distinct_pending_non_author",
+      "reason": "聲納以聲波來回時間測距，本題則由光量得溝紋以恢復原機械記錄的聲音。",
+      "a_snapshot": {
+        "id": "P28001",
+        "question": "老唱片可以用相機「聽」，為什麼有些錄音光沿著照片裡的彎線走還不夠？",
+        "answer_target": "側刻把振動寫成左右擺動，平面掃描可量出沿槽的橫移。縱刻把振動寫成槽底深淺，須取得高度資訊。沿正確方向取出相對靜止軌跡的位移，按播放時間求變化率，就能估計唱針原會產生的訊號。",
+        "scope": "限NEDCC的IRENE與可辨識機械溝紋。3D也可掃側刻，圓盤或圓筒外形本身不足以決定調變方向。"
+      },
+      "b_snapshot": {
+        "id": "N209",
+        "question": "看不見的海底，怎麼靠一聲回音畫成地圖？",
+        "answer_target": "聲脈衝往返時間與方向用來推估距離。",
+        "scope": "What is sonar?"
+      }
+    },
+    {
+      "a": "P28002",
+      "b": "I3086",
+      "proposed": "distinct_pending_non_author",
+      "reason": "加密串流用終止標記辨別截斷，本題須靠變形後的幾何重聯原有軌跡。",
+      "a_snapshot": {
+        "id": "P28002",
+        "question": "剝落的老唱片已經拼回原位，為什麼還得一條條替聲音找路？",
+        "answer_target": "漆層收縮或翹曲後，原來同一圈的兩端會在裂縫錯開。保存人員在掃描圖上把殘存兩端指回同一條槽，接續其原有順序。若漆層整塊遺失，那一段振動的原始紀錄也隨之遺失。",
+        "scope": "限NEDCC對約1950年Farm and Fun Time剝層盤的實作。區分槽段尚在但錯位、完全缺料、另製聆聽版降噪三件事。"
+      },
+      "b_snapshot": {
+        "id": "I3086",
+        "question": "連線突然沒資料了，怎麼分辨是傳完還是被截斷？",
+        "answer_target": "加密結束標記明確宣告串流完成，缺少標記不能只憑輸入停止判定成功。",
+        "scope": "接收方需檢查 TAG_FINAL；不宣稱任意用法自動安全。"
+      }
+    },
+    {
+      "a": "P28002",
+      "b": "I8011",
+      "proposed": "distinct_pending_non_author",
+      "reason": "RAID靠校驗與日誌重建一致條帶。漆片缺料沒有這樣的冗餘，能救的是已有槽段的先後。",
+      "a_snapshot": {
+        "id": "P28002",
+        "question": "剝落的老唱片已經拼回原位，為什麼還得一條條替聲音找路？",
+        "answer_target": "漆層收縮或翹曲後，原來同一圈的兩端會在裂縫錯開。保存人員在掃描圖上把殘存兩端指回同一條槽，接續其原有順序。若漆層整塊遺失，那一段振動的原始紀錄也隨之遺失。",
+        "scope": "限NEDCC對約1950年Farm and Fun Time剝層盤的實作。區分槽段尚在但錯位、完全缺料、另製聆聽版降噪三件事。"
+      },
+      "b_snapshot": {
+        "id": "I8011",
+        "question": "硬碟陣列能補回壞掉的一顆，為什麼寫到一半斷電仍可能留下難題？",
+        "answer_target": "一次條帶更新跨多盤，資料與校驗若只完成一部分便不再相符；先持久記錄完整相關寫入可在重啟後重建一致條帶。",
+        "scope": "Linux MD RAID4/5/6 write-through日誌模型；不提供重建操作，也不說任何停電必毀損。"
+      }
+    },
+    {
+      "a": "P28002",
+      "b": "O3050",
+      "proposed": "distinct_pending_non_author",
+      "reason": "雷達散射失相干提示地物變化，漆片則有可見的殘存溝槽要在裂縫兩端對回。",
+      "a_snapshot": {
+        "id": "P28002",
+        "question": "剝落的老唱片已經拼回原位，為什麼還得一條條替聲音找路？",
+        "answer_target": "漆層收縮或翹曲後，原來同一圈的兩端會在裂縫錯開。保存人員在掃描圖上把殘存兩端指回同一條槽，接續其原有順序。若漆層整塊遺失，那一段振動的原始紀錄也隨之遺失。",
+        "scope": "限NEDCC對約1950年Farm and Fun Time剝層盤的實作。區分槽段尚在但錯位、完全缺料、另製聆聽版降噪三件事。"
+      },
+      "b_snapshot": {
+        "id": "O3050",
+        "question": "災後雷達影像變得難以量位移，為什麼這件事本身也可能是線索？",
+        "answer_target": "地物散射組合改變可降低相干，使位移數值失去可靠性；相干下降仍可提示擾動但非唯一原因。",
+        "scope": "相干雷達災前災後比較；相干下降可源自植被、時間、幾何等，不是建物損毀的唯一證據。"
+      }
+    },
+    {
+      "a": "P28003",
+      "b": "E2202",
+      "proposed": "distinct_pending_non_author",
+      "reason": "取樣時鐘抖動造成時刻/電壓誤差。音叉另留同步時標可重排局部時間，還需判斷歷史週期單位。",
+      "a_snapshot": {
+        "id": "P28003",
+        "question": "同一段畫在紙上的歌聲，怎麼一度被播高了一個八度？",
+        "answer_target": "手搖記錄時，紙上相同距離未必代表等長時間。一旁音叉每個週期用時相等，可拿來校正局部快慢。若把每秒250個完整週期讀作500個，整段就會快一倍、音高高一個八度，即使局部晃動已經修好。",
+        "scope": "限Scott帶同步音叉線的聲圖及First Sounds修正。原註記對單次振動的定義有歧義。後續語音樣本及當時聲學用語支持250 Hz；聲線猜測不足以確定演唱者。"
+      },
+      "b_snapshot": {
+        "id": "E2202",
+        "question": "電壓都很準了，取樣時鐘一點點抖動為什麼仍會出錯？",
+        "answer_target": "取樣時刻不確定乘上訊號斜率，變成振幅誤差。",
+        "scope": "越快變的訊號更敏感；不等於時鐘平均頻率不準。"
+      }
+    },
+    {
+      "a": "P28003",
+      "b": "E2203",
+      "proposed": "distinct_pending_non_author",
+      "reason": "兩通道延遲造成假相位差。此處兩線同時記錄、同受紙速影響，以其中一線還原時間尺度。",
+      "a_snapshot": {
+        "id": "P28003",
+        "question": "同一段畫在紙上的歌聲，怎麼一度被播高了一個八度？",
+        "answer_target": "手搖記錄時，紙上相同距離未必代表等長時間。一旁音叉每個週期用時相等，可拿來校正局部快慢。若把每秒250個完整週期讀作500個，整段就會快一倍、音高高一個八度，即使局部晃動已經修好。",
+        "scope": "限Scott帶同步音叉線的聲圖及First Sounds修正。原註記對單次振動的定義有歧義。後續語音樣本及當時聲學用語支持250 Hz；聲線猜測不足以確定演唱者。"
+      },
+      "b_snapshot": {
+        "id": "E2203",
+        "question": "兩個感測通道都說同時取樣，為什麼比較起來還能有假差異？",
+        "answer_target": "通道有效取樣延遲不同會把時間差誤認成振幅或相位差。",
+        "scope": "快變訊號多通道；固定共同延遲可分開。"
+      }
+    },
+    {
+      "a": "P28003",
+      "b": "P125",
+      "proposed": "distinct_pending_non_author",
+      "reason": "警笛音高因相對移動改變波峰抵達間隔。此處原唱未改，改變的是重播整體時間尺。",
+      "a_snapshot": {
+        "id": "P28003",
+        "question": "同一段畫在紙上的歌聲，怎麼一度被播高了一個八度？",
+        "answer_target": "手搖記錄時，紙上相同距離未必代表等長時間。一旁音叉每個週期用時相等，可拿來校正局部快慢。若把每秒250個完整週期讀作500個，整段就會快一倍、音高高一個八度，即使局部晃動已經修好。",
+        "scope": "限Scott帶同步音叉線的聲圖及First Sounds修正。原註記對單次振動的定義有歧義。後續語音樣本及當時聲學用語支持250 Hz；聲線猜測不足以確定演唱者。"
+      },
+      "b_snapshot": {
+        "id": "P125",
+        "question": "警笛經過身邊時，音高為什麼會從高變低？",
+        "answer_target": "接近與遠離時波峰抵達間隔不同，而不是駕駛突然換音。",
+        "scope": "穩定發聲、經過而非直接撞向觀察者"
+      }
+    },
+    {
+      "a": "P28003",
+      "b": "M2001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "追溯校正鏈為一般背景，不能單獨解釋紙速校正後仍有兩倍倍率歧義。",
+      "a_snapshot": {
+        "id": "P28003",
+        "question": "同一段畫在紙上的歌聲，怎麼一度被播高了一個八度？",
+        "answer_target": "手搖記錄時，紙上相同距離未必代表等長時間。一旁音叉每個週期用時相等，可拿來校正局部快慢。若把每秒250個完整週期讀作500個，整段就會快一倍、音高高一個八度，即使局部晃動已經修好。",
+        "scope": "限Scott帶同步音叉線的聲圖及First Sounds修正。原註記對單次振動的定義有歧義。後續語音樣本及當時聲學用語支持250 Hz；聲線猜測不足以確定演唱者。"
+      },
+      "b_snapshot": {
+        "id": "M2001",
+        "question": "幫秤校正的砝碼，又是誰說它準？",
+        "answer_target": "追溯有紀錄的校正比較鏈。",
+        "scope": "限定量測追溯，不說所有砝碼都曾送到同一機構。"
+      }
+    },
+    {
+      "a": "P28004",
+      "b": "E2136",
+      "proposed": "distinct_pending_non_author",
+      "reason": "鐵磁遲滯解釋材料歷史依賴，本題需相鄰捲層的空間耦合與時間排序造成提前弱音。",
+      "a_snapshot": {
+        "id": "P28004",
+        "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+        "answer_target": "捲盤讓時間上前後相隔一圈的帶段緊鄰。較強的磁紀錄能在鄰層留下較弱的印記，攤回時間線後便可能在主聲前或後聽見弱副本。帶尾朝外收卷的指定構型，較強外層印記會落在主聲之後。",
+        "scope": "限3M圖2的類比開盤帶、氧化層向內與所示收帶方向。重點是捲層對應的播放先後。回聲強度另受材料及噪音遮蔽影響。"
+      },
+      "b_snapshot": {
+        "id": "E2136",
+        "question": "同一塊鐵、同樣外加磁場，為什麼量出的磁性還能不同？",
+        "answer_target": "磁域重排具有歷史依賴，造成遲滯與剩磁。",
+        "scope": "不把所有鐵磁材料都說成強永久磁鐵。"
+      }
+    },
+    {
+      "a": "P28004",
+      "b": "W16001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "自旋回波靠相位重新聚集，盤帶印記實際在另一帶段上。",
+      "a_snapshot": {
+        "id": "P28004",
+        "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+        "answer_target": "捲盤讓時間上前後相隔一圈的帶段緊鄰。較強的磁紀錄能在鄰層留下較弱的印記，攤回時間線後便可能在主聲前或後聽見弱副本。帶尾朝外收卷的指定構型，較強外層印記會落在主聲之後。",
+        "scope": "限3M圖2的類比開盤帶、氧化層向內與所示收帶方向。重點是捲層對應的播放先後。回聲強度另受材料及噪音遮蔽影響。"
+      },
+      "b_snapshot": {
+        "id": "W16001",
+        "question": "核磁訊號明明已變弱，為什麼再打一個脈衝又能出現回波？",
+        "answer_target": "靜態磁場不均讓各群磁矩以不同頻率散相，總和變小但不等於各分量消失；適當反轉相位排列後，頻率差持續作用可使它們再對齊，真正弛豫造成的損失不會因此全部恢復。",
+        "scope": "液體NMR的理想90–180示意以W16-S002為據；Hahn原Fig1兩90脈衝不可畫成同序列。假設頻率差在兩段期間穩定，忽略耦合等細節；只翻轉相位排列，不是使核停止或反向自轉。"
+      }
+    },
+    {
+      "a": "P28004",
+      "b": "W16003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "倒放散射場令回聲重新聚焦，錄音帶的弱複本源於存放時的層間磁耦合。",
+      "a_snapshot": {
+        "id": "P28004",
+        "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+        "answer_target": "捲盤讓時間上前後相隔一圈的帶段緊鄰。較強的磁紀錄能在鄰層留下較弱的印記，攤回時間線後便可能在主聲前或後聽見弱副本。帶尾朝外收卷的指定構型，較強外層印記會落在主聲之後。",
+        "scope": "限3M圖2的類比開盤帶、氧化層向內與所示收帶方向。重點是捲層對應的播放先後。回聲強度另受材料及噪音遮蔽影響。"
+      },
+      "b_snapshot": {
+        "id": "W16003",
+        "question": "雜亂回聲倒放，為什麼反而能重新聚到聲源附近？",
+        "answer_target": "將各接收訊號倒序重播，在近線性且路徑未變的介質中，各散射路徑的時序可在原聲源附近重新對齊；多重散射提供額外方向資訊與有效孔徑，但接觸網絡改變後，先前記錄便不再匹配。",
+        "scope": "受壓玻璃珠堆與文中陣列/單換能器控制；不是任意雜訊可還原原聲。聲激發改變接觸路徑的解釋來自前後相關與模型支持，不宣稱逐顆珠子被直接拍見移動。"
+      }
+    },
+    {
+      "a": "P28004",
+      "b": "N209",
+      "proposed": "distinct_pending_non_author",
+      "reason": "聲納收到傳播回來的反射。磁帶前印可早於主聲，依據是帶層收卷鄰接。",
+      "a_snapshot": {
+        "id": "P28004",
+        "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+        "answer_target": "捲盤讓時間上前後相隔一圈的帶段緊鄰。較強的磁紀錄能在鄰層留下較弱的印記，攤回時間線後便可能在主聲前或後聽見弱副本。帶尾朝外收卷的指定構型，較強外層印記會落在主聲之後。",
+        "scope": "限3M圖2的類比開盤帶、氧化層向內與所示收帶方向。重點是捲層對應的播放先後。回聲強度另受材料及噪音遮蔽影響。"
+      },
+      "b_snapshot": {
+        "id": "N209",
+        "question": "看不見的海底，怎麼靠一聲回音畫成地圖？",
+        "answer_target": "聲脈衝往返時間與方向用來推估距離。",
+        "scope": "What is sonar?"
+      }
+    }
+  ],
+  "prior_rejection_reentry": [],
+  "source_readings": [
+    {
+      "source_id": "P28-S001",
+      "read_via": "web核期刊全文，同日指定UA HTTP200取得PDF，本機抽文及指定頁目讀。",
+      "scope": "PDF pp1–7，印刷262–268，讀前言、The IRENE Process、Imaging、Processing與損壞段。目讀印刷267 Fig5/6與268 Fig7/8。未讀後半完整專案文獻與所有附檔。",
+      "body_cache": {
+        "file": ".cache/wave28-audio-workflow.pdf",
+        "sha256": "44c92b88f0f207f2b4067678bba949f3a30b015287bd58a2ab58a4bd3758b276",
+        "text_file": ".cache/wave28-audio-workflow.txt",
+        "text_sha256": "2f06f22f4f4869ce2ec157dcd4be5b40959c97f4ec523bafae019a17a756146d"
+      }
+    },
+    {
+      "source_id": "P28-S002",
+      "read_via": "web開保存團隊正文，同日指定UA HTTP200取得HTML，另下載原網頁溝紋與手動軌跡圖目讀。",
+      "scope": "HTML L0233–0265，讀案例、分層漆片拼接、3D顯微掃描、Weaver手動循跡、遺失與聆聽版。目讀原報告兩張掃描/循跡圖。",
+      "body_cache": {
+        "file": ".cache/wave28-audio-broken.html",
+        "sha256": "e12e773042477406e892fabf6b315ae095704e05bbc40dd607f628b6d31b82d3",
+        "text_file": ".cache/wave28-audio-broken.txt",
+        "text_sha256": "bb5e08e393651580dd56639d7641f93501702257224c1a473543ac9e15cf7c68"
+      }
+    },
+    {
+      "source_id": "P28-S003",
+      "read_via": "web開First Sounds原PDF正文，同日指定UA HTTP200取得PDF並抽文。",
+      "scope": "核心讀PDF pp6–7（刊48–49），另讀pp26–27（刊68–69，時標與item36原註記）及p32（刊74，item45/46註記）。其他條目未全讀，未聽還原音檔。",
+      "body_cache": {
+        "file": ".cache/wave28-audio-fork.pdf",
+        "sha256": "a42285d2c8a6ae4d360d9586f9fd7119ec8929e1ff0347a2fd984eec4131e7d2",
+        "text_file": ".cache/wave28-audio-fork.txt",
+        "text_sha256": "7f70bb549fb686eeb1543125de3dbbe7aa233a9d0abe2ebb3324e469ffa84e14"
+      }
+    },
+    {
+      "source_id": "P28-S004",
+      "read_via": "web開AES舊網址的原稿正文；該網址指定UA回403，現行AES副本指定UA HTTP200取得同篇三頁PDF。",
+      "scope": "PDF pp1–2正文Situation、Possible Cause、Recommendation、Storing及其餘限制，p3目讀Fig2捲帶幾何與Fig3。",
+      "body_cache": {
+        "file": ".cache/wave28-audio-3m.pdf",
+        "sha256": "b239e1cd6f88fe9c5e4d1d2b5880a3ade59129b2b663faa3f6d86e67ad648b21",
+        "text_file": ".cache/wave28-audio-3m.txt",
+        "text_sha256": "15ef9bf432a0b420144044475020fb897045c2d3c3aa63c8fe975f990d0ed807"
+      }
+    },
+    {
+      "source_id": "P28-S005",
+      "read_via": "web開LOC正文，同日指定UA HTTP200取HTML及抽文。",
+      "scope": "HTML L0025–0036 Background / Project Description / Outcomes，讀採樣、GC-MS脂肪酸鑑定與殘留物比較。只讀圖片說明。",
+      "body_cache": {
+        "file": ".cache/wave28-audio-lacquer.html",
+        "sha256": "6dd649dcf8155bcd951a5266dcdb2332049531fcaf56518c228fab5d832367bb",
+        "text_file": ".cache/wave28-audio-lacquer.txt",
+        "text_sha256": "cdd92e38e85acb80568bdd149353f5b8f0fbb24b9edcd809fcd86bc79d577c58"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P28-S001",
+      "primary_body_url": "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf",
+      "identity_relation": "2021期刊版，稿件修訂2020-12-21。保存團隊網站提供同篇PDF。",
+      "historical_exact_url_or_title_matches": [],
+      "independence": "流程作者論文。S002為同一中心的個案且有共同作者，不能當兩次獨立設備驗證。"
+    },
+    {
+      "source_id": "P28-S002",
+      "primary_body_url": "https://www.nedcc.org/about/nedcc-stories/bcm",
+      "identity_relation": "博物館2020-01-06首刊，NEDCC同作者轉刊，另有2023播客更新。",
+      "historical_exact_url_or_title_matches": [],
+      "independence": "NEDCC同一作者轉刊博物館專案。2023播客更新僅是連結。"
+    },
+    {
+      "source_id": "P28-S003",
+      "primary_body_url": "https://firstsounds.org/research/articles/scott-discography.pdf",
+      "identity_relation": "2010原刊，研究團隊保存的PDF。2008與2009是兩次還原判讀的時間。",
+      "historical_exact_url_or_title_matches": [],
+      "independence": "研究者原刊PDF，程式還原與同期文獻是同一重建研究內的證據。"
+    },
+    {
+      "source_id": "P28-S004",
+      "primary_body_url": "https://aes.org/wp-content/uploads/2025/02/printthrough.pdf",
+      "identity_relation": "3M 1994 Technical Bulletin A011194，AES新網址2025/02為檔案路徑。",
+      "historical_exact_url_or_title_matches": [],
+      "independence": "1994 3M原技術公告，AES舊/新PDF是同一份，非2025試驗。"
+    },
+    {
+      "source_id": "P28-S005",
+      "primary_body_url": "https://loc.gov/preservation/scientists/projects/lacquered_disc.html",
+      "identity_relation": "館方專案成果頁，正文未載本研究明確出版年。作退題依據。",
+      "historical_exact_url_or_title_matches": [],
+      "independence": "LOC專案成果本輪只作退題來源。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://www.iasa-web.org/tc04/removal-storage-related-signal-artefacts",
+      "route": "web.open及指定UA",
+      "result": "舊TC04小節404；未以搜尋摘錄作候選來源。另以3M技術公告支持本題。"
+    },
+    {
+      "url": "https://www.aes.org/aeshc/docs/3mtape/printthrough.pdf",
+      "route": "指定UA",
+      "result": "舊路徑403，web仍可開舊PDF。AES現行副本已取得並核正文/圖。"
+    },
+    {
+      "url": "https://www.osti.gov/servlets/purl/841314",
+      "route": "指定UA",
+      "result": "timeout；web可讀報告首頁/引言，但僅作背景，未列候選支持源。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave28-audio-fetch.json",
+      "sha256": "aa212b393c763fd5f3e6718cbdae70e4bcb03c45a6538156658633412023c7fc"
+    },
+    {
+      "file": ".cache/wave28-audio-3m-receipt.json",
+      "sha256": "a74a64fc84f3f4f42659b2ef2a70967d715617f1531f70c0ff32fc0b39c99af0"
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave28-audio-workflow-p6.png",
+      "sha256": "6beac5921a0288e8284bcd1557d399f08fe0d4c9e913f1bee02092b3b69df236",
+      "source_id": "P28-S001",
+      "read_scope": "原刊Fig5/6，2D溝紋循跡前後。"
+    },
+    {
+      "file": ".cache/wave28-audio-workflow-p7.png",
+      "sha256": "1ac649ab5e4d94dca1793325212633ec00e769678871043419f171ec680463a5",
+      "source_id": "P28-S001",
+      "read_scope": "Fig7/8兩種剝離外觀。"
+    },
+    {
+      "file": ".cache/wave28-audio-st_bocm_3_grooves.jpg",
+      "sha256": "cf1090df2900e4c7c5104cc057a5ce12c4007e26cf83828605b035c9c0ab67f5",
+      "source_id": "P28-S002",
+      "read_scope": "本件3D掃描圖的錯位溝槽。"
+    },
+    {
+      "file": ".cache/wave28-audio-st_bocm_4_groovescr.jpg",
+      "sha256": "ebd8d91fafdb6b27447192ef1c05e225bed87b685929e66bc76a925fa5ad3c1f",
+      "source_id": "P28-S002",
+      "read_scope": "Weaver手動循跡疊圖。"
+    },
+    {
+      "file": ".cache/wave28-audio-3m-p3.png",
+      "sha256": "beb5168992d6a8009f6f6607a03097fe924d016316c71add133ae85d9639d445",
+      "source_id": "P28-S004",
+      "read_scope": "Fig2氧化層向內收卷及外層C為postprint。Fig3同頁，未據圖量化。"
+    }
+  ],
+  "reading_limits": [
+    "5來源均獨立讀指定段，S005僅支援退題。加拿大CCI的Magnetic tapes網頁亦讀，未另列同義來源。未聆聽任何錄音或試聽復原版本。",
+    "3M為製造商公告，採其明列捲帶幾何。Feaster僅採已列校時段及指定手稿條目，不稱全文40頁均讀。",
+    "原始圖片僅存忽略快取作查證，片中圖為原創紙上企劃。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W28P-T01",
+      "body_seconds": 125,
+      "core_seconds": {
+        "P28001": 65,
+        "P28002": 60
+      },
+      "chapter_seconds": [
+        65,
+        60
+      ],
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W28P-T02",
+      "body_seconds": 85,
+      "core_seconds": {
+        "P28003": 85
+      },
+      "chapter_seconds": [
+        40,
+        45
+      ],
+      "max_beat_seconds": 25,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W28P-T03",
+      "body_seconds": 75,
+      "core_seconds": {
+        "P28004": 75
+      },
+      "chapter_seconds": [
+        40,
+        35
+      ],
+      "max_beat_seconds": 25,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "all_strings_rstrip": true,
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true,
+    "checks": "僅查本包三檔結構、時間及來源雜湊。"
+  },
+  "unresolved": [
+    "等待另一作者來源、近題和題案覆核。"
+  ],
+  "revision_history": [
+    {
+      "reviewer": "root",
+      "before_files": [
+        {
+          "file": "batches/wave28-audio.json",
+          "sha256": "5e39048a8ec7e009f0409e92a7b0b304133ee0237ada3d1aff0a225f65cedcaf"
+        },
+        {
+          "file": "reviews/wave28-audio-themes.json",
+          "sha256": "0c77de5e2a5e8bbd87bd02f8baff92c211120bbdbf38ed3a4739f2c1e2e716f8"
+        },
+        {
+          "file": "reviews/wave28-audio-author.json",
+          "sha256": "a782074dc7a389a8ee9677336487f2dacc51b0314b96b20d84d17014dbed97a3"
+        }
+      ],
+      "reason": "P28003採紙上歌聲的描述。T01題面明指漆層剝落，缺料與降噪的圖註併入接縫對照，刪末尾10秒重述。",
+      "removed_seconds": 10,
+      "seconds_before": [
+        135,
+        85,
+        75
+      ],
+      "seconds_after": [
+        125,
+        85,
+        75
+      ],
+      "changed_question_ids": [
+        "P28003"
+      ],
+      "after_batch_sha256": "cd636a2c7572234e273dca27d49594b2ae23f489e0e471cb37ee782acc6795c0",
+      "after_themes_sha256": "222b783580d69ee7cfb07dbdb87c643a2be4669c301755aa984117516042b114"
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+{
+  "batch_id": "wave16-bio-structures-20261102",
+  "created_on": "2026-11-02",
+  "scope": "自然群體建構與生物物理：橋的人力/歷史控制、筏材料循環、白蟻沉積線索、蛛絲滴內收線與局部損壞、火蟻閉環增高；不追數量，題級來源篩選非完整稿核准。",
+  "sources": [
+    {
+      "id": "B16-S001",
+      "url": "https://doi.org/10.1073/pnas.1512241112",
+      "title": "Army ants dynamically adjust living bridges in response to a cost–benefit trade-off",
+      "publisher": "PNAS / Reid et al.; The Kao Lab author-hosted published PDF",
+      "doi": "10.1073/pnas.1512241112",
+      "version": "PNAS 112(49):15113–15118; 2015-12-08 issue",
+      "published_on": "2015-11-23",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋及web.open作者實驗室PDF；指定UA urllib HTTP200取得同文PDF，PyMuPDF指定頁正文讀回。",
+      "reading_scope": "PDF pp.1–5（印刷15113–15117）的平台角度/交通量實驗、成本效益模型及Discussion局部行為解釋段。未完整重算補充模型或讀所有SI。",
+      "locator": "Results: bridge movement and geometry; cost–benefit model; Figs.1–4; Discussion local joining/leaving interpretation",
+      "summary": "橋往內移能省路，卻把更多工蟻留在橋上；幾何與交通量對照和資源分配模型支持折衷解釋。",
+      "limitations": "觀察支持定性折衷，不證群體找出全局最佳點；局部接觸與受力是討論中的候選線索，不是本研究已直接量得的完整個體規則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://www.thekaolab.com/papers/Reid_PNAS_2015.pdf",
+      "author_cache": {
+        "file": ".cache/wave16-bio-bridge2015.pdf",
+        "sha256": "90d1994c4cc6d496dcdeb5a55846953cbf4c26df2c7b42e8fb6f7137a9c56107",
+        "text_file": ".cache/wave16-bio-bridge2015.txt",
+        "text_sha256": "ea3037cce6bc8709819b8fc896560b70e299b4121ed4fed575bb7b1624fbca6c"
+      }
+    },
+    {
+      "id": "B16-S002",
+      "url": "https://doi.org/10.1038/s41467-022-28773-z",
+      "title": "Hysteresis stabilizes dynamic control of self-assembled army ant constructions",
+      "publisher": "Nature Communications / McCreery et al.; NCBI PMC published article",
+      "doi": "10.1038/s41467-022-28773-z",
+      "version": "Nature Communications 13:1160; PMC8897433",
+      "published_on": "2022-03-04",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.open PMC回驗證頁；指定UA urllib HTTP200取得真正文章HTML，lxml抽取Results and discussion指定正文與圖說實讀。",
+      "reading_scope": "Results and discussion三小節與Figs.1–7圖說（本機段落16–55）；含10次擴張/收縮、三種模型和個體線索。未完整重現SI或程式，未看影片。",
+      "locator": "Results and discussion / Field experiments: collective structures; Mechanistic models; Field experiments: individual cues",
+      "summary": "同樣缺口在縮回時保留較大橋；非線性增減員模型比固定機率及單純延遲模型更能重現此歷史依賴。",
+      "limitations": "加入/離開率依人數偏離平衡量改變是機制模型；微小反覆間距擾動的穩定性是模擬，不是實地擾動實驗。張力感知未直接證實。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897433/",
+      "author_cache": {
+        "file": ".cache/wave16-bio-bridge2022.html",
+        "sha256": "558f6c365d1a5c6f36d39ec197fb595a57a4ed95368f679a7b612d1fc40b101b",
+        "text_file": ".cache/wave16-bio-bridge2022.txt",
+        "text_sha256": "b923c392ba2046289be98bd15d640f7cf8d30bf12e182db0a2d64bbf7a69b50c"
+      }
+    },
+    {
+      "id": "B16-S003",
+      "url": "https://doi.org/10.1098/rsif.2021.0213",
+      "title": "Treadmilling and dynamic protrusions in fire ant rafts",
+      "publisher": "Journal of the Royal Society Interface / Wagner et al.; NCBI PMC",
+      "doi": "10.1098/rsif.2021.0213",
+      "version": "J. R. Soc. Interface 18:20210213; PMC8241487",
+      "published_on": "2021-06-30",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web.open PMC正文成功；指定UA urllib HTTP200，lxml正文抽取後讀回方法與結果/討論。",
+      "reading_scope": "§2.1–2.6、§3.1 Treadmilling、§3.2 Instabilities及§4 Discussion；Fig.3–6圖說。未看補充影片或重算追蹤資料。",
+      "locator": "§2.4–2.5; §3.1 Treadmilling; Fig.4; §4 first paragraph",
+      "summary": "底層結構收縮但密度近恆定，螞蟻退出到上層再於外緣加入，形成可持續的材料循環。",
+      "limitations": "限有垂直固定桿的火蟻筏；桿高、季節和採集地效應未系統測試。突出方向的偏置模型不能證明唯一原因，亦未排除環境或費洛蒙線索。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8241487/",
+      "author_cache": {
+        "file": ".cache/wave16-bio-raft2021.html",
+        "sha256": "d38835058a5d7a618f3ecf7e405db09d4805508bafe04b1063dd529c38084df7",
+        "text_file": ".cache/wave16-bio-raft2021.txt",
+        "text_sha256": "76fea6e5659d2c5f6f3e734761c47e3ce72ade701e6f431d901de4701d290b60"
+      }
+    },
+    {
+      "id": "B16-S004",
+      "url": "https://elifesciences.org/articles/86843",
+      "title": "Substrate evaporation drives collective construction in termites",
+      "publisher": "eLife / Facchini et al.; Europe PMC full-text XML",
+      "doi": "10.7554/eLife.86843.4",
+      "version": "Version of Record; eLife 12:RP86843; base DOI 10.7554/eLife.86843",
+      "published_on": "2024-04-10",
+      "accessed_on": "2026-11-02",
+      "read_via": "PMC web與UA HTML是CAPTCHA而非正文；指定UA從Europe PMC官方fullTextXML HTTP200取得同文XML，實讀body指定段；另web.open eLife核Version of Record及前段正文。",
+      "reading_scope": "Results與Discussion的採集/沉積/停留率、等高牆端、乾濕邊界、曲率/濕度模型、無白蟻鹽結晶對照；Methods指定Conditional probabilities及Saline solution experiments。未完整讀附錄推導或補充影片。",
+      "locator": "Results: collection versus deposition conditional probabilities, wall tips, soil/moist-sand boundary; Discussion; Materials and methods / Conditional probabilities; Saline solution experiments",
+      "summary": "採集較隨個體分布，沉積則集中凸出邊緣；形狀與蒸發模型、鹽溶液對照支持局部濕度梯度線索。",
+      "limitations": "多數試驗來自同一人工飼養群體的Coptotermes gestroi、持續濕潤早期築造；蒸發感知是支持的解釋，未定位神經感受器，不能說所有蟻丘不使用化學訊號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11006414/fullTextXML",
+      "author_cache": {
+        "file": ".cache/wave16-bio-termite2024-xml.xml",
+        "sha256": "e46bfea345b4111b17d8abfc6505f849d9c0bf0ff5d8917e4c6554cb3b59216c",
+        "text_file": ".cache/wave16-bio-termite2024-xml.txt",
+        "text_sha256": "cac7e2f950c1ab4b44ea32a2fad7679218167d8e4c2b27a84f4cc1abeb9f8659"
+      }
+    },
+    {
+      "id": "B16-S005",
+      "url": "https://doi.org/10.1073/pnas.1602451113",
+      "title": "In-drop capillary spooling of spider capture thread inspires hybrid fibres with mixed solid-liquid mechanical properties",
+      "publisher": "Elettro et al. / arXiv author manuscript; related PNAS publication",
+      "doi": "10.1073/pnas.1602451113",
+      "version": "arXiv:1605.05293v2 (19 May 2016); related PNAS 113(22):6143–6147",
+      "published_on": "2016-05-19",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋及arXiv abstract核v2/DOI；指定UA urllib HTTP200取arXiv PDF，PyMuPDF pp.1–3及p.4指定能量式段讀回，PDF p.2渲染目讀Figs.1–3。Jussieu作者網址web timeout、UA主機名憑證不符，未繞過驗證。",
+      "reading_scope": "PDF pp.1–3主文、Figs.1–4圖說；p.4彎曲與界面能段僅指定節錄；目讀p.2圖。未完整讀p.4–5、SI或影片。",
+      "locator": "PDF pp.2–3; Figs.1–3; Fig.3 caption Spooling activation and p.3 local buckling threshold comparing capillary force with Euler buckling load",
+      "summary": "捕獲絲在液滴內屈曲收線，能藏起多餘長度而保持張力；人造細線/液體對照支持毛細力與抗彎門檻的競爭。",
+      "limitations": "限所測Nephila edulis捕獲絲與微細合成纖維；不能說材料真的變成液體或所有蛛絲都如此。PDF排版時戳2018不另算新研究；v2不是本輪逐字核對的正式版。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://arxiv.org/pdf/1605.05293",
+      "author_cache": {
+        "file": ".cache/wave16-bio-windlass2016-arxiv.pdf",
+        "sha256": "b17802c058a5f6442c0d9b02725286e67d8c02b3ce32835d8c4b019d8f04d34d",
+        "text_file": ".cache/wave16-bio-windlass2016-arxiv.txt",
+        "text_sha256": "ee1eac0d71845584cb013bee2a8ca0c90e17a4866454ad7a3f939217ef983d39"
+      }
+    },
+    {
+      "id": "B16-S006",
+      "url": "https://doi.org/10.1038/nature10739",
+      "title": "Nonlinear material behaviour of spider silk yields robust webs",
+      "publisher": "Nature / Cranford et al.; MIT author-hosted published PDF",
+      "doi": "10.1038/nature10739",
+      "version": "Nature 482:72–76; 2 February 2012 issue",
+      "published_on": "2012-02-01",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋定位原研究；MIT PDF web timeout，指定UA urllib HTTP200取得同文PDF。PyMuPDF指定主文頁讀回，PDF p.4渲染目讀Fig.2。",
+      "reading_scope": "PDF pp.2–5（印刷72–75）主文/Methods Summary及Figs.1–3圖說；PDF p.4圖2目讀。未完整讀線上Methods/SI、未重跑分子或蛛網模型。",
+      "locator": "Printed pp.73–75; Fig.2a–b; paragraphs beginning Although all web models performed similarly and The remarkable strength; Methods Summary",
+      "summary": "相同網形換成不同應力應變曲線，局部載入的損壞範圍改變；後段增硬使受拉部位成為局部失效點。",
+      "limitations": "主要是離散網模型及定性戶外拉動對照；不將模型損壞比例當所有蛛網常數，也不把整體破壞韌性與保留未斷網比例混為一談。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://web.mit.edu/mbuehler/www/papers/Nature_2012_wc.pdf",
+      "author_cache": {
+        "file": ".cache/wave16-bio-web2012.pdf",
+        "sha256": "cf4a12389cb42c11eec361d7117a8b3cc894c92ee34f51b6e37ceb0221af2976",
+        "text_file": ".cache/wave16-bio-web2012.txt",
+        "text_sha256": "252196e3d7d80010f1f16ccc9f1e527284a803d60e615873bdcdd070385943e1"
+      }
+    },
+    {
+      "id": "B16-S007",
+      "url": "https://doi.org/10.1098/rsos.170475",
+      "title": "Fire ants perpetually rebuild sinking towers",
+      "publisher": "Royal Society Open Science / Phonekeo et al.; Georgia Tech author-hosted published PDF",
+      "doi": "10.1098/rsos.170475",
+      "version": "R. Soc. Open Sci. 4:170475; 14-page published PDF",
+      "published_on": "2017-07-12",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋核原研究；PMC web回驗證頁，指定UA urllib HTTP200取得Georgia Tech作者PDF。PyMuPDF指定正文與圖說實讀，PDF p.10圖5渲染目讀。",
+      "reading_scope": "PDF p.5 §3.2模型、pp.9–12 §4.1末段、§4.2、§5.1；p.10 Fig.5目讀。未完整讀其他方法/補充影片。",
+      "locator": "§3.2 Tower growth rate; §4.2 Tower growth rate, PDF pp.10–11; Fig.5; §5.1",
+      "summary": "未閉合的高起部分常剝落，完整環互拉增加對柱壓力；以最後空位填滿控制下一層的模型能解釋受測柱徑的增高速度。",
+      "limitations": "閉環穩定性為觀察與受力模型支持的假說，不是直接逐隻量到所有環向力；時間模型假設空位獨立且近似無記憶，主要吻合到約14毫米柱徑，不能無限外推。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://hu.gatech.edu/wp-content/uploads/2017/07/Hu17-tower.pdf",
+      "author_cache": {
+        "file": ".cache/wave16-bio-tower2017.pdf",
+        "sha256": "8360684e112df73d44d373ba4b2ae3212e04d8426a509e1458200405397733d4",
+        "text_file": ".cache/wave16-bio-tower2017.txt",
+        "text_sha256": "efde940d18cc1b576f50835f1418d0a64893e2289399d918d8aacab0840f24ac"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "B16001",
+      "question": "螞蟻搭的活橋還能再抄近路，為什麼卻先停下來？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_bridge_shortcut_vs_worker_sequestration_tradeoff",
+      "answer_target": "橋往內移縮短路程，同時加長加寬、占用更多原本可運輸的工蟻；在幾何成本上升與交通收益競爭的模型中，較短路線不等於較高運輸效率。",
+      "scope": "限2015 Eciton hamatum不同平台角度/交通量實驗與成本效益模型；不稱工蟻會算帳、結果是全局最優，或局部加入/退出規則已直接查明。",
+      "source_ids": [
+        "B16-S001"
+      ],
+      "source_locator": "Results: bridge movement and geometry; cost–benefit model; Figs.1–4; Discussion local joining/leaving interpretation",
+      "premise_status": "screened",
+      "notes": "實驗量測橋位置/長寬與交通量；橋面積作占用工蟻量的proxy、人力收益屬模型，不是追蹤同一固定隊列逐隻減少。相對Z7015/A12001搬物受力導航，新增路線縮短與被橋占用人力的分配條件，不是一般群體合作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解更短的路也可能因搭橋人力被占住而不再划算。",
+        "visual": "平台橋往內移時路線縮短、橋變長變寬；另框明標模型人力帳，以橋面積估占用工蟻並比較可運輸人力，不畫成同一固定隊列被逐隻追蹤的實測。",
+        "seconds": [
+          80,
+          110
+        ]
+      }
+    },
+    {
+      "id": "B16002",
+      "question": "縫隙變回同樣寬，螞蟻搭的橋為什麼還比之前胖？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_bridge_count_error_nonlinear_feedback_hysteresis",
+      "answer_target": "縮回時保留較多工蟻不是僅由當下缺口決定；依人數超出或不足平衡量而非線性改變增減員率的模型，能產生此歷史依賴，固定機率或單純離開延遲模型則不能同樣重現。",
+      "scope": "限2022擴大再縮小間距的10次野外橋試驗及模型比較；橋曾斷裂區間排除。微幅振動穩定性僅模擬，局部張力感知未直接驗證。",
+      "source_ids": [
+        "B16-S002"
+      ],
+      "source_locator": "Results and discussion / Field experiments: collective structures; Mechanistic models; Field experiments: individual cues",
+      "premise_status": "screened",
+      "notes": "區別E2190固定開關門檻正回授；這裡平衡人數偏差驅動非線性增減員。與B16001同為橋但控制量改為隨時間反向改變間距，不能把2015與2022畫成同一次實驗。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一缺口不保證同一結構，歷史可留在成員增減的動態裡。",
+        "visual": "擴大與縮回兩路徑在同一間距停格，比橋上人數；另框三模型預測，模擬擾動不畫成拍到的野外測試。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "B16003",
+      "question": "沒有新螞蟻加入，火蟻筏的邊緣怎麼還能伸出去又收回？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_raft_structural_free_layer_treadmilling_recycling",
+      "answer_target": "底層網絡收縮但密度近恆定，部分結構蟻退出成為上層行走者，再從外緣加入；內部退出與邊緣補入循環，持續提供可改形的材料。",
+      "scope": "限2021固定桿火蟻筏條件；不是整塊彈性片伸縮或外來螞蟻補給。突出方向的具體原因未完全解決，本題不承諾解釋牠們如何選逃生方向。",
+      "source_ids": [
+        "B16-S003"
+      ],
+      "source_locator": "§2.4–2.5; §3.1 Treadmilling; Fig.4; §4 first paragraph",
+      "premise_status": "screened",
+      "notes": "讀到收縮、退層、邊緣加入與長時間失衡縮小；只收材料循環，不把未定的突出方向另拆。活動較低者聚在桿旁時邊緣加入減慢是來源觀察。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把外形生長與材料移動分開：邊緣向外不代表整個底層都向外伸。",
+        "visual": "兩層不同色的概念圖，追蹤標記個體從收縮底層退出、上層行走、在外緣加入；兩層實際接觸，不畫成懸空。",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B16004",
+      "question": "白蟻最常聚集的地方，為什麼不一定是牠們堆泥的地方？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_termite_deposition_curvature_evaporation_conditional_cue",
+      "answer_target": "採集與沉積對位置的偏好不同；控制停留機率後，沉積仍集中凸邊。等高牆端與乾濕邊界對照，配合蒸發/濕度場模型，支持局部蒸發梯度引導放置的解釋。",
+      "scope": "限持續濕潤的早期Coptotermes gestroi人工場地，主要單一飼養群體；模型及無白蟻鹽溶液對照不等於直接找出感受器，也未排除所有自然築巢中的其他訊號。",
+      "source_ids": [
+        "B16-S004"
+      ],
+      "source_locator": "Results: collection versus deposition conditional probabilities, wall tips, soil/moist-sand boundary; Discussion; Materials and methods / Conditional probabilities; Saline solution experiments",
+      "premise_status": "screened",
+      "notes": "原文把條件沉積率與個體分布分開；新核心是行為取樣與沉積線索的辨別，不是再解釋L003一般擴散或B2005費洛蒙路線。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人多的地方不必然堆得高，要比較每次到訪後的放置機會。",
+        "visual": "同一模型牆的到訪熱圖與放泥熱圖並排，再控制等高牆端；蒸發箭頭標為模型，無白蟻的鹽結晶畫成另一次對照。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "B16005",
+      "question": "蛛絲放鬆後，為什麼多出來的長度不一定垂成鬆線？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_capture_silk_drop_capillary_buckling_spool",
+      "answer_target": "液滴的毛細拉力可使極細絲在滴內屈曲盤繞，將多餘長度存入液滴，同時保留滴外張力；能否收線取決於毛細作用是否勝過細絲的抗彎門檻。",
+      "scope": "限所測Nephila edulis捕獲絲與合成微細線/液滴對照；不是所有蛛絲，也不是真的固液相變。粗線不能任意套用，極端鬆弛時也不維持同樣張力。",
+      "source_ids": [
+        "B16-S005"
+      ],
+      "source_locator": "PDF pp.2–3; Figs.1–3; Fig.3 caption Spooling activation and p.3 local buckling threshold comparing capillary force with Euler buckling load",
+      "premise_status": "screened",
+      "notes": "直接顯微/力學觀察與合成系統對照；不同於H3026高分子熵回彈、P055液體爬升或K11005薄殼缺陷失穩。使用arXiv v2同文作者稿，不加算正式版為第二證據。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂線的可見長度縮短，還可能是被收進小液滴，而非材料自身縮短。",
+        "visual": "滴外直絲與滴內線圈同步放大，並排相同液滴下較易彎與較難彎細線；原創原理圖，不複用原論文照片。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "B16006",
+      "question": "蛛網一處被扯破，為什麼不一定一路撕開？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_web_nonlinear_stiffening_localized_sacrificial_failure",
+      "answer_target": "相同網形下，先軟化後增硬的絲使大變形集中在被拉的局部，該處斷裂後其餘網較少受損；線性或持續塑性變形的比較網可承受較大峰值力，卻把高應力與損壞分散到更多線。",
+      "scope": "限2012離散圓網模型及定性真網拉動對照、局部載入；不宣稱所有網都不會裂開，亦不以較少斷線等同所有載荷下更高極限強度。",
+      "source_ids": [
+        "B16-S006"
+      ],
+      "source_locator": "Printed pp.73–75; Fig.2a–b; paragraphs beginning Although all web models performed similarly and The remarkable strength; Methods Summary",
+      "premise_status": "screened",
+      "notes": "控制網形並改材料曲線，與H3060裂長/載荷達斷裂韌性門檻不同；G13008纏結壓縮增硬也沒有此離散網損壞範圍對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清能扛多大力與壞掉後剩多少：最高強度未必帶來最小破口。",
+        "visual": "同網形不同材料曲線，局部拉點與損壞線逐條標色；分開顯示峰值力與保留網比例，不畫蜘蛛預先決定犧牲哪條線。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "B16007",
+      "question": "火蟻往柱子上搭塔，為什麼先爬高的一小撮常會掉下來？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_ant_tower_closed_ring_pressure_completion_bottleneck",
+      "answer_target": "未閉環的突起主要靠少數螞蟻黏住柱面，閉合環的互拉則可增加對柱壓力；以最後空位填滿才穩定升一層的模型，解釋單看個體填位速度會高估增高速度。",
+      "scope": "限2017火蟻窄柱塔實驗與環完成模型；完整環較穩是觀察/受力解釋，未直接逐點量全部環力。填位近似獨立/無記憶，柱徑約14毫米以上吻合變差，不能無限外推。",
+      "source_ids": [
+        "B16-S007"
+      ],
+      "source_locator": "§3.2 Tower growth rate; §4.2 Tower growth rate, PDF pp.10–11; Fig.5; §5.1",
+      "premise_status": "screened",
+      "notes": "收閉環幾何造成穩定門檻與等待瓶頸，不另收塔內下沉換班或底座較寬；和P164重心投影不在同一力學條件。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個位置先升高，不等於整圈已具備承重條件。",
+        "visual": "同柱徑開口環/閉環受力箭頭，空位逐個填入，最後一格改變承托條件；曲線僅概念重畫，不把螞蟻畫成焊死環。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "螞蟻為什麼會沿著同一條路走？",
+      "reason": "費洛蒙路線已收，不把築橋換成另一種同路徑問題。",
+      "existing_ids": [
+        "B2005"
+      ]
+    },
+    {
+      "question": "沒有隊長，鳥群怎麼一起轉彎？",
+      "reason": "局部鄰居互動與群體協調已有題，不換動物新增。",
+      "existing_ids": [
+        "B2248"
+      ]
+    },
+    {
+      "question": "螞蟻搬東西怎麼知道誰帶路？",
+      "reason": "新加入個體與受力耦合導航已收。",
+      "existing_ids": [
+        "Z7015"
+      ]
+    },
+    {
+      "question": "螞蟻大隊遇到牆怎麼仍向前走？",
+      "reason": "群體持續性、運動耦合與障礙已收。",
+      "existing_ids": [
+        "A12001",
+        "A12002"
+      ]
+    },
+    {
+      "question": "蜜蜂怎麼叫對方停止支持另一個巢址？",
+      "reason": "交互抑制停止訊號已收。",
+      "existing_ids": [
+        "B2316"
+      ]
+    },
+    {
+      "question": "領路螞蟻怎麼知道跟隨者掉隊？",
+      "reason": "接觸停止/恢復雙向回授已收。",
+      "existing_ids": [
+        "A14005"
+      ]
+    },
+    {
+      "question": "蜂巢為什麼是六角形？",
+      "reason": "既有等面積省周長與建造爭議，不另以材料效率開題。",
+      "existing_ids": [
+        "LEG-S41"
+      ]
+    },
+    {
+      "question": "兩塊方向不齊的蜂巢為什麼出現五邊與七邊格？",
+      "reason": "可望有新邊界控制，但本輪PNAS DOI10.1073/pnas.2103605118正文入口403、PMC CAPTCHA、Europe PMC XML500；只取得搜尋索引段及作者頁，未把它當已讀原文納入。",
+      "existing_ids": [
+        "LEG-S41"
+      ]
+    },
+    {
+      "question": "火蟻筏為什麼浮得起來？",
+      "reason": "本輪資料未建立超過既有浮力/表面機制的獨立控制，不拿漂浮外觀加一核。",
+      "source_ids": [
+        "B16-S003"
+      ]
+    },
+    {
+      "question": "火蟻筏怎麼知道哪個方向有岸？",
+      "reason": "本文未排除環境/費洛蒙等方向線索；突出形狀不等於定向知識。",
+      "source_ids": [
+        "B16-S003"
+      ]
+    },
+    {
+      "question": "火蟻筏的尖端越長，為什麼會越長越快？",
+      "reason": "端部聚集/方向偏置模型仍不能查明偏置來源，和已收材料循環分開保留研究缺口，本輪不再拆題。",
+      "source_ids": [
+        "B16-S003"
+      ]
+    },
+    {
+      "question": "火蟻塔看起來不動，裡面為什麼一直換班？",
+      "reason": "本文確有下沉/底部退出觀察，但若只說個體換班會薄；本輪取較有控制對照的閉環增高瓶頸。",
+      "source_ids": [
+        "B16-S007"
+      ]
+    },
+    {
+      "question": "火蟻塔底座較寬，為什麼不倒？",
+      "reason": "以底座寬/重心投影回答會重複舊核；原研究定強度塔形另有模型，但不把兩種問題混寫。",
+      "existing_ids": [
+        "P164"
+      ],
+      "source_ids": [
+        "B16-S007"
+      ]
+    },
+    {
+      "question": "白蟻蓋房子是不是完全不靠費洛蒙？",
+      "reason": "早期濕潤場地與無標記底材，不支持排除所有物種/階段化學訊號。",
+      "source_ids": [
+        "B16-S004"
+      ]
+    },
+    {
+      "question": "白蟻的建築規則就是一般擴散嗎？",
+      "reason": "擴散只計算候選濕度場，不能替代沉積行為對照；不把L003重包裝。",
+      "existing_ids": [
+        "L003"
+      ],
+      "source_ids": [
+        "B16-S004"
+      ]
+    },
+    {
+      "question": "蜘蛛為什麼能靠電場飛起來？",
+      "reason": "電場感知/飄絲已收，不改成另一蛛種。",
+      "existing_ids": [
+        "B2306",
+        "B2307"
+      ]
+    },
+    {
+      "question": "蛛絲為什麼像橡皮筋？",
+      "reason": "一般鏈構形與回彈已收；本輪只保留滴內收線的不同機制。",
+      "existing_ids": [
+        "H3026"
+      ]
+    },
+    {
+      "question": "蛛絲比鋼強幾倍？",
+      "reason": "材料種類、截面、強度/韌性條件混雜，排行榜式問法沒有本輪可比控制。",
+      "source_ids": [
+        "B16-S006"
+      ]
+    },
+    {
+      "question": "蛛網抗風和局部扯破要拆成兩題嗎？",
+      "reason": "同一材料曲線/載荷分布的控制邊界，保留在局部破壞題scope，不另計風的參數變體。",
+      "source_ids": [
+        "B16-S006"
+      ]
+    },
+    {
+      "question": "水滴能替任何粗細的線自動收線嗎？",
+      "reason": "抗彎隨線徑快速上升，有尺度門檻；這是B16005的反例，不另計新核心。",
+      "source_ids": [
+        "B16-S005"
+      ]
+    },
+    {
+      "question": "活橋是不是總能找到最佳路線？",
+      "reason": "現有定性模型不能證明全局最優或個體計算能力，保留B16001限定問法。",
+      "source_ids": [
+        "B16-S001"
+      ]
+    },
+    {
+      "question": "橋加一點延遲就能穩住嗎？",
+      "reason": "固定延遲模型比較是B16002的否證控制，不能再拆成同一歷史依賴題。",
+      "source_ids": [
+        "B16-S002"
+      ]
+    },
+    {
+      "question": "蜂群為什麼能發熱保暖？",
+      "reason": "肌肉產熱與群體熱控制已有題，非本輪建構增量。",
+      "existing_ids": [
+        "B2285"
+      ]
+    },
+    {
+      "question": "螞蟻怎麼認出死亡同伴？",
+      "reason": "化學抑制訊號消失已有題，與築造新機制無關。",
+      "existing_ids": [
+        "B2317"
+      ]
+    }
+  ]
+}

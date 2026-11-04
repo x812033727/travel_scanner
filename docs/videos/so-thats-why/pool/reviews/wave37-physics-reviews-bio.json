@@ -1,0 +1,1997 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R37001",
+    "R37002",
+    "R37003",
+    "R37004",
+    "R37005",
+    "R37006",
+    "R37007",
+    "R37008",
+    "R37009",
+    "R37010",
+    "R37011"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave37-bio.json",
+      "sha256": "d65d2424632559a86bb2044c9d65f8333ed79dd3bb5b1da785bca256d861fec4"
+    },
+    {
+      "file": "reviews/wave37-bio-themes.json",
+      "sha256": "c39ab59e8aa107bf559714e1f35c4c1824d668532113f1b662ff4f0720b86056"
+    },
+    {
+      "file": "reviews/wave37-bio-author.json",
+      "sha256": "16bb6cb71ff39277c17ba0b096ea766f91d49988d09ff5429a75d06fb432b8da"
+    }
+  ],
+  "baseline": {
+    "head": "30204423d0de01272c095ca68220f616cf3b37b6",
+    "selected": 3183,
+    "raw": 3560,
+    "themes": 349,
+    "not_added": 1516
+  },
+  "role_and_scope": "11題完整問答與限制、作者近對及同波檢索、來源和紙上時間。獨立讀科學資料與原圖；不等於拍攝時的逐句覆核。",
+  "candidate_review": [
+    {
+      "id": "R37001",
+      "canonical_id": "R37001",
+      "decision": "retain",
+      "reason": "遮不同眼組、比較放大與縮小圓的退避，並非直接估距。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S001"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37002",
+      "canonical_id": "Z7010",
+      "decision": "merge",
+      "reason": "用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S002",
+        "R37-S014"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37003",
+      "canonical_id": "B2315",
+      "decision": "merge",
+      "reason": "改變兩眼所見虛擬蝦的橫向視差，量出擊前定位。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S003"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37004",
+      "canonical_id": "R37004",
+      "decision": "retain",
+      "reason": "長通濾色組織改變同類綠敏感光細胞實際能收到的波譜。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S004"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37005",
+      "canonical_id": "R37005",
+      "decision": "retain",
+      "reason": "相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S005",
+        "R37-S006"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37006",
+      "canonical_id": "R37006",
+      "decision": "retain",
+      "reason": "不同季節反光層膠原間距與反射峰位移對應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S007",
+        "R37-S008"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37007",
+      "canonical_id": "R37007",
+      "decision": "retain",
+      "reason": "兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S009"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37008",
+      "canonical_id": "R37008",
+      "decision": "retain",
+      "reason": "天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S010"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37009",
+      "canonical_id": "R37009",
+      "decision": "retain",
+      "reason": "方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S011"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37010",
+      "canonical_id": "R37010",
+      "decision": "retain",
+      "reason": "礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S012"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    },
+    {
+      "id": "R37011",
+      "canonical_id": "R37011",
+      "decision": "retain",
+      "reason": "遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "source_ids": [
+        "R37-S013"
+      ],
+      "editorial_seconds": [
+        23,
+        89
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R37-S001",
+      "title": "Secondary eyes mediate the response to looming objects in jumping spiders (Phidippus audax, Salticidae)",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "PMC HTML P011–021、024，三組遮眼非同一隻連續試；正向擴張和縮小圖案的退避對照，Fig1。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊HTML P011–019與圖1，不同蜘蛛分組遮住主眼或前側眼，實心圓盤放大、縮小及後退反應。",
+      "cache": {
+        "file": ".cache/wave37-bio-loompm.html",
+        "sha256": "1a2e8b211e68d15e509776d6667f6d7011e3ee5a355c9bc9bde4d6f6d4dfd8ba",
+        "text_file": ".cache/wave37-bio-loompm.txt",
+        "text_sha256": "e9848ddfe063f4b117b52f51e749ccabc6ce0108ff8cb1e655aba4ee8fd487df"
+      }
+    },
+    {
+      "source_id": "R37-S002",
+      "title": "Depth Perception from Image Defocus in a Jumping Spider",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "原作者摘要四層、綠敏深層、因色差而改變失焦；短跳方向及圖來自同作者後述S014，未取得或重讀Science原文全部。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原論文作者摘要；四層視網膜、含綠敏色素的兩個深層、改變照明波長的實驗及作者的距離模型。短跳方向另由S014核對。",
+      "cache": {
+        "file": ".cache/wave37-bio-jump-abstract.json",
+        "sha256": "9a006cd097c72ce4d2ae8f2b65eb9af0d1644ad7c05d992bc35d9832f3a21798",
+        "text_file": ".cache/wave37-bio-jump-abstract.txt",
+        "text_sha256": "851e18efaa6f9412d473bfb0c6dcbdfcd74200d95c5a94ce53d756341e820a5d"
+      }
+    },
+    {
+      "source_id": "R37-S003",
+      "title": "Cuttlefish use stereopsis to strike at prey",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "XML P010–020/Fig3，相同及反相關點紋能維持以視差調節定位，無關點紋不行。不是每個單眼影格都看見蝦輪廓。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊XML P006–020，虛擬蝦、兩眼影像視差及相關、反相關、不相關的隨機點紋理。",
+      "cache": {
+        "file": ".cache/wave37-bio-cuttle.xml",
+        "sha256": "220a04e570f319b4ef81b4b6a8480f50a6910d52bb662f9fb4db007acceb1ec2",
+        "text_file": ".cache/wave37-bio-cuttle.txt",
+        "text_sha256": "db0c92610ff4a71d84b2c692cf8be993fbc2ff35ef2783dd4ed8c872a7864c22"
+      }
+    },
+    {
+      "source_id": "R37-S004",
+      "title": "Spectral filtering enables trichromatic vision in colorful jumping spiders",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "PDF p1–2 Fig1B–I與測量說明，吸收、透過光譜與模型有效敏感度分圖；無實測求偶偏好。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊PDF頁1–2、圖1；視網膜長通濾片的位置、色素／濾片光譜和預測有效敏感度。",
+      "cache": {
+        "file": ".cache/wave37-bio-red.pdf",
+        "sha256": "efe4efbe086975923354b204bec6188b4f7e09828d85e28afa2572e704b2a65e",
+        "text_file": ".cache/wave37-bio-red.txt",
+        "text_sha256": "312daad540ed7f19ce24862d151520cd973b2d496dccbaaeb939e579303ecf4c"
+      }
+    },
+    {
+      "source_id": "R37-S005",
+      "title": "A Different Form of Color Vision in Mantis Shrimp",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "PDF pp2–4，訓練比較兩個單色光纖，Fig1受器、Figs2/3行為與光譜門檻、Fig4屬假說。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。",
+      "cache": {
+        "file": ".cache/wave37-bio-mantis.pdf",
+        "sha256": "75f4e8d6ed490ca2b163056789cbbbf138480202eade4a3285bee858fa3d4197",
+        "text_file": ".cache/wave37-bio-mantis.txt",
+        "text_sha256": "3608c8ec9bf1ccd7e131d9f61bf01486d3fbd78cddc9bbb1b8907a03a697e15d"
+      }
+    },
+    {
+      "source_id": "R37-S006",
+      "title": "Behavioural evidence of spectral opponent processing in the visual system of stomatopod crustaceans",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "XML P027–036、P052–069及Fig7。灰色干擾物、自然光表現篩選、藍／綠／紅在單層色幕表現不同，只報行為支持比較機制。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+      "cache": {
+        "file": ".cache/wave37-bio-oppxml.xml",
+        "sha256": "edab4be28bcce5e257b4cbfb26aa9dba363d0b928fd03341c354e4bbc3bd3710",
+        "text_file": ".cache/wave37-bio-oppxml.txt",
+        "text_sha256": "ba573dd22f3af58e4136ff8f80b278cbf15b0b284930ba39de2b24de6e07fb4c"
+      }
+    },
+    {
+      "source_id": "R37-S007",
+      "title": "Shifting mirrors: adaptive changes in retinal reflections to winter darkness in Arctic reindeer",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "XML P027–047、050、057，夏冬不同樣本的光譜、電鏡間距Fig6和已固定夏季組織外壓Fig8。冬季眼剖開不立即恢復金色，所以不確立唯一生理開關。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。",
+      "cache": {
+        "file": ".cache/wave37-bio-reindeer.xml",
+        "sha256": "c3309172e105bda0bc69acf81d4ec65f8dd507e8c9d381dc1c894c5617d0706e",
+        "text_file": ".cache/wave37-bio-reindeer.txt",
+        "text_sha256": "712fdb882efc9f36f16947a2f2eaa472696967b68fe10b743c6efa6f2d5556a0"
+      }
+    },
+    {
+      "source_id": "R37-S008",
+      "title": "Reindeer eyes seasonally adapt to ozone-blue Arctic twilight by tuning a photonic tapetum lucidum",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "XML P003–014、033–049，夏冬樣本的峰、光學模型與當地暮光譜；同主題後續研究，不把環境光模型畫成同隻動物追蹤。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+      "cache": {
+        "file": ".cache/wave37-bio-reindeer2.xml",
+        "sha256": "675a734229dc16bba65a7b7f03efddff6ba4d6fe3e6c7813645d107be97aeb75",
+        "text_file": ".cache/wave37-bio-reindeer2.txt",
+        "text_sha256": "e7e9fa0461dea4e198e36f10f37db85bed74acfebf6e1d33dab2d4267f767553"
+      }
+    },
+    {
+      "source_id": "R37-S009",
+      "title": "Nocturnal colour vision in geckos",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "作者稿定點及摘要；獨立另開RG作者稿方法L326–370，較亮/較暗灰圖樣相對守宮綠受器的預計捕光量；兩隻受測。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "作者稿定點方法（含L269起訓練與L326–370亮度變化），另核原作者摘要的個體數、光度、辨色結果。",
+      "cache": {
+        "file": ".cache/wave37-bio-gecko-web.txt",
+        "sha256": "342f705978a02abcf4ac0ff5b08ec1b7048346a34cf7c245e42b94535c703bb5",
+        "text_file": ".cache/wave37-bio-gecko-web.txt",
+        "text_sha256": "342f705978a02abcf4ac0ff5b08ec1b7048346a34cf7c245e42b94535c703bb5"
+      }
+    },
+    {
+      "source_id": "R37-S010",
+      "title": "Scotopic colour vision in nocturnal hawkmoths",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "原刊摘要和Nature預覽的Fig1–3題名；另獨立讀RG作者刊文Fig3正文L698–715、910–918，綠/青綠使用白/黃照明的辨色、不同於最低照度測試。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊公開摘要與圖1–3標題，另核原作者摘要。暗光辨色及更換照明色後的色恆常檢查。",
+      "cache": {
+        "file": ".cache/wave37-bio-moth-abstract.json",
+        "sha256": "dadf65741d98cb44ebe45700f6f52ab445424c63d3c5079bb6092892db03bfe7",
+        "text_file": ".cache/wave37-bio-moth-abstract.txt",
+        "text_sha256": "07b5ed31184c3af995cf5a24c5f9d1ed65d30005dca7f19dadab378c1521ba07"
+      }
+    },
+    {
+      "source_id": "R37-S011",
+      "title": "The image-forming mirror in the eye of the scallop",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "原作者摘要，另開Weizmann機構書目/摘要；可支持曲面方晶嵌片、雙層視網膜及中央/周邊視野的定性論點。未目讀原刊光線追蹤圖，暫不分派哪層哪個角度的細數。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原作者摘要，從方形鳥嘌呤晶體、凹面形狀到雙層視網膜所對應的視野。",
+      "cache": {
+        "file": ".cache/wave37-bio-shell-abstract.json",
+        "sha256": "47151b40df090d20fe0585b69061ca402802da4bb3ff260c6df0b71cbbbfc931",
+        "text_file": ".cache/wave37-bio-shell-abstract.txt",
+        "text_sha256": "6ba85577ccf73611ce4c678a50c6d54d06f6d10d3600ef0c0f917660334abf8e"
+      }
+    },
+    {
+      "source_id": "R37-S012",
+      "title": "Visual navigation in starfish: first evidence for the use of vision and eyes in starfish",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "原刊HTML P019–022、P033–043，1/2/4米、大輪廓的視角、去眼與假手術Fig5的方向散布。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原刊HTML P030–040，礁前1、2、4公尺的位移，距離1公尺的去眼及假手術對照，圖4–5。",
+      "cache": {
+        "file": ".cache/wave37-bio-starpm.html",
+        "sha256": "3edcc70cbe72174c9f77035653b0c075491b268eda55bdd2f131e8e06c808a02",
+        "text_file": ".cache/wave37-bio-starpm.txt",
+        "text_sha256": "681ab48a4d434deee28f63ccd2d4114a19c15626a65d62c0289e9d6373f9249b"
+      }
+    },
+    {
+      "source_id": "R37-S013",
+      "title": "Box Jellyfish Use Terrestrial Visual Cues for Navigation",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "作者稿與圖5指定段；另獨立web讀RG原文L755–840，環箱五種距離按組分析，白幕試則五隻分開距林5米釋放，水下景象維持。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "原作者摘要及作者稿定點L724–842的場地、試驗及圖5；水上白幕遮樹冠與釋放試驗。",
+      "cache": {
+        "file": ".cache/wave37-bio-jelly-web.txt",
+        "sha256": "313bf95b02318b36cf2aaeacf4f041fcd81bcfb1e13ff88307550a03d73fe489",
+        "text_file": ".cache/wave37-bio-jelly-web.txt",
+        "text_sha256": "313bf95b02318b36cf2aaeacf4f041fcd81bcfb1e13ff88307550a03d73fe489"
+      }
+    },
+    {
+      "source_id": "R37-S014",
+      "title": "Contribution of a visual pigment absorption spectrum to a visual function: depth perception in a jumping spider",
+      "decision": "supports_bounded_topic",
+      "reading_scope": "同作者後述PDF pp2–4 Fig2與Fig4a/b，紅光短跳比綠光、加強紅光仍短；色差模型位置與實驗吻合，未做新一輪獨立重複。",
+      "read_via": "定點讀作者所列快取並核原件與抽文SHA；另行查到的作者正文或公開摘要見逐源範圍。",
+      "locator": "作者說明PDF頁2–4，紅光與綠光的焦點、實測跳距和依色差預測的跳距，圖2及圖4a–b。",
+      "cache": {
+        "file": ".cache/wave37-bio-jumpjst.pdf",
+        "sha256": "4c226c63021cfae16441e8cd81dc354dd9f4b088ce22c9689a60ecd73783e9bb",
+        "text_file": ".cache/wave37-bio-jumpjst.txt",
+        "text_sha256": "336f54a5059c0c83a2050c68de2ba37e33324f8d9173b8b4470fbfca319e0cde"
+      }
+    }
+  ],
+  "source_identity_review": "14筆來源記錄；S014是S002作者後續整理，同一實驗不計第二個獨立驗證。S005與S006不同實驗、S007與S008同題不同年代，主張各限相應光學或行為資料。",
+  "source_reading_summary": "14筆逐源記範圍；S002僅初刊摘要，另有同作者後述PDF；S011僅原作者摘要，S010另找到作者公開刊文的結果與圖說；S009/S013原刊作者副本定點。",
+  "source_fetch_limits": "多數底本為作者同期快取的獨立閱讀，非本審者重新下載每篇正文。非作者另查的web定點及9件圖檔留ignored cache。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave37-physics-peer-figsheet.jpg",
+      "sha256": "63cba00ce60f9ce951a7f5586c1057fff2db6d8c6a0433ac88ff912523556492",
+      "notes": "九份圖頁：S001退避Fig1、S014 Fig4短跳分布、S003 Fig3視差、S004 Fig1濾片、S005 Figs2–3門檻、S006 Fig7各色組、S007 Figs6和8、S012 Fig5去眼/假手術軌跡。"
+    },
+    {
+      "file": ".cache/wave37-physics-peer-figs.json",
+      "sha256": "7013b6a58fc70a7aa5f5e7e32a84b5461c9ac82ee482e7696f4da8b768cb107b"
+    },
+    {
+      "file": ".cache/wave37-physics-peer-web.txt",
+      "sha256": "306d08b1b411c58d44b5ae3242c2347e3bc1d8b7246af0fbbe79d60530838bf3"
+    },
+    {
+      "file": ".cache/wave37-physics-peer-moth-web.txt",
+      "sha256": "1c6a0bd78e304a23c85076e23ca2161d7225de34c5ca4b627b16d5fef9cc4968"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R37001",
+      "b": "Z7010",
+      "decision": "distinct",
+      "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查同一跳蛛主眼失焦研究，紅光色差改變距離判斷並導致短跳。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37001",
+      "b": "Z7012",
+      "decision": "distinct",
+      "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查蜜蜂以影像膨脹速率控制降落減速。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37002",
+      "b": "Z7010",
+      "decision": "merge",
+      "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37003",
+      "b": "B2315",
+      "decision": "merge",
+      "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37003",
+      "b": "Z7008",
+      "decision": "distinct",
+      "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查螳螂可利用左右眼發生動態變化的位置配對，與烏賊亮暗反相/無關點紋的結果分清。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37004",
+      "b": "R37002",
+      "decision": "distinct",
+      "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37004",
+      "b": "A5024",
+      "decision": "distinct",
+      "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查亮與暗的生理通路源自雙極細胞相反反應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37005",
+      "b": "B2298",
+      "decision": "distinct",
+      "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查螳螂蝦出拳的儲能機制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37005",
+      "b": "R37004",
+      "decision": "distinct",
+      "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37006",
+      "b": "L326",
+      "decision": "distinct",
+      "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查常人暗視受桿錐分工限制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37007",
+      "b": "L326",
+      "decision": "distinct",
+      "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查常人暗視受桿錐分工限制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37007",
+      "b": "C2029",
+      "decision": "distinct",
+      "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查暗處的人類色覺與細節、桿錐分工。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37007",
+      "b": "R37008",
+      "decision": "distinct",
+      "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37008",
+      "b": "B17002",
+      "decision": "distinct",
+      "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查天蛾追花時花面與口器提供動態誤差。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37009",
+      "b": "R37006",
+      "decision": "distinct",
+      "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查不同季節反光層膠原間距與反射峰位移對應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37010",
+      "b": "B2144",
+      "decision": "distinct",
+      "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查海星管足的水管與肌肉動作。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37010",
+      "b": "R37011",
+      "decision": "distinct",
+      "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R37011",
+      "b": "Z7007",
+      "decision": "distinct",
+      "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查螞蟻倒退時轉身對熟悉景象再以天體保向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R37001",
+      "b": "A26003",
+      "decision": "distinct",
+      "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查蝴蝶翅膀眼斑中心移植後色環隨接收組織改變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.693679
+    },
+    {
+      "a": "R37001",
+      "b": "A24003",
+      "decision": "distinct",
+      "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.688878
+    },
+    {
+      "a": "R37001",
+      "b": "X2042",
+      "decision": "distinct",
+      "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查黑洞光子捕獲的陰影與事件視界尺寸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.686613
+    },
+    {
+      "a": "R37001",
+      "b": "A5023",
+      "decision": "distinct",
+      "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查眼睛調焦之外對近目標的雙眼內聚。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.658032
+    },
+    {
+      "a": "R37001",
+      "b": "R37002",
+      "decision": "distinct",
+      "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.654896
+    },
+    {
+      "a": "R37002",
+      "b": "Z7010",
+      "decision": "merge",
+      "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.815329
+    },
+    {
+      "a": "R37002",
+      "b": "A5025",
+      "decision": "distinct",
+      "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查視網膜中心/周邊的相反訊號突顯明暗對比。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.790953
+    },
+    {
+      "a": "R37002",
+      "b": "A24003",
+      "decision": "distinct",
+      "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.783029
+    },
+    {
+      "a": "R37002",
+      "b": "R37005",
+      "decision": "distinct",
+      "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.76569
+    },
+    {
+      "a": "R37002",
+      "b": "A5022",
+      "decision": "distinct",
+      "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查瞳孔光反射的左右聯絡。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.759351
+    },
+    {
+      "a": "R37003",
+      "b": "B2315",
+      "decision": "merge",
+      "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.746034
+    },
+    {
+      "a": "R37003",
+      "b": "R37010",
+      "decision": "distinct",
+      "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.716862
+    },
+    {
+      "a": "R37003",
+      "b": "Z7008",
+      "decision": "distinct",
+      "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查螳螂可利用左右眼發生動態變化的位置配對，與烏賊亮暗反相/無關點紋的結果分清。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.701053
+    },
+    {
+      "a": "R37003",
+      "b": "L324",
+      "decision": "distinct",
+      "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查水晶體因睫狀體與懸韌帶調節而改變形狀。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.652811
+    },
+    {
+      "a": "R37003",
+      "b": "B2002",
+      "decision": "distinct",
+      "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查腹部色塊足以觸發三刺魚領地攻擊。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.648092
+    },
+    {
+      "a": "R37004",
+      "b": "R37002",
+      "decision": "distinct",
+      "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.717942
+    },
+    {
+      "a": "R37004",
+      "b": "U8011",
+      "decision": "distinct",
+      "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查藻體旋轉、眼點遮光與鞭毛差動實現定向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.688763
+    },
+    {
+      "a": "R37004",
+      "b": "A5025",
+      "decision": "distinct",
+      "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查視網膜中心/周邊的相反訊號突顯明暗對比。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.685414
+    },
+    {
+      "a": "R37004",
+      "b": "A5022",
+      "decision": "distinct",
+      "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查瞳孔光反射的左右聯絡。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.68306
+    },
+    {
+      "a": "R37004",
+      "b": "Q9003",
+      "decision": "distinct",
+      "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查覆膜後紙面內反射增加跨墨區吸收。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.681092
+    },
+    {
+      "a": "R37005",
+      "b": "R37002",
+      "decision": "distinct",
+      "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.76569
+    },
+    {
+      "a": "R37005",
+      "b": "E2247",
+      "decision": "distinct",
+      "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查名義色溫相似的人工光源仍可能具不同顯色光譜。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.73716
+    },
+    {
+      "a": "R37005",
+      "b": "P155",
+      "decision": "distinct",
+      "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查兩盞獨立燈不易保持產生穩定條紋的相位關係。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.729175
+    },
+    {
+      "a": "R37005",
+      "b": "A24003",
+      "decision": "distinct",
+      "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.719557
+    },
+    {
+      "a": "R37005",
+      "b": "O7014",
+      "decision": "distinct",
+      "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查以不同玻璃和正負屈光力降低雙波長色差。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.701811
+    },
+    {
+      "a": "R37006",
+      "b": "LEG-S02",
+      "decision": "distinct",
+      "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查不同天空路徑的波長選擇性散射。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.674858
+    },
+    {
+      "a": "R37006",
+      "b": "R37002",
+      "decision": "distinct",
+      "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.655354
+    },
+    {
+      "a": "R37006",
+      "b": "O7007",
+      "decision": "distinct",
+      "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查斜照明將直達光排除在物鏡之外以顯示散射。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.643354
+    },
+    {
+      "a": "R37006",
+      "b": "A5023",
+      "decision": "distinct",
+      "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查眼睛調焦之外對近目標的雙眼內聚。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.643216
+    },
+    {
+      "a": "R37006",
+      "b": "R37004",
+      "decision": "distinct",
+      "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.633064
+    },
+    {
+      "a": "R37007",
+      "b": "E2247",
+      "decision": "distinct",
+      "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查名義色溫相似的人工光源仍可能具不同顯色光譜。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.722497
+    },
+    {
+      "a": "R37007",
+      "b": "LEG-S02",
+      "decision": "distinct",
+      "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查不同天空路徑的波長選擇性散射。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.670431
+    },
+    {
+      "a": "R37007",
+      "b": "R37008",
+      "decision": "distinct",
+      "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667116
+    },
+    {
+      "a": "R37007",
+      "b": "LEG-A61",
+      "decision": "distinct",
+      "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查發光混色與顏料吸收的加減色。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.659856
+    },
+    {
+      "a": "R37007",
+      "b": "L326",
+      "decision": "distinct",
+      "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查常人暗視受桿錐分工限制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.647334
+    },
+    {
+      "a": "R37008",
+      "b": "R37002",
+      "decision": "distinct",
+      "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.75184
+    },
+    {
+      "a": "R37008",
+      "b": "L102",
+      "decision": "distinct",
+      "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查光敏素狀態轉換調節種子萌發。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.731675
+    },
+    {
+      "a": "R37008",
+      "b": "L105",
+      "decision": "distinct",
+      "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查植物生長的光質線索與光週期差異。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.729762
+    },
+    {
+      "a": "R37008",
+      "b": "Z7003",
+      "decision": "distinct",
+      "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查蚊子以觸角末端溫覺途徑感應紅外線。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710426
+    },
+    {
+      "a": "R37008",
+      "b": "A24003",
+      "decision": "distinct",
+      "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.708417
+    },
+    {
+      "a": "R37009",
+      "b": "O7013",
+      "decision": "distinct",
+      "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查柯勒照明的光源與樣品共軛面分離。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.720918
+    },
+    {
+      "a": "R37009",
+      "b": "U8011",
+      "decision": "distinct",
+      "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查藻體旋轉、眼點遮光與鞭毛差動實現定向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.715768
+    },
+    {
+      "a": "R37009",
+      "b": "A5023",
+      "decision": "distinct",
+      "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查眼睛調焦之外對近目標的雙眼內聚。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.706871
+    },
+    {
+      "a": "R37009",
+      "b": "L324",
+      "decision": "distinct",
+      "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查水晶體因睫狀體與懸韌帶調節而改變形狀。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.701721
+    },
+    {
+      "a": "R37009",
+      "b": "O7006",
+      "decision": "distinct",
+      "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查DIC光程差的亮暗並非唯一地形。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.678303
+    },
+    {
+      "a": "R37010",
+      "b": "R37003",
+      "decision": "distinct",
+      "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.716862
+    },
+    {
+      "a": "R37010",
+      "b": "R37011",
+      "decision": "distinct",
+      "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.645467
+    },
+    {
+      "a": "R37010",
+      "b": "B2303",
+      "decision": "distinct",
+      "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查電鰻誘發獵物抽動以水力線索定位。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.609885
+    },
+    {
+      "a": "R37010",
+      "b": "P33003",
+      "decision": "distinct",
+      "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查座頭鯨以泡團間距與圈面積形成更緊密的泡網。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.591497
+    },
+    {
+      "a": "R37010",
+      "b": "X2047",
+      "decision": "distinct",
+      "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查利用已知基線的視差測星距。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.579785
+    },
+    {
+      "a": "R37011",
+      "b": "B2154",
+      "decision": "distinct",
+      "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查魚側線感受水中運動與振動。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.721218
+    },
+    {
+      "a": "R37011",
+      "b": "B2303",
+      "decision": "distinct",
+      "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查電鰻誘發獵物抽動以水力線索定位。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.685526
+    },
+    {
+      "a": "R37011",
+      "b": "B2106",
+      "decision": "distinct",
+      "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查混濁後非視覺訊息相對有用。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.685121
+    },
+    {
+      "a": "R37011",
+      "b": "B2277",
+      "decision": "distinct",
+      "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查河狸巢出入口和巢室高度差。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.670202
+    },
+    {
+      "a": "R37011",
+      "b": "B2099",
+      "decision": "distinct",
+      "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查潮間帶生物同時面對空氣與水中環境。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.665873
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "R37002",
+        "canonical_id": "Z7010",
+        "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。"
+      },
+      {
+        "duplicate_id": "R37003",
+        "canonical_id": "B2315",
+        "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R37001",
+        "b": "Z7010",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查同一跳蛛主眼失焦研究，紅光色差改變距離判斷並導致短跳。"
+      },
+      {
+        "a": "R37001",
+        "b": "Z7012",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查蜜蜂以影像膨脹速率控制降落減速。"
+      },
+      {
+        "a": "R37003",
+        "b": "Z7008",
+        "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查螳螂可利用左右眼發生動態變化的位置配對，與烏賊亮暗反相/無關點紋的結果分清。"
+      },
+      {
+        "a": "R37004",
+        "b": "R37002",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。"
+      },
+      {
+        "a": "R37004",
+        "b": "A5024",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查亮與暗的生理通路源自雙極細胞相反反應。"
+      },
+      {
+        "a": "R37005",
+        "b": "B2298",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查螳螂蝦出拳的儲能機制。"
+      },
+      {
+        "a": "R37005",
+        "b": "R37004",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜。"
+      },
+      {
+        "a": "R37006",
+        "b": "L326",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查常人暗視受桿錐分工限制。"
+      },
+      {
+        "a": "R37007",
+        "b": "L326",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查常人暗視受桿錐分工限制。"
+      },
+      {
+        "a": "R37007",
+        "b": "C2029",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查暗處的人類色覺與細節、桿錐分工。"
+      },
+      {
+        "a": "R37007",
+        "b": "R37008",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試。"
+      },
+      {
+        "a": "R37008",
+        "b": "B17002",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查天蛾追花時花面與口器提供動態誤差。"
+      },
+      {
+        "a": "R37009",
+        "b": "R37006",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查不同季節反光層膠原間距與反射峰位移對應。"
+      },
+      {
+        "a": "R37010",
+        "b": "B2144",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查海星管足的水管與肌肉動作。"
+      },
+      {
+        "a": "R37010",
+        "b": "R37011",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標。"
+      },
+      {
+        "a": "R37011",
+        "b": "Z7007",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查螞蟻倒退時轉身對熟悉景象再以天體保向。"
+      },
+      {
+        "a": "R37001",
+        "b": "A26003",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查蝴蝶翅膀眼斑中心移植後色環隨接收組織改變。"
+      },
+      {
+        "a": "R37001",
+        "b": "A24003",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。"
+      },
+      {
+        "a": "R37001",
+        "b": "X2042",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查黑洞光子捕獲的陰影與事件視界尺寸。"
+      },
+      {
+        "a": "R37001",
+        "b": "A5023",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查眼睛調焦之外對近目標的雙眼內聚。"
+      },
+      {
+        "a": "R37001",
+        "b": "R37002",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。"
+      },
+      {
+        "a": "R37002",
+        "b": "A5025",
+        "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查視網膜中心/周邊的相反訊號突顯明暗對比。"
+      },
+      {
+        "a": "R37002",
+        "b": "A24003",
+        "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。"
+      },
+      {
+        "a": "R37002",
+        "b": "R37005",
+        "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力。"
+      },
+      {
+        "a": "R37002",
+        "b": "A5022",
+        "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查瞳孔光反射的左右聯絡。"
+      },
+      {
+        "a": "R37003",
+        "b": "R37010",
+        "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁。"
+      },
+      {
+        "a": "R37003",
+        "b": "L324",
+        "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查水晶體因睫狀體與懸韌帶調節而改變形狀。"
+      },
+      {
+        "a": "R37003",
+        "b": "B2002",
+        "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查腹部色塊足以觸發三刺魚領地攻擊。"
+      },
+      {
+        "a": "R37004",
+        "b": "U8011",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查藻體旋轉、眼點遮光與鞭毛差動實現定向。"
+      },
+      {
+        "a": "R37004",
+        "b": "A5025",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查視網膜中心/周邊的相反訊號突顯明暗對比。"
+      },
+      {
+        "a": "R37004",
+        "b": "A5022",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查瞳孔光反射的左右聯絡。"
+      },
+      {
+        "a": "R37004",
+        "b": "Q9003",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查覆膜後紙面內反射增加跨墨區吸收。"
+      },
+      {
+        "a": "R37005",
+        "b": "E2247",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查名義色溫相似的人工光源仍可能具不同顯色光譜。"
+      },
+      {
+        "a": "R37005",
+        "b": "P155",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查兩盞獨立燈不易保持產生穩定條紋的相位關係。"
+      },
+      {
+        "a": "R37005",
+        "b": "A24003",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。"
+      },
+      {
+        "a": "R37005",
+        "b": "O7014",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查以不同玻璃和正負屈光力降低雙波長色差。"
+      },
+      {
+        "a": "R37006",
+        "b": "LEG-S02",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查不同天空路徑的波長選擇性散射。"
+      },
+      {
+        "a": "R37006",
+        "b": "R37002",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。"
+      },
+      {
+        "a": "R37006",
+        "b": "O7007",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查斜照明將直達光排除在物鏡之外以顯示散射。"
+      },
+      {
+        "a": "R37006",
+        "b": "A5023",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查眼睛調焦之外對近目標的雙眼內聚。"
+      },
+      {
+        "a": "R37006",
+        "b": "R37004",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜。"
+      },
+      {
+        "a": "R37007",
+        "b": "E2247",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查名義色溫相似的人工光源仍可能具不同顯色光譜。"
+      },
+      {
+        "a": "R37007",
+        "b": "LEG-S02",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查不同天空路徑的波長選擇性散射。"
+      },
+      {
+        "a": "R37007",
+        "b": "LEG-A61",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查發光混色與顏料吸收的加減色。"
+      },
+      {
+        "a": "R37008",
+        "b": "R37002",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。"
+      },
+      {
+        "a": "R37008",
+        "b": "L102",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查光敏素狀態轉換調節種子萌發。"
+      },
+      {
+        "a": "R37008",
+        "b": "L105",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查植物生長的光質線索與光週期差異。"
+      },
+      {
+        "a": "R37008",
+        "b": "Z7003",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查蚊子以觸角末端溫覺途徑感應紅外線。"
+      },
+      {
+        "a": "R37008",
+        "b": "A24003",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。"
+      },
+      {
+        "a": "R37009",
+        "b": "O7013",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查柯勒照明的光源與樣品共軛面分離。"
+      },
+      {
+        "a": "R37009",
+        "b": "U8011",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查藻體旋轉、眼點遮光與鞭毛差動實現定向。"
+      },
+      {
+        "a": "R37009",
+        "b": "A5023",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查眼睛調焦之外對近目標的雙眼內聚。"
+      },
+      {
+        "a": "R37009",
+        "b": "L324",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查水晶體因睫狀體與懸韌帶調節而改變形狀。"
+      },
+      {
+        "a": "R37009",
+        "b": "O7006",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查DIC光程差的亮暗並非唯一地形。"
+      },
+      {
+        "a": "R37010",
+        "b": "B2303",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查電鰻誘發獵物抽動以水力線索定位。"
+      },
+      {
+        "a": "R37010",
+        "b": "P33003",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查座頭鯨以泡團間距與圈面積形成更緊密的泡網。"
+      },
+      {
+        "a": "R37010",
+        "b": "X2047",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查利用已知基線的視差測星距。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2154",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查魚側線感受水中運動與振動。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2303",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查電鰻誘發獵物抽動以水力線索定位。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2106",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查混濁後非視覺訊息相對有用。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2277",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查河狸巢出入口和巢室高度差。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2099",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查潮間帶生物同時面對空氣與水中環境。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R37-NA001",
+      "decision": "agree_not_added",
+      "reason": "每眼數不構成每題。",
+      "existing_ids": [
+        "R37001"
+      ]
+    },
+    {
+      "id": "R37-NA002",
+      "decision": "agree_not_added",
+      "reason": "單一物種不能推出萬用距離操弄。",
+      "existing_ids": [
+        "R37002"
+      ]
+    },
+    {
+      "id": "R37-NA003",
+      "decision": "agree_not_added",
+      "reason": "各物種的視差匹配方法不同。",
+      "existing_ids": [
+        "R37003"
+      ]
+    },
+    {
+      "id": "R37-NA004",
+      "decision": "agree_not_added",
+      "reason": "組織不等於偏好行為。",
+      "existing_ids": [
+        "R37004"
+      ]
+    },
+    {
+      "id": "R37-NA005",
+      "decision": "agree_not_added",
+      "reason": "受器數不等於可辨閾值。",
+      "existing_ids": [
+        "R37005"
+      ]
+    },
+    {
+      "id": "R37-NA006",
+      "decision": "agree_not_added",
+      "reason": "不同作業阻止絕對推論。",
+      "existing_ids": [
+        "R37005"
+      ]
+    },
+    {
+      "id": "R37-NA007",
+      "decision": "agree_not_added",
+      "reason": "區分虹膜與眼底反光。",
+      "existing_ids": [
+        "R37006"
+      ]
+    },
+    {
+      "id": "R37-NA008",
+      "decision": "agree_not_added",
+      "reason": "離體外壓與季節機制區別。",
+      "existing_ids": [
+        "R37006"
+      ]
+    },
+    {
+      "id": "R37-NA009",
+      "decision": "agree_not_added",
+      "reason": "兩隻守宮是特定試驗。",
+      "existing_ids": [
+        "R37007"
+      ]
+    },
+    {
+      "id": "R37-NA010",
+      "decision": "agree_not_added",
+      "reason": "有限低照度仍有光子。",
+      "existing_ids": [
+        "R37008"
+      ]
+    },
+    {
+      "id": "R37-NA011",
+      "decision": "agree_not_added",
+      "reason": "光學定位不等於臉部辨識。",
+      "existing_ids": [
+        "R37009"
+      ]
+    },
+    {
+      "id": "R37-NA012",
+      "decision": "agree_not_added",
+      "reason": "大對比輪廓不同於細節。",
+      "existing_ids": [
+        "R37010"
+      ]
+    },
+    {
+      "id": "R37-NA013",
+      "decision": "agree_not_added",
+      "reason": "只有特定上透鏡眼方位。",
+      "existing_ids": [
+        "R37011"
+      ]
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W37R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 83,
+      "core_totals": {
+        "R37001": 26,
+        "R37002": 30,
+        "R37003": 27
+      },
+      "core_caps": {
+        "R37001": 89,
+        "R37002": 89,
+        "R37003": 89
+      },
+      "chapter_seconds": [
+        26,
+        30,
+        27
+      ],
+      "maximum_beat_seconds": 17,
+      "drop_if_read": "看不清兩層焦平面時就拿掉跳距中段，保留圓盤警報與分眼蝦的差異。",
+      "editorial_result": "先看退避與接近感，再用另兩物種各自的失焦及視差來估距；兩個舊核心按變體使用。",
+      "timing_result": "PASS_LOCAL_TTS_SAMPLE_PLUS_PLANNED_VISUALS"
+    },
+    {
+      "id": "W37R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 70,
+      "core_totals": {
+        "R37004": 32,
+        "R37005": 38
+      },
+      "core_caps": {
+        "R37004": 89,
+        "R37005": 89
+      },
+      "chapter_seconds": [
+        32,
+        38
+      ],
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "若沒有空間交代兩個行為測試，把色對灰作圖註，不增加另一段目錄。",
+      "editorial_result": "受器前的色片產生訊號分工，對照另一物種的波長辨別與色對灰行為，不能由通道數推色數。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W37R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 69,
+      "core_totals": {
+        "R37006": 35,
+        "R37009": 34
+      },
+      "core_caps": {
+        "R37006": 89,
+        "R37009": 89
+      },
+      "chapter_seconds": [
+        35,
+        34
+      ],
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "如果凹面反射和雙層感光位置會被畫反，撤下扇貝段重畫。",
+      "editorial_result": "先看反光層選擇波長，再換扇貝眼裡反射光線的會聚；兩種用途有共同追問。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W37R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 60,
+      "core_totals": {
+        "R37007": 32,
+        "R37008": 28
+      },
+      "core_caps": {
+        "R37007": 89,
+        "R37008": 89
+      },
+      "chapter_seconds": [
+        32,
+        28
+      ],
+      "maximum_beat_seconds": 18,
+      "drop_if_read": "兩篇不同物種，無法把人眼看樣本的明暗當成動物所見。",
+      "editorial_result": "改灰樣本亮度排除守宮的明暗捷徑，再改天蛾照明光譜測色恆常；分列兩個任務的照度。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W37R-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 56,
+      "core_totals": {
+        "R37010": 29,
+        "R37011": 27
+      },
+      "core_caps": {
+        "R37010": 89,
+        "R37011": 89
+      },
+      "chapter_seconds": [
+        29,
+        27
+      ],
+      "maximum_beat_seconds": 17,
+      "drop_if_read": "若遮幕的畫法同時擋住水下景物就不能使用這組對照。",
+      "editorial_result": "海星看水下礁面，箱形水母看水上樹冠；遮幕只限水面外，結在實驗控制差異。",
+      "timing_result": "PASS_LOCAL_TTS_SAMPLE_PLUS_PLANNED_VISUALS"
+    }
+  ],
+  "first_retrieval": {
+    "neighbours": {
+      "file": ".cache/wave37-physics-peer-initial-neighbours.json",
+      "sha256": "530334ad25e972a1ae6144e7de104f03cf7c0fdb65d66ef1762c811851ed5ea8"
+    },
+    "draft_sha256": "3e58c401e4f254164051314f9d5d81bab94c9276a29eee31863cf462ad56bd91",
+    "directed_pairs": 55
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "facef1fdc5e111c71f107f5c5503461e22303ea4780f51ba0cda6bdc5cc0d577",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "facef1fdc5e111c71f107f5c5503461e22303ea4780f51ba0cda6bdc5cc0d577"
+    },
+    "neighbours": {
+      "file": ".cache/wave37-bio-neighbours.json",
+      "sha256": "7eb82630811ab3d24e2d2a50b843e34ca0acee06490762c826be67b09ff8203d"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave37-draft.json",
+      "sha256": "0e00bb70245c50b119f1a065e23f028913b3cadbeeeeb0ef94eeaf30badf19d9"
+    },
+    "candidate_rows_checked": 11,
+    "directed_pairs_checked": 55,
+    "author_near_pairs_checked": 18,
+    "batch_hash_matches_neighbours": true,
+    "added_directed_pairs": []
+  },
+  "corrections": [
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "scope": "T01三組不同跳蛛遮眼、每次實際獵物距離作尺，回收望向不同個體的分組。T03夏冬不同馴鹿個體，T02蝦蛄兩個作業與色組差異；S014 Fig2及Fig4a–b、S005 Figs2–3定位、S009原刊書目。T01／T05樣讀後縮17／10秒。"
+    }
+  ],
+  "timing_probe": {
+    "samples": [
+      {
+        "episode": "W37R-T01",
+        "manifest": {
+          "file": ".cache/wave37-depth-read.json",
+          "sha256": "78137fdd8b7c726446c6e9428d6ecc4238b15d8089aee8e59b3e3a9039128326"
+        },
+        "wave": {
+          "file": ".cache/wave37-depth-read-3.wav",
+          "sha256": "bd37f88aebaded4ec0197218aba0cb9e86e85e876d2abdfacc2d0d85005c9db7"
+        },
+        "seconds": [
+          23.163,
+          27.88,
+          24.254,
+          75.298
+        ],
+        "body_seconds": 83,
+        "method": "獨立讀根作者樣稿、核SHA與WAV取樣率及幀數，不冒稱真人或已聽播。"
+      },
+      {
+        "episode": "W37R-T05",
+        "manifest": {
+          "file": ".cache/wave37-reef-read.json",
+          "sha256": "098ced6263580ea3f104c5e16006a843971871e632853601729b1b8c2f5509c3"
+        },
+        "wave": {
+          "file": ".cache/wave37-reef-read-3.wav",
+          "sha256": "62e742e514e2c04e8b968cc21807e973b87b39b1d58e510dbb8cc22c8e9e6125"
+        },
+        "seconds": [
+          21.436,
+          15.929,
+          13.168,
+          50.534
+        ],
+        "body_seconds": 56,
+        "method": "獨立讀根作者樣稿、核SHA與WAV取樣率及幀數，不冒稱真人或已聽播。"
+      }
+    ],
+    "others": "其餘三案紙上估時。"
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "題案的原創圖與取景尚未製作，來源層級和兩個合併關係需隨章保留。"
+  ]
+}

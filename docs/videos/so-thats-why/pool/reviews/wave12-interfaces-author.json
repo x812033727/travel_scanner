@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NONAUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "c3a923e71205a63a439bd1e0095fafdf37354bbd",
+    "pool_sha256": "335ad35f1299664a96d6d1b5251a4ec52153d81a9b38ba49cfe72e63a411adef",
+    "raw": 3201,
+    "selected": 2837,
+    "not_added": 550
+  },
+  "written_files": [
+    {
+      "file": "batches/wave12-interfaces.json",
+      "sha256": "c671288b1f48af5e2264ad5a66bf810549bbb5a5b37f02145f846024b3c673e6"
+    },
+    {
+      "file": "reviews/wave12-interfaces-themes.json",
+      "sha256": "b7dd5b4032e851930ba3a5c2300eaa8b43b8ab89da0c08e25c7164cd026f9cac"
+    }
+  ],
+  "counts": {
+    "raw_candidates": 14,
+    "sources": 8,
+    "not_added": 16,
+    "themes": 4,
+    "author_expected_retained": 14,
+    "new_core_guarantee": false
+  },
+  "scope": "14題為來源與編輯收斂結果；不追15–25門檻、不以顆粒材料、泡大小、柱形、液體種類換裝另計。題級研究，非逐句腳本核准。",
+  "dedup_reading": {
+    "baseline_records": 3201,
+    "baseline_not_added": 550,
+    "method": "對全raw／not_added的問題、答案、scope、key做詞組檢索，讀100個raw及25退題命中；再讀指定ID與顆粒殼／泡沫窄詞命中。未逐題重讀全庫3201題、未重開全部舊來源。",
+    "queries": [
+      "表面張力|毛細|液滴|水滴|滴落|泡泡|氣泡|薄膜|潤濕|濕潤|接觸角|疏水|親水|雷頓|萊頓|Leiden|Laplace|Marangoni|液膜|界面|咖啡環|水珠|噴濺|飛濺|氣墊|排液",
+      "顆粒.*殼|液體.*彈珠|液態.*彈珠|表面.*顆粒|乾燥.*皺|膠體|乳化|泡沫.*老|泡沫.*粗|氣泡.*擴散"
+    ],
+    "semantic_status": "等待root共同top5，非作者覆核另綁最終輸入，不宣稱已完成。",
+    "within_batch": "三種粉末水珠結局合一核心，Cassie失效與可逆滲入提出邊界；同一表面流的不同驅動明交非作者判斷。"
+  },
+  "near_pairs": [
+    {
+      "a": "I12001",
+      "b": "P053",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "靜態潤濕角對比接觸線被卡住、角度先變的歷史依賴；若只畫圓滴則應併回舊題。"
+    },
+    {
+      "a": "I12001",
+      "b": "H3092",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "咖啡環採用固定接觸線輸送顆粒；此題追接觸線為何先不移動及何時越過邊界。"
+    },
+    {
+      "a": "I12002",
+      "b": "P053",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "相同固體化學下含氣／浸潤狀態與能障，非換一塊材料比較接觸角。"
+    },
+    {
+      "a": "I12002",
+      "b": "I12013",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "前者浸潤失效，後者可逆滲入儲能與時間相配；不能只用兩次撞擊同義重播。"
+    },
+    {
+      "a": "I12003",
+      "b": "P056",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "垂直支承與兩浮物之間的側向相吸／排斥不同；能量和液面形狀是新增控制。"
+    },
+    {
+      "a": "I12004",
+      "b": "H3092",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "均勻液體蒸發補流對比成分選擇性蒸發產生張力梯度；不只換咖啡成酒。"
+    },
+    {
+      "a": "I12004",
+      "b": "I12005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "都含Marangoni：前者蒸發持續造成成分差與向上流，後者局部拉伸造成濃度差的回復回授。接受非作者判是否只作同核變體。"
+    },
+    {
+      "a": "I12005",
+      "b": "F4012",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "表面活性物濃度變化導致回流，不等於蛋白展開互連的界面網絡。"
+    },
+    {
+      "a": "I12005",
+      "b": "LEG-S53",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "不追微胞去油，而追界面拉伸後的動態濃度回復。"
+    },
+    {
+      "a": "I12006",
+      "b": "Q9005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "收膜時質量持續入邊、動量平衡，與無限液柱粗細擾動增長不同；邊緣再斷滴不另計。"
+    },
+    {
+      "a": "I12006",
+      "b": "I12010",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "退縮速度／集邊對比周圍流體剪切失穩導致膜片碎裂；同事件中不同因果。"
+    },
+    {
+      "a": "I12007",
+      "b": "P057",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "毛細自發浸入孔隙與移動板面拖液、匹配動態彎月面選膜厚不同。"
+    },
+    {
+      "a": "I12008",
+      "b": "J6010",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "無外供壓力節流；間隔空氣排出時間與滴變形回彈競爭。"
+    },
+    {
+      "a": "I12008",
+      "b": "P004",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "一般氣墊支承未回答有限接觸時間內是否破膜接通。"
+    },
+    {
+      "a": "I12008",
+      "b": "I12009",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "真正接通之前避免合併，對比接通後波動／慣性與排空造成再斷頸。"
+    },
+    {
+      "a": "I12009",
+      "b": "Q9005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "有限滴形波動與慣性能障競爭，不直接以長液柱線性Rayleigh條件判斷。"
+    },
+    {
+      "a": "I12009",
+      "b": "H10001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "油滴被洗劑改變接觸且頸縮殘留，與無固體接觸的部分合併界面波／耗散不同。"
+    },
+    {
+      "a": "I12010",
+      "b": "P311",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "表面泡帽退縮受氣體剪切，不是液內壓力循環造成空穴崩潰。"
+    },
+    {
+      "a": "I12011",
+      "b": "LEG-S70",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "最小面積平衡形狀對比完整膜間的氣體交換與濕邊界對粗化率的改變。"
+    },
+    {
+      "a": "I12011",
+      "b": "K6001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "純水滴曲率與蒸氣平衡對比泡沫隔膜傳氣、網絡幾何；新核心不能只說小的壓力較高。"
+    },
+    {
+      "a": "I12012",
+      "b": "K11001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "強加橫向曲率造成幾何剛性，與液氣界面能支付彎曲、造成包覆或重開不同。"
+    },
+    {
+      "a": "I12012",
+      "b": "K11007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "無預製摺痕／剛片鉸接，水量變化驅動彈性薄片。"
+    },
+    {
+      "a": "I12013",
+      "b": "U8001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "能量來自撞擊後可逆毛細儲存，不是兩滴合併減少界面能；離面時序也是必要條件。"
+    },
+    {
+      "a": "I12014",
+      "b": "K11005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "不是一般完整薄殼受壓屈曲；顆粒可脫離或疊層，使外殼面積與粒數改變。"
+    },
+    {
+      "a": "I12014",
+      "b": "I12001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "顆粒液面黏附可含接觸線卡住，但新增粒間摩擦／排出與疊層去向，非只換基板。"
+    }
+  ],
+  "source_reading": [
+    {
+      "source_id": "I12-S001",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf",
+      "retrieval_url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "printed pp.22–23 §6/6.1；28–31 §8.1/§9開頭；34–36、38–39 §10.1–10.4；47–48 §12.3；59–61 §15.1；64–72 §16.1–17.1。PDF頁碼為printed+1。",
+      "cache_file": ".cache/wave12-interfaces-mit.pdf",
+      "cache_sha256": "36e518f13c4a4042672dbef5a1a951df7f8181fcf02a805cbffe59005784d34a",
+      "limitations": "只採列出的教學機制，不稱全82頁讀完；不採酒品質推論、§16符號不一致的臨界式、§17回顧中的指數疑誤。與舊Q9005的Lecture11單章屬同課程，非第二份獨立證據。"
+    },
+    {
+      "source_id": "I12-S002",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/PoF-Incline.pdf",
+      "retrieval_url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/PoF-Incline.pdf",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF pp.2–5 / printed122103-1–4，§I、§II、§III.A Phenomenology與Figs.1–4的已讀文字。",
+      "cache_file": ".cache/wave12-interfaces-bounce.pdf",
+      "cache_sha256": "b9afd539a7c5b69e79e7e708ff8419e5672118359e2afd1cb6ed564e53b71c34",
+      "limitations": "原實驗為矽油滴與高黏矽油薄層；不偷換成普通冷水池，不採普遍破膜厚度或通用We門檻。未看補充影片，未讀全能量推導。"
+    },
+    {
+      "source_id": "I12-S003",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://www.math.ubc.ca/~jfeng/Publications/PDFs/06_PoF4.pdf",
+      "retrieval_url": "https://www.math.ubc.ca/~jfeng/Publications/PDFs/06_PoF4.pdf",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF/printed pp.1–7，§I、§III.A、§III.B.1–2；p.13 §IV Conclusion。採機制段pp.3–6與Fig.2，Fig.2另渲染看過。",
+      "cache_file": ".cache/wave12-interfaces-partial.pdf",
+      "cache_sha256": "467c0514d50db2d30f4b78beb248c90649cf49a57063aa22e4129d12f9df5f78",
+      "limitations": "數值模型以水滴／油水界面實驗比較；擴散界面使破膜與斷頸時刻偏差，高重力區幾何不準。不採通用半徑比例或所有流體共同門檻。"
+    },
+    {
+      "source_id": "I12-S004",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8740717/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8740717/fullTextXML",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 XML；ElementTree 擷取指定主文小節逐段閱讀。",
+      "reading_scope": "Introduction；Results and Discussion的Submicron Film Drop Production、Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods的Definition of Dp與Gas Dilution。",
+      "cache_file": ".cache/wave12-interfaces-burst.xml",
+      "cache_sha256": "11c0b0abf3da42609d76f8352eec5ac95b4cf0ffaea20416299bf9a9c7bef964",
+      "limitations": "實際取得路線是Europe PMC fullTextXML，同一篇論文；空氣／水尺度的擺動難直接看清，清楚視覺來自FC43／水類比；量測是乾燥粒徑，非原始濕滴直徑。精確滴數仍非模型可預測。"
+    },
+    {
+      "source_id": "I12-S005",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://arxiv.org/pdf/2010.06664",
+      "retrieval_url": "https://arxiv.org/pdf/2010.06664",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "主文PDF pp.1–8，§I、§II.A、§III、§IV.A–B、§V；採Figs.3–7文字，未讀補充演算法。",
+      "cache_file": ".cache/wave12-interfaces-foam.pdf",
+      "cache_sha256": "6d7cde502b82226d775b7e1f109bd4cab6305f0a06c87314c22a083a77ca34b0",
+      "limitations": "兩平板間、三邊相接的近二維泡沫；不套一般一盆三維泡沫。六邊泡面積變化需曲線或明示放大示意，原照片不易直接看出；模型速率常數有未解偏差。"
+    },
+    {
+      "source_id": "I12-S006",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://blog.espci.fr/benoitroman/files/2018/04/Py07b.pdf",
+      "retrieval_url": "https://blog.espci.fr/benoitroman/files/2018/04/Py07b.pdf",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF/printed pp.1–2：實驗敘述、Fig.1、彈毛細尺度與未閉合對照；p.3開頭二維模型至Fig.4前。Fig.1另渲染看過。",
+      "cache_file": ".cache/wave12-interfaces-origami.pdf",
+      "cache_sha256": "e9697b14b558ae773cd05362d804bceee2b0eea22d521f0bbed8b0028c7a9fa8",
+      "limitations": "PDMS薄片與特定底面，不是普通紙吸水；只採包覆和重開的競爭，不把二維近似冒稱完整三維預測。未看影片。"
+    },
+    {
+      "source_id": "I12-S007",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://arxiv.org/pdf/1406.3203",
+      "retrieval_url": "https://arxiv.org/pdf/1406.3203",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF pp.2–7，Figs.1–4、滲入／排空及兩個時間尺度相配的主文。Fig.1另渲染看過。",
+      "cache_file": ".cache/wave12-interfaces-pancake.pdf",
+      "cache_sha256": "3122de3c1b40443ea2c586afd44ef394de87c08fe30727085680c2f8987e65af",
+      "limitations": "特殊微柱／奈米結構的研究表面；不作一般防水塗層保證。不把可逆局部滲入等同Cassie到Wenzel失敗，也不採所有落速固定四倍快。未看補充影片。"
+    },
+    {
+      "source_id": "I12-S008",
+      "status": "SPECIFIED_BODY_SECTIONS_READ",
+      "url": "https://arxiv.org/pdf/2102.06434",
+      "retrieval_url": "https://arxiv.org/pdf/2102.06434",
+      "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+      "reading_scope": "PDF pp.1–2 Introduction；pp.7–11 Fig.3、三種蒸發結果、Analytic framework與Fig.4。Fig.3另渲染看過。",
+      "cache_file": ".cache/wave12-interfaces-marble.pdf",
+      "cache_sha256": "30867402cef211f7e509c68e4a5f0d35962390d3b3ced129cc01cb7742414bd7",
+      "limitations": "採指定矽粒包覆水滴實驗及簡化受力模型，不把三類當所有粉末必然結果；未讀後半蒸發率擬合或把材料製備寫成居家操作。"
+    }
+  ],
+  "source_identity_notes": [
+    {
+      "new_source": "I12-S001",
+      "old_source": "SRC-32ff4a4fd4c82fdc",
+      "new_url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf",
+      "old_url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/d77da8d5f1bb8b69a62682bc0dbc5845_MIT18_357F10_Lecture11.pdf",
+      "reason": "同一MIT課程，全講義含既有Lecture11；本輪不採重複§11，新增讀§6/8/9/10/12/15–17。兩URL不是兩份獨立證據，URL保留閱讀路線。"
+    },
+    {
+      "new_source": "I12-S004",
+      "reason": "PMC網頁與EuropePMC XML為同篇PNAS論文，僅一source；圖中液液類比也不是第二篇獨立證據。"
+    }
+  ],
+  "additional_source_screening": [
+    {
+      "url": "https://arxiv.org/pdf/1005.2771",
+      "title": "Thin Film Formation During Splashing of Viscous Liquids",
+      "reading_scope": "PDF pp.4–7，§IV–VII正文；前頁較長輸出被截斷，不列全讀。",
+      "route": "當日指定UA urllib取得PDF、PyMuPDF指定頁閱讀",
+      "cache_file": ".cache/wave12-interfaces-splash.pdf",
+      "cache_sha256": "dbb833d7def9fe1be2cf5eb119a6c0520b673d1c2a903829b467048381f34b8c",
+      "decision": "I12-NA12暫不加入；已有參數觀察，但來源明說薄片生成基本機制未解。"
+    }
+  ],
+  "read_failures": [
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4371919/fullTextXML",
+      "result": "HTTP500；沒有取得或讀正文，不當成支持資料。"
+    }
+  ],
+  "source_cautions": [
+    "全講義非全頁核准；§16符號與§17回顧指數疑誤不採。",
+    "部分合併模擬的斷頸時刻／初始幾何有限制；原圖水滴與油界面不能偷換。",
+    "破泡薄膜擺動的清楚影像是液液類比；水氣實驗為量測支持，不能聲稱看見水氣原影格的每個微滴。",
+    "未看任何補充影片；只渲染讀partial Fig.2、origami Fig.1、pancake Fig.1、marble Fig.3。",
+    "來源全文／圖片只存忽略cache，提交三JSON只有原創題目、短機制與連結。"
+  ],
+  "theme_timing": [
+    {
+      "id": "W12I-T01",
+      "seconds": 155,
+      "chapters": [
+        60,
+        95
+      ],
+      "core_allocations": [
+        {
+          "id": "I12002",
+          "seconds": 60,
+          "cap": 90
+        },
+        {
+          "id": "I12013",
+          "seconds": 95,
+          "cap": 120
+        }
+      ],
+      "opening_and_recap_included": true,
+      "read_aloud": false
+    },
+    {
+      "id": "W12I-T02",
+      "seconds": 180,
+      "chapters": [
+        80,
+        100
+      ],
+      "core_allocations": [
+        {
+          "id": "I12008",
+          "seconds": 80,
+          "cap": 95
+        },
+        {
+          "id": "I12009",
+          "seconds": 100,
+          "cap": 115
+        }
+      ],
+      "opening_and_recap_included": true,
+      "read_aloud": false
+    },
+    {
+      "id": "W12I-T03",
+      "seconds": 145,
+      "chapters": [
+        55,
+        90
+      ],
+      "core_allocations": [
+        {
+          "id": "I12006",
+          "seconds": 55,
+          "cap": 80
+        },
+        {
+          "id": "I12010",
+          "seconds": 90,
+          "cap": 110
+        }
+      ],
+      "opening_and_recap_included": true,
+      "read_aloud": false
+    },
+    {
+      "id": "W12I-T04",
+      "seconds": 115,
+      "chapters": [
+        55,
+        60
+      ],
+      "core_allocations": [
+        {
+          "id": "I12014",
+          "seconds": 115,
+          "cap": 125
+        }
+      ],
+      "opening_and_recap_included": true,
+      "read_aloud": false
+    }
+  ],
+  "validation": {
+    "json": "PASS",
+    "utf8_lf": "PASS",
+    "beats_and_caps": "PASS_AUTHOR_ARITHMETIC",
+    "repository_validators": "PASS_VALIDATE_EDITORIAL_AND_THEMES_ISOLATED",
+    "no_script_or_production_approval": true
+  },
+  "open_editorial_questions": [
+    "I12004與I12005同含Marangoni，須由非作者判蒸發驅動與拉伸回復是否足夠不同。",
+    "I12011的六邊泡微小面積變化原照片不易看出，未提出獨立影片，進稿須圖解或曲線。",
+    "所有題案仍待原創圖、來源圖界線與實際試讀；若只能名詞輪播即撤或縮。"
+  ]
+}

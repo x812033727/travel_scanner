@@ -1,0 +1,2506 @@
+{
+  "batch_id": "wave3-earth-observation-20261101",
+  "created_on": "2026-11-01",
+  "scope": "地球觀測、海洋、天氣與氣候、地質及太空探測工程；題級來源支撐，不代表完整答案或製作核准。",
+  "sources": [
+    {
+      "id": "O3-S001",
+      "url": "https://natural-resources.canada.ca/maps-tools-publications/satellite-elevation-air-photos/radar-image-distortions",
+      "title": "Radar Image Distortions",
+      "publisher": "Natural Resources Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Slant-range scale distortion; foreshortening; layover; shadow",
+      "summary": "斜距成像把距離與地面位置分開；坡面可縮短、順序翻轉或完全不被照到。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S002",
+      "url": "https://natural-resources.canada.ca/maps-tools-publications/satellite-elevation-air-photos/radar-image-properties",
+      "title": "Radar Image Properties",
+      "publisher": "Natural Resources Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Speckle; multi-look processing; spatial filtering; antenna pattern",
+      "summary": "同一解析單元內的相干干涉形成散斑；平滑降斑會犧牲細節，天線方向圖也會造成亮度梯度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S003",
+      "url": "https://natural-resources.canada.ca/maps-tools-publications/satellite-elevation-air-photos/target-interaction-image-appearance",
+      "title": "Target Interaction and Image Appearance",
+      "publisher": "Natural Resources Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Surface roughness; local incidence; look direction; corner reflection; moisture; volume scattering",
+      "summary": "波長、相對坡向、含水與散射路徑共同控制回波；淹水可能變暗也可能因植被與水面雙重反射變亮。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S004",
+      "url": "https://natural-resources.canada.ca/maps-tools-publications/satellite-elevation-air-photos/viewing-geometry-spatial-resolution",
+      "title": "Viewing Geometry and Spatial Resolution",
+      "publisher": "Natural Resources Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Range resolution; azimuth resolution; synthetic aperture radar",
+      "summary": "沿飛行與橫飛行方向的解析度受不同限制；運動累積回波形成合成孔徑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S005",
+      "url": "https://science.nasa.gov/mission/nisar/get-to-know-sar/",
+      "title": "Get to Know SAR – Overview",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Phase history; along-track focusing; complex amplitude and phase",
+      "summary": "以移動平台對同一地點累積相位歷史並補償距離變化，合成孔徑聚焦；相位同時包含傳播、表面與大氣影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S006",
+      "url": "https://natural-resources.canada.ca/maps-tools-publications/satellite-elevation-air-photos/advanced-radar-applications",
+      "title": "Advanced Radar Applications",
+      "publisher": "Natural Resources Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Interferometry; along-track interferometry",
+      "summary": "跨軌天線相位差連結高程幾何；沿軌天線在時間差下可研究運動，但不同配置不是同一種解讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S007",
+      "url": "https://natural-resources.canada.ca/maps-tools-publications/satellite-elevation-air-photos/radar-polarimetry",
+      "title": "Radar Polarimetry",
+      "publisher": "Natural Resources Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Polarization synthesis; polarization signatures; calibration; alternating polarization",
+      "summary": "多通道振幅與相位提供散射特徵；完整資訊可合成偏振反應，通道失衡與不同時測量會污染判讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S008",
+      "url": "https://www.noaa.gov/jetstream/radar-beams",
+      "title": "JetStream Max: Radar Beams",
+      "publisher": "NOAA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open/click 正文段落",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Beam Spreading; Refraction; Subrefraction and Superrefraction; Ducting",
+      "summary": "波束遠離雷達會變寬且相對地面抬高；大氣折射率梯度可另改變觀測路徑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S009",
+      "url": "https://www.noaa.gov/jetstream/anomalous-propagation",
+      "title": "JetStream Max: Anomalous Propagation",
+      "publisher": "NOAA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open/click 正文段落",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Ground clutter; superrefraction; paired radar and satellite example",
+      "summary": "逆溫及濕度結構可使波束異常彎向地物；相鄰雷達與衛星提供相互核對的觀測條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S010",
+      "url": "https://www.weather.gov/mrx/radarrainfallestimates",
+      "title": "WSR-88D Radar Rainfall Estimation: Capabilities, Limitations and Potential Improvements",
+      "publisher": "NOAA/NWS, Steven M. Hunter",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open/click 正文段落",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "§2b attenuation; §2e blockage; §2f range effects; §3 gauges/sampling; §5a1 tilt test",
+      "summary": "歷史技術回顧區分波束遮蔽、路徑衰減、點與體積取樣及品質控制錯刪等估雨限制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S011",
+      "url": "https://www.noaa.gov/jetstream/dual-polarization",
+      "title": "JetStream Max: Dual Polarization",
+      "publisher": "NOAA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open/click 正文段落",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Correlation Coefficient and Tornado Debris Signature; Specific Differential Phase",
+      "summary": "偏振相關性與旋轉位置共同支持碎屑判讀；差分相位沿程變化提供不同於回波強度的降水資訊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S012",
+      "url": "https://www.noaa.gov/jetstream/vcp_max",
+      "title": "Volume Coverage Patterns (VCP)",
+      "publisher": "NOAA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open/click 正文段落",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Clear air / precipitation scans; range folding; Doppler dilemma",
+      "summary": "增加量測時間改善微弱訊號或多仰角資料，卻降低更新速度；脈衝間隔也耦合可辨距離與速度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S013",
+      "url": "https://www.noaa.gov/jetstream/reflectivity",
+      "title": "Radar Images: Reflectivity",
+      "publisher": "NOAA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open/click 正文段落",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Drop-size example; Base Reflectivity vs Composite Reflectivity",
+      "summary": "反射率對大粒子敏感，不能唯一換算雨量；各高度最大值合成與最低仰角圖呈現不同風暴部分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S014",
+      "url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+      "title": "Fundamentals of Remote Sensing",
+      "publisher": "Natural Resources Canada / Canada Centre for Remote Sensing",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib PDF bytes + PyMuPDF 文字抽取；逐頁實讀",
+      "reading_scope": "實讀所列 PDF 頁；不採用歷史傳感器性能、全部紅外感測器需極低溫等概括措辭。",
+      "locator": "PDF pp.14–19, 36–44, 48–53, 149–159",
+      "summary": "光譜、軌道與掃描幾何限制觀測；資料校正、重取樣及波段比值各有假設。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S015",
+      "url": "https://hyp3-docs.asf.alaska.edu/nisar-docs/phase/",
+      "title": "Phase – NISAR Data User Guide",
+      "publisher": "Alaska Satellite Facility / University of Alaska Fairbanks",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "SAR Phase; InSAR; Atmospheric Impacts; Coherence",
+      "summary": "相干性衡量兩次相位資訊的可比較性；失去相干既限制位移估計，也可能提示表面擾動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S016",
+      "url": "https://science.nasa.gov/mission/nisar/interferometry/",
+      "title": "Interferometry",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Interferogram fringes; baseline and topographic compensation; repeat observations",
+      "summary": "反覆色帶是往返路徑相位的週期；位移判讀需對齊觀測並去除地形和軌道成分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S017",
+      "url": "https://emissivity.jpl.nasa.gov/mod21",
+      "title": "MOD21 – Emissivity",
+      "publisher": "NASA/JPL",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Desert emissivity variation; split-window algorithm limitation",
+      "summary": "沙地不同波段放射率有實際變化；固定類別放射率假設會影響反演地表溫度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S018",
+      "url": "https://www.aviso.altimetry.fr/en/techniques/altimetry/principle/basic-principle.html",
+      "title": "How altimetry works",
+      "publisher": "CNES/AVISO+",
+      "accessed_on": "2026-11-01",
+      "read_via": "web 正文及 urllib HTML 內文",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Altimeter range; satellite tracking; sea surface height",
+      "summary": "海面相對參考面的高度取決於衛星軌道高度與衛星到海面的距離兩項，不能只計回波時間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S019",
+      "url": "https://www.aviso.altimetry.fr/en/techniques/altimetry/principle/pulses-and-waveforms.html",
+      "title": "Pulses and waveforms",
+      "publisher": "CNES/AVISO+",
+      "accessed_on": "2026-11-01",
+      "read_via": "web 正文及 urllib HTML 內文",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Pulses reflection; waveform characteristics; retracking",
+      "summary": "波峰波谷使回波前緣展寬；異質地面造成複雜多峰回波，需適配取高位置。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S020",
+      "url": "https://www.aviso.altimetry.fr/en/techniques/altimetry/principle/frequencies-used.html",
+      "title": "Frequencies used and their impacts",
+      "publisher": "CNES/AVISO+",
+      "accessed_on": "2026-11-01",
+      "read_via": "web 正文及 urllib HTML 內文",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "C band; Dual-frequency altimeters",
+      "summary": "不同頻率對電離層延遲敏感度不同，可聯合估計傳播延遲。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S021",
+      "url": "https://pubs.usgs.gov/publication/sir20245129/full",
+      "title": "Dynamic Rating Method for Computing Discharge and Stage from Time-Series Data",
+      "publisher": "USGS, Domanski et al., SIR 2024-5129",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Abstract; Introduction; Dynamic Rating Method Theory, equations 3–5, 15–16",
+      "summary": "不穩定洪波改變水面能量坡度，使同一水位有不同流量；複合斷面需分區計算輸水能力。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S022",
+      "url": "https://science.nasa.gov/earth/earth-observatory/the-gravity-of-water/",
+      "title": "The Gravity of Water",
+      "publisher": "NASA Earth Observatory",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Just Two Satellites Looking for Change; Deep Space Technology; The Weight of Water",
+      "summary": "雙星間距反映重力差異；加速度計分離非重力作用，總儲水變化需其他資料分解。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S023",
+      "url": "https://www.cosmic.ucar.edu/what-we-do/gnss-radio-occultation",
+      "title": "GNSS Radio Occultation",
+      "publisher": "UCAR COSMIC",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Method: bending and delay; atmospheric profile retrieval",
+      "summary": "掩星使用切過不同大氣高度的導航訊號彎曲及延遲，反演垂直剖面。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S024",
+      "url": "https://argo.ucsd.edu/faq/",
+      "title": "Argo FAQ",
+      "publisher": "International Argo / UC San Diego",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Float stability; battery life; accuracy and thermal lag",
+      "summary": "浮標壓縮性與海水差異維持深度穩定；表層密度及感測器熱遲滯影響任務和鹽度資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S025",
+      "url": "https://www2.whoi.edu/site/argo/technology/how-do-the-floats-work/",
+      "title": "How do Argo floats work?",
+      "publisher": "Woods Hole Oceanographic Institution",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Anatomy: antenna; external bladder; CTD",
+      "summary": "內外油囊交換改變外排水體積；浮面通訊縮短可減少靠岸擱淺風險，CTD聯合導電度溫壓推鹽度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S026",
+      "url": "https://argo.ucsd.edu/data/data-faq/",
+      "title": "Argo Data FAQ",
+      "publisher": "International Argo / UC San Diego",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Vertical sampling scheme; fluorescence-to-chlorophyll; sensor drift and QC",
+      "summary": "點取樣與分箱平均不同；螢光受到生理狀態、遮蔽與光保護影響，不能直接等同葉綠素。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S027",
+      "url": "https://pubs.usgs.gov/tm/3a22/pdf/tm3a22.pdf",
+      "title": "Measuring Discharge with Acoustic Doppler Current Profilers from a Moving Boat, version 2.0",
+      "publisher": "USGS, Mueller et al., Techniques and Methods 3–A22",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib PDF bytes + PyMuPDF 文字抽取",
+      "reading_scope": "實讀所列頁之機制及限制；不把2013儀器型號、操作門檻或USGS流程當成現行通用要求。",
+      "locator": "PDF pp.23–24 (print pp.5–6), pp.40–41, 43–46, 62–67 (Appendix A)",
+      "summary": "聲學測流依靠散射粒子、穩定參考與空間一致性；自身振鈴、旁瓣及未取樣區限制速度剖面。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S028",
+      "url": "https://grace.jpl.nasa.gov/data/get-data/monthly-mass-grids-land/",
+      "title": "Monthly Mass Grids – Land",
+      "publisher": "NASA/JPL GRACE Tellus",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Data Processing; Grid Scaling; Error estimates; Not Suitable for Cryospheric Studies",
+      "summary": "濾波降低小尺度訊號並造成鄰域相關；模型尺度補償及專區處理有不同適用範圍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S029",
+      "url": "https://grace.jpl.nasa.gov/data/get-data/gia-trends/",
+      "title": "Glacial Isostatic Adjustment (GIA) and Trends",
+      "publisher": "NASA Jet Propulsion Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Why is GIA important?；GIA implications for gravity measurements",
+      "summary": "古冰載重移除後，地球內部仍持續調整；這種內部質量重分配會進入重力趨勢，須與當代地表水量變化分離。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S030",
+      "url": "https://grace.jpl.nasa.gov/data/get-data/jpl_global_mascons/",
+      "title": "JPL Global Mascons",
+      "publisher": "NASA Jet Propulsion Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "mascon estimation；temporal correlations and revisions to previous months",
+      "summary": "質量塊估計使用空間與時間上的約束；加入新月份可能改變先前月份的解，最近月份尤其需要留意。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S031",
+      "url": "https://ntrs.nasa.gov/api/citations/20230010087/downloads/Martino_12512-17v2.pdf?attachment=true",
+      "title": "ICESat-2/ATLAS at 4 Years",
+      "publisher": "NASA Technical Reports Server / instrument authors",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib PDF + PyMuPDF text extraction; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀 PDF pp.6,8–11,15；本批只使用 §6.1、§6.2、§7 的儀器機制，不使用壽命預測或論文數作現況。",
+      "locator": "§6.1 Linear impulse response；§6.2 Dead time effects；§7 Pointing and alignment；PDF pp.8–11",
+      "summary": "ATLAS 的接收光學可產生延遲副本；強回波造成死時間偏差，且發射與接收視場對準會影響斜面回波。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S032",
+      "url": "https://svs.gsfc.nasa.gov/12141",
+      "title": "ICESat-2 Beam Pairs",
+      "publisher": "NASA Goddard Space Flight Center Scientific Visualization Studio",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Beam-pair geometry and Reference Ground Track explanation",
+      "summary": "成對光束跨過參考軌跡，提供橫向坡度資訊，讓不同次通過的量測可以換算到相同參考位置比較。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O3-S033",
+      "url": "https://earthquake.usgs.gov/data/rupture/directivity.php",
+      "title": "What is Directivity?",
+      "publisher": "U.S. Geological Survey",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib HTML main text; Mokaair-editorial User-Agent",
+      "reading_scope": "實讀下列段落；未將教材中的歷史任務狀態或儀器數字當成現況。",
+      "locator": "Constructive interference and unilateral rupture sketches",
+      "summary": "破裂沿斷層傳播，各段發出的波會在某些方向更集中，造成與破裂方向有關的搖晃差異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "O3001",
+      "question": "同一條路在雷達圖的近端和遠端，為什麼可能被壓成不同長度？",
+      "domain": "雷達觀測",
+      "mechanism_key": "radar-slant-ground-projection-scale",
+      "answer_target": "斜距到地面距離的非線性投影與地形校正限制。",
+      "scope": "側視雷達的斜距影像與地距投影；先以平地比較近遠端比例，不把地形重疊當成可逆的尺度變換。",
+      "source_ids": [
+        "O3-S001"
+      ],
+      "source_locator": "Slant-range scale distortion",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂影像尺規不是地面尺規",
+        "visual": "同長平地線段投影至等間距距離格",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3002",
+      "question": "山還在原地，為什麼雷達圖上的山頂會跑到山腳前面？",
+      "domain": "雷達觀測",
+      "mechanism_key": "sar-layover-range-order-reversal",
+      "answer_target": "坡面回波距離次序隨坡度改變，從縮短到山頂先返回的重疊；重疊不同於可逆縮放。",
+      "scope": "側視雷達面向天線的斜坡；只討論縮短與 layover 的回波次序，須依坡度及入射角判斷。",
+      "source_ids": [
+        "O3-S001"
+      ],
+      "source_locator": "Foreshortening and layover",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分辨被壓縮與不同位置疊成同像素",
+        "visual": "逐漸加陡坡面並標示回波先後",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3003",
+      "question": "雷達圖上黑了一塊，為什麼不能立刻說那裡是水？",
+      "domain": "雷達觀測",
+      "mechanism_key": "sar-shadow-no-illumination-vs-specular-return",
+      "answer_target": "山後陰影缺乏照射與平滑面反射離開接收器都能低回波；陰影隨觀測幾何變。",
+      "scope": "側視雷達低回波區的幾何與表面兩種成因；黑色不是水域的充分證據。",
+      "source_ids": [
+        "O3-S001"
+      ],
+      "source_locator": "Shadow",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黑色不等於同一種地物",
+        "visual": "同一山谷換左右觀測與湖面比較",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O3004",
+      "question": "平整草地為什麼在雷達圖上像灑了胡椒？去掉雜點又可能弄丟什麼？",
+      "domain": "雷達觀測",
+      "mechanism_key": "sar-speckle-coherent-cell-averaging-tradeoff",
+      "answer_target": "解析單元內多個散射波相長相消形成散斑；多視與鄰域平均降低起伏但可能模糊細部。",
+      "scope": "相干雷達影像中的乘性散斑與空間平均；不把所有雜點都叫散斑，也不承諾無損去除。",
+      "source_ids": [
+        "O3-S002"
+      ],
+      "source_locator": "Speckle; multi-look processing; spatial filtering",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "影像變乾淨不一定增加資訊",
+        "visual": "同一均質田地原圖與不同平均尺度對照",
+        "seconds": [
+          90,
+          130
+        ]
+      }
+    },
+    {
+      "id": "O3005",
+      "question": "雷達圖中央較亮、邊緣較暗，為什麼可能不是土地變了？",
+      "domain": "雷達觀測",
+      "mechanism_key": "sar-antenna-pattern-range-radiometric-gradient",
+      "answer_target": "天線能量分布與傳播距離共同使同類地表出現亮度梯度，需要方向圖校正。",
+      "scope": "原始或未充分校正的雷達強度影像；天線方向圖與距離效應須與真實地表差異分離。",
+      "source_ids": [
+        "O3-S002"
+      ],
+      "source_locator": "Antenna pattern correction",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分儀器照明與地物回應",
+        "visual": "均質地面跨幅亮度曲線校正前後",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "O3006",
+      "question": "看起來一樣粗糙的地面，為什麼換一部雷達就可能從亮變暗？",
+      "domain": "雷達觀測",
+      "mechanism_key": "radar-relative-roughness-wavelength-incidence",
+      "answer_target": "粗糙尺度相對於波長和入射角，改變鏡面與散射回波的分配。",
+      "scope": "比較波長、入射角與地表起伏尺度時的後向散射；不以肉眼粗糙感直接預測亮暗。",
+      "source_ids": [
+        "O3-S003"
+      ],
+      "source_locator": "Surface roughness",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "粗糙是相對於量測尺度的判斷",
+        "visual": "固定凹凸表面切換波長與照射角",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O3007",
+      "question": "兩片同樣的田，為什麼只因田壟方向不同，雷達亮度就不同？",
+      "domain": "雷達觀測",
+      "mechanism_key": "radar-linear-feature-aspect-backscatter",
+      "answer_target": "條帶地物朝向相對於觀測方向，改變返回天線的能量；多方向觀測才能避免把方向誤作材質。",
+      "scope": "具有方向性的耕作條帶或相似地物；相對方位是條件，並非任何田壟都一定較亮。",
+      "source_ids": [
+        "O3-S003"
+      ],
+      "source_locator": "Look direction or aspect angle",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地物排列方向會偽裝成地物差異",
+        "visual": "同一條紋板旋轉與雙方向農田影像示意",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3008",
+      "question": "田被水淹後，雷達圖為什麼有時變黑、有時反而更亮？",
+      "domain": "雷達觀測",
+      "mechanism_key": "sar-flooded-stems-double-bounce-vs-open-water",
+      "answer_target": "開闊平水面把能量反射離開；露出水面的莖幹與水面可形成雙重反射。",
+      "scope": "開闊淹水與露出水面的植被兩種散射配置；風浪、波段和淹水深度會限制判讀。",
+      "source_ids": [
+        "O3-S003"
+      ],
+      "source_locator": "Corner reflection; flooding example",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一災情不能只用亮暗單一規則圈選",
+        "visual": "水位逐步淹沒莖幹的三階段光路圖",
+        "seconds": [
+          85,
+          125
+        ]
+      }
+    },
+    {
+      "id": "O3009",
+      "question": "雷達能看進乾沙裡，為什麼不表示也能穿過所有濕土？",
+      "domain": "雷達觀測",
+      "mechanism_key": "radar-subsurface-penetration-moisture-wavelength",
+      "answer_target": "水分改變介電與吸收特性；乾燥、表面條件與較長波長共同限制穿透能力。",
+      "scope": "微波在乾燥沙土與含水土中的穿透條件；不提供普適穿透深度，不類推為看穿地下所有物體。",
+      "source_ids": [
+        "O3-S003"
+      ],
+      "source_locator": "Moisture content; penetration; Sahara example",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "穿透深度不是雷達通用本領",
+        "visual": "同波長在乾沙與濕土的回波路徑對照",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "O3010",
+      "question": "雷達看到的森林，為什麼不一定只是樹冠那一層？",
+      "domain": "雷達觀測",
+      "mechanism_key": "sar-volume-scattering-canopy-ground-mixture",
+      "answer_target": "穿入冠層後葉、枝、幹與地面共同散射；回波是多路徑混合而不是固定可見表面。",
+      "scope": "森林微波體積散射；葉枝幹地面相對貢獻依波段、含水及幾何而變，不宣稱固定可見層。",
+      "source_ids": [
+        "O3-S003"
+      ],
+      "source_locator": "Volume scattering",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個像素可能混合上下多層",
+        "visual": "剖面分別點亮冠層枝幹與地面回波",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3011",
+      "question": "雷達圖的橫向已經很清楚，為什麼沿飛行方向仍可能糊成一片？",
+      "domain": "雷達工程",
+      "mechanism_key": "sar-range-azimuth-independent-resolution-controls",
+      "answer_target": "橫向以回波時間分離、沿軌受天線波束寬限制；縮短脈衝不能自動修好另一方向。",
+      "scope": "教材中的真實孔徑側視雷達之距離向與方位向解析；不把天線束寬限制直接當成合成孔徑最終解析公式。",
+      "source_ids": [
+        "O3-S004"
+      ],
+      "source_locator": "Range resolution; azimuth resolution",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "解析度有方向，不能只報一個數字",
+        "visual": "相同雙目標分別放在兩個方向",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O3012",
+      "question": "衛星天線沒有變長，為什麼飛過一段路就能看清更小的東西？",
+      "domain": "雷達工程",
+      "mechanism_key": "sar-motion-phase-history-synthetic-aperture",
+      "answer_target": "平台移動讓同點被多次觀測，依預測距離補償相位後相干聚焦，並非單純疊圖放大。",
+      "scope": "具運動軌跡與相位資訊的合成孔徑聚焦；須有相干處理條件，普通相片平均不等同 SAR。",
+      "source_ids": [
+        "O3-S005"
+      ],
+      "source_locator": "Phase history; synthetic aperture",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "運動與相位可取代無法攜帶的巨型孔徑",
+        "visual": "同一目標的各位置回波由散亂到對齊",
+        "seconds": [
+          100,
+          145
+        ]
+      }
+    },
+    {
+      "id": "O3013",
+      "question": "雷達的相位變了，為什麼不能直接說地面移動了？",
+      "domain": "雷達工程",
+      "mechanism_key": "sar-phase-multiple-path-atmosphere-scatterer-contributions",
+      "answer_target": "回波相位包含往返距離、大氣延遲與地物散射相位；需要分離不同來源才能解讀位移。",
+      "scope": "重複觀測的雷達相位來源辨識；位移、大氣、地形與散射變化仍需另外約束，本題不給單圖位移結論。",
+      "source_ids": [
+        "O3-S005"
+      ],
+      "source_locator": "Complex image: amplitude and phase",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "精細數字仍可能有多種原因",
+        "visual": "相同地面分別改變大氣和散射條件的示意",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O3014",
+      "question": "兩張雷達圖顏色差一點，怎麼可能用來算出山的高度？",
+      "domain": "雷達觀測",
+      "mechanism_key": "insar-baseline-phase-difference-elevation-geometry",
+      "answer_target": "有已知間距的觀測位置量測同點路徑相位差，與基線幾何一起約束高程。",
+      "scope": "具已知跨軌基線且同地物保持相干的干涉測高；有相位模糊及幾何限制，並非任意兩張彩色圖都能算高度。",
+      "source_ids": [
+        "O3-S006"
+      ],
+      "source_locator": "Interferometry",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相位差要和觀測幾何一起讀",
+        "visual": "兩天線至山頂路徑差與不同高度示意",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3015",
+      "question": "雷達要量高度和要量移動速度，為什麼天線間隔的方向不能隨便選？",
+      "domain": "雷達觀測",
+      "mechanism_key": "cross-track-vs-along-track-interferometric-observable",
+      "answer_target": "跨軌幾何差主要提供高程敏感度，沿軌時間差可承載目標運動訊號；配置決定可觀測量。",
+      "scope": "教材對跨軌與沿軌干涉配置的原理比較；只是主要敏感度差異，不把高度與運動說成完全互斥訊號。",
+      "source_ids": [
+        "O3-S006"
+      ],
+      "source_locator": "Interferometry; along-track velocity example",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣比較相位，問題可以完全不同",
+        "visual": "同一對天線分別沿軌與跨軌排列",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "O3016",
+      "question": "海面和船都會反射雷達，為什麼改變收發偏振能讓船更顯眼？",
+      "domain": "雷達觀測",
+      "mechanism_key": "polarimetric-target-background-contrast-optimization",
+      "answer_target": "不同目標與背景的偏振反應不同；挑選最大化目標對背景比值的組合，並非追求最亮通道。",
+      "scope": "目標與海面背景在不同偏振的相對回波；不保證任一固定通道適合所有船與海況。",
+      "source_ids": [
+        "O3-S007"
+      ],
+      "source_locator": "Polarization synthesis: ship example",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看見目標靠對比而不只靠亮度",
+        "visual": "船與海面各通道亮度及比值對照",
+        "seconds": [
+          70,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3017",
+      "question": "雷達量到四個正交收發的複數組合後，為什麼能算出其他偏振下的影像？",
+      "domain": "雷達觀測",
+      "mechanism_key": "polarimetric-scattering-matrix-basis-synthesis",
+      "answer_target": "相干全偏振量測的 HH、HV、VH、VV 四個複數組合形成散射矩陣，保留振幅與相位後可計算其他發射和接收偏振基底的反應。",
+      "scope": "相干全偏振量測取得正交發射／接收的 HH、HV、VH、VV 四個複數組合；不適用僅有任意兩通道的 dual-pol 資料。",
+      "source_ids": [
+        "O3-S007"
+      ],
+      "source_locator": "Polarization synthesis",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "保留相位讓資料可重組，亮度表不夠",
+        "visual": "兩基底及帶相位向量組合成新觀測",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "O3018",
+      "question": "兩個偏振通道都很清楚，為什麼相位不準仍可能把地物認錯？",
+      "domain": "雷達觀測",
+      "mechanism_key": "polarimetric-channel-balance-phase-crosstalk-misclassification",
+      "answer_target": "散射判斷依賴通道比值與相位差，增益失衡或串擾可偽造目標偏振特徵。",
+      "scope": "相干全偏振資料的通道校準；增益、相位與串擾共同影響散射特徵，畫面清楚不代表校準正確。",
+      "source_ids": [
+        "O3-S007"
+      ],
+      "source_locator": "Data Calibration",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "各通道看似正常不保證聯合資訊可靠",
+        "visual": "已知角反射器理想反應與失衡通道對照",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3019",
+      "question": "輪流拍到水平和垂直偏振，為什麼不一定等於同時量到完整偏振？",
+      "domain": "雷達觀測",
+      "mechanism_key": "polarimetric-time-separated-channel-phase-noncomparability",
+      "answer_target": "時間間隔使重要通道相位差失去共同測量條件；不能把非同步資料直接當完整相干觀測。",
+      "scope": "教材所比較的非同步偏振取樣與相干矩陣；只說時間與共同相位條件，不一概否定交替發射的實際系統。",
+      "source_ids": [
+        "O3-S007"
+      ],
+      "source_locator": "Alternating polarization discussion",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "拍齊通道名稱不等於保留通道關係",
+        "visual": "同時與輪流觀測時序圖",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "O3020",
+      "question": "都是很亮的角落，雷達怎麼分辨回波反彈了奇數次還是偶數次？",
+      "domain": "雷達觀測",
+      "mechanism_key": "polarimetric-odd-even-bounce-phase-signature",
+      "answer_target": "單次與不同角反射幾何有不同偏振相位與反應形狀，可補足單一亮度無法區分的資訊。",
+      "scope": "理想化單反射與角反射器的偏振反應；真實混合像元不保證能唯一數出反彈次數。",
+      "source_ids": [
+        "O3-S007"
+      ],
+      "source_locator": "Polarization signatures",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相同亮度背後可以是不同光路",
+        "visual": "單面、二面、三面反射的偏振示意",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O3021",
+      "question": "遠方雷雨看起來連成一道牆，靠近後為什麼卻冒出空隙？",
+      "domain": "天氣觀測",
+      "mechanism_key": "weather-radar-beamwidth-gap-resolution",
+      "answer_target": "隨距離擴大的取樣體積把相鄰對流混在一起，靠近後才分開，不一定是雷雨真的裂開。",
+      "scope": "天氣雷達固定角寬波束的距離效應；同時保留風暴真實演變的可能，不用兩時刻圖自行證明是假連成。",
+      "source_ids": [
+        "O3-S008"
+      ],
+      "source_locator": "Beam Spreading",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一場雨的外觀可由觀測距離改變",
+        "visual": "兩雷達同時看一條有縫隙的雨帶",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3022",
+      "question": "地面明明下雨，遠處雷達為什麼可能從雨的頭頂掃過？",
+      "domain": "天氣觀測",
+      "mechanism_key": "weather-radar-earth-curvature-beam-overshoot",
+      "answer_target": "地球曲率和波束路徑使遠處取樣高度增加；淺層降水可落在波束下方。",
+      "scope": "常見天氣雷達波束與地球曲率幾何；波束高度還受仰角、地形及折射狀態影響。",
+      "source_ids": [
+        "O3-S008"
+      ],
+      "source_locator": "Beam height; Refraction",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "雷達覆蓋地圖不等於所有高度都看得到",
+        "visual": "地球曲面上同仰角波束穿過深淺兩種雨雲",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3023",
+      "question": "萬里無雲，天氣雷達為什麼還可能畫出大片強回波？",
+      "domain": "天氣觀測",
+      "mechanism_key": "weather-radar-ducting-ground-clutter",
+      "answer_target": "異常折射讓波束撞向地面，地物回波可偽裝降水；須對照鄰站、衛星與時序而非只看單圖。",
+      "scope": "異常折射及超折射造成的地物回波；晴空回波也可有其他成因，需多項資料辨識。",
+      "source_ids": [
+        "O3-S009"
+      ],
+      "source_locator": "Superrefraction; paired radar and satellite example",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "強回波不必然來自雨滴",
+        "visual": "同時兩站雷達與晴空衛星對照",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3024",
+      "question": "把雷達搬到山頂就能解決看不見山谷雨量的問題嗎？",
+      "domain": "天氣觀測",
+      "mechanism_key": "weather-radar-site-height-blockage-overshoot-tradeoff",
+      "answer_target": "抬高站址減少山體遮蔽，卻讓最低波束高於谷地降水；站址選擇有相反需求。",
+      "scope": "山區天氣雷達站址的遮蔽與低層取樣取捨；不替特定站提出搬遷方案。",
+      "source_ids": [
+        "O3-S010"
+      ],
+      "source_locator": "§2e Beam Blockage; §2f",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看得遠和看得到低處不是同一件事",
+        "visual": "谷底與山頂站址的共同降雨剖面",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O3025",
+      "question": "近處雨下得很大，為什麼雷達反而可能低估它後方的雨？",
+      "domain": "天氣觀測",
+      "mechanism_key": "weather-radar-two-way-precipitation-radome-attenuation",
+      "answer_target": "中途降水或濕雷達罩衰減往返能量，弱回波不必然代表後方雨小；效應依波段與情境。",
+      "scope": "降水路徑與濕雷達罩造成的衰減；嚴重程度受波段及降水條件影響，不能泛稱所有雷達都同等失準。",
+      "source_ids": [
+        "O3-S010"
+      ],
+      "source_locator": "§2b Attenuation",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "量測路徑本身也在改寫訊號",
+        "visual": "前後兩雨區的往返能量示意",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3026",
+      "question": "雨量筒和雷達報不同數字，為什麼不能直接判一個壞了？",
+      "domain": "天氣觀測",
+      "mechanism_key": "radar-gauge-spatiotemporal-support-mismatch",
+      "answer_target": "雨量筒近地面點取樣與雷達高空體積間歇取樣不同，雨滴在下落途中可蒸發、合併或被吹走。",
+      "scope": "雷達估雨與雨量筒比較的空間、高度和時間代表性；不將單次不一致直接判成任一儀器錯誤。",
+      "source_ids": [
+        "O3-S010"
+      ],
+      "source_locator": "§3a Rain Gages; §3b Sampling Differences",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "比較數字前先比較量了哪裡哪段時間",
+        "visual": "高空取樣體積與地面小筒及漂移雨徑",
+        "seconds": [
+          90,
+          130
+        ]
+      }
+    },
+    {
+      "id": "O3027",
+      "question": "用一個雨量站把整張雷達雨量圖調準，為什麼反而可能讓別區更不準？",
+      "domain": "天氣觀測",
+      "mechanism_key": "radar-gauge-spatially-nonuniform-bias-adjustment",
+      "answer_target": "局部對照比值不能代表整域，取樣漏掉孤立雨區且距離誤差不均，單一校正會轉移偏差。",
+      "scope": "以有限地面雨量站校正區域雷達估雨；歷史論文的均一偏差假設及失效條件，不評定現行業務產品。",
+      "source_ids": [
+        "O3-S010"
+      ],
+      "source_locator": "§3b Radar/Gage Sampling Differences",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "補上地面實測仍需代表性",
+        "visual": "局部雨胞及近遠區不同偏差的校正前後",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "O3028",
+      "question": "過濾假回波的規則，為什麼也可能把真正的小雨刪掉？",
+      "domain": "天氣觀測",
+      "mechanism_key": "weather-radar-vertical-continuity-qc-shallow-rain-rejection",
+      "answer_target": "以相鄰仰角回波面積突然縮小判假訊號時，淺層真降水也可呈現相同特徵。",
+      "scope": "1990 年代來源描述的垂直連續性篩選案例；不聲稱當代雷達仍一律使用該規則。",
+      "source_ids": [
+        "O3-S010"
+      ],
+      "source_locator": "§5a1 Tilt test modification",
+      "premise_status": "screened",
+      "notes": "只以歷史演算法說明判別困境，不宣稱當前各地系統沿用此規則；進稿另核案例。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "品質控制有特定失敗條件",
+        "visual": "假地物與淺層真雨的雙仰角截面",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3029",
+      "question": "雷達怎麼知道空中飛的是雨，還是龍捲風捲起的碎片？",
+      "domain": "天氣觀測",
+      "mechanism_key": "radar-debris-signature-correlation-rotation-colocation",
+      "answer_target": "碎屑形狀雜亂會降低雙偏振回波相關性，需與速度旋轉區同位置；沒取樣到碎屑不代表沒有龍捲風。",
+      "scope": "雙偏振碎屑特徵需與旋轉速度訊號等相互核對；無低相關區不能排除龍捲風。",
+      "source_ids": [
+        "O3-S011"
+      ],
+      "source_locator": "CC and Tornado Debris Signature",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "診斷訊號要同時滿足物體與運動證據",
+        "visual": "相關性圖疊上速度偶極並比較高度",
+        "seconds": [
+          100,
+          145
+        ]
+      }
+    },
+    {
+      "id": "O3030",
+      "question": "兩塊雨區雷達顏色相近，為什麼比較偏振相位還能分出雨勢差別？",
+      "domain": "天氣觀測",
+      "mechanism_key": "radar-specific-differential-phase-path-rainfall",
+      "answer_target": "水平與垂直偏振通過降水的相位延遲不同，沿程變化率補充反射強度未能唯一決定的雨量資訊。",
+      "scope": "降雨中的差分傳播相位及 KDP；為反射率之外的觀測，並非所有水凝物條件都能直接換算成準確雨率。",
+      "source_ids": [
+        "O3-S011"
+      ],
+      "source_locator": "Specific Differential Phase",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "反射了多少和傳過去慢了多少是兩條線索",
+        "visual": "相近反射率配不同差分相位梯度",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3031",
+      "question": "暴雨將到，雷達為什麼不把每個高度都掃得最仔細？",
+      "domain": "雷達工程",
+      "mechanism_key": "weather-radar-volume-scan-dwell-update-tradeoff",
+      "answer_target": "多仰角和較長停留提高垂直取樣或訊號品質，但耗時會落後快速發展的風暴。",
+      "scope": "NOAA 教材中的體積掃描策略；掃描方案與儀器世代相關，不沿用歷史模式數量宣稱現行配置。",
+      "source_ids": [
+        "O3-S012"
+      ],
+      "source_locator": "Clear Air Mode; Precipitation Mode",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "更完整的一張圖可能更舊",
+        "visual": "慢速細掃與快速重掃的同一成長雨胞時序",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3032",
+      "question": "雷達為什麼不能同時靠密集發射，既看得最遠又量最快的風？",
+      "domain": "雷達工程",
+      "mechanism_key": "pulsed-doppler-unambiguous-range-velocity-prf-tradeoff",
+      "answer_target": "短脈衝間隔改善相位速度無歧義範圍，卻讓遠方回波跨到下一次發射；兩種歧義相互牽制。",
+      "scope": "脈衝都卜勒雷達的無歧義距離／速度取捨；先限定簡單重複脈衝模式，實際多頻率處理另題比較。",
+      "source_ids": [
+        "O3-S012"
+      ],
+      "source_locator": "Range folding; Doppler dilemma",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不是訊號越密所有能力就一起提升",
+        "visual": "兩種脈衝時序同時顯示遠回波與相位間隔",
+        "seconds": [
+          100,
+          145
+        ]
+      }
+    },
+    {
+      "id": "O3033",
+      "question": "地圖上的速度資料為什麼有時空一塊，換掃描方式又回來了？",
+      "domain": "雷達工程",
+      "mechanism_key": "radar-multiple-prf-range-unfolding-time-cost",
+      "answer_target": "多次不同脈衝頻率及特定相位處理能幫忙解開回波所屬脈衝，但需要額外取樣時間且不保證全解。",
+      "scope": "NOAA 教材中的多脈衝頻率與解歧義策略；空缺也可能來自其他品質問題，沒有保證全解。",
+      "source_ids": [
+        "O3-S012"
+      ],
+      "source_locator": "VCP 112 / 212; multiple PRF",
+      "premise_status": "screened",
+      "notes": "限定多次觀測解歧義，不重講 E2199/2200 的一般取樣混疊；演算法細節進稿需另核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "空白可能是無法判定，不是無風",
+        "visual": "模糊回波在第二種PRF下的候選解交集",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "O3034",
+      "question": "雷達顏色一樣深，地面雨量為什麼仍可能差很多？",
+      "domain": "天氣觀測",
+      "mechanism_key": "radar-reflectivity-drop-size-sixth-moment-rain-rate-ambiguity",
+      "answer_target": "少量大滴與大量小滴可有相同反射率卻不同水量通量，不能只靠單一Z值決定雨率。",
+      "scope": "反射率對粒徑分布敏感造成 Z–R 非唯一；關係還依降水類型變，不用單一固定公式涵蓋所有雨。",
+      "source_ids": [
+        "O3-S013"
+      ],
+      "source_locator": "Drop-size example",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "雨滴大小分布是少掉的一個未知數",
+        "visual": "不同滴數粒徑的兩盒水滴回波與總水量對照",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3035",
+      "question": "同一場雷雨，兩種官方雷達圖為什麼一張很弱、一張很強？",
+      "domain": "天氣觀測",
+      "mechanism_key": "radar-vertical-maximum-composite-vs-lowest-slice",
+      "answer_target": "最低仰角可能錯過高空強回波，垂直最大合成保留高值卻壓掉高度與低層形狀。",
+      "scope": "最低仰角反射率與垂直最大合成反射率兩種產品；色標和時間需一致才有可比性。",
+      "source_ids": [
+        "O3-S013"
+      ],
+      "source_locator": "Base Reflectivity vs Composite Reflectivity",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "產品選擇改變看到的問題",
+        "visual": "同一三維雨胞截面與兩種投影並排",
+        "seconds": [
+          85,
+          125
+        ]
+      }
+    },
+    {
+      "id": "O3036",
+      "question": "衛星相機為什麼挑特定波段看地面，而不是什麼顏色都收？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "remote-sensing-atmospheric-window-target-observability",
+      "answer_target": "大氣選擇性吸收會遮住地表訊號；波段選擇需同時考慮大氣與目標反應。",
+      "scope": "光學遙測地表觀測的波段與大氣吸收窗；不把用來探測大氣的吸收波段判成無用。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§1.4 pp.14–15",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看得見的波段是路徑與目標共同決定",
+        "visual": "地面光譜乘上大氣透射窗的對照",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3037",
+      "question": "水面變亮，為什麼不能只靠衛星照片說水變髒了？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "water-optical-bottom-sediment-glint-ambiguity",
+      "answer_target": "懸浮物、淺水底部與鏡面反射都可改變水體亮度。",
+      "scope": "可見光水體遙測的懸浮物、淺水底反射和水面閃光；單張亮度不足以判定污染種類或濃度。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§1.5 pp.17–18",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "單一亮色不是水質診斷",
+        "visual": "清澈淺水、混濁深水與反光水面的比較",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O3038",
+      "question": "衛星每次都在差不多的當地時間經過，觀測會少掉哪種誤會？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "sun-synchronous-local-time-illumination-comparability",
+      "answer_target": "固定地方太陽時減少影像間照明差異，但同季條件仍需辨別。",
+      "scope": "太陽同步觀測保持近似地方太陽時的設計；太陽高度、季節與大氣仍會改變，不宣稱照明完全相同。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.2 p.36",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "重複經過的時間也是量測設計",
+        "visual": "同地不同日照角與同時段影像比對",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3039",
+      "question": "衛星還沒飛回原來的軌道，為什麼已經可以再拍同一個地方？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "orbital-repeat-vs-off-nadir-revisit",
+      "answer_target": "側視與相鄰幅面重疊讓再觀測早於地面軌跡完整重複。",
+      "scope": "可側視或幅面重疊的衛星；區分地面軌跡重複與目標再觀測，不套用所有任務。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.2 p.38",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "重訪與重複軌道不是同一週期",
+        "visual": "固定地點與兩次不同路徑視線",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3040",
+      "question": "極區為什麼常比赤道更容易被同一類極軌衛星反覆拍到？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "polar-orbit-swath-convergence-latitude-revisit",
+      "answer_target": "高緯度軌跡靠攏，幅面重疊增加觀測機會。",
+      "scope": "極軌或近極軌衛星的幅面重疊幾何；需考慮實際軌道傾角、掃幅與可用觀測。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.2 p.38; §2.6 p.44",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "覆蓋率並非各地平均",
+        "visual": "地球上同寬掃幅靠近兩極交疊",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "O3041",
+      "question": "比衛星像素還小的亮點，為什麼有時仍能被發現？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "remote-sensing-subpixel-detection-vs-resolving",
+      "answer_target": "小目標可主導混合亮度而被偵測，但不表示形狀尺寸已解析。",
+      "scope": "高反差次像元目標的偵測；訊號可見不等於可分辨形狀、邊界或精確尺寸。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.3 p.39",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發現有東西和看清東西不同",
+        "visual": "像素格內小亮點從背景突出的示意",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O3042",
+      "question": "看起來同色的兩種岩石，為什麼多拍幾個窄波段才分得開？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "hyperspectral-narrow-feature-vs-broadband-average",
+      "answer_target": "寬波段平均可掩蓋局部光譜差異，窄波段保留辨別特徵。",
+      "scope": "有適當波段、訊噪比與校準的光譜比較；窄波段不保證任何兩塊岩石都可區分。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.4 pp.41–42",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "顏色相同不等於光譜相同",
+        "visual": "兩條寬頻平均相近但局部峰谷不同的曲線",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O3043",
+      "question": "衛星能每隔幾天重訪，為什麼洪水的最高點仍可能完全沒拍到？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "remote-sensing-clear-observation-vs-nominal-revisit",
+      "answer_target": "短暫事件與雲遮共同使可用觀測間隔不同於軌道重訪間隔。",
+      "scope": "受雲遮的光學洪水監測； nominal revisit 不等於可用資料間隔，雷達的適用限制另論。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.6 p.44",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有經過不代表取得可用證據",
+        "visual": "洪峰時間線疊上過境與雲遮時段",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3044",
+      "question": "衛星相機不轉鏡頭，也能一行行把地面掃完，代價是什麼？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "pushbroom-dwell-time-detector-cross-calibration",
+      "answer_target": "線陣隨平台前進提高停留時間，但多探測元件需一致響應。",
+      "scope": "線陣推掃式感測器與橫向掃描的教材設計比較；停留時間和多元件校準是取捨，不宣稱新式機種皆同樣表現。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.8 pp.48–49",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "減少機械掃描換來多元件一致性的要求",
+        "visual": "旋鏡與線陣收同幅面的時間對照",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "O3045",
+      "question": "照片上的規則條紋，為什麼可能是相機排成一列的感測器造成？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "pushbroom-detector-gain-drift-striping",
+      "answer_target": "探測元件響應不一致可把均質地面畫成條紋。",
+      "scope": "多探測元件或重複掃描系統中的響應不一致條帶；規則條紋也可能有其他資料處理原因。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§4.4 p.150",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "規則紋理可能跟著儀器走",
+        "visual": "均質目標經高低增益探測列形成條帶",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "O3046",
+      "question": "衛星掃描鏡轉得一樣快，為什麼影像邊緣的地面尺規仍不同？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "whiskbroom-tangent-scan-scale-distortion",
+      "answer_target": "等角速度掃描在斜視端對應更大地面距離和足跡。",
+      "scope": "橫向光學掃描鏡的角度到地面距離轉換；平地模型先行，邊緣足跡變大與雷達斜距投影可合併比較。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.8 p.48; §2.10 p.53",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "等角間隔不是等地面間隔",
+        "visual": "定速掃描光線落在平面上的間距",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3047",
+      "question": "衛星明明沿固定方向飛，拍下來的整條影像為什麼仍可能歪斜？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "scanning-orbit-earth-rotation-skew",
+      "answer_target": "逐行取樣期間地球轉動，使前後掃描線在地面移位。",
+      "scope": "逐行取樣期間的地球自轉幾何；僅描述可校正的掃描歪斜，不把所有影像傾斜都歸因自轉。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§2.10 p.53",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一張掃描圖不是同一瞬間的快照",
+        "visual": "時間遞進掃描線和旋轉地表",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "O3048",
+      "question": "湖面應該很暗，為什麼反而可以拿來估計照片中的霧氣？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "dark-object-subtraction-path-radiance-assumption",
+      "answer_target": "以近暗目標多出的亮度估計散射路徑光；依賴暗目標假設。",
+      "scope": "暗物體扣除式路徑輻射估計；目標不完全黑、大氣不均與鄰近效應會破壞簡化假設。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§4.4 pp.149–150",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "校正方法需要可檢查的參考假設",
+        "visual": "暗湖原訊號加上路徑光再逐波段扣除",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3049",
+      "question": "山的陰面比較暗，為什麼比較兩個波段的比值仍可能認出同種植被？",
+      "domain": "光學地球觀測",
+      "mechanism_key": "spectral-band-ratio-common-illumination-cancellation",
+      "answer_target": "比值可減少共同照明尺度影響，保留相對光譜差異。",
+      "scope": "兩波段受到近似共同乘性照明影響的比值法；不保證去除所有陰影、大氣或混合像元問題。",
+      "source_ids": [
+        "O3-S014"
+      ],
+      "source_locator": "§4.6 pp.158–159",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "比較比例可隔開部分光照影響",
+        "visual": "兩坡面絕對反射不同但波段比例相近",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O3050",
+      "question": "災後雷達影像變得難以量位移，為什麼這件事本身也可能是線索？",
+      "domain": "地表變形觀測",
+      "mechanism_key": "insar-decorrelation-change-indicator-vs-displacement",
+      "answer_target": "地物散射組合改變可降低相干，使位移數值失去可靠性；相干下降仍可提示擾動但非唯一原因。",
+      "scope": "相干雷達災前災後比較；相干下降可源自植被、時間、幾何等，不是建物損毀的唯一證據。",
+      "source_ids": [
+        "O3-S015"
+      ],
+      "source_locator": "Coherence",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有可靠數字不等於沒有發生變化",
+        "visual": "穩定建物與擾動地表的相位相干圖",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "O3051",
+      "question": "地震位移圖為什麼一圈圈重複同樣的彩虹顏色？",
+      "domain": "地表變形觀測",
+      "mechanism_key": "insar-wrapped-phase-half-wavelength-displacement",
+      "answer_target": "相位每整圈重複，往返路徑使一色帶循環對應半波長視線距離改變；同色不保證同位移。",
+      "scope": "包裹相位與視線方向兩程路徑關係；位移解讀仍需展相位及其他誤差處理，不等於垂直位移。",
+      "source_ids": [
+        "O3-S016"
+      ],
+      "source_locator": "Interferogram fringes",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "顏色不是唯一的位移刻度",
+        "visual": "連續位移斜坡映成循環色帶",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3052",
+      "question": "地面明明沒動，兩次衛星軌道只差一點也會畫出山形條紋嗎？",
+      "domain": "地表變形觀測",
+      "mechanism_key": "differential-insar-baseline-topography-removal",
+      "answer_target": "不同觀測基線使原有高低地形轉成相位差，需要高程資訊和軌道幾何去除。",
+      "scope": "差分 InSAR 中原有地形造成的相位；需要軌道基線與地形資料處理，與干涉測高為同一機制的逆向用途。",
+      "source_ids": [
+        "O3-S016"
+      ],
+      "source_locator": "Baseline and surface topography",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "形變圖要先扣除原來就有的地形",
+        "visual": "固定山體兩個相近軌道及扣DEM前後",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3053",
+      "question": "沙漠熱不熱，為什麼不能只把衛星紅外亮度直接換成溫度？",
+      "domain": "熱紅外觀測",
+      "mechanism_key": "thermal-retrieval-emissivity-temperature-ambiguity",
+      "answer_target": "同一溫度可因材質放射率不同產生不同亮度，固定沙漠放射率假設會偏移溫度估計。",
+      "scope": "熱紅外地表溫度反演與放射率；來源以 MOD21/TES 及乾旱區為背景，不用亮度溫度代替實際表面溫度。",
+      "source_ids": [
+        "O3-S017"
+      ],
+      "source_locator": "Desert emissivity variability and LST uncertainty",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "量到熱輻射還需知道表面如何發光",
+        "visual": "同溫不同放射率與同亮度不同溫度兩組對照",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3054",
+      "question": "衛星到海面的距離縮短了，為什麼還不能直接說海平面上升？",
+      "domain": "海洋測高",
+      "mechanism_key": "altimetry-orbit-height-minus-range-separation",
+      "answer_target": "需獨立確定衛星相對參考面的軌道高度，才能把衛星運動與海面變化分開。",
+      "scope": "雷達測高所得距離與衛星軌道高度須使用一致參考；海平面仍需路徑與地球物理修正。",
+      "source_ids": [
+        "O3-S018"
+      ],
+      "source_locator": "Altimeter range; Satellite orbit; SSH = S − R",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相對距離少了一個固定基準",
+        "visual": "衛星下移與海面上移產生同距離變化的對照",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3055",
+      "question": "衛星沒有拍出每一道海浪，為什麼仍能估計浪有多高？",
+      "domain": "海洋測高",
+      "mechanism_key": "altimeter-waveform-leading-edge-wave-height-distribution",
+      "answer_target": "波峰先返回、其他高度後返回，使回波前緣隨海面高度分布改變。",
+      "scope": "典型開放海面雷達測高回波模型；從波形估顯著波高統計量，不是重建每一道浪。",
+      "source_ids": [
+        "O3-S019"
+      ],
+      "source_locator": "Pulses reflection; leading edge slope",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "整段回波形狀包含分布資訊",
+        "visual": "平海與起伏海面逐時返回的波形",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3056",
+      "question": "同一台測高衛星飛過大海和窄河，為什麼不能用同一條簡單規則找水面？",
+      "domain": "海洋測高",
+      "mechanism_key": "altimeter-mixed-land-water-waveform-retracking",
+      "answer_target": "河面與岸地混合使回波多峰，海洋均質表面的取高模型可能鎖錯峰。",
+      "scope": "窄水域陸水混合回波的重新追蹤；海洋標準模型不一定適用，不承諾一種峰值規則適合所有河流。",
+      "source_ids": [
+        "O3-S019"
+      ],
+      "source_locator": "Retracking for heterogeneous surfaces",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "波形模型只在相符的地表成立",
+        "visual": "海洋單前緣與河岸多峰回波對照",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3057",
+      "question": "量同一片海面，衛星為什麼還要同時發兩種頻率？",
+      "domain": "海洋測高",
+      "mechanism_key": "dual-frequency-altimetry-dispersive-delay-elimination",
+      "answer_target": "同一路徑不同頻率的電離層延遲不同，可用差異估計並扣除距離偏差。",
+      "scope": "雙頻雷達測高的色散電離層校正；不代表能同時消除中性大氣及所有儀器偏差。",
+      "source_ids": [
+        "O3-S020"
+      ],
+      "source_locator": "C band; Dual-frequency altimeters",
+      "premise_status": "screened",
+      "notes": "與 N265 電離層造成定位延遲區隔：本題目標是雙頻差異消除未知量，不再講一次太空天氣干擾。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二頻率用來辨別傳播誤差",
+        "visual": "同距離兩頻率返回延遲與共通距離分離",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O3058",
+      "question": "同一條河同一個水位，漲水時和退水時流量為什麼可能不同？",
+      "domain": "河流觀測",
+      "mechanism_key": "flood-wave-stage-discharge-hysteresis-energy-slope",
+      "answer_target": "洪波通過時能量坡度和慣性改變，水位流量關係形成回圈，單一固定曲線無法完整表示。",
+      "scope": "USGS 動態水位流量理論下的非定常洪水；不是每站都有相同方向或大小的遲滯回圈。",
+      "source_ids": [
+        "O3-S021"
+      ],
+      "source_locator": "Abstract; Introduction; fig.1",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水位不能唯一決定瞬間通過多少水",
+        "visual": "漲退兩段同水位的剖面與回圈曲線",
+        "seconds": [
+          95,
+          140
+        ]
+      }
+    },
+    {
+      "id": "O3059",
+      "question": "洪水漫上兩側草地後，為什麼不能把整個淹水寬度當成同速流水？",
+      "domain": "河流觀測",
+      "mechanism_key": "compound-channel-subsection-roughness-conveyance",
+      "answer_target": "主槽與灘地的幾何、濕周與粗糙度不同，分區輸水能力不能由總寬度直接代替。",
+      "scope": "主槽與漫灘的複式斷面輸水；分區粗糙度與斷面幾何需實地資料，不給單靠淹水寬度的流量公式。",
+      "source_ids": [
+        "O3-S021"
+      ],
+      "source_locator": "Dynamic Rating Method Theory, equations 3–5",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "淹到的面積不等於等效輸水面積",
+        "visual": "主槽快流與灘地慢流的分區剖面",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3060",
+      "question": "洪峰到下游的速度，為什麼不必等於水裡一片葉子的漂流速度？",
+      "domain": "河流觀測",
+      "mechanism_key": "kinematic-flood-wave-celerity-discharge-area-derivative",
+      "answer_target": "洪波傳播速度取決於流量隨截面蓄水面積的變化，不等於平均水速Q/A。",
+      "scope": "適用淺水洪波近似下的傳播速度與平均水速之別；不把 dQ/dA 當成所有劇烈洪水的完整解。",
+      "source_ids": [
+        "O3-S021"
+      ],
+      "source_locator": "Dynamic Rating Method Theory, equations 15–19",
+      "premise_status": "screened",
+      "notes": "只講運動洪波模型及適用假設，不把特定倍率當通用實河數值；與 N102 匯流延時不同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "洪水訊號與同一團水走不同時間線",
+        "visual": "水面抬升傳播與標記水團的對照動畫",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3061",
+      "question": "衛星不拍地面，只量兩顆衛星之間的距離，怎麼知道地球哪裡變重？",
+      "domain": "重力地球觀測",
+      "mechanism_key": "grace-tandem-separation-time-variable-gravity",
+      "answer_target": "先後經過質量異常的雙星受力不同，間距時序可反推重力變化。",
+      "scope": "GRACE 類雙星跟飛重力觀測；測距須結合軌道和其他修正反演，不是兩星距離直接給單點質量。",
+      "source_ids": [
+        "O3-S022"
+      ],
+      "source_locator": "Just Two Satellites Looking for Change",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把看不見的質量變化轉成雙星相對運動",
+        "visual": "雙星先後越過質量異常的伸縮動畫",
+        "seconds": [
+          90,
+          130
+        ]
+      }
+    },
+    {
+      "id": "O3062",
+      "question": "衛星軌道變了，怎麼分清是地下水變少，還是太陽把衛星推了一下？",
+      "domain": "重力地球觀測",
+      "mechanism_key": "grace-accelerometer-nongravitational-force-separation",
+      "answer_target": "高敏加速度計記錄阻力與輻射壓等非重力作用，配合測距分離重力訊號。",
+      "scope": "GRACE 類衛星的非重力加速度觀測；加速度計是分離流程的一環，不宣稱單獨能唯一解出地下水。",
+      "source_ids": [
+        "O3-S022"
+      ],
+      "source_locator": "Deep Space Technology at Home",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一項觀測中的不同力需不同儀器拆開",
+        "visual": "同一軌道擾動的非重力量測與扣除示意",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "O3063",
+      "question": "重力衛星說一個地方少了水，為什麼不能直接知道是哪口井缺水？",
+      "domain": "重力地球觀測",
+      "mechanism_key": "grace-total-water-storage-component-separation",
+      "answer_target": "重力反映總質量變化，地下水需結合雪、地表水、土壤水及模型分離，也不是單井測量。",
+      "scope": "區域陸地總水儲量變化與地下水分量推估；需外部資料及模型，空間解析不支持單井結論。",
+      "source_ids": [
+        "O3-S022"
+      ],
+      "source_locator": "The Weight of Water",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "總帳變少不等於各個水庫明細已知",
+        "visual": "總儲水疊層與逐項扣除不確定性",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3064",
+      "question": "導航衛星快從地平線後消失時，為什麼反而能用來量大氣？",
+      "domain": "大氣觀測",
+      "mechanism_key": "gnss-radio-occultation-limb-bending-profile",
+      "answer_target": "訊號依次切過不同大氣高度，彎曲及延遲提供折射率垂直結構的約束。",
+      "scope": "GNSS 掩星的切線高度掃描與折射率反演；溫度、壓力、水汽的分離還需要其他約束。",
+      "source_ids": [
+        "O3-S023"
+      ],
+      "source_locator": "Method paragraph",
+      "premise_status": "screened",
+      "notes": "屬地球大氣垂直反演；與 R009 無線電科學泛稱及 N265 導航延遲區隔。溫濕分離假設進稿另核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "訊號繞過地球邊緣的變化本身是資料",
+        "visual": "發射與接收衛星的切線高度隨時間下降",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3065",
+      "question": "海裡的觀測浮標停在深處，為什麼設計上要比海水更難壓縮？",
+      "domain": "海洋剖面觀測",
+      "mechanism_key": "argo-relative-compressibility-depth-stability",
+      "answer_target": "浮標與海水壓縮性差異影響偏離中性深度時的密度差與恢復傾向。",
+      "scope": "Argo 浮標與海水壓縮性差異下的中性浮力穩定；不把此設計當成每一型浮標的唯一控深機制。",
+      "source_ids": [
+        "O3-S024"
+      ],
+      "source_locator": "What do floats look like and how do they work?",
+      "premise_status": "screened",
+      "notes": "教材明列壓縮性設計；恢復力推導及溫鹽分層邊界進稿另核，不宣稱所有水層都穩定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "中性浮力還需要穩定性",
+        "visual": "浮標被推深少許後兩者密度改變對照",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3066",
+      "question": "同樣的觀測浮標到了較淡的表層水，為什麼浮上來可能更費電？",
+      "domain": "海洋剖面觀測",
+      "mechanism_key": "argo-surface-density-buoyancy-volume-energy",
+      "answer_target": "低密度表層水要求增加更多排水體積，需泵出更多油以保持正浮力。",
+      "scope": "Argo 浮標要在低密度表層維持正浮力的排水量需求；電量還依泵效率、壓力和任務而變，不給普遍倍率。",
+      "source_ids": [
+        "O3-S024"
+      ],
+      "source_locator": "How are floats powered?",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "海水性質也是機器的能源條件",
+        "visual": "兩種表層密度所需囊體積比較",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3067",
+      "question": "浮標穿過冷暖水交界時，為什麼鹽度曲線可能多出假的尖峰？",
+      "domain": "海洋剖面觀測",
+      "mechanism_key": "ctd-thermal-lag-gradient-salinity-error",
+      "answer_target": "強溫度梯度下熱遲滯使導電度和溫度校正未能同步，形成鹽度誤差。",
+      "scope": "Argo CTD 在強熱梯度下的熱遲滯與鹽度校正；精確誤差方向取決於感測器與穿越方向，進稿須按型號核對。",
+      "source_ids": [
+        "O3-S024"
+      ],
+      "source_locator": "How accurate is Argo data? thermal lag",
+      "premise_status": "screened",
+      "notes": "來源明載強溫梯度熱遲滯；器型的具體熱路徑與尖峰方向須另核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換算量會繼承不同感測器時間反應",
+        "visual": "同一交界的溫度與導電度響應錯位",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "O3068",
+      "question": "浮標的油沒有排進海裡，只移到外面的袋子，為什麼它就上浮了？",
+      "domain": "海洋觀測工程",
+      "mechanism_key": "profiling-float-internal-external-volume-buoyancy-engine",
+      "answer_target": "總質量不變但外部排水體積增加，密度下降；油留在密閉系統內反覆使用。",
+      "scope": "以密閉油囊改變外部體積的 Argo 浮力引擎；只是此類型設計，不代表所有浮標都用油囊。",
+      "source_ids": [
+        "O3-S025"
+      ],
+      "source_locator": "External bladder; hydraulic pump",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "機器可藉重排體積升降而非消耗壓載",
+        "visual": "相同總油量在壓力殼內外的位置與排水體積",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3069",
+      "question": "觀測浮標通訊變快，為什麼竟能讓它去以前較難去的海域？",
+      "domain": "海洋觀測工程",
+      "mechanism_key": "argo-surface-telemetry-dwell-beaching-exposure",
+      "answer_target": "縮短浮面通訊時間減少近岸漂流擱淺暴露，改變任務可用區域。",
+      "scope": "Argo FAQ 所述較短浮面通訊與擱淺暴露；不保證所有近岸任務因此安全，須按任務區域確認。",
+      "source_ids": [
+        "O3-S025"
+      ],
+      "source_locator": "Antenna",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "通訊效率會改變海上生存條件",
+        "visual": "同流速下長短浮面時間的靠岸漂移距離",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "O3070",
+      "question": "兩支浮標都每隔相同深度報一次溫度，為什麼算出的熱含量還可能不同？",
+      "domain": "海洋資料判讀",
+      "mechanism_key": "argo-spot-vs-bin-averaged-vertical-sampling",
+      "answer_target": "一種回報單點、一種回報箱內平均，細層結構下代表的水層不同。",
+      "scope": "Argo 垂直剖面的單點取樣與分箱平均兩種回報；差異需有細尺度結構，不宣稱一者永遠較準。",
+      "source_ids": [
+        "O3-S026"
+      ],
+      "source_locator": "Do all Argo floats vertically sample the same way?",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相同資料間距不代表相同取樣內容",
+        "visual": "尖銳溫躍層的點值與分箱平均比較",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O3071",
+      "question": "海裡螢光變弱，為什麼不一定是浮游植物變少了？",
+      "domain": "海洋資料判讀",
+      "mechanism_key": "phytoplankton-fluorescence-yield-biomass-ambiguity",
+      "answer_target": "螢光相對葉綠素會隨物種、細胞遮蔽及光保護而變，單一訊號不能直接換成生物量。",
+      "scope": "生物地球化學 Argo 的葉綠素螢光代理量；物種、光保護與校準會影響，不直接等同細胞數或總生物量。",
+      "source_ids": [
+        "O3-S026"
+      ],
+      "source_locator": "Why fluorescence does not equal chlorophyll; influences on ratio",
+      "premise_status": "screened",
+      "notes": "只做觀測反演問題，不另拆不同物種或光保護成重複核心；與生命組交叉去重。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "代理訊號會隨生物狀態改變",
+        "visual": "相同葉綠素在不同光況的螢光對照",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3072",
+      "question": "河水太清測不到、太濁也測不到，聲學流速計到底需要什麼？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp-scatterer-abundance-attenuation-observation-window",
+      "answer_target": "需要粒子返回聲能，過多泥沙又會衰減或遮蔽床面；存在取樣條件窗口。",
+      "scope": "ADCP 依賴水中散射體的量測窗口；濃度與聲學頻率、粒徑、儀器相關，不提供通用清濁門檻。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Print p.5 / PDF p.23",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "訊號載體太少與太多都能失敗",
+        "visual": "清水、適量粒子、濃泥沙的聲能剖面",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "O3073",
+      "question": "測量船明明停住，儀器為什麼說它正往上游走？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp-moving-bed-reference-velocity-bias",
+      "answer_target": "底追蹤把移動泥沙當固定河床，造成船速向上游偏差，進而低估水速流量。",
+      "scope": "以河床追蹤當船速參考的移動船 ADCP；河床沉積物移動才有此偏差，GNSS 參考與檢查程序另需核對。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Print pp.5,25–27 / PDF pp.23,43–45",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "參考物也會動，且錯誤有方向",
+        "visual": "固定船、移動床沙及底追蹤假船跡",
+        "seconds": [
+          90,
+          130
+        ]
+      }
+    },
+    {
+      "id": "O3074",
+      "question": "聲學流速計為什麼聽不清就在自己旁邊的水？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "acoustic-transducer-ringdown-nearfield-blanking",
+      "answer_target": "同一換能器發射後仍振鈴，近距回波在恢復前抵達而無法可靠接收。",
+      "scope": "ADCP 發射後換能器振鈴與 blanking distance；不同機型恢復時間不同，不把近場全歸為水流不存在。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Unmeasured Areas, print p.6 / PDF p.24",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發射夠響也可能短暫妨礙接收",
+        "visual": "發射振動衰減線疊上近遠回波抵達時間",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O3075",
+      "question": "把流速計伸進水裡量水流，為什麼它自己就可能把答案改掉？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp-instrument-mount-flow-disturbance-bias",
+      "answer_target": "儀器與支架改變附近流場，近探頭測值可能不代表未受擾水流。",
+      "scope": "ADCP 儀器及安裝造成的近場流動擾動；偏差依船型、流速與安裝而變，不給固定修正率。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Unmeasured Areas, print p.6 / PDF p.24",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "接觸式觀測需要避開自己的擾動區",
+        "visual": "無探頭與有探頭的流線比較",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3076",
+      "question": "最弱的一小束旁瓣，為什麼能蓋過主要聲束量到的水流？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp-bed-sidelobe-strong-boundary-contamination",
+      "answer_target": "床面反射比水中散射強，弱旁瓣碰床後仍能污染同時抵達的主束水體回波。",
+      "scope": "ADCP 水深剖面中床面強反射經旁瓣污染；幾何取決於聲束角度與水深，不能只看旁瓣相對發射強度。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Unmeasured Areas, print p.6 / PDF p.24",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最強的干擾不一定來自最強的發射方向",
+        "visual": "主束遇粒子與旁瓣遇河床的等時路徑",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3077",
+      "question": "水裡一條魚游過，為什麼可能讓流速剖面突然出現怪值？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp-passive-scatterer-following-flow-assumption",
+      "answer_target": "都卜勒量到散射物速度，主動游動或固定大物體不符合隨水粒子假設。",
+      "scope": "ADCP 散射體需代表被測水流的假設；魚、漂浮物或固定大物體的影響受回波權重與品質篩選影響。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Appendix A General, print p.44 / PDF p.62",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "速度訊號屬於回音來源而不必然屬於水",
+        "visual": "漂流粒子、游魚與固定木頭回波比較",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O3078",
+      "question": "多加一束聲波量水流，為什麼能幫忙抓出看似合理的錯值？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp-redundant-beam-homogeneous-flow-consistency-test",
+      "answer_target": "多束組合假設各束量到相同流場，第四束可比較獨立垂直速度解；局部渦流會破壞一致性。",
+      "scope": "典型四束 ADCP 的冗餘速度組合與空間均勻流假設；誤差速度不是所有偏差的保證檢測器。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Appendix A, print pp.46–47 / PDF pp.64–65",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "重複約束能驗證模型假設",
+        "visual": "四束中一束進入渦流時兩組解分開",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3079",
+      "question": "流速計沒有量到水面和河底附近，整條河的流量是怎麼算出來的？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp-unmeasured-profile-extrapolation-assumptions",
+      "answer_target": "未取樣區需依可見剖面外推；風驅逆流或非標準剖面使固定形狀假設失準。",
+      "scope": "ADCP 近表層與近床未量區的流量外推；選擇剖面模型需資料與現場條件，不能以任意延線視為實測。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Appendix A Top Discharge, print p.49 / PDF p.67; Applications p.1",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最後的流量包含估計部分",
+        "visual": "已量區與上下空白區不同外推形狀造成的積分差",
+        "seconds": [
+          85,
+          125
+        ]
+      }
+    },
+    {
+      "id": "O3080",
+      "question": "船斜著橫渡河流量水，為什麼仍可能算出通過斷面的水量？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "moving-boat-adcp-vector-flux-transect-geometry",
+      "answer_target": "計算採船與水速度的相對方向、跨越寬度及水深積分，不把船航程直接當垂直河寬。",
+      "scope": "移動船 ADCP 斷面積分中的速度向量與船路徑幾何；須正確船速參考與覆蓋斷面，不保證任意亂繞皆有效。",
+      "source_ids": [
+        "O3-S027"
+      ],
+      "source_locator": "Appendix A equations A16–A21, print p.49 / PDF p.67",
+      "premise_status": "screened",
+      "notes": "僅解釋穩定且完整橫渡的幾何；不保證迴圈、急加速或漏測仍正確。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "斜走多出的路程可由法向速度抵消",
+        "visual": "直線與斜線穿越同一穩定流場的面積投影",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3081",
+      "question": "重力衛星測到某區缺水，為什麼訊號會好像漏到隔壁？",
+      "domain": "重力地球觀測",
+      "mechanism_key": "grace-spatial-filter-leakage-basin-boundary",
+      "answer_target": "有限空間解析及平滑把質量變化攤到鄰區，跨流域或海岸須處理洩漏誤差。",
+      "scope": "GRACE 球諧質量格網平滑與流域／海岸洩漏；格網細密不是原生解析度提高。",
+      "source_ids": [
+        "O3-S028"
+      ],
+      "source_locator": "Data Processing; Grid Scaling; Error Estimates",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地圖邊界不會替量測訊號劃界",
+        "visual": "單一流域質量變化經濾波擴散到鄰域",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3082",
+      "question": "把衛星季節變化調回原振幅的係數，為什麼不能放心拿來放大長期趨勢？",
+      "domain": "重力地球觀測",
+      "mechanism_key": "grace-gain-factor-seasonal-vs-secular-model-dependence",
+      "answer_target": "尺度因子由模型濾波前後求得且常受年週期主導，未必適合不同空間型態的長期變化。",
+      "scope": "JPL 球諧陸地質量格網的模型尺度因子；模型主導時間與空間型態不同時不能直接搬用，尤其長期趨勢。",
+      "source_ids": [
+        "O3-S028"
+      ],
+      "source_locator": "Grid Scaling",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "校正在一種訊號有效不保證可轉用",
+        "visual": "季節循環與長期流失不同分布套同係數比較",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "O3083",
+      "question": "幾千年前融掉的冰，為什麼還會干擾今天的地下水地圖？",
+      "domain": "地球重力量測",
+      "mechanism_key": "grace_gia_viscoelastic_mantle_gravity_trend_separation",
+      "answer_target": "冰後回彈的黏彈性地球調整會重新分配地球內部質量，重力趨勢不能全解讀成現代水量；需用 GIA 模型估計並扣除。",
+      "scope": "GIA 對重力趨勢的貢獻及其模型修正；內部岩石重分配不是現代地下水，模型不確定性需保留。",
+      "source_ids": [
+        "O3-S029"
+      ],
+      "source_locator": "GIA implications for gravity measurements",
+      "premise_status": "screened",
+      "notes": "不把所有地區都說成上升；模型依賴冰史和地球黏滯性，不能以單一模型宣稱真值。場景為原創示意，進稿另核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水的變化只是重力變化的一種來源；修正不是把真實現象當儀器錯誤刪掉。",
+        "visual": "同一重力趨勢拆成內部岩石調整與地表水量兩層示意。",
+        "seconds": [
+          100,
+          150
+        ]
+      }
+    },
+    {
+      "id": "O3084",
+      "question": "已經公布的上個月水量，為什麼收到這個月資料後還會改？",
+      "domain": "地球重力量測",
+      "mechanism_key": "grace_mascon_temporally_constrained_estimation_revises_history",
+      "answer_target": "時間相關性進入反演估計，新增觀測會改變前後月份共同估出的質量解；原始觀測與處理後估值需分開。",
+      "scope": "JPL mascon 使用時間相關約束的估值修訂；是特定反演產品的性質，不聲稱所有觀測產品都會回改。",
+      "source_ids": [
+        "O3-S030"
+      ],
+      "source_locator": "temporal correlations；estimates for previous months",
+      "premise_status": "screened",
+      "notes": "場景與展示是編輯提案，進稿需另查核；screened 僅代表選題前提與研究方向有來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "歷史估值會修訂，不等於原始資料被重寫；觀察與估算是兩個層次。",
+        "visual": "兩版時間序列重疊，新月份加入後尾端估值一起調整的無數字示意。",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "O3085",
+      "question": "雷射只打到一個平面，為什麼儀器還會收到晚到的小回波？",
+      "domain": "衛星雷射測高",
+      "mechanism_key": "atlas_receiver_multiple_optical_reflections_delayed_ghost_returns",
+      "answer_target": "接收光學元件之間的多次反射增加光程，形成微弱而延遲的原脈衝副本。",
+      "scope": "ATLAS 論文已由光線追跡支持的接收光學副峰；不將另一個僅被懷疑的 PMT 寬峰當成同樣已證實。",
+      "source_ids": [
+        "O3-S031"
+      ],
+      "source_locator": "§6.1；PDF pp.9–10",
+      "premise_status": "screened",
+      "notes": "限定論文由光線追跡確認的光學副峰；不把作者僅懷疑源自光電倍增管的寬峰寫成已證實，也不同於電學批次的陷阱電荷後脈衝。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "晚到訊號不必來自更低的地形，也可能是接收器裡多走了一段路。",
+        "visual": "一條主光路與兩條內反射光路，對照時間軸上的主峰與小副峰。",
+        "seconds": [
+          85,
+          125
+        ]
+      }
+    },
+    {
+      "id": "O3086",
+      "question": "回波更亮，為什麼反而可能把地面量得偏高？",
+      "domain": "衛星雷射測高",
+      "mechanism_key": "atlas_detector_deadtime_first_photon_elevation_bias",
+      "answer_target": "很強的近鏡面回波使先到光子觸發後的通道暫時不能計數，後到事件較易流失，飛行時間分布偏向較短而造成高程偏高。",
+      "scope": "ATLAS 高強度近鏡面回波下的 first-photon timing bias；一般弱回波與修正後產品不可一概說成高程偏高。",
+      "source_ids": [
+        "O3-S031"
+      ],
+      "source_locator": "§6.2；PDF pp.10–11",
+      "premise_status": "screened",
+      "notes": "限定強近鏡面回波，不把所有亮目標都說成偏高；論文當時的強飽和修正研究不能寫成現今已完全解決。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "訊號量多不保證量得準；先後到達被不對稱保留才造成方向性偏差。",
+        "visual": "原始到時分布與死時間篩掉後段事件的分布對照，短時間對應高程偏高。",
+        "seconds": [
+          100,
+          145
+        ]
+      }
+    },
+    {
+      "id": "O3087",
+      "question": "雷射照中的地方，只被接收望遠鏡看見一半會怎樣？",
+      "domain": "衛星雷射測高",
+      "mechanism_key": "atlas_transmit_receive_fov_clipping_sloped_surface_bias",
+      "answer_target": "發射光點與接收視場未對準時，視場邊界截掉部分回波；在斜面上，保留區域的高程分布可能改變。",
+      "scope": "ATLAS 發射光點與接收視場相對偏移造成的 clipping；斜面高程偏差方向取決於截切哪一側。",
+      "source_ids": [
+        "O3-S031"
+      ],
+      "source_locator": "§7；PDF p.11",
+      "premise_status": "screened",
+      "notes": "高低偏差方向取決於斜面與截切方向；不把原創圖畫成實際測試數據。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "對準不只是收到多少光，也會改變實際量到哪一塊斜面。",
+        "visual": "斜面上的光斑移過接收視場邊界，比較完整與被截掉一側的高程分布。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "O3088",
+      "question": "衛星第二次飛偏了一點，怎麼分辨冰真的變薄，還是只照到較低的坡？",
+      "domain": "衛星雷射測高",
+      "mechanism_key": "icesat2_paired_beams_cross_track_slope_elevation_change_disambiguation",
+      "answer_target": "成對光束分居參考軌跡兩側，估計橫向坡度並內插到參考位置，減少跨次地面軌跡偏移與真實高程變化混淆。",
+      "scope": "ICESat-2 成對光束與參考地面軌跡的局部坡度內插；任務設計原理，不能消除全部地形和定位誤差。",
+      "source_ids": [
+        "O3-S032"
+      ],
+      "source_locator": "Beam-pair geometry and Reference Ground Track explanation",
+      "premise_status": "screened",
+      "notes": "來源為任務設計解說；內插依賴局部地形與定位品質，不聲稱成對光束能消除所有高程誤差。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先比較同一位置，才能把照到坡的另一側與冰面真的升降分開。",
+        "visual": "兩次偏移的雙光束落在同一斜面，原始高度不同但內插參考線相同。",
+        "seconds": [
+          100,
+          145
+        ]
+      }
+    },
+    {
+      "id": "O3089",
+      "question": "離斷層一樣遠，為什麼破裂往你這邊跑時可能搖得更猛？",
+      "domain": "地震波與觀測",
+      "mechanism_key": "fault_rupture_directivity_constructive_s_wave_arrivals",
+      "answer_target": "有限斷層的破裂依序前進，向破裂前方傳出的 S 波較集中到達，形成方向性；不能把震源視為一次同時點爆。",
+      "scope": "USGS 的單向斷層破裂與 S 波建設性疊加示意；不忽略場址、路徑和三維破裂，也不預報特定地震損害。",
+      "source_ids": [
+        "O3-S033"
+      ],
+      "source_locator": "Constructive interference and unilateral rupture sketches",
+      "premise_status": "screened",
+      "notes": "限定來源的單向破裂解釋；不替特定地震判定主因，不把複雜三維破裂簡化成必然同一方損害最重。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "距離之外，震源如何沿斷層展開也會改變接收到的波。",
+        "visual": "順序破裂的小段與兩側測站時間軸，對照集中與拉開的到波。",
+        "seconds": [
+          110,
+          160
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "雷達 HH、VV、HV、VH 分別是什麼？",
+      "reason": "純術語清單，作為偏振題必要解說，不新增核心。"
+    },
+    {
+      "question": "雷達立體像對為什麼能測高？",
+      "reason": "核心為雙視角視差，與既有 M2077 重複；保留真正不同的相位干涉問題。"
+    },
+    {
+      "question": "雷達影像為什麼要校準？",
+      "reason": "泛稱校準過薄；僅保留偏振通道關係導致錯誤分類的具體機制。"
+    },
+    {
+      "question": "側向大風為什麼在雷達上顯示接近零？",
+      "reason": "視線速度分量已由 P128 解釋，僅換成天氣雷達不是新核心。"
+    },
+    {
+      "question": "雨滴為什麼讓水平偏振回波比垂直強？",
+      "reason": "與 LEG-S84 雨滴形狀及雷達判讀核心相同。"
+    },
+    {
+      "question": "雨量圖的瞬間強度為什麼不等於累積量？",
+      "reason": "單獨只有速率與累積的區分，併入估雨主線，不占新核心。"
+    },
+    {
+      "question": "重採樣後像素變小，解析度就提升了嗎？",
+      "reason": "與 M2087 小網格不保證細地形及既有取樣概念接近；本批不單獨計數。"
+    },
+    {
+      "question": "對比拉高為什麼畫面更清楚？",
+      "reason": "通用影像顯示映射交由計算組；作為視覺處理說明即可。"
+    },
+    {
+      "question": "為什麼熱像儀要冷卻到接近絕對零度？",
+      "reason": "舊教材概括範圍過大，冷卻與非冷卻探測器須另有明確器型來源，暫不收。"
+    },
+    {
+      "question": "衛星換成 SAR 測高，為什麼沿軌解析度更好？",
+      "reason": "與本批 O3012 合成孔徑相位聚焦主因相同，列為海洋例子而不另占核心。"
+    },
+    {
+      "question": "海平面為什麼不是完美橢球面？",
+      "reason": "與 M2080–2082 重力等位面與海拔基準題相近，保留為測高背景。"
+    },
+    {
+      "question": "沒有地震也能有氣象海嘯嗎？",
+      "reason": "已有 N212；未用不同標題重出同一快速氣壓擾動核心。"
+    },
+    {
+      "question": "用停用中的 ICESat-2 官網手冊補更多細題",
+      "reason": "所查網址目前返回兩頁維護通知，未把搜尋摘要當成已讀手冊；僅採可讀 NASA SVS 與 NTRS 機制來源。"
+    }
+  ]
+}

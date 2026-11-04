@@ -1,0 +1,693 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "6d153f29a537427f36b55c96578b6291efc0cca3",
+    "selected": 3127,
+    "raw_records": 3502,
+    "not_added": 1396,
+    "pool_sha256": "f49ccb0ece6cd560c1ed86d0b6476a65ba3b8b5707c1e7ef43378095cf8780a3",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3127.json.gz",
+      "sha256": "327a47f9a4626ef4139adaba1413fe85a1a56a25265800a0aa4f8a11b91c5caa"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave33-whales.json",
+      "sha256": "a894447e9730e77b8522a0d6b53ba37bf34cbbb1dbebd68fba88f0b6aea78fa0"
+    },
+    {
+      "file": "reviews/wave33-whales-themes.json",
+      "sha256": "da8f028b0a309fac2a3e858c1d07312db702c751d76d52e39e8e6cb236bd4b63"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 6,
+    "candidate_sources": 5,
+    "not_added_only_sources": 1,
+    "not_added": 15,
+    "near_pairs": 17,
+    "themes": 4
+  },
+  "scope": "鯨類潛水心率、攝影校準張嘴、單鯨泡網、鼠海豚截獲判讀，以及耳栓的分層化學紀錄。",
+  "dedup_reading": {
+    "method": "全庫機械搜尋提問、答案、條件、機制鍵與未收理由。作者再讀所列相近舊題完整問答與範圍；近鄰待交叉覆核。",
+    "scan_files": [
+      {
+        "file": ".cache/wave33-whales-lexical.json",
+        "sha256": "625c4a0069c2d03208fb7aee44f81c7070fb7865f99e80ebf213f5dab03ff16c"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P33001",
+      "b": "V3062",
+      "proposed": "distinct",
+      "reason": "細胞缺氧限制氧化步驟，不能說明同一頭鯨的運動與水面心率時序。",
+      "a_snapshot": {
+        "id": "P33001",
+        "question": "這頭藍鯨還沒浮上來，為什麼心跳在深水裡就先加快，又慢下來？",
+        "answer_target": "把心電與深度疊起來，大部分深潛底段心率偏低；仔細看每次捕食的局部上衝，心率會暫升，向下滑行濾水時又降。這支持潛水慢心率仍受運動調節；真正回到水面換氣時，心率再升到遠高於水下衝刺的範圍。",
+        "scope": "一頭野生雄性藍鯨連續約8.5小時。13次心電清楚的深水衝刺，峰值平均約是各次衝刺前低點的2.5倍；非所有鯨的固定倍率，未直接量肌肉供氧。"
+      },
+      "b_snapshot": {
+        "id": "V3062",
+        "question": "檸檬酸循環不直接吃氧，為什麼缺氧仍會拖慢它？",
+        "answer_target": "呼吸鏈無法有效再生氧化載體時，循環氧化步驟受限",
+        "scope": "L025 是發酵再生載體；不泛化微生物所有 TCA 形式"
+      }
+    },
+    {
+      "a": "P33001",
+      "b": "P33002",
+      "proposed": "distinct",
+      "reason": "電極記心搏與深度；另一題以顎部攝影檢驗速度作為張嘴指標，兩標記沒有在一隻鯨同時量這兩種輸出。",
+      "a_snapshot": {
+        "id": "P33001",
+        "question": "這頭藍鯨還沒浮上來，為什麼心跳在深水裡就先加快，又慢下來？",
+        "answer_target": "把心電與深度疊起來，大部分深潛底段心率偏低；仔細看每次捕食的局部上衝，心率會暫升，向下滑行濾水時又降。這支持潛水慢心率仍受運動調節；真正回到水面換氣時，心率再升到遠高於水下衝刺的範圍。",
+        "scope": "一頭野生雄性藍鯨連續約8.5小時。13次心電清楚的深水衝刺，峰值平均約是各次衝刺前低點的2.5倍；非所有鯨的固定倍率，未直接量肌肉供氧。"
+      },
+      "b_snapshot": {
+        "id": "P33002",
+        "question": "標記記下鯨魚游得最快的那一刻，怎麼知道牠當時有沒有張嘴？",
+        "answer_target": "用鯨背攝影機辨認上顎開始抬起的畫格，再與速度曲線對時。受測吃磷蝦的藍鯨和座頭鯨多在速度峰附近張嘴；座頭鯨追魚時兩者的時間差更分散，Fig2的例子到峰值時上顎還沒抬。脫離獵物和動作情境，一個速度峰不足以標定開口。",
+        "scope": "標記速度來自流噪等資料；比較不同部署的捕食事件，沒有把同一隻鯨隨機換餌。張嘴時點與吞入量分開。"
+      }
+    },
+    {
+      "a": "P33002",
+      "b": "P32002",
+      "proposed": "distinct",
+      "reason": "皆用多通道，但泥流測的是快速前段與慢尾流的震動可辨門檻；此處比實際顎動時間與速度峰。",
+      "a_snapshot": {
+        "id": "P33002",
+        "question": "標記記下鯨魚游得最快的那一刻，怎麼知道牠當時有沒有張嘴？",
+        "answer_target": "用鯨背攝影機辨認上顎開始抬起的畫格，再與速度曲線對時。受測吃磷蝦的藍鯨和座頭鯨多在速度峰附近張嘴；座頭鯨追魚時兩者的時間差更分散，Fig2的例子到峰值時上顎還沒抬。脫離獵物和動作情境，一個速度峰不足以標定開口。",
+        "scope": "標記速度來自流噪等資料；比較不同部署的捕食事件，沒有把同一隻鯨隨機換餌。張嘴時點與吞入量分開。"
+      },
+      "b_snapshot": {
+        "id": "P32002",
+        "question": "海底泥沙流的震動已經安靜了，水和泥可能還在往深處走嗎？",
+        "answer_target": "迅速且較濃的前段會產生清楚的地面震動，較慢的後段未必到得了地震儀的可辨門檻。較弱的一次事件，地震訊號回到背景後，流速計仍記到慢流。強流另有前段脈衝與持續約21天的深處溫度異常，支持較暖水持續沿流輸送的推論。",
+        "scope": "較弱Flow 1的流速剖面與較強Flow 10的溫度不是同次流速實測。流道外地震儀能在前段抵達附近前感到震動；21天不是固定點連續實測含砂濃度或持續斷纜時間。"
+      }
+    },
+    {
+      "a": "P33002",
+      "b": "A23002",
+      "proposed": "distinct",
+      "reason": "葉蟬靠液滴回彈取得速度比；鯨魚問題是開顎時點是否能由身體速度推知。",
+      "a_snapshot": {
+        "id": "P33002",
+        "question": "標記記下鯨魚游得最快的那一刻，怎麼知道牠當時有沒有張嘴？",
+        "answer_target": "用鯨背攝影機辨認上顎開始抬起的畫格，再與速度曲線對時。受測吃磷蝦的藍鯨和座頭鯨多在速度峰附近張嘴；座頭鯨追魚時兩者的時間差更分散，Fig2的例子到峰值時上顎還沒抬。脫離獵物和動作情境，一個速度峰不足以標定開口。",
+        "scope": "標記速度來自流噪等資料；比較不同部署的捕食事件，沒有把同一隻鯨隨機換餌。張嘴時點與吞入量分開。"
+      },
+      "b_snapshot": {
+        "id": "A23002",
+        "question": "這種小蟲甩出的水滴，怎麼能比甩它的部位還快？",
+        "answer_target": "液滴受表面張力維持、受力時能壓扁再回彈；形變與彈片運動配合，把能量在適當時段交給液滴，可讓它的離開速度超過彈片峰速。改變感毛後彈片更快，卻失去原來的速度比優勢，說明快甩不等於配合好。",
+        "scope": "限原文葉蟬、液滴與振動板/兩彈簧模型條件。干預也改變滴徑與頻率，不宣稱已證單一感毛神經計時回路；不把所有液滴彈跳叫超推進，也不宣稱能量憑空增加。"
+      }
+    },
+    {
+      "a": "P33002",
+      "b": "P33003",
+      "proposed": "distinct",
+      "reason": "顎的影像校準與泡網放泡頻率塑造圈內間距不同。",
+      "a_snapshot": {
+        "id": "P33002",
+        "question": "標記記下鯨魚游得最快的那一刻，怎麼知道牠當時有沒有張嘴？",
+        "answer_target": "用鯨背攝影機辨認上顎開始抬起的畫格，再與速度曲線對時。受測吃磷蝦的藍鯨和座頭鯨多在速度峰附近張嘴；座頭鯨追魚時兩者的時間差更分散，Fig2的例子到峰值時上顎還沒抬。脫離獵物和動作情境，一個速度峰不足以標定開口。",
+        "scope": "標記速度來自流噪等資料；比較不同部署的捕食事件，沒有把同一隻鯨隨機換餌。張嘴時點與吞入量分開。"
+      },
+      "b_snapshot": {
+        "id": "P33003",
+        "question": "一頭座頭鯨自己邊游邊吐泡，怎麼把最裡面那圈網收得更密？",
+        "answer_target": "空拍可量內圈圍住的面積與相鄰泡團間隔。標記顯示，做內外圈時平均游速沒有可辨差異，內圈吐泡脈衝卻較密。這能讓最後一圈的空隙變小；若獵物留在圈內，收小的範圍有利於一次吞入更多。",
+        "scope": "阿拉斯加東南部單鯨泡網。內外圈面積比估算的密度增益有不逃出的假設，沒有直接計數吃進幾隻磷蝦。"
+      }
+    },
+    {
+      "a": "P33002",
+      "b": "P33004",
+      "proposed": "distinct",
+      "reason": "張口可直接看；另一題要綜合獵物回聲、運動及是否再出現，判估捕捉結果。",
+      "a_snapshot": {
+        "id": "P33002",
+        "question": "標記記下鯨魚游得最快的那一刻，怎麼知道牠當時有沒有張嘴？",
+        "answer_target": "用鯨背攝影機辨認上顎開始抬起的畫格，再與速度曲線對時。受測吃磷蝦的藍鯨和座頭鯨多在速度峰附近張嘴；座頭鯨追魚時兩者的時間差更分散，Fig2的例子到峰值時上顎還沒抬。脫離獵物和動作情境，一個速度峰不足以標定開口。",
+        "scope": "標記速度來自流噪等資料；比較不同部署的捕食事件，沒有把同一隻鯨隨機換餌。張嘴時點與吞入量分開。"
+      },
+      "b_snapshot": {
+        "id": "P33004",
+        "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+        "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+        "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。"
+      }
+    },
+    {
+      "a": "P33003",
+      "b": "V3077",
+      "proposed": "distinct",
+      "reason": "真菌圈接觸後收緊夾住一隻獵物；座頭鯨改變吐泡節拍、在游動中畫收窄的圈。",
+      "a_snapshot": {
+        "id": "P33003",
+        "question": "一頭座頭鯨自己邊游邊吐泡，怎麼把最裡面那圈網收得更密？",
+        "answer_target": "空拍可量內圈圍住的面積與相鄰泡團間隔。標記顯示，做內外圈時平均游速沒有可辨差異，內圈吐泡脈衝卻較密。這能讓最後一圈的空隙變小；若獵物留在圈內，收小的範圍有利於一次吞入更多。",
+        "scope": "阿拉斯加東南部單鯨泡網。內外圈面積比估算的密度增益有不逃出的假設，沒有直接計數吃進幾隻磷蝦。"
+      },
+      "b_snapshot": {
+        "id": "V3077",
+        "question": "不會追獵物的真菌，怎麼用一個圈套抓住線蟲？",
+        "answer_target": "捕食型菌絲圈受接觸後膨脹收緊，固定線蟲供侵入取養",
+        "scope": "限有收縮環的捕食真菌；分類名稱不照搬所有 Arthrobotrys 均同法"
+      }
+    },
+    {
+      "a": "P33003",
+      "b": "P33004",
+      "proposed": "distinct",
+      "reason": "圈面積可估可能的獵物濃縮，不能逐隻判捕獲；齒鯨估單次結果有回聲追跡。",
+      "a_snapshot": {
+        "id": "P33003",
+        "question": "一頭座頭鯨自己邊游邊吐泡，怎麼把最裡面那圈網收得更密？",
+        "answer_target": "空拍可量內圈圍住的面積與相鄰泡團間隔。標記顯示，做內外圈時平均游速沒有可辨差異，內圈吐泡脈衝卻較密。這能讓最後一圈的空隙變小；若獵物留在圈內，收小的範圍有利於一次吞入更多。",
+        "scope": "阿拉斯加東南部單鯨泡網。內外圈面積比估算的密度增益有不逃出的假設，沒有直接計數吃進幾隻磷蝦。"
+      },
+      "b_snapshot": {
+        "id": "P33004",
+        "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+        "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+        "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。"
+      }
+    },
+    {
+      "a": "P33004",
+      "b": "B2320",
+      "proposed": "distinct",
+      "reason": "蝙蝠實驗以遮蔽測運動預測；鼠海豚依逼近、末段動作與回聲後續判估截獲。",
+      "a_snapshot": {
+        "id": "P33004",
+        "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+        "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+        "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。"
+      },
+      "b_snapshot": {
+        "id": "B2320",
+        "question": "獵物暫時躲到回聲遮蔽物後面，蝙蝠怎麼還能朝牠將出現的方向轉頭？",
+        "answer_target": "連續離散回聲中的運動資訊形成短期目標預測，與只追最後回聲的模型作比較",
+        "scope": "限棲架追蹤實驗，不說能預知任意獵物轉向"
+      }
+    },
+    {
+      "a": "P33004",
+      "b": "Z7017",
+      "proposed": "distinct",
+      "reason": "昆蟲振翅調制可在背景中辨認獵物；這題在已跟到魚之後，比能否追到結尾。",
+      "a_snapshot": {
+        "id": "P33004",
+        "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+        "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+        "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。"
+      },
+      "b_snapshot": {
+        "id": "Z7017",
+        "question": "樹葉和昆蟲都會反射聲音，蝙蝠怎麼從回聲找出振翅的獵物？",
+        "answer_target": "振翅改變反射強度與頻率，讓長恆頻回聲帶上時間調制；這些變動可把獵物回聲和較穩定背景區分。",
+        "scope": "特定 flutter-detecting CF-FM 蝙蝠；背景不必永遠靜止，不能宣稱單靠此特徵辨認所有物種。"
+      }
+    },
+    {
+      "a": "P33004",
+      "b": "Z7013",
+      "proposed": "distinct",
+      "reason": "靜音蛾實驗問的是回聲干擾功能；鼠海豚研究比較標記上的嘗試與可能成功。",
+      "a_snapshot": {
+        "id": "P33004",
+        "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+        "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+        "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。"
+      },
+      "b_snapshot": {
+        "id": "Z7013",
+        "question": "蛾發出超音波讓蝙蝠撲空，怎麼知道不是單純把牠嚇到？",
+        "answer_target": "比較發聲／靜音與重複遭遇的捕捉結果，區分會習慣化的驚嚇、學到難吃的警告與持續的回聲定位干擾。",
+        "scope": "Bertholdia trigona 與 Eptesicus fuscus 受測互動；聲音干擾功能有證據，具體錯距／假回聲神經途徑未在本研究定論。"
+      }
+    },
+    {
+      "a": "P33004",
+      "b": "A14003",
+      "proposed": "distinct",
+      "reason": "熟悉哨音輪廓含個體資訊；這裡是目標回聲的往返時間與運動。",
+      "a_snapshot": {
+        "id": "P33004",
+        "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+        "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+        "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。"
+      },
+      "b_snapshot": {
+        "id": "A14003",
+        "question": "拿掉原本的聲紋，海豚為什麼仍能分辨熟悉的哨音？",
+        "answer_target": "個體訊息可保存在學得的頻率輪廓；合成訊號去除原聲紋仍引出差異反應，另次野外播放同型哨音較易得到匹配回答。",
+        "scope": "2006暫時捕捉的14隻寬吻海豚與2013不同野外群體兩項研究；後者不能直接定位回應個體，不把行為支持說成已目擊特定海豚被點名回話。"
+      }
+    },
+    {
+      "a": "P33004",
+      "b": "N194",
+      "proposed": "distinct",
+      "reason": "深海聲道傳遠聲的機制，不是近口目標是否被截住的判準。",
+      "a_snapshot": {
+        "id": "P33004",
+        "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+        "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+        "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。"
+      },
+      "b_snapshot": {
+        "id": "N194",
+        "question": "海裡的鯨歌，為什麼有時能傳到很遠的地方？",
+        "answer_target": "聲速剖面讓聲波反覆折回深海聲道。",
+        "scope": "How far does sound travel in the ocean?"
+      }
+    },
+    {
+      "a": "P33005",
+      "b": "B2095",
+      "proposed": "distinct",
+      "reason": "食物網放大比較營養層；耳栓內是同一個體的時間分層。",
+      "a_snapshot": {
+        "id": "P33005",
+        "question": "同一頭藍鯨，一塊脂肪看不出先後，為什麼耳道裡的蠟能排出十幾年的暴露變化？",
+        "answer_target": "耳栓隨成長疊出深淺相間的層，可以按形成先後分離化驗；同一隻鯨的脂肪留有累積的污染物，單一樣品沒有這種逐層時間軸。在這件耳栓裡，若干有機污染物最早層已高，汞的兩個高點卻較晚。",
+        "scope": "一頭雄性藍鯨24層，每層按約半年估計。濃度是形成期的平均，不指認某天、海域、污染源或所有藍鯨的共同經歷。"
+      },
+      "b_snapshot": {
+        "id": "B2095",
+        "question": "吃很多小魚的大鳥，為什麼可能累積比每條魚更高的某些污染物濃度？",
+        "answer_target": "難排除的持久物質可隨攝食跨營養層累積放大。",
+        "scope": "來源 DDT 食物網例子，非所有化學物皆會放大。"
+      }
+    },
+    {
+      "a": "P33005",
+      "b": "R31001",
+      "proposed": "distinct",
+      "reason": "樹輪以大氣碳十四標誌固定絕對年，耳栓以層的產生順序估相對年齡、逐層測濃度。",
+      "a_snapshot": {
+        "id": "P33005",
+        "question": "同一頭藍鯨，一塊脂肪看不出先後，為什麼耳道裡的蠟能排出十幾年的暴露變化？",
+        "answer_target": "耳栓隨成長疊出深淺相間的層，可以按形成先後分離化驗；同一隻鯨的脂肪留有累積的污染物，單一樣品沒有這種逐層時間軸。在這件耳栓裡，若干有機污染物最早層已高，汞的兩個高點卻較晚。",
+        "scope": "一頭雄性藍鯨24層，每層按約半年估計。濃度是形成期的平均，不指認某天、海域、污染源或所有藍鯨的共同經歷。"
+      },
+      "b_snapshot": {
+        "id": "R31001",
+        "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+        "answer_target": "樹每年長木頭時會收進當年的大氣碳。三件帶有金屬工具痕、保留天然外緣的木料中，有一段碳十四變化能和已知的993年前後訊號對齊。從已定年的輪位數到外緣，三件木料的最後一年都指向1021年。",
+        "scope": "先依遺址層位與工具痕判斷關聯，再替砍木定年。樣本顯示當年有人加工木料，不能據此定出首航或佔居年數。"
+      }
+    },
+    {
+      "a": "P33005",
+      "b": "R31006",
+      "proposed": "distinct",
+      "reason": "樹木骨架密度與寄主對照推測蟲害；耳栓直接取化學物，外在事件來源未知。",
+      "a_snapshot": {
+        "id": "P33005",
+        "question": "同一頭藍鯨，一塊脂肪看不出先後，為什麼耳道裡的蠟能排出十幾年的暴露變化？",
+        "answer_target": "耳栓隨成長疊出深淺相間的層，可以按形成先後分離化驗；同一隻鯨的脂肪留有累積的污染物，單一樣品沒有這種逐層時間軸。在這件耳栓裡，若干有機污染物最早層已高，汞的兩個高點卻較晚。",
+        "scope": "一頭雄性藍鯨24層，每層按約半年估計。濃度是形成期的平均，不指認某天、海域、污染源或所有藍鯨的共同經歷。"
+      },
+      "b_snapshot": {
+        "id": "R31006",
+        "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+        "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+        "scope": "限瑞士阿爾卑斯高地的重建。極冷年也可能使非寄主出現低值，難以拆開同年的雙重影響；密度曲線不能換算蟲數。"
+      }
+    },
+    {
+      "a": "P33005",
+      "b": "R29001",
+      "proposed": "distinct",
+      "reason": "鍋內三種吸附介質的替換時間窗重疊；耳栓實際疊出可分取的層。",
+      "a_snapshot": {
+        "id": "P33005",
+        "question": "同一頭藍鯨，一塊脂肪看不出先後，為什麼耳道裡的蠟能排出十幾年的暴露變化？",
+        "answer_target": "耳栓隨成長疊出深淺相間的層，可以按形成先後分離化驗；同一隻鯨的脂肪留有累積的污染物，單一樣品沒有這種逐層時間軸。在這件耳栓裡，若干有機污染物最早層已高，汞的兩個高點卻較晚。",
+        "scope": "一頭雄性藍鯨24層，每層按約半年估計。濃度是形成期的平均，不指認某天、海域、污染源或所有藍鯨的共同經歷。"
+      },
+      "b_snapshot": {
+        "id": "R29001",
+        "question": "同一口鍋剛換過菜，鍋巴和陶壁怎麼會講出兩份菜單？",
+        "answer_target": "在固定食譜煮過多次後改煮新食材，大塊焦物的訊號很快跟著新菜改變。附著的薄焦層混入先前各餐、偏向近期；陶壁已吸收的油脂替換較慢，還會留住舊食材的訊號。",
+        "scope": "限Miller等人的無釉陶鍋、換食譜與取樣實驗。三處是不同組成與時間窗，不是三張能逐餐還原的菜單。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P33-S001",
+      "scope": "Results及Discussion，快取P005–014；Fig1D、E與Fig2A–D。",
+      "locator": "Results及Discussion，快取P005–014；Fig1D、E與Fig2A–D。",
+      "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+      "cache": {
+        "file": ".cache/wave33-whales-heart.xml",
+        "sha256": "4175a086661d8929b7b3306abc901ff46f545babaf4e8664dbb03caf7d7647b5",
+        "text_file": ".cache/wave33-whales-heart.txt",
+        "text_sha256": "46cf3e6d103afce705d23e0e2469a2ab492f1b1ce2069e3fff39a08ec01cd8f3"
+      }
+    },
+    {
+      "source_id": "P33-S002",
+      "scope": "PDF pp2–5 Results與Table 1，Figs1、2；p3 Fig1E的流噪估速、p4 Fig2B張嘴畫格。",
+      "locator": "PDF pp2–5 Results與Table 1，Figs1、2；p3 Fig1E的流噪估速、p4 Fig2B張嘴畫格。",
+      "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+      "cache": {
+        "file": ".cache/wave33-whales-mouth.pdf",
+        "sha256": "317323629f661b6b9ab99dc42034e50a646792c83d5dabef28dcd765b4a59285",
+        "text_file": ".cache/wave33-whales-mouth.txt",
+        "text_sha256": "505a784adc722e1797c2557ba409afac9148ef19029bdf9e0e248e2d2275c38c"
+      }
+    },
+    {
+      "source_id": "P33-S003",
+      "scope": "Results：UAS-derived characteristics與Tag-derived data，快取P021–030；Discussion P034–039，Figs1、3、4。",
+      "locator": "Results：UAS-derived characteristics與Tag-derived data，快取P021–030；Discussion P034–039，Figs1、3、4。",
+      "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+      "cache": {
+        "file": ".cache/wave33-whales-bubble.xml",
+        "sha256": "b4ecddf3ea862234cb323a2992a2ed479517ebd078f7395eec9a42045dc63ff3",
+        "text_file": ".cache/wave33-whales-bubble.txt",
+        "text_sha256": "4e449b17e3dc91ad9c537dd4dda796640d1cb9b1e14f3689a6d73f9fed7a2bfc"
+      }
+    },
+    {
+      "source_id": "P33-S004",
+      "scope": "PDF pp4–6，Figs2、3與主文成功率；補充pp10–11 Prey capture success rate及Table S1敏感度說明。",
+      "locator": "PDF pp4–6，Figs2、3與主文成功率；補充pp10–11 Prey capture success rate及Table S1敏感度說明。",
+      "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+      "cache": {
+        "file": ".cache/wave33-whales-capture.pdf",
+        "sha256": "f4aa58938f418f7edf39e7f9796b48b0dd4c21478d48d084d9e765ec6365776f",
+        "text_file": ".cache/wave33-whales-capture.txt",
+        "text_sha256": "845d2fec79a324e870e8ca9a42a098e7d05d514a6129bb3c97bc39376b6ea23d"
+      }
+    },
+    {
+      "source_id": "P33-S005",
+      "scope": "PDF pp1–4 Results、Discussion與Methods，Fig1B–D縱切及分層，Fig2B–F有機污染物及汞曲線。",
+      "locator": "PDF pp1–4 Results、Discussion與Methods，Fig1B–D縱切及分層，Fig2B–F有機污染物及汞曲線。",
+      "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+      "cache": {
+        "file": ".cache/wave33-whales-ear.pdf",
+        "sha256": "11740805d0acecaad6f207d5c7bab35777149f5091e39fd42405cb1bb3d8d99d",
+        "text_file": ".cache/wave33-whales-ear.txt",
+        "text_sha256": "377214e3ba6789852ae3864457c26dd8e7c4ed7e5426253cda5e9873a4dc52d8"
+      }
+    },
+    {
+      "source_id": "P33-S006",
+      "scope": "Results：Biosonar responses to prey movement in free-ranging animals，P011–015、Fig2圖說。",
+      "locator": "Results：Biosonar responses to prey movement in free-ranging animals，P011–015、Fig2圖說。",
+      "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+      "cache": {
+        "file": ".cache/wave33-whales-sonar.xml",
+        "sha256": "321b36322eadec6aff2ba2922ba9e92fff6c16023fcbefd97f6a4f92eb2298e1",
+        "text_file": ".cache/wave33-whales-sonar.txt",
+        "text_sha256": "ad84c2272636882e2b049b701dd1100c13403e72963db66fa6ebaca440502def"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P33-S001",
+      "doi": "10.1073/pnas.1914273116",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6911174/fullTextXML",
+      "identity_relation": "Europe PMC收錄原刊XML。",
+      "old_exact_matches": [],
+      "count_policy": "DOI、全文XML、典藏PDF與同文補充資料合計一項研究。兩篇鼠海豚工作不用作同一主張的獨立重現。"
+    },
+    {
+      "source_id": "P33-S002",
+      "doi": "10.1016/j.cub.2016.07.037",
+      "primary_body_url": "https://www.fundacionmeri.cl/wp-content/files_mf/cade_et_al_2016_currentbiology_extended.pdf",
+      "identity_relation": "Fundación MERI提供的刊前排版PDF，附同文補充資料，頁碼依檔案。",
+      "old_exact_matches": [],
+      "count_policy": "DOI、全文XML、典藏PDF與同文補充資料合計一項研究。兩篇鼠海豚工作不用作同一主張的獨立重現。"
+    },
+    {
+      "source_id": "P33-S003",
+      "doi": "10.1098/rsos.240328",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11336686/fullTextXML",
+      "identity_relation": "Europe PMC收錄原刊XML。",
+      "old_exact_matches": [],
+      "count_policy": "DOI、全文XML、典藏PDF與同文補充資料合計一項研究。兩篇鼠海豚工作不用作同一主張的獨立重現。"
+    },
+    {
+      "source_id": "P33-S004",
+      "doi": "10.1016/j.cub.2016.03.069",
+      "primary_body_url": "https://marinebioacoustics.wordpress.com/wp-content/uploads/2018/04/wisniewska_etal_2016.pdf",
+      "identity_relation": "Marine Bioacoustics研究團隊託管之刊前排版PDF，含原補充資料。",
+      "old_exact_matches": [],
+      "count_policy": "DOI、全文XML、典藏PDF與同文補充資料合計一項研究。兩篇鼠海豚工作不用作同一主張的獨立重現。"
+    },
+    {
+      "source_id": "P33-S005",
+      "doi": "10.1073/pnas.1311418110",
+      "primary_body_url": "https://www.vliz.be/imisdocs/publications/ocrd/286777.pdf",
+      "identity_relation": "VLIZ典藏之原刊分頁PDF，16922–16926。",
+      "old_exact_matches": [],
+      "count_policy": "DOI、全文XML、典藏PDF與同文補充資料合計一項研究。兩篇鼠海豚工作不用作同一主張的獨立重現。"
+    },
+    {
+      "source_id": "P33-S006",
+      "doi": "10.7554/eLife.68825",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8547948/fullTextXML",
+      "identity_relation": "Europe PMC收錄原刊XML，此次只供退題判斷。",
+      "old_exact_matches": [],
+      "count_policy": "DOI、全文XML、典藏PDF與同文補充資料合計一項研究。兩篇鼠海豚工作不用作同一主張的獨立重現。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave33-whales-fetch.json",
+      "sha256": "d8e5fca80c71af8c5cedacbebd01a7243f26234c1c64f39b12c4acd912337905"
+    },
+    {
+      "file": ".cache/wave33-whales-ear-route.json",
+      "sha256": "f0ba8622be72ba0565dcc7ce1c5de3592b51fb28be610916eb83352c16d5e391"
+    },
+    {
+      "file": ".cache/wave33-whales-images.json",
+      "sha256": "67e041e7b152669a4b6cc9bfd7733933a7c625b9f124267c9796fcad4189a374"
+    }
+  ],
+  "retrieval_failures": [
+    "耳栓原研究的Europe PMC XML路線回500，改讀VLIZ保存之期刊PDF。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "P33-S001",
+      "file": ".cache/wave33-whales-heart-fig1.jpg",
+      "sha256": "1b5bba9e8a6f481ac13f427729619b296f5cd9cbb0940ab96b32c53e3dbfd412",
+      "read_scope": "Fig1D單潛分段與Fig1E行為階段分布。"
+    },
+    {
+      "source_id": "P33-S001",
+      "file": ".cache/wave33-whales-heart-fig2.jpg",
+      "sha256": "76edeb9fb3801ed44b5a9894b4ade12f307f29f2c4d394ae8d7a753a2a21eb3f",
+      "read_scope": "Fig2四次深淺潛，深水局部上衝與回到水面分開。"
+    },
+    {
+      "source_id": "P33-S002",
+      "file": ".cache/wave33-whales-mouth-p3.png",
+      "sha256": "f13846c1d35af26f1ba077859dbfac16be246c98c4c3780afdaaeb2aef460238",
+      "read_scope": "Fig1藍鯨抬顎照片與速度曲線。"
+    },
+    {
+      "source_id": "P33-S002",
+      "file": ".cache/wave33-whales-mouth-p4.png",
+      "sha256": "c1b2a1923cb8a9e4b160db4bcd52abf965fc26af788b28eaa3347dea3cd03236",
+      "read_scope": "Fig2追魚座頭鯨的速度峰與稍後抬顎。"
+    },
+    {
+      "source_id": "P33-S002",
+      "file": ".cache/wave33-whales-mouth-p5.png",
+      "sha256": "3785026fa51d468de304a94ae102281347cfdc86d866cc553d90f85a3a375803",
+      "read_scope": "Table 1依獵物與鯨種分列開、閉口時點。"
+    },
+    {
+      "source_id": "P33-S003",
+      "file": ".cache/wave33-whales-bubble-fig1.jpg",
+      "sha256": "46ef95cd739aa8240f3ba1781b387faaa4b83aecae5008f89c701b769fe8d12a",
+      "read_scope": "Fig1a空拍相鄰泡間距、內外圈與面積界定。"
+    },
+    {
+      "source_id": "P33-S003",
+      "file": ".cache/wave33-whales-bubble-fig3.jpg",
+      "sha256": "8ea12a6f398a806d700ff06c486608778a7ad482bf1ec9d6678a73ddc73646db",
+      "read_scope": "Fig3各圈數的內外圈面積與泡間距分布。"
+    },
+    {
+      "source_id": "P33-S003",
+      "file": ".cache/wave33-whales-bubble-fig4.jpg",
+      "sha256": "4b62d2cc4054e0f1323af436ac0347d8c2f3553cf2cdf4ddefcdaffe6bd25910",
+      "read_scope": "Fig4五頭鯨深度與速度對時，另一研究的無泡網速度以點線表示。"
+    },
+    {
+      "source_id": "P33-S004",
+      "file": ".cache/wave33-whales-capture-p5.png",
+      "sha256": "6b2ed997a1c6454b9258dc1db39d9702c9e5a4fc0537c8df720468b732131ad0",
+      "read_scope": "Fig3逃逸時回聲距離與魚尾拍造成的強弱變化。"
+    },
+    {
+      "source_id": "P33-S005",
+      "file": ".cache/wave33-whales-ear-p2.png",
+      "sha256": "6293a7ffe9cb86e3a45ac3950b9d1af636074309b8d829c941f61023af5eba60",
+      "read_scope": "Fig1耳栓實物、縱切及放大分層。"
+    },
+    {
+      "source_id": "P33-S005",
+      "file": ".cache/wave33-whales-ear-p3.png",
+      "sha256": "4be33bbece6665ffa49bc63a44a0e164a4fb00d5bdacab7600594f12304bd797",
+      "read_scope": "Fig2B–D初層有機污染物高值，F汞有不同峰期。"
+    }
+  ],
+  "reading_limits": [
+    "六項工作之指定原文，末項只支持退題。指定原圖或表頁共11份，未看補充影片、未重算原始心電或回聲。",
+    "研究的動物、觀測窗口與樣本數各自限定。沒有把不同部署接成單一隻鯨的同次事件。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W33P-T01",
+      "body_seconds": 60,
+      "core_seconds": {
+        "P33001": 60
+      },
+      "chapter_seconds": [
+        35,
+        25
+      ],
+      "max_beat_seconds": 22,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W33P-T02",
+      "body_seconds": 96,
+      "core_seconds": {
+        "P33002": 47,
+        "P33004": 49
+      },
+      "chapter_seconds": [
+        47,
+        49
+      ],
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W33P-T03",
+      "body_seconds": 74,
+      "core_seconds": {
+        "P33003": 74
+      },
+      "chapter_seconds": [
+        35,
+        39
+      ],
+      "max_beat_seconds": 25,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W33P-T04",
+      "body_seconds": 62,
+      "core_seconds": {
+        "P33005": 62
+      },
+      "chapter_seconds": [
+        35,
+        27
+      ],
+      "max_beat_seconds": 22,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "all_strings_rstrip": true,
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待非作者核來源、共同近鄰和題案。"
+  ],
+  "revision_history": [
+    {
+      "before": [
+        {
+          "file": "batches/wave33-whales.json",
+          "sha256": "50281468a29b33e8ddc2f445e827f4bba9f2a1214ed69a99113b5b1bf1f58e15"
+        },
+        {
+          "file": "reviews/wave33-whales-themes.json",
+          "sha256": "2dc481a4033068d8ac5f883e0077b2d8e8bace758b17866c2e5c5bc34c1903a0"
+        },
+        {
+          "file": "reviews/wave33-whales-author.json",
+          "sha256": "1be2990991dcbcf3c08998c0daca82c370f310526bcf53be1057e4f77866a728"
+        }
+      ],
+      "reason": "非作者讀回後將P33001地點收為深水，避免當成海床；T01先遮浮出水面的時間，末拍17→7。T02完整列可能截獲、逃脫及不可判；T04末拍10→5，把層平均作圖註。",
+      "removed_seconds": 15,
+      "body_seconds_before": [
+        70,
+        96,
+        74,
+        67
+      ],
+      "body_seconds_after": [
+        60,
+        96,
+        74,
+        62
+      ],
+      "after_batch": {
+        "file": "batches/wave33-whales.json",
+        "sha256": "3f21d10224a35dd0a6059e06d897f6a9dbfb8b15877ba6c8651ed70a26fa1991"
+      },
+      "after_themes": {
+        "file": "reviews/wave33-whales-themes.json",
+        "sha256": "da8f028b0a309fac2a3e858c1d07312db702c751d76d52e39e8e6cb236bd4b63"
+      }
+    },
+    {
+      "before": [
+        {
+          "file": "batches/wave33-whales.json",
+          "sha256": "3f21d10224a35dd0a6059e06d897f6a9dbfb8b15877ba6c8651ed70a26fa1991"
+        },
+        {
+          "file": "reviews/wave33-whales-themes.json",
+          "sha256": "da8f028b0a309fac2a3e858c1d07312db702c751d76d52e39e8e6cb236bd4b63"
+        },
+        {
+          "file": "reviews/wave33-whales-author.json",
+          "sha256": "943fc0f261b7bd48f825ef0154f2e0580ed73d03ef12d69938ee669b9bd9baa1"
+        }
+      ],
+      "reason": "P33-NA004退題理由改寫為速度與開口時序；研究以上顎抬起辨認開口，沒有採下顎動作作時標。候選與題案不變。",
+      "removed_seconds": 0
+    }
+  ]
+}

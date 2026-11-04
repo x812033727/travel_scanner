@@ -1,0 +1,734 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "science_sources",
+  "production_ready": false,
+  "scope": "火星任務用實際機具、取樣交付、麥克風和氣象儀器分辨競爭解釋。每題限定到可見對照，區分直接記錄、地面試驗與模型。",
+  "baseline": {
+    "head": "7c195cdcf2f7dca0e0beedc48235f24795971583",
+    "selected": 3320,
+    "raw_records": 3702,
+    "not_added": 1750,
+    "themes": 425,
+    "snapshot": {
+      "file": "baselines/2026-11-03-3320.json.gz",
+      "sha256": "19bef886b643c8fd340a190596e687daa6f6d57868b05d04271c8cacdfddddb3"
+    },
+    "pool_sha256": "2944b6c42da6ac18eb009e2abba4c1afb7bbaaad5dec3cc10e5a13e38d09032c"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave42-earth.json",
+      "sha256": "795524d9595b991c02b26f5c05aad43fea2677bbd7f0a605b68c2d7b0c4219f6"
+    },
+    {
+      "file": "reviews/wave42-earth-themes.json",
+      "sha256": "399a1c2a86ea42f25a920b23c5924271613eec4115876cb3bca422e64bf2784e"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "not_added": 15,
+    "near_pairs": 21,
+    "themes": 5
+  },
+  "near_pairs": [
+    {
+      "a": "S42-001",
+      "b": "P174",
+      "reason": "動量守恆的牆反衝沒有提供進尺條件；此探針的殘餘反衝須有外殼摩擦抵銷，並有側壓與退出對照。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-001",
+        "question": "火星的探針明明往下敲，怎麼會越敲越往上退？",
+        "answer_target": "洞察號探針內的錘打向尖端，外殼仍承受向後的反衝。原設計靠周圍土貼住外殼，讓它敲進去後不會再彈回。探針身旁留下未塌回的坑；機械臂從側面抵住探針時曾恢復進尺，改壓旁邊的土後，後來一段敲擊反而讓它退出。",
+        "scope": "限洞察號登陸點與實際操作順序。側壓曾有效，不代表一路到深處只受一種阻力，也不是每次撤手都立刻退出。"
+      },
+      "b_snapshot": {
+        "id": "P174",
+        "question": "球撞上固定牆也說動量守恆，牆明明沒動要怎麼解釋？",
+        "answer_target": "把牆及其支承納入系統，極大質量可有極小反衝速度。",
+        "scope": "僅經典力學模型"
+      }
+    },
+    {
+      "a": "S42-001",
+      "b": "R21001",
+      "reason": "衛星卸載反作用輪的角動量需外部力矩；此探針要對每次錘後的線向回彈提供外部阻力。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-001",
+        "question": "火星的探針明明往下敲，怎麼會越敲越往上退？",
+        "answer_target": "洞察號探針內的錘打向尖端，外殼仍承受向後的反衝。原設計靠周圍土貼住外殼，讓它敲進去後不會再彈回。探針身旁留下未塌回的坑；機械臂從側面抵住探針時曾恢復進尺，改壓旁邊的土後，後來一段敲擊反而讓它退出。",
+        "scope": "限洞察號登陸點與實際操作順序。側壓曾有效，不代表一路到深處只受一種阻力，也不是每次撤手都立刻退出。"
+      },
+      "b_snapshot": {
+        "id": "R21001",
+        "question": "輪子還在轉，衛星為什麼不能一直靠它穩住方向？",
+        "answer_target": "反作用輪能把擾動帶來的角動量暫存起來；持續同向擾動會耗掉輪速餘裕。只在船內減速會把角動量還給船，需配合推力器或磁力矩器的外部力矩，才能卸載又維持指向。",
+        "scope": "限有限輪速下的持續擾動與卸載；不把速度飽和說成所有方向失去控制。磁力矩只在外部磁場允許的方向/環境有效，不承諾深空通用。"
+      }
+    },
+    {
+      "a": "S42-001",
+      "b": "P31002",
+      "reason": "同任務罩內震動由日照降溫辨識；本題比較機械臂施力位置與探針位移。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-001",
+        "question": "火星的探針明明往下敲，怎麼會越敲越往上退？",
+        "answer_target": "洞察號探針內的錘打向尖端，外殼仍承受向後的反衝。原設計靠周圍土貼住外殼，讓它敲進去後不會再彈回。探針身旁留下未塌回的坑；機械臂從側面抵住探針時曾恢復進尺，改壓旁邊的土後，後來一段敲擊反而讓它退出。",
+        "scope": "限洞察號登陸點與實際操作順序。側壓曾有效，不代表一路到深處只受一種阻力，也不是每次撤手都立刻退出。"
+      },
+      "b_snapshot": {
+        "id": "P31002",
+        "question": "火衛一掠過太陽時，為什麼連遮在罩子裡的火星地震儀也有反應？",
+        "answer_target": "遮光時太陽電池電流先降、地表降溫，部分事件的水平地震通道稍後才響應。受光處與原有遮蔭處冷卻不一，周圍材料的熱應變可能使儀器微傾，讓重力投影到水平軸。地球地震室改變燈光也記下快速的水平響應。",
+        "scope": "火星研究不是每一場凌日都有清楚訊號；地面兩台儀器的照明對照只支持途徑可能。均質有限元素模型不足以定出每個腳墊的真實位移。"
+      }
+    },
+    {
+      "a": "S42-002",
+      "b": "D2213",
+      "reason": "不同輪子路徑長度需要差速已另退題，本題是車輪表皮兩側失去承載引起鄰齒斷裂風險與側視確認。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-002",
+        "question": "好奇號車輪破了洞，工程師為什麼反而去看洞旁那道凸齒的兩側？",
+        "answer_target": "輪皮開裂會把更多負荷轉給附近凸齒。地面壽命試驗顯示，同一齒兩側的特定輪皮區都嚴重開裂時，斷齒風險上升。火星上要分別拍齒的側面，因為有的斷口俯視不清楚，不能用破洞數直接決定哪一道齒還能承載。",
+        "scope": "只採好奇號鋁輪結構與JPL試驗，不從一張照片預報剩餘里程。"
+      },
+      "b_snapshot": {
+        "id": "D2213",
+        "question": "四輪都在帶動車子，為什麼前後輪還不能永遠綁成同一轉速？",
+        "answer_target": "前後軸轉彎路徑不同，中央差速器容許其轉速差並持續傳動。",
+        "scope": "Toyota Adds Full-Time 4WD Models to Vista and Camry Lines (1987)；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "S42-002",
+      "b": "D2102",
+      "reason": "混凝土切縫透過傳力件連接相鄰板；此案觀察輪皮裂口如何將負荷轉給特定凸齒。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-002",
+        "question": "好奇號車輪破了洞，工程師為什麼反而去看洞旁那道凸齒的兩側？",
+        "answer_target": "輪皮開裂會把更多負荷轉給附近凸齒。地面壽命試驗顯示，同一齒兩側的特定輪皮區都嚴重開裂時，斷齒風險上升。火星上要分別拍齒的側面，因為有的斷口俯視不清楚，不能用破洞數直接決定哪一道齒還能承載。",
+        "scope": "只採好奇號鋁輪結構與JPL試驗，不從一張照片預報剩餘里程。"
+      },
+      "b_snapshot": {
+        "id": "D2102",
+        "question": "混凝土路面切成一塊塊，車輪壓過接縫時靠什麼一起承重？",
+        "answer_target": "接縫傳力桿將荷載傳到相鄰板，減少兩板差異撓度和錯台。",
+        "scope": "TechBrief: Best Practices for Dowel Placement Tolerances；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "S42-003",
+      "b": "N016",
+      "reason": "古河床環境證據不能解釋鑽孔、管內相機與容積探針呈現不一致的收樣結果。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-003",
+        "question": "火星岩面明明留下完整圓孔，毅力號的採樣管怎麼幾乎是空的？",
+        "answer_target": "Roubion留下鑽孔與碎屑，但拍攝管內的影像和容積探針都找不到完整岩芯；尋遍周圍也沒看到脫落的整根芯。團隊因此認為較可能是岩材強度低，取芯時解體，沒有形成能留在管中的整塊。",
+        "scope": "限毅力號首個Roubion取芯。管內圖可見少數塵粒；破碎過程是據孔口、材料及管內結果推論，非直接拍攝。"
+      },
+      "b_snapshot": {
+        "id": "N016",
+        "question": "火星現在乾燥，科學家怎麼看出以前曾有河湖？",
+        "answer_target": "河谷、三角洲與含水環境礦物的證據鏈",
+        "scope": "火星；不採本頁有爭議的現今坡面鹽水流動句"
+      }
+    },
+    {
+      "a": "S42-003",
+      "b": "S42-004",
+      "reason": "岩芯推測碎到留不住；冰土已取得卻可能在交付時黏得落不下，物性與轉移方向相反。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-003",
+        "question": "火星岩面明明留下完整圓孔，毅力號的採樣管怎麼幾乎是空的？",
+        "answer_target": "Roubion留下鑽孔與碎屑，但拍攝管內的影像和容積探針都找不到完整岩芯；尋遍周圍也沒看到脫落的整根芯。團隊因此認為較可能是岩材強度低，取芯時解體，沒有形成能留在管中的整塊。",
+        "scope": "限毅力號首個Roubion取芯。管內圖可見少數塵粒；破碎過程是據孔口、材料及管內結果推論，非直接拍攝。"
+      },
+      "b_snapshot": {
+        "id": "S42-004",
+        "question": "火星鏟裡明明有含冰的土，為什麼換一鏟冰較少的反而驗得到水冰？",
+        "answer_target": "鳳凰號頭幾次取的冰土看似在鏟內結成團，翻鏟不易送入分析器。團隊推測交付時日照與黏結有關。後來刮取含冰較少、較能落下的表面材料，這回儀器收到了樣本，仍驗出水冰。",
+        "scope": "限鳳凰號具體交付，未直接看見微觀黏結過程。另一次艙門未全開是不同故障。"
+      }
+    },
+    {
+      "a": "S42-003",
+      "b": "R40002",
+      "reason": "植物導管採樣切開後吸進氣體改變成像，是操作製造假象；本題是低強度岩材成芯失敗及空管判讀。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-003",
+        "question": "火星岩面明明留下完整圓孔，毅力號的採樣管怎麼幾乎是空的？",
+        "answer_target": "Roubion留下鑽孔與碎屑，但拍攝管內的影像和容積探針都找不到完整岩芯；尋遍周圍也沒看到脫落的整根芯。團隊因此認為較可能是岩材強度低，取芯時解體，沒有形成能留在管中的整塊。",
+        "scope": "限毅力號首個Roubion取芯。管內圖可見少數塵粒；破碎過程是據孔口、材料及管內結果推論，非直接拍攝。"
+      },
+      "b_snapshot": {
+        "id": "R40002",
+        "question": "明明把枝條泡在水裡才剪，怎麼知道斷面上的空管是不是原本就有？",
+        "answer_target": "比較剪切前後的影像，帶張力時即使在水下取樣，截面也可能多出充氣導管，增加量因物種與當時狀態而異。",
+        "scope": "可判斷剪切產生額外栓塞，不能據此說所有實驗測得的空管全是剪出來的。"
+      }
+    },
+    {
+      "a": "S42-004",
+      "b": "E17002",
+      "reason": "冰河冰桌熱收支不同於在鏟中結團影響交付；這裡比較較少冰的料能進艙後仍測到水冰。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-004",
+        "question": "火星鏟裡明明有含冰的土，為什麼換一鏟冰較少的反而驗得到水冰？",
+        "answer_target": "鳳凰號頭幾次取的冰土看似在鏟內結成團，翻鏟不易送入分析器。團隊推測交付時日照與黏結有關。後來刮取含冰較少、較能落下的表面材料，這回儀器收到了樣本，仍驗出水冰。",
+        "scope": "限鳳凰號具體交付，未直接看見微觀黏結過程。另一次艙門未全開是不同故障。"
+      },
+      "b_snapshot": {
+        "id": "E17002",
+        "question": "石頭放在冰河上，為什麼小塊可能陷下去，大塊卻留下冰腳？",
+        "answer_target": "小石塊可把較大外表面收到的熱集中傳入接觸區；較大岩石建立溫度梯度、表面較暖，改變淨長波與空氣熱交換，使傳到冰面的熱反而較少。",
+        "scope": "限溫帶冰河的觀測與準靜態熱收支模型；尺寸、形狀及天氣一起控制分界。冰腳變高是相對周圍融冰，石頭本身仍可下降；不是重物使冰向上生長。"
+      }
+    },
+    {
+      "a": "S42-004",
+      "b": "S42-009",
+      "reason": "同一任務與團隊，但取樣交付是否成功不同於移石後冰土界面是否起伏。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-004",
+        "question": "火星鏟裡明明有含冰的土，為什麼換一鏟冰較少的反而驗得到水冰？",
+        "answer_target": "鳳凰號頭幾次取的冰土看似在鏟內結成團，翻鏟不易送入分析器。團隊推測交付時日照與黏結有關。後來刮取含冰較少、較能落下的表面材料，這回儀器收到了樣本，仍驗出水冰。",
+        "scope": "限鳳凰號具體交付，未直接看見微觀黏結過程。另一次艙門未全開是不同故障。"
+      },
+      "b_snapshot": {
+        "id": "S42-009",
+        "question": "把火星地上的石頭移開，原先蓋在下面的冰土界面怎麼反而低了一點？",
+        "answer_target": "鳳凰號移開石頭、挖原位置下方的土，所見冰土界面比旁邊略低。這與事前的熱模型預測相符：具有較大熱慣性的石頭可把熱傳給周圍土壤，改變淺部冰能穩定存在的位置；光憑遮陰不足以猜出冰面高低。",
+        "scope": "限Neverland溝槽該石塊及附近界面。量測是移石後的形狀，熱效應為相符解釋，不是直接看見冰層歷時下移。"
+      }
+    },
+    {
+      "a": "S42-005",
+      "b": "P116",
+      "reason": "舊題限定日常空氣的近似；火星低壓CO₂把分子振動鬆弛轉折移入可聽頻帶，有旋翼與雷射兩套現場估速。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-005",
+        "question": "在火星上，為什麼探測車量出的低音和高音竟有不同聲速？",
+        "answer_target": "低壓二氧化碳受到聲波快速壓縮時，分子碰撞讓振動狀態分擔能量需要時間。較慢變化時振動來得及參與，較快時跟不上，氣體對壓縮的反應不同。火星車用低頻旋翼聲的都卜勒位移與高頻雷射脈聲的傳播時間分別估速，結果與高頻較快相符。",
+        "scope": "限耶澤羅觀測的壓力、溫度與頻段。不是將兩種聲音一起從同一聲源發出賽跑；低頻估計納入風。"
+      },
+      "b_snapshot": {
+        "id": "P116",
+        "question": "高音一定比低音更早傳到耳邊嗎？",
+        "answer_target": "一般空氣條件下音高改變頻率，不等於聲速按音高增加。",
+        "scope": "日常可聽範圍的近似"
+      }
+    },
+    {
+      "a": "S42-005",
+      "b": "P117",
+      "reason": "此研究保持同一氣體，在可聽頻帶內變頻使分子振動回應不同；舊題是跨材料界面換波長。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-005",
+        "question": "在火星上，為什麼探測車量出的低音和高音竟有不同聲速？",
+        "answer_target": "低壓二氧化碳受到聲波快速壓縮時，分子碰撞讓振動狀態分擔能量需要時間。較慢變化時振動來得及參與，較快時跟不上，氣體對壓縮的反應不同。火星車用低頻旋翼聲的都卜勒位移與高頻雷射脈聲的傳播時間分別估速，結果與高頻較快相符。",
+        "scope": "限耶澤羅觀測的壓力、溫度與頻段。不是將兩種聲音一起從同一聲源發出賽跑；低頻估計納入風。"
+      },
+      "b_snapshot": {
+        "id": "P117",
+        "question": "同一個音進入另一種介質，為什麼波長可能改變？",
+        "answer_target": "頻率由振源與邊界匹配，介質聲速不同則波長改變。",
+        "scope": "穩定介面、無相對運動"
+      }
+    },
+    {
+      "a": "S42-005",
+      "b": "X40-002",
+      "reason": "筒中氣泡析出改液體有效壓縮性及敲擊共鳴；這裡是同一氣體的內部振動能否跟上聲壓變化。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-005",
+        "question": "在火星上，為什麼探測車量出的低音和高音竟有不同聲速？",
+        "answer_target": "低壓二氧化碳受到聲波快速壓縮時，分子碰撞讓振動狀態分擔能量需要時間。較慢變化時振動來得及參與，較快時跟不上，氣體對壓縮的反應不同。火星車用低頻旋翼聲的都卜勒位移與高頻雷射脈聲的傳播時間分別估速，結果與高頻較快相符。",
+        "scope": "限耶澤羅觀測的壓力、溫度與頻段。不是將兩種聲音一起從同一聲源發出賽跑；低頻估計納入風。"
+      },
+      "b_snapshot": {
+        "id": "X40-002",
+        "question": "液面沒有明顯變低，為什麼一直輕敲裝水量筒的底，音先變低、又慢慢升高？",
+        "answer_target": "從含溶解空氣的熱自來水迅速裝入高筒，會有小氣泡析出。氣泡使液柱容易被壓縮，聲速和敲底激起的縱向音都會下降。等氣泡浮走，液柱較難壓縮，同一個振動模式的頻率回升。",
+        "scope": "研究定量比較用高量筒和水，記錄水柱模式；不泛稱所有杯壁敲出的音。小泡佔比比肉眼所見水位變化更重要。"
+      }
+    },
+    {
+      "a": "S42-006",
+      "b": "P31001",
+      "reason": "地震站感到大氣波再圈火星撞坑；此案實際麥克風兩頻帶比同次風壁與粒撞，中心出現第三群。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-006",
+        "question": "火星塵旋風吹過，風噪有兩波，沙粒撞擊聲怎麼多出第三波？",
+        "answer_target": "毅力號的一次近距離遭遇中，低頻風噪兩峰對應先後掃過的旋風兩壁，中間相對平靜。高頻撞擊脈衝分三群，中間一群就在風眼附近，相機也見到中心有塵。這次顆粒分布沒有只跟著當地風的強弱走，顆粒從何處捲入仍有不同解釋。",
+        "scope": "限第215火星日這一次。碰擊可能經車體傳到麥克風，未看到每粒打在哪裡，也未證實每一種塵旋風中心都聚砂。"
+      },
+      "b_snapshot": {
+        "id": "P31001",
+        "question": "火星地面只放了一台地震儀，怎麼指給天上的相機去找新撞坑？",
+        "answer_target": "地震波和穿過大氣的波並非同時到站。大氣波還會帶動測站腳下的地面；把不同到時和地面運動的來向合起來，就能圈出搜尋範圍。再比對事件前後的軌道照片，查那個範圍內是否真的多了撞擊痕。",
+        "scope": "採2021年三次由訊號導引而找到新痕的事件；時間與方向是有誤差的反推。S1222a是另一場大震，中解析搜尋未見預期爆散區，高解析僅抽查。"
+      }
+    },
+    {
+      "a": "S42-006",
+      "b": "S42-007",
+      "reason": "風眼內顆粒是否與風峰同時抵達，是雙頻觀測；直升機飛越時則用離地高度與風應力模型分辨起塵機制。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-006",
+        "question": "火星塵旋風吹過，風噪有兩波，沙粒撞擊聲怎麼多出第三波？",
+        "answer_target": "毅力號的一次近距離遭遇中，低頻風噪兩峰對應先後掃過的旋風兩壁，中間相對平靜。高頻撞擊脈衝分三群，中間一群就在風眼附近，相機也見到中心有塵。這次顆粒分布沒有只跟著當地風的強弱走，顆粒從何處捲入仍有不同解釋。",
+        "scope": "限第215火星日這一次。碰擊可能經車體傳到麥克風，未看到每粒打在哪裡，也未證實每一種塵旋風中心都聚砂。"
+      },
+      "b_snapshot": {
+        "id": "S42-007",
+        "question": "機智號已在約五公尺高處平飛，地面怎麼有些地方還會揚塵？",
+        "answer_target": "毅力號拍到機智號平飛時，沿線有的地段揚塵、有的沒有。以該高度估算的近地風力，對部分飛段而言連一般砂粒跳動的門檻都不到。研究提出可動的低密度塵團被吹起、打散；地表是否擾動過及鬆塵多寡也會改變可見結果。",
+        "scope": "限六次飛行的影像及下洗模型；沒有直接拍到單個塵團解體，也不排除起飛或某些著陸曾帶動砂粒。"
+      }
+    },
+    {
+      "a": "S42-007",
+      "b": "E7011",
+      "reason": "原題解釋沙丘淨遷移；本題問某些下洗飛段起塵時，風力即使不足以推砂仍可能解體鬆塵團。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-007",
+        "question": "機智號已在約五公尺高處平飛，地面怎麼有些地方還會揚塵？",
+        "answer_target": "毅力號拍到機智號平飛時，沿線有的地段揚塵、有的沒有。以該高度估算的近地風力，對部分飛段而言連一般砂粒跳動的門檻都不到。研究提出可動的低密度塵團被吹起、打散；地表是否擾動過及鬆塵多寡也會改變可見結果。",
+        "scope": "限六次飛行的影像及下洗模型；沒有直接拍到單個塵團解體，也不排除起飛或某些著陸曾帶動砂粒。"
+      },
+      "b_snapshot": {
+        "id": "E7011",
+        "question": "沙丘會慢慢搬家，是整座沙丘在地上滑嗎？",
+        "answer_target": "沙粒沿迎風面跳移/滾移，到頂後在背風滑落面小崩落；顆粒循環搬運讓丘形順風移。",
+        "scope": "限具有迎風坡和滑落面的單向風沙丘簡圖；不涵蓋全部複雜風場、植被固定或複合沙丘。"
+      }
+    },
+    {
+      "a": "S42-007",
+      "b": "N013",
+      "reason": "火星表面含鐵塵的顏色不決定飛機沿程揚塵門檻與可動性。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-007",
+        "question": "機智號已在約五公尺高處平飛，地面怎麼有些地方還會揚塵？",
+        "answer_target": "毅力號拍到機智號平飛時，沿線有的地段揚塵、有的沒有。以該高度估算的近地風力，對部分飛段而言連一般砂粒跳動的門檻都不到。研究提出可動的低密度塵團被吹起、打散；地表是否擾動過及鬆塵多寡也會改變可見結果。",
+        "scope": "限六次飛行的影像及下洗模型；沒有直接拍到單個塵團解體，也不排除起飛或某些著陸曾帶動砂粒。"
+      },
+      "b_snapshot": {
+        "id": "N013",
+        "question": "火星近看有很多顏色，遠看為什麼卻一片紅？",
+        "answer_target": "含鐵物質氧化及塵埃對整體外觀的作用",
+        "scope": "火星；不採本頁有爭議的現今坡面鹽水流動句"
+      }
+    },
+    {
+      "a": "S42-008",
+      "b": "P225",
+      "reason": "電解質解離強弱不同於電解時促成不同產物的電位窗，還須看最冷電池的運轉界線。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-008",
+        "question": "火星車把二氧化碳拆出氧氣，為什麼電壓不能一直往上加？",
+        "answer_target": "MOXIE讓氧離子穿過固體電解質再形成氧氣。電壓得足以推動產氧，但另一反應也可能在陰極留下固體碳，減少可用面積。爐內溫度不完全相同，較冷的電池可用電壓窗更窄，運轉設定要把它算進去。",
+        "scope": "採MOXIE團隊的運轉邊界與七次早期火星製氧報告；未讓火星機故意積碳再測故障。"
+      },
+      "b_snapshot": {
+        "id": "P225",
+        "question": "強電解質是不是表示溶液一定很濃？",
+        "answer_target": "強弱描述離解或電離程度，濃度描述溶質總量。",
+        "scope": "同溶劑條件下辨析"
+      }
+    },
+    {
+      "a": "S42-008",
+      "b": "L007",
+      "reason": "搬運物質逆梯度不回答同一電極提升電位後競爭反應可能沉積固體碳。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-008",
+        "question": "火星車把二氧化碳拆出氧氣，為什麼電壓不能一直往上加？",
+        "answer_target": "MOXIE讓氧離子穿過固體電解質再形成氧氣。電壓得足以推動產氧，但另一反應也可能在陰極留下固體碳，減少可用面積。爐內溫度不完全相同，較冷的電池可用電壓窗更窄，運轉設定要把它算進去。",
+        "scope": "採MOXIE團隊的運轉邊界與七次早期火星製氧報告；未讓火星機故意積碳再測故障。"
+      },
+      "b_snapshot": {
+        "id": "L007",
+        "question": "細胞為什麼要花能量，把物質搬往已經很多的那一邊？",
+        "answer_target": "逆梯度維持內外差異",
+        "scope": "細胞跨膜運輸；不討論臨床電解質處置"
+      }
+    },
+    {
+      "a": "S42-009",
+      "b": "E17002",
+      "reason": "冰桌來自溫帶冰川裸露面差異消融、石頭尺度影響熱散失。火星題移開單塊石頭挖埋藏的冰土界面，檢查局部穩定深度。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-009",
+        "question": "把火星地上的石頭移開，原先蓋在下面的冰土界面怎麼反而低了一點？",
+        "answer_target": "鳳凰號移開石頭、挖原位置下方的土，所見冰土界面比旁邊略低。這與事前的熱模型預測相符：具有較大熱慣性的石頭可把熱傳給周圍土壤，改變淺部冰能穩定存在的位置；光憑遮陰不足以猜出冰面高低。",
+        "scope": "限Neverland溝槽該石塊及附近界面。量測是移石後的形狀，熱效應為相符解釋，不是直接看見冰層歷時下移。"
+      },
+      "b_snapshot": {
+        "id": "E17002",
+        "question": "石頭放在冰河上，為什麼小塊可能陷下去，大塊卻留下冰腳？",
+        "answer_target": "小石塊可把較大外表面收到的熱集中傳入接觸區；較大岩石建立溫度梯度、表面較暖，改變淨長波與空氣熱交換，使傳到冰面的熱反而較少。",
+        "scope": "限溫帶冰河的觀測與準靜態熱收支模型；尺寸、形狀及天氣一起控制分界。冰腳變高是相對周圍融冰，石頭本身仍可下降；不是重物使冰向上生長。"
+      }
+    },
+    {
+      "a": "S42-009",
+      "b": "R36007",
+      "reason": "龍宮看白天岩塊與周遭的熱圖估孔隙；火星題是把岩塊移開量地下冰界面起伏，兩者觀測及預測不同。",
+      "decision": "distinct",
+      "a_snapshot": {
+        "id": "S42-009",
+        "question": "把火星地上的石頭移開，原先蓋在下面的冰土界面怎麼反而低了一點？",
+        "answer_target": "鳳凰號移開石頭、挖原位置下方的土，所見冰土界面比旁邊略低。這與事前的熱模型預測相符：具有較大熱慣性的石頭可把熱傳給周圍土壤，改變淺部冰能穩定存在的位置；光憑遮陰不足以猜出冰面高低。",
+        "scope": "限Neverland溝槽該石塊及附近界面。量測是移石後的形狀，熱效應為相符解釋，不是直接看見冰層歷時下移。"
+      },
+      "b_snapshot": {
+        "id": "R36007",
+        "question": "龍宮布滿大石頭，怎麼多數都沒在白天的熱圖上變成冷點？",
+        "answer_target": "若巨石都像緻密岩塊，比細碎地面升溫慢，白天應有明顯冷點。把不同地方時的熱圖和可見地形對照，多數巨石的溫度卻與附近相近，少數則偏冷。研究團隊用熱慣性差異推估多孔與較緻密岩塊。",
+        "scope": "色溫並非直接量孔隙；日照、表面粗糙度及地方時都影響讀數。簡報與原刊為同一研究。"
+      }
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "method": "全3702 raw與1750未收，先搜火星／月面／水冰與過去任務，再搜反衝、差速、電解積碳、聲速與分子機制、熱慣性等；兩次結果可能重疊。核較接近的既有題及退題，沒有重收只是改成火星的沙丘或輪速幾何。",
+    "evidence": [
+      {
+        "file": ".cache/wave42-earth-scan.json",
+        "sha256": "b3a602c5a022eb7d7f885650ee15af603869058600b4202f635493ac00bb401c"
+      },
+      {
+        "file": ".cache/wave42-earth-controls.json",
+        "sha256": "14d0032f86ec0044f01771aa544c6fb360f5c25ad351f75e0f5685b70a899192"
+      }
+    ]
+  },
+  "source_identity": [
+    {
+      "source_id": "S42-S001",
+      "doi": "10.1007/s11214-022-00941-z",
+      "body_url": "https://elib.dlr.de/191936/2/Spohn_SSR_2022.pdf",
+      "version": "2022正式論文，DLR典藏PDF。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    },
+    {
+      "source_id": "S42-S002",
+      "doi": "10.1109/AERO53065.2022.9843634",
+      "body_url": "https://robotics.jpl.nasa.gov/media/documents/fmwi-rankin-2022-0225-final.pdf",
+      "version": "2022會議論文，JPL研究者保存的PDF。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    },
+    {
+      "source_id": "S42-S003",
+      "doi": "10.1029/2022JE007613",
+      "body_url": "https://ntrs.nasa.gov/api/citations/20230016431/downloads/Sun%20et%20al%202023%20JGR%20Planets%20Jezero%20Campaign.pdf",
+      "version": "2023出版版，NASA NTRS PDF。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    },
+    {
+      "source_id": "S42-S004",
+      "doi": "10.1109/AERO.2009.4839306",
+      "body_url": "https://robotics.jpl.nasa.gov/media/documents/f1695_2.pdf",
+      "version": "2009會議論文，JPL團隊手稿PDF。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    },
+    {
+      "source_id": "S42-S005",
+      "doi": "10.1038/s41586-022-04679-0",
+      "body_url": "https://www.nature.com/articles/s41586-022-04679-0.pdf",
+      "version": "2022出版者正式PDF。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    },
+    {
+      "source_id": "S42-S006",
+      "doi": "10.1038/s41467-022-35100-z",
+      "body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9747922/fullTextXML",
+      "version": "2022正式研究，Europe PMC原文XML。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    },
+    {
+      "source_id": "S42-S007",
+      "doi": "10.1029/2022JE007605",
+      "body_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022JE007605",
+      "version": "2022正式卷期HTML，以外站Web工具定位。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    },
+    {
+      "source_id": "S42-S008",
+      "doi": "10.1126/sciadv.abp8636",
+      "body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9432831/fullTextXML",
+      "version": "2022正式研究，Europe PMC原文XML。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    },
+    {
+      "source_id": "S42-S009",
+      "doi": "10.1029/2009JE003408",
+      "body_url": "https://robotics.jpl.nasa.gov/media/documents/2009JE003408.pdf",
+      "version": "2009出版版，JPL研究者保存的PDF。",
+      "old_exact_matches": [],
+      "relationship": "典藏原文與正式論文同一工作。S004/S009同一Phoenix任務、部分取樣事件相同；S005/S006皆用SuperCam麥克風，採用資料事件與測量問題不同。S005/S007共同研究機智號但讀數是聲速與起塵，不能視為對同一結果的獨立複驗。"
+    }
+  ],
+  "source_readings": [
+    {
+      "id": "S42-S001",
+      "read_via": "以指定編輯UA取得PDF，逐頁抽字查讀指定正文與圖說。",
+      "locator": "PDF p.6錘擊與殘餘反衝，p.17圖8；pp.22–26側壓、改壓旁土與後退；p.39 §6.3。",
+      "cache": {
+        "file": ".cache/wave42-earth-mole.pdf",
+        "sha256": "85084fe222e27c31b0fa3f2079fbc1df3848feba4a39775abb6aa943b80e8427",
+        "text_file": ".cache/wave42-earth-mole.txt",
+        "text_sha256": "f9dde997bc2035ed777be33b296d22ebf8f94789c21109d682d6a1f99d45b791"
+      }
+    },
+    {
+      "id": "S42-S002",
+      "read_via": "以指定編輯UA取得PDF，逐頁抽字查讀指定正文與圖說。",
+      "locator": "PDF p.2地面輪壽命試驗及車輪分區；pp.8–9追蹤斷裂的輪齒，p.9圖17–19側面與俯視。",
+      "cache": {
+        "file": ".cache/wave42-earth-wheel.pdf",
+        "sha256": "af30d406ac68c5d0cd07b32d1fc53e00f70bc19b2f2ec92da968f6844b3d6dae",
+        "text_file": ".cache/wave42-earth-wheel.txt",
+        "text_sha256": "b3c6517fdcab17400725eb3e6871f2334d20e76be7bafdf31e3f4fcd2c8de494"
+      }
+    },
+    {
+      "id": "S42-S003",
+      "read_via": "以指定編輯UA取得PDF，逐頁抽字查讀指定正文與圖說。",
+      "locator": "PDF p.28圖11c–e；p.38第一個採樣結果與空管、尋找遺落岩芯段；p.40另一個較堅實鑽點的斷口比較。",
+      "cache": {
+        "file": ".cache/wave42-earth-sample.pdf",
+        "sha256": "cc21ccdfe84db88b4d72b15d07449d5ca371340f8eb33ba5809428dbfa404daf",
+        "text_file": ".cache/wave42-earth-sample.txt",
+        "text_sha256": "3a0f3bb0cd8a68991cf08457fc867346cdb531c9e921e148135d785d8d6f93f4"
+      }
+    },
+    {
+      "id": "S42-S004",
+      "read_via": "以指定編輯UA取得PDF，逐頁抽字查讀指定正文與圖說。",
+      "locator": "PDF p.8 Icy-Soil Sample Acquisition，前兩次、第三次刮取及另一次儀器蓋失敗的區分。",
+      "cache": {
+        "file": ".cache/wave42-earth-arm.pdf",
+        "sha256": "8c6e0ef0a8060be5a9d7987aba9c9e23e1dd7155a83a82e5fb78bcfe221e325f",
+        "text_file": ".cache/wave42-earth-arm.txt",
+        "text_sha256": "ab9eb39f0458a3a8e871a0f0a062a3bc9c6bd795b5e77883a19a463f580c5dca"
+      }
+    },
+    {
+      "id": "S42-S005",
+      "read_via": "以指定編輯UA取得PDF，逐頁抽字查讀指定正文與圖說。",
+      "locator": "PDF p.3 Speed of sound on Mars、p.4圖3；pp.8–9振動自由度及頻率依賴。",
+      "cache": {
+        "file": ".cache/wave42-earth-sound.pdf",
+        "sha256": "b14c34fcebc06f1c456b85c7c729d2f7b5605ae4c143feccd8e860f73bb6d34c",
+        "text_file": ".cache/wave42-earth-sound.txt",
+        "text_sha256": "879f1463c528933d532bb46276722233e7f9d481e487b695dcc0c2aae09ca868"
+      }
+    },
+    {
+      "id": "S42-S006",
+      "read_via": "指定編輯UA取得Europe PMC正式論文XML，查讀上述方法、結果與圖說。",
+      "locator": "Results：Multisensorial recordings of a dust devil encounter、Quantifying the vortex grain loading，圖1、3、5及方法中的碰擊計數。",
+      "cache": {
+        "file": ".cache/wave42-earth-devil.xml",
+        "sha256": "417ff73f751a14b67eddb5403542809195be5c990a8c35318aae1c724bfa7c5e",
+        "text_file": ".cache/wave42-earth-devil.txt",
+        "text_sha256": "2452202ae1ba9388a3d31a2cc4a022e6c0caee39dcffd1d99d8749f43772d286"
+      }
+    },
+    {
+      "id": "S42-S007",
+      "read_via": "作者稿CDN連線DNS失敗，改以Web工具讀出版者原文段落，快取為該次工具實際返回的文字節錄。",
+      "locator": "刊方 §§4.2–4.4 與 §5，Web L490–508、524–527，尤其飛越時有／無起塵、著陸前期擾動對照與模型的不確定。",
+      "cache": {
+        "file": ".cache/wave42-earth-heli-web.txt",
+        "sha256": "6fbdf8029ea32b2be3abb54f3bae6a8981652e71dd07c3abcfc68a206dd3196c",
+        "text_file": ".cache/wave42-earth-heli-web.txt",
+        "text_sha256": "6fbdf8029ea32b2be3abb54f3bae6a8981652e71dd07c3abcfc68a206dd3196c"
+      }
+    },
+    {
+      "id": "S42-S008",
+      "read_via": "指定編輯UA取得Europe PMC正式論文XML，查讀上述方法、結果與圖說。",
+      "locator": "What is the Mars Oxygen In Situ Resource Utilization Experiment? 圖1及3，Nernst potentials、溫度梯度與 coking 三段；MOXIE operations。",
+      "cache": {
+        "file": ".cache/wave42-earth-moxie.xml",
+        "sha256": "b29ffb612f8b443752b5bff26c9a755b2f2e5c2c845e99938030fc3bec37b3e6",
+        "text_file": ".cache/wave42-earth-moxie.txt",
+        "text_sha256": "e61148793f504ae8a5fe4e1c1ad62e635e47352dd7cea7438397060f0b1ee633"
+      }
+    },
+    {
+      "id": "S42-S009",
+      "read_via": "以指定編輯UA取得PDF，逐頁抽字查讀指定正文與圖說。",
+      "locator": "PDF p.12 §5末段[21]，Neverland trench、移走Headless岩石後測冰土界面；p.14圖11的冰樣交付對照。",
+      "cache": {
+        "file": ".cache/wave42-earth-phoenix.pdf",
+        "sha256": "f071832a0df3149a0bc0c485a6835f0d063cf7435ee4a222880b17b66848518c",
+        "text_file": ".cache/wave42-earth-phoenix.txt",
+        "text_sha256": "ca0a33613f9ac03cda1b011c89ce3c2e6325a7ba3456ab5432089a2b870c0b34"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave42-earth-fetch.json",
+      "sha256": "8065c95c7c19ff24378ab493214bb1e4a84d0ca36bea82c2f275345840778570"
+    },
+    {
+      "file": ".cache/wave42-earth-extra.json",
+      "sha256": "0cfcb74d6b638b4864d4fc8e81dfef321a13a1d8ee6ebd91ddfacd41ebe9a585"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "source_id": "S42-S007",
+      "attempt": "作者稿CDN經指定UA取檔DNS失敗；NASA索引沒有可下載正文。",
+      "result": "改讀Wiley正式全文的指定段，保留工具實際返回節錄。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave42-earth-figs.jpg",
+      "sha256": "0d0a834e38b40c0fec81eab8fde653b49c4792ba8db94cf6d7e366fc132088b4",
+      "read_scope": "S001 PDF p.17圖8，S002 p.9圖17–19，S003 p.28圖11，S005 p.4圖3。沒有目讀補充影片或播放火星原始聲軌。"
+    }
+  ],
+  "limits": [
+    "六份有效PDF、兩份Europe PMC原文及一份出版者正式全文的指定段。未重跑NASA設備、熱模型、降塵模型、分子鬆弛擬合或聲音辨識。",
+    "熱界面位移與塵團解體均有推論成分。S42-007、008、009維持素材，可於其他案補對照。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W42S-T01",
+      "body_seconds": 64,
+      "chapter_seconds": [
+        29,
+        35
+      ],
+      "core_seconds": {
+        "S42-001": 64
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_AFTER_ROOT_TIMED_READ",
+      "offline_narration_seconds": 56.139
+    },
+    {
+      "id": "W42S-T02",
+      "body_seconds": 69,
+      "chapter_seconds": [
+        32,
+        37
+      ],
+      "core_seconds": {
+        "S42-003": 32,
+        "S42-004": 37
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W42S-T03",
+      "body_seconds": 63,
+      "chapter_seconds": [
+        31,
+        32
+      ],
+      "core_seconds": {
+        "S42-005": 63
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W42S-T04",
+      "body_seconds": 59,
+      "chapter_seconds": [
+        27,
+        32
+      ],
+      "core_seconds": {
+        "S42-006": 59
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W42S-T05",
+      "body_seconds": 60,
+      "chapter_seconds": [
+        32,
+        28
+      ],
+      "core_seconds": {
+        "S42-002": 60
+      },
+      "max_beat_seconds": 16,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "utf8_lf": true,
+    "string_rstrip": true,
+    "old_ids_resolve": true,
+    "per_core_caps": true
+  },
+  "revision_history": [
+    {
+      "before_files": [
+        {
+          "file": "batches/wave42-earth.json",
+          "sha256": "0d74565e77114e1eb30c21d883babee24f221c0291e8544305729f3d218d2f40"
+        },
+        {
+          "file": "reviews/wave42-earth-themes.json",
+          "sha256": "22e553c4f1f3da0e861a24a89279a5c5a0e36bbd39d62fc73f4bc81e45e7aaf5"
+        },
+        {
+          "file": "reviews/wave42-earth-author.json",
+          "sha256": "43e552bec22e940131d53d2894f935a8fbfc3f60b67fcc0cf6df2887133f347e"
+        }
+      ],
+      "final_batch_sha256": "795524d9595b991c02b26f5c05aad43fea2677bbd7f0a605b68c2d7b0c4219f6",
+      "final_themes_sha256": "399a1c2a86ea42f25a920b23c5924271613eec4115876cb3bca422e64bf2784e",
+      "changes": [
+        "S42-003與S42-S003改為拍攝管內的影像，未將CacheCam放入試管；對照容積探針。",
+        "S42-009題名改移開石塊；兩篇任務文對推拉描述有異，原核只需要原位置已露出。",
+        "T01從66秒修為64秒，正文含主代理離線旁白56.139秒與圖讀空間。"
+      ]
+    }
+  ]
+}

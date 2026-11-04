@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCK_PENDING_INDEPENDENT_REVIEW",
+  "batch_path": "batches/wave5-textiles-paper.json",
+  "theme_path": "reviews/wave5-textiles-themes.json",
+  "scope": "紡織結構、衣物整理、紙張與印刷材料的題級研究；不含操作配方、危險DIY、產品推薦或影片逐句查核。",
+  "baseline": {
+    "raw_records": 2790,
+    "selected_count": 2449,
+    "root_reported_head": "79cc131ee",
+    "note": "根代理已凍結舊庫；作者不改任何舊raw或中央決策。"
+  },
+  "counts": {
+    "candidates": 23,
+    "sources_read": 19,
+    "sources_used_only_for_not_added": 2,
+    "not_added": 26,
+    "theme_proposals": 3
+  },
+  "selection_method": "先檢索當期2790 raw的問題、研究目標與機制鍵，首輪119命中逐列閱讀；再以捻轉、針織、起球、染色、印刷、纖維素、酸老化、變色與黏滑等聚焦查33命中及相關H/P題。沒有宣稱逐題語義重讀2790筆。每候選比新答案，不以換衣物、針法、顏色或整理劑名稱拆題。方向50–80不是配額，研究後收斂23題。",
+  "source_reading": "19來源均實讀所列正文範圍或原始研究圖說；17來源支持候選、2來源只支援not_added。沒有播放論文補充影片，沒有實作實驗。讀取範圍不是整篇都讀完；逐source列出的章節為準。NCSU部分長頁/PDF後續讀取逾時，CottonWorks正文與Woolmark大型教材未成功讀到所需段，相關題未採。",
+  "rights": "只留來源連結、精確定位及原創短研究摘要；未複製教材習題、研究圖或章節全文。",
+  "known_pairs": [
+    {
+      "ids": [
+        "X5001",
+        "P008"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "舊題是給定正向力提高摩擦上限；新題要解釋受拉螺旋幾何本身如何產生接觸正向力並傳遞載荷，不只換物件。"
+    },
+    {
+      "ids": [
+        "X5002",
+        "X5004"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "面內拉伸由線圈展開與接觸幾何控制；無載捲曲需三維曲率與力矩，問題與邊界條件不同。"
+    },
+    {
+      "ids": [
+        "X5002",
+        "D2197"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "舊紙巾取向/起皺，各向異性只是表面相似；新題保留線圈幾何，針法方向比較不另拆。"
+    },
+    {
+      "ids": [
+        "X5003",
+        "H3090",
+        "P009"
+      ],
+      "proposal": "review_boundary",
+      "reason": "新題採線圈接觸摩擦造成的加卸載回圈，區別聚合物時間重排。若覆核認為僅摩擦方向例子不足新核心可併舊題，不保數量。"
+    },
+    {
+      "ids": [
+        "X5005",
+        "H3060",
+        "LEG-T07"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "脫圈是釋放拓撲約束後逐圈滑出，不是裂尖應力集中導致每條纖維逐次斷裂。預印本範圍須保留。"
+    },
+    {
+      "ids": [
+        "X5007",
+        "X5051"
+      ],
+      "proposal": "already_not_added",
+      "reason": "氈縮與抗氈縮表面處理屬同一交鎖機制正反條件。"
+    },
+    {
+      "ids": [
+        "X5009",
+        "H3026"
+      ],
+      "proposal": "review_boundary",
+      "reason": "棉布設定平整/摺線與之後恢復有條件比較，但同為交聯限制永久滑移。請獨立覆核是否只保留為H3026案例；本批未計各整理劑。"
+    },
+    {
+      "ids": [
+        "X5010",
+        "X5011"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "歷史整理劑留氯受熱產酸是損傷觸發鏈；紙張題是酸性老化產物被留住的回饋，兩者不只更換纖維名稱。"
+    },
+    {
+      "ids": [
+        "X5011",
+        "H3030"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "舊題易斷主鏈提供可分解路徑；新題核心是紙自身產酸及封閉留存加速，不拆一題泛講水解。"
+    },
+    {
+      "ids": [
+        "X5012",
+        "X5050"
+      ],
+      "proposal": "already_not_added",
+      "reason": "鐵媒染與鐵膽墨的金屬/酸促損例子合在同核心，不把材質差異計數。"
+    },
+    {
+      "ids": [
+        "X5013",
+        "X5043"
+      ],
+      "proposal": "already_not_added",
+      "reason": "ASA水解與反應染料固著競爭採同類反應分流，不以防水用途再加核心。"
+    },
+    {
+      "ids": [
+        "X5014",
+        "X5015"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "前者氧化還原切換溶解性以送入；後者空間上表層染色被機械移除，不需要色團被破壞。"
+    },
+    {
+      "ids": [
+        "X5017",
+        "E2032",
+        "P280"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "感熱紙以熔融接觸啟動化學顯色；碳粉為附著，滴定指示劑舊核心為終點/當量點匹配。"
+    },
+    {
+      "ids": [
+        "X5017",
+        "X5018"
+      ],
+      "proposal": "propose_distinct",
+      "reason": "第二題新增特定長鏈顯色劑的分離結晶與熱歷程可重寫設計；不把所有感熱紙當可重寫。"
+    },
+    {
+      "ids": [
+        "X5019",
+        "X5020",
+        "X5021"
+      ],
+      "proposal": "review_boundary",
+      "reason": "回拉前色／未吸收水阻墨是不同事件；X5021是塗層形成時的水路與膠乳分布，雖為X5019的上游條件，應由覆核判是否足夠獨立。"
+    },
+    {
+      "ids": [
+        "X5022",
+        "H3030",
+        "D2198"
+      ],
+      "proposal": "propose_distinct_with_evidence_limit",
+      "reason": "暫時濕強連結在浸水後失效，不是纖維素主鏈分解，也不只分類纖維與接合斷裂；但微觀鍵結為論文作者解釋，需要進稿補核。"
+    },
+    {
+      "ids": [
+        "X5023",
+        "H3084"
+      ],
+      "proposal": "review_boundary",
+      "reason": "只談承載色料的介質粉化造成外觀變淡，不是染料光漂白；請按舊題實際光化學範圍再比，不憑相似褪色詞合併。"
+    }
+  ],
+  "thin_or_uncertain_topics": [
+    "X5010僅歷史含氮整理系統的40–65秒片段，不獨立長片。",
+    "X5003與X5009接近舊基礎核心，已主動交覆核判合。",
+    "X5021的膠乳分布因果為研究作者解釋，非本次逐粒追蹤。",
+    "X5022只有題級前提與作者機制解釋；若覆核認為不足應暫緩，未選入三影片。"
+  ],
+  "theme_timing": [
+    {
+      "id": "W5X-T01",
+      "seconds": 350,
+      "chapter_count": 4,
+      "per_candidate_seconds": {
+        "X5001": 80,
+        "X5002": 100,
+        "X5004": 80,
+        "X5005": 90
+      },
+      "opening_and_recap_included": true,
+      "status": "BUDGET_ARITHMETIC_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W5X-T02",
+      "seconds": 180,
+      "chapter_count": 2,
+      "per_candidate_seconds": {
+        "X5017": 90,
+        "X5018": 90
+      },
+      "opening_and_recap_included": true,
+      "status": "BUDGET_ARITHMETIC_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W5X-T03",
+      "seconds": 240,
+      "chapter_count": 3,
+      "per_candidate_seconds": {
+        "X5019": 95,
+        "X5020": 65,
+        "X5021": 80
+      },
+      "opening_and_recap_included": true,
+      "status": "BUDGET_ARITHMETIC_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "not_added_notes": "X5031–X5056共26筆記錄原ID、來源或閱讀缺口；未採題不進raw選題數。",
+  "limitations": [
+    "screened僅題級研究初篩，不是全劇本查核或製作許可。",
+    "所有視覺是待製作原創示意，不冒稱已量測、拍攝或觀看補充影片。",
+    "沒有危險化學處理配方、衣物洗護通則、收藏品修復教程或消費品牌判定。"
+  ],
+  "hashes": {
+    "batch_sha256": "fc6364364003eb9982ea4c3d949eed919b841b02005f6fc2feaf0389b746bd63",
+    "themes_sha256": "a9dfa6205062db4eecf30afa759a07baa1e65e7a4d0d748e9ebbd06aca5acb32"
+  }
+}

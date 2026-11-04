@@ -1,0 +1,1208 @@
+{
+  "status": "HISTORICAL_REVIEWED_PAIRS_RETRIEVAL_AUDIT",
+  "checkpoint": "checkpoint-3104.json",
+  "checkpoint_sha256": "847aa3c6592d4fea84a4376c4893128f1bcc021eae8a36e8c521f93624f22bab",
+  "pool_sha256": "85c5001e64cd510f24dc8bea7843c308cf201dd4c8c9f5716782fdbe83237e2a",
+  "semantic_input_result_sha256": "d24b6888b0ff11da69b349e9194ca094f0010de619a9f6d38178ea4c9b1ebcb7",
+  "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "2c4055b12046f11709e9df2c122e59ffbdc2f900",
+  "rules": [
+    "採3104入選快照中所有已判同核與已判不同的配對，不把其餘配對當負例。",
+    "任一方向進前10名算語意提示。詞面在快照的全部原題上重跑 similarityPairs(raw_records)，不傳別名表，以免先排除已合併的正例。",
+    "同一對只算一次。不同核也可能合理地被檢索出來；僅供人判讀，沒有自動合併。"
+  ],
+  "results": {
+    "same_core": {
+      "compared": 146,
+      "counts": {
+        "both": 40,
+        "semantic_only": 48,
+        "lexical_only": 9,
+        "neither": 49
+      },
+      "pairs": [
+        {
+          "a": "P041",
+          "b": "P040",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "P097",
+          "b": "P096",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P157",
+          "b": "P156",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P181",
+          "b": "P117",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "P116",
+          "b": "P310",
+          "a_to_b": null,
+          "b_to_a": 3,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "P198",
+          "b": "P216",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P252",
+          "b": "P250",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "P212",
+          "b": "P211",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P085",
+          "b": "P084",
+          "a_to_b": 2,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P019",
+          "b": "P018",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P021",
+          "b": "P018",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "P034",
+          "b": "P031",
+          "a_to_b": 3,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P142",
+          "b": "P141",
+          "a_to_b": 1,
+          "b_to_a": 2,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P144",
+          "b": "P141",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "P303",
+          "b": "P301",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P306",
+          "b": "P307",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P067",
+          "b": "N208",
+          "a_to_b": null,
+          "b_to_a": 3,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "L019",
+          "b": "P250",
+          "a_to_b": 1,
+          "b_to_a": 3,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "L024",
+          "b": "P251",
+          "a_to_b": 2,
+          "b_to_a": 2,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "L135",
+          "b": "P074",
+          "a_to_b": 9,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "L018",
+          "b": "L013",
+          "a_to_b": 2,
+          "b_to_a": 8,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "L110",
+          "b": "L109",
+          "a_to_b": 1,
+          "b_to_a": 5,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "L155",
+          "b": "L152",
+          "a_to_b": 10,
+          "b_to_a": 6,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "L179",
+          "b": "L176",
+          "a_to_b": 1,
+          "b_to_a": 5,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "L183",
+          "b": "L182",
+          "a_to_b": 2,
+          "b_to_a": 3,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "L232",
+          "b": "L231",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "N098",
+          "b": "L097",
+          "a_to_b": 3,
+          "b_to_a": 4,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "N219",
+          "b": "P234",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "N042",
+          "b": "N003",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "P158",
+          "b": "P156",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "P035",
+          "b": "P031",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "LEG-S46",
+          "b": "P236",
+          "a_to_b": 1,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "M2007",
+          "b": "M2005",
+          "a_to_b": 2,
+          "b_to_a": 3,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "M2062",
+          "b": "LEG-S12",
+          "a_to_b": 2,
+          "b_to_a": 2,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2039",
+          "b": "E2038",
+          "a_to_b": 4,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "E2055",
+          "b": "E2048",
+          "a_to_b": 5,
+          "b_to_a": 3,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "E2033",
+          "b": "E2030",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "E2102",
+          "b": "E2101",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "E2023",
+          "b": "E2021",
+          "a_to_b": 1,
+          "b_to_a": 3,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "E2042",
+          "b": "E2041",
+          "a_to_b": 1,
+          "b_to_a": 2,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2045",
+          "b": "E2047",
+          "a_to_b": 6,
+          "b_to_a": 4,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2050",
+          "b": "E2048",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2060",
+          "b": "E2061",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2066",
+          "b": "E2064",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2072",
+          "b": "E2071",
+          "a_to_b": 8,
+          "b_to_a": 2,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2079",
+          "b": "E2078",
+          "a_to_b": null,
+          "b_to_a": 9,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2130",
+          "b": "E2129",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2121",
+          "b": "E2119",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2116",
+          "b": "P024",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "X2002",
+          "b": "N287",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "X2005",
+          "b": "N288",
+          "a_to_b": 1,
+          "b_to_a": 2,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "M2060",
+          "b": "M2004",
+          "a_to_b": 2,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2152",
+          "b": "E2151",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "E2162",
+          "b": "E2161",
+          "a_to_b": 5,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2166",
+          "b": "E2165",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2184",
+          "b": "E2183",
+          "a_to_b": 3,
+          "b_to_a": 2,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "E2189",
+          "b": "E2190",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2199",
+          "b": "E2200",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2215",
+          "b": "E2214",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2228",
+          "b": "E2227",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2148",
+          "b": "E2146",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2147",
+          "b": "E2146",
+          "a_to_b": 2,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2206",
+          "b": "E2205",
+          "a_to_b": null,
+          "b_to_a": 3,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "B2073",
+          "b": "L191",
+          "a_to_b": null,
+          "b_to_a": 6,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "C2029",
+          "b": "L326",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "B2051",
+          "b": "B2050",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "B2129",
+          "b": "B2120",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "B2235",
+          "b": "B2234",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "B2201",
+          "b": "B2059",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "B2289",
+          "b": "C2032",
+          "a_to_b": 8,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "X2047",
+          "b": "M2077",
+          "a_to_b": null,
+          "b_to_a": 10,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "X2051",
+          "b": "N073",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "X2057",
+          "b": "N068",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "D2005",
+          "b": "D2004",
+          "a_to_b": 4,
+          "b_to_a": 4,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "D2150",
+          "b": "D2149",
+          "a_to_b": 1,
+          "b_to_a": 2,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "B2299",
+          "b": "P311",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "D2130",
+          "b": "P042",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "D2037",
+          "b": "P242",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2028",
+          "b": "E2027",
+          "a_to_b": 2,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2029",
+          "b": "E2020",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2097",
+          "b": "E2095",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2213",
+          "b": "E2282",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "O3046",
+          "b": "O3001",
+          "a_to_b": 2,
+          "b_to_a": 2,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "O3052",
+          "b": "O3014",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "O3045",
+          "b": "O3044",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "O3068",
+          "b": "P049",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "O3019",
+          "b": "E2203",
+          "a_to_b": 4,
+          "b_to_a": 3,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "L042",
+          "b": "L041",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "L293",
+          "b": "L291",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "P150",
+          "b": "P149",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "E2106",
+          "b": "E2105",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "I3028",
+          "b": "I3027",
+          "a_to_b": 4,
+          "b_to_a": 6,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3041",
+          "b": "I3034",
+          "a_to_b": 2,
+          "b_to_a": 2,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3066",
+          "b": "I3062",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "I3090",
+          "b": "I3089",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3008",
+          "b": "I3006",
+          "a_to_b": 3,
+          "b_to_a": 2,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3022",
+          "b": "I3021",
+          "a_to_b": 5,
+          "b_to_a": 6,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3025",
+          "b": "I3024",
+          "a_to_b": 7,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3037",
+          "b": "I3036",
+          "a_to_b": 1,
+          "b_to_a": 2,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3052",
+          "b": "I3051",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3063",
+          "b": "I3062",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "I3093",
+          "b": "I3092",
+          "a_to_b": 4,
+          "b_to_a": 7,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "V3008",
+          "b": "V3042",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "V3037",
+          "b": "V3036",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "V3072",
+          "b": "V3070",
+          "a_to_b": null,
+          "b_to_a": 9,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "V3079",
+          "b": "V3075",
+          "a_to_b": 4,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "V3082",
+          "b": "V3084",
+          "a_to_b": 6,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "V3092",
+          "b": "LEG-S55",
+          "a_to_b": null,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "H3012",
+          "b": "L055",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "H3013",
+          "b": "L020",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "H3044",
+          "b": "H3031",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "H3062",
+          "b": "LEG-T07",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "H3069",
+          "b": "N073",
+          "a_to_b": null,
+          "b_to_a": 10,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "F4004",
+          "b": "F4003",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "F4018",
+          "b": "D2025",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "F4020",
+          "b": "D2200",
+          "a_to_b": 1,
+          "b_to_a": 3,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "U4010",
+          "b": "L247",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "A5013",
+          "b": "V3012",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "X5009",
+          "b": "H3026",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "M5008",
+          "b": "M5004",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "M5012",
+          "b": "I3036",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "I8013",
+          "b": "I3039",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "U8017",
+          "b": "P257",
+          "a_to_b": 2,
+          "b_to_a": 7,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "R8001",
+          "b": "LEG-S07",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "R8002",
+          "b": "LEG-S18",
+          "a_to_b": 3,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "R8003",
+          "b": "LEG-S21",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "R8004",
+          "b": "LEG-S23",
+          "a_to_b": 1,
+          "b_to_a": 2,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "R8005",
+          "b": "LEG-S80",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "R8006",
+          "b": "LEG-S83",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "H10005",
+          "b": "L003",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "F10004",
+          "b": "F10003",
+          "a_to_b": 6,
+          "b_to_a": 6,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "R10001",
+          "b": "LEG-A20",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "R10002",
+          "b": "LEG-A25",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "R10003",
+          "b": "LEG-A35",
+          "a_to_b": 2,
+          "b_to_a": 2,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "E11012",
+          "b": "E7006",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "A12005",
+          "b": "P164",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "E2049",
+          "b": "E2003",
+          "a_to_b": 3,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "E2026",
+          "b": "E2024",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": true,
+          "result": "lexical_only"
+        },
+        {
+          "a": "P131",
+          "b": "P129",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "P20007",
+          "b": "O7018",
+          "a_to_b": 1,
+          "b_to_a": 1,
+          "lexical": true,
+          "result": "both"
+        },
+        {
+          "a": "P22001",
+          "b": "I12008",
+          "a_to_b": 2,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "semantic_only"
+        },
+        {
+          "a": "R22005",
+          "b": "C2017",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "R24005",
+          "b": "C2018",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "A25003",
+          "b": "P22002",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "A26003",
+          "b": "V3007",
+          "a_to_b": null,
+          "b_to_a": null,
+          "lexical": false,
+          "result": "neither"
+        },
+        {
+          "a": "R26001",
+          "b": "M10002",
+          "a_to_b": 2,
+          "b_to_a": 1,
+          "lexical": false,
+          "result": "semantic_only"
+        }
+      ]
+    },
+    "different_core": {
+      "compared": 2332,
+      "counts": {
+        "both": 24,
+        "semantic_only": 1343,
+        "lexical_only": 5,
+        "neither": 960
+      }
+    }
+  },
+  "limits": "這是已判配對的回溯，不是無偏抽樣；不能估全庫精確率或召回率。保留舊編輯處置，未依排名回寫核心。",
+  "raw_lexical_pairs": 520,
+  "lexical_engine_file": "tools/video/so-thats-why/pool/core.mjs",
+  "lexical_engine_sha256": "6fe4bac7733a9b6844f533ddc8b764348be940890c837cc62b827274a8e60340"
+}

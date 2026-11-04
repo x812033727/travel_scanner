@@ -1,0 +1,461 @@
+{
+  "review_id": "wave5-life-reviews-media-20261101",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "root",
+  "status": "CORRECTIONS_RESOLVED_TOPIC_LEVEL_WITH_TWO_MERGES",
+  "production_ready": false,
+  "batch_path": "batches/wave5-digital-media.json",
+  "batch_sha256": "91546689aa86daeb66e1fe3e992f4f72724f590f2467eb4debe4d91f7fe637a7",
+  "theme_path": "reviews/wave5-media-themes.json",
+  "theme_sha256": "195e7aa767691437d87b0b01d1305c2e039c5e856ad362d3e5d749d81c1777e2",
+  "author_receipt_path": "reviews/wave5-media-author.json",
+  "author_receipt_sha256": "3ba65a168a3ee4adac7465652110da55729b85dc48a691d85346f71f3eedda6a",
+  "coverage": {
+    "new_candidates_read_individually": 19,
+    "fields": [
+      "question",
+      "answer_target",
+      "scope",
+      "mechanism_key",
+      "source_ids",
+      "source_locator",
+      "notes",
+      "editorial"
+    ],
+    "not_added_read": 12,
+    "theme_plans_read": 3,
+    "source_pages_in_batch": 9,
+    "source_pages_reopened_selected_sections": 9,
+    "old_pool_raw_count": 2790,
+    "old_pool_sha256": "0cc38944fa505841350dc53123d6b714e9781328a12d5f3389a31a69e463cd10",
+    "keyword_hits_read": 126,
+    "keyword_pattern": "壓縮|取樣|量化|殘差|預測|響度|峰值|有效值|均方|時間窗|頻率解析|色域|透明|聲道|解碼|版本|串流|封包|插值",
+    "draft_raw_count": 2895,
+    "draft_input_sha256": "9063dd7840762c45729c37ec7de26f8b15ad51e2acb31d968e863b7d05392957",
+    "semantic_neighbours_read": 95,
+    "semantic_neighbour_file_sha256": "8e4de844bf85f139ab77daecc28750864dc4c2db7e6cbbd56efd34a0f019dc2c",
+    "cross_pool_method": "Scanned question+answer_target of all2790 frozen raw records, read126 returned records, targeted read of I3036/37 and E2164 with scopes. Repeated keyword scan on2895 draft; no additional non-media wave5 hits. Read19x5 semantic targets from final locked-batch retrieval. Similarity did not decide merges.",
+    "limits": "19 topic rows read individually; nine source documents reopened only at selected sections. Not a human read of every old raw row, every external document, or every future script claim. No visual/audio audience trial, full codec conformance check, narration timing or publication approval."
+  },
+  "merges": [
+    {
+      "from": "M5008",
+      "into": "M5004",
+      "reason": "同一可逆預測＋精確殘差核心；PNG空間位元組與FLAC時間樣本作互補案例、保留雙來源及問法，不另計。"
+    },
+    {
+      "from": "M5012",
+      "into": "I3037",
+      "reason": "共同解釋內容時間順序與還原依賴順序不同；較晚項目可作較早項目的基底/參考。DTS/PTS是有效影片變體，不另計。"
+    }
+  ],
+  "excluded": [],
+  "distinct": [
+    {
+      "a": "M5003",
+      "b": "LEG-A61",
+      "reason": "逐通道裁切造成比例改變，不是重述加減色或色域存在。"
+    },
+    {
+      "a": "M5005",
+      "b": "M5007",
+      "reason": "補空間像素位置與補頻域係數/精度，資料分解不同。"
+    },
+    {
+      "a": "M5006",
+      "b": "E2195",
+      "reason": "DCT先分成空間頻率係數再選量化步階；超過一般有限碼階誤差的描述。"
+    },
+    {
+      "a": "M5009",
+      "b": "M5004",
+      "reason": "聲道可逆變換與沿相鄰樣本的預測殘差不同。"
+    },
+    {
+      "a": "M5011",
+      "b": "I3036",
+      "reason": "運動向量對齊參考區塊是新增機制，不只是內容重用/差異重建。"
+    },
+    {
+      "a": "M5013",
+      "b": "O3041",
+      "reason": "固定總尺寸下讓色度與Y用不同採樣格，與泛指空間解析度不同。"
+    },
+    {
+      "a": "M5014",
+      "b": "M2068",
+      "reason": "表頭攤銷、累積等待與單包缺口長度的可控取捨，與音訊接收落後報時不同。"
+    },
+    {
+      "a": "M5016",
+      "b": "E2197",
+      "reason": "分析窗時間/頻率定位取捨，不是提高取樣率分散量化雜訊。"
+    },
+    {
+      "a": "M5017",
+      "b": "E2164",
+      "reason": "僅在補明K頻率權重與整合模型後保留；RMS電阻發熱不含此感知加權。相同峰值不同能量只可作入口。"
+    },
+    {
+      "a": "M5018",
+      "b": "E2199",
+      "reason": "有效帶限重建的點間極值與取樣混疊造成不可分頻率不同。"
+    },
+    {
+      "a": "M5019",
+      "b": "M5017",
+      "reason": "選入/排除量測區塊與對訊號頻率加權是不同步驟。"
+    }
+  ],
+  "dispositions": [
+    {
+      "id": "M5001",
+      "disposition": "retain_after_correction",
+      "reason": "非線性編碼平均與線性光量平均不同；需修正插值空間的小節定位。"
+    },
+    {
+      "id": "M5002",
+      "disposition": "retain",
+      "reason": "alpha預乘控制透明端顏色的權重，與插值色彩空間、色域裁切不同。"
+    },
+    {
+      "id": "M5003",
+      "disposition": "retain",
+      "reason": "逐通道裁切改變比例是具體操作機制，與LEG-A61加色減色及色域存在不同。"
+    },
+    {
+      "id": "M5004",
+      "disposition": "retain",
+      "reason": "可逆預測殘差保留全部資訊，再由編碼器壓縮；保留PNG及FLAC兩個情境為同核心變體。"
+    },
+    {
+      "id": "M5005",
+      "disposition": "retain",
+      "reason": "分批補空間位置，與JPEG補係數頻帶或精度不同。"
+    },
+    {
+      "id": "M5006",
+      "disposition": "retain",
+      "reason": "DCT基底係數與逐係數量化解釋資訊在哪一步遺失；比LEG-A65泛稱有損重壓具體。"
+    },
+    {
+      "id": "M5007",
+      "disposition": "retain",
+      "reason": "頻帶與係數位元分次傳送，完成同一份表示，不是傳另一份低解析圖片。"
+    },
+    {
+      "id": "M5008",
+      "disposition": "merge",
+      "reason": "與M5004同為可逆預測加精確殘差；從空間換成時間樣本本身不足另計。"
+    },
+    {
+      "id": "M5009",
+      "disposition": "retain",
+      "reason": "mid/side可逆座標變換及奇偶恢復與前樣本預測不同。"
+    },
+    {
+      "id": "M5010",
+      "disposition": "retain",
+      "reason": "區塊表頭成本與訊號非平穩造成模型變差的雙向取捨，有別於L278碼表選擇。"
+    },
+    {
+      "id": "M5011",
+      "disposition": "retain",
+      "reason": "新增位移對齊才取殘差的機制，不能只以和I3036都存差異就合併。"
+    },
+    {
+      "id": "M5012",
+      "disposition": "merge",
+      "reason": "與I3037同核心：還原依賴順序不必等於內容時間順序；保留DTS/PTS為影片案例。"
+    },
+    {
+      "id": "M5013",
+      "disposition": "retain",
+      "reason": "同影像各通道採樣格不同，與一般解析度、眼睛感光分工、色域不同。"
+    },
+    {
+      "id": "M5014",
+      "disposition": "retain",
+      "reason": "延長一包音訊攤薄表頭，同時增加累積等待與單包丟失時間；不是只有泛稱網路延遲。"
+    },
+    {
+      "id": "M5015",
+      "disposition": "retain",
+      "reason": "後包攜帶重要前段的低碼率副本；和重傳、校驗或隨機補音不同。"
+    },
+    {
+      "id": "M5016",
+      "disposition": "retain",
+      "reason": "瞬態改短MDCT窗的時間/頻率解析取捨，未在舊庫命中相同核心；不以取樣速度題代替。"
+    },
+    {
+      "id": "M5017",
+      "disposition": "retain_after_correction",
+      "reason": "需把K權重後的均方能量與跨時間整合說清楚；只有同峰值不同持續性仍太接近E2164峰值/RMS區別。"
+    },
+    {
+      "id": "M5018",
+      "disposition": "retain",
+      "reason": "連續帶限重建在取樣點間可有極值，與混疊或量化分開；從當前響度題組移出不等於刪素材。"
+    },
+    {
+      "id": "M5019",
+      "disposition": "retain",
+      "reason": "先選入量測區塊再整合，避免靜默影響正規化；與M5017前端頻率權重不同。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "M5001",
+      "kind": "locator",
+      "issue": "§13.1題級locator稱作interpolation space，但正式標題為Component-wise Linear Interpolation；空間選擇在§13.2。",
+      "requested": "候選locator及M5-S001 reading_scope/locator修為§13.1–13.2，保留限定線性光量不是知覺中點。"
+    },
+    {
+      "id": "M5017",
+      "kind": "mechanism_and_source_alignment",
+      "issue": "目前只說權重並以同峰值稀疏/持續聲示意，未顯露與E2164峰值/RMS的新增機制；§2.1只描述響度差異。",
+      "requested": "補實讀§11.1 pp38–39；target/visual明示K頻率權重後均方能量與時間整合。不要把LUFS當人人一致感受或只把RMS換成音量用語。"
+    },
+    {
+      "id": "W5M-T01",
+      "kind": "title_spine_alignment",
+      "issue": "標題只承諾透明黑污染紅色，第一章是黑白光量平均、第三章是色域裁切；同一對顏色亦不符合章內換端點。",
+      "requested": "標題及核心問題涵蓋三類運算，明說每次固定當章輸入只改一項運算；或縮成能回扣alpha的短版。不加時數。"
+    },
+    {
+      "id": "W5M-T02",
+      "kind": "canonical_variant_mapping",
+      "issue": "M5008合併後需避免作新核心或與PNG再累加段落時間。",
+      "requested": "引用M5004 canonical時明記採M5008音訊問法/來源與已審預算；殘差章維持70秒，不再加PNG章。"
+    },
+    {
+      "id": "W5M-T03",
+      "kind": "causal_detour",
+      "issue": "真峰值章解釋點間超峰，並不直接回答同峰值為何忽大忽小；目前是三個表讀數的並列。",
+      "requested": "當期移出M5018，保留M5017的響度模型及M5019門檻，70+65=135秒，開場/結尾含章內；M5018仍保留素材。"
+    }
+  ],
+  "source_spot_checks": [
+    {
+      "source_id": "M5-S001",
+      "url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261029/",
+      "read_via": "web.run open/find primary HTML body",
+      "scope": "§13.1–13.2 component interpolation and space; §13.4 alpha; §14.1.1 clipping",
+      "finding": "13.1不是色彩空間選擇標題；13.2明列線性光量與非線性sRGB差別。"
+    },
+    {
+      "source_id": "M5-S002",
+      "url": "https://www.w3.org/TR/2025/REC-png-3-20250624/",
+      "read_via": "web.run open/find primary HTML body",
+      "scope": "§4.6.3; §7.3; §8.1; §9.1–9.2",
+      "finding": "濾波對位元組操作並可逆；Adam7分七趟補不同位置。"
+    },
+    {
+      "source_id": "M5-S003",
+      "url": "https://www.w3.org/Graphics/JPEG/itu-t81.pdf",
+      "read_via": "urllib official PDF in memory + PyMuPDF text",
+      "scope": "Annex A.3.3–A.3.4 printed27–28 / physical31–32; Annex G introduction printed119 / physical123; ancillary F.1.1 and G.1.1.1 text",
+      "finding": "DCT與量化步驟分開；漸進係數頻帶與精度有明確定義。未視覺檢查PDF圖。"
+    },
+    {
+      "source_id": "M5-S004",
+      "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+      "read_via": "web.run open/find primary RFC body",
+      "scope": "§4.1–4.4; §9.1.3 channel assignment context for probe",
+      "finding": "分塊取捨、mid/side及殘差正文支持研究方向；不是逐碼流驗證。"
+    },
+    {
+      "source_id": "M5-S005",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Video_codecs",
+      "read_via": "web.run open/find primary MDN body",
+      "scope": "Motion compensation block boundary artifacts, especially displacement then residual paragraphs",
+      "finding": "支援位移對齊後才記差異；未採來源下段對幀率知覺的概括。"
+    },
+    {
+      "source_id": "M5-S006",
+      "url": "https://www.w3.org/TR/media-source-2/",
+      "read_via": "web.run open/find primary W3C body",
+      "scope": "§2 Decode Timestamp / Presentation Timestamp definitions",
+      "finding": "DTS與PTS的相依重排前提成立；核心新舊由題目比較判斷。"
+    },
+    {
+      "source_id": "M5-S007",
+      "url": "https://www.rfc-editor.org/rfc/rfc6716.html",
+      "read_via": "web.run open/find primary RFC body",
+      "scope": "§2.1.4; §2.1.7; §4.3 transient paragraphs; §4.3.1; §4.3.4.5 time-frequency adjustment",
+      "finding": "較長封包、後包冗餘、短窗均有對應段；未採現行軟體預設或音質排行。"
+    },
+    {
+      "source_id": "M5-S008",
+      "url": "https://tech.ebu.ch/docs/tech/tech3343.pdf",
+      "read_via": "web.run open metadata; web find timed out; urllib official PDF + PyMuPDF text",
+      "scope": "§2.1 printed7; §11.1 printed38–39; §11.1.1 printed39–40; §11.2.3 printed42–43",
+      "finding": "§11.1支持K權重與均方整合；§2.1單獨不足交代此機制。PDF全文並未逐段查核。"
+    },
+    {
+      "source_id": "M5-S009",
+      "url": "https://developer.apple.com/documentation/accelerate/converting-chroma-subsampled-images",
+      "read_via": "urllib official .md body",
+      "scope": "Discussion opening through 4:2:0 dimensions; conversion buffer discussion",
+      "finding": "獨立取得官方markdown；4:2:0資訊格不是把整張Y圖縮小。未執行Swift或檢視外部圖。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "source_id": "M5-S005",
+      "note": "只採運動補償正文；後續固定幀率即可形成運動/理想幀率的敘述不當普遍生理結論。"
+    },
+    {
+      "source_id": "M5-S008",
+      "note": "廣播規範目標不等於所有平台政策；§11.1本輪經urllib官方PDF讀回，不冒稱web find成功。"
+    },
+    {
+      "source_id": "M5-S009",
+      "note": "Y在數位YCbCr語境應避免直接等同線性物理光亮度；候選目前使用明暗訊號可接受。"
+    }
+  ],
+  "local_probe_review": {
+    "script_path": "tools/video/so-thats-why/pool/media-probe.py",
+    "script_sha256": "4bc02dc2dbe02f018bfaa574ad34f569aefd893e273d9c8a16021be34bc14165",
+    "receipt_path": "reviews/wave5-media-probe.json",
+    "receipt_sha256": "a71cf14b97946275631b12259534fe76d2e1b8513a1bb4432adc5cae0c66ac90",
+    "method": "Read full generator/encode/decode/assertion script and persisted receipt. Independently read five cache files; recomputed SHA256 and byte equality; parsed native FLAC metadata lengths to locate first frame and read channel assignment nibble. Did not rerun encoder or overwrite author receipt.",
+    "status": "PASS_PERSISTED_SAMPLE_READBACK_ONLY",
+    "pcm_bytes": 192000,
+    "stereo_sample_pairs": 48000,
+    "odd_sum_pairs": 27432,
+    "pcm_sha256": "9a50ff90270ea202b903182adec7f11778873c529c07dde08c421e272d3005bf",
+    "modes": [
+      {
+        "name": "indep",
+        "flac_bytes": 45964,
+        "flac_sha256": "df576ab57bdd66c29620022b6492cdaed0854be6976ab92af6c3e0c7636b9b70",
+        "first_frame_channel_assignment": 1,
+        "decoded_bytes_equal_input": true
+      },
+      {
+        "name": "mid_side",
+        "flac_bytes": 38357,
+        "flac_sha256": "602a33a4bac34732435673f034b769fcc7177a94d9cdb020b869d8ccc32882a2",
+        "first_frame_channel_assignment": 10,
+        "decoded_bytes_equal_input": true
+      }
+    ],
+    "limits": "Single generated stereo16bit48000Hz one-second sample. Confirms stored artifacts and first frame mode plus full sample roundtrip; not all frames parsed, predictor choice verified, independent decoder implementation, format conformance, audible quality, final demo or viewer test."
+  },
+  "theme_review": [
+    {
+      "id": "W5M-T01",
+      "original_seconds": 200,
+      "per_core_seconds": {
+        "M5001": 70,
+        "M5002": 65,
+        "M5003": 65
+      },
+      "result": "timing passes; title/core alignment correction required; third chapter can be cut to135seconds if honest gamut visual unavailable"
+    },
+    {
+      "id": "W5M-T02",
+      "original_seconds": 200,
+      "per_core_seconds": {
+        "M5004_via_M5008": 70,
+        "M5009": 70,
+        "M5010": 60
+      },
+      "result": "three steps answer what data remains sufficient; canonical/variant annotation required; probe does not prove predictor illustration or optimal blocksize"
+    },
+    {
+      "id": "W5M-T03",
+      "original_seconds": 205,
+      "recommended_seconds": 135,
+      "per_core_seconds": {
+        "M5017": 70,
+        "M5019": 65
+      },
+      "result": "remove truepeak detour from current story; all remaining chapter/beat budgets fit, evidence demos still pending"
+    }
+  ],
+  "conclusion": "19 raw topics:17 distinct retainable after2 targeted source/mechanism corrections;2 merges;0 thin/false-premise exclusions. Three proposals need title/scope, canonical variant and causal trimming corrections. Source support is topic-level only; scripts, produced media and audience engagement remain unverified.",
+  "central_application_verified": false,
+  "original_status": "CHANGES_REQUIRED_TOPIC_LEVEL_NOT_SCRIPT_APPROVAL",
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "batch_sha256": "da3a0b39e5bcfa80355f81a0e86d7fd16b34da0c89a08ddf4f2a1c0c2381686a",
+    "theme_sha256": "edb5e67b1c9df20dea51462e79135277ce3ef08a7e1b6ea62e08d736f1340ba9",
+    "author_sha256": "5a5dac3cc812877cbe97128b0c6f2568ec08bcd528fa62da732f13cd22ff4d83",
+    "probe_receipt_sha256": "ee66c4fe91848433c829a53a4cd6c8112eb0f2014d8ba1c64ffabb00c1af0171",
+    "readback_scope": "Read revised M5001/M5017, M5-S001/M5-S008, all three revised themes, author receipt and rerun probe receipt. Recomputed hashes and decoded PCM equality from persisted cache artifacts. No encoder rerun by reviewer; no new full-source or script approval claim.",
+    "resolved": [
+      {
+        "id": "M5001",
+        "result": "候選及來源表均定位§13.1–13.2；原稿來源定位錯誤已修。"
+      },
+      {
+        "id": "M5017",
+        "result": "target、scope及visual明示K頻率權重→均方量/聲道合成→時間量測，§11.1 p38–39已納入且讀取方式記實。可與一般RMS區分。"
+      },
+      {
+        "id": "W5M-T01",
+        "result": "標題與核心問題涵蓋平均、透明及超界運算，未再承諾同一對端點；200秒維持，色域無誠實示意時縮135秒。"
+      },
+      {
+        "id": "W5M-T02",
+        "result": "作者企劃仍保留M5008原音訊ID作變體是可接受的；70秒殘差、70秒聲道、60秒分塊無新增PNG時間。中央映射M5004時需加音訊變體註記，本審未驗中央。"
+      },
+      {
+        "id": "W5M-T03",
+        "result": "刪M5018支線，70+65=135秒；K權重/時間能量接靜默門檻，縮版清楚且不補湊片長。"
+      },
+      {
+        "id": "probe",
+        "result": "最終收據繫結修訂batch，兩FLAC編碼hash、192000-byte PCM相等及1/10首frame模式均與前次相同。只認可此樣本。"
+      }
+    ],
+    "timing_checks": [
+      {
+        "id": "W5M-T01",
+        "seconds": 200,
+        "per_core_seconds": {
+          "M5001": 70,
+          "M5002": 65,
+          "M5003": 65
+        }
+      },
+      {
+        "id": "W5M-T02",
+        "seconds": 200,
+        "per_core_seconds": {
+          "M5004_via_M5008": 70,
+          "M5009": 70,
+          "M5010": 60
+        }
+      },
+      {
+        "id": "W5M-T03",
+        "seconds": 135,
+        "per_core_seconds": {
+          "M5017": 70,
+          "M5019": 65
+        }
+      }
+    ],
+    "central_actions_pending": [
+      {
+        "from": "M5008",
+        "into": "M5004",
+        "reason": "同一可逆預測＋精確殘差核心；PNG空間位元組與FLAC時間樣本作互補案例、保留雙來源及問法，不另計。"
+      },
+      {
+        "from": "M5012",
+        "into": "I3037",
+        "reason": "共同解釋內容時間順序與還原依賴順序不同；較晚項目可作較早項目的基底/參考。DTS/PTS是有效影片變體，不另計。"
+      }
+    ],
+    "central_variant_note": "M5004 canonical使用M5008音訊變體的已審70秒段落，variant_budget_ids應保留M5008，不能再疊加PNG同核心秒數。",
+    "remaining_author_corrections": [],
+    "central_application_verified": false,
+    "conclusion": "17 distinct retainable topics,2 merges,0 exclusions; three candidate stories200/200/135seconds. Author corrections resolved at topic/proposal level only. Production, complete scripts, audience testing and central application not approved or verified."
+  }
+}

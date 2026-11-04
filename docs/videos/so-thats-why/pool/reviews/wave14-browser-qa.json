@@ -1,0 +1,49 @@
+{
+  "tested_on": "2026-11-01T16:04:15.364Z",
+  "result": "PASS",
+  "selected": 2921,
+  "index_html_sha256": "fa87ba9b91fff3796e9e5821d1f2ab7bbf1e16c331b91bb3e7f793012893c9ee",
+  "source_sample": {
+    "id": "A14001",
+    "urls": [
+      "https://www.nature.com/articles/ncomms10986"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new animal signal mechanism question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave14-desktop.png",
+    "wave14-source-desktop.png",
+    "wave14-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "visual_review": {
+    "reviewer": "root",
+    "observations": [
+      "Desktop 1440x1000: 2921 selected, 2466 source URLs, 159 themes and 137 aliases visible; search, filters and question cards are readable without overlap.",
+      "Expanded A14001 card: question, answer, 85-125 second segment estimate, scope, payoff and visual idea visible. Source links are below the screenshot crop; URL completeness is supported by DOM assertions, not a visual claim.",
+      "Mobile 390x844: heading wraps, four statistics form two rows, links and filters remain within viewport. This screenshot does not show the lower question cards; it is not a full-page visual audit."
+    ],
+    "screenshots": [
+      {
+        "file": ".cache/wave14-desktop.png",
+        "sha256": "9a486112eaa0c4bb4d061a2c4a5e3566a76baa70b83951eb742efe7ea72e405d"
+      },
+      {
+        "file": ".cache/wave14-source-desktop.png",
+        "sha256": "0c3ea30da0e4e1919ed7b2f309b42e550049d79a9c4a59317b33e449a0ca71f7"
+      },
+      {
+        "file": ".cache/wave14-mobile.png",
+        "sha256": "4c67f03ac32660f8bc5ccbab56230371182f3cbd85bcde75a0dbc91f3d66aa58"
+      }
+    ]
+  }
+}

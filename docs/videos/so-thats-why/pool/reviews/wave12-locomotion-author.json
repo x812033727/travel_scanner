@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_NOT_INDEPENDENT_REVIEWER",
+  "status": "AUTHOR_LOCKED_PENDING_INDEPENDENT_REVIEW",
+  "batch_id": "wave12-locomotion-20261101",
+  "files": [
+    {
+      "file": "batches/wave12-locomotion.json",
+      "sha256": "ba380600fca6c8e61527610c69960c44c996d54c201be3b303e5117b7ef3ae2a"
+    },
+    {
+      "file": "reviews/wave12-locomotion-themes.json",
+      "sha256": "719f01a41b5826d908386ccabb0105fc954f9ade8bac96f6661c8fd71375b5a2"
+    }
+  ],
+  "encoding": "UTF-8 LF",
+  "counts": {
+    "candidates": 11,
+    "sources": 13,
+    "not_added": 12,
+    "themes": 4
+  },
+  "candidate_ids": [
+    "A12001",
+    "A12002",
+    "A12003",
+    "A12004",
+    "A12005",
+    "A12006",
+    "A12007",
+    "A12008",
+    "A12009",
+    "A12010",
+    "A12011"
+  ],
+  "baseline": {
+    "head": "c3a923e71205a63a439bd1e0095fafdf37354bbd",
+    "selected": 2837,
+    "raw_records": 3201,
+    "not_added": 550,
+    "themes": 122,
+    "pool_sha256": "335ad35f1299664a96d6d1b5251a4ec52153d81a9b38ba49cfe72e63a411adef",
+    "search_scope": "先對3201 raw question/answer_target/scope/mechanism_key與550 not_added全文做動物/移動/群體/接觸/波流關鍵詞搜尋；第一輪217相關raw命中，另依新方向補關鍵詞與指定舊ID逐讀。不是逐字重查全3201外部事實。",
+    "search_cache": ".cache/wave12-locomotion-old-hits.json"
+  },
+  "source_reading": {
+    "sources_with_body_read": 13,
+    "abstract_only_accepted": 0,
+    "scope": "13條均實讀所列正文；11原研究對應候選，1更正只查版本、1交通論文只支援退題。每篇副本與原刊是一項研究，不重複計獨立證據。",
+    "failures": [
+      "Europe PMC fullTextXML: PMC5187715/PMC8017985/PMC11194538/PMC7334479/PMC3816424回HTTP500；改指定HTML/作者PDF，其中PMC7334479未收，改讀另一篇A12-S006。",
+      "PMC網頁puzzle/self-right/correction有recaptcha；前兩改Europe PMC XML，更正以UA HTML成功。",
+      "JHU 2022-JEB-1.pdf回403；A12-S006改用arXiv v2，明記非正式排版逐字核對。"
+    ],
+    "ua": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "source_identity": "作者對基線來源題名作相關名稱檢索未見同論文；正式URL/DOI正規化與跨批去重由root再核，未用fragment增加來源。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "A12001",
+      "b": "Z7015",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "新條件是外部約束把兩股方向拆開，出現振盪；舊題只解釋新加入者的帶路。"
+    },
+    {
+      "a": "A12002",
+      "b": "Z7015",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "大/小隊碰牆後持續滑動與方向記憶是新增條件，不另講領隊更替。"
+    },
+    {
+      "a": "A12001",
+      "b": "A12002",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "同力耦合基礎但約束振盪與尺寸影響邊界搜尋不同；願接受覆核合例，不保數量。"
+    },
+    {
+      "a": "A12002",
+      "b": "U8009",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "蟻群方向暫存在持續施力狀態，黏菌用環境痕跡避重訪，非同記憶載體。"
+    },
+    {
+      "a": "A12001",
+      "b": "B11002",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "根機器模型主動環旋提供側向推力；蟻群約束下兩方向競爭產生振盪。"
+    },
+    {
+      "a": "A12003",
+      "b": "S10010",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "蟲團跨個體纏結與活動分化，不是同身體負載轉移觸發腿肌EMG。"
+    },
+    {
+      "a": "A12004",
+      "b": "X5001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "主動換旋向改變繞行連接，不是拉緊短纖維捻紗的摩擦放大。"
+    },
+    {
+      "a": "A12004",
+      "b": "X5007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "羊毛被動表面鱗片交鎖與密實，沒有可逆頭部換向拓撲控制。"
+    },
+    {
+      "a": "A12005",
+      "b": "P164",
+      "author_recommendation": "merge_accepted_after_independent_review",
+      "reason": "非作者依S006 PDF30指出收腿縮小支撐多邊形、降低側滾穩定裕度，與P164支撐寬度穩定同核心；保留草梁研究作變體與來源，不另計新核。"
+    },
+    {
+      "a": "A12005",
+      "b": "A12007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "梁間由頂開轉側滾vs翻肚後翅改門檻/腿供擾動分工；共享能障框架但控制條件與新理解不同。"
+    },
+    {
+      "a": "A12006",
+      "b": "P006",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "新題同時有腳推進與身體拖曳的相反摩擦用途，不只地板推腳。"
+    },
+    {
+      "a": "A12006",
+      "b": "P008",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "新題不是壓緊增加摩擦，而是固定縫高改地面摩擦兩條效應競爭。"
+    },
+    {
+      "a": "A12007",
+      "b": "K11005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "不是泛稱降低能障加擾動：新題比較開翅後前翻動能仍不足、側滾門檻降到腿側向擾動可跨，兩條方向的可行性不同。"
+    },
+    {
+      "a": "A12008",
+      "b": "B2013",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "物理跟隨位置效應與早期印痕辨認分開，不能互作動機答案。"
+    },
+    {
+      "a": "A12009",
+      "b": "P112",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "行進尾流延遲使相位須隨距離調整，非固定鞦韆共振加能。"
+    },
+    {
+      "a": "A12008",
+      "b": "A12009",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "水面波壓位置效應vs水下渦流抵達/尾部相位；不能只泛稱跟隨省能而分兩題。"
+    },
+    {
+      "a": "A12010",
+      "b": "D2048",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "不是向上吹氣托顆粒；縮殼卸載導致鄰土失效並吸水，局部流化。"
+    },
+    {
+      "a": "A12010",
+      "b": "W5021",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "濾床外加上升水流與殼縮局部失效/體積補水的觸發不同。"
+    },
+    {
+      "a": "A12010",
+      "b": "N280",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "強震孔壓升高與縮殼側向卸載/失效面不同；若只講失去有效應力則應合舊例。"
+    },
+    {
+      "a": "A12011",
+      "b": "B2123",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "停止渦環在回復後形成延後推力，不是只噴出水的反作用。"
+    },
+    {
+      "a": "A12011",
+      "b": "E9001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "蒲公英穩定分離渦環增加拖曳；水母脈動後停止渦環推傘，非看到渦環即同一答案。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "A12005",
+        "canonical_id": "P164",
+        "reason": "非作者依S006 PDF30指出收腿縮小支撐多邊形、降低側滾穩定裕度，與P164支撐寬度穩定同核心；保留草梁研究作變體與來源，不另計新核。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "A12001",
+        "b": "Z7015",
+        "reason": "新條件是外部約束把兩股方向拆開，出現振盪；舊題只解釋新加入者的帶路。"
+      },
+      {
+        "a": "A12002",
+        "b": "Z7015",
+        "reason": "大/小隊碰牆後持續滑動與方向記憶是新增條件，不另講領隊更替。"
+      },
+      {
+        "a": "A12001",
+        "b": "A12002",
+        "reason": "同力耦合基礎但約束振盪與尺寸影響邊界搜尋不同；願接受覆核合例，不保數量。"
+      },
+      {
+        "a": "A12002",
+        "b": "U8009",
+        "reason": "蟻群方向暫存在持續施力狀態，黏菌用環境痕跡避重訪，非同記憶載體。"
+      },
+      {
+        "a": "A12001",
+        "b": "B11002",
+        "reason": "根機器模型主動環旋提供側向推力；蟻群約束下兩方向競爭產生振盪。"
+      },
+      {
+        "a": "A12003",
+        "b": "S10010",
+        "reason": "蟲團跨個體纏結與活動分化，不是同身體負載轉移觸發腿肌EMG。"
+      },
+      {
+        "a": "A12004",
+        "b": "X5001",
+        "reason": "主動換旋向改變繞行連接，不是拉緊短纖維捻紗的摩擦放大。"
+      },
+      {
+        "a": "A12004",
+        "b": "X5007",
+        "reason": "羊毛被動表面鱗片交鎖與密實，沒有可逆頭部換向拓撲控制。"
+      },
+      {
+        "a": "A12005",
+        "b": "A12007",
+        "reason": "梁間由頂開轉側滾vs翻肚後翅改門檻/腿供擾動分工；共享能障框架但控制條件與新理解不同。"
+      },
+      {
+        "a": "A12006",
+        "b": "P006",
+        "reason": "新題同時有腳推進與身體拖曳的相反摩擦用途，不只地板推腳。"
+      },
+      {
+        "a": "A12006",
+        "b": "P008",
+        "reason": "新題不是壓緊增加摩擦，而是固定縫高改地面摩擦兩條效應競爭。"
+      },
+      {
+        "a": "A12007",
+        "b": "K11005",
+        "reason": "不是泛稱降低能障加擾動：新題比較開翅後前翻動能仍不足、側滾門檻降到腿側向擾動可跨，兩條方向的可行性不同。"
+      },
+      {
+        "a": "A12008",
+        "b": "B2013",
+        "reason": "物理跟隨位置效應與早期印痕辨認分開，不能互作動機答案。"
+      },
+      {
+        "a": "A12009",
+        "b": "P112",
+        "reason": "行進尾流延遲使相位須隨距離調整，非固定鞦韆共振加能。"
+      },
+      {
+        "a": "A12008",
+        "b": "A12009",
+        "reason": "水面波壓位置效應vs水下渦流抵達/尾部相位；不能只泛稱跟隨省能而分兩題。"
+      },
+      {
+        "a": "A12010",
+        "b": "D2048",
+        "reason": "不是向上吹氣托顆粒；縮殼卸載導致鄰土失效並吸水，局部流化。"
+      },
+      {
+        "a": "A12010",
+        "b": "W5021",
+        "reason": "濾床外加上升水流與殼縮局部失效/體積補水的觸發不同。"
+      },
+      {
+        "a": "A12010",
+        "b": "N280",
+        "reason": "強震孔壓升高與縮殼側向卸載/失效面不同；若只講失去有效應力則應合舊例。"
+      },
+      {
+        "a": "A12011",
+        "b": "B2123",
+        "reason": "停止渦環在回復後形成延後推力，不是只噴出水的反作用。"
+      },
+      {
+        "a": "A12011",
+        "b": "E9001",
+        "reason": "蒲公英穩定分離渦環增加拖曳；水母脈動後停止渦環推傘，非看到渦環即同一答案。"
+      }
+    ]
+  },
+  "core_budget_checks": [
+    {
+      "theme_id": "W12A-T01",
+      "candidate_id": "A12001",
+      "seconds": 85,
+      "cap": 100
+    },
+    {
+      "theme_id": "W12A-T01",
+      "candidate_id": "A12002",
+      "seconds": 90,
+      "cap": 105
+    },
+    {
+      "theme_id": "W12A-T02",
+      "candidate_id": "A12003",
+      "seconds": 90,
+      "cap": 110
+    },
+    {
+      "theme_id": "W12A-T02",
+      "candidate_id": "A12004",
+      "seconds": 90,
+      "cap": 105
+    },
+    {
+      "theme_id": "W12A-T03",
+      "candidate_id": "A12005",
+      "seconds": 75,
+      "cap": 95,
+      "canonical_id": "P164",
+      "variant_budget_id": "A12005"
+    },
+    {
+      "theme_id": "W12A-T03",
+      "candidate_id": "A12007",
+      "seconds": 75,
+      "cap": 100
+    },
+    {
+      "theme_id": "W12A-T04",
+      "candidate_id": "A12008",
+      "seconds": 85,
+      "cap": 100
+    },
+    {
+      "theme_id": "W12A-T04",
+      "candidate_id": "A12009",
+      "seconds": 90,
+      "cap": 110
+    }
+  ],
+  "theme_seconds": [
+    {
+      "id": "W12A-T01",
+      "seconds": 175
+    },
+    {
+      "id": "W12A-T02",
+      "seconds": 180
+    },
+    {
+      "id": "W12A-T03",
+      "seconds": 150
+    },
+    {
+      "id": "W12A-T04",
+      "seconds": 175
+    }
+  ],
+  "self_checks": [
+    "11 IDs與mechanism_key無重複，source_id全部存在；不按物種拆同題。",
+    "四案175/180/150/175秒、8個核心/變體累計cap、章內beat間隔<=45秒由作者腳本讀回；不是完整稿試讀。",
+    "12個not_added留原題或當批ID/理由；無把未讀摘要升成題。",
+    "三檔JSON寫成UTF-8 LF；未修改中央、舊來源、舊題或task。"
+  ],
+  "open_review_questions": [
+    "已接受A12005→P164，其他10新核心待非作者修訂定點讀回；不保原11核心數量。",
+    "A12003減摩/分工模型、A12005作者稿、A12008理想波阻、A12009真魚功率估算須保留限制。",
+    "四案175/180/150/175秒只紙上資訊預算；A12006與蟶子/水母留研究池，不硬組片。"
+  ],
+  "restrictions": [
+    "選題級研究與作者自查，必由另一代理覆核。",
+    "未外站全頁逐句查核、未播放補充影片、未實際試讀、未製作圖像/音訊/影片。",
+    "無付費媒體、發布、production或commit。",
+    "不把模型力向量、假設與示意視為動物直接實測。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-01",
+      "trigger": "Independent life review LOCOMOTION01–05 and root duration-range readback",
+      "review_file": "reviews/wave12-life-reviews-locomotion.json",
+      "review_sha256": "5210135b804075bb87d584e5ec42e4c66e90e3a6faf2d16d63a2ba0729d9c751",
+      "before": [
+        {
+          "file": "batches/wave12-locomotion.json",
+          "sha256": "dc6ab39121db0c4ca5b36c29c40bb1d8ea025c9ef7f9c26abe02654b7c00e069"
+        },
+        {
+          "file": "reviews/wave12-locomotion-themes.json",
+          "sha256": "d90446338414c3afc35aede7dcb738a19df768e673149e245cb3e3af7f915d59"
+        },
+        {
+          "file": "reviews/wave12-locomotion-author.json",
+          "sha256": "d586e50c706252057f2c7f4ee5db6ce7b8f82a207114c2ce940359cc5f677d91"
+        }
+      ],
+      "changes": [
+        "接受A12005→P164，原raw來源不刪，T03明記動物變體。",
+        "A12004補gamma/R/鄰距固定條件，移除一整圈固定門檻與無條件速度只改時間說法。",
+        "A12007明寫前翻/側滾能量方向差，分開機器人模型與動物觀察。",
+        "T03移出A12006，75+75=150秒，開場/5秒回扣/撤案條件同步。",
+        "A12002補持續移動→機械耦合/對齊→滑行的模型環。",
+        "四案range上限收至body_seconds/60，明記含開場回扣、非試讀不靠停頓延長。"
+      ],
+      "after_artifacts": [
+        {
+          "file": "batches/wave12-locomotion.json",
+          "sha256": "ba380600fca6c8e61527610c69960c44c996d54c201be3b303e5117b7ef3ae2a"
+        },
+        {
+          "file": "reviews/wave12-locomotion-themes.json",
+          "sha256": "719f01a41b5826d908386ccabb0105fc954f9ade8bac96f6661c8fd71375b5a2"
+        }
+      ]
+    }
+  ],
+  "expected_new_cores_after_review": 10
+}

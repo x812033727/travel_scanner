@@ -1,0 +1,539 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "/root/pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "faeba1adac4eba4fa1993af0e0de8d45dea1edc2",
+    "selected": 3528,
+    "raw": 3917,
+    "not_added": 2182,
+    "themes": 547,
+    "pool_sha256": "d521779c2addbf70ab52338ac24086c059f9e554aceab6b7bbbf354d6cacbdc7"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave50-life.json",
+      "sha256": "fb74a4aefa7683a46f2e4db5edf89c97a61368d5cb125b04e73210eeee5ab190"
+    },
+    {
+      "file": "reviews/wave50-life-themes.json",
+      "sha256": "69eb61308b5e7ac0bb8e7155012243ba6edaf49048d9b6bb2f475c2f05f2c45d"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 4,
+    "candidate_supporting_publications": 4,
+    "not_added": 16,
+    "near_pairs": 16,
+    "themes": 4
+  },
+  "near_pairs": [
+    {
+      "a": "L50-001",
+      "b": "A27001",
+      "decision": "propose_distinct",
+      "reason": "舊題是存量/剩餘夜長控制澱粉消耗；新題改植物相對食葉蟲相位，在恆暗中驗防禦優勢及時鐘/激素必要性。不是只再證時鐘存在。",
+      "a_snapshot": {
+        "question": "都放進同樣的黑暗裡，為什麼有些植株還是被毛毛蟲吃得更多？",
+        "answer_target": "先把植物作息與幼蟲對齊或錯開十二小時，再一起移入恆暗，葉損仍不同。植物時鐘帶動防禦激素的每日波動，使防禦時段能配上幼蟲的進食高峰；時鐘或活性茉莉酸途徑缺陷時，對齊的優勢消失。",
+        "scope": "限擬南芥與Trichoplusia ni；恆暗24小時後共同取食72小時，不是當場光亮讓蟲看清葉。激素在無蟲下仍有週期；具體代謝物及野外淨效益未全部直接測定。"
+      },
+      "b_snapshot": {
+        "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+        "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+        "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。"
+      }
+    },
+    {
+      "a": "L50-001",
+      "b": "L104",
+      "decision": "propose_distinct",
+      "reason": "季節訊號看日長；此處固定日長、錯相並撤外界明暗，結果為相對進食時段的抗蟲效益。",
+      "a_snapshot": {
+        "question": "都放進同樣的黑暗裡，為什麼有些植株還是被毛毛蟲吃得更多？",
+        "answer_target": "先把植物作息與幼蟲對齊或錯開十二小時，再一起移入恆暗，葉損仍不同。植物時鐘帶動防禦激素的每日波動，使防禦時段能配上幼蟲的進食高峰；時鐘或活性茉莉酸途徑缺陷時，對齊的優勢消失。",
+        "scope": "限擬南芥與Trichoplusia ni；恆暗24小時後共同取食72小時，不是當場光亮讓蟲看清葉。激素在無蟲下仍有週期；具體代謝物及野外淨效益未全部直接測定。"
+      },
+      "b_snapshot": {
+        "question": "植物怎麼在沒有日曆的情況下感應季節？",
+        "answer_target": "晝夜長度作為季節訊號",
+        "scope": "光敏素與特定光敏感植物；不推論所有種子相同"
+      }
+    },
+    {
+      "a": "L50-001",
+      "b": "L191",
+      "decision": "propose_distinct",
+      "reason": "一般機械/化學防禦分類沒有相位干預與恒定環境的預測；新題保護優勢能被兩類缺陷消除。",
+      "a_snapshot": {
+        "question": "都放進同樣的黑暗裡，為什麼有些植株還是被毛毛蟲吃得更多？",
+        "answer_target": "先把植物作息與幼蟲對齊或錯開十二小時，再一起移入恆暗，葉損仍不同。植物時鐘帶動防禦激素的每日波動，使防禦時段能配上幼蟲的進食高峰；時鐘或活性茉莉酸途徑缺陷時，對齊的優勢消失。",
+        "scope": "限擬南芥與Trichoplusia ni；恆暗24小時後共同取食72小時，不是當場光亮讓蟲看清葉。激素在無蟲下仍有週期；具體代謝物及野外淨效益未全部直接測定。"
+      },
+      "b_snapshot": {
+        "question": "植物不能逃跑，除了長刺還有什麼防止被吃的方式？",
+        "answer_target": "機械與化學防禦的差別",
+        "scope": "生態機制；具體物種個案仍需補獨立研究"
+      }
+    },
+    {
+      "a": "L50-001",
+      "b": "R6006",
+      "decision": "propose_distinct",
+      "reason": "春化是長冷期後的染色質穩態；新題是日內相位對齊及激素週期，不把都叫記憶混同。",
+      "a_snapshot": {
+        "question": "都放進同樣的黑暗裡，為什麼有些植株還是被毛毛蟲吃得更多？",
+        "answer_target": "先把植物作息與幼蟲對齊或錯開十二小時，再一起移入恆暗，葉損仍不同。植物時鐘帶動防禦激素的每日波動，使防禦時段能配上幼蟲的進食高峰；時鐘或活性茉莉酸途徑缺陷時，對齊的優勢消失。",
+        "scope": "限擬南芥與Trichoplusia ni；恆暗24小時後共同取食72小時，不是當場光亮讓蟲看清葉。激素在無蟲下仍有週期；具體代謝物及野外淨效益未全部直接測定。"
+      },
+      "b_snapshot": {
+        "question": "天氣已經回暖，植物怎麼還記得自己過過冬？",
+        "answer_target": "長冷期可使FLC開花抑制基因進入穩定的染色質沉默狀態，回暖後仍維持。",
+        "scope": "以冬性擬南芥研究為模型，不泛化所有園藝植物；不把記憶當意識，也不把未證寡聚化假說寫成定論。"
+      }
+    },
+    {
+      "a": "L50-002",
+      "b": "L101",
+      "decision": "propose_distinct",
+      "reason": "舊題辨紅/遠紅遮蔭訊號；新題在同PAR下把病害易感與伸長解耦，不只換光照用途名稱。",
+      "a_snapshot": {
+        "question": "沒有把照植物的光變暗，只改光的比例，為什麼葉片反而更容易出病斑？",
+        "answer_target": "補遠紅光而不減光合作用有效輻射，會降低擬南芥部分茉莉酸防禦反應並增加灰黴病徵。不能只怪植株拉長：不易伸長的突變體仍受影響，另一條光路造成伸長卻未同樣變易感；削弱JAZ10又減弱了遠紅光的易感效果。",
+        "scope": "限所測蓮座期植株、補光與感染條件；相同PAR不等於量得相同碳收支。JAZ10必要性與形態解耦有控制，phyB到JAZ10每個分子步驟及資源節省量未在本篇定案。"
+      },
+      "b_snapshot": {
+        "question": "同樣看起來不暗，樹下和空地的光對植物為什麼不同？",
+        "answer_target": "紅光與遠紅光比例作為遮蔭線索",
+        "scope": "光敏素與特定光敏感植物；不推論所有種子相同"
+      }
+    },
+    {
+      "a": "L50-002",
+      "b": "L105",
+      "decision": "propose_distinct",
+      "reason": "光質和日長不同是背景；新控制固定照明時程/有效光量而改防禦，且不同伸長路徑結果相反。",
+      "a_snapshot": {
+        "question": "沒有把照植物的光變暗，只改光的比例，為什麼葉片反而更容易出病斑？",
+        "answer_target": "補遠紅光而不減光合作用有效輻射，會降低擬南芥部分茉莉酸防禦反應並增加灰黴病徵。不能只怪植株拉長：不易伸長的突變體仍受影響，另一條光路造成伸長卻未同樣變易感；削弱JAZ10又減弱了遠紅光的易感效果。",
+        "scope": "限所測蓮座期植株、補光與感染條件；相同PAR不等於量得相同碳收支。JAZ10必要性與形態解耦有控制，phyB到JAZ10每個分子步驟及資源節省量未在本篇定案。"
+      },
+      "b_snapshot": {
+        "question": "同樣照八小時的光，光的顏色為什麼也可能影響生長反應？",
+        "answer_target": "光質與光週期是不同訊息",
+        "scope": "光敏素與特定光敏感植物；不推論所有種子相同"
+      }
+    },
+    {
+      "a": "L50-002",
+      "b": "V3007",
+      "decision": "propose_distinct",
+      "reason": "泛細胞效應分流不能回答同樣伸長何以病害不同；新題有形態與防禦雙向不等價對照，不聲稱已證所有分子連線。",
+      "a_snapshot": {
+        "question": "沒有把照植物的光變暗，只改光的比例，為什麼葉片反而更容易出病斑？",
+        "answer_target": "補遠紅光而不減光合作用有效輻射，會降低擬南芥部分茉莉酸防禦反應並增加灰黴病徵。不能只怪植株拉長：不易伸長的突變體仍受影響，另一條光路造成伸長卻未同樣變易感；削弱JAZ10又減弱了遠紅光的易感效果。",
+        "scope": "限所測蓮座期植株、補光與感染條件；相同PAR不等於量得相同碳收支。JAZ10必要性與形態解耦有控制，phyB到JAZ10每個分子步驟及資源節省量未在本篇定案。"
+      },
+      "b_snapshot": {
+        "question": "兩種細胞都收到同一訊號，為什麼最後做的事不同？",
+        "answer_target": "不同胞內效應蛋白使同一外界線索被接往不同反應",
+        "scope": "與受體有無不同；L064 是細胞身分的表現差異背景"
+      }
+    },
+    {
+      "a": "L50-002",
+      "b": "L50-001",
+      "decision": "propose_distinct",
+      "reason": "同用茉莉酸相關防禦，但一個干預相對時間、另一個干預鄰株光譜並排除形態中介；不同輸入條件改變可獨立預測的答案。",
+      "a_snapshot": {
+        "question": "沒有把照植物的光變暗，只改光的比例，為什麼葉片反而更容易出病斑？",
+        "answer_target": "補遠紅光而不減光合作用有效輻射，會降低擬南芥部分茉莉酸防禦反應並增加灰黴病徵。不能只怪植株拉長：不易伸長的突變體仍受影響，另一條光路造成伸長卻未同樣變易感；削弱JAZ10又減弱了遠紅光的易感效果。",
+        "scope": "限所測蓮座期植株、補光與感染條件；相同PAR不等於量得相同碳收支。JAZ10必要性與形態解耦有控制，phyB到JAZ10每個分子步驟及資源節省量未在本篇定案。"
+      },
+      "b_snapshot": {
+        "question": "都放進同樣的黑暗裡，為什麼有些植株還是被毛毛蟲吃得更多？",
+        "answer_target": "先把植物作息與幼蟲對齊或錯開十二小時，再一起移入恆暗，葉損仍不同。植物時鐘帶動防禦激素的每日波動，使防禦時段能配上幼蟲的進食高峰；時鐘或活性茉莉酸途徑缺陷時，對齊的優勢消失。",
+        "scope": "限擬南芥與Trichoplusia ni；恆暗24小時後共同取食72小時，不是當場光亮讓蟲看清葉。激素在無蟲下仍有週期；具體代謝物及野外淨效益未全部直接測定。"
+      }
+    },
+    {
+      "a": "L50-003",
+      "b": "L107",
+      "decision": "propose_distinct",
+      "reason": "根瘤糖氮互換是既有功能；此處交換建立後局部停止固氮，菌數/氧通透性分化，新增表現依賴的局部調節。",
+      "a_snapshot": {
+        "question": "同一株豆苗上，某個根瘤不再供氮，其他根瘤會跟著一起被減供嗎？",
+        "answer_target": "同一菌株分別放在有氮氣或幾乎無氮氣、氧比例相同的環境，停止固氮的一側或單顆根瘤最後菌數較少。單根瘤的氧通透性與內部氧在兩天內下降，支持植物能局部調低供氧、限制不供氮根瘤的增殖，而非只能全株一律分配。",
+        "scope": "限大豆、單菌株根瘤與控制氣體試驗；外界供氧比例相同，內部氧由光譜及計算推得。降低供氧是支持的機制解釋，非直接操作供氧障壁救援；不是植物有懲罰意圖，也不從顏色直接判根瘤好壞。"
+      },
+      "b_snapshot": {
+        "question": "豆科植物根上的小瘤，是怎麼變成養分交換站的？",
+        "answer_target": "根瘤微生物固氮與植物供糖",
+        "scope": "豆科根瘤及菌根；不把所有植物或菌類一概而論"
+      }
+    },
+    {
+      "a": "L50-003",
+      "b": "R6020",
+      "decision": "propose_distinct",
+      "reason": "舊題低游離氧兼顧固氮/呼吸；新題相同外界氧下不固氮根瘤反而降低內部氧供應，處理局部資源控制而非一般氧緩衝。",
+      "a_snapshot": {
+        "question": "同一株豆苗上，某個根瘤不再供氮，其他根瘤會跟著一起被減供嗎？",
+        "answer_target": "同一菌株分別放在有氮氣或幾乎無氮氣、氧比例相同的環境，停止固氮的一側或單顆根瘤最後菌數較少。單根瘤的氧通透性與內部氧在兩天內下降，支持植物能局部調低供氧、限制不供氮根瘤的增殖，而非只能全株一律分配。",
+        "scope": "限大豆、單菌株根瘤與控制氣體試驗；外界供氧比例相同，內部氧由光譜及計算推得。降低供氧是支持的機制解釋，非直接操作供氧障壁救援；不是植物有懲罰意圖，也不從顏色直接判根瘤好壞。"
+      },
+      "b_snapshot": {
+        "question": "根瘤裡的細菌需要氧，固氮工具又怕氧，怎麼兼顧？",
+        "answer_target": "豆血紅蛋白結合氧並控制向呼吸部位的供應，維持低游離氧以兼顧固氮酵素與呼吸。",
+        "scope": "限豆科根瘤低氧微環境，不說完全無氧，也不從粉紅色直接保證固氮效率。"
+      }
+    },
+    {
+      "a": "L50-003",
+      "b": "L106",
+      "decision": "propose_distinct",
+      "reason": "氮氣須轉可用態是背景，不能回答同株不同根瘤的後續差異與供氧時序。",
+      "a_snapshot": {
+        "question": "同一株豆苗上，某個根瘤不再供氮，其他根瘤會跟著一起被減供嗎？",
+        "answer_target": "同一菌株分別放在有氮氣或幾乎無氮氣、氧比例相同的環境，停止固氮的一側或單顆根瘤最後菌數較少。單根瘤的氧通透性與內部氧在兩天內下降，支持植物能局部調低供氧、限制不供氮根瘤的增殖，而非只能全株一律分配。",
+        "scope": "限大豆、單菌株根瘤與控制氣體試驗；外界供氧比例相同，內部氧由光譜及計算推得。降低供氧是支持的機制解釋，非直接操作供氧障壁救援；不是植物有懲罰意圖，也不從顏色直接判根瘤好壞。"
+      },
+      "b_snapshot": {
+        "question": "空氣裡那麼多氮，植物為什麼還會缺氮？",
+        "answer_target": "氮氣須先轉為可利用形態",
+        "scope": "豆科根瘤及菌根；不把所有植物或菌類一概而論"
+      }
+    },
+    {
+      "a": "L50-003",
+      "b": "U8018",
+      "decision": "propose_distinct",
+      "reason": "異形胞把產氧/固氮空間分開；本題是已形成根瘤按局部固氮狀況改氧通透性，不是分工構造換種。",
+      "a_snapshot": {
+        "question": "同一株豆苗上，某個根瘤不再供氮，其他根瘤會跟著一起被減供嗎？",
+        "answer_target": "同一菌株分別放在有氮氣或幾乎無氮氣、氧比例相同的環境，停止固氮的一側或單顆根瘤最後菌數較少。單根瘤的氧通透性與內部氧在兩天內下降，支持植物能局部調低供氧、限制不供氮根瘤的增殖，而非只能全株一律分配。",
+        "scope": "限大豆、單菌株根瘤與控制氣體試驗；外界供氧比例相同，內部氧由光譜及計算推得。降低供氧是支持的機制解釋，非直接操作供氧障壁救援；不是植物有懲罰意圖，也不從顏色直接判根瘤好壞。"
+      },
+      "b_snapshot": {
+        "question": "會製造氧的藍綠菌，怎麼保護怕氧的固氮工作？",
+        "answer_target": "部分細胞分化成異形胞，以外被限制氣體進入、停止產氧光反應並加強耗氧，保護固氮酵素；由鄰細胞供應碳源並回送固定氮。",
+        "scope": "限形成異形胞的絲狀藍綠菌；不說完全無氧/氣密，也不說所有光合作用停止，保留PSI活動。"
+      }
+    },
+    {
+      "a": "L50-004",
+      "b": "B2238",
+      "decision": "propose_distinct",
+      "reason": "揮發物招來外部天敵，與原有食葉者轉食同類不同；單隻死同類對照額外區分密度和每隻葉食量。",
+      "a_snapshot": {
+        "question": "葉子變難吃之後，毛毛蟲改吃同類，為什麼能替植物少掉兩筆損失？",
+        "answer_target": "誘發番茄防禦後，群養幼蟲較早互食，留在植株上的取食者變少。另一個單隻試驗在提供已死同類時，幼蟲也吃較少葉片；因此保住的葉子不只來自蟲數下降，還包括每隻把食物轉向同類。",
+        "scope": "限番茄、甜菜夜蛾與室內容器；以MeJA處理誘發，不等於自然鄰株傳訊已驗證。群養消失數為互食估計，另有直接觀察；單隻試驗為取食死同類，兩試驗不能合成同一隻的殺戮追蹤。不指定某種未分離化合物為唯一原因。"
+      },
+      "b_snapshot": {
+        "question": "植物被毛毛蟲咬後，怎麼可能引來毛毛蟲的敵人？",
+        "answer_target": "受害訊號誘發揮發物並改變天敵尋找線索",
+        "scope": "三方互動；不賦予植物意圖或保證每次有效"
+      }
+    },
+    {
+      "a": "L50-004",
+      "b": "L191",
+      "decision": "propose_distinct",
+      "reason": "一般化學防禦不含食葉者互食造成密度/食物轉換的兩條減葉損路徑。",
+      "a_snapshot": {
+        "question": "葉子變難吃之後，毛毛蟲改吃同類，為什麼能替植物少掉兩筆損失？",
+        "answer_target": "誘發番茄防禦後，群養幼蟲較早互食，留在植株上的取食者變少。另一個單隻試驗在提供已死同類時，幼蟲也吃較少葉片；因此保住的葉子不只來自蟲數下降，還包括每隻把食物轉向同類。",
+        "scope": "限番茄、甜菜夜蛾與室內容器；以MeJA處理誘發，不等於自然鄰株傳訊已驗證。群養消失數為互食估計，另有直接觀察；單隻試驗為取食死同類，兩試驗不能合成同一隻的殺戮追蹤。不指定某種未分離化合物為唯一原因。"
+      },
+      "b_snapshot": {
+        "question": "植物不能逃跑，除了長刺還有什麼防止被吃的方式？",
+        "answer_target": "機械與化學防禦的差別",
+        "scope": "生態機制；具體物種個案仍需補獨立研究"
+      }
+    },
+    {
+      "a": "L50-004",
+      "b": "L47-003",
+      "decision": "propose_distinct",
+      "reason": "含羞草不動/會動對停留和葉損，未含互食與固定活蟲數的食物替換；不能以都少吃葉直接併。",
+      "a_snapshot": {
+        "question": "葉子變難吃之後，毛毛蟲改吃同類，為什麼能替植物少掉兩筆損失？",
+        "answer_target": "誘發番茄防禦後，群養幼蟲較早互食，留在植株上的取食者變少。另一個單隻試驗在提供已死同類時，幼蟲也吃較少葉片；因此保住的葉子不只來自蟲數下降，還包括每隻把食物轉向同類。",
+        "scope": "限番茄、甜菜夜蛾與室內容器；以MeJA處理誘發，不等於自然鄰株傳訊已驗證。群養消失數為互食估計，另有直接觀察；單隻試驗為取食死同類，兩試驗不能合成同一隻的殺戮追蹤。不指定某種未分離化合物為唯一原因。"
+      },
+      "b_snapshot": {
+        "question": "含羞草合起葉子，真的能讓啃葉子的昆蟲少待一會嗎？",
+        "answer_target": "不會動的葉片讓實驗昆蟲停留較久、吃掉更多。化學抑制與缺少葉枕的基因處理得到同向結果，且後者仍傳傷害電訊號；支持快速動作本身參與防禦，不只是傷害訊號出現就足夠。",
+        "scope": "限容器中的切葉與所測蝗蟲/毛蟲；量的是停留與葉重量損失，不是野外族群存活。器官缺失與藥理並非完美單因子，不能宣稱所有化學防禦均相同或昆蟲因恐懼逃跑。"
+      }
+    },
+    {
+      "a": "L50-004",
+      "b": "L50-001",
+      "decision": "propose_distinct",
+      "reason": "誘導後食物轉換/蟲數下降與相位吻合的防禦優勢不同；不以兩篇同有茉莉酸就合核。",
+      "a_snapshot": {
+        "question": "葉子變難吃之後，毛毛蟲改吃同類，為什麼能替植物少掉兩筆損失？",
+        "answer_target": "誘發番茄防禦後，群養幼蟲較早互食，留在植株上的取食者變少。另一個單隻試驗在提供已死同類時，幼蟲也吃較少葉片；因此保住的葉子不只來自蟲數下降，還包括每隻把食物轉向同類。",
+        "scope": "限番茄、甜菜夜蛾與室內容器；以MeJA處理誘發，不等於自然鄰株傳訊已驗證。群養消失數為互食估計，另有直接觀察；單隻試驗為取食死同類，兩試驗不能合成同一隻的殺戮追蹤。不指定某種未分離化合物為唯一原因。"
+      },
+      "b_snapshot": {
+        "question": "都放進同樣的黑暗裡，為什麼有些植株還是被毛毛蟲吃得更多？",
+        "answer_target": "先把植物作息與幼蟲對齊或錯開十二小時，再一起移入恆暗，葉損仍不同。植物時鐘帶動防禦激素的每日波動，使防禦時段能配上幼蟲的進食高峰；時鐘或活性茉莉酸途徑缺陷時，對齊的優勢消失。",
+        "scope": "限擬南芥與Trichoplusia ni；恆暗24小時後共同取食72小時，不是當場光亮讓蟲看清葉。激素在無蟲下仍有週期；具體代謝物及野外淨效益未全部直接測定。"
+      }
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "raw_cohort": 3917,
+    "not_added_cohort": 2182,
+    "method": "全池raw/NA機械掃，再讀植物命中與指定近題完整問答scope；未稱完整語意召回已完成。",
+    "screen_cache": ".cache/wave50-life-old-plants.json",
+    "screen_cache_sha256": "672be45e65a0610e15ce9cc70f54ccd5bb5b3c52fa8b27632626165c34d97f08",
+    "focused_cache": ".cache/wave50-life-boundaries.json",
+    "focused_cache_sha256": "0044b6b1a7b68d09d8cb8bbbbadfd5cfac1d744a9b363021b948fc639ed1d432",
+    "topics": [
+      "植物時鐘/季節/澱粉",
+      "防禦/食葉/互食/揮發物",
+      "紅遠紅/遮蔭/光量",
+      "根瘤/固氮/氧/菌根",
+      "記憶/春化/觸碰"
+    ],
+    "limitations": "共同top5與非作者裁決待root；不以關鍵詞未命中推定一定全新。"
+  },
+  "source_identity": {
+    "policy": "4個來源紀錄對應4篇研究；URL數、鏡像與補充檔不等於獨立實驗數。",
+    "records": [
+      {
+        "source_id": "L50-S001",
+        "doi": "10.1073/pnas.1116368109",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇正式原研究；原刊、PMC或作者庫副本視為同一文，不把載體另計獨立實驗。",
+        "cache_sha256": "036bd5b124cae6e50cb92e58a3820b48e34a80362f14c428a2f028cc7c4169fe"
+      },
+      {
+        "source_id": "L50-S002",
+        "doi": "10.1104/pp.112.193359",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇正式原研究；原刊、PMC或作者庫副本視為同一文，不把載體另計獨立實驗。",
+        "cache_sha256": "da6ca12b739715d383d6deadeee3ef21c8d2377c222c2b0c212a80d2b271d919"
+      },
+      {
+        "source_id": "L50-S003",
+        "doi": "10.1038/nature01931",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇正式原研究；原刊、PMC或作者庫副本視為同一文，不把載體另計獨立實驗。",
+        "cache_sha256": "dfeca8d1d8b8299aa335a01684c23eb7a8f79082f542e0c776c0613d8447e103"
+      },
+      {
+        "source_id": "L50-S004",
+        "doi": "10.1038/s41559-017-0231-6",
+        "prior_exact_doi_matches": [],
+        "relationship": "本篇正式原研究；原刊、PMC或作者庫副本視為同一文，不把載體另計獨立實驗。",
+        "cache_sha256": "ab9c150d88c845aed87ff86f92f59268c657c89be1396302365be36d784cf3ea"
+      }
+    ]
+  },
+  "visual_reads": [
+    {
+      "source_id": "L50-S001",
+      "file": ".cache/wave50-life-clock-p2.png",
+      "sha256": "96a4c1ce2739ea10cc9bf27ccb893deed10f609f2d782eb38dea6c2a6240d399",
+      "scope": "實際目讀指定原圖；範圍見該來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L50-S001",
+      "file": ".cache/wave50-life-clock-p3.png",
+      "sha256": "340170f0d1176da56cc5d0d11bf4a3531b6627ae45610ba790f95c5f62e16822",
+      "scope": "實際目讀指定原圖；範圍見該來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L50-S002",
+      "file": ".cache/wave50-life-shade-f5.jpg",
+      "sha256": "d5e1ad2318dcd49092128a09885a0f01dfe5bf26c7299ee173e78f8dbebc7b4a",
+      "scope": "實際目讀指定原圖；範圍見該來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L50-S002",
+      "file": ".cache/wave50-life-shade-f6.jpg",
+      "sha256": "52295e72d1962565f46ece0ccbad036e6ac343044e6c191d266997aac34f8e4a",
+      "scope": "實際目讀指定原圖；範圍見該來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L50-S002",
+      "file": ".cache/wave50-life-shade-f9.jpg",
+      "sha256": "407521a3a8dac3b783d8a57711f5ef88631188c88a8397018efc444a4593ad74",
+      "scope": "實際目讀指定原圖；範圍見該來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L50-S003",
+      "file": ".cache/wave50-life-nodule-p2.png",
+      "sha256": "e1e475acaae10d9cf65640954cebdab39ee702fa630518ceadf617b074a56ba7",
+      "scope": "實際目讀指定原圖；範圍見該來源reading_scope，非全部補充圖或影片"
+    },
+    {
+      "source_id": "L50-S004",
+      "file": ".cache/wave50-life-cannibal-p2.png",
+      "sha256": "18a31a439f641c9d36ea36b3b535a3506c22d630fa6ef7480d920eb4720061a0",
+      "scope": "實際目讀指定原圖；範圍見該來源reading_scope，非全部補充圖或影片"
+    }
+  ],
+  "source_failures": [
+    {
+      "source": "L50-S001",
+      "route": "PMC Web recaptcha",
+      "resolution": "UC Davis作者庫有效正式PDF"
+    },
+    {
+      "source": "L50-S002",
+      "route": "PMC Web/UA驗證頁；Europe PMC XML500",
+      "resolution": "OUP原刊重導官方CDN HTML有效正文/原圖"
+    },
+    {
+      "source": "L50-S004",
+      "route": "Gonzaga PDF403；搜尋返回舊UW域PDF404",
+      "resolution": "現行實驗室公開索引實際href取得合併原文/SI"
+    },
+    {
+      "source": "L50-NA012",
+      "route": "Cell原PDF403，只讀PubMed摘要",
+      "resolution": "不收，未以摘要充全文"
+    }
+  ],
+  "retrieval_ua": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "timing_checks": [
+    {
+      "proposal_id": "W50L-T01",
+      "body_seconds": 74,
+      "chapter_seconds": [
+        27,
+        47
+      ],
+      "per_core_seconds": {
+        "L50-001": 74
+      },
+      "per_core_caps": {
+        "L50-001": 110
+      },
+      "arithmetic": "PASS_AUTHOR_CHECK_ONLY",
+      "timing": "root_offline_SAPI_full_read_plus_visual_allowance",
+      "full_read_seconds": 62.07310657596372
+    },
+    {
+      "proposal_id": "W50L-T02",
+      "body_seconds": 85,
+      "chapter_seconds": [
+        35,
+        50
+      ],
+      "per_core_seconds": {
+        "L50-002": 85
+      },
+      "per_core_caps": {
+        "L50-002": 115
+      },
+      "arithmetic": "PASS_AUTHOR_CHECK_ONLY",
+      "timing": "paper_budget_not_measured"
+    },
+    {
+      "proposal_id": "W50L-T03",
+      "body_seconds": 75,
+      "chapter_seconds": [
+        35,
+        40
+      ],
+      "per_core_seconds": {
+        "L50-003": 75
+      },
+      "per_core_caps": {
+        "L50-003": 100
+      },
+      "arithmetic": "PASS_AUTHOR_CHECK_ONLY",
+      "timing": "paper_budget_not_measured"
+    },
+    {
+      "proposal_id": "W50L-T04",
+      "body_seconds": 72,
+      "chapter_seconds": [
+        25,
+        47
+      ],
+      "per_core_seconds": {
+        "L50-004": 72
+      },
+      "per_core_caps": {
+        "L50-004": 100
+      },
+      "arithmetic": "PASS_AUTHOR_CHECK_ONLY",
+      "timing": "paper_budget_not_measured"
+    }
+  ],
+  "timing_probe": {
+    "proposal_id": "W50L-T01",
+    "sample_file": ".cache/w50-sample-life.json",
+    "sample_sha256": "bb465caaa11323a3017323557831f54d67030ab8251cc5ed170c0efa30c05e8d",
+    "paragraph_to_chapter": [
+      [
+        0
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "characters_including_punctuation": 248,
+    "status": "ROOT_OFFLINE_FULL_READ_COMPLETE_NOT_PRODUCTION",
+    "limit": "完整一案三段；作者未產音訊，非較長案的節錄替代全文。",
+    "receipt_file": ".cache/wave50-life-read.json",
+    "receipt_sha256": "ea0c415a241c69ca16f8a52621054aa2de6ff5e68ebf89f89369799055ab404f",
+    "paragraph_seconds": [
+      21.53374149659864,
+      18.12140589569161,
+      22.416961451247165
+    ],
+    "full_read_seconds": 62.07310657596372,
+    "chapter_budget_seconds": [
+      27,
+      47
+    ]
+  },
+  "revision_history": [
+    {
+      "reason": "root全文離線量時與非作者刪重述、根瘤正規化圖註一次修訂",
+      "before_files": [
+        {
+          "file": "batches/wave50-life.json",
+          "sha256": "fb74a4aefa7683a46f2e4db5edf89c97a61368d5cb125b04e73210eeee5ab190"
+        },
+        {
+          "file": "reviews/wave50-life-themes.json",
+          "sha256": "6cbbfb9a01527d612af2ff3017ba4571aae8ff536f5415b0920eefab1a782a4e"
+        },
+        {
+          "file": "reviews/wave50-life-author.json",
+          "sha256": "71f653cefbdab14199425dd0268bce282bc706e745bbf1f813aecd67bed61fb7"
+        }
+      ],
+      "changes": [
+        "W50L-T01 80→74；章27/47，拍12/15、22/25；完整樣讀62.073秒，樣稿不變。",
+        "W50L-T03圖註各自初值百分比，不宣稱兩組絕對初值相同。",
+        "W50L-T04第一章第二拍20→10；全82→72，單隻四組控制不刪。"
+      ],
+      "removed_seconds": 16,
+      "batch_unchanged": true,
+      "after_theme_sha256": "69eb61308b5e7ac0bb8e7155012243ba6edaf49048d9b6bb2f475c2f05f2c45d"
+    }
+  ],
+  "removed_seconds": 16,
+  "limits": [
+    "作者自查不是非作者PASS/完整稿核准。",
+    "4核足夠，未為數量拆時鐘突變/病害/供氧不同條件。",
+    "未取得開花時段原文者NA；所有全文只ignored cache。",
+    "沒有農藥、病害治療或栽培配方指示。"
+  ]
+}

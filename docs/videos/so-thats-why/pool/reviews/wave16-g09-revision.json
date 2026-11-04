@@ -1,0 +1,129 @@
+{
+  "status": "ROOT_THEME_REVISION_PENDING_NONAUTHOR_REVIEW",
+  "reviewed_on": "2026-11-02",
+  "theme_id": "G09",
+  "previous_theme_sha256": "9bb19818ce514c2f277baf737895b7efed578589e49070bee7e60463d8b1eee7",
+  "before": {
+    "body_seconds": 660,
+    "candidate_ids": [
+      "N248",
+      "N250",
+      "N251",
+      "N252"
+    ],
+    "chapters": 5
+  },
+  "proposed_theme": {
+    "id": "G09",
+    "title": "每月都有新月，為什麼日食這麼挑？",
+    "status": "EDITORIAL_THEME_NOT_SCRIPT",
+    "production_ready": false,
+    "priority": "第十六批縮編，待非作者覆核",
+    "core_question": "同樣是新月，能否遮到、遮掉多少、誰看得到，要分別看哪個條件？",
+    "connection": "固定一套不按比例的幾何示意：先比較不同新月時月球在傾斜軌道上相對交點的位置，再單獨對照視大小與觀察位置；不把整條軌道上下平移或每月改變傾角。",
+    "target_minutes": 3.0833333333333335,
+    "range_minutes": [
+      2.75,
+      3.0833333333333335
+    ],
+    "candidate_ids": [
+      "N248",
+      "N250",
+      "N251"
+    ],
+    "chapters": [
+      {
+        "title": "新月到了，影子卻撲空",
+        "seconds": 50,
+        "candidate_ids": [
+          "N248"
+        ],
+        "new_information": "同方向不等於同平面；先判斷影子有沒有碰到地球。",
+        "beats_seconds": [
+          15,
+          30,
+          5
+        ],
+        "progression": [
+          "0–15秒：同樣新月，並排影子碰到和錯過地球的兩張圖，請觀眾指出差別。",
+          "15–45秒：比較不同新月時月球位於黃道面上方、下方或靠近交點的幾何，保留同一傾斜軌道並切換俯視與側視；標明示意不按比例。",
+          "45–50秒：留下已命中的對齊圖，提出遮到就一定全黑嗎。"
+        ]
+      },
+      {
+        "title": "對齊了，為什麼仍剩一圈",
+        "seconds": 65,
+        "candidate_ids": [
+          "N250"
+        ],
+        "new_information": "改變觀察到的相對大小，才能判斷能否覆蓋整個日面。",
+        "beats_seconds": [
+          25,
+          30,
+          10
+        ],
+        "progression": [
+          "0–25秒：保持對齊，切換月球距離，在同一觀察點顯示日月圓盤大小。",
+          "25–55秒：將全遮與剩一圈並排；畫本影端點到達和未達地表的示意，說明角大小而非月球忽然變大。",
+          "55–65秒：標出太陽視大小也會變，此圖只單獨改月距以辨認因果，不把環食限於遠地點瞬間。"
+        ]
+      },
+      {
+        "title": "同一天，為什麼隔壁看到的不一樣",
+        "seconds": 70,
+        "candidate_ids": [
+          "N251"
+        ],
+        "new_information": "觀察位置是否在本影或半影內，決定同一場日食的可見遮擋。",
+        "beats_seconds": [
+          25,
+          30,
+          15
+        ],
+        "progression": [
+          "0–25秒：固定同一全食幾何，讓兩個地面標記一個在本影、一個在半影。",
+          "25–55秒：同時顯示兩地日面遮擋，再移動影帶而非反覆轉三顆球；不給即時地點預測。",
+          "55–70秒：用一張未見過的示意讓觀眾先判影子是否命中、圓盤能否全遮、位置是否進本影，回扣三項條件即結束。"
+        ]
+      }
+    ],
+    "boredom_risk": "原90秒總回顧重述先前條件，混合食另外引入曲率也使主線岔開；移除兩段，三次各改一個條件，不列食相百科。",
+    "drop_if": "若不能清楚區分幾何示意與地面視角則撤案；刪一個條件必縮短並改承諾問題，不補太陽月球常識或重複運動畫面。混合食N252仍留素材池，本片不使用。",
+    "evidence_gaps": "僅題案；完整旁白、原創幾何圖、投影與比例標示待核。本片不做真人太陽觀測或安全器材教學，也不用動畫算真實日期、地點與食帶寬度。",
+    "format": "short_explainer",
+    "body_seconds": 185,
+    "timing_basis": "185秒紙上正文預算含開場、轉場與最後15秒新圖判讀，未試讀；不是實際影片時長或觀眾驗收。"
+  },
+  "removed_from_theme_only": [
+    "N252"
+  ],
+  "retained_in_pool": [
+    "N248",
+    "N250",
+    "N251",
+    "N252"
+  ],
+  "new_core_count": 0,
+  "source_readings": [
+    {
+      "url": "https://science.nasa.gov/eclipses/geometry/",
+      "title": "Why Do Eclipses Happen?",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.open returned primary educational body, specified sections read",
+      "reading_scope": "Introduction lines245–254; Total255–271; Annular275–286; Hybrid290–292 for removal decision; apparent solar diameter301–302. No videos or figures visually inspected.",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "reason": "原11分鐘預算有90秒重述與混合食支線；改三個連續幾何判斷，正文縮至3:05。這是編輯判斷，不宣稱觀眾實測更好看。",
+  "limits": "未改舊raw與來源紀錄，未做新完整稿、示意圖、試讀、錄音或影片；NASA此次讀取保存在本收據，不冒稱全庫來源已刷新。",
+  "revision_after_independent_review": {
+    "initial_proposal_sha256": "0ba2b68f2a46e47e1ce055809e03610d867e6a7bdf3a785349245c99be62cbc8",
+    "initial_seconds": 190,
+    "final_seconds": 185,
+    "changes": [
+      "Fix orbital-position visual wording: no translated orbit or monthly inclination change.",
+      "Shorten transition from10 to5 seconds; preserve final15-second new-diagram application."
+    ]
+  }
+}

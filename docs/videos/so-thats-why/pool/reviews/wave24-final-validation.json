@@ -1,0 +1,405 @@
+{
+  "tested_on": "2026-11-02T05:33:49.809Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3419,
+    "canonical_questions": 3276,
+    "eligible_candidates": 3106,
+    "selected_candidates": 3047,
+    "alias_records": 143,
+    "historical_records": 313,
+    "source_urls": 4382,
+    "current_research_source_urls": 1423,
+    "selected_source_urls": 2605,
+    "new_suggestions_not_added": 1143,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 254,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3035",
+    "carried": 3035,
+    "added": 12,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "6cd628ece0965e9c6e6106a67a0483b9f84e25b93e155190850f7d21cd89fa87",
+    "writes": 6695,
+    "selected": 3047
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "6cd628ece0965e9c6e6106a67a0483b9f84e25b93e155190850f7d21cd89fa87",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "R24005",
+      "resolved": "C2018"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4480,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 2881.8109999999997,
+    "index_ms": 1693.4784,
+    "unchanged_index_ms": 147.26569999999992,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 12,
+        "milliseconds": 7.494399999999587
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 2.0059999999994034
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 2.842800000000352
+      }
+    ],
+    "rss_bytes": 419295232,
+    "sqlite_bytes": 52166656
+  },
+  "dedup_audit": {
+    "selection": "Every final wave24 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 1,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": [
+      {
+        "duplicate_id": "R24005",
+        "canonical_id": "C2018",
+        "reason": "本例仍是新插入內容干擾既有記憶的倒攝核心；同域與數字對照可補界線及來源，但不另計核心。",
+        "lexical": null,
+        "semantic": null
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "6582e8fe83ba92a6c4149c8a41dec2d789e18bd758119b1be044a07af85e575e",
+    "records": 3419,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.258
+  },
+  "hashes": {
+    "pool.json": "6582e8fe83ba92a6c4149c8a41dec2d789e18bd758119b1be044a07af85e575e",
+    "themes.json": "e81884f7808416f10f599e0db57b68a81435a6b8979a798e366c43953b4cf33a",
+    "manifest.json": "1015d97dc716afa7b5cf23587178d768fe60987302ffd216c493d1abbb14495b",
+    "index.html": "767feda66e07148b7750346218ccdf32d5a666aa11b0f50c900240f0999b0adc",
+    "batches/wave24-life.json": "6b754774c662dcbbe2f68070d8c61635329b889945772a8ad6572fe45271e661",
+    "batches/wave24-physics.json": "bf986270c20bccecd28f0be07f36fc6f0a34c992a619f8d28de4d5e948a283d2",
+    "batches/wave24-sound.json": "5e0a73df64373c9dcfd14a12a030afd752e967cd4f952749e1e6bcbe0c50828e"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3406,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3035,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 246,
+    "changed_old_canonical_ids": [
+      "C2018"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4368,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6059360/",
+        "source_id": "SRC-1571aa761ba8a484",
+        "candidate_ids": [
+          "A24001"
+        ],
+        "theme_ids": [
+          "G250"
+        ]
+      },
+      {
+        "url": "https://publications.diamond.ac.uk/pubman/downloadpublicationdocument?publicationDocumentId=638",
+        "source_id": "SRC-c650a0b97995f948",
+        "candidate_ids": [
+          "A24002"
+        ],
+        "theme_ids": [
+          "G251"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4871580/",
+        "source_id": "SRC-0e0131802b686749",
+        "candidate_ids": [
+          "A24002"
+        ],
+        "theme_ids": [
+          "G251"
+        ]
+      },
+      {
+        "url": "https://repository.si.edu/bitstreams/c3f40db7-5991-4e0e-8c2d-ae7a8a205e42/download",
+        "source_id": "SRC-ed17049e929bf48b",
+        "candidate_ids": [
+          "A24003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/1404.7023",
+        "source_id": "SRC-c027f3fd780cb0c3",
+        "candidate_ids": [
+          "P24001"
+        ],
+        "theme_ids": [
+          "G247"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1701.06818",
+        "source_id": "SRC-9d94957d25db4501",
+        "candidate_ids": [
+          "P24002"
+        ],
+        "theme_ids": [
+          "G247"
+        ]
+      },
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/19690011736/downloads/19690011736.pdf",
+        "source_id": "SRC-03e8bf4ce4d39555",
+        "candidate_ids": [
+          "P24003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pages.uoregon.edu/rempel/_readings/week3-saffman_taylor.pdf",
+        "source_id": "SRC-0e090db8f165955e",
+        "candidate_ids": [
+          "P24004"
+        ],
+        "theme_ids": [
+          "G248"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10265002/",
+        "source_id": "SRC-4f395d4e3a80096e",
+        "candidate_ids": [
+          "P24005"
+        ],
+        "theme_ids": [
+          "G249"
+        ]
+      },
+      {
+        "url": "https://www.brainmusic.org/MBB91%20Webpage/Pitch_I_Shepard.pdf",
+        "source_id": "SRC-b3967cfa151ed108",
+        "candidate_ids": [
+          "R24001"
+        ],
+        "theme_ids": [
+          "G252"
+        ]
+      },
+      {
+        "url": "https://deutsch.ucsd.edu/pdf/P%26P-1987_41_563-575.pdf",
+        "source_id": "SRC-d926b48a3c0ce0a1",
+        "candidate_ids": [
+          "R24002"
+        ],
+        "theme_ids": [
+          "G252"
+        ]
+      },
+      {
+        "url": "https://deutsch.ucsd.edu/pdf/JASA-1975_57_1156-1160.pdf",
+        "source_id": "SRC-596c0842dc0b30d0",
+        "candidate_ids": [
+          "R24003"
+        ],
+        "theme_ids": [
+          "G253"
+        ]
+      },
+      {
+        "url": "https://unism.narod.ru/alb/lib/pr62.pdf",
+        "source_id": "SRC-bdcdebe968cedd01",
+        "candidate_ids": [
+          "R24004"
+        ],
+        "theme_ids": [
+          "G254"
+        ]
+      },
+      {
+        "url": "https://deutsch.ucsd.edu/pdf/Science-1970_168_1604-1605.pdf",
+        "source_id": "SRC-41dbdfbecec4d780",
+        "candidate_ids": [
+          "C2018"
+        ],
+        "theme_ids": []
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://arxiv.org/pdf/1404.7023",
+    "core": "P24001",
+    "theme": "G247",
+    "theme_ids": [
+      "G247"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 105716.1275,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "e94ab6491c87dce98159f2bbe949821c3cb3e5d95ca1c5edc25c6fa059237692"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "f3419ccdd65e7cf76f79f32ec8986b74b4d1c2497f99c4192f958efb3c377d2f"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "c0b934e5798e40c97827e3e7b34b0414e4597628c831bcb9cace2845acf73279",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "320d6e7bb65b553be0773b77943b7cc4c094aed4e7378032982c10304656d0cc"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "6e4f06659b34d951f0bc975211c11a4ec5c3a058d04504910b5652f390689560",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 348,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 22,
+    "unique_blobs_checked": 371,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3493,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G247",
+        "core": "P24001",
+        "seconds": 80,
+        "maximum": 110
+      },
+      {
+        "theme": "G247",
+        "core": "P24002",
+        "seconds": 110,
+        "maximum": 125
+      },
+      {
+        "theme": "G248",
+        "core": "P24004",
+        "seconds": 100,
+        "maximum": 115
+      },
+      {
+        "theme": "G249",
+        "core": "P24005",
+        "seconds": 110,
+        "maximum": 120
+      },
+      {
+        "theme": "G250",
+        "core": "A24001",
+        "seconds": 100,
+        "maximum": 120
+      },
+      {
+        "theme": "G251",
+        "core": "A24002",
+        "seconds": 105,
+        "maximum": 135
+      },
+      {
+        "theme": "G252",
+        "core": "R24001",
+        "seconds": 80,
+        "maximum": 120
+      },
+      {
+        "theme": "G252",
+        "core": "R24002",
+        "seconds": 70,
+        "maximum": 115
+      },
+      {
+        "theme": "G253",
+        "core": "R24003",
+        "seconds": 90,
+        "maximum": 125
+      },
+      {
+        "theme": "G254",
+        "core": "R24004",
+        "seconds": 95,
+        "maximum": 130
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 33,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "80efda985402230252e4bce78cc4796d83ab1dc00b9e4d83bdd3de70457fc499"
+  }
+}

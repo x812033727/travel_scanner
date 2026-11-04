@@ -1,0 +1,54 @@
+{
+  "tested_on": "2026-11-02T00:26:39.474Z",
+  "result": "PASS",
+  "selected": 2959,
+  "index_html_sha256": "2efb04c2a6effc2b04f55de067caaec1ee8a02a48678914f1c2ec939a756e5f7",
+  "source_sample": {
+    "id": "B16001",
+    "urls": [
+      "https://doi.org/10.1073/pnas.1512241112"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new biological construction mechanism question, segment budget, payoff, visual and all source URLs render",
+    "Revised G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave16-desktop.png",
+    "wave16-source-desktop.png",
+    "wave16-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_review": {
+    "reviewer": "root",
+    "observations": [
+      "Desktop 1440x1000: 2959 selected, 2505 used source URLs, 185 themes and 138 aliases visible; search, filters and the first question cards are readable without overlap.",
+      "Expanded B16001 card: question, answer, 80-110 second segment estimate, scope and model/proxy limitation visible. Payoff, visual idea and source links are below the screenshot crop; their presence and URL completeness are supported by DOM assertions, not a visual claim.",
+      "Mobile 390x844: heading wraps, four statistics form two rows, links and filters fit within the viewport. The compact search placeholder is clipped but its input remains visible; the screenshot does not include lower question cards and is not a full-page visual audit."
+    ],
+    "screenshots": [
+      {
+        "file": ".cache/wave16-desktop.png",
+        "sha256": "317024927e5fc654e8a96cec2f38d4cc915a27b5e3eeb79f1eacad3cbd4b4d5b"
+      },
+      {
+        "file": ".cache/wave16-source-desktop.png",
+        "sha256": "2925d08f19f9eb6bd9678d90b2fc31958a042c5c90ec69c3e439a9d1b5633f55"
+      },
+      {
+        "file": ".cache/wave16-mobile.png",
+        "sha256": "9afd689e74e0aec552a23495693b003922130ea60a671d4170a95fcf58ec8c6a"
+      }
+    ]
+  }
+}

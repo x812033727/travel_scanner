@@ -1,0 +1,710 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "78a5f11d24720f7ee493b306a0f93d918d685f55",
+    "selected": 3166,
+    "raw_records": 3543,
+    "not_added": 1485,
+    "pool_sha256": "f53e4d974fc3ed288037a1cc17e8db8005157b05becf8e4b8477a1d2824a91de",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3166.json.gz",
+      "sha256": "db4e2987f0ae1af057ddd2983e48fa68f21b10a462e1536049882d02eaa4f65a"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave36-physics.json",
+      "sha256": "2d1d36311b5215a857ccbbca63fe8848766f1f4c6047b62d66f8b05e7b5b8cc5"
+    },
+    {
+      "file": "reviews/wave36-physics-themes.json",
+      "sha256": "186391312307451b850e56c4068cf76a9a4d1c383f66f82f6414dee8f46fee51"
+    }
+  ],
+  "counts": {
+    "candidates": 7,
+    "sources": 7,
+    "candidate_sources": 7,
+    "not_added_only_sources": 0,
+    "not_added": 17,
+    "near_pairs": 19,
+    "themes": 4
+  },
+  "scope": "咖啡烘焙孔隙、粉碎與留粉、手沖粉床、終杯及分段品評、拿鐵冷卻分層。",
+  "dedup_reading": {
+    "method": "在3543原始候選及1485未收題上搜尋咖啡、磨豆、糖味、粉床、冷凍與其他料理技術，讀所列相近問答的完整答案與條件。",
+    "scan_files": [
+      {
+        "file": ".cache/wave36-physics-scan.json",
+        "sha256": "b2d3863605c88462e21c232a243aef05dbb6e94159fc45b6206d6124a104be83"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "X36-001",
+      "b": "D2040",
+      "proposed": "distinct",
+      "reason": "打入氣泡改變冰淇淋的密度；烘豆則比對等失重時氣體驅動的孔體積與組織抵抗變形。",
+      "a_snapshot": {
+        "id": "X36-001",
+        "question": "烘豆都烘掉約一成半重量，為什麼同樣重的一把豆，體積會差這麼多？",
+        "answer_target": "在失重比例接近時，高溫短時組每克豆子的體積仍比低溫長時組大，測得可進入的孔體積也更大。加熱時生成的氣體與水汽向外推，組織抵抗變形；作者以兩者的平衡解釋不同程序留下的孔隙。",
+        "scope": "兩種熱風程序，失重約15%；不把相同失重說成顏色或風味必然相同，未直接量豆內壓力歷程。"
+      },
+      "b_snapshot": {
+        "id": "D2040",
+        "question": "冰淇淋裡為什麼要打進空氣？",
+        "answer_target": "空氣泡改變密度與入口結構，不能只以重量判定口感。",
+        "scope": "Ice Cream；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "X36-001",
+      "b": "H3024",
+      "proposed": "distinct",
+      "reason": "聚合物玻璃轉移是可能影響結構阻力的因素，本研究控制烘焙熱史、量的是孔體積，沒有測玻璃轉移點。",
+      "a_snapshot": {
+        "id": "X36-001",
+        "question": "烘豆都烘掉約一成半重量，為什麼同樣重的一把豆，體積會差這麼多？",
+        "answer_target": "在失重比例接近時，高溫短時組每克豆子的體積仍比低溫長時組大，測得可進入的孔體積也更大。加熱時生成的氣體與水汽向外推，組織抵抗變形；作者以兩者的平衡解釋不同程序留下的孔隙。",
+        "scope": "兩種熱風程序，失重約15%；不把相同失重說成顏色或風味必然相同，未直接量豆內壓力歷程。"
+      },
+      "b_snapshot": {
+        "id": "H3024",
+        "question": "塑膠變軟不一定是熔化，玻璃轉移在改變什麼？",
+        "answer_target": "非晶鏈段活動性增加的玻璃轉移，與晶區有序堆疊消失的熔融不同。",
+        "scope": "比較 Tg/Tm；不把所有熱塑料一概說成室溫低於Tg。"
+      }
+    },
+    {
+      "a": "X36-001",
+      "b": "X36-002",
+      "proposed": "distinct",
+      "reason": "烘焙留下的孔隙結構，對照磨前暫時冷卻又回溫的可逆結果。",
+      "a_snapshot": {
+        "id": "X36-001",
+        "question": "烘豆都烘掉約一成半重量，為什麼同樣重的一把豆，體積會差這麼多？",
+        "answer_target": "在失重比例接近時，高溫短時組每克豆子的體積仍比低溫長時組大，測得可進入的孔體積也更大。加熱時生成的氣體與水汽向外推，組織抵抗變形；作者以兩者的平衡解釋不同程序留下的孔隙。",
+        "scope": "兩種熱風程序，失重約15%；不把相同失重說成顏色或風味必然相同，未直接量豆內壓力歷程。"
+      },
+      "b_snapshot": {
+        "id": "X36-002",
+        "question": "磨豆機的刻度沒動，光是豆子從哪個溫度進去，粉怎麼就不一樣了？",
+        "answer_target": "同一批烘豆、同一室溫刀盤，冷豆直接磨得到的粒徑分布改變，最常見的粒徑變小。先深冷後回到室溫才磨，與未深冷的室溫豆相比看不到明顯差異，支持破碎當下的豆溫會影響碎裂結果。",
+        "scope": "四種起始豆溫。冷豆碰上室溫刀盤仍可升溫；沒有直接量出微觀相轉移或證明味道變好。"
+      }
+    },
+    {
+      "a": "X36-002",
+      "b": "F4008",
+      "proposed": "distinct",
+      "reason": "小麥調濕讓麩皮與胚乳分離；烘豆調起始溫度與回溫控制量磨後粒徑。",
+      "a_snapshot": {
+        "id": "X36-002",
+        "question": "磨豆機的刻度沒動，光是豆子從哪個溫度進去，粉怎麼就不一樣了？",
+        "answer_target": "同一批烘豆、同一室溫刀盤，冷豆直接磨得到的粒徑分布改變，最常見的粒徑變小。先深冷後回到室溫才磨，與未深冷的室溫豆相比看不到明顯差異，支持破碎當下的豆溫會影響碎裂結果。",
+        "scope": "四種起始豆溫。冷豆碰上室溫刀盤仍可升溫；沒有直接量出微觀相轉移或證明味道變好。"
+      },
+      "b_snapshot": {
+        "id": "F4008",
+        "question": "麥粒準備磨成乾麵粉前，工廠為什麼反而先加一點水？",
+        "answer_target": "調濕使麩皮韌性提高，減少它與胚乳一起碎成難分離的細粉。",
+        "scope": "限小麥磨粉調質；不是所有穀物都同樣處理。"
+      }
+    },
+    {
+      "a": "X36-002",
+      "b": "F4030",
+      "proposed": "distinct",
+      "reason": "舊題固定粉徑看粉床局部堵塞影響萃取；新題量豆溫怎樣改變碎片分布。",
+      "a_snapshot": {
+        "id": "X36-002",
+        "question": "磨豆機的刻度沒動，光是豆子從哪個溫度進去，粉怎麼就不一樣了？",
+        "answer_target": "同一批烘豆、同一室溫刀盤，冷豆直接磨得到的粒徑分布改變，最常見的粒徑變小。先深冷後回到室溫才磨，與未深冷的室溫豆相比看不到明顯差異，支持破碎當下的豆溫會影響碎裂結果。",
+        "scope": "四種起始豆溫。冷豆碰上室溫刀盤仍可升溫；沒有直接量出微觀相轉移或證明味道變好。"
+      },
+      "b_snapshot": {
+        "id": "F4030",
+        "question": "咖啡磨得更細，為什麼濃縮咖啡的萃取率反而可能下降？",
+        "answer_target": "粒徑縮小原可增加可萃取表面，但過細粉床可能局部堵塞或不均勻流動，使部分咖啡較少接觸通過的水。",
+        "scope": "限所研究濃縮咖啡粉床與參數區間；萃取率不是飲料濃度或好喝程度，機制為與實驗相符的模型推論。"
+      }
+    },
+    {
+      "a": "X36-002",
+      "b": "X36-003",
+      "proposed": "distinct",
+      "reason": "當下的碎裂與哪些細粉留在磨機、何時可以取回，是不同條件。",
+      "a_snapshot": {
+        "id": "X36-002",
+        "question": "磨豆機的刻度沒動，光是豆子從哪個溫度進去，粉怎麼就不一樣了？",
+        "answer_target": "同一批烘豆、同一室溫刀盤，冷豆直接磨得到的粒徑分布改變，最常見的粒徑變小。先深冷後回到室溫才磨，與未深冷的室溫豆相比看不到明顯差異，支持破碎當下的豆溫會影響碎裂結果。",
+        "scope": "四種起始豆溫。冷豆碰上室溫刀盤仍可升溫；沒有直接量出微觀相轉移或證明味道變好。"
+      },
+      "b_snapshot": {
+        "id": "X36-003",
+        "question": "兩種方法都能讓咖啡粉少帶電，為什麼只有其中一種讓這杯濃縮流得明顯更慢？",
+        "answer_target": "在磨豆前加微量水，能減少細粉留在腔內和粉末因電荷結團；收回的粉組成因而改變。出粉口才用離子消電，夠得到已出來的粉，卻無法補回先黏住的細粉。對照中兩法都降低帶電，磨前處理才出現明顯較慢的出液。",
+        "scope": "該研究指定深焙豆、磨機及定量濃縮。出口消電仍可略改濃度；不把出液時間當風味喜好。"
+      }
+    },
+    {
+      "a": "X36-003",
+      "b": "F4008",
+      "proposed": "distinct",
+      "reason": "加水時機表面相近，小麥改麩皮韌性；咖啡以出口離子作對照，另量腔內留粉與出液速度。",
+      "a_snapshot": {
+        "id": "X36-003",
+        "question": "兩種方法都能讓咖啡粉少帶電，為什麼只有其中一種讓這杯濃縮流得明顯更慢？",
+        "answer_target": "在磨豆前加微量水，能減少細粉留在腔內和粉末因電荷結團；收回的粉組成因而改變。出粉口才用離子消電，夠得到已出來的粉，卻無法補回先黏住的細粉。對照中兩法都降低帶電，磨前處理才出現明顯較慢的出液。",
+        "scope": "該研究指定深焙豆、磨機及定量濃縮。出口消電仍可略改濃度；不把出液時間當風味喜好。"
+      },
+      "b_snapshot": {
+        "id": "F4008",
+        "question": "麥粒準備磨成乾麵粉前，工廠為什麼反而先加一點水？",
+        "answer_target": "調濕使麩皮韌性提高，減少它與胚乳一起碎成難分離的細粉。",
+        "scope": "限小麥磨粉調質；不是所有穀物都同樣處理。"
+      }
+    },
+    {
+      "a": "X36-003",
+      "b": "X34-002",
+      "proposed": "distinct",
+      "reason": "舊研究換磨機以排除混入別批的成分；新題比較同一批中細粉是否能進入收粉杯。",
+      "a_snapshot": {
+        "id": "X36-003",
+        "question": "兩種方法都能讓咖啡粉少帶電，為什麼只有其中一種讓這杯濃縮流得明顯更慢？",
+        "answer_target": "在磨豆前加微量水，能減少細粉留在腔內和粉末因電荷結團；收回的粉組成因而改變。出粉口才用離子消電，夠得到已出來的粉，卻無法補回先黏住的細粉。對照中兩法都降低帶電，磨前處理才出現明顯較慢的出液。",
+        "scope": "該研究指定深焙豆、磨機及定量濃縮。出口消電仍可略改濃度；不把出液時間當風味喜好。"
+      },
+      "b_snapshot": {
+        "id": "X34-002",
+        "question": "磨豆機換新的，純阿拉比卡怎麼還會出現原本用來抓摻豆的訊號？",
+        "answer_target": "研究把咖啡油脂萃取物濃縮後，在有確定來源的阿拉比卡也看見微弱的特徵峰。改用全新磨豆機仍在，交替磨豆的重複測量也沒有出現預期的帶入效應。峰的有無不能單獨定案；要把峰面積同正品範圍及已知混合樣本比較。",
+        "scope": "限烘焙豆、文中30份阿拉比卡與特定測法。部分阿拉比卡的基線較高，且峰含兩種相關物；不能從未知樣品面積精確讀出通用摻量。"
+      }
+    },
+    {
+      "a": "X36-003",
+      "b": "E2002",
+      "proposed": "distinct",
+      "reason": "外場造成電荷重新分布未回答不同處理位置能否救回已留在機內的細粉。",
+      "a_snapshot": {
+        "id": "X36-003",
+        "question": "兩種方法都能讓咖啡粉少帶電，為什麼只有其中一種讓這杯濃縮流得明顯更慢？",
+        "answer_target": "在磨豆前加微量水，能減少細粉留在腔內和粉末因電荷結團；收回的粉組成因而改變。出粉口才用離子消電，夠得到已出來的粉，卻無法補回先黏住的細粉。對照中兩法都降低帶電，磨前處理才出現明顯較慢的出液。",
+        "scope": "該研究指定深焙豆、磨機及定量濃縮。出口消電仍可略改濃度；不把出液時間當風味喜好。"
+      },
+      "b_snapshot": {
+        "id": "E2002",
+        "question": "帶電物靠近金屬卻沒碰到，金屬兩端怎麼先有了不同電性？",
+        "answer_target": "外部電場使導電電子重新分布，總電荷可以保持不變。",
+        "scope": "孤立中性導體；靜電近似"
+      }
+    },
+    {
+      "a": "X36-003",
+      "b": "F4030",
+      "proposed": "distinct",
+      "reason": "舊題討論指定研磨粗細造成通水不均；新題改消電位置來量留粉成分和其後的流量。",
+      "a_snapshot": {
+        "id": "X36-003",
+        "question": "兩種方法都能讓咖啡粉少帶電，為什麼只有其中一種讓這杯濃縮流得明顯更慢？",
+        "answer_target": "在磨豆前加微量水，能減少細粉留在腔內和粉末因電荷結團；收回的粉組成因而改變。出粉口才用離子消電，夠得到已出來的粉，卻無法補回先黏住的細粉。對照中兩法都降低帶電，磨前處理才出現明顯較慢的出液。",
+        "scope": "該研究指定深焙豆、磨機及定量濃縮。出口消電仍可略改濃度；不把出液時間當風味喜好。"
+      },
+      "b_snapshot": {
+        "id": "F4030",
+        "question": "咖啡磨得更細，為什麼濃縮咖啡的萃取率反而可能下降？",
+        "answer_target": "粒徑縮小原可增加可萃取表面，但過細粉床可能局部堵塞或不均勻流動，使部分咖啡較少接觸通過的水。",
+        "scope": "限所研究濃縮咖啡粉床與參數區間；萃取率不是飲料濃度或好喝程度，機制為與實驗相符的模型推論。"
+      }
+    },
+    {
+      "a": "X36-004",
+      "b": "E7022",
+      "proposed": "distinct",
+      "reason": "河床淘去細料而留下護甲與可反覆掏空、堆積後崩落的粉床不同。",
+      "a_snapshot": {
+        "id": "X36-004",
+        "question": "手沖只沖中間一點，為什麼濾杯兩側的粉也會整片滑下來？",
+        "answer_target": "水柱須先穿入上層液體並挖動底部，顆粒被揚起、往邊緣堆，斜面的顆粒再受重力滑回，讓單點注水帶動更大區域。真咖啡另試注水高度，較粗水柱隨高度增加杯中固形物濃度上升；細水柱未見同樣明顯的高度差。",
+        "scope": "運動細節取自透明的二氧化矽凝膠顆粒（silica gel）床，真咖啡試驗測成品濃度。直徑和供水時間的差別不能用作普遍的最佳注水高度。"
+      },
+      "b_snapshot": {
+        "id": "E7022",
+        "question": "河床表面的石頭為什麼可能比下面粗，還擋住繼續沖刷？",
+        "answer_target": "特定水流先移走表層細粒，留下較難搬動的粗粒覆蓋；條件變強仍可破壞這層保護。",
+        "scope": "限去細留粗形成護甲的簡化條件；天然粗化也有其他顆粒過程，不把護甲當永久不動或工程防洪保證。"
+      }
+    },
+    {
+      "a": "X36-004",
+      "b": "F4030",
+      "proposed": "distinct",
+      "reason": "粉床有壓差時局部不通水，與可移動床的射流掏蝕和側滑循環不同。",
+      "a_snapshot": {
+        "id": "X36-004",
+        "question": "手沖只沖中間一點，為什麼濾杯兩側的粉也會整片滑下來？",
+        "answer_target": "水柱須先穿入上層液體並挖動底部，顆粒被揚起、往邊緣堆，斜面的顆粒再受重力滑回，讓單點注水帶動更大區域。真咖啡另試注水高度，較粗水柱隨高度增加杯中固形物濃度上升；細水柱未見同樣明顯的高度差。",
+        "scope": "運動細節取自透明的二氧化矽凝膠顆粒（silica gel）床，真咖啡試驗測成品濃度。直徑和供水時間的差別不能用作普遍的最佳注水高度。"
+      },
+      "b_snapshot": {
+        "id": "F4030",
+        "question": "咖啡磨得更細，為什麼濃縮咖啡的萃取率反而可能下降？",
+        "answer_target": "粒徑縮小原可增加可萃取表面，但過細粉床可能局部堵塞或不均勻流動，使部分咖啡較少接觸通過的水。",
+        "scope": "限所研究濃縮咖啡粉床與參數區間；萃取率不是飲料濃度或好喝程度，機制為與實驗相符的模型推論。"
+      }
+    },
+    {
+      "a": "X36-004",
+      "b": "H3092",
+      "proposed": "distinct",
+      "reason": "咖啡環是固定接觸線蒸發補流；錐形濾床是不斷入水造成顆粒再懸浮與崩落。",
+      "a_snapshot": {
+        "id": "X36-004",
+        "question": "手沖只沖中間一點，為什麼濾杯兩側的粉也會整片滑下來？",
+        "answer_target": "水柱須先穿入上層液體並挖動底部，顆粒被揚起、往邊緣堆，斜面的顆粒再受重力滑回，讓單點注水帶動更大區域。真咖啡另試注水高度，較粗水柱隨高度增加杯中固形物濃度上升；細水柱未見同樣明顯的高度差。",
+        "scope": "運動細節取自透明的二氧化矽凝膠顆粒（silica gel）床，真咖啡試驗測成品濃度。直徑和供水時間的差別不能用作普遍的最佳注水高度。"
+      },
+      "b_snapshot": {
+        "id": "H3092",
+        "question": "一滴咖啡乾掉，為什麼顏色常擠到外圈而不是均勻留下？",
+        "answer_target": "固定接觸線的液滴蒸發時，補充外緣損失的液流將懸浮顆粒輸送到邊緣。",
+        "scope": "限接觸線固定且外向輸送重要的情境；顆粒、表面與內部流動可改變沉積，不宣稱任何液滴必成環。"
+      }
+    },
+    {
+      "a": "X36-005",
+      "b": "F4030",
+      "proposed": "distinct",
+      "reason": "控制同一杯濃度與粉中取出比例後盲評水溫；不是比較濃縮細粉造成萃取率下降。",
+      "a_snapshot": {
+        "id": "X36-005",
+        "question": "沖水溫度相差六度，兩杯滴濾咖啡嚐起來卻很接近，實驗究竟調齊了什麼？",
+        "answer_target": "不同水溫可改變萃取進程。研究者調整時間、流量、粉量與粗細，使飲液濃度和從乾粉取出的比例各自匹配，再讓受試者以相同入口溫度盲評。測到的整體風味差異主要跟濃度及萃取率走，沖水溫度的額外影響小。",
+        "scope": "限87、90、93°C，同豆、滴濾、相近目標值，飲用時65±1°C。單項有微小差異；未研究冷萃或喜好。"
+      },
+      "b_snapshot": {
+        "id": "F4030",
+        "question": "咖啡磨得更細，為什麼濃縮咖啡的萃取率反而可能下降？",
+        "answer_target": "粒徑縮小原可增加可萃取表面，但過細粉床可能局部堵塞或不均勻流動，使部分咖啡較少接觸通過的水。",
+        "scope": "限所研究濃縮咖啡粉床與參數區間；萃取率不是飲料濃度或好喝程度，機制為與實驗相符的模型推論。"
+      }
+    },
+    {
+      "a": "X36-005",
+      "b": "X36-006",
+      "proposed": "distinct",
+      "reason": "前者配對成品、控制入口溫度後看水溫；後者在同次沖煮中分時取樣，再查甜感是否能由糖濃度解釋。",
+      "a_snapshot": {
+        "id": "X36-005",
+        "question": "沖水溫度相差六度，兩杯滴濾咖啡嚐起來卻很接近，實驗究竟調齊了什麼？",
+        "answer_target": "不同水溫可改變萃取進程。研究者調整時間、流量、粉量與粗細，使飲液濃度和從乾粉取出的比例各自匹配，再讓受試者以相同入口溫度盲評。測到的整體風味差異主要跟濃度及萃取率走，沖水溫度的額外影響小。",
+        "scope": "限87、90、93°C，同豆、滴濾、相近目標值，飲用時65±1°C。單項有微小差異；未研究冷萃或喜好。"
+      },
+      "b_snapshot": {
+        "id": "X36-006",
+        "question": "一壺滴濾咖啡中途換杯，後段嚐起來更甜，是糖都留到後面才出來嗎？",
+        "answer_target": "分段接取時後段較淡，但感官評分中的甜感增強。化學測量沒有出現足以解釋這個甜感的單糖濃度；用測得游離糖與文獻知覺閾值比，後段甜不能直接解讀為後段溶出了更多可嚐出的糖。苦酸減弱或香氣聯想仍是待拆驗的解釋。",
+        "scope": "分段接取的滴濾試驗，只談受測材料和描述評分。閾值來自文獻，未把所有糖與感官遮蔽各自操弄。"
+      }
+    },
+    {
+      "a": "X36-006",
+      "b": "X34-002",
+      "proposed": "distinct",
+      "reason": "摻豆檢驗的特徵峰背景不等於分段甜感與知覺閾值的比較。",
+      "a_snapshot": {
+        "id": "X36-006",
+        "question": "一壺滴濾咖啡中途換杯，後段嚐起來更甜，是糖都留到後面才出來嗎？",
+        "answer_target": "分段接取時後段較淡，但感官評分中的甜感增強。化學測量沒有出現足以解釋這個甜感的單糖濃度；用測得游離糖與文獻知覺閾值比，後段甜不能直接解讀為後段溶出了更多可嚐出的糖。苦酸減弱或香氣聯想仍是待拆驗的解釋。",
+        "scope": "分段接取的滴濾試驗，只談受測材料和描述評分。閾值來自文獻，未把所有糖與感官遮蔽各自操弄。"
+      },
+      "b_snapshot": {
+        "id": "X34-002",
+        "question": "磨豆機換新的，純阿拉比卡怎麼還會出現原本用來抓摻豆的訊號？",
+        "answer_target": "研究把咖啡油脂萃取物濃縮後，在有確定來源的阿拉比卡也看見微弱的特徵峰。改用全新磨豆機仍在，交替磨豆的重複測量也沒有出現預期的帶入效應。峰的有無不能單獨定案；要把峰面積同正品範圍及已知混合樣本比較。",
+        "scope": "限烘焙豆、文中30份阿拉比卡與特定測法。部分阿拉比卡的基線較高，且峰含兩種相關物；不能從未知樣品面積精確讀出通用摻量。"
+      }
+    },
+    {
+      "a": "X36-006",
+      "b": "F4030",
+      "proposed": "distinct",
+      "reason": "溶出固形物的總量並非能不能感到甜的單糖濃度。",
+      "a_snapshot": {
+        "id": "X36-006",
+        "question": "一壺滴濾咖啡中途換杯，後段嚐起來更甜，是糖都留到後面才出來嗎？",
+        "answer_target": "分段接取時後段較淡，但感官評分中的甜感增強。化學測量沒有出現足以解釋這個甜感的單糖濃度；用測得游離糖與文獻知覺閾值比，後段甜不能直接解讀為後段溶出了更多可嚐出的糖。苦酸減弱或香氣聯想仍是待拆驗的解釋。",
+        "scope": "分段接取的滴濾試驗，只談受測材料和描述評分。閾值來自文獻，未把所有糖與感官遮蔽各自操弄。"
+      },
+      "b_snapshot": {
+        "id": "F4030",
+        "question": "咖啡磨得更細，為什麼濃縮咖啡的萃取率反而可能下降？",
+        "answer_target": "粒徑縮小原可增加可萃取表面，但過細粉床可能局部堵塞或不均勻流動，使部分咖啡較少接觸通過的水。",
+        "scope": "限所研究濃縮咖啡粉床與參數區間；萃取率不是飲料濃度或好喝程度，機制為與實驗相符的模型推論。"
+      }
+    },
+    {
+      "a": "X36-007",
+      "b": "N185",
+      "proposed": "distinct",
+      "reason": "潮流與河水補給決定河口上下是否混合；模型中側冷降溫、垂直密度梯度與層內環流共同造成多層。",
+      "a_snapshot": {
+        "id": "X36-007",
+        "question": "咖啡倒進溫牛奶本來一團亂，放著冷卻，怎麼自己排出好幾層？",
+        "answer_target": "上方混合液與下方仍有密度差。鹽水類比實驗中，靠杯壁冷卻的液體下沉，到接近自身密度的高度就轉向內側，形成層內循環。注入速度足以減弱初始垂直密度梯度時，這些循環把各層內部混勻，層與層之間卻留下界線。",
+        "scope": "實際拿鐵只作分層觀察；以染色溫水注入溫鹽水的密度形狀和粒子測速辨機制。初期並非全杯均勻；類比的臨界速度不套用牛奶。"
+      },
+      "b_snapshot": {
+        "id": "N185",
+        "question": "有些河口上下都是混合水，有些卻分層，差在哪裡？",
+        "answer_target": "潮流攪拌與河流供水的相對強弱。",
+        "scope": "Classifying Estuaries: By Water Circulation"
+      }
+    },
+    {
+      "a": "X36-007",
+      "b": "H3092",
+      "proposed": "distinct",
+      "reason": "拿鐵的色帶來自液內不同的循環層；不是接觸線蒸發後留下的環狀沉積。",
+      "a_snapshot": {
+        "id": "X36-007",
+        "question": "咖啡倒進溫牛奶本來一團亂，放著冷卻，怎麼自己排出好幾層？",
+        "answer_target": "上方混合液與下方仍有密度差。鹽水類比實驗中，靠杯壁冷卻的液體下沉，到接近自身密度的高度就轉向內側，形成層內循環。注入速度足以減弱初始垂直密度梯度時，這些循環把各層內部混勻，層與層之間卻留下界線。",
+        "scope": "實際拿鐵只作分層觀察；以染色溫水注入溫鹽水的密度形狀和粒子測速辨機制。初期並非全杯均勻；類比的臨界速度不套用牛奶。"
+      },
+      "b_snapshot": {
+        "id": "H3092",
+        "question": "一滴咖啡乾掉，為什麼顏色常擠到外圈而不是均勻留下？",
+        "answer_target": "固定接觸線的液滴蒸發時，補充外緣損失的液流將懸浮顆粒輸送到邊緣。",
+        "scope": "限接觸線固定且外向輸送重要的情境；顆粒、表面與內部流動可改變沉積，不宣稱任何液滴必成環。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "X36-S001",
+      "doi": "10.1111/j.1365-2621.2000.tb16026.x",
+      "primary_body_url": "https://www.expresssearch.com/sample-results/patentability/npl/Schenker%202000.pdf",
+      "identity_relation": "出版版頁452–457之公開PDF副本，封面及頁碼與原刊一致。",
+      "old_exact_matches": [],
+      "count_policy": "同一論文以典藏、研究團隊網站或正式原刊取得皆只算一項研究。"
+    },
+    {
+      "source_id": "X36-S002",
+      "doi": "10.1038/srep24483",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4834475/fullTextXML",
+      "identity_relation": "Europe PMC 原刊 XML。",
+      "old_exact_matches": [],
+      "count_policy": "同一論文以典藏、研究團隊網站或正式原刊取得皆只算一項研究。"
+    },
+    {
+      "source_id": "X36-S003",
+      "doi": "10.1016/j.isci.2024.110639",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11402325/fullTextXML",
+      "identity_relation": "Europe PMC 原刊 XML。",
+      "old_exact_matches": [],
+      "count_policy": "同一論文以典藏、研究團隊網站或正式原刊取得皆只算一項研究。"
+    },
+    {
+      "source_id": "X36-S004",
+      "doi": "10.1063/5.0257924",
+      "primary_body_url": "https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/8/725/files/2025/04/30.pdf",
+      "identity_relation": "賓大研究團隊網站所載原刊PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同一論文以典藏、研究團隊網站或正式原刊取得皆只算一項研究。"
+    },
+    {
+      "source_id": "X36-S005",
+      "doi": "10.1038/s41598-020-73341-4",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7536440/fullTextXML",
+      "identity_relation": "Europe PMC 原刊 XML。",
+      "old_exact_matches": [],
+      "count_policy": "同一論文以典藏、研究團隊網站或正式原刊取得皆只算一項研究。"
+    },
+    {
+      "source_id": "X36-S006",
+      "doi": "10.1002/jsfa.10323",
+      "primary_body_url": "https://www.researchgate.net/publication/339110495_Sensory_and_monosaccharide_analysis_of_drip_brew_coffee_fractions_versus_brewing_time",
+      "identity_relation": "ResearchGate載原作者論文可讀正文；Wiley原刊PDF回403。快取為web工具的定點正文回傳，非原刊PDF或完整全文。",
+      "old_exact_matches": [],
+      "count_policy": "同一論文以典藏、研究團隊網站或正式原刊取得皆只算一項研究。"
+    },
+    {
+      "source_id": "X36-S007",
+      "doi": "10.1038/s41467-017-01852-2",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5727143/fullTextXML",
+      "identity_relation": "Europe PMC 原刊 XML。",
+      "old_exact_matches": [],
+      "count_policy": "同一論文以典藏、研究團隊網站或正式原刊取得皆只算一項研究。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "X36-S001",
+      "scope": "PDF pp1–3 Results、Table 1、Figs1–4；pp4–5烘焙條件及孔隙測法。",
+      "locator": "PDF pp1–3 Results、Table 1、Figs1–4；pp4–5烘焙條件及孔隙測法。",
+      "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+      "cache": {
+        "file": ".cache/wave36-physics-roast.pdf",
+        "sha256": "7752ccb37c8781e490c80726979c2c0e2ddc9d5d6d9913593ad8ce279a0fbc18",
+        "text_file": ".cache/wave36-physics-roast.txt",
+        "text_sha256": "c948d9d7fc95b49318e7366050750c9bf3627900b3aa2bc90b8967b9704b06ab"
+      }
+    },
+    {
+      "source_id": "X36-S002",
+      "scope": "P024–026、P037–042，Fig4a–d，另讀回溫控制。",
+      "locator": "P024–026、P037–042，Fig4a–d，另讀回溫控制。",
+      "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+      "cache": {
+        "file": ".cache/wave36-physics-grind.xml",
+        "sha256": "f11161bf4b11175cc2e72303dabf8ee9f1cd96ad6142e48941a4d865671081f9",
+        "text_file": ".cache/wave36-physics-grind.txt",
+        "text_sha256": "2e326e9f328eb82e5258628a3a43c177320af64ea730fb188ebf8c89674d890b"
+      }
+    },
+    {
+      "source_id": "X36-S003",
+      "scope": "P020–029、P039–057，Figs4、5，粉末電荷、留粉分布、定量濃縮液流量。",
+      "locator": "P020–029、P039–057，Figs4、5，粉末電荷、留粉分布、定量濃縮液流量。",
+      "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+      "cache": {
+        "file": ".cache/wave36-physics-static.xml",
+        "sha256": "e0b1cb0905aa2a999fe4a0f9de18cb34c614333c050d8751d2282740d75cff36",
+        "text_file": ".cache/wave36-physics-static.txt",
+        "text_sha256": "0a16502583bfc6eaf44169b94edcb7ddd2304a4a3bf795ab7068558c9ffc5c34"
+      }
+    },
+    {
+      "source_id": "X36-S004",
+      "scope": "PDF pp4–9 §§II、III F–G，p8 Fig6a–f及Fig7a–b。",
+      "locator": "PDF pp4–9 §§II、III F–G，p8 Fig6a–f及Fig7a–b。",
+      "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+      "cache": {
+        "file": ".cache/wave36-physics-jet.pdf",
+        "sha256": "7ebdcaff33b48f348bdeaa272f4763c73dcdda93d7ca3a1eb849dff04a1ef876",
+        "text_file": ".cache/wave36-physics-jet.txt",
+        "text_sha256": "cbd1818ec2637d24c801234e00e21692633137934cdc018ff5e5733d99a9e298"
+      }
+    },
+    {
+      "source_id": "X36-S005",
+      "scope": "P016–019、P038–039、P056、P065；Fig2、Table2、Fig3圖說。",
+      "locator": "P016–019、P038–039、P056、P065；Fig2、Table2、Fig3圖說。",
+      "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+      "cache": {
+        "file": ".cache/wave36-physics-brew.xml",
+        "sha256": "19e47507f5e3546fce5cc927f00fd9f7e2ddc6cecf5ca1e22deb512b5e36acfa",
+        "text_file": ".cache/wave36-physics-brew.txt",
+        "text_sha256": "dbf09f039ec3a7ca336d9bd0ede88b22817162cca0bdd3c2b9e6ff68c9d38863"
+      }
+    },
+    {
+      "source_id": "X36-S006",
+      "scope": "Figures 1–2、5圖說與Results/Discussion相鄰段落，回傳L1787–2002、L3320–3370，含單糖濃度與文獻閾值判讀。",
+      "locator": "Figures 1–2、5圖說與Results/Discussion相鄰段落，回傳L1787–2002、L3320–3370，含單糖濃度與文獻閾值判讀。",
+      "read_via": "web查原刊身分；成功路線web.open/find作者公開全文的指定段，保留文字回傳。",
+      "cache": {
+        "file": ".cache/wave36-physics-sweet-web.txt",
+        "sha256": "ad383e9a494dbf58215b5f60a9e881697c25339202d311e513284c47c42cd75c",
+        "text_file": ".cache/wave36-physics-sweet-web.txt",
+        "text_sha256": "ad383e9a494dbf58215b5f60a9e881697c25339202d311e513284c47c42cd75c"
+      }
+    },
+    {
+      "source_id": "X36-S007",
+      "scope": "P006–020、Figs1–3；真拿鐵照片、鹽水模型注入速度、密度與粒子測速。",
+      "locator": "P006–020、Figs1–3；真拿鐵照片、鹽水模型注入速度、密度與粒子測速。",
+      "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+      "cache": {
+        "file": ".cache/wave36-physics-latte.xml",
+        "sha256": "8f3be6b0bb5faa44525c2e89ee2623bc9d171a9487e13af87abbe75aa2d4df98",
+        "text_file": ".cache/wave36-physics-latte.txt",
+        "text_sha256": "00028bd0574f76ef2f8ae9d9b15f91c83d4c096f6dc6ecb2f51df36f4df32159"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave36-physics-fetch.json",
+      "sha256": "f6bd17ce70d689a01aaf6bf8ecf7f227dd1cc771ac166d815e2a5a51da314376"
+    },
+    {
+      "file": ".cache/wave36-physics-roast-route.json",
+      "sha256": "6f6ba0c3895c8cd4df4249c9f3c274f05df8cf558f6b4bcf7b5353913e2d5937"
+    }
+  ],
+  "retrieval_failures": [
+    "甜感分段論文Wiley PDF 403，以ResearchGate作者公開論文正文指定回傳支持；兩者同文。",
+    "Crema組成與紙濾萃取物論文當日指定UA 403，其方向列未收。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "X36-S001",
+      "file": ".cache/wave36-physics-roast-p2.png",
+      "sha256": "9df44f46c10f37c09cc503b8d1d5326c3775012540e7496672c8bc79fd2fa165",
+      "read_scope": "Fig2與Table1，等失重比例下的體積。"
+    },
+    {
+      "source_id": "X36-S002",
+      "file": ".cache/wave36-physics-grind-f4.jpg",
+      "sha256": "de118614c4ada4582b4ec507f3cdf910e6366467632728454b7a5bcbcf466370",
+      "read_scope": "Fig4讀數目眾數和分布形狀分圖。"
+    },
+    {
+      "source_id": "X36-S003",
+      "file": ".cache/wave36-physics-static-f4.jpg",
+      "sha256": "f56dab392ecb29c0ffb65a87705654678d81608a8c0cd094f5fc88463cab8415",
+      "read_scope": "Fig4磨腔留粉/粉徑、Fig5沖煮時間與流量各在對應原圖。"
+    },
+    {
+      "source_id": "X36-S003",
+      "file": ".cache/wave36-physics-static-f5.jpg",
+      "sha256": "ec230d3d6f51fa453d21efecfa3ca7f9e3751be44f379a7d94abf0269a2bbc41",
+      "read_scope": "Fig4磨腔留粉/粉徑、Fig5沖煮時間與流量各在對應原圖。"
+    },
+    {
+      "source_id": "X36-S004",
+      "file": ".cache/wave36-physics-jet-p8.png",
+      "sha256": "933b6f3f399586f6881586c326f4f824653d93d76a211185563742b8e02c8740",
+      "read_scope": "Fig6顆粒床軌跡/機制示意；Fig7粗、細水柱兩組。"
+    },
+    {
+      "source_id": "X36-S005",
+      "file": ".cache/wave36-physics-brew-f2.jpg",
+      "sha256": "88d95a0e380195c4322b4b86495e2b286a89c55167475a0f7298eabc235bc282",
+      "read_scope": "Fig2三溫下各目標的實測濃度與萃取率散點。"
+    },
+    {
+      "source_id": "X36-S007",
+      "file": ".cache/wave36-physics-latte-f1.jpg",
+      "sha256": "387e360571182a417eaacc9fea06bce0234d8a79adbd3900e9746ec53f653964",
+      "read_scope": "Fig1真拿鐵時序及模型裝置；Fig2兩種速度與模型流場分圖。"
+    },
+    {
+      "source_id": "X36-S007",
+      "file": ".cache/wave36-physics-latte-f2.jpg",
+      "sha256": "285bdc9763b1a6bcdd96fd2d3354aaeb9b0a0aef2aa33b8c9afa85f346bfb2da",
+      "read_scope": "Fig1真拿鐵時序及模型裝置；Fig2兩種速度與模型流場分圖。"
+    }
+  ],
+  "reading_limits": [
+    "兩份原刊PDF副本、四篇Europe PMC原刊XML、一篇作者公開正文以web定點段落存文字；8個圖頁目讀。未重作分析或測試飲品。",
+    "感官甜味是描述評分，非喜好；對味覺遮蔽及香氣的推測未作因果核准。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W36P-T01",
+      "body_seconds": 78,
+      "chapter_seconds": [
+        34,
+        44
+      ],
+      "core_seconds": {
+        "X36-002": 34,
+        "X36-003": 44
+      },
+      "max_beat_seconds": 22,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W36P-T02",
+      "body_seconds": 63,
+      "chapter_seconds": [
+        31,
+        32
+      ],
+      "core_seconds": {
+        "X36-004": 63
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W36P-T03",
+      "body_seconds": 72,
+      "chapter_seconds": [
+        36,
+        36
+      ],
+      "core_seconds": {
+        "X36-005": 36,
+        "X36-006": 36
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W36P-T04",
+      "body_seconds": 56,
+      "chapter_seconds": [
+        29,
+        27
+      ],
+      "core_seconds": {
+        "X36-007": 56
+      },
+      "max_beat_seconds": 21,
+      "status": "TTS_SAMPLE_TIMED_NOT_FINAL_VOICE"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "all_strings_rstrip": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待另一作者查核、共同語意近鄰及稿前試讀。"
+  ],
+  "revision_history": [
+    {
+      "before": [
+        {
+          "file": "batches/wave36-physics.json",
+          "sha256": "c798a760caa939aa5f4b39509c5090ba8156b7f4c2ec528bc805034ba2af49d4"
+        },
+        {
+          "file": "reviews/wave36-physics-themes.json",
+          "sha256": "edb8af17dc9ae680069b643f526ee6671acbb7207955b8ea30858db9cc2712fd"
+        },
+        {
+          "file": "reviews/wave36-physics-author.json",
+          "sha256": "6f8b1c5a5b42e40c6aa923f32550b9a8e1e2ebbe3b204845a74820100719511d"
+        }
+      ],
+      "after_batch_sha256": "2d1d36311b5215a857ccbbca63fe8848766f1f4c6047b62d66f8b05e7b5b8cc5",
+      "after_themes_sha256": "186391312307451b850e56c4068cf76a9a4d1c383f66f82f6414dee8f46fee51",
+      "removed_seconds": 5,
+      "changes": [
+        "烘焙孔隙與分段甜感的顯示連結指向正式DOI，retrieval_url仍保留實際實讀載體。",
+        "手沖模型材料明寫二氧化矽凝膠顆粒，即silica gel。",
+        "拿鐵案依實際合成語音樣讀從61縮56秒，以6秒對位流線圖收尾。"
+      ]
+    }
+  ],
+  "timing_probe": {
+    "manifest": {
+      "file": ".cache/wave36-latte-read.json",
+      "sha256": "a69b41c6b1aebf345d6c3cb7d05d8f9e6fbfe2e09927e13e3f68cb39eddccdef"
+    },
+    "wave_seconds": [
+      13.449,
+      17.616,
+      19.34,
+      50.406
+    ],
+    "scope": "本代理讀取根作者的四個WAV檔頭核長，未重新合成或播放；只有拿鐵案採台灣合成語音，其他三案紙上預算。"
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "batch_id": "wave8-food-20261101",
+  "created_on": "2026-11-01",
+  "scope": "食品微結構、發酵環境與加工的可見反差；不換食品重算舊機制，不提供健康、保存安全或配方操作建議。",
+  "sources": [
+    {
+      "id": "F8-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6535019/",
+      "title": "Conching chocolate is a prototypical transition from frictionally jammed solid to flowable suspension with maximal solid content",
+      "publisher": "Blanco et al.; PNAS; University of Edinburgh authors",
+      "version": "2019-05-07; 116(21):10303–10308; doi:10.1073/pnas.1901858116",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 正文；後續 web 遭 reCAPTCHA，public urllib HTML + HTMLParser 補讀",
+      "reading_scope": "Significance; Introduction; Conching Phenomenology; Lecithin as a Lubricant; Summary and Conclusions",
+      "locator": "Significance; Introduction; Conching Phenomenology; Lecithin as a Lubricant; Summary and Conclusions",
+      "summary": "精煉的解聚及界面活性劑對顆粒接觸的作用，能改變高固含懸浮體的卡住門檻。",
+      "access_notes": "未逐讀所有方法或重算數據。模型使用 crumb 與葵花油；論文的微觀摩擦解釋是模型，不是每款巧克力的直接顯微證明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S002",
+      "url": "https://extension.purdue.edu/extmedia/FS/FS-153-W.pdf",
+      "title": "Cocoa Processing: Tempering",
+      "publisher": "Purdue Extension, Food Science",
+      "version": "FS-153-W; accessed PDF edition; publication date not verified",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open PDF 文字層",
+      "reading_scope": "PDF pp.1–2: cocoa butter crystal forms and Steps 1–4; p.3 bloom paragraph",
+      "locator": "PDF pp.1–2: cocoa butter crystal forms and Steps 1–4; p.3 bloom paragraph",
+      "summary": "先熔化、冷卻成核、再選擇性回熱可偏向保留適合後續結晶的晶種。",
+      "access_notes": "未核對所有配方的溫度表；不提供操作溫度。Form V 不是所有條件下最終最穩定晶型；不照抄來源的絕對穩定措辭。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S003",
+      "url": "https://blog.susnano.wisc.edu/wp-content/uploads/sites/2179/2025/08/Chocolate-Experimentpdf.pdf",
+      "title": "Chocolate Experiment",
+      "publisher": "NSF Center for Sustainable Nanotechnology / University of Wisconsin–Madison",
+      "version": "PDF 12 pages; URL archived 2025/08; document date not stated",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 未呈 PDF 正文；public urllib 下載官方 PDF + PyMuPDF 文字層",
+      "reading_scope": "PDF pp.8–9: Experiment 3; Explanation",
+      "locator": "PDF pp.8–9: Experiment 3; Explanation",
+      "summary": "少量水潤濕親水固體後可使熔融巧克力結團；大量加水則已改成另一類混合物。",
+      "access_notes": "教育解釋已讀，未讀原 JCE 2011 論文全文；作者 UCLA PDF 連結 404。原文件把原巧克力稱 emulsion 過簡，本文用固體懸浮於脂肪；不自行加毛細液橋的定量模型。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S004",
+      "url": "https://ebooks.inflibnet.ac.in/ftp03/chapter/emulsifying-salts-for-the-dairy-and-food-industry/",
+      "title": "Emulsifying salts for the dairy and food industry",
+      "publisher": "A. Jana; INFLIBNET Centre, e-PG Pathshala / Food Additives and Food Quality Assurance",
+      "version": "Chapter 7; accessed edition; publication date not displayed",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 大學課程正文",
+      "reading_scope": "Need to emulsify fat in cheese systems; Role of ES in cheese system; Type of emulsifying salts",
+      "locator": "Need to emulsify fat in cheese systems; Role of ES in cheese system; Type of emulsifying salts",
+      "summary": "乳化鹽結合鈣並改變酪蛋白的分散、水合狀態，使蛋白能協助包覆油脂。",
+      "access_notes": "只採加工乳酪機制；不沿用頁面所有乳酪都是完美乳液等過度概括，也不採法規、菌抑制或配方劑量段。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4034325/",
+      "title": "NADH Oxidase of Streptococcus thermophilus 1131 is Required for the Effective Yogurt Fermentation with Lactobacillus delbrueckii subsp. bulgaricus 2038",
+      "publisher": "Sasaki et al.; Bioscience of Microbiota, Food and Health; Meiji University and research collaborators",
+      "version": "2014-01-30; 33(1):31–40; doi:10.12938/bmfh.33.31",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 摘要、引言及結果開頭；後續 reCAPTCHA，public urllib HTML + HTMLParser 補讀",
+      "reading_scope": "Introduction; Results on oxygen consumption, nox disruption, milk fermentation and formate; Discussion",
+      "locator": "Introduction; Results on oxygen consumption, nox disruption, milk fermentation and formate; Discussion",
+      "summary": "特定菌株的水生成型 NADH 氧化酶協助降低溶氧；刪除 nox 後耗氧及牛乳酸化皆改變。",
+      "access_notes": "結果與討論已讀，未逐讀全部方法；Pfl／甲酸是可能中介，不能把它寫成已證實的唯一途徑。產業作者及菌株特異限制保留。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S006",
+      "url": "https://www.agriculturejournals.cz/publicFiles/220_2008-CJFS.pdf",
+      "title": "Textural and Flavour Characteristics of Commercial Tomato Ketchups",
+      "publisher": "Panovská et al.; Czech Journal of Food Sciences; Institute of Chemical Technology Prague / Academy of Sciences",
+      "version": "2009; 27(3):165–170",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open PDF；public urllib + PyMuPDF 補讀連續段",
+      "reading_scope": "Printed pp.165–166: Introduction; Materials and methods—Rheological analysis; Figure 1 description",
+      "locator": "Printed pp.165–166: Introduction; Materials and methods—Rheological analysis; Figure 1 description",
+      "summary": "受測番茄醬的大幅變形會降低結構性模量，回到低變形後結構隨時間恢復。",
+      "access_notes": "僅實讀列示正文與圖的文字說明；未重分析完整結果表或感官評分。配方差異很大，不宣稱所有番茄醬相同，也不把觸變與單純剪切變稀當同義。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S007",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9105695/",
+      "title": "Toward a Better Understanding of the Gelation Mechanism of Methylcellulose via Systematic DSC Studies",
+      "publisher": "Niemczyk-Soczynska, Sajkiewicz and Gradys; Polymers; Polish Academy of Sciences",
+      "version": "2022-04-28; 14(9):1810; doi:10.3390/polym14091810",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 指定正文；public urllib HTML + HTMLParser 留存",
+      "reading_scope": "Abstract; Introduction; Discussion of heating/cooling DSC peaks and proposed mechanism; Conclusions",
+      "locator": "Abstract; Introduction; Discussion of heating/cooling DSC peaks and proposed mechanism; Conclusions",
+      "summary": "水合狀態隨加熱改變，促進甲基纖維素鏈的疏水聚集與可逆網絡；冷卻可重新水合而解網。",
+      "access_notes": "DSC 及峰分解支持作者模型，不是直接逐分子觀察；濃度、分子量和加熱速率影響轉變，未讀全部方法／附錄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S008",
+      "url": "https://doi.usp.org/USPFCC/FCC_F100443_04_01.html",
+      "title": "Methylcellulose",
+      "publisher": "United States Pharmacopeia; Food Chemicals Codex",
+      "version": "FCC monograph landing description; 2008 edition",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 公開 Description 段",
+      "reading_scope": "Description: aqueous solution gelation upon heating and liquefaction upon cooling",
+      "locator": "Description: aqueous solution gelation upon heating and liquefaction upon cooling",
+      "summary": "食品化學規格的公開描述確認甲基纖維素水溶液熱凝冷溶現象。",
+      "access_notes": "只讀免費公開描述，未讀付費完整專論；作材料身分及可逆現象支持，不作機制主來源。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S009",
+      "url": "https://www.newsd.admin.ch/newsd/message/attachments/39613.pdf",
+      "title": "Riddle of Hole Formation in Cheese Solved",
+      "publisher": "Agroscope / Swiss federal administration",
+      "version": "2015-05-28 research communication",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open PDF 文字層",
+      "reading_scope": "PDF pp.1–2: press release and supplementary background",
+      "locator": "PDF pp.1–2: press release and supplementary background",
+      "summary": "研究報導把乾草微粒空腔與細菌產氣分開：前者提供氣孔生成位置。",
+      "access_notes": "研究機構報導，非原始論文全篇；本輪僅支持去重退題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S010",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12195693/",
+      "title": "Chemical Fate of Ascorbic Acid in Wheat Flour Extract: Impact of Dissolved Molecular Oxygen (O2), Metal Ions, Wheat Endogenous Enzymes and Glutathione (GSH)",
+      "publisher": "Beghin et al.; Molecules; KU Leuven and collaborators",
+      "version": "2025-06-13; 30(12):2582; doi:10.3390/molecules30122582",
+      "accessed_on": "2026-11-01",
+      "read_via": "web reCAPTCHA；public urllib HTML + HTMLParser 實讀",
+      "reading_scope": "§1 Introduction; §2.1 opening; §2.4 The Effect of Glutathione on the Conversion of Ascorbic Acid; §4 Conclusions",
+      "locator": "§1 Introduction; §2.1 opening; §2.4 The Effect of Glutathione on the Conversion of Ascorbic Acid; §4 Conclusions",
+      "summary": "麵粉萃取液的抗壞血酸轉化受溶氧與穀胱甘肽條件影響；作者明說仍須接到實際麵糰功能測試。",
+      "access_notes": "本輪不把萃取液化學直接說成麵包強度試驗；原料業者共同作者已揭露。只支持延後方向，不計新題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S011",
+      "url": "https://www.cdr.wisc.edu/assets/pipeline-pdfs/pipeline_2009_vol21_01.pdf",
+      "title": "Dairy Pipeline: Avoiding defects in process cheese",
+      "publisher": "Wisconsin Center for Dairy Research",
+      "version": "2009; Volume 21 Number 1",
+      "accessed_on": "2026-11-01",
+      "read_via": "web PDF 後續 timeout；public urllib 下載 + PyMuPDF 文字層",
+      "reading_scope": "PDF p.2 and pp.6–7: process cheese defects / calcium citrate haze",
+      "locator": "PDF p.2 and pp.6–7: process cheese defects / calcium citrate haze",
+      "summary": "乳化鹽與鈣鹽結晶可能涉及加工乳酪缺陷，但來源明載部分霧狀結晶機制仍不清楚。",
+      "access_notes": "未讀全刊；不以缺陷名稱代替完整因果，僅留研究和退題紀錄。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S012",
+      "url": "https://www.ars.usda.gov/research/publications/publication/?seqNo115=185084",
+      "title": "X-ray diffraction study of crystal transformations in spherulitic amylose/lipid complexes from jet-cooked starch",
+      "publisher": "Shogren, Fanta and Felker; USDA ARS publication record",
+      "version": "2006; Carbohydrate Polymers 64(3):444–451",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open USDA Interpretive Summary and Technical Abstract",
+      "reading_scope": "Interpretive Summary; Technical Abstract",
+      "locator": "Interpretive Summary; Technical Abstract",
+      "summary": "摘要描述直鏈澱粉與脂質的螺旋複合物，以及乾燥／再水合時的結構改變。",
+      "access_notes": "只讀官方摘要，不是原文；沒有據此推出日常食品質地或健康效果，本輪不收。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F8-S013",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12173133/",
+      "title": "Generating structure in soft solids: heat stable milk chocolate",
+      "publisher": "Holian et al.; Current Research in Food Science; University of Cambridge",
+      "version": "2025-05-24; 10:101087; doi:10.1016/j.crfs.2025.101087",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 原研究指定段",
+      "reading_scope": "Abstract; Highlights; §1 Introduction; Table 1 water-emulsion comparison row",
+      "locator": "Abstract; Highlights; §1 Introduction; Table 1 water-emulsion comparison row",
+      "summary": "甘油增強熱穩定性的研究並未確認常見毛細懸浮模型；摘要保留數種可能的接觸作用。",
+      "access_notes": "未讀完整結果，不能拿甘油研究當水結塊直接證據；僅作不收新機制題及不要過度畫液橋的提醒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "F8001",
+      "question": "巧克力的固體沒被拿走，為什麼精煉後反而比較能流動？",
+      "domain": "食品微結構與加工",
+      "mechanism_key": "conching_deagglomeration_contact_friction_jamming",
+      "answer_target": "精煉解開聚團、卵磷脂降低顆粒接觸阻力，可提高懸浮體發生卡住的固含門檻；不是只靠多加油稀釋。",
+      "scope": "限研究中的 crumb／油模型和摩擦卡住解釋；不等於每個品牌或所有精煉效果。",
+      "source_ids": [
+        "F8-S001"
+      ],
+      "source_locator": "Conching Phenomenology; Lecithin as a Lubricant; Summary and Conclusions",
+      "premise_status": "screened",
+      "notes": "D2163 是改變固體／脂肪配比；此題固定主要固含看接觸結構。W5017 剪切破絮是部分前提，這裡另有潤滑改變卡住門檻；兩步不拆題。 題級來源篩選；原創提問與紙上段落估時，非逐主張劇本核准，未製作或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "融化的脂肪還在，顆粒彼此卡住仍能讓整體不流。",
+        "visual": "同固含的接觸網絡；卵磷脂與等體積油的對照，標示研究模型而非自拍實驗。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "F8002",
+      "question": "巧克力都融化了，為什麼還要先冷卻、再稍微加熱一次？",
+      "domain": "食品微結構與加工",
+      "mechanism_key": "chocolate_tempering_selective_melting_seed_survival",
+      "answer_target": "冷卻先產生晶種，再利用不同晶型熔化範圍的差別回熱，偏向留下適合後續結晶的晶種。",
+      "scope": "限可可脂調溫的選擇性熔化；不給配方溫度，不稱 Form V 在所有時間尺度最穩定，也不保證全部晶體單一晶型。",
+      "source_ids": [
+        "F8-S002"
+      ],
+      "source_locator": "PDF pp.1–2: crystal forms; Steps 1–4",
+      "premise_status": "screened",
+      "notes": "D2029 是冷卻史影響固液脂肪及網絡；F4011 是晶核數量分配大小。此題解釋再加熱為何能選擇保留晶種，待獨立判邊界。 題級來源篩選；原創提問與紙上段落估時，非逐主張劇本核准，未製作或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "升溫不一定只是撤銷冷卻，也能刪掉不想留下的晶種。",
+        "visual": "不同晶型色碼；升至中間溫區時一部分消失，剩餘晶種帶領後續結晶。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "F8003",
+      "question": "融化的巧克力混進一點水，為什麼反而結成難攪的團？",
+      "domain": "食品微結構與加工",
+      "mechanism_key": "small_water_wetting_chocolate_particle_agglomeration",
+      "answer_target": "少量水在脂肪中不能均勻成為連續液相，先潤濕親水糖與可可固體而促成聚團，改變原本分散狀態。",
+      "scope": "限少水造成結團的教育模型；不把原巧克力稱純液體乳液，不推論液橋尺寸或提供修復食譜。",
+      "source_ids": [
+        "F8-S003"
+      ],
+      "source_locator": "PDF p.8 Experiment 3; p.9 Explanation, first two bullets",
+      "premise_status": "screened",
+      "notes": "來源直接示例；水潤濕後結團有正文支持，但具體接觸力仍需進稿補原研究。與 F8001 同屬顆粒流變卻改變不同條件；列為必須外部判讀的薄題／合併邊界。 題級來源篩選；原創提問與紙上段落估時，非逐主張劇本核准，未製作或試讀。 非作者判斷只足短段定性反差，封頂40秒；研究缺口留編輯紀錄，不放入觀眾旁白。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "加進液體不一定稀釋原物，液體先碰到哪種成分會改變結果。",
+        "visual": "脂肪中分散固體，改成水只先聚在親水固體附近並結團；不畫成糖被煮熟。",
+        "seconds": [
+          20,
+          40
+        ]
+      }
+    },
+    {
+      "id": "F8004",
+      "question": "起司一熱就可能出油，為什麼加工起司卻能融成較均勻的一層？",
+      "domain": "食品微結構與加工",
+      "mechanism_key": "processed_cheese_calcium_sequestration_casein_redispersion",
+      "answer_target": "乳化鹽結合鈣、鬆開部分酪蛋白間的鈣作用，使蛋白較能分散和水合，再協助油脂分散穩定。",
+      "scope": "限含檸檬酸鹽／磷酸鹽的加工乳酪；配方、成熟度及加熱條件都影響結果，不能說所有天然起司都出油或所有起司片皆此配方。",
+      "source_ids": [
+        "F8-S004"
+      ],
+      "source_locator": "Need to emulsify fat in cheese systems; Role of ES in cheese system",
+      "premise_status": "screened",
+      "notes": "D2056 是酸或凝乳酶如何使牛乳凝固；D2039 是界面面積增加需蛋白補覆。此題的增量是先結合鈣以重新釋出蛋白分散能力；不是鹽本身有油水兩端。 題級來源篩選；原創提問與紙上段落估時，非逐主張劇本核准，未製作或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "所謂乳化鹽可以先改造蛋白的狀態，再間接幫油水混合。",
+        "visual": "同一蛋白網絡的鈣連結→鈣被結合→水合分散蛋白靠近油滴；加熱出油作條件例。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "F8005",
+      "question": "有些優格菌不靠氧氣呼吸，為什麼仍會消耗牛奶裡的氧氣？",
+      "domain": "食品微結構與加工",
+      "mechanism_key": "yogurt_nadh_oxidase_oxygen_removal_acidification",
+      "answer_target": "特定嗜熱鏈球菌的水生成型 NADH 氧化酶可移除溶氧；失去此作用時牛乳耗氧與酸化變慢，顯示耗氧可用來改變發酵環境。",
+      "scope": "限 S. thermophilus 1131 與 L. bulgaricus 2038 的牛乳研究；不把 Nox 畫成呼吸鏈，也不把 Pfl／甲酸假說說成已確定唯一中介。",
+      "source_ids": [
+        "F8-S005"
+      ],
+      "source_locator": "Results: oxygen consumption, nox mutant, fermentation and formate; Discussion",
+      "premise_status": "screened",
+      "notes": "L025/26 是再生 NAD+ 與呼吸定義；L175 是活性氧傷害。此題是水生成型耗氧與牛乳環境的實驗對照，不重收一般厭氧菌怕氧。U8018 是異形胞分工保護固氮，作用目的與路徑不同。 題級來源篩選；原創提問與紙上段落估時，非逐主張劇本核准，未製作或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "消耗氧氣的反應，不必等同用呼吸鏈把氧變成更多能量。",
+        "visual": "相同牛乳的溶氧與 pH 兩條時間線；野生株／nox 缺失株對照，甲酸支線用虛線標假說。",
+        "seconds": [
+          80,
+          110
+        ]
+      }
+    },
+    {
+      "id": "F8006",
+      "question": "番茄醬剛搖過和靜置一會兒，為什麼一樣傾斜卻可能流得不同？",
+      "domain": "食品微結構與加工",
+      "mechanism_key": "ketchup_thixotropic_structure_breakdown_recovery",
+      "answer_target": "較大變形破壞暫時性結構，低變形下結構逐步恢復；因此當下流動還取決於先前受力歷程。",
+      "scope": "限受測具有觸變性的番茄醬；定性結構模型，不指定每款產品的聚合物或鍵種，也不宣稱靜置必定完全恢復。",
+      "source_ids": [
+        "F8-S006"
+      ],
+      "source_locator": "Printed p.166: Rheological analysis; Figure 1 low/high/low strain description",
+      "premise_status": "screened",
+      "notes": "P070 比密度與黏度、P073 固定黏度速度梯度；此題額外有時間記憶。W5017 混合破絮沒有低變形後回復對照。 題級來源篩選；原創提問與紙上段落估時，非逐主張劇本核准，未製作或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "稠度不只是一個固定數字，也可能記住剛才受過的剪切。",
+        "visual": "同溫同配方低變形→高變形→回低變形的模量隨時間曲線，對照立刻與等待後。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "F8007",
+      "question": "有些食品增稠料為什麼加熱凝住，冷卻反而又能流動？",
+      "domain": "食品微結構與加工",
+      "mechanism_key": "methylcellulose_dehydration_hydrophobic_thermal_gel_reversal",
+      "answer_target": "甲基纖維素水合狀態隨加熱改變，促進鏈間疏水聚集形成物理網絡；冷卻再水合可使網絡解開。",
+      "scope": "限甲基纖維素水溶液的作者模型，濃度和分子量等會改變行為；不是所有增稠料，不把加熱成膠一律當成不可逆的共價交聯。",
+      "source_ids": [
+        "F8-S007",
+        "F8-S008"
+      ],
+      "source_locator": "F8-S007 Discussion of heating/cooling peaks and Conclusions; F8-S008 Description",
+      "premise_status": "screened",
+      "notes": "H3027 共價交聯不熔與 F4012 蛋白氣液界面皆不同；重點是溶劑水合作用改變造成可逆熱凝膠，分子序列仍標模型。 題級來源篩選；原創提問與紙上段落估時，非逐主張劇本核准，未製作或試讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "加熱可以促成聚集，而冷卻可以重新溶開，方向不是只有一種。",
+        "visual": "同一溶液升溫／降溫；水合外層與鏈間聚集的模型示意分開標記。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "乳酪孔洞為什麼會從微小乾草顆粒附近長出來？",
+      "canonical_ids": [
+        "LEG-S72"
+      ],
+      "source_ids": [
+        "F8-S009"
+      ],
+      "reason": "已讀研究報導，但仍是溶解氣體在成核位置長泡的既有核心；不以乳酪換可樂另計。"
+    },
+    {
+      "question": "水氣為什麼讓酥脆餅乾變軟？",
+      "canonical_ids": [
+        "H3025"
+      ],
+      "source_ids": [],
+      "reason": "目前機制仍是水作塑化劑增加鏈段活動性；食物案例不另算。"
+    },
+    {
+      "question": "打鮮奶油與打蛋白可以各補一題嗎？",
+      "canonical_ids": [
+        "F4009",
+        "F4012"
+      ],
+      "source_ids": [],
+      "reason": "F4009 原已因脂肪保氣微結構不足暫緩，F4012 蛋白界面已收；本輪未補足原暫緩核心，不復活改問法。"
+    },
+    {
+      "question": "澱粉放冷變硬可以換成飯或麵條再收嗎？",
+      "canonical_ids": [
+        "LEG-S54"
+      ],
+      "source_ids": [],
+      "reason": "回凝核心相同；只換食品不增加題數。"
+    },
+    {
+      "question": "乳酪熟成後柔軟，是不是表面把核心的鈣都拉走？",
+      "canonical_ids": [
+        "D2056"
+      ],
+      "source_ids": [],
+      "reason": "D2056 已有鈣與酪蛋白失穩；本輪未讀到足夠直接正文支持新的空間遷移因果。PMC12472656 的 web 和 public urllib 均為 reCAPTCHA，不把搜尋片段當讀完。"
+    },
+    {
+      "question": "加工乳酪白霧和小結晶是怎麼形成的？",
+      "canonical_ids": [],
+      "source_ids": [
+        "F8-S011"
+      ],
+      "reason": "已讀資料明載部分 calcium citrate haze 機制未清楚；只認出晶體名稱不足成題。"
+    },
+    {
+      "id": "F8008",
+      "question": "維生素 C 是抗氧化物，為什麼加進麵糰卻可能幫蛋白連結變多？",
+      "canonical_ids": [
+        "D2268"
+      ],
+      "source_ids": [
+        "F8-S010"
+      ],
+      "reason": "有有力反差，但本輪直接讀的新研究是萃取液化學，GSH 改變溶氧的結果不能直接換成麵包強度。先延後，待原始麵糰功能／二硫鍵證據；不是判定前提錯或和 D2268 必然同核。"
+    },
+    {
+      "question": "直鏈澱粉纏住油脂後，食品一定比較耐消化或更好吃嗎？",
+      "canonical_ids": [],
+      "source_ids": [
+        "F8-S012"
+      ],
+      "reason": "僅摘要支持螺旋複合物，未支撐跨到實際口感或消化結果；不收健康延伸或只有結構名詞的薄題。"
+    },
+    {
+      "question": "耐熱巧克力中的甘油一定是靠毛細液橋固定顆粒嗎？",
+      "canonical_ids": [
+        "F8001",
+        "F8003"
+      ],
+      "source_ids": [
+        "F8-S013"
+      ],
+      "reason": "已讀摘要不支持確定的普通毛細懸浮模型，仍有替代解釋；不以假定機制開新題，也不移植到少水結塊。"
+    },
+    {
+      "question": "巧克力表面脂霜與糖霜能各自延伸一部長片嗎？",
+      "canonical_ids": [
+        "F8002",
+        "F4011"
+      ],
+      "source_ids": [
+        "F8-S002"
+      ],
+      "reason": "本輪所讀只夠作晶體變化延伸；沒有獨立的新因果鏈，不用外觀類別拆題。"
+    }
+  ]
+}

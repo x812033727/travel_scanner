@@ -1,0 +1,81 @@
+{
+  "status": "PASS_ARITHMETIC_AND_UI_NOT_CODEC_OR_AUDIENCE_TEST",
+  "tested_on": "2026-11-01T11:08:39.170Z",
+  "node": "v24.22.1",
+  "browser": "156.0.8078.4",
+  "files": [
+    {
+      "file": "demo.js",
+      "sha256": "908a8143c3543966e0e764c59891334169c1c6af147d6bae9c0f1e98f0396c67"
+    },
+    {
+      "file": "demo.html",
+      "sha256": "93efb51a5860941f4d3fd56e53a46b71f0638f27b9f4347a6fd55c62a7160671"
+    },
+    {
+      "file": "verify-demo.mjs",
+      "sha256": "953994cfb341f86b49e1983963e67cec9828be07267d516092fbd3f54c311379"
+    }
+  ],
+  "checks": {
+    "fixed_vectors": [
+      {
+        "input": [
+          6,
+          2
+        ],
+        "encoded": {
+          "mid": 4,
+          "side": 4
+        }
+      },
+      {
+        "input": [
+          6,
+          3
+        ],
+        "encoded": {
+          "mid": 4,
+          "side": 3
+        }
+      },
+      {
+        "input": [
+          -6,
+          -3
+        ],
+        "encoded": {
+          "mid": -5,
+          "side": -3
+        }
+      },
+      {
+        "input": [
+          -32768,
+          32767
+        ],
+        "encoded": {
+          "mid": -1,
+          "side": -65535
+        }
+      }
+    ],
+    "exhaustive_signed_8bit_stereo_pairs": 65536,
+    "signed_16bit_boundary_pairs": 49,
+    "seeded_prediction_sequences": 128,
+    "samples_per_sequence": 64,
+    "seed": 9639,
+    "explicit_corrupted_residual_counterexample": true,
+    "positive_and_negative_odd_parity_counterexamples": true,
+    "presets_and_buttons": true,
+    "mobile_document_horizontal_overflow": false,
+    "page_errors": []
+  },
+  "scope": "Original first-order predictor and mid/side integer arithmetic only; not a FLAC bitstream implementation. No filesize, Rice-code, CRC, subjective hearing or performance claims. Browser and arithmetic exercised; no narration or audience test.",
+  "screenshots": [
+    ".cache/wave6-g59-desktop.png",
+    ".cache/wave6-g59-mobile.png"
+  ],
+  "visual_inspection": "Root viewed final full-page desktop and mobile screenshots: controls and equations readable; narrow table has explicit horizontal-scroll hint and keyboard focus. All six columns reachable, checked by browser scroll assertion. No audio playback.",
+  "production_ready": false
+}

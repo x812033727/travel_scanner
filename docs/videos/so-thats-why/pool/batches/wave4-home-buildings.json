@@ -1,0 +1,1353 @@
+{
+  "batch_id": "wave4-home-buildings-20261101",
+  "created_on": "2026-11-01",
+  "scope": "住家建築日常的圍護、濕氣、窗、通風、光聲及水路；題級研究候選，避開既有基礎原理換物件、危險DIY與食品交通。",
+  "sources": [
+    {
+      "id": "B4-S001",
+      "url": "https://basc.pnnl.gov/information/building-science-introduction-moisture-flow",
+      "title": "Building Science Introduction – Moisture Flow",
+      "publisher": "DOE / Pacific Northwest National Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文小節",
+      "reading_scope": "Air-Transported Moisture; Vapor Diffusion",
+      "locator": "Air-Transported Moisture; Vapor Diffusion",
+      "summary": "漏氣攜濕與穿材擴散是兩條水分路徑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S002",
+      "url": "https://basc.pnnl.gov/resource-guides/condensation-control-walls-cold-weather",
+      "title": "Condensation Control for Walls in Cold Weather",
+      "publisher": "DOE / Pacific Northwest National Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文小節",
+      "reading_scope": "General Approaches; Construction Techniques; exterior insulation; air barrier; double vapor retarders",
+      "locator": "General Approaches; Construction Techniques; exterior insulation; air barrier; double vapor retarders",
+      "summary": "牆內溫度分布、空氣移動與乾燥出口須共同考量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S003",
+      "url": "https://handbook.ashrae.org/Handbooks/F17/SI/f17_ch26/f17_ch26_si.aspx",
+      "title": "2017 ASHRAE Handbook Fundamentals, Chapter 26: Material Properties",
+      "publisher": "ASHRAE",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文小節",
+      "reading_scope": "1.1 Influencing Conditions（Density and Structure、Age）；3 Vapor Retarders（smart）；4.3 air spaces",
+      "locator": "1.1 Influencing Conditions（Density and Structure、Age）；3 Vapor Retarders（smart）；4.3 air spaces",
+      "summary": "保溫表現與多種傳熱路徑、孔內氣體和濕度條件有關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S004",
+      "url": "https://ext.vt.edu/content/pubs_ext_vt_edu/en/2908/2908-9020/2908-9020.html",
+      "title": "ENERGY SERIES: What about Moisture?",
+      "publisher": "Virginia Cooperative Extension / Virginia Tech",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文小節",
+      "reading_scope": "How does moisture get in my house? vapor diffusion paragraph; What about choosing building materials?",
+      "locator": "How does moisture get in my house? vapor diffusion paragraph; What about choosing building materials?",
+      "summary": "濕牆受日曬可增加向內水汽驅動；乾燥與儲水容量影響受損風險。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S005",
+      "url": "https://prod-natural-resources.azure.cloud.nrcan-rncan.gc.ca/energy-efficiency/product-energy-ratings/technology-primer",
+      "title": "Technology primer",
+      "publisher": "Natural Resources Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文小節",
+      "reading_scope": "Factors affecting energy efficiency: Product type and air leakage; Glazing",
+      "locator": "Factors affecting energy efficiency: Product type and air leakage; Glazing",
+      "summary": "窗的操作密封、玻璃組與周邊零件各有不同工作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S006",
+      "url": "https://nrc.canada.ca/en/research-development/products-services/software-applications/soundpaths-web-application-predict-sound-transmission-between-rooms",
+      "title": "soundPATHS: predict sound transmission between rooms",
+      "publisher": "National Research Council Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文小節",
+      "reading_scope": "Overview of the application; Benefits to users; Description",
+      "locator": "Overview of the application; Benefits to users; Description",
+      "summary": "隔音實際結果含繞過分隔牆的側向路徑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S007",
+      "url": "https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home",
+      "title": "Guide to Air Cleaners in the Home, 2nd edition",
+      "publisher": "US EPA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文小節",
+      "reading_scope": "Portable Air Cleaners; Q&A portable and HVAC filters；不採健康效果/選購規範",
+      "locator": "Portable Air Cleaners; Q&A portable and HVAC filters；不採健康效果/選購規範",
+      "summary": "顆粒潔淨空氣量須配合空間與運轉條件解讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S008",
+      "url": "https://basc.pnnl.gov/information/building-science-introduction-air-flow",
+      "title": "Building Science Introduction – Air Flow",
+      "publisher": "DOE / PNNL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀指定正文小節；未讀圖像不作圖像證據",
+      "reading_scope": "Stack Pressure; Effect of wind and stack; How unintended airflow can hurt a home: backdrafting and convective loops",
+      "locator": "Stack Pressure; Effect of wind and stack; How unintended airflow can hurt a home: backdrafting and convective loops",
+      "summary": "房屋壓差沿高度與運轉條件變化；室內也可形成冷表面下降氣流。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S009",
+      "url": "https://www.canada.ca/en/health-canada/services/publications/healthy-living/ventilation-indoor-environment.html",
+      "title": "Ventilation and the indoor environment",
+      "publisher": "Health Canada",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀指定正文小節；未讀圖像不作圖像證據",
+      "reading_scope": "Balanced systems and HRV defrost; control options; air distribution and mixing in occupied rooms",
+      "locator": "Balanced systems and HRV defrost; control options; air distribution and mixing in occupied rooms",
+      "summary": "換氣量之外，除霜模式、室外水分條件與室間混合影響實際作用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S010",
+      "url": "https://handbook.ashrae.org/handbooks/F17/SI/f17_ch08/f17_ch08_si.aspx",
+      "title": "2017 ASHRAE Handbook Fundamentals, Chapter 8: Sound and Vibration",
+      "publisher": "ASHRAE",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀指定正文小節；未讀圖像不作圖像證據",
+      "reading_scope": "Room acoustics: direct/reverberant fields; Enclosures; Transmission Loss and coincidence; Partitions（雙葉牆段）; Vibration Isolation introductory transmissibility text",
+      "locator": "Room acoustics: direct/reverberant fields; Enclosures; Transmission Loss and coincidence; Partitions（雙葉牆段）; Vibration Isolation introductory transmissibility text",
+      "summary": "吸聲、隔聲與結構隔振解決不同傳輸路徑，部分頻率會出現耦合共振或巧合低谷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S011",
+      "url": "https://www2.lbl.gov/Science-Articles/Archive/sabl/2007/Jan/electro-windows.html",
+      "title": "A Dawning Day for Energy-Efficient Electrochromic Windows",
+      "publisher": "Lawrence Berkeley National Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀指定正文小節；未讀圖像不作圖像證據",
+      "reading_scope": "How They Work; The Window Testbed two-zone control（2007歷史研究，不作現行產品數字）",
+      "locator": "How They Work; The Window Testbed two-zone control（2007歷史研究，不作現行產品數字）",
+      "summary": "電致變色層的離子與電荷交換調節透光；測試把上方採光與下方視野分區控制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S012",
+      "url": "https://stacks.cdc.gov/view/cdc/11197/cdc_11197_DS1.pdf",
+      "title": "Basic Housing Inspection (1976; reprinted 1979)",
+      "publisher": "US Public Health Service / CDC",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀指定正文小節；未讀圖像不作圖像證據",
+      "reading_scope": "Chapter 6, PDF pages 62–64: traps and ventilation pressure mechanisms；只採物理描述，不採過時規範或修理做法",
+      "locator": "Chapter 6, PDF pages 62–64: traps and ventilation pressure mechanisms；只採物理描述，不採過時規範或修理做法",
+      "summary": "排水產生的負壓與正壓都可破壞水封；水封與壓力管理是不同工作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S013",
+      "url": "https://www.energy.gov/cmei/femp/purchasing-energy-efficient-residential-windows-doors-and-skylights",
+      "title": "Purchasing Energy-Efficient Residential Windows, Doors, and Skylights",
+      "publisher": "US DOE FEMP",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "Buyer Tips: U-Factor, Solar Heat Gain Coefficient, Visible Transmittance；不採採購規範、費用或現行門檻",
+      "locator": "Buyer Tips: U-Factor, Solar Heat Gain Coefficient, Visible Transmittance；不採採購規範、費用或現行門檻",
+      "summary": "窗有溫差傳熱、日照得熱與可見光透過等不同通道。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S014",
+      "url": "https://www.yourhome.gov.au/energy/lighting",
+      "title": "Lighting",
+      "publisher": "Australian Government / Your Home",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "Daylighting design aspects; Lighting design products: light shelves",
+      "locator": "Daylighting design aspects; Lighting design products: light shelves",
+      "summary": "日光可改變方向與深入房間的分布，總量不是唯一條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S015",
+      "url": "https://www.yourhome.gov.au/passive-design/glazing",
+      "title": "Glazing",
+      "publisher": "Australian Government / Your Home",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "Solar heat gain; Low emissivity glass; Toned glass; Window furnishings；不採購買/法規/通用性能數值",
+      "locator": "Solar heat gain; Low emissivity glass; Toned glass; Window furnishings；不採購買/法規/通用性能數值",
+      "summary": "光譜、入射角與窗簾周邊流動影響窗的實際熱光表現。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S016",
+      "url": "https://www.yourhome.gov.au/passive-design/thermal-mass",
+      "title": "Thermal mass",
+      "publisher": "Australian Government / Your Home",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "Why is thermal mass important; where not to locate; slab design and walls（只採動態熱耦合，不採固定氣候閾值）",
+      "locator": "Why is thermal mass important; where not to locate; slab design and walls（只採動態熱耦合，不採固定氣候閾值）",
+      "summary": "室內儲熱必須能與空間交換並在適當時段釋出。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S017",
+      "url": "https://basc.pnnl.gov/resource-guides/whole-house-dehumidification",
+      "title": "Whole-House Dehumidification",
+      "publisher": "DOE / PNNL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "Description sensible/latent loads; oversizing; Stand-Alone Dehumidifiers（不採濕度安全閾值）",
+      "locator": "Description sensible/latent loads; oversizing; Stand-Alone Dehumidifiers（不採濕度安全閾值）",
+      "summary": "溫度控制的運轉時間未必滿足濕度移除負荷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S018",
+      "url": "https://doc.comsol.com/6.3/doc/com.comsol.help.models.pipe.water_hammer_verification/water_hammer_verification.html",
+      "title": "Water Hammer verification model",
+      "publisher": "COMSOL",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "Introduction; Model Definition; Results and Discussion正文；未執行軟體、未將數值波紋當物理現象",
+      "locator": "Introduction; Model Definition; Results and Discussion正文；未執行軟體、未將數值波紋當物理現象",
+      "summary": "關閥引起可壓縮水與彈性管壁共同傳播的壓力脈衝。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S019",
+      "url": "https://www.clarksvilletn.gov/326/Backflow-Cross-Connection-Thermal-Expans",
+      "title": "Backflow, Cross Connection & Thermal Expansion",
+      "publisher": "City of Clarksville Gas & Water",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "Thermal Expansion: closed system and expansion-tank diaphragm paragraphs；不採地方施工規範及『水完全不可壓縮』簡化",
+      "locator": "Thermal Expansion: closed system and expansion-tank diaphragm paragraphs；不採地方施工規範及『水完全不可壓縮』簡化",
+      "summary": "止回邊界使加熱膨脹無法退回供水端，氣室提供可變容積。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S020",
+      "url": "https://www.energy.gov/sites/default/files/2024-11/bto-peer-2024-32275-quantifying-reducing-defrost-energy-woods.pdf",
+      "title": "Quantifying and reducing defrost energy use",
+      "publisher": "DOE / NREL, Jason Woods and Ransisi Huang",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "PDF p.3 (slide4) What is defrosting; p.10 (slide11) heat exchanger model；只讀文字，不採初步效益數字",
+      "locator": "PDF p.3 (slide4) What is defrosting; p.10 (slide11) heat exchanger model；只讀文字，不採初步效益數字",
+      "summary": "逆循環除霜切換熱流方向；霜層也縮窄空氣流道。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S021",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=936387",
+      "title": "The persistence of smoke VOCs indoors: Partitioning, surface cleaning, and air cleaning in a smoke-contaminated house",
+      "publisher": "Li et al. / Science Advances; NIST repository",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open 實讀指定正文；未讀圖像不作圖像證據",
+      "reading_scope": "PDF pp.1–3: Introduction and Dynamic gas-surface partitioning drives indoor gas concentrations",
+      "locator": "PDF pp.1–3: Introduction and Dynamic gas-surface partitioning drives indoor gas concentrations",
+      "summary": "測試屋的表面儲庫先吸收再釋出部分煙霧VOC，改變濃度隨時間的下降。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S022",
+      "url": "https://www.nist.gov/news-events/news/2025/09/some-air-cleaners-release-harmful-products-now-we-have-way-measure-them",
+      "title": "Some Air Cleaners Release Harmful By-Products. Now We Have a Way to Measure Them.",
+      "publisher": "NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列內容",
+      "reading_scope": "What Kind of Air Cleaners Produce Unwanted Chemicals?（不採粒徑儀通俗描述、健康量化結論或購買建議）",
+      "locator": "What Kind of Air Cleaners Produce Unwanted Chemicals?（不採粒徑儀通俗描述、健康量化結論或購買建議）",
+      "summary": "反應式空氣處理可同時消耗目標物與產生其他化學物。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S023",
+      "url": "https://www.nist.gov/publications/quantifying-byproduct-formation-portable-air-cleaners-using-proposed-standard-test",
+      "title": "Quantifying Byproduct Formation from Portable Air Cleaners Using a Proposed Standard Test Method",
+      "publisher": "Link, Robertson, Poppendieck / NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列內容",
+      "reading_scope": "NIST原文摘要全文；下載全文工具回報非支援msword，未冒稱讀全文",
+      "locator": "NIST原文摘要全文；下載全文工具回報非支援msword，未冒稱讀全文",
+      "summary": "所測光催化及UV裝置有副產物；結果限受測裝置與試驗條件。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S024",
+      "url": "https://coloradogeologicalsurvey.org/hazards/expansive-soil-rock/",
+      "title": "Expansive Soil and Rock",
+      "publisher": "Colorado Geological Survey / Colorado School of Mines",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列內容",
+      "reading_scope": "Details: Characteristics; Descriptive definition（不採危害統計與固定膨脹數值）",
+      "locator": "Details: Characteristics; Descriptive definition（不採危害統計與固定膨脹數值）",
+      "summary": "部分黏土的片層間納入水分，使體積增大並對上部構造施壓。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S025",
+      "url": "https://coloradogeologicalsurvey.org/hazards/collapsible-soils/",
+      "title": "Collapsible Soils",
+      "publisher": "Colorado Geological Survey / Colorado School of Mines",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列內容",
+      "reading_scope": "Details: hydrocompaction and water-sensitive binding agents（不採場址診斷與工程尺寸）",
+      "locator": "Details: hydrocompaction and water-sensitive binding agents（不採場址診斷與工程尺寸）",
+      "summary": "乾燥疏鬆土的水敏接合失效後，顆粒重排得更密。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S026",
+      "url": "https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/06073/chapt2.cfm",
+      "title": "Chapter 2. Alkali-Silica Reaction (FHWA-HRT-06-073)",
+      "publisher": "US FHWA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列內容",
+      "reading_scope": "2.2.1 Essential Components; 2.2.2 Mechanisms of ASR（2006存檔，不採現行配比、門檻、修復規範）",
+      "locator": "2.2.1 Essential Components; 2.2.2 Mechanisms of ASR（2006存檔，不採現行配比、門檻、修復規範）",
+      "summary": "高鹼孔液可攻擊特定活性矽質骨材；凝膠吸水膨脹造成內部應力。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S027",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nistir7461.pdf",
+      "title": "Heat and Mass Transfer Through Gypsum Partitions Subjected to Fire Exposures (NISTIR 7461)",
+      "publisher": "S. R. Kukuck / NIST",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列內容",
+      "reading_scope": "Introduction, printed pp.1–3 / PDF pp.8–10（反應和含水傳輸文字；未採模型作精確耐火時間）",
+      "locator": "Introduction, printed pp.1–3 / PDF pp.8–10（反應和含水傳輸文字；未採模型作精確耐火時間）",
+      "summary": "石膏結晶水受熱脫除吸能；水的遷移也影響牆板熱響應。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B4-S028",
+      "url": "https://sws.nlr.gov/spec/703013",
+      "title": "Drain Heat Recovery, Detail 7.0301.3",
+      "publisher": "US DOE / National Laboratory of the Rockies, Standard Work Specifications",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run.open/find 實讀所列內容",
+      "reading_scope": "7.0301.3b Location; 7.0301.3c counter-flow wording; 7.0301.3d concurrent-use example；只採並流時序要求，不重製施工步驟",
+      "locator": "7.0301.3b Location; 7.0301.3c counter-flow wording; 7.0301.3d concurrent-use example；只採並流時序要求，不重製施工步驟",
+      "summary": "無儲熱的排水回熱須有冷進水和熱排水同時流動，否則缺少當下的接收端。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "B4001",
+      "question": "牆能擋風，為什麼不表示也能擋住水蒸氣？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.air_barrier_vs_vapor_diffusion",
+      "answer_target": "漏氣以空氣整體流動搬運水分，水汽也可穿過材料擴散；氣密與透濕是不同性能。",
+      "scope": "不把各材料一概分成全通或全不通；D2090 是液態毛細水與水汽之別。",
+      "source_ids": [
+        "B4-S001"
+      ],
+      "source_locator": "Air-Transported Moisture; Vapor Diffusion",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清兩條不同的進水路徑",
+        "visual": "同一片牆先封孔，再以不同顏色顯示穿材水汽；非實測",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "B4002",
+      "question": "同樣厚的保溫層，放牆外或放牆內，牆板受潮風險為什麼不同？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.exterior_insulation_condensing_plane",
+      "answer_target": "外側保溫改變結構板的溫度位置；外側與空腔保溫比例影響板面是否低於露點。",
+      "scope": "寒冷供暖條件的定性對照；不給施工厚度或跨氣候通則。",
+      "source_ids": [
+        "B4-S002"
+      ],
+      "source_locator": "Use exterior insulation: thin/thick approaches and ratio paragraph",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "總熱阻相似不代表牆內各層同溫",
+        "visual": "固定室內外條件，互換兩側熱阻並標出板面溫度",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B4003",
+      "question": "外牆已經不漏到室外，牆內怎麼還可能有潮濕空氣在跑？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.internal_cavity_airflow_without_exfiltration",
+      "answer_target": "外側氣密層可阻止穿出建築，卻不必切斷空腔內由壓差或浮力形成的空氣路徑。",
+      "scope": "限來源牆腔模型；不是把外牆氣密說成無用。",
+      "source_ids": [
+        "B4-S002"
+      ],
+      "source_locator": "Ensure the air barrier is complete: interior cavity airflow",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "氣密邊界之外，內部路徑也會搬運濕氣",
+        "visual": "外側無穿透箭頭，空腔內另畫閉合循環到冷表面",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "B4004",
+      "question": "牆的內外都包得更不透濕，為什麼有時反而更難乾？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.double_vapor_retarder_drying_trap",
+      "answer_target": "低透濕層分列兩面會阻斷原本向內或向外的乾燥出口，使已進入的水分滯留。",
+      "scope": "不等於多道氣密層必有問題；保留氣候與材料乾燥方向。",
+      "source_ids": [
+        "B4-S002"
+      ],
+      "source_locator": "Maintain open drying pathways: vapor sandwiches",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "防止進入與容許乾燥不是同一項設計",
+        "visual": "先讓一小份示意水分進入，再逐一封閉兩側出口",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "B4005",
+      "question": "雨停後太陽曬乾外牆，為什麼牆裡還可能變得更潮？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.solar_heated_reservoir_cladding_inward_drive",
+      "answer_target": "吸水外飾面受熱後提高水汽壓，可能把水汽往較冷內部驅動；外表乾燥不等於全向室外乾。",
+      "scope": "限能儲水的濕飾面與適合梯度；不套所有外牆。",
+      "source_ids": [
+        "B4-S004"
+      ],
+      "source_locator": "How does moisture get in my house? vapor diffusion, rain-saturated heated walls",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "日曬可同時改變水分向哪裡移動",
+        "visual": "日照前後標示濕飾面與較冷內層的水汽箭頭",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4007",
+      "question": "保溫泡棉沒有明顯破掉，隔熱能力怎麼還會隨年份變化？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.insulation.closed_cell_blowing_gas_aging",
+      "answer_target": "閉孔內氣體逐漸與外部空氣交換，改變氣相導熱，造成部分泡棉的熱阻老化。",
+      "scope": "限使用不同導熱氣體的閉孔泡棉；不給固定壽命或所有保溫材通則。",
+      "source_ids": [
+        "B4-S003"
+      ],
+      "source_locator": "1.1 Influencing Conditions: Age",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看不見的孔內氣體也是隔熱材料的一部分",
+        "visual": "孔壁外觀相同，逐步換掉孔內氣體並對照熱流",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "B4008",
+      "question": "保溫棉塞得越密，為什麼不一定隔熱越好？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.insulation.density_radiation_solid_conduction_tradeoff",
+      "answer_target": "纖維密度改變孔隙輻射與固體傳導等途徑，表觀導熱可能有最低區間，並非一味壓密就改善。",
+      "scope": "限定來源纖維材料模型；實際壓縮同時改厚度，不能偷換比較條件。",
+      "source_ids": [
+        "B4-S003"
+      ],
+      "source_locator": "1.1 Density and Structure; figures 1–2 accompanying text",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多種傳熱途徑可朝相反方向變化",
+        "visual": "固定比較條件，以稀疏、中等、密集三模型分色標途徑",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4009",
+      "question": "亮亮的隔熱箔若緊貼牆板，為什麼效果不能照空氣層的標示算？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.insulation.reflective_surface_airspace_boundary",
+      "answer_target": "低放射率表面降低的是跨空間輻射交換；緊貼接觸後不能把原空氣層的熱阻加到薄箔本身。",
+      "scope": "不否認接觸構件仍有其他熱阻；不提供安裝方式。",
+      "source_ids": [
+        "B4-S003"
+      ],
+      "source_locator": "4.3 Thermal Resistance of Plane Air Spaces",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "反射表面的性能依賴它面對什麼",
+        "visual": "同一薄箔分別面對空氣間隙與接觸板，熱流路徑切換",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "B4010",
+      "question": "都是關緊的窗，平推窗和滑動窗為什麼可能有不同漏風量？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.windows.compression_seal_vs_sliding_contact",
+      "answer_target": "鉸鏈關閉可將彈性密封件壓緊，滑動結構的接觸與密封條件不同，操作方式影響漏氣。",
+      "scope": "來源的一般設計比較；不宣稱每扇平開窗都勝過每扇滑窗。",
+      "source_ids": [
+        "B4-S005"
+      ],
+      "source_locator": "Product type and air leakage",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "關上動作還有密封壓緊方式的差別",
+        "visual": "同尺寸兩個機構模型，只放大密封接觸方式",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "B4012",
+      "question": "隔牆已經很厚，隔壁的聲音為什麼還可能繞進來？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.flanking_junction_paths",
+      "answer_target": "振動可沿樓板、側牆及接點繞過名義分隔牆，總隔音受多條傳輸路徑控制。",
+      "scope": "不從聲音方位自行診斷實際缺陷；STC/ASTC僅作模型區分。",
+      "source_ids": [
+        "B4-S006"
+      ],
+      "source_locator": "Overview; Benefits to users",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "最弱的路徑可能不在眼前那面牆",
+        "visual": "封住直接路徑後，標出沿結構接點繞行的聲能",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4013",
+      "question": "濾網標得很有效，為什麼整間房的空氣仍可能清得慢？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.air.clean_air_delivery_room_volume_operation",
+      "answer_target": "濾材效率之外，通過的空氣量、實際風速與運行時間共同限制顆粒清除；相同地坪但更高天花板需要處理更多空氣。",
+      "scope": "CADR針對顆粒，不外推氣體或健康效果；先作運轉量與空間對照，不杜撰真實衰減數據。",
+      "source_ids": [
+        "B4-S007"
+      ],
+      "source_locator": "Portable Air Cleaners; CADR; room sizing; fan speed; HVAC operating time",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "濾得乾淨與整間清得快是不同問題",
+        "visual": "同一濾網配不同流量，再保持地坪但加高房間；標示概念模型",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "B4014",
+      "question": "同一棟暖房，為什麼低處縫隙吸氣、高處縫隙卻往外吹？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.air.stack_neutral_pressure_height",
+      "answer_target": "室內外空氣密度不同，使壓差隨高度改變；在簡化煙囪效應模型中，中性壓力面上下的漏氣方向相反。",
+      "scope": "只談供暖室內較暖且風與機械影響不主導的模型；中性面會隨開口與運轉改變。",
+      "source_ids": [
+        "B4-S008"
+      ],
+      "source_locator": "Stack Pressure; neutral pressure plane",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "高度會改變同一建築的漏氣方向",
+        "visual": "剖面同時標高低兩縫與隨高度變號的壓差",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4015",
+      "question": "窗已經不漏風，站在旁邊為什麼仍可能感到一股冷風？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.air.cold_surface_indoor_convective_loop",
+      "answer_target": "靠近冷玻璃的室內空氣冷卻變密而下沉，再沿地面流動；感到氣流不必等於室外空氣穿窗。",
+      "scope": "來源直接給冷窗/牆例子；與B4010漏氣分開，不憑感覺判實際窗漏不漏。",
+      "source_ids": [
+        "B4-S008"
+      ],
+      "source_locator": "How unintended air flow can hurt a home: convective loops",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分開穿窗漏氣與室內自行循環",
+        "visual": "封死窗戶的透明剖面，標出玻璃側下降與房內回流",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "B4016",
+      "question": "排風扇把空氣抽出去，為什麼有時會讓煙道氣流反過來？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.air.exhaust_depressurization_buoyant_flue_competition",
+      "answer_target": "機械排氣使室內負壓，可能抵銷依賴浮力的自然排氣壓差；方向取決於整體壓差而非煙道名稱。",
+      "scope": "限使用室內空氣、自然排氣設備；不含所有密閉燃燒系統，不提供測試或操作方法。D2079已有補風，這題補的是相反驅動的競爭。",
+      "source_ids": [
+        "B4-S008"
+      ],
+      "source_locator": "Airflow risks: backdrafting",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排氣路徑能因別處風扇改變方向",
+        "visual": "兩條壓差箭頭相抵，煙道流向於示意門檻反轉",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "B4018",
+      "question": "室內濕度高就開換氣，夏天為什麼可能越換越濕？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.air.ventilation_moisture_removal_gradient_reversal",
+      "answer_target": "換氣的水分移除量取決於室內外水分含量差；潮濕室外空氣進入時，增加風量可反向增加水分負荷。",
+      "scope": "比較含濕量而非只比相對濕度百分比；來源直接描述夏季濕空氣增加負荷，不給設備設定建議。",
+      "source_ids": [
+        "B4-S009"
+      ],
+      "source_locator": "Control options: humidistat limitations in summer",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換氣不是固定方向的除濕裝置",
+        "visual": "相同室內條件先換乾空氣、再換濕空氣，水分帳兩種符號",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "B4020",
+      "question": "房間加了吸音材料，為什麼離喇叭很近時聲音不一定小很多？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.direct_reverberant_field_absorption_boundary",
+      "answer_target": "吸聲主要減少反射累積的混響場，近聲源的直接聲尚未經牆面，兩個區域對加吸聲的反應不同。",
+      "scope": "不是說吸音完全不影響任何近場；採來源直接/混響場理想模型。",
+      "source_ids": [
+        "B4-S010"
+      ],
+      "source_locator": "Room acoustics: direct and reverberant fields",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "吸聲改變的是走過表面的部分聲能",
+        "visual": "固定聲源與人，先畫直接路徑、再逐次刪去牆面回音",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4021",
+      "question": "同一片牆隔多數聲音很好，為什麼某一段音高反而特別容易穿過？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.partition_bending_wave_coincidence_dip",
+      "answer_target": "牆板彎曲波與入射空氣聲波沿板面的波長相匹配時可有效耦合，形成傳聲損失的巧合低谷。",
+      "scope": "限平板模型與相應頻段/角度；不將所有低音漏聲都歸因此現象。與一般共振區別待進稿示意。",
+      "source_ids": [
+        "B4-S010"
+      ],
+      "source_locator": "Transmission Loss: coincidence and critical frequency",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是單由厚薄決定，波的匹配會打開傳輸窗口",
+        "visual": "掃頻曲線搭配板面波紋，匹配時才強烈耦合",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B4022",
+      "question": "兩層牆板各自都能隔音，為什麼合起來不能把隔音數字直接相加？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.acoustics.double_leaf_air_coupling_and_cavity_resonance",
+      "answer_target": "中間空氣仍會耦合兩片已機械隔離的牆板，空腔內共振也可增加傳聲；因此組裝後的傳聲損失不能直接相加。",
+      "scope": "限來源直接描述的空氣耦合與腔內共振；不把聲源外罩段的壓縮空氣模型直接移用為已核實雙葉牆低頻質量—空氣—質量模型。",
+      "source_ids": [
+        "B4-S010"
+      ],
+      "source_locator": "§8 Controlling Sound → Partitions，double-leaf construction / air in the cavity couples the leaves 段",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。 獨立覆核後收斂：原Double Walls非原頁標題，已改Partitions；刪除來源此段未直接建立的低頻空氣彈簧細節。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "新增空氣層同時新增耦合振動模式",
+        "visual": "兩板機械支撐路徑與板間空氣路徑分色，逐一指出耦合未被全部切斷；共振只作限定的頻率響應示意。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "B4023",
+      "question": "有些玻璃不用拉窗簾，通一點電怎麼就能逐漸變深色？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.windows.electrochromic_ion_insertion_optical_state",
+      "answer_target": "電壓驅動離子穿過導離子層進出活性層，伴隨電荷狀態變化，改變光的透過；反向控制可恢復。",
+      "scope": "採2007研究的鋰離子電致變色堆疊；不把它說成LCD偏振旋轉，也不採當年效率/切換秒數為現況。",
+      "source_ids": [
+        "B4-S011"
+      ],
+      "source_locator": "How They Work",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "透明度能由材料電化學狀態控制",
+        "visual": "剖面只顯示離子位置、電荷交換與透光變化",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4024",
+      "question": "整面窗一起變暗，為什麼不如上下分區有時更能兼顧採光與眩光？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.windows.view_zone_daylight_zone_separate_control",
+      "answer_target": "下部視野區與上部採光區承擔不同入射路徑；來源試驗用下區壓直接眩光、上區保留或調節送往房內的日光。",
+      "scope": "來自辦公測試室；住家使用是原創情境推導，需依朝向室形另核，不保證節能幅度。",
+      "source_ids": [
+        "B4-S011"
+      ],
+      "source_locator": "The Window Testbed: two-zone optimal control",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個平均透光設定不能同時表達兩區任務",
+        "visual": "同一房間先全窗變暗，再保留上區並畫出工作面與視線路徑",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "B4025",
+      "question": "排水口明明有彎管存水，別處排水時為什麼仍可能失去水封？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.plumbing.trap_seal_pressure_transients",
+      "answer_target": "排水可抽走支管空氣形成負壓，或由下落水團壓縮前方空氣形成正壓；兩方向壓差都可移走水封。",
+      "scope": "只採舊CDC教材的壓力機制，不採1976規範尺寸、改管與修理方法；不把所有異味都診斷為失封。",
+      "source_ids": [
+        "B4-S012"
+      ],
+      "source_locator": "Chapter 6 IV: traps; ventilation; direct/indirect siphonage and back pressure, PDF pp.62–64",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水封擋氣，卻不能代替整個排水系統的壓力管理",
+        "visual": "同一水封分別受吸與推，並排畫支管壓力變化",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "B4026",
+      "question": "能擋住冬天漏熱的玻璃，為什麼夏天曬太陽仍可能很熱？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.windows.temperature_difference_vs_solar_heat_channels",
+      "answer_target": "低U值限制由室內外溫差驅動的傳熱，日照得熱還受太陽光譜透射與吸收影響；兩者不能用同一性能替代。",
+      "scope": "不把U值僅稱材料導熱係數；不提供跨氣候選購結論。",
+      "source_ids": [
+        "B4-S013"
+      ],
+      "source_locator": "Buyer Tips: U-Factor; SHGC",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "隔溫差與擋日照是兩項不同測試",
+        "visual": "同一窗分別在無日照溫差與有日照場景，熱流換顏色",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "B4027",
+      "question": "窗上方伸出一片板子，怎麼可能讓靠窗不刺眼、房間深處卻更亮？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.daylight.light_shelf_shading_redistribution",
+      "answer_target": "光棚遮擋部分直接光，同時把部分光反射向室內更深處；不同位置的照度可以一降一升。",
+      "scope": "不保證總入光增加；來源直接描述光棚，房間對照圖為原創光線示意，不是量測或設計建議。",
+      "source_ids": [
+        "B4-S014"
+      ],
+      "source_locator": "Lighting design products: light shelves",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "減少局部強光與把光送深可以同時發生",
+        "visual": "先畫窗邊直射亮斑，再加反射面追蹤天花板與深處光路",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "B4028",
+      "question": "同一片窗，為什麼午後斜照的熱量不能只用正面測試值判斷？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.windows.incident_angle_reflectance_projected_area",
+      "answer_target": "太陽入射角改變玻璃反射/透射比例，也改變接受光束的有效投影面積，實際得熱隨位置時間而變。",
+      "scope": "不套澳洲朝向到臺灣；不引用單一55度臨界或把所有鍍膜角度效應視為一樣。與P138折射法線的目標不同。",
+      "source_ids": [
+        "B4-S015"
+      ],
+      "source_locator": "Solar heat gain: angle of incidence",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "額定條件改變時，不只光束方向改變",
+        "visual": "同尺寸窗旋轉相對光束，並排顯示投影面積與反射份額",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "B4030",
+      "question": "把厚實地板蓋上隔熱地毯，房間能用到的儲熱量為什麼也會變？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.thermal.mass_accessibility_surface_thermal_resistance",
+      "answer_target": "材料總熱容量未必改變，但表面增加熱阻會限制一天內能交換的熱量；有儲量不等於能及時充放。",
+      "scope": "同一地板與相同日內時程比較；不把阻隔後儲熱量說成消失。不同於P084質量×比熱及N258都市夜間放熱。",
+      "source_ids": [
+        "B4-S016"
+      ],
+      "source_locator": "Slab design; Walls: covering thermally decouples mass",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把容量與在指定時間內可取用的容量分開",
+        "visual": "相同熱容量兩塊板，只對一塊加表面熱阻並畫熱流隨時間",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "B4031",
+      "question": "冷氣很快把房間吹冷，為什麼濕黏感卻還留著？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.hvac.sensible_control_short_cycles_latent_load",
+      "answer_target": "溫控器先達溫而停機，縮短冷盤管低於露點的有效運行時間；顯熱需求低不表示水分負荷也低。",
+      "scope": "來源直接描述過大容量和低負荷；不把所有變頻系統或濕黏原因一概而論，不給設定/選型指引。",
+      "source_ids": [
+        "B4-S017"
+      ],
+      "source_locator": "Description: peak vs low loads; oversizing and short-cycling",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "降溫時間與除水時間不一定同步",
+        "visual": "兩個累積帳：溫度先到線，排水仍不足；畫完整停開循環",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B4032",
+      "question": "水龍頭關掉了，水管怎麼還會傳來一連串敲擊？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.plumbing.water_hammer_fluid_pipe_elastic_transient",
+      "answer_target": "快速停止流動使水壓縮、管壁彈性變形，壓力脈衝沿管傳播與反射，停止出口流不等於內部立即靜止。",
+      "scope": "COMSOL是理想化大管線驗證模型；住家是原創應用情境，定量波速/壓力不可外推。不提供製造水錘的實驗。",
+      "source_ids": [
+        "B4-S018"
+      ],
+      "source_locator": "Introduction; Model Definition; Results and Discussion",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "停止流量與壓力擾動傳完是不同時間尺度",
+        "visual": "概念管路裡用壓縮區行進表示訊號，不畫水團全速往返",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B4034",
+      "question": "熱泵正在暖房，為什麼有時反而要把熱送回室外機？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.hvac.reverse_cycle_defrost_energy_direction",
+      "answer_target": "供暖時室外盤管可結霜；逆循環除霜暫時交換室內外盤管角色，以熱冷媒加熱室外盤管融霜。",
+      "scope": "僅逆循環除霜機型；不引用初步研究的效率數字，不提供手動除霜操作。B4017是通風熱交換器停送風，並非同一循環。",
+      "source_ids": [
+        "B4-S020"
+      ],
+      "source_locator": "PDF p.3 What is defrosting; p.10 heat exchanger model",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "暫時反向輸熱是恢復後續換熱能力的一個步驟",
+        "visual": "供暖與除霜兩格對照同一冷媒回路角色；非真實機型接線圖",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4035",
+      "question": "屋裡的煙已散了，牆面為什麼還可能慢慢把氣體送回空氣？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.air.voc_surface_reservoir_delayed_reemission",
+      "answer_target": "氣體與室內表面/材料形成雙向分配；初期表面是淨匯，空氣濃度下降後可成淨源，使單純換氣模型低估尾端持續性。",
+      "scope": "直接例子為無人測試屋木煙VOC；不泛化所有氣味/所有污染物、不承諾健康或清潔效果；不同於僅描述活性碳吸附的D2001。",
+      "source_ids": [
+        "B4-S021"
+      ],
+      "source_locator": "Results: Dynamic gas-surface partitioning drives indoor gas concentrations, pp.2–3",
+      "premise_status": "screened",
+      "notes": "來源直接描述所列機制；生活問法與畫面為原創示意，進稿另核。不是建築個案診斷、施工或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "濃度下降不代表房屋裡的物質都已離開",
+        "visual": "兩個儲庫質量帳，先箭頭入牆再轉出牆；不要把顆粒和VOC混作同物",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "B4037",
+      "question": "地基下面沒有新灌混凝土，雨後的土為什麼可能把房子往上頂？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.foundation.clay_interlayer_hydration_swelling",
+      "answer_target": "特定膨脹黏土片層間納入水分，使片層距離和土體體積增加；受到約束時可對地基施壓。",
+      "scope": "來源直接談住宅；不把所有黏土都視為膨脹土，不用裂縫外觀自行診斷，不等同H3093高分子交聯膨潤。",
+      "source_ids": [
+        "B4-S024"
+      ],
+      "source_locator": "Descriptive definition: clay plates and water layers",
+      "premise_status": "screened",
+      "notes": "來源支持所列研究機制；直接例子與原創情境推導依scope區分。進稿須逐主張與畫面另核，非個案診斷或危險DIY教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "地面遇水不是只能變軟或下沉",
+        "visual": "同一層狀顆粒模型加水後間距增大，再放入約束邊界",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4038",
+      "question": "有些地面乾燥時撐得住房子，遇水後為什麼反而迅速下陷？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.foundation.wetting_collapses_metastable_soil_fabric",
+      "answer_target": "低密度土的疏鬆骨架由乾燥時的弱膠結維持；濕潤削弱顆粒接合後，骨架在載荷下重排為更密的構造。",
+      "scope": "限可塌陷土；區別抽地下水壓密N086及黏土膨脹B4037，不將任意下陷解釋成此原因。",
+      "source_ids": [
+        "B4-S025"
+      ],
+      "source_locator": "Details: hydrocompaction; grain fabric; sensitive binding agents",
+      "premise_status": "screened",
+      "notes": "來源支持所列研究機制；直接例子與原創情境推導依scope區分。進稿須逐主張與畫面另核，非個案診斷或危險DIY教學。 作者收尾把未在指定實讀段落充分展開的吸力支撐刪去，保留來源直接描述的弱膠結失穩。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水改變的是原本維持疏鬆骨架的接合",
+        "visual": "同載荷下的乾濕兩模型，保留固體顆粒而讓孔隙縮小",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "B4039",
+      "question": "混凝土已經硬了好幾年，裡面的石粒為什麼還可能把它撐裂？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.material.alkali_silica_reaction_gel_swelling",
+      "answer_target": "高鹼孔隙液攻擊某些活性矽質骨材並形成反應產物，凝膠吸水膨脹可引起內部拉應力與裂縫。",
+      "scope": "來源講各類混凝土結構；住家例子是原創材料情境，需另核實際個案。只採共同核心，不把所有細部膨脹理論說成定論，與鋼筋腐蝕不同。",
+      "source_ids": [
+        "B4-S026"
+      ],
+      "source_locator": "2.2.1 Components; 2.2.2 Mechanisms",
+      "premise_status": "screened",
+      "notes": "來源支持所列研究機制；直接例子與原創情境推導依scope區分。進稿須逐主張與畫面另核，非個案診斷或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "硬化之後仍可能有內部化學演變",
+        "visual": "骨材—孔液—產物—吸水膨脹四格，沒有施工配方",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B4040",
+      "question": "看起來乾燥的石膏板，遇火時為什麼還能釋出水並延緩升溫？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.material.gypsum_bound_water_endothermic_dehydration",
+      "answer_target": "石膏晶格含化學結合的水，受熱脫水反應吸收能量；外觀乾燥不等於晶體中沒有水。",
+      "scope": "不承諾任何牆板或整面牆的耐火分鐘數；自由水、結晶水與脫水後性能要分開。無居家燃燒示範。",
+      "source_ids": [
+        "B4-S027"
+      ],
+      "source_locator": "Introduction, printed pp.1–3: bound water and endothermic reactions",
+      "premise_status": "screened",
+      "notes": "來源支持所列研究機制；直接例子與原創情境推導依scope區分。進稿須逐主張與畫面另核，非個案診斷或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "礦物裡的水與表面摸起來濕不濕是兩件事",
+        "visual": "晶格水符號隨反應離開，能量帳把吸能和單純升溫分開",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "B4041",
+      "question": "同樣排掉一桶熱水，邊洗邊排和洗完再排，回收熱量為什麼可能不同？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.plumbing.drain_heat_recovery_flow_synchronization",
+      "answer_target": "無額外儲熱的回熱器需要熱排水與冷進水在同一時段交換熱；總熱水量相同，時間未重疊仍可能錯過回收。",
+      "scope": "來源直接要求同步並以淋浴為例；先後排放對照為原創時間模型，不外推有儲熱系統，不提供安裝圖或回收百分比。",
+      "source_ids": [
+        "B4-S028"
+      ],
+      "source_locator": "7.0301.3b Location; 7.0301.3d concurrent use",
+      "premise_status": "screened",
+      "notes": "來源支持所列研究機制；直接例子與原創情境推導依scope區分。進稿須逐主張與畫面另核，非個案診斷或危險DIY教學。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "可用廢熱還需要在同一時間有接收端",
+        "visual": "兩組等量流量時間帶，一組重疊另一組分開，僅標可交換時段",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "B4011",
+      "question": "密封雙層玻璃裡為什麼還放乾燥劑？",
+      "existing_ids": [
+        "D2001"
+      ],
+      "reason": "現可讀材料只到吸附水分，沒有超出既有多孔吸附的新機制；先作玻璃組案例。"
+    },
+    {
+      "id": "B4901",
+      "question": "房子越氣密，為什麼越需要換氣？",
+      "existing_ids": [
+        "D2080"
+      ],
+      "reason": "既有完整核心，不以住宅情境重算。"
+    },
+    {
+      "id": "B4902",
+      "question": "全熱交換器為什麼與熱交換器不同？",
+      "existing_ids": [
+        "D2081"
+      ],
+      "reason": "顯熱與水分傳遞已收。"
+    },
+    {
+      "id": "B4903",
+      "question": "外牆底部為什麼要留排水孔？",
+      "existing_ids": [
+        "D2087",
+        "D2088",
+        "D2089"
+      ],
+      "reason": "排水、搭接與空腔分工已收。"
+    },
+    {
+      "id": "B4904",
+      "question": "地板下碎石和防潮膜為什麼不能互相取代？",
+      "existing_ids": [
+        "D2090"
+      ],
+      "reason": "毛細液水與水汽分工已收。"
+    },
+    {
+      "id": "B4905",
+      "question": "太冷的玻璃上為什麼有水珠？",
+      "existing_ids": [
+        "P090",
+        "P209"
+      ],
+      "reason": "單說凝結屬基礎物理換物件；需新層次的建築條件才另立題。"
+    },
+    {
+      "id": "B4906",
+      "question": "HEPA能攔的粒子越小越容易穿過嗎？",
+      "existing_ids": [
+        "D2112"
+      ],
+      "reason": "最易穿透粒徑與捕集機制已收。"
+    },
+    {
+      "id": "B4907",
+      "question": "活性碳濾網怎麼抓住室內氣味？",
+      "existing_ids": [
+        "D2001",
+        "D2003"
+      ],
+      "reason": "孔內吸附與競爭容量已收，不以水換空氣重算。"
+    },
+    {
+      "id": "B4006",
+      "question": "有些防潮膜遇到濕氣，為什麼反而變得比較透濕？",
+      "existing_ids": [
+        "B4004"
+      ],
+      "reason": "已讀ASHRAE段只交代濕度依賴性能與乾燥用途，未回答膜傳輸為何變化；先作B4004功能案例，待有分子機制來源再評估。"
+    },
+    {
+      "id": "B4908",
+      "question": "厚牆白天吸熱，夜晚為什麼放熱？",
+      "existing_ids": [
+        "N258",
+        "P084"
+      ],
+      "reason": "目前僅日夜儲熱再放出，與舊核心相同；保留熱容量可否及時交換的B4030才有新條件。"
+    },
+    {
+      "id": "B4909",
+      "question": "木門到了潮濕季節為什麼關不緊？",
+      "existing_ids": [
+        "D2110",
+        "D2107"
+      ],
+      "reason": "含水率造成尺寸改變與方向性已收。"
+    },
+    {
+      "id": "B4910",
+      "question": "除濕機為什麼排出暖風？",
+      "existing_ids": [
+        "LEG-S76"
+      ],
+      "reason": "同室內冷熱端加輸入電功的能量帳已收，除水情境作舊題案例。"
+    },
+    {
+      "id": "B4911",
+      "question": "水管裡的逆止閥為什麼只能一邊流？",
+      "existing_ids": [
+        "D2249"
+      ],
+      "reason": "同一壓差驅動單向閥，不以家用水路重算。"
+    },
+    {
+      "id": "B4912",
+      "question": "燈泡一樣白，照出來的顏色為什麼不一樣？",
+      "existing_ids": [
+        "E2247"
+      ],
+      "reason": "色溫與光譜顯色差異已收。"
+    },
+    {
+      "id": "B4913",
+      "question": "亮面的保溫箔是不是任何貼法都一樣？",
+      "existing_ids": [
+        "B4009"
+      ],
+      "reason": "只合成氣隙依賴同一題，不將每種貼法拆計。"
+    },
+    {
+      "id": "B4914",
+      "question": "隔音棉多放一些，房間回音為什麼減少？",
+      "existing_ids": [
+        "N275",
+        "B4020"
+      ],
+      "reason": "單講吸收相對反射是舊原理；新題只保留直接聲與混響聲兩路徑的邊界。"
+    },
+    {
+      "id": "B4915",
+      "question": "磚牆裡的鹽為什麼會把表面撐掉？",
+      "existing_ids": [
+        "N234"
+      ],
+      "reason": "NPS實讀支持孔隙再結晶壓力，但舊庫已同核心，保留建築例子不新增。"
+    },
+    {
+      "id": "B4916",
+      "question": "室內變乾時，某些氣體為什麼可能更多？",
+      "existing_ids": [
+        "B4035"
+      ],
+      "reason": "NIST pH研究僅讀機構完整摘要，未取得正文；水膜、酸鹼形態與氣粒分配因果待深讀，不以摘要概括所有室內氣體。 P270 是弱酸稀釋解離，並非此問題的直接舊核心，已移除誤列。"
+    },
+    {
+      "id": "B4917",
+      "question": "厚牆裡有很多熱容量就一定讓房間舒服嗎？",
+      "existing_ids": [
+        "N258",
+        "P084",
+        "B4030"
+      ],
+      "reason": "一般儲放熱已收，表面熱阻控制可用容量已集中B4030，不按每個氣候與房間再拆。"
+    },
+    {
+      "id": "B4017",
+      "question": "原本進出風平衡的熱交換器，除霜時怎麼可能暫時只剩排風？",
+      "existing_ids": [
+        "B4016",
+        "D2081"
+      ],
+      "source_ids": [
+        "B4-S009"
+      ],
+      "source_locator": "Balanced ventilation systems: HRV defrost paragraph",
+      "reason": "除霜停送風是設備模式造成壓差的案例，現有答案未建立新的除霜傳熱核心；保留作 B4016 的條件段，不另計核心。"
+    },
+    {
+      "id": "B4019",
+      "question": "客廳有新鮮空氣，關著門的臥室為什麼不一定分得到？",
+      "existing_ids": [
+        "D2082"
+      ],
+      "source_ids": [
+        "B4-S009"
+      ],
+      "source_locator": "Air distribution: occupied rooms and closed doors",
+      "reason": "關門造成空氣路徑受限已由 D2082 處理；以新鮮空氣分配重述，尚無足以獨立的新混合機制。"
+    },
+    {
+      "id": "B4029",
+      "question": "窗簾布已經很厚，為什麼邊緣通風仍可能削弱保溫？",
+      "existing_ids": [
+        "B4015"
+      ],
+      "source_ids": [
+        "B4-S015"
+      ],
+      "source_locator": "Window furnishings",
+      "reason": "冷窗附近的室內對流迴路與 B4015 同核心，窗簾邊緣作阻斷迴路的改善段，不另計。"
+    },
+    {
+      "id": "B4033",
+      "question": "止回閥防住回流後，為什麼熱水系統還得處理加熱膨脹？",
+      "existing_ids": [
+        "P075",
+        "D2249"
+      ],
+      "source_ids": [
+        "B4-S019"
+      ],
+      "source_locator": "Thermal Expansion; Thermal Expansion Tanks",
+      "reason": "目前是約束熱膨脹加上止回邊界的組合例子，氣室只是順應性說明，未形成足夠新的獨立核心。"
+    },
+    {
+      "id": "B4036",
+      "question": "空氣處理把一種氣體變少，為什麼不表示所有新產物也一起變少？",
+      "existing_ids": [
+        "B4035"
+      ],
+      "source_ids": [
+        "B4-S022",
+        "B4-S023"
+      ],
+      "source_locator": "NIST news: What Kind; research abstract",
+      "reason": "NIST 正文新聞及研究摘要支持副產物觀察，但尚未實讀足以解釋特定反應路徑的論文正文；先暫緩，不把移除量與副產物量不同的功能重述計作新化學機制。"
+    }
+  ]
+}

@@ -1,0 +1,515 @@
+{
+  "tested_on": "2026-11-01T23:50:13.917Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3306,
+    "canonical_questions": 3168,
+    "eligible_candidates": 2998,
+    "selected_candidates": 2939,
+    "alias_records": 138,
+    "historical_records": 313,
+    "source_urls": 4258,
+    "current_research_source_urls": 1299,
+    "selected_source_urls": 2485,
+    "new_suggestions_not_added": 776,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 172,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2921",
+    "carried": 2920,
+    "added": 19,
+    "changed_raw_ids": [],
+    "removed_ids": [
+      "E2026"
+    ]
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "52c4426877db2dcd4bfe993704c6cccc23195940b39f0ce239a44a60877914b0",
+    "writes": 6474,
+    "selected": 2939
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "52c4426877db2dcd4bfe993704c6cccc23195940b39f0ce239a44a60877914b0",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "E2026",
+      "resolved": "E2024"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4354,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 23602.6155,
+    "index_ms": 18087.065200000005,
+    "unchanged_index_ms": 624.5997999999963,
+    "searches": [
+      {
+        "query": "生長",
+        "returned": 29,
+        "milliseconds": 360.0818999999901
+      },
+      {
+        "query": "影像",
+        "returned": 26,
+        "milliseconds": 17.5625
+      },
+      {
+        "query": "麵",
+        "returned": 11,
+        "milliseconds": 14.069900000002235
+      }
+    ],
+    "rss_bytes": 363446272,
+    "sqlite_bytes": 48058368
+  },
+  "dedup_audit": {
+    "selection": "Every final wave15 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "7a3943a0460090156a797f370a6d0029b977f7fa854979760eec59f4e52dd705",
+    "records": 3306,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 3.66
+  },
+  "hashes": {
+    "pool.json": "7a3943a0460090156a797f370a6d0029b977f7fa854979760eec59f4e52dd705",
+    "themes.json": "d0d04f1c90e1294ff6c24ce0d6fadfbe4ecf093daadbca699f39c49c5f8f4bfc",
+    "manifest.json": "3c17f354fa2dd68569c67294c894ef2fa67d1ddd9320ab5e2d040ec6c0ce1a90",
+    "index.html": "186e0448ca04eb2d814431b57718bed21482d22b6695568f6353cfb4f2217a77",
+    "batches/wave15-food-physics.json": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb",
+    "batches/wave15-imaging.json": "05408177378982b02fdbcf246e4699949fc551710455918c376cc2007456e33c",
+    "batches/wave15-plants.json": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3287,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 2920,
+    "old_selected_merged_into_retained": [
+      "E2026"
+    ],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 159,
+    "changed_old_canonical_ids": [
+      "E2024"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "old_pair_audit": {
+    "selection": "Six highest-scoring selected pairs not yet explicitly marked distinct in frozen wave14 top10, plus one manually discovered shared-source pair; purposive sample, not precision or recall.",
+    "judged": 7,
+    "merges": [
+      {
+        "duplicate_id": "E2026",
+        "canonical_id": "E2024",
+        "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。"
+      }
+    ],
+    "review": {
+      "file": "reviews/wave15-old-pair-integration.json",
+      "sha256": "dedeec489974451f9e914a53369d124720681ae0a3010970c14d93b49821cd7f"
+    }
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4238,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://math.mit.edu/~dunkel/Data/spaghetti/2018HeEtAl_PNAS.pdf",
+        "source_id": "SRC-62966f7d5ba674db",
+        "candidate_ids": [
+          "F15001"
+        ],
+        "theme_ids": [
+          "G169"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8099191/",
+        "source_id": "SRC-fbb1fdbe5817d33f",
+        "candidate_ids": [
+          "F15002"
+        ],
+        "theme_ids": [
+          "G170"
+        ]
+      },
+      {
+        "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-24.pdf",
+        "source_id": "SRC-4e296254d505580d",
+        "candidate_ids": [
+          "F15003"
+        ],
+        "theme_ids": [
+          "G171"
+        ]
+      },
+      {
+        "url": "https://hu.gatech.edu/wp-content/uploads/2020/08/Hu20-rice.pdf",
+        "source_id": "SRC-5f3875b75b161a10",
+        "candidate_ids": [
+          "F15004"
+        ],
+        "theme_ids": [
+          "G172"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/",
+        "source_id": "SRC-8cec7de171cda509",
+        "candidate_ids": [
+          "I15001"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700296/",
+        "source_id": "SRC-b9eccd82596ddb33",
+        "candidate_ids": [
+          "I15002"
+        ],
+        "theme_ids": [
+          "G164"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2397368/",
+        "source_id": "SRC-e941e6939049c6c0",
+        "candidate_ids": [
+          "I15003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+        "source_id": "SRC-81d16a3482a59d33",
+        "candidate_ids": [
+          "I15004"
+        ],
+        "theme_ids": [
+          "G165"
+        ]
+      },
+      {
+        "url": "https://merl.com/publications/docs/TR2006-124.pdf",
+        "source_id": "SRC-9bbe7866c2989f59",
+        "candidate_ids": [
+          "I15005"
+        ],
+        "theme_ids": [
+          "G166"
+        ]
+      },
+      {
+        "url": "https://web.mit.edu/2.717/www/oct_fujimoto_91.pdf",
+        "source_id": "SRC-88614f0d429be77d",
+        "candidate_ids": [
+          "I15006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content",
+        "source_id": "SRC-7189d8b7e24b47d2",
+        "candidate_ids": [
+          "I15007"
+        ],
+        "theme_ids": [
+          "G167"
+        ]
+      },
+      {
+        "url": "https://merl.com/publications/docs/TR2006-087.pdf",
+        "source_id": "SRC-374feacf7dbe9871",
+        "candidate_ids": [
+          "I15008"
+        ],
+        "theme_ids": [
+          "G168"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.cub.2013.06.034",
+        "source_id": "SRC-44979c619685df0e",
+        "candidate_ids": [
+          "B15001"
+        ],
+        "theme_ids": [
+          "G160"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/nplants201757",
+        "source_id": "SRC-5a57246c4c0f56b9",
+        "candidate_ids": [
+          "B15002"
+        ],
+        "theme_ids": [
+          "G161"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5789911/",
+        "source_id": "SRC-570c2eb2d08942c9",
+        "candidate_ids": [
+          "B15003"
+        ],
+        "theme_ids": [
+          "G161"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/science.1223304",
+        "source_id": "SRC-7aa52fc9dbb40877",
+        "candidate_ids": [
+          "B15004"
+        ],
+        "theme_ids": [
+          "G162"
+        ]
+      },
+      {
+        "url": "https://genesdev.cshlp.org/content/21/14/1720",
+        "source_id": "SRC-1ed0f543a0385d16",
+        "candidate_ids": [
+          "B15005"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1015162108",
+        "source_id": "SRC-bfd2e6c073ddb135",
+        "candidate_ids": [
+          "B15006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1007808108",
+        "source_id": "SRC-196128eb4764b42c",
+        "candidate_ids": [
+          "B15007"
+        ],
+        "theme_ids": [
+          "G163"
+        ]
+      },
+      {
+        "url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+        "source_id": "SRC-a8dc0aa5883472e0",
+        "candidate_ids": [],
+        "theme_ids": []
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://doi.org/10.1016/j.cub.2013.06.034",
+    "core": "B15001",
+    "theme": "G160",
+    "theme_ids": [
+      "G160"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 397482.0716,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "8f8b249fa1028fbcfe0adef94e76799ebeb0323106d35926ded4d3e376e92436"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "9b60a966da3d510b59a6c4e87027ef8c2b774129ad9b73de96ac0844ee33d366"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "b3ba99aab550995cceead995d9ea63a152a0e2e60b7349e36fe20a319d9afef2",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "eae3345c3ae70081fdd8c1cabc1ac89971a50b6b3b4dacef49166c7276034fea"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "3ee23aa3f68b7c17de612e824f492e7a416a969ad2738f05c2c77fc627e93250",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 308,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true,
+    "independently_bound_stable_blobs": 46,
+    "unique_blobs_checked": 334
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3162,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G160",
+        "core": "B15001",
+        "seconds": 105,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G161",
+        "core": "B15002",
+        "seconds": 100,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G161",
+        "core": "B15003",
+        "seconds": 100,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G162",
+        "core": "B15004",
+        "seconds": 120,
+        "maximum": 130,
+        "variant_budget": null
+      },
+      {
+        "theme": "G163",
+        "core": "B15007",
+        "seconds": 105,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G164",
+        "core": "I15002",
+        "seconds": 110,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G165",
+        "core": "I15004",
+        "seconds": 110,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G166",
+        "core": "I15005",
+        "seconds": 115,
+        "maximum": 130,
+        "variant_budget": null
+      },
+      {
+        "theme": "G167",
+        "core": "I15007",
+        "seconds": 120,
+        "maximum": 135,
+        "variant_budget": null
+      },
+      {
+        "theme": "G168",
+        "core": "I15008",
+        "seconds": 115,
+        "maximum": 130,
+        "variant_budget": null
+      },
+      {
+        "theme": "G169",
+        "core": "F15001",
+        "seconds": 140,
+        "maximum": 160,
+        "variant_budget": null
+      },
+      {
+        "theme": "G170",
+        "core": "F15002",
+        "seconds": 130,
+        "maximum": 150,
+        "variant_budget": null
+      },
+      {
+        "theme": "G171",
+        "core": "F15003",
+        "seconds": 115,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G172",
+        "core": "F15004",
+        "seconds": 130,
+        "maximum": 140,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave15-final-independent-readback.json",
+    "sha256": "251b4a75f45a05f0dd5cc7588869d255ae9c7deff9a7f2d816b0ec06079ad037",
+    "status": "PASS_INDEPENDENT_INTEGRATION_READBACK_NOT_SCRIPT_OR_PRODUCTION_APPROVAL",
+    "root_recomputed_bound_file_hashes": 46,
+    "all_required_data_docs_batches_and_reviews_bound": true,
+    "limits": "Data/editorial integration review; not a new independent full-source or production approval. Food physics facts use non-author physics receipt. Existing G108 narration and demos are unchanged and were not rerun."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 37,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "receipt_file": ".cache/wave15-staged-hygiene-before-receipt.json",
+    "receipt_sha256": "b23da14da72e697ac829374886cebfff243f23e1313b29a507796f19ce11ab81",
+    "offences": 0,
+    "self_binding_limit": "This added field is outside the bound pre-field scan. Repeat the identical scanner after staging this receipt; final scan remains in ignored cache to avoid a self-hash cycle."
+  }
+}

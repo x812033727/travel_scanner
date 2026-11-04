@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "status": "REVIEWED_12_OLD_PAIRS_ONE_MERGE",
+  "baseline": "checkpoint-3127.json",
+  "pool_sha256": "f49ccb0ece6cd560c1ed86d0b6476a65ba3b8b5707c1e7ef43378095cf8780a3",
+  "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+  "model_revision": "2c4055b12046f11709e9df2c122e59ffbdc2f900",
+  "reviewer": "root",
+  "selection_method": "以3127存檔的舊原題前五個語意近鄰建立無向配對，兩端均須已入選。剔除已有明確distinct處置者。依相似度由高而低、同分以ID排序，讀前12對完整問題、答案與範圍。",
+  "eligible_pairs": 9805,
+  "examined_pairs": 12,
+  "second_read": {
+    "file": "reviews/wave33-legacy-pair-second-read.json",
+    "sha256": "fe47e0ad27176a3aa524cc57f23744202cf1116d64b445a4dae2fc90f742fee3",
+    "scope": "僅合併對另請一位編輯讀原文；其早年參與兩批原題，角色見收據。"
+  },
+  "pairs": [
+    {
+      "a": "E2145",
+      "b": "E2159",
+      "cosine": 0.865762,
+      "a_snapshot": {
+        "question": "電荷繞一圈回到原地，為什麼感應電場還能對它做淨功？",
+        "answer_target": "時變磁通造成非零閉路電場積分，不能只套靜電位差。",
+        "scope": "固定閉路；非靜電情境。",
+        "mechanism_key": "induced_electric_nonconservative_circulation"
+      },
+      "b_snapshot": {
+        "question": "電容放空了，為什麼電流還能把它充成相反極性？",
+        "answer_target": "電感儲能維持電流，電場與磁場交換造成振盪。",
+        "scope": "理想 LC；實際耗散使振盪衰減。",
+        "mechanism_key": "lc_energy_exchange_polarity_reversal"
+      },
+      "decision": "distinct",
+      "reason": "法拉第非保守感應電場的閉路淨功，與理想LC中電感儲能在電容放空後維持電流，是不同現象。"
+    },
+    {
+      "a": "X5001",
+      "b": "X5002",
+      "cosine": 0.865455,
+      "a_snapshot": {
+        "question": "只有幾公分長的棉纖維，為什麼捻一捻能變成拉不散的長線？",
+        "answer_target": "螺旋路徑把拉力轉為纖維間正向接觸力，摩擦放大使滑出轉為鎖住。",
+        "scope": "限短纖維紗與所讀模型；不宣稱越捻越強或給普遍最佳捻度。",
+        "mechanism_key": "textiles_paper.yarn.twist_normal_force_friction_amplification"
+      },
+      "b_snapshot": {
+        "question": "同一根不太能拉長的線，織成針織布後為什麼變得這麼有彈性？",
+        "answer_target": "拉布先改變線圈彎曲與接觸幾何，並非同等拉長線本身；正反針排列可改變方向伸展性。",
+        "scope": "合併針法與方向比較，不把每種針法各算核心；限研究所測線材與鬆針織。",
+        "mechanism_key": "textiles_paper.knit.loop_bending_and_topology_extensibility"
+      },
+      "decision": "distinct",
+      "reason": "短纖維因捻轉和摩擦鎖在一起；針織布伸長主要來自線圈改形，觀察物及限制不同。"
+    },
+    {
+      "a": "L175",
+      "b": "L176",
+      "cosine": 0.865234,
+      "a_snapshot": {
+        "question": "我們需要氧氣，有些微生物為什麼反而怕氧氣？",
+        "answer_target": "活性氧傷害與解毒能力差異",
+        "scope": "微生物生理概念；不提供培養病原或保存食品操作",
+        "mechanism_key": "microbe.oxygen.ros_tolerance"
+      },
+      "b_snapshot": {
+        "question": "能忍受氧氣的微生物，就一定會用氧氣取得能量嗎？",
+        "answer_target": "耐氧與有氧代謝的區別",
+        "scope": "微生物生理概念；不提供培養病原或保存食品操作",
+        "mechanism_key": "microbe.aerotolerant.not_respiring"
+      },
+      "decision": "distinct",
+      "reason": "能否抵擋活性氧傷害與是否具有利用氧作末端電子受體的能力可分別測試。"
+    },
+    {
+      "a": "E2230",
+      "b": "E2232",
+      "cosine": 0.86477,
+      "a_snapshot": {
+        "question": "電池電壓比較低，電路怎麼不用換電池就升到較高電壓？",
+        "answer_target": "先累積電感能，再在開關關斷相位送到較高電位輸出。",
+        "scope": "概念性 boost；無製作參數。",
+        "mechanism_key": "boost_inductor_off_phase_energy_transfer"
+      },
+      "b_snapshot": {
+        "question": "電池電壓從高變低，怎麼讓設備得到的電壓一路差不多？",
+        "answer_target": "輸入跨過目標輸出時，在降壓與升壓模式間協調。",
+        "scope": "buck-boost 供電概念；實機轉換區另核。",
+        "mechanism_key": "buck_boost_mode_transition_regulation"
+      },
+      "decision": "distinct",
+      "reason": "升壓只需解釋電感在開關兩相儲放能；輸入跨過輸出電壓時仍穩壓還需處理降壓區與切換。"
+    },
+    {
+      "a": "E2161",
+      "b": "E2259",
+      "cosine": 0.864564,
+      "a_snapshot": {
+        "question": "電容中間明明隔著絕緣層，交流電路為什麼還有電流？",
+        "answer_target": "兩側電荷反覆進出，電流幅度取決於電壓變化率。",
+        "scope": "不說電子穿過理想介質；不重複直流初次充電。",
+        "mechanism_key": "capacitor_ac_repeated_charge_discharge"
+      },
+      "b_snapshot": {
+        "question": "電路已經接上電源，為什麼晶片旁邊還要放電容？",
+        "answer_target": "研究切換瞬間的局部電荷需求與供電走線電感，說明去耦電容的位置為何影響電壓穩定。",
+        "scope": "概念性電路；不同頻率與封裝須另核，不列佈線操作規格。",
+        "mechanism_key": "local_decoupling_supply_trace_inductance"
+      },
+      "decision": "distinct",
+      "reason": "交流電容的電荷變化和晶片近端瞬態供電對走線電感、距離的依賴不同。"
+    },
+    {
+      "a": "E2119",
+      "b": "E2127",
+      "cosine": 0.864453,
+      "a_snapshot": {
+        "question": "電流明明往前走，導體兩側怎麼冒出橫向電壓？",
+        "answer_target": "載子偏轉累積邊界電荷，直到電力平衡磁力。",
+        "scope": "單一主要載子簡化模型。",
+        "mechanism_key": "hall_transverse_charge_equilibrium"
+      },
+      "b_snapshot": {
+        "question": "兩根不帶淨電荷的電線，通電後也能互相吸引嗎？",
+        "answer_target": "各自磁場對另一電流施力，同向吸引反向排斥。",
+        "scope": "長直平行導線；不是靜電吸引。",
+        "mechanism_key": "parallel_currents_mutual_force"
+      },
+      "decision": "distinct",
+      "reason": "霍爾電壓需要觀察橫向載子偏移；兩線互相吸引測的是各線在另一線磁場中的合力。"
+    },
+    {
+      "a": "E2002",
+      "b": "E2006",
+      "cosine": 0.864437,
+      "a_snapshot": {
+        "question": "帶電物靠近金屬卻沒碰到，金屬兩端怎麼先有了不同電性？",
+        "answer_target": "外部電場使導電電子重新分布，總電荷可以保持不變。",
+        "scope": "孤立中性導體；靜電近似",
+        "mechanism_key": "electric.conductor_induced_separation"
+      },
+      "b_snapshot": {
+        "question": "金屬很會導電，是否就永遠無法保留靜電？",
+        "answer_target": "導電性使電荷重新分布；是否流失另由連外路徑與環境決定。",
+        "scope": "導體與環境絕緣；不沿用教材將導體概括成無法留電的說法",
+        "mechanism_key": "electric.isolated_conductor_charge_retention"
+      },
+      "decision": "distinct",
+      "reason": "外場使孤立導體分極，不要求漏電；保留額外靜電則取決於與外界連通的路徑。"
+    },
+    {
+      "a": "E2001",
+      "b": "E2002",
+      "cosine": 0.864376,
+      "a_snapshot": {
+        "question": "金屬裡的電子能移動，為什麼金屬塊平常仍不帶淨電？",
+        "answer_target": "可移動電子與正電背景可互相抵銷；載流能力不等於淨電荷。",
+        "scope": "普通金屬、整體電中性",
+        "mechanism_key": "electric.mobile_carriers_not_net_charge"
+      },
+      "b_snapshot": {
+        "question": "帶電物靠近金屬卻沒碰到，金屬兩端怎麼先有了不同電性？",
+        "answer_target": "外部電場使導電電子重新分布，總電荷可以保持不變。",
+        "scope": "孤立中性導體；靜電近似",
+        "mechanism_key": "electric.conductor_induced_separation"
+      },
+      "decision": "distinct",
+      "reason": "淨電荷為零是正負總量的性質；未接觸而兩端分極要有外部電場造成空間重排。"
+    },
+    {
+      "a": "B2098",
+      "b": "L106",
+      "cosine": 0.863933,
+      "a_snapshot": {
+        "question": "土壤的氮已經進入食物網，怎麼又有機會回到空氣？",
+        "answer_target": "反硝化微生物可將硝酸鹽還原成氣態氮。",
+        "scope": "生態氮流失與回流，不把固氮、硝化和反硝化混同。",
+        "mechanism_key": "nitrogen.denitrification.return_atmosphere"
+      },
+      "b_snapshot": {
+        "question": "空氣裡那麼多氮，植物為什麼還會缺氮？",
+        "answer_target": "氮氣須先轉為可利用形態",
+        "scope": "豆科根瘤及菌根；不把所有植物或菌類一概而論",
+        "mechanism_key": "plant.nitrogen.n2_unavailable"
+      },
+      "decision": "distinct",
+      "reason": "反硝化讓化合氮回到氣相；固氮等過程才使氮氣進入植物可用形態，轉換方向與生物過程不同。"
+    },
+    {
+      "a": "L094",
+      "b": "L097",
+      "cosine": 0.86387,
+      "a_snapshot": {
+        "question": "有些葉子缺水垂下來，澆水後為什麼又能挺起來？",
+        "answer_target": "細胞膨壓下降與恢復",
+        "scope": "植物水勢的機制；不給未查物種的澆水配方",
+        "mechanism_key": "plant.turgor.wilt_recovery"
+      },
+      "b_snapshot": {
+        "question": "葉子把水蒸散出去，為什麼反而能帶動更多水進來？",
+        "answer_target": "葉片失水建立水勢梯度",
+        "scope": "植物水勢的機制；不給未查物種的澆水配方",
+        "mechanism_key": "plant.transpiration.potential_gradient"
+      },
+      "decision": "distinct",
+      "reason": "葉片復挺依細胞膨壓；蒸散則問水勢梯度如何促進輸水。"
+    },
+    {
+      "a": "D2122",
+      "b": "J6018",
+      "cosine": 0.863815,
+      "a_snapshot": {
+        "question": "兩顆齒輪中間再塞一顆，為什麼未必讓轉速變得更多？",
+        "answer_target": "簡單齒輪列中的中間惰輪齒數約掉，主要改變方向或跨距。",
+        "scope": "Introduction to Mechanisms, Chapter 7: Gears；限所列機制，不等於特定產品或現場效能。",
+        "mechanism_key": "idler_gear_ratio_cancellation"
+      },
+      "b_snapshot": {
+        "question": "把齒輪故意壓成橢圓，怎麼反而能做出很大的減速比？",
+        "answer_target": "波發生器移動柔輪的嚙合區；在剛輪固定、齒數相差兩齒的配置中，每轉使柔輪反向移兩齒。",
+        "scope": "只採官網雙波、固定剛輪例；不宣稱零誤差、永不磨損或通用齒數。",
+        "mechanism_key": "mechanisms.strain_wave_moving_mesh_tooth_difference"
+      },
+      "decision": "distinct",
+      "reason": "惰輪齒數可約去；諧波齒輪減速靠柔輪與剛輪的齒差和移動的嚙合區。"
+    },
+    {
+      "a": "E2016",
+      "b": "P024",
+      "cosine": 0.86352,
+      "a_snapshot": {
+        "question": "一端正一端負的小物體，怎麼不往旁邊走卻會自己轉向？",
+        "answer_target": "均勻場對兩端的力可相消，但作用線分開仍產生力矩。",
+        "scope": "剛性永久偶極、均勻外場",
+        "mechanism_key": "electric.uniform_field_dipole_torque"
+      },
+      "b_snapshot": {
+        "question": "兩股同樣大的反向力，為什麼能讓物體只轉不平移？",
+        "answer_target": "合力可為零，但不同作用線形成力偶與非零合力矩。",
+        "scope": "剛體、等大反向平行力",
+        "mechanism_key": "force_couple_net_torque"
+      },
+      "decision": "merge",
+      "reason": "E2016的剛性永久電偶極在均勻場下受一對等大反向力，作用線分離便有淨力矩。這正是P024的力偶實例，將電力換成qE未多一個預測。保留電偶極的限定和出處為P024的題目變體。"
+    }
+  ],
+  "limits": "依相似度定向檢查，無全庫錯重率或召回率推論；另11對判不同只覆核既存問題與範圍。"
+}

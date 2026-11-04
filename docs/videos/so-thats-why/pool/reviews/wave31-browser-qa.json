@@ -1,0 +1,37 @@
+{
+  "tested_on": "2026-11-02T09:44:11.091Z",
+  "result": "PASS",
+  "selected": 3115,
+  "index_html_sha256": "99460141050eb9d60d7f5b183d95054ff8799c98c2c33c920145a7cbf38cb5d1",
+  "source_sample": {
+    "id": "P31001",
+    "urls": [
+      "https://research-information.bris.ac.uk/files/329879244/36856_2_merged_1658502913.pdf",
+      "https://eps.rutgers.edu/images/EPS_Publications/A_Tectonic_Origin_for_the_Largest_Marsquake_Observed_by_InSight.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave31-desktop.png",
+    "wave31-source-desktop.png",
+    "wave31-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": [
+    "桌面顯示3115入選、307題案；手機標題換行、四項統計及篩選留在畫面內。",
+    "P31001可依ID搜尋並展開，只得1筆。問題、查證範圍與未試讀秒數清楚可讀；來源網址另透過DOM核對。"
+  ]
+}

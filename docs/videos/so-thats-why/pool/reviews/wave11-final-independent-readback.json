@@ -1,0 +1,832 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "status": "PASS_INDEPENDENT_INTEGRATION_READBACK_ONLY",
+  "remaining_blockers": [],
+  "production_ready": false,
+  "role_and_independence": "本代理獨立檢查root中央整合與實體雜湊；本代理也是landforms作者，地貌事實／去重／題案裁定以life非作者收據為準，本收據只核其採用與映射，不宣稱自審事實。structures另有本代理先前獨立來源／編輯收據。",
+  "hashes": [
+    {
+      "file": "pool.json",
+      "sha256": "335ad35f1299664a96d6d1b5251a4ec52153d81a9b38ba49cfe72e63a411adef"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "4e12ec5f932c45b0969914de7a599de3d46aa33678383606e2fc9d8da8ca54fe"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "ecf874f0d9ccac8aefc73be22980eed6d073381732027f2b5985e6894d2f17ac"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "bbf61b98c90e5c39d672338fea27a5fb46207c48b62ad9c69864fd1bbedb347a"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "2d17dd7ec4b17bddd77c8084771af47082e1d2b6da5ee30ac0c541cfaff84f10"
+    },
+    {
+      "file": "index.html",
+      "sha256": "9534bb96093f8097804c221c7f1c525975e075469cc5aec2740a222470a110bc"
+    },
+    {
+      "file": "README.md",
+      "sha256": "5a65ccfcf78b95f7d14e884c3ad3f38d5baccb90db7a0184f32c05787b443785"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "5670caa0b945bb80f6ea0885a48702edbeda9196401e13afcd0ff97a76ab8b1d"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "670859b391fae1851cca407cc00c37e00226ba3822fcdf730842cd61a633b8d7"
+    },
+    {
+      "file": "reviews/wave11-browser-qa.json",
+      "sha256": "bbdade0d4e2c18532528f0ab6b80d8d7d4c598e1268d0062ec2ac8bac802d05e"
+    },
+    {
+      "file": "reviews/wave11-editorial-integration.json",
+      "sha256": "a15db18c105e9547f75d3721b33cf53bfd4d447c0070a44fa4b176399e196128"
+    },
+    {
+      "file": "batches/wave11-plants.json",
+      "sha256": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826"
+    },
+    {
+      "file": "reviews/wave11-plants-author.json",
+      "sha256": "71d4af600bf967d1e3ebcc76076824cc12da3f12b28cccebe52f2cf699d9a2fa"
+    },
+    {
+      "file": "reviews/wave11-plants-themes.json",
+      "sha256": "c67612de4c246329b5f222ca8d7d99e8bff215226e95583a4531b5871cb0a4d3"
+    },
+    {
+      "file": "reviews/wave11-physics-reviews-plants.json",
+      "sha256": "50a04d31c19322b3717137dcbaa12235dcf0bef3f8cf9e6c625770a562902f5c"
+    },
+    {
+      "file": "batches/wave11-structures.json",
+      "sha256": "e678a983305263e033f9ea1455f78a14dc59deac953c03a4d04c05dd38b2e23c"
+    },
+    {
+      "file": "reviews/wave11-structures-author.json",
+      "sha256": "004aa573215bbc0b3cb348a5efe2fb065b5897e90d209d21aff4e9c9591311f9"
+    },
+    {
+      "file": "reviews/wave11-structures-themes.json",
+      "sha256": "b65ae82c4640dea17e1e87d4564b759048f01614bb9f5ac25acc4570f5599a24"
+    },
+    {
+      "file": "reviews/wave11-science-reviews-structures.json",
+      "sha256": "6313fb5e63640d2a80bcaa2f4ff75313c8fc7d80832fa3f157d2c2195dc3612c"
+    },
+    {
+      "file": "batches/wave11-landforms.json",
+      "sha256": "9c87d4ae72bd7128701b6a2a7107635338aef97d4ce6c41994b7022c2a068ecb"
+    },
+    {
+      "file": "reviews/wave11-landforms-author.json",
+      "sha256": "81481286daa280ffc8682fef22559b829895a9faf4439f9ca57630de3fbc4c94"
+    },
+    {
+      "file": "reviews/wave11-landforms-themes.json",
+      "sha256": "aba397d5b3617a5950ddf6be1a3d0a17978001602f3c180d63449026217a599d"
+    },
+    {
+      "file": "reviews/wave11-life-reviews-landforms.json",
+      "sha256": "95b8fc842f066c42824726a03f25a6f03ec4aab5c48b884220566324980a7e1c"
+    },
+    {
+      "file": "treatments/G108/treatment.json",
+      "sha256": "1dec044a49b00832cdf8e249905d75e482bda6eaa4d6fe05d082083e8b364be2"
+    },
+    {
+      "file": "treatments/G108/narration-draft.json",
+      "sha256": "1baa5f5b92ccc7d01e6c8f54d2644478da4417be73cd4860a506df01a1563fbb"
+    },
+    {
+      "file": "treatments/G108/demo.html",
+      "sha256": "0b53f41e52e93502cd408c90acb8ee351352eec8de803d0b3a58b60e61f139f4"
+    },
+    {
+      "file": "treatments/G108/demo.js",
+      "sha256": "b0bde7bcfcf26a1321d605dfbda959dce83c5bd7acf3a27016bd491ac0fe1096"
+    },
+    {
+      "file": "reviews/wave11-g108-theme.json",
+      "sha256": "9f9090954de4169014c677838173c06387d2385acc945aadc69c6f1149999e95"
+    },
+    {
+      "file": "reviews/wave11-g108-arithmetic.json",
+      "sha256": "0ca6e821c7e5bfc1909a6b1fd040c6cac00bbbcb41e568e68f06ba0641742487"
+    },
+    {
+      "file": "reviews/wave11-g108-demo.json",
+      "sha256": "d96aa5dddecab15b8a539760f8da029a720b73091e259c6f108e9e7995b3123d"
+    },
+    {
+      "file": "reviews/wave11-g108-author.json",
+      "sha256": "a15c65d7d63f89e6d752b22b2c606161a746f9f44c63d35928790b31a615eff1"
+    },
+    {
+      "file": "reviews/wave11-g108-independent-review.json",
+      "sha256": "284b05b4dc138bdf7e3ad5db3a88bc1a39b79ddf0a9b7da3780cd066869d90c3"
+    }
+  ],
+  "actual_scope": {
+    "read": "pool/selection/dedup/manifest/index內嵌資料、2797快照內容、三批作者稿/題案/非作者收據、集中處置、G108七個locked artifact雜湊與作者/非作者證據鏈；讀G108文字與時間界線、三份說明文件、root QA及測試日誌/收據。",
+    "executed_by_reviewer": "自寫Python唯讀比對與SHA/JSON/算術驗證；沒有執行repo測試、SQLite重匯、模型推論、瀏覽器或外站研究。",
+    "not_claimed": "沒有完整新題逐字稿、實際試讀、配音、觀眾測試、媒體製作、發布、CI或Git index blob驗證。",
+    "evidence_scripts": [
+      {
+        "file": ".cache/wave11-science-final-data-check.py",
+        "sha256": "c9ded6d9de790eee74d7d5b1f049c269cb569aa3781e819a2aecf13dba64df01"
+      },
+      {
+        "file": ".cache/wave11-science-integration-data-check.json",
+        "sha256": "08463a8e57c2551eceb82e5643131d084206efaa3ce7603124111763fe21e3e6"
+      },
+      {
+        "file": ".cache/wave11-science-supplemental.json",
+        "sha256": "1ae92795805ec14cb16104c83d39a464095c61c4f322be78148288938f5b88e5"
+      }
+    ]
+  },
+  "recomputed_counts": {
+    "raw_records": 3201,
+    "canonical_questions": 3066,
+    "eligible_candidates": 2896,
+    "selected_candidates": 2837,
+    "alias_records": 135,
+    "historical_records": 313,
+    "source_urls": 4153,
+    "current_research_source_urls": 1194,
+    "selected_source_urls": 2384,
+    "new_suggestions_not_added": 550,
+    "reserve": 59,
+    "themes": 122,
+    "new_proposals": 41,
+    "new_selected_cores": 40,
+    "new_merges": 1,
+    "new_excluded": 0,
+    "new_not_added": 53,
+    "new_themes": 12,
+    "selected_source_refs": 4243,
+    "remaining_to_10000": 7163,
+    "historical_selected_pending_full_refresh": 121
+  },
+  "baseline_readback": {
+    "full_content_compared_snapshot": {
+      "file": "baselines/2026-11-01-2797.json.gz",
+      "sha256": "3fe88554de1e8947fcb8e3890302b5bd35d2848fdd43e7c779296e68f6969e2b"
+    },
+    "old_raw_rows_exactly_equal": 3160,
+    "old_selected_ids_preserved": 2797,
+    "old_canonical_changed_only": {
+      "E7006": [
+        "aliases",
+        "provenance_ids",
+        "question_variants",
+        "source_refs"
+      ]
+    },
+    "allowed_append_only": "E7006僅增加E11012的aliases/question_variants/source_refs/provenance_ids；舊元素均保留，原question/answer_target/scope/editorial/notes/legacy status未變。",
+    "old_sources_exactly_preserved": 4115,
+    "old_source_readings_changed": 0,
+    "old_not_added_preserved": 497,
+    "old_themes_exactly_unchanged": 109,
+    "exception": "G108與非作者綁定的80秒proposal逐物件完全相同；不新增core。",
+    "checkpoint_hashes_checked": [
+      {
+        "checkpoint": "checkpoint-2000.json",
+        "snapshot": "baselines/2026-11-01-2000.json.gz",
+        "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4"
+      },
+      {
+        "checkpoint": "checkpoint-2328.json",
+        "snapshot": "baselines/2026-11-01-2328.json.gz",
+        "sha256": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba"
+      },
+      {
+        "checkpoint": "checkpoint-2449.json",
+        "snapshot": "baselines/2026-11-01-2449.json.gz",
+        "sha256": "e98b96cad65be24cdc59bfc1d9f60f311040a7987e04a7b008fab08778063bb2"
+      },
+      {
+        "checkpoint": "checkpoint-2546.json",
+        "snapshot": "baselines/2026-11-01-2546.json.gz",
+        "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4"
+      },
+      {
+        "checkpoint": "checkpoint-2609.json",
+        "snapshot": "baselines/2026-11-01-2609.json.gz",
+        "sha256": "06f9fdec324c8e0f6fabd22805eed413fbf5e3f109473e595ec1e2228ab150f1"
+      },
+      {
+        "checkpoint": "checkpoint-2667.json",
+        "snapshot": "baselines/2026-11-01-2667.json.gz",
+        "sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c"
+      },
+      {
+        "checkpoint": "checkpoint-2711.json",
+        "snapshot": "baselines/2026-11-01-2711.json.gz",
+        "sha256": "035074191cbf98fe87426589b6f746a90934e1087a65271e4cdd9b03784da217"
+      },
+      {
+        "checkpoint": "checkpoint-2757.json",
+        "snapshot": "baselines/2026-11-01-2757.json.gz",
+        "sha256": "92c8527689b44740352d8698bfe38be5e46b42c7a299878309501245c992ac0d"
+      },
+      {
+        "checkpoint": "checkpoint-2797.json",
+        "snapshot": "baselines/2026-11-01-2797.json.gz",
+        "sha256": "3fe88554de1e8947fcb8e3890302b5bd35d2848fdd43e7c779296e68f6969e2b"
+      }
+    ],
+    "original_1000_snapshot_hash_checked": {
+      "file": "baselines/2026-11-01-1000.json.gz",
+      "sha256": "6cf3b0f5a7e37546d3c53806b94376f68f2a5cf16b1510d5ca64ef06ee9ac7fd",
+      "revision": "2026-11-01-pool-1000",
+      "selected_count": 1000,
+      "raw_count": 1224,
+      "commit": "1d60f54636007460bbcdcf6f45638b224b0aab8d"
+    },
+    "snapshot_scope_limit": "共10快照（原1000+9個checkpoint）均核metadata與實體SHA；本次只對最新2797快照逐raw/canonical/source/theme物件全量比對，沒有把其餘9份都宣稱重新逐raw比較。",
+    "editorial_exemption": "checkpoints.json仍指定checkpoint-2000，不放寬到2797或本批。"
+  },
+  "selection_and_dedup": {
+    "new_cohort": {
+      "plants": {
+        "raw": 7,
+        "selected_new_core": 7,
+        "not_added": 18
+      },
+      "structures": {
+        "raw": 15,
+        "selected_new_core": 15,
+        "not_added": 17
+      },
+      "landforms": {
+        "raw": 19,
+        "selected_new_core": 18,
+        "alias": 1,
+        "not_added": 18
+      }
+    },
+    "new_selected_ids": [
+      "B11001",
+      "B11002",
+      "B11003",
+      "B11004",
+      "B11005",
+      "B11006",
+      "B11007",
+      "E11001",
+      "E11002",
+      "E11003",
+      "E11004",
+      "E11005",
+      "E11006",
+      "E11007",
+      "E11008",
+      "E11009",
+      "E11010",
+      "E11011",
+      "E11013",
+      "E11014",
+      "E11015",
+      "E11016",
+      "E11017",
+      "E11018",
+      "E11019",
+      "K11001",
+      "K11002",
+      "K11003",
+      "K11004",
+      "K11005",
+      "K11006",
+      "K11007",
+      "K11008",
+      "K11009",
+      "K11010",
+      "K11011",
+      "K11012",
+      "K11013",
+      "K11014",
+      "K11015"
+    ],
+    "only_new_merge": {
+      "canonical_id": "E7006",
+      "duplicate_id": "E11012",
+      "kind": "editorial_core_question",
+      "reason": "併E7006。邊界埋冰融去後地面下降仍是相同物理中段；高中心是有用的空間幾何變體，不另計核心。 題名、來源及相對高程示意保留作變體，中央不得另計新核心。"
+    },
+    "new_distinct_decisions": 75,
+    "new_excluded_ids": [],
+    "readback": "相較2797快照的中央merges/distinct/excluded集合確為+1/+75/+0，全部非作者建議已採；E11012原raw及問法保留，只解析E7006，未另列入選核心。舊alias解析未改。",
+    "empty_excluded_scope": "本批沒有新增hold，不能宣稱做過新增退題負向UI斷言。"
+  },
+  "source_readback": {
+    "all_raw_source_refs_checked": 6180,
+    "new_author_source_records_exactly_preserved": 38,
+    "new_distinct_urls": 38,
+    "first_seen_urls": 38,
+    "all_new_raw_fields_checked": 41,
+    "method": "將三批source每一欄（除局部ID/URL轉為original_url）對中央readings原始值；逐列核question/answer_target/scope/source_locator/notes/editorial與來源ID映射，再核canonical保留raw所有source_refs。這是資料整合，不是外站支持關係重查。",
+    "new_source_to_core_to_theme_maps_checked": 38,
+    "new_sources_used_by_at_least_one_theme": 22,
+    "source_query_samples": [
+      {
+        "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+        "theme_ids": [
+          "G59"
+        ]
+      },
+      {
+        "url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+        "theme_ids": [
+          "G108"
+        ]
+      },
+      {
+        "url": "https://dspace.library.uu.nl/bitstream/handle/1874/418726/science.abf3013.pdf?sequence=1",
+        "theme_ids": [
+          "G111"
+        ]
+      }
+    ],
+    "G120_variant": {
+      "canonical_id": "E7006",
+      "variant_budget_id": "E11012",
+      "raw_origin": "wave11-landforms-20261101",
+      "author_source_id": "E11-S011",
+      "central_source_id": "SRC-f2de49ac9ccccc6e",
+      "locator": "Ice-wedge Polygons第二段",
+      "seconds": 50,
+      "cap": 80,
+      "note": "中央candidate保留新來源與冰楔問法；G120不借鍋穴舊來源冒充冰楔來源。"
+    },
+    "limits": "所有selected2384 URLs包含歷史未當期重讀來源；G108只刷新既有來源閱讀證據，不因重讀新增URL或core。"
+  },
+  "semantic_readback": {
+    "first_and_final_draft_bytes_identical": true,
+    "draft_sha256": "a13124af44169e02cf23ac644617d81a13b338153bff8fa0c2bb8e5199b2f8f2",
+    "published_raw_equals_draft_raw": true,
+    "cohort_rows_compared": 41,
+    "all_top5_objects_unchanged": true,
+    "delta_files_empty": 3,
+    "re_review_of_same_neighbours_performed": false,
+    "known_merge_set": {
+      "pairs": 1,
+      "lexical_retrieved": 0,
+      "semantic_top10_retrieved": 1,
+      "interpretation": "事先知道結果的非隨機小集合；不是全庫召回率或精確率。"
+    },
+    "final_model_receipt": "3201 raw，cache重用，新建0向量/新增截斷0/2.181秒；由root收據讀回，非本代理再次推論。"
+  },
+  "theme_readback": {
+    "proposal_mapping_count": 12,
+    "comparison": "各新theme除id/priority/proposal_id及已審alias/variant欄外，與三位作者最終proposal逐物件一致。",
+    "new_theme_seconds": [
+      {
+        "id": "G111",
+        "seconds": 185
+      },
+      {
+        "id": "G112",
+        "seconds": 125
+      },
+      {
+        "id": "G113",
+        "seconds": 185
+      },
+      {
+        "id": "G114",
+        "seconds": 100
+      },
+      {
+        "id": "G115",
+        "seconds": 165
+      },
+      {
+        "id": "G116",
+        "seconds": 165
+      },
+      {
+        "id": "G117",
+        "seconds": 165
+      },
+      {
+        "id": "G118",
+        "seconds": 190
+      },
+      {
+        "id": "G119",
+        "seconds": 185
+      },
+      {
+        "id": "G120",
+        "seconds": 130
+      },
+      {
+        "id": "G121",
+        "seconds": 155
+      },
+      {
+        "id": "G122",
+        "seconds": 175
+      }
+    ],
+    "new_range_seconds": [
+      100,
+      190
+    ],
+    "all_core_budget_checks": [
+      {
+        "id": "G111",
+        "seconds": 185,
+        "chapters": 2,
+        "max_beat_seconds": 35,
+        "core_caps": [
+          {
+            "core_id": "B11001",
+            "budget_id": "B11001",
+            "seconds": 90,
+            "cap": 110
+          },
+          {
+            "core_id": "B11002",
+            "budget_id": "B11002",
+            "seconds": 95,
+            "cap": 120
+          }
+        ]
+      },
+      {
+        "id": "G112",
+        "seconds": 125,
+        "chapters": 2,
+        "max_beat_seconds": 40,
+        "core_caps": [
+          {
+            "core_id": "B11003",
+            "budget_id": "B11003",
+            "seconds": 125,
+            "cap": 140
+          }
+        ]
+      },
+      {
+        "id": "G113",
+        "seconds": 185,
+        "chapters": 2,
+        "max_beat_seconds": 35,
+        "core_caps": [
+          {
+            "core_id": "B11004",
+            "budget_id": "B11004",
+            "seconds": 95,
+            "cap": 105
+          },
+          {
+            "core_id": "B11005",
+            "budget_id": "B11005",
+            "seconds": 90,
+            "cap": 110
+          }
+        ]
+      },
+      {
+        "id": "G114",
+        "seconds": 100,
+        "chapters": 2,
+        "max_beat_seconds": 30,
+        "core_caps": [
+          {
+            "core_id": "B11006",
+            "budget_id": "B11006",
+            "seconds": 100,
+            "cap": 110
+          }
+        ]
+      },
+      {
+        "id": "G115",
+        "seconds": 165,
+        "chapters": 2,
+        "max_beat_seconds": 35,
+        "core_caps": [
+          {
+            "core_id": "K11001",
+            "budget_id": "K11001",
+            "seconds": 75,
+            "cap": 90
+          },
+          {
+            "core_id": "K11002",
+            "budget_id": "K11002",
+            "seconds": 90,
+            "cap": 110
+          }
+        ]
+      },
+      {
+        "id": "G116",
+        "seconds": 165,
+        "chapters": 2,
+        "max_beat_seconds": 35,
+        "core_caps": [
+          {
+            "core_id": "K11005",
+            "budget_id": "K11005",
+            "seconds": 90,
+            "cap": 120
+          },
+          {
+            "core_id": "K11006",
+            "budget_id": "K11006",
+            "seconds": 75,
+            "cap": 85
+          }
+        ]
+      },
+      {
+        "id": "G117",
+        "seconds": 165,
+        "chapters": 2,
+        "max_beat_seconds": 35,
+        "core_caps": [
+          {
+            "core_id": "K11007",
+            "budget_id": "K11007",
+            "seconds": 75,
+            "cap": 90
+          },
+          {
+            "core_id": "K11009",
+            "budget_id": "K11009",
+            "seconds": 90,
+            "cap": 110
+          }
+        ]
+      },
+      {
+        "id": "G118",
+        "seconds": 190,
+        "chapters": 2,
+        "max_beat_seconds": 30,
+        "core_caps": [
+          {
+            "core_id": "E11001",
+            "budget_id": "E11001",
+            "seconds": 90,
+            "cap": 105
+          },
+          {
+            "core_id": "E11002",
+            "budget_id": "E11002",
+            "seconds": 100,
+            "cap": 110
+          }
+        ]
+      },
+      {
+        "id": "G119",
+        "seconds": 185,
+        "chapters": 2,
+        "max_beat_seconds": 30,
+        "core_caps": [
+          {
+            "core_id": "E11009",
+            "budget_id": "E11009",
+            "seconds": 90,
+            "cap": 100
+          },
+          {
+            "core_id": "E11010",
+            "budget_id": "E11010",
+            "seconds": 95,
+            "cap": 105
+          }
+        ]
+      },
+      {
+        "id": "G120",
+        "seconds": 130,
+        "chapters": 2,
+        "max_beat_seconds": 30,
+        "core_caps": [
+          {
+            "core_id": "E11011",
+            "budget_id": "E11011",
+            "seconds": 80,
+            "cap": 95
+          },
+          {
+            "core_id": "E7006",
+            "budget_id": "E11012",
+            "seconds": 50,
+            "cap": 80
+          }
+        ]
+      },
+      {
+        "id": "G121",
+        "seconds": 155,
+        "chapters": 2,
+        "max_beat_seconds": 30,
+        "core_caps": [
+          {
+            "core_id": "E11006",
+            "budget_id": "E11006",
+            "seconds": 75,
+            "cap": 90
+          },
+          {
+            "core_id": "E11007",
+            "budget_id": "E11007",
+            "seconds": 80,
+            "cap": 95
+          }
+        ]
+      },
+      {
+        "id": "G122",
+        "seconds": 175,
+        "chapters": 2,
+        "max_beat_seconds": 30,
+        "core_caps": [
+          {
+            "core_id": "E11018",
+            "budget_id": "E11018",
+            "seconds": 90,
+            "cap": 100
+          },
+          {
+            "core_id": "E11019",
+            "budget_id": "E11019",
+            "seconds": 85,
+            "cap": 95
+          }
+        ]
+      },
+      {
+        "id": "G108",
+        "seconds": 80,
+        "chapters": 2,
+        "max_beat_seconds": 25,
+        "core_caps": [
+          {
+            "core_id": "M10001",
+            "budget_id": "M10001",
+            "seconds": 80,
+            "cap": 110
+          }
+        ]
+      }
+    ],
+    "core_budget_comparisons": 23,
+    "core_budget_scope": "22個新題案內核心額度＋G108既有單核1個；同核跨章累計，不以章數加額度。",
+    "editorial_readback": "植物兩獨立實驗的重設、曲率模型/分子證據界線、結構球殼165秒刪轉場、地貌130秒合併變體與所有撤片條件已採。開場/回扣含於正文；刪章不自動批准延長另一章。",
+    "no_readaloud_claim": true
+  },
+  "G108": {
+    "review": "reviews/wave11-g108-independent-review.json",
+    "reviewer": "pool_physics",
+    "core_id": "M10001",
+    "new_core_count": 0,
+    "locked_artifacts_verified": 7,
+    "old_seconds": 110,
+    "new_seconds": 80,
+    "chapters_seconds": [
+      35,
+      45
+    ],
+    "beats_seconds": [
+      15,
+      20,
+      20,
+      25
+    ],
+    "core_cap": 110,
+    "spoken_characters_reported": 259,
+    "status": "文字/原創模型已由非作者覆核；未實際試讀或觀眾測試。",
+    "integration_check": "中央G108與reviewed proposal逐物件相同；treatment/narration的80秒與15/20/20/25一致，原創題數及假設重算界線保留。",
+    "demo_evidence": "root記144有效組合/5無效輸入/3預設與鍵盤/兩尺寸畫面；physics另重算三預設及讀圖。本代理只驗其檔案/證據鏈與範圍，不稱重跑小樣。",
+    "frozen_author_wording": "作者凍結檔仍寫待非作者查核，由現有PASS收據承接；不是把尚未試讀的稿改為製作核准。"
+  },
+  "manifest_and_index": {
+    "actual_worktree_input_hashes_checked": 288,
+    "manifest_listed_output_hashes_checked": 6,
+    "manifest_itself_bound": true,
+    "published_output_count_including_manifest": 7,
+    "themes_definition_hash_checked": true,
+    "index_payload_exact_parity": {
+      "candidates": 2837,
+      "sources": 2384,
+      "themes": 122
+    },
+    "not_git_index": "這些是工作樹bytes；Git暫存blob與最後衛生掃描留root後續收據。"
+  },
+  "review_bindings": [
+    {
+      "file": "reviews/wave11-physics-reviews-plants.json",
+      "sha256": "50a04d31c19322b3717137dcbaa12235dcf0bef3f8cf9e6c625770a562902f5c",
+      "bound_files": 3,
+      "status": "PASS_TOPIC_LEVEL_AND_EDITORIAL_TARGETED_RECHECK"
+    },
+    {
+      "file": "reviews/wave11-science-reviews-structures.json",
+      "sha256": "6313fb5e63640d2a80bcaa2f4ff75313c8fc7d80832fa3f157d2c2195dc3612c",
+      "bound_files": 3,
+      "status": "PASS_TOPIC_LEVEL_ONLY"
+    },
+    {
+      "file": "reviews/wave11-life-reviews-landforms.json",
+      "sha256": "95b8fc842f066c42824726a03f25a6f03ec4aab5c48b884220566324980a7e1c",
+      "bound_files": 3,
+      "status": "PASS_TOPIC_LEVEL_ONLY"
+    },
+    {
+      "file": "reviews/wave11-g108-independent-review.json",
+      "sha256": "284b05b4dc138bdf7e3ad5db3a88bc1a39b79ddf0a9b7da3780cd066869d90c3",
+      "bound_files": 8,
+      "status": "PASS_WRITTEN_TREATMENT_AND_SOURCE_SCOPE_ONLY"
+    }
+  ],
+  "docs_readback": {
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "result": "PASS",
+    "checks": [
+      "2837/+40/3201/3066/135/2896/59、41提案/1合/0hold、53未收/550累計、38首次URL/4153總/1194研究/2384入選與4243refs一致。",
+      "README十二題案題名及m:ss逐行對themes；1:40–3:10與G10880秒均明記預算非試讀。",
+      "121歷史入選題仍未完整刷新，editorial豁免2000、剩7163與10份快照的數量正確。",
+      "語意已知配對小集合與cache重用、歷史截斷、大規模/品質抽樣尚缺的限制未刪。",
+      "沒有把38頁閱讀說成舊4153來源全核，沒有宣稱萬筆/十萬筆已完成或背景持續擴庫。"
+    ]
+  },
+  "validation_receipt_readback": {
+    "file": "reviews/wave11-final-validation.json",
+    "whole_file_sha256_bound": false,
+    "reason": "root之後補staged/closure欄位；僅綁已固定tests子物件，避免收據循環。",
+    "tests_subobject_sha256": "2613abc8264fdb44eda654a7ad757f1b881c1ef6731f06ef7f7746abf0d2bc62",
+    "tests_hash_serialization": "JSON UTF-8; ensure_ascii=False, sort_keys=True, separators=(',',':')",
+    "tests": {
+      "node": {
+        "passed": 40,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 105113.6142,
+        "files": [
+          "tools/video/so-thats-why/pool/pool.test.mjs",
+          "tools/video/so-thats-why/catalog.test.mjs",
+          "tools/repo-hygiene.test.mjs",
+          "tools/json-duplicate-keys.test.mjs",
+          "tools/docs-videos-tests.test.mjs"
+        ],
+        "log_sha256": "9580658700032bb865421542f07e086e8a84fb6d46102a6c3b05470f286d44ba"
+      },
+      "python": {
+        "passed": 2,
+        "failed": 0,
+        "file": "tools/video/so-thats-why/pool/semantic_test.py",
+        "log_sha256": "4e3cab7a99d70dd04e28552fbc812a4aeb1d035218a69ce4239fdd8d5c9c7490"
+      },
+      "checks": {
+        "pool": "PASS",
+        "series": "PASS",
+        "long_form_plans": 473,
+        "task_files": 2287,
+        "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+      },
+      "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+    },
+    "actual_readback": "已讀Node/Python日誌結尾並驗兩log SHA；pool/series/long-form/task日誌結論與收據一致。本代理未重新執行這些測試。",
+    "SQLite_and_performance": "root紀錄同快照第二次匯入UNCHANGED/0writes，單次本機計時及RSS/DB大小；本代理只讀收據，不聲稱重跑或萬筆效能已驗。"
+  },
+  "browser_QA_readback": {
+    "file": "reviews/wave11-browser-qa.json",
+    "root_result": "PASS",
+    "reviewer_reran_browser": false,
+    "reviewer_visually_inspected_screenshots": false,
+    "screenshot_file_hashes_checked": 3,
+    "index_html_sha_matches_current": true,
+    "actual_scope": "本代理讀QA所有欄與圖像SHA；root實看3圖。新來源完整URL/定位由DOM斷言核，因截圖裁切不把圖當全文證據；桌面/390手機、分頁/別名/各題案檢查是root證據。",
+    "new_alias_sample": "E11012→E7006",
+    "new_held_negative_assertion": "未執行：集合為空。"
+  },
+  "remaining_root_steps": [
+    "實際Git index blob與提交前衛生掃描、補final-validation staged/closure欄。",
+    "釋放root自己的task、按使用者範圍處理draft PR；本代理未commit/push/merge。"
+  ],
+  "conclusion": "穩定資料、作者/非作者證據鏈、文件及已完成本機檢查的紀錄一致，無整合阻擋。核准範圍限研究素材/題案/文字小樣的資料整合讀回，不是全庫事實或影片製作核准。"
+}

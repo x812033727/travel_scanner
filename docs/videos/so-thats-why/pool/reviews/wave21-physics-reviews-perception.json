@@ -1,0 +1,1354 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "pool_life_tech",
+  "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "A21001",
+    "A21002",
+    "A21003",
+    "A21004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave21-perception.json",
+      "sha256": "483db36c371abf2268c1c74c2a525f613b2c9fc72de8d579c377cd80fb131b07"
+    },
+    {
+      "file": "reviews/wave21-perception-themes.json",
+      "sha256": "b2efc3da284c3fd08b614033fb1e2b8d0ef28693922c2feeb328c34828fbb221"
+    },
+    {
+      "file": "reviews/wave21-perception-author.json",
+      "sha256": "17e8ae69aad763940145b4e3b4987d3c77afbd0071fb05a7736a711eb3f730b7"
+    }
+  ],
+  "role_and_scope": "本reviewer未撰寫此批候選或題案；獨立讀全4題完整問答/範圍、20退題、20作者近對、20有向top5及全部題案。來源採作者當日已取得的有效原文副本，不把作者摘要當原文；不是整庫逐來源查核、劇本核准或實驗重現。",
+  "baseline": {
+    "head": "bc47898aa60c073f76ba9f8a6602c3e5b92f1d60",
+    "selected": 2997,
+    "raw_records": 3366,
+    "not_added": 960,
+    "pool_sha256": "f378bcb5ce2666cbf213e8389672321fc4362939a80ea4f98a019fe5dbb9d08e"
+  },
+  "candidate_review": [
+    {
+      "id": "A21001",
+      "decision": "retain",
+      "reason": "S001主動延遲適應、被動較小位移及非提示探測支持時間分界重校；物理順序未倒轉，未把被動結果寫為零。",
+      "visual_and_payoff": "物理/主觀兩時間線有可見反差，不宣稱一般播放即可使每位觀眾重現。",
+      "editorial_seconds": [
+        90,
+        130
+      ],
+      "source_ids": [
+        "A21-S001"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "A21002",
+      "decision": "retain",
+      "reason": "S002 full-vision的施力速率逐漸適應但重量評分仍分離，排除只因手還用錯力；no-vision另組/替換/5秒限制保留。",
+      "visual_and_payoff": "原Fig1兩種輸出分開呈現；不靠兩腦區命名撐內容。C2030的一般並行說不足以取代這個控制。",
+      "editorial_seconds": [
+        80,
+        130
+      ],
+      "source_ids": [
+        "A21-S002"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "A21003",
+      "decision": "retain_segment",
+      "reason": "S003 Exp3明確以眼位補償顯示、圖像在視網膜近固定但眼仍微動；微眼跳未隨消退增多。非僅一句適應名詞。",
+      "visual_and_payoff": "可用眼/螢幕/視網膜三層對照呈現；僅60–100秒段落，不硬拼一整片，沒有診斷用途。",
+      "editorial_seconds": [
+        60,
+        100
+      ],
+      "source_ids": [
+        "A21-S003"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "A21004",
+      "decision": "retain_after_correction",
+      "reason": "S004兩套控制的前史現已分開：Fig1A既有運動後三結尾，Fig2沿Fig1B同現後起動再改反轉時點；S005保留模型競爭。",
+      "visual_and_payoff": "清空重設避免把兩圖假串為同一前史；短時間整合是模型，不稱唯一80ms或預測未來。",
+      "editorial_seconds": [
+        85,
+        125
+      ],
+      "source_ids": [
+        "A21-S004",
+        "A21-S005"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "id": "A21-S001",
+      "url": "https://eagleman.com/papers/StetsonetalNeuron2006.pdf",
+      "title": "Motor-Sensory Recalibration Leads to an Illusory Reversal of Action and Sensation",
+      "version": "Neuron 51, 651–659 (2006-09-07 issue); journal-layout PDF作者載體",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-life-timing2006.pdf",
+        "sha256": "2143240aebe50da16ea2eeb3cdf018de44c365cfe555087e3f974d443f7a58b6"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-life-timing2006-pages.json",
+        "sha256": "4b7efaaff0f630511fa98e3355637df582dcd0fd90d912e229cd8f61394f91b7"
+      },
+      "reading_scope": "PDF pp2–4 Experiments1–4、p7 Behavioral Methods；另目讀p2 Fig1/2。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "未核fMRI全分析/原資料，不以腦造影定因果；被動小位移不寫完全零效應，PSS不是普遍物理零點。"
+    },
+    {
+      "id": "A21-S002",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009709",
+      "title": "Lifting without Seeing: The Role of Vision in Perceiving and Acting upon the Size Weight Illusion",
+      "version": "2010-03-15; PLOS ONE 5(3):e9709; 正式HTML",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-life-weight2010.html",
+        "sha256": "71f8fe75f031749c37db3ee88ef899a54db162381104a06f2f38a721f03bfa34"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-life-weight2010-paragraphs.json",
+        "sha256": "05e494a8d43788c3de005cbeccc3521c53eba430b8d850eb6176088b0e54b06b"
+      },
+      "reading_scope": "HTML抽文PARA30–35、39–42、45–54（結果/方法）；另目讀Fig1施力/評分與Fig2程序兩圖。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "未重算統計；Methods組數與Results自由度不一致未猜修。no-vision不同人、5秒等待、換同中塊，不能歸為純閉眼因素。"
+    },
+    {
+      "id": "A21-S003",
+      "url": "https://www.bu.edu/cas-promotion/files/2012/11/PolettiRucci_JOV10.pdf",
+      "title": "Eye movements under various conditions of image fading",
+      "version": "2010-03-24; Journal of Vision 10(3):6, 1–18; 大學託管正式排版PDF",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-life-fixation2010.pdf",
+        "sha256": "09fc8aec018e09f7b68a0c2acb1a46902871516506068982422d15e1613802e7"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-life-fixation2010-pages.json",
+        "sha256": "3a5f0316478d4a52505c2409e76f33319ca23abf627f23959a99f91dbfe19d05"
+      },
+      "reading_scope": "PDF pp4–5 apparatus/procedure指定段、pp10–13 Exp3/注意控制、pp14–16 Discussion；另目讀p3 Fig1和p12 Fig7。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "未逐讀Exp1/2全部數據/影片；記穩像延遲誤差，適應不是本文已定位的唯一神經機制。"
+    },
+    {
+      "id": "A21-S004",
+      "url": "https://eagleman.com/papers/EaglemanSejnowskiScience2000.pdf",
+      "title": "Motion Integration and Postdiction in Visual Awareness",
+      "version": "2000-03-17; Science 287, 2036–2038; 正式排版PDF作者載體",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-life-flashlag2000.pdf",
+        "sha256": "797dde10d0933439205890e861af0da12c30d9e07c6ceedfbeeccf58323f1f2a"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-life-flashlag2000-pages.json",
+        "sha256": "827d56707df58a4858edabcbf587472b68e68be8c0053679c099c053b35ade3b"
+      },
+      "reading_scope": "PDF pp1–3該篇正文/圖說、Notes6–10，p2 Fig1/2渲染目讀；p1頂端前篇不採。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "沒有重現展示/眼動或原始試次；Fig2沿Fig1B而非Fig1A，已要求作者同步answer/scope/visual/theme。"
+    },
+    {
+      "id": "A21-S005",
+      "url": "https://eagleman.com/papers/EagleSejScience2.pdf",
+      "title": "The Position of Moving Objects — Technical Comments and Response",
+      "version": "2000-08-18; Science 289, 1107a; 3頁技術評論與回覆彙集，並非一份新獨立replication",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-life-flashlagcomment2000.pdf",
+        "sha256": "6b3de86ef2bdb883507c7491f0f6d0a3134c04b00fd00279b1363ac6fea3a266"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-life-flashlagcomment2000-pages.json",
+        "sha256": "45881ddbfe967d786184fdc015f2452332d138c5cbc128a29e6e017f951b587e"
+      },
+      "reading_scope": "PDF pp1–3評論與回覆正文：Krekelberg/Lappe整合、Whitney/Cavanagh precue比較、Eagleman/Sejnowski回覆。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "未追讀評論引用的其他全文；彙集PDF不是一份新獨立replication，不據爭論選定唯一模型。"
+    }
+  ],
+  "source_reading_summary": {
+    "sources_with_specified_body_independently_read": 5,
+    "reviewer_fresh_HTTP_real_body": 0,
+    "author_same_day_cache_used_as_body": 5,
+    "whole_articles_claimed_fully_factchecked": 0,
+    "note": "SHA確認副本身分；獨立性來自另一人閱讀與判斷，不把同文件重抓當第二份研究。",
+    "figure_or_table_pages_visually_read": 6
+  },
+  "retrieval_failures": [],
+  "top5_review": [
+    {
+      "a": "A21001",
+      "b": "C2002",
+      "cosine": 0.67907,
+      "decision": "distinct",
+      "reason": "韋伯比較亮度差與背景強度；動作回饋延遲重校的是時間先後分界，感覺量和控制不同。",
+      "b_snapshot": {
+        "question": "同樣增加一點亮度，暗處和亮處為什麼感覺差很多？",
+        "answer_target": "研究可察覺差異與背景強度的關係。",
+        "scope": "韋伯近似有範圍，非所有強度都固定比例。"
+      }
+    },
+    {
+      "a": "A21001",
+      "b": "D2075",
+      "cosine": 0.675703,
+      "decision": "distinct",
+      "reason": "行人早開燈是改物理事件順序和視野；新題物理順序不倒轉、主觀先後分界改變。",
+      "b_snapshot": {
+        "question": "行人燈只比車燈早亮一點點，有什麼用？",
+        "answer_target": "時序改變讓行人先進入駕駛視野，減少同時起步的轉彎衝突。",
+        "scope": "Leading Pedestrian Interval；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "A21001",
+      "b": "P14006",
+      "cosine": 0.647146,
+      "decision": "distinct",
+      "reason": "閃塊影響變化察覺的注意導引；新題是延遲動作回饋訓練後的先後判斷，沒有場景變動偵測任務。",
+      "b_snapshot": {
+        "question": "變動處沒被遮住，別處一閃怎麼仍可能讓人漏掉變化？",
+        "answer_target": "同時出現的高對比閃塊不遮住變動位置，仍可能干擾對變動位置的注意導引與前後比較；這個控制排除「一定是把變動蓋住」的單一解釋。",
+        "scope": "採1998作者修訂稿的10人場景比較及1999正式版身分/摘要；稿件非最終版逐字等同。不聲稱影像記憶完全不存在或所有未注意資訊都不編碼；不移用漏看比例到行車事故。"
+      }
+    },
+    {
+      "a": "A21001",
+      "b": "E2189",
+      "cosine": 0.646747,
+      "decision": "distinct",
+      "reason": "比較器的雜訊反覆跨固定門檻是電路切換；新題人的時間判斷分界隨先前回饋經驗移動，不是電壓雜訊。",
+      "b_snapshot": {
+        "question": "感測電壓只慢慢跨過界線，為什麼警報開關卻瘋狂跳？",
+        "answer_target": "慢變訊號在門檻附近停留，雜訊反覆跨線造成多次切換。",
+        "scope": "比較器，不把這種現象一概叫自激振盪。"
+      }
+    },
+    {
+      "a": "A21001",
+      "b": "P14009",
+      "cosine": 0.641653,
+      "decision": "distinct",
+      "reason": "視觸高度的可靠度加權與動作/閃光先後校準有不同輸入和測量；不以泛稱整合感官合併。",
+      "b_snapshot": {
+        "question": "眼睛與手摸到的高度不一致，畫面加雜訊為什麼會改變判斷？",
+        "answer_target": "小幅視觸衝突下，視覺深度雜訊增大時，合併高度判斷更靠向觸覺；單通道變異預測的可靠度權重與實測相近，並能解釋合併估計變異減小。",
+        "scope": "2002四名22–33歲右利手成人、虛擬觸覺裝置與隨機點立體圖，衝突不超11%。「最佳」僅模型條件中的變異，非永遠正確；未觀察腦內直接計算權重，不能直接外推兒童/其他物性/大衝突。"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "P026",
+      "cosine": 0.716918,
+      "decision": "distinct",
+      "reason": "槓桿因力臂不同而平衡；新題相同把手同質量，比較施力學習與主觀評分分離，不改力臂。",
+      "b_snapshot": {
+        "question": "翹翹板兩邊重量不同，為什麼仍可能平衡？",
+        "answer_target": "較輕的一側可用較長力臂平衡重量不同造成的力矩。",
+        "scope": "支點與木板自重需列入模型"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "P036",
+      "cosine": 0.689803,
+      "decision": "distinct",
+      "reason": "支承位置與重心決定不同支承力；研究控制相同把手和質量後，錯覺仍可與施力適應分開。",
+      "b_snapshot": {
+        "question": "兩個人抬長箱子，為什麼不一定各負擔一半重量？",
+        "answer_target": "重心偏離兩支點中間時，力矩平衡使支承反力不同。",
+        "scope": "箱子靜止、兩支點模型"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "P103",
+      "cosine": 0.68405,
+      "decision": "distinct",
+      "reason": "彈簧剛度不同使相同負荷伸長不同；新題沒有改彈簧，主觀重量與運動輸出也非同一物理伸長量。",
+      "b_snapshot": {
+        "question": "同樣拉長一公分，兩條彈簧為什麼可能差很多力？",
+        "answer_target": "彈簧常數反映材質與幾何，不是伸長量單獨決定力。",
+        "scope": "避免把所有彈簧常數視為材質常數"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "P111",
+      "cosine": 0.671192,
+      "decision": "distinct",
+      "reason": "擺長/週期估測重力是物理量測校準；新題是同歷程兩種行為輸出的更新差別。",
+      "b_snapshot": {
+        "question": "拿一條繩和小重物，為什麼能反過來測出重力加速度？",
+        "answer_target": "已知擺長可由週期反推重力加速度，誤差來自計時與模型。",
+        "scope": "只提出量測原理，未執行實驗"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "P100",
+      "cosine": 0.669349,
+      "decision": "distinct",
+      "reason": "線性彈簧的力與伸長比例不解釋同質量木塊重複提舉時，重量評分與施力速率的不同變化。",
+      "b_snapshot": {
+        "question": "彈簧拉得越長，拉回來的力為什麼通常越大？",
+        "answer_target": "線性彈性區內回復力近似與形變成正比，超過範圍不保證成立。",
+        "scope": "理想彈簧，非任意橡皮筋"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "Z7010",
+      "cosine": 0.749284,
+      "decision": "distinct",
+      "reason": "跳蛛利用影像離焦估距；人工穩像使相對視網膜影像變化減少，控制量和輸出均不同。",
+      "b_snapshot": {
+        "question": "看不清的影像，為什麼反而可能幫跳蛛估算跳多遠？",
+        "answer_target": "特殊視網膜層取得的失焦程度會隨距離變化；紅光色差改變失焦量，造成符合距離低估模型的短跳。",
+        "scope": "Hasarius adansoni 的主眼與指定照明實驗；失焦測距是強支持模型，兩層神經比較方式未定。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "A5021",
+      "cosine": 0.737129,
+      "decision": "distinct",
+      "reason": "VOR是頭動時驅動眼反轉的迴路；新題在眼仍動時主動移螢幕取消視網膜滑移，且觀察消退沒有自動增加救援微眼跳。",
+      "b_snapshot": {
+        "question": "頭向右轉，眼睛為什麼能立刻往左補回來？",
+        "answer_target": "前庭輸入經腦幹迴路驅動眼外肌，使眼球向頭動相反方向轉動，穩定視網膜影像。",
+        "scope": "VOR基本水平旋轉模型，可在黑暗運作；不採教材50度/秒上限，不當平衡診斷或訓練。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "P14009",
+      "cosine": 0.735467,
+      "decision": "distinct",
+      "reason": "高度估計的跨感官可靠度加權不是圖像穩定後的消退/微眼跳條件，不能以知覺一詞合核。",
+      "b_snapshot": {
+        "question": "眼睛與手摸到的高度不一致，畫面加雜訊為什麼會改變判斷？",
+        "answer_target": "小幅視觸衝突下，視覺深度雜訊增大時，合併高度判斷更靠向觸覺；單通道變異預測的可靠度權重與實測相近，並能解釋合併估計變異減小。",
+        "scope": "2002四名22–33歲右利手成人、虛擬觸覺裝置與隨機點立體圖，衝突不超11%。「最佳」僅模型條件中的變異，非永遠正確；未觀察腦內直接計算權重，不能直接外推兒童/其他物性/大衝突。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "A5022",
+      "cosine": 0.72348,
+      "decision": "distinct",
+      "reason": "雙眼瞳孔的共同光反射路徑改進光量；穩像實驗改相對影像運動，不是虹膜光孔控制。",
+      "b_snapshot": {
+        "question": "只有一隻眼收到較強光線，另一隻瞳孔為什麼也會縮小？",
+        "answer_target": "光訊號到達頂蓋前區後向兩側瞳孔收縮路徑投射，使兩眼皆可產生反應。",
+        "scope": "正常瞳孔光反射的雙側聯絡；不做強光照眼、自測神經損傷或反射速度比較。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "P14005",
+      "cosine": 0.720624,
+      "decision": "distinct",
+      "reason": "掃視後外部消失與眨眼的不同位移判斷，涉及眼外狀態；本題人工穩像及消退/微眼跳因果界線另有控制。",
+      "b_snapshot": {
+        "question": "掃視後都短暫看不到目標，眨眼與目標消失為什麼不一定一樣？",
+        "answer_target": "在掃視位移判別裡，外部目標消失延伸到掃視後可改善判別，但自願眨眼造成的中斷不等效；眨眼結束後目標繼續不在才再改善，支持系統使用視網膜外狀態資訊的解釋。",
+        "scope": "2004分析4名26–44歲男性實驗室成員(含作者)，以雷射點和眼動線圈控制；不是一般眨眼提高/降低視力。視網膜外資訊與穩定假設為作者推論，未定位其神經來源，不作家用雷射展示。"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "P14006",
+      "cosine": 0.6699,
+      "decision": "distinct",
+      "reason": "閃塊任務問是否察覺場景改變；新題在閃光後改移動軌跡，問瞬間相對位置報告如何改變，輸出及因果控制不同。",
+      "b_snapshot": {
+        "question": "變動處沒被遮住，別處一閃怎麼仍可能讓人漏掉變化？",
+        "answer_target": "同時出現的高對比閃塊不遮住變動位置，仍可能干擾對變動位置的注意導引與前後比較；這個控制排除「一定是把變動蓋住」的單一解釋。",
+        "scope": "採1998作者修訂稿的10人場景比較及1999正式版身分/摘要；稿件非最終版逐字等同。不聲稱影像記憶完全不存在或所有未注意資訊都不編碼；不移用漏看比例到行車事故。"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "P20007",
+      "cosine": 0.663678,
+      "decision": "distinct",
+      "reason": "角錐三反射改物理光路；新題顯示影像的已知位置未變，變的是受後續軌跡影響的主觀對齊，非反射幾何。",
+      "b_snapshot": {
+        "question": "三面小鏡子拼成角落，歪一點為什麼還能把光送回來？",
+        "answer_target": "光線依次碰到三個互相垂直的反射面後，三個方向分量分別翻轉，出射方向與入射方向相反；因此小幅改變整體朝向仍可能回射，而平面鏡只有特定對準才如此。",
+        "scope": "限完整碰到三面的理想角錐幾何；回程可有側向位移，非原路重合。傾斜會讓部分光錯過面，非任何方向皆回射；不包括玻璃珠機制。"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "P143",
+      "cosine": 0.650028,
+      "decision": "distinct",
+      "reason": "彎曲光棒的全反射約束光路；新題不是光走哪裡，而是不同時間影像對位置判斷的貢獻。",
+      "b_snapshot": {
+        "question": "明明透明的彎曲光棒，為什麼能把光帶到另一端？",
+        "answer_target": "合適角度的多次內反射限制光路，但過急彎曲會改變逃逸條件。",
+        "scope": "材料與彎曲半徑需補實例"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "B15001",
+      "cosine": 0.637357,
+      "decision": "distinct",
+      "reason": "側根目標斜角由兩生長反應分量達到功能平衡；新題是閃光之後訊息參與位置估計，沒有植物生長回復迴路。",
+      "b_snapshot": {
+        "question": "側根被挪歪後，為什麼會回到斜角，而不是一路往下？",
+        "answer_target": "向地反應隨傾角變化，與相反方向的生長偏移分量平衡，可把側根維持在非垂直角；移到目標角兩側時，彎回方向會相反。",
+        "scope": "限2013擬南芥側根與側枝實驗/功能模型；非力的直接相加，不聲稱每條根角度固定終身，主根與不同器官不一律相同。"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "A5025",
+      "cosine": 0.633457,
+      "decision": "distinct",
+      "reason": "中心周圍感受野由空間光照和側向連接改神經反應；新題以相同閃光幀不同後續運動比較時間整合，不能只用局部對比機制回答。",
+      "b_snapshot": {
+        "question": "一樣亮的小光點，為什麼周圍一起亮起來會改變視網膜的回應？",
+        "answer_target": "中心與周圍輸入具有相反影響；橫向連接讓周圍光照減弱中心反應，凸顯局部對比。",
+        "scope": "視網膜中心周圍感受野，不用它獨力解釋所有明暗錯覺或高階視覺。"
+      }
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "A21001",
+      "b": "LEG-S74",
+      "decision": "distinct",
+      "reason": "自生觸感衰減改感覺強度；本題時序適應使主觀先後分界改變，輸出不是較癢/較弱。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21001",
+      "b": "S10001",
+      "decision": "distinct",
+      "reason": "電魚學習負像抑制配對脈衝的反應；本題時間標定的先後反轉，不把任何預測學習都算同核。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21001",
+      "b": "S10003",
+      "decision": "distinct",
+      "reason": "預期頸部回饋須匹配才抑制頭動訊號；本題延遲回饋使同短間隔的先後判斷更新，沒有頸部匹配控制。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21001",
+      "b": "LEG-S45",
+      "decision": "distinct",
+      "reason": "成年時間過快是長期回憶/問卷與未定假說；此題是受控動作後短時距適應，資料與答案不同。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21001",
+      "b": "C2027",
+      "decision": "distinct",
+      "reason": "事後重建既有預測的記憶偏誤不是受控短時序校準；未用回憶過去是否猜中作指標。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21002",
+      "b": "C2003",
+      "decision": "distinct",
+      "reason": "期待影響辨認是共通背景；同質量重複提舉的施力適應與重量感未同步，提供舊泛概念不能預測的新控制。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21002",
+      "b": "C2030",
+      "decision": "distinct",
+      "reason": "舊題只概括辨認/動作平行處理；本題以同一提舉歷程兩個可量輸出的更新解離，不能只用兩條腦路徑命名代替。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21002",
+      "b": "A5007",
+      "decision": "distinct",
+      "reason": "腱器官機械感受張力不解釋為何感覺差異在施力修正後仍在；新題也不宣稱已定位感覺受器。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21002",
+      "b": "A5008",
+      "decision": "distinct",
+      "reason": "負荷改變的伸展反射是快速補力；本題物理質量不變，重複試次中預期控制和重量評分有不同歷程。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21002",
+      "b": "P14009",
+      "decision": "distinct",
+      "reason": "可靠度加權改高度融合的權重；本題未加視覺雜訊，而是施力學習與重量錯覺持續的分離。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21003",
+      "b": "A5015",
+      "decision": "distinct",
+      "reason": "眼跳改中央注視點及落點修正；本題用螢幕追隨眼位取消相對滑移，並非新目標導向眼跳。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21003",
+      "b": "A5021",
+      "decision": "distinct",
+      "reason": "前庭眼反射處理頭動穩像；人工視網膜穩像則把消退和微眼跳救援是否自動觸發分開，不只說眼睛反向轉。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21003",
+      "b": "A5027",
+      "decision": "distinct",
+      "reason": "帕西尼包層流體的機械適應是特定觸覺結構；視網膜穩像未證同機械過程，也未定位唯一神經適應鏈。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21003",
+      "b": "P14005",
+      "decision": "distinct",
+      "reason": "掃視後短暫消失與眨眼的相異結果，問外部中斷/眼外資訊；新題固定注視中的人工穩像與消退非同控制。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21003",
+      "b": "C2004",
+      "decision": "distinct",
+      "reason": "不注意盲視改任務選擇；穩像任務明確回報圖像，且注意控制仍未支持自動增加微眼跳，非未分配注意的重述。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21004",
+      "b": "C2016",
+      "decision": "distinct",
+      "reason": "事後問法改回憶屬語意資訊與記憶重建；閃光後數幀的運動改相對位置報告不是相同控制。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21004",
+      "b": "P14005",
+      "decision": "distinct",
+      "reason": "掃視/眨眼狀態與外部消失比較，不等於改同閃光後的運動結尾；新題也不由掃視補償推論唯一機制。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21004",
+      "b": "P20005",
+      "decision": "distinct",
+      "reason": "逐色顯示的追視彩邊有物理時間分離與視網膜落點分離；本題是相同閃光位置不同後續軌跡的位置判斷，非RGB錯位。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21004",
+      "b": "B2320",
+      "decision": "distinct",
+      "reason": "蝙蝠用舊回聲預測未來目標方向；本題用已發生閃光後的視覺資訊改報告過去一瞬的位置，不稱預知未來。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "A21004",
+      "b": "A5016",
+      "decision": "distinct",
+      "reason": "平滑追蹤是用目標速度驅動眼球；位置報告的後續訊息整合與眼肌追蹤命令不同。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "A21001",
+        "b": "LEG-S74",
+        "reason": "自生觸感衰減改感覺強度；本題時序適應使主觀先後分界改變，輸出不是較癢/較弱。"
+      },
+      {
+        "a": "A21001",
+        "b": "S10001",
+        "reason": "電魚學習負像抑制配對脈衝的反應；本題時間標定的先後反轉，不把任何預測學習都算同核。"
+      },
+      {
+        "a": "A21001",
+        "b": "S10003",
+        "reason": "預期頸部回饋須匹配才抑制頭動訊號；本題延遲回饋使同短間隔的先後判斷更新，沒有頸部匹配控制。"
+      },
+      {
+        "a": "A21001",
+        "b": "LEG-S45",
+        "reason": "成年時間過快是長期回憶/問卷與未定假說；此題是受控動作後短時距適應，資料與答案不同。"
+      },
+      {
+        "a": "A21001",
+        "b": "C2027",
+        "reason": "事後重建既有預測的記憶偏誤不是受控短時序校準；未用回憶過去是否猜中作指標。"
+      },
+      {
+        "a": "A21002",
+        "b": "C2003",
+        "reason": "期待影響辨認是共通背景；同質量重複提舉的施力適應與重量感未同步，提供舊泛概念不能預測的新控制。"
+      },
+      {
+        "a": "A21002",
+        "b": "C2030",
+        "reason": "舊題只概括辨認/動作平行處理；本題以同一提舉歷程兩個可量輸出的更新解離，不能只用兩條腦路徑命名代替。"
+      },
+      {
+        "a": "A21002",
+        "b": "A5007",
+        "reason": "腱器官機械感受張力不解釋為何感覺差異在施力修正後仍在；新題也不宣稱已定位感覺受器。"
+      },
+      {
+        "a": "A21002",
+        "b": "A5008",
+        "reason": "負荷改變的伸展反射是快速補力；本題物理質量不變，重複試次中預期控制和重量評分有不同歷程。"
+      },
+      {
+        "a": "A21002",
+        "b": "P14009",
+        "reason": "可靠度加權改高度融合的權重；本題未加視覺雜訊，而是施力學習與重量錯覺持續的分離。"
+      },
+      {
+        "a": "A21003",
+        "b": "A5015",
+        "reason": "眼跳改中央注視點及落點修正；本題用螢幕追隨眼位取消相對滑移，並非新目標導向眼跳。"
+      },
+      {
+        "a": "A21003",
+        "b": "A5021",
+        "reason": "前庭眼反射處理頭動穩像；人工視網膜穩像則把消退和微眼跳救援是否自動觸發分開，不只說眼睛反向轉。"
+      },
+      {
+        "a": "A21003",
+        "b": "A5027",
+        "reason": "帕西尼包層流體的機械適應是特定觸覺結構；視網膜穩像未證同機械過程，也未定位唯一神經適應鏈。"
+      },
+      {
+        "a": "A21003",
+        "b": "P14005",
+        "reason": "掃視後短暫消失與眨眼的相異結果，問外部中斷/眼外資訊；新題固定注視中的人工穩像與消退非同控制。"
+      },
+      {
+        "a": "A21003",
+        "b": "C2004",
+        "reason": "不注意盲視改任務選擇；穩像任務明確回報圖像，且注意控制仍未支持自動增加微眼跳，非未分配注意的重述。"
+      },
+      {
+        "a": "A21004",
+        "b": "C2016",
+        "reason": "事後問法改回憶屬語意資訊與記憶重建；閃光後數幀的運動改相對位置報告不是相同控制。"
+      },
+      {
+        "a": "A21004",
+        "b": "P14005",
+        "reason": "掃視/眨眼狀態與外部消失比較，不等於改同閃光後的運動結尾；新題也不由掃視補償推論唯一機制。"
+      },
+      {
+        "a": "A21004",
+        "b": "P20005",
+        "reason": "逐色顯示的追視彩邊有物理時間分離與視網膜落點分離；本題是相同閃光位置不同後續軌跡的位置判斷，非RGB錯位。"
+      },
+      {
+        "a": "A21004",
+        "b": "B2320",
+        "reason": "蝙蝠用舊回聲預測未來目標方向；本題用已發生閃光後的視覺資訊改報告過去一瞬的位置，不稱預知未來。"
+      },
+      {
+        "a": "A21004",
+        "b": "A5016",
+        "reason": "平滑追蹤是用目標速度驅動眼球；位置報告的後續訊息整合與眼肌追蹤命令不同。"
+      },
+      {
+        "a": "A21001",
+        "b": "C2002",
+        "reason": "韋伯比較亮度差與背景強度；動作回饋延遲重校的是時間先後分界，感覺量和控制不同。"
+      },
+      {
+        "a": "A21001",
+        "b": "D2075",
+        "reason": "行人早開燈是改物理事件順序和視野；新題物理順序不倒轉、主觀先後分界改變。"
+      },
+      {
+        "a": "A21001",
+        "b": "P14006",
+        "reason": "閃塊影響變化察覺的注意導引；新題是延遲動作回饋訓練後的先後判斷，沒有場景變動偵測任務。"
+      },
+      {
+        "a": "A21001",
+        "b": "E2189",
+        "reason": "比較器的雜訊反覆跨固定門檻是電路切換；新題人的時間判斷分界隨先前回饋經驗移動，不是電壓雜訊。"
+      },
+      {
+        "a": "A21001",
+        "b": "P14009",
+        "reason": "視觸高度的可靠度加權與動作/閃光先後校準有不同輸入和測量；不以泛稱整合感官合併。"
+      },
+      {
+        "a": "A21002",
+        "b": "P026",
+        "reason": "槓桿因力臂不同而平衡；新題相同把手同質量，比較施力學習與主觀評分分離，不改力臂。"
+      },
+      {
+        "a": "A21002",
+        "b": "P036",
+        "reason": "支承位置與重心決定不同支承力；研究控制相同把手和質量後，錯覺仍可與施力適應分開。"
+      },
+      {
+        "a": "A21002",
+        "b": "P103",
+        "reason": "彈簧剛度不同使相同負荷伸長不同；新題沒有改彈簧，主觀重量與運動輸出也非同一物理伸長量。"
+      },
+      {
+        "a": "A21002",
+        "b": "P111",
+        "reason": "擺長/週期估測重力是物理量測校準；新題是同歷程兩種行為輸出的更新差別。"
+      },
+      {
+        "a": "A21002",
+        "b": "P100",
+        "reason": "線性彈簧的力與伸長比例不解釋同質量木塊重複提舉時，重量評分與施力速率的不同變化。"
+      },
+      {
+        "a": "A21003",
+        "b": "Z7010",
+        "reason": "跳蛛利用影像離焦估距；人工穩像使相對視網膜影像變化減少，控制量和輸出均不同。"
+      },
+      {
+        "a": "A21003",
+        "b": "P14009",
+        "reason": "高度估計的跨感官可靠度加權不是圖像穩定後的消退/微眼跳條件，不能以知覺一詞合核。"
+      },
+      {
+        "a": "A21003",
+        "b": "A5022",
+        "reason": "雙眼瞳孔的共同光反射路徑改進光量；穩像實驗改相對影像運動，不是虹膜光孔控制。"
+      },
+      {
+        "a": "A21004",
+        "b": "P14006",
+        "reason": "閃塊任務問是否察覺場景改變；新題在閃光後改移動軌跡，問瞬間相對位置報告如何改變，輸出及因果控制不同。"
+      },
+      {
+        "a": "A21004",
+        "b": "P20007",
+        "reason": "角錐三反射改物理光路；新題顯示影像的已知位置未變，變的是受後續軌跡影響的主觀對齊，非反射幾何。"
+      },
+      {
+        "a": "A21004",
+        "b": "P143",
+        "reason": "彎曲光棒的全反射約束光路；新題不是光走哪裡，而是不同時間影像對位置判斷的貢獻。"
+      },
+      {
+        "a": "A21004",
+        "b": "B15001",
+        "reason": "側根目標斜角由兩生長反應分量達到功能平衡；新題是閃光之後訊息參與位置估計，沒有植物生長回復迴路。"
+      },
+      {
+        "a": "A21004",
+        "b": "A5025",
+        "reason": "中心周圍感受野由空間光照和側向連接改神經反應；新題以相同閃光幀不同後續運動比較時間整合，不能只用局部對比機制回答。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "A21-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "LEG-S74",
+        "S10001"
+      ],
+      "source_ids": [],
+      "reason": "自生觸感抑制已有LEG-S74/S10001；只換接觸部位不收。"
+    },
+    {
+      "id": "A21-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "LEG-S74"
+      ],
+      "source_ids": [],
+      "reason": "尚無本輪force-matching原文控制；保留待研究，不以流行現象補因果。"
+    },
+    {
+      "id": "A21-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2004"
+      ],
+      "source_ids": [],
+      "reason": "C2004不注意盲視已答；改片中角色不另核。"
+    },
+    {
+      "id": "A21-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2003"
+      ],
+      "source_ids": [],
+      "reason": "C2003期待影響辨認已答，未提出不同控制。"
+    },
+    {
+      "id": "A21-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2006"
+      ],
+      "source_ids": [],
+      "reason": "已讀C2006邊界歸屬問答；臉/花瓶只是例子替換。"
+    },
+    {
+      "id": "A21-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2007"
+      ],
+      "source_ids": [],
+      "reason": "已讀C2007接近/相似組織；換點色不另核。"
+    },
+    {
+      "id": "A21-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2008"
+      ],
+      "source_ids": [],
+      "reason": "已讀C2008延續/閉合；換線段形狀不另核。"
+    },
+    {
+      "id": "A21-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P14003"
+      ],
+      "source_ids": [],
+      "reason": "已讀P14003偵測/辨識與鄰距條件；改中文刺激不等於新機制。"
+    },
+    {
+      "id": "A21-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P14007"
+      ],
+      "source_ids": [],
+      "reason": "已讀P14007時距/連續性控制；單參數新值不拆。"
+    },
+    {
+      "id": "A21-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P14008"
+      ],
+      "source_ids": [],
+      "reason": "已讀P14008類型/事件綁定；換顏色未有新答案。"
+    },
+    {
+      "id": "A21-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "未獨立讀McGurk本文，本收據只支持保守不收，不替絕對問法背書。"
+    },
+    {
+      "id": "A21-NA012",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "A21004"
+      ],
+      "source_ids": [
+        "A21-S004",
+        "A21-S005"
+      ],
+      "reason": "S004/005已讀，後續軌跡控制支持A4但不支持預知未來口號；原退題保留。"
+    },
+    {
+      "id": "A21-NA013",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪沒有支持人人固定七格的原文；維持不收，不進行記憶容量全面審查。"
+    },
+    {
+      "id": "A21-NA014",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2021"
+      ],
+      "source_ids": [],
+      "reason": "已讀C2021間隔/延遲條件；分開練一定有效是過強問法。"
+    },
+    {
+      "id": "A21-NA015",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2022"
+      ],
+      "source_ids": [],
+      "reason": "已讀C2022生產效應；不以單字材料替換灌數。"
+    },
+    {
+      "id": "A21-NA016",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "A21002"
+      ],
+      "source_ids": [
+        "A21-S002"
+      ],
+      "reason": "只讀大小重量/施力控制，材質版沒有獨立證據，留同題邊界。"
+    },
+    {
+      "id": "A21-NA017",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "A21002"
+      ],
+      "source_ids": [
+        "A21-S002"
+      ],
+      "reason": "已讀no-vision方法的不同組/5秒/同中塊替換，無法支持閉眼必然不學習。"
+    },
+    {
+      "id": "A21-NA018",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "A21003"
+      ],
+      "source_ids": [
+        "A21-S003"
+      ],
+      "reason": "Exp3與Discussion不支持消退必自動增加微眼跳；能恢復不等於必被觸發。"
+    },
+    {
+      "id": "A21-NA019",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只有作者定位摘要、不採為正文；維持待完整交換控制研究，不評其機制定論。"
+    },
+    {
+      "id": "A21-NA020",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "未讀當下解析度與事後回憶分離的原始研究；保留不收，無醫療/恐懼外推。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W21A-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 100,
+      "chapter_seconds": [
+        40,
+        60
+      ],
+      "core_totals": {
+        "A21001": 100
+      },
+      "core_caps": {
+        "A21001": 130
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若先後時間線無法分清物理與報告，撤100秒題案；若被動對照只剩術語，刪25秒成75秒兩章版，不補腦區百科。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "已在節拍內，不另加片頭尾或停頓填時。",
+      "editorial_result": "先展示物理/主觀兩時間線，再用短延遲與主動/被動對照推進，100秒；無需fMRI章。"
+    },
+    {
+      "id": "W21A-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        55,
+        60
+      ],
+      "core_totals": {
+        "A21002": 115
+      },
+      "core_caps": {
+        "A21002": 130
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若畫不清施力速率與重量評分是不同量，撤115秒案；若只剩大小比較沒有反覆提舉結果，退成C2003例子，不硬湊第二章。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "已在節拍內，不另加片頭尾或停頓填時。",
+      "editorial_result": "同一提舉歷程兩種輸出不同更新是故事主幹，115秒；大小重量只是設題，不能刪施力/評分並排後仍保整片。"
+    },
+    {
+      "id": "W21A-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 95,
+      "chapter_seconds": [
+        40,
+        55
+      ],
+      "core_totals": {
+        "A21004": 95
+      },
+      "core_caps": {
+        "A21004": 125
+      },
+      "maximum_beat_seconds": 25,
+      "drop_if_read": "若後續時距對照只是在重播第一章，刪25秒成70秒兩章版；若剩泛說大腦預知未來，撤95秒案。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "已在節拍內，不另加片頭尾或停頓填時。",
+      "editorial_result": "95秒第一章為Fig1A三結尾，第二章清空後改為Fig2/Fig1B的同現起動控制；模型另框，不以重播或論戰史補時。"
+    }
+  ],
+  "remaining_blockers": [],
+  "limits": [
+    "只核這批指定主張與來源範圍，不聲稱所有來源逐句全查。",
+    "相似度只是檢索提示，未量全庫去重召回率。",
+    "未試讀、錄音、實作展示、觀看補充影片或做觀眾測試；題案秒數不是實測成片長度。"
+  ],
+  "first_retrieval": {
+    "draft": {
+      "file": ".cache/wave21-first-draft.json",
+      "sha256": "cc0bccd7bff1f9ec113c89366bb764e3ec9f03bd38f1c3e7dd547cba5188a50c"
+    },
+    "draft_sha256": "cc0bccd7bff1f9ec113c89366bb764e3ec9f03bd38f1c3e7dd547cba5188a50c",
+    "semantic": {
+      "file": ".cache/semantic-wave21-first-draft.json",
+      "sha256": "fc81d52dd166f8ac2eb149304e7bbb5a27a6ce69a1c9b468b23e4f2adcabd25b"
+    },
+    "directed_pairs_reviewed": 20
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "856c8adcb93f141194c09b4d5faea1c687df0113c9b9afc485c826e6c4984cfa",
+    "neighbours": {
+      "file": ".cache/wave21-perception-neighbours.json",
+      "sha256": "7f9f2457ce699ca1f5f8dafa730fd5e84d28ef8753fa8361418344861531f3dd"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave21-draft.json",
+      "sha256": "238fcbc1073c1b398fcdf85e338f0defdf54b4e375aa9ea2efd3ce1fe77d2efe"
+    },
+    "delta": {
+      "file": ".cache/wave21-semantic-revision-delta.json",
+      "sha256": "ca0f6ef94f005b52bfef323b07d53d6594e936dd5f3595815d7207ef5b80f244"
+    },
+    "candidate_rows_checked": 4,
+    "directed_pairs_checked": 20,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "new_neighbours": 2,
+    "removed_neighbours": 2,
+    "rank_or_score_changed_candidate_ids": [
+      "A21004"
+    ],
+    "result": "A21004答案釐清後五個鄰居重新全讀；新增B15001/A5025分別為植物角度回復/視網膜中心周圍反應，皆非閃光後軌跡的位置估計。其餘3題15鄰居不變。",
+    "previous_removed_pairs": [
+      {
+        "a": "A21004",
+        "b": "B17006",
+        "cosine": 0.648656,
+        "decision": "distinct",
+        "reason": "舊射水魚按形狀切換瞄準規則及目標路徑控制，是動作選擇；不是閃光後位置報告。"
+      },
+      {
+        "a": "A21004",
+        "b": "LEG-S27",
+        "cosine": 0.6443,
+        "decision": "distinct",
+        "reason": "鏡面反射幾何改方向，不是後續運動對瞬間主觀位置的影響。"
+      }
+    ]
+  },
+  "source_identity_review": [
+    {
+      "sources": [
+        "A21-S001",
+        "A21-S003",
+        "A21-S004"
+      ],
+      "result": "作者/大學託管正式排版PDF與其期刊DOI是同一研究載體，不加計獨立證據。"
+    },
+    {
+      "sources": [
+        "A21-S002"
+      ],
+      "result": "PLOS正式HTML/原圖同一2010研究；圖檔不是新來源。"
+    },
+    {
+      "sources": [
+        "A21-S005"
+      ],
+      "result": "同一PDF彙集多位作者評論及回覆，作模型界線；不稱一份新replication或把引用研究當已逐篇重讀。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "source_id": "A21-S001",
+      "scope": "PDF p2 Fig1/2",
+      "files": [
+        {
+          "file": ".cache/wave21-physics-review-wave21-life-timing2006-p2.png",
+          "sha256": "b44736fdb6eb9d5cdfc0b183ec9d955f75ea9fe3d77dad3659c3a8a6f06b895d"
+        }
+      ]
+    },
+    {
+      "source_id": "A21-S002",
+      "scope": "PLOS Fig1評分/施力速率、Fig2提舉/替換程序",
+      "files": [
+        {
+          "file": ".cache/wave21-life-weight2010-g001.png",
+          "sha256": "882fd4c005b704aa4e1866eac45f88ead81cfc5cf1287461d42dff4b0c5bb428"
+        },
+        {
+          "file": ".cache/wave21-life-weight2010-g002.png",
+          "sha256": "2004031157a0cd0b0c8e94755b040d4fbec4f4b7b3419afb8d746fee9d9759a8"
+        }
+      ]
+    },
+    {
+      "source_id": "A21-S003",
+      "scope": "PDF p3 Fig1、p12 Fig7",
+      "files": [
+        {
+          "file": ".cache/wave21-physics-review-wave21-life-fixation2010-p3.png",
+          "sha256": "63f807d3fa1db04ce05d9b0f87d011440399e96364c014f44cc312364a4d269a"
+        },
+        {
+          "file": ".cache/wave21-physics-review-wave21-life-fixation2010-p12.png",
+          "sha256": "505a4ac711fe06b3e0fd52dad7de55a490c9c06a30cb0aa81fcff9740d5f7fbe"
+        }
+      ]
+    },
+    {
+      "source_id": "A21-S004",
+      "scope": "PDF p2 Fig1/2及圖說；Fig2沿Fig1B是本次必要修正依據。",
+      "files": [
+        {
+          "file": ".cache/wave21-physics-review-wave21-life-flashlag2000-p2.png",
+          "sha256": "a6a047c4af95299b379368394b215ce76dc777f56893b9cffe41e0c5cf703130"
+        }
+      ]
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave21-perception.json",
+      "sha256": "2aed2d7bf57765837dd94c833d8f06c862f5abb43a86cad73a8b24911b3c8b7f"
+    },
+    {
+      "file": "reviews/wave21-perception-themes.json",
+      "sha256": "93d19571ead0f8db0da62dca2919bc31c649af940ca1b1740218dd7bd37721e1"
+    },
+    {
+      "file": "reviews/wave21-perception-author.json",
+      "sha256": "196c58aab0f04bc14bcc4b9ad22d500cdb2080ec6057d6a2eba36a847f9f20d3"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "PERCEPTION01",
+      "status": "RESOLVED",
+      "finding": "原A21004 visual/T03第二章說固定前史後推遲反轉，會把Fig2錯接到Fig1A已有運動的起始條件。",
+      "source_evidence": "S004 PDF p2 Fig2 caption 明列 sequence analogous to Fig.1B；環/閃光同現，下一格才運動。",
+      "readback": "修後answer_target/scope/visual、connection及第二章25秒節拍都明確分開兩套控制並清空重設，總95秒未補內容。",
+      "affected_candidate_ids": [
+        "A21004"
+      ]
+    },
+    {
+      "id": "PERCEPTION_ROOT_EDIT",
+      "status": "READBACK_PASS",
+      "finding": "root先移除T01/T03首章各15秒重述。",
+      "readback": "當期100/115/95秒；首章沒有空補回顧，開場/轉場仍內含。"
+    }
+  ]
+}

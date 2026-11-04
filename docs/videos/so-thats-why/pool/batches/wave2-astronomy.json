@@ -1,0 +1,1089 @@
+{
+  "batch_id": "wave2-astronomy-20261101",
+  "created_on": "2026-11-01",
+  "scope": "宇宙觀測與證據推理；原創研究提問，避開首批行星介紹與恆星生命週期重複。",
+  "sources": [
+    {
+      "id": "X2-S001",
+      "url": "https://science.nasa.gov/universe/galaxies/types/",
+      "title": "Types of Galaxies",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Spiral; Elliptical; Lenticular; Irregular; Active Galaxies",
+      "locator": "Spiral; Elliptical; Lenticular; Irregular; Active Galaxies",
+      "summary": "形狀、星形成與活動分類用的是不同觀察尺度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S002",
+      "url": "https://science.nasa.gov/universe/galaxies/evolution/",
+      "title": "Galaxy Evolution",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Galaxy Evolution; Formation; Collisions; Mergers; Galactic Cannibalism; Overlap Zoo",
+      "locator": "Galaxy Evolution; Formation; Collisions; Mergers; Galactic Cannibalism; Overlap Zoo",
+      "summary": "用不同年代樣本與交互作用研究演化，保留形成順序未知。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S003",
+      "url": "https://science.nasa.gov/universe/galaxies/large-scale-structures/",
+      "title": "Large Scale Structures",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Galaxy Clusters; Superclusters; The Intergalactic Medium; The Cosmic Web",
+      "locator": "Galaxy Clusters; Superclusters; The Intergalactic Medium; The Cosmic Web",
+      "summary": "氣體、暗物質與星系組成大尺度結構，群聚名稱不等同束縛。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S004",
+      "url": "https://science.nasa.gov/universe/stars/types/",
+      "title": "Types of Stars",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Neutron Stars: Pulsars; Red Dwarfs",
+      "locator": "Neutron Stars: Pulsars; Red Dwarfs",
+      "summary": "只取脈衝幾何與內部混合，不重收首批恆星生命週期。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S005",
+      "url": "https://science.nasa.gov/universe/stars/multiple-star-systems/",
+      "title": "Multiple Star Systems",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Binary Stars; X-ray Binaries; Other Multiples (TYC 7037-89-1)",
+      "locator": "Binary Stars; X-ray Binaries; Other Multiples (TYC 7037-89-1)",
+      "summary": "雙星遮掩、物質轉移與階層軌道；避開頁內未刷新行星例子。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S006",
+      "url": "https://science.nasa.gov/universe/overview/",
+      "title": "The Universe’s History",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Big Bang and Nucleosynthesis; Recombination; Dark Ages; Reionization",
+      "locator": "Big Bang and Nucleosynthesis; Recombination; Dark Ages; Reionization",
+      "summary": "選取早期冷卻、散射與電離的問題；避開將 CMB 說成新原子發出的光。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S007",
+      "url": "https://science.nasa.gov/dark-matter/",
+      "title": "What is Dark Matter?",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Discovering Dark Matter; Studying Dark Matter; What is Dark Matter?",
+      "locator": "Discovering Dark Matter; Studying Dark Matter; What is Dark Matter?",
+      "summary": "比較動力學、透鏡與碰撞星系團的證據，粒子身分仍未確定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S008",
+      "url": "https://science.nasa.gov/dark-energy/",
+      "title": "What is Dark Energy? Inside Our Accelerating, Expanding Universe",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "It All Started With Cepheids; Expansion is Speeding Up; What Exactly is Dark Energy?",
+      "locator": "It All Started With Cepheids; Expansion is Speeding Up; What Exactly is Dark Energy?",
+      "summary": "以距離標定和紅移關係研究膨脹，暗能量名稱不等於已知成分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S009",
+      "url": "https://science.nasa.gov/universe/sensing-the-universe/",
+      "title": "Sensing the Universe",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Using All Our Senses; Neutrinos; Cosmic rays; Gravitational Waves",
+      "locator": "Using All Our Senses; Neutrinos; Cosmic rays; Gravitational Waves",
+      "summary": "不同信使提供互補訊息，帶電粒子的磁偏轉影響溯源。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S010",
+      "url": "https://science.nasa.gov/universe/telescopes-101/",
+      "title": "Telescopes 101",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Refracting; Reflecting; Finding gamma rays",
+      "locator": "Refracting; Reflecting; Finding gamma rays",
+      "summary": "波段改變光學與粒子偵測設計，避免只比放大倍數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S011",
+      "url": "https://science.nasa.gov/universe/black-holes/anatomy/",
+      "title": "Anatomy of a Black Hole",
+      "publisher": "NASA Science",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Accretion Disk; Event Horizon Shadow; Photon Sphere; Doppler Beaming; Particle Jets; Singularity",
+      "locator": "Accretion Disk; Event Horizon Shadow; Photon Sphere; Doppler Beaming; Particle Jets; Singularity",
+      "summary": "視覺形狀、偏亮、外部噴流與理論邊界需分開解說。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S012",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Gaia/How_does_Gaia_study_the_Milky_Way",
+      "title": "How does Gaia study the Milky Way?",
+      "publisher": "ESA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Parallax; Proper motion; Radial Velocity; Spectroscopy; Photometry",
+      "locator": "Parallax; Proper motion; Radial Velocity; Spectroscopy; Photometry",
+      "summary": "把位置、時間、光譜與距離資訊分開，再組成三維推論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S013",
+      "url": "https://science.nasa.gov/mission/hubble/science/science-highlights/seeing-light-echoes/",
+      "title": "Seeing Light Echoes",
+      "publisher": "NASA/Hubble",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Expanding Light Echo of V838 Monocerotis; RS Puppis",
+      "locator": "Expanding Light Echo of V838 Monocerotis; RS Puppis",
+      "summary": "有限光程延遲讓原有塵埃依序亮起。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S014",
+      "url": "https://science.nasa.gov/missions/hubble/the-egg-nebula/",
+      "title": "The Egg Nebula",
+      "publisher": "NASA/Hubble",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "2008 article body: scattered light and polarization",
+      "locator": "2008 article body: scattered light and polarization",
+      "summary": "散射光的偏振方向可對隱藏光源位置提供約束。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S015",
+      "url": "https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-gravitational-lenses/",
+      "title": "Hubble Gravitational Lenses",
+      "publisher": "NASA/Hubble",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "Gravitational Lensing Today: LAWD 37; 0024+1654; Refsdal",
+      "locator": "Gravitational Lensing Today: LAWD 37; 0024+1654; Refsdal",
+      "summary": "多光路可產生影像重複、偏移與時間延遲。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S016",
+      "url": "https://www.epfl.ch/labs/lastro/scientific-activities/cosmograil/",
+      "title": "COSMOGRAIL",
+      "publisher": "EPFL LASTRO",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "About the project; observing and blended sources",
+      "locator": "About the project; observing and blended sources",
+      "summary": "光變時間延遲須搭配質量模型才能推宇宙學距離。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S017",
+      "url": "https://esahubble.org/news/heic2602/",
+      "title": "Hubble uncovers the secret of stars that defy ageing",
+      "publisher": "ESA/Hubble",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open page body",
+      "reading_scope": "2026-01-21 release paragraphs 1–8, interpretation and linked paper",
+      "locator": "2026-01-21 release paragraphs 1–8, interpretation and linked paper",
+      "summary": "藍掉隊星與雙星存活環境的觀測關係，並非已排除所有碰撞途徑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "X2001",
+      "question": "看起來細長的星系，會不會其實有螺旋臂？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.galaxy_projection",
+      "answer_target": "檢查盤面觀看角度。",
+      "scope": "先分投影與真實形狀。",
+      "source_ids": [
+        "X2-S001"
+      ],
+      "source_locator": "Spiral Galaxies",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2002",
+      "question": "有很多老恆星的橢圓星系，為什麼可能很少生新星？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.galaxy_gas_supply",
+      "answer_target": "比較氣體供應與新星形成。",
+      "scope": "不把所有橢圓星系說成完全無氣體。",
+      "source_ids": [
+        "X2-S001"
+      ],
+      "source_locator": "Elliptical Galaxies",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2003",
+      "question": "星系有圓盤卻看不到旋臂，等於照片沒拍清楚嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.lenticular_alternatives",
+      "answer_target": "辨認透鏡星系並比較演化假說。",
+      "scope": "只作分類限制段落；成因並未單一定案。",
+      "source_ids": [
+        "X2-S001"
+      ],
+      "source_locator": "Lenticular Galaxies",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2004",
+      "question": "同一星系為什麼能同時叫螺旋星系和活動星系？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.morphology_activity_axes",
+      "answer_target": "區分外形與核心活動兩條分類軸。",
+      "scope": "不把名稱當成先後演化階段。",
+      "source_ids": [
+        "X2-S001"
+      ],
+      "source_locator": "Active Galaxies",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2005",
+      "question": "同樣有活躍核心，換個方向看為什麼像不同天體？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.agn_orientation_torus",
+      "answer_target": "追查塵埃環遮蔽與觀測方向。",
+      "scope": "角度能解釋多種差異，並非所有差異。",
+      "source_ids": [
+        "X2-S001"
+      ],
+      "source_locator": "Active Galaxies",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2006",
+      "question": "等不到星系長大，怎麼研究它的一生？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.galaxy_population_inference",
+      "answer_target": "用不同距離與階段樣本重建演化。",
+      "scope": "樣本比較不是同一星系的連續錄影。",
+      "source_ids": [
+        "X2-S002"
+      ],
+      "source_locator": "Galaxy Evolution",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2007",
+      "question": "兩個星系撞上，裡面的恆星為什麼不一定互撞？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.galaxy_collision_spacing",
+      "answer_target": "區分恆星間距與氣體碰撞。",
+      "scope": "不使用銀河與仙女座必撞的日期預測。",
+      "source_ids": [
+        "X2-S002"
+      ],
+      "source_locator": "Collisions",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2008",
+      "question": "星系碰撞那麼劇烈，為什麼反而會冒出新星？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.interaction_gas_compression",
+      "answer_target": "追查氣體壓縮觸發星形成。",
+      "scope": "不是所有碰撞都同樣促進星形成。",
+      "source_ids": [
+        "X2-S002"
+      ],
+      "source_locator": "Collisions",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2009",
+      "question": "照片裡兩個星系疊在一起，就代表正在相撞嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.line_of_sight_overlap",
+      "answer_target": "區分視線重疊與物理接近。",
+      "scope": "需要距離等額外證據。",
+      "source_ids": [
+        "X2-S002"
+      ],
+      "source_locator": "Do NASA Science with Overlap Zoo",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2010",
+      "question": "星系怎麼把鄰居的物質拉成長長的尾巴？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.galaxy_tidal_stripping",
+      "answer_target": "研究潮汐剝離與物質轉移。",
+      "scope": "具體系統進稿需補觀測與模型。",
+      "source_ids": [
+        "X2-S002"
+      ],
+      "source_locator": "Galactic Cannibalism; Mergers",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2011",
+      "question": "叫做超星系團，為什麼成員不一定被彼此綁住？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.supercluster_binding",
+      "answer_target": "分辨空間群聚與重力束縛。",
+      "scope": "限大尺度，不能套在每個星系團。",
+      "source_ids": [
+        "X2-S003"
+      ],
+      "source_locator": "Superclusters",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2012",
+      "question": "星系團的重量，為什麼不能只把恆星加起來？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.cluster_mass_components",
+      "answer_target": "清點熱氣體與非發光質量。",
+      "scope": "不把圖像亮度直接當質量。",
+      "source_ids": [
+        "X2-S003"
+      ],
+      "source_locator": "Galaxy Clusters",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2013",
+      "question": "星系間氣體很熱，為什麼仍可能暗得難找？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.diffuse_hot_gas",
+      "answer_target": "比較溫度、密度與輻射可見度。",
+      "scope": "熱不代表一定明亮；不泛指所有星系間介質同溫。",
+      "source_ids": [
+        "X2-S003"
+      ],
+      "source_locator": "The Intergalactic Medium",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2014",
+      "question": "宇宙裡的星系，為什麼不像胡椒粉均勻撒開？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.cosmic_web_growth",
+      "answer_target": "研究重力放大密度差異形成網狀結構。",
+      "scope": "動畫是模型視覺化，不當成肉眼實景。",
+      "source_ids": [
+        "X2-S003"
+      ],
+      "source_locator": "The Cosmic Web",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2015",
+      "question": "脈衝星一閃一閃，是整顆星一直亮起又熄滅嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.pulsar_lighthouse",
+      "answer_target": "區分旋轉掃過視線與整體閃滅。",
+      "scope": "並非每種脈衝機制都只來自表面熱點。",
+      "source_ids": [
+        "X2-S004"
+      ],
+      "source_locator": "Neutron Stars: Pulsars",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2016",
+      "question": "某些小恆星怎麼把外層燃料送回核心？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.red_dwarf_mixing",
+      "answer_target": "研究低質量星的對流混合。",
+      "scope": "限定具充分混合的低質量範圍；不是所有紅矮星完全對流。",
+      "source_ids": [
+        "X2-S004"
+      ],
+      "source_locator": "Red Dwarfs",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2017",
+      "question": "兩顆星互相遮住，怎麼反而能量出它們的大小？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.eclipsing_binary_constraints",
+      "answer_target": "從光變與其他軌道資料約束尺寸。",
+      "scope": "不能只靠單一亮度下降得出全部質量與成分。",
+      "source_ids": [
+        "X2-S005"
+      ],
+      "source_locator": "Binary Stars",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2018",
+      "question": "恆星的殘骸為什麼可能讓旁邊的星變瘦？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.binary_mass_transfer",
+      "answer_target": "研究近距離伴星物質轉移。",
+      "scope": "轉移條件與最後落點須逐系統補查。",
+      "source_ids": [
+        "X2-S005"
+      ],
+      "source_locator": "X-ray Binaries",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2019",
+      "question": "六顆星綁在一起，難道都繞同一個小圈圈？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.hierarchical_multiples",
+      "answer_target": "用雙星再繞雙星的階層架構理解。",
+      "scope": "以 TYC 7037-89-1 示意，不概括所有多星系統。",
+      "source_ids": [
+        "X2-S005"
+      ],
+      "source_locator": "Other Multiples: TYC 7037-89-1",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2020",
+      "question": "黃金的來歷，為什麼會追到兩顆死去恆星的相撞？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.neutron_merger_elements",
+      "answer_target": "追查中子星合併的重元素生成證據。",
+      "scope": "不宣稱地球全部黃金都已確定來自此途徑。",
+      "source_ids": [
+        "X2-S005"
+      ],
+      "source_locator": "Binary Stars",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2021",
+      "question": "宇宙最早的核反應，為什麼沒把元素表一次做完？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.primordial_nucleosynthesis_window",
+      "answer_target": "比較早期反應窗口與膨脹冷卻。",
+      "scope": "細部核反應鏈另找原始來源。",
+      "source_ids": [
+        "X2-S006"
+      ],
+      "source_locator": "Big Bang and Nucleosynthesis",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2022",
+      "question": "宇宙有光，為什麼早期卻像一團看不穿的霧？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.recombination_transparency",
+      "answer_target": "研究自由電子散射減少後的光子脫耦。",
+      "scope": "不把微波背景解釋為原子形成時新放的光。",
+      "source_ids": [
+        "X2-S006"
+      ],
+      "source_locator": "Recombination",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2023",
+      "question": "宇宙已經有原子，為什麼還會有沒有星光的年代？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.dark_ages_timing",
+      "answer_target": "分開原子形成與首批恆星形成。",
+      "scope": "黑暗指缺少恆星光，並非完全沒有任何輻射。",
+      "source_ids": [
+        "X2-S006"
+      ],
+      "source_locator": "Dark Ages",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2024",
+      "question": "第一批星星的光，怎麼改變整片宇宙的氣體？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.reionization",
+      "answer_target": "研究紫外線讓中性氫再電離。",
+      "scope": "時間與來源貢獻仍須依研究更新。",
+      "source_ids": [
+        "X2-S006"
+      ],
+      "source_locator": "Reionization",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2025",
+      "question": "星系外圍的星轉得太快，為什麼會變成缺少質量的線索？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.rotation_missing_mass",
+      "answer_target": "比較運動與可見質量的重力預期。",
+      "scope": "不靠一條旋轉曲線宣稱已辨認暗物質粒子。",
+      "source_ids": [
+        "X2-S007"
+      ],
+      "source_locator": "Discovering Dark Matter",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2026",
+      "question": "看不見的物質，怎麼畫出它可能在哪裡？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.lensing_mass_map",
+      "answer_target": "由背景像形變推回質量分布。",
+      "scope": "分布圖是模型推估，不是暗物質發出藍光。",
+      "source_ids": [
+        "X2-S007"
+      ],
+      "source_locator": "Studying Dark Matter",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2027",
+      "question": "碰撞星系團的熱氣體和主要質量，為什麼能跑到不同位置？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.bullet_cluster_separation",
+      "answer_target": "對照氣體作用與透鏡質量中心。",
+      "scope": "限子彈星系團證據；需補原觀測，勿沿用頁內誤稱 Giant Magellan 的儀器名。",
+      "source_ids": [
+        "X2-S007"
+      ],
+      "source_locator": "Studying Dark Matter: Bullet Cluster",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2028",
+      "question": "暗物質的暗，是躲在陰影裡看不到嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.dark_matter_em_interaction",
+      "answer_target": "分清非發光質量與一般遮光塵埃。",
+      "scope": "只界定觀測性質，實體候選尚未確定。",
+      "source_ids": [
+        "X2-S007"
+      ],
+      "source_locator": "What is Dark Matter?",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2029",
+      "question": "一顆星忽明忽暗的節奏，怎麼變成宇宙的尺？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.cepheid_period_luminosity",
+      "answer_target": "用造父變星週期光度關係校準距離。",
+      "scope": "須補波段、金屬量與校準，不說週期相同必然完全等亮。",
+      "source_ids": [
+        "X2-S008"
+      ],
+      "source_locator": "It All Started With Cepheids",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2030",
+      "question": "超新星比預期暗一點，怎麼牽動宇宙是否加速膨脹？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.supernova_distance_redshift",
+      "answer_target": "比較標準化亮度距離與紅移模型。",
+      "scope": "校準、塵埃等替代因素不可省略。",
+      "source_ids": [
+        "X2-S008"
+      ],
+      "source_locator": "Expansion is Speeding Up, Supernovae Show",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2031",
+      "question": "已經替暗能量取了名字，為什麼仍不知道它是什麼？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.dark_energy_inference",
+      "answer_target": "區分加速膨脹證據與驅動機制假說。",
+      "scope": "不把某個真空能量方案說成已證實。",
+      "source_ids": [
+        "X2-S008"
+      ],
+      "source_locator": "What Exactly is Dark Energy?",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2032",
+      "question": "同一場宇宙爆發，為什麼要同時找光、微中子和重力波？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.multimessenger_constraints",
+      "answer_target": "讓不同信使限制同一事件模型。",
+      "scope": "觀測配對需時間與方位證據，不只湊三張圖。",
+      "source_ids": [
+        "X2-S009"
+      ],
+      "source_locator": "Using All Our Senses in Space",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2033",
+      "question": "微中子大量穿過我們，為什麼卻很難抓到？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.neutrino_rare_interaction",
+      "answer_target": "研究極低交互作用機率與探測尺度。",
+      "scope": "數率依探測器與篩選定義，不照搬單一數字。",
+      "source_ids": [
+        "X2-S009"
+      ],
+      "source_locator": "Neutrinos",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2034",
+      "question": "宇宙射線飛到地球，為什麼不能沿原方向找到老家？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.charged_cosmic_ray_deflection",
+      "answer_target": "追查帶電粒子沿途受磁場偏轉。",
+      "scope": "限定帶電成分與適用能量，不說所有路徑都完全失去資訊。",
+      "source_ids": [
+        "X2-S009"
+      ],
+      "source_locator": "Cosmic rays",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2035",
+      "question": "重力波也有高低音，為什麼一種探測器聽不完？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.gravitational_wave_bands",
+      "answer_target": "比較波長頻率與探測器尺度。",
+      "scope": "聲音只是資料轉譯，不是太空傳來空氣聲。",
+      "source_ids": [
+        "X2-S009"
+      ],
+      "source_locator": "Gravitational Waves",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2036",
+      "question": "大型太空望遠鏡為什麼常用鏡子，不用一整塊巨大透鏡？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.mirror_mass_scaling",
+      "answer_target": "比較大型光學元件的厚重與設計。",
+      "scope": "不是所有太空儀器都採同一結構。",
+      "source_ids": [
+        "X2-S010"
+      ],
+      "source_locator": "Reflecting telescopes",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2037",
+      "question": "韋伯的鏡子為什麼鍍金，其他望遠鏡卻不一定？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.wavelength_coating",
+      "answer_target": "研究目標波段的反射材料選擇。",
+      "scope": "不把金的外觀顏色當成紅外反射原因。",
+      "source_ids": [
+        "X2-S010"
+      ],
+      "source_locator": "Reflecting telescopes",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2038",
+      "question": "X 光望遠鏡為什麼讓光擦著鏡面走，還套一層又一層？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.grazing_incidence_optics",
+      "answer_target": "研究掠入射與巢狀收光設計。",
+      "scope": "不直接套可見光正面反射的示意。",
+      "source_ids": [
+        "X2-S010"
+      ],
+      "source_locator": "Reflecting telescopes",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2039",
+      "question": "伽馬射線不能照一般鏡子，望遠鏡怎麼知道它從哪來？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.gamma_pair_tracking",
+      "answer_target": "由成對粒子的軌跡回推入射方向。",
+      "scope": "限定 Fermi LAT 能區與探測方式。",
+      "source_ids": [
+        "X2-S010"
+      ],
+      "source_locator": "Finding gamma rays",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2040",
+      "question": "伽馬光子的路徑追完後，為什麼還要讓它的產物停下來？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.gamma_calorimetry",
+      "answer_target": "區分追跡器定向與量能器測能。",
+      "scope": "同片相接段落；非把定向換句話另算。",
+      "source_ids": [
+        "X2-S010"
+      ],
+      "source_locator": "Finding gamma rays",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2041",
+      "question": "黑洞旁明明是一個盤，影像裡怎麼像翹到上下兩邊？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.disk_lensing_geometry",
+      "answer_target": "研究背面光路彎曲形成表觀隆起。",
+      "scope": "需標明視角與模型條件。",
+      "source_ids": [
+        "X2-S011"
+      ],
+      "source_locator": "Accretion Disk",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2042",
+      "question": "黑洞影像中央的黑圈，就是事件視界的尺寸嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.shadow_capture_geometry",
+      "answer_target": "分開光子捕獲陰影與事件視界。",
+      "scope": "比例依模型與自旋，不能固定說恰好兩倍。",
+      "source_ids": [
+        "X2-S011"
+      ],
+      "source_locator": "Event Horizon Shadow",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2043",
+      "question": "黑洞旁一圈圈細光環，是好幾個物質圓環嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.photon_subrings",
+      "answer_target": "辨認多繞行光路形成的影像。",
+      "scope": "模擬可見不等於現有影像逐圈解析。",
+      "source_ids": [
+        "X2-S011"
+      ],
+      "source_locator": "Photon Sphere",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2044",
+      "question": "黑洞旁的盤，為什麼一邊看起來比另一邊亮？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.relativistic_beaming",
+      "answer_target": "研究相對論性運動對亮度的影響。",
+      "scope": "與單純聲音變高低分開；噴流不另拆重複題。",
+      "source_ids": [
+        "X2-S011"
+      ],
+      "source_locator": "Doppler Beaming; Particle Jets",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2045",
+      "question": "黑洞吸得進去又噴得出來，是物質逃出事件視界嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.jet_external_origin",
+      "answer_target": "追查外部吸積環境與噴流。",
+      "scope": "具體形成機制仍研究中，不畫成洞內物質逃出。",
+      "source_ids": [
+        "X2-S011"
+      ],
+      "source_locator": "Particle Jets",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2046",
+      "question": "方程式算出黑洞中心無限密度，就等於真的看見了嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.singularity_theory_limit",
+      "answer_target": "區分理論奇點與已觀測結構。",
+      "scope": "保留量子重力與理論適用限制。",
+      "source_ids": [
+        "X2-S011"
+      ],
+      "source_locator": "Singularity",
+      "premise_status": "screened",
+      "notes": "原創研究入口；來源支持短摘要，非完整答案查核。進稿補觀測原報告、誤差與替代解釋；示意圖與資料圖須分開，不複製來源圖文。"
+    },
+    {
+      "id": "X2047",
+      "question": "不飛到星星旁邊，怎麼靠換個位置量出它有多遠？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.stellar_parallax",
+      "answer_target": "用已知觀測基線與視差角定距。",
+      "scope": "不照搬概覽的全體星數與精度；誤差隨亮度等條件。",
+      "source_ids": [
+        "X2-S012"
+      ],
+      "source_locator": "Parallax",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2048",
+      "question": "星星自己在移動，怎麼不把它的位移全算成距離？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.proper_motion_parallax_separation",
+      "answer_target": "用重複週期與長期運動分量共同擬合。",
+      "scope": "簡單線性模型的時間與單星前提須說清。",
+      "source_ids": [
+        "X2-S012"
+      ],
+      "source_locator": "Proper motion",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2049",
+      "question": "星星在照片上動得慢，就代表它在太空中跑得慢嗎？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.angular_transverse_speed",
+      "answer_target": "把角速度連同距離轉成橫向速度。",
+      "scope": "不能只按視覺位移排行真實速度。",
+      "source_ids": [
+        "X2-S012"
+      ],
+      "source_locator": "Proper motion",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2050",
+      "question": "看完星星在天空的移動方向，為什麼還缺一塊速度拼圖？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.three_dimensional_velocity",
+      "answer_target": "加入光譜徑向速度補足視線分量。",
+      "scope": "需校正觀測平台運動與參考系。",
+      "source_ids": [
+        "X2-S012"
+      ],
+      "source_locator": "Radial Velocity",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2051",
+      "question": "星光彩虹裡缺了幾條線，怎麼變成辨認材料的線索？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.stellar_absorption_lines",
+      "answer_target": "辨認特定波長吸收留下的光譜訊號。",
+      "scope": "需溫度、電離和模型，不能一條線包辦成分。",
+      "source_ids": [
+        "X2-S012"
+      ],
+      "source_locator": "Spectroscopy",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2052",
+      "question": "兩顆星看起來一樣亮，為什麼仍不知道誰真的更會發光？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.intrinsic_apparent_brightness",
+      "answer_target": "以距離和觀測光量區分本質光度。",
+      "scope": "消光等修正須補，不只比較相機像素。",
+      "source_ids": [
+        "X2-S012"
+      ],
+      "source_locator": "Photometry",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2053",
+      "question": "星星外面的亮圈一直變大，為什麼不一定是物質正在飛出去？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.light_echo_illumination",
+      "answer_target": "區分依序照亮的原有塵埃與物質膨脹。",
+      "scope": "限定光回聲；不採頁內互相衝突的發熱概括。",
+      "source_ids": [
+        "X2-S013"
+      ],
+      "source_locator": "Expanding Light Echo of V838 Monocerotis",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2054",
+      "question": "中心的星被塵埃遮住，怎麼靠周圍反光找出它在哪？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.scattering_polarization_locator",
+      "answer_target": "由偏振方向與散射幾何推定照明來源。",
+      "scope": "不沿用文章對偏振平面的簡化方向；進稿補散射原理與觀測論文。",
+      "source_ids": [
+        "X2-S014"
+      ],
+      "source_locator": "Polarization paragraph",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2055",
+      "question": "照片上有五個很像的星系，怎麼可能其實只有一個？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.strong_lens_multiple_images",
+      "answer_target": "追查強透鏡的多光路成像。",
+      "scope": "需光譜、形態與模型配對；不是每組相似照片都同源。",
+      "source_ids": [
+        "X2-S015"
+      ],
+      "source_locator": "0024+1654",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2056",
+      "question": "同一場超新星爆發，怎麼能預告明年會再看見一次？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.lens_time_delay",
+      "answer_target": "不同彎曲光路到達時間不同。",
+      "scope": "是同一事件重現影像，非星星再爆一次；預測帶模型誤差。",
+      "source_ids": [
+        "X2-S015"
+      ],
+      "source_locator": "Refsdal",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2057",
+      "question": "單獨一顆白矮星沒有伴星，怎麼還能用光替它秤重？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.astrometric_microlensing",
+      "answer_target": "量背景星表觀位置偏移約束前景質量。",
+      "scope": "天體測量微透鏡的質量推斷案例；與既有 N068 合併保留觀測條件，不宣稱獨立的新重力原理。",
+      "source_ids": [
+        "X2-S015"
+      ],
+      "source_locator": "LAWD 37; Stein 2051 B",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2058",
+      "question": "量到兩個類星體影像差幾天，為什麼還不能立刻算出宇宙膨脹率？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.time_delay_mass_model",
+      "answer_target": "時間延遲要與透鏡質量分布模型一起解。",
+      "scope": "歷史專案介紹，不宣稱頁面的精度與最新結果仍為現況。",
+      "source_ids": [
+        "X2-S016"
+      ],
+      "source_locator": "About the project",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2059",
+      "question": "追一顆忽明忽暗的天體，為什麼長期常拍比偶爾拍很清楚更重要？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.light_curve_sampling",
+      "answer_target": "比較取樣時序與混合光源分離的限制。",
+      "scope": "限時間延遲測量，非所有天文任務的通則。",
+      "source_ids": [
+        "X2-S016"
+      ],
+      "source_locator": "Welcome: sampling and blended sources",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2060",
+      "question": "一群老星星裡，為什麼混著看起來特別年輕的星？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.blue_straggler_rejuvenation",
+      "answer_target": "研究物質轉移或合併改變恆星質量與燃料。",
+      "scope": "限藍掉隊星；明亮偏藍不等於重新形成於最近。",
+      "source_ids": [
+        "X2-S017"
+      ],
+      "source_locator": "Binary evolution interpretation",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    },
+    {
+      "id": "X2061",
+      "question": "星星更擁擠的地方，為什麼某些雙星產物反而比較少？",
+      "domain": "宇宙與觀測",
+      "mechanism_key": "astro.binary_environment_survival",
+      "answer_target": "比較近遇破壞雙星與產物形成機會。",
+      "scope": "2026樣本結果，不推成所有星團唯一規則。",
+      "source_ids": [
+        "X2-S017"
+      ],
+      "source_locator": "Density and binary survival",
+      "premise_status": "screened",
+      "notes": "原創研究入口；資料推論的假設、誤差與原研究仍需逐主張查核。不搬用來源圖表，示意圖不冒充觀測。"
+    }
+  ],
+  "not_added": [
+    {
+      "question": "每一種星系名稱各做一支固定長片",
+      "reason": "分類清單沒有足夠追問；僅留能比較觀測限制的段落。"
+    },
+    {
+      "question": "太陽和仙女座未來必定在固定日期相撞",
+      "reason": "來源概覽的預測表述不宜直接當最新結論，且本題前提混淆太陽與銀河；未收入。"
+    },
+    {
+      "question": "HD 131399 是已確定的三合星行星案例",
+      "reason": "概覽頁的例子未提供當期狀態，避免以未刷新命名案例立題。"
+    },
+    {
+      "question": "微波背景就是第一批原子形成時新產生的光",
+      "reason": "頁內簡化容易造成錯誤機制；保留光子散射與脫耦問題，逐主張須補專門來源。"
+    },
+    {
+      "question": "所有黑洞都在自轉而且已量到內部奇點",
+      "reason": "概括與可觀測性不符，不能用標題式敘述取代條件。"
+    }
+  ]
+}

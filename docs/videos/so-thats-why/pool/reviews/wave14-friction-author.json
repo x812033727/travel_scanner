@@ -1,0 +1,573 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCK_PENDING_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "4b9f8cb7",
+    "pool_sha256": "1b07b2ca7a656dda15d51d70dab863f2c78b592bdaab8ca0d39010b8f3295c6b",
+    "raw": 3262,
+    "selected": 2897,
+    "not_added": 646
+  },
+  "written_files": [
+    {
+      "file": "batches/wave14-friction.json",
+      "sha256": "1249e65192ee760a1ccb7723467acb345518a196dc2ed2d2068663cdd90418f7"
+    },
+    {
+      "file": "reviews/wave14-friction-themes.json",
+      "sha256": "6eea783126a9d928852fa53df0d67364cb887584e2a53eae4f87d383af8a0189"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "not_added": 22,
+    "themes": 4
+  },
+  "scope": "9個摩擦/接觸/磨耗條件對照；研究裝置與微尺度結果不泛化所有鞋、橡膠或刀具。不是維修/剃刮/化學製作指南。",
+  "dedup_reading": {
+    "method": "對全3262 raw的問題/答案/範圍/機制與646退題全文欄位作廣義及補充關鍵詞搜尋；逐讀84主要命中及17退題、19追加命中及4退題，再讀孔彈/磨合補充命中及23近對完整舊問答範圍。不是人工逐題讀完3262題，沒有宣稱全庫零漏。",
+    "cache_files": [
+      ".cache/wave14-physics-old-friction.json",
+      ".cache/wave14-physics-specific-old.json"
+    ],
+    "limitations": "共同語意top5待root提供並由非作者比對；本作者不宣稱完成獨立查核。"
+  },
+  "near_pairs": [
+    {
+      "a": "F14001",
+      "b": "P005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "靜/動摩擦背景不能回答溫度同時促進成鍵與斷鍵造成的量測反向。"
+    },
+    {
+      "a": "F14001",
+      "b": "F8006",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "休息史相似，但此為乾式奈米接觸化學成鍵/斷鍵量測，不是懸浮體結構觸變。"
+    },
+    {
+      "a": "F14001",
+      "b": "H3090",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "接點化學老化與測量破壞混合，不是固定形變的聚合物應力鬆弛。"
+    },
+    {
+      "a": "F14002",
+      "b": "N116",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "局部脫離/再黏回波運送位移，新增空間分區與標記控制；不是一般儲能釋放。"
+    },
+    {
+      "a": "F14002",
+      "b": "P005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "不以靜動係數差回答；大部界面仍黏著，只有波過境才位移。"
+    },
+    {
+      "a": "F14002",
+      "b": "K11002",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "局部皺起是成核背景，但題目新增黏著界面波與位移傳遞，不是自由帶簧打折。"
+    },
+    {
+      "a": "F14003",
+      "b": "LEG-S87",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "相同石墨層間的相對晶格匹配控制，不是石墨/鑽石鍵結結構比較。"
+    },
+    {
+      "a": "F14003",
+      "b": "J6002",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "精密定位的摩擦爬升未給出同片旋轉時原子排列的阻力改變。"
+    },
+    {
+      "a": "F14004",
+      "b": "H3060",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "近似風險最高：同樣能量/裂長門檻，但本題限定滑動黏著接點，競爭塑性抹平與成屑，不能只把臨界尺寸重述；交非作者判斷。"
+    },
+    {
+      "a": "F14004",
+      "b": "D2189",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "切屑黏回刀面是背景；新題比較接點塑性與斷裂形成新磨屑。"
+    },
+    {
+      "a": "F14005",
+      "b": "J6009",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "新增軟壁受流體壓力變形破壞前後對稱而自生升力，不只是既有收斂硬間隙的油膜。"
+    },
+    {
+      "a": "F14005",
+      "b": "F14006",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "前者界面外油膜與軟壁耦合，後者凝膠內排水/孔隙壓力；來源明估外部EHL不足，不能當同一液膜換名稱。"
+    },
+    {
+      "a": "F14006",
+      "b": "H3090",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "時間競爭來自孔隙水輸運而非聚合物黏彈重排；研究估後者在該頻域小。"
+    },
+    {
+      "a": "F14006",
+      "b": "J6009",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "速度峰只是外觀；內部排水時間與接觸缺邊模型不同於外部油膜帶入。"
+    },
+    {
+      "a": "F14007",
+      "b": "F14004",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "磨屑誕生臨界尺度已明確不重算；保留掉屑後聚集/再沉積與初始平/粗方向對照。"
+    },
+    {
+      "a": "F14007",
+      "b": "D2189",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "第三體地形演化非刀面積屑瘤一項現象；若最後只剩「屑會黏回」則應合併。"
+    },
+    {
+      "a": "F14008",
+      "b": "P310",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "超音波頻率定義不能回答環境氣壓控制、平均擠壓承載與殘餘彈跳。"
+    },
+    {
+      "a": "F14008",
+      "b": "P311",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "空氣膜承載非液體空穴崩潰清洗；不以超音波同詞合併。"
+    },
+    {
+      "a": "F14008",
+      "b": "J6009",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "法向快速擠壓的空氣平均承載與低壓對照，不是切向運動帶油入固定楔隙。"
+    },
+    {
+      "a": "F14008",
+      "b": "F14005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "兩種承載均有流體，但一為超音波擠壓/空氣可壓縮性，另一為壁面變形造不對稱。"
+    },
+    {
+      "a": "F14009",
+      "b": "P041",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "針尖集中應力不足以解釋較軟材料使硬刃在特定面外力/微結構組合下崩口。"
+    },
+    {
+      "a": "F14009",
+      "b": "H3060",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "一般既有裂痕門檻未包含毛髮彎曲、局部材料對比及接觸位置三控制；仍留近對供嚴判。"
+    },
+    {
+      "a": "F14009",
+      "b": "F14004",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "前者特定刃口混合載荷與材料異質性，不是兩黏著凸點大小造成的磨屑競爭。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "F14-S001",
+      "url": "https://jlupub.ub.uni-giessen.de/server/api/core/bitstreams/616d2c43-608e-48a6-b719-93ee3c972693/content",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-aging.pdf",
+      "cache_sha256": "387d183430412fde73f9ab536f351a8bc61615fbf3d5597089ec9293dafb2a2f",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–7主文與Appendix A/B；p.4曾受工具輸出截斷，已單獨重讀。另渲染p.3 Fig.1。未讀pp.8–10全部。",
+      "limitations": "乾燥SiO2奈米接點與所測溫區；小力接觸剛性是另一觀測量，複雜鍵網絡不能直接用單鍵彈簧算鍵數；模擬時間與實驗時間不同。"
+    },
+    {
+      "source_id": "F14-S002",
+      "url": "https://arxiv.org/pdf/1405.4953",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-wave.pdf",
+      "cache_sha256": "eb78247b0f1084e0cb66b43b293010a9b8ecf896af7fd44ad9385495f2af6a8b",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.4–9裝置與局部脫離波觀察、pp.15–16結論及影像追蹤方法、pp.21–22 Figs.4–6圖說；p.22另渲染讀圖。未讀全24頁或觀看原影片。",
+      "limitations": "限定彈性體/玻璃透鏡黏著接觸；成核與傳播採不同接觸幾何。位錯只是類比，不能畫成晶體缺陷或整塊橡膠同時滑動。"
+    },
+    {
+      "source_id": "F14-S003",
+      "url": "https://arxiv.org/pdf/1104.3320",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-retract.pdf",
+      "cache_sha256": "3ebbc7402b73073cd4ed4381ffabee3b0071f6cff3a1352c12216594fb7b6a9e",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–6主文、pp.8–11 Figs.1–4圖說；p.9 Fig.2另渲染讀圖。未看補充影片。",
+      "limitations": "微製作石墨/SiO2頂片與石墨平台；不稱所有石墨零摩擦，也不把較大片失效的石牆結構模型當已完整證實。"
+    },
+    {
+      "source_id": "F14-S004",
+      "url": "https://www.nature.com/articles/ncomms11816.pdf",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-wear.pdf",
+      "cache_sha256": "cdfb1ed21a30b8a392087aa56a9cbac9ff5f94e22d6530323f99a32753473219",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.2–5：Results、Analytical model、Transition in adhesive wear mechanisms、Discussion；p.4 Fig.3另渲染讀圖。未讀pp.6–8全部方法/文獻或補充資料。",
+      "limitations": "採原子模擬/能量模型，不是所有金屬或磨料通用閾值。Fig.3是不同勢能材料的比較，不能偽稱是只改大小的實驗照片。"
+    },
+    {
+      "source_id": "F14-S005",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2016-12.pdf",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-softlift.pdf",
+      "cache_sha256": "39a4ce3d8501047466b212ecfad4cbc757bb1cee33783cf5736faaa6517917df",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–3全部主文及Figs.1–3圖說；p.2曾截斷，已單獨重讀並渲染看Fig.1/2。未讀SI或看Movies。",
+      "limitations": "只在所測圓柱/油浴/傾斜塗層條件；小變形理論不涵蓋非常軟的非線性，不稱越軟一定越滑。"
+    },
+    {
+      "source_id": "F14-S006",
+      "url": "https://arxiv.org/pdf/1807.07502",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-hydrogel.pdf",
+      "cache_sha256": "57216fff24a0cc6cf9c82511860e93fb501072b551fbba99ee7dfec52e68a449",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–6、8–11：裝置/Results、模型假設、Discussion/Conclusion及Appendix A/B；p.4 Fig.4/5另渲染讀圖。未讀p.7或pp.12–13全部推導。",
+      "limitations": "限薄PDMA膜/玻璃球且浸水。外部水膜潤滑量級被判很小；模型不能直接精確算全部摩擦，也不解釋最高速的全部形狀回升，不外推人體關節。"
+    },
+    {
+      "source_id": "F14-S007",
+      "url": "https://arxiv.org/pdf/2011.10774",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-thirdbody.pdf",
+      "cache_sha256": "e1aad8eebf2376798f27877bc2e4904f383a66d8a45c615bfb9c71d448271d38",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–2、4–9：裝置、磨屑形成/聚集、§3.3與結論；p.7 Fig.7/8另渲染讀圖。未讀p.3全部原子模型或pp.10–12。",
+      "limitations": "限同材料乾式球盤與固定載荷/速度；粗糙度是離線抽樣，虛線不是連續量測。共同最終值的完整原因仍未解，不能宣稱所有材料都磨成同粗糙度。"
+    },
+    {
+      "source_id": "F14-S008",
+      "url": "https://mwiertlewski.github.io/pdf/pub/2017-RFF-MW-MP-EC-WHC.pdf",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-ultraair.pdf",
+      "cache_sha256": "d8dddbbbabd7a2874defbbb861fc84a84562a94abaf5fae2f46cde7c7f8c6536",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–6正文、模型、方法、Figs.4–6、Discussion/Conclusion；p.5另渲染讀圖。作者出版目錄另web.open核身份。",
+      "limitations": "人工指腹非真人。摩擦由馬達電流估計且有效載荷範圍窄；稿p.4一處電流方向文字與摘要/結果矛盾，採後者一致方向，不拿該句下結論。模型百分比非實測百分比。"
+    },
+    {
+      "source_id": "F14-S009",
+      "url": "https://fisherp.mit.edu/wp-content/uploads/2020/08/689.full_.pdf",
+      "status": 200,
+      "cache_file": ".cache/wave14-physics-razor.pdf",
+      "cache_sha256": "391f6cfb68ec924bc89a1d697801d3163253686213943d1368971fa7aaa39c08",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–6（原刊689–694）：主文、Figs.1–4、結論與DOI；p.3 Fig.2另渲染讀圖。未讀另附補充方法或看Movies。",
+      "limitations": "限所測麻田散鐵鋼刃口；乾式SEM加速試驗與濕式中斷觀察需分開。不是每次斜切必崩，也不是一般所有刀具唯一失效方式，不提供剃刮操作。"
+    }
+  ],
+  "source_identity": {
+    "rule": "一個研究的預印本、正式版、大學/作者副本不算多份獨立證據；每題目前一份直接研究，沒有第二份實驗確認的暗示。",
+    "adopted_access_urls": 9,
+    "work_records": [
+      {
+        "source_id": "F14-S001",
+        "access_url": "https://jlupub.ub.uni-giessen.de/server/api/core/bitstreams/616d2c43-608e-48a6-b719-93ee3c972693/content",
+        "old_pool_exact_url_or_title_matches": [],
+        "work_doi": "10.1103/PhysRevX.9.041045",
+        "repository_doi": "10.22029/jlupub-9186",
+        "relation": "期刊排版在大學圖書館的副本，兩DOI非兩研究。"
+      },
+      {
+        "source_id": "F14-S002",
+        "access_url": "https://arxiv.org/pdf/1405.4953",
+        "old_pool_exact_url_or_title_matches": [],
+        "arxiv_version": "1405.4953v3",
+        "work_doi": "10.1103/PhysRevE.91.012408",
+        "relation": "預印本與期刊關聯為同研究；本輪實讀arXiv稿。"
+      },
+      {
+        "source_id": "F14-S003",
+        "access_url": "https://arxiv.org/pdf/1104.3320",
+        "old_pool_exact_url_or_title_matches": [],
+        "arxiv_version": "1104.3320v1",
+        "work_doi": "10.1103/PhysRevLett.108.205503",
+        "relation": "本輪讀預印本，關聯期刊不是第二證據；Delft 2004另一研究正文取得失敗，未用來補強。"
+      },
+      {
+        "source_id": "F14-S004",
+        "access_url": "https://www.nature.com/articles/ncomms11816.pdf",
+        "old_pool_exact_url_or_title_matches": [],
+        "work_doi": "10.1038/ncomms11816",
+        "relation": "出版社PDF；cookie重導後仍為有效8頁PDF，不把重導URL當另一來源。"
+      },
+      {
+        "source_id": "F14-S005",
+        "access_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2016-12.pdf",
+        "old_pool_exact_url_or_title_matches": [],
+        "work_doi": "10.1073/pnas.1525462113",
+        "related_preprint": "https://arxiv.org/abs/1601.03063",
+        "relation": "Harvard Early Edition與arXiv/期刊同一研究，2019下載目錄不是發表年。"
+      },
+      {
+        "source_id": "F14-S006",
+        "access_url": "https://arxiv.org/pdf/1807.07502",
+        "old_pool_exact_url_or_title_matches": [],
+        "arxiv_version": "1807.07502v1",
+        "work_doi": "10.1021/acs.langmuir.8b01466",
+        "relation": "arXiv與Langmuir同研究，非兩個支持來源。"
+      },
+      {
+        "source_id": "F14-S007",
+        "access_url": "https://arxiv.org/pdf/2011.10774",
+        "old_pool_exact_url_or_title_matches": [],
+        "arxiv_version": "2011.10774v2",
+        "work_doi": "10.1016/j.wear.2021.203648",
+        "relation": "作者稿與Wear同研究；其中臨界磨屑尺度承接S004，不把該部分重算新核心。"
+      },
+      {
+        "source_id": "F14-S008",
+        "access_url": "https://mwiertlewski.github.io/pdf/pub/2017-RFF-MW-MP-EC-WHC.pdf",
+        "old_pool_exact_url_or_title_matches": [],
+        "author_publications": "https://mwiertlewski.github.io/publications/",
+        "publisher_record": "https://ieeexplore.ieee.org/document/7989955/",
+        "relation": "公開作者稿與會議記錄同工作；正文有未解析引用，不宣稱已比對出版社定稿。2016 PNAS研究未成功取正文，未列獨立補強。"
+      },
+      {
+        "source_id": "F14-S009",
+        "access_url": "https://fisherp.mit.edu/wp-content/uploads/2020/08/689.full_.pdf",
+        "old_pool_exact_url_or_title_matches": [],
+        "work_doi": "10.1126/science.aba9490",
+        "relation": "MIT存放原刊排版副本，同一研究；不是另讀一則新聞便成獨立證據。"
+      }
+    ],
+    "old_pool_check": "exact URL/title 作者先查；DOI別名/正規化由root續查，未因此把未取得版本當已讀。"
+  },
+  "retrieval_failures": [
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5776957/fullTextXML",
+      "route": "urllib指定UA",
+      "result": "HTTP Error 500: ",
+      "adopted_as_body": false
+    },
+    {
+      "url": "https://repository.tudelft.nl/file/File_0d8206a5-1b1c-40e8-855e-f3b882e63c6c",
+      "route": "urllib指定UA",
+      "result": "<urlopen error [WinError 10060] 連線嘗試失敗，因為連線對象有一段時間並未正確回應，或是連線建立失敗，因為連線的主機無法回應。>",
+      "adopted_as_body": false
+    },
+    {
+      "url": "https://www.pnas.org/content/pnas/115/3/471.full.pdf",
+      "route": "urllib指定UA",
+      "result": "HTTP Error 403: Forbidden",
+      "adopted_as_body": false
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4995990/fullTextXML",
+      "route": "urllib指定UA",
+      "result": "HTTP Error 500: ",
+      "adopted_as_body": false
+    },
+    {
+      "url": "https://ieeexplore.ieee.org/document/7989955/",
+      "route": "web.open via author publication link",
+      "result": "JavaScript/robot verification page, not body",
+      "adopted_as_body": false
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5776957/",
+      "route": "web.open",
+      "result": "verification page, not body",
+      "adopted_as_body": false
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave14-physics-aging-p3.png",
+      "sha256": "d5dc9eed2bad90a22b82c4585ebb6b85e96a082446bb0507ba2606bb7b600b01"
+    },
+    {
+      "file": ".cache/wave14-physics-wave-p22.png",
+      "sha256": "d21ee4e33b1da07ce16113367545b1f55f8367a68d3d50a1f0b11aaf313a72b5"
+    },
+    {
+      "file": ".cache/wave14-physics-retract-p9.png",
+      "sha256": "5a435c66b629f30ee5998ee84d2136540c91fe7a0948d1b9048ce199a5923111"
+    },
+    {
+      "file": ".cache/wave14-physics-wear-p4.png",
+      "sha256": "6cf3c290581da4c6631268da6e82364211dc77a7c019bc53acf51522646ebf13"
+    },
+    {
+      "file": ".cache/wave14-physics-softlift-p2.png",
+      "sha256": "f6bbb0beab47d50007e15b4b87a94f189d4467575cd6b546ae1715a7a252c8a7"
+    },
+    {
+      "file": ".cache/wave14-physics-hydrogel-p4.png",
+      "sha256": "ea64995e81613e3a678417e77a334d604bffab7e22228565f1fc751272835027"
+    },
+    {
+      "file": ".cache/wave14-physics-thirdbody-p7.png",
+      "sha256": "2cd5da12d8e3a5f4f7492048f3166123d3be5c81eb3fbc928bb6141269e9c911"
+    },
+    {
+      "file": ".cache/wave14-physics-ultraair-p5.png",
+      "sha256": "e841531d122ca26f592473ffbb517725996bac2277af1e79e781215b5b457492"
+    },
+    {
+      "file": ".cache/wave14-physics-razor-p3.png",
+      "sha256": "2282701ab7a5eb375bc93934dbb6cf03a1c80a0848f075089096dd80fb1a6270"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W14F-T01",
+      "body_seconds": 105,
+      "per_core_seconds": {
+        "F14003": 105
+      },
+      "cap_by_core": {
+        "F14003": 115
+      },
+      "max_beat_seconds": 30,
+      "opening_recap_included": true,
+      "read_aloud": false
+    },
+    {
+      "id": "W14F-T02",
+      "body_seconds": 105,
+      "per_core_seconds": {
+        "F14002": 105
+      },
+      "cap_by_core": {
+        "F14002": 115
+      },
+      "max_beat_seconds": 30,
+      "opening_recap_included": true,
+      "read_aloud": false
+    },
+    {
+      "id": "W14F-T03",
+      "body_seconds": 110,
+      "per_core_seconds": {
+        "F14008": 110
+      },
+      "cap_by_core": {
+        "F14008": 125
+      },
+      "max_beat_seconds": 35,
+      "opening_recap_included": true,
+      "read_aloud": false
+    },
+    {
+      "id": "W14F-T04",
+      "body_seconds": 125,
+      "per_core_seconds": {
+        "F14009": 125
+      },
+      "cap_by_core": {
+        "F14009": 140
+      },
+      "max_beat_seconds": 35,
+      "opening_recap_included": true,
+      "read_aloud": false
+    }
+  ],
+  "validation": {
+    "json": true,
+    "utf8_lf": true,
+    "unique_candidate_ids": true,
+    "source_ids_resolve": true,
+    "beat_cap_45": true,
+    "same_core_cumulative_caps": true,
+    "range_upper_not_above_body": true,
+    "opening_recap_included": true,
+    "read_aloud": false,
+    "media_produced": false
+  },
+  "unresolved": [
+    "F14004/H3060的核心邊界需非作者嚴判；不能只靠臨界尺度另計。",
+    "F14007的完整共同粗糙度收斂原因未解，題目只採有證據的相反演化及第三體作用。",
+    "本批沒有付費圖像/影片或素材使用授權，僅原創研究提問；進稿需重新逐句核圖/核來源。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-01",
+      "requested_by": "root non-author editorial read",
+      "change": "W14F-T04 core_question 移除「沒有磨過硬鋼」可能暗示沒有磨耗的表述，只問研究中的早期局部崩口；不改候選、來源、章節或125秒。",
+      "before_sha256": {
+        "batch": "1249e65192ee760a1ccb7723467acb345518a196dc2ed2d2068663cdd90418f7",
+        "themes": "6eea783126a9d928852fa53df0d67364cb887584e2a53eae4f87d383af8a0189",
+        "author": "f9e004cfcad10e3824a8dcf409c67e00b0f2647ccc85fce8caefda49d6158430"
+      },
+      "old_core_question": "較軟的毛髮沒有磨過硬鋼，刃口究竟怎麼先受傷？",
+      "new_core_question": "較軟的毛髮，為什麼能讓更硬的鋼刃先出現局部崩口？",
+      "after_themes_sha256": "6571127b334388a03cc2fb5501892e391fca036f7bc81a9b67276110216e3b56",
+      "batch_unchanged": true
+    },
+    {
+      "date": "2026-11-02",
+      "requested_by": "root staged whitespace check",
+      "change_type": "format-only",
+      "change": "檢查9筆candidate.notes並rstrip尾端空白；實際8筆各移除1個尾空格，F14007原無尾空白而未變。修正生成THEMES.md尾空格，其他欄位、來源、題案、章節與秒數皆不變。",
+      "before_files": [
+        {
+          "file": "batches/wave14-friction.json",
+          "sha256": "1249e65192ee760a1ccb7723467acb345518a196dc2ed2d2068663cdd90418f7"
+        },
+        {
+          "file": "reviews/wave14-friction-author.json",
+          "sha256": "7e78ffaf2f769f0c203ec2ac41f08336be0ddb250b5e7547f7c46a73d26f8f18"
+        },
+        {
+          "file": "reviews/wave14-friction-themes.json",
+          "sha256": "6571127b334388a03cc2fb5501892e391fca036f7bc81a9b67276110216e3b56"
+        }
+      ],
+      "before_batch_copy": {
+        "file": ".cache/wave14-friction-before-whitespace.json",
+        "sha256": "1249e65192ee760a1ccb7723467acb345518a196dc2ed2d2068663cdd90418f7"
+      },
+      "checked_candidate_count": 9,
+      "changed_notes": [
+        {
+          "id": "F14001",
+          "removed_trailing_characters": 1
+        },
+        {
+          "id": "F14002",
+          "removed_trailing_characters": 1
+        },
+        {
+          "id": "F14003",
+          "removed_trailing_characters": 1
+        },
+        {
+          "id": "F14004",
+          "removed_trailing_characters": 1
+        },
+        {
+          "id": "F14005",
+          "removed_trailing_characters": 1
+        },
+        {
+          "id": "F14006",
+          "removed_trailing_characters": 1
+        },
+        {
+          "id": "F14008",
+          "removed_trailing_characters": 1
+        },
+        {
+          "id": "F14009",
+          "removed_trailing_characters": 1
+        }
+      ],
+      "after_batch_sha256": "e597071b1f486cca9860fe1ffb8bd55d2ea38c452305c3ff14613777008023ab",
+      "themes_unchanged_sha256": "6571127b334388a03cc2fb5501892e391fca036f7bc81a9b67276110216e3b56",
+      "readback": "Parsed-object comparison passes after rstrip(notes) only; independent reviewer to bind formatting delta."
+    }
+  ]
+}

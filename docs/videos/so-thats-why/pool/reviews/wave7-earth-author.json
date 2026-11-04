@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave7-earth-20261101",
+  "files": [
+    {
+      "path": "batches/wave7-earth.json",
+      "sha256": "94a61a554df789eff70234a8713f1f5bb98d4d81b0ba21fd58070b28fcd5b299"
+    },
+    {
+      "path": "reviews/wave7-earth-themes.json",
+      "sha256": "dd9077a59a9eebfabc44d0583da6dfaee897172358d0a204d4179763ab482666"
+    }
+  ],
+  "encoding": "UTF-8 without BOM; LF; exact byte hashes",
+  "counts": {
+    "candidates": 22,
+    "sources": 21,
+    "candidate_referenced_sources": 21,
+    "not_added": 11,
+    "theme_proposals": 3
+  },
+  "candidate_ids": [
+    "E7001",
+    "E7002",
+    "E7003",
+    "E7004",
+    "E7005",
+    "E7006",
+    "E7007",
+    "E7008",
+    "E7009",
+    "E7010",
+    "E7011",
+    "E7012",
+    "E7013",
+    "E7014",
+    "E7015",
+    "E7016",
+    "E7017",
+    "E7018",
+    "E7019",
+    "E7020",
+    "E7021",
+    "E7022"
+  ],
+  "baseline": {
+    "path": "pool.json",
+    "sha256": "07a5ca7d6ad3aa5d0fdfe51d3315e663fd927a2e88cb7459a271ef5752c19b50",
+    "raw_records": 2959,
+    "selected": 2609,
+    "method": "對全部2959 raw（含別名列）的question/answer_target/scope/mechanism_key做中英詞檢索；逐讀主要123列相關結果，另讀精準邊界11列。早期更廣檢索輸出截斷，未宣稱該批全讀；非全庫外部事實再查核。"
+  },
+  "source_reading": {
+    "method": "21來源逐一閱讀所列指定正文；原創短摘要與問題，不複製教材練習、圖像或全文。",
+    "source_ids": [
+      "E7-S001",
+      "E7-S002",
+      "E7-S003",
+      "E7-S004",
+      "E7-S005",
+      "E7-S006",
+      "E7-S007",
+      "E7-S008",
+      "E7-S009",
+      "E7-S010",
+      "E7-S011",
+      "E7-S012",
+      "E7-S013",
+      "E7-S014",
+      "E7-S015",
+      "E7-S016",
+      "E7-S017",
+      "E7-S018",
+      "E7-S019",
+      "E7-S020",
+      "E7-S021"
+    ],
+    "access_limits": [
+      "USGS granite/eolian/terrace web回403，ordinary HTTP成功；HTML用標準HTMLParser，PDF用PyMuPDF，原檔僅在忽略.cache。",
+      "SIR2010–5028只採印刷p6、p8–9指定機制；未核整份年代/採樣/統計，不能宣稱原研究再現。",
+      "BCcampus2019讀指定正文與圖說，未採練習、麵粉比喻或全部熔體必富矽的概括。",
+      "NPS舊Flash頁未播模組；WHOI currently、USGS1997統計及歷史現況未沿用。",
+      "錯誤猜測的NPS pillow-lavas網址不可讀；最終用已搜尋核實pillow-basalts正文。Paradise Valley頁只有圖像未採；National Academies補讀部分後timeout未登記為候選來源。",
+      "Desert Museum岩皮形成明示未明，題目列not_added；沒有為25–35範圍補弱題。"
+    ]
+  },
+  "recommended_central_dispositions": [],
+  "boundary_pairs": [
+    {
+      "ids": [
+        "E7001",
+        "N233",
+        "D2191"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "一次冷卻前緣向內傳及柱方向，非循環熱損傷或鑄造尺寸補償。"
+    },
+    {
+      "ids": [
+        "E7002",
+        "N204",
+        "N234",
+        "N235"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "原地球狀化學風化，非搬運磨圓/鹽或冰裂。"
+    },
+    {
+      "ids": [
+        "E7003",
+        "N214",
+        "N235"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "帶岩屑接觸磨削及拔取，非冰流動原因或靜態冰裂。"
+    },
+    {
+      "ids": [
+        "E7005",
+        "N215"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "邊界題：新增碎屑持續供給形成脊；如果敘事只剩末端位置不等於流速，應合回N215；題組不使用。"
+    },
+    {
+      "ids": [
+        "E7006",
+        "N238",
+        "N239",
+        "N229"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "埋冰先占空間後融失，非既有空洞頂板失穩或冰核生長。"
+    },
+    {
+      "ids": [
+        "E7007",
+        "N236"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "側蝕/內岸增生移動曲流，非輸沙失衡的辮狀分流。"
+    },
+    {
+      "ids": [
+        "E7008",
+        "E7021"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "前者積高改相對水勢，後者重分集水區後雙河收支；後者發生可含avulsion，不能重複敘述觸發過程。"
+    },
+    {
+      "ids": [
+        "E7009",
+        "E7012",
+        "N132"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "耐蝕填谷倒置、重新下切留階、岩層新舊排序分別不同。"
+    },
+    {
+      "ids": [
+        "E7010",
+        "E7022"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "前者指定風塵加入/細土增厚，後者去細留粗；都保留條件限制，不憑表面定成因。"
+    },
+    {
+      "ids": [
+        "E7013",
+        "P234"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "主核減壓跨固相線，水助熔僅比較，避免把舊溶質改相變拆新題。"
+    },
+    {
+      "ids": [
+        "E7014",
+        "N125",
+        "N272"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "礦物選擇結晶且移離熔體改配比，非晶粒大小或金屬/岩石密度分異。"
+    },
+    {
+      "ids": [
+        "E7015",
+        "P233"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "溶氣釋出是舊前提；新的排氣受阻/碎裂耦合須保留。"
+    },
+    {
+      "ids": [
+        "E7016",
+        "N082",
+        "N238"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "流動通道排空，非溶蝕或塌洞。"
+    },
+    {
+      "ids": [
+        "E7017",
+        "P073"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "新增冷卻表殼變形/破碎與搬運，不只重述流體速度梯度。"
+    },
+    {
+      "ids": [
+        "E7018",
+        "N132"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "記錄中止或刪除形成缺口，不只上下新舊關係。"
+    },
+    {
+      "ids": [
+        "E7019",
+        "N117"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "斷層彎折使區域水平位移變成局部壓伸，不只分類。"
+    },
+    {
+      "ids": [
+        "E7020",
+        "N126",
+        "E7016"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "急冷玻璃是前提；持續充填與破皮生成新枕，和排空相反。"
+    }
+  ],
+  "editorial_checks": [
+    {
+      "theme_id": "W7E-T01",
+      "seconds": 240,
+      "core_totals": {
+        "E7003": 95,
+        "E7004": 80,
+        "E7006": 65
+      },
+      "max_beat_gap": 45
+    },
+    {
+      "theme_id": "W7E-T02",
+      "seconds": 275,
+      "core_totals": {
+        "E7007": 90,
+        "E7008": 95,
+        "E7012": 90
+      },
+      "max_beat_gap": 40
+    },
+    {
+      "theme_id": "W7E-T03",
+      "seconds": 260,
+      "core_totals": {
+        "E7017": 90,
+        "E7016": 85,
+        "E7020": 85
+      },
+      "max_beat_gap": 35
+    }
+  ],
+  "checks_run": [
+    "作者本機讀JSON、ID唯一、source引用存在、題組總秒數、逐核心cap、beats不超45秒、UTF8 LF驗證；非repo tests、非獨立內容/來源核准。"
+  ],
+  "limits": [
+    "22題只到screened，沒有完整旁白事實核准。",
+    "E7022來源為定義性條目，只夠50–75秒短段；不放題組。",
+    "3題組為240/275/260秒未試讀預算，作者先自查，仍需另一代理逐題及來源風險抽查。",
+    "未做付費媒體、正式站寫入、發布、素材授權或製作核准。"
+  ],
+  "lock_revision": "EARTH01_EARTH02_CORRECTED_PENDING_NONAUTHOR_TARGETED_READBACK",
+  "correction_history": [
+    {
+      "review": "reviews/wave7-life-reviews-earth.json",
+      "review_sha256": "ddfb5e5d733cd4451121af1065d1cd9e5cdc843e01f29d8781e26cd75a2fe123",
+      "finding_ids": [
+        "EARTH01",
+        "EARTH02"
+      ],
+      "pre_correction_hashes": {
+        "batches/wave7-earth.json": "f12d11625ef5576eae4b81b923ddf317a2e94a248fbdf5c867422d56cbd08c5d",
+        "reviews/wave7-earth-author.json": "fb80c22048bbbee6116d9296afb850dcb3170113450be6b4ba68c1c6a41851c2",
+        "reviews/wave7-earth-themes.json": "dd9077a59a9eebfabc44d0583da6dfaee897172358d0a204d4179763ab482666"
+      },
+      "post_correction_batch_sha256": "94a61a554df789eff70234a8713f1f5bb98d4d81b0ba21fd58070b28fcd5b299",
+      "unchanged_themes_sha256": "dd9077a59a9eebfabc44d0583da6dfaee897172358d0a204d4179763ab482666",
+      "changes": [
+        "E7-S013 locator與E7014 source_locator圖號3.13改3.3.6；作者再次開第二版正文L393–396確認。",
+        "D2191比較描述由鑄件縮孔更正為鑄造尺寸補償；已讀舊raw，未改舊資料。"
+      ],
+      "unchanged": "22題機制/題目/範圍/預算、21來源URL/摘要/實讀範圍，以及240/275/260秒三題組均未變。"
+    }
+  ]
+}

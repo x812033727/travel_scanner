@@ -1,0 +1,971 @@
+{
+  "status": "DATA_READBACK_PASS_PENDING_DOCS_TESTS_QA",
+  "counts": {
+    "raw_records": 3345,
+    "canonical_questions": 3206,
+    "eligible_candidates": 3036,
+    "selected_candidates": 2977,
+    "alias_records": 139,
+    "historical_records": 313,
+    "source_urls": 4298,
+    "current_research_source_urls": 1339,
+    "selected_source_urls": 2523,
+    "new_suggestions_not_added": 896,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "selected_source_references": 4393,
+  "theme_count": 199,
+  "baseline": {
+    "file": "baselines/2026-11-02-2959.json.gz",
+    "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f",
+    "old_raw_deep_equal": 3326,
+    "old_canonical_deep_equal": 3186,
+    "old_selected_retained": 2958,
+    "old_sources_and_all_readings_deep_equal": 4278,
+    "old_not_added_multiset_retained": 835,
+    "old_alias_mappings_unchanged": 3325,
+    "old_themes_deep_equal": 185,
+    "P131_preserved_as_alias_and_variant": true,
+    "P129_changed_fields": [
+      "aliases",
+      "question_variants",
+      "provenance_ids"
+    ],
+    "P129_old_source_refs_unchanged_and_P131_source_preserved": true
+  },
+  "new_candidate_mapping": [
+    {
+      "id": "B17001",
+      "origin": "wave17-animal-control-20261102",
+      "source_ids": [
+        "SRC-f94c07154cf14378"
+      ],
+      "selected": true
+    },
+    {
+      "id": "B17002",
+      "origin": "wave17-animal-control-20261102",
+      "source_ids": [
+        "SRC-f926cc74eabcb7bb"
+      ],
+      "selected": true
+    },
+    {
+      "id": "B17003",
+      "origin": "wave17-animal-control-20261102",
+      "source_ids": [
+        "SRC-60d3844e7a66a77d"
+      ],
+      "selected": true
+    },
+    {
+      "id": "B17004",
+      "origin": "wave17-animal-control-20261102",
+      "source_ids": [
+        "SRC-ad1ea8d837eb18fb"
+      ],
+      "selected": true
+    },
+    {
+      "id": "B17005",
+      "origin": "wave17-animal-control-20261102",
+      "source_ids": [
+        "SRC-f3b96db5a2b8e7af"
+      ],
+      "selected": true
+    },
+    {
+      "id": "B17006",
+      "origin": "wave17-animal-control-20261102",
+      "source_ids": [
+        "SRC-1047e72f7d885bde"
+      ],
+      "selected": true
+    },
+    {
+      "id": "F17001",
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_ids": [
+        "SRC-7b2bb91bed897432"
+      ],
+      "selected": true
+    },
+    {
+      "id": "F17002",
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_ids": [
+        "SRC-dc650047e8729781"
+      ],
+      "selected": true
+    },
+    {
+      "id": "F17003",
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_ids": [
+        "SRC-11174ff433fcb818"
+      ],
+      "selected": true
+    },
+    {
+      "id": "F17004",
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_ids": [
+        "SRC-221390b4c1baa3d7"
+      ],
+      "selected": true
+    },
+    {
+      "id": "F17005",
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_ids": [
+        "SRC-221390b4c1baa3d7"
+      ],
+      "selected": true
+    },
+    {
+      "id": "F17006",
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_ids": [
+        "SRC-c677dece488e9962"
+      ],
+      "selected": true
+    },
+    {
+      "id": "F17007",
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_ids": [
+        "SRC-f82f085f098513d0"
+      ],
+      "selected": true
+    },
+    {
+      "id": "E17001",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_ids": [
+        "SRC-74b158d86cf3efb9"
+      ],
+      "selected": true
+    },
+    {
+      "id": "E17002",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_ids": [
+        "SRC-32412a65352f92e2"
+      ],
+      "selected": true
+    },
+    {
+      "id": "E17003",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_ids": [
+        "SRC-b9a41ab4f71d0d29"
+      ],
+      "selected": true
+    },
+    {
+      "id": "E17004",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_ids": [
+        "SRC-227c27fa9f3c975a"
+      ],
+      "selected": true
+    },
+    {
+      "id": "E17005",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_ids": [
+        "SRC-b670fe25a1a3827a"
+      ],
+      "selected": true
+    },
+    {
+      "id": "E17006",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_ids": [
+        "SRC-2ca1085c924c82b0"
+      ],
+      "selected": true
+    }
+  ],
+  "new_source_mapping": [
+    {
+      "batch_source_id": "B17-S001",
+      "source_id": "SRC-f94c07154cf14378",
+      "url": "https://doi.org/10.1038/s41586-024-07157-x",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "B17001"
+      ],
+      "theme_ids": [
+        "G186"
+      ]
+    },
+    {
+      "batch_source_id": "B17-S002",
+      "source_id": "SRC-f926cc74eabcb7bb",
+      "url": "https://doi.org/10.1073/pnas.1522419113",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "B17002"
+      ],
+      "theme_ids": [
+        "G187"
+      ]
+    },
+    {
+      "batch_source_id": "B17-S003",
+      "source_id": "SRC-60d3844e7a66a77d",
+      "url": "https://doi.org/10.1016/j.cub.2008.07.094",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "B17003"
+      ],
+      "theme_ids": []
+    },
+    {
+      "batch_source_id": "B17-S004",
+      "source_id": "SRC-ad1ea8d837eb18fb",
+      "url": "https://doi.org/10.1073/pnas.0905183106",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "B17004"
+      ],
+      "theme_ids": []
+    },
+    {
+      "batch_source_id": "B17-S005",
+      "source_id": "SRC-f3b96db5a2b8e7af",
+      "url": "https://doi.org/10.1126/science.1128727",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "B17005"
+      ],
+      "theme_ids": [
+        "G188"
+      ]
+    },
+    {
+      "batch_source_id": "B17-S006",
+      "source_id": "SRC-1047e72f7d885bde",
+      "url": "https://doi.org/10.7554/eLife.99634.3",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "B17006"
+      ],
+      "theme_ids": [
+        "G189"
+      ]
+    },
+    {
+      "batch_source_id": "F17-S001",
+      "source_id": "SRC-7b2bb91bed897432",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "F17001"
+      ],
+      "theme_ids": [
+        "G190"
+      ]
+    },
+    {
+      "batch_source_id": "F17-S002",
+      "source_id": "SRC-dc650047e8729781",
+      "url": "https://arxiv.org/pdf/2302.06010",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "F17002"
+      ],
+      "theme_ids": [
+        "G191"
+      ]
+    },
+    {
+      "batch_source_id": "F17-S003",
+      "source_id": "SRC-11174ff433fcb818",
+      "url": "https://arxiv.org/pdf/nlin/0104052",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "F17003"
+      ],
+      "theme_ids": []
+    },
+    {
+      "batch_source_id": "F17-S004",
+      "source_id": "SRC-221390b4c1baa3d7",
+      "url": "https://arxiv.org/pdf/2003.04777",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "F17005",
+        "F17004"
+      ],
+      "theme_ids": [
+        "G192"
+      ]
+    },
+    {
+      "batch_source_id": "F17-S005",
+      "source_id": "SRC-c677dece488e9962",
+      "url": "https://arxiv.org/pdf/0910.3306",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "F17006"
+      ],
+      "theme_ids": [
+        "G193"
+      ]
+    },
+    {
+      "batch_source_id": "F17-S006",
+      "source_id": "SRC-f82f085f098513d0",
+      "url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "F17007"
+      ],
+      "theme_ids": [
+        "G194"
+      ]
+    },
+    {
+      "batch_source_id": "E17-S001",
+      "source_id": "SRC-74b158d86cf3efb9",
+      "url": "https://arxiv.org/pdf/1902.03600",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "E17001"
+      ],
+      "theme_ids": [
+        "G195"
+      ]
+    },
+    {
+      "batch_source_id": "E17-S002",
+      "source_id": "SRC-32412a65352f92e2",
+      "url": "https://tc.copernicus.org/articles/16/2617/2022/tc-16-2617-2022.pdf",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "E17002"
+      ],
+      "theme_ids": [
+        "G196"
+      ]
+    },
+    {
+      "batch_source_id": "E17-S003",
+      "source_id": "SRC-b9a41ab4f71d0d29",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8501789/",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "E17003"
+      ],
+      "theme_ids": [
+        "G196"
+      ]
+    },
+    {
+      "batch_source_id": "E17-S004",
+      "source_id": "SRC-227c27fa9f3c975a",
+      "url": "https://arxiv.org/pdf/physics/0601184",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "E17004"
+      ],
+      "theme_ids": [
+        "G197"
+      ]
+    },
+    {
+      "batch_source_id": "E17-S005",
+      "source_id": "SRC-b670fe25a1a3827a",
+      "url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "E17005"
+      ],
+      "theme_ids": [
+        "G198"
+      ]
+    },
+    {
+      "batch_source_id": "E17-S006",
+      "source_id": "SRC-2ca1085c924c82b0",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0105948&type=printable",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [
+        "E17006"
+      ],
+      "theme_ids": [
+        "G199"
+      ]
+    },
+    {
+      "batch_source_id": "E17-S007",
+      "source_id": "SRC-d6ceaefb4b6fb675",
+      "url": "https://orbi.uliege.be/bitstream/2268/195696/1/PhysRevE.93.033112.pdf",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [],
+      "theme_ids": []
+    },
+    {
+      "batch_source_id": "E17-S008",
+      "source_id": "SRC-1321a55a62ea0dc1",
+      "url": "https://link.springer.com/article/10.1007/s10652-023-09912-6",
+      "all_reading_fields_preserved": true,
+      "candidate_ids": [],
+      "theme_ids": []
+    }
+  ],
+  "new_not_added_exact_mapping": 61,
+  "new_theme_mapping": [
+    {
+      "id": "G186",
+      "proposal_id": "W17B-T01",
+      "seconds": 130,
+      "chapter_seconds": [
+        60,
+        70
+      ],
+      "core_totals": {
+        "B17001": 130
+      },
+      "caps": {
+        "B17001": 135
+      },
+      "drop_if": "任一章刪除分別剩70或60秒，缺物理條件或來源辨別，撤此雙章案；若時間窗畫不清，不加電魚百科補時。"
+    },
+    {
+      "id": "G187",
+      "proposal_id": "W17B-T02",
+      "seconds": 120,
+      "chapter_seconds": [
+        55,
+        65
+      ],
+      "core_totals": {
+        "B17002": 120
+      },
+      "caps": {
+        "B17002": 125
+      },
+      "drop_if": "去任一章剩65或55秒，缺衝突條件或預測檢驗，撤雙章案；若只能做單純正負箭頭而無時延/強弱界線，暫不進稿。"
+    },
+    {
+      "id": "G188",
+      "proposal_id": "W17B-T03",
+      "seconds": 120,
+      "chapter_seconds": [
+        55,
+        65
+      ],
+      "core_totals": {
+        "B17005": 120
+      },
+      "caps": {
+        "B17005": 135
+      },
+      "drop_if": "若只剩成人餵幼獸畫面，撤案；去任一章剩65或55秒，分別缺線索原因或練習後果，撤雙章案。"
+    },
+    {
+      "id": "G189",
+      "proposal_id": "W17B-T04",
+      "seconds": 130,
+      "chapter_seconds": [
+        55,
+        75
+      ],
+      "core_totals": {
+        "B17006": 130
+      },
+      "caps": {
+        "B17006": 155
+      },
+      "drop_if": "刪任一章剩75或55秒，失去學習背景或雙規則辨別，撤雙章案；若形狀/軌跡/餵食位置三者畫不清，縮成素材段，不加其他射水能力。"
+    },
+    {
+      "id": "G190",
+      "proposal_id": "W17F-T01",
+      "seconds": 100,
+      "chapter_seconds": [
+        55,
+        45
+      ],
+      "core_totals": {
+        "F17001": 100
+      },
+      "caps": {
+        "F17001": 115
+      },
+      "drop_if": "任刪一章只剩45/55秒，失去本案的觀察/控制鏈，撤100秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+    },
+    {
+      "id": "G191",
+      "proposal_id": "W17F-T02",
+      "seconds": 105,
+      "chapter_seconds": [
+        55,
+        50
+      ],
+      "core_totals": {
+        "F17002": 105
+      },
+      "caps": {
+        "F17002": 120
+      },
+      "drop_if": "任刪一章只剩50/55秒，失去本案的觀察/控制鏈，撤105秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+    },
+    {
+      "id": "G192",
+      "proposal_id": "W17F-T03",
+      "seconds": 110,
+      "chapter_seconds": [
+        60,
+        50
+      ],
+      "core_totals": {
+        "F17005": 110
+      },
+      "caps": {
+        "F17005": 125
+      },
+      "drop_if": "任刪一章只剩50/60秒，失去本案的觀察/控制鏈，撤110秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+    },
+    {
+      "id": "G193",
+      "proposal_id": "W17F-T04",
+      "seconds": 90,
+      "chapter_seconds": [
+        55,
+        35
+      ],
+      "core_totals": {
+        "F17006": 90
+      },
+      "caps": {
+        "F17006": 110
+      },
+      "drop_if": "任刪一章只剩35/55秒，失去本案的觀察/控制鏈，撤90秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+    },
+    {
+      "id": "G194",
+      "proposal_id": "W17F-T05",
+      "seconds": 105,
+      "chapter_seconds": [
+        55,
+        50
+      ],
+      "core_totals": {
+        "F17007": 105
+      },
+      "caps": {
+        "F17007": 115
+      },
+      "drop_if": "任刪一章只剩50/55秒，失去本案的觀察/控制鏈，撤105秒案，不補回顧；若所述兩路圖解無法正確呈現，也撤案。"
+    },
+    {
+      "id": "G195",
+      "proposal_id": "W17E-T01",
+      "seconds": 120,
+      "chapter_seconds": [
+        60,
+        60
+      ],
+      "core_totals": {
+        "E17001": 120
+      },
+      "caps": {
+        "E17001": 130
+      },
+      "drop_if": "任刪一章只剩60秒且缺表面/地下因果連接，撤120秒案，不加入全球鹽湖名單。"
+    },
+    {
+      "id": "G196",
+      "proposal_id": "W17E-T02",
+      "seconds": 185,
+      "chapter_seconds": [
+        90,
+        95
+      ],
+      "core_totals": {
+        "E17002": 90,
+        "E17003": 95
+      },
+      "caps": {
+        "E17002": 110,
+        "E17003": 110
+      },
+      "drop_if": "若升華研究無法清楚區分自然/凍乾/模型，刪第二章後只剩90秒一章，撤本案並重新提兩章版本，不沿185秒補景觀。任刪首章也撤此對照案。"
+    },
+    {
+      "id": "G197",
+      "proposal_id": "W17E-T03",
+      "seconds": 115,
+      "chapter_seconds": [
+        65,
+        50
+      ],
+      "core_totals": {
+        "E17004": 115
+      },
+      "caps": {
+        "E17004": 120
+      },
+      "drop_if": "任刪一章即失去形成/後期轉換對照，撤115秒案；不靠極地景觀補時。"
+    },
+    {
+      "id": "G198",
+      "proposal_id": "W17E-T04",
+      "seconds": 110,
+      "chapter_seconds": [
+        65,
+        45
+      ],
+      "core_totals": {
+        "E17005": 110
+      },
+      "caps": {
+        "E17005": 115
+      },
+      "drop_if": "若無法呈現頂端下降與尖度增加，撤110秒案；任刪一章不補天然石林照片拉長。"
+    },
+    {
+      "id": "G199",
+      "proposal_id": "W17E-T05",
+      "seconds": 125,
+      "chapter_seconds": [
+        65,
+        60
+      ],
+      "core_totals": {
+        "E17006": 125
+      },
+      "caps": {
+        "E17006": 130
+      },
+      "drop_if": "任刪一章只剩65或60秒，撤125秒案，不加外星/超自然故事或未觀測巨石數據。"
+    }
+  ],
+  "new_theme_budget_checks": {
+    "themes": 14,
+    "chapters": 28,
+    "theme_core_totals": 15,
+    "max_beat": 40
+  },
+  "review_bindings": [
+    {
+      "file": "reviews/wave17-physics-reviews-animal-control.json",
+      "sha256": "8c3c4d58b73a0818717a99dcadb778bb2f90ed92855ae0e3135ad515aae1914e",
+      "status": "PASS_TOPIC_LEVEL_ONLY",
+      "candidate_ids": [
+        "B17001",
+        "B17002",
+        "B17003",
+        "B17004",
+        "B17005",
+        "B17006"
+      ],
+      "all_final_author_bindings_match": true
+    },
+    {
+      "file": "reviews/wave17-science-reviews-fluid-interfaces.json",
+      "sha256": "16db638c6798677451864bd09a70d1c25e35a50ef802d4737853a6f7496390ea",
+      "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+      "candidate_ids": [
+        "F17001",
+        "F17002",
+        "F17003",
+        "F17004",
+        "F17005",
+        "F17006",
+        "F17007"
+      ],
+      "all_final_author_bindings_match": true
+    },
+    {
+      "file": "reviews/wave17-life-reviews-earth-patterns.json",
+      "sha256": "24ecfa68e38fb1ce6fb9b25fcdb844f4aef735b971331981ddf7c861a85bddeb",
+      "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+      "candidate_ids": [
+        "E17001",
+        "E17002",
+        "E17003",
+        "E17004",
+        "E17005",
+        "E17006"
+      ],
+      "all_final_author_bindings_match": true
+    }
+  ],
+  "checkpoint_readback": [
+    {
+      "file": "baseline.json",
+      "snapshot_file": "baselines/2026-11-01-1000.json.gz",
+      "sha256": "6cf3b0f5a7e37546d3c53806b94376f68f2a5cf16b1510d5ca64ef06ee9ac7fd",
+      "selected_count": 1000,
+      "raw_count": 1224,
+      "declared_retired_ids": [
+        "L042",
+        "L177",
+        "L293",
+        "P131",
+        "P150"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "snapshot_file": "baselines/2026-11-01-2000.json.gz",
+      "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4",
+      "selected_count": 2000,
+      "raw_count": 2293,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "E2106",
+        "L042",
+        "L177",
+        "L293",
+        "P131",
+        "P150"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2328.json",
+      "snapshot_file": "baselines/2026-11-01-2328.json.gz",
+      "sha256": "9d7797c33af00a97a606ce9564f29ff61ee65f4fc2b71fbd825d8d12166ca1ba",
+      "selected_count": 2328,
+      "raw_count": 2661,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2449.json",
+      "snapshot_file": "baselines/2026-11-01-2449.json.gz",
+      "sha256": "e98b96cad65be24cdc59bfc1d9f60f311040a7987e04a7b008fab08778063bb2",
+      "selected_count": 2449,
+      "raw_count": 2790,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2546.json",
+      "snapshot_file": "baselines/2026-11-01-2546.json.gz",
+      "sha256": "a5ac94d34e3476765f5642b218ba8eef0efdf75565cf830322d2c327c928dad4",
+      "selected_count": 2546,
+      "raw_count": 2895,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2609.json",
+      "snapshot_file": "baselines/2026-11-01-2609.json.gz",
+      "sha256": "06f9fdec324c8e0f6fabd22805eed413fbf5e3f109473e595ec1e2228ab150f1",
+      "selected_count": 2609,
+      "raw_count": 2959,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2667.json",
+      "snapshot_file": "baselines/2026-11-01-2667.json.gz",
+      "sha256": "873552fb2bb3891413ab8b8b5134a139e670b04fd2a54dfc33c0614ee7ea4e4c",
+      "selected_count": 2667,
+      "raw_count": 3017,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2711.json",
+      "snapshot_file": "baselines/2026-11-01-2711.json.gz",
+      "sha256": "035074191cbf98fe87426589b6f746a90934e1087a65271e4cdd9b03784da217",
+      "selected_count": 2711,
+      "raw_count": 3069,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2757.json",
+      "snapshot_file": "baselines/2026-11-01-2757.json.gz",
+      "sha256": "92c8527689b44740352d8698bfe38be5e46b42c7a299878309501245c992ac0d",
+      "selected_count": 2757,
+      "raw_count": 3115,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2797.json",
+      "snapshot_file": "baselines/2026-11-01-2797.json.gz",
+      "sha256": "3fe88554de1e8947fcb8e3890302b5bd35d2848fdd43e7c779296e68f6969e2b",
+      "selected_count": 2797,
+      "raw_count": 3160,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2837.json",
+      "snapshot_file": "baselines/2026-11-01-2837.json.gz",
+      "sha256": "6c1a9c8c29d0b8bb540de430e6f98646ab48bcf07e89d1d7bf1e8cd21117c0fd",
+      "selected_count": 2837,
+      "raw_count": 3201,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2870.json",
+      "snapshot_file": "baselines/2026-11-01-2870.json.gz",
+      "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32",
+      "selected_count": 2870,
+      "raw_count": 3235,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2897.json",
+      "snapshot_file": "baselines/2026-11-01-2897.json.gz",
+      "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0",
+      "selected_count": 2897,
+      "raw_count": 3262,
+      "declared_retired_ids": [
+        "E2026",
+        "E2049",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2921.json",
+      "snapshot_file": "baselines/2026-11-02-2921.json.gz",
+      "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7",
+      "selected_count": 2921,
+      "raw_count": 3287,
+      "declared_retired_ids": [
+        "E2026",
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2939.json",
+      "snapshot_file": "baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222",
+      "selected_count": 2939,
+      "raw_count": 3306,
+      "declared_retired_ids": [
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    },
+    {
+      "file": "checkpoint-2959.json",
+      "snapshot_file": "baselines/2026-11-02-2959.json.gz",
+      "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f",
+      "selected_count": 2959,
+      "raw_count": 3326,
+      "declared_retired_ids": [
+        "P131"
+      ],
+      "readback_scope": "gzip hash、metadata/count、選入集合及宣告處置；除2959快照外未全raw逐欄深比。"
+    }
+  ],
+  "old_pair_integration": {
+    "distinct": [
+      {
+        "a": "D9014",
+        "b": "D9016",
+        "reason": "一題改探頭間距，衡量梯度近似與固定相位失配的相對誤差；另一題保持感測器、改近場聲源位置，產生真實前後幅度差。儀器偏差與聲場響應的控制變量不同。"
+      },
+      {
+        "a": "E2083",
+        "b": "E2169",
+        "reason": "並聯題固定電壓而新增路徑；輸電題固定功率而提高電壓，並比較線阻損耗。不能因都含電流/電壓而合併。"
+      },
+      {
+        "a": "E2002",
+        "b": "H3036",
+        "reason": "中性導體受外場時重新分布電子，對照的是化學活度不同的電極系統產生電位差；前者不需要兩室化學梯度，後者不能用靜電感應當完整答案。"
+      },
+      {
+        "a": "E2161",
+        "b": "E2255",
+        "reason": "交流電容回答電路兩側為何有充放電電流；類比開關題另有控制端到訊號端的寄生耦合及負載電容，解釋開關瞬間輸出步階。多出的路徑與負載條件改變解答，不只是換電容名稱。"
+      },
+      {
+        "a": "L138",
+        "b": "L143",
+        "reason": "吸氣的壓力驅動和最大呼氣後仍留氣的容量定義，回答不同問題；不能合成同一壓差機制。但 L143 現答案尚未解釋殘氣形成的力學，僅宜作容量比較短段，不是獨立影片厚度核准。"
+      }
+    ],
+    "merges": [
+      {
+        "duplicate_id": "P131",
+        "canonical_id": "P129",
+        "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。"
+      }
+    ],
+    "exclusions": 0,
+    "central_all_decisions_match": true,
+    "source_review_limit": "本次只核舊列/來源保留與收據綁定；先前root十一段/science五段指定閱讀範圍不擴張成全舊庫查核。"
+  },
+  "source_identity_readback": {
+    "rows": 20,
+    "first_urls": 20,
+    "all_author_disclosures_bound": true,
+    "root_metadata_failures_preserved": true,
+    "NA_only_source_ids": [
+      "E17-S007",
+      "E17-S008"
+    ],
+    "limits": "Root checked the stated identities and author disclosures. This is not a full bibliography semantic-equivalence audit or a new independent full-text fact check. Candidate factual scope is controlled by the three non-author topic review receipts. No script, image rights, experimental replication or production approval."
+  },
+  "integrity": {
+    "manifest_input_files": 318,
+    "manifest_rendered_file_hashes": 6,
+    "theme_definition_sha_match": true,
+    "embedded_selected_records": 2977,
+    "embedded_source_objects": 2523,
+    "embedded_theme_objects": 199,
+    "header_date": "2026-11-01 remains fixed initial-pool date; not current-data freshness evidence."
+  }
+}

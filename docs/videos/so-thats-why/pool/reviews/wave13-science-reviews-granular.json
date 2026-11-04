@@ -1,0 +1,1163 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "author": "pool_physics",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "reviewed_candidate_ids": [
+    "G13001",
+    "G13002",
+    "G13003",
+    "G13004",
+    "G13005",
+    "G13006",
+    "G13007",
+    "G13008",
+    "G13009"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave13-granular.json",
+      "sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1"
+    },
+    {
+      "file": "reviews/wave13-granular-themes.json",
+      "sha256": "b50806e3a30b71063fd0a2e485669c5b115e5dda3b3948d062bb33f973fc5c7b"
+    },
+    {
+      "file": "reviews/wave13-granular-author.json",
+      "sha256": "d89f547bd7104d2ee0c2b520a65c94bb4a30ff381eec256f38394ee68f92c4db"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave13-granular.json",
+      "sha256": "7498f814bd7415227f7ed81291794c3344478b7ce12cdc18ba9f89a968ebca49"
+    },
+    {
+      "file": "reviews/wave13-granular-themes.json",
+      "sha256": "b50806e3a30b71063fd0a2e485669c5b115e5dda3b3948d062bb33f973fc5c7b"
+    },
+    {
+      "file": "reviews/wave13-granular-author.json",
+      "sha256": "ce16967a56ba2825a3c3b06c400c70739299b95ffe9c20335d667fb5c63dc913"
+    }
+  ],
+  "scope": {
+    "candidates_full_fields_read": 9,
+    "not_added_read": 16,
+    "author_boundary_pairs_read": 25,
+    "retrieval_rows_read": 9,
+    "retrieval_pairs_read": 45,
+    "independent_primary_body_sources": 9,
+    "not_added_only_sources_not_reopened": [
+      "G13-S010",
+      "G13-S011"
+    ],
+    "not_claimed": "未重查全庫外站、未逐句腳本查核、未看補充影片、未重做量測/數值實驗、未試讀、未跑repo tests或核准製作。"
+  },
+  "retrieval_readback": {
+    "initial": {
+      "file": ".cache/wave13-granular-neighbours.json",
+      "sha256": "ff3e15f154abaa6c6aea325d18cd906383ad080c9740551f07befab276114fc8",
+      "draft_sha256": "0a3ab60418d672805118925b9a66fe3537a2678f67b016b9a9ab354c32bc2340",
+      "rows": 9,
+      "pairs": 45,
+      "comparison": "逐題讀全部問題/目標/範圍並比較近鄰，不以cosine決定合併。"
+    },
+    "final_delta_status": "PASS",
+    "final": {
+      "date": "2026-11-01",
+      "previous_receipt_sha256": "e9a05d53836da27e8a75121bb1178c01c9760d87dbaa6f1ca50f1a0a65844e11",
+      "draft_file": ".cache/draft.json",
+      "draft_sha256": "be7fa317c00ebfa8805d58019733c3eabe159db79d23aa07702cad52b0897941",
+      "semantic_file": ".cache/semantic-wave13-draft.json",
+      "semantic_sha256": "d2db21f361a4a60d6037ad0dcb30cd49d2c6cacee368254c471dd47a5a4ab755",
+      "delta_file": ".cache/wave13-granular-neighbour-delta.json",
+      "delta_sha256": "1e6b78b2887ef3a7e5966873e903a266e58c603a148227acfacd0cbc4ae72fa6",
+      "method": "獨立載入first-draft/final draft/full final semantic；比9題question/answer_target/mechanism_key及全部9×5順序；非只引用root delta結論。",
+      "rows": [
+        {
+          "id": "G13001",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": []
+        },
+        {
+          "id": "G13002",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": []
+        },
+        {
+          "id": "G13003",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": []
+        },
+        {
+          "id": "G13004",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": []
+        },
+        {
+          "id": "G13005",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": [
+            "scope"
+          ]
+        },
+        {
+          "id": "G13006",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": [
+            "source_locator",
+            "source_refs"
+          ]
+        },
+        {
+          "id": "G13007",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": []
+        },
+        {
+          "id": "G13008",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": [
+            "source_locator",
+            "source_refs"
+          ]
+        },
+        {
+          "id": "G13009",
+          "top5_unchanged": true,
+          "question_answer_key_unchanged": true,
+          "raw_changed_fields": []
+        }
+      ],
+      "result": "PASS：9題問答/機制鍵/45近鄰順序均不變；G13005 scope PVC及G13006/08 locator與對應source_refs定位已在定點正文修訂核對。",
+      "note": "wave13-granular-neighbours.json仍是首版包，保留首版SHA與內容，不稱其已重建；最終top5直接核full semantic。"
+    }
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "G13001",
+        "b": "F10003",
+        "reason": "自由圓錐堆比較建堆歷史的空間底壓；Janssen題需筒側壁分擔，移除側壁後舊答案不足。"
+      },
+      {
+        "a": "G13001",
+        "b": "G13004",
+        "reason": "底壓空間分布與等密度後續鬆密反應是不同觀測/控制；歷史依賴一詞不是同核判準。"
+      },
+      {
+        "a": "G13002",
+        "b": "P182",
+        "reason": "顆粒能重排為背景；已壓密顆粒剪切時須額外體積才是新增因果。"
+      },
+      {
+        "a": "G13002",
+        "b": "G13003",
+        "reason": "可膨脹體積與固定填充率的承載建立不是相同邊界；沒有把剪脹當所有卡住的唯一原因。"
+      },
+      {
+        "a": "G13003",
+        "b": "P008",
+        "reason": "單接觸摩擦係數/正向力不能推出固定密度接觸網絡正反歷史差異。"
+      },
+      {
+        "a": "G13003",
+        "b": "F8001",
+        "reason": "精煉改顆粒聚團/表面摩擦；新題固定粒材而改先前剪切及方向。"
+      },
+      {
+        "a": "G13003",
+        "b": "I12002",
+        "reason": "液體跨表面結構浸入能障與摩擦圓盤接觸承載不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "H3090",
+        "reason": "聚合物鬆弛時間並未涵蓋等密度、不同驅動歷史再切相同驅動的配置分布比較。"
+      },
+      {
+        "a": "G13004",
+        "b": "F10006",
+        "reason": "等密度單粒群響應並非大小粒子填隙分選。"
+      },
+      {
+        "a": "G13005",
+        "b": "P076",
+        "reason": "差膨脹為共享驅動，但題目必含冷回同溫的不可逆重排，不能以彈性彎曲回答。"
+      },
+      {
+        "a": "G13005",
+        "b": "P077",
+        "reason": "液面相對容器的可逆熱讀值不包含每輪同溫仍壓密。"
+      },
+      {
+        "a": "G13005",
+        "b": "B4038",
+        "reason": "乾熱邊界驅動與濕潤弱膠結失效不同，未泛化成地基建議。"
+      },
+      {
+        "a": "G13005",
+        "b": "G13004",
+        "reason": "前者指定溫度循環產生剪動，後者在共同後續敲擊下檢驗單一密度狀態描述不足。"
+      },
+      {
+        "a": "G13006",
+        "b": "P013",
+        "reason": "乾粒床的深度項與有限停止控制不是流體阻力尺度替換物件；需要同深度分離速度項。"
+      },
+      {
+        "a": "G13006",
+        "b": "P018",
+        "reason": "改初速及沿路變阻力，並非固定動量延長時間降低平均力。"
+      },
+      {
+        "a": "G13007",
+        "b": "F10006",
+        "reason": "抽低氣壓可改密度依賴及沉降，不是低壓填隙的大小粒分選。"
+      },
+      {
+        "a": "G13007",
+        "b": "F10007",
+        "reason": "大球相對床的位移有孔隙氣壓控制；對流只是可疊加背景。"
+      },
+      {
+        "a": "G13007",
+        "b": "F10008",
+        "reason": "空氣壓差與埋深的兩階段加速度不同於低氣壓隨機動能梯度分選。"
+      },
+      {
+        "a": "G13007",
+        "b": "D2048",
+        "reason": "間歇氣隙開合及球床相對運動不同於持續上吹流化支承。"
+      },
+      {
+        "a": "G13008",
+        "b": "H3091",
+        "reason": "金屬鏈最小迴圈尺度/弱外限壓壓縮增硬對照是新增控制；銀紋抽絲承載不是相同失效路徑。"
+      },
+      {
+        "a": "G13008",
+        "b": "A12004",
+        "reason": "被動鏈長/彎角限制受壓增硬不同於主動螺旋換向決定纏入/解纏。"
+      },
+      {
+        "a": "G13008",
+        "b": "X5007",
+        "reason": "連接件幾何與跨群纏結不同於羊毛鱗片定向摩擦促進氈縮。"
+      },
+      {
+        "a": "G13009",
+        "b": "D2048",
+        "reason": "同粒碰撞動量與耗散支承，不存在持續上吹氣流。"
+      },
+      {
+        "a": "G13009",
+        "b": "F10008",
+        "reason": "同尺寸珠層氣固共存與支承，不是大小粒子沿活動梯度分離。"
+      },
+      {
+        "a": "G13009",
+        "b": "G13007",
+        "reason": "同尺寸珠碰撞支承與單大球在多孔床中的氣壓驅動必須分開，不能串成同一實驗。"
+      },
+      {
+        "a": "G13001",
+        "b": "E11003",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13001",
+        "b": "A12010",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13001",
+        "b": "E7010",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13001",
+        "b": "E11001",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13001",
+        "b": "W5021",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13002",
+        "b": "W5019",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13002",
+        "b": "D2155",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13002",
+        "b": "A12010",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13002",
+        "b": "I12014",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13002",
+        "b": "K11013",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13003",
+        "b": "K11005",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13003",
+        "b": "K11013",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13003",
+        "b": "G13008",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13003",
+        "b": "J6002",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13003",
+        "b": "K11011",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13004",
+        "b": "H3020",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "G13002",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "P245",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "H3078",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "P249",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13005",
+        "b": "P092",
+        "reason": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。"
+      },
+      {
+        "a": "G13005",
+        "b": "D2133",
+        "reason": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。"
+      },
+      {
+        "a": "G13005",
+        "b": "F10015",
+        "reason": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。"
+      },
+      {
+        "a": "G13005",
+        "b": "P176",
+        "reason": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。"
+      },
+      {
+        "a": "G13006",
+        "b": "P016",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13006",
+        "b": "P021",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13006",
+        "b": "P108",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13006",
+        "b": "H3032",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13006",
+        "b": "D2120",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13007",
+        "b": "F10003",
+        "reason": "空氣穿透床層的壓差需床底氣隙/埋深控制；與舊低壓分選、壁分重、蒲公英多孔阻力、伯努力縮管有不同因果。"
+      },
+      {
+        "a": "G13007",
+        "b": "E9001",
+        "reason": "空氣穿透床層的壓差需床底氣隙/埋深控制；與舊低壓分選、壁分重、蒲公英多孔阻力、伯努力縮管有不同因果。"
+      },
+      {
+        "a": "G13007",
+        "b": "P062",
+        "reason": "空氣穿透床層的壓差需床底氣隙/埋深控制；與舊低壓分選、壁分重、蒲公英多孔阻力、伯努力縮管有不同因果。"
+      },
+      {
+        "a": "G13008",
+        "b": "X5001",
+        "reason": "鏈長相對可彎成圈尺度、弱外限壓下增硬是新控制；不同於剪切卡緊、銀紋、捻紗摩擦放大、膠帶剝離或編織脫圈。"
+      },
+      {
+        "a": "G13008",
+        "b": "D2183",
+        "reason": "鏈長相對可彎成圈尺度、弱外限壓下增硬是新控制；不同於剪切卡緊、銀紋、捻紗摩擦放大、膠帶剝離或編織脫圈。"
+      },
+      {
+        "a": "G13008",
+        "b": "X5005",
+        "reason": "鏈長相對可彎成圈尺度、弱外限壓下增硬是新控制；不同於剪切卡緊、銀紋、捻紗摩擦放大、膠帶剝離或編織脫圈。"
+      },
+      {
+        "a": "G13009",
+        "b": "F10006",
+        "reason": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。"
+      },
+      {
+        "a": "G13009",
+        "b": "F10007",
+        "reason": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。"
+      },
+      {
+        "a": "G13009",
+        "b": "J6011",
+        "reason": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。"
+      },
+      {
+        "a": "G13009",
+        "b": "G13008",
+        "reason": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。"
+      }
+    ]
+  },
+  "counts": {
+    "retain": 9,
+    "merge": 0,
+    "excluded": 0,
+    "themes_retained": 4
+  },
+  "rows": [
+    {
+      "id": "G13001",
+      "recommendation": "retain",
+      "semantic_assessment": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。",
+      "editorial_guard": "須保留自由圓錐邊界、局部與總重量區分。",
+      "source_ids": [
+        "G13-S001"
+      ],
+      "source_locator_read": "PDF pp.2–4正文與Fig.2–4圖說；另目讀渲染p.3 Fig.2圓錐堆、p.4 Fig.3–4。",
+      "editorial_seconds": [
+        65,
+        115
+      ],
+      "author_pair_ids": [
+        "F10003",
+        "G13004"
+      ],
+      "top5_compared": [
+        "E11003",
+        "A12010",
+        "E7010",
+        "E11001",
+        "W5021"
+      ]
+    },
+    {
+      "id": "G13002",
+      "recommendation": "retain",
+      "semantic_assessment": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。",
+      "editorial_guard": "MRI只量相對密度；幾何動畫是解釋，不冒充逐粒觀測。",
+      "source_ids": [
+        "G13-S002"
+      ],
+      "source_locator_read": "PDF pp.1–3正文、裝置/MRI/累積應變圖說；未讀p.4。",
+      "editorial_seconds": [
+        50,
+        80
+      ],
+      "author_pair_ids": [
+        "P182",
+        "G13003"
+      ],
+      "top5_compared": [
+        "W5019",
+        "D2155",
+        "A12010",
+        "I12014",
+        "K11013"
+      ]
+    },
+    {
+      "id": "G13003",
+      "recommendation": "retain",
+      "semantic_assessment": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。",
+      "editorial_guard": "反推只對部分歷史退到噪聲以下；不可稱全部接觸消失。",
+      "source_ids": [
+        "G13-S003"
+      ],
+      "source_locator_read": "PDF pp.1–4主文/Experiments/Results/Concluding discussion；另目讀p.2裝置及Fig.2正反剪切。",
+      "editorial_seconds": [
+        70,
+        125
+      ],
+      "author_pair_ids": [
+        "G13002",
+        "P008",
+        "F8001",
+        "I12002"
+      ],
+      "top5_compared": [
+        "K11005",
+        "K11013",
+        "G13008",
+        "J6002",
+        "K11011"
+      ]
+    },
+    {
+      "id": "G13004",
+      "recommendation": "retain",
+      "semantic_assessment": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。",
+      "editorial_guard": "局部配置分布是雙態解釋；留池而非自動獨立長片。",
+      "source_ids": [
+        "G13-S004"
+      ],
+      "source_locator_read": "PDF pp.1–4正文及等密度Fig.2、雙態模型/結論；p.5未讀。",
+      "editorial_seconds": [
+        60,
+        105
+      ],
+      "author_pair_ids": [
+        "G13001",
+        "H3090",
+        "F10006",
+        "G13005"
+      ],
+      "top5_compared": [
+        "H3020",
+        "G13002",
+        "P245",
+        "H3078",
+        "P249"
+      ]
+    },
+    {
+      "id": "G13005",
+      "recommendation": "retain",
+      "semantic_assessment": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。",
+      "editorial_guard": "PVC材料修正後保留；v1預印本且未排除全部途徑，不入本輪題案。",
+      "source_ids": [
+        "G13-S005"
+      ],
+      "source_locator_read": "PDF p.1題名、pp.4–7 §II/III.A、pp.10–11結論、p.16 Fig.3圖說；另渲染目讀p.4材料與p.16曲線；web.open arXiv身份頁L8–27。",
+      "editorial_seconds": [
+        65,
+        110
+      ],
+      "author_pair_ids": [
+        "P076",
+        "P077",
+        "B4038",
+        "G13004"
+      ],
+      "top5_compared": [
+        "P092",
+        "D2133",
+        "F10015",
+        "P076",
+        "P176"
+      ]
+    },
+    {
+      "id": "G13006",
+      "recommendation": "retain",
+      "semantic_assessment": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。",
+      "editorial_guard": "曲線重繪需資料或標模型；不提供落球操作/普適沙土定律。",
+      "source_ids": [
+        "G13-S006"
+      ],
+      "source_locator_read": "PDF pp.1–6主文及Methods開頭、p.10 Figs.1–3圖說；另目讀p.11 Fig.1深度/速度/減速與停止時間。",
+      "editorial_seconds": [
+        70,
+        120
+      ],
+      "author_pair_ids": [
+        "P013",
+        "P018"
+      ],
+      "top5_compared": [
+        "P016",
+        "P021",
+        "P108",
+        "H3032",
+        "D2120"
+      ]
+    },
+    {
+      "id": "G13007",
+      "recommendation": "retain",
+      "semantic_assessment": "空氣穿透床層的壓差需床底氣隙/埋深控制；與舊低壓分選、壁分重、蒲公英多孔阻力、伯努力縮管有不同因果。",
+      "editorial_guard": "已讀原研究排除孤立球Stokes阻力的比較；不稱真空沒有任何分選。",
+      "source_ids": [
+        "G13-S007"
+      ],
+      "source_locator_read": "PDF p.1、p.5 Figs.7–8、pp.8–11 Air drag/§IV及模型限制、p.14結論；未逐讀其餘模擬。",
+      "editorial_seconds": [
+        80,
+        145
+      ],
+      "author_pair_ids": [
+        "F10006",
+        "F10007",
+        "F10008",
+        "D2048",
+        "G13009"
+      ],
+      "top5_compared": [
+        "F10008",
+        "F10003",
+        "E9001",
+        "F10006",
+        "P062"
+      ]
+    },
+    {
+      "id": "G13008",
+      "recommendation": "retain",
+      "semantic_assessment": "鏈長相對可彎成圈尺度、弱外限壓下增硬是新控制；不同於剪切卡緊、銀紋、捻紗摩擦放大、膠帶剝離或編織脫圈。",
+      "editorial_guard": "纏結採虛擬閉合判準，自約束是作者機制；留池不強成片。",
+      "source_ids": [
+        "G13-S008"
+      ],
+      "source_locator_read": "PDF pp.1–4主文及Figs.1–4文字/表1；未看影片。",
+      "editorial_seconds": [
+        60,
+        105
+      ],
+      "author_pair_ids": [
+        "H3091",
+        "A12004",
+        "X5007"
+      ],
+      "top5_compared": [
+        "G13003",
+        "H3091",
+        "X5001",
+        "D2183",
+        "X5005"
+      ]
+    },
+    {
+      "id": "G13009",
+      "recommendation": "retain",
+      "semantic_assessment": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。",
+      "editorial_guard": "少層對照必留；厚層完全氣態化不可畫成已全部實測。",
+      "source_ids": [
+        "G13-S009"
+      ],
+      "source_locator_read": "PDF pp.1–4正文、Figs.1–5圖說/受力與能量方程；另目讀p.2 Figs.2–4。",
+      "editorial_seconds": [
+        70,
+        125
+      ],
+      "author_pair_ids": [
+        "D2048",
+        "F10008",
+        "G13007"
+      ],
+      "top5_compared": [
+        "F10006",
+        "F10008",
+        "F10007",
+        "J6011",
+        "G13008"
+      ]
+    }
+  ],
+  "author_pair_decisions": [
+    {
+      "a": "G13001",
+      "b": "F10003",
+      "decision": "distinct",
+      "reason": "自由圓錐堆比較建堆歷史的空間底壓；Janssen題需筒側壁分擔，移除側壁後舊答案不足。"
+    },
+    {
+      "a": "G13001",
+      "b": "G13004",
+      "decision": "distinct",
+      "reason": "底壓空間分布與等密度後續鬆密反應是不同觀測/控制；歷史依賴一詞不是同核判準。"
+    },
+    {
+      "a": "G13002",
+      "b": "P182",
+      "decision": "distinct",
+      "reason": "顆粒能重排為背景；已壓密顆粒剪切時須額外體積才是新增因果。"
+    },
+    {
+      "a": "G13002",
+      "b": "G13003",
+      "decision": "distinct",
+      "reason": "可膨脹體積與固定填充率的承載建立不是相同邊界；沒有把剪脹當所有卡住的唯一原因。"
+    },
+    {
+      "a": "G13003",
+      "b": "P008",
+      "decision": "distinct",
+      "reason": "單接觸摩擦係數/正向力不能推出固定密度接觸網絡正反歷史差異。"
+    },
+    {
+      "a": "G13003",
+      "b": "F8001",
+      "decision": "distinct",
+      "reason": "精煉改顆粒聚團/表面摩擦；新題固定粒材而改先前剪切及方向。"
+    },
+    {
+      "a": "G13003",
+      "b": "I12002",
+      "decision": "distinct",
+      "reason": "液體跨表面結構浸入能障與摩擦圓盤接觸承載不同。"
+    },
+    {
+      "a": "G13004",
+      "b": "H3090",
+      "decision": "distinct",
+      "reason": "聚合物鬆弛時間並未涵蓋等密度、不同驅動歷史再切相同驅動的配置分布比較。"
+    },
+    {
+      "a": "G13004",
+      "b": "F10006",
+      "decision": "distinct",
+      "reason": "等密度單粒群響應並非大小粒子填隙分選。"
+    },
+    {
+      "a": "G13005",
+      "b": "P076",
+      "decision": "distinct",
+      "reason": "差膨脹為共享驅動，但題目必含冷回同溫的不可逆重排，不能以彈性彎曲回答。"
+    },
+    {
+      "a": "G13005",
+      "b": "P077",
+      "decision": "distinct",
+      "reason": "液面相對容器的可逆熱讀值不包含每輪同溫仍壓密。"
+    },
+    {
+      "a": "G13005",
+      "b": "B4038",
+      "decision": "distinct",
+      "reason": "乾熱邊界驅動與濕潤弱膠結失效不同，未泛化成地基建議。"
+    },
+    {
+      "a": "G13005",
+      "b": "G13004",
+      "decision": "distinct",
+      "reason": "前者指定溫度循環產生剪動，後者在共同後續敲擊下檢驗單一密度狀態描述不足。"
+    },
+    {
+      "a": "G13006",
+      "b": "P013",
+      "decision": "distinct",
+      "reason": "乾粒床的深度項與有限停止控制不是流體阻力尺度替換物件；需要同深度分離速度項。"
+    },
+    {
+      "a": "G13006",
+      "b": "P018",
+      "decision": "distinct",
+      "reason": "改初速及沿路變阻力，並非固定動量延長時間降低平均力。"
+    },
+    {
+      "a": "G13007",
+      "b": "F10006",
+      "decision": "distinct",
+      "reason": "抽低氣壓可改密度依賴及沉降，不是低壓填隙的大小粒分選。"
+    },
+    {
+      "a": "G13007",
+      "b": "F10007",
+      "decision": "distinct",
+      "reason": "大球相對床的位移有孔隙氣壓控制；對流只是可疊加背景。"
+    },
+    {
+      "a": "G13007",
+      "b": "F10008",
+      "decision": "distinct",
+      "reason": "空氣壓差與埋深的兩階段加速度不同於低氣壓隨機動能梯度分選。"
+    },
+    {
+      "a": "G13007",
+      "b": "D2048",
+      "decision": "distinct",
+      "reason": "間歇氣隙開合及球床相對運動不同於持續上吹流化支承。"
+    },
+    {
+      "a": "G13008",
+      "b": "H3091",
+      "decision": "distinct",
+      "reason": "金屬鏈最小迴圈尺度/弱外限壓壓縮增硬對照是新增控制；銀紋抽絲承載不是相同失效路徑。"
+    },
+    {
+      "a": "G13008",
+      "b": "A12004",
+      "decision": "distinct",
+      "reason": "被動鏈長/彎角限制受壓增硬不同於主動螺旋換向決定纏入/解纏。"
+    },
+    {
+      "a": "G13008",
+      "b": "X5007",
+      "decision": "distinct",
+      "reason": "連接件幾何與跨群纏結不同於羊毛鱗片定向摩擦促進氈縮。"
+    },
+    {
+      "a": "G13009",
+      "b": "D2048",
+      "decision": "distinct",
+      "reason": "同粒碰撞動量與耗散支承，不存在持續上吹氣流。"
+    },
+    {
+      "a": "G13009",
+      "b": "F10008",
+      "decision": "distinct",
+      "reason": "同尺寸珠層氣固共存與支承，不是大小粒子沿活動梯度分離。"
+    },
+    {
+      "a": "G13009",
+      "b": "G13007",
+      "decision": "distinct",
+      "reason": "同尺寸珠碰撞支承與單大球在多孔床中的氣壓驅動必須分開，不能串成同一實驗。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "G13-S001",
+      "url": "https://arxiv.org/pdf/cond-mat/9906321",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S001.pdf",
+      "sha256": "5becec6d601cb80f33db74e6f96e27937a3da8ee8c1418858729c42a5287e9cc",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF pp.2–4正文與Fig.2–4圖說；另目讀渲染p.3 Fig.2圓錐堆、p.4 Fig.3–4。",
+      "finding": "集中落料與廣面撒落的底壓分布不同，圓錐堆底面積分仍與重量相符。",
+      "limits": "只採無側牆圓錐堆，接觸方向是解釋，不視為三維力鏈實拍；兩堆不假設完全等高等形。"
+    },
+    {
+      "source_id": "G13-S002",
+      "url": "https://arxiv.org/pdf/0704.3745",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S002.pdf",
+      "sha256": "816cfc1903a3b3f0270eb6a221ba24fefa9b4827d083f394aa44c398318307d6",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF pp.1–3正文、裝置/MRI/累積應變圖說；未讀p.4。",
+      "finding": "預先壓密顆粒剪切繞行需空間，MRI局部相對堆積密度下降。",
+      "limits": "罌粟籽split-bottom實驗，不把MRI當逐粒空隙影像；不外推所有鬆度或濕沙。"
+    },
+    {
+      "source_id": "G13-S003",
+      "url": "https://arxiv.org/pdf/1904.10051",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S003.pdf",
+      "sha256": "592dace4fa9090008276e3e39a0ce21b1ec8f9cf889e24de1c3407f56613a200",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF pp.1–4主文/Experiments/Results/Concluding discussion；另目讀p.2裝置及Fig.2正反剪切。",
+      "finding": "固定填充率改變剪切歷史，可建立承載；反向的最低壓力用噪聲門檻分fragile/SJ。",
+      "limits": "近二維光彈圓盤；未查補充影片，壓力未量到不等於無任何接觸。"
+    },
+    {
+      "source_id": "G13-S004",
+      "url": "https://arxiv.org/pdf/cond-mat/0002401",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S004.pdf",
+      "sha256": "a8f8a60cd19089151203a2d681326c1b88dcc7f2f7cf3b6a043ca1bf22e87b9c",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF pp.1–4正文及等密度Fig.2、雙態模型/結論；p.5未讀。",
+      "finding": "相同密度但先前敲擊不同，切成相同驅動後短期響應不同。",
+      "limits": "雙態配置是解釋模型而非逐粒直接觀測；微小密度差需標放大。"
+    },
+    {
+      "source_id": "G13-S005",
+      "url": "https://arxiv.org/pdf/2501.13434",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S005.pdf",
+      "sha256": "03d6813df9672dacebae7624aa6b9ae80e27a3f07e6d67f8968bc61b9b920647",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF p.1題名、pp.4–7 §II/III.A、pp.10–11結論、p.16 Fig.3圖說；另渲染目讀p.4材料與p.16曲線；web.open arXiv身份頁L8–27。",
+      "finding": "相同溫度的壁標記恢復而堆頂累積下降；壁/粒膨脹比較支持研究提出的循環剪動解釋。",
+      "limits": "2025-01-23 v1預印本；PVC而非PC，沒有匹配膨脹係數控制，不能稱唯一途徑或地基預測；不進本輪題案。"
+    },
+    {
+      "source_id": "G13-S006",
+      "url": "https://arxiv.org/pdf/cond-mat/0703072",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S006.pdf",
+      "sha256": "116f0e0beea2217cc73e0f8a0f5bff37a4ff389b8385671d84aa9365f5ab0e24",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF pp.1–6主文及Methods開頭、p.10 Figs.1–3圖說；另目讀p.11 Fig.1深度/速度/減速與停止時間。",
+      "finding": "較快入射可較深而較早停；固定深度比較分出速度平方項，扣除後餘深度阻力。",
+      "limits": "實驗為同鋼球與準備一致乾玻璃珠，深度項仍friction-like經驗形式，未驗其微觀定律；Fig.3才是固定深度比較。"
+    },
+    {
+      "source_id": "G13-S007",
+      "url": "https://arxiv.org/pdf/cond-mat/0502622",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S007.pdf",
+      "sha256": "ba94e76eda4cf1061f20833242f9a134242ba92b8edbce099bbc454553f6d963",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF p.1、p.5 Figs.7–8、pp.8–11 Air drag/§IV及模型限制、p.14結論；未逐讀其餘模擬。",
+      "finding": "床底氣隙開合造成穿床壓差，輕球/床相對加速度與埋深決定兩段累積位移。",
+      "limits": "單大球細粒床；真空中密度效應消失不是一切分選消失，簡化模型省略對流且未解全部壓力依賴。"
+    },
+    {
+      "source_id": "G13-S008",
+      "url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/granular/PhysRevLett.108.108302.pdf",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S008.pdf",
+      "sha256": "3acf109de0048c3d376f6d9a8b38994d2ace282826e48b98d6789346e34fd01c",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF pp.1–4主文及Figs.1–4文字/表1；未看影片。",
+      "finding": "相對最小可成圈尺度的鏈長對照，顯示弱外限壓下由普通屈服轉強增硬，X-ray得到跨系統纏結。",
+      "limits": "self-confinement為所提機制，虛擬閉合不等於永久繩結；不可說證實唯一模型。"
+    },
+    {
+      "source_id": "G13-S009",
+      "url": "https://ris.utwente.nl/ws/files/6616258/granular.pdf",
+      "accessed_on": "2026-11-01",
+      "http_status": 200,
+      "read_via": "非作者當日urllib指定UA重新取得PDF；PyMuPDF正文提取，指定頁另渲染目讀。",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "cache_file": ".cache/wave13-science-granular/G13-S009.pdf",
+      "sha256": "f8820a35e0aef2cc9eb5b0ae1d677ba1a2016e8ffa76b1716796252ecfbfbd9f",
+      "matched_author_copy_sha256": true,
+      "reading_scope": "PDF pp.1–4正文、Figs.1–5圖說/受力與能量方程；另目讀p.2 Figs.2–4。",
+      "finding": "底板供能與非彈性耗散產生快稀下層/慢密上層，碰撞動量支承；層數對照改變共存狀態。",
+      "limits": "近二維玻璃珠，不是蒸發或上吹氣；厚層全氣態轉換超出裝置能力，模型未涵蓋全部側牆作用。"
+    }
+  ],
+  "source_identity_readback": {
+    "adopted_supporting_works": 9,
+    "extra_not_added_works": 2,
+    "read_methods": "9候選支持PDF由非作者使用指定UA重新取得並讀列明正文，全部sha與作者副本相同；不把這次再取或arXiv/期刊副本多算證據。",
+    "version_risk": {
+      "source_id": "G13-S005",
+      "identity_url": "https://arxiv.org/abs/2501.13434",
+      "method": "web.open當日身份頁L8–27；PDF p1另讀姓名。",
+      "finding": "只列2025-01-23 v1，頁未列journal reference；按預印本處理，不以未列期刊推斷已全面查無後續發表。"
+    },
+    "retrieval_failures": [],
+    "author_failures_separate": "作者列Jussieu TLS及Nature身份頁失敗；本次未重試兩路，不能冒稱已排除。兩份只支援not_added之原文未獨立重開。"
+  },
+  "theme_reviews": [
+    {
+      "id": "W13G-T01",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "core_allocations": [
+        {
+          "id": "G13001",
+          "seconds": 105,
+          "cap": 115
+        }
+      ],
+      "max_beat": 30,
+      "decision": "retain_short_explainer",
+      "content_assessment": "觀察中央低壓後新增建堆方式控制，兩章同核，不計兩素材。",
+      "drop_if_read": "若無法清楚標出兩種建堆程序與底壓曲線，撤本105秒題案；刪第一章只剩55秒、刪第二章只剩50秒，均不保留原題案。",
+      "duration_status": "紙上圖解預算；未完整稿盲讀、未實際試讀，未核准媒體製作。"
+    },
+    {
+      "id": "W13G-T02",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        60,
+        55
+      ],
+      "core_allocations": [
+        {
+          "id": "G13003",
+          "seconds": 115,
+          "cap": 125
+        }
+      ],
+      "max_beat": 35,
+      "decision": "retain_short_explainer",
+      "content_assessment": "正向建立承載後，再以不同先前剪切量比較反推；並非第一章倒播。",
+      "drop_if_read": "若只畫推前推後，無法呈現反向兩種歷史，刪第二章55秒後剩60秒素材並撤此題案；若固定面積條件畫不清則全案撤。",
+      "duration_status": "紙上圖解預算；未完整稿盲讀、未實際試讀，未核准媒體製作。"
+    },
+    {
+      "id": "W13G-T03",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        55,
+        55
+      ],
+      "core_allocations": [
+        {
+          "id": "G13006",
+          "seconds": 110,
+          "cap": 120
+        }
+      ],
+      "max_beat": 35,
+      "decision": "retain_short_explainer",
+      "content_assessment": "深度/停止時刻反差後新增固定深度速度平方比較與剩餘深度項。",
+      "drop_if_read": "若無法用清楚且正確的深度/時間曲線呈現反差，撤110秒題案；刪任一章均只剩55秒，不能保留原完整追問。",
+      "duration_status": "紙上圖解預算；未完整稿盲讀、未實際試讀，未核准媒體製作。"
+    },
+    {
+      "id": "W13G-T04",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        55,
+        60
+      ],
+      "core_allocations": [
+        {
+          "id": "G13009",
+          "seconds": 115,
+          "cap": 125
+        }
+      ],
+      "max_beat": 35,
+      "decision": "retain_short_explainer",
+      "content_assessment": "稀疏快粒支承後加入能量耗散及少層控制，不只重播浮起奇觀。",
+      "drop_if_read": "若無法顯示下層快粒與密團兩種活動程度，撤115秒題案；刪第二章60秒後剩55秒奇觀素材，不以重播補回。",
+      "duration_status": "紙上圖解預算；未完整稿盲讀、未實際試讀，未核准媒體製作。"
+    }
+  ],
+  "not_added_readback": {
+    "ids": [
+      "G13-NA01",
+      "G13-NA02",
+      "G13-NA03",
+      "G13-NA04",
+      "G13-NA05",
+      "G13-NA06",
+      "G13-NA07",
+      "G13-NA08",
+      "G13-NA09",
+      "G13-NA10",
+      "G13-NA11",
+      "G13-NA12",
+      "G13-NA13",
+      "G13-NA14",
+      "G13-NA15",
+      "G13-NA16"
+    ],
+    "decision": "維持16未收；前10為舊核心/分類，反推與鏈長留在既有本批核心；非局域探針/單層聚團/薄斜坡/滾筒條紋的證據或因果缺口不因數量壓力升格。",
+    "limitations": "核編輯理由與引用ID，未將兩條退題來源視為獨立全文已查核。"
+  },
+  "correction_history": [
+    {
+      "id": "GRANULAR01",
+      "severity": "required",
+      "finding": "G13005與S005/作者閱讀限制誤PC管；fresh PDF p4渲染清楚寫PVC。",
+      "resolution": "已改PVC；保留預印本、量測比較/解釋及未匹配CTE控制限制。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "GRANULAR02",
+      "severity": "required_locator",
+      "finding": "G13006把固定深度速度平方比較標成Fig2；PDF p10列在Fig3(a)，Fig3(b)為扣除後深度項。",
+      "resolution": "候選與source locator已分清Fig2最終深度和Fig3分解；問答不改。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "GRANULAR03",
+      "severity": "locator_precision",
+      "finding": "G13008原圖號群組籠統，Fig2–3為壓縮/鏈長，Fig4為纏結。",
+      "resolution": "候選/source已精確p2/p3/p4定位，機制不改。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "GRANULAR04",
+      "severity": "metadata",
+      "finding": "S005 publisher首名初字母J.Luo不符PDF p1/arXiv身份頁Yuxuan Luo。",
+      "resolution": "改完整姓名Yuxuan Luo；不新增研究。",
+      "status": "RESOLVED"
+    }
+  ],
+  "targeted_recheck": {
+    "status": "PASS",
+    "read_scope": "讀回作者最終三檔、修正四項、author保留before SHA；對first-draft9列question/answer_target/mechanism_key逐值相同；題案hash完全不變。",
+    "final_batch_sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1",
+    "final_author_sha256": "d89f547bd7104d2ee0c2b520a65c94bb4a30ff381eec256f38394ee68f92c4db"
+  },
+  "local_checks": {
+    "method": "獨立Python JSON讀取/雜湊/章節與beat相加/同核心跨章累計；非repo全測。",
+    "theme_count": 4,
+    "core_budget_checks": 4,
+    "max_beat_seconds": 35,
+    "all_body_sums_match": true,
+    "all_ranges_within_body": true,
+    "all_core_allocations_within_caps": true,
+    "candidate_q_answer_key_unchanged": true
+  },
+  "conclusion": "9個題級候選與4個短題案可保留；沒有剩餘作者必改。所有研究模型與條件限制需帶進後續完整稿，這不是製作核准。"
+}

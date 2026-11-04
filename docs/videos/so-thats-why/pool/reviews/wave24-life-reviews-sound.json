@@ -1,0 +1,842 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "root",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "R24001",
+    "R24002",
+    "R24003",
+    "R24004",
+    "R24005"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave24-sound.json",
+      "sha256": "5e0a73df64373c9dcfd14a12a030afd752e967cd4f952749e1e6bcbe0c50828e"
+    },
+    {
+      "file": "reviews/wave24-sound-themes.json",
+      "sha256": "a85f0bd376d67c2562511d5deeeb3d5c61b1de8cc4cec1ff586c83ad6b16a301"
+    },
+    {
+      "file": "reviews/wave24-sound-author.json",
+      "sha256": "4bc0c6401f4e42cb3fb16b76946bd8f44fa03b265feb6ce6355332d50cc19605"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave24-sound.json",
+      "sha256": "5e0a73df64373c9dcfd14a12a030afd752e967cd4f952749e1e6bcbe0c50828e"
+    },
+    {
+      "file": "reviews/wave24-sound-themes.json",
+      "sha256": "72d8c3a4aa622a7343f68049a1ad9e926f54e8f32dbd47c523dd1634c287208c"
+    },
+    {
+      "file": "reviews/wave24-sound-author.json",
+      "sha256": "296606dbed4127095ee4201f0ef73b5034b218564546fb86069f2d6ca0ced5b8"
+    }
+  ],
+  "scope": "5題完整問題/答案/限定/圖示/預算；12未收；16作者近對雙快照；25有向top5；5原研究指定正文與10圖頁/圖實讀。非整庫逐主張審查、非成片聽感驗證。",
+  "counts": {
+    "retain": 4,
+    "merge": 1,
+    "hold": 0,
+    "author_pairs": 16,
+    "top5_directed_pairs": 25,
+    "sources_read": 5
+  },
+  "source_readings": [
+    {
+      "source_id": "R24-S001",
+      "url": "https://www.brainmusic.org/MBB91%20Webpage/Pitch_I_Shepard.pdf",
+      "version": "1964,36(12),2346–2353; DOI10.1121/1.1919362",
+      "read_via": "獨立讀作者當日有效原文快取，先核PDF/抽文SHA；不是覆核者fresh HTTP。",
+      "reading_scope": "掃描PDF pp1–5（印2346–2350）正文、Fig1–3；view_image逐頁目讀；pp6–8未讀。",
+      "cache": {
+        "file": ".cache/wave24-sound-shepard.pdf",
+        "sha256": "090cb72735ac12a85ed7786e253dd0ff22ad623e4f9ddc87e776ad6975992ee7",
+        "text_file": ".cache/wave24-sound-shepard-text.json",
+        "text_sha256": "431e580779bc22bb05bfc9f8174b65ca03b63c5710b1e0d2a8f08b26b0022789"
+      },
+      "finding": "十二半音連播示範與正式十等分音對不同；包絡固定且總響度近似不變。局部方向不表示絕對音高持續增加；掃描頁緣缺損不據以補字。",
+      "limits": "只核所列題級主張，不是全部方法、補充或逐句劇本核准。",
+      "retrieval_failures": "覆核未新取外站；作者原路線/失敗保留於source及author，不冒稱本人下載成功。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-sound-shepard-p1.png",
+          "sha256": "591e9cd49888214ec3065be2b0d5481b803b5e103730dc7a75b69a0e2c53f71d",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-sound-shepard-p2.png",
+          "sha256": "5eab11f512261125d0be291be2a3f02fbe5e07332a5a1a27f65731e234c87cb0",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-sound-shepard-p3.png",
+          "sha256": "94a3612beaeb406c00e4126a4d5e6a54430aeb688a494d0c5fd52c07fe138cfc",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-sound-shepard-p4.png",
+          "sha256": "ed874c5591c1417d13536b3b62f22a0220a36f6f8ffe1b0521a6f160f6838eeb",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-sound-shepard-p5.png",
+          "sha256": "6befb03cdc980ba1f9f12506e33281a0bc944fecd1f902aa1df27e00cf31bcce",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    },
+    {
+      "source_id": "R24-S002",
+      "url": "https://deutsch.ucsd.edu/pdf/P%26P-1987_41_563-575.pdf",
+      "version": "1987,41,563–575;作者網站重排版13頁",
+      "read_via": "獨立讀作者當日有效原文快取，先核PDF/抽文SHA；不是覆核者fresh HTTP。",
+      "reading_scope": "作者重排PDF pp3–4 Exp1方法/結果，p12 Discussion；目讀p5 Fig4–5。",
+      "cache": {
+        "file": ".cache/wave24-sound-tritone.pdf",
+        "sha256": "9dfd97a3274a6e6e85fa8efb5f2865ce71a04cb3886a581216d38a96b231d273",
+        "text_file": ".cache/wave24-sound-tritone-text.json",
+        "text_sha256": "9d80d64dde58d02f7dd8b8dd6af08533f455ac6fff9250329cbcbd033d3a55ee"
+      },
+      "finding": "四位經預篩者；包絡改變後的個體曲線相似不等於零頻譜影響。不採語言因果或盛行率。",
+      "limits": "只核所列題級主張，不是全部方法、補充或逐句劇本核准。",
+      "retrieval_failures": "覆核未新取外站；作者原路線/失敗保留於source及author，不冒稱本人下載成功。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-sound-tritone-p5.png",
+          "sha256": "f9d0a37c138cdafaa8645dc04b05aa985d0c0f52fab6cb158602dfdb8f416b91",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    },
+    {
+      "source_id": "R24-S003",
+      "url": "https://deutsch.ucsd.edu/pdf/JASA-1975_57_1156-1160.pdf",
+      "version": "1975,57,1156–1160;作者網站重排版6頁",
+      "read_via": "獨立讀作者當日有效原文快取，先核PDF/抽文SHA；不是覆核者fresh HTTP。",
+      "reading_scope": "作者重排PDF pp1–5方法/結果/討論；目讀p2 Fig1。",
+      "cache": {
+        "file": ".cache/wave24-sound-scales.pdf",
+        "sha256": "dc943862c343270ce8eceaafa83642e5f24ccc4f4b5a78d04ed7a3f82e5d1c27",
+        "text_file": ".cache/wave24-sound-scales-text.json",
+        "text_sha256": "25b3ec1e8e0f3be94aefd03ee36e01c72ccb08359d426e4d2efbfd4f6d690f5e"
+      },
+      "finding": "原輸入每條升/降音階都跨耳交錯。單條同250ms切耳大多可辨，排除僅速度不足；不把所有人左右定位或雙聲流都說相同。",
+      "limits": "只核所列題級主張，不是全部方法、補充或逐句劇本核准。",
+      "retrieval_failures": "覆核未新取外站；作者原路線/失敗保留於source及author，不冒稱本人下載成功。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-sound-scales-p2.png",
+          "sha256": "debf907b1331025a92268cdbb0f19b6ab724d940db66c6901f0de75d8cf664aa",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    },
+    {
+      "source_id": "R24-S004",
+      "url": "https://unism.narod.ru/alb/lib/pr62.pdf",
+      "version": "1962,34,1418–1424; DOI10.1121/1.1918360",
+      "read_via": "獨立讀作者當日有效原文快取，先核PDF/抽文SHA；不是覆核者fresh HTTP。",
+      "reading_scope": "掃描PDF p1、pp4–7 §§6–14指定正文；目讀pp5–6 Fig2–5；非逐式驗算。",
+      "cache": {
+        "file": ".cache/wave24-sound-residue.pdf",
+        "sha256": "e2dd7122ab6fec05f87dc725e51127990aab7554b49b0c2e5d93ab5d91205fd8",
+        "text_file": ".cache/wave24-sound-residue-text.json",
+        "text_sha256": "cdf7a0a5d20c786d9a5a0a949ed83dbaf4f3436cc07d2b33e942e03cde200c85"
+      },
+      "finding": "固定間距的三分量整組頻移與換匹配頻帶均有支持；三位受訓者且多分支。保留反證簡單模型，不聲稱唯一證實神經時間碼。",
+      "limits": "只核所列題級主張，不是全部方法、補充或逐句劇本核准。",
+      "retrieval_failures": "覆核未新取外站；作者原路線/失敗保留於source及author，不冒稱本人下載成功。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-sound-residue-p5.png",
+          "sha256": "7c836ba00a9dd67ef9d3179e5ec4583297781d518564c6fcd733b465ebbfee7c",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-sound-residue-p6.png",
+          "sha256": "6ccaf525069ef7ca7233d0fec5ef531b14b78230adae071992d299d04818822b",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    },
+    {
+      "source_id": "R24-S005",
+      "url": "https://deutsch.ucsd.edu/pdf/Science-1970_168_1604-1605.pdf",
+      "version": "1970,168,1604–1605; DOI10.1126/science.168.3939.1604",
+      "read_via": "獨立讀作者當日有效原文快取，先核PDF/抽文SHA；不是覆核者fresh HTTP。",
+      "reading_scope": "作者重排PDF兩頁完整正文；目讀p1 Table1。",
+      "cache": {
+        "file": ".cache/wave24-sound-memory.pdf",
+        "sha256": "2383b67f15f4da92ec711ada5051d5b3ca465cee3a31a0d9950f5d707577e4db",
+        "text_file": ".cache/wave24-sound-memory-text.json",
+        "text_sha256": "580ba8dcba4b06d8cfb359479fe03f4761cc46a833d73b0c83ae5bb6ec02549b"
+      },
+      "finding": "24位練習篩選者；忽略音、忽略數字及記數字控制支持特異干擾。不泛化成背景音樂學習建議；併C2018。",
+      "limits": "只核所列題級主張，不是全部方法、補充或逐句劇本核准。",
+      "retrieval_failures": "覆核未新取外站；作者原路線/失敗保留於source及author，不冒稱本人下載成功。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-sound-memory-p1.png",
+          "sha256": "62768a5de1c51fa49551f220aa64f814a7eaea5ee348828c1d39ff29e3aa98df",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    }
+  ],
+  "source_identity_review": "公開掃描/作者重排副本與正式研究是同文，不把載體算重複驗證。Shepard1964與Deutsch1987沿用合成原理但各自不同實驗；共用原理不自動併核，亦不是獨立重現同一結果。",
+  "candidate_review": [
+    {
+      "id": "R24001",
+      "decision": "retain",
+      "reason": "十二半音連播示範與正式十等分音對不同；包絡固定且總響度近似不變。局部方向不表示絕對音高持續增加；掃描頁緣缺損不據以補字。",
+      "scope_read": "限Shepard合成複音；十二半音示範與原研究十等分隨機配對分開。包絡是頻譜強弱分布，不是逐音總音量變大；不承諾所有人或任意播放速度都有效。",
+      "editorial_cap": 120
+    },
+    {
+      "id": "R24002",
+      "decision": "retain",
+      "reason": "四位經預篩者；包絡改變後的個體曲線相似不等於零頻譜影響。不採語言因果或盛行率。",
+      "scope_read": "只採1987 Exp1的4位先篩選有明顯效應者；不據此估盛行率。包絡影響並非零；生理原因與語言影響未由本篇實驗確定，不類推一般鋼琴兩音。",
+      "editorial_cap": 115
+    },
+    {
+      "id": "R24003",
+      "decision": "retain",
+      "reason": "原輸入每條升/降音階都跨耳交錯。單條同250ms切耳大多可辨，排除僅速度不足；不把所有人左右定位或雙聲流都說相同。",
+      "scope_read": "1975特定250毫秒純音序列、70位大學生；有人只報上方聲流。音域分組是現象層解釋，不能保證所有人左右定位或神經路徑相同；單耳混音不是同一控制。",
+      "editorial_cap": 125
+    },
+    {
+      "id": "R24004",
+      "decision": "retain",
+      "reason": "固定間距的三分量整組頻移與換匹配頻帶均有支持；三位受訓者且多分支。保留反證簡單模型，不聲稱唯一證實神經時間碼。",
+      "scope_read": "限原文三分量與固定匹配分支，最後3位受訓聽者；存在多個可接受匹配與適用頻帶。只採受控結果，不宣稱已唯一證明時間域神經機制；不把預期聽感寫成必然。",
+      "editorial_cap": 130
+    },
+    {
+      "id": "R24005",
+      "decision": "merge",
+      "reason": "24位練習篩選者；忽略音、忽略數字及記數字控制支持特異干擾。不泛化成背景音樂學習建議；併C2018。",
+      "scope_read": "24位先通過滿分練習者；不推背景音樂對學習的通用建議，也不把數字回憶無顯著變差當完全獨立系統證明。建議併C2018，不另計核心。",
+      "editorial_cap": 80
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R24001",
+      "b": "C2031",
+      "decision": "distinct",
+      "reason": "基底膜位置分工不回答固定頻譜包絡中的局部升降與全域回原點。"
+    },
+    {
+      "a": "R24001",
+      "b": "D9002",
+      "decision": "distinct",
+      "reason": "弦剛性改變真實模態頻率；合成八度列循環由分量權重重分配產生。"
+    },
+    {
+      "a": "R24001",
+      "b": "P125",
+      "decision": "distinct",
+      "reason": "沒有聲源相對運動或波前到達率改變；不是都卜勒位移。"
+    },
+    {
+      "a": "R24002",
+      "b": "R24001",
+      "decision": "distinct",
+      "reason": "相鄰循環的局部方向不具全域傳遞性，與半八度歧義下音級/聽者排序在改包絡後的保留，是不同控制問題；不是只把音程參數拆題。"
+    },
+    {
+      "a": "R24002",
+      "b": "R23004",
+      "decision": "distinct",
+      "reason": "色相插值是指定演算法選弧；本題為同聲刺激的聽者判斷，非把圓換感官。"
+    },
+    {
+      "a": "R24002",
+      "b": "C2001",
+      "decision": "distinct",
+      "reason": "有沒有偵測到閾值附近聲音，不等於已可聽複音的升降方向歧義。"
+    },
+    {
+      "a": "R24003",
+      "b": "C2032",
+      "decision": "distinct",
+      "reason": "雙耳到達時間/聲級差定位，不回答交替送入的音階按音域重組。"
+    },
+    {
+      "a": "R24003",
+      "b": "C2007",
+      "decision": "distinct",
+      "reason": "視覺鄰近分組是相關概念；此受控聲流需單/雙流、同切耳速度比較，非只宣告相似者同組。"
+    },
+    {
+      "a": "R24003",
+      "b": "R22003",
+      "decision": "distinct",
+      "reason": "前後聲的定位權重/歷史不同於交錯音階的頻域分流。"
+    },
+    {
+      "a": "R24003",
+      "b": "R22004",
+      "decision": "distinct",
+      "reason": "相位改變遮蔽偵測閾值，不解音階路線重排。"
+    },
+    {
+      "a": "R24004",
+      "b": "C2031",
+      "decision": "distinct",
+      "reason": "舊題是位置轉導；此題用等間距頻移與跨頻帶匹配排除簡單音高讀取。"
+    },
+    {
+      "a": "R24004",
+      "b": "D9002",
+      "decision": "distinct",
+      "reason": "弦的非整數泛音是聲源模態；此為受控合成複音的知覺匹配，不以樂器名稱另計。"
+    },
+    {
+      "a": "R24004",
+      "b": "R24001",
+      "decision": "distinct",
+      "reason": "固定包絡內八度分量循環，與固定間距而整體加頻後的殘餘音高位移，操作及所排除的解釋不同。"
+    },
+    {
+      "a": "R24005",
+      "b": "C2018",
+      "decision": "merge",
+      "reason": "本例仍是新插入內容干擾既有記憶的倒攝核心；同域與數字對照可補界線及來源，但不另計核心。"
+    },
+    {
+      "a": "R24005",
+      "b": "C2017",
+      "decision": "distinct",
+      "reason": "音高保留受同域干擾與內容曾出現卻歸錯來源不同。"
+    },
+    {
+      "a": "R24005",
+      "b": "R22005",
+      "decision": "distinct",
+      "reason": "R22005改中間音身份而增加首尾誤認，解釋為位置歸屬；本例比較音/數字插入的干擾程度。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R24001",
+      "b": "R24002",
+      "cosine": 0.855932,
+      "decision": "distinct",
+      "reason": "相鄰循環的局部方向不具全域傳遞性，與半八度歧義下音級/聽者排序在改包絡後的保留，是不同控制問題；不是只把音程參數拆題。"
+    },
+    {
+      "a": "R24001",
+      "b": "R24004",
+      "cosine": 0.800861,
+      "decision": "distinct",
+      "reason": "固定包絡內八度分量循環，與固定間距而整體加頻後的殘餘音高位移，操作及所排除的解釋不同。"
+    },
+    {
+      "a": "R24001",
+      "b": "D9016",
+      "cosine": 0.786312,
+      "decision": "distinct",
+      "reason": "近講效應是麥克風壓差物理頻響；本題頻譜已指定，測循環知覺。"
+    },
+    {
+      "a": "R24001",
+      "b": "R24003",
+      "cosine": 0.781761,
+      "decision": "distinct",
+      "reason": "R24001解同一複音的音高循環；R24003解兩耳序列的聲流重組與單流控制，並非同一八度替換。"
+    },
+    {
+      "a": "R24001",
+      "b": "D9014",
+      "cosine": 0.776072,
+      "decision": "distinct",
+      "reason": "雙麥間距的梯度近似/失配權衡，沒有音高循環。"
+    },
+    {
+      "a": "R24002",
+      "b": "R24001",
+      "cosine": 0.855932,
+      "decision": "distinct",
+      "reason": "相鄰循環的局部方向不具全域傳遞性，與半八度歧義下音級/聽者排序在改包絡後的保留，是不同控制問題；不是只把音程參數拆題。"
+    },
+    {
+      "a": "R24002",
+      "b": "C2001",
+      "cosine": 0.81686,
+      "decision": "distinct",
+      "reason": "有沒有偵測到閾值附近聲音，不等於已可聽複音的升降方向歧義。"
+    },
+    {
+      "a": "R24002",
+      "b": "R24003",
+      "cosine": 0.799103,
+      "decision": "distinct",
+      "reason": "半圈複音的個體升降排序，沒有兩耳交錯流；序列聲流重組另有單條音階對照。"
+    },
+    {
+      "a": "R24002",
+      "b": "R24004",
+      "cosine": 0.797228,
+      "decision": "distinct",
+      "reason": "R24002改包絡測半圈排序；R24004固定間距平移並換匹配頻帶，辨別差頻/包絡不足。"
+    },
+    {
+      "a": "R24002",
+      "b": "R22005",
+      "cosine": 0.788572,
+      "decision": "distinct",
+      "reason": "即時兩音升降歧義與延遲後音高的出現位置歸屬不同。"
+    },
+    {
+      "a": "R24003",
+      "b": "C2033",
+      "cosine": 0.832379,
+      "decision": "distinct",
+      "reason": "耳廓方向聲譜與受控兩耳音階分流不是同一定位機制。"
+    },
+    {
+      "a": "R24003",
+      "b": "R24002",
+      "cosine": 0.799103,
+      "decision": "distinct",
+      "reason": "半圈複音的個體升降排序，沒有兩耳交錯流；序列聲流重組另有單條音階對照。"
+    },
+    {
+      "a": "R24003",
+      "b": "R24001",
+      "cosine": 0.781761,
+      "decision": "distinct",
+      "reason": "R24001解同一複音的音高循環；R24003解兩耳序列的聲流重組與單流控制，並非同一八度替換。"
+    },
+    {
+      "a": "R24003",
+      "b": "R22001",
+      "cosine": 0.743533,
+      "decision": "distinct",
+      "reason": "語音重播歷史改歌唱知覺，並非兩路音域分組。"
+    },
+    {
+      "a": "R24003",
+      "b": "C2032",
+      "cosine": 0.732114,
+      "decision": "distinct",
+      "reason": "雙耳到達時間/聲級差定位，不回答交替送入的音階按音域重組。"
+    },
+    {
+      "a": "R24004",
+      "b": "C2001",
+      "cosine": 0.809774,
+      "decision": "distinct",
+      "reason": "偵測機率與聽見後的殘餘音高匹配是不同變項。"
+    },
+    {
+      "a": "R24004",
+      "b": "R24001",
+      "cosine": 0.800861,
+      "decision": "distinct",
+      "reason": "固定包絡內八度分量循環，與固定間距而整體加頻後的殘餘音高位移，操作及所排除的解釋不同。"
+    },
+    {
+      "a": "R24004",
+      "b": "R24002",
+      "cosine": 0.797228,
+      "decision": "distinct",
+      "reason": "R24002改包絡測半圈排序；R24004固定間距平移並換匹配頻帶，辨別差頻/包絡不足。"
+    },
+    {
+      "a": "R24004",
+      "b": "R22005",
+      "cosine": 0.769261,
+      "decision": "distinct",
+      "reason": "固定間距頻移的即時匹配，不是干擾音出現過所致的記憶來源錯置。"
+    },
+    {
+      "a": "R24004",
+      "b": "P117",
+      "cosine": 0.760201,
+      "decision": "distinct",
+      "reason": "介質改波速/波長而頻率不變，與改輸入頻率後的知覺低音不同。"
+    },
+    {
+      "a": "R24005",
+      "b": "R24004",
+      "cosine": 0.666625,
+      "decision": "distinct",
+      "reason": "延遲記憶干擾與當下複音音高匹配不同。"
+    },
+    {
+      "a": "R24005",
+      "b": "P14007",
+      "cosine": 0.665739,
+      "decision": "distinct",
+      "reason": "快速視覺目標的重新投入時序，與5秒音高保留的內容特異干擾不同。"
+    },
+    {
+      "a": "R24005",
+      "b": "R22005",
+      "cosine": 0.655481,
+      "decision": "distinct",
+      "reason": "R22005改中間音身份而增加首尾誤認，解釋為位置歸屬；本例比較音/數字插入的干擾程度。"
+    },
+    {
+      "a": "R24005",
+      "b": "E2217",
+      "cosine": 0.64447,
+      "decision": "distinct",
+      "reason": "放大器噪聲增益是電路傳遞；不是記憶表徵受干擾。"
+    },
+    {
+      "a": "R24005",
+      "b": "R24002",
+      "cosine": 0.635453,
+      "decision": "distinct",
+      "reason": "音對方向歧義與延遲中的干擾強弱不同。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "R24005",
+        "canonical_id": "C2018",
+        "reason": "本例仍是新插入內容干擾既有記憶的倒攝核心；同域與數字對照可補界線及來源，但不另計核心。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R24001",
+        "b": "C2031",
+        "reason": "基底膜位置分工不回答固定頻譜包絡中的局部升降與全域回原點。"
+      },
+      {
+        "a": "R24001",
+        "b": "D9002",
+        "reason": "弦剛性改變真實模態頻率；合成八度列循環由分量權重重分配產生。"
+      },
+      {
+        "a": "R24001",
+        "b": "P125",
+        "reason": "沒有聲源相對運動或波前到達率改變；不是都卜勒位移。"
+      },
+      {
+        "a": "R24002",
+        "b": "R24001",
+        "reason": "相鄰循環的局部方向不具全域傳遞性，與半八度歧義下音級/聽者排序在改包絡後的保留，是不同控制問題；不是只把音程參數拆題。"
+      },
+      {
+        "a": "R24002",
+        "b": "R23004",
+        "reason": "色相插值是指定演算法選弧；本題為同聲刺激的聽者判斷，非把圓換感官。"
+      },
+      {
+        "a": "R24002",
+        "b": "C2001",
+        "reason": "有沒有偵測到閾值附近聲音，不等於已可聽複音的升降方向歧義。"
+      },
+      {
+        "a": "R24003",
+        "b": "C2032",
+        "reason": "雙耳到達時間/聲級差定位，不回答交替送入的音階按音域重組。"
+      },
+      {
+        "a": "R24003",
+        "b": "C2007",
+        "reason": "視覺鄰近分組是相關概念；此受控聲流需單/雙流、同切耳速度比較，非只宣告相似者同組。"
+      },
+      {
+        "a": "R24003",
+        "b": "R22003",
+        "reason": "前後聲的定位權重/歷史不同於交錯音階的頻域分流。"
+      },
+      {
+        "a": "R24003",
+        "b": "R22004",
+        "reason": "相位改變遮蔽偵測閾值，不解音階路線重排。"
+      },
+      {
+        "a": "R24004",
+        "b": "C2031",
+        "reason": "舊題是位置轉導；此題用等間距頻移與跨頻帶匹配排除簡單音高讀取。"
+      },
+      {
+        "a": "R24004",
+        "b": "D9002",
+        "reason": "弦的非整數泛音是聲源模態；此為受控合成複音的知覺匹配，不以樂器名稱另計。"
+      },
+      {
+        "a": "R24004",
+        "b": "R24001",
+        "reason": "固定包絡內八度分量循環，與固定間距而整體加頻後的殘餘音高位移，操作及所排除的解釋不同。"
+      },
+      {
+        "a": "R24005",
+        "b": "C2017",
+        "reason": "音高保留受同域干擾與內容曾出現卻歸錯來源不同。"
+      },
+      {
+        "a": "R24005",
+        "b": "R22005",
+        "reason": "R22005改中間音身份而增加首尾誤認，解釋為位置歸屬；本例比較音/數字插入的干擾程度。"
+      },
+      {
+        "a": "R24001",
+        "b": "D9016",
+        "reason": "近講效應是麥克風壓差物理頻響；本題頻譜已指定，測循環知覺。"
+      },
+      {
+        "a": "R24003",
+        "b": "R24001",
+        "reason": "R24001解同一複音的音高循環；R24003解兩耳序列的聲流重組與單流控制，並非同一八度替換。"
+      },
+      {
+        "a": "R24001",
+        "b": "D9014",
+        "reason": "雙麥間距的梯度近似/失配權衡，沒有音高循環。"
+      },
+      {
+        "a": "R24003",
+        "b": "R24002",
+        "reason": "半圈複音的個體升降排序，沒有兩耳交錯流；序列聲流重組另有單條音階對照。"
+      },
+      {
+        "a": "R24004",
+        "b": "R24002",
+        "reason": "R24002改包絡測半圈排序；R24004固定間距平移並換匹配頻帶，辨別差頻/包絡不足。"
+      },
+      {
+        "a": "R24002",
+        "b": "R22005",
+        "reason": "即時兩音升降歧義與延遲後音高的出現位置歸屬不同。"
+      },
+      {
+        "a": "R24003",
+        "b": "C2033",
+        "reason": "耳廓方向聲譜與受控兩耳音階分流不是同一定位機制。"
+      },
+      {
+        "a": "R24003",
+        "b": "R22001",
+        "reason": "語音重播歷史改歌唱知覺，並非兩路音域分組。"
+      },
+      {
+        "a": "R24004",
+        "b": "C2001",
+        "reason": "偵測機率與聽見後的殘餘音高匹配是不同變項。"
+      },
+      {
+        "a": "R24004",
+        "b": "R22005",
+        "reason": "固定間距頻移的即時匹配，不是干擾音出現過所致的記憶來源錯置。"
+      },
+      {
+        "a": "R24004",
+        "b": "P117",
+        "reason": "介質改波速/波長而頻率不變，與改輸入頻率後的知覺低音不同。"
+      },
+      {
+        "a": "R24005",
+        "b": "R24004",
+        "reason": "延遲記憶干擾與當下複音音高匹配不同。"
+      },
+      {
+        "a": "R24005",
+        "b": "P14007",
+        "reason": "快速視覺目標的重新投入時序，與5秒音高保留的內容特異干擾不同。"
+      },
+      {
+        "a": "R24005",
+        "b": "E2217",
+        "reason": "放大器噪聲增益是電路傳遞；不是記憶表徵受干擾。"
+      },
+      {
+        "a": "R24005",
+        "b": "R24002",
+        "reason": "音對方向歧義與延遲中的干擾強弱不同。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R24-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R22001"
+      ],
+      "reason": "已讀退題與對應題級範圍；前批已採同一JASA2011原研究；絕對十次說法也不成立。"
+    },
+    {
+      "id": "R24-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R22002"
+      ],
+      "reason": "已讀退題與對應題級範圍；已有填噪音與混響先後控制，不重收。"
+    },
+    {
+      "id": "R24-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R22003"
+      ],
+      "reason": "已讀退題與對應題級範圍；前批已限定前史與先到聲的關係，不能改成絕對句。"
+    },
+    {
+      "id": "R24-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R22004"
+      ],
+      "reason": "已讀退題與對應題級範圍；耳間反相偵測改善已收，不是空氣相消或普遍消噪。"
+    },
+    {
+      "id": "R24-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R22005",
+        "C2017"
+      ],
+      "reason": "已讀退題與對應題級範圍；時間來源歸屬變體已併核心；不再改成新記憶故事。"
+    },
+    {
+      "id": "R24-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R24001"
+      ],
+      "reason": "已讀退題與對應題級範圍；同一頻譜循環反向，放在同題控制，不另算核心。"
+    },
+    {
+      "id": "R24-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R24002"
+      ],
+      "reason": "已讀退題與對應題級範圍；不同音級是同實驗條件，不拆十二題。"
+    },
+    {
+      "id": "R24-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R24003"
+      ],
+      "reason": "已讀退題與對應題級範圍；群體結果並不等於每個人固定表現，過度概括淘汰。"
+    },
+    {
+      "id": "R24-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R24003"
+      ],
+      "reason": "已讀退題與對應題級範圍；原文已有其他雙耳序列的不同組織方式，不升成通則。"
+    },
+    {
+      "id": "R24-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R24004"
+      ],
+      "reason": "已讀退題與對應題級範圍；不能由聽感推出物理頻譜；須量測失真與噪音，此方向留作本題前提界線。"
+    },
+    {
+      "id": "R24-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "C2018",
+        "R24005"
+      ],
+      "reason": "已讀退題與對應題級範圍；短音高任務無法推一般學習效果，無新原研究不收。"
+    },
+    {
+      "id": "R24-NA012",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R24002"
+      ],
+      "reason": "已讀退題與對應題級範圍；模糊合成音不適合當能力或聽力診斷。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W24R-T01",
+      "decision": "retain_paper_plan",
+      "seconds": 150,
+      "core_totals": {
+        "R24001": 80,
+        "R24002": 70
+      },
+      "reason": "循環與半圈方向歧義接續同一音高尺問題，但重設音組/間隔明示；包絡控制新增判斷條件。刪一核另立80/70秒案，不加錯覺湊長。"
+    },
+    {
+      "id": "W24R-T02",
+      "decision": "retain_paper_plan",
+      "seconds": 90,
+      "core_totals": {
+        "R24003": 90
+      },
+      "reason": "55秒看單/雙流差，再35秒同切耳速度控制；標題已改交錯送音，不誤稱每耳一完整音階。"
+    },
+    {
+      "id": "W24R-T03",
+      "decision": "retain_paper_plan",
+      "seconds": 95,
+      "core_totals": {
+        "R24004": 95
+      },
+      "reason": "55秒固定間距頻移，再40秒跨頻帶匹配/分支；多分支為有效解釋邊界，不以整段方法限制撐時。"
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "SOUND01",
+      "finding": "T02標題各播一條容易誤讀每耳完整音階。",
+      "resolution": "改兩耳交錯送音，實驗控制正文/圖1支持。"
+    },
+    {
+      "id": "SOUND02",
+      "finding": "原T02/T03僅單章、撤案條件未給T01刪核後時長。",
+      "resolution": "讀回55+35/55+40自然控制分章，90/95秒不增；T01另案80/70及互動失效撤案已明。"
+    },
+    {
+      "id": "AUTHOR_SHORTENING",
+      "resolution": "作者先刪40秒，170/100/105→150/90/95；覆核獨立確認剩餘各beat有控制/解釋增量。"
+    }
+  ],
+  "retrieval": {
+    "draft_sha256": "77b730606a8c2e6680f13448f92ba0a6e91c4c6ca5cce0c9bc68c6acb5dc81b1",
+    "file": ".cache/wave24-sound-neighbours.json",
+    "sha256": "1565be2f061288db3afdee417f0d64ac444831010bf963a99d53f15f05e3c825",
+    "first_draft_sha256": "b0be0256476567fae104288a66c312e93dce42a58b9511c35cc92be70f7017e5",
+    "readback": "25當期有向完整問答/範圍已讀；新metadata未變候選或鄰居。相似度不當合併機率。"
+  },
+  "remaining_blockers": [],
+  "metadata_revisions": [
+    {
+      "reason": "同一無向distinct理由用於反向有向top5時，前者/後者代詞反轉；改用明確ID，兩對四方向決策不變。",
+      "before_review_sha256": "9f81af58883b852ea18bd0c7ff7e4f362c7bbfd4db7f8a0e17b7906e2ca3ba88",
+      "decision_changed": false
+    },
+    {
+      "reason": "最後input/三作者檔繫結再核，補實際目讀圖頁快取SHA；內容判斷不變。",
+      "before_review_sha256": "6a396fd6f7325942956183dddb881d6a94f1af24ea3685e3c14ea4aa48a7c20a"
+    }
+  ],
+  "final_input_check": {
+    "draft_sha256": "77b730606a8c2e6680f13448f92ba0a6e91c4c6ca5cce0c9bc68c6acb5dc81b1",
+    "neighbours_sha256": "1565be2f061288db3afdee417f0d64ac444831010bf963a99d53f15f05e3c825",
+    "candidate_count": 5,
+    "directed_pairs": 25,
+    "current_bindings_verified": true,
+    "statement": "本輪最後共同input與三作者檔實際bytes再核。Physics只改題案/author，聲音候選及全部近鄰問答scope保持已讀內容；本收據不升格完整稿或媒體核准。"
+  }
+}

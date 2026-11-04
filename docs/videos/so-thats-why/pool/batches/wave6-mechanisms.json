@@ -1,0 +1,830 @@
+{
+  "batch_id": "wave6-mechanisms-20261101",
+  "created_on": "2026-11-01",
+  "scope": "日常接合、幾何約束與精密運動；2895舊raw檢索後保留23題。候選只到題級初篩，不是操作教學或成片證據。",
+  "sources": [
+    {
+      "id": "J6-S001",
+      "url": "https://pergatory.mit.edu/kinematiccouplings/documents/Theses/hale_thesis/Practical_Exact_Constraint.pdf",
+      "title": "Practical Exact-Constraint Design, Chapter 6",
+      "publisher": "Lawrence C. Hale; MIT-hosted thesis chapter",
+      "accessed_on": "2026-11-01",
+      "read_via": "web PDF text; later ordinary urllib HTTP + PyMuPDF text extraction, selected pages actually read",
+      "reading_scope": "讀印頁174–179的6.1、6.1.1與6.1.2；未讀全51頁、未重算矩陣或接觸應力。",
+      "locator": "§6.1, p174; §6.1.2, pp177–178, Figures 6-4/6-5",
+      "summary": "獨立約束、接點摩擦與曲率匹配的定位取捨。",
+      "version": "MIT託管章節；本次未從章節核定論文出版年。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S002",
+      "url": "https://pergatory.mit.edu/2.007/resources/FUNdaMENTALs%20Book%20pdf/FUNdaMENTALs%20Topic%209.PDF",
+      "title": "FUNdaMENTALS of Design, Topic 9: Structural Connections & Interfaces",
+      "publisher": "Alexander Slocum / MIT",
+      "accessed_on": "2026-11-01",
+      "read_via": "ordinary urllib HTTP PDF download + PyMuPDF selected-page text read",
+      "reading_scope": "實讀PDF第18/20頁螺接載荷與剛性、第62/64頁彈性平均與過約束；不採壓力設備設計或加工操作。",
+      "locator": "Bolted Joints: Mechanics (PDF p18); Elastic Averaging (PDF p62); Elastic Averaging: Over Constraint (PDF p64)",
+      "summary": "外載由預緊接合的剛性分攤；多個柔順接點可吸收局部誤差。",
+      "version": "©2008; slides dated 1/1/2008",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S003",
+      "url": "https://pergatory.mit.edu/2.007/resources/FUNdaMENTALs%20Book%20pdf/FUNdaMENTALs%20Topic%2010.PDF",
+      "title": "FUNdaMENTALS of Design, Topic 10: Bearings",
+      "publisher": "Alexander Slocum / MIT",
+      "accessed_on": "2026-11-01",
+      "read_via": "ordinary urllib HTTP PDF download + PyMuPDF selected-page text read",
+      "reading_scope": "實讀PDF第16、28、30、32、34、50頁；第12頁工具輸出曾截斷，不用其未顯示內容。只採幾何、載荷路徑與定性流體機制。",
+      "locator": "Rotary Motion: Ball Bearings (PDF p16); Contact Bearings: Flexural (p28), Flexural Rolling (p30); Non-Contact Bearings: Hydrodynamic (p32), Aerostatic & Hydrostatic (p34)",
+      "summary": "接觸幾何、彈性導引與流體支承如何改變誤差及承載。",
+      "version": "©2008; slides dated 1/1/2008",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S004",
+      "url": "https://www.thk.com/us/en/products/ball_screw/selection/0008/",
+      "title": "Selecting a Nut",
+      "publisher": "THK",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open HTML body",
+      "reading_scope": "讀 Types by Ball Circulation Method、Types by Preloading Method，包含末段四點/二點接觸比較；不採產品壽命優越性宣稱。",
+      "locator": "Types by Ball Circulation Method; Types by Preloading Method, final paragraph on four-point contact",
+      "summary": "回流路徑維持滾珠循環；多接觸點可帶來差動滑移與旋滑。",
+      "version": "網站當期頁；頁內未標修訂版號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S005",
+      "url": "https://pergatory.mit.edu/2.007/resources/FUNdaMENTALs%20Book%20pdf/FUNdaMENTALs%20Topic%206.PDF",
+      "title": "FUNdaMENTALS of Design, Topic 6: Power Transmission Elements II",
+      "publisher": "Alexander Slocum / MIT",
+      "accessed_on": "2026-11-01",
+      "read_via": "ordinary urllib HTTP PDF download + PyMuPDF selected-page text read",
+      "reading_scope": "實讀PDF第6/8/16/36頁的螺桿、摩擦逆驅、差動位移與減速器段；第40頁輸出截斷，不採用。",
+      "locator": "Screws: Leadscrews & Ballscrews (PDF p6); Screws: Forces (p8); Leadscrews: Differential Motion (p16)",
+      "summary": "回流、螺紋誤差、逆驅門檻與兩段導程相減。",
+      "version": "©2008; slides dated 1/1/2008",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S006",
+      "url": "https://www.hds.co.jp/english/products/hd_theory/",
+      "title": "Principle of HarmonicDrive®",
+      "publisher": "Harmonic Drive Systems Inc.",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open/find HTML body",
+      "reading_scope": "實讀 Utilizing the flexibility of metals 與 Principles of motion；產品特性段僅識別、不採零誤差或效率排行。",
+      "locator": "Utilizing the flexibility of metals; Principles of motion, 0/180/360 degree descriptions",
+      "summary": "橢圓變形移動嚙合區，齒數差使輸出緩慢反轉。",
+      "version": "當期官網頁；未標修訂版號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S007",
+      "url": "https://www.lesjofors.com/en/technology/insights/what-are-constant-force-springs/",
+      "title": "What are constant force springs? How they work and typical uses",
+      "publisher": "Lesjöfors",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open HTML body",
+      "reading_scope": "實讀 What is a constant force spring、How do constant force springs work 與 Window counterbalance systems；不採該頁coiled儲能句，也不採安裝及壽命數字。",
+      "locator": "How do constant force springs work, first paragraph; Window counterbalance systems",
+      "summary": "剩餘捲曲半徑變化小，金屬帶在工作行程內提供近固定拉力。",
+      "version": "Published 2026-02-27",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S008",
+      "url": "https://productdesignonline.com/wp-content/uploads/2019/08/Snap-Fit-Design-Manual.pdf",
+      "title": "Snap-Fit Design Manual",
+      "publisher": "BASF Performance Polymers; PDF mirror hosted by Product Design Online",
+      "accessed_on": "2026-11-01",
+      "read_via": "web PDF text; ordinary urllib HTTP failed 403",
+      "reading_scope": "實讀Part II及Part III，印頁II-1、III-1至III-3；只採BASF署名原文原理，非鏡像網站的二手解說。",
+      "locator": "Part III, Snap-Fit Design Using Classical Beam Theory, III-1 to III-3 (PDF pp8–10)",
+      "summary": "彈性臂越過倒鉤；進退斜面不同使組拆力不同。",
+      "version": "PDF本次讀取段未顯示正式版次；2019僅鏡像URL路徑，不當出版年。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S009",
+      "url": "https://www.parker.com/content/dam/Parker-com/Literature/Praedifa/Catalogs/Catalog_O-Ring-Handbook_PTD5705-EN.pdf",
+      "title": "O-Ring Handbook, PTD5705-EN",
+      "publisher": "Parker Hannifin / Prädifa",
+      "accessed_on": "2026-11-01",
+      "read_via": "web PDF open/find body; ordinary urllib HTTP failed 403",
+      "reading_scope": "實讀§1.1、§10.2–10.4，並看§10.5及§4抗擠出環說明但不採規格或維修步驟；沒有讀全152頁。",
+      "locator": "§1.1 p7; §10.2 pp114–115; §10.4 p116",
+      "summary": "壓力改變橡膠接觸與擠出；不均勻滑滾造成環體扭轉。",
+      "version": "官方檔名PTD5705-EN；讀取段未核定印刷年月。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "J6-S010",
+      "url": "https://pergatory.mit.edu/2.007/resources/FUNdaMENTALs%20Book%20pdf/FUNdaMENTALs%20Topic%203.PDF",
+      "title": "FUNdaMENTALS of Design, Topic 3: Fundamental Principles",
+      "publisher": "Alexander Slocum / MIT",
+      "accessed_on": "2026-11-01",
+      "read_via": "ordinary urllib HTTP PDF download + PyMuPDF selected-page text read",
+      "reading_scope": "實讀PDF第24頁 Abbe’s Principle: Locating Components；不採固定10倍精度概括，不採其操作題。",
+      "locator": "Abbe’s Principle: Locating Components (PDF p24; slide 3-12 follows on p25)",
+      "summary": "量測線與導引線分離時，角度偏移成為端點位置誤差。",
+      "version": "©2008; slides dated 1/1/2008",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "J6001",
+      "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.independent_exact_constraints",
+      "answer_target": "六個獨立接觸約束可限制剛體六自由度；冗餘約束反而可能互相衝突。",
+      "scope": "以三V槽與3-2-1接點示意；不是任意六點，也不把接觸面當數學零面積。",
+      "source_ids": [
+        "J6-S001"
+      ],
+      "source_locator": "§6.1 p174; §6.1.2 pp177–178, Figure 6-4",
+      "premise_status": "screened",
+      "notes": "來源直接例子：可拆接定位耦合。新問題是獨立約束方向，非單純摩擦固定。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "接點數之外，還要看每個接點限制哪個方向。",
+        "visual": "逐次加入接點，先剩自由轉動，再剛好定位，最後對照多加一個略偏的接點。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "J6002",
+      "question": "同一個底座放回同一組槽，為什麼仍可能每次停在稍微不同的位置？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.kinematic_seating_friction_compliance",
+      "answer_target": "接點摩擦阻礙完全歸位，並與接合的彈性變形共同形成不同停靠狀態。",
+      "scope": "限定可拆接定位的重複性；不以加大夾力保證更準，不給潤滑施工建議。",
+      "source_ids": [
+        "J6-S001"
+      ],
+      "source_locator": "§6.1.2 p177, nesting force and nonrepeatability paragraphs",
+      "premise_status": "screened",
+      "notes": "來源直接例子：kinematic coupling。和P005起動摩擦近似，但新增多接點依序就座及彈性殘留，列待覆核。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "幾何上有唯一位置，不代表每次都能順利到達。",
+        "visual": "同一槽以兩種初始偏位進入，標明接點停滯與剩餘彈性偏差。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "J6003",
+      "question": "定位槽做得更貼合圓球，為什麼承得更穩卻可能更難接上？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.conformal_contact_capture_range_tradeoff",
+      "answer_target": "曲率更匹配可擴大接觸區；特定凹弧配球的構形卻縮小可順利捕捉的偏位範圍。",
+      "scope": "限Hale圖6-5兩種等有效曲率的V約束比較，不說所有大接觸面必然難裝。",
+      "source_ids": [
+        "J6-S001"
+      ],
+      "source_locator": "§6.1.2 p178, Figure 6-5 and definition of capture",
+      "premise_status": "screened",
+      "notes": "來源直接比較：大半徑局部球面與球配凹弧；生活底座只是原創包裝。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "承載接觸和容許偏位是兩個不同設計目標。",
+        "visual": "同一偏位從兩組接點上方落入，並排接觸區與可接入範圍。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "J6004",
+      "question": "接點多了會互相卡住，為什麼有些精密接合偏偏用很多小接點？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.elastic_averaging_local_compliance",
+      "answer_target": "許多能局部順應的小接點吸收製造偏差，集合後仍可穩定定位；這不同於少數硬約束互相頂住。",
+      "scope": "彈性平均的定性比較，不承諾任意誤差必按平方根減少。",
+      "source_ids": [
+        "J6-S002"
+      ],
+      "source_locator": "Elastic Averaging, PDF p62; Elastic Averaging: Over Constraint, PDF p64",
+      "premise_status": "screened",
+      "notes": "來源直接原理；原創畫面用多個高低略異接點，不冒稱已量測精度。與J6001是兩種處理誤差的條件，需覆核是否應同核。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "問題不是接點越少越好，而是誤差有沒有可容納的地方。",
+        "visual": "少數剛性凸點互頂，對照多個可輕微變形接點共同承載。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "J6005",
+      "question": "已鎖緊的兩塊板被拉開時，新增拉力會全部加在螺栓上嗎？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.preloaded_joint_external_load_partition",
+      "answer_target": "接合未分離時，外載同時增加螺栓拉力並減少夾件壓力，分攤取決於相對剛性。",
+      "scope": "含夾件卸壓至分離的邊界；不提供鎖付扭矩、承載或維修判斷。",
+      "source_ids": [
+        "J6-S002"
+      ],
+      "source_locator": "Bolted Joints: Mechanics, PDF p18; stiffness discussion PDF p20",
+      "premise_status": "screened",
+      "notes": "來源直接模型；D2180已講預緊，本題只新增外載路徑與分離前後，列近似覆核。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "外力的一部分先解除原有壓縮，不是單純相加。",
+        "visual": "兩條力曲線隨外拉增加，一條上升、一條夾力下降，到分離處改變斜率。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "J6006",
+      "question": "一整塊金屬沒有鉸鏈，中央平台怎麼還能移動？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.flexure_guidance_by_anisotropic_bending",
+      "answer_target": "薄片在指定方向容易彎曲、其他方向較難變形，可兼任導引與回復彈簧，省去滑動接點。",
+      "scope": "小行程柔性導引，不宣稱無疲勞、無熱漂或無任何誤差。",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "source_locator": "Contact Bearings: Flexural, PDF p28",
+      "premise_status": "screened",
+      "notes": "來源直接例子：monolithic flexure。不是另講彈性模數；聚焦方向約束及不需滑動配合。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "活動不一定靠兩個零件相互滑動。",
+        "visual": "完整板上的薄片與平台著色，依序嘗試橫向、側向與轉動，展示不同柔順方向。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "J6007",
+      "question": "柔性平台明明向右推，為什麼還會偷偷上下偏移？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.flexure_parasitic_motion_and_folded_cancellation",
+      "answer_target": "有限彎曲幾何產生寄生位移及俯仰；對稱折返的柔性構形可使部分誤差互相抵消。",
+      "scope": "同一核心包含誤差與折返補償；不把近似抵消說成任意行程完美直線。",
+      "source_ids": [
+        "J6-S001",
+        "J6-S003"
+      ],
+      "source_locator": "Hale §6.1.1 pp175–176; MIT Topic10 Contact Bearings: Flexural, PDF p28",
+      "premise_status": "screened",
+      "notes": "來源直接模型；與D2114平行四邊形保持姿態相比，此處追蹤彈性變形的非理想路徑。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有摩擦，不代表幾何路徑就完全筆直。",
+        "visual": "放大平台橫移和法向微移，再疊上翻轉的第二組薄片，追蹤誤差箭頭。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "J6008",
+      "question": "兩個圓面只靠薄帶綁在一起，為什麼能轉動又不散開？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.rolling_flexure_separate_load_paths",
+      "answer_target": "圓面接觸承受壓縮，薄帶承受拉伸與剪向約束；兩者分工形成受限制的滾動接頭。",
+      "scope": "限定教材rolling-contact flexure；不保證任意薄帶或大負載都純滾無滑。",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "source_locator": "Contact Bearings: Flexural Rolling, PDF p30",
+      "premise_status": "screened",
+      "notes": "來源直接機構；不延伸醫療植入適用性，不提供製作尺寸。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一接頭可以把不同方向的力交給不同部件。",
+        "visual": "滾動圓面和兩條薄帶分色，逐一加壓縮、拉開、切向力，畫出各自傳力路徑。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "J6009",
+      "question": "軸承轉快一點反而比較不磨，為什麼再快又更費力？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.hydrodynamic_wedge_stribeck_regimes",
+      "answer_target": "運動把黏性液體帶入收斂間隙並建立承載壓力；接觸減少後，黏性剪切又隨速度增加。",
+      "scope": "一題涵蓋邊界、混合到完整油膜的轉換；不概括任意速度升高必先降摩擦。",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "source_locator": "Non-Contact Bearings: Hydrodynamic, PDF p32",
+      "premise_status": "screened",
+      "notes": "來源直接機制與Stribeck曲線；新於D2226/27的油量循環及攪油損失。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "油不只隔開表面，流動還會自己建立支承壓力。",
+        "visual": "收斂油隙和表面微接觸並排，沿定性曲線切換承載方式。",
+        "seconds": [
+          85,
+          115
+        ]
+      }
+    },
+    {
+      "id": "J6010",
+      "question": "平台不移動，油膜怎麼仍能承重，而且壓下去還會頂回來？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.hydrostatic_restrictor_gap_pressure_feedback",
+      "answer_target": "外供壓力經入口節流；承載間隙變小時出口阻力增大，油腔壓力上升，產生回復支承。",
+      "scope": "固定入口節流的靜壓軸承；不套用所有氣墊玩具，不給壓力值或自製指引。",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "source_locator": "Non-Contact Bearings: Aerostatic & Hydrostatic, PDF p34",
+      "premise_status": "screened",
+      "notes": "來源直接機制；正文一處gap cubed措辭含混，本題只採其間隙減小→阻力增加的明確方向。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外接壓力還不夠，節流與間隙共同提供位置回饋。",
+        "visual": "固定供壓、入口阻力、油腔與出口間隙四格，壓低平台後同步更新壓力箭頭。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "J6011",
+      "question": "螺帽一路往前走，裡面的滾珠為什麼不在盡頭塞成一團？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.ball_screw_recirculation_loop",
+      "answer_target": "滾珠離開承載滾道後經回流通道返回入口，循環連接有限長度的螺帽。",
+      "scope": "合併回流管、導向器與端蓋為同一核心，不按零件名稱各出一題。",
+      "source_ids": [
+        "J6-S004",
+        "J6-S005"
+      ],
+      "source_locator": "THK Types by Ball Circulation Method; MIT Topic6 Screws: Leadscrews & Ballscrews, PDF p6",
+      "premise_status": "screened",
+      "notes": "來源直接例子；回流路徑非潤滑油循環，不給拆解教學。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "滾珠並非固定跟著螺帽走，必須另有回程。",
+        "visual": "追蹤一顆紅球從受載槽出來，走無載回流道再進入，其他球灰色。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "J6012",
+      "question": "滾珠被四個方向抱得更緊，為什麼反而可能多出摩擦熱？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.multipoint_ball_contact_differential_slip",
+      "answer_target": "四點接觸的幾何可造成差動滑移與旋滑；接觸更多不等於每處都能理想純滾。",
+      "scope": "比較頁述四點與二點接觸，不宣稱所有四點軸承都較差或提供效率數值。",
+      "source_ids": [
+        "J6-S004",
+        "J6-S003"
+      ],
+      "source_locator": "THK Types by Preloading Method, final paragraph; MIT Topic10 Rotary Motion: Ball Bearings, PDF p16",
+      "premise_status": "screened",
+      "notes": "來源直接比較；和D2223低負載帶不動滾動體不同，這裡由多接觸幾何產生滑移。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "滾動零件也可能在接觸處滑動。",
+        "visual": "同一顆球標多處接觸與表面速度方向，以局部不相容凸顯滑移，不冒造實測熱像。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "J6013",
+      "question": "軸承內外圈看起來都沒缺口，滾珠當初是怎麼裝進去的？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.conrad_bearing_eccentric_assembly",
+      "answer_target": "先讓內外圈偏心騰出一側空間裝球，再將球分散使兩圈同心，保持架維持間隔。",
+      "scope": "限Conrad深溝球軸承的裝球構形，不擴成所有軸承或拆修教學。",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "source_locator": "Rotary Motion: Ball Bearings, PDF p16, Conrad assembly paragraph",
+      "premise_status": "screened",
+      "notes": "來源直接裝配幾何；不採該頁自行車發明史及固定承載提升比例。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "成品的封閉幾何，不等於裝配過程也保持同心。",
+        "visual": "三格原創剖面：偏心留空、球移到周圍、保持架分隔；不畫敲擊工具。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "J6014",
+      "question": "軸稍微歪了，有些軸承為什麼可以跟著歪而不硬扛？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.self_aligning_bearing_common_spherical_center",
+      "answer_target": "共球心的外圈滾道讓內圈與滾動體組合傾斜，減少不對中強迫變形所生的附加負載。",
+      "scope": "限自調心軸承的可容許角度；不說任意偏移、彎曲或負載都能消除。",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "source_locator": "Rotary Motion: Ball Bearings, PDF p16, self-aligning paragraphs",
+      "premise_status": "screened",
+      "notes": "來源直接機構。與J6003接觸曲率取捨近似，這裡核心是允許轉角自由度；若只剩功能介紹則併例。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "順應一種偏斜，有時比更硬地抵抗它更有效。",
+        "visual": "直軸/微斜軸兩狀態，球面共同中心固定，對照硬性固定時的額外變形箭頭。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "J6015",
+      "question": "有些螺桿能頂起重物，重物卻不容易反過來把螺桿轉動？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.screw_backdrive_friction_geometry_threshold",
+      "answer_target": "逆向負載能否沿螺旋面推回，取決於導程角與摩擦；摩擦可使系統自鎖。",
+      "scope": "定性比較自鎖與可逆驅，不把自鎖當安全制動，不給載人或維修建議。",
+      "source_ids": [
+        "J6-S005"
+      ],
+      "source_locator": "Screws: Forces, PDF p8, backdriveability paragraph",
+      "premise_status": "screened",
+      "notes": "來源直接機制；P033明列摩擦與效率另查，本題研究方向可逆性而非再算機械利益。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "省力比和會不會倒退，是不同問題。",
+        "visual": "把螺旋面展成斜面，以同一外載比較兩種角度與摩擦方向，最後捲回螺桿。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    },
+    {
+      "id": "J6016",
+      "question": "螺桿每次都轉一圈，平台為什麼不一定每次前進一樣遠？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.screw_lead_and_helix_geometry_errors",
+      "answer_target": "實際導程及螺旋形狀誤差使轉角到位移的對應偏離理想，還可能帶來擺動。",
+      "scope": "只講同向運動的幾何誤差，反向空程歸D2124；不把示意誤差畫成任何產品的量測。",
+      "source_ids": [
+        "J6-S005"
+      ],
+      "source_locator": "Screws: Leadscrews & Ballscrews, PDF p6, lead error and thread drunkenness paragraph",
+      "premise_status": "screened",
+      "notes": "來源直接誤差類型；原創以等角度刻度作對照，不搬教材圖。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讀到正確轉角，不代表被推動端就到正確位置。",
+        "visual": "相同角度標記對上略不等距的實際螺紋，累積位置偏差用誇張刻度揭示。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "J6017",
+      "question": "兩段都不算細的螺紋，怎麼一起調出很小的位移？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.differential_screw_relative_lead_cancellation",
+      "answer_target": "同向但導程不同的兩段螺紋，使兩螺帽相對位移取兩段位移之差。",
+      "scope": "定義導程為每轉軸向距離；一端螺帽固定，螺桿本身可軸向移動。不同於把一段螺紋刻更密。",
+      "source_ids": [
+        "J6-S005"
+      ],
+      "source_locator": "Leadscrews: Differential Motion, PDF p16, first three paragraphs",
+      "premise_status": "screened",
+      "notes": "來源直接機構；與P033比，新增兩端共同約束與相對運動。列近似待覆核，不拆左右牙加法另一題。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "精細調整也能來自兩個較大位移相減。",
+        "visual": "固定螺帽、移動螺桿、另一螺帽分三色，畫出地面座標與相對座標兩套箭頭。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "J6018",
+      "question": "把齒輪故意壓成橢圓，怎麼反而能做出很大的減速比？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.strain_wave_moving_mesh_tooth_difference",
+      "answer_target": "波發生器移動柔輪的嚙合區；在剛輪固定、齒數相差兩齒的配置中，每轉使柔輪反向移兩齒。",
+      "scope": "只採官網雙波、固定剛輪例；不宣稱零誤差、永不磨損或通用齒數。",
+      "source_ids": [
+        "J6-S006"
+      ],
+      "source_locator": "Utilizing the flexibility of metals; Principles of motion",
+      "premise_status": "screened",
+      "notes": "來源直接機構；不同於D2125行星架帶動剛性行星輪，重點是循環變形與移動嚙合。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "輸出追隨的是齒數差，不是橢圓形狀直接轉一圈。",
+        "visual": "在柔輪標一顆紅齒，分開追蹤橢圓長軸與紅齒位置的0/180/360度圖。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "J6019",
+      "question": "有些捲帶拉長很多，拉力為什麼沒有一直變大？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.constant_force_strip_curvature_transition",
+      "answer_target": "金屬帶逐段從固定曲率附近展直，剩餘捲曲半徑變化小，使工作行程內拉力近似固定。",
+      "scope": "恒力捲帶，不是普通捲尺或所有螺旋彈簧；不採來源coiled即儲能的含混句。",
+      "source_ids": [
+        "J6-S007"
+      ],
+      "source_locator": "How do constant force springs work, first paragraph",
+      "premise_status": "screened",
+      "notes": "來源直接機制，窗扇平衡為頁上例子；與D2222彈簧預壓的用途不同，本題解釋近恒力怎麼形成。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "延長的是被展開的帶長，局部彎曲轉換仍很相似。",
+        "visual": "兩種拉出長度並排，圈出相似曲率的轉換區，再對照一般拉簧的上升力曲線。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "J6020",
+      "question": "塑膠卡扣為什麼容易壓進去，反過來卻很難直接拔出？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.cantilever_snap_undercut_asymmetric_ramps",
+      "answer_target": "彈性臂先彎曲越過倒鉤；進入和退出斜面不同，改變所需推力及能否直接退回。",
+      "scope": "合併倒鉤深度與兩向斜面為一機制；不教撬開產品，不保證所有卡扣可重複拆。",
+      "source_ids": [
+        "J6-S008"
+      ],
+      "source_locator": "Part III, III-1 to III-3 (PDF pp8–10)",
+      "premise_status": "screened",
+      "notes": "來源直接機制；不把不同材料、U/L形等逐一計新核心。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回彈完成後，返回的路和進入的路並不對稱。",
+        "visual": "同一剖面重播正反方向，臂彎曲、越過、回彈三階段清楚分開。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "J6021",
+      "question": "水壓增大時，橡膠密封圈為什麼可能更貼緊，卻也可能被擠壞？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.oring_pressure_energization_and_gap_extrusion",
+      "answer_target": "受壓橡膠改變形狀並增加接觸壓力；有間隙時又可能被擠入而受剪切損傷。",
+      "scope": "把增密與擠出視為同一壓力路徑的條件比較；不給耐壓值、選型或水管拆修指引。",
+      "source_ids": [
+        "J6-S009"
+      ],
+      "source_locator": "§1.1 p7; §10.2 pp114–115, Figures 10.1–10.7",
+      "premise_status": "screened",
+      "notes": "來源直接機制；和B4010密封件夾緊不同，這裡由工作流體壓力改變接觸與失效。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壓力既可能幫助貼合，也可能把材料送進不該去的間隙。",
+        "visual": "固定橡膠環剖面，逐步顯示預壓接觸、壓力推貼、間隙擠入三種狀態。",
+        "seconds": [
+          65,
+          105
+        ]
+      }
+    },
+    {
+      "id": "J6022",
+      "question": "一圈橡膠只是來回摩擦，為什麼會留下螺旋狀傷痕？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.oring_differential_sliding_rolling_twist",
+      "answer_target": "偏心等原因造成周向壓縮不均，部分環段滑動、部分滾動，使環體累積扭轉。",
+      "scope": "限Parker動密封的機制例；螺旋痕跡不是僅憑外觀即可診斷的唯一成因。",
+      "source_ids": [
+        "J6-S009"
+      ],
+      "source_locator": "§10.4 p116, dynamic application paragraph",
+      "premise_status": "screened",
+      "notes": "來源直接機制；不是一般摩耗或聚合物鬆弛，需畫出同一圈各段不同運動。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不同位置的移動方式不一致，可以把整個閉環扭起來。",
+        "visual": "環表面畫連續色線，左右側分別滑/滾，色線逐漸成扭轉路徑。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "J6023",
+      "question": "尺上的讀值沒變，遠離尺身的測量端為什麼還可能跑掉？",
+      "domain": "日常機構與精密運動",
+      "mechanism_key": "mechanisms.abbe_offset_angular_error",
+      "answer_target": "導引的微小角偏差，會透過量測線的橫向偏距形成端點位置誤差。",
+      "scope": "用卡尺與同軸量測示意；不宣稱某類工具固定準幾倍，也不教校正合格判定。",
+      "source_ids": [
+        "J6-S010"
+      ],
+      "source_locator": "Abbe’s Principle: Locating Components, PDF p24",
+      "premise_status": "screened",
+      "notes": "來源直接量具例子；量測追溯、隨機誤差統計不等於本題幾何放大。 題級初篩；未逐句核稿、未實測或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "尺有多細和量測線放在哪裡，是兩個獨立問題。",
+        "visual": "同一角度晃動搭配短/長量爪偏距，再把讀尺線移到量測線上比較。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "J6-NA001",
+      "question": "螺絲鎖緊後為什麼像彈簧？",
+      "existing_id": "D2180",
+      "source_ids": [
+        "J6-S002"
+      ],
+      "reason": "預緊儲能已有；本批僅J6005另研究外載分攤。"
+    },
+    {
+      "id": "J6-NA002",
+      "question": "相同扭矩為什麼鎖出不同夾力？",
+      "existing_id": "D2182",
+      "source_ids": [
+        "J6-S005"
+      ],
+      "reason": "螺紋/頭部摩擦分配已有，不換成不同螺帽再算。"
+    },
+    {
+      "id": "J6-NA003",
+      "question": "機器振動為什麼會讓螺絲鬆開？",
+      "existing_id": "D2181",
+      "source_ids": [],
+      "reason": "舊核心已有橫向滑移與鬆脫，無新直接來源條件。"
+    },
+    {
+      "id": "J6-NA004",
+      "question": "滾珠螺桿反轉時為什麼先空走？",
+      "existing_id": "D2124",
+      "source_ids": [
+        "J6-S005"
+      ],
+      "reason": "同為方向反轉先跨接觸間隙，保留螺桿作例。"
+    },
+    {
+      "id": "J6-NA005",
+      "question": "兩個螺帽相頂為什麼能減少空隙？",
+      "existing_id": "D2221",
+      "source_ids": [
+        "J6-S004"
+      ],
+      "reason": "預壓消隙和剛性已有；不把雙螺帽另計新原理。"
+    },
+    {
+      "id": "J6-NA006",
+      "question": "軸承彈簧預壓和固定位置預壓差在哪？",
+      "existing_id": "D2222",
+      "source_ids": [
+        "J6-S004"
+      ],
+      "reason": "來源有比較，但舊題已包含這個決定條件。"
+    },
+    {
+      "id": "J6-NA007",
+      "question": "軸承負載太輕為什麼會打滑？",
+      "existing_id": "D2223",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "reason": "已含最低載荷與滾動體滑移；J6012只保留多點幾何差動滑移。"
+    },
+    {
+      "id": "J6-NA008",
+      "question": "熱脹為什麼讓軸承越轉越緊？",
+      "existing_id": "D2225",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "reason": "裝配/運行游隙與溫升條件已有，且P075已有受限熱脹。"
+    },
+    {
+      "id": "J6-NA009",
+      "question": "夾具越過死點為什麼能留在夾緊位置？",
+      "existing_id": "D2116",
+      "source_ids": [],
+      "reason": "舊連桿死點核心，不只換夾具名稱。"
+    },
+    {
+      "id": "J6-NA010",
+      "question": "單向離合器為什麼一邊轉得動、一邊卡住？",
+      "existing_id": "D2127",
+      "source_ids": [],
+      "reason": "楔隙自鎖已收錄，不新增同類零件。"
+    },
+    {
+      "id": "J6-NA011",
+      "question": "卡扣放久後為什麼越來越鬆？",
+      "existing_id": "H3090",
+      "source_ids": [
+        "J6-S008"
+      ],
+      "reason": "固定形變的聚合物應力鬆弛已涵蓋密封及壓配，換卡扣不新增核心。"
+    },
+    {
+      "id": "J6-NA012",
+      "question": "把卡扣做薄或改成U形為什麼比較好彎？",
+      "existing_id": "P103",
+      "source_ids": [
+        "J6-S008"
+      ],
+      "reason": "目前僅剛性隨幾何改變，未新增足夠機制，不按形狀分題。"
+    },
+    {
+      "id": "J6-NA013",
+      "question": "密封圈被壓久後為什麼不再彈回？",
+      "existing_id": "H3090",
+      "source_ids": [
+        "J6-S009"
+      ],
+      "reason": "應力鬆弛/時間依賴材料已有；Parker本段未支持足夠不同的新微觀機制。"
+    },
+    {
+      "id": "J6-NA014",
+      "question": "齒輪的齒數改變，為什麼轉速跟著變？",
+      "existing_id": "D2123",
+      "source_ids": [
+        "J6-S006"
+      ],
+      "reason": "既有齒輪傳動比；本批只留下移動變形嚙合的新構造。"
+    },
+    {
+      "id": "J6-NA015",
+      "question": "直線平台的導引越硬一定越好嗎？",
+      "existing_id": "J6001",
+      "source_ids": [
+        "J6-S001",
+        "J6-S002"
+      ],
+      "reason": "過約束造成衝突已併入本批獨立約束核心，不另拆功能式提問。"
+    },
+    {
+      "id": "J6-NA016",
+      "question": "柔性導引把第二組翻過來，為什麼更接近直線？",
+      "existing_id": "J6007",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "reason": "屬寄生位移的改善段，已和問題合為一核心。"
+    },
+    {
+      "id": "J6-NA017",
+      "question": "油膜軸承轉太快為什麼摩擦又增加？",
+      "existing_id": "J6009",
+      "source_ids": [
+        "J6-S003"
+      ],
+      "reason": "Stribeck曲線的完整同一因果，不能把條件邊界另計一題。"
+    },
+    {
+      "id": "J6-NA018",
+      "question": "密封圈旁邊加硬環，為什麼比較不會被擠進縫裡？",
+      "existing_id": "J6021",
+      "source_ids": [
+        "J6-S009"
+      ],
+      "reason": "抗擠出支承只是同一失效機制的解法，留作條件圖不另計。"
+    }
+  ]
+}

@@ -1,0 +1,805 @@
+{
+  "batch_id": "wave7-optics-20261101",
+  "created_on": "2026-11-01",
+  "scope": "光學、成像與量測：幾何量測、透明物顯影、光學切片、色彩量測。非配額；題級研究候選，不是腳本核准。",
+  "sources": [
+    {
+      "id": "O7-S001",
+      "url": "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/telecentric-design-topics/",
+      "title": "Telecentric Design Topics",
+      "publisher": "Edmund Optics",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "Imaging Resource Guide §4.4；Object Space Telecentricity；Image Space Telecentricity；Double Telecentricity",
+      "locator": "Imaging Resource Guide §4.4；Object Space Telecentricity；Image Space Telecentricity；Double Telecentricity",
+      "summary": "主光線平行可使放大率對物距變化不敏感；像方與物方的作用分開。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "urllib 403；web.open 成功。正文對 entrance pupil 的像方無限遠措辭不採，只用物方主光線平行的幾何說明；不採最準確或保證零誤差。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S002",
+      "url": "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/distortion-and-the-telecentricity-specification/",
+      "title": "Distortion and Telecentricity",
+      "publisher": "Edmund Optics",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "§4.2 首段、Fig.1、波形畸變及 telecentricity 段、Fig.4 前後",
+      "locator": "§4.2 首段、Fig.1、波形畸變及 telecentricity 段、Fig.4 前後",
+      "summary": "透視與場內畸變不同；遠心性不保證所有畸變消失，傾斜仍有幾何投影。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "urllib 403；web.open 成功。圖說與正文實讀，未取得產品實測資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S003",
+      "url": "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/distortion/",
+      "title": "Distortion",
+      "publisher": "Edmund Optics",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "§3.3 開頭；How is Distortion Specified?；Examples of Distorted Curves；Geometric Distortion vs. TV Distortion；Keystone Distortion",
+      "locator": "§3.3 開頭；How is Distortion Specified?；Examples of Distorted Curves；Geometric Distortion vs. TV Distortion；Keystone Distortion",
+      "summary": "場內放大率不均可搬移像點；校正依工作距離與波段，不能補回取樣已損失的細節。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "只採原理段，不採產品效能或選購宣傳。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S004",
+      "url": "https://www.opto-e.com/en/basics/scheimpflug-optics",
+      "title": "Scheimpflug optics",
+      "publisher": "Opto Engineering",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTTP 取得 HTML；Python HTMLParser 擷取段落後實讀指定小節",
+      "reading_scope": "Scheimpflug optics 正文：傾斜物面與像面共軛、感測面傾斜段",
+      "locator": "Scheimpflug optics 正文：傾斜物面與像面共軛、感測面傾斜段",
+      "summary": "調整像面傾角可讓清晰面貼合斜物面；仍有機械與遮光限制。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "只採原理段，不採產品效能或選購宣傳。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S005",
+      "url": "https://www.microscopyu.com/techniques/phase-contrast/introduction-to-phase-contrast-microscopy",
+      "title": "Introduction to Phase Contrast Microscopy",
+      "publisher": "Nikon MicroscopyU",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTTP 取得 HTML；Python HTMLParser 擷取段落後實讀指定小節",
+      "reading_scope": "The Phase Contrast Microscope；Interpretation of Phase Contrast Images；Figs.6–8 與 halo/shade-off 正文",
+      "locator": "The Phase Contrast Microscope；Interpretation of Phase Contrast Images；Figs.6–8 與 halo/shade-off 正文",
+      "summary": "相位板選擇改變背景波與繞射波的相對相位及振幅；低空間頻率也被相位環改變時會產生亮邊與中央淡化。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "只讀上述原理與影像解讀段。採薄、弱相位物近似，不把任何樣本的亮暗唯一換算密度；未操作互動教材或使用來源圖片。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S006",
+      "url": "https://www.microscopyu.com/techniques/stereomicroscopy/darkfield-illumination",
+      "title": "Darkfield Illumination",
+      "publisher": "Nikon MicroscopyU",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTTP 取得 HTML；Python HTMLParser 擷取段落後實讀指定小節",
+      "reading_scope": "Figs.1–4 前後：中央遮光、斜入射未散射光不入物鏡、透明纖維比較；末段污染散射限制",
+      "locator": "Figs.1–4 前後：中央遮光、斜入射未散射光不入物鏡、透明纖維比較；末段污染散射限制",
+      "summary": "把未散射照明排除於接收角度之外，偏折或散射光可在黑背景形成影像。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "不採商品或取血示範；亮邊不可直接當精確幾何邊界，灰塵也會形成訊號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S007",
+      "url": "https://micro.magnet.fsu.edu/primer/techniques/dic/dicintro.html",
+      "title": "Differential Interference Contrast — Fundamental Concepts",
+      "publisher": "Florida State University / National High Magnetic Field Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "Fundamental Concepts，開頭至 Fig.2；Optical Configuration 的分束、重合與 analyzer 段",
+      "locator": "Fundamental Concepts，開頭至 Fig.2；Optical Configuration 的分束、重合與 analyzer 段",
+      "summary": "相鄰兩束光比較光程差，再重合成強度；浮雕般明暗不直接等於表面高度。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "原嘗試 Nikon 推測網址 HTTP 500、FSU urllib 未成功取得可讀檔；FSU web.open 正文成功。未採其宣傳式解析度改善量。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S008",
+      "url": "https://www.microscopyu.com/techniques/confocal/introductory-confocal-concepts",
+      "title": "Introductory Confocal Concepts",
+      "publisher": "Nikon MicroscopyU",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTTP 取得 HTML；Python HTMLParser 擷取段落後實讀指定小節",
+      "reading_scope": "開頭、Figs.1–2；Evolution of Confocal Microscopy 中 Minsky 雙針孔與 spatial filtering 段",
+      "locator": "開頭、Figs.1–2；Evolution of Confocal Microscopy 中 Minsky 雙針孔與 spatial filtering 段",
+      "summary": "共焦針孔對焦外光作空間篩選，逐點掃描可建立光學切片。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "歷史設備敘述只支援原理；不採當年掃描速度、通道上限或完全零背景宣稱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S009",
+      "url": "https://www.chm.bris.ac.uk/pt/bartlett/confocal.htm",
+      "title": "Confocal Microscopy",
+      "publisher": "University of Bristol, Soft Matter Chemistry",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "Background；Principles；Fig.2 光路說明",
+      "locator": "Background；Principles；Fig.2 光路說明",
+      "summary": "共軛平面上的針孔可讓焦內光通過，焦外光在孔前後聚焦而被大量排除。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "短教學頁；將理想敘述收斂為抑制而非全部消除焦外訊號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S010",
+      "url": "https://www.microscopyu.com/techniques/multi-photon/multiphoton-microscopy",
+      "title": "Multiphoton Microscopy",
+      "publisher": "Nikon MicroscopyU",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTTP 取得 HTML；Python HTMLParser 擷取段落後實讀指定小節",
+      "reading_scope": "Principles of Two-Photon Excitation；Two-Photon Excitation in Laser-Scanning Microscopy；Fig.3 光漂白比較",
+      "locator": "Principles of Two-Photon Excitation；Two-Photon Excitation in Laser-Scanning Microscopy；Fig.3 光漂白比較",
+      "summary": "雙光子吸收在低飽和近似下對強度呈平方依賴，聚焦使激發集中於小體積。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "不採普遍功率、穿透深度倍數、完全沒有焦外訊號或無光損傷等過強句；不提供雷射操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S011",
+      "url": "https://www.microscopyu.com/techniques/light-sheet/light-sheet-fluorescence-microscopy",
+      "title": "Light Sheet Fluorescence Microscopy",
+      "publisher": "Nikon MicroscopyU",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTTP 取得 HTML；Python HTMLParser 擷取段落後實讀指定小節",
+      "reading_scope": "開頭與 Figs.1–2：Illumination and Detection Geometries；Light Exposure in LSFM and Epifluorescence",
+      "locator": "開頭與 Figs.1–2：Illumination and Detection Geometries；Light Exposure in LSFM and Epifluorescence",
+      "summary": "把照明與觀測方向分開，薄光片主要激發被觀測層，減少無用層的曝光。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "限典型側向光片幾何，不概括所有實作、不承諾固定活體觀察時長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S012",
+      "url": "https://www.microscopyu.com/techniques/polarized-light/principles-of-birefringence",
+      "title": "Principles of Birefringence",
+      "publisher": "Nikon MicroscopyU",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTTP 取得 HTML；Python HTMLParser 擷取段落後實讀指定小節",
+      "reading_scope": "Birefringent Crystals in a Polarizing Optical Microscope；Figs.7–9 前的偏振分量、相對延遲與分析器重合段",
+      "locator": "Birefringent Crystals in a Polarizing Optical Microscope；Figs.7–9 前的偏振分量、相對延遲與分析器重合段",
+      "summary": "正交分量在各向異性材料內累積不同相位，經分析器投影可形成透光與色彩變化。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "不搬其向量長度等於強度的簡化算式；不把所有透明塑膠都視為已知雙折射樣品。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S013",
+      "url": "https://www.microscopyu.com/microscopy-basics/water-immersion-objectives",
+      "title": "Water Immersion Objectives",
+      "publisher": "Nikon MicroscopyU",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib.request HTTP 取得 HTML；Python HTMLParser 擷取段落後實讀指定小節",
+      "reading_scope": "Theoretical Optical Considerations；Fig.2；Fig.3 前的 depth / refractive-index mismatch / PSF 段",
+      "locator": "Theoretical Optical Considerations；Fig.2；Fig.3 前的 depth / refractive-index mismatch / PSF 段",
+      "summary": "油鏡經水層觀察更深處會偏離設計介質條件，球差、失焦與訊號退化可增加。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "不將水鏡普遍說成優於油鏡；不採固定倍數與精度，不將生物結構變淡當作結構消失。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S014",
+      "url": "https://www.microscopyu.com/microscopy-basics/conjugate-planes-in-optical-microscopy",
+      "title": "Conjugate Planes in Optical Microscopy",
+      "publisher": "Nikon MicroscopyU",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "Table 1；Fig.2 兩組共軛；Köhler illumination 基本條件；Figs.3–5 元件放置段",
+      "locator": "Table 1；Fig.2 兩組共軛；Köhler illumination 基本條件；Figs.3–5 元件放置段",
+      "summary": "燈絲成像在孔徑平面而非樣品平面；兩組共軛面讓照明圖案與樣品影像分工。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "只採原理段，不採產品效能或選購宣傳。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S015",
+      "url": "https://www.edmundoptics.ca/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/",
+      "title": "Aberrations",
+      "publisher": "Edmund Optics",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "§3.5：Spherical Aberration；Astigmatic Aberration；Field Curvature；Chromatic Aberration；Chromatic Focal Shift",
+      "locator": "§3.5：Spherical Aberration；Astigmatic Aberration；Field Curvature；Chromatic Aberration；Chromatic Focal Shift",
+      "summary": "不同色光的焦點可分開；用正負光焦度及不同色散材料配合可讓指定波長共焦。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "僅色差部分用於入選題。散光段明說混入彗差、場曲公式文字易誤，不據此另立新題；消色差不等於全波段完美共焦。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S016",
+      "url": "https://www.edmundoptics.com.sg/knowledge-center/application-notes/optics/introduction-to-modulation-transfer-function/",
+      "title": "Introduction to Modulation Transfer Function",
+      "publisher": "Edmund Optics",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "The Components of MTF；Understanding MTF；The Importance of MTF；Reading MTF Graphs/Data",
+      "locator": "The Components of MTF；Understanding MTF；The Importance of MTF；Reading MTF Graphs/Data",
+      "summary": "成像對比隨空間頻率傳遞；在線性近似下，連續成像環節的傳遞衰減會累積。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "不以像素數或 bit 數直接代替光學 MTF；只採固定條件的線性模型，排除非線性銳化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S017",
+      "url": "https://www.konicaminolta.com/instruments/knowledge/color/part2/08.html",
+      "title": "Precise Color Communication, Part II-8: Metamerism",
+      "publisher": "Konica Minolta",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "Part II-8 正文前四段與 Fig.23 說明",
+      "locator": "Part II-8 正文前四段與 Fig.23 說明",
+      "summary": "兩個不同反射光譜可在一種照明下匹配三刺激值，換照明後失配。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "不採舊儀器可用照明種類限制；螢幕示意不等於重現實物光譜。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S018",
+      "url": "https://www.konicaminolta.com/instruments/knowledge/color/part3/02.html",
+      "title": "Color and gloss (SCE and SCI methods)",
+      "publisher": "Konica Minolta",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "Part III-2：藍色樣品粗糙度比較；light trap / white plug 與 SCI/SCE 段",
+      "locator": "Part III-2：藍色樣品粗糙度比較；light trap / white plug 與 SCI/SCE 段",
+      "summary": "開關光陷阱決定是否收集鏡面分量，量到的色彩因幾何與表面反射分配而改變。",
+      "version": "未見頁面修訂日；2026-11-01 讀取當期正文",
+      "limitations": "不採人眼只看漫射、所有同材料總反射必定相等、完全不受表面影響等絕對句；只比較量測幾何。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S019",
+      "url": "https://www.edmundoptics.com/media/hcrhqjpl/beam-manipulation-prisms-vs-mirrors-en.pdf",
+      "title": "Beam manipulation: prisms vs. mirrors",
+      "publisher": "Andrew Lynch / Kai Focke, Edmund Optics; Photonik international",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open PDF 文字擷取；實讀 p.1–2 及 Fig.2–4 圖說，未取圖作素材",
+      "reading_scope": "PDF pp.1–2（印刷 pp.45–46）：兩鏡角度與三鏡 corner；Fig.3 的 offset 限制",
+      "locator": "PDF pp.1–2（印刷 pp.45–46）：兩鏡角度與三鏡 corner；Fig.3 的 offset 限制",
+      "summary": "三個互相垂直反射面依次反射，可回送反平行光；出射位置仍可偏移。",
+      "version": "Photonik international 2009/2；原德文版 3/2009",
+      "limitations": "只取幾何原理；須三面依次命中，不說任意角度無限制、完全沿原路返回。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "O7-S020",
+      "url": "https://www.grc.nasa.gov/WWW/K-12/airplane/tunvschlrn.html",
+      "title": "Schlieren Flow Visualization",
+      "publisher": "NASA Glenn Research Center",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文文字；未只憑搜尋摘要",
+      "reading_scope": "主文由密度梯度折射到刀口遮擋、暗線及二維投影限制的段落",
+      "locator": "主文由密度梯度折射到刀口遮擋、暗線及二維投影限制的段落",
+      "summary": "流體折射率梯度偏折光路，焦點附近刀口把偏折轉成明暗，呈現透明流場變化。",
+      "version": "頁面 Last Updated: May 13 2021",
+      "limitations": "直接例子為風洞震波；日常熱空氣只可作另需核實的延伸，不從暗線直接換算絕對密度或溫度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "O7001",
+      "question": "同一個零件往鏡頭靠近，怎麼有些照片裡的尺寸幾乎不變？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.object_telecentric_parallel_chief_rays",
+      "answer_target": "物方遠心設計讓主光線近乎平行，降低物體前後位置改變造成的放大率變化。",
+      "scope": "限設計工作範圍；尺寸較穩不等於始終清晰、零畸變或無限景深。",
+      "source_ids": [
+        "O7-S001",
+        "O7-S002"
+      ],
+      "source_locator": "S001 Object Space Telecentricity；S002 首段及 telecentricity 限制",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把物距引起的大小變化，和對焦清楚分開。",
+        "visual": "同一方形零件前後移動；普通鏡頭與遠心主光線、輪廓尺規並排；失焦仍可出現。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O7002",
+      "question": "照片裡的直線歪了，為什麼拉回來後仍不一定能放心量尺寸？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.field_magnification_distortion_calibration",
+      "answer_target": "場內放大率變化使像點位置扭曲；校正要對應物距、波段與完整場位置，且不能還原已被取樣抹掉的細節。",
+      "scope": "用同一平面點陣比較徑向畸變，不把透視或焦外模糊混稱同一畸變。",
+      "source_ids": [
+        "O7-S002",
+        "O7-S003"
+      ],
+      "source_locator": "S003 §3.3 首段、Examples of Distorted Curves、校正限制；S002 波形畸變段",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "畫面看起來端正，只代表一部分幾何誤差被處理。",
+        "visual": "同一點陣中央與邊緣的間距、校正前後位置；保留原始取樣格，展示擁擠點不能憑空分開。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O7003",
+      "question": "斜放的一整張卡片，為什麼傾斜感測器就可能一起對清楚？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.scheimpflug_tilted_conjugate_planes",
+      "answer_target": "物面與像面共軛，適當傾斜像面可讓清晰平面貼合斜放物面。",
+      "scope": "限近似平面物與指定光學配置；不是增加所有方向的景深，也不消除斜看造成的形狀投影。",
+      "source_ids": [
+        "O7-S004",
+        "O7-S002"
+      ],
+      "source_locator": "S004 Scheimpflug optics 傾斜段；S002 Fig.4 前後",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把清晰面轉過去，和把清晰範圍加厚，是不同方法。",
+        "visual": "一張斜卡的清晰帶由細線轉成整面；旁放不同高度小點，仍保留失焦。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "O7004",
+      "question": "透明薄片沒有染色，顯微鏡怎麼把幾乎看不見的內部顯出來？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.phase_contrast_selective_reference_phase_amplitude",
+      "answer_target": "分離未偏折背景光與繞射光，再用相位板改變相對相位和振幅，讓薄片造成的相位差轉成明暗。",
+      "scope": "限薄弱相位樣本的相差原理；不是產生新色素，也不從亮暗直接判定厚度或密度。",
+      "source_ids": [
+        "O7-S005"
+      ],
+      "source_locator": "The Phase Contrast Microscope，Figs.4–6 與相位板段",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "透明可以改變光的相位，卻不明顯吸光；顯影要換一種讀法。",
+        "visual": "同一透明階梯薄片的原創波前與強度圖；插入相位板前後對照，厚度圖保持不變。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O7005",
+      "question": "顯微鏡把邊緣拍得很亮，為什麼物體中間反而像消失了？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.phase_ring_low_frequency_leakage_halo_shadeoff",
+      "answer_target": "部分低角度繞射光也穿過相位環，低空間頻率被改變，可能製造邊界光暈與中央淡化。",
+      "scope": "限相差顯微鏡 halo/shade-off；與散焦、螢光或真空洞分開；兩種假影同核心收一題。",
+      "source_ids": [
+        "O7-S005"
+      ],
+      "source_locator": "Interpretation of Phase Contrast Images：halo 段、Shade-Off and Halo、Fig.8 前後",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "影像的亮邊與淡中心可能來自光學處理，不是樣本新結構。",
+        "visual": "固定均勻厚度的透明方片；並排真實厚度與相差強度剖面，圈出相位環碰到的低角度光。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O7006",
+      "question": "顯微鏡照片像浮雕，就能把亮暗當成高低起伏嗎？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.dic_neighboring_optical_path_gradient",
+      "answer_target": "兩束相鄰光比較光程差，重合後形成方向性的亮暗；折射率與厚度變化都能造成這種假立體。",
+      "scope": "限傳射 DIC；不從單張影像反推唯一高度或折射率。",
+      "source_ids": [
+        "O7-S007"
+      ],
+      "source_locator": "Fundamental Concepts 至 Fig.2；兩束分離與重合段",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣的浮雕明暗，可能不是同樣的表面高低。",
+        "visual": "一個改厚度、一個改折射率的原創薄片模型產生相近光程梯度；標示相鄰兩束而非側面照明。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "O7007",
+      "question": "把照明擋掉一部分，透明纖維怎麼反而更容易看見？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.darkfield_exclude_unscattered_illumination",
+      "answer_target": "斜照明的直達光被排除在物鏡接收角度外，纖維偏折或散射進物鏡的光才形成亮訊號。",
+      "scope": "限暗視野幾何；不是單純把整張照片調暗；灰塵和焦外物也會散射，不直接量精確直徑。",
+      "source_ids": [
+        "O7-S006"
+      ],
+      "source_locator": "Fig.1 中央遮光段；Fig.3 後入射/接收角度；Fig.4 纖維比較",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "減少背景比一味加亮更能顯露弱訊號。",
+        "visual": "同一纖維，直達照明越過鏡頭與被纖維偏折的兩路光分色；有/無纖維背景對照。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "O7008",
+      "question": "不把樣本切開，顯微鏡怎麼只留下某一層的亮點？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.confocal_conjugate_pinhole_axial_rejection",
+      "answer_target": "在共軛像面放小孔，焦內光集中通過，焦外光分散而多被擋掉，再掃描成光學切片。",
+      "scope": "焦外抑制有限；孔徑與訊噪、實際解析度的定量取捨須進稿另核，不把切片等同物理切割或無限解析度。",
+      "source_ids": [
+        "O7-S008",
+        "O7-S009"
+      ],
+      "source_locator": "S008 Evolution 中 spatial filtering 段；S009 Principles",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先決定哪些高度的光能通過，才組成這一層影像。",
+        "visual": "三層螢光點模型配合孔前後焦點位置，對照全收與經針孔後影像。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O7009",
+      "question": "不用小孔擋掉上下層，為什麼也能讓光只在焦點附近亮起？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.two_photon_nonlinear_excitation_localization",
+      "answer_target": "雙光子激發在低飽和近似下依光強平方增長；聚焦讓激發集中在光子密度較高的小體積，焦外較少被激發。",
+      "scope": "與共焦的接收端篩選比較；不說焦外絕對零激發、不保證無損傷，不提供雷射規格或架設操作。",
+      "source_ids": [
+        "O7-S010"
+      ],
+      "source_locator": "Principles of Two-Photon Excitation；Two-Photon Excitation in Laser-Scanning Microscopy，Fig.3",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可以從源頭少製造不要的光，而非事後把它擋住。",
+        "visual": "保持三層樣本，對照單光子光錐與雙光子集中激發；低/高光密度用二維概念分布表示。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "O7010",
+      "question": "把光從側面壓成薄片，為什麼能少照到不想拍的層？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.light_sheet_orthogonal_illumination_detection",
+      "answer_target": "將照明與觀測軸分開，用薄光片主要激發當前層，再沿另一方向收影像，減少焦外曝光。",
+      "scope": "限典型側向光片；不是樣本完全無散射，也不承諾照明厚度固定或任意樣本皆適用。",
+      "source_ids": [
+        "O7-S011"
+      ],
+      "source_locator": "開頭與 Figs.1–2 照明/偵測幾何及曝光體積",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "對焦層和受照層可以一起安排，照亮整塊並非必要。",
+        "visual": "同一三層螢光點方塊，從正面看觀測層、側面看薄片；逐層掃過而非把整塊同時照亮。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O7011",
+      "question": "兩片偏光片本來一片黑，夾入透明晶片怎麼反而出現顏色？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.birefringent_retardance_analyzer_color",
+      "answer_target": "各向異性晶片讓兩個正交偏振分量累積不同相位，分析器投影後產生隨波長不同的透過，形成色彩。",
+      "scope": "限具雙折射且取向適合的晶片；有些方向仍暗，不把所有透明物或自然旋光都混同。",
+      "source_ids": [
+        "O7-S012"
+      ],
+      "source_locator": "Birefringent Crystals in a Polarizing Optical Microscope；Figs.7–9 前段",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "透明材料能改偏振的相位關係，顏色不一定來自染料。",
+        "visual": "固定交叉偏光片，轉動晶片；分開表示正交分量與分析器後的明暗，色彩只作概念示意。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O7012",
+      "question": "同一支高倍率鏡頭，為什麼看樣本深處反而愈來愈糊？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.immersion_index_mismatch_depth_aberration",
+      "answer_target": "觀測更深水性介質時，光路偏離油鏡設計的折射率條件，不同角度光聚焦失配，球差與焦點偏移增加。",
+      "scope": "限油鏡經水性介質的比較；不以放大倍率單獨判斷品質，不泛稱水鏡永遠較好。",
+      "source_ids": [
+        "O7-S013"
+      ],
+      "source_locator": "Theoretical Optical Considerations；Fig.2；depth / PSF 段",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "深處變淡可能是光路失配，不是材料本身沒有結構。",
+        "visual": "相同螢光點移到更深層，畫邊緣與近軸光聚焦位置差；不填未量測的深度或損失值。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O7013",
+      "question": "燈絲明明彎彎曲曲，顯微鏡底下怎麼能照成均勻一片？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.kohler_separate_field_aperture_conjugates",
+      "answer_target": "把光源成像在孔徑共軛面而非樣品面，讓光源結構不與樣品同時清楚成像，實現較均勻照明。",
+      "scope": "限正確對準的柯勒照明；不承諾任意光源或樣本完全均勻，不給設備調整步驟。",
+      "source_ids": [
+        "O7-S014"
+      ],
+      "source_locator": "Table 1；Fig.2；Köhler illumination 基本條件與 Fig.3–5",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光源能被成像在別處，照明不必把自己的形狀印上樣本。",
+        "visual": "同一線圈光源先與樣品共焦、再改到孔徑共軛面；同時畫樣品面照明分布。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O7014",
+      "question": "把兩片不同玻璃貼在一起，為什麼可能比一片更少彩色毛邊？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.achromat_opposite_power_different_dispersion",
+      "answer_target": "正負光焦度配合不同色散玻璃，可讓兩個指定波長的焦點接近重合，減少色差。",
+      "scope": "限消色差設計的指定波段；不把所有彩邊歸因色差，也不說兩片能消除全波段誤差。",
+      "source_ids": [
+        "O7-S015"
+      ],
+      "source_locator": "Chromatic Aberration；Chromatic Focal Shift，Figs.5–6",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩片不是單純加強聚焦，而是讓色散誤差部分抵消。",
+        "visual": "相同白色小點，單片與雙片的紅藍焦點並排，保留中間波長仍有殘差。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O7015",
+      "question": "鏡頭和相機各自都看得清，裝在一起為什麼還會丟掉細紋？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.cascaded_mtf_contrast_transfer_product",
+      "answer_target": "在固定、近線性的成像條件下，每一環節都衰減細紋對比，串接的總傳遞是各環節傳遞的乘積。",
+      "scope": "不只看最弱一環；採同一空間頻率與尺度換算，不混進非線性銳化、JPEG或色度抽樣。",
+      "source_ids": [
+        "O7-S016"
+      ],
+      "source_locator": "The Importance of MTF；Understanding MTF",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩次小損失會累積，合格零件不自動等於合格整體。",
+        "visual": "原創正弦明暗細紋穿過鏡頭與感測器兩站，對比曲線逐站降低，標概念值非產品實測。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O7016",
+      "question": "店裡看起來同色的兩塊布，為什麼回家就不配了？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.illuminant_metamerism_different_reflectance_same_tristimulus",
+      "answer_target": "不同反射光譜在一種照明下可產生相同三刺激值；改變入射光譜後，兩塊材料的配色可能分開。",
+      "scope": "限定非螢光樣品與照明變更，不混同色適應或單一布料褪色；布料是原創情境。",
+      "source_ids": [
+        "O7-S017"
+      ],
+      "source_locator": "Part II-8 前四段與 Fig.23 光譜/三刺激值比較",
+      "premise_status": "screened",
+      "notes": "來源直接為兩色樣品；布料情境為原創推導，需進稿另核實物配對。與E2247/O3042有關，交非作者判斷邊界。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一次配色相同，不能證明材料對每種光的反應相同。",
+        "visual": "兩條不同反射光譜乘上兩種照明；螢幕只用標記示意匹配/失配，不宣稱還原真實光譜。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O7017",
+      "question": "同一塊亮面色板，為什麼色差儀換個模式就讀出不同顏色？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.sphere_sci_sce_specular_collection_geometry",
+      "answer_target": "是否開啟鏡面反射方向的光陷阱，決定量測是否包含鏡面分量；表面反射分配因而改變讀值。",
+      "scope": "限 SCI/SCE 量測幾何；不把其中之一稱唯一真色、不承諾與每個人的觀感完全一致。",
+      "source_ids": [
+        "O7-S018"
+      ],
+      "source_locator": "Part III-2：light trap / white plug；SCI/SCE 定義段",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "儀器不是只看材料，還必須先說收哪些方向的光。",
+        "visual": "同一色板與同一球形光路，僅切換反射出口陷阱；分開畫鏡面與漫射被收集的份額。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "O7018",
+      "question": "小鏡子轉一下就反光到別處，三面鏡子的角落怎麼能把光送回來？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.orthogonal_three_reflections_antiparallel_return",
+      "answer_target": "三個互相垂直面依序反射，使光的三個方向分量逐一反轉，形成與入射反平行的返回束。",
+      "scope": "須光束依次命中三面；可以有橫向偏移，不能說任意角度均有效或完全原路返回。",
+      "source_ids": [
+        "O7-S019"
+      ],
+      "source_locator": "PDF pp.1–2 / 印刷45–46；兩鏡角度段、三鏡 corner 段及 Fig.3 offset 圖說",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "返回方向能由相對面角度固定，不必每次把單面鏡對準。",
+        "visual": "單鏡與三個正交面，固定入射束後稍轉整組；用三軸方向分量展示反轉與出射偏移。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "O7019",
+      "question": "空氣沒有冒煙，照片怎麼仍能拍出流動的暗紋？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.schlieren_cutoff_converts_ray_deflection_to_intensity",
+      "answer_target": "密度相關的折射率梯度使光偏折，焦點附近的遮擋把小偏折轉成明暗差，顯示透明流場的變化。",
+      "scope": "來源為風洞震波；題目只談透明氣流的顯影機制，不由暗紋唯一推回溫度或密度，不給架設/燃燒教程。",
+      "source_ids": [
+        "O7-S020"
+      ],
+      "source_locator": "主文密度梯度、焦點刀口、暗線與二維投影限制段",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有吸光顆粒，也能把光路微小變化轉成看得見的訊號。",
+        "visual": "同一透明氣流模型，有/無遮擋時比較偏折束能否進相機；不把概念圖稱實拍。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "O7020",
+      "question": "縮小光圈能改善球差，是否另算新題？",
+      "existing_id": "P152",
+      "source_ids": [
+        "O7-S015"
+      ],
+      "reason": "同一邊緣與近軸光焦點不合核心；縮孔只是取捨段落，不另計數。"
+    },
+    {
+      "id": "O7021",
+      "question": "光圈愈小為什麼不一定愈清楚？",
+      "existing_id": "P157",
+      "source_ids": [
+        "O7-S015"
+      ],
+      "reason": "有限孔徑繞射已有；與球差權衡可作舊題章節，不以相機例子重算。"
+    },
+    {
+      "id": "O7022",
+      "question": "雷射照亮粗糙表面為什麼像撒了亮砂？",
+      "existing_id": "O3004",
+      "source_ids": [],
+      "reason": "相干散射波相加的散斑核心已有；換成可見光表面不足獨立。此次未補實讀雷射散斑來源。"
+    },
+    {
+      "id": "O7023",
+      "question": "用甜甜圈光束把發光範圍壓小，能否做一題？",
+      "existing_id": "E2186",
+      "source_ids": [],
+      "reason": "已存在受激放射基礎，但空間耗盡的新條件未讀足直接證據；延後，不拿技術名稱湊題。"
+    },
+    {
+      "id": "O7024",
+      "question": "刻意製造摩爾紋能否看見更小結構？",
+      "existing_id": "LEG-A50",
+      "source_ids": [],
+      "reason": "需另讀已知照明頻率混合及重建假設才能建立不同研究核心；本次不憑一般混疊常識加入。"
+    },
+    {
+      "id": "O7025",
+      "question": "橫線清楚但直線模糊，是否只用散光名稱就能解釋？",
+      "source_ids": [
+        "O7-S015"
+      ],
+      "reason": "已讀廠商段落自承把散光與彗差合併簡化；缺充分的分方向聚焦因果，不立候選。"
+    },
+    {
+      "id": "O7026",
+      "question": "平面物的清晰像面為什麼可能彎曲？",
+      "source_ids": [
+        "O7-S015"
+      ],
+      "reason": "目前只讀到場曲現象及有疑義的光焦度公式文字；未有足夠乾淨的因果來源，暫不加入。"
+    },
+    {
+      "id": "O7027",
+      "question": "五角稜鏡略轉動後為什麼仍把光轉九十度？",
+      "existing_id": "O7018",
+      "source_ids": [
+        "O7-S019"
+      ],
+      "reason": "與固定反射面相對角度產生方向不變性的題可相接；現階段只換角度/面數不另計核心。"
+    },
+    {
+      "id": "O7028",
+      "question": "熱空氣使背景扭曲要不要另拆一題？",
+      "existing_id": "LEG-S85",
+      "source_ids": [
+        "O7-S020"
+      ],
+      "reason": "一般折射率梯度彎光已有；O7019只新增遮擋把偏折轉成明暗的量測機制，不再拆基礎現象。"
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave32-compass.json",
+      "sha256": "d9c8041dc013c11b5ae022452d9d6dd3a37d9d85ebf7c533fd76fe5b5763fe3a"
+    },
+    {
+      "file": "reviews/wave32-compass-author.json",
+      "sha256": "d40ae33e8205b0a5aead67f58891743a4e1e239be80460c01b4daa74b56c0d0e"
+    },
+    {
+      "file": "reviews/wave32-compass-themes.json",
+      "sha256": "480dc08809bd7bbe20b949d1e794cf71290f79514b1894d7c9c2d2c2449b67fc"
+    },
+    {
+      "file": "reviews/wave32-seafloor-reviews-compass.json",
+      "sha256": "5b08f1b40b674c60f4af71ea9af0698417cbd45430203588f47ea24a83e5f22b"
+    },
+    {
+      "file": "batches/wave32-seafloor.json",
+      "sha256": "74335ed5cd0b64a3f4764a79ab5145c9f67e63d5059b26e4d4ffeac6b3247c16"
+    },
+    {
+      "file": "reviews/wave32-seafloor-author.json",
+      "sha256": "d8df1cb0a31cc7a7e4aea0f54cf0f17f8a9ce3c69cfb153ed8dcf1ba7d5291e6"
+    },
+    {
+      "file": "reviews/wave32-seafloor-themes.json",
+      "sha256": "bf5e45f1e66b09eb384cc2509f330f78e620c23642495c2e1d92c0af8128d70d"
+    },
+    {
+      "file": "reviews/wave32-compass-reviews-seafloor.json",
+      "sha256": "630ed697b2790657ad8e1e4753c81bbec88edc043e07c1df887671dc765c8316"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave32-compass.json",
+      "author": "root",
+      "reviewer": "pool_physics",
+      "candidate_count": 8,
+      "top5_directed_pairs": 40,
+      "author_pairs": 15,
+      "not_added_count": 15,
+      "theme_count": 5
+    },
+    {
+      "batch": "batches/wave32-seafloor.json",
+      "author": "pool_physics",
+      "reviewer": "root",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 13,
+      "not_added_count": 14,
+      "theme_count": 2
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave32-compass.json",
+          "sha256": "d9c8041dc013c11b5ae022452d9d6dd3a37d9d85ebf7c533fd76fe5b5763fe3a"
+        },
+        {
+          "file": "batches/wave32-seafloor.json",
+          "sha256": "74335ed5cd0b64a3f4764a79ab5145c9f67e63d5059b26e4d4ffeac6b3247c16"
+        }
+      ],
+      "new_source_rows": 15,
+      "matches": [
+        {
+          "batch": "wave32-compass.json",
+          "source_id": "R32-S003",
+          "url": "https://www.lunduniversity.lu.se/article/artificial-light-disrupts-dung-beetles-sense-direction",
+          "title": "Artificial light disrupts dung beetles’ sense of direction",
+          "prior_url": "https://portal.research.lu.se/en/publications/light-pollution-forces-a-change-in-dung-beetle-orientation-behavi/",
+          "prior_origin": "wave32-compass.json",
+          "reasons": [
+            "same DOI string"
+          ]
+        },
+        {
+          "batch": "wave32-compass.json",
+          "source_id": "R32-S007",
+          "url": "https://doi.org/10.1073/pnas.1904308116",
+          "title": "Multimodal cue integration in the dung beetle compass",
+          "prior_url": "https://www.lunduniversity.lu.se/article/dung-beetles-use-wind-compass-when-sun-high",
+          "prior_origin": "wave32-compass.json",
+          "reasons": [
+            "same DOI string"
+          ]
+        },
+        {
+          "batch": "wave32-compass.json",
+          "source_id": "R32-S009",
+          "url": "https://www.uni-ulm.de/en/university-news/news-details/?cHash=d5524db91100ec96e30287af2b9e5566&tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=22742",
+          "title": "Wüstenameisen: Auch im „Sahara-Shuttle“ bestens orientiert",
+          "prior_url": "https://pubmed.ncbi.nlm.nih.gov/27609893/",
+          "prior_origin": "wave32-compass.json",
+          "reasons": [
+            "same DOI string"
+          ]
+        }
+      ],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "3951bbb24b077edb67b1fab3b5bbcf2069590d312f37467c8649a62dfd1819e2",
+      "matched_rows_reviewed": 3,
+      "unresolved": [],
+      "decisions": [
+        {
+          "source_id": "R32-S003",
+          "related_source": "R32-S002",
+          "judgment": "two_pages_one_study",
+          "reason": "Foster et al., 2021。兩頁同一光害研究，研究書目與團隊說明分開記。"
+        },
+        {
+          "source_id": "R32-S007",
+          "related_source": "R32-S006",
+          "judgment": "two_pages_one_study",
+          "reason": "Dacke et al., 2019。作者摘要與風扇／鏡子實驗的機構說明同一研究。"
+        },
+        {
+          "source_id": "R32-S009",
+          "related_source": "R32-S008",
+          "judgment": "two_pages_one_study",
+          "reason": "Pfeffer與Wittlinger，2016。作者摘要與實驗團隊對搬運測試的說明同一研究。"
+        }
+      ],
+      "scope": "15個來源頁，昆蟲8項研究使用11頁、海床4篇使用4頁。兩篇剛果論文研究問題不同且有事件重疊，無獨立重複實驗的主張。"
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave32-compass.json",
+      "source_rows": 11,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave32-seafloor.json",
+      "source_rows": 4,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "f49ccb0ece6cd560c1ed86d0b6476a65ba3b8b5707c1e7ef43378095cf8780a3",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source_id": "P32-S001",
+      "url": "https://www.nature.com/articles/s41467-022-31689-3.pdf",
+      "file": ".cache/wave32-seafloor-congo.pdf",
+      "sha256": "d14cb52b40f7c82dc52433a1c900070a8b313240f8b3b57355d7d5564305ce40",
+      "text_file": ".cache/wave32-seafloor-congo.txt",
+      "text_sha256": "7b8a13745a077f7a663ae254dbb267be4e4acf7c9ac160287d7a3e102d2f48cf",
+      "reading_scope": "2022原刊PDF頁8–9，圖5各段前緣航速與坡度、圖6前後海床高差，及分段到時方法。",
+      "finding": "沿峽谷而非直線計距。圖5的一月事件尾段平均前緣速度較快，但中途也下降；圖6測深相隔多月，不能把所有沖刷量分給這一次。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave32-seafloor-congo-p8.png",
+          "sha256": "c3a0ed1ec3f521a32cdf1acddfcaf935abe123529365610c31d58150ac468699",
+          "read_scope": "Fig5A分段前緣速度，B–D床深、坡度、寬度。"
+        },
+        {
+          "file": ".cache/wave32-seafloor-congo-p9.png",
+          "sha256": "0a5b89bfc43ccbdb83440e35a0e861be86c5c85efc7784f71f5684bb961c9221",
+          "read_scope": "Fig6兩次航測地形差，屬2019–2020比較區間。"
+        }
+      ],
+      "read_via": "非作者核對保存的研究原刊PDF、量測圖與圖說。"
+    },
+    {
+      "source_id": "P32-S002",
+      "url": "https://nora.nerc.ac.uk/id/eprint/538670/1/Geophysical%20Research%20Letters%20-%202024%20-%20Baker%20-%20Seabed%20Seismographs%20Reveal%20Duration%20and%20Structure%20of%20Longest%20Runout%20Sediment.pdf",
+      "file": ".cache/wave32-seafloor-duration.pdf",
+      "sha256": "f7f63ffce37871002d4c8751e615ff6aaae6b83eb12be31fc1210dabe6b0f388",
+      "text_file": ".cache/wave32-seafloor-duration.txt",
+      "text_sha256": "eac9a113ed87171cecccb655856d1f2bf5dfc359638f63ebee08e2e32bae2057",
+      "reading_scope": "2024原刊PDF頁5 Fig2、頁7 Fig3，及溫度資料與21天尾流的討論。",
+      "finding": "弱事件Flow 1的震動變弱後，速度剖面仍有約兩天慢流。大事件的21天來自另一站溫度解釋，不能串接成兩組儀器全程直接測含砂速度。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave32-seafloor-duration-p5.png",
+          "sha256": "93705e3d7bf2d2abb0ca79acdee06854f5cba7286ab7a04e3e6c2ba2cac3271e",
+          "read_scope": "Fig2同一較弱流的速度與震動強弱時間線。"
+        },
+        {
+          "file": ".cache/wave32-seafloor-duration-p7.png",
+          "sha256": "f7900934e42f6f59ab34f5d12f8e8397d17bceac5c363c6214c718e02605df62",
+          "read_scope": "Fig3大事件沿峽谷各站脈衝及部分前鋒合併。"
+        }
+      ],
+      "read_via": "非作者核對保存的研究原刊PDF、量測圖與圖說。"
+    },
+    {
+      "source_id": "P32-S003",
+      "url": "https://www.nature.com/articles/s41467-018-06254-6.pdf",
+      "file": ".cache/wave32-seafloor-monterey.pdf",
+      "sha256": "798e23f31e8cdb8548ab9914c8da7ff48035ecc609292b852d8895ca5c6d4117",
+      "text_file": ".cache/wave32-seafloor-monterey.txt",
+      "text_sha256": "befa73672ad0d54327b4cdb2c9ebe4b3bf2a6fbf88202b8ad19137c66e600bbb",
+      "reading_scope": "2018原刊頁5 Fig4、頁7 Fig6–7，物件溫度與壓力記錄、回收地點及床層解釋。",
+      "finding": "被移動後架上溫度不再追潮汐，回收看得見埋入情形；後續壓力變化顯示又到較深處。近底濃密砂層是多項記錄支持的模型，非攝影機拍到地下過程。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave32-seafloor-monterey-p5.png",
+          "sha256": "f18ed46d01fe7c05a3399d28bc08b87a20ea248a417bb349dd5d1e5942fc57f0",
+          "read_scope": "Fig4架子、較小BED標記、壓力深度及溫度潮汐記錄。"
+        },
+        {
+          "file": ".cache/wave32-seafloor-monterey-p7.png",
+          "sha256": "3854c2df4d9c986757ad7ccc86f89993947c56acaa3286d131d7be9b411d8bcb",
+          "read_scope": "Fig6概念圖與Fig7同時期物件深度軌跡分開。"
+        }
+      ],
+      "read_via": "非作者核對保存的研究原刊PDF、量測圖與圖說。"
+    },
+    {
+      "source_id": "P32-S004",
+      "url": "https://www.nature.com/articles/ncomms11896.pdf",
+      "file": ".cache/wave32-seafloor-squamish.pdf",
+      "sha256": "1c5dd0cf1ac228bca0bc4e56c414c6e681963fa389eaca452782b2e5d9b0952d",
+      "text_file": ".cache/wave32-seafloor-squamish.txt",
+      "text_sha256": "5cc4a808b1135c0337024a9f187ab4cf7d473d4bef1ff158a13fa01ff34d218d",
+      "reading_scope": "2016原刊頁7 Fig7、頁8 Fig8，沿底原位剖面及Flow C事件先後的床面位置。",
+      "finding": "流向沿圖由左往右，陡面卻有淨上坡位移。衰減層在陡面下游變厚，水躍是研究解釋；初期聲波被遮並非儀器全程量到真底。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave32-seafloor-squamish-p7.png",
+          "sha256": "acfee16a47985aa2a6d1ab8b374eff819e86f0d18ca90f0a66c15e1eb4bd3f3c",
+          "read_scope": "Fig7事件A/B/C/E在剖面及速度隨時間的差異。"
+        },
+        {
+          "file": ".cache/wave32-seafloor-squamish-p8.png",
+          "sha256": "10f5bf358061bb5a9b9db8031835598b5d7fd096bd275e5566d492bd96f43714",
+          "read_scope": "Fig8六格C事件，前測虛線、衰減層、後測陡坡位置。"
+        }
+      ],
+      "read_via": "非作者核對保存的研究原刊PDF、量測圖與圖說。"
+    }
+  ],
+  "editorial_summary": "本批留8個昆蟲行為實驗問題、4個海底泥沙流問題。把兩種外觀相似的爬球行為放在一起，比較改變太陽方向、隔絕前足熱傳會各自得到什麼結果。海底纜線中斷、流速計及海床地震儀也合成一案，分開回答前緣速度和後段持續多久。另29種重複或證據不足的提法記入未收。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並依收據覆核海底觀測組各來源、近對與題案。compass由root撰寫、pool_physics非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 13,
+      "changes": [
+        {
+          "batch": "compass",
+          "before": [
+            {
+              "file": "batches/wave32-compass.json",
+              "sha256": "d78c33e687891a4530204f267f6519936abcea51da5e0b493ce9c73f0ff159cc"
+            },
+            {
+              "file": "reviews/wave32-compass-author.json",
+              "sha256": "81e1326d6afbcccafa897fb1df806ae45bf8130c69f7a0fed0ac0f0b72e6644b"
+            },
+            {
+              "file": "reviews/wave32-compass-themes.json",
+              "sha256": "bfdc9a8afa371c73a0d4e43afdb0e2aff1255cfaf9778468f48d104fc904a060"
+            }
+          ],
+          "removed_seconds": 13,
+          "themes": [
+            "W32R-T01 99→94",
+            "W32R-T02 90→82"
+          ],
+          "reason": "非作者核對回程視流限制、氣味測試換場、透明帽讀文位置及光害場地的遮蔽條件；將自選方位與通道限制保留為短說明。"
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "R32-S001",
+        "file": ".cache/wave32-compass-stars.pdf",
+        "sha256": "ffd41cead4561c1e70f04f5f2c25ccdfcce7439b4be7fa5ac3c68ab61bbe675e",
+        "text_file": ".cache/wave32-compass-stars.txt",
+        "text_sha256": "8af9e821027393530ada16b49cd087440f7b858344d0cb27f31e26c56e9edde5"
+      },
+      {
+        "source_id": "R32-S001",
+        "file": ".cache/wave32-compass-stars-p2.png",
+        "sha256": "8ba5b291be39ba7aef04be5ed1017a6ccb36ed2941bd5a0a362bc14f2d9335fa"
+      },
+      {
+        "source_id": "R32-S001",
+        "file": ".cache/wave32-compass-stars-p3.png",
+        "sha256": "793ab838712e970529ed1c2b69f264a523b6d63ea4d2f59a58ba1e7a215d1a78"
+      },
+      {
+        "source_id": "R32-S002",
+        "file": ".cache/wave32-compass-lightpub.html",
+        "sha256": "882f951e505ce4f596c40e2b16e555456592c0a0e9a820b14787ff4a21b80e08",
+        "text_file": ".cache/wave32-compass-lightpub.txt",
+        "text_sha256": "2d2713d63006fb648d5d0d828c58fb98bf804234da2877b2caa157eceb6ca6d3"
+      },
+      {
+        "source_id": "R32-S003",
+        "file": ".cache/wave32-compass-lights.html",
+        "sha256": "8fdf7a1f7503fe9ac57dad6c72488126a54b85087ca50d54788ca1110ffd7a53",
+        "text_file": ".cache/wave32-compass-lights.txt",
+        "text_sha256": "08003881a77b9df67ee6cae3fadb79d700bdee1228f523ae22c0b690cb4b863f"
+      },
+      {
+        "source_id": "R32-S004",
+        "file": ".cache/wave32-compass-dance.pdf",
+        "sha256": "756158e154692d1ad895fea67ee784e01caa069c7fc46d50b174e6b7a1a84c7f",
+        "text_file": ".cache/wave32-compass-dance.txt",
+        "text_sha256": "b0048e0fdac9fbd897644df96bea1931fa0a4dc27a3f5e9c8ebb665b4ce371d2"
+      },
+      {
+        "source_id": "R32-S004",
+        "file": ".cache/wave32-compass-dance-p3.png",
+        "sha256": "cbac0c953c64a6f2b4c3cb3570f987cbc197de9c0f321249318c2a33e0be3ce3"
+      },
+      {
+        "source_id": "R32-S005",
+        "file": ".cache/wave32-compass-shade2.pdf",
+        "sha256": "e6daca6b149ff8491254d5894e7392ae55f2f02551f95d8e9f334ede6869df7f",
+        "text_file": ".cache/wave32-compass-shade2.txt",
+        "text_sha256": "217c4aeaab311978af66dae5357b5e9635d9246c3633316b70df82ecbcf47382"
+      },
+      {
+        "source_id": "R32-S005",
+        "file": ".cache/wave32-compass-shade2-p5.png",
+        "sha256": "55263df28cedb2e0b9be1259f926b13a10f0b31ec1b69603d52a3223f441fe4a"
+      },
+      {
+        "source_id": "R32-S006",
+        "file": ".cache/wave32-compass-windlab.html",
+        "sha256": "e92aab02f46a26127099d7b22dd929e0ae2130ece25066a9a8b82005d73e6ca8",
+        "text_file": ".cache/wave32-compass-windlab.txt",
+        "text_sha256": "ff48a94ccd0ce3f2f34c089c924f557197b0479c93037f22ac229ac75925ea45"
+      },
+      {
+        "source_id": "R32-S007",
+        "file": ".cache/wave32-compass-wind3.xml",
+        "sha256": "7545a8602ec2693f6158ff44b424ac746525c369a479f7c44d80b41d0c8ee1d3",
+        "text_file": ".cache/wave32-compass-wind3.txt",
+        "text_sha256": "d3d4e0cb3955384bae1e2482264978713209b5df56d7299a04920895551e561e"
+      },
+      {
+        "source_id": "R32-S008",
+        "file": ".cache/wave32-compass-carrypub.html",
+        "sha256": "c99b3fd13f7935cb8805b04c7cc0876fe9c405d7702e685ce2c0408f5dbf4605",
+        "text_file": ".cache/wave32-compass-carrypub.txt",
+        "text_sha256": "4fb459bd3ed5f820fbaf98ccd1940e85166fed6c616d38bbcfa78c4ec5baad52"
+      },
+      {
+        "source_id": "R32-S009",
+        "file": ".cache/wave32-compass-carry.html",
+        "sha256": "9c54115fc59ebcb4d3b65957eb835f67fdb4b9edbe4cb4e72ac4b9b9771b89be",
+        "text_file": ".cache/wave32-compass-carry.txt",
+        "text_sha256": "26d643c1cd6d39e9b73f3080a76d78826da28e3e7aea5f871bd23e94429fd673"
+      },
+      {
+        "source_id": "R32-S010",
+        "file": ".cache/wave32-compass-odor.xml",
+        "sha256": "4edf7f358b3fbdcdff6d6790d8f4340edc201eac99638ab75f3d5198908e7b01",
+        "text_file": ".cache/wave32-compass-odor.txt",
+        "text_sha256": "ea8b1026814f9277a0c6fef16c4fb9633b35ad4179d1e234c02282b81fafee2c"
+      },
+      {
+        "source_id": "R32-S011",
+        "file": ".cache/wave32-compass-newplume.xml",
+        "sha256": "3b94c79d9b9eeeed8f40736a2b6fc2c029cd854106faaa65afee4be72bf1d420",
+        "text_file": ".cache/wave32-compass-newplume.txt",
+        "text_sha256": "e46980976fa515cfb99029980675c8d1e4f50869d09dd2c0bf06138ae4ff86a8"
+      },
+      {
+        "source_id": "P32-S001",
+        "file": ".cache/wave32-seafloor-congo.pdf",
+        "sha256": "d14cb52b40f7c82dc52433a1c900070a8b313240f8b3b57355d7d5564305ce40",
+        "text_file": ".cache/wave32-seafloor-congo.txt",
+        "text_sha256": "7b8a13745a077f7a663ae254dbb267be4e4acf7c9ac160287d7a3e102d2f48cf"
+      },
+      {
+        "source_id": "P32-S001",
+        "file": ".cache/wave32-seafloor-congo-p8.png",
+        "sha256": "c3a0ed1ec3f521a32cdf1acddfcaf935abe123529365610c31d58150ac468699",
+        "read_scope": "Fig5A分段前緣速度，B–D床深、坡度、寬度。"
+      },
+      {
+        "source_id": "P32-S001",
+        "file": ".cache/wave32-seafloor-congo-p9.png",
+        "sha256": "0a5b89bfc43ccbdb83440e35a0e861be86c5c85efc7784f71f5684bb961c9221",
+        "read_scope": "Fig6兩次航測地形差，屬2019–2020比較區間。"
+      },
+      {
+        "source_id": "P32-S002",
+        "file": ".cache/wave32-seafloor-duration.pdf",
+        "sha256": "f7f63ffce37871002d4c8751e615ff6aaae6b83eb12be31fc1210dabe6b0f388",
+        "text_file": ".cache/wave32-seafloor-duration.txt",
+        "text_sha256": "eac9a113ed87171cecccb655856d1f2bf5dfc359638f63ebee08e2e32bae2057"
+      },
+      {
+        "source_id": "P32-S002",
+        "file": ".cache/wave32-seafloor-duration-p5.png",
+        "sha256": "93705e3d7bf2d2abb0ca79acdee06854f5cba7286ab7a04e3e6c2ba2cac3271e",
+        "read_scope": "Fig2同一較弱流的速度與震動強弱時間線。"
+      },
+      {
+        "source_id": "P32-S002",
+        "file": ".cache/wave32-seafloor-duration-p7.png",
+        "sha256": "f7900934e42f6f59ab34f5d12f8e8397d17bceac5c363c6214c718e02605df62",
+        "read_scope": "Fig3大事件沿峽谷各站脈衝及部分前鋒合併。"
+      },
+      {
+        "source_id": "P32-S003",
+        "file": ".cache/wave32-seafloor-monterey.pdf",
+        "sha256": "798e23f31e8cdb8548ab9914c8da7ff48035ecc609292b852d8895ca5c6d4117",
+        "text_file": ".cache/wave32-seafloor-monterey.txt",
+        "text_sha256": "befa73672ad0d54327b4cdb2c9ebe4b3bf2a6fbf88202b8ad19137c66e600bbb"
+      },
+      {
+        "source_id": "P32-S003",
+        "file": ".cache/wave32-seafloor-monterey-p5.png",
+        "sha256": "f18ed46d01fe7c05a3399d28bc08b87a20ea248a417bb349dd5d1e5942fc57f0",
+        "read_scope": "Fig4架子、較小BED標記、壓力深度及溫度潮汐記錄。"
+      },
+      {
+        "source_id": "P32-S003",
+        "file": ".cache/wave32-seafloor-monterey-p7.png",
+        "sha256": "3854c2df4d9c986757ad7ccc86f89993947c56acaa3286d131d7be9b411d8bcb",
+        "read_scope": "Fig6概念圖與Fig7同時期物件深度軌跡分開。"
+      },
+      {
+        "source_id": "P32-S004",
+        "file": ".cache/wave32-seafloor-squamish.pdf",
+        "sha256": "1c5dd0cf1ac228bca0bc4e56c414c6e681963fa389eaca452782b2e5d9b0952d",
+        "text_file": ".cache/wave32-seafloor-squamish.txt",
+        "text_sha256": "5cc4a808b1135c0337024a9f187ab4cf7d473d4bef1ff158a13fa01ff34d218d"
+      },
+      {
+        "source_id": "P32-S004",
+        "file": ".cache/wave32-seafloor-squamish-p7.png",
+        "sha256": "acfee16a47985aa2a6d1ab8b374eff819e86f0d18ca90f0a66c15e1eb4bd3f3c",
+        "read_scope": "Fig7事件A/B/C/E在剖面及速度隨時間的差異。"
+      },
+      {
+        "source_id": "P32-S004",
+        "file": ".cache/wave32-seafloor-squamish-p8.png",
+        "sha256": "10f5bf358061bb5a9b9db8031835598b5d7fd096bd275e5566d492bd96f43714",
+        "read_scope": "Fig8六格C事件，前測虛線、衰減層、後測陡坡位置。"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "compass",
+          "initial_draft": "829aceb88d51ac94f61e24badcd4b09e7d3f4f86820053a44faad62737462902",
+          "final_draft": "521076a796fb564314505ad49be085f6e1b588efcbf8f60b6e5c2b7528fff0ee",
+          "directed_pairs": 40,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "seafloor",
+          "initial_draft": "829aceb88d51ac94f61e24badcd4b09e7d3f4f86820053a44faad62737462902",
+          "final_draft": "521076a796fb564314505ad49be085f6e1b588efcbf8f60b6e5c2b7528fff0ee",
+          "directed_pairs": 20,
+          "top5_or_text_changes": 0,
+          "changes": []
+        }
+      ],
+      "earlier_root_only_delta": [],
+      "known_merge_retrieval_audit": [],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  },
+  "editorial_summary_shortlist": "先試讀《蜣螂爬上糞球，是迷路了，還是腳太燙？》（1:22）與《海底纜線斷了，怎麼追出那股泥流跑多快、走了多久？》（2:10）。前者只換鏡中太陽或前足隔熱條件，就能讓觀眾分辨兩個解釋。後者要保留時間軸，否則很容易把前緣速度、慢流和深處溫度異常誤當同一種觀測。",
+  "source_summary": "15個來源頁對應12份研究文獻。昆蟲組有5篇按原文核讀，另3篇的作者摘要與研究團隊說明成對保存，列出實際閱讀範圍。海底組4篇均核原刊PDF與圖表，兩篇剛果研究有部分共用事件。來源索引區分量測、推論與未量得的條件。"
+}

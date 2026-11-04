@@ -1,0 +1,739 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "c32fabb135",
+    "selected": 3010,
+    "raw_records": 3379,
+    "not_added": 1005,
+    "pool_sha256": "db3c2209e84f44cc79fa32ed1f6459200512a9eea3f24ca941dff4dd2b98c534"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave22-life-controls.json",
+      "sha256": "d5af92f1b0b85f156a0412cd852f5a790a22f553075ef5682162887a3affd476"
+    },
+    {
+      "file": "reviews/wave22-life-controls-themes.json",
+      "sha256": "8796c36b4fc99f4cb230feb37bb654e1874ee41699cdf10125f498c3d0287bc7"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "source_records": 6,
+    "primary_research_articles": 6,
+    "associated_corrections": 1,
+    "not_added": 22,
+    "paper_themes": 3,
+    "near_pairs": 20
+  },
+  "scope": "四核、三案；黏菌只留segment，不為參考數量拆物種/參數。",
+  "dedup_reading": {
+    "search_population": "全3379 raw問題/答案/條件/機制鍵與全1005 not_added序列化內容檢索；不是逐句重讀全池。",
+    "retrieval_cache": ".cache/wave22-life-focused-scan.json",
+    "retrieval_sha256": "971b0ef941433ebc0383dc1887c796c313ecc5105940b4423f0edc83ef2d988a",
+    "raw_search_hits": 129,
+    "na_search_hits": 24,
+    "keywords": "黏菌|管徑|水螅|水母|纖毛|鞭毛|同步|耦合|對拍|再生|對稱|細胞.*形變|應力鬆弛|viscoelastic|Physarum|Hydra|basal|1518527113|02750|2007815118|1502497112|2412082122|2016.01.008",
+    "initial_scan": ".cache/wave22-life-initial-scan.json",
+    "manual_scope": "完整讀129命中題名與24退題理由，並讀下列20近對完整問題/答案/條件；其他領域同步/對稱字命中未冒稱逐題全文覆核。共同top5尚待root。"
+  },
+  "near_pairs": [
+    {
+      "a": "A22001",
+      "b": "L172",
+      "proposed": "distinct",
+      "reason": "舊題只到纖毛搬運黏液；新題操控距離/方向後鎖相，解釋拍子怎麼彼此調整。",
+      "a_snapshot": {
+        "id": "A22001",
+        "question": "兩個細胞沒碰到，鞭毛為什麼仍能隔著水對拍？",
+        "answer_target": "拍動在水中造成流場，也改變鄰近鞭毛承受的負載與相位；距離縮短時可鎖相，拍動方向改變時鎖定關係也改變。但人工把分離細胞擺成衣藻式排列，未必重現正常同相蛙泳，顯示特定節奏還受胞內連結約束。",
+        "scope": "2014夾持團藻細胞各有兩支同步鞭毛，作一個節律單元；2016人工配對改用單鞭毛細胞，畫面需重設。水動力足以同步與足以指定任意生物節奏不同；精確柔順性/基底施力機制未唯一確定，不把變異株當只刪一條連結的對照。"
+      },
+      "b_snapshot": {
+        "id": "L172",
+        "question": "呼吸道的小纖毛，怎麼把黏住的東西往外搬？",
+        "answer_target": "纖毛運動推動黏液清除",
+        "scope": "正常屏障與免疫概念；不宣稱提高免疫力的方法"
+      }
+    },
+    {
+      "a": "A22001",
+      "b": "U8011",
+      "proposed": "distinct",
+      "reason": "舊題用自轉和眼點取樣光向；新題無方向光刺激，直接檢驗流體耦合與胞內協調邊界。",
+      "a_snapshot": {
+        "id": "A22001",
+        "question": "兩個細胞沒碰到，鞭毛為什麼仍能隔著水對拍？",
+        "answer_target": "拍動在水中造成流場，也改變鄰近鞭毛承受的負載與相位；距離縮短時可鎖相，拍動方向改變時鎖定關係也改變。但人工把分離細胞擺成衣藻式排列，未必重現正常同相蛙泳，顯示特定節奏還受胞內連結約束。",
+        "scope": "2014夾持團藻細胞各有兩支同步鞭毛，作一個節律單元；2016人工配對改用單鞭毛細胞，畫面需重設。水動力足以同步與足以指定任意生物節奏不同；精確柔順性/基底施力機制未唯一確定，不把變異株當只刪一條連結的對照。"
+      },
+      "b_snapshot": {
+        "id": "U8011",
+        "question": "只有一個眼點的小綠藻，怎麼分出光從哪邊來？",
+        "answer_target": "細胞自轉配合眼點遮光/反光結構，使受光隨方向變化；改變兩支鞭毛的拍動平衡即可轉向。",
+        "scope": "限Chlamydomonas reinhardtii方向感光模型；眼點不形成影像，不說永遠朝強光，也不把調整正負趨光的所有分子機制說成已解。"
+      }
+    },
+    {
+      "a": "A22001",
+      "b": "U8006",
+      "proposed": "distinct",
+      "reason": "舊題細菌旋轉馬達換向與螺旋束，新題真核拍動的相位耦合，不能用鞭毛同名合併。",
+      "a_snapshot": {
+        "id": "A22001",
+        "question": "兩個細胞沒碰到，鞭毛為什麼仍能隔著水對拍？",
+        "answer_target": "拍動在水中造成流場，也改變鄰近鞭毛承受的負載與相位；距離縮短時可鎖相，拍動方向改變時鎖定關係也改變。但人工把分離細胞擺成衣藻式排列，未必重現正常同相蛙泳，顯示特定節奏還受胞內連結約束。",
+        "scope": "2014夾持團藻細胞各有兩支同步鞭毛，作一個節律單元；2016人工配對改用單鞭毛細胞，畫面需重設。水動力足以同步與足以指定任意生物節奏不同；精確柔順性/基底施力機制未唯一確定，不把變異株當只刪一條連結的對照。"
+      },
+      "b_snapshot": {
+        "id": "U8006",
+        "question": "細菌往前游得好好的，為什麼能突然換一個方向？",
+        "answer_target": "部分鞭毛馬達換向，引發螺旋形態與束狀配合改變，短暫擾動細胞方向後再形成推進。",
+        "scope": "限具周生鞭毛的大腸桿菌研究；不用「全部鞭毛必須一起倒轉」模型，也不套單鞭毛物種。"
+      }
+    },
+    {
+      "a": "A22001",
+      "b": "D9007",
+      "proposed": "distinct",
+      "reason": "舊題被動琴弦反對稱橋力相消、止一弦變響；新題主動拍動體的流場負載鎖相及胞內約束，不是換介質講相消。",
+      "a_snapshot": {
+        "id": "A22001",
+        "question": "兩個細胞沒碰到，鞭毛為什麼仍能隔著水對拍？",
+        "answer_target": "拍動在水中造成流場，也改變鄰近鞭毛承受的負載與相位；距離縮短時可鎖相，拍動方向改變時鎖定關係也改變。但人工把分離細胞擺成衣藻式排列，未必重現正常同相蛙泳，顯示特定節奏還受胞內連結約束。",
+        "scope": "2014夾持團藻細胞各有兩支同步鞭毛，作一個節律單元；2016人工配對改用單鞭毛細胞，畫面需重設。水動力足以同步與足以指定任意生物節奏不同；精確柔順性/基底施力機制未唯一確定，不把變異株當只刪一條連結的對照。"
+      },
+      "b_snapshot": {
+        "id": "D9007",
+        "question": "兩條鋼琴弦一起振動時，停止其中一條，聲音怎麼反而可能變大？",
+        "answer_target": "近同音弦的反向運動可抵消橋上作用力；止住一弦解除相消，使輻射暫增而餘振衰減加快。",
+        "scope": "特定反對稱耦合狀態，非所有和弦；不教用手觸碰實琴機構，採模型示意。"
+      }
+    },
+    {
+      "a": "A22001",
+      "b": "S10012",
+      "proposed": "distinct",
+      "reason": "舊題神經元本體耦合沿同一身體傳彎；新題分離細胞間水動力作用，不需那條神經通路。",
+      "a_snapshot": {
+        "id": "A22001",
+        "question": "兩個細胞沒碰到，鞭毛為什麼仍能隔著水對拍？",
+        "answer_target": "拍動在水中造成流場，也改變鄰近鞭毛承受的負載與相位；距離縮短時可鎖相，拍動方向改變時鎖定關係也改變。但人工把分離細胞擺成衣藻式排列，未必重現正常同相蛙泳，顯示特定節奏還受胞內連結約束。",
+        "scope": "2014夾持團藻細胞各有兩支同步鞭毛，作一個節律單元；2016人工配對改用單鞭毛細胞，畫面需重設。水動力足以同步與足以指定任意生物節奏不同；精確柔順性/基底施力機制未唯一確定，不把變異株當只刪一條連結的對照。"
+      },
+      "b_snapshot": {
+        "id": "S10012",
+        "question": "線蟲前面彎了一下，後面那段怎麼知道要接著彎？",
+        "answer_target": "前段彎曲可改變鄰後段B型運動神經元活動與肌肉彎曲，形成沿身體傳遞的本體耦合，不只是肌肉排列或被動拖彎。",
+        "scope": "限C. elegans前進與受控曲率/神經抑制實驗；不宣稱全身沒有節律產生器、也不把未辨明機械通道寫成定論；負載改步態只作同核心模型延伸。"
+      }
+    },
+    {
+      "a": "A22001",
+      "b": "B2248",
+      "proposed": "distinct",
+      "reason": "舊題感知鄰居的群體轉向，新題直接流體負載改相位，沒有感知後選擇追蹤鄰居的模型。",
+      "a_snapshot": {
+        "id": "A22001",
+        "question": "兩個細胞沒碰到，鞭毛為什麼仍能隔著水對拍？",
+        "answer_target": "拍動在水中造成流場，也改變鄰近鞭毛承受的負載與相位；距離縮短時可鎖相，拍動方向改變時鎖定關係也改變。但人工把分離細胞擺成衣藻式排列，未必重現正常同相蛙泳，顯示特定節奏還受胞內連結約束。",
+        "scope": "2014夾持團藻細胞各有兩支同步鞭毛，作一個節律單元；2016人工配對改用單鞭毛細胞，畫面需重設。水動力足以同步與足以指定任意生物節奏不同；精確柔順性/基底施力機制未唯一確定，不把變異株當只刪一條連結的對照。"
+      },
+      "b_snapshot": {
+        "id": "B2248",
+        "question": "一大群椋鳥一起轉彎，每隻鳥需要追蹤整群嗎？",
+        "answer_target": "局部鄰居互動可在感知成本與群體一致性間折衷",
+        "scope": "2013 網路模型與 12 群資料；不說每隻永遠精確數七隻"
+      }
+    },
+    {
+      "a": "A22002",
+      "b": "U8009",
+      "proposed": "distinct",
+      "reason": "舊題痕跡留在外界黏液，新題痕跡是自身管徑階層且改變下一次輸送，去除外部痕跡不等於消除管網形態。",
+      "a_snapshot": {
+        "id": "A22002",
+        "question": "食物吃完了，黏菌的管路怎麼還可能留著它原來的位置？",
+        "answer_target": "局部營養刺激後，近處管路擴大、其他部分收縮並形成持續的管徑階層；反應時間較符合沿流動路徑傳遞。作者以隨流運送的未知軟化因子改變管壁、加上體積約束解釋這種重分配；留下的粗管又改變後續傳輸路徑。",
+        "scope": "限Physarum polycephalum本文管網觀察與軟化模型。直接觀察是形態/流動/時間差；軟化因子身分與作用未直接證完，不能稱ATP記憶已確定。粗管是否保留取決於刺激的流動距離，並非所有粗管永遠強化；不等同人類回憶或保證最短路。"
+      },
+      "b_snapshot": {
+        "id": "U8009",
+        "question": "沒有腦的黏菌，怎麼減少一直走回剛剛走過的路？",
+        "answer_target": "探索時留下胞外黏液，後續偏向未留痕區域；當背景全被黏液覆蓋，這個已探索/未探索差異變得難用。",
+        "scope": "限Physarum polycephalum所測覓食與U形障礙；黏液不是絕對禁區，無其他路可走時會通過，不宣稱人類式記憶或最短路保證。"
+      }
+    },
+    {
+      "a": "A22002",
+      "b": "U8005",
+      "proposed": "distinct",
+      "reason": "舊題受器修飾短期適應，靠時間比較改直游；新題流體運送與壁形變重分配管網，不是一般記憶名詞。",
+      "a_snapshot": {
+        "id": "A22002",
+        "question": "食物吃完了，黏菌的管路怎麼還可能留著它原來的位置？",
+        "answer_target": "局部營養刺激後，近處管路擴大、其他部分收縮並形成持續的管徑階層；反應時間較符合沿流動路徑傳遞。作者以隨流運送的未知軟化因子改變管壁、加上體積約束解釋這種重分配；留下的粗管又改變後續傳輸路徑。",
+        "scope": "限Physarum polycephalum本文管網觀察與軟化模型。直接觀察是形態/流動/時間差；軟化因子身分與作用未直接證完，不能稱ATP記憶已確定。粗管是否保留取決於刺激的流動距離，並非所有粗管永遠強化；不等同人類回憶或保證最短路。"
+      },
+      "b_snapshot": {
+        "id": "U8005",
+        "question": "細菌沒有地圖，怎麼知道自己是不是越游越接近食物？",
+        "answer_target": "比較近期與眼前吸引物刺激，受器修飾的較慢適應提供短暫記錄；刺激變好時延長直游，造成偏向性的隨機行走。",
+        "scope": "限研究的大腸桿菌趨化模型與可辨刺激範圍；不代表每次轉向都朝食物，也不把吸引物等同都可食用。"
+      }
+    },
+    {
+      "a": "A22002",
+      "b": "P058",
+      "proposed": "distinct",
+      "reason": "舊題固定流量/截面連續關係；新題刺激沿流動傳播改變管壁與管徑，並留下可影響後續傳輸的形態。",
+      "a_snapshot": {
+        "id": "A22002",
+        "question": "食物吃完了，黏菌的管路怎麼還可能留著它原來的位置？",
+        "answer_target": "局部營養刺激後，近處管路擴大、其他部分收縮並形成持續的管徑階層；反應時間較符合沿流動路徑傳遞。作者以隨流運送的未知軟化因子改變管壁、加上體積約束解釋這種重分配；留下的粗管又改變後續傳輸路徑。",
+        "scope": "限Physarum polycephalum本文管網觀察與軟化模型。直接觀察是形態/流動/時間差；軟化因子身分與作用未直接證完，不能稱ATP記憶已確定。粗管是否保留取決於刺激的流動距離，並非所有粗管永遠強化；不等同人類回憶或保證最短路。"
+      },
+      "b_snapshot": {
+        "id": "P058",
+        "question": "水管中間變細，為什麼水速可能變快？",
+        "answer_target": "穩定不可壓縮流下同一流量通過較小截面需較大平均速度。",
+        "scope": "不把真實供水壓力變化忽略"
+      }
+    },
+    {
+      "a": "A22002",
+      "b": "P062",
+      "proposed": "distinct",
+      "reason": "舊題無黏流靜壓轉動能；新題主動管網與未知壁軟化模型，不由伯努利式推出記憶。",
+      "a_snapshot": {
+        "id": "A22002",
+        "question": "食物吃完了，黏菌的管路怎麼還可能留著它原來的位置？",
+        "answer_target": "局部營養刺激後，近處管路擴大、其他部分收縮並形成持續的管徑階層；反應時間較符合沿流動路徑傳遞。作者以隨流運送的未知軟化因子改變管壁、加上體積約束解釋這種重分配；留下的粗管又改變後續傳輸路徑。",
+        "scope": "限Physarum polycephalum本文管網觀察與軟化模型。直接觀察是形態/流動/時間差；軟化因子身分與作用未直接證完，不能稱ATP記憶已確定。粗管是否保留取決於刺激的流動距離，並非所有粗管永遠強化；不等同人類回憶或保證最短路。"
+      },
+      "b_snapshot": {
+        "id": "P062",
+        "question": "水平管縮窄後流得更快，為什麼靜壓反而可能下降？",
+        "answer_target": "穩態無黏性近似下，壓力功轉成流體動能。",
+        "scope": "同一流線、無泵與明顯損失"
+      }
+    },
+    {
+      "a": "A22003",
+      "b": "A12011",
+      "proposed": "distinct",
+      "reason": "舊題停止渦環造成額外推進；新題反覆肌肉與組織力改變腕排列，輸出是形態而非當次速度。",
+      "a_snapshot": {
+        "id": "A22003",
+        "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+        "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+        "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。"
+      },
+      "b_snapshot": {
+        "id": "A12011",
+        "question": "水母的傘停下來了，為什麼速度還可能再增加一下？",
+        "answer_target": "傘體回復把停止渦環帶到傘下，渦環誘導流建立正壓；因此暫停變形期間仍可有額外推進，不只是慣性滑行。",
+        "scope": "限Aurelia aurita指定流場量測/壓力推算與CFD；能量來自先前收縮與彈性回復，不報跨物種最省能排名。"
+      }
+    },
+    {
+      "a": "A22003",
+      "b": "R6018",
+      "proposed": "distinct",
+      "reason": "舊題樹木圍堵舊傷並長新組織，新題剩餘身體重排且無需補腕。",
+      "a_snapshot": {
+        "id": "A22003",
+        "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+        "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+        "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。"
+      },
+      "b_snapshot": {
+        "id": "R6018",
+        "question": "樹幹的舊傷被包進去後，裡面受傷的木頭也變回原樣了嗎？",
+        "answer_target": "樹木可在受傷區周邊建立化學與物理界線，並從傷口邊緣長出新組織，限制傷區而非把舊木全部修復。",
+        "scope": "機制模型不保證隔離成功，不提供修樹、填洞或樹木安全判斷。"
+      }
+    },
+    {
+      "a": "A22003",
+      "b": "H3090",
+      "proposed": "distinct",
+      "reason": "舊題固定形變下應力鬆弛；新題主動反覆收縮/停止與恢復、新幾何平衡，不單純換生物材料講鬆弛。",
+      "a_snapshot": {
+        "id": "A22003",
+        "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+        "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+        "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。"
+      },
+      "b_snapshot": {
+        "id": "H3090",
+        "question": "塑膠被固定在同一個形狀，為什麼它頂住物體的力還會慢慢變小？",
+        "answer_target": "聚合物的彈性與時間依賴重排使固定形變的應力鬆弛；和固定應力的蠕變並排，延伸到週期載荷的延遲耗能。",
+        "scope": "不是單純彈性模數題，也不將所有塑膠視同一鬆弛時間；時間溫度疊加只在可用範圍近似。"
+      }
+    },
+    {
+      "a": "A22003",
+      "b": "B11005",
+      "proposed": "distinct",
+      "reason": "舊題應力改微管與有向壁強化/生長；新題搏動力學重排、不需補長失去的腕，沒有同一微管強化迴路。",
+      "a_snapshot": {
+        "id": "A22003",
+        "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+        "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+        "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。"
+      },
+      "b_snapshot": {
+        "id": "B11005",
+        "question": "嫩芽被側向擠壓後，細胞內的微管為什麼會換方向？",
+        "answer_target": "改變組織受力會重排微管；作者模型把微管方向與新壁材料的有向強化連結，使形狀改變應力、應力再影響生長方向。",
+        "scope": "限擬南芥莖頂分生組織的壓迫/雷射去細胞實驗與模型；微管重排是觀察，整體強化迴路含推論；不宣稱唯一分子感受器或每個細胞都完全平行。"
+      }
+    },
+    {
+      "a": "A22003",
+      "b": "B2146",
+      "proposed": "distinct",
+      "reason": "舊題發育變態改對稱體制；新題受擾後既有身體力學重組，有停/續控制而非分類比較。",
+      "a_snapshot": {
+        "id": "A22003",
+        "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+        "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+        "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。"
+      },
+      "b_snapshot": {
+        "id": "B2146",
+        "question": "海星長大像五角星，小時候也一定是五邊一樣嗎？",
+        "answer_target": "幼生與成體的體制可在變態時重新組織。",
+        "scope": "典型棘皮動物幼生與成體對稱性比較，不宣稱所有都經游泳幼生。"
+      }
+    },
+    {
+      "a": "A22004",
+      "b": "B2265",
+      "proposed": "distinct",
+      "reason": "舊題一口消化與排出路線；新題實際開口的細胞鄰接與形變。",
+      "a_snapshot": {
+        "id": "A22004",
+        "question": "水螅的嘴張大時，嘴邊的細胞是換位置讓出洞嗎？",
+        "answer_target": "開口周邊的細胞仍保留原有鄰接關係，主要靠沿口緣拉長、徑向變窄來容納擴張；肌肉放鬆會抑制開口，支持放射狀肌原纖維施力與細胞黏彈性形變，而非細胞逐一換位騰出空間。",
+        "scope": "限Hydra vulgaris指定成像與放鬆對照，主要追蹤分離頭部的外胚層細胞；完整個體收縮對照另列。閉口為接合封閉、開口涉及細胞間接合，不畫成每次撕破細胞。沒有直接定位完整神經控制，精確力為估算。"
+      },
+      "b_snapshot": {
+        "id": "B2265",
+        "question": "只有一個消化開口的水螅，吃進去和排出來怎麼分工？",
+        "answer_target": "單口腔室消化與管道式消化路線不同",
+        "scope": "限水螅等刺胞動物，不採櫛水母單口概括"
+      }
+    },
+    {
+      "a": "A22004",
+      "b": "B2117",
+      "proposed": "distinct",
+      "reason": "舊題分散神經網整合取食；新題同一圈細胞是否換位與肌力形變，未把完整神經迴路當答案。",
+      "a_snapshot": {
+        "id": "A22004",
+        "question": "水螅的嘴張大時，嘴邊的細胞是換位置讓出洞嗎？",
+        "answer_target": "開口周邊的細胞仍保留原有鄰接關係，主要靠沿口緣拉長、徑向變窄來容納擴張；肌肉放鬆會抑制開口，支持放射狀肌原纖維施力與細胞黏彈性形變，而非細胞逐一換位騰出空間。",
+        "scope": "限Hydra vulgaris指定成像與放鬆對照，主要追蹤分離頭部的外胚層細胞；完整個體收縮對照另列。閉口為接合封閉、開口涉及細胞間接合，不畫成每次撕破細胞。沒有直接定位完整神經控制，精確力為估算。"
+      },
+      "b_snapshot": {
+        "id": "B2117",
+        "question": "海葵沒有像人的大腦，觸手怎麼仍能協調把食物送到嘴邊？",
+        "answer_target": "分散神經網可整合感覺與收縮活動，不需集中式大腦。",
+        "scope": "刺胞動物神經組織與取食動作。"
+      }
+    },
+    {
+      "a": "A22004",
+      "b": "B15007",
+      "proposed": "distinct",
+      "reason": "舊題花瓣平面內差異生長驅動曲率；新題短時開口細胞可逆形變與保鄰居，不靠增長。",
+      "a_snapshot": {
+        "id": "A22004",
+        "question": "水螅的嘴張大時，嘴邊的細胞是換位置讓出洞嗎？",
+        "answer_target": "開口周邊的細胞仍保留原有鄰接關係，主要靠沿口緣拉長、徑向變窄來容納擴張；肌肉放鬆會抑制開口，支持放射狀肌原纖維施力與細胞黏彈性形變，而非細胞逐一換位騰出空間。",
+        "scope": "限Hydra vulgaris指定成像與放鬆對照，主要追蹤分離頭部的外胚層細胞；完整個體收縮對照另列。閉口為接合封閉、開口涉及細胞間接合，不畫成每次撕破細胞。沒有直接定位完整神經控制，精確力為估算。"
+      },
+      "b_snapshot": {
+        "id": "B15007",
+        "question": "百合花瓣的中肋被削掉仍會打開，真正帶動展開的是哪裡？",
+        "answer_target": "邊緣相對中央的平面內增長，使曲面產生不相容伸長並改變整體曲率；刪中肋仍開、刪邊緣反而較少彎，支持邊緣驅動而非主要靠上下表面差長。",
+        "scope": "限Lilium casablanca實驗與薄殼模型；中肋仍有剛性和局部曲率貢獻，不泛化所有花；不把模型的曲率翻轉說成直接測得全細胞生長機制。"
+      }
+    },
+    {
+      "a": "A22004",
+      "b": "H3090",
+      "proposed": "distinct",
+      "reason": "黏彈性是共通材料描述，但新題用細胞追蹤區分換位/形變及主動肌肉施力，不只是固定形變力變小。",
+      "a_snapshot": {
+        "id": "A22004",
+        "question": "水螅的嘴張大時，嘴邊的細胞是換位置讓出洞嗎？",
+        "answer_target": "開口周邊的細胞仍保留原有鄰接關係，主要靠沿口緣拉長、徑向變窄來容納擴張；肌肉放鬆會抑制開口，支持放射狀肌原纖維施力與細胞黏彈性形變，而非細胞逐一換位騰出空間。",
+        "scope": "限Hydra vulgaris指定成像與放鬆對照，主要追蹤分離頭部的外胚層細胞；完整個體收縮對照另列。閉口為接合封閉、開口涉及細胞間接合，不畫成每次撕破細胞。沒有直接定位完整神經控制，精確力為估算。"
+      },
+      "b_snapshot": {
+        "id": "H3090",
+        "question": "塑膠被固定在同一個形狀，為什麼它頂住物體的力還會慢慢變小？",
+        "answer_target": "聚合物的彈性與時間依賴重排使固定形變的應力鬆弛；和固定應力的蠕變並排，延伸到週期載荷的延遲耗能。",
+        "scope": "不是單純彈性模數題，也不將所有塑膠視同一鬆弛時間；時間溫度疊加只在可用範圍近似。"
+      }
+    },
+    {
+      "a": "A22003",
+      "b": "A22004",
+      "proposed": "distinct",
+      "reason": "水母整體既有腕重排與水螅同一口緣細胞保鄰居伸長，觀察尺度/控制不同；不將前者冒稱已證逐細胞鄰居不變。",
+      "a_snapshot": {
+        "id": "A22003",
+        "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+        "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+        "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。"
+      },
+      "b_snapshot": {
+        "id": "A22004",
+        "question": "水螅的嘴張大時，嘴邊的細胞是換位置讓出洞嗎？",
+        "answer_target": "開口周邊的細胞仍保留原有鄰接關係，主要靠沿口緣拉長、徑向變窄來容納擴張；肌肉放鬆會抑制開口，支持放射狀肌原纖維施力與細胞黏彈性形變，而非細胞逐一換位騰出空間。",
+        "scope": "限Hydra vulgaris指定成像與放鬆對照，主要追蹤分離頭部的外胚層細胞；完整個體收縮對照另列。閉口為接合封閉、開口涉及細胞間接合，不畫成每次撕破細胞。沒有直接定位完整神經控制，精確力為估算。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "id": "A22-S001",
+      "url": "https://elifesciences.org/articles/02750",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+      "reading_scope": "正文抽取段15–62：Introduction、Results、Discussion and Conclusions、Cell growth and imaging開頭；Fig6另取得圖檔目讀。未讀全部後段方法、補充影片或逐式重現模型。",
+      "locator": "Results: One cell / Two cells / Waveform compliance；Discussion and Conclusions；Fig6（近遠距波形）；快取段15–62",
+      "author_cache": {
+        "file": ".cache/wave22-life-flagella2014.html",
+        "sha256": "532d1f018746e9a0cf0c48d72c54de5e20c584e5071f75656f48d5df57cbceb3",
+        "text_file": ".cache/wave22-life-flagella2014-body.json",
+        "text_sha256": "f5cd853689d7258d31d97a63a6ae2f027d81312d79ae28145ed2c745a4895309"
+      }
+    },
+    {
+      "id": "A22-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4878519/",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+      "reading_scope": "正文段15–56、82–109：基底結構、vfl3、人工兩細胞配對、Discussion、指定Methods；Fig3另取得目讀。未讀全篇多鞭毛物種比較、補充影片。",
+      "locator": "Results中vfl3及Fig3兩個單鞭毛細胞人工配對；Discussion: Insufficiency of Hydrodynamics / Intracellular Coupling of Flagella by Contractile Fibers；Methods: Microscopy and Micromanipulation",
+      "author_cache": {
+        "file": ".cache/wave22-life-basal2016.html",
+        "sha256": "c15f16c5daabfeaa60198e33505dd6874e033f9bbb6d5cab5f774c55b0ba6f42",
+        "text_file": ".cache/wave22-life-basal2016-body.json",
+        "text_sha256": "2c63b0b013affa5e11fd3c089f55398dee1ae3bc31898c89f9fc24f8ad843e57"
+      }
+    },
+    {
+      "id": "A22-S003",
+      "url": "https://www.bpm.ph.tum.de/wp-content/uploads/2023/07/2021-PNAS-Memory-Hierarchy-Alim-Kramar.pdf",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+      "reading_scope": "PDF pp1–6主文、Results、Discussion及Methods；另渲染目讀p2 Fig1、p4 Fig4、p5 Fig5。未讀SI與影片、未重做管網分析。",
+      "locator": "pp2–5: Changes in Tube Diameter Hierarchy Imprint Nutrient Stimulus Position / Fluid Flow Propagates Stimulus into the Network / Mechanism of Encoding Memory in Different Tube Diameter Dynamics / Encoded Memory Is Read Out；Fig1/4/5",
+      "author_cache": {
+        "file": ".cache/wave22-life-slime2021.pdf",
+        "sha256": "1d3a504f89fa1c717287b65f0e4a63ce6161bdbcfb8507b84eddfefcfc89f8a2",
+        "text_file": ".cache/wave22-life-slime2021-body.json",
+        "text_sha256": "8708a0616b2d2aa8bc2ff49981274445575c8d6cb7e82d86d36757bbf192c806"
+      }
+    },
+    {
+      "id": "A22-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4491739/",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+      "reading_scope": "Results/Discussion正文段33–95與其中Fig2–5圖說；Fig5另取得目讀。未完整讀後段方法或SI推導/影片；不提供操作步驟。",
+      "locator": "Results: existing-arm reorganization、cell proliferation/death/muscle reconnection controls；Fig5 muscle-contraction inhibition/washout、mechanical model、frequency comparisons；Discussion",
+      "author_cache": {
+        "file": ".cache/wave22-life-jelly2015.html",
+        "sha256": "d5ef8883d25825ee848a9fe73977f52efe3e1c19bdc4179cb84cbff2c509a071",
+        "text_file": ".cache/wave22-life-jelly2015-body.json",
+        "text_sha256": "0ca4c01c32452f5417ddbd34f6011667c2be80a31825530ec37cc2e60611d92c"
+      }
+    },
+    {
+      "id": "A22-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12002269/fullTextXML",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+      "reading_scope": "官方XML正文段1–62：Results、Discussion與指定Materials and Methods；讀圖說但未目讀本篇圖/影片。另讀2025-04-30勘誤正文。",
+      "locator": "Results中不同graft起始幾何、viscoelastic finite-element model、contraction-frequency perturbation；Discussion；Methods: Grafting / Modulation of Muscle Contraction Frequency",
+      "author_cache": {
+        "file": ".cache/wave22-life-jelly2025.xml",
+        "sha256": "37673409e984e73879c22c092c7fc8a60b7a271344b58ed9a9ddcc8e85328c5f",
+        "text_file": ".cache/wave22-life-jelly2025-body.json",
+        "text_sha256": "3848fcf3448916260c7441a7c738a79fed5507c538aa675c65934a5c393c44bf"
+      }
+    },
+    {
+      "id": "A22-S006",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4788721/",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+      "reading_scope": "Introduction/Methods段16–40、Results/Discussion段41–97（曲線擬合圖說未逐式重現）；Fig6另取得目讀。未看補充影片。",
+      "locator": "Methods: Image acquisition / Muscle relaxant experiments / Data analysis；Results: mouth opening inhibition、cell tracking、cell morphology；Fig6 D–F/I–M",
+      "author_cache": {
+        "file": ".cache/wave22-life-hydra2016.html",
+        "sha256": "f5129d2878a6d879b0d96d822640f8e1c142b5d259fd236b3f259b4d577dd92c",
+        "text_file": ".cache/wave22-life-hydra2016-body.json",
+        "text_sha256": "ea09bf34383c219b723533f44726582debb3279b7c328d05a7aed162b55dd26f"
+      }
+    }
+  ],
+  "source_identity": {
+    "count_policy": "6來源記錄是6篇原研究，附1則同文致謝勘誤；不是6次獨立重複實驗。同團隊後續、作者稿、PMC與XML不按URL額外計數。",
+    "comparison": "檢索歷史batch全部source DOI/URL及正規化title，精確零命中不保證無相依；下列明列同團隊關係。",
+    "records": [
+      {
+        "source_id": "A22-S001",
+        "doi": "10.7554/eLife.02750",
+        "canonical_url": "https://doi.org/10.7554/eLife.02750",
+        "retrieval_url": "https://elifesciences.org/articles/02750",
+        "relationship": "期刊版與PMC/官方XML/作者載體是同一研究，不按載體重計。 S001/S002共享Wan與Goldstein，2016為機制邊界後續，不稱獨立團隊重複驗證。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A22-S002",
+        "doi": "10.1073/pnas.1518527113",
+        "canonical_url": "https://doi.org/10.1073/pnas.1518527113",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4878519/",
+        "relationship": "期刊版與PMC/官方XML/作者載體是同一研究，不按載體重計。 S001/S002共享Wan與Goldstein，2016為機制邊界後續，不稱獨立團隊重複驗證。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A22-S003",
+        "doi": "10.1073/pnas.2007815118",
+        "canonical_url": "https://doi.org/10.1073/pnas.2007815118",
+        "retrieval_url": "https://www.bpm.ph.tum.de/wp-content/uploads/2023/07/2021-PNAS-Memory-Hierarchy-Alim-Kramar.pdf",
+        "relationship": "期刊版與PMC/官方XML/作者載體是同一研究，不按載體重計。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A22-S004",
+        "doi": "10.1073/pnas.1502497112",
+        "canonical_url": "https://doi.org/10.1073/pnas.1502497112",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4491739/",
+        "relationship": "期刊版與PMC/官方XML/作者載體是同一研究，不按載體重計。 S004/S005同Goentoro研究脈絡；2025為另階段/幾何後續，且勘誤揭示學位論文來源，不另計複本或勘誤為獨立證據。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A22-S005",
+        "doi": "10.1073/pnas.2412082122",
+        "canonical_url": "https://doi.org/10.1073/pnas.2412082122",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12002269/fullTextXML",
+        "relationship": "期刊版與PMC/官方XML/作者載體是同一研究，不按載體重計。 S004/S005同Goentoro研究脈絡；2025為另階段/幾何後續，且勘誤揭示學位論文來源，不另計複本或勘誤為獨立證據。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A22-S006",
+        "doi": "10.1016/j.bpj.2016.01.008",
+        "canonical_url": "https://doi.org/10.1016/j.bpj.2016.01.008",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4788721/",
+        "relationship": "期刊版與PMC/官方XML/作者載體是同一研究，不按載體重計。",
+        "historical_exact_identity_matches": []
+      }
+    ]
+  },
+  "retrieval_failures": [
+    {
+      "name": "basal2016",
+      "url": "https://www.damtp.cam.ac.uk/user/gold/pdfs/coupling_pnas.pdf",
+      "kind": "pdf",
+      "accessed_on": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
+      "validated_body": false
+    },
+    {
+      "name": "jelly2015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4491739/fullTextXML",
+      "kind": "xml",
+      "accessed_on": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "HTTP Error 500:",
+      "validated_body": false
+    },
+    {
+      "name": "hydra2016",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4788721/fullTextXML",
+      "kind": "xml",
+      "accessed_on": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "HTTP Error 500:",
+      "validated_body": false
+    },
+    {
+      "route": "PMC4491739 / PMC7958412 web.open",
+      "result": "web回驗證頁，未當正文；前者改指定UA有效HTML、後者改TUM有效PDF。"
+    }
+  ],
+  "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "reading_limits": [
+    "只讀逐源指定正文/七張圖，未逐式重現、未讀SI影片；不是每句全查或成片核准。",
+    "S005另讀致謝勘誤，未目讀其圖；任何精確圖形/時間點進稿需補視覺讀回。",
+    "動物介入只作原研究對照，不提供傷害或培養操作。"
+  ],
+  "visual_reads": [
+    {
+      "name": "flagella2014",
+      "figure": "fig6",
+      "url": "https://iiif.elifesciences.org/lax/02750%2Felife-02750-fig6-v1.tif/full/617,/0/default.jpg",
+      "file": ".cache/wave22-life-flagella2014-fig6.jpg",
+      "sha256": "dff1cb2cb5fb8f8f6c30b7801775c5dfaead3821a58443163d784f4821c82570",
+      "type": "image/jpeg",
+      "status": 200,
+      "source_id": "A22-S001",
+      "scope": "Fig6近遠距波形",
+      "method": "當日原圖下載或從已讀PDF渲染；以view_image實際目讀，不只讀圖說。"
+    },
+    {
+      "name": "basal2016",
+      "figure": "fig03",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/35d6/4878519/a81d2d9205df/pnas.1518527113fig03.jpg",
+      "file": ".cache/wave22-life-basal2016-fig03.jpg",
+      "sha256": "265f4474a893ce611f3483ed17c80abf02e144d89ac08ca0125a5296243bc2f2",
+      "type": "image/jpeg",
+      "status": 200,
+      "source_id": "A22-S002",
+      "scope": "Fig3人工單鞭毛配對/IP與AP",
+      "method": "當日原圖下載或從已讀PDF渲染；以view_image實際目讀，不只讀圖說。"
+    },
+    {
+      "name": "jelly2015",
+      "figure": "fig05",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ca0b/4491739/9b45d603e335/pnas.1502497112fig05.jpg",
+      "file": ".cache/wave22-life-jelly2015-fig05.jpg",
+      "sha256": "1c696fd0d9fddb16deb9dcb01078c17b3832d9a32afae857d5dfff18e612801d",
+      "type": "image/jpeg",
+      "status": 200,
+      "source_id": "A22-S004",
+      "scope": "Fig5停/續、機械模型與頻率對照",
+      "method": "當日原圖下載或從已讀PDF渲染；以view_image實際目讀，不只讀圖說。"
+    },
+    {
+      "name": "hydra2016",
+      "figure": "fig6",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/caef/4788721/ff29c03bd383/gr6.jpg",
+      "file": ".cache/wave22-life-hydra2016-fig6.jpg",
+      "sha256": "e7fe7017800c9315f1d9acd1501f781838600c9cdb1e3da00f695833fbc1896c",
+      "type": "image/jpeg",
+      "status": 200,
+      "source_id": "A22-S006",
+      "scope": "Fig6彩色鄰居與細胞形變",
+      "method": "當日原圖下載或從已讀PDF渲染；以view_image實際目讀，不只讀圖說。"
+    },
+    {
+      "name": "slime2021",
+      "page": 2,
+      "file": ".cache/wave22-life-slime2021-p2.png",
+      "sha256": "063a22f74637ef5b7aabe808652c1156e56f1cc5131600d22f2911e10326584d",
+      "route": "render existing PDF",
+      "source_id": "A22-S003",
+      "scope": "PDF p2 Fig1刺激位置與後續管網",
+      "method": "當日原圖下載或從已讀PDF渲染；以view_image實際目讀，不只讀圖說。"
+    },
+    {
+      "name": "slime2021",
+      "page": 4,
+      "file": ".cache/wave22-life-slime2021-p4.png",
+      "sha256": "dc519c627d98dfb73b78af4867e1d9e4e7f083bd25f74c421b48ee518322c25f",
+      "route": "render existing PDF",
+      "source_id": "A22-S003",
+      "scope": "PDF p4 Fig4模型/資料與頻率分類",
+      "method": "當日原圖下載或從已讀PDF渲染；以view_image實際目讀，不只讀圖說。"
+    },
+    {
+      "name": "slime2021",
+      "page": 5,
+      "file": ".cache/wave22-life-slime2021-p5.png",
+      "sha256": "b77a3b795b3e90ef623175b2d4d601c06c7a72a011175400a62daec1926f096a",
+      "route": "render existing PDF",
+      "source_id": "A22-S003",
+      "scope": "PDF p5 Fig5近遠粗管反應",
+      "method": "當日原圖下載或從已讀PDF渲染；以view_image實際目讀，不只讀圖說。"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W22A-T01",
+      "seconds": 140,
+      "chapters": [
+        75,
+        65
+      ],
+      "same_core_totals": {
+        "A22001": 140
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W22A-T02",
+      "seconds": 160,
+      "chapters": [
+        55,
+        55,
+        50
+      ],
+      "same_core_totals": {
+        "A22003": 160
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W22A-T03",
+      "seconds": 105,
+      "chapters": [
+        50,
+        55
+      ],
+      "same_core_totals": {
+        "A22004": 105
+      },
+      "paper_only": true
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "checks": [
+      "source references / unique IDs",
+      "chapter sums / beats<=45 / cumulative core cap / range max<=body",
+      "UTF8 LF / no BOM / string rstrip / no absolute user paths / written_files binding",
+      "validateEditorial and isolated validateThemes passed; Python readback of all budget/binding checks passed"
+    ],
+    "limits": "尚待非作者與共同top5；不是劇本或製作核准。",
+    "runtime": "Node v24.22.1"
+  },
+  "unresolved": [
+    "A22001與既有一般同步/耦合核心、A22002模型厚度及A22003/H3090材料邊界交非作者嚴判，不保四題數量。",
+    "共同top5尚未完成，作者近對不是去重召回保證。"
+  ],
+  "revision_history": [
+    {
+      "reviewer": "pool_physics",
+      "before_files": [
+        {
+          "file": "batches/wave22-life-controls.json",
+          "sha256": "d5af92f1b0b85f156a0412cd852f5a790a22f553075ef5682162887a3affd476"
+        },
+        {
+          "file": "reviews/wave22-life-controls-themes.json",
+          "sha256": "7773477eb6ea6672ffee6c2da89bf62975d52f0d53fde1d7dcdc31279d671a68"
+        },
+        {
+          "file": "reviews/wave22-life-controls-author.json",
+          "sha256": "1e57609aff08ac58be43a8700282bd09a81dee7c2cd25745e003bfb645cb6afc"
+        }
+      ],
+      "changes": [
+        "T01胞內模型30→15秒，全155→140，不補內容；刪段重算125秒。",
+        "T02傷口閉合與重排時序澄清：重排可早已開始，閉合後仍可繼續。",
+        "q/answer/source與batch位元組不變；黏性棘輪仍僅模型，未升成直接力學量測。"
+      ],
+      "after_theme_sha256": "8796c36b4fc99f4cb230feb37bb654e1874ee41699cdf10125f498c3d0287bc7",
+      "removed_seconds": 15
+    }
+  ]
+}

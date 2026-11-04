@@ -1,0 +1,1339 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R34001",
+    "R34002",
+    "R34003",
+    "R34004",
+    "R34005",
+    "R34006",
+    "R34007"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave34-tracks.json",
+      "sha256": "5d888e711eb66bd565d4368eb5ff83dcbe8b732dd0d4123d0ed925683a41a5c3"
+    },
+    {
+      "file": "reviews/wave34-tracks-themes.json",
+      "sha256": "798af0f37e5b6f1a40885c18a0be203b1c58809d0e2ccf5231715f317dfb0bdd"
+    },
+    {
+      "file": "reviews/wave34-tracks-author.json",
+      "sha256": "20455a2faacf8b9de05ca6ce4b3a977e3fbc03e14e7977269dba2573366f034a"
+    }
+  ],
+  "baseline": {
+    "head": "e02a72b1660bd7b6af59603c8347cc6d9dd2b695",
+    "selected": 3139,
+    "raw_records": 3515,
+    "not_added": 1427,
+    "themes": 323
+  },
+  "role_and_scope": "足跡作者以外的第二人逐題覆核，亦為第29波腳印比較實驗原作者。檢查觀察、模擬和行為解釋的界線；本次沒有試讀。",
+  "candidate_review": [
+    {
+      "id": "R34001",
+      "canonical_id": "P29001",
+      "decision": "merge",
+      "reason": "與P29001同樣解釋足部擾動後，表面材料塌回填糊，較淺下層尚能保存足趾輪廓。乾罌粟籽、活鳥X光與顆粒模擬是另一材料條件及證據，保留為P29001變體。P29002另解同趾進出軌跡不同，不是本題合併對象。",
+      "source_ids": [
+        "R34-S001"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "editorial_seconds": [
+        30,
+        80
+      ]
+    },
+    {
+      "id": "R34002",
+      "canonical_id": "R34002",
+      "decision": "retain",
+      "reason": "雷達填印和深層異常位置不同；深層壓實改變介電性是作者提出的解釋。開挖輪廓不提供古獸足壓值。",
+      "source_ids": [
+        "R34-S002"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "editorial_seconds": [
+        30,
+        80
+      ]
+    },
+    {
+      "id": "R34003",
+      "canonical_id": "R34003",
+      "decision": "retain",
+      "reason": "多視角影像重建加既有印距定尺度，再與兩張原圖核彎向，與目視照片認趾不同。",
+      "source_ids": [
+        "R34-S003"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "editorial_seconds": [
+        30,
+        80
+      ]
+    },
+    {
+      "id": "R34004",
+      "canonical_id": "R34004",
+      "decision": "retain",
+      "reason": "沉積疊印次序及步距支持人在地懶印上行走，另外的環形抓痕與改向提供可能互動線索，不決定追獵成敗。",
+      "source_ids": [
+        "R34-S004"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "editorial_seconds": [
+        30,
+        80
+      ]
+    },
+    {
+      "id": "R34005",
+      "canonical_id": "R34005",
+      "decision": "retain",
+      "reason": "孤立小印與同一雙向路徑的左右不對稱是獨立線索；步印與泥面皆有變異，無法定性別、親屬或抱法。",
+      "source_ids": [
+        "R34-S005"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "editorial_seconds": [
+        30,
+        80
+      ]
+    },
+    {
+      "id": "R34006",
+      "canonical_id": "R34006",
+      "decision": "retain",
+      "reason": "不同接地端數在現代軟泥產生不同溝與腳印位置，可與古線跡作條件比對；無法排除所有其他拖曽物。",
+      "source_ids": [
+        "R34-S006"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "editorial_seconds": [
+        30,
+        80
+      ]
+    },
+    {
+      "id": "R34007",
+      "canonical_id": "R34007",
+      "decision": "retain",
+      "reason": "可用作者摘要明列的兩次並排後足、繼而前肢著地步行等尺度作短案，不補翼形或降落速度。",
+      "source_ids": [
+        "R34-S007"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ],
+      "editorial_seconds": [
+        30,
+        80
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R34-S001",
+      "title": "The birth of a dinosaur footprint: Subsurface 3D motion reconstruction and discrete element simulation reveal track ontogeny",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者取得的原件SHA，獨立讀指定段落；原始摘要及實際目讀圖頁另列。",
+      "reading_scope": "PDF pp2–4，受測珍珠雞與X光運動導入離散顆粒模擬、Fig2/3實測及虛擬切層區分。目讀p3 Fig3時間×深度的模擬圖格。",
+      "locator": "PDF第2–4頁，實驗表面與模擬比較、圖2及圖3虛擬分層。",
+      "cache": {
+        "file": ".cache/wave34-tracks-layer.pdf",
+        "sha256": "8d656a4859b061ac28dd5a3a1f7bc9f479875c3658e8f0515820849cb3279f92",
+        "text_file": ".cache/wave34-tracks-layer.txt",
+        "text_sha256": "a57afffc37057542f652160297751b19ab270a5abcaaa6c9921c133e8d7860d7"
+      }
+    },
+    {
+      "source_id": "R34-S002",
+      "title": "3-D radar imaging unlocks the untapped behavioral and biomechanical archive of Pleistocene ghost tracks",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者取得的原件SHA，獨立讀指定段落；原始摘要及實際目讀圖頁另列。",
+      "reading_scope": "PDF pp4–8，白沙兩地點淺層與印底雷達，p7 Fig6a/b往返時間、6c開挖深度及6d現生象壓力圖；另讀填料含水、下層壓密的兩段解釋。",
+      "locator": "PDF第2、4–8頁，圖2、4及6；圖6c開挖深度、6d現生象壓力。",
+      "cache": {
+        "file": ".cache/wave34-tracks-radar.pdf",
+        "sha256": "bf119b08d87893578c919d81f06d1c3baf71016bc4e1ed7f34b3240fb3d39ad7",
+        "text_file": ".cache/wave34-tracks-radar.txt",
+        "text_sha256": "afb163cd840def601c1e8a9188921284652060ea5725baf78650fae3d7c94df2"
+      }
+    },
+    {
+      "source_id": "R34-S003",
+      "title": "Historical Photogrammetry: Bird’s Paluxy River Dinosaur Chase Sequence Digitally Reconstructed as It Was prior to Excavation 70 Years Ago",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者取得的原件SHA，獨立讀指定段落；原始摘要及實際目讀圖頁另列。",
+      "reading_scope": "PDF pp2–4 多視角建模、比例來自現存雷射掃描區及原手繪圖的特徵間距；南/中/北影像品質與Fig3、4彎向比較。",
+      "locator": "PDF第2–4頁，Methods及Discussion、圖2–4；照片選擇、比例與兩版手繪圖疊合。",
+      "cache": {
+        "file": ".cache/wave34-tracks-photogram.pdf",
+        "sha256": "02b380d4e93cfb5f031c35b2456448b9fbdcb8168be5ee0f2ead8dc69dce2565",
+        "text_file": ".cache/wave34-tracks-photogram.txt",
+        "text_sha256": "ca128174852a61c8e204385ea892fc2a3d25542e4f43ffb1b5b988c03801f963"
+      }
+    },
+    {
+      "source_id": "R34-S004",
+      "title": "Footprints preserve terminal Pleistocene hunt? Human-sloth interactions in North America",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者取得的原件SHA，獨立讀指定段落；原始摘要及實際目讀圖頁另列。",
+      "reading_scope": "PDF pp2–4疊印、地懶和人印長軸、需配合的步距、環形痕；p3 Fig2C與J/K的不同證據分框。",
+      "locator": "PDF第2–4頁，圖2C–M、疊印泥層、步距與替代解釋。",
+      "cache": {
+        "file": ".cache/wave34-tracks-sloth.pdf",
+        "sha256": "67ceec6310c4adfdc97c2bca2bafb1d821530c73bcf11154bd51bf4624b3612b",
+        "text_file": ".cache/wave34-tracks-sloth.txt",
+        "text_sha256": "ede75ce3fe41d6c4233cb8749ef630c107ddfc0eba98b2793f9509cce084d0eb"
+      }
+    },
+    {
+      "source_id": "R34-S005",
+      "title": "Walking in mud: Remarkable Pleistocene human trackways from White Sands National Park (New Mexico)",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者取得的原件SHA，獨立讀指定段落；原始摘要及實際目讀圖頁另列。",
+      "reading_scope": "作者接受稿pp7–9 Location-3A/3E短暫小印及雙向左右足差，pp14–16孩童負載為假說；p30僅附Fig6/7圖說，未當成原圖。",
+      "locator": "作者接受稿第7–8、14–16頁、圖6與7圖說（頁30）。",
+      "cache": {
+        "file": ".cache/wave34-tracks-child.pdf",
+        "sha256": "d351dfa11883d42eaa72bbee0e1e458d2a5034ee16d1178e5351d4b6b8ac3004",
+        "text_file": ".cache/wave34-tracks-child.txt",
+        "text_sha256": "3d828eecc4cf09cf9d469bc4687c7138264eb981f42f00ae24cc20dc2652df52"
+      }
+    },
+    {
+      "source_id": "R34-S006",
+      "title": "The ichnology of White Sands (New Mexico): Linear traces and human footprints, evidence of transport technology?",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者取得的原件SHA，獨立讀指定段落；原始摘要及實際目讀圖頁另列。",
+      "reading_scope": "PDF pp5–10線溝與人印位置、pp19–21 §4.2，實驗於英國泥灘；p20 Fig21A–C為手拖V、加墊V、X設計。不同設計可出不同地面記錄，古載貨未知。",
+      "locator": "PDF第5–10、19–21頁，地點A、C的溝線；4.2實驗與圖21A、C。",
+      "cache": {
+        "file": ".cache/wave34-tracks-travois.pdf",
+        "sha256": "da7caa2411b3d5d6cd46779bb294c9332cba73642f75dc17d7f89a5028301129",
+        "text_file": ".cache/wave34-tracks-travois.txt",
+        "text_sha256": "a54ab4f19b4b2d3663e38e7dec813d63544b20709c161367697c39891e845dfe"
+      }
+    },
+    {
+      "source_id": "R34-S007",
+      "title": "First record of a pterosaur landing trackway",
+      "decision": "supports_bounded_topic",
+      "read_via": "本覆核者核對作者取得的原件SHA，獨立讀指定段落；原始摘要及實際目讀圖頁另列。",
+      "reading_scope": "Europe PMC原始研究紀錄的abstractText；只核Crayssac這列的後足、趾拖、再次後足、前肢印與恢復步行。這不是原圖/全文。",
+      "locator": "Europe PMC 原論文作者摘要。辨識依據取自摘要敘述的後足、拖趾、前肢出現次序及後續步行。",
+      "cache": {
+        "file": ".cache/wave34-tracks-landing-record.json",
+        "sha256": "6bdefd401daf6232e4ac52374c01b9a155bb552188d2a48b9d3714ddec03d167"
+      }
+    }
+  ],
+  "source_identity_review": "7項不同原研究含多個白沙地點或相關研究團隊。受理稿/PDF、資料庫摘要與正刊DOI不另增研究數。",
+  "source_reading_summary": "6篇PDF或作者稿指定正文、1筆作者摘要。5張研究圖頁另目讀，再核1張只有圖說的頁。沒把附錄/影片當已看。",
+  "source_fetch_limits": "本覆核者就翼龍另試web.open PMC2817294，回驗證頁；仍只以收錄原作者摘要評可用範圍。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave34-physics-peer-layer-p3.png",
+      "sha256": "397b5753abcacc81c22412ecf073cfcf4167cebc0cdc763585bdc54981d9270f",
+      "read_scope": "Fig3，模擬移除上層後的切面。"
+    },
+    {
+      "file": ".cache/wave34-physics-peer-radar-p7.png",
+      "sha256": "bbfdea909fcd2cccbfdc88ef9822d98250fd794b6c486f2ed98ca8adcdcbd948",
+      "read_scope": "Fig6，時間切片、開挖形態與非洲象壓力的色標。"
+    },
+    {
+      "file": ".cache/wave34-physics-peer-photogram-p4.png",
+      "sha256": "e5a4d344b016f7a46f3f420889c676c99eb35b43b01293d0392a95019615b70e",
+      "read_scope": "Fig3/4，實物復原與兩張繪圖比對。"
+    },
+    {
+      "file": ".cache/wave34-physics-peer-sloth-p3.png",
+      "sha256": "1dad53264dff37bc239df866a0ca5ec7eed03be2bdb08268f88f1e8ad0964df0",
+      "read_scope": "Fig2疊印和環形抓痕。"
+    },
+    {
+      "file": ".cache/wave34-physics-peer-child-p30.png",
+      "sha256": "76ab2ee5a80fc6f03f766cc236f4562b81e73e380261633ac9eef91ccea6cfa3",
+      "read_scope": "此頁為Fig6/7等圖說，無插圖。"
+    },
+    {
+      "file": ".cache/wave34-physics-peer-travois-p20.png",
+      "sha256": "2053a83125ed27530c6af6e52a76c3aabda735a7ea6d1e12eef1a7ef76c7155f",
+      "read_scope": "Fig21A及C，現代V形與X形拖具地面結果。"
+    }
+  ],
+  "related_source_review": "併入P29001保留乾顆粒和鴯鶓足標本濕層兩種試材，不能把任一實驗的模擬當古印直接內視。",
+  "author_near_pair_review": [
+    {
+      "a": "R34001",
+      "b": "P29003",
+      "decision": "distinct",
+      "reason": "不同基底的足印保形跟前後腳載荷/承載門檻不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34001",
+      "b": "A12010",
+      "decision": "distinct",
+      "reason": "蟶子縮殼導入水、局部流化；乾顆粒足印看地表塌落和深部約束。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34002",
+      "b": "O3003",
+      "decision": "distinct",
+      "reason": "雷達陰影或鏡反射與地下印底壓密/填料回波的比較條件不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34002",
+      "b": "R34001",
+      "decision": "distinct",
+      "reason": "成印過程及下層輪廓與雷達訊號的物理量不能混用。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34003",
+      "b": "P28001",
+      "decision": "distinct",
+      "reason": "雷射掃唱片溝紋取得時間波形，不由多張歷史照片重建遺址尺度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34003",
+      "b": "R33001",
+      "decision": "distinct",
+      "reason": "信件先量三維體積後展面；舊照片先靠幾何重建並查彎向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34004",
+      "b": "P29005",
+      "decision": "distinct",
+      "reason": "癒合骨包住牙齒的生命時序證據不同於兩行足印的步距及疊壓。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34004",
+      "b": "R34003",
+      "decision": "distinct",
+      "reason": "一題驗圖的方向幾何，另一題考察人後踩、是否可能互動。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34005",
+      "b": "R34004",
+      "decision": "distinct",
+      "reason": "往返足形與零星小印推攜帶，並非地懶印中有人的疊壓。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34006",
+      "b": "R34005",
+      "decision": "distinct",
+      "reason": "載人線索與桿端拖痕的控制實驗不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34007",
+      "b": "P29003",
+      "decision": "distinct",
+      "reason": "雙後足先著地再恢復四足，與基底承載差造成前足單獨留印不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R34007",
+      "b": "B2178",
+      "decision": "distinct",
+      "reason": "飛羽結構的比較不產出登陸足印的先後次序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R34001",
+      "b": "P29001",
+      "decision": "merge",
+      "reason": "與P29001同樣解釋足部擾動後，表面材料塌回填糊，較淺下層尚能保存足趾輪廓。乾罌粟籽、活鳥X光與顆粒模擬是另一材料條件及證據，保留為P29001變體。P29002另解同趾進出軌跡不同，不是本題合併對象。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.81097
+    },
+    {
+      "a": "R34001",
+      "b": "P29002",
+      "decision": "distinct",
+      "reason": "P29002解釋同一趾進入與退出軌跡不重合。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.801185
+    },
+    {
+      "a": "R34001",
+      "b": "R34007",
+      "decision": "distinct",
+      "reason": "翼龍前後足接地次序不是深層保形。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.745303
+    },
+    {
+      "a": "R34001",
+      "b": "P29003",
+      "decision": "distinct",
+      "reason": "基底能否承受前後足載荷與哪一層坍塌不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.716798
+    },
+    {
+      "a": "R34001",
+      "b": "A20001",
+      "decision": "distinct",
+      "reason": "壁虎剛毛除塵靠接觸轉移，不是乾顆粒成印。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.714803
+    },
+    {
+      "a": "R34002",
+      "b": "O3009",
+      "decision": "distinct",
+      "reason": "土體含水影響雷達穿透不足以推足下壓密圖；新案還有開挖及現生足壓空間比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.713615
+    },
+    {
+      "a": "R34002",
+      "b": "O3022",
+      "decision": "distinct",
+      "reason": "天氣雷達波束掃過雨頂，是觀測高度，不是地層壓實。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.684218
+    },
+    {
+      "a": "R34002",
+      "b": "N169",
+      "decision": "distinct",
+      "reason": "凝結漏斗可見端不是地面風場，與地下介電特性無關。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.665282
+    },
+    {
+      "a": "R34002",
+      "b": "O3004",
+      "decision": "distinct",
+      "reason": "相干散斑與空間平均，不是深層印痕介電對照。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.659776
+    },
+    {
+      "a": "R34002",
+      "b": "N180",
+      "decision": "distinct",
+      "reason": "霾與霧是空中粒子能見度，非埋藏腳印。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.6539
+    },
+    {
+      "a": "R34003",
+      "b": "R34006",
+      "decision": "distinct",
+      "reason": "拖桿結構與足印比較不同於從既有舊照片重建地形。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.641784
+    },
+    {
+      "a": "R34003",
+      "b": "U8009",
+      "decision": "distinct",
+      "reason": "黏菌在留下分泌物後避走舊路，不是照片對點。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.615306
+    },
+    {
+      "a": "R34003",
+      "b": "R34001",
+      "decision": "distinct",
+      "reason": "分層成印機制與相片回算尺度不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.611927
+    },
+    {
+      "a": "R34003",
+      "b": "M5005",
+      "decision": "distinct",
+      "reason": "交錯編碼逐步呈現整圖，不是由不同視角重建。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.601899
+    },
+    {
+      "a": "R34003",
+      "b": "R32006",
+      "decision": "distinct",
+      "reason": "動物藉視流估距與靜態史照共點幾何處理不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.594805
+    },
+    {
+      "a": "R34004",
+      "b": "P29002",
+      "decision": "distinct",
+      "reason": "鳥趾進出位置不同，不是兩物種相疊先後。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.714367
+    },
+    {
+      "a": "R34004",
+      "b": "R34006",
+      "decision": "distinct",
+      "reason": "拖桿和人印的相對位置回應工具幾何，非人與地懶互動。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.686414
+    },
+    {
+      "a": "R34004",
+      "b": "R34001",
+      "decision": "distinct",
+      "reason": "乾顆粒保形與地懶印被人踩入不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.653833
+    },
+    {
+      "a": "R34004",
+      "b": "R34005",
+      "decision": "distinct",
+      "reason": "間歇孩童印及去回程不對稱，而非人印刻意配合地懶長步距。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.648452
+    },
+    {
+      "a": "R34004",
+      "b": "R34007",
+      "decision": "distinct",
+      "reason": "翼龍同一動物恢復正常四足，不涉及人與地懶兩行足印。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.616295
+    },
+    {
+      "a": "R34005",
+      "b": "K18001",
+      "decision": "distinct",
+      "reason": "鞋帶鬆脫的動力回饋未保留攜人證據。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.693051
+    },
+    {
+      "a": "R34005",
+      "b": "R34006",
+      "decision": "distinct",
+      "reason": "單/雙拖溝供工具設計比較；孩童題據局部小印、雙向不對稱。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.656248
+    },
+    {
+      "a": "R34005",
+      "b": "R34004",
+      "decision": "distinct",
+      "reason": "人印踩進地懶印的時序和承抱孩童不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.648452
+    },
+    {
+      "a": "R34005",
+      "b": "B2329",
+      "decision": "distinct",
+      "reason": "沙漠蟻步幅改變導致返巢估距偏差，非載重足形。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.634579
+    },
+    {
+      "a": "R34005",
+      "b": "P29001",
+      "decision": "distinct",
+      "reason": "地下印形的保留與去回程大印及間歇小印不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.634155
+    },
+    {
+      "a": "R34006",
+      "b": "B2142",
+      "decision": "distinct",
+      "reason": "馬陸體節融合與桿端數無關。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710038
+    },
+    {
+      "a": "R34006",
+      "b": "R34004",
+      "decision": "distinct",
+      "reason": "跟隨另一生物與跟負載桿端同行，其對照不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.686414
+    },
+    {
+      "a": "R34006",
+      "b": "D2127",
+      "decision": "distinct",
+      "reason": "單向離合器滾子楔緊不產泥面桿印。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.677009
+    },
+    {
+      "a": "R34006",
+      "b": "R34001",
+      "decision": "distinct",
+      "reason": "腳在顆粒留下剖面與拖架接地幾何不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.665562
+    },
+    {
+      "a": "R34006",
+      "b": "J6017",
+      "decision": "distinct",
+      "reason": "差動螺紋形成細位移，不是地面上的一或兩拖溝。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.656885
+    },
+    {
+      "a": "R34007",
+      "b": "B17003",
+      "decision": "distinct",
+      "reason": "果蠅主動挪重心定逃向與翼龍異常後足次序不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.747781
+    },
+    {
+      "a": "R34007",
+      "b": "R34001",
+      "decision": "distinct",
+      "reason": "足印剖面不是空中降落留下的順序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.745303
+    },
+    {
+      "a": "R34007",
+      "b": "K18001",
+      "decision": "distinct",
+      "reason": "甩動鞋帶鬆結不回答著陸足序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.724667
+    },
+    {
+      "a": "R34007",
+      "b": "P21004",
+      "decision": "distinct",
+      "reason": "薄片回轉時短暫升高的流體力無落地足印。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.723279
+    },
+    {
+      "a": "R34007",
+      "b": "P21005",
+      "decision": "distinct",
+      "reason": "配重控制滑翔穩定和古動物地面著陸證據不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.719516
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "R34001",
+        "canonical_id": "P29001",
+        "reason": "與P29001同樣解釋足部擾動後，表面材料塌回填糊，較淺下層尚能保存足趾輪廓。乾罌粟籽、活鳥X光與顆粒模擬是另一材料條件及證據，保留為P29001變體。P29002另解同趾進出軌跡不同，不是本題合併對象。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R34001",
+        "b": "P29003",
+        "reason": "不同基底的足印保形跟前後腳載荷/承載門檻不同。"
+      },
+      {
+        "a": "R34001",
+        "b": "A12010",
+        "reason": "蟶子縮殼導入水、局部流化；乾顆粒足印看地表塌落和深部約束。"
+      },
+      {
+        "a": "R34002",
+        "b": "O3003",
+        "reason": "雷達陰影或鏡反射與地下印底壓密/填料回波的比較條件不同。"
+      },
+      {
+        "a": "R34002",
+        "b": "R34001",
+        "reason": "成印過程及下層輪廓與雷達訊號的物理量不能混用。"
+      },
+      {
+        "a": "R34003",
+        "b": "P28001",
+        "reason": "雷射掃唱片溝紋取得時間波形，不由多張歷史照片重建遺址尺度。"
+      },
+      {
+        "a": "R34003",
+        "b": "R33001",
+        "reason": "信件先量三維體積後展面；舊照片先靠幾何重建並查彎向。"
+      },
+      {
+        "a": "R34004",
+        "b": "P29005",
+        "reason": "癒合骨包住牙齒的生命時序證據不同於兩行足印的步距及疊壓。"
+      },
+      {
+        "a": "R34004",
+        "b": "R34003",
+        "reason": "一題驗圖的方向幾何，另一題考察人後踩、是否可能互動。"
+      },
+      {
+        "a": "R34005",
+        "b": "R34004",
+        "reason": "往返足形與零星小印推攜帶，並非地懶印中有人的疊壓。"
+      },
+      {
+        "a": "R34006",
+        "b": "R34005",
+        "reason": "載人線索與桿端拖痕的控制實驗不同。"
+      },
+      {
+        "a": "R34007",
+        "b": "P29003",
+        "reason": "雙後足先著地再恢復四足，與基底承載差造成前足單獨留印不同。"
+      },
+      {
+        "a": "R34007",
+        "b": "B2178",
+        "reason": "飛羽結構的比較不產出登陸足印的先後次序。"
+      },
+      {
+        "a": "R34001",
+        "b": "P29002",
+        "reason": "P29002解釋同一趾進入與退出軌跡不重合。"
+      },
+      {
+        "a": "R34001",
+        "b": "R34007",
+        "reason": "翼龍前後足接地次序不是深層保形。"
+      },
+      {
+        "a": "R34001",
+        "b": "A20001",
+        "reason": "壁虎剛毛除塵靠接觸轉移，不是乾顆粒成印。"
+      },
+      {
+        "a": "R34002",
+        "b": "O3009",
+        "reason": "土體含水影響雷達穿透不足以推足下壓密圖；新案還有開挖及現生足壓空間比較。"
+      },
+      {
+        "a": "R34002",
+        "b": "O3022",
+        "reason": "天氣雷達波束掃過雨頂，是觀測高度，不是地層壓實。"
+      },
+      {
+        "a": "R34002",
+        "b": "N169",
+        "reason": "凝結漏斗可見端不是地面風場，與地下介電特性無關。"
+      },
+      {
+        "a": "R34002",
+        "b": "O3004",
+        "reason": "相干散斑與空間平均，不是深層印痕介電對照。"
+      },
+      {
+        "a": "R34002",
+        "b": "N180",
+        "reason": "霾與霧是空中粒子能見度，非埋藏腳印。"
+      },
+      {
+        "a": "R34003",
+        "b": "R34006",
+        "reason": "拖桿結構與足印比較不同於從既有舊照片重建地形。"
+      },
+      {
+        "a": "R34003",
+        "b": "U8009",
+        "reason": "黏菌在留下分泌物後避走舊路，不是照片對點。"
+      },
+      {
+        "a": "R34003",
+        "b": "R34001",
+        "reason": "分層成印機制與相片回算尺度不同。"
+      },
+      {
+        "a": "R34003",
+        "b": "M5005",
+        "reason": "交錯編碼逐步呈現整圖，不是由不同視角重建。"
+      },
+      {
+        "a": "R34003",
+        "b": "R32006",
+        "reason": "動物藉視流估距與靜態史照共點幾何處理不同。"
+      },
+      {
+        "a": "R34004",
+        "b": "P29002",
+        "reason": "鳥趾進出位置不同，不是兩物種相疊先後。"
+      },
+      {
+        "a": "R34004",
+        "b": "R34006",
+        "reason": "拖桿和人印的相對位置回應工具幾何，非人與地懶互動。"
+      },
+      {
+        "a": "R34004",
+        "b": "R34001",
+        "reason": "乾顆粒保形與地懶印被人踩入不同。"
+      },
+      {
+        "a": "R34004",
+        "b": "R34007",
+        "reason": "翼龍同一動物恢復正常四足，不涉及人與地懶兩行足印。"
+      },
+      {
+        "a": "R34005",
+        "b": "K18001",
+        "reason": "鞋帶鬆脫的動力回饋未保留攜人證據。"
+      },
+      {
+        "a": "R34005",
+        "b": "B2329",
+        "reason": "沙漠蟻步幅改變導致返巢估距偏差，非載重足形。"
+      },
+      {
+        "a": "R34005",
+        "b": "P29001",
+        "reason": "地下印形的保留與去回程大印及間歇小印不同。"
+      },
+      {
+        "a": "R34006",
+        "b": "B2142",
+        "reason": "馬陸體節融合與桿端數無關。"
+      },
+      {
+        "a": "R34006",
+        "b": "D2127",
+        "reason": "單向離合器滾子楔緊不產泥面桿印。"
+      },
+      {
+        "a": "R34006",
+        "b": "R34001",
+        "reason": "腳在顆粒留下剖面與拖架接地幾何不同。"
+      },
+      {
+        "a": "R34006",
+        "b": "J6017",
+        "reason": "差動螺紋形成細位移，不是地面上的一或兩拖溝。"
+      },
+      {
+        "a": "R34007",
+        "b": "B17003",
+        "reason": "果蠅主動挪重心定逃向與翼龍異常後足次序不同。"
+      },
+      {
+        "a": "R34007",
+        "b": "K18001",
+        "reason": "甩動鞋帶鬆結不回答著陸足序。"
+      },
+      {
+        "a": "R34007",
+        "b": "P21004",
+        "reason": "薄片回轉時短暫升高的流體力無落地足印。"
+      },
+      {
+        "a": "R34007",
+        "b": "P21005",
+        "reason": "配重控制滑翔穩定和古動物地面著陸證據不同。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R34-NA001",
+      "decision": "agree_not_added",
+      "reason": "不同深度是同一腳步，不是不同動物。",
+      "existing_ids": [
+        "R34001"
+      ]
+    },
+    {
+      "id": "R34-NA002",
+      "decision": "agree_not_added",
+      "reason": "半套足印的基底門檻已在舊庫。",
+      "existing_ids": [
+        "P29003"
+      ]
+    },
+    {
+      "id": "R34-NA003",
+      "decision": "agree_not_added",
+      "reason": "缺少古足壓絕對校準。",
+      "existing_ids": [
+        "R34002"
+      ]
+    },
+    {
+      "id": "R34-NA004",
+      "decision": "agree_not_added",
+      "reason": "地表依沉積與當日含水顯影。",
+      "existing_ids": [
+        "R34002"
+      ]
+    },
+    {
+      "id": "R34-NA005",
+      "decision": "agree_not_added",
+      "reason": "遠景與舊照片的紋理不足限制空間解析。",
+      "existing_ids": [
+        "R34003"
+      ]
+    },
+    {
+      "id": "R34-NA006",
+      "decision": "agree_not_added",
+      "reason": "曲向和跨步不會證明吃到對方。",
+      "existing_ids": [
+        "R34003"
+      ]
+    },
+    {
+      "id": "R34-NA007",
+      "decision": "agree_not_added",
+      "reason": "爪痕沒有指名個體受傷。",
+      "existing_ids": [
+        "R34004"
+      ]
+    },
+    {
+      "id": "R34-NA008",
+      "decision": "agree_not_added",
+      "reason": "尺寸不證明親屬或性別。",
+      "existing_ids": [
+        "R34005"
+      ]
+    },
+    {
+      "id": "R34-NA009",
+      "decision": "agree_not_added",
+      "reason": "泥面與步姿均可改變寬度，不是體重秤。",
+      "existing_ids": [
+        "R34005"
+      ]
+    },
+    {
+      "id": "R34-NA010",
+      "decision": "agree_not_added",
+      "reason": "桿端實驗不同於輪軸。",
+      "existing_ids": [
+        "R34006"
+      ]
+    },
+    {
+      "id": "R34-NA011",
+      "decision": "agree_not_added",
+      "reason": "拖溝未保留載荷內容。",
+      "existing_ids": [
+        "R34006"
+      ]
+    },
+    {
+      "id": "R34-NA012",
+      "decision": "agree_not_added",
+      "reason": "足序不帶時間標尺。",
+      "existing_ids": [
+        "R34007"
+      ]
+    },
+    {
+      "id": "R34-NA013",
+      "decision": "agree_not_added",
+      "reason": "不能由一例涵蓋翼龍所有行為。",
+      "existing_ids": [
+        "R34007"
+      ]
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W34R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 78,
+      "chapter_seconds": [
+        39,
+        39
+      ],
+      "core_totals": {
+        "R34001": 39,
+        "R34002": 39
+      },
+      "core_caps": {
+        "R34001": 80,
+        "R34002": 80
+      },
+      "maximum_beat_seconds": 24,
+      "drop_if_read": "若無法區別真實鳥印和模擬切面，就留雷達開挖對照獨立成段。",
+      "editorial_result": "保留R34001來源與39秒作P29001變體，另一章用現生象壓力分布對比古痕雷達訊號。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W34R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        39,
+        41
+      ],
+      "core_totals": {
+        "R34003": 39,
+        "R34004": 41
+      },
+      "core_caps": {
+        "R34003": 80,
+        "R34004": 80
+      },
+      "maximum_beat_seconds": 23,
+      "drop_if_read": "若照片模型與兩張圖的彎向無法看清，移除第一例，保留疊步短題。",
+      "editorial_result": "場址和證據分框。重建可校驗圖的彎向；疊印與改向支持可能有互動，未見獵殺結果。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W34R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        38,
+        42
+      ],
+      "core_totals": {
+        "R34005": 38,
+        "R34006": 42
+      },
+      "core_caps": {
+        "R34005": 80,
+        "R34006": 80
+      },
+      "maximum_beat_seconds": 25,
+      "drop_if_read": "若沒有空間畫清楚溝與腳的相對位置，僅保留孩童一案。",
+      "editorial_result": "小孩短暫放下才有小印，抱起後才中斷；另一處用桿端實驗區別單雙溝。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W34R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 38,
+      "chapter_seconds": [
+        16,
+        22
+      ],
+      "core_totals": {
+        "R34007": 38
+      },
+      "core_caps": {
+        "R34007": 80
+      },
+      "maximum_beat_seconds": 18,
+      "drop_if_read": "若不能讓觀眾一眼分清前肢印與後腳印，先撤下此題案。",
+      "editorial_result": "沿後足、前肢依次出現收題，刪掉重播，摘要未許可繪製實際落速或身體姿勢。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD"
+    }
+  ],
+  "corrections": [
+    {
+      "status": "TARGETED_READBACK_PASS",
+      "result": "R34003開挖現場舊照，R34004可能互動非目擊捕殺。R34002已分清較濕填印與較深沉積壓密兩種假說；T03明寫放下會留小印、被抱才中斷；T04末拍12→4、46→38秒。"
+    }
+  ],
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "e00ba9ac005aea96703fa438a61b96036d6a0f38b6477359892c45bebeb1791a",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "e00ba9ac005aea96703fa438a61b96036d6a0f38b6477359892c45bebeb1791a"
+    },
+    "neighbours": {
+      "file": ".cache/wave34-tracks-neighbours.json",
+      "sha256": "7acd8eceee2dce7a84915ba62705d9cbc8216ad7f2e3782a04a602ee8a8363ee"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave34-draft.json",
+      "sha256": "cc71513ade79aae01dfeaf406c9e616672a82b425f3cbbc39e761c8ff1d11d83"
+    },
+    "candidate_rows_checked": 7,
+    "directed_pairs_checked": 35,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "result": "覆核初次35對，末版R34002新增N169、N180並重讀完整條件，僅R34001/P29001為同核。"
+  },
+  "remaining_blockers": [],
+  "limits": "僅對候選研究與紙上時間。未重建足印、測足壓或試讀；翼龍摘要僅支持地面次序。",
+  "minute_precision_readback": {
+    "status": "PASS_MINUTE_FIELDS_ONLY",
+    "previous_review_sha256": "82bb8f2704709f5cfd79749b3a935d6819cf6ac817becf30054d410b528ed04c",
+    "previous_reviewed_files": [
+      {
+        "file": "batches/wave34-tracks.json",
+        "sha256": "5d888e711eb66bd565d4368eb5ff83dcbe8b732dd0d4123d0ed925683a41a5c3"
+      },
+      {
+        "file": "reviews/wave34-tracks-themes.json",
+        "sha256": "c0f4488a0b1ac1202d4ce4f605a2defaccc9285a485c53e24e274099b0ac5e65"
+      },
+      {
+        "file": "reviews/wave34-tracks-author.json",
+        "sha256": "77d1eec629de5c51020fcd1046cfde55e9bcaadf740c4c49f840b430fd2113c5"
+      }
+    ],
+    "changed_episodes": [
+      "W34R-T02",
+      "W34R-T03",
+      "W34R-T04"
+    ],
+    "body_seconds": [
+      78,
+      80,
+      80,
+      38
+    ],
+    "comparison": "將當期題案的target_minutes與range_minutes暫在記憶體還原為三位小數，重新序列化的完整bytes SHA與前次所綁題案精確一致；只還原作者manifest中題案SHA亦復原先前作者檔SHA。每案秒數、章及節拍逐項重算。未重新查來源。"
+  }
+}

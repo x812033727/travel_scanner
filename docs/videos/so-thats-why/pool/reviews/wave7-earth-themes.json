@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "batch_id": "wave7-earth-20261101",
+  "status": "AUTHOR_PROPOSALS_REQUIRING_INDEPENDENT_REVIEW",
+  "rules": {
+    "duration": "依內容縮至4分鐘左右，不補8分鐘；不是正式長片核准。",
+    "cadence": "每30–40秒新條件/對照；最長不超過45秒。",
+    "core_budget": "開場與回扣計入核心累計，上限採該題editorial.seconds[1]。",
+    "cut": "刪章重寫承諾並重算，不沿用原案核准。"
+  },
+  "episodes": [
+    {
+      "id": "W7E-T01",
+      "title": "冰河退了，山谷為什麼還留著不對勁的形狀？",
+      "core_question": "刮痕、懸谷與延後出現的凹地，分別記錄冰的哪種作用？",
+      "connection": "先追冰如何帶工具改岩床，再比較主支冰河切深；最後明示切換至退冰平原的埋冰情境。是辨讀不同作用留下的形狀，不稱同一地點必然三階段。",
+      "candidate_ids": [
+        "E7003",
+        "E7004",
+        "E7006"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "刮地的工具藏在冰裡",
+          "seconds": 95,
+          "candidate_ids": [
+            "E7003"
+          ],
+          "new_information": "冰攜岩屑磨削，拔取又提供可搬材料。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：冰比岩石軟，刮痕如何留下？"
+            },
+            {
+              "at_seconds": 30,
+              "change": "把純冰與含岩屑冰分開，畫接觸底床的工具。"
+            },
+            {
+              "at_seconds": 65,
+              "change": "接拔取與岩屑移動，只用一組方向明確刮痕。"
+            }
+          ],
+          "cut_if": "若只講冰流動而非磨削，刪章；餘兩章145秒另寫開場與另審。"
+        },
+        {
+          "title": "曾相接的冰，不等於相同高度的谷底",
+          "seconds": 80,
+          "candidate_ids": [
+            "E7004"
+          ],
+          "new_information": "主支冰河不同切深留下懸谷。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "同一交會處並列有冰/退冰，先固定岩石底床。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "拿掉透明冰，顯露主支谷底落差；不補U谷、角峰名詞。"
+            }
+          ],
+          "cut_if": "若無可讀剖面，刪章；餘160秒需重寫轉場，不拿瀑布景點名單補時。"
+        },
+        {
+          "title": "冰走了，還有一塊被埋住",
+          "seconds": 65,
+          "candidate_ids": [
+            "E7006"
+          ],
+          "new_information": "埋冰後來融掉，使沉積平原才留下凹地。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "明示換到退冰平原，先埋冰再等它融。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "失去冰占空間後出現凹地，積水不是必要條件。"
+            },
+            {
+              "at_seconds": 50,
+              "change": "15秒回扣：刮削、差異切深與埋冰消失是不同線索。"
+            }
+          ],
+          "cut_if": "刪此章則縮175秒兩章，題名改山谷侵蝕並另審；不能仍承諾凹地。"
+        }
+      ],
+      "body_seconds": 240,
+      "target_minutes": 4.0,
+      "range_minutes": [
+        3.5,
+        4.5
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 15,
+      "boredom_risk": "容易變成冰河地形名稱巡禮；每章都要回答形狀怎麼留下。",
+      "drop_if": "E7005與N215邊界未決，不放這片；任一章只剩名稱則刪，不能用風景拉長。",
+      "evidence_gaps": "只為含開場/回扣的內容預算；未撰完整旁白、未實際試讀、無素材授權/配音/成片或製作核准。"
+    },
+    {
+      "id": "W7E-T02",
+      "title": "河道不是畫好的線：它怎麼搬走、跳走，又把自己切低？",
+      "core_question": "同一條河沿時間變化，哪些條件使它側移、改道或留下高臺？",
+      "connection": "三段是不同水沙/地勢條件的比較，不是每條河必經順序；一路固定地面座標，追河道相對舊位置如何改變。",
+      "candidate_ids": [
+        "E7007",
+        "E7008",
+        "E7012"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "水往下走，河彎卻往旁邊搬",
+          "seconds": 90,
+          "candidate_ids": [
+            "E7007"
+          ],
+          "new_information": "外側削、內側加，改變河道邊界。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：比較舊新河道線，不把水流箭頭當河道移動箭頭。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "外岸移除、內岸累積，疊固定座標下三條岸線。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "收成橫移，牛軛湖只作此核結果一句，不另列術語。"
+            }
+          ],
+          "cut_if": "若無法清楚分離水流/岸線，刪章；餘185秒重做開場，不沿用275秒。"
+        },
+        {
+          "title": "河床積高後，旁邊可能更好走",
+          "seconds": 95,
+          "candidate_ids": [
+            "E7008"
+          ],
+          "new_information": "相對低地的水勢改變，使逸出水可能建立新路。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "重設為持續積高的河道剖面，不把側移當必然前一步。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "河床/天然堤高於鄰地，水逸出後比較路徑。"
+            },
+            {
+              "at_seconds": 70,
+              "change": "只展示可能形成新河路，與暫時溢堤分開。"
+            }
+          ],
+          "cut_if": "若只說水往低處流而沒有積高改條件，刪章；餘180秒兩章重審。"
+        },
+        {
+          "title": "它也會把自己切到舊河床下面",
+          "seconds": 90,
+          "candidate_ids": [
+            "E7012"
+          ],
+          "new_information": "重新下切將昔日氾濫面留成河階。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "再重設為恢復下切的河段，不稱改道必然製造河階。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "固定舊面高度，降低新河床，顯露階面。"
+            },
+            {
+              "at_seconds": 75,
+              "change": "15秒回扣：橫移、換路、下切，分別留下不同的舊位置。"
+            }
+          ],
+          "cut_if": "刪則縮185秒並將標題收成側移/改道；不宣稱解釋河階。"
+        }
+      ],
+      "body_seconds": 275,
+      "target_minutes": 4.583333333333333,
+      "range_minutes": [
+        4,
+        5
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 15,
+      "boredom_risk": "每段都說河流會侵蝕，觀眾就只聽到三次同義句；必須明示方向、地勢及收支條件。",
+      "drop_if": "E7021水系襲奪留池不用，避免又講一次改道；若三種變化不能在固定座標上辨識，縮到一或兩核再提案。",
+      "evidence_gaps": "只為含開場/回扣的內容預算；未撰完整旁白、未實際試讀、無素材授權/配音/成片或製作核准。"
+    },
+    {
+      "id": "W7E-T03",
+      "title": "熔岩外面硬了，裡面還能做什麼？",
+      "core_question": "外殼形成後，為何能留下繩紋碎塊、空管或一串水下枕頭？",
+      "connection": "以外殼和仍流動的內部作共同追問；陸上表皮變形、成管排空、水下急冷充填是三個明示重設的情境，不是同一流體必經路線。",
+      "candidate_ids": [
+        "E7017",
+        "E7016",
+        "E7020"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待另一人內容與來源覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "外皮能跟著彎，還是被扯碎？",
+          "seconds": 90,
+          "candidate_ids": [
+            "E7017"
+          ],
+          "new_information": "冷卻表皮與剪切配合不同，改變表面外形。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：外面看似石頭，下面是否已停止流？"
+            },
+            {
+              "at_seconds": 30,
+              "change": "對照可變形皺折和無法順應的破碎翻滾。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "同成分也能換流態，不能看外觀就判成分。"
+            }
+          ],
+          "cut_if": "若只剩兩個夏威夷名稱，刪章；餘170秒需改為空管/枕狀外皮題並另審。"
+        },
+        {
+          "title": "外殼留下，裡面的熔岩流走",
+          "seconds": 85,
+          "candidate_ids": [
+            "E7016"
+          ],
+          "new_information": "成殼保溫容許內流，排空留下管洞。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "重設成上部封蓋但出口暢通的通道。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "供應停或改道，內部排空，保留可辨方向。"
+            },
+            {
+              "at_seconds": 65,
+              "change": "用20秒對照溶蝕洞穴：不是岩石被溶掉。"
+            }
+          ],
+          "cut_if": "若不能畫出流出的出口，刪章而非畫熔岩消失；餘175秒重審標題。"
+        },
+        {
+          "title": "換成水下：先成皮，卻還能往外長",
+          "seconds": 85,
+          "candidate_ids": [
+            "E7020"
+          ],
+          "new_information": "水下急冷外皮、內部充填與局部破皮形成新單元。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "明示換成水下、較低噴出率情境；不是全海底通則。"
+            },
+            {
+              "at_seconds": 35,
+              "change": "內部充填撐大，局部破口生出下一個枕。"
+            },
+            {
+              "at_seconds": 70,
+              "change": "15秒回扣：外殼形成不等於整股熔岩同時停止。"
+            }
+          ],
+          "cut_if": "刪則縮175秒兩章且移除水下承諾；不加火山排行榜補足。"
+        }
+      ],
+      "body_seconds": 260,
+      "target_minutes": 4.333333333333333,
+      "range_minutes": [
+        4,
+        5
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 15,
+      "boredom_risk": "三章共用外殼/內流，須保留各自新增的破碎、排空、充填破皮；只反覆說外硬內軟就應合併縮短。",
+      "drop_if": "不加E7015爆炸機制、E7001柱狀節理或岩名清單；若水下章與前兩章重複無新增，按刪段方案縮片。",
+      "evidence_gaps": "只為含開場/回扣的內容預算；未撰完整旁白、未實際試讀、無素材授權/配音/成片或製作核准。"
+    }
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "tested_on": "2026-11-01T14:21:43.400Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3201,
+    "canonical_questions": 3066,
+    "eligible_candidates": 2896,
+    "selected_candidates": 2837,
+    "alias_records": 135,
+    "historical_records": 313,
+    "source_urls": 4153,
+    "current_research_source_urls": 1194,
+    "selected_source_urls": 2384,
+    "new_suggestions_not_added": 550,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 122,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2797",
+    "carried": 2797,
+    "added": 40,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "ccf07135048b70010e018d87d59f28f3354c2a304c72a07816c088391114187b",
+    "writes": 6267,
+    "selected": 2837
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "ccf07135048b70010e018d87d59f28f3354c2a304c72a07816c088391114187b",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "E11012",
+      "resolved": "E7006"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4243,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 5036.814700000001,
+    "index_ms": 2574.4139000000014,
+    "unchanged_index_ms": 212.00339999999778,
+    "searches": [
+      {
+        "query": "根",
+        "returned": 30,
+        "milliseconds": 3.9249000000017986
+      },
+      {
+        "query": "殼",
+        "returned": 30,
+        "milliseconds": 6.573599999999715
+      },
+      {
+        "query": "河",
+        "returned": 30,
+        "milliseconds": 7.952900000000227
+      }
+    ],
+    "rss_bytes": 576696320,
+    "sqlite_bytes": 47726592
+  },
+  "dedup_audit": {
+    "selection": "Every final wave11 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 1,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 1,
+    "pairs": [
+      {
+        "duplicate_id": "E11012",
+        "canonical_id": "E7006",
+        "reason": "併E7006。邊界埋冰融去後地面下降仍是相同物理中段；高中心是有用的空間幾何變體，不另計核心。 題名、來源及相對高程示意保留作變體，中央不得另計新核心。",
+        "lexical": null,
+        "semantic": {
+          "id": "E7006",
+          "cosine": 0.684873
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "335ad35f1299664a96d6d1b5251a4ec52153d81a9b38ba49cfe72e63a411adef",
+    "records": 3201,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.181
+  },
+  "hashes": {
+    "pool.json": "335ad35f1299664a96d6d1b5251a4ec52153d81a9b38ba49cfe72e63a411adef",
+    "themes.json": "4e12ec5f932c45b0969914de7a599de3d46aa33678383606e2fc9d8da8ca54fe",
+    "manifest.json": "ecf874f0d9ccac8aefc73be22980eed6d073381732027f2b5985e6894d2f17ac",
+    "index.html": "9534bb96093f8097804c221c7f1c525975e075469cc5aec2740a222470a110bc",
+    "batches/wave11-landforms.json": "9c87d4ae72bd7128701b6a2a7107635338aef97d4ce6c41994b7022c2a068ecb",
+    "batches/wave11-plants.json": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826",
+    "batches/wave11-structures.json": "e678a983305263e033f9ea1455f78a14dc59deac953c03a4d04c05dd38b2e23c"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3160,
+    "old_raw_changed": 0,
+    "old_selected_retained": 2797,
+    "old_themes_retained_unchanged": 109,
+    "changed_old_canonical_ids": [
+      "E7006"
+    ],
+    "allowed_changes": "Only aliases, question variants, source refs and provenance from reviewed merges; old factual fields unchanged."
+  },
+  "existing_theme_change": {
+    "id": "G108",
+    "previous_seconds": 110,
+    "current_seconds": 80,
+    "spoken_characters": 259,
+    "new_cores": 0,
+    "actual_readaloud": false,
+    "full_narration_file": "treatments/G108/narration-draft.json",
+    "demo_receipt_sha256": "d96aa5dddecab15b8a539760f8da029a720b73091e259c6f108e9e7995b3123d",
+    "g108_source_impact": [
+      "G108"
+    ]
+  },
+  "new_source_impact_sample": {
+    "url": "https://dspace.library.uu.nl/bitstream/handle/1874/418726/science.abf3013.pdf?sequence=1",
+    "core": "B11001",
+    "theme": "G111",
+    "theme_ids": [
+      "G111"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 40,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 105113.6142,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "9580658700032bb865421542f07e086e8a84fb6d46102a6c3b05470f286d44ba"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "4e3cab7a99d70dd04e28552fbc812a4aeb1d035218a69ce4239fdd8d5c9c7490"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "bbdade0d4e2c18532528f0ab6b80d8d7d4c598e1268d0062ec2ac8bac802d05e",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 288,
+    "output_and_theme_blobs": 7,
+    "additional_g108_blobs": 9,
+    "checked_actual_git_index": true,
+    "independently_bound_stable_blobs": 32,
+    "unique_blobs_checked": 319
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 2982,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G108",
+        "core": "M10001",
+        "seconds": 80,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G111",
+        "core": "B11001",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G111",
+        "core": "B11002",
+        "seconds": 95,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G112",
+        "core": "B11003",
+        "seconds": 125,
+        "maximum": 140,
+        "variant_budget": null
+      },
+      {
+        "theme": "G113",
+        "core": "B11004",
+        "seconds": 95,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G113",
+        "core": "B11005",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G114",
+        "core": "B11006",
+        "seconds": 100,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G115",
+        "core": "K11001",
+        "seconds": 75,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G115",
+        "core": "K11002",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G116",
+        "core": "K11005",
+        "seconds": 90,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G116",
+        "core": "K11006",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G117",
+        "core": "K11007",
+        "seconds": 75,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G117",
+        "core": "K11009",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G118",
+        "core": "E11001",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G118",
+        "core": "E11002",
+        "seconds": 100,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G119",
+        "core": "E11009",
+        "seconds": 90,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G119",
+        "core": "E11010",
+        "seconds": 95,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G120",
+        "core": "E11011",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G120",
+        "core": "E7006",
+        "seconds": 50,
+        "maximum": 80,
+        "variant_budget": "E11012"
+      },
+      {
+        "theme": "G121",
+        "core": "E11006",
+        "seconds": 75,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G121",
+        "core": "E11007",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G122",
+        "core": "E11018",
+        "seconds": 90,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G122",
+        "core": "E11019",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave11-final-independent-readback.json",
+    "sha256": "ebbf9f85c28097381473cd164fa12073d1d4faf9aebecf3f9c7f7ec239a6e196",
+    "status": "PASS_INDEPENDENT_INTEGRATION_READBACK_ONLY",
+    "root_recomputed_bound_file_hashes": 32,
+    "all_required_data_docs_batches_and_reviews_bound": true,
+    "limits": "Data/editorial integration review; not a new independent full-source or production approval. Landform facts use non-author life receipt; G108 uses physics non-author review."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 42,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "receipt_file": ".cache/wave11-staged-hygiene-before-receipt.json",
+    "receipt_sha256": "e4c8d86fa229a047e445d4ce74647656217425bdfaed2798d60e612bf9450424",
+    "offences": 0,
+    "self_binding_limit": "This added field is outside the bound pre-field scan. Repeat the identical scanner after staging this receipt; final scan remains in ignored cache to avoid a self-hash cycle."
+  }
+}

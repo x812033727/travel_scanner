@@ -1,0 +1,372 @@
+{
+  "status": "INDEPENDENT_EDITORIAL_REVIEW_COMPLETE",
+  "reviewer": "root (not water author)",
+  "reviewed_on": "2026-11-01",
+  "batch_sha256": "ca15bff6e62bbbe4a7377c0fc36f0ab2be68b20ab9dbd1a3f1cfdc94863895ab",
+  "themes_sha256": "1cbece0ace7004066dd5b7d1f75e7762ec43e9127eaa10c49abfc126e622110b",
+  "draft_sha256": "9063dd7840762c45729c37ec7de26f8b15ad51e2acb31d968e863b7d05392957",
+  "neighbour_report_sha256": "94703e8f9ffb381dc4981b94732f672d8de166ea37593373aeaffe13275ffa4d",
+  "read_scope": "逐讀27題完整question/answer/scope/editorial、3題組與12來源紀錄；舊水/氣體/膜/量測關鍵詞命中後讀全文欄位；最終27題各top3近鄰與條件比較。外部來源僅列明段落，不是全庫逐主張事實重查。",
+  "candidate_count": 27,
+  "retained_count": 25,
+  "merges": [],
+  "excluded": [
+    {
+      "id": "W5007",
+      "reason": "暫緩：目前只有微生物需要營養的一層用途，缺少可視化的第二個機制；不計新增核心。"
+    },
+    {
+      "id": "W5009",
+      "reason": "暫緩：來源說static fill偏利成絮菌，所讀段未解釋相對絲狀菌的競爭因果，不能拿現象撐段落。"
+    }
+  ],
+  "distinct": [
+    {
+      "a": "W5001",
+      "b": "D2015",
+      "reason": "淨增殖與固體流失門檻，不同於D2015回泥留菌的用途；須保留SRT與HRT區別。"
+    },
+    {
+      "a": "W5002",
+      "b": "P273",
+      "reason": "反應消耗鹼度改變自身環境的回饋，不重收P273/P274緩衝定義。"
+    },
+    {
+      "a": "W5002",
+      "b": "P274",
+      "reason": "反應消耗鹼度改變自身環境的回饋，不重收P273/P274緩衝定義。"
+    },
+    {
+      "a": "W5003",
+      "b": "D2015",
+      "reason": "把後段硝酸鹽送回尚有碳源位置，與D2015留菌及B2098反硝化反應本身不同。"
+    },
+    {
+      "a": "W5003",
+      "b": "B2098",
+      "reason": "把後段硝酸鹽送回尚有碳源位置，與D2015留菌及B2098反硝化反應本身不同。"
+    },
+    {
+      "a": "W5004",
+      "b": "W5005",
+      "reason": "儲碳、釋磷、再攝取和排出含磷污泥構成閉合物質帳，排泥缺口已修正。"
+    },
+    {
+      "a": "W5004",
+      "b": "W5006",
+      "reason": "儲碳、釋磷、再攝取和排出含磷污泥構成閉合物質帳，排泥缺口已修正。"
+    },
+    {
+      "a": "W5005",
+      "b": "W5006",
+      "reason": "碳源耗盡後的次級釋磷沒有正常儲存交換，與W5004正常循環狀態不同。"
+    },
+    {
+      "a": "W5010",
+      "b": "D2014",
+      "reason": "膜內耗氧與傳入路徑形成梯度，與D2014整池供氧目的不同。"
+    },
+    {
+      "a": "W5011",
+      "b": "D2015",
+      "reason": "回流維持覆水與接觸分布，與D2015回泥留菌不同；示意已明列新鮮進水相同但濾床總流量不同。"
+    },
+    {
+      "a": "W5012",
+      "b": "W5002",
+      "reason": "氯胺衰減釋氨與硝化交互影響，與W5002耗鹼自抑制不同；不推所有供水必失效。"
+    },
+    {
+      "a": "W5013",
+      "b": "B4032",
+      "reason": "外水、孔隙及不利壓差共同成立才入侵，不重講B4032水錘生成。"
+    },
+    {
+      "a": "W5014",
+      "b": "W5015",
+      "reason": "顆粒遮蔽使內部微生物接收不足，與W5015沒有遮蔽時路徑光強不同。"
+    },
+    {
+      "a": "W5015",
+      "b": "D2167",
+      "reason": "保持停留時間相同，改變穿越光場路徑；不重講D2167水齡分布。"
+    },
+    {
+      "a": "W5017",
+      "b": "P242",
+      "reason": "碰撞成絮與剪切碎裂競爭，與P242電荷去穩定和D2013單純下沉不同。"
+    },
+    {
+      "a": "W5017",
+      "b": "D2013",
+      "reason": "碰撞成絮與剪切碎裂競爭，與P242電荷去穩定和D2013單純下沉不同。"
+    },
+    {
+      "a": "W5018",
+      "b": "D2013",
+      "reason": "同容量改變表面負荷與可沉條件；不是D2013讓流速變慢的一般用途。"
+    },
+    {
+      "a": "W5018",
+      "b": "W5019",
+      "reason": "同容量改變表面負荷與可沉條件；不是D2013讓流速變慢的一般用途。"
+    },
+    {
+      "a": "W5020",
+      "b": "W5021",
+      "reason": "刮除同時失去生物作用需重建，與W5021快速濾床反洗及D2008消毒機制不同。"
+    },
+    {
+      "a": "W5023",
+      "b": "D2032",
+      "reason": "脂肪酸鈣鹽生成，不只是D2032油脂熔融排列或LEG-S53一般油水表面作用；原研究全文未讀。"
+    },
+    {
+      "a": "W5024",
+      "b": "W5025",
+      "reason": "生物反應被抑制造成假低，不同於W5025物理逸出假高及W5026氧量天花板。"
+    },
+    {
+      "a": "W5025",
+      "b": "W5026",
+      "reason": "將讀數拆成生物耗用與物理逸出，是測量干擾，不重收P230降壓氣泡飲現象。"
+    },
+    {
+      "a": "W5027",
+      "b": "D2010",
+      "reason": "同一濾床粒徑與密度配置改變容污位置，與D2010上游前處理和D2112空氣纖維捕集不同。"
+    },
+    {
+      "a": "W5027",
+      "b": "W5021",
+      "reason": "同一濾床粒徑與密度配置改變容污位置，與D2010上游前處理和D2112空氣纖維捕集不同。"
+    },
+    {
+      "a": "W5028",
+      "b": "D2009",
+      "reason": "沿膜流動的沖刷運送減少膜面累積；不是D2009濃水守恆或D2010膜前減污用途。"
+    },
+    {
+      "a": "W5028",
+      "b": "D2010",
+      "reason": "沿膜流動的沖刷運送減少膜面累積；不是D2009濃水守恆或D2010膜前減污用途。"
+    }
+  ],
+  "per_row": [
+    {
+      "id": "W5001",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "淨增殖與固體流失門檻，不同於D2015回泥留菌的用途；須保留SRT與HRT區別。"
+    },
+    {
+      "id": "W5002",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "反應消耗鹼度改變自身環境的回饋，不重收P273/P274緩衝定義。"
+    },
+    {
+      "id": "W5003",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "把後段硝酸鹽送回尚有碳源位置，與D2015留菌及B2098反硝化反應本身不同。"
+    },
+    {
+      "id": "W5004",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "儲碳、釋磷、再攝取和排出含磷污泥構成閉合物質帳，排泥缺口已修正。"
+    },
+    {
+      "id": "W5005",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "碳源耗盡後的次級釋磷沒有正常儲存交換，與W5004正常循環狀態不同。"
+    },
+    {
+      "id": "W5006",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "硝酸鹽輸入改變碳源競爭；不等於W5005等待過久，須保留電子受體條件。"
+    },
+    {
+      "id": "W5007",
+      "disposition": "HOLD_THIN_OR_CAUSAL_GAP",
+      "reason": "暫緩：目前只有微生物需要營養的一層用途，缺少可視化的第二個機制；不計新增核心。"
+    },
+    {
+      "id": "W5008",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "同一反應池分時處理互相干擾的攪拌與沉降，限定SBR狀態順序，不展開設備清單。"
+    },
+    {
+      "id": "W5009",
+      "disposition": "HOLD_THIN_OR_CAUSAL_GAP",
+      "reason": "暫緩：來源說static fill偏利成絮菌，所讀段未解釋相對絲狀菌的競爭因果，不能拿現象撐段落。"
+    },
+    {
+      "id": "W5010",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "膜內耗氧與傳入路徑形成梯度，與D2014整池供氧目的不同。"
+    },
+    {
+      "id": "W5011",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "回流維持覆水與接觸分布，與D2015回泥留菌不同；示意已明列新鮮進水相同但濾床總流量不同。"
+    },
+    {
+      "id": "W5012",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "氯胺衰減釋氨與硝化交互影響，與W5002耗鹼自抑制不同；不推所有供水必失效。"
+    },
+    {
+      "id": "W5013",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "外水、孔隙及不利壓差共同成立才入侵，不重講B4032水錘生成。"
+    },
+    {
+      "id": "W5014",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "顆粒遮蔽使內部微生物接收不足，與W5015沒有遮蔽時路徑光強不同。"
+    },
+    {
+      "id": "W5015",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "保持停留時間相同，改變穿越光場路徑；不重講D2167水齡分布。"
+    },
+    {
+      "id": "W5017",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "碰撞成絮與剪切碎裂競爭，與P242電荷去穩定和D2013單純下沉不同。"
+    },
+    {
+      "id": "W5018",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "同容量改變表面負荷與可沉條件；不是D2013讓流速變慢的一般用途。"
+    },
+    {
+      "id": "W5019",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "TDEC實讀段明寫粒群濃度降低顆粒間自由通路，保留受阻沉降段落，不硬入本批題組。"
+    },
+    {
+      "id": "W5020",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "刮除同時失去生物作用需重建，與W5021快速濾床反洗及D2008消毒機制不同。"
+    },
+    {
+      "id": "W5021",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "床層膨脹有助分離截留物，但過強帶走濾材；與W5020生物膜成熟不同。"
+    },
+    {
+      "id": "W5022",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "硫化氫先跨入氣相、再在濕壁生物產酸，解釋未淹沒部位腐蝕；材料條件保留。"
+    },
+    {
+      "id": "W5023",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "脂肪酸鈣鹽生成，不只是D2032油脂熔融排列或LEG-S53一般油水表面作用；原研究全文未讀。"
+    },
+    {
+      "id": "W5024",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "生物反應被抑制造成假低，不同於W5025物理逸出假高及W5026氧量天花板。"
+    },
+    {
+      "id": "W5025",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "將讀數拆成生物耗用與物理逸出，是測量干擾，不重收P230降壓氣泡飲現象。"
+    },
+    {
+      "id": "W5026",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "有限氧量造成需求不可辨識，稀釋恢復量程；不是W5024反應失活。"
+    },
+    {
+      "id": "W5027",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "同一濾床粒徑與密度配置改變容污位置，與D2010上游前處理和D2112空氣纖維捕集不同。"
+    },
+    {
+      "id": "W5028",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "沿膜流動的沖刷運送減少膜面累積；不是D2009濃水守恆或D2010膜前減污用途。"
+    }
+  ],
+  "source_checks": [
+    {
+      "source_id": "W5-S001",
+      "actual_read": "官方EPA PDF的web正文與作者下載副本pypdf定點讀：77、78、109、111、119、122、133–134、172頁；SRT、pH、聚磷/排泥、碳源競爭與次級釋磷、MLE、營養不足。非全369頁或圖表驗證。"
+    },
+    {
+      "source_id": "W5-S002",
+      "actual_read": "官方EPA SBR web正文及static fill定點段：攪拌/沉降次序；未找到競爭機制，據此暫緩W5009。"
+    },
+    {
+      "source_id": "W5-S003",
+      "actual_read": "官方EPA trickling-filter web正文：膜厚/氧穿透及回流維持濕潤/沖洗段。"
+    },
+    {
+      "source_id": "W5-S004",
+      "actual_read": "EPA2023 nitrification官方PDF正文首頁：氯胺衰減釋氨與硝化影響；未採規範值。"
+    },
+    {
+      "source_id": "W5-S005",
+      "actual_read": "EPA2021 pressure官方PDF正文：壓降/漏點/入侵條件；不採運轉門檻。"
+    },
+    {
+      "source_id": "W5-S006",
+      "actual_read": "EPA1999 UV PDF文字擷取與web皆無有效正文；root自行下載官方PDF，用PyMuPDF渲染並實際查看前3頁圖像：距離光強、路徑混合、Table2顆粒遮蔽。不是僅看搜尋摘要。"
+    },
+    {
+      "source_id": "W5-S007",
+      "actual_read": "root重開官方TDEC URL及urllib遭403；獨立讀作者保存原樣web擷取 .cache/wave5-water-sources/tdec-web-return.json L293–360，尤其355–357支持受阻沉降。不是root新下載全PDF。"
+    },
+    {
+      "source_id": "W5-S008",
+      "actual_read": "DWI官方physical removal正文慢砂與快濾段：生物層再建立、反洗膨脹與流失。"
+    },
+    {
+      "source_id": "W5-S009",
+      "actual_read": "EPA託管NEIWPCC2003教材web crown定位段§7.3，PDF82–83頁附近：氣相硫化氫、濕壁酸生成與材質限制。"
+    },
+    {
+      "source_id": "W5-S010",
+      "actual_read": "NCSU2011研究機構報導全文及所附摘要：FTIR/鈣脂肪酸鹽對比；非原論文全文，形成速率/鈣來源未定不外推。"
+    },
+    {
+      "source_id": "W5-S011",
+      "actual_read": "Wisconsin DNR BODPretreatment正文：pH/消毒抑制、過飽和氧逸出、有限溶氧與稀釋。僅原理不採操作配方。"
+    },
+    {
+      "source_id": "W5-S012",
+      "actual_read": "獨立讀作者從Ireland EPA官方下載的PDF副本49–50及110頁：雙層無煙煤/砂，dead-end與cross-flow水力路徑。非全160頁，不採尺寸/流速規格。"
+    }
+  ],
+  "required_corrections": [],
+  "resolved_author_corrections": [
+    "W5004補完整排出含磷剩餘污泥，官方PDF111頁獨立核對。",
+    "W5011明列固定新鮮進水，但總濾床流量包含回流。",
+    "W5019由來源不足暫緩改為保留，依後取得正文支持，不是放寬標準。"
+  ],
+  "themes": [
+    {
+      "id": "W5W-T01",
+      "seconds": 255,
+      "decision": "ACCEPT_EDITORIAL_NOT_SCRIPT",
+      "timing": "章節加總、逐核心累計上限、含開場回扣、beat含尾段<=45秒已算術核對。",
+      "limits": "EPA2010教材支持機制；未採實廠效率與精確停留時間。所有數值及分子細節、完整旁白需另查核。"
+    },
+    {
+      "id": "W5W-T02",
+      "seconds": 230,
+      "decision": "ACCEPT_EDITORIAL_NOT_SCRIPT",
+      "timing": "章節加總、逐核心累計上限、含開場回扣、beat含尾段<=45秒已算術核對。",
+      "limits": "來源支持各段機制，不代表它們已組成某一真實淨水廠的完整設計；場景標概念流程，不能宣稱出水可飲。"
+    },
+    {
+      "id": "W5W-T03",
+      "seconds": 225,
+      "decision": "ACCEPT_EDITORIAL_NOT_SCRIPT",
+      "timing": "章節加總、逐核心累計上限、含開場回扣、beat含尾段<=45秒已算術核對。",
+      "limits": "Wisconsin DNR方法說明支持條件；沒有本批實測數據。示意量值、控制條件與完整稿須另行查核。"
+    }
+  ],
+  "limits": "保留題組僅可進完整稿；未試讀、未實廠測量、未製作。水質場景標概念流程，不是飲用安全判定或操作建議。"
+}

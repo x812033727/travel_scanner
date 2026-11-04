@@ -1,0 +1,298 @@
+{
+  "batch_id": "wave26-tech-20261102",
+  "created_on": "2026-11-02",
+  "scope": "3原題，其中骰子提M10002研究變體；2個碼序新核候選。各自短題案，不以技巧名詞湊長片。",
+  "sources": [
+    {
+      "id": "R26-S001",
+      "url": "https://arxiv.org/pdf/1311.6511v2",
+      "canonical_url": "https://arxiv.org/pdf/1311.6511v2",
+      "retrieval_url": "https://arxiv.org/pdf/1311.6511v2",
+      "title": "Intransitive Dice",
+      "publisher": "Brian Conrey, James Gabbard, Katie Grant, Andrew Liu, Kent E. Morrison",
+      "accessed_on": "2026-11-02",
+      "version": "arXiv:1311.6511v2,2016-07-07；Mathematics Magazine89(2016)133–143",
+      "read_via": "明示編輯UA取原PDF；骰子與專利定點正文抽文，de Bruijn掃描頁直接目讀（抽文無正文）。",
+      "reading_scope": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。",
+      "locator": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。",
+      "summary": "多個獨立等機率骰子的兩兩多數勝負可以成環；比較的是分布，不是單次數字的大小失去傳遞性。",
+      "limitations": "本片自編三組抽卡/重複骰面不是論文proper n-sided特殊樣本集合；不聲稱循環普遍機率、最優勝率或保證獲利。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-tech-dice.pdf",
+        "sha256": "163bbdea944a20c505ab39f052888a1268947f380d5cac64eae1fda67ad6c34f",
+        "text_file": ".cache/wave26-tech-dice-text.json",
+        "text_sha256": "f6ca6e27a893c96f5a5daef4e504179a0249a3cbfd02998685a9fb57aa4f3343"
+      },
+      "viewed_images": []
+    },
+    {
+      "id": "R26-S002",
+      "url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf",
+      "canonical_url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf",
+      "retrieval_url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf",
+      "title": "Pulse code communication",
+      "publisher": "Frank Gray；US2632058A原專利文件公開副本",
+      "accessed_on": "2026-11-02",
+      "version": "申請1947-11-13，公開1953-03-17；Google Patents所載原PDF",
+      "read_via": "明示編輯UA取原PDF；骰子與專利定點正文抽文，de Bruijn掃描頁直接目讀（抽文無正文）。",
+      "reading_scope": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+      "locator": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+      "summary": "相鄰值的碼字只差一位，在掃描僅跨相鄰兩列且各位無其他錯誤時，混讀只會得到兩個端點。",
+      "limitations": "原裝置是陰極束掃碼遮罩；本片三位條格為自編示意，未驗現代編碼器。須查對應表解碼；不是任意位元錯誤的糾錯碼。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-tech-gray.pdf",
+        "sha256": "f0a1e67707f892d5d7e0799bee5750adcc4b60a2cf7a9d1230f48d7964077add",
+        "text_file": ".cache/wave26-tech-gray-text.json",
+        "text_sha256": "f6deba14128c8ca321be1ea5f3c82093c939f927c9515e64d209a79628bc43a0"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-tech-gray-p2.png",
+          "sha256": "64552934f6cf0258a246cbc715f34863e68282f1588c77c6e0b728282cc09869"
+        }
+      ]
+    },
+    {
+      "id": "R26-S003",
+      "url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf",
+      "canonical_url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf",
+      "retrieval_url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf",
+      "title": "A combinatorial problem",
+      "publisher": "N. G. de Bruijn；Eindhoven University of Technology典藏出版原件",
+      "accessed_on": "2026-11-02",
+      "version": "1946,Proceedings of the Section of Sciences49(7),758–764；典藏封面另占一頁",
+      "read_via": "明示編輯UA取原PDF；骰子與專利定點正文抽文，de Bruijn掃描頁直接目讀（抽文無正文）。",
+      "reading_scope": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+      "locator": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+      "summary": "長度8的環形0/1序列可讓每個連續三格窗口都不同；重疊共用格子仍能標出8個位置。",
+      "limitations": "只說指定離散環形序列的窗口查表定位，須方向/格界已知；不宣稱一般條紋可定位、實物讀取抗模糊或此題完成一般構造證明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-tech-debruijn.pdf",
+        "sha256": "3b32fec679411fb505c5e4c2d5def256616b49154a193124cc13ed1a241ab8de",
+        "text_file": ".cache/wave26-tech-debruijn-text.json",
+        "text_sha256": "8b0499903aa925118d98215943b3a4a16e8898af4d602ad44466f2022ead0cfa"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-tech-debruijn-p2.png",
+          "sha256": "d71ffd338ac0cb896e777c93ec366241432a8d890b24af7b1e4fc619d6ee98e5"
+        },
+        {
+          "file": ".cache/wave26-tech-debruijn-p3.png",
+          "sha256": "c650a064cacd6aceef5e63d37bbc89c63abdaa74813448cd23a49cf2d2af32a1"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R26001",
+      "question": "A常贏B、B常贏C，為什麼C又常贏A？",
+      "domain": "機率與資訊編碼",
+      "mechanism_key": "probability.nontransitive_pairwise_distribution_cycle",
+      "answer_target": "兩兩比較的是每次獨立抽出數值後誰較大的機率。A={2,4,9}、B={1,6,8}、C={3,5,7}各值等機率，A勝B、B勝C、C勝A各占9種配對中的5種；三組平均都5，平均不能決定多數勝負。",
+      "scope": "自編三卡算例；等價六面骰每值重複兩次且各面等機率。單次三個數仍有正常大小順序，循環發生在多次獨立配對分布；不講賭博策略或保證輸贏。",
+      "source_ids": [
+        "R26-S001"
+      ],
+      "source_locator": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。",
+      "premise_status": "screened",
+      "notes": "作者由共同語意近鄰補讀M10002後提合併：同為個別結果可排序、聚合多數勝負不傳遞；保留骰子分布與完整九格算例作研究變體，不計新核心。尚無旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          110
+        ],
+        "payoff": "同樣平均值，三場勝率卻繞成一圈。",
+        "visual": "三張3×3勝負格，每次先猜再翻5格；分清一擲結果與重複配對機率。"
+      }
+    },
+    {
+      "id": "R26002",
+      "question": "只從第3格走到第4格，讀數怎麼會突然跑到0或7？",
+      "domain": "機率與資訊編碼",
+      "mechanism_key": "coding.gray_adjacent_boundary_single_bit_transition",
+      "answer_target": "普通二進位011變100要換三位，掃描跨列時若各位讀到不同列，可能湊出000或111。改用反射二進位，位置3/4是010/110，只差一位；在此相鄰過界模型下，混讀只能是3或4。",
+      "scope": "三位碼表的原創示意，位置須經Gray對應表解碼。僅比較相鄰兩列、每位讀出是其中一端且無其他錯誤；多格跨越、模糊或隨機翻位不在保證內，不說能修任意雜訊。",
+      "source_ids": [
+        "R26-S002"
+      ],
+      "source_locator": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+      "premise_status": "screened",
+      "notes": "小型算例完整枚舉；尚無旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          105
+        ],
+        "payoff": "沒有跳那麼遠，讀到的數字卻能跳很遠；重排碼字可限制這種誤差。",
+        "visual": "上下兩列011/100逐位擦換，再對照010/110；畫面同步顯示碼字與解碼後位置。"
+      }
+    },
+    {
+      "id": "R26003",
+      "question": "八個位置都只畫0和1，為什麼看連續三格就能認出位置？",
+      "domain": "機率與資訊編碼",
+      "mechanism_key": "coding.debruijn_cyclic_unique_overlap_windows",
+      "answer_target": "把00010111排成環，沿固定方向逐格取連續三位，八個窗口恰為八種不同三位碼。雖然窗口彼此重疊，每個看到的三位碼仍唯一對應一個起點；只看兩位最多四種，不能區分八個位置。",
+      "scope": "指定離散環，方向與格界已校準；包含跨環接縫窗口。唯一性不是所有任意條紋的性質，也不是Gray的過界保護或一般資料壓縮；不把查表玩具說成已測光學編碼器。",
+      "source_ids": [
+        "R26-S003"
+      ],
+      "source_locator": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+      "premise_status": "screened",
+      "notes": "小型算例完整枚舉；尚無旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          105
+        ],
+        "payoff": "不用每站另貼三格號碼，共用相鄰格也能各有地址。",
+        "visual": "八格圓環配三格透明窗口，逐站亮八個不同碼；再遮住一格看二位碼重複。"
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "R26-NA001",
+      "question": "把三骰改四骰、換一組面值就是新題？",
+      "existing_ids": [
+        "R26001"
+      ],
+      "source_ids": [
+        "R26-S001"
+      ],
+      "reason": "同為兩兩分布比較的非傳遞循環，保留來源例子，不另算核心。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA002",
+      "question": "平均一樣，兩個骰子的勝率就一定一半？",
+      "existing_ids": [
+        "R26001"
+      ],
+      "source_ids": [
+        "R26-S001"
+      ],
+      "reason": "是本核要推翻的錯誤直覺，不另拆一題。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA003",
+      "question": "贏過對手就一定能贏對手打敗的人？",
+      "existing_ids": [
+        "R26001"
+      ],
+      "source_ids": [
+        "R26-S001"
+      ],
+      "reason": "不能由單次數字傳遞性推多次配對分布；合入核心對照。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA004",
+      "question": "用亂數除六取餘數就得到公平骰子？",
+      "existing_ids": [
+        "I3091"
+      ],
+      "source_ids": [],
+      "reason": "舊庫已有有限整數取餘偏差，不用骰子外觀重收。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA005",
+      "question": "23人容易撞生日，要換成抽號碼重講嗎？",
+      "existing_ids": [
+        "M10006"
+      ],
+      "source_ids": [],
+      "reason": "配對數及補集機率已收，改情境無新機制。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA006",
+      "question": "每個旋鈕、碼盤都各做一支Gray碼？",
+      "existing_ids": [
+        "R26002"
+      ],
+      "source_ids": [
+        "R26-S002"
+      ],
+      "reason": "同一相鄰一位改變機制，且本次未實讀現代產品正文，不追加裝置承諾。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA007",
+      "question": "Gray碼能修好任意錯掉的一個位元嗎？",
+      "existing_ids": [
+        "R26002",
+        "LEG-A36"
+      ],
+      "source_ids": [
+        "R26-S002"
+      ],
+      "reason": "相鄰過界限制不是一般糾錯；保留邊界，不能混成QR恢復機制。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA008",
+      "question": "二進位為什麼只有0和1？",
+      "existing_ids": [
+        "LEG-A12"
+      ],
+      "source_ids": [],
+      "reason": "可靠狀態與編碼已有；這批只研究碼字排列和過界。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA009",
+      "question": "只看四格定位16處，再算另一個新題？",
+      "existing_ids": [
+        "R26003"
+      ],
+      "source_ids": [
+        "R26-S003"
+      ],
+      "reason": "窗口長度參數變體；不另拆成更多題。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA010",
+      "question": "de Bruijn環往回看還能保證同一查表答案？",
+      "existing_ids": [
+        "R26003"
+      ],
+      "source_ids": [
+        "R26-S003"
+      ],
+      "reason": "已知方向是前提；逆向需另校準/查表，合入限制，不用失效情境灌數。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。"
+    },
+    {
+      "id": "R26-NA011",
+      "question": "秘密分給三人，任意兩人就能還原？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Shamir MIT-LCS-TM-134只讀典藏摘要，原PDF普通請求HTTP429；未讀正文，不收為已查核核心。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "deferred_source_url": "https://dspace.mit.edu/entities/publication/91c51bfc-5678-409c-80c5-44ce8fcdbadf"
+    }
+  ]
+}

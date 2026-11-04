@@ -1,0 +1,1082 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "R21001",
+    "R21002",
+    "R21003",
+    "R21004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave21-space.json",
+      "sha256": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b"
+    },
+    {
+      "file": "reviews/wave21-space-themes.json",
+      "sha256": "c33569dda162bd6e23d457e65b6c62558cac2ec599bca98c4b67528300b384b5"
+    },
+    {
+      "file": "reviews/wave21-space-author.json",
+      "sha256": "9bb32ea3c5beb7a9ae0b2fbc984f3b252beb79f5acbcdd5c444724d711bf413b"
+    }
+  ],
+  "role_and_scope": "本reviewer未撰寫此批候選或題案；獨立讀全4題完整問答/範圍、8退題、12作者近對、20有向top5及全部題案。來源採作者當日已取得的有效原文副本，不把作者摘要當原文；不是整庫逐來源查核、劇本核准或實驗重現。 reviewer曾撰寫早期P/E及部分鄰近物理題，這裡揭露舊題作者角色；不是這批太空候選作者。",
+  "baseline": {
+    "head": "bc47898aa60c073f76ba9f8a6602c3e5b92f1d60",
+    "selected": 2997,
+    "raw_records": 3366,
+    "themes": 215,
+    "not_added": 960,
+    "pool_sha256": "f378bcb5ce2666cbf213e8389672321fc4362939a80ea4f98a019fe5dbb9d08e"
+  },
+  "candidate_review": [
+    {
+      "id": "R21001",
+      "decision": "retain",
+      "reason": "有限容量與保持指向的卸載構成新問題；S001指定章支持飽和/外力矩，反向餘裕與磁場限制已納。",
+      "visual_and_payoff": "有/無外部力矩兩個帳能畫清，未模擬正負箭頭，進稿另核。",
+      "editorial_seconds": [
+        85,
+        135
+      ],
+      "source_ids": [
+        "R21-S001"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R21002",
+      "decision": "retain",
+      "reason": "S002 Introduction明列細孔提高門檻同時增加過網壓損；地面甲烷實測只支持該元件門檻/限制，不假稱整箱最優化實驗。",
+      "visual_and_payoff": "兩柱為定性示意，無虛構最優孔徑；與I12002共享入口原理但新增供液壓損競爭。",
+      "editorial_seconds": [
+        85,
+        130
+      ],
+      "source_ids": [
+        "R21-S002"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R21003",
+      "decision": "retain",
+      "reason": "S003直接記載機體負電累積回吸離子與中和器；束流近中性不等於逐離子復合，不把動量與電荷混算。",
+      "visual_and_payoff": "80秒可用雙電荷帳和回吸箭頭回答，若只剩正負相吸口號就應併回舊題。",
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "source_ids": [
+        "R21-S003"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R21004",
+      "decision": "retain",
+      "reason": "S004/005支持推船追隨參考質量及敏感軸降低電靜力；同任務兩篇不是兩個獨立實驗。",
+      "visual_and_payoff": "並排同樣居中但受力對象不同有回報，必限單軸示意。",
+      "editorial_seconds": [
+        75,
+        120
+      ],
+      "source_ids": [
+        "R21-S004",
+        "R21-S005"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "id": "R21-S001",
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+      "title": "5.0 Guidance, Navigation, and Control",
+      "version": "當日官方HTML；只採§5.2機制，不採供應商表的即時產品性能。",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-space-gnc.html",
+        "sha256": "487fbe0087deb23467403bc14a9901d3382c95bb533cc0bd70660292ddda6b22"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-space-gnc.txt",
+        "sha256": "ae0c2826a8174e03ddfa6234f85d47887a76bec95825132d8c0f4c98238a6140"
+      },
+      "reading_scope": "正文PARA73、79–90、96–97：§5.2.2 Reaction Wheels、§5.2.3 Magnetic Torquers、§5.2.4 Thrusters。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "未核供應商性能表、所有引用研究；只採有限儲存與外部卸載。"
+    },
+    {
+      "id": "R21-S002",
+      "url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf",
+      "title": "Bubble Point Measurements With Liquid Methane of a Screen Capillary Liquid Acquisition Device",
+      "version": "NASA/TM-2009-215496，March 2009；2006/2007地面元件試驗。",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-space-lad.pdf",
+        "sha256": "bf1fae9f19995f1a1e1a22d652793e954c9bc0009d572ec4b69c77ae5c843ee2"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-space-lad.txt",
+        "sha256": "f470c7eb226c38b7b0a7d34a875d77dbda5a45146e6d0fe89218403e57353aa3"
+      },
+      "reading_scope": "PDF p5 Introduction、p6硬體、p8目標/設施、p9 bubble-point/reseal方法、p10結果/Table1、p12結論；另目讀p7 Fig2/3及p10 Table1。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "未讀references/SI或重做實驗；細孔流阻權衡取Introduction，不稱本文完成全流量最佳化。"
+    },
+    {
+      "id": "R21-S003",
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf",
+      "title": "Ion Propulsion — NASA Facts",
+      "version": "PDF文件代碼PS–01628–1215；URL資料夾2015/08不當正式出版日。",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-space-ion.pdf",
+        "sha256": "946a8f706cbd4a759ef42047303607662d56d82d9617db7bd163bbebac0015c8"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-space-ion.txt",
+        "sha256": "8354672b1e6112d69e45794f2cf84c9b217ba4e7e1ba5f666d17d5687d501be6"
+      },
+      "reading_scope": "PDF p1 How Does an Ion Thruster Work? 全機制段；p2只看文件代碼及任務敘述年代界線。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "未重新HTTP；未算空間電荷/粒子軌跡/推力，不採歷史current/future作當期資料。"
+    },
+    {
+      "id": "R21-S004",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview",
+      "title": "LISA Pathfinder overview",
+      "version": "當日ESA任務概述；任務2017已結束，非目前正在飛行的驗證。",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-space-lisa.html",
+        "sha256": "411ca6a808b2edc18b41947a8612f4ce07a5424346c4c91bfea270bd22e2ae00"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-space-lisa.txt",
+        "sha256": "a08f756d887784e6067b278f50bee4d3f1c5b855a0399c8d32f2a5cc1eb085f9"
+      },
+      "reading_scope": "概述正文PARA0–20已讀；採用4–5、12–16、20的任務定位、慣性感測/微推力器與兩質量概念。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "未看ESA影片/原始噪聲資料，不採宣傳標題作直接探測重力波結論。"
+    },
+    {
+      "id": "R21-S005",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder",
+      "title": "Freefall achieved on LISA Pathfinder",
+      "version": "24 February 2016任務操作報導；與S004同一任務的補充段落，非獨立重複實驗。",
+      "read_via": "非本reviewer新HTTP：核對作者當日有效正文副本及抽文SHA後，獨立讀指定段；另列圖頁是本reviewer重新開圖目讀。",
+      "body_cache": {
+        "file": ".cache/wave21-space-lisa2016.html",
+        "sha256": "501ba5a9253182b90f1ed90d11000d42ac42e98a2f2d4a580426cac1d046b606"
+      },
+      "text_cache": {
+        "file": ".cache/wave21-space-lisa2016.txt",
+        "sha256": "db50228acca6b48b16b05b5396b6124e854d9835e9fb579fac0b6cfaba804ea9"
+      },
+      "reading_scope": "PARA1–19主報導；採用7–12敏感軸靜電力降低與船跟隨一塊質量的操作敘述。",
+      "result": "SUPPORTS_BOUNDED_TOPIC",
+      "limits": "同LISA Pathfinder任務補充，不計第二份獨立重複實驗；其他自由度仍有控制。"
+    }
+  ],
+  "source_reading_summary": {
+    "sources_with_specified_body_independently_read": 5,
+    "reviewer_fresh_HTTP_real_body": 0,
+    "author_same_day_cache_used_as_body": 5,
+    "whole_articles_claimed_fully_factchecked": 0,
+    "note": "SHA確認副本身分；獨立性來自另一人閱讀與判斷，不把同文件重抓當第二份研究。",
+    "figure_or_table_pages_visually_read": 2
+  },
+  "retrieval_failures": [],
+  "top5_review": [
+    {
+      "a": "R21001",
+      "b": "D2128",
+      "cosine": 0.765695,
+      "decision": "distinct",
+      "reason": "間歇輪的銷槽與鎖定決定輸出時序；新題為持續外擾耗盡輪速容量及外部卸載，不是走停傳動。",
+      "b_snapshot": {
+        "question": "轉盤要走一步停一步，為什麼馬達不用跟著走停？",
+        "answer_target": "連續旋轉的銷進槽時推進，離槽後圓弧鎖定從動輪。",
+        "scope": "Introduction to Mechanisms, Chapter 8: Other Mechanisms；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "R21001",
+      "b": "D2125",
+      "cosine": 0.735265,
+      "decision": "distinct",
+      "reason": "行星齒輪靠載架與固定構件決定速度關係；新題沒有改傳動比，而是有限角動量儲存和外部交換。",
+      "b_snapshot": {
+        "question": "行星齒輪除了自己轉，為什麼還會繞著中心跑？",
+        "answer_target": "載架讓齒輪軸本身運動，必須指定固定與輸入構件才決定輸出。",
+        "scope": "Introduction to Mechanisms, Chapter 7: Gears；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "R21001",
+      "b": "D2224",
+      "cosine": 0.719458,
+      "decision": "distinct",
+      "reason": "套圈爬動是配合面失去定位；新題在輪子正常運作時仍可逼近速度上限，失效條件不同。",
+      "b_snapshot": {
+        "question": "軸在轉，套在上面的軸承內圈怎麼還可能偷偷滑動？",
+        "answer_target": "配合鬆弛使受旋轉負載的套圈沿配合面爬動，並非滾珠正常滾動。",
+        "scope": "7—Fits and Internal Clearance；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "R21001",
+      "b": "E2148",
+      "cosine": 0.714957,
+      "decision": "distinct",
+      "reason": "渦流阻尼的靜止無拖曳力與輪子角動量飽和不同；卸載還需外部力矩，不是低速阻尼。",
+      "b_snapshot": {
+        "question": "磁力阻尼讓精密天平快點停，為什麼不會一直把指針拉偏？",
+        "answer_target": "低速阻尼隨速度下降，靜止時無同樣拖曳力。",
+        "scope": "來源的導電盤式阻尼，不泛指所有天平。"
+      }
+    },
+    {
+      "a": "R21001",
+      "b": "P21004",
+      "cosine": 0.713943,
+      "decision": "distinct",
+      "reason": "薄片環流/平移轉動耦合產生抬升；輪子容量與外部卸載不依靠這種流體力。",
+      "b_snapshot": {
+        "question": "薄片明明在往下翻落，轉彎時怎麼會短暫往上走？",
+        "answer_target": "自由轉動使升力不能只按固定角度平移翼計算；旋轉所伴隨的環流與平移耦合，原實驗長滑行後的快速轉向出現短暫抬升。只看迎流面積或平移速度不足以描述這組運動。",
+        "scope": "限原文水中鋁薄片近二維落下；不是每次轉彎都升高。準定常模型在尖點附近有尾流偏差，這裡只採旋轉耦合機制與實測抬升，不聲稱完整瞬時力都已算準。"
+      }
+    },
+    {
+      "a": "R21002",
+      "b": "P081",
+      "cosine": 0.747063,
+      "decision": "distinct",
+      "reason": "氣液壓縮性比較不含潤濕網的氣體入口門檻，更沒有供液壓損與門檻的競爭。",
+      "b_snapshot": {
+        "question": "針筒裡的空氣為什麼容易壓縮，水卻難得多？",
+        "answer_target": "氣體粒子間距大，可壓縮性與液態緊密排列不同。",
+        "scope": "封閉針筒示意，不施加危險壓力"
+      }
+    },
+    {
+      "a": "R21002",
+      "b": "P067",
+      "cosine": 0.744855,
+      "decision": "distinct",
+      "reason": "出水孔的水頭控制速度；新題是已潤濕微孔的界面門檻及流阻預算，不能用深度單獨解答。",
+      "b_snapshot": {
+        "question": "水箱側面上下兩個小孔，為什麼下面的水通常噴得更有力？",
+        "answer_target": "較深位置有較大壓力差驅動流出，噴射距離還受落差影響。",
+        "scope": "原創示意，不能只看落點倒推壓力"
+      }
+    },
+    {
+      "a": "R21002",
+      "b": "F4026",
+      "cosine": 0.741603,
+      "decision": "distinct",
+      "reason": "冷卻蒸氣凝結的壓差吸油與潤濕網的擋氣/供液競爭不同，不是靠氣相體積收縮。",
+      "b_snapshot": {
+        "question": "炸物已經離開油鍋，為什麼還可能把表面的油吸進去？",
+        "answer_target": "冷卻時孔內水蒸氣凝結降低壓力，把仍覆於表面的油拉進孔隙。",
+        "scope": "限多孔油炸物的一條吸油路徑；油也可於油炸過程進入，不宣稱都在冷卻吸收或固定百分比。"
+      }
+    },
+    {
+      "a": "R21002",
+      "b": "P074",
+      "cosine": 0.734827,
+      "decision": "distinct",
+      "reason": "管道黏滯流動只給壓損的一側；新題必須同時比較細孔增加的氣體突破門檻，才回答越細是否越好。",
+      "b_snapshot": {
+        "question": "水平水管中間沒有高低差，水為什麼還會持續流？",
+        "answer_target": "入口出口壓力差提供克服管內黏滯阻力的驅動。",
+        "scope": "無其他驅動且穩態"
+      }
+    },
+    {
+      "a": "R21002",
+      "b": "F14005",
+      "cosine": 0.727994,
+      "decision": "distinct",
+      "reason": "軟壁形變打破流膜對稱產生升力；新題不靠柔性壁面或流體升力，而是毛細入口與流阻競爭。",
+      "b_snapshot": {
+        "question": "油裡同一根圓柱，為什麼沿軟壁反而比沿硬壁滑得快？",
+        "answer_target": "流體壓力使柔軟壁面變形，破壞前後間隙對稱而產生淨升力；間隙增大可減少拖曳，但變形太大時不再越軟越快。",
+        "scope": "油浴中負浮力圓柱沿傾斜塗層滑動；小變形模型、特定彈性/厚度範圍。不是靠圓柱旋轉的唯一解釋，也不外推鞋底。"
+      }
+    },
+    {
+      "a": "R21003",
+      "b": "E2061",
+      "cosine": 0.811415,
+      "decision": "distinct",
+      "reason": "導體電子漂移速度受散射限制；離子束外流使船體電位反饋回吸是另一個開放電荷帳。",
+      "b_snapshot": {
+        "question": "電場一直推電子，為什麼電子不會在導線裡無限加速？",
+        "answer_target": "散射持續把電場所做的功傳給材料，形成有限平均漂移與發熱。",
+        "scope": "有電阻金屬穩態；不套用超導"
+      }
+    },
+    {
+      "a": "R21003",
+      "b": "H3034",
+      "cosine": 0.77632,
+      "decision": "distinct",
+      "reason": "分隔氧化還原半反應把電子導向外路；新題是已加速正離子外流造成機體充電及回吸，不是電池反應路徑。",
+      "b_snapshot": {
+        "question": "化學反應把兩邊隔開，為什麼反而能讓電流繞出去做事？",
+        "answer_target": "空間分隔避免直接電子轉移，讓氧化與還原經外部導體交換電子。",
+        "scope": "不是憑空製造電子；與 E2058 閉合回路不同點是化學反應的分隔。"
+      }
+    },
+    {
+      "a": "R21003",
+      "b": "E2248",
+      "cosine": 0.770345,
+      "decision": "distinct",
+      "reason": "自舉驅動需要低電位時段補充局部電容；新題電子排出是平衡逃逸離子電流，不是充電時窗不足。",
+      "b_snapshot": {
+        "question": "有些電子開關明明能一直開，驅動器卻為什麼需要短暫休息？",
+        "answer_target": "自舉電容供浮動驅動電源，傳統架構需低側時段補充電荷。",
+        "scope": "不是所有高側驅動皆受同限制。"
+      }
+    },
+    {
+      "a": "R21003",
+      "b": "H3035",
+      "cosine": 0.75003,
+      "decision": "distinct",
+      "reason": "兩者都含電中性，但鹽橋以離子遷移維持溶液半反應；新題有逃逸粒子使機體充電、反過來回吸束流/侵蝕的具體故障路徑，保留這個控制才另計核心。",
+      "b_snapshot": {
+        "question": "電池外面已經接上導線，裡面為什麼還需要離子通道？",
+        "answer_target": "兩室反應改變離子電荷量，內部離子遷移補償電荷分離才能維持反應。",
+        "scope": "離子不等於在溶液裡跑的自由電子；不要求所有電池都有U形鹽橋。"
+      }
+    },
+    {
+      "a": "R21003",
+      "b": "E2233",
+      "cosine": 0.743631,
+      "decision": "distinct",
+      "reason": "硬切換瞬間電壓電流重疊造成熱損；中和器避免船體電荷反饋回吸，沒有該切換耗能條件。",
+      "b_snapshot": {
+        "question": "電子開關明明只負責開和關，為什麼切換時也會發熱？",
+        "answer_target": "轉換非瞬間，電壓與電流同時存在造成開關損失。",
+        "scope": "硬切換模型；零電壓切換另分。"
+      }
+    },
+    {
+      "a": "R21004",
+      "b": "R21001",
+      "cosine": 0.680434,
+      "decision": "distinct",
+      "reason": "輪子儲存/卸載角動量與選擇推外殼而非參考質量不同；二者都用致動器不足以判同核。",
+      "b_snapshot": {
+        "question": "輪子還在轉，衛星為什麼不能一直靠它穩住方向？",
+        "answer_target": "反作用輪能把擾動帶來的角動量暫存起來；持續同向擾動會耗掉輪速餘裕。只在船內減速會把角動量還給船，需配合推力器或磁力矩器的外部力矩，才能卸載又維持指向。",
+        "scope": "限有限輪速下的持續擾動與卸載；不把速度飽和說成所有方向失去控制。磁力矩只在外部磁場允許的方向/環境有效，不承諾深空通用。"
+      }
+    },
+    {
+      "a": "R21004",
+      "b": "R001",
+      "cosine": 0.680006,
+      "decision": "distinct",
+      "reason": "地球自轉造成地面測控可見時窗；新題是同一相對偏移下把控制力施於誰，無天線覆蓋切換。",
+      "b_snapshot": {
+        "question": "跟太空船聯絡，為什麼要在地球不同地方蓋接收站？",
+        "answer_target": "地球自轉造成的視線變化與跨站接力",
+        "scope": "只談深空網路的幾何需求，不保證所有任務全天占用天線。"
+      }
+    },
+    {
+      "a": "R21004",
+      "b": "R8005",
+      "cosine": 0.670371,
+      "decision": "distinct",
+      "reason": "共同繞軌自由落體解釋漂浮；新題增加外殼受非重力擾動後，以推船避免直接擾動參考質量的控制選擇。",
+      "b_snapshot": {
+        "question": "太空站和裡面的物體一起往下掉，為什麼看起來像在漂浮？",
+        "answer_target": "站體與物體共同受重力自由落下，切向運動讓軌道持續繞地。",
+        "scope": "只更新共同自由落下與軌道原理；不宣稱零重力或任何軌道固定重力值。"
+      }
+    },
+    {
+      "a": "R21004",
+      "b": "K11015",
+      "cosine": 0.667836,
+      "decision": "distinct",
+      "reason": "彈簧連桿以幾何讓一段行程勢能平衡；拖曳補償是感測偏移後主動作用外殼，不是被動靜力平衡。",
+      "b_snapshot": {
+        "question": "彈簧越拉越用力，檯燈卻為什麼能停在不同高度，不只停在一個平衡點？",
+        "answer_target": "適當彈簧力與連桿幾何配合，使彈性能與重力位能互換；指定負載在一段行程內可連續平衡。",
+        "scope": "理想靜平衡彈簧連桿、適當近零自由長度彈簧；非任意檯燈或任意負載；摩擦和工作行程仍有限制。"
+      }
+    },
+    {
+      "a": "R21004",
+      "b": "T4043",
+      "cosine": 0.655227,
+      "decision": "distinct",
+      "reason": "飛機尾流殘留由渦量/動量輸運決定；此題不靠尾流消散而是控制力作用對象。",
+      "b_snapshot": {
+        "question": "前一架飛機都飛走了，空氣裡為什麼還可能留下看不見的障礙？",
+        "answer_target": "機翼產生升力的壓力差形成成對旋轉尾流，飛機離開後仍會移動、下沉與逐漸衰減。",
+        "scope": "固定翼尾流物理；與N254白線的凝結可見性不同，不教避讓距離或飛行操作。"
+      }
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R21001",
+      "b": "P030",
+      "decision": "distinct",
+      "reason": "有限輪速容量逼限及外部卸載是新增控制；單純內外角動量守恆沒有回答如何維持指向並恢復餘裕。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21001",
+      "b": "P314",
+      "decision": "distinct",
+      "reason": "轉椅示範改輪子角動量方向；本題固定軸輪速容量和持續擾動的外部卸載，不只更換場景。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21001",
+      "b": "P027",
+      "decision": "distinct",
+      "reason": "收手改轉動慣量與固定輪子累積角動量到速限不同；本題不靠改形狀加速。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21002",
+      "b": "P057",
+      "decision": "distinct",
+      "reason": "毛細孔網輸運不含氣體突破與供液壓損的雙重預算；新題保留這項權衡。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21002",
+      "b": "I12002",
+      "decision": "distinct",
+      "reason": "共同有毛細門檻，但舊題是侵液後接觸態改變；新題問細網同時提高門檻與流阻的設計衝突。若刪壓損章則需回併。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21002",
+      "b": "W5028",
+      "decision": "distinct",
+      "reason": "濾餅/錯流靠顆粒沉積和沖刷；這裡沒有固粒，改的是氣液界面突破與供液條件。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21003",
+      "b": "E2006",
+      "decision": "distinct",
+      "reason": "能否留靜電由連外路徑決定，沒有持續粒子外流反過來阻礙推進；新題保留電荷帳/回吸對照。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21003",
+      "b": "E2007",
+      "decision": "distinct",
+      "reason": "庫倫距離平方力律不單獨給出機體何以充負電及中和器如何維持束流外逃；不只改帶電物件。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21003",
+      "b": "E2021",
+      "decision": "distinct",
+      "reason": "靜電平衡的表面分布與有持續帶電流出的非平衡機體不同，不用表面電荷重述替代回吸控制。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21004",
+      "b": "O3062",
+      "decision": "distinct",
+      "reason": "GRACE量到非重力加速度後分離資料；本題直接把致動力從參考質量移到船身，量測校正與控制受力不同。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21004",
+      "b": "LEG-S80",
+      "decision": "distinct",
+      "reason": "共同自由落體說明漂浮；本題處理外殼受擾而質量要保留近自由落體的非相同受力。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    },
+    {
+      "a": "R21004",
+      "b": "E2214",
+      "decision": "distinct",
+      "reason": "線性放大器負回授定增益與選擇控制受力對象不同；新題需要畫明推箱/拉塊，非泛講回授。",
+      "snapshots_read": [
+        "a.question",
+        "a.answer_target",
+        "a.scope",
+        "b.question",
+        "b.answer_target",
+        "b.scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R21001",
+        "b": "P030",
+        "reason": "有限輪速容量逼限及外部卸載是新增控制；單純內外角動量守恆沒有回答如何維持指向並恢復餘裕。"
+      },
+      {
+        "a": "R21001",
+        "b": "P314",
+        "reason": "轉椅示範改輪子角動量方向；本題固定軸輪速容量和持續擾動的外部卸載，不只更換場景。"
+      },
+      {
+        "a": "R21001",
+        "b": "P027",
+        "reason": "收手改轉動慣量與固定輪子累積角動量到速限不同；本題不靠改形狀加速。"
+      },
+      {
+        "a": "R21002",
+        "b": "P057",
+        "reason": "毛細孔網輸運不含氣體突破與供液壓損的雙重預算；新題保留這項權衡。"
+      },
+      {
+        "a": "R21002",
+        "b": "I12002",
+        "reason": "共同有毛細門檻，但舊題是侵液後接觸態改變；新題問細網同時提高門檻與流阻的設計衝突。若刪壓損章則需回併。"
+      },
+      {
+        "a": "R21002",
+        "b": "W5028",
+        "reason": "濾餅/錯流靠顆粒沉積和沖刷；這裡沒有固粒，改的是氣液界面突破與供液條件。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2006",
+        "reason": "能否留靜電由連外路徑決定，沒有持續粒子外流反過來阻礙推進；新題保留電荷帳/回吸對照。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2007",
+        "reason": "庫倫距離平方力律不單獨給出機體何以充負電及中和器如何維持束流外逃；不只改帶電物件。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2021",
+        "reason": "靜電平衡的表面分布與有持續帶電流出的非平衡機體不同，不用表面電荷重述替代回吸控制。"
+      },
+      {
+        "a": "R21004",
+        "b": "O3062",
+        "reason": "GRACE量到非重力加速度後分離資料；本題直接把致動力從參考質量移到船身，量測校正與控制受力不同。"
+      },
+      {
+        "a": "R21004",
+        "b": "LEG-S80",
+        "reason": "共同自由落體說明漂浮；本題處理外殼受擾而質量要保留近自由落體的非相同受力。"
+      },
+      {
+        "a": "R21004",
+        "b": "E2214",
+        "reason": "線性放大器負回授定增益與選擇控制受力對象不同；新題需要畫明推箱/拉塊，非泛講回授。"
+      },
+      {
+        "a": "R21001",
+        "b": "D2128",
+        "reason": "間歇輪的銷槽與鎖定決定輸出時序；新題為持續外擾耗盡輪速容量及外部卸載，不是走停傳動。"
+      },
+      {
+        "a": "R21001",
+        "b": "D2125",
+        "reason": "行星齒輪靠載架與固定構件決定速度關係；新題沒有改傳動比，而是有限角動量儲存和外部交換。"
+      },
+      {
+        "a": "R21001",
+        "b": "D2224",
+        "reason": "套圈爬動是配合面失去定位；新題在輪子正常運作時仍可逼近速度上限，失效條件不同。"
+      },
+      {
+        "a": "R21001",
+        "b": "E2148",
+        "reason": "渦流阻尼的靜止無拖曳力與輪子角動量飽和不同；卸載還需外部力矩，不是低速阻尼。"
+      },
+      {
+        "a": "R21001",
+        "b": "P21004",
+        "reason": "薄片環流/平移轉動耦合產生抬升；輪子容量與外部卸載不依靠這種流體力。"
+      },
+      {
+        "a": "R21002",
+        "b": "P081",
+        "reason": "氣液壓縮性比較不含潤濕網的氣體入口門檻，更沒有供液壓損與門檻的競爭。"
+      },
+      {
+        "a": "R21002",
+        "b": "P067",
+        "reason": "出水孔的水頭控制速度；新題是已潤濕微孔的界面門檻及流阻預算，不能用深度單獨解答。"
+      },
+      {
+        "a": "R21002",
+        "b": "F4026",
+        "reason": "冷卻蒸氣凝結的壓差吸油與潤濕網的擋氣/供液競爭不同，不是靠氣相體積收縮。"
+      },
+      {
+        "a": "R21002",
+        "b": "P074",
+        "reason": "管道黏滯流動只給壓損的一側；新題必須同時比較細孔增加的氣體突破門檻，才回答越細是否越好。"
+      },
+      {
+        "a": "R21002",
+        "b": "F14005",
+        "reason": "軟壁形變打破流膜對稱產生升力；新題不靠柔性壁面或流體升力，而是毛細入口與流阻競爭。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2061",
+        "reason": "導體電子漂移速度受散射限制；離子束外流使船體電位反饋回吸是另一個開放電荷帳。"
+      },
+      {
+        "a": "R21003",
+        "b": "H3034",
+        "reason": "分隔氧化還原半反應把電子導向外路；新題是已加速正離子外流造成機體充電及回吸，不是電池反應路徑。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2248",
+        "reason": "自舉驅動需要低電位時段補充局部電容；新題電子排出是平衡逃逸離子電流，不是充電時窗不足。"
+      },
+      {
+        "a": "R21003",
+        "b": "H3035",
+        "reason": "兩者都含電中性，但鹽橋以離子遷移維持溶液半反應；新題有逃逸粒子使機體充電、反過來回吸束流/侵蝕的具體故障路徑，保留這個控制才另計核心。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2233",
+        "reason": "硬切換瞬間電壓電流重疊造成熱損；中和器避免船體電荷反饋回吸，沒有該切換耗能條件。"
+      },
+      {
+        "a": "R21004",
+        "b": "R21001",
+        "reason": "輪子儲存/卸載角動量與選擇推外殼而非參考質量不同；二者都用致動器不足以判同核。"
+      },
+      {
+        "a": "R21004",
+        "b": "R001",
+        "reason": "地球自轉造成地面測控可見時窗；新題是同一相對偏移下把控制力施於誰，無天線覆蓋切換。"
+      },
+      {
+        "a": "R21004",
+        "b": "R8005",
+        "reason": "共同繞軌自由落體解釋漂浮；新題增加外殼受非重力擾動後，以推船避免直接擾動參考質量的控制選擇。"
+      },
+      {
+        "a": "R21004",
+        "b": "K11015",
+        "reason": "彈簧連桿以幾何讓一段行程勢能平衡；拖曳補償是感測偏移後主動作用外殼，不是被動靜力平衡。"
+      },
+      {
+        "a": "R21004",
+        "b": "T4043",
+        "reason": "飛機尾流殘留由渦量/動量輸運決定；此題不靠尾流消散而是控制力作用對象。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R21-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P314",
+        "P030"
+      ],
+      "source_ids": [
+        "R21-S001"
+      ],
+      "reason": "P314/P030已涵蓋基本角動量交換；本批保留的是容量耗盡後的外部卸載。"
+    },
+    {
+      "id": "R21-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P076"
+      ],
+      "source_ids": [],
+      "reason": "已讀P076完整問答/範圍，雙金屬熱彎相同；未讀特定衛星百葉原文，不把退題前提升格為已核產品機制。"
+    },
+    {
+      "id": "R21-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R21002"
+      ],
+      "source_ids": [
+        "R21-S002"
+      ],
+      "reason": "換推進劑/溫度是同門檻條件，不增加獨立問題。"
+    },
+    {
+      "id": "R21-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R21002"
+      ],
+      "source_ids": [
+        "R21-S002"
+      ],
+      "reason": "氣泡不是硬顆粒，壓差跨門檻即是R21002主題內對照，不另計。"
+    },
+    {
+      "id": "R21-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R21003"
+      ],
+      "source_ids": [
+        "R21-S003"
+      ],
+      "reason": "S003只支援總束流近中性；逐粒復合前提過強，不留候選。"
+    },
+    {
+      "id": "R21-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "LEG-S80"
+      ],
+      "source_ids": [],
+      "reason": "LEG-S80共同自由落體已覆蓋，不因太空場景再收。"
+    },
+    {
+      "id": "R21-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "source_ids": [
+        "R21-S004",
+        "R21-S005"
+      ],
+      "reason": "ESA正文為技術示範；不得把標題/概述措辭升為直接重力波成像。"
+    },
+    {
+      "id": "R21-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R21001"
+      ],
+      "source_ids": [
+        "R21-S001"
+      ],
+      "reason": "磁場方向/環境限制屬R21001外部卸載條件；不切成第二核心。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W21R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "core_totals": {
+        "R21001": 110
+      },
+      "core_caps": {
+        "R21001": 135
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若只剩輪子反轉船的基本示範，併P314；若角動量箭頭無法核對就撤案，不補任務史。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "已在節拍內，不另加片頭尾或停頓填時。",
+      "editorial_result": "同向擾動耗餘裕→只內部減速的後果→外力配合卸載，兩章有新增控制；保110秒。"
+    },
+    {
+      "id": "W21R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 90,
+      "chapter_seconds": [
+        50,
+        40
+      ],
+      "core_totals": {
+        "R21002": 90
+      },
+      "core_caps": {
+        "R21002": 130
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若刪掉供液壓損權衡，只剩毛細門檻，回頭與I12002/P057合併評估；不得用不同推進劑填第二章。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "已在節拍內，不另加片頭尾或停頓填時。",
+      "editorial_result": "氣體突破與供液壓損兩個相反影響回答最細是否最好；縮為90秒，避免限制念稿。"
+    },
+    {
+      "id": "W21R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        45,
+        35
+      ],
+      "core_totals": {
+        "R21003": 80
+      },
+      "core_caps": {
+        "R21003": 100
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若只剩正負相吸的口號，併電荷舊題；缺電荷帳與回吸對照就撤80秒案，不加引擎沿革。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "已在節拍內，不另加片頭尾或停頓填時。",
+      "editorial_result": "80秒足以呈電荷分離/回吸→加入電子流，無引擎百科填時；圖中不可把中和當逐粒復合。"
+    },
+    {
+      "id": "W21R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 90,
+      "chapter_seconds": [
+        45,
+        45
+      ],
+      "core_totals": {
+        "R21004": 90
+      },
+      "core_caps": {
+        "R21004": 120
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若無法畫清外殼與方塊的不同受力，就撤90秒案；不能靠精度數字或宇宙背景湊時。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "已在節拍內，不另加片頭尾或停頓填時。",
+      "editorial_result": "同樣居中但推外殼/拉方塊的受力不同，90秒保留真正對照；未完成原創箭頭示意。"
+    }
+  ],
+  "remaining_blockers": [],
+  "limits": [
+    "只核這批指定主張與來源範圍，不聲稱所有來源逐句全查。",
+    "相似度只是檢索提示，未量全庫去重召回率。",
+    "未試讀、錄音、實作展示、觀看補充影片或做觀眾測試；題案秒數不是實測成片長度。"
+  ],
+  "first_retrieval": {
+    "draft": {
+      "file": ".cache/wave21-first-draft.json",
+      "sha256": "cc0bccd7bff1f9ec113c89366bb764e3ec9f03bd38f1c3e7dd547cba5188a50c"
+    },
+    "draft_sha256": "cc0bccd7bff1f9ec113c89366bb764e3ec9f03bd38f1c3e7dd547cba5188a50c",
+    "semantic": {
+      "file": ".cache/semantic-wave21-first-draft.json",
+      "sha256": "fc81d52dd166f8ac2eb149304e7bbb5a27a6ce69a1c9b468b23e4f2adcabd25b"
+    },
+    "directed_pairs_reviewed": 20
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "856c8adcb93f141194c09b4d5faea1c687df0113c9b9afc485c826e6c4984cfa",
+    "neighbours": {
+      "file": ".cache/wave21-space-neighbours.json",
+      "sha256": "3dd49e6e2a71cb3e4f1b3be7c8a80540436b339b532600c7b820af27b1ab88ba"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave21-draft.json",
+      "sha256": "238fcbc1073c1b398fcdf85e338f0defdf54b4e375aa9ea2efd3ce1fe77d2efe"
+    },
+    "delta": {
+      "file": ".cache/wave21-semantic-revision-delta.json",
+      "sha256": "ca0f6ef94f005b52bfef323b07d53d6594e936dd5f3595815d7207ef5b80f244"
+    },
+    "candidate_rows_checked": 4,
+    "directed_pairs_checked": 20,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "new_neighbours": 0,
+    "result": "修版共同輸入中本批4題問答、scope與20個有向鄰居未變；T02/T04僅題案縮25秒，當期三作者檔及written_files吻合。"
+  },
+  "source_identity_review": [
+    {
+      "sources": [
+        "R21-S001"
+      ],
+      "result": "NASA當日官方章節，只採機制；不借新版產品表添主張。"
+    },
+    {
+      "sources": [
+        "R21-S002"
+      ],
+      "result": "NASA/TM-2009-215496單一地面元件研究，引用歷史試驗不另算研究。"
+    },
+    {
+      "sources": [
+        "R21-S003"
+      ],
+      "result": "PS–01628–1215官方說明文件，URL資料夾不當出版日期；歷史任務敘述不外推今日。"
+    },
+    {
+      "sources": [
+        "R21-S004",
+        "R21-S005"
+      ],
+      "result": "同一LISA Pathfinder任務的概述與操作報導，兩URL不算兩個獨立重複實驗。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "source_id": "R21-S002",
+      "scope": "PDF p7 Fig2/3及p10 Table1，兩頁本reviewer渲染目讀。",
+      "files": [
+        {
+          "file": ".cache/wave21-physics-review-wave21-space-lad-p7.png",
+          "sha256": "1517202134d818d45264f41bd2515f9a126281b5e60f8a0f51dc8d0313058bb4"
+        },
+        {
+          "file": ".cache/wave21-physics-review-wave21-space-lad-p10.png",
+          "sha256": "9deca9976ae21af327555e62de96f3de608aab44c53618796c5412d564093b8a"
+        }
+      ]
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave21-space.json",
+      "sha256": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b"
+    },
+    {
+      "file": "reviews/wave21-space-themes.json",
+      "sha256": "032c3f49055c34c2aff68c3829bbe389291321acf2c0a93adc2fae0345377f7f"
+    },
+    {
+      "file": "reviews/wave21-space-author.json",
+      "sha256": "287eab25592277d6c51469dabafb87446e9913d9f884025dcae6de927242c421"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "SPACE01",
+      "status": "RESOLVED",
+      "finding": "T02第二章20秒把前述總壓損門檻再講一遍，含研究限制朗讀。",
+      "readback": "改5秒地面試驗/在軌示意圖註，兩章50+40=90秒，沒有補內容。"
+    },
+    {
+      "id": "SPACE02",
+      "status": "RESOLVED",
+      "finding": "T04第二章20秒的同居中/不同施力對象可更短。",
+      "readback": "保留10秒並排力作用對象，其他自由度移圖註，45+45=90秒。"
+    }
+  ]
+}

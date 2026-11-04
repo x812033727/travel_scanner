@@ -1,0 +1,1305 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "role": "independent_topic_source_and_editorial_review",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "reviewed_candidate_ids": [
+    "E9001",
+    "E9002",
+    "E9003",
+    "E9004",
+    "E9005",
+    "E9006",
+    "E9007",
+    "E9008",
+    "E9009",
+    "E9010",
+    "E9011",
+    "E9012",
+    "E9013",
+    "E9014",
+    "E9015",
+    "E9016",
+    "E9017",
+    "E9018",
+    "E9019"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave9-seeds.json",
+      "sha256": "fe4510e2a9f0fe4616a1a63b02adde70625c8e3dd1e83e7bf896bc6d0133ea28"
+    },
+    {
+      "file": "reviews/wave9-seeds-themes.json",
+      "sha256": "3d4feb3b7dfe4f2fee6530fd7f066a25556082ca58477ddb717641907273cdec"
+    },
+    {
+      "file": "reviews/wave9-seeds-author.json",
+      "sha256": "ea5b5293565c4b1f679ecbab5820bf343fd44ce39cdb74a3118e53d4f0cda402"
+    }
+  ],
+  "input_snapshot": {
+    "baseline_pool_file": "pool.json",
+    "baseline_pool_sha256": "b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b",
+    "baseline_raw_count": 3069,
+    "neighbours_file": ".cache/wave9-seeds-neighbours.json",
+    "neighbours_sha256": "67197f6da60d5f1ef7643805c04ee1364cf2a4015c2a2996d323f6ea6f1fea7b",
+    "draft_sha256": "e50a5f168641760e538d113a5fe4fc2b8ccc6b13268f82527a17b67c890352dd",
+    "draft_raw_count": 3115,
+    "neighbour_rows": 19,
+    "neighbour_pairs": 95
+  },
+  "review_scope": {
+    "candidate_review": "逐列讀19題question、answer_target、scope、notes、editorial的payoff/visual/seconds、sources/locator。",
+    "dedup_review": "逐讀19組作者邊界中的舊題完整問題/目標/條件及19×top5近鄰；對石細胞/木質化/伴護詞再精確搜尋全舊raw，沒有把語意分數當合併裁決。",
+    "source_review": "23筆元資料全讀，14個來源指定正文風險抽查；4個fresh HTTP XML，10個SHA核對作者副本，9個未獨立讀正文。",
+    "editorial_review": "3個紙上企劃逐章及節拍、同核心累計、刪段重算；非盲讀/配音試讀或成片QA。",
+    "source_failures": "本輪4個fresh HTTP XML均成功；未重演作者記載的captcha/500/timeout。最初HTML抽取工具bs4不存在，改stdlib HTMLParser成功，屬本機工具缺依賴而非來源讀取失敗。"
+  },
+  "counts": {
+    "candidates_read": 19,
+    "author_boundary_groups_read": 19,
+    "neighbour_pairs_read": 95,
+    "source_metadata_read": 23,
+    "source_bodies_sampled": 14,
+    "fresh_http_source_bodies": 4,
+    "sha_verified_author_copy_bodies": 10,
+    "source_bodies_not_independently_read": 9,
+    "recommended_keep_after_corrections": 19,
+    "merge": 0,
+    "excluded": 0,
+    "themes_read": 3,
+    "remaining_required_corrections": 0,
+    "final_keep": 19,
+    "final_neighbour_changed_rows_read": 9,
+    "final_neighbour_current_pairs_reread": 45
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "E9001",
+        "b": "P013",
+        "reason": "多毛間邊界層交互作用降低穿流、孔隙率穩定分離渦環；不只是單粒黏滯阻力。"
+      },
+      {
+        "a": "E9001",
+        "b": "E9003",
+        "reason": "多毛間邊界層交互作用降低穿流、孔隙率穩定分離渦環；不只是單粒黏滯阻力。"
+      },
+      {
+        "a": "E9001",
+        "b": "T4043",
+        "reason": "多毛間邊界層交互作用降低穿流、孔隙率穩定分離渦環；不只是單粒黏滯阻力。"
+      },
+      {
+        "a": "E9002",
+        "b": "B2230",
+        "reason": "放射排列、中央腔幾何及不同組織膨潤轉動冠毛基部；收攏同時改變離株與下降兩個階段，超出一般雙層彎曲。"
+      },
+      {
+        "a": "E9002",
+        "b": "P076",
+        "reason": "放射排列、中央腔幾何及不同組織膨潤轉動冠毛基部；收攏同時改變離株與下降兩個階段，超出一般雙層彎曲。"
+      },
+      {
+        "a": "E9004",
+        "b": "L095",
+        "reason": "滲透處理可增壓而沿軸縮短，成熟張力可由近定膨壓下的形狀/壁各向異性及內層拘束建立，鉸鏈壁負責快速放力；不是一般膨壓或乾燥彎曲。"
+      },
+      {
+        "a": "E9004",
+        "b": "B2230",
+        "reason": "滲透處理可增壓而沿軸縮短，成熟張力可由近定膨壓下的形狀/壁各向異性及內層拘束建立，鉸鏈壁負責快速放力；不是一般膨壓或乾燥彎曲。"
+      },
+      {
+        "a": "E9005",
+        "b": "B2123",
+        "reason": "新核是發射前果與莖的體積/質量證據及重新定向，不重計噴流反作用；方向措辭須中性化。"
+      },
+      {
+        "a": "E9006",
+        "b": "B2230",
+        "reason": "芒的可逆吸濕動作須結合固定點與土縫才轉成不可全回退的入土位移，與彈絲變形/機械棘爪不是相同答案。"
+      },
+      {
+        "a": "E9006",
+        "b": "D2126",
+        "reason": "芒的可逆吸濕動作須結合固定點與土縫才轉成不可全回退的入土位移，與彈絲變形/機械棘爪不是相同答案。"
+      },
+      {
+        "a": "E9007",
+        "b": "B2222",
+        "reason": "水展開黏液、基材附著與抗水流脫離形成對照，滯留不只由種重解釋；不延伸未證實的特定化學鍵或濕乾倍數。"
+      },
+      {
+        "a": "E9007",
+        "b": "B2224",
+        "reason": "水展開黏液、基材附著與抗水流脫離形成對照，滯留不只由種重解釋；不延伸未證實的特定化學鍵或濕乾倍數。"
+      },
+      {
+        "a": "E9008",
+        "b": "B2240",
+        "reason": "花粉硬壁的柔軟長溝使縮容集中於內摺，與花藥受約束雙層翻轉或紙板壓痕層間損傷不同。"
+      },
+      {
+        "a": "E9008",
+        "b": "E9010",
+        "reason": "花粉硬壁的柔軟長溝使縮容集中於內摺，與花藥受約束雙層翻轉或紙板壓痕層間損傷不同。"
+      },
+      {
+        "a": "E9009",
+        "b": "B2287",
+        "reason": "接觸傳入花藥的機械振幅與可聽聲音分開；孔狀花藥逐次釋粉不是梳理或電場識別。"
+      },
+      {
+        "a": "E9009",
+        "b": "B2312",
+        "reason": "接觸傳入花藥的機械振幅與可聽聲音分開；孔狀花藥逐次釋粉不是梳理或電場識別。"
+      },
+      {
+        "a": "E9010",
+        "b": "B2230",
+        "reason": "實讀Discussion支持受約束幾何阻止偏好曲率，失水累積應力後跨越翻轉門檻；不是舊題差異收縮換器官。"
+      },
+      {
+        "a": "E9010",
+        "b": "P076",
+        "reason": "實讀Discussion支持受約束幾何阻止偏好曲率，失水累積應力後跨越翻轉門檻；不是舊題差異收縮換器官。"
+      },
+      {
+        "a": "E9010",
+        "b": "E9004",
+        "reason": "實讀Discussion支持受約束幾何阻止偏好曲率，失水累積應力後跨越翻轉門檻；不是舊題差異收縮換器官。"
+      },
+      {
+        "a": "E9011",
+        "b": "B2215",
+        "reason": "首次受精失敗後留存助細胞與花粉供給構成有條件備援，不重計一般花粉管導引。"
+      },
+      {
+        "a": "E9011",
+        "b": "L115",
+        "reason": "首次受精失敗後留存助細胞與花粉供給構成有條件備援，不重計一般花粉管導引。"
+      },
+      {
+        "a": "E9012",
+        "b": "L099",
+        "reason": "同階段可萌種子受果內滲透環境與ABA抑制，含量與敏感性/發育條件分開；果膠一詞須收窄為黏液膠狀環境。"
+      },
+      {
+        "a": "E9012",
+        "b": "B2218",
+        "reason": "同階段可萌種子受果內滲透環境與ABA抑制，含量與敏感性/發育條件分開；果膠一詞須收窄為黏液膠狀環境。"
+      },
+      {
+        "a": "E9013",
+        "b": "H3024",
+        "reason": "LEA等蛋白的抗聚集/膜保護及多成分玻璃態有具體保護路徑，超出休眠或玻璃轉移定義；從T03移出但留素材。"
+      },
+      {
+        "a": "E9013",
+        "b": "B2135",
+        "reason": "LEA等蛋白的抗聚集/膜保護及多成分玻璃態有具體保護路徑，超出休眠或玻璃轉移定義；從T03移出但留素材。"
+      },
+      {
+        "a": "E9013",
+        "b": "U8022",
+        "reason": "LEA等蛋白的抗聚集/膜保護及多成分玻璃態有具體保護路徑，超出休眠或玻璃轉移定義；從T03移出但留素材。"
+      },
+      {
+        "a": "E9014",
+        "b": "B2230",
+        "reason": "樹脂封口受熱解除與松果本體溫度高於氣溫，並非鱗片一般乾濕彎曲；限輻射松。"
+      },
+      {
+        "a": "E9015",
+        "b": "H3060",
+        "reason": "多葉細胞三維互鎖改變裂面跨細胞凸部的路徑，與一般裂尖門檻/纖維橋接不同。"
+      },
+      {
+        "a": "E9015",
+        "b": "H3063",
+        "reason": "多葉細胞三維互鎖改變裂面跨細胞凸部的路徑，與一般裂尖門檻/纖維橋接不同。"
+      },
+      {
+        "a": "E9016",
+        "b": "E9015",
+        "reason": "向內沉積木質化次生壁使硬群停止膨大，周圍薄壁細胞續長稀釋比例；不只命名石細胞，不另拆比例題。"
+      },
+      {
+        "a": "E9017",
+        "b": "H3060",
+        "reason": "局部進水、細胞破裂內容物與周圍壁弱化的連鎖路徑，超出一般裂尖或鈣移動；來源此輪未獨立重開。"
+      },
+      {
+        "a": "E9017",
+        "b": "R6013",
+        "reason": "局部進水、細胞破裂內容物與周圍壁弱化的連鎖路徑，超出一般裂尖或鈣移動；來源此輪未獨立重開。"
+      },
+      {
+        "a": "E9018",
+        "b": "L100",
+        "reason": "外源訊號的抑制蛋白降解與種子光/GA/休眠狀態必要條件，保留處理失效對照；兩研究層級不可剪成同顆種子的連續實測。"
+      },
+      {
+        "a": "E9018",
+        "b": "V3052",
+        "reason": "外源訊號的抑制蛋白降解與種子光/GA/休眠狀態必要條件，保留處理失效對照；兩研究層級不可剪成同顆種子的連續實測。"
+      },
+      {
+        "a": "E9018",
+        "b": "V3093",
+        "reason": "外源訊號的抑制蛋白降解與種子光/GA/休眠狀態必要條件，保留處理失效對照；兩研究層級不可剪成同顆種子的連續實測。"
+      },
+      {
+        "a": "E9019",
+        "b": "B2219",
+        "reason": "B2219已含物理/機械限制；E9019新增透水果皮低氧/激素反應、去皮與低氧處理對照，不以換物種計數。"
+      },
+      {
+        "a": "E9019",
+        "b": "E9012",
+        "reason": "E9012是果內黏液滲透與ABA；E9019是透水包覆層的低氧/激素反應及處理對照。"
+      }
+    ]
+  },
+  "dispositions": [
+    {
+      "id": "E9001",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "多毛間邊界層交互作用降低穿流、孔隙率穩定分離渦環；不只是單粒黏滯阻力。",
+      "editorial_seconds": [
+        55,
+        95
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9002",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "放射排列、中央腔幾何及不同組織膨潤轉動冠毛基部；收攏同時改變離株與下降兩個階段，超出一般雙層彎曲。",
+      "editorial_seconds": [
+        65,
+        110
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9003",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "自轉翼面附近前緣渦增升力，與翼尖尾流或多孔冠毛分離渦不同；從T01移出不等於剔除素材。",
+      "editorial_seconds": [
+        55,
+        90
+      ],
+      "theme_removal_only": true
+    },
+    {
+      "id": "E9004",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "各向異性/細胞形狀與鉸鏈壁為新核；修版已分開滲透處理和近定膨壓成熟模型，與原文條件對齊。",
+      "editorial_seconds": [
+        75,
+        115
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9005",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "發射前果莖體積/質量證據及重新定向是新核，不重計噴流反作用；問法已去除無限定的抬高角度。",
+      "editorial_seconds": [
+        75,
+        115
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9006",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "芒的可逆吸濕動作須結合固定點與土縫才轉成不可全回退的入土位移，與彈絲變形/機械棘爪不是相同答案。",
+      "editorial_seconds": [
+        60,
+        95
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9007",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "水展開黏液、基材附著與抗水流脫離形成對照，滯留不只由種重解釋；不延伸未證實的特定化學鍵或濕乾倍數。",
+      "editorial_seconds": [
+        50,
+        85
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9008",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "花粉硬壁的柔軟長溝使縮容集中於內摺，與花藥受約束雙層翻轉或紙板壓痕層間損傷不同。",
+      "editorial_seconds": [
+        55,
+        90
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9009",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "接觸傳入花藥的機械振幅與可聽聲音分開；孔狀花藥逐次釋粉不是梳理或電場識別。",
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9010",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "實讀Discussion支持受約束幾何阻止偏好曲率，失水累積應力後跨越翻轉門檻；不是舊題差異收縮換器官。",
+      "editorial_seconds": [
+        55,
+        85
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9011",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "首次受精失敗後留存助細胞與花粉供給構成有條件備援，不重計一般花粉管導引。",
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9012",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "果內滲透條件與ABA抑制已可萌種子，材料及推論限制明確；黏液膠狀環境不再等同特定果膠成分。",
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9013",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "LEA等蛋白的抗聚集/膜保護及多成分玻璃態有具體保護路徑，超出休眠或玻璃轉移定義；從T03移出但留素材。",
+      "editorial_seconds": [
+        60,
+        95
+      ],
+      "theme_removal_only": true
+    },
+    {
+      "id": "E9014",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "樹脂封口受熱解除與松果本體溫度高於氣溫，並非鱗片一般乾濕彎曲；限輻射松。",
+      "editorial_seconds": [
+        55,
+        90
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9015",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "多葉細胞三維互鎖改變裂面跨細胞凸部的路徑，與一般裂尖門檻/纖維橋接不同。",
+      "editorial_seconds": [
+        55,
+        90
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9016",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "向內沉積木質化次生壁使硬群停止膨大，周圍薄壁細胞續長稀釋比例；不只命名石細胞，不另拆比例題。",
+      "editorial_seconds": [
+        45,
+        75
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9017",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "局部進水、細胞破裂內容物與周圍壁弱化的連鎖路徑，超出一般裂尖或鈣移動；來源此輪未獨立重開。",
+      "editorial_seconds": [
+        60,
+        95
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9018",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "外源訊號的抑制蛋白降解與種子光/GA/休眠狀態必要條件，保留處理失效對照；兩研究層級不可剪成同顆種子的連續實測。",
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "theme_removal_only": false
+    },
+    {
+      "id": "E9019",
+      "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+      "reason": "透水果皮的低氧/激素與低氧處理對照，新增於舊種皮機械限制；低氧為綜合支持而非果內直接氧量測。",
+      "editorial_seconds": [
+        60,
+        95
+      ],
+      "theme_removal_only": false
+    }
+  ],
+  "source_checks": [
+    {
+      "id": "E9-S001",
+      "url": "https://pure.hw.ac.uk/ws/portalfiles/portal/25369594/A_separated_vortex_AAM_Cummins_et_al_2018_AAM.pdf",
+      "title": "A separated vortex ring underlies the flight of the dandelion",
+      "publisher": "Cummins et al.; Nature (2018), Heriot-Watt作者接受稿",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "pypdf指定頁文字",
+      "reading_scope": "PDF第2–4頁正文（不含逐條參考文獻與後附方法）",
+      "sha256": "5704cfedc1a30e7f02aa37c65b14ddb176ac1ea007207a0c952ff3bb9a55d395",
+      "cache_file": ".cache/wave9-seeds-sources/dandelion-2018.pdf",
+      "finding": "細毛流場交互作用、孔隙率與SVR，不把孔越多越穩或極端距離當普遍結果。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9076835/",
+      "title": "Dandelion pappus morphing is actuated by radially patterned material swelling",
+      "publisher": "Seale et al.; Nature Communications (2022)",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "ElementTree XML正文",
+      "reading_scope": "Results: An actuator at the base…；Outward radial expansion…；The arrangement of tissues around the central cavity…",
+      "sha256": "3dc0be128fda17413e4e00b776bd195076476efa0a9466e8cbb5ff58b0bfe788",
+      "cache_file": ".cache/wave9-seeds-sources/PMC9076835.xml",
+      "finding": "中央腔/放射膨潤/受約束幾何直接支持；非單一平面雙層比喻。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9797189/",
+      "title": "Environmental morphing enables informed dispersal of the dandelion diaspore",
+      "publisher": "Seale et al.; eLife (2022)",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "ElementTree XML正文",
+      "reading_scope": "Results直接p第1–9段；未重算後續距離模型",
+      "sha256": "c3808aec2d6eca407c8a1aaa3c59c80b6610777df5f88681bf2a38e736955dd2",
+      "cache_file": ".cache/wave9-seeds-sources/PMC9797189.xml",
+      "finding": "下降與離株風洞條件可分；第9段為模型設計而非遠距收益實測。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S004",
+      "url": "https://lentinklab.com/wp-content/uploads/2022/06/1354400160_2009-maple-science-lentink.pdf",
+      "title": "Leading-Edge Vortices Elevate Lift of Autorotating Plant Seeds",
+      "publisher": "Lentink et al.; Science (2009), 作者實驗室公開PDF",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "pypdf指定頁文字",
+      "reading_scope": "PDF第2–4頁正文；第2頁開頭曾輸出截斷後獨立重讀至Introduction模型段",
+      "sha256": "bea574c3253d6719d4596b6b6e2a3d477033a69cc35bc0e0ed0e6f7820291592",
+      "cache_file": ".cache/wave9-seeds-sources/maple-2009.pdf",
+      "finding": "支持重心位置與自轉、LEV增升力；穩定自轉全部機制未解完。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4930488/",
+      "title": "Morphomechanical Innovation Drives Explosive Seed Dispersal",
+      "publisher": "Hofhuis et al.; Cell (2016)",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "ElementTree XML正文",
+      "reading_scope": "Secondary Cell Wall Geometry Enables Explosive Energy Release；Hinged Secondary Cell Wall Geometry Is an Evolutionary Novelty；Turgor-Driven Shrinkage；Cellular Mechanics Play a Key Role in Turgor-Driven Shrinkage",
+      "sha256": "4125dec3aea94137b79652dd3a33f961c5e0c310cd3519b30fe972c8c536513b",
+      "cache_file": ".cache/wave9-seeds-sources/PMC4930488.xml",
+      "finding": "增壓處理與成熟期近似定壓模型須分開；鉸鏈壁允許橫向變平後縱向捲曲。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S006",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11648854/",
+      "title": "Uncovering the mechanical secrets of the squirting cucumber",
+      "publisher": "Box et al.; PNAS (2024)",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "ElementTree XML正文及caption",
+      "reading_scope": "Build-Up to Launch.三段；Seed Ejection.三段；Fig.1–2 captions",
+      "sha256": "4fe5160458b5d48c4e3bc8bb5a02f18be29df43f517772ec9be2b0057a9eb8a1",
+      "cache_file": ".cache/wave9-seeds-sources/PMC11648854.xml",
+      "finding": "再分配為體積/質量的間接推論；發射前重定向與發射中角度增加分開。未看影片/附錄/圖像像素。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S007",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8664382/",
+      "title": "Morphological Computation in Plant Seeds for a New Generation of Self-Burial and Flying Soft Robots",
+      "publisher": "Mazzolai et al.; Frontiers in Robotics and AI (2021)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "依風險取樣，未逐頁重查全部23來源。"
+    },
+    {
+      "id": "E9-S008",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9292590/",
+      "title": "Anchorage by seed mucilage prevents seed dislodgement in high surface flow: a mechanistic investigation",
+      "publisher": "Pan et al.; Annals of Botany (2022)",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "stdlib HTMLParser擷取正文",
+      "reading_scope": "Discussion: What drives dislodgement force?三段",
+      "sha256": "e6656a6f358a50881836139c7da40dbbaa69d4a0aa92513cddd09fcbebfbed7b",
+      "cache_file": ".cache/wave9-seeds-sources/PMC9292590.html",
+      "finding": "黏液量/脫離力與基材效應，不以不同基材的濕乾數字推因果倍數；微觀化學機制仍有缺口。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S009",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2867878/",
+      "title": "Foldable structures and the natural design of pollen grains",
+      "publisher": "Katifori et al.; PNAS (2010)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "依風險取樣，未逐頁重查全部23來源。"
+    },
+    {
+      "id": "E9-S010",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11006549/",
+      "title": "Harvesting pollen with vibrations: towards an integrative understanding of the proximate and ultimate reasons for buzz pollination",
+      "publisher": "Vallejo-Marin and Russell; Annals of Botany (2024)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "依風險取樣，未逐頁重查全部23來源。"
+    },
+    {
+      "id": "E9-S011",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3569878/",
+      "title": "A biomechanical model of anther opening reveals the roles of dehydration and secondary thickening",
+      "publisher": "Nelson et al.; New Phytologist (2012/2013)",
+      "status": "FRESH_HTTP_XML_SHA_MATCHES_AUTHOR",
+      "read_via": "urllib新取Europe PMC XML；ElementTree指定正文",
+      "reading_scope": "Discussion全六段",
+      "sha256": "4b8c4a0716c01e96869b5c9cd1d37229b22fc25f20efd2cbe8a69b5fa5ed0f87",
+      "cache_file": ".cache/wave9-seeds-sources/PMC3569878.xml",
+      "finding": "受約束幾何翻轉是超出舊雙層例的增量；模型未預測速度。",
+      "accessed_on": "2026-11-01",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3569878/fullTextXML"
+    },
+    {
+      "id": "E9-S012",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7030189/",
+      "title": "Fertilization recovery system is dependent on the number of pollen grains for efficient reproduction in plants",
+      "publisher": "Kasahara et al.; Plant Signaling & Behavior (2013)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "依風險取樣，未逐頁重查全部23來源。"
+    },
+    {
+      "id": "E9-S013",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4902461/",
+      "title": "Seed development and viviparous germination in one accession of a tomato rin mutant",
+      "publisher": "Wang et al.; Breeding Science (2016)",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "ElementTree XML正文",
+      "reading_scope": "Discussion全部四段",
+      "sha256": "9446560e89b914fc84614d06106a794723740cfa4c1672d6e1ba883f9510bded",
+      "cache_file": ".cache/wave9-seeds-sources/PMC4902461.xml",
+      "finding": "mucilage gel、ABA及滲透抑制；單一rin材料不以較低ABA含量解釋，完整因果未完備。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S014",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8747232/",
+      "title": "The Orthodox Dry Seeds Are Alive: A Clear Example of Desiccation Tolerance",
+      "publisher": "Matilla; Plants (2022), Universidade de Santiago de Compostela",
+      "status": "FRESH_HTTP_XML_SHA_MATCHES_AUTHOR",
+      "read_via": "urllib新取Europe PMC XML；ElementTree指定正文",
+      "reading_scope": "§5全部四段；§6前四段",
+      "sha256": "34ca915b824ae1ee26918bea9823c08f533a893fb38041bba56d09637448b783",
+      "cache_file": ".cache/wave9-seeds-sources/PMC8747232.xml",
+      "finding": "部分保護蛋白抗聚集/穩膜及糖/玻璃態，LEA存在非耐乾充分條件；仍會損傷。",
+      "accessed_on": "2026-11-01",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8747232/fullTextXML"
+    },
+    {
+      "id": "E9-S015",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6900966/",
+      "title": "Seed release by a serotinous pine in the absence of fire: implications for invasion into temperate regions",
+      "publisher": "Wyse et al.; AoB PLANTS (2019)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "依風險取樣，未逐頁重查全部23來源。"
+    },
+    {
+      "id": "E9-S016",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702760/",
+      "title": "The Puzzle of the Walnut Shell: A Novel Cell Type with Interlocked Packing",
+      "publisher": "Antreich et al.; Advanced Science (2019)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "依風險取樣，未逐頁重查全部23來源。"
+    },
+    {
+      "id": "E9-S017",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10707770/",
+      "title": "Does Regulated Deficit Irrigation Affect Pear Fruit Texture by Modifying the Stone Cells?",
+      "publisher": "Peco et al.; Plants (2023)",
+      "status": "FRESH_HTTP_XML_SHA_MATCHES_AUTHOR",
+      "read_via": "urllib新取Europe PMC XML；ElementTree指定正文",
+      "reading_scope": "§3.2全部四段；§3.3全部三段",
+      "sha256": "3c59bd95cbc577837f38a1ec189fa374cc341440d52f5553d1b1635a6d1910bc",
+      "cache_file": ".cache/wave9-seeds-sources/PMC10707770.xml",
+      "finding": "硬群木質化且不膨大、周邊膨大稀釋而非硬群必然降解；不採假說性的群分裂當必然。",
+      "accessed_on": "2026-11-01",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10707770/fullTextXML"
+    },
+    {
+      "id": "E9-S018",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6588568/",
+      "title": "Localized bursting of mesocarp cells triggers catastrophic fruit cracking",
+      "publisher": "Grimm et al.; Horticulture Research (2019)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "依風險取樣，未逐頁重查全部23來源。"
+    },
+    {
+      "id": "E9-S019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7401016/",
+      "title": "Structure–Function Analysis of SMAX1 Reveals Domains That Mediate Its Karrikin-Induced Proteolysis and Interaction with the Receptor KAI2",
+      "publisher": "Khosla et al.; The Plant Cell (2020)",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "stdlib HTMLParser擷取正文",
+      "reading_scope": "SMAX1D2 Degradation in Arabidopsis Is MAX2 and KAI2 Dependent首段；DISCUSSION首段",
+      "sha256": "2c1fbd342b74462a184e65a038637759ac73854d872882b2f065dfaef38e3589",
+      "cache_file": ".cache/wave9-seeds-sources/PMC7401016.html",
+      "finding": "幼苗處理的報導訊號與模型，不等同全途徑在種子內被直接連續量測。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S020",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2633839/",
+      "title": "Karrikins Discovered in Smoke Trigger Arabidopsis Seed Germination by a Mechanism Requiring Gibberellic Acid Synthesis and Light",
+      "publisher": "Nelson et al.; Plant Physiology (2009)",
+      "status": "AUTHOR_CACHE_SHA_VERIFIED",
+      "read_via": "stdlib HTMLParser擷取正文",
+      "reading_scope": "DISCUSSION全部六段",
+      "sha256": "6385978d70103aacc9516284b4b2cf16dbd038ea3954e7aa566c7c8ffa00c083",
+      "cache_file": ".cache/wave9-seeds-sources/PMC2633839.html",
+      "finding": "促萌受GA合成/光/休眠狀態限制，不可把GA3ox表現直接稱因果已確立。",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "E9-S021",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11218780/",
+      "title": "The dimorphic diaspore model Aethionema arabicum (Brassicaceae): Distinct molecular and morphological control of responses to parental and germination temperatures",
+      "publisher": "Chandler et al.; The Plant Cell (2024)",
+      "status": "FRESH_HTTP_XML_SHA_MATCHES_AUTHOR",
+      "read_via": "urllib新取Europe PMC XML；核對相同SHA副本後ElementTree指定正文",
+      "reading_scope": "Results Evidence for pericarp-mediated hypoxia…前三段；Discussion Pericarp-imposed dormancy…全部三段",
+      "sha256": "a05d89fa4a97bf7859870e36c8d1205e8f4d98426d2e636b4fad0ff67c795e79",
+      "cache_file": ".cache/wave9-seeds-sources/PMC11218780.xml",
+      "finding": "低氧表現/去皮/低氧裸種處理支持，多種限制共存；非逐顆果內氧濃度直接量測。",
+      "accessed_on": "2026-11-01",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11218780/fullTextXML"
+    },
+    {
+      "id": "E9-S022",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12220671/",
+      "title": "Transcriptomic insights into the synergistic effects of darkness and mechanical stimulation on peanut pod development",
+      "publisher": "BMC Plant Biology (2025)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "非此輪風險抽查取樣；S022只供作者退題。"
+    },
+    {
+      "id": "E9-S023",
+      "url": "https://www.esa.int/gsp/ACT/doc/BIO/ACT-RPR-BIO-2012-Self-burial.pdf",
+      "title": "Self-burial Mechanism of Erodium Cicutarium and Its Potential Application for Subsurface Exploration",
+      "publisher": "Pandolfi, Comparini and Mancuso; ESA/University of Florence (2012)",
+      "status": "NOT_INDEPENDENTLY_READ_THIS_REVIEW",
+      "reading_scope": "僅讀作者來源元資料、題級引用及限制；不冒稱已重開正文。",
+      "reason": "依風險取樣，未逐頁重查全部23來源。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "SEEDS01",
+      "priority": "required",
+      "files": [
+        "batches/wave9-seeds.json"
+      ],
+      "candidate_ids": [
+        "E9005"
+      ],
+      "finding": "題名發射前的「抬高角度」未界定角度且會混同發射中角度增加。來源Build-Up寫由近垂直到斜向；Seed Ejection才明列發射中相對水平角度增加。",
+      "requested_change": "改為「噴瓜發射種子前，為什麼果實反而縮小、改變出口方向？」或等義中性方向問法；不改已限定的間接推論。",
+      "basis": [
+        "E9-S006 Build-Up to Launch.; Seed Ejection.; Fig.1–2 captions"
+      ],
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "E9005問法現為改變出口方向；發射前重新定向未再被寫成方向固定增加。"
+    },
+    {
+      "id": "SEEDS02",
+      "priority": "required",
+      "files": [
+        "batches/wave9-seeds.json"
+      ],
+      "candidate_ids": [
+        "E9012"
+      ],
+      "finding": "果膠是特定聚合物，現讀Discussion僅以mucilage gel及滲透條件討論抑制；不支持將環境直接限定成果膠機制。",
+      "requested_change": "answer_target的「周圍果膠環境」改「周圍黏液膠狀環境」。",
+      "basis": [
+        "E9-S013 Discussion四段"
+      ],
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "E9012改為周圍黏液膠狀環境，沒有添加果膠化學成分的因果。"
+    },
+    {
+      "id": "SEEDS03",
+      "priority": "required",
+      "files": [
+        "batches/wave9-seeds.json",
+        "reviews/wave9-seeds-themes.json"
+      ],
+      "candidate_ids": [
+        "E9004"
+      ],
+      "finding": "增壓時變厚縮短由滲透處理支持，但同一來源指出成熟期張力可在膨壓近似不變下形成；目前蓄力敘述容易被讀成成熟一路加壓。",
+      "requested_change": "在scope/notes及T02對應節拍明分處理實驗與成熟機制：形狀、細胞壁各向異性及內層拘束改變使張力建立；不聲稱膨壓在成熟期必須持續升高。不加時。",
+      "basis": [
+        "E9-S005 Turgor-Driven Shrinkage最後兩段；Cellular Mechanics Play a Key Role in Turgor-Driven Shrinkage"
+      ],
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "E9004 target/scope/notes/visual/locator及S005摘要、T02首章均分開滲透增壓處理與近定膨壓成熟模型；105秒不變。"
+    },
+    {
+      "id": "SEEDS04",
+      "priority": "required",
+      "files": [
+        "reviews/wave9-seeds-author.json"
+      ],
+      "candidate_ids": [
+        "E9019"
+      ],
+      "finding": "B2219已包含種皮物理/機械限制，不能以「舊題只是硬種皮不透水」支持distinct。",
+      "requested_change": "邊界改寫為：承認B2219物理/機械限制；E9019新增透水果皮低氧/激素反應及去皮/低氧處理對照。",
+      "basis": [
+        "pool.json B2219完整answer_target及scope；E9-S021指定Results/Discussion"
+      ],
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "E9019/B2219作者邊界承認舊題物理/機械限制，新增低氧/激素與處理對照。"
+    },
+    {
+      "id": "SEEDS05",
+      "priority": "required",
+      "files": [
+        "reviews/wave9-seeds-themes.json"
+      ],
+      "theme_ids": [
+        "W9E-T01"
+      ],
+      "finding": "中段楓翅果是另一套飛行裝備，未推進「蒲公英飛得慢還須看離株時機」；兩種渦的分類比較打斷因果。",
+      "requested_change": "採已列的180秒縮版，移出E9003，保留E9001 80秒+E9002 100秒；題名、開場、轉場及回扣收為蒲公英同主線，含原開場/收尾，不加內容補長。刪任一章只剩單核時撤案。",
+      "basis": [
+        "W9E-T01全文；E9-S001/E9-S002/E9-S003正文"
+      ],
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "T01移出E9003，80+100=180秒；標題、同一蒲公英的濕度轉場、開場回扣與任刪章撤案同步。E9003仍留素材。"
+    },
+    {
+      "id": "SEEDS06",
+      "priority": "required",
+      "files": [
+        "reviews/wave9-seeds-themes.json"
+      ],
+      "theme_ids": [
+        "W9E-T03"
+      ],
+      "finding": "乾燥時維持存活與遇水後仍受抑制是不同追問；首章耐乾為關卡名單鋪路，沒有推進濕而未萌的因果。",
+      "requested_change": "採170秒縮版，移出E9013，保留E9012 85秒+E9019 85秒；第一章重新包含10秒開場，改共同追問與回扣為有液體/透水仍受滲透、激素和低氧等限制；刪任一章撤案。E9013留素材。",
+      "basis": [
+        "W9E-T03全文；E9-S013/E9-S014/E9-S021正文"
+      ],
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "T03移出E9013，85+85=170秒；10秒開場納入番茄首章，延續濕而未萌追問，任刪章撤案。E9013仍留素材。"
+    }
+  ],
+  "editorial_review": [
+    {
+      "theme_id": "W9E-T01",
+      "original_seconds": 255,
+      "recommended_seconds": 180,
+      "status": "PASS_EDITORIAL_PROPOSAL_ONLY",
+      "keep_ids": [
+        "E9001",
+        "E9002"
+      ],
+      "move_to_pool_only": [
+        "E9003"
+      ],
+      "reason": "移除另一物種飛行裝備支線；由同一冠毛的慢降轉到離株時機。",
+      "final_seconds": 180
+    },
+    {
+      "theme_id": "W9E-T02",
+      "original_seconds": 210,
+      "recommended_seconds": 210,
+      "status": "PASS_EDITORIAL_PROPOSAL_ONLY",
+      "keep_ids": [
+        "E9004",
+        "E9005"
+      ],
+      "reason": "兩種水參與的方式可作對照；明示切換物種，從蓄力/放力接到壓力不是唯一散播條件與出口配置，不能連播爆果名單。",
+      "final_seconds": 210
+    },
+    {
+      "theme_id": "W9E-T03",
+      "original_seconds": 250,
+      "recommended_seconds": 170,
+      "status": "PASS_EDITORIAL_PROPOSAL_ONLY",
+      "keep_ids": [
+        "E9012",
+        "E9019"
+      ],
+      "move_to_pool_only": [
+        "E9013"
+      ],
+      "reason": "乾燥存活另留素材；果內液體與透水果皮是否已滿足萌發條件是連續追問。",
+      "final_seconds": 170
+    }
+  ],
+  "mechanical_checks": {
+    "node": "v24.22.1",
+    "status": "PASS_MECHANICAL_ONLY",
+    "theme_checks": [
+      {
+        "id": "W9E-T01",
+        "seconds": 180,
+        "usage": {
+          "E9001": 80,
+          "E9002": 100
+        }
+      },
+      {
+        "id": "W9E-T02",
+        "seconds": 210,
+        "usage": {
+          "E9004": 105,
+          "E9005": 105
+        }
+      },
+      {
+        "id": "W9E-T03",
+        "seconds": 170,
+        "usage": {
+          "E9012": 85,
+          "E9019": 85
+        }
+      }
+    ]
+  },
+  "limits": [
+    "本收據只核題級來源範圍、核心增量和紙上節拍，未逐主張核准完整旁白。",
+    "未重播補充影片、重建研究數值模型、量測野外效果或判定圖片授權。",
+    "原始閱讀範圍與失敗保留；未抽查來源不因候選保留而變成已獨立查核。",
+    "秒數是內容預算，無實際配音或觀眾測試；不得據此宣稱不無聊或可製作發布。",
+    "語意top5及精確詞搜尋不構成全庫去重召回率保證。"
+  ],
+  "initial_review": {
+    "status": "CHANGES_REQUIRED",
+    "review_sha256": "81e0f47f22ff8a10f254e5f7d0dd55fd9d5a3bf7f85bb6f61655c80a9c9fc9d2",
+    "reviewed_files": [
+      {
+        "file": "batches/wave9-seeds.json",
+        "sha256": "b5d36881a6f7d7fddce7232218af3638c73abbb3e7e35332fc690bdaa0b2b239"
+      },
+      {
+        "file": "reviews/wave9-seeds-themes.json",
+        "sha256": "167ec53697a059fc4228ec8b3bca1626daeb4c8c6fe9019626c38274b8b7dddc"
+      },
+      {
+        "file": "reviews/wave9-seeds-author.json",
+        "sha256": "36ad84ea164786ba4823084485eb2a14d2a0fb70237dcc94ef0f4f3f7d4db59c"
+      }
+    ],
+    "input_snapshot": {
+      "baseline_pool_file": "pool.json",
+      "baseline_pool_sha256": "b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b",
+      "baseline_raw_count": 3069,
+      "neighbours_file": ".cache/wave9-seeds-neighbours.json",
+      "neighbours_sha256": "d2b81e6c265aed3c290837ed1ebd47639e8a40cbe9302c16159236185e62fbc1",
+      "draft_sha256": "38b53e2b164b6613633cf18e53051bccae52c8c2d6260a9801587a6bbc378dae",
+      "draft_raw_count": 3115,
+      "neighbour_rows": 19,
+      "neighbour_pairs": 95
+    },
+    "dispositions": [
+      {
+        "id": "E9001",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "多毛間邊界層交互作用降低穿流、孔隙率穩定分離渦環；不只是單粒黏滯阻力。",
+        "editorial_seconds": [
+          55,
+          95
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9002",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "放射排列、中央腔幾何及不同組織膨潤轉動冠毛基部；收攏同時改變離株與下降兩個階段，超出一般雙層彎曲。",
+        "editorial_seconds": [
+          65,
+          110
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9003",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "自轉翼面附近前緣渦增升力，與翼尖尾流或多孔冠毛分離渦不同；從T01移出不等於剔除素材。",
+        "editorial_seconds": [
+          55,
+          90
+        ],
+        "theme_removal_only": true
+      },
+      {
+        "id": "E9004",
+        "disposition": "KEEP_TOPIC_AFTER_REQUIRED_CORRECTION",
+        "reason": "各向異性及細胞形狀使體積增大時沿軸縮短，鉸鏈壁解鎖橫截面後釋放；需補分清增壓處理與成熟期模型。",
+        "editorial_seconds": [
+          75,
+          115
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9005",
+        "disposition": "KEEP_TOPIC_AFTER_REQUIRED_CORRECTION",
+        "reason": "新核是發射前果與莖的體積/質量證據及重新定向，不重計噴流反作用；方向措辭須中性化。",
+        "editorial_seconds": [
+          75,
+          115
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9006",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "芒的可逆吸濕動作須結合固定點與土縫才轉成不可全回退的入土位移，與彈絲變形/機械棘爪不是相同答案。",
+        "editorial_seconds": [
+          60,
+          95
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9007",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "水展開黏液、基材附著與抗水流脫離形成對照，滯留不只由種重解釋；不延伸未證實的特定化學鍵或濕乾倍數。",
+        "editorial_seconds": [
+          50,
+          85
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9008",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "花粉硬壁的柔軟長溝使縮容集中於內摺，與花藥受約束雙層翻轉或紙板壓痕層間損傷不同。",
+        "editorial_seconds": [
+          55,
+          90
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9009",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "接觸傳入花藥的機械振幅與可聽聲音分開；孔狀花藥逐次釋粉不是梳理或電場識別。",
+        "editorial_seconds": [
+          65,
+          100
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9010",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "實讀Discussion支持受約束幾何阻止偏好曲率，失水累積應力後跨越翻轉門檻；不是舊題差異收縮換器官。",
+        "editorial_seconds": [
+          55,
+          85
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9011",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "首次受精失敗後留存助細胞與花粉供給構成有條件備援，不重計一般花粉管導引。",
+        "editorial_seconds": [
+          65,
+          100
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9012",
+        "disposition": "KEEP_TOPIC_AFTER_REQUIRED_CORRECTION",
+        "reason": "同階段可萌種子受果內滲透環境與ABA抑制，含量與敏感性/發育條件分開；果膠一詞須收窄為黏液膠狀環境。",
+        "editorial_seconds": [
+          65,
+          100
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9013",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "LEA等蛋白的抗聚集/膜保護及多成分玻璃態有具體保護路徑，超出休眠或玻璃轉移定義；從T03移出但留素材。",
+        "editorial_seconds": [
+          60,
+          95
+        ],
+        "theme_removal_only": true
+      },
+      {
+        "id": "E9014",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "樹脂封口受熱解除與松果本體溫度高於氣溫，並非鱗片一般乾濕彎曲；限輻射松。",
+        "editorial_seconds": [
+          55,
+          90
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9015",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "多葉細胞三維互鎖改變裂面跨細胞凸部的路徑，與一般裂尖門檻/纖維橋接不同。",
+        "editorial_seconds": [
+          55,
+          90
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9016",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "向內沉積木質化次生壁使硬群停止膨大，周圍薄壁細胞續長稀釋比例；不只命名石細胞，不另拆比例題。",
+        "editorial_seconds": [
+          45,
+          75
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9017",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "局部進水、細胞破裂內容物與周圍壁弱化的連鎖路徑，超出一般裂尖或鈣移動；來源此輪未獨立重開。",
+        "editorial_seconds": [
+          60,
+          95
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9018",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "外源訊號的抑制蛋白降解與種子光/GA/休眠狀態必要條件，保留處理失效對照；兩研究層級不可剪成同顆種子的連續實測。",
+        "editorial_seconds": [
+          65,
+          100
+        ],
+        "theme_removal_only": false
+      },
+      {
+        "id": "E9019",
+        "disposition": "KEEP_TOPIC_LEVEL_ONLY",
+        "reason": "透水果皮的低氧/激素與低氧處理對照，新增於舊種皮機械限制；低氧為綜合支持而非果內直接氧量測。",
+        "editorial_seconds": [
+          60,
+          95
+        ],
+        "theme_removal_only": false
+      }
+    ],
+    "mechanical_checks": {
+      "node": "v24.22.1",
+      "status": "PASS_MECHANICAL_ONLY",
+      "theme_checks": [
+        {
+          "id": "W9E-T01",
+          "seconds": 255,
+          "usage": {
+            "E9001": 80,
+            "E9003": 75,
+            "E9002": 100
+          }
+        },
+        {
+          "id": "W9E-T02",
+          "seconds": 210,
+          "usage": {
+            "E9004": 105,
+            "E9005": 105
+          }
+        },
+        {
+          "id": "W9E-T03",
+          "seconds": 250,
+          "usage": {
+            "E9013": 80,
+            "E9012": 85,
+            "E9019": 85
+          }
+        }
+      ]
+    },
+    "editorial_review": [
+      {
+        "theme_id": "W9E-T01",
+        "original_seconds": 255,
+        "recommended_seconds": 180,
+        "status": "CHANGES_REQUIRED",
+        "keep_ids": [
+          "E9001",
+          "E9002"
+        ],
+        "move_to_pool_only": [
+          "E9003"
+        ],
+        "reason": "移除另一物種飛行裝備支線；由同一冠毛的慢降轉到離株時機。"
+      },
+      {
+        "theme_id": "W9E-T02",
+        "original_seconds": 210,
+        "recommended_seconds": 210,
+        "status": "RETAIN_AFTER_SOURCE_WORDING_CORRECTION",
+        "keep_ids": [
+          "E9004",
+          "E9005"
+        ],
+        "reason": "兩種水參與的方式可作對照；明示切換物種，從蓄力/放力接到壓力不是唯一散播條件與出口配置，不能連播爆果名單。"
+      },
+      {
+        "theme_id": "W9E-T03",
+        "original_seconds": 250,
+        "recommended_seconds": 170,
+        "status": "CHANGES_REQUIRED",
+        "keep_ids": [
+          "E9012",
+          "E9019"
+        ],
+        "move_to_pool_only": [
+          "E9013"
+        ],
+        "reason": "乾燥存活另留素材；果內液體與透水果皮是否已滿足萌發條件是連續追問。"
+      }
+    ],
+    "evidence_preservation": "原始required_corrections的finding/requested_change/basis逐字保留；只追加resolved狀態，不將原發現改成從未存在。"
+  },
+  "targeted_recheck": {
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "reviewed_files": [
+      {
+        "file": "batches/wave9-seeds.json",
+        "sha256": "fe4510e2a9f0fe4616a1a63b02adde70625c8e3dd1e83e7bf896bc6d0133ea28"
+      },
+      {
+        "file": "reviews/wave9-seeds-themes.json",
+        "sha256": "3d4feb3b7dfe4f2fee6530fd7f066a25556082ca58477ddb717641907273cdec"
+      },
+      {
+        "file": "reviews/wave9-seeds-author.json",
+        "sha256": "ea5b5293565c4b1f679ecbab5820bf343fd44ce39cdb74a3118e53d4f0cda402"
+      }
+    ],
+    "author_delta_file": ".cache/wave9-seeds-review-author-delta.json",
+    "author_delta_sha256": "37097ea017edcb849db938ca32e15ef4945c6c88fb8e6b035412a42cf2abe1c9",
+    "author_delta_scope": "逐讀所有變動題級欄位、S005閱讀範圍/摘要、作者邊界及三題案全文；SHA核對作者before副本，無未申明候選/來源增刪。",
+    "resolved_ids": [
+      "SEEDS01",
+      "SEEDS02",
+      "SEEDS03",
+      "SEEDS04",
+      "SEEDS05",
+      "SEEDS06"
+    ],
+    "neighbour_delta_file": ".cache/wave9-seeds-neighbour-delta.json",
+    "neighbour_delta_sha256": "9654f5b0d610f98dc5013482ac3226b2e8dab5b5327cb20b89998642a46a0012",
+    "neighbours_file": ".cache/wave9-seeds-neighbours.json",
+    "neighbours_sha256": "67197f6da60d5f1ef7643805c04ee1364cf2a4015c2a2996d323f6ea6f1fea7b",
+    "draft_sha256": "e50a5f168641760e538d113a5fe4fc2b8ccc6b13268f82527a17b67c890352dd",
+    "changed_query_ids_read": [
+      "E9004",
+      "E9005",
+      "E9006",
+      "E9007",
+      "E9008",
+      "E9012",
+      "E9016",
+      "E9017",
+      "E9019"
+    ],
+    "current_pairs_read": 45,
+    "unchanged_query_ids": [
+      "E9001",
+      "E9002",
+      "E9003",
+      "E9009",
+      "E9010",
+      "E9011",
+      "E9013",
+      "E9014",
+      "E9015",
+      "E9018"
+    ],
+    "unchanged_verification": "10行與先前已讀19×5快照逐物件相等；9變動行全部current question/answer_target/scope讀回。初次大輸出截斷後以current-only重讀完整45對。",
+    "new_membership_decisions": [
+      {
+        "a": "E9004",
+        "b": "B2219",
+        "decision": "distinct",
+        "reason": "果瓣活細胞幾何蓄放力與種皮解除萌發物理限制，作用階段及機制不同。"
+      },
+      {
+        "a": "E9005",
+        "b": "L097",
+        "decision": "distinct",
+        "reason": "果莖再分配及發射方向，不是葉片蒸散建立水勢梯度。"
+      },
+      {
+        "a": "E9012",
+        "b": "E9004",
+        "decision": "distinct",
+        "reason": "果內萌發抑制與果瓣張力/快速釋放不同。"
+      },
+      {
+        "a": "E9012",
+        "b": "B2219",
+        "decision": "distinct",
+        "reason": "滲透條件/ABA抑制有別於硬種皮物理限制，保留限定材料與未完因果。"
+      },
+      {
+        "a": "E9019",
+        "b": "B2228",
+        "decision": "distinct",
+        "reason": "果皮低氧/激素延遲萌發，與苔蘚精細胞須水膜游向卵無共同核心。"
+      }
+    ],
+    "final_disposition": "19題保留，0合併、0暫緩；來源抽查維持14/23，不增加未做的外站查核。三片180/210/170秒僅紙上企劃。",
+    "remaining_required_corrections": [],
+    "production_ready": false
+  }
+}

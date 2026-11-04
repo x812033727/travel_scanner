@@ -1,0 +1,674 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "status": "PASS_INDEPENDENT_CENTRAL_INTEGRATION_NOT_PRODUCTION",
+  "remaining_blockers": [],
+  "production_ready": false,
+  "scope": {
+    "task": "第十三批中央資料/編輯/來源映射/文件與測試證據的非作者整合讀回。",
+    "author_conflict": "reviewer是本批astronomy作者；該批題級事實與內容取捨依pool_life_tech非作者receipt，只核最終hash、中央映射與所要求的編輯修訂，未宣稱自行獨立核准自身著作。",
+    "other_topic_reviews": "cell-transport事實依pool_physics；granular另有本reviewer獨立題級來源收據。此處不重做27題全部外站或全庫事實查核。",
+    "actual_methods": [
+      "獨立Python逐值比較2870 gzip快照與當期raw/canonical/source/theme；比selected、merge/excluded與distinct集合。",
+      "逐欄比較3批27候選及27個source readings到中央，對本地source ID→中央source ID→候選→題案反查。",
+      "實際雜湊298個manifest inputs、6個輸出、themes definition；驗3組作者/非作者和integration/source identity收據綁定。",
+      "計算12案的26章與18個題案-核心總預算，涵蓋三種beat表示法、range、target與drop條件；與作者proposal逐值比，只允許central ID/priority/proposal_id。",
+      "解析index.html inert JSON，比全部2897入選列、2437來源與147題案；不等同重新操作瀏覽器。",
+      "讀README/VALIDATION/SEMANTIC全文、本批題案與收據關鍵內容；生成MD核manifest雜湊、入口標示與12個新題案表列，不稱逐字讀全部舊題文。",
+      "讀root實際測試log結果與hash、QA收據及截圖hash；未自行重跑tests/browser、未核CI或Git index。"
+    ],
+    "independent_check_script": ".cache/wave13-science-central-check.py",
+    "independent_check_script_sha256": "de4145859baf85e1ac7a18314032efe23926f8bad9c910bf9f5601ced325079e"
+  },
+  "hashes": [
+    {
+      "file": "pool.json",
+      "sha256": "1b07b2ca7a656dda15d51d70dab863f2c78b592bdaab8ca0d39010b8f3295c6b"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "e8faf83e80c593351cccb8ab0d2dda77ad483a2270566a0ccfb6c9f409c6fb2d"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "372a18cc6a2103efbf7445b57a9637f0fd7002b461f70cd9866a72da4fe69857"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "843c6dddabcdaaa5fb7e97b27bc2abeb94f8a3b5ebf432b8817b0466840b601b"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "71e764d081350e1425985c132f6d35211fd96b0f295b730826cdea08d19f5334"
+    },
+    {
+      "file": "index.html",
+      "sha256": "69774a82ada3b10a30cb24b54742db928c13a25767552e01552bcd6e3869f29f"
+    },
+    {
+      "file": "README.md",
+      "sha256": "754b7e90cbba6840defc65ef3292c6a7474b43aa16b94d51568ae780e224bafe"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "8a9c2c1926c80932243a450f28981890ca4b34cb4738c2034537947b783fb07e"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "82a2ef90951ae566690d53a8533cc8875cc2c5be4e241cce5f9c4ca2cf06c40f"
+    },
+    {
+      "file": "QUESTIONS.md",
+      "sha256": "a2b34ca6d1d19f74e2b96b18d82bbbf8f1ff503f757e3c8cd4d1f113f79ce74c"
+    },
+    {
+      "file": "THEMES.md",
+      "sha256": "76e90be82f1e802588285307a5f7df49edecbc091eecc127b3593c4f9ff2a747"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "69cebe948f7b9ca7a62359a94fb9cf41d0bb724664e7d59739fd056664865d9d"
+    },
+    {
+      "file": "DEDUP.md",
+      "sha256": "b4c79981d51176a3a138c53e6b9dbc28315eb8b3e12b81b02804ea0a29c500b6"
+    },
+    {
+      "file": "checkpoints.json",
+      "sha256": "f3eab7797b6ed9264e67a1cb19dc838b4fdb8c631a2e7c0c190ce84314c68bca"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "sha256": "26d4627eca62057f6bf12eee75e0a80c6a489ceb5528dfee7620d67cf81570e0"
+    },
+    {
+      "file": "checkpoint-2870.json",
+      "sha256": "1d515626d76f5a3daadf867043488e9412ab89e1361e809a258712717bb13ddf"
+    },
+    {
+      "file": "baselines/2026-11-01-2870.json.gz",
+      "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32"
+    },
+    {
+      "file": "reviews/wave13-browser-qa.json",
+      "sha256": "c49bac4bf6535bb468bb3512387834085d9721e5d6cc44adc2802979a2dc328b"
+    },
+    {
+      "file": "reviews/wave13-editorial-integration.json",
+      "sha256": "1b05c8de049f1a4fd01950b12c60c83b9c7d9fa285c5d5854001053bde4f7dc1"
+    },
+    {
+      "file": "reviews/wave13-source-identity-review.json",
+      "sha256": "cf0d58eb30310445ac8af7e3dd070bf44e237dd3fc798549ea97382361be1837"
+    },
+    {
+      "file": "batches/wave13-cell-transport.json",
+      "sha256": "2dd0ab7cef3a2d64efd0db8f7c36b740f82b8b40fdbaffe44ba5b495dffe1828"
+    },
+    {
+      "file": "reviews/wave13-cell-transport-author.json",
+      "sha256": "eec61502cffe29d86dc67bf2470bfe3faad5fe6fcb541fa07729db61402b6046"
+    },
+    {
+      "file": "reviews/wave13-cell-transport-themes.json",
+      "sha256": "ffd8e6ec9f82777db8b66fc99fb546f60d7ca4e00415ed6c1851ff169ef0668c"
+    },
+    {
+      "file": "batches/wave13-granular.json",
+      "sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1"
+    },
+    {
+      "file": "reviews/wave13-granular-author.json",
+      "sha256": "d89f547bd7104d2ee0c2b520a65c94bb4a30ff381eec256f38394ee68f92c4db"
+    },
+    {
+      "file": "reviews/wave13-granular-themes.json",
+      "sha256": "b50806e3a30b71063fd0a2e485669c5b115e5dda3b3948d062bb33f973fc5c7b"
+    },
+    {
+      "file": "batches/wave13-astronomy.json",
+      "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+    },
+    {
+      "file": "reviews/wave13-astronomy-author.json",
+      "sha256": "09b4caad5c8c91ef528c56a858c30565ff42094172d3113e6c00cf72f8f2b71e"
+    },
+    {
+      "file": "reviews/wave13-astronomy-themes.json",
+      "sha256": "9a8e8a7dbdd84f056da85f83fee611e31ae643c620122d66d38a3d87779c245e"
+    },
+    {
+      "file": "reviews/wave13-physics-reviews-cell-transport.json",
+      "sha256": "9bb775303224491854cd9b144d492b66d7f7c8820e1fbc00177b42fa4fa3470a"
+    },
+    {
+      "file": "reviews/wave13-science-reviews-granular.json",
+      "sha256": "e629a6aa95b80293436fd96eaf319ba1c9f85d8b07202a2360e11ddadb5b0f54"
+    },
+    {
+      "file": "reviews/wave13-life-reviews-astronomy.json",
+      "sha256": "b586b06e500197a34871b90499a0526150d6e272e1eecdbdb495f35cda3ac7db"
+    }
+  ],
+  "counts": {
+    "raw_records": 3262,
+    "canonical_questions": 3126,
+    "eligible_candidates": 2956,
+    "selected_candidates": 2897,
+    "alias_records": 136,
+    "historical_records": 313,
+    "source_urls": 4209,
+    "current_research_source_urls": 1250,
+    "selected_source_urls": 2437,
+    "new_suggestions_not_added": 646,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0,
+    "themes": 147,
+    "selected_source_refs": 4307,
+    "reserve_candidates": 59,
+    "remaining_to_10000": 7103
+  },
+  "baseline_readback": {
+    "file": "baselines/2026-11-01-2870.json.gz",
+    "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32",
+    "old_raw_records_unchanged": 3235,
+    "old_canonical_records_unchanged": 3099,
+    "old_selected_retained": 2870,
+    "old_sources_readings_unchanged": 4182,
+    "old_themes_unchanged": 135,
+    "snapshot_scope": "本次逐值比較單一2870完整gzip快照；未重新逐raw稽核全部更早快照。"
+  },
+  "central_decisions": {
+    "new_raw": 27,
+    "new_selected": 27,
+    "new_canonical": 27,
+    "new_merge": 0,
+    "new_excluded": 0,
+    "not_added_this_wave": 49,
+    "not_added_total": 646,
+    "new_distinct_pairs": 145,
+    "distinct_decisions_match_review_union": true,
+    "selected_delta_exactly_new_cohort": true,
+    "old_alias_targets_and_merge_records_unchanged": true,
+    "note": "aliases映射內新增canonical自指鍵不等於新增合併別名；136個既有合併關係與舊目標不變。",
+    "new_candidate_ids": [
+      "C13001",
+      "C13002",
+      "C13003",
+      "C13004",
+      "C13005",
+      "C13006",
+      "C13007",
+      "G13001",
+      "G13002",
+      "G13003",
+      "G13004",
+      "G13005",
+      "G13006",
+      "G13007",
+      "G13008",
+      "G13009",
+      "X13001",
+      "X13002",
+      "X13003",
+      "X13004",
+      "X13005",
+      "X13006",
+      "X13007",
+      "X13008",
+      "X13009",
+      "X13010",
+      "X13011"
+    ]
+  },
+  "batch_review_bindings": [
+    {
+      "batch": "cell-transport",
+      "raw": 7,
+      "sources": 7,
+      "not_added": 19,
+      "themes": 4,
+      "review": "reviews/wave13-physics-reviews-cell-transport.json",
+      "reviewer": "pool_physics",
+      "review_status": "PASS_TOPIC_LEVEL_AND_EDITORIAL_ONLY"
+    },
+    {
+      "batch": "granular",
+      "raw": 9,
+      "sources": 11,
+      "not_added": 16,
+      "themes": 4,
+      "review": "reviews/wave13-science-reviews-granular.json",
+      "reviewer": "science_sources",
+      "review_status": "PASS_TOPIC_LEVEL_ONLY"
+    },
+    {
+      "batch": "astronomy",
+      "raw": 11,
+      "sources": 9,
+      "not_added": 14,
+      "themes": 4,
+      "review": "reviews/wave13-life-reviews-astronomy.json",
+      "reviewer": "pool_life_tech",
+      "review_status": "PASS_TOPIC_LEVEL_ONLY"
+    }
+  ],
+  "source_readback": {
+    "new_url_ids": 27,
+    "candidate_supporting_url_ids": 25,
+    "not_added_only_url_ids": [
+      "SRC-9757a3b4c1d7a96b",
+      "SRC-eadfb063cd0d4ba6"
+    ],
+    "source_readings_preserved": true,
+    "all_27_author_reading_records_match_central": true,
+    "all_27_source_to_candidate_to_theme_maps_independently_recomputed": true,
+    "not_added_only_local_source_ids": [
+      "G13-S010",
+      "G13-S011"
+    ],
+    "not_added_only_sources_are_not_candidate_evidence": true,
+    "old_4182_sources_whole_records_unchanged": true,
+    "source_identity_scope": "URL數不是獨立研究數；已讀root身份收據的同文版次、NASA作者稿、相互引用的研究背景及UNIGE學位論文內嵌Cell研究界線，未把容器當第二篇研究。",
+    "no_new_external_fetch_in_this_integration_readback": true
+  },
+  "theme_readback": {
+    "old_themes_unchanged": 135,
+    "new_themes": 12,
+    "body_seconds_min": 100,
+    "body_seconds_max": 220,
+    "chapter_count": 26,
+    "core_budget_check_count": 18,
+    "all_core_allocations_within_editorial_caps": true,
+    "all_beats_and_tail_segments_at_most_45_seconds": true,
+    "all_ranges_upper_at_most_body_seconds": true,
+    "all_body_equals_chapter_sum": true,
+    "all_proposal_content_matches_except_central_id_priority": true,
+    "research_only_ids_not_forced_into_themes": [
+      "C13003",
+      "C13004",
+      "C13007",
+      "G13002",
+      "G13004",
+      "G13005",
+      "G13007",
+      "G13008",
+      "X13010"
+    ],
+    "budgets": [
+      {
+        "id": "G136",
+        "proposal_id": "W13C-T01",
+        "seconds": 110,
+        "chapters": [
+          55,
+          55
+        ],
+        "core_allocations": [
+          {
+            "id": "C13001",
+            "seconds": 110,
+            "cap": 115
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "若不能清楚畫出「反向進入但不高於核外濃度」，撤案；刪第二章55秒只剩55秒背景，撤雙章案；刪第一章55秒會失去可比較條件，同樣撤案。"
+      },
+      {
+        "id": "G137",
+        "proposal_id": "W13C-T02",
+        "seconds": 100,
+        "chapters": [
+          50,
+          50
+        ],
+        "core_allocations": [
+          {
+            "id": "C13002",
+            "seconds": 100,
+            "cap": 105
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若無法表達兩站酸度不同且同一受體會放手，撤案；刪第二章50秒只剩50秒找回的概述，不維持雙章案；若刪突變對照20秒，總80秒並重排第二章為30秒，不加其他胞器補時。"
+      },
+      {
+        "id": "G138",
+        "proposal_id": "W13C-T03",
+        "seconds": 125,
+        "chapters": [
+          65,
+          60
+        ],
+        "core_allocations": [
+          {
+            "id": "C13006",
+            "seconds": 125,
+            "cap": 125
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "若只能畫排隊比喻，卻不能分開延長速度與接收位置，撤案；若刪增加受體分支30秒，總95秒，第二章30秒仍保留延長救援和5秒回扣；若無法說清相對效率與總量，暫撤不使用更快/更多標題。"
+      },
+      {
+        "id": "G139",
+        "proposal_id": "W13C-T04",
+        "seconds": 100,
+        "chapters": [
+          55,
+          45
+        ],
+        "core_allocations": [
+          {
+            "id": "C13005",
+            "seconds": 100,
+            "cap": 105
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若無法交代是同一中間體解除限制後續行，撤案；刪第二章45秒只剩55秒卡住現象，不維持短片；刪第一章55秒則無法理解對照，撤案。"
+      },
+      {
+        "id": "G140",
+        "proposal_id": "W13G-T01",
+        "seconds": 105,
+        "chapters": [
+          50,
+          55
+        ],
+        "core_allocations": [
+          {
+            "id": "G13001",
+            "seconds": 105,
+            "cap": 115
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若無法清楚標出兩種建堆程序與底壓曲線，撤本105秒題案；刪第一章只剩55秒、刪第二章只剩50秒，均不保留原題案。"
+      },
+      {
+        "id": "G141",
+        "proposal_id": "W13G-T02",
+        "seconds": 115,
+        "chapters": [
+          60,
+          55
+        ],
+        "core_allocations": [
+          {
+            "id": "G13003",
+            "seconds": 115,
+            "cap": 125
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "若只畫推前推後，無法呈現反向兩種歷史，刪第二章55秒後剩60秒素材並撤此題案；若固定面積條件畫不清則全案撤。"
+      },
+      {
+        "id": "G142",
+        "proposal_id": "W13G-T03",
+        "seconds": 110,
+        "chapters": [
+          55,
+          55
+        ],
+        "core_allocations": [
+          {
+            "id": "G13006",
+            "seconds": 110,
+            "cap": 120
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "若無法用清楚且正確的深度/時間曲線呈現反差，撤110秒題案；刪任一章均只剩55秒，不能保留原完整追問。"
+      },
+      {
+        "id": "G143",
+        "proposal_id": "W13G-T04",
+        "seconds": 115,
+        "chapters": [
+          55,
+          60
+        ],
+        "core_allocations": [
+          {
+            "id": "G13009",
+            "seconds": 115,
+            "cap": 125
+          }
+        ],
+        "max_beat": 35,
+        "drop_if": "若無法顯示下層快粒與密團兩種活動程度，撤115秒題案；刪第二章60秒後剩55秒奇觀素材，不以重播補回。"
+      },
+      {
+        "id": "G144",
+        "proposal_id": "W13X-T01",
+        "seconds": 210,
+        "chapters": [
+          60,
+          85,
+          65
+        ],
+        "core_allocations": [
+          {
+            "id": "X13001",
+            "seconds": 60,
+            "cap": 85
+          },
+          {
+            "id": "X13002",
+            "seconds": 85,
+            "cap": 100
+          },
+          {
+            "id": "X13003",
+            "seconds": 65,
+            "cap": 75
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "三章不能再各自推進時刪短重提；任刪一章須重寫追問與總秒數，不自動保留210秒版。"
+      },
+      {
+        "id": "G145",
+        "proposal_id": "W13X-T02",
+        "seconds": 170,
+        "chapters": [
+          80,
+          90
+        ],
+        "core_allocations": [
+          {
+            "id": "X13006",
+            "seconds": 80,
+            "cap": 95
+          },
+          {
+            "id": "X13007",
+            "seconds": 90,
+            "cap": 105
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "任刪一章即撤雙機制版另提，不補斑點種類清單；不得以一條線形保證排除所有行星訊號。"
+      },
+      {
+        "id": "G146",
+        "proposal_id": "W13X-T03",
+        "seconds": 220,
+        "chapters": [
+          85,
+          55,
+          80
+        ],
+        "core_allocations": [
+          {
+            "id": "X13008",
+            "seconds": 85,
+            "cap": 105
+          },
+          {
+            "id": "X13011",
+            "seconds": 55,
+            "cap": 80
+          },
+          {
+            "id": "X13009",
+            "seconds": 80,
+            "cap": 95
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "若X13011被合入光源題，刪獨立55秒章並重寫165秒雙章版本再覆核；不得保留220秒用回顧填空。其餘任刪須撤版重提。"
+      },
+      {
+        "id": "G147",
+        "proposal_id": "W13X-T04",
+        "seconds": 180,
+        "chapters": [
+          90,
+          90
+        ],
+        "core_allocations": [
+          {
+            "id": "X13004",
+            "seconds": 90,
+            "cap": 110
+          },
+          {
+            "id": "X13005",
+            "seconds": 90,
+            "cap": 110
+          }
+        ],
+        "max_beat": 30,
+        "drop_if": "任刪一章即撤這個兩把時間尺的版本；TTV若只剩兩條反向線而沒有額外約束，撤案不宣布發現行星。"
+      }
+    ],
+    "specific_readbacks": [
+      "G138首節已明示同貨物的SRP正常局部減速/缺陷，沒有改成全局蛋白合成變快；沿physics已核模型限制。",
+      "G144第一章60秒及全210；G146第二章55秒及全220，刪55後165且須另版重審。",
+      "G147題名分開擋多久/何時再來；末章明列同宿主不必最亮目標星，仍180秒。",
+      "G140–G143單核心兩章分別累計105/115/110/115秒，未因兩章多算核心。",
+      "G13005中央scope/source保留PVC與預印本限制；G13006/08定位與來源修訂映射一致。"
+    ],
+    "evidence_limit": "時間是含開場/轉場/回扣的紙上正文預算，非試讀；不含品牌片頭片尾。本批無新增完整稿、小樣或媒體核准。"
+  },
+  "artifact_readback": {
+    "manifest_inputs_verified": 298,
+    "generated_outputs_verified": 6,
+    "theme_definition_sha256_verified": true,
+    "index_embedded_candidates_equal_selected": 2897,
+    "index_embedded_sources_equal_selected_source_registry": 2437,
+    "index_embedded_themes_equal_definitions": 147,
+    "git_index_blob_check_performed_by_this_reviewer": false
+  },
+  "documentation_readback": {
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "status": "PASS_AFTER_QA_SCOPE_WORDING_CORRECTION",
+    "figures_checked": [
+      "2897 selected / +27 / 3262 raw / 3126 canonical / 2956 eligible / 136 aliases / 59 reserve",
+      "147 themes / 12 new / 1:40–3:40 / 49 not_added / 646 accumulated",
+      "27 URLs / 27 first seen / 4209 registry / 1250 research / 2437 selected / 4307 refs",
+      "7103 remaining; historical121 full-answer refresh remains; editorial exemption remains2000"
+    ],
+    "correction": "VALIDATION原QA句籠統寫本批實際合併別名；root修為只核歷史N098/L042，本批新增別名與暫緩空集合，未做新增別名/負向列斷言。已讀回最終8a9c2c19…hash。",
+    "limits_preserved": "0新增合併不能推出全庫無重複；一次本機效能不是萬筆/十萬筆壓測；沒有背景擴庫、發布或研究零成本承諾。"
+  },
+  "validation_receipt_readback": {
+    "file": "reviews/wave13-final-validation.json",
+    "whole_file_hash_deliberately_not_bound": true,
+    "reason": "root後續會補Git index、links、budgets、hygiene及本獨立收據欄位，避免循環綁定。",
+    "status_at_read": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_STAGED_PENDING",
+    "tests_subobject_sha256": "6f354ffb449bb6dc483fe14cfb9d00823c8fc9bcd17965b8eaa72d2b1c464812",
+    "canonicalization": "JSON ensure_ascii=False, sort_keys=True, separators=(\",\",\":\"), encoded UTF-8",
+    "tests": {
+      "node": {
+        "passed": 42,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 96952.6919,
+        "files": [
+          "tools/video/so-thats-why/pool/pool.test.mjs",
+          "tools/video/so-thats-why/catalog.test.mjs",
+          "tools/repo-hygiene.test.mjs",
+          "tools/json-duplicate-keys.test.mjs",
+          "tools/docs-videos-tests.test.mjs"
+        ],
+        "log_sha256": "92982c106130bc234fc6bc5994a9690469425fa43825bd100ced9be323e0e231"
+      },
+      "python": {
+        "passed": 2,
+        "failed": 0,
+        "file": "tools/video/so-thats-why/pool/semantic_test.py",
+        "log_sha256": "6db60670f96b323b5cc9682f84bb4f1597bb19ab126b795840fd97bf2181b2b3"
+      },
+      "checks": {
+        "pool": "PASS",
+        "series": "PASS",
+        "long_form_plans": 473,
+        "task_files": 2287,
+        "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+        "log_hashes": {
+          "pool": "bdff61f2759bdf24b004ba4cc4bd255faf9635c9978f2da34551edf00af3d8b5",
+          "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+          "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+          "tasks": "61114db7a1665d28ad627f10912772d7f6eefa4154185bcb6b0da628674e6b0b"
+        }
+      },
+      "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+    },
+    "log_readback": [
+      {
+        "file": ".cache/wave13-node-tests.log",
+        "sha256": "92982c106130bc234fc6bc5994a9690469425fa43825bd100ced9be323e0e231",
+        "read": "結果段已讀，實體hash符合tests子物件；不是本reviewer重跑。"
+      },
+      {
+        "file": ".cache/wave13-python-tests.log",
+        "sha256": "6db60670f96b323b5cc9682f84bb4f1597bb19ab126b795840fd97bf2181b2b3",
+        "read": "結果段已讀，實體hash符合tests子物件；不是本reviewer重跑。"
+      },
+      {
+        "file": ".cache/wave13-pool-check.log",
+        "sha256": "bdff61f2759bdf24b004ba4cc4bd255faf9635c9978f2da34551edf00af3d8b5",
+        "read": "結果段已讀，實體hash符合tests子物件；不是本reviewer重跑。"
+      },
+      {
+        "file": ".cache/wave13-series-check.log",
+        "sha256": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "read": "結果段已讀，實體hash符合tests子物件；不是本reviewer重跑。"
+      },
+      {
+        "file": ".cache/wave13-long-form-check.log",
+        "sha256": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "read": "結果段已讀，實體hash符合tests子物件；不是本reviewer重跑。"
+      },
+      {
+        "file": ".cache/wave13-tasks-check.log",
+        "sha256": "61114db7a1665d28ad627f10912772d7f6eefa4154185bcb6b0da628674e6b0b",
+        "read": "結果段已讀，實體hash符合tests子物件；不是本reviewer重跑。"
+      }
+    ],
+    "root_index_evidence": "初匯IMPORTED；同snapshot第二次UNCHANGED/0 writes；讀回收據，不冒稱重新執行索引匯入。"
+  },
+  "browser_qa_readback": {
+    "file": "reviews/wave13-browser-qa.json",
+    "result": "PASS",
+    "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+    "reviewer_action": "讀QA範圍與3截圖檔hash；root已實看3圖，本reviewer未重新看圖或開browser。",
+    "limits": "來源URLs在裁切圖下方，完整性來自DOM斷言；手機截圖未涵蓋下方所有卡片；本批無新增別名與hold列，不能當空集合負向測試。"
+  },
+  "remaining_root_actions": [
+    "實際Git index blob、完整本地連結與最後衛生掃描按root收據分項完成；本收據不預稱已做。",
+    "任務釋放與草稿PR提交/推送由root處理；不涉及合併或正式站發布授權。"
+  ],
+  "conclusion": "當期資料、來源映射、題案預算與獨立審閱鏈一致，無剩餘整合阻擋。題級入選及紙上短題案不等於完整稿、試讀、媒體或製作核准。"
+}

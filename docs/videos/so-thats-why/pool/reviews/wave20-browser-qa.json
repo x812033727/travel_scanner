@@ -1,0 +1,54 @@
+{
+  "tested_on": "2026-11-02T02:41:57.479Z",
+  "result": "PASS",
+  "selected": 2997,
+  "index_html_sha256": "c378c8c2258744c1b89c94fbe9799abbd3e679420f864fa7a3860eb6caa36ae3",
+  "source_sample": {
+    "id": "P20001",
+    "urls": [
+      "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave20-desktop.png",
+    "wave20-source-desktop.png",
+    "wave20-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_review": {
+    "reviewer": "root",
+    "observations": [
+      "Desktop1440x1000: 2997 selected, 2549 source URLs, 215 themes and 140 aliases are legible; creation-date label, navigation, search, filters and initial cards have no overlapping text.",
+      "Expanded P20001: full question, bounded answer,65–95 second segment budget, scope, reading caveat and new-understanding text visible. Visual concept and source URLs are below this crop and were checked by DOM assertions, not claimed visually displayed here.",
+      "Mobile390x844: heading wraps, four stats fit in two rows, navigation and filters stay within width; search placeholder clips to 例如 but the input is usable. Lower cards outside this crop were not visually audited."
+    ],
+    "screenshots": [
+      {
+        "file": ".cache/wave20-desktop.png",
+        "sha256": "88f4bd5a1687958371aa679862875922fd3add25bdacc5ffb263ba3bd98f8595"
+      },
+      {
+        "file": ".cache/wave20-source-desktop.png",
+        "sha256": "8ff3628098713dfd2a422697ea726c451ca0d180a540fa9214a386273e71a70d"
+      },
+      {
+        "file": ".cache/wave20-mobile.png",
+        "sha256": "84fdf9b2dcfaa49f99e9af72cb7d0fc879ad3f272bc83e6e1c17678ebf9bdfe8"
+      }
+    ]
+  }
+}

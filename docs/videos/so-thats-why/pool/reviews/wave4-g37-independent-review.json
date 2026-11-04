@@ -1,0 +1,186 @@
+{
+  "review_id": "wave4-g37-independent-review-20261101",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "root",
+  "status": "PASS_TARGETED_CORRECTION_TREATMENT_AND_CONTROLLED_DEMO_ONLY",
+  "production_ready": false,
+  "reviewed_files": [
+    {
+      "path": "treatments/G37/treatment.json",
+      "sha256": "40704e31163912d8b0d10cab48b606c750dbd5da9b0d8cab3f3ce030d473db49"
+    },
+    {
+      "path": "treatments/G37/demo.html",
+      "sha256": "38dc24615d3f27056202bbfff564168271672453d831af6996e323a2c08fffd6"
+    },
+    {
+      "path": "treatments/G37/verify-demo.mjs",
+      "sha256": "950f7938887850efc6a35a3def152f55878f66856c58f73ba49ab21d9db6413f"
+    },
+    {
+      "path": "reviews/wave4-g37-demo.json",
+      "sha256": "31d0770af574dff082eb8f7477a84e5ae921d836c0a77497be5e1564e618e0e3"
+    }
+  ],
+  "coverage": {
+    "treatment": "All seven beats, five claims, duration and adoption/limitations read. Candidate editorial stage only.",
+    "code": "Full demo.html and verify-demo.mjs read; source and verifier hashes match persisted author receipt.",
+    "source_pages_reopened_selected_sections": 3,
+    "screenshots_viewed": [
+      ".cache/wave4-g37-desktop.png",
+      ".cache/wave4-g37-mobile.png"
+    ],
+    "independent_runtime_rerun": false,
+    "audience_test": false,
+    "read_aloud": false,
+    "limits": "Reviewer read source sections, code and author measurements and viewed the two final-state screenshots. Did not rerun or overwrite author measurements, watch a rendered film, or observe before/after motion from screenshots."
+  },
+  "source_checks": [
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work",
+      "locator": "Interactivity; Overview run-to-completion paragraph",
+      "read_via": "web.run open/find body sections",
+      "finding": "Painted page can coexist with a busy main thread; queued work waits. Do not use the old TTI thresholds as current INP definitions."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers",
+      "locator": "Introduction; Web Workers API; Transferring data to and from workers",
+      "read_via": "web.run open/find body sections",
+      "finding": "Worker executes separately and exchanges messages; cannot directly manipulate DOM. No claim that work disappears, all transfers are zero-copy, or every device gets faster."
+    },
+    {
+      "url": "https://web.dev/articles/optimize-cls",
+      "locator": "Images without dimensions; initial description of layout shifts and CLS",
+      "read_via": "web.run open/find body sections",
+      "finding": "Providing dimensions/aspect ratio can reserve image space. Pixel displacement is not a CLS score."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "c1",
+      "disposition": "supported_topic_level",
+      "reason": "Main-thread queue explanation matches source and synthetic timer case. Demo does not measure a user click."
+    },
+    {
+      "claim_id": "c2",
+      "disposition": "supported_topic_level",
+      "reason": "Separate worker and message boundary match source. Total execution time and worker creation cost are not benchmarked."
+    },
+    {
+      "claim_id": "c3",
+      "disposition": "supported_topic_level",
+      "reason": "Geometry reservation directly matches source. Demo isolates late local src assignment rather than a network download."
+    },
+    {
+      "claim_id": "e1",
+      "disposition": "numeric_receipt_matches_but_order_claim_needs_evidence",
+      "reason": "51.7/702.8/53.1 ms match receipt and measure a 50 ms timer callback. The receipt does not record when Worker done was delivered relative to the callback, so it cannot independently support the depicted claim that background work was still running at that instant."
+    },
+    {
+      "claim_id": "e2",
+      "disposition": "matches_scoped_receipt",
+      "reason": "Desktop 180.375/0 px and mobile 109.5/0 px are measured relative to each card. A lower mobile card can move globally even though its own internal relative displacement is zero; treatment already says so."
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "G37-WORKER-ORDER",
+      "severity": "medium",
+      "files": [
+        "treatments/G37/demo.html",
+        "treatments/G37/verify-demo.mjs",
+        "reviews/wave4-g37-demo.json",
+        "treatments/G37/treatment.json"
+      ],
+      "issue": "b4 visual and Worker receipt note state that the timer reported before the background job completed, but code only awaits an already-created finished promise after the timer. Awaiting it does not establish that it had not resolved earlier. Worker startup is also excluded because timer measurement starts only after the started message.",
+      "requested": "Record Worker done timing/event order and assert the timer callback precedes done; update measurement receipt and any changed numerical narration with new hashes. Alternatively remove the still-running observation and restrict this to a conceptual Worker illustration. Keep the explicit non-click/non-INP/non-total-completion limitations.",
+      "acceptance": "Hash-bound readback of code and receipt showing ordered timer then Worker done, with measurement origin and startup exclusion stated."
+    }
+  ],
+  "editorial": {
+    "decision": "The three-core causal plan can support a concise demonstration; no additional topic required. 220 seconds is a planning budget, not proven viewer retention.",
+    "why_not_a_catalog": "Each step changes one condition: expose queue delay, remove the synthetic load, move the load, then contrast that symptom with late geometry and reserving the same geometry. The removed preload/viewport/layer topics correctly stay out.",
+    "new_information_by_step": {
+      "b1": "Separate visibility from receiving a response.",
+      "b2": "Current main-thread work delays queued callback.",
+      "b3": "Removing the work gives the causal control.",
+      "b4": "Moving rather than deleting work tests the execution boundary.",
+      "b5": "Position movement is a second observable, not a delayed callback.",
+      "b6": "Predeclared geometry is the counterfactual control.",
+      "b7": "Short retrieval of two observations; not counted as a new mechanism."
+    },
+    "duration_assessment": {
+      "sum_seconds": 220,
+      "max_beat_seconds": 40,
+      "prior_candidate_budgets": "I3042 [40,65], I3043 [35,55], I3055 [45,65] were initial segment estimates. Current treatment adds an explicit controlled observation and counterfactual rather than more sources/mechanisms. This is not permission to stretch an abstract explanation; narration must preserve the visible condition changes.",
+      "cut_conditions": [
+        "Keep b2 to requested-versus-delayed callback only; reveal the no-load comparison in b3, rather than displaying the full three-mode result table twice. If the comparison is already understood, use the existing 15-second cut to reach 205 seconds.",
+        "b5 should first direct attention to the unreserved card; b6 explains the reserved counterfactual. Do not re-run both complete button sequences twice.",
+        "Keep recap at or below 20 seconds and include it in the 220 total. If Worker cannot be made clear, apply the existing whole-40-second cut and rewrite the bridge; do not replace it with omitted technical topics."
+      ],
+      "no_claim_of_actual_boredom_test": true
+    },
+    "screenshots": "Both final desktop and mobile views have legible control/result areas with no observed horizontal clipping. Still screenshots cannot prove the temporal event or validate final video typography."
+  },
+  "nonblocking_evidence_notes": [
+    "Buttons are disabled during all modes, so the demo is specifically about callback scheduling and cannot independently demonstrate a clickable UI remaining interactive. Existing scope states non-click measurement.",
+    "Worker timer begins after its started message: creation/startup costs are excluded; retain this in any performance explanation.",
+    "Formal recording must rerun and label its own values rather than treat one headless run as a population estimate."
+  ],
+  "conclusion": "One concrete evidence fix required for Worker completion order. Sources and scoped geometry/timer claims otherwise align at treatment level. Story progression is suitable for a short demonstration with the stated repeat-cut rules; not a full script, audience acceptance, paid-production or publication approval.",
+  "original_status": "TARGETED_DEMO_EVIDENCE_CORRECTION_REQUIRED",
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "status": "RESOLVED",
+    "readback_files": [
+      {
+        "path": "treatments/G37/treatment.json",
+        "sha256": "9533d53425889ed6c036c72c394eb27b999d96585665a13eb98b0a4ff03aaac4"
+      },
+      {
+        "path": "treatments/G37/demo.html",
+        "sha256": "b40819e8cd1f76ad209f3ff7e94a06dd37e592b46dd4c01c15e49a298fe3bf3c"
+      },
+      {
+        "path": "treatments/G37/verify-demo.mjs",
+        "sha256": "d8088a30255def58749616beb87608177cb974fd04338119e626eb0f83cf0cd3"
+      },
+      {
+        "path": "reviews/wave4-g37-demo.json",
+        "sha256": "4402df2ab71399d957850c33ac10165afb029ad534b8254fcaf06fdce9bcc127"
+      }
+    ],
+    "scope": "Read full revised demo and verifier, complete persisted receipt including measurement_origin_readback, revised b3/b4 and all claims; viewed both new desktop/mobile final screenshots. Recomputed receipt order comparisons without rerunning browser measurements. Original finding is bound to original hashes above.",
+    "resolved_id": "G37-WORKER-ORDER",
+    "evidence": {
+      "event_order": [
+        "started",
+        "timer",
+        "done"
+      ],
+      "timer_callback_at": 1793527014662.1,
+      "worker_started_at": 1793527014604.7,
+      "worker_done_at": 1793527015304.8,
+      "worker_work_elapsed_ms": 700.1000001430511,
+      "done_message_elapsed_ms": 700.300048828125,
+      "timer_before_worker_done": true,
+      "three_callback_elapsed_ms": [
+        54.700000047683716,
+        702.1999998092651,
+        54.89999985694885
+      ]
+    },
+    "code_assessment": "Worker reports its own start/done timestamps using performance.timeOrigin + performance.now; main thread records callback timestamp and received event order independently. Verifier asserts started→timer→done, callback before Worker internal done, minimum work duration and later done-message receipt. This distinguishes work completion from main-thread message delivery.",
+    "additional_source": {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Performance/timeOrigin",
+      "read_via": "web.run open body",
+      "locator": "Description; Synchronizing time between contexts example",
+      "finding": "The documented translation adds each context timeOrigin to its relative timestamp. Used to check the newly added cross-context comparison; not a new pool candidate."
+    },
+    "startup_limit": "Timer starts only after Worker started is received, so worker creation/startup is excluded. The revised receipt now says so explicitly. No complete-work-speed comparison is approved.",
+    "screenshots": "New final desktop and 390px mobile screenshots viewed; no visible clipping. Not before/after motion observation.",
+    "remaining_required_corrections": [],
+    "conclusion": "Specific Worker-order evidence gap resolved. Approve only this scoped treatment/controlled-demo evidence; 220 seconds remains an editorial budget subject to the existing repetition cuts and a later spoken draft. No full-film, audience, paid-production or publication approval."
+  }
+}

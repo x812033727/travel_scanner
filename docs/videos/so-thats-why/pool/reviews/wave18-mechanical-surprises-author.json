@@ -1,0 +1,774 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCK_PENDING_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "f2a9dfc362e3b94694e383e0764647ffad57d006",
+    "raw": 3345,
+    "selected": 2977,
+    "not_added": 896,
+    "pool_sha256": "3d12e0be35af76f52a1510b37eab10a889c864de09854ce6d82dff324d542e58"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave18-mechanical-surprises.json",
+      "sha256": "5372f7220dcfc4bfed77850e88a7f9e9e83cb7e686824f0eaac986326b72b4f5"
+    },
+    {
+      "file": "reviews/wave18-mechanical-surprises-themes.json",
+      "sha256": "5804b4e0b5547d9591743d8a087c8430fb04141a54f591a3b02053a53a944619"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 6,
+    "research_works": 6,
+    "not_added": 14,
+    "themes": 5,
+    "near_pairs": 18
+  },
+  "scope": "小批五個玩具/機械反差；數量按來源收斂，沒有新增其他作者批。",
+  "dedup_reading": {
+    "method": "全3345 raw與896退題的問句/答案/範圍/機制做中英關鍵詞檢索；逐讀命中完整欄位，另逐讀wave15–17共9作者批的全部候選問題/答案/範圍。沒有聲稱手工逐條讀完3345。",
+    "patterns": [
+      "鞋帶|繩結|lace|knot|電話簿|phonebook",
+      "鏈條|串珠|chain fountain|slinky|彈簧",
+      "陀螺|旋轉|慣量|重心|tippe|rattleback|翻面|popper"
+    ],
+    "shared_top5_status": "root待鎖稿後建立，尚未聲稱已讀共同近鄰",
+    "not_added_prior_boundaries": [
+      "K11-NA08→E9010；交錯頁摩擦放大→X5001"
+    ]
+  },
+  "near_pairs": [
+    {
+      "a": "K18001",
+      "b": "D2181",
+      "proposed": "distinct",
+      "reason": "鞋帶環/自由端長度滑移回饋與衝擊—擺動組合，不是螺紋夾持面退轉與預緊下降。",
+      "a_snapshot": {
+        "id": "K18001",
+        "question": "鞋帶前面很多步都沒事，為什麼接著幾步就突然鬆光？",
+        "answer_target": "研究提出步行衝擊使結心鬆動，擺動自由端的慣性拉力逐步把繩帶拉出；自由端變長、環變短又放大不對稱拉動，形成快速失效回饋。受控衝擊與端部加重支持此方向，但結心的瞬時微觀變化仍未直接驗證。",
+        "scope": "限所試無蠟圓鞋帶與結、單一受試者觀察及受控擺錘；只踩踏或只擺腿的對照是初步觀察，不冒充大型人體試驗。不能由端重實驗推出所有情況單調或最佳綁法。"
+      },
+      "b_snapshot": {
+        "id": "D2181",
+        "question": "螺絲已鎖緊，為什麼反覆震動仍可能把它慢慢震鬆？",
+        "answer_target": "夾持面在動態載荷下發生相對滑動，可能造成螺帽逐步退轉與預緊力下降。",
+        "scope": "Preload Loss in a Spacecraft Fastener via Vibration-Induced Unwinding；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "K18001",
+      "b": "X5001",
+      "proposed": "distinct",
+      "reason": "舊題拉力產生正向力並摩擦鎖住；新題循環衝擊鬆結、自由端慣性拉出與長度回饋。",
+      "a_snapshot": {
+        "id": "K18001",
+        "question": "鞋帶前面很多步都沒事，為什麼接著幾步就突然鬆光？",
+        "answer_target": "研究提出步行衝擊使結心鬆動，擺動自由端的慣性拉力逐步把繩帶拉出；自由端變長、環變短又放大不對稱拉動，形成快速失效回饋。受控衝擊與端部加重支持此方向，但結心的瞬時微觀變化仍未直接驗證。",
+        "scope": "限所試無蠟圓鞋帶與結、單一受試者觀察及受控擺錘；只踩踏或只擺腿的對照是初步觀察，不冒充大型人體試驗。不能由端重實驗推出所有情況單調或最佳綁法。"
+      },
+      "b_snapshot": {
+        "id": "X5001",
+        "question": "只有幾公分長的棉纖維，為什麼捻一捻能變成拉不散的長線？",
+        "answer_target": "螺旋路徑把拉力轉為纖維間正向接觸力，摩擦放大使滑出轉為鎖住。",
+        "scope": "限短纖維紗與所讀模型；不宣稱越捻越強或給普遍最佳捻度。"
+      }
+    },
+    {
+      "a": "K18001",
+      "b": "D2183",
+      "proposed": "distinct",
+      "reason": "舊題接面剪切/邊緣剝離路徑；新題無黏接面的繩結動態失效。",
+      "a_snapshot": {
+        "id": "K18001",
+        "question": "鞋帶前面很多步都沒事，為什麼接著幾步就突然鬆光？",
+        "answer_target": "研究提出步行衝擊使結心鬆動，擺動自由端的慣性拉力逐步把繩帶拉出；自由端變長、環變短又放大不對稱拉動，形成快速失效回饋。受控衝擊與端部加重支持此方向，但結心的瞬時微觀變化仍未直接驗證。",
+        "scope": "限所試無蠟圓鞋帶與結、單一受試者觀察及受控擺錘；只踩踏或只擺腿的對照是初步觀察，不冒充大型人體試驗。不能由端重實驗推出所有情況單調或最佳綁法。"
+      },
+      "b_snapshot": {
+        "id": "D2183",
+        "question": "同一條膠帶，為什麼橫著拉和掀起一角的難度差很多？",
+        "answer_target": "整個接面分擔剪力與邊緣逐步剝離的載荷路徑不同。",
+        "scope": "Adhesive bonding；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "K18001",
+      "b": "J6015",
+      "proposed": "distinct",
+      "reason": "螺旋導程與摩擦決定逆驅靜態閾值，不能回答鞋帶一步步變長後突然失效。",
+      "a_snapshot": {
+        "id": "K18001",
+        "question": "鞋帶前面很多步都沒事，為什麼接著幾步就突然鬆光？",
+        "answer_target": "研究提出步行衝擊使結心鬆動，擺動自由端的慣性拉力逐步把繩帶拉出；自由端變長、環變短又放大不對稱拉動，形成快速失效回饋。受控衝擊與端部加重支持此方向，但結心的瞬時微觀變化仍未直接驗證。",
+        "scope": "限所試無蠟圓鞋帶與結、單一受試者觀察及受控擺錘；只踩踏或只擺腿的對照是初步觀察，不冒充大型人體試驗。不能由端重實驗推出所有情況單調或最佳綁法。"
+      },
+      "b_snapshot": {
+        "id": "J6015",
+        "question": "有些螺桿能頂起重物，重物卻不容易反過來把螺桿轉動？",
+        "answer_target": "逆向負載能否沿螺旋面推回，取決於導程角與摩擦；摩擦可使系統自鎖。",
+        "scope": "定性比較自鎖與可逆驅，不把自鎖當安全制動，不給載人或維修建議。"
+      }
+    },
+    {
+      "a": "K18002",
+      "b": "G13008",
+      "proposed": "distinct",
+      "reason": "舊題鏈堆壓縮形成纏結自約束；新題從靜止鏈堆拾取的動量通量和支承反力。",
+      "a_snapshot": {
+        "id": "K18002",
+        "question": "鏈條明明往下掉，為什麼會先從容器裡拱高一截？",
+        "answer_target": "從靜止鏈堆進入運動鏈段需要動量通量；連續鏈模型在拾取處除上方張力外，還需支承給出的向上反力，才能連接觀察到的起拱。鏈的排列與接觸過程會改變起拱，反力如何產生仍有不同模型，不能只說落下重量把整條鏈往上吸。",
+        "scope": "採S002的穩態連續鏈模型及高度/速度量測；S003另項排列控制屬預印本。上端反力沒有在兩篇中被當作完整直接量測，剛棒踢起與回彈解釋不當既定通則。"
+      },
+      "b_snapshot": {
+        "id": "G13008",
+        "question": "單條串珠很軟，堆成一團後為什麼可能越壓越難變形？",
+        "answer_target": "鏈足夠長能迴繞鄰鏈時，集體壓縮可建立跨越整堆的纏結約束；作者提出自約束解釋明顯增硬及最終連接件失效。",
+        "scope": "限帶最大彎角限制的金屬串珠鏈；長度對照要按可成圈尺度看，非所有長纖維通用數字。self-confinement是所提機制，X-ray虛擬閉合判準不等於永久閉環繩結。"
+      }
+    },
+    {
+      "a": "K18002",
+      "b": "P102",
+      "proposed": "distinct",
+      "reason": "鏈下降的重力能不是彈簧預存彈性；拾取處需要額外的動量帳。",
+      "a_snapshot": {
+        "id": "K18002",
+        "question": "鏈條明明往下掉，為什麼會先從容器裡拱高一截？",
+        "answer_target": "從靜止鏈堆進入運動鏈段需要動量通量；連續鏈模型在拾取處除上方張力外，還需支承給出的向上反力，才能連接觀察到的起拱。鏈的排列與接觸過程會改變起拱，反力如何產生仍有不同模型，不能只說落下重量把整條鏈往上吸。",
+        "scope": "採S002的穩態連續鏈模型及高度/速度量測；S003另項排列控制屬預印本。上端反力沒有在兩篇中被當作完整直接量測，剛棒踢起與回彈解釋不當既定通則。"
+      },
+      "b_snapshot": {
+        "id": "P102",
+        "question": "彈簧被拉開但暫時不動，能量儲存在哪裡？",
+        "answer_target": "變形產生彈性位能，不能因速度為零就判定沒有可釋放能量。",
+        "scope": "量化時另核對彈性位能公式"
+      }
+    },
+    {
+      "a": "K18003",
+      "b": "P100",
+      "proposed": "distinct",
+      "reason": "胡克定律是局部彈力前提，不能獨立回答空間塌縮前緣到達前的底端平衡。",
+      "a_snapshot": {
+        "id": "K18003",
+        "question": "手已放開彈簧，底端怎麼還停在原位一小段時間？",
+        "answer_target": "靜掛拉伸彈簧的下段原先由彈力平衡重力；鬆手後塌縮與圈間接觸從上方向下傳遞，前緣尚未到達處仍近似保持原有力平衡。整體質心同時下落，因此底端延遲不代表重力尚未作用。",
+        "scope": "限最初靜止、由自重拉伸的所試拉伸彈簧。理想瞬間塌縮和有限塌縮模型分開；不把示意前緣速度說成光速，也不推廣任意彈簧、任意鬆手方式。"
+      },
+      "b_snapshot": {
+        "id": "P100",
+        "question": "彈簧拉得越長，拉回來的力為什麼通常越大？",
+        "answer_target": "線性彈性區內回復力近似與形變成正比，超過範圍不保證成立。",
+        "scope": "理想彈簧，非任意橡皮筋"
+      }
+    },
+    {
+      "a": "K18003",
+      "b": "P180",
+      "proposed": "distinct",
+      "reason": "縱/橫波分類不等於有限塌縮、圈間接觸與局部平衡保留。",
+      "a_snapshot": {
+        "id": "K18003",
+        "question": "手已放開彈簧，底端怎麼還停在原位一小段時間？",
+        "answer_target": "靜掛拉伸彈簧的下段原先由彈力平衡重力；鬆手後塌縮與圈間接觸從上方向下傳遞，前緣尚未到達處仍近似保持原有力平衡。整體質心同時下落，因此底端延遲不代表重力尚未作用。",
+        "scope": "限最初靜止、由自重拉伸的所試拉伸彈簧。理想瞬間塌縮和有限塌縮模型分開；不把示意前緣速度說成光速，也不推廣任意彈簧、任意鬆手方式。"
+      },
+      "b_snapshot": {
+        "id": "P180",
+        "question": "彈簧可以左右壓縮也可以上下抖，兩種波差在哪？",
+        "answer_target": "擾動方向相對傳播方向平行或垂直，形成縱波與橫波。",
+        "scope": "使用模型動畫，不要求危險拉伸"
+      }
+    },
+    {
+      "a": "K18003",
+      "b": "P106",
+      "proposed": "distinct",
+      "reason": "新題非週期振子頻率，不以振幅/週期公式代換。",
+      "a_snapshot": {
+        "id": "K18003",
+        "question": "手已放開彈簧，底端怎麼還停在原位一小段時間？",
+        "answer_target": "靜掛拉伸彈簧的下段原先由彈力平衡重力；鬆手後塌縮與圈間接觸從上方向下傳遞，前緣尚未到達處仍近似保持原有力平衡。整體質心同時下落，因此底端延遲不代表重力尚未作用。",
+        "scope": "限最初靜止、由自重拉伸的所試拉伸彈簧。理想瞬間塌縮和有限塌縮模型分開；不把示意前緣速度說成光速，也不推廣任意彈簧、任意鬆手方式。"
+      },
+      "b_snapshot": {
+        "id": "P106",
+        "question": "把彈簧振子拉得更遠才放手，為什麼不一定讓它每秒振更多次？",
+        "answer_target": "線性系統的週期由質量與剛性決定，振幅主要改變能量。",
+        "scope": "小振幅、低阻尼近似"
+      }
+    },
+    {
+      "a": "K18003",
+      "b": "B2298",
+      "proposed": "distinct",
+      "reason": "舊題儲能卡榫提高瞬時功率；新題鬆手後各位置受力改變的時間與質心並行。",
+      "a_snapshot": {
+        "id": "K18003",
+        "question": "手已放開彈簧，底端怎麼還停在原位一小段時間？",
+        "answer_target": "靜掛拉伸彈簧的下段原先由彈力平衡重力；鬆手後塌縮與圈間接觸從上方向下傳遞，前緣尚未到達處仍近似保持原有力平衡。整體質心同時下落，因此底端延遲不代表重力尚未作用。",
+        "scope": "限最初靜止、由自重拉伸的所試拉伸彈簧。理想瞬間塌縮和有限塌縮模型分開；不把示意前緣速度說成光速，也不推廣任意彈簧、任意鬆手方式。"
+      },
+      "b_snapshot": {
+        "id": "B2298",
+        "question": "螳螂蝦的出拳那麼快，為什麼不能只靠肌肉當場收縮？",
+        "answer_target": "先儲存彈性能再由卡榫釋放提高瞬間功率",
+        "scope": "孔雀螳螂蝦打擊構造，不推廣所有口足類同速"
+      }
+    },
+    {
+      "a": "K18004",
+      "b": "P029",
+      "proposed": "distinct",
+      "reason": "舊題主動收縮做內功增加轉動能；新題外部滑動力矩在耗能時轉移部分旋轉能至重力勢能。",
+      "a_snapshot": {
+        "id": "K18004",
+        "question": "翻身陀螺明明在耗能，重心為什麼還能爬高？",
+        "answer_target": "偏心陀螺與桌面滑動接觸產生力矩，重新分配旋轉與傾轉運動；旋轉能的一部分可轉成升高重心的勢能，同時摩擦仍讓總機械能下降。持續純滾動的對照模型沒有同樣翻轉路徑。",
+        "scope": "所讀研究為軸對稱偏心球的滑動摩擦理論及數值解，不是新玩具實驗。初始旋轉、慣量和幾何須滿足條件；接觸持續且模型未完整描述真實柄部撞擊。"
+      },
+      "b_snapshot": {
+        "id": "P029",
+        "question": "收手後轉得更快，增加的旋轉動能從哪裡來？",
+        "answer_target": "角動量守恆不等於旋轉動能守恆；收縮過程可做內功。",
+        "scope": "需要補讀能量推導後才能寫稿"
+      }
+    },
+    {
+      "a": "K18004",
+      "b": "P027",
+      "proposed": "distinct",
+      "reason": "慣量縮小加速的角動量條件無法直接說明偏心體倒立。",
+      "a_snapshot": {
+        "id": "K18004",
+        "question": "翻身陀螺明明在耗能，重心為什麼還能爬高？",
+        "answer_target": "偏心陀螺與桌面滑動接觸產生力矩，重新分配旋轉與傾轉運動；旋轉能的一部分可轉成升高重心的勢能，同時摩擦仍讓總機械能下降。持續純滾動的對照模型沒有同樣翻轉路徑。",
+        "scope": "所讀研究為軸對稱偏心球的滑動摩擦理論及數值解，不是新玩具實驗。初始旋轉、慣量和幾何須滿足條件；接觸持續且模型未完整描述真實柄部撞擊。"
+      },
+      "b_snapshot": {
+        "id": "P027",
+        "question": "坐轉椅收回張開的手臂，為什麼會轉得更快？",
+        "answer_target": "減少轉動慣量時，角動量守恆要求角速度增加。",
+        "scope": "低摩擦轉椅、不宣稱實測"
+      }
+    },
+    {
+      "a": "K18004",
+      "b": "P314",
+      "proposed": "distinct",
+      "reason": "輪子角動量交換使椅轉向；新題需要接觸點耗散力矩、偏心重心上升及條件模型。",
+      "a_snapshot": {
+        "id": "K18004",
+        "question": "翻身陀螺明明在耗能，重心為什麼還能爬高？",
+        "answer_target": "偏心陀螺與桌面滑動接觸產生力矩，重新分配旋轉與傾轉運動；旋轉能的一部分可轉成升高重心的勢能，同時摩擦仍讓總機械能下降。持續純滾動的對照模型沒有同樣翻轉路徑。",
+        "scope": "所讀研究為軸對稱偏心球的滑動摩擦理論及數值解，不是新玩具實驗。初始旋轉、慣量和幾何須滿足條件；接觸持續且模型未完整描述真實柄部撞擊。"
+      },
+      "b_snapshot": {
+        "id": "P314",
+        "question": "坐在轉椅上扭轉旋轉中的輪子，為什麼椅子會跟著轉？",
+        "answer_target": "輪子的角動量方向改變，透過反向力矩把角動量交換給人與椅。",
+        "scope": "來源直接記載的示範；與收手加速的轉動慣量機制不同。"
+      }
+    },
+    {
+      "a": "K18004",
+      "b": "A12007",
+      "proposed": "distinct",
+      "reason": "蟑螂由主動開翅/踢腿越過幾何能障；翻身陀螺由既有自旋與被動滑動力矩重分配能量。",
+      "a_snapshot": {
+        "id": "K18004",
+        "question": "翻身陀螺明明在耗能，重心為什麼還能爬高？",
+        "answer_target": "偏心陀螺與桌面滑動接觸產生力矩，重新分配旋轉與傾轉運動；旋轉能的一部分可轉成升高重心的勢能，同時摩擦仍讓總機械能下降。持續純滾動的對照模型沒有同樣翻轉路徑。",
+        "scope": "所讀研究為軸對稱偏心球的滑動摩擦理論及數值解，不是新玩具實驗。初始旋轉、慣量和幾何須滿足條件；接觸持續且模型未完整描述真實柄部撞擊。"
+      },
+      "b_snapshot": {
+        "id": "A12007",
+        "question": "翻肚的蟑螂已經張開翅膀，為什麼亂踢腿仍可能幫它翻回來？",
+        "answer_target": "所測對稱開翅雖降低前翻與側滾能障，前翻門檻仍高於所供前翻動能；側滾門檻卻降到腿擺動的側向擾動可跨範圍，使身體轉而側滾翻正。",
+        "scope": "限研究的艱難對稱開翅條件；前翻/側滾能量分解與逐次越障比較主要由簡化機器人及能量地景模型分析，動物加腿慣量的成功率與平均動能觀察另列。不是量到全部動物內部能量，也不宣稱翅膀單獨一律不能翻；其他腿、腹部與翅變形仍可能參與。"
+      }
+    },
+    {
+      "a": "K18005",
+      "b": "P030",
+      "proposed": "distinct",
+      "reason": "固定形狀無外扭力的理想持續旋轉不適用本題接觸力矩；新增搖晃—自旋耦合與軸錯位控制。",
+      "a_snapshot": {
+        "id": "K18005",
+        "question": "這塊小玩具反著轉，為什麼會先搖晃、停下，再轉回來？",
+        "answer_target": "底面曲率主軸與質量慣量主軸錯位，使搖晃的接觸力矩有偏向的平均效果；自旋先把能量交給特定搖晃模式，再由搖晃交回相反自旋。兩種搖晃模式的耦合強弱不同，使兩向反轉的時間可大不相同。",
+        "scope": "採無滑動、無耗散點接觸模型與小振幅/較慢自旋的解析及數值比較。不是無外力矩系統；不能說另一方向永遠不會反轉，實物阻尼可能讓慢反轉來不及完成。"
+      },
+      "b_snapshot": {
+        "id": "P030",
+        "question": "外界沒有扭力時，正在轉的東西為什麼不會自己停？",
+        "answer_target": "速度衰減需有淨外力矩或系統內角動量交換。",
+        "scope": "物體形狀固定的理想模型"
+      }
+    },
+    {
+      "a": "K18005",
+      "b": "P028",
+      "proposed": "distinct",
+      "reason": "一般慣量分布差異不能替代曲率與慣量主軸錯位的平均接觸力矩。",
+      "a_snapshot": {
+        "id": "K18005",
+        "question": "這塊小玩具反著轉，為什麼會先搖晃、停下，再轉回來？",
+        "answer_target": "底面曲率主軸與質量慣量主軸錯位，使搖晃的接觸力矩有偏向的平均效果；自旋先把能量交給特定搖晃模式，再由搖晃交回相反自旋。兩種搖晃模式的耦合強弱不同，使兩向反轉的時間可大不相同。",
+        "scope": "採無滑動、無耗散點接觸模型與小振幅/較慢自旋的解析及數值比較。不是無外力矩系統；不能說另一方向永遠不會反轉，實物阻尼可能讓慢反轉來不及完成。"
+      },
+      "b_snapshot": {
+        "id": "P028",
+        "question": "同樣重的兩個輪子，重量放在輪緣或輪心有差嗎？",
+        "answer_target": "離軸較遠的質量對轉動慣量貢獻較大，重量本身不足以描述旋轉反應。",
+        "scope": "相同軸線與總質量"
+      }
+    },
+    {
+      "a": "K18005",
+      "b": "D2215",
+      "proposed": "distinct",
+      "reason": "自行車轉向使傾倒受穩定；本題被動剛體兩種搖晃模式和自旋交換。",
+      "a_snapshot": {
+        "id": "K18005",
+        "question": "這塊小玩具反著轉，為什麼會先搖晃、停下，再轉回來？",
+        "answer_target": "底面曲率主軸與質量慣量主軸錯位，使搖晃的接觸力矩有偏向的平均效果；自旋先把能量交給特定搖晃模式，再由搖晃交回相反自旋。兩種搖晃模式的耦合強弱不同，使兩向反轉的時間可大不相同。",
+        "scope": "採無滑動、無耗散點接觸模型與小振幅/較慢自旋的解析及數值比較。不是無外力矩系統；不能說另一方向永遠不會反轉，實物阻尼可能讓慢反轉來不及完成。"
+      },
+      "b_snapshot": {
+        "id": "D2215",
+        "question": "腳踏車自己往前滑還能保持平衡，真的只靠輪子像陀螺嗎？",
+        "answer_target": "多種幾何與質量分布促使車向傾倒方向轉向，陀螺及拖曳距並非唯一必要條件。",
+        "scope": "Researchers explain why bicycles balance themselves；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "K18005",
+      "b": "K18004",
+      "proposed": "distinct",
+      "reason": "翻身陀螺需滑動耗散並提高重心；反轉玩具的無耗散無滑動模型已可由搖晃交換自旋，不能因都是玩具就合。",
+      "a_snapshot": {
+        "id": "K18005",
+        "question": "這塊小玩具反著轉，為什麼會先搖晃、停下，再轉回來？",
+        "answer_target": "底面曲率主軸與質量慣量主軸錯位，使搖晃的接觸力矩有偏向的平均效果；自旋先把能量交給特定搖晃模式，再由搖晃交回相反自旋。兩種搖晃模式的耦合強弱不同，使兩向反轉的時間可大不相同。",
+        "scope": "採無滑動、無耗散點接觸模型與小振幅/較慢自旋的解析及數值比較。不是無外力矩系統；不能說另一方向永遠不會反轉，實物阻尼可能讓慢反轉來不及完成。"
+      },
+      "b_snapshot": {
+        "id": "K18004",
+        "question": "翻身陀螺明明在耗能，重心為什麼還能爬高？",
+        "answer_target": "偏心陀螺與桌面滑動接觸產生力矩，重新分配旋轉與傾轉運動；旋轉能的一部分可轉成升高重心的勢能，同時摩擦仍讓總機械能下降。持續純滾動的對照模型沒有同樣翻轉路徑。",
+        "scope": "所讀研究為軸對稱偏心球的滑動摩擦理論及數值解，不是新玩具實驗。初始旋轉、慣量和幾何須滿足條件；接觸持續且模型未完整描述真實柄部撞擊。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "K18-S001",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "actual_scope": "eScholarship PDF 的 web 正文先讀 pp.1–3；續讀逾時。另從 ResearchGate 標示 Royal Society 提供的全文讀 §3 pp.4–5、§4 pp.6–9、§5 pp.9–11及p.12開頭；不是只讀摘要。",
+      "route": "當日 web 讀 eScholarship PDF 初段及成功正文 https://www.researchgate.net/publication/316101519_The_roles_of_impact_and_inertia_in_the_failure_of_a_shoelace_knot 的指定段落；Royal Society 提供的同文全文載體，只算單一研究來源。作者 HTTP 副本取得失敗，不能稱已保存有效全文。",
+      "http_record": {
+        "name": "lace",
+        "url": "https://escholarship.org/content/qt7qs984k7/qt7qs984k7_noSplash_66a8485e2a04a2d12bd2baeb463325cf.pdf",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "error": "HTTP Error 403: Forbidden"
+      },
+      "web_fulltext_url": "https://www.researchgate.net/publication/316101519_The_roles_of_impact_and_inertia_in_the_failure_of_a_shoelace_knot",
+      "web_ranges": "§3 lines375–527；§4 535–786；§5 788–1023。行號僅當次工具定位，正式定位用印刷頁與節。",
+      "cache": null
+    },
+    {
+      "source_id": "K18-S002",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "actual_scope": "PDF p.3實驗；pp.4–6 §III A；pp.10–12 §IV A–C / §V；p.14表與Figs.1–5圖說。目讀p.17 Fig.4–5。未逐行核pp.7–9拾取角模型推導。",
+      "route": "當日 web 核 arXiv 版本與期刊身分；指定 Mokaair-editorial UA 取得有效 PDF，擷取指定正文閱讀；已目讀圖頁另列 author。",
+      "http_record": {
+        "name": "chain",
+        "url": "https://arxiv.org/pdf/1910.03125",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/1910.03125",
+        "content_type": "application/pdf",
+        "file": ".cache/wave18-mechanical-chain.pdf",
+        "sha256": "768bfca118e4e7aa4c8c72f9bd945960244c70aa1aaf0863a5c31a52e0807273",
+        "pages": 17,
+        "text_chars": 40758
+      }
+    },
+    {
+      "source_id": "K18-S003",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "actual_scope": "PDF pp.2–7指定正文與圖說；目讀p.3 Fig.3–4，分清隨機堆放與整齊繞圈。未觀看文內影片。",
+      "route": "當日 web 核 arXiv 版本與期刊身分；指定 Mokaair-editorial UA 取得有效 PDF，擷取指定正文閱讀；已目讀圖頁另列 author。",
+      "http_record": {
+        "name": "chain-critical",
+        "url": "https://arxiv.org/pdf/1612.09319",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/1612.09319",
+        "content_type": "application/pdf",
+        "file": ".cache/wave18-mechanical-chain-critical.pdf",
+        "sha256": "364ef7c36809cee6c888a03e86f3627e8ebe38e9a23fa0d1131e42d956c45957",
+        "pages": 7,
+        "text_chars": 16535
+      }
+    },
+    {
+      "source_id": "K18-S004",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "actual_scope": "PDF p.2；pp.4–5；p.8 Eq.19及理想模型限制；p.9 finite collapse；p.12；pp.14–15；p.17結論；pp.21–22及24圖說。目讀pp.21–22 Fig.2–3。",
+      "route": "當日 web 核 arXiv 版本與期刊身分；指定 Mokaair-editorial UA 取得有效 PDF，擷取指定正文閱讀；已目讀圖頁另列 author。",
+      "http_record": {
+        "name": "slinky",
+        "url": "https://arxiv.org/pdf/1208.4629",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/1208.4629",
+        "content_type": "application/pdf",
+        "file": ".cache/wave18-mechanical-slinky.pdf",
+        "sha256": "2e61d12f7bf269ba43faeb67419af706a84024e6b8311605974492be49896d2d",
+        "pages": 30,
+        "text_chars": 43790
+      }
+    },
+    {
+      "source_id": "K18-S005",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "actual_scope": "PDF pp.1–3 Introduction / §2 The tippe top model；p.12 Fig.3與相鄰數值比較。目讀p.2模型示意；未核完整有效勢證明。",
+      "route": "當日 web 核 arXiv 版本與期刊身分；指定 Mokaair-editorial UA 取得有效 PDF，擷取指定正文閱讀；已目讀圖頁另列 author。",
+      "http_record": {
+        "name": "tippe-arxiv",
+        "url": "https://arxiv.org/pdf/1306.2470",
+        "date": "2026-11-02",
+        "status": 200,
+        "sha256": "9073f07457e0bb6991c482825b5ff80f209f2f6b2c341bd0cd634ee288f328f5",
+        "pages": 18,
+        "file": ".cache/wave18-mechanical-tippe.pdf"
+      }
+    },
+    {
+      "source_id": "K18-S006",
+      "read_date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "actual_scope": "PDF pp.2–6模型、軸錯位、平均力矩與小振幅方程；p.8 Fig.5；pp.11–12限制及結論。目讀p.3 Fig.2、p.8 Fig.5。未重跑數值積分。",
+      "route": "當日 web 核 arXiv 版本與期刊身分；指定 Mokaair-editorial UA 取得有效 PDF，擷取指定正文閱讀；已目讀圖頁另列 author。",
+      "http_record": {
+        "name": "rattleback",
+        "url": "https://arxiv.org/pdf/1704.06717",
+        "accessed_on": "2026-11-02",
+        "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+        "status": 200,
+        "final_url": "https://arxiv.org/pdf/1704.06717",
+        "content_type": "application/pdf",
+        "file": ".cache/wave18-mechanical-rattleback.pdf",
+        "sha256": "1664e8d97c68da3af0a68071d8962cd12c8c29feec6f25d91af3ad59449d917c",
+        "pages": 12,
+        "text_chars": 50277
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "K18-S001",
+      "doi": "10.1098/rspa.2016.0770",
+      "read_url": "https://escholarship.org/content/qt7qs984k7/qt7qs984k7_noSplash_66a8485e2a04a2d12bd2baeb463325cf.pdf",
+      "related_urls": [
+        "https://www.researchgate.net/publication/316101519_The_roles_of_impact_and_inertia_in_the_failure_of_a_shoelace_knot",
+        "https://doi.org/10.1098/rspa.2016.0770"
+      ],
+      "relationship": "UC刊文PDF與Royal Society供RG全文同文；兩載體不是兩研究。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "精確URL/完整題名/DOI字串查找；不等於全部別名或語義重複已排除。"
+    },
+    {
+      "source_id": "K18-S002",
+      "doi": "10.1119/1.4980071",
+      "read_url": "https://arxiv.org/pdf/1910.03125",
+      "related_urls": [
+        "https://arxiv.org/abs/1910.03125",
+        "https://doi.org/10.1119/1.4980071"
+      ],
+      "relationship": "2017期刊與2019 arXiv上傳同工作，不當不同年代重現。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "精確URL/完整題名/DOI字串查找；不等於全部別名或語義重複已排除。"
+    },
+    {
+      "source_id": "K18-S003",
+      "doi": null,
+      "read_url": "https://arxiv.org/pdf/1612.09319",
+      "related_urls": [
+        "https://arxiv.org/abs/1612.09319"
+      ],
+      "relationship": "按所讀v1預印本；未取得期刊出版證據。與S002是不同研究，但不聲稱兩者已確認相同微觀模型。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "精確URL/完整題名/DOI字串查找；不等於全部別名或語義重複已排除。"
+    },
+    {
+      "source_id": "K18-S004",
+      "doi": "10.1119/1.4750489",
+      "read_url": "https://arxiv.org/pdf/1208.4629",
+      "related_urls": [
+        "https://arxiv.org/abs/1208.4629",
+        "https://doi.org/10.1119/1.4750489"
+      ],
+      "relationship": "2012 accepted manuscript與AJP刊文同工作，未逐字比VOR。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "精確URL/完整題名/DOI字串查找；不等於全部別名或語義重複已排除。"
+    },
+    {
+      "source_id": "K18-S005",
+      "doi": "10.3842/SIGMA.2014.017",
+      "read_url": "https://arxiv.org/pdf/1306.2470",
+      "related_urls": [
+        "https://arxiv.org/abs/1306.2470",
+        "https://www.imath.kiev.ua/~sigma/2014/017/",
+        "https://doi.org/10.3842/SIGMA.2014.017"
+      ],
+      "relationship": "v3呈SIGMA正式排版，與DOI同工作。失敗的2008Caltech資料是另一篇，未當採用正文。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "精確URL/完整題名/DOI字串查找；不等於全部別名或語義重複已排除。"
+    },
+    {
+      "source_id": "K18-S006",
+      "doi": "10.1103/PhysRevE.95.062207",
+      "read_url": "https://arxiv.org/pdf/1704.06717",
+      "related_urls": [
+        "https://arxiv.org/abs/1704.06717",
+        "https://doi.org/10.1103/PhysRevE.95.062207"
+      ],
+      "relationship": "v2與2017PRE刊文同工作；v1不是獨立證據。",
+      "old_exact_url_title_or_doi_matches": [],
+      "limits": "精確URL/完整題名/DOI字串查找；不等於全部別名或語義重複已排除。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "name": "lace",
+      "url": "https://escholarship.org/content/qt7qs984k7/qt7qs984k7_noSplash_66a8485e2a04a2d12bd2baeb463325cf.pdf",
+      "accessed_on": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "name": "tippe",
+      "url": "https://www.cds.caltech.edu/~marsden/bib/2008/03-BoMaRo2008/BoMaRo2008.pdf",
+      "accessed_on": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+    },
+    {
+      "url": "https://escholarship.org/content/qt7qs984k7/qt7qs984k7_noSplash_66a8485e2a04a2d12bd2baeb463325cf.pdf",
+      "route": "web續讀",
+      "result": "初讀PDF pp.1–3成功，續開timeout；另RG全文成功"
+    },
+    {
+      "url": "https://escholarship.org/uc/item/7qs984k7",
+      "route": "web",
+      "result": "CAPTCHA身分頁，未當正文"
+    },
+    {
+      "url": "https://www.cds.caltech.edu/~marsden/bib/2008/03-BoMaRo2008/BoMaRo2008.pdf",
+      "route": "web",
+      "result": "502；未採此另一研究"
+    },
+    {
+      "url": "https://www.imath.kiev.ua/~sigma/2014/017/sigma14-017.pdf",
+      "route": "web",
+      "result": "internal failure；改讀已核同文arXiv v3，非重試付費或繞過限制"
+    }
+  ],
+  "reading_limits": [
+    "六研究均有指定正文閱讀，不等於全篇逐主張、完整推導、附錄或原始資料驗證。",
+    "五份有效fresh UA PDF；鞋帶只有web正文成功，HTTP403無有效本機副本。",
+    "七頁本機PDF圖像目讀；鞋帶僅正文/圖說，未將未顯示的web screenshot當目讀。",
+    "無影片觀看、重跑積分、自己實驗、試讀、配音或媒體製作。",
+    "鏈條噴泉來源含預印本與模型分歧；兩模型不包裝成一致定論。翻身/反轉玩具的所採機制主要為理論及數值，不冒充新的實物量測。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "K18-S002",
+      "pdf_pages": [
+        17
+      ],
+      "route": "PyMuPDF渲染後view_image目讀；圖與外部全文只留忽略cache"
+    },
+    {
+      "source_id": "K18-S003",
+      "pdf_pages": [
+        3
+      ],
+      "route": "PyMuPDF渲染後view_image目讀；圖與外部全文只留忽略cache"
+    },
+    {
+      "source_id": "K18-S004",
+      "pdf_pages": [
+        21,
+        22
+      ],
+      "route": "PyMuPDF渲染後view_image目讀；圖與外部全文只留忽略cache"
+    },
+    {
+      "source_id": "K18-S005",
+      "pdf_pages": [
+        2
+      ],
+      "route": "PyMuPDF渲染後view_image目讀；圖與外部全文只留忽略cache"
+    },
+    {
+      "source_id": "K18-S006",
+      "pdf_pages": [
+        3,
+        8
+      ],
+      "route": "PyMuPDF渲染後view_image目讀；圖與外部全文只留忽略cache"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W18K-T01",
+      "seconds": 105,
+      "chapters": [
+        55,
+        50
+      ],
+      "core_id": "K18001",
+      "max_beat": 35
+    },
+    {
+      "id": "W18K-T02",
+      "seconds": 110,
+      "chapters": [
+        55,
+        55
+      ],
+      "core_id": "K18002",
+      "max_beat": 35
+    },
+    {
+      "id": "W18K-T03",
+      "seconds": 95,
+      "chapters": [
+        50,
+        45
+      ],
+      "core_id": "K18003",
+      "max_beat": 35
+    },
+    {
+      "id": "W18K-T04",
+      "seconds": 95,
+      "chapters": [
+        50,
+        45
+      ],
+      "core_id": "K18004",
+      "max_beat": 35
+    },
+    {
+      "id": "W18K-T05",
+      "seconds": 105,
+      "chapters": [
+        55,
+        50
+      ],
+      "core_id": "K18005",
+      "max_beat": 35
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_ONLY",
+    "checks": [
+      "Node v24.13.0 validateEditorial 5 / isolated validateThemes 5",
+      "每章單核心、正整數beats<=45、beat/章/正文總和、range上限與跨章單核cap",
+      "UTF8 LF、無BOM、全部字串rstrip、本機絕對路徑檢查；初次路徑regex誤抓https URL，修正檢查後通過，未因此改內容"
+    ],
+    "read_aloud": false,
+    "media_produced": false
+  },
+  "unresolved": [
+    "待root非作者來源/模型界線及逐題編輯覆核。",
+    "待共同top5完整近鄰比較；作者near_pairs只提供理由，不冒充終裁。",
+    "鏈條噴泉若在短片中無法清楚區分動量帳和未解拾取模型，應撤片保留題級素材。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "reviewer": "root (non-author)",
+      "before_files": [
+        {
+          "file": "batches/wave18-mechanical-surprises.json",
+          "sha256": "ae2d21779b2d34cc49dc3ceae6099e42a321f81aa3e367135342f5e848583b40"
+        },
+        {
+          "file": "reviews/wave18-mechanical-surprises-themes.json",
+          "sha256": "0e3c03bef91fc0dd16bb0b019b321cb8dd8e141fb3262e36e4a7b5b262dad0c5"
+        },
+        {
+          "file": "reviews/wave18-mechanical-surprises-author.json",
+          "sha256": "1cc0b88d780d57b4c3620b244f80ceb435506abc3a39d2ef9f747d30046cc7a2"
+        }
+      ],
+      "changes": [
+        {
+          "id": "MECH18-01",
+          "fields": [
+            "W18K-T05.chapters[1].beats[1].new_information",
+            "W18K-T05.chapters[1].new_information"
+          ],
+          "reason": "耗散可能遮蔽較慢反轉，不能由無耗散模型推成實物必然；15秒beat及全片105秒均不變。"
+        },
+        {
+          "id": "MECH18-02",
+          "fields": [
+            "K18-S002.locator"
+          ],
+          "reason": "原§II為Observations，§III A採Eqs.3–8；9–10屬III B，不混定位。"
+        },
+        {
+          "id": "MECH18-03",
+          "fields": [
+            "K18-S004.locator",
+            "K18003.source_locator"
+          ],
+          "reason": "觀察在Introduction，§II實際為The collapse of the turns at the top of the slinky；保留已讀III/IV及圖號。"
+        },
+        {
+          "id": "MECH18-04",
+          "fields": [
+            "K18-S001.read_via",
+            "source_readings[K18-S001].route"
+          ],
+          "reason": "補成功web正文的完整ResearchGate URL，仍是同文單一來源記錄；主鍵URL不變。"
+        }
+      ],
+      "after_content_files": [
+        {
+          "file": "batches/wave18-mechanical-surprises.json",
+          "sha256": "5372f7220dcfc4bfed77850e88a7f9e9e83cb7e686824f0eaac986326b72b4f5"
+        },
+        {
+          "file": "reviews/wave18-mechanical-surprises-themes.json",
+          "sha256": "5804b4e0b5547d9591743d8a087c8430fb04141a54f591a3b02053a53a944619"
+        }
+      ],
+      "status": "AUTHOR_CORRECTED_PENDING_TARGETED_RECHECK",
+      "unchanged": "五題問句、answer_target、scope、所有題案秒數及source URL主鍵均未改；不擴閱讀或新方向。"
+    }
+  ]
+}

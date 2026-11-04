@@ -1,0 +1,64 @@
+{
+  "status": "PASS_TWO_READER_SCOPED_OLD_PAIR_INTEGRATION",
+  "reviewed_on": "2026-11-02",
+  "reviewed_files": [
+    {
+      "file": "reviews/wave17-root-old-pairs.json",
+      "sha256": "5550c576d6e4b03b87c6203e4ea33b41ea71fe2fe977b644ac9429c677af1a86"
+    },
+    {
+      "file": "reviews/wave17-science-old-pairs.json",
+      "sha256": "1295b4f7ad23cd16e150cb36d0a34fa925a6d1833176e517b186b65c9de3ef1a"
+    },
+    {
+      "file": "baselines/2026-11-02-2959.json.gz",
+      "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f"
+    }
+  ],
+  "reviewed_pair_count": 6,
+  "merges": [
+    {
+      "duplicate_id": "P131",
+      "canonical_id": "P129",
+      "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。"
+    }
+  ],
+  "excluded": [],
+  "distinct": [
+    {
+      "a": "D9014",
+      "b": "D9016",
+      "reason": "一題改探頭間距，衡量梯度近似與固定相位失配的相對誤差；另一題保持感測器、改近場聲源位置，產生真實前後幅度差。儀器偏差與聲場響應的控制變量不同。"
+    },
+    {
+      "a": "E2083",
+      "b": "E2169",
+      "reason": "並聯題固定電壓而新增路徑；輸電題固定功率而提高電壓，並比較線阻損耗。不能因都含電流/電壓而合併。"
+    },
+    {
+      "a": "E2002",
+      "b": "H3036",
+      "reason": "中性導體受外場時重新分布電子，對照的是化學活度不同的電極系統產生電位差；前者不需要兩室化學梯度，後者不能用靜電感應當完整答案。"
+    },
+    {
+      "a": "E2161",
+      "b": "E2255",
+      "reason": "交流電容回答電路兩側為何有充放電電流；類比開關題另有控制端到訊號端的寄生耦合及負載電容，解釋開關瞬間輸出步階。多出的路徑與負載條件改變解答，不只是換電容名稱。"
+    },
+    {
+      "a": "L138",
+      "b": "L143",
+      "reason": "吸氣的壓力驅動和最大呼氣後仍留氣的容量定義，回答不同問題；不能合成同一壓差機制。但 L143 現答案尚未解釋殘氣形成的力學，僅宜作容量比較短段，不是獨立影片厚度核准。"
+    }
+  ],
+  "decision": "Accept two-reader agreement: merge P131 into P129, preserve the original question/source as a variant; retain five causally distinct pairs. No former theme contains P131.",
+  "role_disclosure": "Root and science_sources are non-authors of all twelve historical rows; each compared the complete stored question, answer and scope against the frozen2959 baseline.",
+  "reading_scope": "Root freshly read eleven specified source portions; second reader read five of those and explicitly did not reopen the other six. Not a complete historical answer/source refresh.",
+  "sampling_limit": "Six highest-scoring selected core pairs not already in explicit distinct decisions, from frozen wave16 top10 neighbours. Non-random retrieval sample; no uniqueness/recall claim.",
+  "editorial_limits": [
+    "L143 可保留作容量比較研究短段；本次未核准獨立影片、補長時數或用臨床機制擴寫。",
+    "P131 合併保留原始問法/來源，不應刪原 raw 或將舊附件冒稱本輪完整核准。"
+  ],
+  "remaining_blockers": [],
+  "production_ready": false
+}

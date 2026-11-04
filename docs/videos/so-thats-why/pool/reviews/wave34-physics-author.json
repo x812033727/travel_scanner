@@ -1,0 +1,658 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "e02a72b1660bd7b6af59603c8347cc6d9dd2b695",
+    "selected": 3139,
+    "raw_records": 3515,
+    "not_added": 1427,
+    "pool_sha256": "e9808fc58273d1cf4cb2e969566d3eefe7baecebb06e7a7992293d07251a6022",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3139.json.gz",
+      "sha256": "1fae25a51dc4f07a234ab13056cb8667c37c1be4b082c77e36d9e747fd1e5ad7"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave34-physics.json",
+      "sha256": "5834509de0dd0add0d2cf0b97a5b36b87bb42f399f80f9af9629acc3ef6d79bd"
+    },
+    {
+      "file": "reviews/wave34-physics-themes.json",
+      "sha256": "45dd3c0f3b216787768908595eb910beb8b1ad46deceaf1908074c6741264729"
+    }
+  ],
+  "counts": {
+    "candidates": 6,
+    "sources": 6,
+    "candidate_sources": 6,
+    "not_added_only_sources": 0,
+    "not_added": 16,
+    "near_pairs": 17,
+    "themes": 4
+  },
+  "scope": "蜂蜜、咖啡、魚肉與香草醛的檢驗：成分間與位點間差異、正品基線、混合物目標和凍融痕跡。",
+  "dedup_reading": {
+    "method": "全舊庫搜尋蜂蜜、糖漿、咖啡、同位素、檢驗物、DNA與既有退題；再查粒線體、酵素、短片段／引子及DNA條碼，逐讀所列近似對的完整問答。",
+    "scan_files": [
+      {
+        "file": ".cache/wave34-physics-lex.json",
+        "sha256": "0e3cb690af4428554006a4d7a52b83539a31f568a41bd49bd922275cecd015b2"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "X34-001",
+      "b": "P232",
+      "proposed": "distinct",
+      "reason": "過飽和、成核決定外觀。用同瓶蛋白及糖間同位素差檢查摻料，是不同可觀察量。",
+      "a_snapshot": {
+        "id": "X34-001",
+        "question": "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+        "answer_target": "玉米或甘蔗糖的碳同位素比例往往與蜜源植物不同，全蜜和同瓶蛋白可以互相比對；米糖漿的整體碳比例則可能落在蜜的範圍內。研究把一份百花蜜的糖分離後，不同糖類的碳比例差超出參照範圍，另見寡糖峰。向另一份真蜜加入相應米糖漿，能重現這組色譜與同位素特徵。",
+        "scope": "限樣本2d、約11%米糖漿重配對照與文中參照蜜。整體方法對某些糖漿不敏感，分糖也不能用單個異常峰裁定所有蜂蜜。"
+      },
+      "b_snapshot": {
+        "id": "P232",
+        "question": "已經超過溶解上限，為什麼溶液有時仍暫時透明？",
+        "answer_target": "過飽和是非平衡或亞穩態，析出還涉及成核條件。",
+        "scope": "成核細節需加第二來源"
+      }
+    },
+    {
+      "a": "X34-001",
+      "b": "V3094",
+      "proposed": "distinct",
+      "reason": "C4植物濃縮二氧化碳是碳源差的背景；新題另有蛋白內參的盲區與分糖混配驗證。",
+      "a_snapshot": {
+        "id": "X34-001",
+        "question": "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+        "answer_target": "玉米或甘蔗糖的碳同位素比例往往與蜜源植物不同，全蜜和同瓶蛋白可以互相比對；米糖漿的整體碳比例則可能落在蜜的範圍內。研究把一份百花蜜的糖分離後，不同糖類的碳比例差超出參照範圍，另見寡糖峰。向另一份真蜜加入相應米糖漿，能重現這組色譜與同位素特徵。",
+        "scope": "限樣本2d、約11%米糖漿重配對照與文中參照蜜。整體方法對某些糖漿不敏感，分糖也不能用單個異常峰裁定所有蜂蜜。"
+      },
+      "b_snapshot": {
+        "id": "V3094",
+        "question": "有些植物為什麼先把碳裝進四碳酸，再送到另一種細胞放出來？",
+        "answer_target": "初次固定後以四碳酸運送，在 RuBisCO 所在區釋放 CO2，降低氧化反應競爭",
+        "scope": "限典型雙細胞 C4；不同於 V3038 CAM 晝夜分隔；不說所有 C4 都同一解剖"
+      }
+    },
+    {
+      "a": "X34-001",
+      "b": "R29005",
+      "proposed": "distinct",
+      "reason": "陶片殘脂靠脂肪酸線索推乳脂用途；新題查同瓶糖分間的不協調並以重配樣驗證。",
+      "a_snapshot": {
+        "id": "X34-001",
+        "question": "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+        "answer_target": "玉米或甘蔗糖的碳同位素比例往往與蜜源植物不同，全蜜和同瓶蛋白可以互相比對；米糖漿的整體碳比例則可能落在蜜的範圍內。研究把一份百花蜜的糖分離後，不同糖類的碳比例差超出參照範圍，另見寡糖峰。向另一份真蜜加入相應米糖漿，能重現這組色譜與同位素特徵。",
+        "scope": "限樣本2d、約11%米糖漿重配對照與文中參照蜜。整體方法對某些糖漿不敏感，分糖也不能用單個異常峰裁定所有蜂蜜。"
+      },
+      "b_snapshot": {
+        "id": "R29005",
+        "question": "一塊滿是小孔的陶片，怎麼分辨它可能濾過凝乳，而不是蜂蜜？",
+        "answer_target": "孔洞先提示分離固液的功能，單看形狀仍可有多種用途。波蘭庫亞維亞部分陶篩吸附的脂肪酸與穩定同位素特徵指向乳脂，對照同地其他器類使用的不同材料，支持用篩器留下凝乳、瀝出乳清的解釋。",
+        "scope": "限這組陶片與殘留。某些無孔碗也有乳脂，不能以有孔／無孔當乳製品的二元測試，亦不能辨品種風味或誰吃過。"
+      }
+    },
+    {
+      "a": "X34-001",
+      "b": "H3066",
+      "proposed": "distinct",
+      "reason": "天然同位素峰為何產生並不解釋同瓶不同成分可彼此當參照。",
+      "a_snapshot": {
+        "id": "X34-001",
+        "question": "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+        "answer_target": "玉米或甘蔗糖的碳同位素比例往往與蜜源植物不同，全蜜和同瓶蛋白可以互相比對；米糖漿的整體碳比例則可能落在蜜的範圍內。研究把一份百花蜜的糖分離後，不同糖類的碳比例差超出參照範圍，另見寡糖峰。向另一份真蜜加入相應米糖漿，能重現這組色譜與同位素特徵。",
+        "scope": "限樣本2d、約11%米糖漿重配對照與文中參照蜜。整體方法對某些糖漿不敏感，分糖也不能用單個異常峰裁定所有蜂蜜。"
+      },
+      "b_snapshot": {
+        "id": "H3066",
+        "question": "純物質的質譜裡，為什麼還有比主要分子峰稍重的峰？",
+        "answer_target": "分子含天然重同位素的概率，使同種化學結構出現不同質量訊號。",
+        "scope": "須與加合物等其他成因區分；不可用任意旁峰直接斷言同位素。"
+      }
+    },
+    {
+      "a": "X34-001",
+      "b": "X34-006",
+      "proposed": "distinct",
+      "reason": "分離混樣中的不同糖分子與量純分子內八個碳位置不是同項處理。",
+      "a_snapshot": {
+        "id": "X34-001",
+        "question": "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+        "answer_target": "玉米或甘蔗糖的碳同位素比例往往與蜜源植物不同，全蜜和同瓶蛋白可以互相比對；米糖漿的整體碳比例則可能落在蜜的範圍內。研究把一份百花蜜的糖分離後，不同糖類的碳比例差超出參照範圍，另見寡糖峰。向另一份真蜜加入相應米糖漿，能重現這組色譜與同位素特徵。",
+        "scope": "限樣本2d、約11%米糖漿重配對照與文中參照蜜。整體方法對某些糖漿不敏感，分糖也不能用單個異常峰裁定所有蜂蜜。"
+      },
+      "b_snapshot": {
+        "id": "X34-006",
+        "question": "兩份香草醛整體碳比例相近，為何對準分子上的同一個位置，差距會變大？",
+        "answer_target": "整體同位素比把分子八個碳位點合在一起。用定量碳核磁分開各位置的訊號，並用整體測值校準，在兩份參考材料中可見一個特別懸殊的甲氧基碳位點。這種差異可能與原料或合成歷程有關，不能由整瓶平均單獨推出。",
+        "scope": "VANA-1、VANB-1為兩份香草醛參考物，不是從兩莢香草取樣，也沒有給未知食品逐一驗真。兩瓶整體數值相近但不相等。"
+      }
+    },
+    {
+      "a": "X34-002",
+      "b": "H3071",
+      "proposed": "distinct",
+      "reason": "不同氫環境如何分峰，不能回答真阿拉比卡是否也會有弱峰，以及如何排除磨機殘留。",
+      "a_snapshot": {
+        "id": "X34-002",
+        "question": "磨豆機換新的，純阿拉比卡怎麼還會出現原本用來抓摻豆的訊號？",
+        "answer_target": "研究把咖啡油脂萃取物濃縮後，在有確定來源的阿拉比卡也看見微弱的特徵峰。改用全新磨豆機仍在，交替磨豆的重複測量也沒有出現預期的帶入效應。峰的有無不能單獨定案；要把峰面積同正品範圍及已知混合樣本比較。",
+        "scope": "限烘焙豆、文中30份阿拉比卡與特定測法。部分阿拉比卡的基線較高，且峰含兩種相關物；不能從未知樣品面積精確讀出通用摻量。"
+      },
+      "b_snapshot": {
+        "id": "H3071",
+        "question": "同一分子裡都是氫，為什麼核磁共振不只出現一種訊號？",
+        "answer_target": "電子環境改變核所感受到的有效磁場；等價位置可共用訊號，不同位置可能分開。",
+        "scope": "訊號組數不是氫原子總數；分裂與重疊另計。"
+      }
+    },
+    {
+      "a": "X34-002",
+      "b": "R29006",
+      "proposed": "distinct",
+      "reason": "牙石乳蛋白與空白排污不同於真豆本身有峰、另以換磨機及真品範圍校正特異性。",
+      "a_snapshot": {
+        "id": "X34-002",
+        "question": "磨豆機換新的，純阿拉比卡怎麼還會出現原本用來抓摻豆的訊號？",
+        "answer_target": "研究把咖啡油脂萃取物濃縮後，在有確定來源的阿拉比卡也看見微弱的特徵峰。改用全新磨豆機仍在，交替磨豆的重複測量也沒有出現預期的帶入效應。峰的有無不能單獨定案；要把峰面積同正品範圍及已知混合樣本比較。",
+        "scope": "限烘焙豆、文中30份阿拉比卡與特定測法。部分阿拉比卡的基線較高，且峰含兩種相關物；不能從未知樣品面積精確讀出通用摻量。"
+      },
+      "b_snapshot": {
+        "id": "R29006",
+        "question": "村裡的鍋處理過奶，怎麼再問到某個人是否吃過乳製品？",
+        "answer_target": "牙菌斑礦化成結石時可保存進入口中的食物蛋白。在部分人的樣本裡，比對質譜得到的胜肽序列可辨認乳清蛋白β-乳球蛋白，有些片段還能縮小動物來源。這才把乳製品線索連回一位個人；同批萃取空白等對照要一起檢查。",
+        "scope": "陽性支持接觸或攝取乳製品，陰性不足以排除。不能讀出品項、餐量或乳糖耐受基因。2014分析和2021污染實驗要分框；污染實驗不等於前者樣本曾污染。"
+      }
+    },
+    {
+      "a": "X34-002",
+      "b": "X34-001",
+      "proposed": "distinct",
+      "reason": "咖啡問題是靈敏度變高後發現原先視為專屬的峰也在真品；蜂蜜問題是總碳比相似而不同糖分揭露差異。",
+      "a_snapshot": {
+        "id": "X34-002",
+        "question": "磨豆機換新的，純阿拉比卡怎麼還會出現原本用來抓摻豆的訊號？",
+        "answer_target": "研究把咖啡油脂萃取物濃縮後，在有確定來源的阿拉比卡也看見微弱的特徵峰。改用全新磨豆機仍在，交替磨豆的重複測量也沒有出現預期的帶入效應。峰的有無不能單獨定案；要把峰面積同正品範圍及已知混合樣本比較。",
+        "scope": "限烘焙豆、文中30份阿拉比卡與特定測法。部分阿拉比卡的基線較高，且峰含兩種相關物；不能從未知樣品面積精確讀出通用摻量。"
+      },
+      "b_snapshot": {
+        "id": "X34-001",
+        "question": "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+        "answer_target": "玉米或甘蔗糖的碳同位素比例往往與蜜源植物不同，全蜜和同瓶蛋白可以互相比對；米糖漿的整體碳比例則可能落在蜜的範圍內。研究把一份百花蜜的糖分離後，不同糖類的碳比例差超出參照範圍，另見寡糖峰。向另一份真蜜加入相應米糖漿，能重現這組色譜與同位素特徵。",
+        "scope": "限樣本2d、約11%米糖漿重配對照與文中參照蜜。整體方法對某些糖漿不敏感，分糖也不能用單個異常峰裁定所有蜂蜜。"
+      }
+    },
+    {
+      "a": "X34-003",
+      "b": "B2198",
+      "proposed": "distinct",
+      "reason": "舊題以標準條碼辨隱蔽物種；加工魚要解決長模板破碎、短片段可回收卻可能缺少辨識位置。",
+      "a_snapshot": {
+        "id": "X34-003",
+        "question": "一份加工魚肉，讀整段DNA失敗，為什麼只讀其中一小段反而有機會認出魚？",
+        "answer_target": "加工後能橫跨兩個引子位置的完整DNA可能較少。把引子放得較近，短片段仍有機會擴增定序；但留下的區段也要保有魚種之間足夠的差異。研究在同一批44件商品測整段和多組短段，一組226鹼基的短段讀到39件，完整段讀到9件；一些近緣鮪魚取得序列後仍難判到單一種。",
+        "scope": "完整段652 bp。長度、取段、引子與樣本基質均可能影響成功率，研究不是只改長度的等條件試驗。"
+      },
+      "b_snapshot": {
+        "id": "B2198",
+        "question": "兩隻昆蟲外表幾乎一樣，DNA 條碼能讓我們發現什麼？",
+        "answer_target": "標準短序列與參考資料比對可提示隱蔽多樣性",
+        "scope": "條碼是鑑定線索，不宣稱單一門檻即可定新種"
+      }
+    },
+    {
+      "a": "X34-003",
+      "b": "R33004",
+      "proposed": "distinct",
+      "reason": "鑑定皮種不同就能排除同張皮；商品短條碼實測的是不同長度/區段讀序率與解析度。",
+      "a_snapshot": {
+        "id": "X34-003",
+        "question": "一份加工魚肉，讀整段DNA失敗，為什麼只讀其中一小段反而有機會認出魚？",
+        "answer_target": "加工後能橫跨兩個引子位置的完整DNA可能較少。把引子放得較近，短片段仍有機會擴增定序；但留下的區段也要保有魚種之間足夠的差異。研究在同一批44件商品測整段和多組短段，一組226鹼基的短段讀到39件，完整段讀到9件；一些近緣鮪魚取得序列後仍難判到單一種。",
+        "scope": "完整段652 bp。長度、取段、引子與樣本基質均可能影響成功率，研究不是只改長度的等條件試驗。"
+      },
+      "b_snapshot": {
+        "id": "R33004",
+        "question": "兩片死海古卷都寫著《耶利米書》，為什麼研究者改查動物的DNA？",
+        "answer_target": "文字相似可以提示抄本關係，卻不能證明裂片來自同一張皮。研究團隊從殘片上回收動物DNA，發現原先被歸在一起的一組材料有牛皮也有綿羊皮。這排除了同一張獸皮直接裂成兩片的可能，使原本的分組必須和文本重新比對。",
+        "scope": "案例限定這批《耶利米書》殘片。相同物種不等於同一個體；若討論多張皮接成一卷，仍須考慮接縫與文本。"
+      }
+    },
+    {
+      "a": "X34-003",
+      "b": "L057",
+      "proposed": "distinct",
+      "reason": "互補配對是複製原理，不含加工模板片段化與可定序區段取捨。",
+      "a_snapshot": {
+        "id": "X34-003",
+        "question": "一份加工魚肉，讀整段DNA失敗，為什麼只讀其中一小段反而有機會認出魚？",
+        "answer_target": "加工後能橫跨兩個引子位置的完整DNA可能較少。把引子放得較近，短片段仍有機會擴增定序；但留下的區段也要保有魚種之間足夠的差異。研究在同一批44件商品測整段和多組短段，一組226鹼基的短段讀到39件，完整段讀到9件；一些近緣鮪魚取得序列後仍難判到單一種。",
+        "scope": "完整段652 bp。長度、取段、引子與樣本基質均可能影響成功率，研究不是只改長度的等條件試驗。"
+      },
+      "b_snapshot": {
+        "id": "L057",
+        "question": "DNA 為什麼能拿自己的一條鏈當影印底稿？",
+        "answer_target": "互補鹼基配對提供模板",
+        "scope": "DNA 半保留複製的歷史實驗；不冒充實作紀錄"
+      }
+    },
+    {
+      "a": "X34-004",
+      "b": "X34-003",
+      "proposed": "distinct",
+      "reason": "兩者都用短DNA，但名單外物種未被提問、混樣需逐目標檢測，是讀到短片段以後仍存在的組成辨識問題。",
+      "a_snapshot": {
+        "id": "X34-004",
+        "question": "只驗名單上的幾種魚，鮪魚罐頭裡還可能漏掉誰？",
+        "answer_target": "定向檢測只問預先設計的魚種是否存在。研究按DNA量把兩種鮪魚混合，少數成分也可被相應檢測找出，能力因魚種而異。另在一罐商品中，定向檢測見正鰹、黃鰭鮪的訊號，短序列比對另提示未列入定向名單的大目鮪。前者再靈敏，也不會替未設計的魚種亮燈。",
+        "scope": "雙種控制是純化DNA按濃度配比及模擬加熱，不能當成罐頭魚肉重量。F16的大目鮪序列匹配度94.9%，不宣稱已確定三種或其肉量。"
+      },
+      "b_snapshot": {
+        "id": "X34-003",
+        "question": "一份加工魚肉，讀整段DNA失敗，為什麼只讀其中一小段反而有機會認出魚？",
+        "answer_target": "加工後能橫跨兩個引子位置的完整DNA可能較少。把引子放得較近，短片段仍有機會擴增定序；但留下的區段也要保有魚種之間足夠的差異。研究在同一批44件商品測整段和多組短段，一組226鹼基的短段讀到39件，完整段讀到9件；一些近緣鮪魚取得序列後仍難判到單一種。",
+        "scope": "完整段652 bp。長度、取段、引子與樣本基質均可能影響成功率，研究不是只改長度的等條件試驗。"
+      }
+    },
+    {
+      "a": "X34-004",
+      "b": "B2198",
+      "proposed": "distinct",
+      "reason": "可辨隱蔽物種的單一標準條碼不具有測試已知混樣少數成分和名單外物種的對照。",
+      "a_snapshot": {
+        "id": "X34-004",
+        "question": "只驗名單上的幾種魚，鮪魚罐頭裡還可能漏掉誰？",
+        "answer_target": "定向檢測只問預先設計的魚種是否存在。研究按DNA量把兩種鮪魚混合，少數成分也可被相應檢測找出，能力因魚種而異。另在一罐商品中，定向檢測見正鰹、黃鰭鮪的訊號，短序列比對另提示未列入定向名單的大目鮪。前者再靈敏，也不會替未設計的魚種亮燈。",
+        "scope": "雙種控制是純化DNA按濃度配比及模擬加熱，不能當成罐頭魚肉重量。F16的大目鮪序列匹配度94.9%，不宣稱已確定三種或其肉量。"
+      },
+      "b_snapshot": {
+        "id": "B2198",
+        "question": "兩隻昆蟲外表幾乎一樣，DNA 條碼能讓我們發現什麼？",
+        "answer_target": "標準短序列與參考資料比對可提示隱蔽多樣性",
+        "scope": "條碼是鑑定線索，不宣稱單一門檻即可定新種"
+      }
+    },
+    {
+      "a": "X34-004",
+      "b": "R33004",
+      "proposed": "distinct",
+      "reason": "古皮張用兩個來源判排斥，沒有測同一產品中的多物種或封閉面板盲區。",
+      "a_snapshot": {
+        "id": "X34-004",
+        "question": "只驗名單上的幾種魚，鮪魚罐頭裡還可能漏掉誰？",
+        "answer_target": "定向檢測只問預先設計的魚種是否存在。研究按DNA量把兩種鮪魚混合，少數成分也可被相應檢測找出，能力因魚種而異。另在一罐商品中，定向檢測見正鰹、黃鰭鮪的訊號，短序列比對另提示未列入定向名單的大目鮪。前者再靈敏，也不會替未設計的魚種亮燈。",
+        "scope": "雙種控制是純化DNA按濃度配比及模擬加熱，不能當成罐頭魚肉重量。F16的大目鮪序列匹配度94.9%，不宣稱已確定三種或其肉量。"
+      },
+      "b_snapshot": {
+        "id": "R33004",
+        "question": "兩片死海古卷都寫著《耶利米書》，為什麼研究者改查動物的DNA？",
+        "answer_target": "文字相似可以提示抄本關係，卻不能證明裂片來自同一張皮。研究團隊從殘片上回收動物DNA，發現原先被歸在一起的一組材料有牛皮也有綿羊皮。這排除了同一張獸皮直接裂成兩片的可能，使原本的分組必須和文本重新比對。",
+        "scope": "案例限定這批《耶利米書》殘片。相同物種不等於同一個體；若討論多張皮接成一卷，仍須考慮接縫與文本。"
+      }
+    },
+    {
+      "a": "X34-005",
+      "b": "D2021",
+      "proposed": "distinct",
+      "reason": "冷凍未必殺光微生物，與解凍後胞器酵素進入壓汁並留下處理史不同。",
+      "a_snapshot": {
+        "id": "X34-005",
+        "question": "同一條黃鰭鮪，冷凍再解凍後，為什麼壓出的汁會帶出更多酵素活性？",
+        "answer_target": "凍融可損傷細胞與內部構造，使原本位於粒線體內膜側的酵素較容易進入壓汁。研究把黃鰭鮪肌肉分樣，一部分在冷凍前量，另一部分凍融後以同法量，壓汁裡測得的HADH活性較高。這讓處理史留下可比較的線索。",
+        "scope": "限黃鰭鮪腹部肌肉、這種壓汁與活性測法及研究凍藏條件。測的是活性；沒有直接計數破裂的粒線體，且不能由此判斷是否新鮮可食。"
+      },
+      "b_snapshot": {
+        "id": "D2021",
+        "question": "食物冷凍過，為什麼解凍後還可能變壞？",
+        "answer_target": "區分低溫減慢微生物活動與真正移除或殺死所有微生物。",
+        "scope": "Freezing；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "X34-006",
+      "b": "H3070",
+      "proposed": "distinct",
+      "reason": "核自旋是否可觀測與如何用各位點和整體比率辨兩瓶參照物不同。",
+      "a_snapshot": {
+        "id": "X34-006",
+        "question": "兩份香草醛整體碳比例相近，為何對準分子上的同一個位置，差距會變大？",
+        "answer_target": "整體同位素比把分子八個碳位點合在一起。用定量碳核磁分開各位置的訊號，並用整體測值校準，在兩份參考材料中可見一個特別懸殊的甲氧基碳位點。這種差異可能與原料或合成歷程有關，不能由整瓶平均單獨推出。",
+        "scope": "VANA-1、VANB-1為兩份香草醛參考物，不是從兩莢香草取樣，也沒有給未知食品逐一驗真。兩瓶整體數值相近但不相等。"
+      },
+      "b_snapshot": {
+        "id": "H3070",
+        "question": "兩種碳同位素都是碳，為什麼一個能做核磁共振訊號、一個不行？",
+        "answer_target": "核自旋不同使同位素對磁場的能階響應不同；13C可觀測而12C核自旋為零。",
+        "scope": "自旋不是把原子核當經典自轉球；不延伸醫療判讀。"
+      }
+    },
+    {
+      "a": "X34-006",
+      "b": "H3071",
+      "proposed": "distinct",
+      "reason": "舊題問化學環境如何使位置可分；本題問同物質的標準樣品在同一位置的同位素豐度是否相同。",
+      "a_snapshot": {
+        "id": "X34-006",
+        "question": "兩份香草醛整體碳比例相近，為何對準分子上的同一個位置，差距會變大？",
+        "answer_target": "整體同位素比把分子八個碳位點合在一起。用定量碳核磁分開各位置的訊號，並用整體測值校準，在兩份參考材料中可見一個特別懸殊的甲氧基碳位點。這種差異可能與原料或合成歷程有關，不能由整瓶平均單獨推出。",
+        "scope": "VANA-1、VANB-1為兩份香草醛參考物，不是從兩莢香草取樣，也沒有給未知食品逐一驗真。兩瓶整體數值相近但不相等。"
+      },
+      "b_snapshot": {
+        "id": "H3071",
+        "question": "同一分子裡都是氫，為什麼核磁共振不只出現一種訊號？",
+        "answer_target": "電子環境改變核所感受到的有效磁場；等價位置可共用訊號，不同位置可能分開。",
+        "scope": "訊號組數不是氫原子總數；分裂與重疊另計。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "X34-S001",
+      "scope": "PDF p2表I，pp6–11 §§3.3–3.5、Fig2與表VII樣本2d。",
+      "locator": "PDF p2表I，pp6–11 §§3.3–3.5、Fig2與表VII樣本2d。",
+      "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+      "cache": {
+        "file": ".cache/wave34-physics-honey-spring.pdf",
+        "sha256": "2605beaf316d56a08e498211c3b51c6115cde539b7dac934039af7c6bf7e8c0a",
+        "text_file": ".cache/wave34-physics-honey-spring.txt",
+        "text_sha256": "ec00d45ab959dc4ec62ce0ddd504b8fbd6e32c2359812ea1932ed41085e89c4b"
+      }
+    },
+    {
+      "source_id": "X34-S002",
+      "scope": "XML P041–055前後萃取、磨機控制與化學鑑別；P056–071，Figs2、3、4、6及P082結論。",
+      "locator": "XML P041–055前後萃取、磨機控制與化學鑑別；P056–071，Figs2、3、4、6及P082結論。",
+      "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+      "cache": {
+        "file": ".cache/wave34-physics-coffee.xml",
+        "sha256": "ea24f8c06d0ab4646a0d1c97e4195cc2973d0b6191e0bb72d26bc3e24b17284f",
+        "text_file": ".cache/wave34-physics-coffee.txt",
+        "text_sha256": "03aa62070021feddaf6af39384a5e7510743a2c6078c5e1e61439e60fd77a3a9"
+      }
+    },
+    {
+      "source_id": "X34-S003",
+      "scope": "P014–020引子與資料庫比對策略，P024–036原組織及44件商品的定序結果，P038近緣鮪種限制；Tables2、4。",
+      "locator": "P014–020引子與資料庫比對策略，P024–036原組織及44件商品的定序結果，P038近緣鮪種限制；Tables2、4。",
+      "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+      "cache": {
+        "file": ".cache/wave34-physics-barcode.xml",
+        "sha256": "4ce441f1a552dd0a4d192c3e698b3f2dc9513ad9bd49293c3e61d15051fb4a4e",
+        "text_file": ".cache/wave34-physics-barcode.txt",
+        "text_sha256": "90d0be50b7d576eaba66509561127068caf0c133593c86dbae4c681fcc269840"
+      }
+    },
+    {
+      "source_id": "X34-S004",
+      "scope": "P021–025定向檢測與混合設計，P030–033 Table2 F16，P041–052 Tables2、3與方法範圍。",
+      "locator": "P021–025定向檢測與混合設計，P030–033 Table2 F16，P041–052 Tables2、3與方法範圍。",
+      "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+      "cache": {
+        "file": ".cache/wave34-physics-mixture.xml",
+        "sha256": "5f9a1ea376ba55b0697b59ca0eb7337f24bf1bed2e4503588b7b161e1cf054f2",
+        "text_file": ".cache/wave34-physics-mixture.txt",
+        "text_sha256": "983e262965d1d06d1559d472c5581313631bfa476b003298b9e0f307bab263c6"
+      }
+    },
+    {
+      "source_id": "X34-S005",
+      "scope": "P003–008細胞內酵素釋出機制，P009–012三組試驗，P020–031、Tables1–2成對凍前／解凍汁液酵素活性。",
+      "locator": "P003–008細胞內酵素釋出機制，P009–012三組試驗，P020–031、Tables1–2成對凍前／解凍汁液酵素活性。",
+      "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+      "cache": {
+        "file": ".cache/wave34-physics-freeze.xml",
+        "sha256": "335ecedd50abd35be64a6c3108194781d3040c699bdda31d0e990ed8abe4bd7e",
+        "text_file": ".cache/wave34-physics-freeze.txt",
+        "text_sha256": "5a1e6f4113cb7bb872d10f9f1576e3400c074fd23480d811d901a0e92bb06393"
+      }
+    },
+    {
+      "source_id": "X34-S006",
+      "scope": "PDF pp2–4 bulk IRMS與定量13C NMR，pp8–9 Tables3–6兩種參考物八個位點的比較及跨實驗室讀值。",
+      "locator": "PDF pp2–4 bulk IRMS與定量13C NMR，pp8–9 Tables3–6兩種參考物八個位點的比較及跨實驗室讀值。",
+      "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+      "cache": {
+        "file": ".cache/wave34-physics-vanilla-spring.pdf",
+        "sha256": "c7ce1a1a0b2ece6cf201fab182e40181a325d6d38b13f72380433cdaa69ed1f4",
+        "text_file": ".cache/wave34-physics-vanilla-spring.txt",
+        "text_sha256": "3ecbdd649ea1edfdea4162cc4012cc9f3da1ac6a07b065138c29afd428f985a0"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "X34-S001",
+      "doi": "10.1051/apido:2008042",
+      "primary_body_url": "https://link.springer.com/content/pdf/10.1051/apido:2008042.pdf",
+      "identity_relation": "Springer保存原刊PDF，pp574–587；HAL另有同文，未另外列證據。",
+      "old_exact_matches": [],
+      "count_policy": "同文不同PDF典藏、網頁與XML不另計一次研究。"
+    },
+    {
+      "source_id": "X34-S002",
+      "doi": "10.1016/j.foodchem.2017.12.034",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5774150/fullTextXML",
+      "identity_relation": "Europe PMC受理全文；DOI含2017，期刊卷出版2018。",
+      "old_exact_matches": [],
+      "count_policy": "同文不同PDF典藏、網頁與XML不另計一次研究。"
+    },
+    {
+      "source_id": "X34-S003",
+      "doi": "10.1038/srep15894",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4626862/fullTextXML",
+      "identity_relation": "Europe PMC原研究全文XML。",
+      "old_exact_matches": [],
+      "count_policy": "同文不同PDF典藏、網頁與XML不另計一次研究。"
+    },
+    {
+      "source_id": "X34-S004",
+      "doi": "10.1111/1750-3841.70424",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12447540/fullTextXML",
+      "identity_relation": "Europe PMC原研究全文XML。",
+      "old_exact_matches": [],
+      "count_policy": "同文不同PDF典藏、網頁與XML不另計一次研究。"
+    },
+    {
+      "source_id": "X34-S005",
+      "doi": "10.4081/ijfs.2019.6971",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6784597/fullTextXML",
+      "identity_relation": "Europe PMC原研究全文XML。",
+      "old_exact_matches": [],
+      "count_policy": "同文不同PDF典藏、網頁與XML不另計一次研究。"
+    },
+    {
+      "source_id": "X34-S006",
+      "doi": "10.1007/s00216-022-04292-0",
+      "primary_body_url": "https://link.springer.com/content/pdf/10.1007/s00216-022-04292-0.pdf",
+      "identity_relation": "Springer原刊PDF，pp7153–7165。",
+      "old_exact_matches": [],
+      "count_policy": "同文不同PDF典藏、網頁與XML不另計一次研究。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave34-physics-fetch.json",
+      "sha256": "9fc6df782b73af4343a680e8eaa99710e30e62c06bf106a55ff616560c6cfc61"
+    },
+    {
+      "file": ".cache/wave34-physics-alt.json",
+      "sha256": "3d87603b8d620925137024e177496461c9e07365afd46fa78ec6a06a136e4df8"
+    },
+    {
+      "file": ".cache/wave34-physics-img-routes.json",
+      "sha256": "ef85d334741ca6058e8cea4004d90bee1c00253ae41ee8ab8e92b55ef650725b"
+    }
+  ],
+  "retrieval_failures": [
+    "蜂蜜EDP原刊PDF的UA取回403，web可讀；另從Springer及HAL成功取回原文，採Springer檔。",
+    "香草醛Europe PMC XML取回500、PMC網頁呈驗證頁，改讀Springer原刊PDF。歐盟蜂蜜方法頁web跳域不可讀，不作來源。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "X34-S001",
+      "file": ".cache/wave34-physics-honey-spring-p9.png",
+      "sha256": "f86bacdb72967bf37c0a0508560115666945bab5b36deb7c6d608c802bcf50a0",
+      "read_scope": "Fig2樣本2d的不同糖峰與加入米糖漿的驗證段。"
+    },
+    {
+      "source_id": "X34-S001",
+      "file": ".cache/wave34-physics-honey-spring-p11.png",
+      "sha256": "a957432eba9c7e2300d84b575c668b2232d3dbffaea00c47d02e59801c3ee32c",
+      "read_scope": "表VII同一個2d的蛋白/全蜜及個別糖類結果。"
+    },
+    {
+      "source_id": "X34-S002",
+      "file": ".cache/wave34-physics-coffee-f1.jpg",
+      "sha256": "1c08474fefc2645f338d74dd2c2ddc2b46b1635b0c0bbd989fc79f6142dcc02f",
+      "read_scope": "原文Fig3（XML首張figure為Fig3），兩品種的二維核磁證據；不作定量比例圖。"
+    },
+    {
+      "source_id": "X34-S002",
+      "file": ".cache/wave34-physics-coffee-f4.jpg",
+      "sha256": "ab3688496db5c34e425417f15d44f25cadcc7cbde88e4d9048e5e530ce37927e",
+      "read_scope": "原文Fig4：已知來源的30份阿拉比卡，小峰大小並不相同。"
+    },
+    {
+      "source_id": "X34-S006",
+      "file": ".cache/wave34-physics-vanilla-spring-p8.png",
+      "sha256": "4427ec7bd6d87ab773e8587775612560507edbd4da3c26b7ef312d060be01a03",
+      "read_scope": "重新辨別整體約−31/−26‰與特定位點的差別，表3為VANA-1。"
+    },
+    {
+      "source_id": "X34-S006",
+      "file": ".cache/wave34-physics-vanilla-spring-p9.png",
+      "sha256": "769b8535273eb63460350f579f7e6b0c352ecc4e56dc5dc8f2d181e2d852d982",
+      "read_scope": "表4 VANB-1的各位點，表5/6跨實驗室比較；沒有用示意圖推定市售來源。"
+    }
+  ],
+  "reading_limits": [
+    "四份原刊XML、兩份原刊PDF均限所列段落，另目讀六張圖或表頁。DNA及HADH數據讀原文表格；候選的流程圖與檢測燈號是待製作示意。",
+    "此批研究處理個案或參考物；不提供消費品牌判定、法規符合或食用安全建議。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W34P-T01",
+      "body_seconds": 74,
+      "core_seconds": {
+        "X34-001": 74
+      },
+      "chapter_seconds": [
+        33,
+        41
+      ],
+      "max_beat_seconds": 23,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W34P-T02",
+      "body_seconds": 70,
+      "core_seconds": {
+        "X34-002": 70
+      },
+      "chapter_seconds": [
+        36,
+        34
+      ],
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W34P-T03",
+      "body_seconds": 95,
+      "core_seconds": {
+        "X34-003": 46,
+        "X34-004": 49
+      },
+      "chapter_seconds": [
+        46,
+        49
+      ],
+      "max_beat_seconds": 27,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W34P-T04",
+      "body_seconds": 54,
+      "core_seconds": {
+        "X34-005": 54
+      },
+      "chapter_seconds": [
+        34,
+        20
+      ],
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "all_strings_rstrip": true,
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待另一位作者獨立覆核，並查本輪共同近鄰。"
+  ],
+  "revision_history": [
+    {
+      "before": [
+        {
+          "file": "batches/wave34-physics.json",
+          "sha256": "5efac33eb1dddf7de333b7d698313305ee252394684ed4bbc4f343ae729c22f1"
+        },
+        {
+          "file": "reviews/wave34-physics-themes.json",
+          "sha256": "20f9afc63406747b892e3cca333dbb82ad8ef06abd2ea9b4bd7dcb22930a24c5"
+        },
+        {
+          "file": "reviews/wave34-physics-author.json",
+          "sha256": "c3dc9d408fea3b9a14b9e4afcda6c971e7f22cfd060fc17ac44d1a265feecc92"
+        }
+      ],
+      "removed_seconds": 0,
+      "reason": "X34-004問句強調封閉名單，避免讀成F16罐頭三項檢測都陽性。",
+      "old_question": "驗鮪魚罐頭的三個燈都有答案，怎麼還可能漏掉名單以外的魚？",
+      "new_question": "只驗名單上的幾種魚，鮪魚罐頭裡還可能漏掉誰？"
+    },
+    {
+      "before": [
+        {
+          "file": "batches/wave34-physics.json",
+          "sha256": "5834509de0dd0add0d2cf0b97a5b36b87bb42f399f80f9af9629acc3ef6d79bd"
+        },
+        {
+          "file": "reviews/wave34-physics-themes.json",
+          "sha256": "20f9afc63406747b892e3cca333dbb82ad8ef06abd2ea9b4bd7dcb22930a24c5"
+        },
+        {
+          "file": "reviews/wave34-physics-author.json",
+          "sha256": "f3143b515e5bc613a2c63d8bd08ed185762f5e0f49c8fae78242506a585fec11"
+        }
+      ],
+      "removed_seconds": 18,
+      "reason": "咖啡化學身分細節移至備稿註，22秒量測拍收16；凍魚最後12秒只介紹另外試驗，移除，留前章與胞器釋出作答案。",
+      "body_seconds_before": [
+        74,
+        76,
+        95,
+        66
+      ],
+      "body_seconds_after": [
+        74,
+        70,
+        95,
+        54
+      ]
+    }
+  ]
+}

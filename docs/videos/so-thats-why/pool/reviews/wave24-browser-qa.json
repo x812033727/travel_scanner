@@ -1,0 +1,38 @@
+{
+  "tested_on": "2026-11-02T05:33:24.620Z",
+  "result": "PASS",
+  "selected": 3047,
+  "index_html_sha256": "767feda66e07148b7750346218ccdf32d5a666aa11b0f50c900240f0999b0adc",
+  "source_sample": {
+    "id": "A24001",
+    "urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6059360/"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave24-desktop.png",
+    "wave24-source-desktop.png",
+    "wave24-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "root目讀1440x1000首頁、展開A24001卡片及390x844手機：3047/2605/254/143計數正確，文字換行與篩選控制可讀，無橫向裁切。來源URL位於展開卡片較下方，已由DOM逐href核對，不冒稱截圖看見全部來源文字。",
+  "screenshot_hashes": {
+    "wave24-desktop.png": "bd7adfcfcda118098c628776c3347e31bcd521b904eafb79cd84360b0794bcac",
+    "wave24-source-desktop.png": "4c8fb94eaac85c584e03c7a4088f69cc02a7783da7ea75429e916177f385986f",
+    "wave24-mobile.png": "23d12d23e71f003b2bb3646b3b0e5e06c33ae1085166128ec1af6d5923e6411a"
+  }
+}

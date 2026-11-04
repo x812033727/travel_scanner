@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave5-water-systems-20261101",
+  "files": [
+    {
+      "path": "batches/wave5-water-systems.json",
+      "sha256": "ca15bff6e62bbbe4a7377c0fc36f0ab2be68b20ab9dbd1a3f1cfdc94863895ab"
+    },
+    {
+      "path": "reviews/wave5-water-themes.json",
+      "sha256": "1cbece0ace7004066dd5b7d1f75e7762ec43e9127eaa10c49abfc126e622110b"
+    }
+  ],
+  "encoding": "UTF-8 without BOM; LF; hashes are exact bytes after normalization",
+  "counts": {
+    "candidates": 27,
+    "sources": 12,
+    "candidate_referenced_sources": 12,
+    "not_added": 6,
+    "theme_proposals": 3,
+    "author_recommends_hold": 2,
+    "remaining_candidates_for_independent_review": 25
+  },
+  "candidate_ids": [
+    "W5001",
+    "W5002",
+    "W5003",
+    "W5004",
+    "W5005",
+    "W5006",
+    "W5007",
+    "W5008",
+    "W5009",
+    "W5010",
+    "W5011",
+    "W5012",
+    "W5013",
+    "W5014",
+    "W5015",
+    "W5017",
+    "W5018",
+    "W5019",
+    "W5020",
+    "W5021",
+    "W5022",
+    "W5023",
+    "W5024",
+    "W5025",
+    "W5026",
+    "W5027",
+    "W5028"
+  ],
+  "baseline": {
+    "path": "pool.json",
+    "sha256": "0cc38944fa505841350dc53123d6b714e9781328a12d5f3389a31a69e463cd10",
+    "raw_records": 2790,
+    "selected": 2449,
+    "method": "以中文生活入口與英文機制詞檢索全raw，再讀水處理／地下水／氣體與膜／量測相關命中題的question、answer_target與scope；不是2790題逐一外部事實重查。"
+  },
+  "source_reading": {
+    "method": "12個登記來源逐一實讀reading_scope指定正文；PDF未讀段不視為通過。工具PDF文字擷取不等於逐圖視覺驗證；不採各來源圖表、流程圖或教材數值例題。",
+    "source_ids": [
+      "W5-S001",
+      "W5-S002",
+      "W5-S003",
+      "W5-S004",
+      "W5-S005",
+      "W5-S006",
+      "W5-S007",
+      "W5-S008",
+      "W5-S009",
+      "W5-S010",
+      "W5-S011",
+      "W5-S012"
+    ],
+    "access_limits": [
+      "EPA Nutrient Control Design Manual實讀指定PDF頁，另補111頁步驟4排出含磷剩餘污泥；非全369頁。",
+      "TDEC作者以web工具取得正文，但後續URL重開及root取用遇403；作者再次開先前ref成功後，把原樣工具回傳存忽略cache供獨立讀。非完整PDF副本。",
+      "Ireland EPA filtration PDF的web開啟逾時，urllib官方URL下載成功；以pypdf讀PDF49–50、110、115–118、135及glossary相關段，非全160頁。只有49–50與110用於候選。",
+      "NCSU2011研究機構報導正文及附原研究摘要已讀；未讀原期刊論文全文，不把全文方法或形成速率當已知。",
+      "FDA1980 RO歷史ITG僅作退題判斷；其concentration polarization/fouling用詞不能支持作者想延伸的邊界層機制。",
+      "USGS BOD PDF web與urllib皆403，Ontario飲水設計頁403，未當作已讀來源、沒有據搜尋摘要新增候選。",
+      "所有歷史EPA/NEIWPCC教材僅支持機制，不引用舊法規、處理效率、價格或當地現行要求。"
+    ]
+  },
+  "recommended_central_dispositions": [
+    {
+      "id": "W5007",
+      "action": "hold",
+      "reason": "來源支持過早除磷可限制後段微生物，但本題目前只有營養不足一層用途，厚度不足；保留raw/來源，題組不用。"
+    },
+    {
+      "id": "W5009",
+      "action": "hold",
+      "reason": "SBR來源說static fill偏利成絮菌，但未在所讀段交代相對絲狀菌的競爭機制；不以現象敘述填滿段落。"
+    }
+  ],
+  "review_feedback_applied": [
+    {
+      "id": "W5004",
+      "change": "補讀PDF111頁並加淨去磷須排出含磷剩餘污泥；答案、視覺與題組一致。"
+    },
+    {
+      "id": "W5011",
+      "change": "示意明確同原水入流，但加回流後濾床總流量不同，不宣稱總流量相同。"
+    },
+    {
+      "id": "W5019",
+      "change": "root補讀作者保存TDEC工具擷取L355–357後撤回暫緩；保留群聚濃度降低自由通路的沉降段落，仍不硬塞進本輪題組。"
+    },
+    {
+      "id": "W5020",
+      "change": "題名用清掉表面層，避免把慢砂濾池表層移除寫成與快速濾床相同反沖洗。"
+    }
+  ],
+  "boundary_pairs": [
+    {
+      "ids": [
+        "W5001",
+        "D2015"
+      ],
+      "proposal": "distinct_with_scope",
+      "reason": "舊題回泥留菌；新題比較生長／淨流失門檻與SRT/HRT，若稿只剩回泥則併回舊題。"
+    },
+    {
+      "ids": [
+        "W5002",
+        "P273",
+        "P274"
+      ],
+      "proposal": "distinct_with_scope",
+      "reason": "不是再定義緩衝；新增硝化消耗鹼度使其自身反應環境惡化的回饋。"
+    },
+    {
+      "ids": [
+        "W5003",
+        "D2015",
+        "B2098"
+      ],
+      "proposal": "distinct_with_scope",
+      "reason": "追硝酸鹽回到原水碳源位置；與回泥保留微生物、單講反硝化產氮不同。"
+    },
+    {
+      "ids": [
+        "W5004",
+        "W5005",
+        "W5006"
+      ],
+      "proposal": "distinct",
+      "reason": "正常儲碳釋磷、碳源耗盡後次級釋磷、硝酸鹽帶入競爭是不同狀態；題組用同一物質帳比較。"
+    },
+    {
+      "ids": [
+        "W5011",
+        "D2015"
+      ],
+      "proposal": "distinct_with_scope",
+      "reason": "滴濾回流著重濾床持續濕潤與配水，非維持懸浮菌量。"
+    },
+    {
+      "ids": [
+        "W5013",
+        "B4032"
+      ],
+      "proposal": "distinct_with_scope",
+      "reason": "不重解水錘起因；限定外水、裂隙通路及不利壓差共同成立時的入侵。"
+    },
+    {
+      "ids": [
+        "W5014",
+        "W5015",
+        "D2167"
+      ],
+      "proposal": "distinct",
+      "reason": "顆粒遮蔽、空間輻射劑量、儲槽水齡分布是不同機制；W5015明確保持時間相同。"
+    },
+    {
+      "ids": [
+        "W5017",
+        "P242"
+      ],
+      "proposal": "distinct_with_scope",
+      "reason": "基本電荷去穩定列not_added，保留剪切促碰撞與破絮競爭。"
+    },
+    {
+      "ids": [
+        "W5018",
+        "W5019",
+        "D2013"
+      ],
+      "proposal": "distinct_with_scope",
+      "reason": "單顆粒沉澱背景已舊；新題分別是表面負荷幾何與粒群濃度條件。"
+    },
+    {
+      "ids": [
+        "W5024",
+        "W5025",
+        "W5026"
+      ],
+      "proposal": "distinct",
+      "reason": "微生物失活、氧氣物理逸出、有限氧量天花板各造成不同測量問題，不把所有試驗限制拆題。"
+    },
+    {
+      "ids": [
+        "W5027",
+        "D2010"
+      ],
+      "proposal": "distinct_with_scope",
+      "reason": "同一濾床粒徑／密度安排與容污位置不同於膜上游前處理。"
+    },
+    {
+      "ids": [
+        "W5028",
+        "D2009",
+        "D2010"
+      ],
+      "proposal": "independent_review_needed",
+      "reason": "錯流方向與膜面沉積搬運才是新增內容；若只剩濃水分流或防堵口號應併回舊題。"
+    }
+  ],
+  "themes": {
+    "ids": [
+      "W5W-T01",
+      "W5W-T02",
+      "W5W-T03"
+    ],
+    "seconds": [
+      255,
+      230,
+      225
+    ],
+    "opening_and_closing_included": true,
+    "all_format": "short_explainer",
+    "hold_ids_absent": true,
+    "core_maximum_budgets_checked": true,
+    "note": "每章有30–40秒內新條件／視覺推進，非完整旁白盲讀或成片實測；縮版必須另選版本與重核總秒數。"
+  },
+  "verification": {
+    "performed": [
+      "JSON可讀、候選ID唯一、來源引用存在",
+      "三題組總秒數與target_minutes算術一致",
+      "各章正整數秒、至少2章、beat間距及尾段<=45秒",
+      "各候選同片累計不超editorial.seconds上限",
+      "W5007/W5009未進題組",
+      "UTF8無BOM及LF、鎖定hash讀回"
+    ],
+    "not_performed": [
+      "未跑repository tests",
+      "未執行實廠或水質實驗",
+      "無全2790題事實重查",
+      "無完整稿撰寫／獨立盲讀",
+      "無媒體製作／現行法規或飲用安全核准"
+    ]
+  },
+  "conclusion": "作者收斂為27筆raw、建議2筆暫緩，並有6個不新增方向；不是以數量湊50。其餘候選與三題組仍須獨立覆核，不是製作核准。"
+}

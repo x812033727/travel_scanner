@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "reviewer": "science_sources",
+  "reviewed_on": "2026-11-01T11:01:55.051566+00:00",
+  "status": "PASS_FINAL_INTEGRATION_READBACK_NOT_PRODUCTION",
+  "production_approved": false,
+  "independence": "覆核者不是本輪中央整合作者。覆核者是water批作者，因此本收據只核水批中央處置與來源保存；水務內容獨立判斷採root的非作者覆核，不宣稱第二次獨立水務事實查核。紡織批原獨立覆核由本代理完成。",
+  "scope": "中央資料、已存作者／非作者覆核與後續修正雜湊、歷史快照、來源關係、題組變體及預算、三份說明文件與驗證收據的一致性。無新增外站研究；未重跑repository測試、瀏覽器或FLAC探針。",
+  "input_hashes": [
+    {
+      "file": "pool.json",
+      "sha256": "0ddfff1ba218f4bb81e5f54f2418ec9ac1e7a5866c2bcc8ef3bdd89837f4a918"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "646e5457a8031fb9bb69c3ca38c5cccd3896e3ef709fd5d8dc79808e1380a16a"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "1006b14757a8bdd9c37168ab73d276b76fe83bacdfccacf1145354f75ea79fee"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "789fb22feea67de42bcc7c5261d6b0b2b6c8bf62df6a5cd7801a0faee8514646"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "f8d6d22c2f6c4380b907d67e1df6ae5b2eef9ee847495b7e91c5a9fd4afe9a6a"
+    },
+    {
+      "file": "baseline.json",
+      "sha256": "b56e116000b84bbabf66eec091bddb4a2132784931f5146b9922832c5cd0b3e2"
+    },
+    {
+      "file": "checkpoints.json",
+      "sha256": "c2d6340c89dc409eed3104fb2a1c2e198a412d3cf8e7ff4c2817555868f298bd"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "sha256": "26d4627eca62057f6bf12eee75e0a80c6a489ceb5528dfee7620d67cf81570e0"
+    },
+    {
+      "file": "checkpoint-2328.json",
+      "sha256": "8958e75c55b81787fea922f8fd503020fb2125816a44990f76cb36b79d8d7fa4"
+    },
+    {
+      "file": "checkpoint-2449.json",
+      "sha256": "1130c79de09e209f0177ecee8190dc0016463a059f0aa3f3a4d48b029e27315b"
+    },
+    {
+      "file": "README.md",
+      "sha256": "668386d8710bec1ef115076fdd5996b53e2bbf585d817bfbe6142537735655c1"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "bfa99480d9755f249f7034d4e5a79c919457a8dc696cb6b7ff19cc80872efcfd"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "ee5625e289969ab1416b5d887b0a78697793737782aafde64b35a181acfe287b"
+    },
+    {
+      "file": "reviews/wave5-editorial-integration.json",
+      "sha256": "8d5b15e4d0f3b5d17443f57e3fc501bae3fed4116c05a1aef9abededc0c6936f"
+    },
+    {
+      "file": "reviews/wave5-browser-qa.json",
+      "sha256": "ae7221c20d21e9bef76a0eaf5799b24900fe8b951da07dca4b4c7a95d69286c8"
+    },
+    {
+      "file": "reviews/wave5-media-probe.json",
+      "sha256": "ee66c4fe91848433c829a53a4cd6c8112eb0f2014d8ba1c64ffabb00c1af0171"
+    },
+    {
+      "file": "reviews/wave5-physics-reviews-body.json",
+      "sha256": "5854df582ca74a25dac66b53b20dac9c4372d627cde33dc3aec1393abb506af1"
+    },
+    {
+      "file": "reviews/wave5-water-reviews-textiles.json",
+      "sha256": "9caaf175beb38eb51e05c3ba5d6e8617c024e30e01d0bf41982b8249c4431e4f"
+    },
+    {
+      "file": "reviews/wave5-root-reviews-water.json",
+      "sha256": "6d6c6070f513bd1628f7f7bc6b321479265d6e5798b769c86cdd73c416aa9984"
+    },
+    {
+      "file": "reviews/wave5-life-reviews-media.json",
+      "sha256": "0cc24495a04390a479c28b0835d29dab7b1393eac17d10ac892e5386cf1d90af"
+    },
+    {
+      "file": "batches/wave5-body-senses.json",
+      "sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53"
+    },
+    {
+      "file": "batches/wave5-digital-media.json",
+      "sha256": "da3a0b39e5bcfa80355f81a0e86d7fd16b34da0c89a08ddf4f2a1c0c2381686a"
+    },
+    {
+      "file": "batches/wave5-textiles-paper.json",
+      "sha256": "fc6364364003eb9982ea4c3d949eed919b841b02005f6fc2feaf0389b746bd63"
+    },
+    {
+      "file": "batches/wave5-water-systems.json",
+      "sha256": "ca15bff6e62bbbe4a7377c0fc36f0ab2be68b20ab9dbd1a3f1cfdc94863895ab"
+    },
+    {
+      "file": "reviews/wave5-body-author.json",
+      "sha256": "87211cb460f1ac8837f0fae2d4f412af0a8925103fa76e1091efe204ea7646d7"
+    },
+    {
+      "file": "reviews/wave5-body-themes.json",
+      "sha256": "e45e58da1825bccb690e6ec46712c095919ccfcdcb75950bbfc8ec1460203760"
+    },
+    {
+      "file": "reviews/wave5-media-author.json",
+      "sha256": "5a5dac3cc812877cbe97128b0c6f2568ec08bcd528fa62da732f13cd22ff4d83"
+    },
+    {
+      "file": "reviews/wave5-media-themes.json",
+      "sha256": "edb5e67b1c9df20dea51462e79135277ce3ef08a7e1b6ea62e08d736f1340ba9"
+    },
+    {
+      "file": "reviews/wave5-textiles-author.json",
+      "sha256": "1cc9995c95da8b468f444d039a79ae739eb91108f6cc990066e21a174e00da1e"
+    },
+    {
+      "file": "reviews/wave5-textiles-themes.json",
+      "sha256": "a9dfa6205062db4eecf30afa759a07baa1e65e7a4d0d748e9ebbd06aca5acb32"
+    },
+    {
+      "file": "reviews/wave5-water-author.json",
+      "sha256": "9aeac84ae96179c3d78ff92c6cd06a4dfe11f303e08b99504cdcfcba410ae478"
+    },
+    {
+      "file": "reviews/wave5-water-themes.json",
+      "sha256": "1cbece0ace7004066dd5b7d1f75e7762ec43e9127eaa10c49abfc126e622110b"
+    }
+  ],
+  "validation_observed": {
+    "file": "reviews/wave5-final-validation.json",
+    "observed_at_utc": "2026-11-01T11:01:55.110210+00:00",
+    "receipt_tested_on": "2026-11-01T10:58:26.698Z",
+    "hash_binding": "不把會追加收尾證據的validation自身hash當封存門檻；本次已讀到tests欄。其內pool/themes/manifest/index及四批hash逐一對當前檔確認。",
+    "tests_reported": {
+      "node": {
+        "passed": 34,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "duration_ms": 93566.3704,
+        "scope": [
+          "pool/pool.test.mjs",
+          "catalog.test.mjs",
+          "tools/repo-hygiene.test.mjs",
+          "tools/json-duplicate-keys.test.mjs",
+          "tools/docs-videos-tests.test.mjs"
+        ],
+        "log_sha256": "853e959cda6c2bafd94a0c0c403506b356c0c8067948dab88081eb3424770667"
+      },
+      "python": {
+        "passed": 2,
+        "failed": 0,
+        "scope": "semantic_test.py"
+      },
+      "pool_check": "PASS",
+      "series_check": "PASS",
+      "long_form_check": {
+        "result": "PASS",
+        "existing_plans": 473
+      },
+      "task_check": {
+        "result": "PASS",
+        "files": 2287,
+        "unrelated_existing_warnings": "preserved"
+      },
+      "full_tools_suite": false,
+      "api_web_suites": false
+    },
+    "independently_checked_test_evidence": "讀既有Node log尾端34 tests / pass34 / fail0 / cancelled0 / skipped0，重算其SHA256與tests.node.log_sha256相符。Python2/2及pool/series/473長片/2287任務check是已存收據報告，本代理未重跑或另驗所有執行log。",
+    "pending_tests_at_final_readback": false
+  },
+  "counts_recomputed": {
+    "raw_records": 2895,
+    "canonical_questions": 2774,
+    "eligible_candidates": 2605,
+    "selected_candidates": 2546,
+    "alias_records": 121,
+    "historical_records": 313,
+    "source_urls": 3855,
+    "current_research_source_urls": 888,
+    "selected_source_urls": 2107,
+    "new_suggestions_not_added": 281,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0,
+    "previous_selected_retained": 2449,
+    "new_raw": 105,
+    "new_selected": 97,
+    "new_merges": 4,
+    "new_holds": 4,
+    "current_batch_distinct_urls": 59,
+    "first_full_pool_urls": 56,
+    "selected_source_relations": 3889,
+    "new_not_added": 58,
+    "theme_total": 60,
+    "new_theme_total": 12,
+    "remaining_to_10000": 7454
+  },
+  "historical_preservation": {
+    "baseline_1000_gzip_hash": "PASS",
+    "checkpoint_2000_2328_2449_gzip_hashes": "PASS",
+    "comparison": "直接解壓2449快照，比對old pool.raw_records所有欄位、選入集合與themes.episodes物件。",
+    "old_raw_compared": 2790,
+    "changed_raw_ids": [],
+    "old_selected_compared": 2449,
+    "removed_selected_ids": [],
+    "old_themes_compared": 48,
+    "changed_old_themes": [],
+    "editorial_baseline": "checkpoints.json仍指定checkpoint-2000.json；2449檢查點沒有擴大editorial豁免。"
+  },
+  "central_dispositions": {
+    "merges": [
+      {
+        "duplicate_id": "A5013",
+        "canonical_id": "V3012",
+        "reason": "酵素清除化學訊號的核心相同；ACh胞外接點可作cAMP胞內的情境/路徑對照，不以換分子另計核心。"
+      },
+      {
+        "duplicate_id": "X5009",
+        "canonical_id": "H3026",
+        "reason": "兩題答案都以交聯限制分子鏈永久相對滑移來保留／回復形狀。平整與褲線是有用的設定形狀案例，現有目標未增加另一獨立機制；保留新來源與衣物條件作案例，不占第二核心。"
+      },
+      {
+        "duplicate_id": "M5008",
+        "canonical_id": "M5004",
+        "reason": "同一可逆預測＋精確殘差核心；PNG空間位元組與FLAC時間樣本作互補案例、保留雙來源及問法，不另計。"
+      },
+      {
+        "duplicate_id": "M5012",
+        "canonical_id": "I3036",
+        "reason": "共同解釋內容時間順序與還原依賴順序不同；較晚項目可作較早項目的基底/參考。DTS/PTS是有效影片變體，不另計。 覆核比較的I3037已是I3036別名，直接指向既有核心，保留兩階段關係。"
+      }
+    ],
+    "holds": [
+      {
+        "id": "A5028",
+        "reason": "深度與感受野有教材關係描述，但變形向深處展寬因果及visual未在採用來源直接支持；保留研究線索，補來源後再審。"
+      },
+      {
+        "id": "X5022",
+        "reason": "所讀研究有浸泡時間的濕強差及半縮醛可能形成，但未直接建立temporary_wet_strength_crosslink_hydrolysis所指的解釋。保留raw／來源；進稿需補足連結失效的一手證據後重新審，不把現象與may解釋視為確定水解。"
+      },
+      {
+        "id": "W5007",
+        "reason": "暫緩：目前只有微生物需要營養的一層用途，缺少可視化的第二個機制；不計新增核心。"
+      },
+      {
+        "id": "W5009",
+        "reason": "暫緩：來源說static fill偏利成絮菌，所讀段未解釋相對絲狀菌的競爭因果，不能拿現象撐段落。"
+      }
+    ],
+    "ledger_readback": "dedup-decisions末4 merges與末4 excluded逐物件對集中處置完全相同；pool aliases/eligible/selected實際狀態吻合，四個別名不重算selected。",
+    "distinct_pairs": "四份覆核的69個不同核心比較均在中央distinct；多ID組按第一個新題對各比較題解讀，不虛構舊題彼此的判斷。",
+    "alias_resolution": {
+      "reviewed_pair": [
+        "M5012",
+        "I3037"
+      ],
+      "direct_canonical": "I3036",
+      "existing_alias": "I3037 -> I3036",
+      "verified": "I3036 provenance同時保留I3037與M5012，集中處置有解析紀錄。"
+    }
+  },
+  "source_preservation": {
+    "old_source_readings": "全數舊URL與各reading紀錄保留；同URL新reading沒有覆寫舊reading。",
+    "new_source_readings": "四批59個來源紀錄的title/publisher/accessed_on/read_via/reading_scope/locator/summary/rights逐欄與中央readings比對；URL位於中央source.url及reading.original_url。",
+    "new_raw_author_fields": "105題作者question/mechanism/answer/scope/editorial等欄位逐欄相等；source_ids轉成中央source_refs後URL集合一致。",
+    "merged_sources": "A5013的2條、X5009的1條、M5008的1條、M5012的1條原始source_refs均存在canonical；合併provenance保留原ID。",
+    "held_sources": "A5028/X5022/W5007/W5009仍存在raw及canonical紀錄，各自來源保留，eligible與selected均false。",
+    "limits": "只驗來源登記與支持關係未遺失，不再確認外站可達性，也不表示每頁全文或每一主張查核。"
+  },
+  "review_hash_resolution": {
+    "four_independent_receipts": "四份receipt當前hash與integration綁定相符。",
+    "body": "採targeted_recheck.inputs的最終batch/themes/author hash，初審inputs留作歷史；BODY01–05已記解決。",
+    "media": "採followup_resolution的最終batch/themes/author/probe hash，原版hash留作歷史；未把初審CHANGES_REQUIRED誤當未修。",
+    "textiles": "receipt.files三份hash與當前batch/themes/author吻合。",
+    "water": "root receipt綁定當前batch/themes；作者receipt自身及其batch/themes綁定亦讀回。",
+    "author_status_note": "作者收據的pending/locked是作者交件時狀態，不改歷史收據；後續非作者覆核及中央處置才是當前採用依據。"
+  },
+  "theme_readback": {
+    "all_60_theme_ids": "全部candidate_ids均為當前selected canonical，無hold或未解析alias。",
+    "new_theme_budgets": [
+      {
+        "id": "G49",
+        "proposal_id": "W5A-T01",
+        "body_seconds": 215,
+        "chapter_seconds": [
+          75,
+          75,
+          65
+        ],
+        "candidate_ids": [
+          "A5004",
+          "A5002",
+          "A5003"
+        ]
+      },
+      {
+        "id": "G50",
+        "proposal_id": "W5A-T02",
+        "body_seconds": 220,
+        "chapter_seconds": [
+          65,
+          75,
+          80
+        ],
+        "candidate_ids": [
+          "A5016",
+          "A5017",
+          "A5021"
+        ]
+      },
+      {
+        "id": "G51",
+        "proposal_id": "W5A-T03",
+        "body_seconds": 170,
+        "chapter_seconds": [
+          65,
+          60,
+          45
+        ],
+        "candidate_ids": [
+          "A5032",
+          "A5031",
+          "A5033"
+        ]
+      },
+      {
+        "id": "G52",
+        "proposal_id": "W5X-T01",
+        "body_seconds": 350,
+        "chapter_seconds": [
+          80,
+          100,
+          80,
+          90
+        ],
+        "candidate_ids": [
+          "X5001",
+          "X5002",
+          "X5004",
+          "X5005"
+        ]
+      },
+      {
+        "id": "G53",
+        "proposal_id": "W5X-T02",
+        "body_seconds": 180,
+        "chapter_seconds": [
+          90,
+          90
+        ],
+        "candidate_ids": [
+          "X5017",
+          "X5018"
+        ]
+      },
+      {
+        "id": "G54",
+        "proposal_id": "W5X-T03",
+        "body_seconds": 240,
+        "chapter_seconds": [
+          95,
+          65,
+          80
+        ],
+        "candidate_ids": [
+          "X5019",
+          "X5020",
+          "X5021"
+        ]
+      },
+      {
+        "id": "G55",
+        "proposal_id": "W5W-T01",
+        "body_seconds": 255,
+        "chapter_seconds": [
+          100,
+          75,
+          80
+        ],
+        "candidate_ids": [
+          "W5004",
+          "W5006",
+          "W5005"
+        ]
+      },
+      {
+        "id": "G56",
+        "proposal_id": "W5W-T02",
+        "body_seconds": 230,
+        "chapter_seconds": [
+          80,
+          75,
+          75
+        ],
+        "candidate_ids": [
+          "W5017",
+          "W5027",
+          "W5021"
+        ]
+      },
+      {
+        "id": "G57",
+        "proposal_id": "W5W-T03",
+        "body_seconds": 225,
+        "chapter_seconds": [
+          80,
+          75,
+          70
+        ],
+        "candidate_ids": [
+          "W5024",
+          "W5026",
+          "W5025"
+        ]
+      },
+      {
+        "id": "G58",
+        "proposal_id": "W5M-T01",
+        "body_seconds": 200,
+        "chapter_seconds": [
+          70,
+          65,
+          65
+        ],
+        "candidate_ids": [
+          "M5001",
+          "M5002",
+          "M5003"
+        ]
+      },
+      {
+        "id": "G59",
+        "proposal_id": "W5M-T02",
+        "body_seconds": 200,
+        "chapter_seconds": [
+          70,
+          70,
+          60
+        ],
+        "candidate_ids": [
+          "M5004",
+          "M5009",
+          "M5010"
+        ]
+      },
+      {
+        "id": "G60",
+        "proposal_id": "W5M-T03",
+        "body_seconds": 135,
+        "chapter_seconds": [
+          70,
+          65
+        ],
+        "candidate_ids": [
+          "M5017",
+          "M5019"
+        ]
+      }
+    ],
+    "arithmetic": "12組總秒數、target_minutes換算、章節正整數、至少2章、所有beat與尾段加總/間距<=45秒逐項重算；35個同片核心累計均不超原段落上限。",
+    "proposal_comparison": "G49–G58及G60除id/priority/proposal_id外逐物件與最終作者proposal相同。G59另有核准的canonical/variant映射，內容與70/70/60秒不變。",
+    "G59": "第一章只用M5008音訊變體70秒映到M5004；variant_budget_ids含M5008且理由明記不加PNG原情境。三章70+70+60=200。FLAC來源隨合併保留。",
+    "G60": "M5017與M5019為70+65=135秒；205秒舊版真峰值章已移出，M5018仍selected，沒有因此被合併或淘汰。",
+    "range_seconds": [
+      135,
+      350
+    ],
+    "limits": "開場回扣包含於正文預算，品牌片頭尾不補時；均是未試讀的short_explainer企劃，不是8分鐘長片正式產線核准。"
+  },
+  "artifact_checks_independently_performed": {
+    "working_manifest_inputs": 255,
+    "working_manifest_outputs_plus_themes": 7,
+    "actual_git_index_blobs_checked": 262,
+    "method": "逐一計算工作檔SHA，並以git cat-file --batch讀實際staged blob再計SHA；manifest/pool的inputs與counts相符。沒有修改index或中央檔。",
+    "local_markdown_links": {
+      "checked": 2605,
+      "broken": [],
+      "method": "pool根目錄各Markdown相對連結解碼後核存在；外部URL與頁內錨點不算可達性檢查。"
+    },
+    "index_literal_document_links": {
+      "checked": 4,
+      "broken": []
+    },
+    "browser_receipt": "index_html_sha256與當前index.html一致；只讀root已存DOM/桌手機截圖查看紀錄，本代理未重開瀏覽器或重看三張截圖。",
+    "media_probe_receipt": "probe script與batch SHA對當前檔吻合，最終probe receipt SHA也與媒體覆核followup吻合。192000-byte還原/兩模式/首框配置等只讀已存證據，未重新編解碼或播放。"
+  },
+  "documentation_readback": {
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "counts": "2546=2449+97、2895raw、4merge4hold、59/56來源、3855/888/2107、60題組/新增12與距10000差7454一致。",
+    "semantic": "最終input_sha256指當前pool，2895raw；當批4個非隨機已知人工合併對詞面找到1、semantic top10找到0，三份說明未外推全庫召回率或準確率。",
+    "production": "完整稿/試讀0，未正式寫入、付費媒體、發布；效能為單次本機資料讀回，未冒稱10000/100000效能或品質已驗。",
+    "latest_tests": "VALIDATION.md已明列Node34/34、Python2/2及各check結果，與本次讀到的validation.tests一致。"
+  },
+  "blockers": [],
+  "not_performed": [
+    "沒有新增外站查核或全庫事實重查",
+    "沒有完整稿盲讀、口播試讀、聽感或觀眾測試",
+    "沒有重跑repository/Node/Python測試、瀏覽器或媒體探針",
+    "沒有修改中央檔、作者raw、選入、題組或Git staging",
+    "沒有製作、付費、正式站寫入、部署或發布"
+  ],
+  "conclusion": "未發現阻擋第五批候選池收尾的處置、來源保存、雜湊、數字或預算不一致。可交付2546核心與60題組的當期候選資料；這不是全答案查核、影片可製作或可發布的批准。"
+}

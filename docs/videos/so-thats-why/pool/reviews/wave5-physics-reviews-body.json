@@ -1,0 +1,724 @@
+{
+  "review_id": "wave5-physics-reviews-body-20261101",
+  "reviewer": "pool_physics",
+  "status": "TARGETED_RECHECK_PASS_TOPIC_LEVEL_ONLY",
+  "created_on": "2026-11-01",
+  "inputs": {
+    "batch": "batches/wave5-body-senses.json",
+    "batch_sha256": "b5a23ebc61758943f45ee10671783ae255512a48c44e1e94d35ed3ea3fc0c0ed",
+    "themes": "reviews/wave5-body-themes.json",
+    "themes_sha256": "e45e58da1825bccb690e6ec46712c095919ccfcdcb75950bbfc8ec1460203760",
+    "author": "reviews/wave5-body-author.json",
+    "author_sha256": "a4b9dd45ceadd75eebdf693cc48bf81f1573229029905641cc23c3dd169b9da1",
+    "neighbours_sha256": "aca7b12bea960c389245d6a28a84eb3081250b66e920654946701fb7c5e5c3a0",
+    "semantic_draft_sha256": "9063dd7840762c45729c37ec7de26f8b15ad51e2acb31d968e863b7d05392957"
+  },
+  "coverage": {
+    "candidate_rows_read": 36,
+    "source_records_read": 19,
+    "not_added_rows_read": 14,
+    "themes_read": 3,
+    "semantic_neighbour_comparisons_read": 180,
+    "external_sources_successfully_read": 12,
+    "external_sources_failed": 1,
+    "baseline_raw_keyword_search": 2790,
+    "method": "36題所有問題/答案/範圍/notes/editorial逐列編輯閱讀；36x5語意近鄰的題目/目標/範圍全讀。先對2790舊raw關鍵詞及機制搜尋，再讀命中生理群及指定舊題；未逐讀2790全庫。模型分數不是合併依據。",
+    "search_limits": "第一批147命中輸出被截斷，另讀45個生理命中及後續精確舊ID；不把截斷輸出算全讀。外站只按下面列明小節抽查，未對36題逐主張完整查核。未觀看動畫、電影或音檔。"
+  },
+  "counts": {
+    "retain": 33,
+    "retain_after_correction": 1,
+    "merge": 1,
+    "hold": 1,
+    "independent_core_recommendation_after_correction": 34
+  },
+  "dispositions": [
+    {
+      "id": "A5001",
+      "disposition": "retain",
+      "canonical_id": "A5001",
+      "reason": "T小管的空間傳遞不同於L328鈣揭露結合位、V3011鈣訊號基線及L331回收。"
+    },
+    {
+      "id": "A5002",
+      "disposition": "retain",
+      "canonical_id": "A5002",
+      "reason": "刺激間隔與前次收縮未消退的時間疊加，不是L327滑動或L329橫橋循環換問法。"
+    },
+    {
+      "id": "A5003",
+      "disposition": "retain",
+      "canonical_id": "A5003",
+      "reason": "固定輸入改肌節起始重疊，新增可形成橫橋的幾何限制；不把整個關節出力等同此一變量。"
+    },
+    {
+      "id": "A5004",
+      "disposition": "retain",
+      "canonical_id": "A5004",
+      "reason": "單位招募門檻與同一單位的頻率調力不同；所讀教材及UT大小原則均有機制。"
+    },
+    {
+      "id": "A5005",
+      "disposition": "retain",
+      "canonical_id": "A5005",
+      "reason": "並聯肌梭把長度變化轉為感覺輸入；A5008另處理如何關閉回路增加同肌輸出。"
+    },
+    {
+      "id": "A5006",
+      "disposition": "retain",
+      "canonical_id": "A5006",
+      "reason": "收縮感測器兩端維持張緊，是感測增益調整；不等同A5012中央反射調節。"
+    },
+    {
+      "id": "A5007",
+      "disposition": "retain",
+      "canonical_id": "A5007",
+      "reason": "串聯負荷壓迫膠原間感覺末梢，輸入量是張力；與A5005並聯長度不同。"
+    },
+    {
+      "id": "A5008",
+      "disposition": "retain",
+      "canonical_id": "A5008",
+      "reason": "感覺到同肌輸出形成抵抗長度變動的閉環，保留為核心。"
+    },
+    {
+      "id": "A5009",
+      "disposition": "retain",
+      "canonical_id": "A5009",
+      "reason": "分支經抑制性中介降低對抗肌輸出，與A5008同肌興奮支路有不同符號及協調目的；只作短段，不另拉長片。"
+    },
+    {
+      "id": "A5010",
+      "disposition": "retain",
+      "canonical_id": "A5010",
+      "reason": "局部屈曲路徑與上傳意識並行，不是把神經傳遞速度換個物件重問。"
+    },
+    {
+      "id": "A5011",
+      "disposition": "retain",
+      "canonical_id": "A5011",
+      "reason": "跨中線連到對側伸肌的支撐協調，增加不同輸出拓撲；與A5010無需意識決策的問題不同。"
+    },
+    {
+      "id": "A5012",
+      "disposition": "retain_after_correction",
+      "canonical_id": "A5012",
+      "reason": "來源支持下行對反射迴路門檻及增益的調節，但target不得把整項作用只定位於運動神經元。"
+    },
+    {
+      "id": "A5013",
+      "disposition": "merge",
+      "canonical_id": "V3012",
+      "reason": "現有目標只有酵素分解訊號限制持續，與V3012化學訊號周轉同核心；接點ACh可保留為胞內cAMP的對照例。"
+    },
+    {
+      "id": "A5014",
+      "disposition": "retain",
+      "canonical_id": "A5014",
+      "reason": "跨側聯絡配對一側外直肌與另一側內直肌，是共同凝視的具體映射，非一般肌肉收縮。"
+    },
+    {
+      "id": "A5015",
+      "disposition": "retain",
+      "canonical_id": "A5015",
+      "reason": "8.4A有預先定向的短促動作與事後視覺修正，足以超出眼跳名詞；locator需對齊實際標題。"
+    },
+    {
+      "id": "A5016",
+      "disposition": "retain",
+      "canonical_id": "A5016",
+      "reason": "8.4B支持由目標方向/速度計算眼動方向/速度，與A5015位置跳轉後修正不同；圖必須呈現速度匹配。"
+    },
+    {
+      "id": "A5017",
+      "disposition": "retain",
+      "canonical_id": "A5017",
+      "reason": "管壁起轉與內淋巴慣性使壺腹頂偏移，限起轉條件，與暈車多感官衝突不同。"
+    },
+    {
+      "id": "A5018",
+      "disposition": "retain",
+      "canonical_id": "A5018",
+      "reason": "毛束方向改變機械門控與受器電位，是轉導；L004實為通道和載體比較，非此開關條件。"
+    },
+    {
+      "id": "A5019",
+      "disposition": "retain",
+      "canonical_id": "A5019",
+      "reason": "靜息活動允許增減、左右成對反向變化，新增有符號方向編碼，非重述毛束門控。"
+    },
+    {
+      "id": "A5020",
+      "disposition": "retain",
+      "canonical_id": "A5020",
+      "reason": "耳石重力負荷與半規管起轉流體慣性不同；保留無法單獨分辨傾斜/平移的限制。"
+    },
+    {
+      "id": "A5021",
+      "disposition": "retain",
+      "canonical_id": "A5021",
+      "reason": "前庭訊號直接驅動補償眼動；感測器A5017與輸出協調A5014是不同環節。"
+    },
+    {
+      "id": "A5022",
+      "disposition": "retain",
+      "canonical_id": "A5022",
+      "reason": "單側光輸入雙側投射的反射路徑，不等同調焦或普通光學口徑；本輪未重開S009。"
+    },
+    {
+      "id": "A5023",
+      "disposition": "retain",
+      "canonical_id": "A5023",
+      "reason": "兩視軸幾何內聚不同於L324晶狀體折光力改變；不擴為立體視完整解釋。"
+    },
+    {
+      "id": "A5024",
+      "disposition": "retain",
+      "canonical_id": "A5024",
+      "reason": "同一傳遞物在不同雙極細胞符號相反，新增ON/OFF分路，不是明暗分工名詞。"
+    },
+    {
+      "id": "A5025",
+      "disposition": "retain",
+      "canonical_id": "A5025",
+      "reason": "周邊輸入透過橫向連接反向影響中心，與A5024直接輸入的符號不同。"
+    },
+    {
+      "id": "A5026",
+      "disposition": "retain",
+      "canonical_id": "A5026",
+      "reason": "L326/C2029現有目標只寫桿錐亮暗色覺分工；新題明列多輸入匯聚的敏感度/定位取捨，保留。"
+    },
+    {
+      "id": "A5027",
+      "disposition": "retain",
+      "canonical_id": "A5027",
+      "reason": "包層流體重分布使持續載荷不持續作用中央末梢，與神經訊號化學分解不同。"
+    },
+    {
+      "id": "A5028",
+      "disposition": "hold",
+      "canonical_id": "A5028",
+      "reason": "S012正文列深度與感受野關係，但沒有直接證成target和visual的組織變形向深處展寬模型；機制待補，暫不計入。"
+    },
+    {
+      "id": "A5029",
+      "disposition": "retain",
+      "canonical_id": "A5029",
+      "reason": "咀嚼揮發物經後鼻路徑參與風味，與L163受器接觸的轉導步驟不同。"
+    },
+    {
+      "id": "A5030",
+      "disposition": "retain",
+      "canonical_id": "A5030",
+      "reason": "受器活動組合增加可區分模式，不是L163分子進鼻或L165細胞更新。"
+    },
+    {
+      "id": "A5031",
+      "disposition": "retain",
+      "canonical_id": "A5031",
+      "reason": "軟顎作通道閥門使閉唇時仍有鼻路，與B2182骨性分隔不同。"
+    },
+    {
+      "id": "A5032",
+      "disposition": "retain",
+      "canonical_id": "A5032",
+      "reason": "完整閉鎖後釋放的瞬態對照持續狹縫摩擦，不只重述P072渦流。"
+    },
+    {
+      "id": "A5033",
+      "disposition": "retain",
+      "canonical_id": "A5033",
+      "reason": "中央接觸仍有口腔兩側通道，是三維局部閉鎖條件；與A5031軟顎開啟另一腔路不同，可作45秒對照。"
+    },
+    {
+      "id": "A5034",
+      "disposition": "retain",
+      "canonical_id": "A5034",
+      "reason": "每次呼吸固定空間成本造成同分鐘總量不同有效換氣，不是L143吐氣後殘量；公式未在本輪獨立重讀S017。"
+    },
+    {
+      "id": "A5035",
+      "disposition": "retain",
+      "canonical_id": "A5035",
+      "reason": "CO2跨屏障改變H+後調節通氣，具體間接化學感測鏈，不只泛稱負回饋。"
+    },
+    {
+      "id": "A5036",
+      "disposition": "retain",
+      "canonical_id": "A5036",
+      "reason": "外毛細胞力回饋不同於A5018轉導、C2031位置分頻及L167聽小骨；NIH一般功能可讀，原論文重開失敗列限制。"
+    }
+  ],
+  "merges": [
+    {
+      "from": "A5013",
+      "to": "V3012",
+      "reason": "酵素清除化學訊號的核心相同；ACh胞外接點可作cAMP胞內的情境/路徑對照，不以換分子另計核心。"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "A5028",
+      "status": "held_pending_direct_mechanism_evidence",
+      "reason": "深度與感受野有教材關係描述，但變形向深處展寬因果及visual未在採用來源直接支持；保留研究線索，補來源後再審。"
+    }
+  ],
+  "distinct": [
+    {
+      "ids": [
+        "A5005",
+        "A5008"
+      ],
+      "reason": "並聯長度感測 vs 連到同肌輸出的閉環。"
+    },
+    {
+      "ids": [
+        "A5006",
+        "A5012"
+      ],
+      "reason": "感測器機械張緊 vs 中樞反射迴路門檻調節；A5012先修範圍。"
+    },
+    {
+      "ids": [
+        "A5008",
+        "A5009"
+      ],
+      "reason": "同肌興奮負回饋 vs 經抑制中介關閉對抗支路。"
+    },
+    {
+      "ids": [
+        "A5010",
+        "A5011"
+      ],
+      "reason": "不待意識的局部撤離 vs 跨側伸展支撐。"
+    },
+    {
+      "ids": [
+        "A5015",
+        "A5016"
+      ],
+      "reason": "短促預先定向/事後修正 vs 移動速度匹配。"
+    },
+    {
+      "ids": [
+        "A5018",
+        "L004"
+      ],
+      "reason": "機械門控條件 vs 通道和載體的運輸方式。"
+    },
+    {
+      "ids": [
+        "A5026",
+        "L326",
+        "C2029"
+      ],
+      "reason": "匯聚使位置資訊有取捨 vs 原桿錐色覺/亮暗分工。"
+    },
+    {
+      "ids": [
+        "A5031",
+        "A5033",
+        "B2182"
+      ],
+      "reason": "可動軟顎鼻路、口內局部接觸側路、骨性咀嚼分隔，結構條件不同。"
+    },
+    {
+      "ids": [
+        "A5032",
+        "P072"
+      ],
+      "reason": "完全閉鎖後瞬態釋放的對照，不只狹縫亂流。"
+    },
+    {
+      "ids": [
+        "A5036",
+        "C2031",
+        "L167",
+        "A5018"
+      ],
+      "reason": "主動電位—力回饋、位置分頻、聽小骨傳遞、毛束轉導分屬不同步驟。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "BODY01",
+      "candidate_ids": [
+        "A5012"
+      ],
+      "required": "answer_target把脊髓運動神經元興奮程度收斂成反射迴路的興奮性、門檻/增益，避免宣稱只在單一細胞類別完成。",
+      "source_id": "A5-S005",
+      "locator": "§2.3 Reflex modulation；§2.2下行投射也含interneurons"
+    },
+    {
+      "id": "BODY02",
+      "candidate_ids": [
+        "A5028"
+      ],
+      "required": "中央暫緩；作者notes標明深度/感受野關係為直接來源，變形展寬圖是待補證據的原創模型，不能仍稱全為來源直接機制。"
+    },
+    {
+      "id": "BODY03",
+      "candidate_ids": [
+        "A5018"
+      ],
+      "required": "author duplicate_flags對L004的描述改為通道與載體比較；它不是一般膜通道選擇性題。"
+    },
+    {
+      "id": "BODY04",
+      "candidate_ids": [
+        "A5015",
+        "A5016"
+      ],
+      "required": "source_locator對齊實際小節：§8.4A Voluntary Saccades（含Afferent Control of Voluntary Saccades）；§8.4B Smooth Pursuit（含The Smooth Pursuit Circuit）。"
+    },
+    {
+      "id": "BODY05",
+      "candidate_ids": [
+        "A5016"
+      ],
+      "theme_ids": [
+        "W5A-T02"
+      ],
+      "required": "第一章第二節拍寫明同一球的目標方向/速度如何對應眼動方向/速度的並排軌跡或箭頭；若只剩功能描述採已有175秒縮版，不補新題湊時。"
+    }
+  ],
+  "source_audit": [
+    {
+      "source_id": "A5-S002",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-4-nervous-system-control-of-muscle-tension",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "Motor Units；The Length-Tension Range of a Sarcomere；The Frequency of Motor Neuron Stimulation",
+      "result": "支援招募、長度與頻率三種控制。未採固定最佳百分比及等長/疲勞過度簡化。"
+    },
+    {
+      "source_id": "A5-S004",
+      "url": "https://nba.uth.tmc.edu/neuroscience/m/s3/chapter01.html",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "§1.6–1.12，重點1.7 Size Principle、1.10、1.11 Gamma Motor Neurons、1.12",
+      "result": "長度、負荷及感測器張緊分別有結構基礎。"
+    },
+    {
+      "source_id": "A5-S005",
+      "url": "https://nba.uth.tmc.edu/neuroscience/m/s3/chapter02.html",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "§2.1 myotatic/reciprocal/flexor/crossed extension；§2.2下行投射概述；§2.3 Reflex modulation",
+      "result": "支持回路差別；A5012不應只指定運動神經元。"
+    },
+    {
+      "source_id": "A5-S007",
+      "url": "https://nba.uth.tmc.edu/neuroscience/m/s3/chapter08.html",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "§8.1、8.2C、8.3概述、8.4A Voluntary Saccades及8.4B Smooth Pursuit",
+      "result": "眼跳的事後修正與追蹤的速度匹配不同；不採optokinetic退化概括。未操作動畫。"
+    },
+    {
+      "source_id": "A5-S008",
+      "url": "https://nba.uth.tmc.edu/neuroscience/m/s2/chapter10.html",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "§10.1 semicircular ducts、bilateral stimulation、otoliths；§10.2前3段VOR",
+      "result": "支持毛束門控與基線編碼；只核基本VOR，未採50度/秒限制、ampullofugal方向文字或caloric操作。"
+    },
+    {
+      "source_id": "A5-S010",
+      "url": "https://nba.uth.tmc.edu/neuroscience/m/s2/chapter14.html",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "§14.5 Bipolar Cells、Horizontal Cells、Convergence of Inputs and Visual Acuity；回看14.4分工",
+      "result": "直接支持ON/OFF、中心周圍與匯聚取捨。未採P:M比、桿細胞白光或臨床段落。"
+    },
+    {
+      "source_id": "A5-S011",
+      "url": "https://nba.uth.tmc.edu/neuroscience/m/s2/chapter02.html",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "§2.3 Sensory Transduction；§2.4 Pacinian Corpuscle段與圖說；周邊構造段",
+      "result": "包層流體的機械適應有直接文字；未播放動畫。"
+    },
+    {
+      "source_id": "A5-S012",
+      "url": "https://openstax.org/books/introduction-behavioral-neuroscience/pages/9-1-somatosensory-receptors",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "Peripheral receptors and functional modalities；Touch receptors與Table9.1",
+      "result": "來源把深度與感受野相連，但未提供稿中力場向深處擴散的因果說明或證據。"
+    },
+    {
+      "source_id": "A5-S013",
+      "url": "https://www.nidcd.nih.gov/health/smell-disorders",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "How does your sense of smell work?",
+      "result": "支持後鼻路徑與組合編碼，不採嗅覺自測或診斷內容。"
+    },
+    {
+      "source_id": "A5-S015",
+      "url": "https://ecampusontario.pressbooks.pub/essentialsoflinguistics2/chapter/3-4-describing-consonants-manner/",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "Stops、Fricatives、Approximants；Putting it all together的/m/及/s/段",
+      "result": "支援三種氣流對照；未聽音檔，不採吸氣測舌位等操作或直接取教材圖。"
+    },
+    {
+      "source_id": "A5-S016",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-3-the-process-of-breathing",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "Respiratory Volumes and Capacities末段dead space；Factors That Affect the Rate and Depth of Respiration的CO2-H+段",
+      "result": "只核死腔概念和CO2-H+調節。原文positive-feedback名詞錯配、胸膜氣腔等不採。"
+    },
+    {
+      "source_id": "A5-S018",
+      "url": "https://www.nidcd.nih.gov/health/auditory-neuropathy",
+      "read_via": "web.open parsed main text",
+      "reading_scope": "What are the roles of the outer and inner hair cells?",
+      "result": "可核外毛細胞放大機械振動；不當成電位—力實驗的獨立核對。"
+    }
+  ],
+  "failed_source_checks": [
+    {
+      "source_id": "A5-S019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC25447/",
+      "read_via": "web.open",
+      "result": "reCAPTCHA，未在本輪獨立重讀原論文；不否定作者已讀證據，但不冒稱驗證其電位—力實驗。"
+    }
+  ],
+  "not_reopened_source_ids": [
+    "A5-S001",
+    "A5-S003",
+    "A5-S006",
+    "A5-S009",
+    "A5-S014",
+    "A5-S017"
+  ],
+  "theme_reviews": [
+    {
+      "id": "W5A-T01",
+      "disposition": "retain_paper_plan",
+      "seconds": 215,
+      "chapters": [
+        {
+          "title": "先增加上場單位",
+          "candidate_ids": [
+            "A5004"
+          ],
+          "seconds": 75,
+          "beats_seconds": [
+            35,
+            40
+          ]
+        },
+        {
+          "title": "人數不變，節奏還能變",
+          "candidate_ids": [
+            "A5002"
+          ],
+          "seconds": 75,
+          "beats_seconds": [
+            35,
+            40
+          ]
+        },
+        {
+          "title": "指令一樣，起點仍會改結果",
+          "candidate_ids": [
+            "A5003"
+          ],
+          "seconds": 65,
+          "beats_seconds": [
+            30,
+            35
+          ]
+        }
+      ],
+      "per_core_budget": [
+        {
+          "id": "A5004",
+          "used_seconds": 75,
+          "author_upper_seconds": 90
+        },
+        {
+          "id": "A5002",
+          "used_seconds": 75,
+          "author_upper_seconds": 85
+        },
+        {
+          "id": "A5003",
+          "used_seconds": 65,
+          "author_upper_seconds": 80
+        }
+      ],
+      "assessment": "同手情境固定其餘變量，有逐步新因果；215秒合理。肌節圖不可看懂時採150秒兩章版。",
+      "limits": "開場與回扣已包含，逐節拍20–40秒；是紙上預算，不是試讀、人體量測或製作批准。"
+    },
+    {
+      "id": "W5A-T02",
+      "disposition": "retain_paper_plan",
+      "seconds": 220,
+      "chapters": [
+        {
+          "title": "先只讓目標動",
+          "candidate_ids": [
+            "A5016"
+          ],
+          "seconds": 65,
+          "beats_seconds": [
+            30,
+            35
+          ]
+        },
+        {
+          "title": "目標不動，頭先動了",
+          "candidate_ids": [
+            "A5017"
+          ],
+          "seconds": 75,
+          "beats_seconds": [
+            35,
+            40
+          ]
+        },
+        {
+          "title": "把訊號接到反方向",
+          "candidate_ids": [
+            "A5021"
+          ],
+          "seconds": 80,
+          "beats_seconds": [
+            40,
+            40
+          ]
+        }
+      ],
+      "per_core_budget": [
+        {
+          "id": "A5016",
+          "used_seconds": 65,
+          "author_upper_seconds": 75
+        },
+        {
+          "id": "A5017",
+          "used_seconds": 75,
+          "author_upper_seconds": 85
+        },
+        {
+          "id": "A5021",
+          "used_seconds": 80,
+          "author_upper_seconds": 90
+        }
+      ],
+      "assessment": "追目標與補自身頭轉的輸入來源不同，220秒可保留。第一章第二節拍必須呈現目標速度與眼動速度匹配的具體圖，不只是眼睛跟著走；若辦不到採175秒版，不能保留空白65秒。",
+      "limits": "開場與回扣已包含，逐節拍20–40秒；是紙上預算，不是試讀、人體量測或製作批准。"
+    },
+    {
+      "id": "W5A-T03",
+      "disposition": "retain_paper_plan",
+      "seconds": 170,
+      "chapters": [
+        {
+          "title": "先分清一下與一直",
+          "candidate_ids": [
+            "A5032"
+          ],
+          "seconds": 65,
+          "beats_seconds": [
+            30,
+            35
+          ]
+        },
+        {
+          "title": "嘴閉著，另一路仍開著",
+          "candidate_ids": [
+            "A5031"
+          ],
+          "seconds": 60,
+          "beats_seconds": [
+            30,
+            30
+          ]
+        },
+        {
+          "title": "正面堵住，也可能從旁邊過",
+          "candidate_ids": [
+            "A5033"
+          ],
+          "seconds": 45,
+          "beats_seconds": [
+            20,
+            25
+          ]
+        }
+      ],
+      "per_core_budget": [
+        {
+          "id": "A5032",
+          "used_seconds": 65,
+          "author_upper_seconds": 85
+        },
+        {
+          "id": "A5031",
+          "used_seconds": 60,
+          "author_upper_seconds": 75
+        },
+        {
+          "id": "A5033",
+          "used_seconds": 45,
+          "author_upper_seconds": 60
+        }
+      ],
+      "assessment": "完整閉鎖釋放、鼻路閥門、口內側路是連貫比較，170秒合理。未製作/聽辨音檔；/l/看不懂採125秒兩章版。",
+      "limits": "開場與回扣已包含，逐節拍20–40秒；是紙上預算，不是試讀、人體量測或製作批准。"
+    }
+  ],
+  "permissions": "沒有修改作者batch/themes/author、中央selection或舊raw；僅本review與自有忽略scratch。無媒體付費/發布。",
+  "next": "中央整合合併/暫緩後核驗選入與source refs。題級定點覆核完成；treatment圖、實際試讀、音檔、腳本逐主張查核仍未進行。",
+  "initial_status": "TOPIC_LEVEL_REVIEW_REQUIRES_TARGETED_CORRECTIONS",
+  "targeted_recheck": {
+    "date": "2026-11-01",
+    "status": "PASS",
+    "inputs": {
+      "batch": {
+        "file": "batches/wave5-body-senses.json",
+        "sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53"
+      },
+      "themes": {
+        "file": "reviews/wave5-body-themes.json",
+        "sha256": "e45e58da1825bccb690e6ec46712c095919ccfcdcb75950bbfc8ec1460203760"
+      },
+      "author": {
+        "file": "reviews/wave5-body-author.json",
+        "sha256": "87211cb460f1ac8837f0fae2d4f412af0a8925103fa76e1091efe204ea7646d7"
+      }
+    },
+    "resolved": [
+      {
+        "issue": "BODY01",
+        "result": "A5012 answer/scope/notes/visual均收斂到整個反射迴路門檻/增益；沒有只接單一運動神經元。"
+      },
+      {
+        "issue": "BODY02",
+        "result": "A5028 notes明記暫緩、不得入選、欠缺直接展寬模型來源，原提案保留審計而非當成已證實。"
+      },
+      {
+        "issue": "BODY03",
+        "result": "author A5018/L004比較改為機械門控 vs 通道/載體。"
+      },
+      {
+        "issue": "BODY04",
+        "result": "A5015/A5016 source_locator及S007 reading_scope/locator與Voluntary Saccades／Smooth Pursuit實際小節對齊。"
+      },
+      {
+        "issue": "BODY05",
+        "result": "A5016 visual與T02第一章寫入同時間軸角位置斜率/角速度匹配對照；220秒紙上候選，沒有具體圖時必縮175秒。"
+      }
+    ],
+    "disposition_readback": "A5013 notes接受V3012變體；A5028 notes接受hold。中央ledger的實際套用由root核驗，本收據未改中央。",
+    "timing_recheck": {
+      "totals": [
+        215,
+        220,
+        170
+      ],
+      "all_chapter_beat_sums_match": true,
+      "all_beats_at_most_45_seconds": true,
+      "per_core_upper_budget_pass": true,
+      "opening_recap_included": true
+    },
+    "scope": "僅指定變更的定點讀回及JSON/秒數/雜湊；初審inputs保留原版，外站12來源抽查範圍與PMC失敗限制不改，不冒稱新做全量逐句查核。",
+    "remaining_required_corrections": []
+  }
+}

@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "090b1324ac47ec0ef12c4db5ca32136a6537cbf8",
+    "selected": 3430,
+    "raw": 3817,
+    "not_added": 1939,
+    "themes": 484
+  },
+  "written_files": [
+    {
+      "file": "batches/wave45-life.json",
+      "sha256": "8e16eccea11b89565aec694b1110d5b29c33ee52bbfaeec78e2086bf34e96073"
+    },
+    {
+      "file": "reviews/wave45-life-themes.json",
+      "sha256": "cd0cd944a4a79e05c9adfeb2e9aaa7d8d9c83691a6a00eab8d14d6fdef096ef2"
+    }
+  ],
+  "counts": {
+    "candidates": 10,
+    "sources": 10,
+    "not_added": 18,
+    "near_pairs": 25,
+    "themes": 5
+  },
+  "near_pairs": [
+    {
+      "a": "L45-001",
+      "b": "LEG-S41",
+      "decision": "propose_distinct",
+      "reason": "規整胞的省周長與兩片不同格向間如何容納錯位；本次補回前次因正文受阻而暫緩的原研究。",
+      "a_snapshot": {
+        "question": "兩片六角蜂巢碰頭，方向偏了一截，中間那排格子怎麼接起來？",
+        "answer_target": "在沒有印好底紋、讓蜜蜂自行造的巢脾上，比較兩片六角格從不同方向接合的區域。有些格子的方向逐排調整；兩側格向相差越多，接縫上的非六角格越常見。整批不規則格裡，五邊與七邊相鄰也比隨機組合常見，能在局部補出接縫。",
+        "scope": "限實際拍攝的自然造脾。格向是巢脾平面中的傾角；沒有證實工蜂事先知道全局最優解。"
+      },
+      "b_snapshot": {
+        "question": "蜂巢為什麼是六角形？蜜蜂真的會算嗎？",
+        "answer_target": "能無縫拼滿平面的正多邊形只有三角形、正方形、六邊形；把平面分成一樣大的格子，六邊形的總邊長最短、最省蜂蠟，數學家 Hales 在 1999 年證明。格子怎麼變成六角形還有爭議：有研究說先做成圓的、蠟受熱流動才變六角，也有觀察認為是蜜蜂直接塑形。",
+        "scope": "沿用 S41 題級條件，須讀原查核包的限制；分清幾何效率、建造行為與形成機制的證據。"
+      }
+    },
+    {
+      "a": "L45-001",
+      "b": "B16004",
+      "decision": "propose_distinct",
+      "reason": "六角胞配置的幾何邊界不是泥粒沉積位置偏好。",
+      "a_snapshot": {
+        "question": "兩片六角蜂巢碰頭，方向偏了一截，中間那排格子怎麼接起來？",
+        "answer_target": "在沒有印好底紋、讓蜜蜂自行造的巢脾上，比較兩片六角格從不同方向接合的區域。有些格子的方向逐排調整；兩側格向相差越多，接縫上的非六角格越常見。整批不規則格裡，五邊與七邊相鄰也比隨機組合常見，能在局部補出接縫。",
+        "scope": "限實際拍攝的自然造脾。格向是巢脾平面中的傾角；沒有證實工蜂事先知道全局最優解。"
+      },
+      "b_snapshot": {
+        "question": "白蟻最常聚集的地方，為什麼不一定是牠們堆泥的地方？",
+        "answer_target": "採集與沉積對位置的偏好不同；控制停留機率後，沉積仍集中凸邊。等高牆端與乾濕邊界對照，配合蒸發/濕度場模型，支持局部蒸發梯度引導放置的解釋。",
+        "scope": "限持續濕潤的早期Coptotermes gestroi人工場地，主要單一飼養群體；模型及無白蟻鹽溶液對照不等於直接找出感受器，也未排除所有自然築巢中的其他訊號。"
+      }
+    },
+    {
+      "a": "L45-002",
+      "b": "B4014",
+      "decision": "propose_distinct",
+      "reason": "建物內外密度差與中性壓面是穩態開口模型，巢丘內部兩區熱響應不同並逐日反轉。",
+      "a_snapshot": {
+        "question": "白蟻丘沒裝風扇，土牆裡的風為什麼天黑後會換方向？",
+        "answer_target": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+        "scope": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。"
+      },
+      "b_snapshot": {
+        "question": "同一棟暖房，為什麼低處縫隙吸氣、高處縫隙卻往外吹？",
+        "answer_target": "室內外空氣密度不同，使壓差隨高度改變；在簡化煙囪效應模型中，中性壓力面上下的漏氣方向相反。",
+        "scope": "只談供暖室內較暖且風與機械影響不主導的模型；中性面會隨開口與運轉改變。"
+      }
+    },
+    {
+      "a": "L45-002",
+      "b": "B4015",
+      "decision": "propose_distinct",
+      "reason": "冷室窗前下沉與多區熱慣性不同且晝夜翻向的通道不相同。",
+      "a_snapshot": {
+        "question": "白蟻丘沒裝風扇，土牆裡的風為什麼天黑後會換方向？",
+        "answer_target": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+        "scope": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。"
+      },
+      "b_snapshot": {
+        "question": "窗已經不漏風，站在旁邊為什麼仍可能感到一股冷風？",
+        "answer_target": "靠近冷玻璃的室內空氣冷卻變密而下沉，再沿地面流動；感到氣流不必等於室外空氣穿窗。",
+        "scope": "來源直接給冷窗/牆例子；與B4010漏氣分開，不憑感覺判實際窗漏不漏。"
+      }
+    },
+    {
+      "a": "L45-002",
+      "b": "S42-009",
+      "decision": "propose_distinct",
+      "reason": "石下淺冰穩定深度與白蟻丘溫差驅動氣流不同。",
+      "a_snapshot": {
+        "question": "白蟻丘沒裝風扇，土牆裡的風為什麼天黑後會換方向？",
+        "answer_target": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+        "scope": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。"
+      },
+      "b_snapshot": {
+        "question": "把火星地上的石頭移開，原先蓋在下面的冰土界面怎麼反而低了一點？",
+        "answer_target": "鳳凰號移開石頭、挖原位置下方的土，所見冰土界面比旁邊略低。這與事前的熱模型預測相符：具有較大熱慣性的石頭可把熱傳給周圍土壤，改變淺部冰能穩定存在的位置；光憑遮陰不足以猜出冰面高低。",
+        "scope": "限Neverland溝槽該石塊及附近界面。量測是移石後的形狀，熱效應為相符解釋，不是直接看見冰層歷時下移。"
+      }
+    },
+    {
+      "a": "L45-003",
+      "b": "B16004",
+      "decision": "propose_distinct",
+      "reason": "白蟻凸緣放泥跟蒸發場有關，而這是人工管流控制二氧化碳、判塔上的孔數。",
+      "a_snapshot": {
+        "question": "切葉蟻在洞口堆泥塔，為什麼有時會留下好幾個小孔？",
+        "answer_target": "讓工蟻沿人工洞口堆塔，分別調出風、濕度和二氧化碳。單改風及乾濕時，開孔數沒有顯著差別；通入較高濃度二氧化碳時，工蟻較常造出多孔塔。把洞內外的濃度差縮小後仍有反應，支持高濃度本身可作施工線索。",
+        "scope": "限A. vollenweideri實驗室條件；孔數與總孔面積不同，後者不一定隨濃度單調增加。沒在同試驗直接量出天然巢換氣收益。"
+      },
+      "b_snapshot": {
+        "question": "白蟻最常聚集的地方，為什麼不一定是牠們堆泥的地方？",
+        "answer_target": "採集與沉積對位置的偏好不同；控制停留機率後，沉積仍集中凸邊。等高牆端與乾濕邊界對照，配合蒸發/濕度場模型，支持局部蒸發梯度引導放置的解釋。",
+        "scope": "限持續濕潤的早期Coptotermes gestroi人工場地，主要單一飼養群體；模型及無白蟻鹽溶液對照不等於直接找出感受器，也未排除所有自然築巢中的其他訊號。"
+      }
+    },
+    {
+      "a": "L45-003",
+      "b": "D2080",
+      "decision": "propose_distinct",
+      "reason": "氣密房要換氣不預測蟻在洞口建成多孔塔的刺激。",
+      "a_snapshot": {
+        "question": "切葉蟻在洞口堆泥塔，為什麼有時會留下好幾個小孔？",
+        "answer_target": "讓工蟻沿人工洞口堆塔，分別調出風、濕度和二氧化碳。單改風及乾濕時，開孔數沒有顯著差別；通入較高濃度二氧化碳時，工蟻較常造出多孔塔。把洞內外的濃度差縮小後仍有反應，支持高濃度本身可作施工線索。",
+        "scope": "限A. vollenweideri實驗室條件；孔數與總孔面積不同，後者不一定隨濃度單調增加。沒在同試驗直接量出天然巢換氣收益。"
+      },
+      "b_snapshot": {
+        "question": "房子越氣密，為什麼越不能省掉換氣設計？",
+        "answer_target": "氣密降低非受控漏風，需有計畫地替換室內空氣稀釋污染。",
+        "scope": "HVAC Whole-House Ventilation；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "L45-003",
+      "b": "L45-002",
+      "decision": "propose_distinct",
+      "reason": "蟻施工感知氣體與白蟻既有建築內熱驅動氣流不同。",
+      "a_snapshot": {
+        "question": "切葉蟻在洞口堆泥塔，為什麼有時會留下好幾個小孔？",
+        "answer_target": "讓工蟻沿人工洞口堆塔，分別調出風、濕度和二氧化碳。單改風及乾濕時，開孔數沒有顯著差別；通入較高濃度二氧化碳時，工蟻較常造出多孔塔。把洞內外的濃度差縮小後仍有反應，支持高濃度本身可作施工線索。",
+        "scope": "限A. vollenweideri實驗室條件；孔數與總孔面積不同，後者不一定隨濃度單調增加。沒在同試驗直接量出天然巢換氣收益。"
+      },
+      "b_snapshot": {
+        "question": "白蟻丘沒裝風扇，土牆裡的風為什麼天黑後會換方向？",
+        "answer_target": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+        "scope": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。"
+      }
+    },
+    {
+      "a": "L45-004",
+      "b": "B16004",
+      "decision": "propose_distinct",
+      "reason": "巢道挖到坡上停止與工蟻搬泥的落點不是一種行為讀出。",
+      "a_snapshot": {
+        "question": "螞蟻從下往上挖，還沒碰到積水，怎麼就停了？",
+        "answer_target": "從黏土柱底讓切葉蟻往上挖。表面沒有積水時，多數對照組挖穿地面；有積水的17次都在表層下停住。另一個均勻濕土的選擇試驗中，牠們仍會挖比停點的估計含水率更濕的土，支持沿前進方向逐漸變濕的條件有影響。",
+        "scope": "限實驗室黏土柱及選擇試驗。停挖位置的含水率由剖面估算。沒有直接量出工蟻使用何種感受器。"
+      },
+      "b_snapshot": {
+        "question": "白蟻最常聚集的地方，為什麼不一定是牠們堆泥的地方？",
+        "answer_target": "採集與沉積對位置的偏好不同；控制停留機率後，沉積仍集中凸邊。等高牆端與乾濕邊界對照，配合蒸發/濕度場模型，支持局部蒸發梯度引導放置的解釋。",
+        "scope": "限持續濕潤的早期Coptotermes gestroi人工場地，主要單一飼養群體；模型及無白蟻鹽溶液對照不等於直接找出感受器，也未排除所有自然築巢中的其他訊號。"
+      }
+    },
+    {
+      "a": "L45-004",
+      "b": "N096",
+      "decision": "propose_distinct",
+      "reason": "人工入滲補水的地質條件不能預測濕度漸增會抑制掘進。",
+      "a_snapshot": {
+        "question": "螞蟻從下往上挖，還沒碰到積水，怎麼就停了？",
+        "answer_target": "從黏土柱底讓切葉蟻往上挖。表面沒有積水時，多數對照組挖穿地面；有積水的17次都在表層下停住。另一個均勻濕土的選擇試驗中，牠們仍會挖比停點的估計含水率更濕的土，支持沿前進方向逐漸變濕的條件有影響。",
+        "scope": "限實驗室黏土柱及選擇試驗。停挖位置的含水率由剖面估算。沒有直接量出工蟻使用何種感受器。"
+      },
+      "b_snapshot": {
+        "question": "把水留在滲透池裡，真的能補進地下含水層嗎？",
+        "answer_target": "比較表面滲入與注水井，及適用地質條件。",
+        "scope": "Infiltration and the Water Cycle"
+      }
+    },
+    {
+      "a": "L45-005",
+      "b": "B2277",
+      "decision": "propose_distinct",
+      "reason": "河狸壩維持住宅水位；破堤後工蟻改作維修與覓食延遲是另一個實測後果。",
+      "a_snapshot": {
+        "question": "巢口的土堤只缺一小段，水退後，外出找食物的工蟻怎麼變少了？",
+        "answer_target": "在巢口四周供水，比較原土堤完整或先移掉一小段的蟻巢。破堤進水後，其中一種蟻過八小時仍有較多工蟻搬泥修巢，覓食活動較少。另一種蟻發現食物的時間差不顯著，但招到一群工蟻卻更慢。",
+        "scope": "兩種氾濫平原螞蟻的短期覓食與E. opaciventre八小時後活動試驗須分開。沒有證據顯示嗅覺受損；效果受水位與入口構造限制。"
+      },
+      "b_snapshot": {
+        "question": "河狸的家入口在水裡，睡覺的地方為什麼卻能保持在水面上？",
+        "answer_target": "巢室與入口高低配置配合壩維持周邊水深",
+        "scope": "北美河狸巢型，不說每一窩都築壩"
+      }
+    },
+    {
+      "a": "L45-005",
+      "b": "L45-004",
+      "decision": "propose_distinct",
+      "reason": "從下往上將挖未通時停工，和保留／打開外圍已造好的堤再量工蟻活動不同。",
+      "a_snapshot": {
+        "question": "巢口的土堤只缺一小段，水退後，外出找食物的工蟻怎麼變少了？",
+        "answer_target": "在巢口四周供水，比較原土堤完整或先移掉一小段的蟻巢。破堤進水後，其中一種蟻過八小時仍有較多工蟻搬泥修巢，覓食活動較少。另一種蟻發現食物的時間差不顯著，但招到一群工蟻卻更慢。",
+        "scope": "兩種氾濫平原螞蟻的短期覓食與E. opaciventre八小時後活動試驗須分開。沒有證據顯示嗅覺受損；效果受水位與入口構造限制。"
+      },
+      "b_snapshot": {
+        "question": "螞蟻從下往上挖，還沒碰到積水，怎麼就停了？",
+        "answer_target": "從黏土柱底讓切葉蟻往上挖。表面沒有積水時，多數對照組挖穿地面；有積水的17次都在表層下停住。另一個均勻濕土的選擇試驗中，牠們仍會挖比停點的估計含水率更濕的土，支持沿前進方向逐漸變濕的條件有影響。",
+        "scope": "限實驗室黏土柱及選擇試驗。停挖位置的含水率由剖面估算。沒有直接量出工蟻使用何種感受器。"
+      }
+    },
+    {
+      "a": "L45-005",
+      "b": "B16001",
+      "decision": "propose_distinct",
+      "reason": "通行活橋靠工蟻配額；洪水退後改做搬泥是破堤處理的結果。",
+      "a_snapshot": {
+        "question": "巢口的土堤只缺一小段，水退後，外出找食物的工蟻怎麼變少了？",
+        "answer_target": "在巢口四周供水，比較原土堤完整或先移掉一小段的蟻巢。破堤進水後，其中一種蟻過八小時仍有較多工蟻搬泥修巢，覓食活動較少。另一種蟻發現食物的時間差不顯著，但招到一群工蟻卻更慢。",
+        "scope": "兩種氾濫平原螞蟻的短期覓食與E. opaciventre八小時後活動試驗須分開。沒有證據顯示嗅覺受損；效果受水位與入口構造限制。"
+      },
+      "b_snapshot": {
+        "question": "螞蟻搭的活橋還能再抄近路，為什麼卻先停下來？",
+        "answer_target": "橋往內移縮短路程，同時加長加寬、占用更多原本可運輸的工蟻；在幾何成本上升與交通收益競爭的模型中，較短路線不等於較高運輸效率。",
+        "scope": "限2015 Eciton hamatum不同平台角度/交通量實驗與成本效益模型；不稱工蟻會算帳、結果是全局最優，或局部加入/退出規則已直接查明。"
+      }
+    },
+    {
+      "a": "L45-006",
+      "b": "L45-005",
+      "decision": "propose_distinct",
+      "reason": "土堤擋水與工蟻經身體把已進巢的水排出不同。",
+      "a_snapshot": {
+        "question": "雨水進了中空的竹節，住在裡面的螞蟻怎麼把水帶出去？",
+        "answer_target": "研究者把帶色素的水注入巢內。工蟻喝水，之後到入口外抬高腹端，一滴滴把液體排在外頭。另一項單巢按時段集樣的檢驗，到後來才在排出的水滴中驗到色素。工蟻的身體能成為把巢水搬到外面的容器。",
+        "scope": "限Cataulacus muticus及所試水量。早期滴可透明，未追到每隻工蟻的逐滴路徑；其他蟻種用口吐水的做法未當成本種。"
+      },
+      "b_snapshot": {
+        "question": "巢口的土堤只缺一小段，水退後，外出找食物的工蟻怎麼變少了？",
+        "answer_target": "在巢口四周供水，比較原土堤完整或先移掉一小段的蟻巢。破堤進水後，其中一種蟻過八小時仍有較多工蟻搬泥修巢，覓食活動較少。另一種蟻發現食物的時間差不顯著，但招到一群工蟻卻更慢。",
+        "scope": "兩種氾濫平原螞蟻的短期覓食與E. opaciventre八小時後活動試驗須分開。沒有證據顯示嗅覺受損；效果受水位與入口構造限制。"
+      }
+    },
+    {
+      "a": "L45-006",
+      "b": "B2277",
+      "decision": "propose_distinct",
+      "reason": "高低巢室構造與注水後工蟻排滴無共通運水路徑。",
+      "a_snapshot": {
+        "question": "雨水進了中空的竹節，住在裡面的螞蟻怎麼把水帶出去？",
+        "answer_target": "研究者把帶色素的水注入巢內。工蟻喝水，之後到入口外抬高腹端，一滴滴把液體排在外頭。另一項單巢按時段集樣的檢驗，到後來才在排出的水滴中驗到色素。工蟻的身體能成為把巢水搬到外面的容器。",
+        "scope": "限Cataulacus muticus及所試水量。早期滴可透明，未追到每隻工蟻的逐滴路徑；其他蟻種用口吐水的做法未當成本種。"
+      },
+      "b_snapshot": {
+        "question": "河狸的家入口在水裡，睡覺的地方為什麼卻能保持在水面上？",
+        "answer_target": "巢室與入口高低配置配合壩維持周邊水深",
+        "scope": "北美河狸巢型，不說每一窩都築壩"
+      }
+    },
+    {
+      "a": "L45-007",
+      "b": "B16003",
+      "decision": "propose_distinct",
+      "reason": "火蟻筏內兩層循環，蜂團要以晃動方向比較及局部拉伸模型解釋改形。",
+      "a_snapshot": {
+        "question": "倒掛的蜂團左右晃時越攤越寬，換成上下晃，為什麼不一定如此？",
+        "answer_target": "水平搖晃掛著蜂團的板子，蜂團逐漸攤寬，追到的表面蜂整體偏向上移；垂直搖晃沒引出相同改形。模型中橫搖使不同位置的連結拉伸更不均，個體往拉伸較強處移動就可重現變形。攤寬後的蜂團再受橫搖時變形較小。",
+        "scope": "限受控搖晃的活蜂團，非蠟巢。局部應變規則屬模型，沒有直接證明每隻蜂感到相同的數值或共用唯一規則。"
+      },
+      "b_snapshot": {
+        "question": "沒有新螞蟻加入，火蟻筏的邊緣怎麼還能伸出去又收回？",
+        "answer_target": "底層網絡收縮但密度近恆定，部分結構蟻退出成為上層行走者，再從外緣加入；內部退出與邊緣補入循環，持續提供可改形的材料。",
+        "scope": "限2021固定桿火蟻筏條件；不是整塊彈性片伸縮或外來螞蟻補給。突出方向的具體原因未完全解決，本題不承諾解釋牠們如何選逃生方向。"
+      }
+    },
+    {
+      "a": "L45-007",
+      "b": "B16002",
+      "decision": "propose_distinct",
+      "reason": "缺口寬度變回原值後的活橋增減員遲滯與方向依賴的蜂團攤寬不同。",
+      "a_snapshot": {
+        "question": "倒掛的蜂團左右晃時越攤越寬，換成上下晃，為什麼不一定如此？",
+        "answer_target": "水平搖晃掛著蜂團的板子，蜂團逐漸攤寬，追到的表面蜂整體偏向上移；垂直搖晃沒引出相同改形。模型中橫搖使不同位置的連結拉伸更不均，個體往拉伸較強處移動就可重現變形。攤寬後的蜂團再受橫搖時變形較小。",
+        "scope": "限受控搖晃的活蜂團，非蠟巢。局部應變規則屬模型，沒有直接證明每隻蜂感到相同的數值或共用唯一規則。"
+      },
+      "b_snapshot": {
+        "question": "縫隙變回同樣寬，螞蟻搭的橋為什麼還比之前胖？",
+        "answer_target": "縮回時保留較多工蟻不是僅由當下缺口決定；依人數超出或不足平衡量而非線性改變增減員率的模型，能產生此歷史依賴，固定機率或單純離開延遲模型則不能同樣重現。",
+        "scope": "限2022擴大再縮小間距的10次野外橋試驗及模型比較；橋曾斷裂區間排除。微幅振動穩定性僅模擬，局部張力感知未直接驗證。"
+      }
+    },
+    {
+      "a": "L45-007",
+      "b": "B2283",
+      "decision": "propose_distinct",
+      "reason": "分蜂如何繁殖不解釋已聚成的蜂團受橫向載荷為何攤開。",
+      "a_snapshot": {
+        "question": "倒掛的蜂團左右晃時越攤越寬，換成上下晃，為什麼不一定如此？",
+        "answer_target": "水平搖晃掛著蜂團的板子，蜂團逐漸攤寬，追到的表面蜂整體偏向上移；垂直搖晃沒引出相同改形。模型中橫搖使不同位置的連結拉伸更不均，個體往拉伸較強處移動就可重現變形。攤寬後的蜂團再受橫搖時變形較小。",
+        "scope": "限受控搖晃的活蜂團，非蠟巢。局部應變規則屬模型，沒有直接證明每隻蜂感到相同的數值或共用唯一規則。"
+      },
+      "b_snapshot": {
+        "question": "一大團蜜蜂離開蜂巢，為什麼可能是整個蜂群在繁殖？",
+        "answer_target": "舊蜂王與部分工蜂離巢分出新群體",
+        "scope": "分蜂與全群棄巢區分，不提供移除蜂群操作"
+      }
+    },
+    {
+      "a": "L45-008",
+      "b": "L40-004",
+      "decision": "propose_distinct",
+      "reason": "同儕的開門習慣和自身用不同巢材後的選擇不是同一種學習控制。",
+      "a_snapshot": {
+        "question": "先用軟棉繩搭巢的斑胸草雀，再給牠選，怎麼反而偏選比較挺的繩？",
+        "answer_target": "先給雄鳥一種棉繩施工，再同時提供兩種等長的棉繩。先用軟繩的一組之後較偏選挺繩。研究另比較搭出繩頂的鳥，用較挺棉繩的一組在頂初次出現前所需條數較少，與施工經驗會影響材料選擇的解釋相符。",
+        "scope": "兩種棉繩分別拋光或未拋光，剛挺度有別；比較達成繩頂的子集，不能推說每種硬材料都讓育幼更成功。"
+      },
+      "b_snapshot": {
+        "question": "同一扇門，左右推都有蟲吃，兩處的山雀怎麼各自習慣推不同邊？",
+        "answer_target": "野外食盒的門可往兩邊推，報酬相同。研究者先教部分地區的兩隻大山雀往一邊推，另一些地區教相反方向。之後新學會的鳥較常採用當地已常見的方向，兩種做法都出現過，地方偏好仍持續。",
+        "scope": "比較有示範與無訓練的地區，並記錄實際操作。常見是先前做法的出現頻率，不能宣稱鳥會逐隻點票；有些鳥試過兩邊，並非每隻都改成同一方向。"
+      }
+    },
+    {
+      "a": "L45-008",
+      "b": "R35008",
+      "decision": "propose_distinct",
+      "reason": "歷程顯示猩猩製刷和工具取食效益，不是草雀先使用軟材料後於等長兩堆間選擇。",
+      "a_snapshot": {
+        "question": "先用軟棉繩搭巢的斑胸草雀，再給牠選，怎麼反而偏選比較挺的繩？",
+        "answer_target": "先給雄鳥一種棉繩施工，再同時提供兩種等長的棉繩。先用軟繩的一組之後較偏選挺繩。研究另比較搭出繩頂的鳥，用較挺棉繩的一組在頂初次出現前所需條數較少，與施工經驗會影響材料選擇的解釋相符。",
+        "scope": "兩種棉繩分別拋光或未拋光，剛挺度有別；比較達成繩頂的子集，不能推說每種硬材料都讓育幼更成功。"
+      },
+      "b_snapshot": {
+        "question": "黑猩猩釣白蟻的草莖毛了，是用壞了，還是一開始就把它做成刷子？",
+        "answer_target": "把影像倒回工具第一次碰巢之前，54次製刷觀察有52次在碰巢前已經製成刷端。另一個比較請五位當地嚮導釣白蟻，刷端嘗試約76%有收穫，未處理的約18%。先後次序和實際效果分別回答「怎麼來」和「有何用」。",
+        "scope": "76%和18%是人類嚮導的嘗試成功率，不是野外黑猩猩自己的釣獲率。"
+      }
+    },
+    {
+      "a": "L45-009",
+      "b": "D2090",
+      "decision": "propose_distinct",
+      "reason": "毛細斷層＋防潮膜與樣本部分排水後要有跨壁連通的氣相路徑不同。",
+      "a_snapshot": {
+        "question": "白蟻巢牆仍有許多孔洞積著水，空氣怎麼已經有路穿過去？",
+        "answer_target": "將水注到一小塊巢牆樣本再讓它排水。斷層影像顯示，小孔多半仍含水，部分較大的孔已重新連成穿過樣本的空氣通道。用影像重建的形狀算流場，流動多集中在少數連通處。恢復一條通氣路徑並不需要每個孔都乾。",
+        "scope": "限塞內加爾一塊外壁樣本及所測處理；通路以影像辨認，氣流是模擬。未在暴雨後給整座蟻巢測出通用恢復時間。"
+      },
+      "b_snapshot": {
+        "question": "地板下面已鋪碎石，為什麼還要再加防潮膜？",
+        "answer_target": "大孔隙切斷毛細上升不等於阻止水蒸氣，兩種層各有分工。",
+        "scope": "Capillary Break Beneath Slab；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "L45-009",
+      "b": "D2098",
+      "decision": "propose_distinct",
+      "reason": "混凝土氣孔留作凍脹緩衝的空間與網路部分含水時氣體能否穿透不同。",
+      "a_snapshot": {
+        "question": "白蟻巢牆仍有許多孔洞積著水，空氣怎麼已經有路穿過去？",
+        "answer_target": "將水注到一小塊巢牆樣本再讓它排水。斷層影像顯示，小孔多半仍含水，部分較大的孔已重新連成穿過樣本的空氣通道。用影像重建的形狀算流場，流動多集中在少數連通處。恢復一條通氣路徑並不需要每個孔都乾。",
+        "scope": "限塞內加爾一塊外壁樣本及所測處理；通路以影像辨認，氣流是模擬。未在暴雨後給整座蟻巢測出通用恢復時間。"
+      },
+      "b_snapshot": {
+        "question": "已經有防凍氣孔的混凝土，為什麼長期泡水仍可能受凍損傷？",
+        "answer_target": "長期吸水使原空氣孔逐步飽水，超過材料臨界飽和狀態後緩衝失效。",
+        "scope": "Air Entrainment and Concrete Durability；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "L45-009",
+      "b": "L45-002",
+      "decision": "propose_distinct",
+      "reason": "穿過潮濕孔壁的透氣性不能給出內部宏觀通道日夜氣流方向。",
+      "a_snapshot": {
+        "question": "白蟻巢牆仍有許多孔洞積著水，空氣怎麼已經有路穿過去？",
+        "answer_target": "將水注到一小塊巢牆樣本再讓它排水。斷層影像顯示，小孔多半仍含水，部分較大的孔已重新連成穿過樣本的空氣通道。用影像重建的形狀算流場，流動多集中在少數連通處。恢復一條通氣路徑並不需要每個孔都乾。",
+        "scope": "限塞內加爾一塊外壁樣本及所測處理；通路以影像辨認，氣流是模擬。未在暴雨後給整座蟻巢測出通用恢復時間。"
+      },
+      "b_snapshot": {
+        "question": "白蟻丘沒裝風扇，土牆裡的風為什麼天黑後會換方向？",
+        "answer_target": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+        "scope": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。"
+      }
+    },
+    {
+      "a": "L45-010",
+      "b": "L45-009",
+      "decision": "propose_distinct",
+      "reason": "空間分區的抗壓與等風速壓差，並非同一孔網部分排乾後跨壁導氣。",
+      "a_snapshot": {
+        "question": "泥造的白蟻丘又要承重又要通氣，內外的泥都得夯得一樣緊嗎？",
+        "answer_target": "研究者分別測丘中心和外側扶壁的小柱樣本。中心通常能承受較高壓力，而讓同樣快的氣流穿過中心樣本需要更大壓差。相對多孔的扶壁與緻密中心可分擔通氣和承力需求，不必每一處具備相同材料性質。",
+        "scope": "限築菌圃的O. obesus及取樣高度，有的近底高度抗壓差未顯著。全丘穩定性是模型，沒有把整座壓倒測載重。"
+      },
+      "b_snapshot": {
+        "question": "白蟻巢牆仍有許多孔洞積著水，空氣怎麼已經有路穿過去？",
+        "answer_target": "將水注到一小塊巢牆樣本再讓它排水。斷層影像顯示，小孔多半仍含水，部分較大的孔已重新連成穿過樣本的空氣通道。用影像重建的形狀算流場，流動多集中在少數連通處。恢復一條通氣路徑並不需要每個孔都乾。",
+        "scope": "限塞內加爾一塊外壁樣本及所測處理；通路以影像辨認，氣流是模擬。未在暴雨後給整座蟻巢測出通用恢復時間。"
+      }
+    },
+    {
+      "a": "L45-010",
+      "b": "L45-002",
+      "decision": "propose_distinct",
+      "reason": "同一物種也分成不同問題：地點間材料強度及透氣性與日夜溫差導向通風。",
+      "a_snapshot": {
+        "question": "泥造的白蟻丘又要承重又要通氣，內外的泥都得夯得一樣緊嗎？",
+        "answer_target": "研究者分別測丘中心和外側扶壁的小柱樣本。中心通常能承受較高壓力，而讓同樣快的氣流穿過中心樣本需要更大壓差。相對多孔的扶壁與緻密中心可分擔通氣和承力需求，不必每一處具備相同材料性質。",
+        "scope": "限築菌圃的O. obesus及取樣高度，有的近底高度抗壓差未顯著。全丘穩定性是模型，沒有把整座壓倒測載重。"
+      },
+      "b_snapshot": {
+        "question": "白蟻丘沒裝風扇，土牆裡的風為什麼天黑後會換方向？",
+        "answer_target": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+        "scope": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。"
+      }
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": "全3817 raw與1939未收篩查；直接巢／蜂群／築造關鍵詞命中18及9項。另查暖房對流、孔隙、水分、工蟻分配等擴展用詞，並讀取列出的近對完整問答與scope。",
+  "source_identity": [
+    {
+      "id": "L45-S001",
+      "doi": "10.1073/pnas.2103605118",
+      "url": "https://doi.org/10.1073/pnas.2103605118",
+      "retrieval_url": "https://api3valli.ch/wp-content/uploads/2023/09/Articolo_originale.pdf",
+      "version": "2021正式刊本PDF公開副本",
+      "locator": "PDF pp.2–6，圖1–3，不規則格邊數配對、工蜂巢脾接合的格向與夾角。",
+      "cache": {
+        "file": ".cache/wave45-life-comb.pdf",
+        "sha256": "e94059884704ade06cde49decc06089fc66276b36b64f421d70c110ab58b8f2d",
+        "text_file": ".cache/wave45-life-comb.txt",
+        "text_sha256": "4cf1c3425d3b733be6bb70ea7bb7d7fcadd3e85ff880814a0d4e9b4c63bd5dfd"
+      }
+    },
+    {
+      "id": "L45-S002",
+      "doi": "10.1073/pnas.1423242112",
+      "url": "https://doi.org/10.1073/pnas.1423242112",
+      "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2015-12.pdf",
+      "version": "2015正式刊本，Harvard作者PDF，連附錄",
+      "locator": "主文PDF pp.1–4，活丘、棄丘及Fig1–2的通道／肋中氣流／內外溫差與CO₂時序。",
+      "cache": {
+        "file": ".cache/wave45-life-mound.pdf",
+        "sha256": "ae928ed5e0c6d2bd3ba6a6867d473000bfd21e69e07c3ba394e7229690e29ab1",
+        "text_file": ".cache/wave45-life-mound.txt",
+        "text_sha256": "aca1c2e90deab4daef101a3e1a7fba86976e3608f81e1e0995e3732e3074cb09"
+      }
+    },
+    {
+      "id": "L45-S003",
+      "doi": "10.1371/journal.pone.0188162",
+      "url": "https://doi.org/10.1371/journal.pone.0188162",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5690471/",
+      "version": "2017正式刊本PMC HTML",
+      "locator": "Methods E1–3、Results Figs5–10與Discussion，抽文段37–44、50–91、98–114。",
+      "cache": {
+        "file": ".cache/wave45-life-antturret.html",
+        "sha256": "5073810a5b444c6d5518cf9dc82523a480d51ffc5ed2ff7ce877b5ef6ea7de24",
+        "text_file": ".cache/wave45-life-antturret.txt",
+        "text_sha256": "29508ed51319fc4febfe5d6aa0d178ee1d8c43bbdffa75a49ea70cec4a52908e"
+      }
+    },
+    {
+      "id": "L45-S004",
+      "doi": "10.1371/journal.pone.0095658",
+      "url": "https://doi.org/10.1371/journal.pone.0095658",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0095658&type=printable",
+      "version": "2014正式刊本PDF",
+      "locator": "PDF pp.3–6方法，p.8 Prevention of water inflow及Fig5，pp.10–11梯度／絕對值的解釋。",
+      "cache": {
+        "file": ".cache/wave45-life-updig.pdf",
+        "sha256": "50ac41942e85f92c189cefc4f02791b09603e59817b73864bceef2f7f557a07e",
+        "text_file": ".cache/wave45-life-updig.txt",
+        "text_sha256": "5e532ce5420dbef21810d672392166d0057be40db035857f65193464ee696b3d"
+      }
+    },
+    {
+      "id": "L45-S005",
+      "doi": "10.1007/s00040-011-0151-4",
+      "url": "https://doi.org/10.1007/s00040-011-0151-4",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3059759/",
+      "version": "2011正式刊本PMC HTML",
+      "locator": "Methods與Results的短期／中期淹水、圖1–2；抽文段20–42、44–46。",
+      "cache": {
+        "file": ".cache/wave45-life-levee.html",
+        "sha256": "ed860513c13247f3f6b92ac3c80562c38e06e1b99f905401720c471b5e26633a",
+        "text_file": ".cache/wave45-life-levee.txt",
+        "text_sha256": "02f8605a381c048d7740c14d0ba9ee64670937c871476a0a5e750affcad52273"
+      }
+    },
+    {
+      "id": "L45-S006",
+      "doi": "10.1007/s001140050780",
+      "url": "https://doi.org/10.1007/s001140050780",
+      "retrieval_url": "https://antwiki.org/wiki/images/7/72/Cataulacus_bamboo_peeing_Maschwitz-Moog_Nawi2000.pdf",
+      "version": "2000正式刊本PDF的Web定點正文",
+      "locator": "PDF pp.563–565，Web L104–137、142–169，注染水、腹端排滴、體液顯色及其他物種對照。",
+      "cache": {
+        "file": ".cache/wave45-life-bamboo-web.txt",
+        "sha256": "7d882c93b2ff47e6213566d6d35c131ac10e110b9e764e56745405e8fe93ea02",
+        "text_file": ".cache/wave45-life-bamboo-web.txt",
+        "text_sha256": "7d882c93b2ff47e6213566d6d35c131ac10e110b9e764e56745405e8fe93ea02"
+      }
+    },
+    {
+      "id": "L45-S007",
+      "doi": "10.1038/s41567-018-0262-1",
+      "url": "https://doi.org/10.1038/s41567-018-0262-1",
+      "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2018-13-c.pdf",
+      "version": "2018正式刊本，Harvard作者PDF含附錄",
+      "locator": "主文PDF pp.1–5 Figs1–4，橫向／垂直振盪、表面蜂追蹤、受力模型與單次搖晃。",
+      "cache": {
+        "file": ".cache/wave45-life-swarm.pdf",
+        "sha256": "edc6a3441ed6f3446d37fd900f15dacb2586720b4f55bb8d0dd391d04e68798f",
+        "text_file": ".cache/wave45-life-swarm.txt",
+        "text_sha256": "f058b1e6939482a5202a79db559babeb50ce5e5fb61f2188eca22b1c268990f8"
+      }
+    },
+    {
+      "id": "L45-S008",
+      "doi": "10.1098/rspb.2013.3225",
+      "url": "https://doi.org/10.1098/rspb.2013.3225",
+      "retrieval_url": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/15502503/Physical_cognition_birds_learn_the_structural_efficacy_of_nest_material.pdf",
+      "version": "2014正式刊本，Edinburgh Research Explorer典藏",
+      "locator": "PDF pp.4–7 Experiment 1與2的材料經驗，roof first appeared、Experiment 4與Discussion。",
+      "cache": {
+        "file": ".cache/wave45-life-stiff.pdf",
+        "sha256": "b71512014b7fa660cff77279545be424fe452518e9c2f3d173974ee4cc4b011f",
+        "text_file": ".cache/wave45-life-stiff.txt",
+        "text_sha256": "91d6455d42425945e4bd7daea598688d8ccccae5e6b0cf5648df5682db076a2e"
+      }
+    },
+    {
+      "id": "L45-S009",
+      "doi": "10.1126/sciadv.aat8520",
+      "url": "https://doi.org/10.1126/sciadv.aat8520",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6430624/",
+      "version": "2019正式刊本PMC HTML",
+      "locator": "HTML段36–47、59–67、101–103，塞內加爾sample 2加水後排水、Fig6與流場模型。",
+      "cache": {
+        "file": ".cache/wave45-life-wall.html",
+        "sha256": "a53f27069f57f92184a3d5f6e9cc728817bd1d3b39451bea4ebb6689f1aaeac6",
+        "text_file": ".cache/wave45-life-wall.txt",
+        "text_sha256": "464f0db84513e3a477f13ded598564b2258a8341f5dbc3927fbaab4126f7f217"
+      }
+    },
+    {
+      "id": "L45-S010",
+      "doi": "10.1038/s41598-020-70058-2",
+      "url": "https://doi.org/10.1038/s41598-020-70058-2",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7403385/",
+      "version": "2020正式刊本PMC HTML",
+      "locator": "HTML段22–28、36–49、56–72，Figs1/4/5分區抗壓、CT與固定流速壓差。",
+      "cache": {
+        "file": ".cache/wave45-life-shell.html",
+        "sha256": "b76c01dba2fe84baa6560d092dd6229318319133ae9953d0993f4403db6a3475",
+        "text_file": ".cache/wave45-life-shell.txt",
+        "text_sha256": "96e647047c34584de6e52323ada55f22f699eb3c03f5d8eb4a2fa39fd1f8d8c4"
+      }
+    }
+  ],
+  "source_relationships": "10篇不同論文。S002與S010同種白蟻，分別問宏觀流向及巢材性質。S003與S004同種切葉蟻、共享作者，施作的是氣體造塔與含水掘進兩種實驗。S005的PMC與正式版不同題名線索在同一DOI下按同篇處理。蜂巢接縫舊NA只有索引，此次補到整篇刊本。",
+  "visual_reads": [
+    {
+      "file": ".cache/wave45-life-figures.jpg",
+      "sha256": "fa9bf0c665b0161b98c28751fc657e37156a87ecf7507a80fc2f57ae2c17fe4e",
+      "scope": "目讀正式版合頁：蜂巢PDF pp.4–5圖3/4、蟻丘p2圖1/2、上挖p9圖5、蜂團p3圖2、棉繩PDF p6圖1/2。未觀看補充影片。"
+    }
+  ],
+  "source_failures": [
+    "S006網頁工具的PDF正文行可讀，但使用指定UA直抓同網址403，只保留實際返回的原文段。",
+    "鳥選線長、剪斷蛛網修復等方向的刊方頁面403，沒有把索引當正文或新增案例。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W45L-T01",
+      "body_seconds": 72,
+      "chapter_seconds": [
+        35,
+        37
+      ],
+      "core_totals": {
+        "L45-001": 72
+      },
+      "core_caps": {
+        "L45-001": 88
+      }
+    },
+    {
+      "id": "W45L-T02",
+      "body_seconds": 63,
+      "chapter_seconds": [
+        34,
+        29
+      ],
+      "core_totals": {
+        "L45-002": 63
+      },
+      "core_caps": {
+        "L45-002": 78
+      }
+    },
+    {
+      "id": "W45L-T03",
+      "body_seconds": 71,
+      "chapter_seconds": [
+        36,
+        35
+      ],
+      "core_totals": {
+        "L45-004": 36,
+        "L45-006": 35
+      },
+      "core_caps": {
+        "L45-004": 74,
+        "L45-006": 68
+      }
+    },
+    {
+      "id": "W45L-T04",
+      "body_seconds": 57,
+      "chapter_seconds": [
+        28,
+        29
+      ],
+      "core_totals": {
+        "L45-003": 57
+      },
+      "core_caps": {
+        "L45-003": 72
+      }
+    },
+    {
+      "id": "W45L-T05",
+      "body_seconds": 58,
+      "chapter_seconds": [
+        29,
+        29
+      ],
+      "core_totals": {
+        "L45-007": 58
+      },
+      "core_caps": {
+        "L45-007": 72
+      }
+    }
+  ],
+  "timing_probe": {
+    "file": ".cache/w45-sample-life.json",
+    "sha256": "63b65daa64036541f13dfb08c44d275fb7be49a01bc6b7bd11212465dd32e7ea",
+    "theme_id": "W45L-T01",
+    "continuous_read_seconds": 63.9,
+    "plan_seconds": 72,
+    "visual_allowance_seconds": 8.1,
+    "scope": "根代理離線三段連讀，非完成影片，另四案紙上。"
+  },
+  "revision_history": [
+    {
+      "before_files": [
+        {
+          "file": "batches/wave45-life.json",
+          "sha256": "8e16eccea11b89565aec694b1110d5b29c33ee52bbfaeec78e2086bf34e96073"
+        },
+        {
+          "file": "reviews/wave45-life-themes.json",
+          "sha256": "d332bd502edae089b71fc97688b1a1ed9564e0f894575f1cdb0c731cf1244571"
+        },
+        {
+          "file": "reviews/wave45-life-author.json",
+          "sha256": "41fd33d5d13d7440f32053c80ca261cf97d7960a0d1037d8287bc5e4228d9fe2"
+        }
+      ],
+      "after_batch_sha256": "8e16eccea11b89565aec694b1110d5b29c33ee52bbfaeec78e2086bf34e96073",
+      "after_themes_sha256": "cd0cd944a4a79e05c9adfeb2e9aaa7d8d9c83691a6a00eab8d14d6fdef096ef2",
+      "changes": [
+        "T02限定白蟻外側土肋內流向，與泥材孔隙區分。",
+        "T03問句涵蓋地下阻水及竹節排水，含水梯度標為比單一停挖濕度更合數據的推測。",
+        "T04以工蟻在風與氣體變因下的施工反應為問句。"
+      ],
+      "removed_seconds": 0
+    }
+  ],
+  "limits": [
+    "題級來源與短片規劃，未核任何最終逐句稿與影片。"
+  ]
+}

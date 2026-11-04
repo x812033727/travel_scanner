@@ -1,0 +1,381 @@
+{
+  "batch_id": "wave15-food-physics-20261102",
+  "created_on": "2026-11-02",
+  "scope": "食物物理的四個受控力學/幾何對照；題級來源支持候選，非完整答案或製作核准；未採營養、健康、火候與危險操作建議。",
+  "sources": [
+    {
+      "id": "F15-S001",
+      "url": "https://math.mit.edu/~dunkel/Data/spaghetti/2018HeEtAl_PNAS.pdf",
+      "title": "Controlling fracture cascades through twisting and quenching",
+      "publisher": "Ronald H. Heisser, Vishal P. Patil, Norbert Stoop, Emmanuel Villermaux, Jörn Dunkel / PNAS；MIT作者副本",
+      "accessed_on": "2026-11-02",
+      "version": "2018正式論文PDF；115(35):8665–8670；DOI 10.1073/pnas.1802831115",
+      "read_via": "web開啟PDF及身分核對；指定UA HTTP200下載作者副本，PyMuPDF擷取指定頁；PDF p2–3原圖渲染目讀。",
+      "reading_scope": "PDF p1–2 Results、Timescales in Fragmentation、Damped Kirchhoff Model、Minimum Fragment Length；p3–4 Twist-Controlled Fracture及Fig2、時間尺度分析；p5 Quench-Controlled Fracture讀作不另拆題的邊界。未讀SI、未看Movie S1–S4。",
+      "locator": "PDF p2 Fig1；p3–4 Twist-Controlled Fracture、Fig2及Eq2–7後時間尺度討論",
+      "summary": "首次折斷產生的彎曲波可促成後續斷裂；預扭轉改變首次破壞時的曲率及應力釋放速度，研究以實驗與細桿模型比較碎片數。",
+      "limitations": "限指定乾麵條細桿、尺寸及夾持條件。模型應力準則並非普遍斷裂定律，不把實驗轉角當所有麵條的兩段保證；速度控制另有推論，不另收核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F15-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8099191/",
+      "title": "Morphing pasta and beyond",
+      "publisher": "Ye Tao, Yi-Chin Lee等 / Science Advances；PMC與Morphing Matter Lab作者副本",
+      "accessed_on": "2026-11-02",
+      "version": "2021-05-05正式研究；7:eabf4098；DOI 10.1126/sciadv.abf4098",
+      "read_via": "web核PMC/PubMed身分與正文；Europe PMC fullTextXML指定UA HTTP200；另由作者實驗室取得合訂PDF，p2–3 Fig1–2渲染目讀。",
+      "reading_scope": "XML Introduction前兩段、Results的Morphing mechanism、Geometrical features of grooves、Design guidelines and analysis前兩段、Discussion前兩段、Methods材料及麵片製作前兩段；作者PDF p1–3、p7相應正文與Fig1–2讀回。PDF共29頁，正式正文p1–9，未把後附補充材料計作已讀，也未看影片。",
+      "locator": "Results: Morphing mechanism；Geometrical features of grooves；Fig1A–E、Fig2A–C；Discussion模型限制",
+      "summary": "表面溝槽造成不同位置吸液的時間差，單材質也能暫時彎曲；麵片溝槽接觸後的黏合及烹煮中的不可逆材料變化可協助保形。",
+      "limitations": "PDMS與非極性溶劑是材料模型，不是食物實驗；麵片為semolina加水。實際麵糰不完全符合理想網絡模型。原圖非自動商用授權，只規劃原創示意；不宣稱實現量產或已證明環保效益。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F15-S003",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-24.pdf",
+      "title": "Slicing Softly with Shear",
+      "publisher": "E. Reyssat, T. Tallinen, M. Le Merrer, L. Mahadevan / Physical Review Letters；Harvard作者副本",
+      "accessed_on": "2026-11-02",
+      "version": "2012-12-10正式論文；109:244301；DOI 10.1103/PhysRevLett.109.244301",
+      "read_via": "web核APS身分；指定UA HTTP200取得Harvard合訂PDF，PyMuPDF讀原研究p4–7；p5–6 Fig1–2渲染目讀。",
+      "reading_scope": "合訂PDF p1–3是另作者Viewpoint評論，非原研究；本題依p4–7原研究正文、Fig1–3與摩擦限制；p8參考文獻不計證據。未看補充影片或重現切割實驗。",
+      "locator": "合訂PDF p4–5 Fig1與nucleation/growth段；p5–6局部拉應力模型、Fig2；p7摩擦與滑動限制",
+      "summary": "軟agar凝膠中，加入切向載荷可在較少整體壓縮下造成局部拉應力，降低開始切開的門檻；此實驗中的改善主要在裂口起始階段。",
+      "limitations": "是細線切agar模型，不把效果保證推到所有食材或廚刀；接觸摩擦未完全量化，完全滑動可能不能傳遞足夠切向力。模型與實測曲線不可畫成同一證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F15-S004",
+      "url": "https://hu.gatech.edu/wp-content/uploads/2020/08/Hu20-rice.pdf",
+      "title": "The physics of tossing fried rice",
+      "publisher": "Hungtang Ko, David L. Hu / Journal of the Royal Society Interface；Georgia Tech作者副本",
+      "accessed_on": "2026-11-02",
+      "version": "2020-02-12正式論文；17:20190622；DOI 10.1098/rsif.2019.0622",
+      "read_via": "web讀PMC同文身分、Methods及正文；指定UA HTTP200下載作者PDF；文字擷取與p7–8 Fig4–5渲染目讀。",
+      "reading_scope": "Methods §2.1–2.2；PDF p4–5 §3.1末、§3.2與§3.3開頭，p6著地限制及§4.1部分；p7–8 §4.1後段、§4.2與§4.3開頭；p10結論中運動學及模型限制。未看補充影片、未重跑數值模型。",
+      "locator": "§3.2 Rice trajectories及Eq3.4–3.7；§4.2 Simulating all possible kinematics and rice trajectories；Fig4–5",
+      "summary": "同一鍋體的平移與轉動配合會改變米粒離鍋及落回的位置；模型甚至沿相同鍋體軌跡反向運動，也會得到不同的米粒飛行與落點。",
+      "limitations": "五位廚師觀測用於建模；反向同路徑對照是模型結果。粒子不黏鍋、忽略空阻及空中互撞，未模擬落地後粒子運動。本文前言高溫數字不採用；不推導火候、風味或操作建議。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "F15001",
+      "question": "乾麵條一折為什麼常斷成幾截，先扭轉又可能只剩兩截？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.rods.bending_fracture_cascade_suppressed_by_fast_torsional_release",
+      "answer_target": "第一次斷裂放出的彎曲波會提高別處曲率，誘發後續斷裂；預扭轉讓首次破壞在較小曲率發生，快速釋放的扭轉應力又先於彎曲波增強，因而可抑制連續破裂。",
+      "scope": "限研究的乾spaghetti細桿及夾持條件；實驗與Kirchhoff細桿模型分開。不是扭轉讓麵條更強，也不承諾任意麵條、任意轉角必成兩段。",
+      "source_ids": [
+        "F15-S001"
+      ],
+      "source_locator": "PDF p2 Fig1；p3–4 Twist-Controlled Fracture及Fig2、時間尺度討論",
+      "premise_status": "screened",
+      "notes": "彎曲波與扭轉抑制合成同一核心對照；不把不同麵條品牌、扭角或載入速度拆題。高速影像已有序列，未播放原影片，示意速度不得冒充量測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不是一次同時壓壞好幾處，而是第一個斷口會改變後面的受力；扭轉改變的是這個連鎖。",
+        "visual": "同一根細桿的時間序列：第一斷口出現後，曲率波向外傳；另排預扭組，分色顯示先消退的扭轉與稍後彎曲波。保留未扭與預扭的首次曲率差。",
+        "seconds": [
+          100,
+          160
+        ]
+      }
+    },
+    {
+      "id": "F15002",
+      "question": "一片平麵片只壓了溝槽，為什麼下水後能自己捲起來？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.grooved_sheet.transient_diffusion_asymmetry_and_contact_shape_lock",
+      "answer_target": "溝槽突出部的中心吸液較慢，與較快膨潤的表面形成暫時形變差，讓單材麵片彎曲；窄槽接觸後，溶出澱粉的黏合連同烹煮材料變化可協助保留彎曲。",
+      "scope": "限研究壓槽的semolina水麵糰；PDMS溶劑對照只展示暫時膨潤原理，必須標明換材料與液體。麵糰模型不涵蓋全部黏彈/塑性，不能稱所有槽距都鎖形。",
+      "source_ids": [
+        "F15-S002"
+      ],
+      "source_locator": "Results: Morphing mechanism、Geometrical features of grooves；Fig1–2；Discussion",
+      "premise_status": "screened",
+      "notes": "異步膨潤與接觸鎖形維持同一核心，不再收每種螺旋/馬鞍外形；澱粉黏附不是另一新題，與F4027區分。未讀附錄或影片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不用把兩種材料貼在一起，光是改變液體到達各處的時間，也能安排彎曲；保形還要另一個接觸條件。",
+        "visual": "相同材料剖面用吸液時間色帶標中心與暴露表面；接著並排窄/寬槽，前者接觸而部分黏合、後者沒有碰合。PDMS恢復平坦另框標材料模型，不畫成麵片必然回平。",
+        "seconds": [
+          95,
+          150
+        ]
+      }
+    },
+    {
+      "id": "F15003",
+      "question": "同一塊軟凝膠，直壓和邊拉邊切為什麼差這麼多？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.soft_gel.shear_localizes_tension_to_reduce_fracture_nucleation_barrier",
+      "answer_target": "在細線切agar的實驗中，純直壓要先造成較大整體變形；加入切向載荷能在表面建立局部拉應力，較早起裂。已切開後的持續切割，並未顯示相同優勢。",
+      "scope": "限所測agar凝膠與細線幾何；固定線徑及法向速度改切向運動。局部應力來自模型，力與變形來自實驗；不能泛化所有食物或當廚刀操作教學。",
+      "source_ids": [
+        "F15-S003"
+      ],
+      "source_locator": "合訂PDF p4–5 Fig1與裂口起始/成長段；p5–6 Fig2；p7摩擦限制",
+      "premise_status": "screened",
+      "notes": "與小面積集中壓力不同：比較時沒有換線徑；需要切向力傳入，完全滑動不能等同更有效。切開前後是同核心控制，不拆第二題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "邊拉的幫助不只是讓接觸更尖，而是改變受力方式；開始破口和沿著破口繼續切是兩道不同門檻。",
+        "visual": "原創雙欄同線徑示意直壓下的大凹陷與加切向載荷後較小凹陷；另用非數據比例的力程示意曲線標起裂峰與其後平台，模型拉應力色圖另框。",
+        "seconds": [
+          80,
+          125
+        ]
+      }
+    },
+    {
+      "id": "F15004",
+      "question": "鍋子沿同一條路反著動，為什麼米粒不會原路飛回？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.wok.phase_and_path_direction_change_detachment_and_relanding",
+      "answer_target": "米粒只在鍋面運動滿足脫離條件時起飛，之後受重力而鍋子仍在移動；改平移與轉動的配合，甚至反走相同鍋體路徑，都會改變起飛狀態與重新相交的落點。",
+      "scope": "限該兩連桿鍋體模型；反向同路徑是數值對照，不是廚師反炒實測。模型將米視為不黏附粒子，忽略空阻/空中互撞及落地後流動；不談熱、風味或最佳操作。",
+      "source_ids": [
+        "F15-S004"
+      ],
+      "source_locator": "§3.2 Eq3.4–3.7；§4.2與Fig4–5",
+      "premise_status": "screened",
+      "notes": "鍋的橢圓路徑不等於米在廚房慣性座標的橢圓飛行；自由飛行為拋物線，原圖5採移動鍋座標。前言高溫敘述不採用；相位只作控制，不把基本力偶或共振再算新核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "走過相同位置還不夠：米粒何時離開、帶著什麼速度，以及鍋何時回到下面，才決定落點。",
+        "visual": "兩側畫相同鍋面路徑但箭頭相反，固定向下的重力箭頭；以模型示意標起飛點與移動中的接回點。先分清鍋上標記的路徑、米的慣性座標軌跡，絕不以示意宣稱精確模擬。",
+        "seconds": [
+          90,
+          140
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "F15-NA01",
+      "question": "爆米花為什麼跳、爆響？",
+      "related_ids": [
+        "LEG-S79"
+      ],
+      "reason": "舊題已含破殼、澱粉腿回彈與聲音，不換品種另計。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA02",
+      "question": "麵包和飯放冷變硬",
+      "related_ids": [
+        "LEG-S54"
+      ],
+      "reason": "澱粉回凝已有核心。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA03",
+      "question": "餅乾受潮不脆",
+      "related_ids": [
+        "H3025"
+      ],
+      "reason": "水塑化與玻璃轉移已有核心，僅換食品。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA04",
+      "question": "奶油打發帶入空氣",
+      "related_ids": [
+        "F4009",
+        "F4012"
+      ],
+      "reason": "已有打發/泡沫素材，不以泡沫種類湊題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA05",
+      "question": "蛋白泡沫打過頭出水",
+      "related_ids": [
+        "F4018"
+      ],
+      "reason": "蛋白網絡過度聚集與失水已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA06",
+      "question": "炸物離鍋冷卻後吸油",
+      "related_ids": [
+        "F4026"
+      ],
+      "reason": "蒸氣凝結後壓差吸油已收。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA07",
+      "question": "巧克力加少量水突然結塊",
+      "related_ids": [
+        "F8003"
+      ],
+      "reason": "少量水黏結顆粒已收。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA08",
+      "question": "巧克力調溫與晶種",
+      "related_ids": [
+        "F8002",
+        "D2029"
+      ],
+      "reason": "選擇性熔化及脂晶網絡已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA09",
+      "question": "加工乳酪加熱保持均一",
+      "related_ids": [
+        "F8004"
+      ],
+      "reason": "鈣結合與蛋白分散已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA10",
+      "question": "酥皮為何層層鼓開",
+      "related_ids": [
+        "F4024"
+      ],
+      "reason": "層間蒸氣與結構已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA11",
+      "question": "咖啡磨更細反而萃取較少",
+      "related_ids": [
+        "F4030"
+      ],
+      "reason": "堵塞/不均勻流動與模型範圍已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA12",
+      "question": "澱粉加熱變稠",
+      "related_ids": [
+        "F4003"
+      ],
+      "reason": "吸水膨潤糊化已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA13",
+      "question": "揉麵團形成彈性",
+      "related_ids": [
+        "D2268"
+      ],
+      "reason": "水化蛋白網絡與揉製已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA14",
+      "question": "油脂讓麵團較酥鬆",
+      "related_ids": [
+        "D2269"
+      ],
+      "reason": "干擾蛋白網絡已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA15",
+      "question": "牛奶脂滴打碎後需要重新覆膜",
+      "related_ids": [
+        "D2039"
+      ],
+      "reason": "新界面蛋白覆膜已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA16",
+      "question": "每一種槽紋麵片各算一題",
+      "related_ids": [
+        "F15002"
+      ],
+      "reason": "螺旋/錐台/馬鞍是同一幾何膨潤核心的設計，不另計；本批也不把澱粉黏合從F4027拆出。",
+      "source_ids": [
+        "F15-S002"
+      ],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA17",
+      "question": "乾麵換扭角或載入速度各算一題",
+      "related_ids": [
+        "F15001"
+      ],
+      "reason": "本文速度條件另讀作邊界；不把碎片數參數掃描當多個獨立機制，聲波弱化部分是作者解釋，未另查補充材料。",
+      "source_ids": [
+        "F15-S001"
+      ],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA18",
+      "question": "餅乾放涼後隔一段時間才裂",
+      "related_ids": [
+        "D2093",
+        "E11014"
+      ],
+      "reason": "題材有可見反差，但本輪原研究正文取得不完整，且需區分既有乾縮/裂紋網絡；暫不納入，不把搜尋摘要當已讀正文。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "source_reading_limit": "僅初步搜尋/頁面片段；出版者重開及直接下載失敗，未用作保留候選。需下次先核工作身分與完整正文。",
+      "attempted_source_urls": [
+        "https://academic.oup.com/ijfst/article/40/4/361/7929212"
+      ]
+    },
+    {
+      "id": "F15-NA19",
+      "question": "扭開夾心餅乾，夾心總留某一側",
+      "related_ids": [
+        "D2198"
+      ],
+      "reason": "目前未完成原研究指定正文，黏附/內聚失效是否有新控制未定；不以製造歷史猜測補機制。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA20",
+      "question": "鍋內油膜自己露出乾斑",
+      "related_ids": [
+        "I12004",
+        "I12005"
+      ],
+      "reason": "可能涉及張力梯度，但本輪未完成特定原研究對照；與已收Marangoni題邊界未解，不新增。",
+      "source_ids": [],
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "F15-NA21",
+      "question": "炒飯為什麼需要某個極高溫度",
+      "related_ids": [],
+      "reason": "所讀運動學論文前言的高溫敘述不採用；本批不研究熱安全、火候與風味，不將其包進動作題。",
+      "source_ids": [
+        "F15-S004"
+      ],
+      "status": "NOT_ADDED"
+    }
+  ]
+}

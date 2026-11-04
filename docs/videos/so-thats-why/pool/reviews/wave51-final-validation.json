@@ -1,0 +1,147 @@
+{
+ "tested_on": "2026-11-03T06:56:33.459Z",
+ "node": "v22.23.4",
+ "status": "PASS",
+ "counts": {
+  "raw_records": 3948,
+  "canonical_questions": 3787,
+  "eligible_candidates": 3617,
+  "selected_candidates": 3558,
+  "alias_records": 161,
+  "historical_records": 313,
+  "source_urls": 4941,
+  "current_research_source_urls": 1985,
+  "selected_source_urls": 3159,
+  "new_suggestions_not_added": 2291,
+  "high_similarity_pending": 0,
+  "approved_scripts": 0
+ },
+ "themes": {
+  "total": 575,
+  "new": "G560–G575",
+  "body_seconds_range": [
+   50,
+   72
+  ]
+ },
+ "checkpoint": {
+  "file": "checkpoint-3542.json",
+  "sha256": "d17577479a68088d65b46367ba44a705039c66e5933ed4c8f4e07b9aaa88e46d",
+  "baseline_gz_sha256": "f9c5a46e3127b42187ebc41306f9a1e2df9c2166b2fff5e9f2d8dabd0e6b8025",
+  "changed_baseline_raw": 0,
+  "removed_or_merged_baseline_ids": 0
+ },
+ "first_index": {
+  "status": "IMPORTED",
+  "snapshot": "c9a9b042378b704ae8980d6ca953c2c1d6b4cfd95b5376b66ac8b25cde8c0c91",
+  "writes": 7735,
+  "selected": 3558
+ },
+ "second_index": {
+  "status": "UNCHANGED",
+  "snapshot": "c9a9b042378b704ae8980d6ca953c2c1d6b4cfd95b5376b66ac8b25cde8c0c91",
+  "writes": 0
+ },
+ "aliases": {
+  "new": [
+   "L51-005→L51-004"
+  ],
+  "show_lookup_redirects": true
+ },
+ "performance": {
+  "kind": "本機單次實測，真實3,948原題；不是一萬／十萬筆或延遲分位數壓測",
+  "similarity_ms": 7852.7,
+  "index_ms": 1470.7,
+  "unchanged_index_ms": 237.2,
+  "searches": [
+   {
+    "query": "螞蟻",
+    "returned": 20,
+    "milliseconds": 9.82
+   },
+   {
+    "query": "液滴",
+    "returned": 24,
+    "milliseconds": 8.07
+   },
+   {
+    "query": "日全食",
+    "returned": 2,
+    "milliseconds": 0.73
+   },
+   {
+    "query": "起司",
+    "returned": 2,
+    "milliseconds": 7.92
+   }
+  ],
+  "rss_bytes": 322621440,
+  "sqlite_bytes": 52793344
+ },
+ "semantic": {
+  "first": {
+   "file": ".cache/wave51-semantic-neighbours.json",
+   "sha256": "86eb24b1930fc8dbf9463eac00707103153594fb4fa8d7259259d97d96610c12"
+  },
+  "final": {
+   "file": ".cache/wave51-semantic-neighbours-final.json",
+   "sha256": "b5736bb740a4b3d53552b23e87ec2ee689c8e1a31c9a47f250b1456cc6dbdfd5"
+  },
+  "records": 3948
+ },
+ "tests": {
+  "node": {
+   "passed": 45,
+   "failed": 0,
+   "files": [
+    "tools/video/so-thats-why/pool/pool.test.mjs",
+    "tools/video/so-thats-why/catalog.test.mjs",
+    "tools/repo-hygiene.test.mjs",
+    "tools/json-duplicate-keys.test.mjs",
+    "tools/docs-videos-tests.test.mjs"
+   ],
+   "log_sha256": "47820584b19c3e5ebcaf98023591d0008d73284a518a43435a7fbf618ac85118"
+  },
+  "python": {
+   "passed": 2,
+   "failed": 0,
+   "file": "tools/video/so-thats-why/pool/semantic_test.py",
+   "log_sha256": "279538fe812d165bb22f5a84ab94b40efa9072957816601b6c80f1ba281fa35e"
+  },
+  "checks": {
+   "pool": "PASS",
+   "series": "PASS",
+   "task_files": 2287
+  }
+ },
+ "source_impact_sample": {
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5247521/",
+  "affected_candidates": [
+   "S51-002"
+  ],
+  "theme_ids": [
+   "G569"
+  ],
+  "fetches_external_pages": false
+ },
+ "browser_receipt_sha256": "5ede28363feaa8d73d4095491fa0cde311bafb9f96b7a8b28af7a89e99ad2172",
+ "hashes": {
+  "pool.json": "cd2ce927f85a8cb80ed16e463f2b104dc287ee2ce6fb3d53e8c3148e0aba628d",
+  "themes.json": "bf6382835a5193b0c3c899173c38ceda39df01737aa17cbd81c09763abd734b4",
+  "selection.json": "457df4fb1b173a38829970dfcc7f5492a2fdeb2b81cbb0e35fc1dc1033389fea",
+  "dedup-decisions.json": "1d502020cfc30793524ae35ff39c472ff31c97ff57ca4f8c95486abf462219a6",
+  "manifest.json": "8d0db758df2dc161e2b293717f9da1afe64021493b072c1cd3698d4e9cc7cb04",
+  "index.html": "5b3b3541ae30bdd128c23fcc1ffe349c93b80a92532f2e9e7cef85f626b2698a",
+  "batches/wave51-life.json": "ddcf4fa3f18bb5fbdee343f9b3e6798e68d95f33cce4136488f37a0b79f5ee51",
+  "batches/wave51-physics.json": "9b2fee6bd84aca1b142b7f6a65bd10be9ab6c35b93d59ed117c7917213d775f0",
+  "batches/wave51-earth.json": "ff4b2fd62966367bec349b05df452f600ed4917f209af5bfcccfbfcc359b88d6",
+  "batches/wave51-human.json": "4fc9ba4f8f3eb4e064c4868b483c8cad6159018e9e17e16e0edb2e3a75112535"
+ },
+ "tools_changed": false,
+ "limits": [
+  "不是完整製作稿或成片驗收",
+  "不是萬筆／十萬筆效能測試",
+  "root事後10組近鄰判斷非獨立覆核",
+  "遠端CI需另讀"
+ ]
+}

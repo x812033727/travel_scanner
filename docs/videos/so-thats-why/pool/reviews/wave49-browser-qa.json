@@ -1,0 +1,34 @@
+{
+  "tested_on": "2026-11-03T05:09:51.877Z",
+  "result": "PASS",
+  "selected": 3528,
+  "index_html_sha256": "a95c3949671a15c780c41382fe16ca9e75cbbdfa6092647d0f9214e39111c269",
+  "source_sample": {
+    "id": "S49-001",
+    "urls": [
+      "https://arxiv.org/pdf/physics/0608079v2",
+      "https://arxiv.org/pdf/physics/0501149v1"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow; mobile search field >=350px and keyword + ID search + source expansion pass",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave49-desktop.png",
+    "wave49-source-desktop.png",
+    "wave49-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "已逐張開啟當期桌面總覽、S49-001展開卡與390像素手機截圖。入選計數、片案與別名可讀，手機搜尋欄獨占一列且無水平溢出。來源網址由瀏覽器逐href斷言核實；未將未入鏡部分聲稱目讀。另由瀏覽器斷言R45006/R45011同時保留舊摘要與前批正文閱讀。"
+}

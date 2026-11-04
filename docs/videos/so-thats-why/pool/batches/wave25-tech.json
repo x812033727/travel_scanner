@@ -1,0 +1,411 @@
+{
+  "batch_id": "wave25-tech-20261102",
+  "created_on": "2026-11-02",
+  "scope": "5種資料摘要/抽樣機制；4核組3短題案，HLL先留短段不硬排片。",
+  "sources": [
+    {
+      "id": "R25-S001",
+      "url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/p422-bloom.pdf",
+      "canonical_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/p422-bloom.pdf",
+      "retrieval_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/p422-bloom.pdf",
+      "title": "Space/Time Trade-offs in Hash Coding with Allowable Errors",
+      "publisher": "Burton H. Bloom; Communications of the ACM",
+      "accessed_on": "2026-11-02",
+      "version": "1970,13(7),422–426; Princeton公開原論文副本",
+      "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+      "reading_scope": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+      "locator": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+      "summary": "全零位元陣列以多個地址記錄成員；空位能排除，不空則仍可能是其他成員共同填滿。",
+      "limitations": "限插入且雜湊規則一致、無資料損毀；基本版本不任意清位元刪除。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave25-tech-bloom.pdf",
+        "sha256": "62aab4b336dfda911ba456685bd83d83a4cb914dd9d4e11f0fd96b570f63062f",
+        "text_file": ".cache/wave25-tech-bloom-text.json",
+        "text_sha256": "9cb71e1f16e51da130cdddad4b2417e4e1422f0fc24763260c03f1a1cd47b9bb"
+      },
+      "viewed_images": []
+    },
+    {
+      "id": "R25-S002",
+      "url": "https://www.cs.umd.edu/~samir/498/vitter.pdf",
+      "canonical_url": "https://www.cs.umd.edu/~samir/498/vitter.pdf",
+      "retrieval_url": "https://www.cs.umd.edu/~samir/498/vitter.pdf",
+      "title": "Random Sampling with a Reservoir",
+      "publisher": "Jeffrey Scott Vitter; ACM Transactions on Mathematical Software",
+      "accessed_on": "2026-11-02",
+      "version": "1985,11(1),37–57; UMD公開原論文副本",
+      "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+      "reading_scope": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+      "locator": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+      "summary": "Algorithm R由Alan Waterman提出；樣本一格時，第t筆以1/t機率替換，留下的每筆在固定前綴等機率。",
+      "limitations": "Vitter文章主題含Algorithm Z，本題只採R的敘述。抽的是資料紀錄，不自動等同不重複的人。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave25-tech-reservoir.pdf",
+        "sha256": "dba2241b478a46b49ec90cd95f85a8bc3cdf2c12b8c6de03134b99a754a5803b",
+        "text_file": ".cache/wave25-tech-reservoir-text.json",
+        "text_sha256": "5b759d6b34c987314ac25b90ff09f30ce750ef3593a7c148c588e4bb765271be"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-tech-reservoir-p3.png",
+          "sha256": "78f724745f66e0b57fde872ac535cc37f6cbb155f992ac2a343aaaaf535a38d8"
+        }
+      ]
+    },
+    {
+      "id": "R25-S003",
+      "url": "https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf",
+      "canonical_url": "https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf",
+      "retrieval_url": "https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf",
+      "title": "HyperLogLog: the analysis of a near-optimal cardinality estimation algorithm",
+      "publisher": "Philippe Flajolet, Éric Fusy, Olivier Gandouet, Frédéric Meunier; DMTCS",
+      "accessed_on": "2026-11-02",
+      "version": "AofA07,2007,127–146; INRIA作者稿",
+      "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+      "reading_scope": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+      "locator": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+      "summary": "雜湊前綴分桶，餘位的首個1位置只保留桶內最大值；由多桶統計估不重複項數，同值重播不改暫存器。",
+      "limitations": "理論均勻雜湊假設；實務小量須校正。只示意更新，不拿四桶玩具輸出冒充正式估計；不是精確人數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave25-tech-hll.pdf",
+        "sha256": "60a708db2b8b771587c816be9bdb7e1f800bfc759f82a273afc76bc8417826e9",
+        "text_file": ".cache/wave25-tech-hll-text.json",
+        "text_sha256": "9eb12a29c79e00c74482e28390ab733f3835dcc92dcde618b50cd80bffcd1bc9"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-tech-hll-p14.png",
+          "sha256": "09f639abe8c58d29ff00fc99c1a43586da40db142c1e085d7e73267b9ec825b0"
+        }
+      ]
+    },
+    {
+      "id": "R25-S004",
+      "url": "https://www.cs.yale.edu/homes/aspnes/pinewiki/attachments/DataStreamComputation/count-min.pdf",
+      "canonical_url": "https://www.cs.yale.edu/homes/aspnes/pinewiki/attachments/DataStreamComputation/count-min.pdf",
+      "retrieval_url": "https://www.cs.yale.edu/homes/aspnes/pinewiki/attachments/DataStreamComputation/count-min.pdf",
+      "title": "An improved data stream summary: the count-min sketch and its applications",
+      "publisher": "Graham Cormode, S. Muthukrishnan; Journal of Algorithms",
+      "accessed_on": "2026-11-02",
+      "version": "2005,55,58–75; DOI10.1016/j.jalgor.2003.12.001; Yale公開原論文副本",
+      "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+      "reading_scope": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+      "locator": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+      "summary": "每筆更新各列一格，同桶混入其他項次數；非負計數下各列不低估，取最小值減少污染但仍可能高估。",
+      "limitations": "本題限只加不減。原文更廣的非負向量條件不等同任意負數；不轉用一般情況的中位數定理。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave25-tech-countmin.pdf",
+        "sha256": "abc881cc07ecb2e5d5babc88b4e8f77bfc8cb29e3a245b9a4ed363bf5058d808",
+        "text_file": ".cache/wave25-tech-countmin-text.json",
+        "text_sha256": "e88add2c81380d56b0ec8e0d5e47a9fbcf003c8379a02e32849d8ec37fe0c9b9"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-tech-countmin-p7.png",
+          "sha256": "e71af5ce1d1a9d675b267da8108563c276473b439bebe9d73f52716335d51de3"
+        }
+      ]
+    },
+    {
+      "id": "R25-S005",
+      "url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf",
+      "canonical_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf",
+      "retrieval_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf",
+      "title": "On the resemblance and containment of documents",
+      "publisher": "Andrei Z. Broder; Digital Systems Research Center",
+      "accessed_on": "2026-11-02",
+      "version": "公開作者論文稿，Princeton課程典藏檔名broder97；不以副本另算獨立研究",
+      "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+      "reading_scope": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+      "locator": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+      "summary": "共享均勻隨機排列時，兩集合最小元素相同的機率等於交集占聯集比例。",
+      "limitations": "實際有限指紋會碰撞，任意hash不等於精確均勻排列；示範用無碰撞排列。集合相似不是語意同義或抄襲判定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave25-tech-minhash.pdf",
+        "sha256": "da1227992d4a308f9f6f9f99893fd7b00c26e6cf757b1372f426074c101ef56b",
+        "text_file": ".cache/wave25-tech-minhash-text.json",
+        "text_sha256": "c24f18f18f4e56e38ff9447740ecd5c762377a62f579528d4d341d3e8dbc9386"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave25-tech-minhash-p5.png",
+          "sha256": "8443ecb50dc90db9a4ddfeab61f04e22950255db16c0a495142293fe479ba639"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R25001",
+      "question": "名單沒保存完整，為什麼電腦敢說「一定沒出現過」？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.bloom_shared_bit_one_sided_membership",
+      "answer_target": "基本Bloom filter把每個項目的多個固定地址設為1。查詢遇到任一0可排除；全為1仍可能只是其他項目留下的重疊痕跡，所以只能回答可能有。",
+      "scope": "限插入、相同雜湊與無損位元陣列。未插入的C可誤中，已插入的A不會漏；任意清除共享位元刪A可能傷到B。不是內容雜湊驗完整性，也不是保存壓縮原名單。",
+      "source_ids": [
+        "R25-S001"
+      ],
+      "source_locator": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          105
+        ],
+        "payoff": "A與B都沒叫C，格子卻說C可能來過。",
+        "visual": "12格燈板，A點1/4/7、B點2/4/9，C查1/2/9誤中；D查空格被排除。"
+      }
+    },
+    {
+      "id": "R25002",
+      "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "statistics.reservoir_replacement_survival_invariant",
+      "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+      "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。",
+      "source_ids": [
+        "R25-S002"
+      ],
+      "source_locator": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          105
+        ],
+        "payoff": "越晚進隊，入選機率越小，最後卻人人相等。",
+        "visual": "4張不同票逐張到達，畫首票1×1/2×2/3×3/4與末票1/4；對照每次50%替換造成偏晚。"
+      }
+    },
+    {
+      "id": "R25003",
+      "question": "同一批名字重播一百遍，估算人數的表為什麼幾乎不動？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.hll_bucket_max_prefix_cardinality",
+      "answer_target": "同一ID映射同一雜湊；先分桶，再記餘位首個1的位置的桶內最大值。重播不提高最大值，新ID才可能刷新；多桶的稀有前綴紀錄以經校正的統計估算不同項數，不保存所有ID。",
+      "scope": "實際算的是不同ID，不保證不同人。均勻雜湊假設與小量校正不可省；新ID也未必刷新，估值會有誤差。四桶圖只畫狀態更新，正式HLL參數與估算另依Fig3，不用最大值直接當總人數。",
+      "source_ids": [
+        "R25-S003"
+      ],
+      "source_locator": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "segment",
+        "seconds": [
+          55,
+          90
+        ],
+        "payoff": "總資料筆數暴增，但不重複數的狀態可完全不變。",
+        "visual": "明標結構示意的四桶與固定hash，重播相同字卡，再加不同字卡；不展示虛構精準總數。"
+      }
+    },
+    {
+      "id": "R25004",
+      "question": "幾個都偏大的計數器，為什麼挑最小的反而比較可信？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.count_min_nonnegative_collision_bound",
+      "answer_target": "每個項目在每列固定落一格，來一次就在各列加一。同格會混入其他項目，但只加不減時每個讀值都至少包含真次數；取各列最小值能避開部分碰撞污染，仍不能保證恰好等於真值。",
+      "scope": "只採插入式非負頻數。雜湊族的誤差保證有條件；兩列玩具展示方向，不當精度驗證。查詢需要給項目ID，摘要不自行列出全部熱門項；負數相消不套本片判斷。",
+      "source_ids": [
+        "R25-S004"
+      ],
+      "source_locator": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          100
+        ],
+        "payoff": "真數4，兩格顯示7和6；最小6仍錯，但知道錯向哪邊。",
+        "visual": "A4、B3、C2三類票投兩列，A碰到B及C得到7與6；與前段位元燈板同樣呈現碰撞的單邊錯誤。"
+      }
+    },
+    {
+      "id": "R25005",
+      "question": "兩份清單各留一個名字，怎麼估出它們有多像？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "statistics.minhash_shared_order_jaccard_identity",
+      "answer_target": "把兩集合按同一個均勻隨機次序排序，各留最靠前元素。聯集中最靠前者若在交集，兩份留下的元素才相同；因此相同機率等於交集大小除以聯集大小，多次獨立排列的相同比例可估集合相似度。",
+      "scope": "採無碰撞共享排列、非空集合與去重元素。一次相同不是100%相似。文件切詞/連續片段規則決定集合；本題不回答語意、抄襲或包含比例，任意hash不自動滿足均勻假設。",
+      "source_ids": [
+        "R25-S005"
+      ],
+      "source_locator": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          110
+        ],
+        "payoff": "各自只看第一名，反覆配對竟能反映兩份清單的重疊。",
+        "visual": "A={a,b,c}、B={b,c,d,e}，共同洗牌五張，首張落b/c才同中；對照各自不同洗牌會破壞推導。"
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "R25-NA001",
+      "question": "把Bloom filter換成郵件或快取，算不算不同題？",
+      "existing_ids": [
+        "R25001"
+      ],
+      "source_ids": [
+        "R25-S001"
+      ],
+      "reason": "同一共享位元與假陽性機制，只留情境變體。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA002",
+      "question": "Bloom filter能不能直接刪除一個名字？",
+      "existing_ids": [
+        "R25001"
+      ],
+      "source_ids": [
+        "R25-S001"
+      ],
+      "reason": "清共享位元的失敗是本核界線，不能另計。計數式變體本輪未讀原文。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA003",
+      "question": "hash數量越多一定越準？",
+      "existing_ids": [
+        "R25001"
+      ],
+      "source_ids": [
+        "R25-S001"
+      ],
+      "reason": "同一飽和/碰撞取捨，不另開公式參數題。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA004",
+      "question": "密碼沒存原文怎麼驗？",
+      "existing_ids": [
+        "I3076"
+      ],
+      "source_ids": [],
+      "reason": "已收雜湊驗證，不以新算法名稱重算。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA005",
+      "question": "同檔案換名字，內容hash為什麼不變？",
+      "existing_ids": [
+        "I3033"
+      ],
+      "source_ids": [],
+      "reason": "內容位址已有；不是本批集合近似查詢的新問題。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA006",
+      "question": "把每次50%換票當公平水塘抽樣？",
+      "existing_ids": [
+        "R25002"
+      ],
+      "source_ids": [
+        "R25-S002"
+      ],
+      "reason": "錯誤算法作對照，後到票機率較高，不收錯前提。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA007",
+      "question": "把單格抽樣改成十格就是新題？",
+      "existing_ids": [
+        "R25002"
+      ],
+      "source_ids": [
+        "R25-S002"
+      ],
+      "reason": "樣本大小參數不增核；本片只用單格把生存機率講清楚。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA008",
+      "question": "把亂數取餘數就一定均勻？",
+      "existing_ids": [
+        "I3091"
+      ],
+      "source_ids": [],
+      "reason": "既有模數偏差；本批均勻抽籤是前提，不能重收。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA009",
+      "question": "HLL每來一個新人必定加一？",
+      "existing_ids": [
+        "R25003"
+      ],
+      "source_ids": [
+        "R25-S003"
+      ],
+      "reason": "不成立，新ID未必刷新桶；留作核心限制。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA010",
+      "question": "每個最長零串各自做一支影片？",
+      "existing_ids": [
+        "R25003"
+      ],
+      "source_ids": [
+        "R25-S003"
+      ],
+      "reason": "單一稀有事件易高變異；桶與校正屬同一機制，不拆算式湊題。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA011",
+      "question": "Count-Min取最小就會精確？",
+      "existing_ids": [
+        "R25004"
+      ],
+      "source_ids": [
+        "R25-S004"
+      ],
+      "reason": "反例仍高估；保留本題結尾，不另收錯誤前提。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    },
+    {
+      "id": "R25-NA012",
+      "question": "兩篇文章MinHash一樣就證明抄襲？",
+      "existing_ids": [
+        "R25005"
+      ],
+      "source_ids": [
+        "R25-S005"
+      ],
+      "reason": "相似度受集合定義與近似誤差限制，無法判意圖或語意。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。"
+    }
+  ]
+}

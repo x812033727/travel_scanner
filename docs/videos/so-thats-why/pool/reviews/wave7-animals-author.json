@@ -1,0 +1,361 @@
+{
+  "status": "AUTHOR_LOCKED_PENDING_INDEPENDENT_REVIEW",
+  "created_on": "2026-11-01",
+  "batch_file": "batches/wave7-animals.json",
+  "batch_sha256": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410",
+  "theme_file": "reviews/wave7-animals-themes.json",
+  "theme_sha256": "e8aaedf8119f571b918fe62e4b5cbfde491bec9085e5e2984d94ee4437a34afe",
+  "counts": {
+    "candidates": 17,
+    "sources": 19,
+    "not_added": 10,
+    "themes": 3
+  },
+  "baseline": {
+    "pool_file": "pool.json",
+    "pool_sha256": "07a5ca7d6ad3aa5d0fdfe51d3315e663fd927a2e88cb7459a271ef5752c19b50",
+    "raw_records": 2959,
+    "selected": null,
+    "task_reported_head": "7def3cf"
+  },
+  "scope": "只寫本批三檔及忽略 cache；不動中央 selection/decisions/checkpoints、不付費、不製作、不發布。",
+  "readback_method": "對全2959筆 raw 的問題／answer_target／scope／mechanism_key 做全文關鍵詞檢索；515廣義命中再篩186筆相關舊列閱讀，另以物種、光流、都卜勒、干擾和力學核心追加精確查詢。不是2959筆逐列人工複核，也不把檢索無命中當無重複證明。",
+  "duplicate_flags": [
+    {
+      "candidate_id": "Z7001",
+      "compare_ids": [],
+      "author_judgment": "provisionally_distinct",
+      "reason": "近燈姿態控制與遠距導航分開；軌跡種類不拆筆。"
+    },
+    {
+      "candidate_id": "Z7002",
+      "compare_ids": [
+        "LEG-S34"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "線索清單往前進為固定視覺刺激下的跨感官增益。"
+    },
+    {
+      "candidate_id": "Z7003",
+      "compare_ids": [
+        "LEG-S34"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "熱線索的傳熱模式與觸角轉導模型，非重列感官。"
+    },
+    {
+      "candidate_id": "Z7004",
+      "compare_ids": [
+        "B2300",
+        "E2252"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "不是發電同步或追隨時鐘；調頻目標是避開干擾。"
+    },
+    {
+      "candidate_id": "Z7005",
+      "compare_ids": [
+        "B2318"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "觸角採樣水動力，不是觸角刮擦發聲。"
+    },
+    {
+      "candidate_id": "Z7006",
+      "compare_ids": [
+        "B2179",
+        "B2154"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "感測器外形抑制自激振動，不是毛受力轉訊號本身。"
+    },
+    {
+      "candidate_id": "Z7007",
+      "compare_ids": [
+        "B2243",
+        "B2246"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "從前向視覺辨向轉給倒退運動，包含身體／世界參考方向分離。"
+    },
+    {
+      "candidate_id": "Z7008",
+      "compare_ids": [
+        "B2315"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "新點是時間變化建立雙眼對應，不只雙眼視差；仍列獨立覆核邊界。"
+    },
+    {
+      "candidate_id": "Z7009",
+      "compare_ids": [
+        "O3032",
+        "Z7017"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "自己運動造成回聲頻移的發射端補償；不是脈衝重複歧義或獵物調制讀取。"
+    },
+    {
+      "candidate_id": "Z7010",
+      "compare_ids": [
+        "L324",
+        "B2315"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "失焦量提供距離推理，非調焦看清或雙眼視差。"
+    },
+    {
+      "candidate_id": "Z7011",
+      "compare_ids": [
+        "B2286",
+        "B2329"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "光流累積產生里程訊號；非舞蹈傳訊規則或計步。"
+    },
+    {
+      "candidate_id": "Z7012",
+      "compare_ids": [
+        "Z7011"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "瞬時膨脹率回授控制速度，非積分旅程；新舊降落模型邊界合在同題。"
+    },
+    {
+      "candidate_id": "Z7013",
+      "compare_ids": [
+        "L191",
+        "B2071"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "干擾回聲定位而非防禦類型清單；以替代假說的時間預測支撐段落。"
+    },
+    {
+      "candidate_id": "Z7014",
+      "compare_ids": [
+        "B2314"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "皮膚線索抑制吸附反射，非食物化學觸覺；機制深度仍待非作者決定。"
+    },
+    {
+      "candidate_id": "Z7015",
+      "compare_ids": [
+        "B2005",
+        "B2248"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "共同載物傳力與短期新資訊；不重述費洛蒙或一般跟鄰居走。"
+    },
+    {
+      "candidate_id": "Z7016",
+      "compare_ids": [
+        "B2001",
+        "Z7002"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "區分風感定向與氣味改變運動，不把所有跨感官作用都算一個或每物種另算。"
+    },
+    {
+      "candidate_id": "Z7017",
+      "compare_ids": [
+        "B2320",
+        "Z7009"
+      ],
+      "author_judgment": "provisionally_distinct",
+      "reason": "獵物振翅調制與自飛頻移補償分工；非遮蔽軌跡預測。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "source_ids": [
+        "Z7-S002",
+        "Z7-S005",
+        "Z7-S006",
+        "Z7-S007",
+        "Z7-S008",
+        "Z7-S014"
+      ],
+      "limit": "實讀大學／機構自己的研究報導正文；不等於原論文全文。"
+    },
+    {
+      "source_ids": [
+        "Z7-S015"
+      ],
+      "limit": "只讀原研究摘要；與CUNY正文一起作Z7014題級證據。"
+    },
+    {
+      "source_ids": [
+        "Z7-S009"
+      ],
+      "limit": "只讀原研究引言與摘要，兩個蝙蝠題進稿前需補原結果及相關引用，不報全篇查核。"
+    },
+    {
+      "source_ids": [
+        "Z7-S010"
+      ],
+      "limit": "作者的日文學會短文§2–4已讀；模型有強支持，神經比較方式仍待研究。"
+    },
+    {
+      "source_ids": [
+        "Z7-S003",
+        "Z7-S016"
+      ],
+      "limit": "模型、可能解釋和直接實驗結果分開，不把推測畫成已知電路。"
+    },
+    {
+      "source_ids": [
+        "Z7-S018"
+      ],
+      "limit": "補個體分段設定值邊界，不把2013平均模型寫成2026已定的普遍規則。"
+    },
+    {
+      "source_ids": [
+        "Z7-S019"
+      ],
+      "limit": "僅支持退題，不計候選。"
+    }
+  ],
+  "failed_access": [
+    {
+      "url": "https://www.nature.com/articles/s41467-024-44785-3",
+      "record": "web open 因 Nature 登入重導失敗；public urllib HTML + stdlib HTMLParser 實讀正文；僅實讀所列結果與討論；模擬段僅開頭，未查補充影片。不同物種與波段有例外。"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-024-07848-5",
+      "record": "web open 重導失敗；public urllib HTML + HTMLParser 實讀；未把所有蛋白級步驟當已證實；沒有野外叮咬率或防蚊處方驗證。"
+    },
+    {
+      "url": "https://www.ncl.ac.uk/press/articles/archive/2018/02/newformof3dvisiondiscoveredinprayingmantis/",
+      "record": "web open 大學研究報導正文；研究作者 PDF 網站顯示 Account Suspended，沒有讀到原始全文；來源是研究團隊大學報導正文。不能概括所有立體視覺運作或所有螳螂視覺任務。"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41598-018-22880-y",
+      "record": "web open 原研究 HTML；之後重開遭 Nature redirect 失敗；已讀摘要與引言機制段，未逐讀本研究 Results／補充資料；不自行驗證論文精度數字。"
+    },
+    {
+      "url": "https://openresearch-repository.anu.edu.au/server/api/core/bitstreams/3fa47ee5-d05c-4bd0-94f1-263830dd804d/content",
+      "record": "web open 403；public urllib 下載大學存庫 PDF，PyMuPDF 文字層實讀；未讀全部方法及補充影片；不把光流說成所有導航場合唯一線索。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3831993/",
+      "record": "web open 僅回 reCAPTCHA；Europe PMC fullTextXML 500；public urllib 原 PMC HTML 成功，HTMLParser 實讀；結果以受測垂直平台與進場階段為限；最後短懸停未納入分析。配合 Z7-S018 限制「全程單一值」的概括。"
+    },
+    {
+      "url": "https://www1.pbrc.hawaii.edu/~danh/Neurodiversity/Fall%202012/2012-10-31_Petra_BatAvoidance/Corcoran-Barber-Connor_2009_MothSonarJamming.pdf",
+      "record": "web open timeout；public urllib 公開大學 PDF，PyMuPDF 文字層實讀；PDF 含上一篇文章尾頁，未拿來作本題證據；讀本篇全文，不含 online supplementary methods。不能把具體神經干擾路徑說成此研究已定。"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24835454/",
+      "record": "web open PubMed Abstract，僅摘要；原文 ScienceDirect 403；CiteSeer web 403 / urllib 404。未讀原論文全篇，摘要限制明記。"
+    },
+    {
+      "url": "https://www.nature.com/articles/ncomms8729",
+      "record": "web open Nature redirect 失敗；public urllib HTML + HTMLParser 實讀；模型的力耦合假設與行為觀察分開記；觸角被貨物遮擋導致資訊減少是可能解釋，不列確定因果。未讀 supplementary notes。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6103744/",
+      "record": "web open 僅 reCAPTCHA；public urllib PMC HTML + HTMLParser 實讀；以走路實驗、受測刺激與族群為限，不移植成所有飛行昆蟲的同一策略。未逐讀動態模型和全部審稿往返。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10482386/",
+      "record": "web open 僅 reCAPTCHA；public urllib PMC HTML + HTMLParser 實讀；此來源只作 Z7012 模型邊界，未拆成新題。已讀列示討論而非完整資料重新分析。"
+    },
+    {
+      "url": "https://news.uchicago.edu/story/neurological-study-reveals-cuttlefish-have-surprising-control-skin-spikes",
+      "record": "web open 機構報導正文；只用於退題理由；原 cell.com PDF 403，未讀原文全篇，不把報導比喻當分子驗證。"
+    }
+  ],
+  "quantity_decision": "目標25–35不是配額；完成17個可具體比較的新核心，其餘重複、只有現象或尚未達機制閱讀深度的方向不補數。",
+  "thin_topic_flags": [
+    {
+      "id": "Z7014",
+      "risk": "局部化學抑制有直接機構正文和原摘要，但缺分子／原文細節；段落封頂85秒，不作長片填充。",
+      "reentry_or_drop": "覆核若認為只是功能敘述則暫緩；補原文具可判別的皮膚／非皮膚或萃取物對照再重入。"
+    },
+    {
+      "id": "Z7013",
+      "risk": "此篇證明干擾功能，未鎖定具體神經干擾方式。",
+      "reentry_or_drop": "只能以不同防禦假說的預測比較成段；若只剩會叫就退出。"
+    }
+  ],
+  "verification": {
+    "unique_candidate_ids": true,
+    "unique_mechanism_keys": true,
+    "source_links_resolve": true,
+    "theme_arithmetic": [
+      {
+        "theme": "W7Z-T01",
+        "body_seconds": 170,
+        "chapter_seconds": [
+          80,
+          90
+        ],
+        "per_core_seconds": {
+          "Z7002": 80,
+          "Z7003": 90
+        },
+        "cap_pass": true
+      },
+      {
+        "theme": "W7Z-T02",
+        "body_seconds": 200,
+        "chapter_seconds": [
+          90,
+          110
+        ],
+        "per_core_seconds": {
+          "Z7011": 90,
+          "Z7012": 110
+        },
+        "cap_pass": true
+      },
+      {
+        "theme": "W7Z-T03",
+        "body_seconds": 160,
+        "chapter_seconds": [
+          75,
+          85
+        ],
+        "per_core_seconds": {
+          "Z7017": 75,
+          "Z7009": 85
+        },
+        "cap_pass": true
+      }
+    ],
+    "lf_only": true,
+    "claim_limit": "只驗本批JSON結構、ID/來源連接與紙上秒數，非事實或觀眾留存自動核准。"
+  },
+  "remaining": [
+    "非作者逐題覆核與全庫近鄰裁決尚待進行；中央不因作者鎖版自動入選。",
+    "所有題案仍是企劃：未旁白試讀、未動態小樣、未製作與觀眾盲讀。"
+  ],
+  "revisions": [
+    {
+      "date": "2026-11-01",
+      "requested_by": "非作者 pool_physics 覆核；root 授權修正",
+      "changes": [
+        {
+          "id": "Z7012",
+          "change": "問法移除一路減速，避免把分段控制模型寫成全程單調減速。"
+        },
+        {
+          "id": "W7Z-T03",
+          "change": "題名改辨出振翅的回聲，明確是主動回聲定位的調制，非被動聽翅膀。"
+        }
+      ],
+      "before_sha256": {
+        "batches/wave7-animals.json": "ae0011f1620052f358c10ae0958123d91a542b193978e43500c4c71a0a2394a7",
+        "reviews/wave7-animals-themes.json": "46b4dca95a4ab76383a0dd01eacc26209768498faf4659a513f8a1661aabfac1",
+        "reviews/wave7-animals-author.json": "1abc04e21c3061cdc22dabed7d6d1ec6e62983f3dd61f104c86207a44607b5f8"
+      },
+      "after_sha256": {
+        "batches/wave7-animals.json": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410",
+        "reviews/wave7-animals-themes.json": "e8aaedf8119f571b918fe62e4b5cbfde491bec9085e5e2984d94ee4437a34afe"
+      },
+      "unchanged": "題目答案、範圍、來源、章節與170/200/160秒預算均不變。",
+      "status": "AWAITING_TARGETED_RECHECK"
+    }
+  ]
+}
