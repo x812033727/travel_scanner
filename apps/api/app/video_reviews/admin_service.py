@@ -2678,6 +2678,24 @@ async def package_files_for_admin(
     return package_zip.resolve_entries(store, slug, shown, entries)
 
 
+async def package_check_for_admin(
+    session: AsyncSession, store: ReviewStore, slug: str, entries: list[tuple[str, str]]
+) -> dict[str, Any]:
+    """Whether the zip of these entries can be made: the files it would miss and why, its size,
+    and the Drive folder that holds the video once the store has let its files go."""
+    project = await _project(session, slug)
+    shown = [list(review.files or []) for review in await _reviews(session, project)]
+    missing, size = package_zip.check_entries(store, slug, shown, entries)
+    record = project.backup if isinstance(project.backup, dict) else {}
+    folder = record.get("folder") if _backed_up(project) else None
+    return {
+        "ok": not missing,
+        "missing": missing,
+        "bytes": size,
+        "drive_folder": folder if isinstance(folder, str) and folder else None,
+    }
+
+
 # --- on YouTube: the owner's link, and what the store keeps afterwards ---------------------------
 
 
@@ -3038,6 +3056,38 @@ def _done_with(project: VideoProject, reviews: list[VideoReview]) -> bool:
     return True
 
 
+def _moment(value: Any) -> datetime | None:
+    if isinstance(value, datetime):
+        moment = value
+    elif isinstance(value, str) and value:
+        try:
+            moment = datetime.fromisoformat(value)
+        except ValueError:
+            return None
+    else:
+        return None
+    return moment if moment.tzinfo is not None else moment.replace(tzinfo=UTC)
+
+
+def _done_since(project: VideoProject, reviews: list[VideoReview]) -> datetime | None:
+    """When ``project`` last changed on the way to ``_done_with``: the latest of its Drive backup
+    report, its languages decision, any review decision and the publish time the owner set; None
+    when the backup report carries no readable time, so the files stay.
+
+    Owner, 2026-11-04: approving the languages batch counts as the dubs being in Studio, but the
+    owner approves it before downloading the package to upload them, so wiping the store the
+    moment the three conditions met took the package away 20 minutes after the backup (票
+    2026-11-03-admin-upload-zip-fails-to-download). The store now waits PREVIEW_RETENTION past
+    this moment, the same week the mp4 rule gives."""
+    record = project.backup if isinstance(project.backup, dict) else {}
+    backup = _moment(record.get("checked_at") or record.get("reported_at") or record.get("at"))
+    if backup is None:
+        return None
+    values = [project.locales_decided_at, project.youtube_publish_at]
+    values += [review.decided_at for review in reviews]
+    return max([backup, *(m for value in values if (m := _moment(value)) is not None)])
+
+
 async def _on_youtube(session: AsyncSession) -> list[VideoProject]:
     """Every video on YouTube."""
     rows = await session.scalars(
@@ -3073,11 +3123,14 @@ async def prune_published_previews(
     now = now or datetime.now(UTC)
     cutoff = now - PREVIEW_RETENTION
     removed: dict[str, list[str]] = {}
-    # A video done with (``_done_with``) loses every file here at once, not only its mp4.
+    # A video done with (``_done_with``) for PREVIEW_RETENTION loses every file here at once, not
+    # only its mp4.
     for project in await _on_youtube(session):
         if not _backed_up(project) or not store.holds_files(project.slug):
             continue
-        if _done_with(project, await _reviews(session, project)):
+        reviews = await _reviews(session, project)
+        since = _done_since(project, reviews) if _done_with(project, reviews) else None
+        if since is not None and since <= cutoff:
             gone = store.keep_only(project.slug, set())
             if gone:
                 removed[project.slug] = gone
