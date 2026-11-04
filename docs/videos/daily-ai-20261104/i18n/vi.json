@@ -1,0 +1,1116 @@
+{
+  "title": "Tech Signal 4/11｜Giải mã hóa đơn điện toán của Anthropic",
+  "description": "Hai người dẫn chương trình đều là giọng AI tổng hợp, nhạc nền do AI tạo; nội dung tổng hợp từ nguồn chính thức và tin báo chí.\n\nBài viết trên Mokaair:\nhttps://mokaair.com/zh-TW/life/ai-news-anthropic-compute-costs-20261103\nhttps://mokaair.com/zh-TW/life/ai-news-chatgpt-search-share-20261103\nhttps://mokaair.com/zh-TW/life/tech-news-google-apac-scams-20261103\nhttps://mokaair.com/zh-TW/life/ai-news-apple-18-plus-ai-companions-20261103\nhttps://mokaair.com/zh-TW/life/ai-news-anthropic-flashprove-20261103\nhttps://mokaair.com/zh-TW/life/ai-news-claude-text-watermark-20261103\nhttps://mokaair.com/zh-TW/life/crypto-news-gitbook-ai-agent-breach-20261103\nhttps://mokaair.com/zh-TW/life/ai-news-netflix-ai-discover-20261103\nhttps://mokaair.com/zh-TW/life/tech-news-amd-q3-2026-results-20261103\nhttps://mokaair.com/zh-TW/life/ai-news-fal-valuation-20261103\nhttps://mokaair.com/zh-TW/life/ai-news-data-center-jet-engine-power-20261103\nhttps://mokaair.com/zh-TW/life/ai-news-openai-compute-campuses-20261103\nhttps://mokaair.com/zh-TW/life/crypto-news-binance-hack-north-korea-denial-20261103\nhttps://mokaair.com/zh-TW/life/crypto-news-okx-ice-tokenized-stock-objections-20261103\nhttps://mokaair.com/zh-TW/life/crypto-news-taiwan-stablecoin-rules-20261103\nhttps://mokaair.com/zh-TW/life/tech-news-steam-review-delays-20261103\n\nPhần Try This là gợi ý của chương trình; tập này không bàn giá cả hay đầu tư.",
+  "tags": [
+    "Tech Signal",
+    "tin công nghệ",
+    "Anthropic",
+    "Claude",
+    "điện toán AI",
+    "IPO",
+    "AMD",
+    "ChatGPT",
+    "Binance",
+    "stablecoin"
+  ],
+  "thumbnail": {
+    "headline": "Điện toán **58%**",
+    "sub": "doanh thu Anthropic, theo TechCrunch"
+  },
+  "chapters": {
+    "intro": "Intro: hóa đơn điện toán của Anthropic",
+    "hl-open": "Tin nhanh: tìm kiếm ChatGPT, cuộc gọi AI giả và 4 tin khác",
+    "sd-open": "Tín hiệu hôm nay: điện toán ăn bao nhiêu doanh thu",
+    "wp-open": "Mọi người nói gì: bốn câu nguyên văn",
+    "ms-open": "Tiền: Binance, cổ phiếu token hóa, dự thảo stablecoin",
+    "tt-open": "Thử ngay: cuộc gọi cầu cứu bằng giọng quen",
+    "nd-open": "Tạp âm: Steam duyệt game ùn ứ",
+    "tk-main": "Sola: quan trọng nhất là hóa đơn điện toán"
+  },
+  "source_hashes": {
+    "chapters": {
+      "intro": "ebcfea891ae8",
+      "hl-open": "58e2b19ae426",
+      "sd-open": "babe1680a802",
+      "wp-open": "8734e3cc323c",
+      "ms-open": "345babeeb078",
+      "tt-open": "dd46e38feaf7",
+      "nd-open": "2ddffea35c03",
+      "tk-main": "66d7e4fcd02b"
+    },
+    "title": "7b516892c4f9",
+    "description": "4050d6d45aef",
+    "tags": "0e4053327e67",
+    "thumbnail": "0fb41ed9e212"
+  },
+  "lines": {
+    "5yxg": {
+      "source_hash": "54d62b612b23",
+      "text": "Hôm nay thứ Tư, ngày 4 tháng 11."
+    },
+    "ftct": {
+      "source_hash": "70acdd04953e",
+      "text": "Đây là Tech Signal, từ vô vàn tạp âm, chọn ra tín hiệu thật sự quan trọng hôm nay."
+    },
+    "i4g3": {
+      "source_hash": "97e2115b9cf9",
+      "text": "Sola."
+    },
+    "f6vx": {
+      "source_hash": "cf9f8841a94f",
+      "text": "Kai đây."
+    },
+    "ao43": {
+      "source_hash": "eed765dcdc20",
+      "text": "Chủ đề hôm nay là tài liệu Anthropic cập nhật trước khi lên sàn, và hóa đơn điện toán trong đó."
+    },
+    "qmon": {
+      "source_hash": "354fe72b7d41",
+      "text": "Khoan, doanh thu cứ tăng mà lỗ lại lớn hơn? Vậy tiền kiếm được rốt cuộc đi đâu hết?"
+    },
+    "g9s8": {
+      "source_hash": "86a859bb2e59",
+      "text": "Trước hết, tin công nghệ hôm qua, 3 tháng 11."
+    },
+    "8vau": {
+      "source_hash": "47b9fb2c6d62",
+      "text": "Bắt đầu từ tìm kiếm, thứ ai cũng dùng nhé?"
+    },
+    "iz00": {
+      "source_hash": "a76e12ff300b",
+      "text": "Được. Theo The Verge, thứ Hai OpenAI nói lượt tìm kiếm của ChatGPT đã bằng một phần năm Google."
+    },
+    "srcq": {
+      "source_hash": "524e0dcf12ef",
+      "text": "Một phần năm? Nhiều vậy sao?"
+    },
+    "rzxg": {
+      "source_hash": "9ac90673b558",
+      "text": "Xem cách họ tính đã. Câu hỏi của bạn kích hoạt tìm kiếm web mới tính một lần."
+    },
+    "a5i8": {
+      "source_hash": "8cdb2ca3e494",
+      "text": "Vậy hỏi nghĩa một từ thì sao?"
+    },
+    "cqwh": {
+      "source_hash": "4331aa6fdab7",
+      "text": "Không tính. Giải nghĩa từ hay hướng dẫn thao tác đơn giản đều không tính."
+    },
+    "g62g": {
+      "source_hash": "569dc3192dae",
+      "text": "Và OpenAI không nói số liệu của Google lấy từ đâu."
+    },
+    "2p4c": {
+      "source_hash": "045ffff63ac5",
+      "text": "Vậy đây là họ tự nói, tạm để dấu hỏi."
+    },
+    "srca": {
+      "source_hash": "485fb35e51df",
+      "text": "Đúng. The Verge đưa ra so sánh: năm 2023, CEO Microsoft nói trước tòa rằng Bing làm hơn mười năm, thị phần chỉ khoảng 3%."
+    },
+    "f46p": {
+      "source_hash": "d6e8a2820fce",
+      "text": "Tìm kiếm lớn rồi, tiếp theo là quảng cáo nhỉ?"
+    },
+    "we58": {
+      "source_hash": "ee9092bb7493",
+      "text": "Đúng. Tháng trước OpenAI nói quảng cáo trong ChatGPT sẽ bắt đầu có hình ảnh sản phẩm tài trợ."
+    },
+    "ahuo": {
+      "source_hash": "a855d853dd69",
+      "text": "Lời khuyên của chúng tôi: khi tra cứu trên ChatGPT, xem kỹ đoạn nào là câu trả lời, đoạn nào là quảng cáo."
+    },
+    "kcmm": {
+      "source_hash": "9aeec3dd8399",
+      "text": "Từ AI giúp bạn tìm tin, sang AI giả làm người khác."
+    },
+    "2tqk": {
+      "source_hash": "7e2689193179",
+      "text": "Hôm qua Google ra kế hoạch chống lừa đảo châu Á - Thái Bình Dương, trong đó có phát hiện cuộc gọi giả trên Android."
+    },
+    "k70z": {
+      "source_hash": "0a5a11f0e545",
+      "text": "Cuộc gọi giả mạo? Là sao vậy?"
+    },
+    "a9go": {
+      "source_hash": "a45ea08333ad",
+      "text": "Là dùng AI giả làm người khác gọi bạn. Tính năng này nhận ra cuộc gọi đó."
+    },
+    "j1c6": {
+      "source_hash": "ae706c9735d2",
+      "text": "Phát hiện lừa đảo có sẵn trên Pixel cũng cảnh báo được nội dung đáng ngờ trong các App nhắn tin phổ biến."
+    },
+    "3myb": {
+      "source_hash": "e6e052bd0097",
+      "text": "Ngoài ra, nhánh từ thiện của Google chi 6 triệu đô để dạy phòng lừa đảo cho khu vực."
+    },
+    "f8zx": {
+      "source_hash": "431710f61d7b",
+      "text": "Vừa nói Pixel, còn điện thoại khác thì sao?"
+    },
+    "b0xe": {
+      "source_hash": "26b301a809ea",
+      "text": "Google nói cuối năm nay sẽ cùng đối tác đưa đến nhiều máy Android hơn."
+    },
+    "scmq": {
+      "source_hash": "b58b85a1f7d5",
+      "text": "Ở Đài Loan có không?"
+    },
+    "wul6": {
+      "source_hash": "b48044a4d60e",
+      "text": "Máy nào, khu vực nào, bài này của Google không liệt kê."
+    },
+    "z2ua": {
+      "source_hash": "934f16c9c170",
+      "text": "Tiếp theo là Apple. Theo TechCrunch, thứ Hai Apple báo cho nhà phát triển: App có tính năng hẹn hò hay quan hệ lãng mạn đều phải gắn nhãn 18+."
+    },
+    "r9kk": {
+      "source_hash": "31a88f1a635c",
+      "text": "App hẹn hò vốn dành cho người lớn mà nhỉ?"
+    },
+    "90kq": {
+      "source_hash": "06362a4a832f",
+      "text": "TechCrunch cũng nói vậy; đáng chú ý hơn là App bạn đồng hành AI."
+    },
+    "ycjs": {
+      "source_hash": "70a8c8bea900",
+      "text": "Là loại cho bạn tạo bạn bè, thậm chí người yêu bằng AI, thường nhắm đến giới trẻ."
+    },
+    "2kld": {
+      "source_hash": "e4fd56eb0617",
+      "text": "Từ khi nào?"
+    },
+    "0klx": {
+      "source_hash": "8067df145b5c",
+      "text": "Từ ngày 16 tháng này, nhà phát triển phải thêm mô tả nội dung để phân loại khớp với tính năng."
+    },
+    "slzh": {
+      "source_hash": "048479b51390",
+      "text": "Có đông người dùng?"
+    },
+    "4foc": {
+      "source_hash": "9caa40baf999",
+      "text": "TechCrunch nói, các App bạn đồng hành AI nổi tiếng, tính đến mùa hè năm ngoái, có 220 triệu lượt tải toàn cầu."
+    },
+    "69ke": {
+      "source_hash": "5bc53ebd8ea2",
+      "text": "Con dùng iPhone, vậy là yên tâm?"
+    },
+    "zt5n": {
+      "source_hash": "ed5774c3cebd",
+      "text": "Chưa đâu. Bài báo không nói Apple sẽ thực thi thế nào."
+    },
+    "koo0": {
+      "source_hash": "bf0917d80dff",
+      "text": "Nói đến bạn đồng hành AI, có câu hỏi gốc hơn: làm sao biết AI đang nói với bạn là AI nào?"
+    },
+    "vrac": {
+      "source_hash": "18d43a7dcde8",
+      "text": "Chẳng phải là AI nó tự xưng sao?"
+    },
+    "nnfb": {
+      "source_hash": "d012372bcd1a",
+      "text": "Chưa chắc. Anthropic nói bên trung gian có thể vì tiết kiệm mà lén đổi mô hình khác, hoặc có người sửa kết quả."
+    },
+    "2ff8": {
+      "source_hash": "d712b1ff990a",
+      "text": "Làm sao biết?"
+    },
+    "9aan": {
+      "source_hash": "5f284cb4a198",
+      "text": "Họ ra nguyên mẫu mã nguồn mở FlashProve, dùng mật mã học chứng minh câu trả lời đúng từ mô hình đó, mà không lộ số liệu bên trong."
+    },
+    "prvq": {
+      "source_hash": "6ed8dc7fe41e",
+      "text": "Nghe nặng quá, chạy nổi không?"
+    },
+    "lux8": {
+      "source_hash": "121d43d89cc3",
+      "text": "Trên một GPU, mỗi giây chứng minh khoảng 110 token."
+    },
+    "t9dy": {
+      "source_hash": "ccaa5b6759b9",
+      "text": "Câu trả lời hơn 1.000 token, tệp chứng minh khoảng 19 MB."
+    },
+    "e5pc": {
+      "source_hash": "4a14e33ee231",
+      "text": "Vậy là dùng được ngay à?"
+    },
+    "prva": {
+      "source_hash": "0aab65898bd0",
+      "text": "Chưa. Đây là nguyên mẫu nghiên cứu; theo TechCrunch, chưa phòng lab nào định triển khai."
+    },
+    "mktx": {
+      "source_hash": "6c2b995148d4",
+      "text": "Cách khác là thủy vân. Hôm qua Anthropic nói văn bản do ba mô hình Claude viết ra có thủy vân AI."
+    },
+    "86yq": {
+      "source_hash": "cd071724b996",
+      "text": "Vậy thầy cô bắt bài làm bằng AI là có công cụ rồi?"
+    },
+    "m7jx": {
+      "source_hash": "40ee1d996251",
+      "text": "Từ từ. Chỉ trên nền tảng họ liệt kê; và Sonnet 4.6 có thể không mang thủy vân khi nhà phát triển đổi vài cài đặt sinh văn bản."
+    },
+    "zmrr": {
+      "source_hash": "a23dfcdf2add",
+      "text": "Nên không có thủy vân không có nghĩa là không do AI viết."
+    },
+    "68un": {
+      "source_hash": "1d4627e29f00",
+      "text": "Từ chứng minh AI, đến đề phòng AI."
+    },
+    "52k2": {
+      "source_hash": "f6e5dc59e3b3",
+      "text": "GitBook, nơi nhiều dự án crypto để tài liệu, cho biết tối thứ Hai, có người dùng AI agent tấn công họ,"
+    },
+    "e7fb": {
+      "source_hash": "8bb8f43ae5f8",
+      "text": "và lấy được thông tin xác thực của một phần hệ thống."
+    },
+    "escy": {
+      "source_hash": "cebe1cd08c8d",
+      "text": "AI agent khác chatbot ở chỗ nào?"
+    },
+    "1klv": {
+      "source_hash": "7d4728461f40",
+      "text": "Chatbot chỉ trả lời; agent tự thao tác phần mềm từng bước, người ít phải trông hơn."
+    },
+    "7bcz": {
+      "source_hash": "be776b305e6d",
+      "text": "Lộ ra gì?"
+    },
+    "d67c": {
+      "source_hash": "289ebe2cb37c",
+      "text": "Có thể gồm token API, tức chìa khóa cho chương trình tự động kết nối vào;"
+    },
+    "etvc": {
+      "source_hash": "dcb08caa4f71",
+      "text": "khóa nối dịch vụ khác;"
+    },
+    "5g0v": {
+      "source_hash": "115c32e3abd8",
+      "text": "và câu người dùng hỏi trợ lý AI GitBook."
+    },
+    "pngi": {
+      "source_hash": "a18ae5684947",
+      "text": "GitBook đã vô hiệu token API của khách, và yêu cầu khách đổi token, khóa liên quan."
+    },
+    "14fs": {
+      "source_hash": "628bdd8424c7",
+      "text": "Họ nói không có bằng chứng nội dung trên đó bị sửa."
+    },
+    "got4": {
+      "source_hash": "81f9f8bf3d5f",
+      "text": "Biết cách tấn công chưa?"
+    },
+    "54rb": {
+      "source_hash": "4460156bbf30",
+      "text": "Chưa nói. Nếu nhóm bạn cũng dùng GitBook, hãy đổi token như họ hướng dẫn."
+    },
+    "s4je": {
+      "source_hash": "a5ddef81c515",
+      "text": "Rồi, chuyện nhẹ nhàng hơn. Nhiều người tối mở Netflix, lướt mãi chưa biết xem gì."
+    },
+    "ypdj": {
+      "source_hash": "bd0227d0f933",
+      "text": "Netflix trên TV sẽ thêm thẻ AI Discover, thử nghiệm đầu tiên là gợi ý theo chủ đề."
+    },
+    "h2mc": {
+      "source_hash": "f9b99294ff13",
+      "text": "Kiểu thư giãn, đêm phim gia đình, xem nhanh là xong."
+    },
+    "mqia": {
+      "source_hash": "d931ef767fd7",
+      "text": "Nếu không thích?"
+    },
+    "jv1a": {
+      "source_hash": "9034adbb0731",
+      "text": "Nói với nó, App sẽ nhớ."
+    },
+    "jfmp": {
+      "source_hash": "cba539ba9c6b",
+      "text": "Nhưng hiện chỉ ở Mỹ, mở dần cho thành viên dùng tiếng Anh và có TV hỗ trợ."
+    },
+    "65r7": {
+      "source_hash": "5e3854709a77",
+      "text": "Vậy Đài Loan chưa có."
+    },
+    "ix3p": {
+      "source_hash": "29e74e842060",
+      "text": "Ngắn hạn chưa chắc. Đây là tính năng thử, khi nào mở rộng báo không nói."
+    },
+    "rvcj": {
+      "source_hash": "55fbcb3e6582",
+      "text": "Cuối cùng, con số tín hiệu hôm nay."
+    },
+    "os5p": {
+      "source_hash": "4347085720d2",
+      "text": "58 phần trăm."
+    },
+    "m2ua": {
+      "source_hash": "ad9569a5374d",
+      "text": "Cái gì mà chiếm nhiều vậy?"
+    },
+    "4fv9": {
+      "source_hash": "a014af6f74bc",
+      "text": "Cứ 100 đô doanh thu Anthropic thu về, có từng ấy đem trả tiền điện toán."
+    },
+    "rtif": {
+      "source_hash": "da0a5ba15e93",
+      "text": "Hơn một nửa? Vậy họ còn lại bao nhiêu?"
+    },
+    "jxon": {
+      "source_hash": "48c189f55c07",
+      "text": "Đó là chủ đề hôm nay: phần còn lại không đủ, nên vẫn lỗ."
+    },
+    "exb7": {
+      "source_hash": "fd880c0f0cc8",
+      "text": "Tiền thu vào rốt cuộc ai lấy? Hãy bắt đầu từ một người."
+    },
+    "zgw5": {
+      "source_hash": "ecb9aaf45321",
+      "text": "Giả sử bạn là một nhà phân tích theo dõi IPO."
+    },
+    "n1w1": {
+      "source_hash": "8642e5577bc3",
+      "text": "Thứ Hai tuần này, thông báo hiện lên: Anthropic nộp tài liệu mới, cập nhật hồ sơ S-1."
+    },
+    "oqtk": {
+      "source_hash": "186bb9c4967a",
+      "text": "Khoan, S-1 là gì?"
+    },
+    "otil": {
+      "source_hash": "e7e25f4512aa",
+      "text": "Trước khi công ty lần đầu đưa cổ phiếu lên sàn, tức IPO, phải nộp tài liệu này, trong đó có số liệu tài chính."
+    },
+    "0lxp": {
+      "source_hash": "c148a3f0ba16",
+      "text": "Bản cũ mới nộp mà?"
+    },
+    "026w": {
+      "source_hash": "e589d82fdfe3",
+      "text": "Đúng, mới nộp tuần trước. Bản cũ chỉ có tài chính đến cuối tháng 6, bản mới thêm một quý, đến ngày 30 tháng 9."
+    },
+    "xpmb": {
+      "source_hash": "d06015894171",
+      "text": "TechCrunch nói, càng gần lên sàn, Anthropic cuối cùng tiết lộ thêm: trong doanh thu, bao nhiêu bị điện toán nuốt mất."
+    },
+    "ig49": {
+      "source_hash": "8ee9a5c68eba",
+      "text": "Nói dễ hiểu: điện toán là máy tính chạy AI hả?"
+    },
+    "jry6": {
+      "source_hash": "4a919dea6ed0",
+      "text": "Gần vậy. Huấn luyện mô hình, và mỗi lần bạn hỏi Claude một câu, năng lực tính toán phía sau đều tính."
+    },
+    "bo1b": {
+      "source_hash": "71b93ea0e60a",
+      "text": "Rồi, mở tài liệu ra, con số đầu tiên là gì?"
+    },
+    "aqr1": {
+      "source_hash": "41a101af73be",
+      "text": "Doanh thu. Quý trước, 11,5 tỷ đô la."
+    },
+    "t181": {
+      "source_hash": "b76071a889c4",
+      "text": "Quý này, 17 tỷ đô la."
+    },
+    "gnzv": {
+      "source_hash": "32bfdecdf571",
+      "text": "Một quý tăng gần năm mươi phần trăm, kiếm giỏi ghê."
+    },
+    "6y9t": {
+      "source_hash": "b3c71eb007c5",
+      "text": "Nhưng xem tiếp, lỗ hoạt động cũng đồng thời tăng lên."
+    },
+    "96it": {
+      "source_hash": "1921bfa1e89e",
+      "text": "Đúng câu tôi vừa hỏi: tiền chạy đi đâu?"
+    },
+    "c6qv": {
+      "source_hash": "1db0b9a62b1f",
+      "text": "TechCrunch không ghi số lỗ, nhưng nói một nguyên nhân chính: chi phí điện toán tăng."
+    },
+    "7nny": {
+      "source_hash": "6a999ff94c50",
+      "text": "Nhớ con số tín hiệu lúc nãy chứ? Quý trước, điện toán ăn 48% doanh thu."
+    },
+    "4w2e": {
+      "source_hash": "a19f2e960194",
+      "text": "Quý này, chính là con số lúc nãy."
+    },
+    "y11g": {
+      "source_hash": "d7609c665ce4",
+      "text": "Một quý nhảy mười điểm phần trăm."
+    },
+    "tt6k": {
+      "source_hash": "cf830e6823b3",
+      "text": "Tính ra tiền, hóa đơn điện toán quý này là 10 tỷ đô la."
+    },
+    "ra2g": {
+      "source_hash": "e0936ff6e5f6",
+      "text": "Nhiều vậy, đều mua cùng một cách sao?"
+    },
+    "bmua": {
+      "source_hash": "bad2e161e2b4",
+      "text": "Không. Một nửa là mua bằng hợp đồng ngắn hạn."
+    },
+    "eu8k": {
+      "source_hash": "d1f982849b1b",
+      "text": "Tài liệu nói, mua vậy đắt hơn nhiều so với ký hợp đồng nhiều năm."
+    },
+    "h0ih": {
+      "source_hash": "56fa71e65c37",
+      "text": "Sao không ký hợp đồng dài là xong?"
+    },
+    "bs8p": {
+      "source_hash": "17801e66b322",
+      "text": "TechCrunch hiểu là: nhu cầu tăng quá nhanh, họ phải gấp tìm điện toán, đành trả giá cao hơn."
+    },
+    "61em": {
+      "source_hash": "7b6ab52fe119",
+      "text": "Như mua mì gói trước bão, đắt cũng phải mua."
+    },
+    "pcca": {
+      "source_hash": "8000ce766806",
+      "text": "Tài liệu còn có một biểu đồ: mỗi đô la điện toán mang về bao nhiêu doanh thu."
+    },
+    "mex6": {
+      "source_hash": "c2ef235a64e7",
+      "text": "Từ đầu năm 2025 tăng dần, đỉnh hơn 2 lần một chút, giờ về 1,72 lần."
+    },
+    "mnyq": {
+      "source_hash": "99bf8084c7ee",
+      "text": "Vậy mỗi đồng điện toán thu về ít hơn. Mà số tiền này, trả cho ai?"
+    },
+    "1bt9": {
+      "source_hash": "0393378f998b",
+      "text": "Đó là phần tiếp theo: tiền chảy về đâu."
+    },
+    "kv8c": {
+      "source_hash": "d9a0364bb4cc",
+      "text": "TechCrunch viết, mỗi tháng Anthropic trả SpaceX 1,25 tỷ đô tiền điện toán."
+    },
+    "c9nn": {
+      "source_hash": "20145f95dc6d",
+      "text": "SpaceX? Hãng làm tên lửa đó hả?"
+    },
+    "wq4l": {
+      "source_hash": "3aafc783e58e",
+      "text": "Đúng, chính nó."
+    },
+    "bthn": {
+      "source_hash": "a1a0fbde09f5",
+      "text": "Còn ký hợp đồng trị giá hàng tỷ đô với ba hãng Nscale, Akamai, Volta."
+    },
+    "wgd0": {
+      "source_hash": "35100cbdc45a",
+      "text": "Ba hãng này chắc ít ai nghe qua."
+    },
+    "a2ft": {
+      "source_hash": "d7f5c4459ddc",
+      "text": "TechCrunch gọi chúng là neocloud, đám mây mới nổi, không phải các ông lớn đám mây."
+    },
+    "xa1v": {
+      "source_hash": "265de46392aa",
+      "text": "Hợp đồng linh hoạt hơn, nhưng giá cao hơn."
+    },
+    "7g2c": {
+      "source_hash": "b0b31f745f55",
+      "text": "Họ không tự xây được sao?"
+    },
+    "qojx": {
+      "source_hash": "3113dbf7ff0d",
+      "text": "Có, tên là Anthropic Direct, xây điện toán riêng."
+    },
+    "d0x8": {
+      "source_hash": "ad5063e0c74f",
+      "text": "Nhưng TechCrunch cho rằng nó không theo kịp nhu cầu tăng."
+    },
+    "ewlu": {
+      "source_hash": "71efc4e92f3f",
+      "text": "Tiền điện toán cuối cùng vào tay ai?"
+    },
+    "bpnk": {
+      "source_hash": "6d2fc2c455e9",
+      "text": "Hôm qua có ví dụ: hãng chip AMD công bố kết quả quý ba."
+    },
+    "bh69": {
+      "source_hash": "34217dfad498",
+      "text": "Mảng trung tâm dữ liệu bán chip xử lý máy chủ và chip AI có doanh thu 8,5 tỷ đô la,"
+    },
+    "ybob": {
+      "source_hash": "dadea7785b0f",
+      "text": "gần gấp đôi cùng kỳ năm ngoái."
+    },
+    "06zs": {
+      "source_hash": "ddd1a2f29b6c",
+      "text": "Mảng game thì sao?"
+    },
+    "y4j8": {
+      "source_hash": "b71e8b2304de",
+      "text": "Ngược lại giảm 40%."
+    },
+    "lvm1": {
+      "source_hash": "1707524cd011",
+      "text": "AMD nói, Anthropic, Meta, Microsoft, OpenAI và đám mây Oracle đã chạy tác vụ trên lô tủ Helios đầu tiên của họ."
+    },
+    "uczh": {
+      "source_hash": "a0ab9c138360",
+      "text": "Vậy tiền Anthropic trả có một phần về AMD?"
+    },
+    "71n3": {
+      "source_hash": "e3a18abbd528",
+      "text": "AMD chỉ nói là đang dùng, không công bố số tiền, và đó là lời công ty tự nói."
+    },
+    "tnh6": {
+      "source_hash": "1c6725f78c61",
+      "text": "Ở đầu kia là các công ty chuyên chạy mô hình thuê."
+    },
+    "irzo": {
+      "source_hash": "7fa9c5aa7189",
+      "text": "Fal, nơi lưu trữ mô hình hình ảnh và âm thanh, gọi vốn 1,3 tỷ đô; theo Bloomberg, định giá gấp đôi tháng 4."
+    },
+    "h60q": {
+      "source_hash": "829e6d1860c6",
+      "text": "Hãng kiểu này cũng trả tiền điện toán chứ?"
+    },
+    "993g": {
+      "source_hash": "efbd10ed0a83",
+      "text": "Đúng. TechCrunch dẫn người trong cuộc: mua hay thuê điện toán quá đắt, nên các hãng này lãi gộp vẫn mỏng."
+    },
+    "mpeg": {
+      "source_hash": "9de962b7dddb",
+      "text": "Áp lực giống hệt Anthropic."
+    },
+    "ple4": {
+      "source_hash": "220e73a7d5b5",
+      "text": "Ngoài chip, còn một vấn đề nền tảng hơn: điện."
+    },
+    "7yb2": {
+      "source_hash": "ca91397ae7f1",
+      "text": "TechCrunch dẫn New York Times: vài trung tâm dữ liệu AI chờ lưới điện không nổi, nên dùng động cơ phản lực máy bay cũ để phát điện."
+    },
+    "1pzu": {
+      "source_hash": "b0218c459f05",
+      "text": "Động cơ phản lực phát điện? Nghe liều thật."
+    },
+    "zujv": {
+      "source_hash": "c790b87390e2",
+      "text": "Ở Bắc Virginia, nối 100 megawatt vào lưới, IEA ước khoảng bảy năm."
+    },
+    "egf8": {
+      "source_hash": "b03b6cf7ed16",
+      "text": "Động cơ cải tạo, nhà phân tích nói 24 tháng là cho trung tâm dữ liệu chạy được, nhưng hiệu suất thấp, ô nhiễm nhiều."
+    },
+    "qe0u": {
+      "source_hash": "1d362fa2bc06",
+      "text": "Nhớ Nscale lúc nãy chứ?"
+    },
+    "ap1q": {
+      "source_hash": "d75bace68b68",
+      "text": "Neocloud đó hả?"
+    },
+    "41ju": {
+      "source_hash": "c2b3aeb94938",
+      "text": "Đúng. Tháng trước, Microsoft thôi làm khách chính ở một trung tâm dữ liệu của họ tại Anh."
+    },
+    "vhse": {
+      "source_hash": "95f1aea13109",
+      "text": "Vì công ty điện địa phương nói phải đến đầu hoặc giữa thập niên 2030 mới đủ điện."
+    },
+    "531m": {
+      "source_hash": "ba3ae1d5a6b1",
+      "text": "Vậy có tiền cũng chưa chắc mua được điện toán."
+    },
+    "a6ab": {
+      "source_hash": "12b4be85fe82",
+      "text": "Tóm lại dòng tiền."
+    },
+    "x6k8": {
+      "source_hash": "06c10a376884",
+      "text": "Hãng chip nhận đơn hàng, AMD là một ví dụ."
+    },
+    "auur": {
+      "source_hash": "5b55f59b36ad",
+      "text": "Còn hãng đám mây?"
+    },
+    "0xed": {
+      "source_hash": "2ca0411416d9",
+      "text": "Thu tiền thuê, mua càng gấp, giá càng cao."
+    },
+    "5d9c": {
+      "source_hash": "b55c9c77ca78",
+      "text": "Còn thứ chặn tất cả mọi người là điện."
+    },
+    "et6b": {
+      "source_hash": "f2cbeba47bdb",
+      "text": "Vậy trong tài liệu này, ai thiệt nhất?"
+    },
+    "mnya": {
+      "source_hash": "d6fabc676f49",
+      "text": "Bên mua gấp, tức chính Anthropic: doanh thu tăng, nhưng tiền điện toán còn tăng mạnh hơn."
+    },
+    "jfi1": {
+      "source_hash": "94817938de17",
+      "text": "Có liên quan đến gói AI mọi người trả hàng tháng không?"
+    },
+    "c83x": {
+      "source_hash": "a954d89c5ff0",
+      "text": "Bài không nói giá, ta không đoán."
+    },
+    "jie6": {
+      "source_hash": "c77f6765656d",
+      "text": "Nhưng mỗi câu bạn hỏi AI là một ô nhỏ trong hóa đơn này."
+    },
+    "twnq": {
+      "source_hash": "f08bc52220f2",
+      "text": "Chip, điện toán, nghe rất liên quan Đài Loan. Bài có nhắc Đài Loan không?"
+    },
+    "twna": {
+      "source_hash": "361eafd442f3",
+      "text": "Nói thật, các bài hôm nay không nhắc hãng Đài Loan nào, mình không gán ghép."
+    },
+    "2oz0": {
+      "source_hash": "f4d87f4e5511",
+      "text": "Điều nói được là: trong phần rủi ro của báo cáo, AMD tự liệt kê những thứ này."
+    },
+    "e0hq": {
+      "source_hash": "17ed5182c46e",
+      "text": "kiểm soát xuất khẩu, thuế,"
+    },
+    "ylzh": {
+      "source_hash": "8bc7f16d603c",
+      "text": "Toàn chữ hay gặp trên báo."
+    },
+    "vqdu": {
+      "source_hash": "a107d81027ac",
+      "text": "Còn nguồn cung bộ nhớ, và phụ thuộc sản xuất bên thứ ba."
+    },
+    "gxrv": {
+      "source_hash": "e068068b7f84",
+      "text": "Bên thứ ba sản xuất là ai vậy?"
+    },
+    "d3b7": {
+      "source_hash": "8daa0803395f",
+      "text": "AMD không nêu tên, mình không đoán thay. Chuỗi cung ứng châu Á ra sao, nguồn hôm nay chưa trả lời."
+    },
+    "lr60": {
+      "source_hash": "29e744072d82",
+      "text": "Tiếp theo, xem ba điều."
+    },
+    "z6e4": {
+      "source_hash": "45b8ec583805",
+      "text": "Một, tài liệu nói chi phí điện toán và hạ tầng sẽ còn tăng, và sẽ là khoản chi hoạt động lớn nhất."
+    },
+    "l1r5": {
+      "source_hash": "f7176226baf1",
+      "text": "Còn tăng nữa sao?"
+    },
+    "f2xh": {
+      "source_hash": "15f7e80323fd",
+      "text": "Hai, đây là dao động tạm thời hay chuyện dài hạn. TechCrunch nghiêng về dao động ngắn."
+    },
+    "8qns": {
+      "source_hash": "2c03970aef61",
+      "text": "Ba, nếu trái phiếu căng thẳng hoặc dân địa phương phản đối mạnh hơn, trung tâm dữ liệu có thể xây chậm lại."
+    },
+    "qevc": {
+      "source_hash": "cbbd65ea0840",
+      "text": "Sao họ cho là chỉ dao động?"
+    },
+    "9reg": {
+      "source_hash": "15ec27f1c5c0",
+      "text": "TechCrunch nói, chỉ cần doanh thu tăng đủ nhanh, nhà đầu tư sẽ ít lo chi phí điện toán."
+    },
+    "qket": {
+      "source_hash": "26f676e2640e",
+      "text": "Khi nào nó lên sàn?"
+    },
+    "zcc6": {
+      "source_hash": "733dffc62d18",
+      "text": "Báo không nêu ngày, chỉ nói ngày càng gần."
+    },
+    "wv61": {
+      "source_hash": "2ad1d9fbe95b",
+      "text": "Quay lại nhà phân tích. Tài liệu thứ Hai cho thấy một công ty doanh thu tăng vọt, nhưng mỗi đồng lại bị điện toán lấy nhiều hơn."
+    },
+    "9g8f": {
+      "source_hash": "a6038c745463",
+      "text": "Và số tiền này đang chảy vào chip, đám mây, và nguồn điện còn chưa tới."
+    },
+    "9u8h": {
+      "source_hash": "ad97724ae703",
+      "text": "Chuyện này, người khác nói sao?"
+    },
+    "u63w": {
+      "source_hash": "fd130910f546",
+      "text": "Mình chọn bốn câu, nguyên văn từ bài gốc."
+    },
+    "u7lu": {
+      "source_hash": "d72d81c463ba",
+      "text": "Câu một của Russell Brandom, phóng viên TechCrunch viết bài này."
+    },
+    "368b": {
+      "source_hash": "bb748145aead",
+      "text": "Ông nói, đúng lúc lẽ ra dùng lãi gộp tốt lên để thuyết phục nhà đầu tư IPO, lãi gộp lại xấu đi."
+    },
+    "3s3k": {
+      "source_hash": "75719d69d971",
+      "text": "Thời điểm khó xử thật. Câu hai thì sao?"
+    },
+    "gcwr": {
+      "source_hash": "bdd9f9350797",
+      "text": "Nhà phân tích Rystad Energy nói với New York Times: quan trọng là có điện càng sớm càng tốt."
+    },
+    "39tw": {
+      "source_hash": "a1063788fae8",
+      "text": "Nên kém hiệu quả chút cũng dùng động cơ trước."
+    },
+    "dnrp": {
+      "source_hash": "a1790185e776",
+      "text": "Câu ba liên quan đến tên gọi. The Verge đưa tin, OpenAI trong thông báo mới đã đổi tên trung tâm dữ liệu thành khu điện toán."
+    },
+    "6kp4": {
+      "source_hash": "40614a100481",
+      "text": "Đổi tên rồi hàng xóm hết phản đối à?"
+    },
+    "darw": {
+      "source_hash": "667415cc958d",
+      "text": "Abre' Conner của NAACP nói, đổi tên không giải quyết được gì."
+    },
+    "xft7": {
+      "source_hash": "7af0cf3fda92",
+      "text": "OpenAI không trả lời yêu cầu bình luận của The Verge."
+    },
+    "r7th": {
+      "source_hash": "5521bebd357b",
+      "text": "Câu cuối?"
+    },
+    "9fxy": {
+      "source_hash": "aa0b07b2b7e3",
+      "text": "Quay lại tìm kiếm. Adam Fry, trưởng sản phẩm tiêu dùng ChatGPT, nói đa số dường như không ngại quảng cáo trong sản phẩm."
+    },
+    "svzk": {
+      "source_hash": "8881feae2cb2",
+      "text": "Câu này, để mọi người tự đánh giá."
+    },
+    "ud6a": {
+      "source_hash": "dd0de020842d",
+      "text": "Điện toán là tiền của công ty; giờ xem tiền của bạn."
+    },
+    "ihg8": {
+      "source_hash": "e4aa643e07dc",
+      "text": "Theo Decrypt dẫn Yonhap, Triều Tiên phủ nhận dính líu vụ hack Binance."
+    },
+    "xoeo": {
+      "source_hash": "8f1b49a83a52",
+      "text": "Khoan, Binance bị hack bao nhiêu?"
+    },
+    "hxx2": {
+      "source_hash": "fb8718ae8692",
+      "text": "FBI nói hôm thứ Bảy tuần trước, nhóm hacker Triều Tiên TraderTraitor đã đánh cắp của Binance hơn 6 tỷ đô."
+    },
+    "oclb": {
+      "source_hash": "eb7147c7fbc5",
+      "text": "Decrypt từng đưa tin khoảng 2,85 tỷ đô trong đó đã bị đóng băng hoặc thu giữ."
+    },
+    "08cu": {
+      "source_hash": "60f219291e3f",
+      "text": "Triều Tiên nói sao?"
+    },
+    "wllv": {
+      "source_hash": "e0fa97a4d4d2",
+      "text": "Kim Yo-jong, em gái Kim Jong-un, gọi kết luận của Mỹ là khiêu khích chính trị nghiêm trọng."
+    },
+    "hhp6": {
+      "source_hash": "568883bbfa66",
+      "text": "Mỗi bên một kiểu. Còn người dùng thì sao?"
+    },
+    "7wne": {
+      "source_hash": "ff557d1e101b",
+      "text": "Thực tế hơn với người dùng là hai điều Binance nói. Họ nói đã bù khoảng 95% tài sản bị đánh cắp."
+    },
+    "hd6a": {
+      "source_hash": "5a900e34cf3e",
+      "text": "Làm sao chắc được?"
+    },
+    "7nw3": {
+      "source_hash": "ea0b3ac81d41",
+      "text": "Họ nói, ai giữ top 10 token có thể dùng bằng chứng không tri thức của ảnh chụp dự trữ ngày 31 tháng 10,"
+    },
+    "x68d": {
+      "source_hash": "314aefa4d56a",
+      "text": "để xem số dư của mình có đủ tài sản bảo chứng không."
+    },
+    "6y1o": {
+      "source_hash": "39ffc83d702b",
+      "text": "Bằng chứng không tri thức, FlashProve cũng có."
+    },
+    "xzi2": {
+      "source_hash": "1f92744a16cb",
+      "text": "Đúng, cùng loại mật mã học: chứng minh một điều là thật, mà không lộ chi tiết."
+    },
+    "plgd": {
+      "source_hash": "d29bee3871bb",
+      "text": "Lời khuyên của chúng tôi: sàn có sự cố, hãy xem có bằng chứng bạn tự kiểm được không."
+    },
+    "2jfc": {
+      "source_hash": "5bc1306c6c7f",
+      "text": "Chứ không chỉ nói một câu: cứ yên tâm."
+    },
+    "xk2j": {
+      "source_hash": "89eb2e6b5f13",
+      "text": "Tin thứ hai cũng liên quan đến nói không."
+    },
+    "4eoy": {
+      "source_hash": "be741d4a9c1f",
+      "text": "Nền tảng cổ phiếu token hóa do OKX và ICE, công ty mẹ Sàn chứng khoán New York, liên doanh, có danh sách phản đối tăng lên 56 công ty."
+    },
+    "36ly": {
+      "source_hash": "251cf65c946e",
+      "text": "Cổ phiếu token hóa là gì?"
+    },
+    "jntm": {
+      "source_hash": "bce7937e79ab",
+      "text": "Biến cổ phiếu thành token trên blockchain, rồi giao dịch trên nền tảng blockchain."
+    },
+    "r5as": {
+      "source_hash": "23dd50c034a0",
+      "text": "Lần này thêm sáu hãng như Tesla, SpaceX, Amazon và Netflix."
+    },
+    "y2pk": {
+      "source_hash": "41a0372e9079",
+      "text": "Công ty được quyền từ chối?"
+    },
+    "9uwp": {
+      "source_hash": "434fb3910c85",
+      "text": "Được. Theo miễn trừ đổi mới tháng 9 của SEC Mỹ, nền tảng phải báo công ty trước."
+    },
+    "fehm": {
+      "source_hash": "342dd8b698fc",
+      "text": "Công ty phản đối bằng văn bản trong 30 ngày, nền tảng phải gỡ bản token bên khác làm."
+    },
+    "rtwy": {
+      "source_hash": "4df9f5979664",
+      "text": "Nhưng chỉ nền tảng này."
+    },
+    "tfql": {
+      "source_hash": "194f797e772b",
+      "text": "Vậy không phải cấm toàn bộ."
+    },
+    "z8ye": {
+      "source_hash": "91a831abe5f6",
+      "text": "Đúng. Và theo Decrypt, nền tảng này vẫn đang ở giai đoạn kế hoạch."
+    },
+    "htqd": {
+      "source_hash": "168845d7409c",
+      "text": "Tin cuối, là tin Đài Loan duy nhất hôm nay."
+    },
+    "fp84": {
+      "source_hash": "a4b471a47486",
+      "text": "Ủy ban Giám sát Tài chính nói sắp công bố dự thảo cấp phép phát hành stablecoin."
+    },
+    "jyw2": {
+      "source_hash": "72c1a534711d",
+      "text": "Stablecoin là gì vậy?"
+    },
+    "yfww": {
+      "source_hash": "9d49ffaab84d",
+      "text": "Là tài sản mã hóa có giá trị được thiết kế gắn với một đồng tiền pháp định."
+    },
+    "7g7b": {
+      "source_hash": "5b9ac4f150a4",
+      "text": "Ai sẽ phát?"
+    },
+    "lgku": {
+      "source_hash": "7c1e51be47b7",
+      "text": "Ngân hàng, tập đoàn tài chính, công ty con ngân hàng, và nơi khác Ủy ban công bố."
+    },
+    "cg1t": {
+      "source_hash": "48121d0cc265",
+      "text": "Nếu không phải ngân hàng, vốn thực góp ít nhất 300 triệu Đài tệ."
+    },
+    "edyq": {
+      "source_hash": "ace2840d7d31",
+      "text": "Được phát hành là stablecoin gắn một đổi một với Đài tệ, hoặc một ngoại tệ đơn lẻ."
+    },
+    "lk0k": {
+      "source_hash": "e570abb5d55f",
+      "text": "Tài sản dự trữ không được ít hơn tổng lưu hành."
+    },
+    "25ge": {
+      "source_hash": "f48090704aa3",
+      "text": "Người mua có bị xác minh không?"
+    },
+    "bgww": {
+      "source_hash": "42f3e07e92a9",
+      "text": "Có. Bên phát hành phải xác minh người mua và người đổi lại, và định kỳ để kế toán viên kiểm toán."
+    },
+    "omwg": {
+      "source_hash": "34ac58505e17",
+      "text": "Khi nào hiệu lực?"
+    },
+    "28m1": {
+      "source_hash": "4f888b22bfc6",
+      "text": "Chưa. Từ hôm sau ngày công bố có 40 ngày góp ý, hiệu lực theo ngày thi hành Luật Dịch vụ Tài sản Ảo, mà Viện Hành chính chưa định."
+    },
+    "2nje": {
+      "source_hash": "9f1e96562181",
+      "text": "Giờ chưa cần làm gì."
+    },
+    "251t": {
+      "source_hash": "bfb6943be85b",
+      "text": "Đúng, đây chỉ là dự thảo. Nhắc lại, phần này không bàn giá đồng coin nào."
+    },
+    "vwey": {
+      "source_hash": "b9946b610151",
+      "text": "Rồi, thực tế chút. AI giả được cuộc gọi, vậy hôm nay mình làm được gì?"
+    },
+    "1a87": {
+      "source_hash": "197c70aa0e17",
+      "text": "Đây là gợi ý của chương trình, không phải của Google."
+    },
+    "scma": {
+      "source_hash": "09208b30573f",
+      "text": "Một, giọng quen gọi bảo chuyển tiền, hãy cúp máy, gọi lại bằng số bạn tự lưu."
+    },
+    "rjzq": {
+      "source_hash": "aede75db90be",
+      "text": "Giọng giống y cũng vậy à?"
+    },
+    "gfdq": {
+      "source_hash": "1bc62aeee555",
+      "text": "Đúng, giọng giống không có nghĩa là chính người đó."
+    },
+    "9hi7": {
+      "source_hash": "4754af41cfdc",
+      "text": "Hai, nếu dùng Android, mở Cài đặt, tìm “lừa đảo”, có tính năng bảo vệ thì bật lên."
+    },
+    "wv40": {
+      "source_hash": "b418bc9affac",
+      "text": "Không có?"
+    },
+    "pvi0": {
+      "source_hash": "876fcd3c3bad",
+      "text": "Có thể máy bạn chưa có tính năng này."
+    },
+    "9qnc": {
+      "source_hash": "17101420e8ac",
+      "text": "Ba, Google nói game giáo dục mô phỏng lừa đảo Be Scam Ready đã có ở Đài Loan."
+    },
+    "fe8z": {
+      "source_hash": "7250bdd0b38b",
+      "text": "Ông bà cũng tập cùng được."
+    },
+    "ot6y": {
+      "source_hash": "c1daff842cf2",
+      "text": "Còn phụ huynh? Tin Apple lúc nãy."
+    },
+    "khjh": {
+      "source_hash": "a98840272431",
+      "text": "Quy định mới nhắm vào nhà phát triển; chúng tôi khuyên, iPhone ở nhà vẫn tự bật kiểm soát phụ huynh."
+    },
+    "q7od": {
+      "source_hash": "510614d0aa29",
+      "text": "Từ tiền thật, sang chuyện hơi lố: tạp âm hôm nay."
+    },
+    "zokc": {
+      "source_hash": "3d061e546fe1",
+      "text": "Theo The Verge, nhiều nhà phát triển game độc lập nói Steam duyệt quá lâu, game lỡ ngày phát hành."
+    },
+    "d4n5": {
+      "source_hash": "ee57ed753db0",
+      "text": "Theo Valve, duyệt trang cửa hàng thường mất ba đến năm ngày làm việc."
+    },
+    "9sru": {
+      "source_hash": "7e0bc72df861",
+      "text": "Nhưng một game tên Food Devils, nộp duyệt từ 12 tháng 10, dự kiến ra hôm qua, vẫn đang chờ."
+    },
+    "rzbd": {
+      "source_hash": "02f0472278c0",
+      "text": "Chờ ba tuần rồi sao?"
+    },
+    "5l7t": {
+      "source_hash": "5c81744bb5ea",
+      "text": "Một game khác, ra mắt trễ gần hai tuần."
+    },
+    "zfdp": {
+      "source_hash": "8b138f373f2b",
+      "text": "Sao kẹt dữ vậy?"
+    },
+    "05ct": {
+      "source_hash": "a4bd72500bdb",
+      "text": "Nhà phát triển đoán, hàng loạt game AI làm ẩu đã làm nghẽn hàng chờ duyệt."
+    },
+    "5y7k": {
+      "source_hash": "59b720f91439",
+      "text": "Số liệu thì có: Steam Next Fest tháng 10 có 7.240 game, nhiều hơn tháng 6 là 65%."
+    },
+    "nxdo": {
+      "source_hash": "198ea0efb18a",
+      "text": "Có cư dân mạng tính, từ khi Valve bắt ghi nhãn, gần nửa số game lên kệ có ghi dùng AI."
+    },
+    "pqyu": {
+      "source_hash": "d534de45e05e",
+      "text": "Valve nói sao?"
+    },
+    "4nba": {
+      "source_hash": "c95c6b37c2dc",
+      "text": "Sau đó Valve đăng bài nhận duyệt bị chậm, lâu nhất 12 ngày làm việc. Đổ cho AI vẫn là đoán của nhà phát triển."
+    },
+    "4pwl": {
+      "source_hash": "8ac8f4d84779",
+      "text": "Rồi, tạp âm này cứ để nó xếp hàng."
+    },
+    "7qsr": {
+      "source_hash": "368573b94367",
+      "text": "Theo tôi, quan trọng nhất hôm nay là tài liệu của Anthropic."
+    },
+    "d9ls": {
+      "source_hash": "fee0dc560439",
+      "text": "Vì nó bày ra chi phí để chạy AI."
+    },
+    "npwp": {
+      "source_hash": "a3a4b2d0de12",
+      "text": "Và nối với chip, đám mây, cả động cơ phản lực."
+    },
+    "so1l": {
+      "source_hash": "b91edcf39527",
+      "text": "Hóa đơn này trả thế nào sẽ định hình dịch vụ AI bạn dùng."
+    },
+    "a5hc": {
+      "source_hash": "eb9b7eb4296a",
+      "text": "Thêm quảng cáo?"
+    },
+    "kzi0": {
+      "source_hash": "2e44e59f9463",
+      "text": "Đó là chuyện OpenAI, báo không nói có liên quan; tôi chỉ thấy đáng xem cùng."
+    },
+    "y79h": {
+      "source_hash": "87387715f4ed",
+      "text": "Bạn nghĩ sẽ đắt mãi vậy không?"
+    },
+    "z02r": {
+      "source_hash": "4bca0526919e",
+      "text": "Thật lòng, tôi không chắc. TechCrunch thấy là dao động ngắn, phải xem số quý sau."
+    },
+    "k0ch": {
+      "source_hash": "91877580f70e",
+      "text": "Bản tổng hợp đầy đủ từng tin có trong bài trên Mokaair, link ở phần mô tả."
+    },
+    "qans": {
+      "source_hash": "7e79161a2761",
+      "text": "Quay lại chủ đề: tiền chủ yếu trả cho điện toán, mà còn là mua gấp."
+    },
+    "lvsq": {
+      "source_hash": "3c57ec3a207f",
+      "text": "Trả thêm, hay xem quảng cáo? Bình luận nhé."
+    },
+    "lkby": {
+      "source_hash": "503230268ccf",
+      "text": "Muốn nghe điểm chính mỗi ngày, hãy đăng ký Tech Signal. Đã nhận tín hiệu."
+    }
+  }
+}
