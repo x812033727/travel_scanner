@@ -39,3 +39,4 @@ scope:
 
 ## Notes
 
+- 2026-11-04 15:36 the long-running pod `yaxz30ls5h3rop` (started 11-03 15:37, eps 49 stage 3 to 53 stage 3) hit the 24 h `runpod_max_pod_hours` cap and the site stopped it, after 9 of 44 stage-3 clips. EU-CZ-1 then had no stock for 90 min (28 tries of `st23-retry.sh`); a new pod `9uvu3v19ipu0vu` started at 17:06 and stage 3 continues from s10. Nothing lost; the retry loop handled it unattended.
