@@ -52,3 +52,16 @@
   運鏡：留下來的鏡頭一個都沒變（跟改前的 `cameras.json` 比過）；新鏡頭 10 個（kid-reverse-q、chief-one-way、kid-zipper-pull、chief-same-coat、kid-sit-jacket、chief-sit、
   chief-zip、kid-better-coat、chief-cant-wear、kid-zip-up），改提示詞 2 個（chief-feather、thermos-magnifier 加「兩層只在瓶口接在一起」）。刪掉的鏡頭留在 `cameras.json` 裡，不影響。
   改後的稿還沒有新讀者讀過（盲評最多兩輪，第二輪要換新讀者）。
+- **查核第 2 輪**（[`verify-2.md`](verify-2.md)）與**盲評第 2 輪**（新讀者 12/13、11/13，都只扣 no_recap，一位另扣 opening_hooks）。最後一輪修改：
+  - verify-2：冰塊段「可是它裡面沒有暖爐」（原句跟「放久了跟房間一樣」矛盾）；拉鍊「把貼著你的暖空氣吹走」（被換掉的是衣服和身體之間那層，不是羽絨格子裡的）；
+    「等一下下」（不給沒來源的秒數）；章名「保溫瓶把空氣幾乎抽光了」。`sources` 加 OpenStax 15.3（熱不會自己倒過來跑）與 Kim & McCullough 2001（衣服開口讓保暖下降）。
+  - 章名「包起來的冰塊融得比較慢」會在 YouTube 章節列表把開場的問題講掉，改成「把冰塊包進羽絨衣」。
+  - no_recap：刪「鐵最會搬熱」、刪 down-works 卡片（「擋熱的是羽毛關住的空氣」那句；伏筆改由「想飄也飄不走」回收，羽毛／羽絨不一致也一起消失）、
+    「熱一直往外跑」只留一次、拉鍊頭那句改成新觀察（捏一下就不冰了，你的熱跑進去了）、保溫瓶兩個方向改成回呼「還記得熱的脾氣嗎？」、
+    冰塊段改成回呼「還記得溫度計那一晚嗎？」；片尾只留小問一句答案，所長只回收「穿一下下才暖」的伏筆，刪掉「保暖」意見句與「衣服沒有變」那句。
+  - opening_hooks：開場第三個具體鉤子「淋濕的羽絨衣，又為什麼一下就不暖了？」取代空泛的承諾句，伏筆在淋濕段回收；開場最後一句仍是全片問題。
+  - 補長度只加新事實：動物的毛也把空氣關起來（OpenStax 14.6 的 fur）、瓶口沒有真空熱大多從那裡溜走並接回拉鍊（Wikipedia、Kim & McCullough）、
+    風寒說的是露在外面的皮膚（NWS）、被風帶走比慢慢碰過去快得多（OpenStax 14.6 wind-chill）、睡著時放的熱少一點（OpenStax 表 7.5）。
+  - 結果：165 句、107 張插圖、6 張卡片（95%）、`loops` 21 個全部回收，小問約 24% 字數，lint 估 10.1 分鐘，0 錯誤、15 警告（已知不改）。
+    留下的鏡頭運鏡都沒變；新鏡頭 6 個（kid-cat、chief-fur、kid-cold-ears、chief-faster、kid-thermos-neck、chief-neck），沒有改提示詞的舊鏡頭；
+    刪掉 kid-callback、chief-word、kid-zip-up 與 down-works 卡片。新加的 6 句事實還沒有給查核代理看過。

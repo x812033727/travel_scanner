@@ -69,7 +69,7 @@ kid("ice-teaser", "Medium shot of the girl kneeling at a low table and carefully
 kid("park-teaser", "Wide shot of the girl in a winter park pulling her hand back from a black iron railing with a yelp, a wooden park bench beside her, bare trees, her breath a small white puff, soft overcast light",
     c("還有，公園的鐵欄杆，為什麼摸起來比木椅冰那麼多？", "賣關子", "S:iron"))
 chief("chief-promise", "Waist-up medium shot of the chief holding up a large round magnifying glass beside her face and smiling, ready to start an investigation, " + WALL + ", soft lamp light",
-      c("等你弄懂這件衣服，冬天很多怪事都說得通。", "承諾，誠懇"))
+      c("淋濕的羽絨衣，又為什麼一下就不暖了？", "賣關子", "S:wet"))
 kid("kid-question", "Close-up of the girl hugging " + JACKET + " to her chest and tilting her head with a puzzled frown, a plain wall, soft light",
     k("冰冰的衣服，為什麼穿上就暖？", "認真發問，句尾上揚", "S:warm"))
 
@@ -103,7 +103,7 @@ card("body-heat", "big", {"kicker": "大人安靜坐著", "text": "一直放出�
 kid("kid-bulb", "Medium shot of the girl holding both palms close to a glowing old-fashioned round light bulb in a simple desk lamp, feeling its warmth with a curious grin, soft evening light",
     k("那我也是一顆燈泡？", "好笑"))
 chief("chief-smaller", "Waist-up medium shot of the chief chuckling with one hand on her chest, " + WALL + ", warm lamp light",
-      c("小朋友的身體比較小，放出的熱少一些，"), c("可是也一直在放，連睡覺的時候都在放。"))
+      c("小朋友的身體比較小，放出的熱少一些，"), c("可是也一直在放；睡著的時候，也只是放得少一點。"))
 kid("kid-shiver", "Medium shot of the girl at a bus stop on a cold grey morning, hugging herself with both arms and shivering, her teeth chattering, soft overcast light",
     k("那我冷到發抖的時候呢？", "追問", "S:shiver"))
 chief("chief-turn-up", "Head-and-shoulders close-up of the chief raising her eyebrows and lifting one hand like turning up a dial, " + WALL + ", soft lamp light",
@@ -135,7 +135,7 @@ chief("chief-remember-tile", "Head-and-shoulders close-up of the chief putting o
 kid("kid-frosty-window", "Close-up of the girl pressing her fingertip against a cold frosty window pane, her breath fogging the glass, a thoughtful face, soft winter light",
     k("所以冷，就是熱一直跑掉？", "恍然大悟一半"))
 chief("chief-slow-down", "Waist-up medium shot of the chief holding both palms out and slowly lowering them like saying 'easy, easy', " + WALL + ", soft daylight",
-      c("對。你比外面暖，熱就一直往外跑。", None, "P:leak"), c("衣服擋不住它跑，只能讓它跑慢一點。"))
+      c("對。衣服擋不住它跑，只能讓它跑慢一點。", None, "P:leak"))
 kid("kid-railing", "Medium shot of the girl in a winter park shaking her cold hand after touching a black iron railing, a wooden bench right beside it, bare trees, soft overcast light",
     k("鐵欄杆好冰！", "誇張"), k("木頭椅子還好耶。"))
 kid("kid-knock-iron", "Close-up of the girl knocking on a black iron railing with her knuckles and nodding with a confident face, bare trees behind, soft overcast light",
@@ -155,11 +155,11 @@ kid("kid-tile-again", "Close-up of the girl looking down at her bare feet on col
 kid("kid-zipper-pull", "Close-up of the girl pinching the small metal zipper pull of " + JACKET + " between two fingers and pulling a face at how cold it is, soft morning light",
     k("羽絨衣的拉鍊頭，也比布冰！", "發現"))
 chief("chief-same-coat", "Waist-up medium shot of the chief nodding with raised eyebrows, one hand open toward the viewer, " + WALL + ", soft daylight",
-      c("同一件衣服、同一個溫度，金屬就是比較會搬熱。"))
+      c("可是你捏著它一下下，它就不冰了：你的熱已經跑進去了。"))
 chief("chief-you-touch", "Head-and-shoulders close-up of the chief looking straight at the viewer with a curious smile, one hand on her chin, " + WALL + ", soft lamp light",
       c("所以下次你摸到冰冰的東西，可以想一想：", "轉向觀眾"), c("是它真的比較冷，還是它很會搬熱？"))
 kid("kid-bench-think", "Medium shot of the girl sitting on a wooden park bench with her hands tucked under her legs, looking up and thinking hard, bare trees, soft overcast light",
-    k("鐵最會搬熱，", "想"), k("那什麼最會擋熱？", "章尾停住，句尾上揚", "S:block"))
+    k("那什麼最會擋熱？", "章尾停住，句尾上揚", "S:block"))
 
 # ---------- 第三章 ----------
 chief("chief-air", "Waist-up medium shot of the chief opening both hands wide as if presenting something invisible, a mischievous smile, " + WALL + ", soft daylight",
@@ -185,19 +185,21 @@ kid("down-magnifier", "Extreme close-up of the girl looking through a big magnif
 kid("kid-jar", "Medium shot of the girl scooping a big handful of fluffy white down into a clear glass jar on a table, delighted, soft daylight",
     c("一大把擠在一起，就撐出好多好多小空間。"))
 chief("chief-locked", "Waist-up medium shot of the chief cupping her two hands together as if holding something small inside, a soft smile, " + WALL + ", warm lamp light",
-      c("空氣被關在這些小空間裡，想飄也飄不走。"))
+      c("空氣被關在這些小空間裡，想飄也飄不走。", None, "P:feather"))
 kid("kid-air-vest", "Medium shot of the girl hugging a big clear plastic bag puffed up with air to her chest like a vest, a cheeky grin, a plain wall, soft daylight",
     k("那穿一件空氣不就好了？", "開玩笑", "S:airvest"))
 chief("chief-cut-small", "Waist-up medium shot of the chief drawing a small grid of squares in the air with one finger, a patient smile, " + WALL + ", soft daylight",
       c("一大片空氣會自己轉圈，把熱帶走。"), c("切成很多很小的格子，它才轉不起來。", None, "P:airvest"))
-card("down-works", "steps", {"title": "羽絨衣怎麼留住你的熱", "steps": [{"title": "細絲撐開", "detail": "撐出好多小空間"}, {"title": "空氣被關住", "detail": "空間太小，流不動"}, {"title": "熱跑得慢", "detail": "你的熱留在身邊"}], "source": "OpenStax《College Physics 2e》14.5、14.6"},
-     c("所以擋熱的不是羽毛本身，是羽毛關住的空氣。", None, "P:feather"))
 kid("kid-face-jacket", "Close-up of the girl resting her cheek on " + JACKET + " folded on her lap and smiling up at the camera, soft daylight",
     k("像好多好多小房間！", "驚喜"), k("羽絨衣是一件裝滿空氣的衣服！", "開心"))
 chief("chief-opinion", "Waist-up medium shot of the chief laughing softly with her arms folded, " + WALL + ", warm lamp light",
       c("我覺得這是它最聰明的地方：", "意見，輕鬆"), c("最重要的材料，是不用錢的空氣。"))
 kid("kid-blanket", "Medium shot of the girl wrapped up in a thick fluffy blanket on a sofa with only her face peeking out, smiling, soft evening lamp light",
     c("你的毛衣、棉被，也都在用同一招：把空氣關起來。", "轉向觀眾"))
+kid("kid-cat", "Medium shot of the girl gently petting a fluffy cat curled up asleep on a sofa, smiling, soft evening lamp light",
+    k("那貓咪的毛也是？", "好奇"))
+chief("chief-fur", "Head-and-shoulders close-up of the chief nodding with a fond smile, " + WALL + ", warm lamp light",
+    c("對，動物的毛，也是把空氣關在毛裡面。"))
 kid("kid-bear-hug", "Medium shot of the girl squeezing " + JACKET + " flat against her body in a tight bear hug, a curious sideways look, a plain wall, soft daylight",
     k("那我把它壓扁呢？", "章尾停住，調皮", "S:squash"))
 
@@ -215,7 +217,7 @@ kid("kid-heavy-coat", "Medium shot of the girl straining to lift a huge heavy pa
 chief("chief-not-weight", "Head-and-shoulders close-up of the chief shaking one finger with a gentle smile, " + WALL + ", soft lamp light",
       c("重不重，不是重點。"), c("重點是裡面，關住了多少不會動的空氣。", None, "P:heavy"))
 kid("kid-drizzle", "Medium shot of the girl standing in cold drizzle holding " + JACKET + " out with both hands as raindrops darken it, a worried face, soft grey light",
-    k("那下雨淋濕了呢？", "擔心", "S:wet"))
+    k("那下雨淋濕了呢？", "擔心"))
 chief("chief-water-in", "Waist-up medium shot of the chief tipping a small glass of water slowly over a sponge on her desk, watching it soak in, " + WALL + ", soft lamp light",
       c("濕了，水就跑進那些小空間，"), c("把空氣擠出去。"))
 card("water-air", "big", {"kicker": "水傳熱的本事", "text": "約是空氣的 **二十幾倍**", "sub": "衣服一濕，熱就跑得快"},
@@ -234,20 +236,24 @@ chief("chief-layer", "Head-and-shoulders close-up of the chief hugging her own s
       c("還記得那層會往上飄的暖空氣嗎？", "轉向觀眾"))
 kid("kid-fan", "Medium shot of the girl standing in front of a small electric fan with her eyes squeezed shut and her bangs blowing back, laughing, a plain wall, soft daylight",
     c("風一來，它還沒飄走就被吹散，"), c("冷空氣換得更勤，熱就跑得更快。"))
+chief("chief-faster", "Head-and-shoulders close-up of the chief blowing gently across her own open palm with a thoughtful look, " + WALL + ", soft lamp light",
+      c("被風帶走的熱，常常比慢慢碰過去的快得多。"))
 card("wind-chill", "compare", {"title": "同樣的溫度", "left": {"heading": "沒有風", "points": ["身上那層暖空氣換得慢"]}, "right": {"heading": "有風", "points": ["暖空氣一直被換掉", "覺得冷很多"]}, "source": "美國國家氣象局：風寒"},
      c("這就叫做風寒：同樣的溫度，有風就覺得冷很多。", None, "P:wind"))
+kid("kid-cold-ears", "Close-up of the girl on a windy footbridge cupping both hands over her ears, her cheeks and nose rosy from the cold, squinting, soft overcast light",
+    c("風寒說的，是露在外面的皮膚：臉、耳朵、手。"), k("難怪我耳朵最先痛！", "恍然大悟"))
 chief("chief-shell", "Waist-up medium shot of the chief holding up a folded piece of smooth fabric and running her hand over it, " + WALL + ", soft daylight",
       c("所以羽絨衣外面那層布，最好能擋風，"), c("也最好別讓雨滲進去。"))
 kid("kid-wall", "Medium shot of the girl spreading " + JACKET + " wide open in front of her like a shield against the wind on a footbridge, laughing, soft overcast light",
     k("像一面擋風的牆！", "開心"), k("那拉鍊沒拉好呢？", "追問", "S:zip"))
 chief("chief-zip", "Head-and-shoulders close-up of the chief miming pulling a zipper up to her chin with a playful wince, " + WALL + ", soft daylight",
-      c("風就從前面灌進去，把關住的空氣換掉。", None, "P:zip"), c("你應該被這樣冷過一次。", "轉向觀眾，帶笑"))
+      c("風就從前面灌進去，把貼著你的暖空氣吹走。", None, "P:zip"), c("你應該被這樣冷過一次。", "轉向觀眾，帶笑"))
 kid("kid-thermos-shake", "Medium shot of the girl holding up a shiny steel thermos with both hands and shaking it next to her ear to hear ice rattle inside, a curious face, a plain wall, soft daylight",
     k("那保溫瓶也沒插電，", "突然想到"), k("為什麼冰水也能保冰？", "章尾停住，句尾上揚", "S:thermos"))
 
 # ---------- 第五章（保溫瓶：每一步都接回羽絨衣）----------
 chief("chief-same-job", "Waist-up medium shot of the chief holding up a shiny steel thermos beside her face with a knowing smile, " + WALL + ", soft lamp light",
-      c("因為保溫瓶跟羽絨衣，做的是同一件事。"), c("它不加熱，也不製冷，只是讓熱很難進出。"), chapter="保溫瓶連空氣都抽掉了")
+      c("因為保溫瓶跟羽絨衣，做的是同一件事。"), c("它不加熱，也不製冷，只是讓熱很難進出。"), chapter="保溫瓶把空氣幾乎抽光了")
 kid("thermos-magnifier", "Close-up of the girl looking through a magnifying glass at a cut-open model of a shiny thermos on a table, showing two thin walls with an empty gap between them, the two walls joined only at the rim, soft daylight",
     c("保溫瓶是兩層瓶子，中間的空氣幾乎都抽掉了。"))
 kid("kid-empty-gap", "Close-up of the girl tapping the side of a shiny steel thermos with one fingertip and listening closely, a curious face, a plain wall, soft daylight",
@@ -258,10 +264,14 @@ kid("kid-better-coat", "Close-up of the girl holding a shiny steel thermos again
     k("那保溫瓶是更厲害的羽絨衣？", "好笑"))
 chief("chief-cant-wear", "Waist-up medium shot of the chief shrugging with a playful smile, " + WALL + ", soft daylight",
       c("可以這樣想，只是它穿不上身。", "玩笑"))
+kid("kid-thermos-neck", "Close-up of the girl unscrewing the lid of a shiny steel thermos and peeking into the opening with one eye, soft daylight",
+    k("瓶口那裡，像我沒拉的拉鍊？", "想到"))
+chief("chief-neck", "Waist-up medium shot of the chief tapping the rim of a shiny steel thermos with one finger, an approving smile, " + WALL + ", soft daylight",
+      c("很像。瓶口沒有真空，熱很多是從那裡溜走。"))
 kid("kid-two-flasks", "Medium shot of the girl hugging a shiny steel thermos with both arms and grinning, a plain wall, soft daylight",
     k("所以熱湯保熱，冰水也保冰！", "想通"))
 chief("chief-both-ways", "Waist-up medium shot of the chief pointing one finger left and then the other right, a cheerful face, " + WALL + ", soft daylight",
-      c("對，它擋的是熱跑過去，往哪個方向都擋。", None, "P:thermos"), c("羽絨衣也一樣，它不管熱是往裡還是往外。"))
+      c("對。還記得熱的脾氣嗎？它往哪邊跑，瓶子就擋哪邊。", None, "P:thermos"))
 kid("kid-summer", "Medium shot of the girl holding " + JACKET + " in front of an electric fan on a hot summer day, sweat on her forehead, a doubtful face, soft hazy light",
     k("那夏天穿羽絨衣呢？", "調皮", "S:summer"))
 chief("chief-summer", "Head-and-shoulders close-up of the chief fanning herself with a plain paper fan and laughing, " + WALL + ", soft daylight",
@@ -271,21 +281,15 @@ kid("ice-back", "Medium shot of the girl kneeling at a low table, poking " + JAC
 
 # ---------- 收尾 ----------
 chief("chief-not-heater", "Head-and-shoulders close-up of the chief raising her eyebrows with a gentle smile and one hand open, " + WALL + ", soft lamp light",
-      c("很多人都會這樣猜。可是它沒有熱可以給冰塊，"), c("只會讓房間的熱，很難跑進去。"), chapter="包起來的冰塊融得比較慢")
+      c("很多人都會這樣猜。可是它裡面沒有暖爐，"), c("還記得溫度計那一晚嗎？它自己一點也沒變暖。"), chapter="把冰塊包進羽絨衣")
 card("two-cubes", "compare", {"title": "同一個房間裡的兩顆冰", "left": {"heading": "包起來", "points": ["外面的熱很難跑進去", "融得比較慢"]}, "right": {"heading": "沒有包", "points": ["直接碰到房間的空氣", "融得比較快"]}, "source": "愛爾蘭科學基金會、WGBH ZOOM 的課堂活動"},
      c("很多學校課堂都會做這個比較：一顆包起來、一顆不包。"), c("包起來的那顆，融得比較慢。", None, "P:icewrap"))
 kid("kid-blocker", "Close-up of the girl clapping her hands together once with a big surprised smile, a plain wall, soft daylight",
     k("包起來，反而比較慢？！", "大驚"))
 kid("kid-hug-done", "Medium shot of the girl hugging " + JACKET + " tightly with her eyes closed and a big happy smile, warm morning light from a window",
     k("我知道了！", "自己想通"), k("穿上會暖，是我的熱被它留住了！", "篤定", "P:warm"))
-kid("kid-callback", "Close-up of the girl pressing her cheek against " + JACKET + " again and smiling, a plain wall, soft morning light",
-    k("所以剛拿出來冰冰的，", "想起開頭"), k("要等我的熱，先把裡面弄暖！", None, "P:delay"))
 chief("chief-folder-done", "Waist-up medium shot of the chief closing a plain folder with both hands and smiling, " + WALL + ", warm lamp light",
-      c("這件衣服從頭到尾都沒有變，"), c("變的是你知道，暖是從哪裡來的。", "轉向觀眾"))
-chief("chief-word", "Head-and-shoulders close-up of the chief smiling warmly with her hands folded under her chin, " + WALL + ", warm lamp light",
-      c("我覺得「保暖」這兩個字取得真好：", "意見，輕鬆"), c("是保住你的暖，不是加給你暖。"))
-kid("kid-zip-up", "Medium shot of the girl wrapping " + JACKET + " around her shoulders like a blanket in front of a window on a frosty morning, eyes closed in a cosy smile, soft morning light",
-    c("下次你穿上它，等個幾秒，", "轉向觀眾，輕聲"), c("慢慢暖起來的那個，就是你自己。"))
+      c("下次你穿上它，等一下下，", "轉向觀眾，輕聲"), c("那一下下，是你的熱正在把裡面填滿。", None, "P:delay"))
 card("outro", "outro", {"title": "原來如此！", "cta": "訂閱原來如此事務所", "lines": ["暖爐是你，羽絨衣只負責把熱留住"]},
      k("原來如此！", "開心大聲"), c("冰淇淋包在羽絨衣裡，會融得比較快，還是比較慢？", "問句上揚，像聊天"),
      c("留言告訴我們你的答案。"), c("想一起把生活裡的為什麼找到底，就訂閱原來如此事務所。", "誠懇"))
@@ -332,6 +336,7 @@ doc = {
     "sources": [
         {"title": "OpenStax College Physics 2e: 7.8 Work, Energy, and Power in Humans", "url": "https://openstax.org/books/college-physics-2e/pages/7-8-work-energy-and-power-in-humans", "checked_on": CHECKED},
         {"title": "OpenStax College Physics 2e: 13.1 Temperature", "url": "https://openstax.org/books/college-physics-2e/pages/13-1-temperature", "checked_on": CHECKED},
+        {"title": "OpenStax College Physics 2e: 15.3 Introduction to the Second Law of Thermodynamics", "url": "https://openstax.org/books/college-physics-2e/pages/15-3-introduction-to-the-second-law-of-thermodynamics-heat-engines-and-their-efficiency", "checked_on": CHECKED},
         {"title": "OpenStax College Physics 2e: 14.4 Heat Transfer Methods", "url": "https://openstax.org/books/college-physics-2e/pages/14-4-heat-transfer-methods", "checked_on": CHECKED},
         {"title": "OpenStax College Physics 2e: 14.5 Conduction", "url": "https://openstax.org/books/college-physics-2e/pages/14-5-conduction", "checked_on": CHECKED},
         {"title": "OpenStax College Physics 2e: 14.6 Convection", "url": "https://openstax.org/books/college-physics-2e/pages/14-6-convection", "checked_on": CHECKED},
@@ -344,6 +349,7 @@ doc = {
         {"title": "Science Foundation Ireland: What Material Will Keep Ice Lollies the Coolest?", "url": "https://www.sfi.ie/site-files/primary-science/media/pdfs/col/keeping_ice_lollies_cool.pdf", "checked_on": CHECKED},
         {"title": "ASHRAE / WGBH ZOOM: Keep-A-Cube", "url": "https://www.ashrae.org/File%20Library/Communities/Student%20Zone/K-12%20Activities/Elem-and-Midd_-Keep-A-Cube.pdf", "checked_on": CHECKED},
         {"title": "Tes Magazine: Iceman cometh (1998)", "url": "https://www.tes.com/magazine/archive/iceman-cometh", "checked_on": CHECKED},
+        {"title": "Kim & McCullough (2001), The Effect of Adjustable Garment Closures and Layering on Insulation in Cold Weather, The Korean Fashion and Textile Research Journal 3(5)", "url": "https://koreascience.or.kr/article/JAKO200123659443366.page", "checked_on": CHECKED},
         {"title": "US Patent 4,992,327: Synthetic down (wet loft comparison with down)", "url": "https://patents.google.com/patent/US4992327A/en", "checked_on": CHECKED},
     ],
     "assets": [],
