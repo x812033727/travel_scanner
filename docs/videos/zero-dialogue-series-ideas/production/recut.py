@@ -103,7 +103,7 @@ CUTS = {
   ("s03-rooftop", 0.3, 3.0, [("recordscratch", 0.0, 0), ("blender", 0.3, -6)]),
   ("s04-boyfriend", 0.3, 2.2, [("blender", 0.0, -4)]),
   ("s05-still", 0, 2.4, [("shutter", 0.0, 0)]),
-  ("s05b-inhale", 0.8, 2.8, [("inhale", 0.6, 0)], {"music_off": True}),
+  ("s05b-inhale", 0.1, 1.0, [("inhale", 0.1, 0)], {"music_off": True}),
   ("s06-sneeze", 0.5, 3.0, [("sneeze", 0.0, 0)], {"hold": 0.8})],
  "influencer-piglet-e03": [
   ("s01-falls-still", 0, 1.2, [("shutter", 0.9, 0)]),
@@ -122,7 +122,7 @@ CUTS = {
   ("s04-boyfriend", 0.3, 2.2, [("hum", 0.0, -4)]),
   ("s05-photo", 0.2, 1.8, [("shutter", 0.0, 0)]),
   ("s06-tangle", 0.5, 1.5, [("whoosh", 0.2, 0)]),
-  ("s04-boyfriend", 1.0, 0.9, [("powerdown", 0.2, 0)], {"push": [2.2, 2.2], "anchor": [0.68, 0.57], "box": [0.405, 0.5, 0.15, 0.18, 0.35]}),
+  ("s04-boyfriend", 1.0, 0.9, [("powerdown", 0.2, 0)], {"push": [2.2, 2.2], "anchor": [0.68, 0.57], "box": [0.432, 0.545, 0.095, 0.105, 0.35, "0x1c2622"]}),
   ("s06-tangle", 2.0, 1.6, [("click", 0.3, 0), ("click", 0.6, 0)], {"lights_out": [0.3, 0.6], "music_off": True})],
  "shechu-hell-e01": [
   ("s02-pack", 0.2, 1.4, []),
@@ -144,10 +144,10 @@ CUTS = {
   ("s01-slack", 0.3, 2.2, [("bell", 1.7, 0)]),
   ("s03-work", 0.3, 2.2, [("typing", 0.0, 0)]),
   ("s04-toy", 0.3, 2.0, [("bell", 0.0, -4)]),
-  ("s05-relax", 0.2, 1.4, []),
+  ("s05-relax", 0.2, 1.0, []),
   ("s06-shadow", 1.6, 2.0, [("dun", 0.4, 0)]),
   ("s07-perch", 0.3, 2.0, [], {"hold": 0.9, "music_off": True}),
-  ("s08-stapler", 0.3, 2.0, [("thud", 1.25, 0)], {"hold": 0.4, "music_off": True})],
+  ("s08-stapler", 1.1, 1.3, [("thud", 0.65, 0)], {"hold": 0.4, "music_off": True})],
  "shechu-hell-e04": [
   ("s01-knock", 0.3, 1.2, [("knock", 0.4, 0)]),
   ("s02-box", 0.3, 2.2, [("dun", 0.4, -6)]),
