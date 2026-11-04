@@ -57,6 +57,7 @@
 - **大綱寫成工具讀得到的樣子**：`### 選項 A：標題`，下面接「一行說明：」與「開場鉤子：」兩行。
 - **Whisper 第二意見**：雲端工作階段沒有主機的 `VIDEO_SECOND_OPINION`，先 `python3 -m venv ~/whisper && ~/whisper/bin/pip install faster-whisper`，每次 `check-audio` 帶 `VIDEO_SECOND_OPINION="$HOME/whisper/bin/python tools/video/tts/whisper_second_opinion.py"`、`WHISPER_MODEL=medium`。少了它，Gemini 聽錯的每一句都會被標（第一集第一輪 57 句，大多是同音字）。
 - **收尾句「訊號收到。」八語都翻成「訊號收到」**（en Signal received.、ko 신호 수신.、es Señal recibida.、vi Đã nhận tín hiệu.…），不准翻成「明天見／下次見」（2026-11-04 ko、es、vi、th 四種都譯成了「再見」，違反片尾不提下一集）。翻譯代理的指示要寫明。
+- **省時的排法**（2026-11-04 一集從 07:02 做到 20:12，八語配音約 4.3 小時、第一輪聽檢約 5.5 小時）：每種語言 `dub` 完就接著 `check-audio --locale`，不要八語全部配完才聽；每批兩三種語言，免得撞到背景工作 2 小時上限。撰稿時每個畫面狀態瞄準 13 秒以內（lint 估的時間比成片短約 1 秒，11/4 估 14.5 秒、實際 15.4 秒，品管不過就要重組成片 30 分鐘）。程式改成一次送多句的票：`tasks/open/2026-11-04-send-check-audio-transcriptions-and-dub.md`。
 - **`i18n-sheet` 不帶 `--locale` 只產 en、ja、ko 三張**（2026-11-03 西、葡、印尼、越、泰的表因此是舊的）：八語一律 `i18n-sheet --locale en,ja,ko,es,pt,id,vi,th`，`i18n-merge` 也照樣帶。
 - **日、韓翻譯每句瞄準 `max_chars` 的 85% 左右**：第一集日文 72 個視窗有 40 個要加速到最多 1.21×。
 - `dubs/<語系>/fit.json` 的 `over` 若是某句錄得特別長（印尼文一句 72 秒），是語音模型錄壞，`dub --redo` 那句就好，不要縮翻譯。
