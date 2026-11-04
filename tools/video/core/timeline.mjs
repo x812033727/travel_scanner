@@ -8,7 +8,7 @@
 import { createHash } from "node:crypto";
 import { hasAnimePolicy, isLongAnime, runtimePolicyHash } from "./anime-policy.mjs";
 
-import { pronunciationHintsFor, shotCast, timesSilentShots } from "./drama.mjs";
+import { pacedExplainer, pronunciationHintsFor, shotCast, timesSilentShots } from "./drama.mjs";
 import { termsUsed } from "./lexicon.mjs";
 import { eachLine, spokenText } from "./schema.mjs";
 
@@ -21,6 +21,14 @@ export const DEFAULT_PAUSE_MS = 300;
 // Extra silence after a scene's last line, so a slide change never lands mid-breath.
 export const SCENE_GAP_MS = 700;
 export const TAIL_MS = 1500;
+// 奇聞檔案局 and 原來如此事務所 (drama.mjs pacedExplainer) breathe less: their cuts were silent 4.3
+// to 7.5% of the time against 0 to 2.5% for the storytellers they are modelled on, and a gap of
+// 300 + 700 ms at every picture change was most of it (.agents/skills/producer/references/
+// pace-targets.md). Their measured timeline takes these instead, under the 0.5 s a listener
+// hears as a stop; a line's own pause_after_ms (the beat before a reveal) is kept as written.
+// The estimate lint and the blind panel read keeps the defaults, so no saved script check goes
+// stale and the length estimate stays on the long side.
+export const TIGHT_PAUSES = Object.freeze({ line: 150, scene: 250 });
 export const MIN_CHAPTERS = 3;
 export const CHAPTER_MIN_SECONDS = 10;
 
@@ -56,6 +64,9 @@ export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
   const actions = [];
   let frame = 0;
   const policyHash = hasAnimePolicy(doc) ? runtimePolicyHash(doc) : null;
+  const tight = basis === "measured" && pacedExplainer(doc);
+  const linePause = tight ? TIGHT_PAUSES.line : DEFAULT_PAUSE_MS;
+  const sceneGap = tight ? TIGHT_PAUSES.scene : SCENE_GAP_MS;
   for (const source of doc.scenes) {
     const action = source.action_seconds;
     if (action !== undefined && (!(isLongAnime(doc) || timesSilentShots(doc)) || !Number.isSafeInteger(action) || action < 1 || action > 8 || source.template !== "shot" || !Array.isArray(source.lines) || source.lines.length)) throw new Error(`scene ${source.id}: action_seconds needs a silent shot of a long anime or of a drama with a cast and no length floor, lasting 1 to 8 seconds`);
@@ -82,7 +93,7 @@ export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
       }
       const last = index === source.lines.length - 1;
       const isLastLine = last && source === doc.scenes.at(-1);
-      const pauseMs = (line.pause_after_ms ?? DEFAULT_PAUSE_MS) + (last ? (isLastLine ? TAIL_MS : SCENE_GAP_MS) : 0);
+      const pauseMs = (line.pause_after_ms ?? linePause) + (last ? (isLastLine ? TAIL_MS : sceneGap) : 0);
       const frames = framesFor(samples + msToSamples(pauseMs));
       lines.push({ id: line.id, scene: source.id, start_frame: frame, end_frame: frame + frames, audio_samples: samples, ...(line.speaker ? { speaker: line.speaker } : {}) });
       frame += frames;

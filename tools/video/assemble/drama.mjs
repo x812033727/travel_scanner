@@ -11,7 +11,7 @@
 // has 3 GB and no GPU, and xfade would force the join to re-encode.
 import { createHash } from "node:crypto";
 
-import { isShot, shotVisual } from "../core/drama.mjs";
+import { isShot, pacedExplainer, shotVisual } from "../core/drama.mjs";
 import { FPS } from "../core/timeline.mjs";
 import { HEIGHT, layoutScenes, LOUDNESS, PlanError, WIDTH } from "./plan.mjs";
 
@@ -68,7 +68,23 @@ const MOTION_DRIFT_SHARE = 0.15;
 export const MOTION_MANGA_VERSION = "manga-motion-v1";
 export const MANGA_MOTION = Object.freeze({ zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
 const STILL_MOTION = Object.freeze({ zoom: MOTION_ZOOM, panZoom: MOTION_PAN_ZOOM, driftZoom: MOTION_DRIFT_ZOOM, driftShare: MOTION_DRIFT_SHARE, travelSeconds: MOTION_TRAVEL_SECONDS, travelMin: MOTION_TRAVEL_MIN });
-export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION });
+// The explainer family (奇聞檔案局's cute-mystery, 原來如此事務所's flat-explainer and cute-cartoon;
+// core/drama.mjs isExplainer) is the third way. Measured on 2026-11-03 against the storytelling
+// explainers it is modelled on (.agents/skills/producer/references/pace-targets.md), our curio
+// cuts change pictures as often as they do but move the whole picture slowly from first frame to
+// last: 32 to 57% of the samples inside a shot sit in the slow band against 15 to 25%, and the
+// mean difference is half theirs. Theirs hold a picture still, then punch in on a detail in a
+// third of a second. So a beat move holds the whole picture, then punches in BEAT_MOTION.punchFrames
+// eased frames toward a focus point, once in a shot of 2.5 to 7 seconds, twice up to 12 and three
+// times above; a shorter shot holds, its cut being the change. The zooms add up to at most
+// BEAT_MOTION.maxZoom, inside MOTION_SOURCE_SCALE, so no frame is enlarged. MOTION_BEAT_VERSION
+// joins the segment key, so only the explainers' segments re-render.
+export const MOTION_BEAT_VERSION = "beat-motion-v1";
+export const BEAT_MOTION = Object.freeze({ punchFrames: 10, maxZoom: 0.24, stepZoom: 0.12, minPunchSeconds: 2.5, punchSeconds: [7, 12], travelSeconds: 1, travelMin: 1 });
+export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION, beat: BEAT_MOTION });
+const PROFILE_VERSIONS = Object.freeze({ manga: MOTION_MANGA_VERSION, beat: MOTION_BEAT_VERSION });
+/** Whether a video's stills take the beat move (core/drama.mjs pacedExplainer). */
+export const beatMotion = pacedExplainer;
 /** The amounts a move's expressions use: the manga tier's when the move carries `profile: "manga"`, else the held shot's. */
 export const motionProfile = (move) => (move && typeof move === "object" && move.profile ? MOTION_PROFILES[move.profile] : undefined) ?? STILL_MOTION;
 // Where a drifting picture goes: its shot id decides, so two drifts in a row rarely go one way.
@@ -234,11 +250,50 @@ export function motionMove(data, id = null, profile = null) {
   const lower = typeof data?.camera === "string" ? data.camera.toLowerCase() : "";
   const found = MOVES.find(([, pattern]) => pattern.test(lower));
   const profiled = profile && MOTION_PROFILES[profile] ? { profile } : {};
-  if (found && found[0] !== "drift") return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]), ...profiled };
+  // A beat move opens on the whole picture whatever the camera word, unless it pulls out.
+  const identity = (name) => (profiled.profile === "beat" ? name !== "pull-out" : IDENTITY_START.has(name));
+  if (found && found[0] !== "drift") return { name: found[0], startsAtIdentity: identity(found[0]), ...profiled };
   return { name: "drift", startsAtIdentity: true, direction: driftDirection(id), ...profiled };
 }
 
 const round4 = (value) => Number(value.toFixed(4));
+
+/** How many punches a beat move of `frames` makes: none in a short shot, then one, two or three (BEAT_MOTION). */
+export function beatPunches(frames) {
+  const secs = frames / FPS;
+  if (secs < BEAT_MOTION.minPunchSeconds) return 0;
+  return 1 + BEAT_MOTION.punchSeconds.filter((limit) => secs >= limit).length;
+}
+
+// Where a beat move punches toward, as a share of the picture's width and height: a little above
+// the middle (faces and the thing in hand sit there in the series' pictures), leaning a little
+// toward the side the camera word or the shot's drift direction names, so neighbouring shots do
+// not all punch one way. Only a little: the focus is a guess, and a point near an edge crops a
+// subject standing at the other one (seen on curio-s04-v2's beach, 2026-11-04).
+const BEAT_FOCUS = Object.freeze({
+  "push-in": [0.5, 0.45], "pull-out": [0.5, 0.45], "pan-right": [0.62, 0.45], "pan-left": [0.38, 0.45],
+  "tilt-up": [0.5, 0.35], "tilt-down": [0.5, 0.58], right: [0.55, 0.42], left: [0.45, 0.42],
+});
+
+/**
+ * zoompan expressions for a beat move: the zoom holds, then steps up by stepZoom over punchFrames
+ * eased frames at evenly spaced moments, and the crop window keeps the focus point where it sits
+ * on screen. A pull-out runs the same steps backwards, from the full zoom out to the whole picture.
+ */
+function beatExpr(name, direction, frames) {
+  const punches = beatPunches(frames);
+  if (name === "locked" || punches === 0) return { z: "1", x: "0", y: "0" };
+  const step = round4(Math.min(BEAT_MOTION.stepZoom, BEAT_MOTION.maxZoom / punches));
+  const length = BEAT_MOTION.punchFrames;
+  const terms = Array.from({ length: punches }, (_, index) => {
+    const start = Math.max(0, Math.round((frames * (index + 1)) / (punches + 1) - length / 2));
+    const u = `clip((on-${start})/${length},0,1)`;
+    return `(${u})*(${u})*(3-2*(${u}))`;
+  }).join("+");
+  const [fx, fy] = BEAT_FOCUS[name] ?? BEAT_FOCUS[direction] ?? BEAT_FOCUS.right;
+  const z = name === "pull-out" ? `${round4(1 + step * punches)}-${step}*(${terms})` : `1+${step}*(${terms})`;
+  return { z, x: `(iw-iw/zoom)*${fx}`, y: `(ih-ih/zoom)*${fy}` };
+}
 
 /**
  * zoompan's zoom, x and y expressions for a move over `frames` output frames, in terms of `on`
@@ -255,6 +310,7 @@ export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
   const name = typeof move === "string" ? move : move?.name;
   const direction = typeof move === "string" ? undefined : move?.direction;
   const amounts = motionProfile(move);
+  if (amounts === BEAT_MOTION) return beatExpr(name, direction, frames);
   const n = Math.max(frames - 1, 1);
   const t = `on/${n}`;
   const p = eased ? `((${t})*(${t})*(3-2*(${t})))` : t;
@@ -347,7 +403,7 @@ export function clipSegmentKey(scene, fit, subtitles = null, previous = null, ma
 export function motionSegmentKey(scene, move, subtitles = null, previous = null, mark = null) {
   // A move under a motion profile (the manga tier's) adds the profile's version, so a profile
   // change re-renders only its own segments and a move without one keeps the key it always had.
-  const profiled = motionProfile(move) === STILL_MOTION ? [] : [MOTION_MANGA_VERSION, move.profile];
+  const profiled = motionProfile(move) === STILL_MOTION ? [] : [PROFILE_VERSIONS[move.profile], move.profile];
   return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, move.direction ?? null, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : []), ...profiled, ...markKey(mark)]);
 }
 

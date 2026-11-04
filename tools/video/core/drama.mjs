@@ -232,6 +232,15 @@ export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
 export const isExplainer = (doc) => isDrama(doc) && doc.category !== "story" && isExplainerPreset(doc.look?.preset);
 /** The series whose identity an explainer wears ("sothatswhy"), or null: the channel's, or not an explainer. */
 export const explainerSeries = (doc) => (isExplainer(doc) ? EXPLAINER_IDENTITY[doc.look.preset] : null);
+/**
+ * The two storytelling explainer series held to the pace targets of
+ * .agents/skills/producer/references/pace-targets.md: 奇聞檔案局 (a curio- slug) and 原來如此事務所
+ * (a sothatswhy- slug, or an explainer wearing its identity), built as a drama or as illustrated
+ * slides. Their stills hold and punch in (assemble/drama.mjs BEAT_MOTION) and their measured
+ * timeline keeps short breaths between lines (timeline.mjs TIGHT_PAUSES). Brand stories, dramas
+ * and other slides are not.
+ */
+export const pacedExplainer = (doc) => /^(?:curio|sothatswhy)-/.test(doc?.slug ?? "") || explainerSeries(doc) === "sothatswhy";
 /** A drama drawn in one of the cute explainer looks (CUTE_EXPLAINER_PRESETS). */
 export const isCuteExplainer = (doc) => isDrama(doc) && CUTE_EXPLAINER_PRESETS.includes(doc?.look?.preset);
 /**
