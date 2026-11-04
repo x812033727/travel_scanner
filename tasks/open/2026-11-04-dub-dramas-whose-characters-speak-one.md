@@ -1,7 +1,7 @@
 ---
 id: 2026-11-04-dub-dramas-whose-characters-speak-one
 title: Dub dramas whose characters speak: one foreign voice per character
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-stw-dialogue
@@ -26,8 +26,8 @@ scope:
 ## Definition of done
 
 - [x] 原來如此的對話解說片（`isDialogueExplainer`）配音時，每個說話角色用自己的 Gemini 聲音、人設不變、換成該語系的語言（`plan.mjs` `dubCharacterVoice`）；一般漫劇仍拒絕。
-- [ ] P02 八語配音錄完、`check-audio` 過、交站主。
-- [ ] `docs/videos/DUBS.md` 記下這條例外。
+- [x] P02 八語配音錄完、`check-audio` 過（印尼文 p051「batu／batuk」只差尾音，判定為轉錄同音，接受）、2026-11-04 以 `review-push --gate languages` 交站主。
+- [x] `docs/videos/DUBS.md` 記下這條例外（§已知限制）。
 
 ## Notes
 
