@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -8,6 +8,7 @@ import { LEASE_FILE } from "../core/project-lease.mjs";
 import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { UsageError } from "../core/paths.mjs";
 import { eachLine, spokenText, textHash } from "../core/schema.mjs";
+import { ARTIFACTS } from "../core/state.mjs";
 import { SAMPLE_RATE, SAMPLES_PER_FRAME } from "../core/timeline.mjs";
 import {
   checkFiles,
@@ -29,7 +30,9 @@ import {
   spokenForm,
   trackFiles,
 } from "./check.mjs";
-import { concatSamples, downsample, encodeWav } from "./wav.mjs";
+import { DEFAULT_SPEECH_CONCURRENCY, sendInOrder, speechConcurrency } from "./concurrency.mjs";
+import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
+import { concatSamples, downsample, encodeWav, parseWav } from "./wav.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -288,13 +291,16 @@ function site({ heardFor, noul, fails = () => false }) {
   return { calls, fetchImpl };
 }
 
-function context(box, fetchImpl) {
+// One request at a time, as check-audio sent them before VIDEO_SPEECH_CONCURRENCY.
+const SEQUENTIAL = { VIDEO_SPEECH_CONCURRENCY: "1" };
+
+function context(box, fetchImpl, env = {}) {
   const out = { stdout: "", stderr: "" };
   return {
     out,
     ctx: {
       root: box.root,
-      env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN },
+      env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, ...env },
       home: box.base,
       fetch: fetchImpl,
       stdout: { write: (text) => (out.stdout += text) },
@@ -383,7 +389,8 @@ test("check-audio skips a line Gemini will not transcribe, keeps the rest, and p
   assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
 
   failing = new Set([1, 2, 3, 4, 5]);
-  const first = context(box, server.fetchImpl);
+  // Which request fails is counted in sending order: one at a time (the concurrent run's own test is below).
+  const first = context(box, server.fetchImpl, SEQUENTIAL);
   assert.equal(await main(["check-audio", "--slug", box.slug], first.ctx), EXIT.external, first.out.stderr);
   assert.equal(server.calls.failed, 5, "the client's five tries, then the line is skipped");
   assert.equal(server.calls.transcribe.length, lines.length - 1);
@@ -407,7 +414,7 @@ test("check-audio stops when Gemini fails line after line, instead of retrying e
   assert.ok(lines.length > GIVE_UP_AFTER, "the fixture has lines left after the give-up point");
 
   down = true;
-  const run = context(box, server.fetchImpl);
+  const run = context(box, server.fetchImpl, SEQUENTIAL);
   assert.equal(await main(["check-audio", "--slug", box.slug], run.ctx), EXIT.external);
   assert.equal(server.calls.failed, GIVE_UP_AFTER * 5, "five tries for each line before it gives up");
   assert.match(run.out.stdout, new RegExp(`Gemini failed ${GIVE_UP_AFTER} lines in a row`));
@@ -424,10 +431,10 @@ test("check-audio stopped by a STOP file keeps its transcripts, judges and flags
   const stop = path.join(box.work, "STOP");
   const stopping = async (url, init) => {
     const response = await server.fetchImpl(url, init);
-    if (url.endsWith("/speech/transcribe") && server.calls.transcribe.length === 2) writeFileSync(stop, "");
+    if (url.endsWith("/speech/transcribe") && server.calls.transcribe.length >= 2) writeFileSync(stop, "");
     return response;
   };
-  const stopped = context(box, stopping);
+  const stopped = context(box, stopping, SEQUENTIAL);
   assert.equal(await main(["check-audio", "--slug", box.slug], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
   assert.match(stopped.out.stdout, /STOP found; transcripts so far are saved, rerun to continue/);
   assert.equal(server.calls.transcribe.length, 2);
@@ -676,4 +683,239 @@ test("Thai number words and Thai digits line up with the digits a transcriber wr
   assert.equal(matchKind("ตี 3 วันที่ 21 Cloudflare เปิดกฎ Firewall", { id: "4eea", text: "ตีสามวันที่ 21 Cloudflare เปิดกฎไฟร์วอลล์" }, lexicon, "th"), "spelling");
   assert.equal(matchKind("ตี 4 วันที่ 21 Cloudflare", { id: "4eea", text: "ตีสามวันที่ 21 Cloudflare" }, lexicon, "th"), null, "another number is another number");
   assert.equal(matchKind("นายก ซานาเอะ ทาคาอิจิ เขียนบน X ว่า คำขอเร่งด่วน", { id: "nauj", text: "นายกฯ ซานาเอะ ทาคาอิจิ เขียนบน X ว่า \"คำขอเร่งด่วน\"" }, lexicon, "th"), "spelling", "ฯ only marks an abbreviation");
+});
+
+// --- several transcriptions at once (VIDEO_SPEECH_CONCURRENCY, concurrency.mjs) ----------------
+
+test("VIDEO_SPEECH_CONCURRENCY is a whole number of requests, at least 1, and 4 when unset", async () => {
+  assert.equal(speechConcurrency({}), DEFAULT_SPEECH_CONCURRENCY);
+  assert.equal(DEFAULT_SPEECH_CONCURRENCY, 4);
+  assert.equal(speechConcurrency({ VIDEO_SPEECH_CONCURRENCY: "" }), 4);
+  assert.equal(speechConcurrency({ VIDEO_SPEECH_CONCURRENCY: "1" }), 1);
+  assert.equal(speechConcurrency({ VIDEO_SPEECH_CONCURRENCY: "8" }), 8);
+  for (const value of ["0", "-2", "2.5", "four", "1e2"]) {
+    assert.throws(() => speechConcurrency({ VIDEO_SPEECH_CONCURRENCY: value }), (error) => error instanceof UsageError && /VIDEO_SPEECH_CONCURRENCY/.test(error.message), value);
+  }
+  const box = sandbox();
+  const server = site({ heardFor: () => "", noul: () => 1 });
+  const run = context(box, server.fetchImpl, { VIDEO_SPEECH_CONCURRENCY: "0" });
+  assert.equal(await main(["check-audio", "--slug", box.slug], run.ctx), EXIT.usage);
+  assert.match(run.out.stderr, /VIDEO_SPEECH_CONCURRENCY must be a whole number/);
+});
+
+test("sendInOrder keeps to its limit, starts in order, and never runs two jobs that share a key", async () => {
+  const tick = () => new Promise((resolve) => setImmediate(resolve));
+  let out = 0;
+  let most = 0;
+  const holding = new Map();
+  const started = [];
+  const finished = [];
+  // Items 2 and 5 share a key, as two lines with the same clip and words would.
+  const keys = ["a", "b", "x", "c", "d", "x", "e"];
+  await sendInOrder(keys, {
+    limit: () => 3,
+    prepare: (key, index) => ({
+      keys: [key],
+      run: async () => {
+        started.push(index);
+        out += 1;
+        most = Math.max(most, out);
+        assert.ok(!holding.get(key), `${key} is not out twice`);
+        holding.set(key, true);
+        for (let wait = 0; wait < 7 - index; wait++) await tick();
+        holding.set(key, false);
+        out -= 1;
+        finished.push(index);
+      },
+    }),
+  });
+  assert.equal(most, 3);
+  assert.deepEqual(started, [0, 1, 2, 3, 4, 5, 6], "started in order");
+  assert.notDeepEqual(finished, [0, 1, 2, 3, 4, 5, 6], "finished in another order");
+  assert.ok(finished.indexOf(2) < started.indexOf(5), "the later job with a key waits for the earlier to finish");
+
+  // A failing job stops the launching; the jobs out finish before the error is thrown.
+  const done = [];
+  await assert.rejects(sendInOrder([0, 1, 2, 3, 4, 5], {
+    limit: () => 2,
+    prepare: (item) => ({
+      keys: [],
+      run: async () => {
+        await tick();
+        if (item === 1) throw new Error("refused");
+        await tick();
+        done.push(item);
+      },
+    }),
+  }), /refused/);
+  assert.deepEqual(done, [0], "the job out beside the failure finished; nothing after it started");
+});
+
+/**
+ * `fetchImpl` with each paid speech request (a synthesis or a transcription) held a few turns of
+ * the event loop, the later ones fewer, so answers come back out of order (a refusal comes back
+ * at once); it counts how many are out at once, in all and per body.
+ */
+function overlapping(fetchImpl) {
+  const seen = { out: 0, most: 0, calls: 0, bodies: new Map(), mostPerBody: 0, afterBusy: [] };
+  const wrapped = async (url, init) => {
+    if (!/\/api\/video\/speech(\/transcribe)?$/.test(url)) return fetchImpl(url, init);
+    const order = seen.calls++;
+    seen.out += 1;
+    seen.most = Math.max(seen.most, seen.out);
+    const body = init.body;
+    seen.bodies.set(body, (seen.bodies.get(body) ?? 0) + 1);
+    seen.mostPerBody = Math.max(seen.mostPerBody, seen.bodies.get(body));
+    seen.watch?.(seen.out);
+    try {
+      const response = await fetchImpl(url, init);
+      if (response.ok) for (let tick = 0; tick < 8 - (order % 8); tick++) await new Promise((resolve) => setImmediate(resolve));
+      return response;
+    } finally {
+      seen.out -= 1;
+      seen.bodies.set(body, seen.bodies.get(body) - 1);
+      seen.drained?.(seen.out);
+    }
+  };
+  return { seen, fetchImpl: wrapped };
+}
+
+test("check-audio sends several transcriptions at once and leaves the cache, flags and report one at a time leaves", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const lexicon = fixtureLexicon();
+  const wrong = lines[2].id;
+  // Requests go out in narration order whatever the limit, so the count names the line.
+  const heardFor = (count) => {
+    const index = count % lines.length;
+    if (index === 1) return spokenText(lines[1]).replace(/[，。？、]/g, "");
+    if (index === 2) return spokenText(lines[2]).slice(0, 4);
+    if (index === 4) return spokenForm(lines[4], lexicon);
+    return spokenText(lines[index]);
+  };
+  const server = site({ heardFor, noul: (line) => (line.id === wrong ? 0.08 : 0.95) });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+
+  const cacheFile = path.join(box.workdir, "review", "check.json");
+  const flagsFile = path.join(box.workdir, "review", "check-flags.json");
+  const outcome = async (env, fetchImpl) => {
+    rmSync(cacheFile, { force: true });
+    rmSync(flagsFile, { force: true });
+    const run = context(box, fetchImpl, env);
+    const code = await main(["check-audio", "--slug", box.slug], run.ctx);
+    return { code, stdout: run.out.stdout, cache: readFileSync(cacheFile, "utf8"), flags: readFileSync(flagsFile, "utf8") };
+  };
+  const one = await outcome(SEQUENTIAL, server.fetchImpl);
+  assert.equal(one.code, EXIT.lint, one.stdout);
+  const fast = overlapping(server.fetchImpl);
+  const four = await outcome({ VIDEO_SPEECH_CONCURRENCY: "4" }, fast.fetchImpl);
+  assert.ok(fast.seen.most > 1 && fast.seen.most <= 4, `several transcriptions out at once, at most four (${fast.seen.most})`);
+  assert.deepEqual(four, one, "the same cache file, flags file, report and exit code");
+  assert.deepEqual(Object.keys(JSON.parse(four.cache).lines), lines.map((line) => line.id), "the cache in narration order");
+  assert.deepEqual(JSON.parse(four.flags).flags, [wrong]);
+  assert.equal(server.calls.transcribe.length, lines.length * 2, "each run bought each line once");
+  assert.equal(server.calls.judge.length, 2, "Jev is asked once a run, as before");
+  assert.deepEqual(readdirSync(path.join(box.workdir, ARTIFACTS.audio, JOURNAL_DIR)), [], "every entry released once its transcript is saved");
+});
+
+test("check-audio with several out stops on a STOP file after those finish, and the rerun buys only the lines left", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const server = site({ heardFor: (count) => spokenText(lines[count % lines.length]), noul: () => 0.95 });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+
+  // The owner drops a STOP file while the second clip is answered, with more already out.
+  const stop = path.join(box.work, "STOP");
+  const fast = overlapping(async (url, init) => {
+    const response = await server.fetchImpl(url, init);
+    if (url.endsWith("/speech/transcribe") && server.calls.transcribe.length >= 2) writeFileSync(stop, "");
+    return response;
+  });
+  const stopped = context(box, fast.fetchImpl, { VIDEO_SPEECH_CONCURRENCY: "4" });
+  assert.equal(await main(["check-audio", "--slug", box.slug], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
+  assert.match(stopped.out.stdout, /STOP found; transcripts so far are saved, rerun to continue/);
+  const bought = server.calls.transcribe.length;
+  assert.ok(bought > 2 && bought < lines.length, `the transcriptions already out finished (${bought})`);
+  const cache = JSON.parse(readFileSync(path.join(box.workdir, "review", "check.json"), "utf8"));
+  assert.deepEqual(Object.keys(cache.lines), lines.slice(0, bought).map((line) => line.id), "every transcript paid for is kept, in narration order");
+  assert.equal(server.calls.judge.length, 0);
+  assert.ok(!existsSync(path.join(box.workdir, "review", "check-flags.json")));
+  assert.deepEqual(readdirSync(path.join(box.workdir, ARTIFACTS.audio, JOURNAL_DIR)), [], "nothing is left out or unsaved");
+
+  rmSync(stop);
+  const resumed = context(box, server.fetchImpl, { VIDEO_SPEECH_CONCURRENCY: "4" });
+  assert.equal(await main(["check-audio", "--slug", box.slug], resumed.ctx), EXIT.ok, resumed.out.stdout);
+  assert.equal(server.calls.transcribe.length, lines.length, "no line is bought twice");
+  assert.match(resumed.out.stdout, new RegExp(`${lines.length - bought} clips transcribed now`));
+});
+
+test("a busy or rate-limited answer drops check-audio to one transcription at a time for the rest of the run", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const server = site({ heardFor: (count) => spokenText(lines[count % lines.length]), noul: () => 0.95 });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+
+  // The second transcription, the first of several out together, meets the routes' rate limit once.
+  let transcriptions = 0;
+  let busyAt = null;
+  const fast = overlapping(async (url, init) => {
+    if (url.endsWith("/speech/transcribe") && transcriptions++ === 1) {
+      busyAt = fast.seen.calls;
+      return Response.json({ code: "rate_limit_exceeded", detail: "too many requests" }, { status: 429, headers: { "Retry-After": "1" } });
+    }
+    return server.fetchImpl(url, init);
+  });
+  let drained = false;
+  const afterwards = [];
+  fast.seen.drained = (out) => {
+    if (busyAt !== null && out === 0) drained = true;
+  };
+  fast.seen.watch = (out) => {
+    if (drained) afterwards.push(out);
+  };
+  const run = context(box, fast.fetchImpl, { VIDEO_SPEECH_CONCURRENCY: "4" });
+  assert.equal(await main(["check-audio", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stdout + run.out.stderr);
+  assert.ok(fast.seen.most > 1, "several were out before the refusal");
+  assert.match(run.out.stdout, /the transcriber answered HTTP 429 rate_limit_exceeded: one line at a time for the rest of the run/);
+  assert.ok(afterwards.length > 0, "lines were left after the refusal");
+  assert.ok(afterwards.every((out) => out === 1), `one at a time once the requests out had finished (${afterwards})`);
+  assert.equal(server.calls.transcribe.length, lines.length, "the refused request was sent again by the client, every line once");
+  assert.match(run.out.stdout, new RegExp(`${lines.length} of ${lines.length} lines checked`));
+});
+
+test("check-audio never has the same transcription out twice, and takes one an earlier run bought from the journal", async () => {
+  const box = sandbox();
+  const ids = [...eachLine(fixture())].map(({ line }) => line.id);
+  const texts = Object.fromEntries(ids.map((id, index) => [id, ENGLISH[index]]));
+  // writeDub gives every line the same clip: lines with the same hints send the same body.
+  writeDub(box, "en", texts);
+  const server = site({ heardFor: (count) => texts[ids[count % ids.length]], noul: () => 0.9 });
+  const fast = overlapping(server.fetchImpl);
+  const run = context(box, fast.fetchImpl, { VIDEO_SPEECH_CONCURRENCY: "4" });
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--locale", "en"], run.ctx), EXIT.ok, run.out.stdout + run.out.stderr);
+  const bodies = new Set(server.calls.hints.map((hints) => JSON.stringify(hints ?? [])));
+  assert.ok(bodies.size < ids.length, "some lines send the same body");
+  assert.equal(fast.seen.mostPerBody, 1, "a body is never out twice at once, so the journal never holds this run's own request");
+  assert.equal(server.calls.transcribe.length, ids.length, "each line once, the same body again only after the earlier line was saved, as one at a time does");
+
+  // A run that stopped after its answer came back, before check.json had it: the journal holds it.
+  const narrated = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const voice = site({ heardFor: (count) => spokenText(lines[count % lines.length]), noul: () => 0.95 });
+  const synth = context(narrated, voice.fetchImpl);
+  assert.equal(await main(["tts", "--slug", narrated.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+  const journal = path.join(narrated.workdir, ARTIFACTS.audio, JOURNAL_DIR);
+  const kept = lines[3];
+  const samples = parseWav(readFileSync(path.join(narrated.workdir, ARTIFACTS.audio, `${kept.id}.wav`))).samples;
+  const wav = encodeWav(downsample(samples, 3), 16_000);
+  await openSpeechJournal(journal).wrapTranscribe(async () => spokenText(kept))({ wav, terms: hintTerms(kept) });
+  const resumed = context(narrated, voice.fetchImpl, { VIDEO_SPEECH_CONCURRENCY: "4" });
+  assert.equal(await main(["check-audio", "--slug", narrated.slug], resumed.ctx), EXIT.ok, resumed.out.stdout + resumed.out.stderr);
+  assert.equal(voice.calls.transcribe.length, lines.length - 1, "the kept transcript is not bought again");
+  assert.match(resumed.out.stdout, new RegExp(`${lines.length - 1} clips transcribed now`));
+  assert.match(resumed.out.stdout, /1 answers paid for by an earlier run came from the speech journal, not bought again/);
+  assert.deepEqual(readdirSync(journal), []);
 });

@@ -9,7 +9,9 @@
 // used: news is imported in batches, so a week of stories can share one publication minute.
 
 const SITE = "https://mokaair.com";
-const TOPICS = ["ai-news", "tech-news"];
+// "crypto" (加密貨幣與區塊鏈, under finance) joined 2026-11-02: the owner wants Tech Signal to talk money
+// news too. Its articles never discuss prices, returns or trading (news_automation/ai.py), nor does the show.
+const TOPICS = ["ai-news", "tech-news", "crypto"];
 const USER_AGENT = "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)";
 const PAGE_LIMIT = 50;
 const MAX_PAGES = 4;

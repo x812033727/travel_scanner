@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-cohost",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [0.5, 2],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調，像在跟朋友聊這幾天的新聞。"
+  },
+  "host": { "name": "Sola" },
+  "cohost": {
+    "id": "kai",
+    "name": "Kai",
+    "voice": {
+      "provider": "gemini",
+      "name": "Puck",
+      "style": "標準國語，咬字清楚，語氣好奇、反應快，像在旁邊追問的朋友。"
+    }
+  },
+  "subtitles": { "burn_in": false, "speaker_prefix": true },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "雲端帳單能設上限了？兩個人聊三分鐘｜Tech Signal",
+    "description": "本片旁白為 AI 合成語音。兩位主持人用三分鐘聊雲端帳單上限這件事。",
+    "tags": ["AI 新聞", "雲端"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "headline": "上限不保證", "tag": "Tech Signal" } },
+  "sources": [{ "title": "範例來源", "url": "https://example.com/cloud-caps", "checked_on": "2026-11-01" }],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Opening",
+      "template": "title",
+      "data": { "title": "Cloud spend caps", "subtitle": "Two hosts, one story" },
+      "lines": [
+        { "id": "c0h1", "text": "雲端帳單終於可以設上限了，聽起來是好消息吧？" },
+        { "id": "c0h2", "speaker": "kai", "text": "等一下，我聽說有些費用碰到上限也不會停，是真的嗎？", "emotion": "好奇，問句上揚" }
+      ]
+    },
+    {
+      "id": "detail",
+      "chapter": "What changed",
+      "template": "bullets",
+      "data": { "title": "What the cap covers", "items": ["Compute stops", "Storage keeps billing"] },
+      "lines": [
+        { "id": "c1d1", "text": "是真的。運算會停下來，這是第一個重點。", "reveal": 1 },
+        { "id": "c1d2", "speaker": "kai", "text": "那儲存呢？資料總不能說刪就刪吧。" },
+        { "id": "c1d3", "speaker": "narrator", "text": "對，儲存會繼續計費，這是第二個重點，也是最容易被忽略的。", "reveal": 1, "emotion": "放慢，強調" }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "Takeaway",
+      "template": "outro",
+      "data": { "title": "Next step", "cta": "Full article in the description" },
+      "lines": [
+        { "id": "c2w1", "speaker": "kai", "text": "所以上限是安全網，不是保證，對吧？", "emotion": "恍然大悟" },
+        { "id": "c2w2", "text": "沒錯。完整的整理放在說明欄的文章裡，記得訂閱這個頻道。" }
+      ]
+    }
+  ]
+}
