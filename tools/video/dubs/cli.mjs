@@ -18,7 +18,7 @@ import { measureMixArgs, mixArgs } from "../assemble/drama.mjs";
 import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
-import { isDrama, mixHash, NARRATOR, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
+import { isDialogueExplainer, isDrama, mixHash, NARRATOR, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
 import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -57,10 +57,14 @@ import {
  */
 export function spokenByCharacter(doc) {
   if (!isDrama(doc)) return null;
+  // So That's Why's dialogue explainer (owner, 2026-11-04) is dubbed with one foreign voice per
+  // character (plan.mjs dubCharacterVoice): only a speaking character without a Gemini voice stops it.
+  const dialogue = isDialogueExplainer(doc);
   for (const { scene, line } of eachLine(doc)) {
     if (line.speaker === undefined || line.speaker === null || line.speaker === NARRATOR) continue;
-    const name = (doc.characters ?? []).find((character) => character?.id === line.speaker)?.name ?? null;
-    return { scene: scene.id, line: line.id, speaker: line.speaker, name };
+    const character = (doc.characters ?? []).find((each) => each?.id === line.speaker);
+    if (dialogue && character?.voice?.provider === "gemini") continue;
+    return { scene: scene.id, line: line.id, speaker: line.speaker, name: character?.name ?? null };
   }
   return null;
 }
