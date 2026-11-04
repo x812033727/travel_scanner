@@ -13,8 +13,9 @@ import { HEADLINE, HEADLINE_SERIES, headlineRule } from "../qa/thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
 import { EPISODE_SERIES, episodeSeries, ILLUSTRATED_SERIES } from "../shorts/episode.mjs";
 import { thumbnailProblems } from "../templates/templates.mjs";
-import { EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isCuteExplainer, isExplainer, isExplainerPreset, isKnowledgeLongform, keyframeKey, lookHash, needsMinimumLength, pictureVarietyProblems, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
+import { DIALOGUE_EXPLAINER_PRESETS, EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isCuteExplainer, isDialogueExplainer, isExplainer, isExplainerPreset, isKnowledgeLongform, keyframeKey, lookHash, needsMinimumLength, pictureVarietyProblems, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
 import { dramaFixture, explainerFixture, storyFixture } from "./fixtures/load.mjs";
+import { defaultIntroAt, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, narratedLong } from "./branding.mjs";
 import { BRIEF_SECTIONS_EXPLAINER, briefSectionsFor, lintVideo } from "./lint.mjs";
 import { validateVideo } from "./schema.mjs";
 import { visualHash } from "./timeline.mjs";
@@ -94,7 +95,7 @@ test("flat-explainer is what it was: preset bytes, look hash, visual hash, compo
   assert.equal(key("1K"), "7c56c03a202a1cc8");
 });
 
-test("each of the three presets is held to the explainer's rules: no cast, stills only, the eight-minute floor, the question's brief", () => {
+test("each of the three presets is held to the explainer's rules: no cast but the dialogue look's, stills only, the eight-minute floor, the question's brief", () => {
   const baseline = lintVideo(explainerFixture());
   for (const preset of EXPLAINER_PRESETS) {
     const doc = inPreset(preset);
@@ -107,8 +108,12 @@ test("each of the three presets is held to the explainer's rules: no cast, still
     assert.equal(briefSectionsFor("drama", preset), BRIEF_SECTIONS_EXPLAINER, preset);
 
     const cast = validateVideo({ ...doc, characters: dramaFixture().characters.slice(0, 1) }).filter((error) => error.path === "characters");
-    assert.equal(cast.length, 1, preset);
-    assert.equal(cast[0].message, `an explainer (look preset "${preset}") has no characters: the narrator tells it`);
+    if (DIALOGUE_EXPLAINER_PRESETS.includes(preset)) {
+      assert.deepEqual(cast, [], preset);
+    } else {
+      assert.equal(cast.length, 1, preset);
+      assert.equal(cast[0].message, `an explainer (look preset "${preset}") has no characters: the narrator tells it`);
+    }
 
     const clip = structuredClone(doc);
     const index = clip.scenes.findIndex((scene) => scene.template === "shot");
@@ -198,4 +203,18 @@ test("the tools, the API and the web name the same explainer family", () => {
   assert.deepEqual(names(apiModels[1]), ["cute-cartoon", "image-01", "cute-mystery", "image-01"]);
   assert.deepEqual(names(webModels[1]), names(apiModels[1]));
   for (const [index, name] of names(apiModels[1]).entries()) if (index % 2 === 0) assert.ok(isExplainerPreset(name) && name !== "flat-explainer", `${name}: a cute explainer preset`);
+});
+
+test("So That's Why's dialogue explainer keeps the explainer's stills and floor, takes a cast, and opens on the intro", () => {
+  const doc = { ...inPreset("cute-cartoon"), characters: dramaFixture().characters.slice(0, 1) };
+  assert.deepEqual(validateVideo(doc).filter((error) => error.path === "characters"), []);
+  assert.equal(isExplainer(doc), true);
+  assert.equal(isDialogueExplainer(doc), true);
+  assert.equal(needsMinimumLength(doc), true);
+  assert.equal(narratedLong(doc), false);
+  assert.equal(defaultIntroAt(doc), INTRO_AT_START);
+  assert.equal(isDialogueExplainer(inPreset("cute-cartoon")), false, "no cast: the narrator tells it");
+  assert.equal(defaultIntroAt(inPreset("cute-cartoon")), INTRO_AFTER_FIRST_CHAPTER);
+  const mystery = { ...inPreset("cute-mystery"), characters: dramaFixture().characters.slice(0, 1) };
+  assert.equal(isDialogueExplainer(mystery), false);
 });

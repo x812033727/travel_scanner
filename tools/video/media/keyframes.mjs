@@ -14,7 +14,7 @@ import { approvalState } from "../core/approvals.mjs";
 import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isCuteExplainer, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
-import { visualHash } from "../core/timeline.mjs";
+import { pictureHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { EXHAUSTED_CODES, MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
@@ -480,7 +480,7 @@ export async function run(command, args, ctx) {
   // A drama's manifest is bound to the whole picture; illustrated slides bind theirs to the shots
   // alone (id, prompt, camera), so a card's text can change without every picture being judged again.
   const slides = illustrated(doc);
-  const binding = slides ? { pictures_hash: picturesHash(doc) } : { visual_hash: visualHash(doc) };
+  const binding = slides ? { pictures_hash: picturesHash(doc) } : { visual_hash: pictureHash(doc) };
   const bound = (manifest) => manifest && Object.entries(binding).every(([key, value]) => manifest[key] === value);
   const format = slides ? doc.format : null;
   if (values["accept-best"]) {

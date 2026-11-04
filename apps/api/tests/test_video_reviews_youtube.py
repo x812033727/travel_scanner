@@ -1021,11 +1021,13 @@ async def test_a_week_after_the_upload_only_the_mp4_leaves_the_store(
 
 
 @pytest.mark.asyncio
-async def test_a_video_done_with_loses_every_file_here_at_once_once_drive_holds_it(
+async def test_a_video_done_with_for_a_week_loses_every_file_here_at_once(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     """Owner, 2026-11-03: on YouTube, in Drive, languages decided and every chosen part made or
-    skipped, a dub uploaded in Studio: the host keeps nothing of it, with no week to wait."""
+    skipped, a dub uploaded in Studio: the host keeps nothing of it. Owner, 2026-11-04: not the
+    moment that holds but PREVIEW_RETENTION after, since the owner approves the languages batch
+    before downloading the package that carries the dubs to Studio."""
     store = _store(tmp_path)
     final = _file(store, "v", b"final cut")
     caption = _file(store, "v", b"1\n00:00:00,000 --> 00:00:01,000\nhi\n")
@@ -1035,7 +1037,7 @@ async def test_a_video_done_with_loses_every_file_here_at_once_once_drive_holds_
         youtube_video_id=VIDEO_ID,
         locales={"en": {"metadata": False, "captions": True, "dub": True}},
         locales_decided_at=now - timedelta(days=1),
-        backup={"state": "done"},
+        backup={"state": "done", "checked_at": (now - timedelta(hours=2)).isoformat()},
     )
     confirmed = VideoReview(
         gate="publish",
@@ -1077,15 +1079,28 @@ async def test_a_video_done_with_loses_every_file_here_at_once_once_drive_holds_
     reviews[1] = batch("approved")
     project.backup = {"state": "pending"}
     assert await admin_service.prune_published_previews(session, store, now) == {}
-    project.backup = {"state": "done"}
+    project.backup = {"state": "done", "checked_at": (now - timedelta(hours=2)).isoformat()}
     # A dub asked for again still needs its files.
     project.dub_retries = {"en": {"status": "requested"}}
     assert await admin_service.prune_published_previews(session, store, now) == {}
     project.dub_retries = {}
-    removed = await admin_service.prune_published_previews(session, store, now)
+    # Done with, but only just: the batch was approved at ``now`` and the owner has yet to
+    # download the package (daily-ai-20261103 lost its files 20 minutes after its backup).
+    assert await admin_service.prune_published_previews(session, store, now) == {}
+    a_day_short = now + admin_service.PREVIEW_RETENTION - timedelta(days=1)
+    assert await admin_service.prune_published_previews(session, store, a_day_short) == {}
+    # A backup report with no readable time keeps everything.
+    week = now + admin_service.PREVIEW_RETENTION
+    project.backup = {"state": "done"}
+    assert await admin_service.prune_published_previews(session, store, week) == {}
+    # A backup checked again later restarts the week.
+    project.backup = {"state": "done", "checked_at": (now + timedelta(days=3)).isoformat()}
+    assert await admin_service.prune_published_previews(session, store, week) == {}
+    project.backup = {"state": "done", "checked_at": (now - timedelta(hours=2)).isoformat()}
+    removed = await admin_service.prune_published_previews(session, store, week)
     assert removed == {"v": sorted([final, caption, dub])}
     assert not store.holds_files("v")
-    assert await admin_service.prune_published_previews(session, store, now) == {}
+    assert await admin_service.prune_published_previews(session, store, week) == {}
 
 
 @pytest.mark.asyncio
