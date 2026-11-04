@@ -46,3 +46,10 @@
 - **發音檢查第 3 次**：141 句剩 2 句標記（p038「十億」轉寫成「十一」、p109「引擎」轉寫成「熱情」），可能是轉寫自己的誤聽；不再改稿，交站主聽 3:28 與 9:34 判斷。旁白 v2 mp3 已給站主。
 - **成片準備**：劇本與旁白依站主「聽起來ok」核准；`branding --pull --series sothatswhy` 裝好系列片頭（11.9 秒）與片尾；配樂 Lyria 回 177 秒，用 `music --loop` 重複 5 次墊滿 12 分鐘（不另收費）；render 完成；assemble 跑中。累計 US$6.84。
 - **成片**：final.mp4 22,860 格（12 分 42 秒含片頭片尾），-14 LUFS，配樂 -33 LUFS；系列片頭在最前面、燒錄字幕；zh-TW CC 150 句。qa 11 項過 10 項，links 9／32 在容器裡 403（NOAA、USGS 等擋程式請求，查核代理用瀏覽器開得到）。自己抽格看到：tower-greying 的雲有臉、縮圖的小問是側馬尾。預覽給站主。累計 US$6.84。
+- **成片獨立評分**（[`review/scorecard-final.md`](review/scorecard-final.md)）：32/60 不過。上架阻擋四項已修：
+  - 雲上的臉（tower-greying、cauliflower-grow、cumulonimbus）：大塊圓雲會被畫風裡的 chibi 字樣畫上臉，改成畫面裡有小問、雲是背景；「cauliflower」會畫出蔬菜本身，改寫成 round bumpy lumps；小問站在欄杆上不安全，改成在窗內。
+  - 縮圖底圖 kid-elephants 像男孩：重畫成鮑伯頭女孩。
+  - 數字卡斷字（1 立方公／里）：值改短（1／0.5 克／500 噸），雨滴卡「像漢堡」。
+  - 配樂接縫的靜音：Lyria 檔尾 2.3 秒幾乎無聲，loop 每 3 分鐘斷一次。改用由同一個付費檔做的 14 分鐘配樂床（去尾、3 秒交叉淡入淡出，`_music/sothatswhy-p02-bed.m4a`，sha256 5416…b20c），`video.json` 改用 `music.track`。
+  - 可以之後再改（不擋上架）：動態偏低（mean_difference 1.9–2.2，目標 ≥ 4.5，是合成工具的運鏡方式）、靜音 4–5%、語速 3.9 字／秒、片頭前 3 秒是系列動畫、小問的聲音偏少女、幾張角色走樣。
+  - 累計 US$7.05。重新合成中。
