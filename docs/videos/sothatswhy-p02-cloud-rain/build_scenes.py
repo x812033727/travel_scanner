@@ -568,8 +568,9 @@ assert EYES <= {sc["id"] for sc in S}
 for sc in S:
     if sc["id"] == "chief-answer-one":
         sc["data"]["prompt"] = "Head-and-shoulders close-up of the chief giving a satisfied nod with her eyes gently closed and her arms folded, a plain wall, soft daylight, " + CHIEFDESC
-    if sc["id"] == "kid-million":
-        sc["data"]["prompt"] = "Head-and-shoulders close-up of the girl with her mouth wide open in shock, eyes squeezed shut and both hands on her cheeks, under a shop arcade, soft overcast light, " + KIDDESC
+    if sc["id"] == "kid-million":  # the notebook kept coming back: no character at all
+        sc["data"]["prompt"] = "Close-up of one big shiny raindrop in the middle of a pale sky, surrounded by a huge swarm of countless tiny cloud droplets like fine dust, flat 2D cartoon with clean dark outlines, soft overcast light"
+        sc["data"]["characters"] = []
 
 for sc in S:
     lines = []
