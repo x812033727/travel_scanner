@@ -55,7 +55,7 @@
   - 第 31–32 集：整份組片資料從分支 `transfer/zt-e031-e032-media` 補進 `_組片資料\e031`、`e032`（剪接設定、`cut/final.log`、`cut/dub-*.log`、舊版配樂、第 31 集小樣首格、逐句配音），md5 核過；網站備份的片段跟分支逐檔一致。
   - 第 33–39 集：配樂就是 repo `production/assets/music/` 那組（雜湊一致）；首格本來就沒有（直接用參考圖生片段）。`final.log` 與 `dub-*.log` 被根目錄 `.gitignore` 的 `*.log` 擋在 #2017 外，由 PR #2018 補進 `colab/runs/eNNN/cut/`，也複製進 `_組片資料\e03N\cut`，md5 核過；final.log 總長跟成片差不到 0.12 秒。
   - 第 43–48 集：`final.log`、`dub-*.log`、配樂已推到分支 `transfer/zt-e043-e048-cutlogs`（0f37c2657，76 檔），也複製進 `_組片資料\e04N\cut`、`music`，md5 核過。
-  - **還缺**：第 33–39、43–48 集缺逐句配音（`audio/<台詞 id>.wav` 與 `audio-<語言>/`，`assemble-v4.mjs` 重組時讀的檔）：網站備份只有混好的整軌（33–39 的 `recordings/<語言>.wav`、43–48 只有成片與 `dubs/`，連中文人聲軌都沒有），重剪時沒辦法逐句挪動台詞。2026-11-05 已請兩個雲端 session 推到 `transfer/zt-e033-e039-audio`、`transfer/zt-e043-e048-audio`（不合併）。其餘都核過：第 1–48 集 `video.json`／`overlays.json`／剪接設定都在 repo（43–48 剪接設定還在分支），第 33–48 集 final.log 用到的每個片段雲端 `clips/` 都有。
+  - 逐句配音：第 33–39 集在網站備份的 `recordings/` 裡（把每句串成一條 wav，`manifest.json` 記著每句的位置與雜湊，用 `node tools/video/import/recordings.mjs unpack <recordings> <工作資料夾>` 拆回 `audio/`、`audio-<語言>/`；33–34 已換成 #2020 的 v2 版，多了 `segments-v4/` 對時後的版本）。2026-11-05 七集都實際拆過，雜湊全過、中文句數跟 video.json 一致。第 43–48 集從分支 `transfer/zt-e043-e048-audio`（3b2758a55）複製進 `_組片資料\e04Nudio*`，5,100 檔 md5 核過、句數一致。**第 1–48 集組片資料到此齊全。**
 - 第一季 60 集，目前能合併的是 1–48 集（1–30 集約 46 分鐘、31–48 集約 30 分鐘，合計約 77 分鐘，剪掉片名卡與重複鏡後會再短幾分鐘）；49–60 集還沒拍；站主 2026-11-05 決定合併範圍是第 1–49 集，第 49 集拍完再合併。
 
 ## 第 1 集（113.5 s，50 鏡，2026-11-04 審）
