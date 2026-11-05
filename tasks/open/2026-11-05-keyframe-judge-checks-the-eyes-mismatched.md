@@ -43,3 +43,11 @@ that the judge has to look for it.
   2026-10-25 fixprompts, 2026-10-25 manga-blocked), all weeks without activity.
 - keyframes.mjs says a reworded question has to be measured on recorded takes again; this
   episode's re-judge is that measurement.
+- Rewording a question changes every verdict's stamp (`stampOf` in keyframes.mjs keys the
+  verdict by the question asked), so the next `keyframes` run re-judges every drawn shot and
+  redraws whatever fails, including pictures the owner already approved. P05's first run after
+  the change re-judged from the top and redrew 3 approved shots before it was stopped. For
+  episodes already approved, the 20 (P05) and 8 (P02) eye shots were redrawn with the old
+  question checked out for that run only, and their eyes checked by an independent agent.
+  Open question for a follow-up: should a rubric change keep standing verdicts of approved
+  storyboards and only judge new takes with it?
