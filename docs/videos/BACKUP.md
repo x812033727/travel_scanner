@@ -151,8 +151,8 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
   `thumbnails/<語言>.jpg`；`description.<語言>.txt` 放進 `descriptions/<語言>.txt`。上傳包
   裡沒有縮圖時，用工作資料夾根目錄的 `thumbnail.jpg`。Shorts 的上傳包是 `final.mp4`、
   `zh-TW.srt`、`cover.png`、`titles.json`。
-- **完整**：基本的全部，加上 `clips/`、`keyframes/`、`characters/`、`timeline.json`、
-  `narration.wav`；系列共用的 `_series/<系列>/characters/` 放在系列資料夾的 `_共用/`。
+- **完整**：基本的全部，加上 `clips/`、`keyframes/`、`characters/`、`recut/`（匯入漫劇的組片資料，見下面
+  「匯入的影片」第 6 步）、`timeline.json`、`narration.wav`；系列共用的 `_series/<系列>/characters/` 放在系列資料夾的 `_共用/`。
   另外照站主勾的語言（`languages.json`）補上傳包沒有的東西：勾了配音、工人錄出音軌
   （`dubs/<語言>.m4a`／`.mp3`／`.wav`）卻沒進上傳包的（被放棄的，或還沒核准的），放進
   `dubs/未進上傳包/<語言>.m4a`；勾了字幕（或配音，配音一定帶字幕）、工作資料夾有
@@ -266,6 +266,37 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
    其中只有備份讀的檔（`kf_`、`clip_`、`recording_`、`keyframes_manifest`、`full_narration`、`full_timeline`、
    `recordings_manifest`）加進那筆已核准的審核，條件是其他檔與站主核准的一模一樣；核准、payload 都不動，不必重新核准。
    網站給 worker 的 `review_package` 帶上兩筆審核的檔數（`files`），檔數變了 worker 就再抓一次。
+
+6. **組片資料也跟著走**（2026-11-05，票 `2026-11-04-zhong-tian-an-imported-drama-episode`）：站主審完種田第一季要整季
+   重剪時，發現第 31–48 集的剪接紀錄、配樂、剪接設定都只在雲端工作資料夾，有幾集是事後從別的 session 撈回來的。站主：
+   「以後備份也要一起備份」。`import --publish` 現在從錄音同一個工作資料夾（`--clips` 的上一層或 `--recordings`）再帶
+   （[`build.mjs`](../../tools/video/import/build.mjs)）：
+
+   | 工作資料夾裡 | 角色 | worker 放到 | 是什麼 |
+   | --- | --- | --- | --- |
+   | `cut/*.log` | `build_log-<名稱>`（text/plain） | `recut/cut/<名稱>.log` | `final.log`（每鏡用哪個 take、起點、長度、停格）、`dub-<語言>.log`（每句配音長度與加速倍率） |
+   | `music/*.mp3`、`.wav` | `build_music-<名稱>` | `recut/music/<名稱>.<副檔名>` | 這集用的配樂 cue；重新生成會是別首 |
+   | `edit*.json`，或 `--edit FILE` | `build_edit-<名稱>`（application/json） | `recut/<名稱>.json` | 剪接設定；在雲端通常是 repo 的 `hailuo/edit-dh-eNNN.json`，要用 `--edit` 指給它 |
+   | `first-frames/*.png`、`.jpg` | `kf_<名稱>` | `keyframes/<名稱>.<副檔名>` | 付費畫的首格（`sNN-tK.png`）；直接用參考圖生片段的集數沒有 |
+
+   名稱是 1–28 個字母、數字、`-`、`_`（角色最長 40 字）。網站另外計數：`build_` 最多 40 個，只收在上架確認這一關
+   （`apps/api/app/video_reviews/clips.py` `MAX_BUILD_FILES`）。`metadata.json` 記一個總雜湊 `build_sha256`，所以補送是一筆
+   新的上架確認。工作資料夾少了其中哪樣，工具照送，但會印出「build data not found (not backed up)」並寫在結果裡，送之前看一眼。
+   放在 `recut/` 而不是 `build/`：`build/` 是一般流程可以重算的中間檔，任何層級都不備份。
+
+   重剪一集要的檔、在雲端的位置：片段 `clips/`、逐句配音 `recordings/`（用 `recordings.mjs unpack` 拆回 `audio/`、
+   `audio-<語言>/`，2026-11-05 起還有 `segments-v4/` 對時後的版本）、組片資料 `recut/`、首格 `keyframes/`；稿子
+   （`video.json`、`overlays.json`）與剪接設定在 repo。
+
+7. **系列共用的參考圖與音效**：`_series/<系列>/` 的 `refs-dh/`、`refs/`（角色、服裝、場景參考圖）與 `sfx/`（合成音效庫，
+   雨聲水聲是隨機的，重做會不一樣）不屬於哪一集，上傳包不帶，主機也沒有。在存著它們的那台電腦上、每次新增或改了參考圖之後跑：
+
+   ```bash
+   node tools/video/import/series-backup.mjs <VIDEO_WORKDIR>/_series/zhong-tian-qu-qi "G:/我的雲端硬碟/AI/備份/drama/zhong-tian-qu-qi/_series"
+   ```
+
+   只複製不一樣的檔（先比大小再比 sha256），雲端多的檔不刪（換掉的參考圖留著舊版），並在目的地寫 `SHA256SUMS`
+   （[`series-backup.mjs`](../../tools/video/import/series-backup.mjs)）。
 
 只動自己放的東西：有 `auto.json` 的（worker 做的）和沒有 `review-package.json` 卻已經存在的
 資料夾（手動做的）一律不碰；換版後新的上架確認核准時，只替換上一包放的檔案，舊檔照第 4 步留在

@@ -86,7 +86,13 @@ test("each package role has its place in the work directory, as package lays it 
   assert.equal(placeOf("keyframes_manifest", "application/json"), "keyframes/manifest.json");
   assert.equal(placeOf("full_narration", "audio/wav"), "narration.wav");
   assert.equal(placeOf("full_timeline", "application/json"), "timeline.json");
-  for (const [role, type] of [["recording_../x", "audio/wav"], ["recording_en", "audio/mp4"], ["recordings_manifest", "text/plain"], ["clip_s01-t1", "image/png"], ["clip_../x", "video/mp4"], ["dub_unchecked_en", "video/mp4"], ["dub_unchecked_../x", "audio/mp4"], ["dub_../x", "audio/mp4"], ["captions_../x", "text/plain"], ["kf_../x", "image/png"], ["kf_ch1", "video/mp4"], ["full_narration", "audio/mp4"], ["full_timeline", "text/plain"], ["keyframes_manifest", "image/png"], ["evidence_qa", "application/json"], ["preview", "video/mp4"], ["final", "image/png"]]) {
+  // An imported drama's build data (tools/video/import/build.mjs), under recut/.
+  assert.equal(placeOf("build_log-final", "text/plain"), "recut/cut/final.log");
+  assert.equal(placeOf("build_log-dub-en", "text/plain"), "recut/cut/dub-en.log");
+  assert.equal(placeOf("build_music-cue-comedy", "audio/mpeg"), "recut/music/cue-comedy.mp3");
+  assert.equal(placeOf("build_music-cue-rain", "audio/wav"), "recut/music/cue-rain.wav");
+  assert.equal(placeOf("build_edit-edit-dh-e049", "application/json"), "recut/edit-dh-e049.json");
+  for (const [role, type] of [["build_log-final", "application/json"], ["build_music-cue", "audio/mp4"], ["build_edit-x", "text/plain"], ["build_log-../x", "text/plain"], ["build_log-a.b", "text/plain"], ["build_other-x", "text/plain"], ["recording_../x", "audio/wav"], ["recording_en", "audio/mp4"], ["recordings_manifest", "text/plain"], ["clip_s01-t1", "image/png"], ["clip_../x", "video/mp4"], ["dub_unchecked_en", "video/mp4"], ["dub_unchecked_../x", "audio/mp4"], ["dub_../x", "audio/mp4"], ["captions_../x", "text/plain"], ["kf_../x", "image/png"], ["kf_ch1", "video/mp4"], ["full_narration", "audio/mp4"], ["full_timeline", "text/plain"], ["keyframes_manifest", "image/png"], ["evidence_qa", "application/json"], ["preview", "video/mp4"], ["final", "image/png"]]) {
     assert.equal(placeOf(role, type), null, `${role} ${type}`);
   }
 });

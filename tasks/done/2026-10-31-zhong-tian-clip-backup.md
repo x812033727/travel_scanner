@@ -1,13 +1,13 @@
 ---
 id: 2026-10-31-zhong-tian-clip-backup
 title: Zhong-tian: back up the per-shot 1080p clips of e031+ so a re-cut or season 2 does not need a re-render
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5.5-zt-e033
 claimed_at: 2026-10-31T10:45:29Z
 created_at: 2026-10-31T09:25:51Z
-completed_at:
+completed_at: 2026-11-05T03:57:43Z
 branch:
 depends_on: []
 scope:
@@ -38,9 +38,9 @@ a re-cut, a Short or a compilation would need stages 1-3 again (4-6 G4 hours per
 
 ## Definition of done
 
-- [ ] Every imported Colab episode's `clips/sNN-t1.mp4` ends up under the same `AI/備份/<series>/<episode>/clips/`
+- [x] Every imported Colab episode's `clips/sNN-t1.mp4` ends up under the same `AI/備份/<series>/<episode>/clips/`
       folder the host already fills, checked by the backup's own `rclone check`.
-- [ ] `production/README.md` section 2 no longer lists the clips as unbacked.
+- [x] `production/README.md` section 2 no longer lists the clips as unbacked.
 
 ## Steps
 
@@ -50,8 +50,8 @@ a re-cut, a Short or a compilation would need stages 1-3 again (4-6 G4 hours per
 - [x] `import --publish` carries `<from>/clips` or `--clips DIR` as `clip_<shot>` files; the API takes
       them on the publish gate beside its 48 files; the worker fetches an imported video's approved
       package into `video_work/<slug>/` before the backup; BACKUP.md §匯入的影片.
-- [ ] Deploy (API + web + video-worker image), then watch the first imported episode reach Drive with `clips/`.
-- [ ] Back-fill e033-e039 while their workdirs still exist.
+- [x] Deploy (API + web + video-worker image), then watch the first imported episode reach Drive with `clips/`.
+- [x] Back-fill e033-e039 while their workdirs still exist.
 
 ## How to verify
 
@@ -98,4 +98,7 @@ a re-cut, a Short or a compilation would need stages 1-3 again (4-6 G4 hours per
 - The materialised folders are never tidied (tidy only acts on `auto.json` folders): about the cut plus
   300 MB of clips per episode stays on the host disk. A follow-up should let the tidy clear them once
   the backup is done.
-
+- **Closed 2026-11-05 (claude-opus-5.5-season-review, taking over a stale claim).** Checked on Drive: every shot every
+  `final.log` of e031–e048 names is in `AI/備份/drama/zhong-tian-qu-qi/zhong-tian-qu-qi-eNNN/clips/` (0 missing),
+  and e031/e032's clips match `transfer/zt-e031-e032-media` byte for byte. The build data a re-cut also needs
+  continues in `2026-11-04-zhong-tian-an-imported-drama-episode`.

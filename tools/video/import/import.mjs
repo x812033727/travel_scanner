@@ -22,7 +22,9 @@
 // add tags, category_id, made_for_kids and contains_synthetic_media (with disclosure_reason).
 // The package also carries the episode's per-shot clips, every <name>.mp4 in <from>/clips/ or
 // `--clips DIR`, as `clip_<name>`: the host's worker fetches the approved package into
-// video_work/<slug>/ and the full-tier Drive backup keeps clips/ (docs/videos/BACKUP.md).
+// video_work/<slug>/ and the full-tier Drive backup keeps clips/ (docs/videos/BACKUP.md). So does
+// the episode's build data (build.mjs): the cut and dub logs, the music cues, the edit table and the
+// first frames a re-cut needs.
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
@@ -35,6 +37,7 @@ import { FPS, formatClock } from "../core/timeline.mjs";
 import { previewArgs } from "../review/sync.mjs";
 import { upload } from "../shorts/push.mjs";
 import { siteClient } from "../shorts/site.mjs";
+import { buildDigest, buildFiles, missingBuild } from "./build.mjs";
 import { packRecordings } from "./recordings.mjs";
 
 // The site's video slug (apps/api/app/video_reviews/storage.py) and article slug (schemas.py).
@@ -433,9 +436,12 @@ const localization = (bytes) => {
  * the episode's line-by-line recordings (recordings.mjs: `recordings`, else the clips folder's
  * parent, <from> itself for <from>/clips, when it has audio/ or audio-<l>/), as recording_<locale> wavs and a
  * recordings_manifest; metadata.json names the manifest, so a package sent again with them is a new review.
- * Returns { slug, status, locales, skipped, clips, recordings }: how many clips and recording files were sent.
+ * And its build data (build.mjs, from the same workdir): cut/*.log, music/, first-frames/ and the edit
+ * table (an edit*.json there, or `edit`), as build_* files and kf_<name> keyframes; metadata.json names
+ * them by one digest. What a drama episode should have and lacks is logged, never refused.
+ * Returns { slug, status, locales, skipped, clips, recordings, build, missing }: what was sent and what was not found.
  */
-export async function importPublish({ from, workdir, clips: clipsDir = null, recordings: recordingsDir = null, env = process.env, home, client = null, probe = probeSeconds, log = () => {} }) {
+export async function importPublish({ from, workdir, clips: clipsDir = null, recordings: recordingsDir = null, edit = null, env = process.env, home, client = null, probe = probeSeconds, log = () => {} }) {
   const final = path.join(from, "final.mp4");
   const metaFile = path.join(from, "meta.json");
   for (const file of [final, metaFile]) if (!existsSync(file)) throw new UsageError(`${from} has no ${path.basename(file)}`);
@@ -455,6 +461,8 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, rec
   const packed = episodeDir && !problems.length ? packRecordings(episodeDir, path.join(resolveWorkdir({ flag: workdir, env, slug: meta.slug, home }), "review", "recordings")) : { files: [], problems: [] };
   problems.push(...packed.problems.map((problem) => `recordings: ${problem}`));
   if (recordingsDir !== null && !packed.files.length && !packed.problems.length) problems.push(`--recordings ${recordingsDir} has no audio/ or audio-<locale>/ with wav files`);
+  const build = buildFiles(episodeDir, { edit });
+  problems.push(...build.problems.map((problem) => `build data: ${problem}`));
   if (problems.length) throw new UsageError(`${meta.slug}: the upload package cannot be made:\n  ${problems.join("\n  ")}`);
 
   const site = client ?? siteClient({ env, home });
@@ -517,6 +525,8 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, rec
     ...(batch?.id ? { languages_review_id: String(batch.id) } : {}),
     // The recordings this package carries for the Drive backup (recordings.mjs), by their manifest.
     ...(packed.files.length ? { recordings_sha256: await sha256File(packed.files[0].file) } : {}),
+    // And its build data (build.mjs): one digest over the logs, cues, edit table and first frames.
+    ...(build.files.length || build.firstFrames.length ? { build_sha256: buildDigest([...build.files, ...build.firstFrames]) } : {}),
     // The site checks the package against the panel as it is now (language_package.py compose).
     ...(known.locales_decided_at || Object.keys(chosen).length ? { language_choice: chosen } : {}),
     ...(Object.keys(skipped.captions).length ? { skipped_caption_locales: skipped.captions } : {}),
@@ -532,6 +542,7 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, rec
   const settled = (known.reviews ?? []).find((review) => review.gate === "publish" && !review.subject && review.status === "approved" && review.content_sha256 === metadataSha256);
   const carried = settled ? [] : clips;
   const recorded = settled ? [] : packed.files;
+  const built = settled ? [] : [...build.files, ...build.firstFrames];
   if (settled && clips.length && !(settled.files ?? []).some((each) => String(each.role).startsWith("clip_"))) {
     log(`${meta.slug}: this upload package is already approved without clips; the ${clips.length} clip(s) are not sent (docs/videos/BACKUP.md §匯入的影片)`);
   }
@@ -552,6 +563,11 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, rec
   for (const item of recorded) sent.push({ ...(await upload(site, meta.slug, item.file, item.role)), content_type: item.content_type });
   const fittedSent = recorded.filter((item) => item.role.startsWith("recording_fit-")).length;
   if (recorded.length) log(`${meta.slug}: ${recorded.length - 1 - fittedSent} locale(s) of line recordings${fittedSent ? ` and ${fittedSent} fitted folder(s)` : ""} sent with the package for the Drive backup`);
+  for (const item of built) sent.push({ ...(await upload(site, meta.slug, item.file, item.role)), content_type: item.content_type });
+  if (built.length) log(`${meta.slug}: build data sent with the package for the Drive backup: ${build.counts.logs} log(s), ${build.counts.music} music cue(s), ${build.counts.edit} edit table(s), ${build.counts.firstFrames} first frame(s)`);
+  // A drama episode (one with clips) whose workdir lacks part of its build data: said, not refused.
+  const lacking = clips.length && !settled ? missingBuild(build.counts) : [];
+  if (lacking.length) log(`${meta.slug}: no ${lacking.join(", ")} in ${episodeDir}; the Drive backup will not have them (docs/videos/BACKUP.md §匯入的影片)`);
   const review = await site.submit(meta.slug, {
     gate: "publish",
     content_sha256: sent[0].sha256,
@@ -566,11 +582,12 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, rec
       checklist: [],
       ...(carried.length ? { clips: carried.length } : {}),
       ...(recorded.length ? { recordings: recorded.length - 1 } : {}),
+      ...(built.length ? { build: { ...build.counts } } : {}),
       imported: true,
       hand_pushed: true,
     },
     files: sent,
   });
   log(`${meta.slug}: upload package ${review.status} (zh-TW${Object.keys(localizations).length ? `, ${Object.keys(localizations).join(", ")}` : ""})`);
-  return { slug: meta.slug, status: review.status, locales: Object.keys(localizations), skipped, clips: carried.length, recordings: recorded.length };
+  return { slug: meta.slug, status: review.status, locales: Object.keys(localizations), skipped, clips: carried.length, recordings: recorded.length, build: built.length ? { ...build.counts } : null, missing: lacking };
 }
