@@ -114,6 +114,11 @@
       "setup": "qvote",
       "payoff": "avote",
       "what": "Personal Finance 的留言投票 A 或 B"
+    },
+    {
+      "setup": "hok6",
+      "payoff": "rjbl",
+      "what": "承諾只涵蓋 OpenAI 自有自營的園區；夥伴蓋的算不算"
     }
   ],
   "scenes": [
@@ -144,9 +149,9 @@
       "id": "mo-hi",
       "template": "big",
       "data": {
-        "kicker": "Nov 5, 2026",
-        "text": "Three headlines,\n**three jokes**",
-        "key": "Yesterday's tech news"
+        "kicker": "Today's main course",
+        "text": "OpenAI pledges\n**to pay its power bill**",
+        "key": "Today: OpenAI's pledge"
       },
       "lines": [
         {
@@ -160,8 +165,34 @@
           "emotion": "輕鬆、帶笑"
         },
         {
+          "id": "a93h",
+          "text": "今天的主菜，是 OpenAI 的一個承諾：它說以後自己那些放滿電腦的資料中心，電費自己付。"
+        }
+      ]
+    },
+    {
+      "id": "mo-q",
+      "template": "big",
+      "data": {
+        "kicker": "Today's question",
+        "text": "It says it pays.\n**Who checks?**",
+        "key": "Who checks the promise?"
+      },
+      "lines": [
+        {
+          "id": "qwho",
+          "text": "聽起來很好，可是誰來確定它真的付了？",
+          "speaker": "kai",
+          "emotion": "替觀眾追問，問句停在半空"
+        },
+        {
+          "id": "p94m",
+          "text": "這個問題，我們留到主菜。",
+          "emotion": "冷淡、慢半拍"
+        },
+        {
           "id": "i3ti",
-          "text": "我們先看昨天，11 月 5 日的三則科技頭條。",
+          "text": "先看昨天，11 月 5 日的另外兩則科技新聞。",
           "emotion": "切換段落，輕快"
         }
       ]
@@ -233,13 +264,13 @@
       "lines": [
         {
           "id": "8rwn",
-          "text": "那它會不會自己亂跑？",
+          "text": "一個會寫攻擊方法的 AI，我猜它自己也會亂跑。",
           "speaker": "kai",
-          "emotion": "好奇，問句上揚"
+          "emotion": "自以為很懂"
         },
         {
           "id": "7ivp",
-          "text": "據 The Verge，OpenAI 自己的測試說，它擅自闖進其他系統的比例低於 1%。",
+          "text": "據 The Verge，在 OpenAI 自己的測試裡，不到 1% 的時候，它會擅自闖進其他系統。",
           "reveal": 1
         },
         {
@@ -285,8 +316,8 @@
           "text": "這個測試，是照著之前的一次真實事件設計的。"
         },
         {
-          "id": "scws",
-          "text": "那次，OpenAI 的 AI 代理為了找出答案，闖進了 Hugging Face。"
+          "id": "uohu",
+          "text": "AI 代理，就是會自己一步一步做事的 AI 程式。"
         }
       ]
     },
@@ -294,18 +325,18 @@
       "id": "cy-terms",
       "template": "big",
       "data": {
-        "kicker": "Two terms",
-        "text": "Agent: AI that acts.\n**Hugging Face: AI hub**",
-        "key": "Agent? Hugging Face?"
+        "kicker": "The incident",
+        "text": "Its agents got into\n**Hugging Face**",
+        "key": "Hugging Face, breached"
       },
       "lines": [
         {
-          "id": "uohu",
-          "text": "AI 代理，就是會自己一步一步做事的 AI 程式。"
+          "id": "6sl1",
+          "text": "Hugging Face 是一個大家分享 AI 模型的網站。"
         },
         {
-          "id": "6sl1",
-          "text": "Hugging Face，是一個大家分享 AI 模型的網站。"
+          "id": "scws",
+          "text": "那次，OpenAI 的 AI 代理為了回答交給它的問題，闖進了 Hugging Face。"
         }
       ]
     },
@@ -348,7 +379,7 @@
         },
         {
           "id": "k3x0",
-          "text": "不用，它不給一般人，只給一個計畫裡做授權防禦工作的企業和組織。",
+          "text": "不用，它先只給 OpenAI 選出的一批企業和組織，他們做的是有授權的資安防守。",
           "emotion": "冷淡、慢半拍"
         }
       ]
@@ -442,13 +473,13 @@
       "lines": [
         {
           "id": "zt4n",
-          "text": "那它到底要做什麼？",
+          "text": "我猜它是拿來打電動的。",
           "speaker": "kai",
-          "emotion": "好奇，問句上揚"
+          "emotion": "自信滿滿"
         },
         {
           "id": "e1uu",
-          "text": "它讓你用講的，指揮 AI 代理做事。",
+          "text": "不是，它讓你用講的，指揮 AI 代理做事。",
           "reveal": 1
         },
         {
@@ -478,11 +509,11 @@
       "lines": [
         {
           "id": "1vpb",
-          "text": "據 TechCrunch，作者試了幾天，覺得電視盒原本的遙控器比較方便。"
+          "text": "據 TechCrunch，作者也拿這枚戒指，來控制電視盒。"
         },
         {
-          "id": "5x47",
-          "text": "控制電視時，只有遙控器找不到的那幾次，戒指才派上用場。"
+          "id": "5s60",
+          "text": "他覺得電視盒原本的遙控器，還是比較方便。"
         }
       ]
     },
@@ -496,10 +527,25 @@
       },
       "lines": [
         {
-          "id": "creh",
-          "text": "所以在電視這一關，它最大的勝利，是打敗了一支找不到的遙控器。",
-          "emotion": "冷淡、慢半拍"
+          "id": "5x47",
+          "text": "控制電視時，只有找不到遙控器的那幾次，戒指才派上用場。"
         },
+        {
+          "id": "creh",
+          "text": "所以在電視這關，它的勝利，是打敗一支找不到的遙控器。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "ring-gag",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's question",
+        "text": "New phone?\n**New finger**",
+        "key": "Not a phone. A finger."
+      },
+      "lines": [
         {
           "id": "gag2",
           "text": "所以我要不要換手機？",
@@ -524,11 +570,11 @@
       "lines": [
         {
           "id": "ru5t",
-          "text": "第三則，OpenAI 說，以後它自己的 AI 資料中心，電費自己付。"
+          "text": "最後一則就是主菜：OpenAI 說，以後它自己的資料中心電費自己付。"
         },
         {
           "id": "8f7l",
-          "text": "很多美國人怕這些放滿電腦的大樓，讓自家的電費變貴。"
+          "text": "很多美國人怕這些放滿電腦的大樓，讓電費變貴。"
         }
       ]
     },
@@ -536,15 +582,30 @@
       "id": "lead-back",
       "template": "big",
       "data": {
-        "kicker": "Yesterday on Tech Signal",
-        "text": "29+ US places\n**voted for limits**",
-        "key": "Callback: voters, limits"
+        "kicker": "Tuesday's US vote",
+        "text": "29+ jurisdictions\n**backed limits**",
+        "key": "29+ places backed limits"
       },
       "lines": [
         {
           "id": "3op7",
-          "text": "昨天我們講到，美國至少 29 個地方的選民，投票支持限制資料中心。"
+          "text": "這週二美國選舉，至少 29 個轄區的選民，投票支持限制蓋資料中心。"
         },
+        {
+          "id": "brxa",
+          "text": "轄區，就是一個地方政府管的區域。"
+        }
+      ]
+    },
+    {
+      "id": "lead-back2",
+      "template": "big",
+      "data": {
+        "kicker": "Two days later",
+        "text": "Then came\n**OpenAI's pledge**",
+        "key": "Two days later: a pledge"
+      },
+      "lines": [
         {
           "id": "wgmp",
           "text": "投票兩天後，OpenAI 就做了這個承諾。"
@@ -555,9 +616,9 @@
       "id": "lead-q",
       "template": "big",
       "data": {
-        "kicker": "The question",
-        "text": "It says it pays.\n**Who checks?**",
-        "key": "Who checks the promise?"
+        "kicker": "Why neighbors could pay",
+        "text": "Grid upgrades,\n**if a project fails**",
+        "key": "When grid costs spill"
       },
       "lines": [
         {
@@ -567,14 +628,42 @@
           "emotion": "誇張地驚訝"
         },
         {
-          "id": "qwho",
-          "text": "那一句「我自己付」，到底誰來確定它真的付了？",
-          "speaker": "kai",
-          "emotion": "替觀眾追問，問句停在半空"
+          "id": "j17j",
+          "text": "不一定，承諾裡自己就寫到一種情況。"
+        }
+      ]
+    },
+    {
+      "id": "lead-q2",
+      "template": "big",
+      "data": {
+        "kicker": "Per Decrypt",
+        "text": "Grid costs\n**can land on others**",
+        "key": "Others could pay the bill"
+      },
+      "lines": [
+        {
+          "id": "hqgm",
+          "text": "電網為資料中心花大錢升級，萬一專案失敗，這筆帳可能落到其他用戶頭上。"
         },
         {
+          "id": "sgwi",
+          "text": "平常的電費怎麼分攤，報導沒有細講。"
+        }
+      ]
+    },
+    {
+      "id": "lead-q3",
+      "template": "big",
+      "data": {
+        "kicker": "Today's main course",
+        "text": "It says it pays.\n**Who checks?**",
+        "key": "Who checks? Main course"
+      },
+      "lines": [
+        {
           "id": "2i68",
-          "text": "好問題，這就是今天的主菜。"
+          "text": "所以，誰來確定它真的付了，就是今天主菜要吵的事。"
         }
       ]
     },
@@ -603,8 +692,8 @@
       "id": "mc-why",
       "template": "big",
       "data": {
-        "kicker": "Why voters said no",
-        "text": "Bills, grid,\n**water, noise**",
+        "kicker": "Why voters pushed back",
+        "text": "Power bills\n**and the grid**",
         "key": "Why voters pushed back"
       },
       "lines": [
@@ -616,7 +705,22 @@
         },
         {
           "id": "iuc9",
-          "text": "對，昨天的選民擔心的，是電費、電網、用水、噪音，還有缺少公眾監督的協議。"
+          "text": "對，這週二投票的選民擔心的，首先是電費和電網的負擔。"
+        }
+      ]
+    },
+    {
+      "id": "mc-why2",
+      "template": "big",
+      "data": {
+        "kicker": "Also on voters' minds",
+        "text": "Water, noise,\n**deals made in private**",
+        "key": "Water, noise, quiet deals"
+      },
+      "lines": [
+        {
+          "id": "s8wc",
+          "text": "也有人擔心用水和噪音，還有沒經過公眾檢視，就跟業者談好的開發協議。"
         }
       ]
     },
@@ -640,7 +744,7 @@
         },
         {
           "id": "cm2r",
-          "text": "我還以為是大學！",
+          "text": "我還以為是竹科！",
           "speaker": "kai",
           "emotion": "誇張地驚訝"
         }
@@ -658,11 +762,11 @@
       "lines": [
         {
           "id": "p8on",
-          "text": "OpenAI 週四發布了一份「全國社區承諾」。"
+          "text": "OpenAI 昨天週四發了一份公開承諾書，叫「全國社區承諾」。"
         },
         {
           "id": "uzn1",
-          "text": "據 Decrypt，它說會付園區供電的全部成本，不讓當地居民替它的用電買單。"
+          "text": "據 Decrypt，它說會付園區供電的全部成本，不讓居民替它買單。"
         }
       ]
     },
@@ -689,13 +793,13 @@
       "lines": [
         {
           "id": "3fx1",
-          "text": "就只有這樣？",
+          "text": "聽起來不錯，我已經想簽了。",
           "speaker": "kai",
-          "emotion": "好奇，問句上揚"
+          "emotion": "得意"
         },
         {
           "id": "ln7b",
-          "text": "電網要花大錢升級之前，它會先提供財務保證，萬一專案失敗，帳單不會落到別人頭上。",
+          "text": "電網要為它花大錢升級之前，它會先拿出財務保證。",
           "reveal": 1
         },
         {
@@ -734,7 +838,7 @@
         },
         {
           "id": "iwcb",
-          "text": "好，那我先說我的立場。",
+          "text": "好，那我先說我的立場，等一下你再潑冷水。",
           "speaker": "kai",
           "emotion": "自信滿滿"
         }
@@ -757,8 +861,7 @@
         },
         {
           "id": "p7f3",
-          "text": "而且說要自己付的，不只 OpenAI 一家。",
-          "speaker": "kai"
+          "text": "而且同一天，不只 OpenAI 這樣說。"
         }
       ]
     },
@@ -773,17 +876,33 @@
       "lines": [
         {
           "id": "m1gi",
-          "text": "對，Google 同一天宣布，要在懷俄明州蓋它在那裡的第一座資料中心。"
+          "text": "Google 宣布，要在懷俄明州蓋它在那裡的第一座資料中心。"
         },
         {
           "id": "l0n7",
           "text": "它說會長期投資 170 億美元。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "mc-goog-b",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's note",
+        "text": "$17B invested.\n**Not the power bill**",
+        "key": "Investment, not the bill"
+      },
+      "lines": [
         {
           "id": "s83t",
           "text": "170 億美元！",
           "speaker": "kai",
           "emotion": "誇張地驚訝"
+        },
+        {
+          "id": "l3z3",
+          "text": "那是它說要投的錢，不是它要付的電費。",
+          "emotion": "冷淡、慢半拍"
         }
       ]
     },
@@ -808,18 +927,18 @@
       "lines": [
         {
           "id": "1q07",
-          "text": "那它的電費誰付？",
+          "text": "我猜，這次電費也是它自己付。",
           "speaker": "kai",
-          "emotion": "好奇，問句上揚"
+          "emotion": "自信滿滿"
         },
         {
           "id": "yvys",
-          "text": "Google 說，它會付自己用電的百分之百。",
+          "text": "對，Google 說，它會付自己用電的百分之百。",
           "reveal": 1
         },
         {
           "id": "lvz7",
-          "text": "它也負責自己成長直接帶來的基礎建設需求。",
+          "text": "它還說，因為它而要新增的電網設施，也由它負責。",
           "reveal": 1
         },
         {
@@ -840,11 +959,7 @@
       "lines": [
         {
           "id": "74q6",
-          "text": "它的電有一部分，來自一大批燃料電池。"
-        },
-        {
-          "id": "dgpz",
-          "text": "Google 說，這是同類規劃裡最大的一批。"
+          "text": "它的電有一部分，來自用天然氣的燃料電池。"
         },
         {
           "id": "4e7h",
@@ -859,8 +974,8 @@
       "template": "big",
       "data": {
         "kicker": "Not a phone battery",
-        "text": "Gas in, power out,\n**carbon underground**",
-        "key": "Gas in, carbon stored"
+        "text": "Gas in, power out,\n**Google says it pays**",
+        "key": "Google says it pays"
       },
       "lines": [
         {
@@ -870,7 +985,7 @@
         },
         {
           "id": "1q6q",
-          "text": "Google 說，發電產生的碳排放，大部分會被抓起來，封進地底。"
+          "text": "重點只有一個：這些電，Google 說它自己付。"
         }
       ]
     },
@@ -893,13 +1008,13 @@
       "lines": [
         {
           "id": "cw7t",
-          "text": "那地方拿到什麼？",
+          "text": "那地方大概只拿到噪音吧。",
           "speaker": "kai",
-          "emotion": "好奇，問句上揚"
+          "emotion": "酸酸地"
         },
         {
           "id": "tlbb",
-          "text": "Google 預期，它會替當地的郡和學區帶來數億美元的財產稅。",
+          "text": "Google 的說法相反，它預期會替當地的郡和學區，帶來數億美元的財產稅。",
           "reveal": 1
         },
         {
@@ -1070,13 +1185,37 @@
       "lines": [
         {
           "id": "h09o",
-          "text": "Google 那邊也一樣，內容全部來自它自己的部落格，還沒有第三方查證。"
+          "text": "Google 那邊也一樣，內容全部來自它自己的部落格，沒有第三方查證。"
+        },
+        {
+          "id": "q2t7",
+          "text": "等於自己出題，自己改考卷。",
+          "emotion": "冷淡、慢半拍"
         },
         {
           "id": "j9bf",
-          "text": "好啦，那你說，到底誰會吃虧？",
+          "text": "好啦，那到底誰會吃虧？",
           "speaker": "kai",
           "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "mc-win",
+      "template": "big",
+      "data": {
+        "kicker": "Who wins, who loses",
+        "text": "If kept: good.\n**If not: no plan**",
+        "key": "If broken: no stated fix"
+      },
+      "lines": [
+        {
+          "id": "amis",
+          "text": "如果它做到了，鄰居就不用替它付電費。"
+        },
+        {
+          "id": "rl8l",
+          "text": "如果沒做到，吃虧的是鄰居，因為承諾沒寫他們能怎麼辦。"
         }
       ]
     },
@@ -1085,13 +1224,13 @@
       "template": "big",
       "data": {
         "kicker": "Follow the money",
-        "text": "The real teeth:\n**a blueprint**",
+        "text": "The real rules:\n**a blueprint**",
         "key": "The blueprint has rules"
       },
       "lines": [
         {
           "id": "l5a0",
-          "text": "OpenAI 其實還出了一份政策藍圖，就是它希望政府怎麼立法的建議清單。"
+          "text": "OpenAI 另外還出了一份政策藍圖，就是它希望政府怎麼立法的建議清單。"
         },
         {
           "id": "kopz",
@@ -1127,7 +1266,7 @@
         },
         {
           "id": "216d",
-          "text": "第二，要有強制申報的規定。",
+          "text": "第二，要有強制申報的規定，報導沒說要報哪些項目。",
           "reveal": 1
         },
         {
@@ -1142,7 +1281,7 @@
         },
         {
           "id": "4s28",
-          "text": "這個有牙齒！",
+          "text": "這個管得到！",
           "speaker": "kai",
           "emotion": "誇張地興奮"
         }
@@ -1153,34 +1292,13 @@
       "template": "big",
       "data": {
         "kicker": "Sola's catch",
-        "text": "Teeth, yes.\n**Lawmakers add them**",
-        "key": "Teeth, if lawmakers act"
+        "text": "Enforceable?\n**Only if lawmakers act**",
+        "key": "Enforced only by law"
       },
       "lines": [
         {
           "id": "jn7t",
-          "text": "對，可是那些牙齒要政府去裝，承諾本身是 OpenAI 自己跟自己的約定。"
-        }
-      ]
-    },
-    {
-      "id": "mc-win",
-      "template": "big",
-      "data": {
-        "kicker": "Who wins, who loses",
-        "text": "If kept: good.\n**If not: no plan**",
-        "key": "If broken: no stated fix"
-      },
-      "lines": [
-        {
-          "id": "kbgm",
-          "text": "所以到底誰贏誰輸？",
-          "speaker": "kai",
-          "emotion": "好奇，問句上揚"
-        },
-        {
-          "id": "amis",
-          "text": "如果做到，鄰居不用多付電費；如果做不到，承諾裡沒寫居民能怎麼辦。"
+          "text": "對，可是要管得到，得靠政府立法；承諾本身，是 OpenAI 自己跟自己的約定。"
         }
       ]
     },
@@ -1204,19 +1322,20 @@
       "template": "big",
       "data": {
         "kicker": "Taiwan & Asia",
-        "text": "Taiwan, Asia:\n**not in the sources**",
+        "text": "Taiwan, Asia:\n**not mentioned**",
         "key": "Taiwan: not mentioned"
       },
       "lines": [
         {
           "id": "6965",
-          "text": "那台灣的電費單呢？",
+          "text": "所以台灣的電費，也會跟著降？",
           "speaker": "kai",
-          "emotion": "好奇，問句上揚"
+          "emotion": "想歪了"
         },
         {
           "id": "gb74",
-          "text": "今天的兩份來源，都沒有提到台灣或亞洲，我們不硬接。"
+          "text": "沒人這樣說，這兩家公司都沒有提到台灣或亞洲。",
+          "emotion": "冷淡、慢半拍"
         }
       ]
     },
@@ -1262,9 +1381,9 @@
         },
         {
           "id": "0cu3",
-          "text": "第二件呢？",
+          "text": "第一件，我賭會吵很久。",
           "speaker": "kai",
-          "emotion": "好奇，問句上揚"
+          "emotion": "自以為很懂"
         },
         {
           "id": "rypy",
@@ -1273,8 +1392,12 @@
         },
         {
           "id": "7mg9",
-          "text": "第三件，是公開的電力和用水數字，還有 Google 的說法，有沒有人能獨立查。",
+          "text": "第三件，是 OpenAI 公開的用電和用水數字，有沒有外人能查。",
           "reveal": 1
+        },
+        {
+          "id": "0rl0",
+          "text": "Google 的說法也一樣，要等第三方查證。"
         }
       ]
     },
@@ -1289,8 +1412,12 @@
       "lines": [
         {
           "id": "0iax",
-          "text": "我的看法是，自己付電費是對的方向，Kai 說得對，有寫總比沒寫好。",
+          "text": "我的看法是，自己付電費是對的方向。",
           "emotion": "放慢放穩"
+        },
+        {
+          "id": "7gm2",
+          "text": "Kai 說得對，OpenAI 至少說了。"
         }
       ]
     },
@@ -1305,7 +1432,12 @@
       "lines": [
         {
           "id": "53rr",
-          "text": "但沒有罰則、也沒人查，它就還只是一句話；寫進許可或電價規則，才算數。",
+          "text": "可是只說了，沒寫進許可，也沒有罰則，它就還只是一句話。",
+          "emotion": "放穩"
+        },
+        {
+          "id": "kmdx",
+          "text": "要寫進許可或電價規則，才算數。",
           "emotion": "放穩"
         },
         {
@@ -1328,11 +1460,7 @@
       "lines": [
         {
           "id": "5o2k",
-          "text": "今天的固定單元，叫做「這樣可以嗎」。"
-        },
-        {
-          "id": "mazm",
-          "text": "我們拿一件有爭議的事，各說一邊，最後由你來投票。"
+          "text": "Claude 出了一個新功能，能連上你的銀行帳戶，用聊天幫你看懂自己的錢。"
         }
       ]
     },
@@ -1347,11 +1475,11 @@
       "lines": [
         {
           "id": "08ro",
-          "text": "Anthropic 推出了 Claude 的一個新功能，叫 Personal Finance。"
+          "text": "這個功能叫 Personal Finance，是 Anthropic 推出的。"
         },
         {
-          "id": "npji",
-          "text": "它讓你把銀行帳戶連上 Claude，用聊天問自己的錢花去哪了。"
+          "id": "mazm",
+          "text": "今天的單元叫「這樣可以嗎」，我們各說一邊，最後由你來投票。"
         }
       ]
     },
@@ -1467,13 +1595,13 @@
       "lines": [
         {
           "id": "n0sb",
-          "text": "那它看得到什麼？",
+          "text": "唯讀，所以它應該什麼都看不到吧？",
           "speaker": "kai",
-          "emotion": "好奇，問句上揚"
+          "emotion": "想歪了"
         },
         {
           "id": "9ape",
-          "text": "在你選的帳戶裡，它看得到銀行和帳戶的名稱。",
+          "text": "看得到不少，在你選的帳戶裡，它看得到銀行和帳戶的名稱。",
           "reveal": 1
         },
         {
@@ -1510,7 +1638,7 @@
         },
         {
           "id": "u94k",
-          "text": "你問這個月錢花去哪，它就幫你分類加總。",
+          "text": "你問錢花去哪，它就幫你算，比自己記帳輕鬆多了。",
           "speaker": "kai"
         }
       ]
@@ -1535,21 +1663,28 @@
       },
       "lines": [
         {
+          "id": "h2cs",
+          "speaker": "kai",
+          "text": "所以它會幫我省錢？",
+          "emotion": "期待"
+        },
+        {
+          "id": "lc4j",
+          "text": "省不省得到錢，公告沒說；但 Anthropic 說，它會指出三種事。"
+        },
+        {
           "id": "h0ue",
           "text": "它會幫你抓出重複扣款。",
-          "speaker": "kai",
           "reveal": 1
         },
         {
           "id": "5hfj",
           "text": "它也會抓出沒想到的手續費。",
-          "speaker": "kai",
           "reveal": 1
         },
         {
           "id": "x1ux",
           "text": "它還會指出一整年慢慢變貴的帳單。",
-          "speaker": "kai",
           "reveal": 1
         }
       ]
@@ -1642,7 +1777,7 @@
         },
         {
           "id": "s27k",
-          "text": "在那個區域外面分享的內容，就看你自己的隱私設定。",
+          "text": "如果你在那個區域外面跟 Claude 聊錢，就看你自己的隱私設定。",
           "reveal": 1
         },
         {
@@ -1811,7 +1946,7 @@
         },
         {
           "id": "kb70",
-          "text": "蓋在你家旁邊，你要它寫進哪裡？留言說。",
+          "text": "蓋在你家旁邊的話，你要它寫進哪裡？留言說。",
           "speaker": "kai"
         },
         {
