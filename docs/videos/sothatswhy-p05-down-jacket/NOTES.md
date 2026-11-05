@@ -66,3 +66,4 @@
     留下的鏡頭運鏡都沒變；新鏡頭 6 個（kid-cat、chief-fur、kid-cold-ears、chief-faster、kid-thermos-neck、chief-neck），沒有改提示詞的舊鏡頭；
     刪掉 kid-callback、chief-word、kid-zip-up 與 down-works 卡片。新加的 6 句事實還沒有給查核代理看過。
 - **2026-11-05 卡片改紙底**：站主「原來如此事務所裡面小卡我要用紙質的」，`build_scenes.py` 加頂層 `theme: "paper"`；6 張卡片與片尾的預覽在 [`paper-cards-preview.jpg`](paper-cards-preview.jpg)（`render/repeat.mjs` 只畫卡片，兩輪逐格相同）。只影響卡片，插圖與快取不動。
+- **2026-11-05 卡片全改成插圖**：站主要原來如此走國際路線、盡量不用卡片。6 張卡片（body-heat、iron-wood、steel-wood、water-air、wind-chill、two-cubes）改成同名的小問鏡頭，畫面沒有字，數字由所長念（台詞不變）；運鏡新增在 `cameras.json` 尾端，其他鏡頭的運鏡逐一比對沒變。插圖 113 張、卡片 0 張。紙底設定 `theme: "paper"` 保留給片尾與以後真的少不了的卡片；`paper-cards-preview.jpg` 是改之前的紙底樣子，留作參考。

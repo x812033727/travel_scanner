@@ -98,7 +98,7 @@ kid("kid-rice", "Medium shot of the girl eating from a bowl of warm rice with ch
     c("你吃下去的東西，身體會拿來用。"), k("吃飯就是在加柴火？", "好笑"))
 chief("chief-fuel", "Waist-up medium shot of the chief laughing and giving a thumbs-up, " + WALL + ", warm lamp light",
       c("可以這樣想。"), c("用掉的能量，最後大部分都變成了熱。"))
-card("body-heat", "big", {"kicker": "大人安靜坐著", "text": "一直放出約 **100 瓦**", "sub": "跟一顆老式燈泡差不多"},
+kid("body-heat", "Medium shot of the girl sitting very still on a wooden chair with her hands in her lap, a soft warm orange glow radiating all around her body like a lamp, a glowing old-fashioned round light bulb on a small side table beside her giving off the same warm glow, plain wall, soft evening light",
      c("一個大人安靜坐著，大約一直放出一百瓦左右的熱，", "數字放慢"), c("跟一顆老式燈泡差不多。"))
 kid("kid-bulb", "Medium shot of the girl holding both palms close to a glowing old-fashioned round light bulb in a simple desk lamp, feeling its warmth with a curious grin, soft evening light",
     k("那我也是一顆燈泡？", "好笑"))
@@ -146,9 +146,9 @@ kid("kid-doubt", "Close-up of the girl rubbing her cold palm on her sleeve with 
     k("怎麼可能？摸起來差好多。", "不服氣"))
 chief("chief-not-thermometer", "Waist-up medium shot of the chief holding up her own open hand and looking at it with a wry smile, " + WALL + ", soft daylight",
       c("因為你的手不是溫度計。"), c("手感覺到的，是熱從手上跑走得多快。"))
-card("iron-wood", "compare", {"title": "溫度差不多，摸起來不一樣", "left": {"heading": "鐵欄杆", "points": ["把手上的熱搬得快", "摸起來很冰"]}, "right": {"heading": "木頭椅子", "points": ["搬得慢", "摸起來還好"]}, "source": "HyperPhysics；OpenStax《College Physics 2e》14.5"},
+kid("iron-wood", "Medium shot of the girl in a winter park resting one hand on a black iron railing and the other hand on a wooden bench, many small wavy red heat arrows streaming quickly from her hand into the iron, only one tiny slow red arrow going into the wood, bare trees, soft overcast light",
      c("鐵把你手上的熱搬走得很快，木頭搬得很慢。", None, "P:iron"))
-card("steel-wood", "big", {"kicker": "鋼鐵傳熱", "text": "比木頭快 **上百倍**", "sub": "所以摸起來冰得多"},
+kid("steel-wood", "Close-up of the girl peering through a large round magnifying glass at a steel spoon and a wooden spoon standing side by side in a mug of hot cocoa, the steel spoon handle glowing warm red all the way up, the wooden spoon handle still plain brown, a little steam, soft kitchen light",
      c("鋼鐵傳熱的本事，比木頭快上百倍。", "數字放慢"))
 kid("kid-tile-again", "Close-up of the girl looking down at her bare feet on cold kitchen tiles and wiggling her toes, an understanding smile, soft morning light",
     c("地毯和磁磚也是這樣：磁磚把你腳上的熱，搬得比較快。", None, "P:tile"))
@@ -220,7 +220,7 @@ kid("kid-drizzle", "Medium shot of the girl standing in cold drizzle holding " +
     k("那下雨淋濕了呢？", "擔心"))
 chief("chief-water-in", "Waist-up medium shot of the chief tipping a small glass of water slowly over a sponge on her desk, watching it soak in, " + WALL + ", soft lamp light",
       c("濕了，水就跑進那些小空間，"), c("把空氣擠出去。"))
-card("water-air", "big", {"kicker": "水傳熱的本事", "text": "約是空氣的 **二十幾倍**", "sub": "衣服一濕，熱就跑得快"},
+kid("water-air", "Medium shot of the girl standing just inside a doorway after the rain, hair dripping and her navy jacket soaked dark, hugging herself and shivering, many small blue wavy arrows leaving her wet shoulders quickly, a plain wall, cool grey light",
      c("水傳熱的本事，大約是空氣的二十幾倍。", "數字放慢"))
 kid("kid-wring", "Close-up of the girl wringing water out of a wet sleeve over a puddle with a grimace, soft grey light",
     c("所以衣服一濕，熱就跑得快很多，穿起來就沒那麼暖。", None, "P:wet"))
@@ -238,7 +238,7 @@ kid("kid-fan", "Medium shot of the girl standing in front of a small electric fa
     c("風一來，它還沒飄走就被吹散，"), c("冷空氣換得更勤，熱就跑得更快。"))
 chief("chief-faster", "Head-and-shoulders close-up of the chief blowing gently across her own open palm with a thoughtful look, " + WALL + ", soft lamp light",
       c("被風帶走的熱，常常比慢慢碰過去的快得多。"))
-card("wind-chill", "compare", {"title": "同樣的溫度", "left": {"heading": "沒有風", "points": ["身上那層暖空氣換得慢"]}, "right": {"heading": "有風", "points": ["暖空氣一直被換掉", "覺得冷很多"]}, "source": "美國國家氣象局：風寒"},
+kid("wind-chill", "Medium shot of the girl walking along a windy riverside path in winter, her hair blown sideways, cupping both hands over her red cold ears with a pained squint, curved white wind lines streaming past her face, soft overcast light",
      c("這就叫做風寒：同樣的溫度，有風就覺得冷很多。", None, "P:wind"))
 kid("kid-cold-ears", "Close-up of the girl on a windy footbridge cupping both hands over her ears, her cheeks and nose rosy from the cold, squinting, soft overcast light",
     c("風寒說的，是露在外面的皮膚：臉、耳朵、手。"), k("難怪我耳朵最先痛！", "恍然大悟"))
@@ -282,7 +282,7 @@ kid("ice-back", "Medium shot of the girl kneeling at a low table, poking " + JAC
 # ---------- 收尾 ----------
 chief("chief-not-heater", "Head-and-shoulders close-up of the chief raising her eyebrows with a gentle smile and one hand open, " + WALL + ", soft lamp light",
       c("很多人都會這樣猜。可是它裡面沒有暖爐，"), c("還記得溫度計那一晚嗎？它自己一點也沒變暖。"), chapter="把冰塊包進羽絨衣")
-card("two-cubes", "compare", {"title": "同一個房間裡的兩顆冰", "left": {"heading": "包起來", "points": ["外面的熱很難跑進去", "融得比較慢"]}, "right": {"heading": "沒有包", "points": ["直接碰到房間的空氣", "融得比較快"]}, "source": "愛爾蘭科學基金會、WGBH ZOOM 的課堂活動"},
+kid("two-cubes", "Close-up of two small white plates side by side on a low wooden table, on the left one ice cube folded inside " + JACKET + " still solid, on the right a bare ice cube already shrunk into a wide puddle, the girl peeking in from the edge of the frame with a delighted surprised face, soft daylight",
      c("很多學校課堂都會做這個比較：一顆包起來、一顆不包。"), c("包起來的那顆，融得比較慢。", None, "P:icewrap"))
 kid("kid-blocker", "Close-up of the girl clapping her hands together once with a big surprised smile, a plain wall, soft daylight",
     k("包起來，反而比較慢？！", "大驚"))
