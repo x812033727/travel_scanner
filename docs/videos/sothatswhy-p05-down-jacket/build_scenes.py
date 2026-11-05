@@ -149,7 +149,7 @@ kid("kid-doubt", "Head-and-shoulders close-up of the girl frowning doubtfully wi
     k("怎麼可能？摸起來差好多。", "不服氣"))
 chief("chief-not-thermometer", "Waist-up medium shot of the chief holding up her own open hand and looking at it with a wry smile, " + WALL + ", soft daylight",
       c("因為你的手不是溫度計。"), c("手感覺到的，是熱從手上跑走得多快。"))
-scene("iron-wood", "Close-up of a black iron railing bar and a wooden bench plank side by side in a snowy park, the iron bar covered in sparkling white frost, the wooden plank plain brown and dry, flat 2D cartoon with clean dark outlines, soft overcast light",
+scene("iron-wood", "Close-up of a small bare hand resting flat on a black iron railing bar in a snowy park, many small wavy red arrows streaming out of the palm into the iron, a wooden bench blurred in the background, flat 2D cartoon with clean dark outlines, soft overcast light",
      c("鐵把你手上的熱搬走得很快，木頭搬得很慢。", None, "P:iron"))
 scene("steel-wood", "Close-up of one shiny silver metal spoon standing in a mug of hot cocoa on a kitchen table, the whole metal handle glowing orange-red with heat right up to the top, steam rising, soft kitchen light",
      c("鋼鐵傳熱的本事，比木頭快上百倍。", "數字放慢"))
@@ -221,9 +221,9 @@ chief("chief-not-weight", "Head-and-shoulders close-up of the chief shaking one 
       c("重不重，不是重點。"), c("重點是裡面，關住了多少不會動的空氣。", None, "P:heavy"))
 kid("kid-drizzle", "Medium shot of the girl standing in cold drizzle holding " + JACKET + " out with both hands as raindrops darken it, a worried face, soft grey light",
     k("那下雨淋濕了呢？", "擔心"))
-chief("chief-water-in", "Waist-up medium shot of the chief standing behind her desk pouring water from a small clear glass onto a yellow kitchen sponge lying on the desk, watching it soak in, " + WALL + ", soft lamp light",
+scene("chief-water-in", "Close-up of a yellow kitchen sponge on a white plate, water pouring onto it from a small clear glass, many little round air bubbles escaping from the wet sponge, flat 2D cartoon with clean dark outlines, soft lamp light",
       c("濕了，水就跑進那些小空間，"), c("把空氣擠出去。"))
-kid("water-air", "Medium shot of the girl standing in a doorway after the rain, hair dripping and her navy jacket soaked dark, hugging herself and shivering, many small blue wavy arrows flying outward away from her wet shoulders, a plain wall, cool grey light",
+kid("water-air", "Close-up of the girl dipping one bare hand into a glass bowl of cold water with a shocked gasp, her other hand held up in the air relaxed, a plain wall, cool grey light",
      c("水傳熱的本事，大約是空氣的二十幾倍。", "數字放慢"))
 kid("kid-wring", "Head-and-shoulders close-up of the girl with soaking wet hair dripping water onto her shoulders and a grimace, rain falling behind her, soft grey light",
     c("所以衣服一濕，熱就跑得快很多，穿起來就沒那麼暖。", None, "P:wet"))
