@@ -76,7 +76,7 @@ c44｜報導沒有說選民的限制會影響高通；旁白明說不推論。�
 c45｜今天的來源都沒有提到台灣；亞洲供應鏈是否受影響，來源沒有答案｜各站上文章｜2026-11-04｜sd-taiwan, sd-ram-unknown
 c46｜The Verge：AI 資料中心搶購全球 RAM，造成短缺、帶動科技產品漲價，讓許多人難以為電腦裝大量 RAM｜RAM；V5｜2026-11-04｜sd-ram, sd-ram-when, nd-end
 c47｜英特爾預期短缺至少持續到明年（卡片「2027」＝換算）；SK Hynix 預測可能拖到 2030 年（「記憶體廠」是背景）｜RAM；V5｜2026-11-04｜sd-ram-when
-c48｜接下來看什麼：哪些投票有約束力（c37）、新州長會不會立法（c38）、電費用水與稅收優惠誰付（c41）是節目依來源整理的三點；The Verge 說實際政策取決於後續立法與執行，沒有時間表｜MID；V1；VOT；DC1｜2026-11-04｜sd-next, sd-timeline
+c48｜接下來看什麼：哪些投票有約束力（c37）、新州長會不會立法（c38）、電費用水與稅收優惠誰付（c41）是節目依來源整理的三點；「實際政策要看後續立法與執行」是節目（與站上文章 MID）的說法，不是 The Verge 的；The Verge 沒有給時間表（查核第 1 輪改）｜MID；V1；VOT；DC1｜2026-11-04｜sd-next, sd-timeline
 c49｜TechCrunch：可負擔性逐漸成為 2028 年大選關鍵；若選民擔心資料中心推高電費、AI 取代工作，AI 可能成為越來越大的議題｜OAI；TC4｜2026-11-04｜sd-2028, sd-2028-why
 
 ## What People Are Saying
@@ -96,7 +96,7 @@ c58｜OCC 強調文件不創設新的法規要求，讓檢查人員在既有風�
 c59｜摩根士丹利週二（11/3）表示已透過 DTCC Tokenization Service 把美股與美國公債代幣化；服務 10/28 上線，由 DTC 營運，DTC 託管逾 114 兆美元｜MS；DC3｜2026-11-04｜ms-ms, ms-dtc
 c60｜DTCC 稱代幣保有與原證券相同的所有權、投資人保護與經濟權益，可換回原證券｜MS；DC3｜2026-11-04｜ms-twin
 c61｜使用者是符合資格的金融機構，20 家 DTC 參與者報名（含美國銀行、花旗、摩根大通）；一般散戶無法直接使用；銀行主導，不同於加密原生業者的代幣化股票｜MS；DC3｜2026-11-04｜ms-who, ms-contrast
-c62｜據 Decrypt，USDC 發行商 Circle 在週三第三季財報揭露裁員約 5%；持續經營淨利 2.26 億美元、年增 5%；準備金收入因利率下降減少 8%（旁白只講百分比）｜CRCL；DC4｜2026-11-04｜ms-circle, ms-circle-why
+c62｜據 Decrypt，USDC 發行商 Circle 在週三第三季財報揭露裁員約 5%；持續經營淨利 2.26 億美元、年增 5%；準備金收入 6.58 億美元年減 8%（DC4 只在副標寫「reserve income fell 8%」；「最大收入來源」「因利率下降」出自 Circle 財報 8-K：「primarily from a 61 bps decline in the Reserve Return Rate」，占總營收與準備金收入 8.65 億的大半；旁白只講百分比）｜CRCL；DC4；CRCL8K＝https://www.sec.gov/Archives/edgar/data/0001876042/000187604226000309/finalq3epr-110326.htm｜2026-11-04｜ms-circle, ms-circle-why
 c63｜Circle 稱調整是為讓組織結構更符合營運模式與策略重點；未說明人數與團隊｜CRCL；DC4｜2026-11-04｜ms-circle-unknown
 c64｜Decrypt 列出今年其他加密企業裁員：Coinbase 5 月 14%、以太坊基金會 6 月 20%、Bitwise 8 月 14%（另有 BitGo、Luno，卡片未列）；理由包括市場轉弱、AI 或兩者｜CRCL；DC4｜2026-11-04｜ms-circle-wave
 c65｜Coinbase 週三部落格稱未受上週幣安駭客事件影響；超過 99% 客戶資產在冷儲存；冷錢包私鑰分割、簽署時不完全重組；提領異常暴增時先暫扣待審（Coinbase 自述，經 Decrypt）｜CB；DC5｜2026-11-04｜ms-cb, ms-cb-how, ms-cb-note
@@ -119,6 +119,7 @@ c73｜Altman 稱被斷章取義，並回覆："i want you to have so much ram le
 
 c74｜「今天最重要的是選舉裡的資料中心」「AI 有房子、要用電，住旁邊的人用選票說話」「我不確定會不會蓋得比較慢」是節目的看法；依 c28–c49｜—｜—｜tk-main, tk-why, tk-unsure
 c75｜主題的完整整理在 Mokaair 文章，說明欄列主題的兩篇站上文章（MID、VOT）｜MID；VOT｜2026-11-04｜tk-site
+c77｜縮圖「Voted **limits**」「Data centers, in 29+ US places」：DC1「backed bans or restrictions」，不是全部否決（查核第 1 輪由「Voted down」改）｜VOT；DC1｜2026-11-04｜thumbnail
 c76｜片尾答案：電費、用水和噪音讓資料中心成了地方投票的題目（c31）｜VOT；DC1｜2026-11-04｜outro
 
 ## 我懷疑但沒動的事
