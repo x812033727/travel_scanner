@@ -30,6 +30,7 @@
 | 票與進度 | `tasks/open/`、`tasks/done/` 裡 `zhong-tian` 開頭的票 | `npm run tasks -- list` |
 | 成片、字幕、配音、縮圖、上架說明 | 站主雲端硬碟 `AI/備份/<系列資料夾>/<集>/`（`G:\我的雲端硬碟\AI\備份\`） | 上架包核准後，主機 worker 先從審核區把整包抓進 `video_work/<slug>/`，再照「完整」層級複製（`docs/videos/BACKUP.md`〈匯入的影片〉）。**這條要等票 `2026-10-31-zhong-tian-clip-backup` 的改動部署後才有**；之前匯入的影片從來沒進過 `AI/備份`（主機沒有東西把審核區的檔案搬進 `video_work`），審核區的 mp4 在上 YouTube 7 天後就刪掉。狀態看 `/admin/videos?tab=settings#video-backup-settings` |
 | 逐句原始錄音（中文與八語，約 75 MB／集） | `AI/備份/drama/zhong-tian-qu-qi/<集>/recordings/` | `import --publish` 自動帶 `--clips` 那個工作資料夾的 `audio/`、`audio-<語言>/`（或 `--recordings <workdir>/zhong-tian-qu-qi-eNNN-dh`）。還原：`node tools/video/import/recordings.mjs unpack <recordings> <workdir>/zhong-tian-qu-qi-eNNN-dh` |
+| 對好時間的逐句配音（`segments-v4/lines/`、`segments-v4/dub-<語言>/`：每句調速前後的 wav、整條 `dialogue.wav`、`fit.json`，約 300–450 MB／集） | 同一個 `recordings/`，檔名 `fit-lines.wav`、`fit-<語言>.wav` | 2026-11-05 起 `import --publish` 一起打包，同一個 `manifest.json`、同一個 `unpack` 還原到 `segments-v4/`。`fit.json` 另存在 repo 的 `colab/runs/eNNN/dub/<語言>/` |
 | 每鏡 1080p 片段（第 31 集起約 300 MB／集） | `AI/備份/<系列資料夾>/<集>/clips/` | `import --publish` 自動帶 `<from>/clips`（或 `--clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips`），跟上架包一起送。**要在站主核准上架包之前送**：核准後的包加不進片段 |
 
 ## 2. 只存在工作資料夾、沒有備份的東西
