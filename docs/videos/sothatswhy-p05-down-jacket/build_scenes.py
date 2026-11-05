@@ -98,7 +98,7 @@ kid("kid-rice", "Medium shot of the girl sitting at a kitchen table behind a bow
     c("你吃下去的東西，身體會拿來用。"), k("吃飯就是在加柴火？", "好笑"))
 chief("chief-fuel", "Waist-up medium shot of the chief laughing with her eyes closed and one thumb up, " + WALL + ", warm lamp light",
       c("可以這樣想。"), c("用掉的能量，最後大部分都變成了熱。"))
-kid("body-heat", "Medium shot of the girl sitting on a wooden chair and smiling with her eyes closed, a soft warm orange glow around her, a glowing round light bulb floating beside her head, plain wall, soft evening light",
+kid("body-heat", "Medium shot of the girl sitting cross-legged on a rug hugging her knees, eyes closed with a content smile, a soft warm orange glow around her whole body, plain wall, soft evening light",
      c("一個大人安靜坐著，大約一直放出一百瓦左右的熱，", "數字放慢"), c("跟一顆老式燈泡差不多。"))
 kid("kid-bulb", "Medium shot of the girl holding both palms close to a glowing old-fashioned round light bulb in a simple desk lamp, feeling its warmth with a curious grin, soft evening light",
     k("那我也是一顆燈泡？", "好笑"))
@@ -150,7 +150,7 @@ kid("iron-wood", "Medium shot of the girl in a winter park with her right hand o
      c("鐵把你手上的熱搬走得很快，木頭搬得很慢。", None, "P:iron"))
 kid("steel-wood", "Close-up of the girl peering through a large round magnifying glass at a steel spoon and a wooden spoon standing side by side in a mug of hot cocoa, the steel spoon handle glowing warm red all the way up, the wooden spoon handle still plain brown, a little steam, soft kitchen light",
      c("鋼鐵傳熱的本事，比木頭快上百倍。", "數字放慢"))
-kid("kid-tile-again", "Head-and-shoulders close-up of the girl looking down with an understanding smile, grey kitchen tiles on the wall behind her, soft morning light",
+kid("kid-tile-again", "Head-and-shoulders close-up of the girl looking down with both hands pressed to her cheeks and an understanding smile, grey kitchen tiles on the wall behind her, soft morning light",
     c("地毯和磁磚也是這樣：磁磚把你腳上的熱，搬得比較快。", None, "P:tile"))
 kid("kid-zipper-pull", "Close-up of the girl holding the zipper of " + JACKET + " with one hand and shivering with a funny face, soft morning light",
     k("羽絨衣的拉鍊頭，也比布冰！", "發現"))
@@ -222,7 +222,7 @@ chief("chief-water-in", "Waist-up medium shot of the chief tipping a small glass
       c("濕了，水就跑進那些小空間，"), c("把空氣擠出去。"))
 kid("water-air", "Medium shot of the girl standing just inside a doorway after the rain, hair dripping and her navy jacket soaked dark, hugging herself and shivering, many small blue wavy arrows leaving her wet shoulders quickly, a plain wall, cool grey light",
      c("水傳熱的本事，大約是空氣的二十幾倍。", "數字放慢"))
-kid("kid-wring", "Head-and-shoulders close-up of the girl with dripping wet hair and a grimace, holding up her wet sleeve beside her face with water drops falling from it, soft grey light",
+kid("kid-wring", "Head-and-shoulders close-up of the girl with soaking wet hair dripping water onto her shoulders and a grimace, rain falling behind her, soft grey light",
     c("所以衣服一濕，熱就跑得快很多，穿起來就沒那麼暖。", None, "P:wet"))
 chief("chief-clump", "Waist-up medium shot of the chief squeezing a small wet ball of cotton between her fingers, a sympathetic face, " + WALL + ", soft grey light",
       c("羽絨濕了還會塌下去，撐不起那些小空間。"), c("你淋過冬天的雨，應該記得那種冷。", "轉向觀眾"))
