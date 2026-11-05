@@ -27,7 +27,7 @@ metadata:
 | 各步的範本（條件卡、分場表、鏡位表、分鏡表欄位、鎖定包、變更單）與一個做完的例子 | `.agents/skills/animation-preproduction/references/preproduction-flow.md` |
 | 每鏡走哪條路、買幾秒、哪個解析度、母鏡頭、正文怎麼寫（Hailuo H3／2.3、Kling 3.0 的官方格式）、送出前的表單清單 | `.agents/skills/animation-preproduction/references/route-decisions.md` |
 | AI 鏡頭風險分級的表、重設計的招式、參考片怎麼避開 | `.agents/skills/animation-preproduction/references/shot-risk.md` |
-| 寫分鏡時每一鏡要寫清楚的十一項（服裝、道具、畫面裡有誰、動作、表情、身體狀態、場景與天氣、運鏡與構圖、文字與紙、台詞、秒數）、這季付過錢的錯與覆蓋檢查與分鏡的寫法、改稿時要通知製作端的事 | `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` |
+| 寫分鏡時每一鏡要寫清楚的十一項（服裝、道具、畫面裡有誰、動作、表情、身體狀態、場景與天氣、運鏡與構圖、文字與紙、台詞、秒數）、這季付過錢的錯與覆蓋檢查與分鏡的寫法、每場戲的場頭、台詞有頭有尾、讓畫面動起來的寫法、每集附的五張清單、改稿時要通知製作端的事 | `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` |
 | 參考風格：真一隻布袋喵的量測（鏡長、景別、接觸與台詞怎麼處理） | `docs/videos/drama-craft/reference-study-20261004-budaimiao.md`；畫風與表演的創作建議在 `.agents/skills/animation-camera/references/budaimiao-style.md` |
 | 一場戲的鏡位、軸線、連戲帳 | `.agents/skills/animation-camera/references/scene-coverage.md` |
 | 對話戲的開場、鏡長、台詞規格與檢查腳本 | `.agents/skills/youtube-video/references/drama-craft.md` |
