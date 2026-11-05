@@ -36,3 +36,8 @@ scope:
 `/admin/videos` 上第 55 集核准。
 
 ## Notes
+
+2026-11-05 收尾交接：43 鏡 1080p、剪接（102.1 秒）、已匯入，等站主審成片。
+剪接時的處理：`s30@1.2 s35@2.0`；s40 從 0.6 秒起 `crop=1200:675:200:300`、s43 `crop=1400:788:520:0`（裁掉信上的假字），未裁的原片在 `clips-uncropped/`；重跑 stage-clips.sh 會蓋掉裁切，要再裁一次（指令見 `colab/runs/e055/stage-clips-args.txt`）。
+成片核准後：八語（照第 53、54 集，一集一個代理、各自的 scratchpad 資料夾）→ `import --languages` → 核准 → `import --publish --clips <workdir>/clips --edit hailuo/edit-dh-e055.json`（輸出不能有 build data not found）。
+工作資料夾沒有備份到 git，不要刪。
