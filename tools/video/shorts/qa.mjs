@@ -90,6 +90,17 @@ export function layoutItem({ checks, cues }) {
   return verdict('layout', problems, `${cues} cards inside the safe area, captions above the interface`);
 }
 
+const NO_DIALOGUE = 'no spoken words: zero-dialogue cut';
+
+/**
+ * A cut made elsewhere in which nobody speaks (import.mjs): the script says `dialogue: false`
+ * with no phrase, the timeline has no cue, and the import's checks.json says so too.
+ */
+export function silentImport({ doc, timeline, checks }) {
+  return Boolean(checks?.imported) && checks.dialogue === false && doc?.dialogue === false
+    && phrasesOf(doc).length === 0 && Array.isArray(timeline?.cues) && timeline.cues.length === 0;
+}
+
 /** narration: the listener's check passed, for these very clips, over every phrase. */
 export function narrationItem({ check, audioSha256, phrases }) {
   if (!check) return item('narration', false, 'check.json is missing; run check-audio');
@@ -114,10 +125,17 @@ export function narrationItem({ check, audioSha256, phrases }) {
  * highlight's or a vertical short's source is a video the site knows that is public, or whose
  * final cut is approved. `source` is the site's record, null when it has none.
  */
-export function evidenceItem({ doc, evidenceError = null, source = null, now = new Date() }) {
+export function evidenceItem({ doc, evidenceError = null, source = null, now = new Date(), finalSha256 = null, checks = null }) {
   if (lineOf(doc) === 'lab') {
     if (evidenceError) return item('evidence', false, evidenceError);
     return item('evidence', true, `${doc.evidence.length} evidence files match the script's hashes`);
+  }
+  // An original Short (import.mjs, `original: true`): no long video to lead back to, so what is
+  // vouched for is the cut itself, the very bytes the import measured.
+  if (doc.original === true) {
+    if (!checks?.imported || checks.original !== true) return item('evidence', false, 'an original Short is an imported cut: checks.json records no import of it');
+    if (!finalSha256 || checks.final_sha256 !== finalSha256) return item('evidence', false, 'the cut differs from the one imported: import it again');
+    return item('evidence', true, `an original Short, cut from no long video: bound to the cut itself, sha256 ${finalSha256}`);
   }
   if (!doc.source?.slug) return item('evidence', true, 'a short of its own, cut from no video');
   if (!source) return item('evidence', false, `the site has no video ${doc.source.slug}, or did not answer`);
@@ -355,16 +373,18 @@ export async function runQa({ directory, client = null, offline = false, setting
   })();
 
   const checks = readJson(path.join(directory, 'checks.json'), null);
+  const silent = silentImport({ doc, timeline, checks });
   const items = [
     profileItem({ measured, frames: timeline.frames, range }),
     loudnessItem({ loudness: measured.loudness }),
     layoutItem({ checks, cues: timeline.cues.length }),
-    clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases }) : item('narration', false, 'the clips of the phrases are missing'),
-    line !== 'lab' && doc.source?.slug && !online ? item('evidence', false, OFFLINE) : evidenceItem({ doc, evidenceError, source, now: now() }),
+    silent ? item('narration', true, NO_DIALOGUE) : clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases }) : item('narration', false, 'the clips of the phrases are missing'),
+    line !== 'lab' && doc.source?.slug && !online ? item('evidence', false, OFFLINE) : evidenceItem({ doc, evidenceError, source, now: now(), finalSha256: finalSha, checks }),
     factsItem({ verify: readJson(path.join(directory, VERIFY_FILE), null), documentSha256: sha256(scriptBytes) }),
     policy,
     metadataItem({ metadata }),
-    captionsItem({ captions, timeline, locales: used.locales ?? [], checks }),
+    // No words, so no track to check, in any language; a caption that turns up anyway is wrong.
+    silent ? verdict('captions', captions.has('zh-TW') ? captionProblems(captions.get('zh-TW'), timeline) : [], NO_DIALOGUE) : captionsItem({ captions, timeline, locales: used.locales ?? [], checks }),
     links,
     past === null && offline ? item('variety', false, OFFLINE) : varietyItem({ doc, history: past }),
     disclosureItem({ doc }),

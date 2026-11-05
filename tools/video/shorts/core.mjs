@@ -68,7 +68,7 @@ export const saveJson = (file, data) => atomicWrite(file, `${JSON.stringify(data
 export const lineOf = (doc) => (doc?.schema_version === 1 ? 'lab' : doc?.line);
 export const phrasesOf = (doc) => doc.scenes.flatMap((scene) => scene.narration);
 
-function sceneErrors(doc, errors) {
+function sceneErrors(doc, errors, { silent = false } = {}) {
   if (!Array.isArray(doc?.scenes) || doc.scenes.length < 3 || doc.scenes.length > 12) errors.push('3–12 scenes required');
   if (!Array.isArray(doc?.scenes)) return;
   const evidence = Array.isArray(doc.evidence) ? doc.evidence : [];
@@ -85,7 +85,10 @@ function sceneErrors(doc, errors) {
       else beat = BEATS.indexOf(scene.beat);
     }
     if (typeof scene.headline !== 'string' || !scene.headline.trim() || scene.headline.length > 36) errors.push(`scene ${i}: headline 1–36 characters`);
-    if (!Array.isArray(scene.narration) || !scene.narration.length || scene.narration.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 38)) errors.push(`scene ${i}: narration phrases 1–38 characters`);
+    if (silent) {
+      // A zero-dialogue cut (an import only): its cards say what happens, nobody speaks.
+      if (!Array.isArray(scene.narration) || scene.narration.length) errors.push(`scene ${i}: a cut with no dialogue has no narration phrases`);
+    } else if (!Array.isArray(scene.narration) || !scene.narration.length || scene.narration.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 38)) errors.push(`scene ${i}: narration phrases 1–38 characters`);
     if (scene.body && (!Array.isArray(scene.body) || scene.body.length > 5 || scene.body.some(t => typeof t !== 'string' || t.length > 85))) errors.push(`scene ${i}: up to five body rows of 85 characters`);
     if (scene.asset && !evidence.some(e => e?.path === scene.asset)) errors.push(`scene ${i}: asset must be evidence-bound`);
     if (scene.shot !== undefined && !(doc.schema_version === 2 && doc.line === 'cut' && text(scene.shot))) errors.push(`scene ${i}: shot names a keyframe of the video a cut comes from (line cut only)`);
@@ -138,8 +141,18 @@ function validateV1(doc) {
   return errors;
 }
 
-function validateV2(doc) {
+function validateV2(doc, { imported = false } = {}) {
   const errors = [];
+  // Two things only a finished cut made elsewhere may say (import.mjs): that nobody speaks in it
+  // (`dialogue: false`, no captions, no narration), and that it is an original Short cut from no
+  // long video (`original: true`, no source; its evidence is the cut itself).
+  for (const field of ['dialogue', 'original']) {
+    if (doc?.[field] === undefined) continue;
+    if (!imported) errors.push(`${field} is a field of an imported cut only`);
+    else if (field === 'dialogue' ? doc.dialogue !== false : doc.original !== true) errors.push(field === 'dialogue' ? 'dialogue may only be false (a cut with no spoken words)' : 'original may only be true (a Short cut from no long video)');
+  }
+  const original = imported && doc?.original === true;
+  if (original && doc?.line !== 'drama') errors.push('an original Short is line drama');
   if (!SLUG.test(doc?.slug ?? '')) errors.push('invalid slug');
   if (doc?.format !== 'shorts') errors.push('format must be shorts');
   if (doc?.locale !== 'zh-TW') errors.push('locale must be zh-TW');
@@ -151,6 +164,8 @@ function validateV2(doc) {
     // An experiment says what was tested and what the test cannot tell, and shows its evidence.
     for (const field of ['experiment_summary', 'limitations']) if (!text(doc?.[field])) errors.push(`${field} required`);
     if (!Array.isArray(doc?.evidence) || !doc.evidence.length) errors.push('evidence required');
+  } else if (original) {
+    if (doc?.source !== undefined) errors.push('an original Short has no source: it is cut from no long video');
   } else {
     // A highlight or a vertical short leads back to the video it was cut from. Its address may
     // be left out: `package` reads it from the site, which knows the video once it is public.
@@ -167,13 +182,14 @@ function validateV2(doc) {
   if (doc?.tags !== undefined && (!Array.isArray(doc.tags) || doc.tags.length > MAX_TAGS || doc.tags.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 30 || /[<>,]/.test(t)))) errors.push(`up to ${MAX_TAGS} tags of 1–30 characters`);
   if (doc?.synthetic_media !== undefined && typeof doc.synthetic_media !== 'boolean') errors.push('synthetic_media must be true or false');
   soundErrors(doc, errors);
-  sceneErrors(doc, errors);
+  sceneErrors(doc, errors, { silent: imported && doc?.dialogue === false });
   return errors;
 }
 
-export function validate(doc) {
+/** Why a script is not one; empty when it is. `imported` (import.mjs only) admits `dialogue` and `original`. */
+export function validate(doc, { imported = false } = {}) {
   if (doc?.schema_version === 1) return validateV1(doc);
-  if (doc?.schema_version === 2) return validateV2(doc);
+  if (doc?.schema_version === 2) return validateV2(doc, { imported });
   return ['schema_version must be 1 or 2'];
 }
 
