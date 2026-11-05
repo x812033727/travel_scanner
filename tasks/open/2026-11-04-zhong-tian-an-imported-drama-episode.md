@@ -43,23 +43,31 @@ session needs ("以後就不會漏"). It does not:
 - Left behind in the work directory (`<VIDEO_WORKDIR>/zhong-tian-qu-qi-eNNN-dh/`), and gone when a cloud
   container ends: `cut/final.log` (which clip and take each shot used, where it starts, any hold), the music cues
   `music/cue-*.mp3` (Lyria; a regenerated cue is a different piece, e040's cues already differ from e001's),
-  the first frames (`first-frames/`, paid to draw), and the edit table as it was when cut.
+  the first frames (`first-frames/`, paid to draw), the edit table as it was when cut, the per-line voice files
+  `audio/` and `audio-<lang>/` (the site keeps only the mixed `recordings/`, so a re-cut cannot re-time one line),
+  and the dub timing logs `cut/dub-<lang>.log` (each line's length and speed-up).
 - Series assets live only on the production machine: `<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/refs-dh/` and
   `refs/` (character and set references, incl. Tang Xiaotang's high-collar `tangxiaotang-portrait-t2.png` that
   every costume fix needs, 259 MB + 81 MB) and `sfx/` (the synthesized library, its rain and water are random).
 - e043–e048's edit tables exist only on the unmerged branch `origin/claude/trusting-shannon-g7dl74`
-  (from cf73f4307); e031–e039 have no `final.log` anywhere; their music cues were not found.
+  (from cf73f4307). e033–e039's music is the set in `production/assets/music/` (hash-identical); e031–e032 used an
+  older set, kept on branch `transfer/zt-e031-e032-media` and in PR #2017.
+- Trap: the root `.gitignore` has `*.log`. PR #2017 says it adds e031–e039 `cut/final.log` and `dub-*.log`, but the
+  branch holds none of them. Anything that keeps build logs in git must `git add -f` them and count them afterwards.
+  On 2026-11-05 e033–e039 and e043–e048 `final.log` existed only in cloud work folders (asked those sessions to push).
 
 What was copied by hand on 2026-11-05 (md5-checked), so this task need not redo it:
 `G:\我的雲端硬碟\AI\備份\drama\zhong-tian-qu-qi\_series\` (refs-dh, refs, sfx: 167 files) and
-`...\drama\zhong-tian-qu-qi\_組片資料\` (e040–e042 `final.log` + `music/`, e043–e048 edit tables, README.md).
+`...\drama\zhong-tian-qu-qi\_組片資料\` (e031–e032 whole build data from the transfer branch: edit table, `cut/*.log`,
+`music/`, `first-frames/`, `audio*/`; e040–e042 `final.log` + `music/`; e043–e048 edit tables; README.md). The owner also
+keeps an identical copy of `_series` at `AI\備份\種田娶妻打天下\_series\zhong-tian-qu-qi\`.
 e001–e030 work folders were already archived whole under `AI\備份\種田娶妻打天下\` and
 `AI\備份\drama\zhong-tian-qu-qi\_原始備份\`.
 
 ## Definition of done
 
 - [ ] `import --publish` of a drama episode also sends its build data: `cut/final.log`, the edit table it was cut
-      with, `music/cue-*.mp3`, and the first frames as `kf_*` keyframes; the host accepts them and the full tier
+      with, `music/cue-*.mp3`, `cut/dub-*.log`, the per-line `audio*/` files, and the first frames as `kf_*` keyframes; the host accepts them and the full tier
       copies them to `AI/備份/<series>/<episode>/` (e.g. `build/final.log`, `build/edit.json`, `build/music/`,
       `keyframes/`). An episode without them still imports, and the report says what was missing.
 - [ ] Series-level assets (`_series/<series>/refs*`, `sfx`) have a documented, repeatable way into

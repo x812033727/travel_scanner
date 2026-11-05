@@ -51,7 +51,11 @@
 - 響度各集 -13.7～-16.2 LUFS，合併前統一（建議 -14 LUFS、真峰值 -1.5 dBFS）。
 - 第 31–48 集影格率混雜（23.976／24／48／120 fps），合併前全部轉 24 fps。
 - 不要照 `final.log` 的時間放字幕或配音：實際剪點比剪接表晚，越後面差越多（第 23 集約晚 0.3 s）；第 10 集的 `final.log` 在 total 後還重複了一段 s38–s42。
-- **第 31–48 集備份缺剪接表（`final.log`）**：31–39 集只有剪接設定 `hailuo/edit-dh-e03N.json`（在 main）；40–42 集的 final.log 在 `種田娶妻打天下\zhong-tian-qu-qi-e04N-dh\cut\`、不在 `drama\` 資料夾；43–48 集的剪接設定只在雲端分支 `origin/claude/trusting-shannon-g7dl74`（cf73f4307 起，未合併進 main）。審片用場景偵測代替（`make_log.py`，閾值 0.2，鏡號記成 cNN）。修這幾集時要先把 43–48 集的剪接設定合進 main，重組後的 final.log 一併放回備份資料夾。2026-11-05 已手動補到雲端：`drama\zhong-tian-qu-qi\_series\`（角色參考圖 refs-dh／refs、合成音效庫 sfx，167 檔 md5 核過）與 `_組片資料\`（40–42 集 final.log＋配樂、43–48 集剪接設定）；以後由任務 `2026-11-04-zhong-tian-an-imported-drama-episode` 讓匯入流程自動帶上。31–39 集的配樂沒找到。
+- **第 31–48 集備份缺剪接表（`final.log`）**：31–39 集只有剪接設定 `hailuo/edit-dh-e03N.json`（在 main）；40–42 集的 final.log 在 `種田娶妻打天下\zhong-tian-qu-qi-e04N-dh\cut\`、不在 `drama\` 資料夾；43–48 集的剪接設定只在雲端分支 `origin/claude/trusting-shannon-g7dl74`（cf73f4307 起，未合併進 main）。審片用場景偵測代替（`make_log.py`，閾值 0.2，鏡號記成 cNN）。修這幾集時要先把 43–48 集的剪接設定合進 main，重組後的 final.log 一併放回備份資料夾。2026-11-05 已手動補到雲端：`drama\zhong-tian-qu-qi\_series\`（角色參考圖 refs-dh／refs、合成音效庫 sfx，167 檔 md5 核過）與 `_組片資料\`（40–42 集 final.log＋配樂、43–48 集剪接設定）；以後由任務 `2026-11-04-zhong-tian-an-imported-drama-episode` 讓匯入流程自動帶上。2026-11-05 第二輪：
+  - 第 31–32 集：整份組片資料從分支 `transfer/zt-e031-e032-media` 補進 `_組片資料\e031`、`e032`（剪接設定、`cut/final.log`、`cut/dub-*.log`、舊版配樂、第 31 集小樣首格、逐句配音），md5 核過；網站備份的片段跟分支逐檔一致。
+  - 第 33–39 集：配樂就是 repo `production/assets/music/` 那組（雜湊一致）；首格本來就沒有（直接用參考圖生片段）。`final.log` 與 `dub-*.log` 原本要隨 PR #2017 進 repo，但根目錄 `.gitignore` 的 `*.log` 把它們全擋掉了，分支裡一個也沒有；目前只在雲端工作資料夾，已請那個 session 用 `git add -f` 補推。
+  - 第 43–48 集：`final.log`、`dub-*.log`、配樂也只在雲端工作資料夾，已請「runpod 種田第43集」推到 `transfer/zt-e043-e048-cutlogs`。
+  - 兩邊沒推上來之前，這幾集重剪只能用剪接設定重組或用場景偵測；配樂可以從 repo 的 `assets/music/` 取。
 - 第一季 60 集，目前能合併的是 1–48 集（1–30 集約 46 分鐘、31–48 集約 30 分鐘，合計約 77 分鐘，剪掉片名卡與重複鏡後會再短幾分鐘）；49–60 集還沒拍；站主 2026-11-05 決定合併範圍是第 1–49 集，第 49 集拍完再合併。
 
 ## 第 1 集（113.5 s，50 鏡，2026-11-04 審）
