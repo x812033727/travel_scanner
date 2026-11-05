@@ -1,0 +1,254 @@
+{
+  "status": "PRIOR_HEAD_LIVE_READBACK",
+  "checked_at": "2026-11-03T05:31:39.170466+00:00",
+  "head": "faeba1adac4eba4fa1993af0e0de8d45dea1edc2",
+  "counts": {
+    "SUCCESS": 23
+  },
+  "documentation": "本批開始時讀回前版 `faeba1adac`：23 項成功、0 項執行中、0 項失敗。這是前版CI，本批新提交需另讀最新結果；PR1971仍為draft並保留no-auto-merge。歷史a881970的full-stack-smoke失敗紀錄保留於[前次分診](reviews/wave48-prior-ci-triage.json)，不改寫歷史結果。",
+  "pr_snapshot": {
+    "headRefOid": "faeba1adac4eba4fa1993af0e0de8d45dea1edc2",
+    "isDraft": true,
+    "labels": [
+      {
+        "id": "LA_kwDOUIo29c8AAAAC4jqyAw",
+        "name": "no-auto-merge",
+        "description": "Auto-update workflow leaves this pull request alone",
+        "color": "B60205"
+      }
+    ],
+    "state": "OPEN",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:16:01Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740597882",
+        "name": "api-checks",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:19:23Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593639/job/125740597634",
+        "name": "food-map-reservations",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "Food map and reservations"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:17:34Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593810/job/125740598526",
+        "name": "planner-browser",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "Planner UX"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:29:43Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593555/job/125740597655",
+        "name": "lighthouse",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "SEO audit"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:17:31Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593643/job/125740598318",
+        "name": "discovery-browser",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "Travel discovery acceptance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:24:37Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593671/job/125740597951",
+        "name": "smoke",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "Video tooling"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:16:35Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593649/job/125740597875",
+        "name": "image",
+        "startedAt": "2026-11-03T05:13:03Z",
+        "status": "COMPLETED",
+        "workflowName": "Video worker image"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:18:37Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740598024",
+        "name": "api-tests (1/4)",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:20:11Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740598022",
+        "name": "api-tests (2/4)",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:19:23Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740597995",
+        "name": "api-tests (3/4)",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:21:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740598062",
+        "name": "api-tests (4/4)",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:18:58Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740597889",
+        "name": "web-checks",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:15:33Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740597918",
+        "name": "web-unit (1/3)",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:17:57Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740598306",
+        "name": "web-unit (2/3)",
+        "startedAt": "2026-11-03T05:13:03Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:17:39Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740598044",
+        "name": "web-unit (3/3)",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:19:06Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740597894",
+        "name": "web-e2e (1/3)",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:17:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740597902",
+        "name": "web-e2e (2/3)",
+        "startedAt": "2026-11-03T05:13:12Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:18:36Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740598005",
+        "name": "web-e2e (3/3)",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:18:50Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740597537",
+        "name": "video-tests",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:16:22Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740598186",
+        "name": "containers",
+        "startedAt": "2026-11-03T05:13:07Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:28:21Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125740598078",
+        "name": "full-stack-smoke",
+        "startedAt": "2026-11-03T05:13:02Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:21:05Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125743159510",
+        "name": "api",
+        "startedAt": "2026-11-03T05:21:03Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-03T05:19:10Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/x812033727/travel_scanner/actions/runs/41582593563/job/125742555809",
+        "name": "web",
+        "startedAt": "2026-11-03T05:19:08Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ]
+  }
+}

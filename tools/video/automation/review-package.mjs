@@ -1,5 +1,14 @@
-// An imported video's upload package, fetched from the site's review store into video_work so the
+// An off-host video's upload package, fetched from the site's review store into video_work so the
 // Drive backup (backup.mjs, docs/videos/BACKUP.md) can copy it.
+//
+// Since 2026-11-03 also a video sent by hand with `review-push` (payload `hand_pushed`: a cloud
+// session's 奇聞檔案局 episodes) and the newest approved language batch of either kind
+// (`review-push --gate languages`: dub tracks, captions, descriptions and per-language thumbnails
+// approved after the upload confirmation). The owner wants a whole copy of every video on the host
+// before it goes up; the site names both reviews in `review_package` (apps/api/app/video_backup).
+// Such a package also carries the rest of the full tier (tools/video/review/full-tier.mjs): each
+// keyframe (`kf_<name>`), keyframes/manifest.json, narration.wav and timeline.json, placed back
+// where they came from.
 //
 // `import --publish` (tools/video/import/import.mjs) runs where the video was made, a cloud
 // session's Colab drama for one, and sends the package to the review store: metadata.json, the
@@ -32,9 +41,23 @@ export const DOWNLOADS_PER_ROUND = 40;
 const SHA256 = /^[0-9a-f]{64}$/;
 const LOCALE = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?$/;
 const NAME = /^[A-Za-z0-9][A-Za-z0-9_-]{0,34}$/;
+// A keyframe's name as review-push sends it (tools/video/review/full-tier.mjs): kf_ and up to 37 more.
+const KEYFRAME = /^[A-Za-z0-9][A-Za-z0-9_-]{0,36}$/;
 const IMAGE = { "image/png": "png", "image/jpeg": "jpg" };
 const AUDIO = { "audio/mp4": "m4a", "audio/mpeg": "mp3", "audio/wav": "wav" };
+const BUILD_MUSIC = { "audio/mpeg": "mp3", "audio/wav": "wav" };
 const CAPTION = { "application/x-subrip": "srt", "text/vtt": "vtt" };
+// `review-push` sends captions as text/plain (tools/video/package/check.mjs packageFiles): SubRip.
+const PLAIN_CAPTION = "text/plain";
+// A dub role as tools/video/core/stages.mjs dubRole writes it: the locale lowercased with `_` for
+// `-` (dub_pt, dub_pt_br). Read back as the locale package names files by (pt, pt-BR).
+const ROLE_LOCALE = /^([a-z]{2,3})(?:_([a-z0-9]{2,8}))?$/;
+function localeOfRole(rest) {
+  if (LOCALE.test(rest)) return rest;
+  const match = ROLE_LOCALE.exec(rest);
+  if (!match) return null;
+  return match[2] ? `${match[1]}-${match[2].length === 2 ? match[2].toUpperCase() : match[2]}` : match[1];
+}
 
 /**
  * Where a package file goes in the work directory, relative to it, as `package` lays it out; null
@@ -49,10 +72,44 @@ export function placeOf(role, contentType) {
   if (variant && IMAGE[contentType]) return `upload/thumbnail-${variant[1]}.${IMAGE[contentType]}`;
   const [prefix, rest] = [r.slice(0, r.indexOf("_") + 1), r.slice(r.indexOf("_") + 1)];
   if (prefix === "clip_") return NAME.test(rest) && contentType === "video/mp4" ? `clips/${rest}.mp4` : null;
+  // The rest of the full tier a package made off the host carries (review-push, full-tier.mjs):
+  // each back where it came from in the work directory.
+  if (r.startsWith("kf_")) {
+    const name = r.slice(3);
+    return KEYFRAME.test(name) && IMAGE[contentType] ? `keyframes/${name}.${IMAGE[contentType]}` : null;
+  }
+  if (r === "keyframes_manifest") return contentType === "application/json" ? "keyframes/manifest.json" : null;
+  if (r === "full_narration") return contentType === "audio/wav" ? "narration.wav" : null;
+  if (r === "full_timeline") return contentType === "application/json" ? "timeline.json" : null;
+  // The line recordings (tools/video/import/recordings.mjs): one wav a locale and the manifest that
+  // cuts them back into the original line files (`node tools/video/import/recordings.mjs unpack`).
+  if (r === "recordings_manifest") return contentType === "application/json" ? "recordings/manifest.json" : null;
+  // An imported drama's build data (tools/video/import/build.mjs): the cut and dub logs, the music cues
+  // and the edit table, under recut/ (not build/, which the full tier leaves out as remakeable); the
+  // first frames come as kf_.
+  const build = /^build_(log|music|edit)-([A-Za-z0-9][A-Za-z0-9_-]{0,27})$/.exec(r);
+  if (build) {
+    const [, kind, name] = build;
+    if (kind === "log") return contentType === "text/plain" ? `recut/cut/${name}.log` : null;
+    if (kind === "music") return BUILD_MUSIC[contentType] ? `recut/music/${name}.${BUILD_MUSIC[contentType]}` : null;
+    return contentType === "application/json" ? `recut/${name}.json` : null;
+  }
+  if (prefix === "recording_") return LOCALE.test(rest) && contentType === "audio/wav" ? `recordings/${rest}.wav` : null;
+  // A language batch's dub track the check gave up on (uncheckedDubRole): the owner may still
+  // upload it by hand, so it goes where the worker keeps its own tracks, outside the package; the
+  // full tier backs it up under dubs/未進上傳包/ (backup.mjs planFiles).
+  if (r.startsWith("dub_unchecked_")) {
+    const locale = localeOfRole(r.slice("dub_unchecked_".length));
+    return locale && AUDIO[contentType] ? `dubs/${locale}.${AUDIO[contentType]}` : null;
+  }
+  if (prefix === "dub_") {
+    const locale = localeOfRole(rest);
+    return locale && AUDIO[contentType] ? `upload/dubs/${locale}.${AUDIO[contentType]}` : null;
+  }
   if (!LOCALE.test(rest)) return null;
+  if (prefix === "captions_" && contentType === PLAIN_CAPTION) return `upload/captions/${rest}.srt`;
   if (prefix === "captions_" && CAPTION[contentType]) return `upload/captions/${rest}.${CAPTION[contentType]}`;
   if (prefix === "description_" && contentType === "text/plain") return `upload/description.${rest}.txt`;
-  if (prefix === "dub_" && AUDIO[contentType]) return `upload/dubs/${rest}.${AUDIO[contentType]}`;
   if (prefix === "thumbnail_" && contentType === "image/jpeg") return `upload/thumbnails/${rest}.jpg`;
   return null;
 }
@@ -103,29 +160,46 @@ function removePlaced(workdir, relative) {
 export async function fetchReviewPackage({ base, video, client, budget = DOWNLOADS_PER_ROUND, now = new Date() }) {
   const wanted = video?.review_package;
   if (!wanted || typeof wanted.review_id !== "string" || !SHA256.test(String(wanted.content_sha256))) return null;
+  // The newest approved language batch, when the site names one.
+  const batch = typeof wanted.languages_review_id === "string" && SHA256.test(String(wanted.languages_sha256)) ? { review_id: wanted.languages_review_id, content_sha256: wanted.languages_sha256 } : null;
   const workdir = path.join(base, video.slug);
   if (existsSync(path.join(workdir, "auto.json"))) return null;
   const record = readJson(path.join(workdir, PACKAGE_RECORD), null);
   if (existsSync(workdir) && !record) return null; // made here by hand: never written over
-  if (record?.complete && record.review_id === wanted.review_id) return null;
+  // `files`: how many files the site's reviews name; files can join an approved package (the
+  // full backup tier sent after the owner approved it), and a changed count fetches again.
+  const listed = Number.isInteger(wanted.files) ? wanted.files : null;
+  if (record?.complete && record.review_id === wanted.review_id && (record.languages_review_id ?? null) === (batch?.review_id ?? null) && (listed === null || record.listed === listed)) return null;
   if (budget <= 0) return { line: `backup: ${video.slug}: its upload package waits for the next round`, downloads: 0, complete: false };
 
   const project = await client.project(video.slug);
-  const review = (project?.reviews ?? []).find((each) => String(each.id) === wanted.review_id);
-  if (!review || review.gate !== "publish" || review.status !== "approved" || review.content_sha256 !== wanted.content_sha256) {
+  const reviews = project?.reviews ?? [];
+  const named = (wantedReview, gate) => {
+    const review = reviews.find((each) => String(each.id) === wantedReview.review_id);
+    return review && review.gate === gate && review.status === "approved" && review.content_sha256 === wantedReview.content_sha256 ? review : null;
+  };
+  const review = named(wanted, "publish");
+  if (!review) {
     return { line: `backup: ${video.slug}: the site no longer has the approved upload package it named; the next round asks again`, downloads: 0, complete: false };
   }
-  const files = [];
-  const places = new Set();
-  for (const item of review.files ?? []) {
-    const where = placeOf(item?.role, item?.content_type);
-    if (!where || places.has(where) || !SHA256.test(String(item.sha256)) || !(Number(item.size) > 0)) continue;
-    places.add(where);
-    files.push({ role: item.role, path: where, sha256: item.sha256, size: Number(item.size) });
+  const languages = batch ? named(batch, "languages") : null;
+  if (batch && !languages) {
+    return { line: `backup: ${video.slug}: the site no longer has the approved language batch it named; the next round asks again`, downloads: 0, complete: false };
   }
+  // The package's files, then the language batch's: approved after it, the batch's dub track,
+  // captions and descriptions take the place of the package's own for the same language.
+  const byPlace = new Map();
+  for (const item of [...(review.files ?? []), ...(languages?.files ?? [])]) {
+    const where = placeOf(item?.role, item?.content_type);
+    if (!where || !SHA256.test(String(item.sha256)) || !(Number(item.size) > 0)) continue;
+    byPlace.set(where, { role: item.role, path: where, sha256: item.sha256, size: Number(item.size) });
+  }
+  const files = [...byPlace.values()];
+  const places = new Set(byPlace.keys());
+  const batchIds = batch ? { languages_review_id: batch.review_id, languages_sha256: batch.content_sha256 } : {};
   // A record before the first file: the folder is this module's from now on, and the backup waits.
   mkdirSync(workdir, { recursive: true });
-  const started = { schema_version: 1, review_id: wanted.review_id, content_sha256: wanted.content_sha256, complete: false, started_at: now.toISOString(), files: record?.files ?? [], written: record?.written ?? [] };
+  const started = { schema_version: 1, review_id: wanted.review_id, content_sha256: wanted.content_sha256, ...batchIds, complete: false, started_at: now.toISOString(), files: record?.files ?? [], written: record?.written ?? [] };
   atomicWrite(path.join(workdir, PACKAGE_RECORD), `${JSON.stringify(started, null, 2)}\n`);
 
   const partial = path.join(workdir, PARTIAL_DIR);
@@ -183,11 +257,11 @@ export async function fetchReviewPackage({ base, video, client, budget = DOWNLOA
     if (typeof old === "string" && !kept.has(old)) removePlaced(workdir, old);
   }
   written = written.sort();
-  const done = { schema_version: 1, review_id: wanted.review_id, content_sha256: wanted.content_sha256, complete: true, fetched_at: now.toISOString(), files: files.filter((entry) => !gone.includes(entry.path)), written, gone };
+  const done = { schema_version: 1, review_id: wanted.review_id, content_sha256: wanted.content_sha256, ...batchIds, ...(listed !== null ? { listed } : {}), complete: true, fetched_at: now.toISOString(), files: files.filter((entry) => !gone.includes(entry.path)), written, gone };
   atomicWrite(path.join(workdir, PACKAGE_RECORD), `${JSON.stringify(done, null, 2)}\n`);
   const clips = done.files.filter((entry) => entry.path.startsWith("clips/")).length;
   return {
-    line: `backup: ${video.slug}: fetched its upload package from the site (${done.files.length} file(s), ${clips} clip(s))${gone.length ? `; no longer in the review store: ${gone.slice(0, 3).join(", ")}${gone.length > 3 ? ", …" : ""}` : ""}`,
+    line: `backup: ${video.slug}: fetched its upload package${batch ? " and language batch" : ""} from the site (${done.files.length} file(s), ${clips} clip(s))${gone.length ? `; no longer in the review store: ${gone.slice(0, 3).join(", ")}${gone.length > 3 ? ", …" : ""}` : ""}`,
     downloads,
     complete: true,
   };

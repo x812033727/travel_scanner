@@ -10,7 +10,14 @@
 
 - 成片只存在 VPS。`video_work/<slug>/` 由 [`tidy.mjs`](../../tools/video/automation/tidy.mjs)
   在上傳 7 天後清掉 `final.mp4`、配音、clips、keyframes；審核區的 mp4 也由
-  `prune_published_previews` 在 7 天後刪除。YouTube 上的版本是轉碼過的，不能當原檔。
+  `prune_published_previews` 在 7 天後刪除（2026-11-03 起要等備份完成，見〈跟 tidy 的關係〉）。
+  YouTube 上的版本是轉碼過的，不能當原檔。
+
+站主 2026-11-03 定的三條規則（之前沒備份的不追；票 `2026-11-03-*` 六張）：
+1. 上架前，每支影片在 VPS 上都要有一份完整的檔案，不論在哪裡做的，除非站主放棄並刪除它。
+2. 站主刪除影片時，VPS 上那支的檔案整支刪掉。
+3. 上架後先備份到雲端硬碟、確認完整，才把 VPS 上那支整支刪掉：上架、備份核對完整、所有勾選的
+   語言都已核准或略過，三樣齊了才刪；之後要補做就從雲端還原。
 - 漫劇與動畫（偶的江湖等）的 clips 是付費買的，重拍要再花點數，而且不一定拍得回同一個畫面。
 - 加密的系統備份（[`2026-10-07-backup-google-drive-offsite`](../../tasks/open/2026-10-07-backup-google-drive-offsite.md)）
   是給災難還原用的，檔名也加密，站主在 G: 看不懂。影片備份要讓站主直接打開，所以是
@@ -104,8 +111,8 @@ AI/備份/
       dubs/<語言>.m4a
       backup.json
       _舊版/<時間>/…                 （之後被覆蓋的舊檔）
-      （完整層級另外有）clips/ keyframes/ characters/ timeline.json narration.wav
-                       （匯入的影片：clips/ 是 import --publish 送的每鏡片段）
+      （完整層級另外有）clips/ keyframes/ characters/ recordings/ timeline.json narration.wav
+                       （匯入的影片：clips/ 是 import --publish 送的每鏡片段，recordings/ 是逐句原始錄音）
                        dubs/未進上傳包/<語言>.m4a、captions/未進上傳包/<語言>.srt、
                        上傳包缺的 thumbnails/<語言>.jpg
   Shorts/<shorts_series 或 shorts_line>/<slug>/…
@@ -113,8 +120,13 @@ AI/備份/
 ```
 
 **系列鍵**依序取第一個有值的：Shorts 一律放在 `Shorts/<shorts_series 或 shorts_line>/` →
-`series_slug` → slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`。
-都沒有就放「其他」。
+`series_slug` → 匯入的劇（分類 `drama`、沒有 `series_slug`、slug 是 `<劇>-e033`、`<劇>-e001-005`、`-v2` 這種）的 `<劇>` →
+slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`。都沒有就放「其他」。
+
+匯入的劇放在分類資料夾底下自己的資料夾：`drama/<劇>/<集>/`，例如 `drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033/`
+（站主 2026-11-01：不同劇要有不同資料夾）。在那之前備份在 `drama/<集>/` 的，網站在 worker 設定裡多給一個
+`moved_from`，worker 在 Drive 裡把舊資料夾整個搬過去（`rclone moveto`，伺服器端搬移、不重傳），再回報新資料夾；
+網站之後就記新資料夾。搬不動的那一輪不備份那支影片，免得在新位置再傳一份。
 
 | 系列鍵 | 預設資料夾名稱 |
 | --- | --- |
@@ -128,7 +140,7 @@ AI/備份/
 
 **資料夾名稱只決定一次。** 第一次備份時，實際用到的資料夾寫進
 `video_projects.backup.folder`，之後補備份都沿用它。之後改系列顯示名稱，不會讓同一支
-影片被分到兩個資料夾。
+影片被分到兩個資料夾。唯一的例外是上面匯入的劇從 `drama/<集>/` 搬到 `drama/<劇>/<集>/` 那一次。
 
 ## 每一層備份哪些檔
 
@@ -139,8 +151,8 @@ AI/備份/
   `thumbnails/<語言>.jpg`；`description.<語言>.txt` 放進 `descriptions/<語言>.txt`。上傳包
   裡沒有縮圖時，用工作資料夾根目錄的 `thumbnail.jpg`。Shorts 的上傳包是 `final.mp4`、
   `zh-TW.srt`、`cover.png`、`titles.json`。
-- **完整**：基本的全部，加上 `clips/`、`keyframes/`、`characters/`、`timeline.json`、
-  `narration.wav`；系列共用的 `_series/<系列>/characters/` 放在系列資料夾的 `_共用/`。
+- **完整**：基本的全部，加上 `clips/`、`keyframes/`、`characters/`、`recut/`（匯入漫劇的組片資料，見下面
+  「匯入的影片」第 6 步）、`timeline.json`、`narration.wav`；系列共用的 `_series/<系列>/characters/` 放在系列資料夾的 `_共用/`。
   另外照站主勾的語言（`languages.json`）補上傳包沒有的東西：勾了配音、工人錄出音軌
   （`dubs/<語言>.m4a`／`.mp3`／`.wav`）卻沒進上傳包的（被放棄的，或還沒核准的），放進
   `dubs/未進上傳包/<語言>.m4a`；勾了字幕（或配音，配音一定帶字幕）、工作資料夾有
@@ -191,7 +203,7 @@ AI/備份/
    送 10 筆「排入」或補送的回報。失敗的下一輪重試；連續失敗 3 次標記為 `failed`，寫入
    稽核紀錄，之後每 6 小時再試一次。工作根目錄的 `STOP` 檔也會停止備份。
 
-## 匯入的影片
+## 匯入的影片與手動推送的影片
 
 雲端 session 做的影片（例如第 31 集起在 Colab 做的種田娶妻打天下）用
 `node tools/video/cli.mjs import --from DIR` 送上站台：成片、字幕、配音、縮圖和 `metadata.json`
@@ -212,23 +224,96 @@ AI/備份/
    片段不寫進 `metadata.json`，所以上架確認還在等站主時重送一次 `--publish`，就把片段補進同一筆
    審核；**已經核准**的那一份不會再收檔，工具會說片段沒送。YouTube 上傳、手動上傳包和後台頁面
    都不讀 `clip_` 檔。
-2. **worker 先取回來**：網站列給 worker 的影片裡，匯入的長片（核准的上架確認帶 `imported`）
-   多一個 `review_package`（審核 id 與 `metadata.json` 的 sha256）。worker 每一輪在備份之前用
+2. **worker 先取回來**：網站列給 worker 的影片裡，匯入的長片（核准的上架確認帶 `imported`）、
+   手動送上來的 Shorts（帶 `hand_pushed`，2026-11-02 起），以及在別處做好、用 `review-push` 送上來的長片
+   （工作資料夾沒有 `auto.json` 時 `review-push` 每一關都帶 `hand_pushed`，2026-11-03 起：雲端 session 做的
+   奇聞檔案局在這之前都沒備份到）多一個 `review_package`（審核 id 與 `metadata.json` 的 sha256），
+   有核准的語言批次時再加上最新那一批（`languages_review_id`、`languages_sha256`）。worker 自己做的影片
+   兩個標記都沒有，檔案本來就在 video_work。worker 每一輪在備份之前用
    影片工具權杖從審核區下載這一包（跟 `review-files` 同一條路由），逐檔比對 sha256 與大小，排成
    `package` 的樣子：`upload/final.mp4`、`upload/metadata.json`、`upload/thumbnail.<副檔名>`、
    `upload/captions/<語言>.srt`、`upload/dubs/<語言>.<副檔名>`、從 `metadata.json` 寫出
-   `upload/description.<語言>.txt`，片段放 `clips/<鏡>.mp4`。紀錄寫在
+   `upload/description.<語言>.txt`，片段放 `clips/<鏡>.mp4`。語言批次（上架後才核准的配音、字幕、說明、
+   各語縮圖）接在上傳包後面排，同一個位置以批次的為準；檢查沒過、站主可以手動上傳的配音
+   （`dub_unchecked_<語言>`）放 `dubs/<語言>.<副檔名>`，完整層級照 `dubs/未進上傳包/` 備份。網站核准新的
+   一批時，下一輪只抓新的檔，上一批單獨放的檔從主機移走（雲端留著）。`review-push` 的字幕是
+   `text/plain`，一樣當 `.srt` 放。紀錄寫在
    `video_work/<slug>/review-package.json`；取到一半的不備份，下一輪接著取。每輪最多下載 40 個
    檔（審核區每個權杖每小時 600 個）。程式在
    [`review-package.mjs`](../../tools/video/automation/review-package.mjs)。
 3. **然後照一般流程備份**：完整層級把 `clips/` 一起複製到 `AI/備份/<系列>/<集>/clips/`，
    `rclone check` 核對，網站的回報會數到片段的數量（`contents.clips`）。
+4. **逐句原始錄音也跟著走**（2026-11-01，票 `2026-11-01-zhong-tian-the-line-recordings-travel`）：`import --publish` 把那一集工作資料夾的
+   `audio/`（zh-TW）與 `audio-<語言>/`（各配音，連同每句的 `.json`）打包成每種語言一個 wav（每句的取樣接在一起，可以直接播放）加
+   `manifest.json`（每句的位置、檔頭、雜湊與 `.json`），角色 `recording_<語言>` 與 `recordings_manifest`，都是網站本來就收的類型。
+   來源是 `--recordings DIR`，沒給就用 `--clips` 那個資料夾的上一層。metadata.json 記下 manifest 的雜湊（`recordings_sha256`），
+   所以補送錄音是一筆新的上架確認，要站主再核准一次。worker 放到 `recordings/`，完整層級複製到 `AI/備份/<系列>/<集>/recordings/`。
+   要改某一句時，把那個資料夾抓回來，`node tools/video/import/recordings.mjs unpack <recordings 資料夾> <那集的工作資料夾>`
+   就還原成原本的每一句檔，一個位元組都不差。
+
+5. **`review-push` 也帶完整層級**（2026-11-03，票 `2026-11-03-review-push-sends-the-full-backup`）：在別處做的影片
+   （工作資料夾沒有 `auto.json`）`review-push --gate publish` 除了上傳包，也送完整層級的其他檔
+   （[`full-tier.mjs`](../../tools/video/review/full-tier.mjs)）：每張分鏡圖 `kf_<名稱>`（一集奇聞檔案局約 230–320 張）、
+   `keyframes_manifest`、`full_narration`（narration.wav）、`full_timeline`（timeline.json）、`clips/` 的 `clip_<鏡>`，
+   以及照 `import` 的方式打包的逐句錄音（`recording_<語言>`、`recordings_manifest`，工作資料夾的 `audio/`、`audio-<語言>/`）。
+   網站把這些另外計數：`kf_` 最多 400 個、`clip_` 120 個、其他 24 個，都不占每關 48 個的上限；`kf_` 與 `clip_` 只收在
+   上架確認這一關（`apps/api/app/video_reviews/clips.py`）。名稱放不進角色（字母、數字、`-`、`_`，最多 37 個字）的檔不送，
+   原因寫在 payload 的 `full_tier.problems`。worker 取回時放回原位：`keyframes/<名稱>.<副檔名>`、`keyframes/manifest.json`、
+   `narration.wav`、`timeline.json`。一集三百多個檔，worker 每輪抓 40 個，約八、九輪抓完；抓完之前不備份。
+   worker 自己做的影片不送這些（檔案本來就在 video_work）。審核區只在備份完成後刪 mp4，這些圖與音檔目前會一直留在審核區
+   （一集約 180 MB），整支清除是 `2026-11-03-purge-a-video-from-the-host` 的事。
+   **已經核准的上架確認也收**（2026-11-03，B01、B02 在這之前就核准了）：同一份 `metadata.json` 再送一次時，網站把
+   其中只有備份讀的檔（`kf_`、`clip_`、`recording_`、`keyframes_manifest`、`full_narration`、`full_timeline`、
+   `recordings_manifest`）加進那筆已核准的審核，條件是其他檔與站主核准的一模一樣；核准、payload 都不動，不必重新核准。
+   網站給 worker 的 `review_package` 帶上兩筆審核的檔數（`files`），檔數變了 worker 就再抓一次。
+
+6. **組片資料也跟著走**（2026-11-05，票 `2026-11-04-zhong-tian-an-imported-drama-episode`）：站主審完種田第一季要整季
+   重剪時，發現第 31–48 集的剪接紀錄、配樂、剪接設定都只在雲端工作資料夾，有幾集是事後從別的 session 撈回來的。站主：
+   「以後備份也要一起備份」。`import --publish` 現在從錄音同一個工作資料夾（`--clips` 的上一層或 `--recordings`）再帶
+   （[`build.mjs`](../../tools/video/import/build.mjs)）：
+
+   | 工作資料夾裡 | 角色 | worker 放到 | 是什麼 |
+   | --- | --- | --- | --- |
+   | `cut/*.log` | `build_log-<名稱>`（text/plain） | `recut/cut/<名稱>.log` | `final.log`（每鏡用哪個 take、起點、長度、停格）、`dub-<語言>.log`（每句配音長度與加速倍率） |
+   | `music/*.mp3`、`.wav` | `build_music-<名稱>` | `recut/music/<名稱>.<副檔名>` | 這集用的配樂 cue；重新生成會是別首 |
+   | `edit*.json`，或 `--edit FILE` | `build_edit-<名稱>`（application/json） | `recut/<名稱>.json` | 剪接設定；在雲端通常是 repo 的 `hailuo/edit-dh-eNNN.json`，要用 `--edit` 指給它 |
+   | `first-frames/*.png`、`.jpg` | `kf_<名稱>` | `keyframes/<名稱>.<副檔名>` | 付費畫的首格（`sNN-tK.png`）；直接用參考圖生片段的集數沒有 |
+
+   名稱是 1–28 個字母、數字、`-`、`_`（角色最長 40 字）。網站另外計數：`build_` 最多 40 個，只收在上架確認這一關
+   （`apps/api/app/video_reviews/clips.py` `MAX_BUILD_FILES`）。`metadata.json` 記一個總雜湊 `build_sha256`，所以補送是一筆
+   新的上架確認。工作資料夾少了其中哪樣，工具照送，但會印出「build data not found (not backed up)」並寫在結果裡，送之前看一眼。
+   放在 `recut/` 而不是 `build/`：`build/` 是一般流程可以重算的中間檔，任何層級都不備份。
+
+   重剪一集要的檔、在雲端的位置：片段 `clips/`、逐句配音 `recordings/`（用 `recordings.mjs unpack` 拆回 `audio/`、
+   `audio-<語言>/`，2026-11-05 起還有 `segments-v4/` 對時後的版本）、組片資料 `recut/`、首格 `keyframes/`；稿子
+   （`video.json`、`overlays.json`）與剪接設定在 repo。
+
+7. **系列共用的參考圖與音效**：`_series/<系列>/` 的 `refs-dh/`、`refs/`（角色、服裝、場景參考圖）與 `sfx/`（合成音效庫，
+   雨聲水聲是隨機的，重做會不一樣）不屬於哪一集，上傳包不帶，主機也沒有。在存著它們的那台電腦上、每次新增或改了參考圖之後跑：
+
+   ```bash
+   node tools/video/import/series-backup.mjs <VIDEO_WORKDIR>/_series/zhong-tian-qu-qi "G:/我的雲端硬碟/AI/備份/drama/zhong-tian-qu-qi/_series"
+   ```
+
+   只複製不一樣的檔（先比大小再比 sha256），雲端多的檔不刪（換掉的參考圖留著舊版），並在目的地寫 `SHA256SUMS`
+   （[`series-backup.mjs`](../../tools/video/import/series-backup.mjs)）。
 
 只動自己放的東西：有 `auto.json` 的（worker 做的）和沒有 `review-package.json` 卻已經存在的
 資料夾（手動做的）一律不碰；換版後新的上架確認核准時，只替換上一包放的檔案，舊檔照第 4 步留在
 雲端 `_舊版/`。審核區已經刪掉的檔案（上 YouTube 7 天後的 mp4）記成取不到，其他照備份，網站列出
 缺什麼。tidy 只清有 `auto.json` 的影片，所以這些資料夾不會被清，留在主機上（每集約成片加 300 MB
 片段）。
+
+## worker 自己做的 Shorts
+
+worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts.mjs`](../../tools/video/automation/shorts.mjs)）不在
+`video_work/<slug>/`，而在 `video_work/_shorts/<slug>/`：`lab.json` 記著目前那一版的 build 資料夾（`build`），每次重建都是旁邊的
+新資料夾。2026-11-03 之前備份只讀 `video_work/<slug>/`，這些 Shorts 從來沒備份過，網站一直顯示「還沒排入」。
+現在 `backup.mjs` 的 `videoDir` 在 `video_work/<slug>/` 不存在時改看 `_shorts/<slug>/lab.json` 的 `build`：那個資料夾必須在
+`_shorts/<slug>/` 裡面、而且有 `upload/final.mp4`，才拿它當這支 Short 的工作資料夾，照一般流程備份它的上傳包
+（`final.mp4`、`zh-TW.srt`、`cover.png`、`titles.json`）。`backup-state.json`、`backup.json` 也寫在那個 build 裡：重建出新的一版
+就是新的成片，會再備份一次，舊版照第 4 步留在雲端 `_舊版/`。tidy 跳過 `_` 開頭的資料夾，這些 Shorts 的清除由
+`2026-11-03-purge-a-video-from-the-host` 處理（票 `2026-11-03-back-up-the-worker-s-own`）。
 
 ## 跟 tidy 的關係
 
@@ -238,9 +323,39 @@ AI/備份/
 主機還沒設定 rclone。保留的原因寫在 tidy 的紀錄裡（`not in Google Drive yet: …`），
 每輪也會印出有幾支因此保留。
 
-備份關閉時，或網站還沒有這些 API（回 404）時，tidy 照原本的方式運作。
+**2026-11-03 起（站主的規則，票 `2026-11-03-purge-a-video-from-the-host`）**：已上 YouTube 的影片，三樣齊了就整支離開主機，
+不再等 7 天：(1) 有 YouTube ID；(2) 備份 worker 與網站都是 `done`、沒有新增或改過的檔案；(3) 語言已決定、沒有等站主的審核、
+沒有再做一次的配音請求，每個勾選的語言部分都做好或略過，配音要「已上傳」（站主核准語言批次＝已放上 Studio）或略過。
+這時 tidy 把 `video_work/<slug>/` 裡**全部**刪掉，只留 `auto.json`、`backup-state.json`、`backup.json`
+（匯入或手動資料夾另有 `review-package.json`、`tidied.json`），幾 KB，讓 worker 與備份知道這支已經做完、已經在雲端，
+不會當成新影片或重新排備份；`auto.json` 記下 `tidied.purged: true`。沒有 `auto.json` 的資料夾（`import`、`review-push`
+取回的、手動做的）同樣處理，條件看網站那一列。
+- **一律不刪**：備份關閉、系列層級設成「關閉」、這一輪讀不到備份狀態、配額不足、缺檔。以前備份關閉時
+  tidy 照舊刪，現在主機保留。
+- **完整層級多備份這些**（刪了就只剩雲端）：逐句旁白 `audio/`、各語配音的逐句檔（雲端在 `dub-lines/<語言>/`）、翻譯工作表
+  `i18n/`、`approvals.json`、`languages.json`。`segments/`、`build/`、`frames/`、審核預覽可以重算，不備份。
+- **審核區同一條規則，但等 7 天**：`prune_published_previews` 對符合上面三樣的影片把審核區裡這支的**所有**檔案刪掉（`_done_with`），
+  不只 mp4；資料庫的審核紀錄保留。2026-11-04 起（站主，票 `2026-11-03-admin-upload-zip-fails-to-download`）要等三樣齊了之後
+  再過 `PREVIEW_RETENTION`（7 天）才刪：「齊了」的時間取備份核對時間（`backup.checked_at`）、語言決定時間、任何審核的決定時間、
+  站主設的公開時間裡最晚的一個（`_done_since`），備份紀錄沒有可讀的時間就不刪。原因：站主核准語言批次就算「配音已放上 Studio」，
+  但實際上是核准後才在 /admin/videos 按「全部下載」拿配音去上傳；daily-ai-20261103 在 11-03 23:05 備份完成、23:28 列表頁一開
+  就整支清掉，23:45 的四次 `package.zip` 都是 404 `video_review_file_not_found`，Chrome 只顯示「無法在網站上擷取檔案」。
+  頁面現在下載前先問 `GET /api/v1/admin/videos/<slug>/package`（Next 路由 `?check=1`），缺檔就列出哪個檔、為什麼（`gone`
+  不在審核區／`not_shown` 不屬於任何審核卡）與雲端資料夾，不把連結交給瀏覽器。worker 的 `video_work` 仍照 tidy 的規則立刻清。
+- 之後要補語言、重試配音、剪 Shorts：先從雲端還原（票 `2026-11-03-restore-a-purged-video-from-drive`）。
+- 放棄的影片照舊：放棄後 7 天刪大檔。
+- **刪除影片（站主在 /admin/videos 放棄後再刪除）**：網站刪掉資料庫列、審核區與素材區；worker 每輪讀備份設定時多拿到
+  `deleted`（近 60 天刪除、而且這個 slug 沒有被新影片用回去的），tidy 把 `video_work/<slug>/` 與 `video_work/_shorts/<slug>/`
+  **整個**刪掉，不管備份開關、不等雲端（站主的規則：刪除就整支刪）。只刪工作根目錄底下真的資料夾，連結不跟、不刪工作根目錄或
+  repo。雲端硬碟上已備份的那份不動。從它剪出的 Shorts 是另外的影片，要各自刪除（票 `2026-11-03-deleting-a-dropped-video-removes-its`）。
+- `_shorts/` 底下 worker 自己做的 Shorts 還不在這條規則裡（tidy 跳過 `_` 開頭的資料夾），之後另開票。
+- 沒有傳備份狀態給 tidy 的呼叫（只有測試），或網站還沒有備份的 API（回 404，正式站不會）時照舊：上架 7 天後刪大檔。
 
-`prune_published_previews` 刪的是審核區的副本，原檔還在 `video_work`，所以這裡不用改。
+`prune_published_previews` 刪審核區的 mp4 也要等備份：2026-11-03 起，除了原本的「上架確認核准滿 7 天、
+有 YouTube ID、設了公開時間的話也過了 7 天」，還要網站上這支的備份紀錄是 `done`；備份關閉、還沒備份、
+`partial`、`failed` 都不刪。在別處做的影片，審核區的 mp4 在 worker 取回之前是主機上唯一的一份，
+以前核准後拖過 7 天才上架的片，一上架 mp4 就被刪，worker 只能記成取不到。代價是備份關著時審核區的
+mp4 不會自己清，檔案區（預設 20 GB）要靠備份開著才會回收。
 
 ## 主機設定
 
@@ -360,6 +475,22 @@ AI/備份/
 
 ## 還原
 
-找到 `AI/備份/<系列>/<集>/backup.json`，按 `files` 清單下載，比對 sha256。
+**從主機還原（2026-11-03，票 `2026-11-03-restore-a-purged-video-from-drive`）**：上架、備份完整、語言做完之後主機會把影片整支清掉
+（〈跟 tidy 的關係〉）。之後要補語言、重做配音、從長片剪 Shorts，先在 video-worker 容器裡把它拉回來：
+
+```bash
+docker compose -f docker-compose.prod.yml exec -T video-worker node tools/video/cli.mjs restore --slug <slug> --dry-run
+docker compose -f docker-compose.prod.yml exec -T video-worker node tools/video/cli.mjs restore --slug <slug>
+```
+
+[`restore.mjs`](../../tools/video/automation/restore.mjs) 讀雲端那一集的 `backup.json`（雲端沒有就用主機留下的那份），
+`rclone copy` 到 `video_work/_restore-stage/<slug>/`（不含 `_舊版/`），逐檔比對 sha256 與大小，對得上的才放回原位
+（`workPathOf`，planFiles 的反向：上傳包回 `upload/`、`descriptions/<l>.txt` 回 `upload/description.<l>.txt`、`dub-lines/<l>/`
+回 `dubs/<l>/audio/`、`dubs/未進上傳包/` 回 `dubs/`、`captions/未進上傳包/` 回 `captions/`，其餘照原路徑）。worker 自己的影片也把
+`upload/final.mp4` 連回根目錄的 `final.mp4`。對不上的檔不放，列出來、結束碼非 0。完成後 `auto.json` 拿掉 `tidied_at`、寫上
+`restored_at`（手動資料夾寫在 `tidied.json`），tidy 保留 14 天（`RESTORE_HOLD_DAYS`）讓後續工作做完，之後照一般規則再清。
+雲端上的檔案不會被改動。目前要手動下這個指令：worker 遇到已清掉的影片時，新勾的語言仍會回報「工作檔已清」，不會自己還原。
+
+**手動還原**（不在主機上）：找到 `AI/備份/<系列>/<集>/backup.json`，按 `files` 清單下載，比對 sha256。
 要重新上架時，`final.mp4`、`captions/`、`descriptions/`、`dubs/` 就是一份完整的手動上傳包
 （對應 [MANUAL-UPLOAD.md](MANUAL-UPLOAD.md)）。

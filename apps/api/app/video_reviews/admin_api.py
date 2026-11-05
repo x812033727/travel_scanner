@@ -10,7 +10,7 @@ and deletes one already dropped.
 
 from __future__ import annotations
 
-from typing import Annotated
+from typing import Annotated, Any
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request
@@ -369,6 +369,21 @@ async def download_final(slug: str, user: ContentManager, session: Session) -> F
         filename=f"{slug}.mp4",
         headers={"Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff"},
     )
+
+
+@admin_router.get("/{slug}/package")
+async def package_check(
+    slug: str,
+    file: Annotated[list[str], Query()],
+    user: ContentManager,
+    session: Session,
+) -> dict[str, Any]:
+    """Whether ``package.zip`` with the same entries can be made, asked by the page before it
+    hands the link to the browser: ``ok``, the ``missing`` files with ``reason`` (``gone`` or
+    ``not_shown``), ``bytes`` and the ``drive_folder`` holding the video when backed up."""
+    _ = user
+    entries = package_zip_module.parse_entries(file)
+    return await service.package_check_for_admin(session, await _store(session), slug, entries)
 
 
 @admin_router.get("/{slug}/package.zip")

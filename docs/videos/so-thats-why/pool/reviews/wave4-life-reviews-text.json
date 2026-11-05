@@ -1,0 +1,366 @@
+{
+  "review_id": "wave4-life-reviews-text-20261101",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "root",
+  "status": "CORRECTIONS_RESOLVED_TOPIC_LEVEL_WITH_MERGE_AND_HOLD",
+  "production_ready": false,
+  "batch_path": "batches/wave4-digital-text.json",
+  "batch_sha256": "51957555f4c2d2bf1683bbece782b9f4979e51364d7802fc49480cb7f02cb1d6",
+  "theme_path": "reviews/wave4-text-themes.json",
+  "theme_sha256": "5e61d35a1d6d50186cc5f72d5ca217191e31071a137a42ee2cca4abe492eff64",
+  "coverage": {
+    "new_candidates_read_individually": 16,
+    "fields": [
+      "question",
+      "answer_target",
+      "scope",
+      "mechanism_key",
+      "source_ids",
+      "source_locator",
+      "editorial",
+      "notes"
+    ],
+    "not_added_read": 8,
+    "theme_plans_read": 2,
+    "source_pages_in_batch": 13,
+    "source_pages_reopened_selected_sections": 13,
+    "extra_old_source_pages": 1,
+    "old_pool_raw_count": 2661,
+    "cross_pool_method": "Full 2661 raw_records keyword scan for text/font/Unicode/BOM/OCR/reading/case/whitespace and manual reading of returned relevant targets; targeted read of L231/L243/L244/L247/L269/L311–321 and LEG-A20. Not a human read of all 2661 rows. Semantic score not used as a merge rule.",
+    "limits": "All 16 topic records read; all 13 source pages reopened only at named sections, not full-document or every-claim verification. No font, emoji, OCR or audience experiment rerun."
+  },
+  "merges": [
+    {
+      "from": "U4010",
+      "into": "L247",
+      "reason": "兩題核心均為 BOM 的多位元組先後提示與 UTF-8 純簽記區別；L247 原來源 RFC3629 §6 已直接解釋對照。保留新問法與來源為別名。"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "U4013",
+      "reason": "暫緩薄題：變化軸是功能定義，現有 target 未說明單檔如何產生連續中間字形。補差值／插值等原始機制與來源後重審。"
+    }
+  ],
+  "distinct": [
+    {
+      "a": "U4002",
+      "b": "U4003",
+      "reason": "一般 bidi 上下文重排與顯式 isolate 的內外邊界不同；W3C 有數字外溢對照。"
+    },
+    {
+      "a": "U4004",
+      "b": "U4005",
+      "reason": "比較權重的規則與取得不能由字碼推出的姓名讀音資料不同。"
+    },
+    {
+      "a": "U4006",
+      "b": "U4007",
+      "reason": "映射一對多／資訊丟失與 locale 選用另一對應規則是不同控制條件。"
+    },
+    {
+      "a": "U4008",
+      "b": "LEG-A20",
+      "reason": "ZWJ 單一組合字形缺失 fallback 不是同碼點不同廠商畫風。"
+    },
+    {
+      "a": "U4008",
+      "b": "L317",
+      "reason": "組合支援與碼點／字素群計數不同；不以畫面拆開推斷傳輸損壞。"
+    },
+    {
+      "a": "U4008",
+      "b": "U4009",
+      "reason": "相同序列的支援差異與序列加入有效呈現選擇符不同。"
+    },
+    {
+      "a": "U4011",
+      "b": "L231",
+      "reason": "網域ASCII相容編碼與URI百分比位元組轉義作用的欄位及規則不同。"
+    },
+    {
+      "a": "U4012",
+      "b": "L311",
+      "reason": "同形不同字符和同字的規範等價表示不同。"
+    },
+    {
+      "a": "U4014",
+      "b": "L317",
+      "reason": "底層文本不變的字形替換與計數單位不同。"
+    },
+    {
+      "a": "U4016",
+      "b": "L269",
+      "reason": "HTML/CSS顯示折疊與CSV把空白當欄位字元不同。"
+    }
+  ],
+  "dispositions": [
+    {
+      "id": "U4001",
+      "disposition": "retain",
+      "reason": "缺字回退選擇字型是實際選擇程序，不是一般亂碼或單純 emoji 畫風。"
+    },
+    {
+      "id": "U4002",
+      "disposition": "retain",
+      "reason": "上下文雙向排版改變視覺順序，與字串反轉不同。"
+    },
+    {
+      "id": "U4003",
+      "disposition": "retain",
+      "reason": "隔離範圍改變內外互動邊界；W3C 的外溢數字反例支持額外機制。"
+    },
+    {
+      "id": "U4004",
+      "disposition": "retain",
+      "reason": "多層排序權重與 locale tailoring 不等於改字碼或正規化。"
+    },
+    {
+      "id": "U4005",
+      "disposition": "retain",
+      "reason": "姓名讀音不是從字碼可靠導出的資料，額外讀音欄位和如何比較既有鍵不同。"
+    },
+    {
+      "id": "U4006",
+      "disposition": "retain",
+      "reason": "一對多及多對一轉換可丟失原文資訊，與字形變化或相容正規化不同。"
+    },
+    {
+      "id": "U4007",
+      "disposition": "retain",
+      "reason": "固定輸入，明示語言條件改變映射；不只是再列一個大寫例外。"
+    },
+    {
+      "id": "U4008",
+      "disposition": "retain",
+      "reason": "缺少整組 ZWJ 字形時顯示 fallback 序列，與 L317 計數、LEG-A20 圖案畫風不同。"
+    },
+    {
+      "id": "U4009",
+      "disposition": "retain",
+      "reason": "序列內 VS15/VS16 是額外顯示要求，與缺少組合支援不同；需展示受支援的有效序列。"
+    },
+    {
+      "id": "U4010",
+      "disposition": "merge",
+      "reason": "與 L247 同含 BOM 簽記與位元組先後區別，UTF-16 作對比沒有另立核心。"
+    },
+    {
+      "id": "U4011",
+      "disposition": "retain_after_correction",
+      "reason": "ASCII 相容網域標籤與 L231 路徑百分比轉義不同；移除錯掛 BOM 來源。"
+    },
+    {
+      "id": "U4012",
+      "disposition": "retain",
+      "reason": "不同字符的相同外觀與 L311 規範等價序列不同；小寫差異是可見反證。"
+    },
+    {
+      "id": "U4013",
+      "disposition": "hold_thin",
+      "reason": "目前只把連續變化命名為軸並說檔內含變化；未說明如何由基準輪廓／差值生成中間狀態。補機制來源前暫緩。"
+    },
+    {
+      "id": "U4014",
+      "disposition": "retain",
+      "reason": "CSS 排版替換字形而不改文本，與 L317 碼點／字素群計數不同。"
+    },
+    {
+      "id": "U4015",
+      "disposition": "retain",
+      "reason": "像素資料與可搜尋文字層是不同表示；範圍已排除權限和映射其他失敗原因。"
+    },
+    {
+      "id": "U4016",
+      "disposition": "retain",
+      "reason": "解析後保留文字節點與顯示折疊的兩層不同，與 L269 CSV 空白屬欄位資料不重複。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "U4011",
+      "kind": "source_mismatch",
+      "issue": "source_ids 掛 U4-S007、locator 拼接 BOM/BE/LE 小節，該處不支持 IDN。",
+      "requested": "移除 S007 及不相關 locator，保留已實讀 S008 對應段。"
+    },
+    {
+      "id": "U4013",
+      "kind": "thin_mechanism",
+      "issue": "目前只有功能／軸名，不足回答單檔如何連續變形且非圖像拉伸。",
+      "requested": "暫緩到 not_added；未來有基準輪廓與差值／插值機制來源後再審。"
+    },
+    {
+      "id": "W4U-T01",
+      "kind": "duration_repetition",
+      "issue": "U4014 開場20+正文55+結尾共享20超出其35–60秒預算；開場和結尾多為同題重述。",
+      "requested": "把鉤子與回收整合入機制章，建議整集約220秒；不擴張段落上限以維持255秒。"
+    },
+    {
+      "id": "W4U-T02",
+      "kind": "duration_repetition",
+      "issue": "U4006 25+65+20=110秒，正文65亦超該素材60秒上限；例外字母不應被重複說兩次。",
+      "requested": "一對多章含鉤子/回收控制約60秒，配兩個不同條件章約55秒各，整集約170秒並重定範圍。"
+    }
+  ],
+  "source_spot_checks": [
+    {
+      "source_id": "U4-S001",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-family",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Introduction immediately before Syntax: per-character fallback explicitly supported."
+    },
+    {
+      "source_id": "U4-S002",
+      "url": "https://www.unicode.org/faq/bidi.html",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "How Unicode deals with mixed directions; bidi classes and contextual punctuation."
+    },
+    {
+      "source_id": "U4-S003",
+      "url": "https://www.w3.org/International/questions/qa-bidi-unicode-controls",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Changing direction and Dealing with spillover issues: RLE versus RLI isolating a following number."
+    },
+    {
+      "source_id": "U4-S004",
+      "url": "https://www.unicode.org/faq/collation.html",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Opening collation weights/tailoring and How are readings handled for Kanji?; distinct data prerequisite."
+    },
+    {
+      "source_id": "U4-S005",
+      "url": "https://www.unicode.org/faq/casemap_charprop.html",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Case Mapping reversibility, one-to-many mappings, Turkish I, and default sharp-s mapping."
+    },
+    {
+      "source_id": "U4-S006",
+      "url": "https://www.unicode.org/reports/tr51/tr51-31.html",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Fixed revision31 metadata, 2.5 ZWJ fallback, ED-8/ED-9 and valid presentation sequences; no claim of runtime support."
+    },
+    {
+      "source_id": "U4-S007",
+      "url": "https://www.unicode.org/faq/utf_bom.html",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "BOM FAQ: byte-order role for multibyte code units versus UTF-8 signature; does not support IDN claim."
+    },
+    {
+      "source_id": "U4-S008",
+      "url": "https://www.unicode.org/faq/idn.html",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Do IDNs change DNS? and opening IDNA context. Supports ASCII compatibility; no registration-policy advice."
+    },
+    {
+      "source_id": "U4-S009",
+      "url": "https://www.unicode.org/faq/security.html",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Why same glyph cannot have one code: Latin B versus Greek Beta case mapping."
+    },
+    {
+      "source_id": "U4-S010",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Fonts/Variable_fonts",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Static versus variable fonts and whole design range; current target repeats capability without interpolation/data mechanism."
+    },
+    {
+      "source_id": "U4-S011",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-variant-ligatures",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Introduction and Difficult waffles code example; same text with ligature CSS changes."
+    },
+    {
+      "source_id": "U4-S012",
+      "url": "https://helpx.adobe.com/acrobat/desktop/create-documents/scan-documents-to-pdfs/recognize-text.html",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "Recognize text introduction, searchable layer paragraph, and post-OCR review paragraph."
+    },
+    {
+      "source_id": "U4-S013",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Text/Whitespace",
+      "read_via": "web.run open/find actual primary body sections",
+      "scope": "HTML whitespace preserved in text nodes; CSS collapsing/transformation and default exceptions."
+    }
+  ],
+  "extra_source_check": {
+    "url": "https://www.rfc-editor.org/rfc/rfc3629",
+    "section": "§6 Byte Order Mark, first two paragraphs",
+    "read_via": "web.run open/find actual RFC body",
+    "finding": "Receiver signature can identify encoding and multi-octet byte order; UTF8 has single-octet units, so the latter role is unnecessary. Confirms L247 scope already includes contrast."
+  },
+  "local_probe_review": {
+    "receipt_path": "reviews/wave4-text-probes.json",
+    "receipt_sha256": "55db511f816e0974273921cf830c7d9ad04a27efb55a3776f0761314c9f3363d",
+    "code_path": "treatments/text-probes.mjs",
+    "review": "Read full small script and persisted receipt. Uppercase/lowercase, locale-specific mapping, character identity, collator order and reserved-domain URL parsing are consistent with assertions. No network call in code. Did not rerun or overwrite author receipt.",
+    "limits": "Node24.19 / ICU78.3 / Unicode17 results are one local runtime, distinct from current UTS51 revision31 / Unicode18 source. No rendered-font or emoji fallback evidence claimed."
+  },
+  "theme_review": "Both stories have a specific fixed-text/changed-condition spine. Required trimming removes redundant hook/recap time. Candidate plans only; no blind script reading, actual narration timing, font-license audit or finished video approval.",
+  "conclusion": "Original 16 rows: 14 can remain after U4011 source correction, 1 merge U4010→L247, 1 thin hold U4013. Two theme timing corrections required. No false-premise rejection found in the sampled sources.",
+  "original_status": "CHANGES_REQUIRED_TOPIC_LEVEL_NOT_SCRIPT_APPROVAL",
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "previous_review_sha256": "4ec66e907f348ad20f82c2493756a4c7e7a038dcc0ed806c2ee4076a36de6b69",
+    "batch_sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc",
+    "theme_sha256": "f10af39c08a3c4ac368be2091ca29c52591b169d64beaa97dd5628fa3dd5d755",
+    "readback_scope": "Read U4010/U4011/U4013 in revised batch and both revised themes in full; mechanically verified chapter sums, beat sums and per-candidate upper budgets. Original 16-row and 13-source evidence above retained; no new external-source claim or probe rerun.",
+    "resolved": [
+      {
+        "id": "U4011",
+        "result": "Only U4-S008 and IDN locator remain; BOM source and unrelated locator removed."
+      },
+      {
+        "id": "W4U-T01",
+        "result": "220 seconds, hook and recap included in chapters; long chapters split into 25–30-second beats."
+      },
+      {
+        "id": "W4U-T02",
+        "result": "170 seconds; U4006 totals 55 seconds, U4007 60, U4012 55. Working ranges and cut outcomes updated."
+      },
+      {
+        "id": "U4013",
+        "result": "Accept retaining the author raw record as audit evidence provided central selection excludes it for the existing thin-mechanism reason. The requested outcome is no eligible core, not destructive deletion of author evidence."
+      }
+    ],
+    "timing_checks": [
+      {
+        "id": "W4U-T01",
+        "body_seconds": 220,
+        "per_candidate_seconds": {
+          "U4014": 55,
+          "U4001": 50,
+          "U4008": 60,
+          "U4009": 55
+        },
+        "opening_recap": "included in chapters; no extra repeated budget"
+      },
+      {
+        "id": "W4U-T02",
+        "body_seconds": 170,
+        "per_candidate_seconds": {
+          "U4006": 55,
+          "U4007": 60,
+          "U4012": 55
+        },
+        "opening_recap": "included in chapters; no extra repeated budget"
+      }
+    ],
+    "central_dispositions_still_required": [
+      {
+        "from": "U4010",
+        "into": "L247",
+        "kind": "merge",
+        "reason": "BOM byte-order/signature contrast already in L247; keep new wording and source as aliases."
+      },
+      {
+        "id": "U4013",
+        "kind": "exclude_hold_thin",
+        "reason": "Current target labels variation axes but does not explain how baseline outlines and variation data generate continuous intermediate shapes. Needs mechanism and supporting source before reconsideration."
+      }
+    ],
+    "central_application_verified": false,
+    "remaining_author_corrections": [],
+    "conclusion": "Topic and proposal corrections resolved. Fourteen distinct retained candidates plus one merge and one held thin candidate; no script, rendered-font/emoji demo, audience or publication approval."
+  }
+}

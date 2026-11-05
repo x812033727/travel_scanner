@@ -1,0 +1,929 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "pool_physics",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "P24001",
+    "P24002",
+    "P24003",
+    "P24004",
+    "P24005"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave24-physics.json",
+      "sha256": "bf986270c20bccecd28f0be07f36fc6f0a34c992a619f8d28de4d5e948a283d2"
+    },
+    {
+      "file": "reviews/wave24-physics-themes.json",
+      "sha256": "8299d106b03e5fb183aca50547a22645d1d4440791bf73f51ac4ce3486174489"
+    },
+    {
+      "file": "reviews/wave24-physics-author.json",
+      "sha256": "1947625400ffc2e3325c08f1298ac316672007e0800e03ae7d8fbdb268199af1"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave24-physics.json",
+      "sha256": "bf986270c20bccecd28f0be07f36fc6f0a34c992a619f8d28de4d5e948a283d2"
+    },
+    {
+      "file": "reviews/wave24-physics-themes.json",
+      "sha256": "022561b3ad95143c79d09b2b8cc9e689ea64b9f831989ee71401aef0b7e5360b"
+    },
+    {
+      "file": "reviews/wave24-physics-author.json",
+      "sha256": "3c0ffc63cd36203ef9480964c26b8149dd51efa1d544deeb06981114cfdc863f"
+    }
+  ],
+  "scope": "5完整候選/14未收及其舊ID/20作者近對雙快照/25有向top5/3題案全讀；5原研究或報告指定正文、7 PDF圖頁與3 HTML圖目讀。不是整池人工全文查核或全研究逐主張核准。",
+  "counts": {
+    "retain": 5,
+    "merge": 0,
+    "hold": 0,
+    "author_pairs": 20,
+    "top5_directed_pairs": 25,
+    "sources_read": 5
+  },
+  "source_readings": [
+    {
+      "source_id": "P24-S001",
+      "url": "https://arxiv.org/pdf/1404.7023",
+      "version": "arXiv:1404.7023v1（2014-04-25）；對應PRL 113,054301 (2014)。PDF內排版日期2021-11-22不當作新研究。",
+      "read_via": "獨立讀作者當日有效全文快取，PDF/HTML及抽文SHA全部核對；不是覆核者fresh HTTP。",
+      "reading_scope": "PDF pp1–4主文/模型/圖說；目讀pp2–3 Fig2–3。",
+      "cache": {
+        "file": ".cache/wave24-physics-tip2014.pdf",
+        "sha256": "f203186c4d2090beca289ae52f72d99075e30ddfaca5424ce0a8fb61d21c28a7",
+        "text_file": ".cache/wave24-physics-tip2014-pages.json",
+        "text_sha256": "e7a917b705a57dac6456f2294fa6846a868275a8e1886d92b4b67015a8029d6b"
+      },
+      "finding": "自由滴高矮與溫度比較，另夾片才見前緣；末期熱經冰到冷板支持近垂直接面及彎曲前緣。131度模型/139±8度實測不混用，題目未採精確角。",
+      "limits": "限定題級指定正文，未全篇逐式/補片或重做實驗。作者原抓取失敗路線留其manifest，不改稱本人成功下載。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-physics-tip2014-p2.png",
+          "sha256": "40b6bd5020fe638f4f64dff99ddfdd668f7d34f14b74939b7d9354e267bd857d",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-physics-tip2014-p3.png",
+          "sha256": "570315a0f5da233f61a889e1033dc09a943ed4e299c8780c8b22253841f58773",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    },
+    {
+      "source_id": "P24-S002",
+      "url": "https://arxiv.org/pdf/1701.06818",
+      "version": "arXiv:1701.06818v1（2017-01-24），對應PRL 118,084101 (2017)。",
+      "read_via": "獨立讀作者當日有效全文快取，PDF/HTML及抽文SHA全部核對；不是覆核者fresh HTTP。",
+      "reading_scope": "PDF pp1–4及p5結論；目讀pp2–3 Fig2–3。",
+      "cache": {
+        "file": ".cache/wave24-physics-explode2017.pdf",
+        "sha256": "28a7e6f017d174bf89f5f9eba56956dca53fa7b1d27a2b11d09492ebc457c66c",
+        "text_file": ".cache/wave24-physics-explode2017-pages.json",
+        "text_sha256": "49818b386e0d0a8dcb1eb0574db7bd091cf79f7df7e760554195cbc065401fc1"
+      },
+      "finding": "裂口/空穴/癒合與最終爆裂為影像；壓力曲線和能量閾值為模型。50µm不是本次掃描尺寸實測，兩研究邊界分框適當。",
+      "limits": "限定題級指定正文，未全篇逐式/補片或重做實驗。作者原抓取失敗路線留其manifest，不改稱本人成功下載。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-physics-explode2017-p2.png",
+          "sha256": "cd164ac7e51415eef8936f102cfe2fb68111ed2d17566e772ec513d98d1c510e",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-physics-explode2017-p3.png",
+          "sha256": "85cbfcc2db9a3b53fc7e43a840ddca0b04e4730f5827021ba5932446693d5561",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    },
+    {
+      "source_id": "P24-S003",
+      "url": "https://ntrs.nasa.gov/api/citations/19690011736/downloads/19690011736.pdf",
+      "version": "實讀NASA-CR-100446 / CSR-TR-68-12（1968-12-01）；同題名作者的JFM39(1),1–24 (1969)為相關正式發表，2006上網日期非新研究。",
+      "read_via": "獨立讀作者當日有效全文快取，PDF/HTML及抽文SHA全部核對；不是覆核者fresh HTTP。",
+      "reading_scope": "NASA報告PDF pp2–4、14、16–18、27–31；目讀pp42、44 Fig6b/7b頻移圖，未目讀41/43裝置圖。",
+      "cache": {
+        "file": ".cache/wave24-physics-ferro1969.pdf",
+        "sha256": "76ccf524dbb7565a745d5b8378b364a7d56a477cf7a7facd192fface8437e2e6",
+        "text_file": ".cache/wave24-physics-ferro1969-pages.json",
+        "text_sha256": "62df4f2011a150641d04fac70844408ffdae53c4fd8a96e630c6c43295e29a18"
+      },
+      "finding": "法向增幅表面偏移、切向沿傳播方向恢復作用；正常場裝置非理想均勻，微梯度修正有保留。只核定性/指定式意義，未重算46頁。",
+      "limits": "限定題級指定正文，未全篇逐式/補片或重做實驗。作者原抓取失敗路線留其manifest，不改稱本人成功下載。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-physics-ferro1969-p42.png",
+          "sha256": "96221d76e85daac8f669c4e43061f9d627fb4926f958a4fd65a1c2aecfc36459",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-physics-ferro1969-p44.png",
+          "sha256": "83de75b10e62aa86c65903a3fd2079a90cd897b2a2facc4e824a493f04d04ba2",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    },
+    {
+      "source_id": "P24-S004",
+      "url": "https://pages.uoregon.edu/rempel/_readings/week3-saffman_taylor.pdf",
+      "version": "Proc. R. Soc. A245(1242),312–329（1958-06-24）的JSTOR掃描，由大學課程存放；2013下載戳非研究日期。",
+      "read_via": "獨立讀作者當日有效全文快取，PDF/HTML及抽文SHA全部核對；不是覆核者fresh HTTP。",
+      "reading_scope": "PDF pp1–8（印312–318含身份頁）、12–17（印320–325）指定模型/實驗正文；目讀PDF p9 plate2。",
+      "cache": {
+        "file": ".cache/wave24-physics-finger1958.pdf",
+        "sha256": "53b51dbce976f5172546e44d70d181a68b3313939e3f51c46dfda033fbb1985a",
+        "text_file": ".cache/wave24-physics-finger1958-pages.json",
+        "text_sha256": "e1cc486ea437a20ecad3326e15ab38858423a19bc681f52770209ef361f296b2"
+      },
+      "finding": "Darcy穩定式與表面張力短波限制支持因果圖；plate2不同實驗照片不可串為逐幀。水平窄槽與垂直寬槽分清，逆黏度為模型對照。未逐式推導。",
+      "limits": "限定題級指定正文，未全篇逐式/補片或重做實驗。作者原抓取失敗路線留其manifest，不改稱本人成功下載。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-physics-finger1958-p9.png",
+          "sha256": "bca763ce1b0c7fa7c3473541b35a80e874e93c37c3246d4c6952f3072e6f5086",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    },
+    {
+      "source_id": "P24-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10265002/",
+      "version": "2023-06-14正式論文；PMC為同文載體，不把Durham副本另算研究。",
+      "read_via": "獨立讀作者當日有效全文快取，PDF/HTML及抽文SHA全部核對；不是覆核者fresh HTTP。",
+      "reading_scope": "PMC抽段PARA21–63、73–74（§§1–3.3/5）；目讀Fig1、5、6。",
+      "cache": {
+        "file": ".cache/wave24-physics-peanut2023.html",
+        "sha256": "3dff9ffce9bffefeaeaa62be86fb8909bdd689019ef80bbfe5c7232de32f7313",
+        "text_file": ".cache/wave24-physics-peanut2023-text.json",
+        "text_sha256": "9be770b4ce281a4bed8afaf7049fc204f3db8fd8be84d0b8deb6373bffd52989"
+      },
+      "finding": "成核附泡成長、液面轉動排泡及下沉有正文支持；初期液面停留與晚期停止有時間軌跡。Fig5均值偏差不可藏，未核SI影片或原始追蹤資料。",
+      "limits": "限定題級指定正文，未全篇逐式/補片或重做實驗。作者原抓取失敗路線留其manifest，不改稱本人成功下載。",
+      "visual_reads": [
+        {
+          "file": ".cache/wave24-physics-peanut2023-fig1.jpg",
+          "sha256": "8deed9771c3cf462c6a94aececcc2679f6db02003f848e2af62df57790b9a294",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-physics-peanut2023-fig5.jpg",
+          "sha256": "bb5ea368eaafb30e10953332ef116ffd656bb3af4a35f7530e3ea49f0fe70fbc",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        },
+        {
+          "file": ".cache/wave24-physics-peanut2023-fig6.jpg",
+          "sha256": "282f5560a0ab985ee27c92803d888f71823d0a880bf164dae12384c8376ce6ca",
+          "read_via": "view_image目讀核SHA作者影像快取；未看影片"
+        }
+      ]
+    }
+  ],
+  "source_identity_review": "兩凍結研究分別2014與2017，後者引用前者但控制邊界不同，非同文副本再計。arXiv版本不當新近年份；NASA1968報告與1969 JFM相關正式版未逐字校勘；大學JSTOR掃描、PMC載體不算獨立重現。",
+  "candidate_review": [
+    {
+      "id": "P24001",
+      "decision": "retain",
+      "reason": "自由滴高矮與溫度比較，另夾片才見前緣；末期熱經冰到冷板支持近垂直接面及彎曲前緣。131度模型/139±8度實測不混用，題目未採精確角。",
+      "scope_read": "限冷板上向上凍結的小水滴；前緣形狀來自另做的夾玻片實驗與熱傳模型，不以雪晶六角形解釋宏觀尖帽。",
+      "editorial_cap": 110,
+      "editorial_decision": "theme_seed"
+    },
+    {
+      "id": "P24002",
+      "decision": "retain",
+      "reason": "裂口/空穴/癒合與最終爆裂為影像；壓力曲線和能量閾值為模型。50µm不是本次掃描尺寸實測，兩研究邊界分框適當。",
+      "scope_read": "限毫米滴從外向內凍結的原研究；壓力和能量為模型解釋，裂癒/空穴/碎裂有高速影像。微滴不爆的估計不能當實測通用尺寸。",
+      "editorial_cap": 125,
+      "editorial_decision": "theme_seed"
+    },
+    {
+      "id": "P24003",
+      "decision": "retain",
+      "reason": "法向增幅表面偏移、切向沿傳播方向恢復作用；正常場裝置非理想均勻，微梯度修正有保留。只核定性/指定式意義，未重算46頁。",
+      "scope_read": "限磁流體表面小波及指定方向；法向實驗需計入弱梯度修正。比較兩套裝置結果，不宣稱一塊磁鐵轉向即有完全相同場強。",
+      "editorial_cap": 75,
+      "editorial_decision": "segment_only"
+    },
+    {
+      "id": "P24004",
+      "decision": "retain",
+      "reason": "Darcy穩定式與表面張力短波限制支持因果圖；plate2不同實驗照片不可串為逐幀。水平窄槽與垂直寬槽分清，逆黏度為模型對照。未逐式推導。",
+      "scope_read": "限Hele-Shaw窄縫置換；以低黏度推高黏度的原始實驗及Darcy穩定模型為據，黏度次序反轉的示意屬理論對照，重力另標。",
+      "editorial_cap": 115,
+      "editorial_decision": "theme_seed"
+    },
+    {
+      "id": "P24005",
+      "decision": "retain",
+      "reason": "成核附泡成長、液面轉動排泡及下沉有正文支持；初期液面停留與晚期停止有時間軌跡。Fig5均值偏差不可藏，未核SI影片或原始追蹤資料。",
+      "scope_read": "直接證據限原研究的去殼烤花生/lager；初期可能停留液面，氣少後循環終止。不同類飲料/果乾未作同場對照，不把每次氣泡數視作精確臨界常數。",
+      "editorial_cap": 120,
+      "editorial_decision": "theme_seed"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P24001",
+      "b": "LEG-S07",
+      "decision": "distinct",
+      "reason": "LEG-S07到氫鍵疏鬆/密度；P24001需要末段彎曲前緣與熱流邊界才能選出尖頂，膨脹只是前提。"
+    },
+    {
+      "a": "P24001",
+      "b": "N276",
+      "decision": "distinct",
+      "reason": "雪晶微觀對稱/分枝與冷板水滴宏觀熱傳前緣不是同一形狀控制。"
+    },
+    {
+      "a": "P24001",
+      "b": "E17005",
+      "decision": "distinct",
+      "reason": "溶質密度羽流改溶解退縮率不同於凍結前緣及質量平衡收尖。"
+    },
+    {
+      "a": "P24001",
+      "b": "N226",
+      "decision": "distinct",
+      "reason": "冰透鏡需外部水遷移供給；本滴末段幾何沒有土壤吸水。"
+    },
+    {
+      "a": "P24002",
+      "b": "D2023",
+      "decision": "distinct",
+      "reason": "玻璃罐外加頸部幾何限制不包含自生冰殼變厚、裂後凍合與再次升壓循環。"
+    },
+    {
+      "a": "P24002",
+      "b": "N235",
+      "decision": "distinct",
+      "reason": "石縫吸水生冰與封閉液核被自生殼壓縮不同；不是單換容器。"
+    },
+    {
+      "a": "P24002",
+      "b": "H3060",
+      "decision": "distinct",
+      "reason": "裂尖載荷/韌性門檻只涵蓋破壞前提；本題新增裂後液核空穴、癒合與再儲能，不能只用臨界裂長回答。"
+    },
+    {
+      "a": "P24002",
+      "b": "M16004",
+      "decision": "distinct",
+      "reason": "玻璃滴既存拉伸核心支援自持裂波；冰滴需持續相變施壓並反覆裂癒，觸發與後續不同。"
+    },
+    {
+      "a": "P24002",
+      "b": "K6005",
+      "decision": "distinct",
+      "reason": "覆冰碎裂增殖與單滴冰殼液核爆裂是不同二次冰途徑，不能用同雲背景合核。"
+    },
+    {
+      "a": "P24003",
+      "b": "E2134",
+      "decision": "distinct",
+      "reason": "誘導磁矩的方向不直接回答界面偏移使磁場重新分布後的回復力符號。"
+    },
+    {
+      "a": "P24003",
+      "b": "E2137",
+      "decision": "distinct",
+      "reason": "飽和改磁化增益；本題固定模態頻率隨法向/切向場出現相反走向，不是增益飽和例子。"
+    },
+    {
+      "a": "P24004",
+      "b": "P070",
+      "decision": "distinct",
+      "reason": "黏度/密度定義不足以預測兩相置換前緣的凸起自放大。"
+    },
+    {
+      "a": "P24004",
+      "b": "P073",
+      "decision": "distinct",
+      "reason": "平行板剪切的速差梯度與固定間隙兩相前緣重分配流量不同。"
+    },
+    {
+      "a": "P24004",
+      "b": "P057",
+      "decision": "distinct",
+      "reason": "毛細孔吸水的驅動不同；此為強迫置換，表面張力限制短波凸起。"
+    },
+    {
+      "a": "P24005",
+      "b": "P048",
+      "decision": "distinct",
+      "reason": "一般沉體仍有浮力不包含附著泡長大與到液面排泡重設的週期。"
+    },
+    {
+      "a": "P24005",
+      "b": "P049",
+      "decision": "distinct",
+      "reason": "容氣形狀改排液體積是前提；此題氣量隨位置自行增減，能反覆翻轉浮沉。"
+    },
+    {
+      "a": "P24005",
+      "b": "P230",
+      "decision": "distinct",
+      "reason": "減壓過飽和供氣只是起因；顆粒附泡、液面轉動排氣才關閉往返循環。"
+    },
+    {
+      "a": "P24005",
+      "b": "F17004",
+      "decision": "distinct",
+      "reason": "無外加振動的氣泡生長/脫離回路，與振動下壓縮體積的相位平均力不同。"
+    },
+    {
+      "a": "P24005",
+      "b": "I12011",
+      "decision": "distinct",
+      "reason": "泡沫鄰泡透膜氣體交換與附著泡在液面排出、顆粒改浮沉不同。"
+    },
+    {
+      "a": "P24001",
+      "b": "P24002",
+      "decision": "distinct",
+      "reason": "P24001保有自由液帽，前緣幾何決定尖頂；P24002先封成殼，剩餘液核受壓且裂癒。不是同機制按冷溫拆題。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P24001",
+      "b": "N167",
+      "cosine": 0.79573,
+      "decision": "distinct",
+      "reason": "降水沿途凍結狀態分類與冷板上凍結邊界選擇最終形狀不同。"
+    },
+    {
+      "a": "P24001",
+      "b": "K6004",
+      "cosine": 0.775758,
+      "decision": "distinct",
+      "reason": "水汽跨冰水蒸氣壓差轉移與同滴內固化幾何不同。"
+    },
+    {
+      "a": "P24001",
+      "b": "E7005",
+      "cosine": 0.745319,
+      "decision": "distinct",
+      "reason": "冰川輸送碎屑與末端融失堆積，不是液帽收尖。"
+    },
+    {
+      "a": "P24001",
+      "b": "D2042",
+      "cosine": 0.740189,
+      "decision": "distinct",
+      "reason": "刮掉桶壁冰層以改傳熱/混合，不回答沒有刮壁時凍結前緣的末期幾何。"
+    },
+    {
+      "a": "P24001",
+      "b": "K6022",
+      "cosine": 0.734756,
+      "decision": "distinct",
+      "reason": "高架對流能量與地面冷層，和滴內熱傳形狀無相同中段機制。"
+    },
+    {
+      "a": "P24002",
+      "b": "I12014",
+      "cosine": 0.808784,
+      "decision": "distinct",
+      "reason": "蒸發使顆粒殼受壓/排粒，與冰殼向內固化壓縮液核、裂癒的相變回路不同。"
+    },
+    {
+      "a": "P24002",
+      "b": "D2133",
+      "cosine": 0.803385,
+      "decision": "distinct",
+      "reason": "塑膠厚區冷縮且澆口封閉無法補料是質量/收縮缺口；冰滴膨脹壓液後反覆裂癒不同。"
+    },
+    {
+      "a": "P24002",
+      "b": "F15002",
+      "cosine": 0.783867,
+      "decision": "distinct",
+      "reason": "溝槽麵片吸水差膨潤造成彎曲，沒有封閉殼液核壓力循環。"
+    },
+    {
+      "a": "P24002",
+      "b": "M16004",
+      "cosine": 0.769156,
+      "decision": "distinct",
+      "reason": "玻璃滴既存拉伸核心支援自持裂波；冰滴需持續相變施壓並反覆裂癒，觸發與後續不同。"
+    },
+    {
+      "a": "P24002",
+      "b": "I12002",
+      "cosine": 0.767374,
+      "decision": "distinct",
+      "reason": "撞擊迫液入表面紋理造成潤濕態轉變，不是固化壓縮及開裂釋放。"
+    },
+    {
+      "a": "P24003",
+      "b": "E2141",
+      "cosine": 0.721931,
+      "decision": "distinct",
+      "reason": "閉路感應抵抗磁通變化，與磁化液面形變的回復/增幅作用不同。"
+    },
+    {
+      "a": "P24003",
+      "b": "W16001",
+      "cosine": 0.716627,
+      "decision": "distinct",
+      "reason": "NMR核磁矩散相再聚不涉及宏觀液面波恢復力。"
+    },
+    {
+      "a": "P24003",
+      "b": "W16002",
+      "cosine": 0.70091,
+      "decision": "distinct",
+      "reason": "梯度編碼擴散相位與液面法/切向場效應不是同一波動量。"
+    },
+    {
+      "a": "P24003",
+      "b": "E2109",
+      "cosine": 0.698852,
+      "decision": "distinct",
+      "reason": "單點電荷受洛侖茲力不做功，不能取代磁流體界面的磁能/重力/表面張力耦合。"
+    },
+    {
+      "a": "P24003",
+      "b": "F10012",
+      "cosine": 0.693971,
+      "decision": "distinct",
+      "reason": "供給液絲長度與帶速匹配產生花紋，與固定波長模態的磁場頻移不同。"
+    },
+    {
+      "a": "P24004",
+      "b": "K11011",
+      "cosine": 0.814032,
+      "decision": "distinct",
+      "reason": "薄膜夾端橫向壓縮長皺紋，與兩種黏度的流阻差放大界面凸起不同。"
+    },
+    {
+      "a": "P24004",
+      "b": "J6009",
+      "cosine": 0.799646,
+      "decision": "distinct",
+      "reason": "收斂油膜承載與剪切摩擦權衡，不是兩相前緣的領先回饋。"
+    },
+    {
+      "a": "P24004",
+      "b": "P008",
+      "cosine": 0.761213,
+      "decision": "distinct",
+      "reason": "正向載荷提高接觸摩擦上限，不是流體置換穩定性。"
+    },
+    {
+      "a": "P24004",
+      "b": "D2183",
+      "cosine": 0.755251,
+      "decision": "distinct",
+      "reason": "膠帶分布剪切/邊緣剝離的載荷路徑，沒有低黏度侵入的流阻回饋。"
+    },
+    {
+      "a": "P24004",
+      "b": "K11004",
+      "cosine": 0.747509,
+      "decision": "distinct",
+      "reason": "柱屈曲由軸力產生彎矩放大偏移；界面失穩由流阻/流量放大凸起，只有正回饋抽象相似。"
+    },
+    {
+      "a": "P24005",
+      "b": "I12011",
+      "cosine": 0.777424,
+      "decision": "distinct",
+      "reason": "泡沫鄰泡透膜氣體交換與附著泡在液面排出、顆粒改浮沉不同。"
+    },
+    {
+      "a": "P24005",
+      "b": "I12010",
+      "cosine": 0.750812,
+      "decision": "distinct",
+      "reason": "氣體密度對高速退膜碎滴影響，不是附泡浮沉的增氣/排氣循環。"
+    },
+    {
+      "a": "P24005",
+      "b": "P230",
+      "cosine": 0.746289,
+      "decision": "distinct",
+      "reason": "減壓過飽和供氣只是起因；顆粒附泡、液面轉動排氣才關閉往返循環。"
+    },
+    {
+      "a": "P24005",
+      "b": "F17004",
+      "cosine": 0.743259,
+      "decision": "distinct",
+      "reason": "無外加振動的氣泡生長/脫離回路，與振動下壓縮體積的相位平均力不同。"
+    },
+    {
+      "a": "P24005",
+      "b": "Q9007",
+      "cosine": 0.737213,
+      "decision": "distinct",
+      "reason": "噴腔氣泡改動態共振壓力傳遞，不是到液面脫泡後改變浮力。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P24001",
+        "b": "LEG-S07",
+        "reason": "LEG-S07到氫鍵疏鬆/密度；P24001需要末段彎曲前緣與熱流邊界才能選出尖頂，膨脹只是前提。"
+      },
+      {
+        "a": "P24001",
+        "b": "N276",
+        "reason": "雪晶微觀對稱/分枝與冷板水滴宏觀熱傳前緣不是同一形狀控制。"
+      },
+      {
+        "a": "P24001",
+        "b": "E17005",
+        "reason": "溶質密度羽流改溶解退縮率不同於凍結前緣及質量平衡收尖。"
+      },
+      {
+        "a": "P24001",
+        "b": "N226",
+        "reason": "冰透鏡需外部水遷移供給；本滴末段幾何沒有土壤吸水。"
+      },
+      {
+        "a": "P24002",
+        "b": "D2023",
+        "reason": "玻璃罐外加頸部幾何限制不包含自生冰殼變厚、裂後凍合與再次升壓循環。"
+      },
+      {
+        "a": "P24002",
+        "b": "N235",
+        "reason": "石縫吸水生冰與封閉液核被自生殼壓縮不同；不是單換容器。"
+      },
+      {
+        "a": "P24002",
+        "b": "H3060",
+        "reason": "裂尖載荷/韌性門檻只涵蓋破壞前提；本題新增裂後液核空穴、癒合與再儲能，不能只用臨界裂長回答。"
+      },
+      {
+        "a": "P24002",
+        "b": "M16004",
+        "reason": "玻璃滴既存拉伸核心支援自持裂波；冰滴需持續相變施壓並反覆裂癒，觸發與後續不同。"
+      },
+      {
+        "a": "P24002",
+        "b": "K6005",
+        "reason": "覆冰碎裂增殖與單滴冰殼液核爆裂是不同二次冰途徑，不能用同雲背景合核。"
+      },
+      {
+        "a": "P24003",
+        "b": "E2134",
+        "reason": "誘導磁矩的方向不直接回答界面偏移使磁場重新分布後的回復力符號。"
+      },
+      {
+        "a": "P24003",
+        "b": "E2137",
+        "reason": "飽和改磁化增益；本題固定模態頻率隨法向/切向場出現相反走向，不是增益飽和例子。"
+      },
+      {
+        "a": "P24004",
+        "b": "P070",
+        "reason": "黏度/密度定義不足以預測兩相置換前緣的凸起自放大。"
+      },
+      {
+        "a": "P24004",
+        "b": "P073",
+        "reason": "平行板剪切的速差梯度與固定間隙兩相前緣重分配流量不同。"
+      },
+      {
+        "a": "P24004",
+        "b": "P057",
+        "reason": "毛細孔吸水的驅動不同；此為強迫置換，表面張力限制短波凸起。"
+      },
+      {
+        "a": "P24005",
+        "b": "P048",
+        "reason": "一般沉體仍有浮力不包含附著泡長大與到液面排泡重設的週期。"
+      },
+      {
+        "a": "P24005",
+        "b": "P049",
+        "reason": "容氣形狀改排液體積是前提；此題氣量隨位置自行增減，能反覆翻轉浮沉。"
+      },
+      {
+        "a": "P24005",
+        "b": "P230",
+        "reason": "減壓過飽和供氣只是起因；顆粒附泡、液面轉動排氣才關閉往返循環。"
+      },
+      {
+        "a": "P24005",
+        "b": "F17004",
+        "reason": "無外加振動的氣泡生長/脫離回路，與振動下壓縮體積的相位平均力不同。"
+      },
+      {
+        "a": "P24005",
+        "b": "I12011",
+        "reason": "泡沫鄰泡透膜氣體交換與附著泡在液面排出、顆粒改浮沉不同。"
+      },
+      {
+        "a": "P24001",
+        "b": "P24002",
+        "reason": "P24001保有自由液帽，前緣幾何決定尖頂；P24002先封成殼，剩餘液核受壓且裂癒。不是同機制按冷溫拆題。"
+      },
+      {
+        "a": "P24001",
+        "b": "N167",
+        "reason": "降水沿途凍結狀態分類與冷板上凍結邊界選擇最終形狀不同。"
+      },
+      {
+        "a": "P24001",
+        "b": "K6004",
+        "reason": "水汽跨冰水蒸氣壓差轉移與同滴內固化幾何不同。"
+      },
+      {
+        "a": "P24001",
+        "b": "E7005",
+        "reason": "冰川輸送碎屑與末端融失堆積，不是液帽收尖。"
+      },
+      {
+        "a": "P24001",
+        "b": "D2042",
+        "reason": "刮掉桶壁冰層以改傳熱/混合，不回答沒有刮壁時凍結前緣的末期幾何。"
+      },
+      {
+        "a": "P24001",
+        "b": "K6022",
+        "reason": "高架對流能量與地面冷層，和滴內熱傳形狀無相同中段機制。"
+      },
+      {
+        "a": "P24002",
+        "b": "I12014",
+        "reason": "蒸發使顆粒殼受壓/排粒，與冰殼向內固化壓縮液核、裂癒的相變回路不同。"
+      },
+      {
+        "a": "P24002",
+        "b": "D2133",
+        "reason": "塑膠厚區冷縮且澆口封閉無法補料是質量/收縮缺口；冰滴膨脹壓液後反覆裂癒不同。"
+      },
+      {
+        "a": "P24002",
+        "b": "F15002",
+        "reason": "溝槽麵片吸水差膨潤造成彎曲，沒有封閉殼液核壓力循環。"
+      },
+      {
+        "a": "P24002",
+        "b": "I12002",
+        "reason": "撞擊迫液入表面紋理造成潤濕態轉變，不是固化壓縮及開裂釋放。"
+      },
+      {
+        "a": "P24003",
+        "b": "E2141",
+        "reason": "閉路感應抵抗磁通變化，與磁化液面形變的回復/增幅作用不同。"
+      },
+      {
+        "a": "P24003",
+        "b": "W16001",
+        "reason": "NMR核磁矩散相再聚不涉及宏觀液面波恢復力。"
+      },
+      {
+        "a": "P24003",
+        "b": "W16002",
+        "reason": "梯度編碼擴散相位與液面法/切向場效應不是同一波動量。"
+      },
+      {
+        "a": "P24003",
+        "b": "E2109",
+        "reason": "單點電荷受洛侖茲力不做功，不能取代磁流體界面的磁能/重力/表面張力耦合。"
+      },
+      {
+        "a": "P24003",
+        "b": "F10012",
+        "reason": "供給液絲長度與帶速匹配產生花紋，與固定波長模態的磁場頻移不同。"
+      },
+      {
+        "a": "P24004",
+        "b": "K11011",
+        "reason": "薄膜夾端橫向壓縮長皺紋，與兩種黏度的流阻差放大界面凸起不同。"
+      },
+      {
+        "a": "P24004",
+        "b": "J6009",
+        "reason": "收斂油膜承載與剪切摩擦權衡，不是兩相前緣的領先回饋。"
+      },
+      {
+        "a": "P24004",
+        "b": "P008",
+        "reason": "正向載荷提高接觸摩擦上限，不是流體置換穩定性。"
+      },
+      {
+        "a": "P24004",
+        "b": "D2183",
+        "reason": "膠帶分布剪切/邊緣剝離的載荷路徑，沒有低黏度侵入的流阻回饋。"
+      },
+      {
+        "a": "P24004",
+        "b": "K11004",
+        "reason": "柱屈曲由軸力產生彎矩放大偏移；界面失穩由流阻/流量放大凸起，只有正回饋抽象相似。"
+      },
+      {
+        "a": "P24005",
+        "b": "I12010",
+        "reason": "氣體密度對高速退膜碎滴影響，不是附泡浮沉的增氣/排氣循環。"
+      },
+      {
+        "a": "P24005",
+        "b": "Q9007",
+        "reason": "噴腔氣泡改動態共振壓力傳遞，不是到液面脫泡後改變浮力。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "P24-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "LEG-S07",
+        "R8001"
+      ],
+      "reason": "已讀題案退題及相關舊問答；氫鍵晶體疏鬆與密度差已有；新尖端題只借此前提。"
+    },
+    {
+      "id": "P24-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N226"
+      ],
+      "reason": "已讀題案退題及相關舊問答；水供給冰透鏡與抬升已有。"
+    },
+    {
+      "id": "P24-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N235"
+      ],
+      "reason": "已讀題案退題及相關舊問答；裂縫內冰吸水成長已有，不因換石材再算。"
+    },
+    {
+      "id": "P24-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N234"
+      ],
+      "reason": "已讀題案退題及相關舊問答；孔隙再結晶壓力已有。"
+    },
+    {
+      "id": "P24-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N276"
+      ],
+      "reason": "已讀題案退題及相關舊問答；晶體對稱與環境生長已有；與整滴宏觀尖帽有別。"
+    },
+    {
+      "id": "P24-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "F10011"
+      ],
+      "reason": "已讀題案退題及相關舊問答；軸向受阻造成黏性屈曲已有。"
+    },
+    {
+      "id": "P24-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "F10012"
+      ],
+      "reason": "已讀題案退題及相關舊問答；供給與帶走長度的匹配已有。"
+    },
+    {
+      "id": "P24-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "F15001"
+      ],
+      "reason": "已讀題案退題及相關舊問答；已有同原研究的彎曲/扭轉波控制。"
+    },
+    {
+      "id": "P24-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "F17007"
+      ],
+      "reason": "已讀題案退題及相關舊問答；已有錐角液橋回流與斷橋原研究。"
+    },
+    {
+      "id": "P24-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "I12008"
+      ],
+      "reason": "已讀題案退題及相關舊問答；只找到2005相關研究身份/摘要，尚未實讀足夠排液/破裂控制；不能憑外形翻轉就增核。"
+    },
+    {
+      "id": "P24-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P173",
+        "P176",
+        "P178"
+      ],
+      "reason": "已讀題案退題及相關舊問答；目前只到一般碰撞/動量與能量說明，沒有新的可見控制研究。"
+    },
+    {
+      "id": "P24-NA012",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "X5004"
+      ],
+      "reason": "已讀題案退題及相關舊問答；只有方向篩選，尚未取得塑性應變/張力的原研究控制；X5004只是針織殘留彎曲近題，不認定同核。"
+    },
+    {
+      "id": "P24-NA013",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "已讀題案退題及相關舊問答；本輪所讀報告的失穩門檻與表面小波是相連邊界，先不從同一法向場回應再拆尖峰一題；1967原研究只讀身份。"
+    },
+    {
+      "id": "P24-NA014",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "已讀題案退題及相關舊問答；原文只提出不同密度/潤濕性可能影響，未做這些配方控制，不編造結果。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W24P-T01",
+      "decision": "retain_paper_plan",
+      "seconds": 190,
+      "chapter_seconds": [
+        40,
+        40,
+        55,
+        55
+      ],
+      "core_totals": {
+        "P24001": 80,
+        "P24002": 110
+      },
+      "reason": "先凍哪裡改剩水去路是共同追問，兩研究明確重設；非水滴百科。已刪20秒重述，190秒各半案80/110可另立，不能靠奇觀補時。"
+    },
+    {
+      "id": "W24P-T02",
+      "decision": "retain_paper_plan",
+      "seconds": 100,
+      "chapter_seconds": [
+        50,
+        50
+      ],
+      "core_totals": {
+        "P24004": 100
+      },
+      "reason": "微小領先→低阻路段→流集中，後章逆黏度模型與表面張力增添可判斷條件，100秒可留。"
+    },
+    {
+      "id": "W24P-T03",
+      "decision": "retain_paper_plan",
+      "seconds": 110,
+      "chapter_seconds": [
+        55,
+        55
+      ],
+      "core_totals": {
+        "P24005": 110
+      },
+      "reason": "增氣跨門檻後到液面轉動排氣再反向；初期停留與晚期失氣是額外歷程邊界，110秒有推進。"
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "PHYSICS01",
+      "finding": "T01初始滴形展示30秒及前緣回收15秒重述偏長。",
+      "resolution": "作者改20/5秒，四章40/40/55/55=190；P24001合80、P24002合110，range/drop/removed_seconds20/written_files定點核對一致。",
+      "removed_seconds": 20
+    }
+  ],
+  "retrieval": {
+    "draft_sha256": "77b730606a8c2e6680f13448f92ba0a6e91c4c6ca5cce0c9bc68c6acb5dc81b1",
+    "file": ".cache/wave24-physics-neighbours.json",
+    "sha256": "6a3b1be2d4757d8ce939d3d3189fd7102a6c50886e675071616e6c9d944423e0",
+    "first_draft_sha256": "b0be0256476567fae104288a66c312e93dce42a58b9511c35cc92be70f7017e5",
+    "readback": "25完整有向問答/範圍/分數已讀；最後修改僅theme/author不改本cohort及top5。分數不是合併機率。"
+  },
+  "remaining_blockers": [],
+  "metadata_revisions": [
+    {
+      "reason": "最後input/三作者檔繫結再核，補實際目讀圖頁快取SHA；內容判斷不變。",
+      "before_review_sha256": "fad5c8b4d26058fcb57bbe0ac4c63717e9e1a3c95754ffa2f0d106b97894bec6"
+    }
+  ],
+  "final_input_check": {
+    "draft_sha256": "77b730606a8c2e6680f13448f92ba0a6e91c4c6ca5cce0c9bc68c6acb5dc81b1",
+    "neighbours_sha256": "6a3b1be2d4757d8ce939d3d3189fd7102a6c50886e675071616e6c9d944423e0",
+    "candidate_count": 5,
+    "directed_pairs": 25,
+    "current_bindings_verified": true,
+    "statement": "本輪最後共同input與三作者檔實際bytes再核。Physics只改題案/author，聲音候選及全部近鄰問答scope保持已讀內容；本收據不升格完整稿或媒體核准。"
+  }
+}

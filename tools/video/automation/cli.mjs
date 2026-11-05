@@ -13,6 +13,7 @@ import { parseArgs } from "node:util";
 
 import { resolveWorkBase, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { backupRound } from "./backup.mjs";
+import { restoreVideo } from "./restore.mjs";
 import { AutomationError, automationClient } from "./client.mjs";
 import { Automation } from "./flow.mjs";
 import { shortsStep, ShortsWorker } from "./shorts.mjs";
@@ -136,6 +137,29 @@ async function tidy(args, ctx) {
   return EXIT.ok;
 }
 
+/** `restore --slug S [--dry-run] [--workdir D]`: a video the host cleared, back from Drive (restore.mjs). */
+async function restore(args, ctx) {
+  const { EXIT } = ctx;
+  const values = parseArgs({ args, options: { slug: { type: "string" }, "dry-run": { type: "boolean" }, workdir: { type: "string" } }, strict: true }).values;
+  if (!values.slug) {
+    ctx.stderr.write("restore needs --slug\n");
+    return EXIT.usage;
+  }
+  const where = tidyBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
+  if (where.refused || where.missing) {
+    ctx.stderr.write(`${where.refused ?? `${where.missing} does not exist`}; nothing is restored\n`);
+    return EXIT.usage;
+  }
+  try {
+    const { lines, ok } = await restoreVideo(ctx, { slug: values.slug, base: where.base, dryRun: Boolean(values["dry-run"]) });
+    for (const line of lines) ctx.stdout.write(`${line}\n`);
+    return ok ? EXIT.ok : EXIT.external;
+  } catch (error) {
+    ctx.stderr.write(`restore: ${error.message}\n`);
+    return EXIT.external;
+  }
+}
+
 /** `restyle --slug S [--dry-run]`: the narration retold in the storytelling register, or, dry, how far it keeps it now. */
 async function restyle(args, ctx) {
   const { EXIT } = ctx;
@@ -181,6 +205,7 @@ export function laneCount(env = {}) {
 export async function run(command, args, ctx) {
   if (command === "tidy") return tidy(args, ctx);
   if (command === "restyle") return restyle(args, ctx);
+  if (command === "restore") return restore(args, ctx);
   const { EXIT } = ctx;
   const values = parseArgs({ args, options: { once: { type: "boolean" } }, strict: true }).values;
   try {
@@ -195,13 +220,16 @@ export async function run(command, args, ctx) {
       return false;
     });
     if (low) await shortsStep(shorts);
-    if (!settings.enabled) {
+    // With the drafts off and the daily brief on, the round goes on for the briefs alone
+    // (flow.mjs briefsOnly); with both off there is nothing for the lanes to do.
+    if (!settings.enabled && !settings.daily_brief?.daily_brief_enabled) {
       if (!low && !stopNow()) await shortsStep(shorts);
       // The videos already on YouTube are copied to Drive whether or not new drafts are made.
       if (!stopNow()) await backupAfterRound(ctx);
       ctx.stdout.write("automatic drafts are off in the settings on /admin/videos; nothing to do\n");
       return EXIT.ok;
     }
+    if (!settings.enabled) ctx.stdout.write("automatic drafts are off; only the daily news briefs are made this round\n");
     // Several lanes move different videos at once (VIDEO_WORKER_LANES, default 1); only the
     // first starts anything new, and a lane never picks a video another lane is moving, one
     // another lane set aside for this run (a deferral, flow.mjs defer), or one whose writer

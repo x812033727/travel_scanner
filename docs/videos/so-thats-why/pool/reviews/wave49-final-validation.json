@@ -1,0 +1,421 @@
+{
+  "tested_on": "2026-11-03T05:09:24.675Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3917,
+    "canonical_questions": 3757,
+    "eligible_candidates": 3587,
+    "selected_candidates": 3528,
+    "alias_records": 160,
+    "historical_records": 313,
+    "source_urls": 4909,
+    "current_research_source_urls": 1953,
+    "selected_source_urls": 3127,
+    "new_suggestions_not_added": 2182,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 547,
+  "checkpoint": {
+    "revision": "2026-11-03-pool-3514",
+    "carried": 3514,
+    "added": 14,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "e0ac18fae93101335de7b196f5ca82eb119e666598134190c4daa431a21981f2",
+    "writes": 7674,
+    "selected": 3528
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "e0ac18fae93101335de7b196f5ca82eb119e666598134190c4daa431a21981f2",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 5015,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 9761.1734,
+    "index_ms": 2862.1635000000024,
+    "unchanged_index_ms": 311.7153000000035,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 19,
+        "milliseconds": 14.566599999998289
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 4.618099999999686
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 7.4262000000017
+      }
+    ],
+    "rss_bytes": 505200640,
+    "sqlite_bytes": 58970112
+  },
+  "dedup_audit": {
+    "selection": "All reviewed merges, if any, in this wave. A wave with no merged proposals has no positive sample. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "d521779c2addbf70ab52338ac24086c059f9e554aceab6b7bbbf354d6cacbdc7",
+    "records": 3917,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 3.304
+  },
+  "hashes": {
+    "pool.json": "d521779c2addbf70ab52338ac24086c059f9e554aceab6b7bbbf354d6cacbdc7",
+    "themes.json": "55cff4f6663f17c8ec6ca343390017d6887bd5a24a446b135988576229e766a6",
+    "manifest.json": "7b141b8a065784634c5081ab4fa6a0ca39197e8e6050020ba577fbff956e3a16",
+    "index.html": "a95c3949671a15c780c41382fe16ca9e75cbbdfa6092647d0f9214e39111c269",
+    "batches/wave49-earth.json": "9d3a172350cc4fe126a4422aa16fa9246e41c072b77a34ed544ad552902e811e",
+    "batches/wave49-life.json": "be894c812c2f7c770e313a8ea00d01d8003d93e65dcfc713d7306623ae81ce90",
+    "batches/wave49-physics.json": "3976f127046a0a4ef724da145b966ddb3e480c0bb3a3f2a221b96bd0cf1aef8d"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3903,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3514,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 537,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_production_treatments": 0,
+    "human_readthroughs": 0,
+    "offline_synthetic_timing_samples": 3,
+    "samples": [
+      {
+        "theme_id": "G539",
+        "continuous_seconds": 58.252,
+        "seconds_for_looking": 9.748
+      },
+      {
+        "theme_id": "G542",
+        "continuous_seconds": 58.258,
+        "seconds_for_looking": 11.742
+      },
+      {
+        "theme_id": "G545",
+        "continuous_seconds": 61.989,
+        "seconds_for_looking": 8.011
+      }
+    ],
+    "receipt": "reviews/wave49-timing.json"
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4893,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://arxiv.org/pdf/physics/0608079v2",
+        "source_id": "SRC-d7e33df6611c931f",
+        "candidate_ids": [
+          "S49-001"
+        ],
+        "theme_ids": [
+          "G546"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/physics/0501149v1",
+        "source_id": "SRC-e7f2c40ffd74ddeb",
+        "candidate_ids": [
+          "S49-001"
+        ],
+        "theme_ids": [
+          "G546"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11984898/",
+        "source_id": "SRC-d15a3b1238561cb4",
+        "candidate_ids": [
+          "S49-002"
+        ],
+        "theme_ids": [
+          "G547"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/s42005-022-00827-0",
+        "source_id": "SRC-4996bee22a60e169",
+        "candidate_ids": [
+          "S49-003"
+        ],
+        "theme_ids": [
+          "G545"
+        ]
+      },
+      {
+        "url": "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/enhanced-bubble-growth-near-an-advancing-solidification-front/92E92DD04CE805E778D854E808B35280",
+        "source_id": "SRC-3267b3a488dfccb8",
+        "candidate_ids": [
+          "S49-004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879204/",
+        "source_id": "SRC-833f62697d0b2962",
+        "candidate_ids": [
+          "S49-005"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/physics/0702098v2",
+        "source_id": "SRC-2a0c3f00e0660efa",
+        "candidate_ids": [],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pubs.rsc.org/en/content/articlehtml/2023/sm/d3sm00169e",
+        "source_id": "SRC-44f7b34340dd9691",
+        "candidate_ids": [
+          "L49-001"
+        ],
+        "theme_ids": [
+          "G538"
+        ]
+      },
+      {
+        "url": "https://discovery.ucl.ac.uk/id/eprint/1503401/",
+        "source_id": "SRC-872deed8dadf7644",
+        "candidate_ids": [
+          "L49-002"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevLett.130.114001",
+        "source_id": "SRC-59e42f3f9ee082d1",
+        "candidate_ids": [
+          "L49-003"
+        ],
+        "theme_ids": [
+          "G539"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/abs/1403.2678",
+        "source_id": "SRC-70ba94357958b268",
+        "candidate_ids": [
+          "L49-004"
+        ],
+        "theme_ids": [
+          "G540"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1063/5.0083696",
+        "source_id": "SRC-1ed605a9b51f768b",
+        "candidate_ids": [
+          "L49-005"
+        ],
+        "theme_ids": [
+          "G541"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1514626113",
+        "source_id": "SRC-55a652dce7186b74",
+        "candidate_ids": [
+          "P49-001"
+        ],
+        "theme_ids": [
+          "G542"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1103/g94g-c6tt",
+        "source_id": "SRC-02209fbc7ae70e19",
+        "candidate_ids": [
+          "P49-002"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevLett.118.085501",
+        "source_id": "SRC-2fe669357b57d273",
+        "candidate_ids": [
+          "P49-003"
+        ],
+        "theme_ids": [
+          "G543"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1007/s10704-024-00828-w",
+        "source_id": "SRC-fc42ed72e1462ce8",
+        "candidate_ids": [
+          "P49-004"
+        ],
+        "theme_ids": [
+          "G544"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://pubs.rsc.org/en/content/articlehtml/2023/sm/d3sm00169e",
+    "core": "L49-001",
+    "theme": "G538",
+    "theme_ids": [
+      "G538"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 45,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 101524.709,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "7bf3d3efedcf8b7d26ae1e6031ed9124bd32f459e4070c5856e0cbc715b7c3a7"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "f72953d6e9ee8cc91b10aef1042dcb67729087e32bb58ae0b7d2ae80c88d1658"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "c5f3c1db204747806cf1975d236304469dec5ee29f4c8b85d0f81e990d03bfd0",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "be985d05c0b4d3aae4148af98534f15e3bdf18b0f8e5fece91af627956087b2e"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "58d128e64daee26e972fa3dafed6aea97465ab18351b242eba55cbb073f2d90a",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 469,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 27,
+    "unique_blobs_checked": 498,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 4424,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G538",
+        "core": "L49-001",
+        "seconds": 65,
+        "maximum": 90
+      },
+      {
+        "theme": "G539",
+        "core": "L49-003",
+        "seconds": 68,
+        "maximum": 100
+      },
+      {
+        "theme": "G540",
+        "core": "L49-004",
+        "seconds": 87,
+        "maximum": 100
+      },
+      {
+        "theme": "G541",
+        "core": "L49-005",
+        "seconds": 72,
+        "maximum": 85
+      },
+      {
+        "theme": "G542",
+        "core": "P49-001",
+        "seconds": 70,
+        "maximum": 100
+      },
+      {
+        "theme": "G543",
+        "core": "P49-003",
+        "seconds": 75,
+        "maximum": 100
+      },
+      {
+        "theme": "G544",
+        "core": "P49-004",
+        "seconds": 85,
+        "maximum": 105
+      },
+      {
+        "theme": "G545",
+        "core": "S49-003",
+        "seconds": 70,
+        "maximum": 95
+      },
+      {
+        "theme": "G546",
+        "core": "S49-001",
+        "seconds": 80,
+        "maximum": 100
+      },
+      {
+        "theme": "G547",
+        "core": "S49-002",
+        "seconds": 73,
+        "maximum": 90
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 38,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "7ba9444f82f2f7e2be95e6b9d5765315f85554d98e12f84d2f86400ff3039f5e"
+  }
+}

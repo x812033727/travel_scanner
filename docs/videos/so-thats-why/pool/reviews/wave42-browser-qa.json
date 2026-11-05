@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T22:40:42.167Z",
+  "result": "PASS",
+  "selected": 3356,
+  "index_html_sha256": "f9ddbc0485acc8bf0c3607a64126a6b7b33aaafe438cc9f73fb1d49af0259fae",
+  "source_sample": {
+    "id": "S42-001",
+    "urls": [
+      "https://doi.org/10.1007/s11214-022-00941-z"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave42-desktop.png",
+    "wave42-source-desktop.png",
+    "wave42-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "桌面與390像素手機顯示3356個入選、444組片案、2946個入選使用來源與155個別名。桌面搜尋S42-001可展開火星探針的來源與拍攝構想；手機標題及統計正常換行。"
+}

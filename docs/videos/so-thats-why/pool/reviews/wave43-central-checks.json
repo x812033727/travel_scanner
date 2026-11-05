@@ -1,0 +1,410 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "reviewer": "root",
+  "bound_files": [
+    {
+      "file": "batches/wave43-speech.json",
+      "sha256": "39fb2a1f08533f6d7cc5ce39a387e850bd490abb8fccf1fd98a48ff17fb17b2c"
+    },
+    {
+      "file": "batches/wave43-life.json",
+      "sha256": "1748389ebbe14cb15bd40598696df5e5e2815a2a942f4bdacade52feaf3541c4"
+    },
+    {
+      "file": "batches/wave43-physics.json",
+      "sha256": "b621cd4d63ab6429c38d1b5ec206d7f1063a61e3c080a69965357390aee34f9b"
+    },
+    {
+      "file": "batches/wave43-earth.json",
+      "sha256": "0e22465f34336994fc55ed6ec3ed4382ff3168e395ba1ad828f60f9495b6f2c1"
+    },
+    {
+      "file": "reviews/wave43-physics-reviews-speech.json",
+      "sha256": "72e1f63141340e26c8b01c7ca073579f0739160b8fdb2aa487ba84d82a2ed464"
+    },
+    {
+      "file": "reviews/wave43-earth-reviews-life.json",
+      "sha256": "7067d5a83a7e1b60e99bdceed32b32955f0447cebbba0cae005ece5b40c6b13b"
+    },
+    {
+      "file": "reviews/wave43-root-reviews-physics.json",
+      "sha256": "06bd96ca54c306254c9f56da828791396aa0f4b29a92f1888c795c8b94c24d7a"
+    },
+    {
+      "file": "reviews/wave43-life-reviews-earth.json",
+      "sha256": "ea5f7818aae82ebbe44a99314353bc733b592bf69d4c8540635b9de3a78930d3"
+    },
+    {
+      "file": "reviews/wave43-speech-author.json",
+      "sha256": "958167c39b399ff4f89a31a1aa9b44c18b4d90b5b313795eaaf0d25d76a5d518"
+    },
+    {
+      "file": "reviews/wave43-speech-themes.json",
+      "sha256": "35225b64510e39174e070d35ec31193e0a002b435f81dc952302d1c27c3200b5"
+    },
+    {
+      "file": "reviews/wave43-life-themes.json",
+      "sha256": "327df51dc82830cb3628844d0d16ba04f7a9b81c9424be0ea857f45ddf96a9da"
+    },
+    {
+      "file": "reviews/wave43-life-author.json",
+      "sha256": "65b0d7d22491be5c75bad41725775a09b8f58013888910a0522a617ab755acc5"
+    },
+    {
+      "file": "reviews/wave43-physics-themes.json",
+      "sha256": "5c3cb2b7fae35d27cc21dedb628e141317f165d07625213b63855150ccf9be0a"
+    },
+    {
+      "file": "reviews/wave43-physics-author.json",
+      "sha256": "cd36795d26d96e40da805a7e3b47e5310590f9f950628d05748322a3c88ca708"
+    },
+    {
+      "file": "reviews/wave43-earth-author.json",
+      "sha256": "d8cffab365a14ece104ad5cacc99c5fc8bb735dea9c60c5294e2caaf30d72429"
+    },
+    {
+      "file": "reviews/wave43-earth-themes.json",
+      "sha256": "b0b4269ee0df4e24ee05de32272177cce92ac38d0feec33fd1cff42be7399ba6"
+    },
+    {
+      "file": "reviews/wave43-editorial-integration.json",
+      "sha256": "8a6f35e16f00e865a1c6018253a62cf51486eb58db9d7a3768a1d482551c64b1"
+    },
+    {
+      "file": "reviews/wave43-timing.json",
+      "sha256": "3d9e3ded844bebceb018cfb2fb63c91af31457c03716c8d970f7e9533e278ba8"
+    }
+  ],
+  "source_identities": [
+    {
+      "local_id": "R43-S001",
+      "title": "Hearing lips and seeing voices",
+      "doi": "10.1038/264746a0",
+      "url": "https://doi.org/10.1038/264746a0",
+      "retrieval_url": "https://www.pallier.org/lectures/tpexp3/projects/McGurkMacDonald_HearingLisps_Nature1976.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S002",
+      "title": "Visual recalibration of auditory speech identification: a McGurk aftereffect",
+      "doi": "10.1046/j.0956-7976.2003.psci_1470.x",
+      "url": "https://doi.org/10.1046/j.0956-7976.2003.psci_1470.x",
+      "retrieval_url": "https://repository.tilburguniversity.edu/bitstreams/5c6329f1-1a20-4251-9806-77c2f0e45572/download",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S003",
+      "title": "The effects of temporal cues, point-light displays, and faces on speech identification and listening effort",
+      "doi": "10.1371/journal.pone.0290826",
+      "url": "https://doi.org/10.1371/journal.pone.0290826",
+      "retrieval_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0290826",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S004",
+      "title": "Speech perception without traditional speech cues",
+      "doi": "10.1126/science.7233191",
+      "url": "https://doi.org/10.1126/science.7233191",
+      "retrieval_url": "https://people.ece.cornell.edu/land/courses/ece4760/Speech/remez_rubin_pisoni_carrell1981.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S005",
+      "title": "Speech recognition with primarily temporal cues",
+      "doi": "10.1126/science.270.5234.303",
+      "url": "https://doi.org/10.1126/science.270.5234.303",
+      "retrieval_url": "https://bpb-us-e2.wpmucdn.com/faculty.sites.uci.edu/dist/6/480/files/2015/08/1995-Shannon-Zeng-Kamath-Science.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S006",
+      "title": "Lexical information drives perceptual learning of distorted speech: evidence from the comprehension of noise-vocoded sentences",
+      "doi": "10.1037/0096-3445.134.2.222",
+      "url": "https://doi.org/10.1037/0096-3445.134.2.222",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A15869347&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S007",
+      "title": "Foreign subtitles help but native-language subtitles harm foreign speech perception",
+      "doi": "10.1371/journal.pone.0007785",
+      "url": "https://doi.org/10.1371/journal.pone.0007785",
+      "retrieval_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0007785",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S008",
+      "title": "Phonetic categorization in auditory word perception",
+      "doi": "10.1037/0096-1523.6.1.110",
+      "url": "https://doi.org/10.1037/0096-1523.6.1.110",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A6444985&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S009",
+      "title": "Swinging at a cocktail party: voice familiarity aids speech perception in the presence of a competing voice",
+      "doi": "10.1177/0956797613482467",
+      "url": "https://doi.org/10.1177/0956797613482467",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A23985575&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S010",
+      "title": "The benefit to speech intelligibility of hearing a familiar voice",
+      "doi": "10.1037/xap0000247",
+      "url": "https://doi.org/10.1037/xap0000247",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A31524431&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S011",
+      "title": "Speech spoken by familiar people is more resistant to interference by linguistically similar speech",
+      "doi": "10.1037/xlm0000823",
+      "url": "https://doi.org/10.1037/xlm0000823",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A32105143&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S012",
+      "title": "Perceptual restoration of missing speech sounds",
+      "doi": "10.1126/science.167.3917.392",
+      "url": "https://doi.org/10.1126/science.167.3917.392",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A5409744&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "R43-S013",
+      "title": "Variability and stability in the McGurk effect: contributions of participants, stimuli, time, and response type",
+      "doi": "10.3758/s13423-015-0817-4",
+      "url": "https://doi.org/10.3758/s13423-015-0817-4",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A25802068&format=json&resultType=core&pageSize=1",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S001",
+      "title": "Emergent periodicity in the collective synchronous flashing of fireflies",
+      "doi": "10.7554/elife.78908",
+      "url": "https://doi.org/10.7554/eLife.78908",
+      "retrieval_url": "https://elifesciences.org/articles/78908",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S002",
+      "title": "Correction: Emergent periodicity in the collective synchronous flashing of fireflies",
+      "doi": "10.7554/elife.109449",
+      "url": "https://doi.org/10.7554/eLife.109449",
+      "retrieval_url": "https://elifesciences.org/articles/109449",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S003",
+      "title": "Self-organization in natural swarms of Photinus carolinus synchronous fireflies",
+      "doi": "10.1126/sciadv.abg9259",
+      "url": "https://doi.org/10.1126/sciadv.abg9259",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8262802/fullTextXML",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S004",
+      "title": "Female preferences for timing in a fiddler crab with synchronous courtship waving displays",
+      "doi": "10.1016/j.anbehav.2014.09.028",
+      "url": "https://doi.org/10.1016/j.anbehav.2014.09.028",
+      "retrieval_url": "https://thejennionslab.weebly.com/uploads/2/6/5/0/26509069/_paper174.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S005",
+      "title": "Interaction ruling animal collective behavior depends on topological rather than metric distance: evidence from a field study",
+      "doi": "10.1073/pnas.0711437105",
+      "url": "https://doi.org/10.1073/pnas.0711437105",
+      "retrieval_url": "https://arxiv.org/pdf/0709.1916",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S006",
+      "title": "Information transfer and behavioural inertia in starling flocks",
+      "doi": "10.1038/nphys3035",
+      "url": "https://doi.org/10.1038/nphys3035",
+      "retrieval_url": "https://arxiv.org/pdf/1303.7097",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S007",
+      "title": "Individual and collective encoding of risk in animal groups",
+      "doi": "10.1073/pnas.1905585116",
+      "url": "https://doi.org/10.1073/pnas.1905585116",
+      "retrieval_url": "https://d-nb.info/1208151355/34",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S008",
+      "title": "Coordinated movements prevent jamming in an emperor penguin huddle",
+      "doi": "10.1371/journal.pone.0020260",
+      "url": "https://doi.org/10.1371/journal.pone.0020260",
+      "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0020260&type=printable",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S009",
+      "title": "Dissociation of circadian and circatidal timekeeping in the marine crustacean Eurydice pulchra",
+      "doi": "10.1016/j.cub.2013.08.038",
+      "url": "https://doi.org/10.1016/j.cub.2013.08.038",
+      "retrieval_url": "https://pure.aber.ac.uk/ws/files/5711614/Dissociation_of_Circadian_and_Circatidal_Timekeeping_in_the_Marine_Crustacean_Eurydice_pulchra.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "L43-S010",
+      "title": "Rectified directional sensing in long-range cell migration",
+      "doi": "10.1038/ncomms6367",
+      "url": "https://doi.org/10.1038/ncomms6367",
+      "retrieval_url": "https://www.nature.com/articles/ncomms6367.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S001",
+      "title": "The sands of time run faster near the end",
+      "doi": "10.1038/ncomms15551",
+      "url": "https://doi.org/10.1038/ncomms15551",
+      "retrieval_url": "https://www.nature.com/articles/ncomms15551.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S002",
+      "title": "Precursory arch-like structures explain the clogging probability in a granular hopper flow",
+      "doi": "10.1038/s42005-024-01694-7",
+      "url": "https://doi.org/10.1038/s42005-024-01694-7",
+      "retrieval_url": "https://www.nature.com/articles/s42005-024-01694-7.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S003",
+      "title": "Breaking Arches with Vibrations: The Role of Defects",
+      "doi": "10.1103/physrevlett.109.068001",
+      "url": "https://doi.org/10.1103/PhysRevLett.109.068001",
+      "retrieval_url": "https://www.unav.edu/documents/15083165/15065268/breaking-arches-with-vibrations-the-role-of-defects.pdf/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S004",
+      "title": "Intermittent flow and transient congestions of soft spheres passing narrow orifices",
+      "doi": "10.1039/d0sm00938e",
+      "url": "https://doi.org/10.1039/D0SM00938E",
+      "retrieval_url": "https://arxiv.org/pdf/2007.07954",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S005",
+      "title": "Dynamics of granular stratification",
+      "doi": "10.1103/physreve.58.3357",
+      "url": "https://doi.org/10.1103/PhysRevE.58.3357",
+      "retrieval_url": "https://arxiv.org/pdf/cond-mat/9809428",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S006",
+      "title": "The mechanism of long-term coarsening of granular mixtures in rotating drums",
+      "doi": "10.1088/1367-2630/17/9/093023",
+      "url": "https://doi.org/10.1088/1367-2630/17/9/093023",
+      "retrieval_url": "https://arxiv.org/pdf/1412.7459",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S007",
+      "title": "Size segregation of irregular granular materials captured by time-resolved 3D imaging",
+      "doi": "10.1038/s41598-021-87280-1",
+      "url": "https://doi.org/10.1038/s41598-021-87280-1",
+      "retrieval_url": "https://www.nature.com/articles/s41598-021-87280-1.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S008",
+      "title": "Universal robotic gripper based on the jamming of granular material",
+      "doi": "10.1073/pnas.1003250107",
+      "url": "https://doi.org/10.1073/pnas.1003250107",
+      "retrieval_url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/granular/PNAS_jamming_gripper_2010.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "P43-S009",
+      "title": "Fraction of clogging configurations sampled by granular hopper flow",
+      "doi": "10.1103/physrevlett.114.178001",
+      "url": "https://doi.org/10.1103/PhysRevLett.114.178001",
+      "retrieval_url": "https://arxiv.org/pdf/1410.0933",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S43-S001",
+      "title": "Microbial community in a sediment-hosted CO₂ lake of the southern Okinawa Trough hydrothermal system",
+      "doi": "10.1073/pnas.0606083103",
+      "url": "https://doi.org/10.1073/pnas.0606083103",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1599929/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S43-S002",
+      "title": "Enhanced lifetime of methane bubble streams within the deep ocean",
+      "doi": "10.1029/2001gl013966",
+      "url": "https://doi.org/10.1029/2001GL013966",
+      "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2001GL013966",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S43-S003",
+      "title": "Variability of Natural Methane Bubble Release at Southern Hydrate Ridge",
+      "doi": "10.1029/2021gc009894",
+      "url": "https://doi.org/10.1029/2021GC009894",
+      "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021GC009894",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S43-S004",
+      "title": "Discovery of the deep-sea NEOM Brine Pools in the Gulf of Aqaba, Red Sea",
+      "doi": "10.1038/s43247-022-00482-x",
+      "url": "https://doi.org/10.1038/s43247-022-00482-x",
+      "retrieval_url": "https://www.nature.com/articles/s43247-022-00482-x.pdf",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S43-S005",
+      "title": "A paradox resolved: Sulfide acquisition by roots of seep tubeworms sustains net chemoautotrophy",
+      "doi": "10.1073/pnas.231589498",
+      "url": "https://doi.org/10.1073/pnas.231589498",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC60884/",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S43-S006",
+      "title": "Discovery of active off-axis hydrothermal vents at 9° 54′N East Pacific Rise",
+      "doi": "10.1073/pnas.2205602119",
+      "url": "https://doi.org/10.1073/pnas.2205602119",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335268/fullTextXML",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S43-S007",
+      "title": "Hydrate Formation on Marine Seep Bubbles and the Implications for Water Column Methane Dissolution",
+      "doi": "10.1029/2021jc017363",
+      "url": "https://doi.org/10.1029/2021JC017363",
+      "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021JC017363",
+      "existing_matches": []
+    },
+    {
+      "local_id": "S43-S008",
+      "title": "Conspicuous Smooth and White Egg-Shaped Sulfur Structures on a Deep-Sea Hydrothermal Vent Formed by Sulfide-Oxidizing Bacteria",
+      "doi": "10.1128/spectrum.00955-21",
+      "url": "https://doi.org/10.1128/Spectrum.00955-21",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8557937/fullTextXML",
+      "existing_matches": []
+    }
+  ],
+  "source_identity_limits": "舊庫依網址、DOI與正規化英文篇名比對。相同書目不重算獨立研究；補查來源閱讀列在各組作者與非作者紀錄。其他作者稿與正式刊物的關係以各組來源紀錄為準。",
+  "independent_review": "語音由pool_physics覆核，顆粒流由root覆核，生命與深海兩組交叉覆核。",
+  "draft_input_sha256": "9eb717d8a04a7f1176bbfa46ecac8b2d042a4bcf70d72131c15d97eb24df7d81",
+  "directed_semantic_top5_matches_final": {
+    "speech": 55,
+    "life": 45,
+    "physics": 45,
+    "earth": 50
+  },
+  "limits": "近鄰不是全庫去重召回率，來源書目不是素材數。"
+}

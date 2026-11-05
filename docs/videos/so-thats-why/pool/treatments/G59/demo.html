@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>猜錯了，數字還能原樣回來？</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#faf6ea;color:#173147;font:17px/1.7 system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:34px 22px}.eyebrow{color:#8b4b20;font-weight:700}h1{font-size:clamp(27px,4vw,40px);line-height:1.3}h2{font-size:25px;line-height:1.4}.intro{max-width:780px}section{background:white;border:1px solid #d7cdb9;border-radius:16px;padding:24px;margin:26px 0}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}button,select{font:inherit;border-radius:8px;border:1px solid #7b919c;padding:9px 14px;background:white;color:#173147}button{cursor:pointer}button.primary{background:#173147;color:white}.table-wrap{overflow-x:auto;margin:20px 0}table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}th,td{padding:9px 12px;text-align:center;border-bottom:1px solid #e3dfd5;white-space:nowrap}th:first-child,td:first-child{text-align:left}.kept{background:#edf6ee}.error{background:#fff0d6;color:#754411}.result{padding:12px 16px;background:#edf6ee;border-radius:8px;font-weight:650}.result.bad{background:#fff0d6;color:#754411}.muted{color:#53656e;font-size:15px}.equations{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}.tile{padding:16px;border:1px solid #d9d9cc;border-radius:10px;background:#faf9f3}.tile b{font-size:29px;display:block}.equation{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.footer{font-size:14px;margin-top:32px}a{color:#075779}label{font-weight:600}@media(max-width:600px){main{padding:22px 14px}section{padding:17px}h2{font-size:22px}.equations{grid-template-columns:1fr}.controls>*{max-width:100%}th,td{padding:8px 9px}}
+</style>
+<main>
+<div class="eyebrow">原來如此事務所 · 數字工作桌</div>
+<h1>猜錯了，數字還能原樣回來？</h1>
+<p class="intro">先猜下一點，再留下「差多少」。接著把左右聲道換個寫法，看看被除掉的一半，能不能找回來。</p>
+<p class="muted">原創整數示意，只演算兩個可逆步驟；沒有播放聲音，也沒有把畫面的數字個數當成檔案大小。</p>
+<section aria-labelledby="prediction-title">
+<h2 id="prediction-title">① 猜錯幾次，都把差值留下</h2>
+<div class="controls"><label for="signal">換一串數字</label><select id="signal"><option value="smooth">變化較小</option><option value="jump">突然跳動</option></select><button id="restore" class="primary">用保存的資料還原</button><button id="damage">故意把第一個差值改成 0</button></div>
+<p>第一點直接保存。之後每次都猜「跟上一點一樣」，存下原值減猜值的差。</p>
+<p class="muted">窄螢幕可左右滑動表格，查看全部六點。</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="可橫向捲動的六點數字對照"><table id="prediction-table" aria-label="原值、猜值、差值和還原對照"></table></div>
+<div id="prediction-result" class="result" aria-live="polite"></div>
+<p id="signal-note" class="muted"></p>
+</section>
+<section aria-labelledby="stereo-title">
+<h2 id="stereo-title">② 平均少了一半，線索藏在哪？</h2>
+<div class="controls"><label for="stereo-case">左右一對樣本</label><select id="stereo-case"><option value="even">左 6，右 2</option><option value="odd" selected>左 6，右 3</option><option value="negative">左 −6，右 −3</option><option value="edge">16 位元整數邊界</option></select><button id="parity" class="primary">忽略差值的奇偶</button></div>
+<p>先存兩個數：左右和除以 2 後向下取整，叫中間值；左減右，叫差值。</p>
+<div class="equations"><div class="tile">保存的中間值<b id="mid"></b></div><div class="tile">保存的左右差<b id="side"></b></div></div>
+<p id="sum-rule" class="equation"></p><p id="stereo-rule" class="equation"></p>
+<div id="stereo-result" class="result" aria-live="polite"></div>
+<p class="muted">左右和與左右差的奇偶相同。先用差值找回和的最低位，再分回左右。差值需要的位數可能比原單聲道多一位。</p>
+</section>
+<p>這兩步先改寫資料，後續還要編碼才談檔案大小。碰到不適合預測的聲音，差值可能很大；還原得回來，不代表每次都省空間。</p>
+<div class="footer">依據：<a href="https://www.rfc-editor.org/rfc/rfc9639.html#section-4.2">RFC 9639 §4.2</a>、<a href="https://www.rfc-editor.org/rfc/rfc9639.html#section-9.2.5">§9.2.5 一階固定預測</a>。這是步驟示意，未實作完整 FLAC 位元流、檢查碼或檔案編碼。<a href="../../README.md">回素材池說明</a></div>
+</main>
+<script src="demo.js"></script>
+<script>
+const model=window.losslessDemo;
+let damaged=false,restoreVisible=false,parity=true;
+const byId=id=>document.getElementById(id);
+function row(label,values,css=''){const tr=document.createElement('tr');tr.className=css;for(const item of [label,...values]){const td=document.createElement('td');td.textContent=String(item);tr.append(td)}return tr}
+function renderPrediction(){
+ const samples=model.presets[byId('signal').value];const packet=model.encode(samples);if(damaged)packet.residuals[0]=0;
+ const decoded=model.decode(packet);const table=byId('prediction-table');table.replaceChildren();
+ table.append(row('時間點',samples.map((_,i)=>i+1)),row('原值',samples),row('編碼時的猜值',['直接存',...samples.slice(0,-1)]),row('保存',['起點 '+packet.first,...packet.residuals],'kept'));
+ if(restoreVisible)table.append(row('依序還原',decoded,damaged?'error':'kept'));
+ const good=samples.every((x,i)=>x===decoded[i]);const result=byId('prediction-result');result.className='result'+(restoreVisible&&!good?' bad':'');
+ result.textContent=restoreVisible?(good?'每一點都回來了。猜值不準，差值仍精確。':'改掉差值後，還原已經不同。接下來的預測也會用到錯誤的前一點。'):'只用綠色這列保存的資料，試著把原值還原。';
+ byId('signal-note').textContent=byId('signal').value==='jump'?'跳動時，差值變大也能還原；此處沒有計算碼長，不能宣稱檔案更小。':'變化較小時，差值集中在較小的數；還需搭配後續編碼，不能只數表格格子。';
+}
+function renderStereo(){const [left,right]=model.stereo[byId('stereo-case').value];const {mid,side}=model.encodeStereo(left,right);const result=model.decodeStereo(mid,side,parity);byId('mid').textContent=mid;byId('side').textContent=side;
+ byId('sum-rule').textContent=parity?`找回左右和：2 × (${mid}) ＋ ${result.odd} ＝ ${result.restoredSum}；差值為${result.odd?'奇':'偶'}數。`:`忽略奇偶：只用 2 × (${mid}) ＝ ${result.restoredSum} 作左右和。`;
+ byId('stereo-rule').textContent=`再分回左右：左 ${result.left}，右 ${result.right}（原值：左 ${left}，右 ${right}）。`;
+ const good=result.left===left&&result.right===right;byId('stereo-result').className='result'+(good?'':' bad');byId('stereo-result').textContent=good?'左右各自原樣還原。':`和少了 1，右移取整後兩邊都差了 1；這是刻意跳過奇偶恢復的錯誤版本。`;
+ byId('parity').textContent=parity?'忽略差值的奇偶':'使用差值恢復奇偶';
+}
+byId('signal').addEventListener('change',()=>{damaged=false;restoreVisible=false;renderPrediction()});byId('restore').addEventListener('click',()=>{damaged=false;restoreVisible=true;renderPrediction()});byId('damage').addEventListener('click',()=>{damaged=true;restoreVisible=true;renderPrediction()});byId('stereo-case').addEventListener('change',()=>{parity=true;renderStereo()});byId('parity').addEventListener('click',()=>{parity=!parity;renderStereo()});renderPrediction();renderStereo();
+</script>
+</html>

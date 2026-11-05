@@ -1,0 +1,497 @@
+{
+  "batch_id": "wave12-digital-20261101",
+  "created_on": "2026-11-01",
+  "scope": "日常數位使用的時間驗證、網站/交易綁定、郵件身分與離線合併；以可見成功/失敗條件取材，不做安全設定處方或產品評比。",
+  "sources": [
+    {
+      "id": "D12-S001",
+      "url": "https://www.rfc-editor.org/rfc/rfc6238.txt",
+      "title": "TOTP: Time-Based One-Time Password Algorithm",
+      "publisher": "IETF / RFC Editor",
+      "version": "RFC 6238; May 2011; Informational",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+      "reading_scope": "§3 R1–R7; §4.2; §5.2; §6（印刷 pp.3–7）。",
+      "locator": "§3 R1–R7; §4.2; §5.2; §6（印刷 pp.3–7）。",
+      "summary": "雙方持有共同秘密與時間步設定，可各自算出同一時窗的短碼；產碼與允許一次使用是不同檢查。",
+      "limitations": "只讀所列段；不介紹真實帳號設定、重播攻擊或特定 App；30秒為文件預設，不是所有產品的固定規則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D12-S002",
+      "url": "https://www.w3.org/TR/2026/REC-webauthn-3-20260825/",
+      "title": "Web Authentication: An API for accessing Public Key Credentials — Level 3",
+      "publisher": "W3C",
+      "version": "W3C Recommendation, 25 August 2026; fixed dated version",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 保存 W3C 固定版 HTML；web find/open 實讀所列定義及正文，非只讀搜尋摘要。",
+      "reading_scope": "§4 Relying Party Identifier 定義；§5 API scope 引言；§5.11 related origins；§6.1 rpIdHash/UV；§13.4.9；§14.3。",
+      "locator": "§4 Relying Party Identifier 定義；§5 API scope 引言；§5.11 related origins；§6.1 rpIdHash/UV；§13.4.9；§14.3。",
+      "summary": "網站範圍與本機使用者驗證各有檢查位置；指紋資料不必傳給依賴方，簽署回應可承載驗證結果。",
+      "limitations": "獨立讀所列段，未逐步重現整份規範；本機平台可見生物資料與網站不可見必須分開。相關來源授權、子網域與實作失陷不能省略成絕對防釣魚。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D12-S003",
+      "url": "https://www.rfc-editor.org/rfc/rfc7636.txt",
+      "title": "Proof Key for Code Exchange by OAuth Public Clients",
+      "publisher": "IETF / RFC Editor",
+      "version": "RFC 7636; September 2015; Standards Track",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+      "reading_scope": "§1/§1.1 流程 A–D；§4.1–4.6（印刷 pp.3–5、8–10）。",
+      "locator": "§1/§1.1 流程 A–D；§4.1–4.6（印刷 pp.3–5、8–10）。",
+      "summary": "每次授權建立新的秘密驗證值，先綁定其轉換值，換取權杖時再核對，只有回傳授權碼不足以完成交換。",
+      "limitations": "限 S256 路徑及文件中的授權碼攔截情境；不把它當成使用者身分辨識、網站真偽檢查或全部 OAuth 安全。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D12-S004",
+      "url": "https://www.rfc-editor.org/rfc/rfc7009.txt",
+      "title": "OAuth 2.0 Token Revocation",
+      "publisher": "IETF / RFC Editor",
+      "version": "RFC 7009; August 2013; Standards Track",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+      "reading_scope": "§2.1–2.2；§3 Implementation Note（印刷 pp.3–5、7）。",
+      "locator": "§2.1–2.2；§3 Implementation Note（印刷 pp.3–5、7）。",
+      "summary": "自含權杖可供資源端本地判斷，但立即撤銷需要額外狀態或訊息；每次查詢的索引型權杖把決策放在另一處。",
+      "limitations": "RFC 2013 文中的「當時未標準化」不是2026現況判斷；不指定任何服務登出行為、權杖格式或實際撤銷延遲。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D12-S005",
+      "url": "https://www.rfc-editor.org/rfc/rfc7208.txt",
+      "title": "Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1",
+      "publisher": "IETF / RFC Editor",
+      "version": "RFC 7208; April 2014; Standards Track",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+      "reading_scope": "§10.2 Receivers；§10.3 Mediators（印刷 p.42）。",
+      "locator": "§10.2 Receivers；§10.3 Mediators（印刷 p.42）。",
+      "summary": "轉寄改變最後寄送伺服器；若保留原信封寄件身分，新 IP 可能不在原網域授權範圍，因此真信也可能 SPF 失敗。",
+      "limitations": "不等同每次轉寄必失敗或失敗必丟信；收件處置另有政策，補救協定不在本題研究範圍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D12-S006",
+      "url": "https://www.rfc-editor.org/rfc/rfc9989.txt",
+      "title": "Domain-Based Message Authentication, Reporting, and Conformance (DMARC)",
+      "publisher": "IETF / RFC Editor",
+      "version": "RFC 9989; May 2026; Standards Track; obsoletes RFC 7489 and RFC 9091",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+      "reading_scope": "首頁 Status of This Memo/Obsoletes；§4.2–4.4.3，尤其 Table 1、§4.4.1/4.4.2。",
+      "locator": "首頁 Status of This Memo/Obsoletes；§4.2–4.4.3，尤其 Table 1、§4.4.1/4.4.2。",
+      "summary": "通過驗證的網域還須與可見作者網域對齊；只驗到某個合法網域，未必證明信中宣稱的那個網域。",
+      "limitations": "實讀2026版本；7489舊檔只下載不作支持來源。僅域名授權，不保證顯示名稱、現實人物或信件內容可信；不展開政策發現/報告協定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D12-S007",
+      "url": "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf",
+      "title": "Conflict-free Replicated Data Types",
+      "publisher": "Shapiro, Preguiça, Baquero, Zawirski; SSS 2011 / LIP6 author copy",
+      "version": "SSS 2011 author manuscript; dated 2011 paper in the author archive",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載作者公開 PDF，以 PyMuPDF 讀指定正文文字層。",
+      "reading_scope": "PDF/文內 pp.1–2 引言；p.8 §3.3 並行語意；p.9 §4.1 Integer vectors and counters。",
+      "locator": "PDF/文內 pp.1–2 引言；p.8 §3.3 並行語意；p.9 §4.1 Integer vectors and counters。",
+      "summary": "把各副本的增加量分開保存，合併取各欄最大值再加總，可保留離線增加並避免同份狀態反覆累加。",
+      "limitations": "未逐式驗全篇收斂證明；候選限固定副本身分、各寫自己欄位且不減少的計數模型。生活清單例為原創模型示意，不推測商用 App。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "D12-S008",
+      "url": "https://www.lip6.fr/Marc.Shapiro/papers/RR-8083.pdf",
+      "title": "An Optimized Conflict-free Replicated Set",
+      "publisher": "Bieniusa et al.; INRIA research report / LIP6 author copy",
+      "version": "RR-8083; October 2012",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP 200 下載作者公開 PDF，以 PyMuPDF 讀指定正文文字層。",
+      "reading_scope": "PDF pp.6–8 / 印刷 pp.4–6：§4、Figure 2、§4.1；§4.2 開頭刪除資訊說明。",
+      "locator": "PDF pp.6–8 / 印刷 pp.4–6：§4、Figure 2、§4.1；§4.2 開頭刪除資訊說明。",
+      "summary": "新增項目附獨立識別，刪除只涵蓋當時觀察到的識別；同時發生、尚未看到的新加入可在合併後保留。",
+      "limitations": "取傳統 OR-Set 解釋，不把優化版清理方法、任意多物件交易或所有同步產品算已讀已證；兩份 CRDT 文獻是相關方法來源，不稱互相獨立實驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "D12001",
+      "question": "驗證器沒連網，為什麼仍能算出網站接受的短碼？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.totp_shared_secret_time_bucket",
+      "answer_target": "雙方用共同秘密和相同時間步各自計算；同一時窗產同碼，跨邊界或時鐘偏移會改變可驗結果。一次使用限制另需驗證端記錄。",
+      "scope": "限 RFC 6238 TOTP，初次共享秘密已完成；不含簡訊推送。30秒為示意設定；接收窗口由系統設定，不承諾倒數一到立即拒絕。",
+      "source_ids": [
+        "D12-S001"
+      ],
+      "source_locator": "D12-S001 §3 R1–R4、§4.2、§5.2、§6。",
+      "premise_status": "screened",
+      "notes": "依標準演算法推得離線產碼例；時間邊界與重用只作同題條件，不再拆核心。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "短碼不是每次由網站寄來；按下查看不會重啟雙方共同的時窗。",
+        "visual": "兩條同節拍時間帶，各持同色秘密；第29秒才看碼、跨第30秒分界；再另畫接收窗口，全部虛構碼。",
+        "seconds": [
+          90,
+          125
+        ]
+      }
+    },
+    {
+      "id": "D12002",
+      "question": "一個網站的通行密鑰，為什麼不能直接拿到長得一樣的另一個網站使用？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.webauthn_rpid_origin_credential_binding",
+      "answer_target": "瀏覽器先核對呼叫來源可否使用指定 RP ID，驗證器再按該 RP ID 選擇憑證；伺服器另核對回應中的 origin，網頁外觀相同不能改變這些綁定。",
+      "scope": "限合規 WebAuthn 網頁流程和不在授權範圍的另一網域；不是只比完整網址。相關來源可經明確授權共用 RP ID，子網域及原站程式失陷另論，不保證全面防釣魚。",
+      "source_ids": [
+        "D12-S002"
+      ],
+      "source_locator": "D12-S002 §4 Relying Party Identifier；§5 API scope 引言、§5.11；§6.1；§13.4.9。",
+      "premise_status": "screened",
+      "notes": "來源直接規範；I3080公開/私密鑰匙權能是背景，本題要保留來源範圍的三方檢查，不能只說簽章較安全。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "畫得再像的登入頁，也不會因此取得另一網域憑證的使用範圍。",
+        "visual": "同一畫面下方切換兩個虛構網域，標出瀏覽器/驗證器/伺服器三個檢查位置；授權相關來源另列邊界。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "D12003",
+      "question": "用指紋登入網站時，網站一定收到你的指紋嗎？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.webauthn_local_user_verification_signed_flag",
+      "answer_target": "生物辨識可在本機驗證器內完成，再由簽署回應中的 UV 標記傳達使用者驗證結果；網站核對憑證回應而非重新比對指紋。",
+      "scope": "限使用生物辨識的 WebAuthn；UV本身不保證使用了指紋而非其他方式。本機平台依實作可能看見資料，網站不接收生物資料不等於裝置從不處理或保存。",
+      "source_ids": [
+        "D12-S002"
+      ],
+      "source_locator": "D12-S002 §14.3 Authenticator-local Biometric Recognition；§6.1 UV flag。",
+      "premise_status": "screened",
+      "notes": "直接規範；不重講LEG-A44辨識相似臉錯誤，也不把普通上傳人臉App套用此模型。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "證明本機驗證已通過，不必把比對用的身體資料再交給每個網站。",
+        "visual": "本機框內指紋比對；跨框箭頭只有簽署回應與UV旗標，標記旗標不是指紋種類證明。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "D12004",
+      "question": "授權後跳回 App 的那串碼，為什麼被別人拿到也未必有用？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.pkce_per_transaction_verifier_binding",
+      "answer_target": "App為這次授權先產生秘密驗證值並送其S256轉換值；回來的授權碼綁定該值，換取權杖時須出示相符驗證值，單獨取得回傳碼不足。",
+      "scope": "限啟用S256 PKCE的OAuth授權碼交換；App收到的碼不是使用者密碼，驗證值未同時外洩。它處理授權碼攔截，不獨自判斷網站真偽或全部登入安全。",
+      "source_ids": [
+        "D12-S003"
+      ],
+      "source_locator": "D12-S003 §1.1 A–D；§4.1–4.6。",
+      "premise_status": "screened",
+      "notes": "直接規範改成原創兩條返回路徑；I3076密碼雜湊為近對，增量是每次交易綁定、回傳碼與先前秘密分離，非只介紹hash。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "回傳碼是一段交換的中途資料；能讀到它不代表持有發起時保留的證明。",
+        "visual": "原App與只有回傳碼的另一端並排；先承諾後核對的箭頭分色，僅虛構代號不示範攔截操作。",
+        "seconds": [
+          85,
+          115
+        ]
+      }
+    },
+    {
+      "id": "D12005",
+      "question": "一張還沒過期的數位通行證，為什麼有時不能只靠驗簽就知道它已被撤銷？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.self_contained_token_revocation_state_dependency",
+      "answer_target": "自含權杖的本地驗證使用票內資料；簽發後撤銷是新增狀態，需額外通知、查詢或失效期限才能影響決策。索引型權杖每次回查可把撤銷決策留在授權端。",
+      "scope": "依RFC7009 §3兩種架構比較，不指定產品登出操作。短期限只是限制影響時間，不等同即時撤銷；不沿用2013年對當時標準成熟度的說法。",
+      "source_ids": [
+        "D12-S004"
+      ],
+      "source_locator": "D12-S004 §2.1–2.2；§3 Implementation Note。",
+      "premise_status": "screened",
+      "notes": "直接架構對照；I3074是預先期限，I8010是已存日誌尚未套用，此處是本地驗證根本未取得新撤銷狀態。保留供覆核判斷是否足夠新核。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "簽章保證票未被改過，無法自動包含票發出後才發生的撤銷決定。",
+        "visual": "兩個驗票口：只讀票的驗證與每次向清單查詢；在發票後才畫撤銷事件，不給任何繞過方法。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "D12006",
+      "question": "內容沒有改的轉寄郵件，為什麼仍可能通不過寄件網域檢查？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.spf_forwarding_last_hop_identity_mismatch",
+      "answer_target": "SPF以最後寄送SMTP伺服器的IP對照信封寄件網域的授權；轉寄若保留原信封身分，路徑換了而授權未涵蓋轉寄IP，就可能失敗。",
+      "scope": "限這類轉寄與SPF授權檢查；不等於郵件一定被丟棄、不概括手動另寫一封轉寄信，也不把可見From當MAIL FROM。",
+      "source_ids": [
+        "D12-S005"
+      ],
+      "source_locator": "D12-S005 §10.2 Receivers、§10.3 Mediators。",
+      "premise_status": "screened",
+      "notes": "來源直接描述中繼；L249欄位語意與L250收件信封分工僅背景，本題保留路徑/IP變動的驗證反差。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "檢查的是誰從哪裡送來，不只檢查信件文字是否原封不動。",
+        "visual": "原寄件站→轉寄站→收件站，信件內容不變而最後一跳IP換色；保留原信封網域的框不移動。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "D12007",
+      "question": "一封信已通過寄件驗證，為什麼仍未必證明來自畫面上那個網域？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.dmarc_authenticated_author_domain_alignment",
+      "answer_target": "驗證成功可能只對應信封寄件網域或簽章網域；DMARC另將通過驗證的網域與可見作者From網域作對齊，防止拿另一個合法網域的通過結果代替。",
+      "scope": "限RFC9989網域身分，不驗證真人、顯示名稱或內容正確；嚴格與寬鬆對齊不同。任一有效且對齊的SPF或DKIM路徑可通過，不要求兩個都成功。",
+      "source_ids": [
+        "D12-S006"
+      ],
+      "source_locator": "D12-S006 §4.2–4.4.2，Table1及DKIM/SPF authenticated identifiers。",
+      "premise_status": "screened",
+      "notes": "直接規範；I3082已有公鑰與身分需綁定的通論，只有保留郵件多身分對齊、哪條驗證成功對誰有效的條件才有增量；請非作者嚴查。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "驗證通過還要問通過的是哪個身分，不能把綠燈搬到另一個作者網域。",
+        "visual": "兩條驗證路徑各帶域名標籤；先展示成功但不同域，再把可見From與其中一條對齊，不使用真實品牌。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "D12008",
+      "question": "兩台離線各加一次的計數器，怎麼合起來不漏算、再同步也不多算？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.gcounter_per_replica_max_join",
+      "answer_target": "每個副本只增加自己的獨立欄位；同步取各欄最大值，讀取再加總。直接相加會重複共同歷史，只取整體最大又會丟掉另一邊新增。",
+      "scope": "限固定副本身分的增量計數模型；不處理減少、覆寫、同身分分岔或副本永久遺失。最終一致依賴相關狀態最終送達，非即時一致。",
+      "source_ids": [
+        "D12-S007"
+      ],
+      "source_locator": "D12-S007 PDF/印刷p.9 §4.1 Integer vectors and counters；pp.1–2異步更新背景。",
+      "premise_status": "screened",
+      "notes": "由原論文公式改寫原創數字例；L209序號去重及L301冪等不同，此處不是丟重複請求而是保留分量後作狀態合併。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同時保留兩人的增加，需要記住總數由誰貢獻；只有一個總數不足以安全合併。",
+        "visual": "由[2,1]分成[3,1]與[2,2]，分別示相加8/取大4的錯誤，再逐欄最大[3,2]=5；反覆合併仍5。",
+        "seconds": [
+          85,
+          115
+        ]
+      }
+    },
+    {
+      "id": "D12009",
+      "question": "清單上明明按過刪除，另一台同步後為什麼可能還看得到同一項？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.orset_observed_remove_concurrent_add",
+      "answer_target": "每次加入同名項目都帶不同識別；刪除只標記當時已看過的那些加入。同時另一副本新增的識別未被這次刪除涵蓋，合併後仍可顯示該項。",
+      "scope": "限add-wins Observed-Remove Set模型；不是所有App的規則。若先看見全部加入再刪除，結果不同；不把普通傳輸延遲、故障或重播都解釋成此機制。",
+      "source_ids": [
+        "D12-S008"
+      ],
+      "source_locator": "D12-S008 PDF7–8/印刷5–6 Figure2、§4.1；§4.2開頭刪除資訊說明。",
+      "premise_status": "screened",
+      "notes": "來源直接演算法、清單是原創示意；I3009拒絕舊寫入與本題接受兩邊再依觀察範圍合併不同；與D12008同屬CRDT但刪除因果範圍非最大值計數。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "刪除的對象可是一批已看過的加入事件，而不是永久禁止那個名稱再出現。",
+        "visual": "同名項目貼a/b兩個隱藏標籤；左邊只見a就刪a，右邊另加b；對照先看b再刪時兩標籤都消失。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "網路斷掉後重送，怎麼不重複下單？",
+      "existing_ids": [
+        "L301"
+      ],
+      "source_ids": [],
+      "reason": "預期結果不隨重試改變的核心已收；改成付款/聊天不算新增。"
+    },
+    {
+      "question": "補寄的同一段訊息怎麼不顯示兩次？",
+      "existing_ids": [
+        "L209"
+      ],
+      "source_ids": [],
+      "reason": "序號去重已收，換通訊軟體名不增加機制。"
+    },
+    {
+      "question": "驗證過的訊息為什麼還怕重播？",
+      "existing_ids": [
+        "I3084"
+      ],
+      "source_ids": [
+        "D12-S001"
+      ],
+      "reason": "狀態才能識別重播已有；TOTP只把一次使用規則作邊界，不另計。"
+    },
+    {
+      "question": "手機時鐘校正後，測時間怎麼不倒退？",
+      "existing_ids": [
+        "I3065"
+      ],
+      "source_ids": [],
+      "reason": "單調鐘與牆鐘已收；不拿驗證器另包一題。"
+    },
+    {
+      "question": "短碼為什麼剛看到就快換下一組？",
+      "existing_ids": [
+        "D12001"
+      ],
+      "source_ids": [
+        "D12-S001"
+      ],
+      "reason": "同一時間分桶條件，合併至離線短碼題，不另算。"
+    },
+    {
+      "question": "時鐘慢了一點，短碼為什麼可能被拒收？",
+      "existing_ids": [
+        "D12001"
+      ],
+      "source_ids": [
+        "D12-S001"
+      ],
+      "reason": "同一演算法的時窗偏移，不拆參數題。"
+    },
+    {
+      "question": "手機換了，簡訊怎麼到另一支？",
+      "existing_ids": [
+        "LEG-A54"
+      ],
+      "source_ids": [],
+      "reason": "號碼而非實體裝置綁定已有；不復活安全排行題。"
+    },
+    {
+      "question": "通行密鑰是不是永遠不會被騙？",
+      "existing_ids": [
+        "D12002"
+      ],
+      "source_ids": [
+        "D12-S002"
+      ],
+      "reason": "過強前提；來源範圍綁定不能覆蓋實作失陷或其他安全流程。"
+    },
+    {
+      "question": "驗簽成功是否證明內容是真的？",
+      "existing_ids": [
+        "I3082"
+      ],
+      "source_ids": [],
+      "reason": "簽章、公鑰與真實身分/內容界線已有。"
+    },
+    {
+      "question": "密碼不用保存原文，怎麼核對？",
+      "existing_ids": [
+        "I3076"
+      ],
+      "source_ids": [
+        "D12-S003"
+      ],
+      "reason": "雜湊驗證核心已收；PKCE不得只重述這一步。"
+    },
+    {
+      "question": "令牌鑰匙正確但為何過期不能用？",
+      "existing_ids": [
+        "I3074"
+      ],
+      "source_ids": [
+        "D12-S004"
+      ],
+      "reason": "預設期限檢查已收；撤銷題僅保留發行後新增狀態。"
+    },
+    {
+      "question": "撤銷不存在的權杖為什麼也回成功？",
+      "existing_ids": [],
+      "source_ids": [
+        "D12-S004"
+      ],
+      "reason": "此輪只能讀到API冪等回應定義，缺夠厚的可見機制；不湊一題。"
+    },
+    {
+      "question": "分享連結轉給別人，別人為何也能開？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只有持有即授權的名詞描述，未研究具體額外因果，不納入。"
+    },
+    {
+      "question": "多人同時改資料，舊畫面送出為什麼被拒絕？",
+      "existing_ids": [
+        "I3009"
+      ],
+      "source_ids": [],
+      "reason": "歷史not_added I8009已將If-Match納同一核心，不換服務重收。"
+    },
+    {
+      "question": "兩台都存好，為什麼另一台暫時看不到？",
+      "existing_ids": [
+        "I8010"
+      ],
+      "source_ids": [],
+      "reason": "日誌持久化與套用延遲已收。"
+    },
+    {
+      "question": "刪檔後空間為什麼沒有立即退回？",
+      "existing_ids": [
+        "I3012",
+        "LEG-A66"
+      ],
+      "source_ids": [],
+      "reason": "配置回收/儲存擦除已有；本批不展開檔案系統新例。"
+    },
+    {
+      "question": "稀疏檔顯示很大卻沒有佔同樣多空間？",
+      "existing_ids": [
+        "I8014"
+      ],
+      "source_ids": [],
+      "reason": "未配置區讀為零的既有機制，不再加入。"
+    },
+    {
+      "question": "From與Sender為什麼不一樣？",
+      "existing_ids": [
+        "L249"
+      ],
+      "source_ids": [],
+      "reason": "欄位角色已收；新增郵件題必須保留路徑/驗證身分的變量。"
+    },
+    {
+      "question": "同一份資料做不同順序的同步一定會一致嗎？",
+      "existing_ids": [
+        "D12008",
+        "D12009"
+      ],
+      "source_ids": [
+        "D12-S007",
+        "D12-S008"
+      ],
+      "reason": "題面過廣；只保留兩個明確合併模型和它們的前提，不把CRDT類別名另算。"
+    }
+  ]
+}

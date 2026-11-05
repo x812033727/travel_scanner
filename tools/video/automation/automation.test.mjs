@@ -26,7 +26,7 @@ import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { narrativeHash } from "../core/screenplay.mjs";
-import { LEAD_PICTURE_LICENSE, leadSource, pageImage } from "./lead-picture.mjs";
+import { BRIEF_PICTURE_LICENSE, briefPicturePrompt, LEAD_PICTURE_LICENSE, leadSource, pageImage } from "./lead-picture.mjs";
 import { FIT_VERSION, stateCount } from "../templates/templates.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { RendererError } from "../render/browser.mjs";
@@ -2101,6 +2101,41 @@ test("a brief whose slug is a video already is left alone, a refused claim keeps
   assert.deepEqual([blocked().status, blocked().unplanned, blocked().source_guide, blocked().source_urls[0]], ["active", undefined, null, DAILY_STORIES[2].url]);
 });
 
+test("with the scheduled drafts off and the daily brief on, only the briefs are planned and moved", async () => {
+  const box = sandbox();
+  const slug = DAILY_REQUEST.slug;
+  const site = fakeSite({ answers: dailyAnswers(slug) });
+  const clock = { now: Date.parse("2026-10-29T01:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  // A scheduled draft from before the switch went off, its outline approved since.
+  const before = new Automation(ctx, automationClient(ctx), site.settings);
+  before.refs = smallRefs;
+  assert.match(await before.step(), /planned from 1 topics/);
+  const [{ slug: draft }] = automatedVideos(box.work);
+  Object.assign(site.reviewsOf(draft)[0], { status: "approved", choice: "A" });
+  site.dailyRequests.push({ status: "queued", locales: {}, ...DAILY_REQUEST });
+  site.slidesRequests.push({ status: "queued", slug: null, title: null, note: null, ...SLIDES_REQUEST });
+
+  const settings = { ...site.settings, enabled: false, daily_brief: { daily_brief_enabled: true } };
+  const automation = new Automation(ctx, automationClient(ctx), settings);
+  automation.refs = smallRefs;
+  assert.equal(automation.briefsOnly, true);
+  assert.match(await automation.step(), /^daily: daily-ai-20261028 planned from the 3 articles of 2026-10-28/);
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "A" });
+  assert.match(await automation.step(), /^daily-ai-20261028: .*chose outline A/);
+  assert.match(await automation.step(), /^daily-ai-20261028: .*script drafted/);
+  assert.deepEqual(site.calls.run.filter((call) => call.slug !== slug).map((call) => call.stage), ["planner"], "the draft stays where it stands, its approved outline unwritten");
+  assert.equal(automatedVideos(box.work).find((state) => state.slug === draft).status, "active");
+  assert.deepEqual(site.calls.slides, [], "the owner's slides request is not taken up");
+  assert.equal(site.calls.topics, 1, "no new draft is planned");
+
+  // Both switches off: nothing is asked for and nothing moves, the brief included.
+  const quiet = new Automation(ctx, automationClient(ctx), { ...settings, daily_brief: { daily_brief_enabled: false } });
+  const asked = site.calls.daily.length;
+  assert.equal(await quiet.step(), null);
+  assert.equal(site.calls.daily.length, asked);
+});
+
 test("an owner's slides request is held from its save until its first outline is in, so a second lane cannot submit it again", async () => {
   const box = sandbox();
   const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });
@@ -2367,8 +2402,9 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
   const own = { prompt: "slow harp, no vocals", gain_db: -22 };
   assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, own, "the writer's own bed is kept");
   assert.equal(settle(silent, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, undefined, "music switched off: no bed");
-  // 奇聞檔案局 burns its zh-TW subtitles in (the owner, 2026-10-31); the other dramas keep selectable CC.
-  assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, true);
+  // 奇聞檔案局 no longer burns its zh-TW subtitles in (the owner, 2026-11-04): every drama keeps selectable CC.
+  assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, false);
+  assert.equal(settle({ ...silent, subtitles: { burn_in: true } }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, false, "a writer asking for burn-in still gets CC");
   assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-cartoon" }).subtitles.burn_in, false);
   for (const preset of ["cute-cartoon", "flat-explainer"]) {
     assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, undefined, `${preset}: nothing added`);
@@ -2807,7 +2843,7 @@ test("a daily brief's thumbnail gets the lead story's official picture once, cre
   assert.match(await automation.leadPicture(state), /the lead story's official picture \(cdn\.example\.com\) is in the thumbnail/);
   const saved = readJson(path.join(box.dir, "video.json"));
   assert.equal(saved.thumbnail.data.asset, `docs/videos/${slug}/lead.jpg`);
-  assert.equal(saved.thumbnail.data.layout, "a", "the card keeps the wordmark out from under the headline");
+  assert.equal(saved.thumbnail.data.layout, "ai", "the brief wears the AI look, the picture over the whole frame");
   assert.deepEqual(saved.assets, [{ path: `docs/videos/${slug}/lead.jpg`, source: "https://cdn.example.com/carbon.png (og:image of https://blog.example.com/post)", license: LEAD_PICTURE_LICENSE }]);
   assert.ok(existsSync(path.join(box.dir, "lead.jpg")));
   assert.equal(narrativeHash(saved), narrativeHash(video), "the narration stays");
@@ -2824,6 +2860,73 @@ test("a daily brief's thumbnail gets the lead story's official picture once, cre
   assert.equal(readJson(path.join(box.dir, "video.json")).thumbnail.data.asset, undefined);
   assert.equal(await automation.leadPicture(state), null);
   assert.equal(asked.length, 3);
+});
+
+test("a daily brief's thumbnail gets a picture drawn for it first, and the official picture only when none is drawn", async () => {
+  const slug = "daily-ai-20261030";
+  const video = { ...fixture(), slug, youtube: { ...fixture().youtube, title: "八把弱金鑰還有軟體信任，你的手機更新了嗎？｜AI 科技快報 10/30" }, sources: [{ title: "官方公告", url: "https://blog.example.com/post", checked_on: "2026-10-30" }] };
+  const { prompt, negative } = briefPicturePrompt(video);
+  assert.match(prompt, /risograph|linocut/, "the brief's print look");
+  assert.match(prompt, /「八把弱金鑰還有軟體信任，你的手機更新了嗎？；?/, "the story is the title before the series name");
+  assert.doesNotMatch(prompt, /AI 科技快報/);
+  assert.match(prompt, /No text, letters, numbers, logos or brand marks/);
+  assert.match(negative, /logo/);
+
+  const box = sandbox(slug);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  const site = fakeSite({});
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-11-01T13:30:00Z") });
+  const drawn = [];
+  let fails = null;
+  ctx.drawBriefPicture = async (_ctx, request) => {
+    drawn.push(request);
+    if (fails) throw new Error(fails);
+    writeFileSync(request.file, new Uint8Array([137, 80, 78, 71]));
+    return { model: "gemini-3.1-flash-image", provider: "gemini", usd: 0.101, sha256: "a".repeat(64), content_type: "image/png" };
+  };
+  ctx.padPicture = async (input, output) => writeFileSync(output, readFileSync(input));
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "快報", format: "slides", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await automation.briefPicture(state), /a picture drawn by gemini gemini-3\.1-flash-image \(about US\$0\.10\) is in the thumbnail/);
+  assert.equal(drawn.length, 1);
+  assert.equal(drawn[0].slug, slug);
+  assert.equal(drawn[0].prompt, prompt);
+  const saved = readJson(path.join(box.dir, "video.json"));
+  assert.equal(saved.thumbnail.data.asset, `docs/videos/${slug}/brief.jpg`);
+  assert.equal(saved.thumbnail.data.layout, "ai");
+  assert.equal(saved.assets.length, 1);
+  assert.equal(saved.assets[0].license, BRIEF_PICTURE_LICENSE);
+  assert.match(saved.assets[0].source, /^drawn by gemini gemini-3\.1-flash-image for this thumbnail \(prompt sha256 [0-9a-f]{16}\)$/);
+  assert.ok(existsSync(path.join(box.dir, "brief.jpg")));
+  assert.equal(narrativeHash(saved), narrativeHash(video), "the narration stays");
+  assert.equal(await automation.briefPicture(state), null, "tried once");
+  assert.equal(await automation.leadPicture(state), null, "a drawn picture leaves the official one alone");
+  assert.equal(drawn.length, 1);
+
+  // When the site draws none (illustrations switched off), the brief is left for the official picture.
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  delete state.brief_picture;
+  fails = "投影片影片的插畫還沒開啟";
+  assert.equal(await automation.briefPicture(state), null);
+  assert.match(state.brief_picture.error, /插畫還沒開啟/);
+  assert.equal(readJson(path.join(box.dir, "video.json")).thumbnail.data.asset, undefined);
+  assert.equal(await automation.briefPicture(state), null, "not asked again");
+  assert.equal(drawn.length, 2);
+});
+
+test("settle puts every AI video's thumbnail, and its variants, in the AI look, and no other video's", () => {
+  const settings = { voice: { provider: "gemini", name: "Kore", style: "calm" } };
+  const thumbnail = { template: "thumb", data: { headline: "Gemini 4 **你找不到**", layout: "b" }, variants: [{ data: { headline: "B", layout: "c" } }, { data: { headline: "C" } }] };
+  for (const [slug, category] of [["daily-ai-20261101", "ai-news"], ["gemini-argon", "ai-news"], ["ai-term-embedding", "ai-terms"], ["claude-code-hooks-hands-on", "tutorial"]]) {
+    const settled = settle({ ...fixture(), category, thumbnail }, { slug, settings, sourceGuide: null, root: ROOT });
+    assert.equal(settled.thumbnail.data.layout, "ai", slug);
+    assert.deepEqual(settled.thumbnail.variants.map((variant) => variant.data), [{ headline: "B" }, { headline: "C" }], `${slug}: the variants follow A's look`);
+  }
+  for (const category of ["explainer", undefined]) {
+    assert.equal(settle({ ...fixture(), category, thumbnail }, { slug: "sothatswhy-b26", settings, sourceGuide: null, root: ROOT }).thumbnail.data.layout, "b");
+  }
 });
 
 test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {

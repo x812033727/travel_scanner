@@ -1,0 +1,996 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "role": "INDEPENDENT_NON_AUTHOR_TOPIC_REVIEW",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "remaining_blockers": [],
+  "reviewed_files": [
+    {
+      "file": "batches/wave13-astronomy.json",
+      "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+    },
+    {
+      "file": "reviews/wave13-astronomy-themes.json",
+      "sha256": "9a8e8a7dbdd84f056da85f83fee611e31ae643c620122d66d38a3d87779c245e"
+    },
+    {
+      "file": "reviews/wave13-astronomy-author.json",
+      "sha256": "09b4caad5c8c91ef528c56a858c30565ff42094172d3113e6c00cf72f8f2b71e"
+    }
+  ],
+  "reviewed_candidate_ids": [
+    "X13001",
+    "X13002",
+    "X13003",
+    "X13004",
+    "X13005",
+    "X13006",
+    "X13007",
+    "X13008",
+    "X13009",
+    "X13010",
+    "X13011"
+  ],
+  "review_scope": {
+    "candidate_fields": "逐讀全11題question/answer_target/scope/notes/source定位/editorial payoff visual seconds；全14not_added、26作者近對與共同55近鄰完整問題/答案/範圍。",
+    "not_added_count": 14,
+    "author_boundary_pairs_count": 26,
+    "retrieval_pairs_read": 55,
+    "source_reading": "9/9來源新HTTP取得且同作者SHA，閱讀指定正文定位；32個PDF頁面的指定段落及1個HTML頁，非逐頁全文/逐主張複核。",
+    "limitations": "未復現任何模型/資料處理，未目視原圖；不是腳本盲讀、旁白試讀、媒體驗收或製作核准。"
+  },
+  "retrieval": {
+    "file": ".cache/wave13-astronomy-neighbours.json",
+    "sha256": "e756c438a00c411c61470258a73b4e20fcf1f02de4013c0bbdca676df98e3f93",
+    "draft_sha256": "0a3ab60418d672805118925b9a66fe3537a2678f67b016b9a9ab354c32bc2340",
+    "raw_records": 3262,
+    "rows": 11,
+    "top_k": 5,
+    "note": "相似度僅召回提示，未以分數直接合併；另讀作者指定近對補無召回的核心邊界。"
+  },
+  "additional_local_search": {
+    "pool_sha256": "ab87e1b14505f40be0ae370c2c929662260ad8383aa6a539f07cce7e5ec5b6d8",
+    "terms": "相位曲線|奇偶|食雙星|凌日|星斑|黑子|恆星.*光譜|差分影|兩顆星|光變",
+    "fields": [
+      "question",
+      "answer_target",
+      "scope"
+    ],
+    "matched_ids": [
+      "N037",
+      "N071",
+      "X2017",
+      "X2052",
+      "O3071",
+      "M5009"
+    ],
+    "note": "另讀命中完整三欄；O3071代理量依生物狀態與M5009聲道整數奇偶不同核。未把關鍵字掃描稱為全庫事實複核。"
+  },
+  "source_checks": [
+    {
+      "source_id": "X13-S001",
+      "url": "https://arxiv.org/pdf/1303.0052",
+      "retrieval_url": "https://arxiv.org/pdf/1303.0052",
+      "version": "arXiv:1303.0052v2, 2013-06-12",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "5733fab1e29126d9ee47591df4b189c4f666e3056cef0a2df55521c615b74609",
+      "matches_author_sha256": true,
+      "read_locator": "PDF pp.4–5 §1.1–1.2; pp.24,26 §3–3.1; p.36 Sources of PRF fit error",
+      "finding": "固定背景食掉的光，加入目標星改分母；差分消除穩定來源，但定位另受擁擠與PRF偏差限制。",
+      "limitations": "未重做像素分析；未讀72頁全篇、未目視原圖或查現行KOI身分。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S001.pdf"
+    },
+    {
+      "source_id": "X13-S002",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/docs/DVSummaryPageCompanion.html",
+      "retrieval_url": "https://exoplanetarchive.ipac.caltech.edu/docs/DVSummaryPageCompanion.html",
+      "version": "Quarters 1–12, Version 1.0, delivered 2012-12-07",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "5c4a07828ac252e8c3643a7f929e5446c8aedf2ed863ae21b7b61819c7349930",
+      "matches_author_sha256": true,
+      "read_locator": "Introduction及A–G正文，重點B/D次食相位、E Odd-Even Transit Plot、F Centroid Offset Plot",
+      "finding": "奇偶不同深可揭露半週期折疊；奇偶相同不是確認，定位也有系統誤差與其他亮星限制。",
+      "limitations": "歷史Q1–12 v1.0文件；未沿用舊閾值為現行規範，未目視示範報表。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S002.html"
+    },
+    {
+      "source_id": "X13-S003",
+      "url": "https://arxiv.org/pdf/1203.5537",
+      "retrieval_url": "https://arxiv.org/pdf/1203.5537",
+      "version": "arXiv:1203.5537v3, 2012-11-02; paper published 2012-08-21",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "8f31fee2a434c764bebdcc5d6d0ed3d12235b186515070fc942349022ffc33e0",
+      "matches_author_sha256": true,
+      "read_locator": "PDF pp.2–5 Introduction、§2/2.1/2.2及式1–8周邊假設",
+      "finding": "較大碰撞參數縮短完整過境而拉長進出；較高速度同時縮時間。外部密度與兩種時長能約束速度，仍有偏心率/朝向退化。",
+      "limitations": "讀數式與正文關係，未重現MCMC或驗所有近似；p.5 §3僅背景閱讀，不採其個案數值。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S003.pdf"
+    },
+    {
+      "source_id": "X13-S004",
+      "url": "https://arxiv.org/pdf/1201.5409",
+      "retrieval_url": "https://arxiv.org/pdf/1201.5409",
+      "version": "arXiv:1201.5409v1, 2012-01-25; ApJ in press version",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "bada10689dad1d93183232bc442feb1f4651f2a7d45bca0eb79863cf7460db68",
+      "matches_author_sha256": true,
+      "read_locator": "PDF p.3 §3.1; p.6 §3.5尾段/3.6; p.7 §4.2/4.3; p.20 §7",
+      "finding": "相關TTV支持同系統，穩定性補質量上限；同宿主仍可能是目標旁的未解析伴星。",
+      "limitations": "未重現GP/N體、全表或個案假陽性機率；輸出在p.6/7交界截去約20個詞的§4.1表格介紹，不當作該段全讀。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S004.pdf"
+    },
+    {
+      "source_id": "X13-S005",
+      "url": "https://arxiv.org/pdf/1409.3594",
+      "retrieval_url": "https://arxiv.org/pdf/1409.3594",
+      "version": "arXiv:1409.3594v1, 2014-09-11",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "1a004b127bc04df246f98feb1abee32e5daedb2125a88e9048444624cf6b72f1",
+      "matches_author_sha256": true,
+      "read_locator": "PDF pp.3–5 §2/2.1/2.2/2.3開頭與Fig.1圖說; p.10局部線形與對比模型",
+      "finding": "固定局部線只改亮度，和固定亮度改局部線，是文中明分的兩路表觀RV。",
+      "limitations": "未跑SOAP或逐讀28頁/全部參數；Fig.1只讀圖說及文字擷取，不稱原圖目讀。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S005.pdf"
+    },
+    {
+      "source_id": "X13-S006",
+      "url": "https://arxiv.org/pdf/1001.1638",
+      "retrieval_url": "https://arxiv.org/pdf/1001.1638",
+      "version": "arXiv:1001.1638v2, 2010-01-15",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "75ee97e687cbcd0819164beee1c2f5b22b603cec75c59b5e2cebaacd450e1488",
+      "matches_author_sha256": true,
+      "read_locator": "PDF pp.6–7 §2.3.1–2.3.2",
+      "finding": "較亮上升顆粒占較大面積形成淨藍移；磁區抑制對流，位移大小依譜線與面積等條件。",
+      "limitations": "未檢驗模擬或全表；文內歷史速度/精度不作現況，與SOAP共享研究背景。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S006.pdf"
+    },
+    {
+      "source_id": "X13-S007",
+      "url": "https://arxiv.org/pdf/1711.05691",
+      "retrieval_url": "https://arxiv.org/pdf/1711.05691",
+      "version": "arXiv:1711.05691v3, 2018-01-24; manuscript dated 2018-01-25",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "18f027c4d1e49190cb1f04339010bb6eff8ffd629f598d10da211b2cd683acb6",
+      "matches_author_sha256": true,
+      "read_locator": "PDF pp.3–6 Introduction/Fig.1、§2.1–2.3、Fig.2圖說; p.9 §3.1–3.2; p.15 §4.2",
+      "finding": "光源通道/全盤錯配與旋轉對稱性是不同控制量；固定覆蓋面積改分布，文中直接示範可改光變幅度。",
+      "limitations": "未復現前向模型或讀全數值表；圖只讀圖說與文字，不把合成星面當實測覆蓋率。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S007.pdf"
+    },
+    {
+      "source_id": "X13-S008",
+      "url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/12/STScI-01EVSR9MQCEW6XQ8EVQH08F26M.pdf",
+      "retrieval_url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/12/STScI-01EVSR9MQCEW6XQ8EVQH08F26M.pdf",
+      "version": "2014 Nature study; public author manuscript; 2012–2013 HST/WFC3 observations",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "fafd680aa47e4bf04bebc99840d945d08bb7f47f79841d58c35e31c456653db6",
+      "matches_author_sha256": true,
+      "read_locator": "PDF pp.2–3資料處理、傳輸光譜模型比較與雲層截斷段",
+      "finding": "特定波段精度下，若透明模型預期峰谷卻未見，高不透明層可截斷下層光路；不能由所有平光譜單獨推雲。",
+      "limitations": "2012–13資料歷史作者稿；未讀SI，未查今日GJ1214b組成或重做擬合。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S008.pdf"
+    },
+    {
+      "source_id": "X13-S009",
+      "url": "https://arxiv.org/pdf/0705.0993",
+      "retrieval_url": "https://arxiv.org/pdf/0705.0993",
+      "version": "arXiv:0705.0993v1, 2007-05-07",
+      "accessed_on": "2026-11-01",
+      "method": "fresh HTTP urllib with Mokaair-editorial/1.0 UA; PyMuPDF PDF text / lxml HTML body read",
+      "sha256": "13b5269ed96954ba3ec028585bc2bd48d53fa9fd31b5120e9b7335d18ec8e9d0",
+      "matches_author_sha256": true,
+      "read_locator": "PDF pp.2–5校正、次食/相位亮度與十二經度帶模型; p.10 Fig.3圖說",
+      "finding": "相位決定可見經度投影權重，次食提供光量基準；模型有平滑假設，資料沒有緯度資訊。",
+      "limitations": "未重現校正/反演，未目視pp.11–13圖；舊熱點、偏心率及偵測精度不沿用為當期結果。",
+      "failures": [],
+      "cache_path": ".cache/wave13-life-astronomy-sources/X13-S009.pdf"
+    }
+  ],
+  "source_read_failures": [],
+  "source_identity_assessment": "8篇研究與1份官方方法頁；arXiv/期刊與NASA作者稿不是各自獨立證據。Kepler方法頁與Bryson、SOAP與Meunier有研究關係；相同PDF以兩條管線讀取只算一次來源。",
+  "candidate_dispositions": [
+    {
+      "id": "X13001",
+      "disposition": "retain",
+      "mechanism_assessment": "在固定背景食光量時改混光分母，能讓深食顯得淺；不是重教週期遮光或本質光度。",
+      "scope_check": "限兩來源、其中目標近穩定；不能從混光深度直接定尺寸。",
+      "source_ids_checked": [
+        "X13-S001"
+      ],
+      "author_pair_ids": [
+        "N072",
+        "X2017",
+        "X2059",
+        "X13002"
+      ],
+      "neighbour_ids_read": [
+        "X2052",
+        "X13002",
+        "N062",
+        "N072",
+        "X2017"
+      ],
+      "comparison": "N072/X2017/X2059是遮擋幾何或取樣；X2052是距離光度、N062是冷卻發光；X13002另需像素位置資訊。",
+      "editorial_budget_seconds": [
+        55,
+        85
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13002",
+      "disposition": "retain",
+      "mechanism_assessment": "差分抵消穩定光後才能定位變暗來源，增加總光曲線沒有的空間資訊。",
+      "scope_check": "必須對準、夠訊噪、其他源近穩定；小偏移不能當確認。",
+      "source_ids_checked": [
+        "X13-S001",
+        "X13-S002"
+      ],
+      "author_pair_ids": [
+        "X13001",
+        "O3087",
+        "X2059"
+      ],
+      "neighbour_ids_read": [
+        "X13001",
+        "X2052",
+        "X2054",
+        "N072",
+        "X2017"
+      ],
+      "comparison": "O3087是視場截斷；X2054是偏振散射定位；X2059取樣、X2052光度、N072/X2017遮光幾何均不提供這個相減定位步驟。",
+      "editorial_budget_seconds": [
+        65,
+        100
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13003",
+      "disposition": "retain",
+      "mechanism_assessment": "同一圈有兩類食，混成一類造成半週期，再分奇偶可露出交替深度。",
+      "scope_check": "只對近等間隔且深度能分辨案例；同深/很弱次食仍漏過。",
+      "source_ids_checked": [
+        "X13-S002"
+      ],
+      "author_pair_ids": [
+        "X2017",
+        "N072"
+      ],
+      "neighbour_ids_read": [
+        "X13001",
+        "X13002",
+        "X13004",
+        "E2272",
+        "X2052"
+      ],
+      "comparison": "X2017求尺寸和N072找週期未處理兩類事件錯折；X13001/2/4分別分母/空間/持續時間；E2272像素占用非線性及X2052距離光度無同核。",
+      "editorial_budget_seconds": [
+        45,
+        75
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13004",
+      "disposition": "retain",
+      "mechanism_assessment": "新控制是同週期下改弦長或過境速度，對照進出與總時長；外部密度進一步約束軌道。",
+      "scope_check": "保留非擦邊、高訊噪與質量近似及密度/朝向退化；不由單一寬度解唯一偏心率。",
+      "source_ids_checked": [
+        "X13-S003"
+      ],
+      "author_pair_ids": [
+        "N014",
+        "X2017",
+        "X13005"
+      ],
+      "neighbour_ids_read": [
+        "X2049",
+        "X2048",
+        "X13006",
+        "X2050",
+        "LEG-S43"
+      ],
+      "comparison": "N014只解橢圓速度；X2017基本光變尺寸未有兩時長退化；X2048是視差與自行分量、X2049角速度乘距離、X2050視線速度補三維、LEG-S43大氣閃爍，皆非本觀測反推。",
+      "editorial_budget_seconds": [
+        70,
+        110
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13005",
+      "disposition": "retain",
+      "mechanism_assessment": "跨多次過境的兩組相關殘差加穩定性上限，提供共同動力來源與質量分類的不同限制。",
+      "scope_check": "不必所有系統反相關/正弦；排量測相關與星斑，且共同宿主不等於最亮目標。",
+      "source_ids_checked": [
+        "X13-S004"
+      ],
+      "author_pair_ids": [
+        "X13004",
+        "N071",
+        "X2059"
+      ],
+      "neighbour_ids_read": [
+        "X2058",
+        "N025",
+        "X13004",
+        "X2032",
+        "O3057"
+      ],
+      "comparison": "N071用恆星RV、X2059量透鏡時間延遲、X2058有透鏡質量退化、N025半徑不同公轉、X2032多信使配對、O3057頻率色散校正均無此相關TTV/穩定性中段。",
+      "editorial_budget_seconds": [
+        70,
+        110
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13006",
+      "disposition": "retain",
+      "mechanism_assessment": "整體速度固定時，旋轉速度場的光量權重失衡即可改整體線形。",
+      "scope_check": "只講斑點光量路徑，不把所有RV或一次線形變化都判假。",
+      "source_ids_checked": [
+        "X13-S005"
+      ],
+      "author_pair_ids": [
+        "N071",
+        "P128",
+        "N037",
+        "X13007",
+        "X13011"
+      ],
+      "neighbour_ids_read": [
+        "X2048",
+        "X2050",
+        "X13004",
+        "X13007",
+        "X2018"
+      ],
+      "comparison": "N071/P128/X2050是真速度/投影；N037解暗成因；X2048分自行視差，X2018物質轉移；X13007是局部對流線位移，確有不同控制。",
+      "editorial_budget_seconds": [
+        60,
+        95
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13007",
+      "disposition": "retain",
+      "mechanism_assessment": "固定光量反差，磁性區抑制對流仍改局部譜線，與缺光權重可以分開控制。",
+      "scope_check": "限太陽型歷史模型，譜線/磁區效應不取固定通用值。",
+      "source_ids_checked": [
+        "X13-S005",
+        "X13-S006"
+      ],
+      "author_pair_ids": [
+        "X13006",
+        "N037"
+      ],
+      "neighbour_ids_read": [
+        "X13006",
+        "X13001",
+        "X2053",
+        "X13011",
+        "N268"
+      ],
+      "comparison": "X13006改權重、X13011改對稱分布對光變、X13001混光分母、X2053光回聲、N268極光磁力線導引，沒有相同中段。",
+      "editorial_budget_seconds": [
+        70,
+        105
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13008",
+      "disposition": "retain",
+      "mechanism_assessment": "比較通道與全盤平均兩個不同光源光譜，引入錯基準可生成假行星特徵。",
+      "scope_check": "限文內M矮星模型及乾淨通道/校正跨斑；不宣布已測分子錯誤。",
+      "source_ids_checked": [
+        "X13-S007"
+      ],
+      "author_pair_ids": [
+        "N073",
+        "O3049",
+        "X13011"
+      ],
+      "neighbour_ids_read": [
+        "N074",
+        "LEG-S43",
+        "X2053",
+        "X2054",
+        "X13010"
+      ],
+      "comparison": "N073教吸收，O3049抵消共同因子而此處因子不共同；N074透鏡、LEG-S43大氣平均、X2053回聲、X2054偏振、X13010半球反演均不同。",
+      "editorial_budget_seconds": [
+        65,
+        105
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13009",
+      "disposition": "retain",
+      "mechanism_assessment": "不透明高層使光到不了更深吸收區，平光譜並非無大氣證明。",
+      "scope_check": "特定歷史波段精度與透明/有雲模型；成分/尺度高度/噪聲仍可影響，所有平譜都有雲的說法不收。",
+      "source_ids_checked": [
+        "X13-S008"
+      ],
+      "author_pair_ids": [
+        "N073",
+        "O3042"
+      ],
+      "neighbour_ids_read": [
+        "LEG-S43",
+        "K6025",
+        "N279",
+        "K6006",
+        "N073"
+      ],
+      "comparison": "N073吸收基本原理、O3042儀器波段平均、K6025雲增散射日光、N279高雲受日照、K6006凝結雲底、LEG-S43閃爍均無光路截斷判讀。",
+      "editorial_budget_seconds": [
+        60,
+        95
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13010",
+      "disposition": "retain_pool_only",
+      "mechanism_assessment": "時序中可見經度權重改變，可用粗模型反演經度亮度，並揭露無緯度資訊。",
+      "scope_check": "2007半軌道8微米、潮汐鎖定/近側視/平滑等假設，非照片或今日天氣圖。",
+      "source_ids_checked": [
+        "X13-S009"
+      ],
+      "author_pair_ids": [
+        "N072",
+        "X2059"
+      ],
+      "neighbour_ids_read": [
+        "LEG-S43",
+        "O3005",
+        "N072",
+        "N074",
+        "X13002"
+      ],
+      "comparison": "N072遮光、X2059取樣限制、X13002差分定位、O3005天線與傳播校正、N074透鏡、LEG-S43閃爍都沒有半球積分幾何的反演；不為湊片塞進其他案。",
+      "editorial_budget_seconds": [
+        70,
+        110
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    },
+    {
+      "id": "X13011",
+      "disposition": "retain",
+      "mechanism_assessment": "固定總斑點面積只改經度分布，可讓旋轉起伏由大變小；反直覺結果有獨立控制量。",
+      "scope_check": "穩定分布及M矮星模型；小光變不能反推所有星面乾淨，也不能反推必有大量斑點。",
+      "source_ids_checked": [
+        "X13-S007"
+      ],
+      "author_pair_ids": [
+        "X13008",
+        "X13006"
+      ],
+      "neighbour_ids_read": [
+        "LEG-S43",
+        "X2015",
+        "X13001",
+        "X13007",
+        "X2054"
+      ],
+      "comparison": "X13008改通道/全盤光譜差，此題不需行星也成立；X13006改速度權重、X2015掃射視線、LEG-S43大氣空間平均、X13001混光分母、X13007對流與X2054偏振均不同。",
+      "editorial_budget_seconds": [
+        45,
+        80
+      ],
+      "editorial_assessment": "有可示意的控制對照，題級可保留；時間是未試讀上限，不是完整稿核准。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "X13001",
+        "b": "N072",
+        "reason": "加穩定混光改分母，與偵測週期遮光的幾何限制不同。"
+      },
+      {
+        "a": "X13001",
+        "b": "X2017",
+        "reason": "未知混光使尺寸判讀失真，與用已知雙星光變/軌道求尺寸不同。"
+      },
+      {
+        "a": "X13001",
+        "b": "X2059",
+        "reason": "固定單次食的混光分母不是類星體時間延遲的取樣問題。"
+      },
+      {
+        "a": "X13001",
+        "b": "X13002",
+        "reason": "深度變淺不含來源位置；相減像素增加空間識別。"
+      },
+      {
+        "a": "X13002",
+        "b": "O3087",
+        "reason": "視場截斷導致偏差，和取消穩定源來定位變化源是不同運算及失效條件。"
+      },
+      {
+        "a": "X13002",
+        "b": "X2059",
+        "reason": "多次取樣不會自動恢復空間來源，需前後像素差分。"
+      },
+      {
+        "a": "X13003",
+        "b": "X2017",
+        "reason": "奇偶分開揭露錯誤事件分類與半週期，非尺寸求解。"
+      },
+      {
+        "a": "X13003",
+        "b": "N072",
+        "reason": "有週期不保證一類事件；交替深度提供新判別。"
+      },
+      {
+        "a": "X13004",
+        "b": "N014",
+        "reason": "進出/完整時長與外部密度拆幾何速度退化，不能縮成近快遠慢。"
+      },
+      {
+        "a": "X13004",
+        "b": "X2017",
+        "reason": "同時長可能短弦或快跑，需不同時間比例，超出一般尺寸約束。"
+      },
+      {
+        "a": "X13004",
+        "b": "X13005",
+        "reason": "一個是單次持續長度，一個是跨次時刻相關與多體穩定性。"
+      },
+      {
+        "a": "X13005",
+        "b": "N071",
+        "reason": "觀測兩個過境時刻的共同偏差，不是恆星RV搖晃。"
+      },
+      {
+        "a": "X13005",
+        "b": "X2059",
+        "reason": "共同引力及穩定性質量界不是加密取樣的同義問法。"
+      },
+      {
+        "a": "X13006",
+        "b": "N071",
+        "reason": "整星運動固定仍能因局部權重而變線形。"
+      },
+      {
+        "a": "X13006",
+        "b": "P128",
+        "reason": "聲源徑向投影沒有局部星面光量加權；投影只作前提。"
+      },
+      {
+        "a": "X13006",
+        "b": "N037",
+        "reason": "黑子為何暗與黑子如何改整體譜線的推論不同。"
+      },
+      {
+        "a": "X13006",
+        "b": "X13007",
+        "reason": "文內Eq6/7可固定局部線改亮度，或固定亮度改局部線，因果控制可分。"
+      },
+      {
+        "a": "X13007",
+        "b": "N037",
+        "reason": "磁區抑制對流的速度污染不等於黑子/冕洞為何黑。"
+      },
+      {
+        "a": "X13008",
+        "b": "N073",
+        "reason": "行星吸收與光源兩取樣區的錯基準不同。"
+      },
+      {
+        "a": "X13008",
+        "b": "O3049",
+        "reason": "共同照明可約消；兩取樣區光譜不同正是共同因子前提不成立。"
+      },
+      {
+        "a": "X13009",
+        "b": "N073",
+        "reason": "上層光路被截斷可隱藏吸收，不只是吸收物種辨識。"
+      },
+      {
+        "a": "X13009",
+        "b": "O3042",
+        "reason": "特徵尚未到儀器就被不透明層遮住，非儀器寬頻平均。"
+      },
+      {
+        "a": "X13010",
+        "b": "N072",
+        "reason": "半球經度投影反演不是週期遮擋，且有無緯度限制。"
+      },
+      {
+        "a": "X13010",
+        "b": "X2059",
+        "reason": "取樣是必要條件，並未包含可見半球核與粗經度反演。"
+      },
+      {
+        "a": "X13011",
+        "b": "X13008",
+        "reason": "固定覆蓋量改對稱分布影響時間光變；通道/全盤光譜錯配不要求旋轉光變。"
+      },
+      {
+        "a": "X13011",
+        "b": "X13006",
+        "reason": "一題看旋轉總光量對稱性，另一題看旋轉速度場的線形加權。"
+      }
+    ]
+  },
+  "not_added_review": "14退題有舊核或不足機制/未讀正文理由；不恢復基本RV/凌日/吸收、半個方法步驟、未另核最低質量、濾波過衝或換個天體的同題。",
+  "required_corrections": [
+    {
+      "id": "ASTRO01",
+      "file": "reviews/wave13-astronomy-themes.json",
+      "location": "W13X-T01 chapter 1 final beat",
+      "finding": "最後20秒只收束總曲線缺位置並轉問位置，已有足夠前章鋪陳。",
+      "required_change": "末beat20→10秒；章70→60，總220→210；range/author同步，不補內容。",
+      "status": "resolved_in_targeted_readback"
+    },
+    {
+      "id": "ASTRO02",
+      "file": "reviews/wave13-astronomy-themes.json",
+      "location": "W13X-T03 chapter 2 final beat",
+      "finding": "10秒只有切換到平光譜分支，沒有新的對照。",
+      "required_change": "10→5秒，章60→55，全225→220；刪該章後仍165秒，range/drop/author同步。",
+      "status": "resolved_in_targeted_readback"
+    },
+    {
+      "id": "ASTRO03",
+      "file": "reviews/wave13-astronomy-themes.json",
+      "location": "W13X-T04 title",
+      "finding": "單次持續時間短不等於不準時，原標題把兩種測量混名。",
+      "required_change": "改成行星擋多久、何時再來的兩種線索問法；保持兩把尺與獨立研究重設。",
+      "status": "resolved_in_targeted_readback"
+    },
+    {
+      "id": "ASTRO04",
+      "file": "reviews/wave13-astronomy-themes.json",
+      "location": "W13X-T04 chapter 2 final beat",
+      "finding": "素材scope有共同宿主未必目標星，但當前章節結尾只提穩定性，進稿易把共同系統與宿主定位混為一事。",
+      "required_change": "以部分末段回顧明列共同宿主未必畫面最亮目標星；不加秒，不改候選答案。",
+      "status": "resolved_in_targeted_readback"
+    }
+  ],
+  "theme_reviews": [
+    {
+      "id": "W13X-T01",
+      "before_seconds": 220,
+      "recommended_seconds": 210,
+      "recommended_chapters": [
+        60,
+        85,
+        65
+      ],
+      "decision": "retain_after_ASTRO01",
+      "causal_progression": "同小凹口先拆分母，再找位置，最後驗兩類事件是否混成半週期；不是診斷名稱清單。",
+      "boredom_cut": "只縮末段位置轉問10秒；後兩章有新資料維度及漏檢反例，無需新增案例。"
+    },
+    {
+      "id": "W13X-T02",
+      "before_seconds": 170,
+      "recommended_seconds": 170,
+      "recommended_chapters": [
+        80,
+        90
+      ],
+      "decision": "retain",
+      "causal_progression": "固定整體速度，先改速度區塊亮度，再明確重設固定光量反差改局部對流線位移。",
+      "boredom_cut": "目前每章有受控比較；不刪成名詞功能重述。若畫不出兩路對照即按原drop撤案。"
+    },
+    {
+      "id": "W13X-T03",
+      "before_seconds": 225,
+      "recommended_seconds": 220,
+      "recommended_chapters": [
+        85,
+        55,
+        80
+      ],
+      "decision": "retain_after_ASTRO02",
+      "causal_progression": "入射光參考錯配→旋轉監測為何看漏→明示改到行星端不透明層。X13011是同總面積換分布的新對照。",
+      "boredom_cut": "刪5秒純轉場，不用警語或歷史個案名補時間；若分布對照只剩有斑點仍可安靜一句則撤章重提165秒版。"
+    },
+    {
+      "id": "W13X-T04",
+      "before_seconds": 180,
+      "recommended_seconds": 180,
+      "recommended_chapters": [
+        90,
+        90
+      ],
+      "decision": "retain_after_ASTRO03_ASTRO04",
+      "causal_progression": "先一次擋多久的幾何/速度退化，明示重設為兩組跨次時間相關與質量穩定性，並非同系統兩步即唯一解。",
+      "boredom_cut": "不加MCMC/共振術語；保留共同宿主不必明亮目標的具體界線，替換回顧不加時間。"
+    }
+  ],
+  "timing_audit": {
+    "before_body_seconds": [
+      220,
+      170,
+      225,
+      180
+    ],
+    "before_arithmetic": "逐章總和等於body；每核心總章秒<=editorial上限，beats間隔與尾段<=45秒；開場/回扣已含，range上限不超body。",
+    "after_pending": false,
+    "evidence_level": "paper_budget_not_timed_read",
+    "final_body_seconds": [
+      210,
+      170,
+      220,
+      180
+    ],
+    "final_core_seconds": [
+      {
+        "X13001": 60,
+        "X13002": 85,
+        "X13003": 65
+      },
+      {
+        "X13006": 80,
+        "X13007": 90
+      },
+      {
+        "X13008": 85,
+        "X13011": 55,
+        "X13009": 80
+      },
+      {
+        "X13004": 90,
+        "X13005": 90
+      }
+    ]
+  },
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave13-astronomy.json",
+      "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+    },
+    {
+      "file": "reviews/wave13-astronomy-themes.json",
+      "sha256": "9a8e8a7dbdd84f056da85f83fee611e31ae643c620122d66d38a3d87779c245e"
+    },
+    {
+      "file": "reviews/wave13-astronomy-author.json",
+      "sha256": "09b4caad5c8c91ef528c56a858c30565ff42094172d3113e6c00cf72f8f2b71e"
+    }
+  ],
+  "final_input_check": {
+    "status": "PASS_FINAL_DRAFT_DELTA_ZERO",
+    "checked_on": "2026-11-01",
+    "prior_review_sha256": "be233dfef1fc5ae86dc3b4d08ab62b3e53fe03f772a2b08f80b80006c84be668",
+    "first_draft_sha256": "0a3ab60418d672805118925b9a66fe3537a2678f67b016b9a9ab354c32bc2340",
+    "final_draft_sha256": "be7fa317c00ebfa8805d58019733c3eabe159db79d23aa07702cad52b0897941",
+    "semantic_file": ".cache/semantic-wave13-draft.json",
+    "semantic_file_sha256": "d2db21f361a4a60d6037ad0dcb30cd49d2c6cacee368254c471dd47a5a4ab755",
+    "delta_file": ".cache/wave13-astronomy-neighbour-delta.json",
+    "delta_file_sha256": "2218d209b223b547cfd38c912d24d0a5a4e8cbf76ef9c74e4eab1ff908d8ba5e",
+    "delta_rows": 0,
+    "initial_neighbours_file": ".cache/wave13-astronomy-neighbours.json",
+    "initial_neighbours_sha256": "e756c438a00c411c61470258a73b4e20fcf1f02de4013c0bbdca676df98e3f93",
+    "note": "初始逐列近鄰檔維持first draft metadata與原hash，未假裝其已重寫成final。另直接核final draft bytes與final semantic input hash，將11行前5名/分數及55筆完整question/answer_target/scope逐一對回原讀內容，全部相同。",
+    "raw_records": 3262,
+    "candidate_rows_checked": 11,
+    "neighbour_pairs_checked": 55,
+    "rows": [
+      {
+        "id": "X13001",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "X2052",
+          "X13002",
+          "N062",
+          "N072",
+          "X2017"
+        ]
+      },
+      {
+        "id": "X13002",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "X13001",
+          "X2052",
+          "X2054",
+          "N072",
+          "X2017"
+        ]
+      },
+      {
+        "id": "X13003",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "X13001",
+          "X13002",
+          "X13004",
+          "E2272",
+          "X2052"
+        ]
+      },
+      {
+        "id": "X13004",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "X2049",
+          "X2048",
+          "X13006",
+          "X2050",
+          "LEG-S43"
+        ]
+      },
+      {
+        "id": "X13005",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "X2058",
+          "N025",
+          "X13004",
+          "X2032",
+          "O3057"
+        ]
+      },
+      {
+        "id": "X13006",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "X2048",
+          "X2050",
+          "X13004",
+          "X13007",
+          "X2018"
+        ]
+      },
+      {
+        "id": "X13007",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "X13006",
+          "X13001",
+          "X2053",
+          "X13011",
+          "N268"
+        ]
+      },
+      {
+        "id": "X13008",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "N074",
+          "LEG-S43",
+          "X2053",
+          "X2054",
+          "X13010"
+        ]
+      },
+      {
+        "id": "X13009",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "LEG-S43",
+          "K6025",
+          "N279",
+          "K6006",
+          "N073"
+        ]
+      },
+      {
+        "id": "X13010",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "LEG-S43",
+          "O3005",
+          "N072",
+          "N074",
+          "X13002"
+        ]
+      },
+      {
+        "id": "X13011",
+        "same_order_and_full_neighbour_text": true,
+        "neighbour_ids": [
+          "LEG-S43",
+          "X2015",
+          "X13001",
+          "X13007",
+          "X2054"
+        ]
+      }
+    ],
+    "reviewed_files_rechecked": [
+      {
+        "file": "batches/wave13-astronomy.json",
+        "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+      },
+      {
+        "file": "reviews/wave13-astronomy-themes.json",
+        "sha256": "9a8e8a7dbdd84f056da85f83fee611e31ae643c620122d66d38a3d87779c245e"
+      },
+      {
+        "file": "reviews/wave13-astronomy-author.json",
+        "sha256": "09b4caad5c8c91ef528c56a858c30565ff42094172d3113e6c00cf72f8f2b71e"
+      }
+    ],
+    "decision": "沒有新增需讀的鄰居或作者內容變更；原11留/0合併/0暫緩與ASTRO01–04結案判斷維持，僅更新共同輸入身份。"
+  },
+  "conclusion": "11題保留（X13010只留研究池）、0合併、0暫緩。ASTRO01–04定點讀回完成；四題案210/170/220/180秒皆未超核心預算，無剩餘題級必改。來源9頁/篇指定正文讀取不等於全文逐主張核准；未試讀、未重現模型、未製作媒體。",
+  "targeted_recheck": {
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "date": "2026-11-01",
+    "initial_review_sha256": "36574f2ddc044d237d76df0e0e5a6fb4c4ceddf9a710e9a8d819a1dedcaf8a3b",
+    "reviewed_files": [
+      {
+        "file": "batches/wave13-astronomy.json",
+        "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+      },
+      {
+        "file": "reviews/wave13-astronomy-themes.json",
+        "sha256": "9a8e8a7dbdd84f056da85f83fee611e31ae643c620122d66d38a3d87779c245e"
+      },
+      {
+        "file": "reviews/wave13-astronomy-author.json",
+        "sha256": "09b4caad5c8c91ef528c56a858c30565ff42094172d3113e6c00cf72f8f2b71e"
+      }
+    ],
+    "resolved_corrections": [
+      {
+        "id": "ASTRO01",
+        "observed": "T01第一章60秒，最後beat50→60僅10秒；60+85+65=210，range上限3.5分鐘。"
+      },
+      {
+        "id": "ASTRO02",
+        "observed": "T03第二章55秒，50→55轉場5秒；85+55+80=220，刪55秒章仍165且要求重寫覆核。"
+      },
+      {
+        "id": "ASTRO03",
+        "observed": "T04題名改為行星擋多久、何時再來，分清兩種時間線索，不再叫兩種不準時。"
+      },
+      {
+        "id": "ASTRO04",
+        "observed": "T04末章60秒beat明寫共同宿主不必畫面最亮目標星；章與全案仍90/180秒，未增加回顧。"
+      }
+    ],
+    "unchanged": "候選、答案、來源及batch bytes不變；T02仍170秒。作者收據保留修前3SHA與四項修訂。",
+    "validation": {
+      "status": "PASS_TOPIC_SCHEMA_AND_PAPER_TIMING_ONLY",
+      "runtime": "Node v24.22.1",
+      "script": ".cache/wave13-life-astronomy-validate.mjs",
+      "checks": "實呼validateEditorial及validateThemes；另核同核累計、各beat與尾段<=45秒、章節總和、range/target、UTF-8 LF與無本機使用者絕對路徑。"
+    },
+    "remaining_blockers": []
+  },
+  "final_input_check_history": [
+    {
+      "status": "PASS_UNCHANGED_RETRIEVAL_BYTES",
+      "draft_sha256": "0a3ab60418d672805118925b9a66fe3537a2678f67b016b9a9ab354c32bc2340",
+      "neighbours_sha256": "e756c438a00c411c61470258a73b4e20fcf1f02de4013c0bbdca676df98e3f93",
+      "batch_sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de",
+      "rows": 11,
+      "pairs_read": 55,
+      "delta": "修訂僅themes與author，batch與近鄰全文/排序/draft bytes未變；重讀檔案hash後綁最終作者三SHA。"
+    }
+  ]
+}

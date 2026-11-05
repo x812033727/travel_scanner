@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "role": "第二位非作者，僅四項修正定點讀回；本批主作者pool_life_tech，整批來源與編輯審閱由root另行記錄。",
+  "status": "PASS_TARGETED_CORRECTION_READBACK_ONLY",
+  "production_ready": false,
+  "reviewed_files": [
+    {
+      "file": "batches/wave19-life-mechanisms.json",
+      "sha256": "964689f9693b30a05741d9b9e91e88e7924f09452d76a90ca88f4aa01b5b6b5a"
+    },
+    {
+      "file": "reviews/wave19-life-mechanisms-author.json",
+      "sha256": "f215792da974c3a623417ce3ac9974c8483ea020d74f329a20a02273bda671f4"
+    },
+    {
+      "file": "reviews/wave19-life-mechanisms-themes.json",
+      "sha256": "9c76f3a4af7dea23ffb2153050d6d53e1917c3bbc84fedb372c69555b5fd5fdf"
+    }
+  ],
+  "reviewed_candidate_ids": [
+    "A19001"
+  ],
+  "reviewed_not_added_ids": [
+    "A19-NA001",
+    "A19-NA002"
+  ],
+  "reviewed_theme_ids": [
+    "W19A-T01"
+  ],
+  "review_scope": [
+    "讀batch的A19-S001完整來源欄位、A19001完整候選欄位及NA001/NA002；不聲稱逐題審六候選。",
+    "讀W19A-T01標題、追問、connection、兩章文字與題案限制，僅裁標題是否錯稱花蜜供能；未獨立重核蝙蝠來源或整案所有主張。",
+    "讀author來源S001紀錄、written_files及兩筆revision_history，確認最後NA002更正已落檔；早期SHA來自作者保存的歷史紀錄，未另讀每版完整原稿。",
+    "從pool.json讀L112/L116/E9009的問題、答案與範圍，供退題連結/用語定點比對。"
+  ],
+  "source_readings": [
+    {
+      "source_id": "A19-S001",
+      "title": "Hummingbird tongues are elastic micropumps",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4632618/",
+      "read_via": "讀既有作者HTML與擷取文字副本；以lxml讀HTML h2/h3，再讀文字PARA12–19及29–41。本次沒有新增外部fetch，不能稱第二次fresh HTTP。",
+      "html_cache": {
+        "file": ".cache/wave19-life-hummingbird2015.html",
+        "sha256": "97f427f1749724ff798eab570269ab6d8b604044505b1322b332a8b566bec7cf"
+      },
+      "text_cache": {
+        "file": ".cache/wave19-life-hummingbird2015.txt",
+        "sha256": "b56cdc3d0862806ee8aaaf9cef1c643d3b41921e81addd80fbddf2a5932a9f79"
+      },
+      "actual_body_scope": "§2的互斥通道預測；§3(a)壓扁/展開觀察及Fig.2圖說；§3(b)彈性能預存的概念；§3(d)模型比較/意外張開單溝；§4外露段expansive filling與浸入端trapping分工；§5取樣及量測。",
+      "not_read": "未重現§3(c)方程、未讀全部SI、未目讀圖像或觀看影片；本次未讀其他七個來源正文。",
+      "cache_identity_check": "兩個副本SHA與batch.author_cache完全相同。"
+    }
+  ],
+  "correction_checks": [
+    {
+      "id": "LIFE19-01",
+      "status": "PASS",
+      "fields": [
+        "A19-S001.reading_scope",
+        "A19-S001.locator",
+        "A19001.source_locator",
+        "author.source_readings[A19-S001]"
+      ],
+      "evidence": "HTML實際標題是§2 Mutually exclusive possibilities；§3(a) Capillarity is not biologically relevant to feeding in wild hummingbirds；(b) Novel fluid flow mechanism: a conceptual explanation；(c) Elastohydrodynamic model of expansive filling；(d) Theoretical versus experimental data。修版S001/候選/author定位一致；§3(d)確含意外先張開單溝的對照，§4確分外露/浸入機制。"
+    },
+    {
+      "id": "LIFE19-02",
+      "status": "PASS",
+      "fields": [
+        "W19A-T01.title",
+        "W19A-T01.core_question",
+        "W19A-T01.connection"
+      ],
+      "evidence": "修版標題「碰到花蜜才展開？兩種舌面，兩種供力方式」以接觸作條件疑問，並非宣稱花蜜提供彈性能。蜂鳥章明列前一次喙壓縮與回復；正文§3(b)把機械能預存於壓扁舌溝，花蜜接觸提供流體而容許回復。第二章明示另一研究/物種，沒有用同一泵強連；其蝙蝠機制未在本次另核。175秒未改，未新增片長核准。"
+    },
+    {
+      "id": "LIFE19-03",
+      "status": "PASS",
+      "fields": [
+        "A19-NA001.question",
+        "A19-NA001.existing_ids"
+      ],
+      "evidence": "問法已收為「花上的導引標記怎麼讓傳粉者找到花蜜？」且只指L116。讀回L116答案為授粉者感覺範圍與花蜜導引；L112為雄雌成熟時間錯開，不能支持本退題指向。沒有為此方向新增外部來源查核。"
+    },
+    {
+      "id": "LIFE19-04",
+      "status": "PASS",
+      "fields": [
+        "A19-NA002.question",
+        "author.revision_history"
+      ],
+      "evidence": "最終問句為「有些蜂怎麼靠振動抖出花粉？」已移除對蜜蜂的過度概括；E9009限定振動授粉系統與接觸傳遞振動，修版問句符合此退題範圍。author最後歷史記錄及written_files綁同一最終batch。未在本次另查蜂類分類或原振動授粉來源。"
+    }
+  ],
+  "remaining_blockers": [],
+  "reading_limits": [
+    "這是四項修正讀回PASS，不是全六題、八來源、四案的第二次整批核准。",
+    "不重算共同語意檢索、不判新增合併，不改作者或中央檔；本次沒有新增候選、測試、外部抓取或製作。",
+    "標題修正避免混淆機械供力與食物化學能，不否認花蜜作為動物食物能量來源。"
+  ],
+  "author_history_reference": {
+    "final_batch_sha256": "964689f9693b30a05741d9b9e91e88e7924f09452d76a90ca88f4aa01b5b6b5a",
+    "correction_ids": [
+      "LIFE19-01",
+      "LIFE19-02",
+      "LIFE19-03",
+      "LIFE19-04"
+    ]
+  }
+}

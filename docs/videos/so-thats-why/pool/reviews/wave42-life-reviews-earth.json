@@ -1,0 +1,2074 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "head": "7c195cdcf2f7dca0e0beedc48235f24795971583",
+    "selected": 3320,
+    "raw_records": 3702,
+    "not_added": 1750,
+    "themes": 425,
+    "snapshot": {
+      "file": "baselines/2026-11-03-3320.json.gz",
+      "sha256": "19bef886b643c8fd340a190596e687daa6f6d57868b05d04271c8cacdfddddb3"
+    },
+    "pool_sha256": "2944b6c42da6ac18eb009e2abba4c1afb7bbaaad5dec3cc10e5a13e38d09032c"
+  },
+  "role_and_scope": "地面工程、材料性質與火星原位資料逐題對照，讀全9候選、9概念來源指定段、15未收、21作者對、45有向共同近鄰，另查止退反衝、分子鬆弛、起塵、電極副反應。",
+  "reviewed_candidate_ids": [
+    "S42-001",
+    "S42-002",
+    "S42-003",
+    "S42-004",
+    "S42-005",
+    "S42-006",
+    "S42-007",
+    "S42-008",
+    "S42-009"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave42-earth.json",
+      "sha256": "795524d9595b991c02b26f5c05aad43fea2677bbd7f0a605b68c2d7b0c4219f6"
+    },
+    {
+      "file": "reviews/wave42-earth-author.json",
+      "sha256": "ef11dec3f426aa468646ab833eb591419072cf93d35e2372bb854a707c481077"
+    },
+    {
+      "file": "reviews/wave42-earth-themes.json",
+      "sha256": "399a1c2a86ea42f25a920b23c5924271613eec4115876cb3bca422e64bf2784e"
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "S42-S001",
+      "title": "The InSight HP³ Penetrator (Mole) on Mars: Soil Properties Derived from the Penetration Attempts and Related Activities",
+      "doi": "10.1007/s11214-022-00941-z",
+      "url": "https://doi.org/10.1007/s11214-022-00941-z",
+      "version": "2022正式論文，DLR典藏PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF pp6錘與制動彈簧仍有殘餘反衝、17圖8位置時序、22–26側壓/旁土/第二次反轉、39§6.3側壓吸收摩擦的解釋。",
+      "locator": "PDF p.6錘擊與殘餘反衝，p.17圖8；pp.22–26側壓、改壓旁土與後退；p.39 §6.3。",
+      "cache": {
+        "file": ".cache/wave42-earth-mole.pdf",
+        "sha256": "85084fe222e27c31b0fa3f2079fbc1df3848feba4a39775abb6aa943b80e8427",
+        "text_file": ".cache/wave42-earth-mole.txt",
+        "text_sha256": "f9dde997bc2035ed777be33b296d22ebf8f94789c21109d682d6a1f99d45b791"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "剖面中的接觸用以檢驗止退摩擦模型。施側壓一度進尺，移去機械臂並非當下必退；土壤阻力與操作耦合。",
+      "limitations": "只談該探針和登陸點；部分敲擊缺連續影像，研判還考慮了深處阻力與土層。"
+    },
+    {
+      "source_id": "S42-S002",
+      "title": "Assessing Mars Curiosity Rover Wheel Damage",
+      "doi": "10.1109/AERO53065.2022.9843634",
+      "url": "https://doi.org/10.1109/AERO53065.2022.9843634",
+      "version": "2022會議論文，JPL研究者保存的PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF pp2、8–9，兩側特定輪皮損壞對凸齒風險，地面壽命試驗與火星照片分開。p9 Fig19俯視不見而兩側可見的同一RM齒。",
+      "locator": "PDF p.2地面輪壽命試驗及車輪分區；pp.8–9追蹤斷裂的輪齒，p.9圖17–19側面與俯視。",
+      "cache": {
+        "file": ".cache/wave42-earth-wheel.pdf",
+        "sha256": "af30d406ac68c5d0cd07b32d1fc53e00f70bc19b2f2ec92da968f6844b3d6dae",
+        "text_file": ".cache/wave42-earth-wheel.txt",
+        "text_sha256": "b3c6517fdcab17400725eb3e6871f2334d20e76be7bafdf31e3f4fcd2c8de494"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "裂的薄皮與凸齒本身斷裂不能互換。地面測驗以指定區兩側破損限縮高風險齒。Fig19是RM12斷口被俯視遮住，非每個破洞已斷齒。",
+      "limitations": "外側薄殼破孔與一條結構齒斷裂要區分；試驗的幾何門檻不宜當精確剩餘里程。"
+    },
+    {
+      "source_id": "S42-S003",
+      "title": "Overview and Results From the Mars 2020 Perseverance Rover’s First Science Campaign on the Jezero Crater Floor",
+      "doi": "10.1029/2022JE007613",
+      "url": "https://doi.org/10.1029/2022JE007613",
+      "version": "2023出版版，NASA NTRS PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF pp28 Fig11c–e孔與管底塵、38團隊檢查管內影像/容積與搜尋掉落整芯、40其他岩材鑽點較完整邊緣。",
+      "locator": "PDF p.28圖11c–e；p.38第一個採樣結果與空管、尋找遺落岩芯段；p.40另一個較堅實鑽點的斷口比較。",
+      "cache": {
+        "file": ".cache/wave42-earth-sample.pdf",
+        "sha256": "cc21ccdfe84db88b4d72b15d07449d5ca371340f8eb33ba5809428dbfa404daf",
+        "text_file": ".cache/wave42-earth-sample.txt",
+        "text_sha256": "3a0f3bb0cd8a68991cf08457fc867346cdb531c9e921e148135d785d8d6f93f4"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "Roubion鑽孔、管中少數塵粒、容積測量與另搜遺芯這些讀出相符；未拍到岩芯解體瞬間或指定相機裝在管底。",
+      "limitations": "未逐格拍到管內碎裂。沒有說每粒粉塵都掉光或僅有一種可能。"
+    },
+    {
+      "source_id": "S42-S004",
+      "title": "The Phoenix Mars Lander Robotic Arm",
+      "doi": "10.1109/AERO.2009.4839306",
+      "url": "https://doi.org/10.1109/AERO.2009.4839306",
+      "version": "2009會議論文，JPL團隊手稿PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "會議PDF p8 Icy-Soil Sample Acquisition，前兩次黏鏟/第三次較少冰可交付，第四次門未開不是同一因果。",
+      "locator": "PDF p.8 Icy-Soil Sample Acquisition，前兩次、第三次刮取及另一次儀器蓋失敗的區分。",
+      "cache": {
+        "file": ".cache/wave42-earth-arm.pdf",
+        "sha256": "8c6e0ef0a8060be5a9d7987aba9c9e23e1dd7155a83a82e5fb78bcfe221e325f",
+        "text_file": ".cache/wave42-earth-arm.txt",
+        "text_sha256": "ab9eb39f0458a3a8e871a0f0a062a3bc9c6bd795b5e77883a19a463f580c5dca"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "前兩次富冰料疑黏住、第三次較少冰可送入並驗得冰、第四次艙門未全開分列，日照促黏是推測。",
+      "limitations": "日照與樣品結團是團隊推測，未測得鏟上融化後重新結冰的完整過程。"
+    },
+    {
+      "source_id": "S42-S005",
+      "title": "In situ recording of Mars soundscape",
+      "doi": "10.1038/s41586-022-04679-0",
+      "url": "https://doi.org/10.1038/s41586-022-04679-0",
+      "version": "2022出版者正式PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF pp3–4 Speed of sound及Fig3、pp8–9 Doppler effect與CO₂ vibrational relaxation。",
+      "locator": "PDF p.3 Speed of sound on Mars、p.4圖3；pp.8–9振動自由度及頻率依賴。",
+      "cache": {
+        "file": ".cache/wave42-earth-sound.pdf",
+        "sha256": "b14c34fcebc06f1c456b85c7c729d2f7b5605ae4c143feccd8e860f73bb6d34c",
+        "text_file": ".cache/wave42-earth-sound.txt",
+        "text_sha256": "879f1463c528933d532bb46276722233e7f9d481e487b695dcc0c2aae09ca868"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "雷射脈衝飛行時間與機智號第四航次槳聲都卜勒擬合並非同時同源。由低壓二氧化碳內部振動鬆弛的頻帶位置，解釋何以不適用地球可聽頻段的一般近似。",
+      "limitations": "兩種聲源與估速方法不同；約240赫茲是這種氣壓下的特徵頻率，未在同一地點同時發出一組高低音實測抵達時差。"
+    },
+    {
+      "source_id": "S42-S006",
+      "title": "The sound of a Martian dust devil",
+      "doi": "10.1038/s41467-022-35100-z",
+      "url": "https://doi.org/10.1038/s41467-022-35100-z",
+      "version": "2022正式研究，Europe PMC原文XML。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "期刊XML Results Multisensorial recordings、Quantifying the vortex grain loading、Fig1/3/5圖說、Methods碰擊計數與限制。",
+      "locator": "Results：Multisensorial recordings of a dust devil encounter、Quantifying the vortex grain loading，圖1、3、5及方法中的碰擊計數。",
+      "cache": {
+        "file": ".cache/wave42-earth-devil.xml",
+        "sha256": "417ff73f751a14b67eddb5403542809195be5c990a8c35318aae1c724bfa7c5e",
+        "text_file": ".cache/wave42-earth-devil.txt",
+        "text_sha256": "2452202ae1ba9388a3d31a2cc4a022e6c0caee39dcffd1d99d8749f43772d286"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "第215火星日兩壁對風噪、第三批顆粒在眼部，Navcam中心的塵為旁證。粒子擊打位置/聲波是否經車身傳遞均未直接辨認。",
+      "limitations": "未確定每粒打在哪個零件，也未唯一辨認中心顆粒來源；導航相機提供同次塵雲對照。"
+    },
+    {
+      "source_id": "S42-S007",
+      "title": "Lifting and Transport of Martian Dust by the Ingenuity Helicopter Rotor Downwash as Observed by High-Speed Imaging From the Perseverance Rover",
+      "doi": "10.1029/2022JE007605",
+      "url": "https://doi.org/10.1029/2022JE007605",
+      "version": "2022正式卷期HTML，以外站Web工具定位。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "期刊HTML定點L490–508、524–527，著陸與水平飛越分開，低應力航段及鬆塵來源的替代解釋。",
+      "locator": "刊方 §§4.2–4.4 與 §5，Web L490–508、524–527，尤其飛越時有／無起塵、著陸前期擾動對照與模型的不確定。",
+      "cache": {
+        "file": ".cache/wave42-earth-heli-web.txt",
+        "sha256": "6fbdf8029ea32b2be3abb54f3bae6a8981652e71dd07c3abcfc68a206dd3196c",
+        "text_file": ".cache/wave42-earth-heli-web.txt",
+        "text_sha256": "6fbdf8029ea32b2be3abb54f3bae6a8981652e71dd07c3abcfc68a206dd3196c"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "5m觀測航段可有塵亦可無塵。一般砂啟動與塵團分解是不同途徑，後者由影像及下洗門檻支持但不是逐粒觀察。",
+      "limitations": "影像辨起塵位置，風應力和門檻由模型估算；沒有逐粒拍下塵團崩解。"
+    },
+    {
+      "source_id": "S42-S008",
+      "title": "Mars Oxygen ISRU Experiment (MOXIE)—Preparing for human Mars exploration",
+      "doi": "10.1126/sciadv.abp8636",
+      "url": "https://doi.org/10.1126/sciadv.abp8636",
+      "version": "2022正式研究，Europe PMC原文XML。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "期刊XML Operation on Mars、Nernst potentials/Fig3、temperature sensitivity及coking，模型驗證與七次現場運作的區分。",
+      "locator": "What is the Mars Oxygen In Situ Resource Utilization Experiment? 圖1及3，Nernst potentials、溫度梯度與 coking 三段；MOXIE operations。",
+      "cache": {
+        "file": ".cache/wave42-earth-moxie.xml",
+        "sha256": "b29ffb612f8b443752b5bff26c9a755b2f2e5c2c845e99938030fc3bec37b3e6",
+        "text_file": ".cache/wave42-earth-moxie.txt",
+        "text_sha256": "e61148793f504ae8a5fe4e1c1ad62e635e47352dd7cea7438397060f0b1ee633"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "由能產氧到不宜產碳的窗口隨溫度變窄，非機上七次資料都曾發生積碳。",
+      "limitations": "安全窗是熱力學預測與工程驗證；未把設計要預防的結碳寫成七次火星試驗已發生的故障。"
+    },
+    {
+      "source_id": "S42-S009",
+      "title": "Results from the Mars Phoenix Lander Robotic Arm experiment",
+      "doi": "10.1029/2009JE003408",
+      "url": "https://doi.org/10.1029/2009JE003408",
+      "version": "2009出版版，JPL研究者保存的PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF p12 §5 [21] Neverland/Headless石塊與鄰土冰界面；與S004 p8、同篇p14 Fig11分開核移石與冰樣交付。",
+      "locator": "PDF p.12 §5末段[21]，Neverland trench、移走Headless岩石後測冰土界面；p.14圖11的冰樣交付對照。",
+      "cache": {
+        "file": ".cache/wave42-earth-phoenix.pdf",
+        "sha256": "f071832a0df3149a0bc0c485a6835f0d063cf7435ee4a222880b17b66848518c",
+        "text_file": ".cache/wave42-earth-phoenix.txt",
+        "text_sha256": "ca0a33613f9ac03cda1b011c89ce3c2e6325a7ba3456ab5432089a2b870c0b34"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "比較移走石後的局部冰土界面，並用事前預測解讀。與冰桌不同，觀測量是埋藏穩冰深度，不是直接量石面散熱與外露冰柱消融；不指定推拉。",
+      "limitations": "可直接量的是界面位置差，未在移石前後完整追蹤同一層冰的遷移；不能推為所有陰影或所有火星石塊。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "S42-S001",
+      "title": "The InSight HP³ Penetrator (Mole) on Mars: Soil Properties Derived from the Penetration Attempts and Related Activities",
+      "doi": "10.1007/s11214-022-00941-z",
+      "url": "https://doi.org/10.1007/s11214-022-00941-z",
+      "version": "2022正式論文，DLR典藏PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF pp6錘與制動彈簧仍有殘餘反衝、17圖8位置時序、22–26側壓/旁土/第二次反轉、39§6.3側壓吸收摩擦的解釋。",
+      "locator": "PDF p.6錘擊與殘餘反衝，p.17圖8；pp.22–26側壓、改壓旁土與後退；p.39 §6.3。",
+      "cache": {
+        "file": ".cache/wave42-earth-mole.pdf",
+        "sha256": "85084fe222e27c31b0fa3f2079fbc1df3848feba4a39775abb6aa943b80e8427",
+        "text_file": ".cache/wave42-earth-mole.txt",
+        "text_sha256": "f9dde997bc2035ed777be33b296d22ebf8f94789c21109d682d6a1f99d45b791"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "剖面中的接觸用以檢驗止退摩擦模型。施側壓一度進尺，移去機械臂並非當下必退；土壤阻力與操作耦合。",
+      "limitations": "只談該探針和登陸點；部分敲擊缺連續影像，研判還考慮了深處阻力與土層。"
+    },
+    {
+      "source_id": "S42-S002",
+      "title": "Assessing Mars Curiosity Rover Wheel Damage",
+      "doi": "10.1109/AERO53065.2022.9843634",
+      "url": "https://doi.org/10.1109/AERO53065.2022.9843634",
+      "version": "2022會議論文，JPL研究者保存的PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF pp2、8–9，兩側特定輪皮損壞對凸齒風險，地面壽命試驗與火星照片分開。p9 Fig19俯視不見而兩側可見的同一RM齒。",
+      "locator": "PDF p.2地面輪壽命試驗及車輪分區；pp.8–9追蹤斷裂的輪齒，p.9圖17–19側面與俯視。",
+      "cache": {
+        "file": ".cache/wave42-earth-wheel.pdf",
+        "sha256": "af30d406ac68c5d0cd07b32d1fc53e00f70bc19b2f2ec92da968f6844b3d6dae",
+        "text_file": ".cache/wave42-earth-wheel.txt",
+        "text_sha256": "b3c6517fdcab17400725eb3e6871f2334d20e76be7bafdf31e3f4fcd2c8de494"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "裂的薄皮與凸齒本身斷裂不能互換。地面測驗以指定區兩側破損限縮高風險齒。Fig19是RM12斷口被俯視遮住，非每個破洞已斷齒。",
+      "limitations": "外側薄殼破孔與一條結構齒斷裂要區分；試驗的幾何門檻不宜當精確剩餘里程。"
+    },
+    {
+      "source_id": "S42-S003",
+      "title": "Overview and Results From the Mars 2020 Perseverance Rover’s First Science Campaign on the Jezero Crater Floor",
+      "doi": "10.1029/2022JE007613",
+      "url": "https://doi.org/10.1029/2022JE007613",
+      "version": "2023出版版，NASA NTRS PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF pp28 Fig11c–e孔與管底塵、38團隊檢查管內影像/容積與搜尋掉落整芯、40其他岩材鑽點較完整邊緣。",
+      "locator": "PDF p.28圖11c–e；p.38第一個採樣結果與空管、尋找遺落岩芯段；p.40另一個較堅實鑽點的斷口比較。",
+      "cache": {
+        "file": ".cache/wave42-earth-sample.pdf",
+        "sha256": "cc21ccdfe84db88b4d72b15d07449d5ca371340f8eb33ba5809428dbfa404daf",
+        "text_file": ".cache/wave42-earth-sample.txt",
+        "text_sha256": "3a0f3bb0cd8a68991cf08457fc867346cdb531c9e921e148135d785d8d6f93f4"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "Roubion鑽孔、管中少數塵粒、容積測量與另搜遺芯這些讀出相符；未拍到岩芯解體瞬間或指定相機裝在管底。",
+      "limitations": "未逐格拍到管內碎裂。沒有說每粒粉塵都掉光或僅有一種可能。"
+    },
+    {
+      "source_id": "S42-S004",
+      "title": "The Phoenix Mars Lander Robotic Arm",
+      "doi": "10.1109/AERO.2009.4839306",
+      "url": "https://doi.org/10.1109/AERO.2009.4839306",
+      "version": "2009會議論文，JPL團隊手稿PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "會議PDF p8 Icy-Soil Sample Acquisition，前兩次黏鏟/第三次較少冰可交付，第四次門未開不是同一因果。",
+      "locator": "PDF p.8 Icy-Soil Sample Acquisition，前兩次、第三次刮取及另一次儀器蓋失敗的區分。",
+      "cache": {
+        "file": ".cache/wave42-earth-arm.pdf",
+        "sha256": "8c6e0ef0a8060be5a9d7987aba9c9e23e1dd7155a83a82e5fb78bcfe221e325f",
+        "text_file": ".cache/wave42-earth-arm.txt",
+        "text_sha256": "ab9eb39f0458a3a8e871a0f0a062a3bc9c6bd795b5e77883a19a463f580c5dca"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "前兩次富冰料疑黏住、第三次較少冰可送入並驗得冰、第四次艙門未全開分列，日照促黏是推測。",
+      "limitations": "日照與樣品結團是團隊推測，未測得鏟上融化後重新結冰的完整過程。"
+    },
+    {
+      "source_id": "S42-S005",
+      "title": "In situ recording of Mars soundscape",
+      "doi": "10.1038/s41586-022-04679-0",
+      "url": "https://doi.org/10.1038/s41586-022-04679-0",
+      "version": "2022出版者正式PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF pp3–4 Speed of sound及Fig3、pp8–9 Doppler effect與CO₂ vibrational relaxation。",
+      "locator": "PDF p.3 Speed of sound on Mars、p.4圖3；pp.8–9振動自由度及頻率依賴。",
+      "cache": {
+        "file": ".cache/wave42-earth-sound.pdf",
+        "sha256": "b14c34fcebc06f1c456b85c7c729d2f7b5605ae4c143feccd8e860f73bb6d34c",
+        "text_file": ".cache/wave42-earth-sound.txt",
+        "text_sha256": "879f1463c528933d532bb46276722233e7f9d481e487b695dcc0c2aae09ca868"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "雷射脈衝飛行時間與機智號第四航次槳聲都卜勒擬合並非同時同源。由低壓二氧化碳內部振動鬆弛的頻帶位置，解釋何以不適用地球可聽頻段的一般近似。",
+      "limitations": "兩種聲源與估速方法不同；約240赫茲是這種氣壓下的特徵頻率，未在同一地點同時發出一組高低音實測抵達時差。"
+    },
+    {
+      "source_id": "S42-S006",
+      "title": "The sound of a Martian dust devil",
+      "doi": "10.1038/s41467-022-35100-z",
+      "url": "https://doi.org/10.1038/s41467-022-35100-z",
+      "version": "2022正式研究，Europe PMC原文XML。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "期刊XML Results Multisensorial recordings、Quantifying the vortex grain loading、Fig1/3/5圖說、Methods碰擊計數與限制。",
+      "locator": "Results：Multisensorial recordings of a dust devil encounter、Quantifying the vortex grain loading，圖1、3、5及方法中的碰擊計數。",
+      "cache": {
+        "file": ".cache/wave42-earth-devil.xml",
+        "sha256": "417ff73f751a14b67eddb5403542809195be5c990a8c35318aae1c724bfa7c5e",
+        "text_file": ".cache/wave42-earth-devil.txt",
+        "text_sha256": "2452202ae1ba9388a3d31a2cc4a022e6c0caee39dcffd1d99d8749f43772d286"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "第215火星日兩壁對風噪、第三批顆粒在眼部，Navcam中心的塵為旁證。粒子擊打位置/聲波是否經車身傳遞均未直接辨認。",
+      "limitations": "未確定每粒打在哪個零件，也未唯一辨認中心顆粒來源；導航相機提供同次塵雲對照。"
+    },
+    {
+      "source_id": "S42-S007",
+      "title": "Lifting and Transport of Martian Dust by the Ingenuity Helicopter Rotor Downwash as Observed by High-Speed Imaging From the Perseverance Rover",
+      "doi": "10.1029/2022JE007605",
+      "url": "https://doi.org/10.1029/2022JE007605",
+      "version": "2022正式卷期HTML，以外站Web工具定位。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "期刊HTML定點L490–508、524–527，著陸與水平飛越分開，低應力航段及鬆塵來源的替代解釋。",
+      "locator": "刊方 §§4.2–4.4 與 §5，Web L490–508、524–527，尤其飛越時有／無起塵、著陸前期擾動對照與模型的不確定。",
+      "cache": {
+        "file": ".cache/wave42-earth-heli-web.txt",
+        "sha256": "6fbdf8029ea32b2be3abb54f3bae6a8981652e71dd07c3abcfc68a206dd3196c",
+        "text_file": ".cache/wave42-earth-heli-web.txt",
+        "text_sha256": "6fbdf8029ea32b2be3abb54f3bae6a8981652e71dd07c3abcfc68a206dd3196c"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "5m觀測航段可有塵亦可無塵。一般砂啟動與塵團分解是不同途徑，後者由影像及下洗門檻支持但不是逐粒觀察。",
+      "limitations": "影像辨起塵位置，風應力和門檻由模型估算；沒有逐粒拍下塵團崩解。"
+    },
+    {
+      "source_id": "S42-S008",
+      "title": "Mars Oxygen ISRU Experiment (MOXIE)—Preparing for human Mars exploration",
+      "doi": "10.1126/sciadv.abp8636",
+      "url": "https://doi.org/10.1126/sciadv.abp8636",
+      "version": "2022正式研究，Europe PMC原文XML。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "期刊XML Operation on Mars、Nernst potentials/Fig3、temperature sensitivity及coking，模型驗證與七次現場運作的區分。",
+      "locator": "What is the Mars Oxygen In Situ Resource Utilization Experiment? 圖1及3，Nernst potentials、溫度梯度與 coking 三段；MOXIE operations。",
+      "cache": {
+        "file": ".cache/wave42-earth-moxie.xml",
+        "sha256": "b29ffb612f8b443752b5bff26c9a755b2f2e5c2c845e99938030fc3bec37b3e6",
+        "text_file": ".cache/wave42-earth-moxie.txt",
+        "text_sha256": "e61148793f504ae8a5fe4e1c1ad62e635e47352dd7cea7438397060f0b1ee633"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "由能產氧到不宜產碳的窗口隨溫度變窄，非機上七次資料都曾發生積碳。",
+      "limitations": "安全窗是熱力學預測與工程驗證；未把設計要預防的結碳寫成七次火星試驗已發生的故障。"
+    },
+    {
+      "source_id": "S42-S009",
+      "title": "Results from the Mars Phoenix Lander Robotic Arm experiment",
+      "doi": "10.1029/2009JE003408",
+      "url": "https://doi.org/10.1029/2009JE003408",
+      "version": "2009出版版，JPL研究者保存的PDF。",
+      "read_via": "覆核者驗作者同日快取SHA，獨立讀指定原文及所列圖面；沒有重新HTTP取源。",
+      "reading_scope": "PDF p12 §5 [21] Neverland/Headless石塊與鄰土冰界面；與S004 p8、同篇p14 Fig11分開核移石與冰樣交付。",
+      "locator": "PDF p.12 §5末段[21]，Neverland trench、移走Headless岩石後測冰土界面；p.14圖11的冰樣交付對照。",
+      "cache": {
+        "file": ".cache/wave42-earth-phoenix.pdf",
+        "sha256": "f071832a0df3149a0bc0c485a6835f0d063cf7435ee4a222880b17b66848518c",
+        "text_file": ".cache/wave42-earth-phoenix.txt",
+        "text_sha256": "ca0a33613f9ac03cda1b011c89ce3c2e6325a7ba3456ab5432089a2b870c0b34"
+      },
+      "decision": "supports_bounded_topic",
+      "finding": "比較移走石後的局部冰土界面，並用事前預測解讀。與冰桌不同，觀測量是埋藏穩冰深度，不是直接量石面散熱與外露冰柱消融；不指定推拉。",
+      "limitations": "可直接量的是界面位置差，未在移石前後完整追蹤同一層冰的遷移；不能推為所有陰影或所有火星石塊。"
+    }
+  ],
+  "source_identity_review": "九篇研究的DOI各自獨立；同一探測器/任務及取樣地有重疊。S004、S009同屬鳳凰號機械臂及相同工作的一部分，兩篇不能算作移石和冰樣的獨立複驗。",
+  "source_reading_summary": "核SHA讀六有效PDF、兩份期刊全文XML、S007作者保存的刊方web定點文字，未自行重新上網。",
+  "source_fetch_limits": "S007只讀原文返回的§§4.2–4.4、§5，未取得完整PDF；其他篇也只按題核定點，未看片、SI或逐筆原始讀數。",
+  "visual_readings": [
+    {
+      "file": ".cache/wave42-earth-figs.jpg",
+      "sha256": "0d0a834e38b40c0fec81eab8fde653b49c4792ba8db94cf6d7e366fc132088b4",
+      "scope": "實讀合頁S001 p17 Fig8、S002 p9 Fig17–19、S003 p28 Fig11、S005 p4 Fig3與圖4位置。其餘採正文/圖說。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "S42-001",
+      "canonical_id": "S42-001",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S001"
+      ],
+      "editorial_seconds": [
+        36,
+        83
+      ],
+      "reason": "土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因",
+      "scope_check": "剖面中的接觸用以檢驗止退摩擦模型。施側壓一度進尺，移去機械臂並非當下必退；土壤阻力與操作耦合。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S42-002",
+      "canonical_id": "S42-002",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S002"
+      ],
+      "editorial_seconds": [
+        32,
+        73
+      ],
+      "reason": "輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認",
+      "scope_check": "裂的薄皮與凸齒本身斷裂不能互換。地面測驗以指定區兩側破損限縮高風險齒。Fig19是RM12斷口被俯視遮住，非每個破洞已斷齒。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S42-003",
+      "canonical_id": "S42-003",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S003"
+      ],
+      "editorial_seconds": [
+        32,
+        75
+      ],
+      "reason": "鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落",
+      "scope_check": "Roubion鑽孔、管中少數塵粒、容積測量與另搜遺芯這些讀出相符；未拍到岩芯解體瞬間或指定相機裝在管底。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S42-004",
+      "canonical_id": "S42-004",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S004",
+        "S42-S009"
+      ],
+      "editorial_seconds": [
+        30,
+        72
+      ],
+      "reason": "富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器",
+      "scope_check": "前兩次富冰料疑黏住、第三次較少冰可送入並驗得冰、第四次艙門未全開分列，日照促黏是推測。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S42-005",
+      "canonical_id": "S42-005",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S005"
+      ],
+      "editorial_seconds": [
+        36,
+        81
+      ],
+      "reason": "低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異",
+      "scope_check": "雷射脈衝飛行時間與機智號第四航次槳聲都卜勒擬合並非同時同源。由低壓二氧化碳內部振動鬆弛的頻帶位置，解釋何以不適用地球可聽頻段的一般近似。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S42-006",
+      "canonical_id": "S42-006",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S006"
+      ],
+      "editorial_seconds": [
+        36,
+        80
+      ],
+      "reason": "旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶",
+      "scope_check": "第215火星日兩壁對風噪、第三批顆粒在眼部，Navcam中心的塵為旁證。粒子擊打位置/聲波是否經車身傳遞均未直接辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S42-007",
+      "canonical_id": "S42-007",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S007"
+      ],
+      "editorial_seconds": [
+        34,
+        75
+      ],
+      "reason": "直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂",
+      "scope_check": "5m觀測航段可有塵亦可無塵。一般砂啟動與塵團分解是不同途徑，後者由影像及下洗門檻支持但不是逐粒觀察。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S42-008",
+      "canonical_id": "S42-008",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S008"
+      ],
+      "editorial_seconds": [
+        32,
+        75
+      ],
+      "reason": "固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區",
+      "scope_check": "由能產氧到不宜產碳的窗口隨溫度變窄，非機上七次資料都曾發生積碳。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    },
+    {
+      "id": "S42-009",
+      "canonical_id": "S42-009",
+      "decision": "retain",
+      "source_ids": [
+        "S42-S009"
+      ],
+      "editorial_seconds": [
+        28,
+        66
+      ],
+      "reason": "移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符",
+      "scope_check": "比較移走石後的局部冰土界面，並用事前預測解讀。與冰桌不同，觀測量是埋藏穩冰深度，不是直接量石面散熱與外露冰柱消融；不指定推拉。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial",
+        "notes"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "S42-001",
+      "b": "S42-003",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。S42-003處理鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.697842
+    },
+    {
+      "a": "S42-001",
+      "b": "S42-004",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。S42-004處理富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.695798
+    },
+    {
+      "a": "S42-001",
+      "b": "R36005",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。R36005處理人工撞坑缺邊與鄰近巨石位移所制約的挖掘阻擋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.682916
+    },
+    {
+      "a": "S42-001",
+      "b": "S42-002",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。S42-002處理輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.680486
+    },
+    {
+      "a": "S42-001",
+      "b": "E11018",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。E11018處理乾冰蓋下昇華積氣與噴流挖出的支狀紋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.674595
+    },
+    {
+      "a": "S42-002",
+      "b": "D2124",
+      "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2124處理反轉齒輪先跨接觸間隙。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.790892
+    },
+    {
+      "a": "S42-002",
+      "b": "D2121",
+      "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2121處理齒側接觸法線的幾何保證速比。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.736091
+    },
+    {
+      "a": "S42-002",
+      "b": "D2126",
+      "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2126處理棘輪工作行程咬合、回程越齒。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.720658
+    },
+    {
+      "a": "S42-002",
+      "b": "J6018",
+      "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。J6018處理柔輪與剛輪不同齒數和移動嚙合位置造成大減速。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.716767
+    },
+    {
+      "a": "S42-002",
+      "b": "D2122",
+      "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2122處理串聯中間惰輪改方向而不改兩端總速比。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.716529
+    },
+    {
+      "a": "S42-003",
+      "b": "E11019",
+      "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。E11019處理乾冰塊昇華降低摩擦而滑行刻槽的假說。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.706489
+    },
+    {
+      "a": "S42-003",
+      "b": "S42-001",
+      "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。S42-001處理土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.697842
+    },
+    {
+      "a": "S42-003",
+      "b": "R36005",
+      "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。R36005處理人工撞坑缺邊與鄰近巨石位移所制約的挖掘阻擋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.677211
+    },
+    {
+      "a": "S42-003",
+      "b": "S42-004",
+      "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。S42-004處理富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.67148
+    },
+    {
+      "a": "S42-003",
+      "b": "N052",
+      "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。N052處理彗星小碎屑形成可見流星，能穿越大氣到地表的隕石涉及不同起始物體與消融條件。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.636189
+    },
+    {
+      "a": "S42-004",
+      "b": "E11019",
+      "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。E11019處理乾冰塊昇華降低摩擦而滑行刻槽的假說。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.852425
+    },
+    {
+      "a": "S42-004",
+      "b": "S42-009",
+      "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。S42-009處理移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.777209
+    },
+    {
+      "a": "S42-004",
+      "b": "E11018",
+      "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。E11018處理乾冰蓋下昇華積氣與噴流挖出的支狀紋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.772862
+    },
+    {
+      "a": "S42-004",
+      "b": "N221",
+      "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。N221處理海冰片互相擠壓而堆疊。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.69863
+    },
+    {
+      "a": "S42-004",
+      "b": "S42-001",
+      "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。S42-001處理土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.695798
+    },
+    {
+      "a": "S42-005",
+      "b": "S42-006",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。S42-006處理旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.637779
+    },
+    {
+      "a": "S42-005",
+      "b": "D9006",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。D9006處理弦與音板耦合改變輻射效率及初音衰減。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.631091
+    },
+    {
+      "a": "S42-005",
+      "b": "N014",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。N014處理行星橢圓軌道使季節長短不等。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.630858
+    },
+    {
+      "a": "S42-005",
+      "b": "X2035",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。X2035處理天文波長與探測器大小限制重力波可見頻段。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.627388
+    },
+    {
+      "a": "S42-005",
+      "b": "P125",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。P125處理聲源接近或遠離改變收到的波峰間隔。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.612477
+    },
+    {
+      "a": "S42-006",
+      "b": "S42-007",
+      "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。S42-007處理直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.728422
+    },
+    {
+      "a": "S42-006",
+      "b": "P31001",
+      "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。P31001處理相異波到時與來向給出撞坑搜尋區。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.703547
+    },
+    {
+      "a": "S42-006",
+      "b": "O3004",
+      "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。O3004處理相干散射造成雷達散斑，平均會影響解析度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.655986
+    },
+    {
+      "a": "S42-006",
+      "b": "O3029",
+      "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。O3029處理偏振相關性與速度旋轉區一起支持龍捲風碎屑。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.653966
+    },
+    {
+      "a": "S42-006",
+      "b": "S39-004",
+      "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。S39-004處理環緣波在近掠射陽光下的影子限制垂直起伏。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.652158
+    },
+    {
+      "a": "S42-007",
+      "b": "S42-006",
+      "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。S42-006處理旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.728422
+    },
+    {
+      "a": "S42-007",
+      "b": "O3029",
+      "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。O3029處理偏振相關性與速度旋轉區一起支持龍捲風碎屑。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.724616
+    },
+    {
+      "a": "S42-007",
+      "b": "K6006",
+      "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。K6006處理平坦雲底對應上升空氣到達飽和的高度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.685964
+    },
+    {
+      "a": "S42-007",
+      "b": "R36001",
+      "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。R36001處理以貝努取樣前後加速度與入土深度限制淺層接觸阻力。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.677681
+    },
+    {
+      "a": "S42-007",
+      "b": "O3022",
+      "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。O3022處理曲率與波束高度可使雷達漏掉遠處淺層降雨。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.675358
+    },
+    {
+      "a": "S42-008",
+      "b": "H3035",
+      "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。H3035處理電池以離子移動補償兩極電荷累積。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.697434
+    },
+    {
+      "a": "S42-008",
+      "b": "L179",
+      "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。L179處理細菌耐氧與能用氧代謝的區別。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.675647
+    },
+    {
+      "a": "S42-008",
+      "b": "V3062",
+      "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。V3062處理呼吸鏈無法再生氧化型載體而影響代謝循環。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.664057
+    },
+    {
+      "a": "S42-008",
+      "b": "R21003",
+      "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。R21003處理離子推進器用電子中和噴出的離子束。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.658343
+    },
+    {
+      "a": "S42-008",
+      "b": "E2126",
+      "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。E2126處理抽真空減少粒子束的碰撞與散射。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.651274
+    },
+    {
+      "a": "S42-009",
+      "b": "E11019",
+      "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。E11019處理乾冰塊昇華降低摩擦而滑行刻槽的假說。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.798777
+    },
+    {
+      "a": "S42-009",
+      "b": "S42-004",
+      "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。S42-004處理富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.777209
+    },
+    {
+      "a": "S42-009",
+      "b": "E11018",
+      "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。E11018處理乾冰蓋下昇華積氣與噴流挖出的支狀紋。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.745368
+    },
+    {
+      "a": "S42-009",
+      "b": "E17002",
+      "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。E17002處理裸露冰桌受不同尺寸石塊及環境長波熱交換影響而融成高低差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.738231
+    },
+    {
+      "a": "S42-009",
+      "b": "R36006",
+      "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。R36006處理岩石日夜熱應變的拉力促成近表面剝離。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.712742
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "S42-001",
+      "b": "P174",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。P174處理把牆和支承算入撞擊的動量守恆帳。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-001",
+      "b": "R21001",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。R21001處理反作用輪角動量暫存及需要外力矩卸載。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-001",
+      "b": "P31002",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。P31002處理火衛一食甚造成地面溫度應變與地震儀傾斜。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-002",
+      "b": "D2213",
+      "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2213處理四輪驅動在不同路徑長時需允許轉速不同。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-002",
+      "b": "D2102",
+      "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2102處理混凝土板間以傳力桿共同分擔車輪重量。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-003",
+      "b": "N016",
+      "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。N016處理谷地與礦物辨認早期火星河湖。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-003",
+      "b": "S42-004",
+      "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。S42-004處理富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-003",
+      "b": "R40002",
+      "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。R40002處理用活體剪切前後影像分離採樣引發的栓塞。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-004",
+      "b": "E17002",
+      "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。E17002處理裸露冰桌受不同尺寸石塊及環境長波熱交換影響而融成高低差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-004",
+      "b": "S42-009",
+      "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。S42-009處理移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-005",
+      "b": "P116",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。P116處理一般地球空氣的可聽頻段中聲速近似不隨音高成比例增加。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-005",
+      "b": "P117",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。P117處理固定頻率過界面後聲速與波長改變。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-005",
+      "b": "X40-002",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。X40-002處理熱水中的小氣泡升降改變整段液柱的壓縮性與音高。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-006",
+      "b": "P31001",
+      "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。P31001處理相異波到時與來向給出撞坑搜尋區。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-006",
+      "b": "S42-007",
+      "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。S42-007處理直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-007",
+      "b": "E7011",
+      "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。E7011處理風沙粒沿迎風面跳移、背風面滑落，堆成移動沙丘。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-007",
+      "b": "N013",
+      "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。N013處理含鐵礦物與塵的反射外觀。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-008",
+      "b": "P225",
+      "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。P225處理電解質解離強弱和溶液總濃度不同。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-008",
+      "b": "L007",
+      "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。L007處理細胞消耗能量逆梯度輸運。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-009",
+      "b": "E17002",
+      "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。E17002處理裸露冰桌受不同尺寸石塊及環境長波熱交換影響而融成高低差。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-009",
+      "b": "R36007",
+      "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。R36007處理以日間缺乏冷點及夜間溫度限制龍宮岩石熱慣性與孔隙。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "additional_cross_wave_pairs": [
+    {
+      "a": "S42-001",
+      "b": "D2126",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。D2126處理棘輪工作行程咬合、回程越齒。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-001",
+      "b": "P172",
+      "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。P172處理滑板上兩人互推交換動量。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-005",
+      "b": "P310",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。P310處理超音波的定義按頻率而不按速度。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-005",
+      "b": "H3090",
+      "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。H3090處理聚合物微結構在固定形變下逐漸重排而應力鬆弛。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-007",
+      "b": "E11003",
+      "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。E11003處理細粒床的黏聚使單粒細泥難以剝離，並區別啟動與懸運。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "S42-008",
+      "b": "LEG-S17",
+      "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。LEG-S17處理鋰電池介面副反應隨壽命消耗可用鋰量。",
+      "decision": "distinct",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "S42-001",
+        "b": "S42-003",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。S42-003處理鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。"
+      },
+      {
+        "a": "S42-001",
+        "b": "S42-004",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。S42-004處理富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。"
+      },
+      {
+        "a": "S42-001",
+        "b": "R36005",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。R36005處理人工撞坑缺邊與鄰近巨石位移所制約的挖掘阻擋。"
+      },
+      {
+        "a": "S42-001",
+        "b": "S42-002",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。S42-002處理輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。"
+      },
+      {
+        "a": "S42-001",
+        "b": "E11018",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。E11018處理乾冰蓋下昇華積氣與噴流挖出的支狀紋。"
+      },
+      {
+        "a": "S42-002",
+        "b": "D2124",
+        "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2124處理反轉齒輪先跨接觸間隙。"
+      },
+      {
+        "a": "S42-002",
+        "b": "D2121",
+        "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2121處理齒側接觸法線的幾何保證速比。"
+      },
+      {
+        "a": "S42-002",
+        "b": "D2126",
+        "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2126處理棘輪工作行程咬合、回程越齒。"
+      },
+      {
+        "a": "S42-002",
+        "b": "J6018",
+        "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。J6018處理柔輪與剛輪不同齒數和移動嚙合位置造成大減速。"
+      },
+      {
+        "a": "S42-002",
+        "b": "D2122",
+        "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2122處理串聯中間惰輪改方向而不改兩端總速比。"
+      },
+      {
+        "a": "S42-003",
+        "b": "E11019",
+        "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。E11019處理乾冰塊昇華降低摩擦而滑行刻槽的假說。"
+      },
+      {
+        "a": "S42-003",
+        "b": "R36005",
+        "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。R36005處理人工撞坑缺邊與鄰近巨石位移所制約的挖掘阻擋。"
+      },
+      {
+        "a": "S42-003",
+        "b": "S42-004",
+        "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。S42-004處理富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。"
+      },
+      {
+        "a": "S42-003",
+        "b": "N052",
+        "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。N052處理彗星小碎屑形成可見流星，能穿越大氣到地表的隕石涉及不同起始物體與消融條件。"
+      },
+      {
+        "a": "S42-004",
+        "b": "E11019",
+        "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。E11019處理乾冰塊昇華降低摩擦而滑行刻槽的假說。"
+      },
+      {
+        "a": "S42-004",
+        "b": "S42-009",
+        "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。S42-009處理移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。"
+      },
+      {
+        "a": "S42-004",
+        "b": "E11018",
+        "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。E11018處理乾冰蓋下昇華積氣與噴流挖出的支狀紋。"
+      },
+      {
+        "a": "S42-004",
+        "b": "N221",
+        "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。N221處理海冰片互相擠壓而堆疊。"
+      },
+      {
+        "a": "S42-005",
+        "b": "S42-006",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。S42-006處理旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。"
+      },
+      {
+        "a": "S42-005",
+        "b": "D9006",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。D9006處理弦與音板耦合改變輻射效率及初音衰減。"
+      },
+      {
+        "a": "S42-005",
+        "b": "N014",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。N014處理行星橢圓軌道使季節長短不等。"
+      },
+      {
+        "a": "S42-005",
+        "b": "X2035",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。X2035處理天文波長與探測器大小限制重力波可見頻段。"
+      },
+      {
+        "a": "S42-005",
+        "b": "P125",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。P125處理聲源接近或遠離改變收到的波峰間隔。"
+      },
+      {
+        "a": "S42-006",
+        "b": "S42-007",
+        "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。S42-007處理直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。"
+      },
+      {
+        "a": "S42-006",
+        "b": "P31001",
+        "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。P31001處理相異波到時與來向給出撞坑搜尋區。"
+      },
+      {
+        "a": "S42-006",
+        "b": "O3004",
+        "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。O3004處理相干散射造成雷達散斑，平均會影響解析度。"
+      },
+      {
+        "a": "S42-006",
+        "b": "O3029",
+        "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。O3029處理偏振相關性與速度旋轉區一起支持龍捲風碎屑。"
+      },
+      {
+        "a": "S42-006",
+        "b": "S39-004",
+        "reason": "S42-006檢驗旋風兩壁的風噪峰與三群碰擊脈衝分離，風眼也有顆粒而非只在局部強風帶。S39-004處理環緣波在近掠射陽光下的影子限制垂直起伏。"
+      },
+      {
+        "a": "S42-007",
+        "b": "O3029",
+        "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。O3029處理偏振相關性與速度旋轉區一起支持龍捲風碎屑。"
+      },
+      {
+        "a": "S42-007",
+        "b": "K6006",
+        "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。K6006處理平坦雲底對應上升空氣到達飽和的高度。"
+      },
+      {
+        "a": "S42-007",
+        "b": "R36001",
+        "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。R36001處理以貝努取樣前後加速度與入土深度限制淺層接觸阻力。"
+      },
+      {
+        "a": "S42-007",
+        "b": "O3022",
+        "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。O3022處理曲率與波束高度可使雷達漏掉遠處淺層降雨。"
+      },
+      {
+        "a": "S42-008",
+        "b": "H3035",
+        "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。H3035處理電池以離子移動補償兩極電荷累積。"
+      },
+      {
+        "a": "S42-008",
+        "b": "L179",
+        "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。L179處理細菌耐氧與能用氧代謝的區別。"
+      },
+      {
+        "a": "S42-008",
+        "b": "V3062",
+        "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。V3062處理呼吸鏈無法再生氧化型載體而影響代謝循環。"
+      },
+      {
+        "a": "S42-008",
+        "b": "R21003",
+        "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。R21003處理離子推進器用電子中和噴出的離子束。"
+      },
+      {
+        "a": "S42-008",
+        "b": "E2126",
+        "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。E2126處理抽真空減少粒子束的碰撞與散射。"
+      },
+      {
+        "a": "S42-009",
+        "b": "E11019",
+        "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。E11019處理乾冰塊昇華降低摩擦而滑行刻槽的假說。"
+      },
+      {
+        "a": "S42-009",
+        "b": "E11018",
+        "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。E11018處理乾冰蓋下昇華積氣與噴流挖出的支狀紋。"
+      },
+      {
+        "a": "S42-009",
+        "b": "E17002",
+        "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。E17002處理裸露冰桌受不同尺寸石塊及環境長波熱交換影響而融成高低差。"
+      },
+      {
+        "a": "S42-009",
+        "b": "R36006",
+        "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。R36006處理岩石日夜熱應變的拉力促成近表面剝離。"
+      },
+      {
+        "a": "S42-001",
+        "b": "P174",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。P174處理把牆和支承算入撞擊的動量守恆帳。"
+      },
+      {
+        "a": "S42-001",
+        "b": "R21001",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。R21001處理反作用輪角動量暫存及需要外力矩卸載。"
+      },
+      {
+        "a": "S42-001",
+        "b": "P31002",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。P31002處理火衛一食甚造成地面溫度應變與地震儀傾斜。"
+      },
+      {
+        "a": "S42-002",
+        "b": "D2213",
+        "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2213處理四輪驅動在不同路徑長時需允許轉速不同。"
+      },
+      {
+        "a": "S42-002",
+        "b": "D2102",
+        "reason": "S42-002檢驗輪皮兩旁開裂後凸齒負荷增加，斷口所在視角決定能否從照片確認。D2102處理混凝土板間以傳力桿共同分擔車輪重量。"
+      },
+      {
+        "a": "S42-003",
+        "b": "N016",
+        "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。N016處理谷地與礦物辨認早期火星河湖。"
+      },
+      {
+        "a": "S42-003",
+        "b": "R40002",
+        "reason": "S42-003檢驗鑽出孔及尾屑不保證形成完整芯，比管內影像與容積探針後再搜孔周以區分破碎或脫落。R40002處理用活體剪切前後影像分離採樣引發的栓塞。"
+      },
+      {
+        "a": "S42-004",
+        "b": "E17002",
+        "reason": "S42-004檢驗富冰土在轉移時結團黏鏟可造成交付失敗，刮下較少冰的土能進分析器。E17002處理裸露冰桌受不同尺寸石塊及環境長波熱交換影響而融成高低差。"
+      },
+      {
+        "a": "S42-005",
+        "b": "P116",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。P116處理一般地球空氣的可聽頻段中聲速近似不隨音高成比例增加。"
+      },
+      {
+        "a": "S42-005",
+        "b": "P117",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。P117處理固定頻率過界面後聲速與波長改變。"
+      },
+      {
+        "a": "S42-005",
+        "b": "X40-002",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。X40-002處理熱水中的小氣泡升降改變整段液柱的壓縮性與音高。"
+      },
+      {
+        "a": "S42-007",
+        "b": "E7011",
+        "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。E7011處理風沙粒沿迎風面跳移、背風面滑落，堆成移動沙丘。"
+      },
+      {
+        "a": "S42-007",
+        "b": "N013",
+        "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。N013處理含鐵礦物與塵的反射外觀。"
+      },
+      {
+        "a": "S42-008",
+        "b": "P225",
+        "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。P225處理電解質解離強弱和溶液總濃度不同。"
+      },
+      {
+        "a": "S42-008",
+        "b": "L007",
+        "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。L007處理細胞消耗能量逆梯度輸運。"
+      },
+      {
+        "a": "S42-009",
+        "b": "R36007",
+        "reason": "S42-009檢驗移石後量到微低的埋藏冰土界面，與石塊熱慣性影響周圍土壤的穩冰位置模型相符。R36007處理以日間缺乏冷點及夜間溫度限制龍宮岩石熱慣性與孔隙。"
+      },
+      {
+        "a": "S42-001",
+        "b": "D2126",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。D2126處理棘輪工作行程咬合、回程越齒。"
+      },
+      {
+        "a": "S42-001",
+        "b": "P172",
+        "reason": "S42-001檢驗土對外殼的摩擦要抵住內錘反衝，側壓探針及改壓旁土後的實際進退限制成因。P172處理滑板上兩人互推交換動量。"
+      },
+      {
+        "a": "S42-005",
+        "b": "P310",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。P310處理超音波的定義按頻率而不按速度。"
+      },
+      {
+        "a": "S42-005",
+        "b": "H3090",
+        "reason": "S42-005檢驗低壓二氧化碳振動能量鬆弛的時間尺度落在可聽頻帶，兩種估速方式能檢驗差異。H3090處理聚合物微結構在固定形變下逐漸重排而應力鬆弛。"
+      },
+      {
+        "a": "S42-007",
+        "b": "E11003",
+        "reason": "S42-007檢驗直升機巡航時風應力估值與起砂門檻比較，沿線起塵可由鬆散塵團活動及崩解而不必先有跳砂。E11003處理細粒床的黏聚使單粒細泥難以剝離，並區別啟動與懸運。"
+      },
+      {
+        "a": "S42-008",
+        "b": "LEG-S17",
+        "reason": "S42-008檢驗固體電解產氧與積碳有兩種受溫度影響的起始電位，較冷單元壓縮可用操作區。LEG-S17處理鋰電池介面副反應隨壽命消耗可用鋰量。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "S42-NA001",
+      "decision": "agree_not_added",
+      "reason": "撞擊的地震／大氣兩類波及軌道成像已收。",
+      "existing_ids": [
+        "P31001"
+      ],
+      "reentry_condition": "若有新的內部結構或獨立控制再審。"
+    },
+    {
+      "id": "S42-NA002",
+      "decision": "agree_not_added",
+      "reason": "食甚降溫造成的傾斜已收，不重出。",
+      "existing_ids": [
+        "P31002"
+      ],
+      "reentry_condition": "需要另一種可分辨的擾動。"
+    },
+    {
+      "id": "S42-NA003",
+      "decision": "agree_not_added",
+      "reason": "僅換地點，仍是利用河湖地貌辨古水環境。",
+      "existing_ids": [
+        "N016"
+      ],
+      "reentry_condition": "需有可排除競爭解釋的試驗。"
+    },
+    {
+      "id": "S42-NA004",
+      "decision": "agree_not_added",
+      "reason": "乾粒流、塵土及液態水需要不同判別條件，本批未採坡紋原文。",
+      "existing_ids": [
+        "E11019"
+      ],
+      "reentry_condition": "取得有坡角、季節或沉積對照的原始研究。"
+    },
+    {
+      "id": "S42-NA005",
+      "decision": "agree_not_added",
+      "reason": "舊造丘原理已收，亦有火星換地點的未收。",
+      "existing_ids": [
+        "E7011"
+      ],
+      "reentry_condition": "需可改變預測的起動或沉積控制。"
+    },
+    {
+      "id": "S42-NA006",
+      "decision": "agree_not_added",
+      "reason": "同速與路程不等的幾何和既有四驅近似；只保留輪皮破裂移載與側視診斷。",
+      "existing_ids": [
+        "D2213"
+      ],
+      "reentry_condition": "需有獨立於路徑差的新控制或處置。"
+    },
+    {
+      "id": "S42-NA007",
+      "decision": "agree_not_added",
+      "reason": "地面試驗提供風險，不足以給火星剩餘里程。",
+      "existing_ids": [
+        "S42-002"
+      ],
+      "reentry_condition": "先有場地路面、負載和外推的獨立校準。"
+    },
+    {
+      "id": "S42-NA008",
+      "decision": "agree_not_added",
+      "reason": "側壓回應及退回紀錄反對把單一障礙當作唯一成因。",
+      "existing_ids": [
+        "S42-001"
+      ],
+      "reentry_condition": "需有地下成像或獨立物證。"
+    },
+    {
+      "id": "S42-NA009",
+      "decision": "agree_not_added",
+      "reason": "忽略孔口、碎屑與收芯過程；沒有另一種機制。",
+      "existing_ids": [
+        "S42-003"
+      ],
+      "reentry_condition": "須有採樣失敗的不同測量。"
+    },
+    {
+      "id": "S42-NA010",
+      "decision": "agree_not_added",
+      "reason": "未入艙和進艙後分析是同一取樣鏈的必要區分。",
+      "existing_ids": [
+        "S42-004"
+      ],
+      "reentry_condition": "需有空白對照與檢出限再討論。"
+    },
+    {
+      "id": "S42-NA011",
+      "decision": "agree_not_added",
+      "reason": "不同介質和溫度的聲速是舊主題，本批只收分子鬆弛落入可聽頻段的增量。",
+      "existing_ids": [
+        "P118",
+        "S42-005"
+      ],
+      "reentry_condition": "需有頻率與分子能量交換的成對測量。"
+    },
+    {
+      "id": "S42-NA012",
+      "decision": "agree_not_added",
+      "reason": "麥克風不能唯一定位碰擊的車體部位。",
+      "existing_ids": [
+        "S42-006"
+      ],
+      "reentry_condition": "需另外的定位或直接影像。"
+    },
+    {
+      "id": "S42-NA013",
+      "decision": "agree_not_added",
+      "reason": "第1飛行的暗紋是可能的跳砂群；不能推到每次飛越起塵。",
+      "existing_ids": [
+        "S42-007"
+      ],
+      "reentry_condition": "需逐粒追蹤或其他可區分的量測。"
+    },
+    {
+      "id": "S42-NA014",
+      "decision": "agree_not_added",
+      "reason": "任務做技術展示，人體使用量與可呼吸系統不在這次工作。",
+      "existing_ids": [
+        "S42-008"
+      ],
+      "reentry_condition": "不作給氧或任務規模的換算。"
+    },
+    {
+      "id": "S42-NA015",
+      "decision": "agree_not_added",
+      "reason": "測一個局部起伏不足以概括全部；冰河冰桌又是另一種外露冰面熱收支。",
+      "existing_ids": [
+        "S42-009",
+        "E17002"
+      ],
+      "reentry_condition": "先有多地形及季節對照。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W42S-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 64,
+      "chapter_seconds": [
+        29,
+        35
+      ],
+      "core_totals": {
+        "S42-001": 64
+      },
+      "core_caps": {
+        "S42-001": 83
+      },
+      "maximum_beat_seconds": 18,
+      "drop_if_read": "缺少側壓與改壓旁土的時序就撤此案。刪一章剩35或29秒，不能完成受力假說的現場對照。",
+      "editorial_result": "圖8的進退時間序列有獨立對照，下錘與周圍接觸如何抵住回彈清楚。",
+      "timing_result": "ROOT_SAMPLE_VOICE_PLUS_VISUAL_ALLOWANCE"
+    },
+    {
+      "id": "W42S-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 69,
+      "chapter_seconds": [
+        32,
+        37
+      ],
+      "core_totals": {
+        "S42-003": 32,
+        "S42-004": 37
+      },
+      "core_caps": {
+        "S42-003": 75,
+        "S42-004": 72
+      },
+      "maximum_beat_seconds": 20,
+      "drop_if_read": "刪一章剩37或32秒，改為單一取樣現場素材；若無法區分鑽機與鏟斗就撤此合題。",
+      "editorial_result": "同為取材失敗卻發生在不同步驟。由完整的孔，到收管時料太碎；另個任務是已取到，卻整團留在鏟裡。兩場景須清空重設。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W42S-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 63,
+      "chapter_seconds": [
+        31,
+        32
+      ],
+      "core_totals": {
+        "S42-005": 63
+      },
+      "core_caps": {
+        "S42-005": 81
+      },
+      "maximum_beat_seconds": 18,
+      "drop_if_read": "若只能對比地球與火星的平均聲速，撤案。刪一章剩32或31秒，缺估速或機制其中一半。",
+      "editorial_result": "先分兩種估速裝置，再解釋內部振動怎麼改變壓縮反應。不能只把兩聲波畫成同次出發的競速。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W42S-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 59,
+      "chapter_seconds": [
+        27,
+        32
+      ],
+      "core_totals": {
+        "S42-006": 59
+      },
+      "core_caps": {
+        "S42-006": 80
+      },
+      "maximum_beat_seconds": 18,
+      "drop_if_read": "若無法同時間對齊兩種頻帶和位置，撤案。刪一章剩32或27秒，只剩半個對照。",
+      "editorial_result": "兩個風峰對上三群撞擊提供明確反例，留中心運砂來源未定的界線即可。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W42S-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 60,
+      "chapter_seconds": [
+        32,
+        28
+      ],
+      "core_totals": {
+        "S42-002": 60
+      },
+      "core_caps": {
+        "S42-002": 73
+      },
+      "maximum_beat_seconds": 16,
+      "drop_if_read": "缺少齒兩側的視角差就撤此案；刪一章剩28或32秒，只留設計素材。",
+      "editorial_result": "薄皮裂損把負荷移給凸齒確立風險，俯視轉側視後顯露同一齒缺口區分風險與已斷。",
+      "timing_result": "PAPER_BUDGET_ONLY"
+    }
+  ],
+  "corrections": {
+    "before_files": [
+      {
+        "file": "batches/wave42-earth.json",
+        "sha256": "0d74565e77114e1eb30c21d883babee24f221c0291e8544305729f3d218d2f40"
+      },
+      {
+        "file": "reviews/wave42-earth-themes.json",
+        "sha256": "22e553c4f1f3da0e861a24a89279a5c5a0e36bbd39d62fc73f4bc81e45e7aaf5"
+      },
+      {
+        "file": "reviews/wave42-earth-author.json",
+        "sha256": "43e552bec22e940131d53d2894f935a8fbfc3f60b67fcc0cf6df2887133f347e"
+      }
+    ],
+    "resolved": [
+      "S42-003改用拍攝管內的影像和容積探針，未把CacheCam設在管內。",
+      "S42-009題名只取移開石塊，再比冰界面。兩篇任務資料對移石稱pull/push，不用未核定方向。",
+      "T01自66縮至64秒，29+35，留7.861秒觀看側壓後的進退標記。"
+    ]
+  },
+  "first_retrieval": {
+    "neighbours": {
+      "file": ".cache/wave42-life-review-earth-first.json",
+      "sha256": "d393667f3946bc588663a981c4220bc8ffd0a98a0b53d89728191e10e53f0424"
+    },
+    "draft_sha256": "30d99eb446f84896aefd6bc1e32ac540233e1d915364d6c3726d84b3c01950a6"
+  },
+  "draft_sha256": "5cf0fb7fa40728949df510fcbb1ec42efff5aa6a904bf99b256737ce99a732af",
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "5cf0fb7fa40728949df510fcbb1ec42efff5aa6a904bf99b256737ce99a732af",
+    "neighbours": {
+      "file": ".cache/wave42-earth-neighbours.json",
+      "sha256": "eaf2466c5861da4ee93149cfb0ccf35ad66aa2505fe54d4b6827219e6afa568b"
+    },
+    "directed_pairs": 45,
+    "before_rows_identical": false,
+    "old_to_final_new_neighbours": {
+      "S42-001": [],
+      "S42-002": [],
+      "S42-003": [
+        "N052"
+      ],
+      "S42-004": [],
+      "S42-005": [],
+      "S42-006": [],
+      "S42-007": [],
+      "S42-008": [],
+      "S42-009": []
+    },
+    "written_files_verified": true
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "紙上素材與片段推進，未以來源示意取代實測，不代表完成製作或完整稿驗收。"
+  ],
+  "timing_probe": {
+    "file": ".cache/wave42-mole-read.json",
+    "sha256": "724d2695a1f5c330ad9f8df894528156afe4a8821d982c952c8116d8453c0428",
+    "continuous_wav": {
+      "file": ".cache/wave42-mole-read-3.wav",
+      "sha256": "c5cbef2c79e4038606c369c338ac73e79ca3b3bed3f71146768b573e542f6a21"
+    },
+    "read_seconds": 56.139,
+    "plan_seconds": 64,
+    "visual_allowance_seconds": 7.861,
+    "scope": "根代理的離線連讀，以WAV標頭確認時長。其餘四案為紙上預算。"
+  }
+}

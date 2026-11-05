@@ -9,7 +9,8 @@
 // is exactly as long as the video, to the sample.
 import { createHash } from "node:crypto";
 
-import { CHANNEL_ACCENT_EN } from "../core/accent.mjs";
+import { CHANNEL_ACCENT, CHANNEL_ACCENT_EN } from "../core/accent.mjs";
+import { hasCohost, isDialogueExplainer, NARRATOR } from "../core/drama.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { DEFAULT_LOCALES, DUB_TARGET_LOCALES, eachLine, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
@@ -100,10 +101,33 @@ function spellsWord(term, say) {
     && say.replace(/\s/g, "").toUpperCase() === term.toUpperCase();
 }
 
-/** The narration voice with the locale's style: one Gemini voice speaks every language. */
-export function dubVoice(doc, locale, style = null) {
-  const { rate, lang, ...voice } = doc.voice;
+/**
+ * A speaker's voice with the locale's style: one Gemini voice speaks every language. The
+ * narrator's by default; on slides with a second host, `speaker` set to the cohost's id gives the
+ * cohost's own voice, so each host keeps their voice in every dub (docs/videos/DUBS.md §兩位主持人).
+ */
+export function dubVoice(doc, locale, style = null, speaker = NARRATOR) {
+  const source = speaker !== NARRATOR && hasCohost(doc) && speaker === doc.cohost.id ? doc.cohost.voice : doc.voice;
+  const { rate, lang, ...voice } = source;
   return { ...voice, style: style ?? DUB_STYLES[locale] };
+}
+
+/** The language a locale's dub style asks for ("clear, natural English"), read from DUB_STYLES. */
+export function dubLanguage(locale) {
+  const match = /talking to a friend, in (.*?)\. /.exec(DUB_STYLES[locale] ?? "");
+  if (!match) throw new Error(`no dub style for ${locale}`);
+  return match[1];
+}
+
+/**
+ * A character's own Gemini voice speaking `locale`, for a dialogue explainer (So That's Why's host
+ * and kid, core/drama.mjs isDialogueExplainer): the same voice name, its persona from the zh-TW
+ * style with the channel's Mandarin accent taken out, and the locale's language in place of it.
+ */
+export function dubCharacterVoice(character, locale) {
+  const { rate, lang, style, ...voice } = character.voice;
+  const persona = String(style ?? "").replace(CHANNEL_ACCENT, "").replace(/^[\s，。；、,.;]+/u, "").trim();
+  return { ...voice, style: `${persona ? `角色：${persona}。` : ""}Speak only in ${dubLanguage(locale)}, with no foreign accent. ${STYLE_TAIL}` };
 }
 
 /**
@@ -143,7 +167,14 @@ export function dubScript(doc, translation, locale, style = null) {
       return { ...rest, text: text || line.text };
     }),
   }));
-  return { doc: { ...doc, voice: dubVoice(doc, locale, style), scenes }, missing };
+  // Each host reads their own lines in their own voice; planRequests cuts a request wherever the
+  // speaker or the voice changes, so no request mixes the two.
+  const cohost = hasCohost(doc) ? { cohost: { ...doc.cohost, voice: dubVoice(doc, locale, style, doc.cohost.id) } } : {};
+  // A dialogue explainer's speaking characters keep their own voices, in the locale's language.
+  const characters = isDialogueExplainer(doc)
+    ? doc.characters.map((character) => (character?.voice?.provider === "gemini" ? { ...character, voice: dubCharacterVoice(character, locale) } : character))
+    : doc.characters;
+  return { doc: { ...doc, voice: dubVoice(doc, locale, style), ...cohost, ...(characters ? { characters } : {}), scenes }, missing };
 }
 
 /** Hash of the words a dub speaks, line by line; status treats a track made from other words as stale. */

@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "資訊推進決定長度，不為8分鐘加長。",
+    "兩個不同群組控制合成一個主題；色環角度只留短段。",
+    "每核心跨章累計守上限；每beat<=45秒。"
+  ],
+  "episodes": [
+    {
+      "id": "W23R-T01",
+      "title": "圖沒換，只換分組方式，怎麼就變色了？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核及試讀",
+      "format": "short_explainer",
+      "core_question": "群組究竟改變了哪一步？",
+      "connection": "重疊透明度→合成順序→外部底色→隔離邊界。",
+      "candidate_ids": [
+        "R23001",
+        "R23002"
+      ],
+      "target_minutes": 2.4166666666666665,
+      "range_minutes": [
+        2.4166666666666665,
+        2.4166666666666665
+      ],
+      "body_seconds": 145,
+      "chapters": [
+        {
+          "title": "先看重疊處，哪一組更深？",
+          "candidate_ids": [
+            "R23001"
+          ],
+          "seconds": 75,
+          "new_information": "開場鎖同樣兩個黑圓白底，只切逐個0.5與整組0.5。；用先畫再調淡/先調淡再畫兩路，標圖形層在白底合成前的重疊alpha0.75/0.5；合白底後alpha皆1，差在顏色。；讓圖形分開再重疊：差異集中在重疊處，指出是處理順序。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "開場鎖同樣兩個黑圓白底，只切逐個0.5與整組0.5。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "用先畫再調淡/先調淡再畫兩路，標圖形層在白底合成前的重疊alpha0.75/0.5；合白底後alpha皆1，差在顏色。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "讓圖形分開再重疊：差異集中在重疊處，指出是處理順序。"
+            }
+          ]
+        },
+        {
+          "title": "顏色不變，改成能不能看到外面",
+          "candidate_ids": [
+            "R23002"
+          ],
+          "seconds": 70,
+          "new_information": "清空重設不透明紅方塊與藍底，組normal、內部multiply，只切isolation；不沿用上章0.5。；框出內部透明底與外部藍底，內部先混色，整組normal再放回背景。；normal控制與組內相互混色反例，回收群組改的是哪個階段。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "清空重設不透明紅方塊與藍底，組normal、內部multiply，只切isolation；不沿用上章0.5。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "框出內部透明底與外部藍底，內部先混色，整組normal再放回背景。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "normal控制與組內相互混色反例，回收群組改的是哪個階段。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若兩個控制無法在小樣清楚分辨，拆回75秒及70秒段落，不加第三個混合模式填長。",
+      "evidence_gaps": "原創畫面尚未實測；標示為規格推導，不冒稱所有剪輯/繪圖軟體同樣設定。",
+      "boredom_risk": "每次切換只改一個條件；不唸軟體選單或色彩名詞清單。",
+      "timing_basis": "含開場轉場回扣的紙上預算，未試讀。"
+    },
+    {
+      "id": "W23R-T02",
+      "title": "RGB數字沒改，照片怎麼變色了？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核及試讀",
+      "format": "short_explainer",
+      "core_question": "同一數字為何不等於同一個顏色？",
+      "connection": "標記座標→只換標記→換算保色→共同色域控制。",
+      "candidate_ids": [
+        "R23003"
+      ],
+      "target_minutes": 1.4166666666666667,
+      "range_minutes": [
+        1.4166666666666667,
+        1.4166666666666667
+      ],
+      "body_seconds": 85,
+      "chapters": [
+        {
+          "title": "同一串數字，先看用哪把尺",
+          "candidate_ids": [
+            "R23003"
+          ],
+          "seconds": 50,
+          "new_information": "開場只換色彩標記，保留RGB，提出兩圖不必相同。；用兩座標格說明數字需配空間；把讀法變更與數值換算分兩路。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "開場只換色彩標記，保留RGB，提出兩圖不必相同。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "用兩座標格說明數字需配空間；把讀法變更與數值換算分兩路。"
+            }
+          ]
+        },
+        {
+          "title": "換算的目的是保住原來的顏色",
+          "candidate_ids": [
+            "R23003"
+          ],
+          "seconds": 35,
+          "new_information": "共同色域內的原創例，一路改數字保色，另一路保數字換讀法。；回扣：保數字，和保原色，是兩種操作。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "共同色域內的原創例，一路改數字保色，另一路保數字換讀法。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：保數字，和保原色，是兩種操作。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若取到的色塊超出目標色域，換共同色域示例；不要借裁切另講一次M5003。",
+      "evidence_gaps": "未量螢幕或製作保色轉換小樣，僅規格推導題案。",
+      "boredom_risk": "每次切換只改一個條件；不唸軟體選單或色彩名詞清單。",
+      "timing_basis": "含開場轉場回扣的紙上預算，未試讀。"
+    }
+  ]
+}

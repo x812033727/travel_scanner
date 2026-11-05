@@ -1,0 +1,527 @@
+{
+  "tested_on": "2026-11-02T01:08:30.422Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3345,
+    "canonical_questions": 3206,
+    "eligible_candidates": 3036,
+    "selected_candidates": 2977,
+    "alias_records": 139,
+    "historical_records": 313,
+    "source_urls": 4298,
+    "current_research_source_urls": 1339,
+    "selected_source_urls": 2523,
+    "new_suggestions_not_added": 896,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 199,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-2959",
+    "carried": 2958,
+    "added": 19,
+    "changed_raw_ids": [],
+    "removed_ids": [
+      "P131"
+    ]
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "41fdec53f800417c3ac1ca181501f71c6ac33387afc8b79a4162db1ff67e3ef2",
+    "writes": 6551,
+    "selected": 2977
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "41fdec53f800417c3ac1ca181501f71c6ac33387afc8b79a4162db1ff67e3ef2",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "P131",
+      "resolved": "P129"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4393,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 14320.466700000004,
+    "index_ms": 9958.536700000004,
+    "unchanged_index_ms": 832.1088000000018,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 12,
+        "milliseconds": 28.728000000002794
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 27.16939999999886
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 19.534899999998743
+      }
+    ],
+    "rss_bytes": 417001472,
+    "sqlite_bytes": 48181248
+  },
+  "dedup_audit": {
+    "selection": "Every final wave17 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "3d12e0be35af76f52a1510b37eab10a889c864de09854ce6d82dff324d542e58",
+    "records": 3345,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 19.557
+  },
+  "hashes": {
+    "pool.json": "3d12e0be35af76f52a1510b37eab10a889c864de09854ce6d82dff324d542e58",
+    "themes.json": "36ed23d8cd4f080429c8f6a019172f10fbb28200090cf57a595c76f7d87f6811",
+    "manifest.json": "c7bf6a8ba16b3b00696e5c4e2584c7dacbb23d6d48322c2b6dcd318138ffd318",
+    "index.html": "e9c560778b22c5e451d9196a0d543d9a2dcfd47d2abf28f7093131970779a2a7",
+    "batches/wave17-animal-control.json": "27d990ea35007129137436487b5f3eea8a932245c61542fcb87311e68d700dd2",
+    "batches/wave17-earth-patterns.json": "0c8c4295e7f49708b5f1c802a907cf4cf1b4a6adf4bd5d916205a5d221f6df5b",
+    "batches/wave17-fluid-interfaces.json": "2dc5eefd0b8422f11da3f7ec7db2bfa59ba32d4e1300e3b5f8733d415e3143b5"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3326,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 2958,
+    "old_selected_merged_into_retained": [
+      "P131"
+    ],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 185,
+    "changed_old_canonical_ids": [
+      "P129"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "old_pair_audit": {
+    "selection": "Six highest-scoring selected pairs not yet explicitly marked distinct in frozen wave16 top10; no additional manual pair; purposive sample, not precision or recall.",
+    "judged": 6,
+    "merges": [
+      {
+        "duplicate_id": "P131",
+        "canonical_id": "P129",
+        "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。"
+      }
+    ],
+    "review": {
+      "file": "reviews/wave17-old-pair-integration.json",
+      "sha256": "a4e85eaabd0015c8a17b652681dcda9c43f7fba2562b2fc26a83269be6f1508d"
+    }
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4278,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://doi.org/10.1038/s41586-024-07157-x",
+        "source_id": "SRC-f94c07154cf14378",
+        "candidate_ids": [
+          "B17001"
+        ],
+        "theme_ids": [
+          "G186"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1522419113",
+        "source_id": "SRC-f926cc74eabcb7bb",
+        "candidate_ids": [
+          "B17002"
+        ],
+        "theme_ids": [
+          "G187"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1016/j.cub.2008.07.094",
+        "source_id": "SRC-60d3844e7a66a77d",
+        "candidate_ids": [
+          "B17003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.0905183106",
+        "source_id": "SRC-ad1ea8d837eb18fb",
+        "candidate_ids": [
+          "B17004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1126/science.1128727",
+        "source_id": "SRC-f3b96db5a2b8e7af",
+        "candidate_ids": [
+          "B17005"
+        ],
+        "theme_ids": [
+          "G188"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.7554/eLife.99634.3",
+        "source_id": "SRC-1047e72f7d885bde",
+        "candidate_ids": [
+          "B17006"
+        ],
+        "theme_ids": [
+          "G189"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/1902.03600",
+        "source_id": "SRC-74b158d86cf3efb9",
+        "candidate_ids": [
+          "E17001"
+        ],
+        "theme_ids": [
+          "G195"
+        ]
+      },
+      {
+        "url": "https://tc.copernicus.org/articles/16/2617/2022/tc-16-2617-2022.pdf",
+        "source_id": "SRC-32412a65352f92e2",
+        "candidate_ids": [
+          "E17002"
+        ],
+        "theme_ids": [
+          "G196"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8501789/",
+        "source_id": "SRC-b9a41ab4f71d0d29",
+        "candidate_ids": [
+          "E17003"
+        ],
+        "theme_ids": [
+          "G196"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/physics/0601184",
+        "source_id": "SRC-227c27fa9f3c975a",
+        "candidate_ids": [
+          "E17004"
+        ],
+        "theme_ids": [
+          "G197"
+        ]
+      },
+      {
+        "url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf",
+        "source_id": "SRC-b670fe25a1a3827a",
+        "candidate_ids": [
+          "E17005"
+        ],
+        "theme_ids": [
+          "G198"
+        ]
+      },
+      {
+        "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0105948&type=printable",
+        "source_id": "SRC-2ca1085c924c82b0",
+        "candidate_ids": [
+          "E17006"
+        ],
+        "theme_ids": [
+          "G199"
+        ]
+      },
+      {
+        "url": "https://orbi.uliege.be/bitstream/2268/195696/1/PhysRevE.93.033112.pdf",
+        "source_id": "SRC-d6ceaefb4b6fb675",
+        "candidate_ids": [],
+        "theme_ids": []
+      },
+      {
+        "url": "https://link.springer.com/article/10.1007/s10652-023-09912-6",
+        "source_id": "SRC-1321a55a62ea0dc1",
+        "candidate_ids": [],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+        "source_id": "SRC-7b2bb91bed897432",
+        "candidate_ids": [
+          "F17001"
+        ],
+        "theme_ids": [
+          "G190"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/2302.06010",
+        "source_id": "SRC-dc650047e8729781",
+        "candidate_ids": [
+          "F17002"
+        ],
+        "theme_ids": [
+          "G191"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/nlin/0104052",
+        "source_id": "SRC-11174ff433fcb818",
+        "candidate_ids": [
+          "F17003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://arxiv.org/pdf/2003.04777",
+        "source_id": "SRC-221390b4c1baa3d7",
+        "candidate_ids": [
+          "F17004",
+          "F17005"
+        ],
+        "theme_ids": [
+          "G192"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/pdf/0910.3306",
+        "source_id": "SRC-c677dece488e9962",
+        "candidate_ids": [
+          "F17006"
+        ],
+        "theme_ids": [
+          "G193"
+        ]
+      },
+      {
+        "url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+        "source_id": "SRC-f82f085f098513d0",
+        "candidate_ids": [
+          "F17007"
+        ],
+        "theme_ids": [
+          "G194"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://doi.org/10.1038/s41586-024-07157-x",
+    "core": "B17001",
+    "theme": "G186",
+    "theme_ids": [
+      "G186"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 299545.0184,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "a1487de0aeb85c3c102915c8b9d809ebaf3812bf02e5ef995942d2a597d65959"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "320611934bfa40c5106b8d49c2a57c4cd414d6705fb1b63bda9c2516470e76c2"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "7b91e3aca1a8fe953c4366fa85b977f6e4c5e8b1dd7a462b1c48a876994dd8ba",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "e80be3a90657c380526830f69cc2eda95eb3c78c32e05a2d505c497913d9c6ef"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "17631eb310546e40e041bbc3ed1fe486e1657a8b9e21d528bff9541db9b0ffb3",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 318,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true,
+    "review_receipt_bound_stable_blobs": 65,
+    "review_scope": "Independent data/editorial readback completed; root verified the late documents, tests subobject and final stable-file bindings after the independent reviewer reached its usage limit.",
+    "unique_blobs_checked": 345
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3249,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G186",
+        "core": "B17001",
+        "seconds": 130,
+        "maximum": 135,
+        "variant_budget": null
+      },
+      {
+        "theme": "G187",
+        "core": "B17002",
+        "seconds": 120,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G188",
+        "core": "B17005",
+        "seconds": 120,
+        "maximum": 135,
+        "variant_budget": null
+      },
+      {
+        "theme": "G189",
+        "core": "B17006",
+        "seconds": 130,
+        "maximum": 155,
+        "variant_budget": null
+      },
+      {
+        "theme": "G190",
+        "core": "F17001",
+        "seconds": 100,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G191",
+        "core": "F17002",
+        "seconds": 105,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G192",
+        "core": "F17005",
+        "seconds": 110,
+        "maximum": 125,
+        "variant_budget": null
+      },
+      {
+        "theme": "G193",
+        "core": "F17006",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G194",
+        "core": "F17007",
+        "seconds": 105,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G195",
+        "core": "E17001",
+        "seconds": 120,
+        "maximum": 130,
+        "variant_budget": null
+      },
+      {
+        "theme": "G196",
+        "core": "E17002",
+        "seconds": 90,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G196",
+        "core": "E17003",
+        "seconds": 95,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G197",
+        "core": "E17004",
+        "seconds": 115,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G198",
+        "core": "E17005",
+        "seconds": 110,
+        "maximum": 115,
+        "variant_budget": null
+      },
+      {
+        "theme": "G199",
+        "core": "E17006",
+        "seconds": 125,
+        "maximum": 130,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave17-final-independent-readback.json",
+    "sha256": "9cb2ecc06b18c0dc5dd01fbe643818a2fc5cc7bc8995a13aa7a531719492983c",
+    "status": "PASS_INDEPENDENT_DATA_WITH_ROOT_DOCS_TESTS_READBACK",
+    "root_recomputed_bound_file_hashes": 65,
+    "all_required_data_docs_batches_and_reviews_bound": true,
+    "late_docs_tests_reviewed_by": "root",
+    "late_docs_tests_independent": false,
+    "independent_scope": "Completed data/editorial receipt and three prior topic/source reviews; reviewer usage limit interrupted late document review.",
+    "limits": "Data/editorial integration review; not a new independent full-source or production approval. Earth patterns facts use non-author life receipt. Existing G108 narration and demos are unchanged and were not rerun."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 38,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "receipt_file": ".cache/wave17-staged-hygiene-before-receipt.json",
+    "receipt_sha256": "efc82741b99270c1cd12c04f63e36a6c2cba7cece791f1c9f90bfb851e370588",
+    "offences": 0,
+    "self_binding_limit": "This added field is outside the bound pre-field scan. Repeat the identical scanner after staging this receipt; final scan remains in ignored cache to avoid a self-hash cycle."
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "reviewer": "science_sources",
+  "reviewed_on": "2026-11-01",
+  "status": "PASS_SCOPED_EDITORIAL_INTEGRATION_READBACK_NOT_SCRIPT_APPROVAL",
+  "inputs": [
+    {
+      "file": "pool.json",
+      "sha256": "a2839318e7a628904e126309a5bd1ea9226c54f8fb9b557a289bc3233daeb633"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "ffdc962e860d7aca2e2f12840ac4c16dbd4f5e2c10c9a8f2e81de2bac70fe46b"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "ec86b2f814c3f8eca8f7563b1b5f20200a42b0bfda2f99f97d6f163ae4e5c641"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "cf00871838f5255e658152306721e45f61659e08c9e0bdbfff99f062d7be1a8d"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "sha256": "26d4627eca62057f6bf12eee75e0a80c6a489ceb5528dfee7620d67cf81570e0"
+    },
+    {
+      "file": "baselines/2026-11-01-2000.json.gz",
+      "sha256": "a68860dec5a89503f06272bd900ff8be3209c3ba4d59c4520d081948ee314cf4"
+    },
+    {
+      "file": "reviews/wave3-editorial-integration.json",
+      "sha256": "bc0cb705e7187551418f80c5c394bc3063364540ffa52d2db31b19705eed4507"
+    },
+    {
+      "file": "reviews/wave3-root-reviews-earth.json",
+      "sha256": "1e33ff86e4be5bc261109a8ca0f492548545a2969cb2e0d55fc9b6e3552f1be8"
+    },
+    {
+      "file": "reviews/wave3-earth-themes.json",
+      "sha256": "93ad73d845381344866355bd0aad4dd0ad73b4503b133d7af547ff0a2b94f5f1"
+    },
+    {
+      "file": "reviews/wave3-earth-reviews-information.json",
+      "sha256": "03bd7cbbb617315f56793bcbb266fcd2422df6651ce83da6aef8d34f24d8b25c"
+    },
+    {
+      "file": "reviews/wave3-information-themes.json",
+      "sha256": "8fee5b616a0fac03670a61fb1a70ff388f6aa017278b461df5fe611726efff3f"
+    },
+    {
+      "file": "reviews/wave3-information-corrections.json",
+      "sha256": "badb209eaab8b30a6551c70286ef08ed63452881697bb9af6159c01c572bf1b9"
+    },
+    {
+      "file": "reviews/wave3-life-themes.json",
+      "sha256": "7ca37b9c140a3555cfa0b242bec404515e920f0f804cf9af4b248640210fd86e"
+    },
+    {
+      "file": "reviews/wave3-chemistry-themes.json",
+      "sha256": "77f367dbe42055c12f1500bff7a9d78fc026375cd702f8ab630b837979e124a4"
+    },
+    {
+      "file": "reviews/wave3-chemistry-reviews-life.json",
+      "sha256": "b37aaa9575c80671bac7d3b42c7fadec0d9cfc15e9e208c9f2a8a50ed38729e6"
+    },
+    {
+      "file": "reviews/wave3-life-reviews-chemistry.json",
+      "sha256": "e1dc3b6f753cebd5d74a4d877a2be9fd151deff43794563b9253830dd0814060"
+    },
+    {
+      "file": "reviews/wave3-life-corrections.json",
+      "sha256": "21349865d20b45fa577cbc11ff59397c6bfec798ef14beb8149063c32846b7c2"
+    },
+    {
+      "file": "reviews/wave3-chemistry-corrections.json",
+      "sha256": "b90ca68616a31578aafa58069c50eaa279f37cead437873690a0a8c6db1a88ee"
+    },
+    {
+      "file": "reviews/wave3-root-reviews-old-pairs.json",
+      "sha256": "ed56e3065d9fb8680a39f21823f850defb044973ed60a547f6480ae30166e3ce"
+    }
+  ],
+  "scope": {
+    "central": "pool.json counts、selection.json、dedup-decisions.json 與 G27–G38 的素材和正文預算；比對凍結 2000 題 checkpoint、作者 proposal、獨立 review 及定向 corrections。",
+    "external_sources_reread": 0,
+    "repository_tests_run": false,
+    "method": "本次唯讀 JSON/章節內容檢查及窄範圍算術與集合讀回，沒有執行全 repo tests。",
+    "independence": "本人是 O 批與 EARTH-P1–P3 原作者；本次只檢查其中央整合與 root 獨立審閱一致，不冒稱再次獨立查核自己的內容。其餘獨立來源覆核沿用各非作者 review，未重做完整稿。"
+  },
+  "counts_verified": {
+    "frozen_selected": 2000,
+    "frozen_raw": 2293,
+    "new_raw": 368,
+    "new_aliases": 27,
+    "new_holds": 8,
+    "new_selected_cores": 333,
+    "old_selected_removed": [
+      "E2106",
+      "L042",
+      "L177",
+      "L293",
+      "P150"
+    ],
+    "old_merge_count": 4,
+    "old_hold_count": 1,
+    "selected": 2328,
+    "formula": "2000 - 4 - 1 + (368 - 27 - 8) = 2328",
+    "raw_records": 2661,
+    "canonical_questions": 2548,
+    "eligible_candidates": 2387,
+    "alias_records": 113,
+    "eligible_unselected": 59,
+    "selection_overflow": 59,
+    "approved_scripts": 0,
+    "cohorts": [
+      {
+        "batch": "wave3-earth-observation.json",
+        "raw": 89,
+        "selected": 83
+      },
+      {
+        "batch": "wave3-life-systems.json",
+        "raw": 93,
+        "selected": 83
+      },
+      {
+        "batch": "wave3-chemistry-materials.json",
+        "raw": 91,
+        "selected": 86
+      },
+      {
+        "batch": "wave3-information-systems.json",
+        "raw": 95,
+        "selected": 81
+      }
+    ]
+  },
+  "selection_checks": {
+    "selection_ids_unique": true,
+    "pool_embedded_selection_equals_selection_json": true,
+    "selected_ids_all_canonical_and_eligible": true,
+    "old_selected_removed_exactly_expected_five": true,
+    "unexpected_other_old_additions": [],
+    "new_merge_map_mismatches": [],
+    "held_ids_in_selection": [],
+    "disposed_raw_ids_missing": [],
+    "merged_source_reference_losses": [],
+    "all_g27_g38_candidate_and_chapter_ids_selected_canonical_eligible": true,
+    "all_g27_g38_chapter_id_unions_equal_candidate_id_lists": true,
+    "integration_review_hash_mismatches": [],
+    "note": "合併 ID 的原問法與來源仍在 raw_records；逐組核對本次整合 31 組合併的原 source_refs 包含於 canonical。31 組中 27 為新候選、4 為舊候選，9 個 hold 中 8 新、1 舊。"
+  },
+  "themes_verified": [
+    {
+      "id": "G27",
+      "proposal": "V3-T01",
+      "body_seconds": 510,
+      "format": "long_explainer_candidate",
+      "result": "章節秒數與作者提案相同，符合獨立審閱 465–510 秒條件；可選夾子章刪除後 465 秒，不自動仍算長片。"
+    },
+    {
+      "id": "G28",
+      "proposal": "V3-T02",
+      "body_seconds": 415,
+      "format": "short_explainer",
+      "result": "依 review 移出 V3011 的 120 秒鈣系統，cAMP 105→85、結尾45→20，章節[30,100,95,85,85,20]正確；Gs 來源前提仍保留。"
+    },
+    {
+      "id": "G29",
+      "proposal": "V3-T03",
+      "body_seconds": 520,
+      "format": "long_explainer_candidate",
+      "result": "結尾40→20，其他章節與 proposal 相符；再刪70秒再生章是450秒=7.5分鐘，中央 cut_if 已修正。"
+    },
+    {
+      "id": "G30",
+      "proposal": "H3-T01",
+      "body_seconds": 450,
+      "format": "short_explainer",
+      "result": "作者與中央章節、核心 ID 相符；時間尺度與材料示意限制保留。"
+    },
+    {
+      "id": "G31",
+      "proposal": "H3-T02",
+      "body_seconds": 420,
+      "format": "short_explainer",
+      "result": "疲勞章引用 canonical LEG-T07，未使用 alias H3062；保留本批循環裂紋來源入口的用途，不自動沿用舊事故敘述。"
+    },
+    {
+      "id": "G32",
+      "proposal": "H3-T03.current_recommended_variant",
+      "variant": "H3-T03-short-225",
+      "body_seconds": 225,
+      "format": "short_explainer",
+      "result": "25+70+100+30=225；只用 H3082/H3084，未用 H3085；標題、追問與結尾採當期短版，刪原第4/5章165秒，boredom_risk已同步移除分子距離支線。"
+    },
+    {
+      "id": "G33",
+      "proposal": "EARTH-P1",
+      "body_seconds": 495,
+      "format": "long_explainer_candidate",
+      "result": "核心、章節與條件逐欄吻合作者提案及 root review；末章90秒若刪為405秒=6:45。"
+    },
+    {
+      "id": "G34",
+      "proposal": "EARTH-P2",
+      "body_seconds": 600,
+      "format": "long_explainer_candidate",
+      "result": "逐欄吻合；球諧與 mascon 需明示產品切換，最後80秒可刪，不把不同處理流程混成一套。"
+    },
+    {
+      "id": "G35",
+      "proposal": "EARTH-P3",
+      "body_seconds": 435,
+      "format": "short_explainer",
+      "result": "逐欄吻合；未把7:15標成已達8分鐘長片。"
+    },
+    {
+      "id": "G36",
+      "proposal": "INFO-P1",
+      "body_seconds": 355,
+      "format": "short_explainer",
+      "result": "與 correction 綁定的新 proposal 逐欄一致，I3012章55秒。"
+    },
+    {
+      "id": "G37",
+      "proposal": "INFO-P2",
+      "body_seconds": 295,
+      "format": "short_explainer",
+      "result": "已移出 I3046/I3047 尾章，沒有復活 hold I3047；圖像位移章55秒。"
+    },
+    {
+      "id": "G38",
+      "proposal": "INFO-P3",
+      "body_seconds": 435,
+      "format": "short_explainer",
+      "result": "I3084章60秒與I3087章55秒皆採修正版本；Fernet建立時間及不同密碼系統邊界保留。"
+    }
+  ],
+  "duration_checks": {
+    "all_chapter_sums_match_body_seconds": true,
+    "all_target_minutes_match_body_seconds": true,
+    "all_production_ready_false": true,
+    "long_candidates": [
+      "G27",
+      "G29",
+      "G33",
+      "G34"
+    ],
+    "short_explainers": [
+      "G28",
+      "G30",
+      "G31",
+      "G32",
+      "G35",
+      "G36",
+      "G37",
+      "G38"
+    ],
+    "note": "所有秒數仍為編輯預算，故事 framing 納入本文總和，並非品牌片頭片尾或實際旁白量測；長片候選不等於完整稿審核通過。"
+  },
+  "resolved_during_readback": [
+    {
+      "id": "G32.boredom_risk",
+      "initial_issue": "225秒版仍殘留『同一對探針／距離依賴』文案。",
+      "final": "root 已改為放光、非輻射去活化與不可逆漂白，末次讀回確認。"
+    },
+    {
+      "id": "G29.chapter7.cut_if",
+      "initial_issue": "正文縮為520秒後，刪70秒仍寫7.8分鐘。",
+      "final": "root 已改7.5分鐘，與450秒一致。"
+    }
+  ],
+  "outstanding_findings": [],
+  "limitations": [
+    "未重查全池或 368 新題全部外部來源。",
+    "未做完整稿盲讀、影像或音訊製作、實測或成片驗收。",
+    "未跑全 repository tests；本檔不替代 root 的工具與 build 驗證。",
+    "未修改任何中央選入或去重檔案。"
+  ],
+  "conclusion": "指定範圍的題數、處置、主題映射、刪減與片長整合一致；可作候選池交付，未取得任何製作或發布核准。"
+}

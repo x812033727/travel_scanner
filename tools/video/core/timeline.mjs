@@ -170,14 +170,20 @@ export function speechHash(doc, lexicon) {
   // original hash, so their timelines stay valid across this change.
   const drama = doc.format === "drama";
   if (drama) hash.update(JSON.stringify((doc.characters ?? []).map((character) => [character.id, character.voice])));
+  // A slides cohost's voice and who speaks each line (docs/videos/DUBS.md §兩位主持人); slides
+  // with one host hash as they always did. The cohost's name is the captions', not the audio's.
+  else if (doc.cohost !== undefined) hash.update(JSON.stringify(["cohost", doc.cohost?.id ?? null, doc.cohost?.voice ?? null]));
   const actions = (doc.scenes ?? []).filter((scene) => scene.action_seconds !== undefined);
   if (actions.length) hash.update(JSON.stringify(doc.scenes.map((scene) => [scene.id, scene.action_seconds ?? null])));
   for (const { scene, line, last } of eachLine(doc)) {
     const fields = [scene.id, line.id, spokenText(line), line.pause_after_ms ?? null, last];
     if (drama) fields.push(line.speaker ?? "narrator", line.emotion ?? null);
-    // A cue on a slides line changes its take (docs/videos/ILLUSTRATED.md §聲音表演); a line
-    // without one hashes as it always did, so no timeline from before the cues goes stale.
-    else if (line.emotion) fields.push(["emotion", line.emotion]);
+    else {
+      if (line.speaker !== undefined && line.speaker !== "narrator") fields.push(["speaker", line.speaker]);
+      // A cue on a slides line changes its take (docs/videos/ILLUSTRATED.md §聲音表演); a line
+      // without one hashes as it always did, so no timeline from before the cues goes stale.
+      if (line.emotion) fields.push(["emotion", line.emotion]);
+    }
     const hints = pronunciationHintsFor(doc, line);
     if (hints.length) fields.push(["pronunciation_hints", hints]);
     if (line.audio_ref !== undefined) fields.push(["audio_ref", line.audio_ref]);
@@ -205,4 +211,28 @@ export function visualHash(doc) {
     if (scene.data?.character_looks) hash.update(JSON.stringify(shotCast(doc, scene).filter((character) => character.shot_look).map((character) => [character.id, character.shot_look, character.appearance])));
   }
   return hash.digest("hex").slice(0, 16);
+}
+
+/**
+ * visualHash without the theme: what a drama's keyframes and clips are bound to. The paper look
+ * (docs/videos/PAPER.md) redraws the cards, not the generated pictures, so turning it on must not
+ * send every keyframe to be drawn (and paid for) again. Equal to visualHash for a video without a theme.
+ */
+export function pictureHash(doc) {
+  return visualHash(doc?.theme ? { ...doc, theme: undefined } : doc);
+}
+
+// The card looks a video may ask for (schema.mjs THEMES); kept here so timeline.mjs stays leaf-level.
+const CARD_THEMES = [undefined, "paper"];
+
+/**
+ * Whether a keyframes or clips manifest's recorded `visual_hash` still describes this video's
+ * pictures. Current manifests carry pictureHash; one written before keyframes and clips stopped
+ * following the theme carries visualHash with whichever card theme the video had then (a video
+ * drawn on the paper look and later taken off it, or the other way round, keeps its pictures).
+ */
+export function picturesBound(recorded, doc) {
+  if (typeof recorded !== "string" || !recorded) return false;
+  if (recorded === pictureHash(doc)) return true;
+  return CARD_THEMES.some((theme) => recorded === visualHash({ ...doc, theme }));
 }

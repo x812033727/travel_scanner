@@ -1,0 +1,71 @@
+{
+  "tested_on": "2026-11-01",
+  "node": "v24.19.0",
+  "status": "PASS",
+  "check": {
+    "status": "PASS",
+    "raw_records": 1224,
+    "canonical_questions": 1192,
+    "eligible_candidates": 1046,
+    "selected_candidates": 1000,
+    "alias_records": 32,
+    "historical_records": 313,
+    "source_urls": 3195,
+    "current_research_source_urls": 226,
+    "selected_source_urls": 1459,
+    "new_suggestions_not_added": 57,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0,
+    "themes": 12,
+    "production_ready": false
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "081286420e34ffbc58aa8a9514a5b4c62195e67c13fa896a0ea671f9850466af",
+    "writes": 2416,
+    "selected": 1000
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "081286420e34ffbc58aa8a9514a5b4c62195e67c13fa896a0ea671f9850466af",
+    "writes": 0
+  },
+  "search": {
+    "text": "地下水",
+    "returned": 9
+  },
+  "alias": {
+    "requested": "N098",
+    "resolved": "L097"
+  },
+  "held_question": {
+    "id": "L151",
+    "selected": false,
+    "eligible": false
+  },
+  "selected_source_refs": 2212,
+  "hashes": {
+    "pool.json": "9eaa0e71a82da3f92324a9d83b976a4746d8f85dd42d1df3d3166762939433d3",
+    "themes.json": "6aacd8f74c7f526661d05502f0b69cce90179c78e725e87de7b94d1c86224a18",
+    "index.html": "e425e28ccc42e990ac03e78f130ddb81fb6cb30e45a8f5569a691563a54881ea",
+    "manifest.json": "10c2b5930edb3fdc28d9b4e0a730fb37b655ae43587ddcaa998f371246a3703a",
+    "batches/life-tech.json": "7c873e0d63d22eb2d666df6fee0867a936ddb62ce7dbabc1369ebc83b59ad2ee",
+    "batches/physics.json": "1e53dc0564f1ff627990013e7bb06fda8bd7546cd3f8fd1579e2203b142b437b",
+    "batches/nature.json": "99978991ffc26e3130993169a87ae32374043c96ecb1c76408a3ab6bc0199c24",
+    "batches/space-engineering.json": "d48deab195d53bb3e935169a76387d916fdd13b5785037149fbde5112279c16b"
+  },
+  "local_links_checked": 1021,
+  "local_links_missing": [],
+  "test_results": {
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "scope": "pool+catalog+repo-hygiene+json-duplicate-keys+docs-videos-tests; not the full tools/docs-video suites"
+  },
+  "legacy_long_form_entries_checked": 473,
+  "task_files_validated": 2287,
+  "line_endings": "Final source/definition files normalized to LF before build; no semantic edits. All bound inputs match Git-staged blob bytes.",
+  "staged_input_hashes_verified": 226,
+  "final_format_check": "Generated questions trimmed to one EOF newline; rebuild, index readback and final scoped tests repeated."
+}

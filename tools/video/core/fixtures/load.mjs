@@ -36,6 +36,11 @@ export const enBrief = () => readFileSync(path.join(FIXTURES, "en", "brief.md"),
 export const explainerFixture = () => JSON.parse(readFileSync(path.join(FIXTURES, "explainer", "video.json"), "utf8"));
 export const explainerBrief = () => readFileSync(path.join(FIXTURES, "explainer", "brief.md"), "utf8");
 
+// A two-host slides video (docs/videos/DUBS.md §兩位主持人): the narrator and a `cohost` take turns.
+export const COHOST_FIXTURE_FILE = path.join(FIXTURES, "cohost", "video.json");
+export const cohostFixture = () => JSON.parse(readFileSync(COHOST_FIXTURE_FILE, "utf8"));
+export const cohostBrief = () => readFileSync(path.join(FIXTURES, "cohost", "brief.md"), "utf8");
+
 export const storyFixture = () => JSON.parse(readFileSync(STORY_FIXTURE_FILE, "utf8"));
 export const storyBrief = () => readFileSync(path.join(FIXTURES, "story", "brief.md"), "utf8");
 export const storySeries = () => JSON.parse(readFileSync(path.join(FIXTURES, "story", "series.json"), "utf8"));

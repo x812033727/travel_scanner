@@ -1,0 +1,55 @@
+{
+  "tested_on": "2026-11-02T02:07:16.089Z",
+  "result": "PASS",
+  "selected": 2988,
+  "index_html_sha256": "5927f9ec169ebeabea1f1e7b8a4e96d5ef1b7fa8d0fb0fd6d7e4f5a78d92b5fa",
+  "source_sample": {
+    "id": "A19001",
+    "urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC4632618/"
+    ]
+  },
+  "checks": [
+    "Creation-date eyebrow equals 原來如此事務所 · 建立於 2026-11-01; asserted in browser and visually inspected",
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new life-mechanism question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave19-desktop.png",
+    "wave19-source-desktop.png",
+    "wave19-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_review": {
+    "reviewer": "root",
+    "observations": [
+      "Desktop1440x1000: 2988 selected, 2537 source URLs, 208 themes, 139 aliases shown. Creation-date label, search, filters and first cards are readable without overlap.",
+      "Expanded A19001: complete question, bounded answer,65–110 second segment budget, scope and source-reading note visible. Payoff/visual/source URL fields are below the screenshot crop and were checked by DOM assertions, not claimed visible here.",
+      "Mobile390x844: creation-date label readable, heading wraps, stats arrange in two rows, navigation and filters fit without horizontal overflow. Narrow search placeholder is clipped but the field remains usable. Lower cards are outside the crop; this is not a full-page visual audit."
+    ],
+    "screenshots": [
+      {
+        "file": ".cache/wave19-desktop.png",
+        "sha256": "d66dd1c6344ea70f99003bb7e87ebc67648f327b06cda36355ae93c5d28fa222"
+      },
+      {
+        "file": ".cache/wave19-source-desktop.png",
+        "sha256": "e72f5adcac458e3f77d9190fb6dbeb06289eada6628a1cd0f11b95a6f132fe7d"
+      },
+      {
+        "file": ".cache/wave19-mobile.png",
+        "sha256": "534cdb1e2cea8d30e018e30877a78326dcd91c93afec0375b4dba3045c979e55"
+      }
+    ]
+  }
+}

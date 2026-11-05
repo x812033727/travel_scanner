@@ -1,0 +1,1007 @@
+{
+  "batch_id": "wave6-weather-sky-20261101",
+  "created_on": "2026-11-01",
+  "scope": "日常天氣、雲微物理、對流與天空光聲；來源支撐的原創題級候選，不是預報/劇本/製作核准。",
+  "sources": [
+    {
+      "id": "K6-S001",
+      "url": "https://courses.ems.psu.edu/meteo300/node/676",
+      "title": "5.4 Curvature effect: Kelvin equation",
+      "publisher": "Penn State / William H. Brune",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "先讀章節匯出頁 §5.4 正文與公式說明，再開本節 URL；未做測驗或觀看影片。",
+      "locator": "§5.4：曲面與平面平衡蒸氣壓、Kelvin equation 後的均質成核討論",
+      "summary": "液滴越小，曲率效應越不能忽略；平水面飽和不保證奈米純水滴穩定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "METEO 300 線上教材；頁面 CC BY-NC-SA，僅連結與原創短摘要，不採圖或習題。"
+    },
+    {
+      "id": "K6-S002",
+      "url": "https://courses.ems.psu.edu/meteo300/node/678",
+      "title": "5.6 The Koehler curve",
+      "publisher": "Penn State / William H. Brune",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "先實讀匯出頁 §5.6 完整機制段，再開本節 URL；不採測驗題。",
+      "locator": "§5.6：solute/curvature 組合、critical radius/supersaturation、haze/cloud drops、CCN 競爭段",
+      "summary": "溶質與曲率共同產生活化門檻；越過門檻與只吸濕長大是不同狀態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "METEO 300 線上教材；非商用教材圖不視為影片素材授權。"
+    },
+    {
+      "id": "K6-S003",
+      "url": "https://courses.ems.psu.edu/meteo300/node/679",
+      "title": "5.7 What controls the growth of cloud drops?",
+      "publisher": "Penn State / William H. Brune",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀本節機制正文與式子說明；不採示例時間為普遍雨滴生成時間。",
+      "locator": "§5.7：水汽擴散、潛熱傳出與半徑成長式",
+      "summary": "凝結成長同受水汽擴散及放熱限制；固定環境近似下，半徑成長會逐漸放慢。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "METEO 300 線上教材；只取機制。"
+    },
+    {
+      "id": "K6-S004",
+      "url": "https://courses.ems.psu.edu/meteo300/node/781",
+      "title": "5.9 Why do we care about mixed-phase clouds?",
+      "publisher": "Penn State / William H. Brune",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "本節正文；未觀看影片或採未複算的成長時間。",
+      "locator": "§5.9：液水/冰平衡蒸氣壓、Wegener–Bergeron–Findeisen transfer",
+      "summary": "混相雲中，冰與液水的平衡條件不同，可經由水汽讓冰成長、液滴縮小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "METEO 300 線上教材。"
+    },
+    {
+      "id": "K6-S005",
+      "url": "https://www.weather.gov/lmk/winter-precip",
+      "title": "Winter Precipitation",
+      "publisher": "NOAA / NWS Louisville",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀成核/冰晶成長與 multiplication 段、Snow versus Rain、Evaporative Cooling；不依頁面未完整返回的 Melting 尾句增寫。",
+      "locator": "Ice Crystal Formation and Growth 的 ice multiplication；Snow versus Rain / Evaporative Cooling",
+      "summary": "覆冰過程可產生次級冰晶；降水蒸發也會回頭冷卻下落空氣，影響相態。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "區域訓練教材，未標更新日；不用地域經驗門檻作臺灣預報規則。"
+    },
+    {
+      "id": "K6-S006",
+      "url": "https://www.noaa.gov/jetstream/upperair/severe-weather",
+      "title": "Skew-T Log-P Diagrams: Severe Weather",
+      "publisher": "NOAA JetStream",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀 LCL、CCL、LFC、CAPE/CIN 及解除抑制段；不採指數門檻表的災害機率。",
+      "locator": "LCL / CCL / LFC 小節；CAPE 與 CIN 解釋",
+      "summary": "凝結高度與自由對流高度不同；有可用浮力也可能先遇到阻止上升的層。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    },
+    {
+      "id": "K6-S007",
+      "url": "https://hogback.atmos.colostate.edu/cmmap/learn/clouds/howForm3.html",
+      "title": "How do clouds form? Surface Heating — What is next?",
+      "publisher": "Colorado State University / CMMAP",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "整個短頁正文；只支持此混合機制，不把所有雲外空氣概括為較冷。",
+      "locator": "Surface Heating：entrainment 兩段及 stable layer 段",
+      "summary": "雲邊混入較乾空氣可使液滴蒸發，冷卻正在上升的空氣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    },
+    {
+      "id": "K6-S008",
+      "url": "https://repository.library.noaa.gov/view/noaa/6332/noaa_6332_DS1.pdf",
+      "title": "Severe Thunderstorm Forecasting — An Operational Review, NWS SR-130",
+      "publisher": "NOAA / NWS；Eblen, Ladd, Hicks",
+      "accessed_on": "2026-11-01",
+      "read_via": "官方 URL urllib（Mokaair-editorial User-Agent）下載、PyMuPDF 渲染、view_image 目讀",
+      "reading_scope": "web.open PDF 無文字；官方原檔下載後 PyMuPDF 渲染，目讀封面、印刷18–20頁，僅用18圖與19首段。",
+      "locator": "印刷 p.18 Fig.3-1 與 p.19 首段（PDF 第24–25頁）：EL 上方負浮力與 overshoot",
+      "summary": "氣塊到達浮力平衡層時仍可有上升動量；進入負浮力區後逐步減速。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "1990年7月歷史操作教材；只取氣塊理想模型，不沿用當期預報門檻/作業建議。"
+    },
+    {
+      "id": "K6-S009",
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/clouds/unusual-cloud-formations/kelvin-helmholtz",
+      "title": "Kelvin-Helmholtz clouds",
+      "publisher": "Met Office",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀 formation 與觀察條件段；不視作所有波浪雲的鑑定。",
+      "locator": "How do Kelvin-Helmholtz clouds form?",
+      "summary": "上下氣層的風速差可使界面波捲起，雲把其形狀顯現出來。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    },
+    {
+      "id": "K6-S010",
+      "url": "https://psl.noaa.gov/outreach/education/science/convection/Pattern_s2.html",
+      "title": "Cloud Streets",
+      "publisher": "NOAA Physical Sciences Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "短頁完整機制段；不採未在此說明的定量風切條件。",
+      "locator": "Cloud Streets 主文單段",
+      "summary": "多組相鄰對流滾軸，在上升支凝結、下沉支留空，能形成平行雲帶。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    },
+    {
+      "id": "K6-S011",
+      "url": "https://science.nasa.gov/earth/earth-observatory/aerosols/",
+      "title": "Aerosols: Tiny Particles, Big Impact",
+      "publisher": "NASA Earth Observatory",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀所列兩組段落；不採2010年模型占比、全球抵銷升溫數字或污染普遍增減雨量結論。",
+      "locator": "Aerosols and Clouds (Indirect Effects)：droplet size / cloud albedo、black carbon / semi-direct effect",
+      "summary": "相同雲水分成更多小滴可改變反光；吸光粒子加熱空氣也可能促進液滴蒸發。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2010-11-02科普長文；只取基本機制與已明示的條件性。"
+    },
+    {
+      "id": "K6-S012",
+      "url": "https://gpm.nasa.gov/missions/TRMM/satellite/CERES",
+      "title": "Clouds and the Earth’s Radiant Energy System (CERES)",
+      "publisher": "NASA GPM / TRMM",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀能量預算、Cloud Effects 段；不把歷史任務敘述當現行運作狀態。",
+      "locator": "Balancing the Earth’s Energy Budget；Cloud Effects",
+      "summary": "雲同時改變入射短波和出射長波；高度與光學厚度影響兩種效應的相對強弱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2011-03-11任務教育頁；未引用現今全球雲強迫量。"
+    },
+    {
+      "id": "K6-S013",
+      "url": "https://www.weather.gov/fgz/Rainbow",
+      "title": "How Do Rainbows Form?",
+      "publisher": "NOAA / NWS Flagstaff",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀虹光路正文與 double rainbow 小節；不採金幣民俗或把42度當所有顏色唯一值。",
+      "locator": "What makes a double rainbow? 兩段",
+      "summary": "雨滴內兩次反射的出射方向與色序，不同於一次內反射的主虹。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    },
+    {
+      "id": "K6-S014",
+      "url": "https://www.rmets.org/metmatters/haloes-and-sun-dogs",
+      "title": "Haloes and sun dogs",
+      "publisher": "Royal Meteorological Society / Kirsty McCabe",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀上述正文；未播放嵌入影片，不採用手遮日測角操作。",
+      "locator": "22-degree halo random orientations；sun dogs horizontal plates；Key Features 的 pillars",
+      "summary": "冰晶取向改變可見光分布；取向隨機與近水平板狀晶體可產生不同外觀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2026-10-08，氣象學會作者教育文；用大學與氣象機構頁交叉支撐。"
+    },
+    {
+      "id": "K6-S015",
+      "url": "https://www.gi.alaska.edu/alaska-science-forum/sun-dogs-and-light-shafts",
+      "title": "Sun Dogs and Light Shafts",
+      "publisher": "University of Alaska Fairbanks Geophysical Institute / Kolf Jayaweera",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "主文完整短段；不採其中 always 22° 的過度概括。",
+      "locator": "正文反射 light shafts 與折射 sundogs 對照兩段",
+      "summary": "近水平冰晶平面的反光可形成光柱；其顏色跟著光源，不必是空氣自行發光。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "1976-04-16歷史科普；只取光路原理。"
+    },
+    {
+      "id": "K6-S016",
+      "url": "https://avmet.navcanada.ca/en/low-level-jet.aspx",
+      "title": "Low-Level Jet",
+      "publisher": "NAV CANADA Aviation Meteorology Reference",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀科學說明與因素段；不採高度/風速範圍為所有低層急流的固定數值，也不用2021案例作現況。",
+      "locator": "Science Explained：nocturnal inversion；Necessary Ingredients：time of day；Turbulence 的 daytime mixing",
+      "summary": "夜間穩定分層減弱上下混合，地面風弱時上方仍可有強風；白天混合又能把動量帶下來。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    },
+    {
+      "id": "K6-S017",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/lightning/detection/",
+      "title": "Severe Weather 101: Lightning Detection",
+      "publisher": "NOAA National Severe Storms Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀 networks、mapping、other sensors 段；候選僅採 multiple strokes，未引用儀器現況與頁面 GLM 規格。",
+      "locator": "Lightning Detection Networks：multiple return strokes / flickering 段",
+      "summary": "一次負雲地閃可包含多次回擊，能呈現同一通道反覆變亮。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    },
+    {
+      "id": "K6-S018",
+      "url": "https://www.weather.gov/source/zhu/ZHU_Training_Page/lightning_stuff/lightning2/thunder.html",
+      "title": "The Sound of Thunder",
+      "publisher": "NOAA / NWS JetStream 訓練頁",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀短頁全文，僅用分布聲源路徑；不採固定可聽距離或以音量判安全。",
+      "locator": "主文第2–9段：通道各點產聲與不同距離先後到達",
+      "summary": "閃電是延伸的聲源；不同位置的聲音抵達時間不同，可把短事件聽成持續低鳴。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "舊訓練路徑、未標更新日；僅基本聲學。"
+    },
+    {
+      "id": "K6-S019",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/lightning/faq/",
+      "title": "Severe Weather 101: Lightning FAQ",
+      "publisher": "NOAA National Severe Storms Laboratory",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀兩個定位問答及周圍限制；充電微觀細節仍未完全理解，不寫固定一種電荷配置。",
+      "locator": "How do storms become electrified?；What is thundersnow?",
+      "summary": "冰粒碰撞轉移電荷與不同沉降速度可造成電荷區；對流也可來自冷地面上方的不穩定濕層。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    },
+    {
+      "id": "K6-S020",
+      "url": "https://aircrafticing.grc.nasa.gov/1_1_2_5.html",
+      "title": "A Pilot’s Guide to Inflight Icing: Supercooled Large Droplets",
+      "publisher": "NASA Glenn Research Center",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀兩成因小節與不要假定上方暖層的警語；未播放影片，不沿用飛行操作或認證建議。",
+      "locator": "Temperature Inversion 與 Collision-coalescence Process 小節",
+      "summary": "凍毛毛雨可以來自液滴碰併，不必先經過上方暖層融雪。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2016-09-27更新；僅成因教材，不作當前航空指引。"
+    },
+    {
+      "id": "K6-S021",
+      "url": "https://acp.copernicus.org/articles/25/4419/2025/",
+      "title": "Mechanisms of surface solar irradiance variability under broken clouds",
+      "publisher": "Mol & van Heerwaarden；Wageningen University & Research；Atmospheric Chemistry and Physics",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "實讀上述研究正文和模型限制，非僅摘要；未重跑模型，也未核全部結果表或下載觀測資料。",
+      "locator": "§2.1–2.3.4、§3.1–3.2、§4.1、§5.1",
+      "summary": "雲可把光水平重新分配；局部散射光與未遮蔽直射光疊加，能超過相應晴空值。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "2025-04-23正式論文；DOI 10.5194/acp-25-4419-2025。"
+    },
+    {
+      "id": "K6-S022",
+      "url": "https://www.weather.gov.hk/en/education/earth-science/optical-phenomena/00140-sun-dogs.html",
+      "title": "Sun Dogs",
+      "publisher": "Hong Kong Observatory / John K.W. Chan",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find 定點正文",
+      "reading_scope": "完整短頁正文；與K6-S014的晶體取向解釋對照，不把約22度當所有太陽高度的固定值。",
+      "locator": "How are sundogs formed?；When and where is it best to see sundogs?",
+      "summary": "板狀六角冰晶折射陽光可造成太陽兩側亮斑；不需要地面正下雪。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "version_note": "頁面未標明版本；取用日可讀教材正文"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K6001",
+      "question": "空氣對平水面已經飽和，為什麼極小的水滴還可能縮掉？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.kelvin_curvature_equilibrium_vapor_pressure",
+      "answer_target": "極小純水滴的曲率提高平衡蒸氣壓，對平面飽和的空氣仍可能不足以維持它。",
+      "scope": "固定溫度、純水、極小液滴的 Kelvin 效應；不混同含溶質 CCN 或一般雨滴的明顯蒸發。",
+      "source_ids": [
+        "K6-S001"
+      ],
+      "source_locator": "§5.4 Kelvin equation 與 homogeneous nucleation",
+      "premise_status": "screened",
+      "notes": "與P212平面液氣平衡的液量無關；新增曲率條件。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "飽和必須說明相對哪個表面，不能只用一個100%通吃所有粒子。",
+        "visual": "同溫兩個平衡門檻：平水面與極小曲面；改小半徑而不改環境。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "K6002",
+      "question": "空氣裡的微粒都吸到水，為什麼只有一部分長成雲滴？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.kohler_activation_barrier_haze_cloud",
+      "answer_target": "溶質降低與曲率提高平衡蒸氣壓的競爭產生臨界門檻；未越過可停留為霾滴，越過後在足夠過飽和下可持續成長。",
+      "scope": "Köhler 理想化含可溶成分粒子；固定組成下的門檻示意，不假設全部粒子相同或活化後永不蒸發。",
+      "source_ids": [
+        "K6-S002"
+      ],
+      "source_locator": "§5.6 critical supersaturation / radius 與 haze/cloud drops",
+      "premise_status": "screened",
+      "notes": "不另把較大CCN先活化拆成一題；競爭只作條件補充。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "有凝結核不是已經保證成雲；跨越門檻是另一件事。",
+        "visual": "同一粒子沿半徑軸移動，畫出門檻兩側的成長/回縮方向，不複製教材圖。",
+        "seconds": [
+          75,
+          100
+        ]
+      }
+    },
+    {
+      "id": "K6003",
+      "question": "雲滴已經長出來了，為什麼光靠吸水汽還是很難迅速變成雨滴？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.condensational_growth_diffusion_heat_bottleneck",
+      "answer_target": "水汽需擴散到滴面，凝結潛熱也需傳出；定環境近似下半徑成長率隨半徑增大而降低。",
+      "scope": "凝結成長理想模型，分清半徑成長速度與總質量增加；碰併與冰相成長只作其他路徑入口。",
+      "source_ids": [
+        "K6-S003"
+      ],
+      "source_locator": "§5.7 diffusional growth、latent heat 與 radius growth",
+      "premise_status": "screened",
+      "notes": "與LEG-S42沉降/上升氣流平衡不同；不沿用教材示例天數概括所有雲。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲滴變大並非固定速度灌水，長到後面會遇到新的瓶頸。",
+        "visual": "同一時間尺上逐格增加半徑；並排畫水汽流入與熱流出兩條路。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "K6004",
+      "question": "冰晶沒碰到旁邊的水滴，為什麼也能讓自己變大、水滴變小？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.mixed_phase_wbf_vapor_transfer",
+      "answer_target": "同溫冰面平衡蒸氣壓低於液水；環境介於兩門檻時，冰凝華成長而液滴蒸發，經水汽完成轉移。",
+      "scope": "低於冰點且冰水共存、足夠水汽交換的混相雲；不是冰隔空吸力，也不是所有情況液滴必縮。",
+      "source_ids": [
+        "K6-S004"
+      ],
+      "source_locator": "§5.9 WBF transfer 與 saturation vapor pressures",
+      "premise_status": "screened",
+      "notes": "N235談岩隙結冰水分供應，這裡為混相大氣的氣相轉移；N158是撞擊覆冰。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "雨雪成長不只有直接碰撞，水也能先繞道成為氣體。",
+        "visual": "冰—水汽—液滴三格流向；保留同溫標示與兩個飽和門檻。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "K6005",
+      "question": "一小批冰晶進了雲，為什麼後來可能冒出更多冰晶？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.secondary_ice_rime_splinter_multiplication",
+      "answer_target": "特定覆冰條件下會放出冰碎片，碎片可繼續成長，冰晶數量不再只由最初冰核數決定。",
+      "scope": "限次級冰生成的 rime-splintering 路徑；不概括所有混相雲，不給固定溫度/液滴尺寸門檻。",
+      "source_ids": [
+        "K6-S005"
+      ],
+      "source_locator": "Ice Crystal Formation and Growth：ice multiplication",
+      "premise_status": "screened",
+      "notes": "與N158的單顆雹成長不同；機制適用窗口和相對重要性進稿仍補核。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "粒子不只變大，還可能在過程中增加數量。",
+        "visual": "一顆覆冰粒子放出碎片，區分原始冰核與後生冰晶的顏色標籤。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "K6006",
+      "question": "一排積雲高高低低，底部為什麼卻常像被同一把尺切平？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.convective_cloud_base_shared_condensation_level",
+      "answer_target": "來自相近地表熱濕條件的上升空氣，常在近似高度達飽和；可見雲底標示凝結門檻而非實體平板。",
+      "scope": "近似均勻混合層、熱對流積雲；CCL 與機械抬升的 LCL 不混稱，雲底不保證永遠齊平。",
+      "source_ids": [
+        "K6-S006"
+      ],
+      "source_locator": "CCL、LCL 小節",
+      "premise_status": "screened",
+      "notes": "與LEG-S42為何不整團落下不同；不給通用溫差換高度公式。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看見的雲底是狀態轉換邊界，不是水滴排成一塊板。",
+        "visual": "多支氣塊到共同高度才顯示水滴；上方成長高度各不同。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "K6007",
+      "question": "地面又熱又濕，為什麼雷雨雲有時還是長不起來？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.convective_inhibition_cap_before_free_convection",
+      "answer_target": "近地面氣塊可能先遇到比自己更暖的環境層而受抑制；上方有可用浮力不等於已跨過前面的能量障礙。",
+      "scope": "熱濕地面下的有蓋對流示意；CAPE/CIN取決於所選氣塊，不以單一指數預報當日雷雨。",
+      "source_ids": [
+        "K6-S006"
+      ],
+      "source_locator": "CAPE/CIN、LFC 與解除抑制段",
+      "premise_status": "screened",
+      "notes": "與LEG-S57啟動午後雷雨相接，但新增未啟動的障礙條件。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "有能量與能不能啟動是兩道問題。",
+        "visual": "同樣上層正浮力區，改變下方負浮力層；顯示氣塊在哪裡受阻。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "K6008",
+      "question": "積雲還在往上冒，邊緣為什麼卻像被擦掉？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.cumulus_entrainment_evaporation_buoyancy_loss",
+      "answer_target": "雲邊捲入較乾外氣，液滴蒸發並冷卻混合空氣，能削弱上升氣塊的浮力。",
+      "scope": "有乾空氣捲入的積雲邊緣；不說所有外氣都較冷，不把每次雲形消失判作同一機制。",
+      "source_ids": [
+        "K6-S007"
+      ],
+      "source_locator": "entrainment 段",
+      "premise_status": "screened",
+      "notes": "N277為降水落入乾空氣蒸發；本題為雲邊混合對上升浮力的回饋。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲不是封好的氣球，邊走邊混入周圍空氣會改變它。",
+        "visual": "先隔離氣塊再打開側邊混合，對照滴數與氣塊溫度變化。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "K6009",
+      "question": "雷雨雲上方已攤成平臺，為什麼還會冒出一顆圓頂？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.convective_overshoot_momentum_negative_buoyancy",
+      "answer_target": "上升氣塊到達浮力平衡高度仍有動量，能短暫進入上方負浮力區，減速後形成超越雲頂。",
+      "scope": "理想氣塊的 overshooting top；平衡層不必等於對流層頂，不由單張照片推算風速或災害。",
+      "source_ids": [
+        "K6-S008"
+      ],
+      "source_locator": "印刷p.18圖、p.19首段",
+      "premise_status": "screened",
+      "notes": "不是一般慣性換物件：保留浮力符號沿高度改變的特定結構；不採歷史預報門檻。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "浮力變成零不等於速度瞬間歸零。",
+        "visual": "一支氣塊越過平衡線，速度箭頭逐漸縮短；旁邊已展開的砧部只作背景。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "K6010",
+      "question": "天上的雲為什麼有時像一排正在捲起的海浪？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.kelvin_helmholtz_shear_interface_rollup",
+      "answer_target": "相鄰氣層風速差使界面波動成長、捲起，雲讓流場變得可見。",
+      "scope": "Kelvin–Helmholtz 雲的特定風切層；不把任何波浪狀雲都歸因於此。",
+      "source_ids": [
+        "K6-S009"
+      ],
+      "source_locator": "How do Kelvin-Helmholtz clouds form?",
+      "premise_status": "screened",
+      "notes": "與N278山岳駐波的固定波位不同；不是N156旋轉雷雨胞分類變體。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "波紋可由上下兩股風的相對速度形成，不必有山擋住氣流。",
+        "visual": "上下兩層不同長度的速度箭頭，追蹤界面起伏與捲曲。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "K6011",
+      "question": "雲為什麼會排成好幾條平行長街，中間卻空著？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.horizontal_convective_roll_cloud_streets",
+      "answer_target": "並排對流滾軸的上升支凝結、下降支較少雲，能把原本看不見的循環排成雲帶。",
+      "scope": "對流雲街的概念模型；不以單張長條雲斷言滾軸，不含山岳波或飛機尾跡。",
+      "source_ids": [
+        "K6-S010"
+      ],
+      "source_locator": "Cloud Streets 主文",
+      "premise_status": "screened",
+      "notes": "JMA雲型分類已讀但不依分類多拆題；與N278固定山岳波分開。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲線只是循環的一半，空隙也有空氣在動。",
+        "visual": "先用剖面顯示相鄰滾軸，再轉俯視把上升支連成條帶。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "K6012",
+      "question": "一樣多的雲水，分成更多小水滴，為什麼能更亮？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.twomey_fixed_water_droplet_partition_albedo",
+      "answer_target": "在可比雲水與雲層條件下，水分配成更多較小液滴可提高散射與反光，並非多出同量新水。",
+      "scope": "液水雲、控制水量與幾何的雲反照率效應；不是只憑肉眼亮度反推粒徑或污染濃度。",
+      "source_ids": [
+        "K6-S011"
+      ],
+      "source_locator": "Indirect Effects：smaller droplets / water divided 段",
+      "premise_status": "screened",
+      "notes": "與N255的排放提供凝結核不同；新增固定水量下滴數/大小對光學的效應，交非作者判邊界。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲的亮度不只取決於有多少水，也取決於如何分配。",
+        "visual": "相同水量帳本，從少數大滴切換更多小滴，圖示回到上方的光。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "K6013",
+      "question": "空氣中的粒子能幫忙成雲，為什麼有時又讓雲滴消失？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.absorbing_aerosol_semidirect_cloud_evaporation",
+      "answer_target": "吸光氣膠可加熱其所在空氣，促進雲滴蒸發；這條輻射路徑能與凝結核路徑反向。",
+      "scope": "限吸光氣膠與雲的相對位置及環境允許的半直接效應；不概括所有煙霾，也不推算全球淨效應。",
+      "source_ids": [
+        "K6-S011"
+      ],
+      "source_locator": "Indirect Effects：black carbon / semi-direct effect 段",
+      "premise_status": "screened",
+      "notes": "源為2010概念頁；若進稿要比較實際強弱或區域趨勢，須補新研究。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一類懸浮粒子有不同作用路徑，不能只數粒子就決定雲增減。",
+        "visual": "以兩條箭頭分開凝結表面與吸光加熱；不畫出未計算的淨雲量。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "K6014",
+      "question": "雲能遮住太陽，為什麼也能減少地面向外散熱？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.cloud_shortwave_longwave_radiative_competition",
+      "answer_target": "雲對入射短波的反射與對出射長波的吸收再放射並存；高度與厚度改變兩者權重。",
+      "scope": "分開地表與大氣頂的能量帳；低厚雲/高薄雲為概念對照，不把雲高單因素當日氣溫預報。",
+      "source_ids": [
+        "K6-S012"
+      ],
+      "source_locator": "Energy Budget；Cloud Effects",
+      "premise_status": "screened",
+      "notes": "與N242溫室氣體分子吸收不同，這裡要同時比較雲的兩條輻射作用。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "遮陽與保熱可以同時發生，先看正在追哪一種能量。",
+        "visual": "太陽短波與地表長波用不同色箭頭，改雲高度/厚度逐一對照。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "K6015",
+      "question": "兩道彩虹同時出現，為什麼外面那道的顏色會倒過來？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.secondary_rainbow_two_internal_reflections",
+      "answer_target": "一次與兩次內反射的光走不同出射路徑，第二組虹光的角度和顏色排列因此改變。",
+      "scope": "近球形水滴的主虹/次虹幾何光學；不把主次虹說成彼此鏡中倒影。",
+      "source_ids": [
+        "K6-S013"
+      ],
+      "source_locator": "What makes a double rainbow?",
+      "premise_status": "screened",
+      "notes": "LEG-S23回答圓形與地平線遮擋，本題為反射階數的色序反轉。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多一次內反射會重新安排出射方向，不是第二道染錯色。",
+        "visual": "同一水滴中並列一次/兩次內反射路徑，最後在觀察角度上排色。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "K6016",
+      "question": "同樣是冰晶，為什麼有時出現整圈日暈，有時只亮在太陽兩側？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.ice_crystal_orientation_halo_parhelia",
+      "answer_target": "近隨機取向的冰晶與接近水平的板狀冰晶，讓折射光的方向分布不同，形成環狀與側向亮斑。",
+      "scope": "22度暈與幻日的取向對照；幻日角距隨條件而異，不採固定永遠22度。",
+      "source_ids": [
+        "K6-S014",
+        "K6-S022"
+      ],
+      "source_locator": "RMets random orientations / horizontally floating plates；HKO formation",
+      "premise_status": "screened",
+      "notes": "N281比較暈與華的折射/繞射；此題兩者皆冰晶折射，新增取向選擇。只畫示意，不教直視太陽測角。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "材料相同，排列方向仍能改變整幅天空圖案。",
+        "visual": "固定六角晶體材質，從多方向旋轉切到近水平板狀群，畫可到眼睛的光束。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "K6017",
+      "question": "路燈上方突然出現一根亮柱，是光真的直直照到天上嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.ice_plate_specular_light_pillar_geometry",
+      "answer_target": "不同位置的近水平冰晶平面把光源反射到觀察者方向，形成延展的虛像式光柱外觀。",
+      "scope": "冰晶光柱，不含探照燈束、極光或鏡頭眩光；亮柱位置由光源/晶體/眼睛幾何共同決定。",
+      "source_ids": [
+        "K6-S015",
+        "K6-S014"
+      ],
+      "source_locator": "UAF reflection from flat faces；RMets Light pillars",
+      "premise_status": "screened",
+      "notes": "與N282平行散射光束的透視發散不同；光源顏色只作對照，不以色彩獨自鑑定。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來有一根柱，不代表那裡有一整柱自行發光的氣體。",
+        "visual": "固定路燈與眼睛，只顯示能把光轉入眼睛的冰晶位置；再移動視角。",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "K6018",
+      "question": "夜裡地面幾乎沒風，為什麼上面仍可能吹著一股強風？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.nocturnal_boundary_layer_decoupling_low_level_jet",
+      "answer_target": "夜間地面冷卻造成穩定分層，減弱向上的摩擦與混合作用；上方風可維持較強，白天混合又能把動量往下帶。",
+      "scope": "夜間穩定邊界層型低層急流的概念，不包辦溫度梯度型急流或所有夜間強風。",
+      "source_ids": [
+        "K6-S016"
+      ],
+      "source_locator": "nocturnal temperature inversions；time of day；daytime mixing",
+      "premise_status": "screened",
+      "notes": "N147是地面摩擦使風跨等壓線；此題為日夜垂直耦合與風速峰，不重教高空噴射氣流。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "腳邊無風不代表整層空氣都安靜，關鍵是上下還有沒有充分混合。",
+        "visual": "同一垂直風速圖切換白天混合與夜間分層，地面與上方分開標。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "K6019",
+      "question": "看起來同一條閃電，為什麼會一亮一暗閃好幾下？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.negative_cloud_ground_multiple_return_strokes",
+      "answer_target": "一次負雲地閃可能包含多次回擊，使地面通道重複變亮；一次閃事件不等於一個瞬時電流脈衝。",
+      "scope": "負雲地閃的多回擊情況，非每個閃電都如此；不由肉眼頻閃推算精確回擊次數。",
+      "source_ids": [
+        "K6-S017"
+      ],
+      "source_locator": "Lightning Detection Networks：multiple return strokes",
+      "premise_status": "screened",
+      "notes": "N163是先導與上行連接，本題為一次閃事件內的重複回擊。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "眼睛看到的一次閃，內部可能有好幾次電流事件。",
+        "visual": "概念時間軸上同一通道亮—暗—再亮，清楚標作示意而非高速攝影證據。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "K6020",
+      "question": "閃電只亮一下，雷聲為什麼能拖成長長一串？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.extended_lightning_channel_acoustic_arrival_spread",
+      "answer_target": "閃電通道各段都產生聲音，與聽者距離不同使聲音先後到達，累積成持續雷鳴。",
+      "scope": "分布聲源的到達時間差；反射、氣象傳播與多回擊可另影響聲音，不稱此為唯一原因。",
+      "source_ids": [
+        "K6-S018"
+      ],
+      "source_locator": "主文路徑各點產聲圖說與 continuous rumble 段",
+      "premise_status": "screened",
+      "notes": "LEG-S18是同事件光聲速差，本題比較同種聲波從延伸聲源各點出發；不給雷擊安全判斷。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "持續聽到聲音不代表聲源仍持續同樣長的時間。",
+        "visual": "一條長通道放數個聲波圓，依各段到耳距離標到達序列。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "K6021",
+      "question": "雲裡的冰粒撞來撞去，怎麼能把正負電荷分到不同位置？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.noninductive_ice_collision_charge_sorting",
+      "answer_target": "冰晶與霰碰撞可轉移電荷，隨後兩者在上升流中的不同運動把電荷分成區域。",
+      "scope": "非感應充電的基本兩步；電荷符號依溫度/生長條件，微觀轉移細節仍未完全釐清。",
+      "source_ids": [
+        "K6-S019"
+      ],
+      "source_locator": "How do storms become electrified?",
+      "premise_status": "screened",
+      "notes": "N162聚焦空氣電擊穿，這裡只處理充電與分類輸送；非作者須判是否舊題已足夠涵蓋。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先交換電荷還不夠，還需要把載電粒子分開運走。",
+        "visual": "先畫碰撞後相反號標籤，再用不同升降速度分離；不固定所有霰都負電。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "K6022",
+      "question": "地面冷得下雪，為什麼頭頂還可能有雷雨式的對流？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.elevated_moist_instability_above_cold_surface",
+      "answer_target": "地面冷穩定不代表上方也穩定；冷層上方的濕空氣若被抬升並有不穩定能量，仍可形成深對流。",
+      "scope": "高架對流／雷雪的一種條件，氣塊起點在冷地面之上；不把所有雷雪說成同一觸發。",
+      "source_ids": [
+        "K6-S019",
+        "K6-S006"
+      ],
+      "source_locator": "What is thundersnow?；LFC/CAPE 的氣塊比較",
+      "premise_status": "screened",
+      "notes": "與K6007的同一地面氣塊破蓋不同；本題改變有效氣塊來源。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先問正在上升的是哪一層空氣，不能用地面溫度否決整片天空。",
+        "visual": "垂直剖面保留冷地面，改從上方濕層追蹤氣塊，與地面起點分開。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "K6023",
+      "question": "雨落進乾空氣，為什麼還可能把後面的雪送得更低？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.precipitation_evaporative_cooling_phase_feedback",
+      "answer_target": "降水蒸發取熱會冷卻未飽和層，改變之後降水穿越的溫度條件；不能只把原先剖面當不變背景。",
+      "scope": "濕球冷卻足夠且暖空氣補入未抵銷的條件；不保證所有降雨都轉雪，不從單一地面溫度報雪線。",
+      "source_ids": [
+        "K6-S005"
+      ],
+      "source_locator": "Snow versus Rain；Evaporative Cooling",
+      "premise_status": "screened",
+      "notes": "N277是雨絲蒸發不到地；N167為給定剖面下的雨冰轉換，本題新增剖面的回饋改變。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "降水不只穿過天氣，還會改變自己後面要穿過的空氣。",
+        "visual": "先畫原剖面與蒸發段，再更新剖面，追下一批冰粒的融化路程。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "K6024",
+      "question": "落下來是會結冰的小雨，就能斷定上面一定有暖層嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.freezing_drizzle_collision_coalescence_without_melting_layer",
+      "answer_target": "過冷液滴可在雲內碰併變大形成凍毛毛雨，無需先把雪在零度以上暖層融掉。",
+      "scope": "凍毛毛雨的碰併途徑與融雪途徑對照；不以降水外觀確定上空完整熱力剖面。",
+      "source_ids": [
+        "K6-S020"
+      ],
+      "source_locator": "Temperature Inversion；Collision-coalescence Process",
+      "premise_status": "screened",
+      "notes": "N167已收暖鼻融雪/再凍結，本題刻意處理無暖鼻的替代路徑；不提供航空操作。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "相同地面現象可以沿不同形成路徑出現，不能倒推唯一上空結構。",
+        "visual": "兩條並列履歷：雪融成雨再過冷；液滴一直維持液態並碰併。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "K6025",
+      "question": "雲沒有遮住太陽時，旁邊那片雲為什麼可能讓陽光更強？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.broken_cloud_3d_scattering_local_irradiance_enhancement",
+      "answer_target": "雲把光散射到鄰近仍接受直射的地面，額外漫射分量與直射疊加，可局部超過相應晴空輻照度。",
+      "scope": "破碎雲場的短時局部短波輻照度；限定可比晴空基準，不推成整日更多能量、氣溫或UV劑量必增。",
+      "source_ids": [
+        "K6-S021"
+      ],
+      "source_locator": "§2.1、§2.2.2、§2.3.1–3、§3.2 模型條件",
+      "premise_status": "screened",
+      "notes": "正式研究已讀機制與設計段，未重跑光線追蹤；不採論文極端百分比作萬用效果。 題級研究候選；原創示意尚未製作或實測，完整旁白與數字須另查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "有雲不只會做陰影，也能把別處的光重新分給這裡。",
+        "visual": "三格能量帳：直射未擋、雲增加散射、移到陰影後直射消失；不把雲畫成聚焦透鏡。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "各種霧為什麼形成？",
+      "reason": "輻射、平流、蒸氣混合與谷地冷池已收；不按地名重新拆題。",
+      "existing_ids": [
+        "N175",
+        "N176",
+        "N177",
+        "N178"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "雲為什麼不整團掉下來？",
+      "reason": "舊題已具液滴沉降與氣流平衡，不重新入庫。",
+      "existing_ids": [
+        "LEG-S42"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "為什麼水滴能在零下仍是液體？",
+      "reason": "僅以亞穩態與成核門檻重講，未找到足以區分舊核化素材的新日常因果。",
+      "existing_ids": [
+        "P232",
+        "N167"
+      ],
+      "source_ids": [
+        "K6-S005"
+      ]
+    },
+    {
+      "question": "較大的凝結核為什麼能先變成雲滴？",
+      "reason": "併入K6002的活化門檻與水汽競爭條件，不多占一個核心。",
+      "existing_ids": [],
+      "source_ids": [
+        "K6-S002"
+      ]
+    },
+    {
+      "question": "大雨滴為什麼不會把路徑上的小滴全抓走？",
+      "reason": "氣流繞行與慣性碰撞已有HEPA粒子捕捉機制；保留為D2112氣流/粒子對照候選，不另計。",
+      "existing_ids": [
+        "D2112"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "穿洞雲是不是外星飛船留下？",
+      "reason": "可接K6004冰水轉移，但現象名稱本身不夠構成另一核心；飛機觸發需另讀直接研究。",
+      "existing_ids": [],
+      "source_ids": [
+        "K6-S004"
+      ]
+    },
+    {
+      "question": "雹為什麼越滾越大、內部有透明白色層？",
+      "reason": "N158/N159已涵蓋托舉收集與凍結差異；只換雲種不收。",
+      "existing_ids": [
+        "N158",
+        "N159"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "海上雲像甜甜圈或棉被，是哪種雲？",
+      "reason": "JMA第3章開/閉胞圖樣已讀，但本輪只到循環配置與分類，未補足轉換成因，不能兩個名稱拆兩題。",
+      "existing_ids": [],
+      "source_ids": []
+    },
+    {
+      "question": "山邊飛碟雲為何不動？",
+      "reason": "山岳駐波已在N278。",
+      "existing_ids": [
+        "N278"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "天空的大光圈小彩圈為什麼不同？",
+      "reason": "N281已有冰晶折射與雲滴繞射，不再做暈/華分類題。",
+      "existing_ids": [
+        "N281"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "雷聲為什麼有時沿逆溫層傳得更遠？",
+      "reason": "聲速梯度折回與N194深海聲道相近；可作跨介質例子，不另計新核心。",
+      "existing_ids": [
+        "N194"
+      ],
+      "source_ids": [
+        "K6-S018"
+      ]
+    },
+    {
+      "question": "彩虹為什麼只有半圈、走不到盡頭？",
+      "reason": "主虹觀察錐幾何已在LEG-S23，本輪只新增次虹反射階數。",
+      "existing_ids": [
+        "LEG-S23"
+      ],
+      "source_ids": [
+        "K6-S013"
+      ]
+    },
+    {
+      "question": "每天氣壓為什麼會升降兩次？",
+      "reason": "本輪讀到的教育入口只稱太陽加熱與半日變化，尚不足解釋半日頻率，不以名詞thermal tide充當答案。",
+      "existing_ids": [],
+      "source_ids": []
+    },
+    {
+      "question": "乳狀雲是不是一定要下冰雹？",
+      "reason": "沒有取得足以支持唯一形成機制或災害推論的本輪來源；不收辨識即預報的問題。",
+      "existing_ids": [],
+      "source_ids": []
+    },
+    {
+      "question": "飛機尾跡為什麼久久不散？",
+      "reason": "N253/N254已具冰面濕度與壓力凝結區隔。",
+      "existing_ids": [
+        "N253",
+        "N254"
+      ],
+      "source_ids": []
+    },
+    {
+      "question": "雲的名字有幾種？",
+      "reason": "純分類清單，缺少觀眾追問與因果轉折；不湊段落時間。",
+      "existing_ids": [],
+      "source_ids": []
+    }
+  ]
+}

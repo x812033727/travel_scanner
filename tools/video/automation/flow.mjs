@@ -55,7 +55,7 @@ import { NARRATIVE_VARIANT } from "./flow-constants.mjs";
 import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
-import { findLeadPicture, LEAD_PICTURE_FILE, LEAD_PICTURE_LICENSE, PAD_FILTER } from "./lead-picture.mjs";
+import { BRIEF_PICTURE_FILE, BRIEF_PICTURE_LICENSE, briefPicturePrompt, drawBriefPicture, findLeadPicture, LEAD_PICTURE_FILE, LEAD_PICTURE_LICENSE, PAD_FILTER } from "./lead-picture.mjs";
 import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
 import { advanceStory, fixStoryPrompts, PILOT_SCRIPT_REFERENCES } from "./story.mjs";
 import { instructionsFor, MANGA_NARRATION_PERFORMANCE, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
@@ -68,7 +68,7 @@ import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } 
 import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
 import { flaggedLines } from "../tts/synthesis.mjs";
 import { staleTakes } from "../tts/takes.mjs";
-import { keyProblems } from "../templates/templates.mjs";
+import { aiThumbSeries, keyProblems, THUMB_AI_LAYOUT } from "../templates/templates.mjs";
 
 // Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
 // when an older request or saved state still names a shorter length.
@@ -684,10 +684,11 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
-    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
-    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in (the owner,
-    // 2026-10-31, after trying both).
-    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
+    // 奇聞檔案局 (cute-mystery) burned its zh-TW subtitles in from 2026-10-25 (kept on 2026-10-31
+    // after trying both) to 2026-11-04, when the owner took it back so the en/ja/ko CC and dubs do
+    // not fight a burned zh-TW line.
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
     // slug unless the writer named one, and the owner's licensed music file and sound-effect set
@@ -705,6 +706,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
   // A daily brief is drawn on paper with the key band, as its first episode was (owner,
   // 2026-10-30: the worker's first brief came out in the dark look and read as old).
   if (isDailyBrief({ slug })) settled.theme = "paper";
+  // Every AI video wears the AI look (owner, 2026-11-01; templates.mjs THUMB_AI_LAYOUT): its
+  // thumbnail and the B and C variants take layout "ai", whatever the writer chose. Only drafts
+  // pass through here, so no thumbnail already on YouTube is redrawn.
+  if (aiThumbSeries(settled) && settled.thumbnail?.template === "thumb") settled.thumbnail = aiThumbnail(settled.thumbnail);
   // Music is the owner's switch for every format.
   if (drama.music_enabled === false) delete settled.music;
   if (format === "drama" && series) {
@@ -735,6 +740,13 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     delete settled.runtime_spec;
   }
   return settled;
+}
+
+/** A thumbnail in the AI look: layout "ai" on it, and no other layout on its variants. */
+export function aiThumbnail(thumbnail) {
+  const own = { ...thumbnail, data: { ...(thumbnail.data ?? {}), layout: THUMB_AI_LAYOUT } };
+  if (Array.isArray(thumbnail.variants)) own.variants = thumbnail.variants.map((variant) => (variant?.data && Object.hasOwn(variant.data, "layout") ? { ...variant, data: Object.fromEntries(Object.entries(variant.data).filter(([key]) => key !== "layout")) } : variant));
+  return own;
 }
 
 function lintErrors(ctx, slug) {
@@ -1605,8 +1617,24 @@ export class Automation {
     return outcome;
   }
 
+  /**
+   * The scheduled drafts are switched off and the daily news brief is on (owner, 2026-11-01): the
+   * worker makes the briefs and nothing else. The day's request is asked for and the briefs on
+   * their way move through their stages and languages; every other video stays where it stands,
+   * and no draft, series, request or line of the owner's is taken up, as with both switches off.
+   */
+  get briefsOnly() {
+    return !this.settings.enabled && Boolean(this.settings.daily_brief?.daily_brief_enabled);
+  }
+
+  /** The videos this run may move or keep the books of: all of them, or the briefs (briefsOnly). */
+  scopedVideos() {
+    const all = automatedVideos(this.workBase);
+    return this.settings.enabled ? all : this.briefsOnly ? all.filter((state) => isDailyBrief(state)) : [];
+  }
+
   async stepUnit() {
-    if (!this.settings.enabled) return null;
+    if (!this.settings.enabled && !this.briefsOnly) return null;
     // What this unit's loop leaves alone, for resting(); a new unit starts with none.
     this.passedOver = new Set();
     // Every video on /admin/videos, the ones this worker did not make included, read afresh
@@ -1632,8 +1660,8 @@ export class Automation {
     // answer was set aside and bought again. When the site hands no line for it (the thread was
     // answered or withdrawn since) the video moves below as usual.
     let discussed = false;
-    const videos = automatedVideos(this.workBase).filter((state) => ["active", "done"].includes(state.status));
-    if (!this.secondary && videos.some((state) => state.status === "active" && this.movable(state, now) && this.discussionOpen(state.slug))) {
+    const videos = this.scopedVideos().filter((state) => ["active", "done"].includes(state.status));
+    if (!this.secondary && !this.briefsOnly && videos.some((state) => state.status === "active" && this.movable(state, now) && this.discussionOpen(state.slug))) {
       discussed = true;
       // The loop has not run yet: what it would leave alone at this reading of the clock is not
       // at rest for a line either (resting).
@@ -1641,7 +1669,7 @@ export class Automation {
       const answered = await discussStep(this);
       if (answered) return answered;
     }
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!["active", "done"].includes(listed.status)) continue;
       // A video another lane is moving, one waiting on its own (defer, a writer still running),
       // which sits this unit out so the next one moves instead of the oldest ending every round,
@@ -1701,7 +1729,8 @@ export class Automation {
         this.busy.delete(listed.slug);
       }
     }
-    if (this.secondary) return null;
+    // With the drafts off only the briefs move (briefsOnly): nothing new is planned.
+    if (this.secondary || this.briefsOnly) return null;
     // The owner's lines on a document or a screenplay are answered first, one per round
     // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for. A
     // line on the screenplay of a video that is not at rest (resting) is left for a later unit.
@@ -1764,7 +1793,8 @@ export class Automation {
    * waiting cap (room) and does not mark a draft (markDrafted): the site hands it out at a fixed
    * hour, and the scheduled tutorials keep their own interval. A brief whose slug is a video
    * already, here, in docs/videos or on the site, is left alone (the site still has it queued:
-   * nothing is planned twice), and so is a site from before the briefs (404).
+   * nothing is planned twice), and so is a site from before the briefs (404). It is asked for
+   * with the scheduled drafts switched off as well (briefsOnly): the brief has its own switch.
    */
   async dailyStep() {
     if (this.dailyAsked || !this.api.dailyNext) return null;
@@ -1782,10 +1812,13 @@ export class Automation {
     return this.draftDaily(request);
   }
 
-  /** The first lane's bookkeeping before any stage: drops, retries, pasted addresses, compilations. */
+  /**
+   * The first lane's bookkeeping before any stage: drops, retries, pasted addresses, compilations,
+   * of the videos this run may move (scopedVideos: the briefs alone while briefsOnly).
+   */
   async bookkeeping(siteBySlug, free) {
     const dropped = new Map(this.site.filter((video) => video.dropped_at).map((video) => [video.slug, video]));
-    for (const state of automatedVideos(this.workBase)) {
+    for (const state of this.scopedVideos()) {
       if (state.status !== "dropped" && dropped.has(state.slug) && free(state)) return this.drop(state, dropped.get(state.slug));
     }
     // The owner may delete a dropped video before this worker saw the drop
@@ -1795,20 +1828,20 @@ export class Automation {
     // once a run. A video from before on_site, or one a report has not saved it on yet, gets it
     // here while the list still shows the row.
     const underWay = (state) => ["active", "blocked"].includes(state.status);
-    for (const state of automatedVideos(this.workBase)) {
+    for (const state of this.scopedVideos()) {
       if (!underWay(state) || state.on_site || !siteBySlug.has(state.slug) || !free(state)) continue;
       state.on_site = true;
       saveState(this.workdir(state.slug), state);
     }
     const missing = (state) => underWay(state) && state.on_site && !siteBySlug.has(state.slug) && !this.askedAfter.has(state.slug);
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!missing(listed) || !free(listed)) continue;
       const line = await this.holding(listed.slug, (state) => (missing(state) ? this.leaveIfDeleted(state) : null));
       if (line) return line;
     }
     // A retry belongs to one site request and one local state transition. Remember the request
     // before doing any paid stage so a stale list response or a failed report cannot replay it.
-    for (const state of automatedVideos(this.workBase)) {
+    for (const state of this.scopedVideos()) {
       const siteVideo = siteBySlug.get(state.slug);
       const request = siteVideo?.retry_request_id;
       if (state.status !== "blocked" || !free(state) || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
@@ -1914,7 +1947,7 @@ export class Automation {
     // Read again once held (holding): the list outlives an earlier video's failed report, and a
     // lane that blocked a video meanwhile may have saved its own report's outcome since and let
     // the video go. Its backoff was written over, and the report sent again at once.
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!unreported(listed) || !free(listed)) continue;
       if (await this.holding(listed.slug, (state) => unreported(state) && this.reportBlocked(state))) return `${listed.slug}: blocked reason reported`;
       // Continue other videos after a failed report; a stopped video cannot starve them.
@@ -1923,7 +1956,7 @@ export class Automation {
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
     const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
     const unrecorded = (state) => ["active", "done"].includes(state.status) && uploaded.has(state.slug);
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!unrecorded(listed) || !free(listed)) continue;
       const recorded = await this.holding(listed.slug, (state) => unrecorded(state) && this.recordVideoId(state, uploaded.get(state.slug)));
       if (recorded) return recorded;
@@ -1931,7 +1964,7 @@ export class Automation {
     // A finished compilation the site has not heard about yet (the call failed on the round
     // that finished it): tell it now, or the series stays 合集正在做.
     const untold = (state) => state.status === "done" && state.compilation && !state.compilation_told;
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!untold(listed) || !free(listed)) continue;
       if (await this.holding(listed.slug, (state) => untold(state) && this.tellCompilationDone(state))) {
         return `${listed.slug}: the site now knows the compilation of ${listed.compilation.series} is done`;
@@ -2931,13 +2964,66 @@ export class Automation {
       this.log(`  ${state.slug}: no lead picture for the thumbnail (${state.lead_picture.error}); the box stays as it is`);
       return null;
     }
-    const asset = `docs/videos/${state.slug}/${LEAD_PICTURE_FILE}`;
+    const refused = await this.thumbnailPicture(state, { dir, video, file, source: `${found.image} (og:image of ${found.page})`, license: LEAD_PICTURE_LICENSE });
+    if (refused) {
+      tried({ error: refused });
+      return null;
+    }
+    tried({ image: found.image, page: found.page });
+    return `${state.slug}: the lead story's official picture (${new URL(found.image).hostname}) is in the thumbnail`;
+  }
+
+  /**
+   * A daily brief's own picture (owner, 2026-11-01): drawn by the site's image model in the
+   * brief's print look (lead-picture.mjs briefPicturePrompt), word-free, before the lead story's
+   * official picture is tried. Tried once per brief, before its frames are drawn; when the site
+   * draws none (illustrations switched off, no budget, a failed job) the official picture is next.
+   * Returns null when there is nothing to do.
+   */
+  async briefPicture(state) {
+    if (state.brief_picture) return null;
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const data = video.thumbnail?.data ?? {};
+    if (video.youtube?.video_id || video.thumbnail?.template !== "thumb" || ["asset", "capture", "shot"].some((key) => data[key] !== undefined)) return null;
+    const tried = (outcome) => {
+      state.brief_picture = { tried_at: this.ctx.now().toISOString(), ...outcome };
+      saveState(this.workdir(state.slug), state);
+    };
+    const file = path.join(dir, BRIEF_PICTURE_FILE);
+    const raw = path.join(this.workdir(state.slug), "brief-source");
+    const { prompt, negative } = briefPicturePrompt(video);
+    let drawn;
+    try {
+      drawn = await (this.ctx.drawBriefPicture ?? drawBriefPicture)(this.ctx, { slug: state.slug, prompt, negative, file: raw });
+      await (this.ctx.padPicture ?? padPicture)(raw, file, this.ctx.env);
+    } catch (error) {
+      tried({ error: String(error.message ?? error).slice(0, 300) });
+      this.log(`  ${state.slug}: no picture drawn for the thumbnail (${state.brief_picture.error}); the official picture is next`);
+      return null;
+    }
+    const model = [drawn.provider, drawn.model].filter(Boolean).join(" ") || "the site's image model";
+    const refused = await this.thumbnailPicture(state, { dir, video, file, source: `drawn by ${model} for this thumbnail (prompt sha256 ${createHash("sha256").update(prompt).digest("hex").slice(0, 16)})`, license: BRIEF_PICTURE_LICENSE });
+    if (refused) {
+      tried({ error: refused });
+      return null;
+    }
+    tried({ model, usd: drawn.usd, sha256: drawn.sha256 });
+    return `${state.slug}: a picture drawn by ${model} (about US$${drawn.usd.toFixed(2)}) is in the thumbnail`;
+  }
+
+  /**
+   * Put a picture saved as `file` beside the script into a brief's thumbnail: `data.asset`, the
+   * AI look, and its credit in assets[]. A picture lint refuses is taken out again and the reason
+   * returned; null when it is in.
+   */
+  async thumbnailPicture(state, { dir, video, file, source, license }) {
+    const data = video.thumbnail?.data ?? {};
+    const asset = `docs/videos/${state.slug}/${path.basename(file)}`;
     const pictured = {
       ...video,
-      // Layout b spreads the picture under the headline's scrim, where an announcement image's
-      // wordmark sits; the card (a) keeps all of it in the right of the frame.
-      thumbnail: { ...video.thumbnail, data: { ...data, asset, ...(data.layout === undefined ? { layout: "a" } : {}) } },
-      assets: [...(Array.isArray(video.assets) ? video.assets : []).filter((entry) => entry?.path !== asset), { path: asset, source: `${found.image} (og:image of ${found.page})`, license: LEAD_PICTURE_LICENSE }],
+      thumbnail: aiThumbnail({ ...video.thumbnail, data: { ...data, asset } }),
+      assets: [...(Array.isArray(video.assets) ? video.assets : []).filter((entry) => entry?.path !== asset), { path: asset, source, license }],
     };
     this.fence(state.slug, "saving video.json");
     writeVideo(dir, pictured);
@@ -2945,12 +3031,10 @@ export class Automation {
     if (refused.length) {
       writeVideo(dir, video);
       rmSync(file, { force: true });
-      tried({ error: `lint refused the picture: ${refused[0]}`.slice(0, 300) });
-      return null;
+      return `lint refused the picture: ${refused[0]}`.slice(0, 300);
     }
-    tried({ image: found.image, page: found.page });
     if (this.api.adoptRuns) await this.api.adoptRuns(state.slug, { artifacts: [{ path: path.join(dir, "video.json"), sha256: await sha256File(path.join(dir, "video.json")) }, { path: file, sha256: await sha256File(file) }] });
-    return `${state.slug}: the lead story's official picture (${new URL(found.image).hostname}) is in the thumbnail`;
+    return null;
   }
 
   /** The compilation of a binge series (docs/videos/BINGE.md): started from the site's job. */
@@ -3179,8 +3263,11 @@ export class Automation {
     if (isDailyBrief({ slug: state.slug })) {
       const restyled = await this.restyleDailyBrief(state);
       if (restyled) return restyled;
-      // Its thumbnail carries the lead story's official picture, put in before anything is drawn.
+      // Its thumbnail carries a picture, put in before anything is drawn: one drawn for it, or
+      // else the lead story's official picture.
       if (next === "frames rendered") {
+        const drawn = await this.briefPicture(state);
+        if (drawn) return drawn;
         const pictured = await this.leadPicture(state);
         if (pictured) return pictured;
       }

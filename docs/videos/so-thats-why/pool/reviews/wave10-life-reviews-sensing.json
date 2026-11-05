@@ -1,0 +1,686 @@
+{
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "created_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "review_role": "Independent non-author topic/source-risk/editorial review; not script blind read",
+  "reviewed_candidate_ids": [
+    "S10001",
+    "S10002",
+    "S10003",
+    "S10004",
+    "S10005",
+    "S10006",
+    "S10007",
+    "S10008",
+    "S10009",
+    "S10010",
+    "S10011",
+    "S10012",
+    "S10013"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave10-sensing.json",
+      "sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823"
+    },
+    {
+      "file": "reviews/wave10-sensing-themes.json",
+      "sha256": "5c2f8b40a83aa3a92a631ff6ea0f718b84ae7d48ab4d31cdc7f122d711d0ac60"
+    },
+    {
+      "file": "reviews/wave10-sensing-author.json",
+      "sha256": "9b93a19fad6974fe73ad9a1067bb78940b765234c92c1eb891ba69b6dfd4f6bb"
+    }
+  ],
+  "review_scope": {
+    "candidate_rows": "全13題的question/answer_target/scope/notes/payoff/visual/seconds逐列讀取",
+    "semantic_neighbours": "全13×top5=65組完整題名/答案/條件已讀；分數不決定合併",
+    "author_boundary_groups": 13,
+    "additional_corpus_search": "對基線raw全文欄位搜尋動作副本/負像/前庭/本體/電魚/反射/鬍鬚/卸載/感覺適應等，再讀命中相關動物與神經題；未宣稱全3115原題逐條查核。",
+    "sources": "8/13來源指定正文風險抽查，其他5僅元資料/定位/原檔與文本SHA；沒有逐主張核准",
+    "themes": "全3題案逐章讀；非完整旁白/試讀/圖像授權/製作核准"
+  },
+  "neighbour_input": {
+    "file": ".cache/wave10-sensing-neighbours.json",
+    "sha256": "9e861924861f4c6e1c77556ac3ee4f37c9cb5c9e32ebb7504a9705ef66a43682",
+    "draft_sha256": "ebd81b1e36f410146eb4921c43ce4e3d2aded07b3fcdef2748d580de5c8eec16",
+    "batch_sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823",
+    "raw_records": 3160,
+    "rows": 13,
+    "pairs": 65,
+    "pending_final_refresh": false
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "S10001",
+        "b": "LEG-S74",
+        "reason": "時序配對後逐步學出負像、非配對仍強反應且保留獵物式訊號，新增可塑性取得的可觀察條件；不是只把自我搔癢換成魚。題名需改為放電指令及神經反應。"
+      },
+      {
+        "a": "S10002",
+        "b": "S10001",
+        "reason": "跨未訓練速率泛化有實測，速率依賴輸入與權重限制為標明的模型；不是S10001的配對取得，也不是兩魚分頻。保留研究素材，不宜略去模型身分。"
+      },
+      {
+        "a": "S10002",
+        "b": "Z7004",
+        "reason": "跨未訓練速率泛化有實測，速率依賴輸入與權重限制為標明的模型；不是S10001的配對取得，也不是兩魚分頻。保留研究素材，不宜略去模型身分。"
+      },
+      {
+        "a": "S10003",
+        "b": "LEG-S74",
+        "reason": "命令存在仍不夠，實際頸部回饋是否匹配及轉台抵消提供條件辨別；與一般運動預測或VOR輸出不同。"
+      },
+      {
+        "a": "S10003",
+        "b": "A5021",
+        "reason": "命令存在仍不夠，實際頸部回饋是否匹配及轉台抵消提供條件辨別；與一般運動預測或VOR輸出不同。"
+      },
+      {
+        "a": "S10004",
+        "b": "LEG-S74",
+        "reason": "回授維持前進狀態、抵抗短暫不利刺激，並非取消自生感覺，也非沿體曲率傳遞。來源只核元資料與作者限制，正文本輪未另讀。"
+      },
+      {
+        "a": "S10004",
+        "b": "S10012",
+        "reason": "回授維持前進狀態、抵抗短暫不利刺激，並非取消自生感覺，也非沿體曲率傳遞。來源只核元資料與作者限制，正文本輪未另讀。"
+      },
+      {
+        "a": "S10005",
+        "b": "B2179",
+        "reason": "接觸後同週期改變取樣，非接觸鬚同步及機械耦合控制支持主動回饋；不重講毛囊轉換或海豹鬚形降振。"
+      },
+      {
+        "a": "S10005",
+        "b": "Z7006",
+        "reason": "接觸後同週期改變取樣，非接觸鬚同步及機械耦合控制支持主動回饋；不重講毛囊轉換或海豹鬚形降振。"
+      },
+      {
+        "a": "S10006",
+        "b": "S10005",
+        "reason": "固定障礙但變接觸時的足部狀態，縮步/延長步的分岔，超出一般反射增益或摸到東西。正文未另讀，沿作者受限運動學敘述。"
+      },
+      {
+        "a": "S10006",
+        "b": "A5012",
+        "reason": "固定障礙但變接觸時的足部狀態，縮步/延長步的分岔，超出一般反射增益或摸到東西。正文未另讀，沿作者受限運動學敘述。"
+      },
+      {
+        "a": "S10007",
+        "b": "Z7004",
+        "reason": "弱訊號增加額外探索與資訊/成本模型有可比的失效預測；抑制探索的比較明確在模擬內，沒有誤作活魚因果消融。保留模型研究材料，不冒稱唯一腦內算法。"
+      },
+      {
+        "a": "S10007",
+        "b": "Z7005",
+        "reason": "弱訊號增加額外探索與資訊/成本模型有可比的失效預測；抑制探索的比較明確在模擬內，沒有誤作活魚因果消融。保留模型研究材料，不冒稱唯一腦內算法。"
+      },
+      {
+        "a": "S10008",
+        "b": "A5021",
+        "reason": "輸出是頭穩定，不同頻率中兩種感官的有效性與負載恢復形成不同條件；不是半規管慣性或觸角位置的同核。正文未另讀。"
+      },
+      {
+        "a": "S10008",
+        "b": "A5017",
+        "reason": "輸出是頭穩定，不同頻率中兩種感官的有效性與負載恢復形成不同條件；不是半規管慣性或觸角位置的同核。正文未另讀。"
+      },
+      {
+        "a": "S10008",
+        "b": "S10009",
+        "reason": "輸出是頭穩定，不同頻率中兩種感官的有效性與負載恢復形成不同條件；不是半規管慣性或觸角位置的同核。正文未另讀。"
+      },
+      {
+        "a": "S10009",
+        "b": "Z7011",
+        "reason": "氣流與視流相反調觸角姿勢，與里程積分、膨脹率降落、氣味門控風向不同；不可稱觸角讀出絕對速度。正文未另讀。"
+      },
+      {
+        "a": "S10009",
+        "b": "Z7012",
+        "reason": "氣流與視流相反調觸角姿勢，與里程積分、膨脹率降落、氣味門控風向不同；不可稱觸角讀出絕對速度。正文未另讀。"
+      },
+      {
+        "a": "S10009",
+        "b": "Z7016",
+        "reason": "氣流與視流相反調觸角姿勢，與里程積分、膨脹率降落、氣味門控風向不同；不可稱觸角讀出絕對速度。正文未另讀。"
+      },
+      {
+        "a": "S10009",
+        "b": "A5006",
+        "reason": "氣流與視流相反調觸角姿勢，與里程積分、膨脹率降落、氣味門控風向不同；不可稱觸角讀出絕對速度。正文未另讀。"
+      },
+      {
+        "a": "S10010",
+        "b": "A5011",
+        "reason": "共同身體/地面造成的卸載路徑與肌電時序，區別直接跨側神經協調與單一張力感受器；必須修掉未測量的神經訊息先後順序。"
+      },
+      {
+        "a": "S10010",
+        "b": "A5007",
+        "reason": "共同身體/地面造成的卸載路徑與肌電時序，區別直接跨側神經協調與單一張力感受器；必須修掉未測量的神經訊息先後順序。"
+      },
+      {
+        "a": "S10011",
+        "b": "A5012",
+        "reason": "前後行走改變負載輸入對拮抗肌的作用符號，有直接神經輸出和感受器移除控制；不只是A5012增益大小或A5009固定交互抑制。細胞實作仍未定。"
+      },
+      {
+        "a": "S10011",
+        "b": "S10010",
+        "reason": "前後行走改變負載輸入對拮抗肌的作用符號，有直接神經輸出和感受器移除控制；不只是A5012增益大小或A5009固定交互抑制。細胞實作仍未定。"
+      },
+      {
+        "a": "S10012",
+        "b": "B2133",
+        "reason": "局部前段曲率經B型神經回饋傳到後段，區別線蟲肌層形態及同肌伸展反射；禁止沿舊文泛化全身無節律發生器。正文未另讀。"
+      },
+      {
+        "a": "S10012",
+        "b": "A5008",
+        "reason": "局部前段曲率經B型神經回饋傳到後段，區別線蟲肌層形態及同肌伸展反射；禁止沿舊文泛化全身無節律發生器。正文未另讀。"
+      },
+      {
+        "a": "S10013",
+        "b": "Z7005",
+        "reason": "氣泡往返搬動取樣介面，且不同格網排除觸鼻的對照有大學正文支持；不是一般嗅覺受器或氣體溶解分壓。限研究報告，Nature原文仍未讀。"
+      },
+      {
+        "a": "S10013",
+        "b": "P233",
+        "reason": "氣泡往返搬動取樣介面，且不同格網排除觸鼻的對照有大學正文支持；不是一般嗅覺受器或氣體溶解分壓。限研究報告，Nature原文仍未讀。"
+      },
+      {
+        "a": "S10001",
+        "b": "Z7014",
+        "reason": "電魚以命令時序學出負像；章魚是局部皮膚化學線索抑制吸附，訊號與條件均不同。"
+      },
+      {
+        "a": "S10011",
+        "b": "A5009",
+        "reason": "前後方向讓同一輸入對拮抗肌換號，不是固定抑制另一肌的同核。"
+      },
+      {
+        "a": "S10013",
+        "b": "L163",
+        "reason": "鼻前搬動氣泡取樣並排除觸覺，與氣味進黏液後受器轉換不同。"
+      },
+      {
+        "a": "S10001",
+        "b": "A5012",
+        "reason": "命令時序配對逐步形成時間特定負像，並保持外來訊號敏感度；不同於整個反射迴路的一般啟動門檻/增益調整。"
+      }
+    ]
+  },
+  "candidate_dispositions": [
+    {
+      "id": "S10001",
+      "decision": "retain_topic_level_after_resolved_correction",
+      "reason": "時序配對後逐步學出負像、非配對仍強反應且保留獵物式訊號，新增可塑性取得的可觀察條件；不是只把自我搔癢換成魚。題名需改為放電指令及神經反應。",
+      "source_body_independently_read": true,
+      "editorial_seconds": [
+        65,
+        105
+      ]
+    },
+    {
+      "id": "S10002",
+      "decision": "retain_topic_level",
+      "reason": "跨未訓練速率泛化有實測，速率依賴輸入與權重限制為標明的模型；不是S10001的配對取得，也不是兩魚分頻。保留研究素材，不宜略去模型身分。",
+      "source_body_independently_read": true,
+      "editorial_seconds": [
+        55,
+        85
+      ]
+    },
+    {
+      "id": "S10003",
+      "decision": "retain_topic_level",
+      "reason": "命令存在仍不夠，實際頸部回饋是否匹配及轉台抵消提供條件辨別；與一般運動預測或VOR輸出不同。",
+      "source_body_independently_read": true,
+      "editorial_seconds": [
+        65,
+        105
+      ]
+    },
+    {
+      "id": "S10004",
+      "decision": "retain_topic_level",
+      "reason": "回授維持前進狀態、抵抗短暫不利刺激，並非取消自生感覺，也非沿體曲率傳遞。來源只核元資料與作者限制，正文本輪未另讀。",
+      "source_body_independently_read": false,
+      "editorial_seconds": [
+        55,
+        90
+      ]
+    },
+    {
+      "id": "S10005",
+      "decision": "retain_topic_level",
+      "reason": "接觸後同週期改變取樣，非接觸鬚同步及機械耦合控制支持主動回饋；不重講毛囊轉換或海豹鬚形降振。",
+      "source_body_independently_read": true,
+      "editorial_seconds": [
+        50,
+        85
+      ]
+    },
+    {
+      "id": "S10006",
+      "decision": "retain_topic_level",
+      "reason": "固定障礙但變接觸時的足部狀態，縮步/延長步的分岔，超出一般反射增益或摸到東西。正文未另讀，沿作者受限運動學敘述。",
+      "source_body_independently_read": false,
+      "editorial_seconds": [
+        65,
+        105
+      ]
+    },
+    {
+      "id": "S10007",
+      "decision": "retain_topic_level",
+      "reason": "弱訊號增加額外探索與資訊/成本模型有可比的失效預測；抑制探索的比較明確在模擬內，沒有誤作活魚因果消融。保留模型研究材料，不冒稱唯一腦內算法。",
+      "source_body_independently_read": true,
+      "editorial_seconds": [
+        50,
+        85
+      ]
+    },
+    {
+      "id": "S10008",
+      "decision": "retain_topic_level",
+      "reason": "輸出是頭穩定，不同頻率中兩種感官的有效性與負載恢復形成不同條件；不是半規管慣性或觸角位置的同核。正文未另讀。",
+      "source_body_independently_read": false,
+      "editorial_seconds": [
+        60,
+        95
+      ]
+    },
+    {
+      "id": "S10009",
+      "decision": "retain_topic_level",
+      "reason": "氣流與視流相反調觸角姿勢，與里程積分、膨脹率降落、氣味門控風向不同；不可稱觸角讀出絕對速度。正文未另讀。",
+      "source_body_independently_read": false,
+      "editorial_seconds": [
+        55,
+        90
+      ]
+    },
+    {
+      "id": "S10010",
+      "decision": "retain_topic_level_after_resolved_correction",
+      "reason": "共同身體/地面造成的卸載路徑與肌電時序，區別直接跨側神經協調與單一張力感受器；必須修掉未測量的神經訊息先後順序。",
+      "source_body_independently_read": true,
+      "editorial_seconds": [
+        55,
+        95
+      ]
+    },
+    {
+      "id": "S10011",
+      "decision": "retain_topic_level",
+      "reason": "前後行走改變負載輸入對拮抗肌的作用符號，有直接神經輸出和感受器移除控制；不只是A5012增益大小或A5009固定交互抑制。細胞實作仍未定。",
+      "source_body_independently_read": true,
+      "editorial_seconds": [
+        55,
+        95
+      ]
+    },
+    {
+      "id": "S10012",
+      "decision": "retain_topic_level",
+      "reason": "局部前段曲率經B型神經回饋傳到後段，區別線蟲肌層形態及同肌伸展反射；禁止沿舊文泛化全身無節律發生器。正文未另讀。",
+      "source_body_independently_read": false,
+      "editorial_seconds": [
+        55,
+        90
+      ]
+    },
+    {
+      "id": "S10013",
+      "decision": "retain_topic_level",
+      "reason": "氣泡往返搬動取樣介面，且不同格網排除觸鼻的對照有大學正文支持；不是一般嗅覺受器或氣體溶解分壓。限研究報告，Nature原文仍未讀。",
+      "source_body_independently_read": true,
+      "editorial_seconds": [
+        45,
+        80
+      ]
+    }
+  ],
+  "source_audit": {
+    "total_source_metadata": 13,
+    "body_read_sources": 8,
+    "body_fresh_web_sources": [
+      "S10-S013"
+    ],
+    "body_hash_verified_copy_sources": [
+      "S10-S001",
+      "S10-S002",
+      "S10-S003",
+      "S10-S005",
+      "S10-S007",
+      "S10-S010",
+      "S10-S011"
+    ],
+    "metadata_only_sources": [
+      "S10-S004",
+      "S10-S006",
+      "S10-S008",
+      "S10-S009",
+      "S10-S012"
+    ],
+    "notes": "本輪web開S002/S007讀到元資料和引言，深入正文仍以已核SHA副本讀取；不把這兩筆算新HTTP全文閱讀。13來源原檔與抽取文本hash全部核對，hash相符本身不代表內容已讀。",
+    "readings": [
+      {
+        "source_id": "S10-S001",
+        "url": "https://www.columbia.edu/cu/neurotheory/Larry/EnikolopovNeuron18.pdf",
+        "status": "BODY_RISK_SAMPLE_READ",
+        "method": "HASH_VERIFIED_AUTHOR_PDF_REEXTRACTED",
+        "reading_scope": "PyMuPDF從已核SHA原PDF重新擷取、實讀PDF第5–7頁（printed138–140），Figures3–5文字說明；配對/非配對、暫時取消mimic及獵物式訊號比較。",
+        "limitations": "未重抓外站；未讀完整STAR Methods/AP5操弄頁，不能宣稱完整藥物因果覆核。",
+        "author_cache_file": ".cache/wave10-sensing-sources/fish2018.pdf",
+        "verified_original_sha256": "e1a4934367ba397a31886044eea618e251e14d8a7ef5c9c29668a5e252ac9994",
+        "verified_text_sha256": "6124fe5d7611c45f6476d74036057503c58e563371352b253258af74c110c658"
+      },
+      {
+        "source_id": "S10-S002",
+        "url": "https://elifesciences.org/articles/44032",
+        "status": "BODY_RISK_SAMPLE_READ",
+        "method": "HASH_VERIFIED_AUTHOR_HTML_TEXT_READ",
+        "reading_scope": "已核HTML與抽取文本SHA；實讀Results抽取段12–17、27–32，Discussion46–53；低高率、granule輸入與regularization限制。",
+        "limitations": "另web open只獨立看元資料/引言，正文主要仍為已核SHA當日副本；非新HTTP全文核對。",
+        "author_cache_file": ".cache/wave10-sensing-sources/e44032.html",
+        "verified_original_sha256": "01fdb1f3c6f5c9e20a65d1974ea07f1090df7009b04241522f79f07ad7f87e5e",
+        "verified_text_sha256": "8f00d4d1fe7116b91f5dfcdc6287bb937d18878c9b028470ca07ace33376526d"
+      },
+      {
+        "source_id": "S10-S003",
+        "url": "https://www.jneurosci.org/content/jneuro/24/9/2102.full.pdf",
+        "status": "BODY_RISK_SAMPLE_READ",
+        "method": "HASH_VERIFIED_AUTHOR_PDF_REEXTRACTED",
+        "reading_scope": "PyMuPDF重新擷取、實讀PDF第6–7頁（printed2107–2108）：Test of hypothesis D、Figures5–7、反向轉台條件及模型。",
+        "limitations": "未重抓外站，未讀整篇或全部神經元類型；門控實作不是本文已直接定位的突觸電路。",
+        "author_cache_file": ".cache/wave10-sensing-sources/vestib2004.pdf",
+        "verified_original_sha256": "97b97ece2c0abe6ddebb0090c2397b8170f01ce084b1de1db654c88509279a00",
+        "verified_text_sha256": "f9414c559b82ae493fb934d031d1a0e5f811156bb33dd23051b68bed38e4544c"
+      },
+      {
+        "source_id": "S10-S004",
+        "url": "https://elifesciences.org/articles/68848",
+        "status": "METADATA_AND_HASH_ONLY_NOT_BODY_READ",
+        "method": "檢查來源定位、原檔及文本SHA；本輪未獨立讀正文",
+        "reading_scope": "來源紀錄與題級適用限制",
+        "limitations": "不能把作者實讀算成覆核者實讀；沒有逐主張核准。",
+        "author_cache_file": ".cache/wave10-sensing-sources/e68848.html",
+        "verified_original_sha256": "9639ffcb56e53d68c0c6b3f1e42c9313f5c2a200a5514180e5df85eccf36a438",
+        "verified_text_sha256": "429c28a45aab8fd4c0aefe16f671f42512f31f184eff3510ff883cbd78e3285d"
+      },
+      {
+        "source_id": "S10-S005",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3445569/",
+        "status": "BODY_RISK_SAMPLE_READ",
+        "method": "HASH_VERIFIED_AUTHOR_XML_TEXT_READ",
+        "reading_scope": "已核XML與抽取文本SHA；實讀Discussion抽取段79–93：排除機械回彈/組織耦合、候選迴路、接觸時間與週期。",
+        "limitations": "本輪未重抓HTTP，未看補充影片；正文將不同實現機制列為候選，未強行選一條。",
+        "author_cache_file": ".cache/wave10-sensing-sources/PMC3445569.xml",
+        "verified_original_sha256": "d1deeb635282aa15e38a34d1fa150708b2e461adc527ff0b6246e23796b2bcb6",
+        "verified_text_sha256": "0f8dfa58912ab4f50abf6b04b3840697ea236674b4bb7940ac929645435032b1"
+      },
+      {
+        "source_id": "S10-S006",
+        "url": "https://elifesciences.org/articles/63596",
+        "status": "METADATA_AND_HASH_ONLY_NOT_BODY_READ",
+        "method": "檢查來源定位、原檔及文本SHA；本輪未獨立讀正文",
+        "reading_scope": "來源紀錄與題級適用限制",
+        "limitations": "不能把作者實讀算成覆核者實讀；沒有逐主張核准。",
+        "author_cache_file": ".cache/wave10-sensing-sources/e63596.html",
+        "verified_original_sha256": "645d810cc2bad2745cd7bb5ab2ea4e6fceda04b16a2bb1eab3209166da1ff9ba",
+        "verified_text_sha256": "a188d93c4edc68015b5f4194658ed5700db27a5aea959abe07e8d2644eadebc6"
+      },
+      {
+        "source_id": "S10-S007",
+        "url": "https://elifesciences.org/articles/52371",
+        "status": "BODY_RISK_SAMPLE_READ",
+        "method": "HASH_VERIFIED_AUTHOR_HTML_TEXT_READ",
+        "reading_scope": "已核HTML與抽取文本SHA；實讀Results20–22、24–33與Discussion54–58：弱訊號、探索頻帶、模擬移除、能量估算和替代解釋。",
+        "limitations": "另web只重開元資料/引言；主要正文為已核SHA當日副本。能量非實測代謝，效益因果測試在模型中。",
+        "author_cache_file": ".cache/wave10-sensing-sources/e52371.html",
+        "verified_original_sha256": "7d1ed9e24fe1b175f028fa166f13af4a9d94fb309321c53fc11516f8014ff991",
+        "verified_text_sha256": "630f2f576ec55d675ca21d150b695856f9b21024838378ea10d40287c2850c45"
+      },
+      {
+        "source_id": "S10-S008",
+        "url": "https://elifesciences.org/articles/78410",
+        "status": "METADATA_AND_HASH_ONLY_NOT_BODY_READ",
+        "method": "檢查來源定位、原檔及文本SHA；本輪未獨立讀正文",
+        "reading_scope": "來源紀錄與題級適用限制",
+        "limitations": "不能把作者實讀算成覆核者實讀；沒有逐主張核准。",
+        "author_cache_file": ".cache/wave10-sensing-sources/e78410.html",
+        "verified_original_sha256": "1f35bcc096feed6f2132b1ffc558e1ccb061aded4cd196e53f5096312652d005",
+        "verified_text_sha256": "b5cae88ba95622775c81415cd6e0ddba3d65984519be867a36d09c03e2c4d473"
+      },
+      {
+        "source_id": "S10-S009",
+        "url": "https://elifesciences.org/articles/14449",
+        "status": "METADATA_AND_HASH_ONLY_NOT_BODY_READ",
+        "method": "檢查來源定位、原檔及文本SHA；本輪未獨立讀正文",
+        "reading_scope": "來源紀錄與題級適用限制",
+        "limitations": "不能把作者實讀算成覆核者實讀；沒有逐主張核准。",
+        "author_cache_file": ".cache/wave10-sensing-sources/e14449.html",
+        "verified_original_sha256": "796c369509dc3ee91116f439e7b25159faeb09d7f508e0bd67081d7f76b09cdf",
+        "verified_text_sha256": "7d1fccb4d354a1aac63eba714ff7d4b3e1347a4bd114165e8552f0371d9a4c15"
+      },
+      {
+        "source_id": "S10-S010",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5740276/",
+        "status": "BODY_RISK_SAMPLE_READ",
+        "method": "HASH_VERIFIED_AUTHOR_XML_TEXT_READ",
+        "reading_scope": "已核XML與文本SHA；實讀段20–27、38–47：G3/G4閾值推估、卸載肌電、靜力模型、整合其他神經訊號。",
+        "limitations": "未重抓HTTP；G4運動效應在活躍動物中仍屬假設。沒有證據支持payoff所寫神經訊息發生之前。",
+        "author_cache_file": ".cache/wave10-sensing-sources/PMC5740276.xml",
+        "verified_original_sha256": "ba57370e4dd15ec237e769d6794300ce7e9368fc14e427e35d3dd9837d98f71a",
+        "verified_text_sha256": "08a6380df3b551d01e0946bc2002afa595925b570c4757bc0f94d091938e5016"
+      },
+      {
+        "source_id": "S10-S011",
+        "url": "https://www.jneurosci.org/content/jneuro/27/12/3285.full.pdf",
+        "status": "BODY_RISK_SAMPLE_READ",
+        "method": "HASH_VERIFIED_AUTHOR_PDF_REEXTRACTED",
+        "reading_scope": "PyMuPDF重新擷取、實讀PDF第6–8頁（printed3290–3292）：立即換號、感受器移除及Discussion候選機制。",
+        "limitations": "未重抓HTTP，未讀全篇；突觸前抑制/平行路徑權重未由本文分辨。",
+        "author_cache_file": ".cache/wave10-sensing-sources/stick2007.pdf",
+        "verified_original_sha256": "6beea8a3a8c9afc3e716a6f2c7575d454ed3ae47384cdddf6f8fb1cf323eb33d",
+        "verified_text_sha256": "8f30fde4370ff666d80fd2879379dfbcc5ab5f8ce7baaae45dc4dbf7b2d673ba"
+      },
+      {
+        "source_id": "S10-S012",
+        "url": "https://liulab.mie.utoronto.ca/wp-content/uploads/J26_Wen_Neuron.pdf",
+        "status": "METADATA_AND_HASH_ONLY_NOT_BODY_READ",
+        "method": "檢查來源定位、原檔及文本SHA；本輪未獨立讀正文",
+        "reading_scope": "來源紀錄與題級適用限制",
+        "limitations": "不能把作者實讀算成覆核者實讀；沒有逐主張核准。",
+        "author_cache_file": ".cache/wave10-sensing-sources/worm2012b.pdf",
+        "verified_original_sha256": "904236cba791bcb4381724530f83e4b51772f5f17c043650756e4d228155ea6c",
+        "verified_text_sha256": "cf7aa5d2745c13a2747f93fc8c78cc835664e933f4ff42d4fa6a0d9bb18dc26a"
+      },
+      {
+        "source_id": "S10-S013",
+        "url": "https://news.vanderbilt.edu/2006/12/20/scientist-discovers-some-mammals-can-smell-objects-under-water-58788/",
+        "status": "BODY_RISK_SAMPLE_READ",
+        "method": "FRESH_WEB_BODY_AND_HASH_VERIFIED_AUTHOR_COPY",
+        "reading_scope": "當日web open重新讀大學正文（約lines68–81；高速度攝影、氣泡接觸、兩種格網與水鼩延伸），並對照已核SHA文本11–21段。",
+        "limitations": "web介面無自訂UA；沒有另稱自己HTTP下載成功。原Nature全文/影片未讀，未採所有氣味物水溶的訪談概括。",
+        "author_cache_file": ".cache/wave10-sensing-sources/shrew2006.html",
+        "verified_original_sha256": "e0759a69649803e79a8593e561d29b47d8838f849053d4b967f6965ee960c991",
+        "verified_text_sha256": "5b32aa8e374f8b4046be87582600f892e9551cebd668ba5b2bec2a5505d1d18e"
+      }
+    ]
+  },
+  "required_corrections": [
+    {
+      "id": "SENSING01",
+      "severity": "required",
+      "candidate_id": "S10001",
+      "field": "question",
+      "finding": "現題名把與EOD命令配對寫成跟著魚的動作，且語法像電脈衝本身被消掉；原研究用放電受阻但持續產生命令的制備，減弱的是神經反應。",
+      "requested_change": "改為明確的放電指令與腦內反應，例如「同一電脈衝，與魚的放電指令同步時，為什麼腦內反應才逐漸減弱？」；來源/核心/秒數不需更動。",
+      "evidence": "S10-S001 PDF5–7；S10-S002 Results前段亦明述EOD blocked but motor commands continue。",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "已讀修版，題名限定放電指令配對與神經反應減弱。"
+    },
+    {
+      "id": "SENSING02",
+      "severity": "required",
+      "candidate_id": "S10010",
+      "field": "editorial.payoff",
+      "finding": "「還沒發神經訊息，受力已經改變」是原研究未量測的先後順序，也容易讀成整個過程不需要神經活動。",
+      "requested_change": "改成共同身體與地面傳遞負載變化，也能成為腳間協調的資訊來源；保留力學/EMG與模型層級，不宣稱快過神經訊息。",
+      "evidence": "S10-S010 Discussion段41–45：mechanical coupling complements neural coordination；G4直接活體運動效應仍是假設。",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "resolution": "已讀修版，payoff只述身體/地面負載資訊，刪除未證明的先後順序。"
+    }
+  ],
+  "theme_editorial": [
+    {
+      "id": "W10S-T01",
+      "status": "RETAIN_PLANNING_ONLY",
+      "seconds": 180,
+      "reason": "電魚學習時序與獼猴匹配回饋都推進自生訊號判別；物種/操作重設已明列，不能串成單一共同電路。",
+      "treatment_note": "第二章60秒處「未知突觸門控不填造」留作者備註，觀眾畫面應顯示內耳回報與中樞讀出不同；若只有限制/回顧就縮短，不補新名詞。"
+    },
+    {
+      "id": "W10S-T02",
+      "status": "RETAIN_PLANNING_ONLY",
+      "seconds": 170,
+      "reason": "先改觸覺取樣、再按身體狀態選步跡，有兩個不同判斷；鼠種和裝置重設已標。",
+      "treatment_note": "第一章後段用接觸窗延長對照整個擺動週期，不能把未定迴路當25秒的旁白內容；若畫不清就縮。"
+    },
+    {
+      "id": "W10S-T03",
+      "status": "RETAIN_PLANNING_ONLY",
+      "seconds": 170,
+      "reason": "同物種但兩研究要重設卸載/增載、量測/模型；受力傳遞與方向換號為不同條件。",
+      "treatment_note": "G3/G4及候選突觸路徑只留必要邊界；圖上明標模型，避免以整段未知名詞拖長。"
+    }
+  ],
+  "timing_validation": {
+    "status": "PASS_ISOLATED_READONLY_CHECK",
+    "basis": "180/170/170均為紙上預算，原片長未實測；開場回扣已含，兩章每核心總額應<=cap，beats間距<=45秒。",
+    "runtime": "Node v24.22.1",
+    "checks": [
+      "validateEditorial全13",
+      "validateThemes隔離選入cohort",
+      "180/170/170總章秒數",
+      "各章節拍間距<=45秒",
+      "同核心同片累計<=editorial max",
+      "開場/回扣含於章內"
+    ]
+  },
+  "conclusion": "13核心題級保留，0合併/0暫緩；2項措辭已定點讀回，6個新近鄰比較未改結論。三案180/170/170秒只屬紙上企劃；模型題與大學報告來源的限制仍生效。",
+  "restrictions": "No author/central file changes by reviewer; no script approval, production, paid media, publication or commit.",
+  "original_reviewed_files": [
+    {
+      "file": "batches/wave10-sensing.json",
+      "sha256": "3db9ccd5b3263b0edf34ab3829c0820a8b039604f30f3b22187e6764b3deec01"
+    },
+    {
+      "file": "reviews/wave10-sensing-themes.json",
+      "sha256": "5c2f8b40a83aa3a92a631ff6ea0f718b84ae7d48ab4d31cdc7f122d711d0ac60"
+    },
+    {
+      "file": "reviews/wave10-sensing-author.json",
+      "sha256": "862ff8615da78eec2ec22f298945055626e39ed9cf578c13f73271f1d6b18a0f"
+    }
+  ],
+  "targeted_readback": {
+    "status": "PASS",
+    "original_receipt_sha256": "4a8d6dbf209e97b4c566c7ec07eb8ee2c087cdd5a8e0f9ea62150f74bd5f24bc",
+    "resolved_ids": [
+      "SENSING01",
+      "SENSING02"
+    ],
+    "delta_verification": "將修版僅兩欄還原成原讀值，UTF8/LF/indent2重新序列化SHA精確等於初鎖batch；證明batch僅題名/payoff兩欄變動。",
+    "reconstructed_before_batch_sha256": "3db9ccd5b3263b0edf34ab3829c0820a8b039604f30f3b22187e6764b3deec01",
+    "theme_sha_unchanged": true,
+    "remaining_required_corrections": []
+  },
+  "first_neighbour_input": {
+    "file": ".cache/wave10-sensing-neighbours.json",
+    "sha256": "7030685c1e569a4391ec3b92e2eb4e2fe172a5a8fb8ad953bdb22db2b3d013d5",
+    "draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+    "batch_sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823",
+    "raw_records": 3160,
+    "rows": 13,
+    "pairs": 65,
+    "pending_final_refresh": true
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "ebd81b1e36f410146eb4921c43ce4e3d2aded07b3fcdef2748d580de5c8eec16",
+    "neighbours_sha256": "9e861924861f4c6e1c77556ac3ee4f37c9cb5c9e32ebb7504a9705ef66a43682",
+    "delta_file": ".cache/wave10-sensing-neighbour-delta.json",
+    "delta_sha256": "4961f3866c0b181c2ca366232c16bbbf547f04d659d2fad7e49d8a0736dc7c5b",
+    "changed_rows": [
+      "S10001",
+      "S10002",
+      "S10007",
+      "S10010"
+    ],
+    "new_pair_ids": [
+      [
+        "S10001",
+        "E2255"
+      ],
+      [
+        "S10001",
+        "A5012"
+      ],
+      [
+        "S10001",
+        "E2222"
+      ],
+      [
+        "S10001",
+        "E2160"
+      ],
+      [
+        "S10001",
+        "E2208"
+      ],
+      [
+        "S10007",
+        "Z7005"
+      ]
+    ],
+    "read_fields": [
+      "question",
+      "answer_target",
+      "scope"
+    ],
+    "judgments": [
+      "S10001與四個電子電路題不是同核；與A5012泛稱門檻/增益不同，這裡是與命令時序配對而取得的負像並保留外來反應。",
+      "S10007與Z7005不同：訊號不確定性/動作成本模型對比毛列穿流與留樣，不把所有主動感測都合一核。",
+      "S10002僅排序改變，S10010同組鄰題而editorial已定點修正；其餘9列未變。"
+    ],
+    "outcome": "No additional merge, exclusion or required correction",
+    "initial_delta_review_draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+    "sealed_input_consistency": {
+      "status": "PASS",
+      "comparison": "保留近鄰快取原換行位元組，只把目前draft_sha256值還原c371後，SHA精確等於當時已審7030685...檔；全部13列問題、答案、scope與65近鄰全文一致。",
+      "reconstructed_previous_neighbour_sha256": "7030685c1e569a4391ec3b92e2eb4e2fe172a5a8fb8ad953bdb22db2b3d013d5",
+      "final_raw_records": 3160,
+      "no_new_content_read_required": true
+    }
+  },
+  "intermediate_neighbour_input": {
+    "file": ".cache/wave10-sensing-neighbours.json",
+    "sha256": "7030685c1e569a4391ec3b92e2eb4e2fe172a5a8fb8ad953bdb22db2b3d013d5",
+    "draft_sha256": "c371efb36f63b59a4a67b5d6965f2c336a249ad553f7ad82256979c6d4d1c912",
+    "batch_sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823",
+    "raw_records": 3160,
+    "rows": 13,
+    "pairs": 65,
+    "pending_final_refresh": false
+  }
+}

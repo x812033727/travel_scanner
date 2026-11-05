@@ -1,0 +1,60 @@
+{
+  "status": "PASS_TWO_READER_SCOPED_OLD_PAIR_INTEGRATION",
+  "reviewed_on": "2026-11-01",
+  "reviewed_files": [
+    {
+      "file": "reviews/wave14-root-old-pairs.json",
+      "sha256": "9a1d840d9014b0a907d601b7811e0b2f8e7ef25cd5e15b5c03791eb59a9b22c8"
+    },
+    {
+      "file": "reviews/wave14-physics-old-pairs.json",
+      "sha256": "f09a23e9aa65ef71b45d89a16a54421d63cc1b95447930ffc45f1466ecb756a7"
+    },
+    {
+      "file": "baselines/2026-11-01-2897.json.gz",
+      "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0"
+    }
+  ],
+  "reviewed_pair_count": 6,
+  "merges": [
+    {
+      "duplicate_id": "E2049",
+      "canonical_id": "E2003",
+      "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。"
+    }
+  ],
+  "distinct": [
+    {
+      "a": "E7008",
+      "b": "E7012",
+      "reason": "前者由積高河道造成洪水尋找鄰近較低路徑、改走平面位置；後者由下切留下較高舊面。地形演化方向、觀測對象及控制不同，不是河流同一結果換問法。"
+    },
+    {
+      "a": "E7013",
+      "b": "N131",
+      "reason": "前者跨越熔融條件而出現部分熔體；後者保留固態並重組礦物。相變與固態反應不能只因岩石/熱的同詞合併。"
+    },
+    {
+      "a": "I12008",
+      "b": "I12013",
+      "reason": "前者氣膜未排空使兩液體尚未接通而回彈；後者水進入特殊微柱後毛細回推，與橫向攤開時間相配而提早脫離。是否液體接觸、儲能位置與反彈時形狀都不同。"
+    },
+    {
+      "a": "E2041",
+      "b": "E2070",
+      "reason": "前者理想串聯同Q而C不同，決定靜態分壓；後者同電荷通量I但每電荷能量交換V不同，決定功率。Q與電荷流率不是同控制量。"
+    },
+    {
+      "a": "K6025",
+      "b": "N279",
+      "reason": "前者直射仍在時的三維散射增加局部地面照度；後者地面入影而高空仍見太陽的幾何。能量重新分布與日照/陰影高度不同。"
+    }
+  ],
+  "excluded": [],
+  "decision": "Accept both readers agreement; E2049 becomes a traceable variant of E2003. No existing theme contains the retired ID. Preserve every raw record and source reference and declare the disposition for each checkpoint that selected it.",
+  "role_disclosure": "Root supplied a separate non-author comparison. pool_physics authored the historical wave2-electricity and wave12-interfaces batches and supplied a fresh reassessment, not a non-author review of those original batches.",
+  "reading_scope": "Both readers compared the six complete question/answer/scope pairs. Each freshly read specified OpenStax passages for the proposed electrostatics merge. Other five pairs were compared from persisted records, not freshly fact-checked against their full sources.",
+  "sampling_limit": "Six high-scoring selected pairs absent prior explicit distinct decisions, sampled from frozen wave13 top10. Purposive sample, not random; no full-pool uniqueness, recall, or precision claim.",
+  "remaining_blockers": [],
+  "production_ready": false
+}

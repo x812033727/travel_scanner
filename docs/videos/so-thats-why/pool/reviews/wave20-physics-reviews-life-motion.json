@@ -1,0 +1,1208 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "pool_life_tech",
+  "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "A20001",
+    "A20002",
+    "A20003"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave20-life-motion.json",
+      "sha256": "60063eae4f9885c434dfe7427c8dc921f82255365617b1c4cb460f0c11dff1f0"
+    },
+    {
+      "file": "reviews/wave20-life-motion-themes.json",
+      "sha256": "4083fff64d14695ab16f8c8597344b11e032d3520ae95e7a640e8577962c9123"
+    },
+    {
+      "file": "reviews/wave20-life-motion-author.json",
+      "sha256": "549375a8c63624512101e8cc153f60d7a60590ef1353219dfeb125f11466e355"
+    }
+  ],
+  "role_and_scope": "本reviewer未撰寫life-motion候選/題案，已逐讀3候選完整問答與scope、18退題、16作者近對、15有向top5與3題案；是題級來源/編輯覆核，不是劇本、實驗重現或製作核准。相同對照機制不因研究年份或物種換名增核。",
+  "candidate_review": [
+    {
+      "id": "A20001",
+      "decision": "retain",
+      "source_ids": [
+        "A20-S001",
+        "A20-S002",
+        "A20-S003"
+      ],
+      "reason": "污染粒子在兩接面間的歸屬是舊基本壁虎題未答的新因果；2005接觸轉移、2012受限捲趾、2015局部撤離速率合一核心而非三題。",
+      "required_boundary": "模擬趾步、活體限制與離體AFM分框；2012慣性模型非逐粒觀測，2015速度非跑速；抓力恢復不等於移粒概率。"
+    },
+    {
+      "id": "A20002",
+      "decision": "retain",
+      "source_ids": [
+        "A20-S004"
+      ],
+      "reason": "近端負重摩擦本身是P008，但末端墊剪向拉力可逆控制法向抗拔離且面積未顯著增加，提供新控制及同足分工，足以保留。",
+      "required_boundary": "只稱受控受力耦合及配置；不畫成面積擴大，也不將未知微觀機制或未量能耗當結論。"
+    },
+    {
+      "id": "A20003",
+      "decision": "retain",
+      "source_ids": [
+        "A20-S005",
+        "A20-S006"
+      ],
+      "reason": "雙固體油橋的外圍介質置換/基材控制與無氣泡反例能回答新問題；不等於一般單滴潤濕、漂浮物毛細互吸或洗劑去油。",
+      "required_boundary": "固定雄性七星瓢蟲遠端足墊；6不同組各5個體、共30，不是同足墊六次切換。油橋模型僅定性支持，保留參數假定/不良接觸排除，非所有甲蟲通則。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "A20-S001",
+      "title": "Evidence for self-cleaning in gecko setae",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC544316/",
+      "doi": "10.1073/pnas.0408304102",
+      "decision": "SUPPORTS_LIMITED_TOPIC_OR_NOT_ADDED",
+      "read_via": "author_cache_verified_body",
+      "reading_scope": "快取正文段11–15、22–24、27–28、32–33、37–39；Methods的離體陣列/單趾模擬步驟，Experimental Support和靜態接觸模型限制。",
+      "limitations": "陣列5、活趾3等受控條件，模擬步驟不含捲趾；部分極大力受皮膚失效影響，不能當自然整隻步行或全部灰塵。",
+      "author_cache_identity_verified": {
+        "file": ".cache/wave20-life-gecko2005.html",
+        "sha256": "5f9cf5ea6282304dd62c6f3101da202b7c44391bba2a95c7783258253dafebd8",
+        "text_file": ".cache/wave20-life-gecko2005.txt",
+        "text_sha256": "0b50eb92b9e22b0de3753ad597ca7742622fb9ddcf339df85186d1767ef53e4d"
+      },
+      "not_a_fresh_HTTP_claim": true,
+      "reviewer_cache": null
+    },
+    {
+      "source_id": "A20-S002",
+      "title": "Dynamic self-cleaning in gecko setae via digital hyperextension",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479896/",
+      "doi": "10.1098/rsif.2012.0108",
+      "decision": "SUPPORTS_LIMITED_TOPIC_OR_NOT_ADDED",
+      "read_via": "author_cache_verified_body",
+      "reading_scope": "快取正文段7–9、13–18、21、24、28、52–56、58；§2、§3.1/3.2、§4.2/4.3與結論。",
+      "limitations": "限制捲趾也改乾淨基準力，原文採恢復比例及共變項；沒有逐粒子追蹤。慣性彈跳為模型而非直接拍到。",
+      "author_cache_identity_verified": {
+        "file": ".cache/wave20-life-gecko2012.html",
+        "sha256": "8cb1a1902966c044811784c4a9d79f833de5f42dfcbd6594c9062cd010a07cbc",
+        "text_file": ".cache/wave20-life-gecko2012.txt",
+        "text_sha256": "59128e5a7ee1b92fa24a3093c5f28b63e95853de37deee9f9a962d3fc4ebe690"
+      },
+      "not_a_fresh_HTTP_claim": true,
+      "reviewer_cache": null
+    },
+    {
+      "source_id": "A20-S003",
+      "title": "Robust self-cleaning and micromanipulation capabilities of gecko spatulae and their bio-mimics",
+      "url": "https://www.nature.com/articles/ncomms9949",
+      "doi": "10.1038/ncomms9949",
+      "decision": "SUPPORTS_LIMITED_TOPIC_OR_NOT_ADDED",
+      "read_via": "reviewer_fresh_UA_body",
+      "reading_scope": "本reviewer HTML抽段8–23、28–35；Results速度/拾放控制、Discussion、Methods；另目讀Fig.2作者原圖快取。沒有把未顯示的24–27段列實讀。",
+      "limitations": "離體AFM單剛毛/末端、仿體和模型分層；局部法向撤離不是跑速。粒子轉移概率不是整趾恢復百分比。未讀SI全文/影片。",
+      "author_cache_identity_verified": {
+        "file": ".cache/wave20-life-gecko2015.html",
+        "sha256": "9454fcbe40081105ae455393ae837bf71880c29237a7834e1285f8d15eef2f04",
+        "text_file": ".cache/wave20-life-gecko2015.txt",
+        "text_sha256": "c5030a9d31b19f6811a1f9986982ec57943290df9b1f337bd5e9952924b3ca99"
+      },
+      "not_a_fresh_HTTP_claim": false,
+      "reviewer_cache": {
+        "file": ".cache/wave20-imaging-review-A20-S003.html",
+        "sha256": "b433b35616e3872ec74c89cf3f79ddc0b63ef024a95982b376b4236302c79993",
+        "text_file": ".cache/wave20-imaging-review-A20-S003.txt",
+        "text_sha256": "40f6be240ab93b79210af445779153670637f717855b2caaba9ea3c92391cc05",
+        "status": 200,
+        "final_url": "https://www.nature.com/articles/ncomms9949?error=cookies_not_supported&code=19394198-e0a1-499c-95f2-b6f8bcd88104"
+      }
+    },
+    {
+      "source_id": "A20-S004",
+      "title": "Functionally Different Pads on the Same Foot Allow Control of Attachment: Stick Insects Have Load-Sensitive “Heel” Pads for Friction and Shear-Sensitive “Toe” Pads for Adhesion",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3859514/",
+      "doi": "10.1371/journal.pone.0081943",
+      "decision": "SUPPORTS_LIMITED_TOPIC_OR_NOT_ADDED",
+      "read_via": "author_cache_verified_body",
+      "reading_scope": "快取正文段13、20、30–66；單墊測力、Fig.4/5/6圖說、拉力和預壓控制、討論；另目讀Fig.4接觸配置原圖。",
+      "limitations": "直立可同時接末端墊；近端低黏附非零。末端面積未顯著增大，微觀來源未定；不採未實測能耗或替代模型為定論。",
+      "author_cache_identity_verified": {
+        "file": ".cache/wave20-life-stick2013.html",
+        "sha256": "f1188cf5e9263ba08629042bb9c063a859a1bb31066821ec5baa33277d3569bc",
+        "text_file": ".cache/wave20-life-stick2013.txt",
+        "text_sha256": "f368bfe660314dca4ddf17cdb9e17aa6b898b9534027c946fd63d081a49bb71f"
+      },
+      "not_a_fresh_HTTP_claim": true,
+      "reviewer_cache": null
+    },
+    {
+      "source_id": "A20-S005",
+      "title": "Underwater locomotion in a terrestrial beetle: combination of surface de-wetting and capillary forces",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3441071/",
+      "doi": "10.1098/rspb.2012.1297",
+      "decision": "SUPPORTS_LIMITED_TOPIC_OR_NOT_ADDED",
+      "read_via": "author_cache_verified_body",
+      "reading_scope": "快取正文段11–13、16–17、24、27–28、34–36、39–41、49–50、54；葉甲接觸/牽引力及氣泡仿體的指定結果和限制。",
+      "limitations": "不同葉甲物種與整體牽引試驗，不與2021固定瓢蟲足墊混作同一實驗；界面活性劑也會改其他界面，不能作普遍氣泡必要性的乾淨控制。",
+      "author_cache_identity_verified": {
+        "file": ".cache/wave20-life-beetle2012.html",
+        "sha256": "78dde83e62951eeadc1d4c3d22ca39afbba8496b013f943d3498970669765b75",
+        "text_file": ".cache/wave20-life-beetle2012.txt",
+        "text_sha256": "bd008875f5ff915c2a71d3190a6c2b687151fd5ba529ca8e5f2442b297778345"
+      },
+      "not_a_fresh_HTTP_claim": true,
+      "reviewer_cache": null
+    },
+    {
+      "source_id": "A20-S006",
+      "title": "Wetting of the tarsal adhesive fluid determines underwater adhesion in ladybird beetles",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML",
+      "doi": "10.1242/jeb.242852",
+      "decision": "SUPPORTS_LIMITED_TOPIC_OR_NOT_ADDED",
+      "read_via": "reviewer_fresh_UA_body",
+      "reading_scope": "本reviewer Europe PMC XML抽段4–59，含Adhesion test/Data analysis、Experimental results、液橋模型文字及Discussion；公式排版未完全重建，不聲稱驗算模型。",
+      "limitations": "六組各5不同雄蟲、共30；每隻5次取平均。約25%無氣泡水下不良接觸排除。模型借液性參數，PFOTS預測增強未完全量到；只取定性趨勢，不將模型橋形當顯微影像。",
+      "author_cache_identity_verified": {
+        "file": ".cache/wave20-life-ladybird2021.xml",
+        "sha256": "5840eb52495032d6487197c25ecc8bee2e7574fc8bc9796a62e4a24b0d4c306b",
+        "text_file": ".cache/wave20-life-ladybird2021.txt",
+        "text_sha256": "b8754acc4e30ee5061e00daffe6c2fddae5fe8fcaa7e792d22f77ac022b9b858"
+      },
+      "not_a_fresh_HTTP_claim": false,
+      "reviewer_cache": {
+        "file": ".cache/wave20-imaging-review-A20-S006.xml",
+        "sha256": "5840eb52495032d6487197c25ecc8bee2e7574fc8bc9796a62e4a24b0d4c306b",
+        "text_file": ".cache/wave20-imaging-review-A20-S006.txt",
+        "text_sha256": "8a0a6b300c4bbc65d57720f717b162fe2c9281598a189169f8013baa0307523b",
+        "status": 200,
+        "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML"
+      }
+    },
+    {
+      "source_id": "A20-S007",
+      "title": "Sticking under Wet Conditions: The Remarkable Attachment Abilities of the Torrent Frog, Staurois guttatus",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3783468/fullTextXML",
+      "doi": "10.1371/journal.pone.0073810",
+      "decision": "SUPPORTS_LIMITED_TOPIC_OR_NOT_ADDED",
+      "read_via": "author_cache_verified_body_NA_only",
+      "reading_scope": "退題only；XML快取段27、29–33、35–36、41–43，Results濕度/粗糙度、乾燥平滑面接觸面積及Discussion相關限制。",
+      "limitations": "直接支持A20-NA015退題：乾燥平滑面的身體接觸觀察不能移植為濕粗糙面的已證因果。未讀全部SEM/SI。",
+      "author_cache_identity_verified": {
+        "file": ".cache/wave20-life-frog2013.xml",
+        "sha256": "3c5594622106a1a9c60ce90ec730a3a355d5ddc88205a3df6a1092666050a966",
+        "text_file": ".cache/wave20-life-frog2013.txt",
+        "text_sha256": "5d3f410dba5722b9a133ba2c3ba3fa7ed1b6281af652f185db78e983cb404d7d"
+      },
+      "not_a_fresh_HTTP_claim": true,
+      "reviewer_cache": null
+    },
+    {
+      "source_id": "A20-S008",
+      "title": "Self-Drying: A Gecko's Innate Ability to Remove Water from Wet Toe Pads",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4108337/fullTextXML",
+      "doi": "10.1371/journal.pone.0101885",
+      "decision": "SUPPORTS_LIMITED_TOPIC_OR_NOT_ADDED",
+      "read_via": "author_cache_verified_body_NA_only",
+      "reading_scope": "退題only；XML快取段13、15–16、18–19、21、24；Results/Discussion主動與被動恢復、玻璃/PMMA以及排液假說。",
+      "limitations": "直接支持A20-NA016退題：主動恢復較快未把蒸發、擠水與基材作用拆開，通道模型不是直接流動證據。",
+      "author_cache_identity_verified": {
+        "file": ".cache/wave20-life-geckodry2014.xml",
+        "sha256": "32bae4c5f124d6a9c2e70cd0592c4de7a03183e34cc51f2ecd126b096e84ed01",
+        "text_file": ".cache/wave20-life-geckodry2014.txt",
+        "text_sha256": "08584dbdde849f97f548683cdb3f817fb4e15bee8de73c83f4ebde3769487033"
+      },
+      "not_a_fresh_HTTP_claim": true,
+      "reviewer_cache": null
+    }
+  ],
+  "source_reading_summary": {
+    "sources_with_specified_body_independently_read": 8,
+    "candidate_sources": 6,
+    "not_added_only_sources": 2,
+    "reviewer_fresh_HTTP_real_body": 2,
+    "author_same_day_cache_used_as_body": 6,
+    "figures_visually_read": 2,
+    "whole_articles_claimed_fully_factchecked": 0,
+    "note": "cache為作者當日取得，本reviewer重新核SHA並自行讀指定正文；不冒稱6份都為reviewer重新HTTP。"
+  },
+  "visual_readings": [
+    {
+      "file": ".cache/wave20-life-gecko2015-fig2.jpg",
+      "sha256": "11cdeb4734c8ba924ab9d6001ac7908eba28e32c3260c3b5f7805c88130268a9",
+      "scope": "Fig.2速度/拾放與力曲線軸，確認法向與剪向、概率非整趾恢復率。"
+    },
+    {
+      "file": ".cache/wave20-life-stick2013-fig4.jpg",
+      "sha256": "5410bee84c9e8a8cf67a2249e203a52b2486a5afc723e07dcd52789ade885466",
+      "scope": "Fig.4直立近端及可見末端接觸，倒掛末端接觸；不是六組瓢蟲原圖。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "source_id": "A20-S001",
+      "route": "reviewer fresh specified-UA urllib",
+      "http_status": 200,
+      "result": "CAPTCHA/0正文，並非成功讀文",
+      "evidence": {
+        "file": ".cache/wave20-imaging-review-life-fetch.json",
+        "sha256": "664830984358749127d8f39fdb74d94c2bc2576813300bf0a1c50acec1aaf0e1"
+      },
+      "fallback": "verified author body cache"
+    },
+    {
+      "source_id": "A20-S002",
+      "route": "reviewer fresh specified-UA urllib",
+      "http_status": 200,
+      "result": "CAPTCHA/0正文，並非成功讀文",
+      "evidence": {
+        "file": ".cache/wave20-imaging-review-life-fetch.json",
+        "sha256": "664830984358749127d8f39fdb74d94c2bc2576813300bf0a1c50acec1aaf0e1"
+      },
+      "fallback": "verified author body cache"
+    },
+    {
+      "source_id": "A20-S004",
+      "route": "reviewer fresh specified-UA urllib",
+      "http_status": 200,
+      "result": "CAPTCHA/0正文，並非成功讀文",
+      "evidence": {
+        "file": ".cache/wave20-imaging-review-life-fetch.json",
+        "sha256": "664830984358749127d8f39fdb74d94c2bc2576813300bf0a1c50acec1aaf0e1"
+      },
+      "fallback": "verified author body cache"
+    },
+    {
+      "source_id": "A20-S005",
+      "route": "reviewer fresh specified-UA urllib",
+      "http_status": 200,
+      "result": "CAPTCHA/0正文，並非成功讀文",
+      "evidence": {
+        "file": ".cache/wave20-imaging-review-life-fetch.json",
+        "sha256": "664830984358749127d8f39fdb74d94c2bc2576813300bf0a1c50acec1aaf0e1"
+      },
+      "fallback": "verified author body cache"
+    },
+    {
+      "source_id": "A20-S003",
+      "route": "web open",
+      "result": "500/redirect失敗；改正常UA HTTP取得真正文，URL帶cookie參數但178段包含題名/DOI/方法，已檢查非captcha。"
+    },
+    {
+      "source_id": "A20-S004",
+      "route": "web open",
+      "result": "驗證頁，不列正文；用已核作者副本。"
+    }
+  ],
+  "source_identity_review": {
+    "decision": "NO_INDEPENDENT_EVIDENCE_INFLATION",
+    "notes": [
+      "S001/2/3為2005/2012/2015不同研究，但針對同一候選不拆成三核心。",
+      "期刊、PMC或Europe PMC XML是同一論文的載體，不當獨立重複試驗。",
+      "S005葉甲2012和S006瓢蟲2021是不同物種與力測量條件，只作明示重設的比較；不說2021重做了完全相同實驗。",
+      "S007/8僅支持退題，未用於候選新增核心。",
+      "root的URL/title/DOI精確比對非全文去重保證；本reviewer以實際問答與條件比較判斷。"
+    ]
+  },
+  "top5_review": [
+    {
+      "a": "A20001",
+      "b": "A12010",
+      "cosine": 0.761611,
+      "decision": "distinct",
+      "reason": "蟶子以縮殼改土應力、局部孔隙流體化便於鑽入；本題是灰粒在剛毛與基材兩接面間轉移及速率改變去向，沒有土體鬆化。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20001",
+      "b": "E9008",
+      "cosine": 0.700861,
+      "decision": "distinct",
+      "reason": "花粉失水時柔軟溝口內摺，改變殼形與體積；沒有污染粒子或兩接面拾放競爭。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20001",
+      "b": "F14007",
+      "cosine": 0.69313,
+      "decision": "distinct",
+      "reason": "舊題由磨屑生成、移除和黏回改變粗糙度；新題預先加入外來微球，觀察污染轉移及抓力恢復，非磨耗造成表面演化。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20001",
+      "b": "F14004",
+      "cosine": 0.689747,
+      "decision": "distinct",
+      "reason": "舊題是黏著凸點塑性抹平或斷裂成屑的尺寸競爭；新題不生成磨屑，而是既有粒子的拾取/釋放。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20001",
+      "b": "E7010",
+      "cosine": 0.689605,
+      "decision": "distinct",
+      "reason": "沙漠石層下累積風塵與母材分離是地形演化；沒有兩個黏附接面的動態釋放。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "S10011",
+      "cosine": 0.74776,
+      "decision": "distinct",
+      "reason": "舊題是前進/後退改變負載反射的神經輸出符號；新題為固定單墊受控力測量及兩套墊的被動受力反應，不是反射換號。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "X5003",
+      "cosine": 0.734726,
+      "decision": "distinct",
+      "reason": "針織線圈摩擦的加卸載耗能回圈，不等於末端墊沿面拉力調整法向抗拔離及雙墊分工。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "S10010",
+      "cosine": 0.732814,
+      "decision": "distinct",
+      "reason": "舊題腳間分擔負載使另一腳卸載，接到腿相位控制；新題看個別墊的法向/剪向耦合，沒有腿間時序因果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "P008",
+      "cosine": 0.70973,
+      "decision": "distinct",
+      "reason": "近端墊壓緊增加摩擦本身確為舊核；保留新題依賴末端墊沿面拉力可逆控制垂直抗拔離、且面積未顯著增加的第二控制，不能刪去後仍另算。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "J6020",
+      "cosine": 0.692793,
+      "decision": "distinct",
+      "reason": "卡扣是彈性臂越過不對稱斜面與倒鉤；新題無倒鉤，測得的是表面力分量的耦合和配置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "H10004",
+      "cosine": 0.785213,
+      "decision": "distinct",
+      "reason": "乳膠漆失水後粒子壓合和聚合物互穿形成固態膜；新題的油液橋保持流體，外圍空氣換水及去泡控制改變抗拔離。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "I12014",
+      "cosine": 0.769646,
+      "decision": "distinct",
+      "reason": "液態彈珠蒸發後顆粒殼的擁擠、屈曲與逸粒；沒有兩固體間液橋傳遞法向力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "I12011",
+      "cosine": 0.763403,
+      "decision": "distinct",
+      "reason": "泡膜兩側氣體擴散造成泡沫粗化；本題無泡條件仍附著，機制不是氣體轉移或泡尺寸變化。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "D2200",
+      "cosine": 0.752044,
+      "decision": "distinct",
+      "reason": "食品乾燥結殼形成輸運阻力；新題不靠乾燥或固化形成附著。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "I12002",
+      "cosine": 0.748315,
+      "decision": "distinct",
+      "reason": "Cassie/Wenzel轉換是在粗糙表面水侵入及氣層失穩；新題無氣泡也可有兩固體間油橋，控制是介質與基材潤濕對拔離，不是同一侵入能障。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "A20001",
+      "b": "LEG-S59",
+      "decision": "distinct",
+      "reason": "舊題解乾淨剛毛接觸與角度剝離；新題多了第三者灰粒與兩接面競爭，且撤離速率能反轉粒子留下的一側。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20001",
+      "b": "D2183",
+      "decision": "distinct",
+      "reason": "膠帶整面剪切與邊緣逐次剝離的載荷路徑，不能單獨回答污染粒子留在哪個表面及速率效應。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20001",
+      "b": "F14004",
+      "decision": "distinct",
+      "reason": "舊題是黏著凸點塑性抹平或斷裂成屑的尺寸競爭；新題不生成磨屑，而是既有粒子的拾取/釋放。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20001",
+      "b": "H10002",
+      "decision": "distinct",
+      "reason": "洗劑從邊緣入侵油脂膜、降低凝聚並剝落；新題是乾式接觸下粒子的轉移，無溶液或乳化侵蝕。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "P008",
+      "decision": "distinct",
+      "reason": "近端墊壓緊增加摩擦本身確為舊核；保留新題依賴末端墊沿面拉力可逆控制垂直抗拔離、且面積未顯著增加的第二控制，不能刪去後仍另算。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "LEG-S59",
+      "decision": "distinct",
+      "reason": "舊壁虎題是細毛接觸與角度剝離；新題必須保留雙墊的不同力分量響應和卸載控制，不能只換物種。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "D2183",
+      "decision": "distinct",
+      "reason": "不是僅比較同一黏片兩個失效方向；先設定沿面拉力，再量垂直拔力並卸載，顯示可逆的受力耦合及不同墊分工。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "A12006",
+      "decision": "distinct",
+      "reason": "蟑螂在低縫中腳摩擦助推與身體拖曳競爭；新題不比較速度，為同足不同墊的受力響應。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20002",
+      "b": "F14006",
+      "decision": "distinct",
+      "reason": "凝膠排水時間與停留時間導致接觸區變形；新題沒有排水模型證據，末端投影面積也未顯著增加，不能借用該機制。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "P053",
+      "decision": "distinct",
+      "reason": "一般單滴在單一固體攤平尚不能回答油橋跨兩固體時、外圍介質置換與去泡後的法向拔離控制；新增可比較條件足夠，不只是換動物。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "P054",
+      "decision": "distinct",
+      "reason": "杯壁彎月面的形狀/接觸角，不包含受限液橋傳力和空氣/水置換的附著控制。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "I12003",
+      "decision": "distinct",
+      "reason": "浮物在自由液面上的側向相互作用；新題是固定足墊與基材間油橋的法向拔離，無浮物集合。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "H10001",
+      "decision": "distinct",
+      "reason": "舊題洗劑使單固體油滴捲起或頸斷殘留；新題無洗劑，油橋連兩個固體而承受拔離，且無氣泡控制分開了另一解釋。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "LEG-S53",
+      "decision": "distinct",
+      "reason": "兩親分子/微胞去油和沖洗；新題沒有清潔劑，油性液體反而提供連接，不可把氣泡消失當油被洗掉。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "E9007",
+      "decision": "distinct",
+      "reason": "種子多醣黏液吸水展開與乾濕歷程形成錨固；新題非多醣膨脹，為油橋周圍介質改變。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    },
+    {
+      "a": "A20003",
+      "b": "B16005",
+      "decision": "distinct",
+      "reason": "蛛絲液滴中屈曲盤繞儲存鬆弛長度；新題不存纖維長度，只比較兩固體間液橋的抗拔離。",
+      "read_fields": [
+        "a_snapshot.question",
+        "a_snapshot.answer_target",
+        "a_snapshot.scope",
+        "b_snapshot.question",
+        "b_snapshot.answer_target",
+        "b_snapshot.scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "A20001",
+        "b": "LEG-S59",
+        "reason": "舊題解乾淨剛毛接觸與角度剝離；新題多了第三者灰粒與兩接面競爭，且撤離速率能反轉粒子留下的一側。"
+      },
+      {
+        "a": "A20001",
+        "b": "D2183",
+        "reason": "膠帶整面剪切與邊緣逐次剝離的載荷路徑，不能單獨回答污染粒子留在哪個表面及速率效應。"
+      },
+      {
+        "a": "A20001",
+        "b": "F14004",
+        "reason": "舊題是黏著凸點塑性抹平或斷裂成屑的尺寸競爭；新題不生成磨屑，而是既有粒子的拾取/釋放。"
+      },
+      {
+        "a": "A20001",
+        "b": "H10002",
+        "reason": "洗劑從邊緣入侵油脂膜、降低凝聚並剝落；新題是乾式接觸下粒子的轉移，無溶液或乳化侵蝕。"
+      },
+      {
+        "a": "A20002",
+        "b": "P008",
+        "reason": "近端墊壓緊增加摩擦本身確為舊核；保留新題依賴末端墊沿面拉力可逆控制垂直抗拔離、且面積未顯著增加的第二控制，不能刪去後仍另算。"
+      },
+      {
+        "a": "A20002",
+        "b": "LEG-S59",
+        "reason": "舊壁虎題是細毛接觸與角度剝離；新題必須保留雙墊的不同力分量響應和卸載控制，不能只換物種。"
+      },
+      {
+        "a": "A20002",
+        "b": "D2183",
+        "reason": "不是僅比較同一黏片兩個失效方向；先設定沿面拉力，再量垂直拔力並卸載，顯示可逆的受力耦合及不同墊分工。"
+      },
+      {
+        "a": "A20002",
+        "b": "A12006",
+        "reason": "蟑螂在低縫中腳摩擦助推與身體拖曳競爭；新題不比較速度，為同足不同墊的受力響應。"
+      },
+      {
+        "a": "A20002",
+        "b": "F14006",
+        "reason": "凝膠排水時間與停留時間導致接觸區變形；新題沒有排水模型證據，末端投影面積也未顯著增加，不能借用該機制。"
+      },
+      {
+        "a": "A20003",
+        "b": "P053",
+        "reason": "一般單滴在單一固體攤平尚不能回答油橋跨兩固體時、外圍介質置換與去泡後的法向拔離控制；新增可比較條件足夠，不只是換動物。"
+      },
+      {
+        "a": "A20003",
+        "b": "P054",
+        "reason": "杯壁彎月面的形狀/接觸角，不包含受限液橋傳力和空氣/水置換的附著控制。"
+      },
+      {
+        "a": "A20003",
+        "b": "I12003",
+        "reason": "浮物在自由液面上的側向相互作用；新題是固定足墊與基材間油橋的法向拔離，無浮物集合。"
+      },
+      {
+        "a": "A20003",
+        "b": "H10001",
+        "reason": "舊題洗劑使單固體油滴捲起或頸斷殘留；新題無洗劑，油橋連兩個固體而承受拔離，且無氣泡控制分開了另一解釋。"
+      },
+      {
+        "a": "A20003",
+        "b": "LEG-S53",
+        "reason": "兩親分子/微胞去油和沖洗；新題沒有清潔劑，油性液體反而提供連接，不可把氣泡消失當油被洗掉。"
+      },
+      {
+        "a": "A20003",
+        "b": "E9007",
+        "reason": "種子多醣黏液吸水展開與乾濕歷程形成錨固；新題非多醣膨脹，為油橋周圍介質改變。"
+      },
+      {
+        "a": "A20003",
+        "b": "B16005",
+        "reason": "蛛絲液滴中屈曲盤繞儲存鬆弛長度；新題不存纖維長度，只比較兩固體間液橋的抗拔離。"
+      },
+      {
+        "a": "A20001",
+        "b": "A12010",
+        "reason": "蟶子以縮殼改土應力、局部孔隙流體化便於鑽入；本題是灰粒在剛毛與基材兩接面間轉移及速率改變去向，沒有土體鬆化。"
+      },
+      {
+        "a": "A20001",
+        "b": "E9008",
+        "reason": "花粉失水時柔軟溝口內摺，改變殼形與體積；沒有污染粒子或兩接面拾放競爭。"
+      },
+      {
+        "a": "A20001",
+        "b": "F14007",
+        "reason": "舊題由磨屑生成、移除和黏回改變粗糙度；新題預先加入外來微球，觀察污染轉移及抓力恢復，非磨耗造成表面演化。"
+      },
+      {
+        "a": "A20001",
+        "b": "E7010",
+        "reason": "沙漠石層下累積風塵與母材分離是地形演化；沒有兩個黏附接面的動態釋放。"
+      },
+      {
+        "a": "A20002",
+        "b": "S10011",
+        "reason": "舊題是前進/後退改變負載反射的神經輸出符號；新題為固定單墊受控力測量及兩套墊的被動受力反應，不是反射換號。"
+      },
+      {
+        "a": "A20002",
+        "b": "X5003",
+        "reason": "針織線圈摩擦的加卸載耗能回圈，不等於末端墊沿面拉力調整法向抗拔離及雙墊分工。"
+      },
+      {
+        "a": "A20002",
+        "b": "S10010",
+        "reason": "舊題腳間分擔負載使另一腳卸載，接到腿相位控制；新題看個別墊的法向/剪向耦合，沒有腿間時序因果。"
+      },
+      {
+        "a": "A20002",
+        "b": "J6020",
+        "reason": "卡扣是彈性臂越過不對稱斜面與倒鉤；新題無倒鉤，測得的是表面力分量的耦合和配置。"
+      },
+      {
+        "a": "A20003",
+        "b": "H10004",
+        "reason": "乳膠漆失水後粒子壓合和聚合物互穿形成固態膜；新題的油液橋保持流體，外圍空氣換水及去泡控制改變抗拔離。"
+      },
+      {
+        "a": "A20003",
+        "b": "I12014",
+        "reason": "液態彈珠蒸發後顆粒殼的擁擠、屈曲與逸粒；沒有兩固體間液橋傳遞法向力。"
+      },
+      {
+        "a": "A20003",
+        "b": "I12011",
+        "reason": "泡膜兩側氣體擴散造成泡沫粗化；本題無泡條件仍附著，機制不是氣體轉移或泡尺寸變化。"
+      },
+      {
+        "a": "A20003",
+        "b": "D2200",
+        "reason": "食品乾燥結殼形成輸運阻力；新題不靠乾燥或固化形成附著。"
+      },
+      {
+        "a": "A20003",
+        "b": "I12002",
+        "reason": "Cassie/Wenzel轉換是在粗糙表面水侵入及氣層失穩；新題無氣泡也可有兩固體間油橋，控制是介質與基材潤濕對拔離，不是同一侵入能障。"
+      }
+    ]
+  },
+  "not_added_review": {
+    "count": 18,
+    "rows": [
+      {
+        "id": "A20-NA001",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "LEG-S59"
+        ],
+        "source_ids": [],
+        "reason": "基本剛毛附著及角度剝離由LEG-S59涵蓋，未新增證據不重收。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA002",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "P008"
+        ],
+        "source_ids": [],
+        "reason": "正向力增加摩擦上限為P008同核；雙墊的第二控制另外評A20002。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA003",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "D2183",
+          "LEG-S59"
+        ],
+        "source_ids": [],
+        "reason": "整面剪切/邊緣剝離舊載荷路徑已收，不以趾頭代替膠帶重算。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA004",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "P053"
+        ],
+        "source_ids": [],
+        "reason": "P053已涵蓋一般潤濕；單滴換表面不足增核。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA005",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "I12001"
+        ],
+        "source_ids": [],
+        "reason": "I12001接觸線滯後與傾斜/加液歷史已收，不改名為腳底液體。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA006",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "I12003"
+        ],
+        "source_ids": [],
+        "reason": "I12003自由液面相互作用已收，換成小蟲仍是舊核心。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA007",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "A12006"
+        ],
+        "source_ids": [],
+        "reason": "A12006腳推進與身體拖曳競爭已收，換縫高不重算。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA008",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "B2104"
+        ],
+        "source_ids": [],
+        "reason": "B2104已是水生昆蟲扁平構造/爪的抗流一般題；只同意不加泛題，未替舊題重查生物來源。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA009",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "E9007"
+        ],
+        "source_ids": [],
+        "reason": "E9007多醣黏液吸水和乾濕歷程已收，不因更換生物重算。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA010",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "A12007"
+        ],
+        "source_ids": [],
+        "reason": "A12007翼降能障/腿擾動促側滾已收，同意不重收。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA011",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "A20001"
+        ],
+        "source_ids": [
+          "A20-S001",
+          "A20-S002",
+          "A20-S003"
+        ],
+        "reason": "三篇自清研究作同一污染去向的逐層控制，不拆三個機制數。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA012",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "A20001"
+        ],
+        "source_ids": [
+          "A20-S001",
+          "A20-S002",
+          "A20-S003"
+        ],
+        "reason": "S001–003不支持所有灰無接觸必被甩飛；模型與接觸轉移需並列。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA013",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "A20002"
+        ],
+        "source_ids": [
+          "A20-S004"
+        ],
+        "reason": "S004實際投影面積結果不支持拉力必然增加面積；退掉假前提。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA014",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [
+          "A20003"
+        ],
+        "source_ids": [
+          "A20-S005",
+          "A20-S006"
+        ],
+        "reason": "S006無氣泡對照否定普遍必要性；2012不同葉甲不能改寫成所有甲蟲。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA015",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [],
+        "source_ids": [
+          "A20-S007"
+        ],
+        "reason": "已獨立讀S007指定正文；濕粗糙面優勢與乾燥平滑面接觸策略不是同條件因果證明，維持暫緩。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA016",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [],
+        "source_ids": [
+          "A20-S008"
+        ],
+        "reason": "已獨立讀S008指定正文；活動恢復與排水通道機制尚未分離，維持暫緩。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA017",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [],
+        "source_ids": [],
+        "reason": "只搜尋/摘要且無指定正文；同意維持未加入，不對尾巴機制本身給支持結論。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      },
+      {
+        "id": "A20-NA018",
+        "decision": "AGREE_NOT_ADDED",
+        "existing_ids": [],
+        "source_ids": [],
+        "reason": "只搜尋/摘要且未讀消融/能量正文；同意維持未加入，不把未查研究當成立。",
+        "reentry_condition_review": "原作者所列補控制/正文或不同核心條件保留；本次不自動重入。"
+      }
+    ]
+  },
+  "theme_review": [
+    {
+      "id": "W20A-T01",
+      "decision": "RETAIN_PAPER_PLAN",
+      "body_seconds": 130,
+      "chapter_seconds": [
+        65,
+        65
+      ],
+      "core_cumulative_seconds": {
+        "A20001": 130
+      },
+      "core_caps": {
+        "A20001": 150
+      },
+      "max_beat_seconds": 35,
+      "drop_if_readback": "若單剛毛的慢/快反轉無法畫清，撤130秒題案而非加壁虎外觀；若只做2005接觸機制，另寫65秒素材段，不保留本案動作追問。",
+      "budget_check": "PASS; 含開場/轉場/回扣，非試讀結果。",
+      "editorial_reason": "污染去向→動作對照→局部撤離速率，三研究清楚換場。最後方法限制改圖註，沒有研究年代清單；若慢/快去向圖不成立則撤案。"
+    },
+    {
+      "id": "W20A-T02",
+      "decision": "RETAIN_PAPER_PLAN",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "core_cumulative_seconds": {
+        "A20002": 110
+      },
+      "core_caps": {
+        "A20002": 125
+      },
+      "max_beat_seconds": 35,
+      "drop_if_readback": "若無法分清沿面力和垂直拔力，撤110秒題案；只剩近端負重摩擦時併P008，不用單核雙章形式硬撐。",
+      "budget_check": "PASS; 含開場/轉場/回扣，非試讀結果。",
+      "editorial_reason": "姿態配置→近端承重摩擦→末端剪向拉/法向拔/卸載三力控制。有明確新理解，不把微觀未知硬補成面積放大；刪末端控制即併P008。"
+    },
+    {
+      "id": "W20A-T03",
+      "decision": "RETAIN_PAPER_PLAN",
+      "body_seconds": 95,
+      "chapter_seconds": [
+        50,
+        45
+      ],
+      "core_cumulative_seconds": {
+        "A20003": 95
+      },
+      "core_caps": {
+        "A20003": 135
+      },
+      "max_beat_seconds": 35,
+      "drop_if_readback": "若非作者判為P053/H10001同核，撤95秒獨立題案並保留研究作舊題變體；若油橋模型只能講名詞而無介質對照，也撤，不用甲蟲百科補。",
+      "budget_check": "PASS; 含開場/轉場/回扣，非試讀結果。",
+      "editorial_reason": "先看去泡反例再比較基材，接到外圍介質與油橋模型。六組不同個體已註；不以模型限制朗讀補時。若只剩液橋名詞而無介質對照，撤案。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "LIFE20-01",
+      "status": "TARGETED_READBACK_PASS",
+      "issue": "T03第二章20秒模型假設朗讀偏鬆。",
+      "change": "root先要求20→5，全120→105；模型與實驗界線保留圖註及evidence_gaps。"
+    },
+    {
+      "id": "LIFE20-02",
+      "status": "TARGETED_READBACK_PASS",
+      "issue": "T01方法限制與T02回顧可刪重述。",
+      "change": "T01第二章15→5，全140→130；T02末10→5，全115→110；不補新內容。"
+    },
+    {
+      "id": "LIFE20-03",
+      "status": "TARGETED_READBACK_PASS",
+      "issue": "T03第一章15秒方法/轉場仍偏長。",
+      "change": "15→5，全105→95；六條件30秒控制與35秒油橋模型不削。"
+    },
+    {
+      "id": "LIFE20-04",
+      "status": "TARGETED_READBACK_PASS",
+      "issue": "六格控制容易被畫成同一足墊逐一切換條件。",
+      "change": "A20003 notes/visual與T03畫面明示同物種不同個體六組，各5隻、共30；每隻5次測量取平均不能當30次同個體。候選問答未變。"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave20-life-motion.json",
+      "sha256": "a87d0dae38e9d91adb2ca45a835b7c8c95e3fb0508ec48e40792276b230d6323"
+    },
+    {
+      "file": "reviews/wave20-life-motion-themes.json",
+      "sha256": "f43cdab546fb87f96a7228bf6fd983221fe6653f39a3875d3394503351f7892a"
+    },
+    {
+      "file": "reviews/wave20-life-motion-author.json",
+      "sha256": "6b6c8b642b2147979454950eda2dd41560a3418cab0c07108eaf12b7db481066"
+    }
+  ],
+  "intermediate_author_revision": {
+    "themes_sha256": "e80d2b35d664f5ef741c2c36d6bc6c90685972a6c226b0ed0aeb8eefd1561bf5",
+    "author_sha256": "4bae1c3f7627d55f169556b7b38f5939bf8211b445552c24dec1809e8689c203",
+    "note": "保留root初次T03縮時節點，不覆蓋初版證據。"
+  },
+  "first_retrieval": {
+    "draft_sha256": "f097d0ebdcde32f4725695da01c656ff059731ef2e8f9b905c77660af264128a",
+    "neighbours": {
+      "file": ".cache/wave20-life-motion-neighbours-before-review.json",
+      "sha256": "9487e572a4614502ec53dfa7993a2df95c85728cf8e901e26ca3bb27c0132c92"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave20-draft-before-review.json",
+      "sha256": "1258d9ede516c9e6643a98d19a73c7a8c6ddaef6a49851308d793a4b8e2ce6c6"
+    },
+    "reviewed_directed_pairs": 15
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "1b0e6901238a88ee359c691416f294547ef5dfbc787e94285f85d9ad5adc1f05",
+    "neighbours": {
+      "file": ".cache/wave20-life-motion-neighbours.json",
+      "sha256": "799c61b3fde2fcd8d4d69cfccb7371b1d7844d36e45515dac5b7b605dacf1258"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave20-draft.json",
+      "sha256": "b17e5613459e689e2d4e23b13f933f6abca12427ef1510a01dfec02d5b4c7702"
+    },
+    "delta": {
+      "file": ".cache/wave20-review-neighbour-delta.json",
+      "sha256": "44a0c7f24090fd53c4787176123481c580e1744705af582641f69d6de3caa2f9"
+    },
+    "candidate_rows_checked": 3,
+    "directed_pairs_checked": 15,
+    "new_neighbours": 0,
+    "removed_neighbours": 0,
+    "rank_or_score_changes": 0,
+    "result": "最終三列rows與首版逐內容相等；batch hash更新為定點修後版。共同另一批P20003換問句不改本批15近鄰。"
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "沒有重讀全部3356舊raw之所有外部來源；去重限本批完整主張、16作者近對與15有向檢索近鄰，加退題指向舊題讀回。檢索分數不是重複概率。",
+    "八來源均只稱指定正文讀回；未逐主張審全部論文、未核SI/原始資料/影片，沒有重做動物或AFM實驗。",
+    "未目讀2021瓢蟲原圖；讀XML正文及圖說，原創橋形必標模型。只目讀列明的兩張原圖。",
+    "片長是紙上編輯預算，未盲測、念稿、錄音或製作；讀完來源不等於可直接使用原圖或製作核准。",
+    "本reviewer未修改被審的作者三檔、中央selection或dedup；建議由root整合。"
+  ]
+}

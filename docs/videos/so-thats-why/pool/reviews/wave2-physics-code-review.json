@@ -1,0 +1,215 @@
+{
+  "review_id": "wave2-physics-code-review-20261101",
+  "reviewer": "pool_physics",
+  "reviewed_on": "2026-11-01",
+  "scope": "history.mjs、core.mjs 的來源origin與輸入雜湊、CLI baseline/source、render當期數量，以及既有pool.test.mjs。獨立靜態審閱與同一套既有測試；不擴測試面，不改工具。",
+  "tool_hashes": {
+    "core.mjs": "b5a30a63045c331187495248045eba58ffce4a37df507f30389c13de5dde2c78",
+    "history.mjs": "588a07be3b27dafc9c79be181a1bc4c668b85bc06c798ece5d108750513ff790",
+    "render.mjs": "72ac28ffd742d2551a73ba2032b296e0521a19bc25a527de46e1cb73095a1ed7",
+    "cli.mjs": "2ae8b79cfaa688d135322feff3bcdf5e0207e8c9930bf3fc42464bcc5463bed4",
+    "store.mjs": "6ed82a79da3b9bd03d187c6c779c796591520865d4b9751d6787be430658a50c",
+    "pool.test.mjs": "bb794efb752323eafaf2a2c8327f345f44c1edae2a3c7bd872e29473f16900cf"
+  },
+  "static_checks": [
+    "readBaseline限制封存路徑、校驗壓縮檔SHA256及revision/count欄位。",
+    "validateBaseline保留首批raw並要求移除/合併舊入選ID逐筆處置；來源reading物件變更會列出，不宣稱外部頁面已改。",
+    "sourceImpact從正規化URL或來源ID回傳canonical問題、別名及source_refs，再找引用問題的theme；不把題級影響查詢冒稱監測或核准。",
+    "合併來源定位以source_id、origin、locator為鍵，兩批同頁同小節讀取記錄皆保留。",
+    "HTML按本題source_ref.origin選reading且顯示本題定位；SOURCES列每次讀取範圍，保留合併原題供搜尋。",
+    "DEDUP結尾以pool.counts.selected_candidates格式化當期筆數，已移除固定1,000。",
+    "theme時間驗證使用正整數秒且章節總秒數對齊target_minutes。"
+  ],
+  "actionable_unresolved_code_findings": [],
+  "test_runs": [
+    {
+      "command": "node --test tools/video/so-thats-why/pool/pool.test.mjs",
+      "passed": 10,
+      "failed": 1,
+      "status": "INTERMEDIATE_BEFORE_FINAL_BUILD",
+      "failure": "第二版checked-in test在主編尚未完成selection時回 Selection needs a reviewed revision。不是全過；待最終build後重跑同一套。"
+    },
+    {
+      "command": "node --test tools/video/so-thats-why/pool/pool.test.mjs",
+      "passed": 11,
+      "failed": 0,
+      "exit_code": 0,
+      "status": "PASS_AFTER_FINAL_BUILD",
+      "duration_ms": 7143.3527,
+      "scope": "原11測試，全數執行；未擴測試面。"
+    }
+  ],
+  "final_build_readback": {
+    "revision": "2026-11-01-pool-2000",
+    "counts": {
+      "raw_records": 2293,
+      "canonical_questions": 2211,
+      "eligible_candidates": 2059,
+      "selected_candidates": 2000,
+      "alias_records": 82,
+      "historical_records": 313,
+      "source_urls": 3545,
+      "current_research_source_urls": 576,
+      "selected_source_urls": 1807,
+      "new_suggestions_not_added": 112,
+      "high_similarity_pending": 0,
+      "approved_scripts": 0
+    },
+    "artifact_hashes": {
+      "pool.json": "a0502f924ba7c3980a597a1ce8dee956f9c9eb63d33e232d9e276d4e11b94ba3",
+      "manifest.json": "26a5eb34d3b25eb81441f02c23b4e02c62c660c9a872635785909930649978ee",
+      "themes.json": "e19936d97a71755fdc9acd23ea62fe688e5c027d97ef7353105d2e03d8b09717",
+      "baseline.json": "b56e116000b84bbabf66eec091bddb4a2132784931f5146b9922832c5cd0b3e2"
+    },
+    "manifest": {
+      "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
+      "counts": {
+        "raw_records": 2293,
+        "canonical_questions": 2211,
+        "eligible_candidates": 2059,
+        "selected_candidates": 2000,
+        "alias_records": 82,
+        "historical_records": 313,
+        "source_urls": 3545,
+        "current_research_source_urls": 576,
+        "selected_source_urls": 1807,
+        "new_suggestions_not_added": 112,
+        "high_similarity_pending": 0,
+        "approved_scripts": 0
+      },
+      "theme_count": 26,
+      "theme_definition_sha256": "e19936d97a71755fdc9acd23ea62fe688e5c027d97ef7353105d2e03d8b09717"
+    },
+    "baseline": {
+      "baseline_revision": "2026-11-01-pool-1000",
+      "current_revision": "2026-11-01-pool-2000",
+      "baseline_selected": 1000,
+      "carried_distinct_cores": 1000,
+      "removed_or_merged_baseline_ids": [],
+      "changed_baseline_raw_ids": [],
+      "changed_source_record_ids": [
+        "SRC-1ba4779e644a177b",
+        "SRC-80ac23240e761e60",
+        "SRC-8da758b3a53cd53c",
+        "SRC-ff7c54776d120006"
+      ],
+      "note": "Source record changes include additional readings; they do not prove the external page changed. Retained historical rows must not be silently rewritten.",
+      "added_selected_count": 1000
+    },
+    "source_queries": [
+      {
+        "url": "https://news.vanderbilt.edu/2015/10/28/electric-eel-most-remarkable-predator-in-animal-kingdom/",
+        "source_id": "SRC-16eec977a005597d",
+        "candidates": [
+          {
+            "id": "B2300",
+            "question": "電鰻怎麼讓許多小小的發電細胞一起產生一次放電？",
+            "selected": true,
+            "aliases": [],
+            "references": [
+              {
+                "source_id": "SRC-16eec977a005597d",
+                "origin": "wave2-animals-ecology-20261101",
+                "locator": "正文；electrocytes discharge simultaneously",
+                "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+              }
+            ]
+          },
+          {
+            "id": "B2301",
+            "question": "電鰻的電擊為什麼會讓獵物肌肉突然一起收縮？",
+            "selected": true,
+            "aliases": [],
+            "references": [
+              {
+                "source_id": "SRC-16eec977a005597d",
+                "origin": "wave2-animals-ecology-20261101",
+                "locator": "正文；pulses act on nerves",
+                "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+              }
+            ]
+          },
+          {
+            "id": "B2302",
+            "question": "電鰻為什麼有時會把身體彎成圈，把獵物夾在頭尾之間？",
+            "selected": true,
+            "aliases": [],
+            "references": [
+              {
+                "source_id": "SRC-16eec977a005597d",
+                "origin": "wave2-animals-ecology-20261101",
+                "locator": "Eels fine-tune their zaps to fit the size of their prey",
+                "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+              }
+            ]
+          },
+          {
+            "id": "B2303",
+            "question": "看不到躲著的魚，電鰻怎麼先讓牠動一下再找到位置？",
+            "selected": true,
+            "aliases": [],
+            "references": [
+              {
+                "source_id": "SRC-16eec977a005597d",
+                "origin": "wave2-animals-ecology-20261101",
+                "locator": "Eels use pulses to scan for prey in muddy waters",
+                "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+              }
+            ]
+          }
+        ],
+        "theme_ids": [
+          "G21"
+        ],
+        "production_ready": false
+      },
+      {
+        "url": "https://animaldiversity.org/accounts/Tyto_alba/",
+        "source_id": "SRC-0f1c3bd30e756454",
+        "candidates": [
+          {
+            "id": "C2032",
+            "question": "閉上眼睛，兩邊耳朵怎麼一起判斷聲音從哪邊來？",
+            "selected": true,
+            "aliases": [
+              "B2289"
+            ],
+            "references": [
+              {
+                "source_id": "SRC-0f1c3bd30e756454",
+                "origin": "wave2-animals-ecology-20261101",
+                "locator": "Communication and Perception；asymmetric ears",
+                "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+              }
+            ]
+          },
+          {
+            "id": "B2290",
+            "question": "倉鴞飛近獵物時，羽毛怎麼幫它降低自己的聲音？",
+            "selected": true,
+            "aliases": [],
+            "references": [
+              {
+                "source_id": "SRC-0f1c3bd30e756454",
+                "origin": "wave2-animals-ecology-20261101",
+                "locator": "Food Habits；downy feathers",
+                "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+              }
+            ]
+          }
+        ],
+        "theme_ids": [],
+        "production_ready": false
+      }
+    ],
+    "checks": [
+      "兩個實際CLI source查詢exit 0：Vanderbilt四個入選題連到G21；ADW映射C2032並保留B2289別名、原來源origin和定位。",
+      "baseline CLI exit 0；補取精簡計數驗證首批1000核心全留、新入選1000、舊raw改寫0、舊入選移除0。",
+      "manifest與pool計數一致；themes.json SHA256與manifest的theme_definition_sha256相符；26主題仍為編輯候選。",
+      "全套既有11測試通過，先前未完成selection的中間失敗已解決。"
+    ],
+    "limitations": "本審未跑瀏覽器、實際持久SQLite索引或全庫逐主張科學查核；主編另執行瀏覽器/索引及其他repo檢查。來源查詢是依賴關係讀回，未重新抓外站。"
+  },
+  "status": "PASS_SCOPED_REVIEW",
+  "production_ready": false
+}

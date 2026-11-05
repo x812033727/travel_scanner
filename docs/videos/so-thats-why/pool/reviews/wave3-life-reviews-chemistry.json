@@ -1,0 +1,1142 @@
+{
+  "review_id": "wave3-life-reviews-chemistry-20261101",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "pool_physics",
+  "status": "CHANGES_REQUIRED_TOPIC_LEVEL_NOT_SCRIPT_APPROVAL",
+  "batch_path": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
+  "batch_sha256": "2d4f79bb9b0065c56a3fd819c9357cdcb4e2737203e2ffcc2465bbf9ea36d76c",
+  "theme_path": "docs/videos/so-thats-why/pool/reviews/wave3-chemistry-themes.json",
+  "theme_sha256": "0ef173659a157db8f64ed7d775a51d98c4a1cadb402af1d75faedfcca4691dc4",
+  "coverage": {
+    "new_candidates_read_individually": 91,
+    "fields": [
+      "question",
+      "answer_target",
+      "scope",
+      "mechanism_key",
+      "source_ids",
+      "source_locator",
+      "notes",
+      "editorial"
+    ],
+    "not_added_read": 22,
+    "theme_plans_read": 3,
+    "author_flags_reviewed": 8,
+    "source_pages_reopened": 21,
+    "body_or_research_caption_pages": 20,
+    "author_abstract_only_pages": 1,
+    "source_pages_in_batch": 75,
+    "old_pool_raw_count": 2293,
+    "old_selected_count": 2000,
+    "cross_pool_method": "對已封存 raw/機制做關鍵詞檢索，逐讀命中的舊題 target/scope，並以 91 題各五個語意鄰居作線索；不是逐讀舊庫全部 2293 筆或逐主張全查。另讀同輪 O3071、V3087。",
+    "semantic_advisory_sha256": "e62c94bb957926d30eafd0cd0752e61c7d66fac01e8305b91284204e9eab2984",
+    "limits": "21頁是風險抽查，不代表其餘54頁被覆核者重新實讀。抽查來源支持候選方向；個案例證、數值、圖像、影片和全文仍需進稿查核。"
+  },
+  "required_corrections": [
+    {
+      "id": "H3001",
+      "kind": "mechanism_precision",
+      "issue": "把扭轉能障直接當成平衡構象比例不均的原因，混淆穩態分布與互換速率。",
+      "requested": "改為相同條件下不同構象的相對能量/自由能影響平衡占比，構象間能障主要影響互換快慢。保留定性模型，不引用固定比例。",
+      "source_ids": [
+        "H3-S001"
+      ]
+    },
+    {
+      "id": "H3066",
+      "kind": "cross_reference",
+      "issue": "notes 把平均原子量題寫成 P194；P194 是失去電子不改元素。",
+      "requested": "改為 P195。"
+    },
+    {
+      "id": "author_dedup_flags:H3076",
+      "kind": "cross_reference",
+      "issue": "作者疑點把 P254 當慢步驟；實際 P254 是催化正逆平衡。",
+      "requested": "將邊界記錄改成 P252→P250 的實際舊題，並保留本覆核的不同機制理由，不依錯誤ID合併。"
+    },
+    {
+      "id": "H3060",
+      "kind": "editorial_core_boundary",
+      "issue": "題名仍以刮痕/應力集中帶入，容易和 LEG-T07 重述；新 target 末句才有快速擴裂門檻。",
+      "requested": "把題述和影片章節的新增問題明確對準裂長、外載、材料韌性共同決定的快速擴裂條件；應力集中作既有前提。若仍只說尖端集中就合 LEG-T07。"
+    },
+    {
+      "id": "H3-T03",
+      "kind": "cut_rule_precision",
+      "issue": "reduction_rule 的「刪後兩章」在六章清單可被解讀為刪控制章和結尾，卻留下需要FRET實例的主章。",
+      "requested": "明列刪第4、5章（兩個 H3085 章），保留/重寫第6章結尾；390−110−55=225秒，約3分45秒。"
+    }
+  ],
+  "merge_recommendations": [
+    {
+      "duplicate": "H3012",
+      "canonical": "L055",
+      "reason": "現目標仍是以同位素標記追蹤原先難區分的位置，與舊題標記追蹤的核心相同；換成乙醇氫位置可保留為別名及研究例，立體進攻本身另由 H3011 處理。此處不把後來 H3080 的速率同位素效應合入。"
+    },
+    {
+      "duplicate": "H3013",
+      "canonical": "L020",
+      "reason": "三點手性辨識是活性部位空間匹配的具體例；目前沒有額外結合動力學或能量機制足以另計。保留鏡像問題與手性來源，不刪有用章節。"
+    },
+    {
+      "duplicate": "H3044",
+      "canonical": "H3031",
+      "reason": "目前答案仍靠相鄰軌域離域改變鍵結；苯的等價鍵和共振畫法可為同核心例證。環狀電子填充的額外機制已在 H3046，不需要再計一次離域。"
+    },
+    {
+      "duplicate": "H3062",
+      "canonical": "LEG-T07",
+      "reason": "舊 T07 answer_target 與 scope 已明列反覆加壓、疲勞裂紋和循環測試。本題是同一循環損傷/裂紋累積核心的新通用問法；保留 UNSW 當期來源以更新研究入口。"
+    },
+    {
+      "duplicate": "H3069",
+      "canonical": "N073",
+      "reason": "現主要解釋仍是利用特徵吸收辨識分子/化學結構，既有 N073 已有分子吸收辨成分核心。振動偶極選擇定則若成為另題主因可重新研究；目前只在 scope 提醒非所有振動紅外活性，沒有解釋這一步，不為更細術語另計。"
+    }
+  ],
+  "distinct_boundaries": [
+    {
+      "ids": [
+        "H3001",
+        "H3002",
+        "H3003",
+        "H3081"
+      ],
+      "decision": "retain_distinct_after_H3001_fix",
+      "reason": "構象能量分布、基團擁擠、閉環張力權衡與反應軌域對齊是不同因果步驟；不能因同用分子旋轉動畫合成一筆。"
+    },
+    {
+      "ids": [
+        "H3017",
+        "H3019",
+        "D2142"
+      ],
+      "decision": "retain_distinct",
+      "reason": "分別改變沿鏈立體序列、支鏈連接結構與加工取向。相同結果可涉及結晶，實際操縱的結構與形成路徑不同。"
+    },
+    {
+      "ids": [
+        "H3021",
+        "H3014",
+        "H3018"
+      ],
+      "decision": "retain_segment_only",
+      "reason": "H3021 已說明新活性位置出現在端部或側面，足以用事件對照解釋架構；若成稿只介紹 block/graft 名稱，退成 H3014 的插段。"
+    },
+    {
+      "ids": [
+        "H3026",
+        "P294",
+        "H3027",
+        "H3090"
+      ],
+      "decision": "retain_distinct",
+      "reason": "鏈卷曲及稀疏網絡回復、線性/可恢復定義、稠密共價網絡限制流動、固定應變的時間鬆弛各有不同問題。不可只播四次同一鏈拉伸圖。"
+    },
+    {
+      "ids": [
+        "H3035",
+        "P226",
+        "E2058"
+      ],
+      "decision": "retain_distinct",
+      "reason": "內部電中性與電極反應持續的電荷補償，比載流子種類或外部閉合回路多一個必要機制。"
+    },
+    {
+      "ids": [
+        "H3043",
+        "P282",
+        "P284"
+      ],
+      "decision": "retain_distinct",
+      "reason": "犧牲陽極改變氧化還原分工，不是保護膜阻隔或塗層破口。"
+    },
+    {
+      "ids": [
+        "H3053",
+        "H3054",
+        "H3055",
+        "H3056",
+        "H3057",
+        "H3059"
+      ],
+      "decision": "retain_distinct",
+      "reason": "擴散重分配、空位輔助攀移、晶界強化/擴散權衡、截面真應力回饋、同源溫度、有序相反相界能量各有具體可追蹤步驟。"
+    },
+    {
+      "ids": [
+        "H3060",
+        "LEG-T07"
+      ],
+      "decision": "retain_only_with_threshold_focus",
+      "reason": "H3060 的可新增部分是裂長、外載和材料韌性共同達快速擴裂門檻；尖角應力集中本身沿用舊核心。請把題述及成稿主線對準臨界裂長/載荷，而不是換成刮痕再解釋一次應力集中。"
+    },
+    {
+      "ids": [
+        "H3063",
+        "D2099",
+        "H3091"
+      ],
+      "decision": "retain_distinct",
+      "reason": "裂後纖維橋接/界面耗能、鋼筋整體抗拉分工、聚合物本體纏結抽伸成纖網不同。H3091 目前仍限模擬研究摘要範圍。"
+    },
+    {
+      "ids": [
+        "H3065",
+        "H3066",
+        "P193",
+        "P195"
+      ],
+      "decision": "retain_distinct",
+      "reason": "精確同位素質量篩分子式、分子同位素峰群分布、同位素定義及元素平均原子量分開；H3066 不能把任意旁峰都當同位素。"
+    },
+    {
+      "ids": [
+        "H3076",
+        "P252",
+        "P250",
+        "P254"
+      ],
+      "decision": "retain_distinct_correct_author_flag",
+      "reason": "P254 實為催化正逆方向和平衡；P252 已作 P250 替代低障礙路徑變體。H3076 要回答的是單分子解離控制下，為何親核物濃度不進入速率律，並非催化步驟多少，且本次實讀 SN1 主文直接支持。"
+    },
+    {
+      "ids": [
+        "H3072",
+        "H3005",
+        "H3001"
+      ],
+      "decision": "retain_distinct",
+      "reason": "量測相對交換時間造成合峰，與翻轉時構型保存或平衡構象分布不同。"
+    },
+    {
+      "ids": [
+        "H3080",
+        "H3012",
+        "L055"
+      ],
+      "decision": "retain_H3080",
+      "reason": "以同位素擾動斷鍵速率來約束機制，不只是標記物質去向。"
+    },
+    {
+      "ids": [
+        "H3082",
+        "L033",
+        "V3087"
+      ],
+      "decision": "retain_distinct",
+      "reason": "非輻射鬆弛造成吸收/放光能量差，不是單純色素吸光或兩光系統再次激發電子。"
+    },
+    {
+      "ids": [
+        "H3084",
+        "O3071"
+      ],
+      "decision": "retain_distinct",
+      "reason": "H3084 分解去活化與不可逆漂白的化學原因；O3071 解釋螢光代理量、物種/光保護/校準和生物量不等價。不能只換浮游植物例子再收一筆漂白題。"
+    },
+    {
+      "ids": [
+        "H3088",
+        "P257"
+      ],
+      "decision": "retain_with_free_vs_total_payoff",
+      "reason": "保留自由金屬離子與總溶解金屬反向變化、配位與溶解兩個耦合平衡，這是額外研究步驟。若成稿只剩移除產物推平衡，降為 P257 案例。"
+    },
+    {
+      "ids": [
+        "H3093",
+        "H3027"
+      ],
+      "decision": "retain_distinct",
+      "reason": "水與親水帶電鏈的混合/進入網絡，搭配交聯限制溶出；和受熱熔體鏈滑移不同。仍不推定吸水容量或所有凝膠。"
+    }
+  ],
+  "source_samples": [
+    {
+      "id": "H3-S001",
+      "url": "https://openstax.org/books/organic-chemistry/pages/3-6-conformations-of-ethane",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "3.6 主文，rotation/staggered/eclipsed 與能量曲線說明",
+      "review_note": "構象相對能量與轉動能障均有記載；H3001 需要分開平衡比例與互換速率。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S013",
+      "url": "https://openstax.org/books/organic-chemistry/pages/5-12-chirality-in-nature-and-chiral-environments",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "5.12 三點結合與 prochiral substrate 主文",
+      "review_note": "支持空間配對示意；不採頁首藥物療效或只有一個對映體可作用的過強概括。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S016",
+      "url": "https://openstax.org/books/organic-chemistry/pages/31-3-copolymers",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "31.3 relative reactivities；block/graft active sites 主文",
+      "review_note": "除分類外，來源確有端部延續與側面新活性位點的不同形成方式。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S018",
+      "url": "https://openstax.org/books/organic-chemistry/pages/31-7-polymer-structure-and-physical-properties",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "31.7 crystallites、Tg/Tm、Plasticizers、Elastomers、Thermosetting 主文",
+      "review_note": "支持題級對照；來源對所有熱塑料Tg及天然橡膠不結晶的概括不可照搬。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S023",
+      "url": "https://openstax.org/books/organic-chemistry/pages/14-1-stability-of-conjugated-dienes-molecular-orbital-theory",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "14.1 central bond、hydrogenation comparison、p-orbital interaction 主文",
+      "review_note": "支持共軛相互作用；鍵長原因不能只說一種，候選已有限制。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S032",
+      "url": "https://openstax.org/books/organic-chemistry/pages/15-2-structure-and-stability-of-benzene",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "15.2 equivalent bonds、resonance hybrid 主文",
+      "review_note": "支持苯的等價鍵與畫法限制；本次合併理由為核心重複，非前提錯誤。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S041",
+      "url": "https://eng.libretexts.org/Bookshelves/Materials_Science/TLP_Library_I/12:_Creep_Deformation_of_Metals/12.7:_Designing_for_Creep_Resistance_-_Nickel_Based_Superalloys",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "12.7 Limiting Diffusion 和 Limiting Dislocation Motion 主文",
+      "review_note": "支持同源溫度、晶界擴散及有序相位錯能量成本；不採共格界面不會粗化的結尾概括。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S042",
+      "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/fracture-mechanics",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Fracture mechanics 主文全部",
+      "review_note": "裂紋、載荷與尺寸的關係支持 H3060；未讀圖中公式。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S043",
+      "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/fracture-mechanics/fracture-toughness",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Fracture toughness 臨界應力強度主文",
+      "review_note": "支持固定載荷下的臨界裂長和固定裂長下的臨界載荷；不是實物安全判定。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S046",
+      "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/fatigue-failure",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Fatigue failure 三階段主文",
+      "review_note": "支持循環裂紋逐步成長；與舊 T07 已收核心重複。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S061",
+      "url": "https://openstax.org/books/organic-chemistry/pages/11-4-the-sn1-reaction",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "11.4 first-order rate、rate-limiting dissociation、ion pairs 主文",
+      "review_note": "支持親核物濃度未入速率律及離子對造成不完全消旋；不把最高過渡態一概作所有反應慢步。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S065",
+      "url": "https://www.microscopyu.com/techniques/fluorescence/introduction-to-fluorescence-microscopy",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Stokes’ Shift 與 Fading, Quenching, and Photobleaching 主文",
+      "review_note": "支持放光前能量流失及暗化多因；已辨頁內波長矛盾句、漂白只由氧的過強限定，不採。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S066",
+      "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Book:_Structure_and_Reactivity_in_Organic_Biological_and_Inorganic_Chemistry_(Schaller)/V:__Reactivity_in_Organic_Biological_and_Inorganic_Chemistry_3/08:_Photochemical_Reactions/8.03:_Fluorescence_and_Phosphorescence",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Phosphorescence: A Radiationless Transition Followed by Emission 主文",
+      "review_note": "支持系間交越後較慢輻射返回的題級方向；不採夜光玩具一律三重態或通用壽命數字。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S067",
+      "url": "https://www.microscopyu.com/applications/fret/basics-of-fret-microscopy",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Fundamental Principles；Basic Principles of FRET 至 Formula 2",
+      "review_note": "支持非光子媒介能量轉移、距離、取向與光譜條件；不把FRET當特異結合充分證據。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S069",
+      "url": "https://openstax.org/books/chemistry-2e/pages/15-2-lewis-acids-and-bases",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "15.2 dissolution by complex ion formation，AgCl 主文",
+      "review_note": "支持自由銀離子下降、離子積降低、更多固體溶解；未取習題與配方。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S070",
+      "url": "https://chem.libretexts.org/Bookshelves/Inorganic_Chemistry/Supplemental_Modules_and_Websites_(Inorganic_Chemistry)/Coordination_Chemistry/Complex_Ion_Equilibria/Stability_of_Metal_Complexes_and_Chelation",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "The Chelate Effect；焓熵教材數值勘誤及再結合主文",
+      "review_note": "支持多點連結、鄰近性及焓熵共同作用；不把螯合效應只歸熵。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S072",
+      "url": "https://www.lammps.org/gallery/crazing/",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Crazing of entangled polymer chains 研究圖說文字",
+      "review_note": "支持模型中承載纖網；未播放或驗收圖像，不等於特定商品實測。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S073",
+      "url": "https://www.siam.org/publications/siam-news/articles/evaporation-and-the-coffee-ring-effect-for-noncircular-droplets/",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Introduction 蒸發與固定接觸線的外向輸送主文",
+      "review_note": "支持咖啡環輸送機制；不採任何液滴都成環的普遍化。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S074",
+      "url": "https://www.scranton.edu/faculty/cannm/green-chemistry/english/polymermodule.shtml",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "Introduction polyelectrolyte；Figure 4 前後主文",
+      "review_note": "支持親水網絡吸水而交聯阻止溶解；不採無毒、環境安全或過時工業結論。",
+      "full_paper_read": null
+    },
+    {
+      "id": "H3-S075",
+      "url": "https://arxiv.org/abs/cond-mat/0301447",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "作者 Abstract，非全文",
+      "review_note": "粗粒化模型摘要直接提纖維抽伸、纏結與骨架張力；只作題級研究入口。",
+      "full_paper_read": false
+    },
+    {
+      "id": "H3-S076",
+      "url": "https://ja01.chem.buffalo.edu/etcetera/opticalactivity.html",
+      "read_on": "2026-11-01",
+      "read_via": "web.run open/find 指定主文回傳",
+      "reading_scope": "What causes the optical rotation?；Ellipticity 主文",
+      "review_note": "支持左右圓偏振折射差造成相位差；未觀看或執行動畫。",
+      "full_paper_read": null
+    }
+  ],
+  "editorial_review": {
+    "estimate_only": true,
+    "structural_checks": {
+      "unique_ids": true,
+      "unique_mechanism_keys": true,
+      "source_ids_resolve": true,
+      "all_editorial_blocks_present": true,
+      "positive_ordered_seconds": true,
+      "seconds_min": 45,
+      "seconds_max": 125,
+      "distinct_ranges": 16,
+      "theme_sums": [
+        450,
+        420,
+        390
+      ],
+      "utf8_lf": true
+    },
+    "thin_topic_watchlist": [
+      {
+        "id": "H3005",
+        "rule": "只作45–70秒的追蹤標記段；不能靠命名軸向/赤道向撐成一集。"
+      },
+      {
+        "id": "H3021",
+        "rule": "保留活性點位置如何造成不同架構的事件；若只剩架構名稱就併入鏈成長段。"
+      },
+      {
+        "id": "H3038",
+        "rule": "用兩個初始氧化態和同一終點的電子帳推進；不延長成鉛酸產品百科。"
+      },
+      {
+        "id": "H3091",
+        "rule": "摘要足以題級篩選，沒有全文與可核示意前不升 theme_seed 或宣稱材料實測。"
+      }
+    ],
+    "themes": [
+      {
+        "id": "H3-T01",
+        "seconds": 450,
+        "minutes": 7.5,
+        "verdict": "COHERENT_SHORTER_PLAN_PENDING_EVIDENCE",
+        "reason": "以相同變軟外觀追問鏈段活動、塑化、交聯與時間，方向一致。",
+        "required": "維持非晶活動/晶區熔融/交聯三種不同圖示；未補曲線時刪數字，交聯段如重述便按作者規則縮短。",
+        "film_gate": "不是既定8分鐘長片的可製作核准；可當6–7.5分鐘企劃，不補空話湊長。"
+      },
+      {
+        "id": "H3-T02",
+        "seconds": 420,
+        "minutes": 7,
+        "verdict": "COHERENT_AFTER_CANONICAL_ID_MAPPING",
+        "reason": "同一裂尖依序串載荷、材料耗能、循環與橋接，因果線比按材料列百科清楚。",
+        "required": "H3062 引用改指 LEG-T07 並保留新來源；H3060 的新資訊須落在臨界裂長/載荷，不重複應力集中。",
+        "film_gate": "曲線或橋接證據不足依原方案縮5–6分鐘；不能拿未核事故補到8分鐘。"
+      },
+      {
+        "id": "H3-T03",
+        "seconds": 390,
+        "minutes": 6.5,
+        "verdict": "COHERENT_WITH_EXPLICIT_FRET_CUT_RULE",
+        "reason": "能量去向把放光、去活化/漂白及近距離轉移串在一起；取向/光譜章能阻止把距離推論講過頭。",
+        "required": "明列刪第4、5章；H3085兩章共165秒高於單題80–120秒預算，須有不同的交換事件及控制條件實例，否則縮短。",
+        "film_gate": "無合適FRET實例保留225秒左右的變暗比較；沒有全文試讀，不報實測觀看節奏。"
+      }
+    ]
+  },
+  "candidate_dispositions": [
+    {
+      "id": "H3001",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "REVISE_MECHANISM_BEFORE_SELECTION",
+      "source_reopened_ids": [
+        "H3-S001"
+      ]
+    },
+    {
+      "id": "H3002",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3003",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3004",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3005",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3006",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3007",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S076"
+      ]
+    },
+    {
+      "id": "H3008",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3009",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3010",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3011",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S013"
+      ]
+    },
+    {
+      "id": "H3012",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "MERGE_RECOMMENDED",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3013",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "MERGE_RECOMMENDED",
+      "source_reopened_ids": [
+        "H3-S013"
+      ]
+    },
+    {
+      "id": "H3014",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3015",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3016",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3017",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3018",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3019",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S018"
+      ]
+    },
+    {
+      "id": "H3020",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S016"
+      ]
+    },
+    {
+      "id": "H3021",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S016"
+      ]
+    },
+    {
+      "id": "H3022",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3023",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3024",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S018"
+      ]
+    },
+    {
+      "id": "H3025",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S018"
+      ]
+    },
+    {
+      "id": "H3026",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S018"
+      ]
+    },
+    {
+      "id": "H3027",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S018"
+      ]
+    },
+    {
+      "id": "H3028",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3029",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3030",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3031",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S023"
+      ]
+    },
+    {
+      "id": "H3032",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3033",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3034",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3035",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3036",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3038",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3039",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3040",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3041",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3042",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3043",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3044",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "MERGE_RECOMMENDED",
+      "source_reopened_ids": [
+        "H3-S032"
+      ]
+    },
+    {
+      "id": "H3045",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S032"
+      ]
+    },
+    {
+      "id": "H3046",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3047",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3048",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3049",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3050",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3051",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3052",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3053",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3054",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3055",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S041"
+      ]
+    },
+    {
+      "id": "H3056",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3057",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S041"
+      ]
+    },
+    {
+      "id": "H3059",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S041"
+      ]
+    },
+    {
+      "id": "H3060",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "RETAIN_WITH_THRESHOLD_FOCUS",
+      "source_reopened_ids": [
+        "H3-S042",
+        "H3-S043"
+      ]
+    },
+    {
+      "id": "H3061",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3062",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "MERGE_RECOMMENDED",
+      "source_reopened_ids": [
+        "H3-S046"
+      ]
+    },
+    {
+      "id": "H3063",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3064",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3065",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3066",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "CORRECT_CROSS_REFERENCE",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3067",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3068",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3069",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "MERGE_RECOMMENDED",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3070",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3071",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3072",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3073",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3074",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3075",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3076",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S061"
+      ]
+    },
+    {
+      "id": "H3077",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S061"
+      ]
+    },
+    {
+      "id": "H3078",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3079",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3080",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3081",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3082",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S065",
+        "H3-S066"
+      ]
+    },
+    {
+      "id": "H3083",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S066"
+      ]
+    },
+    {
+      "id": "H3084",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S065"
+      ]
+    },
+    {
+      "id": "H3085",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S067"
+      ]
+    },
+    {
+      "id": "H3086",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3087",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3088",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S069"
+      ]
+    },
+    {
+      "id": "H3089",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S070"
+      ]
+    },
+    {
+      "id": "H3090",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": []
+    },
+    {
+      "id": "H3091",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "ABSTRACT_BOUND_TOPIC_ONLY",
+      "source_reopened_ids": [
+        "H3-S072",
+        "H3-S075"
+      ]
+    },
+    {
+      "id": "H3092",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S073"
+      ]
+    },
+    {
+      "id": "H3093",
+      "question_target_scope_notes_editorial_read": true,
+      "disposition": "NO_ADDITIONAL_TOPIC_LEVEL_OBJECTION",
+      "source_reopened_ids": [
+        "H3-S074"
+      ]
+    }
+  ],
+  "counts_after_recommendations": {
+    "raw_preserved": 91,
+    "merge_recommendations": 5,
+    "potentially_new_distinct_candidates": 86,
+    "qualification": "這是覆核建議數；H3001和H3060需修正，中央裁決與全庫去重尚未套用，不等於86題已入選。"
+  },
+  "blockers": [
+    "H3001機制需修正；H3060需把新增核心對準快速擴裂門檻。",
+    "5項合併建議由中央保留別名與來源後裁決；不可只改標題保留數量。",
+    "H3066與作者疑點錯ID、H3-T03刪章條件需要修。"
+  ],
+  "not_claimed": [
+    "沒有逐主張劇本查核",
+    "沒有盲讀或試聽成片",
+    "沒有實驗、圖像/動畫播放驗收",
+    "沒有全庫重複召回率",
+    "沒有製作、匯入或發布核准"
+  ]
+}

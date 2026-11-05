@@ -34,8 +34,10 @@ from app.admin.service import decrypt_secrets, encrypt_secrets, load_runtime_set
 from app.infra import get_redis
 from app.models import AdminAuditLog, User, VideoYoutubeConnection
 from app.video_youtube.client import (
+    ANALYTICS_SCOPE,
     AUTHORIZE,
     SCOPE,
+    YOUTUBE_SCOPE,
     AuthorizationLost,
     YoutubeClient,
     YoutubeError,
@@ -100,6 +102,16 @@ def configured(row: VideoYoutubeConnection) -> bool:
     return bool(row.client_id and stored_secrets(row).get("client_secret"))
 
 
+def _scopes(value: str) -> set[str]:
+    return set(value.split())
+
+
+def analytics_granted(row: VideoYoutubeConnection) -> bool:
+    """Whether the stored grant also reads YouTube Analytics (the channel reports). A channel
+    linked before the reports were added has only the YouTube scope until it is linked again."""
+    return linked(row) and ANALYTICS_SCOPE in _scopes(row.scope or "")
+
+
 def linked(row: VideoYoutubeConnection) -> bool:
     return bool(row.channel_id and stored_secrets(row).get("refresh_token"))
 
@@ -121,6 +133,7 @@ def view(row: VideoYoutubeConnection, site_url: str) -> ConnectionView:
         verified_at=row.verified_at if is_linked else None,
         problem=row.problem,
         audited=row.audited,
+        analytics_granted=is_linked and ANALYTICS_SCOPE in _scopes(row.scope or ""),
     )
 
 
@@ -258,10 +271,6 @@ async def _read_flow(user: User, payload: OAuthExchangeIn) -> dict[str, Any]:
     return flow
 
 
-def _scopes(value: str) -> set[str]:
-    return set(value.split())
-
-
 async def finish_link(
     session: AsyncSession, user: User, payload: OAuthExchangeIn
 ) -> ConnectionView:
@@ -282,7 +291,7 @@ async def finish_link(
                 verifier=str(flow["verifier"]),
                 redirect_uri=redirect_uri(site_url),
             )
-            if SCOPE not in _scopes(grant.scope):
+            if YOUTUBE_SCOPE not in _scopes(grant.scope):
                 raise Refused(
                     422,
                     "video_youtube_scope_missing",

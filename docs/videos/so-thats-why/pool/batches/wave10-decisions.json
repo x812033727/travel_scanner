@@ -1,0 +1,240 @@
+{
+  "batch_id": "wave10-decisions-20261101",
+  "created_on": "2026-11-01",
+  "scope": "七個機率/集體選擇核心；使用虛構可重算示例，不以參數變體湊數。",
+  "sources": [
+    {
+      "id": "M10-S001",
+      "url": "https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm",
+      "title": "Does Treatment Have an Effect?",
+      "publisher": "Philip B. Stark / UC Berkeley author-hosted SticiGui",
+      "version": "accessed 2026-11-01",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 指定正文與公式；非搜尋摘要",
+      "reading_scope": "Simpson’s Paradox 全節與加權平均解釋",
+      "locator": "Simpson’s Paradox 全節與加權平均解釋",
+      "summary": "分組比率合併時，各組佔比不同可改變總體比較方向。",
+      "limitations": "只取加權反轉原理；不用真實招生數字作影片例，也不從分組結果直接推論因果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M10-S002",
+      "url": "https://www.cs.cmu.edu/~15281-f24/coursenotes/gametheory/index.html",
+      "title": "Game Theory — Voting / Social Choice Axioms",
+      "publisher": "Carnegie Mellon University 15-281 course",
+      "version": "Fall 2024 course notes",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 指定正文與公式；非搜尋摘要",
+      "reading_scope": "Borda Count；Plurality with Runoff 的兩兩比較定義；Condorcet Consistency",
+      "locator": "Borda Count；Plurality with Runoff 的兩兩比較定義；Condorcet Consistency",
+      "summary": "Borda以名次給分；多數兩兩比較未必產生打敗全部選項的贏家。",
+      "limitations": "此學期標為out of scope的教學段仍有正文；不引用圖中的資料、不聲稱任何制度總是最好；撤項例是本批自設計算。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M10-S003",
+      "url": "https://www.census.gov/about/history/historical-censuses-and-surveys/census-programs-surveys/decennial-census/methods.html",
+      "title": "Methods of Apportionment",
+      "publisher": "U.S. Census Bureau",
+      "version": "accessed 2026-11-01",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 指定正文與公式；非搜尋摘要",
+      "reading_scope": "The Hamilton/Vinton Method 定義段與例表",
+      "locator": "The Hamilton/Vinton Method 定義段與例表",
+      "summary": "先配整數部分，再按餘數由大到小分配剩餘名額。",
+      "limitations": "只取方法，沒有引用或驗證歷史Alabama數字；本批零名額例是抽象設備分配，沒有美國州至少一席的約束。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M10-S004",
+      "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/mit6_042js15_textbook.pdf",
+      "title": "Mathematics for Computer Science",
+      "publisher": "Eric Lehman, F. Thomson Leighton, Albert R. Meyer / MIT OCW",
+      "version": "revised 2015-05-18",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open/find 指定正文與公式；非搜尋摘要",
+      "reading_scope": "§16.1.1；§16.2.4結果與16.2.5；§16.4–16.4.1；§18.5.4，印刷頁667–668、675–677、684–685、766–768",
+      "locator": "§16.1.1；§16.2.4結果與16.2.5；§16.4–16.4.1；§18.5.4，印刷頁667–668、675–677、684–685、766–768",
+      "summary": "開門規則、任意配對與集齊全部，是三種不同的機率問題。",
+      "limitations": "只讀所列段，非920頁全讀；使用獨立均勻模型，沒有實測出生分布、抽獎商品或遊戲節目。原書CC BY-NC-SA；僅連結與原創摘要。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "M10001",
+      "question": "每一組都比較好，合在一起怎麼反而輸？",
+      "domain": "機率與集體選擇",
+      "mechanism_key": "decision.simpson_weight_reversal",
+      "answer_target": "總比率按各組樣本量加權。A在簡單題9/10、難題20/100，B為80/100、1/10；A各組較高，合計卻29/110低於81/110，因兩者題目難度組成不同。",
+      "scope": "辛普森反轉的構造例；不宣稱分組永遠比較正確，也不推論A造成較高成功率。",
+      "source_ids": [
+        "M10-S001"
+      ],
+      "source_locator": "M10-S001：Simpson’s Paradox 全節與加權平均解釋",
+      "premise_status": "screened",
+      "notes": "數字是本批虛構教學模型；精確算術見reviews/wave10-decisions-probe.json，不是實證資料。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "總比率按各組樣本量加權。A在簡單題9/10、難題20/100，B為80/100、1/10；A各組較高，合計卻29/110低於81/110，因兩者題目難度組成不同。",
+        "visual": "兩列難度格先比較組內，再按格內人數合成；顏色保持，讓權重變化可見。",
+        "seconds": [
+          80,
+          110
+        ]
+      }
+    },
+    {
+      "id": "M10002",
+      "question": "每個人都有明確排序，多數人的選擇為什麼會繞圈？",
+      "domain": "機率與集體選擇",
+      "mechanism_key": "decision.condorcet_majority_cycle",
+      "answer_target": "11人中5人排ABC、4人排BCA、2人排CAB。兩兩比較得到A勝B 7:4、B勝C 9:2、C勝A 6:5；每個人的排序一致，合成的多數關係卻不具傳遞性。",
+      "scope": "虛構選項A/B/C；展示可能性，不估發生頻率，不談特定政治群體。",
+      "source_ids": [
+        "M10-S002"
+      ],
+      "source_locator": "M10-S002：Plurality with Runoff的兩兩比較定義；Condorcet Consistency",
+      "premise_status": "screened",
+      "notes": "數字是本批虛構教學模型；精確算術見reviews/wave10-decisions-probe.json，不是實證資料。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "11人中5人排ABC、4人排BCA、2人排CAB。兩兩比較得到A勝B 7:4、B勝C 9:2、C勝A 6:5；每個人的排序一致，合成的多數關係卻不具傳遞性。",
+        "visual": "同11張排序卡逐對亮起箭頭，最後三箭頭成環。",
+        "seconds": [
+          70,
+          95
+        ]
+      }
+    },
+    {
+      "id": "M10003",
+      "question": "沒人改變喜好，刪掉最後一名為什麼會換冠軍？",
+      "domain": "機率與集體選擇",
+      "mechanism_key": "decision.borda_irrelevant_option_removal",
+      "answer_target": "沿同11張卡，三選項按2/1/0分，A/B/C得12/13/8，B勝。刪C且保持每人A/B順序，以兩選項1/0分重算成7/4，A勝；名次計分會受候選集合影響。",
+      "scope": "限本例Borda重新計分，不是所有表決都會翻轉，也不把贏家改變說成有人變心。",
+      "source_ids": [
+        "M10-S002"
+      ],
+      "source_locator": "M10-S002：Borda Count的m-k計分規則；撤C計算是本批原創構造例",
+      "premise_status": "screened",
+      "notes": "數字是本批虛構教學模型；精確算術見reviews/wave10-decisions-probe.json，不是實證資料。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沿同11張卡，三選項按2/1/0分，A/B/C得12/13/8，B勝。刪C且保持每人A/B順序，以兩選項1/0分重算成7/4，A勝；名次計分會受候選集合影響。",
+        "visual": "保留排序卡但移去C，顯示計分尺也從三格變兩格。",
+        "seconds": [
+          65,
+          85
+        ]
+      }
+    },
+    {
+      "id": "M10004",
+      "question": "總名額增加，怎麼還有人少分到一個？",
+      "domain": "機率與集體選擇",
+      "mechanism_key": "decision.largest_remainder_house_nonmonotonicity",
+      "answer_target": "按需求5:3:1用最大餘數法分設備，4個配成2/1/1；增加到5個，配額的整數與餘數排序改變，結果3/2/0。總量上升不保證每組分配量都不下降。",
+      "scope": "抽象整數分配，無最低一個保障、無平手；不是現行美國席次實務或通用公平排名。",
+      "source_ids": [
+        "M10-S003"
+      ],
+      "source_locator": "M10-S003：The Hamilton/Vinton Method 定義段與例表",
+      "premise_status": "screened",
+      "notes": "數字是本批虛構教學模型；精確算術見reviews/wave10-decisions-probe.json，不是實證資料。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "按需求5:3:1用最大餘數法分設備，4個配成2/1/1；增加到5個，配額的整數與餘數排序改變，結果3/2/0。總量上升不保證每組分配量都不下降。",
+        "visual": "三條需求比例不動，只切換總設備4與5，逐步填整數及剩餘格。",
+        "seconds": [
+          75,
+          100
+        ]
+      }
+    },
+    {
+      "id": "M10005",
+      "question": "打開一扇空門後，剩下兩扇真的是一半一半嗎？",
+      "domain": "機率與集體選擇",
+      "mechanism_key": "decision.monty_informed_host_protocol",
+      "answer_target": "在獎品等可能、主持人知道位置且每次必開未選空門並讓你換的模型，換門贏當且僅當一開始選錯，機率2/3。只剩兩門不足以推出各半，還要知道開門規則。",
+      "scope": "初選獨立；主持人可選兩扇空門時等機率挑一扇。2/3是依此程序一律換門的勝率，不能套到任意開門或選擇性給換的情況。",
+      "source_ids": [
+        "M10-S004"
+      ],
+      "source_locator": "M10-S004：§16.1.1、§16.2.4–16.2.5；印刷頁667–668、675–677",
+      "premise_status": "screened",
+      "notes": "數字是本批虛構教學模型；精確算術見reviews/wave10-decisions-probe.json，不是實證資料。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在獎品等可能、主持人知道位置且每次必開未選空門並讓你換的模型，換門贏當且僅當一開始選錯，機率2/3。只剩兩門不足以推出各半，還要知道開門規則。",
+        "visual": "三個獎品位置逐列展開，固定初選1號，標出哪兩列換門會贏。",
+        "seconds": [
+          70,
+          95
+        ]
+      }
+    },
+    {
+      "id": "M10006",
+      "question": "23個人就容易撞生日，為什麼不是等到幾百人？",
+      "domain": "機率與集體選擇",
+      "mechanism_key": "decision.birthday_any_pair_collision",
+      "answer_target": "獨立且365天均勻的模型下，23人至少一對同生日約50.7%；比較的是253對，不是只找人與某個指定人同日。精確值用所有生日互異機率的補集計算，不能直接把253/365當答案。",
+      "scope": "忽略閏日的理想模型，不是每個真實班級的實測機率；不同配對事件可以重疊，不能當作互斥事件把253個機率直接相加。",
+      "source_ids": [
+        "M10-S004"
+      ],
+      "source_locator": "M10-S004：§16.4–16.4.1；印刷頁684–685",
+      "premise_status": "screened",
+      "notes": "數字是本批虛構教學模型；精確算術見reviews/wave10-decisions-probe.json，不是實證資料。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "獨立且365天均勻的模型下，23人至少一對同生日約50.7%；比較的是253對，不是只找人與某個指定人同日。精確值用所有生日互異機率的補集計算，不能直接把253/365當答案。",
+        "visual": "23個點逐步連線，旁邊把只與一人連線的22對作對照。",
+        "seconds": [
+          70,
+          95
+        ]
+      }
+    },
+    {
+      "id": "M10007",
+      "question": "明明只差最後一種，為什麼集齊反而越等越久？",
+      "domain": "機率與集體選擇",
+      "mechanism_key": "decision.coupon_collector_declining_novelty",
+      "answer_target": "六種等可能且獨立重抽的模型，已有k種時下一抽是新種類的機率為(6-k)/6。最後一種平均還需6抽；從零集齊的期望為6乘調和和，等於14.7抽，不是保證次數。",
+      "scope": "允許重複、有放回、無保底或稀有款；不把實體商品當等機率，也不建議為集齊消費。",
+      "source_ids": [
+        "M10-S004"
+      ],
+      "source_locator": "M10-S004：§18.5.4；印刷頁766–768",
+      "premise_status": "screened",
+      "notes": "數字是本批虛構教學模型；精確算術見reviews/wave10-decisions-probe.json，不是實證資料。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "六種等可能且獨立重抽的模型，已有k種時下一抽是新種類的機率為(6-k)/6。最後一種平均還需6抽；從零集齊的期望為6乘調和和，等於14.7抽，不是保證次數。",
+        "visual": "六色空格逐步填滿，未收集種類變少；最後只一色能讓進度增加。",
+        "seconds": [
+          80,
+          105
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "改用100扇門再講一次換門優勢？",
+      "reason": "同M10005的知情開門機制；只可作同核示例，不增加素材數。"
+    },
+    {
+      "question": "生日改成24人或抽卡改成20款？",
+      "reason": "只換參數；併M10006/M10007，不拆新核。"
+    },
+    {
+      "question": "只看被選上的人，兩種能力就一定負相關？",
+      "reason": "Berkson方向未完成本批原始來源與選取條件覆核；不收，也不說所有篩選都必然如此。"
+    }
+  ]
+}

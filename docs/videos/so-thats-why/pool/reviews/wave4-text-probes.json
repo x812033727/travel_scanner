@@ -1,0 +1,77 @@
+{
+  "status": "PASS_LOCAL_TEXT_PROBES_NOT_FONT_DISPLAY_OR_AUDIENCE_TEST",
+  "tested_on": "2026-11-01T09:47:54.960Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "icu": "78.3",
+    "unicode": "17.0"
+  },
+  "source_sha256": "b5e3c36fc23281444300742467b5e823a7e704cda634f618751ada362718d513",
+  "probes": {
+    "U4006": {
+      "original": "ß",
+      "upper": "SS",
+      "returned": "ss"
+    },
+    "U4007": {
+      "input": "i",
+      "default_upper": "I",
+      "turkish_upper": "İ"
+    },
+    "U4012": [
+      {
+        "input": "B",
+        "code_point": 66,
+        "lower": "b"
+      },
+      {
+        "input": "Β",
+        "code_point": 914,
+        "lower": "β"
+      }
+    ],
+    "U4004": [
+      {
+        "requested_locale": "de",
+        "resolved": {
+          "locale": "de",
+          "usage": "sort",
+          "sensitivity": "variant",
+          "ignorePunctuation": false,
+          "collation": "default",
+          "numeric": false,
+          "caseFirst": "false"
+        },
+        "output": [
+          "a",
+          "ä",
+          "z"
+        ]
+      },
+      {
+        "requested_locale": "sv",
+        "resolved": {
+          "locale": "sv",
+          "usage": "sort",
+          "sensitivity": "variant",
+          "ignorePunctuation": false,
+          "collation": "default",
+          "numeric": false,
+          "caseFirst": "false"
+        },
+        "output": [
+          "a",
+          "z",
+          "ä"
+        ]
+      }
+    ],
+    "U4011": {
+      "input": "例子.test",
+      "ascii_hostname": "xn--fsqu00a.test",
+      "network_request": false
+    }
+  },
+  "limits": "Actual outputs from one pinned local runtime. No claim about every editor, font, browser, current Unicode implementation or all locales. Domains use reserved .test; no network operation. Typography, ZWJ fallback, OCR and complete script timing were not tested.",
+  "production_ready": false
+}

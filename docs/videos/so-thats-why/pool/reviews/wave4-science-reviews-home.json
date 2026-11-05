@@ -1,0 +1,516 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "author": "pool_physics",
+  "status": "PASS_TOPIC_EDITORIAL_WITH_LIMITS",
+  "production_ready": false,
+  "scope": "獨立逐題編輯審閱與風險來源抽查；已針對作者修正讀回。此收據不代表34題全部外部事實或逐字稿已通過。",
+  "coverage": {
+    "candidate_count": 34,
+    "candidate_ids": [
+      "B4001",
+      "B4002",
+      "B4003",
+      "B4004",
+      "B4005",
+      "B4007",
+      "B4008",
+      "B4009",
+      "B4010",
+      "B4012",
+      "B4013",
+      "B4014",
+      "B4015",
+      "B4016",
+      "B4018",
+      "B4020",
+      "B4021",
+      "B4022",
+      "B4023",
+      "B4024",
+      "B4025",
+      "B4026",
+      "B4027",
+      "B4028",
+      "B4030",
+      "B4031",
+      "B4032",
+      "B4034",
+      "B4035",
+      "B4037",
+      "B4038",
+      "B4039",
+      "B4040",
+      "B4041"
+    ],
+    "fields_read": [
+      "question",
+      "mechanism_key",
+      "answer_target",
+      "scope",
+      "source_ids",
+      "source_locator",
+      "notes",
+      "editorial.role",
+      "editorial.payoff",
+      "editorial.visual",
+      "editorial.seconds"
+    ],
+    "author_known_pair_sets": 18,
+    "not_added_records_read": 24,
+    "semantic_rows_read": 34,
+    "semantic_top_k": 5,
+    "semantic_comparisons_read": 170,
+    "semantic_limit": "逐題閱讀最終34行的top5近鄰並比較答案/條件；不是全2790筆重新逐題外查，也不是所有可能配對的唯一性保證。語意分數僅產生比較候選，不直接決定合併。",
+    "themes_read": [
+      "W4B-T01",
+      "W4B-T02"
+    ],
+    "source_records_spot_checked": 12,
+    "source_records_in_batch": 28,
+    "source_records_supporting_candidates": 25,
+    "source_selection": "優先抽查容易過度說明的雙葉牆/巧合效應、材料氣體老化、VOC雙向暫態、電致變色與分區、瞬變水路、塌陷土、ASR及結晶水；另核對兩片核心牆體/氣流段落。非隨機抽樣，不估計全批正確率。",
+    "semantic_correction_limit": "語意近鄰檔屬修正前draft2790raw，draft_sha256=2ea41b1d8f3979600045e1480d7c270dd5373ed9afe230f39aa63aa137f27fff；修正後B4022範圍與key另做人工讀回，未宣稱對最後hash重新計算語意向量。"
+  },
+  "final_readback": {
+    "resolved": [
+      {
+        "id": "B4022",
+        "issue": "原Double Walls定位及低頻mass–air–mass彈簧模型超出所列雙葉牆段直接支援範圍。",
+        "resolution": "source_locator與B4-S010改Partitions；答案/範圍/visual/第二片章節只保留空氣耦合與腔內共振。原頁聲源外罩段不再充當雙葉牆模型的直接證據。 mechanism_key同步為double_leaf_air_coupling_and_cavity_resonance，避免舊key重新引入細模型。"
+      },
+      {
+        "id": "B4038",
+        "issue": "乾土支撐原先同列吸力，但指定實讀來源未充分展開該路徑。",
+        "resolution": "鎖版限定弱膠結遇水失穩與骨架重排；不把地下水抽降壓密或所有地面下陷混為一談。"
+      },
+      {
+        "id": "W4B-T01",
+        "issue": "原末章40秒回收前文容易被當新增內容湊長度。",
+        "resolution": "回顧縮15秒並明示不計新增機制；全片335秒，刪B4003後270秒。"
+      },
+      {
+        "id": "W4B-T02",
+        "issue": "原末章30秒回收聲路可縮短；雙葉牆章節曾帶入未直接支援的細模型。",
+        "resolution": "回顧縮15秒且雙葉牆章節已收斂；全片345秒。刪巧合低谷可另提255秒/3章短版，須另選版本、覆核內容及核算秒數，不能沿用345秒/4章主版。已移除短版仍須4章的過時說明。"
+      },
+      {
+        "id": "W4B-T02 / author receipt",
+        "issue": "審閱期間中央short_explainer章數下限由4改2，原3章替代版的工具阻擋說明過時。",
+        "resolution": "作者已移除舊4章門檻；保留替代版本需另提及重核的內容條件。"
+      }
+    ],
+    "unresolved_required_changes": [],
+    "conclusion": "可進入中央選題/題組整合；保留以下入稿條件，不表示通過製作。"
+  },
+  "source_spot_checks": [
+    {
+      "source_id": "B4-S002",
+      "candidate_ids": [
+        "B4002",
+        "B4003",
+        "B4004"
+      ],
+      "reading_scope": "Scope / General Approaches；Construction Techniques中外保溫段；外皮氣密與內部氣路段；double vapor retarders段。",
+      "finding": "原文支持保溫位置/結構板溫度、內部空腔路徑，以及兩面低透濕限制乾燥出口。",
+      "limit": "不採用頁面法規、通用厚度比例或所有氣候適用建議；剖面與露點對照仍需稿件級核對。",
+      "url": "https://basc.pnnl.gov/resource-guides/condensation-control-walls-cold-weather",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S003",
+      "candidate_ids": [
+        "B4007",
+        "B4008",
+        "B4009"
+      ],
+      "reading_scope": "§1.1 density/solid-gas-radiation文字；Age Effects；§4.3反射層須面對空氣空間。",
+      "finding": "支持泡沫發泡氣體交換影響老化、纖維密度的不同傳熱路徑權衡及低放射率邊界條件。",
+      "limit": "未驗圖表數字或特定產品；沒有把讀取文字當作已看圖。",
+      "url": "https://handbook.ashrae.org/Handbooks/F17/SI/f17_ch26/f17_ch26_si.aspx",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S008",
+      "candidate_ids": [
+        "B4014",
+        "B4015",
+        "B4016"
+      ],
+      "reading_scope": "Paths and pressure；Heat/stack effect/neutral pressure plane；Combustion and Makeup Air；Convection。",
+      "finding": "支持壓力隨高度、機械抽排與煙道壓差競爭，以及密閉冷表面仍能形成室內對流。",
+      "limit": "只保留條件式機制；不診斷個案倒灌、不提供危險測試方法。",
+      "url": "https://basc.pnnl.gov/information/building-science-introduction-air-flow",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S010",
+      "candidate_ids": [
+        "B4020",
+        "B4021",
+        "B4022"
+      ],
+      "reading_scope": "Room Acoustics；Sound Transmission Paths直接場/混響場；Partitions coincidence及double-leaf段（原頁約460–478、566–591行）。",
+      "finding": "吸聲作用取決於直接/混響場；巧合效應與板面彎曲波匹配不同於雙葉牆空氣耦合。雙葉牆段確有組裝傳聲損失小於兩葉各自相加及腔內共振。",
+      "limit": "未驗方程圖像、產品曲線或指定頻段；此段不足以直接通過低頻質量—空氣—質量彈簧模型，作者已刪。",
+      "url": "https://handbook.ashrae.org/handbooks/F17/SI/f17_ch08/f17_ch08_si.aspx",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S011",
+      "candidate_ids": [
+        "B4023",
+        "B4024"
+      ],
+      "reading_scope": "How They Work（原頁21–28行）；The Window Testbed上方採光/下方視野分區（29–34行）。",
+      "finding": "支持所述離子遷移變色與兩區不同控制目的。",
+      "limit": "2007實驗室辦公室試驗；不把歷史上市狀態、節能百分比或特定試驗結果泛化為現行住宅效能。",
+      "url": "https://www2.lbl.gov/Science-Articles/Archive/sabl/2007/Jan/electro-windows.html",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S018",
+      "candidate_ids": [
+        "B4032"
+      ],
+      "reading_scope": "Introduction；Model Definition；Implementation；Results and Discussion的文字。",
+      "finding": "驗證算例直接包含流體壓縮性與管壁彈性，足以支持快速關閥壓力波的題級方向。",
+      "limit": "未獨立驗曲線圖像/反射動畫或住家聲響個案；壓力脈衝變成可聽敲擊的細節與邊界反射需進稿另補證。",
+      "url": "https://doc.comsol.com/6.3/doc/com.comsol.help.models.pipe.water_hammer_verification/water_hammer_verification.html",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S020",
+      "candidate_ids": [
+        "B4034"
+      ],
+      "reading_scope": "PDF第4頁、標示slide 4的What is defrosting。",
+      "finding": "直接描述室外盤管霜與逆循環融霜，支援交換盤管熱流角色。",
+      "limit": "未採用節能/融霜量測數字，也未驗現行所有機種策略。",
+      "url": "https://www.energy.gov/sites/default/files/2024-11/bto-peer-2024-32275-quantifying-reducing-defrost-energy-woods.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S021",
+      "candidate_ids": [
+        "B4035"
+      ],
+      "reading_scope": "論文Introduction及質量平衡開頭；Discussion關於表面淨匯/淨源與清除氣相後再釋放（約465–521行）。",
+      "finding": "原文支持降低室內氣相濃度後表面可重新供應氣體的暫態；和靜態吸附容量不同。",
+      "limit": "受控木煙測試屋與化合物範圍；不推論個人健康、安全濃度、所有氣味或所有材料表面。",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=936387",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S025",
+      "candidate_ids": [
+        "B4038"
+      ],
+      "reading_scope": "Details / hydrocompaction / low-density grain fabric與binding agents。",
+      "finding": "濕潤削弱顆粒支撐、顆粒重排成更緊密結構的文字支持鎖版核心。",
+      "limit": "不是所有遇水地層都塌陷；不據此診斷住家地基。",
+      "url": "https://coloradogeologicalsurvey.org/hazards/collapsible-soils/",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S026",
+      "candidate_ids": [
+        "B4039"
+      ],
+      "reading_scope": "§2.2.1 ASR條件；§2.2.2反應機制與膨脹不同理論（約146–170行）。",
+      "finding": "支持高鹼孔隙液中的OH作用、反應性矽成分與含水凝膠膨脹；候選保留定性共同機制。",
+      "limit": "原頁明示膨脹細模型有不同理論；不得把某個滲透壓模型說成唯一已定論，不採2006測試門檻當現行規則。",
+      "url": "https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/06073/chapt2.cfm",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S027",
+      "candidate_ids": [
+        "B4040"
+      ],
+      "reading_scope": "NISTIR7461 Introduction，印刷pp.1–2/PDF第9–10頁；脫水吸能文字。",
+      "finding": "直接支持化學結合水受熱脫除與吸能；不只是板材孔隙存液態水。",
+      "limit": "未驗整份模型、DSC圖像或任何耐火分鐘數；標準爐試不能直接換算真實火災存活時間。",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nistir7461.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    },
+    {
+      "source_id": "B4-S028",
+      "candidate_ids": [
+        "B4041"
+      ],
+      "reading_scope": "7.0301.3b Concurrent flow；3c Heat transfer；3d配置的同時淋浴例子。",
+      "finding": "支援無儲存式回收需溫排水與冷供水同時流經換熱器。",
+      "limit": "不引用安裝工法或保證節省比例；不延伸成批次浴缸水也等效的結論。",
+      "url": "https://sws.nlr.gov/spec/703013",
+      "accessed_on": "2026-11-01",
+      "read_via": "reviewer web.run.open/find 正文或PDF文字，實讀僅限所列段落；未逐圖目視驗證"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "B4001",
+        "b": "B4003",
+        "reason": "移動整團空氣與材料擴散的比較，和外皮氣密仍允許室內/空腔內路徑，是不同邊界條件；B4003若只能重述漏氣應刪章。"
+      },
+      {
+        "a": "B4003",
+        "b": "B4015",
+        "reason": "前者問氣密邊界內的水分到達冷面路徑，後者問冷玻璃使室內氣流循環；不得把前者寫成又一次泛稱熱空氣上升。"
+      },
+      {
+        "a": "B4002",
+        "b": "P090",
+        "reason": "保留固定總熱阻而移動保溫層所改變的結構板溫度；非單重述結露。"
+      },
+      {
+        "a": "B4002",
+        "b": "P209",
+        "reason": "同一水汽條件下冷點位置改變是新自變量；非單重述露點。"
+      },
+      {
+        "a": "B4004",
+        "b": "B4005",
+        "reason": "乾燥出口被限制與濕外飾面日曬改變驅動方向，不能用同一因果答案互換。"
+      },
+      {
+        "a": "B4009",
+        "b": "P096",
+        "reason": "需面對空氣空間才有相應反射邊界效果，限定組裝條件；不重新計一次輻射傳熱存在。"
+      },
+      {
+        "a": "B4016",
+        "b": "D2079",
+        "reason": "自然煙道浮力與機械負壓競爭可改變流向；若只說抽排要補氣則退為舊題例子。"
+      },
+      {
+        "a": "B4022",
+        "b": "P114",
+        "reason": "兩葉組裝的空氣耦合導致構件TL不能直接相加，保留組合邊界；不能只講一般共振。"
+      },
+      {
+        "a": "B4021",
+        "b": "B4022",
+        "reason": "彎曲波與沿板面入射投影波長匹配，和板間空氣耦合/腔內共振不同。"
+      },
+      {
+        "a": "B4024",
+        "b": "B4027",
+        "reason": "上/下區根據採光與視野分開控制透過率，和光棚改變光線方向/深度分布不同。"
+      },
+      {
+        "a": "B4030",
+        "b": "N258",
+        "reason": "表面熱阻限制日內能使用的熱容量，不能只重講有熱容量。"
+      },
+      {
+        "a": "B4030",
+        "b": "P084",
+        "reason": "保留時間尺度與表面傳熱邊界，非只換更大質量或不同材料比熱。"
+      },
+      {
+        "a": "B4034",
+        "b": "D2081",
+        "reason": "熱泵逆循環融霜與HRV/ERV送排風換熱的元件角色和工作循環不同。"
+      },
+      {
+        "a": "B4035",
+        "b": "D2001",
+        "reason": "室內濃度改變時表面由淨匯轉淨源，是雙向暫態；靜態吸附表面不是完整同答案。"
+      },
+      {
+        "a": "B4035",
+        "b": "D2003",
+        "reason": "競爭吸附/容量和氣相濃度降低後表面再供應不同，限定暫態以免退化為同題。"
+      },
+      {
+        "a": "B4037",
+        "b": "H3093",
+        "reason": "黏土晶層間水化與聚合物網路吸水有不同結構條件；只共用膨脹外觀。"
+      },
+      {
+        "a": "B4038",
+        "b": "N086",
+        "reason": "加水破壞疏鬆骨架膠結與抽水改變有效應力的方向、條件不同。"
+      }
+    ]
+  },
+  "theme_review": [
+    {
+      "id": "W4B-T01",
+      "decision": "PASS_EDITORIAL_SHORT_PROPOSAL",
+      "format": "short_explainer",
+      "body_seconds": 335,
+      "chapter_seconds": [
+        70,
+        80,
+        65,
+        70,
+        50
+      ],
+      "recap_seconds": 15,
+      "substantive_beat_seconds_max": 40,
+      "rationale": "固定同一剖面與水路；依序改變傳輸方式、冷點位置、內部氣路、乾燥出口、日曬驅動方向，追問可串接。",
+      "cut_condition": "B4003未呈現新內部路徑即刪65秒；剩270秒/4章，不補時。冷天切雨後日曬須明示條件改變。",
+      "script_gate": "未做熱濕模擬或實測；剖面與濕區動畫只能是機制示意。"
+    },
+    {
+      "id": "W4B-T02",
+      "decision": "PASS_EDITORIAL_SHORT_PROPOSAL",
+      "format": "short_explainer",
+      "body_seconds": 345,
+      "chapter_seconds": [
+        90,
+        90,
+        90,
+        75
+      ],
+      "recap_seconds": 15,
+      "substantive_beat_seconds_max": 30,
+      "rationale": "以同一聲源與兩房追蹤反射、隔牆組合、頻率弱點、側向路徑；改善一條路徑後仍有下一個問題。",
+      "cut_condition": "巧合低谷若只有名詞沒有波長/角度對照，這版暫緩；255秒/3章可另提短版，須另選版本、內容覆核及核算總長，不可直接當345秒/4章主版。",
+      "script_gate": "兩種頻率效應需畫出不同物理位置；不將敲牆或手機錄音當標準隔音量測。"
+    }
+  ],
+  "old_pair_second_read": {
+    "input_path": "reviews/wave4-root-old-pairs.json",
+    "input_sha256": "ee71341556711d43b5e92df4181518713b3a2cb842734400a01796e98b21a17c",
+    "coverage_count": 12,
+    "agreements": 12,
+    "disagreements": 0,
+    "method": "逐對讀root理由並對照現有pool question/answer_target/scope；不是再次外站來源查核。樣本為尚無distinct判定的最高12組語意分數，非隨機，不可計算誤判率。",
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "E2080",
+        "b": "E2230",
+        "reason": "有限內阻下負載功率分配與電感開關升壓，因果步驟不同。"
+      },
+      {
+        "a": "E2058",
+        "b": "E2098",
+        "reason": "持續電流需要完整回路與儲能後快速放能是兩個不同限制。"
+      },
+      {
+        "a": "D2092",
+        "b": "D2094",
+        "reason": "外部養護供水與密封低水膠比體系水化耗水的自乾燥有不同邊界，不能因水化共用而合併。"
+      },
+      {
+        "a": "E2024",
+        "b": "E2089",
+        "reason": "同電壓下容量差異與串並聯電動勢，改變的量不同。"
+      },
+      {
+        "a": "L130",
+        "b": "L132",
+        "reason": "成熟哺乳類紅血球代謝配置與血紅素攜氧能力不同，可同片但不合併核心。"
+      },
+      {
+        "a": "E2043",
+        "b": "E2089",
+        "reason": "被動電容共同電壓下按電容分配電荷，非電壓源串並聯關係。"
+      },
+      {
+        "a": "L154",
+        "b": "L156",
+        "reason": "腎小球過濾排除細胞與腎小管後續分泌，階段和方向不同。"
+      },
+      {
+        "a": "E2040",
+        "b": "E2089",
+        "reason": "串聯電容孤立中間導體電荷守恆與電池電動勢連接不同。"
+      },
+      {
+        "a": "E2169",
+        "b": "E2229",
+        "reason": "線路降低I平方R損失與buck週期供能/平滑不同。"
+      },
+      {
+        "a": "E2095",
+        "b": "E2229",
+        "reason": "固定源RC暫態壓差縮小與週期開關轉換不同。"
+      },
+      {
+        "a": "L198",
+        "b": "L285",
+        "reason": "獨立網路的私有位址重用與NAPT邊界端口轉換不同。"
+      },
+      {
+        "a": "E2048",
+        "b": "E2049",
+        "reason": "固定自由電荷改變電位差與非均勻邊緣場產生插入力不同；後題成稿若只重述電容量增加則降為前題案例。"
+      }
+    ]
+  },
+  "limits": [
+    "34題完整結構化編輯讀取，不等於34題每個主張逐外部來源驗證；來源抽查12/28，無統計代表性。",
+    "保留題級screened狀態；沒有完整旁白盲讀、逐句事實查核、念法審核、圖像授權或音畫驗收。",
+    "秒數是內容預算，尚未試讀；目前短版研究企劃不代表既有製作產線最低片長/字幕/片頭片尾等關卡已通過。",
+    "不對建築安全、健康或個案作結論；歷史教材只取穩定原理，現行法規、尺寸、效率與危險操作沒有獲准進稿。",
+    "沒有修改中央資料、選入狀態、作者檔或跑全repo tests。"
+  ],
+  "code_change_readonly": {
+    "paths": [
+      "tools/video/so-thats-why/pool/render.mjs",
+      "tools/video/so-thats-why/pool/pool.test.mjs"
+    ],
+    "scope": "依root追加請求，只讀本輪diff與validateThemes完整函式，未執行測試或修改程式。",
+    "finding": "章數最低值只對format=short_explainer降為2，其他仍4；selected ID/章節引用/非核准狀態/整數秒數/加總與區間檢核保留。總表m:ss採章節預算加總。新增測試文字覆蓋兩章短版可過、未標short/單章/錯總長拒絕。",
+    "blockers": [],
+    "sha256": {
+      "tools/video/so-thats-why/pool/render.mjs": "dd24becc0660b14bc4640481d9f323c43ace220a5f07dd79ae10dc72c915504a",
+      "tools/video/so-thats-why/pool/pool.test.mjs": "d7ab124434723aae8ea510b40f9692d44cc5b361413a81210edd990c792767ab"
+    }
+  },
+  "inputs": [
+    {
+      "path": "batches/wave4-home-buildings.json",
+      "sha256": "9a7e51acb29c46e4e4eb1fa96250bcace8c38b3a99ee37ff74af6f29f5ba14ea"
+    },
+    {
+      "path": "reviews/wave4-home-themes.json",
+      "sha256": "3f8e532e2fd269b9d79394a5d5033525ad933fe3cc9dd17a8ae9a2aa8a23bf14"
+    },
+    {
+      "path": "reviews/wave4-home-author.json",
+      "sha256": "3a694c5583b7e2f33049a3a5f519b1fe4f6fc423ebdafb44b96aa99aa0c0e18e"
+    },
+    {
+      "path": "reviews/wave4-root-old-pairs.json",
+      "sha256": "ee71341556711d43b5e92df4181518713b3a2cb842734400a01796e98b21a17c"
+    },
+    {
+      "path": ".cache/wave4-home-buildings-neighbours.json",
+      "sha256": "9a1a6eec3c36f3cfc311c8518d3eb2c73e9625f6757bd306d18378a5fb1664c2"
+    },
+    {
+      "path": "pool.json",
+      "sha256": "a2839318e7a628904e126309a5bd1ea9226c54f8fb9b557a289bc3233daeb633"
+    }
+  ],
+  "local_checks": {
+    "json_parse": "PASS",
+    "coverage_ids": "PASS",
+    "input_hash_readback": "PASS",
+    "chapter_and_beat_sums": "PASS",
+    "beat_max_45_seconds": "PASS",
+    "tests_run": false
+  }
+}

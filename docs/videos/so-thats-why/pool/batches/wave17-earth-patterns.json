@@ -1,0 +1,478 @@
+{
+  "batch_id": "wave17-earth-patterns-20261102",
+  "created_on": "2026-11-02",
+  "scope": "地表形態的控制對照；6個限定新候選。題級screened非全稿查核或製作核准；冰盤觸發爭議另列未收。",
+  "sources": [
+    {
+      "id": "E17-S001",
+      "url": "https://arxiv.org/pdf/1902.03600",
+      "title": "Salt polygons and porous media convection",
+      "publisher": "Jana Lasser et al. / arXiv；對應 Physical Review X",
+      "accessed_on": "2026-11-02",
+      "version": "arXiv:1902.03600v4，2022-12-04；稿內編製日期2022-12-06；對應PRX 13,011025 (2023)，DOI 10.1103/PhysRevX.13.011025",
+      "read_via": "web讀arXiv版本/DOI；指定UA下載PDF HTTP200，PyMuPDF讀正文，另渲染p10目讀Fig7。",
+      "reading_scope": "PDF pp1–4（I–III/A與III/B開頭）；pp7–15（III/C續、III/D、IV/A–E、V及VI）；pp16–18方法附錄B–I。未讀pp5–6詳細數值演化、p19–22全表/參考文獻，未看補充影片。",
+      "locator": "PDF p3 III；p7–8 III/C–D；pp9–14 IV/A–E；p10 Fig7",
+      "summary": "表面蒸發累積高鹽孔隙水，密度不穩定可形成地下對流；模型的鹽輸送差與實地鹽度分布支持稜線位置。",
+      "limitations": "讀的是v4作者稿而非另獨立研究；MPI正式PDF web/UA均403。稜線鹽通量由模型加取樣推算，不是直接拍到地下全流場；不宣稱所有多邊形都同成因。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E17-S002",
+      "url": "https://tc.copernicus.org/articles/16/2617/2022/tc-16-2617-2022.pdf",
+      "title": "Formation of glacier tables caused by differential ice melting: field observation and modelling",
+      "publisher": "Marceau Hénot et al. / The Cryosphere",
+      "accessed_on": "2026-11-02",
+      "version": "正式版2022-06-29；16:2617–2628；DOI 10.5194/tc-16-2617-2022",
+      "read_via": "web HTML逾時；指定UA正式PDF HTTP200，PyMuPDF讀pp1–10，渲染p9目讀Fig8。",
+      "reading_scope": "PDF pp1–10：Introduction、Observation 2.1–2.3、Model 3.1–3.2、Results 4.1–4.3、Discussion 5.1–5.2、Conclusions。未讀補充檔、資料集或播放time-lapse。",
+      "locator": "PDF pp5–9 §3.2、§4.2–4.3、§5.1–5.2及Figs5/8；p10結論",
+      "summary": "岩石尺寸與幾何改變到達下方冰面的淨熱通量；較大岩石可減慢下方融冰，小岩石則可能加速局部融化。",
+      "limitations": "Mer de Glace四座追蹤與80塊岩石快照加簡化模型；臨界尺寸依天氣/形狀，不給普遍公分門檻。模型未處理冰腳側融與倒塌，不能假設永不落下。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E17-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8501789/",
+      "title": "Sublimation-driven morphogenesis of Zen stones on ice surfaces",
+      "publisher": "Nicolas Taberlet and Nicolas Plihon / PNAS",
+      "accessed_on": "2026-11-02",
+      "version": "2021-09-30；118(40):e2109107118；DOI 10.1073/pnas.2109107118",
+      "read_via": "web正文入口；指定UA PMC HTML HTTP200，lxml讀指定正文與圖說。EuropePMC XML返回500，未當成功來源。",
+      "reading_scope": "Laboratory Experiments、Numerical Modeling、Depression Surrounding the Pedestal、Conclusion and Discussion、Materials and Methods之Experimental Protocol與Sublimation Rate in the Lyophilizer；Figs2–5圖說。未下載補充檔或看影片，未獨立目讀圖像。",
+      "locator": "Laboratory Experiments（銅/鋁及溝槽盤對照）；Numerical Modeling；Conclusion and Discussion",
+      "summary": "低溫升華條件下，遮蔽入射輻射可留下冰腳；金屬材質與接觸面積對照支持遮蔽而非單靠導熱隔絕。",
+      "limitations": "自然照片、低壓凍乾實驗、二維幾何模型分層；模型定性，不把凍乾裝置當湖面實景。周邊凹圈的遠紅外解釋不另拆新核，也不聲稱所有冰腳都靠升華。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E17-S004",
+      "url": "https://arxiv.org/pdf/physics/0601184",
+      "title": "Controlled Irradiative Formation of Penitentes",
+      "publisher": "Vance Bergeron, Charles Berger and M. D. Betterton / arXiv；對應 Physical Review Letters",
+      "accessed_on": "2026-11-02",
+      "version": "arXiv:physics/0601184v1，2006-01-24；對應PRL 96,098502，DOI 10.1103/PhysRevLett.96.098502",
+      "read_via": "web核arXiv身分/DOI；指定UA PDF HTTP200，PyMuPDF讀正文pp1–4，渲染p3目讀Fig3。",
+      "reading_scope": "PDF pp1–4的背景、實驗控制、粒徑/光/風/溫度條件、Fig3粗化轉換與染料觀察、末段灰塵討論。p5文獻未逐條開，EPAPS及影片未讀。",
+      "locator": "PDF p1多重反射；p2光/風控制；p3 Fig3與轉為融化段落；p4限制",
+      "summary": "凹處接收反射光的回饋可讓雪面高低差放大；實驗中先以升華形成並粗化，轉入槽底融化後仍可增高但間距不再增加。",
+      "limitations": "限定2006厘米級實驗，不能把特定溫度/風速變成全球門檻；風減薄水汽層的解釋為作者推測，不把每一環節都說成直接量到。未以本文替整座冰河淨消融下結論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E17-S005",
+      "url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf",
+      "title": "Ultra-sharp pinnacles sculpted by natural convective dissolution",
+      "publisher": "Jinzi Mac Huang, Joshua Tong, Michael Shelley and Leif Ristroph / NYU作者研究頁",
+      "accessed_on": "2026-11-02",
+      "version": "2020-04-28作者稿，頁面標DRAFT；同工作後刊PNAS117:23339–23344，DOI 10.1073/pnas.2001524117；不是另篇重現",
+      "read_via": "web核同題正式論文身分；指定UA下載NYU draft HTTP200，PyMuPDF讀pp1–5；p2渲染目讀Fig2。PMC正文重開為驗證頁，EuropePMC500，另一NYU正式版PDF URL404，均未算正式版全文讀通。",
+      "reading_scope": "作者稿PDF pp1–5：Laboratory experiments、A moving-interface model、Pinnacle formation、陣列實驗、Discussion and conclusions、Materials and Methods。只以已讀稿支持定性機制，不核正式版逐字差異；SI/影片未讀。",
+      "locator": "作者稿PDF p2 Fig2與Laboratory experiments；p3 A moving-interface model；p4 Discussion and conclusions",
+      "summary": "溶解造成密度較大的近表面液流，流動又改變局部溶解；實驗與模型呈現變小同時尖化，並非各處等厚消退。",
+      "limitations": "直接證據是糖固體入水實驗；自然石林僅可能貢獻機制，不是已解釋所有天然石林。尖端也向下消退，不畫成頂部完全不溶或無限尖。無製糖/高溫操作教學。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E17-S006",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0105948&type=printable",
+      "title": "Sliding Rocks on Racetrack Playa, Death Valley National Park: First Observation of Rocks in Motion",
+      "publisher": "Richard D. Norris et al. / PLOS ONE",
+      "accessed_on": "2026-11-02",
+      "version": "2014-08-27；9(8):e105948；DOI 10.1371/journal.pone.0105948",
+      "read_via": "web讀原文Introduction與Methods入口；指定UA正式PDF HTTP200，PyMuPDF讀pp3–9，p9渲染目讀Fig8/9。",
+      "reading_scope": "web Introduction與Methods開頭；PDF pp3–6觀測結果及冰片/岩石接觸，pp8–9力路徑討論與Fig8/9。p7僅圖版未目讀；SI/影片未讀。",
+      "locator": "PDF pp3–6移動觀測；p8討論薄冰推動且無浮起；p9 Fig8",
+      "summary": "觀測事件中，風與水推動大面積薄冰片，再由冰片推著仍接觸泥底的石頭；破裂和接觸幾何讓鄰石不同步。",
+      "limitations": "限2013–2014所觀測事件，不宣稱每塊歷史軌跡只有同成因或最大巨石均被量到。冰片不足以把觀測石頭浮起；不給現場復現或進入保護區操作建議。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E17-S007",
+      "url": "https://orbi.uliege.be/bitstream/2268/195696/1/PhysRevE.93.033112.pdf",
+      "title": "Rotation of melting ice disks due to melt fluid flow",
+      "publisher": "S. Dorbolo et al. / Physical Review E；Université de Liège ORBi出版副本",
+      "accessed_on": "2026-11-02",
+      "version": "2016-03-14；PRE93,033112；DOI 10.1103/PhysRevE.93.033112",
+      "read_via": "web核ORBi與原PDF p1；指定UA ORBi PDF HTTP200。APS所謂PDF路徑返回HTML，未當PDF。",
+      "reading_scope": "只讀PDF p1 Abstract、Introduction、Experimental setup開頭；未完成其餘4頁，僅作未收方向的原提案身分與範圍。",
+      "locator": "PDF p1 Introduction：lab melting disk與自然河流旋轉不同",
+      "summary": "2016研究提出融水下沉旋渦帶動冰盤的解釋；其觸發條件另受2023後續研究質疑。",
+      "limitations": "NOT_ADDED_ONLY；未完成本文全部正文查核，不作入選題的證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "E17-S008",
+      "url": "https://link.springer.com/article/10.1007/s10652-023-09912-6",
+      "title": "On the rotation of melting ice disks",
+      "publisher": "Louis M. Schellenberg, Thomas J. Newton and Gary R. Hunt / Environmental Fluid Mechanics",
+      "accessed_on": "2026-11-02",
+      "version": "正式版2023-02-18；23:465–488；DOI 10.1007/s10652-023-09912-6",
+      "read_via": "web實讀正式HTML指定章節；指定UA取得正式PDF HTTP200留存，但未逐頁讀PDF。",
+      "reading_scope": "HTML §1、§2、§3開頭與§6 Discussion and conclusions；讀冰盤/常溫HDPE/冷HDPE對照及殘餘流侷限。§4–5未完整讀。",
+      "locator": "§2理想條件與測量限制；§6各對照結果及未能唯一確定觸發機制的段落",
+      "summary": "殘餘背景流與冷卻對照使單純自發旋轉說法不足；作者仍說觸發機制未被唯一釘定。",
+      "limitations": "NOT_ADDED_ONLY；不能把本文改寫成「已證完全都是殘餘水流」；未核2024其他後續工作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "E17001",
+      "question": "鹽地隆起的多邊形邊線，為什麼不一定是乾裂留下的？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.salt_crust.solutal_convection_modulates_ridge_precipitation",
+      "answer_target": "蒸發使表層孔隙水變鹹變密，對流改變各處鹽的平流與擴散收支；模型預測下沉帶上方較易累積鹽，與稜線下高鹽分布及地表尺度相符。",
+      "scope": "限研究的活躍鹽殼與含水孔隙層。地下對流/鹽通量為模型與取樣綜合支持，不是直接全場攝影；乾裂與屈曲可同時存在，不能單憑六邊形就判因。",
+      "source_ids": [
+        "E17-S001"
+      ],
+      "source_locator": "S001 PDF p3 III；pp7–11 III/C–IV/C；pp12–14 IV/E；Fig7",
+      "premise_status": "screened",
+      "notes": "不把稜線畫成地下液體直接向上噴：下沉高鹽區因梯度較弱，向下擴散的抵銷較少。機理箭頭須標模型。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "地表凸邊可能記錄地下鹽輸送的位置，而不是一道張開的裂縫。",
+        "visual": "先用截面區分凸起鹽脊與凹裂縫；再畫較鹹表層、下沉帶、平流/擴散兩箭頭；最後以取樣格點對照稜線位置，模型箭頭不冒充實拍。",
+        "seconds": [
+          90,
+          130
+        ]
+      }
+    },
+    {
+      "id": "E17002",
+      "question": "石頭放在冰河上，為什麼小塊可能陷下去，大塊卻留下冰腳？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.glacier_table.size_heat_exchange_geometric_amplification_competition",
+      "answer_target": "小石塊可把較大外表面收到的熱集中傳入接觸區；較大岩石建立溫度梯度、表面較暖，改變淨長波與空氣熱交換，使傳到冰面的熱反而較少。",
+      "scope": "限溫帶冰河的觀測與準靜態熱收支模型；尺寸、形狀及天氣一起控制分界。冰腳變高是相對周圍融冰，石頭本身仍可下降；不是重物使冰向上生長。",
+      "source_ids": [
+        "E17-S002"
+      ],
+      "source_locator": "S002 PDF pp5–9 §3.2、§4.2–4.3、§5.1–5.2；Fig8",
+      "premise_status": "screened",
+      "notes": "不給通用臨界尺寸；不以黑色一定融快替代整個熱收支，也不把冰腳側融倒塌當本模型已計算。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "蓋住冰不一定隔熱；受熱面積、接觸面積與石頭溫度共同改變結果。",
+        "visual": "同天氣同形狀概念對照只改尺度；畫石頭與遠處冰面各自下降的高度線，再畫外表受熱/底部傳熱及暖岩表面散熱。",
+        "seconds": [
+          85,
+          110
+        ]
+      }
+    },
+    {
+      "id": "E17003",
+      "question": "寒冷湖面上的薄石片，為什麼也能站在細細的冰腳上？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.zen_stone.radiation_view_factor_differential_sublimation",
+      "answer_target": "在升華主導條件中，石片遮住部分入射輻射，使下方冰比周圍消退慢；材質與溝槽接觸對照支持遮蔽作用，不能照搬溫暖冰河的導熱尺寸門檻。",
+      "scope": "限2021自然觀察、凍乾類比與二維定性模型；實驗用腔壁紅外輻射，自然以散射日照為研究解釋，不能把兩者能譜或時間直接等同。",
+      "source_ids": [
+        "E17-S003"
+      ],
+      "source_locator": "S003 Laboratory Experiments（Fig2B–D）；Numerical Modeling；Conclusion and Discussion",
+      "premise_status": "screened",
+      "notes": "周邊凹圈只保留來源註記，不拆成第二題；不說完全無導熱，只說材質/接觸對照下主要形態由遮蔽支持。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外形相似的冰腳，可以在不同相變與能量路徑下形成。",
+        "visual": "明示切換到低溫升華研究；分框顯示銅/鋁盤與底部開槽盤仍有冰腳，旁畫可見天空角度和後退冰面，不畫冰往上長。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "E17004",
+      "question": "雪一直被消去，為什麼表面反而會長出一排尖塔？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.penitentes.radiative_ablation_feedback_sublimation_to_melt_transition",
+      "answer_target": "凹處接收反射光可加速局部消退，放大高低差；所讀實驗中升華階段尖塔高度與間距一起增加，後來槽底轉為融化時仍能增高，但間距停止增加。",
+      "scope": "限2006厘米級光照雪/冰實驗及其對自然penitentes的類比；尖塔不是新增冰。形成與後期演化條件不同，不能說只要照光或越冷就必成。",
+      "source_ids": [
+        "E17-S004"
+      ],
+      "source_locator": "S004 PDF p1輻射回饋；p2控制；p3 Fig3與染料/融化轉換段",
+      "premise_status": "screened",
+      "notes": "風控制與極低溫未生成是限制，不另立新核；不以本文早期推測斷言污染保護冰河或所有自然雪尖都同樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "增高可能是低處消失更快；同一外形的形成階段與後續變化可以換機制。",
+        "visual": "固定原始雪面高度線，凹處多次反射加深；另以兩段示意曲線比較高度與間距，轉換點標研究所觀測的槽底融化，不填自造數字。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "E17005",
+      "question": "糖柱在水裡越溶越小，頂端怎麼還可能越來越尖？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.dissolutive_sharpening.solutal_boundary_layer_shape_feedback",
+      "answer_target": "糖溶入水使近表面液體較密而下沉，流動又改變局部濃度與溶解速率；耦合的界面退縮能收成尖峰，並非各處等厚縮小。",
+      "scope": "直接證據限2020作者稿的糖固體/水實驗與邊界層模型；石林是可能自然應用，非已證全因。尖端同時後退；不宣稱頂部不溶或可無限尖化。",
+      "source_ids": [
+        "E17-S005"
+      ],
+      "source_locator": "S005作者稿PDF p2 Fig2與Laboratory experiments；p3模型；p4 Discussion",
+      "premise_status": "screened",
+      "notes": "讀的是2020-04-28 DRAFT，正式版身分已核但全文未取得；定性方向可供題級覆核，進完整稿仍須對照正式版。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "移走材料不一定磨圓；形狀與流動互相改變能使剩餘部分更尖。",
+        "visual": "側視時序顯示頂端下降與尖度增加同時發生；第二框畫下沉含糖液及側向補入清水，原創界面圖標實驗/模型，不用天然石林照假扮驗證。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "E17006",
+      "question": "死亡谷的石頭沒有浮起來，薄薄的冰怎麼仍能推著它走？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.sailing_stones.thin_ice_panel_force_transfer_contact_decoupling",
+      "answer_target": "所觀測事件中，風與水流推動大面積薄冰片，冰片把力傳給仍在濕泥底上的石頭；冰片破裂、越過低石或接觸位置不同，使鄰石可能不同步。",
+      "scope": "限Racetrack Playa 2013–2014直接觀察與GPS事件；不把歷史所有軌跡、最大岩塊或所有冰推石都概括成已測。不是厚冰浮載石頭，也不是石頭自己滑動發動。",
+      "source_ids": [
+        "E17-S006"
+      ],
+      "source_locator": "S006 PDF pp3–6觀測與碎裂；p8無浮起的薄冰推動；Fig8",
+      "premise_status": "screened",
+      "notes": "不另把平行軌跡與不同步軌跡拆新核；同一冰片接觸條件的控制變體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似微弱的風不是只吹小石頭；較大的冰片是力的傳遞面，而接觸是否維持很關鍵。",
+        "visual": "剖面畫漂浮冰片碰到仍接觸泥底的石頭；俯視畫一片推兩石再裂開，其中一石停住，標示為觀測支持的概念圖。",
+        "seconds": [
+          95,
+          130
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "E17-NA01",
+      "question": "冰盤融化時一定會自行旋轉嗎？",
+      "related_ids": [],
+      "source_ids": [
+        "E17-S007",
+        "E17-S008"
+      ],
+      "reason": "2016自旋解釋後有2023控制研究指出觸發仍未唯一確定；不把融水旋渦當已定論。現僅讀後篇§2/6與前篇p1，不收確定機制題。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA02",
+      "question": "每個鹽地六邊形都是同一種對流嗎？",
+      "related_ids": [
+        "E17001",
+        "E11011",
+        "E11014"
+      ],
+      "source_ids": [
+        "E17-S001"
+      ],
+      "reason": "圖形相似不足判成因；只保留有含水孔隙層/鹽殼取樣與模型支持的限定題。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA03",
+      "question": "鹽脊下沉處為什麼長得比較快？",
+      "related_ids": [
+        "E17001"
+      ],
+      "source_ids": [
+        "E17-S001"
+      ],
+      "reason": "這是E17001鹽通量收支的因果中段，不另拆一題。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA04",
+      "question": "鹽多邊形為什麼到不同國家仍差不多大？",
+      "related_ids": [
+        "E17001"
+      ],
+      "source_ids": [
+        "E17-S001"
+      ],
+      "reason": "尺度選擇屬同一對流模型驗證；不以換地點增加核心。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA05",
+      "question": "把岩石換成銅或鋁，冰腳會有什麼差別？",
+      "related_ids": [
+        "E17003"
+      ],
+      "source_ids": [
+        "E17-S003"
+      ],
+      "reason": "材質對照用來檢驗升華遮蔽，納同核，不獨立計數。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA06",
+      "question": "冰腳周圍怎麼又凹出一圈？",
+      "related_ids": [
+        "E17003"
+      ],
+      "source_ids": [
+        "E17-S003"
+      ],
+      "reason": "來源有遠紅外吸收深度解釋，但本輪未另核光譜資料；先作未收延伸，不為湊題加第二條熱收支支線。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA07",
+      "question": "冰河石頭多黑就一定融得越快嗎？",
+      "related_ids": [
+        "N217",
+        "E17002"
+      ],
+      "source_ids": [
+        "E17-S002"
+      ],
+      "reason": "單純反照率是N217；尺寸/幾何反轉已收E17002，勿再算第三核。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA08",
+      "question": "冰腳變高是不是石頭真的被冰抬起？",
+      "related_ids": [
+        "E17002",
+        "E17003"
+      ],
+      "source_ids": [
+        "E17-S002",
+        "E17-S003"
+      ],
+      "reason": "相對高程澄清是兩個入選題共同前提，不另算新核。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA09",
+      "question": "把雪尖換成火星或木星衛星上的尖塔呢？",
+      "related_ids": [
+        "E17004"
+      ],
+      "source_ids": [
+        "E17-S004"
+      ],
+      "reason": "環境傳輸條件不同，未讀相應原研究正文；不從地球實驗直接外推。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA10",
+      "question": "雪尖為什麼跟光源同一方向？",
+      "related_ids": [
+        "E17004"
+      ],
+      "source_ids": [
+        "E17-S004"
+      ],
+      "reason": "光照方向是同一輻射消融鏈的條件，不另計。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA11",
+      "question": "天然石林是否已被糖柱實驗完整解答？",
+      "related_ids": [
+        "N082",
+        "E17005"
+      ],
+      "source_ids": [
+        "E17-S005"
+      ],
+      "reason": "原作者明列自然地形水文/材料複雜，僅提出可能貢獻機制；拒絕把類比當全因。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA12",
+      "question": "糖塊很多孔時為什麼形成一整排尖峰？",
+      "related_ids": [
+        "E17005"
+      ],
+      "source_ids": [
+        "E17-S005"
+      ],
+      "reason": "同溶解尖化核心的幾何變體，原孔位影響陣列；不另拆計。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA13",
+      "question": "石頭走出平行路線和突然各走各的，是兩個謎題嗎？",
+      "related_ids": [
+        "E17006"
+      ],
+      "source_ids": [
+        "E17-S006"
+      ],
+      "reason": "同冰片受力與碎裂/接觸變體，已在同一候選內。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA14",
+      "question": "凍土石環是不是只因結冰體積變大？",
+      "related_ids": [
+        "N226"
+      ],
+      "source_ids": [],
+      "reason": "已有冰透鏡/遷水凍脹；本輪未取得足以新增側向分選回饋的指定原研究，不收名詞題。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA15",
+      "question": "冰融成坑為什麼能形成圓湖？",
+      "related_ids": [
+        "E7006",
+        "E11012"
+      ],
+      "source_ids": [],
+      "reason": "舊埋冰體積流失核心；僅換湖形或地點不足。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA16",
+      "question": "沙丘為什麼有很多不同形狀？",
+      "related_ids": [
+        "E7011",
+        "E11008",
+        "E11009",
+        "E11010"
+      ],
+      "source_ids": [],
+      "reason": "既有移動/植被固定/尾流/交換核心，本輪未找到新控制差別，不收分類清單。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA17",
+      "question": "岩石蜂巢孔為什麼越長越多？",
+      "related_ids": [
+        "N234"
+      ],
+      "source_ids": [],
+      "reason": "只有鹽結晶壓力背景不足以建立圖樣選擇新核；沿歷史未收，不以蜂巢名稱重開。",
+      "status": "NOT_ADDED"
+    },
+    {
+      "id": "E17-NA18",
+      "question": "小溪變曲、坡地滑動能再換新地點嗎？",
+      "related_ids": [
+        "E7007",
+        "N230",
+        "N231"
+      ],
+      "source_ids": [],
+      "reason": "既有侵蝕沉積/孔隙水壓/坡腳支撐核心，不因地點或星球更名。",
+      "status": "NOT_ADDED"
+    }
+  ]
+}

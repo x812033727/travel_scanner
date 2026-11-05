@@ -1,0 +1,39 @@
+{
+  "tested_on": "2026-11-02T06:17:42.148Z",
+  "result": "PASS",
+  "selected": 3065,
+  "index_html_sha256": "e6c7517f97542e67e6d60a1d47ff0ccb03c7003bd6ad17d13c80f6d84efd8d38",
+  "source_sample": {
+    "id": "A26001",
+    "urls": [
+      "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC3912879/"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave26-desktop.png",
+    "wave26-source-desktop.png",
+    "wave26-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "根目讀三張：桌面3065/2629/271/146與搜尋表單清楚；A26001展開顯示問答、段落85–125秒及scope；來源URL在截圖折頁下，由DOM href測試核對，未聲稱此圖已目視全部來源。390px手機指標換行與表單無水平溢出；未作成片或互動教具驗收。",
+  "screenshot_hashes": {
+    "wave26-desktop.png": "263567f9eaa76d8eca002196e2e086258faa0a84175fa4673adaca6074c89654",
+    "wave26-source-desktop.png": "e9b50b93b8354674e12dd107563d216953a5bc9eeb89e397ed6b997f63b45892",
+    "wave26-mobile.png": "bdf73615e0e63f1a8ac43b09b83229273aeee47bc82fdb5490d1ce3f2d95cbbe"
+  }
+}

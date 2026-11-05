@@ -1,0 +1,1135 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "raw": 3599,
+    "selected": 3220,
+    "not_added": 1580,
+    "themes": 370,
+    "head": "b65b15e34f51ad119cf55c5fafe3290db5b1e531"
+  },
+  "role_and_scope": "非此組作者，題級與紙上片長核對；當日讀原資料快取及圖。",
+  "reviewed_candidate_ids": [
+    "R39001",
+    "R39002",
+    "R39003",
+    "R39004",
+    "R39005",
+    "R39006"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave39-food.json",
+      "sha256": "159e46538d6179c87bfd9c86864ee02309e5b6414f963daad9eff31b8b6dff96"
+    },
+    {
+      "file": "reviews/wave39-food-author.json",
+      "sha256": "5b27e01d798a9c1efa42cc8da55225505cf2b127d3ffc16a94671f494e26d378"
+    },
+    {
+      "file": "reviews/wave39-food-themes.json",
+      "sha256": "35078cc25f475097d66422817fd3f41d49acaf635d22bafd73aa2a55b87724a8"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "R39001",
+      "decision": "merge",
+      "canonical_id": "LEG-S03",
+      "reason": "雙酵素接力生成洋蔥催淚因子為LEG-S03已有答案。RNA干擾後產物下降是很好的變體證據，但不是新核心。",
+      "source_ids": [
+        "R39-S001",
+        "R39-S002"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R39002",
+      "decision": "retain",
+      "canonical_id": "R39002",
+      "reason": "較韌外層下方先被壓縮，外層破裂才有快霧及後續液絲碎滴；有可見高速時序與改刀條件。舊催淚題未解答此過程。",
+      "source_ids": [
+        "R39-S003"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R39003",
+      "decision": "retain",
+      "canonical_id": "R39003",
+      "reason": "具體混配含硫前驅物、酵素及胺基酸重建藍色；另比較替換酵素後的色素量。只保模型配方與產色方向。",
+      "source_ids": [
+        "R39-S004"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R39004",
+      "decision": "retain",
+      "canonical_id": "R39004",
+      "reason": "整蒜冷藏及轉溫藏改變後續加工前驅物；表2追蹤isoalliin減少、cycloalliin上升，最後加工綠度有對照。",
+      "source_ids": [
+        "R39-S005"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R39005",
+      "decision": "retain",
+      "canonical_id": "R39005",
+      "reason": "採樣位置加時間，辨出口腔殘留與體內來源對呼氣成分的不同貢獻；5人樣本與沒有採血均在界線內。",
+      "source_ids": [
+        "R39-S006"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R39006",
+      "decision": "retain",
+      "canonical_id": "R39006",
+      "reason": "口腔量測比較混合順序，另看水相與對疏水分子的乳脂效應；屬攝入時可控制的程序。",
+      "source_ids": [
+        "R39-S007"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R39-S001",
+      "title": "An onion enzyme that makes the eyes water",
+      "reading_scope": "讀Nature公開P008–009摘要及P017圖題。只支持識別專門合成酶，無聲稱觀眾落淚量。",
+      "locator": "原刊公開摘要 P008–009；辨識另一種專門生成催淚因子的酵素。",
+      "read_via": "獨立讀回原作者取得之當日快取，核原件及抽文SHA。",
+      "cache": {
+        "file": ".cache/wave39-food-tear.html",
+        "sha256": "7cbf18d6899539a5ccd35cd593d22f32c326459bfdb47af9009a0e34539e1a85",
+        "text_file": ".cache/wave39-food-tear.txt",
+        "text_sha256": "ed62f1f8c69c5f6db965285e45b88ff9d10d8b0290c9c61051288dfed90442d7"
+      },
+      "decision": "supports_bounded_topic"
+    },
+    {
+      "source_id": "R39-S002",
+      "title": "Silencing onion lachrymatory factor synthase causes a significant change in the sulfur secondary metabolite profile",
+      "reading_scope": "讀2008作者摘要，六株基因干擾、活性與傷後催淚因子的下降；沒有自稱核到栽培/測定全文。",
+      "locator": "原作者摘要，六株轉殖植株、RNA干擾、受傷組織的催淚因子與反應分流。",
+      "read_via": "獨立讀回原作者取得之當日快取，核原件及抽文SHA。",
+      "cache": {
+        "file": ".cache/wave39-food-onion2-abs.json",
+        "sha256": "4a896f11b5b4371e4465d9376ba99d346915d5b97385b369cb551f03823a652b",
+        "text_file": ".cache/wave39-food-onion2-abs.txt",
+        "text_sha256": "912a97813ee247923ed1fb4210a47464a877bdc62fe2c6b81ab93cdc201a4e4b"
+      },
+      "decision": "supports_bounded_topic"
+    },
+    {
+      "source_id": "R39-S003",
+      "title": "Droplet outbursts from onion cutting",
+      "reading_scope": "讀原刊XML P009–014初裂兩段與追蹤限制、P017–029速度/刀刃條件與能量、P031–035組織機制。量的是噴滴；未獨立看原影片或原圖。",
+      "locator": "原文 P008–029、031–035，圖1–3，高速攝影、刀尖尺度、速度與組織形變。",
+      "read_via": "獨立讀回原作者取得之當日快取，核原件及抽文SHA。",
+      "cache": {
+        "file": ".cache/wave39-food-droplet.xml",
+        "sha256": "8570cf9eb6b49eaa20523f165b005bfe87b1f66a6dbc14436259271d30837989",
+        "text_file": ".cache/wave39-food-droplet.txt",
+        "text_sha256": "c848c450ce1d0eda1070659c5565cf1d0ceabf21ea1c7795e252be881a50cdb9"
+      },
+      "decision": "supports_bounded_topic"
+    },
+    {
+      "source_id": "R39-S004",
+      "title": "Model studies on precursor system generating blue pigment in onion and garlic",
+      "reading_scope": "讀作者摘要，洋蔥1-PeCSO、蒜2-PeCSO、純化酵素和甘胺酸；粗洋蔥酵素取代蒜酵素時產色較少。不能由此推所有蔥蒜的色澤或安全。",
+      "locator": "原作者摘要的純化成分重建，兩種蔥蒜前驅物、蒜胺酸酶與甘胺酸，並比較換酶的結果。",
+      "read_via": "獨立讀回原作者取得之當日快取，核原件及抽文SHA。",
+      "cache": {
+        "file": ".cache/wave39-food-blue-abs.json",
+        "sha256": "7136b68863c3aff9103939f791c45832c02c1e5a3e54c69aed58dcfb8a8ae4a1",
+        "text_file": ".cache/wave39-food-blue-abs.txt",
+        "text_sha256": "9c5b14204f28a9cda899417bbdb4a4b0af74a2c367c31c5e729a4f4ffdfeabfb"
+      },
+      "decision": "supports_bounded_topic"
+    },
+    {
+      "source_id": "R39-S005",
+      "title": "Causes and Remedies for Green Discoloration of Processed Garlic Puree: Effects of Storage Conditions on Ingredient Bulbs",
+      "reading_scope": "原刊PDF印刷pp189–192，Fig3 A/B/C和Table2另外渲染目讀，Fig4說明/相關正文在p191。冷後溫藏屬另一年度組，不將Fig3與Table2畫成同顆蒜。",
+      "locator": "原刊PDF頁187–192；整顆蒜的冷藏、再溫藏及蒜泥的吸光、含硫前驅物分析。",
+      "read_via": "獨立讀回原作者取得之當日快取，核原件及抽文SHA。",
+      "cache": {
+        "file": ".cache/wave39-food-cold.pdf",
+        "sha256": "b7fc960aaf667bd9f88020609289af408569f6cbe1d36f87c244278300e7fb16",
+        "text_file": ".cache/wave39-food-cold.txt",
+        "text_sha256": "3057f6abbd850c189106c9f8850e37efc8cef514d28a750505c503adc6deff2a"
+      },
+      "decision": "supports_bounded_topic"
+    },
+    {
+      "source_id": "R39-S006",
+      "title": "Differentiation of mouth versus gut as site of origin of odoriferous breath gases after garlic ingestion",
+      "reading_scope": "讀作者摘要5人/6g，口腔與肺泡氣和尿樣；3小時後主成分為AMS是量測，體內來源是推論，沒有直接採血或嗅覺量表。",
+      "locator": "原作者摘要；5人吃6克大蒜後分採口腔氣、肺泡氣與尿樣，追蹤不同含硫分子。",
+      "read_via": "獨立讀回原作者取得之當日快取，核原件及抽文SHA。",
+      "cache": {
+        "file": ".cache/wave39-food-breath-abs.json",
+        "sha256": "fc3a7463921bfa354596d410a0898de37c4197a9b2243f25c49b31e5c55981fd",
+        "text_file": ".cache/wave39-food-breath-abs.txt",
+        "text_sha256": "2a2b1bfc7ddd8cf8254e627b7ed1e6802229993d752ea49a1f927c4933f58b2c"
+      },
+      "decision": "supports_bounded_topic"
+    },
+    {
+      "source_id": "R39-S007",
+      "title": "Effect of milk on the deodorization of malodorous breath after garlic ingestion",
+      "reading_scope": "讀作者摘要，以SIFT-MS量揮發物；全脂對DADS/AMDS效果大於脫脂、水相是主要因素，先混再吃的順序比較限定口腔。",
+      "locator": "原作者摘要；奶的水相、全脂與脫脂、先混合或吃完再喝；分別測頂空、口腔及鼻腔。",
+      "read_via": "獨立讀回原作者取得之當日快取，核原件及抽文SHA。",
+      "cache": {
+        "file": ".cache/wave39-food-milk-abs.json",
+        "sha256": "0907b03836df3b062d998fb3977c8ad69be160344311ed28e6fb55bd3d15dfdd",
+        "text_file": ".cache/wave39-food-milk-abs.txt",
+        "text_sha256": "f52a929cdc0503595068e614a203d7ad772c1ecbc3bde9ff9711cf7179480a52"
+      },
+      "decision": "supports_bounded_topic"
+    }
+  ],
+  "source_identity_review": "7來源記錄。洋蔥機械噴滴論文與LEG-S03卡片所引的預印本/團隊介紹屬同工作，並非三項獨立實驗；化學生理與機械時序是不同問題。",
+  "source_reading_summary": "逐件核SHA，5份原作者公開摘要加2份原刊指定正文。從原PDF另外看2頁圖/表。",
+  "source_fetch_limits": [
+    "嘗試額外開S002 PMC正文遇驗證頁、EuropePMC XML 500、OUP重導頁不可取，沒有把搜尋摘錄當全文。S002的獨立結論限已讀摘要。"
+  ],
+  "visual_readings": [
+    {
+      "file": ".cache/wave39-physics-peer-garlic-p3.png",
+      "sha256": "a682c18e141339d503d6498de8612189490facadc689a27580c7d5ab64c3a2ac",
+      "scope": "S005印刷189，Fig3的樣品組與綠度/isoalliin/Glu-PEC三量。"
+    },
+    {
+      "file": ".cache/wave39-physics-peer-garlic-p4.png",
+      "sha256": "22a1718c2c8bfbf146057efb1618a0eba5e696934fe5e9a65610cf80a6533180",
+      "scope": "S005印刷190，Table2冷藏後轉溫的條件與顏色、分子讀數。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R39001",
+      "b": "LEG-S03",
+      "decision": "merge",
+      "reason": "雙酵素接力生成洋蔥催淚因子為LEG-S03已有答案。RNA干擾後產物下降是很好的變體證據，但不是新核心。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39001",
+      "b": "F4013",
+      "decision": "distinct",
+      "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗拍碎蒜組織令alliinase接觸前驅物形成allicin等。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39002",
+      "b": "LEG-S03",
+      "decision": "distinct",
+      "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗洋蔥破損後兩個酵素接力讓催淚物形成。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39002",
+      "b": "X38-001",
+      "decision": "distinct",
+      "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗大水滴在氣流中鼓袋，破後厚邊分裂。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39003",
+      "b": "F4013",
+      "decision": "distinct",
+      "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗拍碎蒜組織令alliinase接觸前驅物形成allicin等。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39003",
+      "b": "R39004",
+      "decision": "distinct",
+      "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39004",
+      "b": "D2030",
+      "decision": "distinct",
+      "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗乳酸菌在奶油發酵中生成香味分子。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39005",
+      "b": "F4013",
+      "decision": "distinct",
+      "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗拍碎蒜組織令alliinase接觸前驅物形成allicin等。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39005",
+      "b": "R39006",
+      "decision": "distinct",
+      "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗攝入順序及水脂相影響短時口腔揮發物量。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39006",
+      "b": "D2030",
+      "decision": "distinct",
+      "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗乳酸菌在奶油發酵中生成香味分子。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R39001",
+      "b": "LEG-S03",
+      "decision": "merge",
+      "reason": "雙酵素接力生成洋蔥催淚因子為LEG-S03已有答案。RNA干擾後產物下降是很好的變體證據，但不是新核心。",
+      "cosine": 0.776647,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39001",
+      "b": "LEG-S50",
+      "decision": "distinct",
+      "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗切面酚經氧化生成褐色物質。",
+      "cosine": 0.68312,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39001",
+      "b": "L022",
+      "decision": "distinct",
+      "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗pH改變酵素催化環境。",
+      "cosine": 0.640589,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39001",
+      "b": "L024",
+      "decision": "distinct",
+      "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗產物離開讓酵素開始下輪循環。",
+      "cosine": 0.634888,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39001",
+      "b": "L020",
+      "decision": "distinct",
+      "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗活性部位的受質選擇。",
+      "cosine": 0.631513,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39002",
+      "b": "F15002",
+      "decision": "distinct",
+      "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗麵片凹槽與表面吸水差造成彎曲。",
+      "cosine": 0.718601,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39002",
+      "b": "I12009",
+      "decision": "distinct",
+      "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗液滴部分合併時的界面波及頸縮。",
+      "cosine": 0.713931,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39002",
+      "b": "B16005",
+      "decision": "distinct",
+      "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗細絲在黏滴內屈曲、盤繞收線。",
+      "cosine": 0.699548,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39002",
+      "b": "A23002",
+      "decision": "distinct",
+      "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗動物彈片時序與液滴回彈交接能量。",
+      "cosine": 0.693041,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39002",
+      "b": "Q9007",
+      "decision": "distinct",
+      "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗墨水腔氣泡的可壓縮性、共振與出墨壓力。",
+      "cosine": 0.690177,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39003",
+      "b": "R6007",
+      "decision": "distinct",
+      "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗繡球萼片的鋁、花青素及共色素複合。",
+      "cosine": 0.67578,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39003",
+      "b": "F4029",
+      "decision": "distinct",
+      "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗馬鈴薯低溫儲存的糖代謝供應炸後褐變。",
+      "cosine": 0.602369,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39003",
+      "b": "R28005",
+      "decision": "distinct",
+      "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗畫作截面原混色中的紅成分褪去。",
+      "cosine": 0.58984,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39003",
+      "b": "X5015",
+      "decision": "distinct",
+      "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗靛藍集中於紗表，被磨掉後露白。",
+      "cosine": 0.584398,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39003",
+      "b": "R39004",
+      "decision": "distinct",
+      "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變。",
+      "cosine": 0.57145,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39004",
+      "b": "W5009",
+      "decision": "distinct",
+      "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗進料比改變成絮菌組成，影響泥的沉降。",
+      "cosine": 0.672238,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39004",
+      "b": "F4019",
+      "decision": "distinct",
+      "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗葉綠素在酸或加熱後生成暗色化合物。",
+      "cosine": 0.648049,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39004",
+      "b": "F4020",
+      "decision": "distinct",
+      "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗果乾表面硬化使水分不易移出。",
+      "cosine": 0.630158,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39004",
+      "b": "R39002",
+      "decision": "distinct",
+      "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲。",
+      "cosine": 0.620391,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39004",
+      "b": "D2017",
+      "decision": "distinct",
+      "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗污水分離與後續污泥處理用途。",
+      "cosine": 0.61472,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39005",
+      "b": "F4013",
+      "decision": "distinct",
+      "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗拍碎蒜組織令alliinase接觸前驅物形成allicin等。",
+      "cosine": 0.653324,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39005",
+      "b": "L144",
+      "decision": "distinct",
+      "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗口腔澱粉消化。",
+      "cosine": 0.562836,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39005",
+      "b": "R39006",
+      "decision": "distinct",
+      "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗攝入順序及水脂相影響短時口腔揮發物量。",
+      "cosine": 0.55853,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39005",
+      "b": "L143",
+      "decision": "distinct",
+      "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗殘氣量與可呼出的氣量。",
+      "cosine": 0.557382,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39005",
+      "b": "A5034",
+      "decision": "distinct",
+      "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗同一分鐘總通氣量下不同死腔比例。",
+      "cosine": 0.552533,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39006",
+      "b": "F4022",
+      "decision": "distinct",
+      "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗單寧與唾液蛋白結合引發澀感。",
+      "cosine": 0.701612,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39006",
+      "b": "D2059",
+      "decision": "distinct",
+      "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗水洗凝乳降低乳糖、改變後續發酵。",
+      "cosine": 0.692544,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39006",
+      "b": "D2034",
+      "decision": "distinct",
+      "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗補水洗濾使可透膜溶質移除。",
+      "cosine": 0.652667,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39006",
+      "b": "D2038",
+      "decision": "distinct",
+      "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗均質第二段處理第一段形成的脂肪滴群聚。",
+      "cosine": 0.648858,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R39006",
+      "b": "D2056",
+      "decision": "distinct",
+      "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗酸化與凝乳酶令酪蛋白失穩的不同途徑。",
+      "cosine": 0.645166,
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "additional_cross_wave_pairs": [
+    {
+      "a": "R39004",
+      "b": "F4029",
+      "decision": "distinct",
+      "reason": "兩者都先冷藏後加工，但蒜的冷後轉溫實驗還看到isoalliin減少、cycloalliin增加及綠度回落，與馬鈴薯低溫還原糖供烹炸褐變不同。"
+    },
+    {
+      "a": "R39002",
+      "b": "X39-003",
+      "decision": "distinct",
+      "reason": "鈍工具推薄片留下雙裂舌片或波線，不會解釋洋蔥外層破裂後快滴和液絲的時序。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "R39001",
+        "canonical_id": "LEG-S03",
+        "reason": "雙酵素接力生成洋蔥催淚因子為LEG-S03已有答案。RNA干擾後產物下降是很好的變體證據，但不是新核心。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R39001",
+        "b": "F4013",
+        "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗拍碎蒜組織令alliinase接觸前驅物形成allicin等。"
+      },
+      {
+        "a": "R39002",
+        "b": "LEG-S03",
+        "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗洋蔥破損後兩個酵素接力讓催淚物形成。"
+      },
+      {
+        "a": "R39002",
+        "b": "X38-001",
+        "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗大水滴在氣流中鼓袋，破後厚邊分裂。"
+      },
+      {
+        "a": "R39003",
+        "b": "F4013",
+        "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗拍碎蒜組織令alliinase接觸前驅物形成allicin等。"
+      },
+      {
+        "a": "R39003",
+        "b": "R39004",
+        "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變。"
+      },
+      {
+        "a": "R39004",
+        "b": "D2030",
+        "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗乳酸菌在奶油發酵中生成香味分子。"
+      },
+      {
+        "a": "R39005",
+        "b": "F4013",
+        "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗拍碎蒜組織令alliinase接觸前驅物形成allicin等。"
+      },
+      {
+        "a": "R39005",
+        "b": "R39006",
+        "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗攝入順序及水脂相影響短時口腔揮發物量。"
+      },
+      {
+        "a": "R39006",
+        "b": "D2030",
+        "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗乳酸菌在奶油發酵中生成香味分子。"
+      },
+      {
+        "a": "R39001",
+        "b": "LEG-S50",
+        "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗切面酚經氧化生成褐色物質。"
+      },
+      {
+        "a": "R39001",
+        "b": "L022",
+        "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗pH改變酵素催化環境。"
+      },
+      {
+        "a": "R39001",
+        "b": "L024",
+        "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗產物離開讓酵素開始下輪循環。"
+      },
+      {
+        "a": "R39001",
+        "b": "L020",
+        "reason": "前者檢驗切開後藉專門合成酶產生催淚因子；對照題檢驗活性部位的受質選擇。"
+      },
+      {
+        "a": "R39002",
+        "b": "F15002",
+        "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗麵片凹槽與表面吸水差造成彎曲。"
+      },
+      {
+        "a": "R39002",
+        "b": "I12009",
+        "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗液滴部分合併時的界面波及頸縮。"
+      },
+      {
+        "a": "R39002",
+        "b": "B16005",
+        "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗細絲在黏滴內屈曲、盤繞收線。"
+      },
+      {
+        "a": "R39002",
+        "b": "A23002",
+        "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗動物彈片時序與液滴回彈交接能量。"
+      },
+      {
+        "a": "R39002",
+        "b": "Q9007",
+        "reason": "前者檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲；對照題檢驗墨水腔氣泡的可壓縮性、共振與出墨壓力。"
+      },
+      {
+        "a": "R39003",
+        "b": "R6007",
+        "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗繡球萼片的鋁、花青素及共色素複合。"
+      },
+      {
+        "a": "R39003",
+        "b": "F4029",
+        "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗馬鈴薯低溫儲存的糖代謝供應炸後褐變。"
+      },
+      {
+        "a": "R39003",
+        "b": "R28005",
+        "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗畫作截面原混色中的紅成分褪去。"
+      },
+      {
+        "a": "R39003",
+        "b": "X5015",
+        "reason": "前者檢驗在定義成分的試管重建含硫藍色素；對照題檢驗靛藍集中於紗表，被磨掉後露白。"
+      },
+      {
+        "a": "R39004",
+        "b": "W5009",
+        "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗進料比改變成絮菌組成，影響泥的沉降。"
+      },
+      {
+        "a": "R39004",
+        "b": "F4019",
+        "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗葉綠素在酸或加熱後生成暗色化合物。"
+      },
+      {
+        "a": "R39004",
+        "b": "F4020",
+        "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗果乾表面硬化使水分不易移出。"
+      },
+      {
+        "a": "R39004",
+        "b": "R39002",
+        "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗刀壓組織先累積變形，破裂分成快霧與後續液絲。"
+      },
+      {
+        "a": "R39004",
+        "b": "D2017",
+        "reason": "前者檢驗把整顆蒜由冷轉溫再打泥，前驅物及綠度跟著變；對照題檢驗污水分離與後續污泥處理用途。"
+      },
+      {
+        "a": "R39005",
+        "b": "L144",
+        "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗口腔澱粉消化。"
+      },
+      {
+        "a": "R39005",
+        "b": "L143",
+        "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗殘氣量與可呼出的氣量。"
+      },
+      {
+        "a": "R39005",
+        "b": "A5034",
+        "reason": "前者檢驗比較口腔/肺泡/尿樣和三小時後主成分，區分來源；對照題檢驗同一分鐘總通氣量下不同死腔比例。"
+      },
+      {
+        "a": "R39006",
+        "b": "F4022",
+        "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗單寧與唾液蛋白結合引發澀感。"
+      },
+      {
+        "a": "R39006",
+        "b": "D2059",
+        "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗水洗凝乳降低乳糖、改變後續發酵。"
+      },
+      {
+        "a": "R39006",
+        "b": "D2034",
+        "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗補水洗濾使可透膜溶質移除。"
+      },
+      {
+        "a": "R39006",
+        "b": "D2038",
+        "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗均質第二段處理第一段形成的脂肪滴群聚。"
+      },
+      {
+        "a": "R39006",
+        "b": "D2056",
+        "reason": "前者檢驗攝入順序及水脂相影響短時口腔揮發物量；對照題檢驗酸化與凝乳酶令酪蛋白失穩的不同途徑。"
+      },
+      {
+        "a": "R39004",
+        "b": "F4029",
+        "reason": "兩者都先冷藏後加工，但蒜的冷後轉溫實驗還看到isoalliin減少、cycloalliin增加及綠度回落，與馬鈴薯低溫還原糖供烹炸褐變不同。"
+      },
+      {
+        "a": "R39002",
+        "b": "X39-003",
+        "reason": "鈍工具推薄片留下雙裂舌片或波線，不會解釋洋蔥外層破裂後快滴和液絲的時序。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R39-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R39001"
+      ],
+      "reason": "品種顏色不創造新酵素途徑。"
+    },
+    {
+      "id": "R39-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R39002"
+      ],
+      "reason": "噴滴與流淚量無相等換算。"
+    },
+    {
+      "id": "R39-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R39002"
+      ],
+      "reason": "同一生成事件的兩階段適合比著講。"
+    },
+    {
+      "id": "R39-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R39003"
+      ],
+      "reason": "無毒理或微生物資料。"
+    },
+    {
+      "id": "R39-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R39004"
+      ],
+      "reason": "此論文的結果支持含硫前驅物途徑，不支持葉綠素答案。"
+    },
+    {
+      "id": "R39-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R39004"
+      ],
+      "reason": "天數是同一處理的劑量變項。"
+    },
+    {
+      "id": "R39-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R39005"
+      ],
+      "reason": "試驗沒有刷牙組。"
+    },
+    {
+      "id": "R39-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R39006"
+      ],
+      "reason": "口中降低的分子未涵蓋一天的主觀口氣。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W39R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 58,
+      "chapter_seconds": [
+        30,
+        28
+      ],
+      "candidate_seconds": {
+        "R39002": 30,
+        "R39001": 28
+      },
+      "beats_seconds": [
+        18,
+        12,
+        16,
+        12
+      ],
+      "reason": "一刀分兩個研究端點：組織受力噴滴、酵素反應生成；兩者合片不暗示一項研究量了兩者。",
+      "drop_if": "圖若畫成實驗測過人的眼淚，就撤下該圖。"
+    },
+    {
+      "id": "W39R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 58,
+      "chapter_seconds": [
+        29,
+        29
+      ],
+      "candidate_seconds": {
+        "R39003": 29,
+        "R39004": 29
+      },
+      "beats_seconds": [
+        17,
+        12,
+        17,
+        12
+      ],
+      "reason": "試管化學重建先回答能否產藍，再另看冷後轉溫的整蒜製泥，不把管中藍色等同蒜泥綠度讀數。",
+      "drop_if": "剪不清模型和蒜泥的差別，就用兩張標出試管／蒜球的圖。"
+    },
+    {
+      "id": "W39R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 60,
+      "chapter_seconds": [
+        32,
+        28
+      ],
+      "candidate_seconds": {
+        "R39005": 32,
+        "R39006": 28
+      },
+      "beats_seconds": [
+        20,
+        12,
+        16,
+        12
+      ],
+      "reason": "同一問題先追三小時後分子的來源，再判牛奶順序能改哪段，水與脂兩個觀察取代末拍重述。",
+      "drop_if": "若後段只剩喝奶建議，剪掉它，停在兩種氣樣的對照。"
+    }
+  ],
+  "timing_probe": [
+    {
+      "id": "W39R-T01",
+      "manifest": {
+        "file": ".cache/wave39-onion-read.json",
+        "sha256": "6697058bc83151b6da1952fee404c4ba7851318c22eced33cd80429d4026b414"
+      },
+      "wav": {
+        "file": ".cache/wave39-onion-read-3.wav",
+        "sha256": "93bb99dd1319bae87e474804fba8e591a9716151094c2a28b83ae536d6f8f09f"
+      },
+      "seconds": 53.659,
+      "scope": "從root產生的本機台灣華語合成WAV標頭重算連讀時間，核文字，未做聽感測試或成片驗收。"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "R39005",
+      "readback": "答案已明示體內來源是根據氣樣/尿樣推論，無採血或嗅覺測驗。"
+    },
+    {
+      "item": "R39006/W39R-T03",
+      "readback": "修後加入水相為主、全脂對兩種較疏水分子的對照，題名明示先混再吃。"
+    }
+  ],
+  "final_input_check": {
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "85f2d2f5de8610393abbfb08d8746182b4cc571afad1768c2c7527bb0655f990"
+    },
+    "neighbours": {
+      "file": ".cache/wave39-food-neighbours.json",
+      "sha256": "5b7d924199e226549dac9aba21840363a59fd41292fcb463813f004df0b558a4"
+    },
+    "bound_batch": {
+      "file": "batches/wave39-food.json",
+      "sha256": "159e46538d6179c87bfd9c86864ee02309e5b6414f963daad9eff31b8b6dff96"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave39-draft.json",
+      "sha256": "2efb438a2cd922986f5d23feb8a1ddf99760360a4379f99b2b3ecc9f77bb6f90"
+    },
+    "rows": 6,
+    "directed_pairs": 30,
+    "changed_rows_from_first_read": []
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "本收據為選題/紙上片案核對，另列WAV時長讀回，未試映；圖源與化學條件仍須進稿再查。"
+  ],
+  "first_retrieval": {
+    "draft_sha256": "9a67fc4cb56300c1cfcd74f8b02971dcb5e7b8e292f23a93557abeadc5132005",
+    "neighbours": {
+      "file": ".cache/wave39-physics-peer-food-initial-neighbours.json",
+      "sha256": "0a69a750152fb963733c6c9424f88aa878f10e78ad7731a899721edc973e03f4"
+    },
+    "rows": 6,
+    "directed_pairs": 30
+  }
+}

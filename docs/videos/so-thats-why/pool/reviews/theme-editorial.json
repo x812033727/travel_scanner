@@ -1,0 +1,313 @@
+{
+  "review_id": "theme-editorial-20261101",
+  "reviewer": "pool_life_tech",
+  "created_on": "2026-11-01",
+  "target": {
+    "path": "themes.json",
+    "sha256": "be103390dbf2da751096648a0b3524da71cd9f9b8211aacc0feca8dc3857fc38",
+    "episodes": 12,
+    "chapters": 60
+  },
+  "review_type": "INDEPENDENT_GENERAL_AUDIENCE_CANDIDATE_PLANNING_REVIEW",
+  "coverage": {
+    "theme_fields_read": "全部 12 組的標題、主問題、連結、候選 ID、章節新資訊、時間、無聊風險、刪除條件與證據缺口。",
+    "candidate_reference_review": "逐一讀取所引用候選的原提問與 answer_target，檢查是否支援章節承諾。",
+    "unique_candidate_ids": 69,
+    "not_script_blind_read": true,
+    "not_full_fact_check": true,
+    "no_viewer_test_or_voice_read": true,
+    "duration_limit": "章節秒數是企劃預算，不代表實際朗讀時間、30–45 秒節奏已達標或觀看成效。",
+    "source_browsing_this_review": "企劃審閱以工作區候選與來源記錄為依據；此次只為 L259 另實讀 RFC 5545 §3.3.5 FORM #3，不宣稱重核影片所有來源。"
+  },
+  "mechanical_checks": {
+    "missing_episode_candidate_ids": [],
+    "missing_chapter_candidate_ids": [],
+    "chapter_ids_outside_episode": [],
+    "timing": [
+      {
+        "theme_id": "G01",
+        "chapter_seconds": 600,
+        "target_seconds": 600,
+        "within_range": true
+      },
+      {
+        "theme_id": "G02",
+        "chapter_seconds": 540,
+        "target_seconds": 540,
+        "within_range": true
+      },
+      {
+        "theme_id": "G03",
+        "chapter_seconds": 780,
+        "target_seconds": 780,
+        "within_range": true
+      },
+      {
+        "theme_id": "G04",
+        "chapter_seconds": 600,
+        "target_seconds": 600,
+        "within_range": true
+      },
+      {
+        "theme_id": "G05",
+        "chapter_seconds": 600,
+        "target_seconds": 600,
+        "within_range": true
+      },
+      {
+        "theme_id": "G06",
+        "chapter_seconds": 600,
+        "target_seconds": 600,
+        "within_range": true
+      },
+      {
+        "theme_id": "G07",
+        "chapter_seconds": 600,
+        "target_seconds": 600,
+        "within_range": true
+      },
+      {
+        "theme_id": "G08",
+        "chapter_seconds": 540,
+        "target_seconds": 540,
+        "within_range": true
+      },
+      {
+        "theme_id": "G09",
+        "chapter_seconds": 660,
+        "target_seconds": 660,
+        "within_range": true
+      },
+      {
+        "theme_id": "G10",
+        "chapter_seconds": 600,
+        "target_seconds": 600,
+        "within_range": true
+      },
+      {
+        "theme_id": "G11",
+        "chapter_seconds": 540,
+        "target_seconds": 540,
+        "within_range": true
+      },
+      {
+        "theme_id": "G12",
+        "chapter_seconds": 600,
+        "target_seconds": 600,
+        "within_range": true
+      }
+    ],
+    "all_statuses_candidate_only": true,
+    "all_have_boredom_and_drop_conditions": true,
+    "alias_limit": "本輪只驗目前批次中 ID 可定位；總表去重後若 canonical ID 改變，仍須由 build 再驗別名解析與採用狀態。"
+  },
+  "must_fix": [
+    {
+      "id": "TE01",
+      "theme_id": "G01",
+      "issue": "標題承諾與主問題／後半材料不一致。",
+      "evidence": "「糖是否還在」第一章已答；鹽水載流、過飽和、牛奶與散射回答的是更廣的混合狀態，而牛奶並非透明液體。",
+      "minimum_change": "保留杯子比較架構，但把標題與 core_question 統一成「看起來混勻了，杯子裡真的一樣嗎？」一類判別問題，並把透明限定改為肉眼看不見顆粒或看似均勻。糖只作第一個入口。",
+      "do_not_do": "不要為維持原窄標題，硬說每個後續性質都在證明糖仍存在。",
+      "severity": "BEFORE_TREATMENT"
+    },
+    {
+      "id": "TE02",
+      "theme_id": "G10",
+      "issue": "主矛盾被成冰背景延後，兩分鐘材料起源不是回答標題的必要前置。",
+      "evidence": "目前 N213 占前 120 秒，N214 再占 150 秒，N215 到第三章才處理冰河後退。",
+      "minimum_change": "開場即並列冰塊向下和末端後退；N214/N215 作主體，N213 縮成不超過 45–60 秒的必要背景或刪除。同步降低目標片長至約八至九分鐘，再由實際稿決定。",
+      "drop_rule": "成冰細節若不改變觀眾對移動與邊界的判斷就刪，不用來補足十分鐘。",
+      "severity": "BEFORE_TREATMENT"
+    },
+    {
+      "id": "TE03",
+      "theme_id": "G12",
+      "issue": "先講造浪與沙搬家，主問題直到第六分鐘後才開始回答，易變近岸知識巡禮。",
+      "evidence": "N188/N189/N190 各 120 秒，N191 在第四章。",
+      "minimum_change": "移出 N188 的吹送距離段，從波峰朝岸但水能回流的對照開始；折射與沿岸搬運只有在交代水往出口匯集時才保留。目標可先降至八分鐘。",
+      "drop_rule": "若一段不影響水如何聚集、轉向與回流的判斷，移回素材池；不以海灘共有場景作保留理由。",
+      "severity": "BEFORE_TREATMENT"
+    }
+  ],
+  "episode_assessments": [
+    {
+      "theme_id": "G01",
+      "verdict": "NEEDS_REVISION",
+      "mainline_and_id_fit": "片頭約 90 秒已能回答糖仍存在，後續導電、過飽和與膠體其實在回答更廣的混合物判別問題；另外「透明液體」主線與牛奶／混濁液體不一致。",
+      "duration_judgment": "九至十一分鐘可作比較旅程，但必須先統一觀眾承諾。",
+      "drop_condition_judgment": "過飽和段失去新觀察時可刪，刪 120 秒後約八分鐘；不得補其他糖水重述。"
+    },
+    {
+      "theme_id": "G02",
+      "verdict": "PASS_FOR_TREATMENT",
+      "mainline_and_id_fit": "同一段文字跨字形、碼點、位元組與操作的比較有明確層次；ID 與新資訊對應。",
+      "duration_judgment": "八至十分鐘為可研究預算，不能用編碼表朗讀湊滿。",
+      "drop_condition_judgment": "既有看不出差異就刪、只有定義就改短形式的條件足夠。"
+    },
+    {
+      "theme_id": "G03",
+      "verdict": "PASS_FOR_TREATMENT",
+      "mainline_and_id_fit": "從井的供水來源推到鄰井、河流、地面與海岸，有共同因果起點，並非災害清單。",
+      "duration_judgment": "十三分鐘只有在同一公開個案或清楚標示的多條件示意支持下才成立，仍待 treatment 及試讀。",
+      "drop_condition_judgment": "既有地質條件與來源更完整優先的刪除條件足夠；不能以同一場址暗示所有後果必定共存。"
+    },
+    {
+      "theme_id": "G04",
+      "verdict": "PASS_FOR_TREATMENT",
+      "mainline_and_id_fit": "各工具引入力臂、距離、體積及摩擦等不同約束；同一搬運任務能串起主問題。",
+      "duration_judgment": "九至十一分鐘可留為預算，重複能量守恆解說必須縮短。",
+      "drop_condition_judgment": "只換工具圖片而未增新約束就刪一種，符合退出條件。"
+    },
+    {
+      "theme_id": "G05",
+      "verdict": "PASS_FOR_TREATMENT",
+      "mainline_and_id_fit": "裝置地址、鏈路地址、程式端點與外部映射分工清楚；回程重用 ID 是有目的回收，不是新增素材計數。",
+      "duration_judgment": "九至十一分鐘有縮寫負荷，需保持同一封請求和可視化映射；不代表六個 RFC 名稱都要口述。",
+      "drop_condition_judgment": "家庭 IPv4 範圍及排除其他網路模型的條件足夠。"
+    },
+    {
+      "theme_id": "G06",
+      "verdict": "PASS_FOR_TREATMENT",
+      "mainline_and_id_fit": "由膨壓→水勢→整株通量→留水構造，能回答土濕不等於吸得到水。",
+      "duration_judgment": "九至十一分鐘需有條件對照；不能用器官名稱介紹延長。",
+      "drop_condition_judgment": "已有無法同植物對照就撤診斷情境的規則；萎蔫不直接等於缺水。"
+    },
+    {
+      "theme_id": "G07",
+      "verdict": "PASS_FOR_TREATMENT_WITH_EXISTING_GATE",
+      "mainline_and_id_fit": "ID 能支援通訊限制鏈；需沿用既有「示意流程」及任務證據關卡，無線電、光通訊、DTN 不得被畫成所有任務都依序經過。",
+      "duration_judgment": "九至十一分鐘只適用可清楚區分通道選項與轉送機制的示意；不列型號補時。",
+      "drop_condition_judgment": "目前 evidence_gaps/drop_if 已要求同任務證據或明標示意，足以約束，未另列重複必改。"
+    },
+    {
+      "theme_id": "G08",
+      "verdict": "PASS_FOR_TREATMENT",
+      "mainline_and_id_fit": "平衡與穩定性是清楚的兩層問題，接到底座、重心及方向，並非只有重複推倒。",
+      "duration_judgment": "八至十分鐘可作比較預算；最初力偶／支承案例須服務同一模型，不獨立開兩個故事。",
+      "drop_condition_judgment": "已有每次只改一條件與模型不受控即縮短的規則，足夠。"
+    },
+    {
+      "theme_id": "G09",
+      "verdict": "PASS_FOR_TREATMENT",
+      "mainline_and_id_fit": "軌道傾角、角直徑、影帶與曲率四次修正同一幾何模型，因果連結明確。",
+      "duration_judgment": "十一分鐘不是承諾；刪混合食章 150 秒後為 8.5 分鐘，與既有八至九分鐘備案相符。",
+      "drop_condition_judgment": "混合食畫不清楚就刪的條件具體，安全觀測與比例仍待後續查核。"
+    },
+    {
+      "theme_id": "G10",
+      "verdict": "NEEDS_REVISION",
+      "mainline_and_id_fit": "主問題是冰塊移動與末端邊界的差別，現順序卻用兩分鐘講成冰，再到約第 4.5 分鐘才碰到後退。",
+      "duration_judgment": "先縮背景與前移矛盾，預估改八至九分鐘更合適；不為湊十分鐘保留成冰全章。",
+      "drop_condition_judgment": "既有缺影像時刪數值處理資料風險，但還須刪與移動／邊界判斷無關的成冰細節。"
+    },
+    {
+      "theme_id": "G11",
+      "verdict": "PASS_FOR_TREATMENT",
+      "mainline_and_id_fit": "角動量、轉動慣量、內功及系統交換能接回免費能量疑問；輪子段必須延續系統邊界判斷。",
+      "duration_judgment": "八至十分鐘可留預算，不能把 P314 演成另外一場無解釋的轉椅魔術。",
+      "drop_condition_judgment": "既有安全與量測退出條件足夠；沒有精確數據不得報倍率。"
+    },
+    {
+      "theme_id": "G12",
+      "verdict": "NEEDS_REVISION",
+      "mainline_and_id_fit": "標題是岸上浪與往外水流的矛盾；目前先用六分鐘講造浪、折射和沙搬家，主要答案直到第四章。吹送距離不是理解離岸回流所必需。",
+      "duration_judgment": "刪 N188 的兩分鐘即可改八分鐘候選，先建立波向與水體流向差別。",
+      "drop_condition_judgment": "目前刪除條件主要處理安全與現地判斷，須加上不影響回流水路解釋的前置知識就刪。"
+    }
+  ],
+  "batch_corrections_completed": [
+    {
+      "id": "L259",
+      "file": "batches/life-tech.json",
+      "action": "將標題、答案目標與 scope 限定到帶 TZID 的 DATE-TIME，重複當地鐘點取第一次出現；不泛化所有行事曆產品。",
+      "verified_source": "https://www.rfc-editor.org/rfc/rfc5545.txt",
+      "read_scope": "§3.3.5 FORM #3 的時區參照及重複當地時間段，Python urllib HTTPS GET，editorial User-Agent"
+    },
+    {
+      "ids": [
+        "L013",
+        "L014",
+        "L017",
+        "L018"
+      ],
+      "file": "batches/life-tech.json",
+      "action": "追加 clathrin 不得概括為所有吞噬必要機制、入稿需另補來源的提醒。",
+      "basis": "physics-reviews-life.json source_cautions；該審閱者補充資料僅讀 PubMed 12424246 摘要，不是本代理已讀全文。"
+    },
+    {
+      "id": "L151",
+      "action": "依 root 指示由總表暫緩，本代理未改該候選。"
+    }
+  ],
+  "conclusion": {
+    "status": "REVISE_3_THEMES_BEFORE_TREATMENT",
+    "must_fix_theme_ids": [
+      "G01",
+      "G10",
+      "G12"
+    ],
+    "reference_errors": 0,
+    "timing_arithmetic_errors": 0,
+    "production_ready": false,
+    "next_gate": "上述三組最小調整後可進既有 treatment；其餘九組可進候選研究，仍未通過逐主張查核、實際試讀或觀眾測試。"
+  },
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "reviewer": "pool_life_tech",
+    "target_path": "docs/videos/so-thats-why/pool/themes.json",
+    "target_sha256": "cfa5694e3d04cc979f9ee816d740387bb62fb120d1cc119116d477c82e929aa6",
+    "scope": {
+      "theme_ids": [
+        "G01",
+        "G10",
+        "G12"
+      ],
+      "method": "完整讀回三組修訂企劃，對照原 TE01、TE02、TE03；只重算這三組章節秒數。未擴查其餘九組、來源或批次。",
+      "review_type": "候選企劃編輯複核；不是劇本盲讀、逐主張查核、配音試讀或觀眾測試。"
+    },
+    "resolutions": [
+      {
+        "finding_id": "TE01",
+        "theme_id": "G01",
+        "status": "RESOLVED_FOR_TREATMENT",
+        "evidence": "新標題「看起來混勻了，杯子裡真的一樣嗎？」及核心問題已涵蓋導電、結晶與散射的差異；糖改為開場判斷，不再要求後段都證明糖是否存在。",
+        "timing_check": {
+          "chapter_seconds": 600,
+          "target_minutes": 10,
+          "matches": true
+        }
+      },
+      {
+        "finding_id": "TE02",
+        "theme_id": "G10",
+        "status": "RESOLVED_FOR_TREATMENT",
+        "evidence": "首章 60 秒直接對照移動冰塊與後退末端；成冰限最多 45 秒，主體回到冰體移動及邊界收支，總長縮為 8 分鐘。刪除條件已要求刪去不改變判斷的成冰細節，並在不足 8 分鐘時退出長片。",
+        "timing_check": {
+          "chapter_seconds": 480,
+          "target_minutes": 8,
+          "matches": true
+        }
+      },
+      {
+        "finding_id": "TE03",
+        "theme_id": "G12",
+        "status": "RESOLVED_FOR_TREATMENT",
+        "evidence": "已移除 N188 造浪背景；首章 60 秒立即對照向岸波峰與向外水流。折射及沿岸輸送以是否解釋聚集、轉向及回流水路為保留條件，並明訂不足 8 分鐘改短形式。原先等六分鐘才提出主問題的缺口解除。",
+        "timing_check": {
+          "chapter_seconds": 480,
+          "target_minutes": 8,
+          "matches": true
+        }
+      }
+    ],
+    "conclusion": {
+      "status": "ALL_3_ORIGINAL_FINDINGS_RESOLVED_FOR_TREATMENT",
+      "unresolved_original_finding_ids": [],
+      "new_required_changes": [],
+      "production_ready": false,
+      "next_gate": "三組可進 treatment；實際劇本仍須逐主張查核及試讀，再依素材與有效資訊決定是否保留長片。"
+    },
+    "evidence_preservation": "本節只追加修訂後複核；原 target hash、must_fix、episode_assessments 與 conclusion 保留原審閱時點內容。未改任何 batches。"
+  }
+}

@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "science_sources",
+  "role": "AUTHOR_NOT_INDEPENDENT_REVIEWER",
+  "status": "PENDING_INDEPENDENT_REVIEW",
+  "batch_id": "wave15-food-physics-20261102",
+  "files": [
+    {
+      "file": "batches/wave15-food-physics.json",
+      "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
+    },
+    {
+      "file": "reviews/wave15-food-physics-themes.json",
+      "sha256": "21b7a01f066943e03135b6b07e90d5f5b746dc80d334dee19acd2ba22dbda9b7"
+    }
+  ],
+  "encoding": "UTF-8 LF;所有字串rstrip後序列化",
+  "counts": {
+    "candidates": 4,
+    "sources": 4,
+    "not_added": 21,
+    "themes": 4,
+    "theme_body_seconds": [
+      140,
+      130,
+      115,
+      130
+    ]
+  },
+  "candidate_ids": [
+    "F15001",
+    "F15002",
+    "F15003",
+    "F15004"
+  ],
+  "baseline": {
+    "head": "c7bf184ed",
+    "pool_sha256": "46736647ed691eecba8ad9c67c7b00c846e9511ce81b31d64fd08bafc7c31ee3",
+    "selected": 2921,
+    "raw_records": 3287,
+    "themes": 159,
+    "not_added": 712,
+    "search_scope": "全3287 raw問答/範圍與712 not_added做食品/裂紋/形變等詞彙檢索；快取命中359 raw及74未收，這是檢索量，不宣稱359全逐字審。人工讀回食品加工舊D列、wave4/8食品群及本收據15近對的完整答案/範圍；本輪候選不靠字面無命中即判新。",
+    "search_cache": ".cache/wave15-science-baseline-food.json"
+  },
+  "source_identity": [
+    {
+      "source_id": "F15-S001",
+      "work_doi": "10.1073/pnas.1802831115",
+      "canonical_work_title": "Controlling fracture cascades through twisting and quenching",
+      "version": "2018正式論文PDF；115(35):8665–8670；DOI 10.1073/pnas.1802831115",
+      "old_pool_identity_hits": [],
+      "carrier": "正式論文的作者/PMC/XML/出版者載體屬同一工作，不按URL數量當獨立實驗；只收一筆source。",
+      "independence_limit": "exact DOI/URL/normalized title查全舊sources無命中不證明沒有其他副本；每題目前僅一項研究，不宣稱獨立重現。"
+    },
+    {
+      "source_id": "F15-S002",
+      "work_doi": "10.1126/sciadv.abf4098",
+      "canonical_work_title": "Morphing pasta and beyond",
+      "version": "2021-05-05正式研究；7:eabf4098；DOI 10.1126/sciadv.abf4098",
+      "old_pool_identity_hits": [],
+      "carrier": "正式論文的作者/PMC/XML/出版者載體屬同一工作，不按URL數量當獨立實驗；只收一筆source。",
+      "independence_limit": "exact DOI/URL/normalized title查全舊sources無命中不證明沒有其他副本；每題目前僅一項研究，不宣稱獨立重現。",
+      "same_work_copies": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8099191/fullTextXML",
+        "https://morphingmatter.org/s/morphingpasta_scienceadvances.pdf"
+      ]
+    },
+    {
+      "source_id": "F15-S003",
+      "work_doi": "10.1103/PhysRevLett.109.244301",
+      "canonical_work_title": "Slicing Softly with Shear",
+      "version": "2012-12-10正式論文；109:244301；DOI 10.1103/PhysRevLett.109.244301",
+      "old_pool_identity_hits": [],
+      "carrier": "正式論文的作者/PMC/XML/出版者載體屬同一工作，不按URL數量當獨立實驗；只收一筆source。",
+      "independence_limit": "exact DOI/URL/normalized title查全舊sources無命中不證明沒有其他副本；每題目前僅一項研究，不宣稱獨立重現。",
+      "same_work_copies": [
+        "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.109.244301",
+        "https://dash.harvard.edu/bitstreams/0b9556e2-5653-47fa-b1d2-e88c78903be6/download"
+      ],
+      "carrier_note": "合訂p1–3另作者評論不算第二項實驗證據；採p4–7原研究。"
+    },
+    {
+      "source_id": "F15-S004",
+      "work_doi": "10.1098/rsif.2019.0622",
+      "canonical_work_title": "The physics of tossing fried rice",
+      "version": "2020-02-12正式論文；17:20190622；DOI 10.1098/rsif.2019.0622",
+      "old_pool_identity_hits": [],
+      "carrier": "正式論文的作者/PMC/XML/出版者載體屬同一工作，不按URL數量當獨立實驗；只收一筆source。",
+      "independence_limit": "exact DOI/URL/normalized title查全舊sources無命中不證明沒有其他副本；每題目前僅一項研究，不宣稱獨立重現。",
+      "same_work_copies": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7061713/"
+      ]
+    }
+  ],
+  "source_reading": {
+    "primary_works_read": 4,
+    "candidate_sources_read": 4,
+    "external_http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "method": "當日web身分/正文定位；UA取作者PDF或EuropePMC XML；PyMuPDF與XML解析讀指定正文，8頁原PDF渲染目讀。",
+    "rendered_pages_read": [
+      "F15-S001 PDFp2",
+      "F15-S001 PDFp3",
+      "F15-S002 PDFp2",
+      "F15-S002 PDFp3",
+      "F15-S003合訂PDFp5",
+      "F15-S003合訂PDFp6",
+      "F15-S004 PDFp7",
+      "F15-S004 PDFp8"
+    ],
+    "copies": [
+      {
+        "source_id": "F15-S001",
+        "file": ".cache/wave15-science-fracture.pdf",
+        "sha256": "ebf2b3af4e51ca6c298d8b6b3f993daac6f43e93e4c9769cf6e65a62cfd6a864",
+        "reading_limit": "PDF p1–5指定段；未讀SI/影片"
+      },
+      {
+        "source_id": "F15-S002",
+        "file": ".cache/wave15-science-morph.xml",
+        "sha256": "920b4543f1b0147b622f15b3e2e1fba9fbb9277f8b95b3a19b99f773b1a73907",
+        "reading_limit": "指定XML正文，未讀補充影片"
+      },
+      {
+        "source_id": "F15-S002",
+        "file": ".cache/wave15-science-morph.pdf",
+        "sha256": "bdda7f6fcd11c16588a2b40d08e1ce0e4f29724424f1bc7cfcffa9bdc7091852",
+        "reading_limit": "p1–3/p7正文與Fig1–2；29頁載體的後附SI未讀"
+      },
+      {
+        "source_id": "F15-S003",
+        "file": ".cache/wave15-science-cut.pdf",
+        "sha256": "86a0a07ea1c1fbcc15623e4e7790573219b4e391c7e970d0ea78cf5da9492ac8",
+        "reading_limit": "p4–7原研究；不把p1–3評論當原研究"
+      },
+      {
+        "source_id": "F15-S004",
+        "file": ".cache/wave15-science-rice.pdf",
+        "sha256": "9e771ddce4bb57886ea92449b4937f3aad2dca63bbc9c17abbcdb13189f072d5",
+        "reading_limit": "指定Methods/運動學/§4.2及限制；不採高溫敘述"
+      }
+    ],
+    "failures": [
+      "Morphing pasta NSF副本web502/UA逾時，Science正式頁web403；改讀同文EuropePMC XML與作者實驗室PDF。",
+      "Slicing Softly Harvard DASH HTTP429；改同作者實驗室合訂PDF。",
+      "Fried rice作者PDF web開啟逾時，但UA成功；PMC同文網頁亦可讀。",
+      "餅乾checking出版者直接取得403，未作保留候選來源。"
+    ],
+    "reading_limit": "只宣稱各source.reading_scope的指定段和8頁圖像；沒有全篇逐字查核、獨立復現、原影片/全部補充材料審讀。",
+    "source_copy_policy": "原全文與渲染只在ignored .cache；公開檔僅連結、身分、短原創摘要與範圍；不授權使用原圖。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "F15001",
+      "b": "H3060",
+      "reason": "舊題問既有裂長/外載達臨界；新題問第一破壞後動態波引發後續破壞及扭轉釋放控制，不是換細桿重說裂尖集中。"
+    },
+    {
+      "a": "F15001",
+      "b": "H3062",
+      "reason": "不是重複許多次累積疲勞，而是一次彎折的連續事件。"
+    },
+    {
+      "a": "F15001",
+      "b": "B4021",
+      "reason": "共享彎曲波名詞；牆聲耦合的波長匹配與斷裂後曲率波連鎖不同。"
+    },
+    {
+      "a": "F15001",
+      "b": "F14009",
+      "reason": "刃口局部不均與毛髮載荷啟裂，不等同細桿首次斷裂後的波動再破壞。"
+    },
+    {
+      "a": "F15002",
+      "b": "E9002",
+      "reason": "舊題不同植物組織不等量膨潤；新題同材料表面幾何使吸液動態不均，並有均勻後回平/接觸保形控制。"
+    },
+    {
+      "a": "F15002",
+      "b": "E9004",
+      "reason": "舊題各向異性細胞壁/幾何與近定膨壓蓄力；新題溝槽擴散路徑的暫時不均。"
+    },
+    {
+      "a": "F15002",
+      "b": "E9006",
+      "reason": "舊題濕乾芒扭轉加定向毛錨定移動；新題同材槽紋的吸液時序，沒有入土棘輪。"
+    },
+    {
+      "a": "F15002",
+      "b": "H3093",
+      "reason": "交聯網絡為何膨潤而不溶解是背景；新題問已能膨潤的同材片如何有暫時方向差及接觸鎖形。"
+    },
+    {
+      "a": "F15002",
+      "b": "F4027",
+      "reason": "表面澱粉黏附沿用舊理解，單獨不新增；新核是幾何造成吸液時差，鎖形僅同一問題後續控制。"
+    },
+    {
+      "a": "F15003",
+      "b": "P041",
+      "reason": "固定同一細線，沒有改接觸尺寸；增量是切向載荷改變局部拉應力及起裂/延續兩階段。"
+    },
+    {
+      "a": "F15003",
+      "b": "H3060",
+      "reason": "既有裂尖擴裂門檻與未起裂軟體先全局壓縮/局部拉開的載荷控制不同。"
+    },
+    {
+      "a": "F15003",
+      "b": "F14009",
+      "reason": "切斷的軟材料與切割工具自身崩口是不同失效對象與控制，不因都切割就合併。"
+    },
+    {
+      "a": "F15003",
+      "b": "D2188",
+      "reason": "金屬刀具後隙減少背面摩擦不同於凝膠表面傳遞切向力以起裂。"
+    },
+    {
+      "a": "F15004",
+      "b": "P112",
+      "reason": "舊題外力與振動相位累積能量；新題不是共振，而是反走相同鍋體路徑改變粒子脫離和再接觸時序。"
+    },
+    {
+      "a": "F15004",
+      "b": "P024",
+      "reason": "合力/力矩只描述剛體；新題加入脫離後自由飛行與移動邊界再相交，反向路徑改變答案。"
+    }
+  ],
+  "editorial_self_review": {
+    "retained_count_not_quota": 4,
+    "explored_directions": "四個保留核心＋21個未新增方向；其中舊庫變體僅查重，不冒稱21篇新原研究全查。",
+    "why_short": "單一可見控制足以組短片，不把變體拆核、不以食材名稱或一般烹調原理湊分鐘。",
+    "same_core_budget_checks": [
+      {
+        "theme_id": "W15F-T01",
+        "candidate_id": "F15001",
+        "allocated_seconds": 140,
+        "editorial_cap": 160
+      },
+      {
+        "theme_id": "W15F-T02",
+        "candidate_id": "F15002",
+        "allocated_seconds": 130,
+        "editorial_cap": 150
+      },
+      {
+        "theme_id": "W15F-T03",
+        "candidate_id": "F15003",
+        "allocated_seconds": 115,
+        "editorial_cap": 125
+      },
+      {
+        "theme_id": "W15F-T04",
+        "candidate_id": "F15004",
+        "allocated_seconds": 130,
+        "editorial_cap": 140
+      }
+    ],
+    "not_read_aloud": true,
+    "not_production_approved": true,
+    "explicit_exclusions": "無火候/安全烹調指引；不採炒鍋論文高溫敘述；不宣稱新食品功能、環保效益或產業落地。"
+  },
+  "independent_review_handoff": {
+    "reviewer": "pool_physics",
+    "status": "PENDING",
+    "required": [
+      "全4題、21未收與15作者邊界；共同top5由root另產",
+      "四項研究指定正文與同文載體身份；F15002同材幾何對E9002/F4027的邊界",
+      "4案8章同核心累計cap與自然資訊長度；F15004反向模型/兩種座標不可混讀"
+    ]
+  },
+  "remaining_author_blockers": [],
+  "mechanical_checks": {
+    "runtime": "Node v24.22.1",
+    "validateThemes": "PASS on author-only four-row selected mock; does not select central pool rows",
+    "budget_checks": "4 same-core episode totals / 8 chapters / beats<=45 / body=sum(chapters) / range.upper<=body PASS",
+    "encoding_and_string_tails": "Three files UTF-8 LF and recursive string trimEnd check PASS",
+    "scope_limit": "未跑全庫tests、未做試讀或獨立查核；以上是作者檔形狀與算術檢查。"
+  },
+  "correction_history": [
+    {
+      "reviewer": "pool_physics",
+      "basis": "2026-11-02非作者指定正文與編輯訊息；root同意；正式收據另綁。",
+      "before_files": [
+        {
+          "file": "batches/wave15-food-physics.json",
+          "sha256": "2779564dab02a5e2422d773dda6ed997328c0a5f40de5691b2e99d1f0df13463"
+        },
+        {
+          "file": "reviews/wave15-food-physics-themes.json",
+          "sha256": "36ee1b85333b6299ad4e8424061b289da9f5631803729d9ae4d17f52cd321512"
+        },
+        {
+          "file": "reviews/wave15-food-physics-author.json",
+          "sha256": "9aa9f849c517e466ecb70a33d6e1f69e3a1f420bd8b4d739e44242803f912a5c"
+        }
+      ],
+      "changes": [
+        {
+          "id": "FOOD01",
+          "scope": "W15F-T04第1章",
+          "finding": "離鍋由相對法向加速度條件決定，不能以夠快當速度門檻。",
+          "resolution": "改為維持接觸需拉力、無黏附接觸只能推不能拉。"
+        },
+        {
+          "id": "FOOD02",
+          "scope": "W15F-T04第2章",
+          "finding": "同路徑反向±1.0與-1.7較早著地是不同比較。",
+          "resolution": "採同路徑反向時靠近鍋底粒子改變飛向；不混參數，130秒不變。"
+        },
+        {
+          "id": "FOOD03",
+          "scope": "W15F-T01/T02",
+          "finding": "末段結果/範圍回顧可更短。",
+          "resolution": "T01第二章末20→10，全140秒；T02第二章末15→5，全130秒；未加新內容，drop/range同步。"
+        },
+        {
+          "id": "FOOD04",
+          "scope": "F15003 editorial.visual",
+          "finding": "力程式意曲線錯字。",
+          "resolution": "改力程示意曲線；題名/答案/scope/來源不變。"
+        }
+      ],
+      "unchanged": "4候選/4來源/21未收；候選問答scope與來源閱讀不變；T03 115與T04 130秒不變。"
+    }
+  ]
+}

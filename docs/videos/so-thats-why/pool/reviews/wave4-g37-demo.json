@@ -1,0 +1,72 @@
+{
+  "status": "PASS_CONTROLLED_DEMO_NOT_VIDEO_OR_AUDIENCE_TEST",
+  "tested_on": "2026-11-01T09:56:58.174Z",
+  "browser": "156.0.8078.4",
+  "node": "v24.19.0",
+  "source_sha256": "b40819e8cd1f76ad209f3ff7e94a06dd37e592b46dd4c01c15e49a298fe3bf3c",
+  "verifier_sha256": "d8088a30255def58749616beb87608177cb974fd04338119e626eb0f83cf0cd3",
+  "work": [
+    {
+      "mode": "idle",
+      "timer_requested_ms": 50,
+      "timer_elapsed_ms": 54.700000047683716,
+      "timer_callback_at": 1793527013815.6,
+      "simulated_work_ms": 0,
+      "event_order": [
+        "timer"
+      ],
+      "worker_evidence": null,
+      "worker_note": null
+    },
+    {
+      "mode": "main",
+      "timer_requested_ms": 50,
+      "timer_elapsed_ms": 702.1999998092651,
+      "timer_callback_at": 1793527014544.9001,
+      "simulated_work_ms": 700,
+      "event_order": [
+        "timer"
+      ],
+      "worker_evidence": null,
+      "worker_note": null
+    },
+    {
+      "mode": "worker",
+      "timer_requested_ms": 50,
+      "timer_elapsed_ms": 54.89999985694885,
+      "timer_callback_at": 1793527014662.1,
+      "simulated_work_ms": 700,
+      "event_order": [
+        "started",
+        "timer",
+        "done"
+      ],
+      "worker_evidence": {
+        "started_at": 1793527014604.7,
+        "done_at": 1793527015304.8,
+        "work_elapsed_ms": 700.1000001430511,
+        "done_message_elapsed_ms": 700.300048828125,
+        "timer_before_done": true
+      },
+      "worker_note": "Timer and worker completion timestamps are recorded using each context performance.timeOrigin + performance.now(); done-message order is recorded separately. Not a task-completion benchmark."
+    }
+  ],
+  "images": {
+    "unreserved_delta_px": 180.375,
+    "reserved_delta_px": 0,
+    "viewport_width": 1440
+  },
+  "mobile_images": {
+    "unreserved_delta_px": 109.5,
+    "reserved_delta_px": 0,
+    "viewport_width": 390
+  },
+  "scope": "Single run per condition, headless Chromium, local file, synthetic busy loop, timer callback latency; no input latency, INP, network-speed or population estimate. Positions are relative to each card.",
+  "screenshots": [
+    ".cache/wave4-g37-desktop.png",
+    ".cache/wave4-g37-mobile.png"
+  ],
+  "visual_inspection": "ROOT_INSPECTED_DESKTOP_AND_MOBILE_NO_CLIPPING",
+  "production_ready": false,
+  "measurement_origin_readback": "Root code readback: worker-mode timer starts only after the Worker started message; Worker creation/startup is excluded from timer_elapsed_ms. done_message_elapsed_ms uses that same timer origin. Cross-context timestamps use performance.timeOrigin + performance.now()."
+}

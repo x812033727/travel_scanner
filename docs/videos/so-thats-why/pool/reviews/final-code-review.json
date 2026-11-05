@@ -1,0 +1,71 @@
+{
+  "review_id": "final-code-review-20261101",
+  "reviewer": "pool_physics",
+  "reviewed_at_utc": "2026-11-01 06:27:11 UTC",
+  "status": "PASS_SCOPED_CODE_AND_GENERATED_ARTIFACT_REVIEW",
+  "scope": "只確認前次 CODE04 修正、合併原題顯示／搜尋、最後產物一致性及既有 pool/legacy 測試；沒有擴大測試面，也未用真實瀏覽器點擊。",
+  "files_modified_by_reviewer": [
+    "docs/videos/so-thats-why/pool/reviews/final-code-review.json"
+  ],
+  "prior_finding_resolution": {
+    "finding_id": "CODE-04",
+    "status": "RESOLVED",
+    "evidence": [
+      "core.mjs 的 source_refs 保存 origin。",
+      "renderSources 列出每個來源所有 readings 的 origin、reading_scope、locator 與查閱日。",
+      "HTML 逐題使用 source_refs[].locator 顯示『本題定位』，並按來源 ref 的 origin 匹配閱讀範圍。",
+      "實際入選 1,000 題共 2,212 個 source refs，缺 origin、locator 或對應 reading 的數量為 0。"
+    ]
+  },
+  "question_variants": {
+    "status": "CONFIRMED_IN_CODE_AND_BUILT_DATA",
+    "total": 32,
+    "selected_total": 32,
+    "evidence": "32 筆合併原題均留在 canonical candidate 的 question_variants；HTML 顯示原 ID／題名並將其納入搜尋字串。",
+    "limitation": "本次確認程式及實際資料，不宣稱已完成瀏覽器輸入、展開或點擊測試。"
+  },
+  "built_counts": {
+    "selected_candidates": 1000,
+    "unique_selected_ids": 1000,
+    "current_batch_core_questions": 879,
+    "legacy_core_questions": 121,
+    "aliases": 32,
+    "required_similarity_pending": 0,
+    "themes": 12,
+    "approved_scripts": 0
+  },
+  "checks": [
+    {
+      "command": "node tools/video/so-thats-why/pool/cli.mjs check",
+      "exit_code": 0,
+      "result": "PASS；輸入、產物、themes 與 manifest 無 drift。"
+    },
+    {
+      "command": "node --test tools/video/so-thats-why/pool/pool.test.mjs",
+      "exit_code": 0,
+      "passed": 8,
+      "failed": 0
+    },
+    {
+      "command": "node --test tools/video/so-thats-why/catalog.test.mjs",
+      "exit_code": 0,
+      "passed": 4,
+      "failed": 0
+    }
+  ],
+  "sha256": {
+    "tools/video/so-thats-why/pool/core.mjs": "973d3a495f8f07a06decf987193f739c95973dc54af99be8470a3130865dfa48",
+    "tools/video/so-thats-why/pool/render.mjs": "a00a715bfbad66206a116e69d5fab449019f09c5632c1a7ecad7f9091e8c219e",
+    "docs/videos/so-thats-why/pool/pool.json": "ccaf35e1bb0c48d5a508ae8e34644eea9de2f8d183ab1cd0b8f01bdb1a7da21c",
+    "docs/videos/so-thats-why/pool/index.html": "c59655749f504784cb8788977c073e8b2d609215cc47984aedf610641fb3e791",
+    "docs/videos/so-thats-why/pool/SOURCES.md": "12faaa748f4248b3939b56df8bd7342b48168ad13f15f8a2c54886278ea02aa1",
+    "docs/videos/so-thats-why/pool/manifest.json": "f283d739605eeb6a863192d9294ee51e5fb45b59888f7b2f17ac08f500e6c8a5"
+  },
+  "unresolved_code_findings": [],
+  "delivery_note": {
+    "status": "PENDING_DOCUMENT_AT_REVIEW",
+    "file": "docs/videos/so-thats-why/pool/README.md",
+    "detail": "審閱時檔案尚未存在，而 index.html 有 README.md 連結；已通知 root，交付前補齊即可。這不是本輪程式 blocker。"
+  },
+  "limits": "這份審閱不等於 1,000 題全文事實查核、不證明沒有任何語意重複、不核准製作；後續若更新輸入，仍須重建與重跑 cli check。"
+}

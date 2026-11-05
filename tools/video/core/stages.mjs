@@ -8,6 +8,7 @@ import { defaultDubLocales, dubScript, translationHash } from "../dubs/plan.mjs"
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
+import { captionSpeakers } from "./drama.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
 import { DEFAULT_LOCALES, eachLine, NARRATION_LOCALE, narrationLocale, TARGET_LOCALES, textHash } from "./schema.mjs";
 import { ARTIFACTS, dubArtifacts, dubSpeechCurrent, lintProject, loadProject, recordStage } from "./state.mjs";
@@ -190,10 +191,11 @@ function failedLines(workdir, locale, dub) {
  * The cues of `locale` as runCaptions writes them: under its current dub's own timeline, or under
  * the narration's presented one, where a translation's cue changes move onto the narration's
  * measured ones (`timing.chars`). The renewal checks (review/renewal.mjs, renewal-handoff.mjs)
- * rebuild the bytes they expect with it.
+ * rebuild the bytes they expect with it. `speakers` is core/drama.mjs captionSpeakers(doc): the
+ * hosts' names on a two-host slides video's cues, null for every other video.
  */
-export function localeCues(presented, texts, locale, narration, dub = null) {
-  return buildCues(dub ? captionTimelineOf(dub) : presented, texts[locale], locale, dub ? null : { locale: narration, texts: texts[narration] });
+export function localeCues(presented, texts, locale, narration, dub = null, speakers = null) {
+  return buildCues(dub ? captionTimelineOf(dub) : presented, texts[locale], locale, dub ? null : { locale: narration, texts: texts[narration] }, speakers);
 }
 
 /**
@@ -254,7 +256,7 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
     // Dub timelines already describe their padded presentation; only narration is shifted here.
     // A translation under the narration's timeline takes its cue changes from the narration's
     // measured ones; a dub-timed one follows its own track (localeCues).
-    const { cues } = localeCues(presented, texts, locale, narrationLocale(project.doc), timed ? dub : null);
+    const { cues } = localeCues(presented, texts, locale, narrationLocale(project.doc), timed ? dub : null, captionSpeakers(project.doc));
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));
     atomicWrite(path.join(workdir, "captions", `${locale}.vtt`), toVtt(cues));
     const problems = checkCues(cues, locale);

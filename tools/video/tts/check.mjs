@@ -49,7 +49,8 @@ import { requireProjectLease } from "../core/project-lease.mjs";
 import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
 import { SECOND_OPINION_ENV, secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
-import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
+import { inRunOrder, sendInOrder, speechConcurrency, watchBusy } from "./concurrency.mjs";
+import { JOURNAL_DIR, openSpeechJournal, requestSha256, transcribeBody } from "./speech-journal.mjs";
 import { downsample, encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 // Mirrors JudgeIn's max_length in apps/api/app/video_speech/schemas.py.
@@ -419,6 +420,7 @@ export async function checkAudio(args, ctx, options) {
   const second = secondOpinionCommand(values["second-opinion"], ctx.env);
   const threshold = values.threshold === undefined ? DEFAULT_THRESHOLD : Number(values.threshold);
   if (!(threshold > 0 && threshold < 1)) throw new UsageError("--threshold must be between 0 and 1");
+  const concurrency = speechConcurrency(ctx.env);
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
   const narration = narrationLocale(project.doc);
   const locale = values.locale === undefined ? narration : parseDubLocale(values.locale, narration);
@@ -446,65 +448,117 @@ export async function checkAudio(args, ctx, options) {
   const files = checkFiles(locale, narration);
   const cacheFile = path.join(workdir, files.cache);
   const cache = readJson(cacheFile, { lines: {} });
-  const results = {};
-  // The video's journal, shared with tts and dub: released after each write of the cache, so it
-  // holds only what the cache does not have yet. An answer it hands back was bought by an earlier
-  // run and is not counted as this run's.
-  const journal = openSpeechJournal(path.join(workdir, ARTIFACTS.audio, JOURNAL_DIR), { now: ctx.now });
-  const transcribe = journal.wrapTranscribe(transcribeClip);
+  // The video's journal directory, shared with tts and dub (speech-journal.mjs).
+  const journalDir = path.join(workdir, ARTIFACTS.audio, JOURNAL_DIR);
+  const openJournal = () => openSpeechJournal(journalDir, { now: ctx.now });
+  // Jev's calls go out one after another, as before, through one journal released after each
+  // write of the cache, so it holds only what the cache does not have yet. An answer it hands
+  // back was bought by an earlier run and is not counted as this run's.
+  const journal = openJournal();
   const judge = journal.wrapJudge(judgeLines);
 
+  // Transcriptions go out up to `concurrency` at once (concurrency.mjs), and each has a journal
+  // of its own over the same directory. What that relies on:
+  // - A journal's `reused` and `release()` cover only the answers it handed out, so a line
+  //   counts its own reuse, and releases its own entry once its transcript is in the cache;
+  //   one shared journal would have the first line saved drop another line's answer that came
+  //   back but is not in the cache yet, and a crash then would buy that answer again.
+  // - Two lines whose clip, terms and language are the same send the same body, the same
+  //   journal entry. Its sha256 is the job's key, so the later line waits until the earlier is
+  //   saved and released, as one at a time did; together, the later would find the earlier's
+  //   entry still "sent" by this live process and hold it as uncertain.
+  // - Entries on disk are created only where none exists (speech-journal.mjs createOnce), which
+  //   is what already keeps two runs apart; jobs of one run are no different.
+  // One line at a time until a transcript bought by this run is in the cache: that proves the
+  // token, the service and the disk, so a run refused for its token, or one whose answer is lost
+  // or cannot be saved, stops after one request rather than `concurrency` of them.
+  let proven = false;
+  let busy = false;
+  // A busy or rate-limited answer: one at a time for the rest of the run, rather than more
+  // requests into a service already refusing them. One at a time sends as it always did.
+  const sending = concurrency > 1
+    ? watchBusy(options, ({ status, code }) => {
+      if (busy) return;
+      busy = true;
+      ctx.stdout.write(`the transcriber answered HTTP ${status}${code ? ` ${code}` : ""}: one line at a time for the rest of the run\n`);
+    })
+    : options;
+  const transcribe = (request, own) => own.wrapTranscribe(transcribeClip)({ ...sending, ...request });
+
+  // Saved after every line in a sequential run's key order, whichever answer came first.
+  const initialIds = Object.keys(cache.lines);
+  const scriptIds = lines.map(({ line }) => line.id);
+  const saveCache = () => {
+    cache.lines = inRunOrder(cache.lines, initialIds, scriptIds);
+    atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
+  };
+
   let transcribed = 0;
+  let reusedTranscripts = 0;
   let failedInARow = 0;
   let gaveUp = false;
+  // By the line's place in the script, so results, Jev's questions and the report keep its order.
+  const checked = [];
   const unchecked = new Map();
-  for (const { scene, line } of lines) {
-    if (stopRequested(workdir)) {
-      // Each transcript is in the cache as soon as it is made, so a rerun starts where this one
-      // stopped. This run asked Jev nothing and wrote no flags file: the check has not passed.
-      ctx.stdout.write("STOP found; transcripts so far are saved, rerun to continue\n");
-      return EXIT.incomplete;
-    }
-    const file = path.join(audioDir, `${line.id}.wav`);
-    if (!existsSync(file)) throw new UsageError(`no clip for line ${line.id}: run ${remake}`);
-    const bytes = readFileSync(file);
-    const clip = clipHash(bytes);
-    const cached = cache.lines[line.id];
-    const terms = hintTerms(line, { locale, lexicon });
-    // A transcript made with other hints (or none, before hints existed) is made again.
-    const sameHints = (cached?.terms ?? []).join(" ") === terms.join(" ");
-    let entry = !values.force && cached?.clip === clip && sameHints && typeof cached.heard === "string" ? cached : null;
-    if (!entry) {
-      const samples = requireNarrationFormat(parseWav(bytes));
-      const wav = encodeWav(downsample(samples, Math.round(48_000 / TRANSCRIBE_RATE)), TRANSCRIBE_RATE);
-      let heard;
-      const reused = journal.reused;
-      try {
-        heard = await transcribe({ ...options, wav, terms, language: locale });
-      } catch (error) {
-        // The owner's problems (token, key) stop the run; so does anything that is not the service.
-        if (!(error instanceof SpeechError) || error.who !== "service") throw error;
-        unchecked.set(line.id, error.message);
-        failedInARow += 1;
-        if (failedInARow >= GIVE_UP_AFTER) {
-          gaveUp = true;
-          break;
-        }
-        continue;
-      }
-      failedInARow = 0;
-      if (journal.reused === reused) transcribed += 1;
-      entry = { scene, clip, terms, heard, noul: null };
-    }
+  const keep = (index, line, entry, own = null) => {
     entry.intended = spokenText(line);
     entry.spoken_form = spokenForm(line, lexicon);
     entry.match_kind = matchKind(entry.heard, line, lexicon, locale);
     entry.match = entry.match_kind !== null;
-    results[line.id] = entry;
+    checked[index] = [line.id, entry];
     cache.lines[line.id] = entry;
-    atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
-    journal.release();
+    saveCache();
+    own?.release();
+  };
+  const transcribeLine = async (index, scene, line, clip, request) => {
+    const own = openJournal();
+    let heard;
+    try {
+      heard = await transcribe(request, own);
+    } catch (error) {
+      // The owner's problems (token, key) stop the run; so does anything that is not the service.
+      if (!(error instanceof SpeechError) || error.who !== "service") throw error;
+      unchecked.set(index, [line.id, error.message]);
+      failedInARow += 1;
+      if (failedInARow >= GIVE_UP_AFTER) gaveUp = true;
+      return;
+    }
+    failedInARow = 0;
+    if (own.reused) reusedTranscripts += own.reused;
+    else transcribed += 1;
+    keep(index, line, { scene, clip, terms: request.terms, heard, noul: null }, own);
+    if (!own.reused) proven = true;
+  };
+
+  const { halted } = await sendInOrder(lines, {
+    limit: () => (busy || !proven ? 1 : concurrency),
+    // Each transcript is in the cache as soon as it is made, so a rerun starts where this one
+    // stopped; the lines already out finish and are saved first.
+    halt: () => (gaveUp ? "gave up" : stopRequested(workdir) ? "stop" : null),
+    prepare: ({ scene, line }, index) => {
+      const file = path.join(audioDir, `${line.id}.wav`);
+      if (!existsSync(file)) throw new UsageError(`no clip for line ${line.id}: run ${remake}`);
+      const bytes = readFileSync(file);
+      const clip = clipHash(bytes);
+      const cached = cache.lines[line.id];
+      const terms = hintTerms(line, { locale, lexicon });
+      // A transcript made with other hints (or none, before hints existed) is made again.
+      const sameHints = (cached?.terms ?? []).join(" ") === terms.join(" ");
+      if (!values.force && cached?.clip === clip && sameHints && typeof cached.heard === "string") {
+        return { keys: [], run: async () => keep(index, line, cached) };
+      }
+      const samples = requireNarrationFormat(parseWav(bytes));
+      const wav = encodeWav(downsample(samples, Math.round(48_000 / TRANSCRIBE_RATE)), TRANSCRIBE_RATE);
+      const request = { wav, terms, language: locale };
+      return { keys: [requestSha256(transcribeBody(request))], run: () => transcribeLine(index, scene, line, clip, request) };
+    },
+  });
+  if (halted === "stop") {
+    // This run asked Jev nothing and wrote no flags file: the check has not passed.
+    ctx.stdout.write("STOP found; transcripts so far are saved, rerun to continue\n");
+    return EXIT.incomplete;
   }
+  const results = Object.fromEntries(checked.filter(Boolean));
 
   // Jev reads a transcript per line, MAX_JUDGE_LINES a call whichever scenes they are in; lines
   // too long for it are cut and noted.
@@ -630,7 +684,8 @@ export async function checkAudio(args, ctx, options) {
     `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters, filler words or a loanword's spelling, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold}${leakText})\n`,
   );
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
-  if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
+  const reusedAnswers = reusedTranscripts + journal.reused;
+  if (reusedAnswers) ctx.stdout.write(`${reusedAnswers} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   for (const id of new Set(cut)) {
     ctx.stdout.write(`  ${id}  is longer than Jev takes: it judged the first ${MAX_INTENDED_CHARACTERS} characters of the script and ${MAX_HEARD_CHARACTERS} of the transcript\n`);
   }
@@ -668,7 +723,7 @@ export async function checkAudio(args, ctx, options) {
   if (missing) {
     const why = gaveUp ? `Gemini failed ${GIVE_UP_AFTER} lines in a row, so the run stopped` : "Gemini would not transcribe them";
     ctx.stdout.write(`${missing} lines not checked yet (${why}); run check-audio again later, finished lines are kept\n`);
-    for (const [id, message] of unchecked) ctx.stdout.write(`  ${id}  ${message}\n`);
+    for (const [, [id, message]] of [...unchecked].sort(([a], [b]) => a - b)) ctx.stdout.write(`  ${id}  ${message}\n`);
     return EXIT.external;
   }
   return flagged.length ? EXIT.lint : EXIT.ok;

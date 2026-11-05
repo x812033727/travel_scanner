@@ -1,0 +1,201 @@
+{
+  "theme_id": "G37",
+  "revision": "wave4-treatment-1",
+  "status": "TREATMENT_WITH_CONTROLLED_DEMO_PENDING_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "title": "網頁都出現了，為什麼還不好用？",
+  "promise": "看完能分開兩種『卡』：工作排隊讓回應晚到，以及晚來的尺寸資訊讓內容換位置。",
+  "audience": "遇過網頁看得到卻等不到回應、讀到一半文字又移動的人；不需要懂程式。",
+  "core_ids": [
+    "I3042",
+    "I3043",
+    "I3055"
+  ],
+  "previous_core_ids": [
+    "I3042",
+    "I3043",
+    "I3044",
+    "I3048",
+    "I3045",
+    "I3055"
+  ],
+  "removed_from_this_film": [
+    {
+      "id": "I3044",
+      "reason": "預載掃描轉入資源發現與網路等待，不推進這次兩種介面困擾。素材保留。"
+    },
+    {
+      "id": "I3048",
+      "reason": "進入可視區門檻需要另一段捲動案例，留待載入主題。素材保留。"
+    },
+    {
+      "id": "I3045",
+      "reason": "合成圖層與記憶體成本會增加第三種瓶頸，小樣沒有量測，移出本片。素材保留。"
+    }
+  ],
+  "duration": {
+    "previous_body_seconds": 295,
+    "body_budget_seconds": 220,
+    "working_range_seconds": [
+      180,
+      270
+    ],
+    "basis": "七個具體畫面節拍的編輯預算，含解說開場和收束、不含固定品牌片頭片尾；未有人聲試讀。不是用素材數乘固定章長。",
+    "read_aloud": "NOT_PERFORMED",
+    "blind_audience_test": "NOT_PERFORMED",
+    "shorten_if": "忙碌對照已看懂時刪第3節拍後15秒，縮至205秒；Worker 若解釋不清則整段40秒刪去，重寫過場為180秒；不補回其他術語。"
+  },
+  "beats": [
+    {
+      "id": "b1",
+      "seconds": 25,
+      "core_id": "I3042",
+      "question": "畫面出現，就等於已經準備好了嗎？",
+      "visual": "自製小樣先展示完整畫面，再以兩個小標籤區分『畫面可見』與『收到回報』。",
+      "new_information": "可見與可回應是兩個觀察。",
+      "transition": "先只看工作怎麼排。",
+      "claim_ids": [
+        "c1"
+      ],
+      "sample_line": "東西都看見了，為什麼還要等？先別急著怪網路，我們讓這張網頁做一個小實驗。"
+    },
+    {
+      "id": "b2",
+      "seconds": 35,
+      "core_id": "I3042",
+      "question": "排定回報的時刻，為什麼沒有準時執行？",
+      "visual": "同一條工作線先被長方塊佔住；50毫秒標記到站，但回報方塊留在後方。並列小樣當次實際數值。",
+      "new_information": "已安排的工作仍須等目前工作交還執行機會。",
+      "transition": "是回報本來就慢，還是這一大塊工作擋住？",
+      "claim_ids": [
+        "c1",
+        "e1"
+      ],
+      "sample_line": "回報早就排好了，只是前面的工作還沒結束。這次等的是工作線，不是再下載一張圖。"
+    },
+    {
+      "id": "b3",
+      "seconds": 35,
+      "core_id": "I3042",
+      "question": "拿掉忙碌工作，還會等那麼久嗎？",
+      "visual": "用相同回報安排、相同頁面跑空白對照；展示約54.7毫秒與約702.2毫秒兩條當次時間線，數字標單次實測。",
+      "new_information": "對照把人工安排的負載與等待連起來；不能把這個值套到別人手機。",
+      "transition": "如果工作不能拿掉，能否移去另一條線？",
+      "claim_ids": [
+        "e1"
+      ],
+      "sample_line": "沒有那塊忙碌工作，回報就接近原本安排的時間。這是我們刻意控制的對照，不是所有網站的標準答案。"
+    },
+    {
+      "id": "b4",
+      "seconds": 40,
+      "core_id": "I3055",
+      "question": "搬走工作，等於把工作變少嗎？",
+      "visual": "把忙碌長方塊移到第二條Worker工作線，前台回報先到、後台仍繼續做完；兩線以訊息箭頭連接。",
+      "new_information": "移開計算可以減少前台排隊；計算和傳訊仍有代價。",
+      "transition": "回報變順了，圖片晚來卻還是能把文字推走。",
+      "claim_ids": [
+        "c2",
+        "e1"
+      ],
+      "sample_line": "這裡只是換一條工作線。工作沒有消失，結果也還得交回來；因此不能保證把任何東西搬過去，都一定更快。"
+    },
+    {
+      "id": "b5",
+      "seconds": 35,
+      "core_id": "I3043",
+      "question": "沒有忙碌迴圈，文字為什麼仍突然跑位？",
+      "visual": "同一張圖、同一加入時機，左右卡片並排。先請觀眾盯住文字，再讓圖出現。用原位虛線與新位置對照。",
+      "new_information": "沒預留圖的位置，後來得重排下方內容；這次不是回報排隊。",
+      "transition": "如果一開始就替圖留位子呢？",
+      "claim_ids": [
+        "c3",
+        "e2"
+      ],
+      "sample_line": "這次文字不是反應太慢，而是位置真的變了。空間沒有先留好，圖片出現後，其他內容就得讓位。"
+    },
+    {
+      "id": "b6",
+      "seconds": 30,
+      "core_id": "I3043",
+      "question": "圖還沒出現，怎麼先穩住文字？",
+      "visual": "顯示另一張有預留比例的卡片，圖填入既有空間；桌面單次相對卡片位移180.4與0px。不要把它標成CLS分數。",
+      "new_information": "先有幾何位置，不用先有完整圖像內容。",
+      "transition": "兩種看似都叫『卡』的問題，改的是不同事情。",
+      "claim_ids": [
+        "c3",
+        "e2"
+      ],
+      "sample_line": "圖片還沒準備好，位置可以先準備好。左邊忙著改排法，右邊只是把空位補上。"
+    },
+    {
+      "id": "b7",
+      "seconds": 20,
+      "core_id": "I3043",
+      "question": "遇到下一次卡頓，先分辨哪一種？",
+      "visual": "回收兩個畫面：『等回報』對工作線；『內容換位置』對空間框。最後只留兩個觀察，不列工具清單。",
+      "new_information": "先辨認症狀，才談這個案例該改的工作或尺寸；其他故障原因尚未被排除。",
+      "transition": "收束。",
+      "claim_ids": [
+        "c1",
+        "c3"
+      ],
+      "sample_line": "看得到、回得來、排得穩，是不同的事。下次遇到不順的網頁，先看看：你是在等它，還是在追它？"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "statement": "頁面可見時主執行緒仍可能忙於腳本，延後處理其他工作。",
+      "source_url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work",
+      "locator": "Interactivity",
+      "read_via": "web.run body on 2026-11-01",
+      "limit": "只是一種原因；不用來源中舊TTI閾值推算當今INP。"
+    },
+    {
+      "id": "c2",
+      "statement": "Worker另行執行計算並以訊息交換結果，不能直接操作頁面的DOM。",
+      "source_url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers",
+      "locator": "Web Workers API; Transferring data to and from workers",
+      "read_via": "web.run body on 2026-11-01",
+      "limit": "不承諾CPU工作減少、所有資料零拷貝或所有裝置都更快。"
+    },
+    {
+      "id": "c3",
+      "statement": "未預留尺寸的圖片可能造成版面移動；事先提供尺寸或比例可以保留空間。",
+      "source_url": "https://web.dev/articles/optimize-cls",
+      "locator": "Images without dimensions",
+      "read_via": "web.run body on 2026-11-01",
+      "limit": "不是所有位移都來自圖片。位置位移像素不是CLS。"
+    },
+    {
+      "id": "e1",
+      "statement": "本次本機小樣三種條件的50毫秒回報實際約54.7、702.2、54.9毫秒。 Worker內部完成與主執行緒接收完成訊息另有時間戳，本次事件序為started→timer→done。",
+      "evidence": "../../reviews/wave4-g37-demo.json",
+      "limit": "各條件只跑一次，量的是timer callback，非真實點擊反應、INP、普遍效能或完整工作完成時間。正式錄製須重新執行並更新數值。"
+    },
+    {
+      "id": "e2",
+      "statement": "本次桌面小樣未預留與預留尺寸的卡片內文字位移分別180.375、0px。",
+      "evidence": "../../reviews/wave4-g37-demo.json",
+      "limit": "圖片是自製SVG並延後設定src，不是網路下載實驗；量相對卡片位置，手機上下卡片仍會隨前方區塊變大而整體下移。"
+    }
+  ],
+  "retention_review": {
+    "max_seconds_without_new_beat": 40,
+    "no_new_fact_in_recap": true,
+    "risk": "三次計時容易重複；保留同一工作線圖，不重講按鈕操作。最後兩節拍只比較位置，不插入CLS計算或效能分數。",
+    "cut_rule": "每次重播只用一次觀察、一個差異；沒有新觀察就剪掉，不換一個網站再演一次。"
+  },
+  "adoption": {
+    "previous_materials": 6,
+    "adopted_materials": 3,
+    "moved_to_other_films": 3,
+    "new_pool_candidates": 0,
+    "full_script": false,
+    "paid_media_calls": 0,
+    "audience_acceptance": "NOT_TESTED",
+    "model_billing": "NO_VERIFIED_BILLING_RECEIPT"
+  },
+  "handoff": "先由另一位編輯覆核主張/兩種症狀銜接/秒數，再寫完整旁白並試讀。小樣可行不代表完整影片、正式製作路線或發布已核准。"
+}

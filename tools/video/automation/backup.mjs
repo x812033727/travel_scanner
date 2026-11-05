@@ -48,13 +48,23 @@ export const FAILED_RETRY_MS = 6 * 60 * 60 * 1000;
 // Reports that only say "queued" or repeat a done the site missed; the token's window is 120 a minute.
 export const REPORTS_PER_ROUND = 10;
 // The full tier's extra files, beside upload/ (docs/videos/BACKUP.md §每一層備份哪些檔).
-export const FULL_DIRS = ["clips", "keyframes", "characters"];
-export const FULL_FILES = ["timeline.json", "narration.wav"];
+// recordings/ holds an imported episode's line recordings (review-package.mjs, 2026-11-01).
+// Since 2026-11-03 the host clears a video whole once Drive holds it (tidy.mjs purge), so the full
+// tier also keeps what a later dub retry, language or Short would need and that cannot be made
+// again for free: the narration's line takes (audio/), each dub's line takes (dubs/<locale>/audio/,
+// as dub-lines/<locale>/ in Drive), the translation worksheets (i18n/), and the owner's approvals
+// and language choice.
+// recut/: an imported drama's cut and dub logs, music cues and edit table (tools/video/import/build.mjs),
+// what a re-cut needs and cannot make again; build/ stays out, it is the pipeline's remakeable output.
+export const FULL_DIRS = ["clips", "keyframes", "characters", "recordings", "audio", "i18n", "recut"];
+export const FULL_FILES = ["timeline.json", "narration.wav", "approvals.json", "languages.json"];
+export const DUB_LINES = "dub-lines";
 // The full tier also keeps, for each language the owner chose (languages.json), the dub track and
 // caption file the worker made but did not package (given up on, or not yet approved) and the
 // language's thumbnail. Unpackaged files go to their own folders, so the site never counts them
 // as packaged.
 export const UNPACKAGED_DUBS = "dubs/未進上傳包";
+const LOCALE_DIR = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?$/;
 export const UNPACKAGED_CAPTIONS = "captions/未進上傳包";
 const DUB_TRACK = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.(m4a|mp3|wav)$/;
 const LOCALE_THUMBNAIL = /^([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)\.jpg$/;
@@ -106,6 +116,34 @@ function isFile(file, fs) {
 
 const nodeFs = { copyFileSync, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync };
 
+// The worker's own Shorts (the lab and highlight lines) live under <work base>/_shorts/<slug>/, each
+// build a directory of its own beside lab.json, which names the current one in `build`
+// (tools/video/shorts/lab.mjs, cut.mjs, automation/shorts.mjs). Until 2026-11-03 the backup read only
+// <work base>/<slug>/, so none of them was ever backed up.
+export const SHORTS_DIR = "_shorts";
+const SHORT_STATE = "lab.json";
+
+/**
+ * Where a video's files are: <base>/<slug>/, or, for one of the worker's own Shorts that has no such
+ * folder, the build its lab.json names, when that build holds an upload package and lies inside
+ * <base>/_shorts/<slug>/. The backup's own records (backup-state.json, backup.json) are kept there
+ * too: a new build is a new cut, backed up again.
+ */
+export function videoDir(base, slug, fs = nodeFs) {
+  const own = path.join(base, slug);
+  if (fs.existsSync(own)) return own;
+  const home = path.join(base, SHORTS_DIR, slug);
+  let state = null;
+  try {
+    state = JSON.parse(fs.readFileSync(path.join(home, SHORT_STATE), "utf8"));
+  } catch {
+    return own;
+  }
+  const build = typeof state?.build === "string" ? path.resolve(home, state.build) : null;
+  if (!build || build === path.resolve(home) || !isInside(build, home)) return own;
+  return isFile(path.join(build, UPLOAD, "final.mp4"), fs) ? build : own;
+}
+
 /**
  * The owner's language choice in languages.json: the locales with a dub, with captions (a dub
  * brings its captions) and with any part (a language's thumbnail goes with any part, as package
@@ -140,7 +178,7 @@ function localeFiles(dir, pattern, fs) {
  * The files a tier copies from a work directory, as { source, path } with `path` where it goes
  * under the episode's folder: the whole upload package (description.<locale>.txt into
  * descriptions/<locale>.txt), the work directory's thumbnail.jpg when the package has none, and
- * for the full tier clips/, keyframes/, characters/, timeline.json and narration.wav, and for each
+ * for the full tier clips/, keyframes/, characters/, recordings/, timeline.json and narration.wav, and for each
  * chosen language the dub track and caption file the package lacks (under dubs/未進上傳包/ and
  * captions/未進上傳包/) and its thumbnail.
  */
@@ -155,6 +193,13 @@ export function planFiles(workdir, tier, fs = nodeFs) {
   if (tier === "full") {
     for (const dir of FULL_DIRS) for (const [source, relative] of walk(path.join(workdir, dir), fs)) planned.set(`${dir}/${relative}`, source);
     for (const name of FULL_FILES) if (isFile(path.join(workdir, name), fs)) planned.set(name, path.join(workdir, name));
+    let dubDirs = [];
+    try {
+      dubDirs = fs.readdirSync(path.join(workdir, "dubs"), { withFileTypes: true }).filter((entry) => entry.isDirectory() && LOCALE_DIR.test(entry.name)).map((entry) => entry.name);
+    } catch {
+      dubDirs = [];
+    }
+    for (const locale of dubDirs.sort()) for (const [source, relative] of walk(path.join(workdir, "dubs", locale, "audio"), fs)) planned.set(`${DUB_LINES}/${locale}/${relative}`, source);
     const chosen = chosenLocales(workdir, fs);
     const packaged = new Set([...planned.keys()].map((where) => where.match(/^dubs\/([^/]+)\.[A-Za-z0-9]+$/)?.[1]).filter(Boolean));
     for (const [source, locale] of localeFiles(path.join(workdir, "dubs"), DUB_TRACK, fs)) {
@@ -418,6 +463,32 @@ async function freeBytes(job) {
   }
 }
 
+/**
+ * A video the site files somewhere new (an imported drama moved from drama/<episode> into
+ * drama/<series>/<episode>, 2026-11-01): its Drive folder is moved there, server side and without
+ * an upload, and the site is told the new folder, which from then on is the one it stores. A
+ * folder that is not in Drive (never backed up, or moved already) counts as moved. Returns
+ * whether the video may be backed up this round.
+ */
+async function moveFolder(job, video, copy) {
+  const from = video.moved_from;
+  if (typeof from !== "string" || !from || from === video.folder || from.split("/").includes("..")) return true;
+  if (!copy) return false;
+  const moved = await job.rclone(["moveto", `${job.remote}:${remoteJoin(job.prefix, from)}`, `${job.remote}:${remoteJoin(job.prefix, video.folder)}`]);
+  const absent = moved.code !== 0 && /directory not found|not found|doesn't exist/i.test(`${moved.stderr}\n${moved.stdout}`);
+  if (moved.code !== 0 && !absent) {
+    job.lines.push(`backup: ${video.slug}: could not move ${from} to ${video.folder} (${why(moved)}); the next round tries again`);
+    return false;
+  }
+  job.lines.push(`backup: ${video.slug}: ${absent ? "nothing in Drive under" : "moved"} ${from}${absent ? "; filed" : ""} to ${video.folder}`);
+  const workdir = job.workdir(video.slug);
+  const state = readBackupState(workdir);
+  // The backup.json in Drive went with the folder; a check against it under the new name follows.
+  if (state && typeof state === "object") saveBackupState(workdir, { ...state, state: "pending", folder: video.folder, queued_at: job.now.toISOString() });
+  await tellSite(job, video.slug, { state: "pending", folder: video.folder, tier: video.tier });
+  return true;
+}
+
 async function tellSite(job, slug, body) {
   try {
     return await job.client.report(slug, body);
@@ -602,7 +673,8 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     config = await client.config();
   } catch (error) {
     // A site from before the backup (no such route) is a site with backups off: the tidy as before.
-    if (error instanceof BackupError && error.status === 404 && !String(error.code).startsWith("video_backup")) return { lines: [], gate: { enabled: false } };
+    // `legacy`: the tidy keeps its rule from before the backup (the media alone, a week on).
+    if (error instanceof BackupError && error.status === 404 && !String(error.code).startsWith("video_backup")) return { lines: [], gate: { enabled: false, legacy: true } };
     return { lines: [`backup: the site's backup settings could not be read (${error.message})`], gate: { unknown: `the backup settings could not be read (${error.message})` } };
   }
   const fs = ctx.backupFs ?? nodeFs;
@@ -612,7 +684,7 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     now: ctx.now(),
     remote: String(ctx.env[REMOTE_ENV] || DEFAULT_REMOTE),
     rclone: runner ?? (rclone.env ? rcloneRunner(rclone.env) : async () => ({ code: -1, stdout: "", stderr: rclone.problem })),
-    workdir: (slug) => path.join(base, slug),
+    workdir: (slug) => videoDir(base, slug, fs),
     prefix: null,
   };
   if (copy) {
@@ -628,11 +700,15 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     }
     await answerTest(job, config, rclone);
   }
-  if (!config.enabled) return { lines, gate: { enabled: false } };
+  // The videos the owner deleted on /admin/videos: the tidy removes their folders whole, with
+  // backups on or off (owner, 2026-11-03).
+  const deleted = (Array.isArray(config.deleted) ? config.deleted : []).filter((slug) => typeof slug === "string" && SLUG.test(slug));
+  const withDeleted = (gate) => (deleted.length ? { ...gate, deleted } : gate);
+  if (!config.enabled) return { lines, gate: withDeleted({ enabled: false }) };
   if (config.remote_prefix === null || config.remote_prefix === undefined || rclone.problem) {
     const problem = rclone.problem ?? config.problem ?? "the site gave no folder to copy to";
     if (copy) lines.push(`backup: not copying: ${problem}; the tidy keeps every video on YouTube`);
-    return { lines, gate: { unknown: problem } };
+    return { lines, gate: withDeleted({ unknown: problem }) };
   }
   job.prefix = config.remote_prefix;
   const perRound = Number.parseInt(ctx.env[PER_ROUND_ENV] ?? "", 10);
@@ -645,6 +721,11 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     // The site's own slug pattern; anything else is never joined onto the work base.
     if (typeof video?.slug !== "string" || !SLUG.test(video.slug)) continue;
     const workdir = job.workdir(video.slug);
+    // A folder filed under a rule since replaced moves before anything is copied to the new one.
+    if (video.moved_from && !(await moveFolder(job, video, copy))) {
+      verdicts.set(video.slug, { ok: false, why: `backup moving from ${video.moved_from}` });
+      continue;
+    }
     // An imported video's package is in the review store, not here: fetched first
     // (review-package.mjs), at most DOWNLOADS_PER_ROUND files a round.
     if (copy && video.review_package && video.tier !== "off") {
@@ -664,7 +745,9 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     // only its upload package, and is backed up all the same, as is an imported video's fetched one.
     if (!fs.existsSync(path.join(workdir, "auto.json")) && !isFile(path.join(workdir, UPLOAD, "final.mp4"), fs) && !packageFetched(workdir)) continue;
     if (video.tier === "off") {
-      verdicts.set(video.slug, { ok: true, why: "its series is set not to be backed up" });
+      // Owner, 2026-11-03: nothing leaves the host before Drive holds it, so a series set not to
+      // be backed up keeps its files on the host.
+      verdicts.set(video.slug, { ok: false, why: "its series is set not to be backed up, so the host keeps it" });
       continue;
     }
     let state = readBackupState(workdir);
@@ -697,7 +780,7 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     const next = await backUp(job, video, state);
     verdicts.set(video.slug, verdictOf(next));
   }
-  return { lines, gate: { enabled: true, verdicts } };
+  return { lines, gate: withDeleted({ enabled: true, verdicts }) };
 }
 
 /** Whether the tidy may clear a video, from its backup state. */

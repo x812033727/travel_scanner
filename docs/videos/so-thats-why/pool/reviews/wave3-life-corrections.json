@@ -1,0 +1,48 @@
+{
+  "before_sha256": "43965f492252876ad843db4f4bf8a4a1ed5a63b452ca1d101600e1a21d8f03c6",
+  "after_sha256": "bcb45fce2515c94e035dcf36e8bc90ffb20dc095513966d283f1d01f82d61203",
+  "changes": [
+    {
+      "id": "V3067",
+      "change": "收斂到教材已描述旋轉耦合；催化構象/計數仍待直接證據"
+    },
+    {
+      "id": "V3093",
+      "change": "加入既有V3-S025 Gibberellins，胚芽改胚"
+    },
+    {
+      "id": "V3-S025",
+      "change": "明列作者原讀Ethylene與獨立覆核補讀Gibberellins，來源範圍與V3093引用一致"
+    },
+    {
+      "id": "V3-S025",
+      "change": "將胚合成GA/萌發與USDA存糧動員的支持範圍分開"
+    }
+  ],
+  "status": "PASS_TARGETED_TOPIC_CORRECTIONS_NOT_SCRIPT_APPROVAL",
+  "reviewed_by": "pool_physics",
+  "reviewed_on": "2026-11-01",
+  "targeted_readback": {
+    "batch_sha256": "bcb45fce2515c94e035dcf36e8bc90ffb20dc095513966d283f1d01f82d61203",
+    "bound_original_review": "reviews/wave3-chemistry-reviews-life.json",
+    "checks": [
+      {
+        "id": "V3067",
+        "result": "PASS",
+        "evidence": "題目/目標/範圍/視覺已收斂到旋轉耦合，未將催化構象序列及每圈計數當已查證。"
+      },
+      {
+        "id": "V3093",
+        "result": "PASS",
+        "evidence": "補 V3-S025 Gibberellins 與 locator，胚芽改胚；GA—糊粉層—酵素仍由 V3-S027 摘要支持。"
+      },
+      {
+        "id": "V3-S025",
+        "result": "PASS",
+        "evidence": "讀回作者首讀與獨立覆核補讀分開；胚合成 GA/種子萌發與 USDA 存糧動員分工正確。"
+      }
+    ],
+    "coverage": "僅針對2候選與1來源元資料的修正讀回；原93題/14頁來源抽查範圍不變。",
+    "remaining": "中央合併/暫緩與3組影片秒數處理由root另行套用，非本receipt核准腳本。"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "tested_on": "2026-11-01T11:54:50.816Z",
+  "result": "PASS",
+  "selected": 2667,
+  "index_html_sha256": "435871a6727468d9f5b2d1e990b999e8ade878101bb4ca06721ee4796c1a609b",
+  "source_sample": {
+    "id": "O7001",
+    "urls": [
+      "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/telecentric-design-topics/",
+      "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/distortion-and-the-telecentricity-specification/"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "historical N098/L042 aliases resolve with source locator; no new wave7 merges",
+    "wave7 new excluded set empty; no exclusion case exercised",
+    "one new optics question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave7-desktop.png",
+    "wave7-source-desktop.png",
+    "wave7-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "visual_notes": "Desktop overall counts and filters, O7001 question/budget/expanded detail, and390px mobile layout are readable; source URLs are checked in DOM, not all visible in the cropped screenshot."
+}

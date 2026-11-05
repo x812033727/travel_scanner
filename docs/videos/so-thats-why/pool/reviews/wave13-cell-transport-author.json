@@ -1,0 +1,618 @@
+{
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave13-cell-transport-20261101",
+  "author": "pool_life_tech",
+  "created_on": "2026-11-01",
+  "candidate_count": 7,
+  "source_count": 7,
+  "not_added_count": 19,
+  "candidate_ids": [
+    "C13001",
+    "C13002",
+    "C13003",
+    "C13004",
+    "C13005",
+    "C13006",
+    "C13007"
+  ],
+  "authored_files": [
+    {
+      "file": "batches/wave13-cell-transport.json",
+      "sha256": "2dd0ab7cef3a2d64efd0db8f7c36b740f82b8b40fdbaffe44ba5b495dffe1828"
+    },
+    {
+      "file": "reviews/wave13-cell-transport-themes.json",
+      "sha256": "ffd8e6ec9f82777db8b66fc99fb546f60d7ca4e00415ed6c1851ff169ef0668c"
+    }
+  ],
+  "baseline_scan": {
+    "file": "pool.json",
+    "sha256": "ab87e1b14505f40be0ae370c2c929662260ad8383aa6a539f07cce7e5ec5b6d8",
+    "raw_count": 3235,
+    "not_added_count": 597,
+    "targeted_queries": [
+      {
+        "name": "membrane_delivery",
+        "query": "囊泡|胞吐|胞吞|內吞|膜回收|核孔|核輸送|內質網|高基氏|高爾基|SNARE|\\bRan\\b|KDEL",
+        "raw_hits": 8,
+        "not_added_hits": 1
+      },
+      {
+        "name": "protein_control",
+        "query": "泛素|蛋白酶體|自噬|PINK1|Parkin|蛋白.{0,8}[摺折]疊|[摺折]疊.{0,8}蛋白|核糖體|翻譯|訊號序列",
+        "raw_hits": 13,
+        "not_added_hits": 3
+      },
+      {
+        "name": "motors",
+        "query": "馬達蛋白|分子馬達|驅動蛋白|動力蛋白|微管|肌球蛋白|肌凝蛋白|kinesin|dynein",
+        "raw_hits": 2,
+        "not_added_hits": 2
+      },
+      {
+        "name": "gradients",
+        "query": "濃度梯度|空間.{0,4}分布|受體.{0,6}結合|黏住.{0,6}放|抓住.{0,6}放",
+        "raw_hits": 6,
+        "not_added_hits": 0
+      }
+    ],
+    "scan_file": ".cache/wave13-cell-targeted-scan.json",
+    "broad_scan": ".cache/wave13-cell-baseline-scan.json",
+    "method_limits": "掃全raw及退題的文字/語意閱讀，並逐讀列出的近對；不是保證全庫無漏。同名蛋白/胞器不構成新核；後續共同向量近鄰仍待非作者。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "C13001",
+      "b": "L003",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核是貨物自身濃度梯度下的被動淨擴散；新核是另一調節因子位置控制出口載體組裝，反轉進入與高濃度累積明確分開。",
+      "compared_record": {
+        "id": "L003",
+        "question": "細胞膜兩側濃度不同時，能穿膜的中性小分子會往哪邊淨移動？",
+        "answer_target": "濃度梯度與中性溶質的淨擴散方向",
+        "scope": "限定可穿膜、不帶電的溶質被動擴散；相同溫度，忽略其他驅動力，不套用帶電離子的電化學梯度。"
+      }
+    },
+    {
+      "a": "C13001",
+      "b": "L010",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核靠跨膜離子共運輸；新核用兩側複合體結合/拆卸造成方向性，不是載體帶貨時同時共運Ran穿脂雙層。",
+      "compared_record": {
+        "id": "L010",
+        "question": "植物細胞能不能借別的離子順路搬糖？",
+        "answer_target": "離子梯度驅動共同運輸",
+        "scope": "細胞跨膜運輸；不討論臨床電解質處置"
+      }
+    },
+    {
+      "a": "C13001",
+      "b": "V3005",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "GTP水解是共同背景，舊核問單一開關的時間終止；新核問空間分布如何決定裝卸位置及反向穿孔。",
+      "compared_record": {
+        "id": "V3005",
+        "question": "G 蛋白收到訊息後，怎麼自己回到關閉狀態？",
+        "answer_target": "GDP 換成 GTP 啟動效應，再由 GTP 水解終止並重組",
+        "scope": "開啟與關閉同一循環，不拆成兩個新題"
+      }
+    },
+    {
+      "a": "C13002",
+      "b": "L017",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "一般膜回收未回答逸出駐留蛋白的選擇性回取與兩站pH抓放。",
+      "compared_record": {
+        "id": "L017",
+        "question": "細胞一直把膜捲進去，外面的膜不會越來越少嗎？",
+        "answer_target": "囊泡運輸與膜回收",
+        "scope": "胞吞的不同任務；不以人體疾病作醫療推論"
+      }
+    },
+    {
+      "a": "C13002",
+      "b": "L016",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "受體選擇性抓取只是共同背景；新核需同一受體在不同pH切換抓/放，才可完成回收。",
+      "compared_record": {
+        "id": "L016",
+        "question": "細胞為什麼能從周圍液體中特別挑出某一種分子？",
+        "answer_target": "受體結合引導選擇性攝入",
+        "scope": "胞吞的不同任務；不以人體疾病作醫療推論"
+      }
+    },
+    {
+      "a": "C13002",
+      "b": "C13001",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "兩者都涉及跨區結合條件，但Ran為GTP狀態調節載體複合體且反轉核孔流向；KDEL為受體的pH敏感構形抓放與囊泡回收。請非作者嚴格判是否保有不同可學中段。",
+      "compared_record": {
+        "id": "C13001",
+        "question": "細胞核的「出口」，為什麼在實驗裡也能把貨物送進去？",
+        "answer_target": "出口載體在Ran-GTP存在處較能和貨物組成複合體；將此條件放到核外，可讓複合體反向進核。方向來自兩側組裝與拆卸條件，而不是核孔內固定的單行箭頭。",
+        "scope": "限通透化HeLa與CAS/CRM1試驗；反向進入只到近似內外平衡，不等於逆濃度主動累積；不套所有RNA輸出或宣稱每次穿孔都要現場水解GTP。"
+      }
+    },
+    {
+      "a": "C13003",
+      "b": "L330",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊題為肌凝蛋白ATP結合後從肌絲脫離；新題為貨物接頭解除馬達整體自抑制、增加可接近性，非以馬達換名字重講ATP。",
+      "compared_record": {
+        "id": "L330",
+        "question": "肌肉用力需要能量，為什麼鬆開黏住的肌絲也需要 ATP？",
+        "answer_target": "ATP 結合促使肌凝蛋白脫離",
+        "scope": "骨骼肌分子機制；不提供運動處方或補充品建議"
+      }
+    },
+    {
+      "a": "C13003",
+      "b": "V3003",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核是膜外結合如何透過跨膜受體接到膜內；新核是胞內馬達自身摺回抑制的解除及協助蛋白結合。",
+      "compared_record": {
+        "id": "V3003",
+        "question": "有些訊號不必進細胞，怎麼讓細胞裡面開始動？",
+        "answer_target": "跨膜受體的構形改變把外側結合事件接到內側反應",
+        "scope": "限細胞表面受體；不同於 L001 物質通透性"
+      }
+    },
+    {
+      "a": "C13003",
+      "b": "B11005",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "微管同名但舊核是組織應力重排軌道方向與生長回饋；新核不改軌道，是馬達在貨物接合後的可接近性。",
+      "compared_record": {
+        "id": "B11005",
+        "question": "嫩芽被側向擠壓後，細胞內的微管為什麼會換方向？",
+        "answer_target": "改變組織受力會重排微管；作者模型把微管方向與新壁材料的有向強化連結，使形狀改變應力、應力再影響生長方向。",
+        "scope": "限擬南芥莖頂分生組織的壓迫/雷射去細胞實驗與模型；微管重排是觀察，整體強化迴路含推論；不宣稱唯一分子感受器或每個細胞都完全平行。"
+      }
+    },
+    {
+      "a": "C13004",
+      "b": "L014",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核只到吞噬物進溶體的去路；新核用SNARE組裝截停/拆除實驗區分膜停靠與融合。",
+      "compared_record": {
+        "id": "L014",
+        "question": "白血球吞了異物後，異物會跑到哪裡？",
+        "answer_target": "吞噬囊泡與溶小體結合",
+        "scope": "胞吞的不同任務；不以人體疾病作醫療推論"
+      }
+    },
+    {
+      "a": "C13004",
+      "b": "U8019",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核是頂端胞吐與後方內吞的空間分工；新核是單次融合在膜靠近後仍可停住的中間態。",
+      "compared_record": {
+        "id": "U8019",
+        "question": "菌絲怎麼一直往前伸，卻不只是整條一起脹大？",
+        "answer_target": "壁材料與相關酵素透過集中在頂端的胞吐加入，尖端後方的內吞區回收膜相關組件；空間分工維持極性生長。",
+        "scope": "限Aspergillus nidulans研究的生長尖端；不說所有胞吐只在一個點，也不把位置關聯當完整形態控制定律。"
+      }
+    },
+    {
+      "a": "C13004",
+      "b": "V3078",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核是細胞質融合與核融合兩事件的生活史時間差；新核是同一次膜融合內的停靠/融合物理步驟，並非兩種細胞換例。",
+      "compared_record": {
+        "id": "V3078",
+        "question": "兩個真菌細胞合在一起，為什麼裡面的核不一定立刻合併？",
+        "answer_target": "細胞質融合與核融合可分隔於生活史不同時間，形成異核階段",
+        "scope": "L042 是核分裂未配胞質分裂；此題由兩細胞融合產生，且不全稱所有真菌持久雙核"
+      }
+    },
+    {
+      "a": "C13005",
+      "b": "L004",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核區分開放通道與載體結合後構形，未處理被運貨物自身的穩定折疊造成跨膜中途停滯與追蹤續行。",
+      "compared_record": {
+        "id": "L004",
+        "question": "細胞的運輸通道和運輸載體，有什麼不一樣？",
+        "answer_target": "開放通路與結合後改變構形",
+        "scope": "一般細胞膜；不延伸成用藥或補充品建議"
+      }
+    },
+    {
+      "a": "C13005",
+      "b": "V3088",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核是粒線體對核基因產物的依賴；新核問已送達蛋白的折疊狀態進口限制。",
+      "compared_record": {
+        "id": "V3088",
+        "question": "粒線體像細菌又有自己的 DNA，為什麼不能搬出去獨立生活？",
+        "answer_target": "部分原共生體基因轉到宿主核，建立對宿主產物的依賴",
+        "scope": "不說每個粒線體基因組都同樣環狀；L062 是胞器核糖體，本題為基因分工依賴"
+      }
+    },
+    {
+      "a": "C13005",
+      "b": "D2057",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核是加熱使乳清蛋白變性並與酪蛋白共同沉澱；新核是同一貨物可逆展開/進口中間態，不是蛋白變性的一般說法。",
+      "compared_record": {
+        "id": "D2057",
+        "question": "做乳酪前多加一道熱，為什麼能把原本留在乳清裡的蛋白質抓回來？",
+        "answer_target": "熱變性乳清蛋白與酪蛋白互動，再酸化共同沉澱。",
+        "scope": "Cultured Dairy Products and Cheese；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "C13006",
+      "b": "L059",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "多核糖體可並行製造是背景；新核的因果是延長速率與有限接收位的時窗匹配，兩種救援可分辨。",
+      "compared_record": {
+        "id": "L059",
+        "question": "同一張 mRNA 說明書，可以同時讓好幾台機器開工嗎？",
+        "answer_target": "多核糖體沿同一模板合成",
+        "scope": "蛋白質合成的基本機制"
+      }
+    },
+    {
+      "a": "C13006",
+      "b": "V3049",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核改RNA存留/可翻譯時間；新核在訊息仍翻譯時改延長速率與SR接收數，結果是送入效率。",
+      "compared_record": {
+        "id": "V3049",
+        "question": "兩條 RNA 抄得一樣多，為什麼蛋白質產量仍可不同？",
+        "answer_target": "RNA 存留時間與 UTR 結合蛋白改變可翻譯時間窗",
+        "scope": "與 L059 多核糖體同時翻譯不同，此題是周轉"
+      }
+    },
+    {
+      "a": "C13006",
+      "b": "V3051",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核找起始位置，新核不是起始或讀碼規則，而是已生長中的蛋白與轉運交接。",
+      "compared_record": {
+        "id": "V3051",
+        "question": "核糖體面對一長條 RNA，怎麼找到開始組蛋白質的位置？",
+        "answer_target": "帽依賴起始機器掃描並對齊合適起始密碼子，再接上大次單元",
+        "scope": "限典型真核帽依賴機制，不宣稱一定用第一個 AUG"
+      }
+    },
+    {
+      "a": "C13007",
+      "b": "V3052",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核講被泛素標記蛋白進蛋白酶體；新核問個別粒線體電位如何透過PINK1處理/留下而形成局部辨識。",
+      "compared_record": {
+        "id": "V3052",
+        "question": "細胞怎麼挑出某些蛋白質拆掉，而不是把所有蛋白都拆掉？",
+        "answer_target": "適當泛素標記引導特定蛋白進蛋白酶體降解",
+        "scope": "並非每種泛素化都代表降解；鏈型進稿另核"
+      }
+    },
+    {
+      "a": "C13007",
+      "b": "V3012",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "共同背景是訊號生成與移除；新核有胞器電位控制切割、單顆局部積累及下游募集對照，不只是cAMP分解換蛋白名。請非作者檢視此邊界。",
+      "compared_record": {
+        "id": "V3012",
+        "question": "細胞製造第二訊使後，怎麼避免訊息一直響？",
+        "answer_target": "cAMP 生成與被磷酸二酯酶分解的平衡限制訊號持續",
+        "scope": "以 cAMP 為具體化學周轉機制，非所有訊號同路徑"
+      }
+    },
+    {
+      "a": "C13007",
+      "b": "V3011",
+      "author_judgement": "DISTINCT_PROPOSED",
+      "reason": "舊核用低胞質鈣基線與胞器儲存形成時間脈衝；新核是電位依賴蛋白處理的局部標記，不是離子訊號脈衝。",
+      "compared_record": {
+        "id": "V3011",
+        "question": "鈣離子到處都有，細胞怎麼把它當成清楚的訊號？",
+        "answer_target": "低胞質基線與胞器儲存產生突升，再以運輸恢復基線",
+        "scope": "不同於 L009 幫浦構形；此題解釋時間訊號的對比"
+      }
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "C13-S001",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/",
+      "doi": "10.1073/pnas.96.17.9622",
+      "read_scope": "引言；In Vitro Transport Assays；RESULTS AND DISCUSSION 核輸送反轉、平衡/洗去與模型各節；Figures 2–7 captions。未重現實驗。",
+      "method": "當日 web.open 實讀 PMC 正文；首次 open 與指定 UA 直接 HTTP 回 CAPTCHA，Europe PMC XML 失敗。成功正文是 web.open 回傳，沒有把本機 CAPTCHA 副本當原文。",
+      "cache_status": "成功web正文未存本機全文；同名前綴的HTTP副本為失敗頁，不可用作正文證據。"
+    },
+    {
+      "source_id": "C13-S002",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617890/",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617890/",
+      "doi": "10.1126/science.aaw2859",
+      "read_scope": "引言與完整主文至結論；Figs. 1–4 captions，尤其 pH 結合曲線、His12 網絡及配體/突變定位結果。未讀補充 PDF/影片。",
+      "method": "當日 web.open 實讀 PMC 作者稿正文與圖說；指定 UA HTTP 200 實為 CAPTCHA，Europe PMC XML 500，兩者均不記為正文閱讀。",
+      "cache_status": "成功web正文未存本機全文；同名前綴的HTTP副本為失敗頁，不可用作正文證據。"
+    },
+    {
+      "source_id": "C13-S003",
+      "canonical_url": "https://elifesciences.org/articles/109462",
+      "retrieval_url": "https://elifesciences.org/articles/109462",
+      "doi": "10.7554/eLife.109462.3",
+      "read_scope": "Introduction；Results 的 Cargo adaptor binding、Cargo-mediated dislocation、Opening the kinesin-1 complex 三節；Figs. 3–6 captions；Discussion 模型與界線。未逐式重算 HDX/AlphaFold。",
+      "method": "當日指定 UA urllib HTTP 200 下載 eLife 官方 HTML，以 lxml/文字層讀指定正文；web.open 核版本。",
+      "sha256": "a2ed2506e13c945da5a648a14cfb4d84fbc0b58c31834b97058ee56907b6d9b8",
+      "text_sha256": "55260ee90a79c8b08b5e3a61cc8b20f5c6fc247c024561261325a40936fcae4c",
+      "file": ".cache/wave13-cell-kinesin-switch.html",
+      "text_file": ".cache/wave13-cell-kinesin-switch.txt"
+    },
+    {
+      "source_id": "C13-S004",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5986196/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5986196/fullTextXML",
+      "doi": "10.1074/jbc.RA118.003313",
+      "read_scope": "Results 三節與 Discussion；Figs. 1、3–6 captions。未重新分析 FRET、FCCS 或 cryo-EM 數據。",
+      "method": "當日 web.open 只有部分首頁後回 CAPTCHA；改以指定 UA urllib HTTP 200 取得 Europe PMC 官方 fullTextXML，解析並實讀所列正文。",
+      "sha256": "2844fd0c8334aff2e5d653a6b6ea1ae52b8de3515ffbc66f64c001a14bff3281",
+      "text_sha256": "210c490c35ffa070d4ca9a6e342e4d2fef5441449f047b2d581d1351ea9fcc54",
+      "file": ".cache/wave13-cell-snare-epmc.xml",
+      "text_file": ".cache/wave13-cell-snare-epmc.txt"
+    },
+    {
+      "source_id": "C13-S005",
+      "canonical_url": "https://doi.org/10.1083/jcb.109.4.1421",
+      "retrieval_url": "https://epub.ub.uni-muenchen.de/7531/1/Neupert_Walter_7531.pdf",
+      "doi": "10.1083/jcb.109.4.1421",
+      "read_scope": "印刷 pp.1421–1424 / PDF pp.1–4（Introduction、Import of the Fusion Protein、Length of the Polypeptide Chain 與 Figs. 1–3）；p.1427 / PDF p.7 Discussion。未採精確接觸面積或通道總數。",
+      "method": "當日指定 UA urllib HTTP 200 下載 LMU 合法機構公開 PDF，以 PyMuPDF 讀指定正文文字層。",
+      "sha256": "bd2d65b8799522303a7d42d1df9957b50b4f834ec48bd6cc54f084c2e9800efd",
+      "text_sha256": "5d43bab5748f493633eb6ca5a74589fbcbfa8ceb47549bc784624f29f8c3a023",
+      "file": ".cache/wave13-cell-mitochondria.pdf",
+      "text_file": ".cache/wave13-cell-mitochondria.txt"
+    },
+    {
+      "source_id": "C13-S006",
+      "canonical_url": "https://doi.org/10.1016/j.cell.2008.02.049",
+      "retrieval_url": "https://access.archive-ouverte.unige.ch/access/metadata/71dbacbd-f9a2-4c4c-8902-d25de8165b79/download",
+      "doi": "10.1016/j.cell.2008.02.049",
+      "read_scope": "PDF p.64 / printed p.440 Introduction；PDF pp.69–73 / printed pp.445–449：兩種救援對照、SR限制、Discussion與Figs.5–7。未讀整本172頁或逐項補充數據。",
+      "method": "當日指定 UA urllib HTTP 200 下載 UNIGE 作者公開論文集 PDF，確認封面為2009學位論文，實讀其中所收2008 Cell 已刊論文；不是把整本論文當本研究的多份證據。",
+      "sha256": "405fc6763a404b4fb2df4ff7b863c925d35c85e1edba5c9a3066ea43f8daa1db",
+      "text_sha256": "2b8f46c98c1d7f4b39330f4f8ee995b6510933cff193cca4aee1bef0eec8259c",
+      "file": ".cache/wave13-cell-srp-unige.pdf",
+      "text_file": ".cache/wave13-cell-srp-unige.txt"
+    },
+    {
+      "source_id": "C13-S007",
+      "canonical_url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000298",
+      "retrieval_url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000298",
+      "doi": "10.1371/journal.pbio.1000298",
+      "read_scope": "Results: 單細胞偏好積累、膜電位/切割與洗去、PINK1缺失/補回與Parkin募集；Fig.1–4相關正文。未讀影片或覆核所有疾病變異段。",
+      "method": "當日指定 UA urllib HTTP 200 下載 PLOS 正式 HTML，以 lxml 讀 Results 指定正文。",
+      "sha256": "32622d0650e9e13733846182f32ad61f25046048bbebd247f2090377ff9d0a45",
+      "text_sha256": "8d11484c76873a758e5f361d9855bb56cf586ce1395c43f90460d378c187a78d",
+      "file": ".cache/wave13-cell-pink1.html",
+      "text_file": ".cache/wave13-cell-pink1.txt"
+    }
+  ],
+  "source_identity_comparison": [
+    {
+      "source_id": "C13-S001",
+      "same_identity_baseline_source_ids": [],
+      "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+    },
+    {
+      "source_id": "C13-S002",
+      "same_identity_baseline_source_ids": [],
+      "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+    },
+    {
+      "source_id": "C13-S003",
+      "same_identity_baseline_source_ids": [],
+      "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+    },
+    {
+      "source_id": "C13-S004",
+      "same_identity_baseline_source_ids": [],
+      "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+    },
+    {
+      "source_id": "C13-S005",
+      "same_identity_baseline_source_ids": [],
+      "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+    },
+    {
+      "source_id": "C13-S006",
+      "same_identity_baseline_source_ids": [],
+      "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+    },
+    {
+      "source_id": "C13-S007",
+      "same_identity_baseline_source_ids": [],
+      "relationship": "同論文的期刊URL/PMC/機構副本為同一研究；檢索為exact URL/DOI/title，不是跨全網證據獨立性判定。"
+    }
+  ],
+  "failed_or_unread_methods": [
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7617890/fullTextXML",
+      "method": "指定UA urllib",
+      "outcome": "<HTTPError 500: ''>"
+    },
+    {
+      "url": "https://www.lps.ens.fr/~vincent/courdea/PDF/yildiz.pdf",
+      "method": "指定UA urllib",
+      "outcome": "URLError(TimeoutError(10060, '連線嘗試失敗，因為連線對象有一段時間並未正確回應，或是連線建立失敗，因為連線的主機無法回應。', None, 10060, None))"
+    },
+    {
+      "url": "https://shahamlab.rockefeller.edu/ET_readings/kinesin.pdf",
+      "method": "指定UA urllib",
+      "outcome": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "url": "https://people.physics.illinois.edu/Selvin/PRS/PSCV/PTP/2004/kinesin.pdf",
+      "method": "指定UA urllib",
+      "outcome": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC22259/fullTextXML/",
+      "method": "指定UA urllib",
+      "outcome": "<HTTPError 404: ''>"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC22259/fullTextXML",
+      "method": "指定UA urllib",
+      "outcome": "<HTTPError 500: ''>"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC306590/fullTextXML",
+      "method": "指定UA urllib",
+      "outcome": "<HTTPError 500: ''>"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/",
+      "method": "首次web.open/指定UA urllib",
+      "outcome": "CAPTCHA；後續web.open確有正文，方法分開。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617890/",
+      "method": "指定UA urllib",
+      "outcome": "HTTP200但內容為CAPTCHA；只採成功web.open正文。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5986196/",
+      "method": "web.open",
+      "outcome": "初次部分首頁，後續CAPTCHA；採官方Europe PMC XML正文。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3985920/",
+      "method": "web.open",
+      "outcome": "CAPTCHA，未作正式來源。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC306590/",
+      "method": "web.open",
+      "outcome": "CAPTCHA，2000文章未納；SRP採另一篇2008原研究。"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S0092867401004342",
+      "method": "web.open",
+      "outcome": "403，ESCRT未讀正文不納。"
+    },
+    {
+      "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC22259/unicode",
+      "method": "指定UA urllib",
+      "outcome": "HTTP200非所需全文；沒有採用為正文。"
+    },
+    {
+      "url": "https://www.physik.fu-berlin.de/en/einrichtungen/ag/ag-netz/lehre/past-semesters/past_lectures/ExtraSW1718/Non-Equilibrium-Motor-proteins.pdf",
+      "method": "web.open",
+      "outcome": "實為10頁講義，不是搜尋呈現的完整2004研究文章；未以此納手拉手步行題。"
+    }
+  ],
+  "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "editorial_review": {
+    "episodes": [
+      {
+        "id": "W13C-T01",
+        "body_seconds": 110,
+        "chapters": 2,
+        "candidate_ids": [
+          "C13001"
+        ]
+      },
+      {
+        "id": "W13C-T02",
+        "body_seconds": 100,
+        "chapters": 2,
+        "candidate_ids": [
+          "C13002"
+        ]
+      },
+      {
+        "id": "W13C-T03",
+        "body_seconds": 125,
+        "chapters": 2,
+        "candidate_ids": [
+          "C13006"
+        ]
+      },
+      {
+        "id": "W13C-T04",
+        "body_seconds": 100,
+        "chapters": 2,
+        "candidate_ids": [
+          "C13005"
+        ]
+      }
+    ],
+    "unused_pool_candidates": [
+      "C13003",
+      "C13004",
+      "C13007"
+    ],
+    "reason_unused": "馬達解除抑制、膜融合中間態與局部回收標記各有內容，但不硬接到核孔/ER/粒線體進口成胞器百科；等待適合的同一追問。",
+    "duration_status": "PAPER_BUDGET_ONLY_NOT_READ_ALOUD_OR_MEDIA_MEASURED",
+    "comments": "4案均單核兩章，第二章有反轉、釋放、救援或可逆續行的新對照，不只回顧。未達探索數量是因相同核心/讀不到正文/模型過推已退。"
+  },
+  "risk_focus": [
+    "C13001/C13002 是否保有足夠不同物理中段，不能以胞器不同自動保留。",
+    "C13003工程化構形開啟不是完成天然運貨；C13004緊停靠黏力仍未知。",
+    "C13006相對轉運效率與絕對總產量不可混；長鏈阻礙交接的細節仍是模型。",
+    "C13007與V3012共同的移除訊號概念須嚴格比較局部電位/切割控制是否足夠增量。",
+    "S006實際是作者學位論文中的Cell已刊文章，PDF64/69–73，不能錯標為獨立的一篇學位研究或兩份支持。"
+  ],
+  "validation": {
+    "status": "PASS_AUTHOR_SCHEMA_AND_TIMING_ONLY",
+    "runtime": "bundled Node v24.22.1",
+    "checks": [
+      "現有validateEditorial及validateThemes隔離驗證通過，沒有改中央資料。",
+      "7候選唯一ID/機制鍵、7來源連接與metadata完整；19未收方向保留。",
+      "4案各2章，110/100/125/100秒；beat<=45秒、同核心跨章<=素材上限，range上限<=正文。",
+      "3檔UTF-8 LF無BOM、無本機使用者絕對路徑。"
+    ],
+    "script": ".cache/wave13-cell-validate.mjs",
+    "limits": "只查結構及時間算術，不代表非作者查核、稿件或製作通過。"
+  },
+  "limits": "僅作者題級來源篩選和紙上企劃；7來源是7篇研究身分，非7次相互獨立驗證；未完整稿、盲讀、實驗重現、媒體製作或中央選入。",
+  "correction_history": [
+    {
+      "date": "2026-11-01",
+      "reviewer": "pool_physics",
+      "authorization": "root accepted targeted wording correction",
+      "before_files": [
+        {
+          "file": "batches/wave13-cell-transport.json",
+          "sha256": "2dd0ab7cef3a2d64efd0db8f7c36b740f82b8b40fdbaffe44ba5b495dffe1828"
+        },
+        {
+          "file": "reviews/wave13-cell-transport-themes.json",
+          "sha256": "dccdfa1c8ea29a507e8964ce86791809c2d1559b86db5fbdd70e1bd4c980c763"
+        },
+        {
+          "file": "reviews/wave13-cell-transport-author.json",
+          "sha256": "60ae67844a0d11dde3a45ec50c4465c0ab4217f751d232e172190fd12846ef56"
+        }
+      ],
+      "location": "W13C-T03 chapter 1 progression[0]",
+      "before": "0–15秒：兩條相同生產線，較快那條反而留下更多未送入的前體",
+      "after": "0–15秒：同一貨物，對照SRP正常的局部延長減速與減速缺陷；後者留下更多未送入前體，不畫成全局蛋白合成變快",
+      "reason": "UNIGE所收Cell論文PDF p.71 / printed p.447 Fig.5(E–G)圖說明列GFP-h14A5表達未改全局蛋白合成率；局部SRP延長減速缺陷不可畫成整條生產線全局加速。",
+      "evidence_readback": {
+        "method": "重核已讀作者PDF SHA後，PyMuPDF定點讀Fig.5完整圖說及相鄰Discussion；本次不是新HTTP下載。",
+        "file": ".cache/wave13-cell-srp-unige.pdf",
+        "sha256": "405fc6763a404b4fb2df4ff7b863c925d35c85e1edba5c9a3066ea43f8daa1db"
+      },
+      "after_files": [
+        {
+          "file": "batches/wave13-cell-transport.json",
+          "sha256": "2dd0ab7cef3a2d64efd0db8f7c36b740f82b8b40fdbaffe44ba5b495dffe1828"
+        },
+        {
+          "file": "reviews/wave13-cell-transport-themes.json",
+          "sha256": "ffd8e6ec9f82777db8b66fc99fb546f60d7ca4e00415ed6c1851ff169ef0668c"
+        }
+      ],
+      "unchanged": "batch問題/答案/來源不變；首beat15秒、T03 65+60=125秒，其他3案與range/drop算術全不變。",
+      "status": "AUTHOR_CORRECTION_PENDING_REVIEWER_READBACK"
+    }
+  ]
+}

@@ -243,6 +243,20 @@ export const TOLD_TO_ONE_VIEWER = `Told to one viewer (奇聞檔案局 and the b
 
 // A writing-only route inside the existing slides format. This does not alter the storytelling
 // register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.
+/**
+ * The words of an AI video's thumbnail (owner, 2026-11-01; templates.mjs THUMB_AI_LAYOUT): the
+ * AI look sets one headline line over the picture and one sub line, and writes the series' name
+ * itself. Sent with the daily brief's, the teaching route's and the value rules.
+ */
+export const AI_THUMBNAIL_WORDS = `"data.headline" is ONE line, no line break: the subject named
+  first (the product, the company, the term: 「Gemini 4」「ChatGPT」「溫度」), then **the hook** in
+  double asterisks, about nine characters in all (「Google 最強**先不給你**」「金鑰只選了**數字 4**」).
+  The hook says what the title does not. "data.sub" is one line of at most 24 characters with the
+  second fact. "data.tag" is left out for a daily brief (the tool writes the series' name and the
+  date); for another AI video it is the tool or the term the episode is about, a few words
+  (「Claude Code」「Temperature」), or left out. "data.layout" is "ai" (the tool sets it too).`;
+export const AI_THUMBNAIL_RULE = `- The thumbnail is in the AI look. ${AI_THUMBNAIL_WORDS}`;
+
 export const TEACHING_RULES = `
 Teaching route (plain slides; writing only):
 - For a tool tutorial or a concept taught through a worked example, the planner writes
@@ -278,7 +292,8 @@ Teaching route (plain slides; writing only):
   card states or show the actual diagram on a public source page. No diagram/screenshot file
   templates or invented asset paths; omit an optional capture focus selector when none is known.
   Do not add a shot to satisfy an illustration quota. Use a real
-  screencast capture for the thumbnail when available, otherwise a text-only thumb.
+  screencast capture for the thumbnail when available, otherwise a text-only thumb; its words
+  follow the AI look below.
 - The illustration quota, chapter-specific places and storytelling register below apply only
   to illustrated storytelling, not this teaching route. Its existing plain-slides QA still
   limits a state to 15 seconds; aim for meaningful reveals every 5 to 8 seconds without hiding
@@ -446,8 +461,9 @@ route keeps its condensation and story rules):
   gets its own icon. A new state every 5 to 8 seconds, never longer than 15. Run codes, file
   hashes and source stamps (「（p1）」「實跑 2026-10-21｜2.1.295」) never appear in card text or
   narration: they go in the card's \`source\` field or the description. A short tutorial uses
-  the paper theme (\`theme: "paper"\`); the thumbnail's big words (at most six) add what the
-  title did not say, over a real official page captured by a \`screencast\` scene.
+  the paper theme (\`theme: "paper"\`); the thumbnail is in the AI look below, over a real
+  official page captured by a \`screencast\` scene.
+${AI_THUMBNAIL_RULE}
 `.trim();
 
 // What a slides video has to be worth to its viewer, whichever route it takes. The owner's review
@@ -635,6 +651,9 @@ rules and a route's rules disagree, these win):
   in a tutorial only), or an
   outcome with no proof, for a
   writer revision, or for a new plan when the example itself is at fault; it never repairs one by inventing a fact, a run or an example.
+- An AI video (category ai-news, ai-terms or tutorial) has the AI look's thumbnail: "data.headline"
+  one line, the subject named, then **the hook** the title lacks, about nine characters in all;
+  "data.sub" one line of at most 24 characters; "data.layout": "ai".
 `.trim();
 
 // The daily AI news brief (a daily-ai-YYYYMMDD slug; .agents/skills/youtube-video/references/
@@ -684,7 +703,8 @@ register, the narrative rules or the template guide below disagree, these rules 
   so no card state stays up longer than 15 seconds (the final check measures it); reveal one item
   per sentence. Every story has at least one card whose "source" names its official page or the
   site article; rotate big, compare, stats, steps and quote, and no two stories in a row open on
-  the same kind of card. The thumbnail is text only (no "shot", no "capture").
+  the same kind of card. The thumbnail names no "shot" and no "capture": the tool puts a picture
+  in it. Its words follow the AI look: ${AI_THUMBNAIL_WORDS}
 - The paper look with the key band, as the first episode had (owner, 2026-10-30): "theme": "paper"
   (the tool sets it too), and every scene carries its key band: "data.key" on a scene with one
   state, "data.keys" with one line a state on a scene with reveals (one state plus one per reveal

@@ -1,0 +1,901 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "pool_physics",
+  "production_ready": false,
+  "scope": "把正在漏、看似堵、已停下及尚在內部重排的顆粒分開；以實驗管住流量、角度、顆粒形狀或界面封氣，再問觀眾眼前的變化怎麼來。",
+  "baseline": {
+    "head": "ececc28d",
+    "selected": 3356,
+    "raw_records": 3740,
+    "not_added": 1812,
+    "themes": 444,
+    "snapshot": {
+      "file": "baselines/2026-11-03-3356.json.gz",
+      "sha256": "6057fc3a96018de31bb5e254e2b142aa7ca4c6c6074a92c006304c5d81abf64c"
+    },
+    "pool_sha256": "bb02f9bdf4e48b6164af2fceb67105eb9dfd01f2e3e9b527443562c54c9ccd7f"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave43-physics.json",
+      "sha256": "b621cd4d63ab6429c38d1b5ec206d7f1063a61e3c080a69965357390aee34f9b"
+    },
+    {
+      "file": "reviews/wave43-physics-themes.json",
+      "sha256": "5c3cb2b7fae35d27cc21dedb628e141317f165d07625213b63855150ccf9be0a"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "original_research": 9,
+    "not_added": 18,
+    "near_pairs": 23,
+    "themes": 5
+  },
+  "dedup_reading": {
+    "method": "全3740原題/1812退題搜尋顆粒、堅果、拱、沙漏、料斗、撐力、吸盤、夾持及分選。廣詞篩得99原題54退題；另完整讀前批F10、G13、P21的近似核。",
+    "scan_files": [
+      {
+        "file": ".cache/wave43-physics-scan-raw_records.json",
+        "sha256": "7a0abc2b15a8dcac51fa189a19c14e926cb1214c52f0367d57af27cd9473009a"
+      },
+      {
+        "file": ".cache/wave43-physics-scan-not_added.json",
+        "sha256": "15b937b4a76555f6d3263e1256c0c49988b1e0db35959da02b985d4ce09e4496"
+      }
+    ],
+    "retired_reentries": [
+      "F10-NA11原綜述不夠，這輪實讀Gajjar原刊及Fig2，加入「轉向仍未浮起者」的對照。",
+      "G13-NA16泛指軸向條帶初始形成仍不收；新核專問已成帶的消長能否被帶緣珠徑反轉。"
+    ],
+    "common_semantic_status": "待中央查核。"
+  },
+  "near_pairs": [
+    {
+      "a": "P43-001",
+      "b": "F10003",
+      "proposed": "distinct",
+      "reason": "壁面承重決定底部靜態負荷，新題在同孔口改進水供應，查排出速率。",
+      "a_snapshot": {
+        "id": "P43-001",
+        "question": "浸在水裡的珠子料斗，怎麼到快漏光時，反而越漏越快？",
+        "answer_target": "在這個開頂裝置裡，珠子下落時也把水帶過珠床。料層變矮，水穿過它的阻力變小；染色水不只跟著珠面下降，還會越來越快地往珠層裡走。把進水量用泵固定後，原本越來越快的出珠率變得近乎平穩。",
+        "scope": "排出率由秤重變化取得；染料追的是水相對珠床的移動。阻力變化是作者模型，並非直接量到所有位置的壓力。"
+      },
+      "b_snapshot": {
+        "id": "F10003",
+        "question": "往高筒裡繼續倒顆粒，筒底承受的力為什麼可能幾乎不再增加？",
+        "answer_target": "顆粒接觸把部分垂直載荷傳向側壁，壁面摩擦分擔重量，底部負荷可趨飽和。",
+        "scope": "支壁與底座分開量測的顆粒柱；不是整個容器連同顆粒放磅秤後總重不增。"
+      }
+    },
+    {
+      "a": "P43-001",
+      "b": "F10004",
+      "proposed": "distinct",
+      "reason": "靜水壓可掩蓋顆粒的底部負荷，不是流動穿珠床的相對水速。",
+      "a_snapshot": {
+        "id": "P43-001",
+        "question": "浸在水裡的珠子料斗，怎麼到快漏光時，反而越漏越快？",
+        "answer_target": "在這個開頂裝置裡，珠子下落時也把水帶過珠床。料層變矮，水穿過它的阻力變小；染色水不只跟著珠面下降，還會越來越快地往珠層裡走。把進水量用泵固定後，原本越來越快的出珠率變得近乎平穩。",
+        "scope": "排出率由秤重變化取得；染料追的是水相對珠床的移動。阻力變化是作者模型，並非直接量到所有位置的壓力。"
+      },
+      "b_snapshot": {
+        "id": "F10004",
+        "question": "顆粒泡進水後，筒底讀數一直增加，就代表側壁不再分擔重量嗎？",
+        "answer_target": "水位升高帶來靜水壓增量，可疊在趨飽和的顆粒接觸負荷上，掩蓋側壁分擔。",
+        "scope": "限論文沉降顆粒、可變/固定水位對照；量測基準與支壁固定條件須相同。"
+      }
+    },
+    {
+      "a": "P43-001",
+      "b": "G13007",
+      "proposed": "distinct",
+      "reason": "往復振動中壓差讓一顆輕球下沉；這裡重力排料將水帶穿床層、定流可關閉末段加速。",
+      "a_snapshot": {
+        "id": "P43-001",
+        "question": "浸在水裡的珠子料斗，怎麼到快漏光時，反而越漏越快？",
+        "answer_target": "在這個開頂裝置裡，珠子下落時也把水帶過珠床。料層變矮，水穿過它的阻力變小；染色水不只跟著珠面下降，還會越來越快地往珠層裡走。把進水量用泵固定後，原本越來越快的出珠率變得近乎平穩。",
+        "scope": "排出率由秤重變化取得；染料追的是水相對珠床的移動。阻力變化是作者模型，並非直接量到所有位置的壓力。"
+      },
+      "b_snapshot": {
+        "id": "G13007",
+        "question": "埋在小珠子裡的大輕球，為什麼有時會越搖越往下？",
+        "answer_target": "顆粒床離底及落回時，底部空隙開合使空氣穿床並改變壓力梯度；輕球與床的加速度不同，埋得深時兩段運動可累積向下位移。",
+        "scope": "限原研究單一大球、細粒床、初始埋深與氣壓條件；低壓使所測密度效應變弱，不等於任何真空顆粒都不分選。模型不能解釋全部壓力依賴。"
+      }
+    },
+    {
+      "a": "P43-002",
+      "b": "F10005",
+      "proposed": "distinct",
+      "reason": "障礙位置讓已靠桿的拱失支撐，不是無桿出流中橫跨出口的鏈先成形、後存活的兩階段。",
+      "a_snapshot": {
+        "id": "P43-002",
+        "question": "料斗口已經排成一座拱了，下一格怎麼還有珠子掉下去？",
+        "answer_target": "幾顆圓盤能短暫連成一條跨過出口的鏈，卻仍會在流動中改變接觸角而散開。只有跨得夠寬、構形又能在當時的擾動下存留，才會成為真正阻流的靜止拱。",
+        "scope": "原研究追蹤兩種大小的圓盤；由連續影格辨動鏈破壞，再由統計及模型比較存留機會，不能以單張圖認定已塞住。"
+      },
+      "b_snapshot": {
+        "id": "F10005",
+        "question": "料斗出口已經很窄，放一根細桿在上方為什麼有時反而更不容易堵？",
+        "answer_target": "合適位置可讓堵塞拱出現在往下變寬的間隙，稍向下移就失去支撐；放太低也會堵。",
+        "scope": "限3D球粒料斗原研究幾何；不推廣為人群疏散或所有粉末通用方法。"
+      }
+    },
+    {
+      "a": "P43-002",
+      "b": "G13003",
+      "proposed": "distinct",
+      "reason": "顆粒堆受剪建立承載網；此處追高速通過縮口的鏈能否留存。",
+      "a_snapshot": {
+        "id": "P43-002",
+        "question": "料斗口已經排成一座拱了，下一格怎麼還有珠子掉下去？",
+        "answer_target": "幾顆圓盤能短暫連成一條跨過出口的鏈，卻仍會在流動中改變接觸角而散開。只有跨得夠寬、構形又能在當時的擾動下存留，才會成為真正阻流的靜止拱。",
+        "scope": "原研究追蹤兩種大小的圓盤；由連續影格辨動鏈破壞，再由統計及模型比較存留機會，不能以單張圖認定已塞住。"
+      },
+      "b_snapshot": {
+        "id": "G13003",
+        "question": "顆粒沒有裝得更多，往旁邊推一推為什麼會卡緊？",
+        "answer_target": "固定裝填量下，剪切重排可建立能承載的摩擦接觸網絡；反向剪切會改變這個網絡，但只有某些先前狀態會退回低於可測應力的鬆散狀態。",
+        "scope": "限均勻剪切近二維圓盤；剪切量與填充率一起決定fragile或shear-jammed，反推不是通用解鎖法。保留量測噪聲判準，不能說所有接觸完全消失。"
+      }
+    },
+    {
+      "a": "P43-002",
+      "b": "P43-003",
+      "proposed": "distinct",
+      "reason": "動鏈在自由出流中存活，是成拱之前；新一題人為振動已停住的拱，找沒有下方支點的珠。",
+      "a_snapshot": {
+        "id": "P43-002",
+        "question": "料斗口已經排成一座拱了，下一格怎麼還有珠子掉下去？",
+        "answer_target": "幾顆圓盤能短暫連成一條跨過出口的鏈，卻仍會在流動中改變接觸角而散開。只有跨得夠寬、構形又能在當時的擾動下存留，才會成為真正阻流的靜止拱。",
+        "scope": "原研究追蹤兩種大小的圓盤；由連續影格辨動鏈破壞，再由統計及模型比較存留機會，不能以單張圖認定已塞住。"
+      },
+      "b_snapshot": {
+        "id": "P43-003",
+        "question": "都是幾顆珠子卡成的拱，從哪一顆鬆開，能先看出端倪嗎？",
+        "answer_target": "有些珠子懸在兩個鄰居下方，靠摩擦抓住，不是被兩旁從下方托起。比較穩定拱並逐步加強振動，最大鄰接角較大的拱平均較易破，常從最不利的角度附近先鬆。",
+        "scope": "準二維金屬珠、垂直振動；最大角珠是最常見單一破點而非每一回。"
+      }
+    },
+    {
+      "a": "P43-003",
+      "b": "F10005",
+      "proposed": "distinct",
+      "reason": "挪動障礙改拱幾何；給已穩定拱增振，查哪顆靠摩擦懸著的珠先鬆，控制及結果位置不同。",
+      "a_snapshot": {
+        "id": "P43-003",
+        "question": "都是幾顆珠子卡成的拱，從哪一顆鬆開，能先看出端倪嗎？",
+        "answer_target": "有些珠子懸在兩個鄰居下方，靠摩擦抓住，不是被兩旁從下方托起。比較穩定拱並逐步加強振動，最大鄰接角較大的拱平均較易破，常從最不利的角度附近先鬆。",
+        "scope": "準二維金屬珠、垂直振動；最大角珠是最常見單一破點而非每一回。"
+      },
+      "b_snapshot": {
+        "id": "F10005",
+        "question": "料斗出口已經很窄，放一根細桿在上方為什麼有時反而更不容易堵？",
+        "answer_target": "合適位置可讓堵塞拱出現在往下變寬的間隙，稍向下移就失去支撐；放太低也會堵。",
+        "scope": "限3D球粒料斗原研究幾何；不推廣為人群疏散或所有粉末通用方法。"
+      }
+    },
+    {
+      "a": "P43-003",
+      "b": "G13001",
+      "proposed": "distinct",
+      "reason": "沙堆底部壓力因堆置史分流，沒有局部懸珠的破壞測試。",
+      "a_snapshot": {
+        "id": "P43-003",
+        "question": "都是幾顆珠子卡成的拱，從哪一顆鬆開，能先看出端倪嗎？",
+        "answer_target": "有些珠子懸在兩個鄰居下方，靠摩擦抓住，不是被兩旁從下方托起。比較穩定拱並逐步加強振動，最大鄰接角較大的拱平均較易破，常從最不利的角度附近先鬆。",
+        "scope": "準二維金屬珠、垂直振動；最大角珠是最常見單一破點而非每一回。"
+      },
+      "b_snapshot": {
+        "id": "G13001",
+        "question": "沙堆中央最高，底下承受的壓力為什麼反而可能比較小？",
+        "answer_target": "同種顆粒以集中落料或廣面撒落堆置，可留下不同接觸承力方向；重量向周圍分配，使集中堆置的圓錐堆底壓在中央出現低谷。",
+        "scope": "限無側牆圓錐堆、足夠剛的底座與兩種建堆程序；整個底面積分仍對應總重量，不能畫成重量消失。力鏈方向是解釋，非直接重建該三維堆全部接觸。"
+      }
+    },
+    {
+      "a": "P43-004",
+      "b": "H3090",
+      "proposed": "distinct",
+      "reason": "單件聚合物固定形變的應力鬆弛；此處集合體出口已停、內部仍移，定點影像辨別無外加敲擊可重啟的時間順序。",
+      "a_snapshot": {
+        "id": "P43-004",
+        "question": "出口沒有珠子掉、也沒人碰筒子，軟珠怎麼會過一會兒自己再流？",
+        "answer_target": "出口停住時，上層水凝膠珠仍能在幾秒內緩慢移位與壓密。原先托住出口的配置因而可能失去平衡，讓出料自行恢復；若內部重排已停、阻塞結構還在，就可能永久堵住。",
+        "scope": "差分影像能看出出口與上層不同步；黏彈與壓力重分配是原作者解釋。沒有量每一對珠的時變接觸力。"
+      },
+      "b_snapshot": {
+        "id": "H3090",
+        "question": "塑膠被固定在同一個形狀，為什麼它頂住物體的力還會慢慢變小？",
+        "answer_target": "聚合物的彈性與時間依賴重排使固定形變的應力鬆弛；和固定應力的蠕變並排，延伸到週期載荷的延遲耗能。",
+        "scope": "不是單純彈性模數題，也不將所有塑膠視同一鬆弛時間；時間溫度疊加只在可用範圍近似。"
+      }
+    },
+    {
+      "a": "P43-004",
+      "b": "P43-003",
+      "proposed": "distinct",
+      "reason": "硬拱用外加振動測破點；軟珠停止排出後，自身上層重排改變力平衡。",
+      "a_snapshot": {
+        "id": "P43-004",
+        "question": "出口沒有珠子掉、也沒人碰筒子，軟珠怎麼會過一會兒自己再流？",
+        "answer_target": "出口停住時，上層水凝膠珠仍能在幾秒內緩慢移位與壓密。原先托住出口的配置因而可能失去平衡，讓出料自行恢復；若內部重排已停、阻塞結構還在，就可能永久堵住。",
+        "scope": "差分影像能看出出口與上層不同步；黏彈與壓力重分配是原作者解釋。沒有量每一對珠的時變接觸力。"
+      },
+      "b_snapshot": {
+        "id": "P43-003",
+        "question": "都是幾顆珠子卡成的拱，從哪一顆鬆開，能先看出端倪嗎？",
+        "answer_target": "有些珠子懸在兩個鄰居下方，靠摩擦抓住，不是被兩旁從下方托起。比較穩定拱並逐步加強振動，最大鄰接角較大的拱平均較易破，常從最不利的角度附近先鬆。",
+        "scope": "準二維金屬珠、垂直振動；最大角珠是最常見單一破點而非每一回。"
+      }
+    },
+    {
+      "a": "P43-004",
+      "b": "P21003",
+      "proposed": "distinct",
+      "reason": "遠端剪切須持續外力活化探針；軟珠停流後仍出現內部延遲運動。",
+      "a_snapshot": {
+        "id": "P43-004",
+        "question": "出口沒有珠子掉、也沒人碰筒子，軟珠怎麼會過一會兒自己再流？",
+        "answer_target": "出口停住時，上層水凝膠珠仍能在幾秒內緩慢移位與壓密。原先托住出口的配置因而可能失去平衡，讓出料自行恢復；若內部重排已停、阻塞結構還在，就可能永久堵住。",
+        "scope": "差分影像能看出出口與上層不同步；黏彈與壓力重分配是原作者解釋。沒有量每一對珠的時變接觸力。"
+      },
+      "b_snapshot": {
+        "id": "P21003",
+        "question": "同樣的力本來拉不動砂裡的小桿，遠處一轉動它怎麼就走了？",
+        "answer_target": "遠處剪切改變近乎靜止顆粒區的屈服反應；機械擾動活化的詮釋是擾動協助探針跨過局部阻力門檻。探針逆著內筒方向移動且遠快於當地背景粒速，不能只當成被整群顆粒搬走。",
+        "scope": "限玻璃珠Couette槽、指定埋深與0.5–0.9倍無剪切臨界力的量測；應力擾動為擬合支持的解釋，微觀推導仍未完成，不宣稱直接量得遠程力鏈訊號。"
+      }
+    },
+    {
+      "a": "P43-005",
+      "b": "F10006",
+      "proposed": "distinct",
+      "reason": "小粒能滲下是共同的一段；本題靠坡腳停積前緣向上遷移，才把流層留下成對斜紋。",
+      "a_snapshot": {
+        "id": "P43-005",
+        "question": "明明一路倒下混合的兩種顆粒，沙堆怎麼自己排出一層深、一層淺？",
+        "answer_target": "顆粒沿斜坡下滾時，小粒能落到流層下方，大粒留在上方。坡腳有顆粒先停下，接著到的顆粒在那裡堆住；停下的邊界一步步向坡上移，把下方細粒和上方粗粒留成成對斜層。",
+        "scope": "限夾板間受測混料；大有棱角、小較圓和相反配置的比較亦換了材料。分層與一般大小粒分在上下游兩區有別。"
+      },
+      "b_snapshot": {
+        "id": "F10006",
+        "question": "同材質大小珠子一起搖，大珠子比較重，為什麼仍可能跑到上面？",
+        "answer_target": "輕度振動張開空隙後，小珠較易落進下方空位，反覆壓實造成尺寸分選。",
+        "scope": "限同材質、低氣壓顆粒實驗的填隙區間；不把氣流、不同密度與真實堅果形狀全部忽略。"
+      }
+    },
+    {
+      "a": "P43-005",
+      "b": "E11004",
+      "proposed": "distinct",
+      "reason": "水風中沙丘遷移、覆蓋剝蝕留交錯層理；薄槽混料是下坡流與上坡停積前緣並見。",
+      "a_snapshot": {
+        "id": "P43-005",
+        "question": "明明一路倒下混合的兩種顆粒，沙堆怎麼自己排出一層深、一層淺？",
+        "answer_target": "顆粒沿斜坡下滾時，小粒能落到流層下方，大粒留在上方。坡腳有顆粒先停下，接著到的顆粒在那裡堆住；停下的邊界一步步向坡上移，把下方細粒和上方粗粒留成成對斜層。",
+        "scope": "限夾板間受測混料；大有棱角、小較圓和相反配置的比較亦換了材料。分層與一般大小粒分在上下游兩區有別。"
+      },
+      "b_snapshot": {
+        "id": "E11004",
+        "question": "岩層大致平放，裡面的細紋為什麼一排排斜著？",
+        "answer_target": "移動沙紋或沙丘的前緣堆積出斜層，後續床形可侵蝕截去一部分，留下平層內成組的斜紋。",
+        "scope": "限沉積形成的交錯層理，判讀需確認層位/構造；不以任一斜線排除後期變形，不反算精確風速。"
+      }
+    },
+    {
+      "a": "P43-005",
+      "b": "E7011",
+      "proposed": "distinct",
+      "reason": "沙丘整體順風搬移與下坡粒子流的停住邊界向上推進不同。",
+      "a_snapshot": {
+        "id": "P43-005",
+        "question": "明明一路倒下混合的兩種顆粒，沙堆怎麼自己排出一層深、一層淺？",
+        "answer_target": "顆粒沿斜坡下滾時，小粒能落到流層下方，大粒留在上方。坡腳有顆粒先停下，接著到的顆粒在那裡堆住；停下的邊界一步步向坡上移，把下方細粒和上方粗粒留成成對斜層。",
+        "scope": "限夾板間受測混料；大有棱角、小較圓和相反配置的比較亦換了材料。分層與一般大小粒分在上下游兩區有別。"
+      },
+      "b_snapshot": {
+        "id": "E7011",
+        "question": "沙丘會慢慢搬家，是整座沙丘在地上滑嗎？",
+        "answer_target": "沙粒沿迎風面跳移/滾移，到頂後在背風滑落面小崩落；顆粒循環搬運讓丘形順風移。",
+        "scope": "限具有迎風坡和滑落面的單向風沙丘簡圖；不涵蓋全部複雜風場、植被固定或複合沙丘。"
+      }
+    },
+    {
+      "a": "P43-006",
+      "b": "P43-005",
+      "proposed": "distinct",
+      "reason": "倒混料時留下新斜層；滾筒實驗操弄原已分好的帶緣珠徑，使既有細帶交換方向反轉。",
+      "a_snapshot": {
+        "id": "P43-006",
+        "question": "滾筒裡本來正在消失的一條細珠帶，補上一點珠子，為什麼反倒開始吞下隔壁那條？",
+        "answer_target": "轉筒內兩條細珠帶能透過埋在裡頭的核心通道交換材料。邊緣的小珠平均稍大的一帶，有機會接走另一帶的細珠；在正在縮小的帶裡補入略大的細珠，試驗中連輸送方向都逆轉。",
+        "scope": "是既有條帶長時間粗化的控制；斷層顯示帶緣分選，但究竟何種微觀驅動造成沿軸通量，研究列有競爭解釋。"
+      },
+      "b_snapshot": {
+        "id": "P43-005",
+        "question": "明明一路倒下混合的兩種顆粒，沙堆怎麼自己排出一層深、一層淺？",
+        "answer_target": "顆粒沿斜坡下滾時，小粒能落到流層下方，大粒留在上方。坡腳有顆粒先停下，接著到的顆粒在那裡堆住；停下的邊界一步步向坡上移，把下方細粒和上方粗粒留成成對斜層。",
+        "scope": "限夾板間受測混料；大有棱角、小較圓和相反配置的比較亦換了材料。分層與一般大小粒分在上下游兩區有別。"
+      }
+    },
+    {
+      "a": "P43-006",
+      "b": "F10007",
+      "proposed": "distinct",
+      "reason": "容器振動回流層太窄留大珠；這裡追沿旋轉軸的埋藏通道交換與帶緣尺寸。",
+      "a_snapshot": {
+        "id": "P43-006",
+        "question": "滾筒裡本來正在消失的一條細珠帶，補上一點珠子，為什麼反倒開始吞下隔壁那條？",
+        "answer_target": "轉筒內兩條細珠帶能透過埋在裡頭的核心通道交換材料。邊緣的小珠平均稍大的一帶，有機會接走另一帶的細珠；在正在縮小的帶裡補入略大的細珠，試驗中連輸送方向都逆轉。",
+        "scope": "是既有條帶長時間粗化的控制；斷層顯示帶緣分選，但究竟何種微觀驅動造成沿軸通量，研究列有競爭解釋。"
+      },
+      "b_snapshot": {
+        "id": "F10007",
+        "question": "大珠子被整群帶上去，為什麼不一定能跟著旁邊的小珠子回到底部？",
+        "answer_target": "壁面摩擦形成中心上升、貼壁下降的顆粒循環；下降層太窄時，大粒回不去而留在頂部。",
+        "scope": "限來源的垂直振動與壁面條件；下降層能容納大粒時可循環混合。"
+      }
+    },
+    {
+      "a": "P43-007",
+      "b": "F10006",
+      "proposed": "distinct",
+      "reason": "共用小粒下漏背景，但近球體模型無可被追蹤的長軸；新題CT顯示升高前先轉立，另有轉立未升者排除「一轉就上」。",
+      "a_snapshot": {
+        "id": "P43-007",
+        "question": "混合堅果裡，有些大顆要先「站起來」才能上升，怎麼也有站起來還沒上去的？",
+        "answer_target": "在週期剪切的花生與巴西堅果盒裡，被追到明顯升高的三顆長堅果都先從躺平轉向較直。作者認為橫向投影變小，花生比較有路從旁往下漏。然而較底部也有堅果轉了向卻不升，光轉身並不夠。",
+        "scope": "斷層量高度與方向，未操弄單個堅果固定角度；不能當成每顆果仁的必要充分定律。"
+      },
+      "b_snapshot": {
+        "id": "F10006",
+        "question": "同材質大小珠子一起搖，大珠子比較重，為什麼仍可能跑到上面？",
+        "answer_target": "輕度振動張開空隙後，小珠較易落進下方空位，反覆壓實造成尺寸分選。",
+        "scope": "限同材質、低氣壓顆粒實驗的填隙區間；不把氣流、不同密度與真實堅果形狀全部忽略。"
+      }
+    },
+    {
+      "a": "P43-007",
+      "b": "G13007",
+      "proposed": "distinct",
+      "reason": "氣壓梯度主導輕球在強振環境下沉，不是準靜態剪切的長型果仁轉向。",
+      "a_snapshot": {
+        "id": "P43-007",
+        "question": "混合堅果裡，有些大顆要先「站起來」才能上升，怎麼也有站起來還沒上去的？",
+        "answer_target": "在週期剪切的花生與巴西堅果盒裡，被追到明顯升高的三顆長堅果都先從躺平轉向較直。作者認為橫向投影變小，花生比較有路從旁往下漏。然而較底部也有堅果轉了向卻不升，光轉身並不夠。",
+        "scope": "斷層量高度與方向，未操弄單個堅果固定角度；不能當成每顆果仁的必要充分定律。"
+      },
+      "b_snapshot": {
+        "id": "G13007",
+        "question": "埋在小珠子裡的大輕球，為什麼有時會越搖越往下？",
+        "answer_target": "顆粒床離底及落回時，底部空隙開合使空氣穿床並改變壓力梯度；輕球與床的加速度不同，埋得深時兩段運動可累積向下位移。",
+        "scope": "限原研究單一大球、細粒床、初始埋深與氣壓條件；低壓使所測密度效應變弱，不等於任何真空顆粒都不分選。模型不能解釋全部壓力依賴。"
+      }
+    },
+    {
+      "a": "P43-007",
+      "b": "F10007",
+      "proposed": "distinct",
+      "reason": "沿側壁回流的選擇，與長堅果自身投影方向改變/小花生從旁下移不同。",
+      "a_snapshot": {
+        "id": "P43-007",
+        "question": "混合堅果裡，有些大顆要先「站起來」才能上升，怎麼也有站起來還沒上去的？",
+        "answer_target": "在週期剪切的花生與巴西堅果盒裡，被追到明顯升高的三顆長堅果都先從躺平轉向較直。作者認為橫向投影變小，花生比較有路從旁往下漏。然而較底部也有堅果轉了向卻不升，光轉身並不夠。",
+        "scope": "斷層量高度與方向，未操弄單個堅果固定角度；不能當成每顆果仁的必要充分定律。"
+      },
+      "b_snapshot": {
+        "id": "F10007",
+        "question": "大珠子被整群帶上去，為什麼不一定能跟著旁邊的小珠子回到底部？",
+        "answer_target": "壁面摩擦形成中心上升、貼壁下降的顆粒循環；下降層太窄時，大粒回不去而留在頂部。",
+        "scope": "限來源的垂直振動與壁面條件；下降層能容納大粒時可循環混合。"
+      }
+    },
+    {
+      "a": "P43-008",
+      "b": "G13003",
+      "proposed": "distinct",
+      "reason": "真空袋壓緊顆粒本身會硬化，額外的拉脫力卻依物體和袋膜是否封氣；固定包覆角量多孔球分開兩機制。",
+      "a_snapshot": {
+        "id": "P43-008",
+        "question": "一袋顆粒明明已經抽氣變硬，為什麼拉光滑球和拉多孔球的力還能差那麼多？",
+        "answer_target": "袋內抽氣讓填料卡緊，固定包覆角後仍可靠摩擦夾球。若袋膜又能在球面封住一圈，往外拉時才會在球與膜間拉出低壓，增加持握力；多孔或漏氣表面則失去大部分額外助力。",
+        "scope": "袋內抽氣和受拉後介面的降壓分開。只採定角度量化試驗，不把所有物形都說成靠吸力。"
+      },
+      "b_snapshot": {
+        "id": "G13003",
+        "question": "顆粒沒有裝得更多，往旁邊推一推為什麼會卡緊？",
+        "answer_target": "固定裝填量下，剪切重排可建立能承載的摩擦接觸網絡；反向剪切會改變這個網絡，但只有某些先前狀態會退回低於可測應力的鬆散狀態。",
+        "scope": "限均勻剪切近二維圓盤；剪切量與填充率一起決定fragile或shear-jammed，反推不是通用解鎖法。保留量測噪聲判準，不能說所有接觸完全消失。"
+      }
+    },
+    {
+      "a": "P43-008",
+      "b": "Z7014",
+      "proposed": "distinct",
+      "reason": "皮膚化學線索局部阻止章魚吸附反射，不比較固定包覆量下壓力密封的貢獻。",
+      "a_snapshot": {
+        "id": "P43-008",
+        "question": "一袋顆粒明明已經抽氣變硬，為什麼拉光滑球和拉多孔球的力還能差那麼多？",
+        "answer_target": "袋內抽氣讓填料卡緊，固定包覆角後仍可靠摩擦夾球。若袋膜又能在球面封住一圈，往外拉時才會在球與膜間拉出低壓，增加持握力；多孔或漏氣表面則失去大部分額外助力。",
+        "scope": "袋內抽氣和受拉後介面的降壓分開。只採定角度量化試驗，不把所有物形都說成靠吸力。"
+      },
+      "b_snapshot": {
+        "id": "Z7014",
+        "question": "章魚吸盤碰到自己的皮膚，為什麼不總把八隻腕黏在一起？",
+        "answer_target": "皮膚化學線索在局部抑制吸附反射，讓腕端能就地減少互相抓住；完整個體可出現不同反應。",
+        "scope": "原研究孤立腕與完整個體比較；化學物身分與詳細受體路徑未由所讀材料確立。"
+      }
+    },
+    {
+      "a": "P43-009",
+      "b": "P43-002",
+      "proposed": "distinct",
+      "reason": "此處以傾角與相對流向的有效開孔面積整理平均落料量；動鏈題須跟蹤顆粒間接觸在短時間的演化。",
+      "a_snapshot": {
+        "id": "P43-009",
+        "question": "料斗的圓孔沒有縮小，怎麼把筒子斜著放，珠子還是比較容易卡住？",
+        "answer_target": "圓孔的實際面積沒變，對著平均出流方向看，開口的投影卻會縮小。用這個有效面積整理不同傾角下每次堵塞前落出的珠量，原本分開的資料可落在接近同一關係上。",
+        "scope": "由排出質量估算會堵配置比例，平均流向採模型，非逐粒量受力；不由此指定永不堵的臨界孔徑。"
+      },
+      "b_snapshot": {
+        "id": "P43-002",
+        "question": "料斗口已經排成一座拱了，下一格怎麼還有珠子掉下去？",
+        "answer_target": "幾顆圓盤能短暫連成一條跨過出口的鏈，卻仍會在流動中改變接觸角而散開。只有跨得夠寬、構形又能在當時的擾動下存留，才會成為真正阻流的靜止拱。",
+        "scope": "原研究追蹤兩種大小的圓盤；由連續影格辨動鏈破壞，再由統計及模型比較存留機會，不能以單張圖認定已塞住。"
+      }
+    },
+    {
+      "a": "P43-009",
+      "b": "F10005",
+      "proposed": "distinct",
+      "reason": "實際孔面傾斜所呈現的投影，與開口上方細桿在適當距離削弱阻塞支承不同。",
+      "a_snapshot": {
+        "id": "P43-009",
+        "question": "料斗的圓孔沒有縮小，怎麼把筒子斜著放，珠子還是比較容易卡住？",
+        "answer_target": "圓孔的實際面積沒變，對著平均出流方向看，開口的投影卻會縮小。用這個有效面積整理不同傾角下每次堵塞前落出的珠量，原本分開的資料可落在接近同一關係上。",
+        "scope": "由排出質量估算會堵配置比例，平均流向採模型，非逐粒量受力；不由此指定永不堵的臨界孔徑。"
+      },
+      "b_snapshot": {
+        "id": "F10005",
+        "question": "料斗出口已經很窄，放一根細桿在上方為什麼有時反而更不容易堵？",
+        "answer_target": "合適位置可讓堵塞拱出現在往下變寬的間隙，稍向下移就失去支撐；放太低也會堵。",
+        "scope": "限3D球粒料斗原研究幾何；不推廣為人群疏散或所有粉末通用方法。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P43-S001",
+      "doi": "10.1038/ncomms15551",
+      "primary_body_url": "https://www.nature.com/articles/ncomms15551.pdf",
+      "identity_relation": "原刊PDF，另以同文arXiv:1602.05627v3看染料影像，為同一研究。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    },
+    {
+      "source_id": "P43-S002",
+      "doi": "10.1038/s42005-024-01694-7",
+      "primary_body_url": "https://www.nature.com/articles/s42005-024-01694-7.pdf",
+      "identity_relation": "以2024刊版為準。2023 arXiv:2308.06584早稿題名、作者列及若干圖號不同，算同項研究。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    },
+    {
+      "source_id": "P43-S003",
+      "doi": "10.1103/PhysRevLett.109.068001",
+      "primary_body_url": "https://www.unav.edu/documents/15083165/15065268/breaking-arches-with-vibrations-the-role-of-defects.pdf/",
+      "identity_relation": "納瓦拉大學團隊轉存的期刊PDF，與期刊同文。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    },
+    {
+      "source_id": "P43-S004",
+      "doi": "10.1039/D0SM00938E",
+      "primary_body_url": "https://arxiv.org/pdf/2007.07954",
+      "identity_relation": "arXiv:2007.07954v1作者稿；與期刊同項研究。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    },
+    {
+      "source_id": "P43-S005",
+      "doi": "10.1103/PhysRevE.58.3357",
+      "primary_body_url": "https://arxiv.org/pdf/cond-mat/9809428",
+      "identity_relation": "arXiv:cond-mat/9809428v1作者稿。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    },
+    {
+      "source_id": "P43-S006",
+      "doi": "10.1088/1367-2630/17/9/093023",
+      "primary_body_url": "https://arxiv.org/pdf/1412.7459",
+      "identity_relation": "arXiv:1412.7459v2；初稿與2015期刊版只作一項研究。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    },
+    {
+      "source_id": "P43-S007",
+      "doi": "10.1038/s41598-021-87280-1",
+      "primary_body_url": "https://www.nature.com/articles/s41598-021-87280-1.pdf",
+      "identity_relation": "原刊PDF；研究團隊新聞不另列證據。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    },
+    {
+      "source_id": "P43-S008",
+      "doi": "10.1073/pnas.1003250107",
+      "primary_body_url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/granular/PNAS_jamming_gripper_2010.pdf",
+      "identity_relation": "芝大團隊庫藏期刊PDF（開頭多一頁），同文arXiv:1009.4444未另計。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    },
+    {
+      "source_id": "P43-S009",
+      "doi": "10.1103/PhysRevLett.114.178001",
+      "primary_body_url": "https://arxiv.org/pdf/1410.0933",
+      "identity_relation": "arXiv:1410.0933v3作者稿。",
+      "old_exact_matches": [],
+      "count_policy": "作者稿、原刊或典藏同文只計一次。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P43-S001",
+      "scope": "原刊pp2–4 Results，Figs1–3；開口水槽染層與出料、封頂定流供水。",
+      "locator": "原刊pp2–4 Results，Figs1–3；開口水槽染層與出料、封頂定流供水。",
+      "cache": {
+        "file": ".cache/wave43-physics-surge-j.pdf",
+        "sha256": "1c50c9b66105310b536b7eb511058e26698c91d5c839e8a5746e56a603d60c42",
+        "text_file": ".cache/wave43-physics-surge-j.txt",
+        "text_sha256": "9f422d4fe51a2d7da1618ec50320d75b9c3bd7188394abfe3094f6c28b260031"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    },
+    {
+      "source_id": "P43-S002",
+      "scope": "原刊pp2–4、6 Results/Methods Figs1a、2、4；另見早稿Fig1下方連續影像。",
+      "locator": "原刊pp2–4、6 Results/Methods Figs1a、2、4；另見早稿Fig1下方連續影像。",
+      "cache": {
+        "file": ".cache/wave43-physics-chain-j.pdf",
+        "sha256": "ee29634f67be8fea3279daa2b5332fd7609c931fca3a733ff09f75e4dfc7347a",
+        "text_file": ".cache/wave43-physics-chain-j.txt",
+        "text_sha256": "acbad6978425f083e6e46ec1e0cf38c97fe2c2c9e630f1c708d7f52d08801b70"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    },
+    {
+      "source_id": "P43-S003",
+      "scope": "PDF pp1–4 Figs1–3；鋼珠/黃銅珠穩定拱，固定頻率漸增振幅、200次高速破拱記錄。",
+      "locator": "PDF pp1–4 Figs1–3；鋼珠/黃銅珠穩定拱，固定頻率漸增振幅、200次高速破拱記錄。",
+      "cache": {
+        "file": ".cache/wave43-physics-defect.pdf",
+        "sha256": "043bbd9a15c63c4c356ce5d54c1484728cf7053daa6aadd70d32da49162b283d",
+        "text_file": ".cache/wave43-physics-defect.txt",
+        "text_sha256": "4d5bc23538894d3658910f4924ed78f589e00493747e113c0f5bc76c9a17f14f"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    },
+    {
+      "source_id": "P43-S004",
+      "scope": "PDF pp5–7、9–10，Figs4–7、10–11及慢速內部重排；軟水凝膠球與硬球出料。",
+      "locator": "PDF pp5–7、9–10，Figs4–7、10–11及慢速內部重排；軟水凝膠球與硬球出料。",
+      "cache": {
+        "file": ".cache/wave43-physics-soft.pdf",
+        "sha256": "112bca194af98e7153174d1821d4b6b9319d0ad1a27a178977a06a9985614c92",
+        "text_file": ".cache/wave43-physics-soft.txt",
+        "text_sha256": "93d25ad1ffd91d076cba874d4af1851ac4a474ffbc2eb9434b9ac827e5ee26bd"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    },
+    {
+      "source_id": "P43-S005",
+      "scope": "PDF pp1–3、7–8 Figs1–2、7–8；混料傾倒、流層兩物種的停積邊界。",
+      "locator": "PDF pp1–3、7–8 Figs1–2、7–8；混料傾倒、流層兩物種的停積邊界。",
+      "cache": {
+        "file": ".cache/wave43-physics-layers.pdf",
+        "sha256": "334b9978767a84058086a7c8bda03e67a95334ddaffda1a2203a2039f8628966",
+        "text_file": ".cache/wave43-physics-layers.txt",
+        "text_sha256": "074369d1e49189c9c0e50c6b87dd77bfe8520b9e583fb0f3d40c1150066e2c84"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    },
+    {
+      "source_id": "P43-S006",
+      "scope": "PDF pp3–7 Figs1–5；加少量略大的小珠使帶間輸運反向、斷層量帶緣、窄粒徑組對照。",
+      "locator": "PDF pp3–7 Figs1–5；加少量略大的小珠使帶間輸運反向、斷層量帶緣、窄粒徑組對照。",
+      "cache": {
+        "file": ".cache/wave43-physics-bands.pdf",
+        "sha256": "71b378240a6b655dab7b3401b7bf798d397fd272321e3c65ef5e9c2e87eff3ae",
+        "text_file": ".cache/wave43-physics-bands.txt",
+        "text_sha256": "d1afc0d2d438faf6bcb255bb9615680e380ebfe83898db2aa97992dd94ddaeea"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    },
+    {
+      "source_id": "P43-S007",
+      "scope": "原刊pp2–4 Figs1–2 Results/Discussion；逐輪剪切的3D姿態和高度，對比上升及沒上升的個體。",
+      "locator": "原刊pp2–4 Figs1–2 Results/Discussion；逐輪剪切的3D姿態和高度，對比上升及沒上升的個體。",
+      "cache": {
+        "file": ".cache/wave43-physics-nuts.pdf",
+        "sha256": "7ab5da0431c8f1c09fdcac921628221cbe0db2acd137e60fbe29da3648be5434",
+        "text_file": ".cache/wave43-physics-nuts.txt",
+        "text_sha256": "26fb38cf99ef145d891d578e5bd36ce319984a6e325711fa329091348a4a1a62"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    },
+    {
+      "source_id": "P43-S008",
+      "scope": "PDF pp3–5／印刷18810–18812 Figs1–3；固定包覆角、測受拉力，球面氣密與多孔條件、介面壓力。",
+      "locator": "PDF pp3–5／印刷18810–18812 Figs1–3；固定包覆角、測受拉力，球面氣密與多孔條件、介面壓力。",
+      "cache": {
+        "file": ".cache/wave43-physics-gripper.pdf",
+        "sha256": "16da70fda00fcf1619ab2a4738f4faabb94b45f9e0d0351bc5ded37d5ffd9346",
+        "text_file": ".cache/wave43-physics-gripper.txt",
+        "text_sha256": "95552d87cbc6f0c9b0dd0427c82757438ae6a74d5936ee6337349ecf136dee6a"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    },
+    {
+      "source_id": "P43-S009",
+      "scope": "PDF pp1–4 Figs1–3與Eq.2；傾斜圓孔、由堵塞間落料質量估算各配置比例。",
+      "locator": "PDF pp1–4 Figs1–3與Eq.2；傾斜圓孔、由堵塞間落料質量估算各配置比例。",
+      "cache": {
+        "file": ".cache/wave43-physics-tilt.pdf",
+        "sha256": "f83d0946998dfc47c8865e27705300f9c276aedefd4fd08f3595721e00edcd02",
+        "text_file": ".cache/wave43-physics-tilt.txt",
+        "text_sha256": "01a459bd6fe8a0fb9aa692496150eeaf0591b66d2879de90eeef287b6e07498e"
+      },
+      "read_via": "指定UA當日取得研究PDF，定點讀主文與圖說，目讀列出的圖頁。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave43-physics-manifest.json",
+      "sha256": "8f1c9aa0aad8cbe7dc3532f1d04e427c95962177608abe9dac4fba6b06a93814"
+    },
+    {
+      "file": ".cache/wave43-physics-published.json",
+      "sha256": "7e978ca57315d00f86d2bed02c90b8659b109e8302dfc714785412d1bd054dc9"
+    }
+  ],
+  "retrieval_failures": [
+    "本輪9項用在候選的PDF指定路線皆取得；1993滴答沙漏及雙出口等只篩題/摘要，不據以採新核。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "P43-S001",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read0.jpg",
+          "sha256": "715d42a276fbb5dfaf4b6bacafe83db8eba40d487d41d3f75d9b76da2a246141",
+          "read_scope": "surge PDF p2（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-surge.pdf",
+            "sha256": "8752b05279d64e9efda84cb117cdf24345a446f2f1558c6d250de446dee8efd8"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "P43-S002",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read0.jpg",
+          "sha256": "715d42a276fbb5dfaf4b6bacafe83db8eba40d487d41d3f75d9b76da2a246141",
+          "read_scope": "chain PDF p13（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-chain.pdf",
+            "sha256": "29391775228b64e88577a1275923ab940d64336c76cd862a215d7bc56a71c5ea"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "P43-S003",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read0.jpg",
+          "sha256": "715d42a276fbb5dfaf4b6bacafe83db8eba40d487d41d3f75d9b76da2a246141",
+          "read_scope": "defect PDF p1（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-defect.pdf",
+            "sha256": "043bbd9a15c63c4c356ce5d54c1484728cf7053daa6aadd70d32da49162b283d"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "P43-S004",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read3.jpg",
+          "sha256": "43d1685969aae96bc723bd5d87d54fad9ee9788e6a0bf507eb31d90eb450602b",
+          "read_scope": "soft PDF p9（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-soft.pdf",
+            "sha256": "112bca194af98e7153174d1821d4b6b9319d0ad1a27a178977a06a9985614c92"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "P43-S005",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read3.jpg",
+          "sha256": "43d1685969aae96bc723bd5d87d54fad9ee9788e6a0bf507eb31d90eb450602b",
+          "read_scope": "layers PDF p7（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-layers.pdf",
+            "sha256": "334b9978767a84058086a7c8bda03e67a95334ddaffda1a2203a2039f8628966"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "P43-S006",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read3.jpg",
+          "sha256": "43d1685969aae96bc723bd5d87d54fad9ee9788e6a0bf507eb31d90eb450602b",
+          "read_scope": "bands PDF p4（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-bands.pdf",
+            "sha256": "71b378240a6b655dab7b3401b7bf798d397fd272321e3c65ef5e9c2e87eff3ae"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "P43-S007",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read6.jpg",
+          "sha256": "35943ad71dc00cf552cd8ccd1ddf812ea9320eadb764e1b5eec494d2c0545e06",
+          "read_scope": "nuts PDF p3（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-nuts.pdf",
+            "sha256": "7ab5da0431c8f1c09fdcac921628221cbe0db2acd137e60fbe29da3648be5434"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "P43-S008",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read6.jpg",
+          "sha256": "35943ad71dc00cf552cd8ccd1ddf812ea9320eadb764e1b5eec494d2c0545e06",
+          "read_scope": "gripper PDF p4（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-gripper.pdf",
+            "sha256": "16da70fda00fcf1619ab2a4738f4faabb94b45f9e0d0351bc5ded37d5ffd9346"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "P43-S009",
+      "images": [
+        {
+          "file": ".cache/wave43-physics-read6.jpg",
+          "sha256": "35943ad71dc00cf552cd8ccd1ddf812ea9320eadb764e1b5eec494d2c0545e06",
+          "read_scope": "tilt PDF p4（拼圖中有頁標；只辨形態與曲線走向）。",
+          "rendered_from": {
+            "file": ".cache/wave43-physics-tilt.pdf",
+            "sha256": "f83d0946998dfc47c8865e27705300f9c276aedefd4fd08f3595721e00edcd02"
+          }
+        }
+      ]
+    }
+  ],
+  "reading_limits": [
+    "9項原研究逐核指定正文；為核刊版定位，S001、S002另讀同工作作者稿，圖頁證據列明出自哪個載體。九圖頁目讀，未觀看影片或複做量測。",
+    "傾斜孔與抓球支撐先留研究素材；沒有為湊片長硬串到堅果或軟珠。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W43P-T01",
+      "body_seconds": 69,
+      "core_seconds": {
+        "P43-001": 69
+      },
+      "chapter_seconds": [
+        20,
+        49
+      ],
+      "max_beat_seconds": 25,
+      "status": "PAPER_BUDGET_WITH_SYNTHETIC_TIMING"
+    },
+    {
+      "id": "W43P-T02",
+      "body_seconds": 84,
+      "core_seconds": {
+        "P43-002": 25,
+        "P43-003": 29,
+        "P43-004": 30
+      },
+      "chapter_seconds": [
+        25,
+        29,
+        30
+      ],
+      "max_beat_seconds": 16,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W43P-T03",
+      "body_seconds": 49,
+      "core_seconds": {
+        "P43-005": 49
+      },
+      "chapter_seconds": [
+        25,
+        24
+      ],
+      "max_beat_seconds": 15,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W43P-T04",
+      "body_seconds": 49,
+      "core_seconds": {
+        "P43-006": 49
+      },
+      "chapter_seconds": [
+        24,
+        25
+      ],
+      "max_beat_seconds": 14,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W43P-T05",
+      "body_seconds": 44,
+      "core_seconds": {
+        "P43-007": 44
+      },
+      "chapter_seconds": [
+        24,
+        20
+      ],
+      "max_beat_seconds": 13,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "sample": {
+    "candidate": "P43-001",
+    "theme": "W43P-T01",
+    "draft": {
+      "file": ".cache/w43-sample-physics.json",
+      "sha256": "1c1f94557764ea7462dba793619c4f09afd979786ff687eb33989fa90f94f15c"
+    },
+    "measurement": {
+      "file": ".cache/wave43-physics-read.json",
+      "sha256": "99116bd9db56752e3af5a52ed7957a9b7f808bb2177802c8815a529d3b12fb15"
+    },
+    "wave": {
+      "file": ".cache/wave43-physics-read-3.wav",
+      "sha256": "35d1430e707d081e188c0da6fb5d03940afd5aaac00e3762a5afda3d3c139fd1"
+    },
+    "measured_seconds": 61.313,
+    "visual_time_seconds": 7.687
+  },
+  "validation": {
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "all_strings_rstrip": true,
+    "per_core_and_beat_caps": true,
+    "written_files_current": true
+  },
+  "revision_history": [],
+  "unresolved": [
+    "待非作者研究與題案覆核；原圖使用/完整製作另核。"
+  ]
+}

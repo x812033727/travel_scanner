@@ -1,0 +1,425 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave23-everyday-physics.json",
+      "sha256": "a2d9059b685fecad443e3870e1f25dd9c66fdd2cd801cc068f59d2320bb25749"
+    },
+    {
+      "file": "reviews/wave23-everyday-physics-author.json",
+      "sha256": "f5f6ec60d6b37c836453a7d6aaf3053d39193d9d29feefadfedc604a2eacf210"
+    },
+    {
+      "file": "reviews/wave23-everyday-physics-themes.json",
+      "sha256": "490bf4e7515aca870507a39836d197c4e0bc9bba8959794370c8d28e23715b7e"
+    },
+    {
+      "file": "reviews/wave23-life-reviews-everyday-physics.json",
+      "sha256": "c380010a7e608e20ef76698a99c9753dccd5a7d386df67163b51091248dbe071"
+    },
+    {
+      "file": "batches/wave23-life-controls.json",
+      "sha256": "9be6b2fd32ee601dde6d39d64f4e069bdfbc5253030f6ffef7e51a3416b3718b"
+    },
+    {
+      "file": "reviews/wave23-life-controls-author.json",
+      "sha256": "6fed28ecb494ae0a78b25f9fb59258fa95382ec591a9e88898e1a914b306f922"
+    },
+    {
+      "file": "reviews/wave23-life-controls-themes.json",
+      "sha256": "ca0436602064ff5252a7b7155a49731ff5fb69ba553c7febe346a984af1a97ce"
+    },
+    {
+      "file": "reviews/wave23-physics-reviews-life-controls.json",
+      "sha256": "1f17f4e26fd15ca4d15820862f623774866f493bcd08cd8c4083e09c7ead7c7f"
+    },
+    {
+      "file": "batches/wave23-image.json",
+      "sha256": "ac6789cd83bc5f6c0df3e358d4f3d98d7258364e4d5452bb5a8f93e574635dbf"
+    },
+    {
+      "file": "reviews/wave23-image-author.json",
+      "sha256": "2ec0a5a562dda95139cab3f34a23b715491f5bb1db4926b0d0079947b926e346"
+    },
+    {
+      "file": "reviews/wave23-image-themes.json",
+      "sha256": "590eaa46b4ea626975eb92e4b7f07d03cd2db129c477d6668aedcb186a2f179f"
+    },
+    {
+      "file": "reviews/wave23-life-reviews-image.json",
+      "sha256": "f99a58856c4eea1abd6bf03dd5ca50d6fc8c1010f27469f7699d4e0fd09e6dcc"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave23-everyday-physics.json",
+      "author": "pool_physics",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 5,
+      "top5_directed_pairs": 25,
+      "author_pairs": 21,
+      "not_added_count": 16,
+      "theme_count": 4
+    },
+    {
+      "batch": "batches/wave23-life-controls.json",
+      "author": "pool_life_tech",
+      "reviewer": "pool_physics",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 19,
+      "not_added_count": 18,
+      "theme_count": 3
+    },
+    {
+      "batch": "batches/wave23-image.json",
+      "author": "root",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 13,
+      "not_added_count": 11,
+      "theme_count": 2
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave23-everyday-physics.json",
+          "sha256": "a2d9059b685fecad443e3870e1f25dd9c66fdd2cd801cc068f59d2320bb25749"
+        },
+        {
+          "file": "batches/wave23-image.json",
+          "sha256": "ac6789cd83bc5f6c0df3e358d4f3d98d7258364e4d5452bb5a8f93e574635dbf"
+        },
+        {
+          "file": "batches/wave23-life-controls.json",
+          "sha256": "9be6b2fd32ee601dde6d39d64f4e069bdfbc5253030f6ffef7e51a3416b3718b"
+        }
+      ],
+      "new_source_rows": 11,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "status": "REVIEWED_WITH_MANUAL_VERSION_LINK",
+      "input_sha256": "5ebc05944f5b40e70aa585ccf2a58266dc794fa51a1b3a529098f04b015fdb84",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "manual_identity_links": [
+        {
+          "source_id": "R23-S001",
+          "prior_source_id": "SRC-9a785aacd173f1b9",
+          "new_url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/",
+          "prior_url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261029/",
+          "decision": "SAME_SPECIFICATION_DIFFERENT_DATED_VERSION_NOT_INDEPENDENT_EVIDENCE",
+          "basis": "Root read current official title/version and local old source reading for M5001/M5002/M5003; exact title differs, so advisory matcher did not find it.",
+          "old_full_text_reread": false
+        }
+      ],
+      "limits": "11 new registry URLs do not imply11 independent experiments. Correction attached to life source is same-work update. Exact matching is not bibliographic or semantic recall."
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave23-everyday-physics.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave23-life-controls.json",
+      "source_rows": 4,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave23-image.json",
+      "source_rows": 2,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "824e615c7c34c8c8075dabbd4644e23681d151ef7ea2b4a1e92e3df99146c5f2",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "file": ".cache/wave23-life-gears-official.pdf",
+      "sha256": "a4d9eb95e7563a907d3aae3b5576c238b7b470fa2b139eb894c413a602b3e7e0",
+      "scope": "PDF pp2–4正文與圖說；p3 Fig2目讀；p1僅出版身分。未看Movies/SM。",
+      "findings": "死體單腿肌腱操作亦帶動另腿、偶發失嚙合後重新接上支持機械同步；不把神經作用說成不存在。成人棄齒輪原因是推測。PDF抽文µs誤作ms，p3目讀21µs，不移用誤單位。",
+      "reviewer": "root",
+      "kind": "targeted_non_author_source_reading",
+      "viewed_images": [
+        {
+          "file": ".cache/wave23-root-gears-p3.png",
+          "sha256": "6990fa51b934bb344159279c473022221e779206271f84d825a5a40172a351bf"
+        }
+      ],
+      "production_ready": false
+    },
+    {
+      "file": ".cache/wave23-physics-vortex1998.pdf",
+      "sha256": "d1a72a3180abe13e4fbd1e518a7773b3c40c1812df2a52a7492e3490867ed304",
+      "scope": "PDF pp1–10、18–19指定正文/圖說；p5 Fig3目讀。p11–17與p20未完整閱讀，不稱完整變分推導已覆核。",
+      "findings": "Fig3c取像時L/D≈8，最大行程14.5；pinch-off漸進而非瞬間。形成數4限所測柱流範圍，p18剖面可改門檻。p19分離後仍可能暫吞尾渦/排多餘渦量，快尾流可破環，故不能宣稱永不再接收。",
+      "reviewer": "root",
+      "kind": "targeted_non_author_source_reading",
+      "viewed_images": [
+        {
+          "file": ".cache/wave23-root-vortex-p5.png",
+          "sha256": "8e1854faa993e605411208b8155ce788825d4c935ddb69faa63f19cf4ff84bd6"
+        }
+      ],
+      "production_ready": false
+    }
+  ],
+  "editorial_summary": "本輪從抽氣對轉動的影響、同向旋轉卻反向的升力、液滴與身體部位的時序，以及圖層分組改色等具體對照補缺口。圓盤與光驅轉輪以「空氣只會阻擋嗎」同題串接，但明確重設裝置與能量來源；群組透明度與隔離也合成一個追問。若蟲齒輪和色環路徑僅留短段。翻瓶、甩尾、預乘髒邊等同核或薄方向不重計；新版本規格與原文勘誤保留關係，不當獨立複驗。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並對其他作者兩份來源作定點閱讀。image由root撰寫、pool_life_tech非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 65,
+      "changes": [
+        {
+          "batch": "everyday-physics",
+          "created_on": "2026-11-02",
+          "requested_by": "pool_life_tech independent review; root accepted",
+          "before_files": [
+            {
+              "file": "batches/wave23-everyday-physics.json",
+              "sha256": "a2d9059b685fecad443e3870e1f25dd9c66fdd2cd801cc068f59d2320bb25749"
+            },
+            {
+              "file": "reviews/wave23-everyday-physics-themes.json",
+              "sha256": "54c7a706b5c433265f4735cafc1eb96c52fa1e0e8d2c3ba44b206742fd7edda8"
+            },
+            {
+              "file": "reviews/wave23-everyday-physics-author.json",
+              "sha256": "00949a8941c86899c85275c77b2fcea12340d47cd94dd524d10044966ca7b78f"
+            }
+          ],
+          "changes": [
+            "W23P-T01第二章末20秒重述縮5秒轉場，圓盤80秒＋轉輪100秒，全案195→180；拆案門檻同步。",
+            "W23P-T02第二章15秒重述縮5秒慣量/角度圖註，全案100→90；刪章剩餘秒數同步。"
+          ],
+          "removed_seconds": 25,
+          "content_limits": "只刪重述；候選問答/來源、其他兩案110/105秒不變；仍為未試讀紙上預算。"
+        },
+        {
+          "batch": "life-controls",
+          "date": "2026-11-02",
+          "reviewer": "pool_physics",
+          "before_files": [
+            {
+              "file": "batches/wave23-life-controls.json",
+              "sha256": "66c5e50bdd5101dee7133bd70a2f68a69007c2255987ec7452081dd590102c8c"
+            },
+            {
+              "file": "reviews/wave23-life-controls-themes.json",
+              "sha256": "6da167d4e2d807c2216eedfffd5f7ba31284c3cfc4d771571faa03a0297eefa6"
+            },
+            {
+              "file": "reviews/wave23-life-controls-author.json",
+              "sha256": "6bd84647a85c1e44f34ded78a58d6ae6b0e4241df76674cc84f884c5991bf20e"
+            }
+          ],
+          "removed_seconds": 30,
+          "changes": [
+            "氣鐘開場保留真實氣液邊界，密封只是觀眾假設；機制圖註CO2易溶入水不累積。",
+            "T01末轉問15→5；T02重述時序30→15；T03末轉問10→5，三案110/120/105秒。",
+            "A23-NA006澄清D2123是複合齒輪多級比率，僅相關背景；研究只支持同步，非增速。"
+          ],
+          "after_files": [
+            {
+              "file": "batches/wave23-life-controls.json",
+              "sha256": "9be6b2fd32ee601dde6d39d64f4e069bdfbc5253030f6ffef7e51a3416b3718b"
+            },
+            {
+              "file": "reviews/wave23-life-controls-themes.json",
+              "sha256": "ca0436602064ff5252a7b7155a49731ff5fb69ba553c7febe346a984af1a97ce"
+            }
+          ],
+          "candidate_question_answer_unchanged": true
+        },
+        {
+          "batch": "image",
+          "reviewer": "pool_life_tech",
+          "reason": "區分圖形層alpha與合不透明白底後alpha；第二控制明示重設不透明紅/藍；色標題刪回扣10秒，研究待驗狀態不佔旁白。",
+          "removed_seconds": 10,
+          "theme_change": "W23R-T02 95→85 seconds; T01 remains145",
+          "semantic_change": "R23001 answer clarified; rerun semantic and review neighbour delta required"
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "P23-S001",
+        "file": ".cache/wave23-physics-euler2026.pdf",
+        "sha256": "8e405c57bf998ddce590d62302aa870b1b67d93c342c581a5509532333e11166",
+        "text_file": ".cache/wave23-physics-euler2026-pages.json",
+        "text_sha256": "4d2e24894e4655a872c74339edda4f859e2b428a23d13992676b0e0467cff580"
+      },
+      {
+        "source_id": "P23-S002",
+        "file": ".cache/wave23-physics-radiometer2016.pdf",
+        "sha256": "ea97b727b4d26684efaae2447b895653c8e79bd349035547b9ee7823eb344423",
+        "text_file": ".cache/wave23-physics-radiometer2016-pages.json",
+        "text_sha256": "5c3ac395af305cfcd66450a739756f61c05ab49b9c3ea7971c455e4fdae83f17"
+      },
+      {
+        "source_id": "P23-S003",
+        "file": ".cache/wave23-physics-tennis2016.pdf",
+        "sha256": "6318bdc4ef07ed89bae0ea3856f8549292fc075742f3af9dda0e83940db695c9",
+        "text_file": ".cache/wave23-physics-tennis2016-pages.json",
+        "text_sha256": "6b84edede59972732fff765f1d880de60eb4bfe34db96866953f5722859ae700"
+      },
+      {
+        "source_id": "P23-S004",
+        "file": ".cache/wave23-physics-vortex1998.pdf",
+        "sha256": "d1a72a3180abe13e4fbd1e518a7773b3c40c1812df2a52a7492e3490867ed304",
+        "text_file": ".cache/wave23-physics-vortex1998-pages.json",
+        "text_sha256": "199248056af73ba2c91a932403dd91682d98c493518a16f74bd333d352a04ddf"
+      },
+      {
+        "source_id": "P23-S005",
+        "file": ".cache/wave23-physics-magnus2020.pdf",
+        "sha256": "68edc75699edfceef10a3ea736ec726c61874ebe63643a0c28e0c5774fce03a4",
+        "text_file": ".cache/wave23-physics-magnus2020-pages.json",
+        "text_sha256": "5f765613c9757bfa966eb557fe0ab0d09ea0f96ac1e196778ca39939c1857c73"
+      },
+      {
+        "source_id": "A23-S001",
+        "file": ".cache/wave23-life-spider-web-body.json",
+        "sha256": "84b4878a91f3c48c8966076756d5994043bb67332af4a9a0e46856fed45224a0",
+        "text_file": ".cache/wave23-life-spider-web-start.json",
+        "text_sha256": "591940bc9b098a9a0c743a8be469efd27a77b8255a10ee04acaeccdc5b41bcff"
+      },
+      {
+        "source_id": "A23-S002",
+        "file": ".cache/wave23-life-droplet.html",
+        "sha256": "491471a0838b807fc11750871060dcf8498374587fe73eed397ea7e63b8263d2",
+        "text_file": ".cache/wave23-life-droplet-text-utf8.json",
+        "text_sha256": "f9b815c7fcfc6aafb31557f2a4714f172e336b744d62698f49ae95bbcfa20882"
+      },
+      {
+        "source_id": "A23-S002",
+        "file": ".cache/wave23-life-droplet-correction.html",
+        "sha256": "5861628c98d5ea3579d0957dc776e377288b52cea9bba16bfbfc352f64e6b278",
+        "text_file": ".cache/wave23-life-droplet-correction.txt",
+        "text_sha256": "6038f1c4d532c798683c5a225b7387809964f0399fbf8978bba56f5176dc7fa1"
+      },
+      {
+        "source_id": "A23-S003",
+        "file": ".cache/wave23-life-gears-official.pdf",
+        "sha256": "a4d9eb95e7563a907d3aae3b5576c238b7b470fa2b139eb894c413a602b3e7e0",
+        "text_file": ".cache/wave23-life-gears-official-text.json",
+        "text_sha256": "c099206e6262ba93d5e4428628d18244de786ae7240c9483e1fc81d972ad6cbe"
+      },
+      {
+        "source_id": "A23-S004",
+        "file": ".cache/wave23-life-gecko.pdf",
+        "sha256": "33e33727635c3bb92aa0a05d71978d347123b6483f52276e093c4068a139f0b4",
+        "text_file": ".cache/wave23-life-gecko-text.json",
+        "text_sha256": "85037cbdc5691f179256b6ec8f178ec8c1ac528d9c896b32387a657523f555c0"
+      },
+      {
+        "source_id": "R23-S001",
+        "file": ".cache/wave23-image-color.html",
+        "sha256": "eba7dd95e75d70af4755c627e59367a0b0860a0b22ffe4f5be545e4df19220c1",
+        "text_file": ".cache/wave23-image-color-text.json",
+        "text_sha256": "646a8b19e8ed9e7d2dcb3d8c4231c445fde9d5aa218c0eeacc559b9e738a1e88"
+      },
+      {
+        "source_id": "R23-S002",
+        "file": ".cache/wave23-image-compositing.html",
+        "sha256": "0fb91119308e706a5e4df368a91fa3b43cd5fe8cd8f192418b2df0a30ba8a62b",
+        "text_file": ".cache/wave23-image-compositing-text.json",
+        "text_sha256": "9ea4f204b99f8d497e3d4a0e159667f2cd5e439e1c1bfe6830634b4ce6a0dacd"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_TOP5_MATCHES_PREVIOUS_COMMON_REVIEW_SET",
+      "comparisons": [
+        {
+          "batch": "everyday-physics",
+          "initial_draft": "aa5cd00b37e1d02e0f17b23031e476db12c6a231cbcfb7ca868b259b3feaf85b",
+          "final_draft": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c",
+          "directed_pairs": 25,
+          "top5_or_text_changes": 0,
+          "pre_lf_final_draft": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62"
+        },
+        {
+          "batch": "image",
+          "initial_draft": "aa5cd00b37e1d02e0f17b23031e476db12c6a231cbcfb7ca868b259b3feaf85b",
+          "final_draft": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c",
+          "directed_pairs": 20,
+          "top5_or_text_changes": 0,
+          "pre_lf_final_draft": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62"
+        },
+        {
+          "batch": "life-controls",
+          "initial_draft": "aa5cd00b37e1d02e0f17b23031e476db12c6a231cbcfb7ca868b259b3feaf85b",
+          "final_draft": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c",
+          "directed_pairs": 20,
+          "top5_or_text_changes": 0,
+          "pre_lf_final_draft": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62"
+        }
+      ],
+      "earlier_root_only_delta": [
+        {
+          "id": "R23001",
+          "added_ids": [],
+          "removed_ids": [],
+          "scope": "Changed R23001 answer caused score/order or neighbour changes; reviewer read all current20pairs including K6015, not only delta."
+        },
+        {
+          "id": "R23002",
+          "added_ids": [],
+          "removed_ids": [],
+          "scope": "Changed R23001 answer caused score/order or neighbour changes; reviewer read all current20pairs including K6015, not only delta."
+        },
+        {
+          "id": "R23004",
+          "added_ids": [
+            "K6015"
+          ],
+          "removed_ids": [
+            "R23001"
+          ],
+          "scope": "Changed R23001 answer caused score/order or neighbour changes; reviewer read all current20pairs including K6015, not only delta."
+        }
+      ],
+      "limits": "Matches advisory retrieval content; final receipt binding required separately.",
+      "line_ending_revision": {
+        "status": "PASS_ALL_RAW_RECORDS_AND_NEIGHBOURS_IDENTICAL",
+        "old_input_sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62",
+        "new_input_sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c",
+        "scope": "CRLF to LF for root-authored files. Regenerated draft also incorporates 113 already-reviewed distinct-pair integration decisions. All other draft fields except input hashes and all full semantic neighbour rows are identical; no question, answer or scope changed."
+      }
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "pool_physics",
+  "status": "INDEPENDENT_EDITORIAL_REVIEW_WITH_REQUIRED_CORRECTIONS",
+  "production_ready": false,
+  "reviewed": {
+    "batch": "batches/wave4-food-kitchen.json",
+    "batch_sha256": "4aed55d8d97889e2e99f8722f894b4dc8ec70dd02f370038e8dabe157f4cf692",
+    "themes": "reviews/wave4-food-themes.json",
+    "themes_sha256": "e26dbaae3619eeb7c772251321b08d331fcb6c977dfadbdb692243bd94f22d49",
+    "author": "reviews/wave4-food-author.json",
+    "neighbours": ".cache/wave4-food-kitchen-neighbours.json",
+    "neighbours_draft_sha256": "2ea41b1d8f3979600045e1480d7c270dd5373ed9afe230f39aa63aa137f27fff"
+  },
+  "coverage": {
+    "candidate_rows_read": 29,
+    "source_metadata_rows_read": 26,
+    "theme_proposals_read": 3,
+    "semantic_neighbour_records_read": 145,
+    "external_source_records_successfully_read": 10,
+    "external_reading": "抽查10個來源記錄的指定段落，其中F4-S020僅原始研究摘要、F4-S025僅論文Summary及前段模型範圍，本次指定641–643重開逾時；不宣稱逐主張或26來源全核。",
+    "old_pool": "讀過作者列出的近似題、145個近鄰的題/答/範圍，另搜尋並讀回凝膠、成核、澱粉、界面、色素、酵素和凝結等舊題。未逐讀全部2661題。",
+    "not_performed": [
+      "沒有烘焙/食材實測",
+      "沒有來源圖片視覺核對",
+      "沒有對所有食品或配方外推",
+      "沒有製作或發布影片"
+    ]
+  },
+  "source_checks": [
+    {
+      "id": "F4-S002",
+      "url": "https://opentextbc.ca/ingredients/chapter/types-of-thickening-agents/",
+      "read_via": "web.run.open 正文",
+      "locator": "Cornstarch lines228–230; Pre-gelatinized Starches lines232–235",
+      "result": "支持冷水顆粒/熱糊化、高糖抑制膨脹與預糊化前史。F4004有前史反差但仍同糊化核心，建議併F4003。"
+    },
+    {
+      "id": "F4-S003",
+      "url": "https://opentextbc.ca/ingredients/chapter/baking-powder/",
+      "read_via": "web.run.open 正文",
+      "locator": "double-action lines231–233; The Leavening Mechanism lines234–237",
+      "result": "支持兩酸不同放氣階段及既有泡孔/定型時序。作者已避免將來源固定比例/溫度推成通則；保留。"
+    },
+    {
+      "id": "F4-S006",
+      "url": "https://opentextbc.ca/ingredients/chapter/functions-of-fat-in-baking/",
+      "read_via": "web.run.open 正文",
+      "locator": "Creaming Ability lines231–233; Plastic Range lines234–236",
+      "result": "僅定義攪打形成氣袋及脂肪可塑溫區，未解釋晶體/界面如何保氣。F4009答案目前仍是現象重述，暫緩。"
+    },
+    {
+      "id": "F4-S008",
+      "url": "https://annex.exploratorium.edu/cooking/candy/fudge-story.html",
+      "read_via": "web.run.open 主文",
+      "locator": "lines10–15 seed crystals / many tiny crystals",
+      "result": "支持少數早生大晶與較多後生成微晶的差別。與P232成核能否開始、N125生長時間不同，F4011可留。"
+    },
+    {
+      "id": "F4-S014",
+      "url": "https://annex.exploratorium.edu/cooking/eggs/pavlova-pop.html",
+      "read_via": "web.run失敗後 Python urllib公開HTML擷取正文成功",
+      "locator": "Why do egg whites foam?; Why not add sugar at the beginning?; Why add vinegar?",
+      "result": "正文支持蛋白界面網絡，以及糖阻礙蛋白接觸、與水作用延緩逸出之簡化模型；酸中和蛋白的段落不可採。過多蛋白連結排水在Why add vinegar?，不是作者寫的What happens if you overbeat?。"
+    },
+    {
+      "id": "F4-S015",
+      "url": "https://extension.illinois.edu/sites/default/files/the_whys_and_hows_of_cooking_vegetables.pdf",
+      "read_via": "web.run.open PDF文字",
+      "locator": "p1 Green Vegetables lines8–14",
+      "result": "僅支持酸/長時間加熱使葉綠素轉pheophytin，沒有離子/結構步驟。F4019前提可用但只有命名轉化，暫緩作獨立機制。"
+    },
+    {
+      "id": "F4-S020",
+      "url": "https://www.jstage.jst.go.jp/article/nskkk/61/2/61_62/_article",
+      "read_via": "web.run.open publisher abstract",
+      "locator": "Abstract lines78–81",
+      "result": "支持限定兩品種的糊化起點、酵素活性與產糖窗口比較；不把摘要的推論寫成已直接證實分子保護機制或普遍最佳溫度。"
+    },
+    {
+      "id": "F4-S023",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2606899/",
+      "read_via": "web.run.find 返回全文相關段落實讀",
+      "locator": "Abstract122–124; Molecular Modeling172–183; summary199–203",
+      "result": "模型與突變資料支持相鄰結合位點協同穩定T1R1閉合；作者保留模型措辭，未冒稱分子直接攝影。"
+    },
+    {
+      "id": "F4-S024",
+      "url": "https://orbi.uliege.be/bitstream/2268/320366/1/Visse-Mansiauxetal2024.pdf",
+      "read_via": "web.run.find PDF文字",
+      "locator": "Introduction p2 lines93–125; Discussion p11 lines954–1003",
+      "result": "支持蔗糖供應與酸性轉化酶的兩階段，也明列品種差異與VInv表現不必等同酵素活動。F4029現有限定可留，禁止成稿把單一基因直接等同總糖量。"
+    },
+    {
+      "id": "F4-S025",
+      "url": "https://pages.uoregon.edu/chendon/publications/2020/74.%20Matter,%20Espresso%20extraction.pdf",
+      "read_via": "web.run.open PDF文字；後續指定段重開逾時",
+      "locator": "Summary PDF p2 lines38–50; p3 lines98–132; 前段模型假設",
+      "result": "本次直接核到實驗萃取率峰值與不均勻流動模型推論的區別；未完成作者指定641–643正文重讀。題目現有scope已明列模型與限定參數，可保留待進稿全文核。"
+    }
+  ],
+  "failed_access": [
+    {
+      "source": "F4-S021",
+      "attempts": "web.run.open逾時；Python urllib回403",
+      "impact": "不列成功外站抽查，僅審其候選/來源記錄與舊題近鄰。"
+    },
+    {
+      "source": "F4-S018",
+      "attempts": "web.run.find PDF逾時",
+      "impact": "不列成功外站抽查；單寧兩題僅題級編輯審。"
+    }
+  ],
+  "merges": [
+    {
+      "from": "F4004",
+      "into": "F4003",
+      "reason": "已在工廠完成糊化再復水，是同一結構轉變的製程前史例。保留問題別名與來源，新增核心不重計。"
+    },
+    {
+      "from": "F4018",
+      "into": "D2025",
+      "reason": "現有答案同為網絡連結/收縮過度，排出原先保留水分；未提出蛋白特有的另一步反應足以獨立。保留蛋白泡沫失敗例，與果膠材料不同不直接增一核心。"
+    },
+    {
+      "from": "F4020",
+      "into": "D2200",
+      "reason": "兩題均果乾表層硬化形成傳質阻力、內部仍濕；題名與答案同核心，為明確跨庫重複。"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "F4009",
+      "reason": "來源只說creaming形成air pockets；未解釋可塑脂肪怎樣留住氣體，45–70秒只能重述功能。取得脂肪晶體/界面機制原始材料後可重入。"
+    },
+    {
+      "id": "F4019",
+      "reason": "來源支持轉化現象卻只給新色素名稱，50–75秒不足以形成機制推進；可作其他色彩片的短例，補精確結構轉變來源後重入。"
+    }
+  ],
+  "distinct": [
+    {
+      "ids": [
+        "F4005",
+        "P263"
+      ],
+      "reason": "保留條件是兩種酸在不同階段的速率差與放氣時序；若稿只重講酸碰碳酸鹽冒泡則退回P263。"
+    },
+    {
+      "ids": [
+        "F4011",
+        "P232",
+        "N125"
+      ],
+      "reason": "分別是成核密度/生長分配、成核是否啟動、冷卻生長時間；不是只把岩石換成糖。"
+    },
+    {
+      "ids": [
+        "F4012",
+        "D2039"
+      ],
+      "reason": "此題氣液界面蛋白展開與互連穩泡；舊題乳滴新表面需蛋白重新吸附。可共用界面背景，但新增網絡連結要在稿中真正展開。"
+    },
+    {
+      "ids": [
+        "F4017",
+        "F4012",
+        "D2027"
+      ],
+      "reason": "糖對泡沫建立和加熱期間失水的不同影響形成時間窗口；不同於蛋白界面基本原理與糖的保存功能，須完成target修正。"
+    },
+    {
+      "ids": [
+        "F4021",
+        "P053",
+        "D2039"
+      ],
+      "reason": "限定可溶乾粉受表面脂肪阻礙潤濕的前置步驟，不能只用分散液滴吸附或水滴接觸角回答溶解/潤濕的落差；具體界面處理進稿再核。"
+    },
+    {
+      "ids": [
+        "F4024",
+        "F4006",
+        "D2269"
+      ],
+      "reason": "層間分隔導向蒸氣膨脹不同於產氣定型時序及脂肪干擾麵筋；本題保留層狀架構，不能重講泛稱脂肪使酥。"
+    },
+    {
+      "ids": [
+        "F4025",
+        "L021",
+        "F4003",
+        "V3093"
+      ],
+      "reason": "糊化提供可接觸底物與酵素存活的重疊窗口是明確交互條件，非單獨酵素熱失活或萌發GA訊號。僅兩品種摘要級。"
+    },
+    {
+      "ids": [
+        "F4029",
+        "LEG-S55",
+        "F4001"
+      ],
+      "reason": "冷致蔗糖/酸性轉化酶決定還原糖庫存與後續褐變，與乙烯成熟澱粉分解、加熱褐變反應物分類的決定步驟不同。"
+    },
+    {
+      "ids": [
+        "F4028",
+        "V3006",
+        "V3009",
+        "H3013"
+      ],
+      "reason": "相鄰配體協同穩定同一受體構形，不同於受體成對、級聯放大或鏡像配對。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "FOOD-R01",
+      "targets": [
+        "F4-S014",
+        "F4017",
+        "F4018"
+      ],
+      "action": "修正精確locator：糖段實際為Why not add sugar at the beginning?；過度連結失水在Why add vinegar?，並繼續明禁採酸中和蛋白的簡化解釋。來源reading_scope與locator同步。",
+      "priority": "required"
+    },
+    {
+      "id": "FOOD-R02",
+      "targets": [
+        "F4017"
+      ],
+      "action": "answer_target把含混的『改變水分逸出』明列來源採用的糖與水作用延緩蒸發；notes標明教育來源的簡化模型、非完整穩泡機制與配方建議，避免暗示糖直接使所有蛋白更穩。",
+      "priority": "required"
+    },
+    {
+      "id": "FOOD-R03",
+      "targets": [
+        "W4F-T01",
+        "W4F-T02",
+        "W4F-T03"
+      ],
+      "action": "原三組均只有3章，不符合根當期中央至少4章要求。先留作者提案/降為待重排短解說，不直接選入；不為滿章數硬加題。若整合成4章，逐章須新追問且合併後同核心總秒數重算。",
+      "priority": "required"
+    }
+  ],
+  "row_dispositions": [
+    {
+      "id": "F4001",
+      "disposition": "keep",
+      "reason": "以不同反應物區分同色結果，範圍不把起始溫度通則化。"
+    },
+    {
+      "id": "F4002",
+      "disposition": "keep",
+      "reason": "高糖抑制膨脹與既定加熱不能完成糊化的條件具體；不外推所有凝膠。"
+    },
+    {
+      "id": "F4003",
+      "disposition": "keep",
+      "reason": "冷分散到受熱糊化有結構因果，與回凝/沉降舊題不同。"
+    },
+    {
+      "id": "F4004",
+      "disposition": "merge",
+      "into": "F4003",
+      "reason": "加工前史作同核心反例。"
+    },
+    {
+      "id": "F4005",
+      "disposition": "keep",
+      "reason": "兩酸放氣時序可保留，需避免只重講酸碳酸鹽。"
+    },
+    {
+      "id": "F4006",
+      "disposition": "keep",
+      "reason": "同一產氣量因結構定型時序不同造成相反效果。"
+    },
+    {
+      "id": "F4007",
+      "disposition": "keep",
+      "reason": "揮發分解產物需離開成品，結構/水分影響逸出；不是另換一種產氣劑名詞。"
+    },
+    {
+      "id": "F4008",
+      "disposition": "keep",
+      "reason": "調濕改兩組織破碎選擇性，支撐磨粉前先加水反直覺。"
+    },
+    {
+      "id": "F4009",
+      "disposition": "exclude_pending_mechanism",
+      "reason": "來源現為功能定義，尚缺保氣微結構。"
+    },
+    {
+      "id": "F4010",
+      "disposition": "keep",
+      "reason": "異種分子阻礙規則晶體生長不同於只問溶解度或成核起點。"
+    },
+    {
+      "id": "F4011",
+      "disposition": "keep",
+      "reason": "多核/少核與晶體大小分配，有直接教育來源支持。"
+    },
+    {
+      "id": "F4012",
+      "disposition": "keep",
+      "reason": "界面展開與連結留氣，與機械送氣分工清楚。"
+    },
+    {
+      "id": "F4013",
+      "disposition": "keep",
+      "reason": "組織破壞啟動特定含硫物路徑，不冒稱先存氣味囊或健康效益。"
+    },
+    {
+      "id": "F4015",
+      "disposition": "keep",
+      "reason": "肌肉失水與膠原濕熱轉化方向相反；進稿須補溫度依賴，不採原教材過簡句。"
+    },
+    {
+      "id": "F4017",
+      "disposition": "keep_after_correction",
+      "reason": "正文有兩步簡化機制，修正水分作用與定位後可留題級。"
+    },
+    {
+      "id": "F4018",
+      "disposition": "merge",
+      "into": "D2025",
+      "reason": "過度網絡收縮排水，同核心材料例。"
+    },
+    {
+      "id": "F4019",
+      "disposition": "exclude_pending_mechanism",
+      "reason": "色素改名不足以支撐獨立機制段。"
+    },
+    {
+      "id": "F4020",
+      "disposition": "merge",
+      "into": "D2200",
+      "reason": "果乾表面硬化傳質阻力同題。"
+    },
+    {
+      "id": "F4021",
+      "disposition": "keep",
+      "reason": "潤濕與溶解前後步驟可分辨，限全脂粉體表面。"
+    },
+    {
+      "id": "F4022",
+      "disposition": "keep",
+      "reason": "單寧/唾液蛋白互動，不把澀感當含水量或所有澀感唯一機制。"
+    },
+    {
+      "id": "F4023",
+      "disposition": "keep",
+      "reason": "乙醛使單寧不溶與單寧總量消失不同；不含危險脫澀實作。"
+    },
+    {
+      "id": "F4024",
+      "disposition": "keep",
+      "reason": "層間蒸氣分隔有獨立架構條件，須與F4006時序區分。"
+    },
+    {
+      "id": "F4025",
+      "disposition": "keep",
+      "reason": "糊化/酵素存活窗口比較可留，摘要證據範圍透明。"
+    },
+    {
+      "id": "F4026",
+      "disposition": "keep",
+      "reason": "冷卻凝結造成孔內壓差的吸油路徑，與僅毛細潤濕或凝結放熱不同；本次外站重讀失敗。"
+    },
+    {
+      "id": "F4027",
+      "disposition": "keep",
+      "reason": "米粒本體軟硬與溶出表層黏附分開，研究處理不當食譜。"
+    },
+    {
+      "id": "F4028",
+      "disposition": "keep",
+      "reason": "已核模型/突變證據界線，協同結合機制明確。"
+    },
+    {
+      "id": "F4029",
+      "disposition": "keep",
+      "reason": "冷致糖化特定代謝節點有正文，與成熟或褐變本身不同。"
+    },
+    {
+      "id": "F4030",
+      "disposition": "keep",
+      "reason": "表面積增加卻萃取降低的床層流動模型，已區分推論與直接觀察。"
+    },
+    {
+      "id": "F4031",
+      "disposition": "keep",
+      "reason": "氧合/鐵氧化狀態比較有新判讀；禁止用色判食安。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W4F-T01",
+      "original_seconds": 225,
+      "chapters": 3,
+      "disposition": "hold_central_theme_restructure",
+      "finding": "原80/80/65秒皆未超各自上限，但最後30秒主要回顧，適合縮為15秒；F4018併D2025後仍可作例，不能當新增核心。",
+      "possible_revision": "約210秒三段短解說可保留作者提案，或自然拆F4012的送氣/界面留氣為兩個各40秒問題後形成4章，不增加總秒數；須根代理重新評估，不能因形式滿章而自動通過。"
+    },
+    {
+      "id": "W4F-T02",
+      "original_seconds": 215,
+      "chapters": 3,
+      "disposition": "hold_central_theme_restructure",
+      "finding": "F4004併F4003後，原80+65=145秒超核心F4003上限95；糖70秒可留，兩核心總上限170秒。",
+      "possible_revision": "建議糊化主段65秒+預糊化反例30秒+高糖65秒，共160秒；只有3章且低於3分鐘，不進當期4章題組。若未補新機制，直接作2分40秒短解說。"
+    },
+    {
+      "id": "W4F-T03",
+      "original_seconds": 230,
+      "chapters": 3,
+      "disposition": "hold_central_theme_restructure",
+      "finding": "F4009需暫緩，不能用65秒氣袋功能重述作機制章；F4005 80秒也偏上限，雙酸實際成分與速率差尚未進稿核。",
+      "possible_revision": "保留雙效放氣60–70秒與定型窗口75–85秒，可成135–155秒短解說；不加千層酥填滿4章。"
+    }
+  ],
+  "summary": {
+    "keep_or_keep_after_correction": 24,
+    "merge": 3,
+    "exclude_pending_mechanism": 2,
+    "central_theme_ready": 0,
+    "author_proposals_retained": 3
+  },
+  "followup": "由根代理決定中央合併/排除並指派作者修F4-S014/F4017；本覆核未修改作者檔或中央檔。修後需hash綁定targeted讀回。"
+}

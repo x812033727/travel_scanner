@@ -1,0 +1,600 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "reviewer": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "P32001",
+    "P32002",
+    "P32003",
+    "P32004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave32-seafloor.json",
+      "sha256": "74335ed5cd0b64a3f4764a79ab5145c9f67e63d5059b26e4d4ffeac6b3247c16"
+    },
+    {
+      "file": "reviews/wave32-seafloor-author.json",
+      "sha256": "d8df1cb0a31cc7a7e4aea0f54cf0f17f8a9ce3c69cfb153ed8dcf1ba7d5291e6"
+    },
+    {
+      "file": "reviews/wave32-seafloor-themes.json",
+      "sha256": "bf5e45f1e66b09eb384cc2509f330f78e620c23642495c2e1d92c0af8128d70d"
+    },
+    {
+      "file": ".cache/wave32-seafloor-neighbours.json",
+      "sha256": "17d403be43fe872f5d554c6dc8f6a3e8d60ee8c1618c44983607c2f5f9e28fc7"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P32001",
+      "decision": "retain",
+      "reason": "分段到時與含砂增載的解釋界線清楚。"
+    },
+    {
+      "id": "P32002",
+      "decision": "retain",
+      "reason": "兩天流速與21天溫度對照清楚且保留兩個事件名稱。"
+    },
+    {
+      "id": "P32003",
+      "decision": "retain",
+      "reason": "架子後續壓力改變、潮汐溫度波動消失與小標記互證，適合先揭曉先後。"
+    },
+    {
+      "id": "P32004",
+      "decision": "retain",
+      "reason": "分開沉積物被輸送和床形移向，早期遮蔽註明。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "P32-S001",
+      "url": "https://www.nature.com/articles/s41467-022-31689-3.pdf",
+      "file": ".cache/wave32-seafloor-congo.pdf",
+      "sha256": "d14cb52b40f7c82dc52433a1c900070a8b313240f8b3b57355d7d5564305ce40",
+      "text_file": ".cache/wave32-seafloor-congo.txt",
+      "text_sha256": "7b8a13745a077f7a663ae254dbb267be4e4acf7c9ac160287d7a3e102d2f48cf",
+      "reading_scope": "2022原刊PDF頁8–9，圖5各段前緣航速與坡度、圖6前後海床高差，及分段到時方法。",
+      "finding": "沿峽谷而非直線計距。圖5的一月事件尾段平均前緣速度較快，但中途也下降；圖6測深相隔多月，不能把所有沖刷量分給這一次。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave32-seafloor-congo-p8.png",
+          "sha256": "c3a0ed1ec3f521a32cdf1acddfcaf935abe123529365610c31d58150ac468699",
+          "read_scope": "Fig5A分段前緣速度，B–D床深、坡度、寬度。"
+        },
+        {
+          "file": ".cache/wave32-seafloor-congo-p9.png",
+          "sha256": "0a5b89bfc43ccbdb83440e35a0e861be86c5c85efc7784f71f5684bb961c9221",
+          "read_scope": "Fig6兩次航測地形差，屬2019–2020比較區間。"
+        }
+      ],
+      "read_via": "非作者核對保存的研究原刊PDF、量測圖與圖說。"
+    },
+    {
+      "source_id": "P32-S002",
+      "url": "https://nora.nerc.ac.uk/id/eprint/538670/1/Geophysical%20Research%20Letters%20-%202024%20-%20Baker%20-%20Seabed%20Seismographs%20Reveal%20Duration%20and%20Structure%20of%20Longest%20Runout%20Sediment.pdf",
+      "file": ".cache/wave32-seafloor-duration.pdf",
+      "sha256": "f7f63ffce37871002d4c8751e615ff6aaae6b83eb12be31fc1210dabe6b0f388",
+      "text_file": ".cache/wave32-seafloor-duration.txt",
+      "text_sha256": "eac9a113ed87171cecccb655856d1f2bf5dfc359638f63ebee08e2e32bae2057",
+      "reading_scope": "2024原刊PDF頁5 Fig2、頁7 Fig3，及溫度資料與21天尾流的討論。",
+      "finding": "弱事件Flow 1的震動變弱後，速度剖面仍有約兩天慢流。大事件的21天來自另一站溫度解釋，不能串接成兩組儀器全程直接測含砂速度。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave32-seafloor-duration-p5.png",
+          "sha256": "93705e3d7bf2d2abb0ca79acdee06854f5cba7286ab7a04e3e6c2ba2cac3271e",
+          "read_scope": "Fig2同一較弱流的速度與震動強弱時間線。"
+        },
+        {
+          "file": ".cache/wave32-seafloor-duration-p7.png",
+          "sha256": "f7900934e42f6f59ab34f5d12f8e8397d17bceac5c363c6214c718e02605df62",
+          "read_scope": "Fig3大事件沿峽谷各站脈衝及部分前鋒合併。"
+        }
+      ],
+      "read_via": "非作者核對保存的研究原刊PDF、量測圖與圖說。"
+    },
+    {
+      "source_id": "P32-S003",
+      "url": "https://www.nature.com/articles/s41467-018-06254-6.pdf",
+      "file": ".cache/wave32-seafloor-monterey.pdf",
+      "sha256": "798e23f31e8cdb8548ab9914c8da7ff48035ecc609292b852d8895ca5c6d4117",
+      "text_file": ".cache/wave32-seafloor-monterey.txt",
+      "text_sha256": "befa73672ad0d54327b4cdb2c9ebe4b3bf2a6fbf88202b8ad19137c66e600bbb",
+      "reading_scope": "2018原刊頁5 Fig4、頁7 Fig6–7，物件溫度與壓力記錄、回收地點及床層解釋。",
+      "finding": "被移動後架上溫度不再追潮汐，回收看得見埋入情形；後續壓力變化顯示又到較深處。近底濃密砂層是多項記錄支持的模型，非攝影機拍到地下過程。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave32-seafloor-monterey-p5.png",
+          "sha256": "f18ed46d01fe7c05a3399d28bc08b87a20ea248a417bb349dd5d1e5942fc57f0",
+          "read_scope": "Fig4架子、較小BED標記、壓力深度及溫度潮汐記錄。"
+        },
+        {
+          "file": ".cache/wave32-seafloor-monterey-p7.png",
+          "sha256": "3854c2df4d9c986757ad7ccc86f89993947c56acaa3286d131d7be9b411d8bcb",
+          "read_scope": "Fig6概念圖與Fig7同時期物件深度軌跡分開。"
+        }
+      ],
+      "read_via": "非作者核對保存的研究原刊PDF、量測圖與圖說。"
+    },
+    {
+      "source_id": "P32-S004",
+      "url": "https://www.nature.com/articles/ncomms11896.pdf",
+      "file": ".cache/wave32-seafloor-squamish.pdf",
+      "sha256": "1c5dd0cf1ac228bca0bc4e56c414c6e681963fa389eaca452782b2e5d9b0952d",
+      "text_file": ".cache/wave32-seafloor-squamish.txt",
+      "text_sha256": "5cc4a808b1135c0337024a9f187ab4cf7d473d4bef1ff158a13fa01ff34d218d",
+      "reading_scope": "2016原刊頁7 Fig7、頁8 Fig8，沿底原位剖面及Flow C事件先後的床面位置。",
+      "finding": "流向沿圖由左往右，陡面卻有淨上坡位移。衰減層在陡面下游變厚，水躍是研究解釋；初期聲波被遮並非儀器全程量到真底。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave32-seafloor-squamish-p7.png",
+          "sha256": "acfee16a47985aa2a6d1ab8b374eff819e86f0d18ca90f0a66c15e1eb4bd3f3c",
+          "read_scope": "Fig7事件A/B/C/E在剖面及速度隨時間的差異。"
+        },
+        {
+          "file": ".cache/wave32-seafloor-squamish-p8.png",
+          "sha256": "10f5bf358061bb5a9b9db8031835598b5d7fd096bd275e5566d492bd96f43714",
+          "read_scope": "Fig8六格C事件，前測虛線、衰減層、後測陡坡位置。"
+        }
+      ],
+      "read_via": "非作者核對保存的研究原刊PDF、量測圖與圖說。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P32001",
+      "b": "O3060",
+      "decision": "distinct",
+      "reason": "洪峰的波速不同於水粒；新題是侵蝕增載與特定前緣分段加速，不只區分這兩種速度。"
+    },
+    {
+      "a": "P32001",
+      "b": "N141",
+      "decision": "distinct",
+      "reason": "雨動員火山舊沉積是啟動條件，不解釋已在海下流動的前緣為何加速。"
+    },
+    {
+      "a": "P32001",
+      "b": "E7022",
+      "decision": "distinct",
+      "reason": "河床粗化會阻擋沖刷；此處是沿途侵蝕可能增加密度與驅動，兩者的預期方向不同。"
+    },
+    {
+      "a": "P32002",
+      "b": "P32001",
+      "decision": "distinct",
+      "reason": "斷纜與到時解前緣推進，地震儀靜下來跟流速計仍有訊號解流體持續時間。"
+    },
+    {
+      "a": "P32002",
+      "b": "O3072",
+      "decision": "distinct",
+      "reason": "聲學流速計可讀的濁度範圍不等於比較兩個通道何時回到背景以區別前段和流體。"
+    },
+    {
+      "a": "P32002",
+      "b": "P31001",
+      "decision": "distinct",
+      "reason": "火星撞址比對地震波與軌道前後照；此處同一海流不同部分在不同感測器能否看見。"
+    },
+    {
+      "a": "P32003",
+      "b": "N280",
+      "decision": "distinct",
+      "reason": "地震液化的孔壓機制本身不能說明埋下的架是否再移動；當場沒有直接逐次量孔壓。"
+    },
+    {
+      "a": "P32003",
+      "b": "A12010",
+      "decision": "distinct",
+      "reason": "蟶主動縮殼改變周邊堆積，與海床成片活動載走形狀相異的設備不同。"
+    },
+    {
+      "a": "P32003",
+      "b": "P32001",
+      "decision": "distinct",
+      "reason": "運物速度與濃密底層不同於泥沙流前緣各段的平均速度與沿程沖刷。"
+    },
+    {
+      "a": "P32004",
+      "b": "F10016",
+      "decision": "distinct",
+      "reason": "一般水躍可說明快淺流變慢而厚，還不能決定海底侵蝕與堆積位置及床形上移。"
+    },
+    {
+      "a": "P32004",
+      "b": "E7011",
+      "decision": "distinct",
+      "reason": "風成沙丘的顆粒運輸不同於用底層突增厚及測線前後照判斷陡面逆向移動。"
+    },
+    {
+      "a": "P32004",
+      "b": "E11004",
+      "decision": "distinct",
+      "reason": "斜層理能記錄過去搬運，這題是同一場聲納時間序列同時追水流和床形。"
+    },
+    {
+      "a": "P32004",
+      "b": "P32003",
+      "decision": "distinct",
+      "reason": "埋物移動追蹤特定設備；移動的床形要看上下游哪裡侵蝕、堆積，不是特定沙粒路徑。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P32001",
+      "b": "P32002",
+      "decision": "distinct",
+      "reason": "斷纜與到時解前緣推進，地震儀靜下來跟流速計仍有訊號解流體持續時間。"
+    },
+    {
+      "a": "P32001",
+      "b": "P32004",
+      "decision": "distinct",
+      "reason": "這裡量前緣順坡的速度，另一題量陡面輪廓逆向的位移，得用不同感測量。"
+    },
+    {
+      "a": "P32001",
+      "b": "P063",
+      "decision": "distinct",
+      "reason": "下坡位能轉換一項不足以說明在漸緩坡度上遠端前緣加速和可能增載。"
+    },
+    {
+      "a": "P32001",
+      "b": "N111",
+      "decision": "distinct",
+      "reason": "海溝如何形成與既有峽谷中一場流的到時反推速度無關。"
+    },
+    {
+      "a": "P32001",
+      "b": "E11009",
+      "decision": "distinct",
+      "reason": "沙堆間距由床形遷移與尾流互動改變，前緣是密度流的界面，並非第二座沙丘。"
+    },
+    {
+      "a": "P32002",
+      "b": "N212",
+      "decision": "distinct",
+      "reason": "氣壓擾動能製造長波，不是海床微震消退後還有慢流。"
+    },
+    {
+      "a": "P32002",
+      "b": "N285",
+      "decision": "distinct",
+      "reason": "地層軟硬影響同一地震的震幅，這裡是源本身分成前段與較靜的拖尾。"
+    },
+    {
+      "a": "P32002",
+      "b": "P32004",
+      "decision": "distinct",
+      "reason": "流體停留時間由震測、流速及溫度比較，陡面遷移由同一床形的前後剖面測。"
+    },
+    {
+      "a": "P32002",
+      "b": "LEG-S83",
+      "decision": "distinct",
+      "reason": "海嘯淺化使波高改變，不會說明流道旁地震儀為何少記後段。"
+    },
+    {
+      "a": "P32002",
+      "b": "N124",
+      "decision": "distinct",
+      "reason": "餘震頻率是破裂後調整，泥流題的後段可能沒明顯微震而仍在流動。"
+    },
+    {
+      "a": "P32003",
+      "b": "P32004",
+      "decision": "distinct",
+      "reason": "埋物移動追蹤特定設備；移動的床形要看上下游哪裡侵蝕、堆積，不是特定沙粒路徑。"
+    },
+    {
+      "a": "P32003",
+      "b": "E11009",
+      "decision": "distinct",
+      "reason": "兩個床形間距改變，不是壓力記錄顯示已埋物件又被搬走。"
+    },
+    {
+      "a": "P32003",
+      "b": "D2234",
+      "decision": "distinct",
+      "reason": "水泵渦殼回收動壓不解釋海床物件再埋與搬運。"
+    },
+    {
+      "a": "P32003",
+      "b": "W5021",
+      "decision": "distinct",
+      "reason": "砂濾反洗上流使濾床鬆動，並無沿坡埋物由密層搬移的實地對照。"
+    },
+    {
+      "a": "P32003",
+      "b": "N109",
+      "decision": "distinct",
+      "reason": "板塊尺度的海底增生與回收並不造成這場近底搬運的訊號。"
+    },
+    {
+      "a": "P32004",
+      "b": "N231",
+      "decision": "distinct",
+      "reason": "掏空山腳使上坡垮下與流中水躍、床面一側侵蝕另一側加積不同。"
+    },
+    {
+      "a": "P32004",
+      "b": "E7008",
+      "decision": "distinct",
+      "reason": "河道改換出口，不是同一渠道內陡面輪廓往上游移。"
+    },
+    {
+      "a": "P32004",
+      "b": "E11005",
+      "decision": "distinct",
+      "reason": "河口沙洲將射流分開，這題在一條剖面追坡腳、陡面和淨位移。"
+    },
+    {
+      "a": "P32004",
+      "b": "E11007",
+      "decision": "distinct",
+      "reason": "潟湖向外潰決需要風暴堆水與回湧，此處流向不反轉也可見床形逆移。"
+    },
+    {
+      "a": "P32004",
+      "b": "E11009",
+      "decision": "distinct",
+      "reason": "兩堆沙在水槽下移的相對速度不同於單一陡面逆著濁流移動並有近床增厚對照。"
+    }
+  ],
+  "not_added_review": [
+    {
+      "id": "P32-NA001",
+      "decision": "keep_not_added",
+      "reason": "到時序列的一個測點可留圖，不能算新原理。"
+    },
+    {
+      "id": "P32-NA002",
+      "decision": "keep_not_added",
+      "reason": "間距和時間估的是前緣，不是砂粒速度。"
+    },
+    {
+      "id": "P32-NA003",
+      "decision": "keep_not_added",
+      "reason": "圖5顯示局部回落。"
+    },
+    {
+      "id": "P32-NA004",
+      "decision": "keep_not_added",
+      "reason": "沒有拍到河口每次如何啟動，不設必要充分潮汐條件。"
+    },
+    {
+      "id": "P32-NA005",
+      "decision": "keep_not_added",
+      "reason": "測深累積區間內含多次流。"
+    },
+    {
+      "id": "P32-NA006",
+      "decision": "keep_not_added",
+      "reason": "流速與海床振動讀數不同，水聽器亦不能當成錄到同一訊號。"
+    },
+    {
+      "id": "P32-NA007",
+      "decision": "keep_not_added",
+      "reason": "前緣速度和溫度異常持續不能乘成一顆砂的路程。"
+    },
+    {
+      "id": "P32-NA008",
+      "decision": "keep_not_added",
+      "reason": "Flow 1與Flow 10是不同實驗條件，兩個期限不連起來。"
+    },
+    {
+      "id": "P32-NA009",
+      "decision": "keep_not_added",
+      "reason": "800公斤只屬這個設備，無重量排序試驗。"
+    },
+    {
+      "id": "P32-NA010",
+      "decision": "keep_not_added",
+      "reason": "實測記錄不支持每次是地震觸發或直接量得液化。"
+    },
+    {
+      "id": "P32-NA011",
+      "decision": "keep_not_added",
+      "reason": "已收斜層理；重點在同一剖面的時間序列。"
+    },
+    {
+      "id": "P32-NA012",
+      "decision": "keep_not_added",
+      "reason": "初期近床濁層擋住回波，不能全算作床高。"
+    },
+    {
+      "id": "P32-NA013",
+      "decision": "keep_not_added",
+      "reason": "要靠時間序列約束床形，形狀單獨不充分。"
+    },
+    {
+      "id": "P32-NA014",
+      "decision": "keep_not_added",
+      "reason": "舊題已有顆粒與床形遷移之別。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W32P-T01",
+      "seconds": 130,
+      "decision": "retain_paper_plan",
+      "reason": "以斷纜估頭、另問流了多久，各需不同量測。兩篇剛果論文部分共用事件，不作兩次獨立證實。"
+    },
+    {
+      "id": "W32P-T02",
+      "seconds": 100,
+      "decision": "retain_paper_plan",
+      "reason": "對比具名物件和移動的輪廓，蒙特雷與斯闊米什各自標示地點，不能畫成同一坡同一場。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P32001",
+        "b": "O3060",
+        "reason": "洪峰的波速不同於水粒；新題是侵蝕增載與特定前緣分段加速，不只區分這兩種速度。"
+      },
+      {
+        "a": "P32001",
+        "b": "N141",
+        "reason": "雨動員火山舊沉積是啟動條件，不解釋已在海下流動的前緣為何加速。"
+      },
+      {
+        "a": "P32001",
+        "b": "E7022",
+        "reason": "河床粗化會阻擋沖刷；此處是沿途侵蝕可能增加密度與驅動，兩者的預期方向不同。"
+      },
+      {
+        "a": "P32001",
+        "b": "P32002",
+        "reason": "斷纜與到時解前緣推進，地震儀靜下來跟流速計仍有訊號解流體持續時間。"
+      },
+      {
+        "a": "P32002",
+        "b": "O3072",
+        "reason": "聲學流速計可讀的濁度範圍不等於比較兩個通道何時回到背景以區別前段和流體。"
+      },
+      {
+        "a": "P32002",
+        "b": "P31001",
+        "reason": "火星撞址比對地震波與軌道前後照；此處同一海流不同部分在不同感測器能否看見。"
+      },
+      {
+        "a": "P32003",
+        "b": "N280",
+        "reason": "地震液化的孔壓機制本身不能說明埋下的架是否再移動；當場沒有直接逐次量孔壓。"
+      },
+      {
+        "a": "P32003",
+        "b": "A12010",
+        "reason": "蟶主動縮殼改變周邊堆積，與海床成片活動載走形狀相異的設備不同。"
+      },
+      {
+        "a": "P32003",
+        "b": "P32001",
+        "reason": "運物速度與濃密底層不同於泥沙流前緣各段的平均速度與沿程沖刷。"
+      },
+      {
+        "a": "P32004",
+        "b": "F10016",
+        "reason": "一般水躍可說明快淺流變慢而厚，還不能決定海底侵蝕與堆積位置及床形上移。"
+      },
+      {
+        "a": "P32004",
+        "b": "E7011",
+        "reason": "風成沙丘的顆粒運輸不同於用底層突增厚及測線前後照判斷陡面逆向移動。"
+      },
+      {
+        "a": "P32004",
+        "b": "E11004",
+        "reason": "斜層理能記錄過去搬運，這題是同一場聲納時間序列同時追水流和床形。"
+      },
+      {
+        "a": "P32003",
+        "b": "P32004",
+        "reason": "埋物移動追蹤特定設備；移動的床形要看上下游哪裡侵蝕、堆積，不是特定沙粒路徑。"
+      },
+      {
+        "a": "P32001",
+        "b": "P32004",
+        "reason": "這裡量前緣順坡的速度，另一題量陡面輪廓逆向的位移，得用不同感測量。"
+      },
+      {
+        "a": "P32001",
+        "b": "P063",
+        "reason": "下坡位能轉換一項不足以說明在漸緩坡度上遠端前緣加速和可能增載。"
+      },
+      {
+        "a": "P32001",
+        "b": "N111",
+        "reason": "海溝如何形成與既有峽谷中一場流的到時反推速度無關。"
+      },
+      {
+        "a": "P32001",
+        "b": "E11009",
+        "reason": "沙堆間距由床形遷移與尾流互動改變，前緣是密度流的界面，並非第二座沙丘。"
+      },
+      {
+        "a": "P32002",
+        "b": "N212",
+        "reason": "氣壓擾動能製造長波，不是海床微震消退後還有慢流。"
+      },
+      {
+        "a": "P32002",
+        "b": "N285",
+        "reason": "地層軟硬影響同一地震的震幅，這裡是源本身分成前段與較靜的拖尾。"
+      },
+      {
+        "a": "P32002",
+        "b": "P32004",
+        "reason": "流體停留時間由震測、流速及溫度比較，陡面遷移由同一床形的前後剖面測。"
+      },
+      {
+        "a": "P32002",
+        "b": "LEG-S83",
+        "reason": "海嘯淺化使波高改變，不會說明流道旁地震儀為何少記後段。"
+      },
+      {
+        "a": "P32002",
+        "b": "N124",
+        "reason": "餘震頻率是破裂後調整，泥流題的後段可能沒明顯微震而仍在流動。"
+      },
+      {
+        "a": "P32003",
+        "b": "E11009",
+        "reason": "兩個床形間距改變，不是壓力記錄顯示已埋物件又被搬走。"
+      },
+      {
+        "a": "P32003",
+        "b": "D2234",
+        "reason": "水泵渦殼回收動壓不解釋海床物件再埋與搬運。"
+      },
+      {
+        "a": "P32003",
+        "b": "W5021",
+        "reason": "砂濾反洗上流使濾床鬆動，並無沿坡埋物由密層搬移的實地對照。"
+      },
+      {
+        "a": "P32003",
+        "b": "N109",
+        "reason": "板塊尺度的海底增生與回收並不造成這場近底搬運的訊號。"
+      },
+      {
+        "a": "P32004",
+        "b": "N231",
+        "reason": "掏空山腳使上坡垮下與流中水躍、床面一側侵蝕另一側加積不同。"
+      },
+      {
+        "a": "P32004",
+        "b": "E7008",
+        "reason": "河道改換出口，不是同一渠道內陡面輪廓往上游移。"
+      },
+      {
+        "a": "P32004",
+        "b": "E11005",
+        "reason": "河口沙洲將射流分開，這題在一條剖面追坡腳、陡面和淨位移。"
+      },
+      {
+        "a": "P32004",
+        "b": "E11007",
+        "reason": "潟湖向外潰決需要風暴堆水與回湧，此處流向不反轉也可見床形逆移。"
+      },
+      {
+        "a": "P32004",
+        "b": "E11009",
+        "reason": "兩堆沙在水槽下移的相對速度不同於單一陡面逆著濁流移動並有近床增厚對照。"
+      }
+    ]
+  },
+  "final_draft_sha256": "521076a796fb564314505ad49be085f6e1b588efcbf8f60b6e5c2b7528fff0ee",
+  "remaining_blockers": [],
+  "limits": "原始研究題級查核，尚未完成稿、試讀或影片測試。"
+}

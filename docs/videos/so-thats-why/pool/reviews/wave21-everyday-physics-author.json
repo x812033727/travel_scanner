@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "bc47898aa60c073f76ba9f8a6602c3e5b92f1d60",
+    "selected": 2997,
+    "raw_records": 3366,
+    "not_added": 960,
+    "pool_sha256": "f378bcb5ce2666cbf213e8389672321fc4362939a80ea4f98a019fe5dbb9d08e"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave21-everyday-physics.json",
+      "sha256": "d2553972eb1e59c8a006096adf68e5f701b55c6e0bdf387b6db3fa29fad5537f"
+    },
+    {
+      "file": "reviews/wave21-everyday-physics-themes.json",
+      "sha256": "3e1de3a521b1cca7cd15ec53ce301495263b204c47c7d6e000913d8fc06d1a95"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 5,
+    "independent_research": 5,
+    "not_added": 17,
+    "near_pairs": 17,
+    "themes": 4,
+    "expected_new_cores_before_non_author": 5
+  },
+  "scope": "結的形成/滑脫、遠端顆粒活化與薄片飛行控制；5原創提案、5研究。題級初篩，不是腳本核准。",
+  "dedup_reading": {
+    "method": "全欄位關鍵詞檢索＋相關命中完整問答/範圍讀回；非逐題人工讀完3366原始列。",
+    "queries": [
+      "繩|織|纖維|結心|繩結|打結|電話簿|纏結|knot|tangle|braid",
+      "紙|薄片|摺|折|flutter|tumble|glid|壓力中心|升力|重心|配重",
+      "顆粒|砂|沙|粉末|剪切|探針|非局|nonlocal|granular|料斗|攪拌"
+    ],
+    "scan_file": ".cache/wave21-physics-oldscan.json",
+    "scan_sha256": "ecc721cd9dfa0b78e07a33c7f7e74647879c033a6d8ce1d537990a07815d1bc4",
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P21001",
+      "b": "K18001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊核是腳步衝擊鬆動與自由端慣性回饋；新核固定受拉端比較交叉自力矩滾開/互鎖，不以鞋帶失效重收。",
+      "a_snapshot": {
+        "id": "P21001",
+        "question": "交叉次數一樣的兩個繩結，為什麼一拉卻有一個先滑開？",
+        "answer_target": "受拉滑動在交叉處產生自力矩；同向作用可讓結心滾動而鬆脫，相對作用可抑制滾開。交叉數之外還要看排列及受拉端，並非只數繞幾圈。",
+        "scope": "限原文雙繩彎結、模型與特定繩材拉脫比較；不同端部拉法/摩擦會改排名，不宣稱任意結皆由單一拓撲數決定。"
+      },
+      "b_snapshot": {
+        "id": "K18001",
+        "question": "鞋帶前面很多步都沒事，為什麼接著幾步就突然鬆光？",
+        "answer_target": "研究提出步行衝擊使結心鬆動，擺動自由端的慣性拉力逐步把繩帶拉出；自由端變長、環變短又放大不對稱拉動，形成快速失效回饋。受控衝擊與端部加重支持此方向，但結心的瞬時微觀變化仍未直接驗證。",
+        "scope": "限所試無蠟圓鞋帶與結、單一受試者觀察及受控擺錘；只踩踏或只擺腿的對照是初步觀察，不冒充大型人體試驗。不能由端重實驗推出所有情況單調或最佳綁法。"
+      }
+    },
+    {
+      "a": "P21001",
+      "b": "X5001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊核螺旋接觸把張力轉正向力而放大摩擦；新核同交叉數仍因自力矩排列而有滾動路徑差，不能只用接觸力變大答完。",
+      "a_snapshot": {
+        "id": "P21001",
+        "question": "交叉次數一樣的兩個繩結，為什麼一拉卻有一個先滑開？",
+        "answer_target": "受拉滑動在交叉處產生自力矩；同向作用可讓結心滾動而鬆脫，相對作用可抑制滾開。交叉數之外還要看排列及受拉端，並非只數繞幾圈。",
+        "scope": "限原文雙繩彎結、模型與特定繩材拉脫比較；不同端部拉法/摩擦會改排名，不宣稱任意結皆由單一拓撲數決定。"
+      },
+      "b_snapshot": {
+        "id": "X5001",
+        "question": "只有幾公分長的棉纖維，為什麼捻一捻能變成拉不散的長線？",
+        "answer_target": "螺旋路徑把拉力轉為纖維間正向接觸力，摩擦放大使滑出轉為鎖住。",
+        "scope": "限短纖維紗與所讀模型；不宣稱越捻越強或給普遍最佳捻度。"
+      }
+    },
+    {
+      "a": "P21001",
+      "b": "P21002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "前者已有結受載如何滑脫；後者原先無結自由端如何生成交叉，操控和相反結果不同。",
+      "a_snapshot": {
+        "id": "P21001",
+        "question": "交叉次數一樣的兩個繩結，為什麼一拉卻有一個先滑開？",
+        "answer_target": "受拉滑動在交叉處產生自力矩；同向作用可讓結心滾動而鬆脫，相對作用可抑制滾開。交叉數之外還要看排列及受拉端，並非只數繞幾圈。",
+        "scope": "限原文雙繩彎結、模型與特定繩材拉脫比較；不同端部拉法/摩擦會改排名，不宣稱任意結皆由單一拓撲數決定。"
+      },
+      "b_snapshot": {
+        "id": "P21002",
+        "question": "盒子更小更擠，裡面的長繩為什麼反而可能較少打結？",
+        "answer_target": "長繩先形成彼此靠近的線圈，自由端在鄰段間穿繞提供成結機會；盒子過窄使較硬繩楔住、減少翻動與可用穿繞，接觸更多不等於更易成結。",
+        "scope": "限同一繩材、長度與搖動條件下的盒寬比較；自由端編織是支持分布的定性模型，未逐步直接量出所有結形成過程。"
+      }
+    },
+    {
+      "a": "P21002",
+      "b": "A12004",
+      "proposed": "distinct_pending_non_author",
+      "reason": "活動蟲群的換向頻率與路徑半徑控制纏結；新核單條被動繩在盒內自由端穿繞、過度受限失去運動，不以生物名詞重收。",
+      "a_snapshot": {
+        "id": "P21002",
+        "question": "盒子更小更擠，裡面的長繩為什麼反而可能較少打結？",
+        "answer_target": "長繩先形成彼此靠近的線圈，自由端在鄰段間穿繞提供成結機會；盒子過窄使較硬繩楔住、減少翻動與可用穿繞，接觸更多不等於更易成結。",
+        "scope": "限同一繩材、長度與搖動條件下的盒寬比較；自由端編織是支持分布的定性模型，未逐步直接量出所有結形成過程。"
+      },
+      "b_snapshot": {
+        "id": "A12004",
+        "question": "同一團黑線蚓能纏緊又迅速散開，為什麼不只是扭得更快？",
+        "answer_target": "在相同示意速度與迴圈尺度下，較晚換旋向的路徑較能繞住鄰居，較早換向可避免建立相同連接；模型中的換向比例及迴圈相對鄰距共同控制纏結，速度本身也可能改變迴圈尺度。",
+        "scope": "限實測頭部軌跡、超音波結構及活動細絲模型；gamma=alpha/(2*pi*lambda)、R=v/(alpha*l)分別描述換向比例與迴圈相對鄰距。只有固定gamma、R與鄰距l，同比加快前進v、轉向alpha、換向lambda，才保持路徑形狀而壓縮時間；沒有一整圈的通用換向門檻。不宣稱神經解結算法或所有閉合繩結皆可解開。"
+      }
+    },
+    {
+      "a": "P21002",
+      "b": "G13008",
+      "proposed": "distinct_pending_non_author",
+      "reason": "串珠群的多鏈自約束增硬不等於單根繩形成可分類的結；新題有同繩長盒寬控制。",
+      "a_snapshot": {
+        "id": "P21002",
+        "question": "盒子更小更擠，裡面的長繩為什麼反而可能較少打結？",
+        "answer_target": "長繩先形成彼此靠近的線圈，自由端在鄰段間穿繞提供成結機會；盒子過窄使較硬繩楔住、減少翻動與可用穿繞，接觸更多不等於更易成結。",
+        "scope": "限同一繩材、長度與搖動條件下的盒寬比較；自由端編織是支持分布的定性模型，未逐步直接量出所有結形成過程。"
+      },
+      "b_snapshot": {
+        "id": "G13008",
+        "question": "單條串珠很軟，堆成一團後為什麼可能越壓越難變形？",
+        "answer_target": "鏈足夠長能迴繞鄰鏈時，集體壓縮可建立跨越整堆的纏結約束；作者提出自約束解釋明顯增硬及最終連接件失效。",
+        "scope": "限帶最大彎角限制的金屬串珠鏈；長度對照要按可成圈尺度看，非所有長纖維通用數字。self-confinement是所提機制，X-ray虛擬閉合判準不等於永久閉環繩結。"
+      }
+    },
+    {
+      "a": "P21003",
+      "b": "G13002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "剪脹講局部顆粒繞開所需空間；新題剪切帶外且逆均流探針在固定低力下移動，新增非局部控制。",
+      "a_snapshot": {
+        "id": "P21003",
+        "question": "同樣的力本來拉不動砂裡的小桿，遠處一轉動它怎麼就走了？",
+        "answer_target": "遠處剪切改變近乎靜止顆粒區的屈服反應；機械擾動活化的詮釋是擾動協助探針跨過局部阻力門檻。探針逆著內筒方向移動且遠快於當地背景粒速，不能只當成被整群顆粒搬走。",
+        "scope": "限玻璃珠Couette槽、指定埋深與0.5–0.9倍無剪切臨界力的量測；應力擾動為擬合支持的解釋，微觀推導仍未完成，不宣稱直接量得遠程力鏈訊號。"
+      },
+      "b_snapshot": {
+        "id": "G13002",
+        "question": "一堆已壓密的顆粒被推著錯開，為什麼局部反而變鬆？",
+        "answer_target": "密集顆粒要繞過鄰居重新排列，需騰出額外空間；剪切區的堆積密度因此下降，與顆粒自身膨脹不同。",
+        "scope": "限有空間容許變形的乾顆粒split-bottom流動及MRI相對密度；不用水變濕的沙灘演示冒充本研究，也不宣稱所有初始鬆度都膨脹。"
+      }
+    },
+    {
+      "a": "P21003",
+      "b": "G13003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊核固定裝填下局部接觸網絡建立承載；新題遠處剪流使原靜止區探針能爬行，並非同一剪切堵塞狀態圖改物件。",
+      "a_snapshot": {
+        "id": "P21003",
+        "question": "同樣的力本來拉不動砂裡的小桿，遠處一轉動它怎麼就走了？",
+        "answer_target": "遠處剪切改變近乎靜止顆粒區的屈服反應；機械擾動活化的詮釋是擾動協助探針跨過局部阻力門檻。探針逆著內筒方向移動且遠快於當地背景粒速，不能只當成被整群顆粒搬走。",
+        "scope": "限玻璃珠Couette槽、指定埋深與0.5–0.9倍無剪切臨界力的量測；應力擾動為擬合支持的解釋，微觀推導仍未完成，不宣稱直接量得遠程力鏈訊號。"
+      },
+      "b_snapshot": {
+        "id": "G13003",
+        "question": "顆粒沒有裝得更多，往旁邊推一推為什麼會卡緊？",
+        "answer_target": "固定裝填量下，剪切重排可建立能承載的摩擦接觸網絡；反向剪切會改變這個網絡，但只有某些先前狀態會退回低於可測應力的鬆散狀態。",
+        "scope": "限均勻剪切近二維圓盤；剪切量與填充率一起決定fragile或shear-jammed，反推不是通用解鎖法。保留量測噪聲判準，不能說所有接觸完全消失。"
+      }
+    },
+    {
+      "a": "P21003",
+      "b": "F10007",
+      "proposed": "distinct_pending_non_author",
+      "reason": "顆粒對流以均流輸送大顆粒；新題用反向與局部粒速比較排除此簡單解釋。",
+      "a_snapshot": {
+        "id": "P21003",
+        "question": "同樣的力本來拉不動砂裡的小桿，遠處一轉動它怎麼就走了？",
+        "answer_target": "遠處剪切改變近乎靜止顆粒區的屈服反應；機械擾動活化的詮釋是擾動協助探針跨過局部阻力門檻。探針逆著內筒方向移動且遠快於當地背景粒速，不能只當成被整群顆粒搬走。",
+        "scope": "限玻璃珠Couette槽、指定埋深與0.5–0.9倍無剪切臨界力的量測；應力擾動為擬合支持的解釋，微觀推導仍未完成，不宣稱直接量得遠程力鏈訊號。"
+      },
+      "b_snapshot": {
+        "id": "F10007",
+        "question": "大珠子被整群帶上去，為什麼不一定能跟著旁邊的小珠子回到底部？",
+        "answer_target": "壁面摩擦形成中心上升、貼壁下降的顆粒循環；下降層太窄時，大粒回不去而留在頂部。",
+        "scope": "限來源的垂直振動與壁面條件；下降層能容納大粒時可循環混合。"
+      }
+    },
+    {
+      "a": "P21003",
+      "b": "F10003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "Janssen牆摩擦分擔壓力是靜態載荷路徑；新題開/停剪流和亞臨界移動，不能由壓力飽和直接得到。",
+      "a_snapshot": {
+        "id": "P21003",
+        "question": "同樣的力本來拉不動砂裡的小桿，遠處一轉動它怎麼就走了？",
+        "answer_target": "遠處剪切改變近乎靜止顆粒區的屈服反應；機械擾動活化的詮釋是擾動協助探針跨過局部阻力門檻。探針逆著內筒方向移動且遠快於當地背景粒速，不能只當成被整群顆粒搬走。",
+        "scope": "限玻璃珠Couette槽、指定埋深與0.5–0.9倍無剪切臨界力的量測；應力擾動為擬合支持的解釋，微觀推導仍未完成，不宣稱直接量得遠程力鏈訊號。"
+      },
+      "b_snapshot": {
+        "id": "F10003",
+        "question": "往高筒裡繼續倒顆粒，筒底承受的力為什麼可能幾乎不再增加？",
+        "answer_target": "顆粒接觸把部分垂直載荷傳向側壁，壁面摩擦分擔重量，底部負荷可趨飽和。",
+        "scope": "支壁與底座分開量測的顆粒柱；不是整個容器連同顆粒放磅秤後總重不增。"
+      }
+    },
+    {
+      "a": "P21004",
+      "b": "P012",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題迎流面積/受控姿態阻力；新題自由轉動的旋轉環流升力與平移耦合，實測短暫上升不能只靠面積描述。",
+      "a_snapshot": {
+        "id": "P21004",
+        "question": "薄片明明在往下翻落，轉彎時怎麼會短暫往上走？",
+        "answer_target": "自由轉動使升力不能只按固定角度平移翼計算；旋轉所伴隨的環流與平移耦合，原實驗長滑行後的快速轉向出現短暫抬升。只看迎流面積或平移速度不足以描述這組運動。",
+        "scope": "限原文水中鋁薄片近二維落下；不是每次轉彎都升高。準定常模型在尖點附近有尾流偏差，這裡只採旋轉耦合機制與實測抬升，不聲稱完整瞬時力都已算準。"
+      },
+      "b_snapshot": {
+        "id": "P012",
+        "question": "一張紙平放和側著落下，為什麼空氣阻力差這麼多？",
+        "answer_target": "迎流投影面積改變阻力；翻滾時還要考慮姿態變化。",
+        "scope": "姿態可控制的薄片比較"
+      }
+    },
+    {
+      "a": "P21004",
+      "b": "E9003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "種子自轉伴穩定前緣渦降低下降；新題水中近二維薄片翻滾有平移/旋轉速度的升力對照及短暫抬升，不把所有旋轉升力合成一張物件清單。需非作者再判是否增量足。",
+      "a_snapshot": {
+        "id": "P21004",
+        "question": "薄片明明在往下翻落，轉彎時怎麼會短暫往上走？",
+        "answer_target": "自由轉動使升力不能只按固定角度平移翼計算；旋轉所伴隨的環流與平移耦合，原實驗長滑行後的快速轉向出現短暫抬升。只看迎流面積或平移速度不足以描述這組運動。",
+        "scope": "限原文水中鋁薄片近二維落下；不是每次轉彎都升高。準定常模型在尖點附近有尾流偏差，這裡只採旋轉耦合機制與實測抬升，不聲稱完整瞬時力都已算準。"
+      },
+      "b_snapshot": {
+        "id": "E9003",
+        "question": "楓樹的翅果邊掉邊旋轉，為什麼不只是多轉幾圈？",
+        "answer_target": "偏置重量與翼形形成自轉運動，翼面附近穩定前緣渦提高升力、延緩下降。",
+        "scope": "限研究楓樹/鵝耳櫪翅果；不將所有有翅種子畫成自轉，也不把穩定自轉的全部因果說已完全解決。"
+      }
+    },
+    {
+      "a": "P21004",
+      "b": "T4043",
+      "proposed": "distinct_pending_non_author",
+      "reason": "固定翼尾流遺留講流場對後機影響；新題跟同一自由落體的轉動追瞬時力，不以尾渦一般存在當答案。",
+      "a_snapshot": {
+        "id": "P21004",
+        "question": "薄片明明在往下翻落，轉彎時怎麼會短暫往上走？",
+        "answer_target": "自由轉動使升力不能只按固定角度平移翼計算；旋轉所伴隨的環流與平移耦合，原實驗長滑行後的快速轉向出現短暫抬升。只看迎流面積或平移速度不足以描述這組運動。",
+        "scope": "限原文水中鋁薄片近二維落下；不是每次轉彎都升高。準定常模型在尖點附近有尾流偏差，這裡只採旋轉耦合機制與實測抬升，不聲稱完整瞬時力都已算準。"
+      },
+      "b_snapshot": {
+        "id": "T4043",
+        "question": "前一架飛機都飛走了，空氣裡為什麼還可能留下看不見的障礙？",
+        "answer_target": "機翼產生升力的壓力差形成成對旋轉尾流，飛機離開後仍會移動、下沉與逐漸衰減。",
+        "scope": "固定翼尾流物理；與N254白線的凝結可見性不同，不教避讓距離或飛行操作。"
+      }
+    },
+    {
+      "a": "P21004",
+      "b": "P21005",
+      "proposed": "distinct_pending_non_author",
+      "reason": "兩篇同屬薄片流動但控制不同：前者固定對稱重心下自由旋轉升力，後者移動配重、看迎角擾動的回復力矩及滑翔穩定；不拆同一個參數掃描。",
+      "a_snapshot": {
+        "id": "P21004",
+        "question": "薄片明明在往下翻落，轉彎時怎麼會短暫往上走？",
+        "answer_target": "自由轉動使升力不能只按固定角度平移翼計算；旋轉所伴隨的環流與平移耦合，原實驗長滑行後的快速轉向出現短暫抬升。只看迎流面積或平移速度不足以描述這組運動。",
+        "scope": "限原文水中鋁薄片近二維落下；不是每次轉彎都升高。準定常模型在尖點附近有尾流偏差，這裡只採旋轉耦合機制與實測抬升，不聲稱完整瞬時力都已算準。"
+      },
+      "b_snapshot": {
+        "id": "P21005",
+        "question": "薄片的配重往前移，為什麼有時滑得更穩，移太前卻直栽？",
+        "answer_target": "配重改變重力與流體力矩的平衡位置；適當位置下，迎角擾動引發壓力中心位移與回復力矩，能形成穩定滑翔。再向前則可轉成前端朝下的俯衝，並非越前越穩。",
+        "scope": "主要採水中17片同總質量、不同配重位置對照，移配重亦改轉動慣量，且用包含浮力的有效重心；空氣紙片加配重不是同質量控制。靜態回復條件不充分保證動態穩定。"
+      }
+    },
+    {
+      "a": "P21005",
+      "b": "P012",
+      "proposed": "distinct_pending_non_author",
+      "reason": "新題固定外形仍改軌跡，用配重位置與壓力中心隨迎角移動解釋；面積阻力答不出穩定窗口。",
+      "a_snapshot": {
+        "id": "P21005",
+        "question": "薄片的配重往前移，為什麼有時滑得更穩，移太前卻直栽？",
+        "answer_target": "配重改變重力與流體力矩的平衡位置；適當位置下，迎角擾動引發壓力中心位移與回復力矩，能形成穩定滑翔。再向前則可轉成前端朝下的俯衝，並非越前越穩。",
+        "scope": "主要採水中17片同總質量、不同配重位置對照，移配重亦改轉動慣量，且用包含浮力的有效重心；空氣紙片加配重不是同質量控制。靜態回復條件不充分保證動態穩定。"
+      },
+      "b_snapshot": {
+        "id": "P012",
+        "question": "一張紙平放和側著落下，為什麼空氣阻力差這麼多？",
+        "answer_target": "迎流投影面積改變阻力；翻滾時還要考慮姿態變化。",
+        "scope": "姿態可控制的薄片比較"
+      }
+    },
+    {
+      "a": "P21005",
+      "b": "P024",
+      "proposed": "distinct_pending_non_author",
+      "reason": "一般力偶僅解釋合力與轉矩不同；新題有平衡後擾動的回復/失穩與動態軌跡控制，非只換一個受力物件。",
+      "a_snapshot": {
+        "id": "P21005",
+        "question": "薄片的配重往前移，為什麼有時滑得更穩，移太前卻直栽？",
+        "answer_target": "配重改變重力與流體力矩的平衡位置；適當位置下，迎角擾動引發壓力中心位移與回復力矩，能形成穩定滑翔。再向前則可轉成前端朝下的俯衝，並非越前越穩。",
+        "scope": "主要採水中17片同總質量、不同配重位置對照，移配重亦改轉動慣量，且用包含浮力的有效重心；空氣紙片加配重不是同質量控制。靜態回復條件不充分保證動態穩定。"
+      },
+      "b_snapshot": {
+        "id": "P024",
+        "question": "兩股同樣大的反向力，為什麼能讓物體只轉不平移？",
+        "answer_target": "合力可為零，但不同作用線形成力偶與非零合力矩。",
+        "scope": "剛體、等大反向平行力"
+      }
+    },
+    {
+      "a": "P21005",
+      "b": "E9003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "種子偏重驅動自轉與前緣渦；新題無需穩定自轉，配重配合壓力中心變動使平面滑翔姿態恢復。",
+      "a_snapshot": {
+        "id": "P21005",
+        "question": "薄片的配重往前移，為什麼有時滑得更穩，移太前卻直栽？",
+        "answer_target": "配重改變重力與流體力矩的平衡位置；適當位置下，迎角擾動引發壓力中心位移與回復力矩，能形成穩定滑翔。再向前則可轉成前端朝下的俯衝，並非越前越穩。",
+        "scope": "主要採水中17片同總質量、不同配重位置對照，移配重亦改轉動慣量，且用包含浮力的有效重心；空氣紙片加配重不是同質量控制。靜態回復條件不充分保證動態穩定。"
+      },
+      "b_snapshot": {
+        "id": "E9003",
+        "question": "楓樹的翅果邊掉邊旋轉，為什麼不只是多轉幾圈？",
+        "answer_target": "偏置重量與翼形形成自轉運動，翼面附近穩定前緣渦提高升力、延緩下降。",
+        "scope": "限研究楓樹/鵝耳櫪翅果；不將所有有翅種子畫成自轉，也不把穩定自轉的全部因果說已完全解決。"
+      }
+    },
+    {
+      "a": "P21005",
+      "b": "B17003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "果蠅先挪腳使地面起跳推力定向；新題被動薄片已離開支承面，由流體力矩決定姿態穩定。",
+      "a_snapshot": {
+        "id": "P21005",
+        "question": "薄片的配重往前移，為什麼有時滑得更穩，移太前卻直栽？",
+        "answer_target": "配重改變重力與流體力矩的平衡位置；適當位置下，迎角擾動引發壓力中心位移與回復力矩，能形成穩定滑翔。再向前則可轉成前端朝下的俯衝，並非越前越穩。",
+        "scope": "主要採水中17片同總質量、不同配重位置對照，移配重亦改轉動慣量，且用包含浮力的有效重心；空氣紙片加配重不是同質量控制。靜態回復條件不充分保證動態穩定。"
+      },
+      "b_snapshot": {
+        "id": "B17003",
+        "question": "果蠅還沒起跳，為什麼先把腳挪一下就能改變逃跑方向？",
+        "answer_target": "先調整重心相對中腿接地位置，讓後續伸腿把身體推向遠離威脅的一側；同一威脅的預備挪腳依初始姿態改變，不是固定一套腿動作。",
+        "scope": "限3日齡雌果蠅落盤平台；去翅與擋風比較支持腿位/視覺足以定向，不宣稱所有起飛或完全排除翼力。重心為影像近似，預備神經路徑未直接確定。"
+      }
+    }
+  ],
+  "prior_rejection_reentry": {
+    "id": "P21003",
+    "prior_not_added_snapshot": {
+      "id": "G13-NA13",
+      "question": "旁邊的顆粒在動，為什麼較遠處原本拉不動的探針也開始移動？",
+      "reason": "已讀非局域模型主文，但所引原始探針實驗未獨立取得正文；不把模型對舊實驗的回述冒充足夠直讀實驗證據，本批暫緩。",
+      "source_ids": [
+        "G13-S010"
+      ],
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    "new_evidence": "已當日直接讀Reddy/Forterre/Pouliquen2011原實驗4頁，特別p2反向施力、遠處低均流及p3測力/距離對照；已補原缺口，不刪改G13退題歷史。",
+    "limitations": "活化模型為速度擬合詮釋，非逐力鏈直接成像；仍待非作者核題。"
+  },
+  "source_readings": [
+    {
+      "source_id": "P21-S001",
+      "read_via": "當日web搜尋定位MIT作者出版表及CDN；原kleinex路線web502/UA連線拒絕，改已公開作者機構載體以指定UA HTTP200；PyMuPDF抽文，渲染目讀PDF p3 Fig.3。",
+      "reading_scope": "主文PDF pp1–5與圖說；p2交叉定向，p3 Fig.3自力矩/繩結形狀，p4拉脫測試與自由端摩擦，p5模型限制；未讀補充材料、未看影片、未重算模型。",
+      "locator": "PDF pp2–4，Fig.2定向規則、Fig.3(A–D)滾動/鎖定、Fig.4拉脫比較；p5結尾限制。",
+      "cache": {
+        "file": ".cache/wave21-physics-knots.pdf",
+        "sha256": "a7fe00252e238551efc15c41b430b6dc722fb84ae4087475eec6ae37f3bd9e1c",
+        "text_file": ".cache/wave21-physics-knots.txt",
+        "text_sha256": "8ab132e726ae90ef65d1441914a18d265096cd78cac9ad94dd86b77042f66a58"
+      }
+    },
+    {
+      "source_id": "P21-S002",
+      "read_via": "當日web開啟UCSD作者PDF成功；指定UA HTTP200後抽文；渲染目讀PDF p3 Table1、p5 Fig.6。",
+      "reading_scope": "PDF pp1–6主文、Table1、Simplified Model for Knot Formation及Materials and Methods；未重做Jones多項式分類、未看補充影片。",
+      "locator": "印刷pp16432–16434 Results/Table1及受限線圈討論；pp16435–16436 Simplified Model for Knot Formation、Fig.6；pp16436–16437 Methods。",
+      "cache": {
+        "file": ".cache/wave21-physics-spontaneous.pdf",
+        "sha256": "684222ae9eed5727f632a54e23d288b182e302b6c302dd3ac824723b4e044ad2",
+        "text_file": ".cache/wave21-physics-spontaneous.txt",
+        "text_sha256": "256afc3244d67bd9c26d03a4d4771db80bd1404780856d1501df7c980a47e53b"
+      }
+    },
+    {
+      "source_id": "P21-S003",
+      "read_via": "當日web作者PDF成功，指定UA HTTP200；抽文讀4頁主文，渲染目讀PDF pp1–2 Fig.1–2。",
+      "reading_scope": "pp1–2裝置、無剪切臨界力與開啟遠端剪流；p3 Eq.1、距離/施力擬合與Eyring類比；p4探針尺寸、結論及微觀解釋限制。",
+      "locator": "PDF p1 Fig.1；p2施力方向與內筒相反的控制、Fig.2；p3 Eq.1及其下機械擾動詮釋；p4結論。",
+      "cache": {
+        "file": ".cache/wave21-physics-granular.pdf",
+        "sha256": "8250aaf17d6af81a021a3937ed6e06780c07f46f7e6487d0ec301688535c275c",
+        "text_file": ".cache/wave21-physics-granular.txt",
+        "text_sha256": "2d052197791f655ccbcef2886a682211c44ed808ffb5f0c6a56d7ea6efafacd3"
+      }
+    },
+    {
+      "source_id": "P21-S004",
+      "read_via": "當日web搜尋確認DTU/期刊身份；DTU web.open逾時，指定UA HTTP200取得PDF抽文；渲染目讀PDF p10 Fig.5。",
+      "reading_scope": "指定讀§2.1實驗、§4.2翻滾與Fig.5、§4.4實驗/模擬差別、§6.2旋轉環流模型、§6.3末段升力對照、§6.4模型限制、§7結論；並非逐頁讀完26頁。",
+      "locator": "印刷pp67–68 §2.1；p73 §4.2與p74 Fig.5；pp82–87 §6.2/6.3；pp88–89 §6.4/7。",
+      "cache": {
+        "file": ".cache/wave21-physics-falling.pdf",
+        "sha256": "8c93837798224a6e0b5678bf18a8f70637a2e4ec7e6e2325507dbe775d03017d",
+        "text_file": ".cache/wave21-physics-falling.txt",
+        "text_sha256": "502ed53d0ff448a2cd08e6f2ad3bc06c985335044c64d7fdb46a5c1e8846c837"
+      }
+    },
+    {
+      "source_id": "P21-S005",
+      "read_via": "當日web讀期刊HTML指定段並確認版次；指定UA HTTP200取得官方PDF抽文；渲染目讀PDF p6 Fig.3、p11 Fig.6。",
+      "reading_scope": "§2水中同質量17種配重位置裝置/軌跡、§3.1水洞力矩、§3.3平衡與靜態/動態差別、§6.3紙在空氣比較、§7討論的壓力中心負斜率機制；未逐式驗算全部模型。",
+      "locator": "PDF pp4–6 §2與Fig.3；pp7–8 §3.1；pp10–12 §3.3與Fig.6；pp21–22 §6.3；pp24–25 §7。",
+      "cache": {
+        "file": ".cache/wave21-physics-glider.pdf",
+        "sha256": "10f60902436eba01aaa9bdc26dd977926fa37afbbd30c25957bf666ce7c03006",
+        "text_file": ".cache/wave21-physics-glider.txt",
+        "text_sha256": "7193e89b8ee5b4aedfb8543260bbbfd61f95f4ac13cb1faea9bdf685fc38f071"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P21-S001",
+      "doi": "10.1126/science.aaz0135",
+      "title": "Topological mechanics of knots and tangles",
+      "retrieved_url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/1/1261/files/2020/09/Patil-et-al.-2020-Topological-mechanics-of-knots-and-tangles.pdf",
+      "publication": "Vishal P. Patil, Joseph D. Sandt, Mathias Kolle, Jörn Dunkel; Science 367, 71–75 (2020)",
+      "version_relation": "2020正式刊文，MIT作者機構CDN存本；PDF pp1–5原文、p6出版資訊，路徑2020/09不是另一研究。",
+      "independent_research_count": 1,
+      "old_pool_exact_doi_or_title_matches": [],
+      "identity_limit": "作者做DOI/題名精確檢查；跨載體或未標DOI舊資料仍待root身分比對，不宣稱完整無重複。"
+    },
+    {
+      "source_id": "P21-S002",
+      "doi": "10.1073/pnas.0611320104",
+      "title": "Spontaneous knotting of an agitated string",
+      "retrieved_url": "https://des.physics.ucsd.edu/DSmithKnotting.pdf",
+      "publication": "Dorian M. Raymer, Douglas E. Smith; PNAS 104(42), 16432–16437 (2007)",
+      "version_relation": "2007正式刊文，UC San Diego作者網站所存6頁PDF；同一刊文非新研究。",
+      "independent_research_count": 1,
+      "old_pool_exact_doi_or_title_matches": [],
+      "identity_limit": "作者做DOI/題名精確檢查；跨載體或未標DOI舊資料仍待root身分比對，不宣稱完整無重複。"
+    },
+    {
+      "source_id": "P21-S003",
+      "doi": "10.1103/PhysRevLett.106.108301",
+      "title": "Evidence of Mechanically Activated Processes in Slow Granular Flows",
+      "retrieved_url": "https://yoelforterre.wordpress.com/wp-content/uploads/2016/09/prlanki.pdf",
+      "publication": "K. A. Reddy, Y. Forterre, O. Pouliquen; Physical Review Letters 106, 108301 (2011)",
+      "version_relation": "2011正式刊文4頁，Forterre作者網站存本；URL2016/09是存放路徑。",
+      "independent_research_count": 1,
+      "old_pool_exact_doi_or_title_matches": [],
+      "identity_limit": "作者做DOI/題名精確檢查；跨載體或未標DOI舊資料仍待root身分比對，不宣稱完整無重複。"
+    },
+    {
+      "source_id": "P21-S004",
+      "doi": "10.1017/S002211200500594X",
+      "title": "Unsteady aerodynamics of fluttering and tumbling plates",
+      "retrieved_url": "https://physics.dtu.dk/-/media/institutter/fysik/research/fluids/fluid/english/research/unsteady_aerodynamics/2005_andersen_pesavento_wang_1.pdf",
+      "publication": "A. Andersen, U. Pesavento, Z. J. Wang; Journal of Fluid Mechanics 541, 65–90 (2005)",
+      "version_relation": "2005正式刊文，DTU作者機構26頁存本；不是與Cornell作者副本兩份獨立證據。",
+      "independent_research_count": 1,
+      "old_pool_exact_doi_or_title_matches": [],
+      "identity_limit": "作者做DOI/題名精確檢查；跨載體或未標DOI舊資料仍待root身分比對，不宣稱完整無重複。"
+    },
+    {
+      "source_id": "P21-S005",
+      "doi": "10.1017/jfm.2022.89",
+      "title": "Centre of mass location, flight modes, stability and dynamic modelling of gliders",
+      "retrieved_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D4983A693B836A364D19C95B4D5FFC3B/S0022112022000891a.pdf/centre-of-mass-location-flight-modes-stability-and-dynamic-modelling-of-gliders.pdf",
+      "publication": "H. Li, T. Goodwill, Z. J. Wang, L. Ristroph; Journal of Fluid Mechanics 937, A6 (2022)",
+      "version_relation": "2022-02-24線上發表正式刊文，Cambridge 26頁PDF與HTML同文；只原創短摘要及連結。",
+      "independent_research_count": 1,
+      "old_pool_exact_doi_or_title_matches": [],
+      "identity_limit": "作者做DOI/題名精確檢查；跨載體或未標DOI舊資料仍待root身分比對，不宣稱完整無重複。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "name": "knots",
+      "url": "https://kleinex.mit.edu/~dunkel/Papers/2020PaEtAl_Science.pdf",
+      "accessed_on": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "<urlopen error [WinError 10061] 無法連線，因為目標電腦拒絕連線。>"
+    },
+    {
+      "name": "whip",
+      "url": "https://goriely.com/wp-content/uploads/2002-PRLwhip-1.pdf",
+      "accessed_on": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1082)>"
+    },
+    {
+      "name": "whip",
+      "url": "https://citeseerx.ist.psu.edu/document?doi=59316058c58dc62fffed1ff590932148af5ea7e1&repid=rep1&type=pdf",
+      "accessed_on": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "error": "HTTP Error 404: NOT FOUND"
+    }
+  ],
+  "reading_limits": [
+    "採用5研究指定正文，並非讀完所有補充材料或重現實驗。",
+    "S004/S005只讀列明段落，不宣稱整本26頁逐式核對；8張渲染圖頁已目讀。",
+    "沒有看外站影片、做動畫、錄音或實際試讀；所有秒數為紙上預算。",
+    "所有外站全文與圖僅ignored cache；tracked只有原創提問、短摘要、URL及可追溯定位。",
+    "最終主張需另一位作者逐來源覆核，共同近鄰尚待root提供；候選不是腳本核准。"
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave21-physics-knots-p3.png",
+      "sha256": "f84a855688d536c7438c5d602d4c4911d0bd1a66a7557a90fe6ba0ce30e038bb",
+      "method": "PyMuPDF渲染後view_image目讀；不是外部影片或實驗重現。"
+    },
+    {
+      "file": ".cache/wave21-physics-spontaneous-p3.png",
+      "sha256": "fce6b7f020b44f50e4d8fd6534db413cf7454c7dff1621b3f0d0307f2e61bbd3",
+      "method": "PyMuPDF渲染後view_image目讀；不是外部影片或實驗重現。"
+    },
+    {
+      "file": ".cache/wave21-physics-spontaneous-p5.png",
+      "sha256": "63d380abaeb0c2a34ceb24304cf9a5fa254bcce6918266469ae1bb89db92cab5",
+      "method": "PyMuPDF渲染後view_image目讀；不是外部影片或實驗重現。"
+    },
+    {
+      "file": ".cache/wave21-physics-granular-p1.png",
+      "sha256": "932a293ae4b4f750ebf9816a30566c1779b833008823ce2a3a187644d5e8f28c",
+      "method": "PyMuPDF渲染後view_image目讀；不是外部影片或實驗重現。"
+    },
+    {
+      "file": ".cache/wave21-physics-granular-p2.png",
+      "sha256": "7fc54b437a921454d9428e630b78e4dd192e47249c83a1992085e66bac11b657",
+      "method": "PyMuPDF渲染後view_image目讀；不是外部影片或實驗重現。"
+    },
+    {
+      "file": ".cache/wave21-physics-falling-p10.png",
+      "sha256": "5096efd446fd0eb6eb394e4c6b50b48c763a996ef4851009c6ed69333ecd1174",
+      "method": "PyMuPDF渲染後view_image目讀；不是外部影片或實驗重現。"
+    },
+    {
+      "file": ".cache/wave21-physics-glider-p6.png",
+      "sha256": "e5e539ea612812a951ad3c2ac539a3500316610c9cc3978a1231dc33b2796d61",
+      "method": "PyMuPDF渲染後view_image目讀；不是外部影片或實驗重現。"
+    },
+    {
+      "file": ".cache/wave21-physics-glider-p11.png",
+      "sha256": "8d53b080d669b27fc1820593aa39154117c8058c3d5b06bf3c3a86cd202f3a85",
+      "method": "PyMuPDF渲染後view_image目讀；不是外部影片或實驗重現。"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W21P-T01",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "core_totals": {
+        "P21001": 110
+      },
+      "core_caps": {
+        "P21001": 115
+      },
+      "beats_max": 35,
+      "result": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W21P-T02",
+      "body_seconds": 95,
+      "chapter_seconds": [
+        50,
+        45
+      ],
+      "core_totals": {
+        "P21002": 95
+      },
+      "core_caps": {
+        "P21002": 110
+      },
+      "beats_max": 30,
+      "result": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W21P-T03",
+      "body_seconds": 100,
+      "chapter_seconds": [
+        50,
+        50
+      ],
+      "core_totals": {
+        "P21003": 100
+      },
+      "core_caps": {
+        "P21003": 105
+      },
+      "beats_max": 30,
+      "result": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W21P-T04",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "core_totals": {
+        "P21005": 105
+      },
+      "core_caps": {
+        "P21005": 120
+      },
+      "beats_max": 30,
+      "result": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json": "PASS",
+    "encoding": "UTF-8 LF without BOM",
+    "string_trailing_whitespace": "checked recursively",
+    "core_and_beats": "PASS_PAPER_BUDGET_ONLY",
+    "repository_validators": {
+      "node": "v24.13.0",
+      "checks": [
+        "validateEditorial all 5 candidates",
+        "validateThemes isolated pool of these 5 selected candidates"
+      ],
+      "result": "PASS_ISOLATED_ONLY",
+      "limits": "不改中央、不跑全池整合；root於非作者查核後做共同驗證。"
+    }
+  },
+  "unresolved": [
+    "P21004與E9003的旋轉升力邊界需非作者再判；暫保segment，不為第五片硬加。",
+    "P21003雖補原始實驗，遠程擾動仍是模型詮釋；若影片無法分層，應縮或撤。",
+    "待共同top5及非作者覆核，不宣稱去重完全。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "reviewer": "pool_life_tech",
+      "reason": "T02第二章原20秒再述窄盒楔住，與首章重疊；縮10秒只保留自由端模型回扣，不增加內容。",
+      "before_sha256": {
+        "batches/wave21-everyday-physics.json": "d2553972eb1e59c8a006096adf68e5f701b55c6e0bdf387b6db3fa29fad5537f",
+        "reviews/wave21-everyday-physics-themes.json": "9b743b0e82c9a321e405442a9928c0366fcb75fc606a723ee1a4453df34a44d4",
+        "reviews/wave21-everyday-physics-author.json": "9477b18fd5954b99d24f5ab0d0ab5de4aa2882d28f9d6a098ce13a26b2fd5871"
+      },
+      "changes": {
+        "W21P-T02": {
+          "before_seconds": 105,
+          "after_seconds": 95,
+          "chapter_seconds": [
+            50,
+            45
+          ],
+          "changed_beat_seconds": [
+            20,
+            10
+          ]
+        }
+      }
+    }
+  ]
+}

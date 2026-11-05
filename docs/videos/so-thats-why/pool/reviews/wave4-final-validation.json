@@ -1,0 +1,473 @@
+{
+  "tested_on": "2026-11-01T10:02:31.398Z",
+  "node": "v24.19.0",
+  "status": "DATA_INDEX_PASS",
+  "counts": {
+    "raw_records": 2790,
+    "canonical_questions": 2673,
+    "eligible_candidates": 2508,
+    "selected_candidates": 2449,
+    "alias_records": 117,
+    "historical_records": 313,
+    "source_urls": 3799,
+    "current_research_source_urls": 831,
+    "selected_source_urls": 2054,
+    "new_suggestions_not_added": 223,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 48,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2328",
+    "carried": 2328,
+    "added": 121,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "13d87d8d81548bcf969b4d9ec43ee46d03b6eba02c664fb9d8e2bbe117e2e9e8",
+    "writes": 5463,
+    "selected": 2449
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "13d87d8d81548bcf969b4d9ec43ee46d03b6eba02c664fb9d8e2bbe117e2e9e8",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "F4004",
+      "resolved": "F4003"
+    },
+    {
+      "id": "F4018",
+      "resolved": "D2025"
+    },
+    {
+      "id": "F4020",
+      "resolved": "D2200"
+    },
+    {
+      "id": "U4010",
+      "resolved": "L247"
+    }
+  ],
+  "held": [
+    {
+      "id": "F4009",
+      "selected": false,
+      "eligible": false
+    },
+    {
+      "id": "F4019",
+      "selected": false,
+      "eligible": false
+    },
+    {
+      "id": "T4019",
+      "selected": false,
+      "eligible": false
+    },
+    {
+      "id": "U4013",
+      "selected": false,
+      "eligible": false
+    }
+  ],
+  "source_impact_sample": {
+    "url": "https://www.unicode.org/faq/casemap_charprop.html",
+    "affected_candidates": 2,
+    "theme_ids": [
+      "G48"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 3772,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 2996.3954999999987,
+    "index_ms": 1738.5179000000007,
+    "unchanged_index_ms": 263.1261000000013,
+    "searches": [
+      {
+        "query": "公車",
+        "returned": 7,
+        "milliseconds": 11.431100000001607
+      },
+      {
+        "query": "澱粉",
+        "returned": 11,
+        "milliseconds": 9.679299999999785
+      },
+      {
+        "query": "字型",
+        "returned": 1,
+        "milliseconds": 8.340299999999843
+      }
+    ],
+    "rss_bytes": 540676096,
+    "sqlite_bytes": 37736448
+  },
+  "dedup_audit": {
+    "selection": "Every final wave4 manual merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 4,
+    "lexical_retrieved": 1,
+    "semantic_top10_retrieved": 3,
+    "pairs": [
+      {
+        "duplicate_id": "F4004",
+        "canonical_id": "F4003",
+        "reason": "已在工廠完成糊化再復水，是同一結構轉變的製程前史例。保留問題別名與來源，新增核心不重計。",
+        "lexical": null,
+        "semantic": {
+          "id": "F4003",
+          "cosine": 0.854825
+        }
+      },
+      {
+        "duplicate_id": "F4018",
+        "canonical_id": "D2025",
+        "reason": "現有答案同為網絡連結/收縮過度，排出原先保留水分；未提出蛋白特有的另一步反應足以獨立。保留蛋白泡沫失敗例，與果膠材料不同不直接增一核心。",
+        "lexical": null,
+        "semantic": null
+      },
+      {
+        "duplicate_id": "F4020",
+        "canonical_id": "D2200",
+        "reason": "兩題均果乾表層硬化形成傳質阻力、內部仍濕；題名與答案同核心，為明確跨庫重複。",
+        "lexical": {
+          "id": "D2200~F4020",
+          "a": "D2200",
+          "b": "F4020",
+          "question_score": 0.207,
+          "answer_score": 0.12,
+          "key_score": 0.714,
+          "same_mechanism_key": false,
+          "required": false,
+          "questions": [
+            "果乾外面已硬，為什麼裡面還可能留著水？",
+            "果乾表面烘得越快，為什麼裡面反而可能更難乾？"
+          ]
+        },
+        "semantic": {
+          "id": "D2200",
+          "cosine": 0.807802
+        }
+      },
+      {
+        "duplicate_id": "U4010",
+        "canonical_id": "L247",
+        "reason": "兩題核心均為 BOM 的多位元組先後提示與 UTF-8 純簽記區別；L247 原來源 RFC3629 §6 已直接解釋對照。保留新問法與來源為別名。",
+        "lexical": null,
+        "semantic": {
+          "id": "L247",
+          "cosine": 0.706286
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "0cc38944fa505841350dc53123d6b714e9781328a12d5f3389a31a69e463cd10",
+    "records": 2790,
+    "new_embeddings": 2,
+    "new_truncated_texts": 0,
+    "seconds": 2.957
+  },
+  "hashes": {
+    "pool.json": "0cc38944fa505841350dc53123d6b714e9781328a12d5f3389a31a69e463cd10",
+    "themes.json": "039e4b3af9225857c26838bf3d53904043a23aa3363b09f0783132366d417bf3",
+    "manifest.json": "34663d662552c38bbb09e13eeaad59fe303f1ab736a950903606ef698e6a2a23",
+    "index.html": "9324410356065820b069b253e21c01e82ebe3bece8e9d6c88775061c28bcb92a",
+    "batches/wave4-digital-text.json": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc",
+    "batches/wave4-food-kitchen.json": "cc4a437a6b2b3c9b164ad1c92255c18be1e686404723756452ee70ac747b2b21",
+    "batches/wave4-home-buildings.json": "9a7e51acb29c46e4e4eb1fa96250bcace8c38b3a99ee37ff74af6f29f5ba14ea",
+    "batches/wave4-transport-cities.json": "386e8eca137aba5bd3adfa4264cff6ee4ac8256f493c5eef9c5bd39a12d95b88"
+  },
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 249,
+    "output_and_theme_blobs": 7,
+    "checked_actual_git_index": true
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 2498,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G39",
+        "core": "F4012",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G39",
+        "core": "F4017",
+        "seconds": 80,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G39",
+        "core": "D2025",
+        "seconds": 50,
+        "maximum": 70,
+        "variant_budget": "F4018"
+      },
+      {
+        "theme": "G40",
+        "core": "F4003",
+        "seconds": 95,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G40",
+        "core": "F4002",
+        "seconds": 65,
+        "maximum": 75,
+        "variant_budget": null
+      },
+      {
+        "theme": "G41",
+        "core": "F4005",
+        "seconds": 70,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G41",
+        "core": "F4006",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G42",
+        "core": "B4001",
+        "seconds": 70,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G42",
+        "core": "B4002",
+        "seconds": 80,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G42",
+        "core": "B4003",
+        "seconds": 65,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G42",
+        "core": "B4004",
+        "seconds": 70,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G42",
+        "core": "B4005",
+        "seconds": 50,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G43",
+        "core": "B4020",
+        "seconds": 90,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G43",
+        "core": "B4022",
+        "seconds": 90,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G43",
+        "core": "B4021",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G43",
+        "core": "B4012",
+        "seconds": 75,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G44",
+        "core": "T4001",
+        "seconds": 60,
+        "maximum": 65,
+        "variant_budget": null
+      },
+      {
+        "theme": "G44",
+        "core": "T4009",
+        "seconds": 60,
+        "maximum": 65,
+        "variant_budget": null
+      },
+      {
+        "theme": "G44",
+        "core": "T4011",
+        "seconds": 60,
+        "maximum": 65,
+        "variant_budget": null
+      },
+      {
+        "theme": "G44",
+        "core": "T4012",
+        "seconds": 70,
+        "maximum": 75,
+        "variant_budget": null
+      },
+      {
+        "theme": "G45",
+        "core": "T4016",
+        "seconds": 60,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G45",
+        "core": "T4017",
+        "seconds": 80,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G45",
+        "core": "T4018",
+        "seconds": 70,
+        "maximum": 75,
+        "variant_budget": null
+      },
+      {
+        "theme": "G45",
+        "core": "T4020",
+        "seconds": 60,
+        "maximum": 60,
+        "variant_budget": null
+      },
+      {
+        "theme": "G46",
+        "core": "T4026",
+        "seconds": 60,
+        "maximum": 70,
+        "variant_budget": null
+      },
+      {
+        "theme": "G46",
+        "core": "T4027",
+        "seconds": 60,
+        "maximum": 65,
+        "variant_budget": null
+      },
+      {
+        "theme": "G46",
+        "core": "T4028",
+        "seconds": 65,
+        "maximum": 65,
+        "variant_budget": null
+      },
+      {
+        "theme": "G46",
+        "core": "T4030",
+        "seconds": 45,
+        "maximum": 60,
+        "variant_budget": null
+      },
+      {
+        "theme": "G46",
+        "core": "T4032",
+        "seconds": 65,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G47",
+        "core": "U4014",
+        "seconds": 55,
+        "maximum": 60,
+        "variant_budget": null
+      },
+      {
+        "theme": "G47",
+        "core": "U4001",
+        "seconds": 50,
+        "maximum": 60,
+        "variant_budget": null
+      },
+      {
+        "theme": "G47",
+        "core": "U4008",
+        "seconds": 60,
+        "maximum": 60,
+        "variant_budget": null
+      },
+      {
+        "theme": "G47",
+        "core": "U4009",
+        "seconds": 55,
+        "maximum": 60,
+        "variant_budget": null
+      },
+      {
+        "theme": "G48",
+        "core": "U4006",
+        "seconds": 55,
+        "maximum": 60,
+        "variant_budget": null
+      },
+      {
+        "theme": "G48",
+        "core": "U4007",
+        "seconds": 60,
+        "maximum": 60,
+        "variant_budget": null
+      },
+      {
+        "theme": "G48",
+        "core": "U4012",
+        "seconds": 55,
+        "maximum": 60,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave4-final-independent-readback.json",
+    "sha256": "0099592a3ed4cc901e065d7dd4402cae25669cb95ffeb817915873c2c777b08c",
+    "result": "PASS_SCOPED_READBACK_NOT_SOURCE_FULL_AUDIT"
+  },
+  "scoped_tests": {
+    "node_pass": 33,
+    "node_fail": 0,
+    "node_skip": 0,
+    "node_cancelled": 0,
+    "python_pass": 2,
+    "pool_check": "PASS",
+    "series_check": "PASS",
+    "long_form_plans": 473,
+    "task_files": 2287,
+    "summary": "Node 33/33、Python 2/2通過，0失敗/取消/略過；pool及series check通過，既有473長片／2287任務格式檢查通過。既有無關任務警告未代改。"
+  }
+}

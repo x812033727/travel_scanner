@@ -36,6 +36,7 @@ import { packageFiles, packageLocales, readPackageReport, thumbnailVariants, UPL
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
+import { fullTierFiles } from "./full-tier.mjs";
 import { bindRenewalSubmission, renewedFinal } from "./renewal.mjs";
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
@@ -1067,6 +1068,15 @@ async function publishSubmission({ request, workdir, slug, project, compilation 
     if (compilation && entry.role === "final") continue;
     files.push(await upload(request, slug, path.join(workdir, UPLOAD_DIR, entry.path), entry.role, entry.content_type));
   }
+  // A video made off the host (no auto.json) is only reviews to the host: the rest of the full
+  // backup tier rides with its package, so the host holds all of it before it goes up (owner,
+  // 2026-11-03; full-tier.mjs). The worker's own videos are in video_work already.
+  let fullTier = null;
+  if (!compilation && !existsSync(path.join(workdir, WORKER_STATE_FILE))) {
+    const tier = fullTierFiles(workdir);
+    for (const entry of tier.files) files.push(await upload(request, slug, entry.file, entry.role, entry.content_type));
+    fullTier = { files: tier.files.length, problems: tier.problems.slice(0, 10) };
+  }
   const minutes = timeline?.total_frames && timeline.fps ? Math.round((timeline.total_frames / timeline.fps / 60) * 10) / 10 : null;
   const checklist = existsSync(path.join(workdir, UPLOAD_CHECKLIST)) ? uploadItems(readFileSync(path.join(workdir, UPLOAD_CHECKLIST), "utf8")) : [];
   const bytes = listed.get("final.mp4") ?? null;
@@ -1085,6 +1095,7 @@ async function publishSubmission({ request, workdir, slug, project, compilation 
       zh: { title: metadata.title ?? "", description: metadata.description ?? "", tags: metadata.tags ?? [] },
       disclosure: { synthetic: metadata.contains_synthetic_media === true, reason: typeof metadata.disclosure_reason === "string" ? metadata.disclosure_reason : "" },
       checklist,
+      ...(fullTier ? { full_tier: fullTier } : {}),
       ...(download ? { download, episodes: Array.isArray(metadata.episodes) ? metadata.episodes.map((episode) => episode.slug) : [] } : {}),
     },
     files,

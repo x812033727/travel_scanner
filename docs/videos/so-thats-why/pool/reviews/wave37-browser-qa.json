@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T13:40:20.739Z",
+  "result": "PASS",
+  "selected": 3200,
+  "index_html_sha256": "231e2f6d1fa843a8a6e3e9e1e5ba98c0a3b6fa84e35f01881501df6cec2cc2ef",
+  "source_sample": {
+    "id": "R37001",
+    "urls": [
+      "https://doi.org/10.1098/rsbl.2012.0716"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave37-desktop.png",
+    "wave37-source-desktop.png",
+    "wave37-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "桌面及手機顯示3,200筆入選、359個片案。來源展開回顯跳蛛實驗R37001，窄螢幕統計卡與篩選可辨識，無頁面水平溢出。"
+}

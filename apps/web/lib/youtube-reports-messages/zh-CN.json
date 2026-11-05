@@ -1,0 +1,17 @@
+{
+  "title": "频道报表（YouTube Reporting API）",
+  "help": "站点每天下载频道的报表（观看、engaged views、观看时长、缩略图曝光与点击率、流量来源、观众与设备），原样保存；配对过视频工具令牌的 AI 用它读取数据、分析如何改进。解除连接时一并删除。",
+  "scopeStep": "在同一个页面也加上这个只读范围，并在“API 和服务”→“库”中启用 YouTube Reporting API，才能读取频道报表：{scope}",
+  "needsRelink": "当前的授权不包含 YouTube Analytics，读取不到频道报表。点击“重新连接”，在 Google 的同意页面勾选“查看 YouTube 频道的 YouTube Analytics 报表”。",
+  "notSynced": "还没有下载过报表。",
+  "syncedAt": "上次完整下载：{time}",
+  "coverage": "{count} 种报表，{first} 到 {last}（太平洋时间）",
+  "waiting": "{count} 种报表刚排程，YouTube 通常一两天内产出第一份与前 30 天的数据。",
+  "sync": "立即下载报表",
+  "syncing": "下载中…",
+  "synced": "下载了 {downloaded} 份、更新了 {replaced} 份。",
+  "partial": "下载了 {downloaded} 份，还有报表在等，请再点一次。",
+  "notDue": "十二小时内已经下载过了。",
+  "running": "另一个下载正在进行。",
+  "loadError": "读取不到报表状态：{message}"
+}

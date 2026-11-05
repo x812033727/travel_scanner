@@ -1,0 +1,3115 @@
+{
+  "schema_version": 1,
+  "slug": "daily-ai-20261104",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [
+    20,
+    25
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像 Podcast 主持人跟搭檔 Kai 聊昨天的新聞：輕鬆、有來有往，接 Kai 的問題先順口接話再講重點；日期、公司名與數字前停半拍；「據報導」「公司自己說」語氣保留；主題段講分析師打開文件的場景放慢、靠近；「我的看法是」放穩，「我不確定」放輕；最後「訊號收到」乾脆收。"
+  },
+  "host": {
+    "name": "Sola"
+  },
+  "cohost": {
+    "id": "kai",
+    "name": "Kai",
+    "voice": {
+      "provider": "gemini",
+      "name": "Puck",
+      "style": "台灣國語，年輕男生，好奇、輕鬆、有點吐槽，像跟朋友聊天"
+    }
+  },
+  "subtitles": {
+    "burn_in": false,
+    "speaker_prefix": false
+  },
+  "music": {
+    "track": "techsignal-bed.mp3",
+    "sha256": "9bc49615189bc364a010da6532f4df837b1378ebb1690e4071e7f28e7acf4c76"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Tech Signal 11/4｜Anthropic's compute bill, explained",
+    "description": "兩位主持人皆為 AI 合成語音、配樂為 AI 生成，內容依官方來源與媒體報導整理。\n\nMokaair 文章：\nhttps://mokaair.com/zh-TW/life/ai-news-anthropic-compute-costs-20261103\n\nTry This 為節目建議；本集不談價格與投資。",
+    "tags": [
+      "Tech Signal",
+      "科技訊號",
+      "Anthropic",
+      "Claude",
+      "AI 算力",
+      "IPO",
+      "AMD",
+      "ChatGPT",
+      "幣安",
+      "穩定幣"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "Compute **58%**",
+      "sub": "Anthropic's revenue, per TechCrunch",
+      "layout": "ai"
+    }
+  },
+  "sources": [
+    {
+      "title": "TechCrunch: Anthropic compute",
+      "url": "https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "AMD: Q3 2026",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "TechCrunch: Fal valuation",
+      "url": "https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "TechCrunch: jet-engine power",
+      "url": "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "The Verge: compute campuses",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1025242/openai-quietly-renames-data-centers-as-compute-campuses",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "The Verge: ChatGPT search",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1025482/openai-says-chatgpt-is-catching-up-to-google-in-search",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Google: APAC scams",
+      "url": "https://blog.google/company-news/inside-google/around-the-globe/google-asia/fight-against-apac-scams/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "TechCrunch: Apple 18+ rule",
+      "url": "https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Anthropic: provable inference",
+      "url": "https://www.anthropic.com/research/provable-inference",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "TechCrunch: model identity",
+      "url": "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Claude release notes, Nov 3",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#november-3-2026",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Decrypt: GitBook breach",
+      "url": "https://decrypt.co/382465/crypto-docs-gitbook-ai-agent-security-breach",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "The Verge: Netflix AI Discover",
+      "url": "https://www.theverge.com/streaming/1025029/netflix-ai-discover-recommendations",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Decrypt: Binance hack",
+      "url": "https://decrypt.co/382394/north-korea-denies-6-3b-binance-hack-calls-fbi-finding-a-political-provocation",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Decrypt: OKX-ICE objections",
+      "url": "https://decrypt.co/382458/elon-musk-tesla-spacex-block-okx-ice-tokenized-stock",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "金管會：穩定幣草案",
+      "url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=202611030002&dtable=News",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "The Verge: Steam delays",
+      "url": "https://www.theverge.com/games/1025596/valve-steam-indie-games-missing-launch-dates",
+      "checked_on": "2026-11-03"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "qmon",
+      "payoff": "qans",
+      "what": "營收漲、虧損也變大，錢花去哪了"
+    },
+    {
+      "setup": "srcq",
+      "payoff": "srca",
+      "what": "五分之一有多大"
+    },
+    {
+      "setup": "prvq",
+      "payoff": "prva",
+      "what": "FlashProve 能不能用"
+    },
+    {
+      "setup": "mnyq",
+      "payoff": "mnya",
+      "what": "算力的錢付給了誰、誰吃虧"
+    },
+    {
+      "setup": "twnq",
+      "payoff": "twna",
+      "what": "跟台灣有沒有關係"
+    },
+    {
+      "setup": "scmq",
+      "payoff": "scma",
+      "what": "台灣的手機能怎麼防 AI 假冒來電"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "chapter": "Intro：Anthropic 的算力帳單",
+      "template": "title",
+      "data": {
+        "tag": "Tech Signal",
+        "title": "Tech Signal\n**Wednesday, Nov 4**",
+        "subtitle": "The signal in today's tech news",
+        "key": "Tech Signal · Wed, Nov 4"
+      },
+      "lines": [
+        {
+          "id": "5yxg",
+          "text": "今天是 11 月 4 日，星期三。",
+          "emotion": "明亮、穩，像每天固定打招呼"
+        },
+        {
+          "id": "ftct",
+          "text": "這裡是 Tech Signal 科技訊號，從一堆雜訊裡，挑出今天真正重要的訊號。",
+          "emotion": "固定開場句，輕快不趕"
+        }
+      ]
+    },
+    {
+      "id": "intro-kai",
+      "template": "big",
+      "data": {
+        "kicker": "Today's signal",
+        "text": "Anthropic's filing:\n**the compute bill**",
+        "key": "Today: AI's compute bill"
+      },
+      "lines": [
+        {
+          "id": "i4g3",
+          "text": "我是 Sola。"
+        },
+        {
+          "id": "f6vx",
+          "speaker": "kai",
+          "text": "我是 Kai。",
+          "emotion": "輕鬆、帶笑"
+        },
+        {
+          "id": "ao43",
+          "text": "今天的主題，是 Anthropic 上市前更新的一份文件，裡面那張算力的帳單。"
+        }
+      ]
+    },
+    {
+      "id": "intro-q",
+      "template": "big",
+      "data": {
+        "kicker": "The question",
+        "text": "Earning more,\n**losing more?**",
+        "key": "More revenue, more loss?"
+      },
+      "lines": [
+        {
+          "id": "qmon",
+          "speaker": "kai",
+          "text": "等等，營收一直漲，虧損卻變大？那賺來的錢，到底花去哪了？",
+          "emotion": "不解，問句停在半空"
+        }
+      ]
+    },
+    {
+      "id": "hl-open",
+      "chapter": "Headlines：ChatGPT 搜尋、AI 假冒來電等六則",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 3, 2026",
+        "text": "Headlines",
+        "key": "Yesterday's tech news"
+      },
+      "lines": [
+        {
+          "id": "g9s8",
+          "text": "先來看昨天，11 月 3 日的科技新聞。",
+          "emotion": "切換段落，輕快"
+        },
+        {
+          "id": "8vau",
+          "speaker": "kai",
+          "text": "先從大家天天在用的搜尋開始？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-search",
+      "template": "big",
+      "data": {
+        "kicker": "OpenAI · via The Verge",
+        "text": "ChatGPT search:\n**1/5 of Google**",
+        "key": "OpenAI: 1/5 of Google"
+      },
+      "lines": [
+        {
+          "id": "iz00",
+          "text": "好。據 The Verge，OpenAI 這週一說，ChatGPT 的搜尋量，已經是 Google 的五分之一。"
+        },
+        {
+          "id": "srcq",
+          "speaker": "kai",
+          "text": "五分之一？這麼多？",
+          "emotion": "驚訝"
+        }
+      ]
+    },
+    {
+      "id": "hl-search-def",
+      "template": "bullets",
+      "data": {
+        "title": "What OpenAI counts",
+        "items": [
+          "A question that searches the web",
+          "Not definitions or how-tos",
+          "Google's figure: no source given"
+        ],
+        "source": "The Verge, Nov 3, 2026",
+        "keys": [
+          "Only web searches count",
+          "Definitions don't count",
+          "Google figure: no source"
+        ]
+      },
+      "lines": [
+        {
+          "id": "rzxg",
+          "text": "先看它怎麼算。你的問題觸發了網路搜尋，才算一次。",
+          "reveal": 1
+        },
+        {
+          "id": "a5i8",
+          "speaker": "kai",
+          "text": "那問它一個名詞是什麼意思呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "cqwh",
+          "text": "不算。解釋名詞、簡單的操作說明，都不算進去。",
+          "reveal": 1
+        },
+        {
+          "id": "g62g",
+          "text": "而且 OpenAI 沒說，Google 那邊的數字從哪裡來。",
+          "reveal": 1,
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "hl-search-bing",
+      "template": "big",
+      "data": {
+        "kicker": "For scale · The Verge",
+        "text": "Bing after a decade:\n**about 3%**",
+        "key": "Bing: about 3% in 2023"
+      },
+      "lines": [
+        {
+          "id": "2p4c",
+          "speaker": "kai",
+          "text": "所以這是它自己說的，先打個問號。"
+        },
+        {
+          "id": "srca",
+          "text": "對。The Verge 給了個對照：微軟執行長 2023 年在法庭上說，Bing 試了十多年，市占大約百分之三。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "hl-search-ads",
+      "template": "big",
+      "data": {
+        "kicker": "Also from OpenAI",
+        "text": "ChatGPT ads:\n**now with pictures**",
+        "key": "Ads get product images"
+      },
+      "lines": [
+        {
+          "id": "f46p",
+          "speaker": "kai",
+          "text": "搜尋做大了，接下來就是廣告吧？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "we58",
+          "text": "對。OpenAI 上個月說，ChatGPT 的廣告，要開始放贊助產品的圖片。"
+        }
+      ]
+    },
+    {
+      "id": "hl-search-tw",
+      "template": "big",
+      "data": {
+        "kicker": "Our advice",
+        "text": "Answer or ad?\n**tell them apart**",
+        "key": "Answer or ad? Check."
+      },
+      "lines": [
+        {
+          "id": "ahuo",
+          "text": "我們的建議：在 ChatGPT 查東西時，看清楚哪段是回答、哪段是廣告。",
+          "emotion": "提醒的語氣"
+        }
+      ]
+    },
+    {
+      "id": "hl-scam",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 3 · Google",
+        "text": "Android flags\n**AI-faked calls**",
+        "key": "Android: fake-call alert"
+      },
+      "lines": [
+        {
+          "id": "kcmm",
+          "text": "從幫你找資料的 AI，換到冒充別人的 AI。",
+          "emotion": "串場，語氣一轉"
+        },
+        {
+          "id": "2tqk",
+          "text": "Google 昨天公布亞太地區的反詐騙計畫，其中一項，是 Android 的偽冒來電偵測。"
+        }
+      ]
+    },
+    {
+      "id": "hl-scam-what",
+      "template": "bullets",
+      "data": {
+        "title": "What Google says",
+        "items": [
+          "Fake Call Detection on Android",
+          "Pixel: scam alerts in chat apps",
+          "$6M for scam education"
+        ],
+        "source": "Google blog, Nov 3, 2026",
+        "keys": [
+          "What's a fake call?",
+          "Spot AI-faked calls",
+          "Pixel flags chat scams",
+          "$6M for scam lessons"
+        ]
+      },
+      "lines": [
+        {
+          "id": "k70z",
+          "speaker": "kai",
+          "text": "偽冒來電？是什麼？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "a9go",
+          "text": "有人用 AI 假冒別人打給你。這個功能，就是要認出這種電話。",
+          "reveal": 1
+        },
+        {
+          "id": "j1c6",
+          "text": "Pixel 手機內建的詐騙偵測，也能對常見通訊 App 裡的可疑內容發出警示。",
+          "reveal": 1
+        },
+        {
+          "id": "3myb",
+          "text": "另外，Google 慈善部門拿出六百萬美元，做亞太的防詐教育。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "hl-scam-more",
+      "template": "big",
+      "data": {
+        "kicker": "Beyond Pixel",
+        "text": "More Android phones\n**later this year**",
+        "key": "More phones, later"
+      },
+      "lines": [
+        {
+          "id": "f8zx",
+          "speaker": "kai",
+          "text": "剛剛說 Pixel，那其他手機呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "b0xe",
+          "text": "Google 說，今年稍後會跟夥伴，帶給更多 Android 手機。"
+        }
+      ]
+    },
+    {
+      "id": "hl-scam-tw",
+      "template": "big",
+      "data": {
+        "kicker": "Keep in mind",
+        "text": "Google's own words\n**no outside test**",
+        "key": "Google's claims only"
+      },
+      "lines": [
+        {
+          "id": "scmq",
+          "speaker": "kai",
+          "text": "台灣的 Android 用得到嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "wul6",
+          "text": "哪些機型、哪些地區，Google 這篇沒有列出來。"
+        }
+      ]
+    },
+    {
+      "id": "hl-apple",
+      "template": "big",
+      "data": {
+        "kicker": "Apple · via TechCrunch",
+        "text": "Romantic AI apps:\n**rated 18+**",
+        "key": "Romantic AI apps: 18+"
+      },
+      "lines": [
+        {
+          "id": "z2ua",
+          "text": "再來是蘋果。據 TechCrunch，蘋果週一通知開發者：有約會或浪漫關係功能的 App，一律標 18+。"
+        },
+        {
+          "id": "r9kk",
+          "speaker": "kai",
+          "text": "約會 App 本來就是成人用的吧？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-apple-why",
+      "template": "big",
+      "data": {
+        "kicker": "Why it matters",
+        "text": "Character.AI, Replika\n**often aim younger**",
+        "key": "AI companions aim young"
+      },
+      "lines": [
+        {
+          "id": "90kq",
+          "text": "TechCrunch 也這樣說，更值得注意的，是 AI 伴侶 App。",
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "ycjs",
+          "text": "就是讓你設定 AI 朋友、甚至戀人的那種，常鎖定年輕族群。"
+        }
+      ]
+    },
+    {
+      "id": "hl-apple-date",
+      "template": "stats",
+      "data": {
+        "title": "Apple's new rule",
+        "stats": [
+          {
+            "value": "Nov 16",
+            "label": "new content descriptions due"
+          },
+          {
+            "value": "220M",
+            "label": "downloads, top AI companion apps",
+            "note": "as of last summer"
+          }
+        ],
+        "source": "TechCrunch, Nov 3, 2026",
+        "keys": [
+          "When does it start?",
+          "From Nov 16",
+          "220M downloads"
+        ]
+      },
+      "lines": [
+        {
+          "id": "2kld",
+          "speaker": "kai",
+          "text": "什麼時候開始？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "0klx",
+          "text": "這個月 16 號起，開發者要補上新的內容描述，讓分級符合功能。",
+          "reveal": 1
+        },
+        {
+          "id": "slzh",
+          "speaker": "kai",
+          "text": "這類 App，很多人用嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "4foc",
+          "text": "TechCrunch 說，熱門的 AI 伴侶 App，到去年夏天，全球下載兩億兩千萬次。",
+          "reveal": 1,
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "hl-apple-tw",
+      "template": "big",
+      "data": {
+        "kicker": "For parents",
+        "text": "Rule announced\n**enforcement unclear**",
+        "key": "Enforcement: not stated"
+      },
+      "lines": [
+        {
+          "id": "69ke",
+          "speaker": "kai",
+          "text": "家裡小孩用 iPhone，這樣就安心了？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "zt5n",
+          "text": "還不行。報導沒說蘋果要怎麼執行。"
+        }
+      ]
+    },
+    {
+      "id": "hl-prove",
+      "template": "big",
+      "data": {
+        "kicker": "Anthropic · Nov 2–3",
+        "text": "Which AI\n**wrote this?**",
+        "key": "Which AI wrote it?"
+      },
+      "lines": [
+        {
+          "id": "koo0",
+          "text": "講到 AI 伴侶，有個更根本的問題：你怎麼知道，跟你說話的是哪一個 AI？",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "vrac",
+          "speaker": "kai",
+          "text": "不就是它說的那個嗎？",
+          "emotion": "理所當然"
+        }
+      ]
+    },
+    {
+      "id": "hl-prove-why",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "The worry",
+          "icon": "warning",
+          "points": [
+            "A cheaper model swapped in",
+            "The output tampered with"
+          ]
+        },
+        "right": {
+          "heading": "FlashProve",
+          "icon": "lock",
+          "points": [
+            "A proof for each answer",
+            "Model weights stay hidden"
+          ]
+        },
+        "source": "Anthropic research, Nov 2, 2026",
+        "keys": [
+          "It may not be",
+          "A proof, weights hidden"
+        ]
+      },
+      "lines": [
+        {
+          "id": "nnfb",
+          "text": "不一定。Anthropic 說，中間的服務可能為了省錢，偷偷換成別的模型，或有人竄改輸出。",
+          "reveal": 1
+        },
+        {
+          "id": "2ff8",
+          "speaker": "kai",
+          "text": "那要怎麼證明？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "9aan",
+          "text": "它發表了開源原型 FlashProve，用密碼學證明，回答真的來自那個模型，又不公開模型內部的數值。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-prove-cost",
+      "template": "stats",
+      "data": {
+        "title": "FlashProve, by Anthropic's numbers",
+        "stats": [
+          {
+            "value": "~110",
+            "label": "tokens proved per second",
+            "note": "one H100"
+          },
+          {
+            "value": "~19 MB",
+            "label": "proof per 1,024-token request"
+          },
+          {
+            "value": "No plan",
+            "label": "to deploy it yet",
+            "note": "per TechCrunch"
+          }
+        ],
+        "source": "Anthropic; TechCrunch, Nov 3, 2026",
+        "keys": [
+          "Is it practical?",
+          "~110 tokens a second",
+          "A 19 MB proof each",
+          "Research only, for now"
+        ]
+      },
+      "lines": [
+        {
+          "id": "prvq",
+          "speaker": "kai",
+          "text": "聽起來很重，跑得動嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "lux8",
+          "text": "在一張 GPU 上，每秒大約證明一百一十個 token。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "t9dy",
+          "text": "一千多個 token 的回答，證明檔大約十九 MB。",
+          "reveal": 1
+        },
+        {
+          "id": "e5pc",
+          "speaker": "kai",
+          "text": "所以，馬上就能用？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "prva",
+          "text": "還不能。這是研究原型；TechCrunch 說，目前沒有任何實驗室要部署。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-mark",
+      "template": "big",
+      "data": {
+        "kicker": "Claude release notes · Nov 3",
+        "text": "Claude's text\n**now watermarked**",
+        "key": "Claude text: watermarked"
+      },
+      "lines": [
+        {
+          "id": "mktx",
+          "text": "另一種做法是浮水印。Anthropic 昨天說，Claude 的三個模型寫出來的文字，帶有 AI 浮水印。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "86yq",
+          "speaker": "kai",
+          "text": "那老師抓 AI 寫的作業，就有工具了？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-mark-limit",
+      "template": "big",
+      "data": {
+        "kicker": "The catch",
+        "text": "No watermark\n**≠ written by a human**",
+        "key": "No mark ≠ human-written"
+      },
+      "lines": [
+        {
+          "id": "m7jx",
+          "text": "先別急。只限它列出的平台；而且 Sonnet 4.6 在開發者改了某些生成設定時，可能不帶。"
+        },
+        {
+          "id": "zmrr",
+          "text": "所以沒有浮水印，不代表不是 AI 寫的。",
+          "emotion": "放慢，清楚"
+        }
+      ]
+    },
+    {
+      "id": "hl-gitbook",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 · Decrypt",
+        "text": "GitBook breached\n**with AI agents**",
+        "key": "GitBook: an AI-agent hit"
+      },
+      "lines": [
+        {
+          "id": "68un",
+          "text": "從證明 AI，到防範 AI。",
+          "emotion": "串場"
+        },
+        {
+          "id": "52k2",
+          "text": "很多加密專案放文件的平台 GitBook 說，週一晚上，有人用 AI 代理攻擊它，"
+        },
+        {
+          "id": "e7fb",
+          "text": "拿到部分系統的憑證。"
+        }
+      ]
+    },
+    {
+      "id": "hl-gitbook-ai",
+      "template": "big",
+      "data": {
+        "kicker": "What's an AI agent?",
+        "text": "An AI that\n**acts, not just answers**",
+        "key": "Agents act on their own"
+      },
+      "lines": [
+        {
+          "id": "escy",
+          "speaker": "kai",
+          "text": "AI 代理，跟聊天機器人差在哪？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "1klv",
+          "text": "聊天機器人只回答；代理會自己一步一步操作軟體，人盯得比較少。"
+        }
+      ]
+    },
+    {
+      "id": "hl-gitbook-what",
+      "template": "bullets",
+      "data": {
+        "title": "What may have leaked",
+        "items": [
+          "API tokens",
+          "Integration secrets",
+          "Questions asked to its AI"
+        ],
+        "source": "Decrypt, Nov 3, 2026",
+        "keys": [
+          "What may have leaked?",
+          "API tokens",
+          "Integration secrets",
+          "Questions to its AI"
+        ]
+      },
+      "lines": [
+        {
+          "id": "7bcz",
+          "speaker": "kai",
+          "text": "外洩了什麼？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "d67c",
+          "text": "可能包括 API 權杖，也就是讓程式自動連進去的鑰匙；",
+          "reveal": 1
+        },
+        {
+          "id": "etvc",
+          "text": "串接其他服務的密鑰；",
+          "reveal": 1
+        },
+        {
+          "id": "5g0v",
+          "text": "還有使用者問 GitBook AI 助理的問題。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-gitbook-do",
+      "template": "big",
+      "data": {
+        "kicker": "If you use GitBook",
+        "text": "Rotate your\n**tokens and keys**",
+        "key": "Rotate tokens and keys"
+      },
+      "lines": [
+        {
+          "id": "pngi",
+          "text": "GitBook 已經讓客戶的 API 權杖失效，也要客戶換掉相關權杖和密鑰。"
+        },
+        {
+          "id": "14fs",
+          "text": "它說，沒有證據顯示上面的內容被改過。"
+        }
+      ]
+    },
+    {
+      "id": "hl-gitbook-unknown",
+      "template": "big",
+      "data": {
+        "kicker": "Still unknown",
+        "text": "How it happened\n**not disclosed**",
+        "key": "How? Not disclosed yet"
+      },
+      "lines": [
+        {
+          "id": "got4",
+          "speaker": "kai",
+          "text": "攻擊怎麼做到的，說了嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "54rb",
+          "text": "還沒說明。如果你的團隊也用 GitBook，照它說的換掉權杖。",
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "hl-netflix",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 3 · The Verge",
+        "text": "Netflix TV app:\n**an AI Discover tab**",
+        "key": "Netflix: AI Discover tab"
+      },
+      "lines": [
+        {
+          "id": "s4je",
+          "speaker": "kai",
+          "text": "好，來點輕鬆的。很多人晚上打開 Netflix，滑半天還不知道看什麼。",
+          "emotion": "放鬆，帶笑"
+        },
+        {
+          "id": "ypdj",
+          "text": "Netflix 電視版要加一個 AI Discover 分頁，第一個實驗，是照主題推薦。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "hl-netflix-how",
+      "template": "bullets",
+      "data": {
+        "title": "How it works",
+        "items": [
+          "Pick a theme, get picks",
+          "Say no; it remembers",
+          "US, English, TVs: for now"
+        ],
+        "source": "The Verge, Nov 3, 2026",
+        "keys": [
+          "Pick a mood, get picks",
+          "Tell it what you dislike",
+          "US only, for now"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h2mc",
+          "text": "像是輕鬆一點的、家庭電影夜、很快就看完的。",
+          "reveal": 1
+        },
+        {
+          "id": "mqia",
+          "speaker": "kai",
+          "text": "不喜歡它推的呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "jv1a",
+          "text": "可以告訴它，App 會記住。",
+          "reveal": 1
+        },
+        {
+          "id": "jfmp",
+          "text": "不過目前只在美國，對用英文、電視有支援的會員，慢慢開放。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-netflix-tw",
+      "template": "big",
+      "data": {
+        "kicker": "For Taiwan",
+        "text": "Experimental\n**not here yet**",
+        "key": "Not in Taiwan yet"
+      },
+      "lines": [
+        {
+          "id": "65r7",
+          "speaker": "kai",
+          "text": "所以台灣還看不到。"
+        },
+        {
+          "id": "ix3p",
+          "text": "短期內未必。這是實驗功能，什麼時候擴大，報導沒有說。"
+        }
+      ]
+    },
+    {
+      "id": "hl-number",
+      "template": "big",
+      "data": {
+        "kicker": "Signal Number",
+        "text": "58%",
+        "sub": "Anthropic's revenue that went to compute · TechCrunch",
+        "key": "Signal Number: 58%"
+      },
+      "lines": [
+        {
+          "id": "rvcj",
+          "text": "最後，今天的訊號數字。",
+          "emotion": "停半拍"
+        },
+        {
+          "id": "os5p",
+          "text": "百分之五十八。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "m2ua",
+          "speaker": "kai",
+          "text": "什麼東西，占了這麼多？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-number-what",
+      "template": "big",
+      "data": {
+        "kicker": "Last quarter",
+        "text": "Per $100 of revenue\n**$58 went to compute**",
+        "key": "$58 of every $100"
+      },
+      "lines": [
+        {
+          "id": "4fv9",
+          "text": "Anthropic 每收進一百美元營收，就有這麼多拿去付算力。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "rtif",
+          "speaker": "kai",
+          "text": "一半以上？那它自己還剩多少？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "jxon",
+          "text": "這就是今天的主題：剩下的不夠用，所以還在虧。",
+          "emotion": "收住，轉場"
+        }
+      ]
+    },
+    {
+      "id": "sd-open",
+      "chapter": "Signal of the Day：算力吃掉多少營收",
+      "template": "big",
+      "data": {
+        "kicker": "Signal of the Day",
+        "text": "Anthropic's\n**compute bill**",
+        "key": "Signal of the Day"
+      },
+      "lines": [
+        {
+          "id": "exb7",
+          "text": "收進來的錢，到底被誰拿走？我們從一個人講起。",
+          "emotion": "放慢，像要講故事"
+        }
+      ]
+    },
+    {
+      "id": "sd-scene",
+      "template": "big",
+      "data": {
+        "kicker": "Monday, Nov 2",
+        "text": "An updated filing\n**lands on your screen**",
+        "key": "A new filing arrives"
+      },
+      "lines": [
+        {
+          "id": "zgw5",
+          "text": "想像你是一個盯著新股的分析師。",
+          "emotion": "放慢、靠近"
+        },
+        {
+          "id": "n1w1",
+          "text": "這週一，通知跳出來：Anthropic 遞了一份新文件，更新它的 S-1。"
+        }
+      ]
+    },
+    {
+      "id": "sd-s1",
+      "template": "big",
+      "data": {
+        "kicker": "What's an S-1?",
+        "text": "The filing before\n**an IPO**",
+        "key": "S-1: the pre-IPO filing"
+      },
+      "lines": [
+        {
+          "id": "oqtk",
+          "speaker": "kai",
+          "text": "等等，S-1 是什麼？",
+          "emotion": "替觀眾喊停"
+        },
+        {
+          "id": "otil",
+          "text": "公司第一次把股票拿去上市，也就是 IPO 之前，要交的文件，裡面有財務數字。"
+        }
+      ]
+    },
+    {
+      "id": "sd-why-now",
+      "template": "big",
+      "data": {
+        "kicker": "Why now",
+        "text": "Data through June\n**now through Sept 30**",
+        "key": "One more quarter shown"
+      },
+      "lines": [
+        {
+          "id": "0lxp",
+          "speaker": "kai",
+          "text": "上一版不是才剛交？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "026w",
+          "text": "對，前一週才交。舊版的財務只寫到六月底，新版多了一季，到九月三十日。"
+        }
+      ]
+    },
+    {
+      "id": "sd-econ",
+      "template": "big",
+      "data": {
+        "kicker": "TechCrunch's take",
+        "text": "How much revenue\n**compute eats**",
+        "key": "How much compute eats"
+      },
+      "lines": [
+        {
+          "id": "xpmb",
+          "text": "TechCrunch 說，越接近上市，Anthropic 終於多透露一點：營收裡，有多少被算力吃掉。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-compute",
+      "template": "big",
+      "data": {
+        "kicker": "Compute =",
+        "text": "Chips that train\n**and run the models**",
+        "key": "Compute: train and run"
+      },
+      "lines": [
+        {
+          "id": "ig49",
+          "speaker": "kai",
+          "text": "先翻成白話：算力，就是跑 AI 的電腦？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "jry6",
+          "text": "差不多。訓練模型、還有你每次問 Claude 一個問題，背後用的運算能力，都算。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-revenue",
+      "template": "stats",
+      "data": {
+        "title": "Line one: revenue",
+        "stats": [
+          {
+            "value": "$11.5B",
+            "label": "quarter before"
+          },
+          {
+            "value": "$17B",
+            "label": "quarter to Sept 30"
+          }
+        ],
+        "source": "TechCrunch, Nov 3, 2026",
+        "keys": [
+          "First line: revenue",
+          "$11.5B, quarter before",
+          "$17B, quarter to Sept 30"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bo1b",
+          "speaker": "kai",
+          "text": "好，打開文件，第一個數字是？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "aqr1",
+          "text": "營收。前一季，一百一十五億美元。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "t181",
+          "text": "這一季，一百七十億美元。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "gnzv",
+          "speaker": "kai",
+          "text": "一季多了快五成，很會賺啊。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-loss",
+      "template": "big",
+      "data": {
+        "kicker": "But",
+        "text": "Operating loss\n**got bigger**",
+        "key": "The loss grew, too"
+      },
+      "lines": [
+        {
+          "id": "6y9t",
+          "text": "可是再往下看，營運虧損，也同時擴大。",
+          "emotion": "語氣一沉"
+        },
+        {
+          "id": "96it",
+          "speaker": "kai",
+          "text": "就是我剛剛問的：錢跑去哪了？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sd-loss-why",
+      "template": "big",
+      "data": {
+        "kicker": "In large part",
+        "text": "Compute costs\n**went up**",
+        "key": "Why: compute costs rose"
+      },
+      "lines": [
+        {
+          "id": "c6qv",
+          "text": "TechCrunch 沒寫虧損的金額，但說了主因之一：算力成本上升。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-share",
+      "template": "stats",
+      "data": {
+        "title": "Compute's share of revenue",
+        "stats": [
+          {
+            "value": "48%",
+            "label": "quarter before"
+          },
+          {
+            "value": "58%",
+            "label": "quarter to Sept 30"
+          }
+        ],
+        "source": "TechCrunch, Nov 3, 2026",
+        "keys": [
+          "Before: 48% to compute",
+          "Now: the 58% you heard"
+        ]
+      },
+      "lines": [
+        {
+          "id": "7nny",
+          "text": "還記得剛剛那個訊號數字？前一季，算力吃掉營收的百分之四十八。",
+          "reveal": 1
+        },
+        {
+          "id": "4w2e",
+          "text": "這一季，就是剛剛那個數字。",
+          "reveal": 1,
+          "emotion": "停一拍"
+        },
+        {
+          "id": "y11g",
+          "speaker": "kai",
+          "text": "一季跳了十個百分點。",
+          "emotion": "驚訝"
+        }
+      ]
+    },
+    {
+      "id": "sd-bill",
+      "template": "big",
+      "data": {
+        "kicker": "This quarter's bill",
+        "text": "$10B\n**for compute**",
+        "key": "A $10B compute bill"
+      },
+      "lines": [
+        {
+          "id": "tt6k",
+          "text": "換成金額，這一季的算力帳單，一百億美元。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "ra2g",
+          "speaker": "kai",
+          "text": "這麼多，都是同一種買法嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sd-short",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Short-term deals",
+          "icon": "clock",
+          "points": [
+            "Half of the bill",
+            "Costs much more"
+          ]
+        },
+        "right": {
+          "heading": "Multi-year deals",
+          "icon": "document",
+          "points": [
+            "Same compute",
+            "Cheaper"
+          ]
+        },
+        "source": "TechCrunch, citing the S-1",
+        "keys": [
+          "Half bought short-term",
+          "Long deals cost less"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bmua",
+          "text": "不是。其中一半，是短期合約買的。",
+          "reveal": 1
+        },
+        {
+          "id": "eu8k",
+          "text": "文件說，這比用多年合約買同樣的算力，貴得多。",
+          "reveal": 1
+        },
+        {
+          "id": "h0ih",
+          "speaker": "kai",
+          "text": "為什麼不簽長約就好？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sd-rush",
+      "template": "big",
+      "data": {
+        "kicker": "TechCrunch's reading",
+        "text": "Demand grew too fast\n**buy now, pay more**",
+        "key": "Rushed, so it paid more"
+      },
+      "lines": [
+        {
+          "id": "bs8p",
+          "text": "TechCrunch 的解讀是：需求長太快，它得趕快找算力，只好付比較高的價錢。",
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "61em",
+          "speaker": "kai",
+          "text": "像颱風前搶買泡麵，貴也得買。",
+          "emotion": "比喻，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "sd-ratio-q",
+      "template": "big",
+      "data": {
+        "kicker": "In the filing",
+        "text": "One more chart:\n**revenue per $1**",
+        "key": "Another chart in the S-1"
+      },
+      "lines": [
+        {
+          "id": "pcca",
+          "text": "文件裡還有一張圖：每花一美元算力，帶回多少營收。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-ratio",
+      "template": "big",
+      "data": {
+        "kicker": "Revenue per $1 of compute",
+        "text": "Just over 2×\n**now 1.72×**",
+        "key": "Per $1 of compute: 1.72×"
+      },
+      "lines": [
+        {
+          "id": "mex6",
+          "text": "從 2025 年初一路往上，高峰略高於兩倍，現在回到一點七二倍。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-who-paid",
+      "template": "big",
+      "data": {
+        "kicker": "Follow the money",
+        "text": "Where does\n**the money go?**",
+        "key": "Where does the money go?"
+      },
+      "lines": [
+        {
+          "id": "mnyq",
+          "speaker": "kai",
+          "text": "所以每塊錢算力，賺回來的變少了。那這些錢，付給了誰？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "1bt9",
+          "text": "這就是故事的下一段：錢往哪裡流。"
+        }
+      ]
+    },
+    {
+      "id": "sd-spacex",
+      "template": "big",
+      "data": {
+        "kicker": "Per TechCrunch",
+        "text": "SpaceX:\n**$1.25B a month**",
+        "key": "SpaceX: $1.25B a month"
+      },
+      "lines": [
+        {
+          "id": "kv8c",
+          "text": "TechCrunch 寫，Anthropic 每個月付給 SpaceX 十二億五千萬美元的算力費。",
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "c9nn",
+          "speaker": "kai",
+          "text": "SpaceX？做火箭的那個？",
+          "emotion": "意外"
+        },
+        {
+          "id": "wq4l",
+          "text": "對，就是它。"
+        }
+      ]
+    },
+    {
+      "id": "sd-neo",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Hyperscalers",
+          "icon": "globe",
+          "points": [
+            "The biggest clouds"
+          ]
+        },
+        "right": {
+          "heading": "Neoclouds",
+          "icon": "lightning",
+          "points": [
+            "Nscale, Akamai, Volta",
+            "Flexible, higher rates"
+          ]
+        },
+        "source": "TechCrunch, Nov 3, 2026",
+        "keys": [
+          "Three more cloud deals",
+          "Not the biggest clouds",
+          "Flexible, but pricier"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bthn",
+          "text": "還有跟 Nscale、Akamai、Volta 三家，簽了幾十億美元的合約。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "wgd0",
+          "speaker": "kai",
+          "text": "這三家，一般人應該都沒聽過。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "a2ft",
+          "text": "TechCrunch 叫它們 neocloud，新興雲端，不是那幾家最大的雲端業者。",
+          "reveal": 1,
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "xa1v",
+          "text": "合約比較彈性，但費率比較高。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-direct",
+      "template": "big",
+      "data": {
+        "kicker": "Its own plan",
+        "text": "Anthropic Direct:\n**its own compute**",
+        "key": "Plan B: Anthropic Direct"
+      },
+      "lines": [
+        {
+          "id": "7g2c",
+          "speaker": "kai",
+          "text": "那它不能自己蓋嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "qojx",
+          "text": "有在做，叫 Anthropic Direct，建立自己的算力。"
+        },
+        {
+          "id": "d0x8",
+          "text": "但 TechCrunch 認為，這跟不上需求成長。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-chips",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 3 · AMD",
+        "text": "A chipmaker\n**reports its quarter**",
+        "key": "Nov 3: AMD reports"
+      },
+      "lines": [
+        {
+          "id": "ewlu",
+          "speaker": "kai",
+          "text": "算力的錢，最後流到誰手上？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "bpnk",
+          "text": "昨天就有一個例子：晶片公司 AMD 公布了第三季財報。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-amd",
+      "template": "stats",
+      "data": {
+        "title": "AMD, third quarter",
+        "stats": [
+          {
+            "value": "$8.5B",
+            "label": "data center revenue"
+          },
+          {
+            "value": "+97%",
+            "label": "vs. a year earlier"
+          },
+          {
+            "value": "−40%",
+            "label": "gaming revenue"
+          }
+        ],
+        "source": "AMD, Nov 3, 2026",
+        "keys": [
+          "Data center: $8.5B",
+          "Nearly double a year ago",
+          "Gaming: down 40%"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bh69",
+          "text": "賣伺服器處理器和 AI 晶片的資料中心部門，營收八十五億美元，",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "ybob",
+          "text": "比去年同期，多了將近一倍。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "06zs",
+          "speaker": "kai",
+          "text": "那遊戲那邊呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "y4j8",
+          "text": "反而少了四成。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-helios",
+      "template": "big",
+      "data": {
+        "kicker": "AMD says",
+        "text": "Anthropic, OpenAI\n**on AMD's racks**",
+        "key": "AMD names its customers"
+      },
+      "lines": [
+        {
+          "id": "lvm1",
+          "text": "AMD 說，Anthropic、Meta、微軟、OpenAI 和甲骨文的雲端，已經在它第一批 Helios 機櫃上跑工作。"
+        }
+      ]
+    },
+    {
+      "id": "sd-helios-n",
+      "template": "big",
+      "data": {
+        "kicker": "Careful",
+        "text": "How much they pay\n**not disclosed**",
+        "key": "Amounts not disclosed"
+      },
+      "lines": [
+        {
+          "id": "uczh",
+          "speaker": "kai",
+          "text": "所以 Anthropic 付的錢，有一部分到了 AMD？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "71n3",
+          "text": "AMD 只說有在用，金額沒公布，而且這是公司自己的說法。",
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-fal",
+      "template": "big",
+      "data": {
+        "kicker": "Also Nov 3 · TechCrunch",
+        "text": "Fal raises $1.3B\n**valuation doubles**",
+        "key": "Fal: valuation doubles"
+      },
+      "lines": [
+        {
+          "id": "tnh6",
+          "text": "另一頭，是專門幫人跑模型的公司。"
+        },
+        {
+          "id": "irzo",
+          "text": "做影像、聲音模型託管的 Fal，募了十三億美元；據 Bloomberg，估值是四月的兩倍。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-fal-margin",
+      "template": "big",
+      "data": {
+        "kicker": "The catch",
+        "text": "Fast growth\n**thin margins**",
+        "key": "Growth, but thin margins"
+      },
+      "lines": [
+        {
+          "id": "h60q",
+          "speaker": "kai",
+          "text": "這種公司，也要付算力錢吧？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "993g",
+          "text": "對。TechCrunch 引述知情人士：買或租算力太貴，這類公司毛利還是很薄。",
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "mpeg",
+          "speaker": "kai",
+          "text": "跟 Anthropic 一樣的壓力。"
+        }
+      ]
+    },
+    {
+      "id": "sd-power",
+      "template": "big",
+      "data": {
+        "kicker": "Underneath it all",
+        "text": "Data centers\n**wait for power**",
+        "key": "Next bottleneck: power"
+      },
+      "lines": [
+        {
+          "id": "ple4",
+          "text": "晶片之外，還有一個更底層的問題：電。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "7yb2",
+          "text": "TechCrunch 轉述紐約時報：有些 AI 資料中心等不到電網，改用退役飛機的噴射引擎發電。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-jet",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Grid hookup",
+          "icon": "clock",
+          "points": [
+            "~7 years for 100 MW",
+            "N. Virginia, per the IEA"
+          ]
+        },
+        "right": {
+          "heading": "Jet-engine turbines",
+          "icon": "lightning",
+          "points": [
+            "Running in ~24 months",
+            "Less efficient, dirtier"
+          ]
+        },
+        "source": "TechCrunch, Nov 3, 2026, citing the NYT",
+        "keys": [
+          "Why jet engines?",
+          "Grid: about 7 years",
+          "Engines: about 24 months"
+        ]
+      },
+      "lines": [
+        {
+          "id": "1pzu",
+          "speaker": "kai",
+          "text": "噴射引擎發電？聽起來好拚。",
+          "emotion": "不可置信"
+        },
+        {
+          "id": "zujv",
+          "text": "在北維吉尼亞，一百兆瓦接上電網，國際能源署估大約七年。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "egf8",
+          "text": "改裝引擎，分析師說二十四個月就能讓資料中心運轉，但效率低、污染多。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-nscale",
+      "template": "big",
+      "data": {
+        "kicker": "Remember Nscale?",
+        "text": "Microsoft walks\n**from a UK site**",
+        "key": "Microsoft exits UK site"
+      },
+      "lines": [
+        {
+          "id": "qe0u",
+          "text": "還記得剛剛那三家裡的 Nscale？",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "ap1q",
+          "speaker": "kai",
+          "text": "那家新興雲端？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "41ju",
+          "text": "對。上個月，微軟退出了它在英國一座資料中心的主要客戶位置。"
+        }
+      ]
+    },
+    {
+      "id": "sd-nscale-why",
+      "template": "big",
+      "data": {
+        "kicker": "The reason",
+        "text": "Enough power\n**only in the 2030s**",
+        "key": "Power only in the 2030s"
+      },
+      "lines": [
+        {
+          "id": "vhse",
+          "text": "原因是當地電力公司說，要到 2030 年代初到中期，才有足夠的電。"
+        },
+        {
+          "id": "531m",
+          "speaker": "kai",
+          "text": "所以有錢，也不一定買得到算力。",
+          "emotion": "恍然大悟"
+        }
+      ]
+    },
+    {
+      "id": "sd-flow",
+      "template": "bullets",
+      "data": {
+        "title": "Where the money flows",
+        "items": [
+          {
+            "text": "Chipmakers: orders",
+            "icon": "lightning"
+          },
+          {
+            "text": "Clouds: rush costs more",
+            "icon": "globe"
+          },
+          {
+            "text": "Power: the slowest link",
+            "icon": "clock"
+          }
+        ],
+        "source": "TechCrunch; AMD, Nov 3, 2026",
+        "keys": [
+          "Where the money flows",
+          "Chips: orders pour in",
+          "Clouds: rush costs more",
+          "Power: the slowest link"
+        ]
+      },
+      "lines": [
+        {
+          "id": "a6ab",
+          "text": "整理一下錢的流向。",
+          "emotion": "收束"
+        },
+        {
+          "id": "x6k8",
+          "text": "晶片公司接到訂單，AMD 就是一例。",
+          "reveal": 1
+        },
+        {
+          "id": "auur",
+          "speaker": "kai",
+          "text": "雲端業者呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "0xed",
+          "text": "收租金，買得越急，收得越貴。",
+          "reveal": 1
+        },
+        {
+          "id": "5d9c",
+          "text": "而卡住大家的，是電。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-squeezed",
+      "template": "big",
+      "data": {
+        "kicker": "Who's squeezed",
+        "text": "The buyer\n**in a hurry**",
+        "key": "Squeezed: rushed buyers"
+      },
+      "lines": [
+        {
+          "id": "et6b",
+          "speaker": "kai",
+          "text": "那這份文件裡，誰最吃虧？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "mnya",
+          "text": "急著買的那一方，也就是 Anthropic 自己：營收漲了，算力花得更兇。"
+        }
+      ]
+    },
+    {
+      "id": "sd-you",
+      "template": "big",
+      "data": {
+        "kicker": "And you?",
+        "text": "Your AI questions\n**sit on this bill**",
+        "key": "AI runs on this bill"
+      },
+      "lines": [
+        {
+          "id": "jfi1",
+          "speaker": "kai",
+          "text": "這跟一般人每個月付的 AI 訂閱，有關係嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "c83x",
+          "text": "文章沒說會不會漲價，我們不猜。"
+        },
+        {
+          "id": "jie6",
+          "text": "但你每問 AI 一句，背後都是這張帳單的一小格。"
+        }
+      ]
+    },
+    {
+      "id": "sd-taiwan",
+      "template": "big",
+      "data": {
+        "kicker": "What about Taiwan?",
+        "text": "Chips, supply chain?\n**not in these sources**",
+        "key": "Taiwan: not mentioned"
+      },
+      "lines": [
+        {
+          "id": "twnq",
+          "speaker": "kai",
+          "text": "晶片、算力，聽起來跟台灣很有關。文章有講到台灣嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "twna",
+          "text": "老實說，今天這幾篇都沒有提到台灣的廠商，我們不硬湊。",
+          "emotion": "放穩"
+        }
+      ]
+    },
+    {
+      "id": "sd-risk",
+      "template": "bullets",
+      "data": {
+        "title": "AMD's own risk list",
+        "items": [
+          "Export controls",
+          "Tariffs",
+          "Memory supply",
+          "Third-party manufacturing"
+        ],
+        "source": "AMD, Nov 3, 2026",
+        "keys": [
+          "AMD lists its risks",
+          "Export rules, tariffs",
+          "Memory, outside makers"
+        ]
+      },
+      "lines": [
+        {
+          "id": "2oz0",
+          "text": "能講的是：AMD 在財報的風險說明裡，自己列了這些。"
+        },
+        {
+          "id": "e0hq",
+          "text": "出口管制、關稅，",
+          "reveal": 2
+        },
+        {
+          "id": "ylzh",
+          "speaker": "kai",
+          "text": "都是最近新聞常出現的字。"
+        },
+        {
+          "id": "vqdu",
+          "text": "還有記憶體供應，和依賴第三方製造。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "sd-asia",
+      "template": "big",
+      "data": {
+        "kicker": "Who those makers are",
+        "text": "Not named\n**so we won't guess**",
+        "key": "Makers not named"
+      },
+      "lines": [
+        {
+          "id": "gxrv",
+          "speaker": "kai",
+          "text": "第三方製造，是誰？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "d3b7",
+          "text": "AMD 沒有點名，我們就不替它填。亞洲的供應鏈受不受影響，今天的來源沒有答案。"
+        }
+      ]
+    },
+    {
+      "id": "sd-next",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Spending",
+            "detail": "keeps rising",
+            "icon": "arrow"
+          },
+          {
+            "title": "Blip or trend?",
+            "detail": "next quarter",
+            "icon": "search"
+          },
+          {
+            "title": "Bonds, neighbors",
+            "detail": "may slow builds",
+            "icon": "warning"
+          }
+        ],
+        "source": "TechCrunch, Nov 3, 2026",
+        "keys": [
+          "Three things to watch",
+          "Spending keeps rising",
+          "A blip, or a trend?",
+          "Bonds and neighbors"
+        ]
+      },
+      "lines": [
+        {
+          "id": "lr60",
+          "text": "接下來，看三件事。",
+          "emotion": "收束，節奏放穩"
+        },
+        {
+          "id": "z6e4",
+          "text": "第一，文件說，算力和基礎設施的支出金額還會增加，而且會是最大的營運支出。",
+          "reveal": 1
+        },
+        {
+          "id": "l1r5",
+          "speaker": "kai",
+          "text": "還會更多？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "f2xh",
+          "text": "第二，這是一時的波動，還是長期問題。TechCrunch 認為，比較像短暫波動。",
+          "reveal": 1
+        },
+        {
+          "id": "8qns",
+          "text": "第三，如果債券市場緊張、或地方反對變強，資料中心的建設可能放慢。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-calm",
+      "template": "big",
+      "data": {
+        "kicker": "Why investors may shrug",
+        "text": "Revenue up\n**nearly 50% a quarter**",
+        "key": "Growth calms investors"
+      },
+      "lines": [
+        {
+          "id": "qevc",
+          "speaker": "kai",
+          "text": "為什麼它覺得只是波動？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "9reg",
+          "text": "TechCrunch 說，只要營收成長夠快，投資人就不太會擔心算力成本。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-ipo",
+      "template": "big",
+      "data": {
+        "kicker": "Not yet known",
+        "text": "IPO date\n**not given**",
+        "key": "IPO date: not given"
+      },
+      "lines": [
+        {
+          "id": "qket",
+          "speaker": "kai",
+          "text": "那它什麼時候上市？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "zcc6",
+          "text": "報導沒有給日期，只說越來越近。"
+        }
+      ]
+    },
+    {
+      "id": "sd-back",
+      "template": "big",
+      "data": {
+        "kicker": "Back to the analyst",
+        "text": "Revenue up,\n**margins down**",
+        "key": "Revenue up, margins down"
+      },
+      "lines": [
+        {
+          "id": "wv61",
+          "text": "回到那位分析師。週一這份文件，讓你看到一家營收大漲、但每塊錢被算力分走更多的公司。",
+          "emotion": "放慢，回到場景"
+        }
+      ]
+    },
+    {
+      "id": "sd-wrap",
+      "template": "big",
+      "data": {
+        "kicker": "The signal",
+        "text": "Chips, clouds\n**and power**",
+        "key": "Chips, clouds, power"
+      },
+      "lines": [
+        {
+          "id": "9g8f",
+          "text": "而這些錢，正流向晶片、雲端，和還等不到的電。",
+          "emotion": "放慢，總結"
+        }
+      ]
+    },
+    {
+      "id": "wp-open",
+      "chapter": "What People Are Saying：四句原話",
+      "template": "big",
+      "data": {
+        "kicker": "What People Are Saying",
+        "text": "Four voices\n**on today's news**",
+        "key": "What people are saying"
+      },
+      "lines": [
+        {
+          "id": "9u8h",
+          "speaker": "kai",
+          "text": "這件事，其他人怎麼說？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "u63w",
+          "text": "我們挑了四句，都是原始報導裡的原話。"
+        }
+      ]
+    },
+    {
+      "id": "wp-tc",
+      "template": "quote",
+      "data": {
+        "kicker": "TechCrunch's Russell Brandom",
+        "quote": "…could win over IPO investors by showing margins improving, they're getting worse.",
+        "source": "TechCrunch, Nov 3, 2026",
+        "key": "Margins getting worse"
+      },
+      "lines": [
+        {
+          "id": "u7lu",
+          "text": "第一句，是寫這篇的 TechCrunch 記者 Russell Brandom。"
+        },
+        {
+          "id": "368b",
+          "text": "他說，正好可以用毛利改善去說服上市投資人的時候，毛利卻在變差。"
+        }
+      ]
+    },
+    {
+      "id": "wp-rystad",
+      "template": "quote",
+      "data": {
+        "kicker": "Rystad Energy analyst, to the NYT",
+        "quote": "It's all about getting power as fast as possible.",
+        "source": "Quoted by TechCrunch, Nov 3, 2026",
+        "key": "Analyst: get power fast"
+      },
+      "lines": [
+        {
+          "id": "3s3k",
+          "speaker": "kai",
+          "text": "時機很尷尬。第二句呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "gcwr",
+          "text": "Rystad Energy 的分析師對紐約時報說：重點，就是盡可能快拿到電。"
+        },
+        {
+          "id": "39tw",
+          "speaker": "kai",
+          "text": "所以效率低一點，也先用引擎。"
+        }
+      ]
+    },
+    {
+      "id": "wp-rename",
+      "template": "big",
+      "data": {
+        "kicker": "The Verge · Nov 3",
+        "text": "\"Data center\"\n**→ \"compute campus\"**",
+        "key": "OpenAI's new name"
+      },
+      "lines": [
+        {
+          "id": "dnrp",
+          "text": "第三句跟名字有關。The Verge 報導，OpenAI 在新公告裡，把資料中心改叫運算園區。"
+        },
+        {
+          "id": "6kp4",
+          "speaker": "kai",
+          "text": "換個名字，鄰居就不抗議了？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "wp-conner",
+      "template": "quote",
+      "data": {
+        "kicker": "NAACP's Abre' Conner, on the rename",
+        "quote": "…does not fix the problem.",
+        "source": "Quoted by The Verge, Nov 3, 2026",
+        "key": "Renaming won't fix it"
+      },
+      "lines": [
+        {
+          "id": "darw",
+          "text": "NAACP 的 Abre' Conner 就說，改名解決不了問題。"
+        },
+        {
+          "id": "xft7",
+          "text": "OpenAI 沒有回應 The Verge 的置評請求。"
+        }
+      ]
+    },
+    {
+      "id": "wp-fry",
+      "template": "quote",
+      "data": {
+        "kicker": "OpenAI's Adam Fry, on ChatGPT ads",
+        "quote": "…most people do not seem to mind ads in the product.",
+        "source": "Quoted by The Verge, Nov 3, 2026",
+        "key": "OpenAI: ads are fine"
+      },
+      "lines": [
+        {
+          "id": "r7th",
+          "speaker": "kai",
+          "text": "最後一句？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "9fxy",
+          "text": "回到搜尋。ChatGPT 消費者產品負責人 Adam Fry 說，大多數人似乎不介意產品裡有廣告。"
+        },
+        {
+          "id": "svzk",
+          "speaker": "kai",
+          "text": "這句，留給大家自己判斷。",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "ms-open",
+      "chapter": "Money Signal：幣安、代幣化股票、穩定幣草案",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 3 · Decrypt",
+        "text": "North Korea denies\n**the Binance hack**",
+        "key": "N. Korea denies the hack"
+      },
+      "lines": [
+        {
+          "id": "ud6a",
+          "text": "算力是公司的錢；接下來，看你的錢。",
+          "emotion": "語氣一轉"
+        },
+        {
+          "id": "ihg8",
+          "text": "據 Decrypt 引述韓聯社，北韓否認跟幣安遭駭有關。",
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "xoeo",
+          "speaker": "kai",
+          "text": "等等，幣安被駭了多少？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-fbi",
+      "template": "stats",
+      "data": {
+        "title": "The Binance hack",
+        "stats": [
+          {
+            "value": "$6B+",
+            "label": "stolen, per the FBI"
+          },
+          {
+            "value": "~$2.85B",
+            "label": "frozen or seized",
+            "note": "earlier Decrypt report"
+          }
+        ],
+        "source": "Decrypt, Nov 3, 2026",
+        "keys": [
+          "FBI: over $6B stolen",
+          "About $2.85B frozen"
+        ]
+      },
+      "lines": [
+        {
+          "id": "hxx2",
+          "text": "FBI 上週六說，北韓駭客組織 TraderTraitor，偷走幣安超過六十億美元。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "oclb",
+          "text": "Decrypt 先前報導，其中大約二十八億五千萬，已被凍結或查扣。",
+          "reveal": 1,
+          "emotion": "轉述的語氣，略保留"
+        },
+        {
+          "id": "08cu",
+          "speaker": "kai",
+          "text": "北韓怎麼說？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-kim",
+      "template": "big",
+      "data": {
+        "kicker": "Kim Yo Jong, per Decrypt",
+        "text": "Denies it\n**blames the US**",
+        "key": "Pyongyang: a provocation"
+      },
+      "lines": [
+        {
+          "id": "wllv",
+          "text": "金正恩的妹妹金與正說，美方的認定，是嚴重的政治挑釁。"
+        },
+        {
+          "id": "hhp6",
+          "speaker": "kai",
+          "text": "各說各話。那用戶呢？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-users",
+      "template": "big",
+      "data": {
+        "kicker": "Binance says",
+        "text": "Check your balance\n**against reserves**",
+        "key": "Check your own balance"
+      },
+      "lines": [
+        {
+          "id": "7wne",
+          "text": "對用戶比較實際的，是幣安說的兩件事。它說，自己已經補足大約九成五的被盜資產。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "hd6a",
+          "speaker": "kai",
+          "text": "那要怎麼確定？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-proof",
+      "template": "big",
+      "data": {
+        "kicker": "For its top 10 tokens",
+        "text": "Zero-knowledge proof\n**of Oct 31 reserves**",
+        "key": "Reserves proof: Oct 31"
+      },
+      "lines": [
+        {
+          "id": "7nw3",
+          "text": "它說，持有前十大代幣的人，可以用 10 月 31 日備付快照的零知識證明，"
+        },
+        {
+          "id": "x68d",
+          "text": "查自己的餘額，有沒有足額資產撐著。"
+        }
+      ]
+    },
+    {
+      "id": "ms-zk",
+      "template": "big",
+      "data": {
+        "kicker": "Sound familiar?",
+        "text": "Prove it's true\n**without the details**",
+        "key": "Prove it, hide details"
+      },
+      "lines": [
+        {
+          "id": "6y1o",
+          "speaker": "kai",
+          "text": "零知識證明，剛剛 FlashProve 也出現過。",
+          "emotion": "抓到"
+        },
+        {
+          "id": "xzi2",
+          "text": "對，同一類密碼學方法：證明一件事是真的，但不公開細節。"
+        }
+      ]
+    },
+    {
+      "id": "ms-lesson",
+      "template": "big",
+      "data": {
+        "kicker": "Our advice",
+        "text": "Proof you can check\n**beats a promise**",
+        "key": "Check, don't just trust"
+      },
+      "lines": [
+        {
+          "id": "plgd",
+          "text": "我們的建議：交易所出事的時候，看它有沒有給你自己能檢查的證明。"
+        },
+        {
+          "id": "2jfc",
+          "speaker": "kai",
+          "text": "而不是只說一句，請放心。"
+        }
+      ]
+    },
+    {
+      "id": "ms-okx",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 notice · Decrypt",
+        "text": "56 companies\n**say no**",
+        "key": "56 firms object"
+      },
+      "lines": [
+        {
+          "id": "xk2j",
+          "text": "第二則，也跟說不有關。"
+        },
+        {
+          "id": "4eoy",
+          "text": "OKX 和紐約證交所母公司 ICE 合資的代幣化股票平台，收到的反對名單，增加到五十六家。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "ms-token",
+      "template": "big",
+      "data": {
+        "kicker": "Tokenized stock",
+        "text": "A share as\n**a blockchain token**",
+        "key": "Stock as a token"
+      },
+      "lines": [
+        {
+          "id": "36ly",
+          "speaker": "kai",
+          "text": "等等，代幣化股票是什麼？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "jntm",
+          "text": "把股票做成區塊鏈上的代幣，在區塊鏈平台上交易。"
+        }
+      ]
+    },
+    {
+      "id": "ms-who",
+      "template": "big",
+      "data": {
+        "kicker": "Newly on the list",
+        "text": "Tesla, SpaceX, Amazon\n**join the list**",
+        "key": "Tesla and SpaceX join"
+      },
+      "lines": [
+        {
+          "id": "r5as",
+          "text": "這次新加入的，有 Tesla、SpaceX、Amazon 和 Netflix 等六家。",
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "y2pk",
+          "speaker": "kai",
+          "text": "公司可以說不要？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-rule",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Notify",
+            "detail": "the company",
+            "icon": "document"
+          },
+          {
+            "title": "30 days",
+            "detail": "to object",
+            "icon": "clock"
+          },
+          {
+            "title": "Blocked",
+            "detail": "this venue only",
+            "icon": "lock"
+          }
+        ],
+        "source": "Decrypt, citing the SEC order",
+        "keys": [
+          "Notify the company first",
+          "30 days to object",
+          "Only on this venue"
+        ]
+      },
+      "lines": [
+        {
+          "id": "9uwp",
+          "text": "可以。依美國證管會九月的創新豁免，平台要先通知公司。",
+          "reveal": 1
+        },
+        {
+          "id": "fehm",
+          "text": "公司三十天內書面反對，平台就不能上架第三方做的代幣化版本。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "rtwy",
+          "text": "但只限這個平台。",
+          "reveal": 1
+        },
+        {
+          "id": "tfql",
+          "speaker": "kai",
+          "text": "所以不是全面禁止。"
+        }
+      ]
+    },
+    {
+      "id": "ms-okx-you",
+      "template": "big",
+      "data": {
+        "kicker": "Where it stands",
+        "text": "The venue\n**is still a plan**",
+        "key": "The venue: still a plan"
+      },
+      "lines": [
+        {
+          "id": "z8ye",
+          "text": "對。而且依 Decrypt，這個平台目前還在計畫階段。"
+        }
+      ]
+    },
+    {
+      "id": "ms-tw",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 3 · Taiwan FSC",
+        "text": "Stablecoin rules:\n**a draft is coming**",
+        "key": "Taiwan: stablecoin draft"
+      },
+      "lines": [
+        {
+          "id": "htqd",
+          "text": "最後一則，是今天唯一的台灣新聞。"
+        },
+        {
+          "id": "fp84",
+          "text": "金管會說，近日內要預告穩定幣發行許可辦法的草案。"
+        },
+        {
+          "id": "jyw2",
+          "speaker": "kai",
+          "text": "穩定幣是？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ms-tw-def",
+      "template": "big",
+      "data": {
+        "kicker": "Stablecoin",
+        "text": "A crypto token\n**tied to a currency**",
+        "key": "Tied to a real currency"
+      },
+      "lines": [
+        {
+          "id": "yfww",
+          "text": "價值設計成跟某種法定貨幣綁在一起的加密資產。"
+        }
+      ]
+    },
+    {
+      "id": "ms-tw-who",
+      "template": "big",
+      "data": {
+        "kicker": "Who may issue",
+        "text": "Banks, and others\n**with NT$300M+**",
+        "key": "Banks; others NT$300M+"
+      },
+      "lines": [
+        {
+          "id": "7g7b",
+          "speaker": "kai",
+          "text": "誰可以發？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "lgku",
+          "text": "銀行、金控或銀行轉投資的公司，還有金管會公告的其他機構。"
+        },
+        {
+          "id": "cg1t",
+          "text": "不是銀行的，實收資本至少新台幣三億元。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "ms-tw-what",
+      "template": "bullets",
+      "data": {
+        "title": "What the draft says",
+        "items": [
+          "Pegged 1:1 to NT$ or one currency",
+          "Reserves ≥ coins in circulation",
+          "Know who buys and redeems"
+        ],
+        "source": "FSC press release, Nov 3, 2026",
+        "keys": [
+          "1:1 to one currency",
+          "Reserves cover all coins",
+          "Buyers' identity checked"
+        ]
+      },
+      "lines": [
+        {
+          "id": "edyq",
+          "text": "可以發的，是跟新台幣、或單一外國貨幣一比一連結的穩定幣。",
+          "reveal": 1
+        },
+        {
+          "id": "lk0k",
+          "text": "準備資產，不能少於流通在外的總額。",
+          "reveal": 1
+        },
+        {
+          "id": "25ge",
+          "speaker": "kai",
+          "text": "那買的人，要被查身分嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "bgww",
+          "text": "要。發行人得確認認購和贖回的人是誰，也要定期給會計師查核。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ms-tw-when",
+      "template": "big",
+      "data": {
+        "kicker": "When",
+        "text": "Comments: 40 days\n**start date: not set**",
+        "key": "40 days for comments"
+      },
+      "lines": [
+        {
+          "id": "omwg",
+          "speaker": "kai",
+          "text": "什麼時候生效？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "28m1",
+          "text": "還沒。公告隔天起四十天內可以提意見，生效要配合虛擬資產服務法的施行日期，行政院還沒定。",
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "ms-tw-you",
+      "template": "big",
+      "data": {
+        "kicker": "For you",
+        "text": "A draft only\n**no price talk here**",
+        "key": "Draft only, no prices"
+      },
+      "lines": [
+        {
+          "id": "2nje",
+          "speaker": "kai",
+          "text": "所以現在還不用做什麼。"
+        },
+        {
+          "id": "251t",
+          "text": "對，這只是草案。提醒一下，這個段落不談任何幣的價格。"
+        }
+      ]
+    },
+    {
+      "id": "tt-open",
+      "chapter": "Try This：接到熟悉聲音的求救電話",
+      "template": "big",
+      "data": {
+        "kicker": "Try This",
+        "text": "A call that sounds\n**like family?**",
+        "key": "A familiar voice calls?"
+      },
+      "lines": [
+        {
+          "id": "vwey",
+          "speaker": "kai",
+          "text": "好，實際一點。剛剛說 AI 能假冒來電，那我們今天能做什麼？",
+          "emotion": "認真起來"
+        },
+        {
+          "id": "1a87",
+          "text": "下面是節目的建議，不是 Google 的指示。",
+          "emotion": "認真、放慢"
+        }
+      ]
+    },
+    {
+      "id": "tt-call",
+      "template": "big",
+      "data": {
+        "kicker": "Step 1 · our advice",
+        "text": "Hang up\n**call back yourself**",
+        "key": "Hang up, call back"
+      },
+      "lines": [
+        {
+          "id": "scma",
+          "text": "第一，熟悉的聲音打來要你匯錢，先掛掉，用你自己存的號碼回撥。"
+        },
+        {
+          "id": "rjzq",
+          "speaker": "kai",
+          "text": "聲音很像也一樣？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "gfdq",
+          "text": "對，聲音像，不代表是本人。"
+        }
+      ]
+    },
+    {
+      "id": "tt-settings",
+      "template": "big",
+      "data": {
+        "kicker": "Step 2 · our advice",
+        "text": "Android settings:\n**search \"scam\"**",
+        "key": "Search settings: scam"
+      },
+      "lines": [
+        {
+          "id": "9hi7",
+          "text": "第二，用 Android 的話，打開設定、搜尋「詐騙」，有防護就打開。"
+        },
+        {
+          "id": "wv40",
+          "speaker": "kai",
+          "text": "找不到呢？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "pvi0",
+          "text": "可能你的手機還沒有這項功能。"
+        }
+      ]
+    },
+    {
+      "id": "tt-game",
+      "template": "big",
+      "data": {
+        "kicker": "Step 3 · Google says",
+        "text": "Be Scam Ready\n**available in Taiwan**",
+        "key": "Practice: Be Scam Ready"
+      },
+      "lines": [
+        {
+          "id": "9qnc",
+          "text": "第三，Google 說，它模擬常見詐騙的教育遊戲 Be Scam Ready，台灣已經有了。"
+        },
+        {
+          "id": "fe8z",
+          "speaker": "kai",
+          "text": "家裡長輩也可以一起練。"
+        }
+      ]
+    },
+    {
+      "id": "tt-parents",
+      "template": "big",
+      "data": {
+        "kicker": "For parents · our advice",
+        "text": "New ratings are rules\n**for developers**",
+        "key": "Parents: set controls"
+      },
+      "lines": [
+        {
+          "id": "ot6y",
+          "speaker": "kai",
+          "text": "那家長呢？剛剛蘋果那則。"
+        },
+        {
+          "id": "khjh",
+          "text": "新分級管的是開發者；我們建議，家裡的 iPhone，家長控制還是自己打開、設定好。"
+        }
+      ]
+    },
+    {
+      "id": "nd-open",
+      "chapter": "Noise of the Day：Steam 審核塞車",
+      "template": "big",
+      "data": {
+        "kicker": "Noise of the Day",
+        "text": "Steam's review line\n**is backed up**",
+        "key": "Noise: Steam's backlog"
+      },
+      "lines": [
+        {
+          "id": "q7od",
+          "speaker": "kai",
+          "text": "從真的錢，換到有點荒謬的事：今天的雜訊。",
+          "emotion": "放鬆，帶笑"
+        },
+        {
+          "id": "zokc",
+          "text": "據 The Verge，好幾個獨立遊戲開發者說，Steam 審核等太久，遊戲錯過了發售日。",
+          "emotion": "轉述的語氣，略保留"
+        }
+      ]
+    },
+    {
+      "id": "nd-wait",
+      "template": "table",
+      "data": {
+        "columns": [
+          "Who",
+          "Wait"
+        ],
+        "rows": [
+          [
+            "Valve says",
+            "3–5 business days"
+          ],
+          [
+            "Food Devils",
+            "Sent Oct 12, still waiting"
+          ],
+          [
+            "Wheel Make It",
+            "Launch slipped ~2 weeks"
+          ]
+        ],
+        "source": "The Verge, Nov 3, 2026",
+        "keys": [
+          "Valve: 3 to 5 days",
+          "Food Devils: 3 weeks",
+          "Another: ~2 weeks late"
+        ]
+      },
+      "lines": [
+        {
+          "id": "d4n5",
+          "text": "Valve 自己的說明，商店頁面審核，通常三到五個工作天。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "9sru",
+          "text": "可是有一款叫 Food Devils 的遊戲，十月十二號就送審，原定昨天上市，還在等。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "rzbd",
+          "speaker": "kai",
+          "text": "等了三個禮拜？",
+          "emotion": "誇張地拉長"
+        },
+        {
+          "id": "5l7t",
+          "text": "另一款，發售延後快兩週。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        }
+      ]
+    },
+    {
+      "id": "nd-why",
+      "template": "big",
+      "data": {
+        "kicker": "Developers' guess",
+        "text": "Blame the\n**AI slop?**",
+        "key": "Their guess: AI slop"
+      },
+      "lines": [
+        {
+          "id": "zfdp",
+          "speaker": "kai",
+          "text": "為什麼塞成這樣？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "05ct",
+          "text": "開發者猜，是大量粗製濫造的 AI 遊戲，塞爆了審核隊伍。"
+        }
+      ]
+    },
+    {
+      "id": "nd-numbers",
+      "template": "stats",
+      "data": {
+        "title": "What we can count",
+        "stats": [
+          {
+            "value": "7,240",
+            "label": "games at October's Next Fest",
+            "note": "+65.2% vs. June"
+          },
+          {
+            "value": "49.9%",
+            "label": "newer games with an AI label",
+            "note": "one Reddit user's count"
+          }
+        ],
+        "source": "The Verge, Nov 3, 2026",
+        "keys": [
+          "Next Fest: 7,240 games",
+          "About half: AI-labelled"
+        ]
+      },
+      "lines": [
+        {
+          "id": "5y7k",
+          "text": "數字是有：十月的 Steam Next Fest，有七千兩百四十款遊戲，比六月多了六成五。",
+          "reveal": 1,
+          "emotion": "數字前停半拍，放慢"
+        },
+        {
+          "id": "nxdo",
+          "text": "也有網友算過，Valve 要求標示以來上架的遊戲，將近一半標了有用 AI。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "nd-valve",
+      "template": "big",
+      "data": {
+        "kicker": "Valve says",
+        "text": "Running behind\n**up to 12 business days**",
+        "key": "Valve: up to 12 days now"
+      },
+      "lines": [
+        {
+          "id": "pqyu",
+          "speaker": "kai",
+          "text": "那 Valve 怎麼說？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "4nba",
+          "text": "Valve 後來發文承認審核落後，最多要十二個工作天。怪 AI，仍是開發者的猜測。",
+          "emotion": "語氣保留"
+        },
+        {
+          "id": "4pwl",
+          "speaker": "kai",
+          "text": "好，這則雜訊，先讓它排隊。",
+          "emotion": "輕鬆收掉"
+        }
+      ]
+    },
+    {
+      "id": "tk-main",
+      "chapter": "Sola's Take：今天最重要的是算力帳單",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's Take",
+        "text": "AI isn't free\n**to run**",
+        "key": "AI isn't free to run"
+      },
+      "lines": [
+        {
+          "id": "7qsr",
+          "text": "我的看法是，今天最重要的，是 Anthropic 那份文件。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "d9ls",
+          "text": "因為它把跑 AI 的成本，攤開來了。"
+        },
+        {
+          "id": "npwp",
+          "speaker": "kai",
+          "text": "而且跟晶片、雲端、噴射引擎，都連在一起。"
+        }
+      ]
+    },
+    {
+      "id": "tk-why",
+      "template": "big",
+      "data": {
+        "kicker": "Why it matters",
+        "text": "The bill shapes\n**the AI you use**",
+        "key": "The bill shapes your AI"
+      },
+      "lines": [
+        {
+          "id": "so1l",
+          "text": "這張帳單怎麼付，會影響你用到的 AI 服務長什麼樣子。"
+        },
+        {
+          "id": "a5hc",
+          "speaker": "kai",
+          "text": "像廣告變多？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "kzi0",
+          "text": "那是 OpenAI 的事，報導沒說兩者有關；我只覺得值得一起看。"
+        }
+      ]
+    },
+    {
+      "id": "tk-unsure",
+      "template": "big",
+      "data": {
+        "kicker": "What I'm not sure of",
+        "text": "A blip\n**or the new normal?**",
+        "key": "Blip or trend? Unsure"
+      },
+      "lines": [
+        {
+          "id": "y79h",
+          "speaker": "kai",
+          "text": "你覺得，會一直這麼貴嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "z02r",
+          "text": "老實說，我不確定。TechCrunch 覺得是短暫波動，要再看下一季的數字。",
+          "emotion": "放輕，承認不確定"
+        }
+      ]
+    },
+    {
+      "id": "tk-site",
+      "template": "big",
+      "data": {
+        "kicker": "Full stories",
+        "text": "Every story\n**on Mokaair**",
+        "key": "Articles in description"
+      },
+      "lines": [
+        {
+          "id": "k0ch",
+          "text": "每一則的完整整理，都在 Mokaair 網站的文章裡，連結放在說明欄。",
+          "emotion": "輕鬆提醒"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "Compute came first",
+        "lines": [
+          "Pay more, or see ads? Tell us"
+        ],
+        "cta": "Subscribe to Tech Signal",
+        "key": "Pay more, or see ads?"
+      },
+      "lines": [
+        {
+          "id": "qans",
+          "text": "回到今天的主題：錢大多付給了算力，而且是急著買的。"
+        },
+        {
+          "id": "lvsq",
+          "speaker": "kai",
+          "text": "多付錢，還是看廣告？留言說。"
+        },
+        {
+          "id": "lkby",
+          "text": "想每天聽重點，就訂閱 Tech Signal。訊號收到。",
+          "emotion": "乾脆、帶笑地收"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "tested_on": "2026-11-02T07:08:35.757Z",
+  "result": "PASS",
+  "selected": 3083,
+  "index_html_sha256": "433bdbd59000d02a69c6569b08ac9c0940d64d18d560bcdae44ab62d7cfade7f",
+  "source_sample": {
+    "id": "P28001",
+    "urls": [
+      "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "No new merge aliases; historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave28-desktop.png",
+    "wave28-source-desktop.png",
+    "wave28-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": [
+    "桌面頁顯示3083筆、2647來源頁及286題案，搜尋與篩選位於統計卡下方。",
+    "P28001展開可讀側刻/縱刻的答案與限制，段落預算55–90秒。下方來源網址由瀏覽器DOM核對。",
+    "390×844首屏可見統計、連結與篩選，未見水平溢出。"
+  ]
+}
