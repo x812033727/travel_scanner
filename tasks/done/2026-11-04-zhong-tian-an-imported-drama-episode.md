@@ -1,13 +1,13 @@
 ---
 id: 2026-11-04-zhong-tian-an-imported-drama-episode
 title: Zhong-tian: an imported drama episode carries its build data (edit log, edit table, music cues, first frames) and the series assets into the Drive backup
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5.5-season-review
 claimed_at: 2026-11-05T03:36:45Z
 created_at: 2026-11-04T16:13:48Z
-completed_at:
+completed_at: 2026-11-05T05:20:53Z
 branch:
 depends_on:
   - 2026-10-31-zhong-tian-clip-backup
@@ -87,7 +87,7 @@ e001–e030 work folders were already archived whole under `AI\備份\種田娶�
 - [x] Bring the six edit tables over from `origin/claude/trusting-shannon-g7dl74` (check that branch's other
       commits first; it may hold more unmerged e043–e048 work).
 - [x] Tests: review-package placement of the new roles, import packing with and without the build data, the API's limits, series-backup.
-- [ ] Deploy (API + video-worker image) so the site takes `build_` files and the worker places them; until then a package with them is refused by the API (422).
+- [ ] Deploy (API + video-worker image) so the site takes `build_` files and the worker places them; until then a package with them is refused by the API (422). The owner said 2026-11-05 to merge and deploy once CI is green; the deploy follows this PR's merge, see the PR for its SHA.
 
 ## How to verify
 
