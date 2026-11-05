@@ -67,6 +67,17 @@ export function profileProblems({ video, audio }, frames) {
   return problems;
 }
 
+/**
+ * The narration-only mix's loudnorm target. The true peak is aimed at −1.5 dBTP, not −1: the AAC
+ * encode after it adds overshoot (daily-ai-20261104-short-1 measured −0.65 dBTP from a −1 target),
+ * and loudnessProblems below refuses anything above −0.8.
+ */
+export const NARRATION_LOUDNORM = 'I=-14:TP=-1.5:LRA=11';
+
+/** The second, linear loudnorm pass for a narration-only mix, from the first pass's measurement. */
+export const narrationLoudnormFilter = (loud) =>
+  `aformat=channel_layouts=stereo,loudnorm=${NARRATION_LOUDNORM}:measured_I=${loud.input_i}:measured_TP=${loud.input_tp}:measured_LRA=${loud.input_lra}:measured_thresh=${loud.input_thresh}:offset=${loud.target_offset}:linear=true:print_format=json`;
+
 /** Why a measured loudness is outside −14 ± 1 LUFS or above −0.8 dBTP; empty when inside. */
 export function loudnessProblems(loudness) {
   const problems = [];
@@ -453,9 +464,8 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
       if (bedWrong.length) throw new Error(`the music bed failed: ${bedWrong.join('; ')}`);
     }
   } else {
-    const loudness = await runTool(ffmpeg,['-hide_banner','-i',narrationFile,'-af','aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1:LRA=11:print_format=json','-f','null','-']);
-    const loud = loudnessResult(loudness.stderr);
-    const filter = `aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1:LRA=11:measured_I=${loud.input_i}:measured_TP=${loud.input_tp}:measured_LRA=${loud.input_lra}:measured_thresh=${loud.input_thresh}:offset=${loud.target_offset}:linear=true:print_format=json`;
+    const loudness = await runTool(ffmpeg,['-hide_banner','-i',narrationFile,'-af',`aformat=channel_layouts=stereo,loudnorm=${NARRATION_LOUDNORM}:print_format=json`,'-f','null','-']);
+    const filter = narrationLoudnormFilter(loudnessResult(loudness.stderr));
     await runTool(ffmpeg,['-y','-hide_banner','-i',narrationFile,'-af',filter,'-ar','48000','-ac','2','-c:a','aac','-b:a','192k',audioFile]);
   }
   const final = path.join(directory,'upload','final.mp4');
