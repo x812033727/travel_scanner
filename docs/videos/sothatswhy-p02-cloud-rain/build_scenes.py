@@ -493,11 +493,58 @@ prompt("tower-greying", "Low angle wide shot over plain apartment rooftops of on
 prompt("cauliflower-grow", "Wide shot of the girl walking on a green hillside and looking up at a puffy white cumulus cloud with round bumpy lumps piling upward high in the sky, her notebook in her hand, soft bright afternoon light, " + KIDDESC, KID)
 prompt("tower-greying", "Medium shot of the girl inside an apartment pressing both hands on a closed window and looking out at one tall puffy cumulus cloud whose flat underside has turned dark grey, soft afternoon light, " + KIDDESC, KID)
 
-# keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture
+# ---------- 2026-11-05 international: no text on screen, every data card becomes a text-free picture ----------
+# (pilot README row 畫面上的字; same pattern as P05). Same scene id, same lines, same place in the order;
+# the numbers are spoken (dubs and CC carry the language). One person doing one thing, facing the viewer;
+# action first, look last; the chief only waist-up or head-and-shoulders on a plain wall; clouds wider at the bottom.
+WALL = "a plain wall behind her"
+NOTEXT = "no letters or numbers anywhere"
+CUMULUS = "a cumulus cloud wider at the bottom than at the top with a flat grey base"
+CARD_TO_SHOT = {
+ "chief-explains-mist": (K, "Medium close-up of the girl facing the viewer and holding her open empty palm in the white curl of mist above a steaming mug on a table, many tiny water droplets beading on her palm, a curious smile, " + WALL + ", soft lamp light"),
+ "vapour-vs-cloud": (K, "Medium shot of the girl on a rooftop facing the viewer and holding a big round magnifying glass up toward a small white cloud in the sky beside her, inside the lens the cloud shows as many tiny round water droplets and a few tiny six-armed ice crystals, soft daylight"),
+ "lapse-rate": (K, "Wide shot of the girl standing on a high mountain ridge facing the viewer and zipping her jacket up to her chin with a shiver, frost on the grass around her feet, far below her a warm sunny green valley with heat shimmer rising from it, soft clear light"),
+ "cloud-weight": (K, "Medium shot of the girl on a balcony facing the viewer and holding up one small clear empty glass cube on her open palm, only a few tiny water droplets floating inside the cube, far behind her one huge " + CUMULUS + " filling the sky, soft afternoon light"),
+ "air-weight": (K, "Medium shot of the girl at a playground seesaw facing the viewer and pointing at it with a surprised face, one end of the seesaw high in the air holding one small white wisp of cloud, the other end pressed down to the ground by a big clear glass globe full of shimmering air, soft daylight"),
+ "droplet-size": (K, "Close-up of the girl facing the viewer and looking through a big magnifying glass at one strand of her own black hair held between two fingers, inside the lens several tiny round water droplets float beside the hair, each droplet many times thinner than the hair, " + WALL + ", soft window light"),
+ "fall-speed": (K, "Close-up of the girl crouching and facing the viewer, watching with a patient face one tiny water droplet hanging in the still air just above her raised fingertip, falling so slowly it seems to float, " + WALL + ", soft light"),
+ "hundred-cubed": (C, "Waist-up medium shot of the chief holding one tiny clear bead between finger and thumb in one hand and a big clear glass ball as big as her head in the other hand, the ball packed full of countless tiny clear beads, raised eyebrows, " + WALL + ", warm lamp light"),
+ "collision": (K, "Medium shot of the girl facing the viewer from behind a rainy window pane, her fingertip following one big raindrop that slides fast down the glass and catches up with a smaller slow droplet just below it, soft grey light"),
+ "coalescence": (C, "Waist-up medium shot of the chief touching the tips of her two forefingers together, a small water droplet on each fingertip merging into one bigger droplet, a pleased smile, " + WALL + ", warm lamp light"),
+ "two-routes": (K, "Wide shot of the girl in a green field facing the viewer and holding out one open palm, only a few big fat raindrops falling from the cloud above her onto her palm while countless tiny droplets stay floating up inside " + CUMULUS + ", soft grey light"),
+ "day-steps": (K, "Medium shot of the girl on the balcony in the hot late afternoon facing the viewer and fanning her face with one hand, the sun already past the middle of the sky, thick wavy heat lines rising strongly from the rooftops below, behind her " + CUMULUS + " growing tall, warm light"),
+ "sea-breeze": (K, "Medium shot of the girl standing on a seawall with her back to the sea and facing the viewer, her arms spread wide and her bangs blown forward by a moist sea breeze, soft blue curved arrows of air blowing in from the sea past her toward green hills, soft hazy light"),
+ "chief-engine": (K, "Medium close-up of the girl at a window facing the viewer and pressing the off button of a small spinning desk fan with one finger, outside the window a grey storm cloud pouring rain, soft grey light"),
+ "hour": (K, "Medium close-up of the girl on the balcony facing the viewer and holding up a small hourglass with its sand running, behind her one storm cloud that has finished raining and is already breaking into thin wisps, soft clearing light"),
+ "drop-shapes": (K, "Close-up of the girl facing the viewer and looking through a big magnifying glass at two falling raindrops side by side, the small one perfectly round, the bigger one flattened on the bottom like a hamburger bun, " + WALL + ", soft daylight"),
+}
+for sid, (who, text) in CARD_TO_SHOT.items():
+    _i = next(n for n, sc in enumerate(S) if sc["id"] == sid)
+    assert S[_i]["template"] != "shot", sid
+    if who == C: assert text.startswith(("Waist-up", "Head-and-shoulders")), sid
+    text = text.rstrip(". ") + ", " + (KIDDESC if who == K else CHIEFDESC)
+    S[_i] = dict(id=sid, chapter=S[_i]["chapter"], template="shot", data=dict(prompt=text, camera=None, visual="still", characters=[who]), lines=S[_i]["lines"])
+# drop-shapes holds two lines (about 12.5 s, over the 12 s a shot may last): its second line, unchanged, gets its own
+# picture. The scene boundary adds the 700 ms scene gap after p131; every line, id and the order stay as they were.
+_i = next(n for n, sc in enumerate(S) if sc["id"] == "drop-shapes")
+assert len(S[_i]["lines"]) == 2
+S.insert(_i + 1, dict(id="drop-shapes-burst", chapter=None, template="shot", data=dict(prompt="Waist-up medium shot of the chief facing the viewer and watching one very big raindrop fall past in front of her and burst apart into several small round drops, raised eyebrows, " + WALL + ", warm lamp light, " + CHIEFDESC, camera=None, visual="still", characters=[C]), lines=[S[_i]["lines"].pop()]))
+assert [sc["id"] for sc in S if sc["template"] != "shot"] == ["outro"]
+assert not any("cauliflower" in sc["data"]["prompt"] for sc in S if sc["id"] in CARD_TO_SHOT)
+
+# keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture;
+# a shot that has no camera yet gets the next move and is appended to cameras.json (as P05 does)
 import json as _json, os as _os
-_cams = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "cameras.json")))
+_cam_file = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "cameras.json")
+_cams = _json.load(open(_cam_file, encoding="utf-8"))
+_new_cams = itertools.cycle(["push in", "pan left", "pull out", "drift", "tilt up", "pan right", "push in", "tilt down", "pull out", "drift"])
+_added = False
 for sc in S:
-    if sc["template"] == "shot" and sc["id"] in _cams: sc["data"]["camera"] = _cams[sc["id"]]
+    if sc["template"] != "shot": continue
+    if sc["id"] not in _cams: _cams[sc["id"]] = next(_new_cams); _added = True
+    sc["data"]["camera"] = _cams[sc["id"]]
+if _added:
+    with open(_cam_file, "w", encoding="utf-8") as _f: _f.write(_json.dumps(_cams, ensure_ascii=False, indent=1))
 
 # ---------- assemble ----------
 scenes = []; loops_s = {}; loops_p = {}; n = 0
