@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -230,11 +230,11 @@ async function narrate(box, server, ffmpeg, slug = box.slug) {
   assert.ok(code === EXIT.ok || chaptersOnly, out.stdout + out.stderr);
 }
 
-function capture(box, server, ffmpeg) {
+function capture(box, server, ffmpeg, env = {}) {
   const out = { stdout: "", stderr: "" };
   const ctx = {
     root: box.root,
-    env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN },
+    env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, ...env },
     home: box.base,
     stdout: { write: (text) => (out.stdout += text) },
     stderr: { write: (text) => (out.stderr += text) },
@@ -830,4 +830,185 @@ test("a dub run by hand while another producer holds the project asks for no spe
   assert.match(run.out.stderr, /auto \(pid 4242 on video-worker-elsewhere.*nothing was sent or written/);
   assert.equal(server.calls.length, calls, "no speech request, not even the status");
   assert.equal(existsSync(dubArtifacts(box.workdir, "en").timeline), false);
+});
+
+// --- several syntheses at once (VIDEO_SPEECH_CONCURRENCY, tts/concurrency.mjs) ------------------
+
+const SPEECH_POST = /\/api\/video\/speech$/;
+
+/**
+ * A server whose syntheses are held a few turns of the event loop, the later ones fewer, so
+ * answers come back out of order (a refusal comes back at once). It counts how many are out at
+ * once, in all and per body; `answer(index)` may answer a synthesis in the server's place.
+ */
+function overlappingServer({ answer = () => null } = {}) {
+  const server = fakeServer();
+  const seen = { out: 0, most: 0, posts: 0, mostPerBody: 0, bodies: new Map(), log: [] };
+  const inner = server.fetchImpl;
+  server.seen = seen;
+  server.fetchImpl = async (url, init) => {
+    if (!SPEECH_POST.test(url)) return inner(url, init);
+    const order = seen.posts++;
+    seen.out += 1;
+    seen.most = Math.max(seen.most, seen.out);
+    seen.bodies.set(init.body, (seen.bodies.get(init.body) ?? 0) + 1);
+    seen.mostPerBody = Math.max(seen.mostPerBody, seen.bodies.get(init.body));
+    seen.log.push(seen.out);
+    try {
+      const response = answer(order) ?? (await inner(url, init));
+      if (response.ok) for (let tick = 0; tick < 8 - (order % 8); tick++) await new Promise((resolve) => setImmediate(resolve));
+      return response;
+    } finally {
+      seen.out -= 1;
+      seen.bodies.set(init.body, seen.bodies.get(init.body) - 1);
+      seen.log.push(-seen.out);
+    }
+  };
+  return server;
+}
+
+/**
+ * The fixture with each scene told twice, so a dub has six requests: enough for several to be
+ * out while more wait, after the first goes alone.
+ */
+function twiceTold(doc) {
+  const again = doc.scenes.map((scene) => ({
+    ...scene,
+    id: `${scene.id}-again`,
+    chapter: `${scene.chapter}（再談）`,
+    lines: scene.lines.map((line) => ({ ...line, id: `${line.id.slice(0, 3)}${line.id.endsWith("z") ? "y" : "z"}` })),
+  }));
+  return { ...doc, scenes: [...doc.scenes, ...again] };
+}
+
+/** A Gemini-voiced fixture told twice with an en translation, narrated, ready to dub. */
+async function dubbable(server, textFor = (line) => `EN ${line.id}`) {
+  const box = sandbox();
+  const doc = twiceTold(geminiDoc(fixture()));
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, textFor)));
+  const ffmpeg = fakeFfmpeg();
+  await narrate(box, server, ffmpeg);
+  const posts = () => server.calls.filter((call) => SPEECH_POST.test(call.url)).length;
+  const dub = async (env, ...args) => {
+    const { ctx, out } = capture(box, server, ffmpeg, env);
+    return { code: await main(["dub", "--slug", box.slug, "--locale", "en", ...args], ctx), ...out };
+  };
+  const lines = [...eachLine(doc)].map(({ line }) => line.id);
+  const requests = () => dubRequests(loadProject({ slug: box.slug, root: box.root }), "en").requests;
+  return { box, doc, lines, requests, posts, dub, en: dubArtifacts(box.workdir, "en"), journal: path.join(box.workdir, "audio", "speech-journal") };
+}
+
+test("dub sends several syntheses at once and leaves the cache, layout, track and report one at a time leaves", async () => {
+  const server = overlappingServer();
+  const { dub, en, lines, posts, journal } = await dubbable(server);
+  const outcome = async (env, ...args) => {
+    rmSync(en.dir, { recursive: true, force: true });
+    const run = await dub(env, ...args);
+    assert.equal(run.code, EXIT.ok, run.stdout + run.stderr);
+    return { ...run, files: [en.cache, en.fit, en.timeline, en.narration].map((file) => readFileSync(file, "utf8")) };
+  };
+  for (const mode of [[], ["--line-by-line"]]) {
+    const before = posts();
+    const one = await outcome({ VIDEO_SPEECH_CONCURRENCY: "1" }, ...mode);
+    const sequential = posts() - before;
+    server.seen.most = 0;
+    const four = await outcome({ VIDEO_SPEECH_CONCURRENCY: "4" }, ...mode);
+    assert.equal(posts() - before, sequential * 2, `${mode} each run buys the same requests`);
+    assert.ok(server.seen.most > 1 && server.seen.most <= 4, `${mode} several out at once, at most four (${server.seen.most})`);
+    assert.deepEqual(four, one, `${mode} the same cache.json, fit.json, timeline, narration, report and exit code`);
+  }
+  assert.deepEqual(Object.keys(JSON.parse(readFileSync(en.cache, "utf8")).lines), lines, "cache.json in the script's order");
+  assert.deepEqual(readdirSync(journal), [], "every entry released once its takes are saved");
+});
+
+test("dub with several out stops on a STOP file after those finish, and the rerun buys only the requests left", async () => {
+  const server = overlappingServer();
+  const { box, dub, en, posts, requests, journal } = await dubbable(server);
+  const planned = requests();
+  const stop = path.join(box.work, "STOP");
+  const narrated = posts();
+  // The owner drops a STOP file while the second request is answered, with more already out.
+  const inner = server.fetchImpl;
+  server.fetchImpl = async (url, init) => {
+    const response = await inner(url, init);
+    if (SPEECH_POST.test(url) && posts() - narrated >= 2) writeFileSync(stop, "");
+    return response;
+  };
+  const stopped = await dub({ VIDEO_SPEECH_CONCURRENCY: "4" });
+  server.fetchImpl = inner;
+  assert.equal(stopped.code, EXIT.incomplete, stopped.stderr);
+  const bought = posts() - narrated;
+  assert.ok(bought > 2 && bought < planned.length, `the requests already out finished (${bought})`);
+  assert.match(stopped.stdout, new RegExp(`^en: stopped by the STOP file; ${bought} of ${planned.length} requests done, rerun to continue$`, "m"));
+  const done = planned.slice(0, bought);
+  assert.deepEqual(Object.keys(JSON.parse(readFileSync(en.cache, "utf8")).lines), done.flatMap((request) => request.lines.map((line) => line.id)), "every take paid for is kept, in the script's order");
+  assert.deepEqual(stopped.stdout.split("\n").filter((line) => /^en [^:]+: \d+ lines$/.test(line)), done.map((request) => `en ${request.id}: ${request.lines.length} lines`), "reported in the requests' order");
+  assert.ok(!existsSync(en.fit) && !existsSync(en.timeline), "no fit report or timeline");
+  assert.deepEqual(readdirSync(journal), [], "nothing is left out or unsaved");
+
+  rmSync(stop);
+  const resumed = await dub({ VIDEO_SPEECH_CONCURRENCY: "4" });
+  assert.equal(resumed.code, EXIT.ok, resumed.stderr);
+  assert.equal(posts() - narrated, planned.length, "no request is bought twice");
+  assert.match(resumed.stdout, new RegExp(`^en: ${planned.length - bought} requests synthesized \\(\\d+ billable characters\\), ${bought} reused;`, "m"));
+});
+
+test("a busy or rate-limited answer drops dub to one synthesis at a time for the rest of the run", async () => {
+  // The second synthesis, the first of several out together, meets the routes' rate limit once.
+  let refuse = null;
+  const server = overlappingServer({
+    answer: (order) => (order === refuse ? Response.json({ code: "rate_limit_exceeded", detail: "too many requests" }, { status: 429, headers: { "Retry-After": "1" } }) : null),
+  });
+  const { dub, posts, requests } = await dubbable(server);
+  refuse = server.seen.posts + 1;
+  const before = posts();
+  server.seen.log = [];
+  const run = await dub({ VIDEO_SPEECH_CONCURRENCY: "4" });
+  assert.equal(run.code, EXIT.ok, run.stdout + run.stderr);
+  assert.match(run.stdout, /^en: the speech service answered HTTP 429 rate_limit_exceeded: one request at a time for the rest of the run$/m);
+  // The log holds how many are out after each start (positive) and each end (negative or -0).
+  const log = server.seen.log;
+  assert.ok(Math.max(...log) > 1, `several were out before the refusal (${log})`);
+  const peak = log.indexOf(Math.max(...log));
+  const drained = log.findIndex((value, index) => index > peak && Object.is(value, -0));
+  assert.ok(drained > 0 && drained < log.length - 1, `requests were left after the refusal (${log})`);
+  assert.ok(log.slice(drained + 1).every((value) => value === 1 || Object.is(value, -0)), `one at a time afterwards (${log})`);
+  assert.equal(posts() - before, requests().length, "every request answered once: the refused one was sent again by the client");
+  assert.equal(server.seen.posts - refuse + 1, requests().length + 1, "and nothing else was sent twice");
+});
+
+test("dub never has the same synthesis out twice, and takes one an earlier run bought from the journal", async () => {
+  // Every line says the same words, so --line-by-line sends one body for all of them.
+  const server = overlappingServer();
+  const { box, dub, posts, journal } = await dubbable(server, () => "Same words.");
+  const before = posts();
+  const calls = server.calls.length;
+  server.seen.mostPerBody = 0;
+  const run = await dub({ VIDEO_SPEECH_CONCURRENCY: "4" }, "--line-by-line");
+  assert.equal(run.code, EXIT.ok, run.stdout + run.stderr);
+  const bodies = server.calls.slice(calls).filter((call) => SPEECH_POST.test(call.url)).map((call) => call.init.body);
+  assert.equal(new Set(bodies).size, 1, "one body for every line");
+  assert.equal(server.seen.mostPerBody, 1, "a body is never out twice at once, so the journal never holds this run's own request");
+  // Within a request the same body comes from the journal, as it always did; the next request
+  // buys a take of its own only once the one before is saved and released, as one at a time does.
+  const { requests } = dubRequests(loadProject({ slug: box.slug, root: box.root }), "en");
+  assert.equal(posts() - before, requests.length, "one synthesis a request");
+  assert.deepEqual(readdirSync(journal), []);
+
+  // A run that stopped after an answer came back, before cache.json had it: the journal holds it.
+  const other = overlappingServer();
+  const { dub: dubOther, posts: postsOther, journal: journalOther, box: otherBox } = await dubbable(other);
+  const planned = dubRequests(loadProject({ slug: otherBox.slug, root: otherBox.root }), "en").requests;
+  const kept = planned[1];
+  const { openSpeechJournal } = await import("../tts/speech-journal.mjs");
+  const take = await other.fetchImpl("https://example.test/api/video/speech", { method: "POST", body: JSON.stringify(kept.body) });
+  await openSpeechJournal(journalOther).wrap(async () => ({ wav: Buffer.from(await take.arrayBuffer()), billable: 10 }))(kept.body);
+  const paid = postsOther();
+  const resumed = await dubOther({ VIDEO_SPEECH_CONCURRENCY: "4" });
+  assert.equal(resumed.code, EXIT.ok, resumed.stdout + resumed.stderr);
+  assert.equal(postsOther() - paid, planned.length - 1, "the kept answer is not bought again");
+  assert.match(resumed.stdout, /^ {2}1 answers paid for by an earlier run came from the speech journal, not bought again$/m);
+  assert.deepEqual(readdirSync(journalOther), []);
 });

@@ -10,7 +10,7 @@
 import { createHash } from "node:crypto";
 
 import { buildCues } from "../core/captions.mjs";
-import { characterOf, resolveSubtitles } from "../core/drama.mjs";
+import { resolveSubtitles, speakerDisplayName } from "../core/drama.mjs";
 import { eachLine, NARRATION_LOCALE } from "../core/schema.mjs";
 import { FPS } from "../core/timeline.mjs";
 import { escapeHtml, ORIGIN } from "../templates/templates.mjs";
@@ -70,7 +70,7 @@ export const blankStripKey = () => hash(blankStripHtml());
 
 /** The speaker's name for a character's line, or null for the narrator. */
 function speakerName(doc, line) {
-  return characterOf(doc, line)?.name ?? null;
+  return speakerDisplayName(doc, line);
 }
 
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));

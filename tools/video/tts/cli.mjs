@@ -5,7 +5,7 @@ import path from "node:path";
 import readline from "node:readline";
 import { parseArgs } from "node:util";
 
-import { NARRATOR } from "../core/drama.mjs";
+import { characterOf, hasCohost, NARRATOR } from "../core/drama.mjs";
 import { isPreproductionHeld } from "../core/pending-pilot-budget.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
@@ -197,10 +197,10 @@ async function plannedBranding({ doc, series = null, workdir, values, ctx }) {
 /** The provider whose month a request voice counts against. */
 const providerOf = (voice) => (voice.startsWith(GEMINI_VOICE_PREFIX) ? "gemini" : "azure");
 
-/** How a speaker is named to the owner: the narrator, or a character's id and name. */
+/** How a speaker is named to the owner: the narrator, or a character's (or a slides cohost's) id and name. */
 function speakerName(doc, speaker) {
   if (speaker === NARRATOR) return NARRATOR;
-  const character = (doc.characters ?? []).find((item) => item.id === speaker);
+  const character = characterOf(doc, { speaker });
   return character ? `${speaker} (${character.name})` : speaker;
 }
 
@@ -496,7 +496,7 @@ async function tts(args, ctx) {
     atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
     journal.release();
     const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
-    const who = doc.format === "drama" ? ` [${speakerName(doc, request.speaker)}]` : "";
+    const who = doc.format === "drama" || hasCohost(doc) ? ` [${speakerName(doc, request.speaker)}]` : "";
     ctx.stdout.write(`${request.id}${who}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
   }
 

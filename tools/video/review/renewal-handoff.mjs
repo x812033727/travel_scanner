@@ -3,6 +3,7 @@
 import { createHash, randomUUID } from "node:crypto";
 import { copyFileSync, createReadStream, existsSync, lstatSync, mkdirSync, mkdtempSync, openSync, closeSync, readdirSync, readFileSync, readSync, renameSync, rmSync, statSync } from "node:fs";
 import os from "node:os";
+import { captionSpeakers } from "../core/drama.mjs";
 import path from "node:path";
 import { isDeepStrictEqual, parseArgs } from "node:util";
 import { fileURLToPath } from "node:url";
@@ -757,7 +758,7 @@ export async function bindManualLanguageSubmission({ body, remote, workdir, proj
     }
     if (status.captions === "ready") {
       requireThat(choice.captions && texts[locale] && !current?.stale, `${locale}: captions or dub timing source is stale`);
-      const expected = toSrt(localeCues(presented, texts, locale, narrationLocale(project.doc), current).cues);
+      const expected = toSrt(localeCues(presented, texts, locale, narrationLocale(project.doc), current, captionSpeakers(project.doc)).cues);
       requireThat(entry(`captions_${locale}`)?.sha256 === digest(expected), `${locale}: captions do not match the renewed presentation/dub timeline`);
     }
     if (status.dub === "ready" || status.status === "ready" && body.gate === "dubs") requireThat(choice.dub && current && !current.stale && current.branding_hash === pin.hash && entry(`dub_${locale}`)?.sha256 === await sha256File(current.file), `${locale}: dub is not fitted and branded for this retained body`);

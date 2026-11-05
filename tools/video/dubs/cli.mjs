@@ -18,7 +18,7 @@ import { measureMixArgs, mixArgs } from "../assemble/drama.mjs";
 import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
-import { isDrama, mixHash, NARRATOR, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
+import { hasCohost, isDialogueExplainer, isDrama, mixHash, NARRATOR, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
 import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -31,7 +31,8 @@ import { FPS, SAMPLES_PER_FRAME, speechHash } from "../core/timeline.mjs";
 import { SpeechError, speechStatus, synthesize } from "../tts/client.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { billableForRequest } from "../tts/requests.mjs";
-import { JOURNAL_DIR, openSpeechJournal } from "../tts/speech-journal.mjs";
+import { inRunOrder, sendInOrder, speechConcurrency, watchBusy } from "../tts/concurrency.mjs";
+import { JOURNAL_DIR, openSpeechJournal, requestSha256 } from "../tts/speech-journal.mjs";
 import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../tts/synthesis.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { CODECS, encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
@@ -57,10 +58,14 @@ import {
  */
 export function spokenByCharacter(doc) {
   if (!isDrama(doc)) return null;
+  // So That's Why's dialogue explainer (owner, 2026-11-04) is dubbed with one foreign voice per
+  // character (plan.mjs dubCharacterVoice): only a speaking character without a Gemini voice stops it.
+  const dialogue = isDialogueExplainer(doc);
   for (const { scene, line } of eachLine(doc)) {
     if (line.speaker === undefined || line.speaker === null || line.speaker === NARRATOR) continue;
-    const name = (doc.characters ?? []).find((character) => character?.id === line.speaker)?.name ?? null;
-    return { scene: scene.id, line: line.id, speaker: line.speaker, name };
+    const character = (doc.characters ?? []).find((each) => each?.id === line.speaker);
+    if (dialogue && character?.voice?.provider === "gemini") continue;
+    return { scene: scene.id, line: line.id, speaker: line.speaker, name: character?.name ?? null };
   }
   return null;
 }
@@ -207,7 +212,7 @@ async function dubSound(doc, timeline, workdir, workBase) {
   return { track, music, sfxFile, notes };
 }
 
-async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, workdir, workBase) {
+async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, workdir, workBase, pace) {
   const { EXIT } = ctx;
   const { locale, requests, texts, files, cache } = dub;
   if (dub.missing.length) {
@@ -244,33 +249,94 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
 
   mkdirSync(files.audio, { recursive: true });
   let billable = 0;
-  const fallbacks = [];
+  let reused = 0;
+  let done = 0;
   // The video's speech journal, shared with tts (tts/speech-journal.mjs): an answer not yet in the
   // cache below is taken from disk by the next run, and a lost one holds until a person clears it.
-  const journal = openSpeechJournal(path.join(workdir, ARTIFACTS.audio, JOURNAL_DIR), { now: ctx.now });
-  const send = journal.wrap((body) => synthesize({ ...options, body }));
-  for (const request of pending) {
-    if (stopRequested(workdir)) {
-      // The takes so far are in cache.json and a rerun reuses them, but fit.json, the dub's
-      // timeline and its track are still the last run's (or absent): this is not a made track.
-      ctx.stdout.write(`${locale}: stopped by the STOP file; ${pending.indexOf(request)} of ${pending.length} requests done, rerun to continue\n`);
-      return EXIT.incomplete;
-    }
+  // Requests go out up to `pace.concurrency` at once (tts/concurrency.mjs), each through a
+  // journal of its own over that directory, which is what keeps the bookkeeping right with
+  // several out:
+  // - A journal's `reused` and `release()` cover only the answers it handed out, so a request
+  //   counts its own reuse and releases its own entries once its takes are in cache.json; one
+  //   shared journal would have the first request saved drop the entries of another whose
+  //   answers came back but are not saved yet, and a crash then would buy them again.
+  // - A request's keys are the sha256 of every body it may send (the scene, and each line alone
+  //   for a retake or a split that fails), so two requests that could send the same body never
+  //   run together: the later waits until the earlier is saved and released, as one at a time
+  //   did. Together, the later would find the earlier's entry still "sent" by this live process
+  //   and hold it as uncertain.
+  // - Entries on disk are created only where none exists (createOnce), which already keeps two
+  //   runs apart; requests of one run are no different.
+  const journalDir = path.join(workdir, ARTIFACTS.audio, JOURNAL_DIR);
+  const sending = pace.concurrency > 1
+    ? watchBusy(options, ({ status, code }) => {
+      if (pace.busy) return;
+      pace.busy = true;
+      ctx.stdout.write(`${locale}: the speech service answered HTTP ${status}${code ? ` ${code}` : ""}: one request at a time for the rest of the run\n`);
+    })
+    : options;
+  // cache.json in a sequential run's key order, and the report in the requests' order, whichever
+  // answer came first.
+  const initialIds = Object.keys(cache.lines);
+  const scriptIds = requests.flatMap((request) => request.lines.map((line) => line.id));
+  const reports = [];
+  let reported = 0;
+  const flush = () => {
+    while (reports[reported] !== undefined) ctx.stdout.write(reports[reported++]);
+  };
+  const fellBack = [];
+  const synthesizeOne = async (index, request) => {
+    const own = openSpeechJournal(journalDir, { now: ctx.now });
+    const wrapped = own.wrap((body) => synthesize({ ...sending, body }));
+    let sent = 0;
+    const send = (body) => {
+      sent += 1;
+      return wrapped(body);
+    };
     const lines = retakes(request);
     const result = lines ? { ...(await synthesizeLines(request, lines, send)), fallback: false } : await synthesizeRequest(request, send);
     billable += result.billable;
-    if (result.fallback) fallbacks.push(request.id);
+    if (result.fallback) fellBack[index] = request.id;
     for (const [id, clip] of result.clips) {
       atomicWrite(path.join(files.audio, `${id}.wav`), encodeWav(clip));
       cache.lines[id] = request.lines.find((line) => line.id === id).key;
       // A retaken line's stretched copies are of the old take.
       delete cache.stretched[id];
     }
+    cache.lines = inRunOrder(cache.lines, initialIds, scriptIds);
     atomicWrite(files.cache, `${JSON.stringify(cache, null, 2)}\n`);
-    journal.release();
-    const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
-    ctx.stdout.write(`${locale} ${request.id}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
+    own.release();
+    reused += own.reused;
+    done += 1;
+    // A take bought by this run is saved: the token, the service and the disk work, so the run
+    // may send several at once. Until then a refused token or a lost answer costs one request.
+    if (sent > own.reused) pace.proven = true;
+    const what = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
+    reports[index] = `${locale} ${request.id}: ${what}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`;
+    flush();
+  };
+  let halted;
+  try {
+    ({ halted } = await sendInOrder(pending, {
+      limit: () => (pace.busy || !pace.proven ? 1 : pace.concurrency),
+      // The requests already out finish and are saved before the run stops.
+      halt: () => (stopRequested(workdir) ? "stop" : null),
+      prepare: (request, index) => ({
+        keys: [request.body, ...request.lines.map((line) => lineBody(request, line))].map(requestSha256),
+        run: () => synthesizeOne(index, request),
+      }),
+    }));
+  } finally {
+    // A request that failed leaves a gap; the ones after it that were saved are still told.
+    for (; reported < reports.length; reported++) if (reports[reported] !== undefined) ctx.stdout.write(reports[reported]);
   }
+  if (halted) {
+    // The takes so far are in cache.json and a rerun reuses them, but fit.json, the dub's
+    // timeline and its track are still the last run's (or absent): this is not a made track.
+    ctx.stdout.write(`${locale}: stopped by the STOP file; ${done} of ${pending.length} requests done, rerun to continue\n`);
+    return EXIT.incomplete;
+  }
+  const fallbacks = fellBack.filter(Boolean);
 
   // The clips as spoken, then the layout: which windows keep their rhythm, which pack, which speed up.
   const originals = new Map(timeline.lines.map((line) => [line.id, line]));
@@ -397,6 +463,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     mix_hash: sound.track ? mixHash(project.doc) : null,
     sfx_hash: sound.sfxFile ? sfxHash(project.doc) : null,
     voice: dub.script.voice,
+    ...(hasCohost(dub.script) ? { cohost_voice: dub.script.cohost.voice } : {}),
     fps: FPS,
     sample_rate: FPS * SAMPLES_PER_FRAME,
     total_frames: timeline.total_frames,
@@ -413,7 +480,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   const carried = [sound.track ? "music bed" : null, sound.sfxFile ? "sound effects" : null].filter(Boolean);
   ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x)${absorbed ? `; ${absorbed}` : ""}${carried.length ? `; with the ${carried.join(" and ")}` : ""}; ${track}\n`);
   for (const note of sound.notes) ctx.stdout.write(`  ${note}\n`);
-  if (journal.reused) ctx.stdout.write(`  ${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
+  if (reused) ctx.stdout.write(`  ${reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   if (fallbacks.length) ctx.stdout.write(`  line-by-line fallback for: ${fallbacks.join(", ")}\n`);
   return EXIT.ok;
 }
@@ -449,6 +516,9 @@ async function dryRun(dubs, project, timeline, ctx, credentials) {
 async function dub(args, ctx) {
   const { EXIT } = ctx;
   const values = options(args);
+  // How many synthesis requests may be out at once, for every locale of this run; `busy` once
+  // the service asks for fewer, `proven` once a take bought by this run is saved.
+  const pace = { concurrency: speechConcurrency(ctx.env), busy: false, proven: false };
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
   const allowed = dubLocales(project.doc);
   values.locales ??= defaultDubLocales(project.doc);
@@ -465,6 +535,8 @@ async function dub(args, ctx) {
     throw new SpeechError(`a drama whose characters speak cannot be dubbed yet: line ${spoken.line} in scene ${spoken.scene} is spoken by ${who}, and a dub reads every line in the narrator's one voice (docs/videos/DUBS.md)`, { who: "owner" });
   }
   if (doc.voice.provider !== "gemini") throw new SpeechError(`dubs need a Gemini voice, which speaks every language; the narration voice is ${doc.voice.name}`, { who: "owner" });
+  // A slides cohost is dubbed in its own voice (dubs/plan.mjs dubVoice), so it must be Gemini too.
+  if (hasCohost(doc) && doc.cohost.voice.provider !== "gemini") throw new SpeechError(`dubs need Gemini voices, which speak every language; the cohost's voice is ${doc.cohost.voice.name}`, { who: "owner" });
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
@@ -498,7 +570,7 @@ async function dub(args, ctx) {
 
   let worst = EXIT.ok;
   for (const dub of dubs) {
-    const code = await dubLocale(dub, project, timeline, values, ctx, clientOpts, ffmpeg, workdir, workBase);
+    const code = await dubLocale(dub, project, timeline, values, ctx, clientOpts, ffmpeg, workdir, workBase, pace);
     // The STOP file stops the locales after this one as well: the run ends here.
     if (code === EXIT.incomplete) return code;
     worst = Math.max(worst, code);
