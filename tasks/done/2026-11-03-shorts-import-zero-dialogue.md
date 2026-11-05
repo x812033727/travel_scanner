@@ -1,13 +1,13 @@
 ---
 id: 2026-11-03-shorts-import-zero-dialogue
 title: Shorts import: accept a zero-dialogue cut (no captions) and an original Short with no long-form source
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-wangwang
 claimed_at: 2026-11-05T00:18:19Z
 created_at: 2026-11-03T13:50:24Z
-completed_at:
+completed_at: 2026-11-05T00:36:00Z
 branch:
 depends_on: []
 scope:
