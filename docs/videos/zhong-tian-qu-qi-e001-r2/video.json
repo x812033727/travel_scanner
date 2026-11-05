@@ -105,8 +105,8 @@
       "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
       "voice": {
         "provider": "gemini",
-        "name": "Schedar",
-        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
       }
     }
   ],
@@ -222,7 +222,7 @@
           "id": "zq901a04",
           "speaker": "xitong",
           "text": "良緣系統，綁定成功。",
-          "emotion": "平板電子音，叮一聲"
+          "emotion": "冷淡，懶得理人，叮一聲"
         }
       ],
       "data": {
@@ -282,14 +282,14 @@
         {
           "id": "zq901a07",
           "speaker": "erniu",
-          "text": "我二牛啊！你半夜掉進柳溪，差點把我嚇死。",
+          "text": "我二牛啊！這裡是柳溪，你半夜掉進河裡，差點把我嚇死。",
           "emotion": "憨笑，鬆一口氣"
         }
       ],
       "data": {
         "camera": "Low-angle medium close-up, locked",
         "prompt": "On the reedy mud bank of the Liuxi stream at foggy dawn, tall reeds and willows, shallow brown water lapping the bank, mist on the water: low-angle medium close-up of Wang Erniu crouching on the bank, soaked to the chest, his eyes on Xu Yan lying off screen left",
-        "motion": "Wang Erniu speaks a short Mandarin line, 「我二牛啊！你半夜掉進柳溪，差點把我嚇死」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he wipes the water off his face with the back of his hand, lets out a big breath and breaks into a relieved grin, and the grey dawn mist stays unchanged",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「我二牛啊！這裡是柳溪，你半夜掉進河裡，差點把我嚇死」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he wipes the water off his face with the back of his hand, lets out a big breath and breaks into a relieved grin, and the grey dawn mist stays unchanged",
         "characters": [
           "erniu"
         ]
@@ -303,13 +303,25 @@
           "id": "zq901a08",
           "speaker": "xitong",
           "text": "宿主許硯，柳溪村秀才。目前負債，二十兩銀子。",
-          "emotion": "平板電子音"
+          "emotion": "冷淡，念到負債時帶一點嫌棄"
+        },
+        {
+          "id": "zq901a09",
+          "speaker": "xuyan",
+          "text": "誰在說話？宿主……說的是我嗎？",
+          "emotion": "內心獨白，嘴閉著，心裡話，困惑"
+        },
+        {
+          "id": "zq901a10",
+          "speaker": "xitong",
+          "text": "本系統。宿主就是你，別東張西望。",
+          "emotion": "冷淡，嫌棄"
         }
       ],
       "data": {
         "camera": "Extreme close-up, slow push in",
         "prompt": "On the reedy mud bank of the Liuxi stream at foggy dawn, tall reeds and willows, shallow brown water lapping the bank, mist on the water: extreme close-up of Xu Yan's eyes, a faint pale blue light reflected in his pupils from the empty air in front of him; the system voice speaks off screen",
-        "motion": "his eyes dart left to right across the empty air as if reading lines of text, and his brows slowly draw together, and the grey dawn mist stays unchanged",
+        "motion": "his eyes dart left to right across the empty air as if reading lines of text, then flick around in alarm looking for the voice, his brows drawing together, his lips remaining closed, and the grey dawn mist stays unchanged",
         "characters": [
           "xuyan"
         ]
@@ -320,7 +332,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a09",
+          "id": "zq901a11",
           "speaker": "xuyan",
           "text": "二十兩……我是不是欠了誰的錢？",
           "emotion": "試探"
@@ -340,7 +352,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a10",
+          "id": "zq901a12",
           "speaker": "erniu",
           "text": "錢員外的啊。他說這個月再不還，就拿你家的地抵。",
           "emotion": "壓低聲音"
@@ -361,7 +373,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a11",
+          "id": "zq901a13",
           "speaker": "xuyan",
           "text": "先回家吧。我總得知道，自己現在過的是什麼日子。",
           "emotion": "吸一口氣"
@@ -383,7 +395,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a12",
+          "id": "zq901a14",
           "speaker": "xiaohe",
           "text": "哥哥！",
           "emotion": "愣住，然後哭出來"
@@ -405,7 +417,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a13",
+          "id": "zq901a15",
           "speaker": "xiaohe",
           "text": "我以為你回不來了，我一個人找了你一整晚。",
           "emotion": "哭腔"
@@ -426,7 +438,13 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a14",
+          "id": "zq901a16",
+          "speaker": "xuyan",
+          "text": "她叫我哥哥……原來這副身體，還有個妹妹。",
+          "emotion": "內心獨白，嘴閉著，心裡話，愣住"
+        },
+        {
+          "id": "zq901a17",
           "speaker": "xuyan",
           "text": "別哭了，哥哥回來了，哥哥在這裡。",
           "emotion": "放軟"
@@ -447,7 +465,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a15",
+          "id": "zq901a18",
           "speaker": "xiaohe",
           "text": "錢員外的人今天又來過了，說下次要把米缸搬走。",
           "emotion": "害怕"
@@ -480,7 +498,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a16",
+          "id": "zq901a19",
           "speaker": "xuyan",
           "text": "都快見底了，還有什麼好搬的。小禾，家裡還有吃的嗎？",
           "emotion": "苦笑"
@@ -500,7 +518,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a17",
+          "id": "zq901a20",
           "speaker": "xiaohe",
           "text": "還有半碗粥，哥你先吃，我不餓。",
           "emotion": "懂事"
@@ -521,7 +539,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a18",
+          "id": "zq901a21",
           "speaker": "xuyan",
           "text": "一人一半。從今天起，哥不會再讓你餓肚子。",
           "emotion": "認真"
@@ -543,7 +561,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a19",
+          "id": "zq901a22",
           "speaker": "zhaobutou",
           "text": "許硯！縣太爺的配婚令，出來接令！",
           "emotion": "粗聲"
@@ -563,7 +581,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a20",
+          "id": "zq901a23",
           "speaker": "zhaobutou",
           "text": "凡男子二十五歲未婚者，官府配妻三名，今日成親。",
           "emotion": "念告示"
@@ -583,7 +601,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a21",
+          "id": "zq901a24",
           "speaker": "xuyan",
           "text": "等一下，今天就成親？我連自己都快養不活了。",
           "emotion": "慌"
@@ -604,7 +622,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a22",
+          "id": "zq901a25",
           "speaker": "zhaobutou",
           "text": "那是你的事。人我帶來了，一個都不能少。",
           "emotion": "冷笑"
@@ -626,7 +644,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a23",
+          "id": "zq901a26",
           "speaker": "qinshuang",
           "text": "就這身板？風大一點，都能把你吹回河裡。",
           "emotion": "不屑"
@@ -646,7 +664,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a24",
+          "id": "zq901a27",
           "speaker": "xuyan",
           "text": "昨晚已經掉進去一次了，謝謝提醒。",
           "emotion": "自嘲，乾笑"
@@ -666,7 +684,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a25",
+          "id": "zq901a28",
           "speaker": "zhaobutou",
           "text": "這個是罪奴阿令，配給你，算便宜你了。",
           "emotion": "輕蔑"
@@ -687,7 +705,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a26",
+          "id": "zq901a29",
           "speaker": "xuyan",
           "text": "她犯了什麼罪，要戴著鐵鐐來？",
           "emotion": "皺眉，低聲"
@@ -708,16 +726,16 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a27",
+          "id": "zq901a30",
           "speaker": "zhaobutou",
-          "text": "一個窮秀才，還想挑三揀四？",
+          "text": "她犯什麼罪，輪不到你一個窮秀才來問。",
           "emotion": "冷笑"
         }
       ],
       "data": {
         "camera": "Low-angle close-up, locked",
         "prompt": "In the dirt yard of the Xu farmhouse near noon, a low mud wall and a broken wooden gate in a bamboo fence, a woodpile and chopping block, a well with a wooden bucket, a persimmon tree, bright warm sunlight: low-angle close-up of Constable Zhao, his eyes sliding sideways to Xu Yan off screen left",
-        "motion": "Constable Zhao speaks a short Mandarin line, 「一個窮秀才，還想挑三揀四？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he takes a heavy step toward Xu Yan, hooks his thumb into his belt beside the sword hilt, narrows his eyes and lifts his chin to look down at him, the corner of his mouth curling down, and the bright noon sunlight stays unchanged",
+        "motion": "Constable Zhao speaks a short Mandarin line, 「她犯什麼罪，輪不到你一個窮秀才來問」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he takes a heavy step toward Xu Yan, hooks his thumb into his belt beside the sword hilt, narrows his eyes and lifts his chin to look down at him, the corner of his mouth curling down, and the bright noon sunlight stays unchanged",
         "characters": [
           "zhaobutou"
         ]
@@ -728,7 +746,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a28",
+          "id": "zq901a31",
           "speaker": "xuyan",
           "text": "不是挑。大衡律配婚第七條：三日為期，不得強押成親。",
           "emotion": "不疾不徐"
@@ -748,7 +766,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a29",
+          "id": "zq901a32",
           "speaker": "qinshuang",
           "text": "喲，窮秀才不只會讀書，還會背律條。",
           "emotion": "有點意外"
@@ -769,16 +787,22 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a30",
+          "id": "zq901a33",
           "speaker": "zhaobutou",
           "text": "哼，那就三天。三天後不成親，你自己去跟縣太爺說。",
           "emotion": "找台階下"
+        },
+        {
+          "id": "zq901a34",
+          "speaker": "zhaobutou",
+          "text": "第三個在後頭轎子裡，嬌貴得很，你自己去接。",
+          "emotion": "往院門外一指，不耐煩"
         }
       ],
       "data": {
         "camera": "Medium shot, locked",
         "prompt": "In the dirt yard of the Xu farmhouse near noon, a low mud wall and a broken wooden gate in a bamboo fence, a woodpile and chopping block, a well with a wooden bucket, a persimmon tree, bright warm sunlight: medium shot, Constable Zhao on screen right facing Xu Yan on screen left",
-        "motion": "Constable Zhao speaks a short Mandarin line, 「哼，那就三天。三天後不成親，你自己去跟縣太爺說」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Zhao rolls the red paper up tight with a snap and slaps it hard against Xu Yan's chest, then turns on his heel, and the bright noon sunlight stays unchanged",
+        "motion": "Constable Zhao speaks 2 short Mandarin lines, 「哼，那就三天。三天後不成親，你自己去跟縣太爺說」 then 「第三個在後頭轎子裡，嬌貴得很，你自己去接」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Zhao rolls the red paper up tight with a snap and slaps it hard against Xu Yan's chest, then turns and jabs his thumb back over his shoulder toward the gate, and the bright noon sunlight stays unchanged",
         "characters": [
           "zhaobutou",
           "xuyan"
@@ -790,7 +814,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a31",
+          "id": "zq901a35",
           "speaker": "tangxiaotang",
           "text": "讓一讓、讓一讓！我也是來配婚的，我叫唐小棠。",
           "emotion": "甜，輕快"
@@ -810,7 +834,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a32",
+          "id": "zq901a36",
           "speaker": "qinshuang",
           "text": "穿綢緞的千金小姐，也來湊這個數？",
           "emotion": "嗤笑"
@@ -830,16 +854,22 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a33",
+          "id": "zq901a37",
+          "speaker": "tangxiaotang",
+          "text": "千金也到了年紀，官府的名冊上一樣有我。",
+          "emotion": "對秦霜，甜甜地頂回去"
+        },
+        {
+          "id": "zq901a38",
           "speaker": "tangxiaotang",
           "text": "我爹說，嫁秀才比嫁商人體面。你就是許秀才吧？",
-          "emotion": "笑"
+          "emotion": "轉向許硯，笑"
         }
       ],
       "data": {
         "camera": "Two-shot, locked",
         "prompt": "In the dirt yard of the Xu farmhouse near noon, a low mud wall and a broken wooden gate in a bamboo fence, a woodpile and chopping block, a well with a wooden bucket, a persimmon tree, bright warm sunlight: two-shot, Tang Xiaotang on screen right framed from the chin up, her high collar closed at her throat, leaning toward Xu Yan on screen left",
-        "motion": "Tang Xiaotang speaks a short Mandarin line, 「我爹說，嫁秀才比嫁商人體面。你就是許秀才吧？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she flashes a sweet smile back toward Qin Shuang off screen, then turns and leans in close to peer up into Xu Yan's face, and the bright noon sunlight stays unchanged",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「千金也到了年紀，官府的名冊上一樣有我」 then 「我爹說，嫁秀才比嫁商人體面。你就是許秀才吧？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she flashes a sweet smile back toward Qin Shuang off screen, then turns and leans in close to peer up into Xu Yan's face, and the bright noon sunlight stays unchanged",
         "characters": [
           "tangxiaotang",
           "xuyan"
@@ -851,7 +881,13 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a34",
+          "id": "zq901a39",
+          "speaker": "xuyan",
+          "text": "我是許硯……可我還沒想好，要怎麼養活三個人。",
+          "emotion": "愣住，老實答"
+        },
+        {
+          "id": "zq901a40",
           "speaker": "erniu",
           "text": "秀才，一口氣三個老婆，你這是要發了啊！",
           "emotion": "壓低聲音，樂"
@@ -860,7 +896,7 @@
       "data": {
         "camera": "Medium shot, locked",
         "prompt": "In the dirt yard of the Xu farmhouse near noon, a low mud wall and a broken wooden gate in a bamboo fence, a woodpile and chopping block, a well with a wooden bucket, a persimmon tree, bright warm sunlight: medium shot, Xu Yan frozen in the middle of the yard on screen left, Wang Erniu behind his shoulder on screen right",
-        "motion": "Wang Erniu speaks a short Mandarin line, 「秀才，一口氣三個老婆，你這是要發了啊！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan stands stock still with his lips closed while Erniu leans in from behind to whisper in his ear, grinning from ear to ear, and the bright noon sunlight stays unchanged",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我是許硯……可我還沒想好，要怎麼養活三個人」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Wang Erniu speaks a short Mandarin line, 「秀才，一口氣三個老婆，你這是要發了啊！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan gives Tang Xiaotang off screen right an awkward nod and answers her, then Erniu leans in from behind to whisper in his ear, grinning from ear to ear, and the bright noon sunlight stays unchanged",
         "characters": [
           "xuyan",
           "erniu"
@@ -872,10 +908,10 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a35",
+          "id": "zq901a41",
           "speaker": "xitong",
           "text": "叮。任務：三日內，與三人成婚。",
-          "emotion": "平板電子音，叮一聲"
+          "emotion": "冷淡，像在念公告"
         }
       ],
       "data": {
@@ -892,19 +928,19 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq901a36",
+          "id": "zq901a42",
           "speaker": "xitong",
           "text": "失敗，抹殺。",
-          "emotion": "平板電子音"
+          "emotion": "冷淡，輕描淡寫"
         },
         {
-          "id": "zq901a37",
+          "id": "zq901a43",
           "speaker": "xuyan",
           "text": "抹……殺？",
           "emotion": "聲音發乾"
         },
         {
-          "id": "zq901a38",
+          "id": "zq901a44",
           "speaker": "xitong",
           "text": "字面意思。建議宿主，別浪費時間。",
           "emotion": "冷淡，帶一點嫌棄"
@@ -922,11 +958,17 @@
     {
       "id": "s38",
       "template": "shot",
-      "action_seconds": 3,
-      "lines": [],
+      "lines": [
+        {
+          "id": "zq901a45",
+          "speaker": "xuyan",
+          "text": "三天，娶三個……好，那就娶給你看。",
+          "emotion": "畫外，內心獨白，嘴閉著，心裡話，吸一口氣，下定決心"
+        }
+      ],
       "data": {
         "camera": "Close-up, slow push in",
-        "prompt": "In the dirt yard of the Xu farmhouse near noon, a low mud wall and a broken wooden gate in a bamboo fence, a woodpile and chopping block, a well with a wooden bucket, a persimmon tree, bright warm sunlight: close-up, A-ling on screen right, her head bowed, the iron shackles at her wrists at the lower edge of the frame",
+        "prompt": "In the dirt yard of the Xu farmhouse near noon, a low mud wall and a broken wooden gate in a bamboo fence, a woodpile and chopping block, a well with a wooden bucket, a persimmon tree, bright warm sunlight: close-up, A-ling on screen right, her head bowed, the iron shackles at her wrists at the lower edge of the frame; Xu Yan speaks off screen",
         "motion": "she slowly lifts her head and raises her cold phoenix eyes to look straight at Xu Yan off screen left, her lips closed, not blinking, and the bright noon sunlight stays unchanged",
         "characters": [
           "aling"

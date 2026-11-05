@@ -48,11 +48,14 @@ def main(name):
         lines = []
         on = [c for c in s.get("chars", [])]
         by = {}
-        for (spk, text, emo) in s.get("lines", []):
+        for (spk, text, emo, *flags) in s.get("lines", []):
             n += 1
+            inner = "inner" in flags  # a thought in voice-over: the speaker's lips stay closed
+            if inner:
+                emo = "內心獨白，嘴閉著，" + emo
             off = spk != "xitong" and spk not in on
             lines.append({"id": f"zq{ep}a{n:02d}", "speaker": spk, "text": text, "emotion": ("畫外，" + emo) if off and not emo.startswith("畫外") else emo})
-            if not off and spk != "xitong" and spk not in s.get("nospeak", []):
+            if not off and not inner and spk != "xitong" and spk not in s.get("nospeak", []):
                 by.setdefault(spk, []).append(text)
         motion = s["motion"]
         talk = "; ".join(speak_clause(k, v) for k, v in by.items())
@@ -63,10 +66,10 @@ def main(name):
         comp = re.sub(r"((?:close-up|shot)) of ([A-Z][\w'-]*(?: [A-Z][\w'-]*)?) on screen", r"\1, \2 on screen", s['comp'])
         prompt = f"{spec.LOC[s['loc']]}: {comp}".replace("A-ling off screen", "Aling off screen")
         motion = motion.replace("A-ling off screen", "Aling off screen")
-        offs = [k for (k, _, _) in s.get("lines", []) if k != "xitong" and k not in on]
+        offs = [k for (k, *_) in s.get("lines", []) if k != "xitong" and k not in on]
         if offs and "off screen" not in prompt:
             prompt += f"; {EN[offs[0]]} speaks off screen"
-        if any(k == "xitong" for (k, _, _) in s.get("lines", [])) and "system voice" not in prompt:
+        if any(k == "xitong" for (k, *_) in s.get("lines", [])) and "system voice" not in prompt:
             prompt += "; the system voice speaks off screen"
         if len(motion) > 300: print("MOTION TOO LONG", sid, len(motion), len(motion) - len(s["motion"]))
         if len(prompt) > 1000: print("PROMPT TOO LONG", sid, len(prompt))
@@ -128,7 +131,7 @@ def main(name):
         if s.get("chapter"):
             rows.append(f"| **{s['chapter']}** |||||||")
         ls = []
-        for (spk, text, emo) in s.get("lines", []):
+        for (spk, text, emo, *_f) in s.get("lines", []):
             off = spk == "xitong" or spk not in s.get("chars", [])
             ls.append(f"{names[spk]}{'（畫外）' if off else ''}：{text}")
         pan = "<br>".join(f"{tx}（{k}）" for (tx, k) in s.get("panel", [])) or "—"
