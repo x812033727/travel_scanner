@@ -93,7 +93,11 @@ export function rewritePrompt(text, { people, set }, cast, ffPrompt) {
   for (const p of people) {
     const mine = p.pictures.map(() => `<Picture ${++n}>`);
     const own = mine.length > 1 ? `${mine.slice(0, -1).join(", ")} and ${mine[mine.length - 1]} (the same ${HER.has(p.id) ? "woman" : "man"} from several angles)` : mine[0];
-    const look = cast?.[p.id]?.appearance ? `: ${cast[p.id].appearance}` : "";
+    // A look picture (the modern suit) takes that look's appearance from cast.json shot_looks, not the base costume:
+    // e001-r2 s01-s02 drew the ancient robe in the office because the text said so (2026-11-05).
+    const lookText = p.kind !== "portrait" ? (cast?.[p.id]?.shot_looks ?? []).find((l) => l.id === p.kind)?.appearance : null;
+    const appearance = lookText ?? cast?.[p.id]?.appearance;
+    const look = appearance ? `: ${appearance}` : "";
     clauses.push(`${EN[p.id] ?? p.id} shown in ${own} keeps exactly the same face, hair and costume as the pictures${look}`);
   }
   if (set) clauses.push(`the location shown in <Picture ${++n}> is the set, keeping its layout and props`);
