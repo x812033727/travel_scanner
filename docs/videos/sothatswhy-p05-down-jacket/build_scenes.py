@@ -257,7 +257,7 @@ kid("kid-thermos-shake", "Medium shot of the girl holding up a shiny steel therm
 # ---------- 第五章（保溫瓶：每一步都接回羽絨衣）----------
 chief("chief-same-job", "Waist-up medium shot of the chief holding up a shiny steel thermos beside her face with a knowing smile, " + WALL + ", soft lamp light",
       c("因為保溫瓶跟羽絨衣，做的是同一件事。"), c("它不加熱，也不製冷，只是讓熱很難進出。"), chapter="保溫瓶把空氣幾乎抽光了")
-scene("thermos-magnifier", "Close-up of a shiny steel thermos cut in half lengthwise on a table, showing a thin inner bottle inside a thin outer bottle with an empty gap between the two walls, the walls joined only at the rim, flat 2D cartoon with clean dark outlines, soft daylight",
+scene("thermos-magnifier", "Close-up of a see-through glass flask on a table, a smaller clear glass bottle standing inside a bigger clear glass bottle with an empty gap between the two walls, the two bottles joined only at the neck, flat 2D cartoon with clean dark outlines, soft daylight",
     c("保溫瓶是兩層瓶子，中間的空氣幾乎都抽掉了。"))
 kid("kid-empty-gap", "Close-up of the girl tapping the side of a shiny steel thermos with one fingertip and listening closely, a curious face, a plain wall, soft daylight",
     k("羽絨衣是把空氣關起來，", "比較"), k("它是連空氣都不要？"))
