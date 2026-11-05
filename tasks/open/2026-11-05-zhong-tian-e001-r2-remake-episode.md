@@ -35,3 +35,5 @@ scope:
 - `colab/runs/_scripts/camera-feel.py` 照研究的量法量片段或成片（第 55 集成片：動量 3.9、靜止 34%）。
 - 新配樂：`cue-river`、`cue-warm`（Lyria，各約 US$0.08）。
 - 工作資料夾每天推一次到 `transfer/zt-e001-r2-work`（站主同意）。
+- 2026-11-05 站主（經審片轉達）：所有集會合成一支長片，r2 各集**不放片名卡、不寫集數、不回顧上一集**，每集第一鏡接上一集最後一鏡；`edit-dh-e901.json` 已拿掉 `title`。系統要換新聲音（還沒定）：系統台詞 `zq901a04`、`a08`、`a35`、`a36` 各自是一支獨立的錄音，換聲音時只重錄這四支、重跑 `asm.sh`，不必重剪。
+- 第 2–10 集的 r2 稿子審片正在寫（`docs/videos/zhong-tian-qu-qi-e0NN-r2/script.md`、`production/r2-bible-e001-e010.md`），送過來之前不要開始。
