@@ -159,6 +159,8 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
     "characters/a/sheet.png": "png",
     "recordings/manifest.json": "{}",
     "recordings/zh-TW.wav": "wav",
+    "recut/cut/final.log": "s01 0.00 +2.00s s01-t1.mp4",
+    "build/seg.mp4": "never",
     "timeline.json": "{}",
     "narration.wav": "wav",
     "audio/k1.wav": "take",
@@ -176,7 +178,7 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
   ]);
   const full = planFiles(dir, "full").map((item) => item.path);
   assert.deepEqual(full.filter((item) => !basic.includes(item)), [
-    "approvals.json", "audio/k1.wav", "characters/a/sheet.png", "clips/manifest.json", "clips/s1.mp4", "dub-lines/en/k1.wav", "i18n/en.json", "keyframes/s1.png", "narration.wav", "recordings/manifest.json", "recordings/zh-TW.wav", "timeline.json",
+    "approvals.json", "audio/k1.wav", "characters/a/sheet.png", "clips/manifest.json", "clips/s1.mp4", "dub-lines/en/k1.wav", "i18n/en.json", "keyframes/s1.png", "narration.wav", "recordings/manifest.json", "recordings/zh-TW.wav", "recut/cut/final.log", "timeline.json",
   ]);
   // 2026-11-03: the host clears a video whole once Drive holds it, so the line takes, the
   // worksheets and the approvals go to Drive; what can be made again from them does not.
