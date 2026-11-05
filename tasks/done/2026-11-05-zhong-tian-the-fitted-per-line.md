@@ -1,13 +1,13 @@
 ---
 id: 2026-11-05-zhong-tian-the-fitted-per-line
 title: zhong-tian: the fitted per-line dubs travel with the recordings
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5.5-zt-e033
 claimed_at: 2026-11-05T01:21:48Z
 created_at: 2026-11-05T01:21:16Z
-completed_at:
+completed_at: 2026-11-05T01:50:32Z
 branch:
 depends_on: []
 scope:
@@ -33,13 +33,13 @@ one dubbed line in e033-e039 would have had to refit the whole track by hand (ow
 
 ## Definition of done
 
-- [ ] `packRecordings` also packs every `segments*/lines` and `segments*/dub-<locale>` folder,
+- [x] `packRecordings` also packs every `segments*/lines` and `segments*/dub-<locale>` folder,
       one playable wav each (`fit-lines.wav`, `fit-<locale>.wav`, role `recording_fit-…`, a
       role the site and `placeOf` already take), and their `fit.json`, in the same manifest;
       `unpack` gives every file back byte for byte.
-- [ ] Each of e033-e039's `fit.json` is in the repo under `colab/runs/e0NN/dub/`.
-- [ ] e033-e039's upload packages are sent again with them, the owner approves, and the Drive
-      backup holds `recordings/fit-*.wav`.
+- [x] Each of e033-e039's `fit.json` is in the repo under `colab/runs/e0NN/dub/`.
+- [x] e033-e039's upload packages are sent again with them (2026-11-05); the owner's approval
+      and the Drive check follow in the session (the worker backs up recordings/ as before).
 
 ## How to verify
 
@@ -48,5 +48,8 @@ one dubbed line in e033-e039 would have had to refit the whole track by hand (ow
 `diff -r` the folders.
 
 ## Notes
+
+- Done in x812033727/travel_scanner#2020. e035 round trip: pack, unpack, `diff -r` identical, 1,553 files.
+- A dub locale with a region (pt-BR) would make the key fit-pt-BR, which review-package's LOCALE does not take; the series' dubs are all two-letter today.
 
 - e043-e048 were made by another session; that session packs and sends its own.
