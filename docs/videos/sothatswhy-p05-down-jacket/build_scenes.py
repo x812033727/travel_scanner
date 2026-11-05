@@ -153,7 +153,7 @@ kid("iron-wood", "Medium shot of the girl in a winter park with her right hand o
      c("鐵把你手上的熱搬走得很快，木頭搬得很慢。", None, "P:iron"))
 kid("steel-wood", "Close-up of the girl peering through a large round magnifying glass at a steel spoon and a wooden spoon standing side by side in a mug of hot cocoa, the steel spoon handle glowing warm red all the way up, the wooden spoon handle still plain brown, a little steam, soft kitchen light",
      c("鋼鐵傳熱的本事，比木頭快上百倍。", "數字放慢"))
-scene("kid-tile-again", "Close-up of two small bare cartoon feet with wiggling toes standing on cold grey kitchen floor tiles, a fluffy round cream rug just beside them, flat 2D cel-shaded cartoon with clean dark outlines, soft morning light",
+kid("kid-tile-again", "Medium shot of the girl sitting on a kitchen chair with her bare feet on cold grey floor tiles, curling her toes and smiling, a fluffy round rug beside the chair, soft morning light",
     c("地毯和磁磚也是這樣：磁磚把你腳上的熱，搬得比較快。", None, "P:tile"))
 kid("kid-zipper-pull", "Close-up of the girl holding the zipper of " + JACKET + " with one hand and shivering with a funny face, soft morning light",
     k("羽絨衣的拉鍊頭，也比布冰！", "發現"))
@@ -191,7 +191,7 @@ chief("chief-locked", "Waist-up medium shot of the chief cupping her two hands t
       c("空氣被關在這些小空間裡，想飄也飄不走。", None, "P:feather"))
 kid("kid-air-vest", "Medium shot of the girl hugging a big clear plastic bag puffed up with air to her chest like a vest, a cheeky grin, a plain wall, soft daylight",
     k("那穿一件空氣不就好了？", "開玩笑", "S:airvest"))
-chief("chief-cut-small", "Waist-up medium shot of the chief drawing a small grid of squares in the air with one finger, a patient smile, " + WALL + ", soft daylight",
+chief("chief-cut-small", "Head-and-shoulders close-up of the chief holding up a small square quilted cushion beside her face, a patient smile, " + WALL + ", soft daylight",
       c("一大片空氣會自己轉圈，把熱帶走。"), c("切成很多很小的格子，它才轉不起來。", None, "P:airvest"))
 kid("kid-face-jacket", "Close-up of the girl resting her cheek on " + JACKET + " folded on her lap and smiling up at the camera, soft daylight",
     k("像好多好多小房間！", "驚喜"), k("羽絨衣是一件裝滿空氣的衣服！", "開心"))
@@ -265,7 +265,7 @@ chief("chief-no-bridge", "Waist-up medium shot of the chief holding her two hand
       c("對。羽絨衣裡的空氣動不了，熱還能慢慢碰過去；"), c("保溫瓶中間幾乎什麼都沒有，熱連碰都很難。"))
 kid("kid-better-coat", "Close-up of the girl holding a shiny steel thermos against her chest like a little coat and grinning, a plain wall, soft daylight",
     k("那保溫瓶是更厲害的羽絨衣？", "好笑"))
-chief("chief-cant-wear", "Waist-up medium shot of the chief shrugging with a playful smile, " + WALL + ", soft daylight",
+chief("chief-cant-wear", "Head-and-shoulders close-up of the chief laughing and shrugging with both palms up, " + WALL + ", soft daylight",
       c("可以這樣想，只是它穿不上身。", "玩笑"))
 kid("kid-thermos-neck", "Close-up of the girl's face squinting one eye into the round opening of a shiny steel thermos held right in front of her face, soft daylight",
     k("瓶口那裡，像我沒拉的拉鍊？", "想到"))
@@ -283,7 +283,7 @@ kid("ice-back", "Medium shot of the girl kneeling at a low table, poking " + JAC
     c("那開頭那顆包著羽絨衣的冰塊呢？"), k("羽絨衣那麼暖，會融得更快吧？", "很有把握的錯猜，章尾停住"))
 
 # ---------- 收尾 ----------
-chief("chief-not-heater", "Head-and-shoulders close-up of the chief raising her eyebrows with a gentle smile and one hand open, " + WALL + ", soft lamp light",
+chief("chief-not-heater", "Head-and-shoulders close-up of the chief gently shaking her head with a kind smile, " + WALL + ", soft lamp light",
       c("很多人都會這樣猜。可是它裡面沒有暖爐，"), c("還記得溫度計那一晚嗎？它自己一點也沒變暖。"), chapter="把冰塊包進羽絨衣")
 kid("two-cubes", "Close-up of two small white plates side by side on a low wooden table, on the left one ice cube folded inside " + JACKET + " still solid, on the right a bare ice cube already shrunk into a wide puddle, the girl peeking in from the edge of the frame with a delighted surprised face, soft daylight",
      c("很多學校課堂都會做這個比較：一顆包起來、一顆不包。"), c("包起來的那顆，融得比較慢。", None, "P:icewrap"))
