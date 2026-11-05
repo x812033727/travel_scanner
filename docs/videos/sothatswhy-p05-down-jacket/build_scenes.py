@@ -59,7 +59,7 @@ kid("jacket-fingertips", "Close-up of the girl touching " + JACKET + " lying on 
 chief("chief-mug", "Waist-up medium shot of the chief sitting at a wooden desk, wrapping both hands around a mug and smiling calmly, " + WALL + ", soft morning lamp light",
       c("先別急。你摸摸自己的手，是暖的吧？", "賣關子，帶笑"))
 kid("kid-sleeve", "Medium shot of the girl sliding one arm into the sleeve of " + JACKET + " and frowning at it suspiciously, a plain bedroom wall, soft cool morning light",
-    k("暖的。可是它又沒插電，", "不服氣"), k("穿一下下，怎麼就暖了？", "句尾上揚", "S:delay"))
+    k("暖的。可是它又沒插電，", "不服氣"), k("穿上一下下，怎麼就暖了？", "句尾上揚", "S:delay"))
 kid("kid-where", "Close-up of the girl's face filling half the frame, eyes wide and mouth in a small round O, holding " + JACKET + " up at arm's length beside her, soft cool morning light",
     k("那熱是從哪裡來的？", "大驚，句尾上揚", "S:heater"))
 chief("chief-secret", "Waist-up medium shot of the chief leaning forward over her desk with a playful look, one hand beside her mouth as if sharing a secret, " + WALL + ", warm lamp light",
@@ -85,7 +85,7 @@ chief("chief-same-room", "Waist-up medium shot of the chief nodding warmly and s
 kid("kid-shake-jacket", "Medium shot of the girl holding " + JACKET + " upside down by its hem and shaking it hard over her bed, as if something should fall out, a determined face, soft daylight",
     k("裡面一定藏了會熱的東西！", "很有把握的錯猜"))
 chief("chief-plausible", "Head-and-shoulders close-up of the chief smiling kindly and tilting her head, " + WALL + ", soft lamp light",
-      c("這個猜法很合理，穿起來真的很像它在發熱。", "溫和"))
+      c("你這樣猜很合理，穿起來真的很像它在發熱。", "溫和"))
 kid("down-palm", "Close-up of the girl peering through a magnifying glass at one fluffy white down cluster resting on her open palm, its fine soft filaments spreading out in every direction, soft daylight",
     c("可是打開來看，裡面只有羽絨和布。"), c("它要是會發熱，溫度計早就量到了。"))
 kid("kid-under-bed", "Medium shot of the girl lying on her tummy on the floor and shining a small flashlight under her bed, turning her face to the camera with a puzzled look, soft evening light",
@@ -157,7 +157,7 @@ kid("kid-zipper-pull", "Close-up of the girl pinching the small metal zipper pul
 chief("chief-same-coat", "Waist-up medium shot of the chief nodding with raised eyebrows, one hand open toward the viewer, " + WALL + ", soft daylight",
       c("可是你捏著它一下下，它就不冰了：你的熱已經跑進去了。"))
 chief("chief-you-touch", "Head-and-shoulders close-up of the chief looking straight at the viewer with a curious smile, one hand on her chin, " + WALL + ", soft lamp light",
-      c("所以下次你摸到冰冰的東西，可以想一想：", "轉向觀眾"), c("是它真的比較冷，還是它很會搬熱？"))
+      c("所以下次你摸到冰冰的東西，可以想一想：", "轉向觀眾"), c("是它真的比較冷，還是它很會把熱搬走？"))
 kid("kid-bench-think", "Medium shot of the girl sitting on a wooden park bench with her hands tucked under her legs, looking up and thinking hard, bare trees, soft overcast light",
     k("那什麼最會擋熱？", "章尾停住，句尾上揚", "S:block"))
 
