@@ -68,18 +68,17 @@ const MOTION_DRIFT_SHARE = 0.15;
 export const MOTION_MANGA_VERSION = "manga-motion-v1";
 export const MANGA_MOTION = Object.freeze({ zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
 const STILL_MOTION = Object.freeze({ zoom: MOTION_ZOOM, panZoom: MOTION_PAN_ZOOM, driftZoom: MOTION_DRIFT_ZOOM, driftShare: MOTION_DRIFT_SHARE, travelSeconds: MOTION_TRAVEL_SECONDS, travelMin: MOTION_TRAVEL_MIN });
-// The beat move (video.json `still_motion: "beat"`, owner 2026-11-05): the reference channels hold
-// a picture still for a breath, then punch in on it once (twice on a long one), where the held
-// shot glides the whole time (.agents/skills/producer/references/pace-targets.md §每張圖的動法).
-// The picture holds for beatHold of the shot (at least beatHoldMin frames), pushes in by beatZoom
-// over beatRampFrames with an eased start and stop, and a still longer than beatSecondSeconds
-// punches again at beatSecondAt of the shot to twice the zoom. Under the punches the picture
-// creeps in by beatGlide over the whole shot, so the holds breathe instead of freezing (W03's
-// first beat cut was 87% frozen frames, 2026-11-05), and a still of more than four seconds (most
-// of them) is punched twice, the reference's "one or two re-frames a picture". Every move of a beat still takes this shape
-// toward the picture's centre; cards keep their own moves.
-export const MOTION_BEAT_VERSION = "beat-motion-v3";
-export const BEAT_MOTION = Object.freeze({ ...STILL_MOTION, beat: true, beatGlide: 0.08, beatZoom: 0.12, beatHold: 0.25, beatHoldMin: 30, beatRampFrames: 9, beatSecondSeconds: 4, beatSecondAt: 0.65 });
+// The beat move (video.json `still_motion: "beat"`, owner 2026-11-05, after the 黑貓研究院
+// reference): every still keeps moving for its whole length, a little further than the held shot,
+// and the stills take turns at the moves (push in, pan right, pull out, pan left, tilt up) so the
+// video never zooms in picture after picture; a still whose camera line names a move keeps it.
+// The pictures dissolve into each other (beatTransition), the way the reference changes them.
+// Measured on the reference: mean_difference 5.0-5.9 against 2.5-3.5 for our held shots
+// (.agents/skills/producer/references/pace-targets.md).
+export const MOTION_BEAT_VERSION = "beat-motion-v4";
+export const BEAT_MOTION = Object.freeze({ zoom: 0.18, panZoom: 1.16, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 4, travelMin: 1 });
+/** The moves beat stills take in turn. */
+export const BEAT_MOVES = Object.freeze(["push-in", "pan-right", "pull-out", "pan-left", "tilt-up"]);
 export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION, beat: BEAT_MOTION });
 /** The motion profiles a video may ask for by name in `still_motion`. */
 export const STILL_MOTIONS = Object.freeze(["beat"]);
@@ -162,7 +161,17 @@ export function illustratedTransition(source, index, previous = null) {
  * never a frozen picture; a card with reveals keeps its entrances as its motion. `tier` is the
  * series' visual_tier: a still shot of the manga tier carries the manga motion profile.
  */
+/**
+ * How a beat video's pictures change (still_motion "beat"): the first shot and every chapter's
+ * first scene cut in, a shot's own `transition` is kept, and every other picture dissolves in.
+ */
+export function beatTransition(source, index) {
+  if (index === 0 || source.chapter) return "cut";
+  return source.data?.transition ?? "dissolve";
+}
+
 export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { transitionRule = null, cardMotion = false, tier = null } = {}) {
+  let stillTurn = 0;
   if (timeline.scenes.length !== frames.scenes.length) {
     throw new PlanError(`the frames were rendered for ${frames.scenes.length} scenes, the timeline has ${timeline.scenes.length}; run render again`);
   }
@@ -187,14 +196,14 @@ export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { tr
       const [laid] = layoutScenes({ scenes: [scene] }, { scenes: [rendered] });
       return { ...laid, kind: "stills" };
     }
-    const transition = transitionRule ? transitionRule(source, index, previous) : index > 0 ? (source.data?.transition ?? "cut") : "cut";
+    const transition = transitionRule ? transitionRule(source, index, previous) : tier === "beat" ? beatTransition(source, index) : index > 0 ? (source.data?.transition ?? "cut") : "cut";
     if (shotVisual(source) === "still") {
       // The keyframes manifest is the source; the clips manifest carries the same file and hash
       // for every still, so a work directory missing one still assembles from the other.
       const keyframe = keyframes?.shots?.[scene.id] ?? (clips?.shots?.[scene.id]?.still ? clips.shots[scene.id] : null);
       if (!keyframe?.file) throw new PlanError(`shot ${scene.id} is a still with no keyframe; run keyframes first`);
       if (keyframe.needs_review) throw new PlanError(`shot ${scene.id} is a still whose keyframe failed its checks (needs_review in keyframes/manifest.json); fix the prompt and run keyframes again`);
-      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data, scene.id, tier), transition, fit: null };
+      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data, scene.id, tier, stillTurn++), transition, fit: null };
     }
     const clip = clips?.shots?.[scene.id];
     if (!clip?.file || clip.still) throw new PlanError(`shot ${scene.id} has no clip; run clips first`);
@@ -244,11 +253,16 @@ export const driftDirection = (id) => DRIFT_DIRECTIONS[[...String(id ?? "")].red
  * prompt is what happens in the picture, never the camera. `profile` names a motion profile
  * (MOTION_PROFILES: the manga tier's); any other tier adds nothing, so its moves are unchanged.
  */
-export function motionMove(data, id = null, profile = null) {
+export function motionMove(data, id = null, profile = null, turn = null) {
   const lower = typeof data?.camera === "string" ? data.camera.toLowerCase() : "";
   const found = MOVES.find(([, pattern]) => pattern.test(lower));
   const profiled = profile && MOTION_PROFILES[profile] ? { profile } : {};
   if (found && found[0] !== "drift") return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]), ...profiled };
+  // A beat still with no move of its own takes the next one in turn (`turn`, its place among the stills).
+  if (profile === "beat" && Number.isInteger(turn)) {
+    const name = BEAT_MOVES[turn % BEAT_MOVES.length];
+    return { name, startsAtIdentity: IDENTITY_START.has(name), ...profiled };
+  }
   return { name: "drift", startsAtIdentity: true, direction: driftDirection(id), ...profiled };
 }
 
@@ -281,17 +295,6 @@ export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
   const midY = "(ih-ih/zoom)/2";
   const forward = (size) => `(${size}-${size}/zoom)*${run}`;
   const backward = (size) => `(${size}-${size}/zoom)*(1-${run})`;
-  if (amounts.beat && name !== "locked") {
-    // A hold, then an eased punch toward the centre; a long still punches a second time.
-    const step = (at) => {
-      const s = `clip((on-${at})/${amounts.beatRampFrames},0,1)`;
-      return `(${s})*(${s})*(3-2*(${s}))`;
-    };
-    const first = Math.min(Math.max(Math.round(n * amounts.beatHold), amounts.beatHoldMin), Math.max(n - amounts.beatRampFrames, 0));
-    const second = frames > amounts.beatSecondSeconds * FPS ? Math.round(n * amounts.beatSecondAt) : null;
-    const z = `1+${amounts.beatGlide}*on/${n}+${amounts.beatZoom}*${step(first)}${second === null ? "" : `+${amounts.beatZoom}*${step(second)}`}`;
-    return { z, x: centreX, y: centreY };
-  }
   switch (name) {
     case "locked":
       // The whole keyframe on every frame: a held picture, cut like the locked shots around it.
