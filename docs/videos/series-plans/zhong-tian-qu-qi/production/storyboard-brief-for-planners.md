@@ -1,5 +1,7 @@
 # 給企劃 AI 的分鏡交辦：每一鏡要寫清楚的事
 
+通用版（給任何 AI 漫劇）在 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md`；這份是《種田》要直接貼給企劃 AI 的版本。
+
 站主 2026-11-05：第 1 集重製版 r2 的第一批草稿，辦公室兩鏡許硯穿成古裝、二牛三鏡背上多一個大甕，
 很多對話近景幾乎不動。原因都是分鏡沒寫到、製作端只能用角色的預設外貌去猜。**這些要在寫分鏡時就定好**，製作端照抄，不再自己補。
 製作端開拍前會用 `colab/runs/_scripts/preflight-prompts.py` 檢查，但檢查只能擋錯，不能替分鏡補內容。
