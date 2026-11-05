@@ -46,6 +46,9 @@ def chief(id, prompt, *lines, chapter=None):
     """The chief, always waist-up or head-and-shoulders, in front of a plain wall."""
     assert prompt.startswith(("Waist-up", "Head-and-shoulders")), id
     _shot(id, prompt.rstrip(". ") + ", " + CHIEFDESC, ["chief"], lines, chapter)
+def scene(id, prompt, *lines, chapter=None):
+    """No character: an object or place only (the kid's notebook keeps coming back otherwise)."""
+    _shot(id, prompt, [], lines, chapter)
 def card(id, template, data, *lines, chapter=None):
     S.append(dict(id=id, chapter=chapter, template=template, data=data, lines=list(lines)))
 def k(t, e=None, tag=None): return ("kid", t, e, tag)
@@ -98,7 +101,7 @@ kid("kid-rice", "Medium shot of the girl sitting at a kitchen table behind a bow
     c("你吃下去的東西，身體會拿來用。"), k("吃飯就是在加柴火？", "好笑"))
 chief("chief-fuel", "Waist-up medium shot of the chief laughing with her eyes closed and one thumb up, " + WALL + ", warm lamp light",
       c("可以這樣想。"), c("用掉的能量，最後大部分都變成了熱。"))
-kid("body-heat", "Medium shot of the girl sitting cross-legged on a rug hugging her knees, eyes closed with a content smile, a soft warm orange glow around her whole body, plain wall, soft evening light",
+kid("body-heat", "Head-and-shoulders close-up of the girl with her eyes closed and a content smile, a soft warm orange glow shining all around her like a lamp, plain wall, soft evening light",
      c("一個大人安靜坐著，大約一直放出一百瓦左右的熱，", "數字放慢"), c("跟一顆老式燈泡差不多。"))
 kid("kid-bulb", "Medium shot of the girl holding both palms close to a glowing old-fashioned round light bulb in a simple desk lamp, feeling its warmth with a curious grin, soft evening light",
     k("那我也是一顆燈泡？", "好笑"))
@@ -150,7 +153,7 @@ kid("iron-wood", "Medium shot of the girl in a winter park with her right hand o
      c("鐵把你手上的熱搬走得很快，木頭搬得很慢。", None, "P:iron"))
 kid("steel-wood", "Close-up of the girl peering through a large round magnifying glass at a steel spoon and a wooden spoon standing side by side in a mug of hot cocoa, the steel spoon handle glowing warm red all the way up, the wooden spoon handle still plain brown, a little steam, soft kitchen light",
      c("鋼鐵傳熱的本事，比木頭快上百倍。", "數字放慢"))
-kid("kid-tile-again", "Head-and-shoulders close-up of the girl looking down with both hands pressed to her cheeks and an understanding smile, grey kitchen tiles on the wall behind her, soft morning light",
+scene("kid-tile-again", "Close-up of two small bare cartoon feet with wiggling toes standing on cold grey kitchen floor tiles, a fluffy round cream rug just beside them, flat 2D cel-shaded cartoon with clean dark outlines, soft morning light",
     c("地毯和磁磚也是這樣：磁磚把你腳上的熱，搬得比較快。", None, "P:tile"))
 kid("kid-zipper-pull", "Close-up of the girl holding the zipper of " + JACKET + " with one hand and shivering with a funny face, soft morning light",
     k("羽絨衣的拉鍊頭，也比布冰！", "發現"))
