@@ -22,6 +22,8 @@ for m in "$A"/st2/st2-*.json; do
   bash "$H3R" refine --manifest "$m" --output-dir "$A/st2/refined" --progress "$A/st2/refined/progress-$(basename "$m")" \
     --keep --label "e$EP-st23" || echo "exit=$?"
 done
+# NO_UPSCALE=1: stop after the 1312x736 refine (e001-r2, the owner 2026-11-05); the cut scales to 1920x1080.
+if [ "${NO_UPSCALE:-0}" = 1 ]; then echo "have $(ls "$A"/st2/refined/*.mp4 2>/dev/null | wc -l) refined (no upscale)"; exit 0; fi
 todo=()
 for f in "$A"/st2/refined/*.mp4; do
   [ -f "$A/final/$(basename "${f%.mp4}")_1080.mp4" ] || todo+=("$f")
