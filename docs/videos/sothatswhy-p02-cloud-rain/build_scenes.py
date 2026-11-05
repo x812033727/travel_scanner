@@ -564,6 +564,12 @@ for sc in S:
             p = p.rstrip(". ") + _eyes
         sc["data"]["prompt"] = p
 assert EYES <= {sc["id"] for sc in S}
+# Two eye shots that still failed three takes: eyes closed, so they cannot point two ways.
+for sc in S:
+    if sc["id"] == "chief-answer-one":
+        sc["data"]["prompt"] = "Head-and-shoulders close-up of the chief giving a satisfied nod with her eyes gently closed and her arms folded, a plain wall, soft daylight, " + CHIEFDESC
+    if sc["id"] == "kid-million":
+        sc["data"]["prompt"] = "Head-and-shoulders close-up of the girl with her mouth wide open in shock, eyes squeezed shut and both hands on her cheeks, under a shop arcade, soft overcast light, " + KIDDESC
 
 for sc in S:
     lines = []
