@@ -1396,7 +1396,7 @@ test("illustrated slides are judged by yes/no fault checks once the server takes
   assert.ok(checks.filter((item) => item.cost < 10).every((item) => 10 - item.cost >= 4), "a second-look flaw alone never fails a take");
   assert.match(checks.find((item) => item.key === "style").question, /labelled "style plate"/);
   assert.match(keyframeChecks().find((item) => item.key === "style").question, /the style the context describes/);
-  assert.match(checks.find((item) => item.key === "anatomy").question, /more than five.*hidden or left out by the style does not count/);
+  assert.match(checks.find((item) => item.key === "anatomy").question, /more than five.*eyes that do not match.*hidden or left out by the style does not count/);
   // What the server computes from the answers (apps/api/app/video_media/judge.py), so the bar keeps its meaning.
   const total = checks.reduce((sum, item) => sum + item.weight, 0);
   const overall = (...faults) => Math.round((checks.reduce((sum, item) => sum + (faults.includes(item.key) ? 10 - item.cost : 10) * item.weight, 0) / total) * 100) / 100;
