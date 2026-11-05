@@ -568,6 +568,11 @@ assert EYES <= {sc["id"] for sc in S}
 for sc in S:
     if sc["id"] == "chief-answer-one":
         sc["data"]["prompt"] = "Head-and-shoulders close-up of the chief giving a satisfied nod with her eyes gently closed and her arms folded, a plain wall, soft daylight, " + CHIEFDESC
+    if sc["id"] in ("pan-on-stove", "chief-answer-one"):  # still cross-eyed or blank: closed happy eyes
+        p = sc["data"]["prompt"].replace(", her eyes two identical round dark eyes side by side, looking straight ahead", "").replace(" with her eyes gently closed", "")
+        sc["data"]["prompt"] = p.replace(", " + CHIEFDESC, ", her eyes closed as two happy curved lines behind her glasses, " + CHIEFDESC) if CHIEFDESC in p else p + ", her eyes closed as two happy curved lines behind her glasses"
+    if sc["id"] == "snow-to-rain":  # cross-eyed: seen from behind, looking up at the cloud
+        sc["data"]["prompt"] = "Medium shot of the girl seen from behind, looking up at a tall grey cloud above a town on a summer afternoon, soft light, " + KIDDESC
     if sc["id"] == "kid-million":  # the notebook kept coming back: no character at all
         sc["data"]["prompt"] = "Close-up of one big shiny raindrop in the middle of a pale sky, surrounded by a huge swarm of countless tiny cloud droplets like fine dust, flat 2D cartoon with clean dark outlines, soft overcast light"
         sc["data"]["characters"] = []

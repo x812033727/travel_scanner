@@ -45,6 +45,8 @@ EYES = {"kid-shiver", "down-palm", "kid-empty-gap", "kid-rug", "kid-question", "
 EYES_FRONT = {"kid-sleeve", "kid-question", "down-palm", "kid-dent", "chief-shell"}
 # Third eye round (independent check after the second): simple identical eyes, looking ahead.
 EYES_DOTS = {"kid-question", "chief-not-heater", "chief-turn-up", "ice-back", "wind-chill"}
+# Still cross-eyed after three rounds: closed happy eyes cannot point two ways.
+EYES_CLOSED = {"chief-turn-up", "chief-not-heater"}
 def _shot(id, prompt, chars, lines, chapter):
     cam = FROZEN.get(id) or next(CAMS)
     if id in EYES:
@@ -53,6 +55,8 @@ def _shot(id, prompt, chars, lines, chapter):
             eyes = ", looking straight at the viewer with two matching round eyes"
         if id in EYES_DOTS:
             eyes = ", her eyes two identical round dark eyes side by side, looking straight ahead"
+        if id in EYES_CLOSED:
+            eyes = ", her eyes closed as two happy curved lines behind her glasses"
         for desc in (KIDDESC, CHIEFDESC):
             prompt = prompt.replace(", " + desc, eyes + ", " + desc)
     S.append(dict(id=id, chapter=chapter, template="shot", data=dict(prompt=prompt, camera=cam, visual="still", characters=list(chars)), lines=list(lines)))
