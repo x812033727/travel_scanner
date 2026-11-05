@@ -679,13 +679,13 @@ test("a beat still holds, then punches in toward the centre; a long one punches 
   assert.equal(MOTION_PROFILES.beat, BEAT_MOTION);
   const move = motionMove({ camera: "slow pan left" }, "shot-a", "beat");
   assert.equal(move.profile, "beat");
-  const short = zoompanExpr(move, 150, { eased: true, travel: 1 });
+  const short = zoompanExpr(move, 120, { eased: true, travel: 1 });
   assert.equal(short.x, "iw/2-(iw/zoom/2)");
-  assert.equal((short.z.match(/clip\(/g) ?? []).length, 3, "one punch: one clipped step, written three times in its smoothstep");
-  assert.match(short.z, /^1\+0\.05\*on\/149\+0\.1\*/, "a slow creep under the punch");
-  assert.match(short.z, /on-45\)/, "holds 30% of a five-second still before the punch");
-  const long = zoompanExpr(move, 300, { eased: true, travel: 1 });
-  assert.equal((long.z.match(/clip\(/g) ?? []).length, 6, "a ten-second still punches twice");
+  assert.equal((short.z.match(/clip\(/g) ?? []).length, 3, "a four-second still punches once: one clipped step, written three times in its smoothstep");
+  assert.match(short.z, /^1\+0\.08\*on\/119\+0\.12\*/, "a slow creep under the punch");
+  assert.match(short.z, /on-30\)/, "holds a second of a four-second still before the punch");
+  const long = zoompanExpr(move, 180, { eased: true, travel: 1 });
+  assert.equal((long.z.match(/clip\(/g) ?? []).length, 6, "a six-second still punches twice");
   assert.deepEqual(zoompanExpr({ name: "locked", profile: "beat" }, 150), { z: "1", x: "0", y: "0" }, "a locked still stays whole");
   // The beat profile joins the segment key; a move without it keeps the key it always had.
   const scene = { frames: 150, keyframe: { file: "keyframes/a.png", sha256: "x" }, transition: "cut" };

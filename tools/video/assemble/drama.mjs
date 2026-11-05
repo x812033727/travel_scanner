@@ -75,10 +75,11 @@ const STILL_MOTION = Object.freeze({ zoom: MOTION_ZOOM, panZoom: MOTION_PAN_ZOOM
 // over beatRampFrames with an eased start and stop, and a still longer than beatSecondSeconds
 // punches again at beatSecondAt of the shot to twice the zoom. Under the punches the picture
 // creeps in by beatGlide over the whole shot, so the holds breathe instead of freezing (W03's
-// first beat cut was 87% frozen frames, 2026-11-05). Every move of a beat still takes this shape
+// first beat cut was 87% frozen frames, 2026-11-05), and a still of more than four seconds (most
+// of them) is punched twice, the reference's "one or two re-frames a picture". Every move of a beat still takes this shape
 // toward the picture's centre; cards keep their own moves.
-export const MOTION_BEAT_VERSION = "beat-motion-v2";
-export const BEAT_MOTION = Object.freeze({ ...STILL_MOTION, beat: true, beatGlide: 0.05, beatZoom: 0.1, beatHold: 0.3, beatHoldMin: 30, beatRampFrames: 9, beatSecondSeconds: 7, beatSecondAt: 0.65 });
+export const MOTION_BEAT_VERSION = "beat-motion-v3";
+export const BEAT_MOTION = Object.freeze({ ...STILL_MOTION, beat: true, beatGlide: 0.08, beatZoom: 0.12, beatHold: 0.25, beatHoldMin: 30, beatRampFrames: 9, beatSecondSeconds: 4, beatSecondAt: 0.65 });
 export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION, beat: BEAT_MOTION });
 /** The motion profiles a video may ask for by name in `still_motion`. */
 export const STILL_MOTIONS = Object.freeze(["beat"]);
