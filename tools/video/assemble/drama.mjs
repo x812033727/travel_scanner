@@ -68,7 +68,18 @@ const MOTION_DRIFT_SHARE = 0.15;
 export const MOTION_MANGA_VERSION = "manga-motion-v1";
 export const MANGA_MOTION = Object.freeze({ zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
 const STILL_MOTION = Object.freeze({ zoom: MOTION_ZOOM, panZoom: MOTION_PAN_ZOOM, driftZoom: MOTION_DRIFT_ZOOM, driftShare: MOTION_DRIFT_SHARE, travelSeconds: MOTION_TRAVEL_SECONDS, travelMin: MOTION_TRAVEL_MIN });
-export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION });
+// The beat move (video.json `still_motion: "beat"`, owner 2026-11-05): the reference channels hold
+// a picture still for a breath, then punch in on it once (twice on a long one), where the held
+// shot glides the whole time (.agents/skills/producer/references/pace-targets.md §每張圖的動法).
+// The picture holds for beatHold of the shot (at least beatHoldMin frames), pushes in by beatZoom
+// over beatRampFrames with an eased start and stop, and a still longer than beatSecondSeconds
+// punches again at beatSecondAt of the shot to twice the zoom. Every move of a beat still takes
+// this shape toward the picture's centre; cards keep their own moves.
+export const MOTION_BEAT_VERSION = "beat-motion-v1";
+export const BEAT_MOTION = Object.freeze({ ...STILL_MOTION, beat: true, beatZoom: 0.1, beatHold: 0.3, beatHoldMin: 30, beatRampFrames: 9, beatSecondSeconds: 7, beatSecondAt: 0.65 });
+export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION, beat: BEAT_MOTION });
+/** The motion profiles a video may ask for by name in `still_motion`. */
+export const STILL_MOTIONS = Object.freeze(["beat"]);
 /** The amounts a move's expressions use: the manga tier's when the move carries `profile: "manga"`, else the held shot's. */
 export const motionProfile = (move) => (move && typeof move === "object" && move.profile ? MOTION_PROFILES[move.profile] : undefined) ?? STILL_MOTION;
 // Where a drifting picture goes: its shot id decides, so two drifts in a row rarely go one way.
@@ -267,6 +278,17 @@ export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
   const midY = "(ih-ih/zoom)/2";
   const forward = (size) => `(${size}-${size}/zoom)*${run}`;
   const backward = (size) => `(${size}-${size}/zoom)*(1-${run})`;
+  if (amounts.beat && name !== "locked") {
+    // A hold, then an eased punch toward the centre; a long still punches a second time.
+    const step = (at) => {
+      const s = `clip((on-${at})/${amounts.beatRampFrames},0,1)`;
+      return `(${s})*(${s})*(3-2*(${s}))`;
+    };
+    const first = Math.min(Math.max(Math.round(n * amounts.beatHold), amounts.beatHoldMin), Math.max(n - amounts.beatRampFrames, 0));
+    const second = frames > amounts.beatSecondSeconds * FPS ? Math.round(n * amounts.beatSecondAt) : null;
+    const z = `1+${amounts.beatZoom}*${step(first)}${second === null ? "" : `+${amounts.beatZoom}*${step(second)}`}`;
+    return { z, x: centreX, y: centreY };
+  }
   switch (name) {
     case "locked":
       // The whole keyframe on every frame: a held picture, cut like the locked shots around it.
@@ -347,7 +369,8 @@ export function clipSegmentKey(scene, fit, subtitles = null, previous = null, ma
 export function motionSegmentKey(scene, move, subtitles = null, previous = null, mark = null) {
   // A move under a motion profile (the manga tier's) adds the profile's version, so a profile
   // change re-renders only its own segments and a move without one keeps the key it always had.
-  const profiled = motionProfile(move) === STILL_MOTION ? [] : [MOTION_MANGA_VERSION, move.profile];
+  const profile = motionProfile(move);
+  const profiled = profile === STILL_MOTION ? [] : [profile === BEAT_MOTION ? MOTION_BEAT_VERSION : MOTION_MANGA_VERSION, move.profile];
   return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, move.direction ?? null, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : []), ...profiled, ...markKey(mark)]);
 }
 
