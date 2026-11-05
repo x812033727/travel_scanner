@@ -45,6 +45,7 @@ const NAME = /^[A-Za-z0-9][A-Za-z0-9_-]{0,34}$/;
 const KEYFRAME = /^[A-Za-z0-9][A-Za-z0-9_-]{0,36}$/;
 const IMAGE = { "image/png": "png", "image/jpeg": "jpg" };
 const AUDIO = { "audio/mp4": "m4a", "audio/mpeg": "mp3", "audio/wav": "wav" };
+const BUILD_MUSIC = { "audio/mpeg": "mp3", "audio/wav": "wav" };
 const CAPTION = { "application/x-subrip": "srt", "text/vtt": "vtt" };
 // `review-push` sends captions as text/plain (tools/video/package/check.mjs packageFiles): SubRip.
 const PLAIN_CAPTION = "text/plain";
@@ -83,6 +84,16 @@ export function placeOf(role, contentType) {
   // The line recordings (tools/video/import/recordings.mjs): one wav a locale and the manifest that
   // cuts them back into the original line files (`node tools/video/import/recordings.mjs unpack`).
   if (r === "recordings_manifest") return contentType === "application/json" ? "recordings/manifest.json" : null;
+  // An imported drama's build data (tools/video/import/build.mjs): the cut and dub logs, the music cues
+  // and the edit table, under recut/ (not build/, which the full tier leaves out as remakeable); the
+  // first frames come as kf_.
+  const build = /^build_(log|music|edit)-([A-Za-z0-9][A-Za-z0-9_-]{0,27})$/.exec(r);
+  if (build) {
+    const [, kind, name] = build;
+    if (kind === "log") return contentType === "text/plain" ? `recut/cut/${name}.log` : null;
+    if (kind === "music") return BUILD_MUSIC[contentType] ? `recut/music/${name}.${BUILD_MUSIC[contentType]}` : null;
+    return contentType === "application/json" ? `recut/${name}.json` : null;
+  }
   if (prefix === "recording_") return LOCALE.test(rest) && contentType === "audio/wav" ? `recordings/${rest}.wav` : null;
   // A language batch's dub track the check gave up on (uncheckedDubRole): the owner may still
   // upload it by hand, so it goes where the worker keeps its own tracks, outside the package; the
