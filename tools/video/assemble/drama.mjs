@@ -73,10 +73,12 @@ const STILL_MOTION = Object.freeze({ zoom: MOTION_ZOOM, panZoom: MOTION_PAN_ZOOM
 // shot glides the whole time (.agents/skills/producer/references/pace-targets.md §每張圖的動法).
 // The picture holds for beatHold of the shot (at least beatHoldMin frames), pushes in by beatZoom
 // over beatRampFrames with an eased start and stop, and a still longer than beatSecondSeconds
-// punches again at beatSecondAt of the shot to twice the zoom. Every move of a beat still takes
-// this shape toward the picture's centre; cards keep their own moves.
-export const MOTION_BEAT_VERSION = "beat-motion-v1";
-export const BEAT_MOTION = Object.freeze({ ...STILL_MOTION, beat: true, beatZoom: 0.1, beatHold: 0.3, beatHoldMin: 30, beatRampFrames: 9, beatSecondSeconds: 7, beatSecondAt: 0.65 });
+// punches again at beatSecondAt of the shot to twice the zoom. Under the punches the picture
+// creeps in by beatGlide over the whole shot, so the holds breathe instead of freezing (W03's
+// first beat cut was 87% frozen frames, 2026-11-05). Every move of a beat still takes this shape
+// toward the picture's centre; cards keep their own moves.
+export const MOTION_BEAT_VERSION = "beat-motion-v2";
+export const BEAT_MOTION = Object.freeze({ ...STILL_MOTION, beat: true, beatGlide: 0.05, beatZoom: 0.1, beatHold: 0.3, beatHoldMin: 30, beatRampFrames: 9, beatSecondSeconds: 7, beatSecondAt: 0.65 });
 export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION, beat: BEAT_MOTION });
 /** The motion profiles a video may ask for by name in `still_motion`. */
 export const STILL_MOTIONS = Object.freeze(["beat"]);
@@ -286,7 +288,7 @@ export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
     };
     const first = Math.min(Math.max(Math.round(n * amounts.beatHold), amounts.beatHoldMin), Math.max(n - amounts.beatRampFrames, 0));
     const second = frames > amounts.beatSecondSeconds * FPS ? Math.round(n * amounts.beatSecondAt) : null;
-    const z = `1+${amounts.beatZoom}*${step(first)}${second === null ? "" : `+${amounts.beatZoom}*${step(second)}`}`;
+    const z = `1+${amounts.beatGlide}*on/${n}+${amounts.beatZoom}*${step(first)}${second === null ? "" : `+${amounts.beatZoom}*${step(second)}`}`;
     return { z, x: centreX, y: centreY };
   }
   switch (name) {

@@ -682,7 +682,7 @@ test("a beat still holds, then punches in toward the centre; a long one punches 
   const short = zoompanExpr(move, 150, { eased: true, travel: 1 });
   assert.equal(short.x, "iw/2-(iw/zoom/2)");
   assert.equal((short.z.match(/clip\(/g) ?? []).length, 3, "one punch: one clipped step, written three times in its smoothstep");
-  assert.match(short.z, /^1\+0\.1\*/);
+  assert.match(short.z, /^1\+0\.05\*on\/149\+0\.1\*/, "a slow creep under the punch");
   assert.match(short.z, /on-45\)/, "holds 30% of a five-second still before the punch");
   const long = zoompanExpr(move, 300, { eased: true, travel: 1 });
   assert.equal((long.z.match(/clip\(/g) ?? []).length, 6, "a ten-second still punches twice");
