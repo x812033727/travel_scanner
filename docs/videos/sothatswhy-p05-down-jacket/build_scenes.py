@@ -258,7 +258,7 @@ kid("wind-chill", "Medium shot of the girl walking along a windy riverside path 
      c("這就叫做風寒：同樣的溫度，有風就覺得冷很多。", None, "P:wind"))
 kid("kid-cold-ears", "Close-up of the girl on a windy footbridge cupping both hands over her ears, her cheeks and nose rosy from the cold, squinting, soft overcast light",
     c("風寒說的，是露在外面的皮膚：臉、耳朵、手。"), k("難怪我耳朵最先痛！", "恍然大悟"))
-chief("chief-shell", "Waist-up medium shot of the chief holding up a folded piece of smooth fabric and running her hand over it, " + WALL + ", soft daylight",
+chief("chief-shell", "Head-and-shoulders close-up of the chief holding the sleeve of " + JACKET + " up beside her face and tapping its smooth outer fabric with one finger, " + WALL + ", soft daylight",
       c("所以羽絨衣外面那層布，最好能擋風，"), c("也最好別讓雨滲進去。"))
 kid("kid-wall", "Medium shot from the waist up of the girl on a footbridge holding " + JACKET + " wide open in front of her with both hands, laughing, soft overcast light",
     k("像一面擋風的牆！", "開心"), k("那拉鍊沒拉好呢？", "追問", "S:zip"))
