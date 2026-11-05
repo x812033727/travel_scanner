@@ -130,4 +130,4 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - 每集的工作資料夾約 1.5–2 GB；最大的是 `segments-v4`（約 800 MB），是 `asm.sh` 的中間片段，重剪時會重建。整集上架後就可以刪。
 - 幫別的 session 推備份分支時，**不要用一般的 `git worktree add`**：一份完整 checkout 就要 1.5 GB，兩份幾乎把配額用完，升 1080p 寫檔會失敗。改用
   `git worktree add --no-checkout -b <branch> <dir> origin/main && git -C <dir> read-tree origin/main`，只放要加的檔，`git add -f`、commit，推完 `git worktree remove --force`。
-- 開工前看 `df -h /home/user` 的 Avail；低於 3 GB 就先清已上架集數的 `segments-v4`。
+- 開工前看 `df -h .`（在 repo 裡跑）的 Avail；低於 3 GB 就先清已上架集數的 `segments-v4`。
