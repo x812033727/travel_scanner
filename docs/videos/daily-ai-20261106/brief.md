@@ -81,7 +81,7 @@
 
 ### 選項 A：電費自己付，誰來查？
 
-一行說明：Monologue 用 GPT-6 Cyber 的「低於 1%」與 Aina 戒指各丟一個梗，第三則回扣昨天的投票、由 Kai 問「一句我自己付，誰來確定它真的付了」；主菜讓 Kai 站「終於自己付」、Sola 站「沒有罰則誰來查」，加上同一天 Google 的 170 億美元；Is This OK? 吵 Claude 的 Personal Finance；Sign-off 回扣「低於 1%」。
+一行說明：打完招呼先講主題、Kai 用觀眾的話問「誰來確定它真的付了」，Monologue 再用 GPT-6 Cyber 的「低於 1%」與 Aina 戒指各丟一個梗，第三則講週二的投票與電網成本怎麼可能落到別人頭上；主菜讓 Kai 站「終於自己付」、Sola 站「沒有罰則誰來查」，加上同一天 Google 的 170 億美元；Is This OK? 吵 Claude 的 Personal Finance；Sign-off 回扣「低於 1%」。
 開場鉤子：OpenAI 說，以後它自己的 AI 資料中心，電費自己付；可是這句承諾裡，沒寫罰則，也沒寫誰來查。
 
 排序理由：主菜接昨天的主題，兩邊都有道理，吵得起來；問題到片尾第一句才回答。
