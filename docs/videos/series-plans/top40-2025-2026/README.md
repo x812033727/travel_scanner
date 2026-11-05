@@ -110,7 +110,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2026-15-shiguang-heni` | 退婚前，我先把大神追到手 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-16-saohei` | 潮汐帳 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-18-chai-cp` | 我媽十八歲，我十七歲 | **done**：5 季 300 集，validate 零錯誤 |
-| `2026-19-datang-hanxu` | 全京城都說我憨，只有我姊不信 | outline；季檔待派 |
+| `2026-19-datang-hanxu` | 全京城都說我憨，只有我姊不信 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-19-haoyun-tianqi` | 我兒子在戶政門口徵爸爸 | outline；季檔待派 |
 | `2026-20-fapei-bianguan` | 半袋糧認下的媳婦，把邊關種綠了 | outline；季檔待派 |
 | `2025-20-jiating-zhufu` | 三年期滿，我收回岳家的風光 | outline；季檔待派 |
