@@ -37,3 +37,9 @@ scope:
 - 工作資料夾每天推一次到 `transfer/zt-e001-r2-work`（站主同意）。
 - 2026-11-05 站主（經審片轉達）：所有集會合成一支長片，r2 各集**不放片名卡、不寫集數、不回顧上一集**，每集第一鏡接上一集最後一鏡；`edit-dh-e901.json` 已拿掉 `title`。系統要換新聲音（還沒定）：系統台詞 `zq901a04`、`a08`、`a35`、`a36` 各自是一支獨立的錄音，換聲音時只重錄這四支、重跑 `asm.sh`，不必重剪。
 - 第 2–10 集的 r2 稿子審片正在寫（`docs/videos/zhong-tian-qu-qi-e0NN-r2/script.md`、`production/r2-bible-e001-e010.md`），送過來之前不要開始。
+- 2026-11-05 走一遍收尾流程時補的洞：
+  - `stage-clips.sh` 的工作資料夾寫成 `e0$N`（901 會變 e0901），改成三位數；`SRC=refined` 改拿第二段 1312×736 的片（r2 不升 1080p）：`SRC=refined bash colab/route-a/stage-clips.sh 901`。
+  - `prep-import.mjs`：`video.json` 的 slug 跟編號不同時用它的 slug（901 → `zhong-tian-qu-qi-e001-r2`）；`meta.json` 的 note 要改成「第 1 集重製版 r2，對照原版第 1 集」。
+  - `gen-dh.mjs`：內心獨白（emotion 有「嘴閉著」「內心獨白」）與 `data.nospeak` 的人不再加「嘴在動」那句（s08、s38 原本會對嘴）；`build-r2.py` 把 `nospeak` 與 `BUY`（長鏡秒數）帶進 `video.json`。
+  - 用已經抽好的草稿在暫存資料夾試剪一次：45 句、面板、配樂、音效、`punch: false`、新的閃避都跑得過（196.7 秒、exit 0）；照新的秒數只有 s35 還會不夠長，改買 12 秒。
+- 第二批草稿 v2（31 鏡 × 2）：EU-CZ-1 從 16:01 起沒貨，`scratchpad/r2v2loop.sh` 每次放棄就重開，最多 4 小時。

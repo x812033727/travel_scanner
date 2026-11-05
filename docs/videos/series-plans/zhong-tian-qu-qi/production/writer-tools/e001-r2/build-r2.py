@@ -83,6 +83,8 @@ def main(name):
         scene["data"] = {"camera": s["cam"], "prompt": prompt, "motion": motion, "characters": on}
         if s.get("looks"):
             scene["data"]["character_looks"] = s["looks"]
+        if s.get("nospeak"):
+            scene["data"]["nospeak"] = s["nospeak"]  # gen-dh leaves their lips out of the speaking sentence
         buy = getattr(spec, "BUY", {}).get(sid)
         if buy:
             scene["data"]["buy_seconds"] = buy  # gen-dh buys this many seconds instead of 5 or 6 (the long shots)

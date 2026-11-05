@@ -165,7 +165,10 @@ for (const scene of video.scenes) {
   }
   const camera = cameraSentence(d.camera);
   const orig = locked ?? `${motion}. ${camera}`.trim();
-  const on = (scene.lines ?? []).filter((l) => l.speaker !== "xitong" && (d.characters ?? []).includes(l.speaker));
+  // Lips move only for on-screen speakers who really speak: a thought in voice-over (emotion 嘴閉著／內心獨白) and a
+  // speaker listed in data.nospeak (back to the camera, face buried) keep their lips closed (e001-r2 s08, s38, 2026-11-05).
+  const silent = new Set(d.nospeak ?? []);
+  const on = (scene.lines ?? []).filter((l) => l.speaker !== "xitong" && (d.characters ?? []).includes(l.speaker) && !silent.has(l.speaker) && !/嘴閉著|內心獨白/.test(l.emotion ?? ""));
   const by = {};
   for (const l of on) (by[l.speaker] ??= []).push(`「${l.text.replace(/[。]$/, "")}」`);
   const talk = Object.entries(by).map(([id, ls]) => `${EN[id] ?? id} speaks ${ls.length > 1 ? `${ls.length} short Mandarin lines, ${ls.join(" then ")}` : `a short Mandarin line, ${ls[0]}`}, ${HER.has(id) ? "her" : "his"} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes`).join("; ");
