@@ -41,10 +41,14 @@ S = []
 EYES = {"kid-shiver", "down-palm", "kid-empty-gap", "kid-rug", "kid-question", "kid-dent", "chief-both-ways",
         "chief-not-heater", "chief-secret", "chief-feather", "wind-chill", "ice-back", "chief-plausible",
         "chief-one-way", "kid-sleeve", "chief-drying", "chief-shell", "kid-shake-jacket", "chief-turn-up", "kid-tile-again"}
+# Eye shots whose first eye redraw still failed three takes: ask for a straight look instead.
+EYES_FRONT = {"kid-sleeve", "kid-question", "down-palm", "kid-dent", "chief-shell"}
 def _shot(id, prompt, chars, lines, chapter):
     cam = FROZEN.get(id) or next(CAMS)
     if id in EYES:
         eyes = ", her two eyes matching, both pupils looking the same way"
+        if id in EYES_FRONT:
+            eyes = ", looking straight at the viewer with two matching round eyes"
         for desc in (KIDDESC, CHIEFDESC):
             prompt = prompt.replace(", " + desc, eyes + ", " + desc)
     S.append(dict(id=id, chapter=chapter, template="shot", data=dict(prompt=prompt, camera=cam, visual="still", characters=list(chars)), lines=list(lines)))
