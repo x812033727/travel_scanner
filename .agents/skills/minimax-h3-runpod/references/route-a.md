@@ -124,3 +124,10 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - **volume 上的模型檔壞了**（2026-11-03）：換新 pod 也一樣失敗、但第一段（只用 H3 的檔）正常，就是 volume 上那個檔壞了；開機的 `fetch_models.py` 只看 `.verified` 標記和大小，不重驗內容，所以新 pod 修不好。站主在後台 RunPod 卡「空間」刪掉 volume（要先停 pod），下一台 pod 會在有貨的地方自動開新 volume、重下約 112 GiB（e049 在 EU-CZ-1，開機到第一支約 40 分鐘）。
 - **台詞會被畫成字幕**（e053 s05）：正文寫 `speaks a short Mandarin line, 「衝——！」`，草稿在畫面中間燒進一行「衝——！」。只有一兩個字的喊叫最容易出事；改寫成 `shouts out loud, his mouth wide open in a shout` 並補「The picture is clean: no subtitles, no captions, no text」，重抽一次就乾淨。
 - **24 小時上限也會到**（2026-11-04）：長開的 pod 在第 24 小時被站台停掉（`max_hours`），`st23-retry.sh` 照常接手，但當時 EU-CZ-1 沒貨 90 分鐘。一台 pod 大約跑 4.5 集就會碰到上限；接力時不必提前換，讓重試迴圈處理即可。
+
+## 雲端 session 的磁碟（2026-11-05，第 55 集）
+
+- 每集的工作資料夾約 1.5–2 GB；最大的是 `segments-v4`（約 800 MB），是 `asm.sh` 的中間片段，重剪時會重建。整集上架後就可以刪。
+- 幫別的 session 推備份分支時，**不要用一般的 `git worktree add`**：一份完整 checkout 就要 1.5 GB，兩份幾乎把配額用完，升 1080p 寫檔會失敗。改用
+  `git worktree add --no-checkout -b <branch> <dir> origin/main && git -C <dir> read-tree origin/main`，只放要加的檔，`git add -f`、commit，推完 `git worktree remove --force`。
+- 開工前看 `df -h /home/user` 的 Avail；低於 3 GB 就先清已上架集數的 `segments-v4`。
