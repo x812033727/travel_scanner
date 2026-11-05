@@ -321,7 +321,7 @@ loops = [{"setup": loops_s[key], "payoff": loops_p[key], "what": WHAT[key]} for 
 
 doc = {
     "schema_version": 1, "slug": SLUG, "format": "drama", "category": "explainer", "narration_locale": "zh-TW",
-    "target_minutes": [10, 13], "voice": VOICE, "subtitles": {"burn_in": False}, "look": {"preset": "cute-cartoon"},
+    "target_minutes": [10, 13], "voice": VOICE, "subtitles": {"burn_in": False}, "theme": "paper", "look": {"preset": "cute-cartoon"},
     "characters": CHARACTERS, "loops": loops,
     "youtube": {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",

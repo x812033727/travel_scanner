@@ -65,3 +65,4 @@
   - 結果：165 句、107 張插圖、6 張卡片（95%）、`loops` 21 個全部回收，小問約 24% 字數，lint 估 10.1 分鐘，0 錯誤、15 警告（已知不改）。
     留下的鏡頭運鏡都沒變；新鏡頭 6 個（kid-cat、chief-fur、kid-cold-ears、chief-faster、kid-thermos-neck、chief-neck），沒有改提示詞的舊鏡頭；
     刪掉 kid-callback、chief-word、kid-zip-up 與 down-works 卡片。新加的 6 句事實還沒有給查核代理看過。
+- **2026-11-05 卡片改紙底**：站主「原來如此事務所裡面小卡我要用紙質的」，`build_scenes.py` 加頂層 `theme: "paper"`；6 張卡片與片尾的預覽在 [`paper-cards-preview.jpg`](paper-cards-preview.jpg)（`render/repeat.mjs` 只畫卡片，兩輪逐格相同）。只影響卡片，插圖與快取不動。
