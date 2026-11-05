@@ -37,7 +37,7 @@ def main(name):
     for cid in spec.CHARACTERS:
         if cid in CAST:
             c = CAST[cid]
-            chars.append({"id": c["id"], "name": c["name"], "appearance": c["appearance"], "voice": c["voice"]})
+            chars.append({k: c[k] for k in ("id", "name", "appearance", "voice", "shot_looks") if k in c})
         else:
             chars.append(spec.MINOR[cid])
     names = {c["id"]: c["name"] for c in chars}

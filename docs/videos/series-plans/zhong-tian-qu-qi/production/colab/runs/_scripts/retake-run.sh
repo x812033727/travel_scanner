@@ -7,6 +7,8 @@ EP=$(printf '%03d' "$1"); R=${VIDEO_WORKDIR:-$HOME/mokaair-work/videos}/zhong-ti
 REPO="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel)"
 keep=(); [ "${KEEP:-0}" = 1 ] && keep=(--keep)
 mkdir -p "$R/out"
+# Read every prompt before paying (preflight-prompts.py): an ERROR stops; PREFLIGHT=0 skips it.
+[ "${PREFLIGHT:-1}" = 0 ] || python3 -I "$(dirname "${BASH_SOURCE[0]}")/preflight-prompts.py" "$R/retake.json" || exit 2
 for i in $(seq 1 20); do
   echo "=== try $i $(date -u +%T)"
   bash "$REPO/.agents/skills/minimax-h3-runpod/scripts/h3r.sh" batch --manifest "$R/retake.json" --output-dir "$R/out" \

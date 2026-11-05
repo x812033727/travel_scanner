@@ -15,6 +15,8 @@ VIDEO_WORKDIR="$A" node "$P/colab/ref2manifest.mjs" "$P/hailuo/clips-dh-e$EP.jso
 X=$P/colab/runs/e$EP/extras.json; [ -f "$X" ] || { mkdir -p "$(dirname "$X")"; echo '{}' > "$X"; }
 python3 -I "$P/colab/runs/_scripts/extras_patch.py" "$M" "$P/assets/refs-dh" "$REPO/docs/videos/zhong-tian-qu-qi-e$EP/video.json" "$X" || exit 2
 for p in "$M"/ref-e"$EP"-part*.json; do bash "$S/h3r.sh" check --manifest "$p" || exit 1; done
+# Read every prompt before paying (preflight-prompts.py): an ERROR stops the batch; PREFLIGHT=0 skips it.
+[ "${PREFLIGHT:-1}" = 0 ] || python3 -I "$P/colab/runs/_scripts/preflight-prompts.py" "$M"/ref-e"$EP"-part*.json || exit 2
 [ "${DRY:-0}" = 1 ] && exit 0
 stop_pod() { echo "=== stop $(date -u +%T)"; bash "$S/h3r.sh" stop; }
 [ "${KEEP:-0}" = 1 ] || trap stop_pod EXIT
