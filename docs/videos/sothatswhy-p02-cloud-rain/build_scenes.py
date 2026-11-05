@@ -548,6 +548,23 @@ if _added:
 
 # ---------- assemble ----------
 scenes = []; loops_s = {}; loops_p = {}; n = 0
+# ---------- 2026-11-05 eyes (owner: "眼珠怪怪的 … 不只一次"; review by an independent agent) ----------
+# Shots whose drawing had pupils pointing different ways or blank slit eyes; the redraw asks for
+# matching eyes and the keyframe judge now checks them.
+EYES = {"kid-million", "pan-on-stove", "snow-to-rain", "droplet-vanish", "feather-stone", "chief-air-holds",
+        "chief-folder", "chief-answer-one"}
+_eyes = ", her two eyes matching with round pupils, both looking the same way"
+for sc in S:
+    if sc["id"] in EYES:
+        p = sc["data"]["prompt"]
+        for desc in (KIDDESC, CHIEFDESC):
+            if ", " + desc in p:
+                p = p.replace(", " + desc, _eyes + ", " + desc); break
+        else:
+            p = p.rstrip(". ") + _eyes
+        sc["data"]["prompt"] = p
+assert EYES <= {sc["id"] for sc in S}
+
 for sc in S:
     lines = []
     for sp, text, emo, tag in sc["lines"]:
