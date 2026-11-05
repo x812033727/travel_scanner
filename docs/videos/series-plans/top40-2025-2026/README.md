@@ -64,7 +64,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | 17 | 小小球神不好惹（補位，熱力值） | 9074 | `2025-17-qiushen` | 17 | **done**：5 季 300 集，validate 零錯誤 | 8922 | `2026-17-chouxiaoya` |
 | 18 | 人面桃花長相憶（補位） | 6768 | `2025-18-renmian-taohua` | 18 | **done**：5 季 300 集，validate 零錯誤 | 8386（日均） | `2026-18-chai-cp` |
 | 19 | 好孕甜妻被鑽石老公寵上天（補位） | 6059 | `2025-19-haoyun-tianqi` | 19 | **done**：5 季 300 集，validate 零錯誤 | 8264 | `2026-19-datang-hanxu` |
-| 20 | 家庭煮夫（補位） | 5945 | `2025-20-jiating-zhufu` | 20 | outline；季檔待派 | 8251 | `2026-20-fapei-bianguan` |
+| 20 | 家庭煮夫（補位） | 5945 | `2025-20-jiating-zhufu` | 20 | **done**：5 季 300 集，validate 零錯誤 | 8251 | `2026-20-fapei-bianguan` |
 
 ## 進度
 
@@ -113,7 +113,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2026-19-datang-hanxu` | 全京城都說我憨，只有我姊不信 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-19-haoyun-tianqi` | 我兒子在戶政門口徵爸爸 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-20-fapei-bianguan` | 半袋糧認下的媳婦，把邊關種綠了 | **done**：5 季 300 集，validate 零錯誤 |
-| `2025-20-jiating-zhufu` | 三年期滿，我收回岳家的風光 | outline；季檔待派 |
+| `2025-20-jiating-zhufu` | 三年期滿，我收回岳家的風光 | **done**：5 季 300 集，validate 零錯誤 |
 | 其餘 0 部 | 未定 | reference（套路拆解） |
 
 ## 每部怎麼做
