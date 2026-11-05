@@ -72,6 +72,8 @@ test("each package role has its place in the work directory, as package lays it 
   assert.equal(placeOf("recordings_manifest", "application/json"), "recordings/manifest.json");
   assert.equal(placeOf("recording_zh-TW", "audio/wav"), "recordings/zh-TW.wav");
   assert.equal(placeOf("recording_th", "audio/wav"), "recordings/th.wav");
+  assert.equal(placeOf("recording_fit-lines", "audio/wav"), "recordings/fit-lines.wav");
+  assert.equal(placeOf("recording_fit-en", "audio/wav"), "recordings/fit-en.wav");
   // review-push: captions as text/plain, dub roles as stages.mjs dubRole writes them, and the
   // language batch's unchecked track outside the package.
   assert.equal(placeOf("captions_en", "text/plain"), "upload/captions/en.srt");

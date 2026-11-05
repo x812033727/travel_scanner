@@ -550,7 +550,7 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, rec
   for (const item of carried) sent.push({ ...(await upload(site, meta.slug, item.file, item.role)), content_type: item.content_type });
   if (carried.length) log(`${meta.slug}: ${carried.length} clip(s) sent with the package for the Drive backup`);
   for (const item of recorded) sent.push({ ...(await upload(site, meta.slug, item.file, item.role)), content_type: item.content_type });
-  if (recorded.length) log(`${meta.slug}: ${recorded.length - 1} locale(s) of line recordings sent with the package for the Drive backup`);
+  if (recorded.length) log(`${meta.slug}: ${recorded.filter((item) => item.role.startsWith("recording_") && !item.role.startsWith("recording_fit-")).length} locale(s) of line recordings and ${recorded.filter((item) => item.role.startsWith("recording_fit-")).length} fitted folder(s) sent with the package for the Drive backup`);
   const review = await site.submit(meta.slug, {
     gate: "publish",
     content_sha256: sent[0].sha256,

@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 
-import { packRecordings, recordingDirs, unpackRecordings, wavFile, wavParts } from "./recordings.mjs";
+import { fittedDirs, packRecordings, recordingDirs, unpackRecordings, wavFile, wavParts } from "./recordings.mjs";
 
 const FMT = Buffer.from([1, 0, 1, 0, 0x80, 0xbb, 0, 0, 0, 0x77, 1, 0, 2, 0, 16, 0]); // PCM, mono, 48 kHz, 16-bit
 const wav = (samples, fmt = FMT) => wavFile(fmt, Buffer.from(samples));
@@ -76,4 +76,62 @@ test("pack with no recordings writes nothing; unpack refuses a wav that is not t
   packRecordings(work, out);
   writeFileSync(path.join(out, "en.wav"), wav([0, 0, 0, 0]));
   assert.throws(() => unpackRecordings(out, path.join(dir, "back")), /en\.wav is not the one the manifest names/);
+});
+
+const STEREO = Buffer.from([1, 0, 2, 0, 0x80, 0xbb, 0, 0, 0, 0xee, 2, 0, 4, 0, 16, 0]);
+
+function fitted(work) {
+  for (const folder of ["segments/dub-en", "segments-v4/lines", "segments-v4/dub-en", "segments-v4/dub-ja"]) mkdirSync(path.join(work, folder), { recursive: true });
+  writeFileSync(path.join(work, "segments", "dub-en", "old.wav"), wav([9, 9], STEREO));
+  writeFileSync(path.join(work, "segments-v4", "lines", "_s01.wav"), wav([0, 0, 0, 0], STEREO));
+  writeFileSync(path.join(work, "segments-v4", "lines", "zq35a01.wav"), wav([1, 1, 2, 2], STEREO));
+  writeFileSync(path.join(work, "segments-v4", "dub-en", "zq35a01.raw.wav"), wav([3, 3, 4, 4], STEREO));
+  writeFileSync(path.join(work, "segments-v4", "dub-en", "zq35a01.wav"), wav([3, 4, 3, 4], STEREO));
+  writeFileSync(path.join(work, "segments-v4", "dub-en", "dialogue.wav"), wav([0, 0, 3, 4, 3, 4, 0, 0], STEREO));
+  writeFileSync(path.join(work, "segments-v4", "dub-en", "fit.json"), '[{"id":"zq35a01","start":0.12,"tempo":1}]\n');
+  writeFileSync(path.join(work, "segments-v4", "dub-ja", "fit.json"), "[]\n");
+  writeFileSync(path.join(work, "segments-v4", "mix-graph.txt"), "not packed");
+}
+
+test("fittedDirs: the newest segments folder's lines/ and dub-<locale>/", (t) => {
+  const { work } = box(t);
+  fitted(work);
+  assert.deepEqual(fittedDirs(work).map(({ key, folder }) => [key, folder]), [["fit-lines", "segments-v4/lines"], ["fit-en", "segments-v4/dub-en"], ["fit-ja", "segments-v4/dub-ja"]]);
+  assert.deepEqual(fittedDirs(path.join(work, "clips")), []);
+});
+
+test("pack carries the fitted takes, dialogue.wav and fit.json too; unpack gives them back byte for byte", (t) => {
+  const { dir, work, out } = box(t);
+  fitted(work);
+  const { files, manifest, problems } = packRecordings(work, out);
+  assert.deepEqual(problems, []);
+  assert.deepEqual(files.map((file) => [path.basename(file.file), file.role]), [
+    ["manifest.json", "recordings_manifest"],
+    ["zh-TW.wav", "recording_zh-TW"],
+    ["en.wav", "recording_en"],
+    ["fit-lines.wav", "recording_fit-lines"],
+    ["fit-en.wav", "recording_fit-en"],
+  ]);
+  assert.equal(manifest.schema_version, 2);
+  assert.equal(manifest.fitted["fit-en"].folder, "segments-v4/dub-en");
+  assert.equal(manifest.fitted["fit-en"].texts["fit.json"], '[{"id":"zq35a01","start":0.12,"tempo":1}]\n');
+
+  const back = path.join(dir, "back");
+  assert.equal(unpackRecordings(out, back), 4 + 2 + 4);
+  for (const folder of ["segments-v4/lines", "segments-v4/dub-en"]) {
+    const names = readdirSync(path.join(back, folder)).sort();
+    assert.deepEqual(names, readdirSync(path.join(work, folder)).sort());
+    for (const name of names) assert.deepEqual(readFileSync(path.join(back, folder, name)), readFileSync(path.join(work, folder, name)), `${folder}/${name}`);
+  }
+});
+
+test("unpack refuses a fitted folder outside segments*/", (t) => {
+  const { dir, work, out } = box(t);
+  fitted(work);
+  packRecordings(work, out);
+  const file = path.join(out, "manifest.json");
+  const manifest = JSON.parse(readFileSync(file, "utf8"));
+  manifest.fitted["fit-en"].folder = "../escape";
+  writeFileSync(file, JSON.stringify(manifest));
+  assert.throws(() => unpackRecordings(out, path.join(dir, "back")), /bad folder \.\.\/escape/);
 });
