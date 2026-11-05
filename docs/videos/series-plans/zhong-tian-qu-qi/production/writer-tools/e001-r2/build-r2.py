@@ -83,6 +83,9 @@ def main(name):
         scene["data"] = {"camera": s["cam"], "prompt": prompt, "motion": motion, "characters": on}
         if s.get("looks"):
             scene["data"]["character_looks"] = s["looks"]
+        buy = getattr(spec, "BUY", {}).get(sid)
+        if buy:
+            scene["data"]["buy_seconds"] = buy  # gen-dh buys this many seconds instead of 5 or 6 (the long shots)
         scenes.append(scene)
     doc = {k: BASE[k] for k in ["schema_version"]}
     doc["slug"] = "zhong-tian-qu-qi-e001-r2"

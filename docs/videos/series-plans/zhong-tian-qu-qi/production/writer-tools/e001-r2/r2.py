@@ -250,3 +250,6 @@ FOOT = [
     "- 唐小棠用 `tangxiaotang-portrait-t2`（gen-dh 的 PORTRAIT 對照）；她的鏡頭構圖都寫成下巴以上或「襦裙從立領到腰一件闔上」（第 56 集的教訓）。",
 ]
 BRIEF = "見 `docs/videos/zhong-tian-qu-qi-e001-r2/brief.md`（工作編號 901 的資料夾只放產物）。"
+
+# Long shots (script.md 長鏡清單): seconds to buy, so the lines fit without slowing past 1.1x.
+BUY = {"s01": 8, "s08": 12, "s14": 10, "s31": 11, "s34": 11, "s35": 10, "s37": 8}
