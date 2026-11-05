@@ -325,6 +325,8 @@ loops = [{"setup": loops_s[key], "payoff": loops_p[key], "what": WHAT[key]} for 
 doc = {
     "schema_version": 1, "slug": SLUG, "format": "drama", "category": "explainer", "narration_locale": "zh-TW",
     "target_minutes": [10, 13], "voice": VOICE, "subtitles": {"burn_in": False}, "theme": "paper", "look": {"preset": "cute-cartoon"},
+    # Same 14-minute bed as P02 (one paid Lyria take, tail trimmed, crossfaded): the series sounds the same.
+    "music": {"track": "sothatswhy-p02-bed.m4a", "sha256": "54169439df49a00bc3ad993a148690be9f79d1dff8a4ea5143e64e583001b20c", "gain_db": -20, "duck_db": -10},
     "characters": CHARACTERS, "loops": loops,
     "youtube": {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
