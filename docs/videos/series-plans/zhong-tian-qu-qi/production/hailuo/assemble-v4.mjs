@@ -97,6 +97,9 @@ for (const scene of video.scenes) {
   }
   let dur = lines.length ? LEAD + lines.reduce((a, l) => a + l.len, 0) + GAP * (lines.length - 1) + TAIL : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
   dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
+  // `frame_round: true` (e001-r2 on): every shot a whole number of 24 fps frames, so the stream-copied concat stays at
+  // exactly 24 fps instead of drifting to 23.976 (season 1 lost ~5 frames a 100 s cut); off for episodes already dubbed.
+  if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
   const src = scene.data?.source;
   const clip = src ? firstTake(path.join(work, "clips"), src.shot) : pick(path.join(work, "clips"), scene.id);
   const still = pick(path.join(work, "first-frames"), src ? src.shot : scene.id);
