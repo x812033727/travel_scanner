@@ -68,6 +68,8 @@
 
 ### 跳過的配音再做一次（2026-10-10）
 
+2026-11-01 起影片工具權杖也能要求：`POST /api/video/reviews/{slug}/languages/{locale}/dub/retry`（`client.mjs` 的 `dubRetry`），以建立權杖的帳號的名義送出，和後台按鈕走同一段服務、同樣的拒絕條件與語音預算檢查；稽核紀錄多一欄 `tool_token_id`。找不到建立權杖的帳號就 403 `video_tool_token_owner_missing`。起因是 `daily-ai-20261029` 的印尼文在修正部署後要站主再按一次，而拿著權杖的工作階段按不到。
+
 工人放棄的配音在面板上是「跳過（原因）」。在這之前沒有路可以再試：選擇沒變，儲存什麼都不寫；取消再勾，舊批次仍然說它跳過，工人也不會再碰。現在那一格有「再做一次」。這一節是網站這一側（存什麼、端點、那一格顯示什麼）；工人檢查什麼、清掉什麼、要花什麼在 [`DUBS.md`](DUBS.md) §再做一次。
 
 **存什麼。** `video_projects.dub_retries` 每個語言（en、ja、ko）一筆，只留最新的一次要求：
@@ -180,7 +182,7 @@
 | 語言縮圖 | 泰文用新加的 Noto Sans Thai（`@fontsource-variable/noto-sans-thai`，`ops/video/package.json` 也加了）；西葡印越用 Noto Sans TC 本來就有的拉丁與越南文字集 |
 | VPS 上傳器 | Studio 下拉選單的名稱：Spanish (Latin America)、Portuguese (Brazil)、Indonesian、Vietnamese、Thai，還沒在真的 Studio 對過；一次最多 20 個檔（成片、縮圖、九種 CC、八條配音） |
 | 第二期：配音 | 語速起始值、配音語氣、伺服器的聽寫提示、Whisper 的語言、越文聲調位置的比對，見 [`DUBS.md`](DUBS.md) §另外五種語言 |
-| 還沒做的 | 第二期的試做（一支 10 分鐘影片配 pt 與 th）、月額度調到 1,500,000（主機 `.env`，要站主核准）、Shorts、合集的五語 |
+| 還沒做的 | 第二期的試做（一支 10 分鐘影片配 pt 與 th）、Shorts、合集的五語 |
 
 試做：一支做好的影片勾五語的標題說明與 CC，泰文與越文的 CC 先請懂的人（或另一個模型）看過，再讓面板大量勾。
 

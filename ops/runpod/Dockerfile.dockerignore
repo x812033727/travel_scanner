@@ -1,0 +1,8 @@
+# Build context for ops/runpod/Dockerfile (context = repository root): only what it copies.
+*
+!ops/runpod/gate.py
+!ops/runpod/fetch_models.py
+!ops/runpod/models.lock
+!ops/runpod/entrypoint.sh
+!ops/runpod/smoke.py
+!ops/runpod/workflows

@@ -1,0 +1,562 @@
+{
+  "review_id": "wave2-engineering-reviews-electricity-measurement-20261101",
+  "reviewer": "science_sources (author of engineering batch; independent of E/M authors)",
+  "reviewed_on": "2026-11-01",
+  "status": "PASS_TOPIC_LEVEL_WITH_RECORDED_LIMITS",
+  "production_ready": false,
+  "scope": "逐題編輯閱讀 E2001–E2286 和 M2001–M2089 的題名、answer_target、scope、source_ids、source_locator、notes；對照當前中央去重裁決及G17–G19。外站只作24個精確來源頁面的風險抽查，未重查全庫所有題或全部140個來源，未做完整稿逐主張查核、盲讀、媒體實測或製作核准。",
+  "coverage": {
+    "electricity": {
+      "first": "E2001",
+      "last": "E2286",
+      "candidates": 286
+    },
+    "measurement": {
+      "first": "M2001",
+      "last": "M2089",
+      "candidates": 89
+    },
+    "editorially_read_total": 375,
+    "not_exhaustive_cross_pool_semantic_audit": true
+  },
+  "external_sampling": {
+    "successful_source_pages": 24,
+    "electricity_source_pages": 15,
+    "measurement_source_pages": 9,
+    "finally_unread_attempted_pages": 0,
+    "selection": "風險導向：變數混淆、崩潰類型、保持漏電、記憶體與探測器故事、非理想電容、信賴/不確定度、量測追溯及地理資料。不是隨機抽樣，不推算全池通過率。",
+    "failed_attempts_resolved": [
+      {
+        "source_id": "E2-S086",
+        "method": "urllib PDF timed out; web PDF text successful"
+      },
+      {
+        "source_id": "E2-S066",
+        "method": "urllib PDF timed out; web PDF text successful"
+      },
+      {
+        "source_id": "M2-S038",
+        "method": "web open timeout; urllib HTML successful"
+      }
+    ],
+    "checks": [
+      {
+        "source_id": "E2-S002",
+        "candidate_ids": [
+          "E2009"
+        ],
+        "locator": "§5.3 Coulomb's Law, net charge/distance/mass paragraph",
+        "read_via": "web.run open",
+        "result": "支持固定帶電量與距離下，質量不決定庫侖力；原題同時改兩變數的問題已修。",
+        "checked_on": "2026-11-01",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/5-3-coulombs-law"
+      },
+      {
+        "source_id": "E2-S008",
+        "candidate_ids": [
+          "E2027",
+          "E2028",
+          "E2029"
+        ],
+        "locator": "§7.5 zero work / perpendicular equipotential / conductor potential paragraphs",
+        "read_via": "web.run open",
+        "result": "三段原理有據；E2028為E2027的幾何表達，E2029與E2020是同一平衡條件的表示。",
+        "checked_on": "2026-11-01",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/7-5-equipotential-surfaces-and-conductors"
+      },
+      {
+        "source_id": "E2-S025",
+        "candidate_ids": [
+          "E2095",
+          "E2096",
+          "E2097"
+        ],
+        "locator": "§10.5 Charging a Capacitor, Eq10.8–10.10, Figure10.39",
+        "read_via": "web.run open",
+        "result": "支持壓差下降、RC尺度與指數趨近；一個時間常數不是充滿時間，併回曲線主題。",
+        "checked_on": "2026-11-01",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits"
+      },
+      {
+        "source_id": "E2-S055",
+        "candidate_ids": [
+          "E2181"
+        ],
+        "locator": "§9.7 Diodes, paragraph before Figure9.25",
+        "read_via": "web.run open/find",
+        "result": "來源支持反向雪崩方向；修後題名與scope明確排除把齊納穿隧概括為碰撞倍增。",
+        "checked_on": "2026-11-01",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/9-7-semiconductor-devices"
+      },
+      {
+        "source_id": "E2-S066",
+        "candidate_ids": [
+          "E2213"
+        ],
+        "locator": "MT-015 PDF p2, capacitive DAC leakage paragraph",
+        "read_via": "web.run PDF text after urllib timeout",
+        "result": "支持電容保持會因漏電失準；未沿用舊文件毫秒數作所有器件的性能。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-015.pdf"
+      },
+      {
+        "source_id": "E2-S077",
+        "candidate_ids": [
+          "E2236",
+          "E2237",
+          "E2238",
+          "E2239"
+        ],
+        "locator": "Detector options PMT/photoconductive/APD/SiPM/quenching; Selection criteria PDE",
+        "read_via": "web.run open/find",
+        "result": "支持倍增、偏壓取捨、淬熄與PDE組成；PDE不能等同QE，未把廠商2014產品選型斷言當現況。",
+        "checked_on": "2026-11-01",
+        "url": "https://hub.hamamatsu.com/us/en/technical-notes/detector-selection/guide-to-detector-selection.html"
+      },
+      {
+        "source_id": "E2-S086",
+        "candidate_ids": [
+          "E2259",
+          "E2260",
+          "E2261"
+        ],
+        "locator": "MT-101 PDF pp1–4, Proper Decoupling; Real Capacitors and Their Parasitics",
+        "read_via": "web.run PDF text after urllib timeout",
+        "result": "局部電荷需求、走線電感、ESL自諧振與ESR有據；發熱情境仍須按頻率、電流與元件損耗模型具體驗算。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-101.pdf"
+      },
+      {
+        "source_id": "E2-S087",
+        "candidate_ids": [
+          "E2262"
+        ],
+        "locator": "FAQ answer and Note: ferroelectric MLCC vibration transferred to board",
+        "read_via": "web.run open",
+        "result": "支持相關鐵電MLCC的機電耦合與板振聲音，不能擴為所有電容或所有板上異音。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.murata.com/en-us/support/faqs/capacitor/ceramiccapacitor/char/0020"
+      },
+      {
+        "source_id": "E2-S092",
+        "candidate_ids": [
+          "E2271"
+        ],
+        "locator": "FAQ high-dielectric versus C0G; The mechanism of DC bias characteristic",
+        "read_via": "web.run open",
+        "result": "支持高介電陶瓷在偏壓下有效容量改變，C0G不應被一併概括。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.murata.com/en-us/support/faqs/capacitor/ceramiccapacitor/char/0005"
+      },
+      {
+        "source_id": "E2-S093",
+        "candidate_ids": [
+          "E2272",
+          "E2273",
+          "E2274"
+        ],
+        "locator": "Introduction; IV Afterpulsing/Cross-talk; V PDE/Dynamic range",
+        "read_via": "web.run open/find",
+        "result": "陷阱釋放與內部光學串音機制不同；有限像素占用模型有明定短脈衝條件，來源還列過飽和偏離，不能作全域精確預測。",
+        "checked_on": "2026-11-01",
+        "url": "https://hub.hamamatsu.com/us/en/technical-notes/mppc-sipms/physics-and-operation-of-the-MPPC-silicon-photomultiplier.html"
+      },
+      {
+        "source_id": "E2-S094",
+        "candidate_ids": [
+          "E2275"
+        ],
+        "locator": "charge-storage/readout-threshold/state retention paragraphs",
+        "read_via": "web.run open",
+        "result": "支持儲存電荷影響讀取門檻與斷電保留；不是永不流失保證。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.kioxia.com/en-jp/rd/technology/nand-flash.html"
+      },
+      {
+        "source_id": "E2-S095",
+        "candidate_ids": [
+          "E2276"
+        ],
+        "locator": "Mechanism of capacity increases; Using different multi-level cell technology",
+        "read_via": "web.run open",
+        "result": "支持門檻分布多階編碼與辨認餘裕取捨；不把示意單元當全部實際架構。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.kioxia.com/en-jp/rd/technology/multi-level-cell.html"
+      },
+      {
+        "source_id": "E2-S096",
+        "candidate_ids": [
+          "E2277"
+        ],
+        "locator": "Toggle MRAM MTJ read/write and fixed/free magnetic layers",
+        "read_via": "web.run open",
+        "result": "支持磁性狀態對應阻值；限Toggle，頁面unlimited-endurance等行銷概括不納入本輪通過範圍。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.everspin.com/toggle-mram-technology-1"
+      },
+      {
+        "source_id": "E2-S101",
+        "candidate_ids": [
+          "E2282"
+        ],
+        "locator": "DRAM memory cell/refresh paragraphs",
+        "read_via": "web.run open/find",
+        "result": "支持電容單元須刷新；作者已排除來源把讀回恢復與precharge混稱的簡化，不背書該措辭。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.tek.com/en/documents/primer/sdram-memory-systems-embedded-test-measurement-challenges"
+      },
+      {
+        "source_id": "E2-S102",
+        "candidate_ids": [
+          "E2283",
+          "E2284"
+        ],
+        "locator": "Reliability Handbook PDF pp62–63, 2-1-7-1/2",
+        "read_via": "urllib.request PDF in memory; PyMuPDF text",
+        "result": "支持浮閘模型中寫抹引發缺陷與讀擾方向；不得從模型推出所有SSD相同耐久次數。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.kioxia.com/content/dam/kioxia/en-jp/about/asset/reliability-handbook-e.pdf"
+      },
+      {
+        "source_id": "M2-S001",
+        "candidate_ids": [
+          "M2001",
+          "M2002"
+        ],
+        "locator": "FAQ5.1.1/5.2.1/5.4.3 and adjacent SRM clarification",
+        "read_via": "web.run open/find",
+        "result": "追溯屬量測結果而非僅儀器貼標，完整鏈與不確定度支持題目前提。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.nist.gov/metrology/metrological-traceability"
+      },
+      {
+        "source_id": "M2-S007",
+        "candidate_ids": [
+          "M2015",
+          "M2016",
+          "M2017"
+        ],
+        "locator": "Definition of Location; Why Different Measures; Cauchy Distribution",
+        "read_via": "web.run open",
+        "result": "支持平均、中位、眾數及Cauchy反例；原scope有特殊分布條件，不否定一般大數法則。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda351.htm"
+      },
+      {
+        "source_id": "M2-S015",
+        "candidate_ids": [
+          "M2038",
+          "M2039",
+          "M2040"
+        ],
+        "locator": "Purpose and Definition: Confidence Interval",
+        "read_via": "web.run open",
+        "result": "支持重複抽樣覆蓋解讀、樣本數與寬度關係；未把固定算出的區間說成真值有95%機率落入。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm"
+      },
+      {
+        "source_id": "M2-S019",
+        "candidate_ids": [
+          "M2049",
+          "M2050"
+        ],
+        "locator": "Blocking nuisance factors; block/randomize complement; model",
+        "read_via": "web.run open",
+        "result": "分區控制已知干擾與剩餘因素隨機化有不同任務，可保留素材，但應在同一實驗故事比較。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm"
+      },
+      {
+        "source_id": "M2-S027",
+        "candidate_ids": [
+          "M2063"
+        ],
+        "locator": "TN1297 §§6.1–6.4 and archived-page notice",
+        "read_via": "web.run open",
+        "result": "k=2對約95%需分布與標準不確定度條件；原題已註舊指引不作現行合規證據。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-6-expanded-uncertainty"
+      },
+      {
+        "source_id": "M2-S030",
+        "candidate_ids": [
+          "M2066",
+          "M2067"
+        ],
+        "locator": "Uniform Distribution density/CDF; Parameter Estimation, endpoint MLE",
+        "read_via": "web.run open",
+        "result": "均勻模型與端點估計有據；有限樣本不必均勻鋪滿是編輯推導待自建驗算，極值估計不能冒充確知母體邊界。M2067已補正定位。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3662.htm"
+      },
+      {
+        "source_id": "M2-S031",
+        "candidate_ids": [
+          "M2068",
+          "M2069",
+          "M2070"
+        ],
+        "locator": "Internet time display; audio buffering; radio-controlled clocks",
+        "read_via": "web.run open target paragraphs",
+        "result": "頁面直接說明串流緩衝、接收鐘內部石英及time-of-day服務不可作區間/頻率追溯。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.nist.gov/pml/time-and-frequency-division/what-time-it-faqs"
+      },
+      {
+        "source_id": "M2-S035",
+        "candidate_ids": [
+          "M2080",
+          "M2081",
+          "M2082"
+        ],
+        "locator": "ellipsoid/geopotential; plumb line; local versus global mean sea level",
+        "read_via": "web.run open",
+        "result": "支持幾何高度與位勢、局部鉛直與海面基準的區別；不外推實際流向或當期datum數字。",
+        "checked_on": "2026-11-01",
+        "url": "https://geodesy.noaa.gov/research/geopotential-datums/geopotential-surface.shtml"
+      },
+      {
+        "source_id": "M2-S038",
+        "candidate_ids": [
+          "M2086",
+          "M2087",
+          "M2088",
+          "M2089"
+        ],
+        "locator": "checkpoint/control point; DEM resolution/DSM/DTM; discrete return lidar",
+        "read_via": "urllib.request HTML main text after web timeout",
+        "result": "支持獨立驗證、格網尺度、樹頂/地面表面差異及多重回波；詞彙定義仍不是完整實際誤差模型。",
+        "checked_on": "2026-11-01",
+        "url": "https://www.usgs.gov/ngp-standards-and-specifications/lidar-base-specification-glossary"
+      }
+    ],
+    "candidate_ids_checked_at_source": [
+      "E2009",
+      "E2027",
+      "E2028",
+      "E2029",
+      "E2095",
+      "E2096",
+      "E2097",
+      "E2181",
+      "E2213",
+      "E2236",
+      "E2237",
+      "E2238",
+      "E2239",
+      "E2259",
+      "E2260",
+      "E2261",
+      "E2262",
+      "E2271",
+      "E2272",
+      "E2273",
+      "E2274",
+      "E2275",
+      "E2276",
+      "E2277",
+      "E2282",
+      "E2283",
+      "E2284",
+      "M2001",
+      "M2002",
+      "M2015",
+      "M2016",
+      "M2017",
+      "M2038",
+      "M2039",
+      "M2040",
+      "M2049",
+      "M2050",
+      "M2063",
+      "M2066",
+      "M2067",
+      "M2068",
+      "M2069",
+      "M2070",
+      "M2080",
+      "M2081",
+      "M2082",
+      "M2086",
+      "M2087",
+      "M2088",
+      "M2089"
+    ],
+    "candidate_count_checked_at_source": 50
+  },
+  "resolved_findings": [
+    {
+      "id": "E2009",
+      "problem": "原題同時改帶電量與重量，與質量獨立的target不一致。",
+      "resolution": "已讀回題名改為固定帶電量與距離。"
+    },
+    {
+      "id": "E2181",
+      "problem": "原廣義反向崩潰題名超出雪崩單一機制。",
+      "resolution": "已讀回題名『有些』、scope限定雪崩並將齊納穿隧另分。"
+    },
+    {
+      "id": "M2067",
+      "problem": "來源定位只有密度/CDF，沒有指向支撐端點估計的小節。",
+      "resolution": "已讀回增加Parameter Estimation / Maximum Likelihood Estimation，來源reading_scope亦補讀。"
+    },
+    {
+      "id": "G18",
+      "problem": "『小電容縮水』可能被解讀成尺寸改變；不同類型電容被同一主詞串起。",
+      "resolution": "已讀回標題改為容量縮水，connection鎖定高介電MLCC、平行板明示只是對照模型。"
+    }
+  ],
+  "new_merge_decisions_confirmed": [
+    {
+      "duplicate_id": "E2028",
+      "canonical_id": "E2027",
+      "reason": "等位移動零功與場垂直是同一關係的能量/幾何敘述。"
+    },
+    {
+      "duplicate_id": "E2029",
+      "canonical_id": "E2020",
+      "reason": "導體平衡內場零與等電位共同來自自由電荷不再受內場驅動。"
+    },
+    {
+      "duplicate_id": "E2097",
+      "canonical_id": "E2095",
+      "reason": "一時間常數未充滿是相同指數趨近過程的必要解釋。"
+    },
+    {
+      "duplicate_id": "E2213",
+      "canonical_id": "E2282",
+      "reason": "現有target僅以電容漏電解釋保持失準或刷新；類比/數位作同核心對照，保留兩邊來源。"
+    }
+  ],
+  "distinctions_to_preserve": [
+    {
+      "ids": [
+        "M2049",
+        "M2050"
+      ],
+      "reason": "固定已知干擾與隨機化剩餘干擾不是同一干預；可在同片比較，不必抹去第二研究問題。"
+    },
+    {
+      "ids": [
+        "M2008",
+        "M2034"
+      ],
+      "reason": "抄寫相同讀值與真實但時間相關的觀測，資料生成條件不同；不要僅見不獨立即全合。"
+    },
+    {
+      "ids": [
+        "M2038",
+        "M2063"
+      ],
+      "reason": "統計信賴程序覆蓋與量測擴充不確定度的k因子條件不可互換。"
+    },
+    {
+      "ids": [
+        "E2273",
+        "E2274"
+      ],
+      "reason": "陷阱載子釋放與內部光學串音機制不同，適合以錯報時間與位置作同片對照。"
+    }
+  ],
+  "thickness_notes": [
+    {
+      "ids": [
+        "E2013",
+        "E2014",
+        "E2015",
+        "E2065",
+        "E2077",
+        "E2088"
+      ],
+      "disposition": "段落素材，無單題長片核准",
+      "reason": "目前多為圖示約定、標示或名詞辨析；若沒有新的因果追問，解釋完就收，不能各自擴成8分鐘。"
+    },
+    {
+      "ids": [
+        "M2020",
+        "M2032",
+        "M2033",
+        "M2051",
+        "M2059"
+      ],
+      "disposition": "短段或併入母題",
+      "reason": "單位、圖例、組合數、歷史刻線反差可當轉折，缺少足夠獨立因果鏈；保留題級來源不等於承諾一題一片。"
+    },
+    {
+      "ids": [
+        "E2095",
+        "E2096",
+        "E2098",
+        "E2099"
+      ],
+      "disposition": "同一充放電/計時母題再篩",
+      "reason": "先解曲線後只保留真正改變條件的應用，不能逐換電器重講RC。"
+    }
+  ],
+  "themes": [
+    {
+      "id": "G17",
+      "planned_body_seconds": 570,
+      "arithmetic_matches_target": true,
+      "result": "可進treatment；斷電保留、密度與寫抹代價能沿同一追問推進。",
+      "conditions": [
+        "MRAM只是回收『物理狀態』的短對照，不轉器件分類；其行銷耐久用語不採。",
+        "刪MRAM後只剩480秒計畫，不以片頭片尾、慢讀或重述補足正文；試讀不足需縮片/再編。",
+        "未核任何具體裝置的斷電保存年限。"
+      ]
+    },
+    {
+      "id": "G18",
+      "planned_body_seconds": 540,
+      "arithmetic_matches_target": true,
+      "result": "修正後可進treatment；同一高介電MLCC的工作條件形成連續追問。",
+      "conditions": [
+        "ESR損耗與ESL頻率效應需分清，不能兩章都只說非理想。",
+        "聲音與DC偏壓只在指定介質和條件下說；標稱容量並非物理外形尺寸。",
+        "需受控圖解/曲線及聲音證據，不將預留95秒當成已拍到唱歌。"
+      ]
+    },
+    {
+      "id": "G19",
+      "planned_body_seconds": 540,
+      "arithmetic_matches_target": true,
+      "result": "可進treatment；一個光事件經放大、重置、漏報、多報到像素占用有單一路徑。",
+      "conditions": [
+        "PMT70秒段只作短對照，進SiPM前須交代碰撞倍增如何啟動，不能忽然跳到淬熄名詞。",
+        "分別畫出陷阱延遲與鄰像素光學觸發，不用同一閃爍動畫重述。",
+        "短脈衝有限像素公式是模型，不當所有強光響應的精確上限；沒有新實測。"
+      ]
+    }
+  ],
+  "unresolved_blocking_findings": [],
+  "limitations": [
+    "這是素材池與節目方向審閱，screened不等於完整答案正確或可以開拍。",
+    "只確認所列來源的小節與題級方向；未逐條覆核其所有公式、圖表、來源內引文或現行規格。",
+    "主題秒數為編輯預算，沒有旁白全文、TTS、畫面或觀看測試。",
+    "未在此覆核作完整2000題兩兩語義比對，中央其他作者和交叉審閱仍負責各自範圍。"
+  ],
+  "inputs": [
+    {
+      "file": "batches/wave2-electricity.json",
+      "sha256": "17a3e40fa79d79ba908d38bb73b0c559e78d8a00212d3fb1a8d13755e70bfbcb",
+      "candidate_count": 286,
+      "source_count": 102
+    },
+    {
+      "file": "batches/wave2-measurement.json",
+      "sha256": "a8e98475ba231033761a79a0c92df8f71aa7d51e824d1d6504953bc87483ef1f",
+      "candidate_count": 89,
+      "source_count": 38
+    },
+    {
+      "file": ".cache/electricity-themes.json",
+      "sha256": "2c8060f60f301007dda2d2d1ac18cab7bd330c9109ea262a8bdba98007b9b802"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "da0f5dc560bb67bc243bfdc9a39b292210ce026b4416275173c098a47b3e269b"
+    }
+  ],
+  "existing_e_m_merges_read_count": 33
+}

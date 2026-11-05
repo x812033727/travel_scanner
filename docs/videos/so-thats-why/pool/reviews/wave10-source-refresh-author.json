@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "author": "root",
+  "status": "SOURCE_REFRESH_FOR_NONAUTHOR_REVIEW",
+  "counts": {
+    "raw": 3,
+    "new_cores": 0,
+    "sources": 4,
+    "new_themes": 0
+  },
+  "locked_artifacts": [
+    {
+      "file": "batches/wave10-source-refresh.json",
+      "sha256": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24"
+    },
+    {
+      "file": "reviews/wave10-representation-probe.json",
+      "sha256": "3894ee2a289400f19ea8a6e80c4d7569da1d684c3e936917ead1effe71ddf420"
+    }
+  ],
+  "recommended_decisions": {
+    "merges": [
+      {
+        "duplicate_id": "R10001",
+        "canonical_id": "LEG-A20",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      },
+      {
+        "duplicate_id": "R10002",
+        "canonical_id": "LEG-A25",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      },
+      {
+        "duplicate_id": "R10003",
+        "canonical_id": "LEG-A35",
+        "reason": "同一歷史核心的來源與限定答案刷新；不得另算新增核心。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R10001",
+        "b": "U4001",
+        "reason": "前者同一emoji編碼呈現的設計差異；後者字型缺字觸發逐字fallback。"
+      },
+      {
+        "a": "R10001",
+        "b": "U4012",
+        "reason": "前者一種編碼可多種字形；後者相似字形卻是不同書寫系統字元。"
+      },
+      {
+        "a": "R10002",
+        "b": "L262",
+        "reason": "表示範圍上限不同於UTC/偏移的文字表示。"
+      },
+      {
+        "a": "R10002",
+        "b": "I8016",
+        "reason": "欄位容納範圍不同於網路延遲造成的對時誤差。"
+      },
+      {
+        "a": "R10003",
+        "b": "LEG-A03",
+        "reason": "GiB/GB的分母差異，不是bit/byte八倍。"
+      },
+      {
+        "a": "R10003",
+        "b": "I3062",
+        "reason": "單位換算不同於二進位浮點無限展開與有限捨入。"
+      }
+    ]
+  },
+  "coverage": {
+    "baseline": "2757 selected /3115raw",
+    "source_reads": "4個官方/維護者頁指定段正文",
+    "old_boundary_method": "搜尋舊raw的emoji/字型/字元/字碼、2038/時間戳/溢位/time_t、GiB/GB/容量/二進位/進位，讀目標與相關命中",
+    "semantic": "待root統一draft近鄰交非作者讀回"
+  },
+  "source_read_failures": [
+    {
+      "url": "https://www.gnu.org/software/gnulib/manual/html_node/Avoiding-the-year-2038-problem.html",
+      "result": "web.open兩次逾時；不算正文讀過"
+    },
+    {
+      "url": "https://www.gnu.org/software/libc/manual/html_node/Time-Types.html",
+      "result": "web.open逾時；不算正文讀過"
+    }
+  ],
+  "limits": [
+    "沒有完整舊答案與附件刷新；121歷史入選待全面重讀數不直接減成118",
+    "既有G79/G59旁白與全部98題案不因本檔改變",
+    "不代表完整影片查核、實際試讀或製作核准"
+  ],
+  "production_ready": false
+}

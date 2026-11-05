@@ -1,0 +1,876 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "author": "pool_physics",
+  "production_ready": false,
+  "scope": "物體與聲音：同一器件、液體或顆粒改一個能辨認的條件，用振動曲線、聲譜或流場把幾種可能來源分開。",
+  "baseline": {
+    "head": "440d2c70285ace7623feb683787ce1e6ea59c348",
+    "selected": 3250,
+    "raw_records": 3631,
+    "not_added": 1633,
+    "pool_sha256": "f41471227f04b878bf54465c869cb69c0bdb5863a00deb8600092be1eb117d4c",
+    "snapshot": {
+      "file": "baselines/2026-11-03-3250.json.gz",
+      "sha256": "caba6983b00dc7da38cc89fe5e14e4b866c9410b998f9e87a7a5f5ca5aa21427"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave40-physics.json",
+      "sha256": "ad32b92d6ef7b18070edd297f993a090ba8288d01e8b7e2a3ff375e21afdf8a9"
+    },
+    {
+      "file": "reviews/wave40-physics-themes.json",
+      "sha256": "074e2305449bde5b7d6815f36ad4e03011725be69881226a93b85f1a024d1536"
+    }
+  ],
+  "counts": {
+    "candidates": 9,
+    "sources": 9,
+    "original_research": 9,
+    "candidate_sources": 9,
+    "not_added_only_sources": 0,
+    "not_added": 18,
+    "near_pairs": 23,
+    "themes": 5
+  },
+  "dedup_reading": {
+    "method": "對3631原始及1633未收檢索問題/答案/scope/英文機制/未收原因的樂器、共鳴與管聲等條件。初掃110原始及31未收，再額外搜尋液柱、編鐘、沙鳴、次諧波等。",
+    "scan_files": [
+      {
+        "file": ".cache/wave40-physics-scan-raw_records.json",
+        "sha256": "37cc4741698d56dcc70392f39150b6ccddda4d5a229cd49360c5ed2ce6109e87"
+      },
+      {
+        "file": ".cache/wave40-physics-scan-not_added.json",
+        "sha256": "a991d75382687ffd13694abdeda737a8a60ea5235a3638275ca56398e4445fc4"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "X40-001",
+      "b": "D9006",
+      "proposed": "distinct",
+      "reason": "弦與琴身耦合強，使聲音輻射、衰減較快；S彎鋸片在內部彎向轉折形成局域模態，遠離夾端耗散。",
+      "a_snapshot": {
+        "id": "X40-001",
+        "question": "同一片手鋸彎成 J 或 S，為什麼只有一種彎法能留下綿長的音？",
+        "answer_target": "S形多了一處彎向反轉的區域。研究的薄殼模型在這附近容許特定振型集中，較少振動傳到夾持處耗散；實物配置的衰減曲線也顯示S形的突出音能維持較久。",
+        "scope": "限研究夾持與振型；Fig1例圖J為敲擊、S為拉弓，不是同擊力雙盲比較。"
+      },
+      "b_snapshot": {
+        "id": "D9006",
+        "question": "琴身把弦聲傳得更響，為什麼也可能讓聲音更快消失？",
+        "answer_target": "較強的弦—音板耦合更快移出單次激發的能量，初聲更響卻可衰減更快。",
+        "scope": "被動撥／擊弦，分開其他耗散；不稱琴身製造能量或所有琴都同一衰減常數。"
+      }
+    },
+    {
+      "a": "X40-001",
+      "b": "K11011",
+      "proposed": "distinct",
+      "reason": "薄膜夾端阻止橫向收縮形成皺紋，不是已彎薄片的振型如何集中。",
+      "a_snapshot": {
+        "id": "X40-001",
+        "question": "同一片手鋸彎成 J 或 S，為什麼只有一種彎法能留下綿長的音？",
+        "answer_target": "S形多了一處彎向反轉的區域。研究的薄殼模型在這附近容許特定振型集中，較少振動傳到夾持處耗散；實物配置的衰減曲線也顯示S形的突出音能維持較久。",
+        "scope": "限研究夾持與振型；Fig1例圖J為敲擊、S為拉弓，不是同擊力雙盲比較。"
+      },
+      "b_snapshot": {
+        "id": "K11011",
+        "question": "把薄膜兩端拉緊，為什麼反而可能沿著拉力方向長出皺紋？",
+        "answer_target": "夾端阻止橫向收縮，和可自由收縮的主體不相容，產生局部橫向壓縮；受拉不代表每個方向都是拉應力。",
+        "scope": "兩短邊夾持的薄長方形彈性膜，長邊自由；自由滑動端條件不等同；不宣稱拉得愈大皺紋必愈多。"
+      }
+    },
+    {
+      "a": "X40-001",
+      "b": "P115",
+      "proposed": "distinct",
+      "reason": "阻尼限制共振振幅，不能說出鋸片上哪一區留得住能量。",
+      "a_snapshot": {
+        "id": "X40-001",
+        "question": "同一片手鋸彎成 J 或 S，為什麼只有一種彎法能留下綿長的音？",
+        "answer_target": "S形多了一處彎向反轉的區域。研究的薄殼模型在這附近容許特定振型集中，較少振動傳到夾持處耗散；實物配置的衰減曲線也顯示S形的突出音能維持較久。",
+        "scope": "限研究夾持與振型；Fig1例圖J為敲擊、S為拉弓，不是同擊力雙盲比較。"
+      },
+      "b_snapshot": {
+        "id": "P115",
+        "question": "共振是不是代表振幅一定會無限增加？",
+        "answer_target": "真實系統的阻尼、非線性與能量輸入上限限制振幅。",
+        "scope": "需補讀阻尼段落再寫定量結論"
+      }
+    },
+    {
+      "a": "X40-002",
+      "b": "P118",
+      "proposed": "distinct",
+      "reason": "聲速看密度與彈性是前提，新增氣泡析出/消退令液柱有效可壓縮性時間反轉，敲底不必改水柱長度。",
+      "a_snapshot": {
+        "id": "X40-002",
+        "question": "液面沒有明顯變低，為什麼一直輕敲裝水量筒的底，音先變低、又慢慢升高？",
+        "answer_target": "從含溶解空氣的熱自來水迅速裝入高筒，會有小氣泡析出。氣泡使液柱容易被壓縮，聲速和敲底激起的縱向音都會下降。等氣泡浮走，液柱較難壓縮，同一個振動模式的頻率回升。",
+        "scope": "研究定量比較用高量筒和水，記錄水柱模式；不泛稱所有杯壁敲出的音。小泡佔比比肉眼所見水位變化更重要。"
+      },
+      "b_snapshot": {
+        "id": "P118",
+        "question": "聲音在固體裡可以比空氣快，關鍵是更密還是更硬？",
+        "answer_target": "聲速同時受彈性與密度影響，不能只用密度單因子猜測。",
+        "scope": "不引導把耳貼軌道等危險實作"
+      }
+    },
+    {
+      "a": "X40-002",
+      "b": "X38-008",
+      "proposed": "distinct",
+      "reason": "落滴清脆聲由一個被夾住的氣泡振動引發；熱水的趨勢測整個含泡液柱傳速，非單泡自行發聲。",
+      "a_snapshot": {
+        "id": "X40-002",
+        "question": "液面沒有明顯變低，為什麼一直輕敲裝水量筒的底，音先變低、又慢慢升高？",
+        "answer_target": "從含溶解空氣的熱自來水迅速裝入高筒，會有小氣泡析出。氣泡使液柱容易被壓縮，聲速和敲底激起的縱向音都會下降。等氣泡浮走，液柱較難壓縮，同一個振動模式的頻率回升。",
+        "scope": "研究定量比較用高量筒和水，記錄水柱模式；不泛稱所有杯壁敲出的音。小泡佔比比肉眼所見水位變化更重要。"
+      },
+      "b_snapshot": {
+        "id": "X38-008",
+        "question": "水滴落進水槽那聲清脆的「滴」，真的是水面剛被撞到時發出來的嗎？",
+        "answer_target": "把聲壓和高速影像對時，特徵聲跟在凹坑閉合、夾入小氣泡之後。用細桿阻止夾泡，水面仍會出現凹坑，清脆聲卻消失。研究以氣泡振動帶動上方水面來解釋聲音如何傳到空氣。",
+        "scope": "該文平靜水槽的指定落滴條件，只指特徵聲。水槽水下回音、空中聲壓及水面運動不等同；不將全部雨聲說成同一音源。"
+      }
+    },
+    {
+      "a": "X40-002",
+      "b": "Q9007",
+      "proposed": "distinct",
+      "reason": "壓電噴頭中單泡增強或抑制壓力使墨滴速度變，與高量筒含泡液柱的縱向音不同。",
+      "a_snapshot": {
+        "id": "X40-002",
+        "question": "液面沒有明顯變低，為什麼一直輕敲裝水量筒的底，音先變低、又慢慢升高？",
+        "answer_target": "從含溶解空氣的熱自來水迅速裝入高筒，會有小氣泡析出。氣泡使液柱容易被壓縮，聲速和敲底激起的縱向音都會下降。等氣泡浮走，液柱較難壓縮，同一個振動模式的頻率回升。",
+        "scope": "研究定量比較用高量筒和水，記錄水柱模式；不泛稱所有杯壁敲出的音。小泡佔比比肉眼所見水位變化更重要。"
+      },
+      "b_snapshot": {
+        "id": "Q9007",
+        "question": "壓電噴頭混入氣泡後，為什麼墨滴可能先變快，之後卻噴不出來？",
+        "answer_target": "可壓縮氣泡改變噴腔到噴嘴的動態流動；大小改變時會經過共振增強區，再抑制有效壓力建立而停止出滴。",
+        "scope": "限來源改裝壓電噴頭與定性模型；不是一般堵孔，非所有尺寸或噴頭同一曲線，不能拿論文微米數當通用故障線。"
+      }
+    },
+    {
+      "a": "X40-003",
+      "b": "D9009",
+      "proposed": "distinct",
+      "reason": "氣流—刃口回授是背景，這裡藉螢光截面與填充率控制檢驗凹槽幾何變化後為何失聲。",
+      "a_snapshot": {
+        "id": "X40-003",
+        "question": "同樣的氣流穿過波紋管，為什麼槽裡積了一點液體，哨音就可能消失？",
+        "answer_target": "氣流掠過一排凹槽，原本可維持哨音。注液後，凹槽被部分填住，氣流看見的凹口形狀跟著變；螢光切面量到的填充比例能對上哨聲變弱，受測範圍內填到一定程度便不再鳴。",
+        "scope": "限指定波紋管、垂直方向與氣液流率。支持凹槽填充重要，未證單一微觀路徑排除所有其他阻尼。"
+      },
+      "b_snapshot": {
+        "id": "D9009",
+        "question": "吹笛子的氣流一直往前，怎麼維持每秒來回好幾百次的聲音？",
+        "answer_target": "管內聲振動擾動噴流；擾動行進到刃口後交替導流，延遲合適時補回振動能量。",
+        "scope": "限定噴流式笛管的穩定發聲；不把氣流擾動速度說成空氣聲速。"
+      }
+    },
+    {
+      "a": "X40-003",
+      "b": "B4020",
+      "proposed": "distinct",
+      "reason": "牆體吸聲改變房間混響；凹槽積液更改流動的發聲源。",
+      "a_snapshot": {
+        "id": "X40-003",
+        "question": "同樣的氣流穿過波紋管，為什麼槽裡積了一點液體，哨音就可能消失？",
+        "answer_target": "氣流掠過一排凹槽，原本可維持哨音。注液後，凹槽被部分填住，氣流看見的凹口形狀跟著變；螢光切面量到的填充比例能對上哨聲變弱，受測範圍內填到一定程度便不再鳴。",
+        "scope": "限指定波紋管、垂直方向與氣液流率。支持凹槽填充重要，未證單一微觀路徑排除所有其他阻尼。"
+      },
+      "b_snapshot": {
+        "id": "B4020",
+        "question": "房間加了吸音材料，為什麼離喇叭很近時聲音不一定小很多？",
+        "answer_target": "吸聲主要減少反射累積的混響場，近聲源的直接聲尚未經牆面，兩個區域對加吸聲的反應不同。",
+        "scope": "不是說吸音完全不影響任何近場；採來源直接/混響場理想模型。"
+      }
+    },
+    {
+      "a": "X40-004",
+      "b": "F10006",
+      "proposed": "distinct",
+      "reason": "振動珠床的粒徑分選已有；本題在斜槽用同批沙篩前篩後比較多主峰/單主峰，不由物理分層本身斷定聲音。",
+      "a_snapshot": {
+        "id": "X40-004",
+        "question": "把會嗡鳴的沙從沙丘帶進實驗室，為什麼過一次篩，原本混在一起的幾個音就剩一個主音？",
+        "answer_target": "阿曼沙在斜槽滑下，未過篩也能同時量到幾個不同主頻；選出較窄的粒徑範圍再滑，主要只剩一個主頻及它的泛音。作者以不同粒徑在流層內有不同剪切節奏來解釋。",
+        "scope": "模型機制層級；不主張每峰一一對應固定粒層，亦不保證普通沙能唱。量測辨認的是同時出現的聲譜峰，未量聽者和諧感。"
+      },
+      "b_snapshot": {
+        "id": "F10006",
+        "question": "同材質大小珠子一起搖，大珠子比較重，為什麼仍可能跑到上面？",
+        "answer_target": "輕度振動張開空隙後，小珠較易落進下方空位，反覆壓實造成尺寸分選。",
+        "scope": "限同材質、低氣壓顆粒實驗的填隙區間；不把氣流、不同密度與真實堅果形狀全部忽略。"
+      }
+    },
+    {
+      "a": "X40-004",
+      "b": "R24004",
+      "proposed": "distinct",
+      "reason": "三個實驗音如何形成聽到的低音；沙題量振動與聲譜，不測主觀匹配。",
+      "a_snapshot": {
+        "id": "X40-004",
+        "question": "把會嗡鳴的沙從沙丘帶進實驗室，為什麼過一次篩，原本混在一起的幾個音就剩一個主音？",
+        "answer_target": "阿曼沙在斜槽滑下，未過篩也能同時量到幾個不同主頻；選出較窄的粒徑範圍再滑，主要只剩一個主頻及它的泛音。作者以不同粒徑在流層內有不同剪切節奏來解釋。",
+        "scope": "模型機制層級；不主張每峰一一對應固定粒層，亦不保證普通沙能唱。量測辨認的是同時出現的聲譜峰，未量聽者和諧感。"
+      },
+      "b_snapshot": {
+        "id": "R24004",
+        "question": "幾個高音的間距沒變，聽到的那個低音怎麼仍會改變？",
+        "answer_target": "三分量整組加上相同頻率，彼此間距與振幅包絡週期不變，受訓聽者匹配出的低音仍可移動。換成不同頻帶的匹配音組仍有相近結果，顯示不是單抓一個分量、差頻或包絡週期就能決定這個低音。",
+        "scope": "限原文三分量與固定匹配分支，最後3位受訓聽者；存在多個可接受匹配與適用頻帶。只採受控結果，不宣稱已唯一證明時間域神經機制；不把預期聽感寫成必然。"
+      }
+    },
+    {
+      "a": "X40-005",
+      "b": "I12009",
+      "proposed": "distinct",
+      "reason": "兩液體部分合併後頸縮留一滴，與固定頻率驅動、半頻駐波失穩不同。",
+      "a_snapshot": {
+        "id": "X40-005",
+        "question": "一碗水跟著缽壁振動，為什麼加強振動後，水面的某排波反而每兩拍才起伏一次？",
+        "answer_target": "研究用喇叭在固定頻率激振缽壁。很弱時水面以驅動頻率出現向內行進的小波；振幅過第一道門檻，缽邊出現以半頻起伏的駐波。再加強才會有波破裂，拋出小滴。",
+        "scope": "量的是液面圖樣及碗壁加速度，非把聽見的基音降一個八度；激振頻率和振幅兩者不能混寫。"
+      },
+      "b_snapshot": {
+        "id": "I12009",
+        "question": "一顆液滴融進液面，為什麼上面又留下一顆更小的液滴？",
+        "answer_target": "間隔膜破開後，界面波把滴形拉長；慣性可在排空前造成頸縮並留下小滴。耗散過強或向下排空太快，就變成完整合併。",
+        "scope": "採低重力影響的牛頓流體模型及指定油水實驗；不是一般無限長液柱的線性失穩，也不保證每次都剩一半。"
+      }
+    },
+    {
+      "a": "X40-005",
+      "b": "W16005",
+      "proposed": "distinct",
+      "reason": "空中超音波對已存在小球提供空間回復力，與缽中液面開始半頻再破波不同。",
+      "a_snapshot": {
+        "id": "X40-005",
+        "question": "一碗水跟著缽壁振動，為什麼加強振動後，水面的某排波反而每兩拍才起伏一次？",
+        "answer_target": "研究用喇叭在固定頻率激振缽壁。很弱時水面以驅動頻率出現向內行進的小波；振幅過第一道門檻，缽邊出現以半頻起伏的駐波。再加強才會有波破裂，拋出小滴。",
+        "scope": "量的是液面圖樣及碗壁加速度，非把聽見的基音降一個八度；激振頻率和振幅兩者不能混寫。"
+      },
+      "b_snapshot": {
+        "id": "W16005",
+        "question": "用聲波托住小球，為什麼不能只把聲音集中得更強？",
+        "answer_target": "強聲壓焦點與穩定陷阱不是同一目標；粒子偏離後的聲輻射力方向也必須能拉回。研究對小球模型同時設計低聲壓中心及各方向回復力，讓粒子能留在指定位置，而非只最大化焦點聲壓。",
+        "scope": "限文中的空氣、小球與陣列模型。低壓點不自動穩定，須看周圍壓力/速度梯度和粒子材料；不推成所有物體在聲壓節都可懸浮，也不等同超音波指腹的擠壓空氣膜。"
+      }
+    },
+    {
+      "a": "X40-005",
+      "b": "X40-002",
+      "proposed": "distinct",
+      "reason": "高筒以液體可壓縮性改變液柱的音；缽用固定激振比較自由面波的頻率及破裂。",
+      "a_snapshot": {
+        "id": "X40-005",
+        "question": "一碗水跟著缽壁振動，為什麼加強振動後，水面的某排波反而每兩拍才起伏一次？",
+        "answer_target": "研究用喇叭在固定頻率激振缽壁。很弱時水面以驅動頻率出現向內行進的小波；振幅過第一道門檻，缽邊出現以半頻起伏的駐波。再加強才會有波破裂，拋出小滴。",
+        "scope": "量的是液面圖樣及碗壁加速度，非把聽見的基音降一個八度；激振頻率和振幅兩者不能混寫。"
+      },
+      "b_snapshot": {
+        "id": "X40-002",
+        "question": "液面沒有明顯變低，為什麼一直輕敲裝水量筒的底，音先變低、又慢慢升高？",
+        "answer_target": "從含溶解空氣的熱自來水迅速裝入高筒，會有小氣泡析出。氣泡使液柱容易被壓縮，聲速和敲底激起的縱向音都會下降。等氣泡浮走，液柱較難壓縮，同一個振動模式的頻率回升。",
+        "scope": "研究定量比較用高量筒和水，記錄水柱模式；不泛稱所有杯壁敲出的音。小泡佔比比肉眼所見水位變化更重要。"
+      }
+    },
+    {
+      "a": "X40-006",
+      "b": "D9012",
+      "proposed": "distinct",
+      "reason": "瓶口腔振的基本模型無法解釋圓孔與環孔的通流分布、周界加權，保留同外緣的物理對照。",
+      "a_snapshot": {
+        "id": "X40-006",
+        "question": "琴箱的音孔保留外緣、只遮中央，為什麼看剩餘面積還不足以預測空氣共振？",
+        "answer_target": "低頻時通過薄板孔口的往復速度並不均勻，模型算出的流量較集中在周緣；留下外緣、改變中央遮擋的環孔量測，可檢驗只按面積估算和計入形狀的差別。",
+        "scope": "只談低頻空氣共振，不評整把琴的音色好壞；彩色速度圖是模型，環孔的共振頻率有實測。"
+      },
+      "b_snapshot": {
+        "id": "D9012",
+        "question": "吹瓶口的低音，為什麼不能只拿瓶子的高度當一根短笛計算？",
+        "answer_target": "波長遠大於瓶身時，腔內近同相壓縮；頸口空氣慣性配合腔內可壓縮性振動。",
+        "scope": "小振幅集中參數近似；長細管駐波另有壓力分布，不能只換尺寸套同一式。"
+      }
+    },
+    {
+      "a": "X40-006",
+      "b": "D9008",
+      "proposed": "distinct",
+      "reason": "板前後聲壓抵消導致低音輻射弱；此處是低頻空氣穿過孔何處貢獻最大。",
+      "a_snapshot": {
+        "id": "X40-006",
+        "question": "琴箱的音孔保留外緣、只遮中央，為什麼看剩餘面積還不足以預測空氣共振？",
+        "answer_target": "低頻時通過薄板孔口的往復速度並不均勻，模型算出的流量較集中在周緣；留下外緣、改變中央遮擋的環孔量測，可檢驗只按面積估算和計入形狀的差別。",
+        "scope": "只談低頻空氣共振，不評整把琴的音色好壞；彩色速度圖是模型，環孔的共振頻率有實測。"
+      },
+      "b_snapshot": {
+        "id": "D9008",
+        "question": "一大片板明明來回振動，為什麼低音還可能很弱？",
+        "answer_target": "板兩側的壓縮與稀疏相反；低頻下空氣能繞邊交換，削弱向外輻射。",
+        "scope": "相對波長很小且前後相通的板；不宣稱任何封箱都改善所有頻率。"
+      }
+    },
+    {
+      "a": "X40-007",
+      "b": "D9001",
+      "proposed": "distinct",
+      "reason": "撥弦位置改變弦模態激發；這裡量唇內聲道阻抗與聲譜包絡反向配對。",
+      "a_snapshot": {
+        "id": "X40-007",
+        "question": "同一根澳洲長管一直吹著低音，為什麼抬一下舌頭，音色就像換了個母音？",
+        "answer_target": "把舌頭靠近上顎會改變嘴裡各個頻率所受的聲學阻抗。一些頻帶不容易讓振盪氣流經唇部進入管子，其諧波便變弱；鄰近頻帶相對突出，持續音的音色跟著改變。",
+        "scope": "限研究的yidaki及舌位試次；講的是頻譜包絡，不是所有舌位都給固定母音或同一音高。"
+      },
+      "b_snapshot": {
+        "id": "D9001",
+        "question": "同一條弦撥在中央或靠近兩端，為什麼音色會不同？",
+        "answer_target": "撥點決定初始形狀投影到各模態的比例；在某模態節點施加理想點撥，不激發該模態。",
+        "scope": "固定長度張力的理想撥弦；只改撥點，不把所有實琴輸出歸於此。"
+      }
+    },
+    {
+      "a": "X40-007",
+      "b": "A5031",
+      "proposed": "distinct",
+      "reason": "鼻音由軟顎打開保留鼻腔氣路；長管以口腔頻帶阻抗調進管流量。",
+      "a_snapshot": {
+        "id": "X40-007",
+        "question": "同一根澳洲長管一直吹著低音，為什麼抬一下舌頭，音色就像換了個母音？",
+        "answer_target": "把舌頭靠近上顎會改變嘴裡各個頻率所受的聲學阻抗。一些頻帶不容易讓振盪氣流經唇部進入管子，其諧波便變弱；鄰近頻帶相對突出，持續音的音色跟著改變。",
+        "scope": "限研究的yidaki及舌位試次；講的是頻譜包絡，不是所有舌位都給固定母音或同一音高。"
+      },
+      "b_snapshot": {
+        "id": "A5031",
+        "question": "嘴唇合起來，為什麼還能一直發出「嗯」的聲音？",
+        "answer_target": "閉口的鼻音仍由降低的軟顎保留鼻腔氣路，聲帶振動與氣流不必從唇間出去。",
+        "scope": "正常/m/類鼻音示意；不把它當鼻腔疾病測試，與B2182骨性次生顎分隔咀嚼不同。"
+      }
+    },
+    {
+      "a": "X40-008",
+      "b": "D9010",
+      "proposed": "distinct",
+      "reason": "開孔讓某模態失勢和口內強共振主動偏選管內高階模態不同。",
+      "a_snapshot": {
+        "id": "X40-008",
+        "question": "薩克斯風進入超高音域，為什麼只知道按哪幾個鍵，還不一定能吹到那個音？",
+        "answer_target": "普通音域裡，演奏者口內的共振峰不必一路跟著所吹音高。到了超高音域，研究中能吹出這些音的熟手會把強的聲道共振調到目標附近，讓簧片偏向啟動某個管內模式。管子和簧片仍約束最後的精確音高。",
+        "scope": "限所測業餘/專業演奏者、指法及特定超高音；不推嘴能無視管身任意選音。"
+      },
+      "b_snapshot": {
+        "id": "D9010",
+        "question": "笛子開一個孔，為什麼有時不是升一點，而是直接跳到另一個音域？",
+        "answer_target": "開孔讓該位置壓力接近外界；受影響的低模態減弱，原已有壓力節的高模態較能保留。",
+        "scope": "理想register-hole比較；不把任何開孔都當截短，不承諾任一指法都穩定發音。"
+      }
+    },
+    {
+      "a": "X40-008",
+      "b": "X40-007",
+      "proposed": "distinct",
+      "reason": "長管持續低音以口內高阻抗抑制部分諧波；薩克斯風超高音要讓簧片改在另一個頻率振動。",
+      "a_snapshot": {
+        "id": "X40-008",
+        "question": "薩克斯風進入超高音域，為什麼只知道按哪幾個鍵，還不一定能吹到那個音？",
+        "answer_target": "普通音域裡，演奏者口內的共振峰不必一路跟著所吹音高。到了超高音域，研究中能吹出這些音的熟手會把強的聲道共振調到目標附近，讓簧片偏向啟動某個管內模式。管子和簧片仍約束最後的精確音高。",
+        "scope": "限所測業餘/專業演奏者、指法及特定超高音；不推嘴能無視管身任意選音。"
+      },
+      "b_snapshot": {
+        "id": "X40-007",
+        "question": "同一根澳洲長管一直吹著低音，為什麼抬一下舌頭，音色就像換了個母音？",
+        "answer_target": "把舌頭靠近上顎會改變嘴裡各個頻率所受的聲學阻抗。一些頻帶不容易讓振盪氣流經唇部進入管子，其諧波便變弱；鄰近頻帶相對突出，持續音的音色跟著改變。",
+        "scope": "限研究的yidaki及舌位試次；講的是頻譜包絡，不是所有舌位都給固定母音或同一音高。"
+      }
+    },
+    {
+      "a": "X40-008",
+      "b": "D9018",
+      "proposed": "distinct",
+      "reason": "長號波形在強響的管內傳播時陡化，非選哪一個音域。",
+      "a_snapshot": {
+        "id": "X40-008",
+        "question": "薩克斯風進入超高音域，為什麼只知道按哪幾個鍵，還不一定能吹到那個音？",
+        "answer_target": "普通音域裡，演奏者口內的共振峰不必一路跟著所吹音高。到了超高音域，研究中能吹出這些音的熟手會把強的聲道共振調到目標附近，讓簧片偏向啟動某個管內模式。管子和簧片仍約束最後的精確音高。",
+        "scope": "限所測業餘/專業演奏者、指法及特定超高音；不推嘴能無視管身任意選音。"
+      },
+      "b_snapshot": {
+        "id": "D9018",
+        "question": "長號吹得很響時，聲波為什麼會在管裡越走越尖？",
+        "answer_target": "較強壓縮部分因局部聲速與流動效應追上前緣，長管內逐漸陡化並增加高頻。",
+        "scope": "指定研究的強奏長號；初始上升速率與管長也重要，不等於高音都比低音傳得快。"
+      }
+    },
+    {
+      "a": "X40-009",
+      "b": "D9012",
+      "proposed": "distinct",
+      "reason": "低流速小空腔是共用背景；此題加高流速區出口脫渦與上游管模態迴授，回答同一哨為何換模式。",
+      "a_snapshot": {
+        "id": "X40-009",
+        "question": "雙孔壺哨的氣流越吹越快，為什麼有一段音高幾乎不動，另一段卻開始變？",
+        "answer_target": "低流速區間內，兩孔板中間的空腔及孔口能選出近乎固定的音。提高流速後，兩孔間的噴流受擾、下游孔口脫渦，聲波又回到上游管；管內可響的模式參與決定哨音，光拿小空腔大小已解釋不全。",
+        "scope": "限該研究的雙孔模型及進氣管條件。高流速屬流動與聲場回授解釋，不由音高直接推水溫，也非每把水壺都同一機構。"
+      },
+      "b_snapshot": {
+        "id": "D9012",
+        "question": "吹瓶口的低音，為什麼不能只拿瓶子的高度當一根短笛計算？",
+        "answer_target": "波長遠大於瓶身時，腔內近同相壓縮；頸口空氣慣性配合腔內可壓縮性振動。",
+        "scope": "小振幅集中參數近似；長細管駐波另有壓力分布，不能只換尺寸套同一式。"
+      }
+    },
+    {
+      "a": "X40-009",
+      "b": "D9009",
+      "proposed": "distinct",
+      "reason": "刃口笛的噴流週期回授已有；壺哨研究以雙孔腔、上游管長/流況分出兩工作區；不以另一種鳥哨再算。",
+      "a_snapshot": {
+        "id": "X40-009",
+        "question": "雙孔壺哨的氣流越吹越快，為什麼有一段音高幾乎不動，另一段卻開始變？",
+        "answer_target": "低流速區間內，兩孔板中間的空腔及孔口能選出近乎固定的音。提高流速後，兩孔間的噴流受擾、下游孔口脫渦，聲波又回到上游管；管內可響的模式參與決定哨音，光拿小空腔大小已解釋不全。",
+        "scope": "限該研究的雙孔模型及進氣管條件。高流速屬流動與聲場回授解釋，不由音高直接推水溫，也非每把水壺都同一機構。"
+      },
+      "b_snapshot": {
+        "id": "D9009",
+        "question": "吹笛子的氣流一直往前，怎麼維持每秒來回好幾百次的聲音？",
+        "answer_target": "管內聲振動擾動噴流；擾動行進到刃口後交替導流，延遲合適時補回振動能量。",
+        "scope": "限定噴流式笛管的穩定發聲；不把氣流擾動速度說成空氣聲速。"
+      }
+    },
+    {
+      "a": "X40-009",
+      "b": "X40-003",
+      "proposed": "distinct",
+      "reason": "雙孔哨問為何改氣流時音高轉換；濕波紋管量填槽比例與失聲，非兩工作區之遷移。",
+      "a_snapshot": {
+        "id": "X40-009",
+        "question": "雙孔壺哨的氣流越吹越快，為什麼有一段音高幾乎不動，另一段卻開始變？",
+        "answer_target": "低流速區間內，兩孔板中間的空腔及孔口能選出近乎固定的音。提高流速後，兩孔間的噴流受擾、下游孔口脫渦，聲波又回到上游管；管內可響的模式參與決定哨音，光拿小空腔大小已解釋不全。",
+        "scope": "限該研究的雙孔模型及進氣管條件。高流速屬流動與聲場回授解釋，不由音高直接推水溫，也非每把水壺都同一機構。"
+      },
+      "b_snapshot": {
+        "id": "X40-003",
+        "question": "同樣的氣流穿過波紋管，為什麼槽裡積了一點液體，哨音就可能消失？",
+        "answer_target": "氣流掠過一排凹槽，原本可維持哨音。注液後，凹槽被部分填住，氣流看見的凹口形狀跟著變；螢光切面量到的填充比例能對上哨聲變弱，受測範圍內填到一定程度便不再鳴。",
+        "scope": "限指定波紋管、垂直方向與氣液流率。支持凹槽填充重要，未證單一微觀路徑排除所有其他阻尼。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "X40-S001",
+      "doi": "10.1073/pnas.2117241119",
+      "primary_body_url": "https://arxiv.org/pdf/2108.10875",
+      "identity_relation": "arXiv:2108.10875v1（2021）作者稿，與2022原刊同文。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    },
+    {
+      "source_id": "X40-S002",
+      "doi": "10.1119/1.13080",
+      "primary_body_url": "https://www.osti.gov/servlets/purl/1090455",
+      "identity_relation": "Lawrence Berkeley Laboratory 1980提交前報告，OSTI典藏掃描，與1982刊文同研究。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    },
+    {
+      "source_id": "X40-S003",
+      "doi": "10.1007/s00348-017-2391-1",
+      "primary_body_url": "https://d-nb.info/1143623193/34",
+      "identity_relation": "德國國家圖書館所存出版社PDF，刊號58:107。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    },
+    {
+      "source_id": "X40-S004",
+      "doi": "10.1029/2012GL052540",
+      "primary_body_url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2012GL052540",
+      "identity_relation": "AGU/Wiley原刊網頁；指定UA遇403，另由web開正式主文。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    },
+    {
+      "source_id": "X40-S005",
+      "doi": "10.1088/0951-7715/24/8/R01",
+      "primary_body_url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/TibetanBowls.pdf",
+      "identity_relation": "MIT作者組原刊PDF；含封面，引用同時列PDF索引與印刷頁。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    },
+    {
+      "source_id": "X40-S006",
+      "doi": "10.1098/rspa.2014.0905",
+      "primary_body_url": "https://acoustics.mit.edu/faculty/makris/Violin.20140905.full.pdf",
+      "identity_relation": "MIT研究組刊版PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    },
+    {
+      "source_id": "X40-S007",
+      "doi": "10.1121/1.2146089",
+      "primary_body_url": "https://www.phys.unsw.edu.au/jw/reprints/Tarnopolskyetal.pdf",
+      "identity_relation": "UNSW作者組原刊PDF；音訊示範網頁是同研究附件。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    },
+    {
+      "source_id": "X40-S008",
+      "doi": "10.1121/1.3514423",
+      "primary_body_url": "https://www.phys.unsw.edu.au/jw/reprints/SaxJASA.pdf",
+      "identity_relation": "UNSW作者組原刊PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    },
+    {
+      "source_id": "X40-S009",
+      "doi": "10.1063/1.4821782",
+      "primary_body_url": "https://www.researchgate.net/publication/259333660_The_aeroacoustics_of_a_steam_kettle",
+      "identity_relation": "作者公開於ResearchGate的原刊排版全文，指定UA取該頁403，web定點正文成功。",
+      "old_exact_matches": [],
+      "count_policy": "同一研究的刊版/作者稿/團隊附件只算一次；UNSW兩條研究分樂器、實驗與設計，不當獨立複驗。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "X40-S001",
+      "scope": "PDF pp2–4 Fig1，pp8–13 Figs2、3，頻帶模型、局域振型與衰減實測。",
+      "locator": "PDF pp2–4 Fig1，pp8–13 Figs2、3，頻帶模型、局域振型與衰減實測。",
+      "cache": {
+        "file": ".cache/wave40-physics-saw.pdf",
+        "sha256": "ba1403fd51a604a522436d48a6565edca6f978c38f4fae8a1910adfd47d69cc0",
+        "text_file": ".cache/wave40-physics-saw.txt",
+        "text_sha256": "7d948b1bf2f1c629e4ff51047e1085446b65150cf92af6ffc1a06f91f176f74c"
+      },
+      "read_via": "指定UA重新取得PDF，實讀指定正文、圖說；圖像之實際閱讀另列。"
+    },
+    {
+      "source_id": "X40-S002",
+      "scope": "PDF pp5–11 §1–4與pp12–16 §5–6，攪拌、熱自來水、高量筒及氣體體積與頻率對照。",
+      "locator": "PDF pp5–11 §1–4與pp12–16 §5–6，攪拌、熱自來水、高量筒及氣體體積與頻率對照。",
+      "cache": {
+        "file": ".cache/wave40-physics-choc.pdf",
+        "sha256": "29129724a7873da4b42c639cf5685d23101c5434d809959f78e802daf8a2fda4",
+        "text_file": ".cache/wave40-physics-choc.txt",
+        "text_sha256": "2062a4dc7830e38f8e27048875eaf600f2d4a6823459faf3553b6ee839d2677a"
+      },
+      "read_via": "指定UA重新取得PDF，實讀指定正文、圖說；圖像之實際閱讀另列。"
+    },
+    {
+      "source_id": "X40-S003",
+      "scope": "pp7–13 Figs7、13–18、20–21，氣水流向、螢光截面和溝槽填充率/哨聲強度比較。",
+      "locator": "pp7–13 Figs7、13–18、20–21，氣水流向、螢光截面和溝槽填充率/哨聲強度比較。",
+      "cache": {
+        "file": ".cache/wave40-physics-wet17.pdf",
+        "sha256": "01bbeac980906f16cb512bcba2d18bc38afe0c6bdb8e8e7ba7ac88c5f85cc489",
+        "text_file": ".cache/wave40-physics-wet17.txt",
+        "text_sha256": "2275ec0b6ba845f9f579c631e2a36838ce6ddc5be54fae3eb8d89b3ab193c5a6"
+      },
+      "read_via": "指定UA重新取得PDF，實讀指定正文、圖說；圖像之實際閱讀另列。"
+    },
+    {
+      "source_id": "X40-S004",
+      "scope": "§3–4，正文段[9]–[14]、Figs3–5，斜槽、漂浮加速度計、篩前後阿曼沙與現場資料。",
+      "locator": "§3–4，正文段[9]–[14]、Figs3–5，斜槽、漂浮加速度計、篩前後阿曼沙與現場資料。",
+      "cache": {
+        "file": ".cache/wave40-physics-sand-web.txt",
+        "sha256": "d566f1bfe62b422e17c57ad3ab2f54195b671d0335448ba388820335b0bd5a08",
+        "text_file": ".cache/wave40-physics-sand-web.txt",
+        "text_sha256": "d566f1bfe62b422e17c57ad3ab2f54195b671d0335448ba388820335b0bd5a08"
+      },
+      "read_via": "web.open原刊或作者張貼之正文；存工具回傳定點段，無本機完整PDF。"
+    },
+    {
+      "source_id": "X40-S005",
+      "scope": "PDF pp9–13（印刷R58–62），§3.3–3.4、Figs6–10，喇叭激振、外壁測加速度及液面波型。",
+      "locator": "PDF pp9–13（印刷R58–62），§3.3–3.4、Figs6–10，喇叭激振、外壁測加速度及液面波型。",
+      "cache": {
+        "file": ".cache/wave40-physics-bowls.pdf",
+        "sha256": "9339b49eabc4b1ffc04d597bdfbd3c62e18413de0a5ce8c85cbc194b5b33ea8a",
+        "text_file": ".cache/wave40-physics-bowls.txt",
+        "text_sha256": "a02052e5387b2affc92f25a20c2c4e62265f31486c26e65d0e150d31155ae939"
+      },
+      "read_via": "指定UA重新取得PDF，實讀指定正文、圖說；圖像之實際閱讀另列。"
+    },
+    {
+      "source_id": "X40-S006",
+      "scope": "原刊pp3–9 §§2–4，Fig2a–h；特別是2g環孔控制的實驗頻率與模型，同面積外形及周緣流速計算。",
+      "locator": "原刊pp3–9 §§2–4，Fig2a–h；特別是2g環孔控制的實驗頻率與模型，同面積外形及周緣流速計算。",
+      "cache": {
+        "file": ".cache/wave40-physics-violin.pdf",
+        "sha256": "aec36746d47a46a6368c1b2ae88076aa43aa41217289bd11da661a715157c9b4",
+        "text_file": ".cache/wave40-physics-violin.txt",
+        "text_sha256": "683dc66addc184f4b9e2d1d23774934552019ca79784f0cf1b23e4bcf7d1cccb"
+      },
+      "read_via": "指定UA重新取得PDF，實讀指定正文、圖說；圖像之實際閱讀另列。"
+    },
+    {
+      "source_id": "X40-S007",
+      "scope": "印刷pp1198–1201（PDF pp5–8），§III A–B、Figs4–7，高低舌位、唇內聲阻抗與外部聲譜。",
+      "locator": "印刷pp1198–1201（PDF pp5–8），§III A–B、Figs4–7，高低舌位、唇內聲阻抗與外部聲譜。",
+      "cache": {
+        "file": ".cache/wave40-physics-didgelab.pdf",
+        "sha256": "91b3149506443db77dfe12cfd3c0590ea1eff35b883359e48d73856fa9c0e1fe",
+        "text_file": ".cache/wave40-physics-didgelab.txt",
+        "text_sha256": "98c9c23265eac9105797a1ce7ea9b8d670ba4b3f8fa23ea956d9348f046f4eb3"
+      },
+      "read_via": "指定UA重新取得PDF，實讀指定正文、圖說；圖像之實際閱讀另列。"
+    },
+    {
+      "source_id": "X40-S008",
+      "scope": "印刷pp420–424（PDF pp6–10），方法各音域與結果§IV，Figs6–8，管內/口腔阻抗和專業、業餘組。",
+      "locator": "印刷pp420–424（PDF pp6–10），方法各音域與結果§IV，Figs6–8，管內/口腔阻抗和專業、業餘組。",
+      "cache": {
+        "file": ".cache/wave40-physics-saxlab.pdf",
+        "sha256": "d612f753db5d599f2104922c1b42c6a5b8dff022f59823a30381f27a8567f284",
+        "text_file": ".cache/wave40-physics-saxlab.txt",
+        "text_sha256": "cd4069639eab9c421d1bc3444311855bd1d4eb31fc67d9e6c95d91986927859c"
+      },
+      "read_via": "指定UA重新取得PDF，實讀指定正文、圖說；圖像之實際閱讀另列。"
+    },
+    {
+      "source_id": "X40-S009",
+      "scope": "印刷107101-21至-23（web L2151–2289），§V與Fig21、§VI總結，流量與兩種模式、上游管路及雙孔之間的噴流。",
+      "locator": "印刷107101-21至-23（web L2151–2289），§V與Fig21、§VI總結，流量與兩種模式、上游管路及雙孔之間的噴流。",
+      "cache": {
+        "file": ".cache/wave40-physics-kettle-web.txt",
+        "sha256": "8c7cf8b9c92c5e723e3953ebe0b0ab923fba1cc8f8450062ab89c76183800986",
+        "text_file": ".cache/wave40-physics-kettle-web.txt",
+        "text_sha256": "8c7cf8b9c92c5e723e3953ebe0b0ab923fba1cc8f8450062ab89c76183800986"
+      },
+      "read_via": "web.open原刊或作者張貼之正文；存工具回傳定點段，無本機完整PDF。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave40-physics-manifest.json",
+      "sha256": "d45ee8dca81d58f04934ae16cb076920194e9efd5d5b3e1944aa2d93add254fa"
+    },
+    {
+      "file": ".cache/wave40-physics-alt.json",
+      "sha256": "e7eaa26522de24b4571c6917664e85dc3e56ffed16a67fc510e748eb7b9dd939"
+    }
+  ],
+  "retrieval_failures": [
+    "S002 eScholarship指定UA拒絕，改OSTI 26頁掃描報告；讀的是1980提交稿。",
+    "S004 Wiley指定UA403，web可讀原刊§3–4，快取為實際回傳。AGU新聞說明不另外當原研究。",
+    "S009劍橋研究站逾時、RG直抓403，web能讀作者存放的原刊頁21–23；沒有宣稱另取原始蒸汽實驗資料。",
+    "另試之荷蘭2020管道論文路線403/逾時；2017管道原刊已足，未把2020作入池證據。Rossing 1989鐘綜述與錯配會議合集不支撐新核心。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "X40-S001",
+      "images": [
+        {
+          "file": ".cache/wave40-physics-saw-p4.png",
+          "sha256": "530350e385592d2719891889bf9f0e5959dd98ce19a15258fa10c188d74b87f3",
+          "read_scope": "第4頁受比較的圖組與分組標示，未從縮圖取數。"
+        },
+        {
+          "file": ".cache/wave40-physics-saw-p11.png",
+          "sha256": "b796503ed5e83608de514587955a222ba274a4b77546aecbb7aead77f50c1135",
+          "read_scope": "第11頁受比較的圖組與分組標示，未從縮圖取數。"
+        }
+      ]
+    },
+    {
+      "source_id": "X40-S002",
+      "images": []
+    },
+    {
+      "source_id": "X40-S003",
+      "images": [
+        {
+          "file": ".cache/wave40-physics-wet17-p10.png",
+          "sha256": "72948b4f22cbec3410daf4af2ab22928121597138f77d4d75d04232b7654ed43",
+          "read_scope": "第10頁受比較的圖組與分組標示，未從縮圖取數。"
+        }
+      ]
+    },
+    {
+      "source_id": "X40-S004",
+      "images": []
+    },
+    {
+      "source_id": "X40-S005",
+      "images": [
+        {
+          "file": ".cache/wave40-physics-bowls-p11.png",
+          "sha256": "3aaad6c94228c5241fff3f4c8718d108ced8ea204126309e475aa9b84583dfe6",
+          "read_scope": "第11頁受比較的圖組與分組標示，未從縮圖取數。"
+        }
+      ]
+    },
+    {
+      "source_id": "X40-S006",
+      "images": [
+        {
+          "file": ".cache/wave40-physics-violin-p9.png",
+          "sha256": "63a71d676cd7951cedcb8f5cef22f91fefc474465bd079dd548d949dd28c82fc",
+          "read_scope": "第9頁受比較的圖組與分組標示，未從縮圖取數。"
+        }
+      ]
+    },
+    {
+      "source_id": "X40-S007",
+      "images": [
+        {
+          "file": ".cache/wave40-physics-didgelab-p6.png",
+          "sha256": "aa738b1ef28655c3820d51b98c9ba3adbd0b8e3721bd52081a8cb0a0598fb1fd",
+          "read_scope": "第6頁受比較的圖組與分組標示，未從縮圖取數。"
+        }
+      ]
+    },
+    {
+      "source_id": "X40-S008",
+      "images": [
+        {
+          "file": ".cache/wave40-physics-saxlab-p8.png",
+          "sha256": "7cc776c581fb96635adb1f0b3fbb968b1798cef68d43298e96722ec40f7d3056",
+          "read_scope": "第8頁受比較的圖組與分組標示，未從縮圖取數。"
+        }
+      ]
+    },
+    {
+      "source_id": "X40-S009",
+      "images": []
+    }
+  ],
+  "reading_limits": [
+    "實讀7份PDF指定段、2份正式主文之web定點回傳；6篇的7個圖頁目讀，另目讀巧克力報告摘要頁不計圖。未播放/下載原音訊、補充影片。",
+    "濕波紋管、音孔、雙孔壺哨先作段落，不為每題另排片。",
+    "沙層局部同步、波紋填槽細機制、鋸片局域振型與真實量測分開。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W40P-T01",
+      "body_seconds": 51,
+      "chapter_seconds": [
+        25,
+        26
+      ],
+      "core_seconds": {
+        "X40-001": 51
+      },
+      "max_beat_seconds": 17,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W40P-T02",
+      "body_seconds": 49,
+      "chapter_seconds": [
+        23,
+        26
+      ],
+      "core_seconds": {
+        "X40-002": 49
+      },
+      "max_beat_seconds": 16,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W40P-T03",
+      "body_seconds": 66,
+      "chapter_seconds": [
+        32,
+        34
+      ],
+      "core_seconds": {
+        "X40-007": 32,
+        "X40-008": 34
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W40P-T04",
+      "body_seconds": 48,
+      "chapter_seconds": [
+        22,
+        26
+      ],
+      "core_seconds": {
+        "X40-004": 48
+      },
+      "max_beat_seconds": 15,
+      "status": "LOCAL_SYNTHETIC_READ_LENGTH_AND_FIGURE_BUDGET_CHECK",
+      "local_synthetic_probe": {
+        "manifest": {
+          "file": ".cache/wave40-sand-read.json",
+          "sha256": "97b07f73eb440ed44730b0e6c3724181b1d5da51d14dd2184e8996c97fd7fa73"
+        },
+        "wav": {
+          "file": ".cache/wave40-sand-read-3.wav",
+          "sha256": "da7cc31770f327cfa02a9bfc798c909ea3361c9c2500e5756ec365fc19226207"
+        },
+        "continuous_seconds": 39.618,
+        "limits": "核WAV標頭與SHA，未獨立試聽；未用其他四案估速。"
+      }
+    },
+    {
+      "id": "W40P-T05",
+      "body_seconds": 50,
+      "chapter_seconds": [
+        24,
+        26
+      ],
+      "core_seconds": {
+        "X40-005": 50
+      },
+      "max_beat_seconds": 16,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "all_strings_rstrip": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "共同語意近鄰與非作者收據另記；紙上秒數未試讀。"
+  ],
+  "revision_history": [
+    {
+      "reason": "非作者依本機連讀及兩張頻譜的看圖時間縮短W40P-T04尾拍，主頻/泛音對照仍保留。",
+      "before": [
+        {
+          "file": "batches/wave40-physics.json",
+          "sha256": "ad32b92d6ef7b18070edd297f993a090ba8288d01e8b7e2a3ff375e21afdf8a9"
+        },
+        {
+          "file": "reviews/wave40-physics-themes.json",
+          "sha256": "029cc2de41f657d82cb98b6e9bba48ba1ea745134e3b08d54fa84502258566a4"
+        },
+        {
+          "file": "reviews/wave40-physics-author.json",
+          "sha256": "7838ce83b608de8928c3a20bcc6b56f32b137c39d85675abb328f99dac9a5c3b"
+        }
+      ],
+      "after": [
+        {
+          "file": "batches/wave40-physics.json",
+          "sha256": "ad32b92d6ef7b18070edd297f993a090ba8288d01e8b7e2a3ff375e21afdf8a9"
+        },
+        {
+          "file": "reviews/wave40-physics-themes.json",
+          "sha256": "074e2305449bde5b7d6815f36ad4e03011725be69881226a93b85f1a024d1536"
+        }
+      ],
+      "removed_seconds": 3,
+      "before_seconds": 51,
+      "after_seconds": 48
+    }
+  ]
+}

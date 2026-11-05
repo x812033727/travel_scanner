@@ -1,0 +1,391 @@
+{
+  "tested_on": "2026-11-02T09:44:31.860Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3490,
+    "canonical_questions": 3344,
+    "eligible_candidates": 3174,
+    "selected_candidates": 3115,
+    "alias_records": 146,
+    "historical_records": 313,
+    "source_urls": 4464,
+    "current_research_source_urls": 1505,
+    "selected_source_urls": 2685,
+    "new_suggestions_not_added": 1367,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 307,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3104",
+    "carried": 3104,
+    "added": 11,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "aea49ea36c0dde090ffa5f3a2ff60c3c96b550458cb3f94870378d1e6cb982a2",
+    "writes": 6834,
+    "selected": 3115
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "aea49ea36c0dde090ffa5f3a2ff60c3c96b550458cb3f94870378d1e6cb982a2",
+    "writes": 0
+  },
+  "aliases": [],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4563,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 6068.9992999999995,
+    "index_ms": 3613.0090999999993,
+    "unchanged_index_ms": 322.9380999999994,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 13,
+        "milliseconds": 16.296300000001793
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 4.140999999999622
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 5.53150000000096
+      }
+    ],
+    "rss_bytes": 422633472,
+    "sqlite_bytes": 57102336
+  },
+  "dedup_audit": {
+    "selection": "Every final wave31 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 0,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": []
+  },
+  "semantic": {
+    "input_sha256": "f4de461137fca5064ed0b89ff405175e5e70c240825c2695d6969410335f5fe3",
+    "records": 3490,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.622
+  },
+  "hashes": {
+    "pool.json": "f4de461137fca5064ed0b89ff405175e5e70c240825c2695d6969410335f5fe3",
+    "themes.json": "2973906617649ad497eed17e01216fd4c6b277019520545dcab6ed3ea5100e55",
+    "manifest.json": "ee91b9de11f96675947c0ead24087682fc579b0f61cf6e5b95ae7166750a86c0",
+    "index.html": "99460141050eb9d60d7f5b183d95054ff8799c98c2c33c920145a7cbf38cb5d1",
+    "batches/wave31-lander.json": "c39e28388a29d8fd01479438368bea69b71bdfbe1734a038bb51cbc51000cc0c",
+    "batches/wave31-rings.json": "6685fbac9dbaa04fcbae77c126fce044aed2e6f904f8b2935f092eea5d68fb50"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3479,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3104,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 299,
+    "changed_old_canonical_ids": [],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4451,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://research-information.bris.ac.uk/files/329879244/36856_2_merged_1658502913.pdf",
+        "source_id": "SRC-8eb14d1caa5729a4",
+        "candidate_ids": [
+          "P31001"
+        ],
+        "theme_ids": [
+          "G305"
+        ]
+      },
+      {
+        "url": "https://eps.rutgers.edu/images/EPS_Publications/A_Tectonic_Origin_for_the_Largest_Marsquake_Observed_by_InSight.pdf",
+        "source_id": "SRC-ba7c6db3098c205f",
+        "candidate_ids": [
+          "P31001"
+        ],
+        "theme_ids": [
+          "G305"
+        ]
+      },
+      {
+        "url": "https://elib.dlr.de/136478/1/staehler-etal2020GL089099.pdf",
+        "source_id": "SRC-26505a3f244accea",
+        "candidate_ids": [
+          "P31002"
+        ],
+        "theme_ids": [
+          "G306"
+        ]
+      },
+      {
+        "url": "https://authors.library.caltech.edu/api/records/60dcb-gn218/files/JGR%20Planets%20-%202025%20-%20Tamama%20-%20Classifying%20Thermal%20Moonquakes%20Recorded%20in%20Apollo%2017%20Lunar%20Seismic%20Data%20Using.pdf/content",
+        "source_id": "SRC-bce3d1cece376cf8",
+        "candidate_ids": [
+          "P31003"
+        ],
+        "theme_ids": [
+          "G306"
+        ]
+      },
+      {
+        "url": "https://tmurphy.physics.ucsd.edu/papers/Icarus-231-183.pdf",
+        "source_id": "SRC-0f8abad3a67d44b0",
+        "candidate_ids": [
+          "P31004"
+        ],
+        "theme_ids": [
+          "G307"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/s41586-021-03972-8.pdf",
+        "source_id": "SRC-85f9d9fb81681aa9",
+        "candidate_ids": [
+          "R31001"
+        ],
+        "theme_ids": [
+          "G300"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/s41598-018-29392-9.pdf",
+        "source_id": "SRC-81855d87f9cdf4a6",
+        "candidate_ids": [
+          "R31002"
+        ],
+        "theme_ids": [
+          "G300"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/s41598-020-79024-4.pdf",
+        "source_id": "SRC-3a2620e4c8a82c57",
+        "candidate_ids": [
+          "R31002"
+        ],
+        "theme_ids": [
+          "G300"
+        ]
+      },
+      {
+        "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0224077&type=printable",
+        "source_id": "SRC-6ce4a297c064ea78",
+        "candidate_ids": [
+          "R31003"
+        ],
+        "theme_ids": [
+          "G301"
+        ]
+      },
+      {
+        "url": "https://web.njit.edu/~dbunker/publications/Yamaguchi%20etal%2097%20N.pdf",
+        "source_id": "SRC-eaa504ba7c20f054",
+        "candidate_ids": [
+          "R31004"
+        ],
+        "theme_ids": [
+          "G302"
+        ]
+      },
+      {
+        "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1487099/pdf",
+        "source_id": "SRC-e71edf32e2f45adc",
+        "candidate_ids": [
+          "R31005"
+        ],
+        "theme_ids": [
+          "G303"
+        ]
+      },
+      {
+        "url": "https://www.climatology.uni-mainz.de/files/2012/03/Esper_2007_PRCB.pdf",
+        "source_id": "SRC-60bdf917044e9002",
+        "candidate_ids": [
+          "R31006"
+        ],
+        "theme_ids": [
+          "G303"
+        ]
+      },
+      {
+        "url": "https://research.fs.usda.gov/download/treesearch/12890.pdf",
+        "source_id": "SRC-53a697d10b86c5c2",
+        "candidate_ids": [
+          "R31007"
+        ],
+        "theme_ids": [
+          "G304"
+        ]
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://www.nature.com/articles/s41586-021-03972-8.pdf",
+    "core": "R31001",
+    "theme": "G300",
+    "theme_ids": [
+      "G300"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 137539.7849,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "e75ec2a795f42a88dca7b30f082182b16094095cb63a160d8f46a068dc503690"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "c315dc78045c7a06043a0a093b34fe522715e389da6ff80615be65f55afd9956"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "2f66e35f7a24dbb951e923ce740684145ac2d77321052ee4f1cf860dda759f83",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "9779521380582c5bde657b20b9aec6a3ef57df66e135da2764321e6b410f1024"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "b657c2a868e8f98028de102620a17252ca53838ade76b57a4da013383de5fe47",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 379,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 19,
+    "unique_blobs_checked": 400,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3794,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G300",
+        "core": "R31001",
+        "seconds": 53,
+        "maximum": 85
+      },
+      {
+        "theme": "G300",
+        "core": "R31002",
+        "seconds": 51,
+        "maximum": 80
+      },
+      {
+        "theme": "G301",
+        "core": "R31003",
+        "seconds": 77,
+        "maximum": 105
+      },
+      {
+        "theme": "G302",
+        "core": "R31004",
+        "seconds": 79,
+        "maximum": 105
+      },
+      {
+        "theme": "G303",
+        "core": "R31005",
+        "seconds": 46,
+        "maximum": 85
+      },
+      {
+        "theme": "G303",
+        "core": "R31006",
+        "seconds": 50,
+        "maximum": 90
+      },
+      {
+        "theme": "G304",
+        "core": "R31007",
+        "seconds": 58,
+        "maximum": 85
+      },
+      {
+        "theme": "G305",
+        "core": "P31001",
+        "seconds": 77,
+        "maximum": 125
+      },
+      {
+        "theme": "G306",
+        "core": "P31002",
+        "seconds": 60,
+        "maximum": 100
+      },
+      {
+        "theme": "G306",
+        "core": "P31003",
+        "seconds": 50,
+        "maximum": 100
+      },
+      {
+        "theme": "G307",
+        "core": "P31004",
+        "seconds": 85,
+        "maximum": 105
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 30,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "d6ae41545f8ce5ec0430dfc5363be14be9870d2d5b16af2e60e8c73e7d7bbb94"
+  }
+}

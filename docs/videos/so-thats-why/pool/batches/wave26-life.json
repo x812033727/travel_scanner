@@ -1,0 +1,352 @@
+{
+  "batch_id": "wave26-life-20261102",
+  "created_on": "2026-11-02",
+  "scope": "發育花紋的距離互作、方向起點與接收組織；3 raw候選，其中A26003作者提既有V3007變體。題級來源篩選，不是逐句稿核准。",
+  "sources": [
+    {
+      "id": "A26-S001",
+      "url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
+      "title": "Interactions between zebrafish pigment cells responsible for the generation of Turing patterns",
+      "publisher": "Nakamasu et al.; Proceedings of the National Academy of Sciences",
+      "doi": "10.1073/pnas.0808622106",
+      "canonical_url": "https://doi.org/10.1073/pnas.0808622106",
+      "retrieval_url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
+      "accessed_on": "2026-11-02",
+      "version": "2009-05-11 online; 2009-05-26 issue, PNAS 106(21):8429–8434; author-hosted published PDF",
+      "read_via": "web.search定位原文與大阪大學作者PDF；web.open可讀；指定UA fresh HTTP200下載有效6頁PDF，以PyMuPDF抽文並目讀指定圖頁。",
+      "reading_scope": "PDF pp1–4引言、Results四種移除對照、Discussion及Fish Stock/Laser Ablation方法；pp5–6模型描述與限制讀回，未重算方程或讀SI。目讀PDF pp2、3、5的Fig1–4。",
+      "locator": "Results: Long-Range Interaction to Influence the Development/Survival of Pigment Cells；Short-Range Effect of Xanthophores Against Melanophores；Discussion；Fig1–4（印8429–8433）。",
+      "summary": "移走近鄰與移走鄰條帶的黃色素細胞，對黑色素細胞可有相反效果；以距離相關互作建立圖案模型。",
+      "limitations": "近距20 dpf與遠距34 dpf等對照不是同一隻魚同時搬動鄰居；箭頭是淨細胞互作，不是已識別的單一分泌分子。2009兩細胞模型不能當全部皮膚形成機制，2013已顯示虹彩細胞作用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-life-sources/stripe2009.pdf",
+        "sha256": "a1fc424041f6e399e84c6ab8740424e34c4853aa1d7d8588708256fbd5d804ca",
+        "text_file": ".cache/wave26-life-sources/stripe2009.txt",
+        "text_sha256": "c1514aed8c690332d2be9ddc059cf637c3944507ec66858a0f68a7e496444187"
+      }
+    },
+    {
+      "id": "A26-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3912879/",
+      "title": "Iridophores and their interactions with other chromatophores are required for stripe formation in zebrafish",
+      "publisher": "Frohnhöfer et al.; Development / The Company of Biologists",
+      "doi": "10.1242/dev.096719",
+      "canonical_url": "https://doi.org/10.1242/dev.096719",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3912879/fullTextXML",
+      "accessed_on": "2026-11-02",
+      "version": "2013-07-15, Development 140(14):2997–3007; PMC release 2014-02-11 is not publication year",
+      "read_via": "web.open PMC遇CAPTCHA；指定UA fresh HTTP200取得Europe PMC官方XML，核article-id/DOI/正文。另web.open及指定UA取得德里大學生化系託管同文PDF，核頁首身份並目讀Fig9。",
+      "reading_scope": "XML PARA0–58（背景、方法及主要突變/互補結果）；PARA72–101（choker結果、Discussion、模型限制）；同文PDF p9印3005目讀Fig8/9。未讀全部補充材料，未逐式重算模型。",
+      "locator": "A prepattern for self-organising stripe formation（PARA72–75）；Formation of horizontal stripes requires a prepattern（PARA97–99）；Conclusions PARA101；Fig9。A26001邊界另用PARA79–96。",
+      "summary": "缺水平肌隔的choker魚仍形成近似正常寬度的條帶，但方向混亂；早期虹彩細胞位置提供方向線索，細胞互作繼續形成圖案。",
+      "limitations": "choker是有其他發育效應的突變體，不是只擦除一條畫線的手術；虹彩細胞出現亦延遲。支持解剖起點與自組織分工，不宣稱隔板分子訊號已識別或鰭完全同機制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-life-sources/stripe2013.xml",
+        "sha256": "6442d6a48c33cf95bc144b091cc88ed6362004aec0e13cc747efef9e4275bf66",
+        "text_file": ".cache/wave26-life-sources/stripe2013.txt",
+        "text_sha256": "100f0ce057e4dba32f90a6e8dd0552acf19a4e5825cbd51fd871b1a5575f29bd",
+        "same_article_pdf": {
+          "file": ".cache/wave26-life-sources/stripe2013-institutional.pdf",
+          "sha256": "41f363619fa9b769689d7907d3a86c894e1f1a98921d364b8eb61c6a096d326e",
+          "retrieval_url": "https://www.biochem.du.ac.in/userfiles/downloads/stripe%20formation-1.pdf",
+          "text_file": ".cache/wave26-life-sources/stripe2013-institutional.txt",
+          "text_sha256": "29deec702caa3e02baecf9535d6950cc86f56513839ecfa9039923999c8ab70a",
+          "relationship": "同一Development原研究之機構教學副本，非額外實驗。"
+        }
+      }
+    },
+    {
+      "id": "A26-S003",
+      "url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf",
+      "title": "Butterfly eyespots: the genetics and development of the color rings",
+      "publisher": "Monteiro, Brakefield and French; Evolution / Society for the Study of Evolution",
+      "doi": "10.1111/j.1558-5646.1997.tb03968.x",
+      "canonical_url": "https://doi.org/10.1111/j.1558-5646.1997.tb03968.x",
+      "retrieval_url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf",
+      "accessed_on": "2026-11-02",
+      "version": "1997-08, Evolution 51(4):1207–1216; author-lab hosted published scan; 2020 URL folder is not research year",
+      "read_via": "web.search/Open核作者實驗室原PDF；指定UA fresh HTTP200下載10頁掃描PDF，無可用正文文字層；PyMuPDF渲染後逐頁目讀pp1–9。PubMed/期刊metadata另核DOI、作者、年卷頁。",
+      "reading_scope": "PDF pp1–9（印1207–1215）：背景、選育與兩種移植方法、Results、Discussion；Fig1、2、3、4、5、6及相關Table3/4/6。p10參考文獻未逐讀，統計未重新計算。",
+      "locator": "Focal Grafting Experiments / Graft Experiment1/2（PDFp3印1209）；Ectopic Eyespots Induced by Grafted Foci（pp5–7印1211–1213）；Discussion（pp8–9印1214–1215）；Fig1/4/6。",
+      "summary": "黑環比例不同的兩條選育線互換眼斑中心，結果主要跟宿主翅面；局部接受組織的反應差異可改色環比例。",
+      "limitations": "限Bicyclus anynana所測選育線/蛹期位置；雙移植近遠位置效應強，大小亦影響比例，不能畫成任何位置完全等效。Fig6濃度閾值/局部sink是解釋模型，未測得分子梯度或確定受體。原文不是選育安全操作指南。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave26-life-sources/eyespot1997.pdf",
+        "sha256": "89d78a15c5a81276199e5c5a8994faa809265dad10286b2a4f527dab629858b1",
+        "text_file": ".cache/wave26-life-sources/eyespot1997.txt",
+        "text_sha256": "9c1b6eb2509a0d868af28ae442b635eedc0bc32326763ddb409cf6823da49bb1",
+        "text_limitation": "抽文只有頁標，不能當正文讀取證據；正文閱讀依下列rendered_pages。",
+        "rendered_pages": [
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p1.png",
+            "sha256": "8e236aa39e15ed4f989febb451b638546fbe5c0bad554adc757e839ea0ad46c1",
+            "printed_page": 1207
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p2.png",
+            "sha256": "67b6845e27d6991051be17cda7f021f20b5345eaf59f4f134860546276bad679",
+            "printed_page": 1208
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p3.png",
+            "sha256": "7b5e82e0f9730d03d0b7531733782f53f633c3e64bc69732c16134de187d6a27",
+            "printed_page": 1209
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p4.png",
+            "sha256": "7229c419e994f278c870fcac98a18e46c51c434d283496ad76563ffe7ef01ebc",
+            "printed_page": 1210
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p5.png",
+            "sha256": "cd0378ab01aa20484dad2d85ac1174e9691cea83ade9fb2a3ab1f0bd16ac4a5e",
+            "printed_page": 1211
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p6.png",
+            "sha256": "bbed5b96817f873bff63302130cdea8c5f7df4f73466213db1cda5f6e4595085",
+            "printed_page": 1212
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p7.png",
+            "sha256": "00b921de2e7baeec2ee43dcae2d39d23eff9c1923f5d77ad124da0fafe174b0b",
+            "printed_page": 1213
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p8.png",
+            "sha256": "d21e3e9f98e5dd237bcfdf303af301571a74f6f331486916e95a24fdd2234148",
+            "printed_page": 1214
+          },
+          {
+            "file": ".cache/wave26-life-sources/eyespot1997-p9.png",
+            "sha256": "5e170a9303ab220bedf665f8a4aea973a3e8fc3f419ccbe0f1857c5385b08c33",
+            "printed_page": 1215
+          }
+        ]
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "A26001",
+      "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+      "domain": "發育花紋與局部控制",
+      "mechanism_key": "life.pigment_distance_opposed_interactions_pattern_spacing",
+      "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+      "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。",
+      "source_ids": [
+        "A26-S001",
+        "A26-S002"
+      ],
+      "source_locator": "S001 PDFpp1–4 Results/Fig1–3、Discussion與p5Fig4；S002 XML PARA79–96/101",
+      "premise_status": "screened",
+      "notes": "近距排開和遠距支持合成一核，不各算新題；生成/死亡/遷移不混成單一細胞只會移動。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能預測移走最近鄰和移走遠處鄰條帶，結果未必相同；認出圖案可由距離不同的回饋形成。",
+        "visual": "分兩個研究年齡面板：20 dpf孤立黑細胞周圍的近鄰移除，與34 dpf條帶遠鄰移除；原創黃黑點示意，存活與遷移分符號；回饋箭頭標淨效應模型。",
+        "seconds": [
+          85,
+          125
+        ]
+      }
+    },
+    {
+      "id": "A26002",
+      "question": "細胞能自己排成條紋，為什麼條紋還會長歪？",
+      "domain": "發育花紋與局部控制",
+      "mechanism_key": "life.pigment_pattern_axis_landmark_vs_spacing",
+      "answer_target": "細胞互作可以產生分隔與近似條帶寬度，但不會自動指定身體的橫向。正常發育中虹彩細胞先沿水平肌隔附近出現，提供初始位置；缺該結構的choker突變體中，較晚出現的虹彩細胞分散成任意方向區塊，仍可形成彎曲、分岔或轉向的條紋。",
+      "scope": "限2013斑馬魚軀幹發育與choker突變體；不是將肌隔單獨移除的充分必要性試驗，也不稱每個突變體都垂直。起始線索與細胞自組織可共存；不套用鰭或所有動物條紋。",
+      "source_ids": [
+        "A26-S002"
+      ],
+      "source_locator": "XML PARA72–75、97–101；同文PDFp9印3005 Fig9",
+      "premise_status": "screened",
+      "notes": "與A26001比較輸出量：此題改條紋方向/初始位置，不把近遠細胞作用換細胞名稱再算一次。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "區分「能形成間距」與「能對準身體方向」，不把自組織誤解成完全不需要起始條件。",
+        "visual": "正常與choker兩框保留魚體方向：前者早期虹彩細胞沿肌隔，後者遲出且位置任意；終態畫彎曲/斜向條帶，保留寬度近似而非每條完全等寬。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "A26003",
+      "question": "換了蝴蝶眼斑的中心，周圍色環就一定跟著換嗎？",
+      "domain": "發育花紋與局部控制",
+      "mechanism_key": "life.eyespot_recipient_response_graft_color_ring_variant",
+      "answer_target": "眼斑中心能組織周圍圖案，但接受訊號的翅面不是被動著色紙。黑環與金環比例不同的兩條選育線互換中心後，色環比例主要隨宿主；接受組織的反應差異可使同類中心訊號產生不同色環。濃度閾值改變是與結果相容的空間解釋模型。",
+      "scope": "限1997 Bicyclus anynana GOLD/BLACK選育線蛹期移植；不能由此判所有蝴蝶的分子訊號。移植近遠位置和總眼斑大小影響比例；中心來源對大小仍可有影響，不說中心完全無作用。 本研究只支持接受組織層級的反應差異，不識別胞內效應蛋白，不能作V3007分子中段的直接證據。",
+      "source_ids": [
+        "A26-S003"
+      ],
+      "source_locator": "PDFpp3/5–9，印1209/1211–1215；Graft1/2、Discussion、Fig1/4/6",
+      "premise_status": "screened",
+      "notes": "作者建議併V3007同訊號不同接收反應，保留移植與空間閾值模型作研究變體，不計新核心；尚待非作者判讀。 Fig6採local-sink低谷模型：低於T1為黑區；若畫梯度須維持此方向，不能倒畫中心濃度高峰。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用互換中心與宿主的結果，分清發出訊號的一方與接收規則的一方。",
+        "visual": "原創2×2移植結果示意採Graft1，標GOLD/BLACK為選育線；模型分框呈相同抽象濃度場配不同閾值，不畫成已測分子梯度；不把雙移植近遠兩點假裝同一位置。 若採Fig6模型，中心為local-sink低谷、低於T1為黑區；標組織反應模型，非胞內蛋白實測。",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "A26-NA001",
+      "question": "變色龍改顏色，是重新排出了花紋細胞嗎？",
+      "existing_ids": [
+        "B2313"
+      ],
+      "reason": "舊核已含晶格間距改反射；此輪的發育位置不能與快速色變混同。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA002",
+      "question": "烏賊皮膚一秒變花，是顏料重新製造嗎？",
+      "existing_ids": [
+        "B2125"
+      ],
+      "reason": "色素囊面積與反光細胞的舊機制，不再收。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA003",
+      "question": "頭髮變白，能直接用魚條紋再生來解釋嗎？",
+      "existing_ids": [
+        "LEG-S40"
+      ],
+      "reason": "毛囊色素幹細胞與皮膚細胞互作不同；未讀新人體控制，不作診療延伸。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA004",
+      "question": "秋葉紅色只是綠色退掉嗎？",
+      "existing_ids": [
+        "LEG-S35"
+      ],
+      "reason": "色素顯露與新合成已收，非發育定位新核。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA005",
+      "question": "斑馬的條紋一定是為了躲獵人嗎？",
+      "existing_ids": [
+        "LEG-S62"
+      ],
+      "reason": "既有功能假說題，且全稱與目的論不成立。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA006",
+      "question": "兩種蝴蝶為什麼長得像同一套警告標誌？",
+      "existing_ids": [
+        "L188"
+      ],
+      "reason": "共同警告與捕食者學習已有；不是花紋如何在翅上形成。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA007",
+      "question": "斑葉插出新株為什麼變成單一顏色？",
+      "existing_ids": [
+        "R6002"
+      ],
+      "reason": "細胞層嵌合來源已收，不換成動物嵌合名詞。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA008",
+      "question": "少了腕的水母為什麼還能排整齊？",
+      "existing_ids": [
+        "A22003"
+      ],
+      "reason": "既有收縮與力學重排，不能用不同皮膚案例重包。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA009",
+      "question": "同DNA的細胞為什麼分工不同？",
+      "existing_ids": [
+        "L064"
+      ],
+      "reason": "一般基因表現已有；新題必須有空間控制的增量。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA010",
+      "question": "細胞訊號為什麼只能傳到附近？",
+      "existing_ids": [
+        "V3001"
+      ],
+      "reason": "擴散與清除範圍已有；不能只把旁分泌換成色素細胞。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA011",
+      "question": "沒有對應受體，細胞能收到訊號嗎？",
+      "existing_ids": [
+        "V3002"
+      ],
+      "reason": "接收選擇性已有；本輪未識別眼斑受體。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。"
+    },
+    {
+      "id": "A26-NA012",
+      "question": "移植一個眼斑中心，就會帶去完整原樣圖案嗎？",
+      "existing_ids": [],
+      "reason": "1997互換中心結果不支持中心攜帶整張固定顏色藍圖。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "source_ids": [
+        "A26-S003"
+      ]
+    },
+    {
+      "id": "A26-NA013",
+      "question": "所有魚只靠黑黃兩種細胞就能畫完條紋嗎？",
+      "existing_ids": [],
+      "reason": "2009模型不能概括全體；2013原研究顯示虹彩細胞亦有不可忽略作用。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "source_ids": [
+        "A26-S001",
+        "A26-S002"
+      ]
+    },
+    {
+      "id": "A26-NA014",
+      "question": "近鄰排斥與遠鄰支持能拆成兩筆嗎？",
+      "existing_ids": [],
+      "reason": "兩種距離是A26001同一條件比較與回饋，不拆數。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "source_ids": [
+        "A26-S001"
+      ]
+    },
+    {
+      "id": "A26-NA015",
+      "question": "蝴蝶翅接觸不同材料，就證明圖案靠機械波傳遞嗎？",
+      "existing_ids": [],
+      "reason": "2020候選研究僅本輪web搜尋回傳指定文字，未完整讀其結果與圖；作者也把機械扭曲波列假說，先不收。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "research_pointer": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7110832/"
+    },
+    {
+      "id": "A26-NA016",
+      "question": "蝴蝶橢圓眼斑轉中心後仍不轉，能再算一個新核嗎？",
+      "existing_ids": [],
+      "reason": "已定位1997另篇形狀研究，但只讀摘要/身份；且可能仍為接收組織差異，未讀全文不納題。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "research_pointer": "https://pubmed.ncbi.nlm.nih.gov/9136018/"
+    }
+  ]
+}

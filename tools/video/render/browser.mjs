@@ -63,22 +63,52 @@ function pageFamily(fallback) {
 }
 
 // Runs in the page: shrink each .fit element's type until it fits, to at most 40% smaller.
-// CJK fonts draw taller than a tight line-height, so even one line "overflows" by a fraction of
-// the font size; only more than 0.4 em (a line that does not fit) counts vertically.
+// The slide font's glyphs stand about 1.45 em tall, so under a tighter line-height the last line
+// spills past its line box by half the difference without losing anything; what spills further
+// is cut off by the box. Until 2026-10-31 any spill under 0.4 em passed, and a card's column,
+// squeezed by flex to fit above the key band, cut the bottom off a 140px second line by 28px
+// (daily-ai-20261029, "字被底部白條蓋住"). Several passes: one box shrinking gives the others room.
+// A thumbnail is held to the same measure since 2026-10-31: under 0.4 em the id and pt headlines
+// of daily-ai-20261029 lost the foot of their last line.
 function fitText() {
   const overflows = (element) => {
-    const size = parseFloat(getComputedStyle(element).fontSize);
-    return element.scrollHeight - element.clientHeight > size * 0.4 || element.scrollWidth - element.clientWidth > 1;
+    const style = getComputedStyle(element);
+    const size = parseFloat(style.fontSize);
+    if (element.scrollWidth - element.clientWidth > 1) return true;
+    const line = parseFloat(style.lineHeight);
+    const spill = Number.isFinite(line) ? Math.max(0, (1.45 * size - line) / 2) : 0;
+    return element.scrollHeight - spill - element.clientHeight > size * 0.04;
   };
-  for (const element of document.querySelectorAll(".fit")) {
-    const start = parseFloat(getComputedStyle(element).fontSize);
+  const elements = [...document.querySelectorAll(".fit")];
+  const starts = new Map(elements.map((element) => [element, parseFloat(getComputedStyle(element).fontSize)]));
+  for (let pass = 0; pass < 3; pass++) {
+    let shrank = false;
+    for (const element of elements) {
+      const start = starts.get(element);
+      let size = parseFloat(getComputedStyle(element).fontSize);
+      while (overflows(element) && size > start * 0.6) {
+        size -= 2;
+        element.style.fontSize = `${size}px`;
+        shrank = true;
+      }
+    }
+    if (!shrank) break;
+  }
+  // An emphasised run stays on one line (theme.css), which a phrase of several Latin words cannot
+  // at any size the column takes ("**More Errors**", "y **más errores**": the en and es thumbnails
+  // of daily-ai-20261029 were dropped). Such a run may wrap rather than lose the whole text.
+  for (const element of elements) {
+    if (!overflows(element) || !element.querySelector("em")) continue;
+    for (const em of element.querySelectorAll("em")) em.style.whiteSpace = "normal";
+    const start = starts.get(element);
     let size = start;
+    element.style.fontSize = `${size}px`;
     while (overflows(element) && size > start * 0.6) {
       size -= 2;
       element.style.fontSize = `${size}px`;
     }
-    element.dataset.overflow = overflows(element) ? "yes" : "";
   }
+  for (const element of elements) element.dataset.overflow = overflows(element) ? "yes" : "";
 }
 
 // Runs in the page: load every face of the slide font that covers the slide's text. Drawing a
@@ -116,9 +146,36 @@ function layoutProblems(fontFamily) {
     if (element.closest("[data-hidden]")) continue;
     if (element.dataset.overflow) problems.push(`text does not fit even at 60% size: "${excerpt(element)}"`);
   }
+  // Letters cut at the box's edge: a line box shorter than its glyphs (a 1.08 big card) lets the
+  // descenders of its last line hang below the box, and a box that clips at its edge cut the g, y
+  // and p off (daily-ai-20261103). theme.css gives .fit a clip margin; whatever lacks one is said.
+  for (const element of document.querySelectorAll(".fit")) {
+    if (element.closest("[data-hidden]") || element.dataset.overflow) continue;
+    const style = getComputedStyle(element);
+    if (style.overflowX === "visible" && style.overflowY === "visible") continue;
+    const margin = style.overflowX === "clip" && style.overflowY === "clip" ? parseFloat(style.overflowClipMargin) || 0 : 0;
+    const box = element.getBoundingClientRect();
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    const cut = [...range.getClientRects()].some((line) => line.height && (line.bottom > box.bottom + margin + 1 || line.top < box.top - margin - 1));
+    if (cut) problems.push(`letters are cut off at the edge of their box: "${excerpt(element)}"`);
+  }
   for (const box of document.querySelectorAll(".content, .thumb")) {
     if (box.scrollHeight > box.clientHeight + 1) problems.push(`the slide's content is ${box.scrollHeight - box.clientHeight}px taller than its area`);
     if (box.scrollWidth > box.clientWidth + 1) problems.push(`the slide's content is ${box.scrollWidth - box.clientWidth}px wider than its area`);
+  }
+  // The key band (templates.mjs KEY_BAND_CSS) is drawn over the card, outside its flow: a card
+  // whose content spills past its box can run under the band, and a box that only grew sideways
+  // or whose spill a flex parent hides from scrollHeight never says so. Compare what is drawn.
+  const band = document.querySelector(".key-band")?.getBoundingClientRect();
+  if (band) {
+    const under = new Set();
+    for (const element of document.querySelectorAll(".content *")) {
+      if (element.closest("[data-hidden]") || ![...element.childNodes].some((node) => (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim()) || ["svg", "img"].includes(node.nodeName?.toLowerCase()))) continue;
+      const box = element.getBoundingClientRect();
+      if (box.width && box.height && box.bottom > band.top + 1 && box.top < band.bottom && box.right > band.left && box.left < band.right) under.add(excerpt(element) || element.nodeName.toLowerCase());
+    }
+    for (const text of under) problems.push(`the card runs under the key band: "${text}"`);
   }
   // The thumbnail's brand mark sits in the bottom corner outside the flow, so a small line that
   // wraps grows into it without overflowing the box; compare the boxes instead.

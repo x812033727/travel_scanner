@@ -10,7 +10,7 @@ import path from "node:path";
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
-import { CONDENSATION_RULE, HEARD_RULES, NARRATIVE_RULES, REGISTER_RULES, TEACHING_FLOW_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
+import { CONDENSATION_RULE, DAILY_BRIEF_RULES, HEARD_RULES, NARRATIVE_RULES, REGISTER_RULES, TEACHING_FLOW_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { EXPLAINER_SERIES_INSTRUCTIONS } from "./explainer-series.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
@@ -1873,12 +1873,135 @@ ${COMMON.slice(COMMON_RULES_AT)}`.trim();
 /** Every narration language's texts, keyed like VARIANT_INSTRUCTIONS ("translator", "translator:shorten", …); none for zh-TW. */
 export const SOURCE_INSTRUCTIONS = Object.fromEntries(Object.keys(SOURCE_NAMES).map((source) => [source, fromSource(source)]));
 
+// The daily AI news brief (variant "daily", register.mjs DAILY_BRIEF_RULES): the slides stages'
+// texts with the tutorial-only rules (TEACHING_RULES, TEACHING_FLOW_RULES, VALUE_RULES) replaced
+// by the brief's, and the parts that tell a tutorial's task told for a news brief. The common
+// rules, the storytelling register, the template guide and the misheard words stay as every
+// slides stage has them. The planner is written whole: a brief's sections are its own.
+const TUTORIAL_RULES = `${TEACHING_RULES}\n\n${TEACHING_FLOW_RULES}\n\n${VALUE_RULES}`;
+
+/** `text` with each [from, to] pair replaced once; a `from` the text no longer has throws, so a slides edit cannot silently drop out of the daily texts. */
+function replaced(text, pairs) {
+  return pairs.reduce((out, [from, to]) => {
+    if (!out.includes(from)) throw new Error(`a daily-brief prompt replaces ${JSON.stringify(from.slice(0, 80))}, which its slides text no longer has`);
+    return out.replace(from, () => to);
+  }, text);
+}
+
+/** `text` with the part from `from` up to (not including) `to` replaced by `by`. */
+function between(text, from, to, by) {
+  const start = text.indexOf(from);
+  const end = start < 0 ? -1 : text.indexOf(to, start + from.length);
+  if (end < 0) throw new Error(`a daily-brief prompt replaces the text from ${JSON.stringify(from.slice(0, 60))}, which its slides text no longer has`);
+  return `${text.slice(0, start)}${by}${text.slice(end)}`;
+}
+
+const DAILY_PRECEDENCE = `The register and the template guide below hold for a daily brief only where the Daily brief
+rules above do not speak; where they disagree (the opening, the 「你以為…其實」 turn, one story, the
+shots and their cadence), the Daily brief rules win.`;
+
+export const DAILY_INSTRUCTIONS = {
+  "planner:daily": `${WRITING_COMMON}
+
+${DAILY_BRIEF_RULES}
+
+You are the planner of a daily brief. "daily_brief" holds the day ("news_date"), the video's slug
+("slug", fixed: return it as given) and the site's articles of that day ("stories": each with its
+slug, title, description, url and news_date); "sources" holds each article as the site serves it,
+in the same order. Plan ONLY from these stories. "topics" is empty, and "scope" and "used_guides"
+do not apply: these are the day's news, whatever earlier video used one of the articles.
+"earlier_videos" still keeps the title and the take from repeating an earlier brief. When
+"owner_note" is present the outline was sent back (by the owner, or by Jev when no option passed:
+"sent_back_by"); keep the stories unless the note rejects one, and fix what it says.
+
+Return {"slug": "<daily_brief.slug, as given>", "title": "working title", "source_guide": null,
+"source_urls": ["the urls of the stories you picked, in the order the video tells them, then any
+official page an article cites that a card will name; https, at most 12"], "brief": "brief.md"}.
+
+brief.md, in zh-TW, with exactly these sections in this order:
+# <working title: the biggest story of the day>
+## 觀眾 — who watches a daily brief and what they want from its ten minutes
+## 選題 — a table 「| # | 新聞 | 站上文章 | 排在這裡的理由 |」 with one row per story picked (5 to
+8, several articles about one event in one row), in the order the video tells them; each reason
+names the impact on a viewer in Taiwan (how many users, usable now, money, security). Then one
+line per story left out and why (「不選：<title>（<why>）」).
+## 觀眾看完能做到的事 — two to four things a viewer can do after this brief, each one story's action
+(the setting to open, the page to apply on, what to hold off), written as the action and the thing
+acted on
+## 站主觀點 — the owner's first-person take on the day. When the prompt carries "## The channel's
+stance", this section's FIRST line reads 「套用立場：N、M」 (the numbers of the stance points this
+brief applies, at least one), followed by the concrete opinion those points give on today's news;
+without a channel stance, propose one and mark it as a proposal the owner confirms or rewrites
+## 大綱 — exactly 2 options, each exactly like this:
+### 選項 A：<the lead story in a few words>
+一行說明：<which story leads and why, and how this order differs from the other option>
+主線：<the viewpoint in one sentence: what today's news changes for a viewer in Taiwan>
+開場鉤子：「<the first spoken line: the date, who and what of the lead story>」
+開場濃縮：<the opening's headlines, three at most, each one sentence that stops before its impact>
+鉤子：<each headline as 「<what is held back> → 第 N 章回收」>
+then the chapters in order with estimated seconds (the opening 30 to 45; each story 60 to 90;
+我的看法 30 to 45; 250 spoken characters a minute; the whole at least 8 minutes and aimed at about
+10): each story's chapter name (the event itself), its opening card ("template: what it shows") and
+the viewer's action, then 我的看法 with its comment question. The two options use the same stories
+from 選題 and differ in the lead story or the order, each with its ranking reason.
+## 會過期的事實 — every changeable fact (a price, an availability, a date) with the URL to re-check
+## 素材 — the article URLs, then any official page they cite
+## 不做的事 — what this brief leaves out (the stories not picked, rumours, prices, no investment view)
+${DAILY_PRECEDENCE}
+${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
+
+  "writer:daily": between(between(replaced(INSTRUCTIONS.writer, [
+    [TUTORIAL_RULES, DAILY_BRIEF_RULES],
+    [`You are the writer. Write the whole video.json for the brief's chosen outline ("chosen_option"),
+and claims.md, from "sources" only.`, `You are the writer of a daily brief. Write the whole video.json for the brief's chosen outline
+("chosen_option": its lead story and order, with the stories of the brief's 選題), and claims.md,
+from "sources" only: the day's site articles ("daily_brief" lists them) and the official pages
+they cite.`],
+    ['"shorts": [<Short 1>, <Short 2>]}.', '"shorts": []} (a daily brief has no Shorts).'],
+    [`The following register applies
+only to illustrated storytelling; Teaching route above takes precedence for teaching cards.`, DAILY_PRECEDENCE],
+  ]), '- "shorts": two vertical Shorts', '- "loops":', ""), "- youtube.description is the body only", "- claims.md:", `- youtube.description is the body only (the tool appends chapters and the references from
+  "sources"). Its first sentence discloses that the narration is an AI-synthesized voice and the
+  content is compiled from official sources (「本片旁白為 AI 合成語音，內容依官方來源與 Mokaair
+  站上文章整理。」); then the hook (the biggest story with its number) and one line saying who it is
+  for; it may ask the comment question in a last line. No URL in the body: every site article the
+  brief tells is an entry of "sources", and the tool lists them after the body.
+`),
+
+  "verifier:daily": between(replaced(INSTRUCTIONS.verifier, [
+    [`A third-party
+page never confirms a number. The site's own checked article does: a mokaair.com page in
+"sources" whose text shows the day it was checked, and only for a number whose official page
+is among the failed fetches; then the claim stands and the card's source names the article and
+that day (「Mokaair 文章 查證 YYYY-MM-DD」), never the official page.`, `This is a daily brief:
+its stories are the site's published news articles of "daily_brief.news_date" (mokaair.com pages
+in "sources", checked by the site before they were published) and the official pages they cite.
+A claim stands when its own site article or an official page shows it; a third-party page never
+confirms a number. Check besides: each story's first sentence names the date, the company and
+what it did as the article does; a company's claim about itself (a benchmark, a user count, "the
+best") is told as that company's claim; an availability, a date or a price in Taiwan that no page
+in "sources" gives is NOT FOUND (the sentence becomes 「台灣什麼時候開放，官方還沒講」 or is
+dropped), never guessed; no story is told that "daily_brief.stories" does not hold; no crypto
+price; the description opens on the AI-voice and official-sources disclosure.`],
+  ]), "For a brief marked 「製作路線：教學卡片」", "Check every checkable claim", ""),
+
+  "listener:daily": between(replaced(INSTRUCTIONS.listener, [[TUTORIAL_RULES, DAILY_BRIEF_RULES]]), "For illustrated storytelling, you also keep", LISTENER_ANSWER, `For a daily brief you keep the Daily brief rules above: a story's chapter opens on its linking
+sentence and then the date, who and what; the opening names three headlines at most and no count;
+every story says what it changes for a viewer in Taiwan and one thing to do; 我的看法 stays three
+to five sentences ending on the comment question. Of the register below you keep the rhythm (long
+and short sentences, one number at a time); the tool sets the pause beats from the words. Wording
+and rhythm are yours; the facts, the stories, their order, the cards, the pauses and the line ids
+are not. ${DAILY_PRECEDENCE}
+
+`),
+};
+
 /**
  * Every "<stage>:<variant>" text: the series documents and episode stages, the explainer's stages,
- * the listener's rewrite and register passes and the translator's shortening, rewording and
- * title passes.
+ * the daily brief's stages, the listener's rewrite and register passes and the translator's
+ * shortening, rewording and title passes.
  */
-export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, ...EXPLAINER_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE, "listener:register": LISTENER_REGISTER, "translator:shorten": TRANSLATOR_SHORTEN, "translator:reword": TRANSLATOR_REWORD, "translator:title": TRANSLATOR_TITLE };
+export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, ...EXPLAINER_INSTRUCTIONS, ...DAILY_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE, "listener:register": LISTENER_REGISTER, "translator:shorten": TRANSLATOR_SHORTEN, "translator:reword": TRANSLATOR_REWORD, "translator:title": TRANSLATOR_TITLE };
 
 
 // This profile deliberately has its own narrative instructions. Its ensemble and dramatic

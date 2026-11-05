@@ -1,0 +1,366 @@
+{
+  "status": "PASS_SOURCE_IDENTITY_SCOPE_REVIEW_NOT_FULL_FACT_CHECK",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-02",
+  "reviewed_files": [
+    {
+      "file": "batches/wave16-bio-structures.json",
+      "sha256": "a49620c48dc563918c93db75566a2311ef5fa760cd6a0ccb3191ef79d43032f9"
+    },
+    {
+      "file": "batches/wave16-materials.json",
+      "sha256": "f7b4fae84279bef8103aeb0fafbceb5a2d98220531d0abe888c51139ade664f8"
+    },
+    {
+      "file": "batches/wave16-wave-sensing.json",
+      "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+    },
+    {
+      "file": "reviews/wave16-bio-structures-author.json",
+      "sha256": "db8e9a0999bf6c4f55537f5bce973901183b120e65ea4ccb19e5a07333327844"
+    },
+    {
+      "file": "reviews/wave16-materials-author.json",
+      "sha256": "d3a40414870e4c533276f7ddec2eb9f6933315d808d3b55c1cbba3430b3e43d5"
+    },
+    {
+      "file": "reviews/wave16-wave-sensing-author.json",
+      "sha256": "57e1584631a3cfc9e1aedf821d9421cef8502cd2fd3078f11103ba7d02038c48"
+    },
+    {
+      "file": "baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
+    }
+  ],
+  "new_source_rows": 20,
+  "raw_distinct_urls": 20,
+  "automated_comparison": {
+    "method": "All historical URL registry entries, research titles and DOI metadata, plus within-wave16 comparisons; exact advisory identity matching.",
+    "matched_instances": 0,
+    "script_sha256": "3391a5f17d3cc2d5953d18bd3f11264fd04626626060f6609addde1e5e72fd78",
+    "result_sha256": "fb9cc44dde9511a060f3093cfcc2d466cd409cddd0d2203f8a53fb5d0831fa9c",
+    "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+  },
+  "match_decisions": [],
+  "root_manual_identity_checks": [
+    {
+      "topic": "Shape-memory alloy test bench",
+      "lookup_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+      "doi": "10.3390/ma16134820",
+      "observed_identity": "Scholtes et al., A Multifunctional Characterization Test Bench for Shape Memory Alloy Micro-Wires—Design, Implementation and Validation, Materials16(13):4820, July4 2023. Primary experimental bench article, not an unidentified general review.",
+      "read_via": "2026-11-02 web search returned PMC citation metadata and publisher PDF indexed metadata",
+      "limit": "Root metadata check, not independent reading of the complete paper."
+    },
+    {
+      "topic": "Triple-shape polymer",
+      "lookup_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+      "doi": "10.1073/pnas.0608586103",
+      "observed_identity": "Bellin, Kelch, Langer, Lendlein; Polymeric triple-shape materials; PNAS103(48):18043–18047 (2006).",
+      "read_via": "2026-11-02 web search returned primary PMC citation metadata",
+      "limit": "Root citation identity only; source body review belongs to the non-author receipt."
+    },
+    {
+      "topic": "Tough hydrogel",
+      "lookup_url": "https://www.nature.com/articles/nature11409",
+      "doi": "10.1038/nature11409",
+      "observed_identity": "Sun et al., Highly stretchable and tough hydrogels, Nature489:133–136 (2012). PMC3642868 is an author manuscript available2013 of the same2012 work, not independent corroboration.",
+      "read_via": "2026-11-02 publisher and PMC search results, abstract and citation fields",
+      "limit": "Abstract/metadata check only; no biomedical application claims adopted."
+    },
+    {
+      "topic": "Prince Rupert drop fragmentation",
+      "lookup_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+      "doi": "10.1073/pnas.2202856119",
+      "observed_identity": "Cashman et al., Prince Rupert's Drops: An analysis of fragmentation by thermal stresses and quench granulation of glass and bubbly glass; PNAS119(31):e2202856119 (2022).",
+      "read_via": "2026-11-02 primary PMC citation metadata in search results",
+      "limit": "Identity check, not validation of every fragmentation claim."
+    },
+    {
+      "topic": "Static non-reciprocity",
+      "lookup_url": "https://arxiv.org/abs/1704.03305",
+      "doi": "10.1038/nature21044",
+      "observed_identity": "Coulais, Sounas, Alu; arXiv1704.03305v1 links Nature542:461–464 (2017). Corrected author's progress-message page range327–330 before acceptance. Preprint and journal article are the same work.",
+      "read_via": "2026-11-02 web.open official arXiv abstract, journal reference and related DOI",
+      "limit": "Metadata/abstract checked; not a fresh full-PDF read by root."
+    },
+    {
+      "topic": "Scandium trifluoride negative expansion",
+      "lookup_url": "https://arxiv.org/abs/1905.09250",
+      "doi": "10.1103/PhysRevB.102.094105",
+      "observed_identity": "Dove et al.; arXiv1905.09250 first submitted2019, v4 July24 2020; journal Phys.Rev.B102:094105 (2020). The v4 paper is not a separate2019 and2020 experiment.",
+      "read_via": "2026-11-02 web.open official arXiv abstract, version history and related DOI",
+      "limit": "Root identity check only; physical-model boundaries require topic reviewer."
+    },
+    {
+      "topic": "Hollow nanocrystals",
+      "lookup_url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/",
+      "observed_identity": "Yin et al.; UNT repository LBNL54995/OSTI835431 manuscript datedMarch11 2004, submitted to Science304 with publication dateApril30 2004. Repository hosting is not another experiment. PubMed15118156 independently lists Science304(5671):711–714 and this DOI; not the separate commentary DOI10.1126/science.1097604.",
+      "read_via": "2026-11-02 search returned UNT primary repository metadata; primary PubMed bibliographic record search on the same date",
+      "limit": "Repository identity/abstract only, not the18-page paper read by root.",
+      "doi": "10.1126/science.1096566"
+    },
+    {
+      "topic": "Granular time reversal",
+      "lookup_url": "https://arxiv.org/abs/1609.01539",
+      "doi": "10.1140/epjst/e2016-60259-1",
+      "observed_identity": "Harazi et al., Time reversal of ultrasound in granular media; v1 September6 2016 links this journal DOI. The preprint and journal version are not two independent experiments.",
+      "read_via": "2026-11-02 web.open/find official abstract/version/related DOI",
+      "limit": "Root abstract and identity read only, not fullPDF review."
+    },
+    {
+      "topic": "Instantaneous time mirror",
+      "lookup_url": "https://arxiv.org/abs/1510.01277",
+      "doi": "10.1038/nphys3810",
+      "observed_identity": "Bacot et al., Revisiting time reversal and holography with spacetime transformations; v1 October1 2015 linked to this related journal DOI.",
+      "read_via": "2026-11-02 web.open/find official abstract/version/related DOI",
+      "limit": "Root abstract/metadata read only; the later journal and preprint are one work."
+    },
+    {
+      "topic": "Hybrid resistive pulse platform",
+      "lookup_url": "https://www.nature.com/articles/s41598-017-10000-1",
+      "doi": "10.1038/s41598-017-10000-1",
+      "observed_identity": "Hinkle et al., Scientific Reports7:10173, August31 2017; matching PMC5579027.",
+      "read_via": "2026-11-02 publisher and PMC indexed citation/abstract; returned Methods particle-preparation passage read",
+      "limit": "Identity and specified sample boundary only; root did not inspect figures or all results."
+    },
+    {
+      "topic": "Stejskal-Tanner publisher metadata attempt",
+      "lookup_url": "https://doi.org/10.1063/1.1695690",
+      "doi": "10.1063/1.1695690",
+      "result": "ROOT_ENDPOINT_UNAVAILABLE",
+      "observed_identity": "No publisher page returned to root. An exact-title restricted search did not yield the intended publisher record.",
+      "read_via": "2026-11-02 web.open reported URL inaccessible",
+      "limit": "No successful publisher check claimed; author and non-author must bind the actually read original-paper copy and identify its bibliographic header."
+    },
+    {
+      "topic": "Termite construction version history",
+      "lookup_url": "https://elifesciences.org/articles/86843",
+      "doi": "10.7554/eLife.86843.4",
+      "observed_identity": "Facchini et al.; Version of Record April10 2024, eLife12:RP86843. Same page lists reviewed preprints v1 May15 2023, v2 October12 2023 and v3 February8 2024. Revisions of one work, not four independent studies.",
+      "read_via": "2026-11-02 web.open primary article header, citation and version history",
+      "limit": "Root identity and specified Results/model-limitation paragraphs read; not full paper/figures or video approval."
+    },
+    {
+      "topic": "Capillary spooling version identity",
+      "lookup_url": "https://arxiv.org/abs/1605.05293",
+      "doi": "10.1073/pnas.1602451113",
+      "observed_identity": "Elettro et al.; arXiv1605.05293v2 May19 2016, first submitted May17. Official abstract page links related PNAS DOI and explicitly notes text overlap with arXiv1501.00962. One work with version/overlap relationships, not independently corroborating sources.",
+      "read_via": "2026-11-02 web.open official arXiv abstract, version history and related DOI",
+      "limit": "Metadata and abstract only by root; detailed claim review belongs to the non-author bio receipt."
+    }
+  ],
+  "authors_disclosed_relationships_read_by_root": [
+    {
+      "batch": "bio-structures",
+      "author_disclosure": {
+        "count_meaning": "7個來源記錄對應7篇研究/作者稿；URL數不代表獨立實驗數或獨立團隊複驗數。",
+        "matching": "比既有來源的normalized title、explicit DOI與exact URL；僅身分線索，未證明歷史沒有不同URL同文。",
+        "items": [
+          {
+            "id": "B16-S001",
+            "doi": "10.1073/pnas.1512241112",
+            "canonical_url": "https://doi.org/10.1073/pnas.1512241112",
+            "retrieval_url": "https://www.thekaolab.com/papers/Reid_PNAS_2015.pdf",
+            "version": "PNAS 112(49):15113–15118; 2015-12-08 issue",
+            "old_exact_identity_matches": [],
+            "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。 與2022活橋研究部分團隊/主題相關，裝置與控制問題不同；非獨立團隊重複驗證同一成本效益模型。"
+          },
+          {
+            "id": "B16-S002",
+            "doi": "10.1038/s41467-022-28773-z",
+            "canonical_url": "https://doi.org/10.1038/s41467-022-28773-z",
+            "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897433/",
+            "version": "Nature Communications 13:1160; PMC8897433",
+            "old_exact_identity_matches": [],
+            "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。"
+          },
+          {
+            "id": "B16-S003",
+            "doi": "10.1098/rsif.2021.0213",
+            "canonical_url": "https://doi.org/10.1098/rsif.2021.0213",
+            "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8241487/",
+            "version": "J. R. Soc. Interface 18:20210213; PMC8241487",
+            "old_exact_identity_matches": [],
+            "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。"
+          },
+          {
+            "id": "B16-S004",
+            "doi": "10.7554/eLife.86843.4",
+            "canonical_url": "https://elifesciences.org/articles/86843",
+            "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11006414/fullTextXML",
+            "version": "Version of Record; eLife 12:RP86843; base DOI 10.7554/eLife.86843",
+            "old_exact_identity_matches": [],
+            "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。 eLife v1/v2/v3 reviewed preprints與v4正式紀錄是修訂關係；本次採VoR同文XML。"
+          },
+          {
+            "id": "B16-S005",
+            "doi": "10.1073/pnas.1602451113",
+            "canonical_url": "https://doi.org/10.1073/pnas.1602451113",
+            "retrieval_url": "https://arxiv.org/pdf/1605.05293",
+            "version": "arXiv:1605.05293v2 (19 May 2016); related PNAS 113(22):6143–6147",
+            "old_exact_identity_matches": [],
+            "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。 arXiv v2頁明列正式PNAS DOI且註與arXiv:1501.00962文字重疊；不把版本當兩個實驗。PDF編排時戳2018不改v2身分。"
+          },
+          {
+            "id": "B16-S006",
+            "doi": "10.1038/nature10739",
+            "canonical_url": "https://doi.org/10.1038/nature10739",
+            "retrieval_url": "https://web.mit.edu/mbuehler/www/papers/Nature_2012_wc.pdf",
+            "version": "Nature 482:72–76; 2 February 2012 issue",
+            "old_exact_identity_matches": [],
+            "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。"
+          },
+          {
+            "id": "B16-S007",
+            "doi": "10.1098/rsos.170475",
+            "canonical_url": "https://doi.org/10.1098/rsos.170475",
+            "retrieval_url": "https://hu.gatech.edu/wp-content/uploads/2017/07/Hu17-tower.pdf",
+            "version": "R. Soc. Open Sci. 4:170475; 14-page published PDF",
+            "old_exact_identity_matches": [],
+            "relationship": "同一篇原研究的指定存取版本，不把DOI頁/PMC/作者庫/arXiv當額外獨立證據。 與火蟻筏領域有相同前期規則/文獻脈絡，不能算對2021兩層循環的一次獨立重現。"
+          }
+        ]
+      }
+    },
+    {
+      "batch": "materials",
+      "author_disclosure": [
+        {
+          "source_id": "M16-S001",
+          "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+          "identity": "Materials16(13),4820 (2023-07-04), DOI10.3390/ma16134820",
+          "independent_studies": 1,
+          "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+          "old_exact_url_or_title_matches": [],
+          "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+        },
+        {
+          "source_id": "M16-S002",
+          "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+          "identity": "PNAS103(48),18043–18047；online2006-11-20、issue2006-11-28；DOI10.1073/pnas.0608586103",
+          "independent_studies": 1,
+          "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+          "old_exact_url_or_title_matches": [],
+          "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+        },
+        {
+          "source_id": "M16-S003",
+          "adopted_url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+          "identity": "Nature489,133–136 (2012-09-06), DOI10.1038/nature11409；PMC3642868為同工作作者稿",
+          "independent_studies": 1,
+          "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+          "old_exact_url_or_title_matches": [],
+          "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+        },
+        {
+          "source_id": "M16-S004",
+          "adopted_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+          "identity": "PNAS119(31),e2202856119；online2022-07-21；DOI10.1073/pnas.2202856119",
+          "independent_studies": 1,
+          "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+          "old_exact_url_or_title_matches": [],
+          "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+        },
+        {
+          "source_id": "M16-S005",
+          "adopted_url": "https://arxiv.org/pdf/1704.03305",
+          "identity": "arXiv1704.03305v1 (2017-04-04)；關聯Nature542,461–464(2017), DOI10.1038/nature21044",
+          "independent_studies": 1,
+          "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+          "old_exact_url_or_title_matches": [],
+          "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。",
+          "metadata_correction": "初期進度訊息誤寫327–330；正式檔已按arXiv來源身分頁使用Nature542,461–464。錯誤訊息不是另一篇研究。"
+        },
+        {
+          "source_id": "M16-S006",
+          "adopted_url": "https://arxiv.org/pdf/1905.09250",
+          "identity": "arXiv1905.09250v4 (2020-07-24)；PhysRevB102,094105 (2020-09-16), DOI10.1103/PhysRevB.102.094105",
+          "independent_studies": 1,
+          "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+          "old_exact_url_or_title_matches": [],
+          "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+        },
+        {
+          "source_id": "M16-S007",
+          "adopted_url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+          "identity": "LBNL作者報告副本；同工作Science304(5671),711–714 (2004-04-30), DOI10.1126/science.1096566",
+          "independent_studies": 1,
+          "relation": "同文PMC/Europe PMC XML、作者庫或arXiv與期刊是同工作，不按URL重複計獨立證據。",
+          "old_exact_url_or_title_matches": [],
+          "old_pool_relation": "當期舊庫精確URL/規格化題名比對；非全面DOI跨版本排除，root另核。"
+        }
+      ]
+    },
+    {
+      "batch": "wave-sensing",
+      "author_disclosure": [
+        {
+          "source_id": "W16-S001",
+          "work_doi": "10.1103/PhysRev.80.580",
+          "canonical_work_title": "Spin Echoes",
+          "version": "1950-11-15；Physical Review 80:580–594；DOI 10.1103/PhysRev.80.580",
+          "old_pool_identity_hits": [],
+          "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。",
+          "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。",
+          "same_work_copies": [
+            "https://122.physics.ucdavis.edu/sites/default/files/files/Pulse%20NMR/Hahn_SpinEchoes_PhysRev.80.580_1950.pdf"
+          ]
+        },
+        {
+          "source_id": "W16-S002",
+          "work_doi": "10.1063/1.1695690",
+          "canonical_work_title": "Spin Diffusion Measurements: Spin Echoes in the Presence of a Time-Dependent Field Gradient",
+          "version": "1965；J. Chem. Phys. 42:288–292；DOI 10.1063/1.1695690",
+          "old_pool_identity_hits": [],
+          "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。此PDF為第三方教育站副本，非作者伺服器；以原印刷題名/作者/年份/DOI核身分，無獨立複現主張。",
+          "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。"
+        },
+        {
+          "source_id": "W16-S003",
+          "work_doi": "10.1140/epjst/e2016-60259-1",
+          "canonical_work_title": "Time reversal of ultrasound in granular media",
+          "version": "arXiv:1609.01539v1，2016-09-06；同工作相關期刊DOI 10.1140/epjst/e2016-60259-1",
+          "old_pool_identity_hits": [],
+          "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。本批實讀鎖定arXiv v1，關聯正式版未逐字比較，不能稱已讀正式版全篇。",
+          "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。"
+        },
+        {
+          "source_id": "W16-S004",
+          "work_doi": "10.1038/nphys3810",
+          "canonical_work_title": "Revisiting time reversal and holography with spacetime transformations",
+          "version": "arXiv:1510.01277v1，2015-10-01；同工作相關正式版DOI 10.1038/nphys3810",
+          "old_pool_identity_hits": [],
+          "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。本批實讀鎖定arXiv v1，關聯正式版未逐字比較，不能稱已讀正式版全篇。",
+          "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。"
+        },
+        {
+          "source_id": "W16-S005",
+          "work_doi": "10.1038/ncomms9661",
+          "canonical_work_title": "Holographic acoustic elements for manipulation of levitated objects",
+          "version": "2015-10-27；Nature Communications 6:8661；DOI 10.1038/ncomms9661",
+          "old_pool_identity_hits": [],
+          "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。",
+          "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。",
+          "same_work_copies": [
+            "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4627579/fullTextXML"
+          ]
+        },
+        {
+          "source_id": "W16-S006",
+          "work_doi": "10.1038/s41598-017-10000-1",
+          "canonical_work_title": "A hybrid resistive pulse-optical detection platform for microfluidic experiments",
+          "version": "2017-08-31；Scientific Reports 7:10173；DOI 10.1038/s41598-017-10000-1",
+          "old_pool_identity_hits": [],
+          "carrier": "原研究不同載體屬同一工作，不按URL數量當獨立證據。",
+          "independence_limit": "exact DOI/URL/normalized title掃舊來源無命中不證明沒有其他副本；各題主要是單項工作的受控例子，不代表獨立重現。",
+          "same_work_copies": [
+            "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5579027/fullTextXML"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources_without_raw_candidate_references": [],
+  "count_policy": "Counts are distinct normalized URLs, not independent experiments or corroborating studies. Publisher pages, repositories, preprints and published versions can represent the same research. Reading provenance and exact accessed version remain separate.",
+  "limits": "Root checked the stated identities and author disclosures. This is not a full bibliography semantic-equivalence audit or a new independent full-text fact check. Candidate factual scope is controlled by the three non-author topic review receipts. No script, image rights, experimental replication or production approval."
+}

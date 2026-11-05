@@ -301,6 +301,14 @@ NO_DEMO_CATEGORIES = frozenset({"explainer", "story"})
 # The formats (video_projects.format) that are not asked for a demonstration whatever their
 # category: a drama is a story told, not a step shown. Slides and Shorts go by category and line.
 NO_DEMO_FORMATS = frozenset({"drama"})
+# The daily AI news brief (slug daily-ai-YYYYMMDD, .agents/skills/youtube-video/references/
+# daily-brief.md) reports five to eight stories and shows nothing being done: the owner exempted
+# it from the demonstration on 2026-10-29, after its first episode scored 「有示範 0.17」.
+DAILY_BRIEF_SLUG_PREFIX = "daily-ai-"
+
+
+def is_daily_brief(slug: str) -> bool:
+    return slug.startswith(DAILY_BRIEF_SLUG_PREFIX)
 
 
 class PolicyVerdict(BaseModel):
@@ -682,9 +690,11 @@ async def policy_questions_for(session: AsyncSession, slug: str) -> PolicyQuesti
     row says it demonstrates nothing (category ``explainer`` or ``story``, or format ``drama``:
     a one-off, a series episode or a compilation, whatever its category), and the tutorial's
     for every other video: one the site has no row for or has not categorised is still asked
-    for a demonstration."""
+    for a demonstration. A daily news brief is asked an explainer's, whatever its row says."""
     if await video_series_kind(session, slug) == "story":
         return "story"
+    if is_daily_brief(slug):
+        return "explainer"
     row = (
         await session.execute(
             select(VideoProject.shorts_line, VideoProject.category, VideoProject.format).where(
@@ -711,6 +721,8 @@ def demo_asked_of(category: str | None) -> bool:
 async def outline_demo_asked(session: AsyncSession, slug: str) -> bool:
     """Whether an outline pick asks for a demonstration, read from the video's own row as
     ``policy_questions_for`` reads it: a video the site has no row for is asked."""
+    if is_daily_brief(slug):
+        return False
     category = await session.scalar(select(VideoProject.category).where(VideoProject.slug == slug))
     return demo_asked_of(category)
 

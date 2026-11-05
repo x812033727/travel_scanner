@@ -33,8 +33,8 @@ test("the headline estimate follows the renderer's shrink in the channel's colum
   const nine = "第一名不一定最好用";
   const size = headlineSizeEstimate(nine);
   assert.ok(size < HEADLINE.fontSize && size >= HEADLINE.fontSize * HEADLINE.minScale, `${size}`);
-  // The renderer's 0.4 em tolerance lets a third line in at that size, its foot clipped; the
-  // six-character rule is what keeps a headline to two lines, not the box.
+  // At that size a third line fits the box whole (since 2026-10-31 the renderer no longer lets a
+  // clipped foot through); the six-character rule is what keeps a headline to two lines, not the box.
   assert.equal(headlineLayout(headlineTokens(nine), size).lines, 3);
   assert.ok(atPhoneWidth(size) >= MIN_HEADLINE_PX_AT_PHONE, "nine characters would still read on a phone");
   // Twenty characters need more lines than the floor allows two of.
@@ -96,8 +96,11 @@ test("the numbers the estimate rests on are the theme's and the renderer's", () 
   const renderer = readFileSync(new URL("../render/browser.mjs", import.meta.url), "utf8");
   assert.match(renderer, /size > start \* 0\.6/);
   assert.match(renderer, /size -= 2;/);
-  assert.match(renderer, /> size \* 0\.4/);
-  assert.deepEqual([HEADLINE.minScale, HEADLINE.step, HEADLINE.tolerance], [0.6, 2, 0.4]);
+  assert.match(renderer, /\(1\.45 \* size - line\) \/ 2/);
+  assert.match(renderer, /> size \* 0\.04/);
+  assert.doesNotMatch(renderer, /closest\("\.thumb"\)\) return/, "a thumbnail is held to the slides' measure");
+  assert.equal(HEADLINE.tolerance, Number(((1.45 - HEADLINE.lineHeight) / 2 + 0.04).toFixed(3)));
+  assert.deepEqual([HEADLINE.minScale, HEADLINE.step], [0.6, 2]);
   assert.equal(MAX_BYTES, THUMBNAIL_MAX_BYTES);
   assert.equal(PHONE_WIDTH, 320);
 });
@@ -201,4 +204,21 @@ test("a compilation's headline is its series' name by design, so the title-repea
   assert.match(episode.warnings[0], /repeats the title/);
   doc.compilation = { series: "xianmen", part: 1 };
   assert.equal(thumbnailItem(doc, workdir).warnings, undefined, "no warnings key: nothing to warn about");
+});
+
+test("the AI look holds the headline to one line across the frame, read on a phone, not to six characters", async () => {
+  const { HEADLINE_AI } = await import("./thumbnail.mjs");
+  assert.equal(headlineRule(null, "ai"), HEADLINE_AI);
+  assert.equal(headlineRule("sothatswhy", "ai"), HEADLINE_SERIES, "a series keeps its own");
+  assert.equal(HEADLINE_AI.width, 1280 - 44 - 40);
+  // Nine CJK characters and a Latin word fit at a size a phone reads; the channel's six-character rule does not apply.
+  const fits = thumbnailChecks({ bytes: jpegBytes(1280, 720, 2000), headline: "Google 最強**先不給你**", layout: "ai" });
+  assert.equal(fits.ok, true, fits.detail);
+  assert.ok(headlineSizeEstimate("Google 最強**先不給你**", HEADLINE_AI) >= 112);
+  // A headline too long for one line settles at the floor and fails the phone check.
+  const long = thumbnailChecks({ bytes: jpegBytes(1280, 720, 2000), headline: "這是一個太長太長太長太長太長的**AI 縮圖大標題**", layout: "ai" });
+  assert.equal(long.ok, false);
+  assert.match(long.detail, /shrinks to about \d+ px at 320 px wide/);
+  const broken = thumbnailChecks({ bytes: jpegBytes(1280, 720, 2000), headline: "Gemini 4\n**你找不到**", layout: "ai" });
+  assert.match(broken.detail, /one line: the subject, then the \*\*hook\*\*/);
 });

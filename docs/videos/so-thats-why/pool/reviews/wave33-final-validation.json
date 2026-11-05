@@ -1,0 +1,452 @@
+{
+  "tested_on": "2026-11-02T11:28:52.831Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3515,
+    "canonical_questions": 3368,
+    "eligible_candidates": 3198,
+    "selected_candidates": 3139,
+    "alias_records": 147,
+    "historical_records": 313,
+    "source_urls": 4495,
+    "current_research_source_urls": 1536,
+    "selected_source_urls": 2715,
+    "new_suggestions_not_added": 1427,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 323,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-3127",
+    "carried": 3126,
+    "added": 13,
+    "changed_raw_ids": [],
+    "removed_ids": [
+      "E2016"
+    ]
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "ae9efba816d9422da633cad58f237b3afa817872e064b6cc948201f663b9151a",
+    "writes": 6883,
+    "selected": 3139
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "ae9efba816d9422da633cad58f237b3afa817872e064b6cc948201f663b9151a",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "E2016",
+      "resolved": "P024"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4593,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 5841.177100000001,
+    "index_ms": 4330.722399999999,
+    "unchanged_index_ms": 353.14719999999943,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 14,
+        "milliseconds": 13.206700000002456
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 3.3859000000011292
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 6.357800000001589
+      }
+    ],
+    "rss_bytes": 417021952,
+    "sqlite_bytes": 58859520
+  },
+  "dedup_audit": {
+    "selection": "Every final wave33 merge including the reviewed historical pair, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 1,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 1,
+    "pairs": [
+      {
+        "duplicate_id": "E2016",
+        "canonical_id": "P024",
+        "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。",
+        "kind": "editorial_core_question",
+        "lexical": null,
+        "semantic": {
+          "id": "P024",
+          "cosine": 0.86352
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "e9808fc58273d1cf4cb2e969566d3eefe7baecebb06e7a7992293d07251a6022",
+    "records": 3515,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 3.582
+  },
+  "hashes": {
+    "pool.json": "e9808fc58273d1cf4cb2e969566d3eefe7baecebb06e7a7992293d07251a6022",
+    "themes.json": "c7704c6c374b95f3932f8a623b0dc7cbfd685b0f8a6e27020148ec7e352539fe",
+    "manifest.json": "d7891b7e5293e39c0b687d8dcb60a5eca4749b0eab30cebc2c8742784ba28127",
+    "index.html": "a31360df83d5222f749a3eb67972ed0d5e8d8b029d31e2a729cca0808836809e",
+    "batches/wave33-manuscript.json": "f92476f00b61d667787e1df24ffb0c6f379167da5c90238dbd8a9acf09ab810b",
+    "batches/wave33-whales.json": "a894447e9730e77b8522a0d6b53ba37bf34cbbb1dbebd68fba88f0b6aea78fa0"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3502,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3126,
+    "old_selected_merged_into_retained": [
+      "E2016"
+    ],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 314,
+    "changed_old_canonical_ids": [
+      "P024"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4479,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://www.nature.com/articles/s41467-021-21326-w",
+        "source_id": "SRC-54f59f42d54ad289",
+        "candidate_ids": [
+          "R33001"
+        ],
+        "theme_ids": [
+          "G315"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/sciadv.1601247",
+        "source_id": "SRC-5a4b63231b978a83",
+        "candidate_ids": [
+          "R33001"
+        ],
+        "theme_ids": [
+          "G315"
+        ]
+      },
+      {
+        "url": "https://bergmann.physics.wisc.edu/wp-content/uploads/2021/02/pub88.pdf",
+        "source_id": "SRC-35fdb5cfd2a7d833",
+        "candidate_ids": [
+          "R33002"
+        ],
+        "theme_ids": [
+          "G315"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.1512264112",
+        "source_id": "SRC-b5e17df5a3a08c6d",
+        "candidate_ids": [
+          "R33003"
+        ],
+        "theme_ids": [
+          "G316"
+        ]
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32492404/",
+        "source_id": "SRC-bc65eb7ad94abbc3",
+        "candidate_ids": [
+          "R33004"
+        ],
+        "theme_ids": [
+          "G316"
+        ]
+      },
+      {
+        "url": "https://english.tau.ac.il/news/puzzle_scrolls",
+        "source_id": "SRC-12c248aa8f120d8c",
+        "candidate_ids": [
+          "R33004"
+        ],
+        "theme_ids": [
+          "G316"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.2004534117",
+        "source_id": "SRC-11fd3edd13753d8b",
+        "candidate_ids": [
+          "R33005"
+        ],
+        "theme_ids": [
+          "G317"
+        ]
+      },
+      {
+        "url": "https://news.yale.edu/2021/09/01/analysis-unlocks-secret-vinland-map-its-fake",
+        "source_id": "SRC-331186861aaec4d6",
+        "candidate_ids": [
+          "R33006"
+        ],
+        "theme_ids": [
+          "G317"
+        ]
+      },
+      {
+        "url": "https://jhna.org/articles/dirty-books-quantifying-patterns-of-use-medieval-manuscripts-using-a-densitometer/",
+        "source_id": "SRC-ea86676de1b4db0d",
+        "candidate_ids": [
+          "R33007"
+        ],
+        "theme_ids": [
+          "G318"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1126/sciadv.aau7126",
+        "source_id": "SRC-570532b02a0b36a1",
+        "candidate_ids": [
+          "R33008"
+        ],
+        "theme_ids": [
+          "G319"
+        ]
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6911174/fullTextXML",
+        "source_id": "SRC-0df9ed3047b6a709",
+        "candidate_ids": [
+          "P33001"
+        ],
+        "theme_ids": [
+          "G320"
+        ]
+      },
+      {
+        "url": "https://www.fundacionmeri.cl/wp-content/files_mf/cade_et_al_2016_currentbiology_extended.pdf",
+        "source_id": "SRC-91285194a98f3c5c",
+        "candidate_ids": [
+          "P33002"
+        ],
+        "theme_ids": [
+          "G321"
+        ]
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11336686/fullTextXML",
+        "source_id": "SRC-56cb1afda62271ff",
+        "candidate_ids": [
+          "P33003"
+        ],
+        "theme_ids": [
+          "G322"
+        ]
+      },
+      {
+        "url": "https://marinebioacoustics.wordpress.com/wp-content/uploads/2018/04/wisniewska_etal_2016.pdf",
+        "source_id": "SRC-bb83344348d49057",
+        "candidate_ids": [
+          "P33004"
+        ],
+        "theme_ids": [
+          "G321"
+        ]
+      },
+      {
+        "url": "https://www.vliz.be/imisdocs/publications/ocrd/286777.pdf",
+        "source_id": "SRC-b5dcea8da07ab41f",
+        "candidate_ids": [
+          "P33005"
+        ],
+        "theme_ids": [
+          "G323"
+        ]
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8547948/fullTextXML",
+        "source_id": "SRC-eeb1f0cd27d655eb",
+        "candidate_ids": [],
+        "theme_ids": []
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://www.nature.com/articles/s41467-021-21326-w",
+    "core": "R33001",
+    "theme": "G315",
+    "theme_ids": [
+      "G315"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 125127.4165,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "0aea0ee257654fd9e49ca78622604e28fe773c107dfe2d7c57a026f538c2d062"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "7b0e739b422205879c637622adf7c39f870ecd911d753ef8df620e5600a06a7e"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "6c822f3ee3181884d2ca50c1720ab662143f233bd84da77afcc5b4427addc240",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "9fabfbe81f7e946584d4bbb71373508cb07037fb59c102574a1a465a6e3c239f"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "3632112998d7b127429213d45f4b81abd39dc373e496cd394dc11c07d8b5172e",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 387,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 20,
+    "unique_blobs_checked": 409,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3894,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G315",
+        "core": "R33001",
+        "seconds": 56,
+        "maximum": 100
+      },
+      {
+        "theme": "G315",
+        "core": "R33002",
+        "seconds": 44,
+        "maximum": 85
+      },
+      {
+        "theme": "G316",
+        "core": "R33003",
+        "seconds": 43,
+        "maximum": 90
+      },
+      {
+        "theme": "G316",
+        "core": "R33004",
+        "seconds": 43,
+        "maximum": 85
+      },
+      {
+        "theme": "G317",
+        "core": "R33005",
+        "seconds": 43,
+        "maximum": 90
+      },
+      {
+        "theme": "G317",
+        "core": "R33006",
+        "seconds": 45,
+        "maximum": 105
+      },
+      {
+        "theme": "G318",
+        "core": "R33007",
+        "seconds": 57,
+        "maximum": 90
+      },
+      {
+        "theme": "G319",
+        "core": "R33008",
+        "seconds": 63,
+        "maximum": 95
+      },
+      {
+        "theme": "G320",
+        "core": "P33001",
+        "seconds": 60,
+        "maximum": 90
+      },
+      {
+        "theme": "G321",
+        "core": "P33002",
+        "seconds": 47,
+        "maximum": 80
+      },
+      {
+        "theme": "G321",
+        "core": "P33004",
+        "seconds": 49,
+        "maximum": 85
+      },
+      {
+        "theme": "G322",
+        "core": "P33003",
+        "seconds": 74,
+        "maximum": 90
+      },
+      {
+        "theme": "G323",
+        "core": "P33005",
+        "seconds": 62,
+        "maximum": 85
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 31,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "dcb7b22e554b57334fa392d8348a053bc32201c212466a3ee370371dd95fa75a"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "theme_id": "G59",
+  "revision": "wave7-narration-draft-2",
+  "author": "root",
+  "status": "REVIEWED_TEXT_DRAFT_NOT_READ_ALOUD",
+  "production_ready": false,
+  "title": "無損壓縮，為什麼敢先猜錯聲音？",
+  "treatment_file": "treatments/G59/treatment.json",
+  "treatment_sha256": "91ff5c96372b2f62052fad21af62cd420576b82b9644958c1aafa48ab08240c5",
+  "core_ids": [
+    "M5004",
+    "M5009"
+  ],
+  "variant_budget_ids": [
+    "M5008"
+  ],
+  "not_in_this_film": [
+    "M5010"
+  ],
+  "beats": [
+    {
+      "id": "b1",
+      "core_id": "M5004",
+      "variant_id": "M5008",
+      "paragraphs": [
+        "無損音樂明明不能少掉資料，怎麼還敢猜下一個聲音？先把聲音想成一串數字，看看猜錯的部分去了哪裡。",
+        "第一點是一百，先完整留下。下一點就猜跟上一點一樣，還是一百。真正的值是一百零一，所以另外記下加一。",
+        "還原時，把猜值和差值相加，一百零一就回來了。下一點是一百零三，這次多記加二。規則、起點和每一步的差，都要留著。"
+      ],
+      "claim_ids": [
+        "c1",
+        "c2",
+        "e1"
+      ],
+      "visual_sequence": [
+        "原創六點序列全圖，第二點猜值100與原值101分色。",
+        "逐次揭示起點100、殘差+1、復原101；第三點只新增+2，不逐格念全部六點。"
+      ],
+      "spoken_characters": 133,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 29.6,
+      "editorial_budget_seconds": 35
+    },
+    {
+      "id": "b2",
+      "core_id": "M5004",
+      "variant_id": "M5008",
+      "paragraphs": [
+        "猜錯了，何必多這一步？因為差值如果常常很小，後面就有機會用更短的寫法。",
+        "但小不小，和能不能還原，是兩件事。現在故意把第一個加一改成零，第二點就變成一百。拿錯值繼續算，從第二點起，後面五點都少了一。",
+        "可見猜得準有助於壓縮，差值留得準才能還原。接著，左右兩個聲道也能換個寫法。"
+      ],
+      "claim_ids": [
+        "c1",
+        "c3",
+        "e1"
+      ],
+      "visual_sequence": [
+        "保持原序列，第一個殘差1→0；只高亮第二點及整串偏移，不演示FLAC損壞檔。",
+        "「能復原」與「是否省位元」分開標示；本數值示範不顯示壓縮率。"
+      ],
+      "spoken_characters": 118,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 26.2,
+      "editorial_budget_seconds": 30
+    },
+    {
+      "id": "b3",
+      "core_id": "M5009",
+      "variant_id": null,
+      "paragraphs": [
+        "假設同一瞬間，左邊是六，右邊是二。我們改記平均值四，還有左減右的差，也是四。左右接近時，差值也可能比較好寫。",
+        "只留平均值，當然分不出左右；差值也留下，就有辦法。先把平均值四乘二，得到總和八。",
+        "總和八再加差四，得到十二，除以二就是左邊的六。右邊也能照畫面算回來。可是，換成六和三，平均就多出半個。"
+      ],
+      "claim_ids": [
+        "c4",
+        "e2"
+      ],
+      "visual_sequence": [
+        "左6右2→mid4/side4，始終畫兩條原聲道，旁列兩個新數值。",
+        "依序呈現和8、(8+4)/2=6、(8−4)/2=2；不畫壓成單聲道再推測左右。"
+      ],
+      "spoken_characters": 124,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 27.6,
+      "editorial_budget_seconds": 30
+    },
+    {
+      "id": "b4",
+      "core_id": "M5009",
+      "variant_id": null,
+      "paragraphs": [
+        "六加三是九，除以二是四點五。這種整數寫法向下取整，只留下四。乘回二卻只有八，少的那個一，要去哪裡找？",
+        "看旁邊的差值：六減三是三，是奇數。兩個整數的和與差，一定同為奇數或同為偶數。所以差值是奇數，就知道總和還要補一。",
+        "八補成九，再配合差三，六和三就回來了。無損靠的就是這件事：換了寫法，復原需要的線索仍然在。"
+      ],
+      "claim_ids": [
+        "c4",
+        "e2"
+      ],
+      "visual_sequence": [
+        "左6右3→floor(9/2)=4/side3；錯誤回算與正確回算並排，以補回1高亮。",
+        "(9+3)/2=6、(9−3)/2=3；回扣前半的差值與後半的奇偶線索，結束。"
+      ],
+      "spoken_characters": 131,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 29.1,
+      "editorial_budget_seconds": 35
+    }
+  ],
+  "source_readback": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "accessed_on": "2026-11-01",
+    "read_via": "web open and find, official HTML",
+    "locators": [
+      "§4.2 mid-side transform and parity",
+      "§4.3–4.4 prediction/residual coding",
+      "§9.2.5 Table20 warm-up and reconstruction"
+    ],
+    "reading_scope": "定點讀取以上段落，不是全文或全實作測試。逐句c1–c4對照既有treatment，數字為原創示例，e1/e2沿用既有實測。"
+  },
+  "existing_evidence": [
+    {
+      "file": "reviews/wave6-g59-demo.json",
+      "sha256": "de578c0ccd5ecfe1f95e6a6964195f4df4abfd29401be0435f1e961a5f78dfd5",
+      "rerun_in_wave7": false
+    },
+    {
+      "file": "reviews/wave6-g59-independent-review.json",
+      "sha256": "ec4d8ff539f51a28dc4abc4f2b464e5c3e79cfa54c7e2973136a7dfceafbffd0",
+      "rerun_in_wave7": false
+    }
+  ],
+  "duration": {
+    "body_budget_seconds": 130,
+    "spoken_characters": 506,
+    "estimate_basis": "只算中文字/拉丁字母/數字，除以4.5是書面粗估；標點、重音、數字難度與畫面閱讀時間未實測。不得據此寫成旁白實測或伸長停頓填到130秒。",
+    "read_aloud": "NOT_PERFORMED",
+    "recorded_audio": "NONE",
+    "cut_decisions": [
+      "移除原treatment b2可選的跳動數字例，避免第二次只驗相同復原性質。",
+      "不念測試次數、檔案格式沿革、區塊最佳化或負數邊界。"
+    ],
+    "next_gate": "非作者文字/來源/算術審閱已完成；下一步必須實際試讀並記錄各段時間與理解卡點，再據此重寫或定秒數。130秒仍為書面預算，不得以慢播或拉停頓填滿；未核准配音、製作或發布。",
+    "previous_body_budget_seconds": 140
+  },
+  "limits": [
+    "完整旁白文字草稿，非video.json或製作匯入包。",
+    "沒有新音訊、配音、真人試讀、盲聽或觀眾測試。",
+    "算術反例不是完整FLAC損壞檔解碼或CRC行為。",
+    "沒有測本示例壓縮率，片中只說有機會；side差值也需要儲存位元。"
+  ],
+  "paid_media_calls": 0
+}

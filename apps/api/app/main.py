@@ -94,6 +94,9 @@ from app.video_plans.router import router as admin_video_plans_router
 from app.video_reviews.admin_api import admin_router as admin_video_reviews_router
 from app.video_reviews.admin_api import tool_router as video_reviews_router
 from app.video_reviews.public_api import public_router as videos_public_router
+from app.video_runpod.router import admin_router as runpod_admin_router
+from app.video_runpod.router import routes_router as gpu_routes_router
+from app.video_runpod.router import tool_router as runpod_tool_router
 from app.video_shorts.admin_api import admin_router as admin_video_shorts_router
 from app.video_shorts.admin_api import tool_router as video_shorts_router
 from app.video_shorts.admin_automation_api import admin_router as admin_video_shorts_jobs_router
@@ -105,6 +108,8 @@ from app.video_speech.admin_api import speech_router as video_speech_router
 from app.video_speech.align_api import align_router as video_speech_align_router
 from app.video_youtube.admin_api import connection_router as video_youtube_router
 from app.video_youtube.admin_api import publish_router as video_youtube_publish_router
+from app.video_youtube.admin_reports_api import admin_router as video_youtube_reports_admin_router
+from app.video_youtube.admin_reports_api import tool_router as video_youtube_reports_router
 
 
 def configure_logging() -> None:
@@ -211,9 +216,15 @@ app.include_router(line_router, prefix="/api/v1")
 app.include_router(video_tool_tokens_router, prefix="/api/v1")
 app.include_router(video_speech_router, prefix="/api/v1")
 app.include_router(colab_credentials_router, prefix="/api/v1")
+app.include_router(runpod_tool_router, prefix="/api/v1")
+app.include_router(gpu_routes_router, prefix="/api/v1")
+app.include_router(runpod_admin_router, prefix="/api/v1")
 app.include_router(video_speech_align_router, prefix="/api/v1")
 app.include_router(video_reviews_router, prefix="/api/v1")
 app.include_router(admin_video_reviews_router, prefix="/api/v1")
+# Before the connection card's router, which shares its /admin/video-youtube prefix.
+app.include_router(video_youtube_reports_admin_router, prefix="/api/v1")
+app.include_router(video_youtube_reports_router, prefix="/api/v1")
 app.include_router(video_youtube_router, prefix="/api/v1")
 app.include_router(video_youtube_publish_router, prefix="/api/v1")
 # Registered before the automation routes, which share its /video/automation prefix.

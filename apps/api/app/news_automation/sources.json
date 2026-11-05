@@ -1,5 +1,5 @@
 {
-  "reviewed_on": "2026-10-10",
+  "reviewed_on": "2026-10-29",
   "sources": [
     {
       "name": "OpenAI News",
@@ -653,6 +653,42 @@
       "scan_interval_minutes": 60,
       "config": {"include_path_prefixes": ["/blog/announcements/"], "minimum_title_length": 14},
       "note": "OpenRouter's product and model-availability posts. The blog index is read as an HTML listing and not through a feed, because only a listing can be narrowed to /blog/announcements/. The minimum title length is 14 and not 12 so the link to the category page itself (\"Announcements\", 13 characters) is not taken for a post."
+    },
+    {
+      "name": "電腦王阿達 (lead)",
+      "url": "https://www.kocpc.com.tw/feed",
+      "format": "rss",
+      "role": "lead_only",
+      "vertical": "mixed",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_title_keywords": ["AI", "ChatGPT", "OpenAI", "Gemini", "Claude", "Copilot", "Anthropic", "NVIDIA", "輝達", "GitHub", "開源", "模型", "LLM", "DeepSeek", "Grok", "Llama", "Codex", "Agent", "代理", "人工智慧"], "max_entries_per_scan": 10, "article_tags": [], "article_classes": ["content-inner"]},
+      "note": "Taiwan tech blog that covers new AI tools and features fast. A lead, never cited: a post is read only for the official pages it links to, and one that links to no evidence source is recorded as seen (scanner.LEAD_WITHOUT_EVIDENCE). Of its 150 AI posts before 2026-10-29, links pointed most often to x.com (69 posts with t.co), github.com (21), reddit.com (10), openai.com and blog.google (9 each). The site feed covers every category (games, deals), so titles are filtered by keyword: 28 of its newest 100 posts passed, 17 of them in its AI categories. Category feeds are disallowed by robots.txt (/*/feed); /feed is not. The <article> tags on a post page are related-post cards, so the body is read from content-inner."
+    },
+    {
+      "name": "iThome (lead)",
+      "url": "https://www.ithome.com.tw/rss",
+      "format": "rss",
+      "role": "lead_only",
+      "vertical": "mixed",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_title_keywords": ["AI", "ChatGPT", "OpenAI", "Gemini", "Claude", "Copilot", "Anthropic", "NVIDIA", "輝達", "GitHub", "開源", "模型", "LLM", "DeepSeek", "Grok", "Llama", "Codex", "Agent", "代理", "人工智慧", "資安", "漏洞", "駭客"], "max_entries_per_scan": 10, "article_tags": [], "article_classes": ["content-summary", "field-name-body"]},
+      "note": "Taiwan IT and security news. A lead, never cited, read for the official pages it links to (Google's blog, vendors' advisories). The feed's entries carry no dates, so the first scan records them all as the baseline. The default article/main read takes in the page's rotating related-news lists, which would change the evidence hash on every fetch, so the body is read from content-summary and field-name-body only."
+    },
+    {
+      "name": "GitHub repositories (followed)",
+      "url": "https://github.com/ollama/ollama",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 1440,
+      "config": {"follow_only": true, "repository_min_stars": 500, "article_tags": [], "article_classes": ["markdown-body"]},
+      "note": "Never scanned (follow_only): it only makes github.com a host whose pages count as evidence when another source's page links to them, so a repository is read only after a report (電腦王阿達, iThome, TechCrunch) has covered it. Any link into a repository is read as its root page, and counts only with 500 or more stars (owner decision 2026-10-29); a page whose star counter is not found is reported as skipped. Not first-party and not trusted alone, so a story with only a repository page waits for a person or the review judge. The URL is one repository page, which sources_cli validates as the kind of page this source is followed for. README text is read from markdown-body."
     }
   ]
 }

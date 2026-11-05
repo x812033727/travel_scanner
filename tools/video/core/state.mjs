@@ -24,7 +24,8 @@ import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } 
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
 import { DEFAULT_LOCALES, narrationLocale, TARGET_LOCALES, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
-import { FPS, speechHash, visualHash } from "./timeline.mjs";
+import { FPS, picturesBound, speechHash, visualHash } from "./timeline.mjs";
+import { fitStale } from "../templates/templates.mjs";
 
 /**
  * Files each stage leaves in <VIDEO_WORKDIR>/<slug>/, and the hash fields they must carry.
@@ -467,6 +468,8 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const valid = Boolean(lint) && lint.errors.length === 0;
   const speech = valid && !compilation ? speechHash(doc, project.lexicon) : null;
   const visual = valid ? visualHash(doc) : null;
+  // Keyframes and clips are bound to the pictures alone (picturesBound): the paper theme redraws cards only.
+  const pictured = (recorded) => valid && picturesBound(recorded, doc);
   const lookNow = valid && pictures ? lookHash(doc) : null;
   const subtitles = valid && drama ? subtitlesHash(doc) : null;
   // A drama's checks.json always carries a mix hash (of no music, when it has none); slides carry one only with music.
@@ -486,11 +489,11 @@ export async function pipelineStatus({ slug, root, workdir }) {
   }
   const runtimeCurrent = !anime || Boolean(runtimeProof);
 
-  const framesDone = Boolean(visual) && frames?.visual_hash === visual && (!drama || !burnIn(doc) || (frames.speech_hash === speech && frames.subtitles_hash === subtitles));
+  const framesDone = Boolean(visual) && frames?.visual_hash === visual && !fitStale(doc, frames) && (!drama || !burnIn(doc) || (frames.speech_hash === speech && frames.subtitles_hash === subtitles));
   // A drama's keyframes are bound to the whole picture; illustrated slides bind theirs to the shots
   // alone, so a card edit does not have every picture judged again.
   const keyframeIssues = pictures ? await keyframeProblems({ doc, manifest: keyframes, workdir }) : [];
-  const keyframesDone = Boolean(lookNow) && keyframes?.look_hash === lookNow && (drama ? keyframes.visual_hash === visual : keyframes.pictures_hash === picturesHash(doc)) && !keyframeIssues.length;
+  const keyframesDone = Boolean(lookNow) && keyframes?.look_hash === lookNow && (drama ? pictured(keyframes.visual_hash) : keyframes.pictures_hash === picturesHash(doc)) && !keyframeIssues.length;
   const assembledDrama = !drama || (checks?.look_hash === lookNow && checks.clips_hash === clips?.clips_hash && checks.subtitles_hash === subtitles && checks.mix_hash === mix);
   const assembledIllustrated = !(pictures && !drama) || (checks?.look_hash === lookNow && checks.pictures_hash === keyframesHash(doc, keyframes));
   const assembledSound = compilation || (!audioProblems.length && checks?.narration_sha256 === timeline?.audio_evidence?.narration_sha256 && (!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
@@ -563,15 +566,15 @@ export async function pipelineStatus({ slug, root, workdir }) {
     },
     "frames rendered": { done: framesDone, todo: cli("render", slug) },
     "clips generated": {
-      done: Boolean(speech) && clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow && !needsReview(clips) && !productionClips.length,
+      done: Boolean(speech) && clips?.speech_hash === speech && pictured(clips.visual_hash) && clips.look_hash === lookNow && !needsReview(clips) && !productionClips.length,
       note: productionClips.length ? productionClips[0].message : clips && needsReview(clips) ? "some shots failed the clip checks (needs_review in clips/manifest.json)" : undefined,
       // Clips made outside the pipeline are named apart from the ones it bought, done or not.
-      detail: clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow ? importedClips(clips) : undefined,
+      detail: clips?.speech_hash === speech && pictured(clips.visual_hash) && clips.look_hash === lookNow ? importedClips(clips) : undefined,
       todo: cli("clips", slug),
     },
     "music generated": { done: musicDone, todo: cli("music", slug) },
     "video assembled": {
-      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && assembledMedia && runtimeCurrent && existsSync(path.join(workdir, ARTIFACTS.video)),
+      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && !fitStale(doc, checks) && assembledMedia && runtimeCurrent && existsSync(path.join(workdir, ARTIFACTS.video)),
       note: checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : anime && !runtimeCurrent ? "the current body, runtime policy and final-file evidence need assemble again" : undefined,
       todo: cli("assemble", slug),
     },

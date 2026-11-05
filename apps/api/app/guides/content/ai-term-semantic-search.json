@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
@@ -101,6 +104,7 @@
           "width": 1600,
           "height": 900,
           "caption": "意思接近能幫忙找到主題；原因與適用條件決定正確文件。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -254,6 +258,1002 @@
         },
         {
           "title": "Elastic：Semantic search for text",
+          "url": "https://www.elastic.co/docs/solutions/search/semantic-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Semantic Search: Finding Relevant Content Through Different Wording",
+      "description": "Semantic search seeks data by query and content meaning, not just matching words. Customer support examples explain query encoding, document representations and candidate ranking; distinguish similarity from meeting actual needs; and show limits with negation, specific codes, cross-language search and unanswerable queries. Learn where to improve search—embedding models, data preparation, hybrid search or reranking—without mistaking natural-language answers for search itself.",
+      "hero": {
+        "src": "/guides/ai-term-semantic-search/hero-en.jpg",
+        "alt": "Two differently worded speech bubbles connect to a circular search frame, showing how search can bridge wording differences to find related meanings.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Semantic Search attempts to judge relevance based on the meaning of queries and content, rather than only requiring matching words.",
+            "“I forgot that string of characters I use to log in” and “The screen says my account is disabled” both concern login. Their vectors may be close, yet they need different actions; even strong semantic similarity cannot override the intended audience.",
+            "Ranking scores are relative signals, not direct probabilities that an answer is correct. Even the top result may be largely irrelevant, so the interface should allow a “No suitable content found” outcome.",
+            "Exact order numbers, product codes and version names should generally retain text or structured matching. For negation, also check the conditions and what the negation applies to."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Semantic Search attempts to judge relevance based on the meaning of queries and content, rather than only requiring matching words. If a user asks, “What should I do if I forgot that string of characters I use to log in?”, the system might find instructions titled “Reset Password.” The wording has limited overlap, but the two express similar needs. Handling such differences in wording is an important use of semantic search in knowledge bases and customer support."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "However, semantic search does not necessarily generate an answer, nor is a "
+            },
+            {
+              "type": "article",
+              "text": "vector database",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": " the only way to provide it. It can return documents, passages or other candidates for readers to read or for "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": " to organize afterward. This article uses fictional member-service instructions as examples. All rankings describe expected scenarios, without claiming that any particular model will always find the right result. Understanding its limitations helps identify the checks still needed between search that “seems to understand me” and search that “actually finds the right document.”"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Search Assesses Relevance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Traditional full-text search often judges relevance using term occurrences, term frequency and other ranking factors. It can also incorporate word segmentation, synonyms and spelling processing; it does not merely match text word for word. Semantic search adds learned content representations or relevance models to handle paraphrases, synonyms and context. The two methods can complement each other. Not every feature that finds synonyms should be attributed to a large generative model."
+        },
+        {
+          "type": "paragraph",
+          "text": "In a typical Sentence Transformers approach, documents are first encoded into vectors, and the query is also processed by an appropriate model before similar representations are retrieved. The official documentation distinguishes symmetric from asymmetric search: finding similar meanings between two short sentences differs from finding a long answer passage for a short question. A model trained to perform well on the former task may not suit the latter, so model names or general similarity demonstrations alone are not enough to guide the choice."
+        },
+        {
+          "type": "heading",
+          "text": "From the User's Wording to Candidate Documents",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First organize the topic and essential context of each set of instructions. For example, a “Reset Password” passage cannot be reduced to “Click here to continue”; it must retain which account workflow it applies to. Once the data is indexed, retrieve candidates for the query, then apply language, product-version or user-permission filters as needed. If the platform has instructions for both regular members and administrators, even very high semantic similarity cannot override the intended audience. Otherwise, readers may be sent to an interface they cannot use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ranking scores are relative signals tied to a particular model and dataset, not direct probabilities that an answer is correct. Even the highest-scoring document among all candidates may have little relevance to the question. A search interface should allow a “No suitable content found” outcome instead of always presenting the top result as a recommended answer. How candidate lists and confidence indicators are displayed affects whether readers place too much trust in the system."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-semantic-search/diagram-1-en.svg",
+          "alt": "Login issues split into forgotten passwords and disabled accounts, leading to reset instructions or help with disabled accounts; individual account status needs a separate lookup.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Similar meanings help locate the topic; the cause and applicable conditions determine the right document.",
+          "description": "Login issues split into forgotten passwords and disabled accounts, leading to reset instructions or help with disabled accounts; individual account status needs a separate lookup.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: Forgotten Password or Disabled Account?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the input is “I forgot that string of characters I use to log in.” A reasonable expectation is to find the official password reset instructions. After retrieving that document, the system should show the passage heading and a summary that makes its scope clear, allowing readers to confirm that it fits their situation. If the question becomes “My password is definitely correct, but the screen says my account is disabled,” resetting the password is no longer the most suitable answer. The search should instead find reasons for account disabling and the appeal or contact process."
+        },
+        {
+          "type": "paragraph",
+          "text": "Both questions concern login, and their vectors may be close, yet they require different actions. For testing, people can first label the correct documents, then check whether candidate rankings preserve the distinction between the causes. If the instructions for disabled accounts appear among the candidates but rank too low, consider reranking. If they cannot be found at all, inspect the corpus, chunking and model. Do not merely rewrite the question to resemble the document title more closely, because that sidesteps how real users express themselves."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can also add “I want to check whether this account is currently disabled.” Documentation can explain the process but does not contain the real-time status of individual accounts. Semantic search should not turn FAQs into judgments about individual cases. The correct response is to direct users to a status lookup they are authorized to use or to a human support channel. This kind of question checks whether the system recognizes the limits of where its content applies, rather than simply testing which document is closest."
+        },
+        {
+          "type": "heading",
+          "text": "Some Differences Require More Than Similar Meanings",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Exact order numbers, product codes and version names should generally retain text or structured matching. Codes differing by just one letter may refer to entirely different products, but embeddings may not give that difference enough weight. Negation poses a similar problem: “Export supported” and “Export not supported” concern similar topics but have opposite practical implications. After retrieving relevant candidates, you still need to verify the conditions and what the negation applies to."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cross-language search requires a model with the corresponding capabilities, along with testing on actual data. Matching an English question to a Chinese document does not mean the model can handle colloquial Taiwanese usage, local abbreviations and specialized terminology. Abbreviations in the data may need to retain their full names or aliases, and document titles should reflect questions users are likely to ask. This data preparation does more than serve the search engine: it also improves readability and subsequent maintenance."
+        },
+        {
+          "type": "heading",
+          "text": "How to Verify That Search Has Actually Improved",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A test set can include original wording, natural paraphrases, typos, questions on the same topic with different conditions, and questions with no answer at all. First check whether the expected documents enter the candidate set, then whether their rankings make them easy for readers to find. Also compare query latency and how long updated documents take to become visible. This avoids improving semantic test scores while making real users wait too long or continue seeing outdated instructions."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If synonymous paraphrases improve markedly but code queries get worse, hybrid search can preserve the strength of exact terms. If all the right candidates are present but their order is poor, consider reranking. If the documents themselves are unclear, even the strongest semantic model can only retrieve vague information. The most reliable improvement sequence is to locate the layer that failed, then change the corresponding component, rather than treating “switch to "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " search” as a one-time solution."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Readers can also protect themselves with a simple habit: open the original document and check the product version, intended audience and limitations. Search summaries only help locate content; shortened text may be incomplete, especially when exceptions are involved. If search results do not match the actual interface, report the original query and the document retrieved. This is more likely to lead to a verifiable fix than simply saying “AI search doesn't work well.”"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Focus",
+            "What to Watch"
+          ],
+          "rows": [
+            [
+              "Full-text search",
+              "Terms and textual signals",
+              "Suited to exact names and codes"
+            ],
+            [
+              "Semantic search",
+              "Learned relevance representations",
+              "Differences in conditions need verification"
+            ],
+            [
+              "RAG",
+              "Organizes an answer after retrieval",
+              "Generated content also needs checking"
+            ]
+          ],
+          "caption": "Concept comparison; sources checked in 9/2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Even the Top Result May Be Unsuitable",
+          "text": "Add test questions with no answer to check whether the system can indicate missing information. Having the highest relative score does not mean a result is relevant enough to be useful."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is an Embedding? Placing Content in a Space for Comparison",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Hybrid Search: Combining Exact Terms and Meaning",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Reranking: From Finding Results to Putting Good Answers First",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers: Semantic Search",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elastic: Semantic search for text",
+          "url": "https://www.elastic.co/docs/solutions/search/semantic-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "セマンティック検索（Semantic Search）：異なる言い方で関連する内容を見つける",
+      "description": "セマンティック検索は、同じ語句の一致だけでなく、クエリと内容の意味に基づいて情報を探す手法です。この記事では、よくある問い合わせを例に、クエリの符号化、文書の表現、候補の順位付けを説明し、意味の類似と実際にニーズを満たすことの違いを示します。否定文、固有のコード、言語をまたぐ検索、答えのない質問への限界も紹介します。読み終えると、検索の問題を埋め込みモデル、データ整理、ハイブリッド検索、リランキングのどこから改善すべきか判断でき、自然言語の回答を検索そのものと取り違えずに済みます。",
+      "hero": {
+        "src": "/guides/ai-term-semantic-search/hero-ja.jpg",
+        "alt": "異なる言い方の二つの吹き出しが検索を表す円につながり、検索が字面の違いを越えて関連する意味を探せることを示す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "セマンティック検索（Semantic Search）は、語句の一致だけを求めるのではなく、クエリと内容の意味に基づいて関連性を判断しようとする検索手法です。",
+            "「ログインに使うあの文字列を忘れた」と「画面にアカウントは利用停止中と表示される」は、どちらもログインの話で、ベクトルも近い可能性がありますが、必要な対処は異なります。意味が非常に近くても、対象者を無視してはいけません。",
+            "順位付けのスコアは相対的な指標であり、そのまま回答が正しい確率とは見なせません。最高点でも質問との関連が薄い場合があるため、画面には「現在、適切な内容が見つかりません」という結果も表示できるようにするのが望ましいでしょう。",
+            "正確な注文番号、製品コード、バージョン名には、通常、文字列や構造化データによる照合を残すべきです。否定文では、条件と否定が及ぶ範囲の確認も必要です。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "セマンティック検索は、英語で Semantic Search と呼ばれ、語句の一致だけを求めるのではなく、クエリと内容の意味に基づいて関連性を判断しようとする検索手法です。ユーザーが「ログインに使うあの文字列を忘れたらどうすればいい」と質問すると、システムは「パスワードの再設定」というタイトルの説明を見つけるかもしれません。両者で重なる語句は少なくても、近いニーズを扱っています。こうした言い方の違いに対応できることが、ナレッジベースやカスタマーサポートの検索における重要な用途です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ただし、セマンティック検索は必ずしも回答文を生成するわけではなく、提供できるのも"
+            },
+            {
+              "type": "article",
+              "text": "ベクトルデータベース",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "だけではありません。文書や段落、その他の候補を返し、その後に読者が読んだり、"
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "で整理したりできます。この記事では、架空の会員サービスの説明を使って例を示します。順位付けはすべて想定上のものであり、特定のモデルが必ず正しく見つけると主張するものではありません。限界を理解してこそ、検索が「自分を理解しているように見える」ことと「本当に正しい文書を見つける」ことの間に、どのような確認が足りないのかが分かります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "検索が理解するのは関連性",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "従来の全文検索は、語彙の出現状況や頻度、その他の順位付け要因に基づいて関連性を判断することが多く、分かち書き、同義語、綴りの処理も組み合わせられます。単なる文字の照合しかできないわけではありません。セマンティック検索は、学習によって得たコンテンツ表現や関連性モデルを加え、言い換え、同義表現、文脈への対応を試みます。両手法は補完し合えるものであり、同義語を見つけられる機能をすべて大規模な生成モデルの成果と見なすべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sentence Transformers の典型的な方法では、まず文書をベクトルに変換し、クエリも適切なモデルで処理してから、類似した表現を探します。公式ドキュメントでは、対称検索と非対称検索を区別しています。短い文同士で近い意味を探す場合と、短い質問から長い回答段落を探す場合とでは、求められるものが異なります。前者のタスクで高い性能を示すように訓練されたモデルが、必ずしも後者に適しているとは限りません。そのため、モデル名や汎用的な類似度のデモだけで選ぶことはできません。"
+        },
+        {
+          "type": "heading",
+          "text": "ユーザーの言い方から候補文書へ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、各説明の主題と必要な文脈を整理します。例えば「パスワードの再設定」の段落を「ここをクリックして続ける」だけにしてはいけません。どのアカウント手続きに適用されるかを残す必要があります。データのインデックスを作成した後、クエリから候補を取得し、必要に応じて言語、製品バージョン、ユーザー権限の条件を適用します。プラットフォームに一般会員向けと管理者向けの説明がある場合、意味が非常に近くても対象者を無視してはいけません。そうしないと、読者を操作できない画面へ案内してしまいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "順位付けのスコアは、特定のモデルとデータのもとでの相対的な指標であり、そのまま回答が正しい確率とは見なせません。ある文書が全候補の中で最高点でも、質問との関連は薄いかもしれません。検索画面には、常に最上位を推奨回答として見せるのではなく、「現在、適切な内容が見つかりません」という結果も表示できるようにするのが望ましいでしょう。候補一覧と確信度の表示方法は、読者がシステムを過信するかどうかに影響します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-semantic-search/diagram-1-ja.svg",
+          "alt": "ログインの問題をパスワード忘れとアカウントの利用停止に分け、それぞれ再設定の説明と利用停止への対処に対応させる。個別アカウントの状態には別の照会が必要",
+          "width": 1600,
+          "height": 900,
+          "caption": "意味の近さは主題を見つける助けになります。正しい文書を決めるのは、原因と適用条件です。",
+          "description": "ログインの問題をパスワード忘れとアカウントの利用停止に分け、それぞれ再設定の説明と利用停止への対処に対応させる。個別アカウントの状態には別の照会が必要",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "例：パスワード忘れか、アカウントの利用停止か",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "入力が「ログインに使うあの文字列を忘れた」なら、パスワード再設定の公式説明が見つかることを期待するのは妥当です。システムはその文書を取得した後、段落の見出しと適用範囲が分かる要約を表示し、読者が自分の状況に合うか確認できるようにすべきです。質問が「パスワードは間違っていないのに、画面にアカウントは利用停止中と表示される」に変わった場合、パスワードの再設定はもはや最適な回答ではありません。利用停止の理由と、異議申し立てや問い合わせの手順を見つけるべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この二つの質問はどちらもログインについて述べており、ベクトルも近い可能性がありますが、必要な対処は異なります。テストでは、まず人が正しい文書を指定し、候補の順位付けで原因の違いが保たれているかを確認できます。利用停止の説明が候補に入っていても順位が低すぎる場合は、リランキングを検討できます。まったく見つからない場合は、コーパス、チャンク分割、モデルを確認します。質問を文書のタイトルに似せるだけの変更は避けてください。それでは、実際のユーザーの表現を避けてしまうからです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「このアカウントが現在利用停止になっているか調べたい」という質問も追加できます。説明文書は手順を説明するだけで、個別アカウントのリアルタイムの状態は持っていません。セマンティック検索は、FAQを個別事例の判定に変えてはいけません。適切な対応は、権限が必要な状態照会や有人窓口へ案内することです。この種の質問では、どの文書が最も近いかを単に試すのではなく、システムが内容の適用範囲を理解しているかを確認できます。"
+        },
+        {
+          "type": "heading",
+          "text": "意味の近さだけでは扱えない違いもある",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "正確な注文番号、製品コード、バージョン名には、通常、文字列や構造化データによる照合を残すべきです。アルファベットが一文字違うだけのコードでも、まったく異なる商品を表すことがありますが、埋め込みがその違いを十分に重視するとは限りません。否定文にも同様の問題があります。「エクスポートに対応」と「エクスポートに非対応」は主題が近くても、操作上の意味は正反対です。関連する候補を取得した後も、条件と否定が及ぶ範囲を確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "言語をまたぐ検索には、モデルに対応能力があることに加え、実際のデータによるテストも必要です。英語の質問を中国語の文書に対応させられても、台湾の口語表現、地域特有の略語、専門用語を扱えるとは限りません。データ中の略称には、正式名称や別名を併記する必要があるかもしれません。文書のタイトルも、ユーザーが尋ねそうな質問を反映すべきです。こうしたデータ整理は検索エンジンのためだけではなく、人が読む際の分かりやすさや、その後の保守も改善します。"
+        },
+        {
+          "type": "heading",
+          "text": "検索が本当に改善したかを検証する方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テストセットを作る際は、元の文、自然な言い換え、誤字、同じ主題で条件が異なる質問、そして答えがまったくない質問を含められます。まず、見つかるべき文書が候補に入っているかを確認し、次に、その順位で読者が見つけやすいかを見ます。クエリの応答時間と、文書の更新から検索に反映されるまでの時間も比較すべきです。意味に関するテストのスコアだけを上げて、実際のユーザーを長く待たせたり、古い説明を表示し続けたりする事態を避けます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同義の言い換えでは明らかに改善した一方、コードに関する質問で性能が落ちた場合は、ハイブリッド検索を使い、正確な語句を照合する強みを残せます。候補はそろっているものの順序が悪い場合は、リランキングを検討できます。文書自体の説明が不明確なら、どれほど強力な意味モデルでも、曖昧な情報しか見つけられません。最も確実な改善の順序は、まず失敗している層を特定し、対応する構成要素を変えることです。「"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "検索への切り替え」を、一度で済む解決策と考えるべきではありません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "読者も、原文を開き、製品バージョン、対象者、制限を確認するという簡単な習慣で自分を守れます。検索結果の要約は、内容を探す手助けにすぎません。特に例外条件が関わる場合、短くした文章では情報が欠けている可能性があります。検索結果と実際の画面が一致しないときは、元の質問文と見つかった文書を報告すべきです。単に「AI検索は使いにくい」と伝えるより、効果を検証できる修正につながりやすくなります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "手法",
+            "処理の重点",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "全文検索",
+              "語彙と文字情報の手がかり",
+              "正確な名称やコードに適する"
+            ],
+            [
+              "セマンティック検索",
+              "学習で得た関連性の表現",
+              "条件の違いを検証する必要がある"
+            ],
+            [
+              "RAG",
+              "検索後に回答を整理",
+              "生成された内容の確認も必要"
+            ]
+          ],
+          "caption": "概念の比較。出典は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "最上位でも適切とは限らない",
+          "text": "答えのないテスト質問を追加し、システムが情報不足を示せるか確認しましょう。相対的に最高点でも、役に立つだけの関連性があるとは限りません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "埋め込みベクトル（Embedding）とは：内容を比較できる空間に配置する",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ハイブリッド検索（Hybrid Search）：正確な語句と意味を両立する",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "リランキング（Reranking）：見つけるだけでなく、良い回答を上位に並べる",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI用語総索引：Loop Engineering から生成AIまで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers：セマンティック検索",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elastic：テキストのセマンティック検索",
+          "url": "https://www.elastic.co/docs/solutions/search/semantic-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "의미 검색(Semantic Search): 다른 표현으로 관련 콘텐츠 찾기",
+      "description": "의미 검색은 같은 단어를 대조하는 데 그치지 않고 질의와 콘텐츠의 의미를 바탕으로 자료를 찾습니다. 이 글은 흔한 고객 문의를 예로 들어 질의 인코딩, 문서 표현, 후보 순위 결정을 설명하고, 의미가 비슷한 것과 실제 요구에 맞는 것을 구분합니다. 부정문, 고유 코드, 언어 간 검색, 답이 없는 질문의 한계도 소개합니다. 읽고 나면 자연어 답변을 검색 자체로 오해하지 않고, 검색 문제를 임베딩 모델, 자료 정리, 하이브리드 검색, 재순위화 중 어디서 개선해야 할지 판단할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-semantic-search/hero-ko.jpg",
+        "alt": "표현이 다른 두 말풍선이 원형 검색 틀과 연결되어, 검색이 문자상의 차이를 넘어 관련 의미를 찾을 수 있음을 나타냅니다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "의미 검색(Semantic Search)은 같은 단어인지에만 의존하지 않고, 질의와 콘텐츠의 의미를 바탕으로 관련성을 판단하려는 검색 방식입니다.",
+            "“로그인할 때 쓰던 그 글자 조합을 잊었어요”와 “화면에 계정이 사용 중지되었다고 나와요”는 모두 로그인에 관한 질문입니다. 벡터가 매우 비슷할 수 있지만 대응 방법은 다릅니다. 의미가 아주 비슷해도 적용 대상을 무시해서는 안 됩니다.",
+            "순위 점수는 상대적인 신호이므로 답이 정확할 확률로 곧바로 해석할 수 없습니다. 최고 점수라도 질문과 관련이 적을 수 있으므로, 인터페이스에서 “현재 적합한 콘텐츠를 찾을 수 없습니다”라는 결과도 허용하는 것이 좋습니다.",
+            "정확한 주문 번호, 제품 코드, 버전 이름에는 보통 텍스트 대조나 구조화된 대조를 유지해야 하며, 부정문도 조건과 부정의 범위를 확인해야 합니다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "의미 검색은 영어로 Semantic Search라고 하며, 같은 단어인지에만 의존하지 않고 질의와 콘텐츠의 의미를 바탕으로 관련성을 판단하려는 검색 방식입니다. 사용자가 “로그인할 때 쓰던 그 글자 조합을 잊었는데 어떻게 하죠”라고 물으면, 시스템은 “비밀번호 재설정”이라는 제목의 안내를 찾을 수 있습니다. 두 표현은 겹치는 단어가 적지만 비슷한 요구를 담고 있습니다. 이런 표현 차이를 처리하는 능력은 지식베이스와 고객 지원 검색에서 의미 검색의 중요한 용도입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "다만 의미 검색이 반드시 답변을 생성하는 것은 아니며, "
+            },
+            {
+              "type": "article",
+              "text": "벡터 데이터베이스",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "만이 제공할 수 있는 기능도 아닙니다. 문서, 문단 또는 다른 후보 항목을 제시하고, 이후 독자가 읽거나 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "로 정리할 수 있습니다. 이 글은 가상의 회원 서비스 안내를 예시로 사용합니다. 모든 순위는 예상 상황일 뿐, 특정 모델이 반드시 올바른 문서를 찾는다고 주장하지 않습니다. 한계를 이해해야 검색이 “내 말을 이해하는 것 같다”는 느낌과 “정말 올바른 문서를 찾았다”는 결과 사이에 어떤 확인 절차가 더 필요한지 알 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "검색이 이해하는 것은 관련성입니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "전통적인 전문 검색은 흔히 단어의 출현 여부, 출현 빈도, 기타 순위 결정 요소로 관련성을 판단합니다. 단어 분리, 동의어, 철자 처리도 함께 사용할 수 있으므로, 글자를 하나씩 대조하기만 하는 것은 아닙니다. 의미 검색은 여기에 학습된 콘텐츠 표현이나 관련성 모델을 더해 바꿔 쓴 표현, 동의어, 문맥을 처리하려고 합니다. 두 방법은 서로 보완할 수 있으며, 동의어를 찾는 모든 기능을 대규모 생성 모델의 성과로 보아서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sentence Transformers의 전형적인 방식에서는 문서를 먼저 벡터로 인코딩하고, 질의도 적절한 모델로 처리한 뒤 비슷한 표현을 찾습니다. 공식 문서는 대칭 검색과 비대칭 검색을 구분합니다. 두 짧은 문장 사이에서 비슷한 의미를 찾는 것과 짧은 질문으로 긴 답변 문단을 찾는 것은 요구 사항이 다릅니다. 앞의 과제에서 좋은 성능을 보이도록 학습한 모델이 뒤의 과제에도 적합한 것은 아닙니다. 따라서 모델 이름이나 일반적인 유사도 시연만 보고 선택해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "사용자 표현에서 후보 문서까지",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 각 안내의 주제와 필요한 맥락을 정리합니다. 예를 들어 “비밀번호 재설정” 문단에 “계속하려면 여기를 클릭하세요”만 남겨서는 안 되며, 어떤 계정 절차에 적용되는지 보존해야 합니다. 자료를 색인한 뒤 질의로 후보를 얻고, 필요에 따라 언어, 제품 버전, 사용자 권한 조건을 적용합니다. 플랫폼에 일반 회원용 안내와 관리자용 안내가 함께 있다면, 의미가 아주 비슷해도 적용 대상을 무시해서는 안 됩니다. 그렇지 않으면 독자를 자신이 조작할 수 없는 인터페이스로 안내하게 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "순위 점수는 특정 모델과 자료에서 얻은 상대적인 신호이므로 답이 정확할 확률로 곧바로 해석할 수 없습니다. 어떤 문서가 전체 후보 중 최고 점수를 받더라도 질문과 관련이 적을 수 있습니다. 검색 인터페이스는 항상 첫 번째 결과를 추천 답변으로 포장하기보다 “현재 적합한 콘텐츠를 찾을 수 없습니다”라는 결과도 허용하는 것이 좋습니다. 후보 목록과 신뢰도 안내를 어떻게 표시하느냐에 따라 독자가 시스템을 지나치게 믿는지가 달라집니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-semantic-search/diagram-1-ko.svg",
+          "alt": "로그인 문제를 비밀번호 분실과 계정 사용 중지로 나누어 각각 재설정 안내와 사용 중지 대응에 연결하며, 개별 계정 상태는 별도 조회가 필요함을 보여 줍니다",
+          "width": 1600,
+          "height": 900,
+          "caption": "의미의 유사성은 주제를 찾는 데 도움이 되지만, 올바른 문서는 원인과 적용 조건에 따라 결정됩니다.",
+          "description": "로그인 문제를 비밀번호 분실과 계정 사용 중지로 나누어 각각 재설정 안내와 사용 중지 대응에 연결하며, 개별 계정 상태는 별도 조회가 필요함을 보여 줍니다",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 비밀번호 분실인가, 계정 사용 중지인가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "입력한 질문이 “로그인할 때 쓰던 그 글자 조합을 잊었어요”라고 가정해 봅시다. 비밀번호 재설정에 관한 공식 안내를 찾으리라는 기대가 합리적입니다. 시스템이 해당 문서를 찾으면 문단 제목과 적용 범위를 식별할 수 있는 요약을 표시해, 독자가 자신의 상황에 맞는지 확인할 수 있게 해야 합니다. 질문이 “비밀번호는 분명히 맞는데 화면에 계정이 사용 중지되었다고 나와요”로 바뀐다면, 비밀번호 재설정은 더 이상 가장 적합한 답이 아닙니다. 사용 중지 사유와 이의 제기 또는 문의 절차를 찾아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 질문은 모두 로그인에 관한 것이므로 벡터가 매우 비슷할 수 있지만, 필요한 대응은 다릅니다. 테스트할 때는 사람이 먼저 올바른 문서를 표시한 뒤, 후보 순위에 원인의 차이가 반영되는지 확인할 수 있습니다. 사용 중지 안내가 후보에 있지만 순위가 너무 낮다면 재순위화를 고려할 수 있습니다. 아예 찾지 못한다면 말뭉치, 청크 분할, 모델을 점검해야 합니다. 질문을 문서 제목과 더 비슷하게 바꾸는 데 그쳐서는 안 됩니다. 그러면 실제 사용자의 표현 방식을 피하게 되기 때문입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "“이 계정이 현재 사용 중지되었는지 확인하고 싶어요”라는 질문도 추가할 수 있습니다. 안내 문서는 절차만 설명할 뿐, 개별 계정의 실시간 상태를 담고 있지 않습니다. 의미 검색은 자주 묻는 질문을 개별 사례에 대한 판정으로 바꾸어서는 안 됩니다. 올바른 대응은 권한이 필요한 상태 조회 기능이나 상담원 문의 경로로 안내하는 것입니다. 이런 질문은 단순히 어떤 문서가 가장 비슷한지를 시험하는 것이 아니라, 시스템이 콘텐츠의 적용 한계를 아는지 확인할 수 있게 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "의미가 비슷하다는 것만으로 해결할 수 없는 차이도 있습니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "정확한 주문 번호, 제품 코드, 버전 이름에는 보통 텍스트 대조나 구조화된 대조를 유지해야 합니다. 알파벳 한 글자만 다른 코드가 완전히 다른 상품을 가리킬 수 있지만, 임베딩이 그 차이를 충분히 중요하게 반영하지 않을 수 있습니다. 부정문도 비슷한 문제가 있습니다. “내보내기 지원”과 “내보내기 미지원”은 주제가 비슷하지만 실제 사용에서의 의미는 정반대입니다. 관련 후보를 찾은 뒤에도 조건과 부정의 범위를 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "언어 간 검색에는 모델의 해당 능력이 필요하며, 실제 자료로 테스트해야 합니다. 영어 질문을 중국어 문서에 연결할 수 있다고 해서 대만의 구어체, 현지 약어, 전문 용어까지 처리할 수 있는 것은 아닙니다. 자료에 약칭이 있다면 정식 명칭이나 별칭도 보존해야 할 수 있으며, 문서 제목에도 사용자가 물을 법한 질문을 반영해야 합니다. 이런 자료 정리는 검색 엔진만을 위한 작업이 아니라, 사람이 읽기 쉽게 만들고 이후 유지 관리도 개선합니다."
+        },
+        {
+          "type": "heading",
+          "text": "검색이 실제로 개선되었는지 검증하는 방법",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트 세트를 만들 때는 원문 질문, 자연스럽게 바꿔 쓴 표현, 오타, 주제는 같지만 조건이 다른 질문, 답이 전혀 없는 질문을 포함할 수 있습니다. 먼저 필요한 문서가 후보에 들어오는지 보고, 다음으로 독자가 쉽게 찾을 수 있는 순위인지 확인합니다. 질의 지연 시간과 문서 갱신 후 검색에 보이기까지 걸리는 시간도 비교해야 합니다. 의미 검색 테스트 점수만 높이고 실제 사용자는 너무 오래 기다리거나 계속 낡은 안내를 보게 되는 일을 피하기 위해서입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "같은 뜻으로 바꿔 쓴 질문에서는 뚜렷하게 개선되지만 코드 관련 질문에서는 성능이 떨어진다면, 하이브리드 검색으로 정확한 단어 대조의 장점을 유지할 수 있습니다. 후보는 모두 있지만 순서가 좋지 않다면 재순위화를 검토할 수 있습니다. 문서 자체가 명확하지 않으면 아무리 강력한 의미 모델도 모호한 자료를 찾아낼 뿐입니다. 가장 신뢰할 만한 개선 순서는 먼저 실패가 발생한 계층을 찾고 해당 구성 요소를 바꾸는 것입니다. ‘"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 검색으로 전환’을 일회성 해결책으로 여겨서는 안 됩니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "독자도 간단한 습관으로 스스로를 보호할 수 있습니다. 원문을 열어 제품 버전, 적용 대상, 제한 사항을 확인하는 것입니다. 검색 요약은 콘텐츠의 위치를 찾도록 돕기 위한 것일 뿐이며, 특히 예외 조건이 관련된 경우에는 줄인 문장에 내용이 온전히 담기지 않을 수 있습니다. 검색 결과와 실제 화면이 다르면 원래 질문과 찾은 문서를 함께 전달해야 합니다. 이는 단순히 “AI 검색이 불편해요”라고 말하는 것보다 검증 가능한 수정을 이끌어 내기 쉽습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "처리의 초점",
+            "유의 사항"
+          ],
+          "rows": [
+            [
+              "전문 검색",
+              "단어와 텍스트 신호",
+              "정확한 이름과 코드에 적합"
+            ],
+            [
+              "의미 검색",
+              "학습된 관련성 표현",
+              "조건 차이 검증 필요"
+            ],
+            [
+              "RAG",
+              "검색 후 답변 정리",
+              "생성된 내용도 확인 필요"
+            ]
+          ],
+          "caption": "개념 비교. 출처 확인: 2026년 9월."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "첫 번째 결과도 적합하지 않을 수 있습니다",
+          "text": "답이 없는 테스트 질문을 추가해 시스템이 자료 부족을 표시할 수 있는지 확인하세요. 상대적으로 가장 높은 점수라고 해서 실제로 사용할 만큼 충분한 관련성을 갖췄다는 뜻은 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "임베딩 벡터(Embedding)란: 콘텐츠를 비교 가능한 공간에 배치하기",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "하이브리드 검색(Hybrid Search): 정확한 단어와 의미를 함께 고려하기",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "재순위화(Reranking): 찾아내는 데서 좋은 답을 앞에 배치하기까지",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers: 의미 검색",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elastic: 텍스트 의미 검색",
+          "url": "https://www.elastic.co/docs/solutions/search/semantic-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "语义搜索（Semantic Search）：用不同说法找到相关内容",
+      "description": "语义搜索尝试根据查询和内容的意思查找资料，不只匹配相同字词。本文以常见客服问题说明查询编码、文档表示与候选排序，区分语义相似和真正符合需求，也介绍否定句、专有代码、跨语言与无答案问题的限制。读完能判断搜索问题该从嵌入模型、数据整理、混合搜索或重新排序入手改善，而不把自然语言答案误当成搜索本身。",
+      "hero": {
+        "src": "/guides/ai-term-semantic-search/hero-zh-cn.jpg",
+        "alt": "不同写法的两个对话框与搜索圆框相连，表示搜索可跨越字面差异寻找相关意思",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "语义搜索（Semantic Search）是尝试根据查询与内容的意思判断相关性，而不只要求字词相同的搜索方式。",
+            "“我忘了登录用的那串字”和“界面显示账号已停用”都谈登录，向量可能很相近，却需要不同处理；语义非常相近也不能忽略适用对象。",
+            "排序分数是相对信号，不能直接当成答案正确的概率，最高分也可能和问题不太相关，界面最好允许“目前找不到合适内容”的结果。",
+            "精确订单号、产品代码与版本名称通常应保留文本或结构化匹配，否定句也要核对条件与否定范围。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "语义搜索，英文 Semantic Search，是尝试根据查询与内容的意思判断相关性，而不只要求字词相同的搜索方式。用户问“忘了登录用的那串字怎么办”，系统可能找到标题为“重置密码”的说明。两者的字面重叠有限，却谈到相近需求。能处理这类说法差异，是它在知识库与客服搜索中的重要用途。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不过，语义搜索并不一定生成一段答案，也不是只有"
+            },
+            {
+              "type": "article",
+              "text": "向量数据库",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "才能提供。它可以返回文档、段落或其他候选项，后续再由读者阅读或由 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": " 整理。本篇以虚构的会员服务说明示范，所有排序都是预期情境，不宣称特定模型一定找对。理解它的限制，才能知道搜索“看起来懂我”与“真的找对文档”之间还缺哪些检查。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "搜索理解的是相关性",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "传统全文搜索常根据词汇出现情况、词频及其他排序因素判断相关性，也可配合分词、同义词与拼写处理，并非完全只会逐字匹配。语义搜索则加入学习得到的内容表示或相关性模型，尝试处理改写、同义与上下文。两种方法可以互补，不应把任何找得到同义词的功能都当成大型生成模型的成果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 Sentence Transformers 的典型做法来看，文档先被编码成向量，查询也经适当的模型处理，再寻找相似表示。官方文档区分对称与非对称搜索：两个短句找近义，和短问题找长答案段落，需求不同。经训练在前一种任务上表现良好的模型，不一定适合后一种，因此不能只看模型名称或通用相似度展示来选择。"
+        },
+        {
+          "type": "heading",
+          "text": "从用户说法到候选文档",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先整理每份说明的主题与必要上下文，例如“重置密码”段落不能只剩“点击此处继续”，要保留它适用哪个账号流程。为数据建立索引后，查询获取候选，再按需要应用语言、产品版本或用户权限条件。如果平台同时有普通会员与管理员说明，语义非常相近也不能忽略适用对象，否则会把读者带到无法操作的界面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排序分数是特定模型与数据下的相对信号，不能直接当成答案正确的概率。某份文档即使在全部候选中得分最高，也可能和问题不太相关。搜索界面最好允许“目前找不到合适内容”的结果，而不是永远把第一名包装成推荐答案。候选列表和置信度提示如何显示，会影响读者是否过度相信系统。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-semantic-search/diagram-1-zh-cn.svg",
+          "alt": "登录问题分成忘记密码和账号停用，分别对应重置说明和停用处理，具体账号状态则需其他查询",
+          "width": 1600,
+          "height": 900,
+          "caption": "意思接近能帮助找到主题；原因与适用条件决定正确文档。",
+          "description": "登录问题分成忘记密码和账号停用，分别对应重置说明和停用处理，具体账号状态则需其他查询",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示范：忘记密码，还是账号被停用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设输入是“我忘了登录用的那串字”，合理期待是找到重置密码的官方说明。系统获取该文档后，应显示段落标题及能辨认适用范围的摘要，让读者确认是自己的情境。若问题改成“密码明明没错，界面显示账号已停用”，则重置密码不再是最适合的答案，应找到停用原因与申诉或联系流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这两个问题都谈登录，向量可能很相近，却需要不同处理。测试时可让人工先标出正确文档，再检查候选排序是否把原因差异保留下来。若停用说明已在候选中但排得太靠后，可考虑重新排序；若完全找不到，则检查语料、分块与模型。不要只把问题改得更像文档标题，因为那会避开实际用户的表达方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也可以加入“我要查这个账号目前是否被停用”。说明文档只能解释流程，没有具体账号的实时状态。语义搜索不应把常见问答变成个案判定，正确处理是引导至具备权限的状态查询或人工渠道。这种问题能检查系统是否知道内容的适用边界，而非单纯测试哪个文档最接近。"
+        },
+        {
+          "type": "heading",
+          "text": "有些差异不能只靠意思接近",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "精确订单号、产品代码与版本名称，通常应保留文本或结构化匹配。只差一个字母的代码可能代表完全不同的商品，但嵌入未必给予这些差异足够的权重。否定句也有类似问题：“支持导出”与“不支持导出”主题接近，却有相反的操作意义。获取相关候选后，仍需核对条件与否定范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跨语言搜索需要模型具备相应能力，也需要用实际数据测试。能把英文问题对应到中文文档，不代表能处理台湾口语、本地缩写与专门用语。数据中的简称可能要保留正式名称或别名，文档标题也应反映用户会问的问题。这些数据整理工作不只是为搜索引擎服务，同时会改善人工阅读与后续维护。"
+        },
+        {
+          "type": "heading",
+          "text": "如何验证搜索真的有改善",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立测试集时，可涵盖原句、自然改写、错别字、同主题但不同条件，以及完全没有答案的问题。先看应有文档是否进入候选，再看排名是否让读者容易找到。也要比较查询延迟与文档更新后的可见时间，避免只提高语义测试分数，却让实际用户等待太久或持续看到旧说明。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若同义改写明显改善但代码问题表现退步，可以使用混合搜索保留精确词汇的优势；若候选齐全但顺序不好，可评估重新排序。若文档本身没写清楚，再强的语义模型也只能找出模糊资料。最可靠的改善顺序是先定位失败层，再改变对应组件，而不是把“换成 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 搜索”当成一次性的解决方案。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "读者也可以用一个简单习惯保护自己：点开原文，核对产品版本、适用对象和限制。搜索摘要只是为了帮助定位内容，尤其涉及例外条件时，缩短后的文字未必完整。当搜索结果与实际界面不一致，应反馈原始问句和找到的文档，这比只说“AI 搜索不好用”更容易促成可验证的修正。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "全文搜索",
+              "词汇与文本信号",
+              "适合精确名称与代码"
+            ],
+            [
+              "语义搜索",
+              "学习得到的相关性表示",
+              "需要验证条件差异"
+            ],
+            [
+              "RAG",
+              "检索后整理答案",
+              "还要检查生成内容"
+            ]
+          ],
+          "caption": "概念对照；来源核实于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "第一名也可能不适合",
+          "text": "加入没有答案的测试题，检查系统是否能显示缺少资料。相对最高分不代表已达到可用的相关程度。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "嵌入向量（Embedding）是什么：把内容放进可比较的空间",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合搜索（Hybrid Search）：兼顾精确字词与语义",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重新排序（Reranking）：从找得到到把好答案排在前面",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers：语义搜索",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elastic：文本语义搜索",
           "url": "https://www.elastic.co/docs/solutions/search/semantic-search",
           "checked_on": "2026-09-14"
         }

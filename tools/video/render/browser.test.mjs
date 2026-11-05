@@ -105,6 +105,32 @@ test("settled layout passes an entering diagram while genuine failures still fai
       assert.ok(captured.problems.some((problem) => /text does not fit even at 60% size/.test(problem)), captured.problems.join("\n"));
     });
 
+    await t.test("a line cut off by a box shorter than it is no longer let through", async () => {
+      // A 120px line in a 100px box loses its bottom 20px, which the old 0.4 em allowance let
+      // through (daily-ai-20261029: a big card's second line cut under the key band). The line
+      // height is fixed, so shrinking the type cannot help and the check must say so.
+      const html = content(diagram, '<div class="fit" style="height:100px;line-height:120px;font-size:100px;white-space:nowrap">字字</div>');
+      const captured = await renderer.capture("aa0a", html);
+      assert.ok(captured.problems.some((problem) => /text does not fit even at 60% size/.test(problem)), captured.problems.join("\n"));
+    });
+
+    await t.test("the last line's descenders are drawn, and a box that cuts them is reported", async () => {
+      // A 1.08 line box is shorter than its glyphs: overflow hidden cut the g and y off every big
+      // card's last line (daily-ai-20261103). The theme's clip margin keeps them; a box without it says so.
+      const words = "for coding agents";
+      const fits = content(diagram, `<div class="fit" style="font-size:190px;line-height:1.08;white-space:nowrap">${words}</div>`);
+      assert.deepEqual((await renderer.capture("aa0d", fits)).problems, []);
+      const cut = content(diagram, `<div class="fit" style="font-size:190px;line-height:1.08;white-space:nowrap;overflow:hidden">${words}</div>`);
+      const captured = await renderer.capture("aa0e", cut);
+      assert.ok(captured.problems.some((problem) => /letters are cut off at the edge of their box: "for coding agents"/.test(problem)), captured.problems.join("\n"));
+    });
+
+    await t.test("a card drawn under the key band is reported", async () => {
+      const html = content(diagram, '<div style="position:absolute;top:630px;font-size:40px">壓在白條下的字</div>').replace("</main>", '</main><div class="key-band" style="position:absolute;left:96px;right:96px;top:826px;height:84px">關鍵句</div>');
+      const captured = await renderer.capture("aa0b", html);
+      assert.ok(captured.problems.some((problem) => /runs under the key band: "壓在白條下的字"/.test(problem)), captured.problems.join("\n"));
+    });
+
     await t.test("a missing image is still reported", async () => {
       const html = content(diagram, `<img src="${ORIGIN}/repo/docs/videos/missing-render-test-fixture.png" alt="">`);
       const captured = await renderer.capture("aa05", html);

@@ -1,0 +1,1059 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "root",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "R23001",
+    "R23002",
+    "R23003",
+    "R23004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave23-image.json",
+      "sha256": "ac6789cd83bc5f6c0df3e358d4f3d98d7258364e4d5452bb5a8f93e574635dbf"
+    },
+    {
+      "file": "reviews/wave23-image-themes.json",
+      "sha256": "590eaa46b4ea626975eb92e4b7f07d03cd2db129c477d6668aedcb186a2f179f"
+    },
+    {
+      "file": "reviews/wave23-image-author.json",
+      "sha256": "2ec0a5a562dda95139cab3f34a23b715491f5bb1db4926b0d0079947b926e346"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave23-image.json",
+      "sha256": "0e4b5782353a2b54c26f15173de3c26fbf15b3adf5fd46f551469a0ee76fc316"
+    },
+    {
+      "file": "reviews/wave23-image-themes.json",
+      "sha256": "5e073698356a39547d6ea9780f3571ddd8393e9227db474f3e11eb62a9ffb011"
+    },
+    {
+      "file": "reviews/wave23-image-author.json",
+      "sha256": "a7447738d2cdb30797f519d5a77ff35a6c743b2e13fa0d511af38402acdabd90"
+    }
+  ],
+  "scope": "全4候選、11未收、13作者近對、早期20有向top5、2規格指定正文與2紙上案；非全庫逐句查核或成片核准。",
+  "counts": {
+    "candidates": 4,
+    "source_bodies_read": 2,
+    "figures_visually_read": 0,
+    "author_pairs": 13,
+    "directed_top5": 20,
+    "not_added": 11,
+    "themes": 2
+  },
+  "source_readings": [
+    {
+      "source_id": "R23-S001",
+      "url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/",
+      "version": "W3C Candidate Recommendation Draft, 1 November 2026；固定日期版，非最終Recommendation。",
+      "read_via": "獨立核SHA後讀作者當日有效HTML抽文；非本覆核者fresh UA下載。另web.open當日標頭/版本鏈讀回，未以搜尋摘要代正文。",
+      "reading_scope": "核SHA作者正文抽文198–233及820–853：§3.3–3.5與§13.5各弧；fresh web另核版本標頭/上一版連結。",
+      "cache": {
+        "file": ".cache/wave23-image-color.html",
+        "sha256": "eba7dd95e75d70af4755c627e59367a0b0860a0b22ffe4f5be545e4df19220c1",
+        "text_file": ".cache/wave23-image-color-text.json",
+        "text_sha256": "646a8b19e8ed9e7d2dcb3d8c4231c445fde9d5aa218c0eeacc559b9e738a1e88"
+      },
+      "finding": "postprocessing opacity及有效tag先解讀後換算有直接規範；350→10短弧調到350→370中點0，長弧350→10中點180。",
+      "limitations": "未目讀原圖、未跑WPT/瀏覽器/繪圖軟體或原創小樣；只核規格與題級算式。",
+      "reviewer_retrieval_failures": "本次兩個web metadata入口成功；未重發UA下載，作者路線不冒稱覆核者fresh結果。"
+    },
+    {
+      "source_id": "R23-S002",
+      "url": "https://www.w3.org/TR/2024/CRD-compositing-1-20240321/",
+      "version": "W3C Candidate Recommendation Draft, 21 March 2024；固定日期版。",
+      "read_via": "獨立核SHA後讀作者當日有效HTML抽文；非本覆核者fresh UA下載。另web.open當日標頭/版本鏈讀回，未以搜尋摘要代正文。",
+      "reading_scope": "核SHA作者正文抽文250–281、319–340、436–449、496–505：§5.1、§8–8.2、§10.1.1–.3、§10.3；fresh web另核固定版標頭。",
+      "cache": {
+        "file": ".cache/wave23-image-compositing.html",
+        "sha256": "0fb91119308e706a5e4df368a91fa3b43cd5fe8cd8f192418b2df0a30ba8a62b",
+        "text_file": ".cache/wave23-image-compositing-text.json",
+        "text_sha256": "9ea4f204b99f8d497e3d4a0e159667f2cd5e439e1c1bfe6830634b4ce6a0dacd"
+      },
+      "finding": "alpha公式及隔離透明初始底直接支持；正常分組不應改外觀，multiply才因backdrop範圍改色。",
+      "limitations": "未目讀原圖、未跑WPT/瀏覽器/繪圖軟體或原創小樣；只核規格與題級算式。",
+      "reviewer_retrieval_failures": "本次兩個web metadata入口成功；未重發UA下載，作者路線不冒稱覆核者fresh結果。"
+    }
+  ],
+  "source_identity_review": {
+    "finding": "S001為相同CSS Color4較新日期版，fresh web的Previous Versions亦指20261029；已列SRC-9a785aacd173f1b9，不把兩URL稱獨立證據。S002另規格仍同W3C流程。",
+    "limits": "沒有重讀舊版全文或核全版本差異；新增與否依問題控制而非版本日期。"
+  },
+  "candidate_review": [
+    {
+      "id": "R23001",
+      "decision": "retain",
+      "question": "兩個圖形都調成半透明，為什麼和整組一起調淡長得不一樣？",
+      "answer_target": "逐個調淡時，下層仍從上層透出，重疊區累加遮擋；整組調淡時，先按原本遮擋關係合成，再把整個結果與背景混合。兩個原本不透明的同色圖形各取0.5 alpha，在與外部底色合成前，圖形層重疊alpha為0.75；整組取0.5則為0.5。若最後合到不透明白底，輸出alpha皆為1，差的是顏色。",
+      "scope_read": "限定source-over與原本不透明同色圖形的數值例；alpha是合成參數，不把0.5稱為主觀亮度減半。改色、其他混合模式要重算。",
+      "assessment": "先逐項衰減與先遮擋後整組衰減不交換；0.5+0.5×0.5=0.75。已修為圖形層alpha，合白底後輸出alpha=1。",
+      "editorial_seconds": [
+        65,
+        100
+      ],
+      "limits": "規格推導及紙上題案，不是完整稿/跨軟體實測。"
+    },
+    {
+      "id": "R23002",
+      "decision": "retain",
+      "question": "圖層沒換顏色，為什麼加一個隔離群組就不再被背景染暗？",
+      "answer_target": "內部採multiply時，未隔離組可把外部底色納入混色；隔離組先在透明底上合成，只在整組完成後以組的正常模式放到外部背景。改的是內部混色能看到的底，不是把背景刪掉。",
+      "scope_read": "限定內部multiply、組層normal與保持相同內容/位置/alpha；預設normal只分組不應改外觀。隔離後組內元素仍會相互混色，組邊緣仍可露出外部背景。",
+      "assessment": "初始backdrop透明的隔離組阻斷外部multiply，但最終正常合回外底；對不透明紅/藍可見反差，與R1非同控制。",
+      "editorial_seconds": [
+        60,
+        90
+      ],
+      "limits": "規格推導及紙上題案，不是完整稿/跨軟體實測。"
+    },
+    {
+      "id": "R23003",
+      "decision": "retain",
+      "question": "照片的RGB數字沒改，為什麼換掉色彩標記就可能變色？",
+      "answer_target": "RGB座標要配色彩空間才有顏色意義。把同一數字當另一空間解讀，和把原顏色換算成另一空間的數字不同；有有效標記的影像應先按標記解讀，再轉到顯示空間。",
+      "scope_read": "只論CSS規格對有效標記靜態影像的模型；示例選兩空間共同色域內的顏色以排除裁切，不保證所有軟體遵守或螢幕校準正確。不推未標記影片規則。",
+      "assessment": "有效標記定義數字所指顏色，保色換算須改座標；共同色域控制排除M5003裁切混淆。",
+      "editorial_seconds": [
+        75,
+        115
+      ],
+      "limits": "規格推導及紙上題案，不是完整稿/跨軟體實測。"
+    },
+    {
+      "id": "R23004",
+      "decision": "retain_segment_only",
+      "question": "兩個接近紅色的端點做漸層，為什麼中間還可能繞到青色？",
+      "answer_target": "色相角在一圈後回到零；350度到10度可跨零走短弧，也可繞長弧。其他分量固定時，前者中點在0度、後者在180度，兩個端點相同也不決定唯一漸層路徑。",
+      "scope_read": "限定HSL色環、固定非零飽和度與中等明度、顯式指定shorter/longer；不把HSL角距當知覺色差，不把長路說成程式錯誤。只有短段價值，未單獨配影片。",
+      "assessment": "短弧/長弧在相同HSL座標與端點仍有不同中點，具體反差可留40–65秒；不應再拆四種選項或硬成片。",
+      "editorial_seconds": [
+        40,
+        65
+      ],
+      "limits": "規格推導及紙上題案，不是完整稿/跨軟體實測。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R23001",
+      "b": "M5002",
+      "decision": "distinct",
+      "reason": "M5002先預乘以避免透明端點隱藏色污染插值；R1沒有插值，只改逐項或整體衰減。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23001",
+      "b": "I3045",
+      "decision": "distinct",
+      "reason": "渲染分層的工作量/記憶體取捨，不能解釋固定幾何下重疊區alpha不同。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23001",
+      "b": "M5001",
+      "decision": "distinct",
+      "reason": "固定色彩空間且不插值，改opacity時點仍改結果；非線性光量平均是另一控制。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23002",
+      "b": "R23001",
+      "decision": "distinct",
+      "reason": "R2改內部混色可見的外底，R1改整組/逐項乘alpha；隔離和整體透明度不能互代。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23002",
+      "b": "M5002",
+      "decision": "distinct",
+      "reason": "混色backdrop的範圍與透明端點是否先預乘不同，R2用不透明色塊仍有效。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23002",
+      "b": "I3045",
+      "decision": "distinct",
+      "reason": "瀏覽器分層效能不是multiply隔離的語義與顏色輸出。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23003",
+      "b": "M5003",
+      "decision": "distinct",
+      "reason": "共同色域內仍可有標記/保色換算差異；不依賴超界裁切。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23003",
+      "b": "M5001",
+      "decision": "distinct",
+      "reason": "R3單一顏色重解讀/換算，M5001固定端點在不同插值空間求中間色。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23003",
+      "b": "LEG-A61",
+      "decision": "distinct",
+      "reason": "發光加色/顏料減色是物理混色來源；同為RGB的座標標記差別仍需另答。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23003",
+      "b": "R10001",
+      "decision": "distinct",
+      "reason": "字元與字形關係是符號呈現規格；RGB色彩座標與保色轉換不是相同機制。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23004",
+      "b": "M5001",
+      "decision": "distinct",
+      "reason": "固定同一HSL空間與端點，僅改短/長弧即可改中間色；不是非線性編碼轉線性光。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23004",
+      "b": "M5002",
+      "decision": "distinct",
+      "reason": "兩端不透明，不涉及透明隱藏色或預乘，改的是繞圈路徑。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    },
+    {
+      "a": "R23004",
+      "b": "I3023",
+      "decision": "distinct",
+      "reason": "有限交易序號的可見性凍結不同於兩色相端點的插值路徑；只有環狀表示相似。",
+      "read_scope": "完整雙方question/answer_target/scope與作者快照，逐對判讀，非採相似分數。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R23001",
+      "b": "R23002",
+      "cosine": 0.769967,
+      "decision": "distinct",
+      "reason": "R1固定source-over改opacity在哪階段乘；R2可固定alpha=1、只改multiply能讀哪個backdrop，兩者有獨立控制。"
+    },
+    {
+      "a": "R23001",
+      "b": "M5002",
+      "cosine": 0.726488,
+      "decision": "distinct",
+      "reason": "M5002先預乘以避免透明端點隱藏色污染插值；R1沒有插值，只改逐項或整體衰減。"
+    },
+    {
+      "a": "R23001",
+      "b": "I15002",
+      "cosine": 0.712814,
+      "decision": "distinct",
+      "reason": "時間稀疏發光解除定位重疊，與圖形層alpha合成的運算次序不同。"
+    },
+    {
+      "a": "R23001",
+      "b": "P159",
+      "cosine": 0.702761,
+      "decision": "distinct",
+      "reason": "偏光片投影電場分量與數位source-over權重無共同答案。"
+    },
+    {
+      "a": "R23001",
+      "b": "M5013",
+      "cosine": 0.691982,
+      "decision": "distinct",
+      "reason": "色度次採樣丟失空間細節，與透明度施加階段不同。"
+    },
+    {
+      "a": "R23002",
+      "b": "M5002",
+      "cosine": 0.791614,
+      "decision": "distinct",
+      "reason": "混色backdrop的範圍與透明端點是否先預乘不同，R2用不透明色塊仍有效。"
+    },
+    {
+      "a": "R23002",
+      "b": "M5013",
+      "cosine": 0.782106,
+      "decision": "distinct",
+      "reason": "R2不減少像素/色度樣本，固定像素只換混色背景邊界；不是重建損失。"
+    },
+    {
+      "a": "R23002",
+      "b": "R23001",
+      "cosine": 0.769967,
+      "decision": "distinct",
+      "reason": "R2改內部混色可見的外底，R1改整組/逐項乘alpha；隔離和整體透明度不能互代。"
+    },
+    {
+      "a": "R23002",
+      "b": "C2007",
+      "cosine": 0.753826,
+      "decision": "distinct",
+      "reason": "視覺接近/相似分群是觀察者組織，這裡是規格運算改實際輸出像素。"
+    },
+    {
+      "a": "R23002",
+      "b": "Q9003",
+      "cosine": 0.752405,
+      "decision": "distinct",
+      "reason": "紙面覆膜靠光路跨墨區增加吸收；隔離群組改可讀buffer，無膜厚/物理反射。"
+    },
+    {
+      "a": "R23003",
+      "b": "M5013",
+      "cosine": 0.720272,
+      "decision": "distinct",
+      "reason": "標記改數值解讀，未改採樣密度；色度補樣無法解釋相同RGB的座標變更。"
+    },
+    {
+      "a": "R23003",
+      "b": "O7017",
+      "cosine": 0.647968,
+      "decision": "distinct",
+      "reason": "SCI/SCE改鏡面分量的實測集合；R3固定數值、改色彩空間意義。"
+    },
+    {
+      "a": "R23003",
+      "b": "M5003",
+      "cosine": 0.634031,
+      "decision": "distinct",
+      "reason": "共同色域內仍可有標記/保色換算差異；不依賴超界裁切。"
+    },
+    {
+      "a": "R23003",
+      "b": "R23002",
+      "cosine": 0.630712,
+      "decision": "distinct",
+      "reason": "單張影像標記/座標轉換不同於多層混色讀取外部底色。"
+    },
+    {
+      "a": "R23003",
+      "b": "C2007",
+      "cosine": 0.617894,
+      "decision": "distinct",
+      "reason": "不靠觀眾分群線索，而是有效色彩標記的規格解讀。"
+    },
+    {
+      "a": "R23004",
+      "b": "P159",
+      "cosine": 0.708523,
+      "decision": "distinct",
+      "reason": "色相角是色彩座標，非偏光軸角度/電場投影。"
+    },
+    {
+      "a": "R23004",
+      "b": "P158",
+      "cosine": 0.70615,
+      "decision": "distinct",
+      "reason": "環上路徑選擇不是單縫路徑差與主瓣寬度。"
+    },
+    {
+      "a": "R23004",
+      "b": "P153",
+      "cosine": 0.651426,
+      "decision": "distinct",
+      "reason": "相干光程差干涉與色相座標兩端之間的插值路徑不同。"
+    },
+    {
+      "a": "R23004",
+      "b": "M2026",
+      "cosine": 0.647916,
+      "decision": "distinct",
+      "reason": "非線性統計關係不決定環狀座標插值走哪條弧。"
+    },
+    {
+      "a": "R23004",
+      "b": "K6015",
+      "cosine": 0.645266,
+      "decision": "distinct",
+      "reason": "次虹水滴內兩次反射改出射角與色序；本題固定HSL座標空間，改色相插值長短弧，不是光的反射路徑。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R23001",
+        "b": "R23002",
+        "reason": "R1固定source-over改opacity在哪階段乘；R2可固定alpha=1、只改multiply能讀哪個backdrop，兩者有獨立控制。"
+      },
+      {
+        "a": "R23001",
+        "b": "I15002",
+        "reason": "時間稀疏發光解除定位重疊，與圖形層alpha合成的運算次序不同。"
+      },
+      {
+        "a": "R23001",
+        "b": "M5002",
+        "reason": "M5002先預乘以避免透明端點隱藏色污染插值；R1沒有插值，只改逐項或整體衰減。"
+      },
+      {
+        "a": "R23001",
+        "b": "P159",
+        "reason": "偏光片投影電場分量與數位source-over權重無共同答案。"
+      },
+      {
+        "a": "R23001",
+        "b": "M5013",
+        "reason": "色度次採樣丟失空間細節，與透明度施加階段不同。"
+      },
+      {
+        "a": "R23002",
+        "b": "M5002",
+        "reason": "混色backdrop的範圍與透明端點是否先預乘不同，R2用不透明色塊仍有效。"
+      },
+      {
+        "a": "R23002",
+        "b": "M5013",
+        "reason": "R2不減少像素/色度樣本，固定像素只換混色背景邊界；不是重建損失。"
+      },
+      {
+        "a": "R23002",
+        "b": "C2007",
+        "reason": "視覺接近/相似分群是觀察者組織，這裡是規格運算改實際輸出像素。"
+      },
+      {
+        "a": "R23002",
+        "b": "Q9003",
+        "reason": "紙面覆膜靠光路跨墨區增加吸收；隔離群組改可讀buffer，無膜厚/物理反射。"
+      },
+      {
+        "a": "R23003",
+        "b": "M5013",
+        "reason": "標記改數值解讀，未改採樣密度；色度補樣無法解釋相同RGB的座標變更。"
+      },
+      {
+        "a": "R23003",
+        "b": "O7017",
+        "reason": "SCI/SCE改鏡面分量的實測集合；R3固定數值、改色彩空間意義。"
+      },
+      {
+        "a": "R23003",
+        "b": "M5003",
+        "reason": "共同色域內仍可有標記/保色換算差異；不依賴超界裁切。"
+      },
+      {
+        "a": "R23003",
+        "b": "R23002",
+        "reason": "單張影像標記/座標轉換不同於多層混色讀取外部底色。"
+      },
+      {
+        "a": "R23003",
+        "b": "C2007",
+        "reason": "不靠觀眾分群線索，而是有效色彩標記的規格解讀。"
+      },
+      {
+        "a": "R23004",
+        "b": "P159",
+        "reason": "色相角是色彩座標，非偏光軸角度/電場投影。"
+      },
+      {
+        "a": "R23004",
+        "b": "P158",
+        "reason": "環上路徑選擇不是單縫路徑差與主瓣寬度。"
+      },
+      {
+        "a": "R23004",
+        "b": "R23001",
+        "reason": "固定透明度、同一HSL空間仍有兩弧；不是跨層alpha合成。"
+      },
+      {
+        "a": "R23004",
+        "b": "P153",
+        "reason": "相干光程差干涉與色相座標兩端之間的插值路徑不同。"
+      },
+      {
+        "a": "R23004",
+        "b": "M2026",
+        "reason": "非線性統計關係不決定環狀座標插值走哪條弧。"
+      },
+      {
+        "a": "R23001",
+        "b": "I3045",
+        "reason": "渲染分層的工作量/記憶體取捨，不能解釋固定幾何下重疊區alpha不同。"
+      },
+      {
+        "a": "R23001",
+        "b": "M5001",
+        "reason": "固定色彩空間且不插值，改opacity時點仍改結果；非線性光量平均是另一控制。"
+      },
+      {
+        "a": "R23002",
+        "b": "I3045",
+        "reason": "瀏覽器分層效能不是multiply隔離的語義與顏色輸出。"
+      },
+      {
+        "a": "R23003",
+        "b": "M5001",
+        "reason": "R3單一顏色重解讀/換算，M5001固定端點在不同插值空間求中間色。"
+      },
+      {
+        "a": "R23003",
+        "b": "LEG-A61",
+        "reason": "發光加色/顏料減色是物理混色來源；同為RGB的座標標記差別仍需另答。"
+      },
+      {
+        "a": "R23003",
+        "b": "R10001",
+        "reason": "字元與字形關係是符號呈現規格；RGB色彩座標與保色轉換不是相同機制。"
+      },
+      {
+        "a": "R23004",
+        "b": "M5001",
+        "reason": "固定同一HSL空間與端點，僅改短/長弧即可改中間色；不是非線性編碼轉線性光。"
+      },
+      {
+        "a": "R23004",
+        "b": "M5002",
+        "reason": "兩端不透明，不涉及透明隱藏色或預乘，改的是繞圈路徑。"
+      },
+      {
+        "a": "R23004",
+        "b": "I3023",
+        "reason": "有限交易序號的可見性凍結不同於兩色相端點的插值路徑；只有環狀表示相似。"
+      },
+      {
+        "a": "R23004",
+        "b": "K6015",
+        "reason": "次虹水滴內兩次反射改出射角與色序；本題固定HSL座標空間，改色相插值長短弧，不是光的反射路徑。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R23-NA001",
+      "question": "黑白各半為什麼算出不同的灰？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M5001"
+      ],
+      "reason": "非線性編碼與線性光插值已有核心，不換軟體重算新題。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA002",
+      "question": "透明漸層怎麼冒出髒邊？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M5002"
+      ],
+      "reason": "預乘alpha已收；本批只作與群組順序不同的近對。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA003",
+      "question": "把鮮豔顏色截回範圍怎麼變色相？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M5003"
+      ],
+      "reason": "通道裁切已收，不拿新版本規格再發核心。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA004",
+      "question": "PNG為什麼先把像素變差值？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M5004"
+      ],
+      "reason": "可逆濾波與後續壓縮已有核心。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA005",
+      "question": "圖片還沒下載完怎麼先有全圖？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M5005",
+        "M5007"
+      ],
+      "reason": "PNG交錯與JPEG漸進均已收，不用新圖片改標題。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA006",
+      "question": "JPEG品質100就沒有損失？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M5006"
+      ],
+      "reason": "既有退題已併量化限制，本輪不重入。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA007",
+      "question": "乘色、濾色、差值等模式每種各拍一集？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "僅羅列公式缺故事，不按功能選項拆題；本批只取隔離能否讀到背景的對照。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA008",
+      "question": "同圖層交換上下，怎麼換了顏色？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R23001"
+      ],
+      "reason": "合成遮擋順序的補例，併入R23001，不再新發一核。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA009",
+      "question": "透明度數字0就表示檔案裡沒有RGB嗎？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M5002"
+      ],
+      "reason": "隱藏顏色作預乘題邊界即可；未另補檔案格式實驗，不收獨立題。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA010",
+      "question": "HDR、P3、十億色哪個一定比較好？",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "品牌規格比較缺可控因果，不把規格名詞當吸引力。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    },
+    {
+      "id": "R23-NA011",
+      "question": "色環四種走法各拍一集？",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R23004"
+      ],
+      "reason": "同一環狀插值的選項，合成單一段，不拆四核。",
+      "read_scope": "已讀退題理由及指向的完整舊/本批題；未為未收方向新增外站研究。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W23R-T01",
+      "decision": "retain_paper_plan_only",
+      "body_seconds": 145,
+      "chapter_seconds": [
+        75,
+        70
+      ],
+      "same_core_totals": {
+        "R23001": 75,
+        "R23002": 70
+      },
+      "progression": [
+        "開場鎖同樣兩個黑圓白底，只切逐個0.5與整組0.5。；用先畫再調淡/先調淡再畫兩路，標圖形層在白底合成前的重疊alpha0.75/0.5；合白底後alpha皆1，差在顏色。；讓圖形分開再重疊：差異集中在重疊處，指出是處理順序。",
+        "清空重設不透明紅方塊與藍底，組normal、內部multiply，只切isolation；不沿用上章0.5。；框出內部透明底與外部藍底，內部先混色，整組normal再放回背景。；normal控制與組內相互混色反例，回收群組改的是哪個階段。"
+      ],
+      "drop_if_read": "若兩個控制無法在小樣清楚分辨，拆回75秒及70秒段落，不加第三個混合模式填長。",
+      "editorial_assessment": "T01透明度運算階段→可讀背景，已明確清空重設不同測試；同追問的兩種控制可接。",
+      "limits": "不是完整稿盲讀/小樣/成片核准。"
+    },
+    {
+      "id": "W23R-T02",
+      "decision": "retain_paper_plan_only",
+      "body_seconds": 85,
+      "chapter_seconds": [
+        50,
+        35
+      ],
+      "same_core_totals": {
+        "R23003": 85
+      },
+      "progression": [
+        "開場只換色彩標記，保留RGB，提出兩圖不必相同。；用兩座標格說明數字需配空間；把讀法變更與數值換算分兩路。",
+        "共同色域內的原創例，一路改數字保色，另一路保數字換讀法。；回扣：保數字，和保原色，是兩種操作。"
+      ],
+      "drop_if_read": "若取到的色塊超出目標色域，換共同色域示例；不要借裁切另講一次M5003。",
+      "editorial_assessment": "T02用換標記/換算保色兩路推進；回扣15→5秒已刪10秒，不以待驗限度撐時。",
+      "limits": "不是完整稿盲讀/小樣/成片核准。"
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "IMAGE01",
+      "before": "白底畫面直接標合成alpha0.75/0.5，易混為最終像素alpha。",
+      "after": "R1 answer/visual與T01明列白底合成前圖形層，最後不透明輸出alpha均1。",
+      "status": "TARGETED_READBACK_PASS"
+    },
+    {
+      "id": "IMAGE02",
+      "before": "第二章保持alpha容易沿用上章0.5。",
+      "after": "清空重設不透明紅/藍，組normal、內部multiply，只切isolation。",
+      "status": "TARGETED_READBACK_PASS"
+    },
+    {
+      "id": "IMAGE03",
+      "before": "T02末15秒回扣/後設待驗句。",
+      "after": "15→5、95→85，後設只留evidence_gaps。",
+      "removed_seconds": 10,
+      "status": "TARGETED_READBACK_PASS"
+    }
+  ],
+  "retrieval": {
+    "first_read_neighbours": {
+      "file": ".cache/wave23-image-neighbours.json",
+      "sha256": "28d37c17cf8dc464ec21bf75672a0f83dd6b0608cbb37b6faffbcf4e5f6a69bf"
+    },
+    "first_read_draft_sha256": "313475225ac69498b5f0c266dfcd1f2ecd5c82143e9eb1d7058f8bd94fc5ae4a",
+    "limits": "目前所有有向top5已逐對比較完整問答scope；共同初版與末版逐列相同。保留初讀與修訂證據，不把檢索或題級查讀升為全庫/逐句稿核准。",
+    "earlier_root_only_to_common_readback": {
+      "old_draft": "313475225ac69498b5f0c266dfcd1f2ecd5c82143e9eb1d7058f8bd94fc5ae4a",
+      "common_draft": "aa5cd00b37e1d02e0f17b23031e476db12c6a231cbcfb7ca868b259b3feaf85b",
+      "all_current_directed_pairs_re_read": 20,
+      "added_pair": [
+        "R23004",
+        "K6015"
+      ],
+      "removed_pair": [
+        "R23004",
+        "R23001"
+      ],
+      "decision": "新增K6015完整問答scope已讀distinct；舊R4/R1保留歷史判讀，不冒充目前top5。",
+      "common_file": {
+        "file": ".cache/wave23-image-neighbours-common-initial.json",
+        "sha256": "997a4de614df34755cf65b416cae6bf11d2b1358b20cad74c3d62b54853ec9ec"
+      }
+    },
+    "final_input_check": {
+      "status": "PASS_EXACT_COMMON_ROWS_AND_AUTHOR_BINDINGS",
+      "first_common_neighbours": {
+        "file": ".cache/wave23-image-neighbours-common-initial.json",
+        "sha256": "997a4de614df34755cf65b416cae6bf11d2b1358b20cad74c3d62b54853ec9ec"
+      },
+      "first_common_draft_sha256": "aa5cd00b37e1d02e0f17b23031e476db12c6a231cbcfb7ca868b259b3feaf85b",
+      "final_neighbours": {
+        "file": ".cache/wave23-image-neighbours.json",
+        "sha256": "923a91263dfaba9ade492667ed372efe0463e5108f1e5a3c07c0e5c4640b0289"
+      },
+      "final_draft_sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c",
+      "draft": {
+        "file": ".cache/draft.json",
+        "sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c"
+      },
+      "semantic": {
+        "file": ".cache/semantic-wave23-draft.json",
+        "sha256": "bae2e0b025d838cfe68db428f8323548323d12aba7e3f11653b8aa7b1da2c3eb"
+      },
+      "delta": {
+        "file": ".cache/wave23-semantic-revision-delta.json",
+        "sha256": "49f22062665d7d10b3702a23728f8b70cd57405055978d0c12d4e3617d515caf"
+      },
+      "full_question_answer_scope_cosine_and_top5_rows_identical_to_common_initial": true,
+      "directed_pairs": 20,
+      "new_neighbours_since_common_initial": [],
+      "source_identity": {
+        "file": ".cache/wave23-source-identity-matches.json",
+        "sha256": "5ebc05944f5b40e70aa585ccf2a58266dc794fa51a1b3a529098f04b015fdb84"
+      },
+      "limits": "精確來源比對0命中不是獨立證據保證；image同規格舊版關係另列source_identity_review。檢索不等於全庫逐題或召回率測試。",
+      "lf_metadata_rebind": "PASS：根作者檔LF正規化/author written_files更新，重新preview另納入113組先前已審distinct整合（1664→1777，舊prefix完整保留）。候選問答scope及完整semantic neighbours未變，不是draft只有SHA改變。"
+    }
+  },
+  "remaining_blockers": [],
+  "historical_root_only_top5_review": [
+    {
+      "a": "R23001",
+      "b": "R23002",
+      "cosine": 0.772138,
+      "decision": "distinct",
+      "reason": "R1固定source-over改opacity在哪階段乘；R2可固定alpha=1、只改multiply能讀哪個backdrop，兩者有獨立控制。"
+    },
+    {
+      "a": "R23001",
+      "b": "I15002",
+      "cosine": 0.727774,
+      "decision": "distinct",
+      "reason": "時間稀疏發光解除定位重疊，與圖形層alpha合成的運算次序不同。"
+    },
+    {
+      "a": "R23001",
+      "b": "M5002",
+      "cosine": 0.727748,
+      "decision": "distinct",
+      "reason": "M5002先預乘以避免透明端點隱藏色污染插值；R1沒有插值，只改逐項或整體衰減。"
+    },
+    {
+      "a": "R23001",
+      "b": "P159",
+      "cosine": 0.719819,
+      "decision": "distinct",
+      "reason": "偏光片投影電場分量與數位source-over權重無共同答案。"
+    },
+    {
+      "a": "R23001",
+      "b": "M5013",
+      "cosine": 0.700864,
+      "decision": "distinct",
+      "reason": "色度次採樣丟失空間細節，與透明度施加階段不同。"
+    },
+    {
+      "a": "R23002",
+      "b": "M5002",
+      "cosine": 0.791614,
+      "decision": "distinct",
+      "reason": "混色backdrop的範圍與透明端點是否先預乘不同，R2用不透明色塊仍有效。"
+    },
+    {
+      "a": "R23002",
+      "b": "M5013",
+      "cosine": 0.782106,
+      "decision": "distinct",
+      "reason": "R2不減少像素/色度樣本，固定像素只換混色背景邊界；不是重建損失。"
+    },
+    {
+      "a": "R23002",
+      "b": "R23001",
+      "cosine": 0.772138,
+      "decision": "distinct",
+      "reason": "R2改內部混色可見的外底，R1改整組/逐項乘alpha；隔離和整體透明度不能互代。"
+    },
+    {
+      "a": "R23002",
+      "b": "C2007",
+      "cosine": 0.753826,
+      "decision": "distinct",
+      "reason": "視覺接近/相似分群是觀察者組織，這裡是規格運算改實際輸出像素。"
+    },
+    {
+      "a": "R23002",
+      "b": "Q9003",
+      "cosine": 0.752405,
+      "decision": "distinct",
+      "reason": "紙面覆膜靠光路跨墨區增加吸收；隔離群組改可讀buffer，無膜厚/物理反射。"
+    },
+    {
+      "a": "R23003",
+      "b": "M5013",
+      "cosine": 0.720272,
+      "decision": "distinct",
+      "reason": "標記改數值解讀，未改採樣密度；色度補樣無法解釋相同RGB的座標變更。"
+    },
+    {
+      "a": "R23003",
+      "b": "O7017",
+      "cosine": 0.647968,
+      "decision": "distinct",
+      "reason": "SCI/SCE改鏡面分量的實測集合；R3固定數值、改色彩空間意義。"
+    },
+    {
+      "a": "R23003",
+      "b": "M5003",
+      "cosine": 0.634031,
+      "decision": "distinct",
+      "reason": "共同色域內仍可有標記/保色換算差異；不依賴超界裁切。"
+    },
+    {
+      "a": "R23003",
+      "b": "R23002",
+      "cosine": 0.630712,
+      "decision": "distinct",
+      "reason": "單張影像標記/座標轉換不同於多層混色讀取外部底色。"
+    },
+    {
+      "a": "R23003",
+      "b": "C2007",
+      "cosine": 0.617894,
+      "decision": "distinct",
+      "reason": "不靠觀眾分群線索，而是有效色彩標記的規格解讀。"
+    },
+    {
+      "a": "R23004",
+      "b": "P159",
+      "cosine": 0.708523,
+      "decision": "distinct",
+      "reason": "色相角是色彩座標，非偏光軸角度/電場投影。"
+    },
+    {
+      "a": "R23004",
+      "b": "P158",
+      "cosine": 0.70615,
+      "decision": "distinct",
+      "reason": "環上路徑選擇不是單縫路徑差與主瓣寬度。"
+    },
+    {
+      "a": "R23004",
+      "b": "R23001",
+      "cosine": 0.655597,
+      "decision": "distinct",
+      "reason": "固定透明度、同一HSL空間仍有兩弧；不是跨層alpha合成。"
+    },
+    {
+      "a": "R23004",
+      "b": "P153",
+      "cosine": 0.651426,
+      "decision": "distinct",
+      "reason": "相干光程差干涉與色相座標兩端之間的插值路徑不同。"
+    },
+    {
+      "a": "R23004",
+      "b": "M2026",
+      "cosine": 0.647916,
+      "decision": "distinct",
+      "reason": "非線性統計關係不決定環狀座標插值走哪條弧。"
+    }
+  ],
+  "metadata_revisions": [
+    {
+      "created_on": "2026-11-02",
+      "kind": "LF_NORMALIZATION_AND_HASH_REBIND_ONLY",
+      "reviewer": "pool_life_tech",
+      "before_receipt": {
+        "file": "reviews/wave23-life-reviews-image.json",
+        "sha256": "e8291b473693239fc860ae226e3f0ad83e7a87c26b8679c873a97d2ff8a6afa8"
+      },
+      "before_reviewed_files": [
+        {
+          "file": "batches/wave23-image.json",
+          "sha256": "cfc96ba7ff70b8d30f7c2c3717b67edef3e51eed449f85a8e5c774e44fae2b2c"
+        },
+        {
+          "file": "reviews/wave23-image-themes.json",
+          "sha256": "81b0262f435ccb495b142fd9c3789c81b26df3344db013426f53fe83409710ab"
+        },
+        {
+          "file": "reviews/wave23-image-author.json",
+          "sha256": "7270855d390b60b38448abff52173f286246c9cde80cb2d8cb98b086dcfc859b"
+        }
+      ],
+      "before_final_input_check": {
+        "status": "PASS_EXACT_COMMON_ROWS_AND_AUTHOR_BINDINGS",
+        "first_common_neighbours": {
+          "file": ".cache/wave23-image-neighbours-common-initial.json",
+          "sha256": "997a4de614df34755cf65b416cae6bf11d2b1358b20cad74c3d62b54853ec9ec"
+        },
+        "first_common_draft_sha256": "aa5cd00b37e1d02e0f17b23031e476db12c6a231cbcfb7ca868b259b3feaf85b",
+        "final_neighbours": {
+          "file": ".cache/wave23-image-neighbours.json",
+          "sha256": "3e08a017dbc70caede00905699f0a450dccd7e85d2c33549d871f3344d09edc1"
+        },
+        "final_draft_sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62",
+        "draft": {
+          "file": ".cache/draft.json",
+          "sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62"
+        },
+        "semantic": {
+          "file": ".cache/semantic-wave23-draft.json",
+          "sha256": "0bdeb6c8c7a59b98752bca4c0fb2a13bbb3c42238ed8a321635860dca4c6e1b4"
+        },
+        "delta": {
+          "file": ".cache/wave23-semantic-revision-delta.json",
+          "sha256": "7b591a9d805d32c2f496cf54aaddffc2b1f38912a9813e3a90a288d1f236501b"
+        },
+        "full_question_answer_scope_cosine_and_top5_rows_identical_to_common_initial": true,
+        "directed_pairs": 20,
+        "new_neighbours_since_common_initial": [],
+        "source_identity": {
+          "file": ".cache/wave23-source-identity-matches.json",
+          "sha256": "e79f75bfc829d3f7f7cde3ae683479f5eecfda7118fd56e031962f9347fef9af"
+        },
+        "limits": "精確來源比對0命中不是獨立證據保證；image同規格舊版關係另列source_identity_review。檢索不等於全庫逐題或召回率測試。"
+      },
+      "image_file_comparisons": [
+        {
+          "before": {
+            "file": ".cache/wave23-image.json.pre-lf",
+            "sha256": "cfc96ba7ff70b8d30f7c2c3717b67edef3e51eed449f85a8e5c774e44fae2b2c"
+          },
+          "after": {
+            "file": "batches/wave23-image.json",
+            "sha256": "ac6789cd83bc5f6c0df3e358d4f3d98d7258364e4d5452bb5a8f93e574635dbf"
+          },
+          "result": "JSON及正規化LF後位元組相同"
+        },
+        {
+          "before": {
+            "file": ".cache/wave23-image-themes.json.pre-lf",
+            "sha256": "81b0262f435ccb495b142fd9c3789c81b26df3344db013426f53fe83409710ab"
+          },
+          "after": {
+            "file": "reviews/wave23-image-themes.json",
+            "sha256": "590eaa46b4ea626975eb92e4b7f07d03cd2db129c477d6668aedcb186a2f179f"
+          },
+          "result": "JSON及正規化LF後位元組相同"
+        },
+        {
+          "before": {
+            "file": ".cache/wave23-image-author.json.pre-lf",
+            "sha256": "7270855d390b60b38448abff52173f286246c9cde80cb2d8cb98b086dcfc859b"
+          },
+          "after": {
+            "file": "reviews/wave23-image-author.json",
+            "sha256": "2ec0a5a562dda95139cab3f34a23b715491f5bb1db4926b0d0079947b926e346"
+          },
+          "result": "除written_files當期SHA外JSON全部相同"
+        }
+      ],
+      "neighbour_comparison": {
+        "before": {
+          "file": ".cache/wave23-image-neighbours.pre-lf.json",
+          "sha256": "3e08a017dbc70caede00905699f0a450dccd7e85d2c33549d871f3344d09edc1"
+        },
+        "after": {
+          "file": ".cache/wave23-image-neighbours.json",
+          "sha256": "923a91263dfaba9ade492667ed372efe0463e5108f1e5a3c07c0e5c4640b0289"
+        },
+        "all_rows_identical_including_questions_answers_scopes_scores_and_order": true,
+        "directed_pairs": 20
+      },
+      "scope": "只驗LF/作者written_files及共同input metadata；未新增來源閱讀、未改既有逐題/去重/題案判斷。保留所有首次閱讀、修前SHA與歷史delta。"
+    },
+    {
+      "created_on": "2026-11-02",
+      "kind": "LF_AND_PREVIOUSLY_REVIEWED_DEDUP_INTEGRATION_METADATA_CLARIFICATION",
+      "before_receipt": {
+        "file": "reviews/wave23-life-reviews-image.json",
+        "sha256": "473d2e4d17b0118df43e571393603ebe33c6ebeea2b6348791dd26cc52986db1"
+      },
+      "before_delta_binding": {
+        "file": ".cache/wave23-semantic-revision-delta.json",
+        "sha256": "7b591a9d805d32c2f496cf54aaddffc2b1f38912a9813e3a90a288d1f236501b"
+      },
+      "after_delta_binding": {
+        "file": ".cache/wave23-semantic-revision-delta.json",
+        "sha256": "49f22062665d7d10b3702a23728f8b70cd57405055978d0c12d4e3617d515caf"
+      },
+      "read_line_ending_revision": {
+        "status": "PASS_ALL_RAW_RECORDS_AND_NEIGHBOURS_IDENTICAL",
+        "old_input_sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62",
+        "new_input_sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c",
+        "scope": "CRLF to LF for root-authored files. Regenerated draft also incorporates 113 already-reviewed distinct-pair integration decisions. All other draft fields except input hashes and all full semantic neighbour rows are identical; no question, answer or scope changed."
+      },
+      "independent_comparison": {
+        "before_draft": {
+          "file": ".cache/draft.json.pre-lf",
+          "sha256": "e192f114504f56f30672e158c4051c4d86f0894a6ef1b63ff4a33b04221fcf62"
+        },
+        "after_draft": {
+          "file": ".cache/draft.json",
+          "sha256": "f81a644bef40611c594ea5e0bb72f7ec779af278ab9e33e133a31a684d06991c"
+        },
+        "distinct_before": 1664,
+        "distinct_after": 1777,
+        "previous_distinct_prefix_unchanged": true,
+        "other_draft_fields_except_inputs_identical": true,
+        "full_semantic_neighbours_identical": true
+      },
+      "scope": "補正上一metadata rebind的draft變化描述；原始閱讀/修訂歷史全部保留。113組是先前已審整合，不是本次新增內容查核；不變更候選、近對或題案判斷。"
+    }
+  ]
+}

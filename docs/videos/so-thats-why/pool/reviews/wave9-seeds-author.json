@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave9-seeds-20261101",
+  "files": [
+    {
+      "path": "batches/wave9-seeds.json",
+      "sha256": "fe4510e2a9f0fe4616a1a63b02adde70625c8e3dd1e83e7bf896bc6d0133ea28"
+    },
+    {
+      "path": "reviews/wave9-seeds-themes.json",
+      "sha256": "3d4feb3b7dfe4f2fee6530fd7f066a25556082ca58477ddb717641907273cdec"
+    }
+  ],
+  "encoding": "UTF-8 without BOM; LF; exact byte hashes",
+  "counts": {
+    "candidates": 19,
+    "sources": 23,
+    "candidate_referenced_sources": 22,
+    "not_added": 13,
+    "theme_proposals": 3,
+    "author_proposed_merges": 0
+  },
+  "candidate_ids": [
+    "E9001",
+    "E9002",
+    "E9003",
+    "E9004",
+    "E9005",
+    "E9006",
+    "E9007",
+    "E9008",
+    "E9009",
+    "E9010",
+    "E9011",
+    "E9012",
+    "E9013",
+    "E9014",
+    "E9015",
+    "E9016",
+    "E9017",
+    "E9018",
+    "E9019"
+  ],
+  "baseline": {
+    "path": "pool.json",
+    "sha256": "b2f1d89a67dd4cf50bbe380feb8b3b9a2843d3dafee82eb5e61030e3dbf8079b",
+    "raw_records": 3069,
+    "selected": 2711,
+    "method": "對全部3069 raw的question/answer_target/scope/mechanism_key做中英繁殖關鍵詞檢索，逐讀96匹配列；再追加材料/渦/細胞壁/裂紋/泛素等邊界詞匹配。另檢索全部401歷史not_added並讀匹配。不是3069題逐題外部重查；尚待root最終語意top5及另一作者覆核。"
+  },
+  "source_reading": {
+    "body_read_sources": 23,
+    "abstract_only_sources": 0,
+    "original_research_pages": 19,
+    "university_authored_reviews": 3,
+    "official_short_research_reports": 1,
+    "limits": "按每頁reading_scope實讀指定正文。E9-S022僅支援退題。數頁web檢查/逾時與Europe PMC500明列；公開HTML/XML成功副本僅在ignored cache。原始全文不入Git、未播放補充影片/未查圖像商用授權。"
+  },
+  "boundary_pairs": [
+    {
+      "ids": [
+        "E9001",
+        "P013"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "多毛間流動相互作用與分離渦環，非把單粒Stokes阻力換成種子。"
+    },
+    {
+      "ids": [
+        "E9001",
+        "E9003",
+        "T4043"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "多孔冠毛分離渦、旋轉翼前緣渦、飛機翼尖尾流的形成/位置/功能不同；不能只看都有渦就合併。"
+    },
+    {
+      "ids": [
+        "E9002",
+        "B2230",
+        "P076"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "放射組織幾何改變冠毛角度，且釋放和下降兩種後果；與彈絲乾燥變形及平面雙金屬不同。若只剩差異膨潤則併舊例，不保數量。"
+    },
+    {
+      "ids": [
+        "E9004",
+        "L095",
+        "B2230"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "滲透操弄可增壓而沿軸縮短；成熟模型另由近定膨壓下的形狀/壁方向性建立張力，再由鉸鏈放力，非泛講膨壓或乾燥彎曲。"
+    },
+    {
+      "ids": [
+        "E9005",
+        "B2123"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "不以反作用噴流另計；新核心鎖發射前果莖體積/形狀重新分配及方向收益。"
+    },
+    {
+      "ids": [
+        "E9006",
+        "B2230",
+        "D2126"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "吸濕芒的構造/固定點/土縫共同轉換為入土；不是重講棘爪機械，也不把任一彎曲都當新核心。"
+    },
+    {
+      "ids": [
+        "E9007",
+        "B2222",
+        "B2224"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "黏液與基材附著造成就地滯留，非動物外附搬運或吞食散播。"
+    },
+    {
+      "ids": [
+        "E9008",
+        "B2240",
+        "E9010"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "花粉本體的彈性溝口內摺，與花藥壁雙層受約束翻轉不同；B2240是所搬運世代。"
+    },
+    {
+      "ids": [
+        "E9009",
+        "B2287",
+        "B2312"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "花藥接觸振動釋粉，非蜂梳理搬運或花電場識別。"
+    },
+    {
+      "ids": [
+        "E9010",
+        "B2230",
+        "P076",
+        "E9004"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "保留受約束幾何的翻轉與增厚位置；若只剩雙層乾縮則失去新增性。Cardamine需活細胞膨壓與幾何/壁方向性，成熟蓄力不等於一路增壓。"
+    },
+    {
+      "ids": [
+        "E9011",
+        "B2215",
+        "L115"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "成功受精前後的助細胞備援與花粉供給條件，不是一般導引或自交辨識。"
+    },
+    {
+      "ids": [
+        "E9012",
+        "L099",
+        "B2218"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "種子已可萌但果內滲透/ABA條件抑制，區別吸水基質機制與冷期解除休眠；舊胎萌退題缺口由限定原研究補充。"
+    },
+    {
+      "ids": [
+        "E9013",
+        "H3024",
+        "B2135",
+        "U8022"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "聚焦耐乾種子分子保護的組合與非充分條件，不只重述玻璃轉移或活動停止；不是細菌內孢子多層構造。"
+    },
+    {
+      "ids": [
+        "E9014",
+        "B2230"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "樹脂熱解封和松果/氣溫不等，不是一般鱗片吸濕彎曲；兩者不能混說。"
+    },
+    {
+      "ids": [
+        "E9015",
+        "H3060",
+        "H3063"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "三維細胞互鎖改變破裂路徑，非只有裂長/應力門檻，也不是跨裂纖維橋接。"
+    },
+    {
+      "ids": [
+        "E9016",
+        "E9015"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "梨石細胞局部木質化/果肉增長稀釋與核桃互鎖承載不同；不再另拆石細胞比例題。"
+    },
+    {
+      "ids": [
+        "E9017",
+        "H3060",
+        "R6013"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "局部吸水、細胞破裂內容物與壁弱化連鎖，非一般裂尖門檻或果實鈣運輸；不提補鈣處方。"
+    },
+    {
+      "ids": [
+        "E9018",
+        "L100",
+        "V3052",
+        "V3093"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "外源促萌訊號與休眠/光/GA的必要條件，非換蛋白名重講泛素或養分動員；不聲稱2020所有訊號環節已直接確認。"
+    },
+    {
+      "ids": [
+        "E9019",
+        "B2219",
+        "E9012"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "B2219已涵蓋種皮的物理/機械限制；本題增量是透水果皮的低氧/激素反應與去皮、裸種低氧處理對照，而非只換一層外殼。與番茄果肉滲透環境也不同。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": []
+  },
+  "core_budget_checks": [
+    {
+      "theme_id": "W9E-T01",
+      "candidate_id": "E9001",
+      "seconds": 80,
+      "cap": 95
+    },
+    {
+      "theme_id": "W9E-T01",
+      "candidate_id": "E9002",
+      "seconds": 100,
+      "cap": 110
+    },
+    {
+      "theme_id": "W9E-T02",
+      "candidate_id": "E9004",
+      "seconds": 105,
+      "cap": 115
+    },
+    {
+      "theme_id": "W9E-T02",
+      "candidate_id": "E9005",
+      "seconds": 105,
+      "cap": 115
+    },
+    {
+      "theme_id": "W9E-T03",
+      "candidate_id": "E9012",
+      "seconds": 85,
+      "cap": 100
+    },
+    {
+      "theme_id": "W9E-T03",
+      "candidate_id": "E9019",
+      "seconds": 85,
+      "cap": 95
+    }
+  ],
+  "theme_seconds": [
+    {
+      "id": "W9E-T01",
+      "seconds": 180
+    },
+    {
+      "id": "W9E-T02",
+      "seconds": 210
+    },
+    {
+      "id": "W9E-T03",
+      "seconds": 170
+    }
+  ],
+  "self_checks": [
+    "19題id/source references唯一且存在。",
+    "3題案6個核心時間全部<=素材上限；開場回扣計入，所有節拍間隔<=45秒。",
+    "三題案均雙核心；刪任一章撤回本案，單核心另提另審，未自動批准縮版。",
+    "出版者/第一作者已以所讀XML/HTML元資料讀回修正；沒有僅搜尋摘要支援的候選。",
+    "所有候選screened是題級來源範圍，所有題案production_ready=false。"
+  ],
+  "open_review_questions": [
+    "E9010/B2230/P076與E9004的幾何/水力差別是否足以保留；薄化時可併舊例。",
+    "E9018多研究尺度串接及必要條件是否足夠清晰；不因煙訊號換名就保筆數。",
+    "E9013是否仍有過度集中在玻璃態的風險；應維持分子保護組合/非充分條件。",
+    "E9019低氧是綜合證據而非直接內部量測；題案不能省掉該限制。"
+  ],
+  "restrictions": [
+    "不改中央資料或舊raw。",
+    "未撰完整旁白、未實際試讀、未產生付費媒體、未核准製作或發布。"
+  ],
+  "correction_history": [
+    {
+      "requested_by": "pool_life_tech",
+      "adopted_by": "root",
+      "previous_artifacts": [
+        {
+          "file": "batches/wave9-seeds.json",
+          "sha256": "b5d36881a6f7d7fddce7232218af3638c73abbb3e7e35332fc690bdaa0b2b239"
+        },
+        {
+          "file": "reviews/wave9-seeds-themes.json",
+          "sha256": "167ec53697a059fc4228ec8b3bca1626daeb4c8c6fe9019626c38274b8b7dddc"
+        },
+        {
+          "file": "reviews/wave9-seeds-author.json",
+          "sha256": "36ad84ea164786ba4823084485eb2a14d2a0fb70237dcc94ef0f4f3f7d4db59c"
+        }
+      ],
+      "changes": [
+        "E9005發射前問法收為改變出口方向，不與發射中角度變化混淆。",
+        "E9012果膠改為黏液膠狀環境，不增加未證化學成分機制。",
+        "E9004及E9-S005/題案分清滲透增壓實驗與近似定膨壓成熟模型；原XML指定段回讀，無新增來源。",
+        "E9019/B2219作者邊界承認舊題已含物理/機械限制，新增低氧/激素與處理對照。",
+        "T01移出E9003，80+100=180秒蒲公英線，題名/開場/轉場/回扣/刪章同步。",
+        "T03移出E9013，85+85=170秒濕而未萌對照，首章開場含內，任刪章撤案。"
+      ],
+      "candidates_removed": [],
+      "sources_added": [],
+      "targeted_non_author_readback": "PENDING"
+    }
+  ],
+  "lock_revision": "r2_non_author_precision_and_theme_focus_corrections"
+}

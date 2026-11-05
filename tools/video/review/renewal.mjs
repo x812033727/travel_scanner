@@ -3,6 +3,7 @@
 import { createHash } from "node:crypto";
 import { closeSync, copyFileSync, existsSync, mkdirSync, openSync, readFileSync, readSync, realpathSync, statSync } from "node:fs";
 import path from "node:path";
+import { captionSpeakers } from "../core/drama.mjs";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
@@ -109,7 +110,7 @@ export async function submitRenewal({ receipt, reason, request, site }) {
 }
 
 /** Snapshot only into a new directory. No approval, pin, package or canonical file is changed. */
-export async function stageRenewal({ from, out, original, body, branding, client, measure, encode, upload, env = process.env }) {
+export async function stageRenewal({ from, out, original, body, branding, checks, client, measure, encode, upload, env = process.env }) {
   const sourceDir = realpathSync(from);
   const destination = path.resolve(out);
   requireThat(!existsSync(destination) && !isInside(destination, sourceDir), "out must be a new directory outside the candidate source");
@@ -128,8 +129,10 @@ export async function stageRenewal({ from, out, original, body, branding, client
   const bodySha = await sha256File(body);
   const pin = validateBranding(readJson(branding, null), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin, "a branding package is required");
-  // A renewal joins the retained body after the intro; a pin placed after the first chapter needs a rebuild instead.
-  requireThat(!pin.intro_at, "a renewal keeps the intro at the start; a branding pin with intro_at after_first_chapter needs assemble instead");
+  // A renewal joins the retained body after the intro; a pin placed after the first chapter needs a
+  // rebuild instead, and assemble's checks.json is what shows the candidate is that rebuild.
+  const assembled = checks ? appliedBranding(readJson(checks, null)) : null;
+  requireThat(!pin.intro_at || (assembled?.hash === pin.hash && assembled.body_sha256 === bodySha), "a renewal keeps the intro at the start; a branding pin with intro_at after_first_chapter needs assemble, and --checks naming that build");
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `${role} bytes do not match the branding pin`);
   const final = path.join(sourceDir, "final.mp4");
   const finalSha = await sha256File(final);
@@ -201,7 +204,7 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const defaultLocale = expectedMetadata.metadata.default_language;
   requireThat(metadata.default_language === defaultLocale && texts[defaultLocale], "the package changed the narration language");
-  const defaultCaption = toSrt(localeCues(presented, texts, defaultLocale, narration).cues);
+  const defaultCaption = toSrt(localeCues(presented, texts, defaultLocale, narration, null, captionSpeakers(project.doc)).cues);
   requireThat(readFileSync(path.join(workdir, "upload", "captions", `${defaultLocale}.srt`), "utf8") === defaultCaption, "the narration captions still use another presentation timeline");
   const captionManifest = readJson(path.join(workdir, "captions", "manifest.json"), null);
   const expectedCaptions = { [defaultLocale]: defaultCaption };
@@ -211,7 +214,7 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
     requireThat(!dub?.stale, `${locale} dub is stale`);
     // As runCaptions cut them: a translation under the narration moves its cue changes onto the
     // narration's measured ones.
-    expectedCaptions[locale] = toSrt(localeCues(presented, texts, locale, narration, dub).cues);
+    expectedCaptions[locale] = toSrt(localeCues(presented, texts, locale, narration, dub, captionSpeakers(project.doc)).cues);
     requireThat(readFileSync(path.join(workdir, "upload", "captions", `${locale}.srt`), "utf8") === expectedCaptions[locale], `${locale} caption bytes have stale offsets or text`);
   }
   const payload = { ...body.payload, ...(body.gate !== "publish" ? { locales: structuredClone(body.payload.locales ?? {}) } : {}), final_review_id: final.id };
@@ -280,13 +283,13 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
 
 export async function renewalMain(args, env = process.env) {
   const [command, ...rest] = args;
-  const { values } = parseArgs({ args: rest, options: Object.fromEntries(["from", "out", "original", "body", "branding", "receipt", "reason"].map((key) => [key, { type: "string" }])) });
+  const { values } = parseArgs({ args: rest, options: Object.fromEntries(["from", "out", "original", "body", "branding", "checks", "receipt", "reason"].map((key) => [key, { type: "string" }])) });
   if (command === "stage") {
     for (const key of ["from", "out", "original", "body", "branding"]) requireThat(values[key], `stage requires --${key}`);
     const receipt = await stageRenewal({ ...values, env });
     return `${receipt.slug}: candidate staged; select ${path.resolve(values.out, "renewal-candidate.json")} on the owner page. No review was submitted.`;
   }
-  requireThat(command === "submit" && values.receipt && values.reason, "usage: renewal.mjs stage --from DIR --out NEW_DIR --original MP4 --body MP4 --branding JSON; or submit --receipt JSON --reason TEXT");
+  requireThat(command === "submit" && values.receipt && values.reason, "usage: renewal.mjs stage --from DIR --out NEW_DIR --original MP4 --body MP4 --branding JSON [--checks JSON]; or submit --receipt JSON --reason TEXT");
   const site = env.MOKAAIR_SITE ?? "https://mokaair.com";
   const receipt = readJson(values.receipt, null);
   const result = await submitRenewal({ receipt, reason: values.reason, site, request: ownerClient({ site, session: env.MOKAAIR_OWNER_SESSION }) });

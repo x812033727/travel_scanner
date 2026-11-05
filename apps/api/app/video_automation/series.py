@@ -2767,16 +2767,17 @@ async def start_compilation(
     await session.commit()
     rows = await _episodes(session, series)
     done = [e for e in rows if e.status == "done" and e.slug]
-    dropped: set[str] = set()
+    # A done episode whose video was dropped, or deleted after that, has nothing to compile.
+    live: set[str] = set()
     if done:
         found = await session.scalars(
             select(VideoProject.slug).where(
                 VideoProject.slug.in_([str(e.slug) for e in done]),
-                VideoProject.dropped_at.is_not(None),
+                VideoProject.dropped_at.is_(None),
             )
         )
-        dropped = set(found.all())
-    episodes = [e for e in done if e.slug not in dropped]
+        live = set(found.all())
+    episodes = [e for e in done if e.slug in live]
     docs = await _docs(session, series)
     return SeriesCompilationStartOut(
         series=summary_view(series, docs, rows),

@@ -101,3 +101,18 @@ schema validator cannot establish whether an alt description matches a photo.
 - Complete claim-level fact/price/date audit is a continuing read-only step;
   this ticket does not assert that every other claim has passed. Partial reads,
   HTTP 200 challenge pages and JS-only shells are not successful source evidence.
+- Later October 28 continuation rechecked the complete retained 46-claim audit,
+  fresh official Osaka/USJ/Disney material, three original photographs and all
+  eight source-media hashes. Both articles remain NOT_PR_READY: no complete
+  corrected candidate or final candidate review exists. Summary SHA256:
+  `843668fb3c74c3a794d1845656d1964515467ae3e9d63e3a25ba04d93f12d2d4`.
+- Disney's two park calendars now directly support December 31 09:00-21:00
+  hours, but do not establish an explicit no-countdown announcement. Unknown
+  first-publication dates must not be backdated to the old September 13 check.
+  If the New Year article's Disney timeline text/description needs correction,
+  add `apps/web/public/guides/japan-year-end-new-year-2026-2027/diagram-1.svg`
+  to this ticket before editing it; its photographic hero alt is a document-only
+  change.
+- The fresh 44-open-PR file check found no scope intersection; one capped API
+  listing was completed using its exact remote-head full Git diff. This remains
+  a dated ownership observation and must be checked again before claim.

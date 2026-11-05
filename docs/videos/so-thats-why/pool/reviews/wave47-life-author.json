@@ -1,0 +1,691 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "/root/pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "437b78bfe5f05294c35c3feb2a2c80fd667d48c6",
+    "selected": 3483,
+    "raw": 3871,
+    "not_added": 2038,
+    "themes": 514,
+    "pool_sha256": "34b8cc264a3d98f670bc183fb94f5b3cc8d52cd33abea53d4e3df212161fd160"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave47-life.json",
+      "sha256": "4149f2678bbf0a333ca26d2478fdf7a26a5d6655f5a5a64907b487d61e0d4b81"
+    },
+    {
+      "file": "reviews/wave47-life-themes.json",
+      "sha256": "8dbe0d849ffd4d2da52382ee16e7b60042588f46b4b3aa44fad6ab8764756487"
+    }
+  ],
+  "counts": {
+    "candidates": 6,
+    "sources": 6,
+    "candidate_supporting_studies": 6,
+    "not_added": 18,
+    "near_pairs": 21,
+    "themes": 5,
+    "reserve_segments": 1
+  },
+  "near_pairs": [
+    {
+      "a": "L47-001",
+      "b": "L085",
+      "decision": "propose_distinct",
+      "reason": "根毛吸收接觸面與孔壁錨定反作用支撐是不同工作；新題有拔出力與伸長去向控制。",
+      "a_snapshot": {
+        "question": "根明明一直變長，為什麼反而把自己往土洞外推出去？",
+        "answer_target": "根尖要推開土，也需要後段提供反作用支撐。在人工孔洞裡，根毛抓住孔壁可增加拔出阻力；錨定不足時，新增長度較容易把上方根段推出洞口，而不全變成向下鑽入。",
+        "scope": "限玉米人工垂直孔洞、指定土密度；比較野生型與無根毛突變株，後者無阻礙伸長亦較慢。入土差異在高密度未必顯著，不說根毛是唯一抓地方式。"
+      },
+      "b_snapshot": {
+        "question": "植物為什麼要在根上長出大量細毛？",
+        "answer_target": "根毛是表皮細胞延伸，增加吸收接觸面",
+        "scope": "一般維管植物根的結構"
+      }
+    },
+    {
+      "a": "L47-001",
+      "b": "B11001",
+      "decision": "propose_distinct",
+      "reason": "乙烯受阻抑制伸長與仍伸長卻被推出洞口不同；不是硬土換物種。",
+      "a_snapshot": {
+        "question": "根明明一直變長，為什麼反而把自己往土洞外推出去？",
+        "answer_target": "根尖要推開土，也需要後段提供反作用支撐。在人工孔洞裡，根毛抓住孔壁可增加拔出阻力；錨定不足時，新增長度較容易把上方根段推出洞口，而不全變成向下鑽入。",
+        "scope": "限玉米人工垂直孔洞、指定土密度；比較野生型與無根毛突變株，後者無阻礙伸長亦較慢。入土差異在高密度未必顯著，不說根毛是唯一抓地方式。"
+      },
+      "b_snapshot": {
+        "question": "土被壓實後，根長不進去一定是推不動嗎？",
+        "answer_target": "充氣孔隙減少使根產生的乙烯不易散逸，乙烯訊號抑制伸長；同樣硬土中的不敏感株與隔氣對照把主動生長反應和單純阻擋分開。",
+        "scope": "限文中水稻/擬南芥與受控土柱；不宣稱硬度、缺氧或機械感測永遠無關；兩腔試驗濕度也隨壓實改變。"
+      }
+    },
+    {
+      "a": "L47-001",
+      "b": "B11002",
+      "decision": "propose_distinct",
+      "reason": "側向滑過障礙與後段固定提供入土反力不同；新題不用環旋幾何回答。",
+      "a_snapshot": {
+        "question": "根明明一直變長，為什麼反而把自己往土洞外推出去？",
+        "answer_target": "根尖要推開土，也需要後段提供反作用支撐。在人工孔洞裡，根毛抓住孔壁可增加拔出阻力；錨定不足時，新增長度較容易把上方根段推出洞口，而不全變成向下鑽入。",
+        "scope": "限玉米人工垂直孔洞、指定土密度；比較野生型與無根毛突變株，後者無阻礙伸長亦較慢。入土差異在高密度未必顯著，不說根毛是唯一抓地方式。"
+      },
+      "b_snapshot": {
+        "question": "有些稻根直著長得比較快，遇到石粒卻為什麼反而容易卡住？",
+        "answer_target": "環旋增加根尖側向探索；機器根對照顯示側向推力能增加沿障礙表面的切向分量，使迎面接觸也有滑過機會，與活根孔板/碎粒結果相互支持。",
+        "scope": "限原研究水稻早期根與二維機器模型；機器根縮內側、活根伸外側，不把模型力向量當活根直接量測，也不聲稱所有根必須繞圈。"
+      }
+    },
+    {
+      "a": "L47-001",
+      "b": "B11004",
+      "decision": "propose_distinct",
+      "reason": "壁內鬆弛允許伸長與整根相對土體如何移動分層；不是加速伸長的另一例。",
+      "a_snapshot": {
+        "question": "根明明一直變長，為什麼反而把自己往土洞外推出去？",
+        "answer_target": "根尖要推開土，也需要後段提供反作用支撐。在人工孔洞裡，根毛抓住孔壁可增加拔出阻力；錨定不足時，新增長度較容易把上方根段推出洞口，而不全變成向下鑽入。",
+        "scope": "限玉米人工垂直孔洞、指定土密度；比較野生型與無根毛突變株，後者無阻礙伸長亦較慢。入土差異在高密度未必顯著，不說根毛是唯一抓地方式。"
+      },
+      "b_snapshot": {
+        "question": "細胞壁既能撐住植物，為什麼還能在拉力不增加時繼續伸長？",
+        "answer_target": "酸性條件能促進壁內expansin相關鬆弛，使承受拉力的細胞壁延伸；熱失活後僅降pH不足，補蛋白可恢復，區分可控制的壁鬆弛與單純加大推力。",
+        "scope": "直接證據是幼嫩黃瓜下胚軸的非活體壁、固定外加拉力；不把它當活細胞膨壓量測，不說所有成熟木質壁都如此，也不畫成確定的共價鍵水解。"
+      }
+    },
+    {
+      "a": "L47-002",
+      "b": "L094",
+      "decision": "propose_distinct",
+      "reason": "膨壓驅動動作是背景，新增的是遠端力傳到基部的可切斷感測位置。",
+      "a_snapshot": {
+        "question": "含羞草葉尖被碰也會閉，感到那一下的地方一定就在葉尖嗎？",
+        "answer_target": "葉尖的碰觸可透過槓桿彎到基部葉枕；加支撐棒阻止這個彎折後，強遠端刺激也不引發閉合。局部機械通道阻斷減弱反應，支持基部把形變轉成訊號，而非每處觸點各自等同。",
+        "scope": "限小葉基部與校準觸碰試驗；葉面不同位置都可有機械通道，不能說只有基部有。通道分子身份未確定；槓桿與藥理結果不是識別全部訊號路徑。"
+      },
+      "b_snapshot": {
+        "question": "有些葉子缺水垂下來，澆水後為什麼又能挺起來？",
+        "answer_target": "細胞膨壓下降與恢復",
+        "scope": "植物水勢的機制；不給未查物種的澆水配方"
+      }
+    },
+    {
+      "a": "L47-002",
+      "b": "R6017",
+      "decision": "propose_distinct",
+      "reason": "捕蠅草題改兩次刺激的時間加總，本題固定一次刺激並改機械傳遞路徑。",
+      "a_snapshot": {
+        "question": "含羞草葉尖被碰也會閉，感到那一下的地方一定就在葉尖嗎？",
+        "answer_target": "葉尖的碰觸可透過槓桿彎到基部葉枕；加支撐棒阻止這個彎折後，強遠端刺激也不引發閉合。局部機械通道阻斷減弱反應，支持基部把形變轉成訊號，而非每處觸點各自等同。",
+        "scope": "限小葉基部與校準觸碰試驗；葉面不同位置都可有機械通道，不能說只有基部有。通道分子身份未確定；槓桿與藥理結果不是識別全部訊號路徑。"
+      },
+      "b_snapshot": {
+        "question": "捕蠅草兩次被碰的間隔，為什麼會影響要不要關起來？",
+        "answer_target": "刺激引發的細胞質鈣訊號會逐漸衰減；短間隔第二次可把訊號推到與閉合相關的門檻。",
+        "scope": "限2020研究模型；不說固定秒數適用所有條件，不把兩次接觸當唯一規則或植物有意識證據。"
+      }
+    },
+    {
+      "a": "L47-002",
+      "b": "B2236",
+      "decision": "propose_distinct",
+      "reason": "卷鬚接觸後差異生長不能回答支撐棒阻斷含羞草遠端閉合。",
+      "a_snapshot": {
+        "question": "含羞草葉尖被碰也會閉，感到那一下的地方一定就在葉尖嗎？",
+        "answer_target": "葉尖的碰觸可透過槓桿彎到基部葉枕；加支撐棒阻止這個彎折後，強遠端刺激也不引發閉合。局部機械通道阻斷減弱反應，支持基部把形變轉成訊號，而非每處觸點各自等同。",
+        "scope": "限小葉基部與校準觸碰試驗；葉面不同位置都可有機械通道，不能說只有基部有。通道分子身份未確定；槓桿與藥理結果不是識別全部訊號路徑。"
+      },
+      "b_snapshot": {
+        "question": "藤蔓的卷鬚碰到支架，怎麼逐漸把它纏住？",
+        "answer_target": "接觸後兩側反應差造成定向彎曲",
+        "scope": "限卷鬚，具體細胞變化需物種研究補足"
+      }
+    },
+    {
+      "a": "L47-003",
+      "b": "B2238",
+      "decision": "propose_distinct",
+      "reason": "揮發物引天敵是不同防禦通道；本題器官缺失後仍傳電訊號卻無動作。",
+      "a_snapshot": {
+        "question": "含羞草合起葉子，真的能讓啃葉子的昆蟲少待一會嗎？",
+        "answer_target": "不會動的葉片讓實驗昆蟲停留較久、吃掉更多。化學抑制與缺少葉枕的基因處理得到同向結果，且後者仍傳傷害電訊號；支持快速動作本身參與防禦，不只是傷害訊號出現就足夠。",
+        "scope": "限容器中的切葉與所測蝗蟲/毛蟲；量的是停留與葉重量損失，不是野外族群存活。器官缺失與藥理並非完美單因子，不能宣稱所有化學防禦均相同或昆蟲因恐懼逃跑。"
+      },
+      "b_snapshot": {
+        "question": "植物被毛毛蟲咬後，怎麼可能引來毛毛蟲的敵人？",
+        "answer_target": "受害訊號誘發揮發物並改變天敵尋找線索",
+        "scope": "三方互動；不賦予植物意圖或保證每次有效"
+      }
+    },
+    {
+      "a": "L47-003",
+      "b": "L094",
+      "decision": "propose_distinct",
+      "reason": "水壓機制不回答動作是否改變昆蟲停留和葉損；新研究有兩種失去動作的比較。",
+      "a_snapshot": {
+        "question": "含羞草合起葉子，真的能讓啃葉子的昆蟲少待一會嗎？",
+        "answer_target": "不會動的葉片讓實驗昆蟲停留較久、吃掉更多。化學抑制與缺少葉枕的基因處理得到同向結果，且後者仍傳傷害電訊號；支持快速動作本身參與防禦，不只是傷害訊號出現就足夠。",
+        "scope": "限容器中的切葉與所測蝗蟲/毛蟲；量的是停留與葉重量損失，不是野外族群存活。器官缺失與藥理並非完美單因子，不能宣稱所有化學防禦均相同或昆蟲因恐懼逃跑。"
+      },
+      "b_snapshot": {
+        "question": "有些葉子缺水垂下來，澆水後為什麼又能挺起來？",
+        "answer_target": "細胞膨壓下降與恢復",
+        "scope": "植物水勢的機制；不給未查物種的澆水配方"
+      }
+    },
+    {
+      "a": "L47-004",
+      "b": "L113",
+      "decision": "propose_distinct",
+      "reason": "固定雄雌高度與活動雄蕊接觸/訪客停留的操弄不同；舊題不含出口追蹤。",
+      "a_snapshot": {
+        "question": "花讓蜜蜂提早離開，為什麼反而把花粉送到更多花上？",
+        "answer_target": "小檗雄蕊被碰後向內彈動，接觸蜜蜂並縮短停留；停掉動作後蜜蜂停得久，卻不代表有效送粉更多。染色花粉追蹤顯示活動雄蕊的花粉到達較多周邊花，形成接觸裝粉與催訪客移動的配合。",
+        "scope": "主例B. julianae與Apis cerana；其他訪客取走花粉量可方向不同。不把花粉到達等同結籽或父系成功；不能獨立歸因全部效果只來自停留縮短。"
+      },
+      "b_snapshot": {
+        "question": "花裡的柱頭和花藥長在不同高度，有什麼作用？",
+        "answer_target": "空間配置影響花粉接觸",
+        "scope": "開花植物授粉策略；每種花的例子另查"
+      }
+    },
+    {
+      "a": "L47-004",
+      "b": "E9009",
+      "decision": "propose_distinct",
+      "reason": "外來接觸振動釋粉與花自身雄蕊動作影響訪客行為不同。",
+      "a_snapshot": {
+        "question": "花讓蜜蜂提早離開，為什麼反而把花粉送到更多花上？",
+        "answer_target": "小檗雄蕊被碰後向內彈動，接觸蜜蜂並縮短停留；停掉動作後蜜蜂停得久，卻不代表有效送粉更多。染色花粉追蹤顯示活動雄蕊的花粉到達較多周邊花，形成接觸裝粉與催訪客移動的配合。",
+        "scope": "主例B. julianae與Apis cerana；其他訪客取走花粉量可方向不同。不把花粉到達等同結籽或父系成功；不能獨立歸因全部效果只來自停留縮短。"
+      },
+      "b_snapshot": {
+        "question": "有些花的花粉藏在小孔裡，蜂發出嗡嗡聲就能把它叫出來嗎？",
+        "answer_target": "蜂將胸部振動透過接觸傳入花藥，花粉在振動中逐步從小孔釋出；聲音是伴隨現象，不能代替實際振幅。",
+        "scope": "限振動授粉系統；粒子碰壁為模型，振幅/頻率影響因條件不同，不把共振或聲音寫成通用開關。"
+      }
+    },
+    {
+      "a": "L47-004",
+      "b": "R41005",
+      "decision": "propose_distinct",
+      "reason": "表面立足點及傾角影響操作難度，不是活動器官接觸後訪客移動。",
+      "a_snapshot": {
+        "question": "花讓蜜蜂提早離開，為什麼反而把花粉送到更多花上？",
+        "answer_target": "小檗雄蕊被碰後向內彈動，接觸蜜蜂並縮短停留；停掉動作後蜜蜂停得久，卻不代表有效送粉更多。染色花粉追蹤顯示活動雄蕊的花粉到達較多周邊花，形成接觸裝粉與催訪客移動的配合。",
+        "scope": "主例B. julianae與Apis cerana；其他訪客取走花粉量可方向不同。不把花粉到達等同結籽或父系成功；不能獨立歸因全部效果只來自停留縮短。"
+      },
+      "b_snapshot": {
+        "question": "為什麼平放的花都能採，立得陡了，花瓣上那排小突起就有差？",
+        "answer_target": "平放與陡放的花面帶來不同的站穩需求。熊蜂在難以操作的角度較偏好有錐狀突起的花面；複製表面的抓握試驗支持這些突起提供立足點。",
+        "scope": "花面結構也可能影響其他性質；區分真花、複製面和不同傾角。"
+      }
+    },
+    {
+      "a": "L47-004",
+      "b": "R41006",
+      "decision": "propose_distinct",
+      "reason": "咬合時的振幅傳遞與花粉目的地不是同一讀值，也非主動雄蕊控制。",
+      "a_snapshot": {
+        "question": "花讓蜜蜂提早離開，為什麼反而把花粉送到更多花上？",
+        "answer_target": "小檗雄蕊被碰後向內彈動，接觸蜜蜂並縮短停留；停掉動作後蜜蜂停得久，卻不代表有效送粉更多。染色花粉追蹤顯示活動雄蕊的花粉到達較多周邊花，形成接觸裝粉與催訪客移動的配合。",
+        "scope": "主例B. julianae與Apis cerana；其他訪客取走花粉量可方向不同。不把花粉到達等同結籽或父系成功；不能獨立歸因全部效果只來自停留縮短。"
+      },
+      "b_snapshot": {
+        "question": "熊蜂胸口一直振，為什麼咬上花藥的那一瞬間，花藥抖得更大？",
+        "answer_target": "在振動採粉期間，熊蜂的頭部動作可大於胸部。大顎咬住花藥時，花藥的振幅高於非咬合時段，觀察到的咬合角度不同，沿花藥不同軸向量到的傳振也有差異。",
+        "scope": "角度為自然咬合的觀察比較，並未強制固定單一角度。重點是蜂和花藥如何連動；振幅不是這隻蜂實際收走多少花粉的直接讀數。"
+      }
+    },
+    {
+      "a": "L47-005",
+      "b": "L112",
+      "decision": "propose_distinct",
+      "reason": "雄雌成熟錯時是發育序列，柱頭觸碰/授粉後的閉合持續可在同花齡比較。",
+      "a_snapshot": {
+        "question": "一碰就閉上的柱頭，為什麼有時幾小時又開，有時卻一直關著？",
+        "answer_target": "觸碰能迅速啟動閉合，沒有花粉時會較早重開；輕撒花粉不造成快速碰觸反應，也能較慢引發閉合。授粉後閉合通常維持較久，表示啟動與維持不能只歸給同一下觸碰。",
+        "scope": "限Mimulus aurantiacus初開花。結籽數與重開的統計關係支持後續回饋假說，未識別訊號；不稱柱頭能精確數花粉或保證受精足夠才閉。"
+      },
+      "b_snapshot": {
+        "question": "一朵花同時有雄蕊和雌蕊，為什麼還可能不讓自己受粉？",
+        "answer_target": "雄雌成熟時間錯開",
+        "scope": "開花植物授粉策略；每種花的例子另查"
+      }
+    },
+    {
+      "a": "L47-005",
+      "b": "L113",
+      "decision": "propose_distinct",
+      "reason": "柱頭原來位置是背景，新題把機械觸碰與花粉維持閉合的時間條件拆開。",
+      "a_snapshot": {
+        "question": "一碰就閉上的柱頭，為什麼有時幾小時又開，有時卻一直關著？",
+        "answer_target": "觸碰能迅速啟動閉合，沒有花粉時會較早重開；輕撒花粉不造成快速碰觸反應，也能較慢引發閉合。授粉後閉合通常維持較久，表示啟動與維持不能只歸給同一下觸碰。",
+        "scope": "限Mimulus aurantiacus初開花。結籽數與重開的統計關係支持後續回饋假說，未識別訊號；不稱柱頭能精確數花粉或保證受精足夠才閉。"
+      },
+      "b_snapshot": {
+        "question": "花裡的柱頭和花藥長在不同高度，有什麼作用？",
+        "answer_target": "空間配置影響花粉接觸",
+        "scope": "開花植物授粉策略；每種花的例子另查"
+      }
+    },
+    {
+      "a": "L47-005",
+      "b": "L115",
+      "decision": "propose_distinct",
+      "reason": "遺傳不相容阻管不是本題外部柱頭關閉/重開；不把結籽迴歸當不相容證據。",
+      "a_snapshot": {
+        "question": "一碰就閉上的柱頭，為什麼有時幾小時又開，有時卻一直關著？",
+        "answer_target": "觸碰能迅速啟動閉合，沒有花粉時會較早重開；輕撒花粉不造成快速碰觸反應，也能較慢引發閉合。授粉後閉合通常維持較久，表示啟動與維持不能只歸給同一下觸碰。",
+        "scope": "限Mimulus aurantiacus初開花。結籽數與重開的統計關係支持後續回饋假說，未識別訊號；不稱柱頭能精確數花粉或保證受精足夠才閉。"
+      },
+      "b_snapshot": {
+        "question": "花粉已經落到柱頭上，為什麼不一定能完成受精？",
+        "answer_target": "遺傳辨識可阻止花粉管生長",
+        "scope": "開花植物授粉策略；每種花的例子另查"
+      }
+    },
+    {
+      "a": "L47-005",
+      "b": "E9011",
+      "decision": "propose_distinct",
+      "reason": "助細胞保留以吸引第二條管是胚珠內機制，非外部柱頭重開。",
+      "a_snapshot": {
+        "question": "一碰就閉上的柱頭，為什麼有時幾小時又開，有時卻一直關著？",
+        "answer_target": "觸碰能迅速啟動閉合，沒有花粉時會較早重開；輕撒花粉不造成快速碰觸反應，也能較慢引發閉合。授粉後閉合通常維持較久，表示啟動與維持不能只歸給同一下觸碰。",
+        "scope": "限Mimulus aurantiacus初開花。結籽數與重開的統計關係支持後續回饋假說，未識別訊號；不稱柱頭能精確數花粉或保證受精足夠才閉。"
+      },
+      "b_snapshot": {
+        "question": "第一條花粉管送到卻沒受精，胚珠為什麼還可能等到第二條？",
+        "answer_target": "第一次失敗後仍存活的助細胞保留吸引功能，可接納另一條花粉管；多餘花粉供給與時間影響救援機會。",
+        "scope": "限擬南芥hap2-1等研究；不是每個胚珠都能救回，也不是多條管一定同時進來。"
+      }
+    },
+    {
+      "a": "L47-006",
+      "b": "L112",
+      "decision": "propose_distinct",
+      "reason": "不只雄性期先於雌性期，新增人工刺激間隔下短窗供量與單位時間供應不同。",
+      "a_snapshot": {
+        "question": "訪花越來越密，花朵會每次拿出更多花粉，還是把小批次送得更勤？",
+        "answer_target": "研究以不同間隔碰觸蜜腺鱗片，改變雄蕊移到花心的頻率；在所選Nasa dyeri比較中，每次刺激後五分鐘的雄蕊數未見清楚差別，較密刺激卻提高每小時的總供應。較多輸出可來自補貨更勤，不必是每次都多給。",
+        "scope": "限人工觸碰與雄蕊數讀值；不把未顯著差異當證明完全相等。其他物種有例外；非直接花粉重量或後代量，未證神經學習、精準預測或特定分子回路。"
+      },
+      "b_snapshot": {
+        "question": "一朵花同時有雄蕊和雌蕊，為什麼還可能不讓自己受粉？",
+        "answer_target": "雄雌成熟時間錯開",
+        "scope": "開花植物授粉策略；每種花的例子另查"
+      }
+    },
+    {
+      "a": "L47-006",
+      "b": "E9009",
+      "decision": "propose_distinct",
+      "reason": "孔口受振釋粉不是未呈現雄蕊分批移到花心的供應節奏。",
+      "a_snapshot": {
+        "question": "訪花越來越密，花朵會每次拿出更多花粉，還是把小批次送得更勤？",
+        "answer_target": "研究以不同間隔碰觸蜜腺鱗片，改變雄蕊移到花心的頻率；在所選Nasa dyeri比較中，每次刺激後五分鐘的雄蕊數未見清楚差別，較密刺激卻提高每小時的總供應。較多輸出可來自補貨更勤，不必是每次都多給。",
+        "scope": "限人工觸碰與雄蕊數讀值；不把未顯著差異當證明完全相等。其他物種有例外；非直接花粉重量或後代量，未證神經學習、精準預測或特定分子回路。"
+      },
+      "b_snapshot": {
+        "question": "有些花的花粉藏在小孔裡，蜂發出嗡嗡聲就能把它叫出來嗎？",
+        "answer_target": "蜂將胸部振動透過接觸傳入花藥，花粉在振動中逐步從小孔釋出；聲音是伴隨現象，不能代替實際振幅。",
+        "scope": "限振動授粉系統；粒子碰壁為模型，振幅/頻率影響因條件不同，不把共振或聲音寫成通用開關。"
+      }
+    },
+    {
+      "a": "L47-006",
+      "b": "L47-004",
+      "decision": "propose_distinct",
+      "reason": "訪客輸入頻率改呈現量與雄蕊動作改訪客停留不同；兩題不硬合成同片。",
+      "a_snapshot": {
+        "question": "訪花越來越密，花朵會每次拿出更多花粉，還是把小批次送得更勤？",
+        "answer_target": "研究以不同間隔碰觸蜜腺鱗片，改變雄蕊移到花心的頻率；在所選Nasa dyeri比較中，每次刺激後五分鐘的雄蕊數未見清楚差別，較密刺激卻提高每小時的總供應。較多輸出可來自補貨更勤，不必是每次都多給。",
+        "scope": "限人工觸碰與雄蕊數讀值；不把未顯著差異當證明完全相等。其他物種有例外；非直接花粉重量或後代量，未證神經學習、精準預測或特定分子回路。"
+      },
+      "b_snapshot": {
+        "question": "花讓蜜蜂提早離開，為什麼反而把花粉送到更多花上？",
+        "answer_target": "小檗雄蕊被碰後向內彈動，接觸蜜蜂並縮短停留；停掉動作後蜜蜂停得久，卻不代表有效送粉更多。染色花粉追蹤顯示活動雄蕊的花粉到達較多周邊花，形成接觸裝粉與催訪客移動的配合。",
+        "scope": "主例B. julianae與Apis cerana；其他訪客取走花粉量可方向不同。不把花粉到達等同結籽或父系成功；不能獨立歸因全部效果只來自停留縮短。"
+      }
+    },
+    {
+      "a": "L47-002",
+      "b": "L47-003",
+      "decision": "propose_distinct",
+      "reason": "前者切斷力傳遞找感測位置，後者有訊號卻無動作以比較防禦後果。",
+      "a_snapshot": {
+        "question": "含羞草葉尖被碰也會閉，感到那一下的地方一定就在葉尖嗎？",
+        "answer_target": "葉尖的碰觸可透過槓桿彎到基部葉枕；加支撐棒阻止這個彎折後，強遠端刺激也不引發閉合。局部機械通道阻斷減弱反應，支持基部把形變轉成訊號，而非每處觸點各自等同。",
+        "scope": "限小葉基部與校準觸碰試驗；葉面不同位置都可有機械通道，不能說只有基部有。通道分子身份未確定；槓桿與藥理結果不是識別全部訊號路徑。"
+      },
+      "b_snapshot": {
+        "question": "含羞草合起葉子，真的能讓啃葉子的昆蟲少待一會嗎？",
+        "answer_target": "不會動的葉片讓實驗昆蟲停留較久、吃掉更多。化學抑制與缺少葉枕的基因處理得到同向結果，且後者仍傳傷害電訊號；支持快速動作本身參與防禦，不只是傷害訊號出現就足夠。",
+        "scope": "限容器中的切葉與所測蝗蟲/毛蟲；量的是停留與葉重量損失，不是野外族群存活。器官缺失與藥理並非完美單因子，不能宣稱所有化學防禦均相同或昆蟲因恐懼逃跑。"
+      }
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "raw_count": 3871,
+    "not_added_count": 2038,
+    "screen": ".cache/wave47-life-old-plant-scan.json",
+    "screen_sha256": "fa41f4b6fd6abae5f96de2f78059ecd09fa74f210e3662515b30b0e350855087",
+    "method": "全raw與所有未收機械搜尋根/葉/花運動相關詞，再查Mimosa/Berberis/Loasaceae/Mimulus/含羞/柱頭閉合/根毛錨定；155筆粗篩後逐讀近對完整三欄，不宣稱3871筆全人工覆核。共同語意top5待非作者。",
+    "historical_reentry": "wave15含羞草NA只具膨壓概述，這次以支撐棒切斷與器官缺失防禦控制提出兩個限定問題；原NA保留不改。"
+  },
+  "source_identity": [
+    {
+      "id": "L47-S001",
+      "doi": "10.1093/jxb/erv560",
+      "url": "https://doi.org/10.1093/jxb/erv560",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4753853/fullTextXML",
+      "version": "2016正式論文；Europe PMC XML與Dundee典藏刊版PDF是同一研究",
+      "locator": "Results Experiments1a/1b/2a/2b；Discussion Root tip anchorage；Figs2–6",
+      "cache": {
+        "file": ".cache/wave47-life-roots.xml",
+        "sha256": "3121d29afe1a8ac69fac067344188a4676ed1b1122f25320529334731efe7359",
+        "text_file": ".cache/wave47-life-roots.txt",
+        "text_sha256": "cc5f4017cced742a8af88735381bf309e7125667ea8597ab7539007f3fab7ddf"
+      },
+      "exact_old_doi_or_retrieval_matches": []
+    },
+    {
+      "id": "L47-S002",
+      "doi": "10.1093/plphys/kiab333",
+      "url": "https://doi.org/10.1093/plphys/kiab333",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8566232/fullTextXML",
+      "version": "2021正式論文，DOI kiab333",
+      "locator": "Results The pulvinule is the primary site of mechanosensation；Stretch-activated channels；Materials and Methods Behavior experiment；Fig1B/D、Fig3",
+      "cache": {
+        "file": ".cache/wave47-life-touch.xml",
+        "sha256": "2e522f5768eb7e1ab6713e768762d099841e37b0a1f12d3c1b6e7afa82a4d476",
+        "text_file": ".cache/wave47-life-touch.txt",
+        "text_sha256": "accab9ee76da3d7b19b5822e7a4598a36fe51cbb6f9b3fa6d95ceeb76cbeb3a1"
+      },
+      "exact_old_doi_or_retrieval_matches": []
+    },
+    {
+      "id": "L47-S003",
+      "doi": "10.1038/s41467-022-34106-x",
+      "url": "https://doi.org/10.1038/s41467-022-34106-x",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9663552/fullTextXML",
+      "version": "2022-11-14正式論文",
+      "locator": "Results Rapid movements defend plants against insects；Methods Feeding assay；Fig3",
+      "cache": {
+        "file": ".cache/wave47-life-defense.xml",
+        "sha256": "cb0634be49ccca0db16ea9a77317902962ad2dd40fdc03b4af3d6ebb7c767dd0",
+        "text_file": ".cache/wave47-life-defense.txt",
+        "text_sha256": "fb2401f34494135329c46283941e65ae5f803e21e04fe24079ea074bd2ba56d7"
+      },
+      "exact_old_doi_or_retrieval_matches": []
+    },
+    {
+      "id": "L47-S004",
+      "doi": "10.7554/eLife.81449",
+      "url": "https://doi.org/10.7554/eLife.81449",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9555859/fullTextXML",
+      "version": "2022-10-11正式Research Article；XML附審稿材料不當另一研究",
+      "locator": "Results alcohol confound controls、visitor behavior、pollen export；Methods alcohol/filament controls；Figs3、6",
+      "cache": {
+        "file": ".cache/wave47-life-barberry.xml",
+        "sha256": "af0759b43812c3f924bd7f04690906e5d796f46b935b99a84f32ec448e55f188",
+        "text_file": ".cache/wave47-life-barberry.txt",
+        "text_sha256": "8bbf1ecc3385e41f07708dc7a7bb62d02da1daa9caaf97827ddd4274076b0775"
+      },
+      "exact_old_doi_or_retrieval_matches": []
+    },
+    {
+      "id": "L47-S005",
+      "doi": "10.2307/2656976",
+      "url": "https://bsapubs.onlinelibrary.wiley.com/doi/10.2307/2656976",
+      "retrieval_url": "https://bsapubs.onlinelibrary.wiley.com/doi/10.2307/2656976",
+      "version": "1999-08正式論文，86(8):1130–1135；刊方HTML正文",
+      "locator": "Factors determining stigma closure and reopening；Results L136–143；Discussion L150–155；Fig5圖說",
+      "cache": {
+        "file": ".cache/wave47-life-mimulus-web.txt",
+        "sha256": "0f777024b98bab4891d1c3d40add18bcebc1ccf0aa2f0271ac8ee35e273d5290",
+        "text_file": ".cache/wave47-life-mimulus-results-web.txt",
+        "text_sha256": "91f7055040b19240f8a8dc1a805c544ef191118b07ebc32cb52cfa7e39e9d13f"
+      },
+      "exact_old_doi_or_retrieval_matches": []
+    },
+    {
+      "id": "L47-S006",
+      "doi": "10.1371/journal.pone.0041121",
+      "url": "https://doi.org/10.1371/journal.pone.0041121",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3423403/fullTextXML",
+      "version": "2012-08-02正式原研究，7(8):e41121",
+      "locator": "Methods Thigmonastic stamen movement；Results Visitation rates；Table2、Fig6；Discussion",
+      "cache": {
+        "file": ".cache/wave47-life-loasa.xml",
+        "sha256": "d2a61e79afcaa50ca9a12bb682f6cd247f7ea1122d9ff5b6406a6d56ce2f16b2",
+        "text_file": ".cache/wave47-life-loasa.txt",
+        "text_sha256": "be4d32e00385ffeaf0bb430f4ce541d8363d4f089707ad3da850325b8a17e1e5"
+      },
+      "exact_old_doi_or_retrieval_matches": []
+    }
+  ],
+  "source_relationships": [
+    "六個DOI為六篇研究。根毛XML與Dundee刊版PDF、小檗XML與eLife刊版PDF均同文，不算獨立重現。",
+    "含羞草2021感測與2022防禦為不同問題/研究；不能把各種處理畫成同一株連續試驗。",
+    "Wiley工具返回文字是指定正文載體，不是原PDF；取用數不是獨立研究數，exact身份比對也不是全庫同文保證。"
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave47-life-roots-p6.png",
+      "sha256": "2abce53609e93898d7682cddb1037801033fd359124f73c1ed3fd20a00a9a788",
+      "read": "同文PDF p6，Fig3人工孔洞示意與Fig4三讀值已目讀。"
+    },
+    {
+      "file": ".cache/wave47-life-roots-p8.png",
+      "sha256": "6cc2ec9e42cdb420fcc97ac544e2deb9fc6989c0729574619abab849181a1eff",
+      "read": "同文PDF p8，Fig6兩株各三時刻已目讀，非同株去毛。"
+    },
+    {
+      "file": ".cache/wave47-life-barberry-p5.png",
+      "sha256": "3e769e1fc727ce759ef304383cc514fa3eada1123c1e555c63ecb20504eafe1c",
+      "read": "刊方PDF p5，Fig3氣味/花絲處理與停留對照已目讀。"
+    },
+    {
+      "file": ".cache/wave47-life-barberry-p9.png",
+      "sha256": "ef9b00def10488b42fbc1caed6f94a8b1ece3aa71d4936a8cf0c47af7987a308",
+      "read": "刊方PDF p9，Fig6接收花計數已目讀，圖僅部分接收花且不是訪花順序。"
+    }
+  ],
+  "source_failures": [
+    {
+      "source_id": "L47-S002/L47-S003",
+      "route": "PMC Web.open",
+      "result": "驗證頁；另指定UA Europe PMC全文XML成功，失敗不計正文。"
+    },
+    {
+      "direction": "Loasa預測訪客",
+      "route": "PMC6546139 Web與Europe PMC全文XML",
+      "result": "Web驗證頁、XML500，未收；只有初步檢索不能冒稱已讀。"
+    },
+    {
+      "direction": "2002猴面花蜂鳥姿態",
+      "route": "https://labs.biology.ucsd.edu/kohn/resources/Kohn-Lab-Papers/Fetscher-oecologia-copy.pdf",
+      "result": "指定UA HTTP404，未收，不用搜尋摘要替代。"
+    },
+    {
+      "source_id": "L47-S004",
+      "route": "Web /articles/81449/pdf",
+      "result": "Web端無法開啟；刊方/articles/81449.pdf指定UA有效PDF成功供圖讀。"
+    }
+  ],
+  "retrieval_ua": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "timing_checks": [
+    {
+      "id": "W47L-T01",
+      "body_seconds": 70,
+      "core_totals": {
+        "L47-001": 70
+      },
+      "core_caps": {
+        "L47-001": 90
+      },
+      "max_beat": 23,
+      "status": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W47L-T02",
+      "body_seconds": 38,
+      "core_totals": {
+        "L47-002": 38
+      },
+      "core_caps": {
+        "L47-002": 70
+      },
+      "max_beat": 20,
+      "status": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W47L-T06",
+      "body_seconds": 42,
+      "core_totals": {
+        "L47-003": 42
+      },
+      "core_caps": {
+        "L47-003": 75
+      },
+      "max_beat": 22,
+      "status": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W47L-T03",
+      "body_seconds": 66,
+      "core_totals": {
+        "L47-004": 66
+      },
+      "core_caps": {
+        "L47-004": 100
+      },
+      "max_beat": 23,
+      "status": "PAPER_BUDGET_ONLY"
+    },
+    {
+      "id": "W47L-T04",
+      "body_seconds": 47,
+      "core_totals": {
+        "L47-005": 47
+      },
+      "core_caps": {
+        "L47-005": 85
+      },
+      "max_beat": 20,
+      "status": "PAPER_BUDGET_ONLY"
+    }
+  ],
+  "timing_probe": {
+    "proposal_id": "W47L-T01",
+    "file": ".cache/w47-sample-life.json",
+    "sha256": "5957680adf5b5eae7b8e9b27272eb9a2af42678559008744b0e6136925440cbc",
+    "status": "ROOT_OFFLINE_FULL_READ",
+    "characters": 234,
+    "read_seconds": 58.739,
+    "body_seconds": 70,
+    "visual_seconds": 11.261,
+    "paragraph_chapter_mapping": [
+      {
+        "paragraphs": [
+          1
+        ],
+        "chapter": 1,
+        "seconds": 24
+      },
+      {
+        "paragraphs": [
+          2,
+          3
+        ],
+        "chapter": 2,
+        "seconds": 46
+      }
+    ],
+    "note": "根代理Hanhan rate0離線連讀，不是真人/觀眾試讀或成片。",
+    "reading_receipt": ".cache/wave47-life-read.json",
+    "reading_receipt_sha256": "9f01c459c0a4c1a2d97ee74c9429a5cb5fd3d69dc513394c4f7fabff0c558a6e"
+  },
+  "revision_history": [
+    {
+      "reason": "根作者要求L47-004提早推走改為提早離開，避免物理彈飛；S002方法標題核為Behavior experiment。問答核心未換，初版SHA保留。",
+      "before_batch_sha256": "90b1cb007a59762917cd6063ad4988d98aaf5601f68dc1c280846a0078ae1145",
+      "after_batch_sha256": "aeb7cc27338ed1b41e8c7cdcc0d13c23a842f63f3848bb7e0660de357f85f1dd",
+      "removed_seconds": 0
+    },
+    {
+      "reason": "root與非作者pool_physics要求：含羞草感測與防禦拆38/42秒獨立案；Berberis刪回扣10秒，柱頭改準確標題並刪重述19秒；Loasa撤62秒整案、保25–45秒segment，不改6題問答。",
+      "before_files": [
+        {
+          "file": "batches/wave47-life.json",
+          "sha256": "aeb7cc27338ed1b41e8c7cdcc0d13c23a842f63f3848bb7e0660de357f85f1dd"
+        },
+        {
+          "file": "reviews/wave47-life-themes.json",
+          "sha256": "4916c2078e54a92b057f5ee85ab77fabe02bb9747de4c286241cdcfa4e78c3b8"
+        },
+        {
+          "file": "reviews/wave47-life-author.json",
+          "sha256": "384f42ccc4576b0c74e5c4904504eebec1f2d193b5a4f581767e4b97d64b0401"
+        }
+      ],
+      "after_batch_sha256": "898207d9642b86483bfb70098742ba515606951e0b996140aaf8aa11f76b25bd",
+      "after_themes_sha256": "7c815e6527922fb6a836cf7df8994da0a7f94c6d33495045b81cf94eb9fdfd79",
+      "removed_seconds": 91,
+      "removed_repetition_seconds": 29,
+      "retired_proposal_seconds": 62,
+      "source_or_answer_changed": false
+    },
+    {
+      "reason": "非作者定點指出柱頭重開試驗組別：L117輕撒組用於延遲閉合，L118–119另組輕壓花粉片立即閉後追重開。T04 connection/第二章/撤案條件分開，NA011花柱改柱頭；問答、秒數及樣稿不變。",
+      "before_files": [
+        {
+          "file": "batches/wave47-life.json",
+          "sha256": "898207d9642b86483bfb70098742ba515606951e0b996140aaf8aa11f76b25bd"
+        },
+        {
+          "file": "reviews/wave47-life-themes.json",
+          "sha256": "7c815e6527922fb6a836cf7df8994da0a7f94c6d33495045b81cf94eb9fdfd79"
+        },
+        {
+          "file": "reviews/wave47-life-author.json",
+          "sha256": "cd3d7f1e34a7620699951d80a7b8f43d22e4181173e0350056f13191e981f78b"
+        }
+      ],
+      "after_batch_sha256": "4149f2678bbf0a333ca26d2478fdf7a26a5d6655f5a5a64907b487d61e0d4b81",
+      "after_themes_sha256": "8dbe0d849ffd4d2da52382ee16e7b60042588f46b4b3aa44fad6ab8764756487",
+      "removed_seconds": 0,
+      "source_readback": {
+        "file": ".cache/wave47-life-mimulus-web.txt",
+        "sha256": "0f777024b98bab4891d1c3d40add18bcebc1ccf0aa2f0271ac8ee35e273d5290",
+        "scope": "L115–121，核作者先前保留Web正文，不是新HTTP。"
+      }
+    }
+  ],
+  "limits": [
+    "作者題級準備，尚未非作者PASS，不是完整稿/製作核准。",
+    "S002/S003/S005/S006只讀圖說未目讀原圖；進實際畫面前需核原圖，現用明示的原創原理圖規劃。",
+    "植物感測/發育/基因與化學處理有各自限制，不以控制對照推成所有物種規則。",
+    "L47-006偏功能控制與計數視角，若非作者認為未提供足夠新因果，可退為材料，不為六題數硬留。"
+  ],
+  "reserve_candidate_ids": [
+    "L47-006"
+  ],
+  "retired_theme_proposals": [
+    {
+      "id": "W47L-T05",
+      "candidate_ids": [
+        "L47-006"
+      ],
+      "former_seconds": 62,
+      "reason": "控制結果可留素材段，但現稿主要從每次5分鐘改成每小時分母，尚不足獨立兩章的機制推進。",
+      "reentry_condition": "有新的可讀控制能解釋批次供應如何受限或重設，且不重複既有原答時再組片。"
+    }
+  ]
+}

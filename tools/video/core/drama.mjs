@@ -202,6 +202,14 @@ const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prom
 const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual", "source"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
+// A slides video's second host (docs/videos/DUBS.md §兩位主持人, the daily podcast's two voices):
+// `cohost` { id, name, voice } speaks the lines whose `speaker` is its id in a voice of its own,
+// in the narration and in every dub; `host` { name } is the narrator's display name, which the
+// captions' speaker prefix shows. Neither is a drama's: a drama's voices are its cast.
+export const COHOST_FORMAT = "slides";
+const COHOST_KEYS = new Set(["id", "name", "voice"]);
+const HOST_KEYS = new Set(["name"]);
+export const HOST_NAME_MAX = 16;
 // Sound effects (docs/videos/ILLUSTRATED.md §配樂與音效): a licensed set under <work base>/_sfx/<set>/,
 // placed by rules in assemble (a stamp on chapter cards, a whoosh into a dissolve, a pop on a
 // reveal) and by the script's own cue sheet (`cues`: a sound as a scene opens or on a frame);
@@ -234,6 +242,14 @@ export const isExplainer = (doc) => isDrama(doc) && doc.category !== "story" && 
 export const explainerSeries = (doc) => (isExplainer(doc) ? EXPLAINER_IDENTITY[doc.look.preset] : null);
 /** A drama drawn in one of the cute explainer looks (CUTE_EXPLAINER_PRESETS). */
 export const isCuteExplainer = (doc) => isDrama(doc) && CUTE_EXPLAINER_PRESETS.includes(doc?.look?.preset);
+/**
+ * The explainer looks that may carry a cast: So That's Why's dialogue format, a host and a kid who
+ * asks the viewer's questions (owner, 2026-11-03; docs/videos/so-thats-why/dialogue-pilot-20261103/).
+ * Every other explainer is told by the narrator alone.
+ */
+export const DIALOGUE_EXPLAINER_PRESETS = Object.freeze(["cute-cartoon"]);
+/** An explainer whose lines are spoken by its cast: still pictures and the floor, but a drama's intro at the start. */
+export const isDialogueExplainer = (doc) => isExplainer(doc) && DIALOGUE_EXPLAINER_PRESETS.includes(doc.look.preset) && Array.isArray(doc.characters) && doc.characters.length > 0;
 /**
  * Whether the eight-minute floor (MIN_EPISODE_MINUTES) holds: slides, screencasts and the
  * explainer, never a drama episode, a brand story or a compilation.
@@ -567,9 +583,42 @@ function validatePerformance(doc, errors) {
   }
 }
 
+/** Whether a video has a second host: a slides video with a `cohost` object. */
+export const hasCohost = (doc) => doc?.format === COHOST_FORMAT && isObject(doc?.cohost);
+
+/** `cohost` and `host`: a slides video's second host and the narrator's display name. */
+function validateHosts(doc, errors, validateVoice) {
+  for (const key of ["cohost", "host"]) {
+    if (doc[key] !== undefined && doc.format !== COHOST_FORMAT) errors.push({ path: key, message: `only a video with format "${COHOST_FORMAT}" has a ${key}; a drama's voices are its characters` });
+  }
+  if (doc.cohost !== undefined) {
+    const cohost = doc.cohost;
+    if (!isObject(cohost)) {
+      errors.push({ path: "cohost", message: "must be an object { id, name, voice }: the second host" });
+    } else {
+      unknownKeys(cohost, COHOST_KEYS, "cohost", errors);
+      if (typeof cohost.id !== "string" || !CHARACTER_ID.test(cohost.id) || cohost.id === NARRATOR) {
+        errors.push({ path: "cohost.id", message: `must be 2-24 lowercase letters, digits or hyphens, and not "${NARRATOR}": the speaker of the second host's lines` });
+      }
+      if (!isShortText(cohost.name, HOST_NAME_MAX)) errors.push({ path: "cohost.name", message: `must be the second host's name as the viewer reads it, at most ${HOST_NAME_MAX} characters` });
+      // The narration voice's own check; the performance plan stays the narrator's.
+      validateVoice(cohost.voice, errors, "cohost.voice", doc.narration_locale);
+    }
+  }
+  if (doc.host !== undefined) {
+    if (!isObject(doc.host)) {
+      errors.push({ path: "host", message: "must be an object { name }: the narrator's display name" });
+    } else {
+      unknownKeys(doc.host, HOST_KEYS, "host", errors);
+      if (!isShortText(doc.host.name, HOST_NAME_MAX)) errors.push({ path: "host.name", message: `must be the narrator's name as the viewer reads it, at most ${HOST_NAME_MAX} characters` });
+    }
+  }
+}
+
 export function validateDrama(doc, errors, validateVoice) {
   const drama = isDrama(doc);
   validatePerformance(doc, errors);
+  validateHosts(doc, errors, validateVoice);
   if (doc.pronunciation_hints !== undefined) {
     const hints = doc.pronunciation_hints;
     if (!drama || !isObject(hints) || Object.keys(hints).length > 300 || Object.entries(hints).some(([term, hint]) => !isShortText(term, 40) || !/[\u3400-\u9fff]/u.test(term) || (hint !== null && !isShortText(hint, 200)))) {
@@ -595,7 +644,7 @@ export function validateDrama(doc, errors, validateVoice) {
   if (!drama && doc.look !== undefined && !pictures) errors.push({ path: "look", message: `a slides video with no "${SHOT_TEMPLATE}" scenes has nothing to draw with a look` });
   const explainer = isExplainer(doc);
   const cards = explainer ? explainerCardTemplates(doc.look?.preset) : CARD_TEMPLATES;
-  if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${doc.look.preset}") has no characters: the narrator tells it` });
+  if (explainer && characterIds.size && !DIALOGUE_EXPLAINER_PRESETS.includes(doc.look.preset)) errors.push({ path: "characters", message: `an explainer (look preset "${doc.look.preset}") has no characters: the narrator tells it` });
   if (drama && doc.series !== undefined) {
     validateSeries(doc.series, errors, isLongAnime(doc));
     // An episode lists its cast by id, so lookHash changes only when the cast itself changes
@@ -650,8 +699,13 @@ export function validateDrama(doc, errors, validateVoice) {
           errors.push({ path: `${label}.emotion`, message: `must be a short direction for the voice, at most ${EMOTION_MAX} characters` });
         }
         if (!drama) {
-          for (const key of ["speaker", "audio_ref"]) {
-            if (line[key] !== undefined) errors.push({ path: `${label}.${key}`, message: `only a video with format "${DRAMA_FORMAT}" has line ${key}` });
+          // Slides with a second host say who speaks a line; repeated takes stay a drama's.
+          if (line.audio_ref !== undefined) errors.push({ path: `${label}.audio_ref`, message: `only a video with format "${DRAMA_FORMAT}" has line audio_ref` });
+          if (line.speaker === undefined) return;
+          if (!hasCohost(doc)) {
+            errors.push({ path: `${label}.speaker`, message: `only a video with format "${DRAMA_FORMAT}", or slides with a cohost, has line speaker` });
+          } else if (line.speaker !== NARRATOR && line.speaker !== doc.cohost.id) {
+            errors.push({ path: `${label}.speaker`, message: `must be "${NARRATOR}" or the cohost's id${typeof doc.cohost.id === "string" ? ` "${doc.cohost.id}"` : ""}` });
           }
           return;
         }
@@ -680,15 +734,44 @@ export function validateDrama(doc, errors, validateVoice) {
   }
 }
 
-/** The character a line's speaker names, or null for the narrator. */
+/**
+ * The character a line's speaker names, or null for the narrator. On slides with a second host
+ * that is the `cohost` ({ id, name, voice }): its lines take its voice and its name as a drama
+ * character's do.
+ */
 export function characterOf(doc, line) {
   const speaker = line?.speaker ?? NARRATOR;
   if (speaker === NARRATOR) return null;
+  if (!isDrama(doc)) return hasCohost(doc) && doc.cohost.id === speaker ? doc.cohost : null;
   return (doc.characters ?? []).find((character) => character.id === speaker) ?? null;
 }
 
 /**
- * The voice a line is synthesized with: the character's own, or the narrator's. The narration's
+ * The name a speaker prefix shows for a line: the character's or the cohost's, and on slides
+ * with a second host the narrator's `host.name`; null when there is no name to show.
+ */
+export function speakerDisplayName(doc, line) {
+  const character = characterOf(doc, line);
+  if (character) return character.name ?? null;
+  if (hasCohost(doc) && (line?.speaker ?? NARRATOR) === NARRATOR && isShortText(doc.host?.name, HOST_NAME_MAX)) return doc.host.name;
+  return null;
+}
+
+/**
+ * The closed captions' speaker names (docs/videos/DUBS.md §兩位主持人): for slides with a second
+ * host and `subtitles.speaker_prefix: true`, the name each line's first cue starts with, by line
+ * id (null for a line with no name); null for any other video, whose captions name nobody (a
+ * drama's names are on its burned-in strips alone, render/subtitles.mjs).
+ */
+export function captionSpeakers(doc) {
+  if (!hasCohost(doc) || !resolveSubtitles(doc).speaker_prefix) return null;
+  const names = {};
+  for (const { line } of lines(doc)) names[line.id] = speakerDisplayName(doc, line);
+  return names;
+}
+
+/**
+ * The voice a line is synthesized with: the character's (or a slides cohost's) own, or the narrator's. The narration's
  * performance plan (`voice.performance`, the narrator's lines only) and the line's own cue
  * (`emotion`, any format) ride in a Gemini voice's style prompt, the plan first, then the cue,
  * then the pronunciation readings; the plan is never a field of the voice sent out. Azure voices
@@ -976,6 +1059,24 @@ export function emotionProblems(doc) {
       warnings.push({ path: label, message: `emotion "${line.emotion}" is ignored: the ${voiceFor(doc, line).provider} voice has no style prompt` });
     }
   }
+  return warnings;
+}
+
+/**
+ * What would make a two-host slides video sound like one host, or keep it from its dubs: a
+ * cohost who never speaks, two hosts in the same voice, a cohost voice no dub can take (dubs
+ * speak every language in Gemini voices), or a speaker prefix that names only one of the two.
+ */
+export function cohostProblems(doc) {
+  if (!hasCohost(doc)) return [];
+  const warnings = [];
+  const { cohost } = doc;
+  if (![...lines(doc)].some(({ line }) => line.speaker === cohost.id)) warnings.push({ path: "cohost", message: `no line is spoken by "${cohost.id}": give the second host its lines with "speaker": "${cohost.id}", or remove cohost` });
+  if (isObject(cohost.voice) && isObject(doc.voice) && cohost.voice.provider === doc.voice.provider && cohost.voice.name === doc.voice.name) {
+    warnings.push({ path: "cohost.voice", message: `the cohost speaks in the narrator's own voice (${doc.voice.name}); choose another so the viewer hears two people` });
+  }
+  if (isObject(cohost.voice) && cohost.voice.provider !== "gemini") warnings.push({ path: "cohost.voice", message: `dubs need Gemini voices, which speak every language; the cohost's ${cohost.voice.provider} voice cannot be dubbed` });
+  if (resolveSubtitles(doc).speaker_prefix && !isShortText(doc.host?.name, HOST_NAME_MAX)) warnings.push({ path: "host", message: "subtitles.speaker_prefix names the cohost's lines only: add host { name } so the narrator's lines are named too" });
   return warnings;
 }
 

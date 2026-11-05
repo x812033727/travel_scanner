@@ -1,0 +1,698 @@
+{
+  "batch_id": "wave44-physics-20261103",
+  "created_on": "2026-11-03",
+  "scope": "用疊層滑動、局部翻點、摺線閉合、接合限制及前一輪留下的面區，從同樣看似折起來的動作中辨別不同結果。",
+  "sources": [
+    {
+      "id": "P44-S001",
+      "url": "https://doi.org/10.1103/PhysRevLett.126.218004",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.126.218004",
+      "doi": "10.1103/PhysRevLett.126.218004",
+      "retrieval_url": "https://arxiv.org/pdf/2012.01335",
+      "title": "What is the stiffness of a bent book?",
+      "publisher": "Poincloux、Chen、Audoly、Reis，Physical Review Letters（2021）",
+      "version": "arXiv:2012.01335v1實讀；與後刊同一項研究。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "作者稿pp1–4 Figs1–3；三點彎曲PET薄片疊層，單片與多片的按片數正規化力曲線、滑動摩擦模型。",
+      "locator": "作者稿pp1–4 Figs1–3；三點彎曲PET薄片疊層，單片與多片的按片數正規化力曲線、滑動摩擦模型。",
+      "summary": "逐層滑動及層間摩擦與厚疊的額外彎曲抗力、往返遲滯一致。",
+      "limitations": "不是直接拿裝訂書量力；載入與卸載圖及模型能量項分開，不由一種塑膠推全部紙書。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-book.pdf",
+        "sha256": "88840c0d79a4f45600161c97ae3553794029cfaa80c2ffe9fd2bb9fbee9944da",
+        "text_file": ".cache/wave44-physics-book.txt",
+        "text_sha256": "2b770e45759993514ddb164f0b8c73d0c307cf39a37ae8d095b5999d6e4ddc51"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-fig0.jpg",
+          "sha256": "f517fb499888de6229b17000b5612241ee8bde9e2bb4f0df97944ad2c077cd2c",
+          "read_scope": "book PDF p1實際開啟並目讀組別/幾何。"
+        }
+      ]
+    },
+    {
+      "id": "P44-S002",
+      "url": "https://doi.org/10.1103/PhysRevLett.112.244301",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.112.244301",
+      "doi": "10.1103/PhysRevLett.112.244301",
+      "retrieval_url": "https://arxiv.org/pdf/1404.1243",
+      "title": "Mechanical Response of a Creased Sheet",
+      "publisher": "Lechenault、Thiria、Adda-Bedia，Physical Review Letters（2014）",
+      "version": "arXiv:1404.1243v1作者稿。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "作者稿pp2–4 Figs1–3、5–6；聚酯薄片，摺線力學與手風琴狀短/長面片在載入下的形態。",
+      "locator": "作者稿pp2–4 Figs1–3、5–6；聚酯薄片，摺線力學與手風琴狀短/長面片在載入下的形態。",
+      "summary": "展開可由摺線轉動或板面本身彎曲分擔，面長相對於材料特徵長度決定哪個明顯。",
+      "limitations": "特徵長度依面板和摺線剛度，不能直接以同一公分數分所有紙。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-crease.pdf",
+        "sha256": "6e903bac20b05048e07033b55dd86d619cc7261f153dc42fb19bcb72ff95792a",
+        "text_file": ".cache/wave44-physics-crease.txt",
+        "text_sha256": "7d6c59f00c56cc1ae9d26266c80ae2c1286908bc5dfe59b9b1c0af838fa92f54"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-fig0.jpg",
+          "sha256": "f517fb499888de6229b17000b5612241ee8bde9e2bb4f0df97944ad2c077cd2c",
+          "read_scope": "crease PDF p4實際開啟並目讀組別/幾何。"
+        }
+      ]
+    },
+    {
+      "id": "P44-S003",
+      "url": "https://doi.org/10.1103/PhysRevLett.109.114301",
+      "canonical_url": "https://doi.org/10.1103/PhysRevLett.109.114301",
+      "doi": "10.1103/PhysRevLett.109.114301",
+      "retrieval_url": "https://arxiv.org/pdf/1206.0461",
+      "title": "Geometric Mechanics of Curved Crease Origami",
+      "publisher": "Dias、Dudte、Mahadevan、Santangelo，Physical Review Letters（2012）",
+      "version": "arXiv:1206.0461v2作者稿，含定性實物及數值模型。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "作者稿pp1–2 Fig1a–c、Eq.1與pp3–4模型範圍；整圈和徑向剪開的紙環。",
+      "locator": "作者稿pp1–2 Fig1a–c、Eq.1與pp3–4模型範圍；整圈和徑向剪開的紙環。",
+      "summary": "沿同心圓摺使摺線傾向更大曲率。開口環可重疊，閉環則向平面外翹起以協調閉合。",
+      "limitations": "留在平面上說的是剪開後的摺線軌跡，兩側仍有摺角；圖1為定性模型實物，不給通用鞍形振幅。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-ring.pdf",
+        "sha256": "7a8d6581322464a224744b3f154b1b913adafbe7bc800ece5e66737bccc7c319",
+        "text_file": ".cache/wave44-physics-ring.txt",
+        "text_sha256": "4a004b9f25a905278e2acf0a4ee678d873b76f1a6c55e85303e3efa2a726ffc2"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-fig0.jpg",
+          "sha256": "f517fb499888de6229b17000b5612241ee8bde9e2bb4f0df97944ad2c077cd2c",
+          "read_scope": "ring PDF p1實際開啟並目讀組別/幾何。"
+        }
+      ]
+    },
+    {
+      "id": "P44-S004",
+      "url": "https://doi.org/10.1126/science.1252876",
+      "canonical_url": "https://doi.org/10.1126/science.1252876",
+      "doi": "10.1126/science.1252876",
+      "retrieval_url": "https://cohengroup.ccmr.cornell.edu/userfiles/pubs/Silverberg_Science_2014.pdf",
+      "title": "Using origami design principles to fold reprogrammable mechanical metamaterials",
+      "publisher": "Silverberg等，Science（2014）",
+      "version": "康乃爾作者團隊庫藏的原刊PDF；本文後段為其他文章，不採。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "印刷647–649 Figs1–4，局部頂點按翻、周圍面片彎曲、不同排列下的壓縮模數與重設。",
+      "locator": "印刷647–649 Figs1–4，局部頂點按翻、周圍面片彎曲、不同排列下的壓縮模數與重設。",
+      "summary": "改幾個頂點的穩定狀態會抑制原摺線或改變鄰面彎曲，能在同一圖案上反覆設定不同抗壓反應。",
+      "limitations": "頂點相對位置及壓縮量也有影響，不作一點固定加多少剛度的通則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-defect.pdf",
+        "sha256": "d8b17074462f2375f6ac21f00dbb75386a413e6d9a59cdc9e9733fbef3ca43d9",
+        "text_file": ".cache/wave44-physics-defect.txt",
+        "text_sha256": "704f80ef98a477300eb30b9924d38e54950e9fb0315e5a696af02c484d155703"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-fig0.jpg",
+          "sha256": "f517fb499888de6229b17000b5612241ee8bde9e2bb4f0df97944ad2c077cd2c",
+          "read_scope": "defect PDF p3實際開啟並目讀組別/幾何。"
+        }
+      ]
+    },
+    {
+      "id": "P44-S005",
+      "url": "https://doi.org/10.1073/pnas.1509465112",
+      "canonical_url": "https://doi.org/10.1073/pnas.1509465112",
+      "doi": "10.1073/pnas.1509465112",
+      "retrieval_url": "https://origami.c.u-tokyo.ac.jp/~tachi/cg/PNAS-2015-FTP.pdf",
+      "title": "Origami tubes assembled into stiff, yet reconfigurable structures and metamaterials",
+      "publisher": "Filipov、Tachi、Paulino，PNAS（2015）",
+      "version": "東京大學共同作者頁收藏的期刊PDF，含同文SI。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "主文PDF pp1–4、6 Figs1–4與製作方法；錯位如拉鍊拼接的摺管、實體展開示意及計算的振型/懸臂變形。",
+      "locator": "主文PDF pp1–4、6 Figs1–4與製作方法；錯位如拉鍊拼接的摺管、實體展開示意及計算的振型/懸臂變形。",
+      "summary": "相配的展收路徑仍容許面片近剛性轉動，但管壁互相牽制，其他變形需牽動面內剪切或伸長。",
+      "limitations": "多模態剛度比和部分懸臂載荷比較來自計算，不能把所有比值寫成秤重實測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-zip.pdf",
+        "sha256": "2520cca9acb4be36d0d7c5ee654729f668201681b3b610b94b53e9e55d8b3b24",
+        "text_file": ".cache/wave44-physics-zip.txt",
+        "text_sha256": "677b797c22e4fbc2ba48afb4cdf7015222de416dce3d76e7d31f8768393c9f91"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-fig4.jpg",
+          "sha256": "59ee99a9bdf010173ac31e2e3d07e8aea1e4872ee17b840faa76eb853f37e117",
+          "read_scope": "zip PDF p4實際開啟並目讀組別/幾何。"
+        }
+      ]
+    },
+    {
+      "id": "P44-S006",
+      "url": "https://doi.org/10.1038/s41467-021-21625-2",
+      "canonical_url": "https://doi.org/10.1038/s41467-021-21625-2",
+      "doi": "10.1038/s41467-021-21625-2",
+      "retrieval_url": "https://www.nature.com/articles/s41467-021-21625-2.pdf",
+      "title": "A model for the fragmentation kinetics of crumpled thin sheets",
+      "publisher": "Andrejevic、Lee、Rubinstein、Rycroft，Nature Communications（2021）",
+      "version": "期刊正式版PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "pp2–4 Figs1–3、p7 Fig7；同張Mylar壓皺、展平、再壓，分割雷射輪廓圖追面塊與新摺痕。",
+      "locator": "pp2–4 Figs1–3、p7 Fig7；同張Mylar壓皺、展平、再壓，分割雷射輪廓圖追面塊與新摺痕。",
+      "summary": "較大平面區容易再被新痕分開；累積的小面塊使片材可利用更多既有線路變形，後續新增痕長趨緩。",
+      "limitations": "分割的是面區而非把薄膜撕碎；統計分裂/損傷回饋是模型，單一面塊下次怎麼分並不確定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-crumple.pdf",
+        "sha256": "95ec5cbf4fb2c77d4c7b4bdd606063631aaab2bf152f12f30c1bf68745b48d30",
+        "text_file": ".cache/wave44-physics-crumple.txt",
+        "text_sha256": "a2bff084d92e5ce7966bb4c5c9c66e3f9a5abf90a2452be836ae8c833e8e48b5"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-fig4.jpg",
+          "sha256": "59ee99a9bdf010173ac31e2e3d07e8aea1e4872ee17b840faa76eb853f37e117",
+          "read_scope": "crumple PDF p3實際開啟並目讀組別/幾何。"
+        }
+      ]
+    },
+    {
+      "id": "P44-S007",
+      "url": "https://doi.org/10.1073/pnas.1817763116",
+      "canonical_url": "https://doi.org/10.1073/pnas.1817763116",
+      "doi": "10.1073/pnas.1817763116",
+      "retrieval_url": "https://www.boleideng.com/publication/rafsanjiani-2019-propagation/rafsanjiani-2019-propagation.pdf",
+      "title": "Propagation of pop ups in kirigami shells",
+      "publisher": "Rafsanjani、Jin、Deng、Bertoldi，PNAS（2019）",
+      "version": "共同作者Deng公開原刊及同文補充PDF；不同於2018機械蛇論文。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "原刊PDF pp1–4 Figs1–3、6；同式三角切口，平片與捲筒實驗，局部應變、單元力學模型。",
+      "locator": "原刊PDF pp1–4 Figs1–3、6；同式三角切口，平片與捲筒實驗，局部應變、單元力學模型。",
+      "summary": "平片中切口一起抬起。彎成筒後，預彎的連接帶可跳入另一形態，於是局部先翻、鄰區逐次跟進。",
+      "limitations": "試樣的周向單元數不同；只有所測彎曲尺度有顯著行進前緣，不等於任何捲筒一定自頂端開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-skin.pdf",
+        "sha256": "fb8169322d940bfa1a4e818e3ec1d7a1bc90cb81fecc17f6b45b2fe44dea0276",
+        "text_file": ".cache/wave44-physics-skin.txt",
+        "text_sha256": "a720549508a19e64f872a7e61df1e54a255ac83e0d5cb15bad99a5711c2101ca"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-fig4.jpg",
+          "sha256": "59ee99a9bdf010173ac31e2e3d07e8aea1e4872ee17b840faa76eb853f37e117",
+          "read_scope": "skin PDF p2實際開啟並目讀組別/幾何。"
+        }
+      ]
+    },
+    {
+      "id": "P44-S008",
+      "url": "https://doi.org/10.1038/s41467-024-46667-0",
+      "canonical_url": "https://doi.org/10.1038/s41467-024-46667-0",
+      "doi": "10.1038/s41467-024-46667-0",
+      "retrieval_url": "https://www.nature.com/articles/s41467-024-46667-0.pdf",
+      "title": "Large-scale modular and uniformly thick origami-inspired adaptable and load-carrying structures",
+      "publisher": "Zhu、Filipov，Nature Communications（2024）",
+      "version": "原刊PDF。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "正文pp4–7 Figs4–7，Navigating multi-path folding段；滑鎖、提點、模擬與實物對照。",
+      "locator": "正文pp4–7 Figs4–7，Navigating multi-path folding段；滑鎖、提點、模擬與實物對照。",
+      "summary": "封住選定可動鉸鏈就能排除一條摺動路徑；相同段件改提點或鎖定狀態，可以導往不同終形。",
+      "limitations": "Fig6C–E軌跡/能量與模型需另標；實體另見Fig6F及正文描述。不由照片計安全載重。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-thick.pdf",
+        "sha256": "43067c2537abcd9e1e32dabc49cfeadf0726c71cc4da895ed0ead18a591db01e",
+        "text_file": ".cache/wave44-physics-thick.txt",
+        "text_sha256": "e364c69e7c78b43c8151daad96362f40a86b5897641328b7b5ef210fb7cec8b5"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-fig4.jpg",
+          "sha256": "59ee99a9bdf010173ac31e2e3d07e8aea1e4872ee17b840faa76eb853f37e117",
+          "read_scope": "thick PDF p6實際開啟並目讀組別/幾何。"
+        }
+      ]
+    },
+    {
+      "id": "P44-S009",
+      "url": "https://doi.org/10.1073/pnas.1904544116",
+      "canonical_url": "https://doi.org/10.1073/pnas.1904544116",
+      "doi": "10.1073/pnas.1904544116",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6708383/",
+      "title": "Programming curvilinear paths of flat inflatables",
+      "publisher": "Siéfert、Reyssat、Bico、Roman，PNAS（2019）",
+      "version": "PMC收藏原刊HTML。本文對自由端截面採近似，未用後來2020延伸文作第二實證。",
+      "accessed_on": "2026-11-03",
+      "read_via": "指定UA取得原刊/作者稿全文；定點讀正文、圖說與以下圖頁。",
+      "reading_scope": "Coiling of Open Rings正文及Fig4a–d；指定段抽文P035–042；剪開、封住兩端再充氣的近乎不伸長薄膜環。",
+      "locator": "Coiling of Open Rings正文及Fig4a–d；指定段抽文P035–042；剪開、封住兩端再充氣的近乎不伸長薄膜環。",
+      "summary": "壓力偏向較大容積，但周向材料不容易伸長。開口環可藉增加平面內彎曲調整截面周長配合，端部隨之交疊。",
+      "limitations": "取開口環量測/近似模型，不把窄環的極限角當普適值，也不混閉環時的板間約束。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave44-physics-balloon.html",
+        "sha256": "d2d81c3c3f686501e492c66e71dede124af391572ea863a429d94a4ffe7e61a8",
+        "text_file": ".cache/wave44-physics-balloon-html.txt",
+        "text_sha256": "4e5d6884a2b4726ba1ce4856a1795dba30bf6394ce3a5c2cce9f8e2aadc40e9b"
+      },
+      "viewed_images": [
+        {
+          "file": ".cache/wave44-physics-balloon-fig4.jpg",
+          "sha256": "d6a1a37bfe94bfb49bdcc3a8dc7b8dc01b7d23bcbe5af987891deac63287b2db",
+          "read_scope": "實際開啟PMC原刊Fig4，A照片的端部重疊、C兩種薄膜實驗點與模型線。"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P44-001",
+      "question": "像書頁那樣把薄片疊起來壓彎，總力除以片數，為什麼平均值還比單片大？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.stack_bending_sliding_interfaces_dissipate",
+      "answer_target": "彎曲時相鄰薄片需要相對滑動，接觸面的摩擦會抵抗這個動作。研究把整疊的力除以片數來比，算出的平均每片峰值仍比單片大；壓下和退回的兩條曲線圍出面積，顯出一個循環中耗散的能量。",
+      "scope": "限兩滾輪上未黏結的PET疊片、中央壓頭與受測厚度，不說裝訂或膠合書必有相同力曲線。 這是總力按片數正規化，未逐片直接量其負荷。",
+      "source_ids": [
+        "P44-S001"
+      ],
+      "source_locator": "作者稿pp1–4 Figs1–3；三點彎曲PET薄片疊層，單片與多片的按片數正規化力曲線、滑動摩擦模型。",
+      "premise_status": "screened",
+      "notes": "不是直接拿裝訂書量力；載入與卸載圖及模型能量項分開，不由一種塑膠推全部紙書。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "原本以為除以片數就應疊成同一條線，曲線卻沒有合起來。",
+        "visual": "依Fig1b畫1、25、70片力除以片數的載入/卸載路徑，並標每組自己的峰值；旁邊畫層間相對滑動。",
+        "seconds": [
+          24,
+          78
+        ]
+      }
+    },
+    {
+      "id": "P44-002",
+      "question": "兩條同材質的手風琴摺帶都拉長，為什麼一條打開摺角，另一條卻先把紙面拉彎？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.accordion_panel_length_vs_crease_stiffness",
+      "answer_target": "要把摺帶拉長，可以轉開摺線，也可以彎曲摺線之間的板面。同材質同厚度下，短板不易靠彎曲取得位移，伸長多來自摺角打開；板面夠長，面片彎曲就能分去更多伸長量。",
+      "scope": "比較Mylar上不同面長的交替摺線；分界依摺線抗轉和面板抗彎而定，不是固定紙寬。",
+      "source_ids": [
+        "P44-S002"
+      ],
+      "source_locator": "作者稿pp2–4 Figs1–3、5–6；聚酯薄片，摺線力學與手風琴狀短/長面片在載入下的形態。",
+      "premise_status": "screened",
+      "notes": "特徵長度依面板和摺線剛度，不能直接以同一公分數分所有紙。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不要只盯摺線，還要看兩條線中間原本筆直的邊。",
+        "visual": "疊出Fig6短面板與長面板的靜置/受載側邊，以不同記號標直邊曲率與摺角。",
+        "seconds": [
+          21,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P44-003",
+      "question": "沿圓線折一個紙環，整圈會翹成馬鞍；只剪開一道口，為什麼摺線反而能留在平面？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.circular_crease_closure_forces_buckling",
+      "answer_target": "近乎不伸長的圓環沿同心摺線摺起，摺線傾向比原來的圓彎得更急。閉環沒地方讓多出的轉角交錯，只好離開平面協調閉合；徑向剪開後兩端能在平面內錯過、重疊，便不再需要同樣的馬鞍形。",
+      "scope": "觀察的是中央摺線而非兩側面片完全攤平；照片定性、相容條件和彎曲代價為模型。",
+      "source_ids": [
+        "P44-S003"
+      ],
+      "source_locator": "作者稿pp1–2 Fig1a–c、Eq.1與pp3–4模型範圍；整圈和徑向剪開的紙環。",
+      "premise_status": "screened",
+      "notes": "留在平面上說的是剪開後的摺線軌跡，兩側仍有摺角；圖1為定性模型實物，不給通用鞍形振幅。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一條圓摺線有沒有接成圈，幾乎決定觀眾應從正面還是側面看它。",
+        "visual": "用Fig1a/b並列完整與切開紙環，標兩端疊過與中心摺線的高度；示意角度與實物畫面分開。",
+        "seconds": [
+          23,
+          69
+        ]
+      }
+    },
+    {
+      "id": "P44-004",
+      "question": "同一張折好的地圖，沒有多壓新折痕，只把幾個尖點按翻，怎麼就更難壓扁？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.miura_pop_through_reversible_local_stiffness_programming",
+      "answer_target": "在這種規則摺紋中，按翻頂點能轉入另一個穩定狀態，局部一條摺線被抑制，鄰近面片須參與彎曲。改變按翻頂點的數量與排列，再沿指定方向壓縮，同一張樣本可反覆切換不同剛度。",
+      "scope": "研究使用三浦圖案的紙/聚酯模型；並非每張印刷地圖都有它的頂點，成對位置不同也可能有不同結果。",
+      "source_ids": [
+        "P44-S004"
+      ],
+      "source_locator": "印刷647–649 Figs1–4，局部頂點按翻、周圍面片彎曲、不同排列下的壓縮模數與重設。",
+      "premise_status": "screened",
+      "notes": "頂點相對位置及壓縮量也有影響，不作一點固定加多少剛度的通則。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "按下的不是開關，改變的卻是下一次整片怎麼承力。",
+        "visual": "依Fig2標高低穩態、Fig4E重設頂點組態後再量模數；有相鄰缺陷時不把強度加總。",
+        "seconds": [
+          21,
+          68
+        ]
+      }
+    },
+    {
+      "id": "P44-005",
+      "question": "兩根折紙管扣在一起，為什麼沿長度還能伸縮，往旁邊壓卻硬了？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.zipper_coupled_origami_selects_compatible_motion",
+      "answer_target": "兩管錯位接合後，交會面仍能按共同摺法一同展開；單管原有的擠扁、側彎或扭曲卻不再彼此相容，往往得讓面片承受面內伸長或剪切。難走的變形路徑變硬，共同展收的路徑卻保住。",
+      "scope": "錯位貼合和規則三浦管，非拉鍊齒真正滑動；實物能展收，剛度對照及懸臂變形多使用模型。",
+      "source_ids": [
+        "P44-S005"
+      ],
+      "source_locator": "主文PDF pp1–4、6 Figs1–4與製作方法；錯位如拉鍊拼接的摺管、實體展開示意及計算的振型/懸臂變形。",
+      "premise_status": "screened",
+      "notes": "多模態剛度比和部分懸臂載荷比較來自計算，不能把所有比值寫成秤重實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "「還能折」不代表要朝哪裡折都一樣容易。",
+        "visual": "先看片管可收起/展開，再在同模型與伸展量下比較拉鍊式與對齊管的擠扁及懸臂變形；圖註數值分析。",
+        "seconds": [
+          22,
+          69
+        ]
+      }
+    },
+    {
+      "id": "P44-006",
+      "question": "每次都把同一張片材揉到一樣緊，為什麼新添的折痕越來越少？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.repeated_compaction_fragmentation_of_uncreased_facets",
+      "answer_target": "每輪展平掃描後，可看出原本大的平面區更容易再被折痕分開。反覆壓皺留下越來越多小面區，後續更能利用已形成的折線順應壓縮；模型據此解釋每輪增加的總痕長逐漸變少。",
+      "scope": "受測條件是同片Mylar在固定壓縮比下重複壓皺，統計面區被分割而非撕開。不能指定下道折痕一定落在哪裡。",
+      "source_ids": [
+        "P44-S006"
+      ],
+      "source_locator": "pp2–4 Figs1–3、p7 Fig7；同張Mylar壓皺、展平、再壓，分割雷射輪廓圖追面塊與新摺痕。",
+      "premise_status": "screened",
+      "notes": "分割的是面區而非把薄膜撕碎；統計分裂/損傷回饋是模型，單一面塊下次怎麼分並不確定。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不是片材不再受損，而是先前的損傷改變下一回還能添多少新痕。",
+        "visual": "追同樣本Fig2前後幾輪的相同面區，以描線分原痕、新痕，再看較大面區的分裂統計。",
+        "seconds": [
+          23,
+          66
+        ]
+      }
+    },
+    {
+      "id": "P44-007",
+      "question": "同樣花紋的剪紙，平著拉會一起翹，捲成筒再拉怎麼就像一排排翻鱗片？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.kirigami_shell_curvature_allows_pop_front",
+      "answer_target": "平片受拉時，許多切口可同時向外抬起。捲筒後，連接切口的細條先有彎曲，可在局部跳到另一種受拉形態；彈起區能和未彈區共存，繼續拉時分界便沿筒身推進。",
+      "scope": "指定三角切紋與筒曲率。局部力學以有限元素和解析模型解釋，並非圓筒的每個切口必依固定順序彈出。",
+      "source_ids": [
+        "P44-S007"
+      ],
+      "source_locator": "原刊PDF pp1–4 Figs1–3、6；同式三角切口，平片與捲筒實驗，局部應變、單元力學模型。",
+      "premise_status": "screened",
+      "notes": "試樣的周向單元數不同；只有所測彎曲尺度有顯著行進前緣，不等於任何捲筒一定自頂端開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "慢放同一種動作，片狀與筒狀的先後順序完全不同。",
+        "visual": "Fig1C/D是兩種試件的分段照片，對齊伸長程度；Fig2的局部應變指出是同步還是傳播。",
+        "seconds": [
+          22,
+          67
+        ]
+      }
+    },
+    {
+      "id": "P44-008",
+      "question": "從同一塊攤平的厚板模組往上提，怎麼能變成兩種不同的立體形狀？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.selective_hinge_lock_and_lift_switch_thick_panel_fold_path",
+      "answer_target": "先把選定滑鎖扣上，可禁止三道縱向鉸鏈轉動。此時從兩側中央節點提起、或改提相對角落，模組可沿不同分支變成折拱或歪斜的C形；未鎖時同樣從側邊中央提起則傾向一般C形。",
+      "scope": "Fig6的主要對照是結構分析的受約束摺動路徑，作者另有原型示範；不是所有厚板有相同分支，本題不作建築設計指引。",
+      "source_ids": [
+        "P44-S008"
+      ],
+      "source_locator": "正文pp4–7 Figs4–7，Navigating multi-path folding段；滑鎖、提點、模擬與實物對照。",
+      "premise_status": "screened",
+      "notes": "Fig6C–E軌跡/能量與模型需另標；實體另見Fig6F及正文描述。不由照片計安全載重。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "形狀不是上提了多少單獨決定；先鎖哪裡，再提哪裡，可以讓另一條路出現。",
+        "visual": "疊Fig6C–E的鎖點/提點及所得形狀，標成模型結果；可用Fig6F原型說明硬體，勿冒充同角度量測。",
+        "seconds": [
+          17,
+          58
+        ]
+      }
+    },
+    {
+      "id": "P44-009",
+      "question": "原本繞成一圈、兩端各自封好的扁氣管，為什麼充氣後反而多繞了一截？",
+      "domain": "摺紋、疊片與可展開結構",
+      "mechanism_key": "fold.flat_inextensible_inflatable_arc_overcurves",
+      "answer_target": "扁管充氣時截面鼓起，薄膜很難被拉長，受擠壓的部分卻能起皺。在幾何限制下，兩端自由的環帶若在平面內再捲緊，可容納較大的氣體體積；於是原先相接的兩端會交疊。",
+      "scope": "測量切開並分別密封的薄膜環，非均質橡膠圓環膨脹；容積最適為模型，沒有把極限重疊角當所有尺寸實測值。",
+      "source_ids": [
+        "P44-S009"
+      ],
+      "source_locator": "Coiling of Open Rings正文及Fig4a–d；指定段抽文P035–042；剪開、封住兩端再充氣的近乎不伸長薄膜環。",
+      "premise_status": "screened",
+      "notes": "取開口環量測/近似模型，不把窄環的極限角當普適值，也不混閉環時的板間約束。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "雖然鼓起，從上往下看，中心彎反倒更急。",
+        "visual": "對齊Fig4A充氣前後、標自由端與超過一圈的角度，再區分照片與Fig4C模型線/量測點。",
+        "seconds": [
+          21,
+          64
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P44-NA001",
+      "question": "普通地圖投影能保下面積、形狀和距離嗎？",
+      "existing_ids": [
+        "M2073"
+      ],
+      "source_ids": [],
+      "reason": "這是製圖投影的舊核；不與實物摺地圖混在一起。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA002",
+      "question": "三浦摺越拉越寬，再拍一種花色就不同嗎？",
+      "existing_ids": [
+        "K11007"
+      ],
+      "source_ids": [],
+      "reason": "規則圖案剛性面板轉動已有，拒換物件。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA003",
+      "question": "馬鞍形三浦紙板只有原本的剛性摺線就夠嗎？",
+      "existing_ids": [
+        "K11008"
+      ],
+      "source_ids": [],
+      "reason": "舊核已談額外面片彎曲；不重複算。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA004",
+      "question": "每種切口在拉伸時橫向縮或膨都算一核？",
+      "existing_ids": [
+        "K11009"
+      ],
+      "source_ids": [],
+      "reason": "劃開方格的屈曲、橫向變形及多種寬厚比已有；本波問平片/筒身彈起的空間順序。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA005",
+      "question": "紙盒壓一道線為什麼好彎？",
+      "existing_ids": [
+        "Q9001"
+      ],
+      "source_ids": [],
+      "reason": "層間脫開後各自彎曲已有，不重收。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA006",
+      "question": "揉皺片記得先前最大力的結果能再收嗎？",
+      "existing_ids": [
+        "K11013"
+      ],
+      "source_ids": [],
+      "reason": "原題已問循環測力跳變和最大壓縮前史；此次只讀新痕的面區演化。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA007",
+      "question": "一張圓紙往圓環中間壓為什麼起一塊尖？",
+      "existing_ids": [
+        "K11012"
+      ],
+      "source_ids": [],
+      "reason": "不是閉合曲摺線，壓入未預摺薄片的d-cone舊核已有。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA008",
+      "question": "剪開的紙環整片都平貼了？",
+      "existing_ids": [
+        "P44-003"
+      ],
+      "source_ids": [
+        "P44-S003"
+      ],
+      "reason": "摺線可回到平面，面片仍有摺角。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA009",
+      "question": "整疊紙彎起來應該直接以膠合木板公式算？",
+      "existing_ids": [
+        "P44-001"
+      ],
+      "source_ids": [
+        "P44-S001"
+      ],
+      "reason": "可滑接觸不是黏死；膠合樣本沒有在本輪測力比較。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA010",
+      "question": "把試驗的特徵長度套到任何一張手工紙？",
+      "existing_ids": [
+        "P44-002"
+      ],
+      "source_ids": [
+        "P44-S002"
+      ],
+      "reason": "摺線及板面剛度改變，材料尺度不同。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA011",
+      "question": "按翻每個頂點都能增加同一固定剛度嗎？",
+      "existing_ids": [
+        "P44-004"
+      ],
+      "source_ids": [
+        "P44-S004"
+      ],
+      "reason": "缺陷彼此相鄰的配置會互動，低密度的近似不可任意外推。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA012",
+      "question": "一條管接兩條管，究竟哪一種印刷顏色最強？",
+      "existing_ids": [
+        "P44-005"
+      ],
+      "source_ids": [
+        "P44-S005"
+      ],
+      "reason": "實驗未操縱印刷色；只採接合朝向與變形路徑。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA013",
+      "question": "捏出一條新痕，就已把薄膜撕成兩塊？",
+      "existing_ids": [
+        "P44-006"
+      ],
+      "source_ids": [
+        "P44-S006"
+      ],
+      "reason": "分裂的是痕跡圍成的平面區，不是膜破裂。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA014",
+      "question": "剪紙筒的每一個鱗片都能當成新的爬行機制？",
+      "existing_ids": [
+        "P44-007"
+      ],
+      "source_ids": [
+        "P44-S007"
+      ],
+      "reason": "爬行應用與切口形態本身要分開；2018另一研來源未取得指定全文，這次只收2019展起順序控制。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA015",
+      "question": "看到厚板橋模型能走就能算安全載重？",
+      "existing_ids": [
+        "P44-008"
+      ],
+      "source_ids": [
+        "P44-S008"
+      ],
+      "reason": "與不同提點和鎖定的路徑對照無關，不把小比例展示變工程建議。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA016",
+      "question": "普通橡皮氣球充氣也一定越捲越緊？",
+      "existing_ids": [
+        "P44-009"
+      ],
+      "source_ids": [
+        "P44-S009"
+      ],
+      "reason": "受測是幾乎不可伸長的平面薄膜封套。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA017",
+      "question": "平板彎一下就能比所有建築板更抗重？",
+      "existing_ids": [
+        "K11001"
+      ],
+      "source_ids": [],
+      "reason": "橫向加曲率的端部支撐與重量限制已有。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA018",
+      "question": "摺線拉住不動，量到力慢慢掉就代表新結構機制？",
+      "existing_ids": [
+        "H3090"
+      ],
+      "source_ids": [],
+      "reason": "單憑一條應力鬆弛曲線無法排除舊聚合物鬆弛，只作素材入口。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    },
+    {
+      "id": "P44-NA019",
+      "question": "硬折頁只需換較厚材料就能照原紙樣疊到全平？",
+      "existing_ids": [
+        "P44-008"
+      ],
+      "source_ids": [
+        "P44-S008"
+      ],
+      "reason": "厚度/鉸鏈幾何的問題有原文，但本題以主動選路為核心，不把每個接點構造拆成問答。",
+      "reentry_condition": "有能夠分開舊解釋的新量測或操弄才再審。"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "status": "PASS",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "baseline": {
+    "head": "c7bf184ed",
+    "selected": 2921,
+    "raw": 3287,
+    "pool_sha256": "46736647ed691eecba8ad9c67c7b00c846e9511ce81b31d64fd08bafc7c31ee3"
+  },
+  "reviewed_files": [
+    {
+      "file": ".cache/wave15-old-pair-discovery.json",
+      "sha256": "d5f932332d12e96dc45f733a6a9639cfc47ddc93269c1f8b6049cc53e0889a7f"
+    }
+  ],
+  "reviewed_candidate_ids": [
+    "D2041",
+    "D2043",
+    "E2024",
+    "E2026",
+    "E2043",
+    "E2070",
+    "E7007",
+    "E7008",
+    "J6014",
+    "K6024",
+    "N277",
+    "X5004"
+  ],
+  "independence": "未先讀root本輪配對結論；是另一位當期比較者。pool_physics曾為E2、J6014、X5004原作者，因此不冒稱這些舊題的非作者查核。",
+  "sampling": "6組凍結語意高分定向樣本，加1組來源讀回人工延伸；非隨機、非去重召回率評估。",
+  "pair_reviews": [
+    {
+      "a": "E2024",
+      "b": "E2043",
+      "decision": "distinct",
+      "reason": "電池題只區分每庫侖能量與總可搬運電荷；並聯電容題另需共兩節點的等壓約束、各支路Q_i=C_iV與電荷加總。電容的支路分配與接法不是換成另一種電池例子。",
+      "sample": "frozen_top10_targeted_six"
+    },
+    {
+      "a": "D2041",
+      "b": "D2043",
+      "decision": "distinct",
+      "reason": "熟成在凍結前改脂肪結晶、水合與後續打發；硬化在出機後再凍更多水。不同物相/成分與工序條件，不以都放冷處就合併。",
+      "sample": "frozen_top10_targeted_six"
+    },
+    {
+      "a": "E2026",
+      "b": "E2070",
+      "decision": "distinct",
+      "reason": "E2026控制總搬運電荷談總能量；E2070固定每秒電荷通量談能量轉移率，單看電流無法指定功率。保留「庫存/總量」與「每秒流量」辨識，但E2070宜作短段，不能只換公式字母湊獨立長片。",
+      "sample": "frozen_top10_targeted_six"
+    },
+    {
+      "a": "J6014",
+      "b": "X5004",
+      "decision": "distinct",
+      "reason": "軸承共球心幾何允許整組傾斜以免額外強迫變形；針織布是接觸約束下既存線圈彎曲力矩使無外載邊緣捲起，起始負載與幾何自由度不同。",
+      "sample": "frozen_top10_targeted_six"
+    },
+    {
+      "a": "K6024",
+      "b": "N277",
+      "decision": "distinct",
+      "reason": "凍毛毛雨是在無融雪暖層條件下液滴碰併成長；雨幡是已形成降水落下時蒸發/昇華而未到地面，質量流向與發生階段相反。",
+      "sample": "frozen_top10_targeted_six"
+    },
+    {
+      "a": "E7007",
+      "b": "E7008",
+      "decision": "distinct",
+      "reason": "曲流側移由外岸侵蝕/內岸加積逐步搬邊界；改道是河床堆高後逸出並採較低/較優坡降路徑，需相對氾濫平原高度與路徑條件，不只是側移更快。",
+      "sample": "frozen_top10_targeted_six"
+    }
+  ],
+  "manual_extension": {
+    "a": "E2024",
+    "b": "E2026",
+    "decision": "merge",
+    "sample": "manual_source_followup_not_in_original_six",
+    "duplicate_id": "E2026",
+    "canonical_id": "E2024",
+    "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。"
+  },
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "E2026",
+        "canonical_id": "E2024",
+        "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "E2024",
+        "b": "E2043",
+        "reason": "電池題只區分每庫侖能量與總可搬運電荷；並聯電容題另需共兩節點的等壓約束、各支路Q_i=C_iV與電荷加總。電容的支路分配與接法不是換成另一種電池例子。"
+      },
+      {
+        "a": "D2041",
+        "b": "D2043",
+        "reason": "熟成在凍結前改脂肪結晶、水合與後續打發；硬化在出機後再凍更多水。不同物相/成分與工序條件，不以都放冷處就合併。"
+      },
+      {
+        "a": "E2026",
+        "b": "E2070",
+        "reason": "E2026控制總搬運電荷談總能量；E2070固定每秒電荷通量談能量轉移率，單看電流無法指定功率。保留「庫存/總量」與「每秒流量」辨識，但E2070宜作短段，不能只換公式字母湊獨立長片。"
+      },
+      {
+        "a": "J6014",
+        "b": "X5004",
+        "reason": "軸承共球心幾何允許整組傾斜以免額外強迫變形；針織布是接觸約束下既存線圈彎曲力矩使無外載邊緣捲起，起始負載與幾何自由度不同。"
+      },
+      {
+        "a": "K6024",
+        "b": "N277",
+        "reason": "凍毛毛雨是在無融雪暖層條件下液滴碰併成長；雨幡是已形成降水落下時蒸發/昇華而未到地面，質量流向與發生階段相反。"
+      },
+      {
+        "a": "E7007",
+        "b": "E7008",
+        "reason": "曲流側移由外岸侵蝕/內岸加積逐步搬邊界；改道是河床堆高後逸出並採較低/較優坡降路徑，需相對氾濫平原高度與路徑條件，不只是側移更快。"
+      },
+      {
+        "a": "E2024",
+        "b": "E2070",
+        "reason": "總可用電荷/能量是庫存條件，電流/功率是每秒流量條件；兩題可同片相接，電池能用多久仍需負載/衰退另核，不將任何電池大小當功率大小。"
+      }
+    ]
+  },
+  "source_readings": [
+    {
+      "source_id": "SRC-01d1cf3e683cd763",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/7-2-electric-potential-and-potential-difference",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.run.open 當日正文回傳，人工閱讀指定段；未另做UA副本",
+      "reading_scope": "7.2 Electric Potential／Electric Potential Difference／Potential Difference and Electrical Potential Energy，web主文L32–60與電池解說L65–78；未採教材例題文句。",
+      "limits": "只核本次近題差異，非全章、產品使用時間或全影片事實核准。"
+    },
+    {
+      "source_id": "SRC-b34d92f523d12aa5",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.run.open 當日正文回傳，人工閱讀指定段；未另做UA副本",
+      "reading_scope": "9.5 Power in Electric Circuits，web主文L30–57：能量轉移率、Q/Δt與P=IV。",
+      "limits": "只核本次近題差異，非全章、產品使用時間或全影片事實核准。"
+    },
+    {
+      "source_id": "SRC-c6fe498ac79e161f",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-2-capacitors-in-series-and-in-parallel",
+      "accessed_on": "2026-11-02",
+      "read_via": "web.run.open 當日正文回傳，人工閱讀指定段；未另做UA副本",
+      "reading_scope": "8.2 The Parallel Combination of Capacitors，web主文L74–95：共同電壓、分支電荷與等效電容量。",
+      "limits": "只核本次近題差異，非全章、產品使用時間或全影片事實核准。"
+    }
+  ],
+  "reading_limits": "完整讀6對12筆問答/範圍/既有來源定位，加E2024/E2026比較。只重開3個OpenStax指定正文；另外4組非電學配對未重開外站，結論僅基於既有題級內容與控制條件的編輯去重。沒有全庫/逐句查核或新的片長核准。",
+  "central_changes": false
+}

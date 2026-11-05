@@ -4,7 +4,7 @@ import test from "node:test";
 
 import { estimateTimeline } from "../core/timeline.mjs";
 import { ICON_NAMES, icon } from "./icons.mjs";
-import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, KEY_BAND_CSS, KEY_MAX_CHARS, keyProblems, MARK_OVERLAID, PAPER_CSS, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneKey, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, stateCount, svgProblems, TEMPLATE_SPECS, THEMES, themeCss, THUMB_BOLD_LAYOUT, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, FIT_VERSION, fitStale, headlineCount, inlineSvg, isStockPath, KEY_BAND_CSS, KEY_MAX_CHARS, keyProblems, MARK_OVERLAID, PAPER_CSS, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneKey, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, stateCount, svgProblems, TEMPLATE_SPECS, THEMES, themeCss, THUMB_BOLD_LAYOUT, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -298,7 +298,7 @@ test("the channel's layout and tone rotate by slug, a variant one step on, and d
   assert.notEqual(thumbnailRotation("facebook-code-scam", 2).layout, next.layout);
   assert.match(thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "c", tone: "plum" } }, { slug: "facebook-code-scam" }), /<div class="thumb-subject layout-c tone-plum"><\/div><div class="thumb column layout-c tone-plum">/);
   assert.match(thumbnailHtml(thumb), /layout-[abc] tone-(teal|plum|navy|forest)/, "no slug: still a layout and a tone");
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c, d", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c, d, ai", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "b", tone: "navy", capture: "find-guides#2", shot: "hall" } }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", capture: "Find Guides", shot: 3 } }), ['thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture', "thumbnail.data.shot must be a shot's id"]);
   assert.deepEqual(captureRef("find-guides"), { scene: "find-guides", index: 0 });
@@ -365,7 +365,7 @@ test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一\n二\n三" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has 3 lines; this series takes at most 2"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }, { series: "sothatswhy" }), ["thumbnail.data.layout must be one of left, right", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c, d"], "the channel's layouts are its own");
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c, d, ai"], "the channel's layouts are its own");
 });
 
 test("a thumbnail's B and C variants for YouTube's test are laid over A and linted like it", () => {
@@ -379,7 +379,7 @@ test("a thumbnail's B and C variants for YouTube's test are laid over A and lint
   const long = { ...thumb, variants: [{ data: { headline: "一二三四五六七八九十十一" } }] };
   assert.deepEqual(thumbnailProblems(long, { series: "sothatswhy" }), ["variant b: thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }, { series: "sothatswhy" }), ["variant b: thumbnail.data.layout must be one of left, right"]);
-  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c, d"]);
+  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c, d, ai"]);
   const shape = "thumbnail.variants must be 1 to 2 of { data: {...} } (A is the thumbnail itself; YouTube tests up to three)";
   for (const variants of [[], [{}], "b", [{ data: {} }, { data: {} }, { data: {} }]]) assert.deepEqual(thumbnailProblems({ ...thumb, variants }), [shape], JSON.stringify(variants));
 });
@@ -663,4 +663,53 @@ test("a curio- or story- slug takes the bold thumbnail layout by default; other 
   assert.match(thumbnailHtml({ template: "thumb", data: { ...data, layout: "a" } }, { slug: "curio-h01-v2" }), /layout-a/, "a named layout wins");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "d" } }), []);
   assert.ok(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e" } }).some((problem) => /layout must be one of a, b, c, d/.test(problem)));
+});
+
+test("a paper video not yet on YouTube is drawn and cut again when the text fitting changes; others are left alone", () => {
+  const paper = { theme: "paper", youtube: { video_id: null } };
+  assert.equal(fitStale(paper, { visual_hash: "x" }), true, "frames from before the fit version carry none");
+  assert.equal(fitStale(paper, { fit_version: FIT_VERSION - 1 }), true);
+  assert.equal(fitStale(paper, { fit_version: FIT_VERSION }), false);
+  assert.equal(fitStale({ ...paper, youtube: { video_id: "abc123def45" } }, {}), false, "a video on YouTube is not drawn again");
+  assert.equal(fitStale({ youtube: { video_id: null } }, {}), false, "the dark theme keeps its frames");
+});
+
+test("the AI look: the picture over the frame, the series' name and colour from the table, a brief's date, one headline line", async () => {
+  const { AI_THUMB_SERIES, aiThumbSeries, briefDate, thumbnailHtml: draw, thumbnailProblems: problems } = await import("./templates.mjs");
+  assert.equal(aiThumbSeries({ slug: "daily-ai-20261028", category: "ai-news" }), "brief");
+  assert.equal(aiThumbSeries({ slug: "gemini-argon", category: "ai-news" }), "news");
+  assert.equal(aiThumbSeries({ slug: "ai-term-embedding", category: "ai-terms" }), "terms");
+  assert.equal(aiThumbSeries({ slug: "claude-code-hooks-hands-on", category: "tutorial" }), "tutorial");
+  assert.equal(aiThumbSeries({ slug: "curio-h01", category: "explainer" }), null);
+  assert.equal(briefDate("daily-ai-20261101"), "11/1");
+  assert.equal(briefDate("daily-ai-20261028", "es"), "28/10");
+  assert.equal(briefDate("gemini-argon"), null);
+  for (const own of Object.values(AI_THUMB_SERIES)) {
+    assert.deepEqual(Object.keys(own.label).sort(), ["en", "es", "id", "ja", "ko", "pt", "th", "vi", "zh-TW"], "every thumbnail language");
+  }
+
+  const thumb = { template: "thumb", data: { layout: "ai", headline: "Google 最強**先不給你**", sub: "最強的 Carbon，先給一部分網路防禦人員", tag: "不會出現" } };
+  const brief = draw(thumb, { background: "https://video.local/repo/docs/videos/daily-ai-20261028/brief.jpg", subject: "asset", slug: "daily-ai-20261028", aiSeries: "brief" });
+  assert.match(brief, /<div class="ai-label"><b>Tech Signal 科技訊號<\/b><i>｜<\/i>10\/28<\/div>/, "the name and the date, never the model's tag");
+  assert.match(brief, /--ai-accent:#ff8a1f/);
+  assert.match(brief, /<h1 class="ai-h fit">Google 最強<em>先不給你<\/em><\/h1>/);
+  assert.match(brief, /<div class="ai-sub fit">最強的 Carbon/);
+  assert.match(brief, /<div class="ai-pic from-picture"><img src="https:\/\/video\.local\/repo\/docs\/videos\/daily-ai-20261028\/brief\.jpg"/);
+  assert.doesNotMatch(brief, /不會出現|MOKAAIR/);
+
+  const es = draw(thumb, { slug: "daily-ai-20261028", aiSeries: "brief", locale: "es" });
+  assert.match(es, /<b>Tech Signal<\/b><i>｜<\/i>28\/10/);
+  assert.match(es, /<div class="ai-pic from-picture"><\/div>/, "no picture: the dark ground");
+
+  const tutorial = draw({ template: "thumb", data: { layout: "ai", headline: "Hooks **收工前跑測試**", tag: "Claude Code" } }, { background: "https://video.local/work/captures/a.png", subject: "capture", slug: "claude-code-hooks-hands-on", aiSeries: "tutorial" });
+  assert.match(tutorial, /<b>實作教學<\/b><i>｜<\/i>Claude Code/, "the episode's tag after the series' name");
+  assert.match(tutorial, /--ai-accent:#3ddc97/);
+  assert.match(tutorial, /from-capture/, "a page capture is shown from its top left");
+  assert.match(tutorial, /class="ai-h fit alone"/, "no sub line: the headline sits lower");
+  assert.match(draw({ template: "thumb", data: { layout: "ai", headline: "x" } }, { slug: "ai-term-embedding", aiSeries: "terms" }), /--ai-accent:#ffc53d/);
+
+  assert.deepEqual(problems({ template: "thumb", data: { layout: "ai", headline: "Gemini 4 **你找不到**" } }), []);
+  assert.deepEqual(problems({ template: "thumb", data: { layout: "ai", headline: "Gemini 4\n**你找不到**" } }), ["thumbnail.data.headline takes one line in the AI look: the subject, then the **hook**; remove the line break"]);
+  // Another layout draws exactly as before.
+  assert.doesNotMatch(draw({ template: "thumb", data: { headline: "x", layout: "a" } }, { slug: "daily-ai-20261028", aiSeries: "brief" }), /ai-label/);
 });

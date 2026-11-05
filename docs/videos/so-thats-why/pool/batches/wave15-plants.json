@@ -1,0 +1,540 @@
+{
+  "batch_id": "wave15-plants-20261102",
+  "created_on": "2026-11-02",
+  "scope": "植物動作、生長及形狀：非垂直設定點、向水組織路徑、生長依賴定位、螺旋受拉、局部形態分布。題級研究候選，非完整稿查核。",
+  "sources": [
+    {
+      "id": "B15-S001",
+      "url": "https://doi.org/10.1016/j.cub.2013.06.034",
+      "title": "Auxin Controls Gravitropic Setpoint Angle in Higher Plant Lateral Branches",
+      "publisher": "Current Biology / Roychoudhry et al.; University of Leeds White Rose repository",
+      "doi": "10.1016/j.cub.2013.06.034",
+      "version": "Current Biology 23:1497–1504; published version in institutional repository",
+      "published_on": "2013-08-05",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋核DOI與版本；Cell PDF web403、White Rose web timeout，指定UA urllib HTTP200取得同文正式PDF，PyMuPDF指定頁文字層實讀。",
+      "reading_scope": "PDF pp.1–4（印刷1497–1500）：Results and Discussion前三小節及Fig.1–2；後半組織特異實驗和補充檔未完整讀。",
+      "locator": "Stable Nonvertical Growth of Shoot and Root Branches Is Sustained by an Antigravitropic Offset Mechanism; The Antigravitropic Offset Mechanism Is Auxin Dependent; Fig.1",
+      "summary": "側枝維持斜角的模型含持續偏移分量與依傾角改變的向地反應，旋轉和抑制運輸對照支持此解釋。",
+      "limitations": "偏移與向地分量是功能模型，不是兩條直接量得的力；不聲稱完整分子感受器已知。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://eprints.whiterose.ac.uk/id/eprint/84375/1/1-s2.0-S0960982213007598-main.pdf",
+      "author_cache": {
+        "file": ".cache/wave15-life-angle.pdf",
+        "sha256": "0b203bf5fec1fda93223c0c82bb251352ddf12bbdd7e6c7b727a1cd729f51c86",
+        "text_file": ".cache/wave15-life-angle.txt",
+        "text_sha256": "bf9c3e22ca77af9dabe6928ce308ca3aaaa3703eb4f0d3d797b6189d2a2f85d3"
+      }
+    },
+    {
+      "id": "B15-S002",
+      "url": "https://www.nature.com/articles/nplants201757",
+      "title": "Root hydrotropism is controlled via a cortex-specific growth mechanism",
+      "publisher": "Nature Plants / Dietrich et al.; University of Birmingham repository",
+      "doi": "10.1038/nplants.2017.57",
+      "version": "Nature Plants 3:17057; repository peer-reviewed accepted manuscript, 69-page file including supplements",
+      "published_on": "2017-05-08",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web.open Birmingham稿頭及Results前段，另指定UA urllib HTTP200下載並PyMuPDF實讀；Nature重導500、UMass web/urllib timeout、Birmingham一次後續web timeout均未當成功正文。",
+      "reading_scope": "PDF pp.4–13（稿頁3–12）：Introduction、Results至Fig.4對照、Discussion；只讀方法首段，未完整讀補充方法或69頁全文。",
+      "locator": "Results: The root meristem and columella are dispensable for hydrotropism; Hydrotropism requires SnRK2.2 signalling only in the root cortex; Cortex-specific MIZ1 expression rescues the miz1 hydrotropic defect; Hydrotropism is driven by differential cortical cell expansion",
+      "summary": "根冠受損仍可向水彎；皮層特異補回與干預支持向水彎曲依靠不同於向地反應的組織路徑。",
+      "limitations": "限擬南芥與文中兩種梯度試驗；完整根冠仍可能參與整合，初始水勢感知分子未確定，模型預設乾側細胞提早延長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://pure-oai.bham.ac.uk/ws/files/40254023/Dietrich_et_al_post_print.pdf",
+      "author_cache": {
+        "file": ".cache/wave15-life-hydrotropism-bham.pdf",
+        "sha256": "075e4308da358b86ea544ec8921f640dd3f1b4f50bcb6131d1f18b47c2bf327c",
+        "text_file": ".cache/wave15-life-hydrotropism-bham.txt",
+        "text_sha256": "511a5cd28a56d1caf275f96c77e4c79de40b2c0771300d1504176f07a580dc6c"
+      }
+    },
+    {
+      "id": "B15-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5789911/",
+      "title": "Growth is required for perception of water availability to pattern root branches in plants",
+      "publisher": "PNAS / Robbins and Dinneny; Europe PMC official XML",
+      "doi": "10.1073/pnas.1710709115",
+      "version": "PNAS 115(4):E822–E831; Europe PMC fullTextXML PMCID PMC5789911",
+      "published_on": "2018-01-09",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋定位正文，PMC web為CAPTCHA；指定UA urllib HTTP200取得Europe PMC官方fullTextXML，以lxml實讀指定Results與Discussion。",
+      "reading_scope": "Introduction；Results: competent zone、water-potential model、growth dynamics及Fig.1–5；Discussion模型限制；gene-expression段僅部分讀，未重算模型/統計。",
+      "locator": "The Competent Zone for Hydropatterning Coincides with the Growth Zone; A Mathematical Model to Estimate Growth-Sustained Tissue Water Potentials; Growth Dynamics Affect Hydropatterning of Lateral Root Development; Discussion",
+      "summary": "生長耗水所維持的內部水勢差，可在模型中連結外界水接觸與側根定位；生長抑制處理削弱位置偏向。",
+      "limitations": "內部水勢主要為模型估算，導水率均質近似；不同處理可能另有作用，Oh7B生長正常仍可弱化定位，不能說生長率單獨決定一切。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5789911/fullTextXML",
+      "author_cache": {
+        "file": ".cache/wave15-life-hydropattern.xml",
+        "sha256": "30f8b2ce63ad3742188099148abab224ddbe8bfea7d583b2fd9f281b0b24c1e7",
+        "text_file": ".cache/wave15-life-hydropattern.txt",
+        "text_sha256": "ab2982254347f445cc20fa25cd019fbcecb43010914a2194dcaf56d604523387"
+      }
+    },
+    {
+      "id": "B15-S004",
+      "url": "https://doi.org/10.1126/science.1223304",
+      "title": "How the Cucumber Tendril Coils and Overwinds",
+      "publisher": "Science / Gerbode et al.; Harvard Mahadevan laboratory copy",
+      "doi": "10.1126/science.1223304",
+      "version": "Science 337:1087–1091; coauthor-hosted published PDF with supporting material",
+      "published_on": "2012-08-31",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web.open Harvard作者PDF指定正文，指定UA urllib HTTP200保存同一PDF，PyMuPDF逐頁讀回。",
+      "reading_scope": "web PDF正文前段及UA副本PDF pp.2–5（印刷1087–1090），Fig.1–3與材料/幾何模型解釋；未完整讀補充推導或觀看影片。",
+      "locator": "Printed pp.1088–1090; Fig.2A–F, Fig.3; paragraphs beginning However, there is an unexpected difference and The modified model exhibited substantial overwinding",
+      "summary": "受拉增圈取決於彎曲與扭轉剛性的比值；左右手螺旋交接容許內部旋轉，固定兩端仍能增加軸向長度。",
+      "limitations": "限抽出的纖維帶和文中老化乾捲鬚；年輕含水捲鬚不一定增圈，高張力最終仍會展開；Fig.3兩極端案例非群體平均。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-18.pdf",
+      "author_cache": {
+        "file": ".cache/wave15-life-tendril.pdf",
+        "sha256": "cab37ba6cd1aa1becf3fe561b04e74554d5e9e25e63e04a020e9d8ca37ab5b56",
+        "text_file": ".cache/wave15-life-tendril.txt",
+        "text_sha256": "e6c581ff7b61e22db2452270e5b55cac7c4591e8830f53afc66e11bec775bd00"
+      }
+    },
+    {
+      "id": "B15-S005",
+      "url": "https://genesdev.cshlp.org/content/21/14/1720",
+      "title": "The secretory peptide gene EPF1 enforces the stomatal one-cell-spacing rule",
+      "publisher": "Genes & Development / Hara et al.; Cold Spring Harbor Laboratory Press",
+      "doi": "10.1101/gad.1550707",
+      "version": "Genes & Development 21:1720–1725; publisher PDF",
+      "published_on": "2007-07-15",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋原文；PMC web CAPTCHA、期刊HTML web403、Europe PMC XML500；期刊公開PDF指定UA urllib HTTP200，PyMuPDF實讀指定頁。",
+      "reading_scope": "PDF pp.1–4（印刷1720–1723）：Introduction、突變/補回/過量表現、表現位置與A model of stomatal patterning；未完整讀Methods和補充表。",
+      "locator": "Loss-of-function epf1 mutant has a defect in one-cell-spacing rule of stomatal pattern; EPF1 is expressed in the stomatal precursor cells; A model of stomatal patterning; Fig.1",
+      "summary": "局部前驅細胞的訊號參與鄰近不對稱分裂定位；缺失造成接壤氣孔，補回改善，過量表現則抑制形成。",
+      "limitations": "分泌、擴散及受體直接配對在此篇屬遺傳支持的模型，不能畫成已測得完整配體結合；不說所有物種都嚴守一格。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://genesdev.cshlp.org/content/21/14/1720.full.pdf",
+      "author_cache": {
+        "file": ".cache/wave15-life-stomata-journal.pdf",
+        "sha256": "2c4e8014107a9096e5ea383ffc05cc6b9da0211e6456f62ef3e2b63592aa70b0",
+        "text_file": ".cache/wave15-life-stomata-journal.txt",
+        "text_sha256": "f44f3508ee2a19a2223702e8f311e394070c9953411d2ae3d4bc348ed0671753"
+      }
+    },
+    {
+      "id": "B15-S006",
+      "url": "https://doi.org/10.1073/pnas.1015162108",
+      "title": "Model for the regulation of Arabidopsis thaliana leaf margin development",
+      "publisher": "PNAS / Bilsborough et al.; University of Calgary Algorithmic Botany group copy",
+      "doi": "10.1073/pnas.1015162108",
+      "version": "PNAS Early Edition author-hosted published layout, 6 pages; final citation 108(8):3424–3429",
+      "published_on": "2011-02-07",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web搜尋核期刊身份，指定UA urllib HTTP200取得作者群公開PDF，PyMuPDF實讀指定頁；不把PMC檢索摘要當另一份證據。",
+      "reading_scope": "PDF pp.1–4：兩個Results調節小節、表皮PIN1補回、Fig.1–4與computational model開頭；模型後半、SI與影片未完整讀。",
+      "locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+      "summary": "促進長出的局部峰與抑制區交錯形成葉緣鋸齒；把任一活動鋪成連續分布都可讓葉緣變平。",
+      "limitations": "基因干預和報導訊號是觀察，峰值如何自組織的完整回饋為計算模型；不把所有葉形或品種差異都套此模型。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://algorithmicbotany.org/papers/leafmargin.pnas2011.pdf",
+      "author_cache": {
+        "file": ".cache/wave15-life-serration.pdf",
+        "sha256": "a25a2b76c5a52bc7b145c19a20f00adf6d366f47a09bbf0293b3de910ff7cdfe",
+        "text_file": ".cache/wave15-life-serration.txt",
+        "text_sha256": "86a9bb61b31dc3e5d72a53068ea6b29ec9bc71f0e5b3218c2c3a0c4d7c551868"
+      }
+    },
+    {
+      "id": "B15-S007",
+      "url": "https://doi.org/10.1073/pnas.1007808108",
+      "title": "Growth, geometry, and mechanics of a blooming lily",
+      "publisher": "PNAS / Liang and Mahadevan; Harvard coauthor laboratory copy",
+      "doi": "10.1073/pnas.1007808108",
+      "version": "PNAS 108(14):5516–5521; coauthor-hosted published PDF with SI",
+      "published_on": "2011-03-21",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web.open Harvard作者PDF正文並指定UA urllib HTTP200保存；Europe PMC XML500未取到，不計為第二來源。",
+      "reading_scope": "web及UA PDF pp.1–3（印刷5516–5518）：Observations and Experiments、Mathematical Model的假設與數值模型定性結果、Fig.1–3；未逐式驗證或讀完整SI。",
+      "locator": "Observations and Experiments: midrib shaving and lateral-edge removal; Fig.2–3; Mathematical Model of Blooming",
+      "summary": "花瓣平面內邊緣比中央長得更多，造成曲面展開；刪中肋與刪邊緣的相反預測可分辨此機制。",
+      "limitations": "限Lilium casablanca樣本與薄殼模型；不泛化所有花、不將不同表面增長或中肋完全無作用當定律。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2011-03.pdf",
+      "author_cache": {
+        "file": ".cache/wave15-life-lily-harvard.pdf",
+        "sha256": "637a9f7d7dc34e58bc8f56252abd63f5f4631a05f9091479d6f7c50f4b301792",
+        "text_file": ".cache/wave15-life-lily-harvard.txt",
+        "text_sha256": "73b92362cb822bb8b25c2ab236447567612526e4af65a06acff92190fd5d682a"
+      }
+    },
+    {
+      "id": "B15-S008",
+      "url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "title": "Sunflowers Move by the Clock",
+      "publisher": "UC Davis / Andy Fell, reporting Harmer and collaborators",
+      "doi": "10.1126/science.aaf9793",
+      "version": "2016-08-04 institutional research report about 2016 Science study; not article full text",
+      "published_on": "2016-08-04",
+      "accessed_on": "2026-11-02",
+      "read_via": "當日web.open研究報告指定段；指定UA urllib HTTP200保存並讀回。Harvard原稿urllib403/web timeout、Berkeley原稿web/urllib404；不把搜尋呈現的原稿段落升格為全文閱讀。",
+      "reading_scope": "East to west, and back；Clocks and two growth mechanisms；Why face the sun?；只作退題追蹤，未納候選。",
+      "locator": "East to west, and back: constant overhead light and 24/30-hour cycles",
+      "summary": "團隊報告描述固定頂光後仍短暫擺動，以及非24小時週期下追蹤失調。",
+      "limitations": "此來源是同一2016研究的第一方報告，不是原論文或獨立重複；本輪原稿未成功取得，不據此納完整機制題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "retrieval_url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "author_cache": {
+        "file": ".cache/wave15-life-sunflower-report.html",
+        "sha256": "3540178394dcad40727d355edd3db9827836edd73f116f844a66179298d3419b",
+        "text_file": ".cache/wave15-life-sunflower-report.txt",
+        "text_sha256": "b6bd83e16d92983599d54140af2f1f7a08616d8f3a88f545129a7382fce4baae"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "B15001",
+      "question": "側根被挪歪後，為什麼會回到斜角，而不是一路往下？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "lateral_root_gravitropic_setpoint_antigravitropic_offset",
+      "answer_target": "向地反應隨傾角變化，與相反方向的生長偏移分量平衡，可把側根維持在非垂直角；移到目標角兩側時，彎回方向會相反。",
+      "scope": "限2013擬南芥側根與側枝實驗/功能模型；非力的直接相加，不聲稱每條根角度固定終身，主根與不同器官不一律相同。",
+      "source_ids": [
+        "B15-S001"
+      ],
+      "source_locator": "Stable Nonvertical Growth of Shoot and Root Branches Is Sustained by an Antigravitropic Offset Mechanism; The Antigravitropic Offset Mechanism Is Auxin Dependent; Fig.1",
+      "premise_status": "screened",
+      "notes": "相對B2234基本向地新增非垂直設定點與雙向回復；不同於B11003局部曲率自我拉直。旋轉台與auxin運輸抑制是直接對照，偏移分量是模型。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂斜著長可能是穩定平衡，並非向下能力比較弱。",
+        "visual": "同一斜角目標線；起始角在其兩側，根分別向上/下回復；另框畫旋轉台移除穩定方向後的外彎，不畫兩股重力。",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    },
+    {
+      "id": "B15002",
+      "question": "根尖少了辨認上下的部位，為什麼還能朝有水的一側彎？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "root_hydrotropism_cortex_specific_sensing_growth",
+      "answer_target": "向水反應可由伸長區皮層的訊號與不對稱延長驅動；去除根冠仍有反應、皮層特異補回可救回，而只擾亂皮層生長可擋住向水但保留向地。",
+      "scope": "限擬南芥、文中消融/梯度/組織表現試驗；不宣稱完整根冠毫無作用或已找出最初水勢感受器；不將組織模型當所有根的定律。",
+      "source_ids": [
+        "B15-S002"
+      ],
+      "source_locator": "Results: The root meristem and columella are dispensable for hydrotropism; Hydrotropism requires SnRK2.2 signalling only in the root cortex; Cortex-specific MIZ1 expression rescues the miz1 hydrotropic defect; Hydrotropism is driven by differential cortical cell expansion",
+      "premise_status": "screened",
+      "notes": "重開wave11曾因未讀原研究而暫緩的向水方向；本輪讀到指定組織救援和選擇性阻斷，與B2234根冠向地路徑不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣是彎曲，感知和出力不一定由同一組細胞負責。",
+        "visual": "根冠消融後：向地下降、向水仍在；皮層標色與其他組織救援對照，乾側提早延長用模型框標註。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B15003",
+      "question": "根正在長長，怎麼反而有助於決定哪一側該長分枝？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "growth_sustained_water_potential_hydropatterning",
+      "answer_target": "生長吸水使兩側不同供水條件轉為持續的內部水勢差；模型以這個差異預測側根位置，生長受抑時分枝偏向可減弱。",
+      "scope": "限玉米B73等文中培養條件；內部水勢為估算、導水率近似，處理可能另有作用；Oh7B顯示生長正常也不保證定位正常，不宣稱已找到完整分子感測器。",
+      "source_ids": [
+        "B15-S003"
+      ],
+      "source_locator": "The Competent Zone for Hydropatterning Coincides with the Growth Zone; A Mathematical Model to Estimate Growth-Sustained Tissue Water Potentials; Growth Dynamics Affect Hydropatterning of Lateral Root Development; Discussion",
+      "premise_status": "screened",
+      "notes": "不是L097水勢帶動運水；新增生長作為空間訊號生成條件及有反應/已固定區。與B15002轉彎的組織路徑分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解長大不只是感知之後的結果，也能製造辨別環境的物理差異。",
+        "visual": "同一根一面接水一面接空氣；正常與生長受抑的分枝位置對照；橫切水勢色階明標模型推估，不畫成量測熱圖。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "B15004",
+      "question": "有些已捲好的瓜藤捲鬚，為什麼拉長時反而多捲幾圈？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "tendril_perversion_overwinding_bending_torsion_ratio",
+      "answer_target": "抗彎比抗扭更強時，保持偏好曲率而調整螺距/半徑可增加軸向長度；左右手螺旋交接容許內部轉動，兩端固定仍可能增圈。",
+      "scope": "限抽離纖維帶、文中老化乾捲鬚及模型；新鮮年輕整條捲鬚不一定如此，高張力最後仍展開；彎扭剛性比是模型參數。",
+      "source_ids": [
+        "B15-S004"
+      ],
+      "source_locator": "Printed pp.1088–1090; Fig.2A–F, Fig.3; paragraphs beginning However, there is an unexpected difference and The modified model exhibited substantial overwinding",
+      "premise_status": "screened",
+      "notes": "不重收B2236接觸後初次纏繞、P076兩層長度差致彎或E9006濕乾鑽土；這題從已成螺旋受拉開始，控制轉角自由度和彎扭代價。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拉長不必等於圈數變少，還要看曲率與內部旋轉的限制。",
+        "visual": "固定兩端的兩種帶狀模型並列：普通模型展圈、增加抗彎的模型增圈；中心交接左右旋、圈數與軸向距離同步標示。",
+        "seconds": [
+          90,
+          130
+        ]
+      }
+    },
+    {
+      "id": "B15005",
+      "question": "葉子長出新氣孔時，怎麼避免和旁邊的氣孔緊貼在一起？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "stomatal_precursor_local_signal_orients_spacing_division",
+      "answer_target": "氣孔前驅細胞提供局部位置訊號，影響鄰細胞不對稱分裂的方向；缺失相關訊號可讓新前驅緊貼既有氣孔，補回能改善間距。",
+      "scope": "限擬南芥EPF1研究；擴散與受體直接配對是此篇提出的遺傳模型，未在本輪核完整結合生化證據；不把間隔當所有葉片通則。",
+      "source_ids": [
+        "B15-S005"
+      ],
+      "source_locator": "Loss-of-function epf1 mutant has a defect in one-cell-spacing rule of stomatal pattern; EPF1 is expressed in the stomatal precursor cells; A model of stomatal patterning; Fig.1",
+      "premise_status": "screened",
+      "notes": "L090只解釋孔開合；本題解釋孔形成位置。避免把EPF1名稱本身當答案，重點是鄰接分裂方向與缺失/補回。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "間距可由每個局部前驅對鄰居的規則形成，不必先畫好整張葉片的孔位。",
+        "visual": "顯微尺度原創格子示意：同一既有氣孔旁分裂方向正常/錯位，配突變與補回的接壤比例方向，不捏造數值。",
+        "seconds": [
+          40,
+          70
+        ]
+      }
+    },
+    {
+      "id": "B15006",
+      "question": "把葉緣的生長訊號鋪滿一圈，為什麼鋸齒反而會消失？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "leaf_serration_interspersed_auxin_cuc2_feedback",
+      "answer_target": "鋸齒需要促進局部突出與限制間隔區的活動交錯；調節回饋穩定分開的生長峰，把任一活動鋪成連續分布都可能抹平這個空間差異。",
+      "scope": "限擬南芥2011研究；均勻處理、突變與報導訊號是實驗，PIN1朝高auxin側重排等完整自組織回路屬模型；不概括所有鋸齒葉或提供植物激素操作建議。",
+      "source_ids": [
+        "B15-S006"
+      ],
+      "source_locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+      "premise_status": "screened",
+      "notes": "不同於B2233兩側差速轉彎、B11005機械應力回饋；新增沿邊緣反覆峰/谷定位與把分布鋪平的對照。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "生長訊號變多或更均勻，並不保證外形更複雜；位置差異也是條件。",
+        "visual": "葉緣兩色交錯峰谷→連續色帶；並列原研究均勻CUC2/外加auxin兩種平緣結果；分子箭頭只留促進/抑制角色。",
+        "seconds": [
+          75,
+          115
+        ]
+      }
+    },
+    {
+      "id": "B15007",
+      "question": "百合花瓣的中肋被削掉仍會打開，真正帶動展開的是哪裡？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "petal_planar_edge_growth_drives_shell_curvature_reversal",
+      "answer_target": "邊緣相對中央的平面內增長，使曲面產生不相容伸長並改變整體曲率；刪中肋仍開、刪邊緣反而較少彎，支持邊緣驅動而非主要靠上下表面差長。",
+      "scope": "限Lilium casablanca實驗與薄殼模型；中肋仍有剛性和局部曲率貢獻，不泛化所有花；不把模型的曲率翻轉說成直接測得全細胞生長機制。",
+      "source_ids": [
+        "B15-S007"
+      ],
+      "source_locator": "Observations and Experiments: midrib shaving and lateral-edge removal; Fig.2–3; Mathematical Model of Blooming",
+      "premise_status": "screened",
+      "notes": "相對P076/E9010跨厚度不匹配，新對照是同一片平面內邊/中差長與切除預測；對K11012既定平紙外壓也不同。由覆核決定此控制差異是否足以獨立留核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "判斷誰帶動動作，不能只看哪條最硬；移除不同部位會給出相反預測。",
+        "visual": "原創三瓣並排：完整、去中肋、去邊緣；沿面點距示意邊緣增長較多，不畫雙層金屬片或讓花瓣肌肉收縮。",
+        "seconds": [
+          80,
+          120
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "幼苗為什麼向窗邊彎？",
+      "reason": "基本向光的兩側差速已收，不換植物名稱新增。",
+      "existing_ids": [
+        "B2233"
+      ]
+    },
+    {
+      "question": "根怎麼分得出上下？",
+      "reason": "根冠重力感知與差速彎曲已收；本輪只留有不同感知/組織控制的向水對照。",
+      "existing_ids": [
+        "B2234"
+      ]
+    },
+    {
+      "question": "同樣生長素，根和莖為什麼彎不同方向？",
+      "reason": "既有同核與別名範圍，不重新拆。",
+      "existing_ids": [
+        "B2234",
+        "B2235"
+      ]
+    },
+    {
+      "question": "捲鬚碰到架子為什麼纏上去？",
+      "reason": "既有接觸反應；B15004只談已捲起後受拉增圈，不重收觸碰。",
+      "existing_ids": [
+        "B2236"
+      ]
+    },
+    {
+      "question": "被風吹的莖為什麼短粗？",
+      "reason": "已有反覆機械刺激生長調整；未找到新的必要控制。",
+      "existing_ids": [
+        "B2237"
+      ]
+    },
+    {
+      "question": "根轉圈能不能繞過障礙？",
+      "reason": "已有環旋/接觸路徑研究，不換物種或基因重收。",
+      "existing_ids": [
+        "B11002"
+      ]
+    },
+    {
+      "question": "莖彎回去怎麼不一直越彎越過頭？",
+      "reason": "角度與局部曲率競爭已收；側根非垂直設定點另判。",
+      "existing_ids": [
+        "B11003"
+      ]
+    },
+    {
+      "question": "細胞壁鬆掉，為什麼能繼續長？",
+      "reason": "既有壁鬆弛與膨壓的必要區分，不換蛋白。",
+      "existing_ids": [
+        "B11004",
+        "L095"
+      ]
+    },
+    {
+      "question": "細胞微管怎麼跟受力方向排列？",
+      "reason": "已有組織應力/微管重排回饋，不將拼圖細胞換外觀重新計數。",
+      "existing_ids": [
+        "B11005"
+      ]
+    },
+    {
+      "question": "把頂芽剪掉，旁邊的芽怎麼開始長？",
+      "reason": "頂端優勢已收；本輪未讀到足以改變既有答案的糖/激素因果對照。",
+      "existing_ids": [
+        "L076"
+      ]
+    },
+    {
+      "question": "含羞草葉子碰到就合起來，能不能另寫一題？",
+      "reason": "本輪未取得新控制的原研究；只說水移動和膨壓變化過薄。",
+      "existing_ids": [
+        "L090",
+        "L094"
+      ]
+    },
+    {
+      "question": "捕蠅草為什麼要連碰兩次？",
+      "reason": "時間積分與鈣訊號門檻已收。",
+      "existing_ids": [
+        "R6017"
+      ]
+    },
+    {
+      "question": "捕蠅草為什麼能突然翻扣？",
+      "reason": "本輪不補做快速屈曲的原研究；與既有薄殼翻轉近，不能只以捕蠅草外觀另計。",
+      "existing_ids": [
+        "E9010",
+        "P164"
+      ]
+    },
+    {
+      "question": "濕乾變化怎麼讓長芒種子鑽土？",
+      "reason": "已有濕度形變與定向接觸棘輪，不換芒的物種。",
+      "existing_ids": [
+        "E9006"
+      ]
+    },
+    {
+      "question": "花藥失水怎麼突然翻開？",
+      "reason": "已有受約束花藥壁模型；不重收。",
+      "existing_ids": [
+        "E9010"
+      ]
+    },
+    {
+      "question": "花粉管怎麼只往尖端長？",
+      "reason": "可能只是既有局部胞吐/回收維持極性生長的換器官；本輪未補新的控制對照。",
+      "existing_ids": [
+        "U8019"
+      ]
+    },
+    {
+      "question": "葉子為什麼互生或對生？",
+      "reason": "現有分類題已有，新的葉序自組織機制本輪未實讀原研究，不把分類名詞算增量。",
+      "existing_ids": [
+        "L089"
+      ]
+    },
+    {
+      "question": "每條根的環旋週期不同，可以各寫一題嗎？",
+      "reason": "只改週期/物種不自動產生新機制。",
+      "existing_ids": [
+        "B11002"
+      ]
+    },
+    {
+      "question": "根的生長素訊號會週期起伏，所以分枝也是按節拍排嗎？",
+      "reason": "只找到待查方向；本輪未實讀能把報導訊號週期與分枝因果分開的原研究，不納。"
+    },
+    {
+      "question": "水下葉和水上葉形狀不同，為什麼？",
+      "reason": "範圍過大；未取得足以排除只有激素名稱與表型對照的因果中段，不納。"
+    },
+    {
+      "question": "夜裡的幼向日葵，為什麼會自己轉回東邊？",
+      "reason": "有力候選暫緩：只實讀UC Davis第一方研究報告，兩個原稿副本失敗；固定光和24/30小時對照仍待原稿方法核對。未說前提錯誤；取得合法原稿後可重入。",
+      "existing_ids": [
+        "B2233",
+        "L104",
+        "LEG-T17"
+      ],
+      "source_ids": [
+        "B15-S008"
+      ]
+    },
+    {
+      "question": "所有向日葵花朵是不是整天追著太陽？",
+      "reason": "前提過泛，團隊報告區分幼株運動與成熟花頭固定朝東；不收。",
+      "source_ids": [
+        "B15-S008"
+      ]
+    },
+    {
+      "question": "葉子夜裡合起來，可否沿用向日葵時鐘再算一題？",
+      "reason": "本輪沒有另一項新增控制證據；不同器官/運動外觀不能獨立計數。",
+      "source_ids": [
+        "B15-S008"
+      ]
+    },
+    {
+      "question": "捲鬚為什麼同時有左旋和右旋？",
+      "reason": "固定端點與螺旋交接是B15004受拉反應的必要解釋，合在同核，不拆第二筆。",
+      "existing_ids": [
+        "B15004"
+      ],
+      "source_ids": [
+        "B15-S004"
+      ]
+    },
+    {
+      "question": "鋸齒葉換另一個auxin運輸蛋白，可以再寫一題嗎？",
+      "reason": "目前仍是同一沿邊緣分布回饋；B15006已保留，不以基因名稱增量。",
+      "existing_ids": [
+        "B15006"
+      ],
+      "source_ids": [
+        "B15-S006"
+      ]
+    }
+  ]
+}

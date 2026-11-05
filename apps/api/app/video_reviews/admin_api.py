@@ -4,12 +4,13 @@
 routes under apps/web/app/api/video/reviews: report a video's state, upload a preview in parts,
 submit something for review, and read back the owner's decisions. ``admin_router`` is the page:
 the owner lists the videos, opens one, watches its previews and decides, chooses the languages to
-add after the final cut, asks for a dub the worker gave up to be made again, or drops the video.
+add after the final cut, asks for a dub the worker gave up to be made again, or drops the video,
+and deletes one already dropped.
 """
 
 from __future__ import annotations
 
-from typing import Annotated
+from typing import Annotated, Any
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request
@@ -18,15 +19,18 @@ from pydantic import AwareDatetime
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.auth.service import require_capability
+from app.auth.service import require_admin_step_up, require_capability
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import User
 from app.problems import AppError
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
+from app.video_media.admin_api import media_store
+from app.video_media.settings import get_media_settings
+from app.video_reviews import admin_deletion, dub_retry, tool_files
 from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
-from app.video_reviews import dub_retry, tool_files
+from app.video_reviews.clips import SubmittedReview
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
     BrowseState,
@@ -40,11 +44,11 @@ from app.video_reviews.schemas import (
     FinalRenewalState,
     LocalesIn,
     PartOut,
+    ProjectDeletedOut,
     ProjectIn,
     ProjectOut,
     ProjectPage,
     ProjectSummary,
-    ReviewIn,
     ReviewOut,
     VideoFormat,
     YoutubeIn,
@@ -127,7 +131,10 @@ async def read_file(slug: str, sha256: str, tool: VideoTool, session: Session) -
 
 
 @tool_router.post("/{slug}/reviews", response_model=ReviewOut, status_code=201)
-async def submit(slug: str, payload: ReviewIn, tool: VideoTool, session: Session) -> ReviewOut:
+async def submit(
+    slug: str, payload: SubmittedReview, tool: VideoTool, session: Session
+) -> ReviewOut:
+    # SubmittedReview is ReviewIn with room for an upload package's clip_ files (clips.py).
     return await service.submit_review(session, await _store(session), slug, payload, tool)
 
 
@@ -226,6 +233,17 @@ async def drop(slug: str, payload: DropIn, user: ContentManager, session: Sessio
     return await service.drop_project(session, await _store(session), slug, user, payload)
 
 
+@admin_router.delete("/{slug}", response_model=ProjectDeletedOut)
+async def delete_video(
+    slug: str, request: Request, user: ContentManager, session: Session
+) -> ProjectDeletedOut:
+    """A dropped video, gone for good (admin_deletion.py); YouTube is left as it is."""
+    await require_admin_step_up(request, user, "videos.delete")
+    return await admin_deletion.delete_project(
+        session, await _store(session), media_store(get_media_settings()), slug, user
+    )
+
+
 @admin_router.put("/{slug}/category", response_model=ProjectOut)
 async def set_category(
     slug: str, payload: CategoryIn, user: ContentManager, session: Session
@@ -252,6 +270,36 @@ async def retry_dub(
 
     It only records the request and reads the month's Gemini speech meter; the worker takes it
     on its next round, and the service refuses what the worker could not act on."""
+    return await _request_dub_retry(session, slug, user, locale)
+
+
+@tool_router.post("/{slug}/languages/{locale}/dub/retry", response_model=ProjectOut)
+async def tool_retry_dub(
+    slug: str, locale: DubLocale, tool: VideoTool, session: Session
+) -> ProjectOut:
+    """The same request from the video tool, on behalf of the owner who made the token
+    (2026-11-01: daily-ai-20261029's Indonesian dub waited on the owner's click after its fix was
+    deployed, while the session holding the token could not press it). Every refusal of the
+    admin route applies, the speech budget check included; the audit row names the token. A
+    token whose maker is gone is refused."""
+    user = await session.get(User, tool.created_by_user_id) if tool.created_by_user_id else None
+    if user is None:
+        raise AppError(
+            403,
+            "video_tool_token_owner_missing",
+            "這個影片工具權杖找不到建立它的帳號，不能代為要求重做配音；請在後台按「再做一次」",
+        )
+    return await _request_dub_retry(session, slug, user, locale, tool_token_id=tool.id)
+
+
+async def _request_dub_retry(
+    session: AsyncSession,
+    slug: str,
+    user: User,
+    locale: DubLocale,
+    *,
+    tool_token_id: UUID | None = None,
+) -> ProjectOut:
     runtime = await load_runtime_settings(session)
     limit = runtime.video_speech_gemini_monthly_character_limit
     usage = await azure_speech_usage_snapshot(get_redis(), limit, provider=GEMINI_SPEECH_PROVIDER)
@@ -268,6 +316,7 @@ async def retry_dub(
             used=usage.used,
             available=usage.available,
         ),
+        **({"tool_token_id": tool_token_id} if tool_token_id is not None else {}),
     )
 
 
@@ -320,6 +369,21 @@ async def download_final(slug: str, user: ContentManager, session: Session) -> F
         filename=f"{slug}.mp4",
         headers={"Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff"},
     )
+
+
+@admin_router.get("/{slug}/package")
+async def package_check(
+    slug: str,
+    file: Annotated[list[str], Query()],
+    user: ContentManager,
+    session: Session,
+) -> dict[str, Any]:
+    """Whether ``package.zip`` with the same entries can be made, asked by the page before it
+    hands the link to the browser: ``ok``, the ``missing`` files with ``reason`` (``gone`` or
+    ``not_shown``), ``bytes`` and the ``drive_folder`` holding the video when backed up."""
+    _ = user
+    entries = package_zip_module.parse_entries(file)
+    return await service.package_check_for_admin(session, await _store(session), slug, entries)
 
 
 @admin_router.get("/{slug}/package.zip")

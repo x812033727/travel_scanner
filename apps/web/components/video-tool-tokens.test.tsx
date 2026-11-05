@@ -25,7 +25,7 @@ describe("VideoToolTokens", () => {
     const fetchMock = vi.fn((url: string, init?: RequestInit) => {
       expect(url).toContain(ENDPOINT);
       if (init?.method === "POST") {
-        expect(JSON.parse(String(init.body))).toEqual({ name: "工作站", colab_access: false });
+        expect(JSON.parse(String(init.body))).toEqual({ name: "工作站", colab_access: false, runpod_access: false });
         const created = { ...existing, id: "5f0f3b2e-0000-4000-8000-000000000002", name: "工作站", token_prefix: secret.slice(0, 10) };
         list = [created, existing];
         return json({ ...created, token: secret }, 201);

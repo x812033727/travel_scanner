@@ -1,0 +1,2413 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h01-v3",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友翻檔案：開場對著觀眾講，帶挑釁；德沃上船壓低放慢；帳單、狗項圈那幾句帶笑；「找不出任何理由」一字一字唸；家書那章放輕，溜冰鞋與春天停一拍，不哭腔；訃聞收乾；結尾乾脆，「未結」落地，不唸成答案。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-tale",
+      "chapter": "一個大副爬上一艘沒有人回話的船",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at a kitchen table at night reading a glowing phone with raised eyebrows, a cup of tea steaming beside him, soft lamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc001",
+          "text": "你可能聽過：海上漂著一艘船，桌上的茶還是溫的，人全部不見。",
+          "emotion": "對觀眾說，壓低，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-ten",
+      "template": "big",
+      "data": {
+        "text": "10 個人",
+        "kicker": "1872 年，瑪麗賽勒斯特號",
+        "sub": "最小的才 2 歲"
+      },
+      "lines": [
+        {
+          "id": "mc002",
+          "text": "十個人是真的，最小的才兩歲，一百五十多年了，一個都沒有回來。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-climb",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grey Atlantic on an overcast afternoon, a bearded ship's mate in a dark wool coat and cap climbing a rope over the rail of a silent two-masted sailing ship with torn sails, a small rowing boat below him, light from the overcast sky on the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc003",
+          "text": "一八七二年十二月四日下午，大西洋上，大副德沃爬上這艘沒有人回話的帆船。",
+          "emotion": "沉穩進場景，壓低"
+        }
+      ]
+    },
+    {
+      "id": "open-deck",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bearded ship's mate in a dark wool coat and cap on an empty wooden deck beside an unattended ship's wheel, turning his head with a shocked, worried face, loose ropes behind him, grey daylight from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc004",
+          "text": "甲板沒有人，他走進船長房，床有人睡過，他猜，睡的是個小孩。",
+          "emotion": "「小孩」放輕"
+        }
+      ]
+    },
+    {
+      "id": "open-pipes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a sailors' cabin in grey light of a rough hand lifting a clay pipe off a sea chest, boots and an oilskin coat hanging on pegs behind it, soft light from a side window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc005",
+          "text": "唯一的小艇不見了，奇怪的是，水手的靴子、雨衣，連菸斗都還在。",
+          "emotion": "停在這裡，不解釋"
+        }
+      ]
+    },
+    {
+      "id": "open-austin",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged surveyor in a dark frock coat at a lamp-lit desk in a harbour office at night, pen stopped above a blank sheet, frowning at it, lamp light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc006",
+          "text": "後來，法庭的勘驗官在船上量了五個小時，宣誓寫下一句話。",
+          "emotion": "收著，不講是哪一句"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a long wooden table at night opening a thick empty manila folder, looking up at the viewer with raised eyebrows, lamp light from above",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc007",
+          "text": "這份檔案，我們就跟著德沃的三次證詞往下翻。",
+          "emotion": "承諾句，語氣篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a two-masted brigantine with a few torn sails moving alone across a grey ocean at dusk, an old sailor on a distant ship's rail lowering his telescope in disbelief, soft blue light from the low sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc008",
+          "text": "這艘船還能走，那十個人，到底為什麼不在船上？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "briggs-portrait",
+      "chapter": "出發前，船長寫信交代兒子的溜冰鞋",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clean-shaven ship's captain in his late thirties in a dark coat at a small table in lamp light, holding a glass of water and smiling a little shyly, lamp light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc047",
+          "text": "船上那十個人，帶頭的船長叫布里格斯，三十七歲，不喝酒，還買下這艘船三分之一的股份。"
+        }
+      ]
+    },
+    {
+      "id": "letter-write",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the clean-shaven captain at a small table in a small cabin at night writing a letter with a dip pen, a small half smile, a lamp lighting him from above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc048",
+          "text": "十一月三日開船前，他寫信給媽媽：船整得很漂亮，可是我沒開過她，不敢講她跑起來怎樣。",
+          "emotion": "像在念信"
+        }
+      ]
+    },
+    {
+      "id": "arthur-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a seven-year-old boy in a wool jacket reading a school book at a window seat in a small house on an overcast afternoon, looking up wistfully at the window, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc049",
+          "text": "七歲的兒子亞瑟留在家上學，他寫：要是船上塞得下，早就派人接來了。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "skates",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a wooden porch in pale winter light of an old man's hands checking a pair of small iron ice skates and a boy's boot heel, soft light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc050",
+          "text": "然後他拜託家裡，找人看看亞瑟的溜冰鞋和靴子鞋跟的洞，出遠洋前就惦記這個？",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "you-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired office worker at a hotel desk in the evening writing a note on a blank pad, a child's small shoe on the desk beside him, lamp light from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc051",
+          "text": "你要是出過遠門，大概也寫過這種信：一半在講錢，一半在講小孩的鞋。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "spring",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the clean-shaven captain's hand signing the bottom of a empty letter by lamp light at night, the small cabin dark around it, lamp light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc052",
+          "text": "最後一句是什麼？"
+        },
+        {
+          "id": "mc053",
+          "text": "希望春天能回到你們身邊。",
+          "emotion": "停一拍，不哭腔"
+        }
+      ]
+    },
+    {
+      "id": "sarah-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman of thirty in a plain dark dress at a small cabin table in grey morning light writing a letter, glancing up with a small smile at a harmonium beside her, light from a small window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc054",
+          "text": "四天後，太太莎拉在紐約港外也寫了一封：丈夫覺得這批人目前還算安分。"
+        }
+      ]
+    },
+    {
+      "id": "tell-arthur",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the woman in a plain dark dress in grey morning light pausing with her pen over a blank sheet, her eyes warm and looking off to the side, light from a small window on the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc055",
+          "text": "她還寫，告訴亞瑟，我很期待他的信，路上有好玩的事，我會記著講給他聽。",
+          "emotion": "溫柔，放慢"
+        }
+      ]
+    },
+    {
+      "id": "arthur-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a seven-year-old boy in a wool jacket at a garden gate on a grey winter afternoon, looking down an empty village road with an envelope in his hand, soft light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc056",
+          "text": "這個七歲的孩子，後來等到的是什麼？",
+          "emotion": "問句，放輕"
+        }
+      ]
+    },
+    {
+      "id": "ship-leaves",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small two-masted sailing ship on an empty grey sea in mild afternoon light, one sailor on a far deck shading his eyes toward it, soft overcast light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc057",
+          "text": "這封信之後，外界再聽到這艘船，就是德沃爬上去的那天下午。",
+          "emotion": "收著，往前走"
+        }
+      ]
+    },
+    {
+      "id": "half-hour",
+      "chapter": "三個人，把空船開進直布羅陀",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded ship's mate in a dark wool coat and cap stepping back onto another wooden deck in dull afternoon light, shaking his head at an older captain in a peaked cap, the empty ship small behind them, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc009",
+          "text": "那天下午他在船上待了半個鐘頭，回去報告時有一個數字：艙底一公尺多的水。",
+          "emotion": "接住問題，輕快"
+        }
+      ]
+    },
+    {
+      "id": "gap-instruments",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a dim small cabin of a bearded ship's mate in a dark wool coat and cap holding open an empty fitted wooden instrument box lined with cloth, eyes narrowed at it, light from a small window on the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc010",
+          "text": "還有一個缺口：天文鐘、六分儀、航海手冊、船籍文件，全部不見，是誰拿走的？",
+          "emotion": "清單加快，問句收著"
+        }
+      ]
+    },
+    {
+      "id": "the-idea",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded ship's mate in a dark wool coat and cap on a wooden deck in grey daylight pointing a thick finger toward the far horizon, a determined look on his face, wind in his coat, light from an overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc011",
+          "text": "可是他向船長提了一個主意：把這艘空船開到直布羅陀去。"
+        }
+      ]
+    },
+    {
+      "id": "salvage-eyes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older ship's captain in a peaked cap on a quarterdeck in grey light rubbing his chin, eyes sliding sideways toward a distant ship still under a few sails, a small smile starting, light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc012",
+          "text": "這一艘還掛著帆在走，救回來可以向法院要救難金，他的船長動心了。",
+          "emotion": "帶一點看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "eight-men",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worried young sailor on a deck in dull daylight counting on his fingers, a coil of rope at his feet, overcast light from the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc013",
+          "text": "問題來了，他們才八個人，三個人開這艘，剩下的人開另一艘。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "would-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bearded ship's mate in a dark wool coat and cap at the rail looking up at a tall mast and torn sail in fading afternoon light, swallowing hard, soft light from the low sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc014",
+          "text": "換成你，離港口還有六百海里，你敢接嗎？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "log-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded ship's mate in a dark wool coat and cap in a plain courtroom in soft light, one hand raised, an embarrassed half smile on his face, a wooden witness rail in front of him, window light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc015",
+          "text": "德沃在那本航海日誌上接著寫，後來在法庭上老實說，航速都是猜的。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "no-liar",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan in the evening tapping the side of his nose with one finger and smiling, a closed old logbook on the table, lamp light from above",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc016",
+          "text": "我的看法是，編故事的人不會替自己留這種把柄。",
+          "emotion": "意見，輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "gibraltar-rock",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a huge grey rock rising behind a calm bay in early morning mist, a lone sailor at the wheel of a two-masted brigantine steering toward it, soft morning light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc017",
+          "text": "十二月十三日早上，她進了直布羅陀灣，大家都以為，這下可以領一大筆錢。"
+        }
+      ]
+    },
+    {
+      "id": "arrest",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern court marshal in a dark coat on a quay in overcast morning light nailing a blank paper notice to a ship's mast, sailors staring behind him, overcast light from above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc018",
+          "text": "結果，船一停好，法院就把她扣了。",
+          "emotion": "轉折"
+        },
+        {
+          "id": "mc019",
+          "text": "五天後開庭，第一個被叫上去的，就是德沃。",
+          "emotion": "斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "flood-face",
+      "chapter": "勘驗官在船上量了五個小時",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stiff grey-haired official in a dark legal gown at a courtroom bench in soft daylight, peering over small spectacles with one eyebrow raised, window light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc020",
+          "text": "這批人講完，檢察總長索利弗拉德覺得太離奇了，下令把整艘船從裡到外查一遍。"
+        }
+      ]
+    },
+    {
+      "id": "surveyor-board",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout middle-aged surveyor in a dark frock coat climbing up a gangplank in pale light with a measuring rule under one arm, looking up at the masts with narrowed eyes, light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc021",
+          "text": "勘驗官叫奧斯汀，他在船上待了五個小時，潛水夫也摸過船底，沒有撞過的痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "tar-barrel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a dim cargo hold of the stout surveyor bending over an open barrel full of dark tar and tilting his head at it, lantern light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc022",
+          "text": "後面貨艙有一桶焦油，桶蓋開著，一滴都沒有灑，他說遇過大風浪不會這樣。",
+          "emotion": "數著講"
+        }
+      ]
+    },
+    {
+      "id": "casks",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a dim cargo hold of a sailor walking between neat rows of wooden barrels with a lantern, touching one barrel whose bung is missing, lantern light from his hand",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc023",
+          "text": "貨是一千七百零一桶酒精，只有一桶被打開過。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "gold-studs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a sailor's cabin in soft daylight of the surveyor's fingers opening a small cigar case that holds three tiny gold studs with red stones, his eyebrows up, light from a side window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc024",
+          "text": "水手的箱子裡有一個雪茄盒，三顆鑲寶石的金釦還擺在那裡。"
+        }
+      ]
+    },
+    {
+      "id": "pirate-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a sofa in the evening holding a plain mug and frowning thoughtfully at the viewer, soft lamp light from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc025",
+          "text": "如果你猜的是海盜，這盒東西就很難解釋。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "not-same",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young sailor at a witness rail in a plain courtroom raising his eyebrows and shaking his head, soft side light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc026",
+          "text": "問題來了，上船那批人在法庭上說的不一樣。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "wet-mess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor in a ship's galley in grey light standing in shallow water holding up a dripping pot, a small iron stove shoved out of place behind him, light from an open door",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc027",
+          "text": "他們說船艙裡濕成一團，廚房積水，爐灶都被撞離了原位。"
+        }
+      ]
+    },
+    {
+      "id": "dry-galley",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stout surveyor in a neat dry ship's galley in pale daylight running a finger along a clean stove and looking at the dry finger, window light from the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc028",
+          "text": "奧斯汀卻寫，爐灶和炊具好好的，床單和衣物幾乎都是乾的。"
+        }
+      ]
+    },
+    {
+      "id": "who-wrong",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young court clerk at a plain desk in soft light holding two sheets of paper apart and frowning from one to the other, light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc029",
+          "text": "一條船，兩份說法，到底誰講錯了？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "weeks-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor on a moored wooden deck in pale winter light mopping the planks and hanging wet bedding over a rail, the big grey rock far behind him, light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc030",
+          "text": "後來一位作者指出，勘驗時離發現她已經兩個半星期，船早就被整理過了。"
+        }
+      ]
+    },
+    {
+      "id": "bow-cuts",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up from a small rowing boat in overcast light of the stout surveyor running a finger along a long narrow cut in a ship's wooden bow plank, frowning, light from an overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc031",
+          "text": "奧斯汀還看到，船頭兩側各有一道長長的割痕，他判斷是利器割的。"
+        }
+      ]
+    },
+    {
+      "id": "austin-line",
+      "template": "big",
+      "data": {
+        "text": "找不出任何理由",
+        "kicker": "勘驗官奧斯汀的宣誓書，最後一段",
+        "sub": "這艘船為什麼會被棄置"
+      },
+      "lines": [
+        {
+          "id": "mc032",
+          "text": "報告最後一段，他宣誓：我完全找不出任何理由，這艘船為什麼會被棄置。",
+          "emotion": "一個字一個字"
+        }
+      ]
+    },
+    {
+      "id": "sword-drawn",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a dim small cabin of the stout surveyor slowly drawing a plain sword halfway from its scabbard and staring at faint reddish marks on the blade, lamp light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc033",
+          "text": "可是同一份報告裡，他還抽出了船長房裡的一把劍。"
+        },
+        {
+          "id": "mc034",
+          "text": "他寫：看起來，像是抹過血，又擦掉。",
+          "emotion": "壓低，斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "flood-sword",
+      "chapter": "檢察總長在信裡寫：這是我的猜測",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey-haired official in a dark gown at his desk in pale daylight holding a plain sword up to a window, a satisfied narrow smile on his face, window light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc035",
+          "text": "這把劍，正是索利弗拉德要的東西。"
+        }
+      ]
+    },
+    {
+      "id": "slate",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a cabin table in soft light of a small dark writing slate covered in empty chalk smudges, a grey-haired official's finger resting at its bottom edge, light from a window on the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc036",
+          "text": "船上的紀錄他也看了：石板最後一筆，是十一月二十五日早上八點。"
+        }
+      ]
+    },
+    {
+      "id": "azores-island",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dark volcanic island seen from a ship's rail on a grey morning, a young sailor in a wool cap pointing at it and calling back over his shoulder, soft light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc037",
+          "text": "先記住這個時間，亞速群島就在六哩外。",
+          "emotion": "前向鉤子，全片唯一一次"
+        }
+      ]
+    },
+    {
+      "id": "nine-days",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grey empty sea at dawn, a lone old fisherman in a small boat near a dark island looking far out at the horizon, soft pale light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc038",
+          "text": "從那裡到德沃爬上甲板，中間空了九天，這九天，船上還有人嗎？",
+          "emotion": "問句收著"
+        }
+      ]
+    },
+    {
+      "id": "flood-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey-haired official in a dark coat writing fast at a desk at night, his pen pressing hard on a blank sheet, a candle lighting his face from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc039",
+          "text": "隔年一月二十二日，他寫信回倫敦：船員偷喝酒精，喝醉之後殺了船長一家和大副。",
+          "emotion": "轉述，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "flood-theory",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the grey-haired official in a dark coat at night holding a candle close to a small model ship and pointing at its bow with a pen, narrowed eyes, candle light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc040",
+          "text": "再把船頭割壞裝成撞礁，搭別的船跑了。"
+        }
+      ]
+    },
+    {
+      "id": "flood-guess",
+      "template": "big",
+      "data": {
+        "text": "「理論，或者猜測」",
+        "kicker": "索利弗拉德致倫敦貿易委員會",
+        "sub": "1873 年 1 月 22 日"
+      },
+      "lines": [
+        {
+          "id": "mc041",
+          "text": "信裡他自己用的字，是我的理論，或者猜測。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "mc042",
+          "text": "我要替他說句公道話，他至少把猜測兩個字寫出來了。",
+          "emotion": "帶一點笑"
+        }
+      ]
+    },
+    {
+      "id": "deveau-suspected",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded ship's mate in a dark wool coat and cap on a stone quay in pale daylight turning around with a tired, hurt look, a distant official in a dark gown watching him from an upper window, overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc043",
+          "text": "救回這艘船的德沃，也被他懷疑有事瞞著。"
+        }
+      ]
+    },
+    {
+      "id": "that-look",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tired sailor in a wool cap on a quay in pale light looking straight at the viewer with raised palms, an exasperated expression, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc044",
+          "text": "你想想，你把一艘空船開了九天送進港，換來的是這種眼神，你受得了嗎？",
+          "emotion": "替他不平"
+        }
+      ]
+    },
+    {
+      "id": "newspaper-sums",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young newspaper clerk in shirtsleeves at a cluttered desk in soft daylight drawing a line across a empty sea chart with a ruler, shaking his head, soft side light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc045",
+          "text": "一月底，直布羅陀的報紙也算了一筆：沒有人掌舵的船，走那麼遠，幾乎不可能。"
+        }
+      ]
+    },
+    {
+      "id": "my-view-letters",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan in the evening setting two empty letters down on a table and rubbing his forehead, thoughtful, lamp light from above",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc058",
+          "text": "還記得那兩封家書嗎？它們證明不了什麼。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "my-view-letters-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a desk in the evening holding two folded letters side by side and shaking his head with a doubtful smile, lamp light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc058b",
+          "text": "可是我的看法是，要我相信這對夫妻雇了一船殺人犯，很難。",
+          "emotion": "意見，收著"
+        }
+      ]
+    },
+    {
+      "id": "what-about-arthur",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old woman in a shawl at a kitchen table on a grey afternoon holding a small boy's jacket in her lap and looking out of the window, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc059",
+          "text": "而且你想，如果他打算假裝失蹤騙保險，家裡的亞瑟要怎麼辦？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "sword-handed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a court marshal in a dark coat in pale daylight handing a plain sheathed sword across a table to a small neat doctor in spectacles, a grave look on both, soft side light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc060",
+          "text": "可是那把劍，已經送到醫生手上了。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "tubes",
+      "chapter": "化驗說不是血，救船的人分到的卻很少",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a small laboratory in soft light of a small neat doctor in spectacles holding up a glass tube of clear water with a tiny brown fleck hanging on a white thread, one eye squinting, window light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc061",
+          "text": "這位派特隆醫生把甲板的斑點吊進蒸餾水，泡了二十三個小時，水還是清的。",
+          "emotion": "像偵探，加快"
+        }
+      ]
+    },
+    {
+      "id": "doctor-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the doctor in spectacles at a lamp-lit bench at night leaning over a plain sword blade with a magnifying glass, his eyes wide with alarm, lamp light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc062",
+          "text": "輪到那把劍，他坦白寫：我第一眼以為，真的是血。",
+          "emotion": "壓低"
+        },
+        {
+          "id": "mc063",
+          "text": "那結果呢？",
+          "emotion": "短，上揚"
+        }
+      ]
+    },
+    {
+      "id": "microscope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the doctor at a brass microscope at night with one eye to the lens, his eyebrows slowly rising, a lamp lighting the bench from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc064",
+          "text": "放到三百三十倍的顯微鏡底下，看不到血球，只有像鐵質的結晶和植物纖維。"
+        }
+      ]
+    },
+    {
+      "id": "no-blood",
+      "template": "big",
+      "data": {
+        "text": "沒有血",
+        "kicker": "派特隆醫生的化驗報告，1873 年 1 月 30 日",
+        "sub": "「依我們現有的科學知識」"
+      },
+      "lines": [
+        {
+          "id": "mc065",
+          "text": "他的結論是，依他們當時的科學知識，甲板和劍上都沒有血。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "what-about-bow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall grey-bearded American naval captain in a dark uniform at a ship's bow in mild daylight poking a splintered plank with one finger and snorting, light from an overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc066",
+          "text": "那船頭的割痕呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mc067",
+          "text": "三月四日，報紙登出一位美國艦長的看法：只是木板裂開，被海水打掉。"
+        }
+      ]
+    },
+    {
+      "id": "opposite",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a newspaper editor in shirtsleeves in soft light setting two wooden printing blocks side by side and shaking his head with a wry smile, light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc068",
+          "text": "報紙也註明，這跟勘驗官正好相反。"
+        }
+      ]
+    },
+    {
+      "id": "recalled",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded ship's mate in a dark wool coat and cap in a plain courtroom in pale light back at a witness rail, rubbing tired eyes with one hand, a travelling bag at his feet, window light from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc069",
+          "text": "同一天，德沃第三次上庭，他本來開著自己的船去了熱那亞送貨。",
+          "emotion": "有點無奈"
+        }
+      ]
+    },
+    {
+      "id": "judge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly judge in a white wig at a high bench in soft daylight looking down over his glasses with an approving nod, soft side light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc070",
+          "text": "結果，三月十四日，法官稱讚他們分人開船，冒了險，靠的是真本事。"
+        }
+      ]
+    },
+    {
+      "id": "small-share",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bearded ship's mate in a dark wool coat and cap's rough open palm in pale daylight holding a few small coins, his thumb pushing them around, soft light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc074",
+          "text": "德沃的訃聞後來寫得很簡單：官司一打，他分到的很少。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "prussia-letter",
+      "chapter": "熱那亞的領事在信裡多寫了一句：不算多",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly consul with white whiskers at a desk in soft morning light unfolding a empty letter with foreign stamps, his expression softening, window light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc075",
+          "text": "判決三個禮拜後，直布羅陀的美國領事收到一封信，從普魯士一座小島寄來。"
+        }
+      ]
+    },
+    {
+      "id": "mothers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older woman in a dark shawl at a plain kitchen table on a windy grey island, dictating to a neighbour's hand with a blank sheet, her eyes tired and steady, grey soft side light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc076",
+          "text": "信是替兩個水手兄弟的母親和妻子問的：小艇還在不在，日誌找到了沒？",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "why-left",
+      "template": "big",
+      "data": {
+        "text": "他們為什麼離開？",
+        "kicker": "普魯士來信的最後一句，1873 年 4 月收到",
+        "sub": "「請告訴我們您的看法」"
+      },
+      "lines": [
+        {
+          "id": "mc077",
+          "text": "最後一句是：請告訴我們，您認為他們為什麼離開。",
+          "emotion": "放慢，放輕"
+        }
+      ]
+    },
+    {
+      "id": "consul-silent",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the elderly consul with white whiskers at dusk holding a empty letter to the fading window, not moving, his mouth a thin line, soft blue light from the window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc078",
+          "text": "領事把信轉給了華盛頓，他回了什麼，我查得到的紀錄裡沒有。"
+        },
+        {
+          "id": "mc079",
+          "text": "如果你是他，你會怎麼回？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "nine-empty",
+      "template": "big",
+      "data": {
+        "text": "9 桶是空的",
+        "kicker": "熱那亞領事的信，1873 年 4 月 26 日",
+        "sub": "「不算特別多」"
+      },
+      "lines": [
+        {
+          "id": "mc080",
+          "text": "還記得那一千七百零一桶嗎？到了四月底，熱那亞的美國領事來信：九桶是空的。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "star-barrels",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at home in the evening pointing at a glowing laptop showing a blank dark rectangle, his face excited and sure of himself, cool screen light on his face",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc081",
+          "text": "你如果看過別的版本，這裡會下重音，這九桶後來成了最受歡迎的解釋。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "not-many",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a consul with a neat grey beard in soft light writing one short note in the margin of a empty page, unimpressed, window light from the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc082",
+          "text": "偏偏領事在括號裡多寫了一句：不算特別多。",
+          "emotion": "轉折，輕輕放下"
+        },
+        {
+          "id": "mc083",
+          "text": "我覺得這五個字，比九桶本身更值得記。"
+        }
+      ]
+    },
+    {
+      "id": "red-oak",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a quay in overcast daylight of a cooper in a leather apron holding two barrel staves side by side, one reddish and one pale, looking closely at the wood grain, soft light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc084",
+          "text": "後來有人查到，這九桶是紅橡木，比別的桶容易滲。"
+        }
+      ]
+    },
+    {
+      "id": "two-readings",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan in the evening holding up one blank card in each hand and tilting his head between them, lamp light from above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc085",
+          "text": "同樣九桶，有人讀成艙裡滿是酒氣，領事讀成平常的損耗。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "eleven-years",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man with a moustache at a desk in a small English study at night tapping a pen against his chin and grinning at a empty page, lamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc086",
+          "text": "十一年後，有人把這艘船寫進了小說。",
+          "emotion": "數字收"
+        }
+      ]
+    },
+    {
+      "id": "magazine",
+      "chapter": "一八八四年，小說把德沃寫不見了",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a railway passenger on a station bench in soft morning light gripping an open magazine with blank pages, his eyes wide, steam drifting behind him, light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc087",
+          "text": "一八八四年一月，英國一本雜誌登了一篇沒署名的小說，作者是二十多歲的柯南道爾。",
+          "emotion": "轉述八卦"
+        }
+      ]
+    },
+    {
+      "id": "in-tow",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a calm bay on an overcast day, a sailor at the stern of one ship hauling a thick tow rope that stretches back to a second ship with empty decks, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc088",
+          "text": "開頭第一段就寫，這艘船是被拖進直布羅陀的。"
+        }
+      ]
+    },
+    {
+      "id": "erased",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded ship's mate in a dark wool coat and cap in a small harbour bookshop in soft light holding an open empty magazine, looking up with an offended frown, shelves behind him, window light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc089",
+          "text": "還記得德沃那三個人，和那本用猜的日誌嗎？在小說裡，全沒了。",
+          "emotion": "替他不平"
+        }
+      ]
+    },
+    {
+      "id": "bobbin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a dim small cabin in soft lamp light of a single spool of silk thread balanced on top of a sewing machine, a woman's finger about to touch it, lamp light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc090",
+          "text": "小說還寫小艇好好掛著，縫紉機上立著線軸，連船名都拼錯。"
+        }
+      ]
+    },
+    {
+      "id": "taken-real",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old man in a tavern in the evening reading aloud from a blank magazine to a young sailor who listens with his mouth open, warm lamp light from above",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc091",
+          "text": "有讀者把它當成真的報導，那個拼錯的名字，到今天還常有人用。"
+        }
+      ]
+    },
+    {
+      "id": "tea-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a small cabin table in soft grey light of a plain teacup, a steaming thread above it, a young reader's finger pointing at the cup, soft light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc092",
+          "text": "那開頭那杯溫茶，是不是這篇小說寫的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mc093",
+          "text": "也不是，全文裡沒有這一段。",
+          "emotion": "輕輕揭曉"
+        }
+      ]
+    },
+    {
+      "id": "tea-teller",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a jolly old sailor in a tavern in the evening holding up a teacup and winking as he tells a story, warm lamp light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc094",
+          "text": "溫茶是別人講這個故事時加上去的，最早是誰，我查得到的來源講不清楚。"
+        }
+      ]
+    },
+    {
+      "id": "empty-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a small cabin in dull daylight of a sailor's rough hand sweeping across a bare wooden table with only an empty wooden rack on it, soft light from a skylight above",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc095",
+          "text": "而上船那批人在法庭上說的是：桌上什麼吃的喝的都沒有。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "heard-it",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a sofa at night looking sheepishly at her phone and laughing at herself, a hand over her mouth, soft lamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc096",
+          "text": "所以你要是也聽過那杯茶，不用不好意思。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "deveau-still",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a grey-bearded sea captain in his fifties at the wheel of a three-masted schooner on an overcast day, squinting ahead with a weathered calm face, overcast light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc101",
+          "text": "那德沃呢？他這時候還在海上跑船。",
+          "emotion": "接回主角"
+        }
+      ]
+    },
+    {
+      "id": "obituary",
+      "chapter": "德沃過世隔年，冒出一份倖存者自述",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small-town newspaper editor's hand in soft light setting a short empty column on a press sheet, spectacles on the desk beside it, soft side light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc102",
+          "text": "一九一二年他過世，七十六歲，家鄉報紙的訃聞提到了這艘船。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "reporters",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old white-bearded captain on a porch in pale afternoon light patiently facing a young reporter with a notebook of blank pages, one hand raised to make a point, light from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc103",
+          "text": "訃聞說，這四十年有上百個記者來問過他。"
+        }
+      ]
+    },
+    {
+      "id": "sailors-theories",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old white-bearded captain at a harbour bench on a mild afternoon wagging a finger at a sailor who is explaining something with both hands, soft light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc104",
+          "text": "世界各地的船員拿各種說法給他聽，他總能指出船上哪個細節對不上。"
+        }
+      ]
+    },
+    {
+      "id": "his-own",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the old white-bearded captain's face in late afternoon light looking out to sea, his mouth closed, eyes tired and thoughtful, soft light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc105",
+          "text": "那他自己怎麼想？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "his-own-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly woman at a kitchen table in soft window light holding up a folded blank newspaper and frowning at it, reading glasses on her nose, light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc106",
+          "text": "法庭上他說過，船員大概以為船要沉，慌了。可是四十年後，訃聞寫：他自己也解釋不了。",
+          "emotion": "收乾，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "forty-years",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old white-bearded captain sitting alone on a harbour wall at dusk with his back straight, a small ship far out on the water, soft blue light from the low sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc107",
+          "text": "你想想，你是第一個爬上甲板的人，報紙最後替你寫的是這句。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "survivor-1913",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sharp-eyed magazine editor in a city office on a grey day slapping a empty manuscript on his desk with delight, window light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc108",
+          "text": "沒想到，他過世隔年，一份號稱倖存者留下的自述就出現了。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "sharks",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pale shore on a hazy day, a ragged man in torn clothes crawling up the sand and looking back at the sea with a theatrical expression, hazy light from above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc109",
+          "text": "一九一三年一本雜誌登出來，說全船圍著看人比游泳，全掉下海，只有寫的人沒被鯊魚吃掉。",
+          "emotion": "不屑"
+        }
+      ]
+    },
+    {
+      "id": "too-neat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan in the evening holding a blank magazine at arm's length with one eyebrow raised, lamp light from above",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc110",
+          "text": "查下來多半是編的，時間這麼巧，可是沒有證據跟他過世有關。"
+        }
+      ]
+    },
+    {
+      "id": "keating",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hands at a typewriter on a cluttered desk at night, a empty sheet rolling up, a tall stack of blank pages beside it, a desk lamp from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc111",
+          "text": "一九二〇年代更大膽，有個作者編出另一個倖存者，連船員名字都是他編的。"
+        }
+      ]
+    },
+    {
+      "id": "arthur-grown",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man of sixty in a dark overcoat at a street bookstall in pale autumn light holding a blank-covered book and staring at it with a still, sad face, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc112b",
+          "text": "你知道更難受的是什麼嗎？",
+          "emotion": "壓低，轉向觀眾"
+        },
+        {
+          "id": "mc113",
+          "text": "這些東西印出來的時候，亞瑟還活著，他活到一九三一年。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "your-parents",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman at a street bookstall on a mild morning lowering a book and looking straight at the viewer with a hurt, questioning face, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc114",
+          "text": "換成你，在書攤上看到別人這樣寫你爸媽，你會怎麼做？",
+          "emotion": "問句，放輕"
+        }
+      ]
+    },
+    {
+      "id": "that-voyage",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man of sixty in a dark overcoat at a street bookstall in pale autumn light closing a book gently and setting it back on the pile, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc115",
+          "text": "媽媽答應要講給他聽的那趟航程，書攤上賣的是這種版本。",
+          "emotion": "放輕，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "investigator",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands turning a page of an empty ledger at a long archive table on a mild day, a pencil resting beside them, soft side light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc116",
+          "text": "把這些錯一條一條拆開的，有一個是保險公司的人。"
+        }
+      ]
+    },
+    {
+      "id": "fay-table",
+      "chapter": "一九四〇年，亞速群島回了一封信",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands comparing two blank ledgers side by side at a long archive table in soft light, one finger holding a place on each page, window light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc117",
+          "text": "他叫費伊，拿法庭紀錄、領事信件、保險帳冊一條一條對。"
+        }
+      ]
+    },
+    {
+      "id": "ask-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a grey-haired man's hand in soft daylight dropping a empty envelope into a plain mail slot, a small amused smile just visible above it, window light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc118",
+          "text": "然後他做了一件很像保險公司會做的事：寫信問天氣。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "reply-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clerk's hand in a grey office in soft morning light sliding a blank folded letter into a plain envelope, a rubber stamp beside it, soft side light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc119",
+          "text": "一九四〇年五月，亞速群島的氣象局回信了，查的是石板最後一筆那兩天。"
+        }
+      ]
+    },
+    {
+      "id": "calm-morning",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a flat quiet sea at a pale morning under thin cloud, an old fisherman sitting in his small boat with his oars resting, looking up at the sky, soft pale light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc120",
+          "text": "二十四、二十五日都是暴風雨，可是二十五日上午風平，或者只有微風，後來才轉成大風。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "slate-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a cabin table in soft morning light of a small dark writing slate beside a brass lamp, a young sailor's chalky fingers resting on its edge, light from a small window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc121",
+          "text": "還記得石板最後一筆嗎？",
+          "emotion": "點名，亮起來"
+        },
+        {
+          "id": "mc122",
+          "text": "就是那天早上八點。"
+        }
+      ]
+    },
+    {
+      "id": "open-hatch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a wooden deck in pale calm morning light of a sailor in a wool cap lifting off a wooden hatch cover and recoiling with his sleeve over his nose, light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc123",
+          "text": "費伊的推想是，上午風小，船長叫人打開艙蓋通風，一股酒氣衝上來，把人嚇到。"
+        }
+      ]
+    },
+    {
+      "id": "order-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the clean-shaven captain on a wooden deck in pale calm morning light pointing urgently at a small rowing boat while a sailor hauls out a coil of rope, light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc124",
+          "text": "他下令放小艇，拉一條繩子，危險過了還能回來。"
+        }
+      ]
+    },
+    {
+      "id": "rope-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small crowded rowing boat in a rising grey sea, a sailor at the bow staring at a slack rope end in his hands, a two-masted brigantine sailing away far behind, flat grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc125",
+          "text": "然後風來了，船往前一衝，繩子斷了，小艇追不上。",
+          "emotion": "不煽情"
+        }
+      ]
+    },
+    {
+      "id": "may-have",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's finger in the evening tapping one spot on a empty page, his eyebrows up, lamp light from above",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc126",
+          "text": "聽起來很完整，可是你仔細看原文，關鍵的每一步他都用也許。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "rope-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor at a witness rail in a plain courtroom in soft light holding up two empty hands as he speaks, a puzzled look on his face, window light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc127",
+          "text": "問題來了，那條繩子有紀錄嗎？",
+          "emotion": "升級"
+        },
+        {
+          "id": "mc128",
+          "text": "法庭上有水手說，有繩子掛在船邊。"
+        }
+      ]
+    },
+    {
+      "id": "halyard-check",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a wooden deck in pale daylight of the stout surveyor pulling a length of thick rope through his hands and inspecting it for a splice, a skeptical look, light from an overcast sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc129",
+          "text": "有的記載說主升降索斷了，可是勘驗官寫：那幾條索都沒有新接過，他由此判斷航程中沒斷。"
+        }
+      ]
+    },
+    {
+      "id": "rope-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan in the evening holding up a short length of old rope with a small shrug and a raised eyebrow, lamp light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc130",
+          "text": "所以拿繩子拖小艇這條線，有人猜是另一卷繩，有人猜是那條索，都是後人的推測。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "check-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan in the evening pulling a tag off a empty folder and raising his pencil, a wry smile, lamp light from above",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc138",
+          "text": "推測可以一直疊，那船上最後那段時間，能不能算出來？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ocean-man",
+      "chapter": "二〇〇七年，海洋學家算出她會自己走",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an oceanographer in a sweater at a chart table on a dull day walking two fingers across a blank ocean chart, a curious look on his face, soft side light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc139",
+          "text": "二〇〇七年，一部紀錄片找來海洋學家，調出當年的風和水溫。"
+        }
+      ]
+    },
+    {
+      "id": "two-points",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a empty sea chart in lamp light of a hand placing one pin near a small island and a second pin far to the east, a thin thread between them, lamp light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc140",
+          "text": "起點是石板那個位置，終點是德沃那批人在法庭上報的位置。"
+        }
+      ]
+    },
+    {
+      "id": "can-she",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an oceanographer in a sweater on a grey day leaning over a chart table with his chin on his fist, staring at a tiny paper ship, window light from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc141",
+          "text": "問題只有一個：沒有人掌舵，她走得到嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sailed-herself",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone two-masted brigantine with a few sails moving across a grey ocean on an overcast day, an oceanographer on a small research boat in the foreground smiling and pointing at her, overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc142",
+          "text": "海洋學家的回答是：基本上，她自己就開過去了。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "reversed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young newspaper clerk in shirtsleeves in soft daylight looking at his own ruler line on a blank chart and scratching his head, window light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc143",
+          "text": "還記得一八七三年那份報紙說幾乎不可能嗎？算出來，方向倒過來了。",
+          "emotion": "點名"
+        }
+      ]
+    },
+    {
+      "id": "not-proof",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan in the evening holding up one finger with a gentle warning look, a empty chart on the table, lamp light from above",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc144",
+          "text": "不過算得到，不等於當天一定這樣走。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "blank-days",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty grey sea on a mild morning, a lone old fisherman in his small boat looking toward a distant two-masted brigantine with no one on deck, pale light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc145",
+          "text": "那九天的空白呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "mc146",
+          "text": "他們的推論是，可能從那天早上起，船上就沒有人了。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "coal-pump",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a wooden deck in grey stormy light of a sailor in an oilskin kneeling beside a dismantled pump with grimy black hands, staring at them, flat grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc147",
+          "text": "他們還推想，上一趟載煤，又剛大修，煤灰可能塞住幫浦，船長就量不出進了多少水。"
+        }
+      ]
+    },
+    {
+      "id": "sounding",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on wet deck planks in dull daylight of a sailor's hand lowering a small metal bolt on a thin line into a pump well beside a dismantled pump, soft light from an overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc148",
+          "text": "勘驗時，兩具幫浦有一具被拆開，勘驗官說是為了放量水深的工具。"
+        }
+      ]
+    },
+    {
+      "id": "your-call",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the clean-shaven captain on a heaving deck in grey morning light with one arm around a woman in a plain dark dress, looking from a dark island to the ship's boat, grave face, flat grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc149",
+          "text": "換成你是船長，剛過一場暴風雨，女兒就在船上，你會怎麼選？",
+          "emotion": "問句，放輕"
+        }
+      ]
+    },
+    {
+      "id": "instruments-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a dim small cabin of a bearded ship's mate in a dark wool coat and cap closing the empty fitted instrument box and looking down at it with a thoughtful face, light from a small window on the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc150",
+          "text": "還記得德沃發現的那個缺口嗎？儀器是誰拿的，紀錄沒寫。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "instruments-back-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded ship's master in a small open boat on grey water by day, holding a brass sextant close to his chest and squinting at the horizon, overcast light from behind",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc150b",
+          "text": "我覺得拿得走六分儀的人，還有時間，也還想找路。",
+          "emotion": "意見，輕"
+        }
+      ]
+    },
+    {
+      "id": "no-trace",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stout surveyor on a wooden deck in pale light sniffing the air over an open hatch and shaking his head, one hand on the hatch rim, overcast light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc151",
+          "text": "勘驗官當年還宣誓，船上找不到一點爆炸的痕跡，那爆炸這條路就斷了嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "chemists-2026",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young chemist in safety glasses in a plain laboratory leaning back from a small wooden model ship on a bench as a flash of flame rises from it, a delighted look, lab light from above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc152",
+          "text": "今年，英國兩位化學家在紀錄片裡拿模型船和乙醇試，說這種閃爆可能不留痕跡。",
+          "emotion": "好奇"
+        }
+      ]
+    },
+    {
+      "id": "two-sides",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a table in the evening weighing a blank folder in each hand with a raised eyebrow, lamp light from above",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc153",
+          "text": "大英百科卻認為爆炸沒有證據，比較看好誤判進水，兩邊講的都是也許。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "unsettled",
+      "template": "big",
+      "data": {
+        "text": "未結",
+        "kicker": "瑪麗賽勒斯特號",
+        "sub": "小艇和十個人，都沒有找到"
+      },
+      "lines": [
+        {
+          "id": "mc154",
+          "text": "最後那段時間發生什麼，我查得到的文件都沒有寫。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "my-view-last",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan in the evening stamping a empty manila folder with a plain rubber stamp, looking up at the viewer with a small honest shrug, lamp light from above",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc155",
+          "text": "我的看法是，他們多半是自己上了那艘小艇，可是多半，不等於有紀錄。",
+          "emotion": "意見，誠實"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "檔案未結：紀錄留下的，比故事少",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "mc156",
+          "text": "那十個人為什麼不在船上，檔案到今天還是未結；一九一二年德沃的訃聞也是這樣寫。",
+          "emotion": "乾脆，落地"
+        },
+        {
+          "id": "mc157",
+          "text": "如果你最早聽到的也是桌上那杯溫茶，留言告訴我，你是在哪裡聽到的。",
+          "emotion": "親近"
+        },
+        {
+          "id": "mc158",
+          "text": "這個頻道只講紀錄裡有的，查不到就說查不到，想一起翻檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "mc001",
+      "payoff": "mc093",
+      "what": "桌上那杯溫茶是誰寫的"
+    },
+    {
+      "setup": "mc002",
+      "payoff": "mc154",
+      "what": "十個人一個都沒有回來"
+    },
+    {
+      "setup": "mc006",
+      "payoff": "mc032",
+      "what": "勘驗官宣誓寫下的那一句"
+    },
+    {
+      "setup": "mc008",
+      "payoff": "mc156",
+      "what": "十個人為什麼不在船上"
+    },
+    {
+      "setup": "mc010",
+      "payoff": "mc150",
+      "what": "誰拿走了天文鐘和六分儀"
+    },
+    {
+      "setup": "mc017",
+      "payoff": "mc074",
+      "what": "德沃能不能領到那筆錢"
+    },
+    {
+      "setup": "mc031",
+      "payoff": "mc067",
+      "what": "船頭那兩道割痕"
+    },
+    {
+      "setup": "mc033",
+      "payoff": "mc065",
+      "what": "劍上像血的痕跡"
+    },
+    {
+      "setup": "mc036",
+      "payoff": "mc122",
+      "what": "石板最後一筆的時間"
+    },
+    {
+      "setup": "mc038",
+      "payoff": "mc146",
+      "what": "九天的空白裡船上還有沒有人"
+    },
+    {
+      "setup": "mc045",
+      "payoff": "mc143",
+      "what": "沒人掌舵走不走得到"
+    },
+    {
+      "setup": "mc056",
+      "payoff": "mc113",
+      "what": "答應講給亞瑟聽的那趟航程"
+    },
+    {
+      "setup": "mc080",
+      "payoff": "mc082",
+      "what": "九個空桶算不算線索"
+    }
+  ],
+  "youtube": {
+    "title": "瑪麗賽勒斯特號 10 人消失，1872 年勘驗官找不到理由？｜奇聞檔案局",
+    "description": "一八七二年十二月四日下午，大副德沃爬上一艘沒有人回話的帆船。甲板沒有人，唯一的小艇不見了，水手的靴子和菸斗還在。他只帶兩個水手，把這艘空船開進直布羅陀，然後被叫上法庭。\n\n這一集跟著德沃的證詞走：勘驗官奧斯汀量了五個小時，最後宣誓找不出任何棄船的理由；檢察總長索利弗拉德在信裡寫下他的「理論，或者猜測」；船長布里格斯出發前寫信交代兒子的溜冰鞋；派特隆醫生化驗說沒有血；熱那亞的領事提到九個空桶時多寫一句「不算特別多」；然後是一九四〇年亞速群島回的那封天氣信，以及後來的模型實驗與漂流計算。\n\n流傳的版本一律標明是流傳的版本：桌上的溫茶、小艇掛在架上、一九一三年與一九二〇年代的假倖存者，都不是紀錄。這份檔案沒有定論：為什麼離開，至今只有推測，沒有文件。每個數字、日期與引言的出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；在世或過世未滿七十年的人物不入畫，以無名人物代替。\n\n資料截至 2026-10-31",
+    "tags": [
+      "瑪麗賽勒斯特號",
+      "幽靈船",
+      "Mary Celeste",
+      "歷史懸案",
+      "直布羅陀",
+      "柯南道爾",
+      "海上懸案",
+      "奇聞檔案局",
+      "未解之謎",
+      "1872"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "十人\n**全部不見**",
+      "sub": "1872，最小才 2 歲",
+      "tag": "歷史懸案",
+      "shot": "open-deck"
+    }
+  },
+  "sources": [
+    {
+      "title": "Austin 勘驗宣誓書全文",
+      "url": "https://www.maryceleste.net/survey.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "潛水夫 Portunato 宣誓書",
+      "url": "https://www.maryceleste.net/diver.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Patron 化驗報告",
+      "url": "https://www.maryceleste.net/doctor.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Gibraltar Chronicle 1872–73",
+      "url": "https://www.maryceleste.net/news.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Fay 1942 更正條目",
+      "url": "https://www.maryceleste.net/facts.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "maryceleste.net 綜述",
+      "url": "https://www.maryceleste.net/about.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Briggs 1872-11-03 家書",
+      "url": "https://www.maryceleste.net/briggs.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "熱那亞領事 1873-04-26 信",
+      "url": "https://www.maryceleste.net/cargo.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "亞速氣象局 1940 回信",
+      "url": "https://www.maryceleste.net/met.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Fay 的推想",
+      "url": "https://www.maryceleste.net/fay.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "道爾小說節錄",
+      "url": "https://www.maryceleste.net/doyle.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "沉船查證",
+      "url": "https://www.maryceleste.net/wreck.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Spencer's Island 船史",
+      "url": "https://www.maryceleste.net/spencer.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Faiella 談漂流船",
+      "url": "https://www.maryceleste.net/derelict.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "船員名單",
+      "url": "https://www.maryceleste.net/crew.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "American Heritage 1981",
+      "url": "https://www.americanheritage.com/mystery-mary-celeste",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Smithsonian 2007",
+      "url": "https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Smithsonian 2024",
+      "url": "https://www.smithsonianmag.com/smart-news/an-abandoned-merchant-ship-was-discovered-floating-in-the-atlantic-1872-the-mystery-its-missing-crew-never-solved-180985547/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Faiella, The History Press",
+      "url": "https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Skeptoid #289",
+      "url": "https://skeptoid.com/episodes/289",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Britannica",
+      "url": "https://www.britannica.com/topic/Mary-Celeste",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Slate 2011",
+      "url": "https://www.slate.com/articles/life/culturebox/2011/12/the_mary_celeste_the_unluckiest_ship_to_ever_sail_the_seven_seas_.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Fishermen's Voice 2017",
+      "url": "https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "New England Hist. Society",
+      "url": "https://newenglandhistoricalsociety.com/mysterious-disappearance-mary-celeste/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Conan Doyle Encyclopedia",
+      "url": "https://www.arthur-conan-doyle.com/wiki/Mary_Celeste",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "道爾小說全文 Wikisource",
+      "url": "https://en.wikisource.org/wiki/J._Habakuk_Jephson%27s_Statement",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "NUMA 2001",
+      "url": "https://www.numa.net/expeditions/mary-celeste/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Independent",
+      "url": "https://www.independent.co.uk/news/uk/this-britain/dating-of-wrecks-timbers-puts-wind-in-sails-of-the-mary-celeste-mystery-487927.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Chemistry World",
+      "url": "https://www.chemistryworld.com/news/chemists-think-they-know-what-happened-on-board-the-mary-celeste/4023228.article",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "1872 家書轉錄",
+      "url": "https://marycelestemystery.blogspot.com/2010_04_25_archive.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "法庭證詞節錄與 1912 訃聞轉錄",
+      "url": "https://marycelestemystery.blogspot.com/2010_04_18_archive.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Sprague 第 142 號信轉錄",
+      "url": "https://marycelestemystery.blogspot.com/2010_07_25_archive.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Arthur Briggs 條",
+      "url": "https://marycelestemystery.blogspot.com/",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "assets": []
+}

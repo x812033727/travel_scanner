@@ -1,0 +1,89 @@
+{
+  "theme_id": "G108",
+  "revision": "wave11-narration-draft-1",
+  "author": "root",
+  "status": "TEXT_DRAFT_NOT_READ_ALOUD",
+  "production_ready": false,
+  "title": "每組都贏，總比率卻輸：差別藏在組別權重",
+  "treatment_file": "treatments/G108/treatment.json",
+  "treatment_sha256": "1dec044a49b00832cdf8e249905d75e482bda6eaa4d6fe05d082083e8b364be2",
+  "core_ids": [
+    "M10001"
+  ],
+  "beats": [
+    {
+      "id": "b1",
+      "core_id": "M10001",
+      "seconds": 15,
+      "claim_ids": [
+        "c1"
+      ],
+      "paragraphs": [
+        "看這兩組虛構的答題紀錄。簡單題，A答對九成，B八成；難題，A兩成，B一成。兩種難度都是A比較高，合起來，卻是B贏。是哪裡出了問題？"
+      ],
+      "visual": "先只露四個答對率，同難度橫向比較；右側合計結果先遮住。持續顯示虛構資料標籤。",
+      "question": "分組都較高，合計為何較低？",
+      "new_information": "分組都較高，合計為何較低？",
+      "spoken_characters": 54,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 12.0
+    },
+    {
+      "id": "b2",
+      "core_id": "M10001",
+      "seconds": 20,
+      "claim_ids": [
+        "c2"
+      ],
+      "paragraphs": [
+        "先把題數放回來。A只做十題簡單題，卻做了一百題難題；B剛好相反，多數是簡單題。兩組都是一百一十題，遇到的難度組成卻差很多。"
+      ],
+      "visual": "顯示各格分母10/100與100/10，色塊面積只表示題數；不把A/B換色，不讀所有表格格子。",
+      "question": "兩組各有多少簡單題與難題？",
+      "new_information": "兩組各有多少簡單題與難題？",
+      "spoken_characters": 54,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 12.0
+    },
+    {
+      "id": "b3",
+      "core_id": "M10001",
+      "seconds": 20,
+      "claim_ids": [
+        "c3"
+      ],
+      "paragraphs": [
+        "合計要把答對題數加起來，再除以總題數。A答對二十九題，B八十一題。A的紀錄被大量難題拉低，B則有大量簡單題。每格的答對率都沒翻轉，換的是它們在總體裡的分量。"
+      ],
+      "visual": "同一張表收成兩條110題的條形圖，答對數29/81按等尺度呈現。不得剪成同一批題目的前後測。",
+      "question": "百分比背後的權重怎麼進入總體？",
+      "new_information": "百分比背後的權重怎麼進入總體？",
+      "spoken_characters": 70,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 15.6
+    },
+    {
+      "id": "b4",
+      "core_id": "M10001",
+      "seconds": 25,
+      "claim_ids": [
+        "c4"
+      ],
+      "paragraphs": [
+        "現在讓兩組都用五十題簡單、六十題難，固定四個答對率重算，A就回到前面。但這是假設演算，沒有真的換試卷。看到整體排名，先問比較的組成是否相同；要判斷誰造成進步，光靠這張分組表也還不夠。"
+      ],
+      "visual": "用相同組成預設50/60，顯示重新計算57/110與46/110；畫面標「假設重算」，不演成真實改題後的實驗。最後只留下看組成及因果限制。",
+      "question": "相同組成會改變什麼，又不能證明什麼？",
+      "new_information": "相同組成會改變什麼，又不能證明什麼？",
+      "spoken_characters": 81,
+      "estimated_speech_seconds_at_4_5_characters_per_second": 18.0
+    }
+  ],
+  "duration": {
+    "body_budget_seconds": 80,
+    "previous_body_budget_seconds": 110,
+    "spoken_characters": 259,
+    "estimate_basis": "中文字/英文字母/數字計數，每秒4.5字只估語速；無錄音、試讀或觀眾測試。",
+    "read_aloud": "NOT_PERFORMED",
+    "recorded_audio": "NONE"
+  },
+  "paid_media_calls": 0,
+  "next_gate": "非作者讀回、互動小樣驗證，之後才實際試讀；不把80秒當已量到的成片長度。"
+}

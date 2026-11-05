@@ -37,12 +37,13 @@ async function detail(response) {
  * Open a pairing; resolves to { device_code, user_code, verification_path, expires_in, interval }.
  * With `colab`, the request also asks for Colab account credentials: the owner sees that on the
  * card before allowing it, and the token this pairing collects may then fetch the sign-in of a
- * Colab account from /admin/ai-accounts (skill minimax-h3-colab).
+ * Colab account from /admin/ai-accounts (skill minimax-h3-colab). With `runpod`, the same for
+ * starting RunPod pods through the site (skill minimax-h3-runpod).
  */
-export async function startPairing({ site, clientName, colab = false, fetchImpl = globalThis.fetch }) {
+export async function startPairing({ site, clientName, colab = false, runpod = false, fetchImpl = globalThis.fetch }) {
   let response;
   try {
-    const body = { client_name: clientName.slice(0, CLIENT_NAME_MAX), ...(colab ? { colab: true } : {}) };
+    const body = { client_name: clientName.slice(0, CLIENT_NAME_MAX), ...(colab ? { colab: true } : {}), ...(runpod ? { runpod: true } : {}) };
     response = await post(site, "pairings", body, fetchImpl);
   } catch (error) {
     throw new SpeechError(`cannot reach ${site}: ${error.message}`, { code: "network" });

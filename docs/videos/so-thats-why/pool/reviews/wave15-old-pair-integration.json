@@ -1,0 +1,71 @@
+{
+  "status": "PASS_TWO_READER_SCOPED_OLD_PAIR_INTEGRATION",
+  "reviewed_on": "2026-11-02",
+  "reviewed_files": [
+    {
+      "file": "reviews/wave15-root-old-pairs.json",
+      "sha256": "4b2dbdb30820453766574e6908de3154ec76051cd9f3da960df9222a82a88b3f"
+    },
+    {
+      "file": "reviews/wave15-physics-old-pairs.json",
+      "sha256": "968a37c8842ce816090e1826b592eaa83a8f26ad2ca86a5ccef477b2e6f2351a"
+    },
+    {
+      "file": "baselines/2026-11-02-2921.json.gz",
+      "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7"
+    }
+  ],
+  "reviewed_pair_count": 7,
+  "merges": [
+    {
+      "duplicate_id": "E2026",
+      "canonical_id": "E2024",
+      "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。"
+    }
+  ],
+  "distinct": [
+    {
+      "a": "E2024",
+      "b": "E2043",
+      "reason": "電池題只區分每庫侖能量與總可搬運電荷；並聯電容題另需共兩節點的等壓約束、各支路Q_i=C_iV與電荷加總。電容的支路分配與接法不是換成另一種電池例子。"
+    },
+    {
+      "a": "D2041",
+      "b": "D2043",
+      "reason": "熟成在凍結前改脂肪結晶、水合與後續打發；硬化在出機後再凍更多水。不同物相/成分與工序條件，不以都放冷處就合併。"
+    },
+    {
+      "a": "E2026",
+      "b": "E2070",
+      "reason": "E2026控制總搬運電荷談總能量；E2070固定每秒電荷通量談能量轉移率，單看電流無法指定功率。保留「庫存/總量」與「每秒流量」辨識，但E2070宜作短段，不能只換公式字母湊獨立長片。"
+    },
+    {
+      "a": "J6014",
+      "b": "X5004",
+      "reason": "軸承共球心幾何允許整組傾斜以免額外強迫變形；針織布是接觸約束下既存線圈彎曲力矩使無外載邊緣捲起，起始負載與幾何自由度不同。"
+    },
+    {
+      "a": "K6024",
+      "b": "N277",
+      "reason": "凍毛毛雨是在無融雪暖層條件下液滴碰併成長；雨幡是已形成降水落下時蒸發/昇華而未到地面，質量流向與發生階段相反。"
+    },
+    {
+      "a": "E7007",
+      "b": "E7008",
+      "reason": "曲流側移由外岸侵蝕/內岸加積逐步搬邊界；改道是河床堆高後逸出並採較低/較優坡降路徑，需相對氾濫平原高度與路徑條件，不只是側移更快。"
+    },
+    {
+      "a": "E2024",
+      "b": "E2070",
+      "reason": "總可用電荷/能量是庫存條件，電流/功率是每秒流量條件；兩題可同片相接，電池能用多久仍需負載/衰退另核，不將任何電池大小當功率大小。"
+    }
+  ],
+  "excluded": [],
+  "decision": "Accept two-reader agreement: E2026 becomes a sourced variant of E2024. Preserve every old raw record, source and original question; declare retirement in every affected checkpoint. No old theme uses E2026.",
+  "derived_distinct": "The extra E2024/E2070 declaration carries E2026/E2070 through the agreed alias; it is not an eighth independently sampled pair.",
+  "role_disclosure": "Root is a non-author of the historical batches. pool_physics authored historical E2, J6014 and X5004 and provided a fresh independent comparison before viewing root proposals, not a non-author review of those originals.",
+  "reading_scope": "Both read all seven complete stored question/answer/scope pairs. Root freshly read OpenStax7.2 and9.5; physics read7.2,8.2,9.5. Four non-electrical pairs were editorial comparisons of persisted records, not fresh full-source fact checks.",
+  "sampling_limit": "Six highest-scoring selected pairs absent prior explicit distinct decisions in frozen wave14 top10, plus one shared-source manual followup. Purposive, nonrandom; no precision/recall or full-pool uniqueness claim.",
+  "remaining_blockers": [],
+  "production_ready": false
+}

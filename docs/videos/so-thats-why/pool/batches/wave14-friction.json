@@ -1,0 +1,536 @@
+{
+  "batch_id": "wave14-friction-20261101",
+  "created_on": "2026-11-01",
+  "scope": "9個摩擦/接觸/磨耗條件對照；研究裝置與微尺度結果不泛化所有鞋、橡膠或刀具。不是維修/剃刮/化學製作指南。",
+  "sources": [
+    {
+      "id": "F14-S001",
+      "url": "https://jlupub.ub.uni-giessen.de/server/api/core/bitstreams/616d2c43-608e-48a6-b719-93ee3c972693/content",
+      "title": "Temperature Activates Contact Aging in Silica Nanocontacts",
+      "publisher": "M. Vorholzer et al.; Physical Review X / Justus-Liebig-Universität Gießen repository",
+      "accessed_on": "2026-11-01",
+      "version": "PRX 9,041045 (2019-12-02); DOI10.1103/PhysRevX.9.041045；圖書館存放DOI10.22029/jlupub-9186是同一工作。",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.1–7主文與Appendix A/B；p.4曾受工具輸出截斷，已單獨重讀。另渲染p.3 Fig.1。未讀pp.8–10全部。",
+      "locator": "PDF pp.1–7主文與Appendix A/B；p.4曾受工具輸出截斷，已單獨重讀。另渲染p.3 Fig.1。未讀pp.8–10全部。",
+      "summary": "升溫可加快接點成鍵老化，但量到的靜摩擦峰還混入熱活化斷鍵，不能直接當鍵數。",
+      "limitations": "乾燥SiO2奈米接點與所測溫區；小力接觸剛性是另一觀測量，複雜鍵網絡不能直接用單鍵彈簧算鍵數；模擬時間與實驗時間不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F14-S002",
+      "url": "https://arxiv.org/pdf/1405.4953",
+      "title": "The nucleation and propagation of solitary Schallamach waves",
+      "publisher": "K. Viswanathan, A. Mahato & S. Chandrasekar; arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:1405.4953v3 (2015-01-08); related DOI10.1103/PhysRevE.91.012408",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.4–9裝置與局部脫離波觀察、pp.15–16結論及影像追蹤方法、pp.21–22 Figs.4–6圖說；p.22另渲染讀圖。未讀全24頁或觀看原影片。",
+      "locator": "PDF pp.4–9裝置與局部脫離波觀察、pp.15–16結論及影像追蹤方法、pp.21–22 Figs.4–6圖說；p.22另渲染讀圖。未讀全24頁或觀看原影片。",
+      "summary": "黏著接觸的位移可由局部脫離再黏回的波傳遞，波外大部分界面仍不滑。",
+      "limitations": "限定彈性體/玻璃透鏡黏著接觸；成核與傳播採不同接觸幾何。位錯只是類比，不能畫成晶體缺陷或整塊橡膠同時滑動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F14-S003",
+      "url": "https://arxiv.org/pdf/1104.3320",
+      "title": "Self-retracting motion of graphite micro-flakes: superlubricity in micrometer scale",
+      "publisher": "Z. Liu et al.; arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:1104.3320v1 (2011-04-17); related DOI10.1103/PhysRevLett.108.205503",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.1–6主文、pp.8–11 Figs.1–4圖說；p.9 Fig.2另渲染讀圖。未看補充影片。",
+      "locator": "PDF pp.1–6主文、pp.8–11 Figs.1–4圖說；p.9 Fig.2另渲染讀圖。未看補充影片。",
+      "summary": "同一微片推開可自回縮，但轉到晶格對齊的方向可鎖住；界面阻力隨相對晶格排列改變。",
+      "limitations": "微製作石墨/SiO2頂片與石墨平台；不稱所有石墨零摩擦，也不把較大片失效的石牆結構模型當已完整證實。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F14-S004",
+      "url": "https://www.nature.com/articles/ncomms11816.pdf",
+      "title": "Critical length scale controls adhesive wear mechanisms",
+      "publisher": "R. Aghababaei, D. H. Warner & J.-F. Molinari; Nature Communications",
+      "accessed_on": "2026-11-01",
+      "version": "Nature Communications 7,11816 (2016-06-06); DOI10.1038/ncomms11816",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.2–5：Results、Analytical model、Transition in adhesive wear mechanisms、Discussion；p.4 Fig.3另渲染讀圖。未讀pp.6–8全部方法/文獻或補充資料。",
+      "locator": "PDF pp.2–5：Results、Analytical model、Transition in adhesive wear mechanisms、Discussion；p.4 Fig.3另渲染讀圖。未讀pp.6–8全部方法/文獻或補充資料。",
+      "summary": "模型中黏著接點大小可改變塑性抹平與斷裂磨屑的競爭；可釋放儲能和新表面代價有不同尺度。",
+      "limitations": "採原子模擬/能量模型，不是所有金屬或磨料通用閾值。Fig.3是不同勢能材料的比較，不能偽稱是只改大小的實驗照片。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F14-S005",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2016-12.pdf",
+      "title": "Self-sustained lift and low friction via soft lubrication",
+      "publisher": "B. Saintyves, T. Jules, T. Salez & L. Mahadevan; Harvard author copy / PNAS",
+      "accessed_on": "2026-11-01",
+      "version": "2016 PNAS Early Edition作者公開副本，footer DOI10.1073/pnas.1525462113；關聯arXiv:1601.03063v2同工作。",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.1–3全部主文及Figs.1–3圖說；p.2曾截斷，已單獨重讀並渲染看Fig.1/2。未讀SI或看Movies。",
+      "locator": "PDF pp.1–3全部主文及Figs.1–3圖說；p.2曾截斷，已單獨重讀並渲染看Fig.1/2。未讀SI或看Movies。",
+      "summary": "油中圓柱沿柔軟塗層下滑，流體壓力使間隙變形不對稱，產生升力並降低拖曳；過軟又可能變慢。",
+      "limitations": "只在所測圓柱/油浴/傾斜塗層條件；小變形理論不涵蓋非常軟的非線性，不稱越軟一定越滑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F14-S006",
+      "url": "https://arxiv.org/pdf/1807.07502",
+      "title": "Friction of poroelastic contacts with thin hydrogel films",
+      "publisher": "J. Delavoipière et al.; arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:1807.07502v1 (2018-07-19); Langmuir34,9617–9626; DOI10.1021/acs.langmuir.8b01466",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.1–6、8–11：裝置/Results、模型假設、Discussion/Conclusion及Appendix A/B；p.4 Fig.4/5另渲染讀圖。未讀p.7或pp.12–13全部推導。",
+      "locator": "PDF pp.1–6、8–11：裝置/Results、模型假設、Discussion/Conclusion及Appendix A/B；p.4 Fig.4/5另渲染讀圖。未讀p.7或pp.12–13全部推導。",
+      "summary": "滑動接觸的停留時間短於凝膠排水時間時，孔隙壓力不對稱，接觸區變小；摩擦峰與兩種時間競爭相關。",
+      "limitations": "限薄PDMA膜/玻璃球且浸水。外部水膜潤滑量級被判很小；模型不能直接精確算全部摩擦，也不解釋最高速的全部形狀回升，不外推人體關節。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F14-S007",
+      "url": "https://arxiv.org/pdf/2011.10774",
+      "title": "Creation and evolution of roughness on silica under unlubricated wear",
+      "publisher": "S. Pham-Ba & J.-F. Molinari; EPFL / arXiv",
+      "accessed_on": "2026-11-01",
+      "version": "arXiv:2011.10774v2 (2021-07-30); related DOI10.1016/j.wear.2021.203648",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.1–2、4–9：裝置、磨屑形成/聚集、§3.3與結論；p.7 Fig.7/8另渲染讀圖。未讀p.3全部原子模型或pp.10–12。",
+      "locator": "PDF pp.1–2、4–9：裝置、磨屑形成/聚集、§3.3與結論；p.7 Fig.7/8另渲染讀圖。未讀p.3全部原子模型或pp.10–12。",
+      "summary": "磨耗可把平滑表面變粗，也可削低粗糙表面；磨屑移出、黏回與填隙共同改變接觸地形。",
+      "limitations": "限同材料乾式球盤與固定載荷/速度；粗糙度是離線抽樣，虛線不是連續量測。共同最終值的完整原因仍未解，不能宣稱所有材料都磨成同粗糙度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F14-S008",
+      "url": "https://mwiertlewski.github.io/pdf/pub/2017-RFF-MW-MP-EC-WHC.pdf",
+      "title": "The Contribution of Air to Ultrasonic Friction Reduction",
+      "publisher": "R. Fenton Friesen, M. Wiertlewski, M. A. Peshkin & J. E. Colgate; author copy",
+      "accessed_on": "2026-11-01",
+      "version": "2017 IEEE World Haptics Conference作者公開6頁稿；作者出版目錄列517–522與IEEE document7989955，最終IEEE頁本輪驗證阻擋。",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.1–6正文、模型、方法、Figs.4–6、Discussion/Conclusion；p.5另渲染讀圖。作者出版目錄另web.open核身份。",
+      "locator": "PDF pp.1–6正文、模型、方法、Figs.4–6、Discussion/Conclusion；p.5另渲染讀圖。作者出版目錄另web.open核身份。",
+      "summary": "保持振幅/法向力的人工指腹對照中，降低氣壓會削弱超音波減摩；擠壓空氣膜是貢獻因素，並非排除彈跳。",
+      "limitations": "人工指腹非真人。摩擦由馬達電流估計且有效載荷範圍窄；稿p.4一處電流方向文字與摘要/結果矛盾，採後者一致方向，不拿該句下結論。模型百分比非實測百分比。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "F14-S009",
+      "url": "https://fisherp.mit.edu/wp-content/uploads/2020/08/689.full_.pdf",
+      "title": "How hair deforms steel",
+      "publisher": "G. Roscioli, S. M. Taheri-Mousavi & C. C. Tasan; MIT author copy / Science",
+      "accessed_on": "2026-11-01",
+      "version": "Science369,689–694 (2020-08-07); DOI10.1126/science.aba9490",
+      "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+      "reading_scope": "PDF pp.1–6（原刊689–694）：主文、Figs.1–4、結論與DOI；p.3 Fig.2另渲染讀圖。未讀另附補充方法或看Movies。",
+      "locator": "PDF pp.1–6（原刊689–694）：主文、Figs.1–4、結論與DOI；p.3 Fig.2另渲染讀圖。未讀另附補充方法或看Movies。",
+      "summary": "毛髮彎曲帶來側向載荷，碰上刃口缺口及微結構差異的特定組合時，可先崩出缺口而非均勻磨薄。",
+      "limitations": "限所測麻田散鐵鋼刃口；乾式SEM加速試驗與濕式中斷觀察需分開。不是每次斜切必崩，也不是一般所有刀具唯一失效方式，不提供剃刮操作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "F14001",
+      "question": "接點明明更容易成鍵，升溫後為什麼反而更容易推開？",
+      "domain": "physics",
+      "mechanism_key": "tribology.contact_aging_formation_vs_thermal_rupture",
+      "answer_target": "升溫加快矽氧接點的老化成鍵，也加快受力時的斷鍵；靜摩擦峰混合兩個過程，不能單靠峰值大小推斷接點鍵數。",
+      "scope": "乾燥SiO2奈米接點的滑動—停留—再拉測試；以低力接觸剛性對照摩擦峰，不用簡單彈簧除法宣稱精確數出鍵。",
+      "source_ids": [
+        "F14-S001"
+      ],
+      "source_locator": "F14-S001 PDF pp.3–6：Fig.1、contact stiffness與熱活化成鍵/斷鍵比較；p.4限制。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂量測較小不一定代表接點比較少，觀測量混合了生成與破壞。",
+        "visual": "同停留時間下的高低溫摩擦峰並排，再切到低力斜率；鍵網絡只作模型圖，不假裝原子實拍。",
+        "seconds": [
+          65,
+          125
+        ]
+      }
+    },
+    {
+      "id": "F14002",
+      "question": "橡膠大部分還黏著玻璃，怎麼已經往前移了一小段？",
+      "domain": "physics",
+      "mechanism_key": "tribology.localized_detachment_wave_carries_slip",
+      "answer_target": "界面受壓後局部脫離形成波，波通過時接點位移並重新黏回；宏觀移動可由局部波運送，不要求整片接觸同時滑動。",
+      "scope": "透明透鏡/彈性體所測黏著接觸；追蹤波前與材料標記，兩者速度不同；成核與傳播來源幾何分開。",
+      "source_ids": [
+        "F14-S002"
+      ],
+      "source_locator": "F14-S002 PDF pp.5–9觀察、pp.15–16結論、p.21 Fig.4、p.22 Figs.5–6。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把移動的脫離區和大部分仍黏著的接點區分開。",
+        "visual": "用固定參考座標畫局部空隙通過；追蹤單一表面標記僅在波過境時跳一步，其他時刻保持。",
+        "seconds": [
+          65,
+          115
+        ]
+      }
+    },
+    {
+      "id": "F14003",
+      "question": "會自己退回的石墨小片，轉個角度為什麼就卡住？",
+      "domain": "physics",
+      "mechanism_key": "tribology.graphite_registry_lockup_vs_self_retraction",
+      "answer_target": "推開石墨微片增加暴露表面，回縮有能量驅動；晶格不對齊時側向阻力較低，轉到匹配方向則阻力大增而可鎖住。",
+      "scope": "微製作石墨/SiO2頂片與石墨平台；同片角度對照，不把片形邊緣對齊直接當全部原子已量到，也不稱摩擦完全為零。",
+      "source_ids": [
+        "F14-S003"
+      ],
+      "source_locator": "F14-S003 PDF pp.2–4自回縮、lock-up與模型；pp.9–10 Figs.2–3。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一種材質也能因相對排列而改變滑動阻力，回縮驅動沒有消失。",
+        "visual": "先顯示微片推開/回縮，再旋轉到鎖住方向；兩層原子點陣標為機制示意，探針彎曲作阻力對照。",
+        "seconds": [
+          65,
+          115
+        ]
+      }
+    },
+    {
+      "id": "F14004",
+      "question": "兩個黏住的凸點互相滑過，為什麼有時抹平、有時掉下磨屑？",
+      "domain": "physics",
+      "mechanism_key": "tribology.adhesive_junction_size_plasticity_debris_competition",
+      "answer_target": "黏著接點可塑性抹平，也可斷裂成磨屑；模型中可釋放彈性能隨體積增長，形成新表面的代價隨面積增長，接點尺寸因此改變兩路徑競爭。",
+      "scope": "乾式黏著、相近硬度接點的原子模擬/能量模型；臨界尺度依材料/幾何/黏著而變，不提供通用磨粒尺寸。",
+      "source_ids": [
+        "F14-S004"
+      ],
+      "source_locator": "F14-S004 PDF pp.3–5 Analytical model、Transition與Figs.3–4；Fig.3材料勢能不同。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磨耗不是凸點越小就越容易被刮掉；接點怎麼釋放能量決定產物。",
+        "visual": "原創同材料大小比較的能量圖與兩種結局；若借用Fig.3觀察，明標材料模型不同，不冒作只改尺寸。",
+        "seconds": [
+          65,
+          110
+        ]
+      }
+    },
+    {
+      "id": "F14005",
+      "question": "油裡同一根圓柱，為什麼沿軟壁反而比沿硬壁滑得快？",
+      "domain": "physics",
+      "mechanism_key": "tribology.soft_wall_deformation_generates_lubrication_lift",
+      "answer_target": "流體壓力使柔軟壁面變形，破壞前後間隙對稱而產生淨升力；間隙增大可減少拖曳，但變形太大時不再越軟越快。",
+      "scope": "油浴中負浮力圓柱沿傾斜塗層滑動；小變形模型、特定彈性/厚度範圍。不是靠圓柱旋轉的唯一解釋，也不外推鞋底。",
+      "source_ids": [
+        "F14-S005"
+      ],
+      "source_locator": "F14-S005 PDF p.2 Fig.1/2與對稱性論證，p.3量級模型限制。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "柔軟不只增加接觸，也能改造液體壓力分布而把物體托開。",
+        "visual": "硬壁/軟壁同向滑動的間隙剖面；對稱壓力相抵和不對稱後淨升力並排，標明放大的變形。",
+        "seconds": [
+          60,
+          110
+        ]
+      }
+    },
+    {
+      "id": "F14006",
+      "question": "水凝膠上的圓形接觸區，滑快後為什麼縮小還缺了一邊？",
+      "domain": "physics",
+      "mechanism_key": "tribology.poroelastic_drainage_contact_time_asymmetry",
+      "answer_target": "接點停留時間與凝膠排水時間競爭；快速通過時孔隙水壓前後不平衡、分擔法向負荷，改變接觸區大小與形狀，並伴隨摩擦峰後下降。",
+      "scope": "浸水的薄PDMA膜/玻璃球；外部水膜潤滑估計太小。模型未排除所有界面耗能，最高速形狀回升不在簡化模型內；不轉作關節醫療解說。",
+      "source_ids": [
+        "F14-S006"
+      ],
+      "source_locator": "F14-S006 PDF pp.3–5 Figs.2–6，pp.8–9模型比較與限制，p.10排水時間量測。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣看似水潤，水藏在網絡內的排出時間和表面油膜不是同一回事。",
+        "visual": "同法向力低/高速接觸影像輪廓；再畫兩個時間尺與孔隙水壓，不把干涉環當空洞。",
+        "seconds": [
+          65,
+          115
+        ]
+      }
+    },
+    {
+      "id": "F14007",
+      "question": "同材質表面經過摩擦，為什麼原本平的變粗、粗的卻變平？",
+      "domain": "physics",
+      "mechanism_key": "tribology.third_body_roughness_growth_vs_peak_removal",
+      "answer_target": "磨屑移除留下凹口，黏回聚集又堆高表面；原本較粗者的高峰被削低、碎屑可填隙。相同載荷下這些作用競爭，使粗糙度演化方向依初態不同。",
+      "scope": "無潤滑SiO2球盤研究；共同最終粗糙度限這組條件，完整收斂原因未解。不把離線多試件取樣畫成即時連續測量。",
+      "source_ids": [
+        "F14-S007"
+      ],
+      "source_locator": "F14-S007 PDF p.4 §3.2、pp.6–9 §3.3/Figs.6–10/Conclusion。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。 S007對最初磨屑臨界尺度的重述已併入F14004，這題只保留後續地形與第三體演化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磨下來的材料不一定離開接觸，第三體會改寫下一輪接觸。",
+        "visual": "初始平滑/粗糙兩路高度圖，標出移出、黏回、填隙；量測點分開標，連線只作指引。",
+        "seconds": [
+          65,
+          115
+        ]
+      }
+    },
+    {
+      "id": "F14008",
+      "question": "玻璃照樣超音波震動，空氣變少後為什麼沒那麼滑？",
+      "domain": "physics",
+      "mechanism_key": "tribology.ultrasonic_squeeze_air_load_sharing_control",
+      "answer_target": "高速擠壓狹小空隙可讓空氣形成平均承載壓力，減少固體接觸負擔；在人工指腹實驗降低氣壓，減摩變弱但未消失，支持空氣膜與彈跳共同作用。",
+      "scope": "限定人工指腹、相同振幅與窄法向力範圍的對照；不把模型摩擦比例當實驗量，亦不稱完全懸空或空氣為唯一成因。",
+      "source_ids": [
+        "F14-S008"
+      ],
+      "source_locator": "F14-S008 PDF pp.1–2 squeeze film模型、pp.3–4方法、pp.5–6 Figs.4–6/Discussion/Conclusion。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拿掉空氣是機制檢驗，震動仍在不代表效果必須相同。",
+        "visual": "同幅震動兩個氣壓條件並排；空隙放大示意分攤負荷，結尾保留低壓仍有的減摩。",
+        "seconds": [
+          70,
+          125
+        ]
+      }
+    },
+    {
+      "id": "F14009",
+      "question": "毛髮比鋼軟得多，為什麼還能讓剃刀刃口崩一小塊？",
+      "domain": "physics",
+      "mechanism_key": "tribology.hair_bending_mixed_mode_edge_heterogeneity_chipping",
+      "answer_target": "毛髮彎曲使刃口承受面外載荷；當毛髮邊緣碰上刃口缺口及兩側剛性不均的特定位置，裂紋較易起始並轉向形成崩口，早於顯著均勻磨耗。",
+      "scope": "所測麻田散鐵鋼刃口；直向/傾斜切割與均質/異質模型分開標；三條件要同時滿足，不能把任一條件說成必然崩口。",
+      "source_ids": [
+        "F14-S009"
+      ],
+      "source_locator": "F14-S009 PDF pp.1–5：Fig.1C中斷觀察、Fig.2原位切割、Fig.3模型、Fig.4三條件及結論。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "材料比較不能只排名硬度；局部受力方向與微結構會讓較硬一方先損傷。",
+        "visual": "原創剖面標直向與側向載荷，再以相同平均性質但局部不同的模型對照；崩口影像與模型顏色分開。",
+        "seconds": [
+          80,
+          140
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "F14-NA01",
+      "question": "為什麼推一下沒動，再用力才突然滑開？",
+      "reason": "已有靜摩擦上限/動摩擦核心，沒有新增接點狀態或可比較條件。",
+      "existing_ids": [
+        "P005",
+        "P007"
+      ]
+    },
+    {
+      "id": "F14-NA02",
+      "question": "壓緊後更難滑開，是不是因為摩擦變大？",
+      "reason": "若只增加法向力，是原核心的物件改寫。",
+      "existing_ids": [
+        "P008"
+      ]
+    },
+    {
+      "id": "F14-NA03",
+      "question": "兩本書交錯疊頁，為什麼很難拉開？",
+      "reason": "已退於舊庫：接觸幾何將拉力轉為法向力並逐層放大，不重算新機制。",
+      "existing_ids": [
+        "X5001"
+      ]
+    },
+    {
+      "id": "F14-NA04",
+      "question": "軸承轉快比較滑，為什麼更快又費力？",
+      "reason": "完整Stribeck轉換已有一題，不能把三個區段拆成三筆。",
+      "existing_ids": [
+        "J6009"
+      ]
+    },
+    {
+      "id": "F14-NA05",
+      "question": "軸承加更多油為什麼不一定省力？",
+      "reason": "攪油/黏性阻力已收，不換潤滑脂名稱新增。",
+      "existing_ids": [
+        "D2227"
+      ]
+    },
+    {
+      "id": "F14-NA06",
+      "question": "針織布拉回來為什麼沒有拿回全部功？",
+      "reason": "接觸摩擦反向的回圈已收。",
+      "existing_ids": [
+        "X5003"
+      ]
+    },
+    {
+      "id": "F14-NA07",
+      "question": "塑膠停著不動，頂住的力為什麼還變小？",
+      "reason": "一般時間依賴鬆弛已收；非本批化學成鍵與熱活化斷鍵量測矛盾。",
+      "existing_ids": [
+        "H3090"
+      ]
+    },
+    {
+      "id": "F14-NA08",
+      "question": "地面卡很久後突然滑動，為什麼會震？",
+      "reason": "一般彈性累積—釋放已有，不用另一摩擦場景改寫。",
+      "existing_ids": [
+        "N116"
+      ]
+    },
+    {
+      "id": "F14-NA09",
+      "question": "切屑為什麼黏回刀口？",
+      "reason": "積屑瘤的黏著背景已收；不能只改金屬名。",
+      "existing_ids": [
+        "D2189"
+      ]
+    },
+    {
+      "id": "F14-NA10",
+      "question": "表面小凸點越小，是不是必定先掉成磨屑？",
+      "reason": "小接點塑性與大接點斷裂已合入F14004，不另開相反問法。",
+      "existing_ids": [
+        "F14004"
+      ],
+      "source_ids": [
+        "F14-S004"
+      ]
+    },
+    {
+      "id": "F14-NA11",
+      "question": "磨屑為什麼有最小尺寸？",
+      "reason": "S007重述S004臨界尺度，只作F14004同工作鏈後續例子，不另計。",
+      "existing_ids": [
+        "F14004"
+      ],
+      "source_ids": [
+        "F14-S004",
+        "F14-S007"
+      ]
+    },
+    {
+      "id": "F14-NA12",
+      "question": "微片每轉約60度就卡住，能否再收一題？",
+      "reason": "是F14003的晶格匹配控制，不用角度週期再拆。",
+      "existing_ids": [
+        "F14003"
+      ],
+      "source_ids": [
+        "F14-S003"
+      ]
+    },
+    {
+      "id": "F14-NA13",
+      "question": "玻璃上的軟接觸，還沒滑就會縮小嗎？",
+      "reason": "PNAS shear-induced contact area來源本輪PMC驗證頁、EPMC500、PDF403；未獨立讀到主文，不採搜尋摘錄補機制。"
+    },
+    {
+      "id": "F14-NA14",
+      "question": "手指遇到超音波就像懸浮嗎？",
+      "reason": "過度泛稱且把局部承載變成全懸浮；本批只採人工指腹氣壓控制，真人PNAS來源未取成功。",
+      "existing_ids": [
+        "F14008"
+      ],
+      "source_ids": [
+        "F14-S008"
+      ]
+    },
+    {
+      "id": "F14-NA15",
+      "question": "在玻璃上加電就會更粗糙嗎？",
+      "reason": "電致觸覺本輪只有摘要線索；若只增加正向吸力又近P008，未收成完整核心。",
+      "existing_ids": [
+        "P008"
+      ]
+    },
+    {
+      "id": "F14-NA16",
+      "question": "冰為什麼滑，是否完全因壓力熔化？",
+      "reason": "本輪沒有讀到能界定速度/溫度/界面相態的原研究比較，不用互斥單因說法充數。"
+    },
+    {
+      "id": "F14-NA17",
+      "question": "鞋底紋路、橡膠種類換一換為什麼抓地不同？",
+      "reason": "目前只是接觸/黏彈/排液的泛論集合，未形成一個有直接研究支持的控制對照。",
+      "existing_ids": [
+        "H3090",
+        "P008"
+      ]
+    },
+    {
+      "id": "F14-NA18",
+      "question": "微小反覆摩擦為什麼出現磨痕？",
+      "reason": "fretting只探索到方向，未完成部分滑移邊緣的原始正文與新舊差異，暫不收。"
+    },
+    {
+      "id": "F14-NA19",
+      "question": "砂紙為什麼有時刮溝、有時削屑？",
+      "reason": "尚未實讀切入角/壓入深度的原研究，不把切削與接觸應力通則換物件。",
+      "existing_ids": [
+        "P041",
+        "D2188"
+      ]
+    },
+    {
+      "id": "F14-NA20",
+      "question": "越軟的潤滑表面一定越滑嗎？",
+      "reason": "已作F14005的非單調邊界；非常軟部分理論未完整，不拆為第二個已解機制。",
+      "existing_ids": [
+        "F14005"
+      ],
+      "source_ids": [
+        "F14-S005"
+      ]
+    },
+    {
+      "id": "F14-NA21",
+      "question": "凝膠摩擦在某速度最高，可以再獨立講一次嗎？",
+      "reason": "接觸形狀、排水時間與摩擦峰同一條因果鏈，合入F14006。",
+      "existing_ids": [
+        "F14006"
+      ],
+      "source_ids": [
+        "F14-S006"
+      ]
+    },
+    {
+      "id": "F14-NA22",
+      "question": "同一條脫離波為什麼會被灰塵卡一下？",
+      "reason": "可作F14002局部波傳播的補圖，沒有另計波障礙條件為新核心。",
+      "existing_ids": [
+        "F14002"
+      ],
+      "source_ids": [
+        "F14-S002"
+      ]
+    }
+  ]
+}

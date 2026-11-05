@@ -1,0 +1,46 @@
+{
+  "status": "PASS_SAMPLE_ROUNDTRIP_ONLY",
+  "tested_on": "2026-11-01T10:56:36.672184+00:00",
+  "ffmpeg": "ffmpeg version N-125875-g5d4d3bdc61-20260731 Copyright (c) 2000-2026 the FFmpeg developers",
+  "script_sha256": "4bc02dc2dbe02f018bfaa574ad34f569aefd893e273d9c8a16021be34bc14165",
+  "batch_sha256": "da3a0b39e5bcfa80355f81a0e86d7fd16b34da0c89a08ddf4f2a1c0c2381686a",
+  "core_ids": [
+    "M5008",
+    "M5009"
+  ],
+  "source": "https://www.rfc-editor.org/rfc/rfc9639.html",
+  "source_sections": [
+    "4.2",
+    "4.3",
+    "4.4",
+    "9.1.3"
+  ],
+  "input": {
+    "frames": 48000,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "signed 16-bit little-endian PCM",
+    "bytes": 192000,
+    "sha256": "9a50ff90270ea202b903182adec7f11778873c529c07dde08c421e272d3005bf",
+    "odd_stereo_sum_pairs": 27432
+  },
+  "results": [
+    {
+      "requested_mode": "indep",
+      "first_frame_channel_assignment": 1,
+      "decoded_pcm_sha256": "9a50ff90270ea202b903182adec7f11778873c529c07dde08c421e272d3005bf",
+      "exact_pcm_match": true,
+      "encoded_bytes": 45964,
+      "encoded_sha256": "df576ab57bdd66c29620022b6492cdaed0854be6976ab92af6c3e0c7636b9b70"
+    },
+    {
+      "requested_mode": "mid_side",
+      "first_frame_channel_assignment": 10,
+      "decoded_pcm_sha256": "9a50ff90270ea202b903182adec7f11778873c529c07dde08c421e272d3005bf",
+      "exact_pcm_match": true,
+      "encoded_bytes": 38357,
+      "encoded_sha256": "602a33a4bac34732435673f034b769fcc7177a94d9cdb020b869d8ccc32882a2"
+    }
+  ],
+  "limits": "Two encoder modes on one synthetic signal. Only first-frame channel assignment inspected; complete decoded samples compared. Does not prove all inputs/codecs, predictor selection, perceptual quality, optimal settings, or a finished demo. No playback or paid media calls."
+}

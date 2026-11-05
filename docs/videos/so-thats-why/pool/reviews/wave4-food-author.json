@@ -1,0 +1,245 @@
+{
+  "status": "AUTHOR_REVISED_LOCKED_PENDING_TARGETED_READBACK",
+  "created_on": "2026-11-01",
+  "author": "pool_life_tech",
+  "production_ready": false,
+  "candidate_count": 29,
+  "source_count": 26,
+  "not_added_count": 18,
+  "batch_sha256": "cc4a437a6b2b3c9b164ad1c92255c18be1e686404723756452ee70ac747b2b21",
+  "themes_sha256": "6b2c5abfe8dbf5b3720634ffb3e8f8b83f46cb01dae42f62a97c0d17eeecc6ec",
+  "read_scope": "26 source records actually read in named sections. F4-S020 is publisher abstract only; F4-S018/019/022/024 are selected public PDF text read using Python/PyMuPDF; F4-S023 is selected public PMC HTML body. No assertion of full papers or source-by-source independent verification.",
+  "dedup_scope": "Before authoring, searched current 2661 raw questions/targets and manually read 286 keyword-filtered rows plus targeted L/P/D/H/V and legacy food cores. Re-read named nearest old IDs and early 16-question semantic neighbors. This is not an exhaustive human review of all 2661 rows; final semantic rerun and independent author review remain.",
+  "source_cautions": [
+    "F4-S011 is retained as evidence for rejected F4014; it no longer supports a counted candidate.",
+    "Exploratorium糖段只作教育簡化模型；正確定位已修。過度連結失水在Why add vinegar?首段，不採其後酸中和蛋白解釋。",
+    "Exploratorium meat text contains simplifications; collagen conversion is not claimed to mean raw collagen directly dissolves in cold water.",
+    "UF persimmon PDF includes unrelated health/operation and p6 chemistry claims that are not adopted. Only tannin binding and acetaldehyde insolubilization are used.",
+    "Rice mechanism is backed by the study washing/composition comparison; no numerical result or source figure is copied.",
+    "Umami receptor binding is stated as a model supported by mutagenesis, not direct molecular filming.",
+    "Espresso uneven flow is a model interpretation of extraction measurements; no claim of measured channel geometry or a universal grind recipe.",
+    "Meat color is not an eating-safety or doneness test. Chemical oxygenation and oxidation are distinguished."
+  ],
+  "questions_for_reviewer": [
+    {
+      "ids": [
+        "F4003",
+        "F4004"
+      ],
+      "issue": "Raw granule gelatinization vs pregelatinized process history: author sees different observable condition but accepts same-core merge if only retelling."
+    },
+    {
+      "ids": [
+        "F4005",
+        "P263"
+      ],
+      "issue": "Only retain if distinct acid ingredients and reaction-stage timing add a real mechanism. General acid/carbonate gas is already old."
+    },
+    {
+      "ids": [
+        "F4011",
+        "P232"
+      ],
+      "issue": "Many small nuclei vs few large crystals changes size distribution; check whether sufficient increment beyond delayed nucleation."
+    },
+    {
+      "ids": [
+        "F4012",
+        "D2039"
+      ],
+      "issue": "Air/water protein unfolding and linking vs oil/water new-surface adsorption; both are interface stabilization, check core overlap."
+    },
+    {
+      "ids": [
+        "F4017"
+      ],
+      "issue": "Sugar slowing formation vs retaining water needs a more precise mechanism source before scripting; short segment only."
+    },
+    {
+      "ids": [
+        "F4018",
+        "D2025"
+      ],
+      "issue": "Overaggregation/syneresis in egg foam vs acid-driven pectin contraction may be same underlying failure core. Do not retain solely for egg material."
+    },
+    {
+      "ids": [
+        "F4019"
+      ],
+      "issue": "Source explicitly supports pigment conversion but does not explain magnesium substitution. If too thin without that step, hold rather than fill with generic chemistry."
+    },
+    {
+      "ids": [
+        "F4024",
+        "F4006",
+        "D2269"
+      ],
+      "issue": "Layer-separated steam vs timing/setting and shortening: distinguish architecture from mere fat and gas example."
+    },
+    {
+      "ids": [
+        "F4025",
+        "L021",
+        "F4003",
+        "V3093"
+      ],
+      "issue": "Overlap window of substrate accessibility and enzyme survival versus already-collected individual mechanisms; abstract-only evidence limits detail."
+    },
+    {
+      "ids": [
+        "F4029",
+        "LEG-S55"
+      ],
+      "issue": "Cold-induced sucrose/invertase pathway vs ripening starch-to-sugar; if trigger difference is insufficient, merge and retain potato example."
+    }
+  ],
+  "rejected_after_reading": [
+    {
+      "old_draft_id": "F4014",
+      "existing_id": "P263",
+      "reason": "Different available acid quantity is a condition of same gas reaction."
+    },
+    {
+      "old_draft_id": "F4016",
+      "existing_id": "LEG-S71",
+      "reason": "Endogenous instead of exogenous protease does not by itself make a new protein-cleavage core."
+    }
+  ],
+  "unadded_source_traces": [
+    {
+      "question": "雞蛋放久為什麼比較容易浮起？",
+      "url": "https://livestock.extension.wisc.edu/articles/no-bad-eggs-internal-egg-quality/",
+      "read_via": "web.run open body",
+      "locator": "Does Floating an Egg Test Egg Quality?"
+    },
+    {
+      "question": "水煮蛋為什麼有的難剝？",
+      "url": "https://blogs.extension.iastate.edu/answerline/tag/egg-storage/",
+      "read_via": "web.run open body",
+      "locator": "Egg Safety Q&As: Why are some hard-cooked eggs difficult to peel?"
+    },
+    {
+      "question": "高壓加工與含氣食物",
+      "url": "https://ext.vt.edu/content/pubs_ext_vt_edu/en/FST/FST-323/FST-323.html",
+      "read_via": "web.run open body",
+      "locator": "How It Works / Technology"
+    },
+    {
+      "question": "加工乳酪乳化鹽",
+      "url": "https://digitalcommons.usu.edu/foodmicrostructure/vol4/iss2/13/",
+      "read_via": "web.run open abstract",
+      "locator": "Abstract only; review not promoted to original research evidence"
+    },
+    {
+      "question": "橙汁延遲苦味",
+      "url": "https://www.ars.usda.gov/news-events/news/research-news/1998/gene-found-for-keeping-citrus-juice-sweet/",
+      "read_via": "web.run open archived research news",
+      "locator": "LGT paragraph only; health claims ignored"
+    },
+    {
+      "question": "巧克力調溫",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8408162/",
+      "read_via": "web.run open body",
+      "locator": "Abstract / Introduction only; no results claim"
+    }
+  ],
+  "failed_or_unused_access": [
+    "PMC rice web CAPTCHA; successful publisher PDF is recorded instead.",
+    "Nature HTML redirected through identity service; direct public publisher rice PDF readable.",
+    "Guelph dairy evaporation chapter 403, unused.",
+    "Orange delayed-bitterness publisher page 403, search result not promoted to read source.",
+    "RSC chocolate experiment page 405, unused."
+  ],
+  "validation": {
+    "ids_unique": true,
+    "mechanism_keys_unique": true,
+    "source_links_complete": true,
+    "theme_ids_and_seconds": true,
+    "beats_at_most_45_seconds": true,
+    "utf8_lf": true,
+    "scope": "Structural author checks only, not scientific validation."
+  },
+  "theme_summary": [
+    {
+      "id": "W4F-T01",
+      "body_seconds": 210,
+      "candidate_ids": [
+        "F4012",
+        "F4017",
+        "D2025"
+      ],
+      "variant_ids": [
+        "F4018"
+      ]
+    },
+    {
+      "id": "W4F-T02",
+      "body_seconds": 160,
+      "candidate_ids": [
+        "F4003",
+        "F4002"
+      ],
+      "variant_ids": [
+        "F4004"
+      ]
+    },
+    {
+      "id": "W4F-T03",
+      "body_seconds": 150,
+      "candidate_ids": [
+        "F4005",
+        "F4006"
+      ],
+      "variant_ids": []
+    }
+  ],
+  "quantity_decision": "保留29筆raw供追溯；接受獨立覆核24個保留核心、3合併、2薄題暫緩，不新增題補數。中央入選由root另行套用，這裡不冒稱已整合。",
+  "independent_corrections": {
+    "review_path": "reviews/wave4-physics-reviews-food.json",
+    "review_sha256": "4abda73aa4059fb2d250c0d69969a956d17e663c91c6a481d1fe4714688eddc5",
+    "before_sha256": {
+      "batches/wave4-food-kitchen.json": "4aed55d8d97889e2e99f8722f894b4dc8ec70dd02f370038e8dabe157f4cf692",
+      "reviews/wave4-food-themes.json": "e26dbaae3619eeb7c772251321b08d331fcb6c977dfadbdb692243bd94f22d49",
+      "reviews/wave4-food-author.json": "e00c9218f2ab7d67740a260c2558985e41c14478d5d27ffddc80290a44868b68"
+    },
+    "author_actions": [
+      "同步修F4-S014/F4017/F4018為實際小節名；再次讀回公開HTML兩個採用段。",
+      "F4017明列糖與水作用延緩蒸發，notes限定教育簡化模型；不採酸中和蛋白解釋。",
+      "接受F4004→F4003、F4018→D2025、F4020→D2200；raw與來源保留。",
+      "接受F4009與F4019暫緩，raw記錄保留不作獨立機制章。",
+      "蛋白225→210秒（縮回扣），澱粉215→160秒（同核心合計95），膨鬆230→150秒（撤F4009），自然3/3/2章。",
+      "再次讀BCcampus Cornstarch/Pre-gelatinized Starches及Baking Powder指定段；移除F4004示意中的未特別支持乾燥步。"
+    ],
+    "targeted_reviewer_status": "PENDING",
+    "central_changes_made_by_author": false
+  },
+  "central_dispositions": {
+    "merges": [
+      {
+        "from": "F4004",
+        "into": "F4003"
+      },
+      {
+        "from": "F4018",
+        "into": "D2025"
+      },
+      {
+        "from": "F4020",
+        "into": "D2200"
+      }
+    ],
+    "excluded": [
+      {
+        "id": "F4009",
+        "reason": "形成氣袋的功能描述尚缺脂肪微結構保氣機制。"
+      },
+      {
+        "id": "F4019",
+        "reason": "色素轉換命名尚缺精確結構步驟。"
+      }
+    ],
+    "retained_core_count_after_reviewer_decisions": 24,
+    "raw_count": 29,
+    "central_application_verified": false
+  }
+}

@@ -7,7 +7,7 @@ the batch starts, and the notebook warns about short clips only on the GPU. This
   errors (exit 1): missing or duplicate ids, unknown inference_mode, a first_frame job without
     exactly one image, a reference image file that is missing or empty, no prompt, `<Picture N>`
     beyond the images given, duration outside 4-15 s, width/height not multiples of 32 or over
-    the 1344x768 area, a `prompt_sha256` that does not match the prompt file, duplicate outputs.
+    the 1920x1088 area (what the patched notebook and runner accept; 1312x736 is the fast option), a `prompt_sha256` that does not match the prompt file, duplicate outputs.
   warnings (exit 0): duration under 5 s (fewer than the 124 frames H3 was trained on: 4 s is
     107 frames), a first frame whose aspect ratio differs from the canvas by more than 0.01 (the
     notebook stretches it; run fit_first_frame.sh), `[Shot 2]` or ` then the camera ` in the
@@ -28,7 +28,7 @@ import sys
 from pathlib import Path
 
 MODES = {"reference", "first_frame"}
-MAX_AREA = 1344 * 768
+MAX_AREA = 1920 * 1088  # the cap patch_notebook.py writes into the notebook and the runner
 TRAINED_MIN_FRAMES = 124
 PICTURE = re.compile(r"<Picture\s+(\d+)>")
 
@@ -107,7 +107,7 @@ def check(manifest_path: Path) -> tuple[list[str], list[str]]:
                 errors.append(f"{tag} {name}={value!r} must be a positive multiple of 32")
         if isinstance(width, int) and isinstance(height, int) and width > 0 and height > 0:
             if width * height > MAX_AREA:
-                errors.append(f"{tag} {width}x{height} exceeds the 1344x768 area the notebook accepts")
+                errors.append(f"{tag} {width}x{height} exceeds the 1920x1088 area the patched notebook accepts")
             if mode == "first_frame" and image_paths:
                 size = image_size(image_paths[0])
                 if size and abs(size[0] / size[1] - width / height) > 0.01:

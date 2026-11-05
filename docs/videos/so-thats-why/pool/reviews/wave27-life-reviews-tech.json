@@ -1,0 +1,522 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "root",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "R27001",
+    "R27002"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave27-tech.json",
+      "sha256": "0f988eef0320092b77b4806781a38ccb03f6a53310a0817bc3a3eb51b331490c"
+    },
+    {
+      "file": "reviews/wave27-tech-author.json",
+      "sha256": "1a664c334c6f58808efca7ca1e337418d4d3b06b6ac593d452958df4b0df55f9"
+    },
+    {
+      "file": "reviews/wave27-tech-themes.json",
+      "sha256": "47e2fb9ad3c713efbe68813d6fe72d2645a185ec96d8ebf8a0ac906c336365e1"
+    }
+  ],
+  "scope": "非作者逐題讀問題/答案/條件/editorial、全部指定作者近對與top5完整問答；指定原研究正文與圖頁查讀。非全庫逐主張查核、非完整稿/觀眾試讀/製作核准。",
+  "counts": {
+    "candidates": 2,
+    "sources_read": 2,
+    "source_images_read": 5,
+    "not_added": 9,
+    "author_pairs": 8,
+    "directed_top5": 10,
+    "retain": 2,
+    "merge": 0,
+    "hold": 0,
+    "themes": 2
+  },
+  "source_readings": [
+    {
+      "source_id": "R27-S001",
+      "url": "https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf",
+      "version": "原文1951；所讀重印PDF頁碼768–770，URL標示Collected Works 1961；不把重印年當發現年。",
+      "read_via": "核SHA作者當日有效PDF/抽文及指定原頁目讀；非本覆核者fresh HTTP",
+      "reading_scope": "印刷768左欄硬幣段，獨立投擲/拒收同面/保留異面；右欄本題不採。",
+      "cache": {
+        "file": ".cache/wave27-tech-coin.pdf",
+        "sha256": "662943f84a8c0808159755e874cf3470f3e411043eb980a31df0f7392ec6aa4a",
+        "text_file": ".cache/wave27-tech-coin-text.json",
+        "text_sha256": "a9b08d78f96cde233e8498e4f4880e8d9b7c94fa1ff1e6517e9c057f8a0c1d36"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave27-tech-coin-p1.png",
+          "sha256": "2bfb77f2f215233293ecc98351437cd43d2dc4c7cd003b729fcf65f7d9ff6c86"
+        }
+      ],
+      "finding": "保留異面之兩次序同機率，不能延伸到任意相關串流；1951原文/1961重印是同證據。",
+      "limits": "不讀後兩頁數值生成法；不主張有限序列剛好各半、相關或偏率改變仍公平，p=0或1不會輸出。",
+      "fresh_http": false,
+      "failures": "本覆核未另抓外站，作者取得/失敗路線不冒稱reviewer新HTTP；掃描頁以目讀而非空文字層作證。"
+    },
+    {
+      "source_id": "R27-S002",
+      "url": "https://iqua.ece.toronto.edu/baochun/ece1771f/papers/Gale-Shapley-1962.pdf",
+      "version": "The American Mathematical Monthly 69(1),9–15 (1962)；doi:10.2307/2312726",
+      "read_via": "核SHA作者當日有效PDF/抽文及指定原頁目讀；非本覆核者fresh HTTP",
+      "reading_scope": "印刷10不穩定定義、11兩側模型、12暫留算法、13無阻擋對證明；未審後段最優性。",
+      "cache": {
+        "file": ".cache/wave27-tech-matching.pdf",
+        "sha256": "3971ec3e3b048b6ace92248fcc8fa8f021808ca76cbc09d439275b8c0a07bb41",
+        "text_file": ".cache/wave27-tech-matching-text.json",
+        "text_sha256": "3fd30a243721e6ed478ea25b47e07ecd37b5debca66f79100dbe870529cd19bf"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave27-tech-matching-p2.png",
+          "sha256": "3bd60232e404eeba9d38164d35a3bbcf61d4c5f89a83bce922b9f81670ce0462"
+        },
+        {
+          "file": ".cache/wave27-tech-matching-p3.png",
+          "sha256": "d103a7b7c84adfe7b78f772a8619ac2b580d92b13ab859822555df4c64d22bc8"
+        },
+        {
+          "file": ".cache/wave27-tech-matching-p4.png",
+          "sha256": "a355d043e5847af5524ebdf556e05fe128c2f44aa1f96b406481cfe749ae4127"
+        },
+        {
+          "file": ".cache/wave27-tech-matching-p5.png",
+          "sha256": "f0a209483e7d907ed30f9f6884400b2f753c6aed57f12b70be1b2b775e34f0ef"
+        }
+      ],
+      "finding": "對提案方更喜歡的接收者必曾提過且被拒；接收者此後只改善，故不會兩邊都願換。",
+      "limits": "採兩側等人數、完整嚴格偏好的一對一模型；不等於大家第一志願、最大總滿意度或真實招生制度，未讀§4後續最優性證明。",
+      "fresh_http": false,
+      "failures": "本覆核未另抓外站，作者取得/失敗路線不冒稱reviewer新HTTP；掃描頁以目讀而非空文字層作證。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "R27001",
+      "decision": "retain",
+      "reason": "未知偏率但獨立同分布的二次序對稱拒收，不是既有均勻輸入餘數或蓄水池抽樣。",
+      "scope_check": "固定0<p<1、獨立與不重疊；有限結果不必剛好各半。",
+      "editorial_check": "四格機率→保留相等兩格→交替偏率反例，80秒。",
+      "source_ids": [
+        "R27-S001"
+      ],
+      "source_locator": "PDF頁1印刷768左欄硬幣段及相鄰獨立條件；目讀此頁核抽文。"
+    },
+    {
+      "id": "R27002",
+      "decision": "retain",
+      "reason": "暫留接收者只改善，使已拒對象不會形成阻擋對；不是多數排序或擁塞均衡。",
+      "scope_check": "固定完整嚴格兩側等人數排序；無阻擋對不等於人人第一志願或總滿意度最大。",
+      "editorial_check": "六卡連鎖改配→列出想換者與接收者拒絕→穩定定義，100秒。",
+      "source_ids": [
+        "R27-S002"
+      ],
+      "source_locator": "掃描PDF頁2–5（印刷10–13）直接目讀：不穩定定義、§3兩側完整嚴格排序、Theorem1暫留提案程序與無阻擋對的論證。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R27001",
+      "b": "I3091",
+      "decision": "distinct",
+      "reason": "均勻輸入餘數桶不等 vs 未知偏率成對次序對稱；輸入假設與修正方法均不同。"
+    },
+    {
+      "a": "R27001",
+      "b": "R25002",
+      "decision": "distinct",
+      "reason": "已有公平抽籤下維持各紀錄存留公平 vs 從有偏來源抽取無偏bit。"
+    },
+    {
+      "a": "R27001",
+      "b": "M2066",
+      "decision": "distinct",
+      "reason": "M2066只區分分布與有限樣本波動，不能產生R27001的對稱拒收規則。"
+    },
+    {
+      "a": "R27001",
+      "b": "I3092",
+      "decision": "distinct",
+      "reason": "I3092確定性狀態/種子重播；R27001假設獨立隨機輸入，不是偽亂數演算法。"
+    },
+    {
+      "a": "R27001",
+      "b": "M10005",
+      "decision": "distinct",
+      "reason": "M10005依主持人知情開空門的程序更新勝率；R27001無知情篩選者，按異面次序等機率拒收。"
+    },
+    {
+      "a": "R27002",
+      "b": "M10002",
+      "decision": "distinct",
+      "reason": "M10002聚合個人排序可形成多數環；R27002不聚合成單一排序，對兩側配對查阻擋。"
+    },
+    {
+      "a": "R27002",
+      "b": "M10003",
+      "decision": "distinct",
+      "reason": "Borda刪選項重計 vs 完整固定偏好下延遲接受，並非同種冠軍問題。"
+    },
+    {
+      "a": "R27002",
+      "b": "T4050",
+      "decision": "distinct",
+      "reason": "T4050擁塞改變個人路線成本與均衡；R27002偏好固定，接收方的單調暫留阻斷兩方共同換配。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R27001",
+      "b": "I3091",
+      "cosine": 0.647558,
+      "decision": "distinct",
+      "reason": "I3091是均勻有限輸入對餘數桶映射不均；R27001從未知偏率獨立同分布輸入，藉兩次序對稱拒收而無偏。"
+    },
+    {
+      "a": "R27001",
+      "b": "R25002",
+      "cosine": 0.580819,
+      "decision": "distinct",
+      "reason": "R25002先有均勻新抽籤再調入選/存留率；R27001先解決原始抽籤偏差，兩者操作對象與不變量不同。"
+    },
+    {
+      "a": "R27001",
+      "b": "I3062",
+      "cosine": 0.566844,
+      "decision": "distinct",
+      "reason": "I3062是有限二進位表示與捨入誤差；R27001是路徑機率對稱，無數值近似機制。"
+    },
+    {
+      "a": "R27001",
+      "b": "P256",
+      "cosine": 0.561543,
+      "decision": "distinct",
+      "reason": "P256平衡時正逆反應速率相等，不要求濃度相等；R27001用拒收選取等機率次序，非化學平衡。"
+    },
+    {
+      "a": "R27001",
+      "b": "R26001",
+      "cosine": 0.560775,
+      "decision": "distinct",
+      "reason": "R26001兩兩多數分布失去傳遞性；R27001建立單一無偏輸出，沒有循環比較關係。"
+    },
+    {
+      "a": "R27002",
+      "b": "B2064",
+      "cosine": 0.586122,
+      "decision": "distinct",
+      "reason": "B2064表型兩端因替代繁殖策略有優勢；R27002固定兩側排序後由暫留/拒絕排除阻擋對，非選擇演化。"
+    },
+    {
+      "a": "R27002",
+      "b": "M10003",
+      "cosine": 0.572781,
+      "decision": "distinct",
+      "reason": "M10003刪選項後Borda重計改冠軍；R27002保持完整偏好與集合，計算雙側穩定配對。"
+    },
+    {
+      "a": "R27002",
+      "b": "C2013",
+      "cosine": 0.548715,
+      "decision": "distinct",
+      "reason": "C2013比較回想與辨認；R27002偏好全已知，問題是配對相容，沒有記憶線索機制。"
+    },
+    {
+      "a": "R27002",
+      "b": "B2316",
+      "cosine": 0.527575,
+      "decision": "distinct",
+      "reason": "B2316群蜂交叉抑制/招募競爭決定巢址；R27002接收者單調改善暫留對象，目標是無兩方阻擋，非集體達成同一選項。"
+    },
+    {
+      "a": "R27002",
+      "b": "B2051",
+      "cosine": 0.517018,
+      "decision": "distinct",
+      "reason": "B2051雜交成本選擇交配前屏障；R27002不改偏好或演化成功率，只在固定順位下構造配對。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R27001",
+        "b": "I3091",
+        "reason": "I3091是均勻有限輸入對餘數桶映射不均；R27001從未知偏率獨立同分布輸入，藉兩次序對稱拒收而無偏。"
+      },
+      {
+        "a": "R27001",
+        "b": "R25002",
+        "reason": "R25002先有均勻新抽籤再調入選/存留率；R27001先解決原始抽籤偏差，兩者操作對象與不變量不同。"
+      },
+      {
+        "a": "R27001",
+        "b": "I3062",
+        "reason": "I3062是有限二進位表示與捨入誤差；R27001是路徑機率對稱，無數值近似機制。"
+      },
+      {
+        "a": "R27001",
+        "b": "P256",
+        "reason": "P256平衡時正逆反應速率相等，不要求濃度相等；R27001用拒收選取等機率次序，非化學平衡。"
+      },
+      {
+        "a": "R27001",
+        "b": "R26001",
+        "reason": "R26001兩兩多數分布失去傳遞性；R27001建立單一無偏輸出，沒有循環比較關係。"
+      },
+      {
+        "a": "R27002",
+        "b": "B2064",
+        "reason": "B2064表型兩端因替代繁殖策略有優勢；R27002固定兩側排序後由暫留/拒絕排除阻擋對，非選擇演化。"
+      },
+      {
+        "a": "R27002",
+        "b": "M10003",
+        "reason": "M10003刪選項後Borda重計改冠軍；R27002保持完整偏好與集合，計算雙側穩定配對。"
+      },
+      {
+        "a": "R27002",
+        "b": "C2013",
+        "reason": "C2013比較回想與辨認；R27002偏好全已知，問題是配對相容，沒有記憶線索機制。"
+      },
+      {
+        "a": "R27002",
+        "b": "B2316",
+        "reason": "B2316群蜂交叉抑制/招募競爭決定巢址；R27002接收者單調改善暫留對象，目標是無兩方阻擋，非集體達成同一選項。"
+      },
+      {
+        "a": "R27002",
+        "b": "B2051",
+        "reason": "B2051雜交成本選擇交配前屏障；R27002不改偏好或演化成功率，只在固定順位下構造配對。"
+      },
+      {
+        "a": "R27001",
+        "b": "M2066",
+        "reason": "M2066只區分分布與有限樣本波動，不能產生R27001的對稱拒收規則。"
+      },
+      {
+        "a": "R27001",
+        "b": "I3092",
+        "reason": "I3092確定性狀態/種子重播；R27001假設獨立隨機輸入，不是偽亂數演算法。"
+      },
+      {
+        "a": "R27001",
+        "b": "M10005",
+        "reason": "M10005依主持人知情開空門的程序更新勝率；R27001無知情篩選者，按異面次序等機率拒收。"
+      },
+      {
+        "a": "R27002",
+        "b": "M10002",
+        "reason": "M10002聚合個人排序可形成多數環；R27002不聚合成單一排序，對兩側配對查阻擋。"
+      },
+      {
+        "a": "R27002",
+        "b": "T4050",
+        "reason": "T4050擁塞改變個人路線成本與均衡；R27002偏好固定，接收方的單調暫留阻斷兩方共同換配。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R27-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R27001"
+      ],
+      "reason": "只變同一抽取法的參數，併入核心。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "R27-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R27001"
+      ],
+      "reason": "同面並非錯誤；拒收是對稱化規則，放同一對照不另立題。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "R27-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R27001"
+      ],
+      "reason": "是固定偏率前提的失效對照，合入限制；不拆成新機制。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "R27-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "I3091"
+      ],
+      "reason": "舊庫已有有限等機率輸入映射不等份，不以公平二字重收。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "R27-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "M2066",
+        "R27001"
+      ],
+      "reason": "有限樣本不保證均分舊核已有，作一句限制。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "R27-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R27002"
+      ],
+      "reason": "定義與反例屬同一核心，合入畫面。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "R27-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R27002"
+      ],
+      "reason": "未核特定制度；同側室友甚至不符兩側模型，不能只換名詞套用。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "R27-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "M10005"
+      ],
+      "reason": "主持人規則與條件機率原題已有。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "R27-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "T4050"
+      ],
+      "reason": "固定流量下個人選路均衡已收，不換道路故事重計。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W27R-T01",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        50,
+        30
+      ],
+      "candidate_seconds": {
+        "R27001": 80
+      },
+      "flow_check": "四格機率→保留相等兩格→交替偏率反例，80秒。",
+      "drop_condition_review": "若四格條件機率說不清，刪數字以等面積路徑講；仍無法懂就留素材不排片，不加硬幣史。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    },
+    {
+      "id": "W27R-T02",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 100,
+      "chapter_seconds": [
+        55,
+        45
+      ],
+      "candidate_seconds": {
+        "R27002": 100
+      },
+      "flow_check": "六卡連鎖改配→列出想換者與接收者拒絕→穩定定義，100秒。",
+      "drop_condition_review": "若六張排序卡讀不動，先用線色突出本輪比較、刪重複逐對播；不再加最優性定理、真實招生案例或戀愛建議湊長。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    }
+  ],
+  "source_identity_review": {
+    "finding": "讀回原件版本/書目與副本身份；副本、圖資產、上網年不另計獨立研究。精確掃描無命中不等於全庫身份唯一。",
+    "identity_decisions": {
+      "file": ".cache/wave27-source-identity-decisions.json",
+      "sha256": "09f57ca328dd7b60f9ac697443b8567beeef898eb9425813ae015117dd200299"
+    },
+    "limits": "本文指定來源而非全庫出版關係稽核。"
+  },
+  "resolved_findings": [
+    {
+      "id": "TECH01",
+      "before_seconds": [
+        90,
+        110
+      ],
+      "after_seconds": [
+        80,
+        100
+      ],
+      "removed_seconds": 20,
+      "status": "TARGETED_READBACK_PASS",
+      "reason": "兩案刪純收尾與前提朗讀；失效反例/暫留證明仍留，條件移圖註。"
+    }
+  ],
+  "retrieval": {
+    "draft_sha256": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+    "neighbours": {
+      "file": ".cache/wave27-tech-neighbours.json",
+      "sha256": "5318796b4b62ee11243b063ea536cce519049ef378673092e4b3bf4c4864a7a2"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave27-draft.json",
+      "sha256": "e7073e8b6a48ef8e52d4655c7236ba9630982be47aa7a17b2e02491ea5e1c353"
+    },
+    "initial_neighbours": {
+      "file": ".cache/wave27-tech-neighbours-common-initial.json",
+      "sha256": "5318796b4b62ee11243b063ea536cce519049ef378673092e4b3bf4c4864a7a2"
+    },
+    "initial_draft_sha256": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+    "meaning": "分數只是召回提示，每個有向近對按完整問答/條件另判，不以分數直接合題。"
+  },
+  "final_input_check": {
+    "rows_equal_common_initial": true,
+    "checked_candidate_count": 2,
+    "checked_directed_pairs": 10,
+    "author_written_files_match": true,
+    "candidate_question_answer_unchanged_during_editorial_revision": true,
+    "reading_limit": "相等比較僅當期兩份已讀rows，非全庫召回率。"
+  },
+  "remaining_blockers": [],
+  "toy_readback": {
+    "author_checks": {
+      "file": ".cache/wave27-tech-toy-checks.json",
+      "sha256": "22a11234ba8e5783ceb3b3f3ab8f61d6de8f2df57a8c3a2f27b3562ff50cf9bc"
+    },
+    "independent_checks": {
+      "file": ".cache/wave27-life-review-tech-toy.json",
+      "sha256": "74c4b259706aa9104402d4f5cc1b299a28a9f43d1058faa8b637c1846fe96627"
+    },
+    "finding": "獨立以精確分數核兩組四路機率；枚舉6個配對及每個阻擋對，唯一穩定AY/BX/CZ與作者一致。",
+    "limits": "只是指定有限玩具算例及原程序閱讀，無實物示範/真實招生實驗/安全保證。"
+  },
+  "early_retrieval_check": {
+    "file": {
+      "file": ".cache/wave27-tech-neighbours-initial.json",
+      "sha256": "27ef211e3da4f856c415016eb799d66b08115623066ddc36173a9fed04abea01"
+    },
+    "rows_equal_final": true,
+    "note": "root-only初版與三組共同版完整10有向rows相同，已定點讀回。"
+  }
+}

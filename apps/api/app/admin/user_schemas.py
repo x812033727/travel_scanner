@@ -153,6 +153,7 @@ StepUpScope = Literal[
     "users.erase",
     "database.backup",
     "database.analyze",
+    "videos.delete",
 ]
 
 

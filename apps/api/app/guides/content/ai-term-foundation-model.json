@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "基礎模型（Foundation Model）是什麼",
@@ -99,6 +102,7 @@
           "width": 1600,
           "height": 900,
           "caption": "共用底層能力，不代表下游任務的正確性可以互相代替。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -256,6 +260,1010 @@
         },
         {
           "title": "Google：Gemma model overview",
+          "url": "https://ai.google.dev/gemma/docs/core",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is a Foundation Model?",
+      "description": "Foundation models train on broad data and adapt to many downstream tasks; parameter count alone does not define them, nor are they complete chat products. Using Stanford CRFM's definition and a community inbox's classification, summaries and search, this article explains how shared models underpin different applications, distinguishes them from LLMs, generative AI and open weights, and clarifies the boundaries between model capabilities, application adaptation and actual deployment.",
+      "hero": {
+        "src": "/guides/ai-term-foundation-model/hero-en.jpg",
+        "alt": "Three differently shaped structures stand on a broad shared base, symbolizing one set of foundational capabilities supporting different applications.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "A foundation model is trained on broad data and can be adapted to many downstream tasks. It is a \"foundation\" because it provides a shared starting point for many applications, not because it is easy for beginners to use.",
+            "Parameter count alone cannot define it, and it is not a complete, reliable product. Applications using the same model may inherit shared data biases or failure modes; each downstream task still needs its own acceptance checks.",
+            "Adaptation can involve prompts and examples, adding retrieval, or changing parameters through fine-tuning. Retraining is not always necessary.",
+            "Many LLMs are also foundation models, but foundation models can cover images and other modalities too. Whether their weights are open is a separate question."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A foundation model is trained on broad data and can be adapted to many downstream tasks. This article follows the usage proposed in the Stanford CRFM report: it is a \"foundation\" because it provides a shared starting point for many applications, not because it is easy for beginners to use, nor because it is already a complete, reliable product. Scale is often part of the context, but it cannot be defined solely by the number of "
+            },
+            {
+              "type": "article",
+              "text": "parameters",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A community service platform might want to classify incoming messages, summarize them and search for similar past issues. These features can use the same foundation model family, combined with different data and workflows. The following original scenario explains how shared capabilities can be adapted. Facts were checked as of 2026-9-14."
+        },
+        {
+          "type": "heading",
+          "text": "From a Single Task to an Adaptable Starting Point",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stanford CRFM describes foundation models as models trained on broad data that can be adapted to many downstream tasks, and discusses the opportunities and risks of this shared foundation. Previously, one model might specialize in recognizing a particular type of image, while another handled text classification. The foundation model approach first learns reusable capabilities, then makes different adjustments according to task requirements."
+        },
+        {
+          "type": "paragraph",
+          "text": "This does not mean any model can do every job well, or that all downstream features share the same interface. Language, image and cross-modal models can have different inputs and outputs; some excel at providing representations, while others excel at generating sequences. Calling them foundation models emphasizes their training background and adaptable role, rather than a fixed list of features."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's official model documentation provides concrete examples of general-purpose models that can be adapted for applications. However, no single model family establishes that all foundation models share the same licensing, deployment methods or hardware requirements. When reading model documentation, distinguish capabilities, access methods and application responsibilities. Downloading a model or calling an API gives you only part of a system."
+        },
+        {
+          "type": "heading",
+          "text": "One Foundation Can Support Different Applications",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The first task in the community inbox example is to sort incoming messages into work categories such as equipment, environment and activities. The input is a resident's description; the output is an assigned category and any additional information needed. The second task summarizes long messages into key points that administrators can read quickly. The third finds similar past cases so administrators can refer to how they were handled."
+        },
+        {
+          "type": "paragraph",
+          "text": "Although all these tasks process text, their acceptance criteria differ. Classification must match the actual division of responsibilities, summaries must preserve negation and chronology, and search must retrieve useful cases. A shared model can reduce the work of training from scratch, but each feature still needs its own data, prompts, tools and tests. Good classification performance does not establish that summarization is also reliable."
+        },
+        {
+          "type": "paragraph",
+          "text": "The original example input, \"The elevator is back in service today, but I would still like yesterday's unusual noise checked,\" should be understood as still requesting an inspection. A summary must not retain only \"The elevator is back in service.\" If classification is correct but the summary omits the unresolved issue, examine the summarization task's configuration. This does not necessarily require replacing the entire foundation model, nor does it mean classification has also failed."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-foundation-model/diagram-1-en.svg",
+          "alt": "One foundation model connects to classification, summarization and search. Each has its own task data and acceptance checks; one evaluation does not cover them all.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Sharing underlying capabilities does not make correctness on one downstream task a substitute for correctness on another.",
+          "description": "One foundation model connects to classification, summarization and search. Each feature has its own task data and acceptance checks; a single evaluation does not cover them all.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Adaptation Involves More Than Retraining",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Adaptation can mean providing clear prompts and examples so the model performs the current task. It can also involve adding retrieval to place applicable rules and past cases in the context. Other methods change some or all model parameters through fine-tuning. These approaches differ in cost, data requirements and maintenance. Choose according to the problem, rather than always preparing to retrain first."
+        },
+        {
+          "type": "paragraph",
+          "text": "For the community inbox, if work category names are unclear, organizing label definitions and examples may be more necessary than fine-tuning. If the model does not know the latest management procedures, obtaining current documents and supplying them may be more direct than expecting old parameters to remember updates on their own. Only a clear understanding of the gap allows you to determine which adaptation method addresses its cause."
+        },
+        {
+          "type": "paragraph",
+          "text": "An adapted model or application can also regress. Adding examples for the equipment category might cause some requests to borrow equipment for activities to be misclassified as repairs. Every update should retain important existing test cases and add new failure scenarios. A general-purpose foundation offers convenience, but does not eliminate trade-offs between tasks or the need for regression testing."
+        },
+        {
+          "type": "heading",
+          "text": "A Shared Foundation Can Also Mean Shared Blind Spots",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If multiple applications depend on the same model, they may inherit shared data biases, capability gaps or particular failure modes. This is one reason foundation models can have systemic effects: an underlying update can improve many features at once, but can also change the behavior of several products simultaneously. Each application cannot simply be treated as an independent small tool."
+        },
+        {
+          "type": "paragraph",
+          "text": "In this example, classification, summarization and search might all go wrong when residents use local colloquialisms or short phrases. This does not necessarily mean a larger model is needed. More testing in the relevant language, better prompts and exception handling may help instead. During diagnosis, checking which features fail together on the same input can help identify a shared source."
+        },
+        {
+          "type": "paragraph",
+          "text": "Provenance and versions therefore matter. The platform should know which foundation model it uses, which adaptation data and settings accompany it, and retain the results of checks performed before updates. If the service provider or local model version changes, important uses must be checked again. An identical model name or membership in the same family cannot, on its own, prove that behavior is completely unchanged."
+        },
+        {
+          "type": "heading",
+          "text": "How Foundation Models Differ from LLMs, Generative AI and Open Weights",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Large language models are described primarily in terms of language modeling and scale; foundation models emphasize broad training followed by adaptation to multiple tasks. Many LLMs are also foundation models, but foundation models can cover images and other modalities too. "
+            },
+            {
+              "type": "article",
+              "text": "Generative AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " is categorized by the ability to produce content, so these terms cannot be treated as completely interchangeable."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Open weights describes whether model weights are available and the associated conditions of use. This is separate from whether a model is a foundation model. A foundation model might be accessible only through a service, or its weights might be available. Providing weights does not mean that all training data, code and licensing are the same. Understanding these boundaries helps prevent assumptions about unverified rights and capabilities based on the word \"open.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "The most useful questions for ordinary users are: What task is this shared foundation being used for? What data and validation were added for that task? Who can address failures? With clear answers, a foundation model becomes a traceable technical starting point rather than an abstract term for a large black box. The features ultimately delivered to people still require application design and evidence."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Term",
+            "What it emphasizes",
+            "What this does not imply"
+          ],
+          "rows": [
+            [
+              "Foundation model",
+              "Adaptability to many downstream tasks",
+              "Every application has been validated"
+            ],
+            [
+              "Large language model",
+              "Large-scale language modeling",
+              "It can only be used for chat"
+            ],
+            [
+              "Open weights",
+              "Access to weights and conditions of use",
+              "Training data and all rights are open"
+            ]
+          ],
+          "caption": "Understanding related terms from different perspectives (verified in 2026-9)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Each Downstream Task Needs Its Own Test Cases",
+          "text": "Correct classification does not guarantee faithful summaries, and fluent summaries do not guarantee relevant search results. Sharing a model can save some development work, but cannot replace separate acceptance checks for each task."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is a Large Language Model?",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Fine-tuning: Making an Existing Model Better Suited to Your Task",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Open Weights: What Else Should You Check When You Can Download a Model?",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Stanford CRFM: On the Opportunities and Risks of Foundation Models",
+          "url": "https://crfm.stanford.edu/report",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Gemma model overview",
+          "url": "https://ai.google.dev/gemma/docs/core",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "基盤モデル（Foundation Model）とは",
+      "description": "基盤モデルとは、幅広いデータで訓練され、さまざまな下流タスクに適応できるモデルです。単にパラメータが多いことを指すわけではなく、完成されたチャット製品とも異なります。本記事では Stanford CRFM の用法を出発点に、地域のサービス窓口に届く問い合わせの分類・要約・検索を例として、共通モデルが異なるアプリケーションの出発点になる仕組みを説明し、大規模言語モデル、生成 AI、オープンウェイトとの違いを整理します。モデルの能力、用途への適応、実際の導入の境界を見分けられるようになります。",
+      "hero": {
+        "src": "/guides/ai-term-foundation-model/hero-ja.jpg",
+        "alt": "広い共通の土台に形の異なる三つの構造物が並び、同じ基盤能力が異なる用途を支えることを象徴しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "基盤モデルとは、幅広いデータで訓練され、さまざまな下流タスクに適応できるモデルです。「基盤」と呼ばれるのは、多くのアプリケーションに共通する出発点になれるためであり、初心者でも使いやすいからではありません。",
+            "パラメータ数だけでは定義できず、モデル自体が完成された信頼性の高い製品というわけでもありません。同じモデルに依存するアプリケーションは、データの偏りや失敗パターンを共通して引き継ぐ可能性があり、下流タスクごとに検証が必要です。",
+            "適応には、プロンプトや例の提示、検索の追加、ファインチューニングによるパラメータの変更などがあり、必ずしも再訓練は必要ありません。",
+            "多くの LLM は基盤モデルでもありますが、基盤モデルには画像やその他のモダリティを扱うものもあります。重みが公開されているかどうかは、また別の問題です。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "基盤モデルとは、幅広いデータで訓練され、さまざまな下流タスクに適応できるモデルです。ここでは Stanford CRFM の報告書で提案された用法を採用します。「基盤」と呼ばれるのは、多くのアプリケーションに共通する出発点になれるためであり、初心者でも使いやすいからではありません。また、モデル自体がすでに完成された信頼性の高い製品であることも意味しません。規模もその背景にあることが多いものの、"
+            },
+            {
+              "type": "article",
+              "text": "パラメータ",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "数だけで定義することはできません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "地域のサービスプラットフォームでは、届いた問い合わせの分類、要約の作成、過去の類似する問題の検索を行いたい場合があります。これらの機能には、同じ基盤モデルのファミリーを利用し、異なるデータやワークフローを組み合わせることができます。以下では、この独自の想定例を使って、共通の能力をどう適応させるかを説明します。情報の確認は 2026 年 9 月 14 日時点です。"
+        },
+        {
+          "type": "heading",
+          "text": "単一タスクから、適応可能な出発点へ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stanford CRFM は、基盤モデルを幅広いデータで訓練され、多くの下流タスクに適応できるモデルと説明し、こうした共通基盤がもたらす機会とリスクを論じています。従来は、あるモデルが特定の種類の画像認識に特化し、別のモデルが文章分類に特化していることがありました。基盤モデルの考え方は、まず再利用できる能力を学習し、その後、タスクの要件に応じて異なる調整を行うというものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これは、どのモデルでもあらゆる仕事をうまくこなせるという意味でも、すべての下流機能が同じインターフェースを共有するという意味でもありません。言語モデル、画像モデル、モダリティをまたぐモデルでは、入力と出力が異なる場合があります。表現の提供が得意なモデルもあれば、系列の生成が得意なモデルもあります。基盤モデルと呼ぶ際に重視されるのは、訓練の背景と適応可能な基盤としての役割であり、決まった機能一覧ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google のモデル公式ドキュメントには、汎用モデルを用途に合わせて適応させられる具体例が示されています。ただし、あるシリーズの例から、すべての基盤モデルのライセンス、導入方法、ハードウェア要件が同じだと推測することはできません。モデルの説明を読む際は、能力、入手方法、アプリケーション側の責任を分けて考える必要があります。モデルのダウンロードや API の呼び出しで得られるのは、システムの一部にすぎません。"
+        },
+        {
+          "type": "heading",
+          "text": "同じ基盤から異なるアプリケーションが生まれる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "地域の問い合わせ窓口の例では、最初のタスクは届いた問い合わせを設備、環境、イベントなどの業務カテゴリに分類することです。入力は住民による状況説明で、出力は指定されたカテゴリと追加で必要な情報です。次のタスクは、長い問い合わせを管理担当者がすぐに読める要点にまとめることです。さらに、過去の類似案件を探し、管理担当者が対応方法を参考にできるようにするタスクもあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これらのタスクはいずれも文章を扱いますが、検証の基準は異なります。分類ではカテゴリが実際の業務分担に合っているか、要約では否定表現と時系列が保たれているか、検索では見つかった事例が役立つかを確認します。共通モデルを使えばゼロから訓練する作業を減らせますが、機能ごとにデータ、プロンプト、ツール、テストが必要です。分類の成績が良いからといって、要約もすでに信頼できるとは言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "独自に作成した入力例「エレベーターは今日すでに復旧しましたが、昨日の異音については引き続き点検をお願いしたいです」は、点検の要望がまだ残っていると理解する必要があり、要約に「エレベーターは復旧した」だけを残してはいけません。分類が正しくても要約から未解決事項が抜けた場合は、要約タスクの設定を確認すべきです。必ずしも基盤モデル全体を交換する必要はなく、分類機能も同時に失敗したことを意味するわけでもありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-foundation-model/diagram-1-ja.svg",
+          "alt": "同じ基盤モデルを分類、要約、検索の各機能に接続します。機能ごとに専用のタスクデータと検証が必要であり、一度の評価ですべてを網羅するわけではありません。",
+          "width": 1600,
+          "height": 900,
+          "caption": "基盤となる能力を共有しても、下流タスクの正しさを互いに代用することはできません。",
+          "description": "同じ基盤モデルを分類、要約、検索の各機能に接続します。機能ごとに専用のタスクデータと検証が必要であり、一度の評価ですべてを網羅するわけではありません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "適応の方法は再訓練だけではない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "適応には、明確なプロンプトと例を提示して、その時のタスクに沿ってモデルを動かす方法があります。検索を加え、適用される規則や過去の案件をコンテキストに入れることもできます。また、ファインチューニングによってモデルのパラメータの一部または全部を変更する方法もあります。これらはコスト、必要なデータ、保守の面で異なるため、常に再訓練の準備から始めるのではなく、問題に応じて選ぶべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地域の問い合わせ窓口で業務カテゴリの名称が不明確なら、ファインチューニングよりも先に、ラベルの定義と例を整理する必要があるかもしれません。モデルが最新の管理手順を知らないことが問題なら、古いパラメータが自ら更新内容を覚えることを期待するより、現行の文書を入手して渡すほうが直接的かもしれません。不足している点を明確に理解して初めて、どの適応方法が原因に対応できるかを判断できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "適応後のモデルやアプリケーションで、性能が低下することもあります。設備分類の例を追加した結果、イベント用設備の借用依頼の一部が修理に誤分類されるかもしれません。更新のたびに、従来の重要な事例を残し、新たな失敗状況も追加する必要があります。汎用的な基盤は便利ですが、タスク間のトレードオフや回帰テストが不要になるわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "基盤を共有すると盲点も共有する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "複数のアプリケーションが同じモデルに依存していると、データの偏り、能力の不足、特定の失敗パターンを共通して引き継ぐ可能性があります。これは、基盤モデルがシステム全体に影響を及ぼす理由のひとつです。基盤の更新は多くの機能を同時に改善できる一方、複数の製品の動作を同時に変えることもあります。各アプリケーションを、互いに独立した小さなツールとだけ捉えることはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この例では、住民が地域特有の口語や短い語句を使うと、分類、要約、検索のすべてで偏りや誤りが生じる可能性があります。これは必ずしも、より大きなモデルに交換すべきだという意味ではありません。対象言語でのテストの追加、より良いプロンプト、例外処理が必要な場合もあります。診断時には、同じ入力に対してどの機能が同時に失敗するかをまず確認すると、共通の原因を見つけやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "そのため、出所とバージョンが重要です。プラットフォーム側は、使用する基盤モデルと、組み合わせる適応用データや設定を把握し、更新前の確認結果を保存する必要があります。サービス提供者やローカルモデルのバージョンが変わった場合は、重要な用途について改めて確認しなければなりません。モデル名が同じ、または同じシリーズに属するというだけでは、動作がまったく変わらないことの証明にはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "LLM、生成 AI、オープンウェイトとの違い",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "大規模言語モデルは主に言語モデリングと規模によって説明されます。一方、基盤モデルは、幅広い訓練の後でさまざまなタスクに適応できることを重視します。多くの LLM は基盤モデルでもありますが、基盤モデルには画像やその他のモダリティを扱うものもあります。"
+            },
+            {
+              "type": "article",
+              "text": "生成 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": "はコンテンツを生成する能力に基づく分類です。したがって、これらの用語をまったく同じ意味の名称として扱うことはできません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "オープンウェイトは、モデルの重みを入手できるかどうかと、その利用条件を表す言葉であり、基盤モデルかどうかとは別の問題です。基盤モデルには、サービス経由でしかアクセスできないものも、重みが提供されるものもあります。重みが提供されていても、訓練データ、プログラム、ライセンスがすべて同じだという意味ではありません。こうした境界を理解することで、「オープン」という言葉から未確認の権利や能力を推測するのを避けられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般の利用者が最も確認すべきなのは、この共通基盤をどのタスクに使い、そのタスクのためにどのようなデータと検証を追加し、失敗時に誰が対応できるのかという点です。これらの答えが明確になれば、基盤モデルは抽象的で巨大なブラックボックスを指す言葉ではなく、追跡可能な技術の出発点になります。実際に人へ提供する機能は、なおアプリケーションの設計と証拠によって完成させる必要があります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "用語",
+            "重視する点",
+            "そこからは判断できないこと"
+          ],
+          "rows": [
+            [
+              "基盤モデル",
+              "さまざまな下流タスクに適応できる",
+              "すべてのアプリケーションが検証済みである"
+            ],
+            [
+              "大規模言語モデル",
+              "大規模な言語モデリング",
+              "チャットにしか使えない"
+            ],
+            [
+              "オープンウェイト",
+              "重みの入手と利用条件",
+              "訓練データとすべての権利が開放されている"
+            ]
+          ],
+          "caption": "異なる観点から関連用語を理解する（2026 年 9 月確認）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "下流タスクごとに専用の事例が必要",
+          "text": "分類が正しくても、要約が忠実とは限りません。要約が自然でも、検索結果に関連性があるとは限りません。共通モデルによって構築作業の一部は省けますが、それぞれの検証を省くことはできません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大規模言語モデル（Large Language Model）とは",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ファインチューニング（Fine-tuning）：既存モデルを自分のタスクにより適したものにする",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "オープンウェイト（Open Weights）：モデルをダウンロードできても、何を確認すべきか",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Stanford CRFM：基盤モデルの機会とリスクについて",
+          "url": "https://crfm.stanford.edu/report",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Gemma モデルの概要",
+          "url": "https://ai.google.dev/gemma/docs/core",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "파운데이션 모델(Foundation Model)이란 무엇인가",
+      "description": "파운데이션 모델은 광범위한 데이터로 학습하고 다양한 다운스트림 작업에 맞게 조정할 수 있는 모델이다. 단순히 매개변수가 많다는 뜻도, 완성된 채팅 제품이라는 뜻도 아니다. 이 글은 Stanford CRFM의 용어 사용을 바탕으로 주민 서비스 메일함의 분류·요약·검색을 예로 들어, 공유 모델이 어떻게 여러 응용의 출발점이 되는지 설명한다. 대규모 언어 모델, 생성형 AI, 공개 가중치와의 차이도 정리한다. 모델 능력, 응용을 위한 조정, 실제 배포 사이의 경계를 구분할 수 있다.",
+      "hero": {
+        "src": "/guides/ai-term-foundation-model/hero-ko.jpg",
+        "alt": "넓은 공통 기반 위에 서로 다른 모양의 구조물 세 개가 서 있어, 하나의 기반 능력이 여러 응용을 지원함을 상징한다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "파운데이션 모델은 광범위한 데이터로 학습하고 다양한 다운스트림 작업에 맞게 조정할 수 있는 모델이다. ‘기반’이라는 이름은 여러 응용의 공통 출발점이 될 수 있다는 뜻이지, 초보자가 쉽게 사용할 수 있다는 뜻이 아니다.",
+            "매개변수 수만으로 정의할 수 없으며, 그 자체가 완성된 신뢰할 만한 제품도 아니다. 같은 모델에 의존하는 응용들은 데이터 편향이나 실패 양상도 함께 물려받을 수 있으므로, 각 다운스트림 작업을 개별적으로 검증해야 한다.",
+            "조정에는 프롬프트와 예시 제공, 검색 추가, 미세 조정을 통한 매개변수 변경 등이 있으며, 반드시 재학습해야 하는 것은 아니다.",
+            "많은 LLM은 파운데이션 모델이기도 하지만, 파운데이션 모델은 이미지와 다른 모달리티도 포괄할 수 있다. 가중치 공개 여부는 별개의 문제다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "파운데이션 모델은 광범위한 데이터로 학습하고 다양한 다운스트림 작업에 맞게 조정할 수 있는 모델이다. 여기서는 Stanford CRFM 보고서에서 제시한 용법을 따른다. ‘기반’이라는 이름은 여러 응용의 공통 출발점이 될 수 있기 때문이지, 초보자가 쉽게 사용할 수 있기 때문이 아니며, 그 자체가 이미 완성된 신뢰할 만한 제품이라는 뜻도 아니다. 규모가 그 배경 중 하나인 경우는 많지만 "
+            },
+            {
+              "type": "article",
+              "text": "매개변수",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " 수만으로 정의할 수는 없다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "한 주민 서비스 플랫폼이 접수된 메일을 분류하고 요약하며, 비슷한 과거 문제를 검색하려 한다고 가정해 보자. 이러한 기능은 같은 파운데이션 모델 계열을 활용하면서 서로 다른 데이터와 작업 흐름을 결합할 수 있다. 아래에서는 이 글에서 만든 상황을 통해 공유 능력이 어떻게 조정되는지 설명한다. 자료 확인 기준일은 2026년 9월 14일이다."
+        },
+        {
+          "type": "heading",
+          "text": "단일 작업에서 조정 가능한 출발점으로",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stanford CRFM은 파운데이션 모델을 광범위한 데이터로 학습하고 여러 다운스트림 작업에 맞게 조정할 수 있는 모델로 설명하며, 이러한 공통 기반이 가져오는 기회와 위험을 논의한다. 과거에는 한 모델이 특정 유형의 이미지 인식을, 다른 모델이 텍스트 분류를 전담했을 수 있다. 파운데이션 모델의 접근법은 먼저 재사용할 수 있는 능력을 학습한 뒤, 작업의 요구에 따라 다르게 조정하는 것이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이것이 어떤 모델이든 모든 일을 잘할 수 있다거나, 모든 다운스트림 기능이 같은 인터페이스를 공유한다는 뜻은 아니다. 언어 모델, 이미지 모델, 여러 모달리티를 아우르는 모델은 입력과 출력이 다를 수 있다. 어떤 모델은 표현을 제공하는 데, 다른 모델은 시퀀스를 생성하는 데 강하다. 이들을 파운데이션 모델이라고 부를 때의 핵심은 학습 배경과 여러 작업에 맞게 조정할 수 있는 역할에 있으며, 고정된 기능 목록에 있지 않다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 공식 모델 문서는 범용 모델을 응용에 맞게 조정하는 구체적인 예를 제공한다. 그러나 특정 계열을 근거로 모든 파운데이션 모델의 라이선스, 배포 방식, 하드웨어 요구 사항이 같다고 추론할 수는 없다. 모델 설명을 읽을 때는 능력, 접근 방식, 응용에 대한 책임을 구분해야 한다. 모델을 내려받거나 API를 호출하는 것은 시스템의 일부만 확보하는 일이다."
+        },
+        {
+          "type": "heading",
+          "text": "같은 기반에서 서로 다른 응용이 나온다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "주민 메일함 예시의 첫 번째 작업은 접수된 메일을 장비, 환경, 행사 등의 업무 범주로 분류하는 것이다. 입력은 주민의 설명이고, 출력은 지정된 범주와 추가로 필요한 정보다. 두 번째 작업은 긴 메일을 관리자가 빠르게 읽을 수 있는 핵심 내용으로 요약하는 것이다. 세 번째 작업은 비슷한 과거 사례를 찾아 관리자가 처리 방식을 참고하게 하는 것이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 작업들은 모두 텍스트를 다루지만 검증 기준은 다르다. 분류에서는 범주가 실제 업무 분담에 맞는지, 요약에서는 부정 표현과 시간 순서를 보존하는지, 검색에서는 찾은 사례가 유용한지를 확인해야 한다. 공유 모델을 사용하면 처음부터 학습하는 수고를 줄일 수 있지만, 각 기능에는 여전히 별도의 데이터, 프롬프트, 도구와 테스트가 필요하다. 분류 성능이 좋다는 이유만으로 요약도 신뢰할 수 있다고 선언해서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글에서 만든 입력인 “엘리베이터는 오늘 복구됐지만, 어제 났던 이상 소음은 여전히 점검해 주셨으면 합니다”는 아직 점검이 필요하다는 뜻으로 이해해야 한다. 요약에 “엘리베이터가 복구됐다”만 남겨서는 안 된다. 분류는 정확하지만 요약에서 미해결 사항을 빠뜨렸다면 요약 작업의 설정을 점검해야 한다. 반드시 파운데이션 모델 전체를 교체해야 하는 것은 아니며, 분류 기능도 함께 실패했다는 뜻도 아니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-foundation-model/diagram-1-ko.svg",
+          "alt": "같은 파운데이션 모델이 분류·요약·검색 기능에 각각 연결된다. 각 기능에는 자체 작업 데이터와 검증이 필요하며, 한 번의 평가로 전부를 검증하지는 않는다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "기반 능력을 공유한다고 해서 다운스트림 작업의 정확성을 서로 대신 보증할 수는 없다.",
+          "description": "같은 파운데이션 모델이 분류·요약·검색 기능에 각각 연결된다. 각 기능에는 자체 작업 데이터와 검증이 필요하며, 한 번의 평가로 전부를 검증하지는 않는다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "조정 방법은 재학습만이 아니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "조정은 명확한 프롬프트와 예시를 제공해 모델이 해당 작업에 맞게 동작하도록 하는 방식일 수 있다. 검색을 추가해 적용 가능한 규정과 과거 사례를 맥락에 넣을 수도 있다. 다른 방법으로는 미세 조정을 통해 모델 매개변수 일부 또는 전부를 변경하는 방식이 있다. 이러한 방법은 비용, 데이터 요구량, 유지 관리 측면에서 다르므로, 무조건 재학습부터 준비하기보다 문제에 맞게 선택해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주민 메일함의 업무 범주 이름이 불명확하다면, 미세 조정보다 먼저 라벨의 정의와 예시를 정리하는 일이 더 필요할 수 있다. 모델이 최신 관리 절차를 모르는 것이 문제라면, 기존 매개변수가 알아서 변경 사항을 기억하기를 기대하는 것보다 현행 문서를 확보해 제공하는 편이 더 직접적일 수 있다. 부족한 부분을 명확히 이해해야 어떤 조정 방식이 원인에 대응하는지 판단할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "조정한 모델이나 응용의 성능이 오히려 떨어질 수도 있다. 장비 분류 예시를 추가하면 일부 행사 장비 대여 요청이 수리로 잘못 분류될 수 있다. 업데이트할 때마다 기존의 중요한 사례를 유지하면서 새로운 실패 상황을 추가해야 한다. 범용 기반이 편의를 제공해도 작업 사이의 절충이나 회귀 테스트가 필요 없어지는 것은 아니다."
+        },
+        {
+          "type": "heading",
+          "text": "기반을 공유하면 사각지대도 공유한다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "여러 응용이 같은 모델에 의존하면 데이터 편향, 능력의 공백, 특정 실패 양상을 함께 물려받을 수 있다. 이는 파운데이션 모델이 시스템 전반에 영향을 미치는 이유 중 하나다. 기반 모델을 업데이트하면 여러 기능을 동시에 개선할 수도 있지만, 여러 제품의 동작이 동시에 바뀔 수도 있다. 각 응용을 서로 독립된 작은 도구로만 보아서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예시에서 주민이 지역 구어체나 짧은 구절을 사용하면 분류·요약·검색에서 모두 오류가 나타날 수 있다. 반드시 더 큰 모델로 바꿔야 한다는 뜻은 아니다. 해당 언어에 맞는 테스트를 늘리고 프롬프트와 예외 처리를 개선해야 할 수도 있다. 진단할 때 같은 입력이 어떤 기능들에서 함께 실패하는지 먼저 살피면 공통 원인을 파악하는 데 도움이 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "따라서 출처와 버전이 중요하다. 플랫폼은 어떤 파운데이션 모델을 사용하고 어떤 조정 데이터와 설정을 결합했는지 알아야 하며, 업데이트 전의 점검 결과도 보관해야 한다. 서비스 제공업체나 로컬 모델 버전이 바뀌면 중요한 용도를 다시 확인해야 한다. 모델 이름이 같거나 같은 계열에 속한다는 사실만으로 동작이 완전히 같다고 입증할 수는 없다."
+        },
+        {
+          "type": "heading",
+          "text": "LLM, 생성형 AI, 공개 가중치와의 차이",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "대규모 언어 모델은 주로 언어 모델링과 규모를 기준으로 설명하는 용어다. 파운데이션 모델은 광범위한 학습을 거쳐 여러 작업에 맞게 조정할 수 있다는 점을 강조한다. 많은 LLM은 파운데이션 모델이기도 하지만, 파운데이션 모델은 이미지와 다른 모달리티도 포괄할 수 있다. "
+            },
+            {
+              "type": "article",
+              "text": "생성형 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": "는 콘텐츠를 생성하는 능력을 기준으로 분류하므로, 이 용어들을 완전히 같은 이름으로 볼 수는 없다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 가중치는 모델 가중치를 확보할 수 있는지와 관련 사용 조건을 설명하는 용어로, 파운데이션 모델인지와는 별개의 문제다. 어떤 파운데이션 모델은 서비스를 통해서만 접근할 수 있고, 다른 모델은 가중치를 제공할 수도 있다. 가중치를 제공한다고 해서 모든 학습 데이터, 코드와 라이선스가 같다는 뜻도 아니다. 이러한 경계를 이해해야 ‘공개’라는 말만으로 확인되지 않은 권리와 능력을 추론하는 일을 피할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 사용자에게 가장 필요한 질문은 다음과 같다. 이 공통 기반은 어떤 작업에 사용되며, 그 작업을 위해 어떤 데이터와 검증을 추가했고, 실패하면 누가 처리할 수 있는가? 답이 명확해지면 파운데이션 모델은 추상적이고 거대한 블랙박스를 가리키는 용어가 아니라, 추적 가능한 기술적 출발점이 된다. 사람에게 실제로 제공하는 기능은 여전히 응용 설계와 근거를 통해 완성해야 한다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "용어",
+            "강조하는 점",
+            "이로부터 추론할 수 없는 것"
+          ],
+          "rows": [
+            [
+              "파운데이션 모델",
+              "여러 다운스트림 작업에 맞게 조정 가능",
+              "모든 응용이 이미 검증되었다는 것"
+            ],
+            [
+              "대규모 언어 모델",
+              "대규모 언어 모델링",
+              "채팅에만 사용할 수 있다는 것"
+            ],
+            [
+              "공개 가중치",
+              "가중치 확보와 사용 조건",
+              "학습 데이터와 모든 권리가 개방되어 있다는 것"
+            ]
+          ],
+          "caption": "서로 다른 관점으로 이해하는 관련 용어(2026년 9월 확인)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "각 다운스트림 작업에는 자체 검증 사례가 필요하다",
+          "text": "분류가 정확하다고 요약이 원문에 충실한 것은 아니며, 요약이 매끄럽다고 검색 결과의 관련성이 높은 것도 아니다. 공유 모델로 구축 작업 일부를 줄일 수는 있지만, 개별 검증을 생략할 수는 없다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "대규모 언어 모델(Large Language Model)이란 무엇인가",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "미세 조정(Fine-tuning): 기존 모델을 자신의 작업에 더 적합하게 만들기",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "공개 가중치(Open Weights): 모델을 내려받을 수 있어도 무엇을 더 확인해야 할까",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 총색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Stanford CRFM: 파운데이션 모델의 기회와 위험에 관하여",
+          "url": "https://crfm.stanford.edu/report",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Gemma 모델 개요",
+          "url": "https://ai.google.dev/gemma/docs/core",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "基础模型（Foundation Model）是什么",
+      "description": "基础模型指在广泛数据上训练、能适配多种下游任务的模型，重点不只是参数很多，也不等于完整的聊天产品。本文从 Stanford CRFM 的用法出发，以社区服务邮箱的分类、摘要与搜索为例，说明共用模型如何成为不同应用的起点，整理它与大型语言模型、生成式 AI 和开放权重的区别。读完能辨认模型能力、应用适配与实际部署之间的界限。",
+      "hero": {
+        "src": "/guides/ai-term-foundation-model/hero-zh-cn.jpg",
+        "alt": "宽大的共同基座上立着三种不同形状的结构，象征同一基础能力支持不同应用。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "基础模型是经过广泛数据训练、可以再适配多种下游任务的模型；“基础”是因为能成为许多应用的共同起点，不是因为初学者容易使用。",
+            "它不能只看参数数量来定义，本身也不是完整可靠的产品；依赖相同模型的应用可能共同继承数据偏差或失败模式，每项下游任务仍要各自验收。",
+            "适配可以是提示词与示例、加入检索，或通过微调改变参数，不一定要重新训练。",
+            "许多 LLM 同时是基础模型，但基础模型也可以涵盖图像与其他模态，是否开放权重则是另一个问题。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "基础模型是经过广泛数据训练，可以再适配多种下游任务的模型。这里采用 Stanford CRFM 报告提出的用法：它之所以是“基础”，是因为能成为许多应用的共同起点，而不是因为初学者容易使用，也不表示它本身已经是完整可靠的产品。规模常是背景之一，但不能只看"
+            },
+            {
+              "type": "article",
+              "text": "参数",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "数量来定义。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "一个社区服务平台可能想对来信分类、整理摘要，并搜索相似的历史问题。这些功能可以利用同一个基础模型家族，再配合不同数据与工作流程。以下以这个原创情境解释共用能力如何被适配，资料查证截至 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "从单一任务转向可适配的起点",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stanford CRFM 将基础模型描述为通过广泛数据训练、能适配许多下游任务的模型，并讨论这种共用基础带来的机遇与风险。过去一个模型可能专门识别某类图像，另一个专门做文本分类；基础模型的思路是先学到可复用的能力，再根据任务需求进行不同调整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这不代表任何模型都能做好所有工作，也不代表所有下游功能都共用同一个接口。语言、图像与跨模态模型可以有不同的输入输出；某些模型擅长提供表征，另一些擅长生成序列。把它们称为基础模型，重点在于训练背景与可适配的角色，而不是一份固定的功能清单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的模型官方文档提供了通用模型可供应用适配的具体例子，但不能由某个系列反推所有基础模型都有相同的许可、部署方式或硬件需求。读模型说明时，要把能力、获取方式和应用责任分开；下载模型或调用 API，只获取了系统的一部分。"
+        },
+        {
+          "type": "heading",
+          "text": "同一基础可以衍生出不同应用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "社区邮箱示例的第一个任务是把来信分成设备、环境与活动等工作类别。输入是住户描述，输出是指定类别与需要补充的信息。第二个任务是将长来信摘要成管理员可快速阅读的要点。第三个任务是找出相似历史案例，让管理员参考处理方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这些任务虽然都处理文本，验收却不同。分类要看类别是否符合实际工作分工，摘要要保留否定与时序，搜索要看找到的案例是否有用。使用共同模型可以减少从零训练的工作，但每个功能仍需各自的数据、提示、工具和测试，不能以分类表现良好就宣称摘要也已可靠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原创输入“电梯今天已恢复，但昨天的异常声音仍希望检查”应被理解为仍有检查需求，摘要不能只保留“电梯已恢复”。若分类正确而摘要漏掉未决事项，应检查摘要任务设置；不一定要更换整个基础模型，也不代表分类功能同时失败。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-foundation-model/diagram-1-zh-cn.svg",
+          "alt": "同一基础模型分别连接分类、摘要和搜索功能，每个功能都有自己的任务数据与验收，而不是一次评测涵盖全部。",
+          "width": 1600,
+          "height": 900,
+          "caption": "共用底层能力，不代表下游任务的正确性可以互相替代。",
+          "description": "同一基础模型分别连接分类、摘要和搜索功能，每个功能都有自己的任务数据与验收，而不是一次评测涵盖全部。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "适配不只有重新训练",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "适配可以是提供明确的提示词和示例，让模型按当前任务工作；也可以加入检索，把适用的规章与历史案例放入上下文。另一些方法会通过微调改变部分或全部模型参数。这些方式在成本、数据需求与维护上不同，应根据问题选择，而不是一律先准备重新训练。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对社区邮箱，如果工作类别名称不清楚，先整理标签定义与例子，可能比微调更必要。若问题是模型不知道最新管理流程，获取现行文件并提供给它，可能比期待旧参数自行记得更新更直接。只有明确了解缺口，才能判断哪种适配方式能针对原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "适配后的模型或应用也可能退步。新增设备分类示例，可能让某些活动设备借用被误分到维修。每次更新都应保留旧有重要案例，再增加新的失败情境。通用基础带来便利，但不会免除任务之间的取舍与回归测试。"
+        },
+        {
+          "type": "heading",
+          "text": "共用基础也会共用盲点",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果多个应用依赖相同模型，它们可能共同继承数据偏差、能力缺口或某些失败模式。这是基础模型带来系统性影响的原因之一：底层更新可以同时改善许多功能，也可能同时改变多个产品行为。不能只把每个应用看成彼此独立的小工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在示例里，住户使用地方口语或简短短语时，分类、摘要与搜索可能都出现偏差。这不一定表示需要换成更大的模型，也可能需要更多适用语言的测试、更好的提示与异常处理。诊断时先检查相同输入在哪些功能中一起失败，能帮助识别共同来源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "来源和版本因此很重要。平台应知道使用哪个基础模型、搭配哪些适配数据及设置，并保留更新前的检查结果。若服务提供商或本地模型版本改变，要重新确认重要用途。模型名字相同或同属一个系列，不能单独证明行为完全不变。"
+        },
+        {
+          "type": "heading",
+          "text": "如何区分基础模型、LLM、生成式 AI 与开放权重",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "大型语言模型主要按语言建模与规模描述；基础模型强调广泛训练后可供多种任务适配。许多 LLM 同时是基础模型，但基础模型也可以涵盖图像与其他模态。"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 则按生成内容的能力分类，因此不能把这些术语当成完全相同的名称。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "开放权重描述模型权重是否可获取，以及相关使用条件，和是否为基础模型是不同问题。某个基础模型可能只能通过服务访问，也可能提供权重；提供权重也不等于所有训练数据、程序与许可都相同。了解这些边界，才能避免从“开放”一词推论未经查证的权利与能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "普通用户最需要问的是：这个共同基础被拿来做哪项任务，为那项任务补充了什么数据与验证，失败时谁能处理？当这些答案清楚，基础模型就不再是抽象的大型黑箱术语，而是一个可追溯的技术起点。真正交付给人的功能，仍需通过应用设计与证据来完成。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "术语",
+            "强调的问题",
+            "不能因此推论"
+          ],
+          "rows": [
+            [
+              "基础模型",
+              "可适配多种下游任务",
+              "所有应用都已验证"
+            ],
+            [
+              "大型语言模型",
+              "大规模语言建模",
+              "只可能用来聊天"
+            ],
+            [
+              "开放权重",
+              "权重获取与使用条件",
+              "训练数据与所有权利都开放"
+            ]
+          ],
+          "caption": "从不同角度理解相关术语（2026 年 9 月查证）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "每项下游任务都要有自己的案例",
+          "text": "分类答对不代表摘要忠实，摘要通顺也不代表搜索相关。共用模型可以省下部分构建工作，不能省略各自的验收。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型语言模型（Large Language Model）是什么",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微调（Fine-tuning）：让现有模型更适合你的任务",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "开放权重（Open Weights）：能下载模型，还要确认什么",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Stanford CRFM：论基础模型的机遇与风险",
+          "url": "https://crfm.stanford.edu/report",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Gemma 模型概览",
           "url": "https://ai.google.dev/gemma/docs/core",
           "checked_on": "2026-09-14"
         }

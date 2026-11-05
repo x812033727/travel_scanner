@@ -1,0 +1,764 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave28-museum.json",
+      "sha256": "698d4c37527b8241ba16c0b7c98f6e30ffe835bea32b30cd62d8b53b02b9e935"
+    },
+    {
+      "file": "reviews/wave28-museum-author.json",
+      "sha256": "6fe5fb6e47dfd2a31090cefbc81de4dc3ad77a2dd2bd1fcf1552b4a6a38ff015"
+    },
+    {
+      "file": "reviews/wave28-museum-themes.json",
+      "sha256": "d3f0e27f526c518370d7ba102ebf06d977cc7b154acad7baadf3c2f61c06630c"
+    },
+    {
+      "file": "reviews/wave28-audio-reviews-museum.json",
+      "sha256": "f20c6681664e90a9dbc133a769f3da60a1375a425a93cc7e927e8c70a915d077"
+    },
+    {
+      "file": "batches/wave28-audio.json",
+      "sha256": "cd636a2c7572234e273dca27d49594b2ae23f489e0e471cb37ee782acc6795c0"
+    },
+    {
+      "file": "reviews/wave28-audio-author.json",
+      "sha256": "4555941fb24490fae2b7c6b36370ee5df4c73914f79047fd8c63b7c931e90081"
+    },
+    {
+      "file": "reviews/wave28-audio-themes.json",
+      "sha256": "222b783580d69ee7cfb07dbdb87c643a2be4669c301755aa984117516042b114"
+    },
+    {
+      "file": "reviews/wave28-museum-reviews-audio.json",
+      "sha256": "5d4cd8ff509e6c3ed463deb386ecf56f5b4f030d82746888815cb444823388b8"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave28-museum.json",
+      "author": "root",
+      "reviewer": "pool_physics",
+      "candidate_count": 6,
+      "top5_directed_pairs": 30,
+      "author_pairs": 13,
+      "not_added_count": 11,
+      "theme_count": 4
+    },
+    {
+      "batch": "batches/wave28-audio.json",
+      "author": "pool_physics",
+      "reviewer": "root",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 14,
+      "not_added_count": 13,
+      "theme_count": 3
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave28-audio.json",
+          "sha256": "cd636a2c7572234e273dca27d49594b2ae23f489e0e471cb37ee782acc6795c0"
+        },
+        {
+          "file": "batches/wave28-museum.json",
+          "sha256": "698d4c37527b8241ba16c0b7c98f6e30ffe835bea32b30cd62d8b53b02b9e935"
+        }
+      ],
+      "new_source_rows": 11,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "9a4ae759c51a3b65828520bd9dc0f723981f12b730bfb0d2fbea5421971d0e1d",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "reviewer": "root",
+      "notes": "11個來源網址，10個支撐入選素材，另1個LOC來源只支撐退題。同館對NG168的兩頁是同項研究說明。NEDCC工作流程與案例報告來自同一保存中心。3M公告是1994年原件，由AES另行提供PDF。"
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave28-museum.json",
+      "source_rows": 6,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave28-audio.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "36c7cefc4dd174b3359461229840e5d411f878c64f1ecf36470eb19de4e702be",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source_id": "P28-S001",
+      "file": ".cache/wave28-audio-workflow.pdf",
+      "sha256": "44c92b88f0f207f2b4067678bba949f3a30b015287bd58a2ab58a4bd3758b276",
+      "text_file": ".cache/wave28-audio-workflow.txt",
+      "text_sha256": "2f06f22f4f4869ce2ec157dcd4be5b40959c97f4ec523bafae019a17a756146d",
+      "url": "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf",
+      "reading_scope": "工作流程PDF印刷頁264–267影像與處理段，p267 Fig5/6目讀。",
+      "finding": "側刻看橫向位移、縱刻需高度，按時間求位移變化率。3D可掃側刻也可掃縱刻，不能從器形斷定量測方向。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave28-audio-workflow-p6.png",
+          "sha256": "6beac5921a0288e8284bcd1557d399f08fe0d4c9e913f1bee02092b3b69df236"
+        }
+      ],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    },
+    {
+      "source_id": "P28-S002",
+      "file": ".cache/wave28-audio-broken.html",
+      "sha256": "e12e773042477406e892fabf6b315ae095704e05bbc40dd607f628b6d31b82d3",
+      "text_file": ".cache/wave28-audio-broken.txt",
+      "text_sha256": "bb5e08e393651580dd56639d7641f93501702257224c1a473543ac9e15cf7c68",
+      "url": "https://www.nedcc.org/about/nedcc-stories/bcm",
+      "reading_scope": "NEDCC作者報告 L0239–0257，Weaver循跡截圖目讀。",
+      "finding": "漆層剝離後會縮翹；該橫刻盤用了3D相機。先實體排回，再在影像循跡。缺料造成掉音，另製聆聽版可減噪。未聽嵌入音檔。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave28-audio-st_bocm_4_groovescr.jpg",
+          "sha256": "ebd8d91fafdb6b27447192ef1c05e225bed87b685929e66bc76a925fa5ad3c1f"
+        }
+      ],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    },
+    {
+      "source_id": "P28-S003",
+      "file": ".cache/wave28-audio-fork.pdf",
+      "sha256": "a42285d2c8a6ae4d360d9586f9fd7119ec8929e1ff0347a2fd984eec4131e7d2",
+      "text_file": ".cache/wave28-audio-fork.txt",
+      "text_sha256": "7f70bb549fb686eeb1543125de3dbbe7aa233a9d0abe2ebb3324e469ffa84e14",
+      "url": "https://firstsounds.org/research/articles/scott-discography.pdf",
+      "reading_scope": "ARSC 2010作者論文刊48–49之時間校正段，PDF p26 Fig4圖說目讀。",
+      "finding": "同步叉軌用於局部伸縮，原文本的歷史用語不自明。研究者用後續說話樣本及同期用法改採250 Hz。p26圖4是另一計時器示例，不用它充當該歌聲的同步音叉原圖。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave28-audio-fork-p26.png",
+          "sha256": "8876131232c135b2e2788f94e3a0d064f20d83f047a3a8582ff25e3ea066194a"
+        }
+      ],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    },
+    {
+      "source_id": "P28-S004",
+      "file": ".cache/wave28-audio-3m.pdf",
+      "sha256": "b239e1cd6f88fe9c5e4d1d2b5880a3ade59129b2b663faa3f6d86e67ad648b21",
+      "text_file": ".cache/wave28-audio-3m.txt",
+      "text_sha256": "15ef9bf432a0b420144044475020fb897045c2d3c3aa63c8fe975f990d0ed807",
+      "url": "https://aes.org/wp-content/uploads/2025/02/printthrough.pdf",
+      "reading_scope": "3M公告A011194，PDF p1 Situation/Recommendation及p3 Fig2目讀。",
+      "finding": "鄰層漏印與播放前後順序相連。圖2限定氧化層朝內收帶盤，C所受較強轉印在B之後出現。發布年按頁腳1994。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave28-audio-3m-p3.png",
+          "sha256": "beb5168992d6a8009f6f6607a03097fe924d016316c71add133ae85d9639d445"
+        }
+      ],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    },
+    {
+      "source_id": "P28-S005",
+      "file": ".cache/wave28-audio-lacquer.html",
+      "sha256": "6dd649dcf8155bcd951a5266dcdb2332049531fcaf56518c228fab5d832367bb",
+      "text_file": ".cache/wave28-audio-lacquer.txt",
+      "text_sha256": "cdd92e38e85acb80568bdd149353f5b8f0fbb24b9edcd809fcd86bc79d577c58",
+      "url": "https://loc.gov/preservation/scientists/projects/lacquered_disc.html",
+      "reading_scope": "LOC專案頁L0025–0033背景與研究結果，只作退題核對。",
+      "finding": "受測劣化盤表面有硬脂酸及棕櫚酸，沒有支持所有白霧來自相同材料或可使用同一清洗方法。未核後列論文或原照片。",
+      "viewed_images": [],
+      "read_via": "非作者定點重讀當日取得的原件與抽文，獨立核對內容及檔案指紋。"
+    }
+  ],
+  "editorial_summary": "館藏與聲音保存共10個新核心。畫布疏密和布邊的拉痕沿同一張X光圖接成一案；花瓣原色和遺失畫邊以兩種重建證據接成一案；剝落唱片先解碼、再接回錯位槽段，也合成一案。其餘四案各自有獨立判斷。本批24個方向不另收，包括依畫名或載體重拆、推定歌手身分，以及無法由證據還原的色值和原筆觸。11個來源網址中有10個支撐入選題，另1個館藏保存研究只用於退題。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並依收據覆核聲音保存組各來源、近對與題案。museum由root撰寫、pool_physics非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 30,
+      "changes": [
+        {
+          "batch": "museum",
+          "reviewer": "pool_physics",
+          "before_files": [
+            {
+              "file": "batches/wave28-museum.json",
+              "sha256": "1dcbf9e19479b610d2a0245a72cab7cb645bd615ee9858bb13e00952220d1ba1"
+            },
+            {
+              "file": "reviews/wave28-museum-themes.json",
+              "sha256": "e0b9fbaee564a6f4a68b1a25d142167a3b874df410d266233184173b1e64ee46"
+            },
+            {
+              "file": "reviews/wave28-museum-author.json",
+              "sha256": "7bcec8e37b19e9bbc7f92a76afc72306cd24eab56d610539977c9d57c99d73de"
+            }
+          ],
+          "removed_seconds": 20,
+          "changes": [
+            "R28004限定眉眼顏色；R28005限定許多花瓣的今日色澤。",
+            "肩袖可辨粉點與肩結留下的底稿形狀分開圖解。",
+            "布邊定位125→115秒，最後一拍30→20。褪色與裁框重建125→115秒，最後一拍15→5。"
+          ]
+        },
+        {
+          "batch": "audio",
+          "reviewer": "root",
+          "before_files": [
+            {
+              "file": "batches/wave28-audio.json",
+              "sha256": "5e39048a8ec7e009f0409e92a7b0b304133ee0237ada3d1aff0a225f65cedcaf"
+            },
+            {
+              "file": "reviews/wave28-audio-themes.json",
+              "sha256": "0c77de5e2a5e8bbd87bd02f8baff92c211120bbdbf38ed3a4739f2c1e2e716f8"
+            },
+            {
+              "file": "reviews/wave28-audio-author.json",
+              "sha256": "a782074dc7a389a8ee9677336487f2dacc51b0314b96b20d84d17014dbed97a3"
+            }
+          ],
+          "reason": "P28003採紙上歌聲的描述。T01題面明指漆層剝落，缺料與降噪的圖註併入接縫對照，刪末尾10秒重述。",
+          "removed_seconds": 10,
+          "seconds_before": [
+            135,
+            85,
+            75
+          ],
+          "seconds_after": [
+            125,
+            85,
+            75
+          ],
+          "changed_question_ids": [
+            "P28003"
+          ],
+          "after_batch_sha256": "cd636a2c7572234e273dca27d49594b2ae23f489e0e471cb37ee782acc6795c0",
+          "after_themes_sha256": "222b783580d69ee7cfb07dbdb87c643a2be4669c301755aa984117516042b114"
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "R28-S001",
+        "file": ".cache/wave28-museum-weavepaper.pdf",
+        "sha256": "582ff08d653f7b30df06ac27aa2431709e84b9d8ecc30cfd02b770d4f9e709ac",
+        "text_file": ".cache/wave28-museum-weavepaper.txt",
+        "text_sha256": "5cd3a494d680bbd480ea800b06f95664cc6846550e1c64e6cf0255efc9ea2900"
+      },
+      {
+        "source_id": "R28-S001",
+        "file": ".cache/wave28-museum-weave-p5.png",
+        "sha256": "381ae311e161b63a415458b9999ad398ccd2ca2beb4bcf6dc18a78bb9171cbbb"
+      },
+      {
+        "source_id": "R28-S001",
+        "file": ".cache/wave28-museum-weave-p6.png",
+        "sha256": "d90e54faf5eacd13821a5d42c843af9c5b57af4602c52289e145a0356c49b39b"
+      },
+      {
+        "source_id": "R28-S002",
+        "file": ".cache/wave28-museum-pounce.html",
+        "sha256": "8fca3120efc8adc5589ea1cc9d93500adf6bb1e52432bef84e885d36dab0da9a",
+        "text_file": ".cache/wave28-museum-pounce.txt",
+        "text_sha256": "4c2966bd21d4184161a78e4bd25c12e740450341842cb60f79baf94b3d93b4ec"
+      },
+      {
+        "source_id": "R28-S003",
+        "file": ".cache/wave28-museum-cartoon.html",
+        "sha256": "5677b45124f94c92329fc95a4dbc207c6ec7b8b4f61353c025acc921c1d0b4ab",
+        "text_file": ".cache/wave28-museum-cartoon.txt",
+        "text_sha256": "58b37baf0d2c51381f07b13d68cb6b391ded4f0a9d19d3cfa401fdc43d7623c4"
+      },
+      {
+        "source_id": "R28-S004",
+        "file": ".cache/wave28-museum-blue.html",
+        "sha256": "2919271bc332f27c140741c17a826e5d882735842db607f9a36d22973d1aceb3",
+        "text_file": ".cache/wave28-museum-blue.txt",
+        "text_sha256": "1cbb10179e93bc5aa79ff85e43dd7bca37629ef7ec47b3378ad60df73f4d322c"
+      },
+      {
+        "source_id": "R28-S004",
+        "file": ".cache/wave28-museum-fig-14-1.jpg",
+        "sha256": "b90b4244bf7f6fac126b40a9f62df7ee93c207889f5e2a2e7c3305f0be56a479"
+      },
+      {
+        "source_id": "R28-S004",
+        "file": ".cache/wave28-museum-fig-14-2.jpg",
+        "sha256": "24ed5701745f34223c85f0736ff7d11f6ef211e459de5768e8aa6e8bc1ffad55"
+      },
+      {
+        "source_id": "R28-S005",
+        "file": ".cache/wave28-museum-iris.pdf",
+        "sha256": "7be5c1f5a9c7e5390b7a128c40cf91e5f5d4a8bd1ef25bc2b134bb7bf6dc73a8",
+        "text_file": ".cache/wave28-museum-iris.txt",
+        "text_sha256": "8fad73b3e2ba6e08ce724a6050c768121e964ac62604b39664ecbb6ea79792f2"
+      },
+      {
+        "source_id": "R28-S005",
+        "file": ".cache/wave28-museum-iris-p8.png",
+        "sha256": "e351b536185842be4a69d40f72353faa435efdf2042c9290ccda7611c54e0d7d"
+      },
+      {
+        "source_id": "R28-S006",
+        "file": ".cache/wave28-museum-edge.html",
+        "sha256": "2e5ace4810c977135cbbd0ec53fc3adfff6b3a6babe32d9b9787ab246459e070",
+        "text_file": ".cache/wave28-museum-edge.txt",
+        "text_sha256": "9cb416d502b3e0ff0afb04cd56749f3acbe798ec3628d00a543c370af3ae14e2"
+      },
+      {
+        "source_id": "P28-S001",
+        "file": ".cache/wave28-audio-workflow.pdf",
+        "sha256": "44c92b88f0f207f2b4067678bba949f3a30b015287bd58a2ab58a4bd3758b276",
+        "text_file": ".cache/wave28-audio-workflow.txt",
+        "text_sha256": "2f06f22f4f4869ce2ec157dcd4be5b40959c97f4ec523bafae019a17a756146d"
+      },
+      {
+        "source_id": "P28-S002",
+        "file": ".cache/wave28-audio-broken.html",
+        "sha256": "e12e773042477406e892fabf6b315ae095704e05bbc40dd607f628b6d31b82d3",
+        "text_file": ".cache/wave28-audio-broken.txt",
+        "text_sha256": "bb5e08e393651580dd56639d7641f93501702257224c1a473543ac9e15cf7c68"
+      },
+      {
+        "source_id": "P28-S003",
+        "file": ".cache/wave28-audio-fork.pdf",
+        "sha256": "a42285d2c8a6ae4d360d9586f9fd7119ec8929e1ff0347a2fd984eec4131e7d2",
+        "text_file": ".cache/wave28-audio-fork.txt",
+        "text_sha256": "7f70bb549fb686eeb1543125de3dbbe7aa233a9d0abe2ebb3324e469ffa84e14"
+      },
+      {
+        "source_id": "P28-S004",
+        "file": ".cache/wave28-audio-3m.pdf",
+        "sha256": "b239e1cd6f88fe9c5e4d1d2b5880a3ade59129b2b663faa3f6d86e67ad648b21",
+        "text_file": ".cache/wave28-audio-3m.txt",
+        "text_sha256": "15ef9bf432a0b420144044475020fb897045c2d3c3aa63c8fe975f990d0ed807"
+      },
+      {
+        "source_id": "P28-S005",
+        "file": ".cache/wave28-audio-lacquer.html",
+        "sha256": "6dd649dcf8155bcd951a5266dcdb2332049531fcaf56518c228fab5d832367bb",
+        "text_file": ".cache/wave28-audio-lacquer.txt",
+        "text_sha256": "cdd92e38e85acb80568bdd149353f5b8f0fbb24b9edcd809fcd86bc79d577c58"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "museum",
+          "initial_draft": "e0e449b8437ceb5cb1300ca95b58f4e1cbfd038954992f60eeccc0c6dc451eb9",
+          "final_draft": "f1316e6031840d5ddae4813710cba4ed571b82f89d59b4a0ef8a8f72f701e649",
+          "directed_pairs": 30,
+          "top5_or_text_changes": 2,
+          "changes": [
+            {
+              "id": "R28004",
+              "before": {
+                "id": "R28004",
+                "question": "畫面看不出藍色，為什麼研究者卻在古人像的眉眼找到埃及藍？",
+                "neighbours": [
+                  {
+                    "id": "N032",
+                    "cosine": 0.701604,
+                    "question": "海王星真的那麼深藍，還是照片調過顏色？",
+                    "answer_target": "增強對比影像與校正後視覺色彩之別",
+                    "scope": "海王星與冥王星；限軌道幾何和影像呈現"
+                  },
+                  {
+                    "id": "R28005",
+                    "cosine": 0.686081,
+                    "question": "梵谷寫的是紫鳶尾，畫裡怎麼只看得到藍？",
+                    "answer_target": "Getty在一片花瓣顏料的截面看到表面偏藍、較深處仍紫。許多花瓣也同時有指向鈷藍與感光紅色顏料的鈷、溴分布。兩種證據合起來，支持紅色成分褪去後藍色較突出，並能限制數位復色的位置。",
+                    "scope": "限Getty藏《鳶尾花》及所測花瓣。不能用一片顏料推算全畫原色，數位復色是近似。"
+                  },
+                  {
+                    "id": "L326",
+                    "cosine": 0.681694,
+                    "question": "很暗的地方還看得到輪廓，為什麼顏色卻難以分清？",
+                    "answer_target": "視桿與視錐的感光及色覺分工",
+                    "scope": "正常視覺與眼部構造；不提供自我診斷或眼睛刺激實驗"
+                  },
+                  {
+                    "id": "O7004",
+                    "cosine": 0.65303,
+                    "question": "透明薄片沒有染色，顯微鏡怎麼把幾乎看不見的內部顯出來？",
+                    "answer_target": "分離未偏折背景光與繞射光，再用相位板改變相對相位和振幅，讓薄片造成的相位差轉成明暗。",
+                    "scope": "限薄弱相位樣本的相差原理；不是產生新色素，也不從亮暗直接判定厚度或密度。"
+                  },
+                  {
+                    "id": "P20005",
+                    "cosine": 0.64448,
+                    "question": "追著畫面裡的白色物體看，為什麼邊緣會像散成彩虹？",
+                    "answer_target": "若紅綠藍在不同時刻顯示，追視移動物體時，各色可落在不同視網膜位置；改動後兩個子影格的位置能減少受測追視條件下的分離和彩邊。",
+                    "scope": "限2014研究CRT模擬逐色時序及其追視控制；不是商用DLP測試。不追視也能見彩邊，需要時空濾波解釋，不能說眼睛不動就必然消失；3受試2作者，不能給萬用補償數字。"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R28004",
+                "question": "古人像的眉眼看起來不是藍的，研究者怎麼找到藏在裡面的埃及藍？",
+                "neighbours": [
+                  {
+                    "id": "O7004",
+                    "cosine": 0.671068,
+                    "question": "透明薄片沒有染色，顯微鏡怎麼把幾乎看不見的內部顯出來？",
+                    "answer_target": "分離未偏折背景光與繞射光，再用相位板改變相對相位和振幅，讓薄片造成的相位差轉成明暗。",
+                    "scope": "限薄弱相位樣本的相差原理；不是產生新色素，也不從亮暗直接判定厚度或密度。"
+                  },
+                  {
+                    "id": "L326",
+                    "cosine": 0.670054,
+                    "question": "很暗的地方還看得到輪廓，為什麼顏色卻難以分清？",
+                    "answer_target": "視桿與視錐的感光及色覺分工",
+                    "scope": "正常視覺與眼部構造；不提供自我診斷或眼睛刺激實驗"
+                  },
+                  {
+                    "id": "N032",
+                    "cosine": 0.65651,
+                    "question": "海王星真的那麼深藍，還是照片調過顏色？",
+                    "answer_target": "增強對比影像與校正後視覺色彩之別",
+                    "scope": "海王星與冥王星；限軌道幾何和影像呈現"
+                  },
+                  {
+                    "id": "R28005",
+                    "cosine": 0.646881,
+                    "question": "梵谷信裡寫的是紫鳶尾，今天許多花瓣怎麼看起來是藍的？",
+                    "answer_target": "Getty在一片花瓣顏料的截面看到表面偏藍、較深處仍紫。許多花瓣也同時有指向鈷藍與感光紅色顏料的鈷、溴分布。兩種證據合起來，支持紅色成分褪去後藍色較突出，並能限制數位復色的位置。",
+                    "scope": "限Getty藏《鳶尾花》及所測花瓣。不能用一片顏料推算全畫原色，數位復色是近似。"
+                  },
+                  {
+                    "id": "A24003",
+                    "cosine": 0.625844,
+                    "question": "這種魷魚遮住眼睛還在發光，遮住頭頂一小區卻暗了很多，為什麼？",
+                    "answer_target": "受測魷魚不只靠眼睛取得上方光訊息，頭頂另有感光囊。只遮眼睛、只遮頭頂感光囊、兩者都遮的對照造成不同幅度的發光下降，支持兩類輸入共同參與反照明調節，頭頂感光囊在這些條件下影響較大。",
+                    "scope": "只限1979原文兩隻Abraliopsis sp.B及由上方入射、經彎曲管壁折射後讓眼睛收到斜入射分量的光照/約束配置；遮眼仍有下降，不是眼睛完全無用。少量個體與重複試次不等同物種普遍比例，沒有完整神經迴路或腹側自光回饋的確證。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "R28005",
+              "before": {
+                "id": "R28005",
+                "question": "梵谷寫的是紫鳶尾，畫裡怎麼只看得到藍？",
+                "neighbours": [
+                  {
+                    "id": "R28004",
+                    "cosine": 0.686081,
+                    "question": "畫面看不出藍色，為什麼研究者卻在古人像的眉眼找到埃及藍？",
+                    "answer_target": "用可見光照畫，另收近紅外發光，埃及藍會在這個波段留下訊號。這幅人像的眉眼線條同時對上發光圖和銅分布。項鍊上的深色珠也含銅，卻缺少相同發光特徵，可見只看銅會把另一種色料也算進來。",
+                    "scope": "限Nelson-Atkins館藏37-40與研究方法。發光像不等於人眼看見的顏色；項鍊色料的確切身分在本研究未定。"
+                  },
+                  {
+                    "id": "N032",
+                    "cosine": 0.65369,
+                    "question": "海王星真的那麼深藍，還是照片調過顏色？",
+                    "answer_target": "增強對比影像與校正後視覺色彩之別",
+                    "scope": "海王星與冥王星；限軌道幾何和影像呈現"
+                  },
+                  {
+                    "id": "X5015",
+                    "cosine": 0.647469,
+                    "question": "牛仔布磨出白色紋路，一定是藍色分子被漂白了嗎？",
+                    "answer_target": "靛藍集中在紗線表面，部分表層移除即可呈現洗舊外觀，不必先破壞全部色團。",
+                    "scope": "只論所述表層染色紗；不把所有牛仔布及化學洗舊工法概括成同一情況。"
+                  },
+                  {
+                    "id": "P20005",
+                    "cosine": 0.628216,
+                    "question": "追著畫面裡的白色物體看，為什麼邊緣會像散成彩虹？",
+                    "answer_target": "若紅綠藍在不同時刻顯示，追視移動物體時，各色可落在不同視網膜位置；改動後兩個子影格的位置能減少受測追視條件下的分離和彩邊。",
+                    "scope": "限2014研究CRT模擬逐色時序及其追視控制；不是商用DLP測試。不追視也能見彩邊，需要時空濾波解釋，不能說眼睛不動就必然消失；3受試2作者，不能給萬用補償數字。"
+                  },
+                  {
+                    "id": "L036",
+                    "cosine": 0.613111,
+                    "question": "怎麼不用看葉子外觀，就比較不同色素喜歡哪種光？",
+                    "answer_target": "吸收光譜的峰谷與色素辨識",
+                    "scope": "光合作用色素；不從光譜直接推導栽培燈推薦"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R28005",
+                "question": "梵谷信裡寫的是紫鳶尾，今天許多花瓣怎麼看起來是藍的？",
+                "neighbours": [
+                  {
+                    "id": "R28004",
+                    "cosine": 0.646881,
+                    "question": "古人像的眉眼看起來不是藍的，研究者怎麼找到藏在裡面的埃及藍？",
+                    "answer_target": "用可見光照畫，另收近紅外發光，埃及藍會在這個波段留下訊號。這幅人像的眉眼線條同時對上發光圖和銅分布。項鍊上的深色珠也含銅，卻缺少相同發光特徵，可見只看銅會把另一種色料也算進來。",
+                    "scope": "限Nelson-Atkins館藏37-40與研究方法。發光像不等於人眼看見的顏色；項鍊色料的確切身分在本研究未定。"
+                  },
+                  {
+                    "id": "R6007",
+                    "cosine": 0.62478,
+                    "question": "繡球變藍，真的只是把花當成酸鹼試紙嗎？",
+                    "answer_target": "土壤酸度影響鋁可用性；藍色萼片的鋁、花青素與共色素形成複合物，並非土壤pH直接等於萼片pH。",
+                    "scope": "限研究中的大葉繡球顯色機制，不教土壤配方、不聲稱白花或所有品種都能變藍。"
+                  },
+                  {
+                    "id": "X5015",
+                    "cosine": 0.614518,
+                    "question": "牛仔布磨出白色紋路，一定是藍色分子被漂白了嗎？",
+                    "answer_target": "靛藍集中在紗線表面，部分表層移除即可呈現洗舊外觀，不必先破壞全部色團。",
+                    "scope": "只論所述表層染色紗；不把所有牛仔布及化學洗舊工法概括成同一情況。"
+                  },
+                  {
+                    "id": "N032",
+                    "cosine": 0.613876,
+                    "question": "海王星真的那麼深藍，還是照片調過顏色？",
+                    "answer_target": "增強對比影像與校正後視覺色彩之別",
+                    "scope": "海王星與冥王星；限軌道幾何和影像呈現"
+                  },
+                  {
+                    "id": "LEG-S02",
+                    "cosine": 0.598978,
+                    "question": "同一道陽光，怎麼把天空變藍、夕陽變紅？",
+                    "answer_target": "陽光裡波長短的藍光，最容易被空氣分子彈到四面八方，所以整片天空都是藍的；傍晚陽光斜斜穿過更厚的大氣，藍光在半路就被彈走，最後走到眼睛的多半是紅光和橙光。",
+                    "scope": "沿用 S02 題級條件，須讀原查核包的限制；同一束光貫穿散射與路徑，不把天空當海水倒影。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "batch": "audio",
+          "initial_draft": "e0e449b8437ceb5cb1300ca95b58f4e1cbfd038954992f60eeccc0c6dc451eb9",
+          "final_draft": "f1316e6031840d5ddae4813710cba4ed571b82f89d59b4a0ef8a8f72f701e649",
+          "directed_pairs": 20,
+          "top5_or_text_changes": 2,
+          "changes": [
+            {
+              "id": "P28003",
+              "before": {
+                "id": "P28003",
+                "question": "同一張百年前的聲紋，怎麼一度把低沉人聲播成高了八度？",
+                "neighbours": [
+                  {
+                    "id": "D9002",
+                    "cosine": 0.726863,
+                    "question": "同一個鋼琴音裡，較高的頻率為什麼不一定剛好是最低頻率的整數倍？",
+                    "answer_target": "彎曲剛性對高階模態的影響更大，使頻率序列偏離理想柔弦的整數倍。",
+                    "scope": "真弦剛性修正；不把所有泛音偏移等同走音，也不另拆纏線材料題。"
+                  },
+                  {
+                    "id": "R24002",
+                    "cosine": 0.722811,
+                    "question": "同一對音，有人聽成上升、有人卻聽成下降，怎麼判？",
+                    "answer_target": "八度模糊的複音相隔半八度時，兩個方向在音級圈上同樣遠。研究中升降判斷與音級位置、聽者有關；移動頻譜包絡後部分模式仍保留，故不能只按最高或最響分量判定，亦不能指定一個人人都對的聽感。",
+                    "scope": "只採1987 Exp1的4位先篩選有明顯效應者；不據此估盛行率。包絡影響並非零；生理原因與語言影響未由本篇實驗確定，不類推一般鋼琴兩音。"
+                  },
+                  {
+                    "id": "R24001",
+                    "cosine": 0.71058,
+                    "question": "音階好像一直往上走，怎麼繞一圈又回到同一組聲音？",
+                    "answer_target": "各音含相隔八度的分量，分量強弱受固定頻譜包絡限制。向上移時，高端淡出、低端補入，使整組頻譜能回到原狀；相鄰音對的升降判斷仍可沿同一方向，不能把每一步的感覺直接累加成絕對高度。",
+                    "scope": "限Shepard合成複音；十二半音示範與原研究十等分隨機配對分開。包絡是頻譜強弱分布，不是逐音總音量變大；不承諾所有人或任意播放速度都有效。"
+                  },
+                  {
+                    "id": "P28004",
+                    "cosine": 0.700817,
+                    "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+                    "answer_target": "捲盤讓時間上前後相隔一圈的帶段緊鄰。較強的磁紀錄能在鄰層留下較弱的印記，攤回時間線後便可能在主聲前或後聽見弱副本。帶尾朝外收卷的指定構型，較強外層印記會落在主聲之後。",
+                    "scope": "限3M圖2的類比開盤帶、氧化層向內與所示收帶方向。重點是捲層對應的播放先後。回聲強度另受材料及噪音遮蔽影響。"
+                  },
+                  {
+                    "id": "D9014",
+                    "cosine": 0.683722,
+                    "question": "量聲能的兩支麥克風，為什麼不能永遠放得越近越好？",
+                    "answer_target": "小間距改善高頻梯度近似，卻縮小低頻真實相位差，使固定通道失配更顯著。",
+                    "scope": "壓力—壓力探頭；依頻帶和聲場設計，不給通用最佳間距。"
+                  }
+                ]
+              },
+              "after": {
+                "id": "P28003",
+                "question": "同一段畫在紙上的歌聲，怎麼一度被播高了一個八度？",
+                "neighbours": [
+                  {
+                    "id": "D9002",
+                    "cosine": 0.689962,
+                    "question": "同一個鋼琴音裡，較高的頻率為什麼不一定剛好是最低頻率的整數倍？",
+                    "answer_target": "彎曲剛性對高階模態的影響更大，使頻率序列偏離理想柔弦的整數倍。",
+                    "scope": "真弦剛性修正；不把所有泛音偏移等同走音，也不另拆纏線材料題。"
+                  },
+                  {
+                    "id": "R24002",
+                    "cosine": 0.682012,
+                    "question": "同一對音，有人聽成上升、有人卻聽成下降，怎麼判？",
+                    "answer_target": "八度模糊的複音相隔半八度時，兩個方向在音級圈上同樣遠。研究中升降判斷與音級位置、聽者有關；移動頻譜包絡後部分模式仍保留，故不能只按最高或最響分量判定，亦不能指定一個人人都對的聽感。",
+                    "scope": "只採1987 Exp1的4位先篩選有明顯效應者；不據此估盛行率。包絡影響並非零；生理原因與語言影響未由本篇實驗確定，不類推一般鋼琴兩音。"
+                  },
+                  {
+                    "id": "R24001",
+                    "cosine": 0.659077,
+                    "question": "音階好像一直往上走，怎麼繞一圈又回到同一組聲音？",
+                    "answer_target": "各音含相隔八度的分量，分量強弱受固定頻譜包絡限制。向上移時，高端淡出、低端補入，使整組頻譜能回到原狀；相鄰音對的升降判斷仍可沿同一方向，不能把每一步的感覺直接累加成絕對高度。",
+                    "scope": "限Shepard合成複音；十二半音示範與原研究十等分隨機配對分開。包絡是頻譜強弱分布，不是逐音總音量變大；不承諾所有人或任意播放速度都有效。"
+                  },
+                  {
+                    "id": "P28004",
+                    "cosine": 0.650289,
+                    "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+                    "answer_target": "捲盤讓時間上前後相隔一圈的帶段緊鄰。較強的磁紀錄能在鄰層留下較弱的印記，攤回時間線後便可能在主聲前或後聽見弱副本。帶尾朝外收卷的指定構型，較強外層印記會落在主聲之後。",
+                    "scope": "限3M圖2的類比開盤帶、氧化層向內與所示收帶方向。重點是捲層對應的播放先後。回聲強度另受材料及噪音遮蔽影響。"
+                  },
+                  {
+                    "id": "M2072",
+                    "cosine": 0.648766,
+                    "question": "兩個鐘每秒都走得一樣快，為什麼仍可能永遠差五分鐘？",
+                    "answer_target": "同頻只保證走速一致，不保證時刻起點對齊。",
+                    "scope": "用理想鐘示意；不重複原子秒的定義。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "P28004",
+              "before": {
+                "id": "P28004",
+                "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+                "neighbours": [
+                  {
+                    "id": "P28003",
+                    "cosine": 0.700817,
+                    "question": "同一張百年前的聲紋，怎麼一度把低沉人聲播成高了八度？",
+                    "answer_target": "手搖記錄時，紙上相同距離未必代表等長時間。一旁音叉每個週期用時相等，可拿來校正局部快慢。若把每秒250個完整週期讀作500個，整段就會快一倍、音高高一個八度，即使局部晃動已經修好。",
+                    "scope": "限Scott帶同步音叉線的聲圖及First Sounds修正。原註記對單次振動的定義有歧義。後續語音樣本及當時聲學用語支持250 Hz；聲線猜測不足以確定演唱者。"
+                  },
+                  {
+                    "id": "P28001",
+                    "cosine": 0.69915,
+                    "question": "老唱片可以用相機「聽」，為什麼有些錄音光沿著照片裡的彎線走還不夠？",
+                    "answer_target": "側刻把振動寫成左右擺動，平面掃描可量出沿槽的橫移。縱刻把振動寫成槽底深淺，須取得高度資訊。沿正確方向取出相對靜止軌跡的位移，按播放時間求變化率，就能估計唱針原會產生的訊號。",
+                    "scope": "限NEDCC的IRENE與可辨識機械溝紋。3D也可掃側刻，圓盤或圓筒外形本身不足以決定調變方向。"
+                  },
+                  {
+                    "id": "D9017",
+                    "cosine": 0.692924,
+                    "question": "麥克風背後留了聲孔，為什麼反而能讓背面的聲音變小？",
+                    "answer_target": "後方聲路引入延遲，使來自背面的聲波在膜片兩側近同步到達而減少壓差。",
+                    "scope": "被動聲學心形指向模型；不是主動降噪，也不是所有頻率完全拒收背面。"
+                  },
+                  {
+                    "id": "C2001",
+                    "cosine": 0.691789,
+                    "question": "同一個很微弱的聲音，為什麼這次聽到、下次又沒聽到？",
+                    "answer_target": "區分偵測機率與絕對開關。",
+                    "scope": "受控條件的閾值，不拿來評估個人聽力。"
+                  },
+                  {
+                    "id": "R22001",
+                    "cosine": 0.682304,
+                    "question": "同一句話沒換音檔，反覆聽怎麼越像在唱歌？",
+                    "answer_target": "同一句語音完整反覆播放，可由說話轉為較像歌唱的知覺。中間若轉調或打亂音節，即使起點與終點用同一段錄音，轉變也減弱；關鍵不只是聽得更多，還有穩定音高與順序。音高顯著性重加權是作者提出的解釋。",
+                    "scope": "限研究的英語短句與有音樂訓練樣本；不能說任何語句重播十次都變歌，也不以神經抑制已被證實解釋。"
+                  }
+                ]
+              },
+              "after": {
+                "id": "P28004",
+                "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+                "neighbours": [
+                  {
+                    "id": "P28001",
+                    "cosine": 0.69915,
+                    "question": "老唱片可以用相機「聽」，為什麼有些錄音光沿著照片裡的彎線走還不夠？",
+                    "answer_target": "側刻把振動寫成左右擺動，平面掃描可量出沿槽的橫移。縱刻把振動寫成槽底深淺，須取得高度資訊。沿正確方向取出相對靜止軌跡的位移，按播放時間求變化率，就能估計唱針原會產生的訊號。",
+                    "scope": "限NEDCC的IRENE與可辨識機械溝紋。3D也可掃側刻，圓盤或圓筒外形本身不足以決定調變方向。"
+                  },
+                  {
+                    "id": "D9017",
+                    "cosine": 0.692924,
+                    "question": "麥克風背後留了聲孔，為什麼反而能讓背面的聲音變小？",
+                    "answer_target": "後方聲路引入延遲，使來自背面的聲波在膜片兩側近同步到達而減少壓差。",
+                    "scope": "被動聲學心形指向模型；不是主動降噪，也不是所有頻率完全拒收背面。"
+                  },
+                  {
+                    "id": "C2001",
+                    "cosine": 0.691789,
+                    "question": "同一個很微弱的聲音，為什麼這次聽到、下次又沒聽到？",
+                    "answer_target": "區分偵測機率與絕對開關。",
+                    "scope": "受控條件的閾值，不拿來評估個人聽力。"
+                  },
+                  {
+                    "id": "R22001",
+                    "cosine": 0.682304,
+                    "question": "同一句話沒換音檔，反覆聽怎麼越像在唱歌？",
+                    "answer_target": "同一句語音完整反覆播放，可由說話轉為較像歌唱的知覺。中間若轉調或打亂音節，即使起點與終點用同一段錄音，轉變也減弱；關鍵不只是聽得更多，還有穩定音高與順序。音高顯著性重加權是作者提出的解釋。",
+                    "scope": "限研究的英語短句與有音樂訓練樣本；不能說任何語句重播十次都變歌，也不以神經抑制已被證實解釋。"
+                  },
+                  {
+                    "id": "A14004",
+                    "cosine": 0.675321,
+                    "question": "噪音一陣一陣來，狨猴怎麼調整開口的時機？",
+                    "answer_target": "規律短空檔時縮短等候；空檔長短不固定時多把開口留在較長空檔，起始時機隨可用的時間線索改變。",
+                    "scope": "限8隻普通狨猴的實驗噪音；不規則序列仍帶條件限制，不能稱預知完全隨機噪音，或保證整聲不被遮蔽。"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "earlier_root_only_delta": [
+        {
+          "id": "R28004",
+          "added_ids": [
+            "A24003"
+          ],
+          "removed_ids": [
+            "P20005"
+          ]
+        },
+        {
+          "id": "R28005",
+          "added_ids": [
+            "LEG-S02",
+            "R6007"
+          ],
+          "removed_ids": [
+            "L036",
+            "P20005"
+          ]
+        }
+      ],
+      "known_merge_retrieval_audit": [],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  }
+}

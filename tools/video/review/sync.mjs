@@ -27,6 +27,7 @@ import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdi
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages, uncheckedDubRole } from "../core/stages.mjs";
 import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
 import { TARGET_LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { isDailyBrief } from "../core/narrative.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
@@ -35,6 +36,7 @@ import { packageFiles, packageLocales, readPackageReport, thumbnailVariants, UPL
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
+import { fullTierFiles } from "./full-tier.mjs";
 import { bindRenewalSubmission, renewedFinal } from "./renewal.mjs";
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
@@ -286,8 +288,14 @@ export function guideSlugs(urls) {
   return [...new Set((urls ?? []).map((url) => GUIDE_URL.exec(String(url))?.[1]).filter(Boolean))];
 }
 
-/** The article a video retells: source_guide, or else the first site article it cites. */
+/**
+ * The article a video retells: source_guide, or else the first site article it cites. A daily news
+ * brief (a daily-ai- slug, core/narrative.mjs isDailyBrief) cites a whole day's articles and
+ * retells none: reported as the first, it would have the site refuse a later slides request for
+ * that article as used (automation/flow.mjs mainGuide is the worker's side of the same rule).
+ */
 export function sourceGuideOf(doc) {
+  if (isDailyBrief(doc)) return doc.source_guide || null;
   return doc.source_guide || guideSlugs((doc.sources ?? []).map((source) => source?.url))[0] || null;
 }
 
@@ -1060,6 +1068,15 @@ async function publishSubmission({ request, workdir, slug, project, compilation 
     if (compilation && entry.role === "final") continue;
     files.push(await upload(request, slug, path.join(workdir, UPLOAD_DIR, entry.path), entry.role, entry.content_type));
   }
+  // A video made off the host (no auto.json) is only reviews to the host: the rest of the full
+  // backup tier rides with its package, so the host holds all of it before it goes up (owner,
+  // 2026-11-03; full-tier.mjs). The worker's own videos are in video_work already.
+  let fullTier = null;
+  if (!compilation && !existsSync(path.join(workdir, WORKER_STATE_FILE))) {
+    const tier = fullTierFiles(workdir);
+    for (const entry of tier.files) files.push(await upload(request, slug, entry.file, entry.role, entry.content_type));
+    fullTier = { files: tier.files.length, problems: tier.problems.slice(0, 10) };
+  }
   const minutes = timeline?.total_frames && timeline.fps ? Math.round((timeline.total_frames / timeline.fps / 60) * 10) / 10 : null;
   const checklist = existsSync(path.join(workdir, UPLOAD_CHECKLIST)) ? uploadItems(readFileSync(path.join(workdir, UPLOAD_CHECKLIST), "utf8")) : [];
   const bytes = listed.get("final.mp4") ?? null;
@@ -1078,6 +1095,7 @@ async function publishSubmission({ request, workdir, slug, project, compilation 
       zh: { title: metadata.title ?? "", description: metadata.description ?? "", tags: metadata.tags ?? [] },
       disclosure: { synthetic: metadata.contains_synthetic_media === true, reason: typeof metadata.disclosure_reason === "string" ? metadata.disclosure_reason : "" },
       checklist,
+      ...(fullTier ? { full_tier: fullTier } : {}),
       ...(download ? { download, episodes: Array.isArray(metadata.episodes) ? metadata.episodes.map((episode) => episode.slug) : [] } : {}),
     },
     files,
@@ -1344,6 +1362,8 @@ export async function reviewPush(args, ctx) {
         ...(VIDEO_CATEGORIES.includes(project.doc.category) ? { category: project.doc.category } : {}),
         // An episode names its series and number; a compilation only its series (docs/videos/BINGE.md).
         ...(isCompilation(project.doc) ? { series_slug: project.doc.compilation.series } : project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),
+        // The worker has reported this video: the site does not bring it back if the owner deleted it.
+        ...(readJson(path.join(workdir, WORKER_STATE_FILE), null)?.on_site ? { on_site: true } : {}),
       },
     });
     if (values["report-only"]) {

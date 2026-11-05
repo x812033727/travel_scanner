@@ -27,11 +27,11 @@ import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
-import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
+import { isDailyBrief, isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { articlePath, SITE, titleBudget } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
-import { writeScreenplay } from "../core/screenplay.mjs";
+import { narrativeHash, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
@@ -55,6 +55,8 @@ import { NARRATIVE_VARIANT } from "./flow-constants.mjs";
 import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
+import { BRIEF_PICTURE_FILE, BRIEF_PICTURE_LICENSE, briefPicturePrompt, drawBriefPicture, findLeadPicture, LEAD_PICTURE_FILE, LEAD_PICTURE_LICENSE, PAD_FILTER } from "./lead-picture.mjs";
+import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
 import { advanceStory, fixStoryPrompts, PILOT_SCRIPT_REFERENCES } from "./story.mjs";
 import { instructionsFor, MANGA_NARRATION_PERFORMANCE, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
@@ -66,6 +68,7 @@ import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } 
 import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
 import { flaggedLines } from "../tts/synthesis.mjs";
 import { staleTakes } from "../tts/takes.mjs";
+import { aiThumbSeries, keyProblems, THUMB_AI_LAYOUT } from "../templates/templates.mjs";
 
 // Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
 // when an older request or saved state still names a shorter length.
@@ -209,6 +212,17 @@ const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
 // The site's refusals of a slides claim that mean the request is no longer the worker's to make:
 // the owner cancelled it while it was planned, or another request holds the slug (draftSlides).
 const WITHDRAWN_CLAIMS = new Set(["video_slides_request_not_queued", "video_slides_request_slug_taken"]);
+// The prompt variant of a daily news brief's planner, writer, verifier and listener (prompts.mjs
+// DAILY_INSTRUCTIONS). With a variant the server does not count the planner toward the month's
+// drafts (apps/api/app/video_automation/ai.py `new_draft`): the brief is the owner's standing
+// order, made every day, and must not eat the scheduled tutorials' cap.
+export const DAILY_VARIANT = "daily";
+// The site's refusals of a daily brief's claim (apps/api/app/video_automation/daily_briefs.py
+// start_request): the day is no longer queued (another worker took it, or the owner cancelled it)
+// or it may only start under its own slug. A repeat of this worker's own claim answers 200.
+const DAILY_WITHDRAWN = new Set(["video_daily_brief_not_queued", "video_daily_brief_slug_mismatch"]);
+// What a brief's own sections add to a slides brief's (daily-brief.md §選題): the ranking table.
+const DAILY_SECTIONS = [...REQUIRED_SECTIONS, "## 選題"];
 // Which manifest a drama stage's failures are read from, and what its entries are called.
 const FIX_SOURCES = {
   look: { manifest: ARTIFACTS.characters, entries: "characters", what: "character" },
@@ -254,11 +268,12 @@ export function automatedVideos(workBase) {
  * `source_urls` entry when its `source_guide` is empty, dropped videos included and `ownSlug`
  * left out. Only the first URL counts; later ones may be shared between videos. An official page
  * (topics.py `official_topics`) stays among the candidates for 14 days, so without this a page
- * made into one video would be offered to every draft after it.
+ * made into one video would be offered to every draft after it. A daily brief rests on a day's
+ * articles without retelling any one of them, and takes none away from a later draft.
  */
 export function usedPages(workBase, ownSlug = null) {
   return new Set(automatedVideos(workBase)
-    .filter((state) => state.slug !== ownSlug && !state.source_guide && !state.unplanned)
+    .filter((state) => state.slug !== ownSlug && !state.source_guide && !state.unplanned && !state.daily_brief)
     .map((state) => state.source_urls?.[0])
     .filter((url) => typeof url === "string" && url));
 }
@@ -338,9 +353,37 @@ function titleOf(brief) {
   return (/^#\s+(.+)$/m.exec(brief)?.[1] ?? "").trim().slice(0, 200);
 }
 
-/** The site article a video retells: its source_guide, or else the first site article it rests on. */
-export function mainGuide({ source_guide: guide, source_urls: urls }) {
-  return (GUIDE_SLUG.test(guide ?? "") ? guide : null) ?? guideSlugs(urls)[0] ?? null;
+/**
+ * The site article a video retells: its source_guide, or else the first site article it rests on.
+ * A daily brief (daily_brief, or a daily-ai- slug) retells none: it rests on a whole day's
+ * articles, and naming the first as its article would have the site refuse a later slides
+ * request for it (video_slides_request_article_used) and the scheduled drafts skip it.
+ */
+export function mainGuide({ slug, source_guide: guide, source_urls: urls, daily_brief: daily }) {
+  const named = GUIDE_SLUG.test(guide ?? "") ? guide : null;
+  if (daily || isDailyBrief({ slug })) return named;
+  return named ?? guideSlugs(urls)[0] ?? null;
+}
+
+/**
+ * What a daily request hands the planner, the writer and the checker: the day, the video's fixed
+ * slug and the site's articles of that day (the request's `stories`, as the server gives them).
+ */
+export function dailyBrief(request) {
+  const stories = (Array.isArray(request?.stories) ? request.stories : [])
+    .filter((story) => story && typeof story.url === "string" && /^https:\/\//.test(story.url))
+    .map((story) => ({ slug: story.slug ?? null, title: story.title ?? "", description: story.description ?? "", url: story.url, news_date: story.news_date ?? request.news_date ?? null }));
+  return { news_date: request.news_date, slug: request.slug, stories };
+}
+
+/**
+ * The pages a daily brief rests on, at most 12 as for every video: the stories the planner picked,
+ * in its order, then the official pages it cited, then the rest of the day's articles.
+ */
+export function dailySourceUrls(planned, stories) {
+  const told = new Set(stories.map((story) => story.url));
+  const urls = Array.isArray(planned) ? planned.filter((url) => typeof url === "string" && /^https:\/\//.test(url)) : [];
+  return [...new Set([...urls.filter((url) => told.has(url)), ...urls.filter((url) => !told.has(url)), ...told])].slice(0, 12);
 }
 
 // Until 2026-09-27 drafts read their article at /<locale>/guides/<slug>, a kind's list page the
@@ -381,20 +424,26 @@ export function siteSources(sourceGuide, urls = [], root = ROOT) {
  * stanceProblems); the local `lint` has no stance and does not check this. `requiredGuide` is
  * the site article the owner asked a slides video of (draftSlides): the brief must retell that
  * one, whatever earlier video used it. `pages` are the pages earlier videos rest on without a
- * site article (usedPages): a plan with no site article may not open on one of them.
+ * site article (usedPages): a plan with no site article may not open on one of them. `daily` is a
+ * daily brief's request (dailyBrief): its brief adds 選題, rests on that day's stories and
+ * retells no one article, so the earlier videos' articles and pages do not refuse it.
  */
-export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null, pages = new Set()) {
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null, pages = new Set(), daily = null) {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
   if (typeof plan.brief !== "string") return "brief is missing";
-  const sections = format !== "drama" ? REQUIRED_SECTIONS : isExplainerPreset(preset) ? EXPLAINER_SECTIONS : DRAMA_SECTIONS;
+  const sections = daily ? DAILY_SECTIONS : format !== "drama" ? REQUIRED_SECTIONS : isExplainerPreset(preset) ? EXPLAINER_SECTIONS : DRAMA_SECTIONS;
   const missing = sections.filter((heading) => !plan.brief.includes(heading));
   if (missing.length) return `brief lacks ${missing.join(", ")}`;
   const stanceIssues = stanceProblems(plan.brief, stance);
   if (stanceIssues.length) return `站主觀點 does not apply the channel stance: ${stanceIssues.join("; ")}`;
   if (outlineOptions(plan.brief).length < 2) return "brief needs 2 or 3 options written as 「### 選項 A：…」 with 一行說明 and 開場鉤子 lines";
   if (!Array.isArray(plan.source_urls) || !plan.source_urls.every((url) => /^https:\/\//.test(url))) return "source_urls must be https URLs";
+  if (daily) {
+    const told = new Set(daily.stories.map((story) => story.url));
+    return plan.source_urls.some((url) => told.has(url)) ? null : "source_urls must list the urls of the stories picked from daily_brief.stories";
+  }
   if (requiredGuide && plan.source_guide !== requiredGuide) return `source_guide must be "${requiredGuide}", the site article the owner asked for (requested_guide)`;
   const guide = mainGuide(plan);
   if (guide && usedGuides.has(guide)) return `the site article "${guide}" is what an earlier video retells (see used_guides); pick another topic`;
@@ -420,6 +469,68 @@ async function readSources(read, urls) {
 
 function writeVideo(dir, video) {
   writeFileSync(path.join(dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+}
+
+// What the writer is asked when a daily brief made before it had the paper look is drawn again
+// (restyleDailyBrief): the key band and nothing else, so the narration it was checked, read and
+// recorded with stays as it is.
+export const KEY_BAND_NOTE = "只加關鍵句帶，其他一個字都不要改：每個場景的 data 加 key（只有一個狀態的場景）或 keys（一個狀態一句；狀態數是 1 加上第一句以外每個帶 reveal 的台詞），每句最多 24 字、不換行，是那個狀態正在唸的旁白的濃縮。台詞、章名、卡片內容、場景順序都不准改。";
+
+/**
+ * A daily brief on the paper look with the key band the writer offered: only each scene's
+ * `key`/`keys` is taken from `candidate`, by scene id, and only when it fits the scene's states
+ * (templates.mjs keyProblems); everything else stays as `video` has it, so its narration and
+ * every check bound to it still hold. `kept` counts the scenes that got a band.
+ */
+export function withKeyBand(video, candidate) {
+  const offered = new Map((Array.isArray(candidate?.scenes) ? candidate.scenes : []).filter((scene) => scene && typeof scene === "object").map((scene) => [scene.id, scene.data ?? {}]));
+  let kept = 0;
+  const scenes = (video.scenes ?? []).map((scene) => {
+    const from = offered.get(scene.id) ?? {};
+    const band = from.keys !== undefined ? { keys: from.keys } : from.key !== undefined ? { key: from.key } : null;
+    if (!band) return scene;
+    const { key: _key, keys: _keys, ...data } = scene.data ?? {};
+    const banded = { ...scene, data: { ...data, ...band } };
+    if (keyProblems(banded).length) return scene;
+    kept++;
+    return banded;
+  });
+  return { video: { ...video, theme: "paper", scenes }, kept };
+}
+
+export const LAYOUT_NOTE = "畫面檢查沒過：下列卡片的字放不下（被底部關鍵句白條蓋住或超出版面）。只改這些場景的 data，把標題、副標、條列、表格、key／keys 縮短或拆短，讓它放得下（關鍵句每句最多 24 字、數量不變）。台詞、章名、版型、場景順序一個字都不准改。";
+
+/** Fit `input` whole into the thumbnail's picture box over a blurred copy of itself, as a JPEG. */
+export async function padPicture(input, output, env = process.env) {
+  const { ffmpeg } = await locateFfmpeg(env);
+  await runTool(ffmpeg, ["-y", "-hide_banner", "-loglevel", "error", "-i", input, "-filter_complex", PAD_FILTER, "-frames:v", "1", "-q:v", "3", output]);
+}
+
+/** The layout problems in render's output (`ERROR <scene> state <n>: <message>`), with the scene id when a scene has it. */
+export function layoutProblemsIn(out) {
+  return String(out ?? "").split("\n").map((line) => line.match(/^ERROR (.+?): (.+)$/)).filter(Boolean).map(([, where, message]) => ({ where, message, scene: where.match(/^(\S+) state \d+$/)?.[1] ?? null }));
+}
+
+/**
+ * The script with the card text the writer offered for the scenes the render's layout check
+ * named (`scenes`): only those scenes' `data` is taken from `candidate`, by scene id, and only
+ * when its key band still fits the scene's states; lines, chapters and templates stay as `video`
+ * has them, so the narration and every check bound to it still hold. `changed` counts the scenes
+ * whose card text changed.
+ */
+export function withCardText(video, candidate, scenes) {
+  const offered = new Map((Array.isArray(candidate?.scenes) ? candidate.scenes : []).filter((scene) => scene && typeof scene === "object" && scene.data && typeof scene.data === "object").map((scene) => [scene.id, scene.data]));
+  let changed = 0;
+  const next = (video.scenes ?? []).map((scene) => {
+    if (!scenes.has(scene.id) || !offered.has(scene.id)) return scene;
+    const fitted = { ...scene, data: offered.get(scene.id) };
+    if (keyProblems(fitted).length || JSON.stringify(fitted.data) === JSON.stringify(scene.data ?? {})) return scene;
+    changed++;
+    return fitted;
+  });
+  const fitted = { ...video, scenes: next };
+  if (narrativeHash(fitted) !== narrativeHash(video)) return { video, changed: 0 };
+  return { video: fitted, changed };
 }
 
 /**
@@ -573,10 +684,11 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
-    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
-    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in like every
-    // high-view story channel (the owner, 2026-10-25, trying it after the channel review).
-    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
+    // 奇聞檔案局 (cute-mystery) burned its zh-TW subtitles in from 2026-10-25 (kept on 2026-10-31
+    // after trying both) to 2026-11-04, when the owner took it back so the en/ja/ko CC and dubs do
+    // not fight a burned zh-TW line.
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
     // slug unless the writer named one, and the owner's licensed music file and sound-effect set
@@ -591,6 +703,13 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     // rather than left for lint to refuse.
     delete settled.look;
   }
+  // A daily brief is drawn on paper with the key band, as its first episode was (owner,
+  // 2026-10-30: the worker's first brief came out in the dark look and read as old).
+  if (isDailyBrief({ slug })) settled.theme = "paper";
+  // Every AI video wears the AI look (owner, 2026-11-01; templates.mjs THUMB_AI_LAYOUT): its
+  // thumbnail and the B and C variants take layout "ai", whatever the writer chose. Only drafts
+  // pass through here, so no thumbnail already on YouTube is redrawn.
+  if (aiThumbSeries(settled) && settled.thumbnail?.template === "thumb") settled.thumbnail = aiThumbnail(settled.thumbnail);
   // Music is the owner's switch for every format.
   if (drama.music_enabled === false) delete settled.music;
   if (format === "drama" && series) {
@@ -621,6 +740,13 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     delete settled.runtime_spec;
   }
   return settled;
+}
+
+/** A thumbnail in the AI look: layout "ai" on it, and no other layout on its variants. */
+export function aiThumbnail(thumbnail) {
+  const own = { ...thumbnail, data: { ...(thumbnail.data ?? {}), layout: THUMB_AI_LAYOUT } };
+  if (Array.isArray(thumbnail.variants)) own.variants = thumbnail.variants.map((variant) => (variant?.data && Object.hasOwn(variant.data, "layout") ? { ...variant, data: Object.fromEntries(Object.entries(variant.data).filter(([key]) => key !== "layout")) } : variant));
+  return own;
 }
 
 function lintErrors(ctx, slug) {
@@ -723,6 +849,9 @@ const RUN_CODES = new Set([
   "video_automation_settings_invalid", "video_ai_subject_not_chosen", "video_judge_not_enabled", "video_list_filter_invalid",
   "video_shorts_state_needs_only", "network", ...PAUSE_CODES,
 ]);
+// The month's drafts spent: the site's 429 shares video_ai_budget_exhausted with the token budget
+// and names the drafts in its detail (apps/api/app/video_automation/usage.py budget_problem).
+export const isDraftCap = (error) => error?.code === "video_ai_budget_exhausted" && /本月已產生 \d+ 支草稿/.test(String(error.message ?? ""));
 // A service busy, briefly away or still working: asking later may well go through. So may a
 // durable writer job the server failed before it reached the model (apps/api/app/video_automation
 // ai.py run_stage, run_jobs.py): the work base's STOP file or one video's, the automation switched
@@ -769,8 +898,14 @@ export function errorScope(error) {
 // answer in time gets (apps/web/app/api/video/reviews/[...path]/forward.ts aborts and answers
 // the same 502), so it may be one video's own; with the API down the unit's list read ends the
 // run before any video is deferred.
+// The speech vendor busy (`video_speech_upstream_busy`: Gemini's 429 when the day's quota is spent
+// or it is overloaded, its transcriber's 503, Azure's 429) is everyone's since 2026-10-29: the
+// quota comes back by itself (about 15:00 Taipei), and the daily news brief that met it at its
+// narration was blocked after four and a half hours instead of being published later, which is
+// what the owner chose. A revoked key is `video_speech_upstream_rejected_key` and a vendor that
+// fails is `video_speech_upstream_failed`: both still count and reach a card.
 const EVERYONE_CODES = new Set([
-  "jev_budget_exhausted", "video_speech_budget_exhausted", "video_review_store_full", "rate_limit_exceeded", "rate_limit_unavailable",
+  "jev_budget_exhausted", "video_speech_budget_exhausted", "video_speech_upstream_busy", "video_review_store_full", "rate_limit_exceeded", "rate_limit_unavailable",
   "video_ai_job_queue_unavailable", "video_ai_worker_stopped", "video_ai_automation_disabled",
 ]);
 // The same trouble as a command that exits 4 words it: tts, dub, check-audio, qa and review-push
@@ -783,6 +918,11 @@ const EVERYONE_WORDING = [
   [/JEV_DAILY_CALL_BUDGET/, "jev_budget_exhausted"],
   [/the review store is full/, "video_review_store_full"],
   [/語音字數預算|billable characters needed[^\n]* left this month/, "video_speech_budget_exhausted"],
+  // apps/api/app/video_speech/admin_api.py and align_api.py: synthesis's 429 (「Gemini 語音暫時忙碌
+  // 或達到用量上限」, 「Azure 語音暫時忙碌」), the transcriber's 429 (「Gemini 暫時忙碌」) and 503
+  // (「Gemini 暫時無法轉寫（…），請稍後重試」; the 502 of a failing vendor has no 「請稍後重試」), and
+  // the code itself where a tool prints it (the speech journal's 「HTTP 503 video_speech_upstream_busy」).
+  [/語音暫時忙碌|Gemini 暫時忙碌|暫時無法轉寫（[^\n]*），請稍後重試|video_speech_upstream_busy/, "video_speech_upstream_busy"],
   [/請求過於頻繁/, "rate_limit_exceeded"],
   [/安全驗證服務暫時無法使用/, "rate_limit_unavailable"],
 ];
@@ -989,7 +1129,10 @@ async function report(ctx, api, state, stage, { deferred = null, progress = null
     // What kind of block it is (`block()`), for a site that will read it; today's ignores the key.
     ...(state.status === "blocked" && state.blocked_kind ? { blocked_kind: state.blocked_kind } : {}),
     ...(echo ? { dub_retries: echo } : {}),
+    // Heard back before, so a row gone by now was deleted by the owner, not yet to be made.
+    ...(state.on_site ? { on_site: true } : {}),
   });
+  state.on_site = true;
   REPORTED_STAGE.set(state, stage);
   if (waiting.length) state.deferred_reported = true;
   else delete state.deferred_reported;
@@ -1036,6 +1179,10 @@ export class Automation {
     // (discuss.mjs answerDocument), by message id: they wait for the next run, and this one goes
     // on with the series work, the drama requests and the scheduled draft.
     this.waitingLines = new Set();
+    // Whether this run asked the site for the day's news brief yet (dailyStep): once a run.
+    this.dailyAsked = false;
+    // The videos this run asked the site about because its list left them out (leaveIfDeleted).
+    this.askedAfter = new Set();
     this.lastAnswer = null;
     // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
     this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
@@ -1113,11 +1260,13 @@ export class Automation {
   /**
    * The prompt variant of a drama's planner, writer and checker: an episode of a long series has
    * its own (episodeVariant); an explainer (the flat-explainer preset), a one-off or a legacy
-   * request, has the question's; any other drama none.
+   * request, has the question's; any other drama none. A daily news brief, a slides video, has
+   * its own (DAILY_VARIANT); any other slides video none.
    */
   variantOf(state) {
     const episode = episodeVariant(state);
     if (episode) return episode;
+    if (state.daily_brief) return DAILY_VARIANT;
     return state.format === "drama" ? explainerVariants(state.style_preset)?.stage ?? null : null;
   }
 
@@ -1468,8 +1617,24 @@ export class Automation {
     return outcome;
   }
 
+  /**
+   * The scheduled drafts are switched off and the daily news brief is on (owner, 2026-11-01): the
+   * worker makes the briefs and nothing else. The day's request is asked for and the briefs on
+   * their way move through their stages and languages; every other video stays where it stands,
+   * and no draft, series, request or line of the owner's is taken up, as with both switches off.
+   */
+  get briefsOnly() {
+    return !this.settings.enabled && Boolean(this.settings.daily_brief?.daily_brief_enabled);
+  }
+
+  /** The videos this run may move or keep the books of: all of them, or the briefs (briefsOnly). */
+  scopedVideos() {
+    const all = automatedVideos(this.workBase);
+    return this.settings.enabled ? all : this.briefsOnly ? all.filter((state) => isDailyBrief(state)) : [];
+  }
+
   async stepUnit() {
-    if (!this.settings.enabled) return null;
+    if (!this.settings.enabled && !this.briefsOnly) return null;
     // What this unit's loop leaves alone, for resting(); a new unit starts with none.
     this.passedOver = new Set();
     // Every video on /admin/videos, the ones this worker did not make included, read afresh
@@ -1481,6 +1646,10 @@ export class Automation {
     if (!this.secondary) {
       const found = await this.bookkeeping(siteBySlug, free);
       if (found) return found;
+      // The day's news brief, once a run, ahead of every video and request: it is fixed-time
+      // work (09:00 Taipei) that a busy queue must not push into the evening.
+      const daily = await this.dailyStep();
+      if (daily) return daily;
     }
     const now = this.ctx.now().getTime();
     // A discussion of a screenplay that an earlier unit or round left unfinished (its writer job
@@ -1491,8 +1660,8 @@ export class Automation {
     // answer was set aside and bought again. When the site hands no line for it (the thread was
     // answered or withdrawn since) the video moves below as usual.
     let discussed = false;
-    const videos = automatedVideos(this.workBase).filter((state) => ["active", "done"].includes(state.status));
-    if (!this.secondary && videos.some((state) => state.status === "active" && this.movable(state, now) && this.discussionOpen(state.slug))) {
+    const videos = this.scopedVideos().filter((state) => ["active", "done"].includes(state.status));
+    if (!this.secondary && !this.briefsOnly && videos.some((state) => state.status === "active" && this.movable(state, now) && this.discussionOpen(state.slug))) {
       discussed = true;
       // The loop has not run yet: what it would leave alone at this reading of the clock is not
       // at rest for a line either (resting).
@@ -1500,7 +1669,7 @@ export class Automation {
       const answered = await discussStep(this);
       if (answered) return answered;
     }
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!["active", "done"].includes(listed.status)) continue;
       // A video another lane is moving, one waiting on its own (defer, a writer still running),
       // which sits this unit out so the next one moves instead of the oldest ending every round,
@@ -1560,7 +1729,8 @@ export class Automation {
         this.busy.delete(listed.slug);
       }
     }
-    if (this.secondary) return null;
+    // With the drafts off only the briefs move (briefsOnly): nothing new is planned.
+    if (this.secondary || this.briefsOnly) return null;
     // The owner's lines on a document or a screenplay are answered first, one per round
     // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for. A
     // line on the screenplay of a video that is not at rest (resting) is left for a later unit.
@@ -1573,30 +1743,105 @@ export class Automation {
     // scheduled draft, all within the same waiting cap (brand stories are counted apart: room()).
     const series = await seriesStep(this);
     if (series) return series;
-    // The owner's drama requests come before any scheduled draft, within the same waiting cap.
-    if (this.settings.drama?.drama_enabled && this.room()) {
-      const request = await this.api.dramaNext();
-      if (request) return this.draftDrama(request);
+    // A month whose drafts are spent plans nothing new until it turns (draftCapped).
+    if (this.draftCapped()) return null;
+    try {
+      // The owner's drama requests come before any scheduled draft, within the same waiting cap.
+      if (this.settings.drama?.drama_enabled && this.room()) {
+        const request = await this.api.dramaNext();
+        if (request) return await this.draftDrama(request);
+      }
+      // Then the owner's slides requests (a site article named on /admin/videos): they skip the
+      // draft interval, not the waiting cap. A hand-built api without the call has none.
+      if (this.room()) {
+        const request = await this.api.slidesNext?.();
+        if (request) return await this.draftSlides(request);
+      }
+      if (this.due()) return await this.draft();
+    } catch (error) {
+      if (isDraftCap(error)) return this.draftCapWait(error);
+      throw error;
     }
-    // Then the owner's slides requests (a site article named on /admin/videos): they skip the
-    // draft interval, not the waiting cap. A hand-built api without the call has none.
-    if (this.room()) {
-      const request = await this.api.slidesNext?.();
-      if (request) return this.draftSlides(request);
-    }
-    if (this.due()) return this.draft();
     return null;
   }
 
-  /** The first lane's bookkeeping before any stage: drops, retries, pasted addresses, compilations. */
+  /** Whether the month's drafts were found spent (draftCapWait) and the month has not turned. */
+  draftCapped() {
+    const until = Date.parse(this.globalState().draft_capped_until ?? "");
+    return Number.isFinite(until) && this.ctx.now().getTime() < until;
+  }
+
+  /**
+   * The site refused a new draft because the month's drafts are spent (apps/api/app/video_automation
+   * usage.py budget_problem, max_drafts_per_month). Until 2026-10-31 that refusal ended the run
+   * like the token budget does, and every round planned first and ended there whenever no video
+   * could move: on 10-31 the two daily briefs in progress sat four rounds and more behind
+   * 「本月已產生 60 支草稿」, and the lane moving one of them was cut off with the run. Only new
+   * drafts are refused, so nothing new is planned until the month turns (UTC, as the site
+   * counts it) and the videos already made go on; the token budget still ends the run.
+   */
+  draftCapWait(error) {
+    const now = this.ctx.now();
+    const until = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1)).toISOString();
+    this.saveGlobal({ ...this.globalState(), draft_capped_until: until });
+    return `draft: ${error.message}; no new draft is planned until ${until}, and the videos already made go on`;
+  }
+
+  /**
+   * The day's news brief (docs/videos/AUTOMATION.md §每日 AI 快報): asked once a run, on the first
+   * lane, before the videos move. Unlike the owner's other requests it is not held back by the
+   * waiting cap (room) and does not mark a draft (markDrafted): the site hands it out at a fixed
+   * hour, and the scheduled tutorials keep their own interval. A brief whose slug is a video
+   * already, here, in docs/videos or on the site, is left alone (the site still has it queued:
+   * nothing is planned twice), and so is a site from before the briefs (404). It is asked for
+   * with the scheduled drafts switched off as well (briefsOnly): the brief has its own switch.
+   */
+  async dailyStep() {
+    if (this.dailyAsked || !this.api.dailyNext) return null;
+    this.dailyAsked = true;
+    const request = await this.api.dailyNext();
+    if (!request) return null;
+    if (!SLUG.test(request.slug ?? "") || !isDailyBrief({ slug: request.slug })) {
+      this.log(`daily: the site handed a brief with the slug "${request.slug}", which is not daily-ai-YYYYMMDD; left alone`);
+      return null;
+    }
+    if (this.earlierVideos().some((video) => video.slug === request.slug)) {
+      this.log(`daily: ${request.slug} is a video already; the brief of ${request.news_date} is left alone`);
+      return null;
+    }
+    return this.draftDaily(request);
+  }
+
+  /**
+   * The first lane's bookkeeping before any stage: drops, retries, pasted addresses, compilations,
+   * of the videos this run may move (scopedVideos: the briefs alone while briefsOnly).
+   */
   async bookkeeping(siteBySlug, free) {
     const dropped = new Map(this.site.filter((video) => video.dropped_at).map((video) => [video.slug, video]));
-    for (const state of automatedVideos(this.workBase)) {
+    for (const state of this.scopedVideos()) {
       if (state.status !== "dropped" && dropped.has(state.slug) && free(state)) return this.drop(state, dropped.get(state.slug));
+    }
+    // The owner may delete a dropped video before this worker saw the drop
+    // (apps/api/app/video_reviews/deletion.py): its row is gone, and a stage would go on paying
+    // for it. Only a video on its way counts: a done one reports only while the site lists it.
+    // The list holds the newest videos and no more, so a video missing from it is asked after
+    // once a run. A video from before on_site, or one a report has not saved it on yet, gets it
+    // here while the list still shows the row.
+    const underWay = (state) => ["active", "blocked"].includes(state.status);
+    for (const state of this.scopedVideos()) {
+      if (!underWay(state) || state.on_site || !siteBySlug.has(state.slug) || !free(state)) continue;
+      state.on_site = true;
+      saveState(this.workdir(state.slug), state);
+    }
+    const missing = (state) => underWay(state) && state.on_site && !siteBySlug.has(state.slug) && !this.askedAfter.has(state.slug);
+    for (const listed of this.scopedVideos()) {
+      if (!missing(listed) || !free(listed)) continue;
+      const line = await this.holding(listed.slug, (state) => (missing(state) ? this.leaveIfDeleted(state) : null));
+      if (line) return line;
     }
     // A retry belongs to one site request and one local state transition. Remember the request
     // before doing any paid stage so a stale list response or a failed report cannot replay it.
-    for (const state of automatedVideos(this.workBase)) {
+    for (const state of this.scopedVideos()) {
       const siteVideo = siteBySlug.get(state.slug);
       const request = siteVideo?.retry_request_id;
       if (state.status !== "blocked" || !free(state) || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
@@ -1702,7 +1947,7 @@ export class Automation {
     // Read again once held (holding): the list outlives an earlier video's failed report, and a
     // lane that blocked a video meanwhile may have saved its own report's outcome since and let
     // the video go. Its backoff was written over, and the report sent again at once.
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!unreported(listed) || !free(listed)) continue;
       if (await this.holding(listed.slug, (state) => unreported(state) && this.reportBlocked(state))) return `${listed.slug}: blocked reason reported`;
       // Continue other videos after a failed report; a stopped video cannot starve them.
@@ -1711,7 +1956,7 @@ export class Automation {
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
     const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
     const unrecorded = (state) => ["active", "done"].includes(state.status) && uploaded.has(state.slug);
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!unrecorded(listed) || !free(listed)) continue;
       const recorded = await this.holding(listed.slug, (state) => unrecorded(state) && this.recordVideoId(state, uploaded.get(state.slug)));
       if (recorded) return recorded;
@@ -1719,7 +1964,7 @@ export class Automation {
     // A finished compilation the site has not heard about yet (the call failed on the round
     // that finished it): tell it now, or the series stays 合集正在做.
     const untold = (state) => state.status === "done" && state.compilation && !state.compilation_told;
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!untold(listed) || !free(listed)) continue;
       if (await this.holding(listed.slug, (state) => untold(state) && this.tellCompilationDone(state))) {
         return `${listed.slug}: the site now knows the compilation of ${listed.compilation.series} is done`;
@@ -1890,6 +2135,25 @@ export class Automation {
     state.dropped = { at: video.dropped_at, note: video.dropped_note ?? "" };
     saveState(this.workdir(state.slug), state);
     return `${state.slug}: the owner dropped it (${state.dropped.note}); the worker leaves it`;
+  }
+
+  /**
+   * A video this worker reported and the list no longer shows: when the site answers that it has
+   * no such video the owner deleted it, and it goes the way of a drop, so `tidy` clears its files
+   * and later drafts still see its topic as made. Null when it is only off the list, or the site
+   * could not say; the next run asks again.
+   */
+  async leaveIfDeleted(state) {
+    this.askedAfter.add(state.slug);
+    let project;
+    try {
+      project = await this.api.reviews(state.slug);
+    } catch (error) {
+      if (!(error instanceof AutomationError)) throw error;
+      this.log(`${state.slug}: not on the site's list, and the site could not say why: ${error.message}`);
+      return null;
+    }
+    return project ? null : this.drop(state, { dropped_at: this.ctx.now().toISOString(), dropped_note: "deleted on /admin/videos" });
   }
 
   /** Whether a new draft may start: on, interval passed, not too many waiting on the owner. */
@@ -2116,7 +2380,7 @@ export class Automation {
   }
 
   /**
-   * A video whose first plan never came (`unplanned`: "draft", "slides" or "drama"), saved with
+   * A video whose first plan never came (`unplanned`: "draft", "slides", "daily" or "drama"), saved with
    * what the planner is asked again from when the owner retries it (planUnplanned).
    */
   unplannedVideo(fields, kind) {
@@ -2198,6 +2462,82 @@ export class Automation {
     mkdirSync(dir, { recursive: true });
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
     return `slides: ${slug} planned from the owner's article ${request.source_guide}; ${await this.firstOutline(state)}`;
+  }
+
+  /**
+   * A daily news brief (daily-brief.md): the site's request holds the day, the fixed slug
+   * daily-ai-YYYYMMDD and the day's ai-news and tech-news articles. Every article is read now; the
+   * planner (variant "daily": not one of the month's drafts) picks and ranks five to eight of them
+   * and writes two outlines for Jev to pick from, then the request is claimed under the slug and the
+   * outline goes up like a draft's, without a draft's mark (dailyStep). The video records no
+   * source_guide: it retells no one article (mainGuide). Nothing readable ends this unit with no
+   * paid call and no claim; a site that refuses the claim (409: the brief started elsewhere or
+   * under another slug) keeps nothing; a planner that fails twice, or whose answer was lost,
+   * leaves a blocked video, as for a slides request (draftSlides), and the owner's retry plans it
+   * again (planUnplanned). None of these ends the run: the other videos move.
+   */
+  async draftDaily(request) {
+    const slug = request.slug;
+    const daily = dailyBrief(request);
+    const before = this.lostPlan(slug);
+    let plan = null;
+    let problem = null;
+    let lost = null;
+    if (!before) {
+      const sources = await readSources(this.read, daily.stories.map((story) => story.url));
+      if (!sources.some((page) => page.ok)) return `daily: none of the ${daily.stories.length} articles of ${request.news_date} could be read (${sources[0]?.error ?? "no stories"}); the next round tries again`;
+      const earlier = this.earlierVideos();
+      const taken = new Set(earlier.map((video) => video.slug));
+      ({ plan, problem, lost } = await this.firstPlan(slug, (extra) => this.planPayload({ topics: [], daily_brief: daily, sources, ...extra }, earlier), (answer) => planProblem({ ...answer, slug }, taken, new Set(), "slides", this.stance, null, null, new Set(), daily), { variant: DAILY_VARIANT }));
+      if (lost) this.keepLostPlan(slug, lost);
+    }
+    try {
+      await this.api.dailyStart(request.id, slug);
+    } catch (error) {
+      // Started elsewhere, cancelled, or not this slug's (DAILY_WITHDRAWN): as for a withdrawn
+      // slides request, nothing is kept. Any other refusal is an error to look into.
+      if (error instanceof AutomationError && DAILY_WITHDRAWN.has(error.code)) {
+        this.forgetLostPlan(slug);
+        return `daily: the brief of ${request.news_date} could not be claimed (${error.code}: ${error.message}); nothing was kept`;
+      }
+      throw error;
+    }
+    const state = {
+      slug,
+      format: "slides",
+      category: "ai-news",
+      title: String(plan?.title || titleOf(plan?.brief ?? "") || `AI 快報 ${request.news_date}`).slice(0, 200),
+      status: "active",
+      created_at: this.ctx.now().toISOString(),
+      source_guide: null,
+      source_urls: dailySourceUrls(plan?.source_urls, daily.stories),
+      daily_brief: { id: request.id, ...daily },
+      replans: 0,
+      verify_rounds: 0,
+      verified: false,
+      listener_done: false,
+      retakes: 0,
+      rewrites: 0,
+      // The writer reads these as owner_notes.
+      notes: [`daily brief: the AI and technology news of ${request.news_date}, from the site's ${daily.stories.length} articles of that day`],
+      // No brief: the owner's retry plans it (planUnplanned).
+      ...(plan ? {} : { unplanned: "daily" }),
+    };
+    if (lost || before) return this.heldPlan(state, slug, lost ?? before);
+    if (!plan) {
+      const kept = this.keepAnswer(this.workdir(slug), "planner");
+      return this.block(state, `the planner could not write a usable brief from the articles of ${request.news_date} (${problem}${kept ? `; the answer is in ${kept}` : ""})`);
+    }
+    const dir = docDir(slug, this.ctx.root);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
+    return `daily: ${slug} planned from the ${daily.stories.length} articles of ${request.news_date}; ${await this.firstOutline(state)}`;
+  }
+
+  /** The planner's "daily_brief" for a saved brief: the day, its slug and its stories. */
+  dailyPayload(state) {
+    const { id: _id, ...daily } = state.daily_brief;
+    return daily;
   }
 
   /**
@@ -2522,6 +2862,181 @@ export class Automation {
     return `${state.slug}: screenplay rewritten after ${by === "the owner" ? "the owner's" : `${by}'s`} note (round ${rounds + 1}); it is checked again`;
   }
 
+  /**
+   * A daily brief whose script has no paper look and is not on YouTube yet (the briefs the worker
+   * wrote before 2026-10-30, the first of them waiting at its final cut): the writer is asked for
+   * the key band alone (KEY_BAND_NOTE), and only the band and the look are kept (withKeyBand). The
+   * narration is untouched, so the checks, the panel and the takes still hold, while the pictures
+   * changed: render, assemble and the final cut's review run again. The request is the same until
+   * the script changes, so a writer that outlasts a round is waited for, not asked again.
+   * Returns null when there is nothing to do.
+   */
+  async restyleDailyBrief(state) {
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (video.theme === "paper" || video.youtube?.video_id) return null;
+    const fix = { kind: "script", targets: [], problems: [KEY_BAND_NOTE], owner_note: KEY_BAND_NOTE };
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const { video: restyled, kept } = withKeyBand(video, answer?.video);
+    this.fence(state.slug, "saving video.json");
+    writeVideo(dir, restyled);
+    if (this.api.adoptRuns) {
+      saveState(this.workdir(state.slug), state);
+      await this.api.adoptRuns(state.slug, { artifacts: [{ path: path.join(dir, "video.json"), sha256: await sha256File(path.join(dir, "video.json")) }] });
+    }
+    // A band lint still refuses is dropped, and the brief keeps the paper look alone.
+    const banded = !lintErrors(this.ctx, state.slug).length;
+    if (!banded) writeVideo(dir, { ...video, theme: "paper" });
+    state.notes.push(`drawn on paper${banded ? ` with the key band on ${kept} of ${restyled.scenes.length} scenes` : "; the key band failed lint and was left out"}`);
+    saveState(this.workdir(state.slug), state);
+    return `${state.slug}: drawn on paper${banded ? ` with the key band on ${kept} of ${restyled.scenes.length} scenes` : " without the key band"}; it is drawn again`;
+  }
+
+  /**
+   * Card text the render's layout check refused (text under the key band, or too much to fit):
+   * the writer is asked to shorten that text alone (LAYOUT_NOTE), and only the named scenes'
+   * `data` is kept (withCardText), so the narration, its checks and its takes still hold and the
+   * frames are drawn again. MAX_PROMPT_FIX_ROUNDS rounds, then the owner, with the problems. The
+   * request is the same until the script changes, so a writer that outlasts a round is waited
+   * for, not asked again.
+   */
+  async fixLayout(state, out) {
+    const problems = layoutProblemsIn(out);
+    const scenes = new Set(problems.map((problem) => problem.scene).filter(Boolean));
+    const listed = problems.map((problem) => `${problem.where}: ${problem.message}`).join("；");
+    const rounds = state.prompt_fixes?.layout ?? 0;
+    const refused = `render failed: ${problems.length} layout problems: ${listed}`.slice(0, 1500);
+    if (!scenes.size) return this.block(state, refused);
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `the render's layout check sent the card text back ${rounds + 1} times; ${refused}`, "prompt_fixes:layout");
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const note = `${LAYOUT_NOTE}\n${listed}`;
+    const fix = { kind: "script", targets: [...scenes], problems: problems.map((problem) => `${problem.where}: ${problem.message}`), owner_note: note };
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const { video: fitted, changed } = withCardText(video, answer?.video, scenes);
+    state.prompt_fixes = { ...(state.prompt_fixes ?? {}), layout: rounds + 1 };
+    if (!changed) {
+      saveState(this.workdir(state.slug), state);
+      return this.block(state, `the writer changed no card text the render's layout check refused; ${refused}`, "prompt_fixes:layout");
+    }
+    this.fence(state.slug, "saving video.json");
+    writeVideo(dir, fitted);
+    if (lintErrors(this.ctx, state.slug).length) {
+      writeVideo(dir, video);
+      saveState(this.workdir(state.slug), state);
+      return this.block(state, `the shortened card text failed lint; ${refused}`, "prompt_fixes:layout");
+    }
+    if (this.api.adoptRuns) {
+      saveState(this.workdir(state.slug), state);
+      await this.api.adoptRuns(state.slug, { artifacts: [{ path: path.join(dir, "video.json"), sha256: await sha256File(path.join(dir, "video.json")) }] });
+    }
+    state.notes.push(`card text shortened on ${changed} scenes after the render's layout check (round ${rounds + 1})`);
+    saveState(this.workdir(state.slug), state);
+    return `${state.slug}: card text shortened on ${changed} of ${scenes.size} scenes after the render's layout check (round ${rounds + 1}); it is drawn again`;
+  }
+
+  /**
+   * A daily brief's thumbnail picture (ticket 2026-10-30-daily-brief-thumbnails-carry-the-lead):
+   * the og:image of the lead story's official source, fitted whole into the picture box over a
+   * blurred copy of itself (PAD_FILTER), saved beside the script and credited in assets[]. Tried
+   * once per brief, before its frames are drawn: a page without a usable picture leaves the box
+   * as it was and is not asked again. Returns null when there is nothing to do.
+   */
+  async leadPicture(state) {
+    if (state.lead_picture) return null;
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const data = video.thumbnail?.data ?? {};
+    if (video.youtube?.video_id || video.thumbnail?.template !== "thumb" || ["asset", "capture", "shot"].some((key) => data[key] !== undefined)) return null;
+    const file = path.join(dir, LEAD_PICTURE_FILE);
+    const tried = (outcome) => {
+      state.lead_picture = { tried_at: this.ctx.now().toISOString(), ...outcome };
+      saveState(this.workdir(state.slug), state);
+    };
+    let found;
+    try {
+      found = await findLeadPicture(this.ctx.fetch ?? globalThis.fetch, video);
+      const raw = path.join(this.workdir(state.slug), "lead-source");
+      writeFileSync(raw, found.bytes);
+      await (this.ctx.padPicture ?? padPicture)(raw, file, this.ctx.env);
+    } catch (error) {
+      tried({ error: String(error.message ?? error).slice(0, 300) });
+      this.log(`  ${state.slug}: no lead picture for the thumbnail (${state.lead_picture.error}); the box stays as it is`);
+      return null;
+    }
+    const refused = await this.thumbnailPicture(state, { dir, video, file, source: `${found.image} (og:image of ${found.page})`, license: LEAD_PICTURE_LICENSE });
+    if (refused) {
+      tried({ error: refused });
+      return null;
+    }
+    tried({ image: found.image, page: found.page });
+    return `${state.slug}: the lead story's official picture (${new URL(found.image).hostname}) is in the thumbnail`;
+  }
+
+  /**
+   * A daily brief's own picture (owner, 2026-11-01): drawn by the site's image model in the
+   * brief's print look (lead-picture.mjs briefPicturePrompt), word-free, before the lead story's
+   * official picture is tried. Tried once per brief, before its frames are drawn; when the site
+   * draws none (illustrations switched off, no budget, a failed job) the official picture is next.
+   * Returns null when there is nothing to do.
+   */
+  async briefPicture(state) {
+    if (state.brief_picture) return null;
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const data = video.thumbnail?.data ?? {};
+    if (video.youtube?.video_id || video.thumbnail?.template !== "thumb" || ["asset", "capture", "shot"].some((key) => data[key] !== undefined)) return null;
+    const tried = (outcome) => {
+      state.brief_picture = { tried_at: this.ctx.now().toISOString(), ...outcome };
+      saveState(this.workdir(state.slug), state);
+    };
+    const file = path.join(dir, BRIEF_PICTURE_FILE);
+    const raw = path.join(this.workdir(state.slug), "brief-source");
+    const { prompt, negative } = briefPicturePrompt(video);
+    let drawn;
+    try {
+      drawn = await (this.ctx.drawBriefPicture ?? drawBriefPicture)(this.ctx, { slug: state.slug, prompt, negative, file: raw });
+      await (this.ctx.padPicture ?? padPicture)(raw, file, this.ctx.env);
+    } catch (error) {
+      tried({ error: String(error.message ?? error).slice(0, 300) });
+      this.log(`  ${state.slug}: no picture drawn for the thumbnail (${state.brief_picture.error}); the official picture is next`);
+      return null;
+    }
+    const model = [drawn.provider, drawn.model].filter(Boolean).join(" ") || "the site's image model";
+    const refused = await this.thumbnailPicture(state, { dir, video, file, source: `drawn by ${model} for this thumbnail (prompt sha256 ${createHash("sha256").update(prompt).digest("hex").slice(0, 16)})`, license: BRIEF_PICTURE_LICENSE });
+    if (refused) {
+      tried({ error: refused });
+      return null;
+    }
+    tried({ model, usd: drawn.usd, sha256: drawn.sha256 });
+    return `${state.slug}: a picture drawn by ${model} (about US$${drawn.usd.toFixed(2)}) is in the thumbnail`;
+  }
+
+  /**
+   * Put a picture saved as `file` beside the script into a brief's thumbnail: `data.asset`, the
+   * AI look, and its credit in assets[]. A picture lint refuses is taken out again and the reason
+   * returned; null when it is in.
+   */
+  async thumbnailPicture(state, { dir, video, file, source, license }) {
+    const data = video.thumbnail?.data ?? {};
+    const asset = `docs/videos/${state.slug}/${path.basename(file)}`;
+    const pictured = {
+      ...video,
+      thumbnail: aiThumbnail({ ...video.thumbnail, data: { ...data, asset } }),
+      assets: [...(Array.isArray(video.assets) ? video.assets : []).filter((entry) => entry?.path !== asset), { path: asset, source, license }],
+    };
+    this.fence(state.slug, "saving video.json");
+    writeVideo(dir, pictured);
+    const refused = lintErrors(this.ctx, state.slug);
+    if (refused.length) {
+      writeVideo(dir, video);
+      rmSync(file, { force: true });
+      return `lint refused the picture: ${refused[0]}`.slice(0, 300);
+    }
+    if (this.api.adoptRuns) await this.api.adoptRuns(state.slug, { artifacts: [{ path: path.join(dir, "video.json"), sha256: await sha256File(path.join(dir, "video.json")) }, { path: file, sha256: await sha256File(file) }] });
+    return null;
+  }
+
   /** The compilation of a binge series (docs/videos/BINGE.md): started from the site's job. */
   startCompilation(job) {
     return startCompilation(this, job);
@@ -2744,6 +3259,19 @@ export class Automation {
     // A tutorial's script is asked for its demonstration before anything is recorded or drawn.
     const demonstrated = await this.demoGate(state, status);
     if (demonstrated) return demonstrated;
+    // A daily brief written before briefs had the paper look is given it before it is drawn again.
+    if (isDailyBrief({ slug: state.slug })) {
+      const restyled = await this.restyleDailyBrief(state);
+      if (restyled) return restyled;
+      // Its thumbnail carries a picture, put in before anything is drawn: one drawn for it, or
+      // else the lead story's official picture.
+      if (next === "frames rendered") {
+        const drawn = await this.briefPicture(state);
+        if (drawn) return drawn;
+        const pictured = await this.leadPicture(state);
+        if (pictured) return pictured;
+      }
+    }
     // An episode of a series: the owner reads the screenplay before any image or clip is paid for.
     if (next === "script approved") return this.scriptGate(state);
 
@@ -2789,6 +3317,7 @@ export class Automation {
     if (next === "frames rendered") {
       const channel = ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];
       const result = await run(ctx, ["render", "--slug", state.slug, ...channel]);
+      if (result.code === ctx.EXIT.lint && /layout problems/.test(result.out)) return this.fixLayout(state, result.out);
       if (result.code !== 0) return this.block(state,`render failed: ${result.out.trim().split("\n").at(-1)}`);
       return `${state.slug}: frames rendered`;
     }
@@ -2845,6 +3374,12 @@ export class Automation {
             // The same: the site derives done from the YouTube id it is given later.
             this.log(`  could not mark the slides request done: ${error.message}`);
           }
+        } else if (state.daily_brief?.id) {
+          try {
+            await this.api.dailyDone(state.daily_brief.id);
+          } catch (error) {
+            this.log(`  could not mark the daily brief done: ${error.message}`);
+          }
         }
         return `${state.slug}: the upload is confirmed${review.note ? ` (${review.note})` : ""}; the owner uploads it in YouTube Studio and pastes the address on /admin/videos`;
       }
@@ -2862,7 +3397,7 @@ export class Automation {
   /**
    * The first brief of a video that has none (`unplanned`): its answer was lost, or the planner
    * gave nothing usable twice, and the owner retried it. The planner is asked as the first time
-   * was (a scheduled draft's topics, the owner's article, the owner's premise), under the
+   * was (a scheduled draft's topics, the owner's article, the day's stories, the owner's premise), under the
    * video's own slug, which the site already holds (the request's claim, the card), whatever slug
    * it answers. A lost answer stops the video again (move), and nothing usable twice blocks it
    * with the planner's problem; both wait for the next retry.
@@ -2878,6 +3413,11 @@ export class Automation {
       const sources = await readSources(this.read, [requested.url]);
       if (!sources[0]?.ok) return this.defer(state, `${state.slug}: the owner's article ${requested.slug} could not be read (${sources[0]?.error ?? "no page"})`, { what: "planner" });
       ask = { payload: (extra) => this.planPayload({ topics: [], requested_guide: requested, sources, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, new Set(), "slides", this.stance, null, requested.slug) };
+    } else if (state.unplanned === "daily") {
+      // The day's stories, read again: the brief keeps its day and its slug.
+      const sources = await readSources(this.read, state.daily_brief.stories.map((story) => story.url));
+      if (!sources.some((page) => page.ok)) return this.defer(state, `${state.slug}: none of the articles of ${state.daily_brief.news_date} could be read (${sources[0]?.error ?? "no stories"})`, { what: "planner" });
+      ask = { payload: (extra) => this.planPayload({ topics: [], daily_brief: this.dailyPayload(state), sources, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, new Set(), "slides", this.stance, null, null, new Set(), state.daily_brief), options: { variant: DAILY_VARIANT } };
     } else if (state.unplanned === "drama") {
       ask = { payload: await this.dramaPlanPayload(state, earlier), check: (answer) => planProblem(own(answer), taken, state.source_guide ? new Set() : usedGuides, "drama", this.stance, state.style_preset ?? null), options: { maxOutputTokens: 16_000, format: "drama", variant: this.variantOf(state) } };
     } else {
@@ -2896,7 +3436,7 @@ export class Automation {
     mkdirSync(dir, { recursive: true });
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
     state.title = String(plan.title || titleOf(plan.brief) || state.title).slice(0, 200);
-    state.source_urls = plan.source_urls.slice(0, 12);
+    state.source_urls = state.daily_brief ? dailySourceUrls(plan.source_urls, state.daily_brief.stories) : plan.source_urls.slice(0, 12);
     if (state.unplanned === "draft") state.source_guide = plan.source_guide || null;
     delete state.unplanned;
     saveState(this.workdir(state.slug), state);
@@ -2914,28 +3454,31 @@ export class Automation {
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
     const drama = state.format === "drama";
-    // An owner's slides request keeps its article through every re-plan (draftSlides): no topics.
+    // An owner's slides request keeps its article through every re-plan (draftSlides), and a daily
+    // brief its day's stories, read again (draftDaily): no topics for either.
     const requested = state.slides_request ?? null;
-    const pages = drama || requested ? new Set() : usedPages(this.workBase, state.slug);
-    const { topics: offered } = drama || requested ? { topics: [] } : await this.api.topics();
+    const daily = state.daily_brief ?? null;
+    const pages = drama || requested || daily ? new Set() : usedPages(this.workBase, state.slug);
+    const { topics: offered } = drama || requested || daily ? { topics: [] } : await this.api.topics();
     const topics = freshTopics(offered, pages);
     if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     const extra = drama
       ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) }
-      : { topics, ...(requested ? { requested_guide: this.requestedGuide(requested) } : {}) };
-    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
-    const chosen = (drama && state.source_guide) || requested;
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null, pages);
+      : { topics, ...(requested ? { requested_guide: this.requestedGuide(requested) } : {}), ...(daily ? { daily_brief: this.dailyPayload(state), sources: await readSources(this.read, daily.stories.map((story) => story.url)) } : {}) };
+    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama || daily ? this.variantOf(state) : null);
+    const chosen = (drama && state.source_guide) || requested || daily;
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null, pages, daily);
     state.replans += 1;
     state.notes.push(`outline sent back by ${by}: ${note}`);
     saveState(this.workdir(state.slug), state);
     if (problem) return this.retryLater(state, "planner", `the re-planned brief was not usable (${problem})`);
     this.cleared(state, "planner");
     writeFileSync(path.join(dir, "brief.md"), answer.brief.endsWith("\n") ? answer.brief : `${answer.brief}\n`);
-    state.source_urls = (answer.source_urls ?? state.source_urls).slice(0, 12);
-    // A drama adaptation and an owner's slides request keep their article; a scheduled draft takes
-    // the planner's answer as given, so a re-plan onto an official page records no article.
-    state.source_guide = requested?.source_guide ?? (drama ? answer.source_guide ?? state.source_guide : answer.source_guide || null);
+    state.source_urls = daily ? dailySourceUrls(answer.source_urls, daily.stories) : (answer.source_urls ?? state.source_urls).slice(0, 12);
+    // A drama adaptation and an owner's slides request keep their article, and a daily brief has
+    // none; a scheduled draft takes the planner's answer as given, so a re-plan onto an official
+    // page records no article.
+    state.source_guide = daily ? null : requested?.source_guide ?? (drama ? answer.source_guide ?? state.source_guide : answer.source_guide || null);
     saveState(this.workdir(state.slug), state);
     return `brief rewritten after ${by === "Jev" ? "Jev's" : "the owner's"} note (round ${state.replans}); ${await this.submitOutline(state)}`;
   }
@@ -2958,6 +3501,7 @@ export class Automation {
       minimal: refs.minimal,
       showcase: refs.showcase,
       owner_notes: state.notes,
+      ...(state.daily_brief ? { daily_brief: this.dailyPayload(state) } : {}),
       ...(drama ? this.dramaPayload(state) : {}),
       ...(state.series ? this.seriesPayload(state) : {}),
       ...extra,
@@ -2994,6 +3538,8 @@ export class Automation {
     const info = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}) : null;
     const cast = info ? info.characters ?? [] : null;
     const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null, production: info?.production ?? null });
+    // A daily brief is filed as AI news whatever the writer put (its hashtag and the site's filing).
+    if (state.daily_brief) settledVideo.category = "ai-news";
     // The storytelling register's pause beats are the tool's (register.mjs setPauseBeats): set on
     // every save of a script whose prompts carry the register, before lint, whichever stage wrote it.
     return this.usesRegister(state) ? setPauseBeats(settledVideo) : settledVideo;
@@ -3011,9 +3557,15 @@ export class Automation {
     });
   }
 
-  /** Whether a video's planner, writer and listener read REGISTER_RULES (prompts.mjs INSTRUCTIONS): a slides video without a variant. */
+  /**
+   * Whether a video's planner, writer and listener read REGISTER_RULES (prompts.mjs INSTRUCTIONS):
+   * a slides video without a variant, and a daily brief, whose texts keep the register for its
+   * rhythm and tell the model to leave the pauses to the tool. Its beats suit a news programme: a
+   * breath after the lead headline, and the cliffhanger pause where one story hands over to the
+   * next.
+   */
   usesRegister(state) {
-    return state.format !== "drama" && !state.story && this.variantOf(state) === null;
+    return state.format !== "drama" && !state.story && [null, DAILY_VARIANT].includes(this.variantOf(state));
   }
 
   /**
@@ -3419,7 +3971,7 @@ export class Automation {
     const round = state.verify_rounds + 1;
     const urls = siteSources(null, [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])], this.ctx.root);
     const sources = await readSources(this.read, urls);
-    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, isLongAnime(state) ? 8_000 : 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.daily_brief ? { daily_brief: this.dailyPayload(state) } : {}), ...(state.series ? this.seriesPayload(state) : {}) }, isLongAnime(state) ? 8_000 : 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (isLongAnime(state) && answer.video) return this.retryLater(state, "verifier", "long-anime verification must return findings, not a whole-script rewrite");
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);
@@ -3466,6 +4018,14 @@ export class Automation {
     const file = path.join(this.workdir(state.slug), ...NARRATIVE_REVIEW);
     const saved = readJson(file, null);
     if (saved?.passed && narrativeReviewMatches(saved, video)) return null;
+    // The rewrite this verdict asked for is still out (a durable writer outlasts a round, and the
+    // script on disk is still the one the panel read): send the same note again, so the request
+    // is the saved one and its receipt is taken, instead of reading again and asking for a new
+    // rewrite every round. On 2026-10-30 a daily brief bought a panel and a writer every six
+    // minutes for five hours that way, each new note archiving the finished rewrite before it.
+    if (saved && !saved.passed && typeof saved.fix_note === "string" && narrativeReviewMatches(saved, video)) {
+      return this.fixScript(state, saved.fix_note, "the storytelling panel", "narrative");
+    }
     const round = (saved?.round ?? 0) + 1;
     // 奇聞檔案局 asks two readers, as the brand stories do (automation/story.mjs; owner,
     // 2026-10-19): a required question fails only when both say "no" (mergePanelVerdicts). Each of
@@ -3479,8 +4039,9 @@ export class Automation {
       verdicts.push(panelVerdict(answer, panelQuestions(video)));
     }
     const verdict = mergePanelVerdicts(verdicts);
+    const note = verdict.passed ? null : `說故事檢查沒過：${verdict.problems.join("；")}`;
     mkdirSync(path.dirname(file), { recursive: true });
-    atomicWrite(file, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
+    atomicWrite(file, `${JSON.stringify({ ...narrativeRecord(video, verdict, round), ...(note ? { fix_note: note } : {}) }, null, 2)}\n`);
     this.cleared(state, "verifier");
     if (verdict.passed) {
       state.narrative = { passed: true, rounds: round, advisory: verdict.advisory.map((each) => each.id) };
@@ -3488,7 +4049,7 @@ export class Automation {
       return `${state.slug}: the storytelling panel passed (round ${round}${verdict.advisory.length ? `, ${verdict.advisory.length} advisory` : ""})`;
     }
     state.narrative = { passed: false, rounds: round, failed: verdict.failed.map((each) => each.id) };
-    return this.fixScript(state, `說故事檢查沒過：${verdict.problems.join("；")}`, "the storytelling panel", "narrative");
+    return this.fixScript(state, note, "the storytelling panel", "narrative");
   }
 
   /**

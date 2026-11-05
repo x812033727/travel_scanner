@@ -175,6 +175,10 @@ class ProjectIn(BaseModel):
     # {"ja": {"id": "<uuid>", "status": "taken"}} or {"id", "status": "refused", "reason"}.
     # Read leniently (dub_retry.apply_worker): what is not understood is ignored, never a 422.
     dub_retries: dict[str, Any] | None = None
+    # The sender has reported this video before and heard back (auto.json's on_site). When its
+    # row is then gone, the owner deleted it, and the report does not bring it back. A first
+    # report, or a tool that has no such record, leaves it out and may register the slug anew.
+    on_site: bool = False
 
     @field_validator("dub_retries", mode="before")
     @classmethod
@@ -453,6 +457,15 @@ class DecisionIn(BaseModel):
 
 class DropIn(BaseModel):
     note: str = Field(min_length=1, max_length=2000)
+
+
+class ProjectDeletedOut(BaseModel):
+    """What went with a deleted video, and the YouTube upload the site left where it is."""
+
+    slug: str
+    youtube_video_id: str | None
+    reviews_deleted: int
+    metrics_deleted: int
 
 
 class DubLocalesIn(BaseModel):

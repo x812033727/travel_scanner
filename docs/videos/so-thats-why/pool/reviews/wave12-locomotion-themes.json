@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "batch_id": "wave12-locomotion-20261101",
+  "status": "AUTHOR_PROPOSALS_REQUIRING_INDEPENDENT_REVIEW",
+  "rules": {
+    "duration": "四案175/180/225/175秒，按資訊量規劃，不湊長片。",
+    "cadence": "每20–40秒改條件或提出可看見的新對照；最大45秒。",
+    "core_budget": "開場與回扣計入章秒；單核心跨章累計不超editorial上限。",
+    "cut": "刪段須重核版本，不能用重述或跨物種清單補時。"
+  },
+  "episodes": [
+    {
+      "id": "W12A-T01",
+      "title": "螞蟻搬東西卡住，為什麼有時擺來擺去、有時沿牆滑？",
+      "core_question": "共同施力遇到不同限制，怎麼從朝巢走變成找出口？",
+      "connection": "先看繫繩把兩股方向拆開，再明示換成有窄門的T形貨物/群體大小比較；同一追問是限制如何改變群體運動，不把兩論文剪成同場實驗。",
+      "candidate_ids": [
+        "A12001",
+        "A12002"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "看似亂擺，其實兩股方向在競爭",
+          "seconds": 85,
+          "candidate_ids": [
+            "A12001"
+          ],
+          "new_information": "約束把朝巢與沿運動的拉力拆開，繫繩對照排除必須直接看見障礙的模型需求。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：食物被繫住仍左右擺，是誰下的指令？"
+            },
+            {
+              "at_seconds": 25,
+              "change": "畫自由走到繫繩拉緊，朝巢與切向拉力不再重合。"
+            },
+            {
+              "at_seconds": 55,
+              "change": "模型不加入新的障礙指令也能擺；換成有邊緣的障礙才有可能繞出。"
+            }
+          ],
+          "cut_if": "若本章只剩重述就刪；此雙章案任刪一章即撤案，不沿用原題名與總秒數，不補空轉場。"
+        },
+        {
+          "title": "能保留方向，就有機會沿邊界掃描",
+          "seconds": 90,
+          "candidate_ids": [
+            "A12002"
+          ],
+          "new_information": "研究模型中持續移動、機械耦合與局部拉力對齊形成迴圈；碰牆降速程度不同使大/小隊沿邊搜尋不同。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "明示重設成尺寸縮放的T形貨物與窄門，大/小隊各走各的場地。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "大隊持續滑牆，小隊易停下換向；追同一段邊界而非只看完成時間。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "模型框：持續移動維持機械耦合→拉力對齊→繼續滑行；小隊降速後對齊減弱，不替每隻蟻畫地圖。"
+            },
+            {
+              "at_seconds": 80,
+              "change": "10秒回扣：同樣一起搬，外部幾何與群體狀態會改變怎麼找路。"
+            }
+          ],
+          "cut_if": "若本章只剩重述就刪；此雙章案任刪一章即撤案，不沿用原題名與總秒數，不補空轉場。"
+        }
+      ],
+      "body_seconds": 175,
+      "target_minutes": 2.9166666666666665,
+      "range_minutes": [
+        2.6666666666666665,
+        2.9166666666666665
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 10,
+      "boredom_risk": "若兩章都只說一起拉會合作，就退回合例；第二章必有大小/碰牆持續性對照。",
+      "drop_if": "兩核心若被覆核合併，撤此175秒版另寫更短版；任刪一章即撤案，不沿用原片名。",
+      "evidence_gaps": "未寫完整旁白、未實際試讀、未復現或實拍；原創示意與逐主張須進稿查核，非製作核准。",
+      "timing_basis": "含開場與回扣的紙上資訊預算，非實測/試讀片長；上限即章節總秒數，不藉停頓或重述加長。"
+    },
+    {
+      "id": "W12A-T02",
+      "title": "一團纏住的蟲，怎麼一起走、又能一下散開？",
+      "core_question": "纏結什麼時候能傳力，什麼動作又會把這些連接解開？",
+      "connection": "先在溫度梯度中追團體位移，再重設為另一研究的解纏觀察與模型；不是前一實驗接著受驚的連續紀錄。",
+      "candidate_ids": [
+        "A12003",
+        "A12004"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "纏住，能把局部拉動傳給整團",
+          "seconds": 90,
+          "candidate_ids": [
+            "A12003"
+          ],
+          "new_information": "位置相關的活動與連接能讓團塊移動，物理模型測試柔順連結。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：纏住同伴不一定原地打結，整團仍能移動。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "前端拉與後端抬起的觀測分層畫；減摩只標可能解釋。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "另框機器人：中間僵硬時易散開，柔順連接時可留成團，不冒稱蟲體直接干預。"
+            }
+          ],
+          "cut_if": "若本章只剩重述就刪；此雙章案任刪一章即撤案，不沿用原題名與總秒數，不補空轉場。"
+        },
+        {
+          "title": "散開，不只把同一套動作加速",
+          "seconds": 90,
+          "candidate_ids": [
+            "A12004"
+          ],
+          "new_information": "模型的換向比例與迴圈相對鄰距共同改變纏結；控制路徑幾何後才能單獨比較快慢。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "切換到另一研究，追單條頭部路徑與鄰居，不重講前後分工。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "同示意速度、同迴圈尺度與鄰距，較晚/較早換向留下不同連接；不畫一整圈固定門檻。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "固定換向比例、迴圈相對鄰距與鄰距，同比加快前進/轉向/換向才只是同路徑縮時；模型不等於神經指令。"
+            },
+            {
+              "at_seconds": 80,
+              "change": "10秒回扣：連結可傳力，改變繞行方式也能解開它。"
+            }
+          ],
+          "cut_if": "若本章只剩重述就刪；此雙章案任刪一章即撤案，不沿用原題名與總秒數，不補空轉場。"
+        }
+      ],
+      "body_seconds": 180,
+      "target_minutes": 3.0,
+      "range_minutes": [
+        2.75,
+        3.0
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 10,
+      "boredom_risk": "不可拿術語chirality/拓撲充旁白；觀眾應能從兩條彩線看出是否繞住。",
+      "drop_if": "若無清晰的纏/解路徑圖或無法區分觀察與模型，撤案；刪任一90秒章均撤雙章版。",
+      "evidence_gaps": "未寫完整旁白、未實際試讀、未復現或實拍；原創示意與逐主張須進稿查核，非製作核准。",
+      "timing_basis": "含開場與回扣的紙上資訊預算，非實測/試讀片長；上限即章節總秒數，不藉停頓或重述加長。"
+    },
+    {
+      "id": "W12A-T03",
+      "title": "蟑螂怎麼讓身體「滾得過去」？",
+      "core_question": "從硬梁間通過與翻肚後起身，為什麼調整身體支撐能讓側滾成為可行路徑？",
+      "connection": "明示兩個獨立研究：草狀硬梁前收腿縮小支撐、翻肚後開翅使側滾相對前翻更可行；不是同一隻蟑螂的連續流程。第一章採P164的A12005研究變體，保留A12-S006來源與原段落預算。",
+      "candidate_ids": [
+        "A12005",
+        "A12007"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "站穩頂住，不一定穿得過去",
+          "seconds": 75,
+          "candidate_ids": [
+            "A12005"
+          ],
+          "new_information": "採P164的A12005變體：縮小支撐幾何降低側滾穩定裕度，從硬梁間換路通過；不是新核心。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：站得最穩，為什麼反而可能過不了？重設草狀硬梁研究。"
+            },
+            {
+              "at_seconds": 25,
+              "change": "寬腿頂梁與收腿側滾對照；縮小支撐多邊形，降低往側邊翻的穩定裕度。"
+            },
+            {
+              "at_seconds": 50,
+              "change": "把模型能障降低連回滾進梁縫；標明腿動作是觀察、能障是模型。"
+            }
+          ],
+          "cut_if": "若本章只剩重述就刪；此雙章案任刪一章即撤案，不沿用原題名與總秒數，不補空轉場。"
+        },
+        {
+          "title": "前翻仍不足，側滾先出現機會",
+          "seconds": 75,
+          "candidate_ids": [
+            "A12007"
+          ],
+          "new_information": "對稱開翅後前翻門檻仍高於動能，側滾門檻卻降入腿側向擾動可跨範圍；明示機器人模型與動物觀察層次。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "重設另一個翻肚研究：對稱開翅並排前翻/側滾兩條路，前翻動能仍不夠。"
+            },
+            {
+              "at_seconds": 25,
+              "change": "側滾門檻已降低，腿擺的側向擾動可跨過；用機器人逐次能量分解對照成功/失敗。"
+            },
+            {
+              "at_seconds": 50,
+              "change": "另框動物加腿慣量與成功率觀察；不把平均能量當每次門檻，也不宣稱所有開翅都不能翻。"
+            },
+            {
+              "at_seconds": 70,
+              "change": "5秒回扣：先改可走的方向，再由側向擾動跨過。"
+            }
+          ],
+          "cut_if": "若本章只剩重述就刪；此雙章案任刪一章即撤案，不沿用原題名與總秒數，不補空轉場。"
+        }
+      ],
+      "body_seconds": 150,
+      "target_minutes": 2.5,
+      "range_minutes": [
+        2.25,
+        2.5
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 5,
+      "boredom_risk": "兩章若只重說降低門檻就縮或撤；第二章必保留前翻/側滾的方向比較，不能只換一個蟑螂場景。",
+      "drop_if": "任刪一個75秒章即撤此150秒雙章案，不沿用題名、總秒數或自動批准單核心；A12006留研究池，不補回中段。",
+      "evidence_gaps": "未寫完整旁白、未實際試讀、未復現或實拍；原創示意與逐主張須進稿查核，非製作核准。",
+      "variant_use": [
+        {
+          "proposed_id": "A12005",
+          "canonical_id": "P164",
+          "source_ids": [
+            "A12-S006"
+          ],
+          "allocated_seconds": 75,
+          "variant_cap_seconds": 95,
+          "note": "草梁收腿是既有支撐寬度穩定核心的動物研究變體；由root中央映射，原提案留追溯，不再計新核心。"
+        }
+      ],
+      "timing_basis": "含開場與回扣的紙上資訊預算，非實測/試讀片長；上限即章節總秒數，不藉停頓或重述加長。"
+    },
+    {
+      "id": "W12A-T04",
+      "title": "跟在前面那隻後面，真的就比較省力嗎？",
+      "core_question": "同伴留下的水流何時幫忙，為什麼位置對了還可能需要時機對？",
+      "connection": "第一章明示水面鴨模型，第二章重設水中機器魚與真魚觀察；比較波面位置與渦流傳播時間，不說成兩種動物用同一神經策略。",
+      "candidate_ids": [
+        "A12008",
+        "A12009"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "站錯波的位置，也可能被拖慢",
+          "seconds": 85,
+          "candidate_ids": [
+            "A12008"
+          ],
+          "new_information": "固定速度時改跟隨位置，波壓水平合力可改號。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：把小鴨放在媽媽後面兩個位置，幫助會一樣嗎？"
+            },
+            {
+              "at_seconds": 30,
+              "change": "用波峰波谷相對胸腹的兩格，顯示水平壓力方向變化。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "明示理想模型只算波阻；不把省波阻說成不用划水，也不解釋印痕。"
+            }
+          ],
+          "cut_if": "若本章只剩重述就刪；此雙章案任刪一章即撤案，不沿用原題名與總秒數，不補空轉場。"
+        },
+        {
+          "title": "位置變了，尾流抵達時間也變了",
+          "seconds": 90,
+          "candidate_ids": [
+            "A12009"
+          ],
+          "new_information": "前後距離與擺尾相位共同決定渦流/身體互動。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "重設水中雙魚，追一個渦流從前魚到後魚。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "距離改變但擺尾不改，原本順流的時段可能錯開；調相位維持同類互動。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "機器魚量功率，金魚量運動；把測量層次分開而不是搬用同一省能數字。"
+            },
+            {
+              "at_seconds": 80,
+              "change": "10秒回扣：搭上同伴留下的流，得看位置，也得看抵達時機。"
+            }
+          ],
+          "cut_if": "若本章只剩重述就刪；此雙章案任刪一章即撤案，不沿用原題名與總秒數，不補空轉場。"
+        }
+      ],
+      "body_seconds": 175,
+      "target_minutes": 2.9166666666666665,
+      "range_minutes": [
+        2.6666666666666665,
+        2.9166666666666665
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 10,
+      "boredom_risk": "不能靠重複兩次尾流很省力補時間；第二章必加入傳播時間與擺尾時機。",
+      "drop_if": "任刪一章撤案；若讀稿無法分清波阻模型/機器魚功率/真魚估計，退稿縮寫，不靠百分比或物種清單補時。",
+      "evidence_gaps": "未寫完整旁白、未實際試讀、未復現或實拍；原創示意與逐主張須進稿查核，非製作核准。",
+      "timing_basis": "含開場與回扣的紙上資訊預算，非實測/試讀片長；上限即章節總秒數，不藉停頓或重述加長。"
+    }
+  ]
+}

@@ -175,6 +175,24 @@ class ExpectedParts(BaseModel):
     dubs: list[str]
 
 
+class ReviewPackage(BaseModel):
+    # The approved upload package of a video made off the host: imported (`import --publish`,
+    # payload ``imported``) or sent by hand (`review-push` or `shorts/cli.mjs push` from a work
+    # directory the worker did not make, payload ``hand_pushed``). Its files are in the review
+    # store, not in video_work, so the worker fetches them into <slug>/upload/ and <slug>/clips/
+    # before the backup copies the folder (tools/video/automation/review-package.mjs).
+    review_id: str
+    content_sha256: str
+    # The newest approved language batch of the same video (`review-push --gate languages`): the
+    # dub tracks, captions, descriptions and per-language thumbnails approved after the upload
+    # confirmation, which the worker fetches into the same package. None without one.
+    languages_review_id: str | None = None
+    languages_sha256: str | None = None
+    # How many files the two reviews name: the full tier's files can join an approved package
+    # (admin_service._attach_backup_tier), and the worker fetches again when this changes.
+    files: int | None = None
+
+
 class WorkerVideo(BaseModel):
     slug: str
     # None for a video ready to upload and not on YouTube yet.
@@ -185,10 +203,15 @@ class WorkerVideo(BaseModel):
     episode_number: int | None
     folder: str
     shared_folder: str
+    # The folder an earlier backup used under a replaced rule; the worker moves it to ``folder``
+    # in Drive before anything else and reports ``folder`` (target.py resolve_target).
+    moved_from: str | None = None
     tier: Tier
     expected: ExpectedParts
     # The record as the worker last reported it, or None before its first report.
     backup: dict[str, object] | None
+    # Set for an imported video only: the package the worker fetches from the review store.
+    review_package: ReviewPackage | None = None
 
 
 class WorkerProbe(BaseModel):
@@ -207,3 +230,8 @@ class WorkerConfig(BaseModel):
     test: WorkerProbe | None
     # Every video with a YouTube id, oldest first.
     videos: list[WorkerVideo]
+    # Videos the owner deleted from /admin/videos lately (admin_deletion.delete_project, its audit
+    # rows) whose slug no video holds again: the worker removes their work folders whole (owner,
+    # 2026-11-03; tools/video/automation/tidy.mjs). The site cannot: the API mounts video_work
+    # read-only.
+    deleted: list[str] = Field(default_factory=list)

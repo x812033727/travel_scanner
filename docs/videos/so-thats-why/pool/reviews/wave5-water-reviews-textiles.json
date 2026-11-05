@@ -1,0 +1,463 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "author": "pool_physics",
+  "role": "INDEPENDENT_EDITORIAL_AND_SOURCE_RISK_REVIEW",
+  "status": "PASS_FOR_CANDIDATE_INTEGRATION_WITH_LISTED_DISPOSITIONS",
+  "production_approved": false,
+  "files": [
+    {
+      "path": "batches/wave5-textiles-paper.json",
+      "sha256": "fc6364364003eb9982ea4c3d949eed919b841b02005f6fc2feaf0389b746bd63"
+    },
+    {
+      "path": "reviews/wave5-textiles-themes.json",
+      "sha256": "a9dfa6205062db4eecf30afa759a07baa1e65e7a4d0d748e9ebbd06aca5acb32"
+    },
+    {
+      "path": "reviews/wave5-textiles-author.json",
+      "sha256": "1cc9995c95da8b468f444d039a79ae739eb91108f6cc990066e21a174e00da1e"
+    }
+  ],
+  "coverage": {
+    "candidate_ids": [
+      "X5001",
+      "X5002",
+      "X5003",
+      "X5004",
+      "X5005",
+      "X5006",
+      "X5007",
+      "X5008",
+      "X5009",
+      "X5010",
+      "X5011",
+      "X5012",
+      "X5013",
+      "X5014",
+      "X5015",
+      "X5016",
+      "X5017",
+      "X5018",
+      "X5019",
+      "X5020",
+      "X5021",
+      "X5022",
+      "X5023"
+    ],
+    "candidate_count": 23,
+    "fields_read": "question、mechanism_key、answer_target、scope、source_ids、source_locator、notes、editorial角色/新理解/畫面/秒數逐題讀；來源登記19筆與退題26筆也讀過。",
+    "not_added_ids": [
+      "X5031",
+      "X5032",
+      "X5033",
+      "X5034",
+      "X5035",
+      "X5036",
+      "X5037",
+      "X5038",
+      "X5039",
+      "X5040",
+      "X5041",
+      "X5042",
+      "X5043",
+      "X5044",
+      "X5045",
+      "X5046",
+      "X5047",
+      "X5048",
+      "X5049",
+      "X5050",
+      "X5051",
+      "X5052",
+      "X5053",
+      "X5054",
+      "X5055",
+      "X5056"
+    ],
+    "author_boundary_sets": 17,
+    "theme_count": 3,
+    "semantic_neighbours": {
+      "path": ".cache/wave5-textiles-paper-neighbours.json",
+      "sha256": "992f2b51edd77ff5699c839f9bd46ee23dd0614de735f1c8b1502f5550a2425e",
+      "draft_sha256": "9063dd7840762c45729c37ec7de26f8b15ad51e2acb31d968e863b7d05392957",
+      "draft_raw_count": 2895,
+      "rows_read": 23,
+      "neighbours_per_row": 5,
+      "method": "讀全部23題各5個鄰居的答案與scope；再讀作者未被top5找出的H3026/H3090等邊界。相似度只供檢索，不是合併機率或全庫無重複保證。"
+    },
+    "baseline_search": "對2790原raw按紡織／交聯／水解／纖維／摩擦／紙品詞彙檢索，再讀相關舊題目標與scope；未重查全2790題外站。",
+    "source_sample_count": 8,
+    "source_sample_method": "按可能與舊題重複、證據層級及題組核心風險選樣，非隨機抽樣、非19來源全驗。"
+  },
+  "source_checks": [
+    {
+      "source_id": "X5-S002",
+      "url": "https://journals.aps.org/prx/pdf/10.1103/PhysRevX.8.021075",
+      "read_via": "web.run PDF正文",
+      "reading_scope": "II Experimental Study，PDF第2–3頁，Fig1說明與self-friction段；未播放影片",
+      "finding": "支持同一研究布可回形但往返耗能，摩擦與H3090聚合物時間重排不同。未採近半能量等數值。"
+    },
+    {
+      "source_id": "X5-S005",
+      "url": "https://arxiv.org/html/2604.20580v1",
+      "read_via": "web.run HTML正文",
+      "reading_scope": "Introduction、模型樣品、Fig1–3鄰段與threshold討論；未播放補充影片",
+      "finding": "逐圈釋放與張力控制在尼龍鬆針織模型成立；預印本與模型限制已保留。不把門檻一律說成摩擦或普遍絲襪速度。"
+    },
+    {
+      "source_id": "X5-S008",
+      "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/textiles-costumes.html",
+      "read_via": "web.run正文find",
+      "reading_scope": "Light and ultraviolet / Fibre damage 的paint media chalking段",
+      "finding": "原文明確區分介質解體與顏料直接損傷；支持X5023條件，但未支持精確散射／脫粒比例。"
+    },
+    {
+      "source_id": "X5-S013",
+      "url": "https://www.ricoh.com/technology/tech/004_rewritable",
+      "read_via": "web.run正文",
+      "reading_scope": "Characteristics...，Fig1–2鄰接正文；另讀Rewritable recording process technology段核熱歷程",
+      "finding": "開發者說明支持特定顯色劑結合、獨立結晶與固定兩種狀態。沒有把一般收據說成可重寫，未採商用耐久或環境宣稱。"
+    },
+    {
+      "source_id": "X5-S014",
+      "url": "https://www.acs.org/education/whatischemistry/landmarks/cottonproducts.html",
+      "read_via": "web.run正文",
+      "reading_scope": "Development of Durable and Wrinkle-resistant Cotton，hydrogen/covalent crosslink、crease、chlorine與embrittlement段",
+      "finding": "X5009有支持但與H3026的交聯限制滑移核心重合；X5010有歷史含氮整理劑留氯受熱產酸路徑，不泛指現代衣物。"
+    },
+    {
+      "source_id": "X5-S015",
+      "url": "https://bioresources.cnr.ncsu.edu/wp-content/uploads/2021/06/BioRes_16_3_6426_Review_Lee_YHC_Backtrap_Mottle_Mechanisms_18684.pdf",
+      "read_via": "web.run PDF正文",
+      "reading_scope": "Back-trap/Fountain Water Mottle pp6428；Water-interference Mottle p6432；Coating Structure p6433及圖說",
+      "finding": "前色回拉與殘留潤版水阻墨確是不同事件，後者可在單色印刷出現；作者題組有可辨對照，不只同一斑駁換名字。"
+    },
+    {
+      "source_id": "X5-S016",
+      "url": "https://bioresources.cnr.ncsu.edu/wp-content/uploads/2024/03/BioRes_19_2_3095_Im_YL_Print_Mottle_Double_Coated_Paper_Octave_Band_Filter_23233.pdf",
+      "read_via": "web.run PDF正文",
+      "reading_scope": "Methods pp3097–3099；Effect of Pre-coating Pigment pp3099–3100；Dwell Time pp3100–3101，另看結論用詞",
+      "finding": "相同上塗、不同底塗有印色比較；膠乳重分布是作者以先前研究與相關結果提出的機制解釋，批次與題組已標，不可畫成這次逐粒實錄。"
+    },
+    {
+      "source_id": "X5-S017",
+      "url": "https://bioresources.cnr.ncsu.edu/wp-content/uploads/2016/06/BioRes_08_4_6087_Chen_ZSQ_Comb_Glyoxal_Chitosan_Crosslink_Paper_Wet_Strength_4489.pdf",
+      "read_via": "web.run PDF正文",
+      "reading_scope": "Methods強度評估；Results Glyoxal pp6089–6090、Chitosan與crosslink system相鄰段",
+      "finding": "有浸泡時間效應和半縮醛可能形成之解釋；這些不等於直接驗證X5022 key宣稱的水解因果，建議暫緩。"
+    }
+  ],
+  "source_access_not_verified": [
+    {
+      "source_id": "X5-S011",
+      "url": "https://bioresources.cnr.ncsu.edu/resources/cellulosic-substrates-for-removal-of-pollutants-from-aqueous-systems-a-review-2-dyes/",
+      "result": "open取得頁首／目錄，後續reactive dyes與retarder定位逾時；本次不計為機制正文覆核成功，X5013–16只作結構／範圍審閱。"
+    }
+  ],
+  "recommended_decisions": {
+    "merges": [
+      {
+        "duplicate_id": "X5009",
+        "canonical_id": "H3026",
+        "reason": "兩題答案都以交聯限制分子鏈永久相對滑移來保留／回復形狀。平整與褲線是有用的設定形狀案例，現有目標未增加另一獨立機制；保留新來源與衣物條件作案例，不占第二核心。"
+      }
+    ],
+    "excluded": [
+      {
+        "id": "X5022",
+        "reason": "所讀研究有浸泡時間的濕強差及半縮醛可能形成，但未直接建立temporary_wet_strength_crosslink_hydrolysis所指的解釋。保留raw／來源；進稿需補足連結失效的一手證據後重新審，不把現象與may解釋視為確定水解。"
+      }
+    ],
+    "distinct": [
+      {
+        "a": "X5001",
+        "b": "P008",
+        "reason": "受拉螺旋幾何自身產生接觸正向力與載荷轉交，超出給定正向力下摩擦上限的舊題。"
+      },
+      {
+        "a": "X5002",
+        "b": "X5004",
+        "reason": "面內伸展與無載三維捲曲的邊界條件和解釋目標不同。"
+      },
+      {
+        "a": "X5002",
+        "b": "D2197",
+        "reason": "線圈幾何展開不同於紙纖維取向及起皺工藝，不因各向異性一詞合併。"
+      },
+      {
+        "a": "X5003",
+        "b": "H3090",
+        "reason": "線圈接觸摩擦耗能，與固定形變下鏈重排及時間延遲不同。"
+      },
+      {
+        "a": "X5003",
+        "b": "P009",
+        "reason": "摩擦方向是前提，新題解釋往返力路徑與功不回收，不只給方向例子。"
+      },
+      {
+        "a": "X5005",
+        "b": "H3060",
+        "reason": "一圈釋放下一圈的拓撲傳播，不是裂尖驅動使每根線再次斷裂。"
+      },
+      {
+        "a": "X5005",
+        "b": "LEG-T07",
+        "reason": "模型鬆針織脫圈不同於開孔應力集中與疲勞。"
+      },
+      {
+        "a": "X5010",
+        "b": "X5011",
+        "reason": "留氯受熱產酸觸發損傷，與紙自身產酸留存的回饋不同。"
+      },
+      {
+        "a": "X5011",
+        "b": "H3030",
+        "reason": "新題為產物留存／自催化條件，非只重講可水解主鏈。"
+      },
+      {
+        "a": "X5014",
+        "b": "X5015",
+        "reason": "氧化還原控制溶解性運輸，與表層染色區機械移除不同。"
+      },
+      {
+        "a": "X5017",
+        "b": "E2032",
+        "reason": "化學顯色不同於已存在碳粉熱定影附著。"
+      },
+      {
+        "a": "X5017",
+        "b": "P280",
+        "reason": "直接感熱層接觸化學與滴定指示終點匹配的問題不同。"
+      },
+      {
+        "a": "X5017",
+        "b": "X5018",
+        "reason": "可重寫題新增特定顯色劑分離結晶和熱歷程控制，不把同一普通感熱過程拆兩題。"
+      },
+      {
+        "a": "X5019",
+        "b": "X5020",
+        "reason": "已上前色被帶走，與殘留水造成後續拒墨的事件順序不同。"
+      },
+      {
+        "a": "X5019",
+        "b": "X5021",
+        "reason": "印刷時墨的分裂／回拉與更早濕塗層水路造成膠乳分布的形成機制不同；後者須保留作者推論層級。"
+      },
+      {
+        "a": "X5020",
+        "b": "X5021",
+        "reason": "殘留潤版水阻墨與製紙階段底塗影響上塗形成不同；不以三種斑駁名稱當答案。"
+      },
+      {
+        "a": "X5023",
+        "b": "H3084",
+        "reason": "承載顏料的介質粉化不同於發光團漂白或非輻射消能。"
+      },
+      {
+        "a": "X5023",
+        "b": "X5015",
+        "reason": "介質粉化而顏料可未直接損傷，與磨掉表層染色區不同；若稿把兩者都簡化成顏料被磨掉應重合審。"
+      }
+    ]
+  },
+  "known_pair_readback": [
+    {
+      "index": 1,
+      "ids": [
+        "X5001",
+        "P008"
+      ],
+      "result": "同意distinct"
+    },
+    {
+      "index": 2,
+      "ids": [
+        "X5002",
+        "X5004"
+      ],
+      "result": "同意distinct"
+    },
+    {
+      "index": 3,
+      "ids": [
+        "X5002",
+        "D2197"
+      ],
+      "result": "同意distinct"
+    },
+    {
+      "index": 4,
+      "ids": [
+        "X5003",
+        "H3090",
+        "P009"
+      ],
+      "result": "判distinct，詳上"
+    },
+    {
+      "index": 5,
+      "ids": [
+        "X5005",
+        "H3060",
+        "LEG-T07"
+      ],
+      "result": "同意distinct，預印本條件保留"
+    },
+    {
+      "index": 6,
+      "ids": [
+        "X5007",
+        "X5051"
+      ],
+      "result": "同意抗氈縮不另收"
+    },
+    {
+      "index": 7,
+      "ids": [
+        "X5009",
+        "H3026"
+      ],
+      "result": "建議merge"
+    },
+    {
+      "index": 8,
+      "ids": [
+        "X5010",
+        "X5011"
+      ],
+      "result": "同意distinct"
+    },
+    {
+      "index": 9,
+      "ids": [
+        "X5011",
+        "H3030"
+      ],
+      "result": "同意distinct"
+    },
+    {
+      "index": 10,
+      "ids": [
+        "X5012",
+        "X5050"
+      ],
+      "result": "同意鐵媒染例不另收"
+    },
+    {
+      "index": 11,
+      "ids": [
+        "X5013",
+        "X5043"
+      ],
+      "result": "同意本輪競爭水解案例不另收，來源正文未獨立重讀成功"
+    },
+    {
+      "index": 12,
+      "ids": [
+        "X5014",
+        "X5015"
+      ],
+      "result": "同意目標distinct，染料來源本次未重讀成功"
+    },
+    {
+      "index": 13,
+      "ids": [
+        "X5017",
+        "E2032",
+        "P280"
+      ],
+      "result": "同意distinct"
+    },
+    {
+      "index": 14,
+      "ids": [
+        "X5017",
+        "X5018"
+      ],
+      "result": "同意distinct"
+    },
+    {
+      "index": 15,
+      "ids": [
+        "X5019",
+        "X5020",
+        "X5021"
+      ],
+      "result": "判三個有別，保留X5021推論標示"
+    },
+    {
+      "index": 16,
+      "ids": [
+        "X5022",
+        "H3030",
+        "D2198"
+      ],
+      "result": "不作換材料合併，但來源不足，建議hold"
+    },
+    {
+      "index": 17,
+      "ids": [
+        "X5023",
+        "H3084"
+      ],
+      "result": "判distinct"
+    }
+  ],
+  "themes": [
+    {
+      "id": "W5X-T01",
+      "body_seconds": 350,
+      "chapter_seconds": [
+        80,
+        100,
+        80,
+        90
+      ],
+      "result": "PASS_EDITING_BUDGET_ONLY",
+      "reason": "從短纖傳力到線圈展開、無載捲曲及失去拓撲約束，結構層級和邊界條件持續改變。不同研究／材料已明示，不是同一樣品連做四實驗。",
+      "limits": "捲曲與脫圈需原創且經獨立核對的線圈圖；若僅有結果照片，按已寫刪段降270／260／180秒，不加布種湊片長。"
+    },
+    {
+      "id": "W5X-T02",
+      "body_seconds": 180,
+      "chapter_seconds": [
+        90,
+        90
+      ],
+      "result": "PASS_EDITING_BUDGET_ONLY",
+      "reason": "化學顯色→指定可重寫材料的獨立結晶回程，有真正新增狀態；180秒足夠，不需加長。",
+      "limits": "不能把第一章收據與第二章特製卡片混成同一材料，也不能把示意當加熱教學。"
+    },
+    {
+      "id": "W5X-T03",
+      "body_seconds": 240,
+      "chapter_seconds": [
+        95,
+        65,
+        80
+      ],
+      "result": "PASS_EDITING_BUDGET_ONLY",
+      "reason": "先前色回拉、再以單色反例辨認水阻墨，最後回到塗層形成的上游條件；240秒未見硬撐。",
+      "limits": "最後一章明標另項研究與作者解釋；無法畫清水路／證據層級則刪80秒降160，另選版本，不保原總長。"
+    }
+  ],
+  "checks_performed": [
+    "鎖定三檔SHA256讀回吻合且UTF8 LF",
+    "JSON可讀、逐題引用與來源登記讀回",
+    "章節與beats秒數相加、target_minutes誤差容許1e-9",
+    "全部beat<=45秒；開場回扣已計入",
+    "每素材同片累計不超原editorial上限",
+    "X5009／X5022不在三題組，不需為本次合併／暫緩增加新章"
+  ],
+  "not_performed": [
+    "未跑repository tests",
+    "未核全部19來源全文／所有外部事實",
+    "未逐圖渲染量測或播放補充影片",
+    "無完整逐字稿盲讀／口播試讀／成片驗收",
+    "無正式製作、付費或發布核准"
+  ],
+  "conclusion": "建議1組合併、1題暫緩；其餘21筆可作題級研究素材。三題組350/180/240秒可保留編輯預算與現有刪段條件。中央是否已套用須另讀回；本收據不寫入或自動套用中央決策。"
+}

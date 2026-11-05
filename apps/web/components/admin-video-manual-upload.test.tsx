@@ -141,6 +141,35 @@ describe("manual YouTube upload", () => {
     expect(zip.searchParams.getAll("file").slice(-3)).toEqual([`${"1a".repeat(32)}:dub.en.m4a`, `${"2b".repeat(32)}:dub.ja.unchecked.wav`, `${hash(5)}:metadata.json`]);
   });
 
+  it("checks the zip before the download and names each missing file and why instead of a failed download", async () => {
+    const answer = { ok: false, bytes: 0, drive_folder: "ai-news/test-video", missing: [{ name: "final.mp4", reason: "gone" }, { name: "en.srt", reason: "not_shown" }] };
+    const assign = vi.fn();
+    vi.stubGlobal("location", { ...window.location, assign });
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url === "/api/travel/admin/videos/test-video") return Promise.resolve(Response.json(project));
+      if (url === `/api/admin-video-files/test-video/${hash(5)}`) return Promise.resolve(Response.json(metadata));
+      if (url.startsWith("/api/admin-video-package/test-video?") && url.endsWith("&check=1")) return Promise.resolve(Response.json(answer));
+      throw new Error(`Unexpected request: ${url}`);
+    }));
+    render(<YoutubeManualUpload slug={project.slug} />);
+    await open();
+    const link = screen.getByRole("link", { name: "下載整包 zip（11 個檔案）" });
+    fireEvent.click(link);
+    const alert = await screen.findByRole("alert");
+    expect(within(alert).getByText("壓縮檔做不出來：有 2 個檔案拿不到。")).toBeTruthy();
+    expect(within(alert).getByText("final.mp4").parentElement?.textContent).toMatch(/已經不在審核區/);
+    expect(within(alert).getByText("en.srt").parentElement?.textContent).toMatch(/重新整理頁面/);
+    expect(within(alert).getByText(/ai-news\/test-video/)).toBeTruthy();
+    expect(assign).not.toHaveBeenCalled();
+
+    answer.ok = true;
+    answer.missing = [];
+    fireEvent.click(link);
+    await waitFor(() => expect(assign).toHaveBeenCalledWith(link.getAttribute("href")));
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
   it("has no dub step when the package has no dub track", async () => {
     stub();
     render(<YoutubeManualUpload slug={project.slug} />);

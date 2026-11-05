@@ -15,11 +15,19 @@ replacement, so the graph itself stays upstream's:
                     identity and beauty shots.
   draft             upstream unchanged (4-step Ref2VA, drbaph v4 FL2VA, euler + beta).
 
-Every replacement must match exactly once, or already be applied; anything else means the
-upstream notebook changed and the script stops with exit 2 instead of guessing. bootstrap.sh
-restores the pristine notebook (git checkout) before calling this, so re-running is safe.
+Two more replacements apply for every profile: the canvas cap. Upstream asserts
+WIDTH * HEIGHT <= 1344 * 768 (the official canvas), but a 2026-10-28 run on an A100 proved
+ComfyUI takes 1920x1088 in both modes (sharper, faces kept), so the notebook's assert and the
+runner's MAX_PIXELS become 1920 * 1088 (CANVAS below), the runner's error text names it, and
+the runner passes each job's area to the notebook as H3_FIRST_FRAME_MEGAPIXELS so a
+first_frame job scales its frame to its own canvas instead of the hard-coded 0.98 MP.
 
-  patch_notebook.py [--notebook PATH] [--profile smooth|hero|draft] [--dry-run]
+Every replacement must match exactly once, or already be applied; anything else means the
+upstream notebook or runner changed and the script stops with exit 2 instead of guessing.
+bootstrap.sh restores the pristine files (git checkout) before calling this, so re-running is
+safe, and a second run on patched files reports "already applied".
+
+  patch_notebook.py [--notebook PATH] [--runner PATH] [--profile smooth|hero|draft] [--dry-run]
   environment: H3_PROFILE, H3_REF_LORA_REPO, H3_REF_LORA_FILE, H3_FF_LORA_REPO, H3_FF_LORA_FILE,
                H3_REF_STEPS, H3_FF_STEPS, H3_SAMPLER, H3_SCHEDULER, H3_LORA_STRENGTH,
                MINIMAX_H3_COLAB_HOME (default ~/.cache/minimax-h3-colab-skill)
@@ -38,7 +46,12 @@ def fail(message: str, code: int = 2) -> None:
     print(f"[patch_notebook] {message}", file=sys.stderr)
     sys.exit(code)
 
+# Width x height both modes accept on an A100 (2026-10-28); multiples of 32 as H3 wants.
+CANVAS = (1920, 1088)
+
 UPSTREAM = {
+    "canvas": 'assert WIDTH * HEIGHT <= 1344 * 768, "輸出尺寸總面積不可超過官方 1344×768 畫布上限。"',
+    "first_frame_mp": "FIRST_FRAME_MEGAPIXELS = 0.98",
     "steps": 'STEPS = 4 if INFERENCE_MODE == "reference" else 8',
     "ref_repo": "LORA_REPO = BASE_REPO",
     "ref_file": 'LORA_REMOTE = "loras/minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors"',
@@ -136,7 +149,28 @@ def replacements(chosen: dict) -> list[tuple[str, str, str]]:
         ("strength", UPSTREAM["strength"], f'LORA_STRENGTH = {float(chosen["strength"]):g}'),
         ("sampler", UPSTREAM["sampler"], f'SAMPLER_NAME = "{chosen["sampler"]}"'),
         ("scheduler", UPSTREAM["scheduler"], f'SCHEDULER_NAME = "{chosen["scheduler"]}"'),
+        # profile-independent: the canvas cap and the first-frame scale that follows the job's canvas
+        ("canvas", UPSTREAM["canvas"], f'assert WIDTH * HEIGHT <= {CANVAS[0]} * {CANVAS[1]}, "輸出尺寸總面積不可超過 {CANVAS[0]}×{CANVAS[1]}（實測 A100 可跑；官方建議畫布 1344×768）。"'),
+        ("first_frame_mp", UPSTREAM["first_frame_mp"], 'FIRST_FRAME_MEGAPIXELS = float(os.environ.get("H3_FIRST_FRAME_MEGAPIXELS", "0.98"))'),
     ]
+
+
+# The upstream runner (scripts/runner.py) checks the same cap before uploading anything and
+# does not tell the notebook how large the first frame should be; exact lines, same rule.
+RUNNER_TIMEOUT_LINE = '                "H3_JOB_TIMEOUT_SECONDS=" + str(min(exec_timeout, 7200)),\n'
+RUNNER_REPLACEMENTS: list[tuple[str, str, str]] = [
+    ("max_pixels", "MAX_PIXELS = DEFAULT_WIDTH * DEFAULT_HEIGHT", f"MAX_PIXELS = {CANVAS[0]} * {CANVAS[1]}"),
+    (
+        "max_pixels_message",
+        'f"{label} dimensions may not exceed {MAX_PIXELS:,} pixels (1344×768)."',
+        f'f"{{label}} dimensions may not exceed {{MAX_PIXELS:,}} pixels ({CANVAS[0]}×{CANVAS[1]})."',
+    ),
+    (
+        "first_frame_env",
+        RUNNER_TIMEOUT_LINE,
+        RUNNER_TIMEOUT_LINE + '                "H3_FIRST_FRAME_MEGAPIXELS=" + str(round(job["width"] * job["height"] / 1e6, 3)),\n',
+    ),
+]
 
 
 def cell_text(cell: dict) -> str:
@@ -174,9 +208,32 @@ def apply(notebook: dict, chosen: dict) -> tuple[list[str], list[str]]:
     return applied, already
 
 
+def apply_runner(text: str) -> tuple[str, list[str], list[str]]:
+    """Patch the runner's source; return (text, applied keys, already-applied keys). Exit 2 on drift.
+
+    The env replacement keeps upstream's line and adds one after it, so the replaced text is
+    checked for before the upstream text: finding it means the edit is already there.
+    """
+    applied, already = [], []
+    for key, old, new in RUNNER_REPLACEMENTS:
+        if text.count(new) == 1:
+            already.append(key)
+        elif text.count(old) == 1:
+            text = text.replace(old, new, 1)
+            applied.append(key)
+        else:
+            fail(
+                f"expected exactly one `{old.strip()}` in runner.py, found {text.count(old)}: the upstream "
+                "runner changed. Re-pin MINIMAX_H3_UPSTREAM_COMMIT and update RUNNER_REPLACEMENTS in this script, "
+                "or set H3_NOTEBOOK_PATCH=off to run upstream unchanged."
+            )
+    return text, applied, already
+
+
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--notebook", default=None, help="path of the cloned upstream notebook")
+    parser.add_argument("--runner", default=None, help="path of the cloned upstream runner.py")
     parser.add_argument("--profile", default=None, help="smooth (default), hero or draft; H3_PROFILE otherwise")
     parser.add_argument("--dry-run", action="store_true", help="print the diff, write nothing")
     args = parser.parse_args(argv)
@@ -186,6 +243,9 @@ def main(argv: list[str]) -> int:
     path = Path(args.notebook) if args.notebook else home / "assets" / "MiniMax_H3_Turbo_Colab.ipynb"
     if not path.is_file():
         fail(f"notebook not found at {path}; run bootstrap.sh install first")
+    runner_path = Path(args.runner) if args.runner else home / "scripts" / "runner.py"
+    if not runner_path.is_file():
+        fail(f"runner not found at {runner_path}; run bootstrap.sh install first")
     profile = (args.profile or env.get("H3_PROFILE") or "smooth").strip().lower()
     chosen = settings(profile, env)
 
@@ -193,19 +253,32 @@ def main(argv: list[str]) -> int:
     notebook = json.loads(before)
     applied, already = apply(notebook, chosen)
     after = json.dumps(notebook, ensure_ascii=False, indent=1) + "\n"
+    runner_before = runner_path.read_text(encoding="utf-8")
+    runner_after, runner_applied, runner_already = apply_runner(runner_before)
 
     if args.dry_run:
         sys.stdout.writelines(difflib.unified_diff(before.splitlines(keepends=True), after.splitlines(keepends=True), str(path), f"{path} ({profile})"))
-    elif applied:
-        path.write_text(after, encoding="utf-8")
+        sys.stdout.writelines(difflib.unified_diff(runner_before.splitlines(keepends=True), runner_after.splitlines(keepends=True), str(runner_path), f"{runner_path} (canvas {CANVAS[0]}x{CANVAS[1]})"))
+    else:
+        if applied:
+            path.write_text(after, encoding="utf-8")
+        if runner_applied:
+            runner_path.write_text(runner_after, encoding="utf-8")
     summary = (
         f"profile={profile} ref=({chosen['ref_repo'] or 'Comfy-Org/MiniMax-H3'} {Path(chosen['ref_file']).name}, {int(chosen['ref_steps'])} steps) "
         f"ff=({chosen['ff_repo']} {Path(chosen['ff_file']).name}, {int(chosen['ff_steps'])} steps) "
-        f"lora_strength={float(chosen['strength']):g} sampler={chosen['sampler']}/{chosen['scheduler']}"
+        f"lora_strength={float(chosen['strength']):g} sampler={chosen['sampler']}/{chosen['scheduler']} "
+        f"canvas={CANVAS[0]}x{CANVAS[1]}"
     )
-    state = "dry run" if args.dry_run else ("patched " + ", ".join(applied) if applied else "already applied")
-    if already and applied:
-        state += f" (already: {', '.join(already)})"
+    if args.dry_run:
+        state = "dry run"
+    elif not applied and not runner_applied:
+        state = "already applied"
+    else:
+        state = "patched " + ", ".join(applied) if applied else "notebook already applied"
+        if already and applied:
+            state += f" (already: {', '.join(already)})"
+        state += "; runner " + ("patched " + ", ".join(runner_applied) if runner_applied else "already applied")
     print(f"[patch_notebook] {state}: {summary}")
     return 0
 

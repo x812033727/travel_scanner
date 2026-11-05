@@ -1,0 +1,1190 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "wave51-life-author",
+  "reviewer": "wave51-life-reviewer",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "role_and_scope": "非作者逐題/指定原正文/原圖/去重與紙上片案審閱，不是全文稿、實驗重現或製作核准；不改batch、themes、pool、selection、dedup-decisions或任何.md。",
+  "reviewed_candidate_ids": [
+    "L51-001",
+    "L51-002",
+    "L51-003",
+    "L51-004",
+    "L51-005"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave51-life.json",
+      "sha256": "4a214c6838857de285c0374e26e956274b356a5cac8b8f24f8d08e8c44c1a381"
+    },
+    {
+      "file": "reviews/wave51-life-author.json",
+      "sha256": "d100db1ee6e21df798245f3e008597a7a9196ec67df4d8c6d403ad5976af3ac1"
+    },
+    {
+      "file": "reviews/wave51-life-themes.json",
+      "sha256": "bb86df3ab1375ab1c8185370b55e93b8b3df15cb4807c04d309f83a362782846"
+    },
+    {
+      "file": ".cache/wave51-life-neighbours.json",
+      "sha256": "4513c5c7422345c17b4eda891135d844a2ec35e0cb96f09494e57ca351f8ca77"
+    },
+    {
+      "file": ".cache/wave51-semantic-neighbours.json",
+      "sha256": "86eb24b1930fc8dbf9463eac00707103153594fb4fa8d7259259d97d96610c12"
+    },
+    {
+      "file": ".cache/draft.json",
+      "sha256": "bf1395dd2891078ebb429c60a42cb4687091895ca49a545688e17394fc1aef46"
+    },
+    {
+      "file": "pool.json",
+      "sha256": "f99e29d72c708a1c436f9cec3d9e504571b511f382abe15f36dd13737c8095fe"
+    }
+  ],
+  "input_checks": {
+    "author_written_files_sha_match": true,
+    "batch_sha256_matches_author_receipt": true,
+    "themes_sha256_matches_author_receipt": true,
+    "pool_sha256_matches_baseline": true,
+    "neighbours_draft_sha256_matches": "開審時.cache/draft.json為bdc5fc6b…與neighbours一致；審閱期間（06:42 UTC）draft.json被其他程序重建為bf1395dd…，top-5未依新draft重算，需root以最終draft重跑共同輸入核對。",
+    "source_cache_hashes_verified": 20,
+    "author_near_pair_snapshots_match_pool_raw": 13
+  },
+  "source_fetch_limits": "正文均用先核SHA之作者快取。本reviewer僅對L51-S005做fresh重試（指定UA）：Europe PMC查無PMC全文；JEB PDF 403；bioRxiv全文頁200但F4–F6原圖429，未取得圖。",
+  "source_reads": [
+    {
+      "source_id": "L51-S001",
+      "doi": "10.1016/j.cub.2024.06.021",
+      "cache": {
+        "file": ".cache/wave51-life-ant.pdf",
+        "sha256": "2e875efa656c36fb234af2a283b49725560402b97a042ba7e0f6384751193364",
+        "text_file": ".cache/wave51-life-ant.txt",
+        "text_sha256": "d79e9039a8914d7af5e2f5a5f07d561475bf234d7c92e8728a29c764de410690",
+        "sha256_verified": true
+      },
+      "reading_scope": "PDF文字全文：Summary、Results and Discussion（截肢率、舔舐時間、四處理存活、qPCR、micro-CT、時間點截肢段落）、Figs1–4圖說；目讀p3、p4原頁。未讀補充Figs S1–S4、Tables、影片。",
+      "finding": "主張成立：股節傷截肢76%（n=17無菌）/88%（21/24感染），脛節0；一小時後人工截肢使股節感染組存活與無菌組無顯著差，脛節截肢組與感染孤立組無差。作者稱「只有接菌當下截才有效」來自補充Fig S4，主文只有敘述。重要遺漏：Fig3B黃線顯示接菌後送回巢內的脛節傷蟻存活約八成、與無菌組同字母；菌量居中。即同伴對脛節傷改用的長時間舔舐本身有效，這是「為什麼不咬」答案的另一半，batch answer_target未寫。micro-CT肌肉截面65,632對7,554，約8.7倍（作者寫almost 10 times）；血淋巴流速未量。"
+    },
+    {
+      "source_id": "L51-S002",
+      "doi": "10.1038/nature21049",
+      "cache": {
+        "file": ".cache/wave51-life-phage.xml",
+        "sha256": "6ad7876e854d88c3ae46564f4d67365261eff69043aad7bf6e963c5daa56223e",
+        "text_file": ".cache/wave51-life-phage.txt",
+        "text_sha256": "15d2dcdf4d93b9e0778815ad99b17f23273d7649bbfe9ee591848c9dc156126c",
+        "sha256_verified": true
+      },
+      "reading_scope": "作者稿Results全節（Conditioned media、Phage-produced peptide、Phage-specific code、Mechanism）與Discussion前兩段；目讀Fig2、Fig3。Fig1、4、5僅內文。",
+      "finding": "主張與數字皆正確：proteinase K與oppD缺失使條件培養液效果消失；SAIRGA劑量依存、500 nM飽和；60分鐘溶原48%±7.9%對18%±3.3%；低MOI下第3輪起可測、第4輪噬菌體:細菌約1:1時顯著累積；AimR二聚體結合DNA、加SAIRGA成單體，GMPRGA不結合；aimX加胜肽降逾20倍。作者明說即使飽和也只約50%溶原、無胜肽也非全裂解，scope已寫。"
+    },
+    {
+      "source_id": "L51-S003",
+      "doi": "10.1016/j.cub.2022.11.010",
+      "cache": {
+        "file": ".cache/wave51-life-stentor.xml",
+        "sha256": "13ccc650fbd1f0ad4c4842c0ad9dbabc8e44207f49930686874d56e6955816fe",
+        "text_file": ".cache/wave51-life-stentor.txt",
+        "text_sha256": "59f7eb9da76bf1def7f9ccb8e21bd00f4d674d020b05e0079ece720efb91d427",
+        "sha256_verified": true
+      },
+      "reading_scope": "作者稿Results（單細胞觀察、步階檢定、兩狀態模型、參數估計、Forgetting、高力、高頻、不預期刺激）與Discussion力量段；目讀Fig1、Fig2。Fig3未由本reviewer目讀，Fig4僅內文。",
+      "finding": "主張成立但需小修：高力22顆中18顆判為單步；作者明言步階檢定不能嚴格排除漸進模型，改以停留時間幾何分布支持單步（χ2 p=0.93 vs 漸進p=0.00014）。低力44顆中有些細胞全程低反應、看不到步階，答案「多數」可，但scope宜註明。停刺激15分鐘90%恢復，與模型p21相差兩個數量級，作者推測watchdog計時器。弱力習慣化較快是因p12較大；原文並未用此推論「不是疲勞」，T03拍2的「所以不像單純累壞」是作者自加推論。"
+    },
+    {
+      "source_id": "L51-S004",
+      "doi": "10.1093/iob/obaf012",
+      "cache": {
+        "file": ".cache/wave51-life-frogamp.xml",
+        "sha256": "1c429a5c07f298bd3b6429eaa89beb793ff826a6761c8cc0b936498930dea4d4",
+        "text_file": ".cache/wave51-life-frogamp.txt",
+        "text_sha256": "4dc8923c92baab34c3b349716de14e7f9678cf341e9118d8c225359a5f132a83",
+        "sha256_verified": true
+      },
+      "reading_scope": "Introduction末、Methods（野外錄振、合成回放、托盤年齡系列、錄音回放、包絡）、Results全節、Discussion振幅/年齡/雨蛇差異段；目讀Fig1、Fig2、Fig3。Fig4僅文字。",
+      "finding": "主張成立：大雨在峰值、RMS、連續RMS三種量測皆顯著高於掠食者攻擊（Fig1大雨峰值中位數最高）；等振幅回放下蛇的孵化隨振幅上升較陡（交互作用P<0.001），雨錄音最高約16%；fade-in包絡孵化較少。年齡門檻：4日齡8 m/s²約9%、5日齡0.09 m/s²約11%，作者稱約80倍。Discussion本身已把4→5日的門檻下降歸於感覺能力增加並引Jung 2019（即L51-S005），故L51-005的年齡連結可由本篇承載。"
+    },
+    {
+      "source_id": "L51-S005",
+      "doi": "10.1101/634899",
+      "cache": {
+        "file": ".cache/wave51-life-frogvor.xml",
+        "sha256": "8d5f67897dcaeb83d8a61ccd8ed4fd3e78c2505f0436c2da21f18c4a48c2366f",
+        "text_file": ".cache/wave51-life-frogvor.txt",
+        "text_sha256": "e3f1136d4f120c7705fef3bceb9f7361b6b0c002cc611a47941c6ce1684d26b5",
+        "sha256_verified": true
+      },
+      "reading_scope": "預印本Abstract、Introduction、Results（整塊回放Fig5段、搖卵潛伏期Fig8段）、Discussion「Ontogenetic congruence」「Mechanosensory-cued hatching before vestibular function」。本reviewer另以指定UA重試：bioRxiv全文HTML 200，但F4–F6大圖皆回429；JEB出版社PDF（Unpaywall列免費）回403；Europe PMC無PMC全文。原圖仍未目讀。",
+      "finding": "作者自述為「發育同步」(ontogenetic congruence)、consistent with，非因果。整塊回放：169隻皆能缺氧孵化、僅63隻對回放孵化；VOR<21.38°者無孵化，23窩窩平均VOR與孵化比例正相關（P=0.010），但同窩手足間孵化者VOR較高不顯著（P=0.079）。搖卵：潛伏期隨VOR下降（P<0.001），但模型加入發育期後VOR主效應消失（P=0.25），僅第6期顯著；61隻搖卵孵化者中7隻（11%）無可測VOR。batch「逐顆搖卵時反射越大孵得越快」未揭露此發育期混淆，證據不足以自立核心。"
+    }
+  ],
+  "visual_readings": [
+    {
+      "source_id": "L51-S001",
+      "file": ".cache/wave51-life-ant-p-03.png",
+      "sha256": "c50ae0b4024172097a769ebbb8663e9ad8e67d3bfc72ee4d1a193a50c826b625",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "Fig1D柱狀：感染股節24、無菌股節17有高截肢率，脛節24/9皆零；Fig2脛節舔舐6小時內持平、股節快速下降，與文字一致。"
+    },
+    {
+      "source_id": "L51-S001",
+      "file": ".cache/wave51-life-ant-p-04.png",
+      "sha256": "bb036a05f0c7a9d4261989132884ca6bf8beac509e2424ef4e69333f12bad7bc",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "Fig3A股節：無菌、截肢、巢內三線同字母A在高處，感染孤立約40%。Fig3B脛節：無菌與巢內（約80%）為A，感染孤立與1小時截肢皆約15%為B——巢內照護對脛節有效，batch未寫。"
+    },
+    {
+      "source_id": "L51-S002",
+      "file": ".cache/wave51-life-phage-f2.jpg",
+      "sha256": "ee82e53c6eacd03bf5476ec23a230420526e3884236deee055eeee4c769c05bd",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "2B劑量曲線15–1000 nM逐級減少裂解、phrC無效；2C 60分鐘約48%對18%；2D SAIRGA結合、GMPRGA不結合。"
+    },
+    {
+      "source_id": "L51-S002",
+      "file": ".cache/wave51-life-phage-f3.jpg",
+      "sha256": "e3612e2f30834e8128156ba99330bc36b46bd95a3d618674b9941433d84beb71",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "3B胜肽約120分鐘後上升、150–180分鐘陡升，與噬菌體PFU同步；batch「第三到四輪」描述正確。"
+    },
+    {
+      "source_id": "L51-S003",
+      "file": ".cache/wave51-life-stentor-fig1.jpg",
+      "sha256": "ced0ad5b420a602c6ac0e84e3a41cf3db258555319669a1d4c90b43d766be23d",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "1G/1H群體收縮比例由約0.85下降，低力降更快；1C縮與不縮示意可原創重畫。"
+    },
+    {
+      "source_id": "L51-S003",
+      "file": ".cache/wave51-life-stentor-fig2.jpg",
+      "sha256": "f2c5e85ba72ca27aaf2c4dab0a45c143692a6d145ab7c16d8425eaf72f4f5674",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "2A兩條單細胞黑格序列各一階下降（一條降到約0.15、另一條降到約0.45，並非都「很少縮」）；2D實測停留時間符合幾何分布、不符漸進模擬。"
+    },
+    {
+      "source_id": "L51-S004",
+      "file": ".cache/wave51-life-frogamp-f1.jpg",
+      "sha256": "312130464b2385cecbdee83c4caa29caffc96fae61aa858ab676b1733098c6e2",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "大雨峰值箱形最高（中位數約30、上緣約200 m/s²），RMS與連續RMS亦居高；掠食者與無害來源大量重疊。"
+    },
+    {
+      "source_id": "L51-S004",
+      "file": ".cache/wave51-life-frogamp-f2.jpg",
+      "sha256": "3a173a545dbd8380f33592c4997b545aa3f0f9a90613997e0a69391e8183ffe8",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "2B 4日齡曲線位於2–15 m/s²，5日齡從0.05起即有反應，左右錯開近兩個對數單位；支持「約80倍」。"
+    },
+    {
+      "source_id": "L51-S004",
+      "file": ".cache/wave51-life-frogamp-f3.jpg",
+      "sha256": "0c38283a5524ce9cbd9ca77128102a680fe2b8bee55a717723a94ce43a35cb85",
+      "sha256_verified": true,
+      "method": "本reviewer以Read工具獨立目讀作者留存原圖/原PDF頁；非新下載，非重製授權",
+      "finding": "Snake1最高約0.67後回落、Snake comp約0.3，三條雨線皆≤約0.16，即使雨振幅推到150 m/s²峰值亦然。"
+    }
+  ],
+  "visual_not_read": [
+    "L51-S003 Fig3（作者已讀；本reviewer未目讀，只依內文）",
+    "L51-S004 Fig4包絡圖（僅文字）",
+    "L51-S005全部原圖（429/403）",
+    "L51-S001補充Fig S4與影片"
+  ],
+  "candidate_review": [
+    {
+      "id": "L51-001",
+      "decision": "retain",
+      "reason": "有行為差異（股節截/脛節舔）、人工截肢四處理存活與菌量、micro-CT三層對照，答案不是「螞蟻會截肢」的獵奇，而是處置選擇與感染擴散時間相符；與既有傷口/隔離題皆不同。需補「巢內舔舐使脛節傷存活接近無菌組」這半個答案（見corrections）。",
+      "scope_checked": "實驗室C. floridanus、綠膿桿菌、剪刀傷；截肢率對無菌/感染無差（P=0.44），不得說螞蟻偵測感染；血淋巴流速未量；時間點截肢細節在未讀補充Fig S4，只能說「作者報告」。",
+      "source_ids": [
+        "L51-S001"
+      ],
+      "visual_checked": true,
+      "editorial_role": "theme_seed",
+      "editorial_cap_seconds": 75
+    },
+    {
+      "id": "L51-002",
+      "decision": "retain",
+      "reason": "條件培養液→蛋白酶/oppD→合成胜肽劑量→受體寡聚態→aimX的實驗鏈完整，數字與原文一致；與L070、V3017差在訊號屬於病毒且改變病毒自身生命週期。題材知名度較高但仍是池內首見，有足夠新資訊撐約70秒。",
+      "scope_checked": "枯草桿菌/phi3T實驗室培養；機率提高非開關；aimX作用未明且只有17/112同類帶此ORF；「後代問祖先」與推及真核病毒屬Discussion推想。",
+      "source_ids": [
+        "L51-S002"
+      ],
+      "visual_checked": true,
+      "editorial_role": "theme_seed",
+      "editorial_cap_seconds": 80
+    },
+    {
+      "id": "L51-003",
+      "decision": "retain",
+      "reason": "答案「平滑平均＝不同時間的單步切換」有反直覺翻轉，單細胞黑格序列可直接重畫；與B2012、黏菌兩核控制不同。內容偏抽象，片長宜收在一分鐘內，不展開模型參數。",
+      "scope_checked": "Stentor coeruleus收縮；高力22顆中18顆單步，低力部分細胞看不到步階；步階檢定不能嚴格排除漸進，靠停留時間分布判定；計時機制為推測；切換後的低反應機率因細胞而異（Fig2A約0.15–0.45），不宜說成「幾乎不縮」。",
+      "source_ids": [
+        "L51-S003"
+      ],
+      "visual_checked": true,
+      "editorial_role": "theme_seed",
+      "editorial_cap_seconds": 65
+    },
+    {
+      "id": "L51-004",
+      "decision": "retain",
+      "reason": "野外錄振推翻「越猛越危險」直覺，等振幅回放再顯示蛇與雨斜率不同，畫面強；與習慣化、訊號偵測、山雀蛇模板皆不同。可吸收L51-005為一句支持點，並用本篇Fig2B年齡門檻承載第二章。",
+      "scope_checked": "巴拿馬A. callidryas、2004–2017多套裝置；蛇錄音僅L. ahaetulla兩組、雨三組；時間型態與頻率證據來自先前研究；行為門檻不等於感覺極限。",
+      "source_ids": [
+        "L51-S004"
+      ],
+      "visual_checked": true,
+      "editorial_role": "theme_seed",
+      "editorial_cap_seconds": 70
+    },
+    {
+      "id": "L51-005",
+      "decision": "merge_into L51-004",
+      "reason": "問題與L51-004不同，不是語意重複；但不足以自立核心：(1)作者自稱發育同步、consistent with，未操弄內耳；(2)個體層級證據弱——同窩手足比較不顯著（P=0.079），搖卵潛伏期與VOR關係在納入發育期後主效應消失；(3)7/61搖卵孵化者無VOR；(4)預印本原圖作者與本reviewer重試皆429/403未能目讀，正式版未核；(5)本題最有畫面的「約80倍」其實出自L51-S004。L51-S004 Discussion已自行把年齡門檻下降歸於感覺能力（引Jung 2019），故以「內耳功能較晚上線可能是原因之一（相關證據）」約10秒併入L51-004的年齡章節即可，不計新核。",
+      "scope_checked": "已讀預印本Results Fig5、Fig8段與Discussion；確認缺氧可孵化的對照與21°門檻屬實，但「反射越大孵得越快」需附發育期混淆。",
+      "source_ids": [
+        "L51-S005",
+        "L51-S004"
+      ],
+      "visual_checked": false,
+      "editorial_role": "supporting_point_of_L51-004",
+      "editorial_cap_seconds": 12
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "L51-001",
+      "b": "A20002",
+      "cosine": 0.653658,
+      "decision": "distinct",
+      "reason": "A20002是竹節蟲兩種腳墊對拉力與負重的接觸分工，屬附著力學；本題是同伴依傷口位置選擇截肢或舔舐，並以人工截肢時間點檢驗病菌擴散，只共用「昆蟲腳」的詞面。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-001",
+      "b": "B2138",
+      "cosine": 0.62931,
+      "decision": "distinct",
+      "reason": "B2138講附肢同源與分工的演化；本題不涉附肢起源，答案是股節/脛節傷的感染擴散速度差使截肢只在股節有利。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-001",
+      "b": "A12002",
+      "cosine": 0.626942,
+      "decision": "distinct",
+      "reason": "A12002是群體搬運的機械耦合與碰牆後持續性；本題是對受傷個體的照護決策與存活、菌量對照，同為螞蟻但控制與答案無重疊。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-001",
+      "b": "A27002",
+      "cosine": 0.619262,
+      "decision": "distinct",
+      "reason": "A27002是傷口朝向決定渦蟲再生頭或尾的分子極性；本題不涉再生，問截肢能否趕在血淋巴把病菌帶走之前，答案是傷位與擴散時間。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-001",
+      "b": "A23003",
+      "cosine": 0.618627,
+      "decision": "distinct",
+      "reason": "A23003是若蟲後腿齒列機械同步起跳；本題是傷後感染與同伴截肢，除昆蟲後腿外無共用機制。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-002",
+      "b": "U8016",
+      "cosine": 0.738814,
+      "decision": "distinct",
+      "reason": "U8016是第四型菌毛伸縮造成的細菌表面爬行；本題是噬菌體編碼胜肽累積後經AimR改變裂解/溶原比例，主體與機制都不同。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-002",
+      "b": "L070",
+      "cosine": 0.715116,
+      "decision": "distinct",
+      "reason": "L070只確立「細菌會被噬菌體感染」這個前提；本題回答感染後如何依前代留下的胜肽濃度選擇潛伏，有濃度梯度、oppD缺失與異種胜肽對照，非同題。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-002",
+      "b": "U8022",
+      "cosine": 0.699823,
+      "decision": "distinct",
+      "reason": "U8022是細菌內孢子的抗損傷構造；本題是病毒的生命週期選擇，枯草桿菌只是共同宿主。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-002",
+      "b": "V3041",
+      "cosine": 0.68745,
+      "decision": "distinct",
+      "reason": "V3041是產物結合阻遏蛋白關掉色胺酸操縱組；兩者都有「配體改變DNA結合」，但本題的配體是病毒前代分泌的胜肽、受體在病毒基因體上、結果是溶原比例，答案不能互代。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-002",
+      "b": "U8012",
+      "cosine": 0.682186,
+      "decision": "distinct",
+      "reason": "U8012是菌絲橋與液膜連通限制細菌擴散；與噬菌體胜肽訊號無共同控制。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-003",
+      "b": "H3032",
+      "cosine": 0.682776,
+      "decision": "distinct",
+      "reason": "H3032是動力學/熱力學產物控制；只共用「隨時間比例改變」的抽象形狀，本題是單細胞反應機率的一步切換與群體平均。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-003",
+      "b": "L43-001",
+      "cosine": 0.681863,
+      "decision": "distinct",
+      "reason": "L43-001是螢火蟲個體等待時間分散、群體觸發使間隔集中；兩題都談個體隨機性與群體分布，但L43-001是群體互動使分布變窄，本題是無互動的獨立細胞各自隨機切換、平均後變平滑，方向與機制相反。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-003",
+      "b": "B15006",
+      "cosine": 0.652575,
+      "decision": "distinct",
+      "reason": "B15006是葉緣生長訊號鋪平使鋸齒消失的空間圖樣；與單細胞習慣化無共同變項。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-003",
+      "b": "H3076",
+      "cosine": 0.646605,
+      "decision": "distinct",
+      "reason": "H3076是速率決定步驟使加料不加速；本題非化學動力學，答案是單細胞兩狀態切換時間的分布。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-003",
+      "b": "R6017",
+      "cosine": 0.646596,
+      "decision": "distinct",
+      "reason": "R6017是捕蠅草兩次觸碰間隔使鈣訊號累積到閉合門檻（短期加總）；本題是重複刺激使反應下降（習慣化）且單細胞一步切換，方向相反、控制不同。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-004",
+      "b": "L51-005",
+      "cosine": 0.765801,
+      "decision": "merge_supporting_point",
+      "reason": "同一物種、同一孵化決策：L51-004答成熟胚胎如何區分雨與蛇；L51-005答較早胚胎為何尚不對振動反應。問題不同但L51-005證據為發育同步相關、個體層級關聯在納入發育期後消失、原圖未能目讀，不足以自立核心，降為L51-004的支持點（見candidate_review）。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-004",
+      "b": "A14002",
+      "cosine": 0.623898,
+      "decision": "distinct",
+      "reason": "A14002是山雀聽到蛇警報後啟動蛇形搜尋模板；本題是卵內胚胎以振動的非振幅特徵區分蛇與雨，感覺通道、主體與對照皆不同。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-004",
+      "b": "B2163",
+      "cosine": 0.609486,
+      "decision": "distinct",
+      "reason": "B2163是直接發育省略蝌蚪期；本題是可提早孵化物種如何判斷何時逃出，不涉發育模式。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-004",
+      "b": "X38-002",
+      "cosine": 0.596588,
+      "decision": "distinct",
+      "reason": "X38-002是雨滴撞蚊子的動量傳遞；本題的雨只是天敵以外的干擾振動來源，答案在胚胎的判斷而非碰撞力學。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-004",
+      "b": "E9002",
+      "cosine": 0.581745,
+      "decision": "distinct",
+      "reason": "E9002是蒲公英冠毛遇濕收攏的材料膨潤；與胚胎振動辨識無共同機制。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-005",
+      "b": "L51-004",
+      "cosine": 0.765801,
+      "decision": "merge_supporting_point",
+      "reason": "同上L51-004/L51-005：降為L51-004支持點，不另立核心。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-005",
+      "b": "B2163",
+      "cosine": 0.719907,
+      "decision": "distinct",
+      "reason": "B2163是直接發育省去自由幼體期；L51-005問可孵化胚胎何時感覺得到卵被晃，答案是前庭功能發育時間，非發育模式。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-005",
+      "b": "B2262",
+      "cosine": 0.647845,
+      "decision": "distinct",
+      "reason": "B2262是單倍體雄蜂的性別決定；除「卵/胚胎」詞面外無共同控制。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-005",
+      "b": "B2185",
+      "cosine": 0.631921,
+      "decision": "distinct",
+      "reason": "B2185是有袋類胚胎暫停發育；L51-005不是發育暫停，而是感覺器上線時間限制逃生行為。",
+      "full_question_answer_scope_read": true
+    },
+    {
+      "a": "L51-005",
+      "b": "B2167",
+      "cosine": 0.621836,
+      "decision": "distinct",
+      "reason": "B2167是卵殼氣體交換；L51-005的缺氧孵化只作「已有孵化能力」的對照，非答案。",
+      "full_question_answer_scope_read": true
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "L51-001",
+      "b": "U8004",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：U8004是Woronin小體被動堵隔膜孔，屬細胞構造；本題是他者依傷位選截肢或舔舐，並有人工截肢時間點與菌量對照。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-001",
+      "b": "R6018",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：R6018是樹木自身在傷區建立界線、不修復舊木；本題是群體成員的行為處置，關鍵變項是病菌沿血淋巴擴散的時間。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-001",
+      "b": "A27002",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：A27002問傷口朝向如何決定再生頭尾；本題無再生，答案是截肢時機相對於感染擴散。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-002",
+      "b": "L070",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：L070只有「噬菌體感染細菌」的前提級答案；本題的答案是胜肽濃度→AimR單體化→aimX關閉→溶原增加的決策鏈。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-002",
+      "b": "V3017",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：V3017的訊號由細菌產生、改變細菌自身行為；本題的訊號基因與受體都在噬菌體上，改變的是病毒的裂解/溶原選擇，且有異種胜肽不通用對照。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-003",
+      "b": "B2012",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：B2012答「習慣化存在且具刺激特異性」；本題答群體平滑曲線底下個體是隨機時間的一步切換，必須有單細胞追蹤與步階檢定才成立。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-003",
+      "b": "U8009",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：U8009靠胞外黏液外部記號避開走過的路；本題無外部痕跡，是細胞內反應狀態切換。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-003",
+      "b": "A22002",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：A22002是管徑階層的形態重分配；本題是對重複機械刺激的收縮機率改變。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-004",
+      "b": "B2012",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：B2012是重複無害刺激後反應下降；本題在等振幅回放下首次刺激就對蛇與雨反應不同，答案是非振幅特徵整合，不靠重複。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-004",
+      "b": "C2005",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：C2005是單一門檻的命中/誤報權衡；本題說明振幅單一維度無法分辨，胚胎要整合時間型態、頻率與包絡。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-004",
+      "b": "Z7013",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：Z7013是發聲方干擾掠食者回聲定位；本題是獵物胚胎評估振動來源，方向與機制皆不同。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-005",
+      "b": "A5021",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：A5021講成體VOR如何穩定視線；L51-005只把VOR當內耳功能指標。但L51-005本身因證據不足降為L51-004支持點，此配對不影響。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-005",
+      "b": "B2163",
+      "author_decision": "propose_distinct",
+      "decision": "distinct",
+      "reason": "同意不同：直接發育與提早孵化時機無共同答案。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": true
+    },
+    {
+      "a": "L51-005",
+      "b": "L51-004",
+      "author_decision": "propose_distinct",
+      "decision": "merge_supporting_point",
+      "reason": "不同意作者「各自成核」：兩題問題不同，但L51-005的整塊回放只在23窩有孵化者中見窩平均VOR相關，同窩手足間差異不顯著（P=0.079），搖卵潛伏期與VOR的關係在納入發育期後主效應消失；原圖作者與本reviewer皆未能取得。應降為L51-004章節內約10秒的「可能原因：內耳功能較晚上線（相關證據）」支持點。",
+      "snapshots_read": true,
+      "snapshot_matches_pool_raw": "同批候選，對照batch原文一致"
+    }
+  ],
+  "extra_dedup_searches": [
+    {
+      "scope": ".cache/all-questions.tsv與not-added.tsv",
+      "terms": "噬菌體、溶原、潛伏、arbitrium、胜肽、群體感應、病毒",
+      "result": "僅L070、L071–L075病毒基礎題與V3017；無溶原決策題。not-added無相關。"
+    },
+    {
+      "scope": "同上",
+      "terms": "截肢、咬斷、螞蟻.*傷、傷口、照護/社會免疫、舔、及全部「螞蟻」問題",
+      "result": "螞蟻題20筆皆為搬運、導航、築橋、種子、排水；傷口題為A27002、P29005、R6018。無群體治傷/截肢題。"
+    },
+    {
+      "scope": "同上",
+      "terms": "喇叭蟲、纖毛蟲、單細胞.*學、習慣化、細胞.*記憶、無腦.*學、隨機.*切換、平均.*個體",
+      "result": "只有B2012、Z7013（含習慣化對照）及B2022/B2025族群平均題；not-added兩筆習慣化/適應教材題，皆非單細胞步階。"
+    },
+    {
+      "scope": "同上",
+      "terms": "樹蛙、提早孵、孵化、胚胎.*振動、雨.*蛇、天敵.*振動、前庭、內耳",
+      "result": "孵化題B2062、B2292、B2330皆無關；前庭題A5017–A5021、S10003為成體機制；not-added S44-NA012（鴯鶓蛋）無關。"
+    },
+    {
+      "scope": "mechanism_key英文",
+      "terms": "phage|lysogen|amput|stentor|habituat|hatch|treefrog|ciliat|quorum|wound|embryo",
+      "result": "命中L070、B2012、V3017、A27002、R6018、U8004等均已在配對中判讀；無漏網重複。"
+    },
+    {
+      "scope": "batches/wave51-*.json其他lane",
+      "terms": "噬菌體、螞蟻、喇叭蟲、樹蛙、習慣化",
+      "result": "僅本lane命中，無跨lane同題。"
+    },
+    {
+      "scope": "pool.json raw_records與batch",
+      "terms": "5個DOI",
+      "result": "作者報告無重複；本reviewer以author_receipt的prior_exact_doi_matches與grep抽查一致。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "L51-005",
+        "canonical_id": "L51-004",
+        "reason": "非語意重複，而是證據不足自立：發育同步相關、個體層級關聯不顯著或受發育期混淆、原圖未能目讀；年齡門檻主畫面本就出自L51-S004。降為L51-004年齡章節中約10秒的支持點，不計新核。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "L51-001",
+        "b": "A20002",
+        "reason": "A20002是竹節蟲兩種腳墊對拉力與負重的接觸分工，屬附著力學；本題是同伴依傷口位置選擇截肢或舔舐，並以人工截肢時間點檢驗病菌擴散，只共用「昆蟲腳」的詞面。"
+      },
+      {
+        "a": "L51-001",
+        "b": "B2138",
+        "reason": "B2138講附肢同源與分工的演化；本題不涉附肢起源，答案是股節/脛節傷的感染擴散速度差使截肢只在股節有利。"
+      },
+      {
+        "a": "L51-001",
+        "b": "A12002",
+        "reason": "A12002是群體搬運的機械耦合與碰牆後持續性；本題是對受傷個體的照護決策與存活、菌量對照，同為螞蟻但控制與答案無重疊。"
+      },
+      {
+        "a": "L51-001",
+        "b": "A27002",
+        "reason": "A27002是傷口朝向決定渦蟲再生頭或尾的分子極性；本題不涉再生，問截肢能否趕在血淋巴把病菌帶走之前，答案是傷位與擴散時間。"
+      },
+      {
+        "a": "L51-001",
+        "b": "A23003",
+        "reason": "A23003是若蟲後腿齒列機械同步起跳；本題是傷後感染與同伴截肢，除昆蟲後腿外無共用機制。"
+      },
+      {
+        "a": "L51-002",
+        "b": "U8016",
+        "reason": "U8016是第四型菌毛伸縮造成的細菌表面爬行；本題是噬菌體編碼胜肽累積後經AimR改變裂解/溶原比例，主體與機制都不同。"
+      },
+      {
+        "a": "L51-002",
+        "b": "L070",
+        "reason": "L070只確立「細菌會被噬菌體感染」這個前提；本題回答感染後如何依前代留下的胜肽濃度選擇潛伏，有濃度梯度、oppD缺失與異種胜肽對照，非同題。"
+      },
+      {
+        "a": "L51-002",
+        "b": "U8022",
+        "reason": "U8022是細菌內孢子的抗損傷構造；本題是病毒的生命週期選擇，枯草桿菌只是共同宿主。"
+      },
+      {
+        "a": "L51-002",
+        "b": "V3041",
+        "reason": "V3041是產物結合阻遏蛋白關掉色胺酸操縱組；兩者都有「配體改變DNA結合」，但本題的配體是病毒前代分泌的胜肽、受體在病毒基因體上、結果是溶原比例，答案不能互代。"
+      },
+      {
+        "a": "L51-002",
+        "b": "U8012",
+        "reason": "U8012是菌絲橋與液膜連通限制細菌擴散；與噬菌體胜肽訊號無共同控制。"
+      },
+      {
+        "a": "L51-003",
+        "b": "H3032",
+        "reason": "H3032是動力學/熱力學產物控制；只共用「隨時間比例改變」的抽象形狀，本題是單細胞反應機率的一步切換與群體平均。"
+      },
+      {
+        "a": "L51-003",
+        "b": "L43-001",
+        "reason": "L43-001是螢火蟲個體等待時間分散、群體觸發使間隔集中；兩題都談個體隨機性與群體分布，但L43-001是群體互動使分布變窄，本題是無互動的獨立細胞各自隨機切換、平均後變平滑，方向與機制相反。"
+      },
+      {
+        "a": "L51-003",
+        "b": "B15006",
+        "reason": "B15006是葉緣生長訊號鋪平使鋸齒消失的空間圖樣；與單細胞習慣化無共同變項。"
+      },
+      {
+        "a": "L51-003",
+        "b": "H3076",
+        "reason": "H3076是速率決定步驟使加料不加速；本題非化學動力學，答案是單細胞兩狀態切換時間的分布。"
+      },
+      {
+        "a": "L51-003",
+        "b": "R6017",
+        "reason": "R6017是捕蠅草兩次觸碰間隔使鈣訊號累積到閉合門檻（短期加總）；本題是重複刺激使反應下降（習慣化）且單細胞一步切換，方向相反、控制不同。"
+      },
+      {
+        "a": "L51-004",
+        "b": "A14002",
+        "reason": "A14002是山雀聽到蛇警報後啟動蛇形搜尋模板；本題是卵內胚胎以振動的非振幅特徵區分蛇與雨，感覺通道、主體與對照皆不同。"
+      },
+      {
+        "a": "L51-004",
+        "b": "B2163",
+        "reason": "B2163是直接發育省略蝌蚪期；本題是可提早孵化物種如何判斷何時逃出，不涉發育模式。"
+      },
+      {
+        "a": "L51-004",
+        "b": "X38-002",
+        "reason": "X38-002是雨滴撞蚊子的動量傳遞；本題的雨只是天敵以外的干擾振動來源，答案在胚胎的判斷而非碰撞力學。"
+      },
+      {
+        "a": "L51-004",
+        "b": "E9002",
+        "reason": "E9002是蒲公英冠毛遇濕收攏的材料膨潤；與胚胎振動辨識無共同機制。"
+      },
+      {
+        "a": "L51-005",
+        "b": "B2163",
+        "reason": "B2163是直接發育省去自由幼體期；L51-005問可孵化胚胎何時感覺得到卵被晃，答案是前庭功能發育時間，非發育模式。"
+      },
+      {
+        "a": "L51-005",
+        "b": "B2262",
+        "reason": "B2262是單倍體雄蜂的性別決定；除「卵/胚胎」詞面外無共同控制。"
+      },
+      {
+        "a": "L51-005",
+        "b": "B2185",
+        "reason": "B2185是有袋類胚胎暫停發育；L51-005不是發育暫停，而是感覺器上線時間限制逃生行為。"
+      },
+      {
+        "a": "L51-005",
+        "b": "B2167",
+        "reason": "B2167是卵殼氣體交換；L51-005的缺氧孵化只作「已有孵化能力」的對照，非答案。"
+      },
+      {
+        "a": "L51-001",
+        "b": "U8004",
+        "reason": "U8004是Woronin小體被動堵隔膜孔，屬細胞構造；本題是他者依傷位選截肢或舔舐，並有人工截肢時間點與菌量對照。"
+      },
+      {
+        "a": "L51-001",
+        "b": "R6018",
+        "reason": "R6018是樹木自身在傷區建立界線、不修復舊木；本題是群體成員的行為處置，關鍵變項是病菌沿血淋巴擴散的時間。"
+      },
+      {
+        "a": "L51-002",
+        "b": "V3017",
+        "reason": "V3017的訊號由細菌產生、改變細菌自身行為；本題的訊號基因與受體都在噬菌體上，改變的是病毒的裂解/溶原選擇，且有異種胜肽不通用對照。"
+      },
+      {
+        "a": "L51-003",
+        "b": "B2012",
+        "reason": "B2012答「習慣化存在且具刺激特異性」；本題答群體平滑曲線底下個體是隨機時間的一步切換，必須有單細胞追蹤與步階檢定才成立。"
+      },
+      {
+        "a": "L51-003",
+        "b": "U8009",
+        "reason": "U8009靠胞外黏液外部記號避開走過的路；本題無外部痕跡，是細胞內反應狀態切換。"
+      },
+      {
+        "a": "L51-003",
+        "b": "A22002",
+        "reason": "A22002是管徑階層的形態重分配；本題是對重複機械刺激的收縮機率改變。"
+      },
+      {
+        "a": "L51-004",
+        "b": "B2012",
+        "reason": "B2012是重複無害刺激後反應下降；本題在等振幅回放下首次刺激就對蛇與雨反應不同，答案是非振幅特徵整合，不靠重複。"
+      },
+      {
+        "a": "L51-004",
+        "b": "C2005",
+        "reason": "C2005是單一門檻的命中/誤報權衡；本題說明振幅單一維度無法分辨，胚胎要整合時間型態、頻率與包絡。"
+      },
+      {
+        "a": "L51-004",
+        "b": "Z7013",
+        "reason": "Z7013是發聲方干擾掠食者回聲定位；本題是獵物胚胎評估振動來源，方向與機制皆不同。"
+      },
+      {
+        "a": "L51-005",
+        "b": "A5021",
+        "reason": "A5021講成體VOR如何穩定視線；L51-005只把VOR當內耳功能指標。但L51-005本身因證據不足降為L51-004支持點，此配對不影響。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "L51-NA001",
+      "decision": "confirm_not_added",
+      "existing_ids": [],
+      "existing_ids_verified": true,
+      "reason": "Balaban 2004未取正文，不以摘要立題，理由成立；與既有池無衝突。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA002",
+      "decision": "confirm_not_added",
+      "existing_ids": [],
+      "existing_ids_verified": true,
+      "reason": "Dexter 2019（S. roeselii行為層級）未取正文；L51-S003 Discussion也僅引用其結論，不能代讀。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA003",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "L51-001"
+      ],
+      "existing_ids_verified": true,
+      "reason": "2025預印本未讀；作為L51-001延伸條件處理合理。existing_ids L51-001為同批候選，存在。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA004",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "L51-001"
+      ],
+      "existing_ids_verified": true,
+      "reason": "Megaponera治傷只在L51-S001引言（p3274）作背景，原研究未讀，不能另立。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA005",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "L51-001"
+      ],
+      "existing_ids_verified": true,
+      "reason": "已核原文：無菌76%(n=17)對感染88%(n=24)截肢率無顯著差（P=0.44），前提不成立。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA006",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "L51-002"
+      ],
+      "existing_ids_verified": true,
+      "reason": "已核Discussion末段：推及其他噬菌體與真核病毒為作者「envision」，非資料。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA007",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "L51-002"
+      ],
+      "existing_ids_verified": true,
+      "reason": "GMPRGA/SAIRGA交叉對照與AimR不結合是L51-002專一性環節（Fig2D、Fig4D–F），不拆核。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA008",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "L51-003"
+      ],
+      "existing_ids_verified": true,
+      "reason": "Forgetting節15分鐘90%恢復已核，屬L51-003同篇一段；計時機制為推測，單獨撐不起一題。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA009",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "L51-003"
+      ],
+      "existing_ids_verified": true,
+      "reason": "已核「Stentor does not anticipate stimuli」段：停止刺激後下一個預期時點無細胞收縮，前提不成立。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA010",
+      "decision": "confirm_not_added",
+      "existing_ids": [],
+      "existing_ids_verified": true,
+      "reason": "孵化腺酵素研究未讀；與振動判斷不同機制，未來另評合理。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA011",
+      "decision": "confirm_not_added_update_existing_ids",
+      "existing_ids": [
+        "L51-005"
+      ],
+      "existing_ids_verified": true,
+      "reason": "側線研究未讀，理由成立；因L51-005併入L51-004，existing_ids建議改列L51-004（保留L51-005作被併入紀錄）。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA012",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "Z7001"
+      ],
+      "existing_ids_verified": true,
+      "reason": "Z7001存在，背光姿態核心已含燈旁繞圈答案，無新控制。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA013",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "L39-007"
+      ],
+      "existing_ids_verified": true,
+      "reason": "L39-007存在，答案即紅血球集中肝臟。",
+      "reentry_condition_checked": true
+    },
+    {
+      "id": "L51-NA014",
+      "decision": "confirm_not_added",
+      "existing_ids": [
+        "A22002",
+        "U8009"
+      ],
+      "existing_ids_verified": true,
+      "reason": "A22002（管徑階層）與U8009（黏液足跡）皆存在，兩核已涵蓋。",
+      "reentry_condition_checked": true
+    }
+  ],
+  "theme_review": [
+    {
+      "proposal_id": "W51L-T01",
+      "decision": "revise",
+      "body_seconds": 68,
+      "chapter_seconds": [
+        30,
+        38
+      ],
+      "beat_seconds": [
+        [
+          12,
+          18
+        ],
+        [
+          22,
+          16
+        ]
+      ],
+      "per_core_seconds": {
+        "L51-001": 68
+      },
+      "per_core_caps": {
+        "L51-001": 75
+      },
+      "arithmetic_check": "作者30+40=70與body一致；250字÷4–4.5字/秒=56–62秒＋12秒看圖，70秒合理。",
+      "reason": "兩章各有新對照，無泛論開頭或限制清單。修訂：拍2把「脛節得到較長舔舐」補成「而送回巢裡的脛節傷蟻存活接近無菌組——舔舐本身就有效」，不加秒數（刪「全數存活/未截3隻死亡」細節改放字卡即可）；拍4 micro-CT改「近九倍」並刪重複的「標明流速未直接量」口白改字卡，18→16秒。拍3「只有接菌當下截才有效」需標明出自補充資料。"
+    },
+    {
+      "proposal_id": "W51L-T02",
+      "decision": "accept",
+      "body_seconds": 72,
+      "chapter_seconds": [
+        32,
+        40
+      ],
+      "beat_seconds": [
+        [
+          14,
+          18
+        ],
+        [
+          20,
+          20
+        ]
+      ],
+      "per_core_seconds": {
+        "L51-002": 72
+      },
+      "per_core_caps": {
+        "L51-002": 80
+      },
+      "arithmetic_check": "14+18=32、20+20=40，合72；270字估60–68秒＋10秒，合理。",
+      "reason": "每拍推進一個實驗步驟（條件培養液→身分→時程→受體），無病毒科普前言或限制段；異種胜肽一句收在最後一拍即可。拍2資訊密度高（蛋白酶、oppD、劑量、48/18%），製作時可把48/18%改字卡，不增秒。"
+    },
+    {
+      "proposal_id": "W51L-T03",
+      "decision": "revise",
+      "body_seconds": 57,
+      "chapter_seconds": [
+        19,
+        38
+      ],
+      "beat_seconds": [
+        [
+          7,
+          12
+        ],
+        [
+          20,
+          18
+        ]
+      ],
+      "per_core_seconds": {
+        "L51-003": 57
+      },
+      "per_core_caps": {
+        "L51-003": 65
+      },
+      "arithmetic_check": "作者10+12=22、20+18=38，合60；215字估48–54秒＋10秒，合理。",
+      "reason": "拍1是純設定畫面（喇叭蟲貼盤、縮/不縮），可與拍2的群體曲線疊播，10→7秒。拍2「所以不像單純累壞」是作者自加推論，原文未如此論證，改為「較弱的敲擊反而掉得更快」不下結論。拍3「之後很少再切回」可留，但避免說成都「很少縮」（Fig2A一條降到約0.45）。拍4恢復與計時器屬新資訊，保留。"
+    },
+    {
+      "proposal_id": "W51L-T04",
+      "decision": "revise",
+      "body_seconds": 66,
+      "chapter_seconds": [
+        42,
+        24
+      ],
+      "beat_seconds": [
+        [
+          16,
+          15,
+          11
+        ],
+        [
+          14,
+          10
+        ]
+      ],
+      "per_core_seconds": {
+        "L51-004": 66
+      },
+      "per_core_caps": {
+        "L51-004": 70
+      },
+      "arithmetic_check": "作者46+38=84與body一致，但L51-005改為支持點後不能再占38秒。",
+      "reason": "L51-005併入L51-004，本題改為單核兩章。第一章拍3把「時間型態、頻率來自先前研究」的口白壓成一句，15→11秒。第二章改為「同一種晃動，四天和五天差約80倍」：拍1用L51-S004 Fig2B（本篇已目讀資料）14秒；拍2以一句帶出「這段時間內耳平衡反射剛上線，兩者同步出現，但只是相關證據」10秒，刪除作者原拍2的兩研究裝置差異與少數例外口白（改字卡）。總計刪18秒；不得把VOR說成已證實的因果。"
+    }
+  ],
+  "combine_or_drop": "四案主題不同，不建議合併；T04因L51-005併入改為單核兩章（66秒），不撤案。",
+  "interest_flags": [
+    {
+      "id": "L51-003",
+      "flag": "準確但偏抽象，需靠單細胞黑格序列畫面撐住；上限65秒，不展開模型參數。"
+    },
+    {
+      "id": "L51-005",
+      "flag": "單獨成片只剩「同時出現」的相關結論，翻轉力不足；已併入。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "L51-001",
+      "field": "answer_target",
+      "problem": "只寫脛節傷「得到較久的舔舐」，漏掉Fig3B與正文「送回巢內的脛節感染蟻存活與無菌組無顯著差」，使「為什麼小腿不咬」少了「舔舐就夠用、截肢反而來不及」的另一半。",
+      "suggested_text": "佛州弓背蟻股節傷在接回群落後多被同伴從腿根咬斷，脛節傷則只得到較久的舔舐，而送回巢中的脛節感染蟻存活與無菌組相近。人工截肢對照顯示：股節感染傷在一小時後截肢仍能把存活拉回接近無菌組，脛節截肢則與不處理的感染孤立組一樣差（作者補充資料指只有接菌當下截才有效）。作者以股節肌肉多、受傷後血淋巴流較慢、病菌擴散較慢解釋，截肢只在來得及時才有利。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "L51-001",
+      "field": "editorial.visual / theme beat",
+      "problem": "「股節肌肉面積約為脛節十倍」：原文數值65,632對7,554約8.7倍，作者用語almost 10 times。",
+      "suggested_text": "股節中段肌肉截面積接近脛節的九倍",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "L51-003",
+      "field": "scope",
+      "problem": "未註明低力組部分細胞全程低反應、看不到步階；切換後的反應機率因細胞而異。",
+      "suggested_text": "限Stentor coeruleus收縮反應與作者自製敲擊裝置；高力22顆中18顆可判出單一步階，低力組部分細胞全程低反應、看不到步階。單步模型比漸進模型更合資料，但無法完全排除漸進；切換後的收縮機率因細胞而異。恢復反應的計時機制與分子基礎未明；不把單細胞習慣化說成有意識或等同動物神經學習。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "W51L-T03",
+      "field": "chapters[0].beats[1].new_information",
+      "problem": "「所以不像單純累壞」為原文未作的推論。",
+      "suggested_text": "群體裡收縮的比例一下下往下掉；較弱的敲擊反而掉得更快。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "L51-005",
+      "field": "answer_target",
+      "problem": "「逐顆搖卵時反射越大孵得越快」未揭露加入發育期後VOR主效應消失；且全句呈現為因果鏈。若保留為L51-004支持點，需改寫。",
+      "suggested_text": "（併入L51-004支持點）同齡胚胎遇缺氧已能孵化，但對振動的孵化要到前庭眼反射出現的發育期才開始；整塊回放中反射低於約21度者無孵化。兩者同步出現，作者據此推測內耳功能是起始限制之一，但未操弄內耳，個體層級關聯也受發育期混淆。",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "L51-NA011",
+      "field": "existing_ids",
+      "problem": "L51-005併入後，側線方向應掛在保留的核心上。",
+      "suggested_text": "[\"L51-004\",\"L51-005\"]",
+      "status": "RESOLVED"
+    }
+  ],
+  "limits": [
+    "所有決策限當期題級來源與原創圖概念；未核完整旁白或實際示範，未發布。",
+    "9張原圖/原頁已目讀；L51-S003 Fig3、L51-S004 Fig4、L51-S001補充資料與影片、L51-S005全部原圖未目讀。",
+    "L51-S005只讀bioRxiv v1預印本，JEB正式版數字未核；併入後也只能以相關證據口吻出現。",
+    "紙上估時沿用作者每秒4–4.5字估法，未試讀或合成。",
+    "語意top-5僅供參考；關鍵詞未命中不等於全新，另以grep補查。",
+    "審閱中.cache/draft.json被重建（bdc5fc6b…→bf1395dd…），本審top-5依舊draft；pool.json未變。"
+  ],
+  "remaining_blockers": [],
+  "accepted_theme_proposal_ids": [
+    "W51L-T01",
+    "W51L-T02",
+    "W51L-T03",
+    "W51L-T04"
+  ],
+  "revision_history": [
+    {
+      "kind": "author_targeted_recheck_readback",
+      "before_files": [
+        {
+          "file": "batches/wave51-life.json",
+          "sha256": "4a214c6838857de285c0374e26e956274b356a5cac8b8f24f8d08e8c44c1a381"
+        },
+        {
+          "file": "reviews/wave51-life-themes.json",
+          "sha256": "bb86df3ab1375ab1c8185370b55e93b8b3df15cb4807c04d309f83a362782846"
+        },
+        {
+          "file": "reviews/wave51-life-author.json",
+          "sha256": "d100db1ee6e21df798245f3e008597a7a9196ec67df4d8c6d403ad5976af3ac1"
+        }
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave51-life.json",
+          "sha256": "ef58389eddab81894c0aed4351adf1783593409b8b81196d7a69a079c4f35cb3"
+        },
+        {
+          "file": "reviews/wave51-life-themes.json",
+          "sha256": "64abbb51885ce0d695b8a72b1cb096f54f5660471ff54bee13088e6b9bafacc8"
+        },
+        {
+          "file": "reviews/wave51-life-author.json",
+          "sha256": "430c1ccd437ada8f0db669e8a27832ab7bdc22a9c75133bda174073483c2bd24"
+        }
+      ],
+      "readback": [
+        "L51-001 answer_target已補「送回巢中的脛節感染蟻存活與無菌組相近」並把時間點截肢標為補充資料作者報告；scope改「接近脛節的九倍（約8.7倍）」；T01拍2、拍4同步，數字改字卡。",
+        "L51-003 scope已加22顆中18顆、低力部分無步階、切換後機率因細胞而異；T03拍2已刪「不像單純累壞」，拍3改「收縮變少」並註反應機率因細胞而異。",
+        "L51-005 answer_target改為併入支持點、明列未操弄內耳與發育期混淆；editorial seconds [8,12]、畫面只作字卡且不畫因果箭頭。L51-NA011 existing_ids改[L51-004,L51-005]。",
+        "T04第二章拍2（10秒）明寫「作者推測…只是相關證據、未操弄內耳」，drop_if禁止說內耳已證實為原因：未見新過度宣稱。",
+        "秒數：T01 68（30/38，拍12+18、22+16）、T02 72（32/40）、T03 57（19/38，拍7+12、20+18）、T04 66（42/24，拍16+15+11、14+10，candidate_ids僅L51-004）皆相符；紙上估時240/270/205/245字對應65–72、70–78、55–60、64–71秒，均涵蓋body。caps 75/80/65/70，per-core皆不超。",
+        "非阻擋文字註：T04拍1「約80倍以上」——原文寫∼80-fold，實際8對0.09 m/s²約89倍，算術上不錯，但成稿建議照原文寫「約80倍」。"
+      ],
+      "source_research_repeated": false
+    }
+  ],
+  "final_input_check": {
+    "status": "PASS_METADATA_AND_TOPIC_READBACK",
+    "batch_sha256": "ef58389eddab81894c0aed4351adf1783593409b8b81196d7a69a079c4f35cb3",
+    "themes_sha256": "64abbb51885ce0d695b8a72b1cb096f54f5660471ff54bee13088e6b9bafacc8",
+    "author_receipt_sha256": "430c1ccd437ada8f0db669e8a27832ab7bdc22a9c75133bda174073483c2bd24",
+    "author_receipt_written_files_match": true,
+    "pool_sha256": "f99e29d72c708a1c436f9cec3d9e504571b511f382abe15f36dd13737c8095fe",
+    "pool_unchanged_from_baseline": true,
+    "draft_sha256_at_readback": "93b534dc16da7c35ae95bdecc177fb08e1fd83651f18d2ec6fe5f599c100ba78",
+    "draft_note": "draft.json於審閱中再變（現2c636ef6…）；top-5依bdc5fc6b…版，由root以最終draft重跑並處理新配對。",
+    "candidate_ids_match": true,
+    "theme_sums_verified": {
+      "W51L-T01": 68,
+      "W51L-T02": 72,
+      "W51L-T03": 57,
+      "W51L-T04": 66
+    },
+    "merge_recorded_by": "root寫dedup-decisions.json（L51-005→L51-004），本reviewer未改。",
+    "not_added_existing_ids_verified": true
+  }
+}

@@ -397,9 +397,41 @@ export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
 /** Whether a script belongs to one of the two story series the viewer wording reads. */
 export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");
 
-/** The panel for a script: the tutorial wording for a tutorial, the viewer wording for a story series, the story wording for everything else. */
+/**
+ * The checks reworded for the daily news brief (a daily-ai- slug, owner decision 2026-10-29): five
+ * to eight of yesterday's AI and technology stories in about ten minutes, one chapter each, the way
+ * a news programme runs (daily-brief.md). Read against the story wording, a brief fails one_line,
+ * one_thread, no_toc and no_detour by its nature; what holds it together instead is one viewpoint
+ * ("what does this change for a viewer in Taiwan") asked of every story and answered in the closing
+ * take. Same ids, same required flags. no_detour allows a single attributed statement or figure: on the
+ * first episode five readers each failed it on a different "who said what" line (owner, 2026-10-29).
+ */
+export const DAILY_BRIEF_PANEL_QUESTIONS = Object.freeze({
+  scene_first: "前四句（約 15 秒）是否已經講出一則具體的新聞：日期或星期、哪一家公司或機構、做了什麼，而不是問候、「AI 發展日新月異」這種空話，或「今天要來看幾則新聞」？",
+  no_spoiler: "開場的頭條是否只講到「發生了什麼」，把每一則的影響、數字的意思或「你該怎麼做」留到那一則的章節才講？",
+  one_line: "每一則新聞是否在自己那一章裡照事情發生的順序講完：誰、什麼時候、做了什麼、影響誰、觀眾能做什麼，講完就換下一則，沒有隔幾章又回頭把同一則再講一遍（片尾「我的看法」點名回呼不算）？",
+  no_toc: "開場是否最多只用三則頭條預告（像新聞節目的頭條，每則一句），沒有任何一句在宣告整集的結構（「今天有七則」「第一則…第二則…」「接下來我們依序看」「最後一則是」）？",
+  chapters_link: "每一章第一句是否帶著東西往前走：用一句串場把上一則和這一則接起來（同一家公司、同一種影響、或一個對比：「微軟賺到錢的同時，Google 走了另一條路」），或直接用這則新聞的利害開場？「下一則新聞」「再來看」這種只換場、拿掉就什麼都不剩的句子不算銜接。",
+  open_loops: "正文是否每 90 秒內至少有一個鉤子：這一則還沒揭曉的影響（「但真正改變的不是價格」）、一個觀眾會問的問題（「這在台灣能用嗎？」）、開場頭條還沒講到的那則，或一個轉折？",
+  payoffs: "開場頭條預告的每一則，正文是否都講到了；每一則章節裡提出的問題（「台灣能用嗎」「要多少錢」）是否在同一章就給了答案，答不出來時明說還不知道？",
+  no_recap: "同一則新聞的同一個數字或事實是否沒有講超過一次（開場頭條講到、正文接回來不算；片尾「我的看法」點名回呼不算）？",
+  chapters_are_events: "章名是不是那一則新聞本身（「微軟單季從 OpenAI 收到 100 億美元」），而不是功能標籤（頭條、其他新聞、總結）？",
+  opening_hooks: "開場 60 秒內，是否至少有三個讓人想看下去的東西：一則頭條停在影響之前、一個用觀眾自己的話問的問題、一句跟台灣觀眾有關的利害、或一個今天最意外的數字？（「今天新聞很多」這種空話不算。）",
+  one_thread: "是否有一個觀點從開場帶到片尾：每一則都回答「這對台灣的觀眾改變了什麼」（能不能用、要不要花錢、要不要小心），片尾「我的看法」用這個觀點把幾則串起來，說出今天最重要的是哪一則、為什麼？只是一則接一則念過去、沒有這個觀點，不算。",
+  no_detour: "是否沒有岔出去的段落：每一則都在講自己那件事和它對觀眾的影響，沒有整段在講跟那則新聞或觀眾無關的事，也沒有一口氣連念三個以上的規格、分數或發言？（新聞本來就要講誰說了什麼：單獨一句帶出處的說法、問答或數字，只要是那則新聞的一部分，就不算岔題。）",
+});
+/** Whether a script is a daily news brief (daily-brief.md). */
+export const isDailyBrief = (doc) => /^daily-ai-/.test(doc?.slug ?? "");
+
+/** The panel for a script: the tutorial wording for a tutorial, the viewer wording for a story series, the brief wording for a daily news brief, the story wording for everything else. */
 export function panelQuestions(doc) {
-  const words = doc?.category === "tutorial" ? TUTORIAL_PANEL_QUESTIONS : isStorySeries(doc) ? STORY_SERIES_PANEL_QUESTIONS : null;
+  const words = doc?.category === "tutorial"
+    ? TUTORIAL_PANEL_QUESTIONS
+    : isStorySeries(doc)
+      ? STORY_SERIES_PANEL_QUESTIONS
+      : isDailyBrief(doc)
+        ? DAILY_BRIEF_PANEL_QUESTIONS
+        : null;
   if (!words) return NARRATIVE_PANEL;
   return NARRATIVE_PANEL.map((question) => (words[question.id] ? { ...question, question: words[question.id] } : question));
 }
@@ -433,7 +465,7 @@ const panelRulesHash = (questions) => createHash("sha256").update(JSON.stringify
 /** The story panel's contract hash (every script that is not a tutorial). */
 export const PANEL_RULES_SHA256 = panelRulesHash(NARRATIVE_PANEL);
 /** The contract hash of the panel this script is read against. */
-export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" || isStorySeries(doc) ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
+export const panelRulesSha256 = (doc) => (doc?.category === "tutorial" || isStorySeries(doc) || isDailyBrief(doc) ? panelRulesHash(panelQuestions(doc)) : PANEL_RULES_SHA256);
 
 // Bind the exact rendered narration sent to the blind panel. The shared script check omits
 // metadata such as the title, even though the panel reads it above every chapter.

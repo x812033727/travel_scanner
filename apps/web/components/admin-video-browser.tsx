@@ -2,11 +2,13 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { FilterPills } from "@/components/admin-filter-pills";
 import { AdminDataTable, AdminEmptyState, AdminErrorState, AdminFilterBar, AdminStatusPill } from "@/components/admin-ui";
 import {
   control, isBlocked, type ProjectSummary, ProductionPill, PublishPill, publishState, REFRESH_MS, useWhen, VIDEO_CATEGORIES, type VideoCategory, type VideoPage, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
+import { DeleteVideo } from "@/components/admin-video-delete";
 import { STORY_SERIES_SLUG } from "@/components/admin-video-stories";
 import { syncRunning } from "@/components/admin-video-youtube";
 import { Button } from "@/components/community/ui";
@@ -34,10 +36,11 @@ export function CategoryPill({ category }: { category: VideoCategory | null | un
 }
 
 /** One line of the catalog: the title (and the series a drama episode belongs to), its category, where it stands, and the numbers the cards showed. */
-function VideoRow({ project, onOpen }: { project: ProjectSummary; onOpen: (slug: string) => void }) {
+function VideoRow({ project, onOpen, onDeleted }: { project: ProjectSummary; onOpen: (slug: string) => void; onDeleted: () => void }) {
   const t = useTranslations("admin.videoReviews");
   const ty = useTranslations("admin.videoYoutube");
   const when = useWhen();
+  const manage = useAdminActionGuard("content.manage");
   const done = project.checklist.filter((item) => item.done).length;
   const step = project.checklist.find((item) => !item.done)?.label ?? project.stage;
   const dropped = Boolean(project.dropped_at);
@@ -46,6 +49,7 @@ function VideoRow({ project, onOpen }: { project: ProjectSummary; onOpen: (slug:
       <button type="button" className="text-left font-semibold underline-offset-2 hover:underline" onClick={() => onOpen(project.slug)}>{project.title}</button>
       <span className="block text-xs text-[var(--muted)]">{project.slug}</span>
       {project.series_slug && <span className="block text-xs text-[var(--muted)]">{project.compilation ? t("compilationOf", { series: project.series_slug }) : t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</span>}
+      {manage.allowed && <DeleteVideo project={project} compact onDeleted={onDeleted} />}
     </td>
     <td data-label={t("table.category")} className="px-4 py-3"><CategoryPill category={project.category} /></td>
     <td data-label={t("table.state")} className="px-4 py-3">
@@ -168,7 +172,7 @@ export function VideoBrowser({ onOpen, revision = 0 }: { onOpen: (slug: string) 
     {data && data.total === 0 && (filtered ? <p role="status">{t("noMatches")}</p> : <AdminEmptyState title={t("empty")} detail={t("emptyDetail")} />)}
     {data && data.total > 0 && <>
       <AdminDataTable label={t("browserTitle")} headers={COLUMNS.map((column) => t(`table.${column}`))}>
-        {data.items.map((project) => <VideoRow key={project.slug} project={project} onOpen={onOpen} />)}
+        {data.items.map((project) => <VideoRow key={project.slug} project={project} onOpen={onOpen} onDeleted={() => setReload((count) => count + 1)} />)}
       </AdminDataTable>
       <p className="text-sm text-[var(--muted)]">{t("browserCount", { total: data.total })}</p>
       {data.pages > 1 && <nav className="flex flex-wrap items-center gap-3" aria-label={t("page", { page: data.page, pages: data.pages })}>

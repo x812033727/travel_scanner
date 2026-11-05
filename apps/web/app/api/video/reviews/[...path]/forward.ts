@@ -22,8 +22,10 @@ const TIMEOUT_MS = 60_000;
 const PASSED_BACK = ["content-type", "retry-after", "www-authenticate"];
 const FILE_HEADERS = ["content-type", "content-length", "content-range", "accept-ranges", "etag", "last-modified"];
 const RANGE = /^bytes=\d*-\d*$/;
+// The languages a skipped dub may be asked again for (DubLocale in apps/api/app/video_reviews).
+const DUB_LOCALE = /^(?:en|ja|ko|es|pt|id|vi|th)$/;
 
-type Route = { kind: "project" | "review" | "file" | "download"; maxBytes: number };
+type Route = { kind: "project" | "review" | "file" | "download" | "dub-retry"; maxBytes: number };
 
 /** Which pipeline route a path and method are, or null for anything else. */
 export function reviewRoute(path: string[], method: string): Route | null {
@@ -33,6 +35,8 @@ export function reviewRoute(path: string[], method: string): Route | null {
   if (rest.length === 1 && rest[0] === "reviews" && method === "POST") return { kind: "review", maxBytes: JSON_MAX_BYTES };
   if (rest.length === 2 && rest[0] === "files" && SHA256.test(rest[1]) && method === "PUT") return { kind: "file", maxBytes: PART_MAX_BYTES };
   if (rest.length === 2 && rest[0] === "files" && SHA256.test(rest[1]) && method === "GET") return { kind: "download", maxBytes: 0 };
+  // Since 2026-11-01 the tool may ask for a skipped dub again on its maker's behalf (tool_retry_dub).
+  if (rest.length === 4 && rest[0] === "languages" && DUB_LOCALE.test(rest[1]) && rest[2] === "dub" && rest[3] === "retry" && method === "POST") return { kind: "dub-retry", maxBytes: JSON_MAX_BYTES };
   return null;
 }
 

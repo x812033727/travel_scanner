@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>每組都贏，總比率卻輸｜原來如此事務所</title>
+<style>
+:root{color-scheme:light;--ink:#16324a;--a:#157481;--b:#ad542a;--paper:#faf6e9}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 system-ui,"Microsoft JhengHei",sans-serif}main{max-width:1040px;margin:auto;padding:32px 24px 48px}h1{font-size:clamp(27px,4.2vw,42px);line-height:1.3;max-width:780px;margin:12px 0}h2{font-size:21px;margin:0 0 14px}.eyebrow{font-size:14px;color:#77562d}.lede{max-width:760px}.note{padding:12px 16px;border-left:4px solid #c38a2b;background:#fffaf0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}.card{background:white;padding:22px;border:1px solid #dacfb7;border-radius:14px;min-width:0}.card.a{border-top:5px solid var(--a)}.card.b{border-top:5px solid var(--b)}label{display:block;font-weight:650}input[type=range]{width:100%;margin:17px 0;accent-color:var(--a)}.b input{accent-color:var(--b)}.weight{font-weight:600;margin-bottom:14px}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;padding:7px 3px;border-bottom:1px solid #e9e1d0}th{font-weight:600}.result{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 8px}.result strong{font-size:32px}.track{height:18px;background:#eee9dc;border-radius:9px;overflow:hidden}.bar{height:100%;background:var(--a)}.b .bar{background:var(--b)}.presets{display:flex;gap:10px;flex-wrap:wrap}button{font:inherit;font-size:15px;background:white;color:var(--ink);border:1px solid #ad9a79;padding:10px 14px;border-radius:8px;cursor:pointer}button:hover,button:focus-visible{background:#eee4cf;outline:2px solid #8c7042;outline-offset:2px}.conclusion{font-size:23px;font-weight:700}.caption{font-size:14px;color:#586b78}a{color:#126176}footer{margin-top:28px;border-top:1px solid #d7cbb4;padding-top:18px;font-size:14px}#zero-note{color:#855018}@media(max-width:620px){main{padding:22px 16px}.grid{grid-template-columns:1fr;gap:14px}.card{padding:18px}button{flex:1 1 auto}table{font-size:14px}}
+</style></head>
+<body><main>
+<div class="eyebrow">原來如此事務所 · G108 原創數值小樣</div>
+<h1>每組都贏，<br>總比率怎麼反而輸？</h1>
+<p class="lede">固定兩種難度的答對率，只改各自做了多少簡單題。觀察整體排名會不會跟著改變。</p>
+<p class="note"><strong>這是虛構教學模型。</strong>每組總共 110 題；答對率是設定值，不是真實測驗或教學成效資料。</p>
+<div class="presets"><button type="button" data-preset="reversal">組內 A 贏，合計 B 贏</button><button type="button" data-preset="matched">改成相同難度組成</button><button type="button" data-preset="exchanged">交換兩組的題目組成</button></div>
+<div class="grid">
+<section class="card a"><h2>A 的答題紀錄</h2><label for="a-easy">簡單題數</label><input id="a-easy" type="range" min="0" max="110" step="10" value="10"><div id="a-weight" class="weight"></div><table><thead><tr><th>難度</th><th>設定答對率</th><th>答對／題數</th></tr></thead><tbody><tr><td>簡單</td><td>90%</td><td id="a-easy-count"></td></tr><tr><td>難</td><td>20%</td><td id="a-hard-count"></td></tr></tbody></table><div class="result"><span id="a-count"></span><strong id="a-percent"></strong></div><div class="track"><div id="a-bar" class="bar"></div></div></section>
+<section class="card b"><h2>B 的答題紀錄</h2><label for="b-easy">簡單題數</label><input id="b-easy" type="range" min="0" max="110" step="10" value="100"><div id="b-weight" class="weight"></div><table><thead><tr><th>難度</th><th>設定答對率</th><th>答對／題數</th></tr></thead><tbody><tr><td>簡單</td><td>80%</td><td id="b-easy-count"></td></tr><tr><td>難</td><td>10%</td><td id="b-hard-count"></td></tr></tbody></table><div class="result"><span id="b-count"></span><strong id="b-percent"></strong></div><div class="track"><div id="b-bar" class="bar"></div></div></section>
+</div>
+<p id="conclusion" class="conclusion" aria-live="polite"></p>
+<p>在預設例子中，A 的難題多、B 的簡單題多。合計比率會受兩種難度各佔多少影響，不能直接平均兩個百分比。</p>
+<p id="zero-note" hidden>有一種難度設為 0 題時，那一格沒有觀察比率；表中的百分比仍只是模型設定。</p>
+<p class="caption">滑桿是在重算另一組虛構資料，沒有真的把人換題或重新測驗。相同組成可展示加權的差別，仍不能單憑這個例子判斷因果。</p>
+<footer><a href="../../index.html#M10001">回到素材 M10001</a> · <a href="narration-draft.json">旁白草稿</a> · <a href="https://www.stat.berkeley.edu/~stark/SticiGui/Text/experiments.htm">機制來源：Stark／UC Berkeley，Simpson's Paradox</a><p>原創資料與介面；非來源圖表、實驗或成片。沒有音訊，片長仍須試讀。</p></footer>
+</main><script src="demo.js"></script></body></html>

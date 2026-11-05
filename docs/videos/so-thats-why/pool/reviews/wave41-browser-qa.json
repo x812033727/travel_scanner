@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T17:38:09.913Z",
+  "result": "PASS",
+  "selected": 3320,
+  "index_html_sha256": "8d4a9d17b2273a959654cb2685d5c7d47772a1a4de208530c497d57eb8fa7be1",
+  "source_sample": {
+    "id": "S41-001",
+    "urls": [
+      "https://doi.org/10.3133/pp1867G"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave41-desktop.png",
+    "wave41-source-desktop.png",
+    "wave41-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "桌面和390像素手機統計3320個入選、425案、2908個使用來源與153個別名。桌面搜尋S41-001顯示重力與熔岩湖資料，手機統計兩欄，標題可換行。"
+}

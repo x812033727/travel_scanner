@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Any
 
@@ -50,7 +50,8 @@ async def test_duffel_normalizes_offer_and_refreshes_with_get_offer() -> None:
         "base_amount": "12000.00",
         "tax_amount": "3000.00",
         "total_currency": "TWD",
-        "expires_at": "2026-11-01T00:00:00Z",
+        # Always in the future: a fixed date made the refreshed offer expire on 2026-11-01.
+        "expires_at": (datetime.now(UTC) + timedelta(days=30)).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "conditions": {
             "change_before_departure": {"allowed": True},
             "refund_before_departure": {"allowed": False},

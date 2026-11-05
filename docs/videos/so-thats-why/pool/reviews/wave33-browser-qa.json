@@ -1,0 +1,37 @@
+{
+  "tested_on": "2026-11-02T11:28:28.198Z",
+  "result": "PASS",
+  "selected": 3139,
+  "index_html_sha256": "a31360df83d5222f749a3eb67972ed0d5e8d8b029d31e2a729cca0808836809e",
+  "source_sample": {
+    "id": "R33001",
+    "urls": [
+      "https://www.nature.com/articles/s41467-021-21326-w",
+      "https://doi.org/10.1126/sciadv.1601247"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave33-desktop.png",
+    "wave33-source-desktop.png",
+    "wave33-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": [
+    "桌面與手機顯示3139入選、323組題案與147別名；搜尋與篩選都能在螢幕寬度內操作。",
+    "輸入R33001只顯示封信一筆，展開可見估時、研究條件與呈現方式；來源連結、E2016導向P024及其原題與定位均由瀏覽器測試核對。"
+  ]
+}

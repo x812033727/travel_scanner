@@ -1,0 +1,285 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave21-everyday-physics.json",
+      "sha256": "d2553972eb1e59c8a006096adf68e5f701b55c6e0bdf387b6db3fa29fad5537f"
+    },
+    {
+      "file": "reviews/wave21-everyday-physics-author.json",
+      "sha256": "e9871957f8225713c6c65515c686b96ff5c6ff94349be1d1eb8fecca4b92d424"
+    },
+    {
+      "file": "reviews/wave21-everyday-physics-themes.json",
+      "sha256": "3e1de3a521b1cca7cd15ec53ce301495263b204c47c7d6e000913d8fc06d1a95"
+    },
+    {
+      "file": "reviews/wave21-life-reviews-everyday-physics.json",
+      "sha256": "c819b3bbe7bdefcf04d3175e13fa5d95ee289ca9d0d9cae79d9523f5ae16f3e4"
+    },
+    {
+      "file": "batches/wave21-perception.json",
+      "sha256": "483db36c371abf2268c1c74c2a525f613b2c9fc72de8d579c377cd80fb131b07"
+    },
+    {
+      "file": "reviews/wave21-perception-author.json",
+      "sha256": "17e8ae69aad763940145b4e3b4987d3c77afbd0071fb05a7736a711eb3f730b7"
+    },
+    {
+      "file": "reviews/wave21-perception-themes.json",
+      "sha256": "b2efc3da284c3fd08b614033fb1e2b8d0ef28693922c2feeb328c34828fbb221"
+    },
+    {
+      "file": "reviews/wave21-physics-reviews-perception.json",
+      "sha256": "3aff54d503ebd1d0ff405a6e87051a7de8c4cadeb0f2250fc8f251fe94fda1fe"
+    },
+    {
+      "file": "batches/wave21-space.json",
+      "sha256": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b"
+    },
+    {
+      "file": "reviews/wave21-space-author.json",
+      "sha256": "9bb32ea3c5beb7a9ae0b2fbc984f3b252beb79f5acbcdd5c444724d711bf413b"
+    },
+    {
+      "file": "reviews/wave21-space-themes.json",
+      "sha256": "c33569dda162bd6e23d457e65b6c62558cac2ec599bca98c4b67528300b384b5"
+    },
+    {
+      "file": "reviews/wave21-physics-reviews-space.json",
+      "sha256": "dbd0babd36ba5e3fc8bab528c37c1439761d645033198d3fc40525b57948d1fc"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave21-everyday-physics.json",
+      "author": "pool_physics",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 5,
+      "top5_directed_pairs": 25,
+      "author_pairs": 17,
+      "not_added_count": 17,
+      "theme_count": 4
+    },
+    {
+      "batch": "batches/wave21-perception.json",
+      "author": "pool_life_tech",
+      "reviewer": "pool_physics",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 20,
+      "not_added_count": 20,
+      "theme_count": 3
+    },
+    {
+      "batch": "batches/wave21-space.json",
+      "author": "root",
+      "reviewer": "pool_physics",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 12,
+      "not_added_count": 8,
+      "theme_count": 4
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave21-everyday-physics.json",
+          "sha256": "d2553972eb1e59c8a006096adf68e5f701b55c6e0bdf387b6db3fa29fad5537f"
+        },
+        {
+          "file": "batches/wave21-perception.json",
+          "sha256": "483db36c371abf2268c1c74c2a525f613b2c9fc72de8d579c377cd80fb131b07"
+        },
+        {
+          "file": "batches/wave21-space.json",
+          "sha256": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b"
+        }
+      ],
+      "new_source_rows": 15,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "d6976111a1b054a51a3728fa403c0dfad3adf844902d436fb052aa907d0df1d8",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "decision": "No exact URL, normalized-title or DOI-string matches in the specified historical and within-new comparison. This is not proof of independent studies or semantic bibliography uniqueness.",
+      "related_sources": [
+        {
+          "ids": [
+            "A21-S004",
+            "A21-S005"
+          ],
+          "decision": "Original flash-lag report and subsequent Technical Comments/Response are linked debate, not two independent replications."
+        },
+        {
+          "ids": [
+            "R21-S004",
+            "R21-S005"
+          ],
+          "decision": "ESA overview and freefall report describe the same LISA Pathfinder mission; do not count as independent experiments."
+        }
+      ],
+      "reviewer": "root",
+      "created_on": "2026-11-02"
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave21-everyday-physics.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave21-perception.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave21-space.json",
+      "source_rows": 5,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "db3c2209e84f44cc79fa32ed1f6459200512a9eea3f24ca941dff4dd2b98c534",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source": "PLOS ONE doi:10.1371/journal.pone.0009709",
+      "file": ".cache/wave21-life-weight2010-paragraphs.json",
+      "scope": "段34–54 Results/Discussion、Materials and Methods；無圖像目讀。",
+      "finding": "full-vision與no-vision是不同人且任務不同：後者換同一中塊、等待5秒。作者段41保留延遲替代解釋，因此不能把結果說成單獨證明視覺回饋是唯一學習條件。",
+      "role": "root targeted non-author source reading",
+      "sha256": "05e494a8d43788c3de005cbeccc3521c53eba430b8d850eb6176088b0e54b06b"
+    },
+    {
+      "source": "PRL106,108301 doi:10.1103/PhysRevLett.106.108301",
+      "file": ".cache/wave21-physics-granular.txt",
+      "scope": "pp1–4主文及Fig1–6文字圖說；未讀references/SI，另目讀p2 Fig2。",
+      "finding": "在測試範圍內，遠端剪帶啟動時，低於無剪切門檻的施力能帶動探針，逆於剪切方向且快於局部背景流。機械擾動/類Eyring解釋非直接力鏈量測；不外推任意小力或所有顆粒材質。",
+      "role": "root targeted non-author source reading",
+      "sha256": "2d052197791f655ccbcef2886a682211c44ed808ffb5f0c6a56d7ea6efafacd3",
+      "viewed_images": [
+        {
+          "file": ".cache/wave21-physics-granular-p2.png",
+          "sha256": "7fc54b437a921454d9428e630b78e4dd192e47249c83a1992085e66bac11b657"
+        }
+      ]
+    }
+  ],
+  "editorial_summary": "本輪補繩結受拉與成結空間、遠端剪流、薄片飛行、感知校準及太空控制。保留可見的實驗對照，不按物件、參數或錯覺名稱拆核；閃光位置題分清兩組實驗的起始條件，重量題不把不同組的等待差異說成視覺單因。薄片短暫抬升與視網膜穩像只留素材段，未強配獨立影片。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並對其他作者兩份來源作定點閱讀。space由root撰寫、pool_physics非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 65,
+      "changes": [
+        {
+          "proposal": "W21P-T02",
+          "before": 105,
+          "after": 95,
+          "reason": "縮短窄盒限制穿繞的回顧；新機制圖解保留。"
+        },
+        {
+          "proposal": "W21A-T01",
+          "before": 115,
+          "after": 100,
+          "reason": "刪掉下一章會解釋的主觀分界重述。"
+        },
+        {
+          "proposal": "W21A-T03",
+          "before": 110,
+          "after": 95,
+          "reason": "相同前史改為持續圖記，不另重播。"
+        },
+        {
+          "proposal": "W21R-T02",
+          "before": 105,
+          "after": 90,
+          "reason": "重述門檻改成必要研究條件圖註。"
+        },
+        {
+          "proposal": "W21R-T04",
+          "before": 100,
+          "after": 90,
+          "reason": "縮短兩種居中結果的回顧；受力對照保留。"
+        }
+      ],
+      "scope": "紙上題案修剪；不是實際音訊刪節或已完成試讀。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "semantic_revision_review": {
+    "first_input_sha256": "cc0bccd7bff1f9ec113c89366bb764e3ec9f03bd38f1c3e7dd547cba5188a50c",
+    "current_input_sha256": "856c8adcb93f141194c09b4d5faea1c687df0113c9b9afc485c826e6c4984cfa",
+    "changed_new_top5": [
+      {
+        "id": "A21004",
+        "before": [
+          {
+            "id": "P14006",
+            "cosine": 0.709346
+          },
+          {
+            "id": "P20007",
+            "cosine": 0.656587
+          },
+          {
+            "id": "P143",
+            "cosine": 0.652746
+          },
+          {
+            "id": "B17006",
+            "cosine": 0.648656
+          },
+          {
+            "id": "LEG-S27",
+            "cosine": 0.6443
+          }
+        ],
+        "after": [
+          {
+            "id": "P14006",
+            "cosine": 0.6699
+          },
+          {
+            "id": "P20007",
+            "cosine": 0.663678
+          },
+          {
+            "id": "P143",
+            "cosine": 0.650028
+          },
+          {
+            "id": "B15001",
+            "cosine": 0.637357
+          },
+          {
+            "id": "A5025",
+            "cosine": 0.633457
+          }
+        ],
+        "membership_changed": true
+      }
+    ],
+    "requires_reviewer_readback": true,
+    "status": "PASS_REVISED_TOP5_CHECKED_AGAINST_FINAL_NONAUTHOR_RECEIPTS"
+  }
+}

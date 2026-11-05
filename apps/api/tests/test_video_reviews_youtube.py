@@ -487,7 +487,8 @@ async def test_private_only_rejects_existing_duplicate_and_unreviewed_links(
     assert await denied_code(_private_link_session()) == "video_youtube_private_package_exists"
     reviews_lookup.return_value = [final]
     project.youtube_sync = {
-        "status": "running", "lease_until": (datetime.now(UTC) + timedelta(minutes=5)).isoformat()
+        "status": "running",
+        "lease_until": (datetime.now(UTC) + timedelta(minutes=5)).isoformat(),
     }
     assert await denied_code(_private_link_session()) == "video_youtube_private_sync_running"
 
@@ -751,9 +752,7 @@ async def test_the_backfill_reports_every_video_and_writes_only_with_apply(
     assert (after["private"], after["gone"], after["elsewhere"]) == (None, None, None)
     assert (after["timed"], after["dropped"], after["unuploaded"]) == (NOON, None, None)
     async with factory() as session:
-        audits = list(
-            await session.scalars(select(AdminAuditLog).order_by(AdminAuditLog.target))
-        )
+        audits = list(await session.scalars(select(AdminAuditLog).order_by(AdminAuditLog.target)))
     assert [(row.action, row.target, row.actor_user_id) for row in audits] == [
         ("video_youtube_publish_time_backfilled", "video_project:public", None),
         ("video_youtube_publish_time_backfilled", "video_project:scheduled", None),
@@ -985,6 +984,8 @@ async def test_a_week_after_the_upload_only_the_mp4_leaves_the_store(
     )
     published = AsyncMock(return_value=[project])
     monkeypatch.setattr(admin_service, "_published_before", published)
+    # Its languages are not decided: the whole-video purge below never takes it.
+    monkeypatch.setattr(admin_service, "_on_youtube", AsyncMock(return_value=[project]))
     monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[confirmed, cut]))
     session = AsyncMock()
 
@@ -994,7 +995,15 @@ async def test_a_week_after_the_upload_only_the_mp4_leaves_the_store(
     assert published.await_args.args[1] == now - timedelta(days=7)
     assert store.path("v", final) is not None and store.path("v", preview) is not None
 
+    # A week on, but Drive does not hold it yet: the mp4 may be the host's only copy (owner,
+    # 2026-11-03), so it stays until the backup reports done, and with backups off it never goes.
     project.youtube_publish_at = now - timedelta(days=7)
+    for record in (None, {"state": "pending"}, {"state": "partial"}, {"state": "failed"}):
+        project.backup = record
+        assert await admin_service.prune_published_previews(session, store, now) == {}
+    assert store.path("v", final) is not None and store.path("v", preview) is not None
+
+    project.backup = {"state": "done"}
     removed = await admin_service.prune_published_previews(session, store, now)
     assert removed == {"v": sorted([final, preview])}
     assert store.path("v", final) is None and store.path("v", preview) is None
@@ -1009,6 +1018,89 @@ async def test_a_week_after_the_upload_only_the_mp4_leaves_the_store(
     again = _file(store, "v", b"final cut")
     assert again == final
     assert await admin_service.prune_published_previews(session, store, now) == {"v": [final]}
+
+
+@pytest.mark.asyncio
+async def test_a_video_done_with_for_a_week_loses_every_file_here_at_once(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Owner, 2026-11-03: on YouTube, in Drive, languages decided and every chosen part made or
+    skipped, a dub uploaded in Studio: the host keeps nothing of it. Owner, 2026-11-04: not the
+    moment that holds but PREVIEW_RETENTION after, since the owner approves the languages batch
+    before downloading the package that carries the dubs to Studio."""
+    store = _store(tmp_path)
+    final = _file(store, "v", b"final cut")
+    caption = _file(store, "v", b"1\n00:00:00,000 --> 00:00:01,000\nhi\n")
+    dub = _file(store, "v", b"english dub")
+    now = datetime(2026, 11, 3, tzinfo=UTC)
+    project = _project(
+        youtube_video_id=VIDEO_ID,
+        locales={"en": {"metadata": False, "captions": True, "dub": True}},
+        locales_decided_at=now - timedelta(days=1),
+        backup={"state": "done", "checked_at": (now - timedelta(hours=2)).isoformat()},
+    )
+    confirmed = VideoReview(
+        gate="publish",
+        status="approved",
+        decided_at=now - timedelta(days=1),
+        payload={},
+        files=[{"role": "final", "sha256": final, "size": 9, "content_type": "video/mp4"}],
+    )
+
+    def batch(status: str) -> VideoReview:
+        return VideoReview(
+            gate="languages",
+            status=status,
+            created_at=now - timedelta(hours=1),
+            decided_at=now if status == "approved" else None,
+            payload={
+                "locales": {
+                    "en": {
+                        "captions": "ready",
+                        "dub": {"status": "ready", "file_role": "dub_en", "sha256": dub},
+                    }
+                }
+            },
+            files=[
+                {"role": "captions_en", "sha256": caption, "size": 9, "content_type": "text/plain"},
+                {"role": "dub_en", "sha256": dub, "size": 11, "content_type": "audio/mp4"},
+            ],
+        )
+
+    reviews: list[VideoReview] = [confirmed, batch("pending")]
+    monkeypatch.setattr(admin_service, "_on_youtube", AsyncMock(return_value=[project]))
+    monkeypatch.setattr(admin_service, "_published_before", AsyncMock(return_value=[]))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(side_effect=lambda *_a, **_k: reviews))
+    session = AsyncMock()
+
+    # The batch waits for the owner: everything stays.
+    assert await admin_service.prune_published_previews(session, store, now) == {}
+    # Approved (the dub is uploaded in Studio), but Drive does not hold it yet.
+    reviews[1] = batch("approved")
+    project.backup = {"state": "pending"}
+    assert await admin_service.prune_published_previews(session, store, now) == {}
+    project.backup = {"state": "done", "checked_at": (now - timedelta(hours=2)).isoformat()}
+    # A dub asked for again still needs its files.
+    project.dub_retries = {"en": {"status": "requested"}}
+    assert await admin_service.prune_published_previews(session, store, now) == {}
+    project.dub_retries = {}
+    # Done with, but only just: the batch was approved at ``now`` and the owner has yet to
+    # download the package (daily-ai-20261103 lost its files 20 minutes after its backup).
+    assert await admin_service.prune_published_previews(session, store, now) == {}
+    a_day_short = now + admin_service.PREVIEW_RETENTION - timedelta(days=1)
+    assert await admin_service.prune_published_previews(session, store, a_day_short) == {}
+    # A backup report with no readable time keeps everything.
+    week = now + admin_service.PREVIEW_RETENTION
+    project.backup = {"state": "done"}
+    assert await admin_service.prune_published_previews(session, store, week) == {}
+    # A backup checked again later restarts the week.
+    project.backup = {"state": "done", "checked_at": (now + timedelta(days=3)).isoformat()}
+    assert await admin_service.prune_published_previews(session, store, week) == {}
+    project.backup = {"state": "done", "checked_at": (now - timedelta(hours=2)).isoformat()}
+    removed = await admin_service.prune_published_previews(session, store, week)
+    assert removed == {"v": sorted([final, caption, dub])}
+    assert not store.holds_files("v")
+    assert await admin_service.prune_published_previews(session, store, week) == {}
 
 
 @pytest.mark.asyncio

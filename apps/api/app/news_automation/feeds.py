@@ -572,6 +572,56 @@ def summary_article(entry: Entry) -> Article:
     return Article(title=entry.title, text=entry.summary.strip(), links=[])
 
 
+def follow_only(source: object) -> bool:
+    """Whether a source is never scanned and only names a host whose pages may be followed
+    from other sources' pages as evidence (GitHub: a repository is read only when a report
+    links to it, never from a listing of its own)."""
+    config = getattr(source, "config_json", None) or {}
+    return bool(config.get("follow_only"))
+
+
+def repository_min_stars(source: object) -> int | None:
+    """The stars a GitHub repository needs before its page counts as evidence, or None."""
+    config = getattr(source, "config_json", None) or {}
+    raw = config.get("repository_min_stars")
+    return raw if isinstance(raw, int) and not isinstance(raw, bool) and raw >= 0 else None
+
+
+# Paths under github.com that are site pages, not an owner's repository.
+GITHUB_RESERVED_OWNERS = frozenset(
+    {
+        "about", "apps", "collections", "enterprise", "events", "explore", "features",
+        "login", "marketplace", "orgs", "pricing", "settings", "site", "sponsors", "topics",
+        "trending", "users",
+    }
+)  # fmt: skip
+
+
+def repository_root(url: str) -> str | None:
+    """``https://github.com/<owner>/<repo>`` for a link anywhere inside a repository (a
+    README anchor, ``/tree/main``), or None for a link that is not inside one."""
+    parts = urlsplit(url)
+    segments = [piece for piece in parts.path.split("/") if piece]
+    if len(segments) < 2 or segments[0].casefold() in GITHUB_RESERVED_OWNERS:
+        return None
+    owner, repo = segments[0], segments[1].removesuffix(".git")
+    return f"https://{parts.hostname}/{owner}/{repo}" if repo else None
+
+
+_STAR_COUNTER = re.compile(
+    rb"""<[^>]*\bid=["']repo-stars-counter-star["'][^>]*>""", re.IGNORECASE
+)
+_TITLE_NUMBER = re.compile(rb"""\btitle=["']([0-9][0-9,]*)["']""")
+
+
+def github_star_count(body: bytes) -> int | None:
+    """A repository page's star count, from the counter's exact ``title`` ("1,234"), or None
+    when the page has no counter (GitHub changed its markup, or this is no repository)."""
+    counter = _STAR_COUNTER.search(body)
+    number = _TITLE_NUMBER.search(counter.group(0)) if counter else None
+    return int(number.group(1).replace(b",", b"")) if number else None
+
+
 def _strings(value: object) -> list[str]:
     return [str(item) for item in value if str(item)] if isinstance(value, list) else []
 

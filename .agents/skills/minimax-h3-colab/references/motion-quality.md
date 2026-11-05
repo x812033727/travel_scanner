@@ -43,7 +43,7 @@ Ref2VA（只有設定圖、沒有首格）用六段格式（`subject_definitions
 | 6 | 158 | 6.58 | 畫面上有人說話；兩拍動作 |
 | 8 | 192 | 8.00 | 長句或走位 |
 
-Colab 的畫布：`width`／`height` 要 32 的倍數、面積 ≤ 1344×768。**16:9 的首格用 `1312×736`**（1.783，離 16:9 不到 0.005；0.97 MP 就是訓練尺寸；過 `qc.mjs` 的 1280×720 下限）。1344×768 是 7:4，`MiniMaxH3ImageToVideo` 會把首格**拉伸**到畫布（ComfyUI 官方：first_frame 比例不同就 stretch）；1280×720 不是 32 的倍數（720/32＝22.5），runner 會拒絕。`scripts/fit_first_frame.sh` 把關鍵影格裁到畫布比例；只有設定圖的 reference 模式才用 1344×768。解析度低於訓練尺寸會整片變軟（ComfyUI 官方：soft frames 多半是解析度不是步數）。
+Colab 的畫布：`width`／`height` 要 32 的倍數、面積 ≤ 1920×1088（上游 notebook 與 runner 寫死官方的 1344×768，`patch_notebook.py` 提到 1920×1088；2026-10-28 在 A100 高 RAM 實測 FL2VA 與 Ref2VA 都能跑，更清楚、臉更穩，一支 6 秒約 13 分鐘）。**16:9 的首格用 `1920×1088`，趕時間用 `1312×736`**（1.783，離 16:9 不到 0.005；0.97 MP 就是訓練尺寸；過 `qc.mjs` 的 1280×720 下限；約 4–5 分鐘）。1344×768 是 7:4，`MiniMaxH3ImageToVideo` 會把首格**拉伸**到畫布（ComfyUI 官方：first_frame 比例不同就 stretch）；1280×720 不是 32 的倍數（720/32＝22.5），runner 會拒絕。`scripts/fit_first_frame.sh` 把關鍵影格裁到畫布比例；只有設定圖的 reference 模式才用 1344×768。解析度低於訓練尺寸會整片變軟（ComfyUI 官方：soft frames 多半是解析度不是步數）。
 
 ## 四、Colab 取樣設定（`scripts/patch_notebook.py` 的三個 profile）
 

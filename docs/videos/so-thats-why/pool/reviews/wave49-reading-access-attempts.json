@@ -1,0 +1,41 @@
+{
+  "status": "ACCESS_ATTEMPTS_ONLY_NO_NEW_READING_OR_CORE",
+  "checked_on": "2026-11-03",
+  "reviewer": "root",
+  "attempts": [
+    {
+      "source_id": "R45-S006",
+      "doi": "10.1111/1467-9280.24483",
+      "urls": [
+        "https://knowledge.lancashire.ac.uk/id/eprint/39125/",
+        "https://knowledge.lancashire.ac.uk/id/eprint/22467/"
+      ],
+      "result": "Both institutional records match the 2003 article and explicitly state that full text is not available from the repository. Bibliography and abstract only; no original article body retrieved."
+    },
+    {
+      "source_id": "R45-S007",
+      "doi": "10.1016/j.visres.2005.06.018",
+      "urls": [
+        "https://knowledge.lancashire.ac.uk/id/eprint/22452/",
+        "https://www.sciencedirect.com/science/article/pii/S0042698905003068",
+        "https://api.elsevier.com/content/article/pii/S0042698905003068?httpAccept=text/xml"
+      ],
+      "result": "Institutional record states no full text. ScienceDirect direct request returned HTTP 403. Anonymous Elsevier API returned HTTP 200 with 1972 bytes containing coredata only: matching title/DOI and open-access metadata, but no article body. A full-text-retrieval-response element name is not evidence of full text.",
+      "metadata_cache": ".cache/wave49-root-S007-api.xml",
+      "metadata_sha256": "294c93712e74cdf982a32186b706b749d5710d22ce171fde22ee902902e34673"
+    },
+    {
+      "source_id": "R45-S013",
+      "doi": "10.1037/0096-1523.9.3.413",
+      "result": "Title and author searches surfaced a different 1988 child-reading article. It was not substituted for the specified 1983 original. No original full text retrieved in this pass."
+    }
+  ],
+  "unchanged_gaps": [
+    "R45-S005",
+    "R45-S006",
+    "R45-S007",
+    "R45-S011",
+    "R45-S013"
+  ],
+  "effect": "No source reading, candidate claim, selected count or gap status changed. Together with wave48-reading-access-attempts.json, this records the latest unsuccessful access attempts for the five original articles."
+}

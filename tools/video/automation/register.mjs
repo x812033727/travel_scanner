@@ -243,6 +243,20 @@ export const TOLD_TO_ONE_VIEWER = `Told to one viewer (奇聞檔案局 and the b
 
 // A writing-only route inside the existing slides format. This does not alter the storytelling
 // register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.
+/**
+ * The words of an AI video's thumbnail (owner, 2026-11-01; templates.mjs THUMB_AI_LAYOUT): the
+ * AI look sets one headline line over the picture and one sub line, and writes the series' name
+ * itself. Sent with the daily brief's, the teaching route's and the value rules.
+ */
+export const AI_THUMBNAIL_WORDS = `"data.headline" is ONE line, no line break: the subject named
+  first (the product, the company, the term: 「Gemini 4」「ChatGPT」「溫度」), then **the hook** in
+  double asterisks, about nine characters in all (「Google 最強**先不給你**」「金鑰只選了**數字 4**」).
+  The hook says what the title does not. "data.sub" is one line of at most 24 characters with the
+  second fact. "data.tag" is left out for a daily brief (the tool writes the series' name and the
+  date); for another AI video it is the tool or the term the episode is about, a few words
+  (「Claude Code」「Temperature」), or left out. "data.layout" is "ai" (the tool sets it too).`;
+export const AI_THUMBNAIL_RULE = `- The thumbnail is in the AI look. ${AI_THUMBNAIL_WORDS}`;
+
 export const TEACHING_RULES = `
 Teaching route (plain slides; writing only):
 - For a tool tutorial or a concept taught through a worked example, the planner writes
@@ -278,7 +292,8 @@ Teaching route (plain slides; writing only):
   card states or show the actual diagram on a public source page. No diagram/screenshot file
   templates or invented asset paths; omit an optional capture focus selector when none is known.
   Do not add a shot to satisfy an illustration quota. Use a real
-  screencast capture for the thumbnail when available, otherwise a text-only thumb.
+  screencast capture for the thumbnail when available, otherwise a text-only thumb; its words
+  follow the AI look below.
 - The illustration quota, chapter-specific places and storytelling register below apply only
   to illustrated storytelling, not this teaching route. Its existing plain-slides QA still
   limits a state to 15 seconds; aim for meaningful reveals every 5 to 8 seconds without hiding
@@ -446,8 +461,9 @@ route keeps its condensation and story rules):
   gets its own icon. A new state every 5 to 8 seconds, never longer than 15. Run codes, file
   hashes and source stamps (「（p1）」「實跑 2026-10-21｜2.1.295」) never appear in card text or
   narration: they go in the card's \`source\` field or the description. A short tutorial uses
-  the paper theme (\`theme: "paper"\`); the thumbnail's big words (at most six) add what the
-  title did not say, over a real official page captured by a \`screencast\` scene.
+  the paper theme (\`theme: "paper"\`); the thumbnail is in the AI look below, over a real
+  official page captured by a \`screencast\` scene.
+${AI_THUMBNAIL_RULE}
 `.trim();
 
 // What a slides video has to be worth to its viewer, whichever route it takes. The owner's review
@@ -635,6 +651,74 @@ rules and a route's rules disagree, these win):
   in a tutorial only), or an
   outcome with no proof, for a
   writer revision, or for a new plan when the example itself is at fault; it never repairs one by inventing a fact, a run or an example.
+- An AI video (category ai-news, ai-terms or tutorial) has the AI look's thumbnail: "data.headline"
+  one line, the subject named, then **the hook** the title lacks, about nine characters in all;
+  "data.sub" one line of at most 24 characters; "data.layout": "ai".
+`.trim();
+
+// The daily AI news brief (a daily-ai-YYYYMMDD slug; .agents/skills/youtube-video/references/
+// daily-brief.md, the owner's format of 2026-10-29, made by the host worker from a daily request
+// since the same day). A news programme of five to eight stories is neither a tutorial nor one
+// story, so its planner, writer, verifier and listener (variant "daily", prompts.mjs) read these
+// in place of TEACHING_RULES, TEACHING_FLOW_RULES and VALUE_RULES; the register and the template
+// guide stay, these rules taking precedence where they disagree. The lessons of the first episode
+// (daily-ai-20261028) are the last two items.
+export const DAILY_BRIEF_RULES = `
+Daily brief (a daily-ai-YYYYMMDD video: the AI and technology news of one day in about ten
+minutes; owner, 2026-10-29). It is the one exception to "one video, one story": five to eight
+stories, one chapter each, the way a news programme runs. What holds it together is ONE viewpoint
+asked of every story, "what does this change for a viewer in Taiwan" (can they use it, does it
+cost money, must they be careful), and the closing take answers it. Where these rules and the
+register, the narrative rules or the template guide below disagree, these rules win: there is no
+「你以為…其實」 turn to force, no condensation of one scene, no shots and no single protagonist.
+- The stories are "daily_brief.stories" only: the site's published ai-news and tech-news articles
+  of "daily_brief.news_date", each read in "sources" (a page marked failed was not read: leave its
+  story out). Every fact comes from those articles and the official pages they cite; nothing from
+  memory, no story the list does not hold. Several articles about one event (a company's results
+  and the model it launched that day) are one story, told from the fullest article.
+- Selection and order are the editorial judgment YouTube's inauthentic-content policy looks for:
+  never the order of time or of the list. Rank by how many Taiwanese viewers a story touches,
+  whether they can use it now, money and security. Leave out a rumour with no official source,
+  results figures that change nothing for the viewer, and any crypto price (the site never
+  discusses prices).
+- The opening, 30 to 45 seconds: the first sentence is the biggest story (the date, who, what),
+  then at most two more headlines, one sentence each, each stopping before its impact: three
+  headlines in all at most. Never 「今天有七則」「第一則…」「接下來依序看」 or any other count or
+  table of contents. The channel intro plays after the opening.
+- Each story is ONE chapter of 60 to 90 seconds, named by the event itself (「微軟單季從 OpenAI
+  收到 100 億美元」), never 頭條, 其他新聞 or 總結. It opens on one linking sentence from the
+  story before (the same company, the same kind of impact, a contrast), never 「下一則新聞」
+  「再來看」, then the date, who and what (「10 月 28 日，Google 發表了 Gemini 4 Carbon」). Then
+  what it changes for a viewer in Taiwan: available or not, paid or not, a risk or not; where the
+  sources do not say, say so plainly (「台灣什麼時候開放，官方還沒講」) and never guess an
+  availability, a date or a price. Then ONE thing the viewer can do (the setting to open, where to
+  apply, what not to do yet), or what to watch for when there is nothing to do.
+- At most two numbers spoken per story; specifications, scores and lists go on a card. What a
+  company says of itself (a benchmark, a user count, "the best", "the fastest") is told as its
+  claim (「Google 說」「根據 OpenAI 的說法」), never as settled fact.
+- The last chapter is 我的看法, three to five sentences in the owner's voice: which story matters
+  most today and why, one sentence admitting what is still uncertain, and one question the viewer
+  can answer in a comment. It never says what the next video is about.
+- At least 8 minutes, aimed at about 10. Plain slides: no "shot" scenes and no illustration quota,
+  so no card state stays up longer than 15 seconds (the final check measures it); reveal one item
+  per sentence. Every story has at least one card whose "source" names its official page or the
+  site article; rotate big, compare, stats, steps and quote, and no two stories in a row open on
+  the same kind of card. The thumbnail names no "shot" and no "capture": the tool puts a picture
+  in it. Its words follow the AI look: ${AI_THUMBNAIL_WORDS}
+- The paper look with the key band, as the first episode had (owner, 2026-10-30): "theme": "paper"
+  (the tool sets it too), and every scene carries its key band: "data.key" on a scene with one
+  state, "data.keys" with one line a state on a scene with reveals (one state plus one per reveal
+  after the first line). Each line is at most 24 characters on one line, the narration of that
+  state condensed, for people scrolling with the sound off.
+- "category": "ai-news". youtube.description opens with one sentence disclosing that the narration
+  is an AI-synthesized voice and the content is compiled from official sources, then the hook; the
+  site articles are listed through "sources" (one entry per article, plus each official page a card
+  names), which the tool appends to the description.
+- Cards that fit (the first episode): a two-line big card carries no "icon"; its "sub" is said in
+  one short line; a steps card's "detail" is about ten characters. The layout check does not see a
+  second line hidden under the footer.
+- Dropping a line that carries a "reveal" drops the item it revealed too: a scene's reveals must
+  equal its items, or the render refuses the scene.
 `.trim();
 
 // The words the audio check has misheard on this channel, each with the wording that passed

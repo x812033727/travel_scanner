@@ -64,6 +64,11 @@ export function curioProblems(doc) {
 
 /** What a 奇聞檔案局 episode should still have, as lint warnings: its music bed. None for any other video. */
 export function curioWarnings(doc) {
-  if (!isCurio(doc) || doc.music) return [];
-  return [{ path: "music", message: `a 奇聞檔案局 episode carries a music bed under the narration, as the brand stories do (owner, 2026-10-19): add "music": ${JSON.stringify(CURIO_MUSIC)} and run the music step (skill curio-episode)` }];
+  if (!isCurio(doc)) return [];
+  const warnings = [];
+  // The local route's default is CC, so an episode has to say so (the owner, 2026-10-31).
+  // The owner, 2026-11-04: 奇聞檔案局 no longer burns subtitles in (zh-TW is a CC track like the rest).
+  if (doc.subtitles?.burn_in === true) warnings.push({ path: "subtitles.burn_in", message: '奇聞檔案局 no longer burns its zh-TW subtitles in (owner, 2026-11-04): write "subtitles": { "burn_in": false } or leave it out' });
+  if (doc.music) return warnings;
+  return [...warnings, { path: "music", message: `a 奇聞檔案局 episode carries a music bed under the narration, as the brand stories do (owner, 2026-10-19): add "music": ${JSON.stringify(CURIO_MUSIC)} and run the music step (skill curio-episode)` }];
 }

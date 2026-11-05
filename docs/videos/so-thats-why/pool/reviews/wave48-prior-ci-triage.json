@@ -1,0 +1,19 @@
+{
+  "status": "PRIOR_HEAD_CI_FAILURE_RECORDED_NOT_FIXED_OR_CLASSIFIED_AS_FLAKY",
+  "head": "a881970f8417fb8a570ecdce317701a1cc361455",
+  "run_url": "https://github.com/x812033727/travel_scanner/actions/runs/41571082757",
+  "check": "full-stack-smoke",
+  "total_checks": 23,
+  "successful_checks": 22,
+  "failed_checks": 1,
+  "test": "[mobile-chromium] blank trip keeps flight, hotel and meal anchors with two time modes",
+  "location": "apps/web/e2e/full-stack.spec.ts:165",
+  "failure": "120000ms timeout, followed by locator.count: Target page, context or browser has been closed at openOptionalStops line 8, called at line 256.",
+  "test_counts": {
+    "passed": 7,
+    "failed": 1
+  },
+  "log_sha256": "7bf47167bc41b8202650cb658db57a6fc5fe56d1e49101f9100f4c4e97531a6b",
+  "scope": "Failure belongs to the mobile trip journey, outside the pool task scope. No app fix or automatic flake classification. New draft push will receive fresh CI; this receipt is only the previous-head result.",
+  "followup": "Check fresh HEAD CI before accepting the draft; if this failure persists, retain a separate scoped task for full-stack journey investigation."
+}

@@ -1,0 +1,19 @@
+{
+  "status": "NO_CORRECTION_VERIFIED_NO_NEW_POOL_READING_OR_CORE",
+  "checked_on": "2026-11-03",
+  "reviewer": "root",
+  "candidate_id": "S49-003",
+  "doi": "10.1038/s42005-022-00827-0",
+  "previous_evidence": "reviews/wave49-root-scope-checks.json",
+  "attempts": [
+    {
+      "url": "https://www.nature.com/articles/s42005-022-00827-0",
+      "result": "Publisher search index still exposes 45 cm in Results and 45 mm in the Figure 1 caption. Direct web open failed at the publisher cookie redirect. A query for the exact DOI plus correction did not produce a matching official correction; this limited search is not proof that none exists."
+    },
+    {
+      "url": "https://dr.ntu.edu.sg/server/api/core/bitstreams/2595972f-c777-45b4-ba1e-8b71b17927fa/content",
+      "result": "The institutional repository search result for the published PDF also exposes 45 mm in Figure 1 and 45 cm in Figure 2. Direct web open failed on its CDN redirect; no new full-text reading or figure inspection is claimed."
+    }
+  ],
+  "decision": "Keep the original unit discrepancy pending. The existing topic and treatment use only the matched-condition comparison, without an exact drop height. No old raw record, candidate count, source reading count or treatment approval changes."
+}

@@ -1,0 +1,530 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "ad3a6c5e55e200542dfffaec072dc21fb4b27aca",
+    "selected": 3104,
+    "raw_records": 3479,
+    "not_added": 1339,
+    "pool_sha256": "85c5001e64cd510f24dc8bea7843c308cf201dd4c8c9f5716782fdbe83237e2a",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3104.json.gz",
+      "sha256": "4ba41d1ca791d879b462c9f4b34c3468d449034faab3a7630fed5ee8b59ae6ca"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave31-lander.json",
+      "sha256": "c39e28388a29d8fd01479438368bea69b71bdfbe1734a038bb51cbc51000cc0c"
+    },
+    {
+      "file": "reviews/wave31-lander-themes.json",
+      "sha256": "589ac2d53bedeeab7c2cc0f8bad0a2c3e7842b769b6c2d68231c93a50bb65aae"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 5,
+    "candidate_sources": 5,
+    "not_added_only_sources": 0,
+    "not_added": 14,
+    "near_pairs": 13,
+    "themes": 3
+  },
+  "scope": "地震儀、軌道影像、受照變化及雷射回光如何共同縮小對月球與火星訊號的解釋。",
+  "dedup_reading": {
+    "method": "全庫機械搜尋題名、答案、範圍、機制與退題理由；命中的撞坑、地震儀、熱變形、回射等候選另讀完整問答。",
+    "scan_files": [
+      {
+        "file": ".cache/wave31-lander-lexical.json",
+        "sha256": "532afc1a1103b2a28d188803745d29ce550fb66155920cc894f4a49ac4cdab4d"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P31001",
+      "b": "LEG-S28",
+      "proposed": "distinct_pending_non_author",
+      "reason": "比較氣波與地震波到時、方向，再以新坑做地面真值；地震預警關心警報與破壞抵達先後。",
+      "a_snapshot": {
+        "id": "P31001",
+        "question": "火星地面只放了一台地震儀，怎麼指給天上的相機去找新撞坑？",
+        "answer_target": "地震波和穿過大氣的波並非同時到站。大氣波還會帶動測站腳下的地面；把不同到時和地面運動的來向合起來，就能圈出搜尋範圍。再比對事件前後的軌道照片，查那個範圍內是否真的多了撞擊痕。",
+        "scope": "採2021年三次由訊號導引而找到新痕的事件；時間與方向是有誤差的反推。S1222a是另一場大震，中解析搜尋未見預期爆散區，高解析僅抽查。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S28",
+        "question": "地震已經發生，手機為什麼還能搶先提醒？",
+        "answer_target": "地震波有快慢：P 波每秒約 7 公里、較弱；破壞力大的 S 波約 4 公里（日本氣象廳）。震央附近測站抓到 P 波就算出規模，用快得多的電訊號發警報。離震央越遠提前越多；太近的預警盲區，手機響時可能已在搖。",
+        "scope": "沿用 S28 題級條件，須讀原查核包的限制；明示預警不是預測，追波速、偵測與傳遞，近震區有盲區。"
+      }
+    },
+    {
+      "a": "P31001",
+      "b": "E11017",
+      "proposed": "distinct_pending_non_author",
+      "reason": "坑密度能估一片地表的相對暴露時間；這題用前後影像限制單次事件的新坑與日期。",
+      "a_snapshot": {
+        "id": "P31001",
+        "question": "火星地面只放了一台地震儀，怎麼指給天上的相機去找新撞坑？",
+        "answer_target": "地震波和穿過大氣的波並非同時到站。大氣波還會帶動測站腳下的地面；把不同到時和地面運動的來向合起來，就能圈出搜尋範圍。再比對事件前後的軌道照片，查那個範圍內是否真的多了撞擊痕。",
+        "scope": "採2021年三次由訊號導引而找到新痕的事件；時間與方向是有誤差的反推。S1222a是另一場大震，中解析搜尋未見預期爆散區，高解析僅抽查。"
+      },
+      "b_snapshot": {
+        "id": "E11017",
+        "question": "月面某塊地方的坑比較少，就能說那塊岩石一定比較年輕嗎？",
+        "answer_target": "坑數反映暴露累積與保存，也受後來覆蓋、侵蝕或熔融重整抹除影響；更新表面能重設保留紀錄，不能直接等同所有岩石的形成年代。",
+        "scope": "限相對表面年代概念，需要相似撞擊環境與可比區域；不給絕對定年或把坑數當無誤的時鐘。"
+      }
+    },
+    {
+      "a": "P31001",
+      "b": "N119",
+      "proposed": "distinct_pending_non_author",
+      "reason": "震源、震央的區分不足以把地震訊號辨認為撞擊。",
+      "a_snapshot": {
+        "id": "P31001",
+        "question": "火星地面只放了一台地震儀，怎麼指給天上的相機去找新撞坑？",
+        "answer_target": "地震波和穿過大氣的波並非同時到站。大氣波還會帶動測站腳下的地面；把不同到時和地面運動的來向合起來，就能圈出搜尋範圍。再比對事件前後的軌道照片，查那個範圍內是否真的多了撞擊痕。",
+        "scope": "採2021年三次由訊號導引而找到新痕的事件；時間與方向是有誤差的反推。S1222a是另一場大震，中解析搜尋未見預期爆散區，高解析僅抽查。"
+      },
+      "b_snapshot": {
+        "id": "N119",
+        "question": "地震新聞的震央，為什麼不等於地下真正開始破裂的位置？",
+        "answer_target": "地下起始點與其地表投影。",
+        "scope": "The Science of Earthquakes"
+      }
+    },
+    {
+      "a": "P31002",
+      "b": "N120",
+      "proposed": "distinct_pending_non_author",
+      "reason": "地震儀內的慣性質量是讀數原理；此次同時量到降溫與水平傾斜反應，地面燈光測試可改變成因判讀。",
+      "a_snapshot": {
+        "id": "P31002",
+        "question": "火衛一掠過太陽時，為什麼連遮在罩子裡的火星地震儀也有反應？",
+        "answer_target": "遮光時太陽電池電流先降、地表降溫，部分事件的水平地震通道稍後才響應。受光處與原有遮蔭處冷卻不一，周圍材料的熱應變可能使儀器微傾，讓重力投影到水平軸。地球地震室改變燈光也記下快速的水平響應。",
+        "scope": "火星研究不是每一場凌日都有清楚訊號；地面兩台儀器的照明對照只支持途徑可能。均質有限元素模型不足以定出每個腳墊的真實位移。"
+      },
+      "b_snapshot": {
+        "id": "N120",
+        "question": "地震儀自己也在搖，怎麼還能量到地面在動？",
+        "answer_target": "利用懸掛質量與儀器底座的相對運動。",
+        "scope": "The Science of Earthquakes"
+      }
+    },
+    {
+      "a": "P31002",
+      "b": "N248",
+      "proposed": "distinct_pending_non_author",
+      "reason": "遮掩幾何說明何時會遮光，不說明隔熱地震儀何以跟著有讀數。",
+      "a_snapshot": {
+        "id": "P31002",
+        "question": "火衛一掠過太陽時，為什麼連遮在罩子裡的火星地震儀也有反應？",
+        "answer_target": "遮光時太陽電池電流先降、地表降溫，部分事件的水平地震通道稍後才響應。受光處與原有遮蔭處冷卻不一，周圍材料的熱應變可能使儀器微傾，讓重力投影到水平軸。地球地震室改變燈光也記下快速的水平響應。",
+        "scope": "火星研究不是每一場凌日都有清楚訊號；地面兩台儀器的照明對照只支持途徑可能。均質有限元素模型不足以定出每個腳墊的真實位移。"
+      },
+      "b_snapshot": {
+        "id": "N248",
+        "question": "每個月都有新月，為什麼不會每個月都日食？",
+        "answer_target": "月球多數時候從太陽視線上下方經過。",
+        "scope": "Why Do Eclipses Happen?"
+      }
+    },
+    {
+      "a": "P31002",
+      "b": "R006",
+      "proposed": "distinct_pending_non_author",
+      "reason": "衛星零件膨脹造成鏡頭對準偏移，本案用水平通道、地溫及異地燈光對照檢驗地面耦合。",
+      "a_snapshot": {
+        "id": "P31002",
+        "question": "火衛一掠過太陽時，為什麼連遮在罩子裡的火星地震儀也有反應？",
+        "answer_target": "遮光時太陽電池電流先降、地表降溫，部分事件的水平地震通道稍後才響應。受光處與原有遮蔭處冷卻不一，周圍材料的熱應變可能使儀器微傾，讓重力投影到水平軸。地球地震室改變燈光也記下快速的水平響應。",
+        "scope": "火星研究不是每一場凌日都有清楚訊號；地面兩台儀器的照明對照只支持途徑可能。均質有限元素模型不足以定出每個腳墊的真實位移。"
+      },
+      "b_snapshot": {
+        "id": "R006",
+        "question": "衛星零件還沒熱壞，溫差為什麼就可能讓鏡頭看不準？",
+        "answer_target": "不同位置熱脹冷縮造成光學結構對準偏移",
+        "scope": "只談可發生的設計風險，不虛構已故障的太空任務。"
+      }
+    },
+    {
+      "a": "P31003",
+      "b": "P31002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "都跟日照相關；火星是地表冷卻讓儀器傾斜的假加速度，月球是陣列多次收到來自同一方向的實際地面震動。",
+      "a_snapshot": {
+        "id": "P31003",
+        "question": "月球天一亮，地震儀就記到一些熟悉的短震。怎麼追到旁邊留下的登月艙？",
+        "answer_target": "先找在多次記錄中形狀相似的震動，再用多個地面感測器的到時差估來向。幾個大的重複訊號族多在清晨出現，來向又接近遺留登月艙的位置。日照節奏加上空間線索，支持附近設備受熱是來源之一。",
+        "scope": "限Apollo17陣列與該研究的分類；不把所有重複事件指定為登月艙，也不把所有孤立事件指定為岩石。震源方位有散布，無法指認零件或證實膨脹的物質。"
+      },
+      "b_snapshot": {
+        "id": "P31002",
+        "question": "火衛一掠過太陽時，為什麼連遮在罩子裡的火星地震儀也有反應？",
+        "answer_target": "遮光時太陽電池電流先降、地表降溫，部分事件的水平地震通道稍後才響應。受光處與原有遮蔭處冷卻不一，周圍材料的熱應變可能使儀器微傾，讓重力投影到水平軸。地球地震室改變燈光也記下快速的水平響應。",
+        "scope": "火星研究不是每一場凌日都有清楚訊號；地面兩台儀器的照明對照只支持途徑可能。均質有限元素模型不足以定出每個腳墊的真實位移。"
+      }
+    },
+    {
+      "a": "P31003",
+      "b": "N285",
+      "proposed": "distinct_pending_non_author",
+      "reason": "地盤影響振幅不足以從重複訊號的時差、方位與日相辨識附近設備。",
+      "a_snapshot": {
+        "id": "P31003",
+        "question": "月球天一亮，地震儀就記到一些熟悉的短震。怎麼追到旁邊留下的登月艙？",
+        "answer_target": "先找在多次記錄中形狀相似的震動，再用多個地面感測器的到時差估來向。幾個大的重複訊號族多在清晨出現，來向又接近遺留登月艙的位置。日照節奏加上空間線索，支持附近設備受熱是來源之一。",
+        "scope": "限Apollo17陣列與該研究的分類；不把所有重複事件指定為登月艙，也不把所有孤立事件指定為岩石。震源方位有散布，無法指認零件或證實膨脹的物質。"
+      },
+      "b_snapshot": {
+        "id": "N285",
+        "question": "同一場地震，為什麼軟地盤和岩盤上的搖晃可能差很多？",
+        "answer_target": "地層性質使震波振幅與頻率分布改變，不能只按離震央距離判斷。",
+        "scope": "How do earthquakes affect people?"
+      }
+    },
+    {
+      "a": "P31003",
+      "b": "N120",
+      "proposed": "distinct_pending_non_author",
+      "reason": "本題用多站訊號與源位置比對，不是介紹機械地震儀。",
+      "a_snapshot": {
+        "id": "P31003",
+        "question": "月球天一亮，地震儀就記到一些熟悉的短震。怎麼追到旁邊留下的登月艙？",
+        "answer_target": "先找在多次記錄中形狀相似的震動，再用多個地面感測器的到時差估來向。幾個大的重複訊號族多在清晨出現，來向又接近遺留登月艙的位置。日照節奏加上空間線索，支持附近設備受熱是來源之一。",
+        "scope": "限Apollo17陣列與該研究的分類；不把所有重複事件指定為登月艙，也不把所有孤立事件指定為岩石。震源方位有散布，無法指認零件或證實膨脹的物質。"
+      },
+      "b_snapshot": {
+        "id": "N120",
+        "question": "地震儀自己也在搖，怎麼還能量到地面在動？",
+        "answer_target": "利用懸掛質量與儀器底座的相對運動。",
+        "scope": "The Science of Earthquakes"
+      }
+    },
+    {
+      "a": "P31004",
+      "b": "O7018",
+      "proposed": "distinct_pending_non_author",
+      "reason": "角錐送回相反方向的幾何不會預測進出本影的回光雙峰；需溫度造成的光程/相位差。",
+      "a_snapshot": {
+        "id": "P31004",
+        "question": "月面進入地球的陰影，阿波羅留下的反光器怎麼反而一度亮起來？",
+        "answer_target": "地球持續發雷射，計的是反光器送回來的光子。角錐受日照時若前後溫度不同，折射率也不均，出射波前會扭曲、中心回光減弱。進出陰影改變溫差，模型預期在接近均溫時回光短暫回強，觀測出現兩次峰值。",
+        "scope": "限2010年月全食觀測，陣列需各依所在地照明時程對齊。塵埃吸熱是解釋，未拍到該晚積塵量或直接量角錐內溫度；地球雲況會改變峰值。"
+      },
+      "b_snapshot": {
+        "id": "O7018",
+        "question": "小鏡子轉一下就反光到別處，三面鏡子的角落怎麼能把光送回來？",
+        "answer_target": "三個互相垂直面依序反射，使光的三個方向分量逐一反轉，形成與入射反平行的返回束。",
+        "scope": "須光束依次命中三面；可以有橫向偏移，不能說任意角度均有效或完全原路返回。"
+      }
+    },
+    {
+      "a": "P31004",
+      "b": "R006",
+      "proposed": "distinct_pending_non_author",
+      "reason": "新題不是鏡座失準，採稜鏡內折射率不均與雙峰檢驗。",
+      "a_snapshot": {
+        "id": "P31004",
+        "question": "月面進入地球的陰影，阿波羅留下的反光器怎麼反而一度亮起來？",
+        "answer_target": "地球持續發雷射，計的是反光器送回來的光子。角錐受日照時若前後溫度不同，折射率也不均，出射波前會扭曲、中心回光減弱。進出陰影改變溫差，模型預期在接近均溫時回光短暫回強，觀測出現兩次峰值。",
+        "scope": "限2010年月全食觀測，陣列需各依所在地照明時程對齊。塵埃吸熱是解釋，未拍到該晚積塵量或直接量角錐內溫度；地球雲況會改變峰值。"
+      },
+      "b_snapshot": {
+        "id": "R006",
+        "question": "衛星零件還沒熱壞，溫差為什麼就可能讓鏡頭看不準？",
+        "answer_target": "不同位置熱脹冷縮造成光學結構對準偏移",
+        "scope": "只談可發生的設計風險，不虛構已故障的太空任務。"
+      }
+    },
+    {
+      "a": "P31004",
+      "b": "O7019",
+      "proposed": "distinct_pending_non_author",
+      "reason": "紋影用遮光刀口顯示流體折射偏折，新題是固體內不均光程使遠場中心回光弱化。",
+      "a_snapshot": {
+        "id": "P31004",
+        "question": "月面進入地球的陰影，阿波羅留下的反光器怎麼反而一度亮起來？",
+        "answer_target": "地球持續發雷射，計的是反光器送回來的光子。角錐受日照時若前後溫度不同，折射率也不均，出射波前會扭曲、中心回光減弱。進出陰影改變溫差，模型預期在接近均溫時回光短暫回強，觀測出現兩次峰值。",
+        "scope": "限2010年月全食觀測，陣列需各依所在地照明時程對齊。塵埃吸熱是解釋，未拍到該晚積塵量或直接量角錐內溫度；地球雲況會改變峰值。"
+      },
+      "b_snapshot": {
+        "id": "O7019",
+        "question": "空氣沒有冒煙，照片怎麼仍能拍出流動的暗紋？",
+        "answer_target": "密度相關的折射率梯度使光偏折，焦點附近的遮擋把小偏折轉成明暗差，顯示透明流場的變化。",
+        "scope": "來源為風洞震波；題目只談透明氣流的顯影機制，不由暗紋唯一推回溫度或密度，不給架設/燃燒教程。"
+      }
+    },
+    {
+      "a": "P31004",
+      "b": "P31002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "兩案以影子改變照明，但前者拆儀器傾斜，這裡測回光相位損失。",
+      "a_snapshot": {
+        "id": "P31004",
+        "question": "月面進入地球的陰影，阿波羅留下的反光器怎麼反而一度亮起來？",
+        "answer_target": "地球持續發雷射，計的是反光器送回來的光子。角錐受日照時若前後溫度不同，折射率也不均，出射波前會扭曲、中心回光減弱。進出陰影改變溫差，模型預期在接近均溫時回光短暫回強，觀測出現兩次峰值。",
+        "scope": "限2010年月全食觀測，陣列需各依所在地照明時程對齊。塵埃吸熱是解釋，未拍到該晚積塵量或直接量角錐內溫度；地球雲況會改變峰值。"
+      },
+      "b_snapshot": {
+        "id": "P31002",
+        "question": "火衛一掠過太陽時，為什麼連遮在罩子裡的火星地震儀也有反應？",
+        "answer_target": "遮光時太陽電池電流先降、地表降溫，部分事件的水平地震通道稍後才響應。受光處與原有遮蔭處冷卻不一，周圍材料的熱應變可能使儀器微傾，讓重力投影到水平軸。地球地震室改變燈光也記下快速的水平響應。",
+        "scope": "火星研究不是每一場凌日都有清楚訊號；地面兩台儀器的照明對照只支持途徑可能。均質有限元素模型不足以定出每個腳墊的真實位移。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P31-S001",
+      "scope": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。",
+      "locator": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。",
+      "read_via": "指定UA取Bristol PDF遇403，另以web.open實際取得接收稿正文指定段，本機存該段工具回傳文字。",
+      "cache": {
+        "file": ".cache/wave31-lander-impact-web.txt",
+        "sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc",
+        "text_file": ".cache/wave31-lander-impact-web.txt",
+        "text_sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc"
+      }
+    },
+    {
+      "source_id": "P31-S002",
+      "scope": "PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+      "locator": "PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+      "read_via": "以指定UA取得有效PDF並抽文，另讀下列原圖頁。",
+      "cache": {
+        "file": ".cache/wave31-lander-negative.pdf",
+        "sha256": "841ed38d6e25d930979913ba1d992e9f038712b175a7817f405793194f1f89ef",
+        "text_file": ".cache/wave31-lander-negative.txt",
+        "text_sha256": "47fcc611c3499df1e5be633e9af36702851f5e227cb3501fb1a59b976e148cac"
+      }
+    },
+    {
+      "source_id": "P31-S003",
+      "scope": "PDF pp3–4 Table1與§2.2、pp6–10 Figs1–3、§3.1地面燈光對照、§3.2模型及§4。",
+      "locator": "PDF pp3–4 Table1與§2.2、pp6–10 Figs1–3、§3.1地面燈光對照、§3.2模型及§4。",
+      "read_via": "以指定UA取得有效PDF並抽文，另讀下列原圖頁。",
+      "cache": {
+        "file": ".cache/wave31-lander-transit.pdf",
+        "sha256": "a77b940d95721bcae612d4833db297f4098049fdbc3fd75e27347b6f05cd10bd",
+        "text_file": ".cache/wave31-lander-transit.txt",
+        "text_sha256": "8cd87161f2fda491e7490e2f54c5dac4caab19a8bc15121419f88d0227da5137"
+      }
+    },
+    {
+      "source_id": "P31-S004",
+      "scope": "PDF pp9–11 Figs5–7、§5.1 Lunar Module Events，特別是脈衝形、同族分佈、四站時差及方向估計限制。",
+      "locator": "PDF pp9–11 Figs5–7、§5.1 Lunar Module Events，特別是脈衝形、同族分佈、四站時差及方向估計限制。",
+      "read_via": "以指定UA取得有效PDF並抽文，另讀下列原圖頁。作者目錄的另一PDF路線出現TLS驗證錯誤，Caltech API正式條目所列附件成功。",
+      "cache": {
+        "file": ".cache/wave31-lander-lunar.pdf",
+        "sha256": "d34f9a05e804b67e9e30ff53da6a80321060d59bb70c14ba434fc1752e4f4cba",
+        "text_file": ".cache/wave31-lander-lunar.txt",
+        "text_sha256": "19d46a08c41137c0657acd085f1cc7009d791abc4fc0503c2335c8d18e20ab01"
+      }
+    },
+    {
+      "source_id": "P31-S005",
+      "scope": "PDF pp2、4–9，§2–2.3溫差與相位、§3.2–3.3光子計數與大氣透明度及§4；Figs4、9及11。",
+      "locator": "PDF pp2、4–9，§2–2.3溫差與相位、§3.2–3.3光子計數與大氣透明度及§4；Figs4、9及11。",
+      "read_via": "以指定UA取得有效PDF並抽文，另讀下列原圖頁。",
+      "cache": {
+        "file": ".cache/wave31-lander-laser.pdf",
+        "sha256": "1ee861ee122493ff5c2accfbf687433c1c65552a7af1ee3d4b5198038f35e410",
+        "text_file": ".cache/wave31-lander-laser.txt",
+        "text_sha256": "b2c6fcae10544be4921573d67590605fb8c47b7a19197f2370b86db570ec387c"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P31-S001",
+      "doi": "10.1038/s41561-022-01014-0",
+      "primary_body_url": "https://research-information.bris.ac.uk/files/329879244/36856_2_merged_1658502913.pdf",
+      "identity_relation": "2022研究，Bristol典藏作者接收稿；本機保存web.open指定段文字，非PDF位元。",
+      "old_exact_matches": [],
+      "count_policy": "同文的期刊版、典藏與作者副本只計一份；S001與S002是不同事件但屬同一InSight任務，非獨立任務重現。"
+    },
+    {
+      "source_id": "P31-S002",
+      "doi": "10.1029/2023GL103619",
+      "primary_body_url": "https://eps.rutgers.edu/images/EPS_Publications/A_Tectonic_Origin_for_the_Largest_Marsquake_Observed_by_InSight.pdf",
+      "identity_relation": "2023原刊PDF，Rutgers作者機構存本。",
+      "old_exact_matches": [],
+      "count_policy": "同文的期刊版、典藏與作者副本只計一份；S001與S002是不同事件但屬同一InSight任務，非獨立任務重現。"
+    },
+    {
+      "source_id": "P31-S003",
+      "doi": "10.1029/2020GL089099",
+      "primary_body_url": "https://elib.dlr.de/136478/1/staehler-etal2020GL089099.pdf",
+      "identity_relation": "2020原刊，DLR研究機構公開PDF。",
+      "old_exact_matches": [],
+      "count_policy": "同文的期刊版、典藏與作者副本只計一份；S001與S002是不同事件但屬同一InSight任務，非獨立任務重現。"
+    },
+    {
+      "source_id": "P31-S004",
+      "doi": "10.1029/2024JE008921",
+      "primary_body_url": "https://authors.library.caltech.edu/api/records/60dcb-gn218/files/JGR%20Planets%20-%202025%20-%20Tamama%20-%20Classifying%20Thermal%20Moonquakes%20Recorded%20in%20Apollo%2017%20Lunar%20Seismic%20Data%20Using.pdf/content",
+      "identity_relation": "2025原刊，經CaltechAUTHORS正式收錄與API下載。主頁作者PDF直接請求TLS失敗，典藏同文成功。",
+      "old_exact_matches": [],
+      "count_policy": "同文的期刊版、典藏與作者副本只計一份；S001與S002是不同事件但屬同一InSight任務，非獨立任務重現。"
+    },
+    {
+      "source_id": "P31-S005",
+      "doi": "10.1016/j.icarus.2013.12.006",
+      "primary_body_url": "https://tmurphy.physics.ucsd.edu/papers/Icarus-231-183.pdf",
+      "identity_relation": "2014期刊卷（2013年接收），UC San Diego作者存放之期刊排版本。",
+      "old_exact_matches": [],
+      "count_policy": "同文的期刊版、典藏與作者副本只計一份；S001與S002是不同事件但屬同一InSight任務，非獨立任務重現。"
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave31-lander-fetch.json",
+      "sha256": "c52ce07251491e77f09a68c0d395885d9aaab23be14d4161f767a0236338995d"
+    },
+    {
+      "file": ".cache/wave31-lander-lunar-route.json",
+      "sha256": "c5757147edb642034b27fbec2b7ff27689c4a2591d9fda0579d809296948df14"
+    }
+  ],
+  "retrieval_failures": [
+    "Bristol PDF指定UA 403。Nature PDF路線回200 HTML，未當PDF或成功正文；相關主文改由web.open取得Bristol接收稿文字。",
+    "Tamama作者個人頁PDF出現憑證驗證錯誤，改用機構API公布的正式附件，保持TLS驗證。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "P31-S002",
+      "file": ".cache/wave31-lander-negative-p7.png",
+      "sha256": "d862a074b3b652d1701b804f754097d838418665f0d74d78d14dd7164aa3df23",
+      "read_scope": "Fig3a–d影像覆蓋與機率格，細長軌跡和底圖解析度有別。"
+    },
+    {
+      "source_id": "P31-S003",
+      "file": ".cache/wave31-lander-transit-p6.png",
+      "sha256": "db634cebee8b9d7bfa14bb95426412ea4ae7e57b5d8885a44afc31c1018ea55d",
+      "read_scope": "Fig1太陽電池、地溫、風壓、地震儀分軌時間序列。"
+    },
+    {
+      "source_id": "P31-S003",
+      "file": ".cache/wave31-lander-transit-p8.png",
+      "sha256": "c649312ae90fea60ccc1d7d41207c7b91621ea1d43c187cfacd904bfca312fe3",
+      "read_scope": "Fig2不同凌日資料與由地面燈光實驗推得的黑色曲線，非同地同時量。"
+    },
+    {
+      "source_id": "P31-S004",
+      "file": ".cache/wave31-lander-lunar-p9.png",
+      "sha256": "8b41a5c37048b1d17c0c747c677936e509f9e69230885d50d61c46f2468c9971",
+      "read_scope": "Fig5重複與孤立族的日相分布及來向。"
+    },
+    {
+      "source_id": "P31-S004",
+      "file": ".cache/wave31-lander-lunar-p10.png",
+      "sha256": "2e884c823a63cabacf5216bb7541a3c129966cf4fc8ff5d958d734b504be4d8a",
+      "read_scope": "Fig6大族的發生時段與方向分布、四條堆疊波形。"
+    },
+    {
+      "source_id": "P31-S004",
+      "file": ".cache/wave31-lander-lunar-p11.png",
+      "sha256": "27b5d5d41fa9dba73d147bf93037f4bf12d02cef315e7543a99eba9ee6953fd0",
+      "read_scope": "Fig7候選LM事件的來向、峰度時間與日照時段。"
+    },
+    {
+      "source_id": "P31-S005",
+      "file": ".cache/wave31-lander-laser-p4.png",
+      "sha256": "2d20c4ad7e6ee18e455e672b3c54c2b5ae2c187c0ed8b500096afb130d255ac9",
+      "read_scope": "Fig4為作者預測示意曲線，沒有實測角錐內部溫度。"
+    },
+    {
+      "source_id": "P31-S005",
+      "file": ".cache/wave31-lander-laser-p8.png",
+      "sha256": "4f9590e9c091596a0807da982625e6293cb763dc00e42d1ece02f013ebd9c9d1",
+      "read_scope": "Fig9各陣列對齊受照時間的回光點，Fig11與天空透明度代理對照。"
+    }
+  ],
+  "reading_limits": [
+    "四份指定UA PDF，另一路研究使用web.open接收稿正文；八張PDF圖頁目讀。沒有目讀Garcia坑圖，畫面為依該文定位關係重畫。",
+    "未重新估震源、解熱模型或核全部SI，不把可行解釋推成唯一來源。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W31P-T01",
+      "body_seconds": 77,
+      "core_seconds": {
+        "P31001": 77
+      },
+      "chapter_seconds": [
+        40,
+        37
+      ],
+      "max_beat_seconds": 25,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W31P-T02",
+      "body_seconds": 110,
+      "core_seconds": {
+        "P31002": 60,
+        "P31003": 50
+      },
+      "chapter_seconds": [
+        60,
+        50
+      ],
+      "max_beat_seconds": 30,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W31P-T03",
+      "body_seconds": 85,
+      "core_seconds": {
+        "P31004": 85
+      },
+      "chapter_seconds": [
+        40,
+        45
+      ],
+      "max_beat_seconds": 25,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "all_strings_rstrip": true,
+    "utf8_lf": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待另一作者讀來源、共同近鄰與題案。"
+  ],
+  "revision_history": [
+    {
+      "reviewer": "root",
+      "before": [
+        {
+          "file": "batches/wave31-lander.json",
+          "sha256": "c39e28388a29d8fd01479438368bea69b71bdfbe1734a038bb51cbc51000cc0c"
+        },
+        {
+          "file": "reviews/wave31-lander-themes.json",
+          "sha256": "a0679f94c3cafea5c5f9c92a6ac4f11ad1e49ab5c8f2d1c9beb73c8891ec5674"
+        },
+        {
+          "file": "reviews/wave31-lander-author.json",
+          "sha256": "7a9de3c65c964faabc93b0fa4bd8f922346566a76ae8a5b7853e20635c9ad63d"
+        }
+      ],
+      "removed_seconds": 8,
+      "reason": "T01查大震暗區的圖解先給預期再查覆蓋，維持中解析搜尋與高解析抽樣。刪去結尾對小坑及地下斷層的重述，85秒縮為77秒。"
+    }
+  ]
+}

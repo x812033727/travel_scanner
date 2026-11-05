@@ -1,0 +1,22 @@
+// Builds the import-shaped candidate directory renewal.mjs stage reads, from a finished work directory.
+import { pathToFileURL } from "node:url";
+import path from "node:path";
+import fs from "node:fs";
+const root = process.cwd();
+const imp = (p) => import(pathToFileURL(path.join(root, p)).href);
+const { loadProject } = await imp("tools/video/core/state.mjs");
+const { composeMetadata } = await imp("tools/video/package/metadata.mjs");
+const { presentationTimeline } = await imp("tools/video/core/branding.mjs");
+const [slug, work, out] = process.argv.slice(2);
+if (fs.existsSync(out)) throw new Error("candidate directory exists");
+fs.mkdirSync(out, { recursive: true });
+const project = loadProject({ slug, root });
+const timeline = JSON.parse(fs.readFileSync(path.join(work, "timeline.json"), "utf8"));
+const checks = JSON.parse(fs.readFileSync(path.join(work, "checks.json"), "utf8"));
+const { metadata, problems } = composeMetadata({ ...project, timeline: presentationTimeline(timeline, checks.branding), locales: [] });
+if (problems.length) throw new Error(problems.join("; "));
+fs.writeFileSync(path.join(out, "meta.json"), JSON.stringify({ slug, title: metadata.title, description: metadata.description, chapters: metadata.chapters.map((c) => ({ time: c.at, title: c.title })) }, null, 2));
+fs.copyFileSync(path.join(work, "final.mp4"), path.join(out, "final.mp4"));
+fs.copyFileSync(path.join(work, "thumbnail.jpg"), path.join(out, "thumbnail.jpg"));
+fs.copyFileSync(path.join(work, "captions", "zh-TW.srt"), path.join(out, "zh-TW.srt"));
+console.log("title:", metadata.title, "chapters:", metadata.chapters.length);

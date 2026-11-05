@@ -1,0 +1,467 @@
+{
+  "batch_id": "wave11-plants-20261101",
+  "created_on": "2026-11-01",
+  "scope": "植物運水、根的障礙互動、莖姿態與細胞壁機械回饋；來源支持的七個新核心候選，不是栽培或農藥建議，不靠不同物種湊數。",
+  "sources": [
+    {
+      "id": "B11-S001",
+      "url": "https://dspace.library.uu.nl/bitstream/handle/1874/418726/science.abf3013.pdf?sequence=1",
+      "title": "Plant roots sense soil compaction through restricted ethylene diffusion",
+      "publisher": "Pandey et al.; Science / Utrecht University Repository",
+      "version": "2021-01-15; Science 371:276–280; doi:10.1126/science.abf3013; repository publisher version",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA 的 public urllib HTTP 200，下載原作者/大學公開 PDF，以 PyMuPDF 讀指定文字層正文。",
+      "reading_scope": "Repository PDF pp.2–5（article 1–4 of 4）：正文、Figures 1–3 圖說，氣體屏障/缺氧標記、乙烯不敏感株、兩腔擴散對照。",
+      "locator": "Repository PDF pp.2–5（article 1–4 of 4）：正文、Figures 1–3 圖說，氣體屏障/缺氧標記、乙烯不敏感株、兩腔擴散對照。",
+      "summary": "土壓實減少充氣孔隙，乙烯不易散逸而啟動抑制根伸長的訊號；突變株與擴散對照支持不只是被硬土擋住。",
+      "limitations": "Nottingham PDF 的 urllib/web 均403，改讀 Utrecht 正式副本；未讀補充材料、影片或重算原數據。本文的主機制不等於所有土中機械阻力都不存在；不給改土或栽培處方。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B11-S002",
+      "url": "https://cropgeneticsinnovation.ucdavis.edu/sites/g/files/dgvnsk6996/files/inline-files/e2018940118.full_.pdf",
+      "title": "Mechanism and function of root circumnutation",
+      "publisher": "Taylor et al.; PNAS / University of California, Davis author copy",
+      "version": "2021-02-19; PNAS 118:e2018940118; doi:10.1073/pnas.2018940118",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 web open 讀 UC Davis PDF 指定正文；另指定 UA urllib HTTP 200 保存公開作者副本。",
+      "reading_scope": "PDF pp.1–2 初始表型與差速伸長；pp.4–7 The hk1 Mutant Is Defective in Exploration of Solid Surfaces、Robotic Simulation Demonstrates the Utility of Circumnutation in Obstacle Avoidance、clay-particle test、Discussion，Figures 4–6 圖說。",
+      "locator": "PDF pp.1–2 初始表型與差速伸長；pp.4–7 The hk1 Mutant Is Defective in Exploration of Solid Surfaces、Robotic Simulation Demonstrates the Utility of Circumnutation in Obstacle Avoidance、clay-particle test、Discussion，Figures 4–6 圖說。",
+      "summary": "環旋缺陷根在透明介質可長得較快，卻較難越過障礙；機器根顯示側向力能讓迎面接觸轉為滑過。",
+      "limitations": "Europe PMC XML 500；web open 讀 UC Davis PDF 正文後另以指定 UA 取得同名 PDF 快取。機器根為二維且靠內側縮短轉向，不能當作活根每一細胞的直接量測；未看影片、未重跑機器或遺傳實驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B11-S003",
+      "url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/51662483/prod11357304142078.PNAS_2012_Bastien_1214301109.pdf",
+      "title": "Unifying model of shoot gravitropism reveals proprioception as a central feature of posture control in plants",
+      "publisher": "Bastien, Bohr, Moulia and Douady; PNAS / Technical University of Denmark repository",
+      "version": "online 2012-12; PNAS 2013 110:755–760; doi:10.1073/pnas.1214301109; repository main article plus SI",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA 的 public urllib HTTP 200，下載原作者/大學公開 PDF，以 PyMuPDF 讀指定文字層正文。",
+      "reading_scope": "PDF pp.3–6（article 2–5 of 6）：GC/BS 觀察、H1–H5、A vs AC 模型、Figures 1–6 圖說與分子機制仍待辨明段。",
+      "locator": "PDF pp.3–6（article 2–5 of 6）：GC/BS 觀察、H1–H5、A vs AC 模型、Figures 1–6 圖說與分子機制仍待辨明段。",
+      "summary": "只依偏離垂直的角度彎曲，不能重現穩定的莖形；加入抑制局部曲率的回饋可產生先彎、後拉直的時序。",
+      "limitations": "PMC web reCAPTCHA、Europe PMC XML500，改讀 DTU 作者公開副本。只讀指定主文，不聲稱驗算 SI 或知道植物的分子曲率感測器；模型部分植物振盪預測有偏差。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B11-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3995075/",
+      "title": "A unifying modeling of plant shoot gravitropism with an explicit account of the effects of growth",
+      "publisher": "Bastien, Douady and Moulia; Frontiers in Plant Science",
+      "version": "2014-04-14; 5:136; doi:10.3389/fpls.2014.00136",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 Europe PMC fullTextXML HTTP200 後解析正文；https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3995075/fullTextXML",
+      "reading_scope": "Experimental validation；Discussion-conclusion：passive orientation drift、fixed curvature 與 AC 模型近似範圍。",
+      "locator": "Experimental validation；Discussion-conclusion：passive orientation drift、fixed curvature 與 AC 模型近似範圍。",
+      "summary": "持續伸長可改變姿態並把曲率帶出可生長區；原姿態模型有時間尺度與生長區限制。",
+      "limitations": "PMC web reCAPTCHA；Europe PMC XML HTTP200。只讀指定討論與驗證，不宣稱逐式重現，未拆成第二個參數題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B11-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2789103/",
+      "title": "Measuring Plant Cell Wall Extension (Creep) Induced by Acidic pH and by Alpha-Expansin",
+      "publisher": "Durachko and Cosgrove; Pennsylvania State University / Journal of Visualized Experiments",
+      "version": "2009-03-11; JoVE 25:1263; doi:10.3791/1263",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 Europe PMC fullTextXML HTTP200，實讀指定正文；https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2789103/fullTextXML",
+      "reading_scope": "Abstract；Protocol Parts 2–4，尤 Part 4 First Experiment / Second Experiment；Discussion。",
+      "locator": "Abstract；Protocol Parts 2–4，尤 Part 4 First Experiment / Second Experiment；Discussion。",
+      "summary": "離體細胞壁在相同拉力下，酸化可加快伸長；熱失活後僅酸化不足，補回 expansin 才恢復反應。",
+      "limitations": "是原實驗室的公開方法及代表性結果，不是本代理做實驗。1992 原發現論文 OUP urllib403/web redirect inaccessible，未冒稱全文實讀；本題依2009正文。沒有觀看方法影片，不把 expansin 說成已證實切斷共價鍵的酵素。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B11-S006",
+      "url": "https://www.phys.ens.psl.eu/~corson/pdf/hamant-08.pdf",
+      "title": "Developmental Patterning by Mechanical Signals in Arabidopsis",
+      "publisher": "Hamant et al.; Science / École normale supérieure author copy",
+      "version": "2008-12-12; Science 322:1650–1655; doi:10.1126/science.1165594",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA 的 public urllib HTTP 200，下載原作者/大學公開 PDF，以 PyMuPDF 讀指定文字層正文。",
+      "reading_scope": "PDF pp.2–6（printed1650–1654）：Introduction、Morphogenetic role of the microtubules、stress-feedback 模型、Cell ablation results in characteristic microtubule reorientations、Application of constraints shows a cell-autonomous microtubule response to stress、Concluding remarks；Figures 1,3,4 圖說。",
+      "locator": "PDF pp.2–6（printed1650–1654）：Introduction、Morphogenetic role of the microtubules、stress-feedback 模型、Cell ablation results in characteristic microtubule reorientations、Application of constraints shows a cell-autonomous microtubule response to stress、Concluding remarks；Figures 1,3,4 圖說。",
+      "summary": "切除局部細胞與改變壓迫方向會改變周圍微管排列；應力方向、微管與有方向性的壁強化構成作者的形態回饋模型。",
+      "limitations": "未讀SI、未重算有限元素、未觀看影片。應力與新纖維素排列的整體迴路含模型推論，沒有辨明唯一分子感受器；不把所有細胞畫成同步完全平行。PDF末頁的另一篇運輸蛋白論文不採用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B11-S007",
+      "url": "https://sperry.biology.utah.edu/publications/Pittermann%20et%20al.%202005%20Science.pdf",
+      "title": "Torus-Margo Pits Help Conifers Compete with Angiosperms",
+      "publisher": "Pittermann et al.; Science / University of Utah author copy",
+      "version": "2005-12-23; Science310:1924; doi:10.1126/science.1120479",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA urllib HTTP200；PyMuPDF 文字層及渲染單頁圖像目視。",
+      "reading_scope": "單頁正文與 Figure1 A–G；另渲染目視整頁，確認 E–G 正常通水/密封示意。",
+      "locator": "單頁正文與 Figure1 A–G；另渲染目視整頁，確認 E–G 正常通水/密封示意。",
+      "summary": "多孔外圈提供通水路徑，中央厚墊提供封堵位置，讓相連管胞的安全與流阻不必只靠同一批小孔決定。",
+      "limitations": "正文與圖說/示意均讀，未讀其補充方法或重算跨物種比較；不沿用舊文「所有中央墊完全不透氣」的無條件概括，也不引用跨物種倍率作一般常數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B11-S008",
+      "url": "https://openresearch-repository.anu.edu.au/server/api/core/bitstreams/aaec784a-d0ce-4efb-9fbd-fe14bf091bb2/content",
+      "title": "The Relationships between Xylem Safety and Hydraulic Efficiency in the Cupressaceae: The Evolution of Pit Membrane Form and Function",
+      "publisher": "Pittermann et al.; Plant Physiology / Australian National University repository",
+      "version": "2010-08;153:1919–1931;doi:10.1104/pp.110.158824",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日指定 UA 的 public urllib HTTP 200，下載原作者/大學公開 PDF，以 PyMuPDF 讀指定文字層正文。",
+      "reading_scope": "PDF pp.1–3 / printed1919–1921：Introduction torus/margo、pressure-driven aspiration、不同流阻與密封要求，Figure1圖說。",
+      "locator": "PDF pp.1–3 / printed1919–1921：Introduction torus/margo、pressure-driven aspiration、不同流阻與密封要求，Figure1圖說。",
+      "summary": "一側進氣後，水側負壓使紋孔膜偏移、中央厚墊貼住孔口；正常通流與氣體隔離有不同結構條件。",
+      "limitations": "只讀引言指定機制與研究背景，未把全文15物種數據或競爭 air-seeding 假說當已完整覆核；不保證閥門永久密封、不把失效一律歸單一破裂路徑。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "B11-S009",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10875092/",
+      "title": "Stomatal responses to VPD utilize guard cell intracellular signaling components",
+      "publisher": "Zait et al.; Frontiers in Plant Science / Assmann laboratory",
+      "version": "2024-02-05; accepted2024-01-17; doi:10.3389/fpls.2024.1351612",
+      "accessed_on": "2026-11-01",
+      "read_via": "當日 Europe PMC fullTextXML HTTP200，實讀指定正文；https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10875092/fullTextXML",
+      "reading_scope": "Introduction；Methods Gas exchange measurements / LI-6800 measurements on artificial leaves；Results Assessing the reliability... / Exploring stomatal response...；Discussion首段至Figure10與模型分量；Figures1–3,10圖說。",
+      "locator": "Introduction；Methods Gas exchange measurements / LI-6800 measurements on artificial leaves；Results Assessing the reliability... / Exploring stomatal response...；Discussion首段至Figure10與模型分量；Figures1–3,10圖說。",
+      "summary": "濕度驟降後可見短暫反向開孔；鄰近表皮失壓而減少反推力是作者的解釋，較慢分量才使導度下降。",
+      "limitations": "正文明示三分量為假說；部分最初反應是儀器過渡誤差，作者排除前三分鐘。不可把全部尖峰都當氣孔動作，或宣稱ABA作用已有一致定論。未查全部突變株與引用原文。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "B11001",
+      "question": "土被壓實後，根長不進去一定是推不動嗎？",
+      "domain": "植物運水、生長與機械回饋",
+      "mechanism_key": "plant.root_compaction_ethylene_escape_growth_inhibition",
+      "answer_target": "充氣孔隙減少使根產生的乙烯不易散逸，乙烯訊號抑制伸長；同樣硬土中的不敏感株與隔氣對照把主動生長反應和單純阻擋分開。",
+      "scope": "限文中水稻/擬南芥與受控土柱；不宣稱硬度、缺氧或機械感測永遠無關；兩腔試驗濕度也隨壓實改變。",
+      "source_ids": [
+        "B11-S001"
+      ],
+      "source_locator": "B11-S001 PDF2–5 / article1–4：gas-impermeable barrier、hypoxia reporters、ethylene-insensitive mutants、Fig3I two-chamber diffusion。",
+      "premise_status": "screened",
+      "notes": "原研究直接對照；L003只述被動濃度梯度，本題新增逸散受限作環境訊號並引起生長改變；LEG-S55/V3092是果實成熟，不以同樣乙烯分子當重複或自動新增。 題級研究候選；原創示意與秒數為企劃預算，非實測、逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "根停止伸長可以是訊號反應；根較短不能單獨證明土的推阻更大。",
+        "visual": "同樣壓實土的野生型/不敏感株；再切獨立兩腔土柱比較氣體到達，標示非同一株連續過程。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "B11002",
+      "question": "有些稻根直著長得比較快，遇到石粒卻為什麼反而容易卡住？",
+      "domain": "植物運水、生長與機械回饋",
+      "mechanism_key": "plant.root_circumnutation_lateral_force_obstacle_slip",
+      "answer_target": "環旋增加根尖側向探索；機器根對照顯示側向推力能增加沿障礙表面的切向分量，使迎面接觸也有滑過機會，與活根孔板/碎粒結果相互支持。",
+      "scope": "限原研究水稻早期根與二維機器模型；機器根縮內側、活根伸外側，不把模型力向量當活根直接量測，也不聲稱所有根必須繞圈。",
+      "source_ids": [
+        "B11-S002"
+      ],
+      "source_locator": "B11-S002 PDF4–7：The hk1 Mutant Is Defective in Exploration of Solid Surfaces；Robotic Simulation...；clay particles；Figures4–6。",
+      "premise_status": "screened",
+      "notes": "原研究加明標物理模型；B2234是重力引導的差速，S10007是為感測取得資訊的擺動，本題是接觸時側向力幫助脫困；不另拆HK1/auxin名字成題。 題級研究候選；原創示意與秒數為企劃預算，非實測、逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "長度增加得快與成功穿越障礙，是不同的生長成果。",
+        "visual": "先比較透明介質與碎粒；再明確切到機器根，固定正面接觸角，比較無側向力卡住/有側向力滑過。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "B11003",
+      "question": "一根莖彎回上方時，怎麼沒有一直越彎越過頭？",
+      "domain": "植物運水、生長與機械回饋",
+      "mechanism_key": "plant.shoot_local_curvature_feedback_straightening",
+      "answer_target": "偏離垂直的角度促進轉彎，局部曲率回饋則促進拉直；兩者競爭的模型能重現彎曲後由頂端往下變直，並讓暫態振盪衰減。",
+      "scope": "限所讀傾倒後姿態實驗與A/AC模型；不能說從不過衝，也未辨明分子曲率感受器；生長區、平均伸長與時間尺度限制保留。",
+      "source_ids": [
+        "B11-S003",
+        "B11-S004"
+      ],
+      "source_locator": "B11-S003 PDF3–6，H1–H5、Eq5、Fig3與末段molecular sensing；B11-S004 Experimental validation / Discussion-conclusion。",
+      "premise_status": "screened",
+      "notes": "模型與觀察直接比較；B2234只到重力與差速，S10012是線蟲前段彎曲帶動後段的耦合，本題是局部拉直與朝上轉彎競爭，不能只以植物換動物而算新。 題級研究候選；原創示意與秒數為企劃預算，非實測、逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "朝上與變直是兩個不同目標；尖端方向一樣也可以有不同莖形。",
+        "visual": "相同尖端角度的直段/彎段，再並排只看角度與同時抑制曲率的模型輪廓，明標模型而不假造數值曲線。",
+        "seconds": [
+          95,
+          140
+        ]
+      }
+    },
+    {
+      "id": "B11004",
+      "question": "細胞壁既能撐住植物，為什麼還能在拉力不增加時繼續伸長？",
+      "domain": "植物運水、生長與機械回饋",
+      "mechanism_key": "plant.expansin_ph_dependent_wall_yield_constant_load",
+      "answer_target": "酸性條件能促進壁內expansin相關鬆弛，使承受拉力的細胞壁延伸；熱失活後僅降pH不足，補蛋白可恢復，區分可控制的壁鬆弛與單純加大推力。",
+      "scope": "直接證據是幼嫩黃瓜下胚軸的非活體壁、固定外加拉力；不把它當活細胞膨壓量測，不說所有成熟木質壁都如此，也不畫成確定的共價鍵水解。",
+      "source_ids": [
+        "B11-S005"
+      ],
+      "source_locator": "B11-S005 Protocol Part4 First/Second Experiment，Discussion；Abstract的活體酸生長背景只作受限銜接。",
+      "premise_status": "screened",
+      "notes": "原實驗室方法正文；L095是壁限制膨脹，H3090是一般粘彈鬆弛，本題是熱失活/蛋白補回和pH的生物調控對照。 題級研究候選；原創示意與秒數為企劃預算，非實測、逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "維持同一拉力仍能改變伸長速率，關鍵可以在壁的可鬆弛程度。",
+        "visual": "三個同負荷離體壁：原生酸化、熱失活後酸化、再補蛋白；定性速度箭頭，不偽造實測曲線。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "B11005",
+      "question": "嫩芽被側向擠壓後，細胞內的微管為什麼會換方向？",
+      "domain": "植物運水、生長與機械回饋",
+      "mechanism_key": "plant.meristem_stress_microtubule_anisotropy_feedback",
+      "answer_target": "改變組織受力會重排微管；作者模型把微管方向與新壁材料的有向強化連結，使形狀改變應力、應力再影響生長方向。",
+      "scope": "限擬南芥莖頂分生組織的壓迫/雷射去細胞實驗與模型；微管重排是觀察，整體強化迴路含推論；不宣稱唯一分子感受器或每個細胞都完全平行。",
+      "source_ids": [
+        "B11-S006"
+      ],
+      "source_locator": "B11-S006 printed1650–1654 / PDF2–6：Cell ablation...；Application of constraints...；Concluding remarks；Figures3,4。",
+      "premise_status": "screened",
+      "notes": "B2237是反覆風吹後矮粗生長；R6011是收縮根細胞變短寬。本題明確新增受力方向→細胞骨架重排→各向異性回饋，而不是重述機械刺激會改生長。 題級研究候選；原創示意與秒數為企劃預算，非實測、逐句查核或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "形狀既是生長結果，也能透過受力成為下一步排列的線索。",
+        "visual": "限定莖頂，側夾前後微管方向分布；標色區分觀察與推算應力，保留細胞間差異。",
+        "seconds": [
+          70,
+          110
+        ]
+      }
+    },
+    {
+      "id": "B11006",
+      "question": "針葉樹相連的水管，一邊進了空氣，怎麼能局部把它隔開？",
+      "domain": "植物運水、生長與機械回饋",
+      "mechanism_key": "plant.torus_margo_pit_porosity_and_pressure_sealing",
+      "answer_target": "正常水流通過紋孔膜多孔外圈；一側進氣後，水側負壓使膜偏移，中央厚墊貼孔口，將通水與封氣分配給不同結構。",
+      "scope": "限具torus-margo紋孔的管胞；不是所有樹、不是只准單向流的逆止閥，也不保證阻止所有空化或指定唯一失效方式。",
+      "source_ids": [
+        "B11-S007",
+        "B11-S008"
+      ],
+      "source_locator": "B11-S007 p1924正文及Fig1D–G；B11-S008 printed1920/PDF2，when tracheids are water filled / negative xylem pressure段。",
+      "premise_status": "screened",
+      "notes": "V3073是氣體讓水柱失效；D2249是預定單方向通流；U8004是Woronin小體堵受傷菌絲孔。本題候選增量為正常多孔通流、相變後壓差致可移中央密封的分工，請覆核是否足以另計。 題級研究候選；原創示意與秒數為企劃預算，非實測、逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "連通性可以在一側進氣後改變，不必靠把所有通水孔永久縮得很小。",
+        "visual": "同一紋孔剖面先雙側有水、外圈過水，再一側進氣厚墊貼孔；不畫成細胞主動把門推過去。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "B11007",
+      "question": "空氣突然變乾，有些葉子的氣孔為什麼會先開大一點才關小？",
+      "domain": "植物運水、生長與機械回饋",
+      "mechanism_key": "plant.stomatal_wrong_way_epidermal_backpressure_model",
+      "answer_target": "鄰近表皮細胞先失去膨壓，可暫時減少對保衛細胞的機械反推；之後表皮恢復與保衛細胞溶質調節共同改變導度，形成非單調反應的模型。",
+      "scope": "限文中擬南芥葉片VPD階躍；三分量是作者假說，非全部直接量到；初始儀器過渡三分鐘不當生理證據，不把高VPD等同單獨加熱或所有植物都必出現。",
+      "source_ids": [
+        "B11-S009"
+      ],
+      "source_locator": "B11-S009 Results reliability/artificial leaves與Exploring stomatal response；Discussion首段–Fig10；Methods gas exchange。",
+      "premise_status": "screened",
+      "notes": "L090是成對保衛細胞控孔，L094是膨壓下降/回復；本題新增鄰居失壓可產生相反瞬態及量測假象控制。不另拆每個突變株或ABA爭論。 題級研究候選；原創示意與秒數為企劃預算，非實測、逐句查核或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要分清哪群細胞先失壓；葉片失水不一定讓孔隙在每一瞬間都縮小。",
+        "visual": "先畫人工固定孔仍有早期讀值尖峰，再以排除該區間後的定性葉片曲線搭配兩群細胞；模型分量用虛線。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "葉片蒸散怎麼把水拉上來？",
+      "existing_ids": [
+        "L097",
+        "N098"
+      ],
+      "source_ids": [],
+      "reason": "舊水勢梯度核心；不換樹種或高度重收。"
+    },
+    {
+      "question": "夜間水從較濕土壤經根流到較乾土壤，要另收嗎？",
+      "existing_ids": [
+        "L096"
+      ],
+      "source_ids": [],
+      "reason": "目前只重講水勢梯度，未完成有新調控邊界的來源研究。"
+    },
+    {
+      "question": "清晨葉尖的水滴是怎麼擠出來的？",
+      "existing_ids": [
+        "R6004"
+      ],
+      "source_ids": [],
+      "reason": "根壓與吐水已收，不把器官換名再算。"
+    },
+    {
+      "question": "根為什麼往下長、莖卻向上長？",
+      "existing_ids": [
+        "B2234",
+        "B2235"
+      ],
+      "source_ids": [
+        "B11-S003"
+      ],
+      "reason": "重力感知與兩側差速已收；B11003只研究姿態回穩新增條件。"
+    },
+    {
+      "question": "風吹的樹為什麼變矮粗？",
+      "existing_ids": [
+        "B2237"
+      ],
+      "source_ids": [
+        "B11-S006"
+      ],
+      "reason": "既有機械刺激生長反應，不重收。"
+    },
+    {
+      "question": "植物細胞吸水後為什麼不一直膨脹？",
+      "existing_ids": [
+        "L095"
+      ],
+      "source_ids": [
+        "B11-S005"
+      ],
+      "reason": "壁約束膨壓已有；本輪只另核可調控鬆弛。"
+    },
+    {
+      "question": "植物缺水垂下，澆水後又挺起來？",
+      "existing_ids": [
+        "L094"
+      ],
+      "source_ids": [],
+      "reason": "膨壓案例已有，不把捲葉換成新題。"
+    },
+    {
+      "question": "氣孔開合時離子與水進出，能否每個方向各收一題？",
+      "existing_ids": [
+        "L090",
+        "L010"
+      ],
+      "source_ids": [
+        "B11-S009"
+      ],
+      "reason": "尚只是既有開合與運輸的正反方向，不以分子名細拆。"
+    },
+    {
+      "question": "木質部一段氣泡怎麼讓水路失效？",
+      "existing_ids": [
+        "V3073"
+      ],
+      "source_ids": [
+        "B11-S007",
+        "B11-S008"
+      ],
+      "reason": "已有連續水柱失效；本輪研究局部密封，不重收進氣本身。"
+    },
+    {
+      "question": "根內皮層為什麼不讓物質從細胞縫隙直接通過？",
+      "existing_ids": [
+        "V3074"
+      ],
+      "source_ids": [],
+      "reason": "既有屏障迫使膜運輸，不能改成不同營養元素重算。"
+    },
+    {
+      "question": "根毛為什麼讓植物較容易吸收水分？",
+      "existing_ids": [
+        "L085"
+      ],
+      "source_ids": [],
+      "reason": "表面積已有；尚未讀足以新增的局部運輸機制。"
+    },
+    {
+      "question": "細胞壁酸化是不是直接把壁溶壞？",
+      "existing_ids": [
+        "B11004"
+      ],
+      "source_ids": [
+        "B11-S005"
+      ],
+      "reason": "失活/補蛋白對照是同題的關鍵反證，不另算；也不採酸必直接破壞壁的前提。"
+    },
+    {
+      "question": "把莖的曲率帶出生長區，可以再算一題嗎？",
+      "existing_ids": [
+        "B11003"
+      ],
+      "source_ids": [
+        "B11-S004"
+      ],
+      "reason": "固定曲率與伸長時間尺度用來限制同一姿態模型，不拆參數結果。"
+    },
+    {
+      "question": "換一個根環旋基因或另一種激素，就再收一題？",
+      "existing_ids": [
+        "B11002"
+      ],
+      "source_ids": [
+        "B11-S002"
+      ],
+      "reason": "基因/藥物對照服務同一探索機制；本輪未獨立收完整訊號鏈。"
+    },
+    {
+      "question": "每一種紋孔漏氣路徑能各收一題嗎？",
+      "existing_ids": [
+        "B11006"
+      ],
+      "source_ids": [
+        "B11-S008"
+      ],
+      "reason": "競爭失效假說未逐一查核，不把不同假說灌成已定機制。"
+    },
+    {
+      "question": "捕蠅草的葉子為什麼突然翻扣？",
+      "existing_ids": [
+        "R6017",
+        "E9010"
+      ],
+      "source_ids": [],
+      "reason": "觸發訊號已收；快速翻扣可能有新增動態，但本輪未讀足最新原研究，且幾何翻轉與E9010接近，延後而非換器官復活。"
+    },
+    {
+      "question": "根接近水時如何改彎向？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "候選方向尚未完成水分梯度與向地控制的原研究辨界；不以功能描述收題。"
+    },
+    {
+      "question": "兩種氣孔突變株反應快慢不同，可各做一題嗎？",
+      "existing_ids": [
+        "B11007"
+      ],
+      "source_ids": [
+        "B11-S009"
+      ],
+      "reason": "是同一反向暫態模型的支持/限制，不把單一參數拆成新核心。"
+    }
+  ]
+}

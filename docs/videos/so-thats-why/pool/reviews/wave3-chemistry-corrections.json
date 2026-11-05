@@ -1,0 +1,105 @@
+{
+  "review_id": "wave3-chemistry-corrections-20261101",
+  "author": "pool_physics",
+  "corrected_on": "2026-11-01",
+  "status": "TARGETED_RECHECK_PASS_TOPIC_LEVEL_ONLY",
+  "batch_path": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
+  "before_sha256": "2d4f79bb9b0065c56a3fd819c9357cdcb4e2737203e2ffcc2465bbf9ea36d76c",
+  "after_sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd",
+  "theme_path": "docs/videos/so-thats-why/pool/reviews/wave3-chemistry-themes.json",
+  "theme_before_sha256": "0ef173659a157db8f64ed7d775a51d98c4a1cadb402af1d75faedfcca4691dc4",
+  "theme_after_sha256": "77f367dbe42055c12f1500bff7a9d78fc026375cd702f8ab630b837979e124a4",
+  "review_basis": "reviews/wave3-life-reviews-chemistry.json",
+  "changes": [
+    {
+      "id": "H3001",
+      "change": "區分構象相對能量/自由能的平衡偏好與能障控制互換速度；目標、範圍、定位和畫面同步。"
+    },
+    {
+      "id": "H3060",
+      "change": "題名/目標/key/範圍/畫面對準裂長、外載與韌性門檻；應力集中作舊有前提。"
+    },
+    {
+      "id": "H3066",
+      "change": "平均原子量對應修為P195。"
+    },
+    {
+      "id": "H3-T02",
+      "change": "H3060章改門檻對照；疲勞引用改LEG-T07並保留H3062原來源入口。"
+    },
+    {
+      "id": "author_dedup_flags:H3076",
+      "change": "舊參照改P252→P250，記錄SN1速率律與催化低障礙不同理由。"
+    },
+    {
+      "id": "H3-T03",
+      "change": "明列刪第4/5章110+55秒後225秒，保留/重寫第6章；明示H3085擴充165秒超原120秒且待不同實例，當期建議225秒。另存current_recommended_variant的225秒完整章節、收斂標題與追問、未提FRET的結尾。"
+    }
+  ],
+  "preserved": {
+    "candidate_count": 91,
+    "source_count": 75,
+    "not_added_count": 22,
+    "all_original_ids_preserved": true
+  },
+  "central_scope": "未改中央去重/selection，5組合併由root保留原問法與來源後套用；沒有新增候選。",
+  "verification": "作者回讀與定點修正；仍須原獨立覆核者targeted讀回，不宣稱腳本通過。",
+  "targeted_review": {
+    "reviewer": "pool_life_tech",
+    "reviewed_on": "2026-11-01",
+    "status": "PASS_REQUESTED_CORRECTIONS",
+    "batch_sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd",
+    "theme_sha256": "77f367dbe42055c12f1500bff7a9d78fc026375cd702f8ab630b837979e124a4",
+    "previous_author_receipt_sha256": "49270c50f8240e63adc013efa5811c430b1e8b77fd8adfced748bfd0d96dbc28",
+    "scope": "定點讀回 H3001、H3060、H3066、H3076 作者去重旗標、H3-T02 修改章節及 H3-T03 完整當期 225 秒版本；未重做所有來源逐主張核查。",
+    "resolved": [
+      {
+        "id": "H3001",
+        "result": "平衡構象占比由相對能量／自由能差異解釋；能障只連到互換快慢。目標、範圍及畫面已分開。"
+      },
+      {
+        "id": "H3060",
+        "result": "題目與目標收斂為指定幾何／模型內裂長、外載及韌性的快速擴裂門檻；未把應力集中重新算新核心。"
+      },
+      {
+        "id": "H3066",
+        "result": "平均原子量交叉引用已改為 P195。"
+      },
+      {
+        "id": "author_dedup_flags:H3076",
+        "result": "對照已改 P252→P250，SN1 解離控制的濃度／速率律與催化較低障礙路徑區分清楚。"
+      },
+      {
+        "id": "H3-T02",
+        "result": "H3060 章以裂長、載荷及韌性控制條件對照，疲勞章引用 LEG-T07 並保留 H3062 原來源入口；420 秒總和正確。"
+      },
+      {
+        "id": "H3-T03",
+        "result": "當期採完整 H3-T03-short-225 版，核心限 H3082/H3084，25+70+100+30=225 秒；結尾只收光子、非輻射與化學改變，不偷渡已刪 FRET。原 390 秒方案保留為未滿足條件的提案，刪第 4/5 章 110+55 秒與 H3085 165 秒超段落上限 45 秒均明列。"
+      }
+    ],
+    "structural_checks": {
+      "candidate_count": 91,
+      "source_count": 75,
+      "not_added_count": 22,
+      "candidate_and_source_ids_unique": true,
+      "all_source_references_resolve": true,
+      "candidate_seconds_positive_ordered": true,
+      "theme_batch_hash_matches": true,
+      "theme_core_ids_and_changed_legacy_references_resolve": true,
+      "original_theme_sums_seconds": [
+        450,
+        420,
+        390
+      ],
+      "current_H3T03_sum_seconds": 225,
+      "batch_theme_utf8_lf": true
+    },
+    "remaining_required_corrections": [],
+    "limitations": [
+      "題級及候選企劃定點覆核，不是劇本盲讀、逐主張通過或成片驗收。",
+      "5 組合併處置及中央 selection 由 root 處理，本次未改中央或原批次。",
+      "未重跑整批 91 題來源查核；沿用原獨立覆核證據，僅讀回本次指定修改與結構。"
+    ]
+  }
+}

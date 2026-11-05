@@ -35,9 +35,9 @@ from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import User, VideoToolToken
 from app.problems import AppError, app_error_handler
+from app.video_automation import daily_briefs, run_jobs, slides_requests, story_progress
 from app.video_automation import messages as drama_messages
 from app.video_automation import requests as drama_requests
-from app.video_automation import run_jobs, slides_requests, story_progress
 from app.video_automation import series as drama_series
 from app.video_automation import settings as service
 from app.video_automation.ai import StageFailed, run_stage
@@ -55,6 +55,8 @@ from app.video_automation.requests import RequestRefused
 from app.video_automation.schemas import (
     MESSAGE_SUBJECT_PATTERN,
     BingeQuoteOut,
+    DailyBriefRequestOut,
+    DailyBriefRequestsOut,
     DramaRequestIn,
     DramaRequestOut,
     DramaRequestsOut,
@@ -65,6 +67,7 @@ from app.video_automation.schemas import (
     MessageJobOut,
     MessageOut,
     MessagesOut,
+    NextDailyBriefRequestOut,
     NextDramaRequestOut,
     NextSlidesRequestOut,
     SeriesAction,
@@ -675,6 +678,54 @@ async def finish_slides_request(
     )
     try:
         return await slides_requests.finish_request(session, request_id)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+# The daily AI and tech news brief (app/video_automation/daily_briefs.py): the server files one
+# request a day from the previous day's news once the hour comes; the worker makes the video.
+
+
+@admin_router.get("/daily-briefs", response_model=DailyBriefRequestsOut)
+async def list_daily_briefs(user: ContentReader, session: Session) -> DailyBriefRequestsOut:
+    """The latest days, newest first: queued, made, skipped with the reason, or cancelled."""
+    _ = user
+    return DailyBriefRequestsOut(requests=await daily_briefs.list_requests(session))
+
+
+@tool_router.get("/daily-briefs/next", response_model=NextDailyBriefRequestOut)
+async def next_daily_brief(tool: VideoTool, session: Session) -> NextDailyBriefRequestOut:
+    """The oldest queued day, filing yesterday's first once the hour has come, or none."""
+    await enforce_named_rate_limit(
+        "video_daily_briefs", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    return NextDailyBriefRequestOut(request=await daily_briefs.next_request(session))
+
+
+@tool_router.post("/daily-briefs/{request_id}/start", response_model=DailyBriefRequestOut)
+async def start_daily_brief(
+    request_id: UUID, payload: DramaRequestStart, tool: VideoTool, session: Session
+) -> DailyBriefRequestOut:
+    """The worker claims a queued day under the day's own slug, daily-ai-YYYYMMDD."""
+    await enforce_named_rate_limit(
+        "video_daily_briefs", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        return await daily_briefs.start_request(session, tool, request_id, payload.slug)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+@tool_router.post("/daily-briefs/{request_id}/done", response_model=DailyBriefRequestOut)
+async def finish_daily_brief(
+    request_id: UUID, tool: VideoTool, session: Session
+) -> DailyBriefRequestOut:
+    """The worker reports the day's video confirmed for upload."""
+    await enforce_named_rate_limit(
+        "video_daily_briefs", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        return await daily_briefs.finish_request(session, request_id)
     except RequestRefused as error:
         raise _refused(error) from error
 

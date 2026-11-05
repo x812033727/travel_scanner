@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "status": "PASS_SPECIFIED_BODY_SOURCE_REFRESH_ONLY",
+  "author": "root",
+  "reviewer": "pool_physics",
+  "production_ready": false,
+  "reviewed_files": [
+    {
+      "file": "batches/wave47-reading-source-refresh.json",
+      "sha256": "b933a687371858035945981d04dda6797e9d538945e8c4e1978c4f57318c1d7e"
+    },
+    {
+      "file": "reviews/wave47-reading-refresh-author.json",
+      "sha256": "74b63b509ac682a722b58edde961aeb94f237d1b0d9d5a34d537ef72aa9ce127"
+    }
+  ],
+  "checked_source_ids": [
+    "R47-S001",
+    "R47-S002"
+  ],
+  "reviewed_candidate_ids": [
+    "R45006",
+    "R45011"
+  ],
+  "role_and_scope": "非作者獨立核兩篇指定正文及兩圖，並讀現行兩題完整問答scope；未改舊題，不重核其他來源。",
+  "source_readings": [
+    {
+      "source_id": "R47-S001",
+      "candidate_id": "R45006",
+      "decision": "supported_with_limits",
+      "locator": "刊頁1219–1225 Method/Results/Discussion，Fig2/6圖說；目讀刊頁1221 Fig2。",
+      "finding": "遮罩替換已越過詞，眼睛仍可回視。遮罩主效應顯著，歧義交互p=.06；正常閱讀84%對78%差異不顯著。遮罩回視24/1409試次未入推論分析，56%解釋明列推測。",
+      "limits": "不把實驗當現行速讀App測試，不從非隨機自發回視推每次都有因果收益。",
+      "route": "核SHA後獨立讀root當日已取得的出版者PDF文字副本；本reviewer未新HTTP。",
+      "cache": {
+        "file": ".cache/wave47-reading-r08.pdf",
+        "sha256": "ef365d9008cc2d44e70611e97d9b52baf66b10b0bbcee80a20c0bde76abe3466",
+        "text_file": ".cache/wave47-reading-r08.txt",
+        "text_sha256": "bb2fc39c11a32dc7032c785036b50ca5e4973c6b403a8bc44a6ade52c43bd636"
+      },
+      "figure": {
+        "file": ".cache/wave47-reading-r08-figure.png",
+        "sha256": "904aa0a725d356521662e1be76fa8d4423fc3ba7a7489eec0fd676d71d8d445b",
+        "root_visually_inspected": true
+      }
+    },
+    {
+      "source_id": "R47-S002",
+      "candidate_id": "R45011",
+      "decision": "supported_with_limits",
+      "locator": "刊頁562–564 Method/Results/Discussion開頭；目讀564 Fig1。",
+      "finding": "目標是非合體單純字；形/義首次注視效益顯著，音只有趨勢，跳讀率未顯著。IDT有顯示改變與單/雙字詞變化混淆，不能把它作乾淨機制對照。",
+      "limits": "不泛化全部漢字，也不聲稱視線未到已理解整句；只補本篇指定正文。",
+      "route": "核SHA後獨立讀root當日已取得的出版者PDF文字副本；本reviewer未新HTTP。",
+      "cache": {
+        "file": ".cache/wave47-reading-r14.pdf",
+        "sha256": "f41b058a62f2728f89660cede72e87a623ee8a7705592fee83cd05109986a1da",
+        "text_file": ".cache/wave47-reading-r14.txt",
+        "text_sha256": "5883b0076f9ff15f8bc8b89481071a6e429ad82dbe08a4f94fb77944a401103a"
+      },
+      "figure": {
+        "file": ".cache/wave47-reading-r14-figure.png",
+        "sha256": "b166637f2288f0106dc6e26f75f967be81ffbb67c1c53872b15110b7b1654c8e",
+        "root_visually_inspected": true
+      }
+    }
+  ],
+  "source_identity_review": [
+    {
+      "source_id": "R47-S001",
+      "same_work_as": "R45-S008",
+      "doi": "10.1177/0956797614531148",
+      "decision": "same_DOI_added_reading_not_new_evidence_study"
+    },
+    {
+      "source_id": "R47-S002",
+      "same_work_as": "R45-S014",
+      "doi": "10.3758/pbr.16.3.561",
+      "decision": "same_DOI_added_reading_not_new_evidence_study"
+    }
+  ],
+  "new_raw_records": 0,
+  "new_selected": 0,
+  "raw_not_modified": true,
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": []
+  },
+  "remaining_abstract_only_ids": [
+    "R45-S005",
+    "R45-S006",
+    "R45-S007",
+    "R45-S011",
+    "R45-S013"
+  ],
+  "reading_limits": [
+    "未重做原始統計、未核全部參考文獻或跨研究結論。",
+    "此收據只有兩篇正文補讀，不聲稱其餘七篇本次全讀；五份仍只有摘要。",
+    "PDF文字中文字例有字碼失真，未複製成畫面；指定兩原頁已目讀。"
+  ],
+  "remaining_blockers": []
+}

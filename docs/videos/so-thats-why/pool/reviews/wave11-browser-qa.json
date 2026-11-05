@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-01T14:22:05.260Z",
+  "result": "PASS",
+  "selected": 2837,
+  "index_html_sha256": "9534bb96093f8097804c221c7f1c525975e075469cc5aec2740a222470a110bc",
+  "source_sample": {
+    "id": "B11001",
+    "urls": [
+      "https://dspace.library.uu.nl/bitstream/handle/1874/418726/science.abf3013.pdf?sequence=1"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one new plant mechanism question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave11-desktop.png",
+    "wave11-source-desktop.png",
+    "wave11-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "visual_notes": "root實際查看1440桌面總覽、新植物題展開卡、390手機三圖；總數2837/來源2384/題案122/別名135與資料一致，字卡與控件無重疊或橫溢。來源網址在截圖裁切下方，完整URL與定位由瀏覽器DOM斷言核對，沒有把裁切圖當作來源全文證據。",
+  "screenshot_hashes": {
+    "wave11-desktop.png": "83404faed63e54d5e44d64fc2b7b075a48ff5fdef07c6f622683e0ad1305dbed",
+    "wave11-source-desktop.png": "cd43ff104b8712bd16c3f9a5b17683627485908f37ea817409c8ff48c3dda549",
+    "wave11-mobile.png": "a741a657163e0f01cd9dab70dc59e1e211fdf7782890d0f411f4346c9a6c1615"
+  }
+}

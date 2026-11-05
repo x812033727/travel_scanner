@@ -49,6 +49,7 @@ export const AREAS = {
   auto: ["automation", "2026-09-25-video-auto-orchestrator-one-command-that"],
   tidy: ["automation", "2026-09-28-video-story-tidy-finished"],
   restyle: ["automation", "2026-09-29-video-storytelling-prompts"],
+  restore: ["automation", "2026-11-03-restore-a-purged-video-from-drive"],
   // The drama format's media stages (docs/videos/DRAMA.md).
   look: ["media", "2026-09-26-video-drama-look-keyframes"],
   keyframes: ["media", "2026-09-26-video-drama-look-keyframes"],
@@ -65,6 +66,8 @@ export const AREAS = {
   branding: ["branding", "2026-09-30-video-channel-branding"],
   // A long video finished by another tool, sent to /admin/videos for its final review.
   import: ["import", "2026-09-28-video-tool-import-a-finished-long"],
+  // Stop RunPod pods nobody is using; the video worker runs it after every auto round.
+  "runpod-reap": ["runpod", "2026-10-30-runpod-pod-broker"],
 };
 
 const HELP = `Automated YouTube video pipeline (docs/videos/DESIGN.md)
@@ -100,12 +103,14 @@ Usage: node tools/video/cli.mjs <command> [options]
   i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included
   qa       --slug S [--workdir D]                  the eleven checks of the finished cut, written to review/qa.json (docs/videos/HANDS-OFF.md)
   auto [--once]                                    run the pipeline from the settings on /admin/videos (docs/videos/AUTOMATION.md)
+  runpod-reap [--json]                             ask the site to stop RunPod pods that are idle, past the longest run or the monthly cap
   tidy [--dry-run] [--workdir D]                   clear the work files of the oldest video finished $VIDEO_TIDY_DAYS (7) days ago;
                                                    auto does this once a round, --dry-run only lists what would go
+  restore --slug S [--dry-run] [--workdir D]       bring a video the host cleared back from Google Drive (docs/videos/BACKUP.md §還原)
   restyle --slug S [--dry-run]                     retell a worker's video in the storytelling register (docs/videos/ILLUSTRATED.md);
                                                    --dry-run only measures the script
 
-  login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
+  login [--name N] [--paste | --token-file F] [--colab] [--runpod]  pair with the site: allow the printed code on the admin card
   audition --text-file F [--voices V] [--style T] [--slug S] [--workdir D]
                                                    compare voices; A01/B18 pilot samples require their exact budgeted --slug
   check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts
@@ -135,7 +140,10 @@ Usage: node tools/video/cli.mjs <command> [options]
   production-check [--slug S,S]                   check source-bound director plans, all episodes and cast
   production-build [--slug S,S] [--out DIR]        build pending review bundles, audition text and a local storyboard viewer; no generation
   import --from DIR [--workdir D] [--force]        a long video another tool finished (final.mp4, meta.json, optional
-                                                   zh-TW.srt and thumbnail.png): reported to /admin/videos with its final cut
+                                                   zh-TW.srt and thumbnail.png): reported to /admin/videos with its final cut;
+                                                   then --languages, and --publish [--clips DIR] once the cut is approved: the
+                                                   upload package, with every <shot>.mp4 of DIR (default <from>/clips) for the
+                                                   host's full-tier Drive backup (docs/videos/BACKUP.md)
 
 --workdir defaults to $VIDEO_WORKDIR, then ~/mokaair-work/videos; a video's files go in <workdir>/<slug>/, outside the repository.
 Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing,

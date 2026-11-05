@@ -1,0 +1,323 @@
+{
+  "schema": "ai-concepts-next4-sanitized-release-evidence-v1",
+  "status": "released-and-accepted",
+  "generated_at": "2026-10-29T19:14:52.251079+08:00",
+  "target_sha": "9dc9dca54b4cc2660fefe635ef76c42d5a82dd8f",
+  "previous_target_sha": "a036679662030de86f00f0271f84a39265f55edd",
+  "merged_pull_requests": [
+    {
+      "number": 1919,
+      "merge_sha": "f33af2e656204f89910740a945913268edfd513a"
+    },
+    {
+      "number": 1916,
+      "merge_sha": "9dc9dca54b4cc2660fefe635ef76c42d5a82dd8f"
+    }
+  ],
+  "deployment_range": {
+    "commits": 2,
+    "paths_without_rename_detection": 64,
+    "content_paths": 52,
+    "documentation_and_task_paths": 12,
+    "migration_paths": [],
+    "application_code_changed": false
+  },
+  "scope": {
+    "slugs": [
+      "ai-term-fine-tuning",
+      "ai-term-few-shot-prompting",
+      "ai-term-multimodal-ai",
+      "ai-term-zero-shot-prompting"
+    ],
+    "source_locale": "zh-TW",
+    "added_locales": [
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ],
+    "published_translations": 16,
+    "persisted_public_documents": 20,
+    "deployed_assets": 60,
+    "new_assets": 48,
+    "preserved_source_assets": 12,
+    "source_corrections": 0,
+    "hubs_published": 0,
+    "public_qa_required_pages": 20,
+    "public_qa_required_assets": 60,
+    "public_qa_required_original_screenshots": 40,
+    "public_qa_required_independent_reviewers": 2
+  },
+  "manifest_sha256": "2082d5e3bd35eaef49ea0d8ce96a2e0b415138bb77e752392eda13a656e88ddc",
+  "baseline_sha256": "bb817bcf38290234de0969e6fcd39928a5f5c5a5fbd8c298154922db79c5367e",
+  "action_time_owner_authorization_sha256": "afc89ead93115cad562d8be328ef6816aa7ca33cb200a3f2c28ad5325403db51",
+  "approved_plan_sha256": "d5ab7ad55685efd114be9ae6b4c6bf6fc744b4f241df3daf0769d5a71ec88073",
+  "completed_evidence": {
+    "backup-restore": {
+      "receipt_sha256": "df359254b37ab52055e658fda7c4b445539835be9185d4b492428c5817ae611f",
+      "completed_at": "2026-10-29T17:13:06.592794+08:00"
+    },
+    "deploy": {
+      "receipt_sha256": "b390345abfec337f7c634469a352e866cd5a158004398c8ae7c17ac65c4fdba6",
+      "completed_at": "2026-10-29T17:32:02.438172+08:00"
+    },
+    "mirror": {
+      "receipt_sha256": "20db0a6f3b3ff5391e1de4c602a527f041c7bfba0dea8eca8c67a862ecedfee7",
+      "completed_at": "2026-10-29T17:46:12.791914+08:00"
+    },
+    "rehearse": {
+      "receipt_sha256": "eded25bceed8218702de01dd2421630373918e4494f6e36c3d60d18f25009164",
+      "completed_at": "2026-10-29T17:54:36.651655+08:00"
+    },
+    "live-dry-run": {
+      "receipt_sha256": "70de50b14717fa8cc5a3900bd7181fd0253a7cfb07bd606fdd9991a4eda562c2",
+      "completed_at": "2026-10-29T17:56:30.559009+08:00"
+    },
+    "drafts": {
+      "receipt_sha256": "23a55a15a7ff924dbb67fa62d80c0ebe5005fec6ab3ef61d87c81b34b39f727f",
+      "completed_at": "2026-10-29T18:07:10.136737+08:00"
+    },
+    "publish-articles": {
+      "receipt_sha256": "bf8a3f6319c477fdb221b5cc9408976ec279d209d1e958ad00cc3c98f4e4704c",
+      "completed_at": "2026-10-29T18:07:26.965176+08:00"
+    },
+    "publish-hubs": {
+      "receipt_sha256": "38f5ece39a3506a27db6a17ab083bd4168d46951ec7d35924cf2b2ca3d56c354",
+      "completed_at": "2026-10-29T18:07:36.857338+08:00"
+    },
+    "live-replay": {
+      "receipt_sha256": "8fb24d3cc55d6492535ac9a73602808213c080f1dfd77b185c31fa13c55303c3",
+      "completed_at": "2026-10-29T18:08:34.542464+08:00"
+    },
+    "links": {
+      "receipt_sha256": "9b0ec60a39cc7e84e86e8dbb3b0a0f266e68069ba15f3ce76191cba543f0f746",
+      "completed_at": "2026-10-29T18:10:06.866975+08:00"
+    }
+  },
+  "backup_restore": {
+    "actual_full_backup": true,
+    "actual_isolated_restore": true,
+    "dump_exit": 0,
+    "restore_exit": 0,
+    "restore_verified": true,
+    "original_source_before_after_restored_equal": true,
+    "worker_exit_sha256": "5f0ade879b219b737b3f7b85fa14373a2daf65ca87f62399fd1b14401f352ccc"
+  },
+  "deployment": {
+    "actual_native_exit": 0,
+    "worker_exit_sha256": "d0362c391e765f6aaab7f3b935dca91f4ca4f2833e2ce766bc812285faa93793",
+    "new_runtime_and_60_asset_readback_verified": true,
+    "held_host_verifier": {
+      "pass": 10,
+      "fail": 1,
+      "reason": "Expected owned hold and deployment locks",
+      "global_pass_claimed": false
+    }
+  },
+  "rehearsal": {
+    "actual_deployed_image_used": true,
+    "protected_tables": 167,
+    "whole_replay_tables": 167,
+    "new_revisions": 32,
+    "new_audits": 32,
+    "original_source_rows_unchanged": 4,
+    "production_writes": false,
+    "fresh_live_dry_run_pending": null,
+    "fresh_live_dry_run_completed_operations": 0,
+    "group_receipt_sha256": "7fb78292152e20bcac28080da17f57d33a718e09b3f51a688315e2be94bdc69e",
+    "accepted_worker_exit_sha256": "96183d0a25b5ecd38a2c91a898bad0c21abb5a1378a61c248c1a2814c298532d",
+    "independent_review_sha256": "9176cda07990079f3af49f62925d68643f34a33f74f1d626fd24ada052e03bd5"
+  },
+  "publication": {
+    "drafts": 16,
+    "articles_published": 16,
+    "hubs_published": 0,
+    "committed_operations": 32,
+    "new_revisions": 32,
+    "new_audits": 32,
+    "all_new_locale_published_versions": 2,
+    "original_source_rows_unchanged": 4,
+    "source_metadata_unchanged": true,
+    "native_replay_phases": 4,
+    "replay_write_count_each": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "replay_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "selected_state_and_history_unchanged": true,
+    "gate_sha256": "f1693a1e3f428253fd53f6022ee5ebc9da697b8d3ec84085cb7396c894df5d9d",
+    "group_receipt_sha256": "5600fc14e5b4ea2fced50c95e7b59f1dd95c6312024d307da1e5aeeb0dfd3823",
+    "accepted_worker_exit_sha256": "81c2b31d4fe8300027a453c858349bd4d9a623828af17132c21b07dfbdfb8cb5",
+    "completed_at": "2026-10-29T18:10:08.115979+08:00",
+    "independent_review_sha256": "9b9763e99421239ddbd5b90f8300569f7c4f4d3862fc4e923217938f79e2e7a7"
+  },
+  "preserved_sources": [
+    {
+      "slug": "ai-term-fine-tuning",
+      "locale": "zh-TW",
+      "published_version": 10,
+      "document_sha256": "e835a8eaeff22d888b1f8090703c0b998849dcc477de010fb09cebc0d1939729"
+    },
+    {
+      "slug": "ai-term-few-shot-prompting",
+      "locale": "zh-TW",
+      "published_version": 12,
+      "document_sha256": "f156b18dec9410b6c92f5b7e2866208b1eee4fb221f0c826261abf52c880e808"
+    },
+    {
+      "slug": "ai-term-multimodal-ai",
+      "locale": "zh-TW",
+      "published_version": 12,
+      "document_sha256": "0c13a13cfa8909d81533ca563f8f688b62f9a1a35410409f7445b1cb9571b961"
+    },
+    {
+      "slug": "ai-term-zero-shot-prompting",
+      "locale": "zh-TW",
+      "published_version": 12,
+      "document_sha256": "cdb0f81143fbdcf55694fab817fd25e73fc0867ae35f2db3dcc1c859fceb3eba"
+    }
+  ],
+  "link_checks": {
+    "read_only": true,
+    "global_graph_rebuild_performed": false,
+    "global_zero_findings_claimed": false,
+    "new_unpublished_references_requiring_public_plain_text_confirmation": 44,
+    "unexpected_new_findings": 0,
+    "public_plain_text_confirmation_status": "PASS_SELECTED_LINKS",
+    "confirmed_unpublished_plain_text_references": 44
+  },
+  "overall_release_complete": true,
+  "global_language_completion_claimed": false,
+  "missing_locale_count_after_release": 3072,
+  "raw_private_evidence_included": false,
+  "public_acceptance": {
+    "pages": 20,
+    "assets": 60,
+    "original_screenshots": 40,
+    "independent_reviewers": 2,
+    "collector_exit": 0,
+    "qa_receipt_sha256": "c2c6c7905366e2486b3b10a7d8fff68d70648d79faa6bf5cd005fa69cecb20b9",
+    "collector_execution_sha256": "7bee16d512b5dd18db493a72642bc7bbccc06ce7186744078832601f004b0848",
+    "http_report_sha256": "5ab5221ffa404da93994d248f5d6d1a463254e14b4e89a84e43f9efbe4a50ea4",
+    "browser_report_sha256": "e96c61c5850911583c194b8ffa21062159a760ab7e6f3519a83d80b0b4af2bdb",
+    "visual_review_sha256": [
+      "0339e609ff42a062e8956a722320904b5b60793d68ee9430be276a538c5259eb",
+      "99c4919c467eb9e34821295e5f3245e2d4c7dd0080fe8fe55cf6ec342d48b68b"
+    ],
+    "static_view_limits_recorded": true,
+    "original_collector_flags_modified": false
+  },
+  "finalization": {
+    "phase": "finalize-qa-correction",
+    "completed_at": "2026-10-29T19:02:32.075909+08:00",
+    "receipt_sha256": "93cfcb6d3fea7480c7e63f4eb7a8f000a5b2e8125ef86e5d05d714bcac7cfeb0",
+    "worker_exit_sha256": "5fcf6f0a1c1c53fd59794f5bc0cc83d4fee6d1c5b0e33ce9c3c92cc6eaca6a5a",
+    "actual_worker_exit": 0,
+    "worker_receipt_accepted": true,
+    "owned_hold_cleared": true,
+    "verifier_pass": 11,
+    "verifier_fail": 0,
+    "verifier_sha256": "0bdd60e0f337208d1f9e5f7fccf9bfdcbbb561b42599c1218f383d18493682b7",
+    "full_backup_bytes_retained": 574190793,
+    "full_backup_sha256_retained": "28fa78d5fba4e8492965787ec31001a9f900033c75c39be812c502928bac115e",
+    "restored_database_retained": true,
+    "backup_or_database_cleanup": false,
+    "independent_actual_review_sha256": "b9aabca709895fe28f0b013c39fffa05fc6533a2a4c3e215f2fdd0cd9c6fa87e"
+  },
+  "compatibility_corrections": {
+    "first_public_capture_exit": 1,
+    "first_failed_capture_preserved": true,
+    "xml_issue": "The validator expected five alternates; the existing site publishes five locales plus the exact English x-default.",
+    "original_collector_manifest_sha256": "4325c7177c43389e23a05fca37adb5f9f7422f613eaa0f39a15c5cc687c6bf61",
+    "effective_collector_manifest_sha256": "fa2cbcf1870081092f6b0a6bed5e1e04960e193bceaabf99380f3fe5eaf61e86",
+    "final_verifier_caller": "Supply the request-start ledger required by the unchanged pacing wrapper.",
+    "first_export_exit": 1,
+    "first_export_failure_preserved": true,
+    "export_only_issue": "Ten exact prior diagnostic records have no timestamp fields; the corrected exporter pins their original hashes and refuses unknown records.",
+    "original_publisher_and_core_unchanged": true
+  },
+  "fresh_global_census": {
+    "schema": "next16-sanitized-fresh-census-v1",
+    "captured_at": "2026-10-29T19:12:37.10031+08:00",
+    "source_stdout_sha256": "5fb6109eeaa68d79624fdc20bb022aec93872e8d9c8a17f6afc02f30fd2129fa",
+    "native_census_sha256": "a05fe520294807a3fc7b4303f9185dab19e9bb294afc987d5316703066c9cd3a",
+    "global_summary": {
+      "public_articles": 2250,
+      "complete_public_articles": 1482,
+      "incomplete_public_articles": 768,
+      "missing_public_documents": 3072,
+      "excluded_status_counts": {
+        "draft": 120
+      },
+      "public_locale_states": {
+        "zh-TW": {
+          "published_clean": 2250
+        },
+        "en": {
+          "missing_row": 768,
+          "published_clean": 1482
+        },
+        "ja": {
+          "missing_row": 768,
+          "published_clean": 1482
+        },
+        "ko": {
+          "missing_row": 768,
+          "published_clean": 1482
+        },
+        "zh-CN": {
+          "missing_row": 768,
+          "published_clean": 1482
+        }
+      },
+      "complete_definition": "all five locales have a published version; dirty newer drafts are reported separately"
+    },
+    "selected_public_documents": 20,
+    "host_files_written": false,
+    "database_mutation_invoked": false,
+    "independent_actual_review_sha256": "cbe8fdfd22832e57c3ab8cac9a3869343d0e5f9c3124d4db2580bacb1e714eae",
+    "incomplete_by_kind": {
+      "howto": {
+        "articles": 108,
+        "missing_public_documents": 432
+      },
+      "intel": {
+        "articles": 12,
+        "missing_public_documents": 48
+      },
+      "life": {
+        "articles": 648,
+        "missing_public_documents": 2592
+      }
+    }
+  },
+  "historical_progress_accounting": {
+    "status": "COMPLETE_FOR_16_TARGETS",
+    "fresh_database_query": false,
+    "report_sha256": "bf11dce4665feb25c7884bc9f92c0681e90af02e452234c4572a287a149b2ecf",
+    "actual_exit": 0,
+    "target_language_documents": 16,
+    "target_stage_counts": {
+      "translated": 16,
+      "rendered": 16,
+      "reviewed": 16,
+      "assembled": 16,
+      "draft_imported": 16,
+      "published": 16,
+      "browser_verified": 16
+    },
+    "whole_report_errors": 0,
+    "target_locale_issues": 0,
+    "preserved_source_accounting_issues": 4,
+    "source_issue": "Browser evidence does not match recorded publication",
+    "source_issue_explanation": "The four unchanged zh-TW sources have no new publication operation in this sixteen-target journal. Their preservation and actual public acceptance are proved separately.",
+    "original_full_20_entry_browser_input_retained": true
+  }
+}

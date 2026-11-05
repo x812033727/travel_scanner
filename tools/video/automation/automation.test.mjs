@@ -10,6 +10,7 @@ import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
+import { DURABLE_WAIT_MS, MAX_RUN_WAIT_MS } from "./cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { cuePieces, LOCALE_RULES, measure, parseSrt } from "../core/captions.mjs";
@@ -24,17 +25,20 @@ import { atomicWrite, docDir, readJson, ROOT, UsageError } from "../core/paths.m
 import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
+import { narrativeHash } from "../core/screenplay.mjs";
+import { BRIEF_PICTURE_LICENSE, briefPicturePrompt, LEAD_PICTURE_LICENSE, leadSource, pageImage } from "./lead-picture.mjs";
+import { FIT_VERSION, stateCount } from "../templates/templates.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { RendererError } from "../render/browser.mjs";
 import { dubFingerprint, dubScript, overrunSummary, translationHash } from "../dubs/plan.mjs";
 import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
-import { PART_BYTES } from "../review/sync.mjs";
+import { PART_BYTES, sourceGuideOf } from "../review/sync.mjs";
 import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, isDraftCap, KEY_BAND_NOTE, LAYOUT_NOTE, layoutProblemsIn, withCardText, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, withKeyBand, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN, TRANSLATOR_TITLE } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -215,11 +219,12 @@ function jevPick(choice, { passed = true, stance = 0.9, demo = 0.8, advice = 0.1
  * `judge(body)` answers the outline judgement (an object, or a Response for an error) once the
  * stance is written and the switch on; otherwise the site answers 409 as it does.
  */
-function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [], dramaRequests = [], slidesRequests = [], judge = null, policy = null } = {}) {
-  const calls = { run: [], reviews: [], reports: [], details: [], pages: [], drama: [], slides: [], topics: 0, judge: [], policy: [] };
+function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [], dramaRequests = [], slidesRequests = [], dailyRequests = [], judge = null, policy = null } = {}) {
+  const calls = { run: [], reviews: [], reports: [], details: [], pages: [], drama: [], slides: [], daily: [], topics: 0, judge: [], policy: [] };
   const files = new Map();
   const requests = dramaRequests.map((request) => ({ status: "queued", slug: null, ...request }));
   const slides = slidesRequests.map((request) => ({ status: "queued", slug: null, title: null, note: null, ...request }));
+  const daily = dailyRequests.map((request) => ({ status: "queued", locales: {}, ...request }));
   const projects = new Map();
   // /admin/videos as a list: videos made elsewhere, then whatever the worker reports.
   const listed = new Map(videos.map((video) => [video.slug, { dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null, locales: {}, locales_decided_at: null, ...video }]));
@@ -344,6 +349,23 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       Object.assign(request, slidesCall[2] === "start" ? { status: "started", slug: body.slug } : { status: "done" });
       return json(request);
     }
+    // The daily news brief, as the server answers (daily_briefs.py): { request } or { request: null };
+    // a claim under another slug, or of a day no longer queued, is a 409.
+    if (pathname === "/api/video/automation/daily-briefs/next") {
+      calls.daily.push({ id: null, action: "next", slug: null });
+      return json({ request: daily.find((request) => request.status === "queued") ?? null });
+    }
+    const dailyCall = /^\/api\/video\/automation\/daily-briefs\/([^/]+)\/(start|done)$/.exec(pathname);
+    if (dailyCall) {
+      const request = daily.find((each) => each.id === dailyCall[1]);
+      calls.daily.push({ id: dailyCall[1], action: dailyCall[2], slug: body?.slug ?? null });
+      if (!request) return json({ code: "video_daily_brief_not_found", detail: "no" }, 404);
+      if (dailyCall[2] === "start" && request.status === "started" && request.slug === body?.slug) return json(request);
+      if (dailyCall[2] === "start" && body?.slug !== request.slug) return json({ code: "video_daily_brief_slug_mismatch", detail: `only ${request.slug}` }, 409);
+      if (dailyCall[2] === "start" && request.status !== "queued") return json({ code: "video_daily_brief_not_queued", detail: `the brief is ${request.status}` }, 409);
+      Object.assign(request, { status: dailyCall[2] === "start" ? "started" : "done" });
+      return json(request);
+    }
     if (pathname === "/api/video/automation/run") {
       calls.run.push(body);
       if (paused) return json({ code: "video_ai_subscription_paused", detail: "every Claude account is at or above 80%" }, 429);
@@ -356,6 +378,8 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       const [, slug, sub] = match;
       if (init.method === "PUT") {
         calls.reports.push({ slug, ...body });
+        // As the server does: a sender that was answered before finds no row only after a delete.
+        if (body.on_site && !listed.has(slug)) return json({ code: "video_project_deleted", detail: "站主已經刪除這支影片" }, 410);
         const known = listed.get(slug) ?? { slug, dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null };
         // As the server does (admin_service.upsert_project): a report without the id clears it.
         listed.set(slug, { ...known, title: body.title, stage: body.stage, checklist: body.checklist, retry_acknowledged_id: body.retry_acknowledged_id ?? known.retry_acknowledged_id, source_guide: body.source_guide ?? known.source_guide, youtube_video_id: body.youtube_video_id ?? null });
@@ -408,7 +432,9 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
-  return { calls, fetchImpl, reviewsOf, listed, settings: current, requests, slidesRequests: slides, files };
+  // The owner deleted a dropped video: no row on the list and none to read.
+  const forget = (slug) => { listed.delete(slug); projects.delete(slug); };
+  return { calls, fetchImpl, reviewsOf, listed, forget, settings: current, requests, slidesRequests: slides, dailyRequests: daily, files };
 }
 
 function context(box, fetchImpl, clock) {
@@ -953,6 +979,85 @@ test("a video the owner drops is left alone, frees its place and keeps its topic
   assert.deepEqual(payload.used_guides, ["chatgpt-ads-status"], "its article still counts as used");
 });
 
+/** A worker that drafted a video and reported it; the state on disk knows it has been answered. */
+async function reportedVideo() {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug), settings: { max_waiting_drafts: 1, draft_interval_hours: 1 } });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  // The draft's own round reports before its last save; the next round's bookkeeping records it.
+  await automation.bookkeeping(new Map(site.listed), () => true);
+  return { box, slug, site, clock, ctx, automation };
+}
+
+test("a video the owner deleted before the worker saw the drop is left, and never reported again", async () => {
+  const { box, slug, site, ctx, automation } = await reportedVideo();
+  assert.equal(site.calls.reports[0].on_site, undefined, "a first report may register the slug");
+  assert.equal(automatedVideos(box.work)[0].on_site, true);
+
+  site.forget(slug);
+  const reports = site.calls.reports.length;
+  assert.match(await automation.step(), /the owner dropped it \(deleted on \/admin\/videos\)/);
+  const [state] = automatedVideos(box.work);
+  assert.equal(state.status, "dropped");
+  assert.ok(Number.isFinite(Date.parse(state.dropped.at)), "tidy clears it counted from this date");
+  assert.equal(site.calls.reports.length, reports, "nothing brought the row back");
+  assert.equal(site.listed.has(slug), false);
+
+  const again = new Automation(ctx, automationClient(ctx), site.settings);
+  again.refs = smallRefs;
+  await again.step();
+  assert.equal(site.listed.has(slug), false, "nor does a later run");
+});
+
+test("a report that loses the race with the delete does not bring the row back either", async () => {
+  const { slug, site, automation } = await reportedVideo();
+  site.forget(slug);
+  await assert.rejects(() => automation.api.report(slug, { title: "x", stage: "y", checklist: [], on_site: true }), (error) => error.status === 410);
+  assert.equal(site.listed.has(slug), false);
+});
+
+test("a video only missing from the site's list goes on, and is asked after once a run", async () => {
+  const { box, slug, site, automation } = await reportedVideo();
+  const asked = () => site.calls.details.filter((each) => each === slug).length;
+  const before = asked();
+  automation.site = [];
+  assert.equal(await automation.bookkeeping(new Map(), () => true), null);
+  assert.notEqual(automatedVideos(box.work)[0].status, "dropped", "the list holds the newest 200 only");
+  assert.equal(asked(), before + 1);
+  await automation.bookkeeping(new Map(), () => true);
+  assert.equal(asked(), before + 1, "once a run");
+});
+
+test("a video from before on_site gets it from the list, so a later delete is seen", async () => {
+  const { box, slug, site, ctx, automation } = await reportedVideo();
+  const file = path.join(box.work, slug, "auto.json");
+  const { on_site: _, ...older } = JSON.parse(readFileSync(file, "utf8"));
+  writeFileSync(file, JSON.stringify(older));
+  await automation.bookkeeping(new Map(site.listed), () => true);
+  assert.equal(JSON.parse(readFileSync(file, "utf8")).on_site, true);
+
+  site.forget(slug);
+  const next = new Automation(ctx, automationClient(ctx), site.settings);
+  next.site = [];
+  assert.match(await next.bookkeeping(new Map(), () => true), /the owner dropped it/);
+});
+
+test("a video never reported is not taken for a deleted one", async () => {
+  const { box, slug, site, automation } = await reportedVideo();
+  const file = path.join(box.work, slug, "auto.json");
+  const { on_site: _, ...fresh } = JSON.parse(readFileSync(file, "utf8"));
+  writeFileSync(file, JSON.stringify(fresh));
+  site.forget(slug);
+  automation.site = [];
+  assert.equal(await automation.bookkeeping(new Map(), () => true), null);
+  assert.notEqual(JSON.parse(readFileSync(file, "utf8")).status, "dropped");
+});
+
 test("a writer that answers without a script is asked once a run, and the video is blocked the second time", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
@@ -998,6 +1103,64 @@ test("a writer that answers without a script is asked once a run, and the video 
   assert.equal(writers(), 4);
   assert.equal(await automation.step(), null);
   assert.equal(writers(), 4, "an acknowledged request cannot trigger another paid retry");
+});
+
+/** A site whose durable jobs answer once the clock passes `finishAt()`, for a whole `auto` run. */
+function durableSite(slug, finishAt) {
+  const site = fakeSite({ answers: answersFor(slug), settings: { durable_stage_runs: true } });
+  const jobs = new Map();
+  const clock = { now: Date.parse("2026-10-31T01:00:00Z") };
+  const fetch = async (url, init = {}) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === "/api/video/automation/run/jobs") {
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) {
+        const result = await (await site.fetchImpl(`${SITE}/api/video/automation/run`, init)).json();
+        jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, status: "running", result: null, completed: result });
+      }
+      const { completed, ...receipt } = jobs.get(body.request_key);
+      return Response.json(receipt);
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      const { completed, ...receipt } = [...jobs.values()].find((row) => pathname.endsWith(row.id));
+      return Response.json(clock.now >= finishAt(clock) ? { ...receipt, status: "succeeded", result: completed } : receipt);
+    }
+    return site.fetchImpl(url, init);
+  };
+  return { site, jobs, clock, fetch };
+}
+
+test("a durable job still running when nothing else can move is waited for in the same run, 45 seconds at a time and at most 15 minutes, not left for the next round", async () => {
+  // 2026-10-30: a daily brief's eight languages were about 80 durable requests of a minute and a
+  // half each, and every one of them waited a whole round (about six minutes) for its answer.
+  const slug = "chatgpt-ads-off";
+  const prepare = async (finishAt) => {
+    const box = sandbox();
+    const durable = durableSite(slug, finishAt);
+    const { ctx, out } = context(box, durable.fetch, durable.clock);
+    const automation = new Automation(ctx, automationClient(ctx), durable.site.settings);
+    automation.refs = smallRefs;
+    await automation.step();
+    Object.assign(durable.site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+    return { ...durable, ctx, out };
+  };
+
+  // The writer takes a minute and a half from the run's start: the run waits and moves the video on.
+  let due = null;
+  const quick = await prepare((clock) => (due ??= clock.now + 90_000));
+  const started = quick.clock.now;
+  assert.equal(await main(["auto"], quick.ctx), EXIT.ok, quick.out.stderr);
+  assert.match(quick.out.stdout, /waiting 45 s for chatgpt-ads-off on the server, then looking again/);
+  assert.match(quick.out.stdout, /chatgpt-ads-off: script drafted and passes lint/, "in the same run");
+  assert.ok(quick.clock.now - started < 5 * 60_000);
+
+  // A job that never finishes: the run sleeps at most MAX_RUN_WAIT_MS, then ends as before.
+  const slow = await prepare(() => Infinity);
+  assert.equal(await main(["auto"], slow.ctx), EXIT.ok, slow.out.stderr);
+  const waits = slow.out.stdout.match(/waiting 45 s for /g)?.length ?? 0;
+  assert.equal(waits, MAX_RUN_WAIT_MS / DURABLE_WAIT_MS, slow.out.stdout);
+  assert.match(slow.out.stdout, /nothing to do now/);
+  assert.equal(slow.jobs.size, 1, "one job, looked up again, never sent twice");
 });
 
 /** The web route's answer once its deadline passed while the API kept running the stage (apps/web/app/api/video/automation/run). */
@@ -1165,6 +1328,42 @@ function losing(site, lost) {
 
 /** The owner presses 重試這支影片 on /admin/videos. */
 const ownerRetries = (site, slug) => Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
+
+test("a month whose drafts are spent plans nothing new until it turns, and the run goes on instead of ending at the refusal", async () => {
+  // 2026-10-31: 「本月已產生 60 支草稿」 ended every round that reached a scheduled draft, and two
+  // daily briefs in progress waited behind it.
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  let planners = 0;
+  const fetchImpl = async (url, init = {}) => {
+    if (new URL(url).pathname === "/api/video/automation/run" && JSON.parse(init.body).stage === "planner") {
+      planners += 1;
+      return Response.json({ code: "video_ai_budget_exhausted", detail: "本月已產生 60 支草稿，達到上限 60 支" }, { status: 429 });
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-31T10:00:00Z") };
+  const { ctx, out } = context(box, fetchImpl, clock);
+  const global = () => readJson(path.join(box.work, "auto-state.json"), {});
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /draft: 本月已產生 60 支草稿，達到上限 60 支; no new draft is planned until 2026-11-01T00:00:00\.000Z/);
+  assert.equal(global().draft_capped_until, "2026-11-01T00:00:00.000Z");
+  assert.equal(planners, 1);
+
+  // The rest of the month asks the planner nothing.
+  clock.now += 6 * 3600_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(planners, 1);
+
+  // The token budget, which every billed call shares, still ends the run.
+  assert.equal(isDraftCap({ code: "video_ai_budget_exhausted", message: "本月模型 token 已用 1,000，達到上限 1,000" }), false);
+
+  // Once the month turns the draft is asked for again.
+  clock.now = Date.parse("2026-11-01T00:05:00Z");
+  await main(["auto"], ctx);
+  assert.equal(planners, 2);
+});
 
 test("a scheduled draft whose topic lookup is rate-limited waits out the window instead of asking again every round", async () => {
   // 2026-10-13 to 10-16 on the host: every round (about five minutes) asked the topics four
@@ -1768,6 +1967,175 @@ test("a claim whose answer is lost on the way is sent again and answered as the 
   assert.equal(site.calls.reviews[0].gate, "outline", "the outline reaches the owner");
 });
 
+// The daily news brief (docs/videos/AUTOMATION.md §每日 AI 快報): the site's request of the day, as its contract shapes it.
+const DAILY_STORIES = ["ai-news-gemini-4-carbon-20261028", "tech-news-microsoft-openai-revenue-20261028", "ai-news-claude-taiwan-pricing-20261028"].map((slug) => ({ slug, title: `標題 ${slug}`, description: "摘要", url: `https://mokaair.com/zh-TW/life/${slug}`, news_date: "2026-10-28" }));
+const DAILY_REQUEST = { id: "9a8b7c6d-5e4f-4a3b-8c2d-1e0f9a8b7c6d", news_date: "2026-10-28", slug: "daily-ai-20261028", stories: DAILY_STORIES };
+
+/** A daily planner's brief: a slides brief with the ranking table (daily-brief.md §選題). */
+const dailyBriefText = (options = ["A", "B"], { applies = null } = {}) =>
+  brief(options, { applies }).replace("## 觀眾看完能做到的事", ["## 選題", "| # | 新聞 | 站上文章 | 排在這裡的理由 |", "| 1 | Gemini 4 Carbon | ai-news-gemini-4-carbon-20261028 | 台灣今天就能用 |", "不選：無", "## 觀眾看完能做到的事"].join("\n"));
+
+/** answersFor, with a planner that plans a daily brief: another slug than the request's, the picked stories first. */
+function dailyAnswers(slug, { applies = null } = {}) {
+  const plain = answersFor(slug, { applies });
+  return {
+    ...plain,
+    planner: (body) => ({ slug: "gemini-4-carbon-news", title: "Gemini 4 Carbon 與昨天的 AI 新聞", source_guide: DAILY_STORIES[0].slug, source_urls: [DAILY_STORIES[2].url, "https://blog.google/x", DAILY_STORIES[0].url], brief: body.payload.owner_note ? dailyBriefText(["A", "C"], { applies }) : dailyBriefText(["A", "B"], { applies }) }),
+  };
+}
+
+test("a daily planner's brief adds the ranking table, rests on the day's stories, and retells no one article wherever it is read", () => {
+  const daily = { news_date: "2026-10-28", slug: DAILY_REQUEST.slug, stories: DAILY_STORIES };
+  const plan = { slug: DAILY_REQUEST.slug, brief: dailyBriefText(), source_guide: null, source_urls: [DAILY_STORIES[1].url, "https://blog.google/x"] };
+  const check = (answer, used = new Set()) => planProblem(answer, new Set(), used, "slides", "", null, null, new Set([DAILY_STORIES[1].url]), daily);
+  assert.equal(check(plan, new Set(DAILY_STORIES.map((story) => story.slug))), null, "an article an earlier video retells, or a page one rests on, is still the day's news");
+  assert.match(check({ ...plan, brief: brief() }), /brief lacks ## 選題/);
+  assert.match(check({ ...plan, brief: dailyBriefText(["A"]) }), /2 or 3 options/, "Jev picks between two outlines");
+  assert.match(check({ ...plan, source_urls: ["https://blog.google/x"] }), /stories picked from daily_brief.stories/);
+  // The worker's and review-push's word on the video's article: none, though its sources are site articles.
+  const urls = DAILY_STORIES.map((story) => story.url);
+  assert.equal(mainGuide({ slug: DAILY_REQUEST.slug, source_guide: null, source_urls: urls }), null);
+  assert.equal(mainGuide({ slug: "chatgpt-ads-off", source_guide: null, source_urls: urls }), DAILY_STORIES[0].slug, "any other video still retells its first site article");
+  assert.equal(sourceGuideOf({ slug: DAILY_REQUEST.slug, sources: urls.map((url) => ({ title: "t", url })) }), null);
+  assert.equal(sourceGuideOf({ slug: "chatgpt-ads-off", sources: urls.map((url) => ({ title: "t", url })) }), DAILY_STORIES[0].slug);
+});
+
+test("the day's news brief is planned from its articles ahead of everything, outside the waiting cap, under its own slug, with the daily variant and no article of its own", async () => {
+  const box = sandbox();
+  const slug = DAILY_REQUEST.slug;
+  // No room for a draft or a slides request: the brief is fixed-time work and still starts.
+  const site = fakeSite({ answers: dailyAnswers(slug), settings: { max_waiting_drafts: 0 }, dailyRequests: [DAILY_REQUEST], slidesRequests: [SLIDES_REQUEST] });
+  const clock = { now: Date.parse("2026-10-29T01:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /^daily: daily-ai-20261028 planned from the 3 articles of 2026-10-28; outline sent to \/admin\/videos/);
+  const [plan] = site.calls.run;
+  assert.deepEqual([plan.stage, plan.slug, plan.variant], ["planner", slug, "daily"], "the variant keeps it out of the month's drafts on the server");
+  assert.deepEqual(plan.payload.daily_brief, { news_date: "2026-10-28", slug, stories: DAILY_STORIES });
+  assert.deepEqual(plan.payload.sources.map((page) => [page.url, page.ok]), DAILY_STORIES.map((story) => [story.url, true]), "every article is read");
+  assert.deepEqual(plan.payload.topics, []);
+  assert.match(plan.instructions, /You are the planner of a daily brief/);
+  assert.equal(site.calls.topics, 0);
+  assert.deepEqual(site.calls.daily.filter((call) => call.action !== "next"), [{ id: DAILY_REQUEST.id, action: "start", slug }]);
+  assert.deepEqual(site.calls.slides, [], "the slides request waits for room");
+  const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.deepEqual([state().category, state().source_guide, state().daily_brief.id, state().daily_brief.news_date], ["ai-news", null, DAILY_REQUEST.id, "2026-10-28"]);
+  assert.deepEqual(state().source_urls, [DAILY_STORIES[2].url, DAILY_STORIES[0].url, "https://blog.google/x", DAILY_STORIES[1].url], "the picked stories first, then the cited page, then the rest of the day");
+  assert.equal(mainGuide(state()), null, "a brief retells no one article");
+  assert.equal(existsSync(path.join(box.work, "auto-state.json")), false, "no draft is marked: the scheduled drafts keep their interval");
+  const reported = site.calls.reports.at(-1);
+  assert.deepEqual([reported.slug, reported.category, "source_guide" in reported], [slug, "ai-news", false]);
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", slug, "brief.md")));
+  assert.equal(await automation.step(), null, "the outline waits for the owner, and the site is asked for the brief once a run");
+  assert.equal(site.calls.daily.filter((call) => call.action === "next").length, 1);
+
+  // The outline is sent back: the re-plan keeps the day's stories, the slug and the variant, and fetches no topics.
+  Object.assign(site.reviewsOf(slug)[0], { status: "rejected", note: "換一則開場" });
+  assert.match(await automation.step(), /brief rewritten after the owner's note \(round 1\)/);
+  const replan = site.calls.run.at(-1);
+  assert.deepEqual([replan.slug, replan.variant], [slug, "daily"]);
+  assert.deepEqual(replan.payload.daily_brief, plan.payload.daily_brief);
+  assert.deepEqual(replan.payload.sources.map((page) => page.url), DAILY_STORIES.map((story) => story.url));
+  assert.equal(site.calls.topics, 0);
+  assert.deepEqual([state().slug, state().source_guide, state().category], [slug, null, "ai-news"]);
+
+  // The writer and the checker read the daily variant and the day's stories.
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "A" });
+  assert.match(await automation.step(), /chose outline A/);
+  assert.match(await automation.step(), /script drafted/);
+  const writer = site.calls.run.find((call) => call.stage === "writer");
+  assert.equal(writer.variant, "daily");
+  assert.deepEqual(writer.payload.daily_brief, plan.payload.daily_brief);
+  assert.equal(writer.payload.source_guide, null);
+  assert.match(writer.instructions, /You are the writer of a daily brief/);
+  const video = readJson(path.join(box.root, "docs", "videos", slug, "video.json"));
+  assert.deepEqual([video.slug, video.category, video.source_guide], [slug, "ai-news", undefined]);
+});
+
+test("a brief whose slug is a video already is left alone, a refused claim keeps nothing, and neither ends the run", async () => {
+  const clock = { now: Date.parse("2026-10-29T01:00:00Z") };
+  const setup = ({ videos = [], claim = () => null, answers = dailyAnswers(DAILY_REQUEST.slug) } = {}) => {
+    const box = sandbox();
+    const site = fakeSite({ answers, videos, dailyRequests: [DAILY_REQUEST] });
+    const fetchImpl = async (url, init) => (/\/daily-briefs\/[^/]+\/start$/.test(new URL(url).pathname) && claim()) || site.fetchImpl(url, init);
+    const { ctx } = context(box, fetchImpl, clock);
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return { box, site, automation };
+  };
+  // On the site already (made by hand, or claimed by a worker whose state is gone): nothing is planned, the scheduled draft comes next.
+  const made = setup({ videos: [{ slug: DAILY_REQUEST.slug, title: "快報" }] });
+  assert.match(await made.automation.step(), /planned from 1 topics/);
+  assert.deepEqual(made.site.calls.run.map((call) => [call.slug, call.variant ?? null]), [["draft-202610290100", null]]);
+  assert.deepEqual(made.site.calls.daily.map((call) => call.action), ["next"]);
+
+  // Started elsewhere or under another slug while it was planned: a 409, nothing kept, the run goes on.
+  const refused = setup({ claim: () => Response.json({ code: "video_daily_brief_slug_mismatch", detail: "started under another slug" }, { status: 409 }) });
+  assert.match(await refused.automation.step(), /^daily: the brief of 2026-10-28 could not be claimed \(video_daily_brief_slug_mismatch: started under another slug\); nothing was kept$/);
+  assert.equal(refused.automation.halted, false);
+  assert.deepEqual(automatedVideos(refused.box.work), []);
+  assert.equal(existsSync(path.join(refused.box.root, "docs", "videos", DAILY_REQUEST.slug)), false);
+  assert.match(await refused.automation.step(), /planned from 1 topics/, "the next unit takes the scheduled draft, and the brief is not asked for again this run");
+  // Only those two codes read as withdrawn: any other refusal is an error to look into.
+  const odd = setup({ claim: () => Response.json({ code: "video_daily_brief_unexpected", detail: "not a withdrawal" }, { status: 409 }) });
+  await assert.rejects(odd.automation.step(), { status: 409, code: "video_daily_brief_unexpected" });
+
+  // A planner that gives no usable brief twice: the brief is claimed and blocked; the owner's retry plans it again from the same day.
+  const answers = dailyAnswers(DAILY_REQUEST.slug);
+  const usable = answers.planner;
+  answers.planner = () => ({ note: "no brief" });
+  const failing = setup({ answers });
+  assert.match(await failing.automation.step(), /^daily-ai-20261028: blocked — the planner could not write a usable brief from the articles of 2026-10-28/);
+  const blocked = () => automatedVideos(failing.box.work)[0];
+  assert.deepEqual([blocked().slug, blocked().status, blocked().unplanned, blocked().daily_brief.id, blocked().category], [DAILY_REQUEST.slug, "blocked", "daily", DAILY_REQUEST.id, "ai-news"]);
+  assert.deepEqual(failing.site.calls.run.map((call) => call.variant), ["daily", "daily"]);
+  assert.deepEqual(failing.site.calls.daily.filter((call) => call.action === "start").map((call) => call.slug), [DAILY_REQUEST.slug]);
+  answers.planner = usable;
+  ownerRetries(failing.site, DAILY_REQUEST.slug);
+  nextRun(failing.automation);
+  assert.match(await failing.automation.step(), /^daily-ai-20261028: planned after the owner's retry; outline sent to \/admin\/videos/);
+  const again = failing.site.calls.run.at(-1);
+  assert.deepEqual([again.slug, again.variant, again.payload.daily_brief.stories.length, again.payload.topics], [DAILY_REQUEST.slug, "daily", 3, []]);
+  assert.deepEqual([blocked().status, blocked().unplanned, blocked().source_guide, blocked().source_urls[0]], ["active", undefined, null, DAILY_STORIES[2].url]);
+});
+
+test("with the scheduled drafts off and the daily brief on, only the briefs are planned and moved", async () => {
+  const box = sandbox();
+  const slug = DAILY_REQUEST.slug;
+  const site = fakeSite({ answers: dailyAnswers(slug) });
+  const clock = { now: Date.parse("2026-10-29T01:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  // A scheduled draft from before the switch went off, its outline approved since.
+  const before = new Automation(ctx, automationClient(ctx), site.settings);
+  before.refs = smallRefs;
+  assert.match(await before.step(), /planned from 1 topics/);
+  const [{ slug: draft }] = automatedVideos(box.work);
+  Object.assign(site.reviewsOf(draft)[0], { status: "approved", choice: "A" });
+  site.dailyRequests.push({ status: "queued", locales: {}, ...DAILY_REQUEST });
+  site.slidesRequests.push({ status: "queued", slug: null, title: null, note: null, ...SLIDES_REQUEST });
+
+  const settings = { ...site.settings, enabled: false, daily_brief: { daily_brief_enabled: true } };
+  const automation = new Automation(ctx, automationClient(ctx), settings);
+  automation.refs = smallRefs;
+  assert.equal(automation.briefsOnly, true);
+  assert.match(await automation.step(), /^daily: daily-ai-20261028 planned from the 3 articles of 2026-10-28/);
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "A" });
+  assert.match(await automation.step(), /^daily-ai-20261028: .*chose outline A/);
+  assert.match(await automation.step(), /^daily-ai-20261028: .*script drafted/);
+  assert.deepEqual(site.calls.run.filter((call) => call.slug !== slug).map((call) => call.stage), ["planner"], "the draft stays where it stands, its approved outline unwritten");
+  assert.equal(automatedVideos(box.work).find((state) => state.slug === draft).status, "active");
+  assert.deepEqual(site.calls.slides, [], "the owner's slides request is not taken up");
+  assert.equal(site.calls.topics, 1, "no new draft is planned");
+
+  // Both switches off: nothing is asked for and nothing moves, the brief included.
+  const quiet = new Automation(ctx, automationClient(ctx), { ...settings, daily_brief: { daily_brief_enabled: false } });
+  const asked = site.calls.daily.length;
+  assert.equal(await quiet.step(), null);
+  assert.equal(site.calls.daily.length, asked);
+});
+
 test("an owner's slides request is held from its save until its first outline is in, so a second lane cannot submit it again", async () => {
   const box = sandbox();
   const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });
@@ -2034,8 +2402,9 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
   const own = { prompt: "slow harp, no vocals", gain_db: -22 };
   assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, own, "the writer's own bed is kept");
   assert.equal(settle(silent, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, undefined, "music switched off: no bed");
-  // 奇聞檔案局 burns its zh-TW subtitles in (the owner, 2026-10-25); the other dramas keep selectable CC.
-  assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, true);
+  // 奇聞檔案局 no longer burns its zh-TW subtitles in (the owner, 2026-11-04): every drama keeps selectable CC.
+  assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, false);
+  assert.equal(settle({ ...silent, subtitles: { burn_in: true } }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, false, "a writer asking for burn-in still gets CC");
   assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-cartoon" }).subtitles.burn_in, false);
   for (const preset of ["cute-cartoon", "flat-explainer"]) {
     assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, undefined, `${preset}: nothing added`);
@@ -2273,6 +2642,290 @@ test("the storytelling panel of a 奇聞檔案局 episode asks two readers and f
     assert.match(problem, /說故事檢查沒過：chapters_link/);
     assert.match(problem, /讀者一：.*讀者二：/, "the writer reads both readers' evidence");
     assert.deepEqual(readJson(path.join(box.work, slug, "review", "narrative.json")).failed, ["chapters_link"]);
+  }
+});
+
+// 2026-10-30: a daily brief's panel said no and its rewrite, a durable writer, outlasted the
+// round. Each round read the script again, the new note made a new writer request, and the
+// finished rewrite before it was archived unread: a panel and a writer every six minutes for
+// five hours. While the script on disk is still the one the panel read, the same note goes again.
+test("a rewrite the storytelling panel asked for that is still running is waited for, not asked for again", async () => {
+  const slug = "thunder-panel-wait";
+  const box = sandbox(slug, "explainer");
+  let panels = 0;
+  const rewritten = longExplainer();
+  rewritten.scenes[0].lines[0].text = "閃電一亮，你先數秒。";
+  const site = fakeSite({ settings: { durable_stage_runs: true }, answers: {
+    writer: () => ({ video: rewritten }),
+    verifier: (body) => {
+      if (body.variant !== "narrative") return { report: "# 查核\n", video: null, claims: "", changed_facts: 0 };
+      panels += 1;
+      // A fresh reader words a "no" differently each time, so a second read is a new request.
+      return panelAnswers({ chapters_link: false, ...(panels > 1 ? { payoffs: false } : {}) });
+    },
+  } });
+  const jobs = new Map();
+  let ready = false;
+  const fetch = async (url, init = {}) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === "/api/video/automation/run/jobs") {
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) {
+        const result = await (await site.fetchImpl(`${SITE}/api/video/automation/run`, init)).json();
+        jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, status: "running", result: null, completed: result });
+      }
+      const { completed, ...receipt } = jobs.get(body.request_key);
+      return Response.json(ready ? { ...receipt, status: "succeeded", result: completed } : receipt);
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      const { completed, ...receipt } = [...jobs.values()].find((job) => pathname.endsWith(job.id));
+      return Response.json(ready ? { ...receipt, status: "succeeded", result: completed } : receipt);
+    }
+    return site.fetchImpl(url, init);
+  };
+  const { ctx } = context(box, fetch, { now: Date.parse("2026-10-30T03:00:00Z") });
+  const worker = async () => {
+    const api = automationClient(ctx, { durablePollMs: 5_000 });
+    await api.settings();
+    const automation = new Automation(ctx, api, site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  const first = await worker();
+  first.persist({ slug, title: "雷聲", format: "drama", style_preset: "flat-explainer", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  let state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.equal(await first.saveAndLint(state, { video: longExplainer() }), null);
+
+  await assert.rejects(first.narrativeGate(state), (error) => error.code === RUN_PENDING, "the rewrite is still running");
+  assert.equal(panels, 1);
+  assert.equal(jobs.size, 1);
+  assert.match(readJson(path.join(box.work, slug, "review", "narrative.json")).fix_note, /^說故事檢查沒過：chapters_link/);
+
+  // Next rounds, as many as the writer takes: no second read, and the same request, so the same job.
+  for (let round = 0; round < 2; round++) {
+    state = readJson(path.join(box.work, slug, "auto.json"));
+    await assert.rejects((await worker()).narrativeGate(state), (error) => error.code === RUN_PENDING);
+  }
+  assert.equal(panels, 1, "the panel is not read again while its rewrite is out");
+  assert.equal(jobs.size, 1, "no new writer request");
+
+  ready = true;
+  state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await (await worker()).narrativeGate(state), /screenplay rewritten after the storytelling panel's note \(round 1\)/);
+  assert.equal(state.prompt_fixes.narrative, 1);
+  assert.equal(jobs.size, 1);
+  assert.equal(readJson(path.join(box.root, "docs", "videos", slug, "video.json")).scenes[0].lines[0].text, "閃電一亮，你先數秒。");
+});
+
+// The writer's answer to KEY_BAND_NOTE in these tests: a band on every scene, and a line it
+// was told not to touch changed anyway.
+function bandedAnswer(video) {
+  const answer = structuredClone(video);
+  for (const scene of answer.scenes) {
+    const count = stateCount(scene);
+    scene.data = { ...(scene.data ?? {}), ...(count === 1 ? { key: `重點 ${scene.id}`.slice(0, 24) } : { keys: Array.from({ length: count }, (_, at) => `重點 ${at + 1}`) }) };
+  }
+  answer.scenes[0].lines[0].text = "模型偷改的一句。";
+  return answer;
+}
+
+test("a daily brief is settled on paper, and one written before that gets the key band without a word of its narration changed", async () => {
+  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" } };
+  assert.equal(settle(fixture(), { slug: "daily-ai-20261030", settings, sourceGuide: null, root: ROOT }).theme, "paper");
+  assert.equal(settle(fixture(), { slug: "plain-tutorial", settings, sourceGuide: null, root: ROOT }).theme, undefined, "other slides keep the look they had");
+
+  const video = { ...fixture(), slug: "daily-ai-20261029" };
+  const answer = bandedAnswer(video);
+  answer.scenes[1].data = { ...answer.scenes[1].data, key: "這一句太長了".repeat(6) };
+  delete answer.scenes[1].data.keys;
+  const { video: banded, kept } = withKeyBand(video, answer);
+  assert.equal(banded.theme, "paper");
+  assert.equal(narrativeHash(banded), narrativeHash(video), "only the band is taken: the narration stays");
+  assert.equal(banded.scenes[0].lines[0].text, video.scenes[0].lines[0].text);
+  assert.deepEqual(banded.scenes[1], video.scenes[1], "a band that does not fit its scene is left out");
+  assert.equal(kept, video.scenes.length - 1);
+
+  const slug = "daily-ai-20261029";
+  const box = sandbox(slug);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  const site = fakeSite({ answers: { writer: () => ({ video: bandedAnswer(video) }) } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-30T14:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "快報", format: "slides", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await automation.restyleDailyBrief(state), /drawn on paper with the key band on \d+ of \d+ scenes/);
+  assert.equal(site.calls.run.length, 1);
+  assert.equal(site.calls.run[0].payload.fix.owner_note, KEY_BAND_NOTE, "the writer is asked for the band alone");
+  const saved = readJson(path.join(box.dir, "video.json"));
+  assert.equal(saved.theme, "paper");
+  assert.equal(narrativeHash(saved), narrativeHash(video));
+  assert.ok(saved.scenes.every((scene) => scene.data.key !== undefined || scene.data.keys !== undefined));
+  assert.equal(await automation.restyleDailyBrief(state), null, "a brief on paper is left as it is");
+  assert.equal(site.calls.run.length, 1);
+
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify({ ...video, youtube: { ...video.youtube, video_id: "abc123def45" } }, null, 2)}\n`);
+  assert.equal(await automation.restyleDailyBrief(state), null, "a brief already on YouTube is not drawn again");
+  assert.equal(site.calls.run.length, 1);
+});
+
+test("card text the render's layout check refuses goes back to the writer for that text alone, and the narration stays", async () => {
+  const out = 'ERROR questions state 2: the card runs under the key band: "願意付多少"\nERROR subtitle "x": too long\n2 layout problems; frames are cached, fix the scenes and rerun\n';
+  assert.deepEqual(layoutProblemsIn(out).map((problem) => problem.scene), ["questions", null]);
+
+  const video = { ...fixture(), slug: "daily-ai-20261030" };
+  const shortened = (base) => {
+    const answer = structuredClone(base);
+    answer.scenes[1].data = { ...answer.scenes[1].data, title: "先問三件事" };
+    answer.scenes[0].data = { ...answer.scenes[0].data, title: "沒被點名的場景" };
+    answer.scenes[1].lines[0].text = "模型偷改的一句。";
+    return answer;
+  };
+  const { video: fitted, changed } = withCardText(video, shortened(video), new Set(["questions"]));
+  assert.equal(changed, 1);
+  assert.equal(fitted.scenes[1].data.title, "先問三件事");
+  assert.deepEqual(fitted.scenes[0], video.scenes[0], "a scene the check did not name is left as it is");
+  assert.equal(narrativeHash(fitted), narrativeHash(video), "the narration stays");
+
+  const slug = "daily-ai-20261030";
+  const box = sandbox(slug);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  const site = fakeSite({ answers: { writer: () => ({ video: shortened(video) }) } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-31T12:30:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "快報", format: "slides", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await automation.fixLayout(state, out), /card text shortened on 1 of 1 scenes after the render's layout check \(round 1\)/);
+  assert.equal(site.calls.run.length, 1);
+  assert.match(site.calls.run[0].payload.fix.owner_note, new RegExp(LAYOUT_NOTE.slice(0, 12)));
+  assert.deepEqual(site.calls.run[0].payload.fix.targets, ["questions"]);
+  const saved = readJson(path.join(box.dir, "video.json"));
+  assert.equal(saved.scenes[1].data.title, "先問三件事");
+  assert.equal(narrativeHash(saved), narrativeHash(video));
+  assert.equal(state.prompt_fixes.layout, 1);
+  assert.equal(state.verified, true, "the checks bound to the narration still hold");
+
+  state.prompt_fixes.layout = MAX_PROMPT_FIX_ROUNDS;
+  assert.match(await automation.fixLayout(state, out), /blocked/);
+  assert.equal(state.status, "blocked");
+  assert.match(state.blocked, /layout check sent the card text back 3 times/);
+  assert.equal(state.blocked_kind, "prompt_fixes:layout", "the owner's retry gives the rounds back");
+  assert.equal(site.calls.run.length, 1);
+});
+
+test("a daily brief's thumbnail gets the lead story's official picture once, credited, before its frames are drawn", async () => {
+  assert.equal(pageImage(`<meta content="/img/a.png?x=1&amp;y=2" property="og:image">`, "https://blog.example.com/post"), "https://blog.example.com/img/a.png?x=1&y=2");
+  assert.equal(pageImage(`<meta name="twitter:image" content="https://cdn.example.com/t.jpg">`, "https://a.example.com/"), "https://cdn.example.com/t.jpg");
+  assert.equal(pageImage(`<meta property="og:image" content="http://insecure.example.com/a.png">`, "https://a.example.com/"), null);
+  assert.equal(leadSource({ sources: [{ url: "https://mokaair.com/zh-TW/news/x" }, { title: "官方", url: "https://blog.example.com/post" }] }).url, "https://blog.example.com/post");
+
+  const slug = "daily-ai-20261030";
+  const video = { ...fixture(), slug, sources: [{ title: "官方公告", url: "https://blog.example.com/post", checked_on: "2026-10-30" }] };
+  const box = sandbox(slug);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  const site = fakeSite({});
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-31T13:30:00Z") });
+  const asked = [];
+  let page = `<html><head><meta property="og:image" content="https://cdn.example.com/carbon.png"></head></html>`;
+  ctx.fetch = async (url, init) => {
+    if (String(url).startsWith(SITE)) return site.fetchImpl(url, init);
+    asked.push(String(url));
+    if (url === "https://blog.example.com/post") return new Response(page, { headers: { "content-type": "text/html; charset=utf-8" } });
+    if (url === "https://cdn.example.com/carbon.png") return new Response(new Uint8Array([137, 80, 78, 71]), { headers: { "content-type": "image/png" } });
+    return new Response("", { status: 404 });
+  };
+  ctx.padPicture = async (input, output) => writeFileSync(output, readFileSync(input));
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "快報", format: "slides", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await automation.leadPicture(state), /the lead story's official picture \(cdn\.example\.com\) is in the thumbnail/);
+  const saved = readJson(path.join(box.dir, "video.json"));
+  assert.equal(saved.thumbnail.data.asset, `docs/videos/${slug}/lead.jpg`);
+  assert.equal(saved.thumbnail.data.layout, "ai", "the brief wears the AI look, the picture over the whole frame");
+  assert.deepEqual(saved.assets, [{ path: `docs/videos/${slug}/lead.jpg`, source: "https://cdn.example.com/carbon.png (og:image of https://blog.example.com/post)", license: LEAD_PICTURE_LICENSE }]);
+  assert.ok(existsSync(path.join(box.dir, "lead.jpg")));
+  assert.equal(narrativeHash(saved), narrativeHash(video), "the narration stays");
+  assert.equal(state.lead_picture.image, "https://cdn.example.com/carbon.png");
+  assert.equal(await automation.leadPicture(state), null, "tried once");
+  assert.equal(asked.length, 2);
+
+  // A page without a picture leaves the box as it was, and is not asked again.
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  delete state.lead_picture;
+  page = "<html><head><title>no picture</title></head></html>";
+  assert.equal(await automation.leadPicture(state), null);
+  assert.match(state.lead_picture.error, /has no og:image/);
+  assert.equal(readJson(path.join(box.dir, "video.json")).thumbnail.data.asset, undefined);
+  assert.equal(await automation.leadPicture(state), null);
+  assert.equal(asked.length, 3);
+});
+
+test("a daily brief's thumbnail gets a picture drawn for it first, and the official picture only when none is drawn", async () => {
+  const slug = "daily-ai-20261030";
+  const video = { ...fixture(), slug, youtube: { ...fixture().youtube, title: "八把弱金鑰還有軟體信任，你的手機更新了嗎？｜AI 科技快報 10/30" }, sources: [{ title: "官方公告", url: "https://blog.example.com/post", checked_on: "2026-10-30" }] };
+  const { prompt, negative } = briefPicturePrompt(video);
+  assert.match(prompt, /risograph|linocut/, "the brief's print look");
+  assert.match(prompt, /「八把弱金鑰還有軟體信任，你的手機更新了嗎？；?/, "the story is the title before the series name");
+  assert.doesNotMatch(prompt, /AI 科技快報/);
+  assert.match(prompt, /No text, letters, numbers, logos or brand marks/);
+  assert.match(negative, /logo/);
+
+  const box = sandbox(slug);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  const site = fakeSite({});
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-11-01T13:30:00Z") });
+  const drawn = [];
+  let fails = null;
+  ctx.drawBriefPicture = async (_ctx, request) => {
+    drawn.push(request);
+    if (fails) throw new Error(fails);
+    writeFileSync(request.file, new Uint8Array([137, 80, 78, 71]));
+    return { model: "gemini-3.1-flash-image", provider: "gemini", usd: 0.101, sha256: "a".repeat(64), content_type: "image/png" };
+  };
+  ctx.padPicture = async (input, output) => writeFileSync(output, readFileSync(input));
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "快報", format: "slides", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await automation.briefPicture(state), /a picture drawn by gemini gemini-3\.1-flash-image \(about US\$0\.10\) is in the thumbnail/);
+  assert.equal(drawn.length, 1);
+  assert.equal(drawn[0].slug, slug);
+  assert.equal(drawn[0].prompt, prompt);
+  const saved = readJson(path.join(box.dir, "video.json"));
+  assert.equal(saved.thumbnail.data.asset, `docs/videos/${slug}/brief.jpg`);
+  assert.equal(saved.thumbnail.data.layout, "ai");
+  assert.equal(saved.assets.length, 1);
+  assert.equal(saved.assets[0].license, BRIEF_PICTURE_LICENSE);
+  assert.match(saved.assets[0].source, /^drawn by gemini gemini-3\.1-flash-image for this thumbnail \(prompt sha256 [0-9a-f]{16}\)$/);
+  assert.ok(existsSync(path.join(box.dir, "brief.jpg")));
+  assert.equal(narrativeHash(saved), narrativeHash(video), "the narration stays");
+  assert.equal(await automation.briefPicture(state), null, "tried once");
+  assert.equal(await automation.leadPicture(state), null, "a drawn picture leaves the official one alone");
+  assert.equal(drawn.length, 1);
+
+  // When the site draws none (illustrations switched off), the brief is left for the official picture.
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  delete state.brief_picture;
+  fails = "投影片影片的插畫還沒開啟";
+  assert.equal(await automation.briefPicture(state), null);
+  assert.match(state.brief_picture.error, /插畫還沒開啟/);
+  assert.equal(readJson(path.join(box.dir, "video.json")).thumbnail.data.asset, undefined);
+  assert.equal(await automation.briefPicture(state), null, "not asked again");
+  assert.equal(drawn.length, 2);
+});
+
+test("settle puts every AI video's thumbnail, and its variants, in the AI look, and no other video's", () => {
+  const settings = { voice: { provider: "gemini", name: "Kore", style: "calm" } };
+  const thumbnail = { template: "thumb", data: { headline: "Gemini 4 **你找不到**", layout: "b" }, variants: [{ data: { headline: "B", layout: "c" } }, { data: { headline: "C" } }] };
+  for (const [slug, category] of [["daily-ai-20261101", "ai-news"], ["gemini-argon", "ai-news"], ["ai-term-embedding", "ai-terms"], ["claude-code-hooks-hands-on", "tutorial"]]) {
+    const settled = settle({ ...fixture(), category, thumbnail }, { slug, settings, sourceGuide: null, root: ROOT });
+    assert.equal(settled.thumbnail.data.layout, "ai", slug);
+    assert.deepEqual(settled.thumbnail.variants.map((variant) => variant.data), [{ headline: "B" }, { headline: "C" }], `${slug}: the variants follow A's look`);
+  }
+  for (const category of ["explainer", undefined]) {
+    assert.equal(settle({ ...fixture(), category, thumbnail }, { slug: "sothatswhy-b26", settings, sourceGuide: null, root: ROOT }).thumbnail.data.layout, "b");
   }
 });
 
@@ -2746,13 +3399,13 @@ test("from the picked outline to YouTube without the owner: the final gate sends
       return { code: 0, out: "every line passed" };
     }
     if (name === "render") {
-      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
+      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fit_version: FIT_VERSION, fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
       writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720));
       return { code: 0, out: "rendered" };
     }
     if (name === "assemble") {
       writeFileSync(path.join(workdir, "final.mp4"), randomBytes(PART_BYTES + 10));
-      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), fit_version: FIT_VERSION, problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
       return { code: 0, out: "assembled" };
     }
     if (name === "qa") {
@@ -2946,17 +3599,20 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
  * stops it one step before: the publish review waits on the owner, and the video is still active.
  * With `slidesRequest` the video is the owner's slides request instead of a scheduled draft.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, title = titleAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null, confirmed = true, slidesRequest = null } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, title = titleAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null, confirmed = true, slidesRequest = null, dailyRequest = null } = {}) {
   const box = sandbox();
-  const slug = "chatgpt-ads-off";
+  const slug = dailyRequest?.slug ?? "chatgpt-ads-off";
   const passes = { shorten, reword, title };
   const answers = {
     ...answersFor(slug, { applies: "1、2", script }),
+    ...(dailyRequest ? { planner: dailyAnswers(slug, { applies: "1、2" }).planner } : {}),
     translator: (body) => (passes[body.variant] ? passes[body.variant](body) : { worksheet: translate(body.payload.worksheet) }),
     caption_reviewer: (body) => ({ worksheet: review(body.payload.worksheet), fixes: [] }),
   };
-  const site = fakeSite({ answers, settings: { channel_stance: STANCE }, judge: () => jevPick("B"), slidesRequests: slidesRequest ? [slidesRequest] : [] });
+  const site = fakeSite({ answers, settings: { channel_stance: STANCE }, judge: () => jevPick("B"), slidesRequests: slidesRequest ? [slidesRequest] : [], dailyRequests: dailyRequest ? [dailyRequest] : [] });
   const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
+  // A brief does not mark a draft (dailyStep): a scheduled one made this morning keeps the next one away.
+  if (dailyRequest) atomicWrite(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T08:00:00.000Z" }));
   const { ctx, out } = context(box, site.fetchImpl, clock);
   ctx.encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
   // `render --thumbnails-only` is the real command, drawing with this browser stand-in.
@@ -2989,13 +3645,13 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
       return { code: 0, out: "every line passed" };
     }
     if (name === "render" && !command.includes("--thumbnails-only")) {
-      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
+      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fit_version: FIT_VERSION, fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
       writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720));
       return { code: 0, out: "rendered" };
     }
     if (name === "assemble") {
       writeFileSync(path.join(workdir, "final.mp4"), randomBytes(1000));
-      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), fit_version: FIT_VERSION, problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
       return { code: 0, out: "assembled" };
     }
     if (name === "qa") {
@@ -3126,6 +3782,25 @@ test("a requested slides video tells the site its request is done once the uploa
   assert.deepEqual(video.site.calls.drama, []);
   assert.equal(video.site.calls.topics, 0, "the video came from the request, not from a scheduled draft");
   assert.equal(video.state().slides_request.id, SLIDES_REQUEST.id);
+});
+
+test("a daily news brief goes from the request to the confirmed upload on its own and tells the site it is done, never as another request", async () => {
+  const video = await finishedVideo({ dailyRequest: DAILY_REQUEST });
+  assert.equal(video.slug, DAILY_REQUEST.slug);
+  assert.deepEqual(video.site.calls.daily.filter((call) => call.action !== "next"), [
+    { id: DAILY_REQUEST.id, action: "start", slug: DAILY_REQUEST.slug },
+    { id: DAILY_REQUEST.id, action: "done", slug: null },
+  ]);
+  assert.equal(video.site.dailyRequests[0].status, "done");
+  assert.deepEqual([video.site.calls.slides, video.site.calls.drama, video.site.calls.topics], [[], [], 0]);
+  // Every model stage of the brief read the daily variant; Jev picked its outline and the gates passed on their own.
+  for (const stage of ["planner", "writer", "verifier", "listener"]) assert.ok(video.calls(stage, "daily").length > 0 && video.calls(stage).length === 0, stage);
+  assert.equal(video.reviews("outline")[0].status, "approved");
+  // The site never hears an article of its own for it, from the worker or from review-push.
+  assert.ok(video.site.calls.reports.every((report) => !("source_guide" in report)));
+  assert.equal(video.listed().source_guide, null);
+  assert.equal(readJson(video.docFile).category, "ai-news");
+  assert.equal(readJson(path.join(video.box.work, "auto-state.json")).last_draft_at, "2026-09-27T08:00:00.000Z", "the brief left the scheduled drafts' interval alone");
 });
 
 test("the languages wait for the owner: an undecided video is translated into nothing, and one chosen as Traditional Chinese only packages zh-TW alone, byte for byte as before", async () => {
@@ -5468,11 +6143,15 @@ test("after a stopped retake, a take changed on another line, or to bytes the re
 const RATE_LIMITED = "narration: 37 of 52 requests done\n請求過於頻繁，請稍後再試\n";
 const BUDGET_SPENT = "本月的語音字數預算（450000 計費字元）不夠這次的 812 字元；可在後台調高上限，或等下個月\n";
 const VENDOR_AWAY = "Azure 語音暫時無法使用\n";
+// Gemini's day of speech spent or Gemini overloaded (admin_api.py's 429 video_speech_upstream_busy):
+// the quota comes back by itself in the afternoon, Taipei time, so the video waits for it.
+const SPEECH_BUSY = "narration: 3 of 52 requests done\nGemini 語音暫時忙碌或達到用量上限，請稍後重試\n";
 
-test("a tts that exits 4 defers the video: the rate limit or the month's characters never block it, a vendor's failure blocks it at the seventh try", async (t) => {
+test("a tts that exits 4 defers the video: the rate limit, the month's characters or a busy speech vendor never block it, a vendor's failure blocks it at the seventh try", async (t) => {
   for (const [name, out, blockedAt] of [
     ["the speech routes' rate limit", RATE_LIMITED, null],
     ["the month's characters spent", BUDGET_SPENT, null],
+    ["Gemini busy or its day's quota spent", SPEECH_BUSY, null],
     ["a vendor away", VENDOR_AWAY, DEFER_LIMIT + 1],
   ]) {
     await t.test(name, async () => {
@@ -7728,7 +8407,7 @@ test("a deferral for trouble that is everyone's waits and shows on the card like
 });
 
 test("which trouble is everyone's: the codes that never count toward a block, and the wording of a command that exits 4", () => {
-  const shared = ["jev_budget_exhausted", "video_speech_budget_exhausted", "video_review_store_full", "rate_limit_exceeded", "rate_limit_unavailable", "video_ai_job_queue_unavailable", "video_ai_worker_stopped", "video_ai_automation_disabled"];
+  const shared = ["jev_budget_exhausted", "video_speech_budget_exhausted", "video_speech_upstream_busy", "video_review_store_full", "rate_limit_exceeded", "rate_limit_unavailable", "video_ai_job_queue_unavailable", "video_ai_worker_stopped", "video_ai_automation_disabled"];
   for (const code of shared) {
     assert.equal(everyones(new AutomationError("x", { status: 429, code })), code);
     // Only trouble that waits is ever everyone's: a refusal of the video's own request still blocks it, and the token or the settings still end the run.
@@ -7736,7 +8415,7 @@ test("which trouble is everyone's: the codes that never count toward a block, an
   }
   // A vendor's own answer must reach a card (a revoked key reads as a 502 for every video), and so must a queue that
   // loses every job before its dispatch. The forwarders' 502 is also what one request the API never answers in time gets.
-  for (const code of ["video_ai_upstream_failed", "video_ai_upstream_busy", "video_ai_job_interrupted_before_dispatch", "video_ai_job_dispatch_closed", "upstream_unavailable", "video_speech_upstream_failed", "network", ""]) {
+  for (const code of ["video_ai_upstream_failed", "video_ai_upstream_busy", "video_ai_job_interrupted_before_dispatch", "video_ai_job_dispatch_closed", "upstream_unavailable", "video_speech_upstream_failed", "video_speech_upstream_rejected_key", "network", ""]) {
     assert.equal(everyones(new AutomationError("x", { status: 502, code })), null, code);
   }
   assert.equal(everyones(new TypeError("a bug")), null);
@@ -7752,8 +8431,15 @@ test("which trouble is everyone's: the codes that never count toward a block, an
     ["about 1200 billable characters needed for gemini, 300 left this month", "video_speech_budget_exhausted"],
     ["請求過於頻繁，請稍後再試", "rate_limit_exceeded"],
     ["安全驗證服務暫時無法使用", "rate_limit_unavailable"],
+    // The speech vendor busy (admin_api.py, align_api.py): synthesis, the transcriber's 429 and 503, Azure, and the code as a journal prints it.
+    ["Gemini 語音暫時忙碌或達到用量上限，請稍後重試", "video_speech_upstream_busy"],
+    ["12 lines not checked yet (Gemini would not transcribe them); run check-audio again later, finished lines are kept\n  k7p2  Gemini 暫時忙碌，請稍後重試", "video_speech_upstream_busy"],
+    ["  k7p2  Gemini 暫時無法轉寫（Gemini answered HTTP 503 UNAVAILABLE），請稍後重試", "video_speech_upstream_busy"],
+    ["Azure 語音暫時忙碌，請稍後重試", "video_speech_upstream_busy"],
+    ["HTTP 503 video_speech_upstream_busy; sent again in 1 s", "video_speech_upstream_busy"],
   ]) assert.equal(everyones(said), code, said);
-  for (const said of ["Jev 暫時無法判斷", "the music vendor is busy (HTTP 503)", "cannot reach https://site.test: fetch failed", "the API is not answering", ""]) assert.equal(everyones(said), null, said);
+  // A vendor that fails (502, no 「請稍後重試」) or refuses the key is the video's to report, not everyone's to wait out.
+  for (const said of ["Jev 暫時無法判斷", "the music vendor is busy (HTTP 503)", "cannot reach https://site.test: fetch failed", "the API is not answering", "Gemini 暫時無法轉寫（Gemini answered HTTP 500）", "Azure 語音暫時無法使用", "Gemini 拒絕了網站的金鑰", ""]) assert.equal(everyones(said), null, said);
 });
 
 test("Jev's daily calls spent defers an outline for as long as it lasts without ever blocking it, and the outline is judged by itself once the budget is back", async () => {

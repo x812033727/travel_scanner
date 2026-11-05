@@ -1,0 +1,2003 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "raw": 3740,
+    "selected": 3356,
+    "not_added": 1812,
+    "themes": 444,
+    "head": "ececc28dee41d46596200a1ece906788aab5b257"
+  },
+  "role_and_scope": "非語音作者；題級研究、去重、紙上節拍與兩支測速界線。",
+  "reviewed_candidate_ids": [
+    "R43001",
+    "R43002",
+    "R43003",
+    "R43004",
+    "R43005",
+    "R43006",
+    "R43007",
+    "R43008",
+    "R43009",
+    "R43010",
+    "R43011"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave43-speech.json",
+      "sha256": "39fb2a1f08533f6d7cc5ce39a387e850bd490abb8fccf1fd98a48ff17fb17b2c"
+    },
+    {
+      "file": "reviews/wave43-speech-author.json",
+      "sha256": "958167c39b399ff4f89a31a1aa9b44c18b4d90b5b313795eaaf0d25d76a5d518"
+    },
+    {
+      "file": "reviews/wave43-speech-themes.json",
+      "sha256": "35225b64510e39174e070d35ec31193e0a002b435f81dc952302d1c27c3200b5"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "R43001",
+      "decision": "retain",
+      "canonical_id": "R43001",
+      "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S001",
+        "R43-S013"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43002",
+      "decision": "retain",
+      "canonical_id": "R43002",
+      "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S002"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43003",
+      "decision": "retain",
+      "canonical_id": "R43003",
+      "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S003"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43004",
+      "decision": "retain",
+      "canonical_id": "R43004",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S004"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43005",
+      "decision": "retain",
+      "canonical_id": "R43005",
+      "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S005"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43006",
+      "decision": "retain",
+      "canonical_id": "R43006",
+      "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S006"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43007",
+      "decision": "retain",
+      "canonical_id": "R43007",
+      "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S007"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43008",
+      "decision": "retain",
+      "canonical_id": "R43008",
+      "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S008"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43009",
+      "decision": "retain",
+      "canonical_id": "R43009",
+      "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S009",
+        "R43-S010"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43010",
+      "decision": "retain",
+      "canonical_id": "R43010",
+      "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S011"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    },
+    {
+      "id": "R43011",
+      "decision": "retain",
+      "canonical_id": "R43011",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置，問答與限定實驗結果一致。",
+      "source_ids": [
+        "R43-S012"
+      ],
+      "editorial_seconds": [
+        15,
+        78
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes",
+        "editorial",
+        "source_locator"
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R43-S001",
+      "scope": "印刷p747原掃描表1與表2、兩表之間結果與討論。成對錯配ba/ga、ga/ba須分融合／組合，成人及兒童分欄；不採正文與表中個別百分比有落差的數字。另由S013限定觀眾差異。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-mc.pdf",
+        "sha256": "a5a1148a02c975194eadc8e36dd7c04c39df95a47e07cfc0ce850799410f4e4e",
+        "text_file": ".cache/wave43-speech-mc-scan-note.txt",
+        "text_sha256": "e2aee997d5e0703926922c59776242f2fe43f2725a0ec8dd235af262dcd9ad65"
+      },
+      "reviewer_route": "獨立讀當日作者原件與掃描圖頁，不倚導讀充當原文。"
+    },
+    {
+      "source_id": "R43-S002",
+      "scope": "另以指定UA自Tilburg大學庫取得七頁原刊，Exp1 Methods/Procedure及Fig2解釋、Exp2 Method/Fig3。每人先定其模糊音，兩種接觸各八個區塊、隨機次序。Exp2另招受試者但同人做四種區塊；模糊配嘴形與清楚一致可有相反後效。作者私人網域憑證錯誤，沒有忽略TLS。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-aftertil.pdf",
+        "sha256": "03a2ea9f269b378ad767adcd29c58f63e6ed7d20dee97bbecacda06b450a4e30",
+        "text_file": ".cache/wave43-speech-aftertil.txt",
+        "text_sha256": "32db7774c94c8a5e165141232697c0a053a95617e2eb1f90a051fa8c0011c3e5"
+      },
+      "reviewer_route": "先讀作者摘要，另以指定UA獨立取同文原刊PDF，並在作者修訂後讀回當期來源與設計。",
+      "peer_source": {
+        "file": ".cache/wave43-physics-peer-after.pdf",
+        "sha256": "77f8ae61e06449aab9003f15700f7ed94f088c8f5ebe0f104de1e51b780e6f37"
+      },
+      "peer_text": {
+        "file": ".cache/wave43-physics-peer-after.txt",
+        "sha256": "d5b8e0fe3a837b302bf29c90ef988be3c7d4bab91ab7b1af922bf42753907811"
+      },
+      "peer_retrieval_url": "https://repository.tilburguniversity.edu/bitstreams/5c6329f1-1a20-4251-9806-77c2f0e45572/download"
+    },
+    {
+      "source_id": "R43-S003",
+      "scope": "原刊P053、P058–064及Fig1–3圖說。視覺與遮蔽都是組內因素，每個人每個句子只聽一次，跨人平衡。點陣只在語譜形噪音相對黑屏顯著；別混主觀費力與辨識表現。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-points.html",
+        "sha256": "5039583e4701f3a59c14e43bc3acc6c8620aed1bf3ca75a0708c2bbf3a460670",
+        "text_file": ".cache/wave43-speech-points.txt",
+        "text_sha256": "4c0a75942dc49351f1d1d130ebb89e7ccf855fb4f640b519485c80e0a7474994"
+      },
+      "reviewer_route": "獨立讀作者原刊快取的指定正文。"
+    },
+    {
+      "source_id": "R43-S004",
+      "scope": "印刷pp948–949掃描主文、Fig2及Table1：三組不同作業指示；A組自由描述S1，B組試抄句子；B組S1與部分二音組有人能寫出完整句，不稱所有人靠三音必懂。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-sine.pdf",
+        "sha256": "83a26764914f6b223e215eabdb538010ffd3c6504303ce082ec65133f836404e",
+        "text_file": ".cache/wave43-speech-sine-scan-note.txt",
+        "text_sha256": "ce1cb1e05009746d9d7dbe4e9aa8d5131d181c42be155c2f51f5706a1bb1c694"
+      },
+      "reviewer_route": "獨立讀當日作者原件與掃描圖頁，不倚導讀充當原文。"
+    },
+    {
+      "source_id": "R43-S005",
+      "scope": "原刊pp303–304掃描正文、Fig1合成聲譜、Fig2C句子及Fig3語音特徵。受試者先練習、分帶包絡調同頻帶噪音，1至4帶下辨詞進步，未當一般耳蝸植入患者實測。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-band.pdf",
+        "sha256": "c5b97069ecac1b5041bb563d14663d43f65dd1b0076e493414512ed0cbe87932",
+        "text_file": ".cache/wave43-speech-band-scan-note.txt",
+        "text_sha256": "f6598b69c7301984d9f1bb365df03a0e0b9877b3a6ac946cb0aeb3c01e374f1f"
+      },
+      "reviewer_route": "獨立讀當日作者原件與掃描圖頁，不倚導讀充當原文。"
+    },
+    {
+      "source_id": "R43-S006",
+      "scope": "原作者摘要Exp1–5。已知未失真原句時聽聲碼句學習較好，非詞訓練未見效果，語意是否合理與真詞/非詞不同；未核個別題數與呈現設備。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-train-abs.json",
+        "sha256": "a611545a3689515a92e13a5237f2b4f8f75315ffdb721231638f25cd42dc629a",
+        "text_file": ".cache/wave43-speech-train-abs.txt",
+        "text_sha256": "ff2fd4219f126dd06be14a5d2e07c6bceb1113f93e3a9cb2f0058b5b0b657ceb"
+      },
+      "reviewer_route": "獨立讀原作者摘要，未核完整方法或圖表。"
+    },
+    {
+      "source_id": "R43-S007",
+      "scope": "原刊Table1/Results P036–040與Methods P046–050；荷語母語者看英語劇片，兩口音和三字幕條件；舊句與新句分看，荷語字幕舊句也可有益但新句對無字幕較差。後測複述而非測劇情理解。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-sub.html",
+        "sha256": "a9c20c79ea01afe371cf6fd6d1e51126739ccb861bf4a6d26817db6488f3f6ec",
+        "text_file": ".cache/wave43-speech-sub.txt",
+        "text_sha256": "c93385f6bf50f83a67da702903a8469be970907711699b9adc126c671c8de997"
+      },
+      "reviewer_route": "獨立讀作者原刊快取的指定正文。"
+    },
+    {
+      "source_id": "R43-S008",
+      "scope": "原作者摘要兩實驗。起聲時間連續體搭 -ash/-ask 使d/t哪端構成真詞對調，效應在接近分界時大於明確端點。只核此可見比較。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-lex-abs.json",
+        "sha256": "abea250a732a7a09133ffd5f92a963cb5014dce718cd18f3d14ced4f8a2177d2",
+        "text_file": ".cache/wave43-speech-lex-abs.txt",
+        "text_sha256": "cdf6150e40d2f3fbb776e79290d6dbd933ab1fc22116ff022d39fd72b4aeefab"
+      },
+      "reviewer_route": "獨立讀原作者摘要，未核完整方法或圖表。"
+    },
+    {
+      "source_id": "R43-S009",
+      "scope": "原作者摘要；配偶當目標或當干擾，與陌生聲條件比較指令辨識。未用交流時長或年齡推認其他人必受惠。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-couple-abs.json",
+        "sha256": "3298bdec508f30047dd6fc6fad8315103be7697c30f685fcf67a86d4057f2ffd",
+        "text_file": ".cache/wave43-speech-couple-abs.txt",
+        "text_sha256": "a28a80952e0336fdb93d301e9d56db79c6f777215a9b51c94cf6c5592e300691"
+      },
+      "reviewer_route": "獨立讀原作者摘要，未核完整方法或圖表。"
+    },
+    {
+      "source_id": "R43-S010",
+      "scope": "原作者摘要；matrix作業依名字指定目標，熟悉目標優勢在朋友與配偶皆見，熟悉干擾未見顯著優勢。不能將兩篇不同結果確定歸因於一個受控難度因素。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-matrix-abs.json",
+        "sha256": "7bae4459d62e3f833837539d7904681768d2ec9fbd4149c6d7de465f31599447",
+        "text_file": ".cache/wave43-speech-matrix-abs.txt",
+        "text_sha256": "bb01ef5d9d7c7e0ccf229b0c4b669fa0707832f577e2dbe6244de07dfdf64cb9"
+      },
+      "reviewer_route": "獨立讀原作者摘要，未核完整方法或圖表。"
+    },
+    {
+      "source_id": "R43-S011",
+      "scope": "原作者摘要；熟聲或陌生目標固定詞句類型，用同語言、不懂的語言、語音相關噪音，調目標/遮蔽比測50%門檻，熟聲優勢依序減/未見；未直接測注意力神經機制。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-mask-abs.json",
+        "sha256": "e0c158da8f7aff2842c8033392d70dc5ee8443822d1d081cc48e835ebf047740",
+        "text_file": ".cache/wave43-speech-mask-abs.txt",
+        "text_sha256": "88f40fe21ae5bd3951f6216749bd701287cde7e953d80178e4c205b0c5b697cd"
+      },
+      "reviewer_route": "獨立讀原作者摘要，未核完整方法或圖表。"
+    },
+    {
+      "source_id": "R43-S012",
+      "scope": "原作者摘要另加獨立取得的MIT教學庫1970年原刊PDF，印刷392–393僅Warren文，未讀同頁別文。原句legislatures第一個s及鄰音的過渡一併刪，替同長咳聲，20人先判位置；靜音缺口可被指出。辨主觀補音與咳聲的錯誤位置，不宣稱復原原波形。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-restore-abs.json",
+        "sha256": "e7eb056c183caebe961206963ad1811d348590b93a4486273f7fa648dc861363",
+        "text_file": ".cache/wave43-speech-restore-abs.txt",
+        "text_sha256": "cd63739db22f7783dad56c6468f66a8b235ac71d23532cee19ebd3e5d89a499b"
+      },
+      "reviewer_route": "作者只列摘要。我另以指定UA自MIT課程取同一研究的原刊定點讀。",
+      "peer_source": {
+        "file": ".cache/wave43-physics-peer-restore.pdf",
+        "sha256": "13eadf2afabab381551e9695d5a75bfd3fd52af80f9a20cd743012c09de85f50"
+      },
+      "peer_text": {
+        "file": ".cache/wave43-physics-peer-restore.txt",
+        "sha256": "763d9fd3f2fba6a5e5b0730f3ba938d1a019382bbfa02bc5d10b08590be07672"
+      },
+      "peer_retrieval_url": "https://web.mit.edu/9.35/www/archives/2020/auditory/papers/Warren_PhonemicRestoration.pdf"
+    },
+    {
+      "source_id": "R43-S013",
+      "scope": "原作者摘要；12個刺激與165名英語成人、部分一年重測；刺激、人與開放/強制選項均影響估計。不把全體平均外推任何觀眾。",
+      "author_cache": {
+        "file": ".cache/wave43-speech-var-abs.json",
+        "sha256": "31e32534164d04c144e58e74c9524ec93d25e01d18c9ea7d071a63324039a04b",
+        "text_file": ".cache/wave43-speech-var-abs.txt",
+        "text_sha256": "d5f56ed45af8772c490bc1768d12909067ef60dae9336c9210059f148adbfb57"
+      },
+      "reviewer_route": "獨立讀原作者摘要，未核完整方法或圖表。"
+    }
+  ],
+  "source_reading_summary": "核全13研究原件雜湊，7項獨立定點讀原文（含1項作者摘要但本覆核另讀原刊），另6項限原作者摘要。S001/004/005實際目讀掃描頁及表，不以導讀代替。",
+  "visual_readings": [
+    {
+      "file": ".cache/w43-view-mc-1.png",
+      "sha256": "c5c88b1c78e207cba55c1a97a67a8e65046fd28d9e7bd2468b0c243258fb8ee0"
+    },
+    {
+      "file": ".cache/w43-view-sine-2.jpg",
+      "sha256": "ca893f0e7d3c8280b9db9c7f62c287f2b58a0621f95fd7be27225024726ed916"
+    },
+    {
+      "file": ".cache/w43-view-sine-3.jpg",
+      "sha256": "dad09aa0251faafa382479d648a5acfb64cbbd9e4fe7960f9af914a1cab791be"
+    },
+    {
+      "file": ".cache/w43-view-band-0.jpg",
+      "sha256": "bc2e903f746e64c694020fb161dce2b3422251b76007cd8c2d9d361dca258f96"
+    },
+    {
+      "file": ".cache/w43-view-band-1.jpg",
+      "sha256": "25590d3b7f6ea1e41fb587f5f90a567513b6fd9f9974da3d60aac81be73c18d4"
+    }
+  ],
+  "source_identity_review": "同文的作者摘要、原刊及大學庫藏各僅計同一研究。三個熟聲研究分清指令作業、matrix及遮蔽語言；前兩者在一核心留相反情況。",
+  "author_near_pair_review": [
+    {
+      "a": "R43001",
+      "b": "P14010",
+      "decision": "distinct",
+      "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理聽覺音源空間定位受亮點拖移。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43001",
+      "b": "R43002",
+      "decision": "distinct",
+      "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43002",
+      "b": "R22003",
+      "decision": "distinct",
+      "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理前後聲歷程使延遲聲音的定位出現偏向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43002",
+      "b": "R43003",
+      "decision": "distinct",
+      "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43003",
+      "b": "P14009",
+      "decision": "distinct",
+      "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理視覺可靠度改變虛擬物體的視觸覺高度估計。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43004",
+      "b": "R22001",
+      "decision": "distinct",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43004",
+      "b": "R24004",
+      "decision": "distinct",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理移動分量後虛擬低音的匹配頻率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43004",
+      "b": "R43005",
+      "decision": "distinct",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43005",
+      "b": "M5015",
+      "decision": "distinct",
+      "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理後一封包含前音訊低碼率副本可還原資料。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43005",
+      "b": "X40-007",
+      "decision": "distinct",
+      "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理發聲者改舌位對樂器聲阻抗與母音般諧波。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43006",
+      "b": "R43005",
+      "decision": "distinct",
+      "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43006",
+      "b": "R43007",
+      "decision": "distinct",
+      "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43007",
+      "b": "LEG-A72",
+      "decision": "distinct",
+      "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理機器自動辨識國台語交錯語料。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43008",
+      "b": "R43011",
+      "decision": "distinct",
+      "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43009",
+      "b": "R24003",
+      "decision": "distinct",
+      "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理聽覺依音域將左右交錯的升降音階重新分流。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43010",
+      "b": "R43009",
+      "decision": "distinct",
+      "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43010",
+      "b": "R22004",
+      "decision": "distinct",
+      "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理在雙耳反相下偵測背景中的純音閾值。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43011",
+      "b": "R22002",
+      "decision": "distinct",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理有無殘響及它與斷續的處理次序改變補噪/留白的辨詞率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R43011",
+      "b": "M5015",
+      "decision": "distinct",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理後一封包含前音訊低碼率副本可還原資料。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R43001",
+      "b": "C2033",
+      "decision": "distinct",
+      "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理耳廓濾波提供前後及高度定位線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.770202
+    },
+    {
+      "a": "R43001",
+      "b": "R43002",
+      "decision": "distinct",
+      "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.767119
+    },
+    {
+      "a": "R43001",
+      "b": "R43004",
+      "decision": "distinct",
+      "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.761109
+    },
+    {
+      "a": "R43001",
+      "b": "R24003",
+      "decision": "distinct",
+      "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理聽覺依音域將左右交錯的升降音階重新分流。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.748748
+    },
+    {
+      "a": "R43001",
+      "b": "R22001",
+      "decision": "distinct",
+      "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.717797
+    },
+    {
+      "a": "R43002",
+      "b": "R43001",
+      "decision": "distinct",
+      "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.767119
+    },
+    {
+      "a": "R43002",
+      "b": "LEG-S86",
+      "decision": "distinct",
+      "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理耳機主動消音對不同頻段的物理效力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.762467
+    },
+    {
+      "a": "R43002",
+      "b": "R24003",
+      "decision": "distinct",
+      "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理聽覺依音域將左右交錯的升降音階重新分流。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.755488
+    },
+    {
+      "a": "R43002",
+      "b": "C2033",
+      "decision": "distinct",
+      "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理耳廓濾波提供前後及高度定位線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.752747
+    },
+    {
+      "a": "R43002",
+      "b": "R43003",
+      "decision": "distinct",
+      "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.739409
+    },
+    {
+      "a": "R43003",
+      "b": "R43002",
+      "decision": "distinct",
+      "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.739409
+    },
+    {
+      "a": "R43003",
+      "b": "P14009",
+      "decision": "distinct",
+      "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理視覺可靠度改變虛擬物體的視觸覺高度估計。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.715696
+    },
+    {
+      "a": "R43003",
+      "b": "D9019",
+      "decision": "distinct",
+      "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理有限尺寸麥克風對高頻波的方向性反應。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.669081
+    },
+    {
+      "a": "R43003",
+      "b": "R42001",
+      "decision": "distinct",
+      "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理自己咬聲回饋改變洋芋片的主觀酥脆與新鮮。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.644262
+    },
+    {
+      "a": "R43003",
+      "b": "A5031",
+      "decision": "distinct",
+      "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理軟顎開放時閉唇仍能發鼻音。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.639524
+    },
+    {
+      "a": "R43004",
+      "b": "R43005",
+      "decision": "distinct",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.766759
+    },
+    {
+      "a": "R43004",
+      "b": "R43001",
+      "decision": "distinct",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.761109
+    },
+    {
+      "a": "R43004",
+      "b": "R22001",
+      "decision": "distinct",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.745442
+    },
+    {
+      "a": "R43004",
+      "b": "R24004",
+      "decision": "distinct",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理移動分量後虛擬低音的匹配頻率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.73402
+    },
+    {
+      "a": "R43004",
+      "b": "C2033",
+      "decision": "distinct",
+      "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理耳廓濾波提供前後及高度定位線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.728671
+    },
+    {
+      "a": "R43005",
+      "b": "R22001",
+      "decision": "distinct",
+      "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.802777
+    },
+    {
+      "a": "R43005",
+      "b": "R24004",
+      "decision": "distinct",
+      "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理移動分量後虛擬低音的匹配頻率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.77909
+    },
+    {
+      "a": "R43005",
+      "b": "R43004",
+      "decision": "distinct",
+      "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.766759
+    },
+    {
+      "a": "R43005",
+      "b": "R22002",
+      "decision": "distinct",
+      "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理有無殘響及它與斷續的處理次序改變補噪/留白的辨詞率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.766518
+    },
+    {
+      "a": "R43005",
+      "b": "LEG-S86",
+      "decision": "distinct",
+      "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理耳機主動消音對不同頻段的物理效力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.757277
+    },
+    {
+      "a": "R43006",
+      "b": "C2022",
+      "decision": "distinct",
+      "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理自己出聲念詞提供日後提取的區別線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.678242
+    },
+    {
+      "a": "R43006",
+      "b": "R43010",
+      "decision": "distinct",
+      "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667843
+    },
+    {
+      "a": "R43006",
+      "b": "R22005",
+      "decision": "distinct",
+      "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理首尾音符的來源/次序錯歸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.662848
+    },
+    {
+      "a": "R43006",
+      "b": "R22001",
+      "decision": "distinct",
+      "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.657582
+    },
+    {
+      "a": "R43006",
+      "b": "R43005",
+      "decision": "distinct",
+      "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.627615
+    },
+    {
+      "a": "R43007",
+      "b": "R43010",
+      "decision": "distinct",
+      "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.664098
+    },
+    {
+      "a": "R43007",
+      "b": "C2022",
+      "decision": "distinct",
+      "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理自己出聲念詞提供日後提取的區別線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.580504
+    },
+    {
+      "a": "R43007",
+      "b": "LEG-A74",
+      "decision": "distinct",
+      "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理機器翻譯如何整合句中上下文。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.567623
+    },
+    {
+      "a": "R43007",
+      "b": "R43008",
+      "decision": "distinct",
+      "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.561524
+    },
+    {
+      "a": "R43007",
+      "b": "R43006",
+      "decision": "distinct",
+      "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.558652
+    },
+    {
+      "a": "R43008",
+      "b": "R22005",
+      "decision": "distinct",
+      "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理首尾音符的來源/次序錯歸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.740373
+    },
+    {
+      "a": "R43008",
+      "b": "C2022",
+      "decision": "distinct",
+      "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理自己出聲念詞提供日後提取的區別線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.732327
+    },
+    {
+      "a": "R43008",
+      "b": "R24002",
+      "decision": "distinct",
+      "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理半八度複音的音級與主觀升降判斷。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.691417
+    },
+    {
+      "a": "R43008",
+      "b": "R22003",
+      "decision": "distinct",
+      "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理前後聲歷程使延遲聲音的定位出現偏向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.689774
+    },
+    {
+      "a": "R43008",
+      "b": "R24003",
+      "decision": "distinct",
+      "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理聽覺依音域將左右交錯的升降音階重新分流。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.68224
+    },
+    {
+      "a": "R43009",
+      "b": "R43010",
+      "decision": "distinct",
+      "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.622863
+    },
+    {
+      "a": "R43009",
+      "b": "C2022",
+      "decision": "distinct",
+      "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理自己出聲念詞提供日後提取的區別線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.621096
+    },
+    {
+      "a": "R43009",
+      "b": "C2011",
+      "decision": "distinct",
+      "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理熟練動作與可陳述知識的區別。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.614907
+    },
+    {
+      "a": "R43009",
+      "b": "R27002",
+      "decision": "distinct",
+      "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理配對偏好與無阻擋對的分配程序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.600165
+    },
+    {
+      "a": "R43009",
+      "b": "R22003",
+      "decision": "distinct",
+      "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理前後聲歷程使延遲聲音的定位出現偏向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.598085
+    },
+    {
+      "a": "R43010",
+      "b": "R22004",
+      "decision": "distinct",
+      "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理在雙耳反相下偵測背景中的純音閾值。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.713397
+    },
+    {
+      "a": "R43010",
+      "b": "C2022",
+      "decision": "distinct",
+      "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理自己出聲念詞提供日後提取的區別線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.703971
+    },
+    {
+      "a": "R43010",
+      "b": "R43006",
+      "decision": "distinct",
+      "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.667843
+    },
+    {
+      "a": "R43010",
+      "b": "R43007",
+      "decision": "distinct",
+      "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.664098
+    },
+    {
+      "a": "R43010",
+      "b": "LEG-S26",
+      "decision": "distinct",
+      "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理骨傳導和空氣傳導使自聲與錄音不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.660232
+    },
+    {
+      "a": "R43011",
+      "b": "R22002",
+      "decision": "distinct",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理有無殘響及它與斷續的處理次序改變補噪/留白的辨詞率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.66367
+    },
+    {
+      "a": "R43011",
+      "b": "R22005",
+      "decision": "distinct",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理首尾音符的來源/次序錯歸。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.643443
+    },
+    {
+      "a": "R43011",
+      "b": "C2022",
+      "decision": "distinct",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理自己出聲念詞提供日後提取的區別線索。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.638201
+    },
+    {
+      "a": "R43011",
+      "b": "R22003",
+      "decision": "distinct",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理前後聲歷程使延遲聲音的定位出現偏向。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.63676
+    },
+    {
+      "a": "R43011",
+      "b": "R22001",
+      "decision": "distinct",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.631757
+    }
+  ],
+  "additional_cross_wave_pairs": [
+    {
+      "a": "R43011",
+      "b": "C2017",
+      "decision": "distinct",
+      "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理回憶內容但誤認來源的記憶問題。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R43001",
+        "b": "P14010",
+        "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理聽覺音源空間定位受亮點拖移。"
+      },
+      {
+        "a": "R43001",
+        "b": "R43002",
+        "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應。"
+      },
+      {
+        "a": "R43002",
+        "b": "R22003",
+        "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理前後聲歷程使延遲聲音的定位出現偏向。"
+      },
+      {
+        "a": "R43002",
+        "b": "R43003",
+        "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變。"
+      },
+      {
+        "a": "R43003",
+        "b": "P14009",
+        "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理視覺可靠度改變虛擬物體的視觸覺高度估計。"
+      },
+      {
+        "a": "R43004",
+        "b": "R22001",
+        "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。"
+      },
+      {
+        "a": "R43004",
+        "b": "R24004",
+        "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理移動分量後虛擬低音的匹配頻率。"
+      },
+      {
+        "a": "R43004",
+        "b": "R43005",
+        "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認。"
+      },
+      {
+        "a": "R43005",
+        "b": "M5015",
+        "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理後一封包含前音訊低碼率副本可還原資料。"
+      },
+      {
+        "a": "R43005",
+        "b": "X40-007",
+        "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理發聲者改舌位對樂器聲阻抗與母音般諧波。"
+      },
+      {
+        "a": "R43006",
+        "b": "R43005",
+        "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認。"
+      },
+      {
+        "a": "R43006",
+        "b": "R43007",
+        "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果。"
+      },
+      {
+        "a": "R43007",
+        "b": "LEG-A72",
+        "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理機器自動辨識國台語交錯語料。"
+      },
+      {
+        "a": "R43008",
+        "b": "R43011",
+        "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置。"
+      },
+      {
+        "a": "R43009",
+        "b": "R24003",
+        "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理聽覺依音域將左右交錯的升降音階重新分流。"
+      },
+      {
+        "a": "R43010",
+        "b": "R43009",
+        "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同。"
+      },
+      {
+        "a": "R43010",
+        "b": "R22004",
+        "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理在雙耳反相下偵測背景中的純音閾值。"
+      },
+      {
+        "a": "R43011",
+        "b": "R22002",
+        "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理有無殘響及它與斷續的處理次序改變補噪/留白的辨詞率。"
+      },
+      {
+        "a": "R43011",
+        "b": "M5015",
+        "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理後一封包含前音訊低碼率副本可還原資料。"
+      },
+      {
+        "a": "R43001",
+        "b": "C2033",
+        "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理耳廓濾波提供前後及高度定位線索。"
+      },
+      {
+        "a": "R43001",
+        "b": "R43004",
+        "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認。"
+      },
+      {
+        "a": "R43001",
+        "b": "R24003",
+        "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理聽覺依音域將左右交錯的升降音階重新分流。"
+      },
+      {
+        "a": "R43001",
+        "b": "R22001",
+        "reason": "同時間把音節聲軌配上不一致嘴形，正反兩種配法得到融合或組合回報；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。"
+      },
+      {
+        "a": "R43002",
+        "b": "LEG-S86",
+        "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理耳機主動消音對不同頻段的物理效力。"
+      },
+      {
+        "a": "R43002",
+        "b": "R24003",
+        "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理聽覺依音域將左右交錯的升降音階重新分流。"
+      },
+      {
+        "a": "R43002",
+        "b": "C2033",
+        "reason": "同人不同視聽接觸區塊後，移除臉再測模糊語音；清楚一致的接觸可有反向效應；比較題處理耳廓濾波提供前後及高度定位線索。"
+      },
+      {
+        "a": "R43003",
+        "b": "D9019",
+        "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理有限尺寸麥克風對高頻波的方向性反應。"
+      },
+      {
+        "a": "R43003",
+        "b": "R42001",
+        "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理自己咬聲回饋改變洋芋片的主觀酥脆與新鮮。"
+      },
+      {
+        "a": "R43003",
+        "b": "A5031",
+        "reason": "同步看嘴點陣、只隨開合縮放的圓及真人臉，和無畫面比較詞辨識，增益依遮蔽種類而變；比較題處理軟顎開放時閉唇仍能發鼻音。"
+      },
+      {
+        "a": "R43004",
+        "b": "C2033",
+        "reason": "用隨時間移動的三條共振頻率純音，加上不同組聽者的作業指示測語句辨認；比較題處理耳廓濾波提供前後及高度定位線索。"
+      },
+      {
+        "a": "R43005",
+        "b": "R22001",
+        "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。"
+      },
+      {
+        "a": "R43005",
+        "b": "R24004",
+        "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理移動分量後虛擬低音的匹配頻率。"
+      },
+      {
+        "a": "R43005",
+        "b": "R22002",
+        "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理有無殘響及它與斷續的處理次序改變補噪/留白的辨詞率。"
+      },
+      {
+        "a": "R43005",
+        "b": "LEG-S86",
+        "reason": "把寬頻帶內細節換成噪音，但保留各帶強弱包絡；改帶數比較詞辨認；比較題處理耳機主動消音對不同頻段的物理效力。"
+      },
+      {
+        "a": "R43006",
+        "b": "C2022",
+        "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理自己出聲念詞提供日後提取的區別線索。"
+      },
+      {
+        "a": "R43006",
+        "b": "R43010",
+        "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較。"
+      },
+      {
+        "a": "R43006",
+        "b": "R22005",
+        "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理首尾音符的來源/次序錯歸。"
+      },
+      {
+        "a": "R43006",
+        "b": "R22001",
+        "reason": "相同噪音聲碼訓練可受詞彙資訊幫助，真詞與無義非詞訓練結果不同；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。"
+      },
+      {
+        "a": "R43007",
+        "b": "R43010",
+        "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較。"
+      },
+      {
+        "a": "R43007",
+        "b": "C2022",
+        "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理自己出聲念詞提供日後提取的區別線索。"
+      },
+      {
+        "a": "R43007",
+        "b": "LEG-A74",
+        "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理機器翻譯如何整合句中上下文。"
+      },
+      {
+        "a": "R43007",
+        "b": "R43008",
+        "reason": "以外語或母語字幕接觸自然口音，再拿掉字幕測同口音新句；兩種字幕對後測可有相反效果；比較題處理起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端。"
+      },
+      {
+        "a": "R43008",
+        "b": "R22005",
+        "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理首尾音符的來源/次序錯歸。"
+      },
+      {
+        "a": "R43008",
+        "b": "C2022",
+        "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理自己出聲念詞提供日後提取的區別線索。"
+      },
+      {
+        "a": "R43008",
+        "b": "R24002",
+        "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理半八度複音的音級與主觀升降判斷。"
+      },
+      {
+        "a": "R43008",
+        "b": "R22003",
+        "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理前後聲歷程使延遲聲音的定位出現偏向。"
+      },
+      {
+        "a": "R43008",
+        "b": "R24003",
+        "reason": "起聲時間在d/t之間時，改後續詞尾可使真詞傾向落到另一端；比較題處理聽覺依音域將左右交錯的升降音階重新分流。"
+      },
+      {
+        "a": "R43009",
+        "b": "C2022",
+        "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理自己出聲念詞提供日後提取的區別線索。"
+      },
+      {
+        "a": "R43009",
+        "b": "C2011",
+        "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理熟練動作與可陳述知識的區別。"
+      },
+      {
+        "a": "R43009",
+        "b": "R27002",
+        "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理配對偏好與無阻擋對的分配程序。"
+      },
+      {
+        "a": "R43009",
+        "b": "R22003",
+        "reason": "熟悉的說者作目標或干擾，對指令追蹤和另一詞串作業的優勢不同；比較題處理前後聲歷程使延遲聲音的定位出現偏向。"
+      },
+      {
+        "a": "R43010",
+        "b": "C2022",
+        "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理自己出聲念詞提供日後提取的區別線索。"
+      },
+      {
+        "a": "R43010",
+        "b": "LEG-S26",
+        "reason": "語言相近的干擾比不懂語言或匹配噪音更能顯出熟聲優勢，以50%辨認門檻比較；比較題處理骨傳導和空氣傳導使自聲與錄音不同。"
+      },
+      {
+        "a": "R43011",
+        "b": "R22005",
+        "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理首尾音符的來源/次序錯歸。"
+      },
+      {
+        "a": "R43011",
+        "b": "C2022",
+        "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理自己出聲念詞提供日後提取的區別線索。"
+      },
+      {
+        "a": "R43011",
+        "b": "R22003",
+        "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理前後聲歷程使延遲聲音的定位出現偏向。"
+      },
+      {
+        "a": "R43011",
+        "b": "R22001",
+        "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理反覆播放語句是否聽似唱歌，操弄重播音高與音節順序。"
+      },
+      {
+        "a": "R43011",
+        "b": "C2017",
+        "reason": "將一個音完全替換為咳聲或靜音，測是否注意到缺音以及指出插入位置；比較題處理回憶內容但誤認來源的記憶問題。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R43-NA001",
+      "decision": "agree_not_added",
+      "reason": "P14-NA16、A21-NA011、R22-NA001的泛稱仍不收；原始表格與新文個體差異才足以另採R43001的特定配音比較。",
+      "existing_ids": [
+        "R43001"
+      ]
+    },
+    {
+      "id": "R43-NA002",
+      "decision": "agree_not_added",
+      "reason": "換演員不增加區分力。",
+      "existing_ids": [
+        "R43001"
+      ]
+    },
+    {
+      "id": "R43-NA003",
+      "decision": "agree_not_added",
+      "reason": "短期後測不能證永久變化。",
+      "existing_ids": [
+        "R43002"
+      ]
+    },
+    {
+      "id": "R43-NA004",
+      "decision": "agree_not_added",
+      "reason": "點陣的效益依遮蔽條件。",
+      "existing_ids": [
+        "R43003"
+      ]
+    },
+    {
+      "id": "R43-NA005",
+      "decision": "agree_not_added",
+      "reason": "純音隨共振峰變化，非三個固定音。",
+      "existing_ids": [
+        "R43004"
+      ]
+    },
+    {
+      "id": "R43-NA006",
+      "decision": "agree_not_added",
+      "reason": "原聲包絡用來調製噪音，非白噪音藏自然字。",
+      "existing_ids": [
+        "R43005"
+      ]
+    },
+    {
+      "id": "R43-NA007",
+      "decision": "agree_not_added",
+      "reason": "只測正常聽力受試者，不能推臨床。",
+      "existing_ids": [
+        "R43005"
+      ]
+    },
+    {
+      "id": "R43-NA008",
+      "decision": "agree_not_added",
+      "reason": "非詞/真詞及是否先知句子為完整控制，不另拆句。",
+      "existing_ids": [
+        "R43006"
+      ]
+    },
+    {
+      "id": "R43-NA009",
+      "decision": "agree_not_added",
+      "reason": "陌生英語口音新片段複述，非整體外語能力成效。",
+      "existing_ids": [
+        "R43007"
+      ]
+    },
+    {
+      "id": "R43-NA010",
+      "decision": "agree_not_added",
+      "reason": "音節題只留詞彙偏向的邊界對照。",
+      "existing_ids": [
+        "R43008"
+      ]
+    },
+    {
+      "id": "R43-NA011",
+      "decision": "agree_not_added",
+      "reason": "配偶熟聲的實驗沒測關係好壞。",
+      "existing_ids": [
+        "R43009"
+      ]
+    },
+    {
+      "id": "R43-NA012",
+      "decision": "agree_not_added",
+      "reason": "熟聲優勢量辨詞非音壓消除。",
+      "existing_ids": [
+        "R43010"
+      ]
+    },
+    {
+      "id": "R43-NA013",
+      "decision": "agree_not_added",
+      "reason": "更換掩蔽聲並未添加新的因果。",
+      "existing_ids": [
+        "R43011"
+      ]
+    },
+    {
+      "id": "R43-NA014",
+      "decision": "agree_not_added",
+      "reason": "重播由說變唱為R22001已有核心。",
+      "existing_ids": [
+        "R22001"
+      ]
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W43R-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 68,
+      "core_seconds": {
+        "R43001": 38,
+        "R43002": 30
+      },
+      "chapter_seconds": [
+        38,
+        30
+      ],
+      "beat_seconds": [
+        21,
+        17,
+        17,
+        13
+      ],
+      "reason": "先看同時錯配，再以同人區塊暴露後關臉作識別；即時融合與後效不是同一次測量。",
+      "drop_if": "自錄對照若不能穩定重現，畫出研究條件、揭受試者回報即可，不承諾觀眾必聽到第三音。"
+    },
+    {
+      "id": "W43R-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 42,
+      "core_seconds": {
+        "R43003": 42
+      },
+      "chapter_seconds": [
+        29,
+        13
+      ],
+      "beat_seconds": [
+        14,
+        15,
+        13
+      ],
+      "reason": "在兩種遮蔽中比較四種視覺提示，分組畫面不是向同一受試者重播同一句四次。",
+      "drop_if": "如果四欄放不下，先留黑屏、動點、真人臉，圓的無差異作角註。"
+    },
+    {
+      "id": "W43R-T03",
+      "decision": "retain_paper_plan",
+      "body_seconds": 55,
+      "core_seconds": {
+        "R43004": 26,
+        "R43005": 29
+      },
+      "chapter_seconds": [
+        26,
+        29
+      ],
+      "beat_seconds": [
+        15,
+        11,
+        16,
+        13
+      ],
+      "reason": "同一時間橫軸，純音的頻率軌跡和多帶噪音強弱包絡，保留的聲學訊息不同。",
+      "drop_if": "沒有聲音演示時保留原研究受試條件與結果，不把圖線逐字當作語音輸出。"
+    },
+    {
+      "id": "W43R-T04",
+      "decision": "retain_paper_plan",
+      "body_seconds": 66,
+      "core_seconds": {
+        "R43007": 66
+      },
+      "chapter_seconds": [
+        36,
+        30
+      ],
+      "beat_seconds": [
+        16,
+        20,
+        30
+      ],
+      "reason": "把後測新片段與舊句分開，先讓觀眾選字幕語言，再揭曉辨詞相對無字幕的結果。",
+      "drop_if": "保留後測統一無字幕與新台詞，把劇名、語言教學延伸都剪掉。"
+    },
+    {
+      "id": "W43R-T05",
+      "decision": "retain_paper_plan",
+      "body_seconds": 60,
+      "core_seconds": {
+        "R43009": 31,
+        "R43010": 29
+      },
+      "chapter_seconds": [
+        31,
+        29
+      ],
+      "beat_seconds": [
+        17,
+        14,
+        16,
+        13
+      ],
+      "reason": "換熟人角色與改遮蔽物語言是兩個干預；圖上保留研究作業的分界。",
+      "drop_if": "若不能分清目標／干擾身分，只留後面三種背景聲的對照。"
+    },
+    {
+      "id": "W43R-T06",
+      "decision": "retain_paper_plan",
+      "body_seconds": 54,
+      "core_seconds": {
+        "R43011": 26,
+        "R43008": 28
+      },
+      "chapter_seconds": [
+        26,
+        28
+      ],
+      "beat_seconds": [
+        16,
+        10,
+        16,
+        12
+      ],
+      "reason": "完整被替換的音問定位與是否察覺；模糊但仍保留聲學線索的起音則問分類。",
+      "drop_if": "若剪點與語音軸分不開，保留第一個實驗，詞尾那段留在素材池。"
+    }
+  ],
+  "timing_probe": [
+    {
+      "id": "W43R-T01",
+      "manifest": {
+        "file": ".cache/wave43-lips-read.json",
+        "sha256": "db886f76f72361ae8339476bff6ff9f0f6eb5ddc5eba09a0ed0b5ce05e358cad"
+      },
+      "continuous_audio": {
+        "file": ".cache/wave43-lips-read-3.wav",
+        "sha256": "c8a4381ea008a5bea6cfe8b99c721e5cb82e45bbd1b63c5669780e5ed0b1cb3d"
+      },
+      "seconds": 62.085,
+      "scope": "獨立核作者合成樣讀文字、WAV標頭與SHA；未做觀眾試映。"
+    },
+    {
+      "id": "W43R-T04",
+      "manifest": {
+        "file": ".cache/wave43-subtitle-read.json",
+        "sha256": "17ba292c21eb71199fedfa17afb1fc41526927bafbf8faa79a3c9146c7e6c5c3"
+      },
+      "continuous_audio": {
+        "file": ".cache/wave43-subtitle-read-3.wav",
+        "sha256": "fcb30366c0abc3336c5e96761af47c9e252b27df01a0da20084d39f69334fedc"
+      },
+      "seconds": 57.661,
+      "scope": "獨立核作者合成樣讀文字、WAV標頭與SHA；未做觀眾試映。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "R43002/S002/W43R-T01",
+      "readback": "依原刊方法修正兩組人為同一人不同接觸區塊；個人先定模糊音，兩配對隨機區塊後做無臉後測。來源升格、旁白改錄。"
+    },
+    {
+      "id": "W43R-T02",
+      "readback": "已區分刺激跨人平衡與每句每人僅聽一次，避免把四畫面看成同一人四次重播。原時間拆兩章。"
+    },
+    {
+      "id": "W43R-T04",
+      "readback": "將原有字幕條件與新片段後測分成兩章，沒有為格式湊長。"
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "136a0e511087ed5db303c54b6d855b72584e7c68734668d3f8b5a7d8e586fb64",
+    "neighbours": {
+      "file": ".cache/wave43-physics-peer-speech-initial.json",
+      "sha256": "fa583fba89640b31eecf54d3e6e131fa73ac0032b263b6b47577b3055cb3efa8"
+    }
+  },
+  "final_input_check": {
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "9eb717d8a04a7f1176bbfa46ecac8b2d042a4bcf70d72131c15d97eb24df7d81"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave43-draft.json",
+      "sha256": "72e5df80ad7159b71494d2a9817c5a16a3483a4e391dce6f8af62a2ecea5773a"
+    },
+    "neighbours": {
+      "file": ".cache/wave43-speech-neighbours.json",
+      "sha256": "effebe5c2276ca42b230828b4aad4f57e26469e82f0af794b380db1dbb18ecd9"
+    },
+    "bound_batch": {
+      "file": "batches/wave43-speech.json",
+      "sha256": "39fb2a1f08533f6d7cc5ce39a387e850bd490abb8fccf1fd98a48ff17fb17b2c"
+    },
+    "directed_pairs": 55,
+    "revised_rows": [
+      {
+        "id": "R43001",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R43002",
+        "added": [
+          "R24003",
+          "R43003"
+        ],
+        "removed": [
+          "R22005",
+          "R22001"
+        ]
+      },
+      {
+        "id": "R43003",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R43004",
+        "added": [
+          "C2033"
+        ],
+        "removed": [
+          "R43002"
+        ]
+      },
+      {
+        "id": "R43007",
+        "added": [
+          "R43006"
+        ],
+        "removed": [
+          "R43002"
+        ]
+      }
+    ],
+    "prior_aftereffect_review": {
+      "file": ".cache/wave43-physics-peer-speech-post-aftereffect.json",
+      "sha256": "d50627e9b24725504bc2fe58f0087c3cac8bd1becb011b7f445d617de0ed78b3"
+    },
+    "final_rows_equal_aftereffect_review": true
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "沒有重新播放當年刺激或數據重分析；紙上畫軌須在製作前重建並核權利。"
+  ]
+}

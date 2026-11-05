@@ -19,7 +19,7 @@ import { productionClipProblems } from "../core/lint.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, recordStage } from "../core/state.mjs";
-import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
+import { FPS, picturesBound, speechHash, visualHash } from "../core/timeline.mjs";
 import { resolveWatermark, watermarkRecord } from "../core/watermark.mjs";
 import {
   bedLevel,
@@ -199,7 +199,7 @@ async function mediaInputs(doc, workdir, workBase, manifest, speech, visual, req
       return { problem: "frames/manifest.json has no subtitle strips for this script; run render again" };
     }
     clips = readJson(path.join(workdir, ARTIFACTS.clips), null);
-    if (!clips || clips.speech_hash !== speech || clips.visual_hash !== visual || clips.look_hash !== look) {
+    if (!clips || clips.speech_hash !== speech || !picturesBound(clips.visual_hash, doc) || clips.look_hash !== look) {
       return { problem: "clips/manifest.json is missing or was made for an older script or look; run clips first" };
     }
     keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
@@ -615,6 +615,9 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     speech_hash: speech,
     narration_sha256: timeline.audio_evidence.narration_sha256,
     visual_hash: visual,
+    // How the frames' text was fitted (templates.mjs FIT_VERSION): status asks a paper cut made
+    // from older frames to be made again.
+    ...(manifest.fit_version ? { fit_version: manifest.fit_version } : {}),
     ...(hasAnimePolicy(doc) ? { runtime_policy_hash: runtimePolicyHash(doc), final_sha256: finalSha256 } : {}),
     ...(drama ? { look_hash: inputs.look, clips_hash: inputs.clips.clips_hash, subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc) } : {}),
     // Illustrated slides bind the cut to the pictures it was made from; any video with music or

@@ -1,0 +1,395 @@
+{
+  "reviewer": "science_sources",
+  "author_reviewed": "root",
+  "created_on": "2026-11-01",
+  "status": "REVISIONS_REQUIRED_EDITORIAL_TOPIC_LEVEL",
+  "inputs": [
+    {
+      "file": "batches/wave3-information-systems.json",
+      "sha256": "5c1ba27428a2ec0586b7ae515d8e09268ec029253926804f14aa34015cd55044",
+      "candidate_ids": "I3001–I3095",
+      "count": 95
+    },
+    {
+      "file": "reviews/wave3-information-themes.json",
+      "sha256": "1e7b27c99803b883bc1ed7c1fc21a6546431d1bded5ebeb181d74534776f10e3",
+      "episode_ids": [
+        "INFO-P1",
+        "INFO-P2",
+        "INFO-P3"
+      ]
+    },
+    {
+      "file": "pool.json",
+      "sha256": "a0502f924ba7c3980a597a1ce8dee956f9c9eb63d33e232d9e276d4e11b94ba3",
+      "use": "既有題機制與範圍對照，非舊題完整外部重查"
+    }
+  ],
+  "coverage": {
+    "editorial": "逐題讀取全部 95 題 question、answer_target、scope、editorial 的 payoff/visual/seconds，並讀來源登錄與三組主題。",
+    "source_sample_count": 13,
+    "batch_sources_sampled": 12,
+    "supplementary_sources": 1,
+    "batch_sources_total": 35,
+    "source_sample": "風險挑選，非隨機代表性抽樣；沒有重查 35 頁所有句子，也沒有執行 API、故障實驗或測定影片時長。",
+    "dedup": "同批按答案目標人工對照；另搜尋 pool.json 的相關資訊、密碼、浮點、版本、儲存題，讀取舊 L192–L322 等相關目標及語義近鄰中的風險配對。近鄰只作提示，沒有宣稱窮舉全池所有兩兩配對。",
+    "semantic_note": "使用 parent 提供的 wave3-semantic-I 輔助資料；該快取在覆核中被刷新，收據不將其雜湊綁定為唯一去重證據。最終判斷依已鎖作者檔和 pool 機制目標。",
+    "not_included": [
+      "完整逐字稿查核",
+      "完整稿盲讀",
+      "製作或發布核准",
+      "2000 舊題外部事實重查",
+      "真實系統或裝置效能實測"
+    ]
+  },
+  "necessary_fixes": [
+    {
+      "id": "I3073",
+      "severity": "must_fix",
+      "field": "question",
+      "finding": "題名說發送時間，但來源及 answer_target 說建立時間；可延後傳送，兩者不等。",
+      "requested": "改為『內容已經加密了，為什麼別人還可能看得出建立時間？』或明指令牌建立時間。",
+      "source_ids": [
+        "I3-S028"
+      ]
+    },
+    {
+      "id": "I3015",
+      "severity": "must_fix",
+      "field": "editorial.payoff and editorial.visual",
+      "finding": "『暫時儲存位置』與不同抽屜編號的比喻易把 ROWID 說成物理地址；它是可改變的整數列存取鍵。",
+      "requested": "改成系統分配的列識別碼與業務主鍵；同一內容卡重新分配 ID 標籤，不用移動物理抽屜代表 ROWID。",
+      "source_ids": [
+        "I3-S004",
+        "SUPPLEMENT"
+      ]
+    },
+    {
+      "id": "INFO-P3",
+      "severity": "must_fix_before_longform_selection",
+      "field": "chapters.seconds and target_minutes",
+      "finding": "I3084 單章 80 秒高於作者段落上限 70 秒；I3087 單章 80 秒高於 60 秒，未寫新增比較支撐超出的時間。",
+      "requested": "先分別縮到約 60、55 秒，整體約 435 秒（7:15）；保留 7–8 分鐘的短解說條件。若要達 8 分鐘，必須新增有來源且有新理解的內容後重新審，不靠停頓補時。"
+    }
+  ],
+  "recommended_merges": [
+    {
+      "duplicate_id": "I3028",
+      "canonical_id": "I3027",
+      "reason": "可見性檢查與整頁 all-visible 摘要是同一答案的限制與解法。",
+      "origin": "author",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3041",
+      "canonical_id": "I3034",
+      "reason": "更改提交說明正是提交中繼資料參與物件識別的例子。",
+      "origin": "author",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3066",
+      "canonical_id": "I3062",
+      "reason": "浮點時間差是有限二進位表示的情境；保留作大數低位解析限制對照。",
+      "origin": "author",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3090",
+      "canonical_id": "I3089",
+      "reason": "長度線索與補到共同長度的處理構成一個完整問題。",
+      "origin": "author",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3008",
+      "canonical_id": "I3006",
+      "reason": "舊讀者阻擋檢查點與讀者離開後重用 WAL，是同一回收邊界的正反條件。",
+      "origin": "reviewer",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3022",
+      "canonical_id": "I3021",
+      "reason": "估計查詢成本依賴分布，而非更新次數；換同類資料不改統計是同一機制的反例。",
+      "origin": "reviewer",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3025",
+      "canonical_id": "I3024",
+      "reason": "複合 B-tree 的前欄相等、首個範圍與後欄過濾，應在同一字典序搜尋核心中比較。",
+      "origin": "reviewer",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3037",
+      "canonical_id": "I3036",
+      "reason": "差異壓縮基底不必按時間先後，現稿只多一個基底方向例子，未增加獨立因果。",
+      "origin": "reviewer",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3052",
+      "canonical_id": "I3051",
+      "reason": "視覺更新、歷史項目與真正文件載入分離；pushState 更新網址是同一核心的解法。",
+      "origin": "reviewer",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3063",
+      "canonical_id": "I3062",
+      "reason": "同一個 0.1 的儲存近似與短顯示文字，適合用翻標籤揭示同一答案，無需另占核心。",
+      "origin": "reviewer",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    },
+    {
+      "duplicate_id": "I3093",
+      "canonical_id": "I3092",
+      "reason": "恢復 VM 快照連同生成器狀態，是確定性序列重現的情境；未新增獨立生成機制。",
+      "origin": "reviewer",
+      "status": "RECOMMENDED_NOT_CENTRALLY_APPLIED_BY_REVIEWER"
+    }
+  ],
+  "recommended_holds": [
+    {
+      "id": "I3032",
+      "origin": "author",
+      "reason": "有條件唯一索引仍是功能描述；缺少衝突情境和後果，認同暫緩。"
+    },
+    {
+      "id": "I3047",
+      "origin": "reviewer",
+      "reason": "目前『背景回呼暫停以省電』是政策摘要，缺少獨立可追問的機制；可保留為 I3046 的時基對照素材，不另計核心。"
+    },
+    {
+      "id": "I3074",
+      "origin": "reviewer",
+      "reason": "目前只說設定 TTL 即按時間拒收，屬 API 功能規則；可附在 I3073 建立時間的用途，不單獨算核心。"
+    }
+  ],
+  "keep_distinct_examples": [
+    {
+      "ids": [
+        "I3001",
+        "I3006"
+      ],
+      "reason": "前者保存舊頁用於撤銷，後者是 WAL 讀取快照阻擋回收，資料方向和失效條件不同；高相似分數不能合併。"
+    },
+    {
+      "ids": [
+        "I3029",
+        "I3030"
+      ],
+      "reason": "多欄承載以免回表，與篩選列縮小索引，改的是不同維度。"
+    },
+    {
+      "ids": [
+        "I3024",
+        "I3026"
+      ],
+      "reason": "字典序區間限制與缺少前欄條件時的多次搜尋最佳化有不同解法，保留 skip scan 的成本條件。"
+    },
+    {
+      "ids": [
+        "I3033",
+        "I3034"
+      ],
+      "reason": "名稱與 blob 內容分離，與提交歷史中繼資料參與身分不同。"
+    },
+    {
+      "ids": [
+        "I3011",
+        "I3017"
+      ],
+      "reason": "同連線未完成游標中修改的未定義可見結果，不等於另一交易在兩條指令間提交造成的新快照。"
+    },
+    {
+      "ids": [
+        "I3012",
+        "LEG-A66"
+      ],
+      "reason": "資料庫檔案內空頁重用造成外部檔案長度不縮，與檔案刪除及介質抹除是不同邊界；只可作對照，不能混用救援承諾。"
+    },
+    {
+      "ids": [
+        "I3023",
+        "L212"
+      ],
+      "reason": "有限序號同為背景，但長存資料的 frozen 永久過去標記是本題特定機制，TCP 有限在途序號比較不含此解法。"
+    },
+    {
+      "ids": [
+        "I3053",
+        "L213"
+      ],
+      "reason": "Service worker 可用程式攔截請求並提供離線資源，與標準 HTTP 新鮮快取規則不同；不得把所有離線網站都當該實作。"
+    },
+    {
+      "ids": [
+        "I3064",
+        "M2036"
+      ],
+      "reason": "浮點運算中途捨入與量測時間順序被排序丟失，完全不同。"
+    },
+    {
+      "ids": [
+        "I3084",
+        "L209"
+      ],
+      "reason": "合法認證訊息的應用層重播與 TCP 位元組序號去重不同；跨連線重播不能用 TCP 已去重帶過。"
+    },
+    {
+      "ids": [
+        "I3086",
+        "L230",
+        "L279"
+      ],
+      "reason": "帶認證的完成證據不等同未認證協定關閉或壓縮格式結尾標記。"
+    }
+  ],
+  "themes": [
+    {
+      "id": "INFO-P1",
+      "judgment": "KEEP_AS_6_MINUTE_EXPLAINER",
+      "body_seconds_reviewed": 360,
+      "reason": "寫入／恢復／可見性／回收能沿同一資料生命週期連起來，但從 rollback 切 WAL 要顯式換模型。未滿 8 分鐘，不應計成達門檻長片。",
+      "necessary_boundary": "I3012 目前單章 60 秒略超單題上限 55 秒；可收斂為 50–55 秒，勿均分章長當成內容厚度。"
+    },
+    {
+      "id": "INFO-P2",
+      "judgment": "TIGHTEN_TO_4_TO_6_MINUTES",
+      "body_seconds_reviewed": 360,
+      "reason": "下載、版面位移、主執行緒與 worker 有同一觀看體驗主線；最後高更新率導致動畫變快不是『為什麼還會卡』的直接追問，容易跑偏。",
+      "suggestion": "移出 I3046/I3047 末章另組『幀數與時間』短段；保留同頁前後對照，I3043 控制在約 50–55 秒。"
+    },
+    {
+      "id": "INFO-P3",
+      "judgment": "SHORTEN_PENDING_NEW_CONTENT",
+      "body_seconds_reviewed": 480,
+      "suggested_body_seconds": 435,
+      "reason": "有內容保密／真偽／重播／完整性／中繼資料的連貫追問，但 10 個 ID 不等於 10 個獨立機制；必須在畫面上分開 public-key 簽章與 symmetric 認證。",
+      "necessary_boundary": "不能把 Fernet、secretbox、secretstream 拼成一套協定保證；7:15 版本應標短解說，非長片通過。"
+    }
+  ],
+  "source_checks": [
+    {
+      "source_id": "I3-S002",
+      "url": "https://www.sqlite.org/wal.html",
+      "reading_scope": "§2–2.3，尤其 end mark、checkpoint stop、rewind 與 auto-checkpoint latency",
+      "result": "支持快照／回收條件與偶發提交延遲，I3006/I3008 應合併。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S004",
+      "url": "https://www.sqlite.org/lang_vacuum.html",
+      "reading_scope": "§2、§3，空頁、部分頁、重建、ROWID",
+      "result": "支持空間重建，但 ROWID 不應畫成實體位置。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S006",
+      "url": "https://www.postgresql.org/docs/18/routine-vacuuming.html",
+      "reading_scope": "§24.1.3–24.1.5",
+      "result": "支持統計分布與活動量不同、可見性摘要和 XID 凍結。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S007",
+      "url": "https://www.postgresql.org/docs/18/indexes-multicolumn.html",
+      "reading_scope": "§11.3 B-tree constraints and skip scan",
+      "result": "支持範圍限制及 skip scan 的低不同值數量與成本條件。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S017",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API",
+      "reading_scope": "Single-page applications and session history；pushState；popstate",
+      "result": "支持視覺換頁與瀏覽歷史可分離；I3051/I3052 合併。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S021",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria",
+      "reading_scope": "quota vs available disk；estimate；storage-pressure eviction；How is data evicted",
+      "result": "支持配額與空間、用量填充、LRU 與 origin 整組回收；不採固定百分比或保存日數。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S025",
+      "url": "https://docs.python.org/3/library/gc.html",
+      "reading_scope": "intro；collect；set_threshold generations",
+      "result": "支持引用計數以外的循環回收及分代。該可變 /3/ 網址本次顯示 3.15.2，版本細節需釘版。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S028",
+      "url": "https://cryptography.io/en/latest/fernet/",
+      "reading_scope": "encrypt Note；decrypt TTL；MultiFernet；rotate",
+      "result": "明文時間是建立時間，不必是發送時間；TTL 與輪替保留條件有據。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S030",
+      "url": "https://doc.libsodium.org/public-key_cryptography/public-key_signatures",
+      "reading_scope": "Purpose；combined/detached mode",
+      "result": "明寫須預先知道並信任公鑰，簽章不改訊息表示；支持 I3080–I3082。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S032",
+      "url": "https://doc.libsodium.org/secret-key_cryptography/secretstream",
+      "reading_scope": "Properties；Usage tags；additional data；Decryption；Rekeying",
+      "result": "支持逐段認證、TAG_FINAL、公開附加資料和更新金鑰；完整接收需檢查結尾。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S034",
+      "url": "https://doc.libsodium.org/generating_random_data",
+      "reading_scope": "uniform；deterministic；Note on VM snapshot",
+      "result": "支持取餘偏差、同種子重現與快照還原可能重現；未把所有 VM 都說成必然重複。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "I3-S035",
+      "url": "https://doc.libsodium.org/public-key_cryptography/sealed_boxes",
+      "reading_scope": "Purpose；Usage",
+      "result": "支持完整性不保證發件身分，臨時私鑰擦除後發送者不能只憑密文讀回。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    },
+    {
+      "source_id": "SUPPLEMENT",
+      "url": "https://www.sqlite.org/rowidtable.html",
+      "reading_scope": "§1.0 Definition；§2.0 Quirks",
+      "result": "ROWID 是 B-tree 的整數存取鍵，非磁碟物理地址；支持 I3015 必要措辭修正。",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open full page or named sections; repeated narrower opens where output needed",
+      "status": "TOPIC_LEVEL_SUPPORT_CHECK_NOT_SCRIPT_FACTCHECK"
+    }
+  ],
+  "overall": "來源抽查沒有發現整批需退回的假前提；必要修正和中央合併／暫緩應先完成。這是可續編的候選池，不是 95 個獨立長片，也不是製作已通過。"
+}

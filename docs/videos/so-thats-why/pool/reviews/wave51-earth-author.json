@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "wave51-earth-author",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "scope": "地球與天空、過去事件的物理紀錄：用火燒磁性、古日食、波浪水池與衛星雲線作可檢查的對照；不以單一案例概括全部。",
+  "baseline": {
+    "head": "3f588e4565088b7a0ef82031be0a04b08e1fe353",
+    "selected": 3542,
+    "raw": 3931,
+    "observed_worktree_head": "8482895af63d6ec6213cfb1d6f08252f07c8f29d",
+    "note": "依指派記錄baseline；本機git HEAD讀到8482895，未commit，差異未追查。"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave51-earth.json",
+      "sha256": "ff4b2fd62966367bec349b05df452f600ed4917f209af5bfcccfbfcc359b88d6"
+    },
+    {
+      "file": "reviews/wave51-earth-themes.json",
+      "sha256": "86aa2aafb201284e03a63b50cea6ec0dbf8e23016d701909b03f5aee7e6883c3"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 4,
+    "candidate_supporting_sources": 4,
+    "na_only_sources": 0,
+    "not_added": 14,
+    "near_pairs": 15,
+    "themes": 4,
+    "proposed_new_cores": 4,
+    "proposed_merges": 0,
+    "theme_body_seconds_total": 250
+  },
+  "near_pairs": [
+    {
+      "a": "S51-001",
+      "b": "N017",
+      "decision": "propose_distinct",
+      "reason": "舊核談火星岩石殘留磁化的存在；新核用燒毀泥磚的磁向差去否定兩個考古破壞層同時發生。",
+      "a_snapshot": {
+        "id": "S51-001",
+        "question": "兩座古城都燒成廢墟，怎麼從泥磚看出是不是同一場戰火？",
+        "answer_target": "泥磚被大火燒過再冷卻，會把當下的地磁方向和強度記下來；這段時期當地地磁變化快。研究從17處遺址、20個燒毀層取樣，只拿沒倒塌的牆磚量方向。Beth-Shean的傾角比公認約西元前830年被毀的Gath等層差約4度，信賴範圍不重疊，表示不是同時被毀；Batash則較像約西元前600年，而非586年那一波。",
+        "scope": "磁性比對最擅長否定「同時」；絕對年代仍靠歷史錨點與放射性碳建立的參考曲線，不能單靠磁性指認是哪位君王所為。倒塌的磚只用來判斷是否在原位冷卻。"
+      },
+      "b_snapshot": {
+        "id": "N017",
+        "question": "火星沒有全球磁場，岩石為什麼還能留下磁性？",
+        "answer_target": "地殼殘留磁化與過去磁場的區別",
+        "scope": "火星；不採本頁有爭議的現今坡面鹽水流動句"
+      }
+    },
+    {
+      "a": "S51-001",
+      "b": "N112",
+      "decision": "propose_distinct",
+      "reason": "舊核以海底磁條帶與翻轉年表算擴張速率；新核是數百年內地磁長期變化的考古同步，不涉翻轉。",
+      "a_snapshot": {
+        "id": "S51-001",
+        "question": "兩座古城都燒成廢墟，怎麼從泥磚看出是不是同一場戰火？",
+        "answer_target": "泥磚被大火燒過再冷卻，會把當下的地磁方向和強度記下來；這段時期當地地磁變化快。研究從17處遺址、20個燒毀層取樣，只拿沒倒塌的牆磚量方向。Beth-Shean的傾角比公認約西元前830年被毀的Gath等層差約4度，信賴範圍不重疊，表示不是同時被毀；Batash則較像約西元前600年，而非586年那一波。",
+        "scope": "磁性比對最擅長否定「同時」；絕對年代仍靠歷史錨點與放射性碳建立的參考曲線，不能單靠磁性指認是哪位君王所為。倒塌的磚只用來判斷是否在原位冷卻。"
+      },
+      "b_snapshot": {
+        "id": "N112",
+        "question": "海底的磁性條紋，怎麼能算出板塊以前移動多快？",
+        "answer_target": "把磁場翻轉時間與條帶間距對照。",
+        "scope": "Understanding plate motions"
+      }
+    },
+    {
+      "a": "S51-001",
+      "b": "R31001",
+      "decision": "propose_distinct",
+      "reason": "舊核以宇宙射線年輪標記定單一砍伐年；新核以熱殘磁比對多個燒毀層是否同時，控制與答案不同。",
+      "a_snapshot": {
+        "id": "S51-001",
+        "question": "兩座古城都燒成廢墟，怎麼從泥磚看出是不是同一場戰火？",
+        "answer_target": "泥磚被大火燒過再冷卻，會把當下的地磁方向和強度記下來；這段時期當地地磁變化快。研究從17處遺址、20個燒毀層取樣，只拿沒倒塌的牆磚量方向。Beth-Shean的傾角比公認約西元前830年被毀的Gath等層差約4度，信賴範圍不重疊，表示不是同時被毀；Batash則較像約西元前600年，而非586年那一波。",
+        "scope": "磁性比對最擅長否定「同時」；絕對年代仍靠歷史錨點與放射性碳建立的參考曲線，不能單靠磁性指認是哪位君王所為。倒塌的磚只用來判斷是否在原位冷卻。"
+      },
+      "b_snapshot": {
+        "id": "R31001",
+        "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+        "answer_target": "樹每年長木頭時會收進當年的大氣碳。三件帶有金屬工具痕、保留天然外緣的木料中，有一段碳十四變化能和已知的993年前後訊號對齊。從已定年的輪位數到外緣，三件木料的最後一年都指向1021年。",
+        "scope": "先依遺址層位與工具痕判斷關聯，再替砍木定年。樣本顯示當年有人加工木料，不能據此定出首航或佔居年數。"
+      }
+    },
+    {
+      "a": "S51-001",
+      "b": "N132",
+      "decision": "propose_distinct",
+      "reason": "舊核為地層疊置與化石相對排序；新核以物理磁性記錄否定同時。",
+      "a_snapshot": {
+        "id": "S51-001",
+        "question": "兩座古城都燒成廢墟，怎麼從泥磚看出是不是同一場戰火？",
+        "answer_target": "泥磚被大火燒過再冷卻，會把當下的地磁方向和強度記下來；這段時期當地地磁變化快。研究從17處遺址、20個燒毀層取樣，只拿沒倒塌的牆磚量方向。Beth-Shean的傾角比公認約西元前830年被毀的Gath等層差約4度，信賴範圍不重疊，表示不是同時被毀；Batash則較像約西元前600年，而非586年那一波。",
+        "scope": "磁性比對最擅長否定「同時」；絕對年代仍靠歷史錨點與放射性碳建立的參考曲線，不能單靠磁性指認是哪位君王所為。倒塌的磚只用來判斷是否在原位冷卻。"
+      },
+      "b_snapshot": {
+        "id": "N132",
+        "question": "還沒發明放射性定年時，人們怎麼排出地層的先後？",
+        "answer_target": "疊置、化石群序列與相對時間。",
+        "scope": "Geologic Timescale, Geologic Dating Techniques, and Numeric Ages"
+      }
+    },
+    {
+      "a": "S51-002",
+      "b": "N251",
+      "decision": "propose_distinct",
+      "reason": "舊核解釋全食帶為何窄；新核把窄帶當量尺，反推古代地球累積轉角ΔT。舊核作前提。",
+      "a_snapshot": {
+        "id": "S51-002",
+        "question": "古人只寫下「這裡看到日全食」，怎麼能算出地球自轉變慢了多少？",
+        "answer_target": "日全食帶很窄。若假設地球一直等速自轉，把月影投回古代，全食帶會落在別處；要讓紀錄地點落進帶內，地球累積轉角的差（ΔT）就被夾在一個範圍。只見一彎殘日的大偏食紀錄則排除讓當地全食的區間，例如1330年Zbraslav修道院編年史的描述只容ΔT小於900秒或大於1220秒。合併古今紀錄，日長平均每世紀增長約1.78毫秒，比單靠潮汐摩擦預期的約2.3毫秒少。",
+        "scope": "只採日期與地點都明確的紀錄，並仰賴現代月球軌道量測。差額來自冰期後地殼回彈與地核地函耦合是作者推論；約1500年擺盪證據較弱，不採。"
+      },
+      "b_snapshot": {
+        "id": "N251",
+        "question": "日全食為什麼只給一條窄窄地帶的人看到？",
+        "answer_target": "月球影錐縮窄，本影與半影覆蓋不同範圍。",
+        "scope": "Why Do Eclipses Happen?"
+      }
+    },
+    {
+      "a": "S51-002",
+      "b": "N252",
+      "decision": "propose_distinct",
+      "reason": "舊核為全環食與地球曲面；新核為地點紀錄約束自轉。",
+      "a_snapshot": {
+        "id": "S51-002",
+        "question": "古人只寫下「這裡看到日全食」，怎麼能算出地球自轉變慢了多少？",
+        "answer_target": "日全食帶很窄。若假設地球一直等速自轉，把月影投回古代，全食帶會落在別處；要讓紀錄地點落進帶內，地球累積轉角的差（ΔT）就被夾在一個範圍。只見一彎殘日的大偏食紀錄則排除讓當地全食的區間，例如1330年Zbraslav修道院編年史的描述只容ΔT小於900秒或大於1220秒。合併古今紀錄，日長平均每世紀增長約1.78毫秒，比單靠潮汐摩擦預期的約2.3毫秒少。",
+        "scope": "只採日期與地點都明確的紀錄，並仰賴現代月球軌道量測。差額來自冰期後地殼回彈與地核地函耦合是作者推論；約1500年擺盪證據較弱，不採。"
+      },
+      "b_snapshot": {
+        "id": "N252",
+        "question": "同一次日食，為什麼有人看到全食，有人卻看到環食？",
+        "answer_target": "地球曲面改變地表到月球本影端點的相對距離。",
+        "scope": "Why Do Eclipses Happen?"
+      }
+    },
+    {
+      "a": "S51-002",
+      "b": "LEG-S21",
+      "decision": "propose_distinct",
+      "reason": "同DOI曾列於舊查核包作潮汐來源；舊答案為月球潮汐鎖定，新答案是地球日長變化與潮汐預期的差，不同對象與證據。",
+      "a_snapshot": {
+        "id": "S51-002",
+        "question": "古人只寫下「這裡看到日全食」，怎麼能算出地球自轉變慢了多少？",
+        "answer_target": "日全食帶很窄。若假設地球一直等速自轉，把月影投回古代，全食帶會落在別處；要讓紀錄地點落進帶內，地球累積轉角的差（ΔT）就被夾在一個範圍。只見一彎殘日的大偏食紀錄則排除讓當地全食的區間，例如1330年Zbraslav修道院編年史的描述只容ΔT小於900秒或大於1220秒。合併古今紀錄，日長平均每世紀增長約1.78毫秒，比單靠潮汐摩擦預期的約2.3毫秒少。",
+        "scope": "只採日期與地點都明確的紀錄，並仰賴現代月球軌道量測。差額來自冰期後地殼回彈與地核地函耦合是作者推論；約1500年擺盪證據較弱，不採。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S21",
+        "question": "月亮明明會轉，為什麼總讓你看到同一面？",
+        "answer_target": "月亮其實有在自轉，只是自轉一圈的時間（約 27.3 天）剛好等於繞地球一圈，所以總是同一面朝著我們。這叫潮汐鎖定：地球的引力把月亮拉出微微的隆起，拉扯產生的摩擦像煞車，把月亮的自轉慢慢拖到跟公轉同步。不過月亮會輕輕搖晃，站在地球上累積看得到約 59% 的表面；背面也不是暗面，它一樣有白天。",
+        "scope": "沿用 S21 題級條件，須讀原查核包的限制；用公轉自轉模型拆直覺，補天平動邊界，不說完全同一畫面。"
+      }
+    },
+    {
+      "a": "S51-002",
+      "b": "R8003",
+      "decision": "propose_distinct",
+      "reason": "與LEG-S21同核心；同上理由。",
+      "a_snapshot": {
+        "id": "S51-002",
+        "question": "古人只寫下「這裡看到日全食」，怎麼能算出地球自轉變慢了多少？",
+        "answer_target": "日全食帶很窄。若假設地球一直等速自轉，把月影投回古代，全食帶會落在別處；要讓紀錄地點落進帶內，地球累積轉角的差（ΔT）就被夾在一個範圍。只見一彎殘日的大偏食紀錄則排除讓當地全食的區間，例如1330年Zbraslav修道院編年史的描述只容ΔT小於900秒或大於1220秒。合併古今紀錄，日長平均每世紀增長約1.78毫秒，比單靠潮汐摩擦預期的約2.3毫秒少。",
+        "scope": "只採日期與地點都明確的紀錄，並仰賴現代月球軌道量測。差額來自冰期後地殼回彈與地核地函耦合是作者推論；約1500年擺盪證據較弱，不採。"
+      },
+      "b_snapshot": {
+        "id": "R8003",
+        "question": "月球有自轉，為什麼仍大致以同一面朝著地球？",
+        "answer_target": "地月潮汐作用的扭矩及耗散促成同步自轉；天平動讓累計可見範圍大於一半。",
+        "scope": "與原題同核心；59%是不同時日累計，非瞬時；舊27.3日與背面日照句未在此來源對全量重核。"
+      }
+    },
+    {
+      "a": "S51-003",
+      "b": "O3055",
+      "decision": "propose_distinct",
+      "reason": "舊核為雷達測高估顯著波高統計；新核為單一極端浪的交會角與碎浪型態實驗。",
+      "a_snapshot": {
+        "id": "S51-003",
+        "question": "北海那道25.6公尺的怪浪，為什麼實驗裡得讓兩組浪斜著相撞才做得出來？",
+        "answer_target": "研究者在四周有168台造浪機的圓形水池，按1比35重建Draupner紀錄的波形，只改兩組浪的交會角。同向時浪在到頂前就向前捲倒，波峰換算只到約17.2公尺，低於實測18.5公尺；交會120度時水平運動互相抵銷，碎浪變成往上噴的水柱，不再先壓住高度，波峰換算約18.9公尺。實測紀錄中浪下平均水面微微抬高，也只在大角度交會時重現。",
+        "scope": "縮尺水池；兩組浪的方向拆分是假設，野外紀錄來自單一雷射，風與海流未模擬。只說大角度交會能重現，不說每道怪浪都如此。"
+      },
+      "b_snapshot": {
+        "id": "O3055",
+        "question": "衛星沒有拍出每一道海浪，為什麼仍能估計浪有多高？",
+        "answer_target": "波峰先返回、其他高度後返回，使回波前緣隨海面高度分布改變。",
+        "scope": "典型開放海面雷達測高回波模型；從波形估顯著波高統計量，不是重建每一道浪。"
+      }
+    },
+    {
+      "a": "S51-003",
+      "b": "N188",
+      "decision": "propose_distinct",
+      "reason": "舊核風浪成長；新核兩組浪交會改變碎浪上限。",
+      "a_snapshot": {
+        "id": "S51-003",
+        "question": "北海那道25.6公尺的怪浪，為什麼實驗裡得讓兩組浪斜著相撞才做得出來？",
+        "answer_target": "研究者在四周有168台造浪機的圓形水池，按1比35重建Draupner紀錄的波形，只改兩組浪的交會角。同向時浪在到頂前就向前捲倒，波峰換算只到約17.2公尺，低於實測18.5公尺；交會120度時水平運動互相抵銷，碎浪變成往上噴的水柱，不再先壓住高度，波峰換算約18.9公尺。實測紀錄中浪下平均水面微微抬高，也只在大角度交會時重現。",
+        "scope": "縮尺水池；兩組浪的方向拆分是假設，野外紀錄來自單一雷射，風與海流未模擬。只說大角度交會能重現，不說每道怪浪都如此。"
+      },
+      "b_snapshot": {
+        "id": "N188",
+        "question": "風很大，為什麼小池塘不會掀起跟外海一樣高的浪？",
+        "answer_target": "風浪成長取決於風速、持續時間與作用距離。",
+        "scope": "Waves"
+      }
+    },
+    {
+      "a": "S51-003",
+      "b": "N189",
+      "decision": "propose_distinct",
+      "reason": "舊核淺水折射；新核深海交叉海況。",
+      "a_snapshot": {
+        "id": "S51-003",
+        "question": "北海那道25.6公尺的怪浪，為什麼實驗裡得讓兩組浪斜著相撞才做得出來？",
+        "answer_target": "研究者在四周有168台造浪機的圓形水池，按1比35重建Draupner紀錄的波形，只改兩組浪的交會角。同向時浪在到頂前就向前捲倒，波峰換算只到約17.2公尺，低於實測18.5公尺；交會120度時水平運動互相抵銷，碎浪變成往上噴的水柱，不再先壓住高度，波峰換算約18.9公尺。實測紀錄中浪下平均水面微微抬高，也只在大角度交會時重現。",
+        "scope": "縮尺水池；兩組浪的方向拆分是假設，野外紀錄來自單一雷射，風與海流未模擬。只說大角度交會能重現，不說每道怪浪都如此。"
+      },
+      "b_snapshot": {
+        "id": "N189",
+        "question": "外海的浪方向不整齊，為什麼靠岸時常變得沿著海岸排開？",
+        "answer_target": "同一道波各部分進入淺水先後不同而彎折。",
+        "scope": "Longshore Currents"
+      }
+    },
+    {
+      "a": "S51-003",
+      "b": "S45-001",
+      "decision": "propose_distinct",
+      "reason": "舊核巨石搬運反例；新核浪高本身如何形成。",
+      "a_snapshot": {
+        "id": "S51-003",
+        "question": "北海那道25.6公尺的怪浪，為什麼實驗裡得讓兩組浪斜著相撞才做得出來？",
+        "answer_target": "研究者在四周有168台造浪機的圓形水池，按1比35重建Draupner紀錄的波形，只改兩組浪的交會角。同向時浪在到頂前就向前捲倒，波峰換算只到約17.2公尺，低於實測18.5公尺；交會120度時水平運動互相抵銷，碎浪變成往上噴的水柱，不再先壓住高度，波峰換算約18.9公尺。實測紀錄中浪下平均水面微微抬高，也只在大角度交會時重現。",
+        "scope": "縮尺水池；兩組浪的方向拆分是假設，野外紀錄來自單一雷射，風與海流未模擬。只說大角度交會能重現，不說每道怪浪都如此。"
+      },
+      "b_snapshot": {
+        "id": "S45-001",
+        "question": "海岸上這麼重的石頭，非得海嘯才搬得動嗎？",
+        "answer_target": "在愛爾蘭西岸，研究者帶著早期照片回到相同視點，對齊不動的背景，比較風暴季前後的岩塊位置。其中一塊原已脫離岩壁的巨石往海側移約三公尺半；它的體積由照片重建，再按岩石密度估重約六百二十公噸。這個有風暴紀錄的反例讓單憑重量判定曾有海嘯的說法站不住腳。",
+        "scope": "冬季前後的位置不等於逐浪攝影，岩塊重量來自體積與密度。"
+      }
+    },
+    {
+      "a": "S51-004",
+      "b": "N255",
+      "decision": "propose_distinct",
+      "reason": "最接近。舊核只答排放粒子成雲線的機制；新核答雲線大減的原因，以兩次燃油限硫、航線南移與AIS航運量作自然實驗排除「船變少」。若編輯判舊核已涵蓋硫成核，可改併為N255的延伸對照。",
+      "a_snapshot": {
+        "id": "S51-004",
+        "question": "衛星看到的船跡雲線少了一大半，是海上的船變少了嗎？",
+        "answer_target": "研究用深度學習在2003–2020年MODIS影像中找船跡雲。2015年北美西岸排放管制區把燃油含硫上限降到0.1%，區內船跡密度降近七成，航線也南移到區外；2020年全球上限由3.5%降到0.5%，主要航線船跡密度降一半以上，創紀錄新低。同期船舶追蹤資料只顯示全球航運量少約1.4%，2021年前七個月仍維持低點，作者判斷主因是燃料含硫，而不是船少了。",
+        "scope": "偵測到的雲線只是船排放影響雲的下限；熱帶或背景雲已污染時不易成線。2020疫情有部分貢獻。輻射強迫估算假設多，不入稿。"
+      },
+      "b_snapshot": {
+        "id": "N255",
+        "question": "船開過海面，為什麼連衛星也可能看到它留下的雲線？",
+        "answer_target": "排放粒子成為原有水氣凝結的核心。",
+        "scope": "Contrails or condensation trails"
+      }
+    },
+    {
+      "a": "S51-004",
+      "b": "K6012",
+      "decision": "propose_distinct",
+      "reason": "舊核Twomey固定雲水下滴數與亮度；新核不量亮度，量船跡頻率對燃料政策的反應。",
+      "a_snapshot": {
+        "id": "S51-004",
+        "question": "衛星看到的船跡雲線少了一大半，是海上的船變少了嗎？",
+        "answer_target": "研究用深度學習在2003–2020年MODIS影像中找船跡雲。2015年北美西岸排放管制區把燃油含硫上限降到0.1%，區內船跡密度降近七成，航線也南移到區外；2020年全球上限由3.5%降到0.5%，主要航線船跡密度降一半以上，創紀錄新低。同期船舶追蹤資料只顯示全球航運量少約1.4%，2021年前七個月仍維持低點，作者判斷主因是燃料含硫，而不是船少了。",
+        "scope": "偵測到的雲線只是船排放影響雲的下限；熱帶或背景雲已污染時不易成線。2020疫情有部分貢獻。輻射強迫估算假設多，不入稿。"
+      },
+      "b_snapshot": {
+        "id": "K6012",
+        "question": "一樣多的雲水，分成更多小水滴，為什麼能更亮？",
+        "answer_target": "在可比雲水與雲層條件下，水分配成更多較小液滴可提高散射與反光，並非多出同量新水。",
+        "scope": "液水雲、控制水量與幾何的雲反照率效應；不是只憑肉眼亮度反推粒徑或污染濃度。"
+      }
+    },
+    {
+      "a": "S51-004",
+      "b": "N212",
+      "decision": "propose_distinct",
+      "reason": "僅檢查是否與大氣擾動相關舊題重疊；無關，記錄排除。",
+      "a_snapshot": {
+        "id": "S51-004",
+        "question": "衛星看到的船跡雲線少了一大半，是海上的船變少了嗎？",
+        "answer_target": "研究用深度學習在2003–2020年MODIS影像中找船跡雲。2015年北美西岸排放管制區把燃油含硫上限降到0.1%，區內船跡密度降近七成，航線也南移到區外；2020年全球上限由3.5%降到0.5%，主要航線船跡密度降一半以上，創紀錄新低。同期船舶追蹤資料只顯示全球航運量少約1.4%，2021年前七個月仍維持低點，作者判斷主因是燃料含硫，而不是船少了。",
+        "scope": "偵測到的雲線只是船排放影響雲的下限；熱帶或背景雲已污染時不易成線。2020疫情有部分貢獻。輻射強迫估算假設多，不入稿。"
+      },
+      "b_snapshot": {
+        "id": "N212",
+        "question": "沒有地震，為什麼也可能出現像小海嘯一樣的海水漲落？",
+        "answer_target": "快速天氣擾動激發傳播水波。",
+        "scope": "What is a seiche?"
+      }
+    }
+  ],
+  "dedup_reading": {
+    "raw_records_searched": 3930,
+    "not_added_searched": 2233,
+    "method": "all-questions.tsv與not-added.tsv以中英關鍵字grep（日食、自轉、磁、定年、浪、怪浪、船、雲線、氣溶膠、冰芯、1021、東加等）；cli.mjs search（日食、磁場、定年、怪浪、雲線）；pool.json查四個DOI。",
+    "cache_files": []
+  },
+  "source_identity": [
+    {
+      "id": "S51-S001",
+      "doi": "10.1073/pnas.2209117119",
+      "version": "2022-10-24正式刊本；PMC9636932同文載體",
+      "canonical_url": "https://doi.org/10.1073/pnas.2209117119",
+      "read_copy": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9636932/fullTextXML",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "PMC/Europe PMC或原刊PDF為同研究載體，不計獨立佐證；四篇彼此無作者重疊。",
+      "limits": "exact未命中不保證無同文；只以DOI與題名比對。"
+    },
+    {
+      "id": "S51-S002",
+      "doi": "10.1098/rspa.2016.0404",
+      "version": "2016-12正式刊本；PMC5247521同文載體",
+      "canonical_url": "https://doi.org/10.1098/rspa.2016.0404",
+      "read_copy": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5247521/fullTextXML",
+      "old_exact_doi_or_title_matches": [
+        "pool.json SRC-d37676dcf212f114（legacy:S21查核包來源清單）"
+      ],
+      "relationship": "PMC/Europe PMC或原刊PDF為同研究載體，不計獨立佐證；四篇彼此無作者重疊。",
+      "limits": "exact未命中不保證無同文；只以DOI與題名比對。"
+    },
+    {
+      "id": "S51-S003",
+      "doi": "10.1017/jfm.2018.886",
+      "version": "2019 vol.860 pp.767–786正式刊本（CC BY）",
+      "canonical_url": "https://doi.org/10.1017/jfm.2018.886",
+      "read_copy": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/65EA3294DAFD97A50C8046140B45F759/S0022112018008868a.pdf/laboratory-recreation-of-the-draupner-wave-and-the-role-of-breaking-in-crossing-seas.pdf",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "PMC/Europe PMC或原刊PDF為同研究載體，不計獨立佐證；四篇彼此無作者重疊。",
+      "limits": "exact未命中不保證無同文；只以DOI與題名比對。"
+    },
+    {
+      "id": "S51-S004",
+      "doi": "10.1126/sciadv.abn7988",
+      "version": "2022-07正式刊本；PMC9307247同文載體",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abn7988",
+      "read_copy": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9307247/fullTextXML",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "PMC/Europe PMC或原刊PDF為同研究載體，不計獨立佐證；四篇彼此無作者重疊。",
+      "limits": "exact未命中不保證無同文；只以DOI與題名比對。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "S51-S001",
+      "reading_scope": "Significance、Results首段、Discussion全文（Gath／Beth-Shean／Batash段）、Materials and Methods（Archaeointensity、Archaeomagnetic Directions、Dating）；Fig1/3圖說，Fig1與Fig3目讀。",
+      "limitations": "年代仍靠歷史錨點與放射性碳建立的參考曲線；磁性最擅長否定同時，不單獨指認發動者。補充資料SI未讀。原刊PNAS網頁未取；PMC文章頁有挑戰頁標記但CDN圖檔可取。",
+      "cache": {
+        "file": ".cache/wave51-earth-archaeomag.xml",
+        "sha256": "3aa466fe43eeee852b0a62e7f75c30853a28cc9f6feacd87dad4f70a66f5fa74",
+        "text_file": ".cache/wave51-earth-archaeomag.txt",
+        "text_sha256": "4ad9d80ada9b6ab4a727009022e3b8724dd60197755f892ee7469bbe70e7d99c"
+      }
+    },
+    {
+      "source_id": "S51-S002",
+      "reading_scope": "摘要；§1 Introduction、Timescales and ΔT、Tidal friction；§2 Untimed observations（含1330 Zbraslav例）與Babylon未計時段；§3 Collected untimed results；§4 Parabolic fit；§5 Variations in lod、Long-term accelerations；Conclusion。Fig11與Fig18目讀。",
+      "limitations": "需信任現代月球軌道與潮汐加速度量測；只採日期與地點明確紀錄。非潮汐成分歸因冰後回彈與核幔耦合為作者推論；約1500年擺盪證據較少，作者自稱較不可靠。電子補充表S10–S14未讀。舊LEG-S21查核包曾列同DOI作潮汐來源，本批另用其日食約束部分。",
+      "cache": {
+        "file": ".cache/wave51-earth-rotation.xml",
+        "sha256": "543c1466ed45225a16eb4f5935dbb67658d37bfa25c7fab0d9db0cce99a715bd",
+        "text_file": ".cache/wave51-earth-rotation.txt",
+        "text_sha256": "fece5df396df59add6850b9af0c38fe902840cdcb1c4bd689af1561198e1a1b8"
+      }
+    },
+    {
+      "source_id": "S51-S003",
+      "reading_scope": "摘要；§1 Introduction；§2 Methods（2.1–2.3）；§3.1重建結果、表1–2、§3.2二階差頻波、§3.3 Wave breaking；§3.4與CK09比較、表3；§4 Conclusions；附錄A–B首段。Figs3/4（PDF pp774–775）目讀。",
+      "limitations": "兩組浪方向拆分是假設；野外紀錄為單一雷射可受飛沫影響；未模擬風與海流；噴流可能不按同比例縮放。作者明言對歷史實際方向分布無法完全確定。初次以錯誤DOI（jfm.2018.954）取得另一篇文章，已丟棄，經Crossref題名查得正確DOI後重取。",
+      "cache": {
+        "file": ".cache/wave51-earth-draupner.pdf",
+        "sha256": "05014cbfcebe4c4ee81292f3265788d214164e6c947a80497a3bb544074a337f",
+        "text_file": ".cache/wave51-earth-draupner.txt",
+        "text_sha256": "59e78b822be9b7b2eb443d4c50bad21cf6fd517b6f8abd823fe77e1efc212ce8"
+      }
+    },
+    {
+      "source_id": "S51-S004",
+      "reading_scope": "摘要；Introduction；Results全文（全球分布、南桑威奇火山雲線、ECA 2015、2020全球標準、AIS航運量、Nd變化）；Discussion；Materials and Methods（偵測驗證、AIS軌跡驗證、強迫估算）。Fig2與Fig3目讀。",
+      "limitations": "偵測到的船跡只是排放影響雲的下限，背景雲狀況改變可見度；2020疫情有部分貢獻；輻射強迫數值建立在多項假設上，不採。補充資料未讀。",
+      "cache": {
+        "file": ".cache/wave51-earth-shiptracks.xml",
+        "sha256": "01044778e9d7493e3f56f3835d851bd10f5abec57d0d6bd48079e11fb21d35f4",
+        "text_file": ".cache/wave51-earth-shiptracks.txt",
+        "text_sha256": "9a5d5ad8ff029e8bade588a4e9cff1dd8079218bbc153b80f90d5d515aa03fc6"
+      }
+    }
+  ],
+  "visual_reads": [
+    {
+      "source_id": "S51-S001",
+      "file": ".cache/wave51-earth-archaeomag-fig01.jpg",
+      "sha256": "caeca50eafe359ab3d46ada6619a11d3b1a42913d07846644e1eb111679112a7",
+      "read": "2026-11-03以Read工具目讀；Fig1三軸：強度、偏角、傾角；Beth-Shean傾角約57.7°低於Gath群約61–62.5°，Batash低於Lachish II；用於核圖號、對照與尺度，不代表圖片授權。"
+    },
+    {
+      "source_id": "S51-S001",
+      "file": ".cache/wave51-earth-archaeomag-fig03.jpg",
+      "sha256": "a5f6e50430ad7bd9a82e9f8340612a9c5f2699ba531f5b7d4eb7a2af5e17f79c",
+      "read": "2026-11-03以Read工具目讀；Fig3先驗與後驗年代分布六格（只下載核圖，未逐格讀數）；用於核圖號、對照與尺度，不代表圖片授權。"
+    },
+    {
+      "source_id": "S51-S002",
+      "file": ".cache/wave51-earth-rotation-fig11.jpg",
+      "sha256": "cd28a2add7aea8f154c75b22f180305a41d419391cbe075d6084437ba6d15325",
+      "read": "2026-11-03以Read工具目讀；Fig11全食/環食上下限紅豎線、擬合拋物線與潮汐預期灰帶；用於核圖號、對照與尺度，不代表圖片授權。"
+    },
+    {
+      "source_id": "S51-S002",
+      "file": ".cache/wave51-earth-rotation-fig18.jpg",
+      "sha256": "c66efd707da93c8bd447bed6702516327f5f7b028e5a360880ab589ddd18e08b",
+      "read": "2026-11-03以Read工具目讀；Fig18日長：實測+1.78 ms/cy與潮汐+2.3 ms/cy兩斜線；用於核圖號、對照與尺度，不代表圖片授權。"
+    },
+    {
+      "source_id": "S51-S003",
+      "file": ".cache/wave51-earth-draupner-p-08.png",
+      "sha256": "07abc31d399b8badade4e090e6a44fc684fec9e12bb39787db5a4e6f3328de83",
+      "read": "2026-11-03以Read工具目讀；PDF p774 Fig3同向捲碎六格；用於核圖號、對照與尺度，不代表圖片授權。"
+    },
+    {
+      "source_id": "S51-S003",
+      "file": ".cache/wave51-earth-draupner-p-09.png",
+      "sha256": "abcf96f0cd4c8807c8c5fa24f9cba91c287219b24479a935143436cd4d0dbe00",
+      "read": "2026-11-03以Read工具目讀；PDF p775 Fig4 120度交會上噴六格；用於核圖號、對照與尺度，不代表圖片授權。"
+    },
+    {
+      "source_id": "S51-S004",
+      "file": ".cache/wave51-earth-shiptracks-fig2.jpg",
+      "sha256": "3778042b4bf98c7983db3842f82cf1daacbffefb5bd84df5a5d9d18cc0d7c8cc",
+      "read": "2026-11-03以Read工具目讀；Fig2氣候平均、2015–19與2020距平地圖；用於核圖號、對照與尺度，不代表圖片授權。"
+    },
+    {
+      "source_id": "S51-S004",
+      "file": ".cache/wave51-earth-shiptracks-fig3.jpg",
+      "sha256": "661e6a94142d20fd42804e9cd9e078fe3efa0028cdb4f0eb587c18d3053ce40b",
+      "read": "2026-11-03以Read工具目讀；Fig3A五航線標準化長條、3B NEP與ECA在2015下降、3C ΔCDNC；用於核圖號、對照與尺度，不代表圖片授權。"
+    }
+  ],
+  "source_failures": [
+    "Overeem等2013 PNAS（10.1073/pnas.1217961110）：Europe PMC fullTextXML回500；PMC文章頁回reCAPTCHA挑戰頁（.cache/wave51-earth-rainlinks.html）。未讀正文，入S51-NA002。",
+    "Lecocq等2020 Science（10.1126/science.abd2438）：Europe PMC無OA全文；science.org回403（.cache/wave51-earth-covid.html）。未讀正文，入S51-NA001。",
+    "Draupner初次用錯DOI 10.1017/jfm.2018.954，doi.org導向另一篇Rayleigh–Bénard文章，已刪除；Crossref題名查得10.1017/jfm.2018.886後重取PDF。",
+    "europepmc.org/articles/…/bin圖檔路徑回403；改用PMC文章頁列出的cdn.ncbi.nlm.nih.gov圖檔。PMC文章頁HTML含挑戰頁標記，正文改以Europe PMC XML為準。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W51S-T01",
+      "body_seconds": 60,
+      "sum_chapters": 60,
+      "core_seconds": {
+        "S51-001": 60
+      },
+      "caps": {
+        "S51-001": 80
+      }
+    },
+    {
+      "id": "W51S-T02",
+      "body_seconds": 64,
+      "sum_chapters": 64,
+      "core_seconds": {
+        "S51-002": 64
+      },
+      "caps": {
+        "S51-002": 85
+      }
+    },
+    {
+      "id": "W51S-T03",
+      "body_seconds": 64,
+      "sum_chapters": 64,
+      "core_seconds": {
+        "S51-003": 64
+      },
+      "caps": {
+        "S51-003": 80
+      }
+    },
+    {
+      "id": "W51S-T04",
+      "body_seconds": 62,
+      "sum_chapters": 62,
+      "core_seconds": {
+        "S51-004": 62
+      },
+      "caps": {
+        "S51-004": 80
+      }
+    }
+  ],
+  "reserve_candidate_ids": [],
+  "limits": [
+    "題級來源範圍與紙上片案，不是完整稿或媒體核准；未試讀、未合成旁白。",
+    "四篇補充資料（SI、補充表）皆未讀；Fig3（考古磁）只核圖未逐格讀數。",
+    "S51-004與N255最接近，已標可能改併；S51-002與舊LEG-S21共用DOI但答案不同。",
+    "所有外部全文只存於ignored .cache；原圖不作交付畫面。"
+  ],
+  "revision_history": [
+    {
+      "reason": "依reviews/wave51-independent-reviews-earth.json（NEEDS_CHANGES，四核保留）套用corrections與theme_review；只刪秒、不加內容與來源。",
+      "review_file": "reviews/wave51-independent-reviews-earth.json",
+      "review_sha256": "035b9dbe55ad0a14b882189ed1c0939570cf26834039ab702d9a21a2d4446b5e",
+      "before_files": [
+        {
+          "file": "batches/wave51-earth.json",
+          "sha256": "574fd8c5da92dfe805e9a79d03f86076f724000563d6ca4b650bba2a06c4da9d"
+        },
+        {
+          "file": "reviews/wave51-earth-themes.json",
+          "sha256": "b0da2e71265382551ddd9255f0de9ee989eda1ecf172f400f88b7251a358fbaf"
+        },
+        {
+          "file": "reviews/wave51-earth-author.json",
+          "sha256": "00cbd97bde35aac098d42946921138ca4b791a96a64c6c10c3824996e2261de6"
+        }
+      ],
+      "after_files": [
+        {
+          "file": "batches/wave51-earth.json",
+          "sha256": "ff4b2fd62966367bec349b05df452f600ed4917f209af5bfcccfbfcc359b88d6"
+        },
+        {
+          "file": "reviews/wave51-earth-themes.json",
+          "sha256": "86aa2aafb201284e03a63b50cea6ec0dbf8e23016d701909b03f5aee7e6883c3"
+        }
+      ],
+      "changes": [
+        "S51-001 answer/scope：傾角差只證不同時，先後來自強度定年；Batash以強度為主。",
+        "S51-002 notes記LEG-S21舊稿已播1.8對2.3；scope註1.78為計時與未計時合併擬合。",
+        "S51-003 answer/scope/visual：同向約17公尺（焦點值），60°與120°波峰皆近實測，只有120°也對上陡度與水面抬升；作者結論60–120度。",
+        "S51-004 answer/visual：ECA下降部分因改道，排除船變少靠2020全球案與AIS約-1.4%；火山雲線只作同粒子旁證。",
+        "S51-NA002 reason：微波鏈路與雷達核機制不同，不記為已涵蓋。",
+        "片案秒數：T01 66→60、T02 72→64、T03 64不變改措辭、T04 66→62。"
+      ],
+      "budgets_before": [
+        66,
+        72,
+        64,
+        66
+      ],
+      "budgets_after": [
+        60,
+        64,
+        64,
+        62
+      ],
+      "removed_seconds": 18,
+      "new_sources_or_claims": false
+    }
+  ]
+}

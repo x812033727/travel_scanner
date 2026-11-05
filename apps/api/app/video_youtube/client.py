@@ -22,9 +22,15 @@ TOKEN = "https://oauth2.googleapis.com/token"  # noqa: S105 -- endpoint URL, not
 REVOKE = "https://oauth2.googleapis.com/revoke"
 API = "https://www.googleapis.com/youtube/v3"
 UPLOAD = "https://www.googleapis.com/upload/youtube/v3"
-# The one scope the site asks for: videos.update, captions and thumbnails all accept it, and
-# captions accept nothing narrower (docs/videos/HANDS-OFF.md §YouTube API).
-SCOPE = "https://www.googleapis.com/auth/youtube.force-ssl"
+# The scope the site cannot work without: videos.update, captions and thumbnails all accept it,
+# and captions accept nothing narrower (docs/videos/HANDS-OFF.md §YouTube API).
+YOUTUBE_SCOPE = "https://www.googleapis.com/auth/youtube.force-ssl"
+# Read-only YouTube Analytics, for the daily channel reports of the Reporting API
+# (docs/videos/YOUTUBE-REPORTS.md). Optional: a grant without it still publishes; the reports
+# then say the owner has to link again. The monetary scope (revenue) is not asked for.
+ANALYTICS_SCOPE = "https://www.googleapis.com/auth/yt-analytics.readonly"
+# What the consent screen asks for, space-separated the way OAuth sends it.
+SCOPE = f"{YOUTUBE_SCOPE} {ANALYTICS_SCOPE}"
 TIMEOUT = httpx.Timeout(30.0, connect=10.0)
 # One chunk of the mp4 can take a while on the host's uplink.
 UPLOAD_TIMEOUT = httpx.Timeout(300.0, connect=10.0)

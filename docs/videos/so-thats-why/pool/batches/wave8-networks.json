@@ -1,0 +1,718 @@
+{
+  "batch_id": "wave8-networks-20261101",
+  "created_on": "2026-11-01",
+  "scope": "日常數位傳輸、計時、排隊、檔案配置與冗餘寫入；原創題級企劃，不是操作教學或腳本核准。",
+  "sources": [
+    {
+      "id": "I8-S001",
+      "url": "https://www.rfc-editor.org/rfc/rfc6298.html",
+      "title": "RFC 6298 — Computing TCP’s Retransmission Timer",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§2 The Basic Algorithm；§3 Taking RTT Samples；§5 Managing the RTO Timer",
+      "locator": "§2 The Basic Algorithm；§3 Taking RTT Samples；§5 Managing the RTO Timer",
+      "summary": "往返估計及變動量設定RTO；重傳造成樣本歧義；逾時後退避。",
+      "version": "June 2011, Standards Track",
+      "limitations": "只採本RFC模型，不把建議最小秒數當所有2026實作觀察。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S002",
+      "url": "https://www.rfc-editor.org/rfc/rfc9002.html",
+      "title": "RFC 9002 — QUIC Loss Detection and Congestion Control",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§4.2；§6.1–6.2（含子節）；§7.3；§7.7–7.8",
+      "locator": "§4.2；§6.1–6.2（含子節）；§7.3；§7.7–7.8",
+      "summary": "封包號分離傳送與資料順序；以確認與門檻推斷遺失；NewReno與pacing控制傳送。",
+      "version": "May 2021, Standards Track",
+      "limitations": "未宣稱所有QUIC用同一擁塞演算法；未逐讀整份規格或errata。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S003",
+      "url": "https://www.rfc-editor.org/rfc/rfc8289.html",
+      "title": "RFC 8289 — Controlled Delay Active Queue Management",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§3.1 Estimator；§4 Overview；§4.1 Non-starvation；§4.2開頭",
+      "locator": "§3.1 Estimator；§4 Overview；§4.1 Non-starvation；§4.2開頭",
+      "summary": "近期最短排隊時間可區別會排空的突發與持續積壓，再控制過長延遲。",
+      "version": "January 2018, Experimental",
+      "limitations": "實驗性RFC設計，不外推成所有路由器預設；不採固定調參或性能保證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S004",
+      "url": "https://www.rfc-editor.org/rfc/rfc8290.html",
+      "title": "RFC 8290 — The Flow Queue CoDel Packet Scheduler and AQM Algorithm",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§3 Flow Queueing；§4與§4.1 Enqueue",
+      "locator": "§3 Flow Queueing；§4與§4.1 Enqueue",
+      "summary": "按流雜湊分隊，以位元組額度輪流服務，避免大包和小包只按包數均分。",
+      "version": "January 2018, Experimental",
+      "limitations": "只讀列示段；尚未逐讀§4.2完整new/old優先策略，因此不宣稱每一新流有固定保證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S005",
+      "url": "https://www.rfc-editor.org/rfc/rfc9204.html",
+      "title": "RFC 9204 — QPACK: Field Compression for HTTP/3",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§2.1.2 Blocked Streams",
+      "locator": "§2.1.2 Blocked Streams",
+      "summary": "壓縮欄位引用尚未到達的動態表項，可能在傳輸流獨立之上形成解碼等待。",
+      "version": "June 2022, Standards Track",
+      "limitations": "只採欄位表相依與壓縮/等待取捨，未讀全解碼安全或實作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S006",
+      "url": "https://www.postgresql.org/docs/18/warm-standby.html",
+      "title": "PostgreSQL 18 §26.2 Log-Shipping Standby Servers",
+      "publisher": "PostgreSQL Global Development Group",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib HTML + stdlib HTMLParser；web.open首段",
+      "reading_scope": "§26.2.5.2 Monitoring；§26.2.6；§26.2.8及§26.2.8.1；§26.2.8.2前段",
+      "locator": "§26.2.5.2 Monitoring；§26.2.6；§26.2.8及§26.2.8.1；§26.2.8.2前段",
+      "summary": "WAL收到、持久保存與重播可分離；remote_apply再等待重播可見。",
+      "version": "18；2026-11-01讀取固定major版",
+      "limitations": "不採部署方法、不保證任意舊快照都見最新；主從需正確配置與底層耐久性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S007",
+      "url": "https://docs.kernel.org/driver-api/md/raid5-cache.html",
+      "title": "RAID 4/5/6 cache",
+      "publisher": "Linux kernel documentation",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib HTML + stdlib HTMLParser；列示三小節正文",
+      "reading_scope": "write-through mode；write-back mode；The implementation",
+      "locator": "write-through mode；write-back mode；The implementation",
+      "summary": "多盤資料與校驗未一起完成會失配；完整條帶聚合可避免部分寫入的舊資料讀取。",
+      "version": "頁面顯示7.3.0；2026-11-01讀取",
+      "limitations": "僅Linux MD日誌快取設計；不照搬頁內操作命令，不給維修或資料安全保證。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S008",
+      "url": "https://btrfs.readthedocs.io/en/latest/Reflink.html",
+      "title": "Reflink",
+      "publisher": "Btrfs project documentation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文",
+      "reading_scope": "Reflink開頭兩段與constraints",
+      "locator": "Reflink開頭兩段與constraints",
+      "summary": "獨立檔案可共享底層區塊，後續寫時複製維持彼此隔離。",
+      "version": "latest頁，未見修訂日；2026-11-01讀取",
+      "limitations": "urllib403；web正文成功。僅檔案資料共享，不採跨掛載版本規則作當期建議。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S009",
+      "url": "https://man7.org/linux/man-pages/man2/lseek.2.html",
+      "title": "lseek(2)",
+      "publisher": "Linux man-pages project / man7.org",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文lines25–83與COLOPHON",
+      "reading_scope": "DESCRIPTION之EOF以外寫入與Seeking file data and holes",
+      "locator": "DESCRIPTION之EOF以外寫入與Seeking file data and holes",
+      "summary": "稀疏空洞可讀作零而未配置資料區塊；孔洞回報並非實體配置的完美地圖。",
+      "version": "man-pages6.19；頁底2026-06-13",
+      "limitations": "不把所有零都當空洞；不提供改使用者檔案的命令。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S010",
+      "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+      "title": "Timeouts, retries, and backoff with jitter",
+      "publisher": "Amazon Builders’ Library",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib HTML + stdlib HTMLParser；列示正文",
+      "reading_scope": "Timeouts；Retries and backoff；Jitter",
+      "locator": "Timeouts；Retries and backoff；Jitter",
+      "summary": "多層重試可相乘放大工作；一致退避時點仍會同步湧入，jitter分散時點。",
+      "version": "當期頁未見修訂日；2026-11-01讀取",
+      "limitations": "工程實務原文，非每服務通用定律；不採精確AWS現況、不採泛化所有4xx不可重試。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S011",
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.html",
+      "title": "RFC 5905 — Network Time Protocol Version 4",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§8 On-Wire Protocol，Figure15及offset/delay四時間戳公式段",
+      "locator": "§8 On-Wire Protocol，Figure15及offset/delay四時間戳公式段",
+      "summary": "四個時點把伺服器停留與往返傳輸分開，再估兩端時間差。",
+      "version": "June 2010, Standards Track",
+      "limitations": "僅時間估計式；未以此老RFC的認證方案作當期安全指引。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S012",
+      "url": "https://www.ntp.org/reflib/exec/",
+      "title": "Executive Summary: Computer Network Time Synchronization",
+      "publisher": "NTP Project / Network Time Foundation",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文",
+      "reading_scope": "Protocol Design Issues前四段；Precision and Accuracy末段",
+      "locator": "Protocol Design Issues前四段；Precision and Accuracy末段",
+      "summary": "往返除二需要方向延遲近似相等，不對稱可混入時間差估計。",
+      "version": "Last update May3,2023 19:04UTC（頁面）",
+      "limitations": "只採對稱假設與偏差原理；不採舊部署數、效能數字、閏秒頻率或Autokey安全敘述。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S013",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550.html",
+      "title": "RFC 3550 — RTP: A Transport Protocol for Real-Time Applications",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§6.4.1 SR Sender Report：NTP timestamp及RTP timestamp兩欄",
+      "locator": "§6.4.1 SR Sender Report：NTP timestamp及RTP timestamp兩欄",
+      "summary": "Sender Report把媒體時間戳對到共同時間，支援不同媒體流同步。",
+      "version": "July2003, Standards Track",
+      "limitations": "限共享/同步參考時鐘；不拿欄位解析度當實際準確度，不宣稱有此欄位就必無唇音差。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S014",
+      "url": "https://www.rfc-editor.org/rfc/rfc8899.html",
+      "title": "RFC 8899 — Packetization Layer Path MTU Discovery for Datagram Transports",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§1.1；§4.1–4.3",
+      "locator": "§1.1；§4.1–4.3",
+      "summary": "以特定大小探測及接收確認探索可通行大小；ICMP沒回來不能證明路徑夠大。",
+      "version": "September2020, Standards Track",
+      "limitations": "僅讀機制段，未讀全部狀態機或所有協定映射；不把一次遺失確診MTU。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S015",
+      "url": "https://semiconductor.samsung.com/news-events/tech-blog/flexible-data-placement/",
+      "title": "Flexible Data Placement",
+      "publisher": "Samsung Semiconductor",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.open 正文lines206–212",
+      "reading_scope": "Data Placement Background：WAF、Block Erase、Garbage Collection段",
+      "locator": "Data Placement Background：WAF、Block Erase、Garbage Collection段",
+      "summary": "頁寫入與區塊抹除的粒度差使有效頁搬移，增加實體寫入。",
+      "version": "當期技術頁未見修訂日；2026-11-01讀取",
+      "limitations": "只作退題的既有核心補證據；不採產品推銷、1:1起始保證或性能數字。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I8-S016",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "title": "RFC 9110 — HTTP Semantics",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 官方正文；RFC以UTF-8文字版讀指定小節",
+      "reading_scope": "§13.1.1 If-Match",
+      "locator": "§13.1.1 If-Match",
+      "summary": "以目前版本驗證前置條件，避免過期讀值覆蓋較新更新。",
+      "version": "June2022, Standards Track",
+      "limitations": "用於退題邊界：與既有舊快照寫入拒絕近似；不是新條數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "I8001",
+      "question": "沒收到回覆，要等多久才重傳，為什麼不能永遠用同一個秒數？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.rto.smoothed_delay_variation_backoff",
+      "answer_target": "RTO把平滑往返時間與變動餘裕合在一起；逾時連續發生再拉長等待，避免延遲波動被當成固定速度。",
+      "scope": "RFC6298 TCP計時模型；不宣稱任何應用轉圈多久等於TCP RTO，也不把每種實作最小值說成相同。",
+      "source_ids": [
+        "I8-S001"
+      ],
+      "source_locator": "§2、§5",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣平均往返時間，穩定與忽快忽慢的路徑需要不同等待餘裕。",
+        "visual": "兩條同平均不同散布的往返時間線，加上等待界線；再顯示連續未回覆的退避。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "I8002",
+      "question": "同一份資料補寄一次，回覆來了，為什麼反而不好算它走了多久？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.rtt.retransmission_instance_ambiguity",
+      "answer_target": "同資料序號的補寄可能使ACK無法區分哪次傳送；TCP避用歧義樣本，QUIC用新封包號與不變資料位移分開兩種順序。",
+      "scope": "TCP無可消歧義timestamp的情況對照RFC9002；不是應用重複下單。",
+      "source_ids": [
+        "I8-S001",
+        "I8-S002"
+      ],
+      "source_locator": "RFC6298§3；RFC9002§4.2",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。與L208/209排序去重不同，焦點是計時樣本歸屬。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "資料的第幾個位元組，與第幾次送出的包裹，需分開編號。",
+        "visual": "同資料兩次出發一張回條，畫出兩種可能耗時；另加唯一傳送編號解開歧義。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "I8003",
+      "question": "時間到了還沒回覆，為什麼QUIC有時先探一下，不直接宣布封包遺失？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.loss.inference_reordering_vs_probe_timeout",
+      "answer_target": "較後封包已確認加上包數或時間門檻，才提供遺失推斷；PTO先觸發探測，逾時本身不等同已證明前包丟失。",
+      "scope": "RFC9002§6.1/6.2基本規則；不把門檻當物理真相，特殊無資料策略仍有例外。",
+      "source_ids": [
+        "I8-S002"
+      ],
+      "source_locator": "§6.1、§6.1.1–2、§6.2及§6.2.4",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "晚到、回條晚到與真的遺失，在尚無新回覆時仍可能長得一樣。",
+        "visual": "三條相同沉默時間線，再分別補上後包ACK；對照重排容忍與探測。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "I8004",
+      "question": "下載開始時為什麼可能先加速，遇到壅塞後又變得小心？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.newreno.window_growth_and_recovery",
+      "answer_target": "NewReno先隨確認量快速增加可在途資料，出現遺失或ECN後縮窗，再以較緩的增長探測容量。",
+      "scope": "RFC9002 NewReno範例；不是所有下載或所有QUIC的固定實作，也不把丟包唯一歸因壅塞。",
+      "source_ids": [
+        "I8-S002"
+      ],
+      "source_locator": "§7.3.1–3",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。L221為接收者流控，本題是路徑擁塞控制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "傳輸額度是用回覆逐步探出的控制量，不是網卡標示速度直接給定。",
+        "visual": "同一瓶頸線上逐輪增加在途方塊，遇訊號縮小後慢增；接收緩衝額度另標。",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "I8006",
+      "question": "路由器暫時排很多包，怎麼分辨是正常突發，還是一直塞住？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.codel.minimum_sojourn_persistent_queue",
+      "answer_target": "CoDel觀察一段時間內最低排隊延遲；若一直高於目標才判持續隊列並調整丟棄，而非看到瞬間長隊就反應。",
+      "scope": "RFC8289實驗性AQM；只講辨認及控制機制，不給通用設定或實測速度承諾。",
+      "source_ids": [
+        "I8-S003"
+      ],
+      "source_locator": "§3.1；§4及§4.1",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。與T4052隨機排隊的成因不同，本題是觀察量與回授判斷。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "會定期排空的隊列，和最輕時也在等待的隊列，可以有相似平均值。",
+        "visual": "兩條同樣平均但最低值不同的排隊曲線，逐段標會排空／不會排空。",
+        "seconds": [
+          80,
+          115
+        ]
+      }
+    },
+    {
+      "id": "I8007",
+      "question": "大檔下載和短訊息共用出口，為什麼各分一隊、輪流送可能更快回應？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.fq_codel.flow_isolation_byte_deficit_scheduling",
+      "answer_target": "流被分到不同隊列後以位元組額度輪轉；短流不必一直排在單一大流的積壓之後，大小包也不只按包數均分。",
+      "scope": "RFC8290雜湊分桶與DRR；可能碰撞，不保證每使用者公平或每新流固定延遲。",
+      "source_ids": [
+        "I8-S004"
+      ],
+      "source_locator": "§3 Flow Queueing；§4與§4.1",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。T4049是多個可互替服務台共隊避免閒置；本題單出口分流防積壓，不是反例或同機制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個出口可以改變服務順序，無須把出口變寬才能改善短工作等待。",
+        "visual": "同一長流與短流先共排、再分隊；每輪扣位元組額度，顯示小包可送多個。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "I8008",
+      "question": "HTTP/3的資料流彼此獨立，為什麼某個回應仍可能得等另一條流？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.qpack.dynamic_table_dependency_blocking",
+      "answer_target": "欄位壓縮若引用尚未收到的動態表項，解碼必須等表項到齊；傳輸的獨立排序沒有消除上層資料相依。",
+      "scope": "RFC9204 QPACK條件性等待；不用來宣稱HTTP/3永遠阻塞或比其他版本慢。",
+      "source_ids": [
+        "I8-S005"
+      ],
+      "source_locator": "§2.1.2 Blocked Streams",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。L220跨串流獨立是底層條件，本題新增壓縮相依與效率取捨。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "互不排序的運輸車，仍可能運送彼此相依的材料。",
+        "visual": "回應只帶表項索引先到，解碼表指令晚到；對照改用已確認表項或直接文字。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "I8010",
+      "question": "系統說兩台都存好了，為什麼另一台查詢還可能看不到剛存的內容？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.replica.durable_log_vs_replayed_visibility",
+      "answer_target": "副本把交易日誌持久保存後，仍須重播才使資料查得到；remote_apply把確認點再往後移到重播完成。",
+      "scope": "PostgreSQL18所述同步副本；查詢自身快照仍另有限制，不把任意舊交易保證成最新。",
+      "source_ids": [
+        "I8-S006"
+      ],
+      "source_locator": "§26.2.5.2；§26.2.8與§26.2.8.1",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。I3002為本機快取與持久化；I3005/17為讀者快照。本題只新增副本已持久化仍未重播的階段差，其他作背景。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "安全收到修改指令與已把修改呈現在資料表，是不同完成點。",
+        "visual": "兩台機器各有收到／存穩／重播三格，回條先停在存穩再移到重播。",
+        "seconds": [
+          85,
+          120
+        ]
+      }
+    },
+    {
+      "id": "I8011",
+      "question": "硬碟陣列能補回壞掉的一顆，為什麼寫到一半斷電仍可能留下難題？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.raid.partial_stripe_data_parity_write_hole",
+      "answer_target": "一次條帶更新跨多盤，資料與校驗若只完成一部分便不再相符；先持久記錄完整相關寫入可在重啟後重建一致條帶。",
+      "scope": "Linux MD RAID4/5/6 write-through日誌模型；不提供重建操作，也不說任何停電必毀損。",
+      "source_ids": [
+        "I8-S007"
+      ],
+      "source_locator": "write-through mode；The implementation",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。I3001保存舊頁回滾，這裡是跨盤資料—校驗一致性；交覆核判是否過近。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能承受單盤缺失，前提仍是其餘資料與校驗描述同一版內容。",
+        "visual": "兩資料格一校驗格更新中停格，分別停在不同盤；再加持久日誌回復同版。",
+        "seconds": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "I8012",
+      "question": "只改硬碟陣列裡的一小塊，為什麼可能得先讀別的資料？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.raid.partial_stripe_read_modify_write",
+      "answer_target": "部分條帶寫入需先取得舊內容才能重新計算校驗；聚合成完整條帶可免掉這類舊資料讀取。",
+      "scope": "Linux MD write-back機制；效果依工作負載與條帶完整性，不外推所有RAID。",
+      "source_ids": [
+        "I8-S007"
+      ],
+      "source_locator": "write-back mode前兩段；The implementation",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。與I8011故障時新舊版失配不同：本題是正常運作的讀取成本。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "應用的一次小寫入，可能引出用來維持冗餘關係的額外讀取。",
+        "visual": "同條帶只換一格先補讀舊值；對照整條帶的新資料一次備齊。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "I8013",
+      "question": "很大的檔案怎麼能很快複製完，修改副本又不會牽動原檔？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.reflink.shared_blocks_copy_on_write",
+      "answer_target": "reflink先建立獨立中繼資料共指區塊，寫入時以COW分離所改資料，使兩個檔案保持獨立內容。",
+      "scope": "Btrfs reflink；不把一般複製、硬連結或跨檔案系統都當相同行為，不承諾毫秒耗時。",
+      "source_ids": [
+        "I8-S008"
+      ],
+      "source_locator": "Reflink開頭兩段與constraints",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。I3033不可變Git內容定址及I3067淺複製別名都近似；本題寫時分離保留可變檔案隔離，交非作者判。 非作者覆核後接受併入I3039：既有延後分離核心已含先共享、後續修改才新增物件；本題保留Btrfs檔案變體與直接來源，不另計核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先共享儲存不等於共享所有後續修改，分離時點才是關鍵。",
+        "visual": "兩個檔名各有箭頭指同區塊，修改一塊時只換副本箭頭；對照兩份邏輯內容。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "I8014",
+      "question": "檔案顯示很大，為什麼實際占的空間卻可能小很多？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.sparse_file.logical_holes_zero_read",
+      "answer_target": "稀疏檔案可用未配置的空洞代表一段零；邏輯偏移與長度保留，讀取時產生零而不必存下同量資料塊。",
+      "scope": "Linux lseek空洞語意；不是壓縮、容量單位換算，也不說所有零區段都是空洞。",
+      "source_ids": [
+        "I8-S009"
+      ],
+      "source_locator": "DESCRIPTION及Seeking file data and holes",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。I3012資料庫空頁仍在檔案內供重用；本題底層未配置且讀零，方向不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "檔案長度描述可讀到哪裡，配置量描述實際有哪些資料塊，兩者不必相等。",
+        "visual": "同樣十格邏輯檔案，一邊全存零，一邊中間留空洞，讀出仍同十格。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "I8015",
+      "question": "大家都等一秒再重試，為什麼服務仍可能每秒被擠爆一次？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.retry.jitter_decorrelates_synchronized_attempts",
+      "answer_target": "相同失敗時點加相同退避會保留時間相關；jitter分散重試時點，削弱同時湧入的峰值。",
+      "scope": "Amazon Builders’ Library工程機制；不提供通用隨機範圍，不保證總請求數下降或故障自動恢復。",
+      "source_ids": [
+        "I8-S010"
+      ],
+      "source_locator": "Jitter；Retries and backoff",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。不同I8001單連線RTO估計；也不同L301冪等副作用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把等待都拉長，未必把人群分散；時間相位也會影響負載。",
+        "visual": "多客戶同一時點重試的脈衝列，對照分散時點但同總次數。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "I8016",
+      "question": "對時伺服器明明很準，電腦怎麼仍可能被網路帶偏時間？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.ntp.asymmetric_path_offset_bias",
+      "answer_target": "四時間戳先扣掉伺服器停留，再以往返估計方向延遲；去回延遲不等時，一部分不對稱會被混成兩端時差。",
+      "scope": "RFC5905估計式及NTP設計說明；不是所有時間誤差都來自網路，不把示意值當實測。",
+      "source_ids": [
+        "I8-S011",
+        "I8-S012"
+      ],
+      "source_locator": "RFC5905§8 Figure15後公式；NTP Protocol Design Issues、Precision and Accuracy末段",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。LEG-A58說明自動授時來源；本題是傳遞測量的不對稱限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "測得一趟往返耗時，不會自動知道哪一邊走得比較久。",
+        "visual": "相同總往返的對稱與非對稱箭頭，伺服器時鐘相同，估計偏移卻不同。",
+        "seconds": [
+          75,
+          105
+        ]
+      }
+    },
+    {
+      "id": "I8017",
+      "question": "聲音和畫面各自用不同計時刻度，播放器怎麼知道哪一句要配哪個嘴型？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.rtcp.sender_report_clock_domain_mapping",
+      "answer_target": "Sender Report把各自RTP媒體刻度對到共同參考時刻，讓接收端跨流比較相同真實時間。",
+      "scope": "RFC3550§6.4.1；前提是參考時鐘同步，其他緩衝/解碼仍可能失配，不把RTP數字直接跨流比較。",
+      "source_ids": [
+        "I8-S013"
+      ],
+      "source_locator": "§6.4.1 NTP timestamp與RTP timestamp",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。M5012是同影片解碼/顯示依賴順序；本題跨媒體時鐘域映射。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先知道兩把尺同一點在哪裡，才能把不同刻度的事件對齊。",
+        "visual": "音訊與影像兩條不同刻度、不同起點時間尺，加入成對參考時點後把事件垂直對齊。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "I8018",
+      "question": "小訊息傳得過，大包卻一直沒回覆，電腦怎麼試出路上能通過多大的包？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.dplpmtud.size_probes_end_to_end_confirmation",
+      "answer_target": "用可識別、指定大小的探測取得端到端確認，再調整可用大小；不能只靠可能沒送回的Packet Too Big通知。",
+      "scope": "RFC8899 DPLPMTUD機制；一次丟包有多種原因，需按協定多次/狀態判斷，非掃描或網路故障診斷指令。",
+      "source_ids": [
+        "I8-S014"
+      ],
+      "source_locator": "§1.1；§4.1–4.3",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。L205是IPv6來源分段規則；本題額外處理可用大小的探索與失聯回報。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有錯誤通知，不等於大包已成功；成功確認與沉默提供不同證據。",
+        "visual": "同路徑先過小包，再送填充探測；大小標記與收到回條相配，失敗不立即定因。",
+        "seconds": [
+          80,
+          110
+        ]
+      }
+    },
+    {
+      "id": "I8020",
+      "question": "每一層服務都只多試幾次，為什麼最底層工作量會放大很多倍？",
+      "domain": "數位傳輸與儲存",
+      "mechanism_key": "networks.retry.nested_layer_multiplicative_work",
+      "answer_target": "多層各自重試時，上游每次再次呼叫都能觸發整套下游重試，嘗試次數沿呼叫鏈相乘。",
+      "scope": "Amazon工程示例的串行依賴呼叫模型；不同錯誤位置、取消與預算會改變上限，不照搬固定倍率。",
+      "source_ids": [
+        "I8-S010"
+      ],
+      "source_locator": "Retries and backoff：multiple layers段",
+      "premise_status": "screened",
+      "notes": "規格／官方文件直接機制；日常問法與視覺為原創情境推導，進稿另核且未實測。I8015處理時點相關，本題處理請求數在巢狀呼叫中的乘積，不只換情境。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "局部看很克制的重試次數，組起來可能成為乘法。",
+        "visual": "兩層各三次的原創呼叫樹，先展開一層再另一層；與只在一層重試對照。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "I8005",
+      "question": "一秒送出同樣多資料，為什麼一次猛灌和分開送可能差很多？",
+      "existing_id": "T4052",
+      "source_ids": [
+        "I8-S002"
+      ],
+      "reason": "全庫讀回發現舊題已比較同平均的規律與成群到達造成積壓；本題目前pacing只是將該條件反向控制，尚無足夠不同演算法機制，退為網路例子。"
+    },
+    {
+      "id": "I8009",
+      "question": "多人同時改一份資料，舊畫面送出的修改怎麼避免蓋掉新版？",
+      "existing_id": "I3009",
+      "source_ids": [
+        "I8-S016"
+      ],
+      "reason": "If-Match以版本條件拒絕過期修改，可補HTTP例子，但舊快照寫入拒絕核心已有；不為換協定另計。"
+    },
+    {
+      "id": "I8019",
+      "question": "只更新一點資料，SSD怎麼可能在裡面搬了更多資料？",
+      "existing_id": "LEG-A05",
+      "source_ids": [
+        "I8-S015"
+      ],
+      "reason": "頁寫/塊抹與GC是舊題儲存變慢支線的機制深化，先作補證據，不把舊核心再計；E2283另解釋物理磨耗。"
+    },
+    {
+      "id": "I8021",
+      "question": "封包亂序怎麼排回來？",
+      "existing_id": "L208",
+      "reason": "序號排序已有，不改用聊天/照片重新計數。"
+    },
+    {
+      "id": "I8022",
+      "question": "補寄同資料怎麼不多算一次？",
+      "existing_id": "L209",
+      "reason": "位元組序號去重已有；I8002只取計時樣本歧義。"
+    },
+    {
+      "id": "I8023",
+      "question": "收到一半缺一段，怎麼回報已收到哪些部分？",
+      "existing_id": "L211",
+      "reason": "ACK範圍表示可補SACK例子，但暫不把回報格式另切核心；本批未讀SACK正文。"
+    },
+    {
+      "id": "I8024",
+      "question": "網路變慢時為何先降低影片畫質？",
+      "existing_id": "LEG-A64",
+      "reason": "自適應碼率已有，並非新網路控制機制。"
+    },
+    {
+      "id": "I8025",
+      "question": "寫入回覆成功為什麼仍怕斷電？",
+      "existing_id": "I3002",
+      "reason": "本機快取與持久化已有；本批I8010僅保留跨機日誌已存但未重播的差異。"
+    },
+    {
+      "id": "I8026",
+      "question": "資料庫副本斷線後，主機日誌為何一直留著？",
+      "existing_id": "I3006",
+      "source_ids": [
+        "I8-S006"
+      ],
+      "reason": "等待消費者進度而不能回收的保留核心已在長讀者WAL題；只留跨機例子。"
+    },
+    {
+      "id": "I8027",
+      "question": "把多次小訊息湊一起才送，為何省流量卻可能增加等待？",
+      "existing_id": "M5014",
+      "reason": "批次攤薄表頭與累積等待已有；未另讀Nagle正文不冒稱實際交互行為。"
+    },
+    {
+      "id": "I8028",
+      "question": "SSD為什麼搬動很少改的冷資料來平均磨耗？",
+      "existing_id": "E2283",
+      "reason": "本次讀到的2013 Samsung Wear Leveling只概述均攤，未支持靜態搬移策略細節；證據不足不加，非聲稱E2283已包含演算法。"
+    },
+    {
+      "id": "I8029",
+      "question": "QUIC多條流為什麼不必互等排序？",
+      "existing_id": "L220",
+      "reason": "跨流獨立已有；I8008僅增加QPACK上層依賴。"
+    },
+    {
+      "id": "I8030",
+      "question": "兩台電腦都保存副本，是不是就永遠不會丟資料？",
+      "existing_id": "I8010",
+      "reason": "過強假前提；副本故障範圍與確認階段不同，收進I8010界線，不另立普遍安全承諾。"
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave6-weather-sky-20261101",
+  "files": [
+    {
+      "path": "batches/wave6-weather-sky.json",
+      "sha256": "f961a8fcb1268833678f83d2cd9783fd3cd99066ac255a8c6ba46bddc8ee2065"
+    },
+    {
+      "path": "reviews/wave6-weather-themes.json",
+      "sha256": "f1f73b21332e6e6881e76a3ee89b697e28817e9e7ae5c9995a337fa44b52c6fd"
+    }
+  ],
+  "encoding": "UTF-8 without BOM; LF; exact byte hashes",
+  "counts": {
+    "candidates": 25,
+    "sources": 22,
+    "candidate_referenced_sources": 22,
+    "not_added": 16,
+    "theme_proposals": 3
+  },
+  "candidate_ids": [
+    "K6001",
+    "K6002",
+    "K6003",
+    "K6004",
+    "K6005",
+    "K6006",
+    "K6007",
+    "K6008",
+    "K6009",
+    "K6010",
+    "K6011",
+    "K6012",
+    "K6013",
+    "K6014",
+    "K6015",
+    "K6016",
+    "K6017",
+    "K6018",
+    "K6019",
+    "K6020",
+    "K6021",
+    "K6022",
+    "K6023",
+    "K6024",
+    "K6025"
+  ],
+  "baseline": {
+    "path": "pool.json",
+    "sha256": "0ddfff1ba218f4bb81e5f54f2418ec9ac1e7a5866c2bcc8ef3bdd89837f4a918",
+    "raw_records": 2895,
+    "selected": 2546,
+    "method": "檢索全部2895 raw的question/answer_target/scope/mechanism_key，按中文生活入口與英文機制詞讀相關欄位；最終246行檢索清單留忽略cache，另作早期擴展檢索；不是2895題逐一外部事實重查。"
+  },
+  "source_reading": {
+    "method": "22個登記來源逐一實讀reading_scope指定正文；非全站/全論文通讀。教材圖、問題或影片未複製；短摘要與題問為原創。",
+    "source_ids": [
+      "K6-S001",
+      "K6-S002",
+      "K6-S003",
+      "K6-S004",
+      "K6-S005",
+      "K6-S006",
+      "K6-S007",
+      "K6-S008",
+      "K6-S009",
+      "K6-S010",
+      "K6-S011",
+      "K6-S012",
+      "K6-S013",
+      "K6-S014",
+      "K6-S015",
+      "K6-S016",
+      "K6-S017",
+      "K6-S018",
+      "K6-S019",
+      "K6-S020",
+      "K6-S021",
+      "K6-S022"
+    ],
+    "access_limits": [
+      "PSU四節先讀章節匯出正文，再開各節精確URL；未做測驗、未播影片。",
+      "NOAA SR-130為掃描PDF，web與PyMuPDF無可擷取文字；下載官方原檔並渲染目讀封面及印刷18–20頁，候選只用18圖與19首段。原件及png只在.cache/wave6-weather-sources。",
+      "FAA-H-8083-28B web因大檔失敗、urllib403；未當來源。NWS Convectionforwebsite.pdf web超大失敗，未採其搜尋摘要。",
+      "ACP2025讀§2.1–2.3.4、3.1–3.2、4.1與5.1；未重跑光線追蹤、未核完整附錄或實測數據，不宣稱全文驗證。",
+      "NASA2010/2011、NASAicing2016、UAF1976與NOAA1990只取機制；現行任務、法規、預報門檻、操作指引均未沿用。",
+      "NWS winter的Melting尾段回傳不完整，未根據該尾句增寫；secondary ice及evaporative cooling段已讀。",
+      "JMA第3章雲型PDF部分正文讀過但未列為候選來源；開閉胞只辨型未補轉換機制，列not_added。"
+    ]
+  },
+  "recommended_central_dispositions": [],
+  "boundary_pairs": [
+    {
+      "ids": [
+        "K6001",
+        "P212"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "新增曲面平衡蒸氣壓，舊題為兩相共存時液量不改平面蒸氣壓。"
+    },
+    {
+      "ids": [
+        "K6002",
+        "N255"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "活化門檻與僅有凝結核不同；不把CCN大小競爭再拆題。"
+    },
+    {
+      "ids": [
+        "K6003",
+        "LEG-S42"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "凝結成長的擴散與潛熱瓶頸，非沉降速度/氣流托舉。"
+    },
+    {
+      "ids": [
+        "K6004",
+        "N158",
+        "N235"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "混相冰水透過氣相轉移，非撞擊覆冰或岩隙供水。"
+    },
+    {
+      "ids": [
+        "K6005",
+        "N158"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "次級冰生成改變粒子數，非只把單顆粒養大。"
+    },
+    {
+      "ids": [
+        "K6007",
+        "LEG-S57",
+        "K6022"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "啟動障礙/午後啟動/冷地面上方氣塊來源是不同條件；若K6022只重念有CAPE就能升則縮回K6007對照。"
+    },
+    {
+      "ids": [
+        "K6008",
+        "N277"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "捲入乾外氣削弱上升浮力，非降水在雲下蒸發不到地。"
+    },
+    {
+      "ids": [
+        "K6010",
+        "N278",
+        "K6011"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "界面剪切捲起、山岳駐波、並排對流滾軸，不能只因都像條紋就合併。"
+    },
+    {
+      "ids": [
+        "K6012",
+        "N255",
+        "P244"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "固定雲水的滴數/尺度改變反照率，不由亮度倒推粒徑；若稿只剩粒子讓水凝結則回N255。"
+    },
+    {
+      "ids": [
+        "K6013",
+        "K6008"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "輻射吸收加熱與混入乾氣蒸發不同；來源未給半直接效應的普遍強弱。"
+    },
+    {
+      "ids": [
+        "K6014",
+        "N242"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "比較雲短波與長波兩路作用，不重教溫室氣體吸收。"
+    },
+    {
+      "ids": [
+        "K6015",
+        "LEG-S23"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "兩次內反射色序對照，非圓虹地平線遮擋。"
+    },
+    {
+      "ids": [
+        "K6016",
+        "N281"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "冰晶取向篩選折射方向，非暈與華的折射/繞射分類。"
+    },
+    {
+      "ids": [
+        "K6017",
+        "N282"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "定向晶面反光光柱，非平行散射光束透視。"
+    },
+    {
+      "ids": [
+        "K6018",
+        "N147",
+        "N151"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "邊界層日夜解耦與垂直風速峰，非風向越等壓線或高空水平溫度梯度。"
+    },
+    {
+      "ids": [
+        "K6019",
+        "N163"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "一次事件內多回擊，非首次通道接通。"
+    },
+    {
+      "ids": [
+        "K6020",
+        "LEG-S18"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "同種聲波從延伸通道先後到達，非光聲兩種速度比較。"
+    },
+    {
+      "ids": [
+        "K6021",
+        "N162"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "碰撞轉移及粒子輸送分離，與強場擊穿不同；舊target也提充電，需非作者再判是否足夠新增。"
+    },
+    {
+      "ids": [
+        "K6023",
+        "N167",
+        "N277"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "蒸發改變下落溫度剖面的回饋，非固定剖面分類或只說降水蒸發。"
+    },
+    {
+      "ids": [
+        "K6024",
+        "N167"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "沒有暖層融雪的液態碰併替代路徑；不是凍雨/冰粒再分類。"
+    },
+    {
+      "ids": [
+        "K6025",
+        "N282",
+        "P241"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "局部直射與額外漫射的能量疊加，非僅光束可見或一般散射。"
+    }
+  ],
+  "themes": {
+    "ids": [
+      "W6K-T01",
+      "W6K-T02",
+      "W6K-T03"
+    ],
+    "seconds": [
+      255,
+      225,
+      140
+    ],
+    "opening_and_closing_included": true,
+    "all_format": "short_explainer",
+    "core_maximum_budgets_checked": true,
+    "note": "三題組仍255/225/140秒；T01只承諾成長門檻，T02三個條件分支不冒稱單一路徑；各章30–40秒內新對照，非完整稿或成片實測。"
+  },
+  "verification": {
+    "performed": [
+      "JSON可讀、ID唯一、來源引用存在",
+      "三題組秒數與分鐘一致，逐章正整數與至少2章",
+      "各核心同片累計未超editorial max",
+      "beats與結尾間距<=45秒",
+      "UTF8無BOM/LF讀回與檔案SHA256"
+    ],
+    "not_performed": [
+      "未跑repository tests",
+      "未實測天氣或觀測天空",
+      "沒有2895題全外部事實重查",
+      "沒有完整稿/獨立盲讀/錄音",
+      "無媒體製作、付費或發布"
+    ]
+  },
+  "conclusion": "25筆原創候選、16退題、三個140–255秒題案；不以35–50或8分鐘配額補薄題。仍待另一位代理覆核，非劇本/製作核准。",
+  "review_feedback_applied": [
+    {
+      "reviewer": "pool_life_tech",
+      "id": "W6K-T01",
+      "change": "題名與核心追問收成吸濕/活化/成長門檻；去除離開雲及完整降雨承諾，第三章明示切換混相條件。",
+      "seconds_unchanged": 255
+    },
+    {
+      "reviewer": "pool_life_tech",
+      "id": "W6K-T02",
+      "change": "connection及各章轉場明示條件分支/重設：未破蓋者停住、另看已越蓋而混入乾氣者、另指定已到EL仍有速度者。",
+      "seconds_unchanged": 225
+    }
+  ]
+}

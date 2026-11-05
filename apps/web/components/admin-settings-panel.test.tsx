@@ -445,6 +445,11 @@ describe("AdminSettingsPanel", () => {
     expect([...aiProviders].sort()).toEqual([...AI_SETTINGS_PROVIDERS].sort());
   });
 
+  it("files the RunPod GPU card with the video pipeline's other sources", () => {
+    expect(providerCategoryOf.runpod).toBe("video");
+    expect(SETTINGS_PAGE_CATEGORIES).toContain("video");
+  });
+
   it("waits for a session-bound settings snapshot before accepting the first budget edit", async () => {
     sessionIdentity.status = "loading";
     const data = { ...snapshot, providers: [{ ...geminiProvider, config: { ...geminiProvider.config, catalog_review_max_calls: 80 } }] };

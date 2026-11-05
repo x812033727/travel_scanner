@@ -37,6 +37,7 @@ from app.video_reviews.schemas import (
     LocalesIn,
     ProjectIn,
     ProjectSummary,
+    ReviewFile,
     ReviewIn,
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
@@ -1621,6 +1622,58 @@ async def test_content_manager_can_ask_for_a_skipped_dub_again(
 
 
 @pytest.mark.asyncio
+async def test_the_video_tool_asks_for_a_skipped_dub_again_on_its_makers_behalf(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """2026-11-01: the session holding the token could not press 再做一次 for daily-ai-20261029's
+    Indonesian dub. The tool route runs the same service as the token's maker, naming the token;
+    a token whose maker is gone is refused before anything is asked."""
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    redis = fakeredis.aioredis.FakeRedis()
+
+    async def settings(_: Any) -> Settings:
+        return Settings(
+            video_review_dir=str(tmp_path),
+            video_work_dir=str(tmp_path / "work"),
+            hotspot_guide_gemini_api_key="gemini-key",
+            video_speech_gemini_monthly_character_limit=50_000,
+        )
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    monkeypatch.setattr(admin_api, "get_redis", lambda: redis)
+    asked = AsyncMock(return_value=_dub_retry_view(str(uuid4())))
+    monkeypatch.setattr(admin_service, "request_dub_retry", asked)
+    token = VideoToolToken(
+        id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x", created_by_user_id=owner.id
+    )
+    orphan = VideoToolToken(id=uuid4(), name="o", token_hash="o", token_prefix="mkv_o")
+    app = FastAPI()
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    app.include_router(admin_api.tool_router, prefix="/api/v1")
+    found: dict[Any, User] = {owner.id: owner}
+
+    async def session() -> Any:
+        db = AsyncMock()
+        db.get = AsyncMock(side_effect=lambda _model, key: found.get(key))
+        yield db
+
+    app.dependency_overrides[get_session] = session
+    url = "/api/v1/video/reviews/daily-ai-20261029/languages/id/dub/retry"
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        app.dependency_overrides[speech_api.video_tool] = lambda: token
+        response = await client.post(url)
+        app.dependency_overrides[speech_api.video_tool] = lambda: orphan
+        refused = await client.post(url)
+    assert response.status_code == 200, response.text
+    call = asked.await_args_list[0]
+    assert call.args[2:] == ("daily-ai-20261029", owner, "id")
+    assert call.kwargs["tool_token_id"] == token.id
+    assert refused.status_code == 403
+    assert refused.json()["code"] == "video_tool_token_owner_missing"
+    assert asked.await_count == 1
+
+
+@pytest.mark.asyncio
 async def test_an_unknown_locale_is_a_422(monkeypatch: pytest.MonkeyPatch) -> None:
     owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
     owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
@@ -2158,3 +2211,82 @@ async def test_the_list_takes_the_shorts_filter_and_a_state_only_with_it(
     assert stateless.status_code == 422
     assert stateless.json()["code"] == "video_shorts_state_needs_only"
     assert [unknown.status_code, too_many.status_code, naive.status_code] == [422, 422, 422]
+
+
+@pytest.mark.asyncio
+async def test_an_approved_upload_confirmation_takes_the_backup_tier_and_nothing_else(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Owner, 2026-11-03: every video whole on the host before it goes up. A confirmation the
+    owner approved before review-push carried the full tier takes those files on a resend, its
+    approval untouched; anything else about it changed is not taken."""
+    store = ReviewStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
+    now = datetime.now(UTC)
+
+    def put(body: bytes) -> str:
+        sha = hashlib.sha256(body).hexdigest()
+        store.put_part("v", sha, index=0, count=1, size=len(body), data=body)
+        return sha
+
+    final, metadata, keyframe, narration, thumb = (
+        put(b"cut"),
+        put(b"{}"),
+        put(b"keyframe"),
+        put(b"narration"),
+        put(b"another thumbnail"),
+    )
+    project = VideoProject(id=uuid4(), slug="v", title="t", stage="done", checklist=[])
+    approved = VideoReview(
+        id=uuid4(),
+        project_id=project.id,
+        gate="publish",
+        subject=None,
+        status="approved",
+        content_sha256=metadata,
+        summary="上傳包",
+        payload={"hand_pushed": True},
+        files=[
+            {"role": "final", "sha256": final, "size": 3, "content_type": "video/mp4"},
+            {"role": "metadata", "sha256": metadata, "size": 2, "content_type": "application/json"},
+        ],
+        created_at=now,
+        decided_at=now,
+    )
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[approved]))
+    session = AsyncMock()
+    session.add = MagicMock()
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+    package = [
+        ReviewFile(role="final", sha256=final, size=3, content_type="video/mp4"),
+        ReviewFile(role="metadata", sha256=metadata, size=2, content_type="application/json"),
+    ]
+
+    def resend(*extra: ReviewFile) -> ReviewIn:
+        return ReviewIn(
+            gate="publish",
+            content_sha256=metadata,
+            summary="上傳包",
+            payload={"hand_pushed": True, "full_tier": {"files": 2, "problems": []}},
+            files=[*package, *extra],
+        )
+
+    tier = [
+        ReviewFile(role="kf_ch1-open", sha256=keyframe, size=8, content_type="image/jpeg"),
+        ReviewFile(role="full_narration", sha256=narration, size=9, content_type="audio/wav"),
+    ]
+    # A package file that is not the approved one: nothing is taken.
+    other = ReviewFile(role="thumbnail", sha256=thumb, size=17, content_type="image/jpeg")
+    out = await admin_service.submit_review(session, store, "v", resend(other, *tier), token)
+    assert out.id == approved.id and len(approved.files) == 2
+    out = await admin_service.submit_review(session, store, "v", resend(*tier), token)
+    assert out.id == approved.id and out.status == "approved"
+    assert [item["role"] for item in approved.files] == [
+        "final",
+        "metadata",
+        "kf_ch1-open",
+        "full_narration",
+    ]
+    assert approved.payload == {"hand_pushed": True}, "what the owner approved stays as it was"
+    again = await admin_service.submit_review(session, store, "v", resend(*tier), token)
+    assert len(again.files) == 4, "sent twice, taken once"

@@ -8,6 +8,7 @@ import { AdminStatusPill } from "@/components/admin-ui";
 import { YoutubeManualUpload } from "@/components/admin-video-manual-upload";
 import { YoutubeVpsUpload } from "@/components/admin-video-vps-upload";
 import { YoutubeVpsSettingsCard } from "@/components/admin-video-vps-settings";
+import { analyticsScopeLine, YoutubeChannelReports } from "@/components/admin-video-youtube-reports";
 import { control, record, type Review, text, useWhen, type YoutubeSync, type YoutubeSyncStep, youtubeVideoId } from "@/components/admin-video-review-card";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
 import { ApiError, api } from "@/lib/api";
@@ -22,6 +23,8 @@ export type YoutubeConnection = {
   client_id: string | null; client_secret_set: boolean; redirect_uri: string; scope: string;
   configured: boolean; linked: boolean; channel_id: string | null; channel_title: string | null; channel_url: string | null;
   linked_at: string | null; verified_at: string | null; problem: string | null; audited: boolean;
+  // The grant also reads YouTube Analytics, for the channel reports (admin-video-youtube-reports.tsx).
+  analytics_granted?: boolean;
 };
 export type Visibility = "scheduled" | "unlisted" | "private";
 const VISIBILITIES: Visibility[] = ["scheduled", "unlisted", "private"];
@@ -142,6 +145,8 @@ function YoutubeOAuthCard() {
     void run(async () => {
       const result = await api<{ revoked: boolean; connection: YoutubeConnection }>("/admin/video-youtube/unlink", { method: "POST" });
       if (!result.revoked) setError(t("unlinkNotRevoked"));
+      // Reading the reports once more is what deletes the copy kept for the unlinked channel.
+      void api("/admin/video-youtube/reports").catch(() => undefined);
       return result.connection;
     }, t("unlinked"));
   };
@@ -162,6 +167,7 @@ function YoutubeOAuthCard() {
       </p>
       {connection.linked_at && <p className="text-sm text-[var(--muted)]">{t("linkedAt", { time: when(connection.linked_at) })}{connection.verified_at ? ` · ${t("verifiedAt", { time: when(connection.verified_at) })}` : ""}</p>}
       {connection.problem && <p role="alert" className="text-sm text-red-800">{connection.problem}</p>}
+      <YoutubeChannelReports reloadKey={`${connection.channel_id ?? ""}:${connection.linked_at ?? ""}`} analyticsGranted={Boolean(connection.analytics_granted)} />
     </div> : <p className="flex items-center gap-2 text-sm"><AdminStatusPill status="inactive">{t("statusNotLinked")}</AdminStatusPill>{connection.configured ? t("readyToLink") : t("needsClient")}</p>}
 
     <details className="rounded-xl border border-[var(--line)] p-4" open={!connection.configured}>
@@ -172,7 +178,9 @@ function YoutubeOAuthCard() {
         <li>{t("step3")}
           <span className="mt-2 flex flex-wrap items-center gap-2"><code className="break-all rounded bg-[var(--paper)] px-2 py-1 text-xs">{connection.redirect_uri}</code><CopyButton value={connection.redirect_uri} label={t("redirectUri")} /></span>
         </li>
-        <li>{t("step4", { scope: connection.scope })}</li>
+        <li>{t("step4", { scope: connection.scope.split(/\s+/)[0] ?? connection.scope })}
+          {analyticsScopeLine(locale, connection.scope) && <span className="mt-1 block">{analyticsScopeLine(locale, connection.scope)}</span>}
+        </li>
         <li>{t("step5")}</li>
       </ol>
     </details>

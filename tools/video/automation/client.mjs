@@ -512,6 +512,8 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       requireBudgetReady(body.slug);
       return request("POST", "automation/judge/outline", body, JUDGE);
     },
+    /** Ask for a skipped dub again on the token maker's behalf (docs/videos/LANGUAGES.md §跳過的配音再做一次). */
+    dubRetry: (slug, locale) => request("POST", `reviews/${slug}/languages/${locale}/dub/retry`),
     /** The video's reviews as the owner left them, newest first. */
     reviews: async (slug) => {
       try {
@@ -544,6 +546,26 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     slidesStart: (id, slug) => request("POST", `automation/slides-requests/${id}/start`, { slug }),
     /** Report a request's video confirmed for upload. */
     slidesDone: (id) => request("POST", `automation/slides-requests/${id}/done`),
+    // The daily news brief (docs/videos/AUTOMATION.md §每日 AI 快報): from the hour the site sets
+    // (09:00 Taipei) it hands out one request built from the previous day's ai-news and tech-news
+    // articles. The site answers { request } like the other queues (null when none is due), or
+    // the request itself; a 404 is none due, or a site from before the briefs, answered at once
+    // (never retried): null, no wait.
+    /** The brief due now ({ id, news_date, slug, status, stories, … }), or null. */
+    dailyNext: async () => {
+      try {
+        const answer = await request("GET", "automation/daily-briefs/next");
+        const due = answer && "request" in answer ? answer.request : answer;
+        return due?.id ? due : null;
+      } catch (error) {
+        if (error.status === 404) return null;
+        throw error;
+      }
+    },
+    /** Claim the brief for its video, under its own daily-ai-YYYYMMDD slug. */
+    dailyStart: (id, slug) => request("POST", `automation/daily-briefs/${id}/start`, { slug }),
+    /** Report the brief's video confirmed for upload. */
+    dailyDone: (id) => request("POST", `automation/daily-briefs/${id}/done`),
     // A long series (docs/videos/SERIES.md): the site says what is next, the worker reports back.
     /** The next document to plan or episode to start, or null while every series waits. */
     seriesNext: async () => (await request("GET", "automation/series/next")).job ?? null,

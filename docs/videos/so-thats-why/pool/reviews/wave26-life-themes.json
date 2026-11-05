@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "依控制對照自然長度，不設最低片長。",
+    "一章一核、beat<=45s；同核跨章累計<=editorial上限且<=150秒。",
+    "所有開場/轉場/回扣包含在預算；未做媒體、未試讀。"
+  ],
+  "episodes": [
+    {
+      "id": "W26A-T01",
+      "title": "條紋自己長出來，為什麼還會長歪？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上候選，待非作者與共同近鄰覆核",
+      "format": "short_explainer",
+      "core_question": "細胞怎麼一邊分開顏色，一邊決定條紋往哪裡走？",
+      "connection": "先看近鄰與遠鄰移除的相反結果，再分清自組織間距與解剖起點定方向；三框分屬不同實驗/魚齡，不假裝連續處理同一隻魚。",
+      "candidate_ids": [
+        "A26001",
+        "A26002"
+      ],
+      "target_minutes": 2.6666666666666665,
+      "range_minutes": [
+        2.6666666666666665,
+        2.6666666666666665
+      ],
+      "body_seconds": 160,
+      "chapters": [
+        {
+          "title": "移走最近的鄰居",
+          "candidate_ids": [
+            "A26001"
+          ],
+          "seconds": 40,
+          "new_information": "含6秒開場：散在黃色區裡的孤立黑細胞會留下，還是消失？；20 dpf對照：保留近鄰時黑細胞可死亡或遷離，移走其周圍黃細胞後有更多留下；兩種去向分開畫。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "含6秒開場：散在黃色區裡的孤立黑細胞會留下，還是消失？"
+            },
+            {
+              "seconds": 25,
+              "new_information": "20 dpf對照：保留近鄰時黑細胞可死亡或遷離，移走其周圍黃細胞後有更多留下；兩種去向分開畫。"
+            }
+          ]
+        },
+        {
+          "title": "離得遠，作用反而不同",
+          "candidate_ids": [
+            "A26001"
+          ],
+          "seconds": 50,
+          "new_information": "清空重設34 dpf條帶實驗：黑條帶旁的黃條帶被移除，中央黑細胞存活反而下降；並排近/遠兩種淨作用，畫局部互斥與遠處支持的回饋；不是一個分子箭頭，也不是顏料流過去；在這套互作中，混在一起和無限制擴張都會改變周圍支持，分區得以維持。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "清空重設34 dpf條帶實驗：黑條帶旁的黃條帶被移除，中央黑細胞存活反而下降。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "並排近/遠兩種淨作用，畫局部互斥與遠處支持的回饋；不是一個分子箭頭，也不是顏料流過去。"
+            },
+            {
+              "seconds": 10,
+              "new_information": "在這套互作中，混在一起和無限制擴張都會改變周圍支持，分區得以維持。"
+            }
+          ]
+        },
+        {
+          "title": "條紋有間距，仍可能沒有方向",
+          "candidate_ids": [
+            "A26002"
+          ],
+          "seconds": 70,
+          "new_information": "正常與choker魚體並排：後者仍有條帶，卻可彎曲、分岔或改方向，不能只問有沒有條紋；切回發育先後：正常虹彩細胞先沿水平肌隔附近出現；突變體缺此結構且虹彩細胞較晚、任意位置成片，成為不同起點；以相近條帶寬度但不同走向分開兩個問題：局部細胞互作排間距，早期位置幫忙定方向。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "正常與choker魚體並排：後者仍有條帶，卻可彎曲、分岔或改方向，不能只問有沒有條紋。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "切回發育先後：正常虹彩細胞先沿水平肌隔附近出現；突變體缺此結構且虹彩細胞較晚、任意位置成片，成為不同起點。"
+            },
+            {
+              "seconds": 20,
+              "new_information": "以相近條帶寬度但不同走向分開兩個問題：局部細胞互作排間距，早期位置幫忙定方向。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若近/遠實驗或魚齡無法分框，撤160秒案。若刪方向章，剩90秒近遠短案須重核開場回扣，不補其他斑紋動物。",
+      "evidence_gaps": "2009未定分子路徑，2013 choker不等同單獨抹去肌隔；原創定性示意，進稿不得畫已測化學濃度。",
+      "boredom_risk": "不朗讀論文背景/限制來補長；沒有改變觀眾預測的重播即刪。",
+      "timing_basis": "含開場、轉場與回扣的紙上秒數，未試讀或製作。",
+      "timing_check": {
+        "candidate_seconds": {
+          "A26001": 90,
+          "A26002": 70
+        },
+        "opening_transitions_ending_included": true,
+        "measured": false
+      }
+    },
+    {
+      "id": "W26A-T02",
+      "title": "換了眼斑中心，翅膀就會照它的顏色畫嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "既有V3007的生物研究變體紙上提案，不計新核心，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "圖案差異來自中心發出什麼，還是周圍怎麼回應？",
+      "connection": "採V3007的A26003研究變體：用互換中心定位差異，再用接收閾值模型解釋色環邊界；不與一般受體講解拼片。",
+      "candidate_ids": [
+        "A26003"
+      ],
+      "target_minutes": 1.5833333333333333,
+      "range_minutes": [
+        1.5833333333333333,
+        1.5833333333333333
+      ],
+      "body_seconds": 95,
+      "chapters": [
+        {
+          "title": "中心換過去，顏色跟誰？",
+          "candidate_ids": [
+            "A26003"
+          ],
+          "seconds": 45,
+          "new_information": "含6秒開場：兩條選育線黑環/金環比例不同，提出互換眼斑中心的預測；Graft1原創2×2對照：兩種中心放入BLACK宿主較黑，放入GOLD宿主較金；移植改中心，接受翅面保留。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "含6秒開場：兩條選育線黑環/金環比例不同，提出互換眼斑中心的預測。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "Graft1原創2×2對照：兩種中心放入BLACK宿主較黑，放入GOLD宿主較金；移植改中心，接受翅面保留。"
+            }
+          ]
+        },
+        {
+          "title": "同類訊號，接受規則不同",
+          "candidate_ids": [
+            "A26003"
+          ],
+          "seconds": 50,
+          "new_information": "另框Fig6 local-sink低谷與兩個閾值：低於T1為黑區，接受組織分界改變可改色環比例；標組織反應模型，不是實測分子；回看同宿主雙移植：近遠位置也影響色環，提示回應規則在整片翅上並非處處相同；保留位置標籤，不演成完全同條件。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "另框Fig6 local-sink低谷與兩個閾值：低於T1為黑區，接受組織分界改變可改色環比例；標組織反應模型，不是實測分子。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "回看同宿主雙移植：近遠位置也影響色環，提示回應規則在整片翅上並非處處相同；保留位置標籤，不演成完全同條件。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若只能說不同細胞反應不同，無法清楚呈現互換對照與色環分界，撤95秒變體案留素材；不補其他蝴蝶名錄。",
+      "evidence_gaps": "梯度/閾值是模型，未定分子；中心來源仍可能影響大小，不能把對比例的主要宿主作用升格成中心完全無作用。 1997移植不是V3007胞內效應蛋白的直接證據，僅保留接收組織差異變體。",
+      "boredom_risk": "不朗讀論文背景/限制來補長；沒有改變觀眾預測的重播即刪。",
+      "timing_basis": "含開場、轉場與回扣的紙上秒數，未試讀或製作。",
+      "canonical_candidate_ids": [
+        "V3007"
+      ],
+      "variant_budget_ids": [
+        "A26003"
+      ],
+      "variant_usage": {
+        "canonical_id": "V3007",
+        "variant_id": "A26003",
+        "source_ids": [
+          "A26-S003"
+        ],
+        "seconds": 95,
+        "reason": "用互換中心與位置控制支援接收組織差異；變體按A26003獨立120秒cap，非沿用V3007舊80秒預算。1997研究不證胞內效應蛋白。"
+      },
+      "timing_check": {
+        "candidate_seconds": {
+          "A26003": 95
+        },
+        "opening_transitions_ending_included": true,
+        "measured": false
+      }
+    }
+  ]
+}

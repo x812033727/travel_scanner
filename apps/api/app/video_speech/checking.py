@@ -142,6 +142,36 @@ JUDGE_INSTRUCTIONS = (
 )
 
 
+# A dub is a translation of the narration, read by the same voice. Its listener needs what the
+# line says, not the script's exact words, and a speech engine reads a written line the way a
+# speaker of the language would: "US$ 250 mil" as "250 mil dólares", "EE. UU." as "Estados
+# Unidos", "Dolby" with its article. Until 2026-11-01 dubs were judged word for word like the
+# narration, and about 45 of the 119 lines behind the dubs given up between 2026-09-29 and
+# 2026-10-31 were faithful readings of that kind (tasks/open/2026-10-09-dub-skipped-because-jev-
+# still-hears). A number, a name or a content word that is lost or changed is still a no.
+DUB_JUDGE_INSTRUCTIONS = (
+    "In the state, look at the line whose id is {line_id}. 'intended' is one line of a dubbed "
+    "translation; a speech engine read it aloud and 'heard' is a machine transcript of that "
+    "recording ('spoken_form' shows how dictionary terms were meant to be pronounced). Does the "
+    "recording keep what the line says? Count these as the same: punctuation and pauses; an "
+    "article, particle or filler word added or dropped; a contraction or colloquial form of the "
+    "same word; a symbol or abbreviation read out in full (a currency sign as the currency's "
+    "name, an abbreviated country as its name, % as percent); a number written as digits or as "
+    "words; the singular or plural of the same noun; another tense or person of the same verb; "
+    "a name in another spelling or romanization; characters a transcriber could pick for the "
+    "same sound. Answer no if a number, date, unit, name or product is missing or different, if "
+    "a content word is missing or replaced by one that means something else, or if the line "
+    "now means something else."
+)
+DUB_JUDGE_CRITERIA = NoulCriteria(
+    true=(
+        "the recording keeps every number, name and term and says what the line means; any "
+        "difference is only in form"
+    ),
+    false="a number, name, term or content word was lost, added or replaced, or the sense changed",
+)
+
+
 class CheckUnavailable(Exception):
     """Why a check cannot run right now. The video tool's router turns it into its error; these
     endpoints are operator surfaces, like the rest of ``admin_api``."""
@@ -254,10 +284,15 @@ def _error_status(response: httpx.Response) -> str:
     return status if isinstance(status, str) and status.isupper() and len(status) <= 40 else ""
 
 
-def judge_questions(line_ids: list[str]) -> dict[str, NoulQuestion]:
+def judge_questions(line_ids: list[str], track: str = "narration") -> dict[str, NoulQuestion]:
+    instructions, criteria = (
+        (DUB_JUDGE_INSTRUCTIONS, DUB_JUDGE_CRITERIA)
+        if track == "dub"
+        else (JUDGE_INSTRUCTIONS, JUDGE_CRITERIA)
+    )
     return {
         f"line_{line_id}": NoulQuestion(
-            instructions=JUDGE_INSTRUCTIONS.format(line_id=line_id), criteria=JUDGE_CRITERIA
+            instructions=instructions.format(line_id=line_id), criteria=criteria
         )
         for line_id in line_ids
     }
@@ -271,9 +306,11 @@ async def judge(
     language: str = NARRATION_LANGUAGE,
     usage_out: dict[str, Any] | None = None,
     pilot_budgeted: bool = False,
+    track: str = "narration",
 ) -> dict[str, float]:
     """Jev's probability, per line id, that the recording says the intended words; ``language``
-    is what the lines are written in."""
+    is what the lines are written in, ``track`` whether they are the narration (word for word)
+    or a dub (what the line says)."""
     jev: JevClient = (
         jev_client(settings, client, retry_refusals=False)
         if pilot_budgeted
@@ -287,7 +324,8 @@ async def judge(
                 "今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再檢查",
             )
         state: dict[str, Any] = {"language": language, "lines": lines}
-        answers, usage = await jev.ask(state, judge_questions([line["id"] for line in lines]))
+        questions = judge_questions([line["id"] for line in lines], track)
+        answers, usage = await jev.ask(state, questions)
         if usage_out is not None:
             usage_out.update(usage)
     finally:

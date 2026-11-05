@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "root",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "scope": "選擇後的結果核對",
+  "baseline": {
+    "head": "faeba1adac4eba4fa1993af0e0de8d45dea1edc2",
+    "selected": 3528,
+    "raw_records": 3917,
+    "not_added": 2182,
+    "themes": 547,
+    "pool_sha256": "d521779c2addbf70ab52338ac24086c059f9e554aceab6b7bbbf354d6cacbdc7"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave50-human.json",
+      "sha256": "4718f154ec93e6d04026fb443e145d2d89361080b3088ed57647c98d9284f444"
+    },
+    {
+      "file": "reviews/wave50-human-themes.json",
+      "sha256": "ee56feed3ad8a964e2744fec9a91ae33917db939ef867611f4fd4d8c45447886"
+    }
+  ],
+  "counts": {
+    "candidates": 1,
+    "sources": 1,
+    "candidate_supporting_sources": 1,
+    "na_only_sources": 0,
+    "not_added": 7,
+    "near_pairs": 6,
+    "themes": 1,
+    "proposed_new_cores": 1,
+    "proposed_merges": 0
+  },
+  "near_pairs": [
+    {
+      "a": "H50-001",
+      "b": "R42010",
+      "a_snapshot": {
+        "id": "H50-001",
+        "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+        "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+        "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。"
+      },
+      "b_snapshot": {
+        "id": "R42010",
+        "question": "白葡萄酒染紅後，品酒的人會換一套形容香氣的詞嗎？",
+        "answer_target": "第一次先用自己的詞描述紅酒和白酒。另一次把其中一份白酒用經遮色測試的染料染紅，學生傾向把先前形容紅酒的詞用在它上面。顏色線索改變了描述用詞的分配。",
+        "scope": "作業要求描述、比較氣味，沒有要求逐瓶盲猜酒種；不能把用詞直接等同嗅覺受體的改變。"
+      },
+      "decision": "distinct",
+      "reason": "舊改變酒色觀察氣味詞，新先記選擇再反轉交付結果；不是換種食品測同一感官期待。"
+    },
+    {
+      "a": "H50-001",
+      "b": "P14006",
+      "a_snapshot": {
+        "id": "H50-001",
+        "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+        "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+        "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。"
+      },
+      "b_snapshot": {
+        "id": "P14006",
+        "question": "變動處沒被遮住，別處一閃怎麼仍可能讓人漏掉變化？",
+        "answer_target": "同時出現的高對比閃塊不遮住變動位置，仍可能干擾對變動位置的注意導引與前後比較；這個控制排除「一定是把變動蓋住」的單一解釋。",
+        "scope": "採1998作者修訂稿的10人場景比較及1999正式版身分/摘要；稿件非最終版逐字等同。不聲稱影像記憶完全不存在或所有未注意資訊都不編碼；不移用漏看比例到行車事故。"
+      },
+      "decision": "distinct",
+      "reason": "舊視覺閃塊打斷場景比較，新操弄已作偏好選擇的結果；不把所有漏察覺當同一研究。"
+    },
+    {
+      "a": "H50-001",
+      "b": "C2004",
+      "a_snapshot": {
+        "id": "H50-001",
+        "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+        "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+        "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。"
+      },
+      "b_snapshot": {
+        "id": "C2004",
+        "question": "明明就在眼前，專心數別的東西時怎麼可能沒看見？",
+        "answer_target": "研究注意力選擇與意識察覺的落差。",
+        "scope": "須自建展示並核對任務，不套固定漏看比例。"
+      },
+      "decision": "distinct",
+      "reason": "舊分心計數時漏看物，新對選定物重取樣的結果核對。"
+    },
+    {
+      "a": "H50-001",
+      "b": "C2016",
+      "a_snapshot": {
+        "id": "H50-001",
+        "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+        "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+        "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。"
+      },
+      "b_snapshot": {
+        "id": "C2016",
+        "question": "看完同一件事，後來的問法怎麼可能改變回憶內容？",
+        "answer_target": "研究事後資訊與記憶重建。",
+        "scope": "不據此裁定任何個案記憶真假，效應受條件限制。"
+      },
+      "decision": "distinct",
+      "reason": "舊事後問法引導回憶，新直接替換當下選擇結果；仍不聲稱唯一機制。"
+    },
+    {
+      "a": "H50-001",
+      "b": "C2017",
+      "a_snapshot": {
+        "id": "H50-001",
+        "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+        "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+        "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。"
+      },
+      "b_snapshot": {
+        "id": "C2017",
+        "question": "記得一件事，卻把是誰告訴自己的記錯了，怎麼回事？",
+        "answer_target": "區分內容熟悉與來源歸屬。",
+        "scope": "不用教材刑事個案做娛樂推論。"
+      },
+      "decision": "distinct",
+      "reason": "舊知識內容來源歸屬，新有實際選擇紀錄與反向樣品可比。"
+    },
+    {
+      "a": "H50-001",
+      "b": "R30003",
+      "a_snapshot": {
+        "id": "H50-001",
+        "question": "剛選好的果醬被換成另一款，大家都能立刻發現嗎？",
+        "answer_target": "雙頭罐把再品嚐的樣品換成未選款；在這次超市作業中，合併三種察覺標準也只記到約三分之一的換樣試次。最不相似的配對比最相似的配對更容易察覺，顯示選過不代表每次都核對結果。",
+        "scope": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。"
+      },
+      "b_snapshot": {
+        "id": "R30003",
+        "question": "第三款明明比較差，加進來怎麼反而能讓原本的一款多拿票？",
+        "answer_target": "甲便宜、乙品質高，各有優點。加一款跟甲同價但品質更低的丙，甲在這組對照上容易勝出。實驗中，部分題組在加丙後選甲的比例確實增加；效果取決於受試者認不認同列出的優劣。",
+        "scope": "限三選項、兩個可比較的屬性，用不同條件的選取比例判讀。表3並非每格都增加，照片或口味也可能讓人偏好看似較差的款式。"
+      },
+      "decision": "distinct",
+      "reason": "舊新增劣勢選項改變選取率，新原有二選一已完成後改交付內容。"
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "raw_records_searched": 3917,
+    "not_added_searched": 2182,
+    "raw_matches": 121,
+    "not_added_matches": 27,
+    "method": "全庫問答scope/domain與NA正則搜索，逐讀6近核完整問答scope；共同top5再由非作者判讀。 搜索命中27條舊NA已逐條讀，未見同核；含詞義誤命中的材料記憶與動物題不以此作近核。",
+    "cache_files": [
+      ".cache/wave50-human-prior.json"
+    ]
+  },
+  "source_identity": [
+    {
+      "id": "H50-S001",
+      "doi": "10.1016/j.cognition.2010.06.010",
+      "version": "2010正式刊本；作者實驗室PDF含一頁封面，正文54–61頁",
+      "canonical_url": "https://doi.org/10.1016/j.cognition.2010.06.010",
+      "read_copy": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Hall-et-al.-2010-Magic-at-the-Marketplace-Choice-Blindness-for-the-Taste-of-Jam-and-the-Smell-of-Tea.pdf",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "作者PDF與期刊DOI為同一研究，不算兩份佐證。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "H50-S001",
+      "reading_scope": "PDF pp4–8 Methods/Results/Discussion；p3 Fig1與p6 Fig2原頁目讀。p1載明final published version，正文DOI、頁碼及作者一致。",
+      "limitations": "瑞典單一超市的果醬品嚐與茶葉嗅聞作業，不是日常全部選擇的漏察率。察覺含即時、回溯與感官變化三類；未察覺不等於沒有味覺，研究未唯一辨別記憶、注意或標籤機制。未追讀本文引用的其他研究。",
+      "cache": {
+        "file": ".cache/wave50-human-choice.pdf",
+        "sha256": "21efddd4ee9c1686f95679e179adb5eac7c5863d74f80dece1aeb00d844f16cc",
+        "text_file": ".cache/wave50-human-choice.txt",
+        "text_sha256": "d1db3e95be9302875fe04351a5a682432c843f7a0cb784632f55632e76a6f3a1"
+      }
+    }
+  ],
+  "visual_reads": [
+    {
+      "source_id": "H50-S001",
+      "file": ".cache/wave50-human-choice-page3.png",
+      "sha256": "b06a5f2842308d3a7e0e815ec79c5e8e70037fde7ae0e62b7d1e3716ae22a9ac",
+      "read": "Root當日目讀原刊Fig1雙頭罐順序／Fig2三類察覺的堆疊柱；僅核證不作圖片授權。"
+    },
+    {
+      "source_id": "H50-S001",
+      "file": ".cache/wave50-human-choice-page6.png",
+      "sha256": "49ddae217146187a08388f62d7d890b60d67fb0ba9d6ebd8ed3ce64082176377",
+      "read": "Root當日目讀原刊Fig1雙頭罐順序／Fig2三類察覺的堆疊柱；僅核證不作圖片授權。"
+    }
+  ],
+  "sample_artifact": {
+    "theme_id": "W50H-T01",
+    "file": ".cache/w50-sample-human.json",
+    "sha256": "9f08352441ca1aaf478b5d855fba2aa7ce19ee64d427260c376b0d789cbdc95c",
+    "characters": 226,
+    "sample_to_chapter_segments": [
+      [
+        0
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "budget_seconds": 68,
+    "status": "完整樣稿已由root串行離線SAPI量時；非真人試讀。"
+  },
+  "timing_checks": [
+    {
+      "id": "W50H-T01",
+      "body_seconds": 68,
+      "sum_chapters": 68,
+      "core_seconds": {
+        "H50-001": 68
+      },
+      "caps": {
+        "H50-001": 80
+      }
+    }
+  ],
+  "reserve_candidate_ids": [],
+  "limits": [
+    "非最終稿與觀眾測試。",
+    "voice2015僅作者回應全文已讀，voice2014有效PDF尚未全文核；不計為來源閱讀或新核。",
+    "問路/邊界延伸未取得可讀正文，本輪NA。"
+  ],
+  "revision_history": [
+    "首版75→68秒；依實際56.804秒連讀移除過多停留，所有控制仍留。",
+    "非作者要求把為什麼改為是否察覺；本文未唯一區分注意、記憶、特徵配對或命名機制。"
+  ],
+  "removed_seconds": 7
+}

@@ -36,6 +36,13 @@
 不燒錄。有帶子的卡片內容區從 778px 縮到 636px，塞滿的 `table`／五步 `steps` 可能放不下，`render` 會照常
 報版面問題，撰稿縮短。
 
+內容區被擠矮時，flex 會把每個字框壓得比它的行還矮，最後一行的下半截就被切掉。2026-10-29 的快報就是這樣：
+140px 的第二行被切掉 28px，看起來像壓在白條下。`fitText`（`tools/video/render/browser.mjs`）只容許
+字形本來就會超出行高的那一點（約 1.45 em 減行高的一半），多出來的就縮字，最多縮到 60%；縮到底還切到，就報
+「text does not fit even at 60% size」。卡片上的字畫到白條範圍內，另外報「the card runs under the key
+band」。這套縮字規則的版本是 `templates.mjs` 的 `FIT_VERSION`：它算進畫格快取鍵，改版後每一格都會重畫；
+它也記在畫格與成片的紀錄裡，紙底、還沒上 YouTube 的影片在下一輪會重畫、重組成片（`fitStale`）。
+
 ## 範例
 
 `tools/video/templates/fixtures/paper/video.json`：`theme`、`keys`／`key`、`numeral`、`icon`、`typing` 全用上；

@@ -9,7 +9,8 @@
  * and writes with mode 600; `verify` judges the pairing by the balance line, not the exit code
  * (the real CLI exits 0 after printing a sign-in URL to a closed stdin); the wrapper refuses
  * without the upstream runner and otherwise forwards arguments unchanged; the sampling-profile
- * patcher rewrites exactly the eight upstream lines and refuses anything else; the manifest
+ * patcher rewrites exactly the eight upstream lines plus the two canvas lines, and the three
+ * runner lines, and refuses anything else; the manifest
  * check names every error that would otherwise cost compute units.
  */
 import assert from "node:assert/strict";
@@ -253,7 +254,8 @@ test("h3.sh: refuses without the upstream runner, otherwise forwards arguments a
     assert.deepEqual(usage, { argv: ["usage", "--json"], gpu: "A100", auth: "oauth2" });
     // first_frame without a size gets the 16:9-safe canvas appended (see the wrapper test below).
     const single = JSON.parse(run("bash", [H3, "single", "--image", "a.png", "--prompt", "p.txt", "--mode", "first_frame"], { ...withHome, COLAB_GPU: "L4" }).out);
-    assert.deepEqual(single.argv, ["single", "--image", "a.png", "--prompt", "p.txt", "--mode", "first_frame", "--width", "1312", "--height", "736"]);
+    // L4 has one machine shape, so the wrapper also asks for none (see the G4 test below).
+    assert.deepEqual(single.argv, ["single", "--image", "a.png", "--prompt", "p.txt", "--mode", "first_frame", "--width", "1312", "--height", "736", "--no-high-mem"]);
     assert.equal(single.gpu, "L4");
   } finally {
     rmSync(home, { recursive: true, force: true });
@@ -265,8 +267,9 @@ test("h3.sh: refuses without the upstream runner, otherwise forwards arguments a
 const PATCH = path.join(SCRIPTS, "patch_notebook.py");
 const CHECK = path.join(SCRIPTS, "check_manifest.py");
 
-// The eight lines of the pinned upstream notebook (killkli @ 0a0d3b9c) that the patcher rewrites,
-// in the two code cells they live in. A fixture, so the test needs no clone and no network.
+// The eight profile lines and the two canvas lines of the pinned upstream notebook (killkli @
+// 0a0d3b9c) that the patcher rewrites, in the two code cells they live in, and the three lines
+// of its runner.py. Fixtures, so the test needs no clone and no network.
 function fixtureNotebook() {
   return {
     cells: [
@@ -275,6 +278,8 @@ function fixtureNotebook() {
         'INFERENCE_MODE = os.environ.get("H3_INFERENCE_MODE", "first_frame").strip().lower()\n',
         'STEPS = 4 if INFERENCE_MODE == "reference" else 8\n',
         "LORA_STRENGTH = 1.0\n", 'SAMPLER_NAME = "euler"\n', 'SCHEDULER_NAME = "beta"\n', "DENOISE = 1.0\n",
+        "FIRST_FRAME_MEGAPIXELS = 0.98\n", "FIRST_FRAME_RESOLUTION_STEPS = 32\n",
+        'assert WIDTH * HEIGHT <= 1344 * 768, "輸出尺寸總面積不可超過官方 1344×768 畫布上限。"\n',
       ] },
       { cell_type: "code", metadata: {}, outputs: [], execution_count: null, source: [
         'BASE_REPO = "Comfy-Org/MiniMax-H3"\n', 'if INFERENCE_MODE == "reference":\n',
@@ -286,39 +291,76 @@ function fixtureNotebook() {
     metadata: {}, nbformat: 4, nbformat_minor: 5,
   };
 }
+const FIXTURE_RUNNER = [
+  "DEFAULT_WIDTH = 1344", "DEFAULT_HEIGHT = 768", "MAX_PIXELS = DEFAULT_WIDTH * DEFAULT_HEIGHT", "",
+  "def validate_dimensions(width, height, *, label=\"Video\"):",
+  "    if width * height > MAX_PIXELS:",
+  "        raise ValueError(f\"{label} dimensions may not exceed {MAX_PIXELS:,} pixels (1344×768).\")",
+  "    return width, height", "",
+  "            env_values = [",
+  "                \"H3_OUTPUT_PATH=\" + remote_output,",
+  "                \"H3_JOB_TIMEOUT_SECONDS=\" + str(min(exec_timeout, 7200)),",
+  "            ]", "",
+].join("\n");
+/** The fixture notebook and runner in a sandbox; returns their paths and the shared argv. */
+function fixtureFiles(home) {
+  const nb = path.join(home, "nb.ipynb");
+  const runner = path.join(home, "runner.py");
+  writeFileSync(nb, JSON.stringify(fixtureNotebook(), null, 1));
+  writeFileSync(runner, FIXTURE_RUNNER);
+  return { nb, runner, args: ["-I", PATCH, "--notebook", nb, "--runner", runner] };
+}
 const codeOf = (file) => JSON.parse(readFileSync(file, "utf8")).cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
 
-test("patch_notebook.py: smooth swaps both LoRAs to the 8-step files once, is idempotent, and stops with 2 when upstream's lines are gone", { skip: !POSIX }, () => {
+test("patch_notebook.py: smooth swaps both LoRAs to the 8-step files once, raises the canvas in notebook and runner, is idempotent, and stops with 2 when upstream's lines are gone", { skip: !POSIX }, () => {
   const { home, env } = sandbox();
-  const nb = path.join(home, "nb.ipynb");
-  writeFileSync(nb, JSON.stringify(fixtureNotebook(), null, 1));
-  const first = run(PYTHON, ["-I", PATCH, "--notebook", nb], env);
+  const { nb, runner, args } = fixtureFiles(home);
+  const first = run(PYTHON, args, env);
   assert.equal(first.code, 0, first.err);
-  assert.match(first.out, /patched steps, ref_repo, ref_file, ff_repo, ff_file, strength, scheduler: profile=smooth/);
+  assert.match(first.out, /patched steps, ref_repo, ref_file, ff_repo, ff_file, strength, scheduler, canvas, first_frame_mp; runner patched max_pixels, max_pixels_message, first_frame_env: profile=smooth/);
+  assert.match(first.out, /canvas=1920x1088/);
   const code = codeOf(nb);
+  assert.match(code, /assert WIDTH \* HEIGHT <= 1920 \* 1088, "輸出尺寸總面積不可超過 1920×1088（實測 A100 可跑；官方建議畫布 1344×768）。"/);
+  assert.match(code, /FIRST_FRAME_MEGAPIXELS = float\(os\.environ\.get\("H3_FIRST_FRAME_MEGAPIXELS", "0\.98"\)\)\nFIRST_FRAME_RESOLUTION_STEPS = 32/);
+  assert.doesNotMatch(code, /1344 \* 768/);
+  const runnerCode = readFileSync(runner, "utf8");
+  assert.match(runnerCode, /^MAX_PIXELS = 1920 \* 1088$/m);
+  assert.match(runnerCode, /pixels \(1920×1088\)\./);
+  assert.match(runnerCode, /"H3_JOB_TIMEOUT_SECONDS=" \+ str\(min\(exec_timeout, 7200\)\),\n                "H3_FIRST_FRAME_MEGAPIXELS=" \+ str\(round\(job\["width"\] \* job\["height"\] \/ 1e6, 3\)\),\n            \]/);
+  assert.doesNotMatch(runnerCode, /1344×768/);
   assert.match(code, /STEPS = 8 if INFERENCE_MODE == "reference" else 8/);
   assert.match(code, /LORA_REPO = "lightx2v\/Minimax-h3-Turbo"\n\s+LORA_REMOTE = "minimax_h3_ref2v_turbo_8step_v1\.0_768p_comfyui_bf16\.safetensors"/);
   assert.match(code, /LORA_REPO = "Comfy-Org\/MiniMax-H3"\n\s+LORA_REMOTE = "loras\/minimax_h3_fl2v_turbo_8step_v1\.0_comfyui_bf16\.safetensors"/);
   assert.match(code, /SCHEDULER_NAME = "simple"/);
   assert.match(code, /SAMPLER_NAME = "euler"/);
   assert.doesNotMatch(code, /4step_v0\.1|drbaph/);
-  const again = run(PYTHON, ["-I", PATCH, "--notebook", nb], env);
+  const again = run(PYTHON, args, env);
   assert.equal(again.code, 0, again.err);
   assert.match(again.out, /already applied: profile=smooth/);
   assert.equal(codeOf(nb), code, "a second run changes nothing");
+  assert.equal(readFileSync(runner, "utf8"), runnerCode, "a second run leaves the runner alone (the env line is not added twice)");
   // A different profile on an already patched notebook is upstream drift from the patcher's view.
-  const drift = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "hero"], env);
+  const drift = run(PYTHON, [...args, "--profile", "hero"], env);
   assert.equal(drift.code, 2);
   assert.match(drift.err, /expected exactly one `STEPS = 4 if INFERENCE_MODE == "reference" else 8`.*found 0/);
   assert.equal(codeOf(nb), code, "a refused run writes nothing");
+  // A runner whose lines moved is refused the same way, and nothing is written.
+  writeFileSync(runner, FIXTURE_RUNNER.replace("MAX_PIXELS = DEFAULT_WIDTH * DEFAULT_HEIGHT", "MAX_PIXELS = 1"));
+  writeFileSync(nb, JSON.stringify(fixtureNotebook(), null, 1));
+  const runnerDrift = run(PYTHON, args, env);
+  assert.equal(runnerDrift.code, 2);
+  assert.match(runnerDrift.err, /expected exactly one `MAX_PIXELS = DEFAULT_WIDTH \* DEFAULT_HEIGHT` in runner\.py, found 0/);
+  assert.match(codeOf(nb), /STEPS = 4 if INFERENCE_MODE/, "a refused run writes nothing");
+  const missing = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--runner", path.join(home, "nope.py")], env);
+  assert.equal(missing.code, 2);
+  assert.match(missing.err, /runner not found/);
 });
 
 test("patch_notebook.py: hero is 20 steps with the LoRA at strength 0, draft leaves upstream's text, --dry-run writes nothing, env overrides win", { skip: !POSIX }, () => {
   const { home, env } = sandbox();
-  const nb = path.join(home, "nb.ipynb");
+  const { nb, runner, args } = fixtureFiles(home);
   const pristine = JSON.stringify(fixtureNotebook(), null, 1);
-  writeFileSync(nb, pristine);
-  const hero = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_PROFILE: "hero" });
+  const hero = run(PYTHON, args, { ...env, H3_PROFILE: "hero" });
   assert.equal(hero.code, 0, hero.err);
   const code = codeOf(nb);
   assert.match(code, /STEPS = 20 if INFERENCE_MODE == "reference" else 20/);
@@ -326,29 +368,34 @@ test("patch_notebook.py: hero is 20 steps with the LoRA at strength 0, draft lea
   assert.match(code, /SAMPLER_NAME = "res_multistep"/);
 
   writeFileSync(nb, pristine);
-  const draft = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "draft"], env);
+  const draft = run(PYTHON, [...args, "--profile", "draft"], env);
   assert.equal(draft.code, 0, draft.err);
+  assert.match(draft.out, /patched strength, canvas, first_frame_mp; runner already applied: profile=draft/);
   const draftCode = codeOf(nb);
+  assert.match(draftCode, /1920 \* 1088/, "the canvas cap applies to every profile");
   assert.match(draftCode, /STEPS = 4 if INFERENCE_MODE == "reference" else 8/);
   assert.match(draftCode, /ref2v_turbo_4step_v0\.1/);
   assert.match(draftCode, /drbaph\/MiniMax-H3-Turbo-Lora-ComfyUI/);
   assert.match(draftCode, /SCHEDULER_NAME = "beta"/);
 
   writeFileSync(nb, pristine);
-  const dry = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--dry-run"], env);
+  writeFileSync(runner, FIXTURE_RUNNER);
+  const dry = run(PYTHON, [...args, "--dry-run"], env);
   assert.equal(dry.code, 0, dry.err);
   assert.match(dry.out, /^\+\s+"STEPS = 8 if INFERENCE_MODE/m);
+  assert.match(dry.out, /^\+MAX_PIXELS = 1920 \* 1088$/m);
   assert.equal(readFileSync(nb, "utf8"), pristine, "--dry-run leaves the notebook alone");
+  assert.equal(readFileSync(runner, "utf8"), FIXTURE_RUNNER, "--dry-run leaves the runner alone");
 
-  const custom = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_REF_STEPS: "6", H3_SCHEDULER: "beta" });
+  const custom = run(PYTHON, args, { ...env, H3_REF_STEPS: "6", H3_SCHEDULER: "beta" });
   assert.equal(custom.code, 0, custom.err);
   assert.match(codeOf(nb), /STEPS = 6 if INFERENCE_MODE == "reference" else 8/);
   assert.match(codeOf(nb), /SCHEDULER_NAME = "beta"/);
 
-  const bad = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_REF_STEPS: "many" });
+  const bad = run(PYTHON, args, { ...env, H3_REF_STEPS: "many" });
   assert.equal(bad.code, 2);
   assert.match(bad.err, /H3_REF_STEPS='many' is not a int/);
-  const unknown = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "fastest"], env);
+  const unknown = run(PYTHON, [...args, "--profile", "fastest"], env);
   assert.equal(unknown.code, 2);
   assert.match(unknown.err, /unknown profile 'fastest'/);
 });
@@ -385,6 +432,18 @@ test("check_manifest.py: a sound manifest passes; 4 seconds and a stretched firs
   assert.match(warned.out, /4 s is 107 frames, under the 124-frame range/);
   if (hasFfprobe) assert.match(warned.out, /first frame 1920x1080 \(1\.778\) does not match the 1344x768 canvas/);
   assert.match(warned.out, /0 error\(s\), [12] warning\(s\)/);
+
+  // The 1920x1088 canvas the patched notebook and runner accept passes; anything over its area is an error.
+  const full = path.join(dir, "full.json");
+  writeFileSync(full, JSON.stringify({ jobs: [{ id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 6, width: 1920, height: 1088, output_name: "s01-t1.mp4" }] }));
+  const fullResult = run(PYTHON, ["-I", CHECK, full], env);
+  assert.equal(fullResult.code, 0, fullResult.err + fullResult.out);
+  assert.doesNotMatch(fullResult.err, /exceeds/);
+  const over = path.join(dir, "over.json");
+  writeFileSync(over, JSON.stringify({ jobs: [{ id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 6, width: 1920, height: 1120, output_name: "s01-t1.mp4" }] }));
+  const overResult = run(PYTHON, ["-I", CHECK, over], env);
+  assert.equal(overResult.code, 1);
+  assert.match(overResult.err, /s01: 1920x1120 exceeds the 1920x1088 area/);
 });
 
 test("check_manifest.py: the errors that would otherwise cost compute units exit 1 and are all named", { skip: !POSIX }, () => {
@@ -508,12 +567,12 @@ test("check_images_manifest.py: the errors that would cost compute units exit 1 
   writeFileSync(bad, JSON.stringify({ jobs: [
     { ...job, reference_images: [...job.reference_images, "refs/xuyan.png"] },
     { ...job, id: "s02", reference_images: ["refs/missing.png"], width: 1000, height: 736, seed: -1, latent: "image2" },
-    { ...job, id: "s02", prompt_file: undefined, prompt: "image 4 is the sky", width: 1344, height: 1024 },
+    { ...job, id: "s02", prompt_file: undefined, prompt: "image 4 is the sky", width: 1920, height: 1120 },
     { id: "s03", reference_images: ["refs/set.png"], prompt: "   " },
   ] }));
   const result = run(PYTHON, ["-I", CHECK_IMAGES, bad], env);
   assert.equal(result.code, 1);
-  for (const pattern of [/s01: reference_images must list 1-3 images/, /s02: reference image missing or empty: refs\/missing\.png/, /width=1000 must be a positive multiple of 16/, /seed=-1/, /latent='image2'/, /s02: duplicate id/, /prompt names image 4 but the job has 3 image\(s\)/, /1344x1024 exceeds the 1344x768 area/, /duplicate output_name s01-t1\.png/, /s03: the prompt is empty/]) {
+  for (const pattern of [/s01: reference_images must list 1-3 images/, /s02: reference image missing or empty: refs\/missing\.png/, /width=1000 must be a positive multiple of 16/, /seed=-1/, /latent='image2'/, /s02: duplicate id/, /prompt names image 4 but the job has 3 image\(s\)/, /1920x1120 exceeds the 1920x1088 area/, /duplicate output_name s01-t1\.png/, /s03: the prompt is empty/]) {
     assert.match(result.err, pattern);
   }
   const many = path.join(dir, "many.json");
@@ -560,4 +619,223 @@ test("h3.sh images: refuses a broken manifest before any upload; otherwise paint
   assert.match(ownedCalls, /stop --session qie-/);
   assert.ok(!/qie_s01_/.test(ownedCalls), "s01 was skipped");
   assert.ok(existsSync(path.join(dir, "out2", "s02-t1.png")));
+});
+
+// ---- The three-stage route (references/three-stage.md, added 2026-10-30): G4, refine, SeedVR2 ----
+
+const REFINE = path.join(SCRIPTS, "refine.py");
+const REFINE_NOTEBOOK = path.join(ROOT, ".agents", "skills", "minimax-h3-colab", "assets", "h3_refine.ipynb");
+const UPSCALE_NOTEBOOK = path.join(ROOT, ".agents", "skills", "minimax-h3-colab", "assets", "seedvr2_upscale.ipynb");
+
+// A colab CLI for the stage runners: records every call; a download writes a small file, and the
+// SeedVR2 tarball holds <clip>_1080.mp4 for every clip uploaded so far.
+const FAKE_COLAB_STAGES = `#!/usr/bin/env bash
+echo "$*" >> "$FAKE_COLAB_LOG"
+case " $* " in
+  *" new "*|*" upload "*|*" stop "*) exit 0 ;;
+  *" exec "*) echo "REFINE_FRAMES: 158"; echo "REFINE_SECONDS: 12.5"; echo "SEEDVR2_SECONDS: a.mp4 9.0"; exit 0 ;;
+  *" download "*s3_out.tar*)
+    out="\${@: -1}"; stage="$(mktemp -d)"
+    for name in $(grep -o 's3in__[A-Za-z0-9_-]*\\.mp4' "$FAKE_COLAB_LOG" | sed 's/^s3in__//; s/\\.mp4$//'); do printf 'mp4' > "$stage/\${name}_1080.mp4"; done
+    tar -cf "$out" -C "$stage" . ; exit 0 ;;
+  *" download "*) out="\${@: -1}"; printf 'refined-mp4' > "$out"; exit 0 ;;
+  *) echo "fake colab: unexpected $*" >&2; exit 9 ;;
+esac
+`;
+
+// --detached: the launcher exec answers CD_LAUNCHED; each probe exec answers "alive" once, then the
+// finished log (with the done marker) and "dead". Uploads of the joined job script are kept so the
+// test can read the environment it was started with.
+const FAKE_COLAB_DETACHED = `#!/usr/bin/env bash
+echo "$*" >> "$FAKE_COLAB_LOG"
+file=""; prev=""; for a in "$@"; do [ "$prev" = "--file" ] && file="$a"; prev="$a"; done
+case " $* " in
+  *" new "*|*" stop "*) exit 0 ;;
+  *" status "*) echo "Status: running"; exit 0 ;;
+  *" upload "*_job.py*) src="\${@: -2:1}"; cp "$src" "$FAKE_COLAB_JOBS/$(basename "\${@: -1}")"; exit 0 ;;
+  *" upload "*) exit 0 ;;
+  *" exec "*)
+    if grep -q CD_LAUNCHED "$file"; then echo "CD_LAUNCHED 4242"; exit 0; fi
+    n=$(cat "$FAKE_COLAB_POLLS" 2>/dev/null || echo 0); n=$((n+1)); echo $n > "$FAKE_COLAB_POLLS"
+    if [ $((n % 2)) = 1 ]; then echo "CD_PROBE alive"; echo "still refining… 0 s"; exit 0; fi
+    echo "CD_PROBE dead"; echo "REFINE_FRAMES: 158"; echo "REFINE_SECONDS: 12.5"; echo "SEEDVR2_SECONDS: a.mp4 9.0"; echo "COLAB_DETACHED_DONE"; exit 0 ;;
+  *" download "*s3_out.tar*)
+    out="\${@: -1}"; stage="$(mktemp -d)"
+    for name in $(grep -o 's3in__[A-Za-z0-9_-]*\\.mp4' "$FAKE_COLAB_LOG" | sed 's/^s3in__//; s/\\.mp4$//'); do printf 'mp4' > "$stage/\${name}_1080.mp4"; done
+    tar -cf "$out" -C "$stage" . ; exit 0 ;;
+  *" download "*) out="\${@: -1}"; printf 'refined-mp4' > "$out"; exit 0 ;;
+  *) echo "fake colab: unexpected $*" >&2; exit 9 ;;
+esac
+`;
+
+function stagesDir(fake = FAKE_COLAB_STAGES) {
+  const { home, env } = sandbox();
+  writeFileSync(path.join(home, "bin", "colab"), fake);
+  const dir = path.join(home, "stages");
+  mkdirSync(path.join(dir, "draft"), { recursive: true });
+  for (const name of ["s21-st1.mp4", "s34-st1.mp4", "s21-736.png", "s34-736.png", "s21.txt"]) writeFileSync(path.join(dir, "draft", name), "x");
+  const job = { id: "s21", input_video: "draft/s21-st1.mp4", first_frame: "draft/s21-736.png", prompt_file: "draft/s21.txt", seed: 303000, output_name: "s21-st2.mp4" };
+  mkdirSync(path.join(home, "jobs"));
+  return { home, env: { ...env, FAKE_COLAB_LOG: path.join(home, "calls.log"), FAKE_COLAB_JOBS: path.join(home, "jobs"), FAKE_COLAB_POLLS: path.join(home, "polls") }, dir, job };
+}
+
+test("h3.sh refine --detached: each job starts as a detached script with its settings, is polled until done, then downloaded", { skip: !POSIX }, () => {
+  const { home, env, dir, job } = stagesDir(FAKE_COLAB_DETACHED);
+  const manifest = path.join(dir, "r.json");
+  writeFileSync(manifest, JSON.stringify({ jobs: [job, { ...job, id: "s34", input_video: "draft/s34-st1.mp4", first_frame: "draft/s34-736.png", output_name: "s34-st2.mp4", sigma_start: 0.7 }] }));
+  const progress = path.join(dir, "p.json");
+  const done = run("bash", [H3, "refine", "--manifest", manifest, "--output-dir", path.join(dir, "out"), "--progress", progress, "--session", "zt", "--detached", "--poll", "0"], env);
+  assert.equal(done.code, 0, done.err + done.out);
+  const state = JSON.parse(readFileSync(progress, "utf8"));
+  assert.deepEqual(state.jobs.map((j) => [j.id, j.status, j.frames, j.graph_seconds]), [["s21", "completed", 158, 12.5], ["s34", "completed", 158, 12.5]]);
+  const calls = readFileSync(env.FAKE_COLAB_LOG, "utf8").trim().split("\n");
+  assert.ok(!calls.some((c) => / exec .*h3_refine\.ipynb/.test(c)), "the notebook is never run attached");
+  assert.equal(calls.filter((c) => / exec /.test(c)).length, 6, "per job: one launch and two polls");
+  const script = readFileSync(path.join(home, "jobs", "h3r_s34_job.py"), "utf8");
+  assert.match(script, /os\.environ\['R_SIGMA_START'\] = '0\.7'/);
+  assert.match(script, /os\.environ\['R_OUTPUT_PATH'\] = '\/content\/h3r_s34_refined\.mp4'/);
+  assert.ok(script.trimEnd().endsWith("print('COLAB_DETACHED_DONE', flush=True)"));
+  assert.equal(readFileSync(path.join(dir, "out", "s34-st2.mp4"), "utf8"), "refined-mp4");
+  assert.ok(!calls.some((c) => / stop /.test(c)), "a given session is left up");
+});
+
+test("h3.sh upscale --detached: SeedVR2 runs detached with the model in its environment, then the tar is unpacked", { skip: !POSIX }, () => {
+  const { home, env, dir } = stagesDir(FAKE_COLAB_DETACHED);
+  const refined = path.join(dir, "refined");
+  mkdirSync(refined);
+  for (const name of ["s21.mp4", "s34.mp4"]) writeFileSync(path.join(refined, name), "x");
+  const done = run("bash", [H3, "upscale", "--input-dir", refined, "--output-dir", path.join(dir, "final"), "--session", "zt", "--detached", "--poll", "0"], env);
+  assert.equal(done.code, 0, done.err + done.out);
+  const script = readFileSync(path.join(home, "jobs", "s3_run_job.py"), "utf8");
+  assert.match(script, /os\.environ\['S3_DIT_MODEL'\] = 'seedvr2_ema_7b_fp16\.safetensors'/);
+  for (const name of ["s21_1080.mp4", "s34_1080.mp4"]) assert.ok(existsSync(path.join(dir, "final", name)), name);
+});
+
+test("colab_detached: a run that dies without the done marker fails with the end of its log", { skip: !POSIX }, () => {
+  const { home, env } = stagesDir(FAKE_COLAB_DETACHED.replace('echo "COLAB_DETACHED_DONE"; ', 'echo "Traceback: boom"; '));
+  const nb = path.join(home, "nb.ipynb");
+  writeFileSync(nb, JSON.stringify({ cells: [{ cell_type: "code", source: ["print('hi')\n"] }] }));
+  const code = `import sys; sys.path.insert(0, ${JSON.stringify(SCRIPTS)})\nimport colab_detached, pathlib\ntry:\n    colab_detached.run('zt', pathlib.Path(${JSON.stringify(nb)}), {'A': '1'}, '/content/x', poll_s=0, max_wait=30)\nexcept RuntimeError as e:\n    print('FAILED', e)`;
+  const out = run(PYTHON, ["-I", "-c", code], env);
+  assert.match(out.out, /FAILED the detached run ended without finishing:[\s\S]*Traceback: boom/);
+});
+
+test("h3.sh: G4 and L4 get --no-high-mem for batch, single and start; A100 and an explicit choice are left alone", { skip: !POSIX }, () => {
+  const { home, env } = sandbox();
+  try {
+    const upstream = path.join(home, "upstream");
+    mkdirSync(path.join(upstream, "scripts"), { recursive: true });
+    writeFileSync(path.join(upstream, "scripts", "runner.py"), "import json, sys\nprint(json.dumps(sys.argv[1:]))\n");
+    const call = (args, extra = {}) => JSON.parse(run("bash", [H3, ...args], { ...env, MINIMAX_H3_COLAB_HOME: upstream, ...extra }).out);
+    assert.deepEqual(call(["batch", "--no-check", "--manifest", "m.json"]), ["batch", "--manifest", "m.json"]);
+    assert.deepEqual(call(["batch", "--no-check", "--manifest", "m.json"], { COLAB_GPU: "G4" }), ["batch", "--manifest", "m.json", "--no-high-mem"]);
+    assert.deepEqual(call(["single", "--gpu", "g4", "--mode", "reference", "--image", "a.png"]), ["single", "--gpu", "g4", "--mode", "reference", "--image", "a.png", "--no-high-mem"]);
+    assert.deepEqual(call(["start", "--session", "s"], { COLAB_GPU: "L4" }), ["start", "--session", "s", "--gpu", "L4", "--no-high-mem"]);
+    assert.deepEqual(call(["start", "--session", "s", "--high-mem"], { COLAB_GPU: "G4" }), ["start", "--session", "s", "--high-mem", "--gpu", "G4"]);
+  } finally {
+    rmSync(home, { recursive: true, force: true });
+  }
+});
+
+test("h3.sh start: passes COLAB_GPU as --gpu (upstream start defaults to A100), an explicit --gpu wins", { skip: !POSIX }, () => {
+  const { home, env } = sandbox();
+  try {
+    const upstream = path.join(home, "upstream");
+    mkdirSync(path.join(upstream, "scripts"), { recursive: true });
+    writeFileSync(path.join(upstream, "scripts", "runner.py"), "import json, sys\nprint(json.dumps(sys.argv[1:]))\n");
+    const call = (args, extra = {}) => JSON.parse(run("bash", [H3, ...args], { ...env, MINIMAX_H3_COLAB_HOME: upstream, ...extra }).out);
+    assert.deepEqual(call(["start", "--session", "s"], { COLAB_GPU: "G4" }), ["start", "--session", "s", "--gpu", "G4", "--no-high-mem"]);
+    assert.deepEqual(call(["start", "--session", "s"]), ["start", "--session", "s", "--gpu", "A100"]);
+    assert.deepEqual(call(["start", "--session", "s", "--gpu", "A100"], { COLAB_GPU: "G4" }), ["start", "--session", "s", "--gpu", "A100"]);
+    assert.deepEqual(call(["start", "--session", "s", "--gpu=L4"], { COLAB_GPU: "A100" }), ["start", "--session", "s", "--gpu=L4", "--no-high-mem"]);
+  } finally {
+    rmSync(home, { recursive: true, force: true });
+  }
+});
+
+test("h3_refine.ipynb and seedvr2_upscale.ipynb: valid notebooks whose cells compile and read what the runners send", { skip: !POSIX }, () => {
+  for (const [file, names, needles] of [
+    [REFINE_NOTEBOOK, ["R_WIDTH", "R_HEIGHT", "R_SIGMA_START", "R_STEPS", "R_SEED", "R_INPUT_VIDEO", "R_FIRST_FRAME", "R_OUTPUT_PATH", "R_PROMPT_FILE", "R_JOB_TIMEOUT_SECONDS", "R_GUIDE", "R_SIGMAS", "R_SAMPLER"],
+      ['"ManualSigmas"', '"LTXVConcatAVLatent"', '"MiniMaxH3ImageToVideo"', '"MiniMaxH3AddGuide"', '"VAEEncodeTiled"', "SHIFT = 12.0", "REFINE_SECONDS:", "REFINE_FRAMES:", "(LENGTH - 5) % 17 == 0"]],
+    [UPSCALE_NOTEBOOK, ["S3_DIT_MODEL", "S3_BATCH_SIZE", "S3_PREPEND_FRAMES"],
+      ["4490bd1f482e026674543386bb2a4d176da245b9", "trim=start_frame=", "crop=1920:1080", "SEEDVR2_SECONDS:", "s3in__", "frame count changed"]],
+  ]) {
+    const notebook = JSON.parse(readFileSync(file, "utf8"));
+    assert.equal(notebook.nbformat, 4);
+    const compiled = run(PYTHON, ["-I", "-c", "import json, sys\nnb = json.load(open(sys.argv[1], encoding='utf-8'))\nfor i, c in enumerate(nb['cells']):\n    if c['cell_type'] == 'code': compile(''.join(c['source']), f'cell {i}', 'exec')\nprint('compiled')", file], process.env);
+    assert.equal(compiled.code, 0, compiled.err);
+    const text = notebook.cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
+    for (const name of names) assert.match(text, new RegExp(`os\\.environ\\.get\\("${name}"`), `${path.basename(file)} reads ${name}`);
+    for (const needle of needles) assert.ok(text.includes(needle), `${path.basename(file)}: ${needle}`);
+  }
+  // A second upscale on the same session must not pick up the first one's clips: the folders are
+  // emptied before this run's uploads are moved in.
+  const upscale = JSON.parse(readFileSync(UPSCALE_NOTEBOOK, "utf8")).cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
+  const emptied = upscale.indexOf('for old in [*SRC.glob("*.mp4"), *DST.glob("*.mp4")]:');
+  assert.ok(emptied > 0 && emptied < upscale.indexOf('for uploaded in Path("/content").glob("s3in__*.mp4"):'), "seedvr2_upscale.ipynb empties s3_in and s3_out before moving the uploads in");
+});
+
+test("refine.py --check: a sound manifest passes; every error that would waste a session is named, and nothing is uploaded", { skip: !POSIX }, () => {
+  const { env, dir, job } = stagesDir();
+  const good = path.join(dir, "r.json");
+  writeFileSync(good, JSON.stringify({ jobs: [job, { ...job, id: "s34", input_video: "draft/s34-st1.mp4", first_frame: "draft/s34-736.png", output_name: "s34-st2.mp4", sigma_start: 0.7 }] }));
+  const ok = run(PYTHON, ["-I", REFINE, "--manifest", good, "--check"], env);
+  assert.equal(ok.code, 0, ok.err);
+  assert.match(ok.out, /2 job\(s\), 0 error\(s\)/);
+  const bad = path.join(dir, "bad.json");
+  writeFileSync(bad, JSON.stringify({ jobs: [
+    { ...job, sigma_start: 0.99, steps: 0, width: 1000, seed: -1 },
+    { ...job, input_video: "draft/missing.mp4", prompt_file: undefined, prompt: " ", width: 1344, height: 1024 },
+    { ...job, id: "s99", output_name: "../out.mp4" },
+    { ...job, id: "s98", output_name: "s98.mp4", guide: "source", sigmas: [0.5, 0.7, 0], sampler: "Euler A" },
+  ] }));
+  const result = run(PYTHON, ["-I", REFINE, "--manifest", bad, "--check"], env);
+  assert.equal(result.code, 1);
+  for (const pattern of [/sigma_start=0\.99/, /steps=0/, /width=1000 must be a positive multiple of 32/, /seed=-1/, /s21: duplicate id/, /input_video missing or empty: draft\/missing\.mp4/, /the prompt is empty/, /1344x1024 exceeds/, /output_name must be a plain \.mp4/, /s98: guide='source' must be none or draft/, /s98: sigmas must be 2-31 numbers falling from below 1 to 0/, /s98: sampler='Euler A' is not a sampler name/]) {
+    assert.match(result.err, pattern);
+  }
+  const refused = run("bash", [H3, "refine", "--manifest", bad, "--output-dir", path.join(dir, "out")], env);
+  assert.equal(refused.code, 1);
+  assert.ok(!existsSync(env.FAKE_COLAB_LOG), "colab was never called");
+});
+
+test("h3.sh refine: one G4 session without high-RAM, three uploads per job, the settings in the environment, then stop", { skip: !POSIX }, () => {
+  const { env, dir, job } = stagesDir();
+  const manifest = path.join(dir, "r.json");
+  writeFileSync(manifest, JSON.stringify({ jobs: [job, { ...job, id: "s34", input_video: "draft/s34-st1.mp4", first_frame: "draft/s34-736.png", output_name: "s34-st2.mp4", sigma_start: 0.7, steps: 8, guide: "draft", sigmas: [0.909375, 0.857143, 0.666667, 0], sampler: "er_sde" }] }));
+  const progress = path.join(dir, "p.json");
+  const done = run("bash", [H3, "refine", "--manifest", manifest, "--output-dir", path.join(dir, "out"), "--progress", progress], env);
+  assert.equal(done.code, 0, done.err + done.out);
+  const state = JSON.parse(readFileSync(progress, "utf8"));
+  assert.equal(state.status, "completed");
+  assert.equal(state.session_status, "stopped");
+  assert.deepEqual(state.jobs.map((j) => [j.id, j.status, j.frames, j.graph_seconds]), [["s21", "completed", 158, 12.5], ["s34", "completed", 158, 12.5]]);
+  const calls = readFileSync(env.FAKE_COLAB_LOG, "utf8").trim().split("\n");
+  assert.match(calls[0], /new --session h3r-\S+ --gpu G4$/, "G4 is the default and asks for no high-RAM shape");
+  assert.equal(calls.filter((c) => / upload /.test(c)).length, 6);
+  const execs = calls.filter((c) => / exec /.test(c));
+  assert.match(execs[0], /--env R_INPUT_VIDEO=\/content\/h3r_s21_draft\.mp4 --env R_FIRST_FRAME=\/content\/h3r_s21_first_frame\.png .*--env R_WIDTH=1312 --env R_HEIGHT=736 --env R_SIGMA_START=0\.5 --env R_STEPS=10 --env R_SEED=303000/);
+  assert.match(execs[0], /--env R_GUIDE=none --env R_SAMPLER=res_multistep --env R_SIGMAS= /, "the defaults keep the first-frame-only refine");
+  assert.match(execs[1], /R_SIGMA_START=0\.7 --env R_STEPS=8/);
+  assert.match(execs[1], /--env R_GUIDE=draft --env R_SAMPLER=er_sde --env R_SIGMAS=0\.909375, 0\.857143, 0\.666667, 0 /);
+  assert.match(execs[1], /--file \S+h3_refine\.ipynb$/);
+  assert.match(calls.at(-1), /stop --session h3r-/);
+  assert.equal(readFileSync(path.join(dir, "out", "s34-st2.mp4"), "utf8"), "refined-mp4");
+});
+
+test("h3.sh upscale: uploads to /content (no folders), passes the model and batch, unpacks every <clip>_1080.mp4", { skip: !POSIX }, () => {
+  const { env, dir } = stagesDir();
+  const refined = path.join(dir, "refined");
+  mkdirSync(refined);
+  for (const name of ["s21-st2.mp4", "s34-st2.mp4"]) writeFileSync(path.join(refined, name), "x");
+  const badBatch = run("bash", [H3, "upscale", "--input-dir", refined, "--batch-size", "80"], env);
+  assert.equal(badBatch.code, 1);
+  assert.match(badBatch.err, /4n\+1/);
+  const done = run("bash", [H3, "upscale", "--input-dir", refined, "--output-dir", path.join(dir, "final"), "--session", "kept"], env);
+  assert.equal(done.code, 0, done.err + done.out);
+  const calls = readFileSync(env.FAKE_COLAB_LOG, "utf8");
+  assert.ok(!/ new /.test(calls) && !/ stop /.test(calls), "a named session is reused and left up");
+  assert.match(calls, /upload --session kept \S+s21-st2\.mp4 \/content\/s3in__s21-st2\.mp4/);
+  assert.match(calls, /--env S3_DIT_MODEL=seedvr2_ema_7b_fp16\.safetensors --env S3_BATCH_SIZE=81/);
+  for (const name of ["s21-st2_1080.mp4", "s34-st2_1080.mp4"]) assert.ok(existsSync(path.join(dir, "final", name)), name);
 });

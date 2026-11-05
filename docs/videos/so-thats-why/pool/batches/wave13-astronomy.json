@@ -1,0 +1,605 @@
+{
+  "batch_id": "wave13-astronomy-20261101",
+  "created_on": "2026-11-01",
+  "scope": "系外行星光變、恆星表面訊號與觀測歧義；11個限定題級候選，原論文模型/歷史測量/官方管線說明分開，不報當期行星名錄或製作核准。",
+  "sources": [
+    {
+      "id": "X13-S001",
+      "url": "https://arxiv.org/pdf/1303.0052",
+      "title": "Identification of Background False Positives from Kepler Data",
+      "publisher": "Bryson et al.; original research author manuscript on arXiv",
+      "version": "arXiv:1303.0052v2, 2013-06-12",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀PDF pp.2,4–6、20、24、26、36正文；用目錄/頁首定位其餘頁，未把72頁全文稱為已核。",
+      "locator": "§1.1–1.2 PDF pp.4–6; §2.3 p.20; §3–3.1 pp.24,26; Sources of PRF fit error p.36",
+      "summary": "背景食雙星的深食可被目標星光稀釋；前後差分像可找變暗來源，混光與系統誤差限制定位。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 不沿用舊目錄假陽性比例或個別候選現行身分；arXiv與正式論文為同項研究，不計兩份證據。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/bryson.pdf",
+        "sha256": "5733fab1e29126d9ee47591df4b189c4f666e3056cef0a2df55521c615b74609",
+        "text_path": ".cache/wave13-astronomy-sources/bryson.txt",
+        "text_sha256": "1a4c15b235e1e0cdaaf1e3a1adc72220bcaef5f2e9723fe63ba4705e01eaf264"
+      },
+      "retrieval_url": "https://arxiv.org/pdf/1303.0052"
+    },
+    {
+      "id": "X13-S002",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/docs/DVSummaryPageCompanion.html",
+      "title": "Description of the Kepler Data Validation one-page summary reports",
+      "publisher": "NASA Exoplanet Archive / Kepler Project",
+      "version": "Quarters 1–12, Version 1.0, delivered 2012-12-07",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀頁面Introduction及A–G正文，採用E的奇偶深度與F的差分定位條件；未採舊管線閾值為現行通用規範。",
+      "locator": "Introduction; E. Odd-Even Transit Plot; F. Centroid Offset Plot",
+      "summary": "交替深淺可揭露把雙星兩次食誤折成半週期；奇偶相同本身不能證明行星。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "official_mission_documentation",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 官方歷史技術說明，不是另一份獨立測量；F與X13-S001同Kepler方法相互關聯。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/kepler.html",
+        "sha256": "5c4a07828ac252e8c3643a7f929e5446c8aedf2ed863ae21b7b61819c7349930",
+        "text_path": ".cache/wave13-astronomy-sources/kepler.txt",
+        "text_sha256": "676656c696861177bcfc3c40246ae1fbe849a1cebe35b690ae9496cfed875f81"
+      },
+      "retrieval_url": "https://exoplanetarchive.ipac.caltech.edu/docs/DVSummaryPageCompanion.html"
+    },
+    {
+      "id": "X13-S003",
+      "url": "https://arxiv.org/pdf/1203.5537",
+      "title": "The Photoeccentric Effect and Proto-Hot Jupiters I. Measuring photometric eccentricities of individual transiting planets",
+      "publisher": "Dawson & Johnson; ApJ author manuscript on arXiv",
+      "version": "arXiv:1203.5537v3, 2012-11-02; paper published 2012-08-21",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀PDF pp.2–5正文與式1–8周邊假設、Fig.1圖說；未重做MCMC或逐讀個案擬合結果。",
+      "locator": "Introduction PDF p.2; §2, §2.1–2.2 pp.3–5",
+      "summary": "凌日時長同時受路徑、速度和恆星密度影響；進出時間與外部密度可協助約束偏心軌道。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 限文內近似及非擦邊、高訊噪比條件；不把短凌日直接等同唯一偏心率。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/photoecc.pdf",
+        "sha256": "8f31fee2a434c764bebdcc5d6d0ed3d12235b186515070fc942349022ffc33e0",
+        "text_path": ".cache/wave13-astronomy-sources/photoecc.txt",
+        "text_sha256": "1d9cc8b08d28c61e7e7519c5a9cdae611d1a2278a63529599ef6c5e9fd15ee53"
+      },
+      "retrieval_url": "https://arxiv.org/pdf/1203.5537"
+    },
+    {
+      "id": "X13-S004",
+      "url": "https://arxiv.org/pdf/1201.5409",
+      "title": "Transit Timing Observations from Kepler: II. Confirmation of Two Multiplanet Systems via a Non-parametric Correlation Analysis",
+      "publisher": "Ford et al.; ApJ author manuscript on arXiv",
+      "version": "arXiv:1201.5409v1, 2012-01-25; ApJ in press version",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀PDF pp.2–4、6–7及p.20 Discussion；未重做高斯過程、N體積分或逐核全表。",
+      "locator": "§2–3.1 PDF p.3; §3.5–3.6 p.6; §4.2–4.3 p.7; §7 p.20",
+      "summary": "兩組凌日時刻有顯著相關偏差可支持共同受引力擾動；還須穩定性質量限制與其他假陽性排除。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 同一宿主不必等於最亮的目標星；只把Kepler-23/24當當年方法案例，不報現行目錄數。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/ttv.pdf",
+        "sha256": "bada10689dad1d93183232bc442feb1f4651f2a7d45bca0eb79863cf7460db68",
+        "text_path": ".cache/wave13-astronomy-sources/ttv.txt",
+        "text_sha256": "455e62ec3f00599d4145147d1855c9c7ad979c847c978d3b85ddf7b48703aedc"
+      },
+      "retrieval_url": "https://arxiv.org/pdf/1201.5409"
+    },
+    {
+      "id": "X13-S005",
+      "url": "https://arxiv.org/pdf/1409.3594",
+      "title": "SOAP 2.0: A tool to estimate the photometric and radial velocity variations induced by stellar spots and plages",
+      "publisher": "Dumusque, Boisse & Santos; original modelling study on arXiv",
+      "version": "arXiv:1409.3594v1, 2014-09-11",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀PDF pp.2–5、7、10、22正文及Fig.1–2圖說；p.11開頭亦讀，未逐讀其餘模型參數掃描與資料擬合。",
+      "locator": "Introduction PDF p.2; §2.1–2.3 pp.3–5; §3.2 p.7; §3.3 p.10; discussion p.22",
+      "summary": "自轉星面的明暗失衡會扭曲譜線；磁場抑制對流也能造成不同的表觀視線速度訊號。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 模型以太陽安靜光球與黑子光譜代表區塊，對譜型及臨邊效應有明列限制；不沿用比值閾值作普遍診斷。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/soap.pdf",
+        "sha256": "1a004b127bc04df246f98feb1abee32e5daedb2125a88e9048444624cf6b72f1",
+        "text_path": ".cache/wave13-astronomy-sources/soap.txt",
+        "text_sha256": "ef2b37f9b07682adbdd0a90a092e3dc49763bdd84fc19a2121066361a6ad3613"
+      },
+      "retrieval_url": "https://arxiv.org/pdf/1409.3594"
+    },
+    {
+      "id": "X13-S006",
+      "url": "https://arxiv.org/pdf/1001.1638",
+      "title": "Using the Sun to estimate Earth-like planets detection capabilities II. Impact of plages",
+      "publisher": "Meunier, Desort & Lagrange; A&A author manuscript on arXiv",
+      "version": "arXiv:1001.1638v2, 2010-01-15",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀PDF pp.6–7對流藍移、磁場抑制與模型不確定性；另讀pp.4–5溫度/面積擬合背景，未逐核結果全表。",
+      "locator": "§2.3.1–2.3.2 PDF pp.6–7",
+      "summary": "較亮的上升顆粒在整體譜線中權重較高；磁性區抑制對流改變淨位移。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 歷史太陽模型，不將特定速度數字、觀測精度或行星不可偵測的舊時態外推至現在。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/convection.pdf",
+        "sha256": "75ee97e687cbcd0819164beee1c2f5b22b603cec75c59b5e2cebaacd450e1488",
+        "text_path": ".cache/wave13-astronomy-sources/convection.txt",
+        "text_sha256": "75e527286cedcafe618521f7aa635f4ec1c96e113d6b6aa63a702e39fcb769a4"
+      },
+      "retrieval_url": "https://arxiv.org/pdf/1001.1638"
+    },
+    {
+      "id": "X13-S007",
+      "url": "https://arxiv.org/pdf/1711.05691",
+      "title": "The Transit Light Source Effect: False Spectral Features and Incorrect Densities for M-dwarf Transiting Planets",
+      "publisher": "Rackham, Apai & Giampapa; ApJ author manuscript on arXiv",
+      "version": "arXiv:1711.05691v3, 2018-01-24; manuscript dated 2018-01-25",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀PDF pp.2–6、9及p.15 §4.2，含Figs.1–2圖說與式1–3假設；未逐核其餘數值表或TRAPPIST-1個案推估。",
+      "locator": "Introduction PDF pp.2–3; §2.1–2.3 pp.4–6; §3.1–3.2 p.9; §4.2 p.15",
+      "summary": "凌日通道光譜不等於整顆恆星平均；對稱分布的斑點又能避開旋轉光變測試。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 M矮星前向模型；溫度代表不同表面光譜、通道乾淨或已校正等是假設，不把模型覆蓋率當直接影像測量。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/tls.pdf",
+        "sha256": "18f027c4d1e49190cb1f04339010bb6eff8ffd629f598d10da211b2cd683acb6",
+        "text_path": ".cache/wave13-astronomy-sources/tls.txt",
+        "text_sha256": "7c7659103bb602029f558aaa668f2959028e64139f5db40d186c40ec39abc216"
+      },
+      "retrieval_url": "https://arxiv.org/pdf/1711.05691"
+    },
+    {
+      "id": "X13-S008",
+      "url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/12/STScI-01EVSR9MQCEW6XQ8EVQH08F26M.pdf",
+      "title": "Clouds in the atmosphere of the super-Earth exoplanet GJ 1214b",
+      "publisher": "Kreidberg et al.; original research author manuscript hosted by NASA/STScI",
+      "version": "2014 Nature study; public author manuscript; 2012–2013 HST/WFC3 observations",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀PDF pp.1–3方法/結果及p.4開頭展望；未讀Supplementary Information，未以摘要代替雲層截斷正文。",
+      "locator": "PDF pp.1–3, especially p.3 paragraph beginning The data show no evidence and following cloud-model paragraph",
+      "summary": "高處不透明層可截掉其下的吸收特徵；平坦透射光譜需連同精度與模型比較解讀。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 只講2012–2013資料的歷史推論與雲遮蔽機制，不宣稱這是GJ1214b截至今日的完整成分定論；NASA頁託管的是同篇作者稿，不另算NASA獨立驗證。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/cloud.pdf",
+        "sha256": "fafd680aa47e4bf04bebc99840d945d08bb7f47f79841d58c35e31c456653db6",
+        "text_path": ".cache/wave13-astronomy-sources/cloud.txt",
+        "text_sha256": "ec7b132419bd03bbe406acaee75c2142c49fb61773a7ea7f20cbf1dccb9b8533"
+      },
+      "retrieval_url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/12/STScI-01EVSR9MQCEW6XQ8EVQH08F26M.pdf"
+    },
+    {
+      "id": "X13-S009",
+      "url": "https://arxiv.org/pdf/0705.0993",
+      "title": "A map of the day-night contrast of the extrasolar planet HD 189733b",
+      "publisher": "Knutson et al.; Nature author manuscript on arXiv",
+      "version": "arXiv:0705.0993v1, 2007-05-07",
+      "accessed_on": "2026-11-01",
+      "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+      "reading_scope": "實讀PDF pp.1–5及p.10 Fig.3完整圖說；p.11–13只讀抽出的圖標籤，未宣稱目讀原圖；未重做偵測器校正與地圖反演。",
+      "locator": "PDF pp.2–5; Fig.3 caption p.10",
+      "summary": "隨可見半球改變的紅外光量可約束經度亮度分布，但重建依賴幾何、平滑與校正假設。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "source_kind": "original_research",
+      "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 當年8微米/半圈軌道案例；不採其微小偏心率或精確熱點角度為現行定論。圖無緯度資訊，不能畫成實拍氣象地圖。",
+      "author_cache": {
+        "path": ".cache/wave13-astronomy-sources/phase.pdf",
+        "sha256": "13b5269ed96954ba3ec028585bc2bd48d53fa9fd31b5120e9b7335d18ec8e9d0",
+        "text_path": ".cache/wave13-astronomy-sources/phase.txt",
+        "text_sha256": "b848227f9fe10dded4e00271b953e76884e1df16e1314760c30626e852ce28ce"
+      },
+      "retrieval_url": "https://arxiv.org/pdf/0705.0993"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "X13001",
+      "question": "星光只暗了一點，為什麼遮光的仍可能是另一顆恆星？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.blended_eclipse_flux_dilution",
+      "answer_target": "背景食雙星自己的深食，除以混有亮目標星的總光量後會變淺；單一總光曲線可能把遮光體大小判錯。",
+      "scope": "只比較同一量測孔徑內近似穩定目標星加背景食雙星；不是每個淺凌日都假，也不從深度單獨決定尺寸。",
+      "source_ids": [
+        "X13-S001"
+      ],
+      "source_locator": "§1.1–1.2 PDF pp.4–6",
+      "premise_status": "screened",
+      "notes": "與N072的週期遮光相比，新增混光稀釋條件。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "少掉的光占誰的總光量，會改變看起來有多小。",
+        "visual": "兩盞星光分開/相加，保持背景星食掉的光相同，只改分母；不放未核實的候選例名。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "X13002",
+      "question": "兩顆星糊成一團，怎麼知道究竟是哪顆在變暗？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.transit_difference_image_source_localization",
+      "answer_target": "將對準的食外平均影像減去食內影像，穩定光源近似抵消，留下變暗來源的像素分布；再估位置而非把總光心當目標星。",
+      "scope": "需足夠訊噪比、穩定配準與其餘光源近似不變；差分定位受擁擠、PRF誤差及小角距限制，沒偏移不保證真行星。",
+      "source_ids": [
+        "X13-S001",
+        "X13-S002"
+      ],
+      "source_locator": "Bryson §2.3 p.20, §3–3.1 pp.24,26, p.36; DV F",
+      "premise_status": "screened",
+      "notes": "光心位移與差分像作同一定位核心，不再拆兩題。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把不變的光扣掉，能問出總亮度曲線回答不了的「在哪裡」。",
+        "visual": "原創兩個重疊光斑：食外、食內、相減三格；亮點位置與真正星位分開標，低訊噪比再加不確定區。",
+        "seconds": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "id": "X13003",
+      "question": "亮度下降明明很規律，為什麼真正的週期可能長一倍？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.odd_even_eclipse_half_period_alias",
+      "answer_target": "食雙星每圈兩次食若被當成同一事件，折疊可採半週期；拆奇數/偶數後比較深度，可露出兩種遮擋。",
+      "scope": "限兩次食近等間隔而深度可分辨的歷史Kepler診斷；同深雙星可漏過，星斑與系統誤差另查，奇偶同深不是確認。",
+      "source_ids": [
+        "X13-S002"
+      ],
+      "source_locator": "E. Odd-Even Transit Plot; B/D對次食與偏心的限制",
+      "premise_status": "screened",
+      "notes": "與X2017尺寸量測不同，此處是事件識別與錯週期。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "規律不一定數對了一圈。",
+        "visual": "先把深淺交替六次疊一起，再以奇偶兩色分堆並畫兩星交換前後；不稱所有雙星次食都在半圈。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "X13004",
+      "question": "同樣隔幾天來一次，行星擋住星光的時間更短，就代表擦著邊走嗎？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.duration_ingress_density_eccentricity_degeneracy",
+      "answer_target": "短路徑與較快過境都會縮短總時長，但進出邊緣時間的變化不同；配合週期、半徑比及恆星密度，可約束偏心軌道的過境速度。",
+      "scope": "以論文高訊噪比、非擦邊、行星質量遠小於恆星等近似為入口；須保留恆星密度與近心方向退化，不憑總時長定唯一偏心率。",
+      "source_ids": [
+        "X13-S003"
+      ],
+      "source_locator": "Introduction p.2; §2–2.2 pp.3–5",
+      "premise_status": "screened",
+      "notes": "N014已講橢圓速度，這題增量是用兩種時間與外部密度拆解推論，不再教一次近快遠慢。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "時間變短，可能是路短，也可能跑快了；要看縮短的是哪一段。",
+        "visual": "控制週期與星徑，畫靠邊短弦/同弦快跑，並排總時長和進出時長；箭頭為模型示意。",
+        "seconds": [
+          70,
+          110
+        ]
+      }
+    },
+    {
+      "id": "X13005",
+      "question": "兩組凌日一組提早、一組延後，為什麼反而能支持它們是同一家的行星？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.correlated_ttv_shared_system_stability_mass_bound",
+      "answer_target": "相對各自等週期時刻的相關偏差可由同系統引力擾動造成；顯著性與穩定性質量上限合用，排除把獨立背景天體誤放在一起或當成恆星伴星。",
+      "scope": "限文內近鄰多凌日系統方法；不要求每系統都反相關或正弦，須排重疊食、星斑與測量相關誤差；共同宿主未必是最亮目標星。",
+      "source_ids": [
+        "X13-S004"
+      ],
+      "source_locator": "§3.1 p.3; §3.5–3.6 p.6; §4.2–4.3 p.7; §7 p.20",
+      "premise_status": "screened",
+      "notes": "不要以任意兩條相反曲線就宣布行星，穩定性是有假設的額外約束。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不完全準時的關聯，比兩個各自準時的鐘多透露一層關係。",
+        "visual": "兩排預計/實際過境刻度，畫偏差反向趨勢；另框固定週期卻增大假設質量的穩定性測試，不偽造N體結果。",
+        "seconds": [
+          70,
+          110
+        ]
+      }
+    },
+    {
+      "id": "X13006",
+      "question": "恆星光譜來回偏移，為什麼不一定是被行星拉著走？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.rotating_star_spot_flux_weighted_line_distortion",
+      "answer_target": "轉動星面的接近側與遠離側提供不同頻移；黑子改變其中一側的光量權重，整體譜線變形會產生表觀視線速度。",
+      "scope": "限未解析旋轉星面之斑點光量效應；實星還有對流與其他訊號，不把一次譜線變形當全部RV皆假。",
+      "source_ids": [
+        "X13-S005"
+      ],
+      "source_locator": "Introduction p.2; §2.1 pp.3–4 and Fig.1",
+      "premise_status": "screened",
+      "notes": "N071/P128是整體運動投影；這裡固定整體運動比較表面亮度不均。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讀到的位移，可能是不同速度區塊的投票權改變。",
+        "visual": "同一自轉星紅/藍兩半，黑子從接近側移向遠離側；並排整條譜線平移與局部缺光扭曲。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "X13007",
+      "question": "恆星沒有明顯變暗，為什麼測出的速度還會被表面磁性區改變？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.magnetic_convection_suppression_apparent_rv",
+      "answer_target": "較亮且占面積較多的上升顆粒使整體光譜偏藍；磁場抑制局部對流後，活躍區相對安靜區少了這個藍移，即使光量反差小也可改整體RV。",
+      "scope": "太陽型星的歷史觀測約束與模型；不把每顆星、每條譜線或每個磁區的位移視為同值，不宣稱當前儀器無法排除此效應。",
+      "source_ids": [
+        "X13-S005",
+        "X13-S006"
+      ],
+      "source_locator": "SOAP §2.2–2.3 p.5, §3.3 p.10, p.22限制; Meunier §2.3 pp.6–7",
+      "premise_status": "screened",
+      "notes": "與X13006光量權重變化不同，此處局部對流譜線本身改變；兩研究共享太陽對流背景，不當完全獨立證據。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不變暗不等於光譜的速度成分沒變。",
+        "visual": "亮上升/暗下沉顆粒並排，磁區前後先固定亮度權重再改局部線位移；與前題缺光的畫面分開。",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "X13008",
+      "question": "行星大氣光譜上的特徵，為什麼可能其實來自恆星表面的斑點？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.transit_chord_disk_spectral_mismatch",
+      "answer_target": "凌日遮住的通道與整個星面平均光譜若不同，拿後者當入射光基準，會把星面斑點/亮區的波長差異混進推得的行星透射光譜。",
+      "scope": "以M矮星前向模型為證，公式假設通道為乾淨光球或跨斑已校正；不宣稱某顆已測分子是誤判，也不把污染都當單一灰色比例。",
+      "source_ids": [
+        "X13-S007"
+      ],
+      "source_locator": "Introduction pp.2–3/Fig.1; §2.3 pp.5–6; §4.2 p.15",
+      "premise_status": "screened",
+      "notes": "N073教分子吸收，本題新增光源基準不相同的誤歸因。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "量大氣前，先確認背光與拿來比較的光是不是同一種。",
+        "visual": "斑點在通道外、行星通道乾淨的星面，分別取通道與全盤光譜；標示額外峰谷來自不同光源比例。",
+        "seconds": [
+          65,
+          105
+        ]
+      }
+    },
+    {
+      "id": "X13009",
+      "question": "行星的大氣光譜一片平，為什麼不能直接說它沒有大氣？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.high_cloud_deck_truncates_transmission_features",
+      "answer_target": "高處不透明雲/霾層可阻止星光穿到較深吸收區，截斷光譜特徵；須比較波段、精度與有雲/無雲模型，平坦本身不是無大氣證明。",
+      "scope": "採2012–2013 GJ1214b近紅外研究作歷史示例，不外推全部平坦光譜都有雲；大氣組成/尺度高度與儀器訊噪比亦影響特徵，非今日成分定案。",
+      "source_ids": [
+        "X13-S008"
+      ],
+      "source_locator": "PDF pp.2–3 model comparison; p.3 clouds block transmission paragraph",
+      "premise_status": "screened",
+      "notes": "與N073吸收及O3042寬波段平均不同，這裡是光路被截斷；進稿須另核最新個案狀態。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒看到特徵，有時是看不到更深處。",
+        "visual": "相同假設吸收層上方加/拿掉不透明頂層，畫掠過的光路與被截短的峰谷；不用雲成分或高度實數。",
+        "seconds": [
+          60,
+          95
+        ]
+      }
+    },
+    {
+      "id": "X13010",
+      "question": "行星表面拍不清楚，怎麼仍能推測哪一側比較亮？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.orbital_phase_hemisphere_kernel_longitude_mapping",
+      "answer_target": "不同軌道相位讓不同經度以不同投影權重出現在可見半球；時間上的總光量與次食基準可約束粗經度亮度分布，地圖是有假設的反演而非照片。",
+      "scope": "限2007 HD189733b半圈軌道8微米案例及潮汐鎖定/近側視/無臨邊變暗/平滑等模型；無緯度解析，校正與星斑影響須保留，不報舊熱點角度或偏心率為現況。",
+      "source_ids": [
+        "X13-S009"
+      ],
+      "source_locator": "PDF pp.2–5; Fig.3 caption p.10",
+      "premise_status": "screened",
+      "notes": "本輪留研究素材不硬塞入其他題案；二維地圖的緯度裝飾不可冒充量測。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地圖可以來自一條亮度曲線，但圖上有些方向其實沒量到。",
+        "visual": "轉動可見半球遮罩加總經度色帶，再從幾條模型曲線約束粗色帶；緯度整片灰化並標非照片。",
+        "seconds": [
+          70,
+          110
+        ]
+      }
+    },
+    {
+      "id": "X13011",
+      "question": "一顆星轉一圈亮度幾乎不變，表面就真的很乾淨嗎？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.axisymmetric_spot_coverage_hidden_from_rotational_variability",
+      "answer_target": "旋轉光變只看不同經度轉入轉出的差異；斑點較均勻或近軸對稱分布時，總覆蓋量可以大但亮度起伏小，因此光變幅度不能唯一決定覆蓋率。",
+      "scope": "限穩定斑點分布與文內M矮星模型；不主張每顆安靜星都有大量斑點，亦不套固定線性換算或把模型覆蓋率當實測。",
+      "source_ids": [
+        "X13-S007"
+      ],
+      "source_locator": "Introduction p.3; §2.2 pp.4–5; §3.1 p.9",
+      "premise_status": "screened",
+      "notes": "與X13008之光譜基準錯配相關但不同：本題比較空間對稱性如何讓時間監測失明，接受覆核合為對照而不保數量。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "平穩可能是分布平均，不一定是什麼都沒有。",
+        "visual": "相同總斑點面積集中一側/沿經度分散，轉一圈比較光量曲線；不改總斑點量來偷換對照。",
+        "seconds": [
+          45,
+          80
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "只看恆星晃動，怎麼找看不見的行星？",
+      "existing_ids": [
+        "N071"
+      ],
+      "source_ids": [
+        "X13-S005"
+      ],
+      "reason": "已收整體視線速度/引力核心；新批只研究會混淆該推論的表面訊號。"
+    },
+    {
+      "question": "週期性星光下降就是凌日嗎？",
+      "existing_ids": [
+        "N072"
+      ],
+      "source_ids": [
+        "X13-S001",
+        "X13-S002"
+      ],
+      "reason": "基本遮光偵測已收；不換新任務或行星名重算。"
+    },
+    {
+      "question": "行星大氣為什麼留下分子光譜？",
+      "existing_ids": [
+        "N073"
+      ],
+      "source_ids": [
+        "X13-S007",
+        "X13-S008"
+      ],
+      "reason": "吸收基本核心已收，只作光源錯配與雲遮蔽前提。"
+    },
+    {
+      "question": "視線速度為什麼只給行星最低質量？",
+      "existing_ids": [
+        "N071",
+        "P128"
+      ],
+      "source_ids": [],
+      "reason": "方向主要仍是投影分量；未另讀完整質量反演來源，不收成新核心。"
+    },
+    {
+      "question": "星光心位移和差分影像是否各做一題？",
+      "existing_ids": [
+        "X13002"
+      ],
+      "source_ids": [
+        "X13-S001",
+        "X13-S002"
+      ],
+      "reason": "兩者此批都服務變暗來源定位；保留同核心方法對照，不拆工具名稱。"
+    },
+    {
+      "question": "V字形亮度下降能直接判假行星嗎？",
+      "existing_ids": [
+        "N072",
+        "X2017"
+      ],
+      "source_ids": [
+        "X13-S002",
+        "X13-S003"
+      ],
+      "reason": "形狀受擦邊與模型條件影響，單一形狀不能確診；本輪沒有另讀足夠排除條件，不收。"
+    },
+    {
+      "question": "凌日前後的小亮起，是行星發光嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "X13-S002"
+      ],
+      "reason": "DV D明列白化濾波可造前後過衝，但本輪未讀濾波機制推導，僅現象不立核心。"
+    },
+    {
+      "question": "提高時間取樣就能解決所有凌日歧義嗎？",
+      "existing_ids": [
+        "X2059"
+      ],
+      "source_ids": [
+        "X13-S003"
+      ],
+      "reason": "只把舊取樣方向換凌日不另算；本文時長題保留解析度限制，不拆薄題。"
+    },
+    {
+      "question": "近心點跑得快，為什麼行星某些季節更短？",
+      "existing_ids": [
+        "N014"
+      ],
+      "source_ids": [
+        "X13-S003"
+      ],
+      "reason": "已收橢圓軌道時間不均，不能改星球重算；X13004須包含光變反推與退化條件才留。"
+    },
+    {
+      "question": "凌日跨過斑點的小凸起另立一題？",
+      "existing_ids": [
+        "X13008"
+      ],
+      "source_ids": [
+        "X13-S007"
+      ],
+      "reason": "可作光源不均的通道內變體，本批沒有另收為獨立核心。"
+    },
+    {
+      "question": "紅外線斑點對比和可見光不同是否另立一題？",
+      "existing_ids": [
+        "X13006"
+      ],
+      "source_ids": [
+        "X13-S005",
+        "X13-S009"
+      ],
+      "reason": "此輪作斑點污染的波段條件，不依波段換名多算一核。"
+    },
+    {
+      "question": "行星躲到恆星後面，少掉的光怎麼用？",
+      "existing_ids": [
+        "X13010"
+      ],
+      "source_ids": [
+        "X13-S009"
+      ],
+      "reason": "次食差值是相位亮度基準，單獨只有一步相減，本輪不另收薄題。"
+    },
+    {
+      "question": "望遠鏡為什麼需要冷卻？",
+      "existing_ids": [
+        "R007"
+      ],
+      "source_ids": [],
+      "reason": "太空紅外偵測基本核心已有，與本批觀測歧義無新增因果。"
+    },
+    {
+      "question": "每顆系外行星各做一次大氣地圖？",
+      "existing_ids": [
+        "X13010"
+      ],
+      "source_ids": [
+        "X13-S009"
+      ],
+      "reason": "只換天體不算新控制條件；未讀其他個案，不用名單補量。"
+    }
+  ]
+}

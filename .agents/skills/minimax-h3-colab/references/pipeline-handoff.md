@@ -4,7 +4,7 @@
 
 ## 1. 先確認目的地收得進去
 
-- `series.production.profile` 存在的作品，`clips import` 一律以 3 拒絕（`tools/video/media/clips.mjs` 的 `importClip`），而且 Colab 輸出最大 1344×768，本來就過不了 profile 的原生 1920×1080 要求。這條路**只給沒有 profile 的 pilot 與作品**；正片要用得等 `2026-10-04-profile-works-external-clip-route` 那張票。
+- `series.production.profile` 存在的作品，`clips import` 一律以 3 拒絕（`tools/video/media/clips.mjs` 的 `importClip`），而且 Colab 輸出最大 1920×1088（不是 1080p），本來就過不了 profile 的原生 1920×1080 要求。這條路**只給沒有 profile 的 pilot 與作品**；正片要用得等 `2026-10-04-profile-works-external-clip-route` 那張票。
 - storyboard 要核准、這一鏡的關鍵影格要通過 judge；**首格就用那張關鍵影格**（`first_frame` 模式），不然匯入時第 0 格 PSNR 過不了、`needs_review`。
 - 開拍鎖定包（`.agents/skills/animation-preproduction/SKILL.md`）要先有：每鏡秒數、定稿正文與 SHA-256；Colab 不是另一個可以不鎖就試的地方。
 
@@ -15,7 +15,7 @@
 | `inference_mode` | 關鍵影格當首格 → `first_frame`（恰好一張圖，FL2VA；先用 `scripts/fit_first_frame.sh` 裁到畫布比例）；只有設定圖、沒有首格 → `reference`（1–9 張，Ref2VA，`<Picture N>` 照順序） |
 | `prompt_file` | 鎖定包的定稿正文原封不動寫進 UTF-8 檔；runner 不改寫。H3 的首格正文照官方 I2VA 結構（`shot_plan.mjs --route hailuo --hailuo-model h3`；正文結構的差異在 `.agents/skills/animation-camera/references/model-misreads.md` 第六節與票 `2026-10-05-shot-plan-h3-body-official-i2va`），`[Shot 1]` 裡的寫法（風格詞、`<Picture 1>` 錨句、動作軌跡、一個運鏡、`holds a static shot`）照 `.agents/skills/minimax-h3-colab/references/motion-quality.md` 第二節；只寫 `[Shot 1]`，`[Shot 2]` 會切鏡 |
 | `duration_seconds` | 鎖定包的 buy 秒數，**5–15**：4 秒＝107 幀低於 H3 訓練範圍 124–362 幀，`check_manifest.py` 會警告；H3 以 24 fps、幀數對齊 `17k+5`，所以 5 → 5.17 秒、6 → 6.58、8 → 8.00、12 → 12.25。畫面上有人說話或動作兩拍買 6，多的在剪接切 |
-| `width`／`height` | 32 的倍數、面積不超過 1344×768。**首格鏡用 1312×736**（離 16:9 不到 0.005；1344×768 是 7:4，節點會把 16:9 的首格拉伸；1280×720 不是 32 的倍數）；只有設定圖的 reference 模式用 1344×768。不是 1080p，`assemble` 會重編碼進 30 fps 1080p 的時間軸，放大畫質沒驗 |
+| `width`／`height` | 32 的倍數、面積不超過 1920×1088（patch 後的上限；2026-10-28 A100 實測）。**首格鏡用 1920×1088，趕時間用 1312×736**（離 16:9 不到 0.005；1344×768 是 7:4，節點會把 16:9 的首格拉伸；1280×720 不是 32 的倍數）；只有設定圖的 reference 模式才考慮 1344×768。不是 1080p，`assemble` 會重編碼進 30 fps 1080p 的時間軸，放大畫質沒驗 |
 | `seed` | 省略時 runner 隨機；重做同一鏡要比較時固定它，寫進 `clips import --note` |
 | `prompt_sha256` | 可選；鎖定檔的正文雜湊，`check_manifest.py` 對 prompt 檔算一次，不符就不上傳 |
 
@@ -53,7 +53,7 @@ manifest（`jobs[]`，相對路徑以 manifest 所在目錄為準；一批最多
 | --- | --- |
 | `reference_images` | 1–3 張（`TextEncodeQwenImageEditPlus` 只有 image1–image3）：定妝照在前、場景圖在後 |
 | `prompt_file` / `prompt` | 畫面描述加一句對應表：`image 1 is the character sheet of Xu Yan: keep his face, hair, costume …; image 3 is the location …`。`<Picture N>` 是 H3 的標記，這裡會被警告 |
-| `width` / `height` | 預設 **1312×736**（16 的倍數、面積 ≤ 1344×768），直接是 H3 首格鏡的畫布，不用再 `fit_first_frame.sh` |
+| `width` / `height` | 預設 **1312×736**（16 的倍數、面積 ≤ 1920×1088；片段要跑 1920×1088 就填 1920×1088），直接是 H3 首格鏡的畫布，不用再 `fit_first_frame.sh` |
 | `seed`、`steps`、`cfg`、`lora`、`latent` | 都可省略：LoRA 開時 8 步、CFG 1；`lora: false` 走 20 步、CFG 4 的 base 設定；`latent: "image1"` 從第一張參照圖編碼（只改一點的重畫），預設 `empty` 畫新構圖 |
 | `output_name` | `<id>.png`；《種田》用 `sNN-tK.png`（`assemble-v4.mjs` 的 `pick` 讀最大的 take） |
 

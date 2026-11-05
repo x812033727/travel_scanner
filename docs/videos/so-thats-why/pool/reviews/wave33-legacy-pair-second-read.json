@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "status": "PASS_SECOND_READING_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "role_and_limits": "受託第二人重讀這個指定近對，相對於根代理獨立核兩份原文與力學推導。兩個原始批次均由本代理早期編寫，這不是非原作者的全庫盲審。",
+  "reviewed_candidate_ids": [
+    "E2016",
+    "P024"
+  ],
+  "baseline": {
+    "head": "6d153f29a537427f36b55c96578b6291efc0cca3",
+    "selected": 3127,
+    "snapshot": {
+      "file": "baselines/2026-11-02-3127.json.gz",
+      "sha256": "327a47f9a4626ef4139adaba1413fe85a1a56a25265800a0aa4f8a11b91c5caa"
+    }
+  },
+  "reviewed_files": [
+    {
+      "file": "batches/physics.json",
+      "sha256": "1e53dc0564f1ff627990013e7bb06fda8bd7546cd3f8fd1579e2203b142b437b"
+    },
+    {
+      "file": "batches/wave2-electricity.json",
+      "sha256": "17a3e40fa79d79ba908d38bb73b0c559e78d8a00212d3fb1a8d13755e70bfbcb"
+    }
+  ],
+  "raw_snapshots": [
+    {
+      "id": "P024",
+      "question": "兩股同樣大的反向力，為什麼能讓物體只轉不平移？",
+      "answer_target": "合力可為零，但不同作用線形成力偶與非零合力矩。",
+      "scope": "剛體、等大反向平行力",
+      "mechanism_key": "force_couple_net_torque",
+      "source_ids": [
+        "PHYS-S006"
+      ],
+      "source_locator": "9.2 The Second Condition for Equilibrium / 力矩、作用點、垂直力臂段落"
+    },
+    {
+      "id": "E2016",
+      "question": "一端正一端負的小物體，怎麼不往旁邊走卻會自己轉向？",
+      "answer_target": "均勻場對兩端的力可相消，但作用線分開仍產生力矩。",
+      "scope": "剛性永久偶極、均勻外場",
+      "mechanism_key": "electric.uniform_field_dipole_torque",
+      "source_ids": [
+        "E2-S005"
+      ],
+      "source_locator": "5.7 Electric Dipoles / Rotation of a Dipole due to an Electric Field"
+    }
+  ],
+  "source_readings": [
+    {
+      "id": "PHYS-S006",
+      "url": "https://openstax.org/books/college-physics-2e/pages/9-2-the-second-condition-for-equilibrium",
+      "title": "9.2 The Second Condition for Equilibrium",
+      "read_via": "本輪以web.open重新讀OpenStax官方主文及圖說。",
+      "locator": "§9.2 Torque，Fig9.6–7、Eqs9.3–9.5，回傳L30–62。",
+      "result": "力矩由力大小及垂直力臂決定；門與球桿圖是單一力的教學例，力偶結果為合成推導。"
+    },
+    {
+      "id": "E2-S005",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-7-electric-dipoles",
+      "title": "5.7 Electric Dipoles",
+      "read_via": "本輪以web.open重新讀OpenStax官方主文及圖說。",
+      "locator": "§5.7 Rotation of a Dipole due to an Electric Field，Fig5.32、Eqs5.16–17，L31–51；L52–57用於排除感應偶極。",
+      "result": "均勻場在相反電荷上給等大反向力；兩力相加為零，但偏斜時兩力矩同向相加。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "E2016",
+        "canonical_id": "P024",
+        "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。"
+      }
+    ],
+    "excluded": [],
+    "distinct": []
+  },
+  "counterargument": "電偶極另有方向對準電場的自然畫面，也能問感應極化、非均勻場中的平移或耗散後的穩定方向。這幾項均不在E2016的現有答案；旋轉方向可由原力偶決定，不足獨立計數。",
+  "scope_preservation": "保留原提問及E2-S005作物理實例。兩力共線或偶極平行／反平行於外場時力矩為零。合力為零表示質心不加速，只有起初靜止時才可說質心沒有平移；未假設阻尼不可說必然停在對準方向。",
+  "remaining_blockers": []
+}

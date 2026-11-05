@@ -1,0 +1,703 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "3c92305785a9aad81ab5544be2d2b181ac4aeb93",
+    "selected": 3047,
+    "raw_records": 3419,
+    "not_added": 1143,
+    "pool_sha256": "6582e8fe83ba92a6c4149c8a41dec2d789e18bd758119b1be044a07af85e575e",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3047.json.gz",
+      "sha256": "f0272775437864cb12a5b3b403c2072651e950e7980bde1e870a4334dc378d48"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave25-physics.json",
+      "sha256": "8f09bae68eaac79b95fa149c66c596806ace896b7d182d89d02c9a3e6c0a2db5"
+    },
+    {
+      "file": "reviews/wave25-physics-themes.json",
+      "sha256": "7529cfa70bb8ed5b9987e2143b60e2fe4b7142206eba86e679e9a5a9eb80dbfd"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "sources": 6,
+    "candidate_sources": 5,
+    "not_added_only_sources": 1,
+    "not_added": 14,
+    "near_pairs": 17,
+    "themes": 3
+  },
+  "scope": "含水體共振熱點、紋理限制的結晶抬升、氧化切換液態金屬界面能、撞擊前緣增長與底部時序。第四題兩篇不同研究合一核。",
+  "dedup_reading": {
+    "method": "全3419 raw與1143 NA做詞面/機制檢索，定向讀相關完整問答/scope；不是人工逐條讀全庫。17組具體近對附雙邊快照；共同語意與非作者尚待。",
+    "scan_files": [
+      {
+        "file": ".cache/wave25-physics-oldscan.json",
+        "sha256": "0177d63f4fdd128d94b2d5fb7882dbd552e06e3a540ce50e2e66d8e2d131d7cd"
+      },
+      {
+        "file": ".cache/wave25-physics-oldscan-extra.json",
+        "sha256": "beba765ec94d463ba57a83785f9cad780ad8622b09fd6b3e69e315c3d4cb6f8f"
+      },
+      {
+        "file": ".cache/wave25-physics-near-scan.json",
+        "sha256": "c59563527379393a81f707fa49cbb2bad8a26d4eea1de19473c2e04edfb7dbd0"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "P25001",
+      "b": "LEG-S13",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題導體尖端場集中/擊穿；新題含水介電共振耦合，皮橋非必要。",
+      "a_snapshot": {
+        "id": "P25001",
+        "question": "葡萄沒切開、也沒連著果皮，為什麼靠在一起仍可能出現微波熱點？",
+        "answer_target": "含水物體能容納微波共振；兩者靠近時，共振場耦合使能量集中到相鄰區域。整顆水果與水凝膠也能出現熱點，因此導電果皮橋不是必要條件。",
+        "scope": "限2019受控含水物體/幾何；熱像與電磁模擬分開，放電非每次必現。空心蛋殼加水控制來自正文描述，補圖未目讀。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S13",
+        "question": "微波爐遇到金屬，為什麼有時會冒火花？",
+        "answer_target": "金屬會把微波反射回去；叉子齒、皺鋁箔這種尖端和細邊，電荷會擠在一起，強到把空氣打穿，就冒出火花（電弧）。厚而平滑的金屬不一定會冒火花——微波爐內壁本身就是金屬——但官方建議一般不要放金屬鍋或鋁箔，只有少量平順的鋁箔能照規則用來遮蓋食物。",
+        "scope": "沿用 S13 題級條件，須讀原查核包的限制；修正一概不能放的前提；只做機制說明，不安排危險實驗。"
+      }
+    },
+    {
+      "a": "P25001",
+      "b": "O3009",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題介電吸收與穿透；新題近鄰幾何選擇熱點位置，有皮橋/水體控制。",
+      "a_snapshot": {
+        "id": "P25001",
+        "question": "葡萄沒切開、也沒連著果皮，為什麼靠在一起仍可能出現微波熱點？",
+        "answer_target": "含水物體能容納微波共振；兩者靠近時，共振場耦合使能量集中到相鄰區域。整顆水果與水凝膠也能出現熱點，因此導電果皮橋不是必要條件。",
+        "scope": "限2019受控含水物體/幾何；熱像與電磁模擬分開，放電非每次必現。空心蛋殼加水控制來自正文描述，補圖未目讀。"
+      },
+      "b_snapshot": {
+        "id": "O3009",
+        "question": "雷達能看進乾沙裡，為什麼不表示也能穿過所有濕土？",
+        "answer_target": "水分改變介電與吸收特性；乾燥、表面條件與較長波長共同限制穿透能力。",
+        "scope": "微波在乾燥沙土與含水土中的穿透條件；不提供普適穿透深度，不類推為看穿地下所有物體。"
+      }
+    },
+    {
+      "a": "P25001",
+      "b": "P112",
+      "proposed": "distinct_pending_non_author",
+      "reason": "一般共振前提相通，但不解釋兩物體間局部場與拿掉果皮的對照。",
+      "a_snapshot": {
+        "id": "P25001",
+        "question": "葡萄沒切開、也沒連著果皮，為什麼靠在一起仍可能出現微波熱點？",
+        "answer_target": "含水物體能容納微波共振；兩者靠近時，共振場耦合使能量集中到相鄰區域。整顆水果與水凝膠也能出現熱點，因此導電果皮橋不是必要條件。",
+        "scope": "限2019受控含水物體/幾何；熱像與電磁模擬分開，放電非每次必現。空心蛋殼加水控制來自正文描述，補圖未目讀。"
+      },
+      "b_snapshot": {
+        "id": "P112",
+        "question": "推鞦韆為什麼要抓節奏，不能只一直用力？",
+        "answer_target": "外力與振動相位配合可逐次輸入能量，亂推可能互相抵銷。",
+        "scope": "理想受迫振動示意"
+      }
+    },
+    {
+      "a": "P25001",
+      "b": "E2003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題靜態極化梯度力；新題振盪場共振能量集中，非紙片吸引。",
+      "a_snapshot": {
+        "id": "P25001",
+        "question": "葡萄沒切開、也沒連著果皮，為什麼靠在一起仍可能出現微波熱點？",
+        "answer_target": "含水物體能容納微波共振；兩者靠近時，共振場耦合使能量集中到相鄰區域。整顆水果與水凝膠也能出現熱點，因此導電果皮橋不是必要條件。",
+        "scope": "限2019受控含水物體/幾何；熱像與電磁模擬分開，放電非每次必現。空心蛋殼加水控制來自正文描述，補圖未目讀。"
+      },
+      "b_snapshot": {
+        "id": "E2003",
+        "question": "不帶電的小紙屑，為什麼正電和負電物體都可能吸它？",
+        "answer_target": "極化把異號電荷拉近；近側吸引可大於遠側排斥。",
+        "scope": "中性、可極化小物體與不均勻場"
+      }
+    },
+    {
+      "a": "P25002",
+      "b": "I12014",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題既有粉末殼縮小擠壓；新題液中溶質持續析出管腿並抬升。",
+      "a_snapshot": {
+        "id": "P25002",
+        "question": "同樣很不沾水，鹽滴乾掉後為什麼一邊黏住、一邊長腿站起來？",
+        "answer_target": "液體偏好潤濕自身晶殼而從表面退開；奈米紋理把剩餘接觸限制在局部，供液與蒸發持續在底端析鹽，長出的空心管腿抬起晶體。微米紋理若被晶體侵入，接觸區擴大，則可能被釘住。",
+        "scope": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。"
+      },
+      "b_snapshot": {
+        "id": "I12014",
+        "question": "裹滿粉末的小水珠乾掉時，為什麼有的皺掉，有的反而把顆粒擠出去？",
+        "answer_target": "液面後退使表面顆粒互相擠壓；強液體黏附讓外殼被迫變形，黏附與粒間摩擦都低可排粒，摩擦高則可能改成疊層。",
+        "scope": "指定包覆顆粒的水滴與簡化模型；三結果留同一核心，不按粉末種類另計，不給粉末吸入或製備操作。"
+      }
+    },
+    {
+      "a": "P25002",
+      "b": "I12002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題撞擊壓力突破空氣層；新題成長晶體侵入/局部供液析鹽的結果分歧。",
+      "a_snapshot": {
+        "id": "P25002",
+        "question": "同樣很不沾水，鹽滴乾掉後為什麼一邊黏住、一邊長腿站起來？",
+        "answer_target": "液體偏好潤濕自身晶殼而從表面退開；奈米紋理把剩餘接觸限制在局部，供液與蒸發持續在底端析鹽，長出的空心管腿抬起晶體。微米紋理若被晶體侵入，接觸區擴大，則可能被釘住。",
+        "scope": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。"
+      },
+      "b_snapshot": {
+        "id": "I12002",
+        "question": "原本很會滾水珠的粗糙表面，為什麼一次撞擊後反而黏住水？",
+        "answer_target": "空氣口袋可把液滴托在紋理頂端；壓力跨過幾何門檻使液體侵入空隙，接觸狀態和回復路徑便改變。",
+        "scope": "限具有可維持含氣狀態的疏水紋理；壓力門檻隨形狀改變，不稱所有粗糙表面或所有撞擊必然失效。"
+      }
+    },
+    {
+      "a": "P25002",
+      "b": "H3092",
+      "proposed": "distinct_pending_non_author",
+      "reason": "咖啡環是釘住邊緣補償流；新題晶殼潤濕/紋理限制接點後生腿，非只沉積一圈。",
+      "a_snapshot": {
+        "id": "P25002",
+        "question": "同樣很不沾水，鹽滴乾掉後為什麼一邊黏住、一邊長腿站起來？",
+        "answer_target": "液體偏好潤濕自身晶殼而從表面退開；奈米紋理把剩餘接觸限制在局部，供液與蒸發持續在底端析鹽，長出的空心管腿抬起晶體。微米紋理若被晶體侵入，接觸區擴大，則可能被釘住。",
+        "scope": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。"
+      },
+      "b_snapshot": {
+        "id": "H3092",
+        "question": "一滴咖啡乾掉，為什麼顏色常擠到外圈而不是均勻留下？",
+        "answer_target": "固定接觸線的液滴蒸發時，補充外緣損失的液流將懸浮顆粒輸送到邊緣。",
+        "scope": "限接觸線固定且外向輸送重要的情境；顆粒、表面與內部流動可改變沉積，不宣稱任何液滴必成環。"
+      }
+    },
+    {
+      "a": "P25002",
+      "b": "N234",
+      "proposed": "distinct_pending_non_author",
+      "reason": "孔內結晶壓力撐裂；新題自由殘留物由底部成長抬升，不是破壞孔壁。",
+      "a_snapshot": {
+        "id": "P25002",
+        "question": "同樣很不沾水，鹽滴乾掉後為什麼一邊黏住、一邊長腿站起來？",
+        "answer_target": "液體偏好潤濕自身晶殼而從表面退開；奈米紋理把剩餘接觸限制在局部，供液與蒸發持續在底端析鹽，長出的空心管腿抬起晶體。微米紋理若被晶體侵入，接觸區擴大，則可能被釘住。",
+        "scope": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。"
+      },
+      "b_snapshot": {
+        "id": "N234",
+        "question": "一點鹽水滲進石頭，乾掉後為什麼可能把表面撐碎？",
+        "answer_target": "孔隙鹽類溶解遷移再結晶的壓力。",
+        "scope": "Weathering and Erosion"
+      }
+    },
+    {
+      "a": "P25002",
+      "b": "P232",
+      "proposed": "distinct_pending_non_author",
+      "reason": "成核為前提，新題需要接點去路與紋理對照才能解釋離地。",
+      "a_snapshot": {
+        "id": "P25002",
+        "question": "同樣很不沾水，鹽滴乾掉後為什麼一邊黏住、一邊長腿站起來？",
+        "answer_target": "液體偏好潤濕自身晶殼而從表面退開；奈米紋理把剩餘接觸限制在局部，供液與蒸發持續在底端析鹽，長出的空心管腿抬起晶體。微米紋理若被晶體侵入，接觸區擴大，則可能被釘住。",
+        "scope": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。"
+      },
+      "b_snapshot": {
+        "id": "P232",
+        "question": "已經超過溶解上限，為什麼溶液有時仍暫時透明？",
+        "answer_target": "過飽和是非平衡或亞穩態，析出還涉及成核條件。",
+        "scope": "成核細節需加第二來源"
+      }
+    },
+    {
+      "a": "P25003",
+      "b": "H3041",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題還原離子鍍金屬；新題改氧化界面能，非電鍍增厚。",
+      "a_snapshot": {
+        "id": "P25003",
+        "question": "同一滴液態金屬，為什麼能攤平後又縮回圓滴？",
+        "answer_target": "電位改變可形成或移除表面氧化層，強烈改變液態鎵合金的界面能；氧化引起的攤開不能只用一般充電電容效應解釋，反向切換則能恢復收縮。",
+        "scope": "只採EGaIn在NaOH電解液Fig.1/2條件；不混中性pH固態氧化皮的固定形狀實驗，不稱表面張力精確等於零。"
+      },
+      "b_snapshot": {
+        "id": "H3041",
+        "question": "電鍍不是把金屬塗上去，金屬層怎麼一點點長出來？",
+        "answer_target": "溶液金屬離子在導電表面得到電子成為金屬，陽極可補回離子。",
+        "scope": "成核、粗糙度需另核；不示範鍍液或電源設置。"
+      }
+    },
+    {
+      "a": "P25003",
+      "b": "H3034",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題分離氧化還原供外電流；新題表面化學切換液滴形狀，非電池功率。",
+      "a_snapshot": {
+        "id": "P25003",
+        "question": "同一滴液態金屬，為什麼能攤平後又縮回圓滴？",
+        "answer_target": "電位改變可形成或移除表面氧化層，強烈改變液態鎵合金的界面能；氧化引起的攤開不能只用一般充電電容效應解釋，反向切換則能恢復收縮。",
+        "scope": "只採EGaIn在NaOH電解液Fig.1/2條件；不混中性pH固態氧化皮的固定形狀實驗，不稱表面張力精確等於零。"
+      },
+      "b_snapshot": {
+        "id": "H3034",
+        "question": "化學反應把兩邊隔開，為什麼反而能讓電流繞出去做事？",
+        "answer_target": "空間分隔避免直接電子轉移，讓氧化與還原經外部導體交換電子。",
+        "scope": "不是憑空製造電子；與 E2058 閉合回路不同點是化學反應的分隔。"
+      }
+    },
+    {
+      "a": "P25003",
+      "b": "P054",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題靜態接觸角/彎月面；新題氧化與純電容兩種變化的受控比較。",
+      "a_snapshot": {
+        "id": "P25003",
+        "question": "同一滴液態金屬，為什麼能攤平後又縮回圓滴？",
+        "answer_target": "電位改變可形成或移除表面氧化層，強烈改變液態鎵合金的界面能；氧化引起的攤開不能只用一般充電電容效應解釋，反向切換則能恢復收縮。",
+        "scope": "只採EGaIn在NaOH電解液Fig.1/2條件；不混中性pH固態氧化皮的固定形狀實驗，不稱表面張力精確等於零。"
+      },
+      "b_snapshot": {
+        "id": "P054",
+        "question": "杯子邊緣的水面為什麼不是完全平的？",
+        "answer_target": "容器壁附著與液面張力決定彎月面與接觸角。",
+        "scope": "尺度小到界面效應可見"
+      }
+    },
+    {
+      "a": "P25004",
+      "b": "G13003",
+      "proposed": "distinct_pending_non_author",
+      "reason": "共用摩擦卡住前提；新題瞬態空間前緣/增長附加質量及底部受力時序，非只乾顆粒定體積剪切。",
+      "a_snapshot": {
+        "id": "P25004",
+        "question": "盆底還沒承受明顯力，玉米粉漿為什麼已能把落桿減慢？",
+        "answer_target": "撞擊帶起快速擴大的共同運動區，前緣納入更多物料，使落桿必須把動量分給持續增加的有效質量；早期減速因此不必等底部支撐。前緣到達底部後又出現不同的受力階段，改深度會移動後段峰值。",
+        "scope": "以2012落桿深度/底部力時序為直接控制；2016固定速度撞頭的超音波研究只用來限制微觀解釋，不把壓密當既定原因，亦不證明體積分率絕對零變化。"
+      },
+      "b_snapshot": {
+        "id": "G13003",
+        "question": "顆粒沒有裝得更多，往旁邊推一推為什麼會卡緊？",
+        "answer_target": "固定裝填量下，剪切重排可建立能承載的摩擦接觸網絡；反向剪切會改變這個網絡，但只有某些先前狀態會退回低於可測應力的鬆散狀態。",
+        "scope": "限均勻剪切近二維圓盤；剪切量與填充率一起決定fragile或shear-jammed，反推不是通用解鎖法。保留量測噪聲判準，不能說所有接觸完全消失。"
+      }
+    },
+    {
+      "a": "P25004",
+      "b": "F8001",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題巧克力加工改聚集/卡住門檻；新題時間增長的參與區與兩階段衝擊。",
+      "a_snapshot": {
+        "id": "P25004",
+        "question": "盆底還沒承受明顯力，玉米粉漿為什麼已能把落桿減慢？",
+        "answer_target": "撞擊帶起快速擴大的共同運動區，前緣納入更多物料，使落桿必須把動量分給持續增加的有效質量；早期減速因此不必等底部支撐。前緣到達底部後又出現不同的受力階段，改深度會移動後段峰值。",
+        "scope": "以2012落桿深度/底部力時序為直接控制；2016固定速度撞頭的超音波研究只用來限制微觀解釋，不把壓密當既定原因，亦不證明體積分率絕對零變化。"
+      },
+      "b_snapshot": {
+        "id": "F8001",
+        "question": "巧克力的固體沒被拿走，為什麼精煉後反而比較能流動？",
+        "answer_target": "精煉解開聚團、卵磷脂降低顆粒接觸阻力，可提高懸浮體發生卡住的固含門檻；不是只靠多加油稀釋。",
+        "scope": "限研究中的 crumb／油模型和摩擦卡住解釋；不等於每個品牌或所有精煉效果。"
+      }
+    },
+    {
+      "a": "P25004",
+      "b": "P173",
+      "proposed": "distinct_pending_non_author",
+      "reason": "一般碰撞總動量不解釋參與質量為何持續增長及深度改後段峰。",
+      "a_snapshot": {
+        "id": "P25004",
+        "question": "盆底還沒承受明顯力，玉米粉漿為什麼已能把落桿減慢？",
+        "answer_target": "撞擊帶起快速擴大的共同運動區，前緣納入更多物料，使落桿必須把動量分給持續增加的有效質量；早期減速因此不必等底部支撐。前緣到達底部後又出現不同的受力階段，改深度會移動後段峰值。",
+        "scope": "以2012落桿深度/底部力時序為直接控制；2016固定速度撞頭的超音波研究只用來限制微觀解釋，不把壓密當既定原因，亦不證明體積分率絕對零變化。"
+      },
+      "b_snapshot": {
+        "id": "P173",
+        "question": "小車撞上另一台車後自己慢下來，動量是消失了嗎？",
+        "answer_target": "個別車的動量改變可由另一台車取得，須看系統總和。",
+        "scope": "短碰撞期間外衝量可忽略"
+      }
+    },
+    {
+      "a": "P25004",
+      "b": "G13002",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題乾顆粒剪脹；新題不能靠必然壓密推論，後續量測限制密度變化。",
+      "a_snapshot": {
+        "id": "P25004",
+        "question": "盆底還沒承受明顯力，玉米粉漿為什麼已能把落桿減慢？",
+        "answer_target": "撞擊帶起快速擴大的共同運動區，前緣納入更多物料，使落桿必須把動量分給持續增加的有效質量；早期減速因此不必等底部支撐。前緣到達底部後又出現不同的受力階段，改深度會移動後段峰值。",
+        "scope": "以2012落桿深度/底部力時序為直接控制；2016固定速度撞頭的超音波研究只用來限制微觀解釋，不把壓密當既定原因，亦不證明體積分率絕對零變化。"
+      },
+      "b_snapshot": {
+        "id": "G13002",
+        "question": "一堆已壓密的顆粒被推著錯開，為什麼局部反而變鬆？",
+        "answer_target": "密集顆粒要繞過鄰居重新排列，需騰出額外空間；剪切區的堆積密度因此下降，與顆粒自身膨脹不同。",
+        "scope": "限有空間容許變形的乾顆粒split-bottom流動及MRI相對密度；不用水變濕的沙灘演示冒充本研究，也不宣稱所有初始鬆度都膨脹。"
+      }
+    },
+    {
+      "a": "P25004",
+      "b": "P070",
+      "proposed": "distinct_pending_non_author",
+      "reason": "舊題密度與黏度區別；新題原實驗黏度/深度控制分辨瞬態機制，不是名詞區分。",
+      "a_snapshot": {
+        "id": "P25004",
+        "question": "盆底還沒承受明顯力，玉米粉漿為什麼已能把落桿減慢？",
+        "answer_target": "撞擊帶起快速擴大的共同運動區，前緣納入更多物料，使落桿必須把動量分給持續增加的有效質量；早期減速因此不必等底部支撐。前緣到達底部後又出現不同的受力階段，改深度會移動後段峰值。",
+        "scope": "以2012落桿深度/底部力時序為直接控制；2016固定速度撞頭的超音波研究只用來限制微觀解釋，不把壓密當既定原因，亦不證明體積分率絕對零變化。"
+      },
+      "b_snapshot": {
+        "id": "P070",
+        "question": "糖漿流得慢，是因為比較重嗎？",
+        "answer_target": "黏滯是抵抗剪切流動的性質，密度描述單位體積質量，兩者不能互換。",
+        "scope": "牛頓流體近似，配方另查"
+      }
+    }
+  ],
+  "prior_rejection_reentry": [
+    {
+      "candidate_id": "P25004",
+      "prior_not_added": [
+        {
+          "id": "F10-NA06",
+          "question": "巧克力或玉米粉漿為什麼會卡住？",
+          "existing_id": "F8001",
+          "reason": "摩擦接觸卡住已有核心；不以換食品重算，且本批避開食品/界面化學。",
+          "origin": "wave10-flows-20261101",
+          "source_file": "docs/videos/so-thats-why/pool/batches/wave10-flows.json"
+        }
+      ],
+      "reason": "F10-NA06只有泛摩擦卡住；這次補2012深度/底部力時序與2016密度限制，問前緣連上邊界前後的不同受力，不恢復舊泛題。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "P25-S001",
+      "read_via": "當日web讀原刊正文/身份；PMC web驗證頁，指定UA urllib HTTP200取得有效PMC全文並抽段；另取原圖目讀。",
+      "reading_scope": "正文PARA19,22–24,26,29,33,35–36,38–39,44,49,51,54,56,59,61；目讀Fig.3。未看SI圖/影片、未重跑FEM。",
+      "locator": "The Formation of Plasma from Aqueous Dimers；Internal Field Characterization Fig.3；Surface Geometry and Hollow Quail Eggs；Summary。",
+      "limitations": "限原研究水果/水凝膠幾何；熱像不是直接電場照相，FEM另框。Fig.3各圖色階不同，不按同色比較絕對值。放電出現具有門檻及隨機性；不提供微波放電操作。",
+      "cache": {
+        "file": ".cache/wave25-physics-grapes2019.html",
+        "sha256": "218c3b03dddb07a64ce91516a2bf41808541c926d0e8a223d1f87246aeb0ab5d",
+        "text_file": ".cache/wave25-physics-grapes2019-text.json",
+        "text_sha256": "735e7e6417d15e3e49d8e106c2d455f78fac71e1e2efc9bb9497878adad9c714"
+      }
+    },
+    {
+      "source_id": "P25-S002",
+      "read_via": "當日web查原刊/PMC；PMC web驗證頁，指定UA urllib HTTP200取得有效全文，抽段並目讀原圖。",
+      "reading_scope": "PARA18,21,23–26,29,31–33,39,42,44–47,52–53,55–56,58,67,69；目讀Fig.1/4。未看影片或SI。",
+      "locator": "Results Fig.1結晶/離面；Fig.2管腿；Fig.4奈米/微米紋理；Discussion與Fig.5成長模型；Methods Experiments/Modeling。",
+      "limitations": "表面接觸角相近但不完全匹配；有些微米紋理仍被晶體侵入黏住。管腿模型含等直徑/傳輸假設，不宣稱所有疏水表面或鹽都會走路，也非蒸氣墊托起。",
+      "cache": {
+        "file": ".cache/wave25-physics-critter2021.html",
+        "sha256": "787d7eceb4b5641b876b2564283a7af24fc6f2e2c927742a6f7e1d9f66697940",
+        "text_file": ".cache/wave25-physics-critter2021-text.json",
+        "text_sha256": "2cb9878abf8d730533ab1c63c9fa9eb8c8e3f9151d3f9c9d1e2246907a582122"
+      }
+    },
+    {
+      "source_id": "P25-S003",
+      "read_via": "當日web讀PMC/原刊身份；指定UA urllib HTTP200全文、抽段及Fig.1/2目讀。",
+      "reading_scope": "PARA14–25,27,30,32–34,37,39,42,44,47,49；目讀Fig.1/2；未看SI/影片。",
+      "locator": "Fig.1C–E周圍氧化/電容比較段；Fig.2可逆步進；Fig.4周圍段只作不同pH條件邊界，不混為同場循環。",
+      "limitations": "候選只採NaOH電解液中的EGaIn Fig.1/2；中性pH下固態氧化皮固定形狀是另一組條件。接近零表面張力為估計而非直接量到零；非所有金屬通則，不給電化學操作配方。",
+      "cache": {
+        "file": ".cache/wave25-physics-metal2014.html",
+        "sha256": "ca8407156513155c14f8aff9dbd0d17022ff70e272ede7e823e9e48904f7e4b1",
+        "text_file": ".cache/wave25-physics-metal2014-text.json",
+        "text_sha256": "856c9a0c5ca31c51be7b4c5879303c7215af8f29628f1a96707ce13b0410cbab"
+      }
+    },
+    {
+      "source_id": "P25-S004",
+      "read_via": "當日web查Nature及大學PDF；指定UA urllib HTTP200取得PDF，PyMuPDF抽文，渲染目讀p3。",
+      "reading_scope": "PDF pp1–3正文/圖說與p4 Eq.2初段；目讀p3 Fig.2。未完整讀p4後半/p5、SI或影片。",
+      "locator": "pp1–2前緣/深度/黏度控制；p3 Fig.2早期減速與底部力時序；p4 Eq.2增長附加質量模型初段。",
+      "limitations": "不沿用本文一維壓密snowplough作微觀定論；2016超音波研究另限縮此解釋。X光小槽與受力大槽是不同實驗。模型未重算，不說任何配比或速度都會完全固化。",
+      "cache": {
+        "file": ".cache/wave25-physics-impact2012.pdf",
+        "sha256": "8dcffb919c62da3ae5cd6d3993d42f5b38df69efe9eef4fcc86cb1ba57c6e633",
+        "text_file": ".cache/wave25-physics-impact2012-text.json",
+        "text_sha256": "87db34579bc663e2430f98c296193619c65e1599a427c437eb04b1520cbbab76"
+      }
+    },
+    {
+      "source_id": "P25-S005",
+      "read_via": "當日web查/讀PMC正文，指定UA urllib HTTP200全文並抽段；目讀Fig.3。",
+      "reading_scope": "PARA10–15,18,23,25,27,29,31–34,36,41–43,45–49,51–55；目讀Fig.3；未讀完整方法推導/SI或影片。",
+      "locator": "Results Experimental setup / Speed of sound / Propagation of jamming fronts；Fig.3；Discussion前緣與剪切重排。",
+      "limitations": "固定速度撞頭與2012自由落桿不同；聲速/體積分率只有量測上限，非證明完全零變化。前緣未接底前的剛性細節仍未全定，不把模型當逐粒觀測。",
+      "cache": {
+        "file": ".cache/wave25-physics-impact2016.html",
+        "sha256": "3bf5174aadf62f3c9f6fcfb99261566ae08de1549527e17fc0c0b7ca74b78bb4",
+        "text_file": ".cache/wave25-physics-impact2016-text.json",
+        "text_sha256": "9d4406264121a1a69509891040cf654b90eccec60378a9713f057dbabc295ba4"
+      }
+    },
+    {
+      "source_id": "P25-S006",
+      "read_via": "當日web讀arXiv身份/原刊摘要；指定UA urllib HTTP200預印本PDF並抽文。",
+      "reading_scope": "PDF pp1–5 Introduction/II/III/IV/V及附錄開頭；未讀p6/正式期刊全文，未目讀圖像。僅支持退題紀錄。",
+      "locator": "§III測量；§IV Maxwell與表面張力模型比較；§V結論。",
+      "limitations": "場值含模擬、非直接各分量力探針；本輪未讀完整理論分歧/正式終版，沒有成形可視控制題案。結論長度單位與前文不一致，任何數字均不採。",
+      "cache": {
+        "file": ".cache/wave25-physics-bridge2013.pdf",
+        "sha256": "89c9959b749f371e4bd735bee1e37827bd1e32ba3ef7e6f60ea2eaf62a5d6f39",
+        "text_file": ".cache/wave25-physics-bridge2013-text.json",
+        "text_sha256": "44944b204930838ebf28ae829e4021942b9948355e8e80b597ba79ac35c3991e"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "P25-S001",
+      "title": "Linking plasma formation in grapes to microwave resonances of aqueous dimers",
+      "doi": "10.1073/pnas.1818350116",
+      "read_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6410810/",
+      "canonical_url": "https://doi.org/10.1073/pnas.1818350116",
+      "version_relationship": "2019-02-19線上正式發表，2019-03-05期刊期次；PMC為同篇載體。",
+      "old_exact_title_doi_url_hits": [],
+      "independence": "同論文PMC/原刊/作者副本只算一份研究；精確未命中不是全庫無重複保證。"
+    },
+    {
+      "source_id": "P25-S002",
+      "title": "Crystal critters: Self-ejection of crystals from heated, superhydrophobic surfaces",
+      "doi": "10.1126/sciadv.abe6960",
+      "read_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8081363/",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abe6960",
+      "version_relationship": "2021-04-28正式論文；PMC及原刊為同研究。",
+      "old_exact_title_doi_url_hits": [],
+      "independence": "同論文PMC/原刊/作者副本只算一份研究；精確未命中不是全庫無重複保證。"
+    },
+    {
+      "source_id": "P25-S003",
+      "title": "Giant and switchable surface activity of liquid metal via surface oxidation",
+      "doi": "10.1073/pnas.1412227111",
+      "read_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4191764/",
+      "canonical_url": "https://doi.org/10.1073/pnas.1412227111",
+      "version_relationship": "2014-09-16線上正式發表，2014-09-30期次；PMC為同文載體。",
+      "old_exact_title_doi_url_hits": [],
+      "independence": "同論文PMC/原刊/作者副本只算一份研究；精確未命中不是全庫無重複保證。"
+    },
+    {
+      "source_id": "P25-S004",
+      "title": "Impact-activated solidification of dense suspensions via dynamic jamming fronts",
+      "doi": "10.1038/nature11187",
+      "read_url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/suspensions/nature11187.pdf",
+      "canonical_url": "https://doi.org/10.1038/nature11187",
+      "version_relationship": "2012-07-11線上，2012-07-12期次；大學存放正式排版副本。",
+      "old_exact_title_doi_url_hits": [],
+      "independence": "同論文PMC/原刊/作者副本只算一份研究；精確未命中不是全庫無重複保證。"
+    },
+    {
+      "source_id": "P25-S005",
+      "title": "High-speed ultrasound imaging in dense suspensions reveals impact-activated solidification due to dynamic shear jamming",
+      "doi": "10.1038/ncomms12243",
+      "read_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4961793/",
+      "canonical_url": "https://doi.org/10.1038/ncomms12243",
+      "version_relationship": "2016-07-20正式論文；PMC同篇載體，與2012是後續不同實驗，不是同文重存。",
+      "old_exact_title_doi_url_hits": [],
+      "independence": "同論文PMC/原刊/作者副本只算一份研究；精確未命中不是全庫無重複保證。"
+    },
+    {
+      "source_id": "P25-S006",
+      "title": "Experimental investigation of the stability of the floating water bridge",
+      "doi": "10.1103/PhysRevE.88.033019",
+      "read_url": "https://arxiv.org/pdf/1210.2913",
+      "canonical_url": "https://doi.org/10.1103/PhysRevE.88.033019",
+      "version_relationship": "實讀arXiv:1210.2913v3（2013-03-11），對應PRE88,033019(2013)；PDF編排日期2018-08-02非新研究。",
+      "old_exact_title_doi_url_hits": [],
+      "independence": "同論文PMC/原刊/作者副本只算一份研究；精確未命中不是全庫無重複保證。"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://www.aaronslepkov.com/docs/publications/KhattakPNAS2019.pdf",
+      "result": "HTTP404，未採作正文"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6410810/",
+      "route": "web",
+      "result": "驗證頁；另有指定UA HTTP200有效全文，不混稱web完整成功"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8081363/",
+      "route": "web",
+      "result": "驗證頁；另有指定UA HTTP200有效全文"
+    }
+  ],
+  "retrieval_receipt": {
+    "file": ".cache/wave25-physics-retrieval.json",
+    "sha256": "5416332ef6635a91a11631f8c97139f3eb4a14a8e88641537d137545584451d6"
+  },
+  "reading_limits": [
+    "僅列指定正文/圖說與7份實際目讀圖；沒有觀看補充影片、完整SI或重做實驗。",
+    "S004 2012壓密snowplough只作原文歷史模型，不當定論；S005 2016另一裝置限制壓密幅度，不能把兩套曲線拼成一套。",
+    "S004原PDF p1為no detectable delay；搜尋抽文曾缺no，不用摘錄的相反讀法。",
+    "S006只作未加入方向證據；未讀期刊終版及完整比較文獻，不宣稱水橋無解或新核已核准。",
+    "外站全文/圖只ignored cache；版本副本不是新增獨立研究。",
+    "僅作者候選和紙上時間預算，沒有宣稱完成全庫語意去重/非作者事實查核/完整劇本。"
+  ],
+  "visual_reads": [
+    {
+      "name": "grapes2019",
+      "figure": "fig03",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/25cd/6410810/4637af955558/pnas.1818350116fig03.jpg",
+      "file": ".cache/wave25-physics-grapes2019-fig03.jpg",
+      "sha256": "3d59f0cae894e41f852c04013902de4611c3d65931f1bdbc08a7dfd48acdd7ae",
+      "reading": "原圖/渲染頁目讀；非只圖說"
+    },
+    {
+      "name": "critter2021",
+      "figure": "F1",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/4f41/8081363/351129d2853e/abe6960-F1.jpg",
+      "file": ".cache/wave25-physics-critter2021-F1.jpg",
+      "sha256": "44e6186c56895513849d27c95f2b004e35a7263a3ff1c22f933f74c7d9fb0fe8",
+      "reading": "原圖/渲染頁目讀；非只圖說"
+    },
+    {
+      "name": "critter2021",
+      "figure": "F4",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/4f41/8081363/ef00eea2f9d0/abe6960-F4.jpg",
+      "file": ".cache/wave25-physics-critter2021-F4.jpg",
+      "sha256": "9929a95fd58d46651ba5c7ee403c7a288b8f17507856cf6d441c64dce860ae59",
+      "reading": "原圖/渲染頁目讀；非只圖說"
+    },
+    {
+      "name": "metal2014",
+      "figure": "fig01",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/8ec2/4191764/7bd0cdf9b547/pnas.1412227111fig01.jpg",
+      "file": ".cache/wave25-physics-metal2014-fig01.jpg",
+      "sha256": "fec02966873773bbf0bc263e87cc989ada57bf74c6daa5ba69d1ae557f8fc745",
+      "reading": "原圖/渲染頁目讀；非只圖說"
+    },
+    {
+      "name": "metal2014",
+      "figure": "fig02",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/8ec2/4191764/7cacc1ccdfe9/pnas.1412227111fig02.jpg",
+      "file": ".cache/wave25-physics-metal2014-fig02.jpg",
+      "sha256": "a62ca07224743c4127550a502ab6fbc40fbd5baab49e45683089d61eb3714e8a",
+      "reading": "原圖/渲染頁目讀；非只圖說"
+    },
+    {
+      "name": "impact2016",
+      "figure": "f3",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c9be/4961793/6b49067368b1/ncomms12243-f3.jpg",
+      "file": ".cache/wave25-physics-impact2016-f3.jpg",
+      "sha256": "8768185250b0bbe72bce7feeba56ea69b840bd3d358dd406756e42929135d87f",
+      "reading": "原圖/渲染頁目讀；非只圖說"
+    },
+    {
+      "name": "impact2012",
+      "page": 3,
+      "file": ".cache/wave25-physics-impact2012-p3.png",
+      "sha256": "c7dac178b3f83ce6f37d29b9c1d6ea327a5ffb5d475b0857b6219674e37ff088",
+      "reading": "原圖/渲染頁目讀；非只圖說"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W25P-T01",
+      "body_seconds": 110,
+      "per_core": {
+        "P25001": 110
+      },
+      "max_beat_seconds": 35,
+      "status": "PAPER_BUDGET_ONLY_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W25P-T02",
+      "body_seconds": 105,
+      "per_core": {
+        "P25002": 105
+      },
+      "max_beat_seconds": 40,
+      "status": "PAPER_BUDGET_ONLY_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W25P-T03",
+      "body_seconds": 115,
+      "per_core": {
+        "P25004": 115
+      },
+      "max_beat_seconds": 40,
+      "status": "PAPER_BUDGET_ONLY_NOT_READ_ALOUD"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "recursive_string_rstrip": true,
+    "source_ids_resolve": true,
+    "existing_ids_resolve": true,
+    "chapter_sum_and_core_cap": true,
+    "beat_max_45": true,
+    "cache_hashes_verified": true,
+    "repo_build_run": false,
+    "scope": "作者格式/來源副本/紙上預算檢查；非獨立內容核准。"
+  },
+  "unresolved": [
+    "P25004對G13003/F8001、P25002對I12014/I12002由非作者判是否真有足夠控制增量；不保數。",
+    "P25003只有段落，沒有強湊題案。",
+    "共同semantic top5尚待root產出。"
+  ],
+  "revision_history": [
+    {
+      "reason": "root刪重述及非作者life指定Fig.3試件/模型界線讀回；不改候選問答。",
+      "before_files": [
+        {
+          "file": "batches/wave25-physics.json",
+          "sha256": "a40a227245b60b819d662bd7a0a2a0fd17d5b7fe917b8a3f5d2ca392fd972c88"
+        },
+        {
+          "file": "reviews/wave25-physics-themes.json",
+          "sha256": "c1086c94e8e5460a900ff3621d7f7859a17b39b7c17dffb4691772e5c88b3d73"
+        },
+        {
+          "file": "reviews/wave25-physics-author.json",
+          "sha256": "7538bcc00a9eeacf6b0ec8669d0c30a15ca994097677645b8a399ab7d5b834cd"
+        }
+      ],
+      "changes": [
+        "P25001 visual與T01 connection/beat明列葡萄半球熱像和水球模型；整顆/水凝膠另組。",
+        "T02第二章25→10秒，總120→105，避免往下長腿方向歧義。",
+        "T03末回扣10→5秒，總120→115；不補內容。"
+      ],
+      "removed_seconds": 20,
+      "after_batch_sha256": "974bcb58cc748db5a1eb672b1fc43ced6040a08a4b9e425137d8389ad4ffa163",
+      "after_themes_sha256": "7529cfa70bb8ed5b9987e2143b60e2fe4b7142206eba86e679e9a5a9eb80dbfd"
+    },
+    {
+      "reason": "非作者指定P25004視覺用詞精確化：懸浮液而非純水。",
+      "before_files": [
+        {
+          "file": "batches/wave25-physics.json",
+          "sha256": "974bcb58cc748db5a1eb672b1fc43ced6040a08a4b9e425137d8389ad4ffa163"
+        },
+        {
+          "file": "reviews/wave25-physics-themes.json",
+          "sha256": "7529cfa70bb8ed5b9987e2143b60e2fe4b7142206eba86e679e9a5a9eb80dbfd"
+        },
+        {
+          "file": "reviews/wave25-physics-author.json",
+          "sha256": "b009eac4460762bde1b48ee193cd2bb94df85aaab20ca587e36bbaf4f21e65ea"
+        }
+      ],
+      "changes": [
+        "visual兩種水深改兩種懸浮液深度；問答/來源/題案/秒數不變。"
+      ],
+      "removed_seconds": 0,
+      "after_batch_sha256": "8f09bae68eaac79b95fa149c66c596806ace896b7d182d89d02c9a3e6c0a2db5",
+      "after_themes_sha256": "7529cfa70bb8ed5b9987e2143b60e2fe4b7142206eba86e679e9a5a9eb80dbfd"
+    }
+  ]
+}

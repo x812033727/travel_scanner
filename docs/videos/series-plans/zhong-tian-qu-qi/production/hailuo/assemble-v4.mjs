@@ -22,7 +22,10 @@ const overlays = overlaysFile && overlaysFile !== "-" && existsSync(overlaysFile
 const edit = JSON.parse(readFileSync(editFile, "utf8"));
 const DUB = process.env.DUB || null;
 const TEMPO = edit.tempo ?? 1.07, LEAD = 0.12, GAP = 0.12, TAIL = 0.22, MIN = 1.2, ACTION_MAX = 2.4, SPLIT = 3.0, PUNCH = 1.3, SLOW_MAX = edit.slow_max ?? 1.25;
-const FONT = "C\\:/Windows/Fonts/msjhbd.ttc";
+// The owner cuts on Windows (Microsoft JhengHei Bold); a Linux box (the cloud session) has no such
+// file and drawtext then falls back to a font without CJK glyphs, so every panel is boxes. ZT_FONT
+// overrides; otherwise a CJK font that Debian ships.
+const FONT = process.env.ZT_FONT ?? (process.platform === "win32" ? "C\\:/Windows/Fonts/msjhbd.ttc" : "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc");
 const probe = (f) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString().trim());
 const segDir = path.join(work, "segments-v4");
 const txtDir = path.join(segDir, "text");

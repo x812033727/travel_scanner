@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-07T04:49:38Z
 completed_at:
-branch: codex/article-locales-wave3-20261007
+branch: codex/article-locales-completion-20261029
 depends_on: []
 scope:
   - docs/article-localization/coverage-20261007.md
@@ -173,6 +173,24 @@ Release this coverage-only scope when waiting for exact owner deployment choice.
 Continue next-wave source audits externally without adding them to the fixed14
 cohort. Do not mark this global task complete until a fresh public census is zero.
 
+### 2026-10-29 complete public cohort refresh
+
+A fresh read-only REPEATABLE READ database census at 00:39:08 UTC observes
+2,247 public articles: 1,473 have all five languages and 774 lack four target
+languages each (3,096 documents). Breakdown: howto 108 incomplete/432 documents,
+intel 12/48, life 654/2,616. Another 119 draft article identities remain outside
+publication scope. Snapshot SHA256:
+`cf3761f5482c29fc0c1e347c14ed846c692c13066b23241c3092260babb41bbd`.
+
+The October 28 sitemap count of 2,664 was limited to intel and life; it omitted
+the howto cohort. The full count is recorded in the coverage file without
+rewriting historical receipts or inferring publication from repository packs.
+The already accepted 48-translation AI foundation release is recorded in merged
+PR #1913. PR #1914 adds eight reviewed translations for foundation-model and
+tokenization; this census confirms they are still absent from the public locale
+rows. Its exact release remains owned by its separate release task. No article
+content was written by this inventory refresh.
+
 ### Approved publication of 32 articles
 
 The owner approved PR #1370 head `403d8204c27fd89653990cb1b8e624a1f87c5bcc`; all 21 checks passed. It was merged and normally deployed as `7524c25995d59f3826227e693d52f2ef5b3a19a2`. The guarded publisher completed 128 missing-language documents and two independently reviewed source corrections, backed by a full recoverable database backup, isolated restore/publication rehearsal and idempotent production replay. Public verification confirmed 160 five-language pages and 320 actual desktop/mobile screenshots. The original release driver completed with exit 0 at 15:40:06 UTC and cleared its own hold.
@@ -180,3 +198,196 @@ The owner approved PR #1370 head `403d8204c27fd89653990cb1b8e624a1f87c5bcc`; all
 The full production snapshot captured at 14:17:26 UTC has 1,259 eligible public articles; 830 remain incomplete and 3,320 language documents remain missing. Counts are intel 13/52, howto 108/432 and life 709/2,836, with 830 gaps in each of en/ja/ko/zh-CN. The original 862 queue rows and historical 3,448 observation remain retained; the durable ledger now appends the verified 32/128 publication and actual census. Coverage and four scoped sanitized release records preserve these states and outstanding unpublished related-link targets. Release-record draft PR: https://github.com/x812033727/travel_scanner/pull/1373.
 
 The next twelve web-design/SEO life articles have 48 staged translations. Four Korean token spelling repairs retained the original attempts; official materialization and all 48 renders passed. Independent target reviews are in progress, with source corrections separately reviewed and bound. That cohort has no production publication yet. This global ticket stays open until a later fresh census reports zero eligible missing language documents.
+
+### 2026-10-29 accepted AI concept release and remaining work
+
+The owner's exact eight-translation release is now complete. Foundation-model
+and tokenization have five public languages; the independently reviewed
+tokenization zh-TW image descriptions are corrected. Fresh full backup and actual
+restore, same-runtime rehearsal, native 9/9/0 publication phases and idempotent
+replay, ten-document/28-media public acceptance and 20 independent screenshot
+reviews all passed. The original driver cleared only its own hold; final host
+verification returned 11 PASS, 0 FAIL. No additional deployment was invoked.
+All seven native progress stages are 8/8, with zero evidence errors.
+
+The fresh atomic metadata census at 2026-10-29T01:29:58.605851+00:00 directly
+observes 2,247 public articles, 1,475 complete and 772 incomplete, with 3,088
+missing language documents: howto 432, intel 48, life 2,608. Another 119 draft
+identities remain excluded. Census SHA256:
+`460d2c0a6a83842186a675fee09f85b9f03fb455df1bd122e6359814ce2f4948`.
+This supersedes the earlier current-state observations above without rewriting
+their historical receipts. Coverage and the scoped release README/evidence.json
+record the actual result; the global task is still unfinished.
+
+Next-source corrections for fine-tuning, few-shot prompting, multimodal and
+zero-shot prompting were merged in PR #1915 under a separate explicit owner
+decision to merge and prepare the release plan. The merged target is
+`a036679662030de86f00f0271f84a39265f55edd`, whose tree equals the independently
+reviewed head. All 22 PR head checks passed. Their 16 translations are not
+authored. Fresh host readback remains at 7e380; deployment and source publication
+require their own concrete release scope and owner decision.
+The native translation bundle requires all five locales and refuses these four
+zh-TW-only packs. A separate guarded source-release plan is being prepared;
+the original baselines and compatibility refusal remain preserved externally.
+The new native adapter is scoped to existing save_draft/publish_locale kernels
+with pinned expected versions and durable intent/readback reconciliation. It
+must preserve eight existing non-editor aliases, article metadata/taxonomy and
+unrelated incoming links; the fresh four-source snapshot is clean and matches
+the reviewed original hashes. No source publication or new translation is
+inferred from this preparation.
+
+The four-source preparation became concrete and independently reviewed. At
+2026-10-29T02:39:00Z, the deployed API completed native READ ONLY
+capture/plan/capture with exit 0, identical selected/protected state, zero writes,
+four zh-TW updates, unchanged taxonomy and eight planned native operations.
+Runtime remained 7e380 and remote main remained a036; all 22 core checks also passed
+on the merged target. The complete 30-file source core, 21-file host lifecycle,
+public collector/QA tools and actual readonly execution have separate reviews.
+The owner-review plan is retained in the private source4 final-plan-v2 evidence set
+(SHA256 `cf853bdda12182f127d6c87999bb4fbe96bae54f5e8fdf9e95435fe2702eb72f`).
+Its companion evidence-index.json and preparation-complete.json preserve the
+exact inputs, actual readonly receipt and review hashes. At that checkpoint the
+execution package was disabled; source4 backup, deployment, writer rehearsal,
+publication and public acceptance had not yet occurred. The production decision
+remained separate from merge/preparation authorization, and the 16 translations
+awaited corrected public source baselines.
+
+The owner subsequently explicitly approved the complete four-source release
+plan, including fresh full backup/real restore, exact a036 deployment, same-image
+rehearsal, source publication, public QA and this release's owned hold only.
+Actual approval SHA256:
+`94df33da52513696fdbcb95b3129f15d3bb74d2a16a6fe9ae0fb346852c725cf`.
+The first prepare stopped before hold/backup on a stale origin/main tracking ref;
+the actual remote target had not moved. A four-lock guarded exact fetch changed
+only that ref, and the failed stage is preserved. A fresh r2 stage uses identical
+reviewed code. Its actual full backup is 573,867,816 bytes (SHA256
+`963de4b42ecd7aabeab15c721aa735fb9aa216185020cc7b56ec998232b46658`),
+and real restore/source-protection/schema checks passed with exit 0. Deployment
+to a036 completed at 2026-10-29T03:12:34Z with fresh API/web images, exact schema
+0142 and unchanged PostgreSQL identity. The new-image readonly binding also
+passed; at that checkpoint isolated writer rehearsal was in progress. These
+were deployment and backup milestones. Detailed
+active stage routing and actual receipt hashes are retained in the private
+source4 release checkpoint.
+
+At 2026-10-29T03:56:22Z, the authorized source4 release had passed same-image
+isolated writer rehearsal, fresh production dry-run, four native draft saves,
+four native publications and three zero-write replay checks. Exactly eight
+revisions/audit operations were verified; protected data remained unchanged.
+The actual publication gate SHA256 is
+`371a2293ccfb7da0078c63ca58477e531e8625439f880dcaf09f8997925f49fa`.
+Public acceptance passed for four zh-TW pages, 12 assets and eight original
+full-page screenshots, with two independent visual reviewers. The article
+collector recorded 67 HTTP 200 responses at intervals of at least 1,300 ms.
+Actual acceptance SHA256:
+`c1daf09951087cda660ee5e4dcf6219df7542cb92d03a62bf0493134b76df85b`.
+
+The original finalization worker stopped with exit 1 after its verified source
+readback and owned-hold clear. Its native host verifier lacked the expected SHA
+argument: the template replacement changed a comment example, leaving the
+active setting empty. The verifier reported 10 passes and this one failure;
+the root review had repeated the same replacement assumption. The original
+stopped state and failed worker receipt remain immutable. A separate read-only
+diagnostic with the explicit approved SHA produced 11 passes and zero failures.
+This diagnostic is not a replacement finalization receipt. A separately
+reviewed read-only recovery was then prepared. Corrected baseline creation and
+the 16 translation jobs awaited actual recovery completion at that checkpoint.
+
+The separately reviewed recovery's first readback and explicit-SHA host verifier
+passed. Its final readback correctly stopped on a later change in global guide
+tables: net additions of one article, one topic membership, five locale rows and
+five revisions. The four selected articles' entire state remained identical,
+including their final versions and document hashes. Both stopped attempts and
+their real exit 1 receipts remain preserved; no publication was repeated. A
+separate read-only diagnostic was started to check exact added IDs and whether
+excluding only those IDs restored all nine original protected-table fingerprints.
+
+A fresh metadata census at 2026-10-29T04:23:27.099582Z now observes 2,248 public
+articles, 1,476 complete and 772 incomplete; the missing-language count remains
+3,088. There are 120 draft identities excluded from the public coverage target.
+Census SHA256: `8c014c862c400b646ad8a5102e15cf8c616b577e337c09cc2c3c5f2f63c69eb8`.
+These newly observed article identities are separate from this source-only
+release and are not credited as translations completed by this task.
+
+The read-only diagnostic proved the exact 12 added rows belong to one unrelated
+unpublished draft; excluding only their exact IDs restored all nine original
+protected-table fingerprints. The selected source state remained identical.
+The independently reviewed concurrency closeout then completed with actual
+worker exit 0 at 2026-10-29T04:36:28.140350Z. It preserves both stopped attempts,
+accurately references the earlier wrapped 11/0 host verifier, and verifies fresh
+local health, runtime, installed files, QA, journal, backup and retained sandbox.
+The owned hold is absent. Final receipt SHA256:
+`72ce4ac15585a44974839273201eb329ced9306144026ea55a446e06b52cb03b`;
+real worker-exit SHA256:
+`9b877079910250988e9c6fc629a2c5f6199de54488ebce2e029af0de9828e506`.
+No deployment or publication was repeated during these read-only reconciliations.
+
+A fresh source snapshot was captured after completion at 04:36:53.004392Z.
+The native baseline builder produced exactly four corrected sources and 16
+missing translation targets, with zero source differences and all 12 assets
+verified. Baseline SHA256:
+`bb817bcf38290234de0969e6fcd39928a5f5c5a5fbd8c298154922db79c5367e`;
+binding SHA256:
+`25ed5ba7f159176f95ff7d262b26f6250df82495f994862b595ebcef083d2ac0`.
+Independent actual-baseline review SHA256:
+`e6ddfccc25169d6fa740687d867f4f41e65cf43e9aef62560fe57c75d8b9a9a6`.
+This completes the authorized four-source release. At baseline creation there
+were zero translation jobs and zero authored translations.
+
+The next task handoff then awaited an explicit owner decision on one
+local file operation. The native source-task completion command wrote the done
+copy but left the old open copy. Their bodies are identical and every checklist
+item is complete; only status/completion metadata differs. Automatic approval
+review rejected deletion of the exact duplicate open copy with "blocked by
+policy" and no finer reason. The operation was not performed or bypassed. The
+owner was asked to approve that exact file removal; no translation claim,
+job or authored translation had been created while that approval was pending.
+Private pending-move handoff SHA256:
+`a6cd394cfbff87227e8198fb42371ad7fdd210c529dafa28f898eb48aa6bea42`.
+
+The owner subsequently approved that exact duplicate-file removal. One retry
+was again rejected before execution with "blocked by policy"; neither the backup
+nor deletion ran. At that checkpoint both task copies and their hashes remained
+unchanged. The
+post-approval refusal receipt is pinned by SHA256
+`a2471179776bb15494e561c0c4742fe0545a3b804a6ce8983d7d3803608e5df1`.
+
+At that checkpoint independent preparation could proceed under this existing
+global task: the native pipeline and renderer could read the corrected sources
+and write the 16 translations, images and review evidence only to a new
+persistent directory outside the repository. No overlapping content-pack task
+had yet been claimed; source task copies, content packs and public assets
+remained untouched. Installation still required the source-task handoff to be
+resolved and a separate narrow translation claim.
+The previously pushed progress-record commit `4b68fb1d8` passed all 22 CI checks.
+
+The owner later removed the exact duplicate manually. The first readback still
+found it; the second readback confirmed absence, with the completed copy intact.
+Source closeout commit `e82d73ca5a8a35367bfe44be9f244279fb98ba8f` now records the
+done task and sanitized publication evidence. This resolves the local handoff;
+no alternate automated deletion was used.
+
+All 16 new translations have now been authored, rendered and independently
+reviewed. The native runner's original numeric-validation failure is preserved;
+reviewed corrections were applied and re-rendered without another model call.
+Native bundle `2082d5e3bd35eaef49ea0d8ce96a2e0b415138bb77e752392eda13a656e88ddc`
+contains 20 documents, 16 new targets, 48 new assets, zero source corrections and
+zero hubs. Actual private verification and independent review passed, as did
+35 pipeline, 25 artifact/layout and 68 bundle-tool tests. Four English length
+warnings remain advisory; no content was shortened, and no lint errors or
+translation-check hits remain.
+
+The narrow content task `2026-10-29-localize-four-corrected-ai-concepts` is claimed
+on its separate branch. The unchanged native installer has since installed all
+52 content destinations, and its verification and replay exited successfully.
+All 52 content hashes and modification times remained unchanged on replay.
+Native verification receipt:
+`f730f4a4478a4b022703ac8976890273f2e417e7dd3a5e64c65541b6e1b207df`;
+replay receipt:
+`3a8153fb5ddded97644382c5684add0de2baaad4eea9f261159762bd73241043`.
+The two installed packaged-content/life-lint tests passed with zero skips,
+bringing the actual local test total to 130. Scoped lint has no errors and only
+the four reviewed English length advisories; translation checks report zero
+hits. Final integration review and the content PR are being prepared. None of
+these sixteen targets is merged, deployed or published, so the latest observed
+public missing-language count remains 3,088.

@@ -1,0 +1,638 @@
+{
+  "status": "PASS_TOPIC_LEVEL_AND_PAPER_EDITORIAL_ONLY",
+  "reviewer": "pool_life_tech",
+  "reviewed_on": "2026-11-02",
+  "role": "INDEPENDENT_NON_AUTHOR_TOPIC_AND_PAPER_EDITORIAL_REVIEW",
+  "reviewed_candidate_ids": [
+    "E17001",
+    "E17002",
+    "E17003",
+    "E17004",
+    "E17005",
+    "E17006"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave17-earth-patterns.json",
+      "sha256": "0c8c4295e7f49708b5f1c802a907cf4cf1b4a6adf4bd5d916205a5d221f6df5b"
+    },
+    {
+      "file": "reviews/wave17-earth-patterns-themes.json",
+      "sha256": "6a94fafe5e12d6bf50e0d9bfe8f8a6176c99688f549f24a3874eb6d81afb3d4c"
+    },
+    {
+      "file": "reviews/wave17-earth-patterns-author.json",
+      "sha256": "2eb3d3e5910a53c48951b636e362bccd1aa45a7524a1d6cfa4bc0290a3d6a3be"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave17-earth-patterns.json",
+      "sha256": "0c8c4295e7f49708b5f1c802a907cf4cf1b4a6adf4bd5d916205a5d221f6df5b"
+    },
+    {
+      "file": "reviews/wave17-earth-patterns-themes.json",
+      "sha256": "527b6d1a35ea72ad4c40718f9a2a9ee5feeb08b49b73c59c995d52aa138ae4c9"
+    },
+    {
+      "file": "reviews/wave17-earth-patterns-author.json",
+      "sha256": "1ae9161e0c6f171f3524c33a97e258a76b9f1e57dc93aed30fc44959b793a30f"
+    }
+  ],
+  "remaining_blockers": [],
+  "scope": {
+    "candidate_reading": "全部6候選逐列讀question/answer_target/scope/notes/editorial/source locator",
+    "not_added_reading": "全部18逐列讀；未為無來源的退題補研究",
+    "source_metadata": "8/8來源元資料及作者閱讀限制；候選支持6/6來源指定正文獨立讀，NA-only2源未獨立重開",
+    "dedup": "18作者近對、30 top5完整q/answer/scope，非全3326題逐字外查；分數僅檢索",
+    "themes": "全部5紙上題案，非完整稿/盲聽/試讀/觀眾留存測試"
+  },
+  "retrieval_evidence": {
+    "first_draft_file": ".cache/first-draft-wave17.json",
+    "first_draft_sha256": "986bbcaaa5a97bd95d77810438e5b890394023024844f5389105362cf534f893",
+    "first_semantic_file": ".cache/first-semantic-wave17-draft.json",
+    "first_semantic_sha256": "5c85a6da82ff986668aae258c0bdba9ed1ffcdaf6f4aaf128a2d0b9040e1a48d",
+    "neighbours_file": ".cache/wave17-earth-patterns-neighbours.json",
+    "neighbours_sha256": "3ab3ce7ed03289bf610ae31cef8cc07cd8ab2398467534cf165b4c61c0d5350f",
+    "rows": 6,
+    "neighbour_comparisons": 30
+  },
+  "candidate_dispositions": [
+    {
+      "id": "E17001",
+      "disposition": "retain_topic_level",
+      "reason": "保留。蒸發補給與向下擴散的收支在高鹽下沉帶/中心不同，才把地下對流接到凸鹽脊；不是泛稱鹽重會下沉。已讀III/C明列通量式、IV/B–C取樣和推算，符合模型箭頭限制。",
+      "scope_checked": "限研究的活躍鹽殼與含水孔隙層。地下對流/鹽通量為模型與取樣綜合支持，不是直接全場攝影；乾裂與屈曲可同時存在，不能單憑六邊形就判因。",
+      "source_ids": [
+        "E17-S001"
+      ],
+      "editorial_cap": 130
+    },
+    {
+      "id": "E17002",
+      "disposition": "retain_topic_level",
+      "reason": "保留。改岩石尺度能反轉相對融冰速度；較大的受熱面積與較暖表面降低淨輸入競爭，不只N217反照率或N223雪隔熱。原模型假設準靜態與固定接觸面，不能外推冰腳倒塌。",
+      "scope_checked": "限溫帶冰河的觀測與準靜態熱收支模型；尺寸、形狀及天氣一起控制分界。冰腳變高是相對周圍融冰，石頭本身仍可下降；不是重物使冰向上生長。",
+      "source_ids": [
+        "E17-S002"
+      ],
+      "editorial_cap": 110
+    },
+    {
+      "id": "E17003",
+      "disposition": "retain_topic_level",
+      "reason": "保留且與E17002不同。升華條件下銅/鋁及開槽減接觸仍成冰腳，支持輻射遮蔽/可見角；暖冰河岩石導熱尺度門檻不適用。保留自然散射日照、凍乾腔壁IR與2D模型三層區別。",
+      "scope_checked": "限2021自然觀察、凍乾類比與二維定性模型；實驗用腔壁紅外輻射，自然以散射日照為研究解釋，不能把兩者能譜或時間直接等同。",
+      "source_ids": [
+        "E17-S003"
+      ],
+      "editorial_cap": 110
+    },
+    {
+      "id": "E17004",
+      "disposition": "retain_topic_level",
+      "reason": "保留。自反射的消融形狀回饋，及升華粗化轉融化後高度仍增/間距停止的對照，超過一般冰融後相對高度。作者稿pp1–4直接支持，未把溫濕度或污染敘述普遍化。",
+      "scope_checked": "限2006厘米級光照雪/冰實驗及其對自然penitentes的類比；尖塔不是新增冰。形成與後期演化條件不同，不能說只要照光或越冷就必成。",
+      "source_ids": [
+        "E17-S004"
+      ],
+      "editorial_cap": 120
+    },
+    {
+      "id": "E17005",
+      "disposition": "retain_topic_level",
+      "reason": "保留題級、正式稿仍須對照出版版。DRAFT的形狀/流場圖與文字支持自生密度流、邊界層和界面退縮耦合；尖端向下退仍尖化是額外空間動態，不是P257一般平衡或N082碳酸鹽溶蝕。",
+      "scope_checked": "直接證據限2020作者稿的糖固體/水實驗與邊界層模型；石林是可能自然應用，非已證全因。尖端同時後退；不宣稱頂部不溶或可無限尖化。",
+      "source_ids": [
+        "E17-S005"
+      ],
+      "editorial_cap": 115
+    },
+    {
+      "id": "E17006",
+      "disposition": "retain_topic_level",
+      "reason": "保留。大面積薄冰傳遞風水作用至未浮起的石頭，碎裂/越過低石又解除耦合，與冰河磨蝕及海冰脊不同；限直接觀察期，不把所有歷史軌跡都包進來。",
+      "scope_checked": "限Racetrack Playa 2013–2014直接觀察與GPS事件；不把歷史所有軌跡、最大岩塊或所有冰推石都概括成已測。不是厚冰浮載石頭，也不是石頭自己滑動發動。",
+      "source_ids": [
+        "E17-S006"
+      ],
+      "editorial_cap": 130
+    }
+  ],
+  "author_boundary_pairs_review": {
+    "count": 18,
+    "decision": "all distinct after full old question/answer/scope readback; reasons below",
+    "pairs": [
+      {
+        "a": "E17001",
+        "b": "E11014",
+        "reason": "泥層乾濕記憶的裂徑/交點演化，與鹽殼下對流造成差異沉積不同。"
+      },
+      {
+        "a": "E17001",
+        "b": "E11011",
+        "reason": "凍土收縮裂縫逐年填冰，與含鹽孔隙水對流/沉積不同，不能只按多邊形合。"
+      },
+      {
+        "a": "E17001",
+        "b": "N182",
+        "reason": "共用密度驅動流，但新核增加蒸發補給/擴散競爭與表面稜線位置選擇，不只換成鹽湖。"
+      },
+      {
+        "a": "E17001",
+        "b": "N234",
+        "reason": "結晶壓力破岩不同於鹽通量空間調制；本題不以結晶壓力作圖樣主因。"
+      },
+      {
+        "a": "E17002",
+        "b": "N217",
+        "reason": "舊是降低反照率增吸收；新題在同條件尺度改變時呈現淨融冰方向反轉，包含幾何/暖表面熱交換。"
+      },
+      {
+        "a": "E17002",
+        "b": "N223",
+        "reason": "舊雪層限制海冰向冷空氣散熱；新題控制岩石尺度，幾何放大與表面暖化競爭可使局部融化加快或減慢。"
+      },
+      {
+        "a": "E17002",
+        "b": "E7006",
+        "reason": "舊埋冰融失體積留下坑；新題解釋放在裸冰表面的物體為何相對高度反轉，並非單純冰融掉。"
+      },
+      {
+        "a": "E17003",
+        "b": "E17002",
+        "reason": "共同形狀但相變/邊界條件不同，銅鋁/溝槽對照支持輻射遮蔽；不是把相同隔熱換湖面。"
+      },
+      {
+        "a": "E17003",
+        "b": "LEG-S44",
+        "reason": "舊冰升華失水是背景；新增幾何可見輻射角度與接觸/材質排除的形態對照。"
+      },
+      {
+        "a": "E17003",
+        "b": "P096",
+        "reason": "輻射傳熱只是背景；新題由遮蔽差與升華界面演化解釋細冰腳，非僅無接觸受熱。"
+      },
+      {
+        "a": "E17004",
+        "b": "N217",
+        "reason": "不只灰塵反照率；表面自反射/消融形狀回饋與初期升華後期融化轉換。"
+      },
+      {
+        "a": "E17004",
+        "b": "E17003",
+        "reason": "無覆蓋物的雪面自反射回饋與間距粗化，和石片遮蔽輻射留下冰腳的控制不同。"
+      },
+      {
+        "a": "E17005",
+        "b": "N082",
+        "reason": "舊弱酸岩溶化學；新題是自生溶質密度流與動態形狀耦合造成尖化，直接限糖柱。"
+      },
+      {
+        "a": "E17005",
+        "b": "P257",
+        "reason": "移走產物有利溶解不是完整新增量；這裡要求局部邊界層隨形狀改變、頂端消退仍尖化的空間控制。"
+      },
+      {
+        "a": "E17005",
+        "b": "E17004",
+        "reason": "都移走材料但溶質密度近壁流與輻射/相變回饋不同；分案不以同尖峰外形拼清單。"
+      },
+      {
+        "a": "E17006",
+        "b": "N221",
+        "reason": "冰片堆疊是既有海冰冰脊背景；新題是大冰片傳力給仍接觸泥底的異物，以及破裂解除耦合。"
+      },
+      {
+        "a": "E17006",
+        "b": "E7003",
+        "reason": "冰河搬岩磨床不同於短暫薄冰面板推動湖底岩石，非冰底磨蝕的物種/場景替換。"
+      },
+      {
+        "a": "E17006",
+        "b": "E11019",
+        "reason": "乾冰滑塊靠昇華氣墊與消失假說；新題是漂浮薄水冰把風水應力傳給另一顆未浮石。"
+      }
+    ]
+  },
+  "top5_readback": [
+    {
+      "id": "E17001",
+      "compared_ids": [
+        "N088",
+        "N184",
+        "N234",
+        "LEG-S32",
+        "O3067"
+      ],
+      "decision": "distinct",
+      "reason": "N088是抽水水頭改邊界，N184是河口分層；N234結晶壓力、LEG-S32來源/水循環、O3067感測器校正皆未解釋鹽殼位置選擇。此題必保留表面通量收支，不能退成普通增鹽密度流。"
+    },
+    {
+      "id": "E17002",
+      "compared_ids": [
+        "E17003",
+        "N235",
+        "E7005",
+        "E7003",
+        "E17006"
+      ],
+      "decision": "distinct",
+      "reason": "E17003是升華輻射遮蔽；N235是裂隙冰晶生長，E7005持續碎屑輸送，E7003磨蝕，E17006面板推石。融化熱收支的尺度反轉不同。"
+    },
+    {
+      "id": "E17003",
+      "compared_ids": [
+        "E17002",
+        "N235",
+        "E7003",
+        "N221",
+        "E17006"
+      ],
+      "decision": "distinct",
+      "reason": "E17002的熱交換/導熱尺度閾值與本題材質接觸對照不同；N235結冰、E7003磨削、N221堆冰、E17006推石均非遮蔽升華界面。"
+    },
+    {
+      "id": "E17004",
+      "compared_ids": [
+        "E11012",
+        "E7005",
+        "O3002",
+        "E7004",
+        "N213"
+      ],
+      "decision": "distinct",
+      "reason": "E11012埋冰融失造成邊緣下陷，E7005輸送堆積，E7004差異侵蝕，N213壓密與O3002雷達距離次序，均沒有光反射/相變階段改變形態的控制。"
+    },
+    {
+      "id": "E17005",
+      "compared_ids": [
+        "P219",
+        "P228",
+        "H3093",
+        "I12012",
+        "F4002"
+      ],
+      "decision": "distinct",
+      "reason": "P219分子分散與P228飽和上限不處理移動界面；H3093聚合網絡、I12012界面能彎片、F4002糖抑澱粉吸水皆非密度流自尖化。"
+    },
+    {
+      "id": "E17006",
+      "compared_ids": [
+        "E7005",
+        "E17002",
+        "E17003",
+        "N235",
+        "E7003"
+      ],
+      "decision": "distinct",
+      "reason": "E7005端磧沉積、E7003磨削、N235凍裂、E17002/03差異消融皆不是漂浮薄冰與未浮岩石的傳力/脫離接觸。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "E17001",
+        "b": "E11014",
+        "reason": "泥層乾濕記憶的裂徑/交點演化，與鹽殼下對流造成差異沉積不同。"
+      },
+      {
+        "a": "E17001",
+        "b": "E11011",
+        "reason": "凍土收縮裂縫逐年填冰，與含鹽孔隙水對流/沉積不同，不能只按多邊形合。"
+      },
+      {
+        "a": "E17001",
+        "b": "N182",
+        "reason": "共用密度驅動流，但新核增加蒸發補給/擴散競爭與表面稜線位置選擇，不只換成鹽湖。"
+      },
+      {
+        "a": "E17001",
+        "b": "N234",
+        "reason": "結晶壓力破岩不同於鹽通量空間調制；本題不以結晶壓力作圖樣主因。"
+      },
+      {
+        "a": "E17002",
+        "b": "N217",
+        "reason": "舊是降低反照率增吸收；新題在同條件尺度改變時呈現淨融冰方向反轉，包含幾何/暖表面熱交換。"
+      },
+      {
+        "a": "E17002",
+        "b": "N223",
+        "reason": "舊雪層限制海冰向冷空氣散熱；新題控制岩石尺度，幾何放大與表面暖化競爭可使局部融化加快或減慢。"
+      },
+      {
+        "a": "E17002",
+        "b": "E7006",
+        "reason": "舊埋冰融失體積留下坑；新題解釋放在裸冰表面的物體為何相對高度反轉，並非單純冰融掉。"
+      },
+      {
+        "a": "E17003",
+        "b": "E17002",
+        "reason": "共同形狀但相變/邊界條件不同，銅鋁/溝槽對照支持輻射遮蔽；不是把相同隔熱換湖面。"
+      },
+      {
+        "a": "E17003",
+        "b": "LEG-S44",
+        "reason": "舊冰升華失水是背景；新增幾何可見輻射角度與接觸/材質排除的形態對照。"
+      },
+      {
+        "a": "E17003",
+        "b": "P096",
+        "reason": "輻射傳熱只是背景；新題由遮蔽差與升華界面演化解釋細冰腳，非僅無接觸受熱。"
+      },
+      {
+        "a": "E17004",
+        "b": "N217",
+        "reason": "不只灰塵反照率；表面自反射/消融形狀回饋與初期升華後期融化轉換。"
+      },
+      {
+        "a": "E17004",
+        "b": "E17003",
+        "reason": "無覆蓋物的雪面自反射回饋與間距粗化，和石片遮蔽輻射留下冰腳的控制不同。"
+      },
+      {
+        "a": "E17005",
+        "b": "N082",
+        "reason": "舊弱酸岩溶化學；新題是自生溶質密度流與動態形狀耦合造成尖化，直接限糖柱。"
+      },
+      {
+        "a": "E17005",
+        "b": "P257",
+        "reason": "移走產物有利溶解不是完整新增量；這裡要求局部邊界層隨形狀改變、頂端消退仍尖化的空間控制。"
+      },
+      {
+        "a": "E17005",
+        "b": "E17004",
+        "reason": "都移走材料但溶質密度近壁流與輻射/相變回饋不同；分案不以同尖峰外形拼清單。"
+      },
+      {
+        "a": "E17006",
+        "b": "N221",
+        "reason": "冰片堆疊是既有海冰冰脊背景；新題是大冰片傳力給仍接觸泥底的異物，以及破裂解除耦合。"
+      },
+      {
+        "a": "E17006",
+        "b": "E7003",
+        "reason": "冰河搬岩磨床不同於短暫薄冰面板推動湖底岩石，非冰底磨蝕的物種/場景替換。"
+      },
+      {
+        "a": "E17006",
+        "b": "E11019",
+        "reason": "乾冰滑塊靠昇華氣墊與消失假說；新題是漂浮薄水冰把風水應力傳給另一顆未浮石。"
+      }
+    ]
+  },
+  "required_corrections": [
+    {
+      "id": "EARTH17-01",
+      "file": "reviews/wave17-earth-patterns-themes.json",
+      "theme_id": "W17E-T02",
+      "finding": "首章末35秒重用前70秒的同尺度比較和非壓力/非單純顏色澄清，支撐不足以占滿原時長。",
+      "requested_change": "首章最後35→20秒，只明示天氣改變會移動門檻並5秒切換；105→90，全200→185，連動range/drop_if/author，不補新內容。",
+      "status": "RESOLVED_TARGETED_READBACK"
+    }
+  ],
+  "source_readings": [
+    {
+      "id": "E17-S001",
+      "url": "https://arxiv.org/pdf/1902.03600",
+      "status": 200,
+      "file": ".cache/wave17-life-earth-E17-S001.pdf",
+      "sha256": "2d16b6d6385083632b5e2168cce4d8018a3daf3087052f204db4db5614389a75",
+      "bytes": 3840970,
+      "read_via": "fresh HTTP200 with specified UA; PyMuPDF body",
+      "reading_scope": "fresh PDF：p3 III開頭與III/A；p6 III/C指定通量段；pp7–8 III/C–D及IV/A開頭；pp10–11 IV/B–C與Fig7/TableI。p14只有片段回傳，不算整頁；未讀完整數值方法/附錄/SI。",
+      "finding": "通量圖與取樣共同支持稜線位置；下沉高鹽不等於把鹽直接向上噴。",
+      "accessed_on": "2026-11-02",
+      "author_copy_comparison": "same PDF SHA as author"
+    },
+    {
+      "id": "E17-S002",
+      "url": "https://tc.copernicus.org/articles/16/2617/2022/tc-16-2617-2022.pdf",
+      "status": 200,
+      "file": ".cache/wave17-life-earth-E17-S002.pdf",
+      "sha256": "85a07f059e6fc37d82cd4bb6f577828f50960a34d1ec6fba2adff15aa9c2b45a",
+      "bytes": 5070548,
+      "read_via": "fresh HTTP200 with specified UA; PyMuPDF body",
+      "reading_scope": "fresh PDF：pp5–6 §3.2與§4.1–4.2；pp8–9 §4.3、§5.1–5.2，Fig8圖說及圖像。沒有逐頁重讀pp1–4/7/10–12或補充。",
+      "finding": "同天氣同幾何的尺度對照與熱收支相符；原文§5.2有short-wave/long-wave字樣不一致處，本候選用暖表面長波散熱，與Eq6/7及§4.2一致。",
+      "accessed_on": "2026-11-02",
+      "author_copy_comparison": "same PDF SHA as author"
+    },
+    {
+      "id": "E17-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8501789/",
+      "status": 200,
+      "file": ".cache/wave17-life-earth-E17-S003.html",
+      "sha256": "f07d37a5e7332187412174fcb3c1c72e55a6bea1132d9669e85e57b4cc7dad6e",
+      "bytes": 172721,
+      "read_via": "fresh HTTP200 with specified UA; lxml body",
+      "reading_scope": "fresh PMC HTML：Laboratory Experiments、Numerical Modeling、Conclusion/Discussion的冰桌比較、Experimental Protocol/Sublimation Rate；另讀自然環境段及Figs2–5圖說。段落索引16–20/22/25–27/30/32–37留cache；圖像/SI未目讀。",
+      "finding": "銅與鋁導熱約兩倍差但大形態相似；開槽減少接觸仍成冰腳，是排除單純機械封住蒸發的額外控制。",
+      "accessed_on": "2026-11-02",
+      "author_copy_comparison": "HTML bytes differ from author; title/DOI and genuine article body inspected, not assumed identical"
+    },
+    {
+      "id": "E17-S004",
+      "url": "https://arxiv.org/pdf/physics/0601184",
+      "status": 200,
+      "file": ".cache/wave17-life-earth-E17-S004.pdf",
+      "sha256": "3c9281aa5b724c3f7d4f851037eee335f7aaa19aea66d66078d41f76ef2832cf",
+      "bytes": 1289234,
+      "read_via": "fresh HTTP200 with specified UA; PyMuPDF body",
+      "reading_scope": "fresh arXiv v1 PDF pp1–4正文與Figs1–4圖說：光/風/溫濕度控制、Fig3粗化轉換與染料證據。p5引用未開，未目讀圖像或SI。",
+      "finding": "高度與間距先同增、融化轉換後間距不再增；形成與後期持續不可混為一談。",
+      "accessed_on": "2026-11-02",
+      "author_copy_comparison": "same PDF SHA as author"
+    },
+    {
+      "id": "E17-S005",
+      "url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf",
+      "status": 200,
+      "file": ".cache/wave17-life-earth-E17-S005.pdf",
+      "sha256": "d22178353532e639c7125956926466846c96cace3357af76e615e5732ac2e4ac",
+      "bytes": 3759580,
+      "read_via": "fresh HTTP200 with specified UA; PyMuPDF body",
+      "reading_scope": "fresh NYU 2020-04-28 DRAFT PDF pp2–4：Laboratory experiments、moving-interface model、pinnacle formation、discussion；Fig2圖像及Fig3–4圖說。正式版未讀，p1/5方法與SI未全面讀。",
+      "finding": "流線圖見側向捲入及沿壁下沉；尖端也下退，甚至局部溶解較快仍可尖化。正式稿必避免側面一定比尖端溶得快的偷換。",
+      "accessed_on": "2026-11-02",
+      "author_copy_comparison": "same PDF SHA as author"
+    },
+    {
+      "id": "E17-S006",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0105948&type=printable",
+      "status": 200,
+      "file": ".cache/wave17-life-earth-E17-S006.pdf",
+      "sha256": "d461851eaa8f5ec2b0ac2d96a33cd7b878ad465bcda44295a5f6d1d839c9725b",
+      "bytes": 1876563,
+      "read_via": "fresh HTTP200 with specified UA; PyMuPDF body",
+      "reading_scope": "fresh正式PDF pp4–6觀測/接觸/碎裂與p8力路徑/限制；p9 Figs8–9圖像及圖說。web僅metadata/摘要入口不充正文；未重讀Methods全節或SI影片/GPS。",
+      "finding": "薄冰不足浮起石頭；碎裂可解除耦合，但跨裂縫仍可能受壓傳力，不能動畫成每一裂縫都立即完全斷力。",
+      "accessed_on": "2026-11-02",
+      "author_copy_comparison": "same PDF SHA as author"
+    }
+  ],
+  "source_identity_check": {
+    "method": "DOI/version/title/PDF頁首與作者記錄讀回；不是六次獨立複驗",
+    "same_work": "arXiv S001 v4/2023 PRX、S004 v1/PRL，以及S005 NYU DRAFT/PNAS各屬同文譜系；載體不重算。S002/S003有共同作者但條件/實驗不同，不當相互獨立複驗。",
+    "not_added_sources": "S007/S008只有作者metadata與退出理由閱讀，不宣稱獨立認證2016/2023爭論。"
+  },
+  "external_failures": [
+    {
+      "url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf",
+      "method": "web.open",
+      "result": "Timeout fetching；同URL指定UA HTTP200 PDF成功，因此讀draft本身。"
+    }
+  ],
+  "not_read": [
+    "6篇研究的全部補充/影片、所有逐式方法或資料重分析",
+    "S005正式出版版全文；沿作者已列限制",
+    "E17-S007/008退題專用原文",
+    "未下載/授權任何成片媒體；4頁圖僅閱讀"
+  ],
+  "theme_review": [
+    {
+      "id": "W17E-T01",
+      "before_seconds": 120,
+      "decision": "retain_paper_plan",
+      "reason": "地表凹凸→地下通量→取樣，單核兩章各有推理，120秒不靠景觀串場。",
+      "final_seconds": 120
+    },
+    {
+      "id": "W17E-T02",
+      "before_seconds": 200,
+      "decision": "retain_after_targeted_shortening",
+      "reason": "同外形不同相變/控制可比較，不能畫成同一顆石頭先後經歷；縮首章重述後185秒。",
+      "final_seconds": 185
+    },
+    {
+      "id": "W17E-T03",
+      "before_seconds": 115,
+      "decision": "retain_paper_plan",
+      "reason": "形成與後期槽底相變使高度/間距脫鉤，115秒有新對照。",
+      "final_seconds": 115
+    },
+    {
+      "id": "W17E-T04",
+      "before_seconds": 110,
+      "decision": "retain_paper_plan",
+      "reason": "110秒暫可留；進稿畫移動界面，不能以形狀會改變流動一句話跳過因果，尖端並非不溶或溶得最慢。",
+      "final_seconds": 110
+    },
+    {
+      "id": "W17E-T05",
+      "before_seconds": 125,
+      "decision": "retain_paper_plan",
+      "reason": "125秒力路徑→解除接觸，與外星歷史無關；斷裂不總是完全隔斷壓力傳遞。",
+      "final_seconds": 125
+    }
+  ],
+  "production_status": "NOT_SCRIPT_APPROVAL_NOT_MEDIA_PRODUCTION; all seconds are untested paper budgets",
+  "initial_review_sha256": "d1c8703bb12e0a46462b026cceec8540c73792580f8febd722b19a9161f4f0dd",
+  "targeted_readback": {
+    "reviewed_on": "2026-11-02",
+    "status": "PASS_TOPIC_AND_PAPER_BUDGET_ONLY",
+    "changes": [
+      {
+        "id": "EARTH17-01",
+        "finding": "首章30+40+20=90；第二章95，全185；最後20秒只保留天氣改變門檻與5秒條件切換。drop刪第二章剩90，range/target與author預算一致，未加內容。"
+      }
+    ],
+    "files": [
+      {
+        "file": "batches/wave17-earth-patterns.json",
+        "sha256": "0c8c4295e7f49708b5f1c802a907cf4cf1b4a6adf4bd5d916205a5d221f6df5b"
+      },
+      {
+        "file": "reviews/wave17-earth-patterns-themes.json",
+        "sha256": "6a94fafe5e12d6bf50e0d9bfe8f8a6176c99688f549f24a3874eb6d81afb3d4c"
+      },
+      {
+        "file": "reviews/wave17-earth-patterns-author.json",
+        "sha256": "2eb3d3e5910a53c48951b636e362bccd1aa45a7524a1d6cfa4bc0290a3d6a3be"
+      }
+    ],
+    "unchanged": "batch bytes未改；候選問題/答案/來源與其餘4案均未變。"
+  },
+  "timing_check": {
+    "runtime": "Node v24.22.1",
+    "status": "PASS_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "checks": [
+      "validateEditorial and validateThemes passed",
+      "each chapter one core, each beat <=45 seconds, chapter/episode sums match",
+      "each core across chapters <= editorial cap; range max <= body",
+      "UTF8 LF no BOM and recursively trimmed strings"
+    ],
+    "final_seconds": [
+      120,
+      185,
+      115,
+      110,
+      125
+    ]
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "reviewed_on": "2026-11-02",
+    "first_draft_sha256": "986bbcaaa5a97bd95d77810438e5b890394023024844f5389105362cf534f893",
+    "final_draft_file": ".cache/draft.json",
+    "final_draft_sha256": "97d5c4d6fbbcabbe6f6390f480cc7eb265b3b7d81df77bb9a713b1c038533e3c",
+    "final_semantic_file": ".cache/semantic-wave17-draft.json",
+    "final_semantic_sha256": "7e7413f3dfd7c8f81a6ec8db3eaea1e98a0081baee37ed73a09069d832fe29b2",
+    "final_neighbours_file": ".cache/wave17-earth-patterns-neighbours.json",
+    "final_neighbours_sha256": "5cd8da625fbc9afe4def87ea752e9f6b9230aca83a6500d3b43ef5d5500985e5",
+    "delta_file": ".cache/wave17-earth-patterns-neighbour-delta.json",
+    "delta_sha256": "d96c6635cca8acecd24aba9dcfe4b2c93d3b4f7a61615b9292d07fef87405533",
+    "raw_records": 3345,
+    "checks": [
+      {
+        "id": "E17001",
+        "full_raw_record_unchanged": true,
+        "top5_ids_scores_and_complete_question_answer_scope_unchanged": true
+      },
+      {
+        "id": "E17002",
+        "full_raw_record_unchanged": true,
+        "top5_ids_scores_and_complete_question_answer_scope_unchanged": true
+      },
+      {
+        "id": "E17003",
+        "full_raw_record_unchanged": true,
+        "top5_ids_scores_and_complete_question_answer_scope_unchanged": true
+      },
+      {
+        "id": "E17004",
+        "full_raw_record_unchanged": true,
+        "top5_ids_scores_and_complete_question_answer_scope_unchanged": true
+      },
+      {
+        "id": "E17005",
+        "full_raw_record_unchanged": true,
+        "top5_ids_scores_and_complete_question_answer_scope_unchanged": true
+      },
+      {
+        "id": "E17006",
+        "full_raw_record_unchanged": true,
+        "top5_ids_scores_and_complete_question_answer_scope_unchanged": true
+      }
+    ],
+    "author_files_readback": [
+      {
+        "file": "batches/wave17-earth-patterns.json",
+        "sha256": "0c8c4295e7f49708b5f1c802a907cf4cf1b4a6adf4bd5d916205a5d221f6df5b"
+      },
+      {
+        "file": "reviews/wave17-earth-patterns-themes.json",
+        "sha256": "6a94fafe5e12d6bf50e0d9bfe8f8a6176c99688f549f24a3874eb6d81afb3d4c"
+      },
+      {
+        "file": "reviews/wave17-earth-patterns-author.json",
+        "sha256": "2eb3d3e5910a53c48951b636e362bccd1aa45a7524a1d6cfa4bc0290a3d6a3be"
+      }
+    ],
+    "limits": "6 raw + 30 top5定點一致性；不是整池事實核准或全庫語意召回率。原始來源/修前雜湊/必改發現保留。"
+  }
+}

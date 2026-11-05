@@ -11,7 +11,7 @@ from collections.abc import AsyncIterator
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from typing import Any
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 from fastapi import FastAPI
@@ -149,6 +149,18 @@ def project(slug: str, **fields: Any) -> VideoProject:
             "full",
         ),
         (project("jingwei", format="drama", category="drama"), "drama", "drama/jingwei", "full"),
+        (
+            project("zhong-tian-qu-qi-e033", category="drama"),
+            "zhong-tian-qu-qi",
+            "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033",
+            "full",
+        ),
+        (
+            project("zhong-tian-qu-qi-e001-005-v2", category="drama"),
+            "zhong-tian-qu-qi",
+            "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e001-005-v2",
+            "full",
+        ),
         (project("nothing-said"), "other", "其他/nothing-said", "full"),
     ],
 )
@@ -167,6 +179,27 @@ def test_overrides_win_and_a_folder_once_used_survives_a_rename() -> None:
     video.backup = {"state": "done", "folder": "奇聞檔案局/curio-h02"}
     kept = resolve_target(video, tiers={"curio": "off"}, folder_names={"curio": "奇聞"})
     assert (kept.folder, kept.tier) == ("奇聞檔案局/curio-h02", "off")
+
+
+def test_an_imported_drama_backed_up_flat_under_drama_moves_into_its_series_folder_once() -> None:
+    video = project("zhong-tian-qu-qi-e031", category="drama")
+    video.backup = {"state": "done", "folder": "drama/zhong-tian-qu-qi-e031"}
+    moving = resolve_target(video)
+    assert (moving.folder, moving.moved_from, moving.shared_folder) == (
+        "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e031",
+        "drama/zhong-tian-qu-qi-e031",
+        "drama/zhong-tian-qu-qi/_共用",
+    )
+    video.backup = {"state": "done", "folder": moving.folder}
+    assert resolve_target(video).moved_from is None, "once moved, the stored folder is the new one"
+    # A tier set for the whole category holds for each drama until the drama has its own.
+    assert resolve_target(video, tiers={"drama": "off"}).tier == "off"
+    own = {"drama": "off", "zhong-tian-qu-qi": "basic"}
+    assert resolve_target(video, tiers=own).tier == "basic"
+    # Any other folder an earlier backup used stays, as for every series.
+    video.backup = {"state": "done", "folder": "種田/zhong-tian-qu-qi-e031"}
+    kept = resolve_target(video)
+    assert (kept.folder, kept.moved_from) == ("種田/zhong-tian-qu-qi-e031", None)
 
 
 def test_the_chosen_languages_name_the_files_a_backup_must_hold() -> None:
@@ -236,25 +269,33 @@ class Site:
             )
             return list(rows.all())
 
-    async def confirm(self, slug: str, status: str = "approved") -> None:
+    async def confirm(
+        self,
+        slug: str,
+        status: str = "approved",
+        payload: dict[str, Any] | None = None,
+        gate: str = "publish",
+    ) -> str:
         """The owner's upload confirmation of a video not on YouTube yet, and its languages
         decided: ready to upload (docs/videos/LANGUAGES.md §上架流程)."""
         async with self.factory() as session:
             video = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
             assert video is not None
             video.locales_decided_at = datetime.now(UTC)
-            session.add(
-                VideoReview(
-                    project_id=video.id,
-                    gate="publish",
-                    # A new cut, a new confirmation: its own content hash.
-                    content_sha256=uuid4().hex * 2,
-                    summary="上架確認",
-                    status=status,
-                    decided_at=datetime.now(UTC),
-                )
+            review = VideoReview(
+                id=uuid4(),
+                project_id=video.id,
+                gate=gate,
+                # A new cut, a new confirmation: its own content hash.
+                content_sha256=uuid4().hex * 2,
+                summary="上架確認",
+                payload=payload or {},
+                status=status,
+                decided_at=datetime.now(UTC),
             )
+            session.add(review)
             await session.commit()
+            return str(review.id)
 
     async def supersede(self, slug: str) -> None:
         """A renewed final cut: the upload confirmation is superseded (renew_final)."""
@@ -593,6 +634,30 @@ async def test_the_worker_config_lists_every_uploaded_video_with_its_target(site
     assert video.expected.captions == ["ko"] and video.backup is None
 
 
+async def test_the_worker_moves_a_flat_drama_backup_and_its_report_stores_the_new_folder(
+    site: Site,
+) -> None:
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(
+        project(
+            "zhong-tian-qu-qi-e034",
+            category="drama",
+            backup={"state": "done", "folder": "drama/zhong-tian-qu-qi-e034"},
+        )
+    )
+    async with site.factory() as session:
+        [video] = (await status.worker_config(session)).videos
+    assert (video.folder, video.moved_from) == (
+        "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e034",
+        "drama/zhong-tian-qu-qi-e034",
+    )
+    await report(site, "zhong-tian-qu-qi-e034", state="pending", folder=video.folder, tier="full")
+    async with site.factory() as session:
+        [moved] = (await status.worker_config(session)).videos
+    assert (moved.folder, moved.moved_from) == (video.folder, None)
+
+
 async def test_a_video_ready_to_upload_is_backed_up_before_youtube_and_again_after_a_revision(
     site: Site,
 ) -> None:
@@ -622,6 +687,116 @@ async def test_a_video_ready_to_upload_is_backed_up_before_youtube_and_again_aft
     assert refused.value.code == "video_backup_not_ready"
     await site.confirm("curio-h10")
     assert await listed() == [("curio-h10", None), ("lab-short-2", None)]
+
+
+async def test_an_imported_video_names_its_approved_package_for_the_worker_to_fetch(
+    site: Site,
+) -> None:
+    """`import --publish` from a cloud session leaves video_work empty: the worker is told which
+    approved package to fetch from the review store (clips included) before the backup."""
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(project("zhong-tian-qu-qi-e033", youtube_video_id=None))
+    await site.add(project("curio-h13", youtube_video_id=None))
+    await site.add(project("drama-short-9", youtube_video_id=None, shorts_line="drama"))
+    await site.add(project("lab-short-9", youtube_video_id=None, shorts_line="lab"))
+    imported = {"imported": True, "hand_pushed": True}
+    await site.confirm("zhong-tian-qu-qi-e033", payload=imported)
+    await site.confirm("curio-h13")
+    await site.confirm("drama-short-9", payload={"hand_pushed": True})
+    await site.confirm("lab-short-9")
+
+    async def packages() -> dict[str, Any]:
+        async with site.factory() as session:
+            config = await status.worker_config(session)
+        return {video.slug: video.review_package for video in config.videos}
+
+    listed = await packages()
+    assert listed["curio-h13"] is None, "the worker's own package is in video_work already"
+    assert listed["lab-short-9"] is None, "the worker's own Short is in video_work already"
+    assert listed["drama-short-9"] is not None, "a Short sent by hand is fetched like an import"
+    package = listed["zhong-tian-qu-qi-e033"]
+    assert package is not None
+    async with site.factory() as session:
+        review = await session.scalar(
+            select(VideoReview).where(VideoReview.id == UUID(package.review_id))
+        )
+    assert review is not None and review.content_sha256 == package.content_sha256
+    # A renewed cut and a new approved package: the newer one is named.
+    await site.supersede("zhong-tian-qu-qi-e033")
+    newer = await site.confirm("zhong-tian-qu-qi-e033", payload=imported)
+    renewed = (await packages())["zhong-tian-qu-qi-e033"]
+    assert renewed is not None and renewed.review_id == newer
+    assert renewed.languages_review_id is None, "no language batch yet"
+
+
+async def test_a_video_pushed_by_hand_names_its_package_and_its_newest_language_batch(
+    site: Site,
+) -> None:
+    """`review-push` from a cloud session (owner, 2026-11-03): its files are only in the review
+    store until the worker fetches them, the language batch approved after the upload
+    confirmation included, so the host holds the whole video before it goes up."""
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(project("curio-b01", youtube_video_id=None))
+    await site.add(project("curio-h14", youtube_video_id=None))
+    publish = await site.confirm("curio-b01", payload={"hand_pushed": True})
+    await site.confirm("curio-h14")
+    await site.confirm("curio-h14", gate="languages")
+
+    async def packages() -> dict[str, Any]:
+        async with site.factory() as session:
+            config = await status.worker_config(session)
+        return {video.slug: video.review_package for video in config.videos}
+
+    listed = await packages()
+    assert listed["curio-h14"] is None, "the worker's own batches are in video_work already"
+    package = listed["curio-b01"]
+    assert package is not None and package.review_id == publish
+    assert (package.languages_review_id, package.languages_sha256) == (None, None)
+
+    await site.confirm(
+        "curio-b01", gate="languages", status="pending", payload={"hand_pushed": True}
+    )
+    assert (await packages())["curio-b01"].languages_review_id is None, "only an approved batch"
+    first = await site.confirm("curio-b01", gate="languages", payload={"hand_pushed": True})
+    second = await site.confirm("curio-b01", gate="languages", payload={"hand_pushed": True})
+    named = (await packages())["curio-b01"]
+    assert named is not None and named.review_id == publish
+    assert named.languages_review_id == second != first, "the newest approved batch"
+    assert named.files == 0, "the reviews' files, counted: the worker fetches again when it grows"
+    async with site.factory() as session:
+        batch = await session.scalar(select(VideoReview).where(VideoReview.id == UUID(second)))
+    assert batch is not None and named.languages_sha256 == batch.content_sha256
+
+
+async def test_the_worker_hears_of_videos_the_owner_deleted_until_the_slug_is_taken_again(
+    site: Site,
+) -> None:
+    """Owner, 2026-11-03: a deleted video leaves the host whole. The API mounts video_work
+    read-only, so the worker is told which slugs to clear (tools/video/automation/tidy.mjs)."""
+    now = datetime.now(UTC)
+
+    async def deleted(slug: str, days: int) -> None:
+        async with site.factory() as session:
+            session.add(
+                AdminAuditLog(
+                    actor_user_id=site.owner.id,
+                    action="video_project_deleted",
+                    target=f"video_project:{uuid4()}",
+                    metadata_json={"slug": slug},
+                    created_at=now - timedelta(days=days),
+                )
+            )
+            await session.commit()
+
+    await deleted("curio-gone", 1)
+    await deleted("curio-again", 2)
+    await deleted("curio-long-ago", 90)
+    await site.add(project("curio-again", youtube_video_id=None))
+    async with site.factory() as session:
+        config = await status.worker_config(session)
+    assert config.deleted == ["curio-gone"], "a slug held again, or deleted long ago, is not named"
 
 
 # --- the routes ---------------------------------------------------------------------------------

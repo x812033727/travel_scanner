@@ -1,19 +1,25 @@
 ---
 id: 2026-10-09-dub-skipped-because-jev-still-hears
 title: Dub skipped because Jev still hears lines wrong is the top skip reason
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5.5
+claimed_at: 2026-11-01T04:05:16Z
 created_at: 2026-10-09T14:49:20Z
 completed_at:
 branch:
 depends_on: []
 scope:
-  - tools/video/dubs
-  - tools/video/automation/flow.mjs
-  - tools/video/automation/prompts.mjs
+  - tools/video/tts/check.mjs
+  - tools/video/tts/check-dub-judging.test.mjs
+  - tools/video/tts/client.mjs
+  - tools/video/tts/speech-journal.mjs
+  - tools/video/tts/check-journal.test.mjs
+  - apps/api/app/video_speech/checking.py
+  - apps/api/app/video_speech/schemas.py
+  - apps/api/app/video_speech/admin_api.py
+  - apps/api/tests/test_video_speech_check.py
   - docs/videos/DUBS.md
 ---
 
@@ -100,3 +106,39 @@ three dubs ticked, and its `languages` card showing dubs ready rather than skipp
   on the volume is writable and huggingface.co answers 200. The model has not been fetched
   yet: the first dub check after this downloads about 1.5 GB. Still open for the measurement:
   compare the next ten videos' first languages batch with the baseline above.
+
+## Evidence 2026-11-01 (daily-ai-20261029, second opinion is set on the host)
+
+Three of four skipped locales were flagged on a faithful or near-faithful reading:
+- es utxn (Jev 0.22): script "editar PDF", voice said "editar PDFs" (plural only).
+- pt mby2 (Jev 0.16): script "US$ 250 mil", voice said "250 mil dólares" — the correct way to read the symbol.
+- pt 9ept (Jev 0.16): "ninguém diz" read "ninguém disse" (tense), plus ":" → "." pause.
+- ko bgnr (Jev 0.06) is a real loss: "Claude Enterprise 4개도 같습니다" read "Claude Enterprise도 마찬가지입니다" — the
+  translated line itself is unnatural Korean, so the voice smoothed it and dropped the number; rewording did not fix it.
+Classes to add: currency-symbol verbalisation counts as a match; a plural/tense-only diff is a warning, not a skip.
+
+## Measurement and fix (2026-11-01, claude-opus-5.5)
+
+Baseline: the latest languages batch of every video, 2026-09-29..10-31: 23 dubs given up for
+"Jev still hears", 119 flagged lines (5 more locales had no flags file left). Classified by hand:
+~55 transcriber homophones the voice did not make, ~45 faithful-but-not-verbatim readings
+(articles, colloquial forms, US$ → dólares, EE. UU. → Estados Unidos, plural), ~12 real
+misreadings (625→620, B4 dropped, 4개 dropped, 2026→2024, Opus 5→Opus, Gemini 4→for).
+
+Second opinion: of the 119, only the 4 from daily-ai-20261029 had one. The 10-19..10-24 story
+videos (18 dubs) wrote hints files but got no transcript: PyAV 19 broke the script until #1862
+(10-26). check-audio printed "the flags below stand" and the worker spent retakes and rewordings
+and gave the dub up. Fix: a doubted line no second transcriber has heard ends check-audio with
+exit 4 when the transcriber fails (worker defers), tests in check-dub-judging.test.mjs.
+
+Jev: dubs were judged word for word like the narration. Fix: `track: "dub"` on speech/judge,
+DUB_JUDGE_INSTRUCTIONS / DUB_JUDGE_CRITERIA in checking.py (meaning-preserving forms pass; a
+number, date, unit, name, product or content word lost or changed does not). Re-asked Jev the 119
+lines with the dub criteria on the host (8 calls, counted against the daily budget): 42 now pass,
+all of the faithful-reading class; every real misreading above still fails (0.03-0.23).
+
+- [x] Flags of more than ten skips classified (above).
+- [x] Second opinion checked on the host: set, and it works now; its failures no longer count as misreadings.
+- [x] Fix for both dominant classes, with tests (check-dub-judging.test.mjs, check-journal.test.mjs, test_video_speech_check.py).
+- [ ] Skip rate on the next ten videos' first languages batch against 23 skips / 119 flags above.
+

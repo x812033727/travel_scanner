@@ -1,0 +1,617 @@
+{
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "reviewer": "pool_life_tech",
+  "reviewed_on": "2026-11-02",
+  "role": "非作者題級來源、核心邊界及紙上題案覆核；不是完整劇本盲讀或生產核准。",
+  "reviewed_candidate_ids": [
+    "W16001",
+    "W16002",
+    "W16003",
+    "W16004",
+    "W16005",
+    "W16006"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave16-wave-sensing.json",
+      "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+    },
+    {
+      "file": "reviews/wave16-wave-sensing-themes.json",
+      "sha256": "3d5765f0f1e3364ff78b910322e8bc6056d8c76de0cde79c44805b747f37b073"
+    },
+    {
+      "file": "reviews/wave16-wave-sensing-author.json",
+      "sha256": "57e1584631a3cfc9e1aedf821d9421cef8502cd2fd3078f11103ba7d02038c48"
+    }
+  ],
+  "remaining_blockers": [],
+  "scope": {
+    "candidates_read": 6,
+    "not_added_read": 18,
+    "author_boundary_pairs_read": 18,
+    "top5_comparisons_read": 30,
+    "sources_fresh_requested": 6,
+    "sources_designated_body_read": 6,
+    "scan_pdf_pages_visually_read": 2,
+    "full_corpus_review": false
+  },
+  "retrieval_evidence": {
+    "first_draft_sha256": "3307fb47b277e2f8c6c59f4d2ca04d080a7f2d44f54be9a4ecb622f491c98693",
+    "neighbours_file": ".cache/wave16-wave-sensing-neighbours.json",
+    "neighbours_sha256": "8f4a98d9e58ec915369d328dc6e86436b2ae65e2a9f01bacbdd487e5777a367d",
+    "limit": "語意檢索只用來找對照，非合併機率或召回率。"
+  },
+  "candidate_dispositions": [
+    {
+      "id": "W16001",
+      "decision": "retain",
+      "reason": "固定頻差造成散相而非個體分量消失；翻相後再聚。與磁區飽和、順磁熱擾動或靜態外場抵消不同；不能畫反向核自轉。",
+      "scope_and_source_check": "S001掃描的兩90脈衝與S002的90–180分開。S002直接給反轉相位而頻率差不反轉的描述。",
+      "editorial": "有可見對照與可解釋中段；僅題級保留，不代表完整稿/動畫已核。"
+    },
+    {
+      "id": "W16002",
+      "decision": "retain",
+      "reason": "新增位置相位編碼及擴散位移；固定回波時間改梯度是可辨新控制，不是只把W16001換液體。與H3072構象交換平均譜不相同。",
+      "scope_and_source_check": "短脈衝近似已明列；回不齊不等於每一訊號弱都可診斷擴散。",
+      "editorial": "有可見對照與可解釋中段；僅題級保留，不代表完整稿/動畫已核。"
+    },
+    {
+      "id": "W16003",
+      "decision": "retain",
+      "reason": "記錄實際多重散射後物理倒序重播；單換能器與路徑擾動是控制。SAR以移動軌跡計算相位補償不同，P313波長限制也不能替代路徑條件。",
+      "scope_and_source_check": "S003單換能器對照避免把較高頻率全部算作散射收益；強激發後網絡重排是聲學相關推論而非逐顆影像。",
+      "editorial": "有可見對照與可解釋中段；僅題級保留，不代表完整稿/動畫已核。"
+    },
+    {
+      "id": "W16004",
+      "decision": "retain",
+      "reason": "在全場某一時刻改變傳播條件產生反行分量，沒有先錄音再發射；與W16003控制不同，也不是固定空間界面反射。",
+      "scope_and_source_check": "S004反行波對時間導數、窄頻近似、保留前行波、外部擾動供能四項已在scope/題案。",
+      "editorial": "有可見對照與可解釋中段；僅題級保留，不代表完整稿/動畫已核。"
+    },
+    {
+      "id": "W16005",
+      "decision": "retain",
+      "reason": "焦點聲壓與對偏移的各方向回復力是不同設計量；不是P130節腹命名、D9013淨聲能流或F14008擠壓薄膜換物件。",
+      "scope_and_source_check": "低聲壓中心不充分，粒子/媒質與場梯度限制已明列；不將Laplacian的目標值當任意場穩定保證。",
+      "editorial": "有可見對照與可解釋中段；僅題級保留，不代表完整稿/動畫已核。"
+    },
+    {
+      "id": "W16006",
+      "decision": "retain",
+      "reason": "固定名義粒徑與通道後改側向位置仍改脈衝，來源以電場邊界失真解釋並同步定位；超出E2063均勻導體截面公式。",
+      "scope_and_source_check": "名義尺寸不當絕無公差；腔室可反向及奈米附加機制只作範圍限制，不宣稱完整校準通則。",
+      "editorial": "有可見對照與可解釋中段；僅題級保留，不代表完整稿/動畫已核。"
+    }
+  ],
+  "author_boundary_pairs_review": {
+    "status": "all18_read_and_supported_at_topic_boundary",
+    "pairs": [
+      {
+        "a": "W16001",
+        "b": "H3070",
+        "reason": "核自旋是否能響應與已有訊號的散相/重聚不同；不重講核種清單。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3071",
+        "reason": "化學屏蔽解釋頻率差來源；新核控制在相同頻率差下翻轉相位排列而恢復總和。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3074",
+        "reason": "多重峰來自耦合，並非脈衝後重新聚相；本批不以多峰當回波。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3072",
+        "reason": "快速構象交換造成平均譜與靜態頻差可逆散相不同；不宣稱反轉能撤銷任意交換。"
+      },
+      {
+        "a": "W16001",
+        "b": "E2104",
+        "reason": "共享磁矩背景；自旋微觀起源不是散相後脈衝控制。"
+      },
+      {
+        "a": "W16002",
+        "b": "W16001",
+        "reason": "第一核固定頻差下重新聚相；第二核新增空間編碼與粒子位移造成編碼失配，可固定回波時間改梯度。不是只換液體。"
+      },
+      {
+        "a": "W16002",
+        "b": "H3072",
+        "reason": "位移透過空間梯度變成相位差，而非同一分子環境交換快慢造成譜峰合併。"
+      },
+      {
+        "a": "W16003",
+        "b": "O3012",
+        "reason": "SAR由移動平台計算相位補償形成合成孔徑；此為固定接收器記錄實際散射路徑後物理重放，散射本身增方向資訊，媒質改變即失配。共享相干聚焦背景但控制不同。"
+      },
+      {
+        "a": "W16003",
+        "b": "P313",
+        "reason": "波長/聲束解析度是背景；新核為倒序重放記錄的散射路徑且同路徑可逆性受控，未另計更高頻解析度。"
+      },
+      {
+        "a": "W16003",
+        "b": "O3032",
+        "reason": "脈衝歸屬/距離速度歧義不同於已知一個脈衝的散射尾波倒序聚焦。"
+      },
+      {
+        "a": "W16003",
+        "b": "N209",
+        "reason": "單回波往返測深與將多重散射尾波重放聚焦不是同一推論。"
+      },
+      {
+        "a": "W16004",
+        "b": "W16003",
+        "reason": "共同追問回聚但控制不同：聲學記錄後邊界再發射；水波於全空間時間邊界生成反向分量，無先錄音陣列。"
+      },
+      {
+        "a": "W16004",
+        "b": "P312",
+        "reason": "空間界面反射改方向與整個介質時間改變並保留前後行分量不同。"
+      },
+      {
+        "a": "W16005",
+        "b": "P130",
+        "reason": "已有駐波節腹不能決定小球偏移後是否有各方向回復力；低壓中心只是條件之一。"
+      },
+      {
+        "a": "W16005",
+        "b": "D9013",
+        "reason": "舊題量測聲能淨流，新題設計粒子輻射力場與回復性；不以聲壓大小直接判任一者。"
+      },
+      {
+        "a": "W16005",
+        "b": "F14008",
+        "reason": "舊人工指腹空隙的擠壓氣膜減少接觸；新空氣中自由小球受聲輻射梯度力，沒有接觸空隙的承載薄膜。"
+      },
+      {
+        "a": "W16006",
+        "b": "E2063",
+        "reason": "舊均勻導線長度/截面電阻；新為固定通道與同尺寸球改橫向位置，電場邊界使訊號仍不同。"
+      },
+      {
+        "a": "W16006",
+        "b": "E2092",
+        "reason": "電表施加已知量反推電阻不是用粒子電阻脈衝推尺寸的路徑歧義。"
+      }
+    ]
+  },
+  "top5_readback": [
+    {
+      "id": "W16001",
+      "neighbour_ids": [
+        "E2141",
+        "E2137",
+        "E2131",
+        "E2133",
+        "W16002"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "decision": "no_merge_from_this_set",
+      "reason": "E2141感應抵抗磁通變化、E2137飽和、E2131靜態環形場抵消、E2133熱擾動均非翻相重聚；W16002另有空間編碼/位移控制。"
+    },
+    {
+      "id": "W16002",
+      "neighbour_ids": [
+        "W16001",
+        "E2052",
+        "H3072",
+        "H3071",
+        "E2267"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "decision": "no_merge_from_this_set",
+      "reason": "E2052平均偶極取向、H3071電子環境頻差、H3072構象交換、E2267阻抗反射都沒有雙梯度位置編碼；W16001是固定頻差可逆散相。"
+    },
+    {
+      "id": "W16003",
+      "neighbour_ids": [
+        "P117",
+        "E2199",
+        "E2217",
+        "D9017",
+        "P132"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "decision": "no_merge_from_this_set",
+      "reason": "P117介面頻率/波長、E2199取樣混疊、E2217雜訊增益、D9017被動聲路壓差相消、P132共振均不等於將記錄的多路徑尾波倒序再發射。"
+    },
+    {
+      "id": "W16004",
+      "neighbour_ids": [
+        "O3055",
+        "W16003",
+        "W16002",
+        "I15006",
+        "O3028"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "decision": "no_merge_from_this_set",
+      "reason": "O3055海面高度分布、I15006低相干延遲選深、O3028回波篩選並非改寫整場時間邊界；W16002位置標籤與W16003重放也有不同控制。"
+    },
+    {
+      "id": "W16005",
+      "neighbour_ids": [
+        "P312",
+        "D9017",
+        "D9010",
+        "B4020",
+        "P14010"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "decision": "no_merge_from_this_set",
+      "reason": "P312界面反射、D9017壓差相消、D9010高模態保留、B4020直達/混響及P14010視聽整合皆沒有粒子的聲輻射回復力設計。"
+    },
+    {
+      "id": "W16006",
+      "neighbour_ids": [
+        "E2208",
+        "E2091",
+        "E2050",
+        "E2161",
+        "E2223"
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "decision": "no_merge_from_this_set",
+      "reason": "E2208地回流壓擾、E2091電表負載、E2050介電極化、E2161電容交流、E2223噪音功率相加均不解釋固定粒徑下偏軸電場造成的脈衝差。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "W16001",
+        "b": "H3070",
+        "reason": "核自旋是否能響應與已有訊號的散相/重聚不同；不重講核種清單。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3071",
+        "reason": "化學屏蔽解釋頻率差來源；新核控制在相同頻率差下翻轉相位排列而恢復總和。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3074",
+        "reason": "多重峰來自耦合，並非脈衝後重新聚相；本批不以多峰當回波。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3072",
+        "reason": "快速構象交換造成平均譜與靜態頻差可逆散相不同；不宣稱反轉能撤銷任意交換。"
+      },
+      {
+        "a": "W16001",
+        "b": "E2104",
+        "reason": "共享磁矩背景；自旋微觀起源不是散相後脈衝控制。"
+      },
+      {
+        "a": "W16002",
+        "b": "W16001",
+        "reason": "第一核固定頻差下重新聚相；第二核新增空間編碼與粒子位移造成編碼失配，可固定回波時間改梯度。不是只換液體。"
+      },
+      {
+        "a": "W16002",
+        "b": "H3072",
+        "reason": "位移透過空間梯度變成相位差，而非同一分子環境交換快慢造成譜峰合併。"
+      },
+      {
+        "a": "W16003",
+        "b": "O3012",
+        "reason": "SAR由移動平台計算相位補償形成合成孔徑；此為固定接收器記錄實際散射路徑後物理重放，散射本身增方向資訊，媒質改變即失配。共享相干聚焦背景但控制不同。"
+      },
+      {
+        "a": "W16003",
+        "b": "P313",
+        "reason": "波長/聲束解析度是背景；新核為倒序重放記錄的散射路徑且同路徑可逆性受控，未另計更高頻解析度。"
+      },
+      {
+        "a": "W16003",
+        "b": "O3032",
+        "reason": "脈衝歸屬/距離速度歧義不同於已知一個脈衝的散射尾波倒序聚焦。"
+      },
+      {
+        "a": "W16003",
+        "b": "N209",
+        "reason": "單回波往返測深與將多重散射尾波重放聚焦不是同一推論。"
+      },
+      {
+        "a": "W16004",
+        "b": "W16003",
+        "reason": "共同追問回聚但控制不同：聲學記錄後邊界再發射；水波於全空間時間邊界生成反向分量，無先錄音陣列。"
+      },
+      {
+        "a": "W16004",
+        "b": "P312",
+        "reason": "空間界面反射改方向與整個介質時間改變並保留前後行分量不同。"
+      },
+      {
+        "a": "W16005",
+        "b": "P130",
+        "reason": "已有駐波節腹不能決定小球偏移後是否有各方向回復力；低壓中心只是條件之一。"
+      },
+      {
+        "a": "W16005",
+        "b": "D9013",
+        "reason": "舊題量測聲能淨流，新題設計粒子輻射力場與回復性；不以聲壓大小直接判任一者。"
+      },
+      {
+        "a": "W16005",
+        "b": "F14008",
+        "reason": "舊人工指腹空隙的擠壓氣膜減少接觸；新空氣中自由小球受聲輻射梯度力，沒有接觸空隙的承載薄膜。"
+      },
+      {
+        "a": "W16006",
+        "b": "E2063",
+        "reason": "舊均勻導線長度/截面電阻；新為固定通道與同尺寸球改橫向位置，電場邊界使訊號仍不同。"
+      },
+      {
+        "a": "W16006",
+        "b": "E2092",
+        "reason": "電表施加已知量反推電阻不是用粒子電阻脈衝推尺寸的路徑歧義。"
+      }
+    ]
+  },
+  "required_corrections": [
+    {
+      "id": "WAVE01",
+      "severity": "required_editorial",
+      "file": "reviews/wave16-wave-sensing-themes.json",
+      "target": "W16W-T02 chapter4 final beat",
+      "finding": "末20秒並排比較與回扣重述前面兩分支已完成的差異；沒有新控制。",
+      "required_change": "末beat20→10（仍含5秒回扣），第四章45→35、全205→195，W16004總預算100→90，range/target/body/author同步；刪水波分支後聲學105秒不變。",
+      "status": "RESOLVED",
+      "resolution": "RESOLVED_BY_TARGETED_READBACK",
+      "initial_status": "AWAITING_AUTHOR_TARGETED_READBACK"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "W16-S001",
+      "canonical_or_recorded_url": "https://ece-classes.usc.edu/ee591/library/Hahn-SpinEchoes.pdf",
+      "retrieval_url": "https://ece-classes.usc.edu/ee591/library/Hahn-SpinEchoes.pdf",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh HTTP200 via specified UA urllib; PyMuPDF渲染後目讀掃描",
+      "reading_scope": "PDF pp.3–4（印刷582–583）掃描渲染目讀：III(A)、III(B)與Fig.1；未讀完整22頁載體。",
+      "cache": ".cache/wave16-bio-review-W16-S001.pdf",
+      "sha256": "fee0bae8eb2daebe55a4b2686b16a1c37c8c728e0727f7decfd8de26b3c8f50b",
+      "matches_author_saved_copy": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limit": "同文副本不算新增獨立證據；只有指定段，非全篇逐式/逐主張核准。"
+    },
+    {
+      "source_id": "W16-S002",
+      "canonical_or_recorded_url": "https://mriquestions.com/uploads/3/4/5/7/34572113/stejskal_and_tanner1965.pdf",
+      "retrieval_url": "https://mriquestions.com/uploads/3/4/5/7/34572113/stejskal_and_tanner1965.pdf",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh HTTP200 via specified UA urllib; PyMuPDF指定頁文字實讀",
+      "reading_scope": "PDF p.2原研究題名/作者/Introduction指定段；pp.3–4 Theory及短梯度段；p.5 Experimental開頭與圖1說明。未讀完整p.6，未重算公式。",
+      "cache": ".cache/wave16-bio-review-W16-S002.pdf",
+      "sha256": "a5fbab0ab50671dd38a8d40d2013289e2d0d83c96a05187abdfa5dd63be89ee8",
+      "matches_author_saved_copy": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limit": "同文副本不算新增獨立證據；只有指定段，非全篇逐式/逐主張核准。"
+    },
+    {
+      "source_id": "W16-S003",
+      "canonical_or_recorded_url": "https://arxiv.org/pdf/1609.01539v1",
+      "retrieval_url": "https://arxiv.org/pdf/1609.01539v1",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh HTTP200 via specified UA urllib; PyMuPDF指定頁文字實讀",
+      "reading_scope": "PDF pp.4–7：線性TR、單換能器、非線性TR、Figs.2–4圖說與前後弱探測相關；未讀後半數值模型/影片。",
+      "cache": ".cache/wave16-bio-review-W16-S003.pdf",
+      "sha256": "fcfbe0632d2fa1f07dbd65cd95e5b5ba4d2ee9469e96487e400fab6c559d72d3",
+      "matches_author_saved_copy": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limit": "同文副本不算新增獨立證據；只有指定段，非全篇逐式/逐主張核准。"
+    },
+    {
+      "source_id": "W16-S004",
+      "canonical_or_recorded_url": "https://arxiv.org/pdf/1510.01277v1",
+      "retrieval_url": "https://arxiv.org/pdf/1510.01277v1",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh HTTP200 via specified UA urllib; PyMuPDF指定頁文字實讀",
+      "reading_scope": "PDF pp.7–10、p.12、pp.15–16：水波實驗、圖說、時間初值分解、導數近似、前行分量與外部供能；未讀補充方法/影片。",
+      "cache": ".cache/wave16-bio-review-W16-S004.pdf",
+      "sha256": "f18c0b802a0376105d7ae1d006086ea36e8d2595fde9559d3014e705de6b8f3a",
+      "matches_author_saved_copy": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limit": "同文副本不算新增獨立證據；只有指定段，非全篇逐式/逐主張核准。"
+    },
+    {
+      "source_id": "W16-S005",
+      "canonical_or_recorded_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4627579/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4627579/fullTextXML",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh HTTP200 via specified UA urllib; lxml指定XML節正文實讀",
+      "reading_scope": "XML Results / Universal optimizer；Methods / Characterizing a Levitation Point、Objective function。公式影像未逐式驗算，未看原圖/影片。",
+      "cache": ".cache/wave16-bio-review-W16-S005.xml",
+      "sha256": "6ced2d6dbd4a3c5dfb4158acc14a88445e342f383933c86319af37e6c3f85b9e",
+      "matches_author_saved_copy": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limit": "同文副本不算新增獨立證據；只有指定段，非全篇逐式/逐主張核准。"
+    },
+    {
+      "source_id": "W16-S006",
+      "canonical_or_recorded_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5579027/",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5579027/fullTextXML",
+      "accessed_on": "2026-11-02",
+      "read_via": "fresh HTTP200 via specified UA urllib; lxml指定XML節正文實讀",
+      "reading_scope": "XML Results / Dependence of resistive-pulse amplitude on lateral displacement及Fig.6–7圖說；Conclusions。未目讀原圖或執行原分析軟體。",
+      "cache": ".cache/wave16-bio-review-W16-S006.xml",
+      "sha256": "16de7b2b1d1e17179c7857a21b0a231a4933471c7665b7a0438cb493aa78b996",
+      "matches_author_saved_copy": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limit": "同文副本不算新增獨立證據；只有指定段，非全篇逐式/逐主張核准。"
+    }
+  ],
+  "source_identity_check": "六次新HTTP副本SHA均與作者記錄相同；兩arXiv v1與正式DOI只是同工作版本。S002以PDF p2題名作者及原文頁核身分，不宣稱當期出版社端點成功。",
+  "external_failures": [],
+  "not_read": "未讀六來源所有全文、補充、影片及原始資料；兩XML原圖未另請求；未把作者七頁圖像閱讀計作本人。",
+  "theme_review": [
+    {
+      "id": "W16W-T01",
+      "decision": "retain",
+      "seconds": 180,
+      "core_seconds": {
+        "W16001": 90,
+        "W16002": 90
+      },
+      "reason": "由保存相位到加入位置編碼，有新可測條件，非兩次相同回波描述。"
+    },
+    {
+      "id": "W16W-T02",
+      "decision": "shorten_required",
+      "before_seconds": 205,
+      "recommended_seconds": 195,
+      "reason": "四章都有條件推進，但末20秒比較回扣可縮10秒；不把水波說成整體完美倒流。",
+      "resolution": "RESOLVED:195秒版本已定點讀回，原205秒判斷保留作前版證據。"
+    },
+    {
+      "id": "W16W-T03",
+      "decision": "retain",
+      "seconds": 115,
+      "core_seconds": {
+        "W16005": 115
+      },
+      "reason": "強焦點與偏移回復力對照有可見差異；第二章反例明標原創模型，不冒稱實驗。"
+    },
+    {
+      "id": "W16W-T04",
+      "decision": "retain",
+      "seconds": 120,
+      "core_seconds": {
+        "W16006": 120
+      },
+      "reason": "電流脈衝歧義由同步位置觀察解開，腔室反例只保邊界；不列用途填時。"
+    }
+  ],
+  "timing_check": "修後四案180/195/115/120，章/beat總和、beat<=45、每核cap、range upper<=body逐算通過，開頭回扣已含但未試讀。",
+  "production_status": "NO_SCRIPT_NO_MEDIA_NO_PAID_ACTION",
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave16-wave-sensing.json",
+      "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+    },
+    {
+      "file": "reviews/wave16-wave-sensing-themes.json",
+      "sha256": "fd415ea9b33a1e7f38d155f5828fdda404940d3232fcb27f97aea79a5c70eaa5"
+    },
+    {
+      "file": "reviews/wave16-wave-sensing-author.json",
+      "sha256": "b2d1764d525f7e650e9ec1772093e16f9afb7752740efb6bd19399172cdbd526"
+    }
+  ],
+  "initial_review_sha256": "bfd565433fc938593ceef2653e079bca7479ba14bf9f60732802841dec888f5d",
+  "targeted_readback": {
+    "status": "PASS",
+    "correction_ids": [
+      "WAVE01"
+    ],
+    "readback": "T02末beat10、第四章35、全195，W16004跨章90；range/target/drop/author一致，其餘180/115/120不變；batch SHA與初版相同。",
+    "reviewed_files": [
+      {
+        "file": "batches/wave16-wave-sensing.json",
+        "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+      },
+      {
+        "file": "reviews/wave16-wave-sensing-themes.json",
+        "sha256": "3d5765f0f1e3364ff78b910322e8bc6056d8c76de0cde79c44805b747f37b073"
+      },
+      {
+        "file": "reviews/wave16-wave-sensing-author.json",
+        "sha256": "57e1584631a3cfc9e1aedf821d9421cef8502cd2fd3078f11103ba7d02038c48"
+      }
+    ],
+    "paper_timing_checks": [
+      {
+        "id": "W16W-T01",
+        "body_seconds": 180,
+        "core_seconds": {
+          "W16001": 90,
+          "W16002": 90
+        }
+      },
+      {
+        "id": "W16W-T02",
+        "body_seconds": 195,
+        "core_seconds": {
+          "W16003": 105,
+          "W16004": 90
+        }
+      },
+      {
+        "id": "W16W-T03",
+        "body_seconds": 115,
+        "core_seconds": {
+          "W16005": 115
+        }
+      },
+      {
+        "id": "W16W-T04",
+        "body_seconds": 120,
+        "core_seconds": {
+          "W16006": 120
+        }
+      }
+    ],
+    "limits": "僅紙上預算/內容定點，未試讀。"
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "first_draft_sha256": "3307fb47b277e2f8c6c59f4d2ca04d080a7f2d44f54be9a4ecb622f491c98693",
+    "final_draft_file": ".cache/draft.json",
+    "final_draft_sha256": "c33c8ff9a599bf12a4c2da97f990070acffb33897e36c595c09ddd7789603325",
+    "final_semantic_file": ".cache/semantic-wave16-draft.json",
+    "final_semantic_sha256": "67076039f56c8c5863b01e203117fc113bcc1ba86decee02fbaa51a38229b204",
+    "first_semantic_sha256": "5f516499beb4dfc683b5a12c76b9aaa0b046b39a492f66758287bf1bf7dbb472",
+    "delta_file": ".cache/wave16-wave-sensing-neighbour-delta.json",
+    "delta_sha256": "1fb164c44e40b63350466b60c6238bcf5e7c6e0671ebbe4c88ef2d956da4644e",
+    "first_neighbours_file": ".cache/wave16-wave-sensing-neighbours.json",
+    "first_neighbours_sha256": "8f4a98d9e58ec915369d328dc6e86436b2ae65e2a9f01bacbdd487e5777a367d",
+    "check": "近鄰檔保留first input身分；另直接比首/末draft與semantic：6份raw完整物件相同，30個top5的ID/score及完整q/answer/scope全相同，delta空。final共3326 raw；只核本cohort，不稱全池覆核。",
+    "reviewed_files": [
+      {
+        "file": "batches/wave16-wave-sensing.json",
+        "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+      },
+      {
+        "file": "reviews/wave16-wave-sensing-themes.json",
+        "sha256": "3d5765f0f1e3364ff78b910322e8bc6056d8c76de0cde79c44805b747f37b073"
+      },
+      {
+        "file": "reviews/wave16-wave-sensing-author.json",
+        "sha256": "57e1584631a3cfc9e1aedf821d9421cef8502cd2fd3078f11103ba7d02038c48"
+      }
+    ]
+  }
+}

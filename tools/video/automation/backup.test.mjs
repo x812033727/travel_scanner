@@ -6,8 +6,8 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { backupRound, contentsOf, drivePath, MANIFEST_FILE, planFiles, prefixUnder, STATE_FILE, verdictOf } from "./backup.mjs";
-import { tidyRound } from "./tidy.mjs";
+import { backupRound, contentsOf, drivePath, MANIFEST_FILE, planFiles, prefixUnder, STATE_FILE, verdictOf, videoDir } from "./backup.mjs";
+import { clearedLine, roundLines, tidyRound } from "./tidy.mjs";
 
 const NOW = new Date("2026-10-20T03:00:00Z");
 const later = (minutes) => new Date(NOW.getTime() + minutes * 60_000);
@@ -84,6 +84,14 @@ function fakeRclone(drive, { free = 100 * 1024 ** 3, fail = {}, corrupt = false 
       cpSync(args[1], into);
       return { code: 0, stdout: "", stderr: "" };
     }
+    if (command === "moveto") {
+      const [, from, to] = args;
+      if (!existsSync(local(from))) return { code: 3, stdout: "", stderr: "ERROR : directory not found" };
+      mkdirSync(path.dirname(local(to)), { recursive: true });
+      cpSync(local(from), local(to), { recursive: true });
+      rmSync(local(from), { recursive: true, force: true });
+      return { code: 0, stdout: "", stderr: "" };
+    }
     if (command === "deletefile") {
       rmSync(local(args[1]), { force: true });
       return { code: 0, stdout: "", stderr: "" };
@@ -149,9 +157,18 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
     "clips/manifest.json": "{}",
     "keyframes/s1.png": "png",
     "characters/a/sheet.png": "png",
+    "recordings/manifest.json": "{}",
+    "recordings/zh-TW.wav": "wav",
+    "recut/cut/final.log": "s01 0.00 +2.00s s01-t1.mp4",
+    "build/seg.mp4": "never",
     "timeline.json": "{}",
     "narration.wav": "wav",
-    "audio/k1.wav": "never",
+    "audio/k1.wav": "take",
+    "dubs/en/audio/k1.wav": "en take",
+    "dubs/en/narration.wav": "never",
+    "i18n/en.json": "{}",
+    "approvals.json": "{}",
+    "auto.json": JSON.stringify({ slug: "ou-ep-1", status: "done", youtube_video_id: "dQw4w9WgXcQ" }),
     "review/preview-0123456789abcdef.mp4": "never",
   });
   const basic = planFiles(dir, "basic").map((item) => item.path);
@@ -161,9 +178,11 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
   ]);
   const full = planFiles(dir, "full").map((item) => item.path);
   assert.deepEqual(full.filter((item) => !basic.includes(item)), [
-    "characters/a/sheet.png", "clips/manifest.json", "clips/s1.mp4", "keyframes/s1.png", "narration.wav", "timeline.json",
+    "approvals.json", "audio/k1.wav", "characters/a/sheet.png", "clips/manifest.json", "clips/s1.mp4", "dub-lines/en/k1.wav", "i18n/en.json", "keyframes/s1.png", "narration.wav", "recordings/manifest.json", "recordings/zh-TW.wav", "recut/cut/final.log", "timeline.json",
   ]);
-  assert.ok(!full.some((item) => /^(segments|build|frames|audio|review|media)\//.test(item)));
+  // 2026-11-03: the host clears a video whole once Drive holds it, so the line takes, the
+  // worksheets and the approvals go to Drive; what can be made again from them does not.
+  assert.ok(!full.some((item) => /^(segments|build|frames|review|media)\//.test(item) || item === "auto.json" || item.endsWith("/narration.wav")));
 });
 
 test("planFiles: the full tier keeps each chosen language's unpackaged dub track, captions and thumbnail, never an unchosen one", () => {
@@ -181,7 +200,7 @@ test("planFiles: the full tier keeps each chosen language's unpackaged dub track
     "dubs/en.m4a": "packaged",
     "dubs/ja.m4a": "given up",
     "dubs/ko.m4a": "not chosen",
-    "dubs/ja/audio/l1.wav": "never",
+    "dubs/ja/audio/l1.wav": "line take",
     "thumbnails/en.jpg": "jpg",
     "thumbnails/ja.jpg": "jpg",
     "thumbnails/ko.jpg": "jpg",
@@ -190,7 +209,7 @@ test("planFiles: the full tier keeps each chosen language's unpackaged dub track
   const basic = planFiles(dir, "basic").map((item) => item.path);
   assert.ok(!basic.some((item) => item.includes("未進上傳包/") || item === "thumbnails/ja.jpg"), "the basic tier is the package alone");
   const full = planFiles(dir, "full");
-  assert.deepEqual(full.map((item) => item.path).filter((item) => !basic.includes(item)), ["captions/未進上傳包/ja.srt", "dubs/未進上傳包/ja.m4a", "thumbnails/ja.jpg", "thumbnails/ko.jpg"]);
+  assert.deepEqual(full.map((item) => item.path).filter((item) => !basic.includes(item)), ["captions/未進上傳包/ja.srt", "dub-lines/ja/l1.wav", "dubs/未進上傳包/ja.m4a", "languages.json", "thumbnails/ja.jpg", "thumbnails/ko.jpg"]);
   assert.equal(full.find((item) => item.path === "thumbnails/en.jpg").source, path.join(dir, "upload", "thumbnails", "en.jpg"), "the package's own copy wins");
   assert.deepEqual(contentsOf(full.map((item) => item.path)).dubs, ["en"], "an unpackaged track is not counted as a packaged dub");
   assert.deepEqual(contentsOf(full.map((item) => item.path)).captions, ["en", "zh-TW"], "nor an unpackaged caption file as packaged captions");
@@ -237,6 +256,43 @@ test("a round copies the package into the series folder, checks it, uploads back
   assert.match(lines.at(-1), /curio-h01: 5 files/);
 });
 
+test("a flat drama backup moves in Drive into its series folder before anything is copied, and the site learns the new folder", async () => {
+  const box = sandbox();
+  video(box.work, "zhong-tian-qu-qi-e031");
+  const old = "drama/zhong-tian-qu-qi-e031";
+  const now = "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e031";
+  const first = fakeSite({ videos: [target("zhong-tian-qu-qi-e031", { folder: old, shared_folder: "drama/_共用", category: "drama", series_key: "drama" })] });
+  await backupRound(ctxFor(box), { client: first.client, rclone: fakeRclone(box.drive).run });
+  assert.ok(listing(path.join(box.drive, ...old.split("/"))).includes("final.mp4"));
+
+  const moving = fakeSite({ videos: [target("zhong-tian-qu-qi-e031", { folder: now, moved_from: old, shared_folder: "drama/zhong-tian-qu-qi/_共用", category: "drama", series_key: "zhong-tian-qu-qi" })] });
+  const rclone = fakeRclone(box.drive);
+  const { lines } = await backupRound(ctxFor(box, { now: later(5) }), { client: moving.client, rclone: rclone.run });
+  assert.equal(rclone.calls[0][0], "moveto", "the move comes first");
+  assert.deepEqual(rclone.calls[0].slice(1), [`videobackup:${old}`, `videobackup:${now}`]);
+  assert.ok(!existsSync(path.join(box.drive, ...old.split("/"))), "nothing is left under the old folder");
+  assert.ok(listing(path.join(box.drive, ...now.split("/"))).includes("final.mp4"));
+  assert.equal(moving.reports[0].state, "pending");
+  assert.equal(moving.reports[0].folder, now);
+  assert.ok(lines.some((line) => line.includes(`moved ${old} to ${now}`)));
+
+  // Nothing in Drive under the old name (never backed up there): filed under the new one all the same.
+  const fresh = sandbox();
+  video(fresh.work, "zhong-tian-qu-qi-e040");
+  const elsewhere = fakeSite({ videos: [target("zhong-tian-qu-qi-e040", { folder: "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e040", moved_from: "drama/zhong-tian-qu-qi-e040" })] });
+  await backupRound(ctxFor(fresh), { client: elsewhere.client, rclone: fakeRclone(fresh.drive).run });
+  assert.ok(listing(path.join(fresh.drive, "drama", "zhong-tian-qu-qi", "zhong-tian-qu-qi-e040")).includes("final.mp4"));
+
+  // A move that fails for another reason holds the video back: no second, full upload under the new name.
+  const stuck = sandbox();
+  video(stuck.work, "zhong-tian-qu-qi-e032");
+  const held = fakeSite({ videos: [target("zhong-tian-qu-qi-e032", { folder: "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e032", moved_from: "drama/zhong-tian-qu-qi-e032" })] });
+  const failing = fakeRclone(stuck.drive, { fail: { moveto: "rate limited" } });
+  const { gate } = await backupRound(ctxFor(stuck), { client: held.client, rclone: failing.run });
+  assert.deepEqual(failing.calls.map(([command]) => command), ["moveto"]);
+  assert.equal(gate.verdicts.get("zhong-tian-qu-qi-e032").ok, false);
+});
+
 test("a work directory made by hand, with no auto.json, is backed up from its upload package; an empty one is not", async () => {
   const box = sandbox();
   const dir = video(box.work, "free-vs-paid-ai-plans-2026");
@@ -247,6 +303,33 @@ test("a work directory made by hand, with no auto.json, is backed up from its up
   assert.ok(listing(path.join(box.drive, "奇聞檔案局", "free-vs-paid-ai-plans-2026")).includes("final.mp4"));
   assert.deepEqual(gate.verdicts.get("free-vs-paid-ai-plans-2026"), { ok: true, why: "in Drive" });
   assert.ok(!gate.verdicts.has("not-a-video") && !existsSync(path.join(box.work, "not-a-video", STATE_FILE)));
+});
+
+test("the worker's own Short is backed up from the build its lab.json names under _shorts", async () => {
+  const box = sandbox();
+  const home = path.join(box.work, "_shorts", "lab-short-7");
+  const old = path.join(home, "build-1-1000");
+  const current = path.join(home, "build-2-2000");
+  put(old, "upload/final.mp4", "an older cut");
+  for (const [name, content] of Object.entries({ "upload/final.mp4": "cut", "upload/zh-TW.srt": "字幕", "upload/cover.png": "png", "upload/titles.json": "{}", "frames/f.png": "never" })) put(current, name, content);
+  put(home, "lab.json", JSON.stringify({ slug: "lab-short-7", build: current }));
+  // A lab.json naming a folder outside its own, or a build without a cut, finds nothing.
+  put(path.join(box.work, "_shorts", "lab-short-8"), "lab.json", JSON.stringify({ build: box.work }));
+  put(path.join(box.work, "_shorts", "lab-short-9"), "lab.json", JSON.stringify({ build: "build-0" }));
+  put(path.join(box.work, "_shorts", "lab-short-9", "build-0"), "notes.txt");
+  assert.equal(videoDir(box.work, "lab-short-7"), current);
+  assert.equal(videoDir(box.work, "lab-short-8"), path.join(box.work, "lab-short-8"));
+  assert.equal(videoDir(box.work, "lab-short-9"), path.join(box.work, "lab-short-9"));
+  const short = (slug) => target(slug, { folder: `Shorts/lab/${slug}`, expected: { required: ["final.mp4"], descriptions: [], captions: [], dubs: [] } });
+  const site = fakeSite({ videos: [short("lab-short-7"), short("lab-short-8"), short("lab-short-9")] });
+  const { gate } = await backupRound(ctxFor(box), { client: site.client, rclone: fakeRclone(box.drive).run });
+  const episode = path.join(box.drive, "Shorts", "lab", "lab-short-7");
+  assert.deepEqual(listing(episode), ["backup.json", "cover.png", "final.mp4", "titles.json", "zh-TW.srt"]);
+  assert.equal(readFileSync(path.join(episode, "final.mp4"), "utf8"), "cut", "the build lab.json names, not an older one");
+  assert.deepEqual(gate.verdicts.get("lab-short-7"), { ok: true, why: "in Drive" });
+  assert.equal(stateOf(current).site_state, "done", "the record is kept with the build");
+  assert.ok(!gate.verdicts.has("lab-short-8") && !gate.verdicts.has("lab-short-9"));
+  assert.ok(!existsSync(path.join(box.work, "lab-short-7")), "no folder is made under the work base for it");
 });
 
 test("a file added after the backup queues it again, copies only that, and keeps the overwritten version", async () => {
@@ -395,23 +478,23 @@ test("the full tier copies the media and the series' shared character sheets onc
   assert.equal(site.reports.at(-1).contents.clips, 1);
 });
 
-test("a series set to off is never copied and never holds the tidy", async () => {
+test("a series set to off is never copied, and the host keeps its files (owner, 2026-11-03)", async () => {
   const box = sandbox();
   video(box.work, "curio-off");
   const site = fakeSite({ videos: [target("curio-off", { tier: "off" })] });
   const rclone = fakeRclone(box.drive);
   const { gate } = await backupRound(ctxFor(box), { client: site.client, rclone: rclone.run });
   assert.deepEqual(rclone.calls, []);
-  assert.ok(gate.verdicts.get("curio-off").ok);
+  assert.deepEqual(gate.verdicts.get("curio-off"), { ok: false, why: "its series is set not to be backed up, so the host keeps it" });
 });
 
-test("off, an older site and a STOP file: nothing copied; off and an older site leave the tidy as before", async () => {
+test("off, an older site and a STOP file: nothing copied; an older site leaves the tidy as before, off holds it (2026-11-03)", async () => {
   const box = sandbox();
   video(box.work, "curio-h08");
   const off = await backupRound(ctxFor(box), { client: fakeSite({ enabled: false, videos: [target("curio-h08")] }).client, rclone: fakeRclone(box.drive).run });
   assert.deepEqual(off.gate, { enabled: false });
   const older = { config: async () => Promise.reject(Object.assign(new (await import("./backup.mjs")).BackupError("not found", { status: 404, code: "not_found" }))) };
-  assert.deepEqual((await backupRound(ctxFor(box), { client: older })).gate, { enabled: false });
+  assert.deepEqual((await backupRound(ctxFor(box), { client: older })).gate, { enabled: false, legacy: true });
   const down = { config: async () => Promise.reject(new Error("connect ECONNREFUSED")) };
   assert.ok((await backupRound(ctxFor(box), { client: down })).gate.unknown, "a site that cannot answer holds the tidy");
   put(box.work, "STOP", "");
@@ -465,6 +548,81 @@ test("the tidy keeps a video on YouTube that Drive does not have, and clears it 
   assert.match(round({ unknown: "the site did not answer" }).held[0].why, /unknown/);
   assert.match(round({ enabled: true, verdicts: new Map() }).held[0].why, /no entry/);
   assert.equal(round({ enabled: true, verdicts: new Map([["on-youtube", { ok: true, why: "in Drive" }]]) }).cleared.slug, "on-youtube");
-  assert.equal(round({ enabled: false }).cleared.slug, "on-youtube", "backups off: as before");
-  assert.equal(round(undefined).cleared.slug, "on-youtube");
+  // Owner, 2026-11-03: nothing leaves the host before Drive holds it.
+  assert.match(round({ enabled: false }).held[0].why, /backups are off/);
+  assert.equal(round(undefined).cleared.slug, "on-youtube", "a round without a backup gate: the old seven-day rule");
+});
+
+test("on YouTube, in Drive and every chosen language uploaded or skipped: the folder goes whole at once, its records stay", () => {
+  const box = sandbox();
+  const dir = video(box.work, "curio-b01", { "keyframes/k.png": "png", "i18n/en.json": "{}", "languages.json": "{}", "dubs/en/audio/l1.wav": "wav", "dubs/en.m4a": "dub" });
+  put(dir, "backup-state.json", "{}");
+  put(dir, "backup.json", "{}");
+  // Approved yesterday: no seven days to wait.
+  const approved = new Date(NOW.getTime() - 86_400_000).toISOString();
+  const row = (languages) => [{ slug: "curio-b01", youtube_video_id: "dQw4w9WgXcQ", publish_approved_at: approved, youtube_publish_at: null, locales: { en: { metadata: true, captions: true, dub: true } }, locales_decided_at: approved, languages, pending: 0 }];
+  const inDrive = { enabled: true, verdicts: new Map([["curio-b01", { ok: true, why: "in Drive" }]]) };
+  const repos = [path.join(box.box, "repo")];
+  const round = (languages, dryRun = true) => tidyRound({ base: box.work, repos, site: row(languages), backup: inDrive, now: NOW, days: 7, dryRun });
+  // A dub approved but not yet put up in Studio still needs its file; titles and captions the
+  // site sends to YouTube itself once their batch is approved.
+  const ready = { en: { metadata: { state: "ready" }, captions: { state: "ready" }, dub: { state: "ready" } } };
+  assert.deepEqual(round(ready).held, [{ slug: "curio-b01", why: "en dub not uploaded or skipped yet" }]);
+  const uploaded = { en: { metadata: { state: "ready" }, captions: { state: "skipped" }, dub: { state: "uploaded" } } };
+  const done = round(uploaded, false);
+  assert.equal(done.cleared.slug, "curio-b01");
+  assert.match(clearedLine(done.cleared), /on YouTube and in Google Drive/);
+  assert.deepEqual(listing(dir), ["auto.json", "backup-state.json", "backup.json"]);
+  const state = JSON.parse(readFileSync(path.join(dir, "auto.json"), "utf8"));
+  assert.equal(state.tidied.purged, true);
+  assert.ok(state.tidied_at);
+  assert.equal(round(uploaded).cleared, null, "tidied once");
+});
+
+test("a folder made by hand or fetched from the review store is purged the same way, and records it beside its package record", () => {
+  const box = sandbox();
+  const dir = video(box.work, "curio-b02", { "keyframes/k.png": "png", "narration.wav": "wav" });
+  rmSync(path.join(dir, "auto.json"));
+  put(dir, "review-package.json", JSON.stringify({ complete: true }));
+  put(dir, "backup-state.json", "{}");
+  put(dir, "backup.json", "{}");
+  const site = [{ slug: "curio-b02", youtube_video_id: "dQw4w9WgXcQ", publish_approved_at: NOW.toISOString(), youtube_publish_at: null, locales: {}, locales_decided_at: NOW.toISOString(), languages: {}, pending: 0 }];
+  const repos = [path.join(box.box, "repo")];
+  const inDrive = { enabled: true, verdicts: new Map([["curio-b02", { ok: true, why: "in Drive" }]]) };
+  assert.equal(tidyRound({ base: box.work, repos, site, now: NOW, days: 7, dryRun: true }).cleared, null, "without a backup gate a hand-made folder is never cleared");
+  assert.equal(tidyRound({ base: box.work, repos, site: [{ ...site[0], youtube_video_id: null }], backup: inDrive, now: NOW, days: 7, dryRun: true }).cleared, null, "not on YouTube yet");
+  const done = tidyRound({ base: box.work, repos, site, backup: inDrive, now: NOW, days: 7 });
+  assert.equal(done.cleared.slug, "curio-b02");
+  assert.deepEqual(listing(dir), ["backup-state.json", "backup.json", "review-package.json", "tidied.json"]);
+  assert.equal(JSON.parse(readFileSync(path.join(dir, "tidied.json"), "utf8")).tidied.purged, true);
+  assert.equal(tidyRound({ base: box.work, repos, site, backup: inDrive, now: NOW, days: 7, dryRun: true }).cleared, null, "tidied once");
+});
+
+test("a video the owner deleted on /admin/videos leaves the host whole, its worker Short too, on any backup state", async () => {
+  const box = sandbox();
+  const dir = video(box.work, "curio-gone", { "keyframes/k.png": "png" });
+  const short = path.join(box.work, "_shorts", "curio-gone");
+  put(short, "build-1/upload/final.mp4", "short");
+  video(box.work, "curio-kept");
+  // A link named like a deleted video is never followed.
+  const outside = path.join(box.box, "outside");
+  put(outside, "keep.txt", "keep");
+  const { symlinkSync } = await import("node:fs");
+  symlinkSync(outside, path.join(box.work, "curio-link"));
+  const site = fakeSite({ enabled: false, videos: [] });
+  site.client.config = async () => ({ enabled: false, path: "AI/備份", lock_path: null, remote_prefix: null, problem: "備份尚未開啟", test: null, videos: [], deleted: ["curio-gone", "curio-link", "../etc", "never-here"] });
+  const { gate } = await backupRound(ctxFor(box), { client: site.client, rclone: fakeRclone(box.drive).run });
+  assert.deepEqual(gate, { enabled: false, deleted: ["curio-gone", "curio-link", "never-here"] }, "a slug the site's pattern refuses is dropped");
+  const repos = [path.join(box.box, "repo")];
+  const dry = tidyRound({ base: box.work, repos, site: [], backup: gate, now: NOW, days: 7, dryRun: true });
+  assert.ok(existsSync(dir) && existsSync(short), "a dry run removes nothing");
+  assert.equal(dry.deleted.length, 3);
+  const round = tidyRound({ base: box.work, repos, site: [], backup: gate, now: NOW, days: 7 });
+  assert.ok(!existsSync(dir) && !existsSync(short));
+  assert.ok(existsSync(path.join(box.work, "curio-kept")) && existsSync(path.join(outside, "keep.txt")));
+  const lines = roundLines(round);
+  assert.ok(lines.some((line) => /^tidy: curio-gone was deleted on \/admin\/videos: removed curio-gone\/ whole/.test(line)));
+  assert.ok(lines.some((line) => /^tidy: curio-gone was deleted on \/admin\/videos: removed _shorts\/curio-gone\/ whole/.test(line)));
+  assert.ok(lines.some((line) => /curio-link\/ is kept: .* not a real folder/.test(line)));
+  assert.deepEqual(tidyRound({ base: box.work, repos, site: [], backup: gate, now: NOW, days: 7 }).deleted.map((outcome) => outcome.slug), ["curio-link"], "nothing is left of it the next round");
 });

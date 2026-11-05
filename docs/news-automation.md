@@ -52,6 +52,23 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    allow-list and SSRF checks as every other page; a `lead_only` site's page never is. It
    is attached once: the next scan finds the report already seen and does nothing, and a
    later report linking to a story that has left `needs_evidence` files its own candidate.
+   A page from a `lead_only` *source* (電腦王阿達 and iThome since 2026-10-29: Taiwan tech
+   media that find new AI tools and features early) is read only for the evidence pages it
+   links to. With at least one, it files a candidate drafted from those pages, the post
+   itself kept as `lead_only` context that is never cited. With none (most of 電腦王阿達's
+   posts link to x.com, GitHub or Reddit, none of them sources), it is closed at once as
+   `rejected` (`news_lead_without_evidence`) instead of waiting in `needs_evidence`: no
+   official page links back to a blog post, so nothing would ever attach to it.
+   A GitHub repository is evidence only through such a link (owner decision 2026-10-29):
+   the `GitHub repositories (followed)` source has `follow_only`, so it is never scanned
+   and only puts github.com among the hosts whose pages are followed. Any link into a
+   repository (`/tree/main`, a README anchor) is read as the repository's root page, and
+   that page counts only with at least `repository_min_stars` (500) stars, read from its
+   star counter; a page without the counter is reported as skipped on the linking source.
+   The repository source is neither first-party nor trusted alone, so a new-tool story
+   drafted from it waits for a person or the review judge. The writer may then report a
+   notable new tool, attributed to its README, with a "how to start" section limited to
+   the steps the README shows.
    Since the owner's decisions of 2026-09-25 (one evidence page drafts; a first-party page
    publishes on its own) and 2026-09-28 (so does a page from a trusted newsroom), a
    first-party candidate no longer waits for a second site, so nothing attaches one to a

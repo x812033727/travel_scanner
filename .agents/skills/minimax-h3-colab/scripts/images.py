@@ -44,7 +44,7 @@ NOTEBOOK = SKILL_DIR / "assets" / "qwen_image_edit.ipynb"
 AUTH = os.environ.get("COLAB_AUTH", "oauth2")
 ANSI_RE = re.compile(r"\x1b\[[0-?]*[ -/]*[@-~]")
 SAFE_RE = re.compile(r"[^A-Za-z0-9_-]+")
-MAX_AREA = 1344 * 768
+MAX_AREA = 1920 * 1088  # the H3 canvas cap; a first frame may be as large as the clip
 MAX_JOBS = 40
 
 
@@ -94,9 +94,14 @@ def call_colab(arguments: list[str], *, label: str, timeout: float, on_line: Cal
     return lines
 
 
+# Accelerators with a single machine shape: Colab rejects G4 outright when --high-mem is asked for
+# ("Backend rejected accelerator 'G4'", 2026-10-30), and ignores it for L4.
+SINGLE_SHAPE_GPUS = frozenset({"G4", "L4"})
+
+
 def start_session(session: str, gpu: str, high_mem: bool, on_line: Callable[[str], None] | None = None) -> None:
     args = ["new", "--session", session, "--gpu", gpu]
-    if high_mem:
+    if high_mem and gpu.upper() not in SINGLE_SHAPE_GPUS:
         args.append("--high-mem")
     call_colab(args, label=f"create Colab session {session}", timeout=900, on_line=on_line)
 
@@ -145,7 +150,7 @@ def resolve_jobs(manifest_path: Path, output_dir: Path, only: set[str] | None) -
         width = int(raw.get("width", 1312))
         height = int(raw.get("height", 736))
         if width <= 0 or height <= 0 or width % 16 or height % 16 or width * height > MAX_AREA:
-            raise ValueError(f"Job {job_id}: {width}x{height} must be multiples of 16 within the 1344x768 area.")
+            raise ValueError(f"Job {job_id}: {width}x{height} must be multiples of 16 within the 1920x1088 area.")
         if raw.get("prompt_file"):
             prompt_path = resolve_path(base, raw["prompt_file"])
             prompt = prompt_path.read_text(encoding="utf-8")
@@ -286,7 +291,16 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
             exec_args.extend(["--file", str(notebook_copy)])
             current.update({"status": "generating", "seed": job["seed"], "size": f"{job['width']}x{job['height']}"})
             save()
-            lines = call_colab(exec_args, label=f"paint {job['title']}", timeout=args.timeout + 60, on_line=log_line)
+            if args.detached:
+                # A cold start plus the first picture keeps one websocket open for ten minutes or more, and Colab's
+                # proxy drops it (RuntimeError: Connection was lost; e042-e060 refs, 2026-11-01, twice in a row).
+                sys.path.insert(0, str(Path(__file__).resolve().parent))
+                import colab_detached
+                lines = colab_detached.run(session, notebook_copy, dict(v.split("=", 1) for v in env), remote_prefix,
+                                           poll_s=args.poll, max_wait=args.timeout, on_line=log_line,
+                                           alive=lambda: colab_detached.session_alive(session))
+            else:
+                lines = call_colab(exec_args, label=f"paint {job['title']}", timeout=args.timeout + 60, on_line=log_line)
             for line in lines:
                 if line.startswith("QIE_SEED_USED:"):
                     current["seed"] = int(line.split(":", 1)[1].strip())
@@ -296,7 +310,7 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
             verify_png(job["output_path"], job["width"], job["height"])
             current.update({"status": "completed", "finished_at": now_iso(), "bytes": job["output_path"].stat().st_size})
             save()
-    except (ColabError, ValueError, OSError) as exc:
+    except (ColabError, ValueError, OSError, RuntimeError) as exc:
         error = str(exc)
         for item in progress["jobs"]:
             if item["id"] == progress.get("current_job") and item["status"] not in {"completed", "failed"}:
@@ -341,6 +355,9 @@ def main(argv: list[str]) -> int:
     batch.add_argument("--no-high-mem", action="store_true")
     batch.add_argument("--timeout", type=float, default=float(os.environ.get("QIE_EXEC_TIMEOUT", "1800")))
     batch.add_argument("--only", help="comma-separated job ids to run (the rest are skipped)")
+    batch.add_argument("--detached", action="store_true",
+                       help="run each picture as a detached process on the runtime and poll it (colab_detached.py)")
+    batch.add_argument("--poll", type=float, default=20, help="seconds between polls with --detached")
     args = parser.parse_args(argv)
     try:
         if args.command == "start":

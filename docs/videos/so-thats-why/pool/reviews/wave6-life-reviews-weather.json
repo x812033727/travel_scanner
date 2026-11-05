@@ -1,0 +1,662 @@
+{
+  "review_id": "wave6-life-reviews-weather",
+  "reviewed_on": "2026-11-01",
+  "reviewer": "pool_life_tech",
+  "author": "science_sources",
+  "status": "PASS_TOPIC_AND_EDITORIAL_PROPOSAL_ONLY",
+  "production_ready": false,
+  "batch_path": "docs/videos/so-thats-why/pool/batches/wave6-weather-sky.json",
+  "batch_sha256": "f961a8fcb1268833678f83d2cd9783fd3cd99066ac255a8c6ba46bddc8ee2065",
+  "theme_path": "docs/videos/so-thats-why/pool/reviews/wave6-weather-themes.json",
+  "theme_sha256": "9886e4dcf45aec28bf67c65f56457e039d397cb8478ed9f4248c26068926b091",
+  "author_receipt_path": "docs/videos/so-thats-why/pool/reviews/wave6-weather-author.json",
+  "author_receipt_sha256": "927cb7e278e7fe24d0761e73589039bda0ca2135f83d038fb7675242ea9c7c4a",
+  "coverage": {
+    "candidate_rows_read": 25,
+    "candidate_fields": "逐列題名、answer_target、scope、notes、來源ID/定位、editorial payoff/visual/seconds。不是完整旁白逐句查核。",
+    "source_metadata_rows_read": 22,
+    "external_source_bodies_read": 15,
+    "external_source_method": "14個官方/原研究頁由web.open/find實讀指定正文，1個NOAA原PDF由作者保存的頁面渲染圖經view_image目讀；未重新渲染PDF。",
+    "source_review_type": "風險抽樣，不宣稱22頁皆獨立重讀。",
+    "baseline_raw_records": 2895,
+    "baseline_pool_sha256": "0ddfff1ba218f4bb81e5f54f2418ec9ac1e7a5866c2bcc8ef3bdd89837f4a918",
+    "cross_pool_search": "對全raw question/answer_target/scope/mechanism_key做雲、相變、光學、浮力、雷雨等中英文全文關鍵字搜索，讀142個命中題名/目標，另精確搜索短/長波、凝結高度、LCL/CCL及作者邊界ID。對近鄰涉及的其他舊題讀回目標/範圍；不稱逐讀2895筆所有來源。",
+    "semantic_advisory": {
+      "path": "docs/videos/so-thats-why/pool/.cache/wave6-weather-sky-neighbours.json",
+      "draft_sha256": "4c63f77db8dd356edc86cce8cbea57b22d2ec7e1f995fc2ae3a74070d5f8dc6a",
+      "draft_raw_count": 2959,
+      "candidate_rows": 25,
+      "top5_pairs": 125,
+      "usage": "先看125個近鄰ID並讀回相關目標/範圍；分數不是同核心判決或召回率。"
+    },
+    "themes_read": 3,
+    "theme_timing_checked": "255/225/140秒章節加總、所有beat間隔<=45秒、單片每核心累計不超素材max；開場/回扣已含。",
+    "script_blind_read": false,
+    "empirical_demonstration": false
+  },
+  "merges": [],
+  "excluded": [],
+  "distinct": [
+    {
+      "a": "K6001",
+      "b": "P212",
+      "reason": "定溫微滴曲率改變平衡蒸氣壓，超過P212平面液氣共存；與含溶質活化競爭分開。"
+    },
+    {
+      "a": "K6002",
+      "b": "N255",
+      "reason": "曲率與溶質兩項競爭造成活化門檻，不是N255只說粒子能成凝結核。"
+    },
+    {
+      "a": "K6003",
+      "b": "LEG-S42",
+      "reason": "水汽/熱雙輸送與半徑增率放慢，並非LEG-S42氣流托住小滴；限定固定環境，不報普遍天數。"
+    },
+    {
+      "a": "K6004",
+      "b": "N158",
+      "reason": "同溫冰/液水平衡蒸氣壓差，經氣相搬運；與N158碰撞收液、N235裂縫冰生長不同。"
+    },
+    {
+      "a": "K6004",
+      "b": "N235",
+      "reason": "同溫冰/液水平衡蒸氣壓差，經氣相搬運；與N158碰撞收液、N235裂縫冰生長不同。"
+    },
+    {
+      "a": "K6005",
+      "b": "N158",
+      "reason": "碎裂產生次級冰晶是數量增殖路徑，非重述冰粒質量變大；只留45–70秒，不擴成溫度表。"
+    },
+    {
+      "a": "K6006",
+      "b": "N148",
+      "reason": "相近初始條件的氣塊在相近凝結高度產生可見平底，與N148輻合抬升凝結一般鏈條不同；不把任何雲底都當水平固定面。"
+    },
+    {
+      "a": "K6007",
+      "b": "LEG-S57",
+      "reason": "可用浮力與先要跨過的抑制障礙不同，超過LEG-S57午後加熱對流；不給天氣預報門檻。"
+    },
+    {
+      "a": "K6008",
+      "b": "N277",
+      "reason": "乾氣混入造成液滴蒸發及浮力回饋，與N277雨幡蒸發不到地或N154冷下沉切補給不同。"
+    },
+    {
+      "a": "K6008",
+      "b": "N154",
+      "reason": "乾氣混入造成液滴蒸發及浮力回饋，與N277雨幡蒸發不到地或N154冷下沉切補給不同。"
+    },
+    {
+      "a": "K6009",
+      "b": "N278",
+      "reason": "零浮力而非零速度、負浮力耗去剩餘動量，能解釋越頂，不只將慣性換成雲的名詞。"
+    },
+    {
+      "a": "K6010",
+      "b": "N278",
+      "reason": "風切使界面波捲起，與N278地形駐波不動雲形、N156整體旋轉上升流不同。"
+    },
+    {
+      "a": "K6011",
+      "b": "K6010",
+      "reason": "並排滾軸的上升/下沉分支對應有雲/空隙，形成平行線的空間機制；不列雲種類。"
+    },
+    {
+      "a": "K6012",
+      "b": "N255",
+      "reason": "固定雲水下改變滴數/大小而改散射；N255只到排放粒子成核，不已含固定水量的光學比較。"
+    },
+    {
+      "a": "K6012",
+      "b": "P244",
+      "reason": "固定雲水下改變滴數/大小而改散射；N255只到排放粒子成核，不已含固定水量的光學比較。"
+    },
+    {
+      "a": "K6013",
+      "b": "K6008",
+      "reason": "吸光氣溶膠把輻射轉為局部加熱，促進滴蒸發；與K6008外部乾氣混入的控制變項不同。"
+    },
+    {
+      "a": "K6014",
+      "b": "N242",
+      "reason": "同一雲的短波反射與長波吸收再放射競爭，超過N242稀少氣體吸收熱輻射；全庫未找到既有同目標，保留高度/厚度條件。"
+    },
+    {
+      "a": "K6015",
+      "b": "LEG-S23",
+      "reason": "一次/兩次滴內反射改變出射角和色序，與LEG-S23圓錐觀測及地平線遮擋不同。"
+    },
+    {
+      "a": "K6016",
+      "b": "N281",
+      "reason": "冰晶取向群體選擇光路，與N281暈/華折射對繞射的區別不同；不固定所有日高都22度。"
+    },
+    {
+      "a": "K6017",
+      "b": "N282",
+      "reason": "近水平冰面反射幾何產生柱形外觀，與N282平行光束透視放射不同。"
+    },
+    {
+      "a": "K6018",
+      "b": "N147",
+      "reason": "夜間穩定分層減弱摩擦/混合耦合，與N147地面風跨等壓線、N151熱力風梯度不同。"
+    },
+    {
+      "a": "K6018",
+      "b": "N151",
+      "reason": "夜間穩定分層減弱摩擦/混合耦合，與N147地面風跨等壓線、N151熱力風梯度不同。"
+    },
+    {
+      "a": "K6019",
+      "b": "N163",
+      "reason": "一次負CG事件可含多個電流脈衝，對應通道頻閃；與N163先導連接的空間方向不同。目標限事件分解，未說明再充電。"
+    },
+    {
+      "a": "K6020",
+      "b": "LEG-S18",
+      "reason": "同種聲波從延伸聲源不同位置到耳距離不同，非LEG-S18光/聲兩種速度比較；反射等只保留邊界。"
+    },
+    {
+      "a": "K6021",
+      "b": "N162",
+      "reason": "粒子碰撞交換後再依運動分選成電荷區，超過N162已形成電場後空氣擊穿；不將未解微觀細節當確定。"
+    },
+    {
+      "a": "K6022",
+      "b": "K6007",
+      "reason": "改變有效上升氣塊起點，在冷地面上方找不穩定濕層；不是K6007固定地面氣塊破蓋改寫，亦非所有雷雪唯一成因。"
+    },
+    {
+      "a": "K6023",
+      "b": "N167",
+      "reason": "蒸發回頭更新剖面，影響後續降水；N167既定剖面與N277落地前蒸發沒有此環境回饋。"
+    },
+    {
+      "a": "K6023",
+      "b": "N277",
+      "reason": "蒸發回頭更新剖面，影響後續降水；N167既定剖面與N277落地前蒸發沒有此環境回饋。"
+    },
+    {
+      "a": "K6024",
+      "b": "N167",
+      "reason": "液滴始終過冷碰併的替代形成路徑，不能由地面凍毛毛雨反推暖融層；不同於N167融雪/再凍結比較。"
+    },
+    {
+      "a": "K6025",
+      "b": "N282",
+      "reason": "保留直射而額外接受雲再分配散射，造成局部超晴空值；不同於N282可見光束透視或P241側向看散射。"
+    },
+    {
+      "a": "K6025",
+      "b": "P241",
+      "reason": "保留直射而額外接受雲再分配散射，造成局部超晴空值；不同於N282可見光束透視或P241側向看散射。"
+    }
+  ],
+  "dispositions": [
+    {
+      "id": "K6001",
+      "decision": "retain_topic_level",
+      "reason": "定溫微滴曲率改變平衡蒸氣壓，超過P212平面液氣共存；與含溶質活化競爭分開。",
+      "editorial_seconds": [
+        55,
+        85
+      ]
+    },
+    {
+      "id": "K6002",
+      "decision": "retain_topic_level",
+      "reason": "曲率與溶質兩項競爭造成活化門檻，不是N255只說粒子能成凝結核。",
+      "editorial_seconds": [
+        75,
+        100
+      ]
+    },
+    {
+      "id": "K6003",
+      "decision": "retain_topic_level",
+      "reason": "水汽/熱雙輸送與半徑增率放慢，並非LEG-S42氣流托住小滴；限定固定環境，不報普遍天數。",
+      "editorial_seconds": [
+        65,
+        90
+      ]
+    },
+    {
+      "id": "K6004",
+      "decision": "retain_topic_level",
+      "reason": "同溫冰/液水平衡蒸氣壓差，經氣相搬運；與N158碰撞收液、N235裂縫冰生長不同。",
+      "editorial_seconds": [
+        70,
+        100
+      ]
+    },
+    {
+      "id": "K6005",
+      "decision": "retain_topic_level",
+      "reason": "碎裂產生次級冰晶是數量增殖路徑，非重述冰粒質量變大；只留45–70秒，不擴成溫度表。",
+      "editorial_seconds": [
+        45,
+        70
+      ]
+    },
+    {
+      "id": "K6006",
+      "decision": "retain_topic_level",
+      "reason": "相近初始條件的氣塊在相近凝結高度產生可見平底，與N148輻合抬升凝結一般鏈條不同；不把任何雲底都當水平固定面。",
+      "editorial_seconds": [
+        50,
+        75
+      ]
+    },
+    {
+      "id": "K6007",
+      "decision": "retain_topic_level",
+      "reason": "可用浮力與先要跨過的抑制障礙不同，超過LEG-S57午後加熱對流；不給天氣預報門檻。",
+      "editorial_seconds": [
+        65,
+        90
+      ]
+    },
+    {
+      "id": "K6008",
+      "decision": "retain_topic_level",
+      "reason": "乾氣混入造成液滴蒸發及浮力回饋，與N277雨幡蒸發不到地或N154冷下沉切補給不同。",
+      "editorial_seconds": [
+        55,
+        80
+      ]
+    },
+    {
+      "id": "K6009",
+      "decision": "retain_topic_level",
+      "reason": "零浮力而非零速度、負浮力耗去剩餘動量，能解釋越頂，不只將慣性換成雲的名詞。",
+      "editorial_seconds": [
+        60,
+        85
+      ]
+    },
+    {
+      "id": "K6010",
+      "decision": "retain_topic_level",
+      "reason": "風切使界面波捲起，與N278地形駐波不動雲形、N156整體旋轉上升流不同。",
+      "editorial_seconds": [
+        50,
+        75
+      ]
+    },
+    {
+      "id": "K6011",
+      "decision": "retain_topic_level",
+      "reason": "並排滾軸的上升/下沉分支對應有雲/空隙，形成平行線的空間機制；不列雲種類。",
+      "editorial_seconds": [
+        50,
+        75
+      ]
+    },
+    {
+      "id": "K6012",
+      "decision": "retain_topic_level",
+      "reason": "固定雲水下改變滴數/大小而改散射；N255只到排放粒子成核，不已含固定水量的光學比較。",
+      "editorial_seconds": [
+        55,
+        85
+      ]
+    },
+    {
+      "id": "K6013",
+      "decision": "retain_topic_level",
+      "reason": "吸光氣溶膠把輻射轉為局部加熱，促進滴蒸發；與K6008外部乾氣混入的控制變項不同。",
+      "editorial_seconds": [
+        45,
+        65
+      ]
+    },
+    {
+      "id": "K6014",
+      "decision": "retain_topic_level",
+      "reason": "同一雲的短波反射與長波吸收再放射競爭，超過N242稀少氣體吸收熱輻射；全庫未找到既有同目標，保留高度/厚度條件。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "K6015",
+      "decision": "retain_topic_level",
+      "reason": "一次/兩次滴內反射改變出射角和色序，與LEG-S23圓錐觀測及地平線遮擋不同。",
+      "editorial_seconds": [
+        50,
+        80
+      ]
+    },
+    {
+      "id": "K6016",
+      "decision": "retain_topic_level",
+      "reason": "冰晶取向群體選擇光路，與N281暈/華折射對繞射的區別不同；不固定所有日高都22度。",
+      "editorial_seconds": [
+        55,
+        80
+      ]
+    },
+    {
+      "id": "K6017",
+      "decision": "retain_topic_level",
+      "reason": "近水平冰面反射幾何產生柱形外觀，與N282平行光束透視放射不同。",
+      "editorial_seconds": [
+        50,
+        80
+      ]
+    },
+    {
+      "id": "K6018",
+      "decision": "retain_topic_level",
+      "reason": "夜間穩定分層減弱摩擦/混合耦合，與N147地面風跨等壓線、N151熱力風梯度不同。",
+      "editorial_seconds": [
+        60,
+        90
+      ]
+    },
+    {
+      "id": "K6019",
+      "decision": "retain_topic_level",
+      "reason": "一次負CG事件可含多個電流脈衝，對應通道頻閃；與N163先導連接的空間方向不同。目標限事件分解，未說明再充電。",
+      "editorial_seconds": [
+        45,
+        75
+      ]
+    },
+    {
+      "id": "K6020",
+      "decision": "retain_topic_level",
+      "reason": "同種聲波從延伸聲源不同位置到耳距離不同，非LEG-S18光/聲兩種速度比較；反射等只保留邊界。",
+      "editorial_seconds": [
+        45,
+        75
+      ]
+    },
+    {
+      "id": "K6021",
+      "decision": "retain_topic_level",
+      "reason": "粒子碰撞交換後再依運動分選成電荷區，超過N162已形成電場後空氣擊穿；不將未解微觀細節當確定。",
+      "editorial_seconds": [
+        65,
+        95
+      ]
+    },
+    {
+      "id": "K6022",
+      "decision": "retain_topic_level",
+      "reason": "改變有效上升氣塊起點，在冷地面上方找不穩定濕層；不是K6007固定地面氣塊破蓋改寫，亦非所有雷雪唯一成因。",
+      "editorial_seconds": [
+        50,
+        75
+      ]
+    },
+    {
+      "id": "K6023",
+      "decision": "retain_topic_level",
+      "reason": "蒸發回頭更新剖面，影響後續降水；N167既定剖面與N277落地前蒸發沒有此環境回饋。",
+      "editorial_seconds": [
+        55,
+        85
+      ]
+    },
+    {
+      "id": "K6024",
+      "decision": "retain_topic_level",
+      "reason": "液滴始終過冷碰併的替代形成路徑，不能由地面凍毛毛雨反推暖融層；不同於N167融雪/再凍結比較。",
+      "editorial_seconds": [
+        50,
+        75
+      ]
+    },
+    {
+      "id": "K6025",
+      "decision": "retain_topic_level",
+      "reason": "保留直射而額外接受雲再分配散射，造成局部超晴空值；不同於N282可見光束透視或P241側向看散射。",
+      "editorial_seconds": [
+        75,
+        110
+      ]
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "WEATHER01",
+      "target": "W6K-T01",
+      "kind": "promise_scope_alignment",
+      "issue": "核心問題承諾「長大離開雲」，但章節未講碰併效率、終端下落或到地過程，evidence_gaps也明示未涵蓋。",
+      "requested": "將核心問題收斂到沾水、成雲與繼續長大的不同門檻；不增加未研究的落地段或秒數。標題可保留為為何尚未下雨的入口，結尾需維持不是完整降雨路徑。"
+    },
+    {
+      "id": "WEATHER02",
+      "target": "W6K-T02",
+      "kind": "branch_causality",
+      "issue": "connection稱追同一氣塊，卻先示範被抑制層擋住，再不交代條件變更就一路到EL；可能把三種限制畫成必經過程。",
+      "requested": "connection改成逐次控制條件的比較。第一章未越過抑制者停住；第二章開頭明示改追已受抬升/已越過抑制的氣塊，才比較乾氣混入；第三章明示條件為已到EL且仍有速度。維持225秒，不另加介紹。"
+    }
+  ],
+  "source_spot_checks": [
+    {
+      "source_id": "K6-S001",
+      "url": "https://courses.ems.psu.edu/meteo300/node/676",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "§5.4 L2–41",
+      "finding": "曲率與平面比較及Kelvin式；題級前提直接支持。"
+    },
+    {
+      "source_id": "K6-S002",
+      "url": "https://courses.ems.psu.edu/meteo300/node/678",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "§5.6 L2–35、L59–60",
+      "finding": "兩效應、critical supersaturation與平衡成長方向；未播放影片/做習題。"
+    },
+    {
+      "source_id": "K6-S003",
+      "url": "https://courses.ems.psu.edu/meteo300/node/679",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "§5.7 L1–37",
+      "finding": "水汽和潛熱輸送、dr/dt與半徑的理想關係；不採30天示例當普遍。"
+    },
+    {
+      "source_id": "K6-S004",
+      "url": "https://courses.ems.psu.edu/meteo300/node/781",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "§5.9 L2–17",
+      "finding": "冰水蒸氣壓差與氣相轉移正文/文字圖說；不採40分鐘通則。"
+    },
+    {
+      "source_id": "K6-S005",
+      "url": "https://www.weather.gov/lmk/winter-precip",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "Ice Multiplication L177–182；Evaporative Cooling L243–247",
+      "finding": "碎裂再供冰粒與蒸發改剖面直接支持；未用截斷Melting尾段。"
+    },
+    {
+      "source_id": "K6-S007",
+      "url": "https://hogback.atmos.colostate.edu/cmmap/learn/clouds/howForm3.html",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "Surface Heating L5–8",
+      "finding": "乾氣混合與蒸發冷卻；作者已避免外氣一律較冷的過度概括。"
+    },
+    {
+      "source_id": "K6-S008",
+      "url": "https://repository.library.noaa.gov/view/noaa/6332/noaa_6332_DS1.pdf",
+      "read_via": "view_image 作者保存之官方PDF渲染頁",
+      "reading_scope": "printed p18 Fig3-1；p19首段",
+      "finding": "目讀EL上方負浮力圖與剩餘動量/overshoot；未核整本。"
+    },
+    {
+      "source_id": "K6-S011",
+      "url": "https://science.nasa.gov/earth/earth-observatory/aerosols/",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "Indirect Effects L339–355",
+      "finding": "固定水量更多小滴反光及吸光粒子加熱蒸發；只用機制。"
+    },
+    {
+      "source_id": "K6-S012",
+      "url": "https://gpm.nasa.gov/missions/TRMM/satellite/CERES",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "Energy Budget / Cloud Effects L94–103",
+      "finding": "短波/長波兩能量路徑與厚度高度比較。"
+    },
+    {
+      "source_id": "K6-S016",
+      "url": "https://avmet.navcanada.ca/en/low-level-jet.aspx",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "Science Explained L67–93",
+      "finding": "夜間穩定/減弱摩擦耦合、白天混合；未採航空作業值。"
+    },
+    {
+      "source_id": "K6-S017",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/lightning/detection/",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "Lightning Detection Networks L136–140",
+      "finding": "fast current、負CG multiple return strokes與flickering；不核儀器現況。"
+    },
+    {
+      "source_id": "K6-S018",
+      "url": "https://www.weather.gov/source/zhu/ZHU_Training_Page/lightning_stuff/lightning2/thunder.html",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "主文L3–12，核心L6–9",
+      "finding": "多位置聲源與不同到時；不採安全距離或固定可聽範圍。"
+    },
+    {
+      "source_id": "K6-S019",
+      "url": "https://www.nssl.noaa.gov/education/svrwx101/lightning/faq/",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "How do storms become electrified? L190–193；thundersnow L194–199",
+      "finding": "非感應交換+速度分選，及上空不穩定；保留未解限制。"
+    },
+    {
+      "source_id": "K6-S020",
+      "url": "https://aircrafticing.grc.nasa.gov/1_1_2_5.html",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "Temperature Inversion L59–63；Collision-coalescence L70–75",
+      "finding": "融雪與液滴碰併兩途徑；未採飛航建議或高度值。"
+    },
+    {
+      "source_id": "K6-S021",
+      "url": "https://acp.copernicus.org/articles/25/4419/2025/",
+      "read_via": "web.run open/find 正文",
+      "reading_scope": "§2.1、§2.2.1–2.2.5、§2.3導言/§2.3.1–2.3.2",
+      "finding": "原論文正文：相應晴空基準及直射/散射重分配；不是只讀摘要。"
+    }
+  ],
+  "source_access_failures": [
+    {
+      "id": "K6-S006",
+      "url": "https://www.noaa.gov/jetstream/upperair/severe-weather",
+      "attempts": [
+        "web.find timeout",
+        "urllib public URL 403",
+        "web.open timeout"
+      ],
+      "result": "本次未獨立重開正文；不把失敗或搜尋摘要算已讀。相關候選按已讀作者指定定位與題級模型評估；進稿仍需取得對應正文。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "ids": [
+        "K6-S001",
+        "K6-S002",
+        "K6-S003",
+        "K6-S004"
+      ],
+      "note": "目前網站標題分別為Curvature Effect: Kelvin Effect、Koehler Theory、Vapor Deposition、An Unusual Way to Make Precipitation in Mixed-Phase Clouds；作者使用描述性標題，URL/節號可定位。未複製教材圖、課後題或取固定示例天數作通則。"
+    },
+    {
+      "ids": [
+        "K6-S005"
+      ],
+      "note": "只支持題級碎裂增殖與蒸發冷卻回饋；本文溫度區間、預報經驗值和截斷Melting尾段不可直接進稿。"
+    },
+    {
+      "ids": [
+        "K6-S008"
+      ],
+      "note": "印刷18圖與19首段支持EL仍有動量；不採由雲高定量反推速度或歷史作業門檻。"
+    },
+    {
+      "ids": [
+        "K6-S011",
+        "K6-S012"
+      ],
+      "note": "2010/2011頁只取基本機制；不把全球淨效應數字、任務運作或模型成熟度當2026現況。K6014須分清地表與大氣頂能量帳。"
+    },
+    {
+      "ids": [
+        "K6-S017"
+      ],
+      "note": "讀到fast electric current / return stroke與負CG頻閃，能支持事件內多脈衝；尚未支持每次重複的再充電過程，進稿不可自行補畫。"
+    },
+    {
+      "ids": [
+        "K6-S019"
+      ],
+      "note": "非感應充電微觀機制仍有未解部分，正負符號依條件，不把霰固定畫成永遠負電。"
+    },
+    {
+      "ids": [
+        "K6-S021"
+      ],
+      "note": "獨立實讀§2.1、§2.2.1–2.2.5、§2.3導言/2.3.1–2.3.2；未重跑模型、未獨立審全部結果。只支持局部直射+再分配散射，不推每日淨能量或UV必增加。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W6K-T01",
+      "body_seconds": 255,
+      "verdict": "correction_required",
+      "finding": "因果鏈成立，但先修WEATHER01承諾；三章90/80/85均在核心預算。",
+      "timing_is_measurement": false
+    },
+    {
+      "id": "W6K-T02",
+      "body_seconds": 225,
+      "verdict": "correction_required",
+      "finding": "三種阻礙/越頂可比較，先修WEATHER02分支；80/70/75不需加長。",
+      "timing_is_measurement": false
+    },
+    {
+      "id": "W6K-T03",
+      "body_seconds": 140,
+      "verdict": "pass_editorial_proposal_only",
+      "finding": "70/70兩個時鐘，第二章已明確固定一回擊；不與LEG-S18混同。進稿若頻閃章只剩名詞，依原cut_if撤題案，不填時。",
+      "timing_is_measurement": false
+    }
+  ],
+  "central_application_verified": false,
+  "conclusion": "25筆題級保留，merges/excluded均空；兩處企劃必要修正已依followup所綁hash讀回通過。三組255/225/140秒只為紙上預算，不是逐句稿查核、旁白試讀、畫面/音訊授權或成片驗收。中央選入另由root處理。",
+  "original_status": "TOPICS_PASS_THEME_CORRECTIONS_REQUIRED",
+  "followup_resolution": {
+    "reviewed_on": "2026-11-01",
+    "reviewer": "pool_life_tech",
+    "original_review_sha256": "ad351f210ca1c61ea294c278c109317acebe3d1aa206f4b1a67e8ad0a9afe1ab",
+    "batch_sha256": "f961a8fcb1268833678f83d2cd9783fd3cd99066ac255a8c6ba46bddc8ee2065",
+    "theme_sha256": "f1f73b21332e6e6881e76a3ee89b697e28817e9e7ae5c9995a337fa44b52c6fd",
+    "author_receipt_sha256": "bfb227dfee16fce41af2aa477ab4d10c89a8b3c21d4c66aaa63dddaf843249a4",
+    "method": "定點重讀前兩題案完整標題/問題/connection/章節beat及作者修訂說明，三案時長與核心預算重新核算；batch hash未變，沒有擴大外站查核。",
+    "resolved": [
+      {
+        "id": "WEATHER01",
+        "result": "PASS",
+        "evidence": "T01題名改為凝結成長追問，核心只到沾水、成雲與成長；connection明確不承諾完整降雨/落地，混相條件切換已註。"
+      },
+      {
+        "id": "WEATHER02",
+        "result": "PASS",
+        "evidence": "T02 connection及每章beat均明列分支：未破蓋者停住，第二支已越過抑制層，第三支指定到EL且有速度。"
+      }
+    ],
+    "timing_seconds": [
+      255,
+      225,
+      140
+    ],
+    "remaining_required_corrections": [],
+    "source_limitation": "S006作者確認未保存正文副本，本輪獨立開頁失敗仍保留；未因此冒稱22來源全讀。",
+    "status": "PASS_TOPIC_AND_EDITORIAL_PROPOSAL_ONLY",
+    "production_ready": false
+  }
+}

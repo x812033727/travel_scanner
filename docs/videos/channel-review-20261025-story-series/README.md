@@ -183,7 +183,7 @@ Seiko 前 75 秒（字幕時間軸）：
 | --- | --- | --- |
 | 1 | 長度 10 → 13 分鐘 | 五份品牌故事 `series.json` 的 `target_minutes`；`story.mjs` 13 分鐘的長度帶 12–14；撰稿提示寫 13 分鐘、約 105 張插圖、約 3,500 字；主機奇聞檔案局的單集長度在後台建立時選 13（`EXPLAINER_DEFAULT_MINUTES` 仍是 10，改它要動時長收據綁定的 schemas.py，另開票） |
 | 2 | 旁白語速 | `register.mjs` `STORY_VOICE_STYLE` 加「語速像平常聊天，一秒四到五個字，句與句之間不拖」；**主機要站主把這句貼進後台設定分頁的 style**（`settle()` 抄的是後台那一份）；舊片不重錄 |
-| 3 | 燒錄繁中字幕 | 品牌故事 `story.mjs` 與主機 cute-mystery 單集 `flow.mjs settle()` 的 `subtitles.burn_in` 改 true（其他漫劇與解說仍是 CC）；其他語言照舊 CC |
+| 3 | 燒錄繁中字幕（**2026-10-31 定案：奇聞檔案局燒，品牌故事不燒**） | 品牌故事 `story.mjs` 與主機 cute-mystery 單集 `flow.mjs settle()` 的 `subtitles.burn_in` 改 true（其他漫劇與解說仍是 CC）；其他語言照舊 CC |
 | 4 | 縮圖版型 | `templates.mjs` `THUMB_BOLD_LAYOUT`（layout d）：curio-／story- slug 預設，圖滿版、黃字黑邊大標、白字黑邊副標、不放標籤膠囊；樣張見下 |
 | 5 | 品牌故事公開 | 站主在 Studio 做：把 B25／A41／A42／C21／B26 與清單改公開 |
 

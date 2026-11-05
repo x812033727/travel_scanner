@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "依資訊推進訂長度，不湊長片。",
+    "每核心跨章累計不超素材上限；每節拍不超45秒。"
+  ],
+  "episodes": [
+    {
+      "id": "W21R-T01",
+      "title": "輪子沒壞，衛星卻得找外力幫忙？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上題案，待非作者覆核與試讀",
+      "format": "short_explainer",
+      "core_question": "為什麼一直轉的輪子仍有用完控制餘裕的一天？",
+      "connection": "持續擾動→輪速逼限→只減速反推船→外力配合卸載。",
+      "candidate_ids": [
+        "R21001"
+      ],
+      "target_minutes": 1.8333333333333333,
+      "range_minutes": [
+        1.8333333333333333,
+        1.8333333333333333
+      ],
+      "body_seconds": 110,
+      "chapters": [
+        {
+          "title": "先把擾動存進輪子",
+          "candidate_ids": [
+            "R21001"
+          ],
+          "seconds": 50,
+          "new_information": "含6秒開場：船想保持指向，外界卻持續給同向小擾動；輪子接走角動量。；同一條擾動逐步耗輪速餘裕；顯示不是電量不足，也不表示不能往反向調整。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "含6秒開場：船想保持指向，外界卻持續給同向小擾動；輪子接走角動量。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "同一條擾動逐步耗輪速餘裕；顯示不是電量不足，也不表示不能往反向調整。"
+            }
+          ]
+        },
+        {
+          "title": "要卸載，不能只在船裡搬來搬去",
+          "candidate_ids": [
+            "R21001"
+          ],
+          "seconds": 60,
+          "new_information": "對照只減輪速時角動量回到船，與推力器提供外部力矩時的變化。；輪子配合外部力矩減速，指向可維持；近地磁力矩是另一種外部交換路徑，畫面註方向限制。；回扣：交換能暫存，卸載需要外界。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "對照只減輪速時角動量回到船，與推力器提供外部力矩時的變化。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "輪子配合外部力矩減速，指向可維持；近地磁力矩是另一種外部交換路徑，畫面註方向限制。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：交換能暫存，卸載需要外界。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若只剩輪子反轉船的基本示範，併P314；若角動量箭頭無法核對就撤案，不補任務史。",
+      "evidence_gaps": "單軸帳尚未做數值模擬，進稿需核箭頭與狀態；不放產品性能或全向即時卸載。",
+      "boredom_risk": "不列零件與任務年表；第二章必須用新的控制回答第一章留下的問題。",
+      "timing_basis": "開場、轉場、回扣均已含；依新資訊給紙上預算，未試讀。"
+    },
+    {
+      "id": "W21R-T02",
+      "title": "太空油箱的網子，為什麼不能只挑最細？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上題案，待非作者覆核與試讀",
+      "format": "short_explainer",
+      "core_question": "同一張網要讓液體通過，還要把氣體擋在外面，怎麼兩全？",
+      "connection": "先從錯的硬篩想像換到潤濕孔門檻，再比較門檻與供液壓損。",
+      "candidate_ids": [
+        "R21002"
+      ],
+      "target_minutes": 1.5,
+      "range_minutes": [
+        1.5,
+        1.5
+      ],
+      "body_seconds": 90,
+      "chapters": [
+        {
+          "title": "有孔也能擋氣，但有壓差上限",
+          "candidate_ids": [
+            "R21002"
+          ],
+          "seconds": 50,
+          "new_information": "含6秒開場：氣液位置不靠固定底部保證，網孔需保持潤濕。；畫氣液界面在孔內抗壓，跨門檻後氣體穿過；不是氣泡大小的硬篩。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "含6秒開場：氣液位置不靠固定底部保證，網孔需保持潤濕。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "畫氣液界面在孔內抗壓，跨門檻後氣體穿過；不是氣泡大小的硬篩。"
+            }
+          ]
+        },
+        {
+          "title": "細網同時改了兩件事",
+          "candidate_ids": [
+            "R21002"
+          ],
+          "seconds": 40,
+          "new_information": "同一流量需求下，細網提高擋氣門檻，也提高過網壓損；用兩柱比較可用餘裕。；圖註保留：地面甲烷元件資料與在軌示意分開。；回扣：不是孔最小就一定最好。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "同一流量需求下，細網提高擋氣門檻，也提高過網壓損；用兩柱比較可用餘裕。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "圖註保留：地面甲烷元件資料與在軌示意分開。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：不是孔最小就一定最好。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若刪掉供液壓損權衡，只剩毛細門檻，回頭與I12002/P057合併評估；不得用不同推進劑填第二章。",
+      "evidence_gaps": "門檻對照與流阻柱為原創定性示意；未選定全系統管路，不標虛構最佳孔徑。",
+      "boredom_risk": "不列零件與任務年表；第二章必須用新的控制回答第一章留下的問題。",
+      "timing_basis": "開場、轉場、回扣均已含；依新資訊給紙上預算，未試讀。"
+    },
+    {
+      "id": "W21R-T03",
+      "title": "先把粒子帶電，再中和，離子引擎在忙什麼？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上題案，待非作者覆核與試讀",
+      "format": "short_explainer",
+      "core_question": "電子不是主要推力來源，為什麼不能省？",
+      "connection": "從正離子離開的電荷帳追到回吸，再用中和器改這一條失效路徑。",
+      "candidate_ids": [
+        "R21003"
+      ],
+      "target_minutes": 1.3333333333333333,
+      "range_minutes": [
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "body_seconds": 80,
+      "chapters": [
+        {
+          "title": "噴出去之後，機體留下什麼",
+          "candidate_ids": [
+            "R21003"
+          ],
+          "seconds": 45,
+          "new_information": "含5秒開場：正離子被加速離開；只畫電荷分離，不逐個背零件。；連續排正電後，機體負電累積，畫出會把正離子拉回的方向。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "含5秒開場：正離子被加速離開；只畫電荷分離，不逐個背零件。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "連續排正電後，機體負電累積，畫出會把正離子拉回的方向。"
+            }
+          ]
+        },
+        {
+          "title": "另一條出口，讓電荷帳平衡",
+          "candidate_ids": [
+            "R21003"
+          ],
+          "seconds": 35,
+          "new_information": "加入電子排出路徑，對照總電荷近平衡；已給粒子的動量不因總電荷為零就歸零。；回扣：要推進，也得讓噴出去的粒子能離開。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "加入電子排出路徑，對照總電荷近平衡；已給粒子的動量不因總電荷為零就歸零。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：要推進，也得讓噴出去的粒子能離開。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若只剩正負相吸的口號，併電荷舊題；缺電荷帳與回吸對照就撤80秒案，不加引擎沿革。",
+      "evidence_gaps": "未驗算空間電荷或粒子軌跡；只用官方有限架構的概念，不將每顆離子畫成必須復合。",
+      "boredom_risk": "不列零件與任務年表；第二章必須用新的控制回答第一章留下的問題。",
+      "timing_basis": "開場、轉場、回扣均已含；依新資訊給紙上預算，未試讀。"
+    },
+    {
+      "id": "W21R-T04",
+      "title": "方塊要自由落下，太空船卻為何忙著跟上？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上題案，待非作者覆核與試讀",
+      "format": "short_explainer",
+      "core_question": "保持方塊在中央，究竟該推誰？",
+      "connection": "相同相對位置誤差，用拉方塊與推外殼兩種控制對照，回答近自由落體。",
+      "candidate_ids": [
+        "R21004"
+      ],
+      "target_minutes": 1.5,
+      "range_minutes": [
+        1.5,
+        1.5
+      ],
+      "body_seconds": 90,
+      "chapters": [
+        {
+          "title": "同樣偏離中央，先看誰被推了",
+          "candidate_ids": [
+            "R21004"
+          ],
+          "seconds": 45,
+          "new_information": "含6秒開場：光壓推外殼，方塊相對箱壁偏移；不把原因畫成重力消失。；若把方塊拉回去，就把非重力控制力加到要保護的參考質量。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "含6秒開場：光壓推外殼，方塊相對箱壁偏移；不把原因畫成重力消失。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "若把方塊拉回去，就把非重力控制力加到要保護的參考質量。"
+            }
+          ]
+        },
+        {
+          "title": "讀出偏移，改讓箱子追方塊",
+          "candidate_ids": [
+            "R21004"
+          ],
+          "seconds": 45,
+          "new_information": "感測器讀偏移，微推力器作用船身；敏感方向的方塊盡量沿自己的自由落體路徑。；並排兩種居中結果，標力作用對象；其他軸控制留圖註。；回扣：居中相同，受力可能很不一樣。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "感測器讀偏移，微推力器作用船身；敏感方向的方塊盡量沿自己的自由落體路徑。"
+            },
+            {
+              "seconds": 10,
+              "new_information": "並排兩種居中結果，標力作用對象；其他軸控制留圖註。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：居中相同，受力可能很不一樣。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若無法畫清外殼與方塊的不同受力，就撤90秒案；不能靠精度數字或宇宙背景湊時。",
+      "evidence_gaps": "原創單軸概念，非完整兩質量控制；ESA兩來源是同任務，未看原影片或驗原始噪聲資料。",
+      "boredom_risk": "不列零件與任務年表；第二章必須用新的控制回答第一章留下的問題。",
+      "timing_basis": "開場、轉場、回扣均已含；依新資訊給紙上預算，未試讀。"
+    }
+  ]
+}

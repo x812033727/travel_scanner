@@ -44,6 +44,21 @@ describe("admin video package zip stream", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it("asks the API whether the zip can be made and passes its answer back", async () => {
+    jar.set("travel_access", "session-token");
+    const answer = { ok: false, missing: [{ name: "dub.en.m4a", reason: "gone" }], bytes: 3, drive_folder: "ai-news/v" };
+    const fetchMock = vi.fn(async (url: string) => {
+      expect(url).toBe(`http://localhost:8000/api/v1/admin/videos/v/package?file=${SHA}%3Adub.en.m4a`);
+      return Response.json(answer);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const response = await GET(new NextRequest(`https://mokaair.com/api/admin-video-package/v?file=${SHA}:dub.en.m4a&check=1`), context("v"));
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual(answer);
+    expect(response.headers.get("cache-control")).toBe("private, no-store");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
   it("reports a refusal apart from a missing file", async () => {
     jar.set("travel_access", "session-token");
     vi.stubGlobal("fetch", vi.fn(async () => new Response("no", { status: 403 })));

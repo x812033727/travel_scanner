@@ -192,6 +192,19 @@ async def test_a_drama_is_not_asked_for_a_demonstration_whatever_its_category(
         assert answer.json() == EXPLAINER_VERDICT
 
 
+async def test_a_daily_news_brief_is_not_asked_for_a_demonstration_whatever_its_category(
+    db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # The owner exempted the daily brief on 2026-10-29: its first episode, a slides video in
+    # ai-news, scored 「有示範 0.17」 because a news roundup shows nothing being done.
+    await _projects(db, ("daily-ai-20261028", "slides", "ai-news"))
+    asked = _jev(monkeypatch)
+    (answer,) = await _judge(db, "daily-ai-20261028")
+    assert asked == [EXPLAINER_ASKED]
+    assert answer.status_code == 200, answer.text
+    assert answer.json() == EXPLAINER_VERDICT
+
+
 async def test_a_tutorial_an_uncategorised_video_and_one_the_site_never_saw_are_still_asked(
     db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
 ) -> None:

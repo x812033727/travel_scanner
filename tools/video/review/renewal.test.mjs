@@ -86,6 +86,34 @@ test("staging snapshots files without reporting, submitting or changing the orig
   await assert.rejects(stageRenewal({ from, out, original, body, branding }), /new directory/);
 });
 
+test("an intro after the first chapter is staged only with the checks of the build that placed it", async (t) => {
+  const base = mkdtempSync(path.join(os.tmpdir(), "renewal-placed-"));
+  t.after(() => rmSync(base, { recursive: true, force: true }));
+  const from = path.join(base, "candidate");
+  mkdirSync(from);
+  const original = path.join(base, "original.mp4"), body = path.join(base, "body.mp4"), branding = path.join(base, "branding.json"), checks = path.join(base, "checks.json");
+  writeFileSync(original, "old"); writeFileSync(body, "body"); writeFileSync(path.join(from, "final.mp4"), "new");
+  writeFileSync(path.join(base, "intro.mp4"), "intro"); writeFileSync(path.join(base, "outro.mp4"), "outro");
+  json(branding, { schema_version: 1, id: "v4", intro: { file: "intro.mp4", sha256: sha("intro"), frames: 150 }, outro: { file: "outro.mp4", sha256: sha("outro"), frames: 90 }, intro_at: "after_first_chapter" });
+  json(path.join(from, "meta.json"), { slug: "video-one", title: "New final", description: "New final description" });
+  const pin = validateBranding(JSON.parse(readFileSync(branding, "utf8")), { base });
+  const stage = (out, extra) => stageRenewal({ from, out: path.join(base, out), original, body, branding, ...extra,
+    client: { site: "https://mokaair.com", project: async () => ({ format: "drama", reviews: [{ id: oldId, gate: "final", status: "approved", content_sha256: sha("old") }] }) },
+    measure: async (file) => ({ probe: { streams: [{ codec_type: "video", codec_name: "h264", width: 1920, height: 1080, r_frame_rate: "30/1", pix_fmt: "yuv420p", duration: file === body ? "30" : "38" }] }, loudness: null }),
+    encode: async (_file, target) => writeFileSync(target, "preview"),
+    upload: async (_site, _slug, file, role) => fileEntry(file, role, "video/mp4"),
+  });
+  await assert.rejects(stage("none"), /--checks/);
+  json(checks, { branding: { hash: pin.hash, body_sha256: sha("another body") } });
+  await assert.rejects(stage("other-body", { checks }), /--checks/);
+  json(checks, { branding: { hash: sha("another pin"), body_sha256: sha("body") } });
+  await assert.rejects(stage("other-pin", { checks }), /--checks/);
+  json(checks, { branding: { hash: pin.hash, body_sha256: sha("body") } });
+  const result = await stage("staged", { checks });
+  assert.equal(result.candidate.branding_hash, pin.hash);
+  assert.equal(result.source.body_sha256, sha("body"));
+});
+
 test("candidate file receipt requires confirmed complete storage", async (t) => {
   const base = mkdtempSync(path.join(os.tmpdir(), "renewal-file-"));
   t.after(() => rmSync(base, { recursive: true, force: true }));

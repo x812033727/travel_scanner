@@ -27,7 +27,7 @@ import { clipKey, clipShotScenes, clipsHash, isDrama, isSourced, lookHash, resol
 import { productionClipProblems, productionClipSizeProblem, productionShotProblems } from "../core/lint.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
-import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
+import { FPS, pictureHash, picturesBound, speechHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
@@ -192,7 +192,7 @@ export async function run(command, args, ctx) {
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const look = resolveLook(doc.look);
   const speech = speechHash(doc, lexicon);
-  const visual = visualHash(doc);
+  const visual = pictureHash(doc);
   const hash = lookHash(doc);
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   if (!timeline || timeline.speech_hash !== speech) {
@@ -202,7 +202,7 @@ export async function run(command, args, ctx) {
   const productionTiming = productionShotProblems(doc, project.series, timeline);
   if (productionTiming.length) throw new MediaError(`measured production timeline needs a script revision: ${productionTiming.map((problem) => `${problem.path}: ${problem.message}`).join("; ")}`, { who: "owner" });
   const keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
-  if (!keyframes || keyframes.look_hash !== hash || keyframes.visual_hash !== visual) {
+  if (!keyframes || keyframes.look_hash !== hash || !picturesBound(keyframes.visual_hash, doc)) {
     ctx.stderr.write("keyframes/manifest.json is missing or was drawn for an older script or look; run keyframes first\n");
     return EXIT.usage;
   }
@@ -245,7 +245,7 @@ export async function run(command, args, ctx) {
     const price = status ? clipSecondPrice(status) : 0;
     // A clip brought in by `clips import` stays (unless --force buys the shot again), so it is not priced.
     const existing = readJson(manifestFile(workdir), null);
-    const kept = !values.force && existing?.speech_hash === speech && existing.visual_hash === visual && existing.look_hash === hash ? existing.shots ?? {} : {};
+    const kept = !values.force && existing?.speech_hash === speech && picturesBound(existing.visual_hash, doc) && existing.look_hash === hash ? existing.shots ?? {} : {};
     const imported = shots.filter((scene) => kept[scene.id]?.imported_at && !kept[scene.id].needs_review);
     const priced = shots.length - imported.length;
     let total = 0;
@@ -326,7 +326,7 @@ export async function run(command, args, ctx) {
   mkdirSync(path.join(workdir, "clips"), { recursive: true });
   const existing = readJson(manifestFile(workdir), null);
   const modelCurrent = !project.series?.production?.profile || ["provider", "model", "resolution"].every((key) => (existing?.clip?.[key] ?? null) === (status.clip[key] ?? null));
-  const current = existing?.speech_hash === speech && existing.visual_hash === visual && existing.look_hash === hash && modelCurrent && !values.force;
+  const current = existing?.speech_hash === speech && picturesBound(existing.visual_hash, doc) && existing.look_hash === hash && modelCurrent && !values.force;
   const manifest = current ? existing : { speech_hash: speech, visual_hash: visual, look_hash: hash, shots: {} };
   manifest.clip = { provider: status.clip.provider, model: status.clip.model, resolution };
   // The keyframes and the chosen sheets go back to the media store once per run (the server may
@@ -613,7 +613,7 @@ async function importClip(args, ctx) {
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const look = resolveLook(doc.look);
   const speech = speechHash(doc, lexicon);
-  const visual = visualHash(doc);
+  const visual = pictureHash(doc);
   const hash = lookHash(doc);
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   if (!timeline || timeline.speech_hash !== speech) {
@@ -621,7 +621,7 @@ async function importClip(args, ctx) {
     return EXIT.usage;
   }
   const keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
-  if (!keyframes || keyframes.look_hash !== hash || keyframes.visual_hash !== visual) {
+  if (!keyframes || keyframes.look_hash !== hash || !picturesBound(keyframes.visual_hash, doc)) {
     ctx.stderr.write("keyframes/manifest.json is missing or was drawn for an older script or look; run keyframes first\n");
     return EXIT.usage;
   }
@@ -671,7 +671,7 @@ async function importClip(args, ctx) {
     }
     const started = Date.now();
     const existing = readJson(manifestFile(workdir), null);
-    const current = existing?.speech_hash === speech && existing.visual_hash === visual && existing.look_hash === hash;
+    const current = existing?.speech_hash === speech && picturesBound(existing.visual_hash, doc) && existing.look_hash === hash;
     const manifest = current ? existing : { speech_hash: speech, visual_hash: visual, look_hash: hash, shots: {} };
     mkdirSync(path.join(workdir, "clips"), { recursive: true });
     // The next free clips/<shot>-import-<n>.mp4; the same bytes brought in again keep their name.

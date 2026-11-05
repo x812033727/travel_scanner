@@ -1,0 +1,754 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "root",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "R26001",
+    "R26002",
+    "R26003"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave26-tech.json",
+      "sha256": "9ca5ad128940fb557fc4bf1ff38aca181e90c18e6e32639499a8ad2d82d74f87"
+    },
+    {
+      "file": "reviews/wave26-tech-author.json",
+      "sha256": "4319c3ed395d92852b39e0bae2b806056b04039abc2d3f9fcf1796189a6be681"
+    },
+    {
+      "file": "reviews/wave26-tech-themes.json",
+      "sha256": "9d8dadf4c57374063c6455022f38f859f9d272919da964c1cc06488d97491ddc"
+    }
+  ],
+  "scope": "逐題讀問題/答案/條件/editorial，完整作者近對、共同top5、全部未收與題案；3份原研究指定正文獨立核SHA讀。不是全池人工去重、整篇逐式重現或完整稿/媒體核准。",
+  "counts": {
+    "candidates": 3,
+    "sources_read_at_specified_scope": 3,
+    "fresh_http_sources": 0,
+    "figures_or_scanned_pages_viewed": 3,
+    "author_pairs": 12,
+    "directed_top5": 15,
+    "not_added": 11,
+    "themes": 3,
+    "retained_new_core_candidates": 2,
+    "merges": 1,
+    "excluded": 0
+  },
+  "source_readings": [
+    {
+      "source_id": "R26-S001",
+      "url": "https://arxiv.org/pdf/1311.6511v2",
+      "version": "arXiv:1311.6511v2,2016-07-07；Mathematics Magazine89(2016)133–143",
+      "read_via": "核SHA作者PDF抽文，非本覆核者fresh HTTP",
+      "reading_scope": "PDF pp1–3，Intransitive Dice引言/定義；未讀後段漸近證明",
+      "cache": {
+        "file": ".cache/wave26-tech-dice.pdf",
+        "sha256": "163bbdea944a20c505ab39f052888a1268947f380d5cac64eae1fda67ad6c34f",
+        "text_file": ".cache/wave26-tech-dice-text.json",
+        "text_sha256": "f6ca6e27a893c96f5a5daef4e504179a0249a3cbfd02998685a9fb57aa4f3343"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [],
+      "finding": "直接支持獨立分布的兩兩多數成環；與M10002同核心，九格算例已獨立枚舉。",
+      "limits": "原稿v2與正式期刊是同研究，三卡例不是其proper六面骰特殊集合。未做賭博/最優性推論。",
+      "fresh_http": false,
+      "failures": "本覆核未重抓外站，無新增HTTP成功聲明；Shamir429未讀正文方向維持未收。"
+    },
+    {
+      "source_id": "R26-S002",
+      "url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf",
+      "version": "申請1947-11-13，公開1953-03-17；Google Patents所載原PDF",
+      "read_via": "核SHA作者PDF抽文與頁2原圖目讀，非fresh HTTP",
+      "reading_scope": "PDF pp5–6（印欄1–4），相鄰碼一位/跨列掃描；PDF p2 Fig2/2A",
+      "cache": {
+        "file": ".cache/wave26-tech-gray.pdf",
+        "sha256": "f0a1e67707f892d5d7e0799bee5750adcc4b60a2cf7a9d1230f48d7964077add",
+        "text_file": ".cache/wave26-tech-gray-text.json",
+        "text_sha256": "f6deba14128c8ca321be1ea5f3c82093c939f927c9515e64d209a79628bc43a0"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-tech-gray-p2.png",
+          "sha256": "64552934f6cf0258a246cbc715f34863e68282f1588c77c6e0b728282cc09869"
+        }
+      ],
+      "finding": "原文說明一般二進位可多位同變，反射碼相鄰一位不同；原畫兩種遮罩吻合。",
+      "limits": "原專利陰極束遮罩不同於現代編碼器測試，讀碼對表與無額外位元錯誤條件保留；未讀完權利項。",
+      "fresh_http": false,
+      "failures": "本覆核未重抓外站，無新增HTTP成功聲明；Shamir429未讀正文方向維持未收。"
+    },
+    {
+      "source_id": "R26-S003",
+      "url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf",
+      "version": "1946,Proceedings of the Section of Sciences49(7),758–764；典藏封面另占一頁",
+      "read_via": "核SHA作者掃描PDF渲染頁目讀，非fresh HTTP；抽文無正文不可替代閱讀",
+      "reading_scope": "PDF pp2–3（印758–759）§1定義/00010111例與§2有向網路定義",
+      "cache": {
+        "file": ".cache/wave26-tech-debruijn.pdf",
+        "sha256": "3b32fec679411fb505c5e4c2d5def256616b49154a193124cc13ed1a241ab8de",
+        "text_file": ".cache/wave26-tech-debruijn-text.json",
+        "text_sha256": "8b0499903aa925118d98215943b3a4a16e8898af4d602ad44466f2022ead0cfa"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-tech-debruijn-p2.png",
+          "sha256": "d71ffd338ac0cb896e777c93ec366241432a8d890b24af7b1e4fc619d6ee98e5"
+        },
+        {
+          "file": ".cache/wave26-tech-debruijn-p3.png",
+          "sha256": "c650a064cacd6aceef5e63d37bbc89c63abdaa74813448cd23a49cf2d2af32a1"
+        }
+      ],
+      "finding": "原頁列00010111循環和每三位唯一，包含接縫；特定交換3/4格反例另由覆核枚舉。",
+      "limits": "未讀完一般計數證明；離散玩具已知格界與方向，不承諾真光學讀取。",
+      "fresh_http": false,
+      "failures": "本覆核未重抓外站，無新增HTTP成功聲明；Shamir429未讀正文方向維持未收。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "R26001",
+      "decision": "merge",
+      "canonical_id": "M10002",
+      "reason": "完整單次排序經兩兩多數聚合失去傳遞性已收；新骰子對照保留為變體，非新核心。",
+      "scope_check": "獨立等機率三卡/六面重複面，非必贏、非論文proper集合",
+      "editorial_check": "九格可見相同平均卻成環；80秒含前後兩層比較。",
+      "source_ids": [
+        "R26-S001"
+      ],
+      "source_locator": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。"
+    },
+    {
+      "id": "R26002",
+      "decision": "retain",
+      "canonical_id": null,
+      "reason": "控制相鄰編碼的碼距，而非泛用抗雜訊；有可見錯跳和限定防護答案。",
+      "scope_check": "相鄰兩列，每位取其中端點、無額外錯誤；Gray必須對表解碼",
+      "editorial_check": "011/100八混碼對010/110兩混碼；80秒後段新增解碼/其他錯誤。",
+      "source_ids": [
+        "R26-S002"
+      ],
+      "source_locator": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。"
+    },
+    {
+      "id": "R26003",
+      "decision": "retain",
+      "canonical_id": null,
+      "reason": "重疊窗口仍逐起點唯一的構造，不是一般位元表示/壓縮/Gray混讀。",
+      "scope_check": "固定方向/格界，八離散格；含跨接縫，無實物抗模糊承諾",
+      "editorial_check": "兩位不足、三位唯一、特定改排失敗推進；80秒不需一般構造證明。",
+      "source_ids": [
+        "R26-S003"
+      ],
+      "source_locator": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R26001",
+      "b": "M10003",
+      "decision": "distinct",
+      "reason": "R26001不改選項集合，兩兩多數已成環；M10003刪候選後Borda配分改變才換冠軍。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26001",
+      "b": "M10001",
+      "decision": "distinct",
+      "reason": "R26001固定分布的兩兩勝率成環；M10001由分組樣本權重不同產生總比例反轉。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26001",
+      "b": "I3091",
+      "decision": "distinct",
+      "reason": "R26001各值均勻仍成環；I3091有限亂數取餘使單一骰子的機率偏斜。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26001",
+      "b": "M2042",
+      "decision": "distinct",
+      "reason": "R26001完整分布及平均已知，問題是多數比較；M2042樣本量與變異影響平均估計精度。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26002",
+      "b": "LEG-A12",
+      "decision": "distinct",
+      "reason": "R26002控制多位跨相鄰列混讀，並未增加二態電壓雜訊裕度；LEG-A12是二態電路辨識背景。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26002",
+      "b": "LEG-A36",
+      "decision": "distinct",
+      "reason": "Gray只限制指定過界錯誤，沒有QR冗餘恢復任意損壞的機制。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26002",
+      "b": "E2195",
+      "decision": "distinct",
+      "reason": "R26002防止編碼混合造成遠端值；E2195連續輸入被量化到有限區間，即使無混讀也有誤差。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26003",
+      "b": "L246",
+      "decision": "distinct",
+      "reason": "R26003辨唯一環形起點；UTF8位元前綴辨碼點起始/接續，不提供唯一全域地址。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26003",
+      "b": "L275",
+      "decision": "distinct",
+      "reason": "R26003刻意讓定長窗口不重複；DEFLATE利用重複片段向後回指省資料。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26003",
+      "b": "R26002",
+      "decision": "distinct",
+      "reason": "R26003以每個重疊窗口不同辨起點；R26002以相鄰碼只改一位限制混讀，兩者解不同控制問題。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26003",
+      "b": "LEG-A36",
+      "decision": "distinct",
+      "reason": "R26003無冗餘糾錯，僅已校準離散環的窗口；QR定位/糾錯依完整二維碼結構。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    },
+    {
+      "a": "R26001",
+      "b": "M10002",
+      "decision": "merge",
+      "reason": "單次聯合抽樣的三數仍可排序，聚合兩兩勝出機率卻成環，與M10002個人排序有傳遞性、群體多數成環相同核心；骰子九格只是可驗的新分布變體。",
+      "read_scope": "雙方完整question/answer_target/scope快照與當期raw；非按作者標籤或分數判斷。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R26001",
+      "b": "M10001",
+      "cosine": 0.708805,
+      "decision": "distinct",
+      "reason": "R26001固定分布的兩兩勝率成環；M10001由分組樣本權重不同產生總比例反轉。"
+    },
+    {
+      "a": "R26001",
+      "b": "M10002",
+      "cosine": 0.676983,
+      "decision": "merge",
+      "reason": "單次聯合抽樣的三數仍可排序，聚合兩兩勝出機率卻成環，與M10002個人排序有傳遞性、群體多數成環相同核心；骰子九格只是可驗的新分布變體。"
+    },
+    {
+      "a": "R26001",
+      "b": "M10007",
+      "cosine": 0.665999,
+      "decision": "distinct",
+      "reason": "R26001比較固定分布間的勝率；M10007隨已收集種類變多，新種類機率下降而等待變長。"
+    },
+    {
+      "a": "R26001",
+      "b": "M10003",
+      "cosine": 0.632771,
+      "decision": "distinct",
+      "reason": "R26001不改選項集合，兩兩多數已成環；M10003刪候選後Borda配分改變才換冠軍。"
+    },
+    {
+      "a": "R26001",
+      "b": "R25004",
+      "cosine": 0.624184,
+      "decision": "distinct",
+      "reason": "R26001多數關係不傳遞；R25004利用只加不減碰撞計數的單側上界取最小，無多數排序。"
+    },
+    {
+      "a": "R26002",
+      "b": "R26003",
+      "cosine": 0.679546,
+      "decision": "distinct",
+      "reason": "R26002使相鄰列只差一位，限制跨列混讀；R26003使每個滑動窗口唯一以定位，並無相鄰碼距一位要求。"
+    },
+    {
+      "a": "R26002",
+      "b": "I3062",
+      "cosine": 0.664593,
+      "decision": "distinct",
+      "reason": "R26002位元本身可正確卻來自相鄰不同列；I3062有限表示無法精確表示十進位小數。"
+    },
+    {
+      "a": "R26002",
+      "b": "M2024",
+      "cosine": 0.627391,
+      "decision": "distinct",
+      "reason": "R26002是碼序與讀取邊界；M2024是累積與區間統計的集合範圍。"
+    },
+    {
+      "a": "R26002",
+      "b": "V3033",
+      "cosine": 0.613772,
+      "decision": "distinct",
+      "reason": "R26002改碼序限制過界；V3033缺失改變三聯碼分組，不涉及相鄰列只差一位。"
+    },
+    {
+      "a": "R26002",
+      "b": "M10004",
+      "cosine": 0.60332,
+      "decision": "distinct",
+      "reason": "R26002限制混讀可達碼值；M10004最大餘數法在總名額改變後餘數排序變動。"
+    },
+    {
+      "a": "R26003",
+      "b": "R26002",
+      "cosine": 0.679546,
+      "decision": "distinct",
+      "reason": "R26003以每個重疊窗口不同辨起點；R26002以相鄰碼只改一位限制混讀，兩者解不同控制問題。"
+    },
+    {
+      "a": "R26003",
+      "b": "L317",
+      "cosine": 0.631202,
+      "decision": "distinct",
+      "reason": "R26003離散窗口與位置一一對應；L317字素群與碼點是不同計數單位。"
+    },
+    {
+      "a": "R26003",
+      "b": "I3062",
+      "cosine": 0.620381,
+      "decision": "distinct",
+      "reason": "R26003有限碼的組合與唯一窗口；I3062小數的有限表示與捨入，不是窗口定位。"
+    },
+    {
+      "a": "R26003",
+      "b": "M2087",
+      "cosine": 0.619535,
+      "decision": "distinct",
+      "reason": "R26003格界已知並設計不重複窗口；M2087有限空間取樣無法表示小於格網的地物。"
+    },
+    {
+      "a": "R26003",
+      "b": "J6001",
+      "cosine": 0.602649,
+      "decision": "distinct",
+      "reason": "R26003由數位窗口查表定位；J6001實體獨立接點限制剛體自由度。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [
+      {
+        "duplicate_id": "R26001",
+        "canonical_id": "M10002",
+        "reason": "單次聯合抽樣的三數仍可排序，聚合兩兩勝出機率卻成環，與M10002個人排序有傳遞性、群體多數成環相同核心；骰子九格只是可驗的新分布變體。"
+      }
+    ],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R26001",
+        "b": "M10001",
+        "reason": "R26001固定分布的兩兩勝率成環；M10001由分組樣本權重不同產生總比例反轉。"
+      },
+      {
+        "a": "R26001",
+        "b": "M10007",
+        "reason": "R26001比較固定分布間的勝率；M10007隨已收集種類變多，新種類機率下降而等待變長。"
+      },
+      {
+        "a": "R26001",
+        "b": "M10003",
+        "reason": "R26001不改選項集合，兩兩多數已成環；M10003刪候選後Borda配分改變才換冠軍。"
+      },
+      {
+        "a": "R26001",
+        "b": "R25004",
+        "reason": "R26001多數關係不傳遞；R25004利用只加不減碰撞計數的單側上界取最小，無多數排序。"
+      },
+      {
+        "a": "R26002",
+        "b": "R26003",
+        "reason": "R26002使相鄰列只差一位，限制跨列混讀；R26003使每個滑動窗口唯一以定位，並無相鄰碼距一位要求。"
+      },
+      {
+        "a": "R26002",
+        "b": "I3062",
+        "reason": "R26002位元本身可正確卻來自相鄰不同列；I3062有限表示無法精確表示十進位小數。"
+      },
+      {
+        "a": "R26002",
+        "b": "M2024",
+        "reason": "R26002是碼序與讀取邊界；M2024是累積與區間統計的集合範圍。"
+      },
+      {
+        "a": "R26002",
+        "b": "V3033",
+        "reason": "R26002改碼序限制過界；V3033缺失改變三聯碼分組，不涉及相鄰列只差一位。"
+      },
+      {
+        "a": "R26002",
+        "b": "M10004",
+        "reason": "R26002限制混讀可達碼值；M10004最大餘數法在總名額改變後餘數排序變動。"
+      },
+      {
+        "a": "R26003",
+        "b": "L317",
+        "reason": "R26003離散窗口與位置一一對應；L317字素群與碼點是不同計數單位。"
+      },
+      {
+        "a": "R26003",
+        "b": "I3062",
+        "reason": "R26003有限碼的組合與唯一窗口；I3062小數的有限表示與捨入，不是窗口定位。"
+      },
+      {
+        "a": "R26003",
+        "b": "M2087",
+        "reason": "R26003格界已知並設計不重複窗口；M2087有限空間取樣無法表示小於格網的地物。"
+      },
+      {
+        "a": "R26003",
+        "b": "J6001",
+        "reason": "R26003由數位窗口查表定位；J6001實體獨立接點限制剛體自由度。"
+      },
+      {
+        "a": "R26001",
+        "b": "I3091",
+        "reason": "R26001各值均勻仍成環；I3091有限亂數取餘使單一骰子的機率偏斜。"
+      },
+      {
+        "a": "R26001",
+        "b": "M2042",
+        "reason": "R26001完整分布及平均已知，問題是多數比較；M2042樣本量與變異影響平均估計精度。"
+      },
+      {
+        "a": "R26002",
+        "b": "LEG-A12",
+        "reason": "R26002控制多位跨相鄰列混讀，並未增加二態電壓雜訊裕度；LEG-A12是二態電路辨識背景。"
+      },
+      {
+        "a": "R26002",
+        "b": "LEG-A36",
+        "reason": "Gray只限制指定過界錯誤，沒有QR冗餘恢復任意損壞的機制。"
+      },
+      {
+        "a": "R26002",
+        "b": "E2195",
+        "reason": "R26002防止編碼混合造成遠端值；E2195連續輸入被量化到有限區間，即使無混讀也有誤差。"
+      },
+      {
+        "a": "R26003",
+        "b": "L246",
+        "reason": "R26003辨唯一環形起點；UTF8位元前綴辨碼點起始/接續，不提供唯一全域地址。"
+      },
+      {
+        "a": "R26003",
+        "b": "L275",
+        "reason": "R26003刻意讓定長窗口不重複；DEFLATE利用重複片段向後回指省資料。"
+      },
+      {
+        "a": "R26003",
+        "b": "LEG-A36",
+        "reason": "R26003無冗餘糾錯，僅已校準離散環的窗口；QR定位/糾錯依完整二維碼結構。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R26-NA001",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R26001"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：同為兩兩分布比較的非傳遞循環，保留來源例子，不另算核心。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA002",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R26001"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：是本核要推翻的錯誤直覺，不另拆一題。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA003",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R26001"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：不能由單次數字傳遞性推多次配對分布；合入核心對照。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA004",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "I3091"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：舊庫已有有限整數取餘偏差，不用骰子外觀重收。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA005",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "M10006"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：配對數及補集機率已收，改情境無新機制。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA006",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R26002"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：同一相鄰一位改變機制，且本次未實讀現代產品正文，不追加裝置承諾。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA007",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R26002",
+        "LEG-A36"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：相鄰過界限制不是一般糾錯；保留邊界，不能混成QR恢復機制。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA008",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "LEG-A12"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：可靠狀態與編碼已有；這批只研究碼字排列和過界。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA009",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R26003"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：窗口長度參數變體；不另拆成更多題。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA010",
+      "decision": "keep_not_added",
+      "existing_ids": [
+        "R26003"
+      ],
+      "reason": "已讀退題理由及相關舊完整問答：已知方向是前提；逆向需另校準/查表，合入限制，不用失效情境灌數。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    },
+    {
+      "id": "R26-NA011",
+      "decision": "keep_not_added",
+      "existing_ids": [],
+      "reason": "已讀退題理由及相關舊完整問答：Shamir MIT-LCS-TM-134只讀典藏摘要，原PDF普通請求HTTP429；未讀正文，不收為已查核核心。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W26R-T01",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        45,
+        35
+      ],
+      "candidate_seconds": {
+        "R26001": 80
+      },
+      "flow_check": "九格可見相同平均卻成環；80秒含前後兩層比較。",
+      "drop_condition_review": "已讀具體撤案/縮段條件；不補新物種/術語/背景以滿長度。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    },
+    {
+      "id": "W26R-T02",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        50,
+        30
+      ],
+      "candidate_seconds": {
+        "R26002": 80
+      },
+      "flow_check": "011/100八混碼對010/110兩混碼；80秒後段新增解碼/其他錯誤。",
+      "drop_condition_review": "已讀具體撤案/縮段條件；不補新物種/術語/背景以滿長度。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    },
+    {
+      "id": "W26R-T03",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        50,
+        30
+      ],
+      "candidate_seconds": {
+        "R26003": 80
+      },
+      "flow_check": "兩位不足、三位唯一、特定改排失敗推進；80秒不需一般構造證明。",
+      "drop_condition_review": "已讀具體撤案/縮段條件；不補新物種/術語/背景以滿長度。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    }
+  ],
+  "source_identity_review": {
+    "method": "逐文版本/原頁身份與同文載體說明；讀當期exact scan作提示，無命中不代表獨立重複實驗。",
+    "sources": [
+      {
+        "source_id": "R26-S001",
+        "version": "arXiv:1311.6511v2,2016-07-07；Mathematics Magazine89(2016)133–143",
+        "identity": "所採PDF/典藏或PMC版本不另算第二份獨立證據。"
+      },
+      {
+        "source_id": "R26-S002",
+        "version": "申請1947-11-13，公開1953-03-17；Google Patents所載原PDF",
+        "identity": "所採PDF/典藏或PMC版本不另算第二份獨立證據。"
+      },
+      {
+        "source_id": "R26-S003",
+        "version": "1946,Proceedings of the Section of Sciences49(7),758–764；典藏封面另占一頁",
+        "identity": "所採PDF/典藏或PMC版本不另算第二份獨立證據。"
+      }
+    ],
+    "source_identity_scan": {
+      "file": ".cache/wave26-source-identity-matches.json",
+      "sha256": "f6eda58783eed7a565f623ec6047928f31e194fa4114e7071fa88e9abc88d4c6"
+    }
+  },
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave26-tech.json",
+      "sha256": "736ae4183de497057ec2925fc3fb6c1de78ca9cb358b5c49f5d284e0c01e152c"
+    },
+    {
+      "file": "reviews/wave26-tech-author.json",
+      "sha256": "267c18be1a40fec5b52a3ab70f458acb4bdc565e9af31259ad26df017e82d8b1"
+    },
+    {
+      "file": "reviews/wave26-tech-themes.json",
+      "sha256": "e48b022a803078ed9d5f1a2c3c4a5f918dea243112f9d0610c03e30039cc827e"
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "TECH01",
+      "finding": "初作者近對漏M10002，骰子多數循環仍同核心。",
+      "resolution": "R26001→M10002，原raw/source留作80秒研究變體；無新增核心。",
+      "status": "resolved"
+    },
+    {
+      "id": "TECH02",
+      "finding": "T01/T02重播與T03條件回扣偏長。",
+      "resolution": "90/90/85→80/80/80；共刪25秒，variant_usage/timing/written_files同步。",
+      "status": "resolved"
+    },
+    {
+      "id": "TECH03",
+      "finding": "任意交換格子必破壞唯一性措辭過廣。",
+      "resolution": "只採第3/4格交換為00100111；獨立枚舉001與100各兩個窗口。",
+      "status": "resolved"
+    }
+  ],
+  "retrieval": {
+    "draft_sha256": "bb9ba6b618db77d852b4a0505bf7384f41144b363b6989df426cc92c2c96f763",
+    "neighbours": {
+      "file": ".cache/wave26-tech-neighbours.json",
+      "sha256": "08e2a294a6be7acfc8939bc5b3f88459f78bd4ca03c978bf0c7514fd2e28df8c"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave26-draft.json",
+      "sha256": "a660a680cfd1e02db2792c85c636b0025358881e5b7f15b94b4d7e2625ca4254"
+    },
+    "initial_neighbours": {
+      "file": ".cache/wave26-tech-neighbours-common-initial.json",
+      "sha256": "e6c2bde6dc7f94a5ea641f3d5d87f9b67d787ba4a77fcf7e58a8063190b0f1d4"
+    },
+    "initial_draft_sha256": "101f7e92784c4bed396afc71a3a147af4153cf115f59bf37a4bee107c8181588",
+    "meaning": "semantic分數僅召回提示；15有向近對逐項按完整答案/條件判定。"
+  },
+  "final_input_check": {
+    "input_sha256": "bb9ba6b618db77d852b4a0505bf7384f41144b363b6989df426cc92c2c96f763",
+    "batch_sha256_matches": true,
+    "rows_equal_to_common_initial": true,
+    "directed_rows_checked": 15,
+    "author_written_files_match": true,
+    "note": "當期batch及兩作者文件綁定；比較common-initial與current完整rows，問答/條件/順序/分數皆一致。生命scope及分類/題案metadata變動不冒稱全draft位元組相同。"
+  },
+  "remaining_blockers": [],
+  "toy_readback": {
+    "method": "覆核者Python itertools精確枚舉，不使用抽樣或實物",
+    "dice_wins_out_of9": [
+      5,
+      5,
+      5
+    ],
+    "binary_mixed_codes": [
+      "000",
+      "001",
+      "010",
+      "011",
+      "100",
+      "101",
+      "110",
+      "111"
+    ],
+    "gray_mixed_codes": [
+      "010",
+      "110"
+    ],
+    "gray_decoded_positions": [
+      3,
+      4
+    ],
+    "cycle": "00010111",
+    "windows": [
+      "000",
+      "001",
+      "010",
+      "101",
+      "011",
+      "111",
+      "110",
+      "100"
+    ],
+    "swapped_cycle": "00100111",
+    "swapped_windows": [
+      "001",
+      "010",
+      "100",
+      "001",
+      "011",
+      "111",
+      "110",
+      "100"
+    ],
+    "limits": "只驗指定算例，非一般定理證明或硬體測試。"
+  }
+}
