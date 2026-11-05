@@ -553,7 +553,7 @@ scenes = []; loops_s = {}; loops_p = {}; n = 0
 # matching eyes and the keyframe judge now checks them.
 EYES = {"kid-million", "pan-on-stove", "snow-to-rain", "droplet-vanish", "feather-stone", "chief-air-holds",
         "chief-folder", "chief-answer-one"}
-_eyes = ", her two eyes matching with round pupils, both looking the same way"
+_eyes = ", her eyes two identical round dark eyes side by side, looking straight ahead"
 for sc in S:
     if sc["id"] in EYES:
         p = sc["data"]["prompt"]

@@ -44,7 +44,7 @@ EYES = {"kid-shiver", "down-palm", "kid-empty-gap", "kid-rug", "kid-question", "
 # Eye shots whose first eye redraw still failed three takes: ask for a straight look instead.
 EYES_FRONT = {"kid-sleeve", "kid-question", "down-palm", "kid-dent", "chief-shell"}
 # Third eye round (independent check after the second): simple identical eyes, looking ahead.
-EYES_DOTS = {"kid-question", "kid-dent", "chief-not-heater", "chief-plausible", "chief-drying", "chief-turn-up", "ice-back", "wind-chill"}
+EYES_DOTS = {"kid-question", "chief-not-heater", "chief-turn-up", "ice-back", "wind-chill"}
 def _shot(id, prompt, chars, lines, chapter):
     cam = FROZEN.get(id) or next(CAMS)
     if id in EYES:
@@ -104,7 +104,7 @@ chief("chief-same-room", "Waist-up medium shot of the chief nodding warmly and s
       c("對。椅子、桌子、這件羽絨衣，放久了都跟房間一樣。"), c("房間比你的手冷，摸起來就冰冰的。", None, "P:cold"))
 kid("kid-shake-jacket", "Medium shot from the waist up of the girl lifting " + JACKET + " above her head with both hands, a determined face, a plain pale bedroom wall, soft daylight",
     k("裡面一定藏了會熱的東西！", "很有把握的錯猜"))
-chief("chief-plausible", "Head-and-shoulders close-up of the chief smiling kindly and tilting her head, " + WALL + ", soft lamp light",
+chief("chief-plausible", "Head-and-shoulders close-up of the chief giving a warm smile with her eyes gently closed, " + WALL + ", soft lamp light",
       c("你這樣猜很合理，穿起來真的很像它在發熱。", "溫和"))
 kid("down-palm", "Close-up of the girl peering through a magnifying glass at one fluffy white down cluster resting on her open palm, its fine soft filaments spreading out in every direction, soft daylight",
     c("可是打開來看，裡面只有羽絨和布。"), c("它要是會發熱，溫度計早就量到了。"))
@@ -224,7 +224,7 @@ kid("kid-bear-hug", "Medium shot of the girl squeezing " + JACKET + " flat again
     k("那我把它壓扁呢？", "章尾停住，調皮", "S:squash"))
 
 # ---------- 第四章 ----------
-kid("kid-dent", "Close-up of the girl pressing one palm flat into " + JACKET + " lying on a table, leaving a flattened dent, studying the dent closely, soft daylight",
+kid("kid-dent", "Close-up of the girl's hand pressing flat into " + JACKET + " lying on a table, a flattened dent around the palm, the girl leaning in above it with a curious smile, soft daylight",
     c("你看，你剛剛一抱，它就扁了一塊。"), chapter="壓扁、淋濕、被風吹透")
 chief("chief-less-air", "Head-and-shoulders close-up of the chief pressing her two palms together in front of her chin, a thoughtful face, " + WALL + ", soft daylight",
       c("扁掉的地方，關住的空氣變少，"), c("那裡就沒那麼暖。", None, "P:squash"))
@@ -248,7 +248,7 @@ chief("chief-clump", "Waist-up medium shot of the chief squeezing a small wet ba
       c("羽絨濕了還會塌下去，撐不起那些小空間。"), c("你淋過冬天的雨，應該記得那種冷。", "轉向觀眾"))
 kid("kid-towel", "Medium shot of the girl with damp dripping hair and a small towel around her neck, shivering by an open window with a grimace, soft grey light",
     k("頭髮沒吹乾，也好冷！", "想到"))
-chief("chief-drying", "Head-and-shoulders close-up of the chief nodding with a knowing look, " + WALL + ", soft lamp light",
+chief("chief-drying", "Head-and-shoulders close-up of the chief nodding with her eyes gently closed and a knowing smile, " + WALL + ", soft lamp light",
       c("對，水在乾掉的時候，還會從你身上再帶走熱。"))
 kid("kid-bridge-wind", "Head-and-shoulders close-up of the girl squinting against a cold wind, her bangs blown sideways, a plain grey winter sky behind her, soft overcast light",
     k("有風的時候，怎麼特別冷？", "追問", "S:wind"))
