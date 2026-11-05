@@ -1,13 +1,13 @@
 ---
 id: 2026-11-04-send-check-audio-transcriptions-and-dub
 title: Send check-audio transcriptions and dub syntheses concurrently
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-tech-signal
 claimed_at: 2026-11-04T15:06:08Z
 created_at: 2026-11-04T12:30:00Z
-completed_at:
+completed_at: 2026-11-05T01:58:09Z
 branch: claude/dazzling-wright-pqolfx
 depends_on: []
 scope:
@@ -50,7 +50,7 @@ The owner approved (2026-11-04) sending several at once to cut this to about 3 h
       the per-request bookkeeping safe with requests in flight together.
 - [x] Add a small bounded-concurrency helper and use it in check.mjs's transcription loop.
 - [x] Do the same for dub synthesis.
-- [ ] Try N=4 on one locale of the next Tech Signal episode; record time and any 429s here.
+- [x] Try N=4 on one locale of the next Tech Signal episode; record time and any 429s here.
 
 ## How to verify
 
@@ -83,4 +83,9 @@ The owner approved (2026-11-04) sending several at once to cut this to about 3 h
 - The knob is not written into docs/videos/DUBS.md: that file is in the scope of several active tasks. When it is
   free, one line beside the STOP paragraph (§92) would do: 「`VIDEO_SPEECH_CONCURRENCY`（預設 4）是 dub 與 check-audio
   同時送出的請求數；第一個請求單獨送，遇到 429 或忙碌就改回一次一個；1 等於以前的逐一送出。」
-- Still to do: the real-episode timing (Steps, last item).
+- 2026-11-05 real episode `daily-ai-20261105` (257 lines, 232 requests per locale, same host and day):
+  - `dub --locale en` at N=1: 1882 s (18,023 billable characters).
+  - `dub --locale ja` at N=4: 316 s (8,896 billable characters), 0 429s, 0 busy answers.
+  - Per request that is 8.1 s at N=1 and 1.4 s at N=4. Per billable character it is about 3x faster, since ja has half en's characters.
+  - Narration `check-audio` at N=4: 663 s, against about 36 min sequentially on 11/4. `check-audio --locale en` at N=4: 401 s for 257 lines with Whisper.
+  - No 429 at N=4, so the default stays 4 for every locale.
