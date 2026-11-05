@@ -36,8 +36,17 @@ CAM_FILE = os.path.join(HERE, "cameras.json")
 FROZEN = json.load(open(CAM_FILE, encoding="utf-8")) if os.path.exists(CAM_FILE) else {}
 
 S = []
+# Shots whose first drawing had mismatched or drifting pupils (owner, 2026-11-05: "在1:00的時候眼珠怪怪的");
+# the redraw asks for matching eyes and is judged by the keyframe judge's eye clause.
+EYES = {"kid-shiver", "down-palm", "kid-empty-gap", "kid-rug", "kid-question", "kid-dent", "chief-both-ways",
+        "chief-not-heater", "chief-secret", "chief-feather", "wind-chill", "ice-back", "chief-plausible",
+        "chief-one-way", "kid-sleeve", "chief-drying", "chief-shell", "kid-shake-jacket", "chief-turn-up", "kid-tile-again"}
 def _shot(id, prompt, chars, lines, chapter):
     cam = FROZEN.get(id) or next(CAMS)
+    if id in EYES:
+        eyes = ", her two eyes matching, both pupils looking the same way"
+        for desc in (KIDDESC, CHIEFDESC):
+            prompt = prompt.replace(", " + desc, eyes + ", " + desc)
     S.append(dict(id=id, chapter=chapter, template="shot", data=dict(prompt=prompt, camera=cam, visual="still", characters=list(chars)), lines=list(lines)))
 def kid(id, prompt, *lines, chapter=None):
     """The kid doing one thing, facing the camera; her hands busy or empty, never holding the notebook."""
