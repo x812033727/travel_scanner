@@ -6,6 +6,15 @@
 
 ## 順序
 
+**2026-11-05 晚上分鏡改版**：`script.md` 照分鏡十一項重寫（`.agents/skills/animation-preproduction/references/storyboard-shot-spec.md`，
+PR #2026）。每鏡多了人物、服裝、道具、表情、離場與秒數；台詞只改 c29（要重錄）。已經抽好的片段先照
+`script.md`〈這版改了什麼〉對一遍：
+- 符合的沿用。
+- c01 露字、說話近景不動（動量 < 7）、人該離場卻還在畫面裡的，才重抽。
+- 長鏡清單裡的鏡照那張表買 8 或 10 秒。
+
+整集估計約 3 分 40 秒，比原本估的長，成片量完再決定要不要刪鏡。
+
 1. **把稿子轉成製作檔**：照 `script.md` 寫 `docs/videos/zhong-tian-qu-qi-e001-r2/video.json`（slug `zhong-tian-qu-qi-e001-r2`，
    38 鏡，一行台詞一筆、不拆半句）與 `overlays.json`；正文照 `minimax-h3-colab/references/motion-quality.md` 第二節寫成英文，
    每鏡寫出 `script.md` 那一列的動作、景別、運鏡，對話鏡寫過肩或反打、視線看對方。唐小棠一律用 `tangxiaotang-portrait-t2`。
