@@ -134,11 +134,12 @@ export function keyframeRubric(characters, { subtitleBand = true, craft = false,
  * be written into an anime still's retake prompt. These additions were not measured on
  * recorded takes; the first episodes judged with them are the measurement.
  */
-export function keyframeChecks({ plate = false, characters = [], subtitleBand = false, craft = true } = {}) {
+export function keyframeChecks({ plate = false, characters = [], subtitleBand = false, craft = true, wordless = false, nobody = false } = {}) {
   const redraw = { weight: 0.25, cost: 10 };
   return [
     ...characters.map((character) => ({ key: `identity_${character.id.replace(/-/g, "_")}`, question: identityCheck(character), ...redraw })),
-    { key: "text", question: "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
+    { key: "text", question: wordless ? WORDLESS_TEXT_QUESTION : "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
+    ...(nobody ? [{ key: "nobody", question: NOBODY_QUESTION, ...redraw }] : []),
     { key: "anatomy", question: "Count the digits of every hand drawn large, thumb included. Does any hand show more than five, or does any person or animal have an extra hand, arm or leg, or a face or body warped out of shape? A finger that is hidden or left out by the style does not count.", ...redraw },
     { key: "detached", question: "Is any part floating, cut off from what should hold it or duplicated, or is there a stray figure or object that does not belong to the scene (a tiny person, a hand with no arm, eyes in the dark)?", ...redraw },
     { key: "subject", question: "Is the main subject of the shot prompt, or the main thing it is doing, missing or clearly wrong? Secondary props, bystanders, which hand and the exact framing do not count here.", ...redraw },
@@ -158,6 +159,15 @@ export function keyframeChecks({ plate = false, characters = [], subtitleBand = 
     ...(subtitleBand ? [{ key: "subtitle_band", question: "Is the main subject, or a face, inside the bottom 14% of the frame, where the subtitles will be burned in?", weight: 1, cost: 3 }] : []),
   ];
 }
+
+// The narrated series that go to every language with no words on screen (cute-mystery: 奇聞檔案局
+// and the brand stories, owner 2026-11-05) fail made-up writing too: a sign of letter-like squiggles
+// reads as words to a viewer and as a mistake in every language.
+export const WORDLESS_TEXT_QUESTION = "Is there any writing anywhere in the picture: letters, words, numbers, a logo, a watermark, or made-up marks that look like writing on a sign, label, paper, screen, box or cover?";
+// A still marked `nobody` (its line is about someone who may not be drawn) fails when anyone is.
+export const NOBODY_QUESTION = "Is there any person, human face or human figure anywhere in the picture, however small, including a face drawn on an object?";
+/** Whether a video's stills must carry no writing at all: the cute-mystery look. */
+export const wordlessLook = (doc) => doc?.look?.preset === "cute-mystery";
 
 // The server takes a rubric question of at most this many characters (apps/api/app/video_media/
 // schemas.py JudgeCriterion.question); a shot look's appearance can run to 800, so the identity
@@ -628,7 +638,7 @@ export async function run(command, args, ctx) {
   const budgetOf = (scene, characters) => shotPromptBudget({ look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const question = (scene, characters) => ({
     rubric: checks
-      ? keyframeChecks({ plate: Boolean(plate), ...(manga ? { characters, subtitleBand: rubricOptions.subtitleBand, craft: false } : {}) })
+      ? keyframeChecks({ plate: Boolean(plate), ...(manga ? { characters, subtitleBand: rubricOptions.subtitleBand, craft: false } : isCuteExplainer(doc) ? { characters } : {}), wordless: wordlessLook(doc), nobody: scene.data.nobody === true })
       : keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
     context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
   });

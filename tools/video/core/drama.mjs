@@ -199,7 +199,7 @@ export const DEFAULT_MUSIC = { gain_db: -20, duck_db: -10, fade_in_ms: 1500, fad
 
 const LOOK_KEYS = new Set(["preset", "style", "negative", "motion", "candidates", "style_frames"]);
 const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prompt", "shot_looks"]);
-const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual", "source"]);
+const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual", "source", "nobody"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
 // A slides video's second host (docs/videos/DUBS.md §兩位主持人, the daily podcast's two voices):
@@ -451,6 +451,9 @@ function validateShotData(data, where, characterIds, earlierShots, errors) {
       for (const id of data.characters) if (!characterIds.has(id)) errors.push({ path: `${where}.characters`, message: `"${id}" is not in characters` });
     }
   }
+  // A still that must show no person (a narrator's line about someone living or dead within 70
+  // years, owner 2026-11-05): the keyframe judge is asked whether anyone is drawn.
+  if (data.nobody !== undefined && data.nobody !== true) errors.push({ path: `${where}.nobody`, message: "is true or left out" });
   if (data.fit !== undefined && !FIT_MODES.includes(data.fit)) errors.push({ path: `${where}.fit`, message: `must be one of ${FIT_MODES.join(", ")}` });
   if (data.visual !== undefined && !VISUAL_MODES.includes(data.visual)) errors.push({ path: `${where}.visual`, message: `must be one of ${VISUAL_MODES.join(", ")}` });
   if (data.seed !== undefined && !(Number.isInteger(data.seed) && data.seed >= 0 && data.seed <= 2_147_483_647)) errors.push({ path: `${where}.seed`, message: "must be a non-negative 31-bit integer" });
