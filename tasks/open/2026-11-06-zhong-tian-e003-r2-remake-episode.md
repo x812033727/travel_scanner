@@ -49,3 +49,4 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - [ ] 第二段精修
 - [ ] 剪接、cut-qa、量成片
 - [ ] `import --from`，備註「第 3 集重製版 r2」
+- 2026-11-06 08:03 草稿開跑；容器約 08:20 前後重啟，跑完 4 支就斷，pod 空轉到被站台 60 分鐘停掉（約 US$2.6 白花）。10:30 重跑（已有的跳過），EU-CZ-1 沒貨，`scratchpad/chain903d.sh` 最多等 8 小時，抽完接真人版試拍的定妝照（同一個 pod）。
