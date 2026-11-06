@@ -46,9 +46,25 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 
 - [x] 規格、配音、免費檢查
 - [x] 第一段草稿（每鏡兩個種子），挑片（`colab/runs/e904/picks.tsv`；s03 從 1.5 秒起剪）
-- [ ] 第二段精修
-- [ ] 剪接、cut-qa、量成片
-- [ ] `import --from`，備註「第 4 集重製版 r2」
+- [x] 第二段精修
+- [x] 剪接、cut-qa、量成片
+- [x] `import --from`，備註「第 4 集重製版 r2，對照原版第 4 集」（2026-11-06 22:15，等站主看）
 - 草稿挑片時看到兩種新錯：s03 兩支開頭都畫出發光的系統面板（正文寫「面前空氣的淡藍光、不畫面板」）；s24 一支跳成中景、眼睛發藍光。s03 用 9040101 從 1.5 秒起剪（避開面板），s24 用 9040102（眼睛大特寫）。
   教訓落地：`storyboard-shot-spec.md`、`storyboard-brief-for-planners.md` 加一行；`preflight-prompts.py` 加 warn glow（第 2–4 集舊 prompt 會擋到 e903 s20、e904 s03）。
 - 20:06 起第二段精修 40 鏡，接著精修第 3 集重抽的 s06、s08（`scratchpad/chain904r.sh`，最後停 pod）。
+
+## 結果
+
+| | r2 第 4 集 |
+| --- | --- |
+| 片長 | 170.8 s |
+| 鏡數 | 40 |
+| 鏡長中位 | 4.1 s |
+| 鏡內動量中位 | 7.2（目標 ≥ 7） |
+| 靜止幀 | 7%（目標 ≤ 15%） |
+| 平均每句字數 | 15.5（字幕 37 條、572 字） |
+| 響度 | -13.6 LUFS，峰值 -1.1 dBFS |
+| 幀率 | 24/1，無黑幀、無 held |
+| 花費 | RunPod 約 US$15（pod 16:03–22:07 US$15.72，含第 3 集 s06、s08 重抽與精修約 US$0.9） |
+
+`cut-qa.py` 0 problem(s)；整片每鏡中間一格看過，面板字跟稿一致。工作分支 `claude/zt-e004-r2`，備份 `transfer/zt-e904-media`。

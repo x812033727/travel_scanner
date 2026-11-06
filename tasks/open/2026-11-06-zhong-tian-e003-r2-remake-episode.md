@@ -77,3 +77,4 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
   `preflight-prompts.py` 加 warn skin（木屑、泥點、血點等寫在手、臉、皮膚上就警告；用第 3 集舊 prompt 試過會擋、改後的不會）。
   main 上的 r2 稿子還有：第 17 集唐小棠、第 37–38 集秦霜「臉上沾灰」——拍到那幾集時改成「衣服上有灰」或確認抽出來沒有斑點。
 - s06 用 `fix2` 9030302、s08 用 9030301（手乾淨）；舊的精修片與草稿移到 `st2/refined-woodchips`、`st1/out-woodchips`。
+- 22:15 重剪（s06、s08 換成乾淨的手），cut-qa 0 problem(s)（動量 7.2、靜止 8%），`import --from --force` 重送後台，備註寫明是修正版。
