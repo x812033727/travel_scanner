@@ -161,12 +161,12 @@ def r1(cast: dict, work: Path) -> dict:
 
 def r2(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
     c, looks = cast["chars"], cast["looks"]
-    old = c["yuetang-96"]["appearance"]
+    old = bust(c["yuetang-96"]["appearance"])
     jobs = []
     for suffix, style, seed in (("", REAL, 612000), ("-3d", CG, 612010)):
         young = f"r1-yuetang-18{suffix}-{pick.get('yuetang-18' + suffix, 'a')}.png"
         need(work / young, PORTRAIT, placeholders)
-        takes = ("a", "b") if not suffix else ("a",)
+        takes = ("c", "d") if not suffix else ("b",)  # a/b（全身，2026-11-06 第一次）臉太小，改畫胸像
         for n, take in enumerate(takes):
             prompt = (
                 "image 1 is the casting photo of Shen Yuetang at eighteen. Show the SAME woman seventy-eight years later, at ninety-six: "
