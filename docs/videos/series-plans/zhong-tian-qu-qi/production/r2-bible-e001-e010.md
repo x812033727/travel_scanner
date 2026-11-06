@@ -141,6 +141,9 @@
 
 ## 獨立審稿（2026-11-06）
 
+這次的做法後來定成規則：`.agents/skills/animation-preproduction/references/storyboard-shot-spec.md`〈交給製作端之前的三道檢查〉（PR #2026）。
+第 11 集以後的分鏡一律照做。檢查程式是 `colab/runs/_scripts/storyboard-check.py`，也在 PR #2026。
+
 三個沒參與寫稿的代理逐鏡讀過十集，分三段看：第 1–4 集、第 4–7 集、第 7–10 集，相鄰兩段重疊一集，交界的接點也有人看。對照的是：
 - 分鏡十一項。
 - 原版審片第 1–10 集的必修與建議（`season1-review.md`）。
