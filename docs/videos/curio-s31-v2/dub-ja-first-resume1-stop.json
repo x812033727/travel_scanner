@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "status": "JA_FIRST_NORMAL_RESUME1_STOPPED_NEW_CONFIRMED_JOURNAL_RENAME_EPERM",
+  "snapshot_at": "2026-10-28T13:27:47.602Z",
+  "recorded_at": "2026-10-28T13:50:47.180Z",
+  "immutable_resume1_dispatch_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-ja-first-resume1.json",
+    "sha256": "9e405b1a35e3b40763a672a6d9d5073327c3f781685fd685ac975abd66d191ab",
+    "bytes": 6831
+  },
+  "command": {
+    "session": 74740,
+    "official_pid": 7608,
+    "native_exit": 1,
+    "native_category": "INFRASTRUCTURE_JOURNAL_RENAME_ERROR_NOT_FIT_OR_QUALITY",
+    "ended_at": "2026-10-28T13:27:47.602Z",
+    "native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-first-recovery-prep-20261028/resume1-paid-native.json",
+      "sha256": "2e84814a83b96db03d91dfff7ebfd498928155ba46fbaef96f9d930d3087f7e1",
+      "bytes": 270
+    },
+    "log": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-first-recovery-prep-20261028/resume1-paid.log",
+      "sha256": "e1861e9933884e28a57effe75ef84c383f32754f0ed167954ea6058cf5cb0556",
+      "bytes": 2244
+    },
+    "captured_after_child_close": true,
+    "parent_environment_unchanged": true,
+    "automatic_retry": false,
+    "ASR_started": false
+  },
+  "new_hold": {
+    "request_sha256": "92b8ccf31b25f025436e81bba89a75dd45d89a80d43dd288d3d9d714605ef486",
+    "tmp_basename": "92b8ccf31b25f025436e81bba89a75dd45d89a80d43dd288d3d9d714605ef486.json.7608.tmp",
+    "code": "EPERM",
+    "syscall": "rename",
+    "stage": "confirmed speech-journal promotion",
+    "matched_line_id": null,
+    "saved_response_contract_verified": false,
+    "private_recovery_not_run_by_this_record": true,
+    "partial_current_cache_raw_and_remaining_scope_pending_Root_freeze": true
+  },
+  "prior_saved_answer": {
+    "request_sha256": "66d6efe4269f35c922ed7385093b454adf65c55a5107661cb5af2016565dd36a",
+    "line_id": "v2a0291",
+    "private_checker_and_actual_request_review_passed_before_dispatch": true,
+    "canonical_consumption_verified": false,
+    "log_progress_past_line_is_not_independent_consumption_proof": true,
+    "normal_recovery_consumption_waits_independent_readback": true
+  },
+  "recipe_review_disclosure": {
+    "recipe": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-first-recovery-prep-20261028/resume1-root-recipe-v2.mjs",
+      "sha256": "79670db4135a64ba821600eeb67080096e53caf328df95d4e9674d10cccd24ab",
+      "bytes": 6400
+    },
+    "source": "Root post-dispatch static-review update in this task",
+    "full_independent_recipe_review_PASS_claimed": false,
+    "finding": "The inherited CIM command-line predicate had a separator-matching defect and could miss a backslash path; adding -ErrorAction Stop alone did not establish complete producer detection.",
+    "guard_bug_is_not_proven_cause_of_journal_EPERM": true,
+    "requirement_before_any_further_production": "Root must use a fresh normalized command-line process guard and reconcile this exact ended slot; no automatic continuation or replay.",
+    "original_recipe_and_dispatch_receipts_preserved": true
+  },
+  "planned_not_actual": {
+    "prior_pending_lines": 145,
+    "prior_pending_characters_including_saved": 3058,
+    "prior_saved_characters": 28,
+    "prior_planned_new_requests": 144,
+    "prior_planned_new_billable_characters": 3030,
+    "actual_new_requests": null,
+    "actual_billable_characters": null,
+    "actual_current_completed_lines": null,
+    "current_remaining_lines": null,
+    "current_remaining_characters": null,
+    "initial212_4504_not_replayed": true
+  },
+  "JA_status": {
+    "first_synthesis_complete": false,
+    "fit": "UNKNOWN",
+    "quality_check_complete": false,
+    "quality_retake_rounds_completed": 0,
+    "listener_reword_rounds_completed": 0,
+    "fit_shorten_rounds_completed": 0,
+    "accepted": false,
+    "audio_approved": false,
+    "human_listening_claimed": false
+  },
+  "preservation": {
+    "all_old_slots_and_receipts_must_remain": true,
+    "EN_unchecked_resolved_not_accepted": true,
+    "EN_completed_ASR_state_run_and_four_closed_histories_untouched_by_this_record": true
+  },
+  "progress": {
+    "bounded_dub_attempts_resolved": 1,
+    "unchecked_skipped_locales": [
+      "en"
+    ],
+    "JA_partial_synthesis_on_hold": true,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "other6_pending": [
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ]
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Root must freshly normalize process paths, freeze the new request and current partial JA membership, verify prior saved-answer canonical consumption independently, and review the new exact saved synthesis contract before any distinct normal continuation. No automatic replay, full212 redo, manual promotion, journal cleanup/reset/forget, provider/limit changes, competing producer or assumed fit/quality/cost totals."
+}

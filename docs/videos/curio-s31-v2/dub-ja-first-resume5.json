@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "at": "2026-10-28T18:25:29.576Z",
+  "status": "NORMAL_RESUME5_SINGLE_TAKE_PROGRESS_THEN_FOURTH_PROVIDER_BUSY_STOP",
+  "anchors": {
+    "actual_readback": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/actual-readback.json",
+      "bytes": 82668,
+      "sha256": "d0b3a493835894d67ee5bf1910a9691a9bff2d921638d9c0279803924d5eb4e7"
+    },
+    "linked_manifest": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/manifest.json",
+      "bytes": 128474,
+      "sha256": "5713def1b5cb3ac144ab641a6bbaf1ebe4a134ca65ab933e9f3d7f8953470fdb"
+    },
+    "dispatch": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/slot/dispatch.json",
+      "bytes": 1029,
+      "sha256": "c8fa8c01abd26e310dae78108c2541e709260ceac21683ab58fb44d579afb3b7"
+    },
+    "native": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/slot/native.json",
+      "bytes": 270,
+      "sha256": "08390db64e0f85fe2e64f7108c13a35e7e7d26dc6dd5d9376e94cc1b069dd4da"
+    },
+    "production_log": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/slot/production.log",
+      "bytes": 743,
+      "sha256": "d6e078fe7d26746e2175429619a47c465fb2546098ceb54aceb7cf04596f9b05"
+    },
+    "quota": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/slot/quota.json",
+      "bytes": 981,
+      "sha256": "a704a4f14c04948367bfeb9589f5ace17dfbfde73df99fd049fb98f69189d5f3"
+    },
+    "observer": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/slot/observer.jsonl",
+      "bytes": 640,
+      "sha256": "e24ea129c74cb53e95e3a4eef53a57edfe8e569986616de6b502c3d433acfd47"
+    },
+    "new_frozen_cache": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/delta/ja/audio/cache.json",
+      "bytes": 2749,
+      "sha256": "bf43e53224c7314a217097dc6878336b6c6bb52bb55d48fe5aa4a3f4b6f05904"
+    },
+    "new_frozen_WAV": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/delta/ja/audio/v2a0341.wav",
+      "bytes": 546284,
+      "sha256": "024ea5588b9aa967f35119ef5c87b2f810007d9b0d4afd3b72ff19d5c246f266"
+    },
+    "recipe": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/resume5-root-recipe.mjs",
+      "bytes": 6803,
+      "sha256": "db545915abd1b80143a4a25acc916d41292d42ff2c63a6d9e2f2605081837392"
+    },
+    "Root_static_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/resume5-root-recipe-static-review.json",
+      "bytes": 1900,
+      "sha256": "c1d3cad490615fc043ac246c8ef86f82542ffa1eef8a9dc204481c40036df1a4"
+    },
+    "pre_dispatch_readiness": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/before-resume5-readiness.json",
+      "bytes": 3209,
+      "sha256": "be55a5b2f5c96c0d80c9a2078f7445e68089b0c93d79afa4594952e37afdc51c"
+    },
+    "Root_backoff": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume4-stop-audit-20261028/resume5-root-backoff.json",
+      "bytes": 1591,
+      "sha256": "d536ce676909301406ee6ee5ec4cc936056b5405cf5605a0ef34f569ff9d4456"
+    }
+  },
+  "dispatch": {
+    "session": 61148,
+    "official_pid": 26820,
+    "at": "2026-10-28T18:17:46.190Z",
+    "lease_observed_at": "2026-10-28T18:17:47.080Z",
+    "frozen_originals_checked": 226,
+    "pinned_refs_checked": 206,
+    "normalized_guard_zero": true,
+    "passed_prior_not_before": "2026-10-28T18:05:00.000Z",
+    "planned_existing_reuse": 79,
+    "planned_new_requests": 133,
+    "planned_new_billable_characters": 2811,
+    "planned_saved_answer_reuse": 0,
+    "planned_counts_are_not_actual_completion_or_invoice": true,
+    "once_only_slot_used_never_replay": true
+  },
+  "dryrun": {
+    "native_exit": 0,
+    "at": "2026-10-28T18:17:17.801Z",
+    "site_gemini_ready": true,
+    "site_remaining_characters_snapshot": 4604093,
+    "quota_is_snapshot_not_reservation": true,
+    "site_ready_not_upstream_capacity": true,
+    "Root_read_original_log": true
+  },
+  "actual_stop": {
+    "native_exit": 4,
+    "at": "2026-10-28T18:18:35.953Z",
+    "signal": null,
+    "captured_after_child_close": true,
+    "new_completed_takes": 1,
+    "new_line_id": "v2a0341",
+    "success_log_request_id": "v2-add-034#0",
+    "observed_busy_responses": [
+      {
+        "timestamp": "2026-10-28T18:17:53.019Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T18:18:03.796Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T18:18:14.492Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T18:18:25.240Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T18:18:35.921Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      }
+    ],
+    "not_EPERM": true,
+    "provider_invoice_or_charges_unverified": true,
+    "provider_reset_unknown": true,
+    "RetryAfter10_not_capacity_or_reset_guarantee": true,
+    "ASR_started": false,
+    "audio_approved": false
+  },
+  "actual_new_baseline": {
+    "schema_version": 2,
+    "linked_manifest_entries": 232,
+    "old_frozen_entries_reused": 225,
+    "new_copies": 7,
+    "new_copies_breakdown": {
+      "slot_receipts": 5,
+      "updated_cache": 1,
+      "new_WAV": 1
+    },
+    "every_entry_has_explicit_frozen_file": true,
+    "consumer_rule": "Resolve each logical entry through its explicit frozen_file. Do not join the new directory with logical file; do not assume old226 current originals are all unchanged.",
+    "old226_all_current_unchanged": false,
+    "current_valid_raw_and_cache": 80,
+    "previous79_raw_and_keys_preserved": true,
+    "cache_changed_old_plus_only_v2a0341": true,
+    "remaining_new_requests": 132,
+    "remaining_new_billable_characters": 2782,
+    "unconsumed_saved_answers": 0,
+    "first_pending_id": "v2a0351",
+    "new_line": {
+      "id": "v2a0341",
+      "line_key": "c794965f92cabee6",
+      "request_key": "82717b2063bdbfee",
+      "request_sha256": "aa141165581e39c8d71edce2bef0c831a9dc8111f74eefa54739e9eebdc14199",
+      "request_billable_characters": 29,
+      "billable_count_is_request_calculation_not_provider_invoice": true,
+      "WAV_frozen_file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-resume5-stop-audit-20261028/delta/ja/audio/v2a0341.wav",
+      "WAV_sha256": "024ea5588b9aa967f35119ef5c87b2f810007d9b0d4afd3b72ff19d5c246f266",
+      "WAV_bytes": 546284,
+      "WAV_samples": 273120,
+      "WAV_format": "PCM16/48000Hz/mono"
+    }
+  },
+  "preservation_and_quiet": {
+    "journal_files": 134,
+    "journal_fullSHA_and_membership_preserved": true,
+    "journal_active_requests": 0,
+    "journal_unknown_or_held": 0,
+    "two_six_file_recovery_proofs_preserved": true,
+    "EN_source_master_media_flags_state2_run15_binding_preserved": true,
+    "four_completed_EN_histories_fullSHA_preserved": true,
+    "producer_pid_probe": "ESRCH",
+    "lease_absent": true,
+    "STOP_absent": true,
+    "normalized_CIM_count": 0,
+    "quiet_observed_at": "2026-10-28T18:21:36.3511022+00:00"
+  },
+  "backoff": {
+    "not_before": "2026-10-28T22:25:00.000Z",
+    "Taipei_not_before": "2026-10-29T06:25:00+08:00",
+    "consecutive_JA_busy_stops": 4,
+    "minimum_minutes": 240,
+    "Root_decision_not_provider_reset": true,
+    "next": "After the boundary, freshly reconcile the new80-line linked baseline, exact journals and lease/process; independently review a distinct new normal slot and read fresh official dryrun quota before paid continuation. Never reuse old79 guards or replay resume5. No resume6 template is prepared here."
+  },
+  "policy": {
+    "no_force_or_redo": true,
+    "no_automatic_retry": true,
+    "no_manual_journal_clear_or_promote": true,
+    "no_voice_provider_global_budget_limit_or_OS_changes": true,
+    "original_IO_extra_wait_ms": 30000,
+    "existing_safe_429_diagnostics_P2_unchanged": true,
+    "H5_still_source_only_nonexecutable": true
+  },
+  "validation": {
+    "check_tasks": {
+      "command": "node tools/tasks.mjs check",
+      "cwd": "C:/Users/x8120/.codex/worktrees/f29b/travel_scanㄐ",
+      "at": "2026-10-28T18:24:54.992Z",
+      "native_exit": 0,
+      "validated_task_files": 2193,
+      "warning_lines": 144
+    }
+  },
+  "fit_unknown": true,
+  "quality_unknown": true,
+  "successful_JA_quality_retake_rounds": 0,
+  "EN_unchecked_attempts_resolved": 1,
+  "accepted_dubs": 0,
+  "other6_not_started": true,
+  "image_budget_unchanged": true,
+  "package_and_s15_pending": true,
+  "no_provider_CLI_SSH_or_canonical_actions_by_public_checkpoint": true
+}

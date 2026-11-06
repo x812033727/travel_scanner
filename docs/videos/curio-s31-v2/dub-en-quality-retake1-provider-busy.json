@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "ORIGINAL_TEXT_RETAKE1_PROVIDER_BUSY_NO_NEW_TAKES_COOLDOWN_NO_PRODUCER",
+  "attempt": {
+    "session": 78815,
+    "pid": 10320,
+    "slot": "dub-en-quality-retake1",
+    "dispatched_at": "2026-10-27T14:54:18.2128806Z",
+    "lease_acquired_at": "2026-10-27T14:54:19.427Z",
+    "native_exit": 4,
+    "ended_at": "2026-10-27T14:55:04.0103260Z",
+    "provider_attempt_count": 5,
+    "http_status": 429,
+    "problem_code": "video_speech_upstream_busy",
+    "retry_after_seconds": 10,
+    "first_attempt_at": "2026-10-27T14:54:20.768Z",
+    "last_attempt_at": "2026-10-27T14:55:03.956Z"
+  },
+  "freeze": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-quality-retake1-provider-busy-before\\manifest.json",
+    "bytes": 3389,
+    "sha256": "53e7ed69a6a070c4906ce902f544c6ba5cf35ad20825c4f7bc9e4f8a4979ba3f"
+  },
+  "actual_comparison": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-quality-retake1-provider-busy-before\\actual-comparison.json",
+    "bytes": 141513,
+    "sha256": "d0c8bba81afc00256f93a2475d8e5eeba4202af85502e8043a8684570aa73ed2"
+  },
+  "verification": {
+    "current_raw_wavs": 212,
+    "targeted_raw_wavs": 29,
+    "targeted_changed": 0,
+    "other_raw_wavs": 183,
+    "other_changed": 0,
+    "en_mix_timeline_fit_cache_source_approvals_state_unchanged": true,
+    "check_and29flags_unchanged": true,
+    "historical_journal_files": 82,
+    "active_or_uncertain_journal_entries": 0,
+    "producer_os_probe": "ESRCH",
+    "lease_present": false
+  },
+  "quality_rounds": {
+    "plain_completed": 0,
+    "plain_cap": 2,
+    "planned_round1_not_completed": true,
+    "shortening": 0,
+    "listener_reword": 0
+  },
+  "cost": {
+    "usage_receipt_available": false,
+    "actual_fee_usd": null,
+    "no_zero_fee_claim": true,
+    "monthly_quota_last_snapshot": 5157762,
+    "monthly_quota_snapshot_at": "2026-10-27T14:51:49.2388142Z",
+    "monthly_quota_does_not_prove_google_daily_quota_available": true
+  },
+  "cooldown": {
+    "not_before": "2026-10-27T15:15:04Z",
+    "action": "No new paid job during cooldown; do not replay the ended slot. A new slot requires fresh quota/source/lease/journal guards and an exact remaining subset. No provider, quota or global settings change."
+  },
+  "producer_running": false,
+  "audio_accepted": false,
+  "foreign_dubs_accepted": 0,
+  "foreign_dubs_selected": 8,
+  "complete_delivery_package": false,
+  "next": "Wait until the stated earliest cooldown boundary, then reconcile actual current evidence and quota before any separately authorized new paid slot. Preserve every original take, low score and attempt receipt; repeated provider refusal requires longer backoff."
+}

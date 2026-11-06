@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "EN_RETAKE1_CHECK_STOPPED_PRIMARY_JOURNAL_EPERM_PENDING_RECONCILIATION",
+  "snapshot_at": "2026-10-28T09:25:12.217Z",
+  "closure": {
+    "session": 76805,
+    "native_exit": 0,
+    "completed_at": "2026-10-28T09:15:39.8442389Z",
+    "native_receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-first-complete-handoff-prep/execute-close-en-retake1-native.json",
+      "sha256": "36f5b92e90c6c86d4fde48741e344cf43933ccb515aae09ccae99166bb49db54"
+    },
+    "complete_sha256": "a5017088ef71e5917df4405a40ade1de14575467debd818719c29596608c717f",
+    "archive_files": 275,
+    "old_copies": 245,
+    "operation_anchors": 11,
+    "moved_files": 18,
+    "relocation_companions": 1,
+    "ledger_files": 6,
+    "old_entrypoints_absent": true,
+    "root_readback_sha256": "d5ee82f1b6753295a46937c1b7974b621df3d53648a7ebbb4b045d9f6240ac68",
+    "independent_post_close_review_sha256": "da24b8fedb51f97481496f809c90cfcb6cfc58bcfe48d706be177066b84d092e",
+    "scope": "Preserved old EN-first proof and exact binding/run/state relocation; no remote scratch deletion claim."
+  },
+  "activation": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-first-complete-handoff-prep/activation-en-retake1.json",
+    "sha256": "7e7a0ff1f84837ba763ff4757a6ba114301cb6ad9eb9155dc6e5274c70a5c787",
+    "preinstall_gate_native_exit": 0,
+    "binding_exclusively_installed": true,
+    "binding_sha256": "11873d1a9315394ada91ee090af49af14d7f1b5ac09b6bc7eb00ad0668d34761",
+    "operation_sha256": "38e673163bca95add54733a9603a1c09b4b76d8e192c9504a5440e068dff0132",
+    "generic_code_review_sha256": "1a06743ec0c75baa6b9bee5e99e3bc3c91be6a706895dd3d7183633f1442e600",
+    "actual_operation_review_sha256": "3f47ef9e6ea0b34d94ba621a53da3bd247b68641b471f3e469b09cb23f811415"
+  },
+  "check_dispatch": {
+    "session": 65243,
+    "caller_pid": 40148,
+    "child_pid": 46316,
+    "intent_at": "2026-10-28T09:22:02.967Z",
+    "intent_sha256": "0447d6c09d76f80652068e8cce16a3c63329446af2da792c227fc2657ac09365",
+    "child_start_sha256": "1013a1f937bd4d282c2e0854958842bda87dee53bb8685ad5bd48f0b73b0daa4",
+    "lease_acquired_at": "2026-10-28T09:22:06.273Z",
+    "slot": "en-first-complete-handoff-prep/fixed-caller-en-retake1",
+    "mode": "--check-once",
+    "native_exit": 1,
+    "force": false,
+    "io_retry_version": 2,
+    "io_extra_wait_cap_ms": 30000,
+    "second_opinion_timeout_ms": 1200000,
+    "second_opinion_source_free": true,
+    "second_opinion_script_basename": "bridge.mjs",
+    "unchanged_take_cache_identity_preserved": true,
+    "observer_scope": "synthesis only; no ASR or Jev transport tracing claim",
+    "new_callback_runtime_or_quality_result_verified": false,
+    "automatic_retry": false,
+    "ended_at": "2026-10-28T09:25:12.217Z",
+    "native_receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-first-complete-handoff-prep/fixed-caller-en-retake1/native-exit.json",
+      "sha256": "8521b50d0a890988caf4dd861b49b7d57d810780586f303e039c372f31a0eafc"
+    },
+    "signal": null,
+    "error": false,
+    "captured_immediately": true,
+    "failure_category": "PRIMARY_TRANSCRIBE_CONFIRMED_JOURNAL_RENAME_EPERM",
+    "request_sha256": "53e4101dabf813e45e999566e669bd9a6dcba6366a68ef02f6f54cefaaf5d389",
+    "complete_sent_answer_and_confirmed_tmp_preserved": true,
+    "actual_recovery_review_complete": false,
+    "new_project_state_or_legacy_run_created": false,
+    "quality_verdict_reached": false,
+    "cache_snapshot": {
+      "total_rows": 212,
+      "current_clip_sha_rows": 205,
+      "old_take_clip_sha_rows": 7,
+      "reported_by": "Root fresh readback after native exit"
+    },
+    "historical_flags": {
+      "count": 29,
+      "sha256": "0e3906db2cd618a41d7d7173dfcfa0799d6aa814e840db65f96dabd723738b3e",
+      "unchanged": true,
+      "current_quality_verdict": false
+    }
+  },
+  "quality": {
+    "plain_rounds_completed": 1,
+    "plain_cap": 2,
+    "shorten_rounds": 0,
+    "listener_rounds": 0,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "new_check_complete": false,
+    "audio_approved": false,
+    "owner_listened": false
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed_in_this_checkpoint": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Root freezes and reconciles the exact saved primary-transcribe answer, PID, journal and unchanged scope. Only after actual recovery review may a new normal continuation slot be prepared; do not replay check-once or repeat the completed closure."
+}

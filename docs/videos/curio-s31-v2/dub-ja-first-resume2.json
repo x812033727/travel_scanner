@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "status": "JA_FIRST_NORMAL_RESUME2_DISPATCHED_AWAIT_NATIVE",
+  "snapshot_at": "2026-10-28T14:01:50.157Z",
+  "recorded_at": "2026-10-28T14:04:17.645Z",
+  "previous_immutable_stop_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-ja-first-resume1-stop.json",
+    "sha256": "dce0b7a08f5f9e018104c1e398d5db681a65e2938ca672642accb7894a246c8e"
+  },
+  "reviewed_saved_response": {
+    "request_sha256": "92b8ccf31b25f025436e81bba89a75dd45d89a80d43dd288d3d9d714605ef486",
+    "line_id": "lz315",
+    "old_pid": 7608,
+    "frozen_manifest": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/manifest.json",
+      "sha256": "3631b484dec6773ebfe61eb715275a175bf012d5d507a5d7e0b79c0efa6e7db1"
+    },
+    "frozen_files": 222,
+    "original_checker_result": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/synthesize-recovery-clone-047eba05-ecd8-419d-bc81-8bbc8c984ad7/independent-synthesize-recovery-review.json",
+      "sha256": "cfb2fc60d174b76445144777251dce858e09b861f1ab22ba0c95bd139be1e9d6"
+    },
+    "independent_actual_request_review": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/actual-request-review-92b8ccf31b25f025.json",
+      "sha256": "bfda15d82cd5a4a439c483a6784ffa68bc2f8bba608022ad98330f1ac7b5a3b5"
+    },
+    "private_recovery_native_exit": 0,
+    "private_reused": 1,
+    "private_send": 0,
+    "private_fetch": 0,
+    "alive_PID_negative_HOLD": true,
+    "saved_response_billable_characters": 15,
+    "saved_response_wav_bytes": 326444,
+    "saved_response_wav_sha256": "f1025b142d1b416c76e10fa25d91cb264eda8494c711e5523bb243ef0c9774c1",
+    "canonical_consumption_verified": false,
+    "raw_saved_response_not_assumed_processed_clip": true
+  },
+  "prior66_canonical_consumption": {
+    "verified": true,
+    "evidence": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/read-only-audit.json",
+      "sha256": "35815a5e208afb78455eeb8bbb10f185fffe722864bf25ae3b87e9c548e7b32a"
+    },
+    "request_sha256": "66d6efe4269f35c922ed7385093b454adf65c55a5107661cb5af2016565dd36a",
+    "line_id": "v2a0291",
+    "official_processing": "encodeWav(trimSilence(requireNarrationFormat(parseWav(savedWAV))))",
+    "processed_and_actual_clip_sha256": "e5e66a65c20491ea420312aec3ce289ff4b609f373e63368b07e442e666d1ee7",
+    "processed_clip_bytes": 441644,
+    "original_saved_response_bytes": 487724,
+    "original_saved28_billable_preserved": true,
+    "previous67_current_raw_and_cache_preserved": true,
+    "new_current_lines_verified": 11,
+    "total_valid_JA_raw_cache_before_dispatch": 78
+  },
+  "planned_scope_not_actual": {
+    "valid_current_lines": 78,
+    "pending_lines": 134,
+    "pending_characters_including_saved": 2826,
+    "saved_reusable_requests": 1,
+    "saved_reusable_characters": 15,
+    "planned_new_requests": 133,
+    "planned_new_billable_characters": 2811,
+    "actual_new_requests": null,
+    "actual_billable_characters": null,
+    "actual_total_current_lines": null,
+    "remaining_after_resume": null
+  },
+  "dispatch": {
+    "session": 78919,
+    "official_pid": 58296,
+    "at": "2026-10-28T14:01:48.202Z",
+    "lease_acquired_at": "2026-10-28T14:01:50.157Z",
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/resume2-paid-dispatch.json",
+      "sha256": "83dd18c1d765259cb977a24d8880a1f8a32d72ccc7cb4bbd316b3ca2ec53942c"
+    },
+    "reviewed_recipe": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/resume2-root-recipe.mjs",
+      "sha256": "76814eb00e301fc2e7951a9a168320f1852ced4e4a641f887f91aec10b55f610"
+    },
+    "independent_static_recipe_review": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/resume2-root-recipe-static-review.json",
+      "sha256": "fdf23d5ce6772b7ede483a7900570ddb5b8e6f7f13d9c4dcc30206fb323f0bd9"
+    },
+    "recipe_review_completed_before_this_paid_dispatch": true,
+    "frozen_originals_checked": 222,
+    "pinned_references_checked": 199,
+    "native_exit": null,
+    "line_by_line": true,
+    "redo": false,
+    "force": false,
+    "automatic_retry": false,
+    "io_extra_journal_wait_cap_ms": 30000,
+    "observer_basename": "ja-resume2-paid-30385337-8808-49c9-bf96-6b31fdb16ee5.jsonl",
+    "moving_log_or_cache_not_pinned": true
+  },
+  "fresh_normalized_process_guard": {
+    "code": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-first-recovery-prep-20261028/process-guard-normalized.ps1",
+      "sha256": "9003fb5c610111409b8c91284f6f721168b5d3fcef137bf770a357be09950216"
+    },
+    "offline_controls": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-first-recovery-prep-20261028/process-guard-normalized-offline-test-receipt.json",
+      "sha256": "52c453a5274066b313f5c4f657ebf6a7a28851fae896e11aeefaa67fd4081699"
+    },
+    "positive_fixtures": 6,
+    "paired_negative_fixtures": 6,
+    "all_pass": true,
+    "fresh_paid_observation": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-first-recovery-prep-20261028/resume2-paid-guard-b24841ba-0560-4bf9-b5f3-365f18887d3b.json",
+      "sha256": "664597133abc5c684e2a13c21d66e8e10511bf48f393ff70e57cec2ce3e43a52"
+    },
+    "historical_v2_predicate_limitation_not_retrospectively_erased": true,
+    "old_v2_full_static_PASS_not_claimed": true
+  },
+  "live_quota": {
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/resume2-quota.json",
+      "sha256": "6a12014ee9134ba56175bff9a278565cbb4aa97a503920dc2940e9986b2b4687"
+    },
+    "native_exit": 0,
+    "at": "2026-10-28T13:55:13.693Z",
+    "gemini_ready": true,
+    "monthly_remaining_characters": 4614770,
+    "quota_snapshot_not_reservation_or_invoice": true
+  },
+  "preservation": {
+    "prior_slots_and_receipts_immutable": true,
+    "EN_unchecked_skip_retained": true,
+    "EN_completed_ASR_state_run_and_four_closed_histories_preserved": true,
+    "JA_ASR_not_started": true,
+    "no_shared_dictionary_voice_provider_or_budget_changes": true
+  },
+  "quality": {
+    "JA_first_synthesis_complete": false,
+    "JA_fit": "UNKNOWN",
+    "JA_quality_checked": false,
+    "JA_quality_retake_rounds": 0,
+    "JA_listener_reword_rounds": 0,
+    "JA_shorten_rounds": 0,
+    "audio_approved": false,
+    "human_listening_claimed": false
+  },
+  "progress": {
+    "bounded_dub_attempts_resolved": 1,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "unchecked_skipped_locales": [
+      "en"
+    ],
+    "active_locale": "ja",
+    "other6_pending": [
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ]
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Wait for this sole JA normal continuation native result, then reconcile partial raw/cache and exact92b8 saved-response canonical processing. Do not replay old slots/full212, manually promote or clear journal, retry uncertain work, move EN ASR state, start another producer or infer fit/quality/billing from the plan."
+}

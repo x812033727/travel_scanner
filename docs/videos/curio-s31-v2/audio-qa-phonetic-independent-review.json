@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "at": "2026-10-27T09:51:07.401Z",
+  "reviewer": "s31_translate_ko_es",
+  "verdict": "EVIDENCE_SUPPORTS_KEEP_SOURCE_AND_NO_FURTHER_PURCHASE",
+  "review_scope": "Evidence and limitations for an episode-specific delegated editorial decision. This is not an audio-by-ear examination, an official check pass or a score/flag override.",
+  "recommendation": {
+    "keep_source_for_both_lines": true,
+    "further_paid_tts_for_these_textual_flags_recommended": false,
+    "manual_false_positive_adjudication_recommended": true,
+    "adjudication_basis": "Case-specific contextual homophony and demonstrated default-reading defects, retaining discordant ASR and residual acoustic uncertainty.",
+    "official_two_flags_and_all_low_scores_must_remain": true,
+    "decision_record_separate_from_mechanical_cache_flags_dictionary_and_readers": true,
+    "no_episode_acceptance_or_audio_gate_was_modified_by_this_review": true
+  },
+  "evidence_bindings": {
+    "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+    "source_speech_hash": "fa2912daff4bd218",
+    "cohort_manifest_sha256": "4d729c2d1c6d96c3ebcd6c60e0b007f978893598ef23e2e9707581d290124edb",
+    "timeline_sha256": "461844fdcf9a29ecf581397c9c546637ce85262bc7ef2b8854e683fdf64d8f31",
+    "primary_check_sha256": "f90e68fb66eb44013726e4e7dabeda42a8272dbe0957672164139222ed83bb8d",
+    "official_flags_sha256": "c1ca984d8e5374d69710356f026efed775738a82e4248e8472afe58a16344ea0",
+    "frozen_whisper_raw_sha256": "b005fc127a2696dff9be227fa29e1e54921331fb7d45d513d982779029373a1a",
+    "current_wavs_equal_reviewed_frozen_wavs": true,
+    "cache_clip_fingerprints_equal_current_sha_prefixes": true,
+    "official_flags": {
+      "slug": "curio-s31-v2",
+      "speech_hash": "fa2912daff4bd218",
+      "flags": [
+        "v2a0491",
+        "v2a0722"
+      ],
+      "notes": {
+        "v2a0491": "Jev 0.05: heard 「學者吳政留下的文字，讓我們看到答案是怎麼形成的。」",
+        "v2a0722": "Jev 0.11: heard 「能證明麗芝當天也到了嗎？」"
+      }
+    },
+    "official_mechanical_state_unchanged": true
+  },
+  "implementation": {
+    "node_version": "v24.13.0",
+    "pinyin_pro_version": "3.29.5",
+    "official_comparator_file": "C:/Users/x8120/.codex/worktrees/f29b/travel_scanㄐ/tools/video/tts/check.mjs",
+    "official_comparator_sha256": "f3dc09c0a552d759dd9e06582dcf6ef4003d2645940e00224dd433953cd5ee43",
+    "shared_lexicon_sha256": "5b5ce6f12d8c2df76552dd229d4310be8d031b56fb958c251c0f1ac8c016994b",
+    "shared_lexicon_has_target_terms": false,
+    "listener_rewrite_prompt_sha256": "4880d96abf1dffee0aba41da858e75219f606659712198b8585fe301a18f72af",
+    "rule": "Leave a line alone when heard already says the same thing in other characters.",
+    "comparison_options": {
+      "toneType": "num",
+      "type": "array",
+      "nonZh": "consecutive",
+      "v": true
+    },
+    "offline_actual_exports_used": [
+      "reading",
+      "matchKind"
+    ],
+    "offline_proof": {
+      "word_readings": {
+        "吳曾": "wu2 ceng2",
+        "無憎": "wu2 zeng1",
+        "吳政": "wu2 zheng4",
+        "荔枝": "li4 zhi1",
+        "麗芝": "li2 zhi1",
+        "丽芝": "li4 zhi1",
+        "立志": "li4 zhi4"
+      },
+      "full_sentence_tests": [
+        {
+          "id": "v2a0491",
+          "intended": "xue2 zhe3 wu2 ceng2 liu2 xia4 de0 wen2 zi4 rang4 wo3 men2 kan4 dao4 da2 an4 shi4 zen3 mo2 xing2 cheng2 de0",
+          "primary": "xue2 zhe3 wu2 zheng4 liu2 xia4 de0 wen2 zi4 rang4 wo3 men2 kan4 dao4 da2 an4 shi4 zen3 mo2 xing2 cheng2 de0",
+          "secondary": "xue2 zhe3 wu2 zeng1 liu2 xia4 de0 wen2 zi4 rang4 wo3 men2 kan4 dao4 da2 an4 shi4 zen3 mo2 xing2 cheng2 de0",
+          "actual_primary_match_kind": null,
+          "actual_secondary_match_kind": null
+        },
+        {
+          "id": "v2a0722",
+          "intended": "neng2 zheng4 ming2 li4 zhi1 dang1 tian1 ye3 dao4 le0 ma2",
+          "primary": "neng2 zheng4 ming2 li2 zhi1 dang1 tian1 ye3 dao4 le0 ma2",
+          "secondary": "neng2 zheng4 ming2 li4 zhi4 dang1 tian1 ye3 dao4 le0 ma2",
+          "actual_primary_match_kind": null,
+          "actual_secondary_match_kind": null
+        }
+      ],
+      "context_only_experiments": {
+        "correct_name_zeng1_matches_whisper": true,
+        "permitted_li4_of_traditional_li_matches_intended": true,
+        "simplified_primary_match_kind": "sound",
+        "primary_wu_zheng_not_exact_expected_name": false,
+        "whisper_li_zhi4_not_exact_expected_fruit": false
+      },
+      "fetch_calls": 0
+    },
+    "custom_pinyin_or_dictionary_changes": false
+  },
+  "cases": [
+    {
+      "id": "v2a0491",
+      "source_text": "學者吳曾留下的文字，讓我們看到答案是怎麼形成的。",
+      "say": null,
+      "wav_sha256": "07546d441d65a5d7b7999fb6a8882a25ad1b0a11fc37490713f2154b8edf3255",
+      "timeline_audio_sha256": "07546d441d65a5d7b7999fb6a8882a25ad1b0a11fc37490713f2154b8edf3255",
+      "cache_clip": "07546d441d65a5d7",
+      "primary": "學者吳政留下的文字，讓我們看到答案是怎麼形成的。",
+      "primary_noul": 0.05,
+      "secondary": "學者無憎留下的文字,讓我們看到答案是怎麼形成的。",
+      "secondary_noul": 0.08,
+      "correct_contextual_reading": {
+        "name": "吳曾",
+        "pinyin": "Wú Zēng",
+        "numeric": "wu2 zeng1",
+        "bopomofo": "ㄨˊ ㄗㄥ",
+        "basis": "Harvard identifies this author and book as Wu Zeng 吳曾 / Nenggaizhai manlu; MoE lists zēng and céng for 曾. The Zeng identification selects zēng rather than the generic library céng. Harvard romanization itself is untoned; the tone selection is an explicit dictionary-supported inference."
+      },
+      "finding": "The actual Whisper whole sentence 無憎 is exactly homophonic with the context-correct Wu Zeng reading apart from orthography/punctuation. The comparator instead reads source 吳曾 as wu2 ceng2, creating a demonstrated text-comparison false negative.",
+      "contrary_evidence": "Primary 吳政 is wu2 zheng4, not an exact tone-and-initial match to wu2 zeng1. It is preserved and is not described as ASR agreement.",
+      "case_recommendation": "Keep 吳曾/source unchanged. Accept this residual textual flag as a likely false positive for the bounded episode decision; do not buy another take merely to satisfy the generic-name comparison.",
+      "confidence_scope": "Strong evidence of comparison/default-pronunciation mismatch; no direct acoustic certification."
+    },
+    {
+      "id": "v2a0722",
+      "source_text": "能證明荔枝當天也到了嗎？",
+      "say": null,
+      "wav_sha256": "10c12f976d0ce98e48fb6020dc2e5d3cb258c9a4e23ebc9d902cd50d00d060c9",
+      "timeline_audio_sha256": "10c12f976d0ce98e48fb6020dc2e5d3cb258c9a4e23ebc9d902cd50d00d060c9",
+      "cache_clip": "10c12f976d0ce98e",
+      "primary": "能證明麗芝當天也到了嗎？",
+      "primary_noul": 0.11,
+      "secondary": "能證明立志當天也到了嗎?",
+      "secondary_noul": 0.08,
+      "correct_contextual_reading": {
+        "word": "荔枝",
+        "pinyin": "lì zhī",
+        "numeric": "li4 zhi1",
+        "bopomofo": "ㄌㄧˋ ㄓ",
+        "basis": "MoE 荔枝 explicitly gives lì zhī. MoE 麗 permits lì and lí, with lí listed for 高麗. Selecting the context-compatible lì of the actual primary string 麗芝 makes it homophonic with 荔枝."
+      },
+      "finding": "The actual primary whole sentence 麗芝 has a context-compatible li4 zhi1 reading. The official library chooses li2 zhi1 for traditional 麗芝, while the otherwise same simplified 丽芝 yields li4 zhi1 and matchKind=sound. This demonstrates orthography/default-reading sensitivity in the comparator.",
+      "contrary_evidence": "Whisper 立志 is li4 zhi4 and is not strictly tone-identical to li4 zhi1. The secondary transcript cannot be called a confirming homophone. No listening was done to resolve the audible final tone.",
+      "case_recommendation": "Keep 荔枝/source unchanged. A bounded manual likely-false-positive disposition based on the actual primary homophone is reasonable; do not automatically rewrite or buy another take for this comparator result. Preserve the unresolved acoustic-tone limitation.",
+      "confidence_scope": "Demonstrated comparator/default-reading issue and plausible primary-ASR orthographic equivalence; actual final-tone correctness remains unverified by ear."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Stephen Owen, Liu Yong (? - ?) and Dancing Renzong, Harvard University",
+      "url": "https://asiacenter.harvard.edu/sites/default/files/2023-06/liuyonganddancingrenzong.pdf",
+      "pdf_page_1_based": 13,
+      "locator": "The paragraph beginning In Wu Zeng’s 吳曾 Nenggaizhai manlu 能改齋漫錄",
+      "used_for": "Name/romanization and identity of the author only; not an audio pronunciation recording or a new lychee-history claim."
+    },
+    {
+      "title": "MoE Revised Mandarin Chinese Dictionary — 曾",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=9594&la=0&powerMode=0",
+      "readings": [
+        "zēng",
+        "céng"
+      ],
+      "used_for": "Permitted character readings supporting context-specific Zeng selection."
+    },
+    {
+      "title": "MoE Revised Mandarin Chinese Dictionary — 荔枝",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=62273&q=1&word=%E8%8D%94%E6%9E%9D",
+      "pinyin": "lì zhī",
+      "bopomofo": "ㄌㄧˋ ㄓ",
+      "used_for": "Pronunciation only. Its historical anecdote is not adopted as evidence for this episode."
+    },
+    {
+      "title": "MoE Revised Mandarin Chinese Dictionary — 麗",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=3500&la=0&powerMode=0",
+      "readings": [
+        "lì",
+        "lí"
+      ],
+      "used_for": "Shows lì is valid and lí is a polyphonic alternative; does not prove any waveform tone."
+    }
+  ],
+  "unavailable_source": {
+    "url": "https://thjcs.site.nthu.edu.tw/var/file/452/1452/img/3650/140092083.pdf",
+    "result": "Web fetch timed out; not used as supporting evidence."
+  },
+  "not_claimed": [
+    "Neither this reviewer nor the owner is claimed to have played or listened to these WAVs.",
+    "No claim that both ASRs agree, that every audible tone is correct, or that the official checker has zero flags.",
+    "No claim that Jev passed these two lines; primary scores 0.05/0.11 and secondary scores 0.08/0.08 remain intact.",
+    "No canonical cache/flags/reader/dictionary/score/source/timeline/WAV was edited, and no production API, SSH, TTS, check or ASR was run.",
+    "Web browsing fetched only cited scholarly/dictionary evidence; the separate local tests used no network."
+  ],
+  "write_scope": "Only this new private review JSON."
+}

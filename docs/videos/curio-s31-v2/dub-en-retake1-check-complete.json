@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "RETAKE1_COMPLETE_QUALITY_CHECK_15_FLAGS_PENDING_BOUNDED_PLAIN_RETAKE2_PREPARATION",
+  "recorded_at": "2026-10-28T10:02:11.644Z",
+  "session": 25284,
+  "completed_at": "2026-10-28T09:49:16.779Z",
+  "native_exit": 1,
+  "native_exit_meaning": "Completed quality check with15 flags, not a journal, Whisper or SSH failure.",
+  "native_receipt": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-complete-handoff-prep\\fixed-caller-en-retake1-continuations\\79b1e1c6-f38a-425b-ba6c-e65f32b3eb87\\native-exit.json",
+    "sha256": "06e5cad696176ea06642184199f404511d1419f83df1668f4a6ef5a2031f3b13"
+  },
+  "outer_native_receipt": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-complete-handoff-prep\\check-continuation-primary2-outer-native.json",
+    "sha256": "61b67dc53c2a8f1d2d6ea00e823320309c1995abac9d37c1bc437e1cc0213144"
+  },
+  "production_log": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-complete-handoff-prep\\fixed-caller-en-retake1-continuations\\79b1e1c6-f38a-425b-ba6c-e65f32b3eb87\\production.txt",
+    "sha256": "8e8ec6ac9111611788d591fbf673a791ae9b6449093996f316619453034c2eea"
+  },
+  "previous_dispatch_receipts": [
+    {
+      "file": "docs/videos/curio-s31-v2/dub-en-retake1-check-resume1.json",
+      "sha256": "86c419d9aa1ddc58cf11c934ededcf7af16a998895bebf0227e8c8b1bf7386a8"
+    },
+    {
+      "file": "docs/videos/curio-s31-v2/dub-en-retake1-check-resume2.json",
+      "sha256": "1c5ce75d0f6ca2b48b5ba97ee2d61e369247372ff5863307308f2c62f2d1de89"
+    }
+  ],
+  "official_summary": {
+    "checked": 212,
+    "exact": 157,
+    "same_sound": 0,
+    "Jev_cleared": 14,
+    "second_cleared": 26,
+    "check_cleared_total": 197,
+    "flagged": 15
+  },
+  "actual_flags": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\videos\\curio-s31-v2\\review\\check-flags.en.json",
+    "sha256": "b6b2f702f97a31b5e84623557e81da3d3dcd4cdef26ccfb738320c85d61d5a06",
+    "ids": [
+      "v2a0131",
+      "lz213",
+      "lz221",
+      "lz311p2",
+      "lz403",
+      "lz405",
+      "lz411",
+      "lz421p2",
+      "lz427",
+      "v2a0611",
+      "lz432p2",
+      "lz506",
+      "lz513",
+      "v2a0791",
+      "lz520"
+    ]
+  },
+  "current_cache": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\videos\\curio-s31-v2\\review\\check.en.json",
+    "sha256": "6b6f9891d23974efdce774675ffad0a56351fb0405df1b7065548ca339d38318",
+    "primary_rows": 212,
+    "all212_clip_hashes_match_reviewed_cohort": true,
+    "clip_hash_definition": "SHA256 hex first16, per official check.mjs",
+    "all212_current_and_frozen_full_sha_bytes_pcm_independently_verified": true,
+    "primary_Jev_records": 55,
+    "second_records": 41,
+    "new_second_rows": 19,
+    "unchanged_valid_cached_second_rows": 22
+  },
+  "last_continuation_cli_counters": {
+    "new_primary_transcriptions": 2,
+    "new_Jev_calls": 2,
+    "saved_answers_reused": 1,
+    "scope": "Only the final25284 continuation, as printed in its actual CLI log."
+  },
+  "whole_chain_provider_call_totals": {
+    "exact_total": null,
+    "reason": "The two interrupted predecessor logs end in EPERM before complete counters. Do not infer paid calls from29 new takes or212 cached rows."
+  },
+  "saved_answer_consumption": {
+    "request_sha256": "2a4be1812efe7e59409d69e0244e9758a261c8b8aaa13364145680437f78e259",
+    "line_id": "v2a0751",
+    "independent_receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-transcribe-recovery-prep\\actual-consumption-2a4be1812efe7e59.json",
+      "sha256": "414ed971d4a7b37a96c34dec407f81256d2488bb9d3174d96d7d5716a7cb9eba"
+    },
+    "canonical_consumption_verified": true
+  },
+  "runtime": {
+    "independent_audit": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-bridge-runtime-audit-20261028.json",
+      "sha256": "ad937e2bcf436c5cc4be9dc49e459ed19064d6c2c5118756696c8a33d19c043b"
+    },
+    "verdict": "PASS_COMPLETE_CLOSED_ACTUAL_EN_RETAKE1_ASR_RUNTIME",
+    "native_Whisper_exit": 0,
+    "new_clip_count": 19,
+    "Whisper_seconds": 219.15340691490564,
+    "callback_seconds": 223.10114819999998,
+    "whole_callback_limit_ms": 1200000,
+    "CPU_threads": 4,
+    "nice": 19,
+    "compute_type": "int8",
+    "offline": true,
+    "hints_sent": false,
+    "expected_text_sent": false,
+    "single_SSH_close_exit": 0,
+    "local_child_reaped": true,
+    "complete_sha256": "82847469d251d6cc27e0f087f50f197fbf62cb153595c8b74edcbc906b709bc9",
+    "lease_absent": true,
+    "holds_or_uncertain": false,
+    "state_and_run_retained": true,
+    "remote_cleanup_confirmed_fixed_field": false,
+    "remote_scratch_deletion_proved": false,
+    "fresh_remote_process_inventory_proved": false
+  },
+  "source_provenance": {
+    "video": {
+      "file": "docs/videos/curio-s31-v2/video.json",
+      "sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86"
+    },
+    "script": {
+      "file": "docs/videos/curio-s31-v2/script.md",
+      "sha256": "d9056e2b5b27b1ce4c6b084a89adb76a6c723bb603349c2d72f35f9cb028c5b0"
+    },
+    "english_translation": {
+      "file": "docs/videos/curio-s31-v2/i18n/en.json",
+      "sha256": "849655432b2ef2ef36634bd77a7599729a6ac24b252c420a9db64629ca8d9a20"
+    }
+  },
+  "reviewed_raw_catalog": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\dub-en-cohort-prep-v2\\en-frozen-bd54053e-3ee7-400c-bcb2-095de10d7f71\\catalog.json",
+    "sha256": "520b172d6a0c27846652fb071d57d7a1d3a1837da6a0871007b482deee0dafcd"
+  },
+  "quality": {
+    "plain_rounds_completed": 1,
+    "plain_cap": 2,
+    "shorten_rounds": 0,
+    "listener_rounds": 0,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "audio_approved": false,
+    "owner_listened": false
+  },
+  "next_preparation": {
+    "planned_plain_round": 2,
+    "exact_flag_count": 15,
+    "original_text": true,
+    "new_quota_and_current_evidence_required": true,
+    "changed_WAVs_require_new_cohort_and_reviewed_ASR_scope": true,
+    "dispatched": false
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false
+}
