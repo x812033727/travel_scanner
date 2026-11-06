@@ -5,6 +5,7 @@
   refs.py aged --from DIR/yuetang-18-shouyi-t1.png [--takes 2] --work DIR      # 九十六歲以十八歲為 image 1
   refs.py sets --ids shenjia-citang:1,shenjia-citang:3,shenjia-zhengting [--takes 2] --work DIR
   refs.py props --ids changmingdeng,baoxinling [--takes 1] --work DIR
+  refs.py looks --ids meifeng:home,xiaoman:damp --base DIR [--takes 1] --work DIR   # 換裝：以 DIR/<id>-portrait-t1.png 為 image 1 只換衣服
 
 產出 `DIR/refs-<kind>.json`，圖片名照 compile.py 找參考圖的規則：`<id>-portrait-tN.png`、換裝 `<id>-<look>-tN.png`、
 `set-<場景>-tN.png`（有燈的分數 `set-<場景>-lamp<N>-tN.png`）、`prop-<道具>-tN.png`；N 是 take。選定之後改名成 t1 放進 refs。
@@ -69,7 +70,8 @@ def job(id_: str, refs: list[str], prompt: str, size: tuple[int, int], seed: int
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("kind", choices=["portraits", "aged", "sets", "props"])
+    ap.add_argument("kind", choices=["portraits", "aged", "sets", "props", "looks"])
+    ap.add_argument("--base", help="looks: the folder with the chosen <id>-portrait-t1.png")
     ap.add_argument("--ids", default="")
     ap.add_argument("--from", dest="src")
     ap.add_argument("--takes", type=int, default=2)
@@ -118,13 +120,25 @@ def main(argv: list[str]) -> int:
                 prompt = (f"image 1 is only a blank mid-grey canvas: take nothing from it. A wide shot of an empty room at night: {text}. "
                           f"{SET_LAYOUT.get(sid, '')} {NO_TEXT} {REAL}")
                 jobs.append(job(f"{name}-t{t}", ["base/grey-set.png"], prompt, SET, seed)); seed += 1
+    elif a.kind == "looks":
+        # 分開畫的兩個 look 會是兩個人（2026-11-06 試鏡）：以選定的基本款為 image 1、latent image1，只換衣服
+        base = Path(a.base or "").resolve()
+        for item in a.ids.split(","):
+            cid, _, look = item.partition(":")
+            src = base / f"{cid}-portrait-t1.png"
+            if not src.is_file():
+                sys.exit(f"refs.py: {src} not found; choose the base portrait first")
+            for t in takes:
+                prompt = (f"Edit image 1: keep the face, skin, hairstyle, the framing, the plain grey backdrop and the lighting exactly the same. "
+                          f"Change only what differs in this look: {bust(looks[(cid, look)])}. {REAL}")
+                jobs.append(dict(job(f"{cid}-{look}-t{t}", [str(src)], prompt, PORTRAIT, seed), latent="image1")); seed += 1
     else:
         props = {p["id"]: p for p in cast["props"]}
         for pid in a.ids.split(","):
             for t in takes:
                 prompt = (f"image 1 is only a blank mid-grey canvas: take nothing from it but the plain grey backdrop. A product-style reference photograph of one object "
                           f"alone on a plain mid-grey backdrop, centred and fully in frame: {props[pid]['prompt']}. Nothing else in the frame. {REAL}")
-                jobs.append(job(f"prop-{pid}-t{t}", ["base/grey-prop.png"], prompt, PROP, seed)); seed += 1
+                jobs.append(job(f"prop-{pid.removeprefix('prop-')}-t{t}", ["base/grey-prop.png"], prompt, PROP, seed)); seed += 1
     out = work / f"refs-{a.kind}.json"
     out.write_text(json.dumps({"jobs": jobs}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{out}: {len(jobs)} jobs")
