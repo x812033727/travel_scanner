@@ -21,9 +21,9 @@ scope:
 
 ## Definition of done
 
-- [ ] 三鏡試拍（s05、s13、s22）鏡內動量 ≥ 7、靜止幀 ≤ 15%，給站主看數字
-- [ ] 其餘 35 鏡（每鏡兩個種子），只做到第二段 1312×736
-- [ ] 中文整句配音、剪接（punch false、slow_max 1.1、interpolate false、duck 3.5／900 ms）、量成片寫進 brief.md 最後一節
+- [x] 三鏡試拍（s05、s13、s22）鏡內動量 ≥ 7、靜止幀 ≤ 15%，給站主看數字
+- [x] 其餘 35 鏡（每鏡兩個種子），只做到第二段 1312×736
+- [x] 中文整句配音、剪接（punch false、slow_max 1.1、interpolate false、duck 3.5／900 ms）、量成片寫進 brief.md 最後一節
 - [x] `import --from`（備註「第 1 集重製版 r2，對照原版第 1 集」），只送成片（2026-11-06 01:45，等站主看）
 
 ## Notes
