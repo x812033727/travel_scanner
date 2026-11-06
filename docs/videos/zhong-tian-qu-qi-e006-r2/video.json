@@ -1,0 +1,1027 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e006-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, empty-handed",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      },
+      "shot_looks": [
+        {
+          "id": "pole",
+          "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a plain wooden carrying pole over one shoulder with nothing hanging from it"
+        }
+      ]
+    },
+    {
+      "id": "zhaobutou",
+      "name": "趙捕頭",
+      "appearance": "East Asian man of forty, wiry and dark-skinned, narrow eyes, a thin two-stroke moustache, a black constable's hat and plain black official uniform with an iron ruler at his belt, always eyeing people sideways",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的捕頭，公事公辦、不耐煩、斜眼看人"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: a light playful comedy of woodblock, pipa and dizi in the sunny yard, carried on through the wedding bows and stopping dead on one heavy hit when the system says it does not count; a fast tense cue of drums and erhu at the county yamen gate, one heavy hit as the seal comes down with the noon drum, turning bright after it; a low suspense cue of low cello and soft guqin on the boarded-up market street, ending on one low note; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "三個新娘三個條件，聘禮是三塊肥皂｜種田娶妻打天下 第6集（重製版）",
+    "description": "第三天清晨，系統要許硯午時前把婚書蓋印。三個新娘各開一個條件：唐小棠要管全家的帳，秦霜夜裡去哪不准問也不准跟，阿令要分房、不准問她的過去；許硯被系統一句「反正你也沒得挑」堵住，全部答應。小禾當司儀、二牛作證，四人在院子裡拜了堂，系統卻說婚書沒蓋印不算，一家人趕到縣衙。趙捕頭要聘禮，許硯家裡什麼都沒有，低頭看到秦霜籃子裡的白皂，拿三塊包上紅紙當聘禮；趙捕頭一聞就收，午時鼓響前蓋了印，成婚三比三，良緣面板開啟：阿令 1、秦霜 5、唐小棠 10。回村路上經過縣城市集，整條街被錢員外封了：「買許家貨者，欠錢府一兩」。錢員外在茶樓上舉杯：「許秀才，明日日落見。」《種田娶妻打天下》第 6 集（重製版）",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "聘禮是三塊肥皂",
+      "tag": "種田娶妻打天下",
+      "shot": "s27"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "條件",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a01",
+          "speaker": "xuyan",
+          "text": "三位，今天午時前，得跟我進縣衙蓋婚書。",
+          "emotion": "急，認真"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise on a clear autumn morning: one long wooden board on two blocks under a persimmon tree centre left with rows of white soap bars on it, the cooking shelter at the back left, one bamboo drying pole across the middle of the yard with one strip of red cloth on it, the house door on screen right, warm low sunrise light from screen left, long shadows: medium shot past a row of white soap bars on the board in the foreground: Xu Yan in the middle, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, red-eyed, one white bar of soap in his right hand; Tang Xiaotang beside him, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, her right hand gripping his sleeve, her small gold abacus on the board; behind them Qin Shuang, her old chopping knife in the right side of her belt, A-ling, no shackles, her sleeves pulled down over her wrists, and little Xiaohe hugging her straw rabbit",
+        "motion": "Xu Yan speaks a short Mandarin line, 「三位，今天午時前，得跟我進縣衙蓋婚書」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan sets the bar down, Tang Xiaotang lets go; A-ling sits at the door, Xiaohe runs in, Qin Shuang leans on the tree; he walks off brushing his palms, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "qinshuang",
+          "aling",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a02",
+          "speaker": "tangxiaotang",
+          "text": "嫁可以，先講條件。往後家裡的帳，全歸我管。",
+          "emotion": "抬著下巴，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up to close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise, warm low sunlight from screen left: medium close-up, closing in to a close-up by the end, of Tang Xiaotang framed from the chin up, her high stand-up collar closed at her throat, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, her chin raised, unsmiling; behind her only the persimmon tree of the same yard",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「嫁可以，先講條件。往後家裡的帳，全歸我管」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she bends, picks the small gold abacus up off the board below the frame, straightens hugging it to her chest and lifts her chin at Xu Yan off screen right, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a03",
+          "speaker": "xuyan",
+          "text": "全部的帳？連我買一支筆，也要跟妳報？",
+          "emotion": "挑眉，不信"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise on a clear autumn morning: one long wooden board on two blocks under a persimmon tree centre left with rows of white soap bars on it, the cooking shelter at the back left, one bamboo drying pole across the middle of the yard with one strip of red cloth on it, the house door on screen right, warm low sunrise light from screen left, long shadows: over-the-shoulder shot from behind Tang Xiaotang's looped buns and pink silk ribbons in the left foreground, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist; Xu Yan on screen right, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, red-eyed and tired after a sleepless night, a few loose strands of hair fallen over his forehead, unsmiling",
+        "motion": "Xu Yan speaks a short Mandarin line, 「全部的帳？連我買一支筆，也要跟妳報？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan stops, points a finger at his own chest and raises one eyebrow; Tang Xiaotang's lips stay closed, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a04",
+          "speaker": "tangxiaotang",
+          "text": "一支筆兩文錢，記清楚了，才不會再欠二十兩。",
+          "emotion": "精明，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise, warm low sunlight from screen left: reverse over-the-shoulder shot from behind Xu Yan's shoulder in the right foreground, Tang Xiaotang on screen left framed from the chin up, her high stand-up collar closed at her throat, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, the small gold abacus hugged to her chest, shrewd and unsmiling; behind her only the persimmon tree of the same yard",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「一支筆兩文錢，記清楚了，才不會再欠二十兩」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her fingertip flicks one bead of the abacus with a click, and only then she lifts her eyes to him; Xu Yan's lips stay closed, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a05",
+          "speaker": "xuyan",
+          "text": "行，帳歸妳管。秦霜，換妳了，妳的條件呢？",
+          "emotion": "投降，無奈"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise on a clear autumn morning: one long wooden board on two blocks under a persimmon tree centre left with rows of white soap bars on it, the cooking shelter at the back left, one bamboo drying pole across the middle of the yard with one strip of red cloth on it, the house door on screen right, warm low sunrise light from screen left, long shadows: medium shot of Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, red-eyed and tired after a sleepless night, a few loose strands of hair fallen over his forehead, unsmiling; deep on screen left Qin Shuang leaning against the persimmon tree, her old chopping knife in the right side of her belt",
+        "motion": "Xu Yan speaks a short Mandarin line, 「行，帳歸妳管。秦霜，換妳了，妳的條件呢？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan raises both hands in surrender, lowers them, turns and walks toward Qin Shuang at the persimmon tree; her lips stay closed, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a06",
+          "speaker": "qinshuang",
+          "text": "我夜裡要去哪裡，你別問，也別跟著。",
+          "emotion": "冷，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise, warm low sunlight from screen left: low-angle medium close-up from the roots of the persimmon tree of Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her old chopping knife in the right side of her belt, its wooden handle wrapped in black cloth and its edge gleaming, unsmiling; behind her only the persimmon branches and the sky of the same yard",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「我夜裡要去哪裡，你別問，也別跟著」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she pushes her back off the trunk and stands straight, her right hand pressing the knife handle at her belt once, her eyes on Xu Yan off screen right, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a07",
+          "speaker": "xuyan",
+          "text": "要是妳出了事，我總得知道上哪去找妳。",
+          "emotion": "皺眉，擔心"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise on a clear autumn morning: one long wooden board on two blocks under a persimmon tree centre left with rows of white soap bars on it, the cooking shelter at the back left, one bamboo drying pole across the middle of the yard with one strip of red cloth on it, the house door on screen right, warm low sunrise light from screen left, long shadows: over-the-shoulder shot from behind Qin Shuang's shoulder and high ponytail in the left foreground, Xu Yan on screen right, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, red-eyed and tired after a sleepless night, a few loose strands of hair fallen over his forehead, frowning",
+        "motion": "Xu Yan speaks a short Mandarin line, 「要是妳出了事，我總得知道上哪去找妳」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan frowns and takes one step forward toward her; Qin Shuang's lips stay closed, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a08",
+          "speaker": "qinshuang",
+          "text": "真出了事，你也找不到。答不答應？",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up to close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise, warm low sunlight from screen left: medium close-up, closing in to a close-up by the end, of Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her old chopping knife in the right side of her belt, cold and unsmiling; behind her only the persimmon tree of the same yard",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「真出了事，你也找不到。答不答應？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she turns her back on him, flicks her high ponytail back with one hand, then turns half her face back over her shoulder, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a09",
+          "speaker": "xuyan",
+          "text": "好，妳夜裡去哪，我不問也不跟。",
+          "emotion": "嘆氣，點頭"
+        },
+        {
+          "id": "zq906a10",
+          "speaker": "aling",
+          "text": "分房睡。我的過去，你一個字都不准問。",
+          "emotion": "冷，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise on a clear autumn morning: one long wooden board on two blocks under a persimmon tree centre left with rows of white soap bars on it, the cooking shelter at the back left, one bamboo drying pole across the middle of the yard with one strip of red cloth on it, the house door on screen right, warm low sunrise light from screen left, long shadows: medium shot, on screen left Qin Shuang seen from behind, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail; Xu Yan in the middle, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, red-eyed and tired after a sleepless night, a few loose strands of hair fallen over his forehead; on screen right A-ling sitting on the threshold of the house door, no shackles, her sleeves pulled down over her wrists, unsmiling",
+        "motion": "Xu Yan speaks a short Mandarin line, 「好，妳夜裡去哪，我不問也不跟」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; A-ling speaks a short Mandarin line, 「分房睡。我的過去，你一個字都不准問」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; first Xu Yan nods and walks to the door; then A-ling rises, walks past him to the fence and looks back, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "aling"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a11",
+          "speaker": "xuyan",
+          "text": "三個條件，沒有一條是對我有利的。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著，累"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up to close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise, warm low sunlight from screen left: medium close-up, closing in to a close-up by the end, of Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, red-eyed and tired after a sleepless night, a few loose strands of hair fallen over his forehead, unsmiling; behind him only the persimmon tree of the same yard",
+        "motion": "he turns his head to look over the brides' backs off screen, then presses his right hand to his temple and rubs it once; his lips stay closed, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a12",
+          "speaker": "xitong",
+          "text": "建議宿主答應。反正你也沒得挑。",
+          "emotion": "冷，嫌棄"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise, warm low sunlight from screen left: extreme close-up of Xu Yan's eyes, the shot opens directly on his eyes from its very first frame, red-rimmed and tired, a very faint pale reflection in his pupils; nothing else in the frame; the system voice speaks off screen",
+        "motion": "his eyelid twitches once and his brows knit, his lips staying closed, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a13",
+          "speaker": "xuyan",
+          "text": "阿令，分房、不問，我都答應。小禾，拿紅紙來拜堂！",
+          "emotion": "下定決心，喊"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse at sunrise on a clear autumn morning: one long wooden board on two blocks under a persimmon tree centre left with rows of white soap bars on it, the cooking shelter at the back left, one bamboo drying pole across the middle of the yard with one strip of red cloth on it, the house door on screen right, warm low sunrise light from screen left, long shadows: full shot past the bamboo drying pole in the foreground: on screen right A-ling before the bamboo fence, no shackles, her sleeves pulled down over her wrists, unsmiling; in the middle Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, red-eyed and tired after a sleepless night, a few loose strands of hair fallen over his forehead",
+        "motion": "Xu Yan speaks a short Mandarin line, 「阿令，分房、不問，我都答應。小禾，拿紅紙來拜堂！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan nods to A-ling, walks to the drying pole, pulls the red cloth off it and turns to shout toward the house door on the right; A-ling turns back to the fence, and the warm low sunrise light from the left stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s13",
+      "chapter": "拜堂",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a14",
+          "speaker": "xiaohe",
+          "text": "一拜天地！二牛哥快進來，你是證人！",
+          "emotion": "喊，雀躍"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn morning: one small wooden table in the middle of the yard, one wooden bench at the back in the middle before a persimmon tree, a bamboo fence, the yard gate in the fence deep on screen right, warm morning sunlight from screen left a little higher than at sunrise: low-angle medium shot of little Xiaohe in her patched lilac short jacket with red-string pigtails and one front tooth missing, hugging her straw rabbit in her left arm, one stack of plain blank red paper and one roll of red cord in her right hand, smiling; behind her the persimmon tree and the sky",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「一拜天地！二牛哥快進來，你是證人！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xiaohe runs out, puts the red paper and cord on the small table, climbs onto the bench and cups her hands round her mouth toward the yard gate on the right, and the warm morning sunlight from the left stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a15",
+          "speaker": "erniu",
+          "text": "我王二牛作證，許秀才今天娶三個媳婦！",
+          "emotion": "憨笑，大嗓門"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn morning: one small wooden table in the middle of the yard, one wooden bench at the back in the middle before a persimmon tree, a bamboo fence, the yard gate in the fence deep on screen right, warm morning sunlight from screen left a little higher than at sunrise: medium shot of Wang Erniu in his coarse brown short jacket with rolled sleeves, one wooden-handled iron hoe on his right shoulder, grinning",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「我王二牛作證，許秀才今天娶三個媳婦！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Erniu jogs in through the yard gate with the hoe on his shoulder, stops, plants the hoe on the ground with a thud and pats his chest with his left hand, and the warm morning sunlight from the left stays unchanged",
+        "characters": [
+          "erniu"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a16",
+          "speaker": "xiaohe",
+          "text": "夫妻對拜！拜完了，就是一家人了！",
+          "emotion": "畫外，喊，雀躍（人在畫面深處，看不到嘴）"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn morning: one small wooden table in the middle of the yard, one wooden bench at the back in the middle before a persimmon tree, a bamboo fence, the yard gate in the fence deep on screen right, warm morning sunlight from screen left a little higher than at sunrise: full shot past the bamboo fence in the foreground: on screen left Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest; on screen right A-ling, Qin Shuang and Tang Xiaotang, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, each with one small red papercut flower in her hair; at the back in the middle little Xiaohe standing on the bench, too far for her mouth to be seen; at the back right Wang Erniu leaning on his hoe",
+        "motion": "the four of them bow to each other together and straighten up again; Erniu nods hard beside them; all lips stay closed, and the warm morning sunlight from the left stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling",
+          "qinshuang",
+          "tangxiaotang",
+          "xiaohe",
+          "erniu"
+        ],
+        "nospeak": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a17",
+          "speaker": "xuyan",
+          "text": "堂都拜完了，這下任務總該算完成了吧？",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著，鬆一口氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up to close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse in the morning, warm sunlight from screen left: medium close-up, closing in to a close-up by the end, of Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest, red-eyed and tired after a sleepless night, a few loose strands of hair fallen over his forehead; behind him only the persimmon tree of the same yard",
+        "motion": "he straightens up, lets out one long breath, his shoulders drop and the corners of his mouth just begin to lift; his lips stay closed, and the warm morning sunlight from the left stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a18",
+          "speaker": "xitong",
+          "text": "婚書未蓋印，不算。宿主剛才那叫彩排。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "In the dirt yard of the Xu farmhouse in the morning, warm sunlight from screen left: extreme close-up of Xu Yan's eyes, the shot opens directly on his eyes from its very first frame, red-rimmed, just beginning to crease into a smile; nothing else in the frame; the system voice speaks off screen",
+        "motion": "the eyes hold that beginning smile; only then a very faint pale red reflection appears in his pupils, and the smile stiffens and drains out of his eyes, and the warm morning sunlight from the left stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a19",
+          "speaker": "xuyan",
+          "text": "婚書沒蓋印不算！走，現在就進縣衙！",
+          "emotion": "急，喊"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, tracking",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn morning: one small wooden table in the middle of the yard, one wooden bench at the back in the middle before a persimmon tree, a bamboo fence, the yard gate in the fence deep on screen right, warm morning sunlight from screen left a little higher than at sunrise: full shot, Xu Yan in the middle, one strip of red cloth tied diagonally across his chest, by the small wooden table with three marriage documents of red paper folded shut on it beside leftover red paper and one roll of red cord; one bamboo basket of leaf-wrapped white soap on the ground; on the right Tang Xiaotang, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, Qin Shuang, her old chopping knife in the right side of her belt, and A-ling, each with a red papercut flower in her hair; Xiaohe on the bench and Wang Erniu with his hoe at the back",
+        "motion": "Xu Yan speaks a short Mandarin line, 「婚書沒蓋印不算！走，現在就進縣衙！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan grabs the documents and runs for the gate, the women after him, Qin Shuang stuffing leftover paper into her basket; Xiaohe waves, and the warm morning sunlight from the left stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "qinshuang",
+          "aling",
+          "xiaohe",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "chapter": "縣衙",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a20",
+          "speaker": "zhaobutou",
+          "text": "站住！再一刻就是午時，縣衙要關門了。",
+          "emotion": "不耐煩"
+        }
+      ],
+      "data": {
+        "camera": "High-angle full shot, tracking",
+        "prompt": "At the gate of the county yamen just before noon on a clear autumn day: the vermilion double gate with brass studs half open at the top of five stone steps, two stone lions on carved plinths beside it, a plain lintel board with no writing, one big drum on a wooden drum stand by the gate on screen left with one small wooden table beside it, a flagstone forecourt, the sun overhead and short shadows under everyone's feet: high-angle full shot past the drum stand and its big drum in the foreground: at the bottom Xu Yan, one strip of red cloth tied diagonally across his chest, the red documents folded shut in his hand, running up the stone steps with Tang Xiaotang, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, Qin Shuang with the basket on her arm and A-ling behind him; at the top before the half-open gate Constable Zhao in his black constable's hat and black uniform",
+        "motion": "Constable Zhao speaks a short Mandarin line, 「站住！再一刻就是午時，縣衙要關門了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan dashes up the steps with the women behind him; at the top Constable Zhao swings his iron ruler across to bar the way, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "qinshuang",
+          "aling",
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a21",
+          "speaker": "xuyan",
+          "text": "趙捕頭，三份婚書都寫好了，就差一個官印。",
+          "emotion": "喘，急"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the gate of the county yamen just before noon on a clear autumn day: the vermilion double gate with brass studs half open at the top of five stone steps, two stone lions on carved plinths beside it, a plain lintel board with no writing, one big drum on a wooden drum stand by the gate on screen left with one small wooden table beside it, a flagstone forecourt, the sun overhead and short shadows under everyone's feet: over-the-shoulder shot from behind Constable Zhao's shoulder and black constable's hat in the right foreground, Xu Yan on screen left one step below, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest, red-eyed and tired after a sleepless night, out of breath, holding up three marriage documents, each one long strip of red paper folded shut with its plain blank back toward the camera in both hands",
+        "motion": "Xu Yan speaks a short Mandarin line, 「趙捕頭，三份婚書都寫好了，就差一個官印」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan pulls up one step below, panting, and raises the folded documents in both hands; Constable Zhao's lips stay closed, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "xuyan",
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a22",
+          "speaker": "zhaobutou",
+          "text": "成親要聘禮，聘禮呢？沒聘禮，這印不能蓋。",
+          "emotion": "斜眼，公事公辦"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "At the gate of the county yamen just before noon on a clear autumn day: the vermilion double gate with brass studs half open at the top of five stone steps, two stone lions on carved plinths beside it, a plain lintel board with no writing, one big drum on a wooden drum stand by the gate on screen left with one small wooden table beside it, a flagstone forecourt, the sun overhead and short shadows under everyone's feet: reverse over-the-shoulder shot from behind Xu Yan's shoulder in the left foreground, Constable Zhao in his black constable's hat and plain black official uniform, wiry and narrow-eyed, an iron ruler and a sword in a black scabbard on the left of his belt on screen right one step above, eyeing him sideways, unsmiling",
+        "motion": "Constable Zhao speaks a short Mandarin line, 「成親要聘禮，聘禮呢？沒聘禮，這印不能蓋」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Constable Zhao takes the folded documents between two fingers of his left hand, flips through their plain blank backs and looks down sideways; Xu Yan's lips stay closed, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "zhaobutou",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a23",
+          "speaker": "xuyan",
+          "text": "聘禮……我家米缸都快見底了，哪來的聘禮？",
+          "emotion": "臉色發白，慌"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up to close-up, slow push in",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: medium close-up, closing in to a close-up by the end, of Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest, red-eyed and tired after a sleepless night, his face pale, unsmiling; behind him only the vermilion gate of the same county yamen",
+        "motion": "Xu Yan speaks a short Mandarin line, 「聘禮……我家米缸都快見底了，哪來的聘禮？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he pats the empty front of his robe with both hands, then turns out both cuffs and finds nothing, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a24",
+          "speaker": "tangxiaotang",
+          "text": "午時鼓就要響了，你快想辦法！",
+          "emotion": "急，壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "At the gate of the county yamen just before noon on a clear autumn day: the vermilion double gate with brass studs half open at the top of five stone steps, two stone lions on carved plinths beside it, a plain lintel board with no writing, one big drum on a wooden drum stand by the gate on screen left with one small wooden table beside it, a flagstone forecourt, the sun overhead and short shadows under everyone's feet: two-shot, Tang Xiaotang in front framed from the chin up, her high stand-up collar closed at her throat, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, one small red papercut flower by her pink ribbon, leaning to Xu Yan's ear, anxious and unsmiling; Xu Yan beside her, one strip of red cloth tied diagonally across his chest; behind them Qin Shuang, her old chopping knife in the right side of her belt, one bamboo basket full of snow-white bars of soap, each wrapped in one green leaf on her left arm",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「午時鼓就要響了，你快想辦法！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Tang Xiaotang tugs his sleeve and leans to his ear; behind, Qin Shuang grips her knife handle and steps forward, and Xu Yan presses her wrist, his hand brushing her basket, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a25",
+          "speaker": "zhaobutou",
+          "text": "拿不出聘禮，就等期滿，自己去跟縣太爺說。",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle close-up, slow push in",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: low-angle close-up from below the steps of Constable Zhao in his black constable's hat and plain black official uniform, wiry and narrow-eyed, an iron ruler and a sword in a black scabbard on the left of his belt, three marriage documents, each one long strip of red paper folded shut with its plain blank back toward the camera in his left hand, with a cold sneer; behind him only the vermilion gate of the same county yamen",
+        "motion": "Constable Zhao speaks a short Mandarin line, 「拿不出聘禮，就等期滿，自己去跟縣太爺說」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he pushes the documents down into a hand reaching up at the bottom edge of the frame, then lifts his chin, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a26",
+          "speaker": "xuyan",
+          "text": "等等，聘禮我有。不是金銀，是縣城沒見過的東西。",
+          "emotion": "愣一下，眼睛一亮"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot to close-up, slow push in",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: medium shot, closing in to a close-up by the end, of Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest, red-eyed and tired after a sleepless night, three marriage documents, each one long strip of red paper folded shut with its plain blank back toward the camera in his hand; at the bottom edge of the frame one bamboo basket full of snow-white bars of soap, each wrapped in one green leaf on an arm in a dark brown sleeve; behind him only the vermilion gate of the same county yamen",
+        "motion": "Xu Yan speaks a short Mandarin line, 「等等，聘禮我有。不是金銀，是縣城沒見過的東西」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tucks the documents under his left arm and looks down at the basket; he freezes, and only then his eyes light up and his right hand lifts out three bars, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, locked",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: insert close-up of the small wooden table by the drum stand, the shot opens directly on three white bars of soap on the table from its very first frame: three snow-white square bars of soap, each palm-sized and one finger thick with square corners, opaque and not glowing, three squares of plain blank red paper, one roll of red cord, and Xu Yan's two hands in his rolled-up blue-grey cuffs; only the hands, cuffs, soap and paper are in the frame, his face out of the frame; behind them only the stone steps of the same county yamen",
+        "motion": "his hands wrap each white bar in one square of red paper, tie one turn of red cord round it in a knot, and set the three red packets in a row, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a27",
+          "speaker": "xuyan",
+          "text": "三塊香皂，一位夫人一塊，請捕頭收下。",
+          "emotion": "恭敬，誠懇"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, tracking",
+        "prompt": "At the gate of the county yamen just before noon on a clear autumn day: the vermilion double gate with brass studs half open at the top of five stone steps, two stone lions on carved plinths beside it, a plain lintel board with no writing, one big drum on a wooden drum stand by the gate on screen left with one small wooden table beside it, a flagstone forecourt, the sun overhead and short shadows under everyone's feet: two-shot, Xu Yan on screen left, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest, three small packets wrapped in plain blank red paper and tied with red cord held out in both hands; Constable Zhao in his black constable's hat and plain black official uniform, wiry and narrow-eyed, an iron ruler and a sword in a black scabbard on the left of his belt on screen right one step above",
+        "motion": "Xu Yan speaks a short Mandarin line, 「三塊香皂，一位夫人一塊，請捕頭收下」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan steps up one stair and bows a little, holding out the packets; Constable Zhao reaches out his right hand and takes one; Zhao's lips stay closed, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "xuyan",
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a28",
+          "speaker": "zhaobutou",
+          "text": "這是香的？比我家婆娘的胭脂還香。",
+          "emotion": "愣住"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up to close-up, slow push in",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: medium close-up, closing in to a close-up by the end, of Constable Zhao in his black constable's hat and plain black official uniform, wiry and narrow-eyed, an iron ruler and a sword in a black scabbard on the left of his belt, one small packet in plain blank red paper in his right hand, unsmiling; behind him only the vermilion gate of the same county yamen",
+        "motion": "Constable Zhao speaks a short Mandarin line, 「這是香的？比我家婆娘的胭脂還香」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts the packet to his nose and sniffs, pauses, sniffs again, and only then his narrow eyes go wide, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "zhaobutou"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a29",
+          "speaker": "tangxiaotang",
+          "text": "這是洗手的香皂，一塊三錢，三塊就是九錢。",
+          "emotion": "很精，報價"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: medium close-up of Tang Xiaotang framed from the chin up, her high stand-up collar closed at her throat, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, one small red papercut flower by her pink ribbon, the small gold abacus hugged to her chest, shrewd and unsmiling; behind her only the stone steps of the same county yamen",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「這是洗手的香皂，一塊三錢，三塊就是九錢」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she steps forward and flicks the beads of the abacus at her chest once with her fingertips, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a30",
+          "speaker": "zhaobutou",
+          "text": "九錢的聘禮，我收了。婚書拿來，我給你們蓋印。",
+          "emotion": "收下，公事公辦"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "At the gate of the county yamen just before noon on a clear autumn day: the vermilion double gate with brass studs half open at the top of five stone steps, two stone lions on carved plinths beside it, a plain lintel board with no writing, one big drum on a wooden drum stand by the gate on screen left with one small wooden table beside it, a flagstone forecourt, the sun overhead and short shadows under everyone's feet: medium shot, Constable Zhao in his black constable's hat and plain black official uniform, wiry and narrow-eyed, an iron ruler and a sword in a black scabbard on the left of his belt in the middle, three small packets wrapped in plain blank red paper and tied with red cord in his hands; at the left edge of the frame Xu Yan, one strip of red cloth tied diagonally across his chest, the documents folded shut under his left arm, and Tang Xiaotang, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, the abacus at her chest",
+        "motion": "Constable Zhao speaks a short Mandarin line, 「九錢的聘禮，我收了。婚書拿來，我給你們蓋印」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Constable Zhao tucks the packets into his robe, picks up one square brass seal, holds out his left hand; Xu Yan hands up the documents; Tang Xiaotang hangs up her abacus, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "zhaobutou",
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a31",
+          "speaker": "xitong",
+          "text": "強制任務完成。成婚，三比三。",
+          "emotion": "冷淡，宣布"
+        }
+      ],
+      "data": {
+        "camera": "High-angle insert close-up, locked",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: high-angle insert close-up of the small wooden table, the shot opens directly on one opened red marriage document and one square brass seal from its very first frame: Constable Zhao's right hand in a black official cuff holding the square brass seal over the red document laid open with its plain blank back toward the camera, one wide plain red sheet with nothing on it; only the hand, cuff, seal and paper are in the frame; behind them only the flagstones of the same county yamen; the system voice speaks off screen",
+        "motion": "the seal comes down hard on the red paper and lifts again, leaving one square red blot with no characters in it, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "zhaobutou"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a32",
+          "speaker": "xitong",
+          "text": "良緣面板開啟，三位夫人的好感可見。",
+          "emotion": "冷淡"
+        }
+      ],
+      "data": {
+        "camera": "Three-shot, slow push in",
+        "prompt": "At the gate of the county yamen just before noon on a clear autumn day: the vermilion double gate with brass studs half open at the top of five stone steps, two stone lions on carved plinths beside it, a plain lintel board with no writing, one big drum on a wooden drum stand by the gate on screen left with one small wooden table beside it, a flagstone forecourt, the sun overhead and short shadows under everyone's feet: three-shot at the top of the stone steps: on screen left Tang Xiaotang, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, hugging three red documents folded shut in both arms, smiling; in the middle Qin Shuang, her old chopping knife in the right side of her belt, the basket on her left arm, her face turned away; on screen right A-ling, no shackles, her sleeves pulled down over her wrists, looking down the steps; each with one small red papercut flower in her hair; the system voice speaks off screen",
+        "motion": "the three each step down one stair; Tang Xiaotang hugs the documents tighter, Qin Shuang shifts the basket to her right arm and A-ling lowers her eyes; all lips stay closed, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "qinshuang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a33",
+          "speaker": "xuyan",
+          "text": "阿令才一分？我還以為她開始信我了。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著，失落"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up to close-up, slow push in",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: medium close-up, closing in to a close-up by the end, of Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest, red-eyed and tired after a sleepless night, unsmiling; behind him only the vermilion gate of the same county yamen",
+        "motion": "he stares at a point just before him, then his eyes slide right to Aling off screen right, and he scratches the back of his head; his lips stay closed, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a34",
+          "speaker": "tangxiaotang",
+          "text": "印蓋好了，順路去市集，把這籃肥皂賣掉。",
+          "emotion": "畫外，盤算"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the vermilion gate of the county yamen at noon, bright overhead sunlight: medium close-up of A-ling, no shackles, her sleeves pulled down over her wrists, one small red papercut flower by her wooden hairpin, unsmiling; behind her, soft and out of focus, Tang Xiaotang, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, on the stone steps of the same county yamen",
+        "motion": "A-ling senses his gaze, glances sideways at Xu Yan off screen left, then turns and walks down the stone steps first and out of the frame; all lips stay closed, and the bright overhead noon sunlight stays unchanged",
+        "characters": [
+          "aling",
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "chapter": "市集",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a35",
+          "speaker": "tangxiaotang",
+          "text": "怎麼回事？大白天的，整條街的攤子都封了？",
+          "emotion": "驚，不笑"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, tracking",
+        "prompt": "On the market street of the county town on a clear autumn afternoon: a flagstone street with two rows of stalls along both sides, every stall boarded shut with nailed planks, their awnings and signboards plain and blank, one two-storey tea house on screen right with a red-lacquered railing along its upper floor, light from the upper right a little to the west, shadows falling to the left: full shot past one overturned empty bamboo basket on the flagstones in the foreground: walking in from screen left Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest, Tang Xiaotang, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, Qin Shuang with the basket of leaf-wrapped soap on her arm, and A-ling last; about six passers-by in Song-dynasty cross-collared coarse cotton jackets, cloth head-wraps and cloth shoes, far off and out of focus, giving them a wide berth",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「怎麼回事？大白天的，整條街的攤子都封了？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Qin Shuang hands the basket to Xu Yan, who takes it in his right hand; the four walk into the street, and Tang Xiaotang stops and stares at the boarded stalls, and the afternoon light from the upper right stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "qinshuang",
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a36",
+          "speaker": "xuyan",
+          "text": "「買許家貨者，欠錢府一兩。」他連這招都想得出來。",
+          "emotion": "照著念，冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "On the market street of the county town in the afternoon, light from the upper right: medium shot from the side of a boarded-up stall, Xu Yan, his patched blue-grey scholar's robe with his sleeves rolled up to the elbows, one strip of red cloth tied diagonally across his chest, the basket of leaf-wrapped soap in his right hand, before one nailed plank with one paper notice pasted on it, the notice seen almost edge-on so no writing can be read, only its edge and one red handprint showing; behind him only the boarded stalls of the same market street",
+        "motion": "Xu Yan speaks a short Mandarin line, 「「買許家貨者，欠錢府一兩。」他連這招都想得出來」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan walks up to the plank, presses the curling notice flat with his left hand and looks down at it, and the afternoon light from the upper right stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a37",
+          "speaker": "tangxiaotang",
+          "text": "你看茶樓上，靠著欄杆喝酒的，就是錢員外。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the market street of the county town in the afternoon, light from the upper right: close-up of Tang Xiaotang framed from the chin up, her high stand-up collar closed at her throat, her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist, one small red papercut flower by her pink ribbon, unsmiling; behind her only the boarded stalls of the same market street",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「你看茶樓上，靠著欄杆喝酒的，就是錢員外」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she presses the abacus at her waist and lifts her chin toward the tea house at the upper right, her eyes on Xu Yan off screen left, and the afternoon light from the upper right stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a38",
+          "speaker": "qianyuanwai",
+          "text": "聽說許秀才做了香皂？可惜啊，沒人敢買。",
+          "emotion": "拖長音，冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "On the market street of the county town on a clear autumn afternoon: a flagstone street with two rows of stalls along both sides, every stall boarded shut with nailed planks, their awnings and signboards plain and blank, one two-storey tea house on screen right with a red-lacquered railing along its upper floor, light from the upper right a little to the west, shadows falling to the left: low-angle medium shot from the street up at the upper floor of the two-storey tea house: Qian Yuanwai, short and portly with a round face, in his dark gold roundel-patterned silk robe, three gold rings on his fingers, his elbows on the red-lacquered railing, one small plain white glazed pottery cup pinched in his right hand, with a cold sneer; behind him two thin servants in Song-dynasty cross-collared coarse short jackets and cloth head-wraps standing still; he is the only portly man in the frame",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「聽說許秀才做了香皂？可惜啊，沒人敢買」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Qian Yuanwai leans forward over the railing to look down, turning the cup in his fingers; the servants' lips stay closed, and the afternoon light from the upper right stays unchanged",
+        "characters": [
+          "qianyuanwai"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a39",
+          "speaker": "xuyan",
+          "text": "錢員外，字據寫的是三日後日落。你急什麼？",
+          "emotion": "冷靜，頂回去"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "On the market street of the county town on a clear autumn afternoon: a flagstone street with two rows of stalls along both sides, every stall boarded shut with nailed planks, their awnings and signboards plain and blank, one two-storey tea house on screen right with a red-lacquered railing along its upper floor, light from the upper right a little to the west, shadows falling to the left: over-the-shoulder shot from behind Xu Yan's shoulder and topknot in the lower left foreground, the basket of soap in his right hand; at the upper right, small behind the red-lacquered railing of the tea house, Qian Yuanwai, short and portly with a round face, in his dark gold roundel-patterned silk robe, three gold rings on his fingers",
+        "motion": "Xu Yan sets the basket down on the flagstones and lifts his head toward the upper floor; Qian Yuanwai's lips stay closed, and the afternoon light from the upper right stays unchanged",
+        "characters": [
+          "xuyan",
+          "qianyuanwai"
+        ],
+        "nospeak": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq906a40",
+          "speaker": "qianyuanwai",
+          "text": "我不急，我就看你一天能不能變出二十兩。",
+          "emotion": "冷笑，拖長音"
+        },
+        {
+          "id": "zq906a41",
+          "speaker": "qianyuanwai",
+          "text": "許秀才，明日日落見。",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up to close-up, slow push in",
+        "prompt": "On the market street of the county town in the afternoon, light from the upper right: low-angle medium close-up, closing in to a close-up by the end, of Qian Yuanwai, short and portly with a round face, in his dark gold roundel-patterned silk robe, three gold rings on his fingers, one small plain white glazed pottery cup in his right hand, the red-lacquered railing in the foreground, with a cold sneer; behind him only the upper floor of the same tea house on the market street",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「我不急，我就看你一天能不能變出二十兩」 then 「許秀才，明日日落見」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; between his lines he raises the cup to the street below and drains it, pauses half a beat, and only then turns away from the railing, and the afternoon light from the upper right stays unchanged",
+        "characters": [
+          "qianyuanwai"
+        ],
+        "buy_seconds": 12
+      }
+    }
+  ]
+}
