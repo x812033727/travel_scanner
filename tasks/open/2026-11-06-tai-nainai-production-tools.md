@@ -124,8 +124,8 @@ scope:
 - [x] 說話人對 `cast.json` 的角色與路人 id。
 - [x] `shots-en.json` 格式與第 1 集 27 鏡的英文正文。
 - [x] `compile.py`：`video.json`、`brief.md`、Ref2VA manifest；中文列改了而英文沒跟上就停。
-- [ ] 第 21–30 集（第三篇章）的 `shots-en.json`、`video.json`、`brief.md`。
-- [ ] 第 11–20 集（第二篇章）的 `shots-en.json`、`video.json`、`brief.md`。
+- [x] 第 21–30 集（第三篇章）的 `shots-en.json`、`video.json`、`brief.md`。
+- [x] 第 11–20 集（第二篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [x] 第 2–10 集（第一篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [ ] 試鏡學到的：燈的分數各一張祠堂場景圖、景別要準的鏡走首格路線。
 
@@ -136,6 +136,9 @@ node tools/video/cli.mjs lint --slug tai-nainai-e001
 ```
 
 ## Notes
+
+- 2026-11-06 第 11–30 集：六個代理，十集一個篇章；同一套機械檢查（`check_en`：正文沒有中文、沒有 film still、長度、沒台詞的鏡有 motion、id）與 `lint`，30 集都 0 錯。
+  代理又抓到解析器的兩個 bug，已修：「← 因為第 12 集 c04（註）」與「c20–c21」這種標記沒剝掉、台詞裡的「（她站在門口）」舞台註會被念出來。現在台詞一律不留全形括號，全季 1,288 句檢查過沒有殘留。
 
 - 2026-11-06 第 2–10 集：三個代理各寫三集，209 鏡；機械檢查（正文沒有中文、沒有 film still、長度、沒台詞的鏡有 motion、角色／look／場景 id）0 問題，抽查與中文對照正確；十集 `lint` 都 0 錯。
   代理抓到兩個工具的 bug，已修：一鏡兩句台詞第 2–4 集用「／」隔開（解析器只認 `<br>`，第二句會用第一個人的聲音唸，全季 56 鏡）；兩場的集只有兩章（YouTube 要三章，最長那一場從中間再切一章，或 `chapters` 指定），章節標題不再從第一個逗號切壞。

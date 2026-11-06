@@ -28,7 +28,10 @@ LAMP = re.compile(r"燈\s*(\d+)")
 SECONDS = re.compile(r"([\d.]+)\s*秒")
 # 「林美鳳（拖長尾音）：……」；說話人是行首到第一個全形括號或冒號
 LINE = re.compile(r"^(?P<who>[^（：—]{1,12}?)(?:（(?P<notes>[^）]*)）)?：(?P<text>.+)$")
-REF_MARK = re.compile(r"（(?:→ 答在|← 因為)[^）]*）|← 因為 [c\d、，, ]+|（結尾）|（懸念[^）]*）")
+# 標記：（→ 答在 c06）、← 因為 c04、← 因為第 12 集 c04（註）、→ 答在 c06、（結尾）、（懸念 → …）
+REF_MARK = re.compile(r"（(?:→ 答在|← 因為)[^）]*）|[←→] ?(?:因為|答在) ?(?:第 ?\d+ ?集 ?)?[c\d、，,–—\- ]+(?:（[^）]*）)?|（結尾）|（懸念[^）]*）")
+# 台詞裡其他的全形括號是給演員與製作端的註（「（她站在門口）」「（細綱原句）」），不念
+STAGE_NOTE = re.compile(r"（[^）]*）")
 
 ALIASES = {
     "月棠": "yuetang-18", "沈月棠": "yuetang-18", "玉琴": "yuqin", "沈玉琴": "yuqin", "建邦": "jianbang", "沈建邦": "jianbang",
@@ -82,7 +85,7 @@ def parse_dialogue(cell: str, chars: dict, extras: dict) -> list[dict]:
         notes = m.group("notes") or ""
         text = m.group("text").strip()
         refs = [r.strip("（）") for r in REF_MARK.findall(text)]
-        text = REF_MARK.sub("", text).strip()
+        text = STAGE_NOTE.sub("", REF_MARK.sub("", text)).strip()
         look = re.search(r"`([a-z0-9-]+)`", notes)
         labels = [x for x in re.split(r"[、與和]", m.group("who").strip()) if x]
         ids = [speaker_id(x, notes, chars, extras) for x in labels]
