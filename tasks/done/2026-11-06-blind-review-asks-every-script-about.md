@@ -1,13 +1,13 @@
 ---
 id: 2026-11-06-blind-review-asks-every-script-about
 title: Blind review asks every script about 沒頭沒尾: no_orphans, with speaker names in dialogue transcripts
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5.5-focused-hopper
 claimed_at: 2026-11-06T01:13:14Z
 created_at: 2026-11-06T01:12:57Z
-completed_at:
+completed_at: 2026-11-06T13:57:07Z
 branch:
 depends_on: []
 scope:
@@ -29,7 +29,7 @@ line before it, and a dialogue transcript did not say who spoke, so a reader cou
 - [x] `NARRATIVE_PANEL` has a required 14th question `no_orphans`, worded for story, tutorial and daily brief.
 - [x] `narrationText` names the speaker on each line when a script has two or more characters.
 - [x] `node --test tools/video/core/narrative.test.mjs` passes; the full `tools/video` suite passes.
-- [ ] One existing dialogue episode run through `narrative` with the new question as a check that it reads right.
+- [x] One existing dialogue episode run through `narrative` with the new question as a check that it reads right.
 
 ## Notes
 
@@ -38,3 +38,4 @@ line before it, and a dialogue transcript did not say who spoke, so a reader cou
 - Adding a question changes the panel contract: a host episode whose panel ran before the deploy is asked
   again at its next panel stage (model tokens only).
 - Claimed with --force over five stale claims on narrative.mjs (2026-10-14, 10-17, 10-20, 10-29, 11-03), none active for days.
+- 2026-11-06: run on P05 (found 6 orphans, fixed and re-recorded) and P14 (four rounds, 14 of 14 on the last).

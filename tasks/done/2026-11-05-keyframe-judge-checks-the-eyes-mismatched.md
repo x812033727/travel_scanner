@@ -1,13 +1,13 @@
 ---
 id: 2026-11-05-keyframe-judge-checks-the-eyes-mismatched
 title: Keyframe judge checks the eyes: mismatched or drifting pupils redraw the shot
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5.5-focused-hopper
 claimed_at: 2026-11-05T16:40:03Z
 created_at: 2026-11-05T16:39:43Z
-completed_at:
+completed_at: 2026-11-06T13:57:07Z
 branch:
 depends_on: []
 scope:
@@ -31,7 +31,7 @@ that the judge has to look for it.
       or look wrong (one pupil turned another way, pupils of different size or misplaced,
       an eye of another shape), so such a take is redrawn like the other six faults.
 - [x] The question stays under the server's 400-character limit, and the test pins the clause.
-- [ ] P05 (and P02) shots re-judged with the new question; failures redrawn.
+- [x] P05 (and P02) shots re-judged with the new question; failures redrawn.
 
 ## How to verify
 
@@ -51,3 +51,4 @@ that the judge has to look for it.
   question checked out for that run only, and their eyes checked by an independent agent.
   Open question for a follow-up: should a rubric change keep standing verdicts of approved
   storyboards and only judge new takes with it?
+- 2026-11-06: P05 (20 shots) and P02 (8 shots) redrawn for their eyes and checked by an independent agent; both episodes are on YouTube.
