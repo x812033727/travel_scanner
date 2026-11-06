@@ -12,6 +12,7 @@ branch: claude/intelligent-gates-9n92xm
 depends_on:
   - 2026-11-06-tai-nainai-screen-test
 scope:
+  - docs/videos/lexicon.json
   - docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/tools
   - docs/videos/tai-nainai-e001/video.json
   - docs/videos/tai-nainai-e001/brief.md
@@ -227,6 +228,8 @@ node tools/video/cli.mjs lint --slug tai-nainai-e001
 ```
 
 ## Notes
+
+- 2026-11-06 全季台詞只有一個字典沒有的拉丁字詞：「DNA」（第 53 集 c24、第 54 集 c02），加進共用的 `docs/videos/lexicon.json`（"D N A"）。
 
 - 2026-11-06 第 11–30 集：六個代理，十集一個篇章；同一套機械檢查（`check_en`：正文沒有中文、沒有 film still、長度、沒台詞的鏡有 motion、id）與 `lint`，30 集都 0 錯。
   代理又抓到解析器的兩個 bug，已修：「← 因為第 12 集 c04（註）」與「c20–c21」這種標記沒剝掉、台詞裡的「（她站在門口）」舞台註會被念出來。現在台詞一律不留全形括號，全季 1,288 句檢查過沒有殘留。
