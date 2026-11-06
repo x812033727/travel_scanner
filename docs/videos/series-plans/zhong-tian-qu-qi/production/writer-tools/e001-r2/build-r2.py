@@ -18,6 +18,18 @@ BASE = json.load(open(f"{REPO}/docs/videos/zhong-tian-qu-qi-e042/video.json"))
 sys.path.insert(0, f"{REPO}/docs/videos/series-plans/zhong-tian-qu-qi/production/writer-tools/e051-e055")
 
 
+
+def shot_ids(shots):
+    """A shot with its own sid (s08b, split in review) keeps the ids after it unchanged."""
+    out, n = [], 0
+    for s in shots:
+        if s.get("sid"):
+            out.append(s["sid"])
+        else:
+            n += 1
+            out.append(f"s{n:02d}")
+    return out
+
 def speak_clause(sid, texts):
     t = [f"「{re.sub('。$', '', x)}」" for x in texts]
     who = EN[sid][0].upper() + EN[sid][1:]
@@ -43,8 +55,7 @@ def main(name):
     names = {c["id"]: c["name"] for c in chars}
     scenes = []
     n = 0
-    for i, s in enumerate(spec.SHOTS, 1):
-        sid = f"s{i:02d}"
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
         lines = []
         on = [c for c in s.get("chars", [])]
         by = {}
@@ -106,9 +117,9 @@ def main(name):
     json.dump(doc, open(f"{out}/video.json", "w"), ensure_ascii=False, indent=2)
     open(f"{out}/video.json", "a").write("\n")
     ov = {}
-    for i, s in enumerate(spec.SHOTS, 1):
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
         if s.get("panel"):
-            ov[f"s{i:02d}"] = [{"text": t, "kind": k} for (t, k) in s["panel"]]
+            ov[sid] = [{"text": t, "kind": k} for (t, k) in s["panel"]]
     json.dump(ov, open(f"{out}/overlays.json", "w"), ensure_ascii=False, indent=2)
     open(f"{out}/overlays.json", "a").write("\n")
     # gen-dh
@@ -130,8 +141,7 @@ def main(name):
     t = json.loads(subprocess.run(["node", f"{HERE}/tl.mjs", f"{out}/video.json"], capture_output=True, text=True).stdout)
     total = t["total"]
     rows = []
-    for i, s in enumerate(spec.SHOTS, 1):
-        sid = f"s{i:02d}"
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
         st, du = t["scenes"][sid]
         if s.get("chapter"):
             rows.append(f"| **{s['chapter']}** |||||||")
@@ -153,8 +163,7 @@ def main(name):
     # brief.md stays the hand-written one in docs/videos/zhong-tian-qu-qi-e001-r2/
     # timings for brief writing
     print("total", round(total, 1), "lines", n, "shots", len(spec.SHOTS))
-    for i, s in enumerate(spec.SHOTS, 1):
-        sid = f"s{i:02d}"
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
         st, du = t["scenes"][sid]
         print(sid, f"{int(st//60)}:{int(st%60):02d}", f"{du:.1f}", s.get("tag", ""), "|", " / ".join(x[1] for x in s.get("lines", [])))
 

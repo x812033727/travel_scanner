@@ -64,7 +64,7 @@ def main(cut, stem):
         bad += level == "FAIL"
         print(f"{level:4} {kind:9} {what}")
     log = (cut / "final.log").read_text(encoding="utf-8") if (cut / "final.log").exists() else ""
-    rows = re.findall(r"^(s\d+) [\d.]+ \+([\d.]+)s (\S+)(.*)$", log, re.M)
+    rows = re.findall(r"^(s\d+[a-z]?) [\d.]+ \+([\d.]+)s (\S+)(.*)$", log, re.M)
     for shot, dur, clip, rest in rows:
         h = re.search(r"held ([\d.]+)s", rest)
         if h and float(h.group(1)) > 0.2:

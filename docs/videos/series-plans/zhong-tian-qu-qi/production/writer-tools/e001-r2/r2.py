@@ -27,7 +27,7 @@ LOC = {
     "under": "Under the murky green-brown water of the Liuxi stream at dawn, shafts of grey light from the surface above, silt drifting",
     "river": "On the reedy mud bank of the Liuxi stream at foggy autumn dawn, the shallow brown water on screen left and the mud bank on screen right, tall reeds, mist on the water, a dirt path to the village in the distance on screen right, cool grey light from behind on the left",
     "house": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, earthen walls and a packed earth floor, the plank door on screen left, a big clay water vat on screen right, a clay rice crock in the corner by the back wall, a low table with two stools, clear morning light slanting in from the door and window on the left",
-    "yard": "In the dirt yard of the Xu farmhouse near noon on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, the house door at the back left, the yard gate in the fence on screen right, bright sunlight from overhead and slightly right casting short shadows",
+    "yard": "In the dirt yard of the Xu farmhouse near noon on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, the house door at the back left, the yard gate in the fence on screen right, a stone well at the back right, bright sunlight from overhead and slightly right casting short shadows",
 }
 LIGHT = {
     "river": "the cool grey dawn mist stays unchanged",
@@ -77,10 +77,16 @@ SHOTS = [
          zh="低角度中近景、慢推：二牛蹲著，用手背抹掉臉上的水，拍一下胸口，鬆一口氣笑出來"),
     dict(loc="river", cam="Extreme close-up, slow push in", chars=["xuyan"], night="river",
          comp="extreme close-up of Xu Yan's eyes, the shot opens directly on his eyes from its very first frame, wet lashes and brows, a faint pale blue light reflected in his pupils; nothing else in the frame",
-         lines=[("xitong", "宿主許硯，柳溪村秀才。目前負債，二十兩銀子。", "冷淡，念到負債時帶一點嫌棄"), ("xuyan", "誰在說話？宿主……說的是我嗎？", "心裡話，困惑", "inner"), ("xitong", "本系統。宿主就是你，別東張西望。", "冷淡，嫌棄")],
+         lines=[("xitong", "宿主許硯，柳溪村秀才。目前負債，二十兩銀子。", "冷淡，念到負債時帶一點嫌棄")],
          panel=[("宿主：許硯（秀才）／負債：二十兩", "panel")],
          motion="his eyes flick to the left, then to the right, then back again, searching the empty air for where the voice is coming from, and his brows slowly draw together, his lips remaining closed the whole time",
-         zh="眼睛大特寫、慢推（第一格就是眼睛）：瞳孔映著淡藍光，許硯的眼睛左右轉、找聲音從哪來，眉頭皺起，嘴閉著（面板剪接時疊上）"),
+         zh="眼睛大特寫、慢推（第一格就是眼睛）：濕髮貼在眼角，瞳孔映著淡藍光，許硯的眼睛左右轉、找聲音從哪來，眉頭皺起，嘴閉著（面板剪接時疊上；2026-11-06 審稿拆鏡，原片剪前 5 秒照用）"),
+    # c08b (2026-11-06 review): split from c08; its own id keeps s09-s38 and the line ids unchanged.
+    dict(sid="s08b", loc="river", cam="Medium close-up, slow push in", chars=["xuyan"], night="river",
+         comp="medium close-up of Xu Yan sitting on the mud bank, soaked through, his blue-grey scholar's robe clinging to him and water dripping from the ends of his hair, looking down at himself; behind him only the reeds and the mist over the river; nobody else in the frame",
+         lines=[("xuyan", "誰在說話？宿主……說的是我嗎？", "心裡話，困惑", "inner"), ("xitong", "本系統。宿主就是你，別東張西望。", "冷淡，嫌棄")],
+         motion="Xu Yan looks down at his soaked scholar's sleeves, lifts both hands in front of him and slowly turns them over to stare at his palms, water dripping from the cuffs; his lips stay closed the whole time",
+         zh="中近景、慢推（2026-11-06 審稿新鏡）：許硯坐在泥地上全身濕透，低頭看自己濕透的書生袖子，再把兩手翻過來看掌心，袖口滴水；身後只有蘆葦和河霧；兩句都嘴閉著"),
     dict(loc="river", cam="Medium close-up, slow push in", chars=["xuyan", "erniu"], night="river",
          comp="medium close-up of Xu Yan sitting on the mud bank on screen left, soaked through, his wet robe clinging to him, and only the shoulder and arm of Wang Erniu in his coarse brown jacket at the right edge of the frame, Erniu's face out of the frame",
          lines=[("xuyan", "二十兩……我是不是欠了誰的錢？", "試探")],
@@ -123,15 +129,15 @@ SHOTS = [
          motion="the hand lifts the heavy wooden lid and sets it aside, revealing only a thin layer of rice at the bottom of the crock; two fingers reach in and stir the grains, and the rice slides back down in a thin trickle",
          zh="手部特寫、俯拍（第一格就是米缸蓋）：許硯的手（書生袍濕袖口）掀開米缸木蓋，缸底只剩薄薄一層米，手指撥一下、米粒滑下去"),
     dict(loc="house", cam="Medium close-up, slow push in", chars=["xuyan"], night="house",
-         comp="medium close-up of Xu Yan standing beside the rice crock in the back corner on screen left, his robe half-dry with damp sleeves, the wooden lid in his hand, his eyes on the crock",
+         comp="medium close-up of Xu Yan standing beside the rice crock in the back corner on screen left, his robe half-dry with damp sleeves, the wooden lid in his hand, his eyes on the crock; behind him only the earthen wall and the rice crock in the corner",
          lines=[("xuyan", "都快見底了，還有什麼好搬的。小禾，家裡還有吃的嗎？", "苦笑")],
          motion="he lowers the wooden lid back onto the crock with a soft knock, lets out a long sigh that drops his shoulders, and turns his head with a rueful smile to Xiaohe off screen right",
          zh="中近景、慢推：許硯放下木蓋，嘆口氣、苦笑，轉頭看畫面右邊的小禾"),
     dict(loc="house", cam="Two-shot, slow push in", chars=["xiaohe", "xuyan"], night="house",
-         comp="two-shot at the low table, Xu Yan seated on a stool on screen left, his robe half-dry with damp sleeves, and little Xiaohe on screen right holding one clay bowl half full of thin porridge in both hands, her straw rabbit tucked into her sash",
+         comp="two-shot at the low table, Xu Yan seated on a stool on screen left, his robe half-dry with damp sleeves, and little Xiaohe on screen right holding one clay bowl half full of thin porridge in both hands, her straw rabbit tucked into her sash; on the low table in front of Xu Yan already stands a second clay bowl, empty, so two clay bowls are on the table by the end",
          lines=[("xiaohe", "還有半碗粥，哥你先吃，我不餓。", "懂事")],
          motion="Xiaohe walks carefully from the stove with small steps so nothing spills, rises onto her tiptoes and pushes the bowl across the low table to Xu Yan with both hands, then settles back on her heels; Xu Yan looks from the bowl up to her, his lips closed",
-         zh="雙人鏡、慢推：小禾雙手捧著半碗稀粥從灶邊小心走過來，踮腳把碗推到矮桌上他面前"),
+         zh="雙人鏡、慢推：小禾雙手捧著半碗稀粥從灶邊小心走過來，踮腳把碗推到矮桌上他面前；矮桌上另放一個空陶碗（c19 倒粥用）"),
     dict(loc="house", cam="Close-up of the bowls, slow pull out to Xu Yan's close-up", chars=["xuyan"], night="house",
          comp="close-up of two clay bowls on the low table, one half full of thin porridge and one empty, widening to a close-up of Xu Yan seated behind them on screen left, his sleeves damp, little Xiaohe off screen right",
          lines=[("xuyan", "一人一半。從今天起，哥不會再讓你餓肚子。", "認真")],
@@ -171,7 +177,7 @@ SHOTS = [
     dict(loc="yard", cam="Medium shot, slow push in", chars=["aling", "zhaobutou"], night="yard",
          comp="medium shot of A-ling standing with her head bowed on screen right, iron shackles on both wrists joined by a short iron chain, and Constable Zhao beside her on screen left, his sword in a black scabbard on his left hip",
          lines=[("zhaobutou", "這個是罪奴阿令，配給你，算便宜你了。", "輕蔑")],
-         motion="Zhao pulls the sheathed sword from his hip and jabs the end of the black scabbard toward A-ling, knocking her shackles so they swing and the chain rattles; A-ling keeps her head bowed and does not look up, her lips closed",
+         motion="Zhao draws the sword, still in its scabbard, from his left hip with his left hand and jabs the end of the black scabbard toward A-ling, knocking her shackles so they swing and the chain rattles; A-ling keeps her head bowed and does not look up, her lips closed",
          zh="中景、慢推：趙捕頭抽出刀鞘往阿令一指，碰得鐵鐐晃一下；戴鐵鐐的阿令低著頭沒抬頭、嘴閉著"),
     dict(loc="yard", cam="Over-the-shoulder medium close-up, slow push in", chars=["xuyan", "zhaobutou"], night="yard",
          comp="over-the-shoulder shot from behind Constable Zhao's shoulder and black hat in the right foreground, Xu Yan facing the camera on screen left, frowning, his eyes on Zhao",
@@ -225,16 +231,16 @@ SHOTS = [
          motion="his pupils contract sharply, his eyes widen and he blinks once, slowly, his lips remaining closed",
          zh="眼睛大特寫、慢推（第一格就是眼睛）：瞳孔一縮，眨了一下（面板剪接時疊上，周圍的聲音一下子變小）"),
     dict(loc="yard", cam="Close-up, slow push in", chars=["xuyan"], night="yard",
-         comp="close-up of Xu Yan's face, the colour drained from it, unsmiling, his eyes fixed on the empty air in front of him; behind him only the sunlit yard out of focus",
+         comp="close-up of Xu Yan's face, the colour drained from it, unsmiling, his eyes fixed on the empty air in front of him, the rolled red paper in his right hand hanging at his side; behind him only the bamboo fence and the autumn tree out of focus",
          lines=[("xitong", "失敗，抹殺。", "冷淡，輕描淡寫"), ("xuyan", "抹……殺？", "聲音發乾"), ("xitong", "字面意思。建議宿主，別浪費時間。", "冷淡，帶一點嫌棄")],
          panel=[("失敗：抹殺", "penalty")],
          motion="his lips tremble, his throat bobs as he swallows hard, and he takes half a step back as if struck; his lips stay closed while the system voice speaks",
          zh="近景、慢推：許硯臉色發白，嘴唇動了動、喉結滾一下，往後退半步（說「抹……殺？」時對嘴，系統說話時嘴閉著）"),
     dict(loc="yard", cam="Medium close-up to close-up, slow push in", chars=["xuyan", "qinshuang", "aling", "tangxiaotang"], night="yard",
-         comp="medium close-up, closing in to a close-up by the end, of Xu Yan's face in profile in the foreground on screen left, the rolled red paper in his fist with only its plain blank back showing, and behind him on screen right the three women facing him: Qin Shuang, A-ling in the middle with her head bowed and iron shackles on both wrists joined by a short chain, and Tang Xiaotang in her ruqun, one closed garment from the high collar to the waist",
+         comp="medium close-up, closing in to a close-up by the end, of Xu Yan's face in profile in the foreground on screen left, the rolled red paper in his fist with only its plain blank back showing, and behind him on screen right the three women facing him, standing one behind another in depth: nearest, Qin Shuang with her chopping knife at her belt; a step further back, Tang Xiaotang in the middle, her ruqun one closed garment from the high collar to the waist; and furthest back, beside the stone well, A-ling with her head bowed, iron shackles on both wrists joined by a hanging iron chain; behind them only the bamboo fence and the autumn tree",
          lines=[("xuyan", "三天，娶三個……好，那就娶給你看。", "心裡話，吸一口氣，下定決心", "inner")],
-         motion="Xu Yan draws a deep breath, his fingers tightening around the red paper until it crumples, and lifts his head to look at the three women; in the middle, A-ling, who has kept her head bowed, slowly raises her eyes and looks straight at him; all their lips stay closed",
-         zh="近景、慢推（中近景推到近景，結尾）：前景許硯的側臉，深吸一口氣、捏緊紅紙，抬頭看三個女子；中間一直低著頭的阿令抬起眼直直看著他；都嘴閉著"),
+         motion="Xu Yan draws a deep breath, his fingers tightening around the red paper until it crumples, and lifts his head to look at the three women; at the back by the well, A-ling slowly raises her eyes and looks straight at him; all their lips stay closed",
+         zh="近景、慢推（中近景推到近景，結尾）：前景許硯的側臉，深吸一口氣、捏緊紅紙，抬頭看三個女子（由前到後秦霜、唐小棠、阿令靠井邊）；最後面一直低著頭的阿令抬起眼直直看著他；都嘴閉著"),
 ]
 
 HEAD = [
@@ -252,4 +258,4 @@ FOOT = [
 BRIEF = "見 `docs/videos/zhong-tian-qu-qi-e001-r2/brief.md`（工作編號 901 的資料夾只放產物）。"
 
 # Long shots (script.md 長鏡清單): seconds to buy, so the lines fit without slowing past 1.1x.
-BUY = {"s01": 8, "s08": 12, "s14": 10, "s31": 11, "s34": 11, "s35": 12, "s37": 8}
+BUY = {"s01": 8, "s08": 6, "s08b": 8, "s14": 10, "s31": 11, "s34": 11, "s35": 12, "s37": 8}
