@@ -103,7 +103,7 @@ kid("kid-thermometer", "Medium shot of the girl tucking a plain glass thermomete
 kid("thermometer-read", "Head-and-shoulders close-up of the girl with raised eyebrows and a puzzled pout beside a window, a plain glass thermometer with a red line standing on the windowsill next to her, soft morning window light",
     c("隔天早上，它量到的跟房間差不多。"), k("它沒有比較暖？", "意外"))
 kid("kid-chair", "Medium shot of the girl patting the seat of a wooden chair with one hand, " + JACKET + " draped over the chair back, a curious look, a plain wall, soft daylight",
-    k("所以它跟椅子一樣？", "想通一半"))
+    k("所以它跟房間裡的椅子一樣冰？", "想通一半"))
 chief("chief-same-room", "Waist-up medium shot of the chief nodding warmly and spreading her open hands, " + WALL + ", soft daylight",
       c("對。椅子、桌子、這件羽絨衣，放久了都跟房間一樣。"), c("房間比你的手冷，摸起來就冰冰的。", None, "P:cold"))
 kid("kid-shake-jacket", "Medium shot from the waist up of the girl lifting " + JACKET + " above her head with both hands, a determined face, a plain pale bedroom wall, soft daylight",
@@ -111,7 +111,7 @@ kid("kid-shake-jacket", "Medium shot from the waist up of the girl lifting " + J
 chief("chief-plausible", "Head-and-shoulders close-up of the chief giving a warm smile with her eyes gently closed, " + WALL + ", soft lamp light",
       c("你這樣猜很合理，穿起來真的很像它在發熱。", "溫和"))
 kid("down-palm", "Close-up of the girl peering through a magnifying glass at one fluffy white down cluster resting on her open palm, its fine soft filaments spreading out in every direction, soft daylight",
-    c("可是打開來看，裡面只有羽絨和布。"), c("它要是會發熱，溫度計早就量到了。"))
+    c("可是打開來看，裡面只有羽絨和布。"), c("它要是個會發熱的小暖爐，溫度計早就量到了。"))
 kid("kid-under-bed", "Medium shot of the girl lying on her tummy on the floor and shining a small flashlight under her bed, turning her face to the camera with a puzzled look, soft evening light",
     k("那暖爐到底在哪裡？", "追問"))
 chief("chief-you-heater", "Waist-up medium shot of the chief pointing her open hand straight toward the viewer with a warm smile, " + WALL + ", soft lamp light",
@@ -161,7 +161,7 @@ kid("kid-frosty-window", "Close-up of the girl pressing her fingertip against a 
 chief("chief-slow-down", "Waist-up medium shot of the chief holding both hands low in front of her with palms facing down, a calm smile, " + WALL + ", soft daylight",
       c("對。衣服擋不住它跑，只能讓它跑慢一點。", None, "P:leak"))
 kid("kid-railing", "Medium shot of the girl in a winter park shaking her cold hand after touching a black iron railing, a wooden bench right beside it, bare trees, soft overcast light",
-    k("鐵欄杆好冰！", "誇張"), k("木頭椅子還好耶。"))
+    k("走到公園，鐵欄杆好冰！", "誇張"), k("木頭椅子還好耶。"))
 kid("kid-knock-iron", "Close-up of the girl beside a black iron railing, tapping it with one small fist and nodding confidently, bare trees behind, soft overcast light",
     k("鐵本來就比較冷吧？", "很有把握的錯猜"))
 chief("chief-same-night", "Head-and-shoulders close-up of the chief shaking her head gently with a kind smile, " + WALL + ", soft daylight",
@@ -225,11 +225,11 @@ kid("kid-cat", "Medium shot of the girl sitting on a sofa petting a fluffy grey 
 chief("chief-fur", "Head-and-shoulders close-up of the chief holding a small fluffy white cat up beside her cheek with a fond smile, " + WALL + ", warm lamp light",
     c("對，動物的毛，也是把空氣關在毛裡面。"))
 kid("kid-bear-hug", "Medium shot of the girl squeezing " + JACKET + " flat against her body in a tight bear hug, a curious sideways look, a plain wall, soft daylight",
-    k("那我把它壓扁呢？", "章尾停住，調皮", "S:squash"))
+    k("那我把羽絨衣壓扁呢？", "章尾停住，調皮", "S:squash"))
 
 # ---------- 第四章 ----------
 kid("kid-dent", "Close-up of the girl's hand pressing flat into " + JACKET + " lying on a table, a flattened dent around the palm, the girl leaning in above it with a curious smile, soft daylight",
-    c("你看，你剛剛一抱，它就扁了一塊。"), chapter="壓扁、淋濕、被風吹透")
+    c("你用力抱住它，抱過的地方就扁了一塊。"), chapter="壓扁、淋濕、被風吹透")
 chief("chief-less-air", "Head-and-shoulders close-up of the chief pressing her two palms together in front of her chin, a thoughtful face, " + WALL + ", soft daylight",
       c("扁掉的地方，關住的空氣變少，"), c("那裡就沒那麼暖。", None, "P:squash"))
 kid("kid-sit-jacket", "Medium shot of the girl sitting on " + JACKET + " spread on a park bench and pointing down at it with a cheeky grin, bare trees, soft overcast light",
@@ -273,7 +273,7 @@ kid("kid-wall", "Medium shot from the waist up of the girl on a footbridge holdi
 chief("chief-zip", "Head-and-shoulders close-up of the chief miming pulling a zipper up to her chin with a playful wince, " + WALL + ", soft daylight",
       c("風就從前面灌進去，把貼著你的暖空氣吹走。", None, "P:zip"), c("你應該被這樣冷過一次。", "轉向觀眾，帶笑"))
 kid("kid-thermos-shake", "Medium shot of the girl holding up a shiny steel thermos with both hands and shaking it next to her ear to hear ice rattle inside, a curious face, a plain wall, soft daylight",
-    k("那保溫瓶也沒插電，", "突然想到"), k("為什麼冰水也能保冰？", "章尾停住，句尾上揚", "S:thermos"))
+    k("對了，保溫瓶也沒插電，", "突然想到"), k("為什麼冰水也能保冰？", "章尾停住，句尾上揚", "S:thermos"))
 
 # ---------- 第五章（保溫瓶：每一步都接回羽絨衣）----------
 chief("chief-same-job", "Waist-up medium shot of the chief holding up a shiny steel thermos beside her face with a knowing smile, " + WALL + ", soft lamp light",
