@@ -98,7 +98,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2026-11-nanian-dongzhi` | 冬至那天我嫁給了倒數的人 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-12-mantuoluo` | 瀾港的帳，一筆都不能是他給的 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-13-zhouyi-jiye` | 四樓的燈整夜都亮 | **done**：5 季 300 集，validate 零錯誤 |
-| `2025-12-zhaoyang-siwo` | 晨光落在第七張圖 | **done**：5 季 300 集，validate 零錯誤 |
+| `2025-12-zhaoyang-siwo` | 她把問題問到你煩 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-13-xun-ye` | 她簽下的那個搬家工 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-14-zhiwei-zhanyou` | 他只是我的光替 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-16-fuye-qingmei` | 八歲那年，我管過首富 | **done**：5 季 300 集，validate 零錯誤 |
@@ -108,7 +108,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2025-17-qiushen` | 球王回來時九歲 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-15-xingde-xiangyu` | 婚約到他判刑那天為止 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-15-shiguang-heni` | 退婚前，我先把大神追到手 | **done**：5 季 300 集，validate 零錯誤 |
-| `2026-16-saohei` | 潮汐帳 | **done**：5 季 300 集，validate 零錯誤 |
+| `2026-16-saohei` | 三嫂的魚價會說話 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-18-chai-cp` | 我媽十八歲，我十七歲 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-19-datang-hanxu` | 全京城都說我憨，只有我姊不信 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-19-haoyun-tianqi` | 我兒子在戶政門口徵爸爸 | **done**：5 季 300 集，validate 零錯誤 |
