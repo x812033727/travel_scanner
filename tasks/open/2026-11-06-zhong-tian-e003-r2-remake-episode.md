@@ -73,3 +73,6 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - 備份 `transfer/zt-e903-media`（680 MB；第一次因磁碟滿失敗，清出空間後重推成功）。
 - 2026-11-06 站主看片：「第三集主角的手為什麼會有一顆一顆的?」——s06 許硯手背長出深色碎塊（稿子的「手背沾木屑」被畫成黏在皮膚上的碎片），s08 也有幾個小點。
   `r2.py` 拿掉木屑（改寫額頭有汗）；`colab/runs/e903/fix2` 重抽 s06、s08（種子 9030301／302，排在第 4 集草稿後同一個 pod），挑好後精修、重剪、重送後台。
+- 教訓落地三處：`animation-preproduction/references/storyboard-shot-spec.md` 與 `production/storyboard-brief-for-planners.md` 各加「皮膚上的細小東西」一行；
+  `preflight-prompts.py` 加 warn skin（木屑、泥點、血點等寫在手、臉、皮膚上就警告；用第 3 集舊 prompt 試過會擋、改後的不會）。
+  main 上的 r2 稿子還有：第 17 集唐小棠、第 37–38 集秦霜「臉上沾灰」——拍到那幾集時改成「衣服上有灰」或確認抽出來沒有斑點。
