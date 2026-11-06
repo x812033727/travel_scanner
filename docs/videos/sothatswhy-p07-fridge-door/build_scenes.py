@@ -77,7 +77,7 @@ kid("fridge-open", K("holding the door of " + FRIDGE + " wide open with cool mis
     k("所長！今天熱到不行，", "興奮，跑進來報案的語氣"), k("我把冰箱門一打開，", "得意"), k("臉馬上涼涼的！", "開心"), chapter="熱天下午，冰箱門開著")
 kid("kid-idea", K("raising one finger with sparkling eyes and a clever grin", close=True, where=KITCHEN),
     k("我想到一個好方法！", "神秘"), k("冰箱門整天開著，", "得意"), k("廚房就不用開冷氣了！", "很有把握的錯猜"))
-chief("chief-wait", C("raising one hand gently with an amused smile"),
+chief("chief-wait", C("raising one hand gently with an amused smile, youthful thirty-something face, glossy jet-black hair, flat 2D cel-shaded cartoon drawing"),
       c("先別急著拔冷氣的插頭。", "笑"), c("你也可以猜猜看：冰箱門一直開著，", "轉向觀眾"), c("廚房會變涼，還是反而變熱？", "賣關子，問句", "S:room"))
 kid("kid-hotter", K("leaning forward with a puzzled frown and one finger on her chin"),
     k("變熱？", "大驚"), k("冰箱明明是冷的耶！", "不服氣"))
@@ -87,7 +87,7 @@ kid("kid-back-guess", K("peeking sideways around the edge of " + FRIDGE + " with
     k("冰箱後面，", "疑惑"), k("藏了什麼東西？", "句尾上揚"))
 scene("outdoor-unit", "Medium shot of a white outdoor air conditioner unit with a big round fan grille mounted on a sunny apartment balcony wall beside potted plants, " + DAY,
       c("還有你家陽台上，那台嗡嗡轉的大箱子，", "賣關子"), c("它吹出來的風，你猜是冷的還是熱的？", "問句", "S:outdoor"))
-kid("kid-outdoor-guess", K("on a sunny balcony pointing at a white outdoor air conditioner unit with a confident grin"),
+kid("kid-outdoor-guess", K("on a sunny balcony pointing at a plain smooth unmarked white outdoor air conditioner unit with a confident grin, flat 2D cel-shaded cartoon drawing with ink outlines"),
     k("冷氣的箱子，", "很有把握"), k("吹的一定是冷風吧？"))
 chief("chief-promise", C("folding her arms with a warm smile", close=True),
       c("這些問題的答案，都藏在同一台冰箱裡。"), c("它門開著的時候，熱到底跑去了哪裡？", "賣關子"))
@@ -181,7 +181,7 @@ chief("chief-low-boil", C("nodding with a small smile and one finger raised"),
       c("能。冷媒是特別挑過的液體，很容易沸騰，"), c("冰箱裡那一點熱，就夠它變成氣體。"))
 kid("kid-cold-boil", K("with her mouth open in amazement and both hands up", close=True),
     k("冰冰的還會沸騰？", "驚奇"), k("好奇怪的液體！"))
-kid("kid-gas-where", K("following an imaginary pipe through the air with one pointing finger", close=True),
+kid("kid-gas-where", K("following an imaginary pipe through the air with one pointing finger, wearing her plain navy coat, flat 2D cel-shaded cartoon drawing with ink outlines", close=True),
     k("帶著熱的氣體，", "追問"), k("接著跑去哪？", "句尾上揚"))
 scene("compressor", "Close-up of a small round black metal compressor sitting low at the back corner of a white refrigerator, two thin copper pipes coming out of it, " + DAY,
       c("它跑進一個圓圓的鐵罐裡。"), c("這個鐵罐叫做壓縮機。"))
@@ -247,13 +247,13 @@ kid("kid-but-cool", K("standing at the open door of " + FRIDGE + " with cool mis
     k("可是我站在門口，", "不服氣"), k("真的涼涼的啊！", None, "S:front"))
 chief("chief-front", C("holding her two hands a little apart to show a small space, a kind smile", close=True),
       c("沒錯，門口前面那一小塊，是會涼一點。", None, "P:front"), c("可是你一走開，那塊涼就跟你沒關係了。"))
-chief("chief-harder", C("wiping her brow with the back of one hand as if tired, a wry smile"),
+chief("chief-harder", C("wiping her brow with the back of one hand as if tired, a wry smile, plain unmarked cardigan, youthful thirty-something face, glossy jet-black hair, flat 2D cel-shaded cartoon drawing"),
       c("而且門一開，冰箱裡面一直變暖，"), c("壓縮機就停不下來，一直吃電。"))
 kid("kid-tired", K("patting the side of " + FRIDGE + " with a sympathetic face", where=KITCHEN),
     k("冰箱好累喔！", "心疼"))
 chief("chief-more-heat", C("raising her hand higher and higher in steps"),
       c("累的還有你家的電表，", "笑"), c("電費也跟著一起變多。", "轉向觀眾"))
-kid("kid-heater-q", K("rubbing her hands together in front of a small electric heater glowing orange", where=BEDROOM),
+kid("kid-heater-q", K("rubbing her hands together in front of a small plain electric heater glowing orange, flat 2D cel-shaded cartoon drawing with ink outlines", where=BEDROOM),
     k("那開著門的冰箱，", "推理"), k("像冬天用的電暖器？", "句尾上揚"))
 chief("chief-heater", C("smiling and giving a small thumbs up", close=True),
       c("很像。只是它繞了一大圈，"), c("還順便讓冰箱裡的東西，一起變暖。"))
@@ -265,7 +265,7 @@ kid("kid-ac-q", K("looking up at a white wall-mounted air conditioner blowing co
     k("那冷氣呢？", "推理"), k("冷氣也是搬熱的機器嗎？", "句尾上揚"))
 chief("chief-ac-same", C("nodding with her hands open, a calm smile", close=True),
       c("是。冷氣和冰箱，是同一種機器。"), c("它也有冷媒、也有壓縮機，也一樣吃電。"))
-kid("kid-ac-why", K("fanning herself under a cool breeze from a wall-mounted air conditioner, her brow knitted", close=True, where=BEDROOM),
+kid("kid-ac-why", K("fanning herself under a cool breeze from a plain smooth unmarked wall-mounted air conditioner, her brow knitted, flat 2D cel-shaded cartoon drawing with ink outlines", close=True, where=BEDROOM),
     k("那開冷氣，", "不解"), k("房間怎麼就會變涼？", "章尾停住，句尾上揚", "S:acwhy"))
 
 # ---------- 第四章：冷氣把熱的那一頭放到外面 ----------
@@ -291,7 +291,7 @@ chief("chief-out-of-circle", C("drawing a circle in the air and then flicking on
       c("這次的熱吐到圈外，不會直接繞回來，"), c("圓圈裡面的熱，才真的一顆一顆變少。"))
 chief("chief-ac-bolt", C("holding up one finger, then pointing out toward the side"),
       c("冷氣吃的電，大部分也變成熱，"), c("在室外機那裡，一起吐到圈外。"))
-scene("one-to-three", "Close-up of one bright yellow lightning bolt on the left and three plump round red balls with a small fourth one on the right, all floating over a pale sky-blue background, " + DAY,
+scene("one-to-three", "Close-up of one bright yellow lightning bolt on the left and three flat plain red circles with a small fourth one on the right, simple flat 2D shapes with smooth surfaces, all floating over a pale sky-blue background, " + DAY,
       c("一般的冷氣，用一份電，", "數字放慢"), c("大約能搬走好幾份的熱。"))
 kid("kid-bargain", K("holding up one finger on one hand and three fingers on the other, a delighted grin", close=True),
     k("用一份電，搬好幾份熱？", "驚訝"), k("搬得好多喔！"))
@@ -303,7 +303,7 @@ kid("kid-curtain", K("pulling a pale yellow curtain closed across a sunny window
     c("就是幫房間關上一道厚門。"), k("所以開冷氣要關窗！", "想通"))
 chief("chief-two-jobs", C("holding up one hand, then the other, with a calm smile"),
       c("冷氣負責把熱搬出去，"), c("隔熱負責讓外面的熱，慢一點溜回來。"))
-kid("kid-both", K("making a big round circle with both arms over her head, grinning", close=True, where=BEDROOM),
+kid("kid-both", K("making a big round circle with both arms over her head, grinning, flat 2D cel-shaded cartoon drawing with ink outlines", close=True, where=BEDROOM),
     k("一個搬，一個擋！", "開心"))
 chief("chief-open-window", C("pushing one hand forward as if opening a window, eyebrows raised"),
       c("那開著冷氣又開著窗呢？", "轉向觀眾"), c("就跟開著冰箱門一樣，冷氣只好搬個不停。"))

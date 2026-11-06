@@ -177,7 +177,7 @@ kid("kid-einstein", "Head-and-shoulders close-up of the girl with her mouth open
     k("連愛因斯坦，", "驚訝"), k("都在算天空！"))
 kid("kid-spin", "Waist-up medium shot of the girl " + ROOF + " turning round with her arms out wide under a deep blue sky, laughing, " + DAY,
     c("所以你不管往天空哪個方向看，", "轉向觀眾"), c("都有被彈過來的藍光，跑進你的眼睛。", None, "P:where"))
-chief("chief-not-blue", C("shaking her head gently with a kind smile", close=True),
+chief("chief-not-blue", C("shaking her head gently with a kind smile, youthful thirty-something face, glossy jet-black hair, flat 2D cel-shaded cartoon drawing", close=True),
       c("空氣不是藍的，", None, "P:airblue"), c("它是一路把藍光彈給你看。"))
 kid("kid-thrower", "Head-and-shoulders close-up of the girl laughing with both hands raised as if tossing a ball, a plain pale wall behind her, " + DAY,
     k("原來偷偷換顏色的，", "開心"), k("就是空氣！", None, "P:swap"))
@@ -195,7 +195,7 @@ chief("chief-absorb", C("closing one hand slowly as if catching something small,
       c("有一些在很高的空中，被那裡的空氣吸收了，"), c("吸收就是被吞進去，到不了地面。"))
 kid("kid-absorb", "Head-and-shoulders close-up of the girl with her mouth open in a surprised O and one hand on her tummy, " + DAY,
     k("空氣還會偷吃一點！", "驚訝"))
-chief("chief-eyes", C("pointing to one of her own eyes behind her round glasses with a gentle smile", close=True),
+chief("chief-eyes", C("pointing to one of her own eyes behind her round glasses with a gentle smile, clean smooth cheeks, youthful thirty-something face, glossy jet-black hair, flat 2D cel-shaded cartoon drawing", close=True),
       c("還有，我們的眼睛，對紫色比較不敏感。"))
 kid("kid-violet-mix", "Waist-up medium shot of the girl " + ROOF + " holding the small purple flower up against the blue sky and comparing the colours, " + DAY,
     c("天空裡也有紫光，只是混在一起，", "放慢", "P:violet"), c("我們看起來，就成了淡淡的藍。"))
@@ -227,9 +227,9 @@ kid("kid-path-q", "Head-and-shoulders close-up of the girl frowning in confusion
     k("路會變？", "不解"), k("太陽又沒有變遠。"))
 chief("chief-path", C("drawing a long slanting line in the air with one finger"),
       c("對，距離沒變，"), c("變的是光在路上要穿過的空氣，厚了很多。"))
-scene("path-overhead", "Wide view of a simple diagram of a big round Earth with a thin glowing blue air layer around it, a tiny girl standing on top, one short golden sunbeam coming straight down to her from above, " + DAY,
+scene("path-overhead", "Wide view of a simple diagram of a big round Earth with a thin glowing blue air layer around it, a small bright yellow dot marking one spot on top, one short golden sunbeam coming straight down to the dot from above, " + DAY,
       c("太陽在頭頂上的時候，"), c("光是直直穿下來，走的空氣比較少。"))
-scene("path-sideways", "Wide view of a simple diagram of a big round Earth with a thin glowing blue air layer around it, a tiny girl standing on top, one very long golden-red sunbeam skimming in sideways through the air layer to her, ",
+scene("path-sideways", "Wide view of a simple diagram of a big round Earth with a thin glowing blue air layer around it, a small bright yellow dot marking one spot on top, one very long golden-red sunbeam skimming in sideways through the air layer to the dot, ",
       c("太陽快下山時，光是斜斜地，"), c("貼著地面穿過來。"))
 chief("chief-thirty", C("stretching her arms far apart as if showing a very long distance, eyebrows raised"),
       c("等太陽貼到地平線上，光要穿過的空氣，", "數字放慢"), c("大約是太陽在頭頂時的三十多倍。"))
@@ -249,7 +249,7 @@ chief("chief-elsewhere", C("pointing far away to one side with a gentle smile"),
       c("它們被彈進別的地方的天空。"), c("你這邊看著紅太陽的時候，"))
 kid("far-town", "Wide shot of the girl standing on a green hill and looking out at a faraway town under a deep blue afternoon sky, bright daylight",
       c("同一道光彈出去的藍光，", None, "P:gone"), c("正讓更遠的地方，看到下午的藍天。"))
-chief("chief-quote", C("placing one hand on her chest with a warm thoughtful smile", close=True),
+chief("chief-quote", C("placing one hand on her chest with a warm thoughtful smile, plain pale wall behind, youthful thirty-something face, glossy jet-black hair, flat 2D cel-shaded cartoon drawing", close=True),
       c("美國國家氣象局的科學家科菲迪這樣說："), c("夕陽會紅，是因為白天的天空是藍的。"))
 kid("kid-sky-share", "Head-and-shoulders close-up of the girl hugging herself with a delighted grin, warm sunset glow on her face",
     k("我看到的夕陽，", "驚喜"), k("是別人的藍天！"))
@@ -297,7 +297,7 @@ kid("kid-dust-guess", "Waist-up medium shot of the girl in a sunny street blowin
     c("水滴會把天空的顏色換掉，空氣裡飄的灰塵也會。"), k("那灰塵越多，", "很有把握的錯猜"), k("天空就越藍？", None, "S:dust"))
 chief("chief-opposite", C("shaking one finger gently with a smile"),
       c("還記得瑞利那時候的人怎麼猜嗎？", None, "P:olddust"), c("你跟他們想的一樣，可是答案剛好相反。"))
-chief("chief-haze", C("waving one hand slowly in front of her face as if through haze", close=True),
+chief("chief-haze", C("waving one hand slowly in front of her face as if through soft haze in front of a plain pale wall, youthful thirty-something face, glossy jet-black hair, flat 2D cel-shaded cartoon drawing", close=True),
       c("灰塵和煙的顆粒比較大，"), c("白天的藍會變淡，像蒙上一層白紗。", None, "P:dust"))
 kid("hazy-city", "Medium shot of the girl on a balcony squinting at a pale milky white sky over the city, the sun a soft white disc, bright daylight",
       c("這種霧濛濛的一層，叫做霾。"), c("霾多的時候，中午的天空也可能白白一片。"))
