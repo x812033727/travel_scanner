@@ -89,13 +89,13 @@ scene("outdoor-unit", "Medium shot of a white outdoor air conditioner unit with 
 kid("kid-outdoor-guess", K("on a sunny balcony pointing at a white outdoor air conditioner unit with a confident grin"),
     k("冷氣的箱子，", "很有把握"), k("吹的一定是冷風吧？"))
 chief("chief-promise", C("folding her arms with a warm smile", close=True),
-      c("這些問題的答案，都藏在同一台冰箱裡。"), c("我們就盯著它，一路跟著它的熱走。"))
+      c("這些問題的答案，都藏在同一台冰箱裡。"), c("它門開著的時候，熱到底跑去了哪裡？", "賣關子"))
 
 # ---------- 第一章：先只看冰箱裡面 ----------
 kid("kid-cold-out", K("standing at the open door of " + FRIDGE + " scooping the cool air toward herself with both hands", where=KITCHEN),
     k("冰箱裡面裝滿了冷，", "很有把握的錯猜"), k("門一開，冷就跑出來了！", None, "S:coldthing"), chapter="冰箱裡少掉的熱")
 chief("chief-tea", C("holding a steaming cup of hot tea in both hands"),
-      c("先來看一杯熱茶。"), c("你把它放在桌上，過一陣子會怎樣？", "轉向觀眾"))
+      c("你家桌上，有沒有放涼過一杯熱茶？"), c("你把它放在桌上，過一陣子會怎樣？", "轉向觀眾"))
 kid("kid-tea", K("touching the side of a cup of tea on a wooden table with one fingertip, a thoughtful face", close=True),
     k("會變溫溫的。", "想一想"), k("熱跑掉了！"))
 scene("ice-cube", "Close-up of one ice cube melting into a small puddle in a little glass dish on a sunny wooden kitchen table, " + DAY,
