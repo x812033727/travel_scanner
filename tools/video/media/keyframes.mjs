@@ -163,7 +163,7 @@ export function keyframeChecks({ plate = false, characters = [], subtitleBand = 
 // The narrated series that go to every language with no words on screen (cute-mystery: 奇聞檔案局
 // and the brand stories, owner 2026-11-05) fail made-up writing too: a sign of letter-like squiggles
 // reads as words to a viewer and as a mistake in every language.
-export const WORDLESS_TEXT_QUESTION = "Is there any writing anywhere in the picture: letters, words, numbers, a logo, a watermark, or made-up marks that look like writing on a sign, label, paper, screen, box or cover?";
+export const WORDLESS_TEXT_QUESTION = "Is there any writing anywhere in the picture: letters, words, numbers, a logo, a watermark, made-up marks that look like writing on a sign, label, paper, screen, box or cover, a floating question mark, exclamation mark or other symbol, or a badge or emblem with marks on a car, cap, coin or uniform?";
 // A still marked `nobody` (its line is about someone who may not be drawn) fails when anyone is.
 export const NOBODY_QUESTION = "Is there any person, human face or human figure anywhere in the picture, however small, including a face drawn on an object?";
 /** Whether a video's stills must carry no writing at all: the cute-mystery look. */
