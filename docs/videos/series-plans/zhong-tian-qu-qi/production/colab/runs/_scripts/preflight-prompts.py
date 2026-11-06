@@ -12,7 +12,8 @@ Each check is a mistake this season paid for at least once (lessons.md §11-§12
 - warn crowd: a crowd, guards, riders or thugs with no dynasty clothing written (e055 s11 drew modern green uniforms);
 - warn wine: wine bottles, wine cups or wine jars named (the e050 inn grew modern glass bottles; write pottery cups and clay jars);
 - warn insert: an insert or extreme close-up that does not open directly on itself (opens on the empty set, e054 s03, e056 s04);
-- warn skin: small bits written onto skin (wood chips on his hands came out as dark specks stuck to the skin, e003-r2 s06).
+- warn skin: small bits written onto skin (wood chips on his hands came out as dark specks stuck to the skin, e003-r2 s06);
+- warn glow: a blue glow "from the empty air" or "no panel drawn" outside an eye extreme close-up (the model drew a glowing panel with fake text, e004-r2 s03).
 Exit 1 on any ERROR; warnings are for the reviewer to accept or fix before the batch.
 """
 import json
@@ -31,6 +32,7 @@ CROWD = re.compile(r"\b(villagers|crowd|guards|soldiers|riders|horsemen|thugs|he
 CROWD_OK = re.compile(r"Song-dynasty|cross-collared|round-collared|futou|head-wraps?|ancient Chinese", re.I)
 WINE = re.compile(r"\bwine (bottle|cup|jar|glass)s?\b|\bbottles?\b", re.I)
 SKIN = re.compile(r"\b(wood chips|wood shavings|sawdust|splinters|specks?|flecks?|spots of (?:mud|dirt|blood|ash|soot)|mud spots|blood drops|drops of blood|soot marks?|smudges? of (?:dirt|soot|ash))\b[^.;]{0,40}\b(hands?|face|cheeks?|skin|arms?|forehead|knuckles|fingers)\b|\b(hands?|face|cheeks?|skin|arms?|forehead|knuckles|fingers)\b[^.;]{0,40}\b(wood chips|wood shavings|sawdust|splinters|specks|flecks|mud spots|blood drops|soot)\b", re.I)
+GLOW = re.compile(r"glow from the empty air|no panel|panel drawn|glowing (?:screen|panel|window)|blue (?:glow|light) (?:from|in front of) (?:the )?(?:empty )?air", re.I)
 INSERT = re.compile(r"^\s*(insert|extreme close-up)", re.I)
 NAMES = {"Xu Yan": "xuyan", "A-ling": "aling", "Qin Shuang": "qinshuang", "Tang Xiaotang": "tangxiaotang", "Xiaohe": "xiaohe",
          "Wang Erniu": "erniu", "Constable Zhao": "zhaobutou", "Qian Yuanwai": "qianyuanwai", "Leng Tie": "lengtie", "lookout boy": "shaonian"}
@@ -63,6 +65,8 @@ def check(manifest):
             found.append(("warn", "wine", WINE.search(text).group(0)))
         if SKIN.search(text):
             found.append(("warn", "skin", SKIN.search(text).group(0)[:60]))
+        if GLOW.search(comp) and not re.search(r"extreme close-up of [^.]{0,30}eyes", comp, re.I):
+            found.append(("warn", "glow", GLOW.search(comp).group(0)))
         body = comp.split(":", 1)[-1]
         if INSERT.search(body) and "opens directly" not in text:
             found.append(("warn", "insert", "insert without 'opens directly on this ... from its very first frame'"))
