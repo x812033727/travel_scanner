@@ -57,6 +57,7 @@ def chief(id, prompt, *lines, chapter=None):
 def scene(id, prompt, *lines, chapter=None):
     """No character: an object, a place or a mechanism drawn as a picture."""
     _shot(id, prompt, [], lines, chapter)
+    S[-1]["data"]["nobody"] = True  # PR #2028: the judge fails a person or a face, and the look drops its chibi-people clause
 def k(t, e=None, tag=None): return ("kid", t, e, tag)
 def c(t, e=None, tag=None): return ("chief", t, e, tag)
 
@@ -80,7 +81,7 @@ scene("milk-teaser", "Close-up of one tall clear glass of water with a faint mil
       c("先猜一件事：一杯水加幾滴牛奶，拿手電筒照，", "賣關子"), c("從旁邊看，它會是什麼顏色？", "問句，最後放慢", "S:milk"))
 kid("kid-milk-guess", "Head-and-shoulders close-up of the girl peering at a tall glass of milky water on a kitchen table with a confident little smile, " + DAY,
     k("加了牛奶的水？", "想一想"), k("應該白白的吧？", "很有把握的錯猜"))
-scene("moon-teaser", "Wide view of the grey cratered surface of the Moon in bright sunshine, a small round blue Earth hanging in the sky above the horizon, ",
+scene("moon-teaser", "Wide view of the grey cratered surface of the Moon in bright sunshine under a pitch-black sky, a small round blue Earth hanging in the black sky above the horizon, ",
       c("還有，要是站在月球上，白天抬頭看，", "賣關子"), c("天空會是什麼顏色？", "問句", "S:moon"))
 kid("kid-cloud-teaser", "Waist-up medium shot of the girl " + ROOF + " pointing up at one big puffy white cloud in a blue sky, a puzzled frown, " + DAY,
     k("月球上？我想不出來。", "搖頭"), k("說到天上，還有雲！", "突然想到"), k("天空是藍的，雲怎麼是白的？", "句尾上揚", "S:cloud"))
