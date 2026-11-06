@@ -33,7 +33,7 @@
 | --- | --- | --- |
 | 許硯 | `xuyan-portrait-t1` | 舊藍灰書生袍、手肘補丁、布鞋、髮髻；兩手空空。c22 起右袖裡收著那張黃紙。第三場不出場 |
 | 唐小棠 | **`tangxiaotang-portrait-t2` 高立領** | 桃粉織錦襦裙、高立領扣到喉嚨、雙丸子頭；腰掛小金算盤。c05 起左臂抱帳本、右手提錢箱。近景「下巴以上」，中景以上「襦裙從立領到腰一件闔上」。只在第一場 |
-| 阿令 | `aling-portrait-t1`（**要用沒戴鐵鐐的版本**，共用設定建議畫 `aling-portrait-t2`） | 灰白布裙、長袖、木簪；**灰紗面巾遮住口鼻**（有外人在，整集都戴）；左手腕舊傷用袖子蓋著；短匕套著素木鞘藏在右袖裡，c37 才抽出來 |
+| 阿令 | `aling-portrait-t2`（沒戴鐵鐐，開拍前要先畫） | 灰白布裙、長袖、木簪；**灰紗面巾遮住口鼻**（有外人在，整集都戴）；左手腕舊傷用袖子蓋著；短匕套著素木鞘藏在右袖裡，c37 才抽出來 |
 | 賴三 | `laisan-portrait-t1` | 瘦小、尖下巴、眼神閃、**跛腳**、灰褐短衣、舊頭巾、腰繫粗灰圍裙（第 26 集 c14 許硯給的）；手是一般膚色。c08–c09 指甲縫有灰白粉 |
 | 趙捕頭 | `zhaobutou-portrait-t1` | 黑捕快帽、黑公服、腰間鐵尺、刀在左腰（黑刀鞘）；c01 左手一卷封條（白色長紙條，空白沒有字） |
 | 魏少卿 | `weishaoqing-portrait-t1` | 寶藍織金錦袍、灑金摺扇、白玉佩。只在 c06 |
@@ -175,6 +175,7 @@
 
 ### 2026-11-06 審稿後的修改
 
+- **阿令的參考圖**：`aling-portrait-t1` 改成 `aling-portrait-t2`（沒戴鐵鐐，開拍前要先畫；主對話 2026-11-06 統一）。
 台詞改了兩句，**要重錄**：
 - **c32** 阿令：原本隔著面巾小聲說出口，跟蹤的人不該出聲；改成「阿令（心裡話，嘴閉著）」，字不變。
 - **c33** 孫掌櫃：「我讓兩個兄弟送你出城，路上別亂說話。」→「兩個兄弟先去巷口等你，送你出城。」原因：c37 打手在巷口前頭堵人，要先交代他們怎麼到那裡；c33 補兩個人影沿泥岸先走。13 字，秒數不變。
@@ -259,7 +260,7 @@
 
 ### 2. 本集需要的參考圖
 
-- 有了：`xuyan-portrait-t1`、`tangxiaotang-portrait-t2`、`aling-portrait-t1`、`laisan-portrait-t1`、`zhaobutou-portrait-t1`、
+- 有了：`xuyan-portrait-t1`、`tangxiaotang-portrait-t2`、`aling-portrait-t2`、`laisan-portrait-t1`、`zhaobutou-portrait-t1`、
   `weishaoqing-portrait-t1`、`huxianling-portrait-t1`；場景 `set-shiji-t1`、`set-xianya-t1`、`set-xiaoxiang-t1`、`set-shiqiao-t1`。
 - **要畫**：`sunzhanggui-portrait-t2`（共用設定已列）；阿令沒戴鐵鐐的版本（共用設定建議 `aling-portrait-t2`）。
 - 沒有參考圖的：衙役、圍觀的人（群眾，宋式衣著）；打手兩人（背光、不給正臉）；被抬走的客人（背影）。

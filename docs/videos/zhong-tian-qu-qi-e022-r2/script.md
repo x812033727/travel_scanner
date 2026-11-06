@@ -39,7 +39,7 @@
 | 魏少卿 | `weishaoqing-portrait-t1` | 寶藍織金錦袍、白玉佩、玉冠、灑金摺扇、左手食指白玉戒指；c01–c12，坐在窗邊雕花椅 |
 | 許硯 | `xuyan-portrait-t1` | 舊藍灰書生袍、手肘補丁、布鞋、髮髻；c13–c26 晚飯；c27 起外披舊灰外衣，c27 左手提一盞油燈，c29 放在小桌上（之後留在房裡）；c38 起右手提一盞圓紙燈籠（空白沒有字） |
 | 秦霜 | `qinshuang-portrait-t1` | 深褐交領短衣、寬皮帶、高馬尾；柴刀插腰帶右邊（本集不拔）；在家兩手空空。報話、質問時不笑 |
-| 阿令 | `aling-portrait-t1`；開拍前補畫沒戴鐵鐐的 `aling-portrait-t2` | 灰白布裙、長袖、木簪；左手腕舊傷用袖子蓋著。在家沒有外人，**不戴面巾**。話少、不笑 |
+| 阿令 | `aling-portrait-t2`（沒戴鐵鐐，開拍前要先畫） | 灰白布裙、長袖、木簪；左手腕舊傷用袖子蓋著。在家沒有外人，**不戴面巾**。話少、不笑 |
 | 許小禾 | `xiaohe-portrait-t1` | 補丁淡紫短襖、紅繩小辮、缺一顆門牙；草編兔子放在碗旁。只在晚飯 c13–c26（說話只在 c14；第三場在自己房裡睡，不入鏡）；可以笑 |
 | 船夫 | 不用參考圖 | 一人，斗笠、蓑衣，撐一根長篙；只拍背影與側背，不給正臉，不說話；c40–c41 |
 | 系統 | 沒有身體 | 只有聲音與剪接疊上的淡藍面板；毒舌吐槽系統，聲音 Callirrhoe |
@@ -186,6 +186,7 @@
 
 ### 2026-11-06 審稿後的修改
 
+- **阿令的參考圖**：`aling-portrait-t1` 改成 `aling-portrait-t2`（沒戴鐵鐐，開拍前要先畫；主對話 2026-11-06 統一）。
 台詞沒改，不用重錄；只改畫面。
 - **c32**：秦霜看的是「許硯手上的紙」，不是小桌上的紙（c30–c33 休書在許硯手上）。
 - **c35**：許硯抓起油燈又放下，燈留在房裡的小桌上；原本寫抓起帶走，c38 他手上卻只有燈籠。角色表與清單 5 一起改。
@@ -255,7 +256,7 @@
 
 ### 2. 本集需要的參考圖
 
-- 都有了：`tangxiaotang-portrait-t2`、`weishaoqing-portrait-t1`、`xuyan-portrait-t1`、`qinshuang-portrait-t1`、`aling-portrait-t1`、`xiaohe-portrait-t1`；
+- 都有了：`tangxiaotang-portrait-t2`、`weishaoqing-portrait-t1`、`xuyan-portrait-t1`、`qinshuang-portrait-t1`、`aling-portrait-t2`、`xiaohe-portrait-t1`；
   場景 `set-kezhan-t1`、`set-xujia-wu-t1`、`set-xujia-yuan-t1`、`set-dukou-t1`、`set-chuan-t1`。
 - 要先畫：`aling-portrait-t2`（沒戴鐵鐐，共用設定已列）。
 - 沒有參考圖的：船夫只拍背影與側背（斗笠、蓑衣）。唐小棠的房間用 `set-xujia-wu-t1`，照場頭寫床、窗、小桌的位置。
