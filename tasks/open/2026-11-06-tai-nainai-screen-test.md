@@ -52,6 +52,10 @@ bash .agents/skills/minimax-h3-colab/scripts/h3.sh images-check --manifest <work
 
 ## Notes
 
+- 2026-11-06 第一篇章（第 1–10 集，237 支片段）開拍前還缺的參考圖（`compile.py N --manifest --placeholders` 對 `assets/refs` 比出來的，括號是用到的鏡數）：
+  祠堂燈 4、燈 5（37，用燈 1 那張當 image 1 只改燈）、飯廳（34）、廚房（19）、書房（15）、小滿房（10）、公車（9）、高中側門（7）、臨街外觀（4，重畫中）、穿堂（1，重畫中）；
+  角色（bible〈先畫順序〉第 2 批）錢老闆（10）、玉琴（9）、江慕白（6）、高經理（5）、知遠（4，另有 `shirt`、`coat`）、知行（3）、何曉陽（3）、林導（2）。約 30 張、6 CU，等站主點頭。
+
 - 2026-11-06 重畫（`tools/refs.py`，約 5 CU，54.51 → 49.5）：十八歲先畫基本款，壽衣用基本款當 image 1、`latent: image1` 只換衣服，
   兩個 look 才是同一張臉（分開畫是兩個人）；九十六歲以十八歲基本款畫老；祠堂以格局對的一張為 image 1 只改燈與夜色，燈 1、燈 3 兩張格局一樣。
   選定的放進 `production/assets/refs/`（`SHA256SUMS`、README 記 seed）。祠堂窗口仍有一道光、九十六歲看起來七十多歲，先用。
