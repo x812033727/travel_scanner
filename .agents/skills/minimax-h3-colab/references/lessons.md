@@ -246,7 +246,10 @@ Qwen-Image-Edit-2509（`h3.sh images`，`lora: false`、20 步、CFG 4、空白 
 | 同一個 runtime 先跑 `h3.sh images` 再跑 H3：`ComfyUI 缺少節點：['VHS_VideoCombine']` | 出圖的筆記本先啟動了沒有 VideoHelperSuite 的 ComfyUI，H3 筆記本「使用已啟動的 ComfyUI」 | 出圖與片段分兩個 session（`h3.sh stop` 再 `start`）；第二、三段可以接在片段的 session |
 | `output_name: "r1/x.png"` 存成 `r1-x.png` | `images.py` 把斜線換成連字號 | 後續步驟讀 `r1-<id>.png` |
 | 冷啟動下載模型 `429 Too Many Requests`，runtime 一直開著扣點 | 匿名下載 Hugging Face 被限流（第 9 節） | 停掉本機那一輪，同一個 `--session` 重跑就過了；這次損失約 2 CU |
+| 換裝時眉間畫出紅色刀疤；臉上的「水漬」畫成瘀青；壽衣、睡袍畫成 V 領 | 外貌段寫了「a scar-like deep wrinkle」「water marks on her face」，模型照字面畫傷口與污漬；「robe」本身就會帶出交叉領 | 外貌不寫像傷的比喻（改「one deep vertical frown line… the same colour as the rest of his skin」）；濕身只寫頭髮與衣服濕、臉上乾淨；長袍寫「HIGH stand-up collar closed to the throat」，兩次仍是 V 領的話換成「long buttoned house dress」之類不是 robe 的字 |
 | 監看腳本把「PROMPT 長度 1429 字元」當成 429 | grep 只寫了 `429` | 比對 `Too Many Requests` |
+
+**換裝要同一張臉**：同一個角色的兩個 look 分開畫會是兩個人；用選定的基本款當 image 1、`latent: image1`、只寫「Change only …」（`tools/refs.py looks`）。九十六歲也用十八歲那張當 image 1 畫老。
 
 **時間與點數（G4，暖機後）**：胸像 1248×1664 約 1.3 分／張；Ref2VA 960×544 `hero` 6 秒約 2.1 分／支（含冷啟動的第一支 5.2 分）；第二段 σ0.5 五支約 14 分。
 站主同一天定：片段先做到 1312×736（第二段），不跑 SeedVR2，剪接時整支放到 1920×1080。

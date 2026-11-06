@@ -19,7 +19,11 @@
 | `refs/yuetang-18-hand-wrinkle-t1.png` | `wrinkle`／`yaoju` 的右手背老人紋插鏡參考 | round 2（seed 624100）：右手背一片老人紋，戒指只在左手 |
 | `refs/set-shenjia-yuanzi-t1.png`、`set-shenjia-huilang-t1.png` | 院子、迴廊 | round 1（院子 t1 seed 623100；迴廊原 t2 seed 623103） |
 | `refs/prop-*.png` | 長明燈、老藥櫃、報信鈴、銀印戒、小銅油壺、備用銅鑰匙、祠堂插鎖、茶盤茶杯 | round 1，各一張（seed 623200 起） |
-| 還要重畫 | 林美鳳 `home`（畫成 V 領，bible 要高領）、建業 `home`（眉間的皺紋畫成紅色傷口）、小滿 `damp`（臉上的水漬像瘀青）、月棠 `white-strand`（整條辮子變白，不是一撮）、淺紋手部插鏡（看不到）、穿堂（牌匾與掛軸有假字）、臨街外觀（兩張都失敗）、福伯的鑰匙串（畫成現代鑰匙） | 下一輪 |
+| `refs/xiaoman-damp-t1.png`、`yuetang-18-white-strand-t1.png`、`set-shenjia-chuantang-t1.png`、`set-shenjia-jiewai-t1.png`、`prop-fubo-yaoshichuan-t1.png` | 小滿 `damp`、月棠 `white-strand`、穿堂、臨街外觀、福伯的鑰匙串 | 2026-11-06 重畫（`refs-r3`，seed 625002、625003、625010、625012、625020）。白髮比一指寬粗一些，先用 |
+| `refs/qianlaoban-`、`yuqin-`、`jiangmubai-`、`gaojingli-`、`zhiyuan-`、`zhixing-`、`hexiaoyang-`、`lindao-portrait-t1.png` | 第一章要的八個角色（bible〈先畫順序〉第 2 批） | `refs-r4`，各兩張選一（seed 626000 起）。玉琴（輪椅）、知遠、林導畫成全身、臉小，要重畫胸像 |
+| `refs/set-shenjia-fanting-`、`chufang-`、`shufang-`、`xiaomanfang-`、`set-gongche-`、`set-gaozhong-xiaomen-t1.png` | 飯廳、廚房、書房、小滿房、公車、高中側門 | `refs-r4`（seed 626100 起）；公車與校門的提示詞另寫成白天、空的，不寫乘客與學生 |
+| `refs/set-shenjia-citang-lamp4-t1.png`、`lamp5-t1.png` | 祠堂燈 4、燈 5 | 以燈 1 那張為 image 1、`latent: image1` 只改燈（seed 626200、626201），格局跟燈 1、燈 3 一樣 |
+| 還要重畫 | 林美鳳 `home`（兩次都畫成 V 領）、建業 `home`（兩次都把眉間的皺紋畫成紅色刀疤：`cast.json` 的外貌寫了「scar-like」之類的字，要改寫法）、淺紋手部插鏡（多一枚戒指）、知遠／玉琴／林導的胸像、知遠 `shirt`／`coat` | 下一輪；沒畫之前 `compile.py` 退回用基本款定妝照 |
 
 每一輪的 manifest、提示詞與進度檔在 `production/screen-test/runs/`（`<R>`、`<W>` 是工作資料夾）。
 第 1 批（bible〈先畫順序〉）還缺的見上表最後一列。
