@@ -31,11 +31,13 @@ scope:
 ## Steps
 
 - [x] 影片工具權杖配對（route C，`login --colab`，2026-11-06 站主允許），`bootstrap.sh` 驗 `colab usage`：餘額 68.31 CU。
-- [ ] `screen-test/build.py`：從 `cast.json` 產生各輪 manifest 與提示詞；離線 `images-check`、`h3.sh check` 過。
+- [x] `screen-test/build.py`：從 `cast.json` 產生各輪 manifest 與提示詞；2026-11-06 離線 `images-check`（r1 12 張、r2 4 張）、`h3.sh check`（st1 5 支）0 錯。計畫在 `screen-test/README.md`。
 - [ ] 第一輪定妝照：真人 月棠（壽衣）、林美鳳、福伯各兩個 seed，祠堂、正廳；3D 對照各一張。
 - [ ] 第二輪：以選中的十八歲為 image 1 畫九十六歲（一人兩貌）；手背細紋插鏡。
 - [ ] 片段：第 1 集 c14（林美鳳說話）、c17（九十六歲閉眼）、c20（看手、戒指）、c23（十八歲近景）真人四支，c14 的 3D 一支；Ref2VA 960×544 hero → σ0.5 → SeedVR2 7B。
-- [ ] 聲音試聽：月棠十八歲 Kore／Despina／Achernar、九十六歲 Gacrux 等；`cli.mjs audition`。
+- [x] 聲音試聽已錄：月棠十八歲 Kore／Despina／Achernar、九十六歲 Gacrux／Vindemiatrix／Achernar（各 111 字），樣本已傳站主。
+- [ ] 站主聽完選聲音（站主 2026-11-06：下次再聽再確認）。
+- [ ] 站主點頭開跑試鏡（約 10–12 CU，上限 15）。
 - [ ] 冷看一次，交站主。
 
 ## How to verify
@@ -46,6 +48,8 @@ bash .agents/skills/minimax-h3-colab/scripts/h3.sh images-check --manifest <work
 ```
 
 ## Notes
+
+- 2026-11-06 站主：先規劃，聲音下次再聽再確認；還沒花 CU。
 
 - 預估（推算，未實測）：G4 約 8 CU／小時；整個試鏡約 1.5 小時、10–14 CU。花 CU 前後抄 `h3.sh usage`。
 - Colab 出圖至少要一張參考圖，這部還沒有定妝照：第一輪用一張空白灰底當 image 1（沒試過，先 `--only` 兩張驗）。
