@@ -1,6 +1,6 @@
 ---
 name: animation-preproduction
-description: AI 動畫開拍前的企劃與鎖定：在付 Hailuo、Kling 或伺服器任何點數之前，先把分場與節拍、鏡位與剪點、每鏡做法（clip、still、切素材）、路線與買幾秒、首尾格、AI 風險分級與重設計、預算的期望與上限、文字卡動態分鏡、小樣計畫、批次順序與備料清單一次排好，交站主確認一次後鎖定；之後的設定圖、配音、關鍵影格、小樣與批量照包做，改動一律走變更單。使用者說先規劃、分鏡表、鏡位表、動態分鏡、animatic、開拍前確認、估一集、怎麼省成本、照真一隻布袋喵的做法，或要改已鎖定的鏡頭時先讀，再交給 animation-production 製作。寫分鏡、審分鏡也先讀：站主說「審片」「審稿」「檢查有沒有缺漏」而對象是還沒拍的分鏡稿時，照 references/storyboard-shot-spec.md〈交給製作端之前的三道檢查〉做（自檢、storyboard-check.py、分段重疊的獨立審稿）。Plan, risk-grade, price and lock an AI animated episode before paying for anything, then hold every later change to a change order.
+description: AI 動畫開拍前的企劃與鎖定：在付 Hailuo、Kling 或伺服器任何點數之前，先把分場與節拍、鏡位與剪點、每鏡做法（clip、still、切素材）、路線與買幾秒、首尾格、AI 風險分級與重設計、預算的期望與上限、文字卡動態分鏡、小樣計畫、批次順序與備料清單一次排好，交站主確認一次後鎖定；之後的設定圖、配音、關鍵影格、小樣與批量照包做，改動一律走變更單。使用者說先規劃、分鏡表、鏡位表、動態分鏡、animatic、開拍前確認、估一集、怎麼省成本、照真一隻布袋喵的做法，或要改已鎖定的鏡頭時先讀，再交給 animation-production 製作。寫分鏡、審分鏡、審劇本也先讀：站主說「審劇本」「審片」「審稿」「把劇本變分鏡」「產生鏡位跟注意事項」「檢查有沒有缺漏」而對象是還沒拍的劇本或分鏡稿時，照 references/script-to-storyboard.md 的步驟做（系列設定與接點表、分批寫分鏡、storyboard-check.py、分段重疊的獨立審稿、改稿與掃全季）。Plan, risk-grade, price and lock an AI animated episode before paying for anything, then hold every later change to a change order.
 metadata:
   short-description: 動畫前期：分鏡表、風險、動態分鏡、開拍鎖定、變更單
 ---
@@ -27,6 +27,7 @@ metadata:
 | 各步的範本（條件卡、分場表、鏡位表、分鏡表欄位、鎖定包、變更單）與一個做完的例子 | `.agents/skills/animation-preproduction/references/preproduction-flow.md` |
 | 每鏡走哪條路、買幾秒、哪個解析度、母鏡頭、正文怎麼寫（Hailuo H3／2.3、Kling 3.0 的官方格式）、送出前的表單清單 | `.agents/skills/animation-preproduction/references/route-decisions.md` |
 | AI 鏡頭風險分級的表、重設計的招式、參考片怎麼避開 | `.agents/skills/animation-preproduction/references/shot-risk.md` |
+| 審劇本：把劇本寫成分鏡（鏡位、注意事項、五張清單），從系列設定、分批寫稿、程式檢查、獨立審稿到改稿的順序、交辦範本與成本 | `.agents/skills/animation-preproduction/references/script-to-storyboard.md` |
 | 寫分鏡時每一鏡要寫清楚的十一項（服裝、道具、畫面裡有誰、動作、表情、身體狀態、場景與天氣、運鏡與構圖、文字與紙、台詞、秒數）、這季付過錢的錯與覆蓋檢查與分鏡的寫法、每場戲的場頭、台詞有頭有尾、讓畫面動起來的寫法、每集附的五張清單、改稿時要通知製作端的事、交給製作端前的三道檢查（自檢、`storyboard-check.py`、分段重疊的獨立審稿） | `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` |
 | 參考風格：真一隻布袋喵的量測（鏡長、景別、接觸與台詞怎麼處理） | `docs/videos/drama-craft/reference-study-20261004-budaimiao.md`；畫風與表演的創作建議在 `.agents/skills/animation-camera/references/budaimiao-style.md` |
 | 一場戲的鏡位、軸線、連戲帳 | `.agents/skills/animation-camera/references/scene-coverage.md` |
