@@ -20,6 +20,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import struct
 import subprocess
@@ -36,22 +37,34 @@ INSERT = (1312, 736)
 DRAFT = (960, 544)
 
 REAL = (
-    "Style: a photorealistic live-action film still from a modern Taiwanese family drama, shot on a cinema camera with an 85mm lens, "
+    "Style: a photorealistic live-action photograph for a modern Taiwanese family drama, shot on a cinema camera with an 85mm lens, "
     "natural soft key light, realistic skin with fine pores and natural texture, realistic hair and fabric, shallow depth of field. "
-    "Not a painting, not 3D CG, not anime, not a cartoon. Clean image with nothing written anywhere, no watermark, no logo."
+    "Not a painting, not 3D CG, not anime, not a cartoon. The picture fills the whole frame edge to edge: no black bars, no letterbox, no border. "
+    "Clean image with nothing written anywhere, no watermark, no logo, no signature."
 )
 CG = (
     "Style: a high-end 3D CG animated drama still, Unreal Engine 5 cinematic character render: stylized semi-realistic characters with refined faces, "
     "detailed skin that is clearly CG and not a photograph, individually rendered hair strands, physically simulated cloth, warm cinematic light, "
-    "shallow depth of field. Not a photograph, not live action, not anime. Clean image with nothing written anywhere, no watermark, no logo."
+    "shallow depth of field. Not a photograph, not live action, not anime. The picture fills the whole frame edge to edge: no black bars, no letterbox, no border. "
+    "Clean image with nothing written anywhere, no watermark, no logo, no signature."
 )
 BLANK = "image 1 is only a blank mid-grey canvas: take nothing from it but the plain grey backdrop."
 PORTRAIT_FRAME = (
-    "Casting photo, front view, head and shoulders filling the upper half of the frame, cropped at the chest, the face large and sharp, "
-    "looking at the camera, calm neutral expression, mouth closed, not smiling. Plain mid-grey studio backdrop. "
+    "A tight head-and-shoulders casting portrait: the frame ends just below the collarbones and the face fills the upper half of the frame, large and sharp. "
+    "Front view, looking at the camera, calm neutral expression, mouth closed, not smiling. Plain mid-grey studio backdrop. "
+    "Only the head, neck and shoulders are in the frame: no hands, no legs, no feet. "
 )
+YOUTH = "a young girl of eighteen with a youthful teenage face, smooth young skin and a fresh, delicate beauty, clearly a teenager and not an adult woman; "
+BODY_ONLY = ("shoes", "heels", "hands folded", "back very straight", "back still straight", "trousers", "skirt", "ring")
+
+
+def bust(look: str) -> str:
+    """The appearance without what a head-and-shoulders frame cannot show (shoes, hands, skirt): those pull the model to full body."""
+    keep = [part for part in look.split(", ") if not any(re.search(rf"\b{word}\b", part) for word in BODY_ONLY)]
+    return ", ".join(keep)
 NO_TEXT_SET = (
-    "The room is completely empty, with nobody in it. Every tablet, plaque, scroll, board and wall is plain and blank, bare wood and bare plaster."
+    "The room is completely empty, with nobody in it. No hanging scrolls, no calligraphy, no couplets. "
+    "Every tablet, plaque, board and wall is plain and blank, bare wood and bare plaster."
 )
 
 CLIP_TAIL_REAL = "One continuous shot. Natural, realistic live-action human motion; faces, hair and costumes stay as in their reference pictures."
@@ -111,9 +124,9 @@ def r1(cast: dict, work: Path) -> dict:
     write_png(work / "base" / "grey-set.png", SET)
     c, looks, sets = cast["chars"], cast["looks"], cast["sets"]
     people = [
-        ("yuetang-18", "沈月棠（十八歲，壽衣）", looks[("yuetang-18", "shouyi")], "She"),
-        ("meifeng", "林美鳳", c["meifeng"]["appearance"], "She"),
-        ("fubo", "福伯", c["fubo"]["appearance"], "He"),
+        ("yuetang-18", "沈月棠（十八歲，壽衣）", YOUTH + bust(looks[("yuetang-18", "shouyi")]), "She"),
+        ("meifeng", "林美鳳", bust(c["meifeng"]["appearance"]), "She"),
+        ("fubo", "福伯", bust(c["fubo"]["appearance"]), "He"),
     ]
     jobs = []
     seed = 611000
@@ -125,8 +138,12 @@ def r1(cast: dict, work: Path) -> dict:
         prompt = f"{BLANK} {PORTRAIT_FRAME}{pron} is: {look}. {pron} is the only person in the frame. {CG}"
         jobs.append(job(f"{pid}-3d-a", f"{title} 3D", ["base/grey-portrait.png"], prompt, PORTRAIT, seed, f"r1/{pid}-3d-a.png"))
         seed += 1
-    citang = sets["shenjia-citang"].replace("ancestral tablets behind it", "plain blank wooden ancestral tablets behind it")
-    citang += f"; on the lamp: {cast['lamp']['3']}"
+    citang = (sets["shenjia-citang"]
+              .replace("ancestral tablets behind it out of focus", "a row of plain blank wooden ancestral tablets behind it, out of focus")
+              .replace("red candles", "two red candles, one on each side of the lamp"))
+    citang += (f"; the lamp shows {cast['lamp']['3']}, the small flame burning inside the clear glass chimney. "
+               "Layout seen from the doorway: the altar table across the back wall, the medicine cabinet against the LEFT wall, "
+               "the round bronze mirror on its wooden stand and the reclining chair on the RIGHT side")
     zhengting = sets["shenjia-zhengting"]
     for sid, title, text, style, tag in [
         ("set-citang", "祠堂 真人", citang, REAL, "a"),
@@ -134,7 +151,7 @@ def r1(cast: dict, work: Path) -> dict:
         ("set-zhengting-3d", "正廳 3D", zhengting, CG, "a"),
     ]:
         prompt = (
-            "image 1 is only a blank mid-grey canvas: take nothing from it. A wide establishing shot of an empty film set at night: "
+            "image 1 is only a blank mid-grey canvas: take nothing from it. A wide shot of an empty room at night: "
             f"{text}. {NO_TEXT_SET} {style}"
         )
         jobs.append(job(f"{sid}-{tag}", title, ["base/grey-set.png"], prompt, SET, seed, f"r1/{sid}-{tag}.png"))
