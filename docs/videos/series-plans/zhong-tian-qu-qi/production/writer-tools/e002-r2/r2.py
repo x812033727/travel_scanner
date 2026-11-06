@@ -249,9 +249,9 @@ SHOTS = [
          motion="the servant strides up, grabs her left forearm with his right hand and drags her toward the gate on screen right, her wrist never bent backward; she leans back and struggles, her heels dragging two furrows through the dirt",
          zh="中景、跟拍（往右，院門方向）：家丁背影抓住唐小棠的左前臂往院門拖（手腕不反折）；她往後掙、腳跟拖出兩道痕（剪在掙到一半）"),
     dict(loc="yard_late", cam="Full shot, slow push in", chars=["tangxiaotang"], night="yard_late", act=3,
-         comp=f"full shot past a wooden eave post in the foreground, on screen right the wooden frame of the yard gate, the backs of grey-clad servants in {SERV}, and Tang Xiaotang among them, her ruqun one closed garment from the high collar to the waist; Qin Shuang off screen left",
+         comp=f"full shot past a wooden eave post in the foreground, on screen right the wooden frame of the yard gate, the backs of grey-clad servants in {SERV}, and Tang Xiaotang among them, two servants' hands gripping her upper arms and pulling her toward the gate, her face pale and frightened, not smiling, her ruqun one closed garment from the high collar to the waist; Qin Shuang off screen left",
          lines=[],
-         motion="one old chopping knife flies in from screen left, spinning end over end in midair, straight toward the gate frame; the shot ends with the knife still in midair; nobody speaks",
+         motion="the servants drag the struggling, frightened Tang Xiaotang a step toward the gate; then one old chopping knife with a dark iron blade and a black-wrapped handle flies in from the left edge, spinning end over end at chest height across the frame toward the gate frame; the shot ends with the knife still in midair",
          zh="全景、慢推、前景屋簷柱子：一把舊柴刀從左邊飛進來，在半空打轉，直直飛向院門門框；收在柴刀還在半空（秦霜在左邊畫外）"),
 ]
 
