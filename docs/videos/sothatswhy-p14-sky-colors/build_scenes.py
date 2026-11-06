@@ -44,11 +44,11 @@ FROZEN = json.load(open(CAM_FILE, encoding="utf-8")) if os.path.exists(CAM_FILE)
 
 S = []
 # Storyboard scorer 2026-11-06: these shots drew a character off-model; restate the reference.
-KIDFIX = {'kid-bright-q', 'kid-plane', 'far-town', 'kid-moon-think', 'kid-movie', 'kid-plane-react', 'kid-moon-black', 'kid-differ', 'kid-where-blue', 'outro'}
+KIDFIX = {'kid-moon-black', 'kid-plane', 'kid-bright-q', 'far-town', 'kid-try', 'kid-plane-react', 'outro', 'kid-far', 'kid-sunset-q', 'kid-sky-share', 'kid-milk-guess', 'kid-movie', 'kid-moon-think', 'kid-differ', 'kid-where-blue'}
 CHIEFFIX = {'chief-eyes', 'outro-chief', 'outro-wave', 'chief-molecule', 'chief-done', 'chief-not-blue', 'chief-breathe', 'chief-haze', 'chief-leftover'}
-CHIEFFIX2 = {'chief-done', 'outro-wave', 'chief-not-blue'}  # round 5: the base description's grey streak kept winning
+CHIEFFIX2 = {'outro-wave', 'chief-not-blue', 'chief-scatter', 'chief-haze', 'chief-done', 'chief-remember', 'chief-less-violet'}  # round 5: the base description's grey streak kept winning
 CHIEFFIX_DESC = "the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines"
-KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, flat 2D cel-shaded cartoon drawing with ink outlines'
+KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines'
 CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, glossy jet-black hair with only one thin silver strand, mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines'
 def _shot(id, prompt, chars, lines, chapter):
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
