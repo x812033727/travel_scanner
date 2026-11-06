@@ -297,7 +297,7 @@ kid("kid-dust-guess", "Waist-up medium shot of the girl in a sunny street blowin
     c("水滴會把天空的顏色換掉，空氣裡飄的灰塵也會。"), k("那灰塵越多，", "很有把握的錯猜"), k("天空就越藍？", None, "S:dust"))
 chief("chief-opposite", C("shaking one finger gently with a smile"),
       c("還記得瑞利那時候的人怎麼猜嗎？", None, "P:olddust"), c("你跟他們想的一樣，可是答案剛好相反。"))
-chief("chief-haze", C("waving one hand slowly in front of her face as if through soft haze in front of a plain pale wall, youthful thirty-something face, glossy jet-black hair, flat 2D cel-shaded cartoon drawing", close=True),
+chief("chief-haze", C("squinting gently with a curious smile as if peering through soft haze, both hands out of frame, plain pale wall behind, youthful thirty-something face, glossy jet-black hair, flat 2D cel-shaded cartoon drawing", close=True),
       c("灰塵和煙的顆粒比較大，"), c("白天的藍會變淡，像蒙上一層白紗。", None, "P:dust"))
 kid("hazy-city", "Medium shot of the girl on a balcony squinting at a pale milky white sky over the city, the sun a soft white disc, bright daylight",
       c("這種霧濛濛的一層，叫做霾。"), c("霾多的時候，中午的天空也可能白白一片。"))
