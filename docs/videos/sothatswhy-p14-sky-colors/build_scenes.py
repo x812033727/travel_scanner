@@ -43,17 +43,22 @@ CAM_FILE = os.path.join(HERE, "cameras.json")
 FROZEN = json.load(open(CAM_FILE, encoding="utf-8")) if os.path.exists(CAM_FILE) else {}
 
 S = []
+# Storyboard scorer 2026-11-06: these shots drew a character off-model; restate the reference.
+KIDFIX = {'kid-bright-q', 'kid-plane', 'far-town', 'kid-moon-think', 'kid-movie', 'kid-plane-react', 'kid-moon-black', 'kid-differ', 'kid-where-blue', 'outro'}
+CHIEFFIX = {'chief-eyes', 'outro-chief', 'outro-wave', 'chief-molecule', 'chief-done', 'chief-not-blue', 'chief-breathe', 'chief-haze', 'chief-leftover'}
+KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, flat 2D cel-shaded cartoon drawing with ink outlines'
+CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, glossy jet-black hair with only one thin silver strand, mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines'
 def _shot(id, prompt, chars, lines, chapter):
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
     cam = FROZEN.get(id) or next(CAMS)
     S.append(dict(id=id, chapter=chapter, template="shot", data=dict(prompt=prompt, camera=cam, visual="still", characters=list(chars)), lines=list(lines)))
 def kid(id, prompt, *lines, chapter=None):
     """The kid doing one simple thing, facing the camera, waist-up or head-and-shoulders."""
-    _shot(id, prompt.rstrip(". ") + ", " + KIDDESC, ["kid"], lines, chapter)
+    _shot(id, prompt.rstrip(". ") + ", " + KIDDESC + (KIDFIX_TAIL if id in KIDFIX else ""), ["kid"], lines, chapter)
 def chief(id, prompt, *lines, chapter=None):
     """The chief, always waist-up or head-and-shoulders, in front of a plain wall in daylight."""
     assert prompt.startswith(("Waist-up", "Head-and-shoulders")), id
-    _shot(id, prompt.rstrip(". ") + ", " + CHIEFDESC, ["chief"], lines, chapter)
+    _shot(id, prompt.rstrip(". ") + ", " + CHIEFDESC + (CHIEFFIX_TAIL if id in CHIEFFIX else ""), ["chief"], lines, chapter)
 def scene(id, prompt, *lines, chapter=None):
     """No character: an object, a place or a mechanism drawn as a picture."""
     _shot(id, prompt, [], lines, chapter)
@@ -209,7 +214,7 @@ kid("kid-sun-q", "Waist-up medium shot of the girl " + ROOF + " shading her eyes
 # ---------- 第三章 ----------
 kid("kid-crayon", "Waist-up medium shot of the girl sitting at a table colouring a round sun with a big yellow crayon, a happy face, " + DAY,
     k("我畫太陽，", "很有把握"), k("都塗黃色的。"), c("很多人都這樣畫。可是要問太陽本身，得離開地面。", "帶笑"), chapter="傍晚的光，多走了好長一段路")
-kid("space-sun", "Medium shot of the girl in a little white space suit floating in black space, a bright white sun shining beside her",
+scene("space-sun", "Wide view of a small white space station floating in black space high above the round blue Earth, a bright pure white sun shining beside it, " + DAY,
       c("從太空站上看，太陽是白的。", None, "P:suncolor"), c("那裡已經在大部分的空氣外面了。"))
 chief("chief-yellowish", C("a small warm smile with one finger raised", close=True),
       c("我們從地面看偏黃，"), c("是因為一部分藍光，半路被彈走了。"))
@@ -348,7 +353,7 @@ kid("kid-got-it2", "Head-and-shoulders close-up of the girl pointing proudly ove
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
       c("下次你抬頭看天空，可以想一想：", "轉向觀眾，輕聲"), c("這道光，一路走了多遠，才來到你眼前。"))
 # The outro is three pictures, no card (series README §3.2, P05).
-kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile proudly holding up a big red rubber stamp in one hand, bright morning light",
+kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
 chief("outro-chief", "Waist-up medium shot of the chief tilting her head with a curious smile and one finger raised, a plain pale wall behind her, bright morning light",
       c("你看過最特別的夕陽，是什麼顏色？", "問句上揚，像聊天"), c("在哪裡看到的？留言告訴我們。"))

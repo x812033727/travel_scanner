@@ -48,6 +48,11 @@ CAM_FILE = os.path.join(HERE, "cameras.json")
 FROZEN = json.load(open(CAM_FILE, encoding="utf-8")) if os.path.exists(CAM_FILE) else {}
 
 S = []
+# Storyboard scorer 2026-11-06: these shots drew a character off-model; restate the reference.
+KIDFIX = {'kid-wet-cold', 'kid-towel2', 'kid-hotter', 'kid-boil-q', 'kid-bargain', 'kid-refrigerant-q', 'kid-big-fridge', 'kid-got-it', 'kid-tea', 'kid-where-q', 'outro'}
+CHIEFFIX = {'chief-promise', 'chief-harder', 'outro-chief', 'outro-wave', 'chief-must-carry', 'chief-own-air', 'chief-ac-same'}
+KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, flat 2D cel-shaded cartoon drawing with ink outlines'
+CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, glossy jet-black hair with only one thin silver strand, mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines'
 def _shot(id, prompt, chars, lines, chapter):
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
     assert id not in {s["id"] for s in S}, id
@@ -55,11 +60,11 @@ def _shot(id, prompt, chars, lines, chapter):
     S.append(dict(id=id, chapter=chapter, template="shot", data=dict(prompt=prompt, camera=cam, visual="still", characters=list(chars)), lines=list(lines)))
 def kid(id, prompt, *lines, chapter=None):
     """The kid doing one simple thing, facing the camera, waist-up or head-and-shoulders."""
-    _shot(id, prompt.rstrip(". ") + ", " + KIDDESC, ["kid"], lines, chapter)
+    _shot(id, prompt.rstrip(". ") + ", " + KIDDESC + (KIDFIX_TAIL if id in KIDFIX else ""), ["kid"], lines, chapter)
 def chief(id, prompt, *lines, chapter=None):
     """The chief, always waist-up or head-and-shoulders, in front of a plain wall in daylight."""
     assert prompt.startswith(("Waist-up", "Head-and-shoulders")), id
-    _shot(id, prompt.rstrip(". ") + ", " + CHIEFDESC, ["chief"], lines, chapter)
+    _shot(id, prompt.rstrip(". ") + ", " + CHIEFDESC + (CHIEFFIX_TAIL if id in CHIEFFIX else ""), ["chief"], lines, chapter)
 def scene(id, prompt, *lines, chapter=None):
     """No character: an object, a place or a mechanism drawn as a picture."""
     _shot(id, prompt, [], lines, chapter)
@@ -73,7 +78,7 @@ def K(action, close=False, where=None):
     return ("Head-and-shoulders close-up" if close else "Waist-up medium shot") + " of the girl " + (where + " " if where else "") + action + ", " + DAY
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
-kid("fridge-open", K("holding the door of " + FRIDGE + " wide open with cool mist drifting onto her happy face", where=KITCHEN),
+kid("fridge-open", K("holding the door of " + FRIDGE + " wide open, the lit shelves visible inside and thick frosty white cold air pouring out of the open door onto her happy face", where=KITCHEN),
     k("所長！今天熱到不行，", "興奮，跑進來報案的語氣"), k("我把冰箱門一打開，", "得意"), k("臉馬上涼涼的！", "開心"), chapter="熱天下午，冰箱門開著")
 kid("kid-idea", K("raising one finger with sparkling eyes and a clever grin", close=True, where=KITCHEN),
     k("我想到一個好方法！", "神秘"), k("冰箱門整天開著，", "得意"), k("廚房就不用開冷氣了！", "很有把握的錯猜"))
@@ -217,7 +222,7 @@ chief("chief-one-bolt", C("holding up one finger with raised eyebrows"),
       c("壓縮機做這件事，吃了一份電。"))
 kid("kid-guess-count", K("counting on her fingers with her tongue sticking out in concentration", close=True),
     k("背後會吐出幾顆？", "追問"))
-scene("two-plus-one", "Close-up of two small round red balls and one bright yellow lightning bolt flowing together into the back of a white refrigerator and coming out as three small round red balls, a pale kitchen wall, " + DAY,
+scene("two-plus-one", "Wide view of a plain white refrigerator in the middle, on its left two small round red balls and one bright yellow lightning bolt drifting toward it, on its right three small round red balls in a neat row drifting away from its back, a pale kitchen wall, " + DAY,
       c("三顆。搬出來的兩顆，加上一顆。", None, "P:ledger"), c("那一顆，就是壓縮機吃進去的電變的。", None, "P:motor"))
 kid("kid-more", K("with her mouth wide open in surprise, holding up three fingers", close=True),
     k("吐出來的比搬出來的多！", "大驚"))
@@ -322,7 +327,7 @@ chief("chief-same-machine", C("spreading her hands to show three things in a row
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
       c("下次你走過冰箱，可以摸摸它的背後：", "轉向觀眾，輕聲"), c("還記得那三顆紅球嗎？你摸到的溫溫，就是它們。", "點名回呼"))
 # The outro is three pictures, no card (series README §3.2, P05).
-kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile proudly holding up a big red rubber stamp in one hand, bright morning light",
+kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
 chief("outro-chief", "Waist-up medium shot of the chief tilting her head with a curious smile and one finger raised, a plain pale wall behind her, bright morning light",
       c("你家冷氣的室外機，裝在哪裡？", "問句上揚，像聊天"), c("吹出來的風有多熱？留言告訴我們。"))
