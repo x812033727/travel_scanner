@@ -51,7 +51,8 @@ NO_TEXT = ("The room is completely empty, with nobody in it. No hanging scrolls,
 
 
 def bust(look: str) -> str:
-    return ", ".join(p for p in look.split(", ") if not any(re.search(rf"\b{w}\b", p) for w in BODY_ONLY))
+    keep = [p for p in look.split(", ") if not any(re.search(rf"\b{w}\b", p) for w in BODY_ONLY)]
+    return ", ".join(p for p in keep if p.strip() not in ("clearly visible", "barely visible"))  # a clause split off a hand sentence
 
 
 def write_png(path: Path, size: tuple[int, int]) -> None:
