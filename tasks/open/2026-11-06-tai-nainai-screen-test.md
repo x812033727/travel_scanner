@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/screen-test
   - .agents/skills/minimax-h3-colab/references/lessons.md
+  - docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/assets
 ---
 
 # 祖奶奶今年十八 角色與試鏡：Colab 真人與 3D 試鏡、聲音試聽
@@ -50,6 +51,10 @@ bash .agents/skills/minimax-h3-colab/scripts/h3.sh images-check --manifest <work
 ```
 
 ## Notes
+
+- 2026-11-06 重畫（`tools/refs.py`，約 5 CU，54.51 → 49.5）：十八歲先畫基本款，壽衣用基本款當 image 1、`latent: image1` 只換衣服，
+  兩個 look 才是同一張臉（分開畫是兩個人）；九十六歲以十八歲基本款畫老；祠堂以格局對的一張為 image 1 只改燈與夜色，燈 1、燈 3 兩張格局一樣。
+  選定的放進 `production/assets/refs/`（`SHA256SUMS`、README 記 seed）。祠堂窗口仍有一道光、九十六歲看起來七十多歲，先用。
 
 - **2026-11-06 試鏡結果（站主看草稿後定：3D 不行，走真人）**。花了約 10.5 CU（68.31 → 57.81，含 Hugging Face 429 卡住的約 2 CU）。
   - 定妝照：灰底當 image 1 可行；要寫「head-and-shoulders、no hands/legs/feet」並拿掉鞋、手的描述，否則畫全身。選 月棠 r1-b（兩條辮子，片段裡被正文拉回一條）、林美鳳 b、福伯 b、九十六歲 r2-c（胸像）。
