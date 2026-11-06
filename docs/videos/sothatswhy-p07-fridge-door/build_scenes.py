@@ -113,7 +113,7 @@ chief("chief-face", C("touching her own cheek lightly with a gentle smile", clos
 kid("kid-stolen", K("holding both hands on her cheeks and laughing", close=True),
     k("我的熱被偷走了！", "好笑"))
 chief("chief-circle", C("drawing a big circle in the air with one finger and a playful smile"),
-      c("要抓這個小偷，我們來畫一個圈。"), c("圈裡面的熱，多了少了，我們都記下來。"))
+      c("想知道熱被搬去哪裡，我們來畫一個圈。"), c("圈裡面的熱，多了少了，我們都記下來。"))
 scene("plan-inside", PLAN + ", a dashed yellow loop drawn tightly around only the inside of the refrigerator, the inside of the refrigerator tinted pale icy blue, a few small round red balls scattered across the warm kitchen floor, " + DAY,
       c("我把熱畫成一顆顆紅色的小球。"), c("先圈住冰箱的裡面就好。"))
 scene("fridge-shelves", "Close-up of fresh green vegetables and a bowl of red apples on clear glass shelves inside a cold white refrigerator with a faint frosty glow, " + DAY,
