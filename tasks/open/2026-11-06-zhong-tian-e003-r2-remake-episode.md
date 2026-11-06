@@ -78,3 +78,4 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
   main 上的 r2 稿子還有：第 17 集唐小棠、第 37–38 集秦霜「臉上沾灰」——拍到那幾集時改成「衣服上有灰」或確認抽出來沒有斑點。
 - s06 用 `fix2` 9030302、s08 用 9030301（手乾淨）；舊的精修片與草稿移到 `st2/refined-woodchips`、`st1/out-woodchips`。
 - 22:15 重剪（s06、s08 換成乾淨的手），cut-qa 0 problem(s)（動量 7.2、靜止 8%），`import --from --force` 重送後台，備註寫明是修正版。
+- 修正版備份推到新分支 `transfer/zt-e903-media-fix`（702 MB；含 s06、s08 新片與舊的 `refined-woodchips`）。舊分支 `transfer/zt-e903-media` 是修正前，留著不動（覆蓋要強制推，不做）。
