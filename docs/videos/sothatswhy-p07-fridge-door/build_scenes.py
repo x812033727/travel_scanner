@@ -63,6 +63,7 @@ def chief(id, prompt, *lines, chapter=None):
 def scene(id, prompt, *lines, chapter=None):
     """No character: an object, a place or a mechanism drawn as a picture."""
     _shot(id, prompt, [], lines, chapter)
+    S[-1]["data"]["nobody"] = True  # PR #2028: no person or face in an object-only shot
 def k(t, e=None, tag=None): return ("kid", t, e, tag)
 def c(t, e=None, tag=None): return ("chief", t, e, tag)
 
