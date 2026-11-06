@@ -1,6 +1,6 @@
 ---
 name: animation-preproduction
-description: AI 動畫開拍前的企劃與鎖定：在付 Hailuo、Kling 或伺服器任何點數之前，先把分場與節拍、鏡位與剪點、每鏡做法（clip、still、切素材）、路線與買幾秒、首尾格、AI 風險分級與重設計、預算的期望與上限、文字卡動態分鏡、小樣計畫、批次順序與備料清單一次排好，交站主確認一次後鎖定；之後的設定圖、配音、關鍵影格、小樣與批量照包做，改動一律走變更單。使用者說先規劃、分鏡表、鏡位表、動態分鏡、animatic、開拍前確認、估一集、怎麼省成本、照真一隻布袋喵的做法，或要改已鎖定的鏡頭時先讀，再交給 animation-production 製作。Plan, risk-grade, price and lock an AI animated episode before paying for anything, then hold every later change to a change order.
+description: AI 動畫開拍前的企劃與鎖定：在付 Hailuo、Kling 或伺服器任何點數之前，先把分場與節拍、鏡位與剪點、每鏡做法（clip、still、切素材）、路線與買幾秒、首尾格、AI 風險分級與重設計、預算的期望與上限、文字卡動態分鏡、小樣計畫、批次順序與備料清單一次排好，交站主確認一次後鎖定；之後的設定圖、配音、關鍵影格、小樣與批量照包做，改動一律走變更單。使用者說先規劃、分鏡表、鏡位表、動態分鏡、animatic、開拍前確認、估一集、怎麼省成本、照真一隻布袋喵的做法，或要改已鎖定的鏡頭時先讀，再交給 animation-production 製作。寫分鏡、審分鏡也先讀：站主說「審片」「審稿」「檢查有沒有缺漏」而對象是還沒拍的分鏡稿時，照 references/storyboard-shot-spec.md〈交給製作端之前的三道檢查〉做（自檢、storyboard-check.py、分段重疊的獨立審稿）。Plan, risk-grade, price and lock an AI animated episode before paying for anything, then hold every later change to a change order.
 metadata:
   short-description: 動畫前期：分鏡表、風險、動態分鏡、開拍鎖定、變更單
 ---
