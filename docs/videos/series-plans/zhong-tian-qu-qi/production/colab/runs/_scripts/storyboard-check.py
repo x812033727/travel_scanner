@@ -10,7 +10,9 @@ Reads each script's six-column shot table
   from the sum of its shots by more than one second; a shot over 6 seconds not marked 長鏡;
   CRLF line endings.
 - warning: a spoken line outside 10–24 characters (shouts marked 短喊 and the system are
-  exempt); review these by hand — exceptions are allowed when the series notes say so.
+  exempt); a panel written with an Arabic-numeral percentage (write it as the system says it,
+  e.g. 百分之二). Review these by hand — exceptions are
+  allowed when the series notes say so.
 - info: shot count, total seconds, and every affection panel 「名字 好感 +N → 總值」 so the
   ledger can be compared with the series notes.
 
@@ -21,6 +23,7 @@ import sys
 
 SHOT = re.compile(r"^\| c\d\d[a-z]? ")
 PANEL = re.compile(r"(\S{2,3}) 好感 ([+-]\d+) → (-?\d+)")
+PERCENT_PANEL = re.compile(r"〔面板〕[^|／]*\d+\s*%")
 STRIP = re.compile(r"[\s，。！？、…—「」：；．,.!?]")
 
 
@@ -48,6 +51,9 @@ def check(path):
         if "（結尾）" not in scene:
             errors.append(f"{title}: no line marked （結尾）")
         rows = [l for l in scene.split("\n") if SHOT.match(l) and l.count("|") == 7]
+        for row in rows:
+            if PERCENT_PANEL.search(row):
+                warnings.append(f"{row.split('|')[1].strip()}: panel uses a numeral percentage")
         scene_sum = 0.0
         for row in rows:
             cells = row.split("|")
