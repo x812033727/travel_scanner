@@ -78,10 +78,12 @@ kid("kid-where-blue", "Head-and-shoulders close-up of the girl shading her eyes 
     k("那天空的藍，", "疑惑"), k("是從哪裡來的？", "句尾上揚", "S:where"))
 scene("milk-teaser", "Close-up of one tall clear glass of water with a faint milky cloudiness standing on a wooden kitchen table, a small flashlight lying beside it, " + DAY,
       c("先猜一件事：一杯水加幾滴牛奶，拿手電筒照，", "賣關子"), c("從旁邊看，它會是什麼顏色？", "問句，最後放慢", "S:milk"))
+kid("kid-milk-guess", "Head-and-shoulders close-up of the girl peering at a tall glass of milky water on a kitchen table with a confident little smile, " + DAY,
+    k("牛奶水？", "想一想"), k("應該白白的吧？", "很有把握的錯猜"))
 scene("moon-teaser", "Wide view of the grey cratered surface of the Moon in bright sunshine, a small round blue Earth hanging in the sky above the horizon, ",
       c("還有，要是站在月球上，白天抬頭看，", "賣關子"), c("天空會是什麼顏色？", "問句", "S:moon"))
 kid("kid-cloud-teaser", "Waist-up medium shot of the girl " + ROOF + " pointing up at one big puffy white cloud in a blue sky, a puzzled frown, " + DAY,
-    k("月球上？我猜不出來。", "搖頭"), k("可是還有雲！天空是藍的，", "突然想到"), k("雲怎麼是白的？", "句尾上揚", "S:cloud"))
+    k("月球上？我猜不出來。", "搖頭"), k("說到天上，還有雲！", "突然想到"), k("天空是藍的，雲怎麼是白的？", "句尾上揚", "S:cloud"))
 kid("kid-question", "Head-and-shoulders close-up of the girl tilting her head with a curious frown, a plain pale wall behind her, " + DAY,
     k("同一道陽光，", "認真"), k("怎麼一下藍、一下紅？", "認真發問，句尾上揚", "S:same"))
 
@@ -131,7 +133,7 @@ kid("kid-jar-clear", "Head-and-shoulders close-up of the girl looking through an
 chief("chief-thick", C("raising one open hand high above her head"),
       c("一小罐空氣，看不出顏色。"), c("可是你頭頂上的空氣，有很厚很厚一大片。"))
 scene("earth-layer", "Wide view of the curved edge of the Earth seen from very high up, a thin glowing blue band of sky hugging the horizon, a dark sky above it, ",
-      c("有人從大約兩萬公尺高的飛機上拍照，"), c("地球的邊上，就是一圈薄薄的藍。"))
+      c("美國空軍從大約兩萬公尺高的飛機上拍照，"), c("地球的邊上，就是一圈薄薄的藍。"))
 kid("kid-molecule-q", "Head-and-shoulders close-up of the girl squinting at the empty air in front of her as if searching for something tiny, " + DAY,
     c("這層空氣，是由很多很小的分子組成的。"), k("分子是什麼？", "立刻追問"))
 chief("chief-molecule", C("pinching two fingers together to show something very tiny, eyes twinkling", close=True),
@@ -163,11 +165,11 @@ kid("kid-red-q", "Head-and-shoulders close-up of the girl holding up one finger 
 chief("chief-red-straight", C("pointing one hand straight ahead like an arrow, a calm face"),
       c("紅光比較少被彈到旁邊，"), c("大多照著原來的方向，直直往前走。"), k("紅光好專心喔！", "好笑"))
 chief("chief-rayleigh", C("smiling and raising one finger as if quoting someone"),
-      c("十九世紀，英國科學家瑞利，"), c("算出了這件事：波越短，被彈開得越多。"))
+      c("十九世紀，英國科學家瑞利，把這件事算清楚了。"), c("所以這種散射，就叫做瑞利散射。"))
 scene("dust-beam", "Close-up of a bright sunbeam slanting through a window into a quiet room, full of tiny glittering dust specks floating in the light, " + DAY,
       c("有趣的是，瑞利他們當時以為，", "說故事"), c("把藍光彈開的，是空氣裡的灰塵和小水滴。", None, "S:olddust"))
 chief("chief-einstein", C("raising both eyebrows with a delighted smile and one finger up", close=True),
-      c("後來的人發現：要是靠灰塵，天空的藍應該跟著天氣變很多，"), c("實際上卻沒有變那麼多。"))
+      c("後來的科學家發現：要是靠灰塵，"), c("天空的藍應該跟著天氣變很多，"), c("實際上卻沒有變那麼多。"))
 chief("chief-einstein2", C("nodding with a satisfied smile, both hands open"),
       c("後來，物理學家愛因斯坦在一九一〇年算出來："), c("光靠空氣分子，就夠把天空弄藍了。"))
 kid("kid-einstein", "Head-and-shoulders close-up of the girl with her mouth open in a delighted O, both hands on her cheeks, " + DAY,
@@ -196,16 +198,12 @@ chief("chief-eyes", C("pointing to one of her own eyes behind her round glasses 
       c("還有，我們的眼睛，對紫色比較不敏感。"))
 kid("kid-violet-mix", "Waist-up medium shot of the girl " + ROOF + " holding the small purple flower up against the blue sky and comparing the colours, " + DAY,
     c("天空裡也有紫光，只是混在一起，", "放慢", "P:violet"), c("我們看起來，就成了淡淡的藍。"))
-kid("kid-violet-here", "Head-and-shoulders close-up of the girl hugging the small purple flower to her chest with a relieved smile, " + DAY,
-    k("所以紫光一直都在？", "鬆一口氣"))
-chief("chief-violet-here", C("nodding warmly", close=True),
-      c("一直都在，只是我們的眼睛，比較少注意到它。"))
 kid("kid-eye-pick", "Head-and-shoulders close-up of the girl pointing at her own eye with a surprised grin, a plain pale wall behind her, " + DAY,
     k("我的眼睛，", "驚訝"), k("也會挑顏色？"))
 chief("chief-opinion", C("folding her arms and laughing softly"),
       c("我覺得這是最好玩的地方：", "意見，輕鬆"), c("你看到的顏色，眼睛也參了一腳。"), k("我的眼睛是調色盤！", "得意"))
 kid("kid-sun-q", "Waist-up medium shot of the girl " + ROOF + " shading her eyes and squinting toward the bright sun, a puzzled face, " + DAY,
-    k("藍光都被彈到天上了，", "推理"), k("那太陽本身，是什麼顏色？", "章尾停住，句尾上揚", "S:suncolor"))
+    k("很多藍光被彈到天上了，", "推理"), k("那太陽本身，是什麼顏色？", "章尾停住，句尾上揚", "S:suncolor"))
 
 # ---------- 第三章 ----------
 kid("kid-crayon", "Waist-up medium shot of the girl sitting at a table colouring a round sun with a big yellow crayon, a happy face, " + DAY,
@@ -213,11 +211,11 @@ kid("kid-crayon", "Waist-up medium shot of the girl sitting at a table colouring
 scene("space-sun", "Wide view of the bright white sun shining in a black sky above the curved blue edge of the Earth, seen from space, ",
       c("從太空站上看，太陽是白的。", None, "P:suncolor"), c("那裡已經在大部分的空氣外面了。"))
 chief("chief-yellowish", C("holding up a pinch of two fingers with a small smile", close=True),
-      c("我們從地面看偏黃，"), c("是因為一點藍光，半路被彈走了。"))
+      c("我們從地面看偏黃，"), c("是因為一部分藍光，半路被彈走了。"))
 kid("kid-bright-q", "Head-and-shoulders close-up of the girl squinting with one hand shading her eyes, bright sunshine on her face, " + DAY,
-    k("藍光被彈走那麼多，", "追問"), k("太陽怎麼還這麼亮？", "句尾上揚"))
+    k("藍光少了一些，", "追問"), k("太陽怎麼還這麼亮？", "句尾上揚"))
 chief("chief-half", C("holding one hand flat and sweeping it straight down like a falling beam"),
-      c("被彈開的只是一部分。"), c("晴天時，一半以上的陽光，還是直直照到地面。"))
+      c("少掉的不算多。"), c("晴天時，一半以上的陽光，還是直直照到地面。"))
 kid("kid-bright", "Waist-up medium shot of the girl " + ROOF + " spreading her arms in bright sunshine with a happy squint, " + DAY,
     k("難怪白天，", "想通"), k("地上還是亮亮的！"))
 kid("kid-hot-guess", "Waist-up medium shot of the girl " + ROOF + " fanning her face with one hand as if very hot, looking at " + SUNSET,
@@ -227,7 +225,7 @@ chief("chief-same-sun2", C("shaking her head gently with a kind smile"),
 kid("kid-path-q", "Head-and-shoulders close-up of the girl frowning in confusion with one hand scratching her head, " + DAY,
     k("路會變？", "不解"), k("太陽又沒有變遠。"))
 chief("chief-path", C("drawing a long slanting line in the air with one finger"),
-      c("太陽沒有變遠。"), c("是光在路上，要穿過的空氣變厚了。"))
+      c("對，距離沒變，"), c("變的是光在路上要穿過的空氣，厚了很多。"))
 scene("path-overhead", "Wide view of a simple diagram of a big round Earth with a thin glowing blue air layer around it, a tiny girl standing on top, one short golden sunbeam coming straight down to her from above, " + DAY,
       c("太陽在頭頂上的時候，"), c("光是直直穿下來，走的空氣比較少。"))
 scene("path-sideways", "Wide view of a simple diagram of a big round Earth with a thin glowing blue air layer around it, a tiny girl standing on top, one very long golden-red sunbeam skimming in sideways through the air layer to her, ",
@@ -251,7 +249,7 @@ chief("chief-elsewhere", C("pointing far away to one side with a gentle smile"),
 scene("far-town", "Wide view of a small faraway town of rooftops and hills under a deep bright blue afternoon sky, " + DAY,
       c("同一道光彈出去的藍光，", None, "P:gone"), c("正讓更遠的地方，看到下午的藍天。"))
 chief("chief-quote", C("placing one hand on her chest with a warm thoughtful smile", close=True),
-      c("美國有一位氣象學家這樣說："), c("夕陽會紅，是因為白天的天空是藍的。"))
+      c("美國國家氣象局的科學家科菲迪這樣說："), c("夕陽會紅，是因為白天的天空是藍的。"))
 kid("kid-sky-share", "Head-and-shoulders close-up of the girl hugging herself with a delighted grin, warm sunset glow on her face",
     k("我的夕陽，", "驚喜"), k("是別人的藍天！"))
 chief("chief-cup-back", C("holding up one tall clear glass of water with a faint milky cloudiness and smiling"),
@@ -295,7 +293,7 @@ chief("chief-cloud-light", C("raising one hand toward the side as if catching li
 kid("kid-movie", "Head-and-shoulders close-up of the girl clapping her hands with a delighted grin, warm orange sunset glow on her face",
     k("天空在演電影！", "開心"))
 kid("kid-dust-guess", "Waist-up medium shot of the girl in a sunny street blowing a puff of dust off her palm with a confident grin, " + DAY,
-    k("那空氣裡灰塵越多，", "很有把握的錯猜"), k("天空就越藍？", None, "S:dust"))
+    c("水滴會把天空的顏色換掉，空氣裡飄的灰塵也會。"), k("那灰塵越多，", "很有把握的錯猜"), k("天空就越藍？", None, "S:dust"))
 chief("chief-opposite", C("shaking one finger gently with a smile"),
       c("還記得瑞利那時候的人怎麼猜嗎？", None, "P:olddust"), c("你跟他們想的一樣，可是答案剛好相反。"))
 chief("chief-haze", C("waving one hand slowly in front of her face as if through haze", close=True),
@@ -309,15 +307,15 @@ kid("kid-sunset-q", "Head-and-shoulders close-up of the girl with a curious frow
 chief("chief-unsure", C("tilting one hand side to side with an honest smile"),
       c("夕陽就說不準了：有時候更紅，"), c("有時候反而灰濛濛的。"))
 kid("kid-plane", "Head-and-shoulders close-up of the girl looking out of a round airplane window at a glowing orange sky, amazed, warm bright sunset light",
-    c("有人傍晚搭飛機，地上的夕陽淡淡的；"), c("飛機一爬過那層霾，天上的顏色突然鮮豔起來。"))
+    c("坐傍晚班機的人會看到：地上的夕陽淡淡的；"), c("飛機一爬過那層霾，天上的顏色就鮮豔起來。"))
 kid("kid-plane-react", "Head-and-shoulders close-up of the girl pressing both palms against her cheeks with a big grin, a plain pale wall behind her, " + DAY,
     k("霾把顏色蓋住了！", "恍然大悟"))
 chief("chief-high-cloud", C("raising one hand high above her head with a pleased smile"),
-      c("所以傍晚最紅的，常常是高高的雲："), c("照到它的光，還沒穿過底下那層霾。"), k("高的雲，先拿到紅光！", "想通"))
+      c("所以傍晚最紅的，常常是高高的雲："), c("照到它的光，還沒穿過底下那層霾。"), k("高的雲，紅得最漂亮！", "想通"))
 chief("chief-volcano-q", C("leaning forward with a mysterious little smile", close=True),
-      c("可是有一種特別的晚霞，跟火山有關。", "賣關子", "S:volcano"))
+      c("可是有一種特別的晚霞，跟火山有關。", "賣關子", "S:volcano"), c("一九九一年，菲律賓的皮納圖博火山大爆發。"))
 scene("volcano", "Wide view of a big volcano on a green island erupting a tall grey ash column high into a blue sky, " + DAY,
-      c("一九九一年，菲律賓的皮納圖博火山大爆發，"), c("後來細細的小顆粒，飄在大約二、三十公里高。"))
+      c("火山噴出的氣體，在高空變成細細的小水滴，"), c("慢慢飄散在大約二、三十公里高的地方。"))
 kid("kid-so-high", "Head-and-shoulders close-up of the girl craning her neck to look straight up with her mouth open, " + DAY,
     k("飛那麼高？", "驚訝"), k("那地上看得到嗎？", "句尾上揚"))
 scene("afterglow", "Wide view of a quiet town of rooftops just after sunset, the sky high above glowing soft lilac and red-orange, ",
@@ -331,7 +329,7 @@ chief("chief-strange", C("looking straight at the viewer with a curious smile, o
 
 # ---------- 收尾 ----------
 chief("chief-moon-back", C("pointing upward with one finger and a playful smile"),
-      c("還記得開頭那個問題嗎？", "轉向觀眾"), c("站在月球上，白天抬頭看。"), chapter="站在月球上抬頭看")
+      c("空氣多一點，顏色就變；那幾乎沒有空氣呢？", "接住上一句"), c("還記得開頭那個問題嗎？站在月球上，白天抬頭看。", "轉向觀眾"), chapter="站在月球上抬頭看")
 kid("kid-moon-think", "Head-and-shoulders close-up of the girl with her eyes closed tight and both hands on her temples, thinking hard, " + DAY,
     k("月球上……", "慢慢想"), k("有空氣嗎？", "句尾上揚"))
 chief("chief-almost", C("holding her finger and thumb almost touching", close=True),
@@ -343,7 +341,7 @@ kid("kid-moon-black", "Head-and-shoulders close-up of the girl gasping with both
 scene("moon-black", "Wide view of the grey cratered surface of the Moon in dazzling sunshine under an inky black sky, the bright white sun in the black sky, ",
       c("對。太陽明明很亮，月球白天的天空，卻是黑的。", None, "P:moon"), c("亮亮的地面，配上一整片黑漆漆的天。"))
 kid("kid-got-it", "Waist-up medium shot of the girl " + ROOF + " throwing both arms up with a huge happy smile, " + DAY,
-    k("我知道了！", "自己想通"), k("我在頂樓看到的藍和紅，", "篤定"))
+    k("我知道了！", "自己想通"), k("還記得我在頂樓看到的藍和紅嗎？", "篤定"))
 kid("kid-got-it2", "Head-and-shoulders close-up of the girl pointing proudly over her shoulder toward " + SUNSET + ", a big grin",
     k("是同一道光，", "篤定"), k("走了短的路和長的路！", "開心", "P:same"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
@@ -413,6 +411,8 @@ doc = {
         {"title": "NASA Science: 9 Phenomena NASA Astronauts Will Encounter at the Moon's South Pole", "url": "https://science.nasa.gov/solar-system/moon/phenomena-nasa-astronauts-will-encounter-at-moons-south-pole/", "checked_on": CHECKED},
         {"title": "NASA: Dark Sky, Bright Sun", "url": "https://www.nasa.gov/image-article/dark-sky-bright-sun/", "checked_on": CHECKED},
         {"title": "Wikipedia: Critical opalescence (Einstein 1910)", "url": "https://en.wikipedia.org/wiki/Critical_opalescence", "checked_on": CHECKED},
+        {"title": "Wikipedia: Isaac Newton", "url": "https://en.wikipedia.org/wiki/Isaac_Newton", "checked_on": CHECKED},
+        {"title": "Wikipedia: Haze", "url": "https://en.wikipedia.org/wiki/Haze", "checked_on": CHECKED},
         {"title": "Wikipedia: 1991 eruption of Mount Pinatubo", "url": "https://en.wikipedia.org/wiki/1991_eruption_of_Mount_Pinatubo", "checked_on": CHECKED},
     ],
     "assets": [],
