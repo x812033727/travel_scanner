@@ -46,7 +46,9 @@ S = []
 # Storyboard scorer 2026-11-06: these shots drew a character off-model; restate the reference.
 KIDFIX = {'kid-bright-q', 'kid-plane', 'far-town', 'kid-moon-think', 'kid-movie', 'kid-plane-react', 'kid-moon-black', 'kid-differ', 'kid-where-blue', 'outro'}
 CHIEFFIX = {'chief-eyes', 'outro-chief', 'outro-wave', 'chief-molecule', 'chief-done', 'chief-not-blue', 'chief-breathe', 'chief-haze', 'chief-leftover'}
-KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, flat 2D cel-shaded cartoon drawing with ink outlines'
+CHIEFFIX2 = {'chief-done', 'outro-wave', 'chief-not-blue'}  # round 5: the base description's grey streak kept winning
+CHIEFFIX_DESC = "the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines"
+KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, flat 2D cel-shaded cartoon drawing with ink outlines'
 CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, glossy jet-black hair with only one thin silver strand, mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines'
 def _shot(id, prompt, chars, lines, chapter):
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
@@ -58,7 +60,7 @@ def kid(id, prompt, *lines, chapter=None):
 def chief(id, prompt, *lines, chapter=None):
     """The chief, always waist-up or head-and-shoulders, in front of a plain wall in daylight."""
     assert prompt.startswith(("Waist-up", "Head-and-shoulders")), id
-    _shot(id, prompt.rstrip(". ") + ", " + CHIEFDESC + (CHIEFFIX_TAIL if id in CHIEFFIX else ""), ["chief"], lines, chapter)
+    _shot(id, prompt.rstrip(". ") + ", " + (CHIEFFIX_DESC if id in CHIEFFIX2 else CHIEFDESC + (CHIEFFIX_TAIL if id in CHIEFFIX else "")), ["chief"], lines, chapter)
 def scene(id, prompt, *lines, chapter=None):
     """No character: an object, a place or a mechanism drawn as a picture."""
     _shot(id, prompt, [], lines, chapter)

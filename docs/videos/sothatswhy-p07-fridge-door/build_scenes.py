@@ -51,7 +51,9 @@ S = []
 # Storyboard scorer 2026-11-06: these shots drew a character off-model; restate the reference.
 KIDFIX = {'kid-wet-cold', 'kid-towel2', 'kid-hotter', 'kid-boil-q', 'kid-bargain', 'kid-refrigerant-q', 'kid-big-fridge', 'kid-got-it', 'kid-tea', 'kid-where-q', 'outro'}
 CHIEFFIX = {'chief-promise', 'chief-harder', 'outro-chief', 'outro-wave', 'chief-must-carry', 'chief-own-air', 'chief-ac-same'}
-KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, flat 2D cel-shaded cartoon drawing with ink outlines'
+CHIEFFIX2 = {'chief-must-carry', 'chief-promise', 'outro-wave', 'outro-chief', 'chief-own-air'}  # round 5: the base description's grey streak kept winning
+CHIEFFIX_DESC = "the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines"
+KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, flat 2D cel-shaded cartoon drawing with ink outlines'
 CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, glossy jet-black hair with only one thin silver strand, mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines'
 def _shot(id, prompt, chars, lines, chapter):
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
@@ -64,7 +66,7 @@ def kid(id, prompt, *lines, chapter=None):
 def chief(id, prompt, *lines, chapter=None):
     """The chief, always waist-up or head-and-shoulders, in front of a plain wall in daylight."""
     assert prompt.startswith(("Waist-up", "Head-and-shoulders")), id
-    _shot(id, prompt.rstrip(". ") + ", " + CHIEFDESC + (CHIEFFIX_TAIL if id in CHIEFFIX else ""), ["chief"], lines, chapter)
+    _shot(id, prompt.rstrip(". ") + ", " + (CHIEFFIX_DESC if id in CHIEFFIX2 else CHIEFDESC + (CHIEFFIX_TAIL if id in CHIEFFIX else "")), ["chief"], lines, chapter)
 def scene(id, prompt, *lines, chapter=None):
     """No character: an object, a place or a mechanism drawn as a picture."""
     _shot(id, prompt, [], lines, chapter)
@@ -222,7 +224,7 @@ chief("chief-one-bolt", C("holding up one finger with raised eyebrows"),
       c("壓縮機做這件事，吃了一份電。"))
 kid("kid-guess-count", K("counting on her fingers with her tongue sticking out in concentration", close=True),
     k("背後會吐出幾顆？", "追問"))
-scene("two-plus-one", "Wide view of a plain white refrigerator in the middle, on its left two small round red balls and one bright yellow lightning bolt drifting toward it, on its right three small round red balls in a neat row drifting away from its back, a pale kitchen wall, " + DAY,
+scene("two-plus-one", "Close-up of exactly three plump round red balls in a neat row floating in front of a plain white refrigerator, the two on the left plain red, the third on the right glowing with a warm yellow light, a pale kitchen wall, " + DAY,
       c("三顆。搬出來的兩顆，加上一顆。", None, "P:ledger"), c("那一顆，就是壓縮機吃進去的電變的。", None, "P:motor"))
 kid("kid-more", K("with her mouth wide open in surprise, holding up three fingers", close=True),
     k("吐出來的比搬出來的多！", "大驚"))
