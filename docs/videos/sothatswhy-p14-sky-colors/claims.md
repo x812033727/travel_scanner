@@ -131,7 +131,7 @@
   大型火山爆發把細小顆粒送進平流層時，日落後會出現特別的晚霞（afterglow）；1991 年菲律賓皮納圖博火山之後，這種晚霞斷斷續續持續了大約 18 個月。
 - **可用說法**：「空氣裡的灰塵和煙一多，白天的藍會變淡；多到一個程度，中午也可能白白一片。」「天空最藍的日子，常常是空氣很乾淨的日子。」
   「夕陽就說不準了：有時更紅，有時反而灰濛濛的。」
-  「一九九一年，菲律賓的皮納圖博火山大爆發。」「火山噴出的氣體，在高空變成細細的小水滴，慢慢飄散在大約二、三十公里高的地方。」（Corfidi：「thin veils of dust or sulfuric acid droplets at altitudes of 12 to 18 miles」；Wikipedia：二氧化硫「oxidized in the atmosphere to produce a haze of sulfuric acid droplets, which gradually spread throughout the stratosphere」）
+  「一九九一年，菲律賓的皮納圖博火山大爆發。」「火山噴出的氣體，在高空變成細細的小液滴，慢慢飄散在大約二、三十公里高的地方。」（Corfidi：「thin veils of dust or sulfuric acid droplets at altitudes of 12 to 18 miles」；Wikipedia：二氧化硫「oxidized in the atmosphere to produce a haze of sulfuric acid droplets, which gradually spread throughout the stratosphere」）
   「太陽下山大約十五分鐘後，地面暗了，高空那一層還照得到太陽，被照成淡紫色和橙紅色。」（小顆粒是被陽光照亮，不是自己發光）「這種晚霞斷斷續續出現了大約一年半。」
 - **數字**：Corfidi：平流層顆粒在「altitudes of 12 to 18 miles」（約 19–29 公里）；「About 15 minutes after sunset」；「Mount Pinatubo's sunset afterglows persisted to varying degrees for about 18 months after the initial explosion」；
   1991 年 9 月美國東部看到的三種晚霞，其中一種是「a lilac afterglow」，另一種「a red-orange afterglow」。

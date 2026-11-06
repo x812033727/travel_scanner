@@ -69,7 +69,7 @@ kid("roof-blue", "Waist-up medium shot of the girl " + ROOF + " looking up at a 
 kid("roof-sunset", "Waist-up medium shot of the girl " + ROOF + " pointing at " + SUNSET + ", her eyes wide",
     k("可是傍晚再上去，", "壓低聲音"), k("太陽變成一顆紅紅的大球！", "誇張"))
 chief("chief-same-sun", C("raising one finger with a calm knowing smile"),
-      c("同一個太陽，照下來的也是同一道陽光喔。", "賣關子"), c("你每天抬頭都看得到，卻很少有人問為什麼。", "轉向觀眾"))
+      c("同一個太陽，照下來的也是同一道陽光喔。", "賣關子"), c("你每天抬頭都看得到，它到底是被誰換了顏色？", "轉向觀眾"))
 kid("kid-swap", "Head-and-shoulders close-up of the girl narrowing her eyes like a detective with one finger raised, a plain pale wall behind her, " + DAY,
     k("一定有人偷偷換了顏色！", "像偵探"))
 chief("chief-swap", C("chuckling with one hand over her mouth", close=True),
@@ -133,7 +133,7 @@ kid("kid-jar-clear", "Head-and-shoulders close-up of the girl looking through an
 chief("chief-thick", C("raising one open hand high above her head"),
       c("一小罐空氣，看不出顏色。"), c("可是你頭頂上的空氣，有很厚很厚一大片。"))
 scene("earth-layer", "Wide view of the curved edge of the Earth seen from very high up, a thin glowing blue band of sky hugging the horizon, a dark sky above it, ",
-      c("美國空軍從大約兩萬公尺高的飛機上拍照，"), c("地球的邊上，就是一圈薄薄的藍。"))
+      c("從高空看最清楚：美國空軍從兩萬公尺高拍過，"), c("地球的邊上，就是一圈薄薄的藍。"))
 kid("kid-molecule-q", "Head-and-shoulders close-up of the girl squinting at the empty air in front of her as if searching for something tiny, " + DAY,
     c("這層空氣，是由很多很小的分子組成的。"), k("分子是什麼？", "立刻追問"))
 chief("chief-molecule", C("pinching two fingers together to show something very tiny, eyes twinkling", close=True),
@@ -219,7 +219,7 @@ chief("chief-half", C("holding one hand flat and sweeping it straight down like 
 kid("kid-bright", "Waist-up medium shot of the girl " + ROOF + " spreading her arms in bright sunshine with a happy squint, " + DAY,
     k("難怪白天，", "想通"), k("地上還是亮亮的！"))
 kid("kid-hot-guess", "Waist-up medium shot of the girl " + ROOF + " fanning her face with one hand as if very hot, looking at " + SUNSET,
-    k("那傍晚它變紅，", "推理"), k("是燒得更熱了嗎？", "很有把握的錯猜", "S:sunset"))
+    k("那傍晚太陽變紅，", "推理"), k("是燒得更熱了嗎？", "很有把握的錯猜", "S:sunset"))
 chief("chief-same-sun2", C("shaking her head gently with a kind smile"),
       c("太陽中午和傍晚都一樣，變的不是它。"), c("變的是光走到你眼前的那條路。"))
 kid("kid-path-q", "Head-and-shoulders close-up of the girl frowning in confusion with one hand scratching her head, " + DAY,
@@ -233,7 +233,7 @@ scene("path-sideways", "Wide view of a simple diagram of a big round Earth with 
 chief("chief-thirty", C("stretching her arms far apart as if showing a very long distance, eyebrows raised"),
       c("等太陽貼到地平線上，光要穿過的空氣，", "數字放慢"), c("大約是太陽在頭頂時的三十多倍。"))
 kid("kid-far", "Head-and-shoulders close-up of the girl with her mouth wide open in surprise, both hands on her cheeks, " + DAY,
-    k("三十多倍？", "大驚"), k("好遠喔！"), k("光要走好長的路！"))
+    k("三十多倍？", "大驚"), k("好厚喔！"), k("光要走好長的路！"))
 scene("beam-fade", "Wide view of one long sunbeam crossing the sky from left to right, many small blue arrows peeling off it along the way, the beam turning from white to golden to red-orange as it travels, ",
       c("路這麼長，藍光一路被彈走、彈走、再彈走。"), c("走到你眼睛時，剩下的多半是紅色和橙色。", None, "P:sunset"))
 chief("chief-lower", C("lowering one flat hand slowly like a setting sun, a calm smile"),
@@ -307,15 +307,15 @@ kid("kid-sunset-q", "Head-and-shoulders close-up of the girl with a curious frow
 chief("chief-unsure", C("tilting one hand side to side with an honest smile"),
       c("夕陽就說不準了：有時候更紅，"), c("有時候反而灰濛濛的。"))
 kid("kid-plane", "Head-and-shoulders close-up of the girl looking out of a round airplane window at a glowing orange sky, amazed, warm bright sunset light",
-    c("坐傍晚班機的人會看到：地上的夕陽淡淡的；"), c("飛機一爬過那層霾，天上的顏色就鮮豔起來。"))
+    c("霾多的傍晚坐飛機，會看到：地上的夕陽淡淡的；"), c("飛機一爬過那層霾，天上的顏色就鮮豔起來。"))
 kid("kid-plane-react", "Head-and-shoulders close-up of the girl pressing both palms against her cheeks with a big grin, a plain pale wall behind her, " + DAY,
     k("霾把顏色蓋住了！", "恍然大悟"))
 chief("chief-high-cloud", C("raising one hand high above her head with a pleased smile"),
-      c("所以傍晚最紅的，常常是高高的雲："), c("照到它的光，還沒穿過底下那層霾。"), k("高的雲，紅得最漂亮！", "想通"))
+      c("霾都在低處，所以傍晚最紅的，常常是高雲："), c("照到它的光，還沒穿過底下那層霾。"), k("高的雲，紅得最漂亮！", "想通"))
 chief("chief-volcano-q", C("leaning forward with a mysterious little smile", close=True),
-      c("可是有一種特別的晚霞，跟火山有關。", "賣關子", "S:volcano"), c("一九九一年，菲律賓的皮納圖博火山大爆發。"))
+      c("還有一種更特別的晚霞，跟火山有關。", "賣關子", "S:volcano"), c("一九九一年，菲律賓的皮納圖博火山大爆發。"))
 scene("volcano", "Wide view of a big volcano on a green island erupting a tall grey ash column high into a blue sky, " + DAY,
-      c("火山噴出的氣體，在高空變成細細的小水滴，"), c("慢慢飄散在大約二、三十公里高的地方。"))
+      c("火山噴出的氣體，在高空變成細細的小液滴，"), c("慢慢飄散在大約二、三十公里高的地方。"))
 kid("kid-so-high", "Head-and-shoulders close-up of the girl craning her neck to look straight up with her mouth open, " + DAY,
     k("飛那麼高？", "驚訝"), k("那地上看得到嗎？", "句尾上揚"))
 scene("afterglow", "Wide view of a quiet town of rooftops just after sunset, the sky high above glowing soft lilac and red-orange, ",
@@ -412,6 +412,8 @@ doc = {
         {"title": "NASA: Dark Sky, Bright Sun", "url": "https://www.nasa.gov/image-article/dark-sky-bright-sun/", "checked_on": CHECKED},
         {"title": "Wikipedia: Critical opalescence (Einstein 1910)", "url": "https://en.wikipedia.org/wiki/Critical_opalescence", "checked_on": CHECKED},
         {"title": "Wikipedia: Isaac Newton", "url": "https://en.wikipedia.org/wiki/Isaac_Newton", "checked_on": CHECKED},
+        {"title": "Wikipedia: Rayleigh scattering", "url": "https://en.wikipedia.org/wiki/Rayleigh_scattering", "checked_on": CHECKED},
+        {"title": "Wikipedia: Storm Prediction Center", "url": "https://en.wikipedia.org/wiki/Storm_Prediction_Center", "checked_on": CHECKED},
         {"title": "Wikipedia: Haze", "url": "https://en.wikipedia.org/wiki/Haze", "checked_on": CHECKED},
         {"title": "Wikipedia: 1991 eruption of Mount Pinatubo", "url": "https://en.wikipedia.org/wiki/1991_eruption_of_Mount_Pinatubo", "checked_on": CHECKED},
     ],
