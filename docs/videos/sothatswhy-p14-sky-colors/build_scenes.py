@@ -44,11 +44,11 @@ FROZEN = json.load(open(CAM_FILE, encoding="utf-8")) if os.path.exists(CAM_FILE)
 
 S = []
 # Storyboard scorer 2026-11-06: these shots drew a character off-model; restate the reference.
-KIDFIX = {'kid-moon-black', 'kid-plane', 'kid-bright-q', 'far-town', 'kid-try', 'kid-plane-react', 'outro', 'kid-far', 'kid-sunset-q', 'kid-sky-share', 'kid-milk-guess', 'kid-movie', 'kid-moon-think', 'kid-differ', 'kid-where-blue'}
+KIDFIX = {'kid-bright-q', 'kid-sunset-q', 'kid-prism', 'roof-sunset', 'kid-clear-day', 'kid-hot-guess', 'kid-try', 'kid-cloud-teaser', 'kid-moon-think', 'kid-plane-react', 'outro', 'kid-air-q', 'far-town', 'kid-moon-black', 'moon-black', 'kid-sky-share', 'kid-differ', 'kid-plane', 'kid-far', 'kid-movie', 'kid-where-blue', 'kid-dust-guess', 'kid-sea', 'kid-milk-guess'}
 CHIEFFIX = {'chief-eyes', 'outro-chief', 'outro-wave', 'chief-molecule', 'chief-done', 'chief-not-blue', 'chief-breathe', 'chief-haze', 'chief-leftover'}
-CHIEFFIX2 = {'outro-wave', 'chief-not-blue', 'chief-scatter', 'chief-haze', 'chief-done', 'chief-remember', 'chief-less-violet'}  # round 5: the base description's grey streak kept winning
+CHIEFFIX2 = {'chief-rayleigh', 'chief-less-violet', 'chief-done', 'outro-wave', 'chief-haze', 'chief-not-blue', 'chief-lower', 'chief-einstein2', 'chief-scatter', 'chief-strange', 'chief-remember'}  # round 5: the base description's grey streak kept winning
 CHIEFFIX_DESC = "the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines"
-KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines'
+KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines'
 CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, glossy jet-black hair with only one thin silver strand, mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines'
 def _shot(id, prompt, chars, lines, chapter):
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
