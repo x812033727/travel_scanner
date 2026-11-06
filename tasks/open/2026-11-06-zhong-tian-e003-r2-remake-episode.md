@@ -45,9 +45,12 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - 免費檢查 0 error、0 warning。
 
 - [x] 規格、配音、免費檢查
-- [ ] 第一段草稿（每鏡兩個種子），挑片
+- [x] 第一段草稿（每鏡兩個種子），挑片（`colab/runs/e903/picks.tsv`）
 - [ ] 第二段精修
 - [ ] 剪接、cut-qa、量成片
 - [ ] `import --from`，備註「第 3 集重製版 r2」
 - 2026-11-06 08:03 草稿開跑；容器約 08:20 前後重啟，跑完 4 支就斷，pod 空轉到被站台 60 分鐘停掉（約 US$2.6 白花）。10:30 重跑（已有的跳過），EU-CZ-1 沒貨，`scratchpad/chain903d.sh` 最多等 8 小時，抽完接真人版試拍的定妝照（同一個 pod）。
 - 2026-11-06 12:45 站主：「真人版試拍不用試拍了」。排在草稿後的定妝照 manifest 改名成 `colab/runs/live-pilot/portraits.cancelled.json`，那一步會檢查失敗直接結束，不花錢。
+- 挑片：s14、s19、s21、s25、s29 各有一支中途跳鏡，用另一支；s12 用 02（三根手指比清楚）。s01、s07 兩支動態都低（插鏡、坐著說話），照用。
+- s39（本集最後一句）兩支都拍成全景：`fix1` 把場景長描述縮短、寫明「第一格就是阿令的臉與肩膀」，重抽用 9030202（低角度、短刀橫在膝上、推到臉）。
+- 14:10 起第二段精修 40 鏡（跑完自動停 pod）。剪接表 `hailuo/edit-dh-e903.json`（tension／comedy／suspense，照稿的音效表）。
