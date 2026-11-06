@@ -46,9 +46,12 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - 阿令「沒戴鐵鐐」不另畫定妝照：她的定妝照是胸像、本來就沒有鐵鐐（第 1 集的鐵鐐是正文寫的）。
 - 錢員外 `cast.json` 基本造型拿掉「身後兩個家丁」（跟二牛扁擔同一種錯：道具寫進基本造型）。
 
-- [ ] 規格與免費檢查（preflight 0 error）
-- [ ] 配音（中文整句）
+- [x] 規格與免費檢查（preflight 0 error、0 warning）
+- [x] 配音（中文整句，38 句，句內語速中位 4.2 字／秒）
 - [ ] 第一段草稿（每鏡兩個種子），挑片
 - [ ] 第二段精修
 - [ ] 剪接、cut-qa、量成片
 - [ ] `import --from`，備註「第 2 集重製版 r2」
+- 錢員外的三句錄出來 7.4–7.8 秒（他說得慢），`BUY` 補成 s06 8、s27 10、s29 10、s30 8、s33 10、s38 8（另有 s03 8、s34 10）。
+- 2026-11-06 02:10 起第一段草稿：41 鏡 × 兩個種子（9020101／102）共 82 支，`colab/runs/e902/v1/spec.json`，pod fpfiyl95634b56。
+  `retake-run.sh` 用 `setsid nohup` 跑（背景工作兩小時會被砍，這批要約四小時）。

@@ -271,4 +271,4 @@ FOOT = [
 
 # Long shots: seconds to buy so the lines fit without slowing past 1.1x (script.md 長鏡清單: c34 10 s;
 # the others from the builder's timeline, any shot longer than the default 6 s).
-BUY = {"s03": 8, "s34": 10}
+BUY = {"s03": 8, "s06": 8, "s27": 10, "s29": 10, "s30": 8, "s33": 10, "s34": 10, "s38": 8}  # s06, s27-s38: the recorded lines run longer than 6 s (錢員外 speaks slowly)
