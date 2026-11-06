@@ -1,4 +1,4 @@
-# 祖奶奶今年十八 第54集：DNA
+# 恁祖媽今年18 第54集：DNA
 
 分鏡照 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` 的十一項寫；第一季共用的時間線、燈帳、道具、場景格局與接點在
 `docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/s1-bible-e001-e060.md`，角色外貌、聲音、場景與燈的英文提示詞在同目錄 `cast.json`。

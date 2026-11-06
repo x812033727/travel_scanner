@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""《祖奶奶今年十八》一集：script.md ＋ shots-en.json → video.json、brief.md 與 Colab Ref2VA 第一段 manifest（標準函式庫）。
+"""《恁祖媽今年18》一集：script.md ＋ shots-en.json → video.json、brief.md 與 Colab Ref2VA 第一段 manifest（標準函式庫）。
 
   compile.py 1 [--check] [--manifest --refs DIR --work DIR [--width 960 --height 544] [--only c01,c02] [--placeholders]]
 
@@ -30,7 +30,7 @@ import parse_script  # noqa: E402
 
 ROOT = HERE.parents[6]
 CAST = HERE.parent / "cast.json"
-SERIES = "祖奶奶今年十八"
+SERIES = "恁祖媽今年18"
 LINE_PREFIX = "t"
 TAIL = ("One continuous shot. Natural, realistic live-action human motion; faces, hair and costumes stay as in their reference pictures; "
         "nothing written anywhere in the frame.")

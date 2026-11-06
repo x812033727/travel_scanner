@@ -1,6 +1,6 @@
 ---
 id: 2026-11-06-tai-nainai-screen-test
-title: 祖奶奶今年十八 角色與試鏡：Colab 真人與 3D 試鏡、聲音試聽
+title: 恁祖媽今年18 角色與試鏡：Colab 真人與 3D 試鏡、聲音試聽
 status: in-progress
 priority: P1
 area: docs
@@ -16,11 +16,11 @@ scope:
   - docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/assets
 ---
 
-# 祖奶奶今年十八 角色與試鏡：Colab 真人與 3D 試鏡、聲音試聽
+# 恁祖媽今年18 角色與試鏡：Colab 真人與 3D 試鏡、聲音試聽
 
 ## Why
 
-《祖奶奶今年十八》第一季的 `cast.json` 寫的是真人電影感（photorealistic live-action），但 repo 裡還沒有任何一次真人風格的實測：
+《恁祖媽今年18》第一季的 `cast.json` 寫的是真人電影感（photorealistic live-action），但 repo 裡還沒有任何一次真人風格的實測：
 《種田》在 Colab 做過整季的是 3D CG，而且 Qwen-Image-Edit 的首格臉到不了定妝照的質感。站主 2026-11-06 要先評估真人劇再開角色，
 同意的試鏡：Colab 上畫四個角色的定妝照（真人，另畫一版 3D 對照），用第 1 集的鏡頭跑 Ref2VA 三段式片段，再用站台試聽月棠的聲音。
 過了才畫全季 30 個角色；沒過退回 3D CG 路線。

@@ -1,4 +1,4 @@
-# 祖奶奶今年十八 第25集：活在這個時代
+# 恁祖媽今年18 第25集：活在這個時代
 
 第一季第三篇章「女兒」第五集。分鏡照 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` 的十一項寫；
 第一季共用的時間線、燈帳、道具、場景格局、路程與接點在 `docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/s1-bible-e001-e060.md`，

@@ -1,4 +1,4 @@
-# 祖奶奶今年十八 第29集：童謠
+# 恁祖媽今年18 第29集：童謠
 
 第一季第 29 集（第三章〈女兒〉）。劇情照 `season-01.json` 第 29 集細綱；時間、燈、錢、道具、場景格局、接點與跟細綱不同的字句照
 `docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/s1-bible-e001-e060.md`（以下稱 bible），角色外貌、聲音、場景與道具的提示詞照同目錄 `cast.json`。

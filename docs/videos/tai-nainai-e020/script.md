@@ -1,4 +1,4 @@
-# 祖奶奶今年十八 第20集：鈴鐺
+# 恁祖媽今年18 第20集：鈴鐺
 
 分鏡照 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` 的十一項寫；第一季共用的時間線、接點、帳、場景格局與道具在
 `docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/s1-bible-e001-e060.md`（下稱 bible），角色外貌、聲音、場景與道具的提示詞在同目錄 `cast.json`。

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""把《祖奶奶今年十八》一集的 script.md 解析成結構化的場與鏡（標準函式庫，python3 -I 跑）。
+"""把《恁祖媽今年18》一集的 script.md 解析成結構化的場與鏡（標準函式庫，python3 -I 跑）。
 
   parse_script.py docs/videos/tai-nainai-e001/script.md [--json]
 

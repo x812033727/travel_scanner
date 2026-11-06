@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""《祖奶奶今年十八》的定妝照與場景圖：產生 `h3.sh images` 的 manifest（Qwen-Image-Edit，標準函式庫）。
+"""《恁祖媽今年18》的定妝照與場景圖：產生 `h3.sh images` 的 manifest（Qwen-Image-Edit，標準函式庫）。
 
   refs.py portraits --ids yuetang-18,yuetang-18:shouyi,fubo [--takes 2] --work DIR
   refs.py aged --from DIR/yuetang-18-shouyi-t1.png [--takes 2] --work DIR      # 九十六歲以十八歲為 image 1

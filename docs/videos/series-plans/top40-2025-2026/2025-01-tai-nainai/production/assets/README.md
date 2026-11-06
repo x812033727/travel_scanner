@@ -1,4 +1,4 @@
-# 《祖奶奶今年十八》的共用參考圖
+# 《恁祖媽今年18》的共用參考圖
 
 雲端 session 的工作資料夾不會留下來，所以每集都要、又重畫不出一樣結果的定妝照與場景圖放在這裡（照《種田》`production/assets/README.md` 的做法）。
 `SHA256SUMS` 核對：在 `refs/` 裡跑 `sha256sum -c SHA256SUMS`。檔名就是 `tools/compile.py --manifest --refs` 找參考圖的規則。

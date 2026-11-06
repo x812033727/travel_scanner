@@ -1,4 +1,4 @@
-# 祖奶奶今年十八 第1集：燈下閉眼
+# 恁祖媽今年18 第1集：燈下閉眼
 
 照 `docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/s1-bible-e001-e060.md`（系列設定：時間線、燈帳、接點、帳、場景格局、人物）寫，
 格式照範本 `docs/videos/zhong-tian-qu-qi-e001-r2/script.md`，分鏡照 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` 的十一項寫。

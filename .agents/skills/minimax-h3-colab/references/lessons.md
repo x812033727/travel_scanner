@@ -225,7 +225,7 @@ Qwen-Image-Edit-2509（`h3.sh images`，`lora: false`、20 步、CFG 4、空白 
 有名字卻沒掛參考圖的人是 warning，審片時逐條決定。拿 r2 已經畫好的那批去跑，它抓到了這次的古裝與扁擔。
 外貌描述裡也不要寫否定句（「no topknot」）：模型常把否定的東西畫出來，檢查程式也會誤判。
 
-## 13. 真人風格的試鏡（2026-11-06，《祖奶奶今年十八》，票 `2026-11-06-tai-nainai-screen-test`）
+## 13. 真人風格的試鏡（2026-11-06，《恁祖媽今年18》，票 `2026-11-06-tai-nainai-screen-test`）
 
 第一部走真人風格的作品，開角色之前先做的試鏡：Qwen-Image-Edit 畫定妝照與場景圖 16 張，Ref2VA 跑第 1 集五鏡（真人四鏡、3D 一鏡對照），G4，合計約 13.8 CU。
 提示詞、seed 與進度檔在 `docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/screen-test/`（`build.py` 從 `cast.json` 產生、`runs/` 是實際送出的）。

@@ -1,4 +1,4 @@
-# 祖奶奶今年十八 第6集：拔不下來的戒指
+# 恁祖媽今年18 第6集：拔不下來的戒指
 
 第一季第 6 集（第一章〈醒來十八歲〉），細綱 `season-01.json` 第 6 集，片長目標 120 秒、約 22 鏡、三場。
 分鏡照 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` 的十一項寫；全季共用的時間線、接點、帳、場景格局、道具與人物在

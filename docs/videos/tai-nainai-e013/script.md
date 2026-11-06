@@ -1,4 +1,4 @@
-# 祖奶奶今年十八 第13集：我姐
+# 恁祖媽今年18 第13集：我姐
 
 第一季第 13 集（第二章〈校門口〉），細綱 `season-01.json` 第 13 集，片長目標 120 秒、約 22 鏡、三場。
 分鏡照 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` 的十一項寫；全季共用的時間線、接點、帳、場景格局、道具與人物在

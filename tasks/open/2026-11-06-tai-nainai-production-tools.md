@@ -1,6 +1,6 @@
 ---
 id: 2026-11-06-tai-nainai-production-tools
-title: 祖奶奶今年十八 製作工具：script.md 轉 video.json 與 Colab 片段清單
+title: 恁祖媽今年18 製作工具：script.md 轉 video.json 與 Colab 片段清單
 status: in-progress
 priority: P1
 area: docs
@@ -18,7 +18,7 @@ scope:
   - docs/videos/tai-nainai-e001/shots-en.json
 ---
 
-# 祖奶奶今年十八 製作工具：script.md 轉 video.json 與 Colab 片段清單
+# 恁祖媽今年18 製作工具：script.md 轉 video.json 與 Colab 片段清單
 
 ## Why
 

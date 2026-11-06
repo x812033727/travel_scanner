@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""《祖奶奶今年十八》試鏡：從 cast.json 產生 Colab 的 manifest 與提示詞（不花錢、不碰權杖）。
+"""《恁祖媽今年18》試鏡：從 cast.json 產生 Colab 的 manifest 與提示詞（不花錢、不碰權杖）。
 
   build.py r1    [--work DIR] [--placeholders]
       第一輪定妝照與場景圖（Qwen-Image-Edit）：image 1 是一張空白灰底（這部還沒有定妝照可當參考）。
