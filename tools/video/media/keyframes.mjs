@@ -134,11 +134,12 @@ export function keyframeRubric(characters, { subtitleBand = true, craft = false,
  * be written into an anime still's retake prompt. These additions were not measured on
  * recorded takes; the first episodes judged with them are the measurement.
  */
-export function keyframeChecks({ plate = false, characters = [], subtitleBand = false, craft = true } = {}) {
+export function keyframeChecks({ plate = false, characters = [], subtitleBand = false, craft = true, wordless = false, nobody = false } = {}) {
   const redraw = { weight: 0.25, cost: 10 };
   return [
     ...characters.map((character) => ({ key: `identity_${character.id.replace(/-/g, "_")}`, question: identityCheck(character), ...redraw })),
-    { key: "text", question: "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
+    { key: "text", question: wordless ? WORDLESS_TEXT_QUESTION : "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
+    ...(nobody ? [{ key: "nobody", question: NOBODY_QUESTION, ...redraw }] : []),
     { key: "anatomy", question: "Count the digits of every hand drawn large, thumb included. Does any hand show more than five, or does any person or animal have an extra hand, arm or leg, a face or body warped out of shape, or eyes that do not match (one pupil turned another way, pupils of different sizes or placed oddly)? A finger hidden or left out by the style does not count.", ...redraw },
     { key: "detached", question: "Is any part floating, cut off from what should hold it or duplicated, or is there a stray figure or object that does not belong to the scene (a tiny person, a hand with no arm, eyes in the dark)?", ...redraw },
     { key: "subject", question: "Is the main subject of the shot prompt, or the main thing it is doing, missing or clearly wrong? Secondary props, bystanders, which hand and the exact framing do not count here.", ...redraw },
@@ -159,6 +160,15 @@ export function keyframeChecks({ plate = false, characters = [], subtitleBand = 
   ];
 }
 
+// The narrated series that go to every language with no words on screen (cute-mystery: 奇聞檔案局
+// and the brand stories, owner 2026-11-05) fail made-up writing too: a sign of letter-like squiggles
+// reads as words to a viewer and as a mistake in every language.
+export const WORDLESS_TEXT_QUESTION = "Is there any writing anywhere in the picture: letters, words, numbers, a logo, a watermark, made-up marks that look like writing on a sign, label, paper, screen, box or cover, a floating question mark, exclamation mark or other symbol, or a badge or emblem with marks on a car, cap, coin or uniform?";
+// A still marked `nobody` (its line is about someone who may not be drawn) fails when anyone is.
+export const NOBODY_QUESTION = "Is there any person, human face or human figure anywhere in the picture, however small, including a face drawn on an object?";
+/** Whether a video's stills must carry no writing at all: the cute-mystery look (奇聞檔案局, brand stories) and the cute-cartoon look (原來如此事務所, owner 2026-11-05: no words on screen). */
+export const wordlessLook = (doc) => ["cute-mystery", "cute-cartoon"].includes(doc?.look?.preset);
+
 // The server takes a rubric question of at most this many characters (apps/api/app/video_media/
 // schemas.py JudgeCriterion.question); a shot look's appearance can run to 800, so the identity
 // check cuts it to fit rather than have the whole call refused.
@@ -174,13 +184,19 @@ function identityCheck(character) {
   return `${head}${appearance.length > room ? `${appearance.slice(0, room - 1).replace(/\s+\S*$/, "")}…` : appearance}${tail}`;
 }
 
+// A shot marked nobody keeps the look's colours and line, without the look's people: a cute
+// look's "chibi characters ..." clause otherwise draws a figure, or a face on the object, into
+// a picture that must show nobody (the nobody judge question then fails every take).
+const LOOK_PEOPLE = /chibi characters with big round heads, large expressive eyes and exaggerated comic expressions/i;
+export const lookForShot = (look, scene) => (scene?.data?.nobody === true && typeof look?.style === "string" && LOOK_PEOPLE.test(look.style) ? { ...look, style: look.style.replace(LOOK_PEOPLE, "cute rounded objects only, with no people and no faces") } : look);
+
 /**
  * What a shot is asked for: its prompt, the look's style, the camera and the cast, under the
  * image model's `limit` (prompt-budget.mjs: the scene is cut at a word boundary when the look
  * leaves it no room, the look never).
  */
 export function shotPrompt(scene, look, characters, limit = DEFAULT_IMAGE_PROMPT_LIMIT) {
-  return composeShotPrompt({ prompt: scene.data.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit }).prompt;
+  return composeShotPrompt({ prompt: scene.data.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit }).prompt;
 }
 
 /** The chosen sheet of each character: `{ <id>: { file, sha256 } }`, from the look manifest and the owner's choice. */
@@ -623,14 +639,14 @@ export async function run(command, args, ctx) {
   // What a shot is drawn from and what the judge is asked about it, as they stand now.
   const referencesOf = (characters) => [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(-MAX_REFERENCES);
   // A shot's request as it stands, with the corrections of the takes before it, under the model's limit; its end frame's too.
-  const composeFor = (scene, characters, fixes = []) => composeShotPrompt({ prompt: scene.data.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), fixes, limit: promptLimit });
-  const endPrompt = (scene, characters) => composeShotPrompt({ prompt: scene.data.end_frame.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
+  const composeFor = (scene, characters, fixes = []) => composeShotPrompt({ prompt: scene.data.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), fixes, limit: promptLimit });
+  const endPrompt = (scene, characters) => composeShotPrompt({ prompt: scene.data.end_frame.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const budgetOf = (scene, characters) => shotPromptBudget({ look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const question = (scene, characters) => ({
     rubric: checks
-      ? keyframeChecks({ plate: Boolean(plate), ...(manga ? { characters, subtitleBand: rubricOptions.subtitleBand, craft: false } : {}) })
+      ? keyframeChecks({ plate: Boolean(plate), ...(manga ? { characters, subtitleBand: rubricOptions.subtitleBand, craft: false } : isCuteExplainer(doc) ? { characters } : {}), wordless: wordlessLook(doc), nobody: scene.data.nobody === true })
       : keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
-    context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
+    context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: lookForShot(look, scene).style },
   });
   // A verdict answers one question at the owner's bar of the day; a take judged on another has no verdict yet.
   const stampOf = (asked) => mediaKey("keyframe-judge", { ...asked, bar: status.judge_min_score ?? null });

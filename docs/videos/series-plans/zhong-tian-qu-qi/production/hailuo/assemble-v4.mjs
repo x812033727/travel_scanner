@@ -128,7 +128,8 @@ for (const scene of video.scenes) {
     const slow = dur > clipLen ? Math.min(dur / clipLen, SLOW_MAX) : 1;
     const smooth = slow > 1 && edit.interpolate !== false ? ",minterpolate=fps=24:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" : ",fps=24";
     const base = `[0:v]setpts=${slow.toFixed(4)}*(PTS-STARTPTS),scale=1920:1080:flags=lanczos${smooth},format=yuv420p,tpad=stop_mode=clone:stop_duration=${Math.max(0, dur - clipLen * slow + 0.1).toFixed(3)},trim=duration=${dur.toFixed(3)},setpts=PTS-STARTPTS`;
-    const split = edit.split?.[scene.id] ?? (dur > SPLIT && !overlays[scene.id] && edit.nosplit?.includes(scene.id) !== true);
+    // `punch: false` in the edit list turns the split-and-punch-in off for the whole episode (e001-r2).
+    const split = edit.punch === false ? false : edit.split?.[scene.id] ?? (dur > SPLIT && !overlays[scene.id] && edit.nosplit?.includes(scene.id) !== true);
     if (split) {
       // Cut at the start of the second line when there is one, else in the middle; the second part is a punch-in.
       let cut = placed.length > 1 ? placed[1].at - 0.06 : dur * 0.5;
@@ -236,7 +237,8 @@ const graph = [
   `[0:a]aresample=48000,asplit=2[dlg][key]`,
   ...parts,
   `${musicParts.join("")}amix=inputs=${musicParts.length}:normalize=0:duration=longest[mus]`,
-  `[mus][key]sidechaincompress=threshold=0.02:ratio=8:attack=15:release=350:makeup=1[ducked]`,
+  // Music ducking under dialogue: `duck_ratio` and `duck_release_ms` in the edit list (defaults 8 and 350 ms, as before).
+  `[mus][key]sidechaincompress=threshold=0.02:ratio=${edit.duck_ratio ?? 8}:attack=15:release=${edit.duck_release_ms ?? 350}:makeup=1[ducked]`,
   `${sfxParts.join("")}amix=inputs=${sfxParts.length}:normalize=0:duration=longest[fx]`,
   `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[mix]`,
 ].join(";");

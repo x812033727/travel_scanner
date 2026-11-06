@@ -1,0 +1,44 @@
+{
+  "slug": "2025-07-niannian-youci",
+  "title": "我老公不說話，但我話很多",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：他開口說的第一個字、書的最後一頁為什麼空白、她能不能回去全部揭開；兩人在錄音室裡把原著最後一章錄成有聲書，由他唸。第 300 集最後一格，她翻開新買的一本小說，第一頁寫著她和他的名字：『這本我沒看過。』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市甜寵劇：一間老錄音室、一棟聞家老宅、一本看得見書頁的小說；暖黃與墨綠。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是她對鏡頭的內心吐槽或原著的一句預告。",
+    "reuse": "固定場景：聞家老宅的飯桌與樓梯、默聲錄音室、她的小陽台、醫院走廊、原著書頁的特效畫面。",
+    "voice": "國語；女主快、多、亮；男主第五季前只有一個字以內的氣音與筆寫字幕，第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲多、動作少，一張首格＋緩推可省五到七成；錄音室與老宅每季各拍一組重用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《念念有詞》（2025 年紅果峰值熱度第 7，穿書時裝先婚後愛）",
+    "how": "只學套路：穿進小說成為炮灰女配、劇情先知逐漸失效、話多女主×不說話男主的反差先婚後愛、話療治癒、婆家與同事看不起她再被反轉、修補原主搞砸的親情、每集一個小甜點。世界（一本原創小說《無聲契約》、一間配音錄音室）、人物、他為什麼失聲、書頁變白的規則、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["我老公不說話，但我話很多", "穿成啞巴總裁的炮灰前妻", "無聲契約（原著書名，作劇名用）"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

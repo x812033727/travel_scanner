@@ -1799,7 +1799,8 @@ test("a cute explainer's stills are judged by the nine fault checks the illustra
     assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
     assert.ok(site.state.judges.length > 0);
     // No style plate on this route: the style question is the context's, not a plate's.
-    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks(), preset);
+    // The cute-mystery look goes to every language with no words on screen: made-up writing fails too.
+    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks({ wordless: true }), preset);
     assert.match(site.state.images[0].prompt, /Style: cute Taiwanese YouTube explainer cartoon/);
     assert.ok(site.state.images.every((request) => request.references.length === 0), "no style plate and no sheet");
     // An older server without the checks still scores them on the rubric.

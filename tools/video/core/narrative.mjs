@@ -390,16 +390,20 @@ export const TUTORIAL_PANEL_QUESTIONS = Object.freeze({
 });
 /**
  * The checks reworded for the two story series, 奇聞檔案局 (a curio- slug) and the brand stories
- * (a story- slug), whose opening is the stakes, the scene and one promise sentence instead of
- * three teasers (register.mjs STORY_OPENING_RULE, 2026-10-25): read against the story wording,
- * the opening the reference channels use would fail opening_hooks and scene_first. Same ids,
+ * (a story- slug). Since 2026-11-05 they follow 黑猫研究院's ten steps (register.mjs
+ * STORY_OPENING_RULE): a hook that gives the contrast and one or two climaxes but never the plot,
+ * 「今天我們就來聊聊」 by about 1:05, then the story from its era, in order. Read against the story
+ * wording, that opening would fail scene_first, no_spoiler and opening_hooks. one_line and
+ * chapters_link also read the owner's continuity rule: nothing arrives out of nowhere. Same ids,
  * same required flags.
  */
 export const STORY_SERIES_PANEL_QUESTIONS = Object.freeze({
-  scene_first: "開頭兩句是否先講了這件事的利害（它改變了什麼、差一點改變什麼，帶一個數字），而且前六句（約 25 秒）內觀眾已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事？打招呼不算；一句點名題目與規模的承諾句（「今天我們就來看 Seiko 當年有多瘋狂」）算是開場的一部分，不算介紹主題。",
-  opening_hooks: "開場 60 秒內，是否至少有三個讓人想看下去的東西：一句講給觀眾的利害（帶數字）、一件停在結果之前的時刻、一個問題、或一句點名題目與規模的承諾句？（「接下來我們會看到」這種空宣告不算；超過兩個預告時刻、像在念線索清單，也算沒做到。）",
-  no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句承諾句：點名題目和一個數字或規模，整支片只一次。",
-  chapters_link: "每一章第一句是否接住上一章留下的具體疑問、動作或物件，或轉向觀眾（「換成你站在那裡」「你大概也會這樣想」），讓事情往前走？標籤、總結、重述剛問過的話不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+  scene_first: "第一句是否就讓完全沒看過的人聽懂這是什麼、為什麼值得看（一個問句或觀眾熟悉的情境），開場是否沒有丟出觀眾還不認識的人名、文件或線索？打招呼、「今天要來分享」不算。",
+  no_spoiler: "開場（第一章）是否只講終點多大、起點多小和最多一兩個高潮的名字，沒有先把劇情照順序濃縮一遍，也沒有講掉轉折怎麼發生、原因或結局？",
+  one_line: "全片是否大致照時間順序講一個故事：承諾句之後從年代與處境講起、主角才登場，倒敘只是小段而且開頭有明確的時間提示（「其實早在 1969 年」），沒有回頭把同一段再講一次？",
+  no_toc: "是否沒有任何一句只是在宣告這支片分幾段（「接下來分三段」「第一…第二…最後」「先講 A 再講 B」「這一章回答…」）或把後面的內容排成清單？開場可以有一句「今天我們就來聊聊…」的承諾句，說出這集要回答的問題，整支片只一次。",
+  chapters_link: "故事是否從頭到尾連貫、沒有沒頭沒尾的地方：每個人物、公司、文件出現時都先交代是誰或是什麼；每一段、每一章第一句都用轉場接住上一段（「但就在這時候」「時間快轉到 1983 年」「問題來了」）或上一章留下的疑問？標籤、總結、重述剛問過的話不算銜接。",
+  opening_hooks: "開場是否在約 1 分 05 秒內做到：一個問句或情境、終點多大和起點多小的反差（帶數字）、最多一兩個停在結果之前的高潮標籤，再用一句承諾句「今天我們就來聊聊…」說出這集要回答的問題？（「接下來我們會看到」這種空宣告不算；超過兩個預告、或把劇情照順序講一遍，也算沒做到。）",
 });
 /** Whether a script belongs to one of the two story series the viewer wording reads. */
 export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");

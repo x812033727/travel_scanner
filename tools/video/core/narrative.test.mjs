@@ -563,8 +563,8 @@ test("a manga-tier drama lands a hook inside every 30 seconds of its shots, with
 });
 
 // The two story series are told to one viewer (register.mjs TOLD_TO_ONE_VIEWER, 2026-10-25): lint
-// counts 「你」, and the blind panel reads the opening the reference channels use (the stakes,
-// the scene, one promise sentence) instead of three teasers.
+// counts 「你」, and the blind panel reads the shape the reference channel uses (the hook with its
+// contrast, 「今天我們就來聊聊」, then the story in order from its era) instead of three teasers.
 import { isStorySeries, STORY_SERIES_PANEL_QUESTIONS, VIEWER_ADDRESS_PER_1000, viewerAddressProblems } from "./narrative.mjs";
 
 test("a story-series script that never turns to the viewer is warned once; two 「你」 a thousand characters is enough", () => {
@@ -598,7 +598,12 @@ test("a curio- or story- slug reads the panel in the viewer wording, with its ow
   assert.deepEqual(questions.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
   for (const id of Object.keys(STORY_SERIES_PANEL_QUESTIONS)) assert.equal(questions.find((question) => question.id === id).question, STORY_SERIES_PANEL_QUESTIONS[id], id);
   assert.match(questions.find((question) => question.id === "opening_hooks").question, /承諾句/);
-  assert.match(questions.find((question) => question.id === "scene_first").question, /利害/);
+  // 2026-11-05: the ten steps of 黑猫研究院 and the owner's continuity rule (nothing arrives out of nowhere).
+  assert.match(questions.find((question) => question.id === "opening_hooks").question, /今天我們就來聊聊/);
+  assert.match(questions.find((question) => question.id === "scene_first").question, /完全沒看過的人聽懂/);
+  assert.match(questions.find((question) => question.id === "no_spoiler").question, /沒有先把劇情照順序濃縮一遍/);
+  assert.match(questions.find((question) => question.id === "one_line").question, /明確的時間提示/);
+  assert.match(questions.find((question) => question.id === "chapters_link").question, /沒頭沒尾/);
   assert.notEqual(panelRulesSha256(curio), PANEL_RULES_SHA256);
   assert.notEqual(panelRulesSha256(curio), panelRulesSha256({ ...fixture(), category: "tutorial" }));
   assert.equal(panelRulesSha256({ ...fixture(), slug: "story-adapt-seiko" }), panelRulesSha256(curio), "both series share one contract");

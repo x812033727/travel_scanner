@@ -15,13 +15,15 @@ PYTHON=${PYTHON:-python3}; export PYTHON
 H3R="$HERE/h3r.sh"
 "$PYTHON" -I "$HERE/route_a_st2.py" "$REPO/docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/clips-dh-e$EP.json" "$A" "$SEED" "$@" || exit 1
 stop_pod() { echo "=== stop $(date -u +%T)"; bash "$H3R" stop; }
-trap stop_pod EXIT
+[ "${KEEP:-0}" = 1 ] || trap stop_pod EXIT   # KEEP=1: leave the pod up for the next job
 mkdir -p "$A/st2/refined" "$A/final"
 for m in "$A"/st2/st2-*.json; do
   echo "=== refine $(basename "$m") $(date -u +%T)"
   bash "$H3R" refine --manifest "$m" --output-dir "$A/st2/refined" --progress "$A/st2/refined/progress-$(basename "$m")" \
     --keep --label "e$EP-st23" || echo "exit=$?"
 done
+# NO_UPSCALE=1: stop after the 1312x736 refine (e001-r2, the owner 2026-11-05); the cut scales to 1920x1080.
+if [ "${NO_UPSCALE:-0}" = 1 ]; then echo "have $(ls "$A"/st2/refined/*.mp4 2>/dev/null | wc -l) refined (no upscale)"; exit 0; fi
 todo=()
 for f in "$A"/st2/refined/*.mp4; do
   [ -f "$A/final/$(basename "${f%.mp4}")_1080.mp4" ] || todo+=("$f")

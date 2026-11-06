@@ -30,7 +30,10 @@
 | 票與進度 | `tasks/open/`、`tasks/done/` 裡 `zhong-tian` 開頭的票 | `npm run tasks -- list` |
 | 成片、字幕、配音、縮圖、上架說明 | 站主雲端硬碟 `AI/備份/<系列資料夾>/<集>/`（`G:\我的雲端硬碟\AI\備份\`） | 上架包核准後，主機 worker 先從審核區把整包抓進 `video_work/<slug>/`，再照「完整」層級複製（`docs/videos/BACKUP.md`〈匯入的影片〉）。**這條要等票 `2026-10-31-zhong-tian-clip-backup` 的改動部署後才有**；之前匯入的影片從來沒進過 `AI/備份`（主機沒有東西把審核區的檔案搬進 `video_work`），審核區的 mp4 在上 YouTube 7 天後就刪掉。狀態看 `/admin/videos?tab=settings#video-backup-settings` |
 | 逐句原始錄音（中文與八語，約 75 MB／集） | `AI/備份/drama/zhong-tian-qu-qi/<集>/recordings/` | `import --publish` 自動帶 `--clips` 那個工作資料夾的 `audio/`、`audio-<語言>/`（或 `--recordings <workdir>/zhong-tian-qu-qi-eNNN-dh`）。還原：`node tools/video/import/recordings.mjs unpack <recordings> <workdir>/zhong-tian-qu-qi-eNNN-dh` |
+| 對好時間的逐句配音（`segments-v4/lines/`、`segments-v4/dub-<語言>/`：每句調速前後的 wav、整條 `dialogue.wav`、`fit.json`，約 300–450 MB／集） | 同一個 `recordings/`，檔名 `fit-lines.wav`、`fit-<語言>.wav` | 2026-11-05 起 `import --publish` 一起打包，同一個 `manifest.json`、同一個 `unpack` 還原到 `segments-v4/`。`fit.json` 另存在 repo 的 `colab/runs/eNNN/dub/<語言>/` |
 | 每鏡 1080p 片段（第 31 集起約 300 MB／集） | `AI/備份/<系列資料夾>/<集>/clips/` | `import --publish` 自動帶 `<from>/clips`（或 `--clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips`），跟上架包一起送。**要在站主核准上架包之前送**：核准後的包加不進片段 |
+| 組片資料：剪接紀錄 `cut/final.log`、配音對時 `cut/dub-<語言>.log`、配樂 `music/cue-*.mp3`、剪接設定、首格 `first-frames/` | `AI/備份/<系列資料夾>/<集>/recut/`（首格在 `keyframes/`） | 2026-11-05 起 `import --publish` 從同一個工作資料夾一起帶；剪接設定在 repo，要加 `--edit docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/edit-dh-eNNN.json`。缺哪樣工具會印「build data not found」。第 1–48 集是手動補的，在 `AI/備份/drama/zhong-tian-qu-qi/_組片資料/`（見那裡的 README） |
+| 系列共用的參考圖 `refs-dh/`、`refs/` 與合成音效 `sfx/` | `AI/備份/drama/zhong-tian-qu-qi/_series/` | 上傳包不帶。改了參考圖就在存著它們的電腦跑 `node tools/video/import/series-backup.mjs <VIDEO_WORKDIR>/_series/zhong-tian-qu-qi "G:/我的雲端硬碟/AI/備份/drama/zhong-tian-qu-qi/_series"`（`docs/videos/BACKUP.md`〈匯入的影片〉第 7 步） |
 
 ## 2. 只存在工作資料夾、沒有備份的東西
 
@@ -48,7 +51,7 @@
 3. 拿 `npm run tasks -- list` 找這部劇沒人認領的票。每一集做到哪裡，看第 4 節的表和那一集的票。
 4. 新畫的劇照、新的配樂、新角色：當天就加進 `assets/` 並重算 `SHA256SUMS`、登記進 `cast.json`，然後提交。每跑完一段、每次重抽，就把那一集的 `colab/a/` 文字檔複製進 `colab/runs/eNNN/`。只放在工作資料夾裡的東西，下一個對話拿不到。
 5. **上架的順序不能換**（2026-11-01 第 32、34 集踩到）：成片核准 → 站主在語言面板勾語言 → `import --from <dir> --languages` 送語言批次 → 站主核准語言 →
-   `import --from <dir> --publish --clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips` 送上架包 → 站主核准。先送上架包的話，之後 `--languages` 會拒絕，
+   `import --from <dir> --publish --clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips --edit docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/edit-dh-eNNN.json` 送上架包（連組片資料） → 站主核准。先送上架包的話，之後 `--languages` 會拒絕，
    影片就既不能「可以上架」、也進不了雲端備份（主機只備份已上 YouTube 或可以上架的影片：要有核准的上架包、語言已決定、勾的語言都不在製作中）。
    第 32、34 集就卡在這裡；修法（票 `2026-11-01-import-publish-sends-an-upload-package`）：`import --languages --force` 補送語言批次，站主核准後再送一次 `--publish --clips …`，站主再核准。現在 `--publish` 會擋住反過來的順序。
 6. **雲端硬碟的位置**：每集在 `AI/備份/drama/zhong-tian-qu-qi/<集>/`（合集也在這裡，例如 `zhong-tian-qu-qi-e001-005/`），片段在其中的 `clips/`、逐句錄音在 `recordings/`。

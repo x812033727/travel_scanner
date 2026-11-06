@@ -54,7 +54,9 @@ export const REPORTS_PER_ROUND = 10;
 // again for free: the narration's line takes (audio/), each dub's line takes (dubs/<locale>/audio/,
 // as dub-lines/<locale>/ in Drive), the translation worksheets (i18n/), and the owner's approvals
 // and language choice.
-export const FULL_DIRS = ["clips", "keyframes", "characters", "recordings", "audio", "i18n"];
+// recut/: an imported drama's cut and dub logs, music cues and edit table (tools/video/import/build.mjs),
+// what a re-cut needs and cannot make again; build/ stays out, it is the pipeline's remakeable output.
+export const FULL_DIRS = ["clips", "keyframes", "characters", "recordings", "audio", "i18n", "recut"];
 export const FULL_FILES = ["timeline.json", "narration.wav", "approvals.json", "languages.json"];
 export const DUB_LINES = "dub-lines";
 // The full tier also keeps, for each language the owner chose (languages.json), the dub track and

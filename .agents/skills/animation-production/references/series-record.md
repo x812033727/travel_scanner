@@ -28,7 +28,24 @@
 2. **寫來源。** 每個檔都要寫得出從哪來：哪個 session 或票、什麼工具與設定、原始網址（會失效的網址只當參考，以 repo 裡的檔為準）。
 3. **大檔走雲端硬碟備份。** 成片、字幕、配音、縮圖由主機 worker 在「可以上架」時複製到站主雲端硬碟 `AI/備份/<系列>/<集>/`
    （`docs/videos/BACKUP.md`）。所以每一集做完都要匯入站台，別只留在 session 裡。repo 不放影片。
-4. **沒備份的要列出來。** 總索引要有一節列出「只在工作資料夾、沒有備份」的東西與沒了的代價，並為它開票，不要默默假設它還在。
+   **一集重剪要的東西都要跟著上架包走**（站主 2026-11-05：「以後備份也要一起備份」；第 31–48 集的剪接紀錄與配樂曾經只在雲端
+   工作資料夾，是事後一集一集從別的 session 撈回來的）。送上架包一律這樣：
+
+   ```bash
+   node tools/video/cli.mjs import --from <dir> --publish --clips <workdir>/<slug>-dh/clips --edit docs/videos/series-plans/<series>/production/<路線>/edit-dh-eNNN.json
+   ```
+
+   它從 `--clips` 的上一層帶走：片段 `clips/`、逐句配音 `audio/`、`audio-<語言>/`（與 `segments-v4/` 對時後的版本）、剪接紀錄
+   `cut/final.log`、配音對時 `cut/dub-<語言>.log`、配樂 `music/`、首格 `first-frames/`，加上 `--edit` 的剪接設定。輸出有
+   「build data not found」就是少了哪樣，**站主核准之前補齊**（核准後的包只收得進只給備份讀的檔，但要同一份 metadata.json）。
+   雲端硬碟上的位置：`clips/`、`recordings/`、`recut/`、`keyframes/`（`docs/videos/BACKUP.md`〈匯入的影片〉第 3–6 步）。
+   **系列共用的參考圖與音效**不屬於哪一集，上傳包不帶：新增或改了 `production/assets/refs*`、`_series/<series>/sfx` 之後，
+   在掛著雲端硬碟的電腦跑 `node tools/video/import/series-backup.mjs <來源資料夾> "<雲端硬碟>/AI/備份/<分類>/<series>/_series"`
+   （第 7 步）；雲端 session 掛不到雲端硬碟，就把圖提交進 `production/assets/`，並在交接寫明要同步。
+   **放進 git 的紀錄檔要 `git add -f`**：根目錄 `.gitignore` 有 `*.log`，`final.log`、`dub-*.log` 一般 `git add` 會被默默略過
+   （PR #2017 就這樣漏了，#2018 補），推完用 `git ls-tree -r --name-only HEAD | grep -c '\.log$'` 數一次。
+4. **沒備份的要列出來，而且自己去數。** 別的 session 說「補好了」不算，打開分支或雲端硬碟數檔案（#2017 說放進了第 31–39 集的
+   剪接紀錄，實際 0 個）。總索引要有一節列出「只在工作資料夾、沒有備份」的東西與沒了的代價，並為它開票，不要默默假設它還在。
 5. **每集的進度寫在總索引的表裡**，做完一個階段就更新並提交；票記細節，表記全貌。
 6. **留下實際送出的東西。** 生成工具會改版，重跑產生器得到的提示詞不一定是當時那一份；每一集實際送出的 manifest、提示詞（含重抽時手改的）與「每鏡用了哪個 take」都複製進 `production/<路線>/runs/eNNN/`（只收文字）。
 7. **教訓寫進 skill**（例如 `minimax-h3-colab/references/lessons.md`），不寫在對話裡。
