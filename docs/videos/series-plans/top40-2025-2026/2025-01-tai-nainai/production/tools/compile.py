@@ -7,7 +7,7 @@
   中文改了而英文沒跟著改，就列出哪幾鏡並以 1 停下（`--check` 只做這件事）。
 - 台詞照 script.md：說話人對 cast.json、語氣（括號）進 emotion、標記（→ 答在、← 因為、結尾、懸念）拿掉。
   shots-en.json 的 `speaker_overrides` 可以指定對不到 cast.json 的說話人（例如第 60 集「電話那頭」是顧承霖）。
-- 沒有台詞的鏡用 `action_seconds`（script.md 的秒數四捨五入、夾在 1–8）。
+- 沒有台詞的鏡用 `action_seconds`（script.md 的秒數四捨五入、夾在 1–8；shots-en.json 那一鏡可以寫 `action_seconds` 覆蓋，例如 1.5 秒的快拍寫 1）。
 - `--manifest`：每鏡的參考圖 = 畫面裡的角色定妝照（`<id>-portrait-t1.png`，換裝 `<id>-<look>-t1.png`）＋場景圖
   （`set-<場景>-t1.png`；祠堂有燈的分數時先找 `set-<場景>-lamp<N>-t1.png`），在 --refs 裡找；正文照
   `minimax-h3-colab/references/motion-quality.md` 與 lessons.md 第 2、12、13 節組。每 20 鏡一份。
@@ -132,7 +132,7 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
             if not lines and not e.get("motion"):
                 raise SystemExit(f"{s['id']}: 沒有台詞的鏡要在 shots-en.json 寫 motion（看得到的動作，一句）")
             if not lines:
-                scene["action_seconds"] = max(1, min(8, round(s["seconds"] or 4)))
+                scene["action_seconds"] = int(e.get("action_seconds") or max(1, min(8, round(s["seconds"] or 4))))
             scenes.append(scene)
             total += s["seconds"] or 0
     roster = []

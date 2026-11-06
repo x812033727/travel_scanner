@@ -14,8 +14,8 @@
 
 ## 角色
 
-- 林美鳳（meifeng）：聲音 Pulcherrima。
 - 沈月棠（九十六歲）（yuetang-96）：聲音 Gacrux。同一個人的另一張臉與另一個聲音（工具的 shot_looks 只能共用一張臉、一個聲音，所以另開角色）。不拍病容特寫。
+- 林美鳳（meifeng）：聲音 Pulcherrima。
 - 福伯（fubo）：聲音 Enceladus。
 - 沈建業（jianye）：聲音 Algieba。金錶在左腕（錢老闆的在右腕）。
 - 沈小滿（xiaoman）：聲音 Leda。深藍書包與報信鈴是道具，不寫進外貌。damp＝第 3、6 集。
