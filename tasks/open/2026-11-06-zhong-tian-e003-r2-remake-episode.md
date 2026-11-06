@@ -70,3 +70,4 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 | 花費 | RunPod 約 US$17（精修 pod 10:30–16:03 US$14.34 + 早上被容器重啟中斷、空轉的 pod 約 US$2.6） |
 
 `cut-qa.py` 0 problem(s)；整片每鏡中間一格看過，面板字跟稿一致。工作分支 `claude/zt-e003-r2`，備份 `transfer/zt-e903-media`。
+- 備份 `transfer/zt-e903-media`（680 MB；第一次因磁碟滿失敗，清出空間後重推成功）。
