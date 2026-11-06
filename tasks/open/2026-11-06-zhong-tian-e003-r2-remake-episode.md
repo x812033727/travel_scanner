@@ -76,3 +76,4 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - 教訓落地三處：`animation-preproduction/references/storyboard-shot-spec.md` 與 `production/storyboard-brief-for-planners.md` 各加「皮膚上的細小東西」一行；
   `preflight-prompts.py` 加 warn skin（木屑、泥點、血點等寫在手、臉、皮膚上就警告；用第 3 集舊 prompt 試過會擋、改後的不會）。
   main 上的 r2 稿子還有：第 17 集唐小棠、第 37–38 集秦霜「臉上沾灰」——拍到那幾集時改成「衣服上有灰」或確認抽出來沒有斑點。
+- s06 用 `fix2` 9030302、s08 用 9030301（手乾淨）；舊的精修片與草稿移到 `st2/refined-woodchips`、`st1/out-woodchips`。

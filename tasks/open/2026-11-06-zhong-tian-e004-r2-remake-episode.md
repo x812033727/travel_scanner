@@ -45,9 +45,10 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - 免費檢查 0 error、0 warning。
 
 - [x] 規格、配音、免費檢查
-- [ ] 第一段草稿（每鏡兩個種子），挑片
+- [x] 第一段草稿（每鏡兩個種子），挑片（`colab/runs/e904/picks.tsv`；s03 從 1.5 秒起剪）
 - [ ] 第二段精修
 - [ ] 剪接、cut-qa、量成片
 - [ ] `import --from`，備註「第 4 集重製版 r2」
 - 草稿挑片時看到兩種新錯：s03 兩支開頭都畫出發光的系統面板（正文寫「面前空氣的淡藍光、不畫面板」）；s24 一支跳成中景、眼睛發藍光。s03 用 9040101 從 1.5 秒起剪（避開面板），s24 用 9040102（眼睛大特寫）。
   教訓落地：`storyboard-shot-spec.md`、`storyboard-brief-for-planners.md` 加一行；`preflight-prompts.py` 加 warn glow（第 2–4 集舊 prompt 會擋到 e903 s20、e904 s03）。
+- 20:06 起第二段精修 40 鏡，接著精修第 3 集重抽的 s06、s08（`scratchpad/chain904r.sh`，最後停 pod）。
