@@ -216,7 +216,7 @@ test("the close never names the next video: the outro card's words, its lines an
 });
 
 test("the panel passes only when every required question is yes; a missing or malformed answer is a no", () => {
-  assert.equal(NARRATIVE_PANEL.length, 13);
+  assert.equal(NARRATIVE_PANEL.length, 14);
   assert.deepEqual(NARRATIVE_PANEL.filter((question) => !question.required).map((question) => question.id), ["chapters_are_events"]);
   const all = (yes) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, yes, evidence: "[k7p2] 每次有新模型出來" })) });
   const passed = panelVerdict(all(true));
@@ -468,7 +468,7 @@ test("a tutorial reads the panel in its own wording, same ids and required flags
   const tutorial = panelQuestions({ ...fixture(), category: "tutorial" });
   assert.deepEqual(tutorial.map((question) => question.id), NARRATIVE_PANEL.map((question) => question.id));
   assert.deepEqual(tutorial.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
-  assert.equal(Object.keys(TUTORIAL_PANEL_QUESTIONS).length, 12, "outro_no_next keeps the story wording");
+  assert.equal(Object.keys(TUTORIAL_PANEL_QUESTIONS).length, 13, "outro_no_next keeps the story wording");
   assert.match(tutorial.find((question) => question.id === "no_toc").question, /承諾句/);
   assert.match(tutorial.find((question) => question.id === "chapters_link").question, /「好，」「所以，」開頭/);
   assert.match(tutorial.find((question) => question.id === "open_loops").question, /你可能會想/);
@@ -625,4 +625,22 @@ test("a daily-ai- slug reads the panel in the daily brief wording, with its own 
   assert.notEqual(panelRulesSha256(brief), panelRulesSha256({ ...fixture(), slug: "curio-h01-v2" }));
   // A tutorial category still reads the tutorial wording, whatever its slug.
   assert.equal(panelQuestions({ ...brief, category: "tutorial" }).find((question) => question.id === "no_toc").question, TUTORIAL_PANEL_QUESTIONS.no_toc);
+});
+
+test("no_orphans asks every script whether anything arrives out of nowhere; a two-voice transcript names its speakers", () => {
+  const ids = (doc) => panelQuestions(doc).map((question) => question.id);
+  for (const doc of [fixture(), { ...fixture(), category: "tutorial" }, { ...fixture(), slug: "daily-ai-20261106" }]) {
+    assert.ok(ids(doc).includes("no_orphans"), doc.slug ?? doc.category);
+    assert.match(panelQuestions(doc).find((question) => question.id === "no_orphans").question, /沒頭沒尾/);
+  }
+  assert.equal(NARRATIVE_PANEL.find((question) => question.id === "no_orphans").required, true);
+  const base = fixture();
+  const firstLine = base.scenes.flatMap((scene) => scene.lines ?? [])[0];
+  const duo = {
+    ...base,
+    characters: [{ id: "chief", name: "所長" }, { id: "kid", name: "小問" }],
+    scenes: base.scenes.map((scene, index) => (index ? scene : { ...scene, lines: scene.lines.map((line, at) => ({ ...line, speaker: at ? "chief" : "kid" })) })),
+  };
+  assert.match(narrationText(duo, estimateTimeline(duo)), new RegExp(`\\] 小問：${firstLine.text.slice(0, 4)}`));
+  assert.doesNotMatch(narrationText(base, estimateTimeline(base)), /小問：|所長：/, "one voice: no names");
 });

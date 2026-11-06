@@ -97,6 +97,9 @@ const sceneStart = (timeline, id) => (timeline?.scenes ?? []).find((scene) => sc
  * cards, no ids of scenes). The ids let a verdict quote its evidence by line.
  */
 export function narrationText(doc, timeline) {
+  // Two or more speaking characters (a dialogue explainer, a drama): the reader is told who speaks,
+  // or no_orphans cannot tell whether an answer meets the question it follows.
+  const voices = (doc.characters ?? []).length > 1 ? new Map(doc.characters.map((character) => [character.id, character.name ?? character.id])) : null;
   const opens = new Map(chapterList(timeline).map((chapter) => [chapter.scene, chapter]));
   const starts = lineStarts(timeline);
   const out = [`# ${doc.youtube?.title ?? doc.slug ?? ""}`];
@@ -105,7 +108,8 @@ export function narrationText(doc, timeline) {
     if (chapter) out.push("", `## ${chapter.title}（${formatClock(chapter.start)}）`);
     for (const line of scene.lines ?? []) {
       const at = starts.has(line.id) ? ` ${formatClock(frameToSeconds(starts.get(line.id)))}` : "";
-      out.push(`[${line.id}${at}] ${line.text}`);
+      const who = voices?.get(line.speaker);
+      out.push(`[${line.id}${at}] ${who ? `${who}：` : ""}${line.text}`);
     }
   }
   return `${out.join("\n")}\n`;
@@ -358,10 +362,12 @@ export const NARRATIVE_PANEL = Object.freeze([
   { id: "opening_hooks", required: true, question: "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）" },
   { id: "one_thread", required: true, question: "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。" },
   { id: "no_detour", required: true, question: "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？" },
+  // 2026-11-06, owner: 「很多系列有遇到沒頭沒尾的對話的問題，記得也要補上這審核」.
+  { id: "no_orphans", required: true, question: "是否沒有沒頭沒尾的地方：每個人物、名詞、物件或比喻第一次出現時，都先交代是誰或是什麼；每一句都接得上前一句，有兩個人說話時，回答接住剛被問的那一句、反應對得上對方剛說的話；沒有突然冒出、前後都接不起來的句子？" },
 ]);
 
 /**
- * The same thirteen checks worded for a tutorial (a slides video whose "category" is "tutorial":
+ * The same checks worded for a tutorial (a slides video whose "category" is "tutorial":
  * teaching cards, the subject something the viewer operates). Two popular tutorials read against
  * the story wording on 2026-10-21 failed 10 and 8 of the 12 required questions while reading as
  * one smooth lesson each; what they do instead is written in teaching-flow.md and here. Same ids,
@@ -380,6 +386,7 @@ export const TUTORIAL_PANEL_QUESTIONS = Object.freeze({
   opening_hooks: "開場 60 秒內，是否至少有三個讓人想看下去的東西：一句利害（「它碰得到你的檔案，所以你得先學會駕馭它」）、一個用觀眾自己的話問的問題、一句帶數字或成品的承諾、或一個停在結果之前的主例時刻？（「接下來我們會看到」這種空宣告不算。）",
   one_thread: "是否有一個例子從開場帶到結尾，每個新概念都先在這個例子裡發生才有名字，每一章都讓它往前走？開場那個問問題的人在片尾回來。一段集中的用途清單可以（每項不超過三句、都走同一個對照、講完主例接手），每章換一個不相干的例子不算。",
   no_detour: "是否沒有岔出去的段落：每一段都在推進開場那個問題；一句話回答「我的工具能不能用」的支援清單可以，念分數、引言或誰說了什麼的對照清單、推銷別支影片的段落不行？",
+  no_orphans: "是否沒有沒頭沒尾的地方：每個工具、名詞、按鈕或術語第一次出現時都先交代是什麼、在哪裡；每一步都接得上前一步，沒有突然跳到觀眾沒看過的畫面、設定或檔案？",
 });
 /**
  * The checks reworded for the two story series, 奇聞檔案局 (a curio- slug) and the brand stories
@@ -419,6 +426,7 @@ export const DAILY_BRIEF_PANEL_QUESTIONS = Object.freeze({
   opening_hooks: "開場 60 秒內，是否至少有三個讓人想看下去的東西：一則頭條停在影響之前、一個用觀眾自己的話問的問題、一句跟台灣觀眾有關的利害、或一個今天最意外的數字？（「今天新聞很多」這種空話不算。）",
   one_thread: "是否有一個觀點從開場帶到片尾：每一則都回答「這對台灣的觀眾改變了什麼」（能不能用、要不要花錢、要不要小心），片尾「我的看法」用這個觀點把幾則串起來，說出今天最重要的是哪一則、為什麼？只是一則接一則念過去、沒有這個觀點，不算。",
   no_detour: "是否沒有岔出去的段落：每一則都在講自己那件事和它對觀眾的影響，沒有整段在講跟那則新聞或觀眾無關的事，也沒有一口氣連念三個以上的規格、分數或發言？（新聞本來就要講誰說了什麼：單獨一句帶出處的說法、問答或數字，只要是那則新聞的一部分，就不算岔題。）",
+  no_orphans: "是否沒有沒頭沒尾的地方：每家公司、產品、人物或術語第一次出現時都先交代是誰或是什麼；每一句都接得上前一句，沒有突然冒出、前後都接不起來的說法？",
 });
 /** Whether a script is a daily news brief (daily-brief.md). */
 export const isDailyBrief = (doc) => /^daily-ai-/.test(doc?.slug ?? "");

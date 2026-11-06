@@ -56,13 +56,37 @@ MiniMax `image-01` 讀得懂**一個**角色參考圖，讀不懂多人互動（
 2. **小問就是內容插圖裡的那「一個人」**。奇聞要求插圖是「一個人在那個地方做一件事」；這集由小問來做：
    她在陽台抬頭看積雲、手貼冰杯看水珠、在騎樓下看雨打在地上。這樣內容插圖和角色是同一條線，不會變成「角色鏡頭 vs 內容鏡頭」兩套畫面。
 3. 所長多半在事務所（白板、放大鏡、檔案夾、印章），少數到現場；所長鏡頭佔全片約 15–20%。
-4. 純機制畫面（一滴水的放大、上升氣流箭頭、雲滴 vs 雨滴大小比例）不放人，寫成卡通裡會有的樣子；數字與比例用卡片。
-5. 插圖占比照奇聞：正文 ≥ 70% 是插圖、連續卡片最多 3 張。
+4. 純機制畫面（一滴水的放大、上升氣流箭頭、雲滴 vs 雨滴大小比例）不放人，寫成卡通裡會有的樣子；數字與比例畫成圖，不用卡片（§1「畫面上的字」）。
+5. 2026-11-05 起正文不用卡片；只有片尾訂閱卡還有字（見 §3.2 待決）。
+
+### 3.1 插圖提示詞怎麼寫（2026-11-06，借自 PR #2027 奇聞的 W03 實測，加上 P02／P05 自己的教訓）
+
+- **短、動作在前、角色描述在後**：景別 → 地點 → 一個角色做一個動作 → 一兩個道具；角色外觀（`KIDDESC`、`CHIEFDESC`）接在最後。
+  動作越簡單越容易過：P05 第一輪 113 張裡 24 張三次不過，幾乎都是複雜的手部動作或一手一物的對照。
+- **白天、明亮**：檯燈、夜晚、`soft lamp light` 常被畫成 3D 公仔（P05 重畫時「3D CGI」「clay figurine」是最常見的退件原因）。新集光線寫 bright morning、daylight。
+- **不寫 no、not、without、text、blank**：模型沒有反向提示詞，寫了反而畫出來。P02 的 `BLANK`（「every sign … is plain and blank」）新集不要再用。
+- **會冒字的道具換掉**：日曆、招牌、報紙、白板上的字、筆記本都會長出亂碼。**小問的設定寫著拿筆記本**，兩集都一直冒出筆記本與假字（見 §3.2）。
+- **螢幕寫出畫面內容**：「a phone showing a simple map with a blue route line」，不寫空白螢幕。
+- **數字畫成圖**：「一滴雨要一百萬顆雲滴」畫成一顆大雨滴被無數小點圍住（P02 `kid-million`）。
+- **眼睛**：關鍵影格評審 2026-11-05 起問眼睛（`tools/video/media/keyframes.mjs` 的 anatomy 題），但輕微的鬥雞眼它仍會放過，
+  分鏡給站主前另外請一個代理逐張放大看眼睛。三次都畫不好的臉，改成閉眼笑（「her eyes closed as two happy curved lines」）、
+  背影，或沒有人的物件特寫——這三種畫法沒有瞳孔可以歪。
+- **改評審題目會讓整集重評**：評審的題目是每張圖評分紀錄的一部分，題目一改，已核准的圖下次跑 `keyframes` 會全部重評、
+  不過的重畫（P05 因此被換掉 49 張已核准的圖，救回花了半天）。已核准分鏡的集數要重畫少數幾張時，只讓那幾張用新題目
+  （做法記在任務票 `2026-11-05-keyframe-judge-checks-the-eyes-mismatched`）。
+- 已付錢的圖提示詞逐字不動（吃快取）；這一節只管新畫的景。
+
+### 3.2 待站主決定（2026-11-06）
+
+- **小問的設定拿掉筆記本**：設定寫「holding a small plain blank notebook in both hands」，P02、P05 有幾十張因此被退或冒假字。
+  改了要重畫小問的設定圖（約 US$0.05），之前集數的圖不受影響，從下一集起用。
+- **片尾訂閱卡**：奇聞與品牌故事 2026-11-05 起片尾也不用卡片（PR #2027，結尾檢查另開票 `2026-11-06-story-series-close-without-outro-card`）。
+  原來如此的片尾卡還有「原來如此！」和一句總結的中文字；要不要也改成一張小問蓋章的插圖，由站主決定。
 
 角色設定（英文 `appearance`，設定圖與每張關鍵影格都用；開拍前先畫設定圖給站主選）：
 
 - 所長 `chief`（2026-11-03 站主指出 Sulafat 是女聲，改成女性）：`a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear`（原本的紅色小印章讓模型一直畫出假字印記，拿掉）
-- 小問 `kid`：`a curious eight-year-old girl with a short bob haircut and a small cowlick, wearing a navy raincoat-style jacket with a mustard-yellow hood, carrying a small notebook`
+- 小問 `kid`：`a curious eight-year-old girl with a short bob haircut and a small cowlick, wearing a navy raincoat-style jacket with a mustard-yellow hood, carrying a small notebook`（P02 起實際用的是 `build_scenes.py` 裡更詳細的版本，仍寫「holding a small plain blank notebook in both hands」；§3.2）
 
 （「小問」取「發問」的意思。設定圖改用單人全身的 `sheet_prompt`：預設的三視圖跟系列畫風「中央一個主體」互相衝突，第一輪 12 張全被評審退。）
 
