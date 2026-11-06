@@ -47,6 +47,10 @@ metadata:
 | **重製已交付的一集**（改稿、改開場、換片頭片尾） | 本機 recut | `docs/videos/curio-five-recuts-20261012/README.md`；已付錢的插圖照舊用（提示詞逐字不動就吃快取），新景才畫新圖 |
 | **主機不能用、要在本機從零做** | 本機漫劇格式 | `format: "drama"`、`look: { "preset": "cute-mystery" }`、`characters: []`；`node tools/video/cli.mjs keyframes --slug <SLUG> --takes 3` 一次畫整集（不是一次三張） |
 
+**句間停頓**（站主 2026-11-05）：預設每句後停 0.3 秒、換場再停 0.7 秒，加上配音本身的尾音，
+成片靜音佔 7–10%，評分卡的目標是 3% 以下。奇聞的 video.json 加 `"pauses": { "line_ms": 0, "scene_ms": 150 }`
+（只能比預設短）；改了之後時間軸會變，旁白與分鏡都要站主重新核准，配音不必重錄。
+
 不要用 `format: "slides"` 從零做新集：那是 H01–L08 第一版的試片路線，系列預設與評審都要手動接，
 H04–H06 就是在這裡偏掉的。
 

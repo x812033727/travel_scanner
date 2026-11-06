@@ -20,6 +20,7 @@ import {
   speechHash,
   spokenUnits,
   TAIL_MS,
+  pausesOf,
   pictureHash,
   picturesBound,
   visualHash,
@@ -259,4 +260,23 @@ test("picturesBound keeps keyframes drawn under either card look, before and aft
   assert.equal(picturesBound(pictureHash(paper), changed), false);
   assert.equal(picturesBound(undefined, paper), false);
   assert.equal(picturesBound("", paper), false);
+});
+
+test("a video may tighten the pauses between lines and scenes, never lengthen them", async () => {
+  const { PAUSE_LIMITS, validateVideo } = await import("./schema.mjs");
+  assert.deepEqual(PAUSE_LIMITS, { line_ms: DEFAULT_PAUSE_MS, scene_ms: SCENE_GAP_MS });
+  const doc = fixture();
+  const samples = estimatedSamples(doc);
+  const loose = buildTimeline(doc, samples);
+  const tight = { ...structuredClone(doc), pauses: { line_ms: 0, scene_ms: 100 } };
+  assert.deepEqual(validateVideo(tight), []);
+  const built = buildTimeline(tight, samples);
+  assert.ok(built.total_frames < loose.total_frames, "tighter pauses make a shorter timeline");
+  assert.deepEqual(pausesOf(tight), { line: 0, scene: 100 });
+  assert.deepEqual(pausesOf(doc), { line: DEFAULT_PAUSE_MS, scene: SCENE_GAP_MS });
+  assert.notEqual(speechHash(tight), speechHash(doc), "the narration's timing changed");
+  assert.equal(speechHash({ ...structuredClone(doc) }), speechHash(doc), "a video without pauses hashes as before");
+  for (const pauses of [{ line_ms: 301 }, { scene_ms: 701 }, { scene_ms: -1 }, { line_ms: 1.5 }, {}, { gap: 1 }]) {
+    assert.ok(validateVideo({ ...structuredClone(doc), pauses }).some((error) => error.path.startsWith("pauses")), JSON.stringify(pauses));
+  }
 });
