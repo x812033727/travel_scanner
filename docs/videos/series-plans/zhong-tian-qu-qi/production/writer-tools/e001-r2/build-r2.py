@@ -2,9 +2,10 @@
 (spec.EP = 901) under the published slug zhong-tian-qu-qi-e001-r2; per-shot `looks` (Xu Yan in his modern suit,
 gen-dh's character_looks); per-shot `nospeak` (a speaker on screen whose lips are not shown: his back to the camera,
 her face buried); and it never writes brief.md over the hand-written one.
-Usage: python3 build-r2.py r2
+Usage: python3 build-r2.py r2                      (this folder's r2.py: e001 r2, internal number 901)
+       python3 build-r2.py ../e002-r2/r2.py         (any r2 episode: the spec sets EP = 90N and SLUG)
 """
-import importlib, json, os, re, subprocess, sys
+import importlib, importlib.util, json, os, re, subprocess, sys
 
 REPO = "/home/user/travel_scanner"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -40,7 +41,12 @@ def speak_clause(sid, texts):
 
 
 def main(name):
-    spec = importlib.import_module(name)
+    if name.endswith(".py"):
+        loader = importlib.util.spec_from_file_location("r2spec", os.path.abspath(name))
+        spec = importlib.util.module_from_spec(loader)
+        loader.loader.exec_module(spec)
+    else:
+        spec = importlib.import_module(name)
     ep = spec.EP
     slug = f"zhong-tian-qu-qi-e{ep:03d}"
     out = f"{REPO}/docs/videos/{slug}"
@@ -101,7 +107,7 @@ def main(name):
             scene["data"]["buy_seconds"] = buy  # gen-dh buys this many seconds instead of 5 or 6 (the long shots)
         scenes.append(scene)
     doc = {k: BASE[k] for k in ["schema_version"]}
-    doc["slug"] = "zhong-tian-qu-qi-e001-r2"
+    doc["slug"] = getattr(spec, "SLUG", "zhong-tian-qu-qi-e001-r2")
     for k in ["format", "target_minutes", "voice", "look"]:
         doc[k] = BASE[k]
     doc["target_minutes"] = spec.TARGET_MINUTES
