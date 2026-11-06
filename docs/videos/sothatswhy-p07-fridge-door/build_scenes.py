@@ -79,7 +79,7 @@ kid("kid-idea", K("raising one finger with sparkling eyes and a clever grin", cl
     k("我想到一個好方法！", "神秘"), k("冰箱門整天開著，", "得意"), k("廚房就不用開冷氣了！", "很有把握的錯猜"))
 chief("chief-wait", C("raising one hand gently with an amused smile"),
       c("先別急著拔冷氣的插頭。", "笑"), c("你也可以猜猜看：冰箱門一直開著，", "轉向觀眾"), c("廚房會變涼，還是反而變熱？", "賣關子，問句", "S:room"))
-kid("kid-hotter", K("with her mouth open in a shocked O, both hands on her cheeks", close=True),
+kid("kid-hotter", K("with wide surprised eyes and raised eyebrows", close=True),
     k("變熱？", "大驚"), k("冰箱明明是冷的耶！", "不服氣"))
 chief("chief-back-tease", C("pointing to one side with a knowing smile"),
       c("那你走過冰箱旁邊時，把手靠近它的背後。", "轉向觀眾"), c("那裡摸起來，可一點都不冷。", "賣關子", "S:back"))
