@@ -16,6 +16,33 @@ scope:
   - docs/videos/tai-nainai-e001/video.json
   - docs/videos/tai-nainai-e001/brief.md
   - docs/videos/tai-nainai-e001/shots-en.json
+  - docs/videos/tai-nainai-e002/shots-en.json
+  - docs/videos/tai-nainai-e002/video.json
+  - docs/videos/tai-nainai-e002/brief.md
+  - docs/videos/tai-nainai-e003/shots-en.json
+  - docs/videos/tai-nainai-e003/video.json
+  - docs/videos/tai-nainai-e003/brief.md
+  - docs/videos/tai-nainai-e004/shots-en.json
+  - docs/videos/tai-nainai-e004/video.json
+  - docs/videos/tai-nainai-e004/brief.md
+  - docs/videos/tai-nainai-e005/shots-en.json
+  - docs/videos/tai-nainai-e005/video.json
+  - docs/videos/tai-nainai-e005/brief.md
+  - docs/videos/tai-nainai-e006/shots-en.json
+  - docs/videos/tai-nainai-e006/video.json
+  - docs/videos/tai-nainai-e006/brief.md
+  - docs/videos/tai-nainai-e007/shots-en.json
+  - docs/videos/tai-nainai-e007/video.json
+  - docs/videos/tai-nainai-e007/brief.md
+  - docs/videos/tai-nainai-e008/shots-en.json
+  - docs/videos/tai-nainai-e008/video.json
+  - docs/videos/tai-nainai-e008/brief.md
+  - docs/videos/tai-nainai-e009/shots-en.json
+  - docs/videos/tai-nainai-e009/video.json
+  - docs/videos/tai-nainai-e009/brief.md
+  - docs/videos/tai-nainai-e010/shots-en.json
+  - docs/videos/tai-nainai-e010/video.json
+  - docs/videos/tai-nainai-e010/brief.md
 ---
 
 # 恁祖媽今年18 製作工具：script.md 轉 video.json 與 Colab 片段清單
@@ -37,6 +64,7 @@ scope:
 - [x] 說話人對 `cast.json` 的角色與路人 id。
 - [x] `shots-en.json` 格式與第 1 集 27 鏡的英文正文。
 - [x] `compile.py`：`video.json`、`brief.md`、Ref2VA manifest；中文列改了而英文沒跟上就停。
+- [ ] 第 2–10 集（第一篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [ ] 試鏡學到的：燈的分數各一張祠堂場景圖、景別要準的鏡走首格路線。
 
 ## How to verify
