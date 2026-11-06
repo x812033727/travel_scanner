@@ -57,7 +57,7 @@ c26｜OpenAI 週四（11/5）發布「全國社區承諾」；旁白「OpenAI �
 c27｜Decrypt 引述承諾原文：「We will pay the full cost of powering our compute campuses and ensure local residents do not foot the bill for our energy needs.」（卡片只引前半，加刪節號）｜CMP；DC6｜2026-11-05｜uzn1；卡片 mc-quote
 c28｜在昂貴的電網升級前提供財務保證（卡片 mc-more key 原本「Money up front for the grid」，financial assurances 不一定是先付錢，查核第 2 輪改成「Grid guarantees first」），避免專案縮減或失敗時由其他用戶買單（第 2 輪：ln7b 只講一件事「電網要為它花大錢升級之前，它會先拿出財務保證」；為什麼要保證，已在 hqgm 講過，見 c21a）｜CMP；DC6｜2026-11-05｜ln7b
 c29｜每座 AI 資料中心有用水計畫、年度進度報告與獨立噪音研究｜CMP；DC6｜2026-11-05｜b4i8, uqsm
-c30｜公開能源與用水數字，限制與官員簽署的保密協議；「保密協議＝不讓外界知道內容的合約」是解釋。第 3 輪：「公開用電和用水數字」併進 uqsm「它每年也會公開進度報告，還有用電和用水的數字」；保密協議移到 mc-nda，後面接 Sola「是限制，不是禁止」（DC6「limit nondisclosure agreements」）（第 3 輪）｜CMP；DC6｜2026-11-05｜x3w3, uqsm
+c30｜公開能源與用水數字，限制與官員簽署的保密協議；「保密協議＝不讓外界知道內容的合約」是解釋。第 3 輪：「公開用電和用水數字」併進 uqsm「它每年也會公開進度報告，還有用電和用水的數字」；保密協議移到 mc-nda，後面接 Sola「是限制，不是禁止」（第 3 輪）。查核第 3 輪：DC6 內文是「limits on secrecy agreements with officials」，但同一篇的 In brief 寫「an end to most NDAs with officials」（大部分取消），只說「不是禁止」會讓人以為只是輕微限制；o0nz 改成「是限制，不是全部禁止」，卡片 mc-nda key「Limits, not a ban」→「Limits, not a full ban」。站上文章 CMP 只寫「限制」，跟 DC6 內文一致｜CMP；DC6｜2026-11-05｜x3w3, uqsm
 c31｜適用範圍：OpenAI 自己擁有並自營的未來園區｜CMP；DC6｜2026-11-05｜hok6；卡片 mc-scope
 c32｜Google 在官方部落格宣布將在懷俄明州興建它在該州的第一座資料中心（GB3「our first data center in the state of Wyoming」；不是該州的第一座），長期投資 170 億美元（自述）。第 2 輪：引出 Google 的是 Sola（p7f3「而且同一天，不只 OpenAI 這樣說」），不是 Kai；l3z3 原本「那是它說要投的錢，不是它要付的電費」：GB3 沒拆 170 億美元包含什麼，「不是它要付的電費」是來源沒有的事實；查核第 2 輪改成「那是它說要投資的錢，電費誰付，是另一個問題」，只區分兩個問題；卡片 mc-goog-b「Not the power bill」→「Power bill: next」，key「Investment, not the bill」→「Invested; bill is next」｜WYO；GB3｜2026-11-05｜p7f3, m1gi, l0n7, l3z3；卡片 mc-goog、mc-goog-b
 c33｜Google 表示將支付所用電力的 100%，並負責自身成長直接帶來的基礎設施需求（自述）。第 2 輪：lvz7 原本「因為它而要新增的電網設施」；GB3 原文「when we build data centers, we'll cover the infrastructure needs directly driven by our growth」放在〈Our commitment to responsible growth〉，是對蓋資料中心的總承諾，沒限定電網（WYO 也寫「基礎設施需求」）。查核第 2 輪改成「它還說，因為它擴張而需要的基礎設施，也由它負責」；卡片 mc-goog-pay「Covers grid needs it creates」→「Covers infrastructure it drives」，key「Grid needs it creates」→「Infrastructure it drives」。Kai 先猜（1q07），yvys「對，Google 說……」｜WYO；GB3｜2026-11-05｜yvys, lvz7
@@ -111,18 +111,18 @@ c71｜縮圖「Who **checks**?」「OpenAI's power-bill pledge」：依 c39（DC
 保留查核第 2 輪（verify-2.md）的全部改動。以下是本輪改到、有事實主張的句子；只有串場、反應或笑點的列在〈笑點〉最後。
 
 c72｜cy-num：Kai 猜「它自己也會亂跑」（8rwn）之後，Sola 加 lsxs「這次你猜對了，而且有數字」，分開猜測與 7ivp 報導的數字（c6）｜CYB；V6｜2026-11-05｜lsxs, 7ivp
-c73｜ring-do：jrt2「搖桿是拿來在手機或電腦的畫面上，移動和選東西的」＝RING「搖桿用於導覽……可依 Mac 或手機螢幕上的內容觸發不同動作」；e1uu 改成「它主要是讓你用講的，指揮 AI 代理做事」｜RING；TC5｜2026-11-05｜jrt2, e1uu
+c73｜ring-do：jrt2「搖桿是拿來在手機或電腦的畫面上，移動和選東西的」＝RING「搖桿用於導覽……可依 Mac 或手機螢幕上的內容觸發不同動作」；e1uu 改成「它主要是讓你用講的，指揮 AI 代理做事」；查核第 3 輪改成「戒指主要是……」，因為前一句 jrt2 的主詞是搖桿，「它」會聽成搖桿。TC5 原文「For navigation, there is a joystick, and it also supports gestures so that it can trigger different actions based on what's on your Mac or phone's screen」，jrt2 的「移動和選東西」＝navigation 與 trigger actions，「電腦」＝Mac｜RING；TC5｜2026-11-05｜jrt2, e1uu
 c74｜y6bx 改成「戒指上有螢幕、搖桿、麥克風，還有喇叭」（刪掉 Kai 的 oqkf 後補主詞；c14）｜RING；TC5｜2026-11-05｜y6bx
 c75｜lead-q2 拆成兩句：hqgm「電網要為資料中心花大錢升級」、l70j「萬一專案失敗，這筆帳可能落到其他用戶頭上」（c21a，DC6 的財務保證條款）；sgwi 移到 lead-q3｜CMP；DC6｜2026-11-05｜hqgm, l70j, sgwi
-c76｜mc-more：ln7b「電網要為它花大錢升級之前，它會先做財務保證」，qgzz「財務保證，就是保證萬一專案失敗，這筆錢不會變成別人的帳單」＝CMP「避免專案縮減或失敗時由其他用戶買單」（c28）；b4i8 不變；uqsm 併入公開數字（c29、c30）｜CMP；DC6｜2026-11-05｜ln7b, qgzz, b4i8, uqsm
+c76｜mc-more：ln7b「電網要為它花大錢升級之前，它會先做財務保證」（查核第 3 輪改「先提供財務保證」，DC6「financial assurances before costly grid upgrades」），qgzz「財務保證，就是保證萬一專案失敗，這筆錢不會變成別人的帳單」＝CMP「避免專案縮減或失敗時由其他用戶買單」（c28）；b4i8 不變；uqsm 併入公開數字（c29、c30）；查核第 3 輪把 uqsm「它每年也會公開進度報告，還有用電和用水的數字」改成「它會公開每年的進度報告，也會公開用電和用水的數字」：DC6 只說進度報告是年度的（annual progress reports），沒說用電用水數字每年公開一次，原句的「每年」會連到兩者｜CMP；DC6｜2026-11-05｜ln7b, qgzz, b4i8, uqsm
 c77｜mc-partner：flz0「OpenAI 用的很多設施，是合作夥伴蓋的、擁有的，像是甲骨文」（c41）；9xin「甲骨文是美國一家大型的雲端和軟體公司」是解釋（背景，不出自來源）｜CMP；DC6｜2026-11-05｜flz0, 9xin
 c78｜dm0y 改成「據 Decrypt 的解讀，……」（c49，站主要求掛名）｜CMP；DC6｜2026-11-05｜dm0y
 c79｜7gm2「Kai 說『至少他說了』，這點沒錯，OpenAI 確實說了」：重引 Kai 的 zvf0，c52｜—｜—｜7gm2
 c80｜ok-intro：5nvc「好，來到今天的『這樣可以嗎？』，這不是業配，是要你投票」：節目聲明（不是業配）；章名移到這個場景。之後是產品一句 5o2k、08ro，再來規則 mazm「規則是我們各說一邊，最後由你留言選邊」｜—｜—｜5nvc, mazm
 c81｜eaan「目前只開放美國的 Pro、Max、Ultra 三種付費方案，其他地區和方案，公告沒提」（c56；第 2 輪查核要的三個方案名）｜FIN；AN1｜2026-11-05｜eaan
 c82｜ok-ro：3vch「它連上銀行的方式，是唯讀」；Kai n0sb「唯讀？所以它只能看，不能動我的錢？」；btr5「對，你說對了，它不能轉帳，也不能投資你的錢」（c57）｜FIN；AN1｜2026-11-05｜3vch, n0sb, btr5
-c83｜ok-see：ewb5「它還看得到最多兩年的交易紀錄」（c58）；ok-sola：yg9u「這點你說得對，差別是多了一家 AI 公司在看」、0haf「銀行看你的帳是工作，AI 公司看，是你點頭的」：Sola 的看法；「你點頭的」＝使用者自己透過 Plaid 同意唯讀存取（FIN）｜FIN；AN1｜2026-11-05｜ewb5, yg9u, 0haf
-c84｜ok-kaiwin：Kai 56tv「可是你自己也說了，隨時可以取消連結，不想給就收回來」＝nbtu（c65），Sola wwuh「好，這點算你贏」｜FIN；AN1｜2026-11-05｜56tv, wwuh
+c83｜ok-see：ewb5「它還看得到最多兩年的交易紀錄」（c58）；ok-sola：yg9u「這點你說得對，差別是多了一家 AI 公司在看」（查核第 3 輪改成「銀行也看得到，沒錯，但多了一家 AI 公司在看」：「這點」指的是八句前 Kai 的 jwi5，中間隔了 ok-kai 到 ok-noads，聽眾接不回去；改成把那一點說出來，同時把 ok-sola 留在 12.9 秒）、0haf「銀行看你的帳是工作，AI 公司看，是你點頭的」：Sola 的看法；「你點頭的」＝使用者自己透過 Plaid 同意唯讀存取（FIN）｜FIN；AN1｜2026-11-05｜ewb5, yg9u, 0haf
+c84｜ok-kaiwin：Kai 56tv「可是你自己也說了，隨時可以取消連結，不想給就收回來」＝nbtu（c65）（查核第 3 輪改成「……隨時可以取消連結，取消之後它就看不到了」：AN1「You can unlink an account anytime, and then Claude can no longer see its data」只說之後看不到，「收回來」會聽成已經給出去的資料拿得回來），Sola wwuh「好，這點算你贏」｜FIN；AN1｜2026-11-05｜56tv, wwuh
 c85｜so-call 拆成三句：a1pc「OpenAI 昨天說了兩件事」、joj2「第一件，測試裡擅自闖進別的系統，低於 1%」、2hxa「第二件，電費全部自己付」（c68）｜CYB；CMP｜2026-11-05｜a1pc, joj2, 2hxa
 c86｜kb70「蓋在你家旁邊，這份承諾該寫進哪裡？留言說」：留言題，「它」改成「這份承諾」｜—｜—｜kb70
 
@@ -168,7 +168,7 @@ c86｜kb70「蓋在你家旁邊，這份承諾該寫進哪裡？留言說」：�
 - zt4n（Kai）改成「搖桿，我猜是開會時偷偷按靜音用的。」：猜錯，jrt2「差一點」更正；不再重複遊戲機的梗。
 - ausc（Sola）改成「不用，你先去把遙控器找出來。」：回扣 c17 的遙控器。
 - 4e7h（Kai）改成「用天然氣？我以為會是太陽能。」：Kai 的猜想，a177「不是」更正；沒有說天然氣好或不好。
-- sr4o（Kai）「連噪音都要研究，這比我想的認真。」、xiwg「所以以後不能偷偷談了？」、o0nz（Sola）「是限制，不是禁止。」（DC6 寫 limit）、uiyc（Kai）「這條我喜歡。」、eqgq（Kai）「手續費那條，我先鼓掌。」：反應，用來切開長清單。
+- sr4o（Kai）「連噪音都要研究，這比我想的認真。」、xiwg「所以以後不能偷偷談了？」、o0nz（Sola）「是限制，不是禁止。」（DC6 寫 limit；查核第 3 輪改「是限制，不是全部禁止。」，見 c30）、uiyc（Kai）「這條我喜歡。」、eqgq（Kai）「手續費那條，我先鼓掌。」：反應，用來切開長清單。
 - t2kw（Kai）改成「好，我改立場：先說了，再寫進規則，我就簽。」：回扣 3fx1「我已經想簽了」，不再是「被說服一半」。
 - jwi5（Kai）「這些，銀行 App 本來就看得到啊。」與 yg9u（Sola）「這點你說得對」：Kai 贏一點；56tv／wwuh 再讓 Kai 贏一局，打破「Kai 說好、Sola 潑冷水、Kai 被說服」的固定模式。
 - fgml（Kai）改成「好吧，這個差別我承認。」：反應。
@@ -190,6 +190,7 @@ c86｜kb70「蓋在你家旁邊，這份承諾該寫進哪裡？留言說」：�
 
 ## 進度
 
+- 查核第 3 輪（2026-11-06）：見 verify-3.md；改 e1uu、ln7b、uqsm、o0nz、yg9u、56tv 與卡片 mc-nda key；lint 0 錯誤、估 14.9 分鐘、186 句，最長畫面狀態 12.9 秒（ring-what、ok-disc、ok-sola）。
 - 第 3 輪（第二位盲讀讀者的意見，保留查核第 2 輪的全部改動）：80 個場景、186 句；`lint` 0 錯誤（兩條開場濃縮的警告）；估 14.9 分鐘，最長的畫面狀態估 12.9 秒（ok-disc、ok-sola、ring-what）。為了留在 15 分鐘內，刪了 oqkf、ewxu、ojz4、8c6k、0rl0、8w9h、216d、pa3b（內容併入 9ape）。
 - 第 2 輪（盲讀的清楚度修改，保留查核第 1 輪的所有改動）：75 個場景、176 句；`lint` 0 錯誤（剩兩條開場濃縮的警告）；估 14.2 分鐘，最長的畫面狀態估 12.9 秒（mc-goog-chk、ok-disc、ring-what）。
 - 第 1 輪：68 個場景、163 句；估 12.8 分鐘。
