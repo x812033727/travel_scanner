@@ -53,97 +53,97 @@
  "loops": [
   {
    "setup": "p008",
-   "payoff": "p098",
+   "payoff": "p100",
    "what": "是什麼東西在偷換天空的顏色"
   },
   {
    "setup": "p010",
-   "payoff": "p094",
+   "payoff": "p096",
    "what": "天空的藍是從哪裡來的"
   },
   {
    "setup": "p012",
-   "payoff": "p185",
+   "payoff": "p177",
    "what": "加了牛奶的水被手電筒照，是什麼顏色"
   },
   {
    "setup": "p014",
-   "payoff": "p254",
+   "payoff": "p251",
    "what": "站在月球上，白天的天空是什麼顏色"
   },
   {
-   "setup": "p016",
-   "payoff": "p199",
+   "setup": "p017",
+   "payoff": "p192",
    "what": "天空是藍的，雲為什麼是白的"
   },
   {
-   "setup": "p018",
-   "payoff": "p259",
+   "setup": "p019",
+   "payoff": "p256",
    "what": "同一道陽光，為什麼一下藍一下紅"
   },
   {
-   "setup": "p019",
-   "payoff": "p024",
+   "setup": "p020",
+   "payoff": "p025",
    "what": "天空是不是本來就是藍的"
   },
   {
-   "setup": "p026",
-   "payoff": "p027",
+   "setup": "p027",
+   "payoff": "p028",
    "what": "陽光是什麼顏色"
   },
   {
-   "setup": "p048",
-   "payoff": "p076",
+   "setup": "p049",
+   "payoff": "p077",
    "what": "藍光是比較短的浪，這件事有什麼用"
   },
   {
-   "setup": "p050",
-   "payoff": "p095",
+   "setup": "p051",
+   "payoff": "p097",
    "what": "空氣是不是藍的"
   },
   {
-   "setup": "p086",
-   "payoff": "p218",
+   "setup": "p088",
+   "payoff": "p211",
    "what": "以前的人以為是灰塵把藍光彈開"
   },
   {
-   "setup": "p107",
-   "payoff": "p110",
+   "setup": "p102",
+   "payoff": "p105",
    "what": "天空是不是海倒映上去的"
   },
   {
-   "setup": "p116",
-   "payoff": "p120",
+   "setup": "p108",
+   "payoff": "p114",
    "what": "紫光的波更短，天空為什麼不是紫的"
   },
   {
-   "setup": "p129",
-   "payoff": "p133",
+   "setup": "p124",
+   "payoff": "p128",
    "what": "太陽本身是什麼顏色"
   },
   {
-   "setup": "p143",
-   "payoff": "p160",
+   "setup": "p139",
+   "payoff": "p156",
    "what": "傍晚太陽變紅，是不是燒得更熱"
   },
   {
-   "setup": "p172",
-   "payoff": "p175",
+   "setup": "p164",
+   "payoff": "p167",
    "what": "半路被彈走的藍光跑去哪了"
   },
   {
-   "setup": "p205",
-   "payoff": "p207",
+   "setup": "p198",
+   "payoff": "p200",
    "what": "快下雨時雲為什麼變灰"
   },
   {
-   "setup": "p217",
-   "payoff": "p221",
+   "setup": "p210",
+   "payoff": "p214",
    "what": "灰塵越多天空是不是越藍"
   },
   {
-   "setup": "p233",
-   "payoff": "p240",
+   "setup": "p230",
+   "payoff": "p237",
    "what": "跟火山有關的特別晚霞"
   }
  ],
@@ -237,6 +237,16 @@
   {
    "title": "NASA: Dark Sky, Bright Sun",
    "url": "https://www.nasa.gov/image-article/dark-sky-bright-sun/",
+   "checked_on": "2026-11-06"
+  },
+  {
+   "title": "Wikipedia: Critical opalescence (Einstein 1910)",
+   "url": "https://en.wikipedia.org/wiki/Critical_opalescence",
+   "checked_on": "2026-11-06"
+  },
+  {
+   "title": "Wikipedia: 1991 eruption of Mount Pinatubo",
+   "url": "https://en.wikipedia.org/wiki/1991_eruption_of_Mount_Pinatubo",
    "checked_on": "2026-11-06"
   }
  ],
@@ -464,12 +474,19 @@
     {
      "id": "p015",
      "speaker": "kid",
-     "text": "還有雲！天空是藍的，",
+     "text": "月球上？我猜不出來。",
+     "pause_after_ms": 100,
+     "emotion": "搖頭"
+    },
+    {
+     "id": "p016",
+     "speaker": "kid",
+     "text": "可是還有雲！天空是藍的，",
      "pause_after_ms": 100,
      "emotion": "突然想到"
     },
     {
-     "id": "p016",
+     "id": "p017",
      "speaker": "kid",
      "text": "雲怎麼是白的？",
      "pause_after_ms": 100,
@@ -490,14 +507,14 @@
    },
    "lines": [
     {
-     "id": "p017",
+     "id": "p018",
      "speaker": "kid",
      "text": "同一道陽光，",
      "pause_after_ms": 100,
      "emotion": "認真"
     },
     {
-     "id": "p018",
+     "id": "p019",
      "speaker": "kid",
      "text": "怎麼一下藍、一下紅？",
      "pause_after_ms": 100,
@@ -519,7 +536,7 @@
    },
    "lines": [
     {
-     "id": "p019",
+     "id": "p020",
      "speaker": "kid",
      "text": "天空本來就是藍色的吧？",
      "pause_after_ms": 100,
@@ -540,14 +557,14 @@
    },
    "lines": [
     {
-     "id": "p020",
+     "id": "p021",
      "speaker": "chief",
      "text": "如果它本來就是藍的，",
      "pause_after_ms": 100,
      "emotion": "反問"
     },
     {
-     "id": "p021",
+     "id": "p022",
      "speaker": "chief",
      "text": "太陽下山以後，它怎麼變黑了？",
      "pause_after_ms": 100,
@@ -568,7 +585,7 @@
    },
    "lines": [
     {
-     "id": "p022",
+     "id": "p023",
      "speaker": "kid",
      "text": "因為……太陽下班了？",
      "pause_after_ms": 100,
@@ -589,14 +606,14 @@
    },
    "lines": [
     {
-     "id": "p023",
+     "id": "p024",
      "speaker": "chief",
      "text": "對，太陽一走，藍色就跟著走了。",
      "pause_after_ms": 100,
      "emotion": "笑"
     },
     {
-     "id": "p024",
+     "id": "p025",
      "speaker": "chief",
      "text": "所以那片藍，是陽光帶來的。",
      "pause_after_ms": 100
@@ -616,14 +633,14 @@
    },
    "lines": [
     {
-     "id": "p025",
+     "id": "p026",
      "speaker": "kid",
      "text": "可是陽光是白白的啊，",
      "pause_after_ms": 100,
      "emotion": "不服氣"
     },
     {
-     "id": "p026",
+     "id": "p027",
      "speaker": "kid",
      "text": "哪裡有藍色？",
      "pause_after_ms": 100,
@@ -644,16 +661,16 @@
    },
    "lines": [
     {
-     "id": "p027",
+     "id": "p028",
      "speaker": "chief",
      "text": "白光，其實是很多顏色混在一起。",
      "pause_after_ms": 100,
      "emotion": "放慢"
     },
     {
-     "id": "p028",
+     "id": "p029",
      "speaker": "chief",
-     "text": "只是它們混得太好，你分不出來。",
+     "text": "它們一起跑進眼睛，大腦就把它們看成白的。",
      "pause_after_ms": 100
     }
    ]
@@ -671,14 +688,14 @@
    },
    "lines": [
     {
-     "id": "p029",
+     "id": "p030",
      "speaker": "chief",
      "text": "你夏天拿水管澆花，水霧裡有時會冒出一小道彩虹。",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
-     "id": "p030",
+     "id": "p031",
      "speaker": "chief",
      "text": "那些顏色，本來就藏在陽光裡。",
      "pause_after_ms": 100
@@ -698,13 +715,13 @@
    },
    "lines": [
     {
-     "id": "p031",
+     "id": "p032",
      "speaker": "chief",
      "text": "拿一塊三角形的玻璃，叫三稜鏡，對著太陽，",
      "pause_after_ms": 100
     },
     {
-     "id": "p032",
+     "id": "p033",
      "speaker": "chief",
      "text": "牆上就會出現一排顏色。",
      "pause_after_ms": 100
@@ -724,9 +741,9 @@
    },
    "lines": [
     {
-     "id": "p033",
+     "id": "p034",
      "speaker": "chief",
-     "text": "很久以前，牛頓就用三稜鏡，這樣把陽光分開過。",
+     "text": "很久以前，英國科學家牛頓，就用三稜鏡把陽光分開過。",
      "pause_after_ms": 100
     }
    ]
@@ -744,14 +761,14 @@
    },
    "lines": [
     {
-     "id": "p034",
+     "id": "p035",
      "speaker": "kid",
      "text": "紅、橙、黃、綠、藍、紫！",
      "pause_after_ms": 100,
      "emotion": "一個一個數"
     },
     {
-     "id": "p035",
+     "id": "p036",
      "speaker": "kid",
      "text": "全部擠在白光裡？",
      "pause_after_ms": 100,
@@ -772,16 +789,17 @@
    },
    "lines": [
     {
-     "id": "p036",
+     "id": "p037",
      "speaker": "chief",
-     "text": "對。這些顏色一起跑進眼睛，",
+     "text": "對，一個都沒少。",
      "pause_after_ms": 100
     },
     {
-     "id": "p037",
-     "speaker": "chief",
-     "text": "你的大腦把它們混起來，就看成白的。",
-     "pause_after_ms": 100
+     "id": "p038",
+     "speaker": "kid",
+     "text": "白光好擠喔！",
+     "pause_after_ms": 100,
+     "emotion": "好笑"
     }
    ]
   },
@@ -798,14 +816,14 @@
    },
    "lines": [
     {
-     "id": "p038",
+     "id": "p039",
      "speaker": "kid",
      "text": "那這些顏色，",
      "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
-     "id": "p039",
+     "id": "p040",
      "speaker": "kid",
      "text": "有什麼不一樣？",
      "pause_after_ms": 100,
@@ -826,14 +844,14 @@
    },
    "lines": [
     {
-     "id": "p040",
+     "id": "p041",
      "speaker": "chief",
      "text": "你甩過跳繩吧？繩子會起一波一波的浪。",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
-     "id": "p041",
+     "id": "p042",
      "speaker": "chief",
      "text": "光也像這樣，一波一波往前走。",
      "pause_after_ms": 100
@@ -853,13 +871,13 @@
    },
    "lines": [
     {
-     "id": "p042",
+     "id": "p043",
      "speaker": "chief",
      "text": "紅光的波比較長，像慢慢甩出的大浪；",
      "pause_after_ms": 100
     },
     {
-     "id": "p043",
+     "id": "p044",
      "speaker": "chief",
      "text": "藍光、紫光的波比較短，像抖出來的小浪。",
      "pause_after_ms": 100
@@ -879,13 +897,13 @@
    },
    "lines": [
     {
-     "id": "p044",
+     "id": "p045",
      "speaker": "chief",
      "text": "一個浪頭到下一個浪頭有多長，就叫做波長。",
      "pause_after_ms": 100
     },
     {
-     "id": "p045",
+     "id": "p046",
      "speaker": "chief",
      "text": "波長不一樣，眼睛看到的顏色就不一樣。",
      "pause_after_ms": 100
@@ -905,14 +923,14 @@
    },
    "lines": [
     {
-     "id": "p046",
+     "id": "p047",
      "speaker": "kid",
      "text": "我抖快一點，浪就變短了！",
      "pause_after_ms": 100,
      "emotion": "邊玩邊說"
     },
     {
-     "id": "p047",
+     "id": "p048",
      "speaker": "kid",
      "text": "藍色是比較短的浪？",
      "pause_after_ms": 100,
@@ -933,7 +951,7 @@
    },
    "lines": [
     {
-     "id": "p048",
+     "id": "p049",
      "speaker": "chief",
      "text": "對。先記住這件事，等一下它會回來。",
      "pause_after_ms": 100,
@@ -954,14 +972,14 @@
    },
    "lines": [
     {
-     "id": "p049",
+     "id": "p050",
      "speaker": "kid",
      "text": "那天空會藍，",
      "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
-     "id": "p050",
+     "id": "p051",
      "speaker": "kid",
      "text": "是因為空氣是藍的嗎？",
      "pause_after_ms": 100,
@@ -983,14 +1001,14 @@
    },
    "lines": [
     {
-     "id": "p051",
+     "id": "p052",
      "speaker": "chief",
      "text": "你拿一個空玻璃罐，裡面裝滿空氣，",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
-     "id": "p052",
+     "id": "p053",
      "speaker": "chief",
      "text": "看得到藍色嗎？",
      "pause_after_ms": 100
@@ -1010,14 +1028,14 @@
    },
    "lines": [
     {
-     "id": "p053",
+     "id": "p054",
      "speaker": "kid",
      "text": "看不到，",
      "pause_after_ms": 100,
      "emotion": "老實"
     },
     {
-     "id": "p054",
+     "id": "p055",
      "speaker": "kid",
      "text": "透明的。",
      "pause_after_ms": 100
@@ -1037,13 +1055,13 @@
    },
    "lines": [
     {
-     "id": "p055",
+     "id": "p056",
      "speaker": "chief",
      "text": "一小罐空氣，看不出顏色。",
      "pause_after_ms": 100
     },
     {
-     "id": "p056",
+     "id": "p057",
      "speaker": "chief",
      "text": "可是你頭頂上的空氣，有很厚很厚一大片。",
      "pause_after_ms": 100
@@ -1061,13 +1079,13 @@
    },
    "lines": [
     {
-     "id": "p057",
+     "id": "p058",
      "speaker": "chief",
      "text": "有人從大約兩萬公尺高的飛機上拍照，",
      "pause_after_ms": 100
     },
     {
-     "id": "p058",
+     "id": "p059",
      "speaker": "chief",
      "text": "地球的邊上，就是一圈薄薄的藍。",
      "pause_after_ms": 100
@@ -1087,13 +1105,13 @@
    },
    "lines": [
     {
-     "id": "p059",
+     "id": "p060",
      "speaker": "chief",
      "text": "這層空氣，是由很多很小的分子組成的。",
      "pause_after_ms": 100
     },
     {
-     "id": "p060",
+     "id": "p061",
      "speaker": "kid",
      "text": "分子是什麼？",
      "pause_after_ms": 100,
@@ -1114,13 +1132,13 @@
    },
    "lines": [
     {
-     "id": "p061",
+     "id": "p062",
      "speaker": "chief",
      "text": "你可以想成，空氣裡一顆一顆，",
      "pause_after_ms": 100
     },
     {
-     "id": "p062",
+     "id": "p063",
      "speaker": "chief",
      "text": "小到眼睛看不見的小球。",
      "pause_after_ms": 100
@@ -1140,7 +1158,7 @@
    },
    "lines": [
     {
-     "id": "p063",
+     "id": "p064",
      "speaker": "kid",
      "text": "我吸進去的，也是小球？",
      "pause_after_ms": 100,
@@ -1161,7 +1179,7 @@
    },
    "lines": [
     {
-     "id": "p064",
+     "id": "p065",
      "speaker": "chief",
      "text": "對，你每吸一口氣，就吸進好多好多顆。",
      "pause_after_ms": 100
@@ -1179,7 +1197,7 @@
    },
    "lines": [
     {
-     "id": "p065",
+     "id": "p066",
      "speaker": "chief",
      "text": "一顆分子，比光的一個波還要小上大約一千倍。",
      "pause_after_ms": 100,
@@ -1200,14 +1218,14 @@
    },
    "lines": [
     {
-     "id": "p066",
+     "id": "p067",
      "speaker": "kid",
      "text": "一千倍？",
      "pause_after_ms": 100,
      "emotion": "驚訝"
     },
     {
-     "id": "p067",
+     "id": "p068",
      "speaker": "kid",
      "text": "那光不就直接穿過去了？",
      "pause_after_ms": 100,
@@ -1226,13 +1244,13 @@
    },
    "lines": [
     {
-     "id": "p068",
+     "id": "p069",
      "speaker": "chief",
      "text": "大部分的光是穿過去了。",
      "pause_after_ms": 100
     },
     {
-     "id": "p069",
+     "id": "p070",
      "speaker": "chief",
      "text": "可是有一部分撞到這些小球，會被彈開，",
      "pause_after_ms": 100
@@ -1252,13 +1270,13 @@
    },
    "lines": [
     {
-     "id": "p070",
+     "id": "p071",
      "speaker": "chief",
      "text": "往四面八方飛出去。這叫做散射。",
      "pause_after_ms": 100
     },
     {
-     "id": "p071",
+     "id": "p072",
      "speaker": "chief",
      "text": "被彈開的光，還會撞上別的小球，再彈一次。",
      "pause_after_ms": 100
@@ -1278,14 +1296,14 @@
    },
    "lines": [
     {
-     "id": "p072",
+     "id": "p073",
      "speaker": "kid",
      "text": "像打彈珠一樣！",
      "pause_after_ms": 100,
      "emotion": "開心"
     },
     {
-     "id": "p073",
+     "id": "p074",
      "speaker": "chief",
      "text": "有點像，只是它會往每個方向彈。",
      "pause_after_ms": 100
@@ -1305,14 +1323,14 @@
    },
    "lines": [
     {
-     "id": "p074",
+     "id": "p075",
      "speaker": "kid",
      "text": "每種顏色，",
      "pause_after_ms": 100,
      "emotion": "好奇"
     },
     {
-     "id": "p075",
+     "id": "p076",
      "speaker": "kid",
      "text": "都會被彈開嗎？",
      "pause_after_ms": 100,
@@ -1333,13 +1351,13 @@
    },
    "lines": [
     {
-     "id": "p076",
+     "id": "p077",
      "speaker": "chief",
      "text": "都會。可是還記得那些短的小浪嗎？",
      "pause_after_ms": 100
     },
     {
-     "id": "p077",
+     "id": "p078",
      "speaker": "chief",
      "text": "它們被彈得特別多。",
      "pause_after_ms": 100
@@ -1350,18 +1368,39 @@
    "id": "four-blue",
    "template": "shot",
    "data": {
-    "prompt": "Close-up of four short bright blue arrows bouncing away from one tiny round ball while one single red arrow bounces away on the other side, a pale sky-blue background, bright daylight",
+    "prompt": "Close-up of several short bright blue arrows bouncing away from one tiny round ball while one single red arrow bounces away on the other side, a pale sky-blue background, bright daylight",
     "camera": "drift",
     "visual": "still",
     "characters": []
    },
    "lines": [
     {
-     "id": "p078",
+     "id": "p079",
      "speaker": "chief",
-     "text": "藍光被彈開的，大約是紅光的四倍。",
+     "text": "藍光被彈開的，比紅光多好幾倍。",
      "pause_after_ms": 100,
      "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "kid-busy",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl laughing and waving both hands around fast, a plain pale wall behind her, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p080",
+     "speaker": "kid",
+     "text": "好幾倍？藍光好忙！",
+     "pause_after_ms": 100,
+     "emotion": "好笑"
     }
    ]
   },
@@ -1378,7 +1417,7 @@
    },
    "lines": [
     {
-     "id": "p079",
+     "id": "p081",
      "speaker": "kid",
      "text": "那紅光呢？",
      "pause_after_ms": 100,
@@ -1399,19 +1438,19 @@
    },
    "lines": [
     {
-     "id": "p080",
+     "id": "p082",
      "speaker": "chief",
      "text": "紅光比較少被彈到旁邊，",
      "pause_after_ms": 100
     },
     {
-     "id": "p081",
+     "id": "p083",
      "speaker": "chief",
      "text": "大多照著原來的方向，直直往前走。",
      "pause_after_ms": 100
     },
     {
-     "id": "p082",
+     "id": "p084",
      "speaker": "kid",
      "text": "紅光好專心喔！",
      "pause_after_ms": 100,
@@ -1432,13 +1471,13 @@
    },
    "lines": [
     {
-     "id": "p083",
+     "id": "p085",
      "speaker": "chief",
      "text": "十九世紀，英國科學家瑞利，",
      "pause_after_ms": 100
     },
     {
-     "id": "p084",
+     "id": "p086",
      "speaker": "chief",
      "text": "算出了這件事：波越短，被彈開得越多。",
      "pause_after_ms": 100
@@ -1456,14 +1495,14 @@
    },
    "lines": [
     {
-     "id": "p085",
+     "id": "p087",
      "speaker": "chief",
      "text": "有趣的是，瑞利他們當時以為，",
      "pause_after_ms": 100,
      "emotion": "說故事"
     },
     {
-     "id": "p086",
+     "id": "p088",
      "speaker": "chief",
      "text": "把藍光彈開的，是空氣裡的灰塵和小水滴。",
      "pause_after_ms": 100
@@ -1483,13 +1522,13 @@
    },
    "lines": [
     {
-     "id": "p087",
+     "id": "p089",
      "speaker": "chief",
      "text": "後來的人發現：要是靠灰塵，天空的藍應該跟著天氣變很多，",
      "pause_after_ms": 100
     },
     {
-     "id": "p088",
+     "id": "p090",
      "speaker": "chief",
      "text": "實際上卻沒有變那麼多。",
      "pause_after_ms": 100
@@ -1509,13 +1548,13 @@
    },
    "lines": [
     {
-     "id": "p089",
+     "id": "p091",
      "speaker": "chief",
-     "text": "後來愛因斯坦在一九一一年算出來：",
+     "text": "後來，物理學家愛因斯坦在一九一〇年算出來：",
      "pause_after_ms": 100
     },
     {
-     "id": "p090",
+     "id": "p092",
      "speaker": "chief",
      "text": "光靠空氣分子，就夠把天空弄藍了。",
      "pause_after_ms": 100
@@ -1535,14 +1574,14 @@
    },
    "lines": [
     {
-     "id": "p091",
+     "id": "p093",
      "speaker": "kid",
      "text": "連愛因斯坦，",
      "pause_after_ms": 100,
      "emotion": "驚訝"
     },
     {
-     "id": "p092",
+     "id": "p094",
      "speaker": "kid",
      "text": "都來算天空！",
      "pause_after_ms": 100
@@ -1562,14 +1601,14 @@
    },
    "lines": [
     {
-     "id": "p093",
+     "id": "p095",
      "speaker": "chief",
      "text": "所以你不管往天空哪個方向看，",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
-     "id": "p094",
+     "id": "p096",
      "speaker": "chief",
      "text": "都有被彈過來的藍光，跑進你的眼睛。",
      "pause_after_ms": 100
@@ -1589,13 +1628,13 @@
    },
    "lines": [
     {
-     "id": "p095",
+     "id": "p097",
      "speaker": "chief",
      "text": "空氣不是藍的，",
      "pause_after_ms": 100
     },
     {
-     "id": "p096",
+     "id": "p098",
      "speaker": "chief",
      "text": "它是一路把藍光彈給你看。",
      "pause_after_ms": 100
@@ -1615,105 +1654,17 @@
    },
    "lines": [
     {
-     "id": "p097",
+     "id": "p099",
      "speaker": "kid",
      "text": "原來偷換顏色的，",
      "pause_after_ms": 100,
      "emotion": "開心"
     },
     {
-     "id": "p098",
+     "id": "p100",
      "speaker": "kid",
      "text": "就是空氣！",
      "pause_after_ms": 100
-    }
-   ]
-  },
-  {
-   "id": "kid-near-sun",
-   "template": "shot",
-   "data": {
-    "prompt": "Waist-up medium shot of the girl on a sunny rooftop with potted plants holding one hand up to block the sun, a pale whitish glow around the sun and a deeper blue sky far from it, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
-    "camera": "tilt up",
-    "visual": "still",
-    "characters": [
-     "kid"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p099",
-     "speaker": "kid",
-     "text": "可是太陽旁邊那一圈，",
-     "pause_after_ms": 100,
-     "emotion": "發現"
-    },
-    {
-     "id": "p100",
-     "speaker": "kid",
-     "text": "好像比較白耶？",
-     "pause_after_ms": 100,
-     "emotion": "疑惑"
-    }
-   ]
-  },
-  {
-   "id": "chief-near-sun",
-   "template": "shot",
-   "data": {
-    "prompt": "Waist-up medium shot of the chief nodding and tracing a small circle in the air with one finger, a plain pale wall behind her, bright daylight, the chief wears round black glasses, her dark hair with a grey streak is tied in a low ponytail, a yellow pencil is tucked behind her ear, mustard-yellow cardigan",
-    "camera": "pan right",
-    "visual": "still",
-    "characters": [
-     "chief"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p101",
-     "speaker": "chief",
-     "text": "你看得很仔細。太陽旁邊的天空偏白，",
-     "pause_after_ms": 100
-    },
-    {
-     "id": "p102",
-     "speaker": "chief",
-     "text": "離太陽越遠，藍得越深。",
-     "pause_after_ms": 100
-    }
-   ]
-  },
-  {
-   "id": "kid-turn",
-   "template": "shot",
-   "data": {
-    "prompt": "Waist-up medium shot of the girl on a sunny rooftop with potted plants turning her back to the sun and looking up at a deep blue sky, one hand shading her eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
-    "camera": "push in",
-    "visual": "still",
-    "characters": [
-     "kid"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p103",
-     "speaker": "kid",
-     "text": "那我背對太陽看，",
-     "pause_after_ms": 100,
-     "emotion": "想試試"
-    },
-    {
-     "id": "p104",
-     "speaker": "kid",
-     "text": "就是最藍的？",
-     "pause_after_ms": 100
-    },
-    {
-     "id": "p105",
-     "speaker": "chief",
-     "text": "你下次可以轉一圈比比看。記得別直接看太陽。",
-     "pause_after_ms": 100,
-     "emotion": "轉向觀眾"
     }
    ]
   },
@@ -1730,14 +1681,14 @@
    },
    "lines": [
     {
-     "id": "p106",
+     "id": "p101",
      "speaker": "kid",
      "text": "可是我聽說，",
      "pause_after_ms": 100,
      "emotion": "想到"
     },
     {
-     "id": "p107",
+     "id": "p102",
      "speaker": "kid",
      "text": "天空是海倒映上去的。",
      "pause_after_ms": 100,
@@ -1758,13 +1709,13 @@
    },
    "lines": [
     {
-     "id": "p108",
+     "id": "p103",
      "speaker": "chief",
      "text": "很多人都這樣聽過。可是你去山上，",
      "pause_after_ms": 100
     },
     {
-     "id": "p109",
+     "id": "p104",
      "speaker": "chief",
      "text": "離海很遠很遠，天空一樣是藍的。",
      "pause_after_ms": 100
@@ -1784,62 +1735,15 @@
    },
    "lines": [
     {
-     "id": "p110",
+     "id": "p105",
      "speaker": "chief",
      "text": "其實常常倒過來：從沙灘看海，",
      "pause_after_ms": 100
     },
     {
-     "id": "p111",
+     "id": "p106",
      "speaker": "chief",
      "text": "海會藍，有一部分是因為它映著藍天。",
-     "pause_after_ms": 100
-    }
-   ]
-  },
-  {
-   "id": "kid-sea-why",
-   "template": "shot",
-   "data": {
-    "prompt": "Head-and-shoulders close-up of the girl on a sunny beach tilting her head with a curious look, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
-    "camera": "push in",
-    "visual": "still",
-    "characters": [
-     "kid"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p112",
-     "speaker": "kid",
-     "text": "另一部分呢？",
-     "pause_after_ms": 100,
-     "emotion": "追問"
-    }
-   ]
-  },
-  {
-   "id": "chief-sea-why",
-   "template": "shot",
-   "data": {
-    "prompt": "Head-and-shoulders close-up of the chief cupping one hand as if holding water, a gentle smile, a plain pale wall behind her, bright daylight, the chief wears round black glasses, her dark hair with a grey streak is tied in a low ponytail, a yellow pencil is tucked behind her ear, mustard-yellow cardigan",
-    "camera": "pan left",
-    "visual": "still",
-    "characters": [
-     "chief"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p113",
-     "speaker": "chief",
-     "text": "海水很深的時候，自己也會吃掉一些紅光。",
-     "pause_after_ms": 100
-    },
-    {
-     "id": "p114",
-     "speaker": "chief",
-     "text": "不過那是海的故事，我們先回到天上。",
      "pause_after_ms": 100
     }
    ]
@@ -1857,14 +1761,14 @@
    },
    "lines": [
     {
-     "id": "p115",
+     "id": "p107",
      "speaker": "kid",
      "text": "等一下，紫光的波更短，",
      "pause_after_ms": 100,
      "emotion": "抓到問題"
     },
     {
-     "id": "p116",
+     "id": "p108",
      "speaker": "kid",
      "text": "天空怎麼不是紫色的？",
      "pause_after_ms": 100,
@@ -1885,16 +1789,57 @@
    },
    "lines": [
     {
-     "id": "p117",
+     "id": "p109",
      "speaker": "chief",
-     "text": "問得好。陽光裡的紫光本來就比較少，",
+     "text": "問得好。陽光裡的紫光，本來就比較少。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-absorb",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief closing one hand slowly as if catching something small, a calm face, a plain pale wall behind her, bright daylight, the chief wears round black glasses, her dark hair with a grey streak is tied in a low ponytail, a yellow pencil is tucked behind her ear, mustard-yellow cardigan",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p110",
+     "speaker": "chief",
+     "text": "有一些在很高的空中，被那裡的空氣吸收了，",
      "pause_after_ms": 100
     },
     {
-     "id": "p118",
+     "id": "p111",
      "speaker": "chief",
-     "text": "有一些還在很高的地方，被吸收掉了。",
+     "text": "吸收就是被吞進去，到不了地面。",
      "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-absorb",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl with her mouth open in a surprised O and one hand on her tummy, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p112",
+     "speaker": "kid",
+     "text": "空氣還會偷吃一點！",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
     }
    ]
   },
@@ -1911,7 +1856,7 @@
    },
    "lines": [
     {
-     "id": "p119",
+     "id": "p113",
      "speaker": "chief",
      "text": "還有，我們的眼睛，對紫色比較不敏感。",
      "pause_after_ms": 100
@@ -1931,14 +1876,14 @@
    },
    "lines": [
     {
-     "id": "p120",
+     "id": "p114",
      "speaker": "chief",
      "text": "天空裡也有紫光，只是混在一起，",
      "pause_after_ms": 100,
      "emotion": "放慢"
     },
     {
-     "id": "p121",
+     "id": "p115",
      "speaker": "chief",
      "text": "我們看起來，就成了淡淡的藍。",
      "pause_after_ms": 100
@@ -1958,7 +1903,7 @@
    },
    "lines": [
     {
-     "id": "p122",
+     "id": "p116",
      "speaker": "kid",
      "text": "所以紫光一直都在？",
      "pause_after_ms": 100,
@@ -1979,7 +1924,7 @@
    },
    "lines": [
     {
-     "id": "p123",
+     "id": "p117",
      "speaker": "chief",
      "text": "一直都在，只是我們的眼睛，比較少注意到它。",
      "pause_after_ms": 100
@@ -1999,14 +1944,14 @@
    },
    "lines": [
     {
-     "id": "p124",
+     "id": "p118",
      "speaker": "kid",
      "text": "我的眼睛，",
      "pause_after_ms": 100,
      "emotion": "驚訝"
     },
     {
-     "id": "p125",
+     "id": "p119",
      "speaker": "kid",
      "text": "也會挑顏色？",
      "pause_after_ms": 100
@@ -2026,17 +1971,24 @@
    },
    "lines": [
     {
-     "id": "p126",
+     "id": "p120",
      "speaker": "chief",
      "text": "我覺得這是最好玩的地方：",
      "pause_after_ms": 100,
      "emotion": "意見，輕鬆"
     },
     {
-     "id": "p127",
+     "id": "p121",
      "speaker": "chief",
      "text": "你看到的顏色，眼睛也參了一腳。",
      "pause_after_ms": 100
+    },
+    {
+     "id": "p122",
+     "speaker": "kid",
+     "text": "我的眼睛是調色盤！",
+     "pause_after_ms": 100,
+     "emotion": "得意"
     }
    ]
   },
@@ -2053,14 +2005,14 @@
    },
    "lines": [
     {
-     "id": "p128",
+     "id": "p123",
      "speaker": "kid",
      "text": "藍光都被彈到天上了，",
      "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
-     "id": "p129",
+     "id": "p124",
      "speaker": "kid",
      "text": "那太陽本身，是什麼顏色？",
      "pause_after_ms": 100,
@@ -2082,20 +2034,20 @@
    },
    "lines": [
     {
-     "id": "p130",
+     "id": "p125",
      "speaker": "kid",
      "text": "我畫太陽，",
      "pause_after_ms": 100,
      "emotion": "很有把握"
     },
     {
-     "id": "p131",
+     "id": "p126",
      "speaker": "kid",
      "text": "都塗黃色的。",
      "pause_after_ms": 100
     },
     {
-     "id": "p132",
+     "id": "p127",
      "speaker": "chief",
      "text": "很多人都這樣畫。可是要問太陽本身，得離開地面。",
      "pause_after_ms": 100,
@@ -2114,13 +2066,13 @@
    },
    "lines": [
     {
-     "id": "p133",
+     "id": "p128",
      "speaker": "chief",
      "text": "從太空站上看，太陽是白的。",
      "pause_after_ms": 100
     },
     {
-     "id": "p134",
+     "id": "p129",
      "speaker": "chief",
      "text": "那裡已經在大部分的空氣外面了。",
      "pause_after_ms": 100
@@ -2140,13 +2092,13 @@
    },
    "lines": [
     {
-     "id": "p135",
+     "id": "p130",
      "speaker": "chief",
      "text": "我們從地面看偏黃，",
      "pause_after_ms": 100
     },
     {
-     "id": "p136",
+     "id": "p131",
      "speaker": "chief",
      "text": "是因為一點藍光，半路被彈走了。",
      "pause_after_ms": 100
@@ -2166,14 +2118,14 @@
    },
    "lines": [
     {
-     "id": "p137",
+     "id": "p132",
      "speaker": "kid",
      "text": "藍光被彈走那麼多，",
      "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
-     "id": "p138",
+     "id": "p133",
      "speaker": "kid",
      "text": "太陽怎麼還這麼亮？",
      "pause_after_ms": 100,
@@ -2194,21 +2146,42 @@
    },
    "lines": [
     {
-     "id": "p139",
+     "id": "p134",
      "speaker": "chief",
      "text": "被彈開的只是一部分。",
      "pause_after_ms": 100
     },
     {
-     "id": "p140",
+     "id": "p135",
      "speaker": "chief",
-     "text": "超過一半的陽光，還是直直照到地面。",
+     "text": "晴天時，一半以上的陽光，還是直直照到地面。",
      "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-bright",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny rooftop with potted plants spreading her arms in bright sunshine with a happy squint, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p136",
+     "speaker": "kid",
+     "text": "難怪白天，",
+     "pause_after_ms": 100,
+     "emotion": "想通"
     },
     {
-     "id": "p141",
-     "speaker": "chief",
-     "text": "所以白天的地上，還是亮亮的。",
+     "id": "p137",
+     "speaker": "kid",
+     "text": "地上還是亮亮的！",
      "pause_after_ms": 100
     }
    ]
@@ -2226,14 +2199,14 @@
    },
    "lines": [
     {
-     "id": "p142",
+     "id": "p138",
      "speaker": "kid",
      "text": "那傍晚它變紅，",
      "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
-     "id": "p143",
+     "id": "p139",
      "speaker": "kid",
      "text": "是燒得更熱了嗎？",
      "pause_after_ms": 100,
@@ -2254,13 +2227,13 @@
    },
    "lines": [
     {
-     "id": "p144",
+     "id": "p140",
      "speaker": "chief",
      "text": "太陽中午和傍晚都一樣，變的不是它。",
      "pause_after_ms": 100
     },
     {
-     "id": "p145",
+     "id": "p141",
      "speaker": "chief",
      "text": "變的是光走到你眼前的那條路。",
      "pause_after_ms": 100
@@ -2280,14 +2253,14 @@
    },
    "lines": [
     {
-     "id": "p146",
+     "id": "p142",
      "speaker": "kid",
      "text": "路會變？",
      "pause_after_ms": 100,
      "emotion": "不解"
     },
     {
-     "id": "p147",
+     "id": "p143",
      "speaker": "kid",
      "text": "太陽又沒有變遠。",
      "pause_after_ms": 100
@@ -2307,13 +2280,13 @@
    },
    "lines": [
     {
-     "id": "p148",
+     "id": "p144",
      "speaker": "chief",
      "text": "太陽沒有變遠。",
      "pause_after_ms": 100
     },
     {
-     "id": "p149",
+     "id": "p145",
      "speaker": "chief",
      "text": "是光在路上，要穿過的空氣變厚了。",
      "pause_after_ms": 100
@@ -2331,13 +2304,13 @@
    },
    "lines": [
     {
-     "id": "p150",
+     "id": "p146",
      "speaker": "chief",
      "text": "太陽在頭頂上的時候，",
      "pause_after_ms": 100
     },
     {
-     "id": "p151",
+     "id": "p147",
      "speaker": "chief",
      "text": "光是直直穿下來，走的空氣比較少。",
      "pause_after_ms": 100
@@ -2355,13 +2328,13 @@
    },
    "lines": [
     {
-     "id": "p152",
+     "id": "p148",
      "speaker": "chief",
      "text": "太陽快下山時，光是斜斜地，",
      "pause_after_ms": 100
     },
     {
-     "id": "p153",
+     "id": "p149",
      "speaker": "chief",
      "text": "貼著地面穿過來。",
      "pause_after_ms": 100
@@ -2381,14 +2354,14 @@
    },
    "lines": [
     {
-     "id": "p154",
+     "id": "p150",
      "speaker": "chief",
-     "text": "這時光要穿過的空氣，",
+     "text": "等太陽貼到地平線上，光要穿過的空氣，",
      "pause_after_ms": 100,
      "emotion": "數字放慢"
     },
     {
-     "id": "p155",
+     "id": "p151",
      "speaker": "chief",
      "text": "大約是太陽在頭頂時的三十多倍。",
      "pause_after_ms": 100
@@ -2408,22 +2381,22 @@
    },
    "lines": [
     {
-     "id": "p156",
+     "id": "p152",
      "speaker": "kid",
      "text": "三十多倍？",
      "pause_after_ms": 100,
      "emotion": "大驚"
     },
     {
-     "id": "p157",
+     "id": "p153",
      "speaker": "kid",
      "text": "好遠喔！",
      "pause_after_ms": 100
     },
     {
-     "id": "p158",
+     "id": "p154",
      "speaker": "kid",
-     "text": "光要走好久的路！",
+     "text": "光要走好長的路！",
      "pause_after_ms": 100
     }
    ]
@@ -2439,13 +2412,13 @@
    },
    "lines": [
     {
-     "id": "p159",
+     "id": "p155",
      "speaker": "chief",
      "text": "路這麼長，藍光一路被彈走、彈走、再彈走。",
      "pause_after_ms": 100
     },
     {
-     "id": "p160",
+     "id": "p156",
      "speaker": "chief",
      "text": "走到你眼睛時，剩下的多半是紅色和橙色。",
      "pause_after_ms": 100
@@ -2465,83 +2438,15 @@
    },
    "lines": [
     {
-     "id": "p161",
+     "id": "p157",
      "speaker": "chief",
      "text": "所以太陽越貼近地平線，通常就越紅。",
      "pause_after_ms": 100
     },
     {
-     "id": "p162",
+     "id": "p158",
      "speaker": "chief",
      "text": "不過再紅的太陽，也別一直盯著看，眼睛會受傷。",
-     "pause_after_ms": 100
-    }
-   ]
-  },
-  {
-   "id": "chief-bend",
-   "template": "shot",
-   "data": {
-    "prompt": "Waist-up medium shot of the chief holding one hand flat at chest height and lowering the other hand just beneath it, eyebrows raised, a plain pale wall behind her, bright daylight, the chief wears round black glasses, her dark hair with a grey streak is tied in a low ponytail, a yellow pencil is tucked behind her ear, mustard-yellow cardigan",
-    "camera": "push in",
-    "visual": "still",
-    "characters": [
-     "chief"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p163",
-     "speaker": "chief",
-     "text": "還有一件怪事：太陽看起來剛要沉下去的時候，",
-     "pause_after_ms": 100,
-     "emotion": "賣關子"
-    },
-    {
-     "id": "p164",
-     "speaker": "chief",
-     "text": "它其實已經在地平線下面一點了。",
-     "pause_after_ms": 100
-    }
-   ]
-  },
-  {
-   "id": "kid-bend-q",
-   "template": "shot",
-   "data": {
-    "prompt": "Head-and-shoulders close-up of the girl with wide eyes and both hands on her head in disbelief, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood",
-    "camera": "tilt down",
-    "visual": "still",
-    "characters": [
-     "kid"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p165",
-     "speaker": "kid",
-     "text": "那我看到的是什麼？",
-     "pause_after_ms": 100,
-     "emotion": "不敢相信"
-    }
-   ]
-  },
-  {
-   "id": "chief-bend2",
-   "template": "shot",
-   "data": {
-    "prompt": "Head-and-shoulders close-up of the chief drawing a gentle curve downward in the air with one finger, a calm smile, a plain pale wall behind her, bright daylight, the chief wears round black glasses, her dark hair with a grey streak is tied in a low ponytail, a yellow pencil is tucked behind her ear, mustard-yellow cardigan",
-    "camera": "pull out",
-    "visual": "still",
-    "characters": [
-     "chief"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p166",
-     "speaker": "chief",
-     "text": "是空氣把它的光，往下彎了一點，送進你的眼睛。",
      "pause_after_ms": 100
     }
    ]
@@ -2559,17 +2464,18 @@
    },
    "lines": [
     {
-     "id": "p167",
+     "id": "p159",
      "speaker": "kid",
-     "text": "所以紅太陽，",
+     "text": "那早上的日出，",
      "pause_after_ms": 100,
-     "emotion": "慢慢想通"
+     "emotion": "追問"
     },
     {
-     "id": "p168",
+     "id": "p160",
      "speaker": "kid",
-     "text": "是被彈剩下的光？",
-     "pause_after_ms": 100
+     "text": "也是這樣嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
     }
    ]
   },
@@ -2586,13 +2492,13 @@
    },
    "lines": [
     {
-     "id": "p169",
+     "id": "p161",
      "speaker": "chief",
-     "text": "可以這樣說。早上的日出也是一樣，",
+     "text": "一樣。日出的時候，光也是貼著地面斜斜穿過來，",
      "pause_after_ms": 100
     },
     {
-     "id": "p170",
+     "id": "p162",
      "speaker": "chief",
      "text": "只是太陽換到了東邊。",
      "pause_after_ms": 100
@@ -2612,14 +2518,14 @@
    },
    "lines": [
     {
-     "id": "p171",
+     "id": "p163",
      "speaker": "kid",
      "text": "那半路被彈走的藍光，",
      "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
-     "id": "p172",
+     "id": "p164",
      "speaker": "kid",
      "text": "跑去哪裡了？",
      "pause_after_ms": 100,
@@ -2640,13 +2546,13 @@
    },
    "lines": [
     {
-     "id": "p173",
+     "id": "p165",
      "speaker": "chief",
      "text": "它們被彈進別的地方的天空。",
      "pause_after_ms": 100
     },
     {
-     "id": "p174",
+     "id": "p166",
      "speaker": "chief",
      "text": "你這邊看著紅太陽的時候，",
      "pause_after_ms": 100
@@ -2664,13 +2570,13 @@
    },
    "lines": [
     {
-     "id": "p175",
+     "id": "p167",
      "speaker": "chief",
      "text": "同一道光彈出去的藍光，",
      "pause_after_ms": 100
     },
     {
-     "id": "p176",
+     "id": "p168",
      "speaker": "chief",
      "text": "正讓更遠的地方，看到下午的藍天。",
      "pause_after_ms": 100
@@ -2690,13 +2596,13 @@
    },
    "lines": [
     {
-     "id": "p177",
+     "id": "p169",
      "speaker": "chief",
      "text": "美國有一位氣象學家這樣說：",
      "pause_after_ms": 100
     },
     {
-     "id": "p178",
+     "id": "p170",
      "speaker": "chief",
      "text": "夕陽會紅，是因為白天的天空是藍的。",
      "pause_after_ms": 100
@@ -2716,14 +2622,14 @@
    },
    "lines": [
     {
-     "id": "p179",
+     "id": "p171",
      "speaker": "kid",
      "text": "我的夕陽，",
      "pause_after_ms": 100,
      "emotion": "驚喜"
     },
     {
-     "id": "p180",
+     "id": "p172",
      "speaker": "kid",
      "text": "是別人的藍天！",
      "pause_after_ms": 100
@@ -2743,7 +2649,7 @@
    },
    "lines": [
     {
-     "id": "p181",
+     "id": "p173",
      "speaker": "chief",
      "text": "那杯加了牛奶的水，現在可以揭曉了。",
      "pause_after_ms": 100,
@@ -2762,13 +2668,13 @@
    },
    "lines": [
     {
-     "id": "p182",
+     "id": "p174",
      "speaker": "chief",
      "text": "手電筒從側邊照進去，從旁邊看，",
      "pause_after_ms": 100
     },
     {
-     "id": "p183",
+     "id": "p175",
      "speaker": "chief",
      "text": "水裡帶著一點淡淡的藍。",
      "pause_after_ms": 100
@@ -2786,13 +2692,13 @@
    },
    "lines": [
     {
-     "id": "p184",
+     "id": "p176",
      "speaker": "chief",
      "text": "你繞到另一頭，迎著手電筒看，",
      "pause_after_ms": 100
     },
     {
-     "id": "p185",
+     "id": "p177",
      "speaker": "chief",
      "text": "穿過來的光，反而偏橙、偏紅。",
      "pause_after_ms": 100
@@ -2812,20 +2718,20 @@
    },
    "lines": [
     {
-     "id": "p186",
+     "id": "p178",
      "speaker": "kid",
      "text": "一杯水裡，",
      "pause_after_ms": 100,
      "emotion": "驚喜"
     },
     {
-     "id": "p187",
+     "id": "p179",
      "speaker": "kid",
      "text": "有天空也有夕陽！",
      "pause_after_ms": 100
     },
     {
-     "id": "p188",
+     "id": "p180",
      "speaker": "kid",
      "text": "牛奶在裡面做了什麼？",
      "pause_after_ms": 100,
@@ -2846,13 +2752,13 @@
    },
    "lines": [
     {
-     "id": "p189",
+     "id": "p181",
      "speaker": "chief",
      "text": "牛奶裡的小顆粒，就像空氣的分子在彈光。",
      "pause_after_ms": 100
     },
     {
-     "id": "p190",
+     "id": "p182",
      "speaker": "chief",
      "text": "光在水裡走得越遠，被彈走的藍光就越多。",
      "pause_after_ms": 100
@@ -2872,14 +2778,14 @@
    },
    "lines": [
     {
-     "id": "p191",
+     "id": "p183",
      "speaker": "chief",
      "text": "你在家也能試：一杯水、幾滴牛奶、一支手電筒。",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
-     "id": "p192",
+     "id": "p184",
      "speaker": "chief",
      "text": "看不出顏色，就再多加兩滴。",
      "pause_after_ms": 100
@@ -2899,7 +2805,7 @@
    },
    "lines": [
     {
-     "id": "p193",
+     "id": "p185",
      "speaker": "kid",
      "text": "我要借爸爸的手電筒！",
      "pause_after_ms": 100,
@@ -2920,14 +2826,21 @@
    },
    "lines": [
     {
-     "id": "p194",
+     "id": "p186",
+     "speaker": "chief",
+     "text": "做完杯子，你再抬頭看看窗外的雲。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p187",
      "speaker": "kid",
-     "text": "可是雲也被同一個太陽照，",
+     "text": "雲也被同一個太陽照，",
      "pause_after_ms": 100,
      "emotion": "想到"
     },
     {
-     "id": "p195",
+     "id": "p188",
      "speaker": "kid",
      "text": "它怎麼不藍也不紅？",
      "pause_after_ms": 100,
@@ -2949,13 +2862,13 @@
    },
    "lines": [
     {
-     "id": "p196",
+     "id": "p189",
      "speaker": "chief",
      "text": "因為雲是很多小水滴，",
      "pause_after_ms": 100
     },
     {
-     "id": "p197",
+     "id": "p190",
      "speaker": "chief",
      "text": "一顆小水滴，比空氣分子大得多。",
      "pause_after_ms": 100
@@ -2973,13 +2886,13 @@
    },
    "lines": [
     {
-     "id": "p198",
+     "id": "p191",
      "speaker": "chief",
      "text": "大顆的水滴，把每種顏色都彈得差不多。",
      "pause_after_ms": 100
     },
     {
-     "id": "p199",
+     "id": "p192",
      "speaker": "chief",
      "text": "全部顏色一起彈過來，混起來就是白的。",
      "pause_after_ms": 100
@@ -2999,14 +2912,14 @@
    },
    "lines": [
     {
-     "id": "p200",
+     "id": "p193",
      "speaker": "kid",
      "text": "起霧的早上，",
      "pause_after_ms": 100,
      "emotion": "想到"
     },
     {
-     "id": "p201",
+     "id": "p194",
      "speaker": "kid",
      "text": "也是白白的！",
      "pause_after_ms": 100
@@ -3026,13 +2939,13 @@
    },
    "lines": [
     {
-     "id": "p202",
+     "id": "p195",
      "speaker": "chief",
      "text": "對，霧也是小水滴，道理一樣。",
      "pause_after_ms": 100
     },
     {
-     "id": "p203",
+     "id": "p196",
      "speaker": "chief",
      "text": "早上的霧被太陽一照，就是白茫茫一片。",
      "pause_after_ms": 100
@@ -3052,14 +2965,14 @@
    },
    "lines": [
     {
-     "id": "p204",
+     "id": "p197",
      "speaker": "kid",
      "text": "那快下雨的時候，",
      "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
-     "id": "p205",
+     "id": "p198",
      "speaker": "kid",
      "text": "雲怎麼變成灰的？",
      "pause_after_ms": 100,
@@ -3078,13 +2991,13 @@
    },
    "lines": [
     {
-     "id": "p206",
+     "id": "p199",
      "speaker": "chief",
      "text": "雲一變厚，陽光就穿不太過去，",
      "pause_after_ms": 100
     },
     {
-     "id": "p207",
+     "id": "p200",
      "speaker": "chief",
      "text": "底下照到的光少了，看起來就灰灰暗暗。",
      "pause_after_ms": 100
@@ -3104,13 +3017,13 @@
    },
    "lines": [
     {
-     "id": "p208",
+     "id": "p201",
      "speaker": "chief",
      "text": "有時候雲沒那麼暗，是旁邊的天空太亮，",
      "pause_after_ms": 100
     },
     {
-     "id": "p209",
+     "id": "p202",
      "speaker": "chief",
      "text": "眼睛一比，就覺得它灰。",
      "pause_after_ms": 100
@@ -3130,7 +3043,7 @@
    },
    "lines": [
     {
-     "id": "p210",
+     "id": "p203",
      "speaker": "kid",
      "text": "眼睛又在挑顏色了！",
      "pause_after_ms": 100,
@@ -3151,14 +3064,14 @@
    },
    "lines": [
     {
-     "id": "p211",
+     "id": "p204",
      "speaker": "kid",
      "text": "可是傍晚的雲，",
      "pause_after_ms": 100,
      "emotion": "發現"
     },
     {
-     "id": "p212",
+     "id": "p205",
      "speaker": "kid",
      "text": "是橙色、粉紅色的！",
      "pause_after_ms": 100,
@@ -3179,13 +3092,13 @@
    },
    "lines": [
     {
-     "id": "p213",
+     "id": "p206",
      "speaker": "chief",
      "text": "因為照到它的光，已經被一路彈成紅的了。",
      "pause_after_ms": 100
     },
     {
-     "id": "p214",
+     "id": "p207",
      "speaker": "chief",
      "text": "雲像一塊大布幕，把收到的顏色彈給你。",
      "pause_after_ms": 100
@@ -3205,7 +3118,7 @@
    },
    "lines": [
     {
-     "id": "p215",
+     "id": "p208",
      "speaker": "kid",
      "text": "天空在演電影！",
      "pause_after_ms": 100,
@@ -3226,14 +3139,14 @@
    },
    "lines": [
     {
-     "id": "p216",
+     "id": "p209",
      "speaker": "kid",
      "text": "那空氣裡灰塵越多，",
      "pause_after_ms": 100,
      "emotion": "很有把握的錯猜"
     },
     {
-     "id": "p217",
+     "id": "p210",
      "speaker": "kid",
      "text": "天空就越藍？",
      "pause_after_ms": 100
@@ -3253,13 +3166,13 @@
    },
    "lines": [
     {
-     "id": "p218",
+     "id": "p211",
      "speaker": "chief",
      "text": "還記得瑞利那時候的人怎麼猜嗎？",
      "pause_after_ms": 100
     },
     {
-     "id": "p219",
+     "id": "p212",
      "speaker": "chief",
      "text": "你跟他們想的一樣，可是答案剛好相反。",
      "pause_after_ms": 100
@@ -3279,13 +3192,13 @@
    },
    "lines": [
     {
-     "id": "p220",
+     "id": "p213",
      "speaker": "chief",
      "text": "灰塵和煙的顆粒比較大，",
      "pause_after_ms": 100
     },
     {
-     "id": "p221",
+     "id": "p214",
      "speaker": "chief",
      "text": "白天的藍會變淡，像蒙上一層白紗。",
      "pause_after_ms": 100
@@ -3303,9 +3216,15 @@
    },
    "lines": [
     {
-     "id": "p222",
+     "id": "p215",
      "speaker": "chief",
-     "text": "多到一個程度，中午的天空也可能白白一片。",
+     "text": "這種霧濛濛的一層，叫做霾。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p216",
+     "speaker": "chief",
+     "text": "霾多的時候，中午的天空也可能白白一片。",
      "pause_after_ms": 100
     }
    ]
@@ -3323,19 +3242,19 @@
    },
    "lines": [
     {
-     "id": "p223",
+     "id": "p217",
      "speaker": "chief",
      "text": "所以天空最藍的日子，",
      "pause_after_ms": 100
     },
     {
-     "id": "p224",
+     "id": "p218",
      "speaker": "chief",
      "text": "常常是空氣很乾淨的日子。",
      "pause_after_ms": 100
     },
     {
-     "id": "p225",
+     "id": "p219",
      "speaker": "kid",
      "text": "難怪有的日子，天空特別藍！",
      "pause_after_ms": 100,
@@ -3356,14 +3275,14 @@
    },
    "lines": [
     {
-     "id": "p226",
+     "id": "p220",
      "speaker": "kid",
      "text": "那灰塵多的時候，",
      "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
-     "id": "p227",
+     "id": "p221",
      "speaker": "kid",
      "text": "夕陽會變怎樣？",
      "pause_after_ms": 100,
@@ -3384,13 +3303,13 @@
    },
    "lines": [
     {
-     "id": "p228",
+     "id": "p222",
      "speaker": "chief",
      "text": "夕陽就說不準了：有時候更紅，",
      "pause_after_ms": 100
     },
     {
-     "id": "p229",
+     "id": "p223",
      "speaker": "chief",
      "text": "有時候反而灰濛濛的。",
      "pause_after_ms": 100
@@ -3410,13 +3329,13 @@
    },
    "lines": [
     {
-     "id": "p230",
+     "id": "p224",
      "speaker": "chief",
      "text": "有人傍晚搭飛機，地上的夕陽淡淡的；",
      "pause_after_ms": 100
     },
     {
-     "id": "p231",
+     "id": "p225",
      "speaker": "chief",
      "text": "飛機一爬過那層霾，天上的顏色突然鮮豔起來。",
      "pause_after_ms": 100
@@ -3436,11 +3355,44 @@
    },
    "lines": [
     {
-     "id": "p232",
+     "id": "p226",
      "speaker": "kid",
      "text": "霾把顏色蓋住了！",
      "pause_after_ms": 100,
      "emotion": "恍然大悟"
+    }
+   ]
+  },
+  {
+   "id": "chief-high-cloud",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief raising one hand high above her head with a pleased smile, a plain pale wall behind her, bright daylight, the chief wears round black glasses, her dark hair with a grey streak is tied in a low ponytail, a yellow pencil is tucked behind her ear, mustard-yellow cardigan",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p227",
+     "speaker": "chief",
+     "text": "所以傍晚最紅的，常常是高高的雲：",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p228",
+     "speaker": "chief",
+     "text": "照到它的光，還沒穿過底下那層霾。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p229",
+     "speaker": "kid",
+     "text": "高的雲，先拿到紅光！",
+     "pause_after_ms": 100,
+     "emotion": "想通"
     }
    ]
   },
@@ -3457,7 +3409,7 @@
    },
    "lines": [
     {
-     "id": "p233",
+     "id": "p230",
      "speaker": "chief",
      "text": "可是有一種特別的晚霞，跟火山有關。",
      "pause_after_ms": 100,
@@ -3476,15 +3428,15 @@
    },
    "lines": [
     {
-     "id": "p234",
+     "id": "p231",
      "speaker": "chief",
      "text": "一九九一年，菲律賓的皮納圖博火山大爆發，",
      "pause_after_ms": 100
     },
     {
-     "id": "p235",
+     "id": "p232",
      "speaker": "chief",
-     "text": "很細的小顆粒，被噴到大約二、三十公里高。",
+     "text": "後來細細的小顆粒，飄在大約二、三十公里高。",
      "pause_after_ms": 100
     }
    ]
@@ -3502,14 +3454,14 @@
    },
    "lines": [
     {
-     "id": "p236",
+     "id": "p233",
      "speaker": "kid",
      "text": "飛那麼高？",
      "pause_after_ms": 100,
      "emotion": "驚訝"
     },
     {
-     "id": "p237",
+     "id": "p234",
      "speaker": "kid",
      "text": "那地上看得到嗎？",
      "pause_after_ms": 100,
@@ -3528,13 +3480,13 @@
    },
    "lines": [
     {
-     "id": "p238",
+     "id": "p235",
      "speaker": "chief",
      "text": "太陽下山大約十五分鐘後，地面暗了，",
      "pause_after_ms": 100
     },
     {
-     "id": "p239",
+     "id": "p236",
      "speaker": "chief",
      "text": "高空那一層還照得到太陽，被照成淡紫色和橙紅色。",
      "pause_after_ms": 100
@@ -3554,13 +3506,13 @@
    },
    "lines": [
     {
-     "id": "p240",
+     "id": "p237",
      "speaker": "chief",
      "text": "這種火山晚霞，斷斷續續出現了大約一年半。",
      "pause_after_ms": 100
     },
     {
-     "id": "p241",
+     "id": "p238",
      "speaker": "chief",
      "text": "連地球另一邊的美國，都看得到。",
      "pause_after_ms": 100
@@ -3580,14 +3532,14 @@
    },
    "lines": [
     {
-     "id": "p242",
+     "id": "p239",
      "speaker": "kid",
      "text": "火山在幫天空，",
      "pause_after_ms": 100,
      "emotion": "驚喜"
     },
     {
-     "id": "p243",
+     "id": "p240",
      "speaker": "kid",
      "text": "換顏色！",
      "pause_after_ms": 100
@@ -3607,14 +3559,14 @@
    },
    "lines": [
     {
-     "id": "p244",
+     "id": "p241",
      "speaker": "chief",
      "text": "下次你看到特別怪的夕陽，可以想一想：",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
-     "id": "p245",
+     "id": "p242",
      "speaker": "chief",
      "text": "今天的空氣裡，多了什麼？",
      "pause_after_ms": 100
@@ -3635,14 +3587,14 @@
    },
    "lines": [
     {
-     "id": "p246",
+     "id": "p243",
      "speaker": "chief",
      "text": "還記得開頭那個問題嗎？",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾"
     },
     {
-     "id": "p247",
+     "id": "p244",
      "speaker": "chief",
      "text": "站在月球上，白天抬頭看。",
      "pause_after_ms": 100
@@ -3662,14 +3614,14 @@
    },
    "lines": [
     {
-     "id": "p248",
+     "id": "p245",
      "speaker": "kid",
      "text": "月球上……",
      "pause_after_ms": 100,
      "emotion": "慢慢想"
     },
     {
-     "id": "p249",
+     "id": "p246",
      "speaker": "kid",
      "text": "有空氣嗎？",
      "pause_after_ms": 100,
@@ -3690,7 +3642,7 @@
    },
    "lines": [
     {
-     "id": "p250",
+     "id": "p247",
      "speaker": "chief",
      "text": "幾乎沒有，只有非常非常稀薄的一點點。",
      "pause_after_ms": 100
@@ -3710,14 +3662,14 @@
    },
    "lines": [
     {
-     "id": "p251",
+     "id": "p248",
      "speaker": "kid",
      "text": "沒有空氣，就沒有小球，",
      "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
-     "id": "p252",
+     "id": "p249",
      "speaker": "kid",
      "text": "把藍光彈給我……",
      "pause_after_ms": 100,
@@ -3738,7 +3690,7 @@
    },
    "lines": [
     {
-     "id": "p253",
+     "id": "p250",
      "speaker": "kid",
      "text": "那天空是黑的！",
      "pause_after_ms": 100,
@@ -3757,13 +3709,13 @@
    },
    "lines": [
     {
-     "id": "p254",
+     "id": "p251",
      "speaker": "chief",
      "text": "對。太陽明明很亮，月球白天的天空，卻是黑的。",
      "pause_after_ms": 100
     },
     {
-     "id": "p255",
+     "id": "p252",
      "speaker": "chief",
      "text": "亮亮的地面，配上一整片黑漆漆的天。",
      "pause_after_ms": 100
@@ -3783,16 +3735,16 @@
    },
    "lines": [
     {
-     "id": "p256",
+     "id": "p253",
      "speaker": "kid",
      "text": "我知道了！",
      "pause_after_ms": 100,
      "emotion": "自己想通"
     },
     {
-     "id": "p257",
+     "id": "p254",
      "speaker": "kid",
-     "text": "天空的藍，是空氣彈給我的光；",
+     "text": "我在頂樓看到的藍和紅，",
      "pause_after_ms": 100,
      "emotion": "篤定"
     }
@@ -3811,16 +3763,16 @@
    },
    "lines": [
     {
-     "id": "p258",
+     "id": "p255",
      "speaker": "kid",
-     "text": "傍晚光走太遠，藍光被彈光了，",
+     "text": "是同一道光，",
      "pause_after_ms": 100,
      "emotion": "篤定"
     },
     {
-     "id": "p259",
+     "id": "p256",
      "speaker": "kid",
-     "text": "剩下紅紅的太陽！",
+     "text": "走了短的路和長的路！",
      "pause_after_ms": 100,
      "emotion": "開心"
     }
@@ -3839,14 +3791,14 @@
    },
    "lines": [
     {
-     "id": "p260",
+     "id": "p257",
      "speaker": "chief",
      "text": "下次你抬頭看天空，可以想一想：",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾，輕聲"
     },
     {
-     "id": "p261",
+     "id": "p258",
      "speaker": "chief",
      "text": "這道光，一路走了多遠，才來到你眼前。",
      "pause_after_ms": 100
@@ -3866,7 +3818,7 @@
    },
    "lines": [
     {
-     "id": "p262",
+     "id": "p259",
      "speaker": "kid",
      "text": "原來如此！",
      "pause_after_ms": 100,
@@ -3887,14 +3839,14 @@
    },
    "lines": [
     {
-     "id": "p263",
+     "id": "p260",
      "speaker": "chief",
      "text": "你看過最特別的夕陽，是什麼顏色？",
      "pause_after_ms": 100,
      "emotion": "問句上揚，像聊天"
     },
     {
-     "id": "p264",
+     "id": "p261",
      "speaker": "chief",
      "text": "在哪裡看到的？留言告訴我們。",
      "pause_after_ms": 100
@@ -3914,7 +3866,7 @@
    },
    "lines": [
     {
-     "id": "p265",
+     "id": "p262",
      "speaker": "chief",
      "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
      "pause_after_ms": 100,
